@@ -14,7 +14,7 @@ jobs:
     container:
       # If you change this version, change the numbers in the cache step,
       # .github/workflows/preview-build.yml (2x) and os/emscripten/Dockerfile too.
-      image: emscripten/emsdk:3.1.57
+      image: emscripten/emsdk:6.0.1
 
     steps:
     - name: Checkout
@@ -24,20 +24,13 @@ jobs:
       run: |
         git config --global --add safe.directory ${GITHUB_WORKSPACE}
 
-    - name: Update to modern GCC
-      run: |
-        apt-get update
-        apt-get install -y gcc-12 g++-12
-        update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100
-        update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 100
-
     - name: Setup cache
       uses: actions/cache@v5
       with:
         # If you change this version, change the numbers in the image configuration step,
         # .github/workflows/preview-build.yml (2x) and os/emscripten/Dockerfile too.
         path: /emsdk/upstream/emscripten/cache
-        key: 3.1.57-${{ runner.os }}
+        key: 6.0.1-${{ runner.os }}
 
     - name: Add liblzma support
       run: |

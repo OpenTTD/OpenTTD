@@ -20,13 +20,12 @@
 
 void SurveyOS(nlohmann::json &json)
 {
-	int ver_maj, ver_min, ver_bug;
-	GetMacOSVersion(&ver_maj, &ver_min, &ver_bug);
+	auto [ver_major, ver_minor, ver_patch] = GetMacOSVersion();
 
 	const NXArchInfo *arch = NXGetLocalArchInfo();
 
 	json["os"] = "MacOS";
-	json["release"] = fmt::format("{}.{}.{}", ver_maj, ver_min, ver_bug);
+	json["release"] = fmt::format("{}.{}.{}", ver_major, ver_minor, ver_patch);
 	json["machine"] = arch != nullptr ? arch->description : "unknown";
 	json["min_ver"] = MAC_OS_X_VERSION_MIN_REQUIRED;
 	json["max_ver"] = MAC_OS_X_VERSION_MAX_ALLOWED;

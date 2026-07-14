@@ -50,7 +50,7 @@ void GameInstance::RegisterAPI()
 	/* Register all classes */
 	SQGS_RegisterAll(*this->engine);
 
-	if (!this->LoadCompatibilityScripts(GAME_DIR, GameInfo::ApiVersions)) this->Died();
+	if (!this->LoadCompatibilityScripts(Subdirectory::Gs, GameInfo::ApiVersions)) this->Died();
 
 	if (this->IsAlive()) RegisterGameTranslation(*this->engine);
 }
@@ -70,13 +70,13 @@ void GameInstance::Died()
 	ScriptInstance::Died();
 
 	/* Don't show errors while loading savegame. They will be shown at end of loading anyway. */
-	if (_switch_mode != SM_NONE) return;
+	if (_switch_mode != SwitchMode::None) return;
 
 	ShowScriptDebugWindow(OWNER_DEITY);
 
 	const GameInfo *info = Game::GetInfo();
 	if (info != nullptr) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_AI_PLEASE_REPORT_CRASH), {}, WL_WARNING);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_AI_PLEASE_REPORT_CRASH), {}, WarningLevel::Warning);
 
 		if (!info->GetURL().empty()) {
 			ScriptLog::Info("Please report the error to the following URL:");

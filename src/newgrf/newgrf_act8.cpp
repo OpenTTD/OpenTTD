@@ -17,11 +17,11 @@
 
 #include "../safeguards.h"
 
-/* Action 0x08 (GLS_FILESCAN) */
+/* Action 0x08 (GrfLoadingStage::FileScan) */
 static void ScanInfo(ByteReader &buf)
 {
 	uint8_t grf_version = buf.ReadByte();
-	uint32_t grfid      = buf.ReadDWord();
+	GrfID grfid = buf.ReadDWord();
 	std::string_view name = buf.ReadString();
 
 	_cur_gps.grfconfig->ident.grfid = grfid;
@@ -34,14 +34,14 @@ static void ScanInfo(ByteReader &buf)
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
 	if (GB(grfid, 0, 8) == 0xFF) _cur_gps.grfconfig->flags.Set(GRFConfigFlag::System);
 
-	AddGRFTextToList(_cur_gps.grfconfig->name, 0x7F, grfid, false, name);
+	AddGRFTextToList(_cur_gps.grfconfig->name, GRFLanguage::Unspecified, grfid, false, name);
 
 	if (buf.HasData()) {
 		std::string_view info = buf.ReadString();
-		AddGRFTextToList(_cur_gps.grfconfig->info, 0x7F, grfid, true, info);
+		AddGRFTextToList(_cur_gps.grfconfig->info, GRFLanguage::Unspecified, grfid, true, info);
 	}
 
-	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
+	/* GrfLoadingStage::FileScan only looks for the action 8, so we can skip the rest of the file */
 	_cur_gps.skip_sprites = -1;
 }
 
@@ -56,10 +56,10 @@ static void GRFInfo(ByteReader &buf)
 	 * S info          string describing the set, and e.g. author and copyright */
 
 	uint8_t version    = buf.ReadByte();
-	uint32_t grfid     = buf.ReadDWord();
+	GrfID grfid = buf.ReadDWord();
 	std::string_view name = buf.ReadString();
 
-	if (_cur_gps.stage < GLS_RESERVE && _cur_gps.grfconfig->status != GCS_UNKNOWN) {
+	if (_cur_gps.stage < GrfLoadingStage::Reserve && _cur_gps.grfconfig->status != GRFStatus::Unknown) {
 		DisableGrf(STR_NEWGRF_ERROR_MULTIPLE_ACTION_8);
 		return;
 	}
@@ -70,15 +70,21 @@ static void GRFInfo(ByteReader &buf)
 	}
 
 	_cur_gps.grffile->grf_version = version;
-	_cur_gps.grfconfig->status = _cur_gps.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
+	_cur_gps.grfconfig->status = _cur_gps.stage < GrfLoadingStage::Reserve ? GRFStatus::Initialised : GRFStatus::Activated;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
 	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, std::byteswap(grfid), StrMakeValid(name), (_cur_gps.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur_gps.grfconfig->version);
 }
 
+/** @copydoc GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x08>::FileScan(ByteReader &buf) { ScanInfo(buf); }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x08>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x08>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x08>::Init(ByteReader &buf) { GRFInfo(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x08>::Reserve(ByteReader &buf) { GRFInfo(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x08>::Activation(ByteReader &buf) { GRFInfo(buf); }

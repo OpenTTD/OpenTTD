@@ -18,15 +18,14 @@ using TownID = PoolID<uint16_t, struct TownIDTag, 64000, 0xFFFF>;
 struct Town;
 
 /** Supported initial town sizes */
-enum TownSize : uint8_t {
-	TSZ_SMALL,  ///< Small town.
-	TSZ_MEDIUM, ///< Medium town.
-	TSZ_LARGE,  ///< Large town.
-	TSZ_RANDOM, ///< Random size, bigger than small, smaller than large.
+enum class TownSize : uint8_t {
+	Small, ///< Small town.
+	Medium, ///< Medium town.
+	Large, ///< Large town.
+	Random, ///< Random size, bigger than small, smaller than large.
 
-	TSZ_END,    ///< Number of available town sizes.
+	End, ///< Number of available town sizes.
 };
-DECLARE_ENUM_AS_ADDABLE(TownSize)
 
 /* These refer to the maximums, so Appalling is -1000 to -400
  * MAXIMUM RATINGS BOUNDARIES */
@@ -77,19 +76,20 @@ static constexpr int RATING_BRIBE_UP_STEP = 200;
 static constexpr int RATING_BRIBE_MAXIMUM = 800;
 static constexpr int RATING_BRIBE_DOWN_TO = -50; // XXX SHOULD BE SOMETHING LOWER?
 
+static constexpr int RATING_WATER_RIVER_DOWN_STEP = -200; ///< removing a river tile
+static constexpr int RATING_WATER_MINIMUM = RATING_MINIMUM; ///< minimum rating after removing water features near town
+
 /** Town Layouts. It needs to be 8bits, because we save and load it as such */
-enum TownLayout : uint8_t {
-	TL_BEGIN = 0,
-	TL_ORIGINAL = 0,     ///< Original algorithm (min. 1 distance between roads)
-	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
-	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
-	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
+enum class TownLayout : uint8_t {
+	Original, ///< Original algorithm (min. 1 distance between roads)
+	BetterRoads, ///< Extended original algorithm (min. 2 distance between roads)
+	Grid2x2, ///< Geometric 2x2 grid algorithm
+	Grid3x3, ///< Geometric 3x3 grid algorithm
 
-	TL_RANDOM,           ///< Random town layout
+	Random, ///< Random town layout
 
-	NUM_TLS,             ///< Number of town layouts
+	End, ///< Number of town layouts
 };
-DECLARE_ENUM_AS_ADDABLE(TownLayout)
 
 /** Options for growing towns. */
 enum class TownExpandMode : uint8_t {
@@ -97,23 +97,20 @@ enum class TownExpandMode : uint8_t {
 	Roads, ///< Allow town to place roads.
 };
 
+/** Bitset of \c TownExpandMode elements. */
 using TownExpandModes = EnumBitSet<TownExpandMode, uint8_t>;
 
 /** Town founding setting values. It needs to be 8bits, because we save and load it as such */
-enum TownFounding : uint8_t {
-	TF_BEGIN = 0,     ///< Used for iterations and limit testing
-	TF_FORBIDDEN = 0, ///< Forbidden
-	TF_ALLOWED,       ///< Allowed
-	TF_CUSTOM_LAYOUT, ///< Allowed, with custom town layout
-	TF_END,           ///< Used for iterations and limit testing
+enum class TownFounding : uint8_t {
+	Forbidden, ///< Forbidden
+	Allowed, ///< Allowed
+	CustomLayout, ///< Allowed, with custom town layout
 };
 
 /** Town cargo generation modes */
-enum TownCargoGenMode : uint8_t {
-	TCGM_BEGIN = 0,
-	TCGM_ORIGINAL = 0,  ///< Original algorithm (quadratic cargo by population)
-	TCGM_BITCOUNT,      ///< Bit-counted algorithm (normal distribution from individual house population)
-	TCGM_END,
+enum class TownCargoGenMode : uint8_t {
+	Original, ///< Original algorithm (quadratic cargo by population)
+	Bitcount, ///< Bit-counted algorithm (normal distribution from individual house population)
 };
 
 static const uint MAX_LENGTH_TOWN_NAME_CHARS = 32; ///< The maximum length of a town name in characters including '\0'

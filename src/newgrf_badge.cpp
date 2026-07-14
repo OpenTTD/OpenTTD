@@ -177,10 +177,10 @@ struct BadgeResolverObject : public ResolverObject {
 
 	BadgeResolverObject(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->self_scope;
+			case VarSpriteGroupScope::Self: return &this->self_scope;
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
@@ -191,7 +191,7 @@ struct BadgeResolverObject : public ResolverObject {
 
 GrfSpecFeature BadgeResolverObject::GetFeature() const
 {
-	return GSF_BADGES;
+	return GrfSpecFeature::Badges;
 }
 
 uint32_t BadgeResolverObject::GetDebugID() const
@@ -211,8 +211,8 @@ uint32_t BadgeResolverObject::GetDebugID() const
 BadgeResolverObject::BadgeResolverObject(const Badge &badge, GrfSpecFeature feature, std::optional<TimerGameCalendar::Date> introduction_date, CallbackID callback, uint32_t callback_param1, uint32_t callback_param2)
 		: ResolverObject(badge.grf_prop.grffile, callback, callback_param1, callback_param2), self_scope(*this, badge, introduction_date)
 {
-	assert(feature <= GSF_END);
-	this->root_spritegroup = this->self_scope.badge.grf_prop.GetFirstSpriteGroupOf({feature, GSF_DEFAULT});
+	assert(feature <= GrfSpecFeature::End);
+	this->root_spritegroup = this->self_scope.badge.grf_prop.GetFirstSpriteGroupOf({feature, GrfSpecFeature::Default});
 }
 
 /**
@@ -232,6 +232,8 @@ uint32_t GetBadgeVariableResult(const GRFFile &grffile, std::span<const BadgeID>
 
 /**
  * Mark a badge a seen (used) by a feature.
+ * @param index The badge's identifier.
+ * @param feature The feature the badge is used for.
  */
 void MarkBadgeSeen(BadgeID index, GrfSpecFeature feature)
 {

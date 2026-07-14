@@ -18,8 +18,8 @@
 static const uint MAX_BRIDGES = 13; ///< Maximal number of available bridge specs.
 constexpr uint SPRITES_PER_BRIDGE_PIECE = 32; ///< Number of sprites there are per bridge piece.
 
-/* Container for Bridge pillar flags for each axis of each bridge middle piece. */
-using BridgeMiddlePillarFlags = std::array<std::array<BridgePillarFlags, AXIS_END>, NUM_BRIDGE_MIDDLE_PIECES>;
+/** Container for Bridge pillar flags for each axis of each bridge middle piece. */
+using BridgeMiddlePillarFlags = std::array<AxisIndexArray<BridgePillarFlags>, NUM_BRIDGE_MIDDLE_PIECES>;
 
 /**
  * Struct containing information about a single bridge type
@@ -30,6 +30,8 @@ struct BridgeSpec {
 		CustomPillarFlags, ///< Bridge has set custom pillar flags.
 		InvalidPillarFlags, ///< Bridge pillar flags are not valid, i.e. only the tile layout has been modified.
 	};
+
+	/** Bitset of \c ControlFlag elements. */
 	using ControlFlags = EnumBitSet<ControlFlag, uint8_t>;
 
 	TimerGameCalendar::Year avail_year; ///< the year where it becomes available

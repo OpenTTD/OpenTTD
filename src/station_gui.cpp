@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "gui.h"
+#include "querystring_gui.h"
 #include "textbuf_gui.h"
 #include "company_func.h"
 #include "command_func.h"
@@ -29,6 +30,7 @@
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
 #include "vehiclelist.h"
+#include "sound_func.h"
 #include "town.h"
 #include "linkgraph/linkgraph.h"
 #include "zoom_func.h"
@@ -63,8 +65,8 @@ struct GenericWaypointTypeFilter
 	static bool IsAcceptableWaypointTile(TileIndex tile) { return IsTileType(tile, TILE_TYPE); }
 	static constexpr bool IsWaypoint() { return true; }
 };
-using RailWaypointTypeFilter = GenericWaypointTypeFilter<false, MP_RAILWAY>;
-using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, MP_ROAD>;
+using RailWaypointTypeFilter = GenericWaypointTypeFilter<false, TileType::Railway>;
+using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, TileType::Road>;
 
 /**
  * Calculates and draws the accepted or supplied cargo around the selected tile(s)
@@ -77,24 +79,24 @@ using RoadWaypointTypeFilter = GenericWaypointTypeFilter<true, MP_ROAD>;
 int DrawStationCoverageAreaText(const Rect &r, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	CargoTypes cargo_mask = 0;
+	CargoTypes cargo_mask{};
 	if (_thd.drawstyle == HT_RECT && tile < Map::Size()) {
 		CargoArray cargoes;
 		if (supplies) {
 			cargoes = GetProductionAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
 		} else {
-			cargoes = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad);
+			cargoes = GetAcceptanceAroundTiles(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE, rad).first;
 		}
 
 		/* Convert cargo counts to a set of cargo bits, and draw the result. */
-		for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+		for (CargoType cargo : EnumRange(NUM_CARGO)) {
 			switch (sct) {
 				case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(cargo, CargoClass::Passengers)) continue; break;
 				case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(cargo, CargoClass::Passengers)) continue; break;
 				case SCT_ALL: break;
 				default: NOT_REACHED();
 			}
-			if (cargoes[cargo] >= (supplies ? 1U : 8U)) SetBit(cargo_mask, cargo);
+			if (cargoes[cargo] >= (supplies ? 1U : 8U)) cargo_mask.Set(cargo);
 		}
 	}
 	return DrawStringMultiLine(r, GetString(supplies ? STR_STATION_BUILD_SUPPLIES_CARGO : STR_STATION_BUILD_ACCEPTS_CARGO, cargo_mask));
@@ -117,7 +119,7 @@ void FindStationsAroundSelection()
 	TileArea location(TileVirtXY(_thd.pos.x, _thd.pos.y), _thd.size.x / TILE_SIZE - 1, _thd.size.y / TILE_SIZE - 1);
 
 	/* If the current tile is already a station, then it must be the nearest station. */
-	if (IsTileType(location.tile, MP_STATION) && GetTileOwner(location.tile) == _local_company) {
+	if (IsTileType(location.tile, TileType::Station) && GetTileOwner(location.tile) == _local_company) {
 		typename T::StationType *st = T::StationType::GetByTile(location.tile);
 		if (st != nullptr && T::IsValidBaseStation(st)) {
 			SetViewportCatchmentSpecializedStation<typename T::StationType>(st, true);
@@ -137,7 +139,7 @@ void FindStationsAroundSelection()
 
 	/* Direct loop instead of ForAllStationsAroundTiles as we are not interested in catchment area */
 	for (TileIndex tile : ta) {
-		if (IsTileType(tile, MP_STATION) && GetTileOwner(tile) == _local_company) {
+		if (IsTileType(tile, TileType::Station) && GetTileOwner(tile) == _local_company) {
 			typename T::StationType *st = T::StationType::GetByTile(tile);
 			if (st == nullptr || !T::IsValidBaseStation(st)) continue;
 			if (adjacent != nullptr && st != adjacent) {
@@ -230,7 +232,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoType c
 	TextColour tc = GetContrastColour(colour);
 	uint w = std::min(amount + 5, units_full) * width / units_full;
 
-	int height = GetCharacterHeight(FS_SMALL) + padding - 1;
+	int height = GetCharacterHeight(FontSize::Small) + padding - 1;
 
 	if (amount > 30) {
 		/* Draw total cargo (limited) on station */
@@ -244,7 +246,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoType c
 		}
 	}
 
-	DrawString(left + padding, right, y, cs->abbrev, tc, SA_CENTER, false, FS_SMALL);
+	DrawString(left + padding, right, y, cs->abbrev, tc, {AlignmentH::Centre, AlignmentV::Middle}, false, FontSize::Small);
 
 	/* Draw green/red ratings bar (fits under the waiting bar) */
 	y += height + padding + 1;
@@ -258,10 +260,9 @@ typedef GUIList<const Station*, const CargoTypes &> GUIStationList;
 /**
  * The list of stations per company.
  */
-class CompanyStationsWindow : public Window
-{
+class CompanyStationsWindow : public Window {
 protected:
-	/* Runtime saved values */
+	/** Runtime saved values. */
 	struct FilterState {
 		Listing last_sorting;
 		StationFacilities facilities; ///< types of stations of interest
@@ -276,7 +277,7 @@ protected:
 		ALL_CARGOTYPES,
 	};
 
-	/* Constants for sorting stations */
+	/** Strings describing how stations are sorted. */
 	static inline const StringID sorter_names[] = {
 		STR_SORT_BY_NAME,
 		STR_SORT_BY_FACILITY,
@@ -285,7 +286,10 @@ protected:
 		STR_SORT_BY_RATING_MAX,
 		STR_SORT_BY_RATING_MIN,
 	};
-	static const std::initializer_list<GUIStationList::SortFunction * const> sorter_funcs;
+	static const std::initializer_list<GUIStationList::SortFunction * const> sorter_funcs; ///< Functions to sort stations.
+
+	StringFilter string_filter{}; ///< Filter for name
+	QueryString name_editbox; ///< Filter editbox
 
 	FilterState filter{};
 	GUIStationList stations{filter.cargoes};
@@ -313,15 +317,19 @@ protected:
 		for (const Station *st : Station::Iterate()) {
 			if (this->filter.facilities.Any(st->facilities)) { // only stations with selected facilities
 				if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
+					this->string_filter.ResetState();
+					this->string_filter.AddLine(st->GetCachedName());
+					if (!this->string_filter.GetState()) continue;
+
 					bool has_rating = false;
 					/* Add to the station/cargo counts. */
-					for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+					for (CargoType cargo : EnumRange(NUM_CARGO)) {
 						if (st->goods[cargo].HasRating()) this->stations_per_cargo_type[cargo]++;
 					}
-					for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+					for (CargoType cargo : EnumRange(NUM_CARGO)) {
 						if (st->goods[cargo].HasRating()) {
 							has_rating = true;
-							if (HasBit(this->filter.cargoes, cargo)) {
+							if (this->filter.cargoes.Test(cargo)) {
 								this->stations.push_back(st);
 								break;
 							}
@@ -341,51 +349,51 @@ protected:
 		this->vscroll->SetCount(this->stations.size()); // Update the scrollbar
 	}
 
-	/** Sort stations by their name */
-	static bool StationNameSorter(const Station * const &a, const Station * const &b, const CargoTypes &)
+	/** Sort stations by their name. @copydoc GUIList::SorterWithFilter */
+	static bool StationNameSorter(const Station * const &a, const Station * const &b, [[maybe_unused]] const CargoTypes &filter)
 	{
 		int r = StrNaturalCompare(a->GetCachedName(), b->GetCachedName()); // Sort by name (natural sorting).
 		if (r == 0) return a->index < b->index;
 		return r < 0;
 	}
 
-	/** Sort stations by their type */
-	static bool StationTypeSorter(const Station * const &a, const Station * const &b, const CargoTypes &)
+	/** Sort stations by their type. @copydoc GUIList::SorterWithFilter */
+	static bool StationTypeSorter(const Station * const &a, const Station * const &b, [[maybe_unused]] const CargoTypes &filter)
 	{
 		return a->facilities < b->facilities;
 	}
 
-	/** Sort stations by their waiting cargo */
-	static bool StationWaitingTotalSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
+	/** Sort stations by their waiting cargo. @copydoc GUIList::SorterWithFilter */
+	static bool StationWaitingTotalSorter(const Station * const &a, const Station * const &b, const CargoTypes &filter)
 	{
 		int diff = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType cargo : filter) {
 			diff += a->goods[cargo].TotalCount() - b->goods[cargo].TotalCount();
 		}
 
 		return diff < 0;
 	}
 
-	/** Sort stations by their available waiting cargo */
-	static bool StationWaitingAvailableSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
+	/** Sort stations by their available waiting cargo. @copydoc GUIList::SorterWithFilter */
+	static bool StationWaitingAvailableSorter(const Station * const &a, const Station * const &b, const CargoTypes &filter)
 	{
 		int diff = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType cargo : filter) {
 			diff += a->goods[cargo].AvailableCount() - b->goods[cargo].AvailableCount();
 		}
 
 		return diff < 0;
 	}
 
-	/** Sort stations by their rating */
-	static bool StationRatingMaxSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
+	/** Sort stations by their rating. @copydoc GUIList::SorterWithFilter */
+	static bool StationRatingMaxSorter(const Station * const &a, const Station * const &b, const CargoTypes &filter)
 	{
 		uint8_t maxr1 = 0;
 		uint8_t maxr2 = 0;
 
-		for (CargoType cargo : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType cargo : filter) {
 			if (a->goods[cargo].HasRating()) maxr1 = std::max(maxr1, a->goods[cargo].rating);
 			if (b->goods[cargo].HasRating()) maxr2 = std::max(maxr2, b->goods[cargo].rating);
 		}
@@ -393,13 +401,13 @@ protected:
 		return maxr1 < maxr2;
 	}
 
-	/** Sort stations by their rating */
-	static bool StationRatingMinSorter(const Station * const &a, const Station * const &b, const CargoTypes &cargo_filter)
+	/** Sort stations by their rating. @copydoc GUIList::SorterWithFilter */
+	static bool StationRatingMinSorter(const Station * const &a, const Station * const &b, const CargoTypes &filter)
 	{
 		uint8_t minr1 = 255;
 		uint8_t minr2 = 255;
 
-		for (CargoType cargo : SetCargoBitIterator(cargo_filter)) {
+		for (CargoType cargo : filter) {
 			if (a->goods[cargo].HasRating()) minr1 = std::min(minr1, a->goods[cargo].rating);
 			if (b->goods[cargo].HasRating()) minr2 = std::min(minr2, b->goods[cargo].rating);
 		}
@@ -417,7 +425,7 @@ protected:
 	}
 
 public:
-	CompanyStationsWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	CompanyStationsWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc), name_editbox(MAX_LENGTH_STATION_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_STATION_NAME_CHARS)
 	{
 		/* Load initial filter state. */
 		this->filter = CompanyStationsWindow::initial_state;
@@ -434,15 +442,19 @@ public:
 		this->FinishInitNested(window_number);
 		this->owner = this->window_number;
 
+		this->querystrings[WID_STL_FILTER] = &this->name_editbox;
+		this->name_editbox.cancel_button = QueryString::ACTION_CLEAR;
+
 		if (this->filter.cargoes == ALL_CARGOTYPES) this->filter.cargoes = _cargo_mask;
 
-		for (uint i = 0; i < 5; i++) {
-			if (HasBit(this->filter.facilities.base(), i)) this->LowerWidget(i + WID_STL_TRAIN);
+		for (StationFacility facil : this->filter.facilities) {
+			this->LowerWidget(WID_STL_TRAIN + to_underlying(facil));
 		}
 
 		this->GetWidget<NWidgetCore>(WID_STL_SORTDROPBTN)->SetString(CompanyStationsWindow::sorter_names[this->stations.SortType()]);
 	}
 
+	/** Save the last sorting state. */
 	~CompanyStationsWindow() override
 	{
 		/* Save filter state. */
@@ -470,13 +482,13 @@ public:
 			}
 
 			case WID_STL_LIST:
-				fill.height = resize.height = std::max(GetCharacterHeight(FS_NORMAL), GetCharacterHeight(FS_SMALL) + ScaleGUITrad(3));
+				fill.height = resize.height = std::max(GetCharacterHeight(FontSize::Normal), GetCharacterHeight(FontSize::Small) + ScaleGUITrad(3));
 				size.height = padding.height + 5 * resize.height;
 
 				/* Determine appropriate width for mini station rating graph */
 				this->rating_width = 0;
 				for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
-					this->rating_width = std::max(this->rating_width, GetStringBoundingBox(cs->abbrev, FS_SMALL).width);
+					this->rating_width = std::max(this->rating_width, GetStringBoundingBox(cs->abbrev, FontSize::Small).width);
 				}
 				/* Approximately match original 16 pixel wide rating bars by multiplying string width by 1.6 */
 				this->rating_width = this->rating_width * 16 / 10;
@@ -497,7 +509,7 @@ public:
 		switch (widget) {
 			case WID_STL_SORTBY:
 				/* draw arrow pointing up/down for ascending/descending sorting */
-				this->DrawSortButtonState(WID_STL_SORTBY, this->stations.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+				this->DrawSortButton(WID_STL_SORTBY, this->stations.IsDescSortOrder());
 				break;
 
 			case WID_STL_LIST: {
@@ -518,7 +530,7 @@ public:
 					 * when the order had been removed and the station list hasn't been removed yet */
 					assert(st->owner == owner || st->owner == OWNER_NONE);
 
-					int x = DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FS_NORMAL)) / 2, GetString(STR_STATION_LIST_STATION, st->index, st->facilities));
+					int x = DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FontSize::Normal)) / 2, GetString(STR_STATION_LIST_STATION, st->index, st->facilities));
 					x += rtl ? -text_spacing : text_spacing;
 
 					/* show cargo waiting and station ratings */
@@ -544,7 +556,7 @@ public:
 				}
 
 				if (this->vscroll->GetCount() == 0) { // company has no stations
-					DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FS_NORMAL)) / 2, STR_STATION_LIST_NONE);
+					DrawString(tr.left, tr.right, tr.top + (line_height - GetCharacterHeight(FontSize::Normal)) / 2, STR_STATION_LIST_NONE);
 					return;
 				}
 				break;
@@ -559,9 +571,9 @@ public:
 		}
 
 		if (widget == WID_STL_CARGODROPDOWN) {
-			if (this->filter.cargoes == 0) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
+			if (this->filter.cargoes.None()) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING : STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES);
 			if (this->filter.cargoes == _cargo_mask) return GetString(this->filter.include_no_rating ? STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING : STR_CARGO_TYPE_FILTER_ALL);
-			if (CountBits(this->filter.cargoes) == 1 && !this->filter.include_no_rating) return GetString(CargoSpec::Get(FindFirstBit(this->filter.cargoes))->name);
+			if (this->filter.cargoes.Count() == 1 && !this->filter.include_no_rating) return GetString(CargoSpec::Get(*this->filter.cargoes.begin())->name);
 			return GetString(STR_STATION_LIST_CARGO_FILTER_MULTIPLE);
 		}
 
@@ -571,7 +583,7 @@ public:
 	DropDownList BuildCargoDropDownList(bool expanded) const
 	{
 		/* Define a custom item consisting of check mark, count string, icon and name string. */
-		using DropDownListCargoItem = DropDownCheck<DropDownString<DropDownListIconItem, FS_SMALL, true>>;
+		using DropDownListCargoItem = DropDownCheck<DropDownString<DropDownListIconItem, FontSize::Small, true>>;
 
 		DropDownList list;
 		list.push_back(MakeDropDownListStringItem(STR_STATION_LIST_CARGO_FILTER_SELECT_ALL, CargoFilterCriteria::CF_SELECT_ALL));
@@ -583,7 +595,7 @@ public:
 		if (count == 0 && !expanded) {
 			any_hidden = true;
 		} else {
-			list.push_back(std::make_unique<DropDownString<DropDownListCheckedItem, FS_SMALL, true>>(fmt::format("{}", count), 0, this->filter.include_no_rating, GetString(STR_STATION_LIST_CARGO_FILTER_NO_RATING), CargoFilterCriteria::CF_NO_RATING, false, count == 0));
+			list.push_back(std::make_unique<DropDownString<DropDownListCheckedItem, FontSize::Small, true>>(fmt::format("{}", count), 0, this->filter.include_no_rating, GetString(STR_STATION_LIST_CARGO_FILTER_NO_RATING), CargoFilterCriteria::CF_NO_RATING, false, count == 0));
 		}
 
 		Dimension d = GetLargestCargoIconSize();
@@ -592,7 +604,7 @@ public:
 			if (count == 0 && !expanded) {
 				any_hidden = true;
 			} else {
-				list.push_back(std::make_unique<DropDownListCargoItem>(HasBit(this->filter.cargoes, cs->Index()), fmt::format("{}", count), d, cs->GetCargoIcon(), PAL_NONE, GetString(cs->name), cs->Index(), false, count == 0));
+				list.push_back(std::make_unique<DropDownListCargoItem>(this->filter.cargoes.Test(cs->Index()), fmt::format("{}", count), d, cs->GetCargoIcon(), PAL_NONE, GetString(cs->name), cs->Index(), false, count == 0));
 			}
 		}
 
@@ -632,15 +644,15 @@ public:
 					this->filter.facilities.Flip(static_cast<StationFacility>(widget - WID_STL_TRAIN));
 					this->ToggleWidgetLoweredState(widget);
 				} else {
-					for (StationFacility i : this->filter.facilities) {
-						this->RaiseWidget(to_underlying(i) + WID_STL_TRAIN);
+					for (StationFacility facil : this->filter.facilities) {
+						this->RaiseWidget(WID_STL_TRAIN + to_underlying(facil));
 					}
-					this->filter.facilities = {};
-					this->filter.facilities.Set(static_cast<StationFacility>(widget - WID_STL_TRAIN));
+					this->filter.facilities = static_cast<StationFacility>(widget - WID_STL_TRAIN);
 					this->LowerWidget(widget);
 				}
 				this->stations.ForceRebuild();
 				this->SetDirty();
+				SndClickBeep();
 				break;
 
 			case WID_STL_FACILALL:
@@ -662,10 +674,12 @@ public:
 				ShowDropDownMenu(this, CompanyStationsWindow::sorter_names, this->stations.SortType(), WID_STL_SORTDROPBTN, 0, 0);
 				break;
 
-			case WID_STL_CARGODROPDOWN:
+			case WID_STL_CARGODROPDOWN: {
+				static std::string cargo_filter;
 				this->filter_expanded = false;
-				ShowDropDownList(this, this->BuildCargoDropDownList(this->filter_expanded), -1, widget, 0, DropDownOption::Persist);
+				ShowDropDownList(this, this->BuildCargoDropDownList(this->filter_expanded), -1, widget, 0, {DropDownOption::Persist, DropDownOption::Filterable}, &cargo_filter);
 				break;
+			}
 		}
 	}
 
@@ -687,9 +701,9 @@ public:
 
 			if (index >= 0 && index < NUM_CARGO) {
 				if (_ctrl_pressed) {
-					ToggleBit(this->filter.cargoes, index);
+					this->filter.cargoes.Flip(static_cast<CargoType>(index));
 				} else {
-					this->filter.cargoes = 1ULL << index;
+					this->filter.cargoes = static_cast<CargoType>(index);
 					this->filter.include_no_rating = false;
 				}
 			} else if (index == CargoFilterCriteria::CF_NO_RATING) {
@@ -697,7 +711,7 @@ public:
 					this->filter.include_no_rating = !this->filter.include_no_rating;
 				} else {
 					this->filter.include_no_rating = true;
-					this->filter.cargoes = 0;
+					this->filter.cargoes.Reset();
 				}
 			} else if (index == CargoFilterCriteria::CF_SELECT_ALL) {
 				this->filter.cargoes = _cargo_mask;
@@ -717,7 +731,7 @@ public:
 			}
 
 			/* Always close the list if ctrl is not pressed. */
-			if (!_ctrl_pressed) this->CloseChildWindows(WC_DROPDOWN_MENU);
+			if (!_ctrl_pressed) this->CloseChildWindows(WindowClass::DropdownMenu);
 		}
 	}
 
@@ -732,6 +746,14 @@ public:
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_STL_LIST, WidgetDimensions::scaled.framerect.Vertical());
+	}
+
+	void OnEditboxChanged(WidgetID wid) override
+	{
+		if (wid == WID_STL_FILTER) {
+			this->string_filter.SetFilterTerm(this->name_editbox.text.GetText());
+			this->InvalidateData(TDIWD_FORCE_REBUILD);
+		}
 	}
 
 	/**
@@ -762,40 +784,41 @@ const std::initializer_list<GUIStationList::SortFunction * const> CompanyStation
 
 static constexpr std::initializer_list<NWidgetPart> _nested_company_stations_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_STL_CAPTION),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_STL_CAPTION),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_DEFSIZEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_TRAIN), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_TRAIN, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_TRUCK), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_LORRY, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_BUS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_BUS, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_SHIP), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_SHIP, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_STL_AIRPLANE), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_PLANE, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_STL_FACILALL), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_ABBREV_ALL, STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP), SetTextStyle(TC_BLACK, FS_SMALL), SetFill(0, 1),
-		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(5, 0), SetFill(0, 1), EndContainer(),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_STL_CARGODROPDOWN), SetFill(1, 0), SetToolTip(STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_STL_TRAIN), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_TRAIN, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_STL_TRUCK), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_LORRY, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_STL_BUS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_BUS, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_STL_SHIP), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_SHIP, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_STL_AIRPLANE), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_PLANE, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP), SetFill(0, 1),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_STL_FACILALL), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetStringTip(STR_ABBREV_ALL, STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP), SetTextStyle(TextColour::Black, FontSize::Small), SetFill(0, 1),
+		NWidget(WWT_PANEL, Colours::Grey), SetMinimalSize(5, 0), SetFill(0, 1), EndContainer(),
+		NWidget(WWT_DROPDOWN, Colours::Grey, WID_STL_CARGODROPDOWN), SetFill(1, 0), SetToolTip(STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP),
+		NWidget(WWT_PANEL, Colours::Grey), SetResize(1, 0), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_STL_SORTBY), SetMinimalSize(81, 12), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_STL_SORTDROPBTN), SetMinimalSize(163, 12), SetStringTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_CRITERIA), // widget_data gets overwritten.
-		NWidget(WWT_PANEL, COLOUR_GREY), SetResize(1, 0), SetFill(1, 1), EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_STL_SORTBY), SetMinimalSize(0, 12), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+		NWidget(WWT_DROPDOWN, Colours::Grey, WID_STL_SORTDROPBTN), SetMinimalSize(0, 12), SetStringTip(STR_SORT_BY_NAME, STR_TOOLTIP_SORT_CRITERIA), // widget_data gets overwritten.
+		NWidget(WWT_EDITBOX, Colours::Grey, WID_STL_FILTER), SetFill(1, 0), SetResize(1, 0), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_STL_LIST), SetMinimalSize(346, 125), SetResize(1, 10), SetToolTip(STR_STATION_LIST_TOOLTIP), SetScrollbar(WID_STL_SCROLLBAR), EndContainer(),
+		NWidget(WWT_PANEL, Colours::Grey, WID_STL_LIST), SetMinimalSize(346, 125), SetResize(1, 10), SetToolTip(STR_STATION_LIST_TOOLTIP), SetScrollbar(WID_STL_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_STL_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+			NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_STL_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::Grey),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the company stations window. */
 static WindowDesc _company_stations_desc(
-	WDP_AUTO, "list_stations", 358, 162,
-	WC_STATION_LIST, WC_NONE,
+	WindowPosition::Automatic, "list_stations", 358, 162,
+	WindowClass::StationList, WindowClass::None,
 	{},
 	_nested_company_stations_widgets
 );
@@ -814,40 +837,40 @@ void ShowCompanyStations(CompanyID company)
 
 static constexpr std::initializer_list<NWidgetPart> _nested_station_view_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SV_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_STATION_VIEW_EDIT_TOOLTIP),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_SV_CAPTION),
-		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_SV_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_SV_RENAME), SetAspect(WidgetDimensions::ASPECT_RENAME), SetSpriteTip(SPR_RENAME, STR_STATION_VIEW_EDIT_TOOLTIP),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_SV_CAPTION),
+		NWidget(WWT_PUSHIMGBTN, Colours::Grey, WID_SV_LOCATION), SetAspect(WidgetDimensions::ASPECT_LOCATION), SetSpriteTip(SPR_GOTO_LOCATION, STR_STATION_VIEW_CENTER_TOOLTIP),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_DEFSIZEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SV_GROUP), SetMinimalSize(81, 12), SetFill(1, 1), SetStringTip(STR_STATION_VIEW_GROUP),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SV_GROUP_BY), SetMinimalSize(168, 12), SetResize(1, 0), SetFill(0, 1), SetToolTip(STR_TOOLTIP_GROUP_ORDER),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_SV_GROUP), SetMinimalSize(81, 12), SetFill(1, 1), SetStringTip(STR_STATION_VIEW_GROUP),
+		NWidget(WWT_DROPDOWN, Colours::Grey, WID_SV_GROUP_BY), SetMinimalSize(168, 12), SetResize(1, 0), SetFill(0, 1), SetToolTip(STR_TOOLTIP_GROUP_ORDER),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_SORT_ORDER), SetMinimalSize(81, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_SV_SORT_BY), SetMinimalSize(168, 12), SetResize(1, 0), SetFill(0, 1), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SV_SORT_ORDER), SetMinimalSize(81, 12), SetFill(1, 1), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+		NWidget(WWT_DROPDOWN, Colours::Grey, WID_SV_SORT_BY), SetMinimalSize(168, 12), SetResize(1, 0), SetFill(0, 1), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, WID_SV_WAITING), SetMinimalSize(237, 44), SetResize(1, 10), SetScrollbar(WID_SV_SCROLLBAR), EndContainer(),
-		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_SV_SCROLLBAR),
+		NWidget(WWT_PANEL, Colours::Grey, WID_SV_WAITING), SetMinimalSize(237, 44), SetResize(1, 10), SetScrollbar(WID_SV_SCROLLBAR), EndContainer(),
+		NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_SV_SCROLLBAR),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_SV_ACCEPT_RATING_LIST), SetMinimalSize(249, 23), SetResize(1, 0), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_SV_ACCEPT_RATING_LIST), SetMinimalSize(249, 23), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_ACCEPTS_RATINGS), SetMinimalSize(46, 12), SetResize(1, 0), SetFill(1, 1),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SV_ACCEPTS_RATINGS), SetMinimalSize(46, 12), SetResize(1, 0), SetFill(1, 1),
 				SetStringTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SV_CLOSE_AIRPORT_SEL),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SV_CLOSE_AIRPORT), SetMinimalSize(45, 12), SetResize(1, 0), SetFill(1, 1),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_SV_CLOSE_AIRPORT_SEL),
+			NWidget(WWT_TEXTBTN, Colours::Grey, WID_SV_CLOSE_AIRPORT), SetMinimalSize(45, 12), SetResize(1, 0), SetFill(1, 1),
 					SetStringTip(STR_STATION_VIEW_CLOSE_AIRPORT, STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SV_CATCHMENT), SetMinimalSize(45, 12), SetResize(1, 0), SetFill(1, 1), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_TRAINS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_ROADVEHS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_SHIPS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SV_PLANES),  SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_PLANE, STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+		NWidget(WWT_TEXTBTN, Colours::Grey, WID_SV_CATCHMENT), SetMinimalSize(45, 12), SetResize(1, 0), SetFill(1, 1), SetStringTip(STR_BUTTON_CATCHMENT, STR_TOOLTIP_CATCHMENT),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SV_TRAINS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SV_ROADVEHS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SV_SHIPS), SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SV_PLANES),  SetAspect(WidgetDimensions::ASPECT_VEHICLE_ICON), SetFill(0, 1), SetStringTip(STR_PLANE, STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
 };
 
@@ -967,46 +990,55 @@ public:
 
 	/**
 	 * Get the station ID for this entry.
+	 * @return The station this cargo is at.
 	 */
 	StationID GetStation() const { return this->station; }
 
 	/**
 	 * Get the cargo type for this entry.
+	 * @return The type of cargo.
 	 */
 	CargoType GetCargo() const { return this->cargo; }
 
 	/**
 	 * Get the cargo count for this entry.
+	 * @return The amount of cargo.
 	 */
 	uint GetCount() const { return this->count; }
 
 	/**
 	 * Get the parent entry for this entry.
+	 * @return The parent entry, can be \c nullptr.
 	 */
 	CargoDataEntry *GetParent() const { return this->parent; }
 
 	/**
 	 * Get the number of children for this entry.
+	 * @return The number of children.
 	 */
 	uint GetNumChildren() const { return this->num_children; }
 
 	/**
 	 * Get an iterator pointing to the begin of the set of children.
+	 * @return Iterator at the begin of our children.
 	 */
 	CargoDataSet::iterator Begin() const { return this->children->begin(); }
 
 	/**
 	 * Get an iterator pointing to the end of the set of children.
+	 * @return Iterator at the end of our children.
 	 */
 	CargoDataSet::iterator End() const { return this->children->end(); }
 
 	/**
 	 * Has this entry transfers.
+	 * @return \c true iff the transfers state has been set.
 	 */
 	bool HasTransfers() const { return this->transfers; }
 
 	/**
 	 * Set the transfers state.
+	 * @param value The new transfers state.
 	 */
 	void SetTransfers(bool value) { this->transfers = value; }
 
@@ -1079,6 +1111,7 @@ CargoDataEntry::CargoDataEntry(CargoType cargo) :
 	children(nullptr)
 {}
 
+/** Remove ourselves from our parent. */
 CargoDataEntry::~CargoDataEntry()
 {
 	this->Clear();
@@ -1097,7 +1130,7 @@ void CargoDataEntry::Clear()
 
 /**
  * Remove a subentry from this one and delete it.
- * @param child the entry to be removed. This may also be a synthetic entry
+ * @param entry The entry to be removed. This may also be a synthetic entry
  * which only contains the ID of the entry to be removed. In this case child is
  * not deleted.
  */
@@ -1341,16 +1374,16 @@ struct StationViewWindow : public Window {
 	void OnInit() override
 	{
 		this->cargo_icon_size = GetLargestCargoIconSize();
-		this->line_height = std::max<int>(GetCharacterHeight(FS_NORMAL), this->cargo_icon_size.height);
-		this->expand_shrink_width = std::max(GetCharacterWidth(FS_NORMAL, '-'), GetCharacterWidth(FS_NORMAL, '+'));
+		this->line_height = std::max<int>(GetCharacterHeight(FontSize::Normal), this->cargo_icon_size.height);
+		this->expand_shrink_width = std::max(GetCharacterWidth(FontSize::Normal, '-'), GetCharacterWidth(FontSize::Normal, '+'));
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		CloseWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     this->owner, this->window_number).ToWindowNumber(), false);
-		CloseWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::TrainList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Train, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::RoadVehicleList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Road, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::ShipList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Ship, this->owner, this->window_number).ToWindowNumber(), false);
+		CloseWindowById(WindowClass::AircraftList, VehicleListIdentifier(VehicleListType::Station, VehicleType::Aircraft, this->owner, this->window_number).ToWindowNumber(), false);
 
 		SetViewportCatchmentStation(Station::Get(this->window_number), false);
 		this->Window::Close();
@@ -1369,7 +1402,7 @@ struct StationViewWindow : public Window {
 	void ShowCargo(CargoDataEntry *data, CargoType cargo, StationID source, StationID next, StationID dest, uint count)
 	{
 		if (count == 0) return;
-		bool auto_distributed = _settings_game.linkgraph.GetDistributionType(cargo) != DT_MANUAL;
+		bool auto_distributed = _settings_game.linkgraph.GetDistributionType(cargo) != DistributionType::Manual;
 		const CargoDataEntry *expand = &this->expanded_rows;
 		for (int i = 0; i < NUM_COLUMNS && expand != nullptr; ++i) {
 			switch (groupings[i]) {
@@ -1411,7 +1444,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case WID_SV_ACCEPT_RATING_LIST:
-				size.height = ((this->GetWidget<NWidgetCore>(WID_SV_ACCEPTS_RATINGS)->GetString() == STR_STATION_VIEW_RATINGS_BUTTON) ? this->accepts_lines : this->rating_lines) * GetCharacterHeight(FS_NORMAL) + padding.height;
+				size.height = ((this->GetWidget<NWidgetCore>(WID_SV_ACCEPTS_RATINGS)->GetString() == STR_STATION_VIEW_RATINGS_BUTTON) ? this->accepts_lines : this->rating_lines) * GetCharacterHeight(FontSize::Normal) + padding.height;
 				break;
 		}
 	}
@@ -1460,7 +1493,7 @@ struct StationViewWindow : public Window {
 			}
 
 			/* Draw arrow pointing up/down for ascending/descending sorting */
-			this->DrawSortButtonState(WID_SV_SORT_ORDER, sort_orders[1] == SO_ASCENDING ? SBS_UP : SBS_DOWN);
+			this->DrawSortButton(WID_SV_SORT_ORDER, sort_orders[1] != SO_ASCENDING);
 
 			int pos = this->vscroll->GetPosition();
 
@@ -1489,7 +1522,7 @@ struct StationViewWindow : public Window {
 	/**
 	 * Rebuild the cache for estimated destinations which is used to quickly show the "destination" entries
 	 * even if we actually don't know the destination of a certain packet from just looking at it.
-	 * @param i Cargo to recalculate the cache for.
+	 * @param cargo Cargo to recalculate the cache for.
 	 */
 	void RecalcDestinations(CargoType cargo)
 	{
@@ -1653,7 +1686,7 @@ struct StationViewWindow : public Window {
 	 */
 	void BuildCargoList(CargoDataEntry *entry, const Station *st)
 	{
-		for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+		for (CargoType cargo : EnumRange(NUM_CARGO)) {
 
 			if (this->cached_destinations.Retrieve(cargo) == nullptr) {
 				this->RecalcDestinations(cargo);
@@ -1807,13 +1840,13 @@ struct StationViewWindow : public Window {
 		} else {
 			entry.Resort(CargoSortType::Count, this->sort_orders[column]);
 		}
-		int text_y_offset = (this->line_height - GetCharacterHeight(FS_NORMAL)) / 2;
+		int text_y_offset = (this->line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 		for (CargoDataSet::iterator i = entry.Begin(); i != entry.End(); ++i) {
 			CargoDataEntry &cd = **i;
 
 			Grouping grouping = this->groupings[column];
 			if (grouping == GR_CARGO) cargo = cd.GetCargo();
-			bool auto_distributed = _settings_game.linkgraph.GetDistributionType(cargo) != DT_MANUAL;
+			bool auto_distributed = _settings_game.linkgraph.GetDistributionType(cargo) != DistributionType::Manual;
 
 			if (pos > -maxrows && pos <= 0) {
 				StringID str = STR_EMPTY;
@@ -1855,7 +1888,7 @@ struct StationViewWindow : public Window {
 							}
 						}
 					}
-					if (!sym.empty()) DrawString(shrink.left, shrink.right, y + text_y_offset, sym, TC_YELLOW);
+					if (!sym.empty()) DrawString(shrink.left, shrink.right, y + text_y_offset, sym, TextColour::Yellow);
 				}
 				this->SetDisplayedRow(cd);
 			}
@@ -1878,7 +1911,7 @@ struct StationViewWindow : public Window {
 		Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
 
 		int bottom = DrawStringMultiLine(tr.left, tr.right, tr.top, INT32_MAX, GetString(STR_STATION_VIEW_ACCEPTS_CARGO, GetAcceptanceMask(st)));
-		return CeilDiv(bottom - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_NORMAL));
+		return CeilDiv(bottom - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Normal));
 	}
 
 	/**
@@ -1898,7 +1931,7 @@ struct StationViewWindow : public Window {
 		}
 
 		DrawString(tr, TimerGameEconomy::UsingWallclockUnits() ? STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE : STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH);
-		tr.top += GetCharacterHeight(FS_NORMAL);
+		tr.top += GetCharacterHeight(FontSize::Normal);
 
 		for (const CargoSpec *cs : _sorted_standard_cargo_specs) {
 			const GoodsEntry *ge = &st->goods[cs->Index()];
@@ -1911,9 +1944,9 @@ struct StationViewWindow : public Window {
 					lg != nullptr ? lg->Monthly((*lg)[ge->node].supply) : 0,
 					STR_CARGO_RATING_APPALLING + (ge->rating >> 5),
 					ToPercent8(ge->rating)));
-			tr.top += GetCharacterHeight(FS_NORMAL);
+			tr.top += GetCharacterHeight(FontSize::Normal);
 		}
-		return CeilDiv(tr.top - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FS_NORMAL));
+		return CeilDiv(tr.top - r.top - WidgetDimensions::scaled.framerect.top, GetCharacterHeight(FontSize::Normal));
 	}
 
 	/**
@@ -1949,11 +1982,12 @@ struct StationViewWindow : public Window {
 			}
 		}
 		this->SetWidgetDirty(WID_SV_WAITING);
+		this->SetWidgetDirty(WID_SV_SCROLLBAR);
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		Window *w = FindWindowByClass(WC_QUERY_STRING);
+		Window *w = FindWindowByClass(WindowClass::QueryString);
 
 		switch (widget) {
 			case WID_SV_WAITING:
@@ -1964,8 +1998,8 @@ struct StationViewWindow : public Window {
 				SetViewportCatchmentStation(Station::Get(this->window_number), !this->IsWidgetLowered(WID_SV_CATCHMENT));
 
 				if (w != nullptr && this->IsWidgetLowered(WID_SV_CATCHMENT)) {
-					if (w->parent->window_class == WC_STATION_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);
-					if (w->parent->window_class == WC_WAYPOINT_VIEW && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportWaypointRect(Waypoint::Get(w->parent->window_number), true);
+					if (w->parent->window_class == WindowClass::StationView && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);
+					if (w->parent->window_class == WindowClass::WaypointView && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportWaypointRect(Waypoint::Get(w->parent->window_number), true);
 				}
 				break;
 
@@ -1988,7 +2022,7 @@ struct StationViewWindow : public Window {
 					nwi->SetStringTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP); // Switch to ratings view.
 					height_change = this->accepts_lines - this->rating_lines;
 				}
-				this->ReInit(0, height_change * GetCharacterHeight(FS_NORMAL));
+				this->ReInit(0, height_change * GetCharacterHeight(FontSize::Normal));
 				break;
 			}
 
@@ -1998,7 +2032,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case WID_SV_CLOSE_AIRPORT:
-				Command<CMD_OPEN_CLOSE_AIRPORT>::Post(this->window_number);
+				Command<Commands::OpenCloseAirport>::Post(this->window_number);
 				break;
 
 			case WID_SV_TRAINS:   // Show list of scheduled trains to this station
@@ -2135,7 +2169,7 @@ struct StationViewWindow : public Window {
 	{
 		if (!str.has_value()) return;
 
-		Command<CMD_RENAME_STATION>::Post(STR_ERROR_CAN_T_RENAME_STATION, this->window_number, *str);
+		Command<Commands::RenameStation>::Post(STR_ERROR_CAN_T_RENAME_STATION, this->window_number, *str);
 	}
 
 	void OnResize() override
@@ -2160,9 +2194,10 @@ struct StationViewWindow : public Window {
 	}
 };
 
+/** Window definition for the station view window. */
 static WindowDesc _station_view_desc(
-	WDP_AUTO, "view_station", 249, 117,
-	WC_STATION_VIEW, WC_NONE,
+	WindowPosition::Automatic, "view_station", 249, 117,
+	WindowClass::StationView, WindowClass::None,
 	{},
 	_nested_station_view_widgets
 );
@@ -2207,7 +2242,7 @@ static void AddNearbyStation(TileIndex tile, TileArea *ctx)
 	}
 
 	/* Check if own station and if we stay within station spread */
-	if (!IsTileType(tile, MP_STATION)) return;
+	if (!IsTileType(tile, TileType::Station)) return;
 
 	StationID sid = GetStationIndex(tile);
 
@@ -2267,22 +2302,22 @@ static void FindStationsNearby(TileArea ta, bool distant_join)
 	if (distant_join && std::min(ta.w, ta.h) >= _settings_game.station.station_spread) return;
 	uint max_dist = distant_join ? _settings_game.station.station_spread - std::min(ta.w, ta.h) : 1;
 
-	for (auto tile : SpiralTileSequence(TileAddByDir(ctx.tile, DIR_N), max_dist, ta.w, ta.h)) {
+	for (auto tile : SpiralTileSequence(TileAddByDir(ctx.tile, Direction::N), max_dist, ta.w, ta.h)) {
 		AddNearbyStation<T>(tile, &ctx);
 	}
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_select_station_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_JS_CAPTION), SetStringTip(STR_JOIN_STATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
+		NWidget(WWT_CAPTION, Colours::DarkGreen, WID_JS_CAPTION), SetStringTip(STR_JOIN_STATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DEFSIZEBOX, Colours::DarkGreen),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, WID_JS_PANEL), SetResize(1, 0), SetScrollbar(WID_JS_SCROLLBAR), EndContainer(),
+		NWidget(WWT_PANEL, Colours::DarkGreen, WID_JS_PANEL), SetResize(1, 0), SetScrollbar(WID_JS_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_JS_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
+			NWidget(NWID_VSCROLLBAR, Colours::DarkGreen, WID_JS_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::DarkGreen),
 		EndContainer(),
 	EndContainer(),
 };
@@ -2370,7 +2405,7 @@ struct SelectStationWindow : Window {
 		this->select_station_proc(false, *it);
 
 		/* Close Window; this might cause double frees! */
-		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WindowClass::JoinStation, 0);
 	}
 
 	void OnRealtimeTick([[maybe_unused]] uint delta_ms) override
@@ -2413,9 +2448,10 @@ struct SelectStationWindow : Window {
 	}
 };
 
+/** Window definition for the station selection window for (distant) joining. */
 static WindowDesc _select_station_desc(
-	WDP_AUTO, "build_station_join", 200, 180,
-	WC_SELECT_STATION, WC_NONE,
+	WindowPosition::Automatic, "build_station_join", 200, 180,
+	WindowClass::JoinStation, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_select_station_widgets
 );
@@ -2423,12 +2459,9 @@ static WindowDesc _select_station_desc(
 
 /**
  * Check whether we need to show the station selection window.
- * @param cmd Command to build the station.
- * @param ta Tile area of the to-be-built station
- * @tparam T the station filter type
+ * @param proc Callback to check whether we can build.
  * @return whether we need to show the station selection window.
  */
-template <class T>
 static bool StationJoinerNeeded(const StationPickerCmdProc &proc)
 {
 	/* Only show selection if distant join is enabled in the settings */
@@ -2436,7 +2469,7 @@ static bool StationJoinerNeeded(const StationPickerCmdProc &proc)
 
 	/* If a window is already opened and we didn't ctrl-click,
 	 * return true (i.e. just flash the old window) */
-	Window *selection_window = FindWindowById(WC_SELECT_STATION, 0);
+	Window *selection_window = FindWindowById(WindowClass::JoinStation, 0);
 	if (selection_window != nullptr) {
 		/* Abort current distant-join and start new one */
 		selection_window->Close();
@@ -2452,14 +2485,14 @@ static bool StationJoinerNeeded(const StationPickerCmdProc &proc)
 
 /**
  * Show the station selection window when needed. If not, build the station.
- * @param cmd Command to build the station.
  * @param ta Area to build the station in
- * @tparam the class to find stations for
+ * @param proc Callback to check whether we can build.
+ * @tparam T the class to find stations for
  */
 template <class T>
 void ShowSelectBaseStationIfNeeded(TileArea ta, StationPickerCmdProc&& proc)
 {
-	if (StationJoinerNeeded<T>(proc)) {
+	if (StationJoinerNeeded(proc)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 		FindStationsNearby<T>(ta, false);
 		new SelectStationWindow<T>(_select_station_desc, ta, std::move(proc));

@@ -99,7 +99,7 @@ public:
 	 * @pre IsValidStation(via_station_id) || via_station_id == STATION_INVALID.
 	 * @pre IsValidCargo(cargo_type).
 	 * @return The amount of units waiting at the station with via_station_id as next hop.
-	 * @note if ScriptCargo.GetCargoDistributionType(cargo_type) == ScriptCargo.DT_MANUAL, then all waiting cargo will have STATION_INVALID as next hop.
+	 * @note if ScriptCargo.GetCargoDistributionType(cargo_type) == ScriptCargo.DistributionType::Manual, then all waiting cargo will have STATION_INVALID as next hop.
 	 */
 	static SQInteger GetCargoWaitingVia(StationID station_id, StationID via_station_id, CargoType cargo_type);
 
@@ -114,7 +114,7 @@ public:
 	 * @pre IsValidStation(via_station_id) || via_station_id == STATION_INVALID.
 	 * @pre IsValidCargo(cargo_type).
 	 * @return The amount of units waiting at the station with from_station_id as source and via_station_id as next hop.
-	 * @note if ScriptCargo.GetCargoDistributionType(cargo_type) == ScriptCargo.DT_MANUAL, then all waiting cargo will have STATION_INVALID as next hop.
+	 * @note if ScriptCargo.GetCargoDistributionType(cargo_type) == ScriptCargo.DistributionType::Manual, then all waiting cargo will have STATION_INVALID as next hop.
 	 */
 	static SQInteger GetCargoWaitingFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type);
 

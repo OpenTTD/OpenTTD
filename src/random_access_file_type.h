@@ -40,6 +40,7 @@ public:
 	RandomAccessFile(const RandomAccessFile&) = delete;
 	void operator=(const RandomAccessFile&) = delete;
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~RandomAccessFile() = default;
 
 	const std::string &GetFilename() const;

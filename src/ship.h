@@ -18,7 +18,7 @@ WaterClass GetEffectiveWaterClass(TileIndex tile);
 
 /** Element of the ShipPathCache. */
 struct ShipPathElement {
-	Trackdir trackdir = INVALID_TRACKDIR; ///< Trackdir for this element.
+	Trackdir trackdir = Trackdir::Invalid; ///< Trackdir for this element.
 
 	constexpr ShipPathElement() {}
 	constexpr ShipPathElement(Trackdir trackdir) : trackdir(trackdir) {}
@@ -29,10 +29,10 @@ using ShipPathCache = std::vector<ShipPathElement>;
 /**
  * All ships have this type.
  */
-struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
+struct Ship final : public SpecializedVehicle<Ship, VehicleType::Ship> {
 	ShipPathCache path{}; ///< Cached path.
 	TrackBits state{}; ///< The "track" the ship is following.
-	Direction rotation = INVALID_DIR; ///< Visible direction.
+	Direction rotation = Direction::Invalid; ///< Visible direction.
 	int16_t rotation_x_pos = 0; ///< NOSAVE: X Position before rotation.
 	int16_t rotation_y_pos = 0; ///< NOSAVE: Y Position before rotation.
 
@@ -42,7 +42,7 @@ struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_SHIP_REVENUE : EXPENSES_SHIP_RUN; }
+	ExpensesType GetExpenseType(bool income) const override { return income ? ExpensesType::ShipRevenue : ExpensesType::ShipRun; }
 	void PlayLeaveStationSound(bool force = false) const override;
 	bool IsPrimaryVehicle() const override { return true; }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
@@ -50,7 +50,7 @@ struct Ship final : public SpecializedVehicle<Ship, VEH_SHIP> {
 	int GetDisplayMaxSpeed() const override { return this->vcache.cached_max_speed / 2; }
 	int GetCurrentMaxSpeed() const override { return std::min<int>(this->vcache.cached_max_speed, this->current_order.GetMaxSpeed() * 2); }
 	Money GetRunningCost() const override;
-	bool IsInDepot() const override { return this->state == TRACK_BIT_DEPOT; }
+	bool IsInDepot() const override { return this->state == Track::Depot; }
 	bool Tick() override;
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;

@@ -13,10 +13,10 @@
 #include "fileio_type.h"
 
 /** Types of groups */
-enum IniGroupType : uint8_t {
-	IGT_VARIABLES = 0, ///< Values of the form "landscape = hilly".
-	IGT_LIST      = 1, ///< A list of values, separated by \n and terminated by the next group block.
-	IGT_SEQUENCE  = 2, ///< A list of uninterpreted lines, terminated by the next group block.
+enum class IniGroupType : uint8_t {
+	Variables, ///< Values of the form "landscape = hilly".
+	List, ///< A list of values, separated by \n and terminated by the next group block.
+	Sequence, ///< A list of uninterpreted lines, terminated by the next group block.
 };
 
 /** A single "line" in an ini file. */
@@ -56,6 +56,7 @@ struct IniLoadFile {
 	const IniGroupNameList seq_group_names;  ///< list of group names that are sequences.
 
 	IniLoadFile(const IniGroupNameList &list_group_names = {}, const IniGroupNameList &seq_group_names = {});
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~IniLoadFile() = default;
 
 	const IniGroup *GetGroup(std::string_view name) const;

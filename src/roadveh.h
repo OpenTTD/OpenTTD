@@ -47,9 +47,9 @@ enum RoadVehicleStates : uint8_t {
 
 	/* Bit sets of the above specified bits */
 	RVSB_IN_ROAD_STOP            = 1 << RVS_IN_ROAD_STOP,     ///< The vehicle is in a road stop
-	RVSB_IN_ROAD_STOP_END        = RVSB_IN_ROAD_STOP + TRACKDIR_END,
+	RVSB_IN_ROAD_STOP_END        = RVSB_IN_ROAD_STOP + to_underlying(Trackdir::End),
 	RVSB_IN_DT_ROAD_STOP         = 1 << RVS_IN_DT_ROAD_STOP,  ///< The vehicle is in a drive-through road stop
-	RVSB_IN_DT_ROAD_STOP_END     = RVSB_IN_DT_ROAD_STOP + TRACKDIR_END,
+	RVSB_IN_DT_ROAD_STOP_END     = RVSB_IN_DT_ROAD_STOP + to_underlying(Trackdir::End),
 
 	RVSB_DRIVE_SIDE              = 1 << RVS_DRIVE_SIDE,       ///< The vehicle is at the opposite side of the road
 
@@ -57,21 +57,28 @@ enum RoadVehicleStates : uint8_t {
 	RVSB_ROAD_STOP_TRACKDIR_MASK = 0x09,                      ///< Only bits 0 and 3 are used to encode the trackdir for road stops
 };
 
-/** State information about the Road Vehicle controller */
+/** @name State information about the Road Vehicle controller.
+ * @{ */
 static const uint RDE_NEXT_TILE = 0x80; ///< We should enter the next tile
 static const uint RDE_TURNED    = 0x40; ///< We just finished turning
+/** @} */
 
-/* Start frames for when a vehicle enters a tile/changes its state.
+/**
+ * @name Start frames for when a vehicle enters a tile/changes its state.
  * The start frame is different for vehicles that turned around or
  * are leaving the depot as the do not start at the edge of the tile.
  * For trams there are a few different start frames as there are two
- * places where trams can turn. */
+ * places where trams can turn.
+ * @{
+ */
 static const uint RVC_DEFAULT_START_FRAME                =  0;
 static const uint RVC_TURN_AROUND_START_FRAME            =  1;
 static const uint RVC_DEPOT_START_FRAME                  =  6;
 static const uint RVC_START_FRAME_AFTER_LONG_TRAM        = 21;
 static const uint RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16;
-/* Stop frame for a vehicle in a drive-through stop */
+/** @} */
+
+/** Stop frame for a vehicle in a drive-through stop. */
 static const uint RVC_DRIVE_THROUGH_STOP_FRAME           = 11;
 static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 
@@ -83,7 +90,7 @@ void GetRoadVehSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs
 
 /** Element of the RoadVehPathCache. */
 struct RoadVehPathElement {
-	Trackdir trackdir = INVALID_TRACKDIR; ///< Trackdir for this element.
+	Trackdir trackdir = Trackdir::Invalid; ///< Trackdir for this element.
 	TileIndex tile = INVALID_TILE; ///< Tile for this element.
 
 	constexpr RoadVehPathElement() {}
@@ -95,7 +102,7 @@ using RoadVehPathCache = std::vector<RoadVehPathElement>;
 /**
  * Buses, trucks and trams belong to this class.
  */
-struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
+struct RoadVehicle final : public GroundVehicle<RoadVehicle, VehicleType::Road> {
 	RoadVehPathCache path{};  ///< Cached path.
 	uint8_t state = 0; ///< @see RoadVehicleStates
 	uint8_t frame = 0;
@@ -113,11 +120,11 @@ struct RoadVehicle final : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	/** We want to 'destruct' the right class. */
 	~RoadVehicle() override { this->PreDestructor(); }
 
-	friend struct GroundVehicle<RoadVehicle, VEH_ROAD>; // GroundVehicle needs to use the acceleration functions defined at RoadVehicle.
+	friend struct GroundVehicle<RoadVehicle, VehicleType::Road>; // GroundVehicle needs to use the acceleration functions defined at RoadVehicle.
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_ROADVEH_REVENUE : EXPENSES_ROADVEH_RUN; }
+	ExpensesType GetExpenseType(bool income) const override { return income ? ExpensesType::RoadVehRevenue : ExpensesType::RoadVehRun; }
 	bool IsPrimaryVehicle() const override { return this->IsFrontEngine(); }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
 	int GetDisplaySpeed() const override { return this->gcache.last_speed / 2; }
@@ -159,7 +166,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Zero, because road vehicles don't have powered parts.
 	 */
-	inline uint16_t GetPoweredPartPower(const RoadVehicle *) const
+	inline uint16_t GetPoweredPartPower() const
 	{
 		return 0;
 	}
@@ -280,10 +287,10 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	inline bool TileMayHaveSlopedTrack() const
 	{
-		TrackStatus ts = GetTileTrackStatus(this->tile, TRANSPORT_ROAD, GetRoadTramType(this->roadtype));
-		TrackBits trackbits = TrackStatusToTrackBits(ts);
+		TrackStatus ts = GetTileTrackStatus(this->tile, TransportType::Road, GetRoadTramType(this->roadtype));
+		TrackBits trackbits = TrackdirBitsToTrackBits(ts.trackdirs);
 
-		return trackbits == TRACK_BIT_X || trackbits == TRACK_BIT_Y;
+		return trackbits == Track::X || trackbits == Track::Y;
 	}
 
 	/**
@@ -298,9 +305,9 @@ protected: // These functions should not be called outside acceleration code.
 		const RoadVehicle *rv = this->First();
 
 		/* Check if this vehicle is in the same direction as the road under.
-		 * We already know it has either GVF_GOINGUP_BIT or GVF_GOINGDOWN_BIT set. */
+		 * We already know it has either GroundVehicleFlag::GoingUp or GroundVehicleFlag::GoingDown set. */
 
-		if (rv->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)rv->state)) {
+		if (rv->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir(static_cast<Trackdir>(rv->state))) {
 			/* If the first vehicle is reversing, this vehicle may be reversing too
 			 * (especially if this is the first, and maybe the only, vehicle).*/
 			return true;

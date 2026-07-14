@@ -31,13 +31,16 @@
 
 #include "../safeguards.h"
 
-static FVideoDriver_SDL_Default iFVideoDriver_SDL_Default;
+static FVideoDriver_SDL_Default iFVideoDriver_SDL_Default; ///< The default, non-GL, SDL video driver.
 
-static SDL_Surface *_sdl_surface;
-static SDL_Surface *_sdl_rgb_surface;
-static SDL_Surface *_sdl_real_surface;
-static SDL_Palette *_sdl_palette;
+static SDL_Surface *_sdl_surface; ///< The surface to draw on/to.
+static SDL_Surface *_sdl_rgb_surface; ///< Optional surface to use for blitting all changes at once.
+static SDL_Surface *_sdl_real_surface; ///< The actual surface of the screen.
+static SDL_Palette *_sdl_palette; ///< The palette mapping.
 
+/**
+ * Update the dirty palette colours.
+ */
 void VideoDriver_SDL_Default::UpdatePalette()
 {
 	SDL_Color pal[256];
@@ -53,6 +56,9 @@ void VideoDriver_SDL_Default::UpdatePalette()
 	SDL_SetSurfacePalette(_sdl_surface, _sdl_palette);
 }
 
+/**
+ * Allocate and configure the palette.
+ */
 void VideoDriver_SDL_Default::MakePalette()
 {
 	if (_sdl_palette == nullptr) {
@@ -90,7 +96,7 @@ void VideoDriver_SDL_Default::MakePalette()
 
 void VideoDriver_SDL_Default::Paint()
 {
-	PerformanceMeasurer framerate(PFE_VIDEO);
+	PerformanceMeasurer framerate(PerformanceElement::Video);
 
 	if (IsEmptyRect(this->dirty_rect) && this->local_palette.count_dirty == 0) return;
 

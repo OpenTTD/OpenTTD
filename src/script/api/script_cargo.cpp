@@ -25,14 +25,15 @@
 
 /* static */ bool ScriptCargo::IsValidTownEffect(TownEffect towneffect_type)
 {
-	return (towneffect_type >= (TownEffect)TAE_BEGIN && towneffect_type < (TownEffect)TAE_END);
+	return (towneffect_type >= (TownEffect)TownAcceptanceEffect::Begin && towneffect_type < (TownEffect)TownAcceptanceEffect::End);
 }
 
 /* static */ std::optional<std::string> ScriptCargo::GetName(CargoType cargo_type)
 {
 	if (!IsValidCargo(cargo_type)) return std::nullopt;
 
-	return ::StrMakeValid(::GetString(STR_JUST_CARGO_LIST, 1ULL << cargo_type), {});
+	CargoTypes cargotypes{cargo_type};
+	return ::StrMakeValid(::GetString(STR_JUST_CARGO_LIST, cargotypes), {});
 }
 
 /* static */ std::optional<std::string> ScriptCargo::GetCargoLabel(CargoType cargo_type)

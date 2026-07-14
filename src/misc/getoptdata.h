@@ -37,7 +37,7 @@ struct GetOptData {
 
 	/**
 	 * Constructor of the data store.
-	 * @param argument The command line arguments, excluding the program name.
+	 * @param arguments The command line arguments, excluding the program name.
 	 * @param options Command line option descriptions.
 	 */
 	GetOptData(ArgumentSpan arguments, OptionSpan options) : arguments(arguments), options(options) {}

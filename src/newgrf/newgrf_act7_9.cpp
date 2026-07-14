@@ -24,6 +24,21 @@
 /** 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static std::array<uint32_t, 8> _ttdpatch_flags;
 
+/**
+ * Checks whether the train signals are on the same side as the road vehicles are driving.
+ * This is a flag that can be checked by NewGRFs (TTDPatchFlags bit 0x3B).
+ * @return \c true iff the road vehicles drive on the same side as signals are drawn.
+ */
+static bool IsSignalSideOnTrafficSide()
+{
+	switch (_settings_game.construction.train_signal_side) {
+		case TrainSignalSide::RoadVehicleDrivingSide: return true;
+		case TrainSignalSide::Left: return _settings_game.vehicle.road_side == RoadVehicleDrivingSide::Left;
+		case TrainSignalSide::Right: return _settings_game.vehicle.road_side == RoadVehicleDrivingSide::Right;
+		default: NOT_REACHED();
+	}
+}
+
 /** Initialize the TTDPatch flags */
 void InitializePatchFlags()
 {
@@ -52,7 +67,7 @@ void InitializePatchFlags()
 	                   |                                                       (1U << 0x18)  // newrvs
 	                   |                                                       (1U << 0x19)  // newships
 	                   |                                                       (1U << 0x1A)  // newplanes
-	                   | ((_settings_game.construction.train_signal_side == 1 ? 1U : 0U) << 0x1B)  // signalsontrafficside
+	                   |                  ((IsSignalSideOnTrafficSide() ? 1U : 0U) << 0x1B)  // signalsontrafficside
 	                   |       ((_settings_game.vehicle.disable_elrails ? 0U : 1U) << 0x1C); // electrifiedrailway
 
 	_ttdpatch_flags[2] =                                                       (1U << 0x01)  // loadallgraphics - obsolete
@@ -125,9 +140,9 @@ uint32_t GetParamVal(uint8_t param, uint32_t *cond_val)
 		case 0x84: { // GRF loading stage
 			uint32_t res = 0;
 
-			if (_cur_gps.stage > GLS_INIT) SetBit(res, 0);
-			if (_cur_gps.stage == GLS_RESERVE) SetBit(res, 8);
-			if (_cur_gps.stage == GLS_ACTIVATION) SetBit(res, 9);
+			if (_cur_gps.stage > GrfLoadingStage::Init) SetBit(res, 0);
+			if (_cur_gps.stage == GrfLoadingStage::Reserve) SetBit(res, 8);
+			if (_cur_gps.stage == GrfLoadingStage::Activation) SetBit(res, 9);
 			return res;
 		}
 
@@ -250,24 +265,24 @@ static void SkipIf(ByteReader &buf)
 		switch (condtype) {
 			/* Tests 0x06 to 0x0A are only for param 0x88, GRFID checks */
 			case 0x06: // Is GRFID active?
-				result = c->status == GCS_ACTIVATED;
+				result = c->status == GRFStatus::Activated;
 				break;
 
 			case 0x07: // Is GRFID non-active?
-				result = c->status != GCS_ACTIVATED;
+				result = c->status != GRFStatus::Activated;
 				break;
 
 			case 0x08: // GRFID is not but will be active?
-				result = c->status == GCS_INITIALISED;
+				result = c->status == GRFStatus::Initialised;
 				break;
 
 			case 0x09: // GRFID is or will be active?
-				result = c->status == GCS_ACTIVATED || c->status == GCS_INITIALISED;
+				result = c->status == GRFStatus::Activated || c->status == GRFStatus::Initialised;
 				break;
 
 			case 0x0A: // GRFID is not nor will be active
 				/* This is the only condtype that doesn't get ignored if the GRFID is not found */
-				result = c == nullptr || c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND;
+				result = c == nullptr || c->status == GRFStatus::Disabled || c->status == GRFStatus::NotFound;
 				break;
 
 			default: GrfMsg(1, "SkipIf: Unsupported GRF condition type {:02X}. Ignoring", condtype); return;
@@ -332,22 +347,34 @@ static void SkipIf(ByteReader &buf)
 		_cur_gps.skip_sprites = -1;
 
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
-		if (_cur_gps.grfconfig->status != (_cur_gps.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED)) {
+		if (_cur_gps.grfconfig->status != (_cur_gps.stage < GrfLoadingStage::Reserve ? GRFStatus::Initialised : GRFStatus::Activated)) {
 			DisableGrf();
 		}
 	}
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x07>::FileScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x07>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x07>::LabelScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::Init */
 template <> void GrfActionHandler<0x07>::Init(ByteReader &) { }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x07>::Reserve(ByteReader &buf) { SkipIf(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x07>::Activation(ByteReader &buf) { SkipIf(buf); }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x09>::FileScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x09>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x09>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x09>::Init(ByteReader &buf) { SkipIf(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x09>::Reserve(ByteReader &buf) { SkipIf(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x09>::Activation(ByteReader &buf) { SkipIf(buf); }

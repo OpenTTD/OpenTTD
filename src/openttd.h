@@ -15,42 +15,45 @@
 #include "core/enum_type.hpp"
 
 /** Mode which defines the state of the game. */
-enum GameMode : uint8_t {
-	GM_MENU,
-	GM_NORMAL,
-	GM_EDITOR,
-	GM_BOOTSTRAP
+enum class GameMode : uint8_t {
+	Menu, ///< In the main menu.
+	Normal, ///< Playing a game.
+	Editor, ///< In the scenario editor.
+	Bootstrap, ///< In the content bootstrap process.
 };
 
 /** Mode which defines what mode we're switching to. */
-enum SwitchMode : uint8_t {
-	SM_NONE,
-	SM_NEWGAME,           ///< New Game --> 'Random game'.
-	SM_RESTARTGAME,       ///< Restart --> 'Random game' with current settings.
-	SM_RELOADGAME,        ///< Reload the savegame / scenario / heightmap you started the game with.
-	SM_EDITOR,            ///< Switch to scenario editor.
-	SM_LOAD_GAME,         ///< Load game, Play Scenario.
-	SM_MENU,              ///< Switch to game intro menu.
-	SM_SAVE_GAME,         ///< Save game.
-	SM_SAVE_HEIGHTMAP,    ///< Save heightmap.
-	SM_GENRANDLAND,       ///< Generate random land within scenario editor.
-	SM_LOAD_SCENARIO,     ///< Load scenario from scenario editor.
-	SM_START_HEIGHTMAP,   ///< Load a heightmap and start a new game from it.
-	SM_LOAD_HEIGHTMAP,    ///< Load heightmap from scenario editor.
-	SM_RESTART_HEIGHTMAP, ///< Load a heightmap and start a new game from it with current settings.
-	SM_JOIN_GAME,         ///< Join a network game.
+enum class SwitchMode : uint8_t {
+	None, ///< Not switching game mode.
+	NewGame, ///< New Game --> 'Random game'.
+	RestartGame, ///< Restart --> 'Random game' with current settings.
+	ReloadGame, ///< Reload the savegame / scenario / heightmap you started the game with.
+	Editor, ///< Switch to scenario editor.
+	LoadGame, ///< Load game, Play Scenario.
+	Menu, ///< Switch to game intro menu.
+	SaveGame, ///< Save game.
+	SaveHeightmap, ///< Save heightmap.
+	GenerateRandomLand, ///< Generate random land within scenario editor.
+	LoadScenario, ///< Load scenario from scenario editor.
+	StartHeightmap, ///< Load a heightmap and start a new game from it.
+	LoadHeightmap, ///< Load heightmap from scenario editor.
+	RestartHeightmap, ///< Load a heightmap and start a new game from it with current settings.
+	JoinGame, ///< Join a network game.
 };
 
 /** Display Options */
-enum DisplayOptions : uint8_t {
-	DO_SHOW_TOWN_NAMES     = 0, ///< Display town names.
-	DO_SHOW_STATION_NAMES  = 1, ///< Display station names.
-	DO_SHOW_SIGNS          = 2, ///< Display signs.
-	DO_FULL_ANIMATION      = 3, ///< Perform palette animation.
-	DO_FULL_DETAIL         = 5, ///< Also draw details of track and roads.
-	DO_SHOW_WAYPOINT_NAMES = 6, ///< Display waypoint names.
-	DO_SHOW_COMPETITOR_SIGNS = 7, ///< Display signs, station names and waypoint names of opponent companies. Buoys and oilrig-stations are always shown, even if this option is turned off.
+enum class DisplayOption : uint8_t {
+	ShowTownNames = 0, ///< Display town names.
+	ShowStationNames = 1, ///< Display station names.
+	ShowSigns = 2, ///< Display signs.
+	FullAnimation = 3, ///< Perform palette animation.
+	FullDetail = 5, ///< Also draw details of track and roads.
+	ShowWaypointNames = 6, ///< Display waypoint names.
+	ShowCompetitorSigns = 7, ///< Display signs, station names and waypoint names of opponent companies. Buoys and oilrig-stations are always shown, even if this option is turned off.
 };
+
+/** Bitset of \c DisplayOption elements. */
+using DisplayOptions = EnumBitSet<DisplayOption, uint8_t>;
 
 struct GameSessionStats {
 	std::chrono::steady_clock::time_point start_time; ///< Time when the current game was started.
@@ -75,6 +78,8 @@ enum class PauseMode : uint8_t {
 	LinkGraph          = 6, ///< A game paused due to the link graph schedule lagging
 	CommandDuringPause = 7, ///< A game paused, and a command executed during the pause; resets on autosave
 };
+
+/** Bitset of \c PauseMode elements. */
 using PauseModes = EnumBitSet<PauseMode, uint8_t>;
 
 /** The current pause mode */

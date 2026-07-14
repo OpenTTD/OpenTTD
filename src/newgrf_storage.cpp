@@ -24,9 +24,7 @@ bool BasePersistentStorageArray::gameloop;
 bool BasePersistentStorageArray::command;
 bool BasePersistentStorageArray::testmode;
 
-/**
- * Remove references to use.
- */
+/** Remove references to us. */
 BasePersistentStorageArray::~BasePersistentStorageArray()
 {
 	_changed_storage_arrays->erase(this);

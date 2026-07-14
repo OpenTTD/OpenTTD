@@ -15,28 +15,34 @@
 /** All static information from an Game like name, version, etc. */
 class GameInfo : public ScriptInfo {
 public:
-	/* All valid GameScript API versions, in order. */
+	/** All valid GameScript API versions, in order. */
 	static constexpr std::string_view ApiVersions[]{ "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "12", "13", "14", "15", "16" };
 
 	GameInfo();
 
 	/**
 	 * Register the functions of this class.
+	 * @param engine The engine to register to.
 	 */
 	static void RegisterAPI(Squirrel &engine);
 
 	/**
 	 * Create an Game, using this GameInfo as start-template.
+	 * @param vm The virtual machine to push the instance to.
+	 * @return The number of stack places occupied.
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm);
 
 	/**
 	 * Check if we can start this Game.
+	 * @param version The version to check.
+	 * @return \c true if this script can load the data from that version.
 	 */
 	bool CanLoadFromVersion(int version) const;
 
 	/**
 	 * Get the API version this Game is written for.
+	 * @return The API version.
 	 */
 	const std::string &GetAPIVersion() const { return this->api_version; }
 
@@ -55,16 +61,20 @@ public:
 
 	/**
 	 * Register the functions of this class.
+	 * @param engine The engine to register to.
 	 */
 	static void RegisterAPI(Squirrel &engine);
 
 	/**
 	 * Create an GSLibrary, using this GSInfo as start-template.
+	 * @param vm The virtual machine to push the instance to.
+	 * @return The number of stack places occupied.
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm);
 
 	/**
 	 * Get the category this library is in.
+	 * @return The category.
 	 */
 	const std::string &GetCategory() const { return this->category; }
 

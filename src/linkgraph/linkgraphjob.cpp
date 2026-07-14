@@ -152,7 +152,7 @@ LinkGraphJob::~LinkGraphJob()
 		for (FlowStatMap::iterator it(geflows.begin()); it != geflows.end();) {
 			FlowStatMap::iterator new_it = flows.find(it->first);
 			if (new_it == flows.end()) {
-				if (_settings_game.linkgraph.GetDistributionType(this->Cargo()) != DT_MANUAL) {
+				if (_settings_game.linkgraph.GetDistributionType(this->Cargo()) != DistributionType::Manual) {
 					it->second.Invalidate();
 					++it;
 				} else {
@@ -172,7 +172,7 @@ LinkGraphJob::~LinkGraphJob()
 		}
 		geflows.insert(flows.begin(), flows.end());
 		if (ge.GetData().IsEmpty()) ge.ClearData();
-		InvalidateWindowData(WC_STATION_VIEW, st->index, this->Cargo());
+		InvalidateWindowData(WindowClass::StationView, st->index, this->Cargo());
 	}
 }
 

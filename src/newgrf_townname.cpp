@@ -24,14 +24,24 @@
 static std::vector<GRFTownName> _grf_townnames;
 static std::vector<StringID> _grf_townname_names;
 
-GRFTownName *GetGRFTownName(uint32_t grfid)
+/**
+ * Get the \c GRFTownName for the given GRFID.
+ * @param grfid The GRFID of the town name.
+ * @return The \c GRFTownName or \c nullptr if it does not exist.
+ */
+GRFTownName *GetGRFTownName(GrfID grfid)
 {
 	auto found = std::ranges::find(_grf_townnames, grfid, &GRFTownName::grfid);
 	if (found != std::end(_grf_townnames)) return &*found;
 	return nullptr;
 }
 
-GRFTownName *AddGRFTownName(uint32_t grfid)
+/**
+ * Get the \c GRFTownName for the given GRFID or allocate one if it does not exist.
+ * @param grfid The GRFID of the town name.
+ * @return The \c GRFTownName.
+ */
+GRFTownName *AddGRFTownName(GrfID grfid)
 {
 	GRFTownName *t = GetGRFTownName(grfid);
 	if (t == nullptr) {
@@ -41,7 +51,11 @@ GRFTownName *AddGRFTownName(uint32_t grfid)
 	return t;
 }
 
-void DelGRFTownName(uint32_t grfid)
+/**
+ * Remove the \c GRFTownName mapping for the given GRFID.
+ * @param grfid The NewGRF to remove for.
+ */
+void DelGRFTownName(GrfID grfid)
 {
 	_grf_townnames.erase(std::ranges::find(_grf_townnames, grfid, &GRFTownName::grfid));
 }
@@ -66,7 +80,14 @@ static void RandomPart(StringBuilder &builder, const GRFTownName *t, uint32_t se
 	}
 }
 
-void GRFTownNameGenerate(StringBuilder &builder, uint32_t grfid, uint16_t gen, uint32_t seed)
+/**
+ * Construct a NewGRF town name into the builder.
+ * @param builder The string builder to write to.
+ * @param grfid The NewGRF providing the information/logic.
+ * @param gen The town name style to get from the NewGRF.
+ * @param seed The random 32 bit number to generate the town name for.
+ */
+void GRFTownNameGenerate(StringBuilder &builder, GrfID grfid, uint16_t gen, uint32_t seed)
 {
 	const GRFTownName *t = GetGRFTownName(grfid);
 	if (t != nullptr) {
@@ -102,14 +123,14 @@ void CleanUpGRFTownNames()
 	_grf_townnames.clear();
 }
 
-uint32_t GetGRFTownNameId(uint16_t gen)
+GrfID GetGRFTownNameId(uint16_t gen)
 {
 	for (const auto &t : _grf_townnames) {
 		if (gen < t.styles.size()) return t.grfid;
 		gen -= static_cast<uint16_t>(t.styles.size());
 	}
 	/* Fallback to no NewGRF */
-	return 0;
+	return {};
 }
 
 uint16_t GetGRFTownNameType(uint16_t gen)

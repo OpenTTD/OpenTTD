@@ -62,6 +62,8 @@ void InitializeOldNames();
  * It isn't as much of an unique ID but more a hashed digest of a random
  * string and a time. It is very likely to be unique, but it does not follow
  * any UUID standard.
+ * @param subject What to create the ID for.
+ * @return The generated ID.
  */
 std::string GenerateUid(std::string_view subject)
 {
@@ -163,7 +165,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	ResetObjectToPlace();
 
 	_gamelog.Reset();
-	_gamelog.StartAction(GLAT_START);
+	_gamelog.StartAction(GamelogActionType::Start);
 	_gamelog.Revision();
 	_gamelog.Mode();
 	_gamelog.GRFAddList(_grfconfig);

@@ -85,10 +85,11 @@ enum class OrderLoadType : uint8_t {
  * Non-stop order flags.
  */
 enum class OrderNonStopFlag : uint8_t {
-	NoIntermediate = 0, ///< The vehicle will not stop at any stations it passes except the destination, aka non-stop.
-	NoDestination = 1, ///< The vehicle will stop at any station it passes except the destination, aka via.
+	NonStop = 0, ///< The vehicle will not stop at any stations it passes except the destination, aka non-stop.
+	GoVia = 1, ///< The vehicle will stop at any station it passes except the destination, aka via.
 };
 
+/** Bitset of \c OrderNonStopFlag elements. */
 using OrderNonStopFlags = EnumBitSet<OrderNonStopFlag, uint8_t>;
 
 /**
@@ -109,6 +110,7 @@ enum class OrderDepotTypeFlag : uint8_t {
 	PartOfOrders = 1, ///< This depot order is because of a regular order.
 };
 
+/** Bitset of \c OrderDepotTypeFlag elements. */
 using OrderDepotTypeFlags = EnumBitSet<OrderDepotTypeFlag, uint8_t>;
 
 /**
@@ -120,6 +122,7 @@ enum class OrderDepotActionFlag : uint8_t {
 	Unbunch = 2, ///< Service the vehicle and then unbunch it.
 };
 
+/** Bitset of \c OrderDepotActionFlag elements. */
 using OrderDepotActionFlags = EnumBitSet<OrderDepotActionFlag, uint8_t>;
 
 /**
@@ -134,6 +137,7 @@ enum class OrderConditionVariable : uint8_t {
 	Unconditionally = 5, ///< Always skip
 	RemainingLifetime = 6, ///< Skip based on the remaining lifetime
 	MaxReliability = 7, ///< Skip based on the maximum reliability
+	DrivingBackwards = 8, ///< Skip when the train is driving backwards
 	End, ///< End marker.
 };
 

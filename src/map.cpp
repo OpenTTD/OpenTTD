@@ -74,6 +74,17 @@
 	Map::initial_land_count = std::min(Map::initial_land_count, Map::size);
 }
 
+/**
+ * Get a tile from the virtual XY-coordinate.
+ * Coordinates outside of the map are clamped to the map edge.
+ * @param x The virtual x coordinate of the tile.
+ * @param y The virtual y coordinate of the tile.
+ * @return The TileIndex calculated by the coordinate, clamped to the map bounds.
+ */
+TileIndex TileVirtXYClampedToMap(int x, int y)
+{
+	return TileIndex{(static_cast<uint>(Clamp<int>(y / static_cast<int>(TILE_SIZE), 0, Map::MaxY())) << Map::LogX()) + static_cast<uint>(Clamp<int>(x / static_cast<int>(TILE_SIZE), 0, Map::MaxX()))};
+}
 
 #ifdef _DEBUG
 TileIndex TileAdd(TileIndex tile, TileIndexDiff offset)
@@ -121,30 +132,30 @@ TileIndex TileAddWrap(TileIndex tile, int addx, int addy)
 }
 
 /** 'Lookup table' for tile offsets given an Axis */
-extern const TileIndexDiffC _tileoffs_by_axis[] = {
-	{ 1,  0}, ///< AXIS_X
-	{ 0,  1}, ///< AXIS_Y
-};
+extern const AxisIndexArray<TileIndexDiffC> _tileoffs_by_axis{{{
+	{1, 0}, // Axis::X
+	{0, 1}, // Axis::Y
+}}};
 
 /** 'Lookup table' for tile offsets given a DiagDirection */
-extern const TileIndexDiffC _tileoffs_by_diagdir[] = {
-	{-1,  0}, ///< DIAGDIR_NE
-	{ 0,  1}, ///< DIAGDIR_SE
-	{ 1,  0}, ///< DIAGDIR_SW
-	{ 0, -1}  ///< DIAGDIR_NW
-};
+extern const DiagDirectionIndexArray<TileIndexDiffC> _tileoffs_by_diagdir{{{
+	{-1,  0}, // DiagDirection::NE
+	{ 0,  1}, // DiagDirection::SE
+	{ 1,  0}, // DiagDirection::SW
+	{ 0, -1}, // DiagDirection::NW
+}}};
 
 /** 'Lookup table' for tile offsets given a Direction */
-extern const TileIndexDiffC _tileoffs_by_dir[] = {
-	{-1, -1}, ///< DIR_N
-	{-1,  0}, ///< DIR_NE
-	{-1,  1}, ///< DIR_E
-	{ 0,  1}, ///< DIR_SE
-	{ 1,  1}, ///< DIR_S
-	{ 1,  0}, ///< DIR_SW
-	{ 1, -1}, ///< DIR_W
-	{ 0, -1}  ///< DIR_NW
-};
+extern const DirectionIndexArray<TileIndexDiffC> _tileoffs_by_dir{{{
+	{-1, -1}, // Direction::N
+	{-1,  0}, // Direction::NE
+	{-1,  1}, // Direction::E
+	{ 0,  1}, // Direction::SE
+	{ 1,  1}, // Direction::S
+	{ 1,  0}, // Direction::SW
+	{ 1, -1}, // Direction::W
+	{ 0, -1}, // Direction::NW
+}}};
 
 /**
  * Gets the Manhattan distance between the two given tiles.
@@ -235,10 +246,10 @@ uint DistanceFromEdge(TileIndex tile)
 uint DistanceFromEdgeDir(TileIndex tile, DiagDirection dir)
 {
 	switch (dir) {
-		case DIAGDIR_NE: return             TileX(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
-		case DIAGDIR_NW: return             TileY(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
-		case DIAGDIR_SW: return Map::MaxX() - TileX(tile) - 1;
-		case DIAGDIR_SE: return Map::MaxY() - TileY(tile) - 1;
+		case DiagDirection::NE: return             TileX(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
+		case DiagDirection::NW: return             TileY(tile) - (_settings_game.construction.freeform_edges ? 1 : 0);
+		case DiagDirection::SW: return Map::MaxX() - TileX(tile) - 1;
+		case DiagDirection::SE: return Map::MaxY() - TileY(tile) - 1;
 		default: NOT_REACHED();
 	}
 }
@@ -268,16 +279,16 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 		y--;
 
 		/* going counter-clockwise around this square */
-		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
-			static const int8_t ddx[DIAGDIR_END] = { -1,  1,  1, -1};
-			static const int8_t ddy[DIAGDIR_END] = {  1,  1, -1, -1};
+		for (DiagDirection dir : EnumRange(DiagDirection::End)) {
+			static constexpr DiagDirectionIndexArray<int8_t> ddx{-1,  1,  1, -1};
+			static constexpr DiagDirectionIndexArray<int8_t> ddy{ 1,  1, -1, -1};
 
 			int dx = ddx[dir];
 			int dy = ddy[dir];
 
 			/* each side of this square has length 'dist' */
 			for (uint a = 0; a < dist; a++) {
-				/* MP_VOID tiles are not checked (interval is [min; max) for IsInsideMM())*/
+				/* TileType::Void tiles are not checked (interval is [min; max) for IsInsideMM())*/
 				if (IsInsideMM(x, min_xy, max_x) && IsInsideMM(y, min_xy, max_y)) {
 					TileIndex t = TileXY(x, y);
 					if (HasTileWaterGround(t) == water) return dist;
@@ -291,7 +302,7 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 	if (!water) {
 		/* no land found - is this a water-only map? */
 		for (const auto t : Map::Iterate()) {
-			if (!IsTileType(t, MP_VOID) && !IsTileType(t, MP_WATER)) return 0x1FF;
+			if (!IsTileType(t, TileType::Void) && !IsTileType(t, TileType::Water)) return 0x1FF;
 		}
 	}
 

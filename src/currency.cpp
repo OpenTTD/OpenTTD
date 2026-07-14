@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "core/bitmath_func.hpp"
 
-#include "currency.h"
+#include "currency_func.h"
 #include "news_func.h"
 #include "settings_type.h"
 #include "string_type.h"
@@ -27,57 +27,57 @@
 	 *   |   |   Euro year                       |              |                 |     | name
 	 *   |   |    |                              |              |                 |     |  | */
 /** The original currency specifications. */
-static const std::array<CurrencySpec, CURRENCY_END> origin_currency_specs = {{
-	{    1, "", CF_NOEURO,                     "\u00a3",   "",             "GBP", 0, STR_GAME_OPTIONS_CURRENCY_GBP    }, ///< british pound
-	{    2, "", CF_NOEURO,                     "$",        "",             "USD", 0, STR_GAME_OPTIONS_CURRENCY_USD    }, ///< american dollar
-	{    2, "", CF_ISEURO,                     "\u20ac",   "",             "EUR", 0, STR_GAME_OPTIONS_CURRENCY_EUR    }, ///< euro
-	{  220, "", CF_NOEURO,                     "\u00a5",   "",             "JPY", 0, STR_GAME_OPTIONS_CURRENCY_JPY    }, ///< japanese yen
-	{   27, "", TimerGameCalendar::Year{2002}, "",         NBSP "S.",      "ATS", 1, STR_GAME_OPTIONS_CURRENCY_ATS    }, ///< austrian schilling
-	{   81, "", TimerGameCalendar::Year{2002}, "BEF" NBSP, "",             "BEF", 0, STR_GAME_OPTIONS_CURRENCY_BEF    }, ///< belgian franc
-	{    2, "", CF_NOEURO,                     "CHF" NBSP, "",             "CHF", 0, STR_GAME_OPTIONS_CURRENCY_CHF    }, ///< swiss franc
-	{   41, "", CF_NOEURO,                     "",         NBSP "K\u010d", "CZK", 1, STR_GAME_OPTIONS_CURRENCY_CZK    }, ///< czech koruna
-	{    4, "", TimerGameCalendar::Year{2002}, "DM" NBSP,  "",             "DEM", 0, STR_GAME_OPTIONS_CURRENCY_DEM    }, ///< deutsche mark
-	{   11, "", CF_NOEURO,                     "",         NBSP "kr",      "DKK", 1, STR_GAME_OPTIONS_CURRENCY_DKK    }, ///< danish krone
-	{  333, "", TimerGameCalendar::Year{2002}, "Pts" NBSP, "",             "ESP", 0, STR_GAME_OPTIONS_CURRENCY_ESP    }, ///< spanish peseta
-	{   12, "", TimerGameCalendar::Year{2002}, "",         NBSP "mk",      "FIM", 1, STR_GAME_OPTIONS_CURRENCY_FIM    }, ///< finnish markka
-	{   13, "", TimerGameCalendar::Year{2002}, "FF" NBSP,  "",             "FRF", 0, STR_GAME_OPTIONS_CURRENCY_FRF    }, ///< french franc
-	{  681, "", TimerGameCalendar::Year{2002}, "",         "Dr.",          "GRD", 1, STR_GAME_OPTIONS_CURRENCY_GRD    }, ///< greek drachma
-	{  378, "", CF_NOEURO,                     "",         NBSP "Ft",      "HUF", 1, STR_GAME_OPTIONS_CURRENCY_HUF    }, ///< hungarian forint
-	{  130, "", CF_NOEURO,                     "",         NBSP "Kr",      "ISK", 1, STR_GAME_OPTIONS_CURRENCY_ISK    }, ///< icelandic krona
-	{ 3873, "", TimerGameCalendar::Year{2002}, "",         NBSP "L.",      "ITL", 1, STR_GAME_OPTIONS_CURRENCY_ITL    }, ///< italian lira
-	{    4, "", TimerGameCalendar::Year{2002}, "NLG" NBSP, "",             "NLG", 0, STR_GAME_OPTIONS_CURRENCY_NLG    }, ///< dutch gulden
-	{   12, "", CF_NOEURO,                     "",         NBSP "Kr",      "NOK", 1, STR_GAME_OPTIONS_CURRENCY_NOK    }, ///< norwegian krone
-	{    6, "", CF_NOEURO,                     "",         NBSP "z\u0142", "PLN", 1, STR_GAME_OPTIONS_CURRENCY_PLN    }, ///< polish zloty
-	{    5, "", CF_NOEURO,                     "",         NBSP "Lei",     "RON", 1, STR_GAME_OPTIONS_CURRENCY_RON    }, ///< romanian leu
-	{   50, "", CF_NOEURO,                     "",         NBSP "p",       "RUR", 1, STR_GAME_OPTIONS_CURRENCY_RUR    }, ///< russian rouble
-	{  479, "", TimerGameCalendar::Year{2007}, "",         NBSP "SIT",     "SIT", 1, STR_GAME_OPTIONS_CURRENCY_SIT    }, ///< slovenian tolar
-	{   13, "", CF_NOEURO,                     "",         NBSP "Kr",      "SEK", 1, STR_GAME_OPTIONS_CURRENCY_SEK    }, ///< swedish krona
-	{    3, "", CF_NOEURO,                     "",         NBSP "TL",      "TRY", 1, STR_GAME_OPTIONS_CURRENCY_TRY    }, ///< turkish lira
-	{   60, "", TimerGameCalendar::Year{2009}, "",         NBSP "Sk",      "SKK", 1, STR_GAME_OPTIONS_CURRENCY_SKK    }, ///< slovak koruna
-	{    4, "", CF_NOEURO,                     "R$" NBSP,  "",             "BRL", 0, STR_GAME_OPTIONS_CURRENCY_BRL    }, ///< brazil real
-	{   31, "", TimerGameCalendar::Year{2011}, "",         NBSP "EEK",     "EEK", 1, STR_GAME_OPTIONS_CURRENCY_EEK    }, ///< estonian krooni
-	{    4, "", TimerGameCalendar::Year{2015}, "",         NBSP "Lt",      "LTL", 1, STR_GAME_OPTIONS_CURRENCY_LTL    }, ///< lithuanian litas
-	{ 1850, "", CF_NOEURO,                     "\u20a9",   "",             "KRW", 0, STR_GAME_OPTIONS_CURRENCY_KRW    }, ///< south korean won
-	{   13, "", CF_NOEURO,                     "R" NBSP,   "",             "ZAR", 0, STR_GAME_OPTIONS_CURRENCY_ZAR    }, ///< south african rand
-	{    1, "", CF_NOEURO,                     "",         "",             "",    2, STR_GAME_OPTIONS_CURRENCY_CUSTOM }, ///< custom currency {add further languages below}
-	{    3, "", CF_NOEURO,                     "",         NBSP "GEL",     "GEL", 1, STR_GAME_OPTIONS_CURRENCY_GEL    }, ///< Georgian Lari
-	{ 4901, "", CF_NOEURO,                     "",         NBSP "Rls",     "IRR", 1, STR_GAME_OPTIONS_CURRENCY_IRR    }, ///< Iranian Rial
-	{   80, "", CF_NOEURO,                     "",         NBSP "rub",     "RUB", 1, STR_GAME_OPTIONS_CURRENCY_RUB    }, ///< New Russian Ruble
-	{   24, "", CF_NOEURO,                     "$",        "",             "MXN", 0, STR_GAME_OPTIONS_CURRENCY_MXN    }, ///< Mexican peso
-	{   40, "", CF_NOEURO,                     "NTD" NBSP, "",             "NTD", 0, STR_GAME_OPTIONS_CURRENCY_NTD    }, ///< new taiwan dollar
-	{    8, "", CF_NOEURO,                     "\u00a5",   "",             "CNY", 0, STR_GAME_OPTIONS_CURRENCY_CNY    }, ///< chinese renminbi
-	{   10, "", CF_NOEURO,                     "HKD" NBSP, "",             "HKD", 0, STR_GAME_OPTIONS_CURRENCY_HKD    }, ///< hong kong dollar
-	{   90, "", CF_NOEURO,                     "\u20b9",   "",             "INR", 0, STR_GAME_OPTIONS_CURRENCY_INR    }, ///< Indian Rupee
-	{   19, "", CF_NOEURO,                     "Rp",       "",             "IDR", 0, STR_GAME_OPTIONS_CURRENCY_IDR    }, ///< Indonesian Rupiah
-	{    5, "", CF_NOEURO,                     "RM",       "",             "MYR", 0, STR_GAME_OPTIONS_CURRENCY_MYR    }, ///< Malaysian Ringgit
-	{    1, "", TimerGameCalendar::Year{2014}, "",         NBSP "Ls",      "LVL", 1, STR_GAME_OPTIONS_CURRENCY_LVL    }, ///< latvian lats
-	{  400, "", TimerGameCalendar::Year{2002}, "",         "$00",          "PTE", 1, STR_GAME_OPTIONS_CURRENCY_PTE    }, ///< portuguese escudo
-	{   50, "", CF_NOEURO,                     "",         NBSP "\u20B4",  "UAH", 1, STR_GAME_OPTIONS_CURRENCY_UAH    }, ///< ukrainian hryvnia
-	{35000, "", CF_NOEURO,                     "",         NBSP "\u20AB",  "VND", 1, STR_GAME_OPTIONS_CURRENCY_VND    }, ///< Vietnamese Dong
-}};
+static const EnumIndexArray<CurrencySpec, Currency, Currency::End> _origin_currency_specs = {{{
+	{    1, "", CF_NOEURO,                     "\u00a3",   "",             "GBP", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_GBP }, ///< british pound
+	{    2, "", CF_NOEURO,                     "$",        "",             "USD", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_USD }, ///< american dollar
+	{    2, "", CF_ISEURO,                     "\u20ac",   "",             "EUR", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_EUR }, ///< euro
+	{  220, "", CF_NOEURO,                     "\u00a5",   "",             "JPY", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_JPY }, ///< japanese yen
+	{   27, "", TimerGameCalendar::Year{2002}, "",         NBSP "S.",      "ATS", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_ATS }, ///< austrian schilling
+	{   81, "", TimerGameCalendar::Year{2002}, "BEF" NBSP, "",             "BEF", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_BEF }, ///< belgian franc
+	{    2, "", CF_NOEURO,                     "CHF" NBSP, "",             "CHF", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_CHF }, ///< swiss franc
+	{   41, "", CF_NOEURO,                     "",         NBSP "K\u010d", "CZK", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_CZK }, ///< czech koruna
+	{    4, "", TimerGameCalendar::Year{2002}, "DM" NBSP,  "",             "DEM", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_DEM }, ///< deutsche mark
+	{   11, "", CF_NOEURO,                     "",         NBSP "kr",      "DKK", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_DKK }, ///< danish krone
+	{  333, "", TimerGameCalendar::Year{2002}, "Pts" NBSP, "",             "ESP", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_ESP }, ///< spanish peseta
+	{   12, "", TimerGameCalendar::Year{2002}, "",         NBSP "mk",      "FIM", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_FIM }, ///< finnish markka
+	{   13, "", TimerGameCalendar::Year{2002}, "FF" NBSP,  "",             "FRF", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_FRF }, ///< french franc
+	{  681, "", TimerGameCalendar::Year{2002}, "",         "Dr.",          "GRD", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_GRD }, ///< greek drachma
+	{  378, "", CF_NOEURO,                     "",         NBSP "Ft",      "HUF", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_HUF }, ///< hungarian forint
+	{  130, "", CF_NOEURO,                     "",         NBSP "Kr",      "ISK", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_ISK }, ///< icelandic krona
+	{ 3873, "", TimerGameCalendar::Year{2002}, "",         NBSP "L.",      "ITL", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_ITL }, ///< italian lira
+	{    4, "", TimerGameCalendar::Year{2002}, "NLG" NBSP, "",             "NLG", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_NLG }, ///< dutch gulden
+	{   12, "", CF_NOEURO,                     "",         NBSP "Kr",      "NOK", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_NOK }, ///< norwegian krone
+	{    6, "", CF_NOEURO,                     "",         NBSP "z\u0142", "PLN", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_PLN }, ///< polish zloty
+	{    5, "", CF_NOEURO,                     "",         NBSP "Lei",     "RON", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_RON }, ///< romanian leu
+	{   50, "", CF_NOEURO,                     "",         NBSP "p",       "RUR", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_RUR }, ///< russian rouble
+	{  479, "", TimerGameCalendar::Year{2007}, "",         NBSP "SIT",     "SIT", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_SIT }, ///< slovenian tolar
+	{   13, "", CF_NOEURO,                     "",         NBSP "Kr",      "SEK", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_SEK }, ///< swedish krona
+	{    3, "", CF_NOEURO,                     "",         NBSP "TL",      "TRY", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_TRY }, ///< turkish lira
+	{   60, "", TimerGameCalendar::Year{2009}, "",         NBSP "Sk",      "SKK", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_SKK }, ///< slovak koruna
+	{    4, "", CF_NOEURO,                     "R$" NBSP,  "",             "BRL", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_BRL }, ///< brazil real
+	{   31, "", TimerGameCalendar::Year{2011}, "",         NBSP "EEK",     "EEK", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_EEK }, ///< estonian krooni
+	{    4, "", TimerGameCalendar::Year{2015}, "",         NBSP "Lt",      "LTL", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_LTL }, ///< lithuanian litas
+	{ 1850, "", CF_NOEURO,                     "\u20a9",   "",             "KRW", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_KRW }, ///< south korean won
+	{   13, "", CF_NOEURO,                     "R" NBSP,   "",             "ZAR", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_ZAR }, ///< south african rand
+	{    1, "", CF_NOEURO,                     "",         "",             "",    {CurrencySymbolPosition::Prefix, CurrencySymbolPosition::Suffix}, STR_GAME_OPTIONS_CURRENCY_CUSTOM }, ///< custom currency {add further languages below}
+	{    3, "", CF_NOEURO,                     "",         NBSP "GEL",     "GEL", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_GEL }, ///< Georgian Lari
+	{ 4901, "", CF_NOEURO,                     "",         NBSP "Rls",     "IRR", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_IRR }, ///< Iranian Rial
+	{   80, "", CF_NOEURO,                     "",         NBSP "rub",     "RUB", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_RUB }, ///< New Russian Ruble
+	{   24, "", CF_NOEURO,                     "$",        "",             "MXN", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_MXN }, ///< Mexican peso
+	{   40, "", CF_NOEURO,                     "NTD" NBSP, "",             "NTD", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_NTD }, ///< new taiwan dollar
+	{    8, "", CF_NOEURO,                     "\u00a5",   "",             "CNY", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_CNY }, ///< chinese renminbi
+	{   10, "", CF_NOEURO,                     "HKD" NBSP, "",             "HKD", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_HKD }, ///< hong kong dollar
+	{   90, "", CF_NOEURO,                     "\u20b9",   "",             "INR", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_INR }, ///< Indian Rupee
+	{   19, "", CF_NOEURO,                     "Rp",       "",             "IDR", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_IDR }, ///< Indonesian Rupiah
+	{    5, "", CF_NOEURO,                     "RM",       "",             "MYR", CurrencySymbolPosition::Prefix, STR_GAME_OPTIONS_CURRENCY_MYR }, ///< Malaysian Ringgit
+	{    1, "", TimerGameCalendar::Year{2014}, "",         NBSP "Ls",      "LVL", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_LVL }, ///< latvian lats
+	{  400, "", TimerGameCalendar::Year{2002}, "",         "$00",          "PTE", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_PTE }, ///< portuguese escudo
+	{   50, "", CF_NOEURO,                     "",         NBSP "\u20B4",  "UAH", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_UAH }, ///< ukrainian hryvnia
+	{35000, "", CF_NOEURO,                     "",         NBSP "\u20AB",  "VND", CurrencySymbolPosition::Suffix, STR_GAME_OPTIONS_CURRENCY_VND }, ///< Vietnamese Dong
+}}};
 
 /** Array of currencies used by the system */
-std::array<CurrencySpec, CURRENCY_END> _currency_specs;
+EnumIndexArray<CurrencySpec, Currency, Currency::End> _currency_specs;
 
 /**
  * This array represent the position of OpenTTD's currencies,
@@ -85,27 +85,26 @@ std::array<CurrencySpec, CURRENCY_END> _currency_specs;
  * When a grf sends currencies, they are based on the order defined by TTDPatch.
  * So, we must reindex them to our own order.
  */
-const uint8_t TTDPatch_To_OTTDIndex[] =
-{
-	CURRENCY_GBP,
-	CURRENCY_USD,
-	CURRENCY_FRF,
-	CURRENCY_DEM,
-	CURRENCY_JPY,
-	CURRENCY_ESP,
-	CURRENCY_HUF,
-	CURRENCY_PLN,
-	CURRENCY_ATS,
-	CURRENCY_BEF,
-	CURRENCY_DKK,
-	CURRENCY_FIM,
-	CURRENCY_GRD,
-	CURRENCY_CHF,
-	CURRENCY_NLG,
-	CURRENCY_ITL,
-	CURRENCY_SEK,
-	CURRENCY_RUR,
-	CURRENCY_EUR,
+const Currency _ttdpatch_to_ottd_currency[] = {
+	Currency::GBP,
+	Currency::USD,
+	Currency::FRF,
+	Currency::DEM,
+	Currency::JPY,
+	Currency::ESP,
+	Currency::HUF,
+	Currency::PLN,
+	Currency::ATS,
+	Currency::BEF,
+	Currency::DKK,
+	Currency::FIM,
+	Currency::GRD,
+	Currency::CHF,
+	Currency::NLG,
+	Currency::ITL,
+	Currency::SEK,
+	Currency::RUR,
+	Currency::EUR,
 };
 
 /**
@@ -114,56 +113,56 @@ const uint8_t TTDPatch_To_OTTDIndex[] =
  * it is a grf written for ottd, thus returning the same id.
  * Only called from newgrf.cpp
  * @param grfcurr_id currency id coming from newgrf
- * @return the corrected index
+ * @return The corrected index, or \c Currency::End when invalid.
  */
-uint8_t GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
+Currency GetNewgrfCurrencyIdConverted(uint8_t grfcurr_id)
 {
-	return (grfcurr_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
+	if (grfcurr_id >= std::size(_ttdpatch_to_ottd_currency)) return Currency::End;
+	return _ttdpatch_to_ottd_currency[grfcurr_id];
 }
 
 /**
  * get a mask of the allowed currencies depending on the year
  * @return mask of currencies
  */
-uint64_t GetMaskOfAllowedCurrencies()
+Currencies GetMaskOfAllowedCurrencies()
 {
-	uint64_t mask = 0LL;
-	uint i;
+	Currencies mask{};
 
-	for (i = 0; i < CURRENCY_END; i++) {
+	for (Currency i : EnumRange(Currency::End)) {
 		TimerGameCalendar::Year to_euro = _currency_specs[i].to_euro;
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && TimerGameCalendar::year >= to_euro) continue;
 		if (to_euro == CF_ISEURO && TimerGameCalendar::year < 2000) continue;
-		SetBit(mask, i);
+		mask.Set(i);
 	}
-	SetBit(mask, CURRENCY_CUSTOM); // always allow custom currency
+	mask.Set(Currency::Custom); // always allow custom currency
 	return mask;
 }
 
 /**
  * Verify if the currency chosen by the user is about to be converted to Euro
  */
-static const IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCalendar::YEAR, TimerGameCalendar::Priority::NONE}, [](auto)
+static const IntervalTimer<TimerGameCalendar> _check_switch_to_euro({TimerGameCalendar::Trigger::Year, TimerGameCalendar::Priority::None}, [](auto)
 {
 	if (_currency_specs[_settings_game.locale.currency].to_euro != CF_NOEURO &&
 			_currency_specs[_settings_game.locale.currency].to_euro != CF_ISEURO &&
 			TimerGameCalendar::year >= _currency_specs[_settings_game.locale.currency].to_euro) {
-		_settings_game.locale.currency = 2; // this is the index of euro above.
+		_settings_game.locale.currency = Currency::EUR;
 		AddNewsItem(GetEncodedString(STR_NEWS_EURO_INTRODUCTION), NewsType::Economy, NewsStyle::Normal, {});
 	}
 });
 
 /**
  * Will fill _currency_specs array with
- * default values from origin_currency_specs
+ * default values from _origin_currency_specs
  * Called only from newgrf.cpp and settings.cpp.
  * @param preserve_custom will not reset custom currency
  */
 void ResetCurrencies(bool preserve_custom)
 {
-	for (uint i = 0; i < CURRENCY_END; i++) {
-		if (preserve_custom && i == CURRENCY_CUSTOM) continue;
-		_currency_specs[i] = origin_currency_specs[i];
+	for (Currency i : EnumRange(Currency::End)) {
+		if (preserve_custom && i == Currency::Custom) continue;
+		_currency_specs[i] = _origin_currency_specs[i];
 	}
 }

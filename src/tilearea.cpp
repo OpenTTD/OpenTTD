@@ -230,6 +230,7 @@ bool DiagonalTileArea::Contains(TileIndex tile) const
 
 /**
  * Move ourselves to the next tile in the rectangle on the map.
+ * @return Reference to this iterator.
  */
 TileIterator &DiagonalTileIterator::operator++()
 {
@@ -296,26 +297,24 @@ TileIterator &DiagonalTileIterator::operator++()
 	return std::make_unique<OrthogonalTileIterator>(corner1, corner2);
 }
 
-/**
- * See SpiralTileSequence constructor for description.
- */
+/** Create the iterator. @copydoc SpiralTileSequence::SpiralTileSequence(TileIndex, uint) */
 SpiralTileIterator::SpiralTileIterator(TileIndex center, uint diameter) :
 	max_radius(diameter / 2),
 	cur_radius(0),
-	dir(DIAGDIR_BEGIN)
+	dir(DiagDirection::Begin)
 {
 	assert(diameter > 0);
 
 	if (diameter % 2 == 1) {
 		this->extent.fill(1);
-		this->dir = INVALID_DIAGDIR; // special case for odd diameters, see Increment()
+		this->dir = DiagDirection::Invalid; // special case for odd diameters, see Increment()
 		this->position = 0;
 
 		this->x = TileX(center);
 		this->y = TileY(center);
 	} else {
 		this->extent.fill(0);
-		this->dir = DIAGDIR_BEGIN;
+		this->dir = DiagDirection::Begin;
 		this->InitPosition();
 
 		/* Start with the west corner of the center 2x2 rect */
@@ -325,14 +324,12 @@ SpiralTileIterator::SpiralTileIterator(TileIndex center, uint diameter) :
 	this->SkipOutsideMap();
 }
 
-/**
- * See SpiralTileSequence constructor for description.
- */
+/** Create the iterator. @copydoc SpiralTileSequence::SpiralTileSequence(TileIndex, uint, uint, uint) */
 SpiralTileIterator::SpiralTileIterator(TileIndex start_north, uint radius, uint w, uint h) :
 	max_radius(radius),
 	extent{w, h, w, h},
 	cur_radius(0),
-	dir(DIAGDIR_BEGIN),
+	dir(DiagDirection::Begin),
 	/* first tile is the west corner */
 	x(TileX(start_north) + w + 1),
 	y(TileY(start_north))
@@ -367,11 +364,11 @@ void SpiralTileIterator::Increment()
 	assert(!this->IsEnd());
 
 	/* Special value for first tile in areas with odd diameter */
-	if (this->dir == INVALID_DIAGDIR) {
-		const auto west = TileIndexDiffCByDir(DIR_W);
+	if (this->dir == DiagDirection::Invalid) {
+		const auto west = TileIndexDiffCByDir(Direction::W);
 		this->x += west.x;
 		this->y += west.y;
-		this->dir = DIAGDIR_BEGIN;
+		this->dir = DiagDirection::Begin;
 		this->InitPosition();
 		return;
 	}
@@ -386,13 +383,13 @@ void SpiralTileIterator::Increment()
 	/* Corner reached, switch direction */
 	++this->dir;
 
-	if (this->dir == DIAGDIR_END) {
+	if (this->dir == DiagDirection::End) {
 		/* Jump to next circle */
-		const auto west = TileIndexDiffCByDir(DIR_W);
+		const auto west = TileIndexDiffCByDir(Direction::W);
 		this->x += west.x;
 		this->y += west.y;
 		++this->cur_radius;
-		this->dir = DIAGDIR_BEGIN;
+		this->dir = DiagDirection::Begin;
 	}
 
 	this->InitPosition();

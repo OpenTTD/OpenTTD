@@ -1107,8 +1107,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Erosketa eta er
 STR_CONFIG_SETTING_RECESSIONS                                   :Atzerapen ekonomikoak: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Gaitua dagoenean, atzeratze ekonomikoa urte gutxika gertatuko da. Atzeratze ekonomikoan, ekoizpen orokorra dexente gutxituko da (Aurreko balioetara bueltatuko da atzerapena amaitzerakoan)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Trenak geltokietan buelta eman ahal izatea: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Gaitua dagoenean, trenak ezingo dute geltoki ez-finaletan buelta eman, nahiz eta biderik motzena izan helmugara iristeko
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Hondamendiak: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Azpiegiturak eta ibilgailuak suntsitu edo blokeatu ditzaketen hondamendiak txandakatu
@@ -1277,6 +1277,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Gaitua dagoenea
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zahartzen denean automatikoki berritu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Gaitua dagoenean, Ibilgailuek bere lan-bizitza amaitzear dutenean eta beharrezko baldintzak betetzen badira automatikoki berrituko dira
@@ -1458,12 +1460,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Erakutsi aurrei
 STR_CONFIG_SETTING_QUICKGOTO                                    :Ibilgailu aginduen sorrera azkarra: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :'Nora joan' aurrez hautatu agindu lehioak irekitzerakoan
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Lehenetsitako trenbide mota (joko berria hastean/jokoa kargatzean): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Jokoa hasi edo jokoa kargatu eta gero trenbide lanabesetan lehenetsiko den trenbide mota. 'Zaharrena' trenbide mota zaharrena lehenetsiko da, 'Berriena' trenbide mota berriena lehenetsiko da, 'Erabiliena' trenbide mota erabiliena lehenetsiko da
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Lehena eskuragarri
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Azkena eskuragarri
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Gehien erabilia
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Erreserbatutako trenbide zatiak erakutsi: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Trenbide erreserbatuak kolore ezberdinarekin jarri blokeetan oinarritutako ibilbideetan sartzera ukatzen diren trenei laguntzeko
@@ -1544,6 +1541,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Gaitua dagoenea
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bagoiaren abiadura mugak aktibatu: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Gaitua dagoenean, bagoien gehienezko abiadura erabili trenen geheienezko abiadura zehazteko
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Trenbide elektrikoa desaktibatu: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Gaitua dagoenean, ez da beharrezkoa izango trenbideak elektrifikatzea tren elektrikoak funtzionatzeko
@@ -1784,7 +1782,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... jara
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... jaramonik ez egiten Soinu Paketeari '{STRING}': ez da aurkitu
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... jaramonik ez egiten musika paketeari'{STRING}': ez da aurkitu
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -1988,15 +1986,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} be
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} orain arte deskargatuta
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} orain arte deskargatuta
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Konektatzen...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Baimentzen...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Itxoiten...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Mapa deskargatzen...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Datuak kudeatzen...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Erregistratzen...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Jokoaren xehetasunak jasotzen...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Konpainiaren xehetasunak jasotzen...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Deskonektatua
 
@@ -2258,6 +2254,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Geltokia
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Geltokiaren luzera aukeratu
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastratzerakoan eraiki
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Geltokia eraiki arrastratzerakoan
+
+
 
 
 
@@ -3293,6 +3291,8 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Guztia {CARGO_L
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Gehienezko trakzio indarra: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Irismena: {GOLD}{COMMA} lauki
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3439,6 +3439,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Gordail
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Ibilgailu frabrikaren mezua
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}{STRING} berria diesinatu dugu - Nahiko zenuke ibilgailu honen urte baterako erabilera esklusiboa izatea? Bere funtzionamendua ikusi ahalko genuke publiko egin aurretik.
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :Lokomotora
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :Monorail lokomotora
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Lokomotora magnetikoa
@@ -3573,7 +3574,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pisua: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pisua: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potentzia: {LTBLUE}{POWER}{BLACK} Gehienezko abiadura: {LTBLUE}{VELOCITY} {BLACK}Gehienezko trakzio indarra: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Irabaziak aurten: {LTBLUE}{CURRENCY_LONG} (iaz: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fidagarritasuna: {LTBLUE}{COMMA}%  {BLACK}Matxurak azken mantenimendutik: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Sortua: {LTBLUE}{NUM}{BLACK} Balioa: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Edukiera: {LTBLUE}Ezer ez{STRING}
@@ -3694,7 +3694,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Gelditu
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Ibilgailuaren xehetasunak jauzia oinarritzeko
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Kargatutako ehunekoa
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidagarritasuna
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Gehienezko abiadua
@@ -4047,7 +4047,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ezin iza
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ezin izan da herriak berrizendatu...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ezin izan da herririk aurkitu...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ezin da hiria haunditu...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... maparen ertzetik hurbilegi
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... beste herritik hurbilegi
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... herri gehiegi
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ez dago leku gehiagorik mapan

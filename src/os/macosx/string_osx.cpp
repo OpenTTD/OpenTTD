@@ -24,7 +24,7 @@
 /** Cached current locale. */
 static CFAutoRelease<CFLocaleRef> _osx_locale;
 /** CoreText cache for font information, cleared when OTTD changes fonts. */
-static CFAutoRelease<CTFontRef> _font_cache[FS_END];
+static EnumIndexArray<CFAutoRelease<CTFontRef>, FontSize, FontSize::End> _font_cache;
 
 
 /**
@@ -61,7 +61,7 @@ public:
 
 		const Font *GetFont() const override { return this->font;  }
 		int GetLeading() const override { return this->font->fc->GetHeight(); }
-		int GetGlyphCount() const override { return (int)this->glyphs.size(); }
+		size_t GetGlyphCount() const override { return this->glyphs.size(); }
 		int GetAdvance() const { return this->total_advance; }
 	};
 
@@ -84,8 +84,8 @@ public:
 
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override { return this->size(); }
-		const VisualRun &GetVisualRun(int run) const override { return this->at(run);  }
+		size_t CountRuns() const override { return this->size(); }
+		const VisualRun &GetVisualRun(size_t run) const override { return this->at(run);  }
 
 		int GetInternalCharLength(char32_t c) const override
 		{
@@ -108,7 +108,11 @@ public:
 };
 
 
-/** Get the width of an encoded sprite font character.  */
+/**
+ * Get the width of an encoded sprite font character.
+ * @param ref_con Arbitrary data passed through CTRunDelegateCallbacks, in this case font size and character.
+ * @return The width of the specific given character.
+ */
 static CGFloat SpriteFontGetWidth(void *ref_con)
 {
 	FontSize fs = (FontSize)((size_t)ref_con >> 24);
@@ -124,8 +128,6 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 
 /* static */ std::unique_ptr<ParagraphLayouter> CoreTextParagraphLayoutFactory::GetParagraphLayout(CharType *buff, CharType *buff_end, FontMap &font_mapping)
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return nullptr;
-
 	/* Can't layout an empty string. */
 	ptrdiff_t length = buff_end - buff;
 	if (length == 0) return nullptr;
@@ -162,14 +164,14 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 		}
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTFontAttributeName, font_handle);
 
-		CGColorRef colour = CGColorCreateGenericGray((uint8_t)font->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
+		CGColorRef colour = CGColorCreateGenericGray(to_underlying(font->colour.colour) / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTForegroundColorAttributeName, colour);
 		CGColorRelease(colour);
 
 		/* Install a size callback for our special private-use sprite glyphs in case the font does not provide them. */
 		for (ssize_t c = last; c < position; c++) {
 			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END && font->fc->MapCharToGlyph(buff[c], false) == 0) {
-				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (font->fc->GetSize() << 24))));
+				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (to_underlying(font->fc->GetSize()) << 24))));
 				/* According to the official documentation, if a run delegate is used, the char should always be 0xFFFC. */
 				CFAttributedStringReplaceString(str.get(), CFRangeMake(c, 1), replacement_str.get());
 				CFAttributedStringSetAttribute(str.get(), CFRangeMake(c, 1), kCTRunDelegateAttributeName, del.get());
@@ -267,28 +269,33 @@ int CoreTextParagraphLayout::CoreTextLine::GetWidth() const
 }
 
 
-/** Delete CoreText font reference for a specific font size. */
+/**
+ * Delete CoreText font reference for a specific font size.
+ * @param size The font size to delete.
+ */
 void MacOSResetScriptCache(FontSize size)
 {
 	_font_cache[size].reset();
 }
 
-/** Register an external font file with the CoreText system. */
+/**
+ * Register an external font file with the CoreText system.
+ * @param file_path UTF-8 encoded path of the font.
+ */
 void MacOSRegisterExternalFont(std::string_view file_path)
 {
-	if (!MacOSVersionIsAtLeast(10, 6, 0)) return;
-
 	CFAutoRelease<CFStringRef> path(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(file_path.data()), file_path.size(), kCFStringEncodingUTF8, false));
 	CFAutoRelease<CFURLRef> url(CFURLCreateWithFileSystemPath(kCFAllocatorDefault, path.get(), kCFURLPOSIXPathStyle, false));
 
 	CTFontManagerRegisterFontsForURL(url.get(), kCTFontManagerScopeProcess, nullptr);
 }
 
-/** Store current language locale as a CoreFoundation locale. */
+/**
+ * Store current language locale as a CoreFoundation locale.
+ * @param iso_code The ISO language code to set.
+ */
 void MacOSSetCurrentLocaleName(std::string_view iso_code)
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return;
-
 	CFAutoRelease<CFStringRef> iso(CFStringCreateWithBytes(kCFAllocatorDefault, reinterpret_cast<const UInt8 *>(iso_code.data()), iso_code.size(), kCFStringEncodingUTF8, false));
 	_osx_locale.reset(CFLocaleCreate(kCFAllocatorDefault, iso.get()));
 }
@@ -302,9 +309,6 @@ void MacOSSetCurrentLocaleName(std::string_view iso_code)
  */
 int MacOSStringCompare(std::string_view s1, std::string_view s2)
 {
-	static const bool supported = MacOSVersionIsAtLeast(10, 5, 0);
-	if (!supported) return 0;
-
 	CFStringCompareFlags flags = kCFCompareCaseInsensitive | kCFCompareNumerically | kCFCompareLocalized | kCFCompareWidthInsensitive | kCFCompareForcedOrdering;
 
 	CFAutoRelease<CFStringRef> cf1(CFStringCreateWithBytes(kCFAllocatorDefault, (const UInt8 *)s1.data(), s1.size(), kCFStringEncodingUTF8, false));
@@ -326,9 +330,6 @@ int MacOSStringCompare(std::string_view s1, std::string_view s2)
  */
 int MacOSStringContains(std::string_view str, std::string_view value, bool case_insensitive)
 {
-	static const bool supported = MacOSVersionIsAtLeast(10, 5, 0);
-	if (!supported) return -1;
-
 	CFStringCompareFlags flags = kCFCompareLocalized | kCFCompareWidthInsensitive;
 	if (case_insensitive) flags |= kCFCompareCaseInsensitive;
 
@@ -447,7 +448,5 @@ int MacOSStringContains(std::string_view str, std::string_view value, bool case_
 
 /* static */ std::unique_ptr<StringIterator> OSXStringIterator::Create()
 {
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) return nullptr;
-
 	return std::make_unique<OSXStringIterator>();
 }

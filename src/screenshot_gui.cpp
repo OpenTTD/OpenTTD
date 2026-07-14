@@ -49,31 +49,32 @@ struct ScreenshotWindow : Window {
 
 static constexpr std::initializer_list<NWidgetPart> _nested_screenshot = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_SCREENSHOT_CAPTION),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_SCREENSHOT_CAPTION),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
 	NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_SCREENSHOT), SetMinimalTextLines(2, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_ZOOMIN), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_ZOOMIN_SCREENSHOT), SetMinimalTextLines(2, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_DEFAULTZOOM), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT), SetMinimalTextLines(2, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_WORLD), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_WORLD_SCREENSHOT), SetMinimalTextLines(2, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_HEIGHTMAP), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT), SetMinimalTextLines(2, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SC_TAKE_MINIMAP), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_MINIMAP_SCREENSHOT), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SC_TAKE), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_SCREENSHOT), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SC_TAKE_ZOOMIN), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_ZOOMIN_SCREENSHOT), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SC_TAKE_DEFAULTZOOM), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SC_TAKE_WORLD), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_WORLD_SCREENSHOT), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SC_TAKE_HEIGHTMAP), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_SC_TAKE_MINIMAP), SetFill(1, 1), SetStringTip(STR_SCREENSHOT_MINIMAP_SCREENSHOT), SetMinimalTextLines(2, 0),
 	EndContainer(),
 };
 
+/** Window definition for the screenshot window. */
 static WindowDesc _screenshot_window_desc(
-	WDP_AUTO, "take_a_screenshot", 200, 100,
-	WC_SCREENSHOT, WC_NONE,
+	WindowPosition::Automatic, "take_a_screenshot", 200, 100,
+	WindowClass::Screenshot, WindowClass::None,
 	{},
 	_nested_screenshot
 );
 
 void ShowScreenshotWindow()
 {
-	CloseWindowById(WC_SCREENSHOT, 0);
+	CloseWindowById(WindowClass::Screenshot, 0);
 	new ScreenshotWindow(_screenshot_window_desc);
 }
 
@@ -83,7 +84,7 @@ void ShowScreenshotWindow()
  */
 void SetScreenshotWindowVisibility(bool hide)
 {
-	ScreenshotWindow *scw = dynamic_cast<ScreenshotWindow *>(FindWindowById(WC_SCREENSHOT, 0));
+	ScreenshotWindow *scw = dynamic_cast<ScreenshotWindow *>(FindWindowById(WindowClass::Screenshot, 0));
 
 	if (scw == nullptr) return;
 

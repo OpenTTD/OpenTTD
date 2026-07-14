@@ -11,6 +11,7 @@
 #define STRINGS_TYPE_H
 
 #include "core/convertible_through_base.hpp"
+#include "core/enum_type.hpp"
 #include "core/strong_typedef_type.hpp"
 
 /**
@@ -19,7 +20,6 @@
 typedef uint32_t StringID;
 static const StringID INVALID_STRING_ID = 0xFFFF; ///< Constant representing an invalid string (16bit in case it is used in savegames)
 static const int MAX_CHAR_LENGTH        = 4;      ///< Max. length of UTF-8 encoded unicode character
-static const uint MAX_LANG              = 0x7F;   ///< Maximum number of languages supported by the game, and the NewGRF specs
 
 /** Directions a text can go to */
 enum TextDirection : uint8_t {
@@ -90,6 +90,14 @@ struct StringParameter {
 	inline StringParameter(const std::string &data) : data(data), type(0) {}
 
 	inline StringParameter(const ConvertibleThroughBase auto &data) : data(static_cast<uint64_t>(data.base())), type(0) {}
+
+	/**
+	 * Create a StringParameter from a scoped enum.
+	 * @tparam T the type of the scoped enum.
+	 * @param data the scoped enum value.
+	 */
+	template <typename T> requires is_scoped_enum_v<T>
+	inline StringParameter(const T &data) : data(static_cast<uint64_t>(to_underlying(data))), type(0) {}
 };
 
 /**

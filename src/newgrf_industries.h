@@ -48,11 +48,11 @@ struct IndustriesResolverObject : public ResolverObject {
 
 	TownScopeResolver *GetTown();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &industries_scope;
-			case VSG_SCOPE_PARENT: {
+			case VarSpriteGroupScope::Self: return &industries_scope;
+			case VarSpriteGroupScope::Parent: {
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != nullptr) return tsr;
 			}
@@ -67,33 +67,23 @@ struct IndustriesResolverObject : public ResolverObject {
 	uint32_t GetDebugID() const override;
 };
 
-/** When should the industry(tile) be triggered for random bits? */
-enum IndustryTrigger : uint8_t {
-	/** Triggered each tile loop */
-	INDUSTRY_TRIGGER_TILELOOP_PROCESS = 1,
-	/** Triggered (whole industry) each 256 ticks */
-	INDUSTRY_TRIGGER_256_TICKS        = 2,
-	/** Triggered on cargo delivery */
-	INDUSTRY_TRIGGER_CARGO_DELIVERY   = 4,
-};
-
 /** From where has callback #CBID_INDUSTRY_PROBABILITY been called */
-enum IndustryAvailabilityCallType : uint8_t {
-	IACT_MAPGENERATION,    ///< during random map generation
-	IACT_RANDOMCREATION,   ///< during creation of random ingame industry
-	IACT_USERCREATION,     ///< from the Fund/build window
-	IACT_PROSPECTCREATION, ///< from the Fund/build using prospecting
+enum class IndustryAvailabilityCallType : uint8_t {
+	MapGeneration, ///< during random map generation
+	RandomCreation, ///< during creation of random ingame industry
+	UserCreation, ///< from the Fund/build window
+	ProspectCreation, ///< from the Fund/build using prospecting
 };
 
 /* in newgrf_industry.cpp */
 uint16_t GetIndustryCallback(CallbackID callback, uint32_t param1, uint32_t param2, Industry *industry, IndustryType type, TileIndex tile, std::span<int32_t> regs100 = {});
-uint32_t GetIndustryIDAtOffset(TileIndex new_tile, const Industry *i, uint32_t cur_grfid);
+uint32_t GetIndustryIDAtOffset(TileIndex new_tile, const Industry *i, GrfID cur_grfid);
 void IndustryProductionCallback(Industry *ind, int reason);
 CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, size_t layout, uint32_t seed, uint16_t initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type);
 uint32_t GetIndustryProbabilityCallback(IndustryType type, IndustryAvailabilityCallType creation_type, uint32_t default_prob);
 bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoType cargo_type);
 
-IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32_t grf_id);
+IndustryType MapNewGRFIndustryType(IndustryType grf_type, GrfID grfid);
 
 /* in newgrf_industrytiles.cpp*/
 uint32_t GetNearbyIndustryTileInformation(uint8_t parameter, TileIndex tile, IndustryID index, bool signed_offsets, bool grf_version8);

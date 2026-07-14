@@ -57,7 +57,7 @@ OverrideManagerBase::OverrideManagerBase(uint16_t offset, uint16_t maximum, uint
  * @param grfid  ID of the grf file
  * @param entity_type original entity type
  */
-void OverrideManagerBase::Add(uint16_t local_id, uint32_t grfid, uint entity_type)
+void OverrideManagerBase::Add(uint16_t local_id, GrfID grfid, uint entity_type)
 {
 	assert(entity_type < this->max_offset);
 	/* An override can be set only once */
@@ -85,7 +85,7 @@ void OverrideManagerBase::ResetOverride()
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
-uint16_t OverrideManagerBase::GetID(uint16_t grf_local_id, uint32_t grfid) const
+uint16_t OverrideManagerBase::GetID(uint16_t grf_local_id, GrfID grfid) const
 {
 	for (uint16_t id = 0; id < this->max_entities; id++) {
 		const EntityIDMapping *map = &this->mappings[id];
@@ -104,7 +104,7 @@ uint16_t OverrideManagerBase::GetID(uint16_t grf_local_id, uint32_t grfid) const
  * @param substitute_id is the original entity from which data is copied for the new one
  * @return the proper usable slot id, or invalid marker if none is found
  */
-uint16_t OverrideManagerBase::AddEntityID(uint16_t grf_local_id, uint32_t grfid, uint16_t substitute_id)
+uint16_t OverrideManagerBase::AddEntityID(uint16_t grf_local_id, GrfID grfid, uint16_t substitute_id)
 {
 	uint16_t id = this->GetID(grf_local_id, grfid);
 
@@ -134,7 +134,7 @@ uint16_t OverrideManagerBase::AddEntityID(uint16_t grf_local_id, uint32_t grfid,
  * @param entity_id ID of the entity being queried.
  * @return GRFID.
  */
-uint32_t OverrideManagerBase::GetGRFID(uint16_t entity_id) const
+GrfID OverrideManagerBase::GetGRFID(uint16_t entity_id) const
 {
 	return this->mappings[entity_id].grfid;
 }
@@ -177,7 +177,7 @@ void HouseOverrideManager::SetEntitySpec(HouseSpec &&hs)
 
 		overridden_hs->grf_prop.override_id = house_id;
 		this->entity_overrides[i] = this->invalid_id;
-		this->grfid_overrides[i] = 0;
+		this->grfid_overrides[i] = {};
 	}
 }
 
@@ -187,7 +187,7 @@ void HouseOverrideManager::SetEntitySpec(HouseSpec &&hs)
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
-uint16_t IndustryOverrideManager::GetID(uint16_t grf_local_id, uint32_t grfid) const
+uint16_t IndustryOverrideManager::GetID(uint16_t grf_local_id, GrfID grfid) const
 {
 	uint16_t id = OverrideManagerBase::GetID(grf_local_id, grfid);
 	if (id != this->invalid_id) return id;
@@ -207,7 +207,7 @@ uint16_t IndustryOverrideManager::GetID(uint16_t grf_local_id, uint32_t grfid) c
  * @param substitute_id industry from which data has been copied
  * @return a free entity id (slotid) if ever one has been found, or Invalid_ID marker otherwise
  */
-uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, uint32_t grfid, uint16_t substitute_id)
+uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, GrfID grfid, uint16_t substitute_id)
 {
 	/* This entity hasn't been defined before, so give it an ID now. */
 	for (uint16_t id = 0; id < this->max_entities; id++) {
@@ -287,7 +287,7 @@ void IndustryTileOverrideManager::SetEntitySpec(IndustryTileSpec &&its)
 		overridden_its->grf_prop.override_id = indt_id;
 		overridden_its->enabled = false;
 		this->entity_overrides[i] = this->invalid_id;
-		this->grfid_overrides[i] = 0;
+		this->grfid_overrides[i] = {};
 	}
 }
 
@@ -333,40 +333,40 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec &&spec)
 uint32_t GetTerrainType(TileIndex tile, TileContext context)
 {
 	switch (_settings_game.game_creation.landscape) {
-		case LandscapeType::Tropic: return GetTropicZone(tile);
+		case LandscapeType::Tropic: return to_underlying(GetTropicZone(tile));
 		case LandscapeType::Arctic: {
 			bool has_snow;
 			switch (GetTileType(tile)) {
-				case MP_CLEAR:
+				case TileType::Clear:
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld;
 					has_snow = IsSnowTile(tile) && GetClearDensity(tile) >= 2;
 					break;
 
-				case MP_RAILWAY: {
+				case TileType::Railway: {
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld; // we do not care about foundations here
 					RailGroundType ground = GetRailGroundType(tile);
-					has_snow = (ground == RailGroundType::SnowOrDesert || (context == TCX_UPPER_HALFTILE && ground == RailGroundType::HalfTileSnow));
+					has_snow = (ground == RailGroundType::SnowOrDesert || (context == TileContext::UpperHalftile && ground == RailGroundType::HalfTileSnow));
 					break;
 				}
 
-				case MP_ROAD:
+				case TileType::Road:
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld; // we do not care about foundations here
 					has_snow = IsOnSnowOrDesert(tile);
 					break;
 
-				case MP_TREES: {
+				case TileType::Trees: {
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld;
 					TreeGround ground = GetTreeGround(tile);
-					has_snow = (ground == TREE_GROUND_SNOW_DESERT || ground == TREE_GROUND_ROUGH_SNOW) && GetTreeDensity(tile) >= 2;
+					has_snow = (ground == TreeGround::SnowOrDesert || ground == TreeGround::RoughSnow) && GetTreeDensity(tile) >= 2;
 					break;
 				}
 
-				case MP_TUNNELBRIDGE:
-					if (context == TCX_ON_BRIDGE) {
+				case TileType::TunnelBridge:
+					if (context == TileContext::OnBridge) {
 						has_snow = (GetBridgeHeight(tile) > GetSnowLine());
 					} else {
 						/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
@@ -375,16 +375,16 @@ uint32_t GetTerrainType(TileIndex tile, TileContext context)
 					}
 					break;
 
-				case MP_STATION:
-				case MP_HOUSE:
-				case MP_INDUSTRY:
-				case MP_OBJECT:
+				case TileType::Station:
+				case TileType::House:
+				case TileType::Industry:
+				case TileType::Object:
 					/* These tiles usually have a levelling foundation. So use max Z */
 					has_snow = (GetTileMaxZ(tile) > GetSnowLine());
 					break;
 
-				case MP_VOID:
-				case MP_WATER:
+				case TileType::Void:
+				case TileType::Water:
 				genworld:
 					has_snow = (GetTileZ(tile) > GetSnowLine());
 					break;
@@ -414,8 +414,8 @@ TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets, 
 	if (signed_offsets && y >= 8) y -= 16;
 
 	/* Swap width and height depending on axis for railway stations */
-	if (axis == INVALID_AXIS && HasStationTileRail(tile)) axis = GetRailStationAxis(tile);
-	if (axis == AXIS_Y) std::swap(x, y);
+	if (axis == Axis::Invalid && HasStationTileRail(tile)) axis = GetRailStationAxis(tile);
+	if (axis == Axis::Y) std::swap(x, y);
 
 	/* Make sure we never roam outside of the map, better wrap in that case */
 	return Map::WrapToMap(tile + TileDiffXY(x, y));
@@ -433,16 +433,16 @@ uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 	TileType tile_type = GetTileType(tile);
 
 	/* Fake tile type for trees on shore */
-	if (IsTileType(tile, MP_TREES) && GetTreeGround(tile) == TREE_GROUND_SHORE) tile_type = MP_WATER;
+	if (IsTileType(tile, TileType::Trees) && GetTreeGround(tile) == TreeGround::Shore) tile_type = TileType::Water;
 
 	/* Fake tile type for road waypoints */
-	if (IsRoadWaypointTile(tile)) tile_type = MP_ROAD;
+	if (IsRoadWaypointTile(tile)) tile_type = TileType::Road;
 
 	auto [tileh, z] = GetTilePixelSlope(tile);
 	/* Return 0 if the tile is a land tile */
-	uint8_t terrain_type = (HasTileWaterClass(tile) ? (to_underlying(GetWaterClass(tile)) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
+	uint8_t terrain_type = (HasTileWaterClass(tile) ? (to_underlying(GetWaterClass(tile)) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == TileType::Water ? 1 : 0) << 1;
 	if (grf_version8) z /= TILE_HEIGHT;
-	return tile_type << 24 | ClampTo<uint8_t>(z) << 16 | terrain_type << 8 | tileh;
+	return to_underlying(tile_type) << 24 | ClampTo<uint8_t>(z) << 16 | terrain_type << 8 | tileh;
 }
 
 /**
@@ -453,8 +453,8 @@ uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
  */
 uint32_t GetCompanyInfo(CompanyID owner, const Livery *l)
 {
-	if (l == nullptr && Company::IsValidID(owner)) l = &Company::Get(owner)->livery[LS_DEFAULT];
-	return owner.base() | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (l->colour1 << 24) | (l->colour2 << 28) : 0);
+	if (l == nullptr && Company::IsValidID(owner)) l = &Company::Get(owner)->livery[LiveryScheme::Default];
+	return owner.base() | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (to_underlying(l->colour1) << 24) | (to_underlying(l->colour2) << 28) : 0);
 }
 
 /**
@@ -511,7 +511,7 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16_t cb_res, std::span
  * @param cbid Callback causing the problem.
  * @param cb_res Invalid result returned by the callback.
  */
-void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res)
+void ErrorUnknownCallbackResult(GrfID grfid, uint16_t cbid, uint16_t cb_res)
 {
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 
@@ -519,7 +519,7 @@ void ErrorUnknownCallbackResult(uint32_t grfid, uint16_t cbid, uint16_t cb_res)
 		grfconfig->grf_bugs.Set(GRFBug::UnknownCbResult);
 		ShowErrorMessage(GetEncodedString(STR_NEWGRF_BUGGY, grfconfig->GetName()),
 			GetEncodedString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, std::monostate{}, cbid, cb_res),
-			WL_CRITICAL);
+			WarningLevel::Critical);
 	}
 
 	/* debug output */
@@ -732,5 +732,5 @@ void SpriteLayoutProcessor::ProcessRegisters(const ResolverObject &object, uint8
 void GRFFilePropsBase::SetGRFFile(const struct GRFFile *grffile)
 {
 	this->grffile = grffile;
-	this->grfid = grffile == nullptr ? 0 : grffile->grfid;
+	this->grfid = grffile == nullptr ? GrfID{} : grffile->grfid;
 }

@@ -75,7 +75,6 @@ T GetAndResetAccumulatedAverage(Taccrued &total)
  * @param valid_history Mask of valid history records.
  * @param hr History range to get.
  * @param age Age of data to get.
- * @param cur_month Current economy month.
  * @param[out] result Extracted historical data.
  * @return True iff the data for this history range and age is valid.
  */

@@ -84,56 +84,49 @@ inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::
 
 template <typename T, T... i>
 inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
-	return std::array<CommandInfo, sizeof...(i)>{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }};
+	return EnumIndexArray<CommandInfo, Commands, static_cast<Commands>(sizeof...(i))>{{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }}};
 }
 
 /**
- * The master command table
+ * The master command table.
  *
- * This table contains all possible CommandProc functions with
- * the flags which belongs to it. The indices are the same
- * as the value from the CMD_* enums.
+ * This contains the #CommandInfo for all possible #Commands functions.
  */
-static constexpr auto _command_proc_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, CMD_END>{});
+static constexpr auto _command_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{});
 
 
 /**
- * This function range-checks a cmd.
- *
- * @param cmd The integer value of a command
- * @return true if the command is valid (and got a CommandProc function)
+ * This function range-checks a Commands. This is primarily for Commands coming from the network.
+ * @param cmd The command.
+ * @return True if the command is valid.
  */
 bool IsValidCommand(Commands cmd)
 {
-	return cmd < _command_proc_table.size();
+	return to_underlying(cmd) < _command_table.size();
 }
 
 /**
- * This function mask the parameter with CMD_ID_MASK and returns
- * the flags which belongs to the given command.
- *
- * @param cmd The integer value of the command
+ * Get the command flags associated with the given command.
+ * @param cmd The command.
  * @return The flags for this command
  */
 CommandFlags GetCommandFlags(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd].flags;
+	return _command_table[cmd].flags;
 }
 
 /**
- * This function mask the parameter with CMD_ID_MASK and returns
- * the name which belongs to the given command.
- *
- * @param cmd The integer value of the command
+ * Get the name of the given command.
+ * @param cmd The command.
  * @return The name for this command
  */
 std::string_view GetCommandName(Commands cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd].name;
+	return _command_table[cmd].name;
 }
 
 /**
@@ -158,7 +151,7 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 	static_assert(std::size(command_type_lookup) == to_underlying(CommandType::End));
 
 	assert(IsValidCommand(cmd));
-	return _game_mode == GM_EDITOR || command_type_lookup[to_underlying(_command_proc_table[cmd].type)] <= _settings_game.construction.command_pause_level;
+	return _game_mode == GameMode::Editor || command_type_lookup[to_underlying(_command_table[cmd].type)] <= _settings_game.construction.command_pause_level;
 }
 
 /**
@@ -219,7 +212,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalPostBefore(Commands cmd,
 
 	if (_pause_mode.Any() && !IsCommandAllowedWhilePaused(cmd) && !estimate_only) {
 		ShowErrorMessage(GetEncodedString(err_message), GetEncodedString(STR_ERROR_NOT_ALLOWED_WHILE_PAUSED),
-			WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
+			WarningLevel::Info, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
 		return { true, estimate_only, only_sending };
 	} else {
 		return { false, estimate_only, only_sending };
@@ -247,7 +240,7 @@ void CommandHelperBase::InternalPostResult(CommandCost &res, TileIndex tile, boo
 		}
 	} else if (estimate_only) {
 		ShowEstimatedCostOrIncome(res.GetCost(), x, y);
-	} else if (!only_sending && tile != 0 && IsLocalCompany() && _game_mode != GM_EDITOR) {
+	} else if (!only_sending && tile != 0 && IsLocalCompany() && _game_mode != GameMode::Editor) {
 		/* Only show the cost animation when we did actually
 		 * execute the command, i.e. we're not sending it to
 		 * the server, when it has cost the local company
@@ -257,7 +250,13 @@ void CommandHelperBase::InternalPostResult(CommandCost &res, TileIndex tile, boo
 	}
 }
 
-/** Helper to make a desync log for a command. */
+/**
+ * Helper to make a desync log for a command.
+ * @param cmd The executed command.
+ * @param err_message The error messages of the command.
+ * @param args The encoded arguments of the command.
+ * @param failed Whether the command failed.
+ */
 void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed)
 {
 	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameEconomy::date.base(), TimerGameEconomy::date_fract, _current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
@@ -269,7 +268,7 @@ void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, 
  * @param[in,out] cur_company Backup of current company at start of command execution.
  * @return True if test run can go ahead, false on error.
  */
-bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileIndex, Backup<CompanyID> &cur_company)
+bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, Backup<CompanyID> &cur_company)
 {
 	/* Always execute server and spectator commands as spectator */
 	bool exec_as_spectator = cmd_flags.Any({CommandFlag::Spectator, CommandFlag::Server});
@@ -277,7 +276,7 @@ bool CommandHelperBase::InternalExecutePrepTest(CommandFlags cmd_flags, TileInde
 	/* If the company isn't valid it may only do server command or start a new company!
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
-	if (_game_mode == GM_NORMAL && !exec_as_spectator && !Company::IsValidID(_current_company) && !(_current_company == OWNER_DEITY && cmd_flags.Test(CommandFlag::Deity))) {
+	if (_game_mode == GameMode::Normal && !exec_as_spectator && !Company::IsValidID(_current_company) && !(_current_company == OWNER_DEITY && cmd_flags.Test(CommandFlag::Deity))) {
 		return false;
 	}
 
@@ -333,7 +332,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
  * @param cmd Command that was executed.
  * @param cmd_flags Command flags.
  * @param res_test Command result of test run.
- * @param tes_exec Command result of real run.
+ * @param res_exec Command result of real run.
  * @param extra_cash Additional cash required for successful command execution.
  * @param tile Tile of command execution.
  * @param[in,out] cur_company Backup of current company at start of command execution.
@@ -343,7 +342,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 {
 	BasePersistentStorageArray::SwitchMode(PSM_LEAVE_COMMAND);
 
-	if (cmd == CMD_COMPANY_CTRL) {
+	if (cmd == Commands::CompanyControl) {
 		cur_company.Trash();
 		/* We are a new company                  -> Switch to new local company.
 		 * We were closed down                   -> Switch to spectator
@@ -384,7 +383,7 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 	SubtractMoneyFromCompany(_current_company, res_exec);
 
 	/* Record if there was a command issues during pause; ignore pause/other setting related changes. */
-	if (_pause_mode.Any() && _command_proc_table[cmd].type != CommandType::ServerSetting) _pause_mode.Set(PauseMode::CommandDuringPause);
+	if (_pause_mode.Any() && _command_table[cmd].type != CommandType::ServerSetting) _pause_mode.Set(PauseMode::CommandDuringPause);
 
 	/* update signals if needed */
 	UpdateSignalsInBuffer();

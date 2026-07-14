@@ -36,8 +36,8 @@ struct GenericScopeResolver : public ScopeResolver {
 	 * @param ai_callback Callback comes from the AI.
 	 */
 	GenericScopeResolver(ResolverObject &ro, bool ai_callback)
-		: ScopeResolver(ro), cargo_type(0), default_selection(0), src_industry(0), dst_industry(0), distance(0),
-		event(), count(0), station_size(0), feature(GSF_INVALID), ai_callback(ai_callback)
+		: ScopeResolver(ro), cargo_type(INVALID_CARGO), default_selection(0), src_industry(0), dst_industry(0), distance(0),
+		event(), count(0), station_size(0), feature(GrfSpecFeature::Invalid), ai_callback(ai_callback)
 	{
 	}
 
@@ -54,10 +54,10 @@ struct GenericResolverObject : public ResolverObject {
 
 	GenericResolverObject(bool ai_callback, CallbackID callback = CBID_NO_CALLBACK);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &this->generic_scope;
+			case VarSpriteGroupScope::Self: return &this->generic_scope;
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
@@ -85,7 +85,8 @@ struct GenericCallback {
 
 typedef std::list<GenericCallback> GenericCallbackList;
 
-static GenericCallbackList _gcl[GSF_END];
+/** Generic callbacks for each feature. */
+static EnumIndexArray<GenericCallbackList, GrfSpecFeature, GrfSpecFeature::End> _gcl{};
 
 
 /**
@@ -107,7 +108,7 @@ void ResetGenericCallbacks()
  */
 void AddGenericCallback(GrfSpecFeature feature, const GRFFile *file, const SpriteGroup *group)
 {
-	if (feature >= lengthof(_gcl)) {
+	if (to_underlying(feature) >= std::size(_gcl)) {
 		GrfMsg(5, "AddGenericCallback: Unsupported feature 0x{:02X}", feature);
 		return;
 	}
@@ -166,7 +167,7 @@ GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callba
  */
 static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(GrfSpecFeature feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8, std::span<int32_t> regs100 = {})
 {
-	assert(feature < lengthof(_gcl));
+	assert(to_underlying(feature) < std::size(_gcl));
 
 	/* Test each feature callback sprite group. */
 	for (const auto &it : _gcl[feature]) {
@@ -237,7 +238,7 @@ std::pair<const GRFFile *, uint16_t> GetAiPurchaseCallbackResult(GrfSpecFeature 
  */
 void AmbientSoundEffectCallback(TileIndex tile)
 {
-	assert(IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES) || IsTileType(tile, MP_WATER));
+	assert(IsTileType(tile, TileType::Clear) || IsTileType(tile, TileType::Trees) || IsTileType(tile, TileType::Water));
 
 	/* Only run every 1/200-th time. */
 	uint32_t r; // Save for later
@@ -245,13 +246,13 @@ void AmbientSoundEffectCallback(TileIndex tile)
 
 	/* Prepare resolver object. */
 	GenericResolverObject object(false, CBID_SOUNDS_AMBIENT_EFFECT);
-	object.generic_scope.feature = GSF_SOUNDFX;
+	object.generic_scope.feature = GrfSpecFeature::SoundEffects;
 
-	uint32_t param1_v7 = GetTileType(tile) << 28 | Clamp(TileHeight(tile), 0, 15) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
-	uint32_t param1_v8 = GetTileType(tile) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? to_underlying(GetWaterClass(tile)) : 0) << 3 | GetTerrainType(tile);
+	uint32_t param1_v7 = to_underlying(GetTileType(tile)) << 28 | Clamp(TileHeight(tile), 0, 15) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
+	uint32_t param1_v8 = to_underlying(GetTileType(tile)) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? to_underlying(GetWaterClass(tile)) : 0) << 3 | GetTerrainType(tile);
 
 	/* Run callback. */
-	auto callback = GetGenericCallbackResult(GSF_SOUNDFX, object, param1_v7, param1_v8);
+	auto callback = GetGenericCallbackResult(GrfSpecFeature::SoundEffects, object, param1_v7, param1_v8);
 
 	if (callback.second != CALLBACK_FAILED) PlayTileSound(callback.first, callback.second, tile);
 }

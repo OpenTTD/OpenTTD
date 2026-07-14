@@ -37,13 +37,13 @@
 # define MW(a) {a, PALETTE_TO_STRUCT_WHITE}
 # define MC(a) {a, PALETTE_TO_STRUCT_CONCRETE}
 
-/* Sprite table for middle part of aqueduct. */
+/** Sprite table for middle part of aqueduct. */
 static const PalSpriteID _aqueduct_sprite_table_middle[] = {
-	{SPR_AQUEDUCT_MIDDLE_X, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_X, PAL_NONE}, {0x0, PAL_NONE}, // AXIS_X
-	{SPR_AQUEDUCT_MIDDLE_Y, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_Y, PAL_NONE}, {0x0, PAL_NONE}, // AIXS_Y
+	{SPR_AQUEDUCT_MIDDLE_X, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_X, PAL_NONE}, {0x0, PAL_NONE}, // Axis::X
+	{SPR_AQUEDUCT_MIDDLE_Y, PAL_NONE}, {0x0, PAL_NONE}, {SPR_AQUEDUCT_PILLAR_Y, PAL_NONE}, {0x0, PAL_NONE}, // Axis::Y
 };
 
-/* Sprite table for head part of aqueduct. */
+/** Sprite table for head part of aqueduct. */
 static const PalSpriteID _aqueduct_sprite_table_heads[] = {
 	{SPR_AQUEDUCT_RAMP_SW, PAL_NONE}, {SPR_AQUEDUCT_RAMP_SE, PAL_NONE}, {SPR_AQUEDUCT_RAMP_NE, PAL_NONE}, {SPR_AQUEDUCT_RAMP_NW, PAL_NONE},
 };
@@ -754,7 +754,7 @@ static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_ALL_CORNERS = {
 };
 
 /** Pillar flags for bridges which have pillars on the all corners on each piece. */
-static const BridgeMiddlePillarFlags ALL_PILLARS = {{
+static constexpr BridgeMiddlePillarFlags ALL_PILLARS = {{
 	{{BRIDGEPILLARFLAGS_ALL_CORNERS, BRIDGEPILLARFLAGS_ALL_CORNERS}},
 	{{BRIDGEPILLARFLAGS_ALL_CORNERS, BRIDGEPILLARFLAGS_ALL_CORNERS}},
 	{{BRIDGEPILLARFLAGS_ALL_CORNERS, BRIDGEPILLARFLAGS_ALL_CORNERS}},
@@ -763,24 +763,33 @@ static const BridgeMiddlePillarFlags ALL_PILLARS = {{
 	{{BRIDGEPILLARFLAGS_ALL_CORNERS, BRIDGEPILLARFLAGS_ALL_CORNERS}},
 }};
 
+/** Pillar flags for bridges with pillars on the North-East side. */
+static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_NE{BridgePillarFlag::CornerN, BridgePillarFlag::CornerE};
+/** Pillar flags for bridges with pillars on the South-East side. */
+static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_SE{BridgePillarFlag::CornerS, BridgePillarFlag::CornerE};
+/** Pillar flags for bridges with pillars on the South-West side. */
+static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_SW{BridgePillarFlag::CornerS, BridgePillarFlag::CornerW};
+/** Pillar flags for bridges with pillars on the North-West side. */
+static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_NW{BridgePillarFlag::CornerN, BridgePillarFlag::CornerW};
+
 /** Pillar flags for suspension style bridges. */
-static const BridgeMiddlePillarFlags SUSPENSION_PILLARS = {{
-	{{{BridgePillarFlag::CornerW, BridgePillarFlag::CornerS}, {BridgePillarFlag::CornerS, BridgePillarFlag::CornerE}}},
-	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
-	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
-	{{{BridgePillarFlag::CornerW, BridgePillarFlag::CornerS}, {BridgePillarFlag::CornerS, BridgePillarFlag::CornerE}}},
-	{{BRIDGEPILLARFLAGS_ALL_CORNERS,                          BRIDGEPILLARFLAGS_ALL_CORNERS}},
-	{{{},                                                     {}}},
+static constexpr BridgeMiddlePillarFlags SUSPENSION_PILLARS = {{
+	{{BRIDGEPILLARFLAGS_SW, BRIDGEPILLARFLAGS_SE}},
+	{{BRIDGEPILLARFLAGS_NE, BRIDGEPILLARFLAGS_NW}},
+	{{BRIDGEPILLARFLAGS_NE, BRIDGEPILLARFLAGS_NW}},
+	{{BRIDGEPILLARFLAGS_SW, BRIDGEPILLARFLAGS_SE}},
+	{{BRIDGEPILLARFLAGS_ALL_CORNERS, BRIDGEPILLARFLAGS_ALL_CORNERS}},
+	{{{}}},
 }};
 
 /** Pillar flags for cantilever style bridges. */
-static const BridgeMiddlePillarFlags CANTILEVER_PILLARS = {{
-	{{{},                                                     {}}},
-	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
-	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
-	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
-	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
-	{{{BridgePillarFlag::CornerE, BridgePillarFlag::CornerN}, {BridgePillarFlag::CornerW, BridgePillarFlag::CornerN}}},
+static constexpr BridgeMiddlePillarFlags CANTILEVER_PILLARS = {{
+	{{{}}},
+	{{BRIDGEPILLARFLAGS_NE, BRIDGEPILLARFLAGS_NW}},
+	{{BRIDGEPILLARFLAGS_NE, BRIDGEPILLARFLAGS_NW}},
+	{{BRIDGEPILLARFLAGS_NE, BRIDGEPILLARFLAGS_NW}},
+	{{BRIDGEPILLARFLAGS_NE, BRIDGEPILLARFLAGS_NW}},
+	{{BRIDGEPILLARFLAGS_NE, BRIDGEPILLARFLAGS_NW}},
 }};
 
 const BridgeSpec _orig_bridge[] = {

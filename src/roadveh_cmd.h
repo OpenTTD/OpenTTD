@@ -22,6 +22,6 @@ CommandCost CmdBuildRoadVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 
 CommandCost CmdTurnRoadVeh(DoCommandFlags flags, VehicleID veh_id);
 
-DEF_CMD_TRAIT(CMD_TURN_ROADVEH, CmdTurnRoadVeh, CommandFlag::Location, CommandType::VehicleManagement)
+DEF_CMD_TRAIT(Commands::TurnRoadVehicle, CmdTurnRoadVeh, CommandFlag::Location, CommandType::VehicleManagement)
 
 #endif /* ROADVEH_CMD_H */

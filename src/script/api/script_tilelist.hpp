@@ -23,8 +23,8 @@ class ScriptTileList : public ScriptList {
 private:
 	std::optional<OrthogonalTileIterator> resume_iter;
 protected:
-	virtual bool SaveObject(HSQUIRRELVM) const override;
-	virtual ScriptObject *CloneObject() const override;
+	bool SaveObject(HSQUIRRELVM) const override;
+	ScriptObject *CloneObject() const override;
 public:
 	/**
 	 * Adds the rectangle between tile_from and tile_to to the to-be-evaluated tiles.

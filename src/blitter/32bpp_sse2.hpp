@@ -29,6 +29,7 @@
 /** Base methods for 32bpp SSE blitters. */
 class Blitter_32bppSSE_Base {
 public:
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~Blitter_32bppSSE_Base() = default;
 
 	struct MapValue {
@@ -38,17 +39,17 @@ public:
 	static_assert(sizeof(MapValue) == 2);
 
 	/** Helper for creating specialised functions for specific optimisations. */
-	enum ReadMode : uint8_t {
-		RM_WITH_SKIP,   ///< Use normal code for skipping empty pixels.
-		RM_WITH_MARGIN, ///< Use cached number of empty pixels at begin and end of line to reduce work.
-		RM_NONE,        ///< No specialisation.
+	enum class ReadMode : uint8_t {
+		WithSkip, ///< Use normal code for skipping empty pixels.
+		WithMargin, ///< Use cached number of empty pixels at begin and end of line to reduce work.
+		None, ///< No specialisation.
 	};
 
 	/** Helper for creating specialised functions for the case where the sprite width is odd or even. */
-	enum BlockType : uint8_t {
-		BT_EVEN, ///< An even number of pixels in the width; no need for a special case for the last pixel.
-		BT_ODD,  ///< An odd number of pixels in the width; special case for the last pixel.
-		BT_NONE, ///< No specialisation for either case.
+	enum class BlockType : uint8_t {
+		Even, ///< An even number of pixels in the width; no need for a special case for the last pixel.
+		Odd, ///< An odd number of pixels in the width; special case for the last pixel.
+		None, ///< No specialisation for either case.
 	};
 
 	/** Helper for using specialised functions designed to prevent whenever it's possible things like:
@@ -62,6 +63,7 @@ public:
 		NoAnim, ///< The sprite has no palette animated pixel.
 	};
 
+	/** Bitset of \c SpriteFlag elements. */
 	using SpriteFlags = EnumBitSet<SpriteFlag, uint8_t>;
 
 	/** Data stored about a (single) sprite. */

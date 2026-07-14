@@ -49,15 +49,16 @@ enum StationListWidgets : WidgetID {
 
 	WID_STL_SORTBY,         ///< 'Sort by' button - reverse sort direction.
 	WID_STL_SORTDROPBTN,    ///< Dropdown button.
+	WID_STL_FILTER, ///< Filter of name.
 
 	WID_STL_CARGODROPDOWN,  ///< Cargo type dropdown list.
 };
 
 /** Widgets of the #SelectStationWindow class. */
 enum JoinStationWidgets : WidgetID {
-	WID_JS_CAPTION,   // Caption of the window.
-	WID_JS_PANEL,     // Main panel.
-	WID_JS_SCROLLBAR, // Scrollbar of the panel.
+	WID_JS_CAPTION, ///< Caption of the window.
+	WID_JS_PANEL, ///< Main panel.
+	WID_JS_SCROLLBAR, ///< Scrollbar of the panel.
 };
 
 #endif /* WIDGETS_STATION_WIDGET_H */

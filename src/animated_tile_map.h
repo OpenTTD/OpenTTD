@@ -35,6 +35,7 @@ inline AnimatedTileState GetAnimatedTileState(Tile t)
 /**
  * Set the animated state of a tile.
  * @param t The tile.
+ * @param state The new state.
  */
 inline void SetAnimatedTileState(Tile t, AnimatedTileState state)
 {

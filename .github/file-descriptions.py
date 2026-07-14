@@ -9,7 +9,11 @@ import sys
 END_OF_SENTENCE = [".", "!", "?"]
 SOURCE_FILE_EXTENSION = ["cpp", "c", "hpp", "h", "mm", "m", "cc"]
 TEMPLATE_FILE_EXTENSION = ["preamble", "in"]
-EXCLUDED_FILES = ["./src/script/api/squirrel_export.sq.hpp.in", "./src/script/api/script_includes.hpp.in"]
+REPO_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+EXCLUDED_FILES = [
+    os.path.join(REPO_DIR, "src", "script", "api", "squirrel_export.sq.hpp.in"),
+    os.path.join(REPO_DIR, "src", "script", "api", "script_includes.hpp.in"),
+]
 
 
 def read_files_list_from_file(file_path):
@@ -27,9 +31,11 @@ def list_files_walk(start_path="."):
 def check_descriptions(files):
     errors = []
     for path in files:
-        if path in EXCLUDED_FILES:
+        if os.path.abspath(path) in EXCLUDED_FILES:
             continue
         if path.find("3rdparty") != -1 or path.find("lang") != -1:
+            continue
+        if not os.path.isfile(path):
             continue
         name = path[path.rfind("/") + 1 :]
         while True:
@@ -42,25 +48,27 @@ def check_descriptions(files):
         with open(path, "r") as f:
             content = f.read()
             ann = content.find(f"@file {name} ")
+            reason = f'Should be of the form "/** @file {name} Brief description of the file here. */"'
             if ann == -1:
                 if content.find("@file") == -1:
-                    errors.append(f'File "{path}" does not provide description.')
-                else:
-                    errors.append(f'Description of file "{path}" does not match coding style.')
-                continue
-            end = content.find("\n", ann)
-            start = content.rfind("\n", 0, ann) + 1
-            if content[start : ann] == "/** " and content[end - 3 : end] == " */" and content[end - 4] in END_OF_SENTENCE:
-                continue
-            elif content[start : ann] == " * " and content[start - 4 : start - 1] == "/**" and content[end - 1] in END_OF_SENTENCE and content[end + 1 : end + 4] != " */":
-                continue
-            errors.append(f'Description of file "{path}" does not match coding style.')
+                    errors.append(f'File "{path}" does not provide description. {reason}')
+                    continue
+            else:
+                end = content.find("\n", ann)
+                start = content.rfind("\n", 0, ann) + 1
+                if content[start : ann] == "/** " and content[end - 3 : end] == " */" and content[end - 4] in END_OF_SENTENCE:
+                        continue
+                elif content[start : ann] == " * ":
+                    if content[start - 4 : start - 1] == "/**" and content[end - 1] in END_OF_SENTENCE and content[end + 1 : end + 4] != " */":
+                        continue
+                    reason = f"Should be of the form:\n/**\n * @file {name} Brief description of the file here.\n * Detailed description of the file here.\n */"
+            errors.append(f'Description of file "{path}" does not match coding style. {reason}')
     return errors
 
 
 def main():
     if len(sys.argv) == 1:
-        files = list_files_walk("./src")
+        files = list_files_walk(os.path.join(REPO_DIR, "src"))
     else:
         files = read_files_list_from_file(sys.argv[1])
 

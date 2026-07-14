@@ -14,48 +14,48 @@
 
 /** Original field order for SlCompanyOldAIBuildRec. */
 const SaveLoadCompat _company_old_ai_buildrec_compat[] = {
-	SLC_NULL(2, SL_MIN_VERSION, SLV_6),
-	SLC_NULL(4, SLV_6, SLV_107),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_6),
-	SLC_NULL(4, SLV_6, SLV_107),
-	SLC_NULL(8, SL_MIN_VERSION, SLV_107),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(8, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 };
 
 /** Original field order for SlCompanyOldAI. */
 const SaveLoadCompat _company_old_ai_compat[] = {
-	SLC_NULL(2,  SL_MIN_VERSION, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION, SLV_13),
-	SLC_NULL(4, SLV_13, SLV_107),
-	SLC_NULL(8,  SL_MIN_VERSION, SLV_107),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerAIStateCounter),
+	SLC_NULL(4, SaveLoadVersion::LargerAIStateCounter, SaveLoadVersion::NoAI),
+	SLC_NULL(8, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 	SLC_VAR("num_build_rec"),
-	SLC_NULL(3,  SL_MIN_VERSION, SLV_107),
+	SLC_NULL(3, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 
-	SLC_NULL(2,  SL_MIN_VERSION,  SLV_6),
-	SLC_NULL(4,  SLV_6, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION,  SLV_6),
-	SLC_NULL(4,  SLV_6, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION, SLV_107),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 
-	SLC_NULL(2,  SL_MIN_VERSION,  SLV_6),
-	SLC_NULL(4,  SLV_6, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION,  SLV_6),
-	SLC_NULL(4,  SLV_6, SLV_107),
-	SLC_NULL(2,  SL_MIN_VERSION, SLV_107),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::NoAI),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 
-	SLC_NULL(2,  SL_MIN_VERSION, SLV_69),
-	SLC_NULL(4,  SLV_69, SLV_107),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
+	SLC_NULL(4, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::NoAI),
 
-	SLC_NULL(18, SL_MIN_VERSION, SLV_107),
-	SLC_NULL(20, SL_MIN_VERSION, SLV_107),
-	SLC_NULL(32, SL_MIN_VERSION, SLV_107),
+	SLC_NULL(18, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLC_NULL(20, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SLC_NULL(32, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
 
-	SLC_NULL(64, SLV_2, SLV_107),
+	SLC_NULL(64, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::NoAI),
 	SLC_VAR("buildrec"),
 };
 
 /** Original field order for SlCompanySettings. */
 const SaveLoadCompat _company_settings_compat[] = {
-	SLC_NULL(512, SLV_16, SLV_19),
+	SLC_NULL(512, SaveLoadVersion::EngineRenew, SaveLoadVersion::EngineRenewPool),
 	SLC_VAR("engine_renew_list"),
 	SLC_VAR("settings.engine_renew"),
 	SLC_VAR("settings.engine_renew_months"),
@@ -66,7 +66,7 @@ const SaveLoadCompat _company_settings_compat[] = {
 	SLC_VAR("settings.vehicle.servint_roadveh"),
 	SLC_VAR("settings.vehicle.servint_aircraft"),
 	SLC_VAR("settings.vehicle.servint_ships"),
-	SLC_NULL(63, SLV_2, SLV_144),
+	SLC_NULL(63, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::ReorderUnmovableRemoveReserved),
 };
 
 /** Original field order for SlCompanyEconomy. */
@@ -99,14 +99,14 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_VAR("current_loan"),
 	SLC_VAR("colour"),
 	SLC_VAR("money_fraction"),
-	SLC_NULL(1, SL_MIN_VERSION, SLV_58),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::VeryLowTownIndustryNumber),
 	SLC_VAR("block_preview"),
-	SLC_NULL(2, SL_MIN_VERSION, SLV_94),
-	SLC_NULL(4, SLV_94, SLV_170),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::FixCompanyCargoTypes),
+	SLC_NULL(4, SaveLoadVersion::FixCompanyCargoTypes, SaveLoadVersion::CountIndividualCargoes),
 	SLC_VAR("location_of_HQ"),
 	SLC_VAR("last_build_coordinate"),
 	SLC_VAR("inaugurated_year"),
-	SLC_NULL(4, SL_MIN_VERSION, SLV_TABLE_CHUNKS),
+	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::TableChunks),
 	SLC_VAR("num_valid_stat_ent"),
 	SLC_VAR("months_of_bankruptcy"),
 	SLC_VAR("bankrupt_asked"),
@@ -114,8 +114,8 @@ const SaveLoadCompat _company_sl_compat[] = {
 	SLC_VAR("bankrupt_value"),
 	SLC_VAR("yearly_expenses"),
 	SLC_VAR("is_ai"),
-	SLC_NULL(1, SLV_107, SLV_112),
-	SLC_NULL(1, SLV_4, SLV_100),
+	SLC_NULL(1, SaveLoadVersion::NoAI, SaveLoadVersion::SplitHQ),
+	SLC_NULL(1, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::Yapp),
 	SLC_VAR("terraform_limit"),
 	SLC_VAR("clear_limit"),
 	SLC_VAR("tree_limit"),

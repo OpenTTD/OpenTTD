@@ -97,7 +97,7 @@ struct BaseVehicleListWindow : public Window {
 		ADI_CREATE_GROUP,
 	};
 
-	static const StringID vehicle_depot_name[];
+	static const VehicleTypeIndexArray<const StringID> vehicle_depot_name;
 	static const std::initializer_list<const StringID> vehicle_group_by_names;
 	static const std::initializer_list<const StringID> vehicle_group_none_sorter_names_calendar;
 	static const std::initializer_list<const StringID> vehicle_group_none_sorter_names_wallclock;
@@ -116,7 +116,7 @@ struct BaseVehicleListWindow : public Window {
 	void UpdateVehicleGroupBy(GroupBy group_by);
 	void SortVehicleList();
 	void BuildVehicleList();
-	void SetCargoFilter(uint8_t index);
+	void SetCargoFilter(CargoType cargo_type);
 	void SetCargoFilterArray();
 	void FilterVehicleList();
 	StringID GetCargoFilterLabel(CargoType cargo_type) const;

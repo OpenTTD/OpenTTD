@@ -14,7 +14,10 @@
 
 #include "../safeguards.h"
 
-/** Action 0x10 - Define goto label */
+/**
+ * Action 0x10 - Define goto label.
+ * @param buf Reader of the NewGRF.
+ */
 static void DefineGotoLabel(ByteReader &buf)
 {
 	/* <10> <label> [<comment>]
@@ -29,9 +32,15 @@ static void DefineGotoLabel(ByteReader &buf)
 	GrfMsg(2, "DefineGotoLabel: GOTO target with label 0x{:02X}", nfo_label);
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x10>::FileScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x10>::SafetyScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x10>::LabelScan(ByteReader &buf) { DefineGotoLabel(buf); }
+/** @copybrief GrfActionHandler::Init */
 template <> void GrfActionHandler<0x10>::Init(ByteReader &) { }
+/** @copybrief GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x10>::Reserve(ByteReader &) { }
+/** @copybrief GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x10>::Activation(ByteReader &) { }

@@ -46,11 +46,11 @@ struct VehicleScopeResolver : public ScopeResolver {
 /** Resolver for a vehicle (chain) */
 struct VehicleResolverObject : public SpecializedResolverObject<VehicleRandomTriggers> {
 	/** Application of 'wagon overrides'. */
-	enum WagonOverride : uint8_t {
-		WO_NONE,     //!< Resolve no wagon overrides.
-		WO_UNCACHED, //!< Resolve wagon overrides.
-		WO_CACHED,   //!< Resolve wagon overrides using TrainCache::cached_override.
-		WO_SELF,     //!< Resolve self-override (helicopter rotors and such).
+	enum class WagonOverride : uint8_t {
+		None, ///< Resolve no wagon overrides.
+		Uncached, ///< Resolve wagon overrides.
+		Cached, ///< Resolve wagon overrides using TrainCache::cached_override.
+		Self, ///< Resolve self-override (helicopter rotors and such).
 	};
 
 	VehicleScopeResolver self_scope;     ///< Scope resolver for the indicated vehicle.
@@ -62,7 +62,7 @@ struct VehicleResolverObject : public SpecializedResolverObject<VehicleRandomTri
 	VehicleResolverObject(EngineID engine_type, const Vehicle *v, WagonOverride wagon_override, bool rotor_in_gui = false,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override;
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override;
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup &group) const override;
 
@@ -106,7 +106,7 @@ enum class BuildProbabilityType : uint8_t {
 	Reversed = 0, ///< Change the rail vehicle should be reversed when purchased.
 };
 
-std::optional<bool> TestVehicleBuildProbability(Vehicle *v, EngineID engine, BuildProbabilityType type);
+std::optional<bool> TestVehicleBuildProbability(Vehicle *v, BuildProbabilityType type);
 
 void TriggerVehicleRandomisation(Vehicle *veh, VehicleRandomTrigger trigger);
 

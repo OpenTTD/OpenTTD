@@ -50,6 +50,7 @@ public:
 	/**
 	 * Safe implementation of addition.
 	 * @param other the amount to add
+	 * @return Reference to this instance.
 	 * @note when the addition would yield more than T_MAX, it will be T_MAX.
 	 */
 	inline constexpr OverflowSafeInt& operator += (const OverflowSafeInt& other)
@@ -73,6 +74,7 @@ public:
 	/**
 	 * Safe implementation of subtraction.
 	 * @param other the amount to subtract
+	 * @return Reference to this instance.
 	 * @note when the subtraction would yield less than T_MIN, it will be T_MIN.
 	 */
 	inline constexpr OverflowSafeInt& operator -= (const OverflowSafeInt& other)
@@ -109,6 +111,7 @@ public:
 	/**
 	 * Safe implementation of multiplication.
 	 * @param factor the factor to multiply this with.
+	 * @return Reference to this instance.
 	 * @note when the multiplication would yield more than T_MAX (or less than T_MIN),
 	 *       it will be T_MAX (respectively T_MIN).
 	 */

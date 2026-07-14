@@ -34,7 +34,7 @@
 
 /** Widgets for the background window to prevent smearing. */
 static constexpr std::initializer_list<NWidgetPart> _background_widgets = {
-	NWidget(WWT_PANEL, COLOUR_DARK_BLUE, WID_BB_BACKGROUND), SetResize(1, 1),
+	NWidget(WWT_PANEL, Colours::DarkBlue, WID_BB_BACKGROUND), SetResize(1, 1),
 	EndContainer(),
 };
 
@@ -42,8 +42,8 @@ static constexpr std::initializer_list<NWidgetPart> _background_widgets = {
  * Window description for the background window to prevent smearing.
  */
 static WindowDesc _background_desc(
-	WDP_MANUAL, {}, 0, 0,
-	WC_BOOTSTRAP, WC_NONE,
+	WindowPosition::Manual, {}, 0, 0,
+	WindowClass::Bootstrap, WindowClass::None,
 	WindowDefaultFlag::NoClose,
 	_background_widgets
 );
@@ -60,26 +60,26 @@ public:
 
 	void DrawWidget(const Rect &r, WidgetID) const override
 	{
-		GfxFillRect(r, PixelColour{4}, FILLRECT_OPAQUE);
-		GfxFillRect(r, PixelColour{0}, FILLRECT_CHECKER);
+		GfxFillRect(r, PixelColour{4}, FillRectMode::Opaque);
+		GfxFillRect(r, PixelColour{0}, FillRectMode::Checker);
 	}
 };
 
 /** Nested widgets for the error window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_errmsg_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BEM_CAPTION), SetStringTip(STR_MISSING_GRAPHICS_ERROR_TITLE),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_BEM_CAPTION), SetStringTip(STR_MISSING_GRAPHICS_ERROR_TITLE),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_BEM_MESSAGE), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_BEM_MESSAGE), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BEM_QUIT), SetStringTip(STR_MISSING_GRAPHICS_ERROR_QUIT), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BEM_QUIT), SetStringTip(STR_MISSING_GRAPHICS_ERROR_QUIT), SetFill(1, 0),
 	EndContainer(),
 };
 
 /** Window description for the error window. */
 static WindowDesc _bootstrap_errmsg_desc(
-	WDP_CENTER, {}, 0, 0,
-	WC_BOOTSTRAP, WC_NONE,
+	WindowPosition::Center, {}, 0, 0,
+	WindowClass::Bootstrap, WindowClass::None,
 	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_errmsg_widgets
 );
@@ -110,7 +110,7 @@ public:
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget == WID_BEM_MESSAGE) {
-			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_ERROR, TC_FROMSTRING, SA_CENTER);
+			DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_ERROR, TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 		}
 	}
 
@@ -124,19 +124,19 @@ public:
 
 /** Nested widgets for the download window. */
 static constexpr std::initializer_list<NWidgetPart> _nested_bootstrap_download_status_window_widgets = {
-	NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-	NWidget(WWT_PANEL, COLOUR_GREY),
+	NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	NWidget(WWT_PANEL, Colours::Grey),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NCDS_PROGRESS_BAR), SetFill(1, 0),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NCDS_PROGRESS_TEXT), SetFill(1, 0), SetMinimalSize(350, 0),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_NCDS_PROGRESS_BAR), SetFill(1, 0),
+			NWidget(WWT_EMPTY, Colours::Invalid, WID_NCDS_PROGRESS_TEXT), SetFill(1, 0), SetMinimalSize(350, 0),
 		EndContainer(),
 	EndContainer(),
 };
 
 /** Window description for the download window */
 static WindowDesc _bootstrap_download_status_window_desc(
-	WDP_CENTER, {}, 0, 0,
-	WC_NETWORK_STATUS_WINDOW, WC_NONE,
+	WindowPosition::Center, {}, 0, 0,
+	WindowClass::NetworkStatus, WindowClass::None,
 	{WindowDefaultFlag::Modal, WindowDefaultFlag::NoClose},
 	_nested_bootstrap_download_status_window_widgets
 );
@@ -165,7 +165,7 @@ public:
 		BaseGraphics::FindSets();
 
 		/* And continue going into the menu. */
-		_game_mode = GM_MENU;
+		_game_mode = GameMode::Menu;
 
 		/* _exit_game is used to break out of the outer video driver's MainLoop. */
 		_exit_game = true;
@@ -176,19 +176,19 @@ public:
 /** The widgets for the query. It has no close box as that sprite does not exist yet. */
 static constexpr std::initializer_list<NWidgetPart> _bootstrap_query_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CAPTION, COLOUR_GREY), SetStringTip(STR_MISSING_GRAPHICS_SET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, Colours::Grey), SetStringTip(STR_MISSING_GRAPHICS_SET_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_BAFD_QUESTION), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_BAFD_QUESTION), EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_YES), SetStringTip(STR_MISSING_GRAPHICS_YES_DOWNLOAD),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BAFD_NO), SetStringTip(STR_MISSING_GRAPHICS_NO_QUIT),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BAFD_YES), SetStringTip(STR_MISSING_GRAPHICS_YES_DOWNLOAD),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BAFD_NO), SetStringTip(STR_MISSING_GRAPHICS_NO_QUIT),
 	EndContainer(),
 };
 
 /** The window description for the query. */
 static WindowDesc _bootstrap_query_desc(
-	WDP_CENTER, {}, 0, 0,
-	WC_CONFIRM_POPUP_QUERY, WC_NONE,
+	WindowPosition::Center, {}, 0, 0,
+	WindowClass::ConfirmPopupQuery, WindowClass::None,
 	WindowDefaultFlag::NoClose,
 	_bootstrap_query_widgets
 );
@@ -201,11 +201,11 @@ public:
 	/** Start listening to the content client events. */
 	BootstrapAskForDownloadWindow() : Window(_bootstrap_query_desc)
 	{
-		this->InitNested(WN_CONFIRM_POPUP_QUERY_BOOTSTRAP);
+		this->InitNested(ConfirmPopupQueryWindowNumber::Bootstrap);
 		_network_content_client.AddCallback(this);
 	}
 
-	/** Stop listening to the content client events. */
+	/** Stop listening to the content client events. @copydoc Window::Close */
 	void Close([[maybe_unused]] int data = 0) override
 	{
 		_network_content_client.RemoveCallback(this);
@@ -239,7 +239,7 @@ public:
 	{
 		if (widget != WID_BAFD_QUESTION) return;
 
-		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_SET_MESSAGE, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_MISSING_GRAPHICS_SET_MESSAGE, TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
@@ -270,7 +270,7 @@ public:
 		}
 
 		/* Once connected, request the metadata. */
-		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+		_network_content_client.RequestContentList(ContentType::BaseGraphics);
 	}
 
 	void OnReceiveContentInfo(const ContentInfo &ci) override
@@ -304,6 +304,7 @@ public:
 		_network_content_client.Connect();
 	}
 
+	/** Remove us from the content client's callbacks. */
 	~BootstrapEmscripten() override
 	{
 		_network_content_client.RemoveCallback(this);
@@ -317,7 +318,7 @@ public:
 		}
 
 		/* Once connected, request the metadata. */
-		_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+		_network_content_client.RequestContentList(ContentType::BaseGraphics);
 	}
 
 	void OnReceiveContentInfo(const ContentInfo &ci) override
@@ -372,7 +373,7 @@ bool HandleBootstrap()
 	if (!_network_available) goto failure;
 
 	/* First tell the game we're bootstrapping. */
-	_game_mode = GM_BOOTSTRAP;
+	_game_mode = GameMode::Bootstrap;
 
 #if defined(__EMSCRIPTEN__)
 	new BootstrapEmscripten();
@@ -385,10 +386,10 @@ bool HandleBootstrap()
 	/* Initialise the palette. The biggest step is 'faking' some recolour sprites.
 	 * This way the mauve and gray colours work and we can show the user interface. */
 	GfxInitPalettes();
-	static const uint8_t offsets[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
-	for (Colours i = COLOUR_BEGIN; i != COLOUR_END; i++) {
-		for (ColourShade j = SHADE_BEGIN; j < SHADE_END; j++) {
-			SetColourGradient(i, j, PixelColour(offsets[i] + j));
+	static const EnumIndexArray<uint8_t, Colours, Colours::End> offsets = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
+	for (Colours i : EnumRange(Colours::End)) {
+		for (Shade j : EnumRange(Shade::End)) {
+			SetColourGradient(i, j, PixelColour(offsets[i] + to_underlying(j)));
 		}
 	}
 
@@ -401,16 +402,16 @@ bool HandleBootstrap()
 	VideoDriver::GetInstance()->MainLoop();
 
 	/* _exit_game is used to get out of the video driver's main loop.
-	 * In case GM_BOOTSTRAP is still set we did not exit it via the
+	 * In case GameMode::Bootstrap is still set we did not exit it via the
 	 * "download complete" event, so it was a manual exit. Obey it. */
-	_exit_game = _game_mode == GM_BOOTSTRAP;
+	_exit_game = _game_mode == GameMode::Bootstrap;
 	if (_exit_game) return false;
 
 	/* Try to probe the graphics. Should work this time. */
 	if (!BaseGraphics::SetSet(nullptr)) goto failure;
 
 	/* Finally we can continue heading for the menu. */
-	_game_mode = GM_MENU;
+	_game_mode = GameMode::Menu;
 	return true;
 #endif
 

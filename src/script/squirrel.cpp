@@ -160,6 +160,7 @@ public:
 		if (this->allocation_limit == 0) this->allocation_limit = SAFE_LIMIT; // in case the setting is somehow zero
 	}
 
+	/** Ensure the allocations have already been released. */
 	~ScriptAllocator()
 	{
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
@@ -338,6 +339,21 @@ void Squirrel::AddClassEnd()
 
 	sq_newslot(vm, -3, SQFalse);
 	sq_pop(vm, 1);
+}
+
+void Squirrel::AddScopedEnumBegin(std::string_view enum_name)
+{
+	ScriptAllocatorScope alloc_scope(this);
+
+	sq_pushstring(this->vm, enum_name);
+	sq_newclass(this->vm, SQFalse);
+}
+
+void Squirrel::AddScopedEnumEnd()
+{
+	ScriptAllocatorScope alloc_scope(this);
+
+	sq_newslot(vm, -3, SQFalse);
 }
 
 bool Squirrel::MethodExists(HSQOBJECT instance, std::string_view method_name)
@@ -646,11 +662,11 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const std::string &filename, SQBool 
 	std::optional<FileHandle> file = std::nullopt;
 	size_t size;
 	if (this->GetAPIName().starts_with("AI")) {
-		file = FioFOpenFile(filename, "rb", AI_DIR, &size);
-		if (!file.has_value()) file = FioFOpenFile(filename, "rb", AI_LIBRARY_DIR, &size);
+		file = FioFOpenFile(filename, "rb", Subdirectory::Ai, &size);
+		if (!file.has_value()) file = FioFOpenFile(filename, "rb", Subdirectory::AiLibrary, &size);
 	} else if (this->GetAPIName().starts_with("GS")) {
-		file = FioFOpenFile(filename, "rb", GAME_DIR, &size);
-		if (!file.has_value()) file = FioFOpenFile(filename, "rb", GAME_LIBRARY_DIR, &size);
+		file = FioFOpenFile(filename, "rb", Subdirectory::Gs, &size);
+		if (!file.has_value()) file = FioFOpenFile(filename, "rb", Subdirectory::GsLibrary, &size);
 	} else {
 		NOT_REACHED();
 	}
@@ -735,6 +751,7 @@ bool Squirrel::LoadScript(const std::string &script)
 	return LoadScript(this->vm, script);
 }
 
+/** Clean up the Squirrel virtual machine state. */
 Squirrel::~Squirrel()
 {
 	this->Uninitialize();

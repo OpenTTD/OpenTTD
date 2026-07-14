@@ -31,7 +31,7 @@ struct PBSTileInfo {
 	/**
 	 * Create an empty PBSTileInfo.
 	 */
-	PBSTileInfo() : tile(INVALID_TILE), trackdir(INVALID_TRACKDIR), okay(false) {}
+	PBSTileInfo() : tile(INVALID_TILE), trackdir(Trackdir::Invalid), okay(false) {}
 
 	/**
 	 * Create a PBSTileInfo with given tile, track direction and safe waiting position information.
@@ -57,7 +57,7 @@ Train *GetTrainForReservation(TileIndex tile, Track track);
  */
 inline bool HasReservedTracks(TileIndex tile, TrackBits tracks)
 {
-	return (GetReservedTrackbits(tile) & tracks) != TRACK_BIT_NONE;
+	return GetReservedTrackbits(tile).Any(tracks);
 }
 
 #endif /* PBS_H */

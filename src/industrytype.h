@@ -26,33 +26,35 @@ enum class IndustryLifeType : uint8_t {
 	Organic = 1, ///< Like forests
 	Processing = 2, ///< Like factories
 };
+
+/** Bitset of \c IndustryLifeType elements. */
 using IndustryLifeTypes = EnumBitSet<IndustryLifeType, uint8_t>;
 
 static constexpr IndustryLifeTypes INDUSTRYLIFE_BLACK_HOLE{}; ///< Like power plants and banks
 
 /**
  * Available procedures to check whether an industry may build at a given location.
- * @see CheckNewIndustryProc, _check_new_industry_procs[]
+ * @see CheckNewIndustryProc, _check_new_industry_procs
  */
-enum CheckProc : uint8_t {
-	CHECK_NOTHING,    ///< Always succeeds.
-	CHECK_FOREST,     ///< %Industry should be build above snow-line in arctic climate.
-	CHECK_REFINERY,   ///< %Industry should be positioned near edge of the map.
-	CHECK_FARM,       ///< %Industry should be below snow-line in arctic.
-	CHECK_PLANTATION, ///< %Industry should NOT be in the desert.
-	CHECK_WATER,      ///< %Industry should be in the desert.
-	CHECK_LUMBERMILL, ///< %Industry should be in the rainforest.
-	CHECK_BUBBLEGEN,  ///< %Industry should be in low land.
-	CHECK_OIL_RIG,    ///< Industries at sea should be positioned near edge of the map.
-	CHECK_END,        ///< End marker of the industry check procedures.
+enum class IndustryCheck : uint8_t {
+	None, ///< Always succeeds.
+	Forest, ///< %Industry should be build above snow-line in arctic climate.
+	Refinery, ///< %Industry should be positioned near edge of the map.
+	Farm, ///< %Industry should be below snow-line in arctic.
+	Plantation, ///< %Industry should NOT be in the desert.
+	Water, ///< %Industry should be in the desert.
+	Lumbermill, ///< %Industry should be in the rainforest.
+	BubbleGen, ///< %Industry should be in low land.
+	OilRig, ///< Industries at sea should be positioned near edge of the map.
+	End, ///< End marker of the industry check procedures.
 };
 
 /** How was the industry created */
-enum IndustryConstructionType : uint8_t {
-	ICT_UNKNOWN,          ///< in previous game version or without newindustries activated
-	ICT_NORMAL_GAMEPLAY,  ///< either by user or random creation process
-	ICT_MAP_GENERATION,   ///< during random map creation
-	ICT_SCENARIO_EDITOR,  ///< while editing a scenario
+enum class IndustryConstructionType : uint8_t {
+	Unknown, ///< in previous game version or without newindustries activated
+	Gameplay, ///< either by user or random creation process
+	MapGeneration, ///< during random map creation
+	ScenarioEditor, ///< while editing a scenario
 };
 
 /** Various industry behaviours mostly to represent original TTD specialities */
@@ -79,6 +81,8 @@ enum class IndustryBehaviour : uint8_t {
 	CargoTypesUnlimited = 18, ///< Allow produced/accepted cargoes callbacks to supply more than 2 and 3 types
 	NoPaxProdClamp = 19, ///< Do not clamp production of passengers. (smooth economy only)
 };
+
+/** Bitset of \c IndustryBehaviour elements. */
 using IndustryBehaviours = EnumBitSet<IndustryBehaviour, uint32_t>;
 
 /** Flags for miscellaneous industry tile specialities */
@@ -86,6 +90,8 @@ enum class IndustryTileSpecialFlag : uint8_t {
 	NextFrameRandomBits = 0, ///< Callback 0x26 needs random bits
 	AcceptsAllCargo = 1, ///< Tile always accepts all cargoes the associated industry accepts
 };
+
+/** Bitset of \c IndustryTileSpecialFlag elements. */
 using IndustryTileSpecialFlags = EnumBitSet<IndustryTileSpecialFlag, uint8_t>;
 
 /** Definition of one tile in an industry tile layout */
@@ -106,7 +112,7 @@ struct IndustrySpec {
 	uint32_t removal_cost_multiplier;             ///< Base removal cost multiplier.
 	uint32_t prospecting_chance;                  ///< Chance prospecting succeeds
 	IndustryType conflicting[3];                ///< Industries this industry cannot be close to
-	uint8_t check_proc;                            ///< Index to a procedure to check for conflicting circumstances
+	IndustryCheck check_proc; ///< Index to a procedure to check for conflicting circumstances
 	std::array<CargoType, INDUSTRY_NUM_OUTPUTS> produced_cargo;
 	uint8_t production_rate[INDUSTRY_NUM_OUTPUTS];
 	/**
@@ -176,7 +182,6 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of ind
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles data
 void ResetIndustries();
 
-/* writable arrays of specs */
 extern IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 

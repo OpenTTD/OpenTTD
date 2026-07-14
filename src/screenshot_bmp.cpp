@@ -8,30 +8,15 @@
 /** @file screenshot_bmp.cpp BMP screenshot provider. */
 
 #include "stdafx.h"
-#include "core/endian_func.hpp"
 #include "core/math_func.hpp"
+#include "core/string_builder.hpp"
 #include "fileio_func.h"
 #include "screenshot_type.h"
 
 #include "safeguards.h"
 
-/** BMP File Header (stored in little endian) */
-PACK(struct BitmapFileHeader {
-	uint16_t type;
-	uint32_t size;
-	uint32_t reserved;
-	uint32_t off_bits;
-});
-static_assert(sizeof(BitmapFileHeader) == 14);
-
-/** BMP Info Header (stored in little endian) */
-struct BitmapInfoHeader {
-	uint32_t size;
-	int32_t width, height;
-	uint16_t planes, bitcount;
-	uint32_t compression, sizeimage, xpels, ypels, clrused, clrimp;
-};
-static_assert(sizeof(BitmapInfoHeader) == 40);
+constexpr size_t BITMAP_FILE_HEADER_SIZE = 14; ///< The size of a bitmap file header.
+constexpr size_t BITMAP_INFO_HEADER_SIZE = 40; ///< The size of a bitmap info header.
 
 /** Format of palette data in BMP header */
 struct RgbQuad {
@@ -64,29 +49,29 @@ public:
 		/* Size of palette. Only present for 8bpp mode */
 		uint pal_size = pixelformat == 8 ? sizeof(RgbQuad) * 256 : 0;
 
-		/* Setup the file header */
-		BitmapFileHeader bfh;
-		bfh.type = TO_LE16('MB');
-		bfh.size = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size + static_cast<size_t>(bytewidth) * h);
-		bfh.reserved = 0;
-		bfh.off_bits = TO_LE32(sizeof(BitmapFileHeader) + sizeof(BitmapInfoHeader) + pal_size);
+		std::string header;
+		StringBuilder sb(header);
+		sb.Put("BM"); // header field
+		sb.PutUint32LE(BITMAP_FILE_HEADER_SIZE + BITMAP_INFO_HEADER_SIZE + pal_size + static_cast<size_t>(bytewidth) * h); // full image size
+		sb.PutUint16LE(0); // reserved 1
+		sb.PutUint16LE(0); // reserved 2
+		sb.PutUint32LE(BITMAP_FILE_HEADER_SIZE + BITMAP_INFO_HEADER_SIZE + pal_size); // offset of bitmap image data
 
-		/* Setup the info header */
-		BitmapInfoHeader bih;
-		bih.size = TO_LE32(sizeof(BitmapInfoHeader));
-		bih.width = TO_LE32(w);
-		bih.height = TO_LE32(h);
-		bih.planes = TO_LE16(1);
-		bih.bitcount = TO_LE16(bpp * 8);
-		bih.compression = 0;
-		bih.sizeimage = 0;
-		bih.xpels = 0;
-		bih.ypels = 0;
-		bih.clrused = 0;
-		bih.clrimp = 0;
+		sb.PutUint32LE(BITMAP_INFO_HEADER_SIZE); // size of info header
+		sb.PutUint32LE(w); // width of the image
+		sb.PutUint32LE(h); // height of the image
+		sb.PutUint16LE(1); // number of planes
+		sb.PutUint16LE(bpp * 8); // bits per pixel
+		sb.PutUint32LE(0); // compression
+		sb.PutUint32LE(0); // size of raw image data, dummy of 0 is allowed
+		sb.PutUint32LE(0); // vertical resolution in pixels per meter
+		sb.PutUint32LE(0); // horizontal resolution in pixels per meter
+		sb.PutUint32LE(0); // number of colours in the palette, 0 is allowed
+		sb.PutUint32LE(0); // number of important colours, 0 is all colours are important
+		assert(header.size() == BITMAP_FILE_HEADER_SIZE + BITMAP_INFO_HEADER_SIZE);
 
-		/* Write file header and info header */
-		if (fwrite(&bfh, sizeof(bfh), 1, f) != 1 || fwrite(&bih, sizeof(bih), 1, f) != 1) {
+		/* Write headers */
+		if (fwrite(header.data(), header.size(), 1, f) != 1) {
 			return false;
 		}
 

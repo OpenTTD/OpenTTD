@@ -26,7 +26,10 @@ enum class VehicleFlag : uint8_t {
 	PathfinderLost = 7, ///< Vehicle's pathfinder is lost.
 	ServiceIntervalIsCustom = 8, ///< Service interval is custom.
 	ServiceIntervalIsPercent = 9, ///< Service interval is percent.
+	DrivingBackwards = 10, ///< Vehicle is driving backwards.
 };
+
+/** Bitset of \c VehicleFlag elements. */
 using VehicleFlags = EnumBitSet<VehicleFlag, uint16_t>;
 
 /** Various front vehicle properties that are preserved when autoreplacing, using order-backup or switching front engines within a consist. */
@@ -49,6 +52,7 @@ struct BaseConsist {
 
 	VehicleFlags vehicle_flags{}; ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~BaseConsist() = default;
 
 	void CopyConsistPropertiesFrom(const BaseConsist *src);

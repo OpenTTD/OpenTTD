@@ -27,15 +27,18 @@ static const DrawTileSeqStruct _road_depot_NW[] = {
 	TILE_SEQ_LINE(0x585 | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE, 15, 0, 1, 16)
 };
 
-static const DrawTileSpriteSpan _road_depot[] = {
+/** Sprite layout for a road depot for each direction. */
+static const DiagDirectionIndexArray<DrawTileSpriteSpan> _road_depot{{{
 	{ {0xA4A, PAL_NONE}, _road_depot_NE },
 	{ {0xA4A, PAL_NONE}, _road_depot_SE },
 	{ {0xA4A, PAL_NONE}, _road_depot_SW },
 	{ {0xA4A, PAL_NONE}, _road_depot_NW }
-};
+}}};
 
-/* Sprite layout for level crossings. The SpriteIDs are actually offsets
- * from the base SpriteID returned from the NewGRF sprite resolver. */
+/**
+ * Sprite layout for level crossings.
+ * The SpriteIDs are actually offsets from the base SpriteID returned from the NewGRF sprite resolver.
+ */
 static const DrawTileSeqStruct _crossing_layout_ALL[] = {
 	TILE_SEQ_LINE(2, PAL_NONE,  0,  0, 3, 3)
 	TILE_SEQ_LINE(4, PAL_NONE,  0, 13, 3, 3)

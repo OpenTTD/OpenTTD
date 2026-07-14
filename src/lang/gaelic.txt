@@ -1328,8 +1328,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Suidhich ìre n
 STR_CONFIG_SETTING_RECESSIONS                                   :Crìonaidhean eaconamaidh: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ma tha seo air, faodaidh crìonadh eaconamaidh tachairt gach beagan bhliadhnaichean. Rè crìonaidh eaconamaidh, tha a h-uile toradh mòran nas ìsle (tillidh e dhan ìre roimhe nuair a bhios an crìonadh eaconamaidh seachad)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Bac gun till trèanaichean ann an stèiseanan: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ma tha seo air, cha tionndaidh trèanaichean an comhair mura h-eil iad ann an stèisean ceann-rèile, fiù ’s nan robh slighe nas giorra dhan ath cheann-uidhe ann le tionndadh
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Dunaidh: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglaich dunaidh a dh'fhaodas carbadan no am bun-structar a bhacadh no a mhilleadh
@@ -1503,6 +1503,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ma tha seo air,
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fèin-nuadhaich carbad nuair a bhios e air fàs aosta: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nuair a bhios seo air, nuair a bhios carbad air fàs ro aosta, thèid fear ùr a chur na àite gu fèin-obrachail ma dh'fhreagras e ri cumhan an fhèin-nuadhachaidh
@@ -1696,12 +1698,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Seall na h-aman
 STR_CONFIG_SETTING_QUICKGOTO                                    :Cruthachadh luath aig òrduighean charbadan:{STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Ro-thagh an cùrsair “rach gu” nuair a thèid uinneag nan òrduighean fhosgladh
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Seòrsa rèile bunaiteach (le geama ùr/air ùr-luchdadh): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :An seòrsa rèile a thèid a thaghadh nuair a bhios geama ùr air a thòiseachadh no geama air luchdadh. Taghaidh “Seòrsa as sine” an seòrsa as sine dhe rèile, “Seòrsa as ùire” an seòrsa as ùire a tha ri làimh is “Ga chleachdadh mar as trice” an seòrsa a tha thu a' cleachdadh mar as trice an-dràsta
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Seòrsa as sine
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Seòrsa as ùire
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ga chleachdadh mar as trice
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Seall slighean-rèile glèidhte: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Cuiridh seo dath eile air slighean glèidhte gus cuideachadh le duilgheadasan gun diùlt trèan dol a-steach dha bhlocaichean stèidhichte air slighean
@@ -1791,6 +1788,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ma tha seo air,
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cuir crìochan-luaiths nan carbadan-rèile an comas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ma tha seo air, cleachd crìochan-luaiths nan carbadan cuideachd gus an luaths as motha aig trèan a shuidheachadh
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Cuir rèilean dealain à comas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ma tha seo air, cha leig thu leas slighean dealain a thogail gus einnseanan dealain a chleachdadh orra
@@ -2065,7 +2063,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... a' l
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... a' leigeil seachad an seata fuaime bunasach “{STRING}": cha deach a lorg
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... a' leigeil seachad an seata ciùil bunasach “{STRING}": cha deach a lorg
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -2273,15 +2271,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} {P
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} air a{P 0 "" "" n ""} luchdadh a-nuas gu ruige seo
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} air a{P 0 "" "" n ""} luchdadh a-nuas gu ruige seo
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) A' cheangal ...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) A' dearbhadh ...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) A' feitheamh ...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) A' luchdadh mapa a-nuas ...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) A' giullachd dàta ...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) A' clàradh ...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}A' faighinn fiosrachadh a' gheama ...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}A' faighinn fiosrachadh na companaidh ...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Dì-cheangail
 
@@ -2560,6 +2556,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Faide na
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Tagh dè cho fad ’s a bhios an stèisean
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Slaod is leig às
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tog stèisean le slaodadh is leigeil às
+
+
 
 
 
@@ -3661,6 +3659,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Spàirn 
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Astar: {GOLD}{COMMA} {P leac leac leacan leac}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Seòrsa a' charbaid-adhair: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3811,6 +3811,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tha thu
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Brath bho dhèanadair a' charbaid
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Tha sinn air {STRING} ùr a dhealbhadh - a bheil ùidh agaibh ann ’s nach cleachd ach sibh fhèin e fad bliadhna ach am faic sinn dè cho math ’s a dh’obraicheas e mus reic sinn don a h-uile duine e?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :einnsean-rèile
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einnsean aona-rèile
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :einnsean magnaiteach
@@ -3949,7 +3950,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Cuideam:
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Cuideam: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhachd: {LTBLUE}{POWER}{BLACK} Luaths as motha: {LTBLUE}{VELOCITY} {BLACK}Neart as motha: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Prothaid am bliadhna: {LTBLUE}{CURRENCY_LONG} (an-uiridh: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Earbsachd: {LTBLUE}{COMMA}%  {BLACK}{P 1 Briseadh Briseadh Brisidhean Briseadh} bhon obair-ghlèidhidh mu dheireadh: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Air a {G 0 thogail togail}: {LTBLUE}{NUM}{BLACK} Luach: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Tomhas-lìonaidh: {LTBLUE}—{STRING}
@@ -4071,7 +4071,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stad
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dàta a' charbaid air a bheil an leum stèidhichte
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ceudad an luchdaidh
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Earbsachd
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luaths as motha
@@ -4431,7 +4431,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Cha ghab
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Cha ghabh ainm a' bhaile atharrachadh...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Cha ghabh baile stèidheachadh an-seo...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Cha ghabh am baile leudachadh...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... ro fhaisg air oir a' mhapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ro fhaisg air baile eile
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tha cus bhailtean ann
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... chan eil rum air fhàgail air a' mhapa

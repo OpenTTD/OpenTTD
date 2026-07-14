@@ -32,11 +32,13 @@
 #	include <signal.h>
 #	define STDIN 0  /* file descriptor for standard input */
 
+/** Dedicated exit requested. */
+std::atomic<bool> _dedicated_exit_requested;
+
 /* Signal handlers */
 static void DedicatedSignalHandler(int sig)
 {
-	if (_game_mode == GM_NORMAL && _settings_client.gui.autosave_on_exit) DoExitSave();
-	_exit_game = true;
+	_dedicated_exit_requested = true;
 	signal(sig, DedicatedSignalHandler);
 }
 #endif
@@ -94,7 +96,7 @@ static void CloseWindowsConsoleThread()
 
 static std::unique_ptr<uint8_t[]> _dedicated_video_mem;
 
-/* Whether a fork has been done. */
+/** Whether a fork has been done. */
 bool _dedicated_forks;
 
 extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = nullptr);
@@ -205,8 +207,8 @@ void VideoDriver_Dedicated::MainLoop()
 	_network_dedicated = true;
 	_current_company = _local_company = COMPANY_SPECTATOR;
 
-	/* If SwitchMode is SM_LOAD_GAME / SM_START_HEIGHTMAP, it means that the user used the '-g' options */
-	if (_switch_mode != SM_LOAD_GAME && _switch_mode != SM_START_HEIGHTMAP) {
+	/* If SwitchMode is SwitchMode::LoadGame / SwitchMode::StartHeightmap, it means that the user used the '-g' options */
+	if (_switch_mode != SwitchMode::LoadGame && _switch_mode != SwitchMode::StartHeightmap) {
 		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 	}
 
@@ -220,5 +222,12 @@ void VideoDriver_Dedicated::MainLoop()
 
 		this->Tick();
 		this->SleepTillNextTick();
+
+#if defined(UNIX)
+		if (_dedicated_exit_requested) {
+			if (_game_mode == GameMode::Normal && _settings_client.gui.autosave_on_exit) DoExitSave();
+			_exit_game = true;
+		}
+#endif
 	}
 }

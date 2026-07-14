@@ -138,7 +138,7 @@ void VideoDriver::Tick()
 			this->InputLoop();
 
 			/* Check if the fast-forward button is still pressed. */
-			if (fast_forward_key_pressed && !_networking && _game_mode != GM_MENU) {
+			if (fast_forward_key_pressed && !_networking && _game_mode != GameMode::Menu) {
 				ChangeGameSpeed(true);
 				this->fast_forward_via_key = true;
 			} else if (this->fast_forward_via_key) {
@@ -149,7 +149,7 @@ void VideoDriver::Tick()
 			::InputLoop();
 
 			/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
-			if (_game_mode == GM_BOOTSTRAP || _switch_mode == SM_NONE || HasModalProgress()) {
+			if (_game_mode == GameMode::Bootstrap || _switch_mode == SwitchMode::None || HasModalProgress()) {
 				::UpdateWindows();
 			}
 

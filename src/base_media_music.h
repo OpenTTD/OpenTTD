@@ -43,10 +43,11 @@ struct MusicSongInfo {
 	bool loop; ///< song should play in a tight loop if possible, never ending
 };
 
+/** Instantiation of BaseSetTraits for a MusicSet. */
 template <> struct BaseSetTraits<struct MusicSet> {
-	static constexpr size_t num_files = NUM_SONGS_AVAILABLE;
-	static constexpr bool search_in_tars = false;
-	static constexpr std::string_view set_type = "music";
+	static constexpr size_t num_files = NUM_SONGS_AVAILABLE; ///< Maximum number of files in a music set.
+	static constexpr bool search_in_tars = false; ///< Music cannot be in a tar file.
+	static constexpr std::string_view set_type = "music"; ///< The type of set.
 };
 
 /** All data of a music set. */

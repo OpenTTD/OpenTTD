@@ -46,6 +46,8 @@ enum class ZoomLevel : int8_t {
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ZoomLevel)
 DECLARE_ENUM_AS_SEQUENTIAL(ZoomLevel)
+
+/** Bitset of \c ZoomLevel elements. */
 using ZoomLevels = EnumBitSet<ZoomLevel, uint8_t>;
 
 static const uint ZOOM_BASE_SHIFT = to_underlying(ZoomLevel::Normal);

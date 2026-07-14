@@ -21,27 +21,32 @@
  * your viewport and not rotated by 45 degrees left or right to get
  * a "north" used in you games.
  */
-enum Direction : uint8_t {
-	DIR_BEGIN = 0,          ///< Used to iterate
-	DIR_N   = 0,            ///< North
-	DIR_NE  = 1,            ///< Northeast
-	DIR_E   = 2,            ///< East
-	DIR_SE  = 3,            ///< Southeast
-	DIR_S   = 4,            ///< South
-	DIR_SW  = 5,            ///< Southwest
-	DIR_W   = 6,            ///< West
-	DIR_NW  = 7,            ///< Northwest
-	DIR_END,                ///< Used to iterate
-	INVALID_DIR = 0xFF,     ///< Flag for an invalid direction
+enum class Direction : uint8_t {
+	Begin = 0, ///< Used to iterate
+	N = 0, ///< North
+	NE = 1, ///< Northeast
+	E = 2, ///< East
+	SE = 3, ///< Southeast
+	S = 4, ///< South
+	SW = 5, ///< Southwest
+	W = 6, ///< West
+	NW = 7, ///< Northwest
+	End, ///< Used to iterate
+	Invalid = 0xFF, ///< Flag for an invalid direction
 };
 
-/** Allow incrementing of Direction variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(Direction)
-
+/** Bitset of \c Direction elements. */
 using Directions = EnumBitSet<Direction, uint8_t>;
 
 /** All possible directions. */
-static constexpr Directions DIRECTIONS_ALL{DIR_N, DIR_NE, DIR_E, DIR_SE, DIR_S, DIR_SW, DIR_W, DIR_NW};
+static constexpr Directions DIRECTIONS_ALL{Direction::N, Direction::NE, Direction::E, Direction::SE, Direction::S, Direction::SW, Direction::W, Direction::NW};
+
+/**
+ * Array with \c Direction as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using DirectionIndexArray = EnumIndexArray<T, Direction, Direction::End>;
 
 /**
  * Enumeration for the difference between two directions.
@@ -57,16 +62,16 @@ static constexpr Directions DIRECTIONS_ALL{DIR_N, DIR_NE, DIR_E, DIR_SE, DIR_S, 
  * difference of 0 degrees.
  *
  * @note To get this mentioned addition of direction you must use
- *       modulo DIR_END or use the #ChangeDirDiff(DirDiff, DirDiff) function.
+ *       modulo Direction::End or use the #ChangeDirDiff(DirDiff, DirDiff) function.
  * @see ChangeDirDiff(DirDiff, DirDiff)
  */
-enum DirDiff : uint8_t {
-	DIRDIFF_SAME    = 0,    ///< Both directions faces to the same direction
-	DIRDIFF_45RIGHT = 1,    ///< Angle of 45 degrees right
-	DIRDIFF_90RIGHT = 2,    ///< Angle of 90 degrees right
-	DIRDIFF_REVERSE = 4,    ///< One direction is the opposite of the other one
-	DIRDIFF_90LEFT  = 6,    ///< Angle of 90 degrees left
-	DIRDIFF_45LEFT  = 7,    ///< Angle of 45 degrees left
+enum class DirDiff : uint8_t {
+	Same = 0, ///< Both directions faces to the same direction
+	Right45 = 1, ///< Angle of 45 degrees right
+	Right90 = 2, ///< Angle of 90 degrees right
+	Reverse = 4, ///< One direction is the opposite of the other one
+	Left90 = 6, ///< Angle of 90 degrees left
+	Left45 = 7, ///< Angle of 45 degrees left
 };
 
 
@@ -75,22 +80,30 @@ enum DirDiff : uint8_t {
  *
  * This enumeration is used for the 4 direction of the tile-edges.
  */
-enum DiagDirection : uint8_t {
-	DIAGDIR_BEGIN = 0,      ///< Used for iterations
-	DIAGDIR_NE  = 0,        ///< Northeast, upper right on your monitor
-	DIAGDIR_SE  = 1,        ///< Southeast
-	DIAGDIR_SW  = 2,        ///< Southwest
-	DIAGDIR_NW  = 3,        ///< Northwest
-	DIAGDIR_END,            ///< Used for iterations
-	INVALID_DIAGDIR = 0xFF, ///< Flag for an invalid DiagDirection
+enum class DiagDirection : uint8_t {
+	Begin = 0, ///< Used for iterations
+	NE = 0, ///< Northeast, upper right on your monitor
+	SE = 1, ///< Southeast
+	SW = 2, ///< Southwest
+	NW = 3, ///< Northwest
+	End, ///< Used for iterations
+	Invalid = 0xFF, ///< Flag for an invalid DiagDirection
 };
 DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirection)
 DECLARE_ENUM_AS_ADDABLE(DiagDirection)
 
+/** Bitset of \c DiagDirection elements. */
 using DiagDirections = EnumBitSet<DiagDirection, uint8_t>;
 
 /** All possible diagonal directions. */
-static constexpr DiagDirections DIAGDIRECTIONS_ALL{DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW};
+static constexpr DiagDirections DIAGDIRECTIONS_ALL{DiagDirection::NE, DiagDirection::SE, DiagDirection::SW, DiagDirection::NW};
+
+/**
+ * Array with \c DiagDirection as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using DiagDirectionIndexArray = EnumIndexArray<T, DiagDirection, DiagDirection::End>;
 
 /**
  * Enumeration for the difference between to DiagDirection.
@@ -98,22 +111,16 @@ static constexpr DiagDirections DIAGDIRECTIONS_ALL{DIAGDIR_NE, DIAGDIR_SE, DIAGD
  * As the DiagDirection only contains 4 possible directions the
  * difference between two of these directions can only be in 4 ways.
  * As the DirDiff enumeration the values can be added together and
- * you will get the resulting difference (use modulo DIAGDIR_END).
+ * you will get the resulting difference (use modulo DiagDirection::End).
  *
  * @see DirDiff
  */
-enum DiagDirDiff : uint8_t {
-	DIAGDIRDIFF_BEGIN   = 0,        ///< Used for iterations
-	DIAGDIRDIFF_SAME    = 0,        ///< Same directions
-	DIAGDIRDIFF_90RIGHT = 1,        ///< 90 degrees right
-	DIAGDIRDIFF_REVERSE = 2,        ///< Reverse directions
-	DIAGDIRDIFF_90LEFT  = 3,        ///< 90 degrees left
-	DIAGDIRDIFF_END,                ///< Used for iterations
+enum class DiagDirDiff : uint8_t {
+	Same = 0, ///< Same directions
+	Right90 = 1, ///< 90 degrees right
+	Reverse = 2, ///< Reverse directions
+	Left90 = 3, ///< 90 degrees left
 };
-
-/** Allow incrementing of DiagDirDiff variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirDiff)
-
 
 /**
  * Enumeration for the two axis X and Y
@@ -123,12 +130,19 @@ DECLARE_INCREMENT_DECREMENT_OPERATORS(DiagDirDiff)
  * (and south-east edge). The Y axis must be so the one which goes
  * align the north-east edge (and south-west) edge.
  */
-enum Axis : uint8_t {
-	AXIS_X = 0,          ///< The X axis
-	AXIS_Y = 1,          ///< The y axis
-	AXIS_END,            ///< Used for iterations
-	INVALID_AXIS = 0xFF, ///< Flag for an invalid Axis
+enum class Axis : uint8_t {
+	X = 0, ///< The X axis
+	Y = 1, ///< The y axis
+	End, ///< End marker.
+	Invalid = 0xFF, ///< Flag for an invalid Axis
 };
 DECLARE_ENUM_AS_ADDABLE(Axis)
+
+/**
+ * Array with \c Axis as index.
+ * @tparam T the type contained within the array.
+ */
+template <typename T>
+using AxisIndexArray = EnumIndexArray<T, Axis, Axis::End>;
 
 #endif /* DIRECTION_TYPE_H */

@@ -17,10 +17,10 @@
 /**
  * Text effect modes.
  */
-enum TextEffectMode : uint8_t {
-	TE_INVALID, ///< Text effect is invalid.
-	TE_RISING, ///< Make the text effect slowly go upwards
-	TE_STATIC, ///< Keep the text effect static
+enum class TextEffectMode : uint8_t {
+	Invalid, ///< Text effect is invalid.
+	Rising, ///< Make the text effect slowly go upwards
+	Static, ///< Keep the text effect static
 };
 
 using TextEffectID = uint16_t;

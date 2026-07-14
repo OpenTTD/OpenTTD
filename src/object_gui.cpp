@@ -46,10 +46,11 @@ class ObjectPickerCallbacks : public PickerCallbacksNewGRFClass<ObjectClass> {
 public:
 	ObjectPickerCallbacks() : PickerCallbacksNewGRFClass<ObjectClass>("fav_objects") {}
 
-	GrfSpecFeature GetFeature() const override { return GSF_OBJECTS; }
+	GrfSpecFeature GetFeature() const override { return GrfSpecFeature::Objects; }
 
 	StringID GetClassTooltip() const override { return STR_PICKER_OBJECT_CLASS_TOOLTIP; }
 	StringID GetTypeTooltip() const override { return STR_PICKER_OBJECT_TYPE_TOOLTIP; }
+	StringID GetCollectionTooltip() const override { return STR_PICKER_OBJECT_COLLECTION_TOOLTIP; }
 
 	bool IsActive() const override
 	{
@@ -61,7 +62,7 @@ public:
 		return false;
 	}
 
-	int GetSelectedClass() const override { return _object_gui.sel_class; }
+	int GetSelectedClass() const override { return _object_gui.sel_class.base(); }
 	void SetSelectedClass(int id) const override { _object_gui.sel_class = this->GetClassIndex(id); }
 
 	StringID GetClassName(int id) const override
@@ -110,7 +111,7 @@ public:
 		for (const Object *o : Object::Iterate()) {
 			if (GetTileOwner(o->location.tile) != _current_company) continue;
 			const ObjectSpec *spec = ObjectSpec::Get(o->type);
-			if (spec == nullptr || spec->class_index == INVALID_OBJECT_CLASS || !spec->IsEverAvailable()) continue;
+			if (spec == nullptr || spec->class_index == ObjectClassID::Invalid() || !spec->IsEverAvailable()) continue;
 			items.insert(GetPickerItem(spec));
 		}
 	}
@@ -235,7 +236,7 @@ public:
 				const int bottom = tr.bottom;
 				/* Use all the available space past the rect, so that we can enlarge the window if needed. */
 				tr.bottom = INT16_MAX;
-				tr.top = DrawBadgeNameList(tr, spec->badges, GSF_OBJECTS);
+				tr.top = DrawBadgeNameList(tr, spec->badges, GrfSpecFeature::Objects);
 
 				/* Get the extra message for the GUI */
 				if (spec->callback_mask.Test(ObjectCallbackMask::FundMoreText)) {
@@ -251,7 +252,7 @@ public:
 							str = GetGRFStringWithTextStack(spec->grf_prop.grffile, GRFSTR_MISC_GRF_TEXT + callback_res, regs100);
 						}
 						if (!str.empty()) {
-							tr.top = DrawStringMultiLine(tr, str, TC_ORANGE);
+							tr.top = DrawStringMultiLine(tr, str, TextColour::Orange);
 						}
 					}
 				}
@@ -336,7 +337,7 @@ public:
 		if (spec->size == OBJECT_SIZE_1X1) {
 			VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_BUILD_OBJECT);
 		} else {
-			Command<CMD_BUILD_OBJECT>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), _object_gui.sel_view);
+			Command<Commands::BuildObject>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER, tile, spec->Index(), _object_gui.sel_view);
 		}
 	}
 
@@ -352,7 +353,7 @@ public:
 		assert(select_proc == DDSP_BUILD_OBJECT);
 
 		const ObjectSpec *spec = ObjectClass::Get(_object_gui.sel_class)->GetSpec(_object_gui.sel_type);
-		Command<CMD_BUILD_OBJECT_AREA>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER,
+		Command<Commands::BuildObjectArea>::Post(STR_ERROR_CAN_T_BUILD_OBJECT, CcPlaySound_CONSTRUCTION_OTHER,
 			end_tile, start_tile, spec->Index(), _object_gui.sel_view, _ctrl_pressed);
 	}
 
@@ -364,13 +365,13 @@ public:
 	/**
 	 * Handler for global hotkeys of the BuildObjectWindow.
 	 * @param hotkey Hotkey
-	 * @return ES_HANDLED if hotkey was accepted.
+	 * @return EventState::Handled if hotkey was accepted.
 	 */
 	static EventState BuildObjectGlobalHotkeys(int hotkey)
 	{
-		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+		if (_game_mode == GameMode::Menu) return EventState::NotHandled;
 		Window *w = ShowBuildObjectPicker();
-		if (w == nullptr) return ES_NOT_HANDLED;
+		if (w == nullptr) return EventState::NotHandled;
 		return w->OnHotkey(hotkey);
 	}
 
@@ -381,25 +382,25 @@ public:
 
 static constexpr std::initializer_list<NWidgetPart> _nested_build_object_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetStringTip(STR_OBJECT_BUILD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
-		NWidget(WWT_SHADEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
+		NWidget(WWT_CAPTION, Colours::DarkGreen), SetStringTip(STR_OBJECT_BUILD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::DarkGreen),
+		NWidget(WWT_DEFSIZEBOX, Colours::DarkGreen),
+		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
 			NWidgetFunction(MakePickerClassWidgets),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+			NWidget(WWT_PANEL, Colours::DarkGreen),
 				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0), SetPadding(WidgetDimensions::unscaled.picker),
-					NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_STATION_BUILD_ORIENTATION), SetFill(1, 0),
+					NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_STATION_BUILD_ORIENTATION), SetFill(1, 0),
 					NWidget(NWID_HORIZONTAL), SetPIPRatio(1, 0, 1),
-						NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, WID_BO_OBJECT_MATRIX), SetPIP(0, 2, 0),
-							NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetToolTip(STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
+						NWidget(NWID_MATRIX, Colours::DarkGreen, WID_BO_OBJECT_MATRIX), SetPIP(0, 2, 0),
+							NWidget(WWT_PANEL, Colours::Grey, WID_BO_OBJECT_SPRITE), SetToolTip(STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
 							EndContainer(),
 						EndContainer(),
-						NWidget(WWT_TEXT, INVALID_COLOUR, WID_BO_OBJECT_SIZE), SetAlignment(SA_CENTER),
-						NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BO_INFO), SetFill(1, 0), SetResize(1, 0),
+						NWidget(WWT_TEXT, Colours::Invalid, WID_BO_OBJECT_SIZE), SetAlignment({AlignmentH::Centre, AlignmentV::Middle}),
+						NWidget(WWT_EMPTY, Colours::Invalid, WID_BO_INFO), SetFill(1, 0), SetResize(1, 0),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -407,15 +408,19 @@ static constexpr std::initializer_list<NWidgetPart> _nested_build_object_widgets
 	EndContainer(),
 };
 
+/** Window definition for the build object window. */
 static WindowDesc _build_object_desc(
-	WDP_AUTO, "build_object", 0, 0,
-	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
+	WindowPosition::Automatic, "build_object", 0, 0,
+	WindowClass::BuildObject, WindowClass::BuildToolbar,
 	WindowDefaultFlag::Construction,
 	_nested_build_object_widgets,
 	&BuildObjectWindow::hotkeys
 );
 
-/** Show our object picker.  */
+/**
+ * Show our object picker.
+ * @return The allocated window or \c nullptr when no window was allocated.
+ */
 Window *ShowBuildObjectPicker()
 {
 	/* Don't show the place object button when there are no objects to place. */
@@ -428,5 +433,5 @@ Window *ShowBuildObjectPicker()
 /** Reset all data of the object GUI. */
 void InitializeObjectGui()
 {
-	_object_gui.sel_class = ObjectClassID::OBJECT_CLASS_BEGIN;
+	_object_gui.sel_class = ObjectClassID::Begin();
 }

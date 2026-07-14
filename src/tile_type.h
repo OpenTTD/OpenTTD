@@ -36,27 +36,32 @@ static constexpr uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum 
 static constexpr uint DEF_SNOW_COVERAGE = 40;                      ///< Default snow coverage.
 static constexpr uint DEF_DESERT_COVERAGE = 50;                    ///< Default desert coverage.
 
+static constexpr size_t TILE_TYPE_BITS = 4; ///< How many bits in map array are dedicated for type of each tile.
 
 /**
  * The different types of tiles.
  *
  * Each tile belongs to one type, according whatever is build on it.
  *
- * @note A railway with a crossing street is marked as MP_ROAD.
+ * @note A railway with a crossing street is marked as TileType::Road.
  */
-enum TileType : uint8_t {
-	MP_CLEAR,               ///< A tile without any structures, i.e. grass, rocks, farm fields etc.
-	MP_RAILWAY,             ///< A railway
-	MP_ROAD,                ///< A tile with road (or tram tracks)
-	MP_HOUSE,               ///< A house by a town
-	MP_TREES,               ///< Tile got trees
-	MP_STATION,             ///< A tile of a station
-	MP_WATER,               ///< Water tile
-	MP_VOID,                ///< Invisible tiles at the SW and SE border
-	MP_INDUSTRY,            ///< Part of an industry
-	MP_TUNNELBRIDGE,        ///< Tunnel entry/exit and bridge heads
-	MP_OBJECT,              ///< Contains objects such as transmitters and owned land
+enum class TileType : uint8_t {
+	Clear, ///< A tile without any structures, i.e. grass, rocks, farm fields etc.
+	Railway, ///< A tile with railway.
+	Road, ///< A tile with road and/or tram tracks.
+	House, ///< A house by a town.
+	Trees, ///< Tile with one or more trees.
+	Station, ///< A tile of a station or airport.
+	Water, ///< Water tile.
+	Void, ///< Invisible tiles at the SW and SE border.
+	Industry, ///< Part of an industry.
+	TunnelBridge, ///< Tunnel entry/exit and bridge heads.
+	Object, ///< Contains objects such as transmitters and owned land.
+	End, ///< End marker.
+	MaxSize = 1U << TILE_TYPE_BITS, ///< The maximum possible number of tile types to be stored in map.
 };
+
+static_assert(TileType::End <= TileType::MaxSize);
 
 /**
  * Additional infos of a tile on a tropic game.
@@ -64,19 +69,19 @@ enum TileType : uint8_t {
  * The tropiczone is not modified during gameplay. It mainly affects tree growth. (desert tiles are visible though)
  *
  * In randomly generated maps:
- *  TROPICZONE_DESERT: Generated everywhere, if there is neither water nor mountains (TileHeight >= 4) in a certain distance from the tile.
- *  TROPICZONE_RAINFOREST: Generated everywhere, if there is no desert in a certain distance from the tile.
- *  TROPICZONE_NORMAL: Everywhere else, i.e. between desert and rainforest and on sea (if you clear the water).
+ *  TropicZone::Desert: Generated everywhere, if there is neither water nor mountains (TileHeight >= 4) in a certain distance from the tile.
+ *  TropicZone::Rainforest: Generated everywhere, if there is no desert in a certain distance from the tile.
+ *  TropicZone::Normal: Everywhere else, i.e. between desert and rainforest and on sea (if you clear the water).
  *
  * In scenarios:
- *  TROPICZONE_NORMAL: Default value.
- *  TROPICZONE_DESERT: Placed manually.
- *  TROPICZONE_RAINFOREST: Placed if you plant certain rainforest-trees.
+ *  TropicZone::Normal: Default value.
+ *  TropicZone::Desert: Placed manually.
+ *  TropicZone::Rainforest: Placed if you plant certain rainforest-trees.
  */
-enum TropicZone : uint8_t {
-	TROPICZONE_NORMAL     = 0,      ///< Normal tropiczone
-	TROPICZONE_DESERT     = 1,      ///< Tile is desert
-	TROPICZONE_RAINFOREST = 2,      ///< Rainforest tile
+enum class TropicZone : uint8_t {
+	Normal = 0, ///< Normal tropiczone
+	Desert = 1, ///< Tile is desert
+	Rainforest = 2, ///< Rainforest tile
 };
 
 /**

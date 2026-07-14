@@ -48,7 +48,7 @@ public:
 	public:
 		FallbackVisualRun(Font *font, const char32_t *chars, int glyph_count, int char_offset, int x);
 		const Font *GetFont() const override { return this->font; }
-		int GetGlyphCount() const override { return static_cast<int>(this->glyphs.size()); }
+		size_t GetGlyphCount() const override { return this->glyphs.size(); }
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
 		std::span<const Position> GetPositions() const override { return this->positions; }
 		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
@@ -60,8 +60,8 @@ public:
 	public:
 		int GetLeading() const override;
 		int GetWidth() const override;
-		int CountRuns() const override;
-		const ParagraphLayouter::VisualRun &GetVisualRun(int run) const override;
+		size_t CountRuns() const override;
+		const ParagraphLayouter::VisualRun &GetVisualRun(size_t run) const override;
 
 		int GetInternalCharLength(char32_t) const override { return 1; }
 	};
@@ -134,10 +134,6 @@ FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const 
 	}
 }
 
-/**
- * Get the height of the line.
- * @return The maximum height of the line.
- */
 int FallbackParagraphLayout::FallbackLine::GetLeading() const
 {
 	int leading = 0;
@@ -148,10 +144,6 @@ int FallbackParagraphLayout::FallbackLine::GetLeading() const
 	return leading;
 }
 
-/**
- * Get the width of this line.
- * @return The width of the line.
- */
 int FallbackParagraphLayout::FallbackLine::GetWidth() const
 {
 	if (this->empty()) return 0;
@@ -167,20 +159,12 @@ int FallbackParagraphLayout::FallbackLine::GetWidth() const
 	return positions.back().right + 1;
 }
 
-/**
- * Get the number of runs in this line.
- * @return The number of runs.
- */
-int FallbackParagraphLayout::FallbackLine::CountRuns() const
+size_t FallbackParagraphLayout::FallbackLine::CountRuns() const
 {
-	return (uint)this->size();
+	return this->size();
 }
 
-/**
- * Get a specific visual run.
- * @return The visual run.
- */
-const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVisualRun(int run) const
+const ParagraphLayouter::VisualRun &FallbackParagraphLayout::FallbackLine::GetVisualRun(size_t run) const
 {
 	return this->at(run);
 }
@@ -196,19 +180,11 @@ FallbackParagraphLayout::FallbackParagraphLayout(char32_t *buffer, [[maybe_unuse
 	assert(runs.rbegin()->first == length);
 }
 
-/**
- * Reset the position to the start of the paragraph.
- */
 void FallbackParagraphLayout::Reflow()
 {
 	this->buffer = this->buffer_begin;
 }
 
-/**
- * Construct a new line with a maximum width.
- * @param max_width The maximum width of the string.
- * @return A Line, or nullptr when at the end of the paragraph.
- */
 std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine(int max_width)
 {
 	/* Simple idea:

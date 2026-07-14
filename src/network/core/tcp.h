@@ -18,11 +18,11 @@
 #include <thread>
 
 /** The states of sending the packets. */
-enum SendPacketsState : uint8_t {
-	SPS_CLOSED,      ///< The connection got closed.
-	SPS_NONE_SENT,   ///< The buffer is still full, so no (parts of) packets could be sent.
-	SPS_PARTLY_SENT, ///< The packets are partly sent; there are more packets to be sent in the queue.
-	SPS_ALL_SENT,    ///< All packets in the queue are sent.
+enum class SendPacketsState : uint8_t {
+	Closed, ///< The connection got closed.
+	NoneSent, ///< The buffer is still full, so no (parts of) packets could be sent.
+	PartlySent, ///< The packets are partly sent; there are more packets to be sent in the queue.
+	AllSent, ///< All packets in the queue are sent.
 };
 
 /** Base socket handler for all TCP sockets */
@@ -31,7 +31,6 @@ private:
 	std::deque<std::unique_ptr<Packet>> packet_queue{}; ///< Packets that are awaiting delivery. Cannot be std::queue as that does not have a clear() function.
 	std::unique_ptr<Packet> packet_recv = nullptr; ///< Partially received packet
 
-	void EmptyPacketQueue();
 public:
 	SOCKET sock = INVALID_SOCKET; ///< The socket currently connected to
 	bool writable = false; ///< Can we write to this socket?
@@ -150,6 +149,7 @@ public:
 	}
 };
 
+/** TCPConnecter that resolves the server invite code if needed before connecting. */
 class TCPServerConnecter : public TCPConnecter {
 private:
 	SOCKET socket = INVALID_SOCKET; ///< The socket when a connection is established.

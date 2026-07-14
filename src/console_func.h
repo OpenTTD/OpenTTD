@@ -13,8 +13,8 @@
 #include "console_type.h"
 #include "core/format.hpp"
 
-/* console modes */
-extern IConsoleModes _iconsole_mode;
+/** Console modes. */
+extern IConsoleMode _iconsole_mode;
 
 /* console functions */
 void IConsoleInit();
@@ -22,7 +22,7 @@ void IConsoleFree();
 void IConsoleClose();
 
 /* console output */
-void IConsolePrint(TextColour colour_code, const std::string &string);
+void IConsolePrint(ExtendedTextColour colour_code, const std::string &string);
 
 /**
  * Handle the printing of text entered into the console or redirected there
@@ -31,14 +31,14 @@ void IConsolePrint(TextColour colour_code, const std::string &string);
  * are also logged. All lines to print are added to a temporary buffer which can be
  * used as a history to print them onscreen
  * @param colour_code The colour of the command.
- * @param format_string The formatting string to tell what to do with the remaining arguments.
+ * @param format The formatting string to tell what to do with the remaining arguments.
  * @param first_arg The first argument to the format.
  * @param other_args The other arguments to the format.
  * @tparam A The type of the first argument.
  * @tparam Args The types of the other arguments.
  */
 template <typename A, typename ... Args>
-inline void IConsolePrint(TextColour colour_code, fmt::format_string<A, Args...> format, A&& first_arg, Args&&... other_args)
+inline void IConsolePrint(ExtendedTextColour colour_code, fmt::format_string<A, Args...> format, A&& first_arg, Args&&... other_args)
 {
 	/* The separate first_arg argument is added to aid overloading.
 	 * Otherwise the calls that do no need formatting will still use this function. */
@@ -48,6 +48,6 @@ inline void IConsolePrint(TextColour colour_code, fmt::format_string<A, Args...>
 /* Parser */
 void IConsoleCmdExec(std::string_view command_string, const uint recurse_count = 0);
 
-bool IsValidConsoleColour(TextColour c);
+bool IsValidConsoleColour(ExtendedTextColour c);
 
 #endif /* CONSOLE_FUNC_H */

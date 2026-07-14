@@ -99,7 +99,7 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 
 	int x = rtl ? right : left;
 	if (cur_row >= first_row) {
-		PixelColour colour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
+		PixelColour colour = GetColourGradient(Colours::Orange, Shade::Normal);
 		y += (cur_row - first_row) * BaseSettingEntry::line_height; // Compute correct y start position
 
 		/* Draw vertical for parent nesting levels */
@@ -124,17 +124,12 @@ uint BaseSettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int
 
 /* == SettingEntry methods == */
 
-/**
- * Initialization of a setting entry
- * @param level      Page nesting level of this entry
- */
 void SettingEntry::Init(uint8_t level)
 {
 	BaseSettingEntry::Init(level);
 	this->setting = GetSettingFromName(this->name)->AsIntSetting();
 }
 
-/* Sets the given setting entry to its default value */
 void SettingEntry::ResetAll()
 {
 	SetSettingValue(this->setting, this->setting->GetDefaultValue());
@@ -152,17 +147,11 @@ void SettingEntry::SetButtons(SettingEntryFlags new_val)
 	this->flags.Set(SettingEntryFlag::RightDepressed, new_val.Test(SettingEntryFlag::RightDepressed));
 }
 
-/** Return number of rows needed to display the (filtered) entry */
 uint SettingEntry::Length() const
 {
 	return this->IsFiltered() ? 0 : 1;
 }
 
-/**
- * Get the biggest height of the help text(s), if the width is at least \a maxw. Help text gets wrapped if needed.
- * @param maxw Maximal width of a line help text.
- * @return Biggest height needed to display any help text of this node (and its descendants).
- */
 uint SettingEntry::GetMaxHelpHeight(int maxw)
 {
 	return GetStringHeight(this->setting->GetHelp(), maxw);
@@ -246,10 +235,18 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	return visible;
 }
 
+/**
+ * Resolve the underlying object where to dynamically load/save a setting to.
+ * This is primarily to load the settings object of the right company, if the setting is saved per company.
+ * When not in the menu and the local company is valid, returns the local company's settings. Otherwise the global client settings.
+ * @param settings_ptr The settings to fall back to when this setting is not for a company.
+ * @param sd The setting to check.
+ * @return The resolved object.
+ */
 const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd)
 {
 	if (sd->flags.Test(SettingFlag::PerCompany)) {
-		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
+		if (Company::IsValidID(_local_company) && _game_mode != GameMode::Menu) {
 			return &Company::Get(_local_company)->settings;
 		}
 		return &_settings_client.company;
@@ -257,14 +254,6 @@ const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc
 	return settings_ptr;
 }
 
-/**
- * Function to draw setting value (button + text + current value)
- * @param settings_ptr Pointer to current values of all settings
- * @param left         Left-most position in window/panel to start drawing
- * @param right        Right-most position in window/panel to draw
- * @param y            Upper-most position in window/panel to start drawing
- * @param highlight    Highlight entry.
- */
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
 	const IntSettingDesc *sd = this->setting;
@@ -283,17 +272,17 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
 	if (sd->IsBoolSetting()) {
 		/* Draw checkbox for boolean-value either on/off */
-		DrawBoolButton(buttons_left, button_y, COLOUR_YELLOW, COLOUR_MAUVE, value != 0, editable);
+		DrawBoolButton(buttons_left, button_y, Colours::Yellow, Colours::Mauve, value != 0, editable);
 	} else if (sd->flags.Test(SettingFlag::GuiDropdown)) {
 		/* Draw [v] button for settings of an enum-type */
-		DrawDropDownButton(buttons_left, button_y, COLOUR_YELLOW, state != 0, editable);
+		DrawDropDownButton(buttons_left, button_y, Colours::Yellow, state != 0, editable);
 	} else {
 		/* Draw [<][>] boxes for settings of an integer-type */
-		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
+		DrawArrowButtons(buttons_left, button_y, Colours::Yellow, state,
 				editable && value != (sd->flags.Test(SettingFlag::GuiZeroIsSpecial) ? 0 : min_val), editable && static_cast<uint32_t>(value) != max_val);
 	}
 	auto [param1, param2] = sd->GetValueParams(value);
-	DrawString(text_left, text_right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FS_NORMAL)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	DrawString(text_left, text_right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FontSize::Normal)) / 2, GetString(sd->GetTitle(), STR_CONFIG_SETTING_VALUE, param1, param2), highlight ? TextColour::White : TextColour::LightBlue);
 }
 
 /* == SettingsContainer methods == */
@@ -378,7 +367,10 @@ bool SettingsContainer::IsVisible(const BaseSettingEntry *item) const
 	return false;
 }
 
-/** Return number of rows needed to display the whole page */
+/**
+ * Return number of rows needed to display the whole page.
+ * @return Number of rows.
+ */
 uint SettingsContainer::Length() const
 {
 	uint length = 0;
@@ -456,17 +448,12 @@ SettingsPage::SettingsPage(StringID title)
 	this->folded = true;
 }
 
-/**
- * Initialization of an entire setting page
- * @param level Nesting level of this page (internal variable, do not provide a value for it when calling)
- */
 void SettingsPage::Init(uint8_t level)
 {
 	BaseSettingEntry::Init(level);
 	SettingsContainer::Init(level + 1);
 }
 
-/** Resets all settings to their default values */
 void SettingsPage::ResetAll()
 {
 	for (auto settings_entry : this->entries) {
@@ -474,7 +461,6 @@ void SettingsPage::ResetAll()
 	}
 }
 
-/** Recursively close all (filtered) folds of sub-pages */
 void SettingsPage::FoldAll()
 {
 	if (this->IsFiltered()) return;
@@ -483,7 +469,6 @@ void SettingsPage::FoldAll()
 	SettingsContainer::FoldAll();
 }
 
-/** Recursively open all (filtered) folds of sub-pages */
 void SettingsPage::UnFoldAll()
 {
 	if (this->IsFiltered()) return;
@@ -492,11 +477,6 @@ void SettingsPage::UnFoldAll()
 	SettingsContainer::UnFoldAll();
 }
 
-/**
- * Recursively accumulate the folding state of the (filtered) tree.
- * @param[in,out] all_folded Set to false, if one entry is not folded.
- * @param[in,out] all_unfolded Set to false, if one entry is folded.
- */
 void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 {
 	if (this->IsFiltered()) return;
@@ -510,12 +490,6 @@ void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 	SettingsContainer::GetFoldingState(all_folded, all_unfolded);
 }
 
-/**
- * Update the filter state.
- * @param filter Filter
- * @param force_visible Whether to force all items visible, no matter what (due to filter text; not affected by restriction drop down box).
- * @return true if item remains visible
- */
 bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 {
 	if (!force_visible && !filter.string.IsEmpty()) {
@@ -529,12 +503,6 @@ bool SettingsPage::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	return visible;
 }
 
-/**
- * Check whether an entry is visible and not folded or filtered away.
- * Note: This does not consider the scrolling range; it might still require scrolling to make the setting really visible.
- * @param item Entry to search for.
- * @return true if entry is visible.
- */
 bool SettingsPage::IsVisible(const BaseSettingEntry *item) const
 {
 	if (this->IsFiltered()) return false;
@@ -544,7 +512,6 @@ bool SettingsPage::IsVisible(const BaseSettingEntry *item) const
 	return SettingsContainer::IsVisible(item);
 }
 
-/** Return number of rows needed to display the (filtered) entry */
 uint SettingsPage::Length() const
 {
 	if (this->IsFiltered()) return 0;
@@ -569,20 +536,6 @@ BaseSettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row)
 	return SettingsContainer::FindEntry(row_num, cur_row);
 }
 
-/**
- * Draw a row in the settings panel.
- *
- * @param settings_ptr Pointer to current values of all settings
- * @param left         Left-most position in window/panel to start drawing \a first_row
- * @param right        Right-most x position to draw strings at.
- * @param y            Upper-most position in window/panel to start drawing \a first_row
- * @param first_row    First row number to draw
- * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
- * @param selected     Selected entry by the user.
- * @param cur_row      Current row number (internal variable)
- * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
- * @return Row number of the next row to draw
- */
 uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, uint first_row, uint max_row, BaseSettingEntry *selected, uint cur_row, uint parent_last) const
 {
 	if (this->IsFiltered()) return cur_row;
@@ -602,26 +555,22 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int y, 
 	return cur_row;
 }
 
-/**
- * Function to draw setting value (button + text + current value)
- * @param left         Left-most position in window/panel to start drawing
- * @param right        Right-most position in window/panel to draw
- * @param y            Upper-most position in window/panel to start drawing
- */
 void SettingsPage::DrawSetting(GameSettings *, int left, int right, int y, bool) const
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	DrawSprite((this->folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, rtl ? right - BaseSettingEntry::circle_size.width : left, y + (BaseSettingEntry::line_height - BaseSettingEntry::circle_size.height) / 2);
-	DrawString(rtl ? left : left + BaseSettingEntry::circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - BaseSettingEntry::circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FS_NORMAL)) / 2, this->title, TC_ORANGE);
+	DrawString(rtl ? left : left + BaseSettingEntry::circle_size.width + WidgetDimensions::scaled.hsep_normal, rtl ? right - BaseSettingEntry::circle_size.width - WidgetDimensions::scaled.hsep_normal : right, y + (BaseSettingEntry::line_height - GetCharacterHeight(FontSize::Normal)) / 2, this->title, TextColour::Orange);
 }
 
-/** Construct settings tree */
+/**
+ * Construct settings tree.
+ * @return Reference to the static SettingsContainer.
+ */
 SettingsContainer &GetSettingsTree()
 {
 	static SettingsContainer *main = nullptr;
 
-	if (main == nullptr)
-	{
+	if (main == nullptr) {
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		main = new SettingsContainer();
 
@@ -698,7 +647,7 @@ SettingsContainer &GetSettingsTree()
 			{
 				construction->Add(new SettingEntry("gui.link_terraform_toolbar"));
 				construction->Add(new SettingEntry("gui.persistent_buildingtools"));
-				construction->Add(new SettingEntry("gui.default_rail_type"));
+				construction->Add(new SettingEntry("gui.default_rail_road_type"));
 				construction->Add(new SettingEntry("gui.semaphore_build_before"));
 				construction->Add(new SettingEntry("gui.signal_gui_mode"));
 				construction->Add(new SettingEntry("gui.cycle_signal_types"));
@@ -768,6 +717,7 @@ SettingsContainer &GetSettingsTree()
 			accounting->Add(new SettingEntry("economy.infrastructure_maintenance"));
 			accounting->Add(new SettingEntry("difficulty.vehicle_costs"));
 			accounting->Add(new SettingEntry("difficulty.construction_cost"));
+			accounting->Add(new SettingEntry("economy.cargo_aging_rate"));
 		}
 
 		SettingsPage *vehicles = main->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES));
@@ -782,12 +732,13 @@ SettingsContainer &GetSettingsTree()
 				physics->Add(new SettingEntry("vehicle.roadveh_slope_steepness"));
 				physics->Add(new SettingEntry("vehicle.smoke_amount"));
 				physics->Add(new SettingEntry("vehicle.plane_speed"));
+				physics->Add(new SettingEntry("vehicle.aircraft_range"));
 			}
 
 			SettingsPage *routing = vehicles->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES_ROUTING));
 			{
 				routing->Add(new SettingEntry("vehicle.road_side"));
-				routing->Add(new SettingEntry("difficulty.line_reverse_mode"));
+				routing->Add(new SettingEntry("difficulty.train_flip_reverse_allowed"));
 				routing->Add(new SettingEntry("pf.reverse_at_signals"));
 				routing->Add(new SettingEntry("pf.forbid_90_deg"));
 			}

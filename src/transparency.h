@@ -20,25 +20,26 @@
  * If you change the order, change the order of the ShowTransparencyToolbar() stuff in transparency_gui.cpp too.
  * If you add or remove an option don't forget to change the transparency 'hot keys' in main_gui.cpp.
  */
-enum TransparencyOption : uint8_t {
-	TO_SIGNS = 0,  ///< signs
-	TO_TREES,      ///< trees
-	TO_HOUSES,     ///< town buildings
-	TO_INDUSTRIES, ///< industries
-	TO_BUILDINGS,  ///< company buildings - depots, stations, HQ, ...
-	TO_BRIDGES,    ///< bridges
-	TO_STRUCTURES, ///< other objects such as transmitters and lighthouses
-	TO_CATENARY,   ///< catenary
-	TO_TEXT,       ///< loading and cost/income text
-	TO_END,
-	TO_INVALID,    ///< Invalid transparency option
+enum class TransparencyOption : uint8_t {
+	Signs = 0, ///< signs
+	Trees = 1, ///< trees
+	Houses = 2, ///< town buildings
+	Industries = 3, ///< industries
+	Buildings = 4, ///< company buildings - depots, stations, HQ, ...
+	Bridges = 5, ///< bridges
+	Structures = 6, ///< other objects such as transmitters and lighthouses
+	Catenary = 7, ///< catenary
+	Text = 8, ///< loading and cost/income text
+	Invalid, ///< Invalid transparency option
 };
 
-typedef uint TransparencyOptionBits; ///< transparency option bits
-extern TransparencyOptionBits _transparency_opt;
-extern TransparencyOptionBits _transparency_lock;
-extern TransparencyOptionBits _invisibility_opt;
-extern uint8_t _display_opt;
+/** Bitset of \c TransparencyOption elements. */
+using TransparencyOptions = EnumBitSet<TransparencyOption, uint32_t>;
+
+extern TransparencyOptions _transparency_opt;
+extern TransparencyOptions _transparency_lock;
+extern TransparencyOptions _invisibility_opt;
+extern DisplayOptions _display_opt;
 extern StationFacilities _facility_display_opt;
 
 /**
@@ -46,10 +47,11 @@ extern StationFacilities _facility_display_opt;
  * and if we aren't in the game menu (there's never transparency)
  *
  * @param to the structure which transparency option is ask for
+ * @return \c true if transparency is set for the option, and not in the main menu.
  */
 inline bool IsTransparencySet(TransparencyOption to)
 {
-	return (HasBit(_transparency_opt, to) && _game_mode != GM_MENU);
+	return _transparency_opt.Test(to) && _game_mode != GameMode::Menu;
 }
 
 /**
@@ -57,10 +59,11 @@ inline bool IsTransparencySet(TransparencyOption to)
  * and if we aren't in the game menu (there's never transparency)
  *
  * @param to the structure which invisibility option is ask for
+ * @return \c true if invisibility is set for the option, and not in the main menu.
  */
 inline bool IsInvisibilitySet(TransparencyOption to)
 {
-	return (HasBit(_transparency_opt & _invisibility_opt, to) && _game_mode != GM_MENU);
+	return IsTransparencySet(to) && _invisibility_opt.Test(to) && _game_mode != GameMode::Menu;
 }
 
 /**
@@ -70,7 +73,7 @@ inline bool IsInvisibilitySet(TransparencyOption to)
  */
 inline void ToggleTransparency(TransparencyOption to)
 {
-	ToggleBit(_transparency_opt, to);
+	_transparency_opt.Flip(to);
 }
 
 /**
@@ -80,7 +83,7 @@ inline void ToggleTransparency(TransparencyOption to)
  */
 inline void ToggleInvisibility(TransparencyOption to)
 {
-	ToggleBit(_invisibility_opt, to);
+	_invisibility_opt.Flip(to);
 }
 
 /**
@@ -93,11 +96,11 @@ inline void ToggleInvisibility(TransparencyOption to)
 inline void ToggleInvisibilityWithTransparency(TransparencyOption to)
 {
 	if (IsInvisibilitySet(to)) {
-		ClrBit(_invisibility_opt, to);
-		ClrBit(_transparency_opt, to);
+		_invisibility_opt.Reset(to);
+		_transparency_opt.Reset(to);
 	} else {
-		SetBit(_invisibility_opt, to);
-		SetBit(_transparency_opt, to);
+		_invisibility_opt.Set(to);
+		_transparency_opt.Set(to);
 	}
 }
 
@@ -108,19 +111,22 @@ inline void ToggleInvisibilityWithTransparency(TransparencyOption to)
  */
 inline void ToggleTransparencyLock(TransparencyOption to)
 {
-	ToggleBit(_transparency_lock, to);
+	_transparency_lock.Flip(to);
 }
 
 /** Set or clear all non-locked transparency options */
 inline void ResetRestoreAllTransparency()
 {
+	TransparencyOptions unlocked = _transparency_lock;
+	unlocked.Flip();
+
 	/* if none of the non-locked options are set */
-	if ((_transparency_opt & ~_transparency_lock) == 0) {
+	if (!_transparency_opt.Any(unlocked)) {
 		/* set all non-locked options */
-		_transparency_opt |= GB(~_transparency_lock, 0, TO_END);
+		_transparency_opt.Set(unlocked);
 	} else {
 		/* clear all non-locked options */
-		_transparency_opt &= _transparency_lock;
+		_transparency_opt.Reset(unlocked);
 	}
 
 	MarkWholeScreenDirty();

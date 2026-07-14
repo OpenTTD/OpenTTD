@@ -12,24 +12,49 @@
 
 #include "core/pool_type.hpp"
 
-static const uint32_t GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
-
-enum GoalQuestionType : uint8_t {
-	GQT_QUESTION = 0,
-	GQT_INFORMATION = 1,
-	GQT_WARNING = 2,
-	GQT_ERROR = 3,
-	GQT_END = 4,
+/** Types of goal questions. */
+enum class GoalQuestionType : uint8_t {
+	Question = 0, ///< Asking a simple question; title: Question.
+	Information = 1, ///< Showing an informational message; title: Information.
+	Warning = 2, ///< Showing a warning; title: Warning.
+	Error = 3, ///< Showing an error; title: Error.
+	End, ///< End marker.
 };
 
+/** Types of buttons that can be in the question window. */
+enum class GoalQuestionButton : uint8_t {
+	Cancel, ///< Cancel button.
+	Ok, ///< OK button.
+	No, ///< No button.
+	Yes, ///< Yes button.
+	Decline, ///< Decline button.
+	Accept, ///< Accept button.
+	Ignore, ///< Ignore button.
+	Retry, ///< Retry button.
+	Previous, ///< Previous button.
+	Next, ///< Next button.
+	Stop, ///< Stop button.
+	Start, ///< Start button.
+	Go, ///< Go button.
+	Continue, ///< Continue button.
+	Restart, ///< Restart button.
+	Postpone, ///< Postpone button.
+	Surrender, ///< Surrender button.
+	Close, ///< Close button.
+	End, ///< End marker.
+};
+
+/** Bitset of \c GoalQuestionButton elements. */
+using GoalQuestionButtons = EnumBitSet<GoalQuestionButton, uint32_t, GoalQuestionButton::End>;
+
 /** Types of goal destinations */
-enum GoalType : uint8_t {
-	GT_NONE,         ///< Destination is not linked
-	GT_TILE,         ///< Destination is a tile
-	GT_INDUSTRY,     ///< Destination is an industry
-	GT_TOWN,         ///< Destination is a town
-	GT_COMPANY,      ///< Destination is a company
-	GT_STORY_PAGE,   ///< Destination is a story page
+enum class GoalType : uint8_t {
+	None, ///< Destination is not linked
+	Tile, ///< Destination is a tile
+	Industry, ///< Destination is an industry
+	Town, ///< Destination is a town
+	Company, ///< Destination is a company
+	StoryPage, ///< Destination is a story page
 };
 
 typedef uint32_t GoalTypeID; ///< Contains either tile, industry ID, town ID, company ID, or story page ID

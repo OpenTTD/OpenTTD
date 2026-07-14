@@ -37,6 +37,7 @@ StoryPagePool _story_page_pool("StoryPage");
 INSTANTIATE_POOL_METHODS(StoryPageElement)
 INSTANTIATE_POOL_METHODS(StoryPage)
 
+/** Delete all of our StoryPageElements. */
 StoryPage::~StoryPage()
 {
 	if (CleaningPool()) return;
@@ -61,28 +62,28 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 	StoryPageButtonData button_data{ reference };
 
 	switch (type) {
-		case SPET_TEXT:
+		case StoryPageElementType::Text:
 			if (text.empty()) return false;
 			break;
-		case SPET_LOCATION:
+		case StoryPageElementType::Location:
 			if (text.empty()) return false;
 			if (!IsValidTile(tile)) return false;
 			break;
-		case SPET_GOAL:
+		case StoryPageElementType::Goal:
 			if (!Goal::IsValidID((GoalID)reference)) return false;
 			/* Reject company specific goals on global pages */
 			if (StoryPage::Get(page_id)->company == CompanyID::Invalid() && Goal::Get((GoalID)reference)->company != CompanyID::Invalid()) return false;
 			break;
-		case SPET_BUTTON_PUSH:
+		case StoryPageElementType::ButtonPush:
 			if (!button_data.ValidateColour()) return false;
 			if (!button_data.ValidateFlags()) return false;
 			return true;
-		case SPET_BUTTON_TILE:
+		case StoryPageElementType::ButtonTile:
 			if (!button_data.ValidateColour()) return false;
 			if (!button_data.ValidateFlags()) return false;
 			if (!button_data.ValidateCursor()) return false;
 			return true;
-		case SPET_BUTTON_VEHICLE:
+		case StoryPageElementType::ButtonVehicle:
 			if (!button_data.ValidateColour()) return false;
 			if (!button_data.ValidateFlags()) return false;
 			if (!button_data.ValidateCursor()) return false;
@@ -106,19 +107,19 @@ static bool VerifyElementContentParameters(StoryPageID page_id, StoryPageElement
 static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t reference, const EncodedString &text)
 {
 	switch (pe.type) {
-		case SPET_TEXT:
+		case StoryPageElementType::Text:
 			pe.text = text;
 			break;
-		case SPET_LOCATION:
+		case StoryPageElementType::Location:
 			pe.text = text;
 			pe.referenced_id = tile.base();
 			break;
-		case SPET_GOAL:
+		case StoryPageElementType::Goal:
 			pe.referenced_id = reference;
 			break;
-		case SPET_BUTTON_PUSH:
-		case SPET_BUTTON_TILE:
-		case SPET_BUTTON_VEHICLE:
+		case StoryPageElementType::ButtonPush:
+		case StoryPageElementType::ButtonTile:
+		case StoryPageElementType::ButtonVehicle:
 			pe.text = text;
 			pe.referenced_id = reference;
 			break;
@@ -126,86 +127,126 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t referen
 	}
 }
 
-/** Set the button background colour. */
+/**
+ * Set the button background colour.
+ * @param button_colour The new background colour.
+ */
 void StoryPageButtonData::SetColour(Colours button_colour)
 {
-	assert(button_colour < COLOUR_END);
-	SB(this->referenced_id, 0, 8, button_colour);
+	assert(button_colour < Colours::End);
+	SB(this->referenced_id, 0, 8, to_underlying(button_colour));
 }
 
+/**
+ * Set the button flags. See #StoryPageButtonFlags for more details.
+ * @param flags The new state of flags.
+ */
 void StoryPageButtonData::SetFlags(StoryPageButtonFlags flags)
 {
-	SB(this->referenced_id, 24, 8, flags);
+	SB(this->referenced_id, 24, 8, flags.base());
 }
 
-/** Set the mouse cursor used while waiting for input for the button. */
+/**
+ * Set the mouse cursor used while waiting for input for the button.
+ * @param cursor The cursor to use.
+ */
 void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
 {
-	assert(cursor < SPBC_END);
-	SB(this->referenced_id, 8, 8, cursor);
+	assert(cursor < StoryPageButtonCursor::End);
+	SB(this->referenced_id, 8, 8, to_underlying(cursor));
 }
 
-/** Set the type of vehicles that are accepted by the button */
+/**
+ * Set the type of vehicles that are accepted by the button.
+ * @param vehtype The type of vehicle to accept.
+ */
 void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 {
-	assert(vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END);
-	SB(this->referenced_id, 16, 8, vehtype);
+	assert(vehtype == VehicleType::Invalid || vehtype < VehicleType::CompanyEnd);
+	SB(this->referenced_id, 16, 8, to_underlying(vehtype));
 }
 
-/** Get the button background colour. */
+/**
+ * Get the button background colour.
+ * @return The background colour.
+ */
 Colours StoryPageButtonData::GetColour() const
 {
 	Colours colour = static_cast<Colours>(GB(this->referenced_id, 0, 8));
-	if (!IsValidColours(colour)) return INVALID_COLOUR;
+	if (!IsValidColours(colour)) return Colours::Invalid;
 	return colour;
 }
 
+/**
+ * Get the button flags. See #StoryPageButtonFlags for more details.
+ * @return The flags set for this button.
+ */
 StoryPageButtonFlags StoryPageButtonData::GetFlags() const
 {
-	return (StoryPageButtonFlags)GB(this->referenced_id, 24, 8);
+	return static_cast<StoryPageButtonFlags>(GB(this->referenced_id, 24, 8));
 }
 
-/** Get the mouse cursor used while waiting for input for the button. */
+/**
+ * Get the mouse cursor used while waiting for input for the button.
+ * @return The waiting for input cursor.
+ */
 StoryPageButtonCursor StoryPageButtonData::GetCursor() const
 {
 	StoryPageButtonCursor cursor = (StoryPageButtonCursor)GB(this->referenced_id, 8, 8);
-	if (!IsValidStoryPageButtonCursor(cursor)) return INVALID_SPBC;
+	if (!IsValidStoryPageButtonCursor(cursor)) return StoryPageButtonCursor::Invalid;
 	return cursor;
 }
 
-/** Get the type of vehicles that are accepted by the button */
+/**
+ * Get the type of vehicles that are accepted by the button.
+ * @return The accepted type of vehicle.
+ */
 VehicleType StoryPageButtonData::GetVehicleType() const
 {
 	return (VehicleType)GB(this->referenced_id, 16, 8);
 }
 
-/** Verify that the data stored a valid Colour value */
+/**
+ * Verify that the data stored a valid Colour value.
+ * @return \c true iff the stored colour is valid.
+ */
 bool StoryPageButtonData::ValidateColour() const
 {
-	return GB(this->referenced_id, 0, 8) < COLOUR_END;
+	return GB(this->referenced_id, 0, 8) < to_underlying(Colours::End);
 }
 
+/**
+ * Verify that valid flags were set.
+ * Some flags in #StoryPageButtonFlags can't be used together.
+ * @return \c true iff the flags are valid.
+ */
 bool StoryPageButtonData::ValidateFlags() const
 {
-	uint8_t flags = GB(this->referenced_id, 24, 8);
+	StoryPageButtonFlags flags = static_cast<StoryPageButtonFlags>(GB(this->referenced_id, 24, 8));
 	/* Don't allow float left and right together */
-	if ((flags & SPBF_FLOAT_LEFT) && (flags & SPBF_FLOAT_RIGHT)) return false;
+	if (flags.All({StoryPageButtonFlag::FloatLeft, StoryPageButtonFlag::FloatRight})) return false;
 	/* Don't allow undefined flags */
-	if (flags & ~(SPBF_FLOAT_LEFT | SPBF_FLOAT_RIGHT)) return false;
+	if (flags.Reset({StoryPageButtonFlag::FloatLeft, StoryPageButtonFlag::FloatRight}).Any()) return false;
 	return true;
 }
 
-/** Verify that the data stores a valid StoryPageButtonCursor value */
+/**
+ * Verify that the data stores a valid #StoryPageButtonCursor value.
+ * @return \c true iff the stored cursor is valid.
+ */
 bool StoryPageButtonData::ValidateCursor() const
 {
-	return GB(this->referenced_id, 8, 8) < SPBC_END;
+	return static_cast<StoryPageButtonCursor>(GB(this->referenced_id, 8, 8)) < StoryPageButtonCursor::End;
 }
 
-/** Verity that the data stored a valid VehicleType value */
+/**
+ * Verity that the data stored a valid #VehicleType value.
+ * @return \c true iff the stored VehicleType is valid.
+ */
 bool StoryPageButtonData::ValidateVehicleType() const
 {
-	uint8_t vehtype = GB(this->referenced_id, 16, 8);
-	return vehtype == VEH_INVALID || vehtype < VEH_COMPANY_END;
+	VehicleType vehtype = static_cast<VehicleType>(GB(this->referenced_id, 16, 8));
+	return vehtype == VehicleType::Invalid || vehtype < VehicleType::CompanyEnd;
 }
 
 /**
@@ -230,8 +271,8 @@ std::tuple<CommandCost, StoryPageID> CmdCreateStoryPage(DoCommandFlags flags, Co
 
 		StoryPage *s = StoryPage::Create(_story_page_next_sort_value, TimerGameCalendar::date, company, text);
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
-		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
+		InvalidateWindowClassesData(WindowClass::StoryBook, -1);
+		if (StoryPage::GetNumItems() == 1) InvalidateWindowData(WindowClass::MainToolbar, 0);
 
 		_story_page_next_sort_value++;
 		return { CommandCost(), s->index };
@@ -275,7 +316,7 @@ std::tuple<CommandCost, StoryPageElementID> CmdCreateStoryPageElement(DoCommandF
 		StoryPageElement *pe = StoryPageElement::Create(_story_page_element_next_sort_value, type, page_id);
 		UpdateElement(*pe, tile, reference, text);
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+		InvalidateWindowClassesData(WindowClass::StoryBook, page_id);
 
 		_story_page_element_next_sort_value++;
 		return { CommandCost(), pe->index };
@@ -306,7 +347,7 @@ CommandCost CmdUpdateStoryPageElement(DoCommandFlags flags, TileIndex tile, Stor
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		UpdateElement(*pe, tile, reference, text);
-		InvalidateWindowClassesData(WC_STORY_BOOK, pe->page);
+		InvalidateWindowClassesData(WindowClass::StoryBook, pe->page);
 	}
 
 	return CommandCost();
@@ -328,7 +369,7 @@ CommandCost CmdSetStoryPageTitle(DoCommandFlags flags, StoryPageID page_id, cons
 		StoryPage *p = StoryPage::Get(page_id);
 		p->title = text;
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+		InvalidateWindowClassesData(WindowClass::StoryBook, page_id);
 	}
 
 	return CommandCost();
@@ -350,7 +391,7 @@ CommandCost CmdSetStoryPageDate(DoCommandFlags flags, StoryPageID page_id, Timer
 		StoryPage *p = StoryPage::Get(page_id);
 		p->date = date;
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+		InvalidateWindowClassesData(WindowClass::StoryBook, page_id);
 	}
 
 	return CommandCost();
@@ -397,8 +438,8 @@ CommandCost CmdRemoveStoryPage(DoCommandFlags flags, StoryPageID page_id)
 
 		delete p;
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, -1);
-		if (StoryPage::GetNumItems() == 0) InvalidateWindowData(WC_MAIN_TOOLBAR, 0);
+		InvalidateWindowClassesData(WindowClass::StoryBook, -1);
+		if (StoryPage::GetNumItems() == 0) InvalidateWindowData(WindowClass::MainToolbar, 0);
 	}
 
 	return CommandCost();
@@ -421,7 +462,7 @@ CommandCost CmdRemoveStoryPageElement(DoCommandFlags flags, StoryPageElementID p
 
 		delete pe;
 
-		InvalidateWindowClassesData(WC_STORY_BOOK, page_id);
+		InvalidateWindowClassesData(WindowClass::StoryBook, page_id);
 	}
 
 	return CommandCost();
@@ -445,15 +486,15 @@ CommandCost CmdStoryPageButton(DoCommandFlags flags, TileIndex tile, StoryPageEl
 	if (sp->company != CompanyID::Invalid() && sp->company != _current_company) return CMD_ERROR;
 
 	switch (pe->type) {
-		case SPET_BUTTON_PUSH:
+		case StoryPageElementType::ButtonPush:
 			/* No validation required */
 			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageButtonClick(_current_company, pe->page, page_element_id));
 			break;
-		case SPET_BUTTON_TILE:
+		case StoryPageElementType::ButtonTile:
 			if (!IsValidTile(tile)) return CMD_ERROR;
 			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageTileSelect(_current_company, pe->page, page_element_id, tile));
 			break;
-		case SPET_BUTTON_VEHICLE:
+		case StoryPageElementType::ButtonVehicle:
 			if (!Vehicle::IsValidID(reference)) return CMD_ERROR;
 			if (flags.Test(DoCommandFlag::Execute)) Game::NewEvent(new ScriptEventStoryPageVehicleSelect(_current_company, pe->page, page_element_id, reference));
 			break;

@@ -291,7 +291,7 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
  */
 /* static */ bool RoadStop::IsDriveThroughRoadStopContinuation(TileIndex rs, TileIndex next)
 {
-	return IsTileType(next, MP_STATION) &&
+	return IsTileType(next, TileType::Station) &&
 			GetStationIndex(next) == GetStationIndex(rs) &&
 			GetStationType(next) == GetStationType(rs) &&
 			IsDriveThroughStopTile(next) &&
@@ -307,8 +307,8 @@ void RoadStop::Entry::Enter(const RoadVehicle *rv)
 static DiagDirection GetEntryDirection(bool east, Axis axis)
 {
 	switch (axis) {
-		case AXIS_X: return east ? DIAGDIR_NE : DIAGDIR_SW;
-		case AXIS_Y: return east ? DIAGDIR_SE : DIAGDIR_NW;
+		case Axis::X: return east ? DiagDirection::NE : DiagDirection::SW;
+		case Axis::Y: return east ? DiagDirection::SE : DiagDirection::NW;
 		default: NOT_REACHED();
 	}
 }
@@ -334,7 +334,7 @@ void RoadStop::Entry::Rebuild(const RoadStop *rs, int side)
 		this->length += TILE_SIZE;
 		for (const Vehicle *v : VehiclesOnTile(tile)) {
 			/* Not a RV or not in the right direction or crashed :( */
-			if (v->type != VEH_ROAD || DirToDiagDir(v->direction) != entry_dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) continue;
+			if (v->type != VehicleType::Road || DirToDiagDir(v->direction) != entry_dir || !v->IsPrimaryVehicle() || v->vehstatus.Test(VehState::Crashed)) continue;
 
 			const RoadVehicle *rv = RoadVehicle::From(v);
 			/* Don't add ones not in a road stop */

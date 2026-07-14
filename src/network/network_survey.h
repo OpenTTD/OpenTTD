@@ -35,6 +35,10 @@ public:
 	void Transmit(Reason reason, bool blocking = false);
 	std::string CreatePayload(Reason reason, bool for_preview = false);
 
+	/**
+	 * Check whether a survey is possible.
+	 * @return \c true.
+	 */
 	constexpr static bool IsSurveyPossible()
 	{
 		return true;
@@ -46,6 +50,7 @@ private:
 	std::condition_variable transmitted_cv; ///< Condition variable to inform changes to transmitted.
 };
 
+/** The handler for sending surveys for statistics. */
 extern NetworkSurveyHandler _survey;
 
 #endif /* NETWORK_SURVEY_H */

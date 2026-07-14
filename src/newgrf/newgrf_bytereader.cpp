@@ -15,6 +15,7 @@
 
 /**
  * Read a value of the given number of bytes.
+ * @param size Number of bytes to read; must be 1, 2 or 4.
  * @returns Value read from buffer.
  */
 uint32_t ByteReader::ReadVarSize(uint8_t size)

@@ -22,7 +22,7 @@
  */
 /* static */ void CargoPacket::AfterLoad()
 {
-	if (IsSavegameVersionBefore(SLV_44)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CargoSourceTile)) {
 		/* If we remove a station while cargo from it is still en route, payment calculation will assume
 		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
 		 * stores the coordinates, preserving them even if the station is removed. However, if a game is loaded
@@ -54,14 +54,14 @@
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_120)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CompanyServiceIntervals)) {
 		/* CargoPacket's source should be either StationID::Invalid() or a valid station */
 		for (CargoPacket *cp : CargoPacket::Iterate()) {
 			if (!Station::IsValidID(cp->first_station)) cp->first_station = StationID::Invalid();
 		}
 	}
 
-	if (!IsSavegameVersionBefore(SLV_68)) {
+	if (!IsSavegameVersionBefore(SaveLoadVersion::CargoPackets)) {
 		/* Only since version 68 we have cargo packets. Savegames from before used
 		 * 'new CargoPacket' + cargolist.Append so their caches are already
 		 * correct and do not need rebuilding. */
@@ -75,12 +75,12 @@
 		}
 	}
 
-	if (IsSavegameVersionBefore(SLV_181)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CargoReservation)) {
 		for (Vehicle *v : Vehicle::Iterate()) v->cargo.KeepAll();
 	}
 
 	/* Before this version, we didn't track how far cargo actually traveled in vehicles. Make best-effort estimates of this. */
-	if (IsSavegameVersionBefore(SLV_CARGO_TRAVELLED)) {
+	if (IsSavegameVersionBefore(SaveLoadVersion::CargoTravelled)) {
 		/* Update the cargo-traveled in stations as if they arrived from the source tile. */
 		for (Station *st : Station::Iterate()) {
 			for (GoodsEntry &ge : st->goods) {
@@ -125,25 +125,25 @@
 SaveLoadTable GetCargoPacketDesc()
 {
 	static const SaveLoad _cargopacket_desc[] = {
-		SLE_VARNAME(CargoPacket, first_station, "source", SLE_UINT16),
-		SLE_VAR(CargoPacket, source_xy,       SLE_UINT32),
-		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", SLE_FILE_U32 | SLE_VAR_U16, SL_MIN_VERSION, SLV_REMOVE_LOADED_AT_XY),
-		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", SLE_UINT16, SLV_REMOVE_LOADED_AT_XY, SL_MAX_VERSION),
-		SLE_VAR(CargoPacket, count,           SLE_UINT16),
-		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_MORE_CARGO_AGE),
-		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", SLE_UINT16, SLV_MORE_CARGO_AGE, SLV_PERIODS_IN_TRANSIT_RENAME),
-		SLE_CONDVAR(CargoPacket, periods_in_transit, SLE_UINT16, SLV_PERIODS_IN_TRANSIT_RENAME, SL_MAX_VERSION),
-		SLE_VAR(CargoPacket, feeder_share,    SLE_INT64),
-		SLE_CONDVARNAME(CargoPacket, source.type, "source_type", SLE_UINT8, SLV_125, SL_MAX_VERSION),
-		SLE_CONDVARNAME(CargoPacket, source.id, "source_id", SLE_UINT16, SLV_125, SL_MAX_VERSION),
-		SLE_CONDVAR(CargoPacket, travelled.x, SLE_INT16, SLV_CARGO_TRAVELLED, SL_MAX_VERSION),
-		SLE_CONDVAR(CargoPacket, travelled.y, SLE_INT16, SLV_CARGO_TRAVELLED, SL_MAX_VERSION),
+		SLE_VARNAME(CargoPacket, first_station, "source", VarTypes::U16),
+		SLE_VAR(CargoPacket, source_xy,       VarTypes::U32),
+		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", VarFileType::U32 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::RemoveLoadedAtXY),
+		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", VarTypes::U16, SaveLoadVersion::RemoveLoadedAtXY, SaveLoadVersion::MaxVersion),
+		SLE_VAR(CargoPacket, count,           VarTypes::U16),
+		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoAge),
+		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", VarTypes::U16, SaveLoadVersion::MoreCargoAge, SaveLoadVersion::PeriodsInTransitRename),
+		SLE_CONDVAR(CargoPacket, periods_in_transit, VarTypes::U16, SaveLoadVersion::PeriodsInTransitRename, SaveLoadVersion::MaxVersion),
+		SLE_VAR(CargoPacket, feeder_share,    VarTypes::I64),
+		SLE_CONDVARNAME(CargoPacket, source.type, "source_type", VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+		SLE_CONDVARNAME(CargoPacket, source.id, "source_id", VarTypes::U16, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CargoPacket, travelled.x, VarTypes::I16, SaveLoadVersion::CargoTravelled, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(CargoPacket, travelled.y, VarTypes::I16, SaveLoadVersion::CargoTravelled, SaveLoadVersion::MaxVersion),
 	};
 	return _cargopacket_desc;
 }
 
 struct CAPAChunkHandler : ChunkHandler {
-	CAPAChunkHandler() : ChunkHandler('CAPA', CH_TABLE) {}
+	CAPAChunkHandler() : ChunkHandler("CAPA", ChunkType::Table) {}
 
 	void Save() const override
 	{

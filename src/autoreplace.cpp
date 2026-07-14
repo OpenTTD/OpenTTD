@@ -22,6 +22,10 @@ INSTANTIATE_POOL_METHODS(EngineRenew)
 /**
  * Retrieves the EngineRenew that specifies the replacement of the given
  * engine type from the given renewlist
+ * @param erl Linked list of engine renews.
+ * @param engine The engine to look for.
+ * @param group The group to look for.
+ * @return The engine renew configuration for the given engine and group.
  */
 static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 {
@@ -36,8 +40,7 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, G
 
 /**
  * Remove all engine replacement settings for the company.
- * @param  erl The renewlist for a given company.
- * @return The new renewlist for the company.
+ * @param erl The renewlist for a given company.
  */
 void RemoveAllEngineReplacement(EngineRenewList *erl)
 {

@@ -28,25 +28,27 @@ enum class RoadTypeFlag : uint8_t {
 	Hidden          = 3, ///< Bit number for hidden from construction.
 	TownBuild       = 4, ///< Bit number for allowing towns to build this roadtype.
 };
+
+/** Bitset of \c RoadTypeFlag elements. */
 using RoadTypeFlags = EnumBitSet<RoadTypeFlag, uint8_t>;
 
 struct SpriteGroup;
 
-/** Sprite groups for a roadtype. */
-enum RoadTypeSpriteGroup : uint8_t {
-	ROTSG_CURSORS,        ///< Optional: Cursor and toolbar icon images
-	ROTSG_OVERLAY,        ///< Optional: Images for overlaying track
-	ROTSG_GROUND,         ///< Required: Main group of ground images
-	ROTSG_TUNNEL,         ///< Optional: Ground images for tunnels
-	ROTSG_CATENARY_FRONT, ///< Optional: Catenary front
-	ROTSG_CATENARY_BACK,  ///< Optional: Catenary back
-	ROTSG_BRIDGE,         ///< Required: Bridge surface images
-	ROTSG_reserved2,      ///<           Placeholder, if we need specific level crossing sprites.
-	ROTSG_DEPOT,          ///< Optional: Depot images
-	ROTSG_reserved3,      ///<           Placeholder, if we add road fences (for highways).
-	ROTSG_ROADSTOP,       ///< Required: Bay stop surface
-	ROTSG_ONEWAY,         ///< Optional: One-way indicator images
-	ROTSG_END,
+/** Sprite types for a roadtype. */
+enum class RoadSpriteType : uint8_t {
+	UI, ///< Optional: Cursor and toolbar icon images
+	Overlay, ///< Optional: Images for overlaying track
+	Ground, ///< Required: Main group of ground images
+	Tunnel, ///< Optional: Ground images for tunnels
+	CatenaryFront, ///< Optional: Catenary front
+	CatenaryRear, ///< Optional: Catenary back
+	Bridge, ///< Required: Bridge surface images
+	ReservedCrossing, ///< Placeholder, if we need specific level crossing sprites.
+	Depot, ///< Optional: Depot images
+	ReservedFence, ///< Placeholder, if we add road fences (for highways).
+	Roadstop, ///< Required: Bay stop surface
+	Oneway, ///< Optional: One-way indicator images
+	End, ///< End marker.
 };
 
 class RoadTypeInfo {
@@ -84,12 +86,12 @@ public:
 		StringID err_build_road;        ///< Building a normal piece of road
 		StringID err_remove_road;       ///< Removing a normal piece of road
 		StringID err_depot;             ///< Building a depot
-		StringID err_build_station[2];  ///< Building a bus or truck station
-		StringID err_remove_station[2]; ///< Removing of a bus or truck station
+		EnumIndexArray<StringID, RoadStopType, RoadStopType::End> err_build_station; ///< Building a bus or truck station
+		EnumIndexArray<StringID, RoadStopType, RoadStopType::End> err_remove_station; ///< Removing of a bus or truck station
 		StringID err_convert_road;      ///< Converting a road type
 
-		StringID picker_title[2];       ///< Title for the station picker for bus or truck stations
-		StringID picker_tooltip[2];     ///< Tooltip for the station picker for bus or truck stations
+		EnumIndexArray<StringID, RoadStopType, RoadStopType::End> picker_title; ///< Title for the station picker for bus or truck stations
+		EnumIndexArray<StringID, RoadStopType, RoadStopType::End> picker_tooltip; ///< Tooltip for the station picker for bus or truck stations
 	} strings;                        ///< Strings associated with the rail type.
 
 	/** bitmask to the OTHER roadtypes on which a vehicle of THIS roadtype generates power */
@@ -158,18 +160,18 @@ public:
 	/**
 	 * NewGRF providing the Action3 for the roadtype. nullptr if not available.
 	 */
-	const GRFFile *grffile[ROTSG_END];
+	EnumIndexArray<const GRFFile *, RoadSpriteType, RoadSpriteType::End> grffile{};
 
 	/**
 	 * Sprite groups for resolving sprites
 	 */
-	const SpriteGroup *group[ROTSG_END];
+	EnumIndexArray<const SpriteGroup *, RoadSpriteType, RoadSpriteType::End> group{};
 
 	std::vector<BadgeID> badges;
 
 	inline bool UsesOverlay() const
 	{
-		return this->group[ROTSG_GROUND] != nullptr;
+		return this->group[RoadSpriteType::Ground] != nullptr;
 	}
 
 	RoadType Index() const;
@@ -184,27 +186,27 @@ inline RoadTypes GetMaskForRoadTramType(RoadTramType rtt)
 {
 	extern RoadTypes _roadtypes_road;
 	extern RoadTypes _roadtypes_tram;
-	return rtt == RTT_ROAD ? _roadtypes_road : _roadtypes_tram;
+	return rtt == RoadTramType::Road ? _roadtypes_road : _roadtypes_tram;
 }
 
 inline bool RoadTypeIsRoad(RoadType roadtype)
 {
-	return GetMaskForRoadTramType(RTT_ROAD).Test(roadtype);
+	return GetMaskForRoadTramType(RoadTramType::Road).Test(roadtype);
 }
 
 inline bool RoadTypeIsTram(RoadType roadtype)
 {
-	return GetMaskForRoadTramType(RTT_TRAM).Test(roadtype);
+	return GetMaskForRoadTramType(RoadTramType::Tram).Test(roadtype);
 }
 
 inline RoadTramType GetRoadTramType(RoadType roadtype)
 {
-	return RoadTypeIsTram(roadtype) ? RTT_TRAM : RTT_ROAD;
+	return RoadTypeIsTram(roadtype) ? RoadTramType::Tram : RoadTramType::Road;
 }
 
 inline RoadTramType OtherRoadTramType(RoadTramType rtt)
 {
-	return rtt == RTT_ROAD ? RTT_TRAM : RTT_ROAD;
+	return rtt == RoadTramType::Road ? RoadTramType::Tram : RoadTramType::Road;
 }
 
 /**

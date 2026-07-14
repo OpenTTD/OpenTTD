@@ -14,11 +14,10 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "station_type.h"
+#include "newgrf_roadstop.h"
+#include "newgrf_station.h"
 
 struct Town;
-
-enum StationClassID : uint16_t;
-enum RoadStopClassID : uint16_t;
 
 extern Town *AirportGetNearestTown(const struct AirportSpec *as, Direction rotation, TileIndex tile, TileIterator &&it, uint &mindist);
 extern uint8_t GetAirportNoiseLevelForDistance(const struct AirportSpec *as, uint distance);
@@ -33,16 +32,16 @@ CommandCost CmdRenameStation(DoCommandFlags flags, StationID station_id, const s
 std::tuple<CommandCost, StationID> CmdMoveStationName(DoCommandFlags flags, StationID station_id, TileIndex tile);
 CommandCost CmdOpenCloseAirport(DoCommandFlags flags, StationID station_id);
 
-DEF_CMD_TRAIT(CMD_BUILD_AIRPORT,            CmdBuildAirport,          CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_DOCK,               CmdBuildDock,             CommandFlag::Auto,                CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_RAIL_STATION,       CmdBuildRailStation,      CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_FROM_RAIL_STATION, CmdRemoveFromRailStation, {},                       CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_BUILD_ROAD_STOP,          CmdBuildRoadStop,         CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_REMOVE_ROAD_STOP,         CmdRemoveRoadStop,        {},                       CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_RENAME_STATION,           CmdRenameStation,         {},                       CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_MOVE_STATION_NAME,        CmdMoveStationName,       {},                       CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_OPEN_CLOSE_AIRPORT,       CmdOpenCloseAirport,      {},                       CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::BuildAirport, CmdBuildAirport, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildDock, CmdBuildDock, CommandFlag::Auto, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildRailStation, CmdBuildRailStation, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveFromRailStation, CmdRemoveFromRailStation, {}, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::BuildRoadStop, CmdBuildRoadStop, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RemoveRoadStop, CmdRemoveRoadStop, {}, CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::RenameStation, CmdRenameStation, {}, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::MoveStationName, CmdMoveStationName, {}, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::OpenCloseAirport, CmdOpenCloseAirport, {}, CommandType::RouteManagement)
 
-void CcMoveStationName(Commands cmd, const CommandCost &result, StationID station_id);
+void CcMoveStationName(Commands, const CommandCost &result, StationID station_id);
 
 #endif /* STATION_CMD_H */

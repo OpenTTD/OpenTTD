@@ -19,13 +19,13 @@
 #include "window_type.h"
 
 /** Vehicle List type flags */
-enum VehicleListType : uint8_t {
-	VL_STANDARD, ///< Index is the company.
-	VL_SHARED_ORDERS, ///< Index is the first vehicle of the shared orders.
-	VL_STATION_LIST, ///< Index is the station.
-	VL_DEPOT_LIST, ///< Index is the destination (station for hangar of aircraft, depot for others)
-	VL_GROUP_LIST, ///< Index is the group.
-	VLT_END
+enum class VehicleListType : uint8_t {
+	Company, ///< Index is the company.
+	VehicleSharedOrders, ///< Index is the first vehicle of the shared orders.
+	Station, ///< Index is the station.
+	Depot, ///< Index is the destination (station for hangar of aircraft, depot for others)
+	Group, ///< Index is the group.
+	End, ///< End marker
 };
 
 /** The information about a vehicle list. */
@@ -37,13 +37,13 @@ struct VehicleListIdentifier {
 
 	WindowNumber ToWindowNumber() const;
 
-	bool Valid() const { return this->type < VLT_END; }
+	bool Valid() const { return this->type < VehicleListType::End; }
 
-	constexpr CompanyID ToCompanyID() const { assert(this->type == VL_STANDARD); return CompanyID(this->index); }
-	constexpr DestinationID ToDestinationID() const { assert(this->type == VL_DEPOT_LIST); return DestinationID(this->index); }
-	constexpr GroupID ToGroupID() const { assert(this->type == VL_GROUP_LIST); return GroupID(this->index); }
-	constexpr StationID ToStationID() const { assert(this->type == VL_STATION_LIST); return StationID(this->index); }
-	constexpr VehicleID ToVehicleID() const { assert(this->type == VL_SHARED_ORDERS); return VehicleID(this->index); }
+	constexpr CompanyID ToCompanyID() const { assert(this->type == VehicleListType::Company); return CompanyID(this->index); }
+	constexpr DestinationID ToDestinationID() const { assert(this->type == VehicleListType::Depot); return DestinationID(this->index); }
+	constexpr GroupID ToGroupID() const { assert(this->type == VehicleListType::Group); return GroupID(this->index); }
+	constexpr StationID ToStationID() const { assert(this->type == VehicleListType::Station); return StationID(this->index); }
+	constexpr VehicleID ToVehicleID() const { assert(this->type == VehicleListType::VehicleSharedOrders); return VehicleID(this->index); }
 
 	constexpr void SetIndex(uint32_t index) { this->index = index; }
 	constexpr void SetIndex(ConvertibleThroughBase auto index) { this->index = index.base(); }

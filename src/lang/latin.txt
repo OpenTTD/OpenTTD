@@ -1320,8 +1320,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Eligere magnitu
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessiones: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Sinere recessiones oeconomicae aliquando accidere. In recessione oeconomica, productio omnino minuitur (sed, recessione confecta, productio redit ad magnitudinem priorem)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Vetare tramina cursum reflectere in stationibus: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si electa, tramina non possunt cursum reflectere in stationibus quae non sunt termini, etsi adest iter brevius ad destinatum cursu reflexo
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Calamitates: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Sinere calamitates accidere, quae forte vehicula aut infrastructuram destruant
@@ -1496,6 +1496,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Electa, omnes v
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoredimere vehicula cum veterascunt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Electa, vehicula veterascentia automatice redimuntur, condicionibus satisfactis
@@ -1694,12 +1696,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Monstrare in ho
 STR_CONFIG_SETTING_QUICKGOTO                                    :Celeris datio iussorum vehiculorum: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Praesumere ferramentum 'I ad' cum fenestra iussorum aperitur
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Typus astarii solitus (novo ludo/ludo lecto): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Typus astarii adhibendus in novo ludo sive ludo lecto. 'Primus parabilis' typus est veterrimus, 'postremus parabilis' est novissimus typus, et 'frequentissime usus' est typus maxime in tabula usus
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primus parabilis
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Postremus parabilis
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Frequentissime usus
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Monstrare cursus reservatos in astariis: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Facit ut astaria cum cursibus a tramine reservatis habeant alium colorem, ut facilior sit videre errores hamaxostichorum qui nolunt inire quosdam locos cum signalibus
@@ -1789,6 +1786,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Electa, vehicul
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Annuere currus ferriviarios habere velocitates maximas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Electa, velocitates maximae curruum afficiunt velocitatem maximam traminis
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Neglegere ferrivias electricas: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Electa, tramina electrica non postulant electricam ferriviam, modo ferriviam solitam
@@ -2067,7 +2065,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... negl
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... neglectum Fundamentum Sonicum '{STRING}': non inventum
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... neglectum Fundamentum Musicum '{STRING}': non inventum
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -2275,15 +2273,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} adhuc arcessita
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} adhuc arcessita
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Coniungens...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Auctorans...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Manens...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Tabulam arcessens...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Data componens...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Nuntians...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Lndicium ludi arcessens...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Indicium societatis arcessens...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disiungere
 
@@ -2565,6 +2561,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longitud
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Eligere longitudinem ferriviae stationis
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Trahere Ponereque
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Struere stationem trahendo ponendoque
+
+
 
 
 
@@ -3642,6 +3640,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Vis Trac
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Max. distantia volatus: {GOLD}{COMMA} tegulas
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Typus aeroplani: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3800,6 +3800,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Omnia v
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Nuntium a fabricatore vehiculorum
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nuper fabricamus nov{G um am um os as a} {STRING} - visne uti hoc vehiculo unum annum, ut videamus quomodo operatur antequam omnibus venum damus?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}hamaxam
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}hamaxam monoorbitalem
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}hamaxam maglev
@@ -3938,7 +3939,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pondus: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pondus: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potestas: {LTBLUE}{POWER}{BLACK} Velocitas maxima: {LTBLUE}{VELOCITY} {BLACK}V.T. Max.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucrum huius anni: {LTBLUE}{CURRENCY_LONG} (anni prioris: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Constantia: {LTBLUE}{COMMA}%  {BLACK}Defecta post ministrationem priorem: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Factum: {LTBLUE}{NUM}{BLACK} Aestimatio: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacitas: {LTBLUE}Nulla{STRING}
@@ -4060,7 +4060,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Consiste
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Indicia vehiculi ad quae spectat ordines conditionales
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :portio oneris
 STR_ORDER_CONDITIONAL_RELIABILITY                               :constantia
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :velocitas maxima
@@ -4421,7 +4421,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Non lice
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Non licet oppidum renominare...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Non licet oppidum condere hic...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Non licet augere oppidum...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... nimis prope finem tabulae
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... nimis prope aliud oppidum
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... nimis oppida adsunt
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... plus spatium tabulae deest

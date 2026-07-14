@@ -24,8 +24,10 @@ inline void AddCompanyNewsItem(EncodedString &&headline, std::unique_ptr<Company
 
 /**
  * Adds a newsitem referencing a vehicle.
- *
- * @warning The DParams may not reference the vehicle due to autoreplace stuff. See AddVehicleAdviceNewsItem for how that can be done.
+ * @param headline The actual news message.
+ * @param type The news type.
+ * @param vehicle The vehicle the advice is on.
+ * @param station The optional station associated with the news item.
  */
 inline void AddVehicleNewsItem(EncodedString &&headline, NewsType type, VehicleID vehicle, StationID station = StationID::Invalid())
 {
@@ -34,8 +36,9 @@ inline void AddVehicleNewsItem(EncodedString &&headline, NewsType type, VehicleI
 
 /**
  * Adds a vehicle-advice news item.
- *
- * @warning DParam 0 must reference the vehicle!
+ * @param advice_type The advice given.
+ * @param headline The actual news message.
+ * @param vehicle The vehicle the advice is on.
  */
 inline void AddVehicleAdviceNewsItem(AdviceType advice_type, EncodedString &&headline, VehicleID vehicle)
 {

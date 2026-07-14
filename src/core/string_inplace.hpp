@@ -17,13 +17,30 @@
  * Builder implementation for InPlaceReplacement.
  */
 class InPlaceBuilder final : public BaseStringBuilder {
-	std::span<char> dest;
-	size_type position = 0;
-	const StringConsumer &consumer;
+	std::span<char> dest; ///< The buffer to process.
+	size_type position = 0; ///< The location to write to.
+	const StringConsumer &consumer; ///< The string consumer to read with.
 
 	friend class InPlaceReplacement;
+
+	/**
+	 * Create this builder.
+	 * @param dest The buffer to write to.
+	 * @param consumer The consumer to read with.
+	 */
 	explicit InPlaceBuilder(std::span<char> dest, const StringConsumer &consumer) : dest(dest), consumer(consumer) {}
+
+	/**
+	 * Create this builder based on an existing builder's buffer.
+	 * @param src The existing builder to use the buffer from.
+	 * @param consumer The consumer to read with.
+	 */
 	InPlaceBuilder(const InPlaceBuilder &src, const StringConsumer &consumer) : dest(src.dest), position(src.position), consumer(consumer) {}
+
+	/**
+	 * Copy assignment of the buffer and its position.
+	 * @param src The builder to copy the information from.
+	 */
 	void AssignBuffer(const InPlaceBuilder &src) { this->dest = src.dest; this->position = src.position; }
 public:
 	InPlaceBuilder(const InPlaceBuilder &) = delete;
@@ -31,14 +48,17 @@ public:
 
 	/**
 	 * Check whether any bytes have been written.
+	 * @return \c true if any bytes were written.
 	 */
 	[[nodiscard]] bool AnyBytesWritten() const noexcept { return this->position != 0; }
 	/**
 	 * Get number of already written bytes.
+	 * @return The number of bytes written so far.
 	 */
 	[[nodiscard]] size_type GetBytesWritten() const noexcept { return this->position; }
 	/**
 	 * Get already written data.
+	 * @return The part of the buffer we have written so far.
 	 */
 	[[nodiscard]] std::string_view GetWrittenData() const noexcept { return {this->dest.data(), this->position}; }
 
@@ -51,14 +71,18 @@ public:
 	 * Implementation of std::back_insert_iterator for non-growing destination buffer.
 	 */
 	class back_insert_iterator {
-		InPlaceBuilder *parent = nullptr;
+		InPlaceBuilder *parent = nullptr; ///< The builder we belong to.
 	public:
-		using value_type = void;
-		using difference_type = void;
-		using iterator_category = std::output_iterator_tag;
-		using pointer = void;
-		using reference = void;
+		using value_type = void; ///< C++ specification trait 'value_type' of std::back_insert_iterator.
+		using difference_type = void; ///< C++ specification trait 'difference_type' of std::back_insert_iterator.
+		using iterator_category = std::output_iterator_tag; ///< C++ specification trait 'iterator_category' of std::back_insert_iterator.
+		using pointer = void; ///< C++ specification trait 'pointer' of std::back_insert_iterator.
+		using reference = void; ///< C++ specification trait 'reference' of std::back_insert_iterator.
 
+		/**
+		 * Create the iterator.
+		 * @param parent The builder to insert data to.
+		 */
 		back_insert_iterator(InPlaceBuilder &parent) : parent(&parent) {}
 
 		back_insert_iterator &operator++() { return *this; }
@@ -73,6 +97,7 @@ public:
 	};
 	/**
 	 * Create a back-insert-iterator.
+	 * @return The back insert iterator.
 	 */
 	back_insert_iterator back_inserter()
 	{

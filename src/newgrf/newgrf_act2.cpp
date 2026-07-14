@@ -349,7 +349,7 @@ static void NewSpriteGroup(ByteReader &buf)
 	const SpriteGroup *act_group = nullptr;
 
 	GrfSpecFeature feature{buf.ReadByte()};
-	if (feature >= GSF_END) {
+	if (feature >= GrfSpecFeature::End) {
 		GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
@@ -377,13 +377,13 @@ static void NewSpriteGroup(ByteReader &buf)
 			DeterministicSpriteGroup *group = DeterministicSpriteGroup::Create();
 			group->nfo_line = _cur_gps.nfo_line;
 			act_group = group;
-			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+			group->var_scope = HasBit(type, 1) ? VarSpriteGroupScope::Parent : VarSpriteGroupScope::Self;
 
 			switch (GB(type, 2, 2)) {
 				default: NOT_REACHED();
-				case 0: group->size = DSG_SIZE_BYTE;  varsize = 1; break;
-				case 1: group->size = DSG_SIZE_WORD;  varsize = 2; break;
-				case 2: group->size = DSG_SIZE_DWORD; varsize = 4; break;
+				case 0: group->size = DeterministicSpriteGroupSize::Byte; varsize = 1; break;
+				case 1: group->size = DeterministicSpriteGroupSize::Word; varsize = 2; break;
+				case 2: group->size = DeterministicSpriteGroupSize::DWord; varsize = 4; break;
 			}
 
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
@@ -392,7 +392,7 @@ static void NewSpriteGroup(ByteReader &buf)
 				DeterministicSpriteGroupAdjust &adjust = group->adjusts.emplace_back();
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust.operation = group->adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf.ReadByte();
+				adjust.operation = group->adjusts.size() == 1 ? DeterministicSpriteGroupAdjustOperation::Add : static_cast<DeterministicSpriteGroupAdjustOperation>(buf.ReadByte());
 				adjust.variable  = buf.ReadByte();
 				if (adjust.variable == 0x7E) {
 					/* Link subroutine group */
@@ -403,15 +403,15 @@ static void NewSpriteGroup(ByteReader &buf)
 
 				varadjust = buf.ReadByte();
 				adjust.shift_num = GB(varadjust, 0, 5);
-				adjust.type      = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
-				adjust.and_mask  = buf.ReadVarSize(varsize);
+				adjust.type = static_cast<DeterministicSpriteGroupAdjustType>(GB(varadjust, 6, 2));
+				adjust.and_mask = buf.ReadVarSize(varsize);
 
-				if (adjust.type != DSGA_TYPE_NONE) {
-					adjust.add_val    = buf.ReadVarSize(varsize);
+				if (adjust.type != DeterministicSpriteGroupAdjustType::None) {
+					adjust.add_val = buf.ReadVarSize(varsize);
 					adjust.divmod_val = buf.ReadVarSize(varsize);
 					if (adjust.divmod_val == 0) adjust.divmod_val = 1; // Ensure that divide by zero cannot occur
 				} else {
-					adjust.add_val    = 0;
+					adjust.add_val = 0;
 					adjust.divmod_val = 0;
 				}
 
@@ -497,16 +497,16 @@ static void NewSpriteGroup(ByteReader &buf)
 			RandomizedSpriteGroup *group = RandomizedSpriteGroup::Create();
 			group->nfo_line = _cur_gps.nfo_line;
 			act_group = group;
-			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+			group->var_scope = HasBit(type, 1) ? VarSpriteGroupScope::Parent : VarSpriteGroupScope::Self;
 
 			if (HasBit(type, 2)) {
-				if (feature <= GSF_AIRCRAFT) group->var_scope = VSG_SCOPE_RELATIVE;
+				if (feature <= GrfSpecFeature::Aircraft) group->var_scope = VarSpriteGroupScope::Relative;
 				group->count = buf.ReadByte();
 			}
 
 			uint8_t triggers = buf.ReadByte();
-			group->triggers       = GB(triggers, 0, 7);
-			group->cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
+			group->triggers = GB(triggers, 0, 7);
+			group->cmp_mode = HasBit(triggers, 7) ? RandomizedSpriteGroupCompareMode::All : RandomizedSpriteGroupCompareMode::Any;
 			group->lowest_randbit = buf.ReadByte();
 
 			uint8_t num_groups = buf.ReadByte();
@@ -531,18 +531,18 @@ static void NewSpriteGroup(ByteReader &buf)
 			}
 
 			switch (feature) {
-				case GSF_TRAINS:
-				case GSF_ROADVEHICLES:
-				case GSF_SHIPS:
-				case GSF_AIRCRAFT:
-				case GSF_STATIONS:
-				case GSF_CANALS:
-				case GSF_CARGOES:
-				case GSF_AIRPORTS:
-				case GSF_RAILTYPES:
-				case GSF_ROADTYPES:
-				case GSF_TRAMTYPES:
-				case GSF_BADGES:
+				case GrfSpecFeature::Trains:
+				case GrfSpecFeature::RoadVehicles:
+				case GrfSpecFeature::Ships:
+				case GrfSpecFeature::Aircraft:
+				case GrfSpecFeature::Stations:
+				case GrfSpecFeature::Canals:
+				case GrfSpecFeature::Cargoes:
+				case GrfSpecFeature::Airports:
+				case GrfSpecFeature::RailTypes:
+				case GrfSpecFeature::RoadTypes:
+				case GrfSpecFeature::TramTypes:
+				case GrfSpecFeature::Badges:
 				{
 					uint8_t num_loaded  = type;
 					uint8_t num_loading = buf.ReadByte();
@@ -614,11 +614,11 @@ static void NewSpriteGroup(ByteReader &buf)
 					break;
 				}
 
-				case GSF_HOUSES:
-				case GSF_AIRPORTTILES:
-				case GSF_OBJECTS:
-				case GSF_INDUSTRYTILES:
-				case GSF_ROADSTOPS: {
+				case GrfSpecFeature::Houses:
+				case GrfSpecFeature::AirportTiles:
+				case GrfSpecFeature::Objects:
+				case GrfSpecFeature::IndustryTiles:
+				case GrfSpecFeature::RoadStops: {
 					uint8_t num_building_sprites = std::max((uint8_t)1, type);
 
 					assert(TileLayoutSpriteGroup::CanAllocateItem());
@@ -631,7 +631,7 @@ static void NewSpriteGroup(ByteReader &buf)
 					break;
 				}
 
-				case GSF_INDUSTRIES: {
+				case GrfSpecFeature::Industries: {
 					if (type > 2) {
 						GrfMsg(1, "NewSpriteGroup: Unsupported industry production version {}, skipping", type);
 						break;
@@ -721,9 +721,15 @@ static void NewSpriteGroup(ByteReader &buf)
 	_cur_gps.spritegroups[setid] = act_group;
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x02>::FileScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x02>::SafetyScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x02>::LabelScan(ByteReader &) { }
+/** @copybrief GrfActionHandler::Init */
 template <> void GrfActionHandler<0x02>::Init(ByteReader &) { }
+/** @copybrief GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x02>::Reserve(ByteReader &) { }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x02>::Activation(ByteReader &buf) { NewSpriteGroup(buf); }

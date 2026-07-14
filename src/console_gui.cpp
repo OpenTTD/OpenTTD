@@ -41,10 +41,10 @@ static const uint ICON_BOTTOM_BORDERWIDTH = 12;
  */
 struct IConsoleLine {
 	std::string buffer;     ///< The data to store.
-	TextColour colour;      ///< The colour of the line.
+	ExtendedTextColour colour; ///< The colour of the line.
 	uint16_t time;            ///< The amount of time the line is in the backlog.
 
-	IConsoleLine() : buffer(), colour(TC_BEGIN), time(0)
+	IConsoleLine() : buffer(), colour(TextColour::Begin), time(0)
 	{
 
 	}
@@ -54,7 +54,7 @@ struct IConsoleLine {
 	 * @param buffer the data to print.
 	 * @param colour the colour of the line.
 	 */
-	IConsoleLine(std::string buffer, TextColour colour) :
+	IConsoleLine(std::string buffer, ExtendedTextColour colour) :
 			buffer(std::move(buffer)),
 			colour(colour),
 			time(0)
@@ -106,12 +106,12 @@ private:
 	}
 };
 
-/* ** main console cmd buffer ** */
+/** Main console cmd buffer. */
 static Textbuf _iconsole_cmdline(ICON_CMDLN_SIZE);
 static ConsoleAutoCompletion _iconsole_tab_completion(&_iconsole_cmdline);
 static std::deque<std::string> _iconsole_history;
 static ptrdiff_t _iconsole_historypos;
-IConsoleModes _iconsole_mode;
+IConsoleMode _iconsole_mode;
 
 /* *************** *
  *  end of header  *
@@ -121,7 +121,7 @@ static void IConsoleClearCommand()
 {
 	_iconsole_cmdline.DeleteAll();
 	_iconsole_tab_completion.Reset();
-	SetWindowDirty(WC_CONSOLE, 0);
+	SetWindowDirty(WindowClass::Console, 0);
 }
 
 static inline void IConsoleResetHistoryPos()
@@ -134,12 +134,13 @@ static std::optional<std::string_view> IConsoleHistoryAdd(std::string_view cmd);
 static void IConsoleHistoryNavigate(int direction);
 
 static constexpr std::initializer_list<NWidgetPart> _nested_console_window_widgets = {
-	NWidget(WWT_EMPTY, INVALID_COLOUR, WID_C_BACKGROUND), SetResize(1, 1),
+	NWidget(WWT_EMPTY, Colours::Invalid, WID_C_BACKGROUND), SetResize(1, 1),
 };
 
+/** Window definition for the console window. */
 static WindowDesc _console_window_desc(
-	WDP_MANUAL, {}, 0, 0,
-	WC_CONSOLE, WC_NONE,
+	WindowPosition::Manual, {}, 0, 0,
+	WindowClass::Console, WindowClass::None,
 	{},
 	_nested_console_window_widgets
 );
@@ -153,7 +154,7 @@ struct IConsoleWindow : Window
 
 	IConsoleWindow() : Window(_console_window_desc)
 	{
-		_iconsole_mode = ICONSOLE_OPENED;
+		_iconsole_mode = IConsoleMode::Opened;
 
 		this->InitNested(0);
 		ResizeWindow(this, _screen.width, _screen.height / 3);
@@ -161,14 +162,14 @@ struct IConsoleWindow : Window
 
 	void OnInit() override
 	{
-		this->line_height = GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.hsep_normal;
+		this->line_height = GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.hsep_normal;
 		this->line_offset = GetStringBoundingBox("] ").width + WidgetDimensions::scaled.frametext.left;
-		this->cursor_width = GetCharacterWidth(FS_NORMAL, '_');
+		this->cursor_width = GetCharacterWidth(FontSize::Normal, '_');
 	}
 
 	void Close([[maybe_unused]] int data = 0) override
 	{
-		_iconsole_mode = ICONSOLE_CLOSED;
+		_iconsole_mode = IConsoleMode::Closed;
 		VideoDriver::GetInstance()->EditBoxLostFocus();
 		this->Window::Close();
 	}
@@ -199,23 +200,23 @@ struct IConsoleWindow : Window
 		int ypos = this->height - this->line_height - WidgetDimensions::scaled.hsep_normal;
 		for (size_t line_index = IConsoleWindow::scroll; line_index < _iconsole_buffer.size(); line_index++) {
 			const IConsoleLine &print = _iconsole_buffer[line_index];
-			ypos = DrawStringMultiLine(WidgetDimensions::scaled.frametext.left, right, -this->line_height, ypos, GetString(STR_JUST_RAW_STRING, print.buffer), print.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - WidgetDimensions::scaled.hsep_normal;
+			ypos = DrawStringMultiLine(WidgetDimensions::scaled.frametext.left, right, -this->line_height, ypos, GetString(STR_JUST_RAW_STRING, print.buffer), print.colour, {AlignmentH::ForceLeft, AlignmentV::Bottom}) - WidgetDimensions::scaled.hsep_normal;
 			if (ypos < 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - WidgetDimensions::scaled.frametext.right - cursor_width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
-			DrawString(WidgetDimensions::scaled.frametext.left, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
+			DrawString(WidgetDimensions::scaled.frametext.left, right, this->height - this->line_height, "]", CC_COMMAND, AlignmentH::ForceLeft);
 			delta = 0;
 		}
 
 		/* If we have a marked area, draw a background highlight. */
 		if (_iconsole_cmdline.marklength != 0) GfxFillRect(this->line_offset + delta + _iconsole_cmdline.markxoffs, this->height - this->line_height, this->line_offset + delta + _iconsole_cmdline.markxoffs + _iconsole_cmdline.marklength, this->height - 1, PC_DARK_RED);
 
-		DrawString(this->line_offset + delta, right, this->height - this->line_height, _iconsole_cmdline.GetText(), static_cast<TextColour>(CC_COMMAND), SA_LEFT | SA_FORCE);
+		DrawString(this->line_offset + delta, right, this->height - this->line_height, _iconsole_cmdline.GetText(), CC_COMMAND, AlignmentH::ForceLeft);
 
 		if (_focused_window == this && _iconsole_cmdline.caret) {
-			DrawString(this->line_offset + delta + _iconsole_cmdline.caretxoffs, right, this->height - this->line_height, "_", TC_WHITE, SA_LEFT | SA_FORCE);
+			DrawString(this->line_offset + delta + _iconsole_cmdline.caretxoffs, right, this->height - this->line_height, "_", TextColour::White, AlignmentH::ForceLeft);
 		}
 	}
 
@@ -238,7 +239,7 @@ struct IConsoleWindow : Window
 
 	EventState OnKeyPress([[maybe_unused]] char32_t key, uint16_t keycode) override
 	{
-		if (_focused_window != this) return ES_NOT_HANDLED;
+		if (_focused_window != this) return EventState::NotHandled;
 
 		const int scroll_height = (this->height / this->line_height) - 1;
 		switch (keycode) {
@@ -285,7 +286,7 @@ struct IConsoleWindow : Window
 			}
 
 			case WKC_CTRL | WKC_RETURN:
-				_iconsole_mode = (_iconsole_mode == ICONSOLE_FULL) ? ICONSOLE_OPENED : ICONSOLE_FULL;
+				_iconsole_mode = (_iconsole_mode == IConsoleMode::Full) ? IConsoleMode::Opened : IConsoleMode::Full;
 				IConsoleResize(this);
 				MarkWholeScreenDirty();
 				break;
@@ -310,12 +311,12 @@ struct IConsoleWindow : Window
 					IConsoleResetHistoryPos();
 					this->SetDirty();
 				} else {
-					return ES_NOT_HANDLED;
+					return EventState::NotHandled;
 				}
 				break;
 			}
 		}
-		return ES_HANDLED;
+		return EventState::Handled;
 	}
 
 	void InsertTextString(WidgetID, std::string_view str, bool marked, std::optional<size_t> caret, std::optional<size_t> insert_location, std::optional<size_t> replacement_end) override
@@ -345,8 +346,8 @@ struct IConsoleWindow : Window
 	{
 		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
-		const auto p1 = GetCharPosInString(_iconsole_cmdline.GetText(), from, FS_NORMAL);
-		const auto p2 = from != to ? GetCharPosInString(_iconsole_cmdline.GetText(), to, FS_NORMAL) : p1;
+		const auto p1 = GetCharPosInString(_iconsole_cmdline.GetText(), from, FontSize::Normal);
+		const auto p2 = from != to ? GetCharPosInString(_iconsole_cmdline.GetText(), to, FontSize::Normal) : p1;
 
 		Rect r = {this->line_offset + delta + p1.left, this->height - this->line_height, this->line_offset + delta + p2.right, this->height};
 		return r;
@@ -383,11 +384,11 @@ size_t IConsoleWindow::scroll = 0;
 void IConsoleGUIInit()
 {
 	IConsoleResetHistoryPos();
-	_iconsole_mode = ICONSOLE_CLOSED;
+	_iconsole_mode = IConsoleMode::Closed;
 
 	IConsoleClearBuffer();
 
-	IConsolePrint(TC_LIGHT_BLUE, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
+	IConsolePrint(TextColour::LightBlue, "OpenTTD Game Console Revision 7 - {}", _openttd_revision);
 	IConsolePrint(CC_WHITE, "------------------------------------");
 	IConsolePrint(CC_WHITE, "use \"help\" for more information.");
 	IConsolePrint(CC_WHITE, "");
@@ -404,15 +405,18 @@ void IConsoleGUIFree()
 	IConsoleClearBuffer();
 }
 
-/** Change the size of the in-game console window after the screen size changed, or the window state changed. */
+/**
+ * Change the size of the in-game console window after the screen size changed, or the window state changed.
+ * @param w The window to update.
+ */
 void IConsoleResize(Window *w)
 {
 	switch (_iconsole_mode) {
-		case ICONSOLE_OPENED:
+		case IConsoleMode::Opened:
 			w->height = _screen.height / 3;
 			w->width = _screen.width;
 			break;
-		case ICONSOLE_FULL:
+		case IConsoleMode::Full:
 			w->height = _screen.height - ICON_BOTTOM_BORDERWIDTH;
 			w->width = _screen.width;
 			break;
@@ -426,12 +430,13 @@ void IConsoleResize(Window *w)
 void IConsoleSwitch()
 {
 	switch (_iconsole_mode) {
-		case ICONSOLE_CLOSED:
+		case IConsoleMode::Closed:
 			new IConsoleWindow();
 			break;
 
-		case ICONSOLE_OPENED: case ICONSOLE_FULL:
-			CloseWindowById(WC_CONSOLE, 0);
+		case IConsoleMode::Opened:
+		case IConsoleMode::Full:
+			CloseWindowById(WindowClass::Console, 0);
 			break;
 	}
 
@@ -441,7 +446,7 @@ void IConsoleSwitch()
 /** Close the in-game console. */
 void IConsoleClose()
 {
-	if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();
+	if (_iconsole_mode == IConsoleMode::Opened) IConsoleSwitch();
 }
 
 /**
@@ -495,10 +500,10 @@ static void IConsoleHistoryNavigate(int direction)
  * @param colour_code the colour of the command. Red in case of errors, etc.
  * @param str the message entered or output on the console (notice, error, etc.)
  */
-void IConsoleGUIPrint(TextColour colour_code, const std::string &str)
+void IConsoleGUIPrint(ExtendedTextColour colour_code, const std::string &str)
 {
 	_iconsole_buffer.push_front(IConsoleLine(str, colour_code));
-	SetWindowDirty(WC_CONSOLE, 0);
+	SetWindowDirty(WindowClass::Console, 0);
 }
 
 /**
@@ -535,16 +540,15 @@ static bool TruncateBuffer()
  * @param c The text colour to compare to.
  * @return true iff the TextColour is valid for console usage.
  */
-bool IsValidConsoleColour(TextColour c)
+bool IsValidConsoleColour(ExtendedTextColour c)
 {
 	/* A normal text colour is used. */
-	if (!(c & TC_IS_PALETTE_COLOUR)) return TC_BEGIN <= c && c < TC_END;
+	if (!c.flags.Test(ExtendedTextColourFlag::IsPaletteColour)) return TextColour::Begin <= c.colour && c.colour < TextColour::End;
 
 	/* A text colour from the palette is used; must be the company
 	 * colour gradient, so it must be one of those. */
-	c &= ~TC_IS_PALETTE_COLOUR;
-	for (Colours i = COLOUR_BEGIN; i < COLOUR_END; i++) {
-		if (GetColourGradient(i, SHADE_NORMAL).p == c) return true;
+	for (Colours i : EnumRange(Colours::End)) {
+		if (ExtendedTextColour{GetColourGradient(i, Shade::Normal)} == c) return true;
 	}
 
 	return false;

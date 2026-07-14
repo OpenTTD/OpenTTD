@@ -45,6 +45,7 @@ enum class TownFlag : uint8_t {
 	CustomGrowth = 3, ///< Growth rate is controlled by GS.
 };
 
+/** Bitset of \c TownFlag elements. */
 using TownFlags = EnumBitSet<TownFlag, uint8_t>;
 
 /** Data structure with cached data of towns. */
@@ -65,12 +66,14 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	TownCache cache{}; ///< Container for all cacheable data.
 
-	/* Town name */
-	uint32_t townnamegrfid = 0;
-	uint16_t townnametype = 0;
-	uint32_t townnameparts = 0;
+	/** @name Town name.
+	 * @{ */
+	GrfID townnamegrfid{}; ///< NewGRF id that contains the name. O is not used.
+	uint16_t townnametype = 0; ///< The style of the name.
+	uint32_t townnameparts = 0; ///< Random number that give unique town name when passed to generator.
 	std::string name{}; ///< Custom town name. If empty, the town was not renamed and uses the generated name.
 	mutable std::string cached_name{}; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
+	/** @} */
 
 	TownFlags flags{}; ///< See #TownFlags.
 
@@ -104,11 +107,31 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 		SuppliedCargo(CargoType cargo) : cargo(cargo) {}
 	};
 
-	using SuppliedCargoes = std::vector<SuppliedCargo>;
+	/** Individual data point for accepted cargo history. */
+	struct AcceptedHistory {
+		uint32_t accepted = 0; ///< Total accepted.
+	};
+
+	/** Storage for accepted cargo history. */
+	struct AcceptedCargo {
+		CargoType cargo = INVALID_CARGO; ///< Cargo type of accepted cargo.
+		HistoryData<AcceptedHistory> history{}; ///< Histor data of accepted cargo.
+
+		AcceptedCargo() = default;
+		/**
+		 * Construct AcceptedCargo.
+		 * @param cargo Cargo type of this AcceptedCargo.
+		 */
+		AcceptedCargo(CargoType cargo) : cargo(cargo) {}
+	};
+
+	using SuppliedCargoes = std::vector<SuppliedCargo>; ///< Type for storage of all supplied cargo history.
+	using AcceptedCargoes = std::vector<AcceptedCargo>; ///< Type for storage of all accepted cargo history.
 
 	SuppliedCargoes supplied{}; ///< Cargo statistics about supplied cargo.
-	std::array<TransportedCargoStat<uint16_t>, NUM_TAE> received{}; ///< Cargo statistics about received cargotypes.
-	std::array<uint32_t, NUM_TAE> goal{}; ///< Amount of cargo required for the town to grow.
+	AcceptedCargoes accepted{}; ///< Cargo statistics about accepted cargo.
+	EnumIndexArray<TransportedCargoStat<uint16_t>, TownAcceptanceEffect, TownAcceptanceEffect::End> received{}; ///< Cargo statistics about received cargotypes.
+	EnumIndexArray<uint32_t, TownAcceptanceEffect, TownAcceptanceEffect::End> goal{}; ///< Amount of cargo required for the town to grow.
 	ValidHistoryMask valid_history = 0; ///< Mask of valid history records.
 
 	EncodedString text{}; ///< General text with additional information.
@@ -125,7 +148,33 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	{
 		if (!IsValidCargoType(cargo)) return std::end(this->supplied);
 		auto it = std::ranges::lower_bound(this->supplied, cargo, std::less{}, &SuppliedCargo::cargo);
-		if (it == std::end(this->supplied) || it->cargo != cargo) return std::end(supplied);
+		if (it == std::end(this->supplied) || it->cargo != cargo) return std::end(this->supplied);
+		return it;
+	}
+
+	/**
+	 * Get or create the storage for an accepted cargo.
+	 * @param cargo Cargo type to get.
+	 * @return Accepted cargo storage for the cargo type.
+	 */
+	inline AcceptedCargo &GetOrCreateCargoAccepted(CargoType cargo)
+	{
+		assert(IsValidCargoType(cargo));
+		auto it = std::ranges::lower_bound(this->accepted, cargo, std::less{}, &AcceptedCargo::cargo);
+		if (it == std::end(this->accepted) || it->cargo != cargo) it = this->accepted.emplace(it, cargo);
+		return *it;
+	}
+
+	/**
+	 * Get iterator to the storage for an accepted cargo.
+	 * @param cargo Cargo type to get.
+	 * @return Iterator to the cargo type or end of accepted cargo if it is not present.
+	 */
+	inline AcceptedCargoes::const_iterator GetCargoAccepted(CargoType cargo) const
+	{
+		if (!IsValidCargoType(cargo)) return std::end(this->accepted);
+		auto it = std::ranges::lower_bound(this->accepted, cargo, std::less{}, &AcceptedCargo::cargo);
+		if (it == std::end(this->accepted) || it->cargo != cargo) return std::end(this->accepted);
 		return it;
 	}
 
@@ -256,9 +305,9 @@ enum class TownAction : uint8_t {
 	Bribe, ///< Try to bribe the council.
 	End, ///< End marker.
 };
-using TownActions = EnumBitSet<TownAction, uint8_t>;
 
-DECLARE_INCREMENT_DECREMENT_OPERATORS(TownAction);
+/** Bitset of \c TownAction elements. */
+using TownActions = EnumBitSet<TownAction, uint8_t>;
 
 void ClearTownHouse(Town *t, TileIndex tile);
 void UpdateTownMaxPass(Town *t);

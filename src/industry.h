@@ -54,6 +54,8 @@ enum class IndustryControlFlag : uint8_t {
 	ExternalProdLevel = 3,
 	End, ///< End marker.
 };
+
+/** Bitset of \c IndustryControlFlag elements. */
 using IndustryControlFlags = EnumBitSet<IndustryControlFlag, uint8_t, IndustryControlFlag::End>;
 
 /**
@@ -71,19 +73,19 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 		}
 	};
 	struct ProducedCargo {
-		CargoType cargo = 0; ///< Cargo type
+		CargoType cargo = INVALID_CARGO; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo produced
 		uint8_t rate = 0; ///< Production rate
 		HistoryData<ProducedHistory> history{}; ///< History of cargo produced and transported for this month and 24 previous months
 	};
 
 	struct AcceptedHistory {
-		uint16_t accepted = 0; /// Total accepted.
-		uint16_t waiting = 0; /// Average waiting.
+		uint16_t accepted = 0; ///< Total accepted.
+		uint16_t waiting = 0; ///< Average waiting.
 	};
 
 	struct AcceptedCargo {
-		CargoType cargo = 0; ///< Cargo type
+		CargoType cargo = INVALID_CARGO; ///< Cargo type
 		uint16_t waiting = 0; ///< Amount of cargo waiting to processed
 		uint32_t accumulated_waiting = 0; ///< Accumulated waiting total over the last month, used to calculate average.
 		TimerGameEconomy::Date last_accepted{}; ///< Last day cargo was accepted by this industry
@@ -114,7 +116,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	IndustryType type = 0; ///< type of industry.
 	Owner owner = INVALID_OWNER; ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
-	Colours random_colour = COLOUR_BEGIN; ///< randomized colour of the industry, for display purpose
+	Colours random_colour = Colours::Begin; ///< randomized colour of the industry, for display purpose
 	TimerGameEconomy::Year last_prod_year{}; ///< last economy year of production
 	uint8_t was_cargo_delivered = 0; ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 	IndustryControlFlags ctlflags{}; ///< flags overriding standard behaviours
@@ -125,7 +127,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	Owner founder = INVALID_OWNER; ///< Founder of the industry
 	TimerGameCalendar::Date construction_date{}; ///< Date of the construction of the industry
-	uint8_t construction_type = 0; ///< Way the industry was constructed (@see IndustryConstructionType)
+	IndustryConstructionType construction_type{}; ///< Way the industry was constructed (@see IndustryConstructionType)
 	uint8_t selected_layout = 0; ///< Which tile layout was used when creating the industry
 	Owner exclusive_supplier = INVALID_OWNER; ///< Which company has exclusive rights to deliver cargo (INVALID_OWNER = anyone)
 	Owner exclusive_consumer = INVALID_OWNER; ///< Which company has exclusive rights to take cargo (INVALID_OWNER = anyone)
@@ -147,7 +149,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	 */
 	inline bool TileBelongsToIndustry(TileIndex tile) const
 	{
-		return IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == this->index;
+		return IsTileType(tile, TileType::Industry) && GetIndustryIndex(tile) == this->index;
 	}
 
 	/**
@@ -245,7 +247,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	/**
 	 * Get the industry of the given tile
 	 * @param tile the tile to get the industry from
-	 * @pre IsTileType(t, MP_INDUSTRY)
+	 * @pre IsTileType(t, TileType::Industry)
 	 * @return the industry
 	 */
 	static inline Industry *GetByTile(TileIndex tile)
@@ -260,6 +262,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	 * Get the count of industries for this type.
 	 * @param type IndustryType to query
 	 * @pre type < NUM_INDUSTRYTYPES
+	 * @return The number of industries of the given type.
 	 */
 	static inline uint16_t GetIndustryTypeCount(IndustryType type)
 	{

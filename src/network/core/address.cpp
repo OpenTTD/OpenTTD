@@ -438,17 +438,17 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
  *
  * @param connection_string The string to parse.
  * @param default_port The default port to set port to if not in connection_string.
- * @param company Pointer to the company variable to set iff indicated.
+ * @param company_id Pointer to the company variable to set iff indicated.
  * @return A valid ServerAddress of the parsed information.
  */
 /* static */ ServerAddress ServerAddress::Parse(std::string_view connection_string, uint16_t default_port, CompanyID *company_id)
 {
 	if (connection_string.starts_with("+")) {
 		std::string_view invite_code = ParseCompanyFromConnectionString(connection_string, company_id);
-		return ServerAddress(SERVER_ADDRESS_INVITE_CODE, std::string(invite_code));
+		return ServerAddress(ServerAddressType::InviteCode, std::string(invite_code));
 	}
 
 	uint16_t port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port, company_id);
-	return ServerAddress(SERVER_ADDRESS_DIRECT, fmt::format("{}:{}", ip, port));
+	return ServerAddress(ServerAddressType::Direct, fmt::format("{}:{}", ip, port));
 }

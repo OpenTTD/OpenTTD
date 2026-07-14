@@ -97,6 +97,7 @@ public:
 		OC_REQUIRES_SERVICE    = to_underlying(::OrderConditionVariable::RequiresService), ///< Skip when the vehicle requires service, no value.
 		OC_UNCONDITIONALLY     = to_underlying(::OrderConditionVariable::Unconditionally), ///< Always skip, no compare function, no value.
 		OC_REMAINING_LIFETIME  = to_underlying(::OrderConditionVariable::RemainingLifetime), ///< Skip based on the remaining lifetime in calendar-years. @see \ref ScriptCalendarTime
+		OC_IS_REVERSING        = to_underlying(::OrderConditionVariable::DrivingBackwards), ///< Skip when the vehicle is reversing.
 
 		/* Custom added value, only valid for this API */
 		OC_INVALID             = -1,                       ///< An invalid condition, do not use.

@@ -34,10 +34,10 @@ void AfterLoadLabelMaps()
 }
 
 struct RAILChunkHandler : ChunkHandler {
-	RAILChunkHandler() : ChunkHandler('RAIL', CH_TABLE) {}
+	RAILChunkHandler() : ChunkHandler("RAIL", ChunkType::Table) {}
 
 	static inline const SaveLoad description[] = {
-		SLE_VAR(LabelObject<RailTypeLabel>, label, SLE_UINT32),
+		SLE_VAR(LabelObject<RailTypeLabel>, label, VarTypes::U32),
 	};
 
 	void Save() const override
@@ -45,7 +45,7 @@ struct RAILChunkHandler : ChunkHandler {
 		SlTableHeader(description);
 
 		LabelObject<RailTypeLabel> lo;
-		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
+		for (RailType r : EnumRange(RAILTYPE_END)) {
 			lo.label = GetRailTypeInfo(r)->label;
 
 			SlSetArrayIndex(r);
@@ -69,11 +69,11 @@ struct RAILChunkHandler : ChunkHandler {
 };
 
 struct ROTTChunkHandler : ChunkHandler {
-	ROTTChunkHandler() : ChunkHandler('ROTT', CH_TABLE) {}
+	ROTTChunkHandler() : ChunkHandler("ROTT", ChunkType::Table) {}
 
 	static inline const SaveLoad description[] = {
-		SLE_VAR(LabelObject<RoadTypeLabel>, label, SLE_UINT32),
-		SLE_VAR(LabelObject<RoadTypeLabel>, subtype, SLE_UINT8),
+		SLE_VAR(LabelObject<RoadTypeLabel>, label, VarTypes::U32),
+		SLE_VAR(LabelObject<RoadTypeLabel>, subtype, VarTypes::U8),
 	};
 
 	void Save() const override
@@ -81,10 +81,10 @@ struct ROTTChunkHandler : ChunkHandler {
 		SlTableHeader(description);
 
 		LabelObject<RoadTypeLabel> lo;
-		for (RoadType r = ROADTYPE_BEGIN; r != ROADTYPE_END; r++) {
+		for (RoadType r : EnumRange(ROADTYPE_END)) {
 			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
 			lo.label = rti->label;
-			lo.subtype = GetRoadTramType(r);
+			lo.subtype = to_underlying(GetRoadTramType(r));
 
 			SlSetArrayIndex(r);
 			SlObject(&lo, description);

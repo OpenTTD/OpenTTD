@@ -1245,7 +1245,7 @@ public:
 	static ScriptEventStoryPageButtonClick *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventStoryPageButtonClick *>(instance); }
 
 	/**
-	 * Get the CompanyID of the player that selected a tile.
+	 * Get the CompanyID of the player that clicked a button.
 	 * @return The ID of the company.
 	 */
 	ScriptCompany::CompanyID GetCompanyID() const { return this->company_id; }
@@ -1329,7 +1329,7 @@ private:
 };
 
 /**
- * Event StoryPageTileSelect, indicating a player clicked a tile selection button on a storybook page, and selected a tile.
+ * Event StoryPageVehicleSelect, indicating a player clicked a vehicle selection button on a storybook page, and selected a vehicle.
  * @api game
  */
 class ScriptEventStoryPageVehicleSelect : public ScriptEvent {
@@ -1358,7 +1358,7 @@ public:
 	static ScriptEventStoryPageVehicleSelect *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventStoryPageVehicleSelect *>(instance); }
 
 	/**
-	 * Get the CompanyID of the player that selected a tile.
+	 * Get the CompanyID of the player that selected a vehicle.
 	 * @return The company's ID.
 	 */
 	ScriptCompany::CompanyID GetCompanyID() const { return this->company_id; }

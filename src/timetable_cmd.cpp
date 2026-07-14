@@ -14,6 +14,7 @@
 #include "timer/timer_game_economy.h"
 #include "window_func.h"
 #include "vehicle_base.h"
+#include "vehicle_func.h"
 #include "timetable_cmd.h"
 #include "timetable.h"
 
@@ -116,7 +117,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16_t va
 					NOT_REACHED();
 			}
 		}
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 	}
 }
 
@@ -133,7 +134,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16_t va
 CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrderID order_number, ModifyTimetableFlags mtf, uint16_t data)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == nullptr || !IsCompanyBuildableVehicleType(v) || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -167,7 +168,7 @@ CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrder
 	if (wait_time != order->GetWaitTime()) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
-				if (order->GetNonStopType().Test(OrderNonStopFlag::NoDestination)) return CommandCost(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
+				if (order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) return CommandCost(STR_ERROR_TIMETABLE_NOT_STOPPING_HERE);
 				break;
 
 			case OT_CONDITIONAL:
@@ -178,7 +179,7 @@ CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrder
 	}
 
 	if (travel_time != order->GetTravelTime() && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
-	if (max_speed != order->GetMaxSpeed() && (order->IsType(OT_CONDITIONAL) || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
+	if (max_speed != order->GetMaxSpeed() && (order->IsType(OT_CONDITIONAL) || v->type == VehicleType::Aircraft)) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		switch (mtf) {
@@ -228,7 +229,7 @@ CommandCost CmdChangeTimetable(DoCommandFlags flags, VehicleID veh, VehicleOrder
 CommandCost CmdBulkChangeTimetable(DoCommandFlags flags, VehicleID veh, ModifyTimetableFlags mtf, uint16_t data)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == nullptr || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == nullptr || !IsCompanyBuildableVehicleType(v) || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -242,7 +243,7 @@ CommandCost CmdBulkChangeTimetable(DoCommandFlags flags, VehicleID veh, ModifyTi
 			Order *order = v->GetOrder(order_number);
 			if (order == nullptr || order->IsType(OT_IMPLICIT)) continue;
 
-			Command<CMD_CHANGE_TIMETABLE>::Do(DoCommandFlag::Execute, v->index, order_number, mtf, data);
+			Command<Commands::ChangeTimetable>::Do(DoCommandFlag::Execute, v->index, order_number, mtf, data);
 		}
 	}
 
@@ -259,7 +260,7 @@ CommandCost CmdBulkChangeTimetable(DoCommandFlags flags, VehicleID veh, ModifyTi
 CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_to_group)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
+	if (v == nullptr || !IsCompanyBuildableVehicleType(v) || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
 
 	/* A vehicle can't be late if its timetable hasn't started.
 	 * If we're setting all vehicles in the group, we handle that below. */
@@ -288,14 +289,14 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
 					if (!v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) continue;
 
 					u->lateness_counter -= most_late;
-					SetWindowDirty(WC_VEHICLE_TIMETABLE, u->index);
+					SetWindowDirty(WindowClass::VehicleTimetable, u->index);
 				}
 			}
 		} else {
 			v->lateness_counter = 0;
 			/* Unbunching data is no longer valid. */
 			v->ResetDepotUnbunching();
-			SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+			SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 		}
 	}
 
@@ -305,10 +306,7 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
 /**
  * Order vehicles based on their timetable. The vehicles will be sorted in order
  * they would reach the first station.
- *
- * @param a First Vehicle pointer.
- * @param b Second Vehicle pointer.
- * @return Comparison value.
+ * @copydoc GUIList::Sorter
  */
 static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 {
@@ -351,7 +349,7 @@ static bool VehicleTimetableSorter(Vehicle * const &a, Vehicle * const &b)
 CommandCost CmdSetTimetableStart(DoCommandFlags flags, VehicleID veh_id, bool timetable_all, TimerGameTick::TickCounter start_tick)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
-	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
+	if (v == nullptr || !IsCompanyBuildableVehicleType(v) || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -402,7 +400,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlags flags, VehicleID veh_id, bool ti
 			/* Unbunching data is no longer valid. */
 			v->ResetDepotUnbunching();
 
-			SetWindowDirty(WC_VEHICLE_TIMETABLE, w->index);
+			SetWindowDirty(WindowClass::VehicleTimetable, w->index);
 			++idx;
 		}
 
@@ -425,7 +423,7 @@ CommandCost CmdSetTimetableStart(DoCommandFlags flags, VehicleID veh_id, bool ti
 CommandCost CmdAutofillTimetable(DoCommandFlags flags, VehicleID veh, bool autofill, bool preserve_wait_time)
 {
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == nullptr || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
+	if (v == nullptr || !IsCompanyBuildableVehicleType(v) || !v->IsPrimaryVehicle() || v->orders == nullptr) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
@@ -454,7 +452,7 @@ CommandCost CmdAutofillTimetable(DoCommandFlags flags, VehicleID veh, bool autof
 				v2->vehicle_flags.Reset(VehicleFlag::AutofillTimetable);
 				v2->vehicle_flags.Reset(VehicleFlag::AutofillPreserveWaitTime);
 			}
-			SetWindowDirty(WC_VEHICLE_TIMETABLE, v2->index);
+			SetWindowDirty(WindowClass::VehicleTimetable, v2->index);
 		}
 	}
 
@@ -500,7 +498,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		}
 
 		v->vehicle_flags.Set(VehicleFlag::TimetableStarted);
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 	}
 
 	if (!v->vehicle_flags.Test(VehicleFlag::TimetableStarted)) return;
@@ -570,6 +568,6 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	}
 
 	for (v = v->FirstShared(); v != nullptr; v = v->NextShared()) {
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
+		SetWindowDirty(WindowClass::VehicleTimetable, v->index);
 	}
 }

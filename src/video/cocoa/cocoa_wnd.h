@@ -14,7 +14,7 @@
 
 class VideoDriver_Cocoa;
 
-/* Right Mouse Button Emulation enum */
+/** Right Mouse Button Emulation enum. */
 enum RightMouseButtonEmulationState {
 	RMBE_COMMAND = 0,
 	RMBE_CONTROL = 1,

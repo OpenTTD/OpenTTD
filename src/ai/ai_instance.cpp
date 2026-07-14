@@ -55,7 +55,7 @@ void AIInstance::RegisterAPI()
 	/* Register all classes */
 	SQAI_RegisterAll(*this->engine);
 
-	if (!this->LoadCompatibilityScripts(AI_DIR, AIInfo::ApiVersions)) this->Died();
+	if (!this->LoadCompatibilityScripts(Subdirectory::Ai, AIInfo::ApiVersions)) this->Died();
 }
 
 void AIInstance::Died()
@@ -63,16 +63,16 @@ void AIInstance::Died()
 	ScriptInstance::Died();
 
 	/* Intro is not supposed to use AI, but it may have 'dummy' AI which instant dies. */
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GameMode::Menu) return;
 
 	/* Don't show errors while loading savegame. They will be shown at end of loading anyway. */
-	if (_switch_mode != SM_NONE) return;
+	if (_switch_mode != SwitchMode::None) return;
 
 	ShowScriptDebugWindow(_current_company);
 
 	const AIInfo *info = AIConfig::GetConfig(_current_company)->GetInfo();
 	if (info != nullptr) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_AI_PLEASE_REPORT_CRASH), {}, WL_WARNING);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_AI_PLEASE_REPORT_CRASH), {}, WarningLevel::Warning);
 
 		if (!info->GetURL().empty()) {
 			ScriptLog::Info("Please report the error to the following URL:");

@@ -25,14 +25,14 @@ CommandCost CmdRemoveStoryPage(DoCommandFlags flags, StoryPageID page_id);
 CommandCost CmdRemoveStoryPageElement(DoCommandFlags flags, StoryPageElementID page_element_id);
 CommandCost CmdStoryPageButton(DoCommandFlags flags, TileIndex tile, StoryPageElementID page_element_id, VehicleID reference);
 
-DEF_CMD_TRAIT(CMD_CREATE_STORY_PAGE,         CmdCreateStoryPage,        CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_CREATE_STORY_PAGE_ELEMENT, CmdCreateStoryPageElement, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_UPDATE_STORY_PAGE_ELEMENT, CmdUpdateStoryPageElement, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_SET_STORY_PAGE_TITLE,      CmdSetStoryPageTitle,      CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_SET_STORY_PAGE_DATE,       CmdSetStoryPageDate,       CommandFlag::Deity, CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_SHOW_STORY_PAGE,           CmdShowStoryPage,          CommandFlag::Deity, CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_REMOVE_STORY_PAGE,         CmdRemoveStoryPage,        CommandFlag::Deity, CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_REMOVE_STORY_PAGE_ELEMENT, CmdRemoveStoryPageElement, CommandFlag::Deity, CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_STORY_PAGE_BUTTON,         CmdStoryPageButton,        CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::CreateStoryPage, CmdCreateStoryPage, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::CreateStoryPageElement, CmdCreateStoryPageElement, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::UpdateStoryPageElement, CmdUpdateStoryPageElement, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::SetStoryPageTitle, CmdSetStoryPageTitle, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::SetStoryPageDate, CmdSetStoryPageDate, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::ShowStoryPage, CmdShowStoryPage, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::RemoveStoryPage, CmdRemoveStoryPage, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::RemoveStoryPageElement, CmdRemoveStoryPageElement, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::StoryPageButton, CmdStoryPageButton, CommandFlag::Deity, CommandType::OtherManagement)
 
 #endif /* STORY_CMD_H */

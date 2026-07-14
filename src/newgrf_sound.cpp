@@ -78,6 +78,7 @@ size_t GetSoundPoolAllocatedMemory()
 /**
  * Extract meta data from a NewGRF sound.
  * @param sound Sound to load.
+ * @param sound_id Identifier of the sound to load.
  * @return True if a valid sound was loaded.
  */
 bool LoadNewGRFSound(SoundEntry &sound, SoundID sound_id)

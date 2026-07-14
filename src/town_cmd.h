@@ -15,7 +15,7 @@
 #include "town.h"
 #include "town_type.h"
 
-enum TownAcceptanceEffect : uint8_t;
+enum class TownAcceptanceEffect : uint8_t;
 using HouseID = uint16_t;
 
 std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIndex tile, TownSize size, bool city, TownLayout layout, bool random_location, uint32_t townnameparts, const std::string &text);
@@ -30,17 +30,17 @@ CommandCost CmdDeleteTown(DoCommandFlags flags, TownID town_id);
 CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, bool house_protected, bool replace);
 CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, HouseID house, bool is_protected, bool replace, bool diagonal);
 
-DEF_CMD_TRAIT(CMD_FOUND_TOWN,       CmdFoundTown,      CommandFlags({CommandFlag::Deity, CommandFlag::NoTest}),  CommandType::LandscapeConstruction) // founding random town can fail only in exec run
-DEF_CMD_TRAIT(CMD_RENAME_TOWN,      CmdRenameTown,     CommandFlags({CommandFlag::Deity, CommandFlag::Server}),  CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_DO_TOWN_ACTION,   CmdDoTownAction,   CommandFlags({CommandFlag::Location}),                    CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_TOWN_CARGO_GOAL,  CmdTownCargoGoal,  CommandFlags({CommandFlag::Deity}),                       CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_TOWN_GROWTH_RATE, CmdTownGrowthRate, CommandFlags({CommandFlag::Deity}),                       CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_TOWN_RATING,      CmdTownRating,     CommandFlags({CommandFlag::Deity}),                       CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_TOWN_SET_TEXT,    CmdTownSetText,    CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_EXPAND_TOWN,      CmdExpandTown,     CommandFlags({CommandFlag::Deity}),                       CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_DELETE_TOWN,      CmdDeleteTown,     CommandFlags({CommandFlag::Offline}),                     CommandType::LandscapeConstruction)
-DEF_CMD_TRAIT(CMD_PLACE_HOUSE,      CmdPlaceHouse,     CommandFlags({CommandFlag::Deity}),                       CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_PLACE_HOUSE_AREA, CmdPlaceHouseArea, CommandFlags({ CommandFlag::Deity }),                     CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::FoundTown, CmdFoundTown, CommandFlags({CommandFlag::Deity, CommandFlag::NoTest}), CommandType::LandscapeConstruction) // founding random town can fail only in exec run
+DEF_CMD_TRAIT(Commands::RenameTown, CmdRenameTown, CommandFlags({CommandFlag::Deity, CommandFlag::Server}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::TownAction, CmdDoTownAction, CommandFlags({CommandFlag::Location}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::TownCargoGoal, CmdTownCargoGoal, CommandFlags({CommandFlag::Deity}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::TownGrowthRate, CmdTownGrowthRate, CommandFlags({CommandFlag::Deity}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::TownRating, CmdTownRating, CommandFlags({CommandFlag::Deity}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::TownSetText, CmdTownSetText, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::ExpandTown, CmdExpandTown, CommandFlags({CommandFlag::Deity}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::DeleteTown, CmdDeleteTown, CommandFlags({CommandFlag::Offline}), CommandType::LandscapeConstruction)
+DEF_CMD_TRAIT(Commands::PlaceHouse, CmdPlaceHouse, CommandFlags({CommandFlag::Deity}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::PlaceHouseArea, CmdPlaceHouseArea, CommandFlags({ CommandFlag::Deity }), CommandType::OtherManagement)
 
 
 CommandCallback CcFoundTown;

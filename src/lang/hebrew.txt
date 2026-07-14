@@ -1237,8 +1237,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :קבע את ר�
 STR_CONFIG_SETTING_RECESSIONS                                   :מיתונים: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :אם מאופשר מיתונים עלולים להתרחש מדי כמה שנים. בתקופת מיתון כל הייצור קטן יותר באופן משמעותי (הוא חוזר לרמתו הקודמת בסוף המיתון)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :מנע החלפת כיוון רכבות בתחנות: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :אם מאופשר רכבות לא יחליפו כיוון בתחנות שאינן סופיות, גם אם עקב החלפת כיוון יש נתיב קצר יותר אל היעד הבא
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :אסונות: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :אפשר/מנע אסונות אשר עלולים מדי פעם לחסום או להרוס כלי רכב או תשתיות
@@ -1418,6 +1418,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :כאשר מאו
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :חידוש עצמי של רכב כשהוא נהיה ישן: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :כאשר מאופשר, רכב המתקרב לסוף חייו מוחלף אוטומטית כאשר תנאי החידוש מתקיימים
@@ -1628,12 +1630,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :הצג זמני
 STR_CONFIG_SETTING_QUICKGOTO                                    :{STRING} :יצירה מהירה של מסלול הנסיעה
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :בחר מראש את סמן ה-"גש אל" בעת פתיחת חלון הפקודות
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{STRING} :(ברירת מחדל לפסי רכבת (בתחילת משחק או לאחר טעינה
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :סוג מסילה לבחירה אחרי התחלה או טעינה של משחק. "הראשון הזמין" בוחר את סוג המסילה הישן ביותר, "האחרון הזמין" בוחר את סוג המסילה החדש ביותר, ו-"הנפוץ ביותר" בוחר את הסוג אשר נמצא בשימוש רחב ביותר כרגע
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :הראשון הזמין
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :האחרון הזמין
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :הנפוץ ביותר
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :הדגש מסלולים שבשימוש: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :תן צבע שונה למסילות שמורות כדי לסייע בבעיות עם רכבות המסרבות להיכנס לגושים מבוססי מסלול
@@ -1734,6 +1731,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :כאשר מאו
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{STRING} :אפשר הגבלת מהירות עבור קרונות רכבת
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :כאשר מאופשר, השתמש גם במגבלות מהירות של קרונות לצורך קביעות המהירות המירבית של רכבת
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{STRING} : בטל פסים חשמליים
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :אפשור הגדרה זו מבטל את הדרישה לחשמל מסילות כדי שקטרים חשמליים יוכלו לנסוע עליהן
@@ -2024,7 +2022,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... מת
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... מתעלם מערכת צלילים בסיסית '{STRING}': לא נמצאה
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... מתעלם מערכת מוסיקה בסיסית '{STRING}': לא נמצאה
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... לא נמצא כרטיס מסך תואם, האצת חומרה מושבתת
 
 # Intro window
@@ -2250,15 +2248,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{P 0 "ש
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} הורדו עד כה
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} :הורדו
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) מתחבר...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) מקבל הרשאה...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) ממתין...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) טוען מפה...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) מעבד נתונים...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) נרשם...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}טוען מידע על המשחק...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}טוען מידע על החברה...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}התנתק
 
@@ -2587,6 +2583,8 @@ STR_PICKER_MODE_USED                                            :בשימוש
 STR_PICKER_MODE_USED_TOOLTIP                                    :החלף הצגת פריטים קיימים בלבד
 STR_PICKER_MODE_SAVED                                           :נשמר
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :החלף הצגת פריטים שמורים בלבד
+
+
 
 
 
@@ -3772,6 +3770,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}כוח �
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}טווח: {GOLD}{COMMA} משבצות
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}סוג כלי טיס: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :כל סוגי המטען
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :רכבת משא
@@ -3928,6 +3928,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}?אתה
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}הודעה מיצרן הרכב
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}?חדש/ה! האם אתה מעוניין לבחון כלי זה באופן בלעדי לפני הוצאתו לשוק {STRING} זה עתה סיימנו את תכנונו של
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :קטר רכבת
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :קטר רכבת חשמלי
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :קטר חד-פס
@@ -4080,7 +4081,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}משקל
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY} {BLACK}T.E. מקסימלי: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}רווח בשנה הנוכחת: {LTBLUE}{CURRENCY_LONG} (שנה שעברה: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}מהימנות: {LTBLUE}{COMMA}%  {BLACK}קלקול מאז טיפול אחרון: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}נבנה: {LTBLUE}{NUM}{BLACK} ערך: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}קיבולת: {LTBLUE}אין{STRING}
@@ -4208,7 +4208,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :עצור
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}נתוני כלי הרכב עליהם יתבסס הדילוג
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :אחוז טעינה
 STR_ORDER_CONDITIONAL_RELIABILITY                               :אמינות
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :מהירות מירבית
@@ -4584,7 +4584,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}לא נ�
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}לא ניתן לשנות את השם של העיר הזאת...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}לא ניתן להקים עיירה כאן...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}לא ניתן להרחיב עיירה...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... קרוב מידי לקצה המפה
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... קרוב מידי לעיר אחרת
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... יותר מידי ערים
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... אין יותר מקום על המפה

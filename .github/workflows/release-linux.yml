@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Download source
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         name: internal-source
 
@@ -40,9 +40,11 @@ jobs:
         echo "::group::Install system dependencies"
         # perl-IPC-Cmd, wget, and zip are needed to run vcpkg.
         # autoconf-archive is needed to build ICU.
+        # perl-Time-Piece is needed to build OpenSSL.
         yum install -y \
           autoconf-archive \
           perl-IPC-Cmd \
+          perl-Time-Piece \
           wget \
           zip \
           # EOF
@@ -81,6 +83,7 @@ jobs:
         yum install -y \
           alsa-lib-devel \
           pulseaudio-libs-devel \
+          pipewire-devel \
           # EOF
         echo "::endgroup::"
 
@@ -157,14 +160,14 @@ jobs:
         echo "::endgroup::"
 
     - name: Store bundles
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: openttd-linux-generic
         path: build/bundles
         retention-days: 5
 
     - name: Store symbols
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: symbols-linux-generic
         path: build/symbols

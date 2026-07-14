@@ -1695,7 +1695,7 @@ static const std::string_view _name_czech_real[] = {
  * Feel free to ask me about anything unclear or if you need help
  * with cloning this for your own language. */
 
-/* Sing., pl. */
+/** Sing., pl. */
 enum CzechGender : uint8_t {
 	CZG_SMASC,
 	CZG_SFEM,
@@ -1703,9 +1703,9 @@ enum CzechGender : uint8_t {
 	CZG_PMASC,
 	CZG_PFEM,
 	CZG_PNEUT,
-	/* Special for substantive stems - the ending chooses the gender. */
+	/** Special for substantive stems - the ending chooses the gender. */
 	CZG_FREE,
-	/* Like CZG_FREE, but disallow CZG_SNEUT. */
+	/** Like CZG_FREE, but disallow CZG_SNEUT. */
 	CZG_NFREE
 };
 
@@ -1715,7 +1715,7 @@ enum CzechPattern : uint8_t {
 	CZP_PRIVL
 };
 
-/* [CzechGender][CzechPattern] - suffixes for adjectives */
+/** [CzechGender][CzechPattern] - suffixes for adjectives. */
 static const std::string_view _name_czech_patmod[][3] = {
 	/* CZG_SMASC */ { "\u00ed", "\u00fd", "uv" },
 	/* CZG_SFEM */  { "\u00ed", "\u00e1", "ova" },
@@ -1725,25 +1725,29 @@ static const std::string_view _name_czech_patmod[][3] = {
 	/* CZG_PNEUT */ { "\u00ed", "\u00e1", "ova" }
 };
 
-/* This way the substantive can choose only some adjectives/endings:
- * At least one of these flags must be satisfied: */
+/**
+ * This way the substantive can choose only some adjectives/endings:
+ * At least one of these flags must be satisfied:
+ */
 enum class CzechAllowFlag : uint8_t {
 	Short,
 	Middle,
 	Long,
 };
 
+/** Bitset of \c CzechAllowFlag elements. */
 using CzechAllowFlags = EnumBitSet<CzechAllowFlag, uint8_t>;
 
 static constexpr CzechAllowFlags CZA_ALL = {CzechAllowFlag::Short, CzechAllowFlag::Middle, CzechAllowFlag::Long};
 
-/* All these flags must be satisfied (in the stem->others direction): */
+/** All these flags must be satisfied (in the stem->others direction): */
 enum class CzechChooseFlag : uint8_t {
 	Colour,
-	Postfix, // Matched if postfix was inserted.
-	NoPostfix, // Matched if no postfix was inserted.
+	Postfix, ///< Matched if postfix was inserted.
+	NoPostfix, ///< Matched if no postfix was inserted.
 };
 
+/** Bitset of \c CzechChooseFlag elements. */
 using CzechChooseFlags = EnumBitSet<CzechChooseFlag, uint8_t>;
 
 static constexpr CzechChooseFlags CZC_ANY = {CzechChooseFlag::Colour, CzechChooseFlag::Postfix, CzechChooseFlag::NoPostfix};
@@ -1761,7 +1765,7 @@ struct CzechNameAdj {
 	std::string_view name;
 };
 
-/* Some of items which should be common are doubled. */
+/** Adjectives for Czech town names. @note Some of items which should be common are doubled. */
 static const CzechNameAdj _name_czech_adj[] = {
 	{ CZP_JARNI, CZC_ANY, "Horn" },
 	{ CZP_JARNI, CZC_ANY, "Horn" },
@@ -1813,7 +1817,7 @@ static const CzechNameAdj _name_czech_adj[] = {
 	{ CZP_PRIVL, CZC_ANY, "Sud" },
 };
 
-/* Considered a stem for choose/allow matching purposes. */
+/** Considered a stem for choose/allow matching purposes. */
 static const CzechNameSubst _name_czech_subst_full[] = {
 	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "Sedlec" },
 	{ CZG_SMASC, CZA_ALL, CzechChooseFlag::Colour, "Brod" },
@@ -1833,7 +1837,7 @@ static const CzechNameSubst _name_czech_subst_full[] = {
 	{ CZG_PNEUT, CZA_ALL, CzechChooseFlag::Colour, "Pole" },
 };
 
-/* TODO: More stems needed. --pasky */
+/** Beginnings for Czech town names. */
 static const CzechNameSubst _name_czech_subst_stem[] = {
 	{ CZG_SMASC, {                       CzechAllowFlag::Middle                      }, CzechChooseFlag::Colour, "Kostel" },
 	{ CZG_SMASC, {                       CzechAllowFlag::Middle                      }, CzechChooseFlag::Colour, "Kl\u00e1\u0161ter" },
@@ -1879,14 +1883,14 @@ static const CzechNameSubst _name_czech_subst_stem[] = {
 	{ CZG_FREE,  {                       CzechAllowFlag::Middle, CzechAllowFlag::Long}, {}, "Lip" },
 };
 
-/* Optional postfix inserted between stem and ending. */
+/** Optional postfix inserted between stem and ending. */
 static const std::string_view _name_czech_subst_postfix[] = {
 	"av", "an", "at",
 	"ov", "on", "ot",
 	"ev", "en", "et",
 };
 
-/* This array must have the both neutral genders at the end! */
+/** Endings for Czech town names. @important This array must have the both neutral genders at the end! */
 static const CzechNameSubst _name_czech_subst_ending[] = {
 	{ CZG_SMASC, {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, CZC_ANY, "ec" },
 	{ CZG_SMASC, {CzechAllowFlag::Short, CzechAllowFlag::Middle                      }, CZC_ANY, "\u00edn" },
@@ -2448,7 +2452,7 @@ static const std::string_view _name_hungarian_3[] = {
 	"fa",
 	"f\u00f6ld",
 	"hegyes",
-	"kak",
+	"lak",
 	"kereszt",
 	"k\u00fcrt",
 	"lad\u00e1ny",

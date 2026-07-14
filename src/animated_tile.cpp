@@ -74,7 +74,7 @@ void AddAnimatedTile(TileIndex tile, bool mark_dirty)
  */
 void AnimateAnimatedTiles()
 {
-	PerformanceAccumulator landscape_framerate(PFE_GL_LANDSCAPE);
+	PerformanceAccumulator landscape_framerate(PerformanceElement::GameLoopLandscape);
 
 	for (auto it = std::begin(_animated_tiles); it != std::end(_animated_tiles); /* nothing */) {
 		TileIndex &tile = *it;

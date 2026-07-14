@@ -631,7 +631,6 @@ STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLA
 STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6 Jahre (vierteljährlich)
 STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24 Jahre (jährlich)
 
-STR_GRAPH_TOGGLE_RANGE                                          :Diagramm für diesen Datenbereich umschalten
 STR_GRAPH_SELECT_SCALE                                          :Horizontale Skala des Diagramms ändern
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbeförderungspreise
@@ -1352,8 +1351,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Hoch
 STR_CONFIG_SETTING_RECESSIONS                                   :Rezessionen: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Falls aktiv, können Rezessionen von Zeit zu Zeit auftreten. Während einer Rezession ist die Produktion aller Industrien viel niedriger (und kehrt zum Ende der Rezession zur gleichen Höhe zurück wie vor der Rezession)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Zügen das Umdrehen in Bahnhöfen verbieten: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Falls aktiv, werden Züge in Durchgangsbahnhöfen nicht umdrehen, auch wenn ein kürzerer Pfad zum nächsten Zielbahnhof mittels Umdrehen verfügbar ist
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrophen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ein- oder Ausschalten von Katastrophen, durch die gelegentlich Fahrzeuge oder Infrastruktur blockiert oder zerstört werden können
@@ -1557,6 +1556,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Skaliere die G�
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Skaliere Güterproduktion durch Industrie: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Skaliere die Güterproduktion durch die Industrie um diesen Prozentsatz
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fahrzeuge automatisch erneuern, wenn sie alt werden: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Erneuere Fahrzeuge automatisch gemäß der Regeln für Erneuerung, wenn sie ihr Maximalalter erreicht haben.
@@ -1787,12 +1788,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zeige geschätz
 STR_CONFIG_SETTING_QUICKGOTO                                    :Schnelle Erzeugung von Aufträgen für Fahrzeuge: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Setze die Vorauswahl des Mauszeigers auf „Fahre zu“, wenn ein Auftragsfenster mit weniger als zwei Einträgen geöffnet wird.
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Gleistyp bei Spielbeginn/geladenem Spiel: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Vorausgewählter Schienentyp nach Spielstart. „Erster verfügbarer“ wählt den ältesten Schienentyp, „Letzter verfügbarer“ den neuesten Schienentyp und „Meistbenutzter“ denjenigen, der am meisten verbaut ist.
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Erster verfügbarer
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Letzter verfügbarer
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meistbenutzter
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Reservierte Gleise hervorheben: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Hebt reservierte Fahrabschnitte hervor, um bei der Problemanalyse zu helfen, wenn Züge die Einfahrt in pfadbasierte Streckenabschnitte verweigern
@@ -1898,6 +1894,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Falls aktiviert
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige Waggonhöchstgeschwindigkeit: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiviere elektrifizierte Strecken: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Erlaube Elektrolokomotiven das Fahren auf nicht elektrifizierten Gleisen
@@ -2222,7 +2219,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoriere Basissounds „{STRING}“: nicht gefunden
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriere Basismusikset „{STRING}“: nicht gefunden
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fehler mit den Grafikeinstellungen ...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... keine kompatible GPU gefunden. Hardwarebeschleunigung deaktiviert
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}… GPU-Treiber brachte das Spiel zum Absturz. Hardwarebeschleunigung deaktiviert
@@ -2480,15 +2477,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Te
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} bis jetzt heruntergeladen
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES}/{BYTES} bisher heruntergeladen
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Verbinden...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisieren...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Warten...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Herunterladen des Spielfeldes...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Spieldaten verarbeiten...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrieren...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Spielinformationen holen...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Firmeninformationen holen...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Trennen
 
@@ -2852,6 +2847,8 @@ STR_PICKER_PREVIEW_SHRINK                                       :-
 STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :Höhe von Vorschaubildern verringern. Strg+Klick, um Minimum zu verringern
 STR_PICKER_PREVIEW_EXPAND                                       :+
 STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :Höhe von Vorschaubildern erhöhen. Strg+Klick, um Maximum zu erhöhen
+
+
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Wählen Sie eine anzuzeigende Stationsklasse
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Wählen Sie einen Stationstyp zum Bauen. Strg+Klick, um in gespeicherten Einträgen hinzuzufügen oder zu entfernen
@@ -4205,6 +4202,8 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Reichwei
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Flugzeugtyp: {GOLD}{STRING}
 STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}Gleistypen: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Alle Frachttypen
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :Fracht
@@ -4365,6 +4364,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sollen 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Nachricht vom Fahrzeughersteller
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt.{}Besteht Interesse, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
+
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=w}Lokomotive
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :Elektrolokomotive
@@ -4542,7 +4542,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Gewinn d
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Gewinn im laufenden Jahr: {LTBLUE}{CURRENCY_LONG} (vergangenes Jahr: {CURRENCY_LONG}) {BLACK}Min. Leistungsdichte: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Gewinn in diesem Zyklus: {LTBLUE}{CURRENCY_LONG} (im letzten Zyklus: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Gewinn in diesem Zyklus: {LTBLUE}{CURRENCY_LONG} (im letzten Zyklus: {CURRENCY_LONG}) {BLACK}Min. Leistungsdichte: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}%  {BLACK}Pannen seit der letzten Wartung: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapazität: {LTBLUE}Keine{STRING}
@@ -4682,7 +4681,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Was soll
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fahrzeuginformation, welche für den Sprung ausgewertet wird
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ladezustand (Prozent)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Zuverlässigkeit
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Höchstgeschwindigkeit
@@ -5091,7 +5090,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Bau von 
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Die Stadt kann nicht umbenannt werden ...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Stadt kann hier nicht gegründet werden ...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Stadt kann nicht vergrößert werden ...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... zu dicht am Spielfeldrand
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zu dicht an einer anderen Stadt
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zu viele Städte
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... es ist kein Platz mehr auf dem Spielfeld

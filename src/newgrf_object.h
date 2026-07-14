@@ -10,6 +10,7 @@
 #ifndef NEWGRF_OBJECT_H
 #define NEWGRF_OBJECT_H
 
+#include "core/pool_type.hpp"
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
@@ -38,6 +39,8 @@ enum class ObjectFlag : uint8_t {
 	AnimRandomBits   = 12, ///< Object wants random bits in "next animation frame" callback.
 	ScaleByWater     = 13, ///< Object count is roughly scaled by water amount at edges.
 };
+
+/** Bitset of \c ObjectFlag elements. */
 using ObjectFlags = EnumBitSet<ObjectFlag, uint16_t>;
 
 static const uint8_t OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size property when the object is 1x1 tiles: low nibble for X, high nibble for Y.
@@ -45,13 +48,7 @@ static const uint8_t OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size p
 void ResetObjects();
 
 /** Class IDs for objects. */
-enum ObjectClassID : uint16_t {
-	OBJECT_CLASS_BEGIN = 0, ///< The lowest valid value
-	OBJECT_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
-	INVALID_OBJECT_CLASS = UINT16_MAX, ///< Class for the less fortunate.
-};
-/** Allow incrementing of ObjectClassID variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(ObjectClassID)
+using ObjectClassID = PoolID<uint16_t, struct ObjectClassIDTag, UINT16_MAX, UINT16_MAX>;
 
 /** An object that isn't use for transport, industries or houses.
  * @note If you change this struct, adopt the initialization of
@@ -118,6 +115,7 @@ struct ObjectScopeResolver : public ScopeResolver {
 	 * Constructor of an object scope resolver.
 	 * @param ro Surrounding resolver.
 	 * @param obj Object being resolved.
+	 * @param spec The specification of the object type.
 	 * @param tile %Tile of the object.
 	 * @param view View of the object.
 	 */
@@ -138,13 +136,13 @@ struct ObjectResolverObject : public ResolverObject {
 	ObjectResolverObject(const ObjectSpec *spec, Object *o, TileIndex tile, uint8_t view = 0,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t param1 = 0, uint32_t param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF:
+			case VarSpriteGroupScope::Self:
 				return &this->object_scope;
 
-			case VSG_SCOPE_PARENT: {
+			case VarSpriteGroupScope::Parent: {
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != nullptr) return tsr;
 				[[fallthrough]];
@@ -163,7 +161,7 @@ private:
 };
 
 /** Class containing information relating to object classes. */
-using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
+using ObjectClass = NewGRFClass<ObjectSpec, ObjectClassID>;
 
 uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2, const ObjectSpec *spec, Object *o, TileIndex tile, std::span<int32_t> regs100 = {}, uint8_t view = 0);
 

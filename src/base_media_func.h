@@ -36,6 +36,7 @@ void BaseSet<T>::LogError(std::string_view full_filename, std::string_view detai
  * @param full_filename the full filename of the loaded file (for error reporting purposes)
  * @param group ini group to read from
  * @param name the name of the item to fetch.
+ * @return The item or \c nullptr.
  */
 template <class T>
 const IniItem *BaseSet<T>::GetMandatoryItem(std::string_view full_filename, const IniGroup &group, std::string_view name) const
@@ -156,23 +157,23 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 			file->missing_warning = item->value.value();
 		}
 
-		file->check_result = T::CheckMD5(file, BASESET_DIR);
+		file->check_result = T::CheckMD5(file, Subdirectory::Baseset);
 		switch (file->check_result) {
-			case MD5File::CR_UNKNOWN:
+			case MD5File::ChecksumResult::Unknown:
 				break;
 
-			case MD5File::CR_MATCH:
+			case MD5File::ChecksumResult::Match:
 				this->valid_files++;
 				this->found_files++;
 				break;
 
-			case MD5File::CR_MISMATCH:
+			case MD5File::ChecksumResult::Mismatch:
 				/* This is normal for original sample.cat, which either matches with orig_dos or orig_win. */
 				this->LogError(full_filename, fmt::format("MD5 checksum mismatch for: {}", filename), original_set ? 1 : 0);
 				this->found_files++;
 				break;
 
-			case MD5File::CR_NO_FILE:
+			case MD5File::ChecksumResult::NoFile:
 				/* Missing files is normal for the original basesets. Use lower debug level */
 				this->LogError(full_filename, fmt::format("File is missing: {}", filename), original_set ? 1 : 0);
 				break;
@@ -190,7 +191,7 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 	auto set = std::make_unique<Tbase_set>();
 	IniFile ini{};
 	std::string path{ filename, basepath_length };
-	ini.LoadFromDisk(path, BASESET_DIR);
+	ini.LoadFromDisk(path, Subdirectory::Baseset);
 
 	auto psep = path.rfind(PATHSEPCHAR);
 	if (psep != std::string::npos) {
@@ -376,8 +377,9 @@ template <class Tbase_set>
 }
 
 /**
- * Get the name of the graphics set at the specified index
- * @return the name of the set
+ * Get the base set at a specified index. When the index is out of range, a #FatalError is triggered.
+ * @param index The index of the sets.
+ * @return The set.
  */
 template <class Tbase_set>
 /* static */ const Tbase_set *BaseMedia<Tbase_set>::GetSet(int index)

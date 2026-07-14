@@ -11,13 +11,6 @@
 #define CPU_H
 
 /**
- * Get the CPUID information from the CPU.
- * @param info The retrieved info. All zeros on architectures without CPUID.
- * @param type The information this instruction should retrieve.
- */
-void ottd_cpuid(int info[4], int type);
-
-/**
  * Check whether the current CPU has the given flag.
  * @param type  The type to be passing to cpuid (usually 1).
  * @param index The index in the returned info array.

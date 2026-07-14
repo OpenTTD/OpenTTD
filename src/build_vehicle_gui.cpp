@@ -55,64 +55,59 @@
  */
 uint GetEngineListHeight(VehicleType type)
 {
-	return std::max<uint>(GetCharacterHeight(FS_NORMAL) + WidgetDimensions::scaled.matrix.Vertical(), GetVehicleImageCellSize(type, EIT_PURCHASE).height);
+	return std::max<uint>(GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.matrix.Vertical(), GetVehicleImageCellSize(type, EngineImageType::Purchase).height);
 }
 
 static constexpr std::initializer_list<NWidgetPart> _nested_build_vehicle_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BV_CAPTION), SetTextStyle(TC_WHITE),
-		NWidget(WWT_SHADEBOX, COLOUR_GREY),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_GREY),
-		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_BV_CAPTION), SetTextStyle(TextColour::White),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_DEFSIZEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
 	EndContainer(),
 	NWidget(NWID_VERTICAL),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_SORT_ASCENDING_DESCENDING), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
+			NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BV_SORT_ASCENDING_DESCENDING), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+			NWidget(WWT_DROPDOWN, Colours::Grey, WID_BV_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDDEN_ENGINES),
-			NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_CARGO_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_FILTER_CRITERIA),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, WID_BV_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
+			NWidget(WWT_TEXTBTN, Colours::Grey, WID_BV_SHOW_HIDDEN_ENGINES),
+			NWidget(WWT_DROPDOWN, Colours::Grey, WID_BV_CARGO_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetToolTip(STR_TOOLTIP_FILTER_CRITERIA),
+			NWidget(WWT_IMGBTN, Colours::Grey, WID_BV_CONFIGURE_BADGES), SetAspect(WidgetDimensions::ASPECT_UP_DOWN_BUTTON), SetResize(0, 0), SetFill(0, 1), SetSpriteTip(SPR_EXTRA_MENU, STR_BADGE_CONFIG_MENU_TOOLTIP),
 		EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY),
-			NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BV_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		NWidget(WWT_PANEL, Colours::Grey),
+			NWidget(WWT_EDITBOX, Colours::Grey, WID_BV_FILTER), SetResize(1, 0), SetFill(1, 0), SetPadding(2), SetStringTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 		EndContainer(),
 		NWidget(NWID_VERTICAL, NWidContainerFlag{}, WID_BV_BADGE_FILTER),
 		EndContainer(),
 	EndContainer(),
 	/* Vehicle list. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, WID_BV_LIST), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0), SetScrollbar(WID_BV_SCROLLBAR),
-		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_BV_SCROLLBAR),
+		NWidget(WWT_MATRIX, Colours::Grey, WID_BV_LIST), SetResize(1, 1), SetFill(1, 0), SetMatrixDataTip(1, 0), SetScrollbar(WID_BV_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_BV_SCROLLBAR),
 	EndContainer(),
 	/* Panel with details. */
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_BV_PANEL), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
+	NWidget(WWT_PANEL, Colours::Grey, WID_BV_PANEL), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
 	/* Build/rename buttons, resize button. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BV_BUILD_SEL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_BUILD), SetResize(1, 0), SetFill(1, 0),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_BV_BUILD_SEL),
+			NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BV_BUILD), SetResize(1, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDE), SetResize(1, 0), SetFill(1, 0),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BV_RENAME), SetResize(1, 0), SetFill(1, 0),
-		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BV_SHOW_HIDE), SetResize(1, 0), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BV_RENAME), SetResize(1, 0), SetFill(1, 0),
+		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
 };
 
 
 bool _engine_sort_direction; ///< \c false = descending, \c true = ascending.
-uint8_t _engine_sort_last_criteria[]       = {0, 0, 0, 0};                 ///< Last set sort criteria, for each vehicle type.
-bool _engine_sort_last_order[]          = {false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
-bool _engine_sort_show_hidden_engines[] = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
-static CargoType _engine_sort_last_cargo_criteria[] = {CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY}; ///< Last set filter criteria, for each vehicle type.
+VehicleTypeIndexArray<uint8_t> _engine_sort_last_criteria = {0, 0, 0, 0}; ///< Last set sort criteria, for each vehicle type.
+VehicleTypeIndexArray<bool> _engine_sort_last_order = {false, false, false, false}; ///< Last set direction of the sort order, for each vehicle type.
+VehicleTypeIndexArray<bool> _engine_sort_show_hidden_engines = {false, false, false, false}; ///< Last set 'show hidden engines' setting for each vehicle type.
+static VehicleTypeIndexArray<CargoType> _engine_sort_last_cargo_criteria = {CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY, CargoFilterCriteria::CF_ANY}; ///< Last set filter criteria, for each vehicle type.
 
-/**
- * Determines order of engines by engineID
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by engineID. @copydoc GUIList::Sorter */
 static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int r = Engine::Get(a.engine_id)->list_position - Engine::Get(b.engine_id)->list_position;
@@ -120,12 +115,7 @@ static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListIt
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by introduction date
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by introduction date. @copydoc GUIList::Sorter */
 static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const auto va = Engine::Get(a.engine_id)->intro_date;
@@ -137,15 +127,10 @@ static bool EngineIntroDateSorter(const GUIEngineListItem &a, const GUIEngineLis
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/* cached values for EngineNameSorter to spare many GetString() calls */
+/** Cached values for EngineNameSorter to spare many GetString() calls. */
 static EngineID _last_engine[2] = { EngineID::Invalid(), EngineID::Invalid() };
 
-/**
- * Determines order of engines by name
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by name. @copydoc GUIList::Sorter */
 static bool EngineNameSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	static std::string last_name[2] = { {}, {} };
@@ -167,12 +152,7 @@ static bool EngineNameSorter(const GUIEngineListItem &a, const GUIEngineListItem
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by reliability
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by reliability. @copydoc GUIList::Sorter */
 static bool EngineReliabilitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const int va = Engine::Get(a.engine_id)->reliability;
@@ -184,12 +164,7 @@ static bool EngineReliabilitySorter(const GUIEngineListItem &a, const GUIEngineL
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by purchase cost
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by purchase cost. @copydoc GUIList::Sorter */
 static bool EngineCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	Money va = Engine::Get(a.engine_id)->GetCost();
@@ -201,12 +176,7 @@ static bool EngineCostSorter(const GUIEngineListItem &a, const GUIEngineListItem
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by speed
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by speed. @copydoc GUIList::Sorter */
 static bool EngineSpeedSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int va = Engine::Get(a.engine_id)->GetDisplayMaxSpeed();
@@ -218,12 +188,7 @@ static bool EngineSpeedSorter(const GUIEngineListItem &a, const GUIEngineListIte
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by power
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by power. @copydoc GUIList::Sorter */
 static bool EnginePowerSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int va = Engine::Get(a.engine_id)->GetPower();
@@ -235,12 +200,7 @@ static bool EnginePowerSorter(const GUIEngineListItem &a, const GUIEngineListIte
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by tractive effort
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by tractive effort. @copydoc GUIList::Sorter */
 static bool EngineTractiveEffortSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int va = Engine::Get(a.engine_id)->GetDisplayMaxTractiveEffort();
@@ -252,12 +212,7 @@ static bool EngineTractiveEffortSorter(const GUIEngineListItem &a, const GUIEngi
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by running costs
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by running costs. @copydoc GUIList::Sorter */
 static bool EngineRunningCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	Money va = Engine::Get(a.engine_id)->GetRunningCost();
@@ -269,12 +224,7 @@ static bool EngineRunningCostSorter(const GUIEngineListItem &a, const GUIEngineL
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of engines by running costs
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of engines by running costs. @copydoc GUIList::Sorter */
 static bool EnginePowerVsRunningCostSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const Engine *e_a = Engine::Get(a.engine_id);
@@ -311,19 +261,14 @@ static bool EnginePowerVsRunningCostSorter(const GUIEngineListItem &a, const GUI
 
 /* Train sorting functions */
 
-/**
- * Determines order of train engines by capacity
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of train engines by capacity. @copydoc GUIList::Sorter */
 static bool TrainEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const RailVehicleInfo *rvi_a = RailVehInfo(a.engine_id);
 	const RailVehicleInfo *rvi_b = RailVehInfo(b.engine_id);
 
-	int va = GetTotalCapacityOfArticulatedParts(a.engine_id) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	int vb = GetTotalCapacityOfArticulatedParts(b.engine_id) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int va = GetTotalCapacityOfArticulatedParts(a.engine_id) * (rvi_a->railveh_type == RailVehicleType::Multihead ? 2 : 1);
+	int vb = GetTotalCapacityOfArticulatedParts(b.engine_id) * (rvi_b->railveh_type == RailVehicleType::Multihead ? 2 : 1);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -331,16 +276,11 @@ static bool TrainEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngin
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of train engines by engine / wagon
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of train engines by engine / wagon. @copydoc GUIList::Sorter */
 static bool TrainEnginesThenWagonsSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	int val_a = (RailVehInfo(a.engine_id)->railveh_type == RAILVEH_WAGON ? 1 : 0);
-	int val_b = (RailVehInfo(b.engine_id)->railveh_type == RAILVEH_WAGON ? 1 : 0);
+	int val_a = (RailVehInfo(a.engine_id)->railveh_type == RailVehicleType::Wagon ? 1 : 0);
+	int val_b = (RailVehInfo(b.engine_id)->railveh_type == RailVehicleType::Wagon ? 1 : 0);
 	int r = val_a - val_b;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -350,12 +290,7 @@ static bool TrainEnginesThenWagonsSorter(const GUIEngineListItem &a, const GUIEn
 
 /* Road vehicle sorting functions */
 
-/**
- * Determines order of road vehicles by capacity
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of road vehicles by capacity. @copydoc GUIList::Sorter */
 static bool RoadVehEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	int va = GetTotalCapacityOfArticulatedParts(a.engine_id);
@@ -369,12 +304,7 @@ static bool RoadVehEngineCapacitySorter(const GUIEngineListItem &a, const GUIEng
 
 /* Ship vehicle sorting functions */
 
-/**
- * Determines order of ships by capacity
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of ships by capacity. @copydoc GUIList::Sorter */
 static bool ShipEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const Engine *e_a = Engine::Get(a.engine_id);
@@ -391,12 +321,7 @@ static bool ShipEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngine
 
 /* Aircraft sorting functions */
 
-/**
- * Determines order of aircraft by cargo
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of aircraft by cargo. @copydoc GUIList::Sorter */
 static bool AircraftEngineCargoSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	const Engine *e_a = Engine::Get(a.engine_id);
@@ -419,12 +344,7 @@ static bool AircraftEngineCargoSorter(const GUIEngineListItem &a, const GUIEngin
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
-/**
- * Determines order of aircraft by range.
- * @param a first engine to compare
- * @param b second engine to compare
- * @return for descending order: returns true if a < b. Vice versa for ascending order
- */
+/** Determines order of aircraft by range. @copydoc GUIList::Sorter */
 static bool AircraftRangeSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
 	uint16_t r_a = Engine::Get(a.engine_id)->GetRange();
@@ -438,7 +358,8 @@ static bool AircraftRangeSorter(const GUIEngineListItem &a, const GUIEngineListI
 }
 
 /** Sort functions for the vehicle sort criteria, for each vehicle type. */
-EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
+const VehicleTypeIndexArray<std::initializer_list<EngList_SortTypeFunction * const>> _engine_sort_functions = {{
+std::initializer_list<EngList_SortTypeFunction * const>{
 	/* Trains */
 	&EngineNumberSorter,
 	&EngineCostSorter,
@@ -451,7 +372,8 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 	&EnginePowerVsRunningCostSorter,
 	&EngineReliabilitySorter,
 	&TrainEngineCapacitySorter,
-}, {
+},
+std::initializer_list<EngList_SortTypeFunction * const>{
 	/* Road vehicles */
 	&EngineNumberSorter,
 	&EngineCostSorter,
@@ -464,7 +386,8 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 	&EnginePowerVsRunningCostSorter,
 	&EngineReliabilitySorter,
 	&RoadVehEngineCapacitySorter,
-}, {
+},
+std::initializer_list<EngList_SortTypeFunction * const>{
 	/* Ships */
 	&EngineNumberSorter,
 	&EngineCostSorter,
@@ -474,7 +397,8 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 	&EngineRunningCostSorter,
 	&EngineReliabilitySorter,
 	&ShipEngineCapacitySorter,
-}, {
+},
+std::initializer_list<EngList_SortTypeFunction * const>{
 	/* Aircraft */
 	&EngineNumberSorter,
 	&EngineCostSorter,
@@ -485,10 +409,22 @@ EngList_SortTypeFunction * const _engine_sort_functions[][11] = {{
 	&EngineReliabilitySorter,
 	&AircraftEngineCargoSorter,
 	&AircraftRangeSorter,
-}};
+}}};
+
+/**
+ * Get the engine sorter functions for a \c VehicleType
+ * @param vehicle_type the vehicle type
+ * @return list of sorter functions.
+ */
+std::span<EngList_SortTypeFunction * const> GetEngineSortFunctions(VehicleType vehicle_type)
+{
+	assert(IsCompanyBuildableVehicleType(vehicle_type));
+	return _engine_sort_functions[vehicle_type];
+}
 
 /** Dropdown menu strings for the vehicle sort criteria. */
-const std::initializer_list<const StringID> _engine_sort_listing[] = {{
+const VehicleTypeIndexArray<std::initializer_list<const StringID>> _engine_sort_listing = {{
+std::initializer_list<const StringID>{
 	/* Trains */
 	STR_SORT_BY_ENGINE_ID,
 	STR_SORT_BY_COST,
@@ -501,7 +437,8 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_POWER_VS_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
-}, {
+},
+std::initializer_list<const StringID>{
 	/* Road vehicles */
 	STR_SORT_BY_ENGINE_ID,
 	STR_SORT_BY_COST,
@@ -514,7 +451,8 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_POWER_VS_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
-}, {
+},
+std::initializer_list<const StringID>{
 	/* Ships */
 	STR_SORT_BY_ENGINE_ID,
 	STR_SORT_BY_COST,
@@ -524,7 +462,8 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
-}, {
+},
+std::initializer_list<const StringID>{
 	/* Aircraft */
 	STR_SORT_BY_ENGINE_ID,
 	STR_SORT_BY_COST,
@@ -535,9 +474,25 @@ const std::initializer_list<const StringID> _engine_sort_listing[] = {{
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
 	STR_SORT_BY_RANGE,
-}};
+}}};
 
-/** Filters vehicles by cargo and engine (in case of rail vehicle). */
+/**
+ * Get the engine sorter names for a \c VehicleType
+ * @param vehicle_type the vehicle type
+ * @return list of sorter names.
+ */
+std::span<StringID const> GetEngineSortNames(VehicleType vehicle_type)
+{
+	assert(IsCompanyBuildableVehicleType(vehicle_type));
+	return _engine_sort_listing[vehicle_type];
+}
+
+/**
+ * Filters vehicles by cargo and engine (in case of rail vehicle).
+ * @param item The element to check.
+ * @param cargo_type The configuration of the filter.
+ * @return \c true iff the cargo and engine should be retained.
+ */
 static bool CargoAndEngineFilter(const GUIEngineListItem *item, const CargoType cargo_type)
 {
 	if (cargo_type == CargoFilterCriteria::CF_ANY) {
@@ -546,7 +501,7 @@ static bool CargoAndEngineFilter(const GUIEngineListItem *item, const CargoType 
 		return Engine::Get(item->engine_id)->GetPower() != 0;
 	} else {
 		CargoTypes refit_mask = GetUnionOfArticulatedRefitMasks(item->engine_id, true) & _standard_cargo_mask;
-		return (cargo_type == CargoFilterCriteria::CF_NONE ? refit_mask == 0 : HasBit(refit_mask, cargo_type));
+		return (cargo_type == CargoFilterCriteria::CF_NONE ? refit_mask.None() : refit_mask.Test(cargo_type));
 	}
 }
 
@@ -557,9 +512,9 @@ static GUIEngineList::FilterFunction * const _engine_filter_funcs[] = {
 static uint GetCargoWeight(const CargoArray &cap, VehicleType vtype)
 {
 	uint weight = 0;
-	for (CargoType cargo = 0; cargo < NUM_CARGO; ++cargo) {
+	for (CargoType cargo : EnumRange(NUM_CARGO)) {
 		if (cap[cargo] != 0) {
-			if (vtype == VEH_TRAIN) {
+			if (vtype == VehicleType::Train) {
 				weight += CargoSpec::Get(cargo)->WeightOfNUnitsInTrain(cap[cargo]);
 			} else {
 				weight += CargoSpec::Get(cargo)->WeightOfNUnits(cap[cargo]);
@@ -576,7 +531,7 @@ static int DrawCargoCapacityInfo(int left, int right, int y, TestedEngineDetails
 		if (te.all_capacities[cargo_type] == 0) continue;
 
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_CAPACITY, cargo_type, te.all_capacities[cargo_type], refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	return y;
@@ -593,27 +548,27 @@ static int DrawRailWagonPurchaseInfo(int left, int right, int y, EngineID engine
 	} else {
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST, e->GetCost()));
 	}
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Wagon weight - (including cargo) */
 	uint weight = e->GetDisplayWeight();
 	DrawString(left, right, y,
-			GetString(STR_PURCHASE_INFO_WEIGHT_CWEIGHT, weight, GetCargoWeight(te.all_capacities, VEH_TRAIN) + weight));
-	y += GetCharacterHeight(FS_NORMAL);
+			GetString(STR_PURCHASE_INFO_WEIGHT_CWEIGHT, weight, GetCargoWeight(te.all_capacities, VehicleType::Train) + weight));
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Wagon speed limit, displayed if above zero */
 	if (_settings_game.vehicle.wagon_speed_limits) {
 		uint max_speed = e->GetDisplayMaxSpeed();
 		if (max_speed > 0) {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED, PackVelocity(max_speed, e->type)));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		}
 	}
 
 	/* Running cost */
 	if (rvi->running_cost_class != Price::Invalid) {
 		DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	return y;
@@ -630,7 +585,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 	} else {
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_WEIGHT, e->GetCost(), e->GetDisplayWeight()));
 	}
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Supported rail types */
 	std::string railtypes{};
@@ -643,34 +598,34 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 		AppendStringInPlace(railtypes, GetRailTypeInfo(rt)->strings.name);
 	}
 	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_RAILTYPES, railtypes));
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Max speed - Engine power */
 	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED_POWER, PackVelocity(e->GetDisplayMaxSpeed(), e->type), e->GetPower()));
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
-	if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
+	if (_settings_game.vehicle.train_acceleration_model != AccelerationModel::Original) {
 		bool is_maglev = true;
 		for (RailType rt : rvi->railtypes) {
 			is_maglev &= GetRailTypeInfo(rt)->acceleration_type == VehicleAccelerationModel::Maglev;
 		}
 		if (!is_maglev) {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_MAX_TE, e->GetDisplayMaxTractiveEffort()));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		}
 	}
 
 	/* Running cost */
 	if (rvi->running_cost_class != Price::Invalid) {
 		DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	/* Powered wagons power - Powered wagons extra weight */
 	if (rvi->pow_wag_power != 0) {
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT, rvi->pow_wag_power, rvi->pow_wag_weight));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	return y;
@@ -681,27 +636,27 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 {
 	const Engine *e = Engine::Get(engine_number);
 
-	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+	if (_settings_game.vehicle.roadveh_acceleration_model != AccelerationModel::Original) {
 		/* Purchase Cost */
 		if (te.cost != 0) {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_REFIT, e->GetCost() + te.cost, te.cost));
 		} else {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST, e->GetCost()));
 		}
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Road vehicle weight - (including cargo) */
 		int16_t weight = e->GetDisplayWeight();
-		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_WEIGHT_CWEIGHT, weight, GetCargoWeight(te.all_capacities, VEH_ROAD) + weight));
-		y += GetCharacterHeight(FS_NORMAL);
+		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_WEIGHT_CWEIGHT, weight, GetCargoWeight(te.all_capacities, VehicleType::Road) + weight));
+		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Max speed - Engine power */
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED_POWER, PackVelocity(e->GetDisplayMaxSpeed(), e->type), e->GetPower()));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Max tractive effort */
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_MAX_TE, e->GetDisplayMaxTractiveEffort()));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	} else {
 		/* Purchase cost - Max speed */
 		if (te.cost != 0) {
@@ -709,12 +664,12 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 		} else {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_SPEED, e->GetCost(), PackVelocity(e->GetDisplayMaxSpeed(), e->type)));
 		}
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	/* Running cost */
 	DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	return y;
 }
@@ -735,29 +690,29 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
 		} else {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_SPEED, e->GetCost(), PackVelocity(ocean_speed, e->type)));
 		}
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	} else {
 		if (te.cost != 0) {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_REFIT, e->GetCost() + te.cost, te.cost));
 		} else {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST, e->GetCost()));
 		}
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED_OCEAN, PackVelocity(ocean_speed, e->type)));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_SPEED_CANAL, PackVelocity(canal_speed, e->type)));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	/* Cargo type + capacity */
 	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_CAPACITY, te.cargo, te.capacity, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY));
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Running cost */
 	DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	return y;
 }
@@ -769,6 +724,7 @@ static int DrawShipPurchaseInfo(int left, int right, int y, EngineID engine_numb
  * @param y Top of the area to draw in.
  * @param engine_number Engine to display.
  * @param refittable If set, the aircraft can be refitted.
+ * @param te Extra information about refits and capacities.
  * @return Bottom of the used area.
  */
 static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_number, bool refittable, TestedEngineDetails &te)
@@ -781,7 +737,7 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	} else {
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_COST_SPEED, e->GetCost(), PackVelocity(e->GetDisplayMaxSpeed(), e->type)));
 	}
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Cargo capacity */
 	if (te.mail_capacity > 0) {
@@ -791,21 +747,21 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 		 * callback, then the capacity shown is likely to be incorrect. */
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_CAPACITY, te.cargo, te.capacity, refittable ? STR_PURCHASE_INFO_REFITTABLE : STR_EMPTY));
 	}
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Running cost */
 	DrawString(left, right, y, GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_INFO_RUNNINGCOST_PERIOD : STR_PURCHASE_INFO_RUNNINGCOST_YEAR, e->GetRunningCost()));
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Aircraft type */
 	DrawString(left, right, y, GetString(STR_PURCHASE_INFO_AIRCRAFT_TYPE, e->GetAircraftTypeText()));
-	y += GetCharacterHeight(FS_NORMAL);
+	y += GetCharacterHeight(FontSize::Normal);
 
 	/* Aircraft range, if available. */
 	uint16_t range = e->GetRange();
 	if (range != 0) {
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_AIRCRAFT_RANGE, range));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	return y;
@@ -847,13 +803,13 @@ static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 {
 	auto text = GetNewGRFAdditionalText(engine);
 	if (!text) return y;
-	return DrawStringMultiLine(left, right, y, INT32_MAX, *text, TC_BLACK);
+	return DrawStringMultiLine(left, right, y, INT32_MAX, *text, TextColour::Black);
 }
 
 void TestedEngineDetails::FillDefaultCapacities(const Engine *e)
 {
 	this->cargo = e->GetDefaultCargoType();
-	if (e->type == VEH_TRAIN || e->type == VEH_ROAD) {
+	if (e->type == VehicleType::Train || e->type == VehicleType::Road) {
 		this->all_capacities = GetCapacityOfArticulatedParts(e->index);
 		this->capacity = this->all_capacities[this->cargo];
 		this->mail_capacity = 0;
@@ -873,6 +829,7 @@ void TestedEngineDetails::FillDefaultCapacities(const Engine *e)
  * Draw the purchase info details of a vehicle at a given location.
  * @param left,right,y location where to draw the info
  * @param engine_number the engine of which to draw the info of
+ * @param te Extra information about refits and capacities.
  * @return y after drawing all the text
  */
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, TestedEngineDetails &te)
@@ -884,8 +841,8 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 
 	switch (e->type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:
-			if (e->VehInfo<RailVehicleInfo>().railveh_type == RAILVEH_WAGON) {
+		case VehicleType::Train:
+			if (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon) {
 				y = DrawRailWagonPurchaseInfo(left, right, y, engine_number, &e->VehInfo<RailVehicleInfo>(), te);
 			} else {
 				y = DrawRailEnginePurchaseInfo(left, right, y, engine_number, &e->VehInfo<RailVehicleInfo>(), te);
@@ -893,16 +850,16 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 			articulated_cargo = true;
 			break;
 
-		case VEH_ROAD:
+		case VehicleType::Road:
 			y = DrawRoadVehPurchaseInfo(left, right, y, engine_number, te);
 			articulated_cargo = true;
 			break;
 
-		case VEH_SHIP:
+		case VehicleType::Ship:
 			y = DrawShipPurchaseInfo(left, right, y, engine_number, refittable, te);
 			break;
 
-		case VEH_AIRCRAFT:
+		case VehicleType::Aircraft:
 			y = DrawAircraftPurchaseInfo(left, right, y, engine_number, refittable, te);
 			break;
 	}
@@ -913,26 +870,26 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 
 		if (new_y == y) {
 			DrawString(left, right, y, GetString(STR_PURCHASE_INFO_CAPACITY, INVALID_CARGO, 0, STR_EMPTY));
-			y += GetCharacterHeight(FS_NORMAL);
+			y += GetCharacterHeight(FontSize::Normal);
 		} else {
 			y = new_y;
 		}
 	}
 
 	/* Draw details that apply to all types except rail wagons. */
-	if (e->type != VEH_TRAIN || e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) {
+	if (e->type != VehicleType::Train || e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) {
 		/* Design date - Life length */
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_DESIGNED_LIFE, ymd.year, TimerGameCalendar::DateToYear(e->GetLifeLengthInDays())));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 
 		/* Reliability */
 		DrawString(left, right, y, GetString(STR_PURCHASE_INFO_RELIABILITY, ToPercent16(e->reliability)));
-		y += GetCharacterHeight(FS_NORMAL);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	if (refittable) y = ShowRefitOptionsList(left, right, y, engine_number);
 
-	y = DrawBadgeNameList({left, y, right, INT16_MAX}, e->badges, static_cast<GrfSpecFeature>(GSF_TRAINS + e->type));
+	y = DrawBadgeNameList({left, y, right, INT16_MAX}, e->badges, GetGrfSpecFeature(e->type));
 
 	/* Additional text from NewGRF */
 	y = ShowAdditionalText(left, right, y, engine_number);
@@ -941,8 +898,8 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 	const GRFConfig *config = GetGRFConfig(e->GetGRFID());
 	if (_settings_client.gui.show_newgrf_name && config != nullptr)
 	{
-		DrawString(left, right, y, config->GetName(), TC_BLACK);
-		y += GetCharacterHeight(FS_NORMAL);
+		DrawString(left, right, y, config->GetName(), TextColour::Black);
+		y += GetCharacterHeight(FontSize::Normal);
 	}
 
 	return y;
@@ -950,7 +907,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number, 
 
 static void DrawEngineBadgeColumn(const Rect &r, int column_group, const GUIBadgeClasses &badge_classes, const Engine *e, PaletteID remap)
 {
-	DrawBadgeColumn(r, column_group, badge_classes, e->badges, static_cast<GrfSpecFeature>(GSF_TRAINS + e->type), e->info.base_intro, remap);
+	DrawBadgeColumn(r, column_group, badge_classes, e->badges, GetGrfSpecFeature(e->type), e->info.base_intro, remap);
 }
 
 /**
@@ -962,20 +919,22 @@ static void DrawEngineBadgeColumn(const Rect &r, int column_group, const GUIBadg
  * @param selected_id what engine to highlight as selected, if any
  * @param show_count Whether to show the amount of engines or not
  * @param selected_group the group to list the engines of
+ * @param badge_classes The badges associated with the drawn engine.
+ * @param sort_criteria The sort criteria to use for the engines.
  */
-void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes)
+void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_list, const Scrollbar &sb, EngineID selected_id, bool show_count, GroupID selected_group, const GUIBadgeClasses &badge_classes, uint8_t sort_criteria)
 {
-	static const std::array<int8_t, VehicleType::VEH_COMPANY_END> sprite_y_offsets = { 0, 0, -1, -1 };
+	static const VehicleTypeIndexArray<int8_t> sprite_y_offsets = { 0, 0, -1, -1 };
 
 	auto [first, last] = sb.GetVisibleRangeIterators(eng_list);
 
 	bool rtl = _current_text_dir == TD_RTL;
 	int step_size = GetEngineListHeight(type);
-	int sprite_left  = GetVehicleImageCellSize(type, EIT_PURCHASE).extend_left;
-	int sprite_right = GetVehicleImageCellSize(type, EIT_PURCHASE).extend_right;
+	int sprite_left  = GetVehicleImageCellSize(type, EngineImageType::Purchase).extend_left;
+	int sprite_right = GetVehicleImageCellSize(type, EngineImageType::Purchase).extend_right;
 	int sprite_width = sprite_left + sprite_right;
 	int circle_width = std::max(GetScaledSpriteSize(SPR_CIRCLE_FOLDED).width, GetScaledSpriteSize(SPR_CIRCLE_UNFOLDED).width);
-	PixelColour linecolour = GetColourGradient(COLOUR_ORANGE, SHADE_NORMAL);
+	PixelColour linecolour = GetColourGradient(Colours::Orange, Shade::Normal);
 
 	auto badge_column_widths = badge_classes.GetColumnWidths();
 
@@ -993,17 +952,17 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 			biggest_num_engines = std::max(biggest_num_engines, num_engines);
 		}
 
-		count_width = GetStringBoundingBox(GetString(STR_JUST_COMMA, biggest_num_engines), FS_SMALL).width;
+		count_width = GetStringBoundingBox(GetString(STR_JUST_COMMA, biggest_num_engines), FontSize::Small).width;
 	}
 
 	const int text_row_height = ir.Shrink(WidgetDimensions::scaled.matrix).Height();
-	const int normal_text_y_offset = (text_row_height - GetCharacterHeight(FS_NORMAL)) / 2;
-	const int small_text_y_offset  = text_row_height - GetCharacterHeight(FS_SMALL);
+	const int normal_text_y_offset = (text_row_height - GetCharacterHeight(FontSize::Normal)) / 2;
+	const int small_text_y_offset  = text_row_height - GetCharacterHeight(FontSize::Small);
 
 	const int offset = (rtl ? -circle_width : circle_width) / 2;
 	const int level_width = rtl ? -WidgetDimensions::scaled.hsep_indent : WidgetDimensions::scaled.hsep_indent;
 
-	for (auto it = first; it != last; ++it) {
+	for (auto it = first; it != last; ++it, ir = ir.Translate(0, step_size)) {
 		const auto &item = *it;
 		const Engine *e = Engine::Get(item.engine_id);
 
@@ -1011,6 +970,13 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		bool has_variants = item.flags.Test(EngineDisplayFlag::HasVariants);
 		bool is_folded    = item.flags.Test(EngineDisplayFlag::IsFolded);
 		bool shaded       = item.flags.Test(EngineDisplayFlag::Shaded);
+
+		/* Set up clipping area for the row, keeping coordinates relative to the window. */
+		DrawPixelInfo tmp_dpi;
+		if (!FillDrawPixelInfo(&tmp_dpi, ir)) continue;
+		tmp_dpi.left += ir.left;
+		tmp_dpi.top += ir.top;
+		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
 		Rect textr = ir.Shrink(WidgetDimensions::scaled.matrix);
 		Rect tr = ir.Indent(indent, rtl);
@@ -1030,7 +996,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (has_variants) {
 			Rect fr = tr.WithWidth(circle_width, rtl);
-			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, fr.WithY(textr), SA_CENTER);
+			DrawSpriteIgnorePadding(is_folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED, PAL_NONE, fr.WithY(textr), {AlignmentH::Centre, AlignmentV::Middle});
 		}
 
 		tr = tr.Indent(circle_width + WidgetDimensions::scaled.hsep_normal, rtl);
@@ -1046,7 +1012,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		}
 
 		int sprite_x = tr.WithWidth(sprite_width, rtl).left + sprite_left;
-		DrawVehicleEngine(r.left, r.right, sprite_x, tr.top + sprite_y_offset, item.engine_id, pal, EIT_PURCHASE);
+		DrawVehicleEngine(r.left, r.right, sprite_x, tr.top + sprite_y_offset, item.engine_id, pal, EngineImageType::Purchase);
 
 		tr = tr.Indent(sprite_width + WidgetDimensions::scaled.hsep_wide, rtl);
 
@@ -1064,10 +1030,10 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 			Rect cr = tr.WithWidth(count_width, !rtl);
 			tr = tr.Indent(count_width + WidgetDimensions::scaled.hsep_normal, !rtl);
 
-			DrawString(cr.left, cr.right, textr.top + small_text_y_offset, GetString(STR_JUST_COMMA, num_engines), TC_BLACK, SA_RIGHT | SA_FORCE, false, FS_SMALL);
+			DrawString(cr.left, cr.right, textr.top + small_text_y_offset, GetString(STR_JUST_COMMA, num_engines), TextColour::Black, AlignmentH::ForceRight, false, FontSize::Small);
 
 			if (EngineHasReplacementForCompany(Company::Get(_local_company), item.engine_id, selected_group)) {
-				DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr, SA_CENTER);
+				DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr, {AlignmentH::Centre, AlignmentV::Middle});
 			}
 		}
 
@@ -1079,13 +1045,114 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		bool hidden = e->company_hidden.Test(_local_company);
 		StringID str = hidden ? STR_HIDDEN_ENGINE_NAME : STR_ENGINE_NAME;
-		TextColour tc = (item.engine_id == selected_id) ? TC_WHITE : ((hidden | shaded) ? (TC_GREY | TC_FORCED | TC_NO_SHADE) : TC_BLACK);
+		ExtendedTextColour tc = (item.engine_id == selected_id) ? TextColour::White : ((hidden | shaded) ? ExtendedTextColour{TextColour::Grey, {ExtendedTextColourFlag::Forced, ExtendedTextColourFlag::NoShade}} : TextColour::Black);
+
+		/* Draw the value of the currently selected sort property to the right (or left in RTL), if applicable */
+		std::string sort_prop_detail;
+
+		switch (GetEngineSortNames(type)[sort_criteria]) {
+			case STR_SORT_BY_ENGINE_ID:
+				/* No extra interesting info to show in this case */
+				break;
+			case STR_SORT_BY_COST:
+				sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_COST, e->GetCost());
+				break;
+			case STR_SORT_BY_MAX_SPEED:
+				if (int max_speed = e->GetDisplayMaxSpeed(); max_speed != 0) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_SPEED, PackVelocity(max_speed, Engine::Get(item.engine_id)->type));
+				}
+				break;
+			case STR_SORT_BY_POWER:
+				if (int power = e->GetPower(); power != 0) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_POWER, power);
+				}
+				break;
+			case STR_SORT_BY_TRACTIVE_EFFORT:
+				/* Allow trucks, and allow trains that are not wagons */
+				if (type == VehicleType::Road || (type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon)) {
+					auto max_te = e->GetDisplayMaxTractiveEffort();
+					if (max_te != 0) {
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_MAX_TE, max_te);
+					}
+				}
+				break;
+			case STR_SORT_BY_INTRO_DATE: {
+					TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_INTRO_DATE, ymd.year);
+				}
+				break;
+			case STR_SORT_BY_NAME:
+				/* No extra interesting info to show in this case */
+				break;
+			case STR_SORT_BY_RUNNING_COST:
+				if (int running_cost = e->GetRunningCost(); running_cost != 0) {
+					sort_prop_detail = GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD : STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR, running_cost);
+				}
+				break;
+			case STR_SORT_BY_POWER_VS_RUNNING_COST:
+				/* NOTE: No point showing the actual values of power/running cost, because they are affected by cost factors, which make the math off */
+				if (Money rc = e->GetRunningCost(); rc != 0) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST, 100 * e->GetPower() / rc, /* digits for DECIMAL */ 2);
+				}
+				break;
+			case STR_SORT_BY_RELIABILITY:
+				if (auto isWagon = e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon; !isWagon) {
+					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_RELIABILITY, ToPercent16(e->reliability));
+				}
+				break;
+			case STR_SORT_BY_CARGO_CAPACITY: {
+					uint total_capacity;
+					switch (type) {
+						case VehicleType::Train:
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id) * (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Multihead ? 2 : 1);
+							break;
+						case VehicleType::Road:
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id);
+							break;
+						case VehicleType::Ship:
+							total_capacity = e->GetDisplayDefaultCapacity();
+							break;
+						case VehicleType::Aircraft: {
+								uint16_t mail_cap;
+								int aircraft_cap = e->GetDisplayDefaultCapacity(&mail_cap);
+								total_capacity = aircraft_cap + mail_cap;
+							}
+							break;
+						default:
+							NOT_REACHED();
+							break;
+					}
+					if (total_capacity != 0) {
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_CAPACITY, total_capacity);
+					}
+				}
+				break;
+			case STR_SORT_BY_RANGE:
+				if (e->type == VehicleType::Aircraft) {
+					if (uint16_t range = e->GetRange(); range != 0) {
+						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE, range);
+					}
+				}
+				break;
+			default:
+				break;
+		}
+
+		int sort_detail_width = 0;
+		if (!sort_prop_detail.empty()) {
+			DrawString(tr.left, tr.right, textr.top + normal_text_y_offset, sort_prop_detail, tc, AlignmentH::End, false, FontSize::Small);
+
+			/* If we have sort detail to show, also measure its width so that we can adjust the
+			 * main name drawing rectangle to not overlap. */
+			sort_detail_width = GetStringBoundingBox(sort_prop_detail, FontSize::Small).width;
+		}
 
 		/* If the count is visible then this is part of in-use autoreplace list. */
 		auto engine_name = PackEngineNameDParam(item.engine_id, show_count ? EngineNameContext::AutoreplaceVehicleInUse : EngineNameContext::PurchaseList, item.indent);
-		DrawString(tr.left, tr.right, textr.top + normal_text_y_offset,GetString(str, engine_name), tc);
+		std::string name = GetString(str, engine_name);
 
-		ir = ir.Translate(0, step_size);
+		/* The left/right bounds are adjusted to not overlap with the sort detail that is on the left/right depending on the RTL setting. */
+		DrawString(tr.left + (rtl ? sort_detail_width : 0), tr.right - (rtl ? 0 : sort_detail_width), textr.top + normal_text_y_offset, name, tc);
 	}
 }
 
@@ -1100,16 +1167,16 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 {
 	uint32_t hidden_mask = 0;
 	/* Disable sorting by power or tractive effort when the original acceleration model for road vehicles is being used. */
-	if (vehicle_type == VEH_ROAD && _settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
+	if (vehicle_type == VehicleType::Road && _settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original) {
 		SetBit(hidden_mask, 3); // power
 		SetBit(hidden_mask, 4); // tractive effort
 		SetBit(hidden_mask, 8); // power by running costs
 	}
 	/* Disable sorting by tractive effort when the original acceleration model for trains is being used. */
-	if (vehicle_type == VEH_TRAIN && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
+	if (vehicle_type == VehicleType::Train && _settings_game.vehicle.train_acceleration_model == AccelerationModel::Original) {
 		SetBit(hidden_mask, 4); // tractive effort
 	}
-	ShowDropDownMenu(w, _engine_sort_listing[vehicle_type], selected, button, 0, hidden_mask);
+	ShowDropDownMenu(w, GetEngineSortNames(vehicle_type), selected, button, 0, hidden_mask);
 }
 
 /**
@@ -1152,7 +1219,7 @@ void GUIEngineListAddChildren(GUIEngineList &dst, const GUIEngineList &src, Engi
 
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
-	VehicleType vehicle_type = VEH_INVALID; ///< Type of vehicles shown in the window.
+	VehicleType vehicle_type = VehicleType::Invalid; ///< Type of vehicles shown in the window.
 	union {
 		RailType railtype;   ///< Rail type to show, or #INVALID_RAILTYPE.
 		RoadType roadtype;   ///< Road type to show, or #INVALID_ROADTYPE.
@@ -1186,9 +1253,9 @@ struct BuildVehicleWindow : Window {
 		if (refit) refit = Engine::Get(this->sel_engine)->GetDefaultCargoType() != this->cargo_filter_criteria;
 
 		if (refit) {
-			widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + this->vehicle_type, STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP + this->vehicle_type);
+			widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + to_underlying(this->vehicle_type), STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP + to_underlying(this->vehicle_type));
 		} else {
-			widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + this->vehicle_type, STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP + this->vehicle_type);
+			widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + to_underlying(this->vehicle_type), STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP + to_underlying(this->vehicle_type));
 		}
 	}
 
@@ -1213,19 +1280,19 @@ struct BuildVehicleWindow : Window {
 		if (this->listview_mode) this->GetWidget<NWidgetStacked>(WID_BV_BUILD_SEL)->SetDisplayedPlane(SZSP_NONE);
 
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_BV_LIST);
-		widget->SetToolTip(STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP + type);
+		widget->SetToolTip(STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP + to_underlying(type));
 
 		widget = this->GetWidget<NWidgetCore>(WID_BV_SHOW_HIDE);
-		widget->SetToolTip(STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP + type);
+		widget->SetToolTip(STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP + to_underlying(type));
 
 		widget = this->GetWidget<NWidgetCore>(WID_BV_RENAME);
-		widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON + type, STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP + type);
+		widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON + to_underlying(type), STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP + to_underlying(type));
 
 		widget = this->GetWidget<NWidgetCore>(WID_BV_SHOW_HIDDEN_ENGINES);
-		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + type, STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + type);
+		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + to_underlying(type), STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + to_underlying(type));
 		widget->SetLowered(this->show_hidden_engines);
 
-		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9);
+		this->details_height = ((this->vehicle_type == VehicleType::Train) ? 10 : 9);
 
 		if (tile == INVALID_TILE) {
 			this->FinishInitNested(type);
@@ -1253,7 +1320,7 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:
+			case VehicleType::Train:
 				if (this->listview_mode) {
 					this->filter.railtype = INVALID_RAILTYPE;
 				} else {
@@ -1261,7 +1328,7 @@ struct BuildVehicleWindow : Window {
 				}
 				break;
 
-			case VEH_ROAD:
+			case VehicleType::Road:
 				if (this->listview_mode) {
 					this->filter.roadtype = INVALID_ROADTYPE;
 				} else {
@@ -1272,8 +1339,8 @@ struct BuildVehicleWindow : Window {
 				}
 				break;
 
-			case VEH_SHIP:
-			case VEH_AIRCRAFT:
+			case VehicleType::Ship:
+			case VehicleType::Aircraft:
 				break;
 		}
 	}
@@ -1293,7 +1360,7 @@ struct BuildVehicleWindow : Window {
 	{
 		/* Set the last cargo filter criteria. */
 		this->cargo_filter_criteria = _engine_sort_last_cargo_criteria[this->vehicle_type];
-		if (this->cargo_filter_criteria < NUM_CARGO && !HasBit(_standard_cargo_mask, this->cargo_filter_criteria)) this->cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
+		if (this->cargo_filter_criteria < NUM_CARGO && !_standard_cargo_mask.Test(this->cargo_filter_criteria)) this->cargo_filter_criteria = CargoFilterCriteria::CF_ANY;
 
 		this->eng_list.SetFilterFuncs(_engine_filter_funcs);
 		this->eng_list.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
@@ -1313,7 +1380,7 @@ struct BuildVehicleWindow : Window {
 
 		if (!this->listview_mode) {
 			/* Query for cost and refitted capacity */
-			auto [ret, veh_id, refit_capacity, refit_mail, cargo_capacities] = Command<CMD_BUILD_VEHICLE>::Do(DoCommandFlag::QueryCost, TileIndex(this->window_number), this->sel_engine, true, cargo, INVALID_CLIENT_ID);
+			auto [ret, veh_id, refit_capacity, refit_mail, cargo_capacities] = Command<Commands::BuildVehicle>::Do(DoCommandFlag::QueryCost, TileIndex(this->window_number), this->sel_engine, true, cargo, ClientID::Invalid);
 			if (ret.Succeeded()) {
 				this->te.cost          = ret.GetCost() - e->GetCost();
 				this->te.capacity      = refit_capacity;
@@ -1331,10 +1398,10 @@ struct BuildVehicleWindow : Window {
 
 	void OnInit() override
 	{
-		this->badge_classes = GUIBadgeClasses(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
+		this->badge_classes = GUIBadgeClasses(GetGrfSpecFeature(this->vehicle_type));
 		this->SetCargoFilterArray();
 
-		this->badge_filters = AddBadgeDropdownFilters(this, WID_BV_BADGE_FILTER, WID_BV_BADGE_FILTER, COLOUR_GREY, static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type));
+		this->badge_filters = AddBadgeDropdownFilters(this, WID_BV_BADGE_FILTER, WID_BV_BADGE_FILTER, Colours::Grey, GetGrfSpecFeature(this->vehicle_type));
 
 		this->widget_lookup.clear();
 		this->nested_root->FillWidgetLookup(this->widget_lookup);
@@ -1351,14 +1418,22 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	/** Filter a single engine */
+	/**
+	 * Filter a single engine.
+	 * @param eid The engine to decide on.
+	 * @return \c true iff the engine should remain.
+	 */
 	bool FilterSingleEngine(EngineID eid)
 	{
 		GUIEngineListItem item = {eid, eid, EngineDisplayFlags{}, 0};
 		return CargoAndEngineFilter(&item, this->cargo_filter_criteria);
 	}
 
-	/** Filter by name and NewGRF extra text */
+	/**
+	 * Filter by name and NewGRF extra text.
+	 * @param e The engine to decide on.
+	 * @return \c true iff the engine should remain.
+	 */
 	bool FilterByText(const Engine *e)
 	{
 		/* Do not filter if the filter text box is empty */
@@ -1384,20 +1459,20 @@ struct BuildVehicleWindow : Window {
 
 		list.clear();
 
-		BadgeTextFilter btf(this->string_filter, GSF_TRAINS);
+		BadgeTextFilter btf(this->string_filter, GrfSpecFeature::Trains);
 		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
 		/* Make list of all available train engines and wagons.
 		 * Also check to see if the previously selected engine is still available,
 		 * and if not, reset selection to EngineID::Invalid(). This could be the case
 		 * when engines become obsolete and are removed */
-		for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
+		for (const Engine *e : Engine::IterateType(VehicleType::Train)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			const RailVehicleInfo *rvi = &e->VehInfo<RailVehicleInfo>();
 
 			if (this->filter.railtype != INVALID_RAILTYPE && !HasPowerOnRail(rvi->railtypes, this->filter.railtype)) continue;
-			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
+			if (!IsEngineBuildable(eid, VehicleType::Train, _local_company)) continue;
 
 			/* Filter now! So num_engines and num_wagons is valid */
 			if (!FilterSingleEngine(eid)) continue;
@@ -1409,7 +1484,7 @@ struct BuildVehicleWindow : Window {
 
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
-			if (rvi->railveh_type != RAILVEH_WAGON) num_engines++;
+			if (rvi->railveh_type != RailVehicleType::Wagon) num_engines++;
 
 			/* Add all parent variants of this engine to the variant list */
 			EngineID parent = e->info.variant_id;
@@ -1425,7 +1500,7 @@ struct BuildVehicleWindow : Window {
 			if (std::ranges::find(list, variant, &GUIEngineListItem::engine_id) == list.end()) {
 				const Engine *e = Engine::Get(variant);
 				list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlag::Shaded, 0);
-				if (e->VehInfo<RailVehicleInfo>().railveh_type != RAILVEH_WAGON) num_engines++;
+				if (e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) num_engines++;
 			}
 		}
 
@@ -1440,26 +1515,26 @@ struct BuildVehicleWindow : Window {
 
 		/* and then sort engines */
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], 0, num_engines);
+		EngList_SortPartial(list, GetEngineSortFunctions(this->vehicle_type)[this->sort_criteria], 0, num_engines);
 
 		/* and finally sort wagons */
-		EngList_SortPartial(list, _engine_sort_functions[0][this->sort_criteria], num_engines, list.size() - num_engines);
+		EngList_SortPartial(list, GetEngineSortFunctions(this->vehicle_type)[this->sort_criteria], num_engines, list.size() - num_engines);
 	}
 
-	/* Figure out what road vehicle EngineIDs to put in the list */
+	/** Figure out what road vehicle EngineIDs to put in the list. */
 	void GenerateBuildRoadVehList()
 	{
 		EngineID sel_id = EngineID::Invalid();
 
 		this->eng_list.clear();
 
-		BadgeTextFilter btf(this->string_filter, GSF_ROADVEHICLES);
+		BadgeTextFilter btf(this->string_filter, GrfSpecFeature::RoadVehicles);
 		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
-		for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
+		for (const Engine *e : Engine::IterateType(VehicleType::Road)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
+			if (!IsEngineBuildable(eid, VehicleType::Road, _local_company)) continue;
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->VehInfo<RoadVehicleInfo>().roadtype, this->filter.roadtype)) continue;
 			if (!bdf.Filter(e->badges)) continue;
 
@@ -1473,19 +1548,19 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Figure out what ship EngineIDs to put in the list */
+	/** Figure out what ship EngineIDs to put in the list. */
 	void GenerateBuildShipList()
 	{
 		EngineID sel_id = EngineID::Invalid();
 		this->eng_list.clear();
 
-		BadgeTextFilter btf(this->string_filter, GSF_SHIPS);
+		BadgeTextFilter btf(this->string_filter, GrfSpecFeature::Ships);
 		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
-		for (const Engine *e : Engine::IterateType(VEH_SHIP)) {
+		for (const Engine *e : Engine::IterateType(VehicleType::Ship)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
+			if (!IsEngineBuildable(eid, VehicleType::Ship, _local_company)) continue;
 			if (!bdf.Filter(e->badges)) continue;
 
 			/* Filter by name or NewGRF extra text */
@@ -1498,7 +1573,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Figure out what aircraft EngineIDs to put in the list */
+	/** Figure out what aircraft EngineIDs to put in the list. */
 	void GenerateBuildAircraftList()
 	{
 		EngineID sel_id = EngineID::Invalid();
@@ -1507,17 +1582,17 @@ struct BuildVehicleWindow : Window {
 
 		const Station *st = this->listview_mode ? nullptr : Station::GetByTile(TileIndex(this->window_number));
 
-		BadgeTextFilter btf(this->string_filter, GSF_AIRCRAFT);
+		BadgeTextFilter btf(this->string_filter, GrfSpecFeature::Aircraft);
 		BadgeDropdownFilter bdf(this->badge_filter_choices);
 
 		/* Make list of all available planes.
 		 * Also check to see if the previously selected plane is still available,
 		 * and if not, reset selection to EngineID::Invalid(). This could be the case
 		 * when planes become obsolete and are removed */
-		for (const Engine *e : Engine::IterateType(VEH_AIRCRAFT)) {
+		for (const Engine *e : Engine::IterateType(VehicleType::Aircraft)) {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
+			if (!IsEngineBuildable(eid, VehicleType::Aircraft, _local_company)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 			if (!bdf.Filter(e->badges)) continue;
@@ -1533,7 +1608,7 @@ struct BuildVehicleWindow : Window {
 		this->SelectEngine(sel_id);
 	}
 
-	/* Generate the list of vehicles */
+	/** Generate the list of vehicles. */
 	void GenerateBuildList()
 	{
 		if (!this->eng_list.NeedRebuild()) return;
@@ -1547,18 +1622,18 @@ struct BuildVehicleWindow : Window {
 
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:
+			case VehicleType::Train:
 				this->GenerateBuildTrainList(list);
 				GUIEngineListAddChildren(this->eng_list, list);
 				this->eng_list.RebuildDone();
 				return;
-			case VEH_ROAD:
+			case VehicleType::Road:
 				this->GenerateBuildRoadVehList();
 				break;
-			case VEH_SHIP:
+			case VehicleType::Ship:
 				this->GenerateBuildShipList();
 				break;
-			case VEH_AIRCRAFT:
+			case VehicleType::Aircraft:
 				this->GenerateBuildAircraftList();
 				break;
 		}
@@ -1582,7 +1657,7 @@ struct BuildVehicleWindow : Window {
 		}
 
 		_engine_sort_direction = this->descending_sort_order;
-		EngList_Sort(this->eng_list, _engine_sort_functions[this->vehicle_type][this->sort_criteria]);
+		EngList_Sort(this->eng_list, GetEngineSortFunctions(this->vehicle_type)[this->sort_criteria]);
 
 		this->eng_list.swap(list);
 		GUIEngineListAddChildren(this->eng_list, list, EngineID::Invalid(), 0);
@@ -1596,7 +1671,7 @@ struct BuildVehicleWindow : Window {
 		/* Add item for disabling filtering. */
 		list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ANY), CargoFilterCriteria::CF_ANY));
 		/* Specific filters for trains. */
-		if (this->vehicle_type == VEH_TRAIN) {
+		if (this->vehicle_type == VehicleType::Train) {
 			/* Add item for locomotives only in case of trains. */
 			list.push_back(MakeDropDownListStringItem(this->GetCargoFilterLabel(CargoFilterCriteria::CF_ENGINES), CargoFilterCriteria::CF_ENGINES));
 			/* Add item for vehicles not carrying anything, e.g. train engines.
@@ -1616,7 +1691,7 @@ struct BuildVehicleWindow : Window {
 	DropDownList BuildBadgeConfigurationList() const
 	{
 		static const auto separators = {STR_BADGE_CONFIG_PREVIEW, STR_BADGE_CONFIG_NAME};
-		return BuildBadgeClassConfigurationList(this->badge_classes, BADGE_COLUMNS, separators, COLOUR_GREY);
+		return BuildBadgeClassConfigurationList(this->badge_classes, BADGE_COLUMNS, separators, Colours::Grey);
 	}
 
 	void BuildVehicle()
@@ -1626,10 +1701,10 @@ struct BuildVehicleWindow : Window {
 
 		CargoType cargo = this->cargo_filter_criteria;
 		if (cargo == CargoFilterCriteria::CF_ANY || cargo == CargoFilterCriteria::CF_ENGINES || cargo == CargoFilterCriteria::CF_NONE) cargo = INVALID_CARGO;
-		if (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) {
-			Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, TileIndex(this->window_number), sel_eng, true, cargo, INVALID_CLIENT_ID);
+		if (this->vehicle_type == VehicleType::Train && RailVehInfo(sel_eng)->railveh_type == RailVehicleType::Wagon) {
+			Command<Commands::BuildVehicle>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildWagon, TileIndex(this->window_number), sel_eng, true, cargo, ClientID::Invalid);
 		} else {
-			Command<CMD_BUILD_VEHICLE>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, TileIndex(this->window_number), sel_eng, true, cargo, INVALID_CLIENT_ID);
+			Command<Commands::BuildVehicle>::Post(GetCmdBuildVehMsg(this->vehicle_type), CcBuildPrimaryVehicle, TileIndex(this->window_number), sel_eng, true, cargo, ClientID::Invalid);
 		}
 
 		/* Update last used variant in hierarchy and refresh if necessary. */
@@ -1643,8 +1718,8 @@ struct BuildVehicleWindow : Window {
 		}
 
 		if (refresh) {
-			InvalidateWindowData(WC_REPLACE_VEHICLE, this->vehicle_type, 0); // Update the autoreplace window
-			InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
+			InvalidateWindowData(WindowClass::ReplaceVehicle, this->vehicle_type, 0); // Update the autoreplace window
+			InvalidateWindowClassesData(WindowClass::BuildVehicle); // The build windows needs updating as well
 		}
 	}
 
@@ -1678,8 +1753,8 @@ struct BuildVehicleWindow : Window {
 						Engine *engine = Engine::Get(item.variant_id);
 						engine->display_flags.Flip(EngineDisplayFlag::IsFolded);
 
-						InvalidateWindowData(WC_REPLACE_VEHICLE, this->vehicle_type, 0); // Update the autoreplace window
-						InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
+						InvalidateWindowData(WindowClass::ReplaceVehicle, this->vehicle_type, 0); // Update the autoreplace window
+						InvalidateWindowClassesData(WindowClass::BuildVehicle); // The build windows needs updating as well
 						return;
 					}
 					if (!item.flags.Test(EngineDisplayFlag::Shaded)) e = item.engine_id;
@@ -1698,9 +1773,11 @@ struct BuildVehicleWindow : Window {
 				DisplayVehicleSortDropDown(this, this->vehicle_type, this->sort_criteria, WID_BV_SORT_DROPDOWN);
 				break;
 
-			case WID_BV_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
-				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget);
+			case WID_BV_CARGO_FILTER_DROPDOWN: { // Select cargo filtering criteria dropdown menu
+				static std::string cargo_filter;
+				ShowDropDownList(this, this->BuildCargoDropDownList(), this->cargo_filter_criteria, widget, 0, DropDownOption::Filterable, &cargo_filter);
 				break;
+			}
 
 			case WID_BV_CONFIGURE_BADGES:
 				if (this->badge_classes.GetClasses().empty()) break;
@@ -1710,7 +1787,7 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == EngineID::Invalid()) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr) {
-					Command<CMD_SET_VEHICLE_VISIBILITY>::Post(this->sel_engine, !e->IsHidden(_current_company));
+					Command<Commands::SetVehicleVisibility>::Post(this->sel_engine, !e->IsHidden(_current_company));
 				}
 				break;
 			}
@@ -1723,15 +1800,15 @@ struct BuildVehicleWindow : Window {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != EngineID::Invalid()) {
 					this->rename_engine = sel_eng;
-					ShowQueryString(GetString(STR_ENGINE_NAME, PackEngineNameDParam(sel_eng, EngineNameContext::Generic)), STR_QUERY_RENAME_TRAIN_TYPE_CAPTION + this->vehicle_type, MAX_LENGTH_ENGINE_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
+					ShowQueryString(GetString(STR_ENGINE_NAME, PackEngineNameDParam(sel_eng, EngineNameContext::Generic)), STR_QUERY_RENAME_TRAIN_TYPE_CAPTION + to_underlying(this->vehicle_type), MAX_LENGTH_ENGINE_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				}
 				break;
 			}
 
 			default:
 				if (IsInsideMM(widget, this->badge_filters.first, this->badge_filters.second)) {
-					PaletteID palette = SPR_2CCMAP_BASE + Company::Get(_local_company)->GetCompanyRecolourOffset(LS_DEFAULT);
-					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0);
+					PaletteID palette = SPR_2CCMAP_BASE + Company::Get(_local_company)->GetCompanyRecolourOffset(LiveryScheme::Default);
+					ShowDropDownList(this, this->GetWidget<NWidgetBadgeFilter>(widget)->GetDropDownList(palette), -1, widget, 0, DropDownOption::Filterable);
 				}
 				break;
 		}
@@ -1746,11 +1823,11 @@ struct BuildVehicleWindow : Window {
 	{
 		if (!gui_scope) return;
 		/* When switching to original acceleration model for road vehicles, clear the selected sort criteria if it is not available now. */
-		if (this->vehicle_type == VEH_ROAD &&
-				_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL &&
+		if (this->vehicle_type == VehicleType::Road &&
+				_settings_game.vehicle.roadveh_acceleration_model == AccelerationModel::Original &&
 				this->sort_criteria > 7) {
 			this->sort_criteria = 0;
-			_engine_sort_last_criteria[VEH_ROAD] = 0;
+			_engine_sort_last_criteria[VehicleType::Road] = 0;
 		}
 		this->eng_list.ForceRebuild();
 	}
@@ -1759,18 +1836,18 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case WID_BV_CAPTION:
-				if (this->vehicle_type == VEH_TRAIN && !this->listview_mode) {
+				if (this->vehicle_type == VehicleType::Train && !this->listview_mode) {
 					const RailTypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
 					return GetString(rti->strings.build_caption);
 				}
-				if (this->vehicle_type == VEH_ROAD && !this->listview_mode) {
+				if (this->vehicle_type == VehicleType::Road && !this->listview_mode) {
 					const RoadTypeInfo *rti = GetRoadTypeInfo(this->filter.roadtype);
 					return GetString(rti->strings.build_caption);
 				}
-				return GetString((this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + this->vehicle_type);
+				return GetString((this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + to_underlying(this->vehicle_type));
 
 			case WID_BV_SORT_DROPDOWN:
-				return GetString(std::data(_engine_sort_listing[this->vehicle_type])[this->sort_criteria]);
+				return GetString(GetEngineSortNames(this->vehicle_type)[this->sort_criteria]);
 
 			case WID_BV_CARGO_FILTER_DROPDOWN:
 				return GetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
@@ -1778,9 +1855,9 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == EngineID::Invalid()) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr && e->IsHidden(_local_company)) {
-					return GetString(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type);
+					return GetString(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + to_underlying(this->vehicle_type));
 				}
-				return GetString(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
+				return GetString(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + to_underlying(this->vehicle_type));
 			}
 
 			default:
@@ -1798,11 +1875,11 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_LIST:
 				fill.height = resize.height = GetEngineListHeight(this->vehicle_type);
 				size.height = 3 * resize.height;
-				size.width = std::max(size.width, this->badge_classes.GetTotalColumnsWidth() + GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_left + GetVehicleImageCellSize(this->vehicle_type, EIT_PURCHASE).extend_right + 165) + padding.width;
+				size.width = std::max(size.width, this->badge_classes.GetTotalColumnsWidth() + GetVehicleImageCellSize(this->vehicle_type, EngineImageType::Purchase).extend_left + GetVehicleImageCellSize(this->vehicle_type, EngineImageType::Purchase).extend_right + 165) + padding.width;
 				break;
 
 			case WID_BV_PANEL:
-				size.height = GetCharacterHeight(FS_NORMAL) * this->details_height + padding.height;
+				size.height = GetCharacterHeight(FontSize::Normal) * this->details_height + padding.height;
 				break;
 
 			case WID_BV_SORT_ASCENDING_DESCENDING: {
@@ -1823,15 +1900,15 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_BUILD:
-				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + this->vehicle_type);
-				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + this->vehicle_type));
+				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + to_underlying(this->vehicle_type));
+				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + to_underlying(this->vehicle_type)));
 				size.width += padding.width;
 				size.height += padding.height;
 				break;
 
 			case WID_BV_SHOW_HIDE:
-				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + this->vehicle_type);
-				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + this->vehicle_type));
+				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + to_underlying(this->vehicle_type));
+				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + to_underlying(this->vehicle_type)));
 				size.width += padding.width;
 				size.height += padding.height;
 				break;
@@ -1850,12 +1927,13 @@ struct BuildVehicleWindow : Window {
 					this->sel_engine,
 					false,
 					DEFAULT_GROUP,
-					this->badge_classes
+					this->badge_classes,
+					this->sort_criteria
 				);
 				break;
 
 			case WID_BV_SORT_ASCENDING_DESCENDING:
-				this->DrawSortButtonState(WID_BV_SORT_ASCENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
+				this->DrawSortButton(WID_BV_SORT_ASCENDING_DESCENDING, this->descending_sort_order);
 				break;
 		}
 	}
@@ -1878,12 +1956,12 @@ struct BuildVehicleWindow : Window {
 			if (this->sel_engine != EngineID::Invalid()) {
 				const Rect r = this->GetWidget<NWidgetBase>(WID_BV_PANEL)->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
 				int text_end = DrawVehiclePurchaseInfo(r.left, r.right, r.top, this->sel_engine, this->te);
-				needed_height = std::max(needed_height, (text_end - r.top) / GetCharacterHeight(FS_NORMAL));
+				needed_height = std::max(needed_height, (text_end - r.top) / GetCharacterHeight(FontSize::Normal));
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
 				int resize = needed_height - this->details_height;
 				this->details_height = needed_height;
-				this->ReInit(0, resize * GetCharacterHeight(FS_NORMAL));
+				this->ReInit(0, resize * GetCharacterHeight(FontSize::Normal));
 				return;
 			}
 		}
@@ -1893,7 +1971,7 @@ struct BuildVehicleWindow : Window {
 	{
 		if (!str.has_value()) return;
 
-		Command<CMD_RENAME_ENGINE>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + this->vehicle_type, this->rename_engine, *str);
+		Command<Commands::RenameEngine>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + to_underlying(this->vehicle_type), this->rename_engine, *str);
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index, int click_result) override
@@ -1909,7 +1987,7 @@ struct BuildVehicleWindow : Window {
 
 			case WID_BV_CARGO_FILTER_DROPDOWN: // Select a cargo filter criteria
 				if (this->cargo_filter_criteria != index) {
-					this->cargo_filter_criteria = index;
+					this->cargo_filter_criteria = static_cast<CargoType>(index);
 					_engine_sort_last_cargo_criteria[this->vehicle_type] = this->cargo_filter_criteria;
 					/* deactivate filter if criteria is 'Show All', activate it otherwise */
 					this->eng_list.SetFilterState(this->cargo_filter_criteria != CargoFilterCriteria::CF_ANY);
@@ -1919,14 +1997,14 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_CONFIGURE_BADGES: {
-				bool reopen = HandleBadgeConfigurationDropDownClick(static_cast<GrfSpecFeature>(GSF_TRAINS + this->vehicle_type), BADGE_COLUMNS, index, click_result, this->badge_filter_choices);
+				bool reopen = HandleBadgeConfigurationDropDownClick(GetGrfSpecFeature(this->vehicle_type), BADGE_COLUMNS, index, click_result, this->badge_filter_choices);
 
 				this->ReInit();
 
 				if (reopen) {
 					ReplaceDropDownList(this, this->BuildBadgeConfigurationList(), -1);
 				} else {
-					this->CloseChildWindows(WC_DROPDOWN_MENU);
+					this->CloseChildWindows(WindowClass::DropdownMenu);
 				}
 
 				/* We need to refresh if a filter is removed. */
@@ -1966,9 +2044,10 @@ struct BuildVehicleWindow : Window {
 	}};
 };
 
+/** Window definition for the build vehicle window. */
 static WindowDesc _build_vehicle_desc(
-	WDP_AUTO, "build_vehicle", 240, 268,
-	WC_BUILD_VEHICLE, WC_NONE,
+	WindowPosition::Automatic, "build_vehicle", 240, 268,
+	WindowClass::BuildVehicle, WindowClass::None,
 	WindowDefaultFlag::Construction,
 	_nested_build_vehicle_widgets,
 	&BuildVehicleWindow::hotkeys
@@ -1984,7 +2063,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 
 	assert(IsCompanyBuildableVehicleType(type));
 
-	CloseWindowById(WC_BUILD_VEHICLE, num);
+	CloseWindowById(WindowClass::BuildVehicle, num);
 
 	new BuildVehicleWindow(_build_vehicle_desc, tile, type);
 }

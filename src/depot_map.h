@@ -15,21 +15,24 @@
 
 /**
  * Check if a tile is a depot and it is a depot of the given type.
+ * @param tile The tile to check.
+ * @param type The type of transport.
+ * @return \c true iff the given tile is a depot for the given transport type.
  */
 inline bool IsDepotTypeTile(Tile tile, TransportType type)
 {
 	switch (type) {
 		default: NOT_REACHED();
-		case TRANSPORT_RAIL:
+		case TransportType::Rail:
 			return IsRailDepotTile(tile);
 
-		case TRANSPORT_ROAD:
+		case TransportType::Road:
 			return IsRoadDepotTile(tile);
 
-		case TRANSPORT_WATER:
+		case TransportType::Water:
 			return IsShipDepotTile(tile);
 
-		case TRANSPORT_AIR:
+		case TransportType::Air:
 			return IsHangarTile(tile);
 	}
 }
@@ -79,10 +82,10 @@ inline VehicleType GetDepotVehicleType(Tile t)
 {
 	switch (GetTileType(t)) {
 		default: NOT_REACHED();
-		case MP_RAILWAY: return VEH_TRAIN;
-		case MP_ROAD:    return VEH_ROAD;
-		case MP_WATER:   return VEH_SHIP;
-		case MP_STATION: return VEH_AIRCRAFT;
+		case TileType::Railway: return VehicleType::Train;
+		case TileType::Road: return VehicleType::Road;
+		case TileType::Water: return VehicleType::Ship;
+		case TileType::Station: return VehicleType::Aircraft;
 	}
 }
 

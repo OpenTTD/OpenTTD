@@ -147,6 +147,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 	/**
 	 * Initialise the md5sum to be all zeroes,
 	 * so we can easily xor the data.
+	 * @param dir The directory to look in.
 	 */
 	ScriptFileChecksumCreator(Subdirectory dir) : dir(dir) {}
 
@@ -183,6 +184,7 @@ struct ScriptFileChecksumCreator : FileScanner {
  * @param ci The information to compare to.
  * @param md5sum Whether to check the MD5 checksum.
  * @param info The script to get the shortname and md5 sum from.
+ * @param dir The directory to look in for scripts.
  * @return True iff they're the same.
  */
 static bool IsSameScript(const ContentInfo &ci, bool md5sum, const ScriptInfo &info, Subdirectory dir)

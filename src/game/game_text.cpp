@@ -49,7 +49,7 @@ void CDECL StrgenFatalI(const std::string &msg)
 LanguageStrings ReadRawLanguageStrings(const std::string &file)
 {
 	size_t to_read;
-	auto fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
+	auto fh = FioFOpenFile(file, "rb", Subdirectory::Gs, &to_read);
 	if (!fh.has_value()) return LanguageStrings();
 
 	auto pos = file.rfind(PATHSEPCHAR);
@@ -162,15 +162,20 @@ struct StringNameWriter : HeaderWriter {
  */
 class LanguageScanner : protected FileScanner {
 private:
-	std::weak_ptr<GameStrings> gs;
-	std::string exclude;
+	std::weak_ptr<GameStrings> gs; ///< The (already) loaded game strings.
+	std::string exclude; ///< The file name to exclude during scanning.
 
 public:
-	/** Initialise */
+	/**
+	 * Initialise the scanner.
+	 * @param gs The (already) loaded game strings to add to.
+	 * @param exclude The file name to exclude during sanning.
+	 */
 	LanguageScanner(std::weak_ptr<GameStrings> gs, const std::string &exclude) : gs(gs), exclude(exclude) {}
 
 	/**
-	 * Scan.
+	 * Actually run the scan.
+	 * @param directory The directory to scan in.
 	 */
 	void Scan(const std::string &directory)
 	{
@@ -207,7 +212,7 @@ static std::shared_ptr<GameStrings> LoadTranslations()
 	basename.erase(e + 1);
 
 	std::string filename = basename + "lang" PATHSEP "english.txt";
-	if (!FioCheckFileExists(filename, GAME_DIR)) return nullptr;
+	if (!FioCheckFileExists(filename, Subdirectory::Gs)) return nullptr;
 
 	auto ls = ReadRawLanguageStrings(filename);
 	if (!ls.IsValid()) return nullptr;
@@ -222,10 +227,10 @@ static std::shared_ptr<GameStrings> LoadTranslations()
 
 		const std::string tar_filename = info->GetTarFile();
 		TarList::iterator iter;
-		if (!tar_filename.empty() && (iter = _tar_list[GAME_DIR].find(tar_filename)) != _tar_list[GAME_DIR].end()) {
+		if (!tar_filename.empty() && (iter = _tar_list[Subdirectory::Gs].find(tar_filename)) != _tar_list[Subdirectory::Gs].end()) {
 			/* The main script is in a tar file, so find all files that
 			 * are in the same tar and add them to the langfile scanner. */
-			for (const auto &[name, entry] : _tar_filelist[GAME_DIR]) {
+			for (const auto &[name, entry] : _tar_filelist[Subdirectory::Gs]) {
 				/* Not in the same tar. */
 				if (entry.tar_filename != iter->first) continue;
 

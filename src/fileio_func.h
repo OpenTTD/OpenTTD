@@ -38,7 +38,7 @@ class FileScanner {
 protected:
 	Subdirectory subdir{}; ///< The current sub directory we are searching through
 public:
-	/** Destruct the proper one... */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~FileScanner() = default;
 
 	uint Scan(std::string_view extension, Subdirectory sd, bool tars = true, bool recursive = true);
@@ -67,6 +67,8 @@ public:
 		Scenario, ///< Scan for scenarios and heightmaps.
 		Game, ///< Scan for game scripts.
 	};
+
+	/** Bitset of \c Mode elements. */
 	using Modes = EnumBitSet<Mode, uint8_t>;
 
 	static constexpr Modes MODES_ALL = {Mode::Baseset, Mode::NewGRF, Mode::AI, Mode::Scenario, Mode::Game}; ///< Scan for everything.

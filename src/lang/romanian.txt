@@ -1321,8 +1321,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Alege nivelul d
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiuni: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Dacă este activată, recesiunile pot apărea periodic. În timpul unei recesiuni toată producția este semnificativ mai scăzută (revine la nivelul anterior când recesiunea se încheie)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Nu permite întoarcerea trenurilor in statie: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Dacă este activată, trenurile nu vor întoarce într-o stație care nu este capăt de linie, chiar dacă există o cale mai scurtă către destinația următoare la întoarcere
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Dezastre: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Comută dezastre care ocazional pot bloca sau distruge vehicule sau infrastructură
@@ -1526,6 +1526,8 @@ STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :Ajustarea produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Ajustarea producției de mărfuri: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Ajustarea producției de mărfuri cu acest procent.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automată pentru vehiculele învechite: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :După activare, orice vehicul care este învechit va fi înnoit automat când condițiile de înlocuire automată sunt îndeplinite
@@ -1754,12 +1756,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Arată timpii e
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creare rapidă a comenzilor pentru vehicule: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselectează cursorul "mergi la" când se deschide fereastra de comenzi
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipul implicit de șină (după joc nou/încarcare joc): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipul de cale feroviară care va fi ales la pornirea sau îmcărcarea jocului. 'Prima disponibilă' alege cel mai nou tip de cale feroviară și 'Cea mai folosită' alege tipul cel mai des folosit în acel moment.
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prima disponibilă
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponibilă
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosită
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Arată liniile rezervate: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Acordă căilor feroviare rezervate o culoare diferită pentru a depista mai ușor probleme cum ar fi trenuri refuzând intrarea în secțiuni bazate pe căi stabilite anterior
@@ -1865,6 +1862,7 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Când este acti
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activează limite de viteză pentru vagoane: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Dacă este activată, folosește și limita de viteză a vagoanelor pentru a stabili viteza maximă a trenului
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Dezactivează șinele electrice: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Prin activarea acestei opțiuni, se dezactivează cerința de a avea cale feroviară electrificată pentru a putea folosi locomotive electrice pe această cale feroviară
@@ -2185,7 +2183,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... setu
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... setul de bază pentru sunete '{STRING}' este ignorat: nu a fost găsit
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... setul de bază pentru muzică '{STRING}' este ignorat: nu a fost găsit
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Eroare în setările video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... GPU incompatibil. Accelerarea hardware este dezactivată
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... Driverul GPU a dus la prăbușirea jocului. Accelerarea hardware a fost dezactivată
@@ -2437,15 +2435,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} {P
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} descărcat până acum
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descărcați până acum
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Conectare...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizare...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Așteptați...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descărcare hartă...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Prelucrare date...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Înregistrare...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Preluare informații joc...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare informații companie...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Deconectare
 
@@ -2803,6 +2799,8 @@ STR_PICKER_MODE_USED                                            :Folosit
 STR_PICKER_MODE_USED_TOOLTIP                                    :Comutați afișarea numai a elementelor existente
 STR_PICKER_MODE_SAVED                                           :Salvat
 STR_PICKER_MODE_SAVED_TOOLTIP                                   :Comutați afișarea numai a elementelor salvate
+
+
 
 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Selectați o clasă de stație de afișat
@@ -4114,6 +4112,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Efort tr
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rază acțiune: {GOLD}{COMMA} pătrățele
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Tip de aeronavă: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :Toate tipurile de marfă
 STR_CARGO_TYPE_FILTER_FREIGHT                                   :Marfă
@@ -4274,6 +4274,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ești p
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaj de la producătorul de vehicule
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Am creat un nou tip de {STRING}. Ați fi interesați de folosirea exclusivă pentru un an a acestui vehicul, astfel ca noi să-i putem observa performanțele înaintea lansării oficiale?
+
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotivă
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotivă electrificată
@@ -4450,7 +4451,6 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit p
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}Profit anul curent: {LTBLUE}{CURRENCY_LONG} (anul trecut: {CURRENCY_LONG}) {BLACK}performanta minima: {LTBLUE}{POWER_TO_WEIGHT}
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}Profit perioada curentă: {LTBLUE}{CURRENCY_LONG} (ultima perioadă: {CURRENCY_LONG})
 STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Profit perioada curentă: {LTBLUE}{CURRENCY_LONG} (ultima perioadă: {CURRENCY_LONG}) {BLACK}Performanță minimă: {LTBLUE}{POWER_TO_WEIGHT}
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Eficiență: {LTBLUE}{COMMA}%  {BLACK}Defecțiuni de la ultimul service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacitate: {LTBLUE}Nimic{STRING}
@@ -4590,7 +4590,7 @@ STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}Selecta�
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datele vehiculului pe care se bazează
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procentaj încărcare
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Eficiență
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Viteză maximă
@@ -4993,7 +4993,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nu pot c
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nu se poate redenumi orașul...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nu se poate construi un oraș aici...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Orașul nu poate fi extins...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... prea aproape de marginea hărții
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... prea aproape de alt oraș
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... prea multe orașe
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nu mai este loc pe hartă

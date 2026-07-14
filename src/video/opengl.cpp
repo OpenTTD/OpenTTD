@@ -220,7 +220,10 @@ static bool BindGLProc(F &f, const char *name)
 	return f != nullptr;
 }
 
-/** Bind basic information functions. */
+/**
+ * Bind basic information functions.
+ * @return \c true iff all procs could be bound.
+ */
 static bool BindBasicInfoProcs()
 {
 	if (!BindGLProc(_glGetString, "glGetString")) return false;
@@ -230,7 +233,10 @@ static bool BindBasicInfoProcs()
 	return true;
 }
 
-/** Bind OpenGL 1.0 and 1.1 functions. */
+/**
+ * Bind OpenGL 1.0 and 1.1 functions.
+ * @return \c true iff all procs could be bound.
+ */
 static bool BindBasicOpenGLProcs()
 {
 	if (!BindGLProc(_glDisable, "glDisable")) return false;
@@ -253,7 +259,10 @@ static bool BindBasicOpenGLProcs()
 	return true;
 }
 
-/** Bind texture-related extension functions. */
+/**
+ * Bind texture-related extension functions.
+ * @return \c true iff all extension procs could be bound.
+ */
 static bool BindTextureExtensions()
 {
 	if (IsOpenGLVersionAtLeast(1, 3)) {
@@ -265,7 +274,10 @@ static bool BindTextureExtensions()
 	return true;
 }
 
-/** Bind vertex buffer object extension functions. */
+/**
+ * Bind vertex buffer object extension functions.
+ * @return \c true iff all extension procs could be bound.
+ */
 static bool BindVBOExtension()
 {
 	if (IsOpenGLVersionAtLeast(1, 5)) {
@@ -295,7 +307,10 @@ static bool BindVBOExtension()
 	return true;
 }
 
-/** Bind vertex array object extension functions. */
+/**
+ * Bind vertex array object extension functions.
+ * @return \c true iff all extension procs could be bound.
+ */
 static bool BindVBAExtension()
 {
 	/* The APPLE and ARB variants have different semantics (that don't matter for us).
@@ -314,7 +329,10 @@ static bool BindVBAExtension()
 	return true;
 }
 
-/** Bind extension functions for shader support. */
+/**
+ * Bind extension functions for shader support.
+ * @return \c true iff all extension procs could be bound.
+ */
 static bool BindShaderExtensions()
 {
 	if (IsOpenGLVersionAtLeast(2, 0)) {
@@ -380,7 +398,10 @@ static bool BindShaderExtensions()
 	return true;
 }
 
-/** Bind extension functions for persistent buffer mapping. */
+/**
+ * Bind extension functions for persistent buffer mapping.
+ * @return \c true iff all extension procs could be bound.
+ */
 static bool BindPersistentBufferExtensions()
 {
 	/* Optional functions for persistent buffer mapping. */
@@ -401,8 +422,13 @@ static bool BindPersistentBufferExtensions()
 	return true;
 }
 
-/** Callback to receive OpenGL debug messages. */
-void APIENTRY DebugOutputCallback([[maybe_unused]] GLenum source, GLenum type, [[maybe_unused]] GLuint id, GLenum severity, [[maybe_unused]] GLsizei length, const GLchar *message, [[maybe_unused]] const void *userParam)
+/**
+ * Callback to receive OpenGL debug messages.
+ * @param type The type of message.
+ * @param severity The severity of the issue.
+ * @param message The message to convey to the end user.
+ */
+void APIENTRY DebugOutputCallback(GLenum, GLenum type, GLuint, GLenum severity, GLsizei, const GLchar *message, const void *)
 {
 	/* Make severity human readable. */
 	std::string_view severity_str;
@@ -908,7 +934,7 @@ static void ClearPixelBuffer(size_t len, T data)
  * @param w New width of the window.
  * @param h New height of the window.
  * @param force Recreate resources even if size didn't change.
- * @param False if nothing had to be done, true otherwise.
+ * @return \c false if nothing had to be done, \c true otherwise.
  */
 bool OpenGLBackend::Resize(int w, int h, bool force)
 {
@@ -1270,6 +1296,7 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 /**
  * Render a sprite to the back buffer.
  * @param gl_sprite Sprite to render.
+ * @param pal The palette to draw the sprite with.
  * @param x X position of the sprite.
  * @param y Y position of the sprite.
  * @param zoom Zoom level to use.
@@ -1315,7 +1342,7 @@ void OpenGLBackend::RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal
 }
 
 
-/* static */ std::array<GLuint, OpenGLSprite::NUM_TEX> OpenGLSprite::dummy_tex{};
+/* static */ EnumIndexArray<GLuint, OpenGLSprite::Texture, OpenGLSprite::Texture::End> OpenGLSprite::dummy_tex{};
 /* static */ GLuint OpenGLSprite::pal_identity = 0;
 /* static */ GLuint OpenGLSprite::pal_tex = 0;
 /* static */ GLuint OpenGLSprite::pal_pbo = 0;
@@ -1326,9 +1353,9 @@ void OpenGLBackend::RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal
  */
 /* static */ bool OpenGLSprite::Create()
 {
-	_glGenTextures(NUM_TEX, OpenGLSprite::dummy_tex.data());
+	_glGenTextures(static_cast<GLsizei>(OpenGLSprite::dummy_tex.size()), OpenGLSprite::dummy_tex.data());
 
-	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
+	for (Texture t : EnumRange<Texture>(Texture::End)) {
 		_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[t]);
 
 		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
@@ -1343,12 +1370,12 @@ void OpenGLBackend::RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal
 
 	/* Load dummy RGBA texture. */
 	const Colour rgb_pixel(0, 0, 0);
-	_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_RGBA]);
+	_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[Texture::RGBA]);
 	_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &rgb_pixel);
 
 	/* Load dummy remap texture. */
 	const uint pal = 0;
-	_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_REMAP]);
+	_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[Texture::Remap]);
 	_glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &pal);
 
 	/* Create palette remap textures. */
@@ -1387,7 +1414,7 @@ void OpenGLBackend::RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal
 /** Free all common resources for sprite rendering. */
 /* static */ void OpenGLSprite::Destroy()
 {
-	_glDeleteTextures(NUM_TEX, OpenGLSprite::dummy_tex.data());
+	_glDeleteTextures(static_cast<GLsizei>(OpenGLSprite::dummy_tex.size()), OpenGLSprite::dummy_tex.data());
 	_glDeleteTextures(1, &OpenGLSprite::pal_identity);
 	_glDeleteTextures(1, &OpenGLSprite::pal_tex);
 	if (_glDeleteBuffers != nullptr) _glDeleteBuffers(1, &OpenGLSprite::pal_pbo);
@@ -1395,6 +1422,7 @@ void OpenGLBackend::RenderOglSprite(const OpenGLSprite *gl_sprite, PaletteID pal
 
 /**
  * Create an OpenGL sprite with a palette remap part.
+ * @param sprite_type The type of sprite to load.
  * @param sprite The sprite to create the OpenGL sprite for
  */
 OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCollection &sprite)
@@ -1413,10 +1441,10 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 	_glActiveTexture(GL_TEXTURE0);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
-	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
+	for (Texture t : EnumRange<Texture>(Texture::End)) {
 		/* Sprite component present? */
-		if (t == TEX_RGBA && root_sprite.colours == SpriteComponent::Palette) continue;
-		if (t == TEX_REMAP && !root_sprite.colours.Test(SpriteComponent::Palette)) continue;
+		if (t == Texture::RGBA && root_sprite.colours == SpriteComponent::Palette) continue;
+		if (t == Texture::Remap && !root_sprite.colours.Test(SpriteComponent::Palette)) continue;
 
 		/* Allocate texture. */
 		_glGenTextures(1, &this->tex[t]);
@@ -1431,7 +1459,7 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 		/* Set size. */
 		for (int i = 0, w = this->dim.width, h = this->dim.height; i < levels; i++, w /= 2, h /= 2) {
 			assert(w * h != 0);
-			if (t == TEX_REMAP) {
+			if (t == Texture::Remap) {
 				_glTexImage2D(GL_TEXTURE_2D, i, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
 			} else {
 				_glTexImage2D(GL_TEXTURE_2D, i, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
@@ -1448,9 +1476,10 @@ OpenGLSprite::OpenGLSprite(SpriteType sprite_type, const SpriteLoader::SpriteCol
 	assert(_glGetError() == GL_NO_ERROR);
 }
 
+/** Delete the textures we allocated. */
 OpenGLSprite::~OpenGLSprite()
 {
-	_glDeleteTextures(NUM_TEX, this->tex.data());
+	_glDeleteTextures(static_cast<GLsizei>(this->tex.size()), this->tex.data());
 }
 
 /**
@@ -1469,7 +1498,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 	_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 
-	if (this->tex[TEX_RGBA] != 0) {
+	if (this->tex[Texture::RGBA] != 0) {
 		/* Unpack pixel data */
 		size_t size = static_cast<size_t>(width) * height;
 		Colour *rgba = buf_rgba.Allocate(size);
@@ -1480,11 +1509,11 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 			rgba[i].a = data[i].a;
 		}
 
-		_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA]);
+		_glBindTexture(GL_TEXTURE_2D, this->tex[Texture::RGBA]);
 		_glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0, width, height, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, rgba);
 	}
 
-	if (this->tex[TEX_REMAP] != 0) {
+	if (this->tex[Texture::Remap] != 0) {
 		/* Unpack and align pixel data. */
 		size_t pitch = Align(width, 4);
 
@@ -1496,7 +1525,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 			}
 		}
 
-		_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_REMAP]);
+		_glBindTexture(GL_TEXTURE_2D, this->tex[Texture::Remap]);
 		_glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0, width, height, GL_RED, GL_UNSIGNED_BYTE, buf_pal.GetBuffer());
 	}
 
@@ -1521,9 +1550,9 @@ inline Dimension OpenGLSprite::GetSize(ZoomLevel level) const
 bool OpenGLSprite::BindTextures() const
 {
 	_glActiveTexture(GL_TEXTURE0);
-	_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA] != 0 ? this->tex[TEX_RGBA] : OpenGLSprite::dummy_tex[TEX_RGBA]);
+	_glBindTexture(GL_TEXTURE_2D, this->tex[Texture::RGBA] != 0 ? this->tex[Texture::RGBA] : OpenGLSprite::dummy_tex[Texture::RGBA]);
 	_glActiveTexture(GL_TEXTURE0 + 2);
-	_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_REMAP] != 0 ? this->tex[TEX_REMAP] : OpenGLSprite::dummy_tex[TEX_REMAP]);
+	_glBindTexture(GL_TEXTURE_2D, this->tex[Texture::Remap] != 0 ? this->tex[Texture::Remap] : OpenGLSprite::dummy_tex[Texture::Remap]);
 
-	return this->tex[TEX_RGBA] != 0;
+	return this->tex[Texture::RGBA] != 0;
 }

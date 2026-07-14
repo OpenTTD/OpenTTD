@@ -29,18 +29,18 @@
  * Contains the GRF ID of the owner of a vehicle if it has been reserved.
  * GRM for vehicles is only used if dynamic engine allocation is disabled,
  * so 256 is the number of original engines. */
-static std::array<uint32_t, 256> _grm_engines{};
+static std::array<GrfID, 256> _grm_engines{};
 
 /** Contains the GRF ID of the owner of a cargo if it has been reserved */
-static std::array<uint32_t, NUM_CARGO * 2> _grm_cargoes{};
+static std::array<GrfID, NUM_CARGO * 2> _grm_cargoes{};
 
 void ResetGRM()
 {
-	_grm_engines.fill(0);
-	_grm_cargoes.fill(0);
+	_grm_engines.fill({});
+	_grm_cargoes.fill({});
 }
 
-/* Action 0x0D (GLS_SAFETYSCAN) */
+/* Action 0x0D (GrfLoadingStage::SafetyScan) */
 static void SafeParamSet(ByteReader &buf)
 {
 	uint8_t target = buf.ReadByte();
@@ -132,14 +132,27 @@ static uint32_t GetPatchVariable(uint8_t param)
 	}
 }
 
-static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, uint8_t target, std::string_view type)
+/**
+ * Performs the GRF Resource Management, where NewGRFs can cooperatively manage sprite resources.
+ * @param grm Mapping to the NewGRF linked with a resource.
+ * @param count The number of elements to process.
+ * @param op The operation to perform.
+ * @param target The target for the operation.
+ * @param type Name of type for debug messages.
+ * @return Operation/target specific result.
+ */
+static uint32_t PerformGRM(std::span<GrfID> grm, uint16_t count, uint8_t op, uint8_t target, std::string_view type)
 {
 	uint start = 0;
 	uint size  = 0;
 
 	if (op == 6) {
 		/* Return GRFID of set that reserved ID */
-		return grm[_cur_gps.grffile->GetParam(target)];
+		uint32_t index = _cur_gps.grffile->GetParam(target);
+		if (index < std::size(grm)) return grm[index];
+
+		GrfMsg(1, "ParamSet: GRM: Parameter {} refers to invalid {} id {}", target, type, index);
+		return 0;
 	}
 
 	/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
@@ -178,7 +191,10 @@ static uint32_t PerformGRM(std::span<uint32_t> grm, uint16_t count, uint8_t op, 
 	return UINT_MAX;
 }
 
-/** Action 0x0D: Set parameter */
+/**
+ * Action 0x0D - Set parameter.
+ * @param buf Reader of the NewGRF.
+ */
 static void ParamSet(ByteReader &buf)
 {
 	/* <0D> <target> <operation> <source1> <source2> [<data>]
@@ -237,8 +253,8 @@ static void ParamSet(ByteReader &buf)
 				GrfSpecFeature feature{static_cast<uint8_t>(GB(data, 8, 8))};
 				uint16_t count   = GB(data, 16, 16);
 
-				if (_cur_gps.stage == GLS_RESERVE) {
-					if (feature == GSF_GLOBALVAR) {
+				if (_cur_gps.stage == GrfLoadingStage::Reserve) {
+					if (feature == GrfSpecFeature::GlobalVar) {
 						/* General sprites */
 						if (op == 0) {
 							/* Check if the allocated sprites will fit below the original sprite limit */
@@ -250,20 +266,20 @@ static void ParamSet(ByteReader &buf)
 
 							/* Reserve space at the current sprite ID */
 							GrfMsg(4, "ParamSet: GRM: Allocated {} sprites at {}", count, _cur_gps.spriteid);
-							_grm_sprites[GRFLocation(_cur_gps.grffile->grfid, _cur_gps.nfo_line)] = std::make_pair(_cur_gps.spriteid, count);
+							_grm_sprites[GRFLocation{_cur_gps.grffile->grfid, _cur_gps.nfo_line}] = std::make_pair(_cur_gps.spriteid, count);
 							_cur_gps.spriteid += count;
 						}
 					}
 					/* Ignore GRM result during reservation */
 					src1 = 0;
-				} else if (_cur_gps.stage == GLS_ACTIVATION) {
+				} else if (_cur_gps.stage == GrfLoadingStage::Activation) {
 					switch (feature) {
-						case GSF_TRAINS:
-						case GSF_ROADVEHICLES:
-						case GSF_SHIPS:
-						case GSF_AIRCRAFT:
+						case GrfSpecFeature::Trains:
+						case GrfSpecFeature::RoadVehicles:
+						case GrfSpecFeature::Ships:
+						case GrfSpecFeature::Aircraft:
 							if (!_settings_game.vehicle.dynamic_engines) {
-								src1 = PerformGRM({std::begin(_grm_engines) + _engine_offsets[feature], _engine_counts[feature]}, count, op, target, "vehicles");
+								src1 = PerformGRM({std::begin(_grm_engines) + GetOriginalEngineOffset(GetVehicleType(feature)), GetOriginalEngineCount(GetVehicleType(feature))}, count, op, target, "vehicles");
 								if (_cur_gps.skip_sprites == -1) return;
 							} else {
 								/* GRM does not apply for dynamic engine allocation. */
@@ -280,11 +296,11 @@ static void ParamSet(ByteReader &buf)
 							}
 							break;
 
-						case GSF_GLOBALVAR: // General sprites
+						case GrfSpecFeature::GlobalVar: // General sprites
 							switch (op) {
 								case 0:
 									/* Return space reserved during reservation stage */
-									src1 = _grm_sprites[GRFLocation(_cur_gps.grffile->grfid, _cur_gps.nfo_line)].first;
+									src1 = _grm_sprites[GRFLocation{_cur_gps.grffile->grfid, _cur_gps.nfo_line}].first;
 									GrfMsg(4, "ParamSet: GRM: Using pre-allocated sprites at {}", src1);
 									break;
 
@@ -298,7 +314,7 @@ static void ParamSet(ByteReader &buf)
 							}
 							break;
 
-						case GSF_CARGOES: // Cargo
+						case GrfSpecFeature::Cargoes: // Cargo
 							/* There are two ranges: one for cargo IDs and one for cargo bitmasks */
 							src1 = PerformGRM(_grm_cargoes, count, op, target, "cargoes");
 							if (_cur_gps.skip_sprites == -1) return;
@@ -319,7 +335,7 @@ static void ParamSet(ByteReader &buf)
 				/* Disable the read GRF if it is a static NewGRF. */
 				DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
 				src1 = 0;
-			} else if (file == nullptr || c == nullptr || c->status == GCS_DISABLED) {
+			} else if (file == nullptr || c == nullptr || c->status == GRFStatus::Disabled) {
 				src1 = 0;
 			} else if (src1 == 0xFE) {
 				src1 = c->version;
@@ -483,9 +499,15 @@ static void ParamSet(ByteReader &buf)
 	}
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x0D>::FileScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x0D>::SafetyScan(ByteReader &buf) { SafeParamSet(buf); }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x0D>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x0D>::Init(ByteReader &buf) { ParamSet(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x0D>::Reserve(ByteReader &buf) { ParamSet(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x0D>::Activation(ByteReader &buf) { ParamSet(buf); }

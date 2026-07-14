@@ -19,7 +19,7 @@ ObjectType GetObjectType(Tile t);
  * Check whether the object on a tile is of a specific type.
  * @param t Tile to test.
  * @param type Type to test.
- * @pre IsTileType(t, MP_OBJECT)
+ * @pre IsTileType(t, TileType::Object)
  * @return True if type matches.
  */
 inline bool IsObjectType(Tile t, ObjectType type)
@@ -35,30 +35,30 @@ inline bool IsObjectType(Tile t, ObjectType type)
  */
 inline bool IsObjectTypeTile(Tile t, ObjectType type)
 {
-	return IsTileType(t, MP_OBJECT) && GetObjectType(t) == type;
+	return IsTileType(t, TileType::Object) && GetObjectType(t) == type;
 }
 
 /**
  * Get the index of which object this tile is attached to.
  * @param t the tile
- * @pre IsTileType(t, MP_OBJECT)
+ * @pre IsTileType(t, TileType::Object)
  * @return The ObjectID of the object.
  */
 inline ObjectID GetObjectIndex(Tile t)
 {
-	assert(IsTileType(t, MP_OBJECT));
+	assert(IsTileType(t, TileType::Object));
 	return ObjectID(t.m2() | t.m5() << 16);
 }
 
 /**
  * Get the random bits of this tile.
  * @param t The tile to get the bits for.
- * @pre IsTileType(t, MP_OBJECT)
+ * @pre IsTileType(t, TileType::Object)
  * @return The random bits.
  */
 inline uint8_t GetObjectRandomBits(Tile t)
 {
-	assert(IsTileType(t, MP_OBJECT));
+	assert(IsTileType(t, TileType::Object));
 	return t.m3();
 }
 
@@ -73,7 +73,7 @@ inline uint8_t GetObjectRandomBits(Tile t)
  */
 inline void MakeObject(Tile t, Owner o, ObjectID index, WaterClass wc, uint8_t random)
 {
-	SetTileType(t, MP_OBJECT);
+	SetTileType(t, TileType::Object);
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
 	t.m2() = index.base();

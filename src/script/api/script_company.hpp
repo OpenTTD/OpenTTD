@@ -60,29 +60,29 @@ public:
 
 	/** List of different livery schemes. */
 	enum LiveryScheme {
-		LS_DEFAULT,                  ///< Default scheme.
-		LS_STEAM,                    ///< Steam engines.
-		LS_DIESEL,                   ///< Diesel engines.
-		LS_ELECTRIC,                 ///< Electric engines.
-		LS_MONORAIL,                 ///< Monorail engines.
-		LS_MAGLEV,                   ///< Maglev engines.
-		LS_DMU,                      ///< DMUs and their passenger wagons.
-		LS_EMU,                      ///< EMUs and their passenger wagons.
-		LS_PASSENGER_WAGON_STEAM,    ///< Passenger wagons attached to steam engines.
-		LS_PASSENGER_WAGON_DIESEL,   ///< Passenger wagons attached to diesel engines.
-		LS_PASSENGER_WAGON_ELECTRIC, ///< Passenger wagons attached to electric engines.
-		LS_PASSENGER_WAGON_MONORAIL, ///< Passenger wagons attached to monorail engines.
-		LS_PASSENGER_WAGON_MAGLEV,   ///< Passenger wagons attached to maglev engines.
-		LS_FREIGHT_WAGON,            ///< Freight wagons.
-		LS_BUS,                      ///< Buses.
-		LS_TRUCK,                    ///< Trucks.
-		LS_PASSENGER_SHIP,           ///< Passenger ships.
-		LS_FREIGHT_SHIP,             ///< Freight ships.
-		LS_HELICOPTER,               ///< Helicopters.
-		LS_SMALL_PLANE,              ///< Small aeroplanes.
-		LS_LARGE_PLANE,              ///< Large aeroplanes.
-		LS_PASSENGER_TRAM,           ///< Passenger trams.
-		LS_FREIGHT_TRAM,             ///< Freight trams.
+		LS_DEFAULT = to_underlying(::LiveryScheme::Default), ///< Default scheme.
+		LS_STEAM = to_underlying(::LiveryScheme::Steam), ///< Steam engines.
+		LS_DIESEL = to_underlying(::LiveryScheme::Diesel), ///< Diesel engines.
+		LS_ELECTRIC = to_underlying(::LiveryScheme::Electric), ///< Electric engines.
+		LS_MONORAIL = to_underlying(::LiveryScheme::Monorail), ///< Monorail engines.
+		LS_MAGLEV = to_underlying(::LiveryScheme::Maglev), ///< Maglev engines.
+		LS_DMU = to_underlying(::LiveryScheme::DMU), ///< DMUs and their passenger wagons.
+		LS_EMU = to_underlying(::LiveryScheme::EMU), ///< EMUs and their passenger wagons.
+		LS_PASSENGER_WAGON_STEAM = to_underlying(::LiveryScheme::PassengerWagonSteam), ///< Passenger wagons attached to steam engines.
+		LS_PASSENGER_WAGON_DIESEL = to_underlying(::LiveryScheme::PassengerWagonDiesel), ///< Passenger wagons attached to diesel engines.
+		LS_PASSENGER_WAGON_ELECTRIC = to_underlying(::LiveryScheme::PassengerWagonElectric), ///< Passenger wagons attached to electric engines.
+		LS_PASSENGER_WAGON_MONORAIL = to_underlying(::LiveryScheme::PassengerWagonMonorail), ///< Passenger wagons attached to monorail engines.
+		LS_PASSENGER_WAGON_MAGLEV = to_underlying(::LiveryScheme::PassengerWagonMaglev), ///< Passenger wagons attached to maglev engines.
+		LS_FREIGHT_WAGON = to_underlying(::LiveryScheme::FreightWagon), ///< Freight wagons.
+		LS_BUS = to_underlying(::LiveryScheme::Bus), ///< Buses.
+		LS_TRUCK = to_underlying(::LiveryScheme::Truck), ///< Trucks.
+		LS_PASSENGER_SHIP = to_underlying(::LiveryScheme::PassengerShip), ///< Passenger ships.
+		LS_FREIGHT_SHIP = to_underlying(::LiveryScheme::FreightShip), ///< Freight ships.
+		LS_HELICOPTER = to_underlying(::LiveryScheme::Helicopter), ///< Helicopters.
+		LS_SMALL_PLANE = to_underlying(::LiveryScheme::SmallPlane), ///< Small aeroplanes.
+		LS_LARGE_PLANE = to_underlying(::LiveryScheme::LargePlane), ///< Large aeroplanes.
+		LS_PASSENGER_TRAM = to_underlying(::LiveryScheme::PassengerTram), ///< Passenger trams.
+		LS_FREIGHT_TRAM = to_underlying(::LiveryScheme::FreightTram), ///< Freight trams.
 		LS_INVALID = -1,
 	};
 
@@ -104,7 +104,7 @@ public:
 		COLOUR_BROWN,
 		COLOUR_GREY,
 		COLOUR_WHITE,
-		COLOUR_INVALID = ::INVALID_COLOUR
+		COLOUR_INVALID = to_underlying(::Colours::Invalid)
 	};
 
 	/**
@@ -112,20 +112,20 @@ public:
 	 * @api -ai
 	 */
 	enum ExpensesType : uint8_t {
-		EXPENSES_CONSTRUCTION = ::EXPENSES_CONSTRUCTION,     ///< Construction costs.
-		EXPENSES_NEW_VEHICLES = ::EXPENSES_NEW_VEHICLES,     ///< New vehicles.
-		EXPENSES_TRAIN_RUN    = ::EXPENSES_TRAIN_RUN,        ///< Running costs trains.
-		EXPENSES_ROADVEH_RUN  = ::EXPENSES_ROADVEH_RUN,      ///< Running costs road vehicles.
-		EXPENSES_AIRCRAFT_RUN = ::EXPENSES_AIRCRAFT_RUN,     ///< Running costs aircraft.
-		EXPENSES_SHIP_RUN     = ::EXPENSES_SHIP_RUN,         ///< Running costs ships.
-		EXPENSES_PROPERTY     = ::EXPENSES_PROPERTY,         ///< Property costs.
-		EXPENSES_TRAIN_INC    = ::EXPENSES_TRAIN_REVENUE,    ///< Revenue from trains.
-		EXPENSES_ROADVEH_INC  = ::EXPENSES_ROADVEH_REVENUE,  ///< Revenue from road vehicles.
-		EXPENSES_AIRCRAFT_INC = ::EXPENSES_AIRCRAFT_REVENUE, ///< Revenue from aircraft.
-		EXPENSES_SHIP_INC     = ::EXPENSES_SHIP_REVENUE,     ///< Revenue from ships.
-		EXPENSES_LOAN_INT     = ::EXPENSES_LOAN_INTEREST,    ///< Interest payments over the loan.
-		EXPENSES_OTHER        = ::EXPENSES_OTHER,            ///< Other expenses.
-		EXPENSES_INVALID      = ::INVALID_EXPENSES,          ///< Invalid expense type.
+		EXPENSES_CONSTRUCTION = to_underlying(::ExpensesType::Construction), ///< Construction costs.
+		EXPENSES_NEW_VEHICLES = to_underlying(::ExpensesType::NewVehicles), ///< New vehicles.
+		EXPENSES_TRAIN_RUN    = to_underlying(::ExpensesType::TrainRun), ///< Running costs trains.
+		EXPENSES_ROADVEH_RUN  = to_underlying(::ExpensesType::RoadVehRun), ///< Running costs road vehicles.
+		EXPENSES_AIRCRAFT_RUN = to_underlying(::ExpensesType::AircraftRun), ///< Running costs aircraft.
+		EXPENSES_SHIP_RUN     = to_underlying(::ExpensesType::ShipRun), ///< Running costs ships.
+		EXPENSES_PROPERTY     = to_underlying(::ExpensesType::Property), ///< Property costs.
+		EXPENSES_TRAIN_INC    = to_underlying(::ExpensesType::TrainRevenue), ///< Revenue from trains.
+		EXPENSES_ROADVEH_INC  = to_underlying(::ExpensesType::RoadVehRevenue), ///< Revenue from road vehicles.
+		EXPENSES_AIRCRAFT_INC = to_underlying(::ExpensesType::AircraftRevenue), ///< Revenue from aircraft.
+		EXPENSES_SHIP_INC     = to_underlying(::ExpensesType::ShipRevenue), ///< Revenue from ships.
+		EXPENSES_LOAN_INT     = to_underlying(::ExpensesType::LoanInterest), ///< Interest payments over the loan.
+		EXPENSES_OTHER        = to_underlying(::ExpensesType::Other), ///< Other expenses.
+		EXPENSES_INVALID      = to_underlying(::ExpensesType::Invalid), ///< Invalid expense type.
 	};
 
 	/**
@@ -450,6 +450,9 @@ public:
 	/**
 	 * Get primary colour of a livery for your company.
 	 * @param scheme Livery scheme to get.
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @pre scheme >= LS_DEFAULT.
+	 * @pre scheme <= LS_FREIGHT_TRAM.
 	 * @return Primary colour of livery.
 	 */
 	static ScriptCompany::Colours GetPrimaryLiveryColour(LiveryScheme scheme);
@@ -457,6 +460,9 @@ public:
 	/**
 	 * Get secondary colour of a livery for your company.
 	 * @param scheme Livery scheme to get.
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @pre scheme >= LS_DEFAULT.
+	 * @pre scheme <= LS_FREIGHT_TRAM.
 	 * @return Secondary colour of livery.
 	 */
 	static ScriptCompany::Colours GetSecondaryLiveryColour(LiveryScheme scheme);

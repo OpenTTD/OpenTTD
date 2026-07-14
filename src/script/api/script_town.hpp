@@ -98,25 +98,25 @@ public:
 	 */
 	enum RoadLayout {
 		/* Note: these values represent part of the in-game TownLayout enum */
-		ROAD_LAYOUT_ORIGINAL      = ::TL_ORIGINAL,     ///< Original algorithm (min. 1 distance between roads).
-		ROAD_LAYOUT_BETTER_ROADS  = ::TL_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
-		ROAD_LAYOUT_2x2           = ::TL_2X2_GRID,     ///< Geometric 2x2 grid algorithm
-		ROAD_LAYOUT_3x3           = ::TL_3X3_GRID,     ///< Geometric 3x3 grid algorithm
-		ROAD_LAYOUT_RANDOM        = ::TL_RANDOM,       ///< Random road layout
+		ROAD_LAYOUT_ORIGINAL = to_underlying(::TownLayout::Original), ///< Original algorithm (min. 1 distance between roads).
+		ROAD_LAYOUT_BETTER_ROADS = to_underlying(::TownLayout::BetterRoads), ///< Extended original algorithm (min. 2 distance between roads).
+		ROAD_LAYOUT_2x2 = to_underlying(::TownLayout::Grid2x2), ///< Geometric 2x2 grid algorithm
+		ROAD_LAYOUT_3x3 = to_underlying(::TownLayout::Grid3x3), ///< Geometric 3x3 grid algorithm
+		ROAD_LAYOUT_RANDOM = to_underlying(::TownLayout::Random), ///< Random road layout
 
 		/* Custom added value, only valid for this API */
-		ROAD_LAYOUT_INVALID       = -1,                ///< The layout for invalid towns.
+		ROAD_LAYOUT_INVALID = -1, ///< The layout for invalid towns.
 	};
 
 	/**
 	 * Possible town construction sizes.
 	 */
 	enum TownSize {
-		TOWN_SIZE_SMALL   = ::TSZ_SMALL,  ///< Small town.
-		TOWN_SIZE_MEDIUM  = ::TSZ_MEDIUM, ///< Medium town.
-		TOWN_SIZE_LARGE   = ::TSZ_LARGE,  ///< Large town.
+		TOWN_SIZE_SMALL = to_underlying(::TownSize::Small), ///< Small town.
+		TOWN_SIZE_MEDIUM = to_underlying(::TownSize::Medium), ///< Medium town.
+		TOWN_SIZE_LARGE = to_underlying(::TownSize::Large), ///< Large town.
 
-		TOWN_SIZE_INVALID = -1,  ///< Invalid town size.
+		TOWN_SIZE_INVALID = -1, ///< Invalid town size.
 	};
 
 	/**

@@ -53,8 +53,6 @@
 /* Name conflict */
 #define GetTime OTTD_GetTime
 
-#define SL_ERROR OSX_SL_ERROR
-
 /* NSInteger and NSUInteger are part of 10.5 and higher. */
 #ifndef NSInteger
 #ifdef __LP64__
@@ -74,7 +72,7 @@ typedef float CGFloat;
 #endif /* __LP64__ */
 #endif /* CGFLOAT_DEFINED */
 
-/* OS X has a non-const iconv. */
+/** OS X has a non-const iconv. */
 #define HAVE_NON_CONST_ICONV
 
 #endif /* MACOS_STDAFX_H */

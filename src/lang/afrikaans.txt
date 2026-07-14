@@ -1143,8 +1143,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Verstel die vla
 STR_CONFIG_SETTING_RECESSIONS                                   :Resessies: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :As dit geaktiveer is, kan resessie elke paar jaar voorkom. Gedurende 'n resessie word is vervaardiging drasties minder en aan die einde van die resessie word dit weer herstel na normale vlakke.
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Verhoed dat treine kan omdraai in stasies: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :As dit geaktiveer is, sal treine nie in deurstasies omdraai nie, selfs al is daar 'n korter roete deur om te draai.
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Rampe: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skakel rampe aan wat af en toe voertuie of infrastruktuur kan blokkeer of vernietig.
@@ -1320,6 +1320,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :As dit geaktive
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Outohernuwe voertuig as hy oud raak: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :As dit geaktiveer is, word 'n voertuig wat naby die einde van sy werkslewe kom outomaties vervang, wanneer die hernu voorwaardes vervul is.
@@ -1514,12 +1516,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vertoon verwagt
 STR_CONFIG_SETTING_QUICKGOTO                                    :Vinnige skepping van voertuig opdragte: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-selekteer die "gaan na wyser" wanneer die bevele venster oop gemaak word
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Verstek spoor tipe (na nuwe spel/spel laai): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Spoortipe om te kies wanneer 'n nuwe spel begin. 'Eers beskikbaar' kies die oudste tipe spoor, 'Laas beskikbaar' kies die nuutste tipe spoor, 'Meeste gebruik' kies die spoor wat die meeste in gebruik is.
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Eers beskikbaar
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laas beskikbaar
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meeste gebruik
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Wys spoorreserverings: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Wys gereserveerde spore in 'n ander kleur om te help wanneer treine nie die regte roetes kies nie
@@ -1611,6 +1608,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :As dit geaktive
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Laat wa spoed beperkings toe: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :As dit geaktiveer is bepaal die spoedbeperking van treinwaens ook die maksimum spoed van die hele trein
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiveer elektriese spore: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :As dit geaktiveerd is, is dit nie nodig om spore te elektrifiseer voordat elektriese treine die spore kan gebruik nie
@@ -1893,7 +1891,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... gaan
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoreer Basis Klank stel '{STRING}': nie gevind nie
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoreer Basis Musiek stel '{STRING}': nie gevind
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -2100,15 +2098,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Kl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} afgelaai tot dusver
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} afgelaai dusver
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Verbind tans...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Word tans geverifieer...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Wagtend...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Laai tans kaart af...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Data word tans verwerk...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registreer tans...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Spel inligting word verkry...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Maatskappy inligting word verkry...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Loskoppel
 
@@ -2378,6 +2374,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Perron l
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Kies treinstasie lengte
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Sleep & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bou 'n stasie gebruikend sleep & drop
+
+
 
 
 
@@ -3495,6 +3493,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. Tr
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Afstand: {GOLD}{COMMA} teëls
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Vliegtuig tipe: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3652,6 +3652,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}U staan
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Boodskap van voertuig fabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Ons het sopas 'n nuwe {STRING} ontwerp, sal jy belangstel om hierdie voertuig eksklusief vir 'n jaar te gebruik. Hierdie word gedoen om te kyk hoe die voertuig doen voordat hy wereld wyd in produksie gesit word?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :spoorweg lokomotief
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :geëlektrifiseerde spoorweglokomotief
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monospoor lokomotief
@@ -3796,7 +3797,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Massa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Wins hierdie jaar: {LTBLUE}{CURRENCY_LONG} (vorige jaar: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Hoeveel keer onklaar sedert laaste diens: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteit: {LTBLUE}Geen{STRING}
@@ -3918,7 +3918,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig data om sprong op te baseer
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Vrag persentasie
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betroubaarheid
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimum spoed
@@ -4286,7 +4286,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan nie 
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan nie dorp hernoem nie...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Dorp kan nie hier gebou word nie...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan nie dorp uitbrei...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te naby aan rand van kaart
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te naby aan 'n ander dorp
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel dorpe
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daar is nie meer spasie oor op die kaart nie

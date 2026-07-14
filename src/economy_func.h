@@ -22,10 +22,10 @@
 void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(Price price, int factor);
 
-extern const EnumClassIndexContainer<std::array<ScoreInfo, to_underlying(ScoreID::End)>, ScoreID> _score_info;
-extern TypedIndexContainer<std::array<EnumClassIndexContainer<std::array<int64_t, to_underlying(ScoreID::End)>, ScoreID>, MAX_COMPANIES>, CompanyID> _score_part;
+extern const EnumIndexArray<ScoreInfo, ScoreID, ScoreID::End> _score_info;
+extern TypedIndexContainer<std::array<EnumIndexArray<int64_t, ScoreID, ScoreID::End>, MAX_COMPANIES>, CompanyID> _score_part;
 extern Economy _economy;
-/* Prices and also the fractional part. */
+/** Prices and also the fractional part. */
 extern Prices _price;
 
 int UpdateCompanyRatingAndValue(Company *c, bool update);
@@ -78,7 +78,7 @@ static uint ScaleByInverseCargoScale(uint num, bool town)
 inline uint ScaleByCargoScale(uint num, bool town)
 {
 	/* Don't bother scaling in the menu, especially since settings don't exist when starting OpenTTD and trying to read them crashes the game. */
-	if (_game_mode == GM_MENU) return num;
+	if (_game_mode == GameMode::Menu) return num;
 
 	if (num == 0) return num;
 

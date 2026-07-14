@@ -31,22 +31,20 @@
 /* static */ void Game::GameLoop()
 {
 	if (_networking && !_network_server) {
-		PerformanceMeasurer::SetInactive(PFE_GAMESCRIPT);
+		PerformanceMeasurer::SetInactive(PerformanceElement::GameScript);
 		return;
 	}
 	if (Game::instance == nullptr) {
-		PerformanceMeasurer::SetInactive(PFE_GAMESCRIPT);
+		PerformanceMeasurer::SetInactive(PerformanceElement::GameScript);
 		return;
 	}
 
-	PerformanceMeasurer framerate(PFE_GAMESCRIPT);
+	PerformanceMeasurer framerate(PerformanceElement::GameScript);
 
 	Game::frame_counter++;
 
-	Backup<CompanyID> cur_company(_current_company);
-	cur_company.Change(OWNER_DEITY);
+	AutoRestoreBackup cur_company(_current_company, OWNER_DEITY);
 	Game::instance->GameLoop();
-	cur_company.Restore();
 
 	/* Occasionally collect garbage */
 	if ((Game::frame_counter & 255) == 0) {
@@ -74,19 +72,18 @@
 	if (Game::instance != nullptr) return;
 
 	/* Don't start GameScripts in intro */
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GameMode::Menu) return;
 
 	/* Clients shouldn't start GameScripts */
 	if (_networking && !_network_server) return;
 
-	GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
+	GameConfig *config = GameConfig::GetConfig(GameConfig::ScriptSettingSource::ForceCurrentGame);
 	GameInfo *info = config->GetInfo();
 	if (info == nullptr) return;
 
 	config->AnchorUnchangeableSettings();
 
-	Backup<CompanyID> cur_company(_current_company);
-	cur_company.Change(OWNER_DEITY);
+	AutoRestoreBackup cur_company(_current_company, OWNER_DEITY);
 
 	Game::info = info;
 	Game::instance = std::make_unique<GameInstance>();
@@ -94,9 +91,7 @@
 	Game::instance->LoadOnStack(config->GetToLoadData());
 	config->SetToLoadData(nullptr);
 
-	cur_company.Restore();
-
-	InvalidateWindowClassesData(WC_SCRIPT_DEBUG, -1);
+	InvalidateWindowClassesData(WindowClass::ScriptDebug, -1);
 }
 
 /* static */ void Game::Uninitialize(bool keepConfig)
@@ -148,9 +143,8 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyID> cur_company(_current_company, OWNER_DEITY);
+	AutoRestoreBackup cur_company(_current_company, OWNER_DEITY);
 	Game::instance->InsertEvent(event);
-	cur_company.Restore();
 }
 
 /* static */ void Game::ResetConfig()
@@ -182,19 +176,18 @@
 	Game::scanner_library->RescanDir();
 	ResetConfig();
 
-	InvalidateWindowData(WC_SCRIPT_LIST, 0, 1);
-	SetWindowClassesDirty(WC_SCRIPT_DEBUG);
-	InvalidateWindowClassesData(WC_SCRIPT_SETTINGS);
-	InvalidateWindowClassesData(WC_GAME_OPTIONS);
+	InvalidateWindowData(WindowClass::ScriptList, 0, 1);
+	SetWindowClassesDirty(WindowClass::ScriptDebug);
+	InvalidateWindowClassesData(WindowClass::ScriptSettings);
+	InvalidateWindowClassesData(WindowClass::GameOptions);
 }
 
 
 /* static */ void Game::Save()
 {
 	if (Game::instance != nullptr && (!_networking || _network_server)) {
-		Backup<CompanyID> cur_company(_current_company, OWNER_DEITY);
+		AutoRestoreBackup cur_company(_current_company, OWNER_DEITY);
 		Game::instance->Save();
-		cur_company.Restore();
 	} else {
 		GameInstance::SaveEmpty();
 	}
@@ -205,9 +198,9 @@
 	Game::scanner_info->GetConsoleList(output_iterator, newest_only);
 }
 
-/* static */ void Game::GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator)
+/* static */ void Game::GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only)
 {
-	Game::scanner_library->GetConsoleList(output_iterator, true);
+	Game::scanner_library->GetConsoleList(output_iterator, newest_only);
 }
 
 /* static */ const ScriptInfoList *Game::GetInfoList()
@@ -237,25 +230,40 @@
 }
 
 /**
- * Check whether we have an Game (library) with the exact characteristics as ci.
+ * Check whether we have an Game with the exact characteristics as ci.
  * @param ci the characteristics to search on (shortname and md5sum)
  * @param md5sum whether to check the MD5 checksum
- * @return true iff we have an Game (library) matching.
+ * @return true iff we have an Game matching.
  */
 /* static */ bool Game::HasGame(const ContentInfo &ci, bool md5sum)
 {
 	return Game::scanner_info->HasScript(ci, md5sum);
 }
 
+/**
+ * Check whether we have an Game library with the exact characteristics as ci.
+ * @param ci the characteristics to search on (shortname and md5sum)
+ * @param md5sum whether to check the MD5 checksum
+ * @return true iff we have an Game library matching.
+ */
 /* static */ bool Game::HasGameLibrary(const ContentInfo &ci, bool md5sum)
 {
 	return Game::scanner_library->HasScript(ci, md5sum);
 }
 
+/**
+ * Get the scanner info for Game scripts.
+ * @return The Game Script scanner info.
+ */
 /* static */ GameScannerInfo *Game::GetScannerInfo()
 {
 	return Game::scanner_info.get();
 }
+
+/**
+ * Get the scanner info for Game script libraries.
+ * @return The Game script library scanner info.
+ */
 /* static */ GameScannerLibrary *Game::GetScannerLibrary()
 {
 	return Game::scanner_library.get();

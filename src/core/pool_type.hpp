@@ -19,7 +19,10 @@ enum class PoolType : uint8_t {
 	NetworkAdmin, ///< Network admin pool.
 	Data, ///< NewGRF or other data, that is not reset together with normal pools.
 };
+
+/** Bitset of \c PoolType elements. */
 using PoolTypes = EnumBitSet<PoolType, uint8_t>;
+
 static constexpr PoolTypes PT_ALL = {PoolType::Normal, PoolType::NetworkClient, PoolType::NetworkAdmin, PoolType::Data};
 
 typedef std::vector<struct PoolBase *> PoolVector; ///< Vector of pointers to PoolBase
@@ -74,7 +77,7 @@ struct EMPTY_BASES PoolID : PoolIDBase {
 	constexpr bool operator==(const size_t &rhs) const { return this->value == rhs; }
 	constexpr auto operator<=>(const size_t &rhs) const { return this->value <=> rhs; }
 private:
-	/* Do not explicitly initialize. */
+	/** The bare storage. @warning Do not explicitly initialize. */
 	TBaseType value;
 };
 
@@ -108,6 +111,7 @@ struct PoolBase {
 		PoolBase::GetPools()->push_back(this);
 	}
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~PoolBase();
 
 	/**
@@ -119,6 +123,7 @@ private:
 	/**
 	 * Dummy private copy constructor to prevent compilers from
 	 * copying the structure, which fails due to GetPools().
+	 * @param other The pool not to copy from.
 	 */
 	PoolBase(const PoolBase &other);
 };
@@ -305,6 +310,7 @@ public:
 		/**
 		 * Marks Titem as free. Its memory is released
 		 * @param p memory to free
+		 * @param size The size that was allocated during allocation.
 		 * @note the item has to be allocated in the pool!
 		 */
 		inline void operator delete(void *p, size_t size)
@@ -324,7 +330,7 @@ public:
 
 		/**
 		 * Creates a new T-object in the associated pool.
-		 * @param args... The arguments to the constructor.
+		 * @param args The arguments to the constructor.
 		 * @return The created object.
 		 */
 		template <typename T = Titem, typename... Targs>
@@ -338,7 +344,7 @@ public:
 		/**
 		 * Creates a new T-object in the associated pool.
 		 * @param index The to allocate the object at.
-		 * @param args... The arguments to the constructor.
+		 * @param args The arguments to the constructor.
 		 * @return The created object.
 		 */
 		template <typename T = Titem, typename... Targs>

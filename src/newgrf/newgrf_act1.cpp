@@ -44,7 +44,7 @@ static void NewSpriteSet(ByteReader &buf)
 	}
 	uint16_t num_ents = buf.ReadExtendedByte();
 
-	if (feature >= GSF_END) {
+	if (feature >= GrfSpecFeature::End) {
 		_cur_gps.skip_sprites = num_sets * num_ents;
 		GrfMsg(1, "NewSpriteSet: Unsupported feature 0x{:02X}, skipping {} sprites", feature, _cur_gps.skip_sprites);
 		return;
@@ -81,9 +81,15 @@ static void SkipAct1(ByteReader &buf)
 	GrfMsg(3, "SkipAct1: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
+/** @copydoc GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x01>::FileScan(ByteReader &buf) { SkipAct1(buf); }
+/** @copydoc GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x01>::SafetyScan(ByteReader &buf) { SkipAct1(buf); }
+/** @copydoc GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x01>::LabelScan(ByteReader &buf) { SkipAct1(buf); }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x01>::Init(ByteReader &buf) { SkipAct1(buf); }
+/** @copydoc GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x01>::Reserve(ByteReader &buf) { SkipAct1(buf); }
+/** @copydoc GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x01>::Activation(ByteReader &buf) { NewSpriteSet(buf); }

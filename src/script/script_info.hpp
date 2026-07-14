@@ -31,101 +31,129 @@ class ScriptInfo : public SimpleCountedObject {
 public:
 	/**
 	 * Get the Author of the script.
+	 * @return The author's name.
 	 */
 	const std::string &GetAuthor() const { return this->author; }
 
 	/**
 	 * Get the Name of the script.
+	 * @return The script's name.
 	 */
 	const std::string &GetName() const { return this->name; }
 
 	/**
 	 * Get the 4 character long short name of the script.
+	 * @return The short name.
 	 */
 	const std::string &GetShortName() const { return this->short_name; }
 
 	/**
 	 * Get the description of the script.
+	 * @return The description.
 	 */
 	const std::string &GetDescription() const { return this->description; }
 
 	/**
 	 * Get the version of the script.
+	 * @return The numeric versionof the script.
 	 */
 	int GetVersion() const { return this->version; }
 
 	/**
 	 * Get the last-modified date of the script.
+	 * @return The date.
 	 */
 	const std::string &GetDate() const { return this->date; }
 
 	/**
 	 * Get the name of the instance of the script to create.
+	 * @return Name of the instance.
 	 */
 	const std::string &GetInstanceName() const { return this->instance_name; }
 
 	/**
 	 * Get the website for this script.
+	 * @return Optional URL.
 	 */
 	const std::string &GetURL() const { return this->url; }
 
 	/**
 	 * Get the filename of the main.nut script.
+	 * @return The path to the main script.
 	 */
 	const std::string &GetMainScript() const { return this->main_script; }
 
 	/**
 	 * Get the filename of the tar the script is in.
+	 * @return The tar file the script is in, or an empty string.
 	 */
 	const std::string &GetTarFile() const { return this->tar_file; }
 
 	/**
 	 * Check if a given method exists.
+	 * @param name The method name to look for.
+	 * @return \c true iff the method exists.
 	 */
 	bool CheckMethod(std::string_view name) const;
 
 	/**
 	 * Process the creation of a FileInfo object.
+	 * @param vm The virtual machine to work on.
+	 * @param info The metadata about the script.
+	 * @return \c 0 upon success, or anything other on failure.
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm, ScriptInfo &info);
 
 	/**
 	 * Get the scanner which has found this ScriptInfo.
+	 * @return The scanner for scripts.
 	 */
 	virtual class ScriptScanner *GetScanner() { return this->scanner; }
 
 	/**
-	 * Get the settings of the Script.
+	 * Does this script have a 'GetSettings' function?
+	 * @return \c true iff the script has the GetSettings function.
 	 */
 	bool GetSettings();
 
 	/**
 	 * Get the config list for this Script.
+	 * @return The configuration list.
 	 */
 	const ScriptConfigItemList *GetConfigList() const;
 
 	/**
 	 * Get the description of a certain Script config option.
+	 * @param name The name of the setting.
+	 * @return The configuration item, or \c nullptr.
 	 */
 	const ScriptConfigItem *GetConfigItem(std::string_view name) const;
 
 	/**
-	 * Set a setting.
+	 * Add a setting.
+	 * @param vm The virtual machine to work on.
+	 * @return \c 0 upon success, or anything other on failure.
 	 */
 	SQInteger AddSetting(HSQUIRRELVM vm);
 
 	/**
 	 * Add labels for a setting.
+	 * @param vm The virtual machine to work on.
+	 * @return \c 0 upon success, or anything other on failure.
 	 */
 	SQInteger AddLabels(HSQUIRRELVM vm);
 
 	/**
 	 * Get the default value for a setting.
+	 * @param name The name of the setting to get the default for.
+	 * @return The default value for the setting, or \c -1 when the setting does not exist.
+	 * @note \c -1 can be a valid default setting.
 	 */
 	int GetSettingDefaultValue(const std::string &name) const;
 
 	/**
 	 * Can this script be selected by developers only?
+	 * @return \c true iff the script should only be shown to script developers.
 	 */
 	virtual bool IsDeveloperOnly() const { return false; }
 

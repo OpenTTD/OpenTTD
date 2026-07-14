@@ -49,7 +49,7 @@ protected:
 	std::string CreateFileName(std::string_view ext, bool with_dir = true) const;
 
 public:
-	/** Stub destructor to silence some compilers. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~CrashLog() = default;
 
 	nlohmann::json survey;

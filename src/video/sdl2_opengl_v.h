@@ -12,6 +12,7 @@
 /** The OpenGL video driver for windows. */
 class VideoDriver_SDL_OpenGL : public VideoDriver_SDL_Base {
 public:
+	/** Create the driver. */
 	VideoDriver_SDL_OpenGL() : VideoDriver_SDL_Base(true), gl_context(nullptr), anim_buffer(nullptr) {}
 
 	std::optional<std::string_view> Start(const StringList &param) override;
@@ -51,8 +52,9 @@ private:
 /** The factory for SDL' OpenGL video driver. */
 class FVideoDriver_SDL_OpenGL : public DriverFactoryBase {
 public:
-	FVideoDriver_SDL_OpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 8, "sdl-opengl", "SDL OpenGL Video Driver") {}
-	/* virtual */ std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_SDL_OpenGL>(); }
+	/** Create the factory. */
+	FVideoDriver_SDL_OpenGL() : DriverFactoryBase(Driver::Type::Video, 8, "sdl-opengl", "SDL OpenGL Video Driver") {}
+	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_SDL_OpenGL>(); }
 
 protected:
 	bool UsesHardwareAcceleration() const override { return true; }

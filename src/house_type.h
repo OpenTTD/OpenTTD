@@ -19,14 +19,16 @@ struct HouseSpec;
 
 /** Randomisation triggers for houses */
 enum class HouseRandomTrigger : uint8_t {
-	/* The tile of the house has been triggered during the tileloop. */
+	/** The tile of the house has been triggered during the tileloop. */
 	TileLoop,
-	/*
+	/**
 	 * The top tile of a (multitile) building has been triggered during and all
 	 * the tileloop other tiles of the same building get the same random value.
 	 */
 	TileLoopNorth,
 };
+
+/** Bitset of \c HouseRandomTrigger elements. */
 using HouseRandomTriggers = EnumBitSet<HouseRandomTrigger, uint8_t>;
 
 #endif /* HOUSE_TYPE_H */

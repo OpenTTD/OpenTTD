@@ -137,18 +137,30 @@ NetworkError GetSocketError(SOCKET d);
 static_assert(sizeof(in_addr)  ==  4); ///< IPv4 addresses should be 4 bytes.
 static_assert(sizeof(in6_addr) == 16); ///< IPv6 addresses should be 16 bytes.
 
+/** Helper for #Packet::TransferOut that writes data to a socket. */
 struct SocketSender {
-	SOCKET sock;
+	SOCKET sock; ///< The socket we're sending data to.
 
+	/**
+	 * Write the buffer to the socket.
+	 * @param buffer The buffer to write.
+	 * @return The number of elements/bytes that were written, or -1 upon an error.
+	 */
 	ssize_t operator()(std::span<const uint8_t> buffer)
 	{
 		return send(this->sock, reinterpret_cast<const char *>(buffer.data()), static_cast<int>(buffer.size()), 0);
 	}
 };
 
+/** Helper for #Packet::TransferIn that reads data from a socket. */
 struct SocketReceiver {
-	SOCKET sock;
+	SOCKET sock; ///< The socket we're receiving data from.
 
+	/**
+	 * Read data from the socket into the buffer.
+	 * @param buffer The buffer to read into.
+	 * @return The number of elements/bytes that were read, or -1 upon an error.
+	 */
 	ssize_t operator()(std::span<uint8_t> buffer)
 	{
 		return recv(this->sock, reinterpret_cast<char *>(buffer.data()), static_cast<int>(buffer.size()), 0);

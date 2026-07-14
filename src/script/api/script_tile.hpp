@@ -100,10 +100,10 @@ public:
 	 */
 	enum TransportType {
 		/* Note: these values represent part of the in-game TransportType enum */
-		TRANSPORT_RAIL    =  ::TRANSPORT_RAIL,  ///< Tile with rail.
-		TRANSPORT_ROAD    =  ::TRANSPORT_ROAD,  ///< Tile with road.
-		TRANSPORT_WATER   =  ::TRANSPORT_WATER, ///< Tile with navigable waterways.
-		TRANSPORT_AIR     =  ::TRANSPORT_AIR,   ///< Tile with airport.
+		TRANSPORT_RAIL = to_underlying(::TransportType::Rail), ///< Tile with rail.
+		TRANSPORT_ROAD = to_underlying(::TransportType::Road), ///< Tile with road.
+		TRANSPORT_WATER = to_underlying(::TransportType::Water), ///< Tile with navigable waterways.
+		TRANSPORT_AIR = to_underlying(::TransportType::Air), ///< Tile with airport.
 
 		/* Custom added value, only valid for this API */
 		TRANSPORT_INVALID = -1, ///< Tile without any transport type.
@@ -157,8 +157,8 @@ public:
 	 * @param width The width of the rectangle.
 	 * @param height The height of the rectangle.
 	 * @pre ScriptMap::IsValidTile(tile).
-	 * @pre width >= 0.
-	 * @pre height >= 0.
+	 * @pre width > 0.
+	 * @pre height > 0.
 	 * @return True if it is buildable, false if not.
 	 */
 	static bool IsBuildableRectangle(TileIndex tile, SQInteger width, SQInteger height);

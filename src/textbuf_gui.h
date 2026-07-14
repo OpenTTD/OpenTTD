@@ -22,6 +22,7 @@ enum class QueryStringFlag : uint8_t {
 	EnableMove, ///< enable the 'Move' button
 };
 
+/** Bitset of \c QueryStringFlag elements. */
 using QueryStringFlags = EnumBitSet<QueryStringFlag, uint8_t>;
 
 /** Callback procedure for the ShowQuery method. */

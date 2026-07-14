@@ -50,5 +50,5 @@ static NewsReference CreateReference(ScriptNews::NewsReferenceType ref_type, SQI
 
 	::CompanyID c = ScriptCompany::FromScriptCompanyID(company);
 
-	return ScriptObject::Command<CMD_CUSTOM_NEWS_ITEM>::Do((::NewsType)type, c, CreateReference(ref_type, reference), encoded);
+	return ScriptObject::Command<Commands::CreateCustomNewsItem>::Do((::NewsType)type, c, CreateReference(ref_type, reference), encoded);
 }

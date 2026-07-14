@@ -23,7 +23,7 @@ DepotPool _depot_pool("Depot");
 INSTANTIATE_POOL_METHODS(Depot)
 
 /**
- * Clean up a depot
+ * Remove any references to this depot.
  */
 Depot::~Depot()
 {
@@ -41,9 +41,9 @@ Depot::~Depot()
 	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->index);
 
 	/* Delete the depot-window */
-	CloseWindowById(WC_VEHICLE_DEPOT, this->xy);
+	CloseWindowById(WindowClass::VehicleDepot, this->xy);
 
 	/* Delete the depot list */
 	VehicleType vt = GetDepotVehicleType(this->xy);
-	CloseWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(this->xy), this->index).ToWindowNumber());
+	CloseWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VehicleListType::Depot, vt, GetTileOwner(this->xy), this->index).ToWindowNumber());
 }

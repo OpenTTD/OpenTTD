@@ -16,18 +16,18 @@
 #include "../safeguards.h"
 
 static const SaveLoad _league_table_elements_desc[] = {
-	    SLE_VAR(LeagueTableElement, table,       SLE_UINT8),
-	SLE_CONDVAR(LeagueTableElement, rating,      SLE_FILE_U64 | SLE_VAR_I64, SL_MIN_VERSION, SLV_LINKGRAPH_EDGES),
-	SLE_CONDVAR(LeagueTableElement, rating,      SLE_INT64,                  SLV_LINKGRAPH_EDGES, SL_MAX_VERSION),
-	    SLE_VAR(LeagueTableElement, company,     SLE_UINT8),
-	   SLE_SSTR(LeagueTableElement, text,        SLE_STR | SLF_ALLOW_CONTROL),
-	   SLE_SSTR(LeagueTableElement, score,       SLE_STR | SLF_ALLOW_CONTROL),
-	    SLE_VAR(LeagueTableElement, link.type,   SLE_UINT8),
-	    SLE_VAR(LeagueTableElement, link.target, SLE_UINT32),
+	    SLE_VAR(LeagueTableElement, table,       VarTypes::U8),
+	SLE_CONDVAR(LeagueTableElement, rating, VarFileType::U64 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
+	SLE_CONDVAR(LeagueTableElement, rating, VarTypes::I64, SaveLoadVersion::LinkgraphEdges, SaveLoadVersion::MaxVersion),
+	    SLE_VAR(LeagueTableElement, company,     VarTypes::U8),
+	   SLE_SSTR(LeagueTableElement, text,        VarTypes::STR | StringValidationSetting::AllowControlCode),
+	   SLE_SSTR(LeagueTableElement, score,       VarTypes::STR | StringValidationSetting::AllowControlCode),
+	    SLE_VAR(LeagueTableElement, link.type,   VarTypes::U8),
+	    SLE_VAR(LeagueTableElement, link.target, VarTypes::U32),
 };
 
 struct LEAEChunkHandler : ChunkHandler {
-	LEAEChunkHandler() : ChunkHandler('LEAE', CH_TABLE) {}
+	LEAEChunkHandler() : ChunkHandler("LEAE", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -52,13 +52,13 @@ struct LEAEChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _league_tables_desc[] = {
-	SLE_SSTR(LeagueTable, title, SLE_STR | SLF_ALLOW_CONTROL),
-	SLE_SSTR(LeagueTable, header, SLE_STR | SLF_ALLOW_CONTROL),
-	SLE_SSTR(LeagueTable, footer, SLE_STR | SLF_ALLOW_CONTROL),
+	SLE_SSTR(LeagueTable, title, VarTypes::STR | StringValidationSetting::AllowControlCode),
+	SLE_SSTR(LeagueTable, header, VarTypes::STR | StringValidationSetting::AllowControlCode),
+	SLE_SSTR(LeagueTable, footer, VarTypes::STR | StringValidationSetting::AllowControlCode),
 };
 
 struct LEATChunkHandler : ChunkHandler {
-	LEATChunkHandler() : ChunkHandler('LEAT', CH_TABLE) {}
+	LEATChunkHandler() : ChunkHandler("LEAT", ChunkType::Table) {}
 
 	void Save() const override
 	{

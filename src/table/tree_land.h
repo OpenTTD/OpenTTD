@@ -13,12 +13,7 @@
 static const uint8_t _tree_base_by_landscape[4] = {0, 12, 20, 32};
 static const uint8_t _tree_count_by_landscape[4] = {12, 8, 12, 9};
 
-struct TreePos {
-	uint8_t x;
-	uint8_t y;
-};
-
-static const TreePos _tree_layout_xy[][4] = {
+static const Coord2D<uint8_t> _tree_layout_xy[][4] = {
 	{ { 9, 3 }, { 1, 8 }, { 0, 0 }, { 8, 9 } },
 	{ { 4, 4 }, { 9, 1 }, { 6, 9 }, { 0, 9 } },
 	{ { 9, 1 }, { 0, 9 }, { 6, 6 }, { 3, 0 } },

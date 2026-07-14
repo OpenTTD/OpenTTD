@@ -62,14 +62,14 @@ struct WaterRegionNode : CYapfNodeT<WaterRegionPatchKey, WaterRegionNode> {
 
 	DiagDirection GetDiagDirFromParent() const
 	{
-		if (this->parent == nullptr) return INVALID_DIAGDIR;
+		if (this->parent == nullptr) return DiagDirection::Invalid;
 		const int dx = this->key.water_region_patch.x - this->parent->key.water_region_patch.x;
 		const int dy = this->key.water_region_patch.y - this->parent->key.water_region_patch.y;
-		if (dx > 0 && dy == 0) return DIAGDIR_SW;
-		if (dx < 0 && dy == 0) return DIAGDIR_NE;
-		if (dx == 0 && dy > 0) return DIAGDIR_SE;
-		if (dx == 0 && dy < 0) return DIAGDIR_NW;
-		return INVALID_DIAGDIR;
+		if (dx > 0 && dy == 0) return DiagDirection::SW;
+		if (dx < 0 && dy == 0) return DiagDirection::NE;
+		if (dx == 0 && dy > 0) return DiagDirection::SE;
+		if (dx == 0 && dy < 0) return DiagDirection::NW;
+		return DiagDirection::Invalid;
 	}
 };
 
@@ -80,7 +80,7 @@ struct WaterRegionFollower : public CFollowTrackWater {};
 
 class YapfShipRegions;
 
-/* Types struct required for YAPF internals. */
+/** Types struct required for YAPF internals. */
 struct WaterRegionTypes {
 	using Tpf = YapfShipRegions;
 	using TrackFollower = WaterRegionFollower;
@@ -131,6 +131,7 @@ public:
 		this->dest.Set(water_region_patch);
 	}
 
+	/** @copydoc CYapfBaseT::PfFollowNodeFunc */
 	inline void PfFollowNode(Node &old_node)
 	{
 		VisitWaterRegionPatchCallback visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
@@ -141,12 +142,14 @@ public:
 		VisitWaterRegionPatchNeighbours(old_node.key.water_region_patch, visit_func);
 	}
 
+	/** @copydoc CYapfBaseT::PfDetectDestinationFunc */
 	inline bool PfDetectDestination(Node &n) const
 	{
 		return n.key == this->dest;
 	}
 
-	inline bool PfCalcCost(Node &n, const TrackFollower *)
+	/** @copydoc CYapfBaseT::PfCalcCostFunc */
+	inline bool PfCalcCost(Node &n, [[maybe_unused]] const TrackFollower *follower)
 	{
 		n.cost = n.parent->cost + ManhattanDistance(n.key, n.parent->key);
 
@@ -154,12 +157,13 @@ public:
 		Node *grandparent = n.parent->parent;
 		if (grandparent != nullptr) {
 			const DiagDirDiff dir_diff = DiagDirDifference(n.parent->GetDiagDirFromParent(), n.GetDiagDirFromParent());
-			if (dir_diff != DIAGDIRDIFF_90LEFT && dir_diff != DIAGDIRDIFF_90RIGHT) n.cost += 1;
+			if (dir_diff != DiagDirDiff::Left90 && dir_diff != DiagDirDiff::Right90) n.cost += 1;
 		}
 
 		return true;
 	}
 
+	/** @copydoc CYapfBaseT::PfCalcEstimateFunc */
 	inline bool PfCalcEstimate(Node &n)
 	{
 		if (this->PfDetectDestination(n)) {
@@ -172,8 +176,10 @@ public:
 		return true;
 	}
 
+	/** @copydoc CYapfBaseT::TransportTypeCharFunc */
 	inline char TransportTypeChar() const { return '^'; }
 
+	/** @copydoc YapfShipFindWaterRegionPath */
 	static std::vector<WaterRegionPatchDesc> FindWaterRegionPath(const Ship *v, TileIndex start_tile, int max_returned_path_length)
 	{
 		const WaterRegionPatchDesc start_water_region_patch = GetWaterRegionPatchInfo(start_tile);

@@ -35,7 +35,7 @@
  */
 static const uint MAX_HEIGHTMAP_SIDE_LENGTH_IN_PIXELS = 2 * MAX_MAP_SIZE;
 
-/*
+/**
  * Maximum size in pixels of the heightmap image.
  */
 static const uint MAX_HEIGHTMAP_SIZE_PIXELS = 256 << 20; // ~256 million
@@ -65,6 +65,10 @@ static inline bool IsValidHeightmapDimension(size_t width, size_t height)
 /**
  * Convert RGB colours to Greyscale using 29.9% Red, 58.7% Green, 11.4% Blue
  *  (average luminosity formula, NTSC Colour Space)
+ * @param red The red component of a colour.
+ * @param green The green component of a colour.
+ * @param blue The blue component of a colour.
+ * @return The greyscale conversion of a colour.
  */
 static inline uint8_t RGBToGreyscale(uint8_t red, uint8_t green, uint8_t blue)
 {
@@ -78,6 +82,9 @@ static inline uint8_t RGBToGreyscale(uint8_t red, uint8_t green, uint8_t blue)
 
 /**
  * The PNG Heightmap loader.
+ * @param map The map to write data to.
+ * @param png_ptr The PNG file to load.
+ * @param info_ptr Metadata about the loaded PNG.
  */
 static void ReadHeightmapPNGImageData(std::span<uint8_t> map, png_structp png_ptr, png_infop info_ptr)
 {
@@ -137,27 +144,32 @@ static void ReadHeightmapPNGImageData(std::span<uint8_t> map, png_structp png_pt
  * Reads the heightmap and/or size of the heightmap from a PNG file.
  * If map == nullptr only the size of the PNG is read, otherwise a map
  * with greyscale pixels is allocated and assigned to *map.
+ * @param filename Name of the file to load.
+ * @param[out] x Length of the image.
+ * @param[out] y Height of the image.
+ * @param[in,out] map If not \c nullptr, destination to store the loaded block of image data.
+ * @return Whether loading was successful.
  */
 static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
 	png_structp png_ptr = nullptr;
 	png_infop info_ptr  = nullptr;
 
-	auto fp = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
+	auto fp = FioFOpenFile(filename, "rb", Subdirectory::Heightmap);
 	if (!fp.has_value()) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WarningLevel::Error);
 		return false;
 	}
 
 	png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
 	if (png_ptr == nullptr) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_MISC), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_MISC), WarningLevel::Error);
 		return false;
 	}
 
 	info_ptr = png_create_info_struct(png_ptr);
 	if (info_ptr == nullptr || setjmp(png_jmpbuf(png_ptr))) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_MISC), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_MISC), WarningLevel::Error);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
@@ -172,7 +184,7 @@ static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::v
 	/* Maps of wrong colour-depth are not used.
 	 * (this should have been taken care of by stripping alpha and 16-bit samples on load) */
 	if ((png_get_channels(png_ptr, info_ptr) != 1) && (png_get_channels(png_ptr, info_ptr) != 3) && (png_get_bit_depth(png_ptr, info_ptr) != 8)) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_IMAGE_TYPE), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_PNGMAP_IMAGE_TYPE), WarningLevel::Error);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
@@ -181,7 +193,7 @@ static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::v
 	uint height = png_get_image_height(png_ptr, info_ptr);
 
 	if (!IsValidHeightmapDimension(width, height)) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_HEIGHTMAP_TOO_LARGE), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_PNGMAP), GetEncodedString(STR_ERROR_HEIGHTMAP_TOO_LARGE), WarningLevel::Error);
 		png_destroy_read_struct(&png_ptr, &info_ptr, nullptr);
 		return false;
 	}
@@ -203,6 +215,9 @@ static bool ReadHeightmapPNG(std::string_view filename, uint *x, uint *y, std::v
 
 /**
  * The BMP Heightmap loader.
+ * @param map The image to load into.
+ * @param info Metadata about the image.
+ * @param data The actual BMP data.
  */
 static void ReadHeightmapBMPImageData(std::span<uint8_t> map, const BmpInfo &info, const BmpData &data)
 {
@@ -258,32 +273,37 @@ static void ReadHeightmapBMPImageData(std::span<uint8_t> map, const BmpInfo &inf
  * Reads the heightmap and/or size of the heightmap from a BMP file.
  * If map == nullptr only the size of the BMP is read, otherwise a map
  * with greyscale pixels is allocated and assigned to *map.
+ * @param filename Name of the file to load.
+ * @param[out] x Length of the image.
+ * @param[out] y Height of the image.
+ * @param[in,out] map If not \c nullptr, destination to store the loaded block of image data.
+ * @return Whether loading was successful.
  */
 static bool ReadHeightmapBMP(std::string_view filename, uint *x, uint *y, std::vector<uint8_t> *map)
 {
-	auto f = FioFOpenFile(filename, "rb", HEIGHTMAP_DIR);
+	auto f = FioFOpenFile(filename, "rb", Subdirectory::Heightmap);
 	if (!f.has_value()) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_PNGMAP_FILE_NOT_FOUND), WarningLevel::Error);
 		return false;
 	}
 
-	RandomAccessFile file(filename, HEIGHTMAP_DIR);
+	RandomAccessFile file(filename, Subdirectory::Heightmap);
 	BmpInfo info{};
 	BmpData data{};
 
 	if (!BmpReadHeader(file, info, data)) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_BMPMAP_IMAGE_TYPE), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_BMPMAP_IMAGE_TYPE), WarningLevel::Error);
 		return false;
 	}
 
 	if (!IsValidHeightmapDimension(info.width, info.height)) {
-		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_HEIGHTMAP_TOO_LARGE), WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_HEIGHTMAP_TOO_LARGE), WarningLevel::Error);
 		return false;
 	}
 
 	if (map != nullptr) {
 		if (!BmpReadBitmap(file, info, data)) {
-			ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_BMPMAP_IMAGE_TYPE), WL_ERROR);
+			ShowErrorMessage(GetEncodedString(STR_ERROR_BMPMAP), GetEncodedString(STR_ERROR_BMPMAP_IMAGE_TYPE), WarningLevel::Error);
 			return false;
 		}
 
@@ -390,7 +410,7 @@ static void GreyscaleToMapHeights(uint img_width, uint img_height, std::span<con
 			}
 			/* Only clear the tiles within the map area. */
 			if (IsInnerTile(tile)) {
-				MakeClear(tile, CLEAR_GRASS, 3);
+				MakeClear(tile, ClearGround::Grass, 3);
 			}
 		}
 	}
@@ -433,7 +453,7 @@ void FixSlopes()
 				/* Height was changed so now there's a chance, more likely at higher altitude, of the
 				 * tile turning into rock. */
 				if (IsInnerTile(tile) && RandomRange(max_height) <= current_height) {
-					MakeClear(tile, CLEAR_ROCKS, 3);
+					MakeClear(tile, ClearGround::Rocks, 3);
 				}
 			}
 		}
@@ -462,7 +482,7 @@ void FixSlopes()
 				/* Height was changed so now there's a chance, more likely at higher altitude, of the
 				 * tile turning into rock. */
 				if (IsInnerTile(tile) && RandomRange(max_height) <= current_height) {
-					MakeClear(tile, CLEAR_ROCKS, 3);
+					MakeClear(tile, ClearGround::Rocks, 3);
 				}
 			}
 		}
@@ -485,11 +505,11 @@ static bool ReadHeightMap(DetailedFileType dft, std::string_view filename, uint 
 			NOT_REACHED();
 
 #ifdef WITH_PNG
-		case DFT_HEIGHTMAP_PNG:
+		case DetailedFileType::HeightmapPng:
 			return ReadHeightmapPNG(filename, x, y, map);
 #endif /* WITH_PNG */
 
-		case DFT_HEIGHTMAP_BMP:
+		case DetailedFileType::HeightmapBmp:
 			return ReadHeightmapBMP(filename, x, y, map);
 	}
 }
@@ -512,7 +532,8 @@ bool GetHeightmapDimensions(DetailedFileType dft, std::string_view filename, uin
  *  to a landscape representing the heightmap.
  * It converts pixels to height. The brighter, the higher.
  * @param dft Type of image file.
- * @param filename of the heightmap file to be imported
+ * @param filename of the heightmap file to be imported.
+ * @return \c true iff the heightmap could be loaded.
  */
 bool LoadHeightmap(DetailedFileType dft, std::string_view filename)
 {

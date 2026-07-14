@@ -44,10 +44,14 @@ typedef bool (ScriptAsyncModeProc)();
 class SimpleCountedObject {
 public:
 	SimpleCountedObject() : ref_count(0) {}
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SimpleCountedObject() = default;
 
+	/** Increase the reference count by one. */
 	inline void AddRef() { ++this->ref_count; }
+	/** Decrease the reference count by one. Once zero call FinaleRelease and then destruct the object. */
 	void Release();
+	/** Called during Release, so the object can throw exceptions (you cannot in destructors). */
 	virtual void FinalRelease() {};
 
 private:
@@ -352,7 +356,10 @@ private:
 };
 
 namespace ScriptObjectInternal {
-	/** Validate a single string argument coming from network. */
+	/**
+	 * Validate a single string argument coming from a script.
+	 * @param data The data to validate.
+	 */
 	template <class T>
 	static inline void SanitizeSingleStringHelper(T &data)
 	{
@@ -363,23 +370,32 @@ namespace ScriptObjectInternal {
 		}
 	}
 
-	/** Helper function to perform validation on command data strings. */
+	/**
+	 * Helper function to perform validation on command data strings.
+	 * @param values The data to validate.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	static inline void SanitizeStringsHelper(Ttuple &values, std::index_sequence<Tindices...>)
 	{
 		((SanitizeSingleStringHelper(std::get<Tindices>(values))), ...);
 	}
 
-	/** Helper to process a single ClientID argument. */
+	/**
+	 * Helper to process a single ClientID argument.
+	 * @param data The data to process.
+	 */
 	template <class T>
 	static inline void SetClientIdHelper(T &data)
 	{
 		if constexpr (std::is_same_v<ClientID, T>) {
-			if (data == INVALID_CLIENT_ID) data = (ClientID)UINT32_MAX;
+			if (data == ClientID::Invalid) data = static_cast<ClientID>(UINT32_MAX);
 		}
 	}
 
-	/** Set all invalid ClientID's to the proper value. */
+	/**
+	 * Set all invalid ClientIDs to the proper value.
+	 * @param values The values to go through.
+	 */
 	template <class Ttuple, size_t... Tindices>
 	static inline void SetClientIds(Ttuple &values, std::index_sequence<Tindices...>)
 	{
@@ -425,7 +441,7 @@ bool ScriptObject::ScriptDoCommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...)
 		return ScriptObject::DoCommandProcessResult(res, callback, estimate_only, asynchronous);
 	} else {
 		ScriptObject::SetLastCommandResData(EndianBufferWriter<CommandDataBuffer>::FromValue(ScriptObjectInternal::RemoveFirstTupleElement(res)));
-		return ScriptObject::DoCommandProcessResult(std::get<0>(res), callback, estimate_only, asynchronous);
+		return ScriptObject::DoCommandProcessResult(ExtractCommandCost(res), callback, estimate_only, asynchronous);
 	}
 }
 

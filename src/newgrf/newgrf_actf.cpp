@@ -17,7 +17,10 @@
 
 #include "../safeguards.h"
 
-/** Action 0x0F - Define Town names */
+/**
+ * Action 0x0F - Define Town names.
+ * @param buf Reader of the NewGRF.
+ */
 static void FeatureTownName(ByteReader &buf)
 {
 	/* <0F> <id> <style-name> <num-parts> <parts>
@@ -27,7 +30,7 @@ static void FeatureTownName(ByteReader &buf)
 	 * B num-parts   Number of parts in this definition
 	 * V parts       The parts */
 
-	uint32_t grfid = _cur_gps.grffile->grfid;
+	GrfID grfid = _cur_gps.grffile->grfid;
 
 	GRFTownName *townname = AddGRFTownName(grfid);
 
@@ -47,8 +50,7 @@ static void FeatureTownName(ByteReader &buf)
 
 			std::string_view name = buf.ReadString();
 
-			std::string lang_name = TranslateTTDPatchCodes(grfid, lang, false, name);
-			GrfMsg(6, "FeatureTownName: lang 0x{:X} -> '{}'", lang, lang_name);
+			GrfMsg(6, "FeatureTownName: lang 0x{:X} (new_scheme: {}) -> '{}'", lang, new_scheme, TranslateTTDPatchCodes(grfid, GRFLanguage::Fallback, false, name));
 
 			style = AddGRFString(grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 
@@ -86,7 +88,7 @@ static void FeatureTownName(ByteReader &buf)
 				GrfMsg(6, "FeatureTownName: part {}, text {}, uses intermediate definition 0x{:02X} (with probability {})", partnum, textnum, ref_id, part.prob & 0x7F);
 			} else {
 				std::string_view text = buf.ReadString();
-				part.text = TranslateTTDPatchCodes(grfid, 0, false, text);
+				part.text = TranslateTTDPatchCodes(grfid, GRFLanguage::Fallback, false, text);
 				GrfMsg(6, "FeatureTownName: part {}, text {}, '{}' (with probability {})", partnum, textnum, part.text, part.prob);
 			}
 			partlist.maxprob += GB(part.prob, 0, 7);
@@ -95,9 +97,15 @@ static void FeatureTownName(ByteReader &buf)
 	}
 }
 
+/** @copybrief GrfActionHandler::FileScan */
 template <> void GrfActionHandler<0x0F>::FileScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::SafetyScan */
 template <> void GrfActionHandler<0x0F>::SafetyScan(ByteReader &buf) { GRFUnsafe(buf); }
+/** @copybrief GrfActionHandler::LabelScan */
 template <> void GrfActionHandler<0x0F>::LabelScan(ByteReader &) { }
+/** @copydoc GrfActionHandler::Init */
 template <> void GrfActionHandler<0x0F>::Init(ByteReader &buf) { FeatureTownName(buf); }
+/** @copybrief GrfActionHandler::Reserve */
 template <> void GrfActionHandler<0x0F>::Reserve(ByteReader &) { }
+/** @copybrief GrfActionHandler::Activation */
 template <> void GrfActionHandler<0x0F>::Activation(ByteReader &) { }

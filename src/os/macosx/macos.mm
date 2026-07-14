@@ -26,29 +26,13 @@ static NSAutoreleasePool *_ottd_autorelease_pool;
 #endif
 
 /**
- * Get the version of the MacOS we are running under. Code adopted
- * from http://www.cocoadev.com/index.pl?DeterminingOSVersion
- * @param return_major major version of the os. This would be 10 in the case of 10.4.11
- * @param return_minor minor version of the os. This would be 4 in the case of 10.4.11
- * @param return_bugfix bugfix version of the os. This would be 11 in the case of 10.4.11
- * A return value of -1 indicates that something went wrong and we don't know.
+ * Get the version of the MacOS we are running under.
+ * @return Tuple with major, minor and patch of the MacOS version.
  */
-void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
+std::tuple<int, int, int> GetMacOSVersion()
 {
-	*return_major = -1;
-	*return_minor = -1;
-	*return_bugfix = -1;
-
-	if ([[ NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion) ]) {
-		IMP sel = [ [ NSProcessInfo processInfo] methodForSelector:@selector(operatingSystemVersion) ];
-		NSOperatingSystemVersion ver = ((NSOperatingSystemVersion (*)(id, SEL))sel)([ NSProcessInfo processInfo], @selector(operatingSystemVersion));
-
-		*return_major = (int)ver.majorVersion;
-		*return_minor = (int)ver.minorVersion;
-		*return_bugfix = (int)ver.patchVersion;
-
-		return;
-	}
+	NSOperatingSystemVersion ver = [ [ NSProcessInfo processInfo ] operatingSystemVersion ];
+	return { static_cast<int>(ver.majorVersion), static_cast<int>(ver.minorVersion), static_cast<int>(ver.patchVersion) };
 }
 
 #ifdef WITH_COCOA
@@ -142,16 +126,27 @@ std::optional<std::string> GetClipboardContents()
  */
 void CocoaSetApplicationBundleDir()
 {
-	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
+	extern EnumIndexArray<std::string, Searchpath, Searchpath::End> _searchpaths;
 
 	char tmp[MAXPATHLEN];
 	CFAutoRelease<CFURLRef> url(CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle()));
 	if (CFURLGetFileSystemRepresentation(url.get(), true, (unsigned char *)tmp, MAXPATHLEN)) {
-		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = tmp;
-		AppendPathSeparator(_searchpaths[SP_APPLICATION_BUNDLE_DIR]);
+		_searchpaths[Searchpath::ApplicationBundleDir] = tmp;
+		AppendPathSeparator(_searchpaths[Searchpath::ApplicationBundleDir]);
 	} else {
-		_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
+		_searchpaths[Searchpath::ApplicationBundleDir].clear();
 	}
+}
+
+/**
+ * Returns the path to the user's Application Support folder.
+ */
+std::string CocoaGetAppSupportDir()
+{
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+	NSString *appSupportPath = [paths firstObject];
+
+	return [appSupportPath UTF8String];
 }
 
 /**
@@ -193,9 +188,7 @@ bool IsMonospaceFont(CFStringRef name)
  */
 void MacOSSetThreadName(const std::string &name)
 {
-	if (MacOSVersionIsAtLeast(10, 6, 0)) {
-		pthread_setname_np(name.c_str());
-	}
+	pthread_setname_np(name.c_str());
 
 	NSThread *cur = [ NSThread currentThread ];
 	if (cur != nil && [ cur respondsToSelector:@selector(setName:) ]) {

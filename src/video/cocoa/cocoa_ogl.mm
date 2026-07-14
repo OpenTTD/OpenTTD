@@ -41,7 +41,11 @@
 
 static Palette _local_palette; ///< Current palette to use for drawing.
 
-/** Platform-specific callback to get an OpenGL function pointer. */
+/**
+ * Platform-specific callback to get an OpenGL function pointer.
+ * @param proc The name of the function.
+ * @return The function pointer, or \c nullptr when it could not be found.
+ */
 static OGLProc GetOGLProcAddressCallback(const char *proc)
 {
 	static void *dl = nullptr;
@@ -268,7 +272,6 @@ NSView *VideoDriver_CocoaOpenGL::AllocateDrawView()
 	return [ [ OTTD_CGLLayerView alloc ] initWithFrame:this->cocoaview.bounds context:this->gl_context ];
 }
 
-/** Resize the window. */
 void VideoDriver_CocoaOpenGL::AllocateBackingStore(bool force)
 {
 	if (this->window == nil || this->setup) return;
@@ -307,7 +310,7 @@ void VideoDriver_CocoaOpenGL::ReleaseVideoPointer()
 
 void VideoDriver_CocoaOpenGL::Paint()
 {
-	PerformanceMeasurer framerate(PFE_VIDEO);
+	PerformanceMeasurer framerate(PerformanceElement::Video);
 
 	if (CopyPalette(_local_palette)) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();

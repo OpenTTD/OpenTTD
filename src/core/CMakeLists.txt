@@ -13,6 +13,8 @@ add_files(
     geometry_func.hpp
     geometry_type.hpp
     kdtree.hpp
+    label.cpp
+    label_type.hpp
     math_func.cpp
     math_func.hpp
     multimap.hpp

@@ -21,10 +21,10 @@ CommandCost CmdSetVehicleOnTime(DoCommandFlags flags, VehicleID veh, bool apply_
 CommandCost CmdAutofillTimetable(DoCommandFlags flags, VehicleID veh, bool autofill, bool preserve_wait_time);
 CommandCost CmdSetTimetableStart(DoCommandFlags flags, VehicleID veh_id, bool timetable_all, TimerGameTick::TickCounter start_tick);
 
-DEF_CMD_TRAIT(CMD_CHANGE_TIMETABLE,      CmdChangeTimetable,     {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_BULK_CHANGE_TIMETABLE, CmdBulkChangeTimetable, {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_SET_VEHICLE_ON_TIME,   CmdSetVehicleOnTime,    {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_AUTOFILL_TIMETABLE,    CmdAutofillTimetable,   {}, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_SET_TIMETABLE_START,   CmdSetTimetableStart,   {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::ChangeTimetable, CmdChangeTimetable, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::ChangeTimetableBulk, CmdBulkChangeTimetable, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::SetVehicleOnTime, CmdSetVehicleOnTime, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::AutofillTimetable, CmdAutofillTimetable, {}, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::SetTimetableStart, CmdSetTimetableStart, {}, CommandType::RouteManagement)
 
 #endif /* TIMETABLE_CMD_H */

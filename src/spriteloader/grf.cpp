@@ -25,7 +25,7 @@ extern const uint8_t _palmap_w2d[];
 /**
  * We found a corrupted sprite. This means that the sprite itself
  * contains invalid data or is too small for the given dimensions.
- * @param file_slot the file the errored sprite is in
+ * @param file The file the errored sprite is in.
  * @param file_pos the location in the file of the errored sprite
  * @param line the line where the error occurs.
  * @return always false (to tell loading the sprite failed)
@@ -34,7 +34,7 @@ static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
 {
 	static uint8_t warning_level = 0;
 	if (warning_level == 0) {
-		ShowErrorMessage(GetEncodedString(STR_NEWGRF_ERROR_CORRUPT_SPRITE, file.GetSimplifiedFilename()), {}, WL_ERROR);
+		ShowErrorMessage(GetEncodedString(STR_NEWGRF_ERROR_CORRUPT_SPRITE, file.GetSimplifiedFilename()), {}, WarningLevel::Error);
 	}
 	Debug(sprite, warning_level, "[{}] Loading corrupted sprite from {} at position {}", line, file.GetSimplifiedFilename(), file_pos);
 	warning_level = 6;

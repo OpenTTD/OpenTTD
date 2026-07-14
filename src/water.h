@@ -16,11 +16,11 @@
 /**
  * Describes the behaviour of a tile during flooding.
  */
-enum FloodingBehaviour : uint8_t {
-	FLOOD_NONE,    ///< The tile does not flood neighboured tiles.
-	FLOOD_ACTIVE,  ///< The tile floods neighboured tiles.
-	FLOOD_PASSIVE, ///< The tile does not actively flood neighboured tiles, but it prevents them from drying up.
-	FLOOD_DRYUP,   ///< The tile drys up if it is not constantly flooded from neighboured tiles.
+enum class FloodingBehaviour : uint8_t {
+	None, ///< The tile does not flood neighboured tiles.
+	Active, ///< The tile floods neighboured tiles.
+	Passive, ///< The tile does not actively flood neighboured tiles, but it prevents them from drying out.
+	DryOut, ///< The tile drys out if it is not constantly flooded from neighboured tiles.
 };
 
 FloodingBehaviour GetFloodingBehaviour(TileIndex tile);

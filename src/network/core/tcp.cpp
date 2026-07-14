@@ -14,6 +14,7 @@
 
 #include "../../safeguards.h"
 
+/** Close the socket. */
 NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 {
 	this->CloseSocket();
@@ -44,7 +45,7 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection([[maybe_unused]] bool
 	this->packet_queue.clear();
 	this->packet_recv = nullptr;
 
-	return NETWORK_RECV_STATUS_OKAY;
+	return NetworkRecvStatus::Okay;
 }
 
 /**
@@ -74,8 +75,8 @@ void NetworkTCPSocketHandler::SendPacket(std::unique_ptr<Packet> &&packet)
 SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 {
 	/* We can not write to this socket!! */
-	if (!this->writable) return SPS_NONE_SENT;
-	if (!this->IsConnected()) return SPS_CLOSED;
+	if (!this->writable) return SendPacketsState::NoneSent;
+	if (!this->IsConnected()) return SendPacketsState::Closed;
 
 	while (!this->packet_queue.empty()) {
 		Packet &p = *this->packet_queue.front();
@@ -88,14 +89,14 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 					Debug(net, 0, "Send failed: {}", err.AsString());
 					this->CloseConnection();
 				}
-				return SPS_CLOSED;
+				return SendPacketsState::Closed;
 			}
-			return SPS_PARTLY_SENT;
+			return SendPacketsState::PartlySent;
 		}
 		if (res == 0) {
 			/* Client/server has left us :( */
 			if (!closing_down) this->CloseConnection();
-			return SPS_CLOSED;
+			return SendPacketsState::Closed;
 		}
 
 		/* Is this packet sent? */
@@ -103,11 +104,11 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 			/* Go to the next packet */
 			this->packet_queue.pop_front();
 		} else {
-			return SPS_PARTLY_SENT;
+			return SendPacketsState::PartlySent;
 		}
 	}
 
-	return SPS_ALL_SENT;
+	return SendPacketsState::AllSent;
 }
 
 /**

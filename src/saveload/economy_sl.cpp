@@ -19,46 +19,46 @@
 
 /** Prices in pre 126 savegames */
 struct PRICChunkHandler : ChunkHandler {
-	PRICChunkHandler() : ChunkHandler('PRIC', CH_READONLY) {}
+	PRICChunkHandler() : ChunkHandler("PRIC", ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
 		/* Old games store 49 base prices, very old games store them as int32_t */
-		int vt = IsSavegameVersionBefore(SLV_65) ? SLE_FILE_I32 : SLE_FILE_I64;
-		SlCopy(nullptr, 49, vt | SLE_VAR_NULL);
-		SlCopy(nullptr, 49, SLE_FILE_U16 | SLE_VAR_NULL);
+		VarFileType vt = IsSavegameVersionBefore(SaveLoadVersion::UnifyCurrency) ? VarFileType::I32 : VarFileType::I64;
+		SlCopy(nullptr, 49, vt | VarMemType::Null);
+		SlCopy(nullptr, 49, VarFileType::U16 | VarMemType::Null);
 	}
 };
 
 /** Cargo payment rates in pre 126 savegames */
 struct CAPRChunkHandler : ChunkHandler {
-	CAPRChunkHandler() : ChunkHandler('CAPR', CH_READONLY) {}
+	CAPRChunkHandler() : ChunkHandler("CAPR", ChunkType::ReadOnly) {}
 
 	void Load() const override
 	{
-		uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
-		int vt = IsSavegameVersionBefore(SLV_65) ? SLE_FILE_I32 : SLE_FILE_I64;
-		SlCopy(nullptr, num_cargo, vt | SLE_VAR_NULL);
-		SlCopy(nullptr, num_cargo, SLE_FILE_U16 | SLE_VAR_NULL);
+		uint num_cargo = IsSavegameVersionBefore(SaveLoadVersion::NewGRFCargo) ? 12 : IsSavegameVersionBefore(SaveLoadVersion::ExtendCargotypes) ? 32 : NUM_CARGO;
+		VarFileType vt = IsSavegameVersionBefore(SaveLoadVersion::UnifyCurrency) ? VarFileType::I32 : VarFileType::I64;
+		SlCopy(nullptr, num_cargo, vt | VarMemType::Null);
+		SlCopy(nullptr, num_cargo, VarFileType::U16 | VarMemType::Null);
 	}
 };
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  SL_MIN_VERSION, SLV_65),
-	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  SLV_65, SLV_126),
-	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 SLV_70, SLV_126),
-	SLE_CONDVAR(Economy, inflation_prices,              SLE_UINT64,                SLV_126, SL_MAX_VERSION),
-	SLE_CONDVAR(Economy, inflation_payment,             SLE_UINT64,                SLV_126, SL_MAX_VERSION),
-	    SLE_VAR(Economy, fluct,                         SLE_INT16),
-	    SLE_VAR(Economy, interest_rate,                 SLE_UINT8),
-	    SLE_VAR(Economy, infl_amount,                   SLE_UINT8),
-	    SLE_VAR(Economy, infl_amount_pr,                SLE_UINT8),
-	SLE_CONDVAR(Economy, industry_daily_change_counter, SLE_UINT32,                SLV_102, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, old_max_loan_unround, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SLE_CONDVAR(Economy, old_max_loan_unround, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CumulatedInflation),
+	SLE_CONDVAR(Economy, old_max_loan_unround_fract, VarTypes::U16, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::CumulatedInflation),
+	SLE_CONDVAR(Economy, inflation_prices, VarTypes::U64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Economy, inflation_payment, VarTypes::U64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
+	    SLE_VAR(Economy, fluct,                         VarTypes::I16),
+	    SLE_VAR(Economy, interest_rate,                 VarTypes::U8),
+	    SLE_VAR(Economy, infl_amount,                   VarTypes::U8),
+	    SLE_VAR(Economy, infl_amount_pr,                VarTypes::U8),
+	SLE_CONDVAR(Economy, industry_daily_change_counter, VarTypes::U32, SaveLoadVersion::SpreadIndustryProductionChanges, SaveLoadVersion::MaxVersion),
 };
 
 /** Economy variables */
 struct ECMYChunkHandler : ChunkHandler {
-	ECMYChunkHandler() : ChunkHandler('ECMY', CH_TABLE) {}
+	ECMYChunkHandler() : ChunkHandler("ECMY", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -73,23 +73,23 @@ struct ECMYChunkHandler : ChunkHandler {
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_economy_desc, _economy_sl_compat);
 
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() == -1) return;
 		SlObject(&_economy, slt);
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many ECMY entries");
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() != -1) SlErrorCorrupt("Too many ECMY entries");
 
-		StartupIndustryDailyChanges(IsSavegameVersionBefore(SLV_102));  // old savegames will need to be initialized
+		StartupIndustryDailyChanges(IsSavegameVersionBefore(SaveLoadVersion::SpreadIndustryProductionChanges)); // old savegames will need to be initialized
 	}
 };
 
 static const SaveLoad _cargopayment_desc[] = {
-	    SLE_REF(CargoPayment, front,           REF_VEHICLE),
-	    SLE_VAR(CargoPayment, route_profit,    SLE_INT64),
-	    SLE_VAR(CargoPayment, visual_profit,   SLE_INT64),
-	SLE_CONDVAR(CargoPayment, visual_transfer, SLE_INT64, SLV_181, SL_MAX_VERSION),
+	    SLE_REF(CargoPayment, front,           SLRefType::Vehicle),
+	    SLE_VAR(CargoPayment, route_profit,    VarTypes::I64),
+	    SLE_VAR(CargoPayment, visual_profit,   VarTypes::I64),
+	SLE_CONDVAR(CargoPayment, visual_transfer, VarTypes::I64, SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
 };
 
 struct CAPYChunkHandler : ChunkHandler {
-	CAPYChunkHandler() : ChunkHandler('CAPY', CH_TABLE) {}
+	CAPYChunkHandler() : ChunkHandler("CAPY", ChunkType::Table) {}
 
 	void Save() const override
 	{

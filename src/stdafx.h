@@ -184,9 +184,8 @@ using namespace std::literals::string_view_literals;
 #else
 #	define PACK_N(type_dec, n) type_dec __attribute__((__packed__, aligned(n)))
 #endif
-#define PACK(type_dec) PACK_N(type_dec, 1)
 
-/*
+/** @def debug_inline
  * When making a (pure) debug build, the compiler will by default disable
  * inlining of functions. This has a detrimental effect on the performance of
  * debug builds, especially when more and more trivial (wrapper) functions get
@@ -265,7 +264,7 @@ char (&ArraySizeHelper(T (&array)[N]))[N];
  * Unlike sizeof this function returns the number of elements
  * of the given type.
  *
- * @param x The pointer to the first element of the array
+ * @param array The pointer to the first element of the array
  * @return The number of elements
  */
 #define lengthof(array) (sizeof(ArraySizeHelper(array)))

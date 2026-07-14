@@ -92,6 +92,8 @@ enum class NewsFlag : uint8_t {
 	Shaded, ///< News item uses shaded colours.
 	VehicleParam0, ///< String param 0 contains a vehicle ID. (special autoreplace behaviour)
 };
+
+/** Bitset of \c NewsFlag elements. */
 using NewsFlags = EnumBitSet<NewsFlag, uint8_t>;
 
 /**
@@ -117,7 +119,7 @@ struct NewsTypeData {
 	 * @param age The maximum age for these messages.
 	 * @param sound The sound to play.
 	 */
-	NewsTypeData(std::string_view name, uint8_t age, SoundFx sound) :
+	constexpr NewsTypeData(std::string_view name, uint8_t age, SoundFx sound) :
 		name(name),
 		age(age),
 		sound(sound)
@@ -129,6 +131,7 @@ struct NewsTypeData {
 
 /** Container for any custom data that must be deleted after the news item has reached end-of-life. */
 struct NewsAllocatedData {
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~NewsAllocatedData() = default;
 };
 
@@ -140,7 +143,7 @@ struct NewsItem {
 	TimerGameEconomy::Date economy_date; ///< Economy date of the news item, never shown but used to calculate age
 	NewsType type;                ///< Type of the news
 	AdviceType advice_type; ///< The type of advice, to be able to remove specific advices later on.
-	NewsStyle style; /// Window style for the news.
+	NewsStyle style; ///< Window style for the news.
 	NewsFlags flags;               ///< NewsFlags bits @see NewsFlag
 
 	NewsReference ref1; ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.

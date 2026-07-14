@@ -12,7 +12,12 @@
 
 #include "safeguards.h"
 
+/** Container for CPUID information. */
+using CPUIDArray = std::array<int, 4>;
+
 /**
+ * Get the CPUID information from the CPU.
+ *
  * Definitions for CPU detection:
  *
  * MSVC offers cpu information while gcc only implements in gcc 4.8
@@ -22,16 +27,15 @@
  *
  * Other platforms/architectures don't have CPUID, so zero the info and then
  * most (if not all) of the features are set as if they do not exist.
+ * @param type The information this instruction should retrieve.
+ * @return The retrieved info. All zeros on architectures without CPUID.
  */
+static CPUIDArray CPUID([[maybe_unused]] int type)
+{
+	CPUIDArray info{};
 #if defined(_MSC_VER) && (defined(_M_IX86) || defined(_M_X64))
-void ottd_cpuid(int info[4], int type)
-{
-	__cpuid(info, type);
-}
-#elif defined(__x86_64__) || defined(__i386)
-void ottd_cpuid(int info[4], int type)
-{
-#if defined(__i386) && defined(__PIC__)
+	__cpuid(info.data(), type);
+#elif defined(__i386) && defined(__PIC__)
 	/* The easy variant would be just cpuid, however... ebx is being used by the GOT (Global Offset Table)
 	 * in case of PIC;
 	 * clobbering ebx is no alternative: some compiler versions don't like this
@@ -48,46 +52,37 @@ void ottd_cpuid(int info[4], int type)
 			 */
 			: "a" (type)
 	);
-#else
+#elif defined(__x86_64__) || defined(__i386)
 	__asm__ __volatile__ (
 			"cpuid           \n\t"
 			: "=a" (info[0]), "=b" (info[1]), "=c" (info[2]), "=d" (info[3])
 			: "a" (type)
 	);
-#endif /* i386 PIC */
-}
 #elif defined(__e2k__) /* MCST Elbrus 2000*/
-void ottd_cpuid(int info[4], int type)
-{
-	info[0] = info[1] = info[2] = info[3] = 0;
 	if (type == 0) {
 		info[0] = 1;
 	} else if (type == 1) {
-#if defined(__SSE4_1__)
+#	if defined(__SSE4_1__)
 		info[2] |= (1<<19); /* HasCPUIDFlag(1, 2, 19) */
-#endif
-#if defined(__SSSE3__)
+#	endif
+#	if defined(__SSSE3__)
 		info[2] |= (1<<9); /* HasCPUIDFlag(1, 2, 9) */
-#endif
-#if defined(__SSE2__)
+#	endif
+#	if defined(__SSE2__)
 		info[3] |= (1<<26); /* HasCPUIDFlag(1, 3, 26) */
-#endif
+#	endif
 	}
 }
-#else
-void ottd_cpuid(int info[4], int)
-{
-	info[0] = info[1] = info[2] = info[3] = 0;
-}
 #endif
+	return info;
+}
 
 bool HasCPUIDFlag(uint type, uint index, uint bit)
 {
-	int cpu_info[4] = {-1};
-	ottd_cpuid(cpu_info, 0);
+	CPUIDArray cpu_info = CPUID(0);
 	uint max_info_type = cpu_info[0];
 	if (max_info_type < type) return false;
 
-	ottd_cpuid(cpu_info, type);
+	cpu_info = CPUID(type);
 	return HasBit(cpu_info[index], bit);
 }

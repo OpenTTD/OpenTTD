@@ -50,7 +50,10 @@ void AddGenericCallback(GrfSpecFeature feature, const GRFFile *file, const Sprit
 std::pair<const GRFFile *, uint16_t> GetAiPurchaseCallbackResult(GrfSpecFeature feature, CargoType cargo_type, uint8_t default_selection, IndustryType src_industry, IndustryType dst_industry, uint8_t distance, AIConstructionEvent event, uint8_t count, uint8_t station_size);
 void AmbientSoundEffectCallback(TileIndex tile);
 
-/** Play an ambient sound effect for an empty tile. */
+/**
+ * Play an ambient sound effect for an empty tile.
+ * @param tile The tile to play the sound at.
+ */
 inline void AmbientSoundEffect(TileIndex tile)
 {
 	/* Only run callback if enabled. */

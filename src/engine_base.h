@@ -30,6 +30,7 @@ enum class EngineDisplayFlag : uint8_t {
 	Shaded, ///< Set if engine should be masked.
 };
 
+/** Bitset of \c EngineDisplayFlag elements. */
 using EngineDisplayFlags = EnumBitSet<EngineDisplayFlag, uint8_t>;
 
 typedef Pool<Engine, EngineID, 64> EnginePool;
@@ -59,7 +60,7 @@ public:
 	CompanyID preview_company = CompanyID::Invalid();  ///< Company which is currently being offered a preview \c CompanyID::Invalid() means no company.
 	uint8_t preview_wait = 0; ///< Daily countdown timer for timeout of offering the engine to the #preview_company company.
 	uint8_t original_image_index = 0; ///< Original vehicle image index, thus the image index of the overridden vehicle
-	VehicleType type = VEH_INVALID; ///< %Vehicle type, ie #VEH_ROAD, #VEH_TRAIN, etc.
+	VehicleType type = VehicleType::Invalid; ///< %Vehicle type, ie #VehicleType::Road, #VehicleType::Train, etc.
 
 	EngineDisplayFlags display_flags{}; ///< NOSAVE client-side-only display flags for build engine list.
 	EngineID display_last_variant = EngineID::Invalid(); ///< NOSAVE client-side-only last variant selected.
@@ -73,7 +74,7 @@ public:
 	std::vector<BadgeID> badges{};
 
 private:
-	/* Vehicle-type specific information. */
+	/** Vehicle-type specific information. */
 	std::variant<std::monostate, RailVehicleInfo, RoadVehicleInfo, ShipVehicleInfo, AircraftVehicleInfo> vehicle_info{};
 
 public:
@@ -154,7 +155,7 @@ public:
 	 */
 	inline bool IsGroundVehicle() const
 	{
-		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
+		return this->type == VehicleType::Train || this->type == VehicleType::Road;
 	}
 
 	/**
@@ -167,7 +168,7 @@ public:
 		return this->grf_prop.grffile;
 	}
 
-	uint32_t GetGRFID() const;
+	GrfID GetGRFID() const;
 
 	struct EngineTypeFilter {
 		VehicleType vt;
@@ -200,18 +201,38 @@ public:
 };
 
 struct EngineIDMapping {
-	uint32_t grfid = 0; ///< The GRF ID of the file the entity belongs to
+	GrfID grfid{}; ///< The GRF ID of the file the entity belongs to
 	uint16_t internal_id = 0; ///< The internal ID within the GRF file
 	VehicleType type{}; ///< The engine type
 	uint8_t substitute_id = 0; ///< The (original) entity ID to use if this GRF is not available (currently not used)
 	EngineID engine{};
 
-	static inline uint64_t Key(uint32_t grfid, uint16_t internal_id) { return static_cast<uint64_t>(grfid) << 32 | internal_id; }
+	/**
+	 * Create a 64 bit key from the GRFID and internal ID for mappings.
+	 * @param grfid The NewGRF id.
+	 * @param internal_id The internal ID within the GRF file.
+	 * @return The key.
+	 */
+	static inline uint64_t Key(GrfID grfid, uint16_t internal_id) { return static_cast<uint64_t>(grfid) << 32 | internal_id; }
 
+	/**
+	 * Create a 64 bit key from this mapping.
+	 * @return The key.
+	 */
 	inline uint64_t Key() const { return Key(this->grfid, this->internal_id); }
 
+	/** Create a new mapping. */
 	EngineIDMapping() {}
-	EngineIDMapping(uint32_t grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id, EngineID engine)
+
+	/**
+	 * Create the mapping.
+	 * @param grfid The unique identifer of the NewGRF.
+	 * @param internal_id The internal identifier of the engine within the NewGRF.
+	 * @param type The vehicle type.
+	 * @param substitute_id The original vehicle to fall back to.
+	 * @param engine The engine the mapping is for.
+	 */
+	EngineIDMapping(GrfID grfid, uint16_t internal_id, VehicleType type, uint8_t substitute_id, EngineID engine)
 		: grfid(grfid), internal_id(internal_id), type(type), substitute_id(substitute_id), engine(engine) {}
 };
 
@@ -225,12 +246,12 @@ struct EngineIDMappingKeyProjection {
  * Note: This is not part of Engine, as the data in the EngineOverrideManager and the engine pool get reset in different cases.
  */
 struct EngineOverrideManager {
-	std::array<std::vector<EngineIDMapping>, VEH_COMPANY_END> mappings;
+	VehicleTypeIndexArray<std::vector<EngineIDMapping>> mappings;
 
 	void ResetToDefaultMapping();
-	EngineID GetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid);
-	EngineID UseUnreservedID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, bool static_access);
-	void SetID(VehicleType type, uint16_t grf_local_id, uint32_t grfid, uint8_t substitute_id, EngineID engine);
+	EngineID GetID(VehicleType type, uint16_t grf_local_id, GrfID grfid);
+	EngineID UseUnreservedID(VehicleType type, uint16_t grf_local_id, GrfID grfid, bool static_access);
+	void SetID(VehicleType type, uint16_t grf_local_id, GrfID grfid, uint8_t substitute_id, EngineID engine);
 
 	static bool ResetToCurrentNewGRFConfig();
 };

@@ -22,7 +22,7 @@
 /** Container for all information about a text effect */
 struct TextEffect : public ViewportSign {
 	TextEffectMode mode; ///< Type of text effect.
-	uint8_t duration; ///< How long the text effect should stay, in ticks (applies only when mode == TE_RISING)
+	uint8_t duration; ///< How long the text effect should stay, in ticks (applies only when mode == TextEffectMode::Rising)
 	EncodedString msg; ///< Encoded message for text effect.
 
 	/** Reset the text effect */
@@ -30,10 +30,10 @@ struct TextEffect : public ViewportSign {
 	{
 		this->MarkDirty();
 		this->width_normal = 0;
-		this->mode = TE_INVALID;
+		this->mode = TextEffectMode::Invalid;
 	}
 
-	inline bool IsValid() const { return this->mode != TE_INVALID; }
+	inline bool IsValid() const { return this->mode != TextEffectMode::Invalid; }
 };
 
 static std::vector<TextEffect> _text_effects; ///< Text effects are stored there
@@ -41,7 +41,7 @@ static std::vector<TextEffect> _text_effects; ///< Text effects are stored there
 /* Text Effects */
 TextEffectID AddTextEffect(EncodedString &&msg, int center, int y, uint8_t duration, TextEffectMode mode)
 {
-	if (_game_mode == GM_MENU) return INVALID_TE_ID;
+	if (_game_mode == GameMode::Menu) return INVALID_TE_ID;
 
 	auto it = std::ranges::find_if(_text_effects, [](const TextEffect &te) { return !te.IsValid(); });
 	if (it == std::end(_text_effects)) {
@@ -90,11 +90,11 @@ void RemoveTextEffect(TextEffectID te_id)
 
 /** Slowly move text effects upwards. */
 const IntervalTimer<TimerWindow> move_all_text_effects_interval = {std::chrono::milliseconds(30), [](uint count) {
-	if (_pause_mode.Any() && _game_mode != GM_EDITOR && _settings_game.construction.command_pause_level <= CommandPauseLevel::NoConstruction) return;
+	if (_pause_mode.Any() && _game_mode != GameMode::Editor && _settings_game.construction.command_pause_level <= CommandPauseLevel::NoConstruction) return;
 
 	for (TextEffect &te : _text_effects) {
 		if (!te.IsValid()) continue;
-		if (te.mode != TE_RISING) continue;
+		if (te.mode != TextEffectMode::Rising) continue;
 
 		if (te.duration < count) {
 			te.Reset();
@@ -118,7 +118,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 {
 	/* Don't draw the text effects when zoomed out a lot */
 	if (dpi->zoom > ZoomLevel::TextEffect) return;
-	if (IsTransparencySet(TO_TEXT)) return;
+	if (IsTransparencySet(TransparencyOption::Text)) return;
 
 	ViewportStringFlags flags{};
 	if (dpi->zoom >= ZoomLevel::TextEffect) flags.Set(ViewportStringFlag::Small);
@@ -126,8 +126,8 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	for (const TextEffect &te : _text_effects) {
 		if (!te.IsValid()) continue;
 
-		if (te.mode == TE_RISING || _settings_client.gui.loading_indicators) {
-			std::string *str = ViewportAddString(dpi, &te, flags, INVALID_COLOUR);
+		if (te.mode == TextEffectMode::Rising || _settings_client.gui.loading_indicators) {
+			std::string *str = ViewportAddString(dpi, &te, flags, Colours::Invalid);
 			if (str == nullptr) continue;
 
 			*str = te.msg.GetDecodedString();

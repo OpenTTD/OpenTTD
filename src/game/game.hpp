@@ -36,6 +36,7 @@ public:
 
 	/**
 	 * Uninitialize the Game system.
+	 * @param keepConfig Should we keep GameConfigs, or can we free that memory?
 	 */
 	static void Uninitialize(bool keepConfig);
 
@@ -60,16 +61,27 @@ public:
 	static bool IsPaused();
 
 	/**
-	 * Queue a new event for a Game Script.
+	 * Queue a new event for the game script.
+	 * @param event The event.
 	 */
 	static void NewEvent(class ScriptEvent *event);
 
 	/**
 	 * Get the current GameInfo.
+	 * @return The info, or nullptr when there is no Game script.
 	 */
 	static class GameInfo *GetInfo() { return Game::info; }
 
+	/**
+	 * Rescans all searchpaths for available Game scripts. If a used Game script is no longer
+	 * found it is removed from the config.
+	 */
 	static void Rescan();
+
+	/**
+	 * Reset all GameConfigs, and make them reload their GameInfo.
+	 * If the GameInfo could no longer be found, an error is reported to the user.
+	 */
 	static void ResetConfig();
 
 	/**
@@ -77,21 +89,22 @@ public:
 	 */
 	static void Save();
 
-	/** Wrapper function for GameScanner::GetConsoleList */
+	/** @copydoc ScriptScanner::GetConsoleList */
 	static void GetConsoleList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only);
-	/** Wrapper function for GameScanner::GetConsoleLibraryList */
-	static void GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator);
-	/** Wrapper function for GameScanner::GetInfoList */
+	/** @copydoc ScriptScanner::GetConsoleList */
+	static void GetConsoleLibraryList(std::back_insert_iterator<std::string> &output_iterator, bool newest_only);
+	/** @copydoc ScriptScanner::GetInfoList */
 	static const ScriptInfoList *GetInfoList();
-	/** Wrapper function for GameScanner::GetUniqueInfoList */
+	/** @copydoc ScriptScanner::GetUniqueInfoList */
 	static const ScriptInfoList *GetUniqueInfoList();
-	/** Wrapper function for GameScannerInfo::FindInfo */
+	/** @copydoc ScriptConfig::FindInfo */
 	static class GameInfo *FindInfo(const std::string &name, int version, bool force_exact_match);
-	/** Wrapper function for GameScanner::FindLibrary */
+	/** @copydoc ScriptInstance::FindLibrary */
 	static class GameLibrary *FindLibrary(const std::string &library, int version);
 
 	/**
 	 * Get the current active instance.
+	 * @return The current Game script instance.
 	 */
 	static class GameInstance *GetInstance() { return Game::instance.get(); }
 

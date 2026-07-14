@@ -37,7 +37,7 @@ add_files(
 add_files(
     gfx_layout_icu.cpp
     gfx_layout_icu.h
-    CONDITION ICU_i18n_FOUND AND HARFBUZZ_FOUND
+    CONDITION ICU_I18N_FOUND AND HARFBUZZ_FOUND
 )
 
 add_files(
@@ -133,7 +133,8 @@ add_files(
     crashlog.cpp
     crashlog.h
     currency.cpp
-    currency.h
+    currency_func.h
+    currency_type.h
     date_gui.cpp
     date_gui.h
     debug.cpp
@@ -209,6 +210,7 @@ add_files(
     goal_base.h
     goal_cmd.h
     goal_gui.cpp
+    goal_gui.h
     goal_type.h
     graph_gui.cpp
     graph_gui.h
@@ -334,6 +336,7 @@ add_files(
     newgrf_town.h
     newgrf_townname.cpp
     newgrf_townname.h
+    newgrf_type.h
     news_cmd.h
     news_func.h
     news_gui.cpp

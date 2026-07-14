@@ -22,8 +22,8 @@ static OldPersistentStorage _old_ind_persistent_storage;
 class SlIndustryAcceptedHistory : public DefaultSaveLoadHandler<SlIndustryAcceptedHistory, Industry::AcceptedCargo> {
 public:
 	static inline const SaveLoad description[] = {
-		 SLE_VAR(Industry::AcceptedHistory, accepted, SLE_UINT16),
-		 SLE_VAR(Industry::AcceptedHistory, waiting, SLE_UINT16),
+		 SLE_VAR(Industry::AcceptedHistory, accepted, VarTypes::U16),
+		 SLE_VAR(Industry::AcceptedHistory, waiting, VarTypes::U16),
 	};
 	static inline const SaveLoadCompatTable compat_description = _industry_produced_history_sl_compat;
 
@@ -58,20 +58,22 @@ public:
 class SlIndustryAccepted : public VectorSaveLoadHandler<SlIndustryAccepted, Industry, Industry::AcceptedCargo, INDUSTRY_NUM_INPUTS> {
 public:
 	static inline const SaveLoad description[] = {
-		 SLE_VAR(Industry::AcceptedCargo, cargo, SLE_UINT8),
-		 SLE_VAR(Industry::AcceptedCargo, waiting, SLE_UINT16),
-		 SLE_VAR(Industry::AcceptedCargo, last_accepted, SLE_INT32),
-		SLE_CONDVAR(Industry::AcceptedCargo, accumulated_waiting, SLE_UINT32, SLV_INDUSTRY_ACCEPTED_HISTORY, SL_MAX_VERSION),
-		SLEG_CONDSTRUCTLIST("history", SlIndustryAcceptedHistory, SLV_INDUSTRY_ACCEPTED_HISTORY, SL_MAX_VERSION),
+		 SLE_VAR(Industry::AcceptedCargo, cargo, VarTypes::U8),
+		 SLE_VAR(Industry::AcceptedCargo, waiting, VarTypes::U16),
+		 SLE_VAR(Industry::AcceptedCargo, last_accepted, VarTypes::I32),
+		SLE_CONDVAR(Industry::AcceptedCargo, accumulated_waiting, VarTypes::U32, SaveLoadVersion::IndustryAcceptedHistory, SaveLoadVersion::MaxVersion),
+		SLEG_CONDSTRUCTLIST("history", SlIndustryAcceptedHistory, SaveLoadVersion::IndustryAcceptedHistory, SaveLoadVersion::MaxVersion),
 	};
 	static inline const SaveLoadCompatTable compat_description = _industry_accepts_sl_compat;
 
 	std::vector<Industry::AcceptedCargo> &GetVector(Industry *i) const override { return i->accepted; }
 
-	/* Old array structure used by INDYChunkHandler for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
+	/** @{
+	 * Old array structures used by INDYChunkHandler for savegames before SaveLoadVersion::IndustryCargoReorganise. */
 	static inline std::array<CargoType, INDUSTRY_NUM_INPUTS> old_cargo;
 	static inline std::array<uint16_t, INDUSTRY_NUM_INPUTS> old_waiting;
 	static inline std::array<TimerGameEconomy::Date, INDUSTRY_NUM_INPUTS> old_last_accepted;
+	/** @} */
 
 	static void ResetOldStructure()
 	{
@@ -84,8 +86,8 @@ public:
 class SlIndustryProducedHistory : public DefaultSaveLoadHandler<SlIndustryProducedHistory, Industry::ProducedCargo> {
 public:
 	static inline const SaveLoad description[] = {
-		 SLE_VAR(Industry::ProducedHistory, production, SLE_UINT16),
-		 SLE_VAR(Industry::ProducedHistory, transported, SLE_UINT16),
+		 SLE_VAR(Industry::ProducedHistory, production, VarTypes::U16),
+		 SLE_VAR(Industry::ProducedHistory, transported, VarTypes::U16),
 	};
 	static inline const SaveLoadCompatTable compat_description = _industry_produced_history_sl_compat;
 
@@ -118,16 +120,17 @@ public:
 class SlIndustryProduced : public VectorSaveLoadHandler<SlIndustryProduced, Industry, Industry::ProducedCargo, INDUSTRY_NUM_OUTPUTS> {
 public:
 	static inline const SaveLoad description[] = {
-		 SLE_VAR(Industry::ProducedCargo, cargo, SLE_UINT8),
-		 SLE_VAR(Industry::ProducedCargo, waiting, SLE_UINT16),
-		 SLE_VAR(Industry::ProducedCargo, rate, SLE_UINT8),
+		 SLE_VAR(Industry::ProducedCargo, cargo, VarTypes::U8),
+		 SLE_VAR(Industry::ProducedCargo, waiting, VarTypes::U16),
+		 SLE_VAR(Industry::ProducedCargo, rate, VarTypes::U8),
 		SLEG_STRUCTLIST("history", SlIndustryProducedHistory),
 	};
 	static inline const SaveLoadCompatTable compat_description = _industry_produced_sl_compat;
 
 	std::vector<Industry::ProducedCargo> &GetVector(Industry *i) const override { return i->produced; }
 
-	/* Old array structure used by INDYChunkHandler for savegames before SLV_INDUSTRY_CARGO_REORGANISE. */
+	/** @{
+	 * Old array structures used by INDYChunkHandler for savegames before SaveLoadVersion::IndustryCargoReorganise. */
 	static inline std::array<CargoType, INDUSTRY_NUM_OUTPUTS> old_cargo;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_waiting;
 	static inline std::array<uint8_t, INDUSTRY_NUM_OUTPUTS> old_rate;
@@ -135,6 +138,7 @@ public:
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_this_month_transported;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_last_month_production;
 	static inline std::array<uint16_t, INDUSTRY_NUM_OUTPUTS> old_last_month_transported;
+	/** @} */
 
 	static void ResetOldStructure()
 	{
@@ -149,65 +153,65 @@ public:
 };
 
 static const SaveLoad _industry_desc[] = {
-	SLE_CONDVAR(Industry, location.tile,              SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION, SLV_6),
-	SLE_CONDVAR(Industry, location.tile,              SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
-	    SLE_VAR(Industry, location.w,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_VAR(Industry, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_REF(Industry, town,                       REF_TOWN),
-	SLE_CONDREF(Industry, neutral_station,            REF_STATION,                SLV_SERVE_NEUTRAL_INDUSTRIES, SL_MAX_VERSION),
-	SLEG_CONDARR("produced_cargo",             SlIndustryProduced::old_cargo,                  SLE_UINT8,  INDUSTRY_ORIGINAL_NUM_OUTPUTS, SLV_78, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("produced_cargo",             SlIndustryProduced::old_cargo,                  SLE_UINT8,  INDUSTRY_NUM_OUTPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLEG_CONDARR("incoming_cargo_waiting",     SlIndustryAccepted::old_waiting,                SLE_UINT16, INDUSTRY_ORIGINAL_NUM_INPUTS, SLV_70, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("incoming_cargo_waiting",     SlIndustryAccepted::old_waiting,                SLE_UINT16, INDUSTRY_NUM_INPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLEG_CONDARR("produced_cargo_waiting",     SlIndustryProduced::old_waiting,                SLE_UINT16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("produced_cargo_waiting",     SlIndustryProduced::old_waiting,                SLE_UINT16, INDUSTRY_NUM_OUTPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLEG_CONDARR("production_rate",            SlIndustryProduced::old_rate,                   SLE_UINT8,  INDUSTRY_ORIGINAL_NUM_OUTPUTS, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("production_rate",            SlIndustryProduced::old_rate,                   SLE_UINT8,  INDUSTRY_NUM_OUTPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLEG_CONDARR("accepts_cargo",              SlIndustryAccepted::old_cargo,                  SLE_UINT8,  INDUSTRY_ORIGINAL_NUM_INPUTS, SLV_78, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("accepts_cargo",              SlIndustryAccepted::old_cargo,                  SLE_UINT8,  INDUSTRY_NUM_INPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	    SLE_VAR(Industry, prod_level,                 SLE_UINT8),
-	SLEG_CONDARR("this_month_production",      SlIndustryProduced::old_this_month_production,  SLE_UINT16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("this_month_production",      SlIndustryProduced::old_this_month_production,  SLE_UINT16, INDUSTRY_NUM_OUTPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLEG_CONDARR("this_month_transported",     SlIndustryProduced::old_this_month_transported, SLE_UINT16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("this_month_transported",     SlIndustryProduced::old_this_month_transported, SLE_UINT16, INDUSTRY_NUM_OUTPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLEG_CONDARR("last_month_production",      SlIndustryProduced::old_last_month_production,  SLE_UINT16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("last_month_production",      SlIndustryProduced::old_last_month_production,  SLE_UINT16, INDUSTRY_NUM_OUTPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLEG_CONDARR("last_month_transported",     SlIndustryProduced::old_last_month_transported, SLE_UINT16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SL_MIN_VERSION, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("last_month_transported",     SlIndustryProduced::old_last_month_transported, SLE_UINT16, INDUSTRY_NUM_OUTPUTS, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
+	SLE_CONDVAR(Industry, location.tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SLE_CONDVAR(Industry, location.tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	    SLE_VAR(Industry, location.w,                 VarFileType::U8 | VarMemType::U16),
+	    SLE_VAR(Industry, location.h,                 VarFileType::U8 | VarMemType::U16),
+	    SLE_REF(Industry, town,                       SLRefType::Town),
+	SLE_CONDREF(Industry, neutral_station, SLRefType::Station, SaveLoadVersion::ServeNeutralIndustries, SaveLoadVersion::MaxVersion),
+	SLEG_CONDARR("produced_cargo", SlIndustryProduced::old_cargo, VarTypes::U8, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::StoreIndustryCargo, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("produced_cargo", SlIndustryProduced::old_cargo, VarTypes::U8, INDUSTRY_NUM_OUTPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	SLEG_CONDARR("incoming_cargo_waiting", SlIndustryAccepted::old_waiting, VarTypes::U16, INDUSTRY_ORIGINAL_NUM_INPUTS, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("incoming_cargo_waiting", SlIndustryAccepted::old_waiting, VarTypes::U16, INDUSTRY_NUM_INPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	SLEG_CONDARR("produced_cargo_waiting", SlIndustryProduced::old_waiting, VarTypes::U16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("produced_cargo_waiting", SlIndustryProduced::old_waiting, VarTypes::U16, INDUSTRY_NUM_OUTPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	SLEG_CONDARR("production_rate", SlIndustryProduced::old_rate, VarTypes::U8, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("production_rate", SlIndustryProduced::old_rate, VarTypes::U8, INDUSTRY_NUM_OUTPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	SLEG_CONDARR("accepts_cargo", SlIndustryAccepted::old_cargo, VarTypes::U8, INDUSTRY_ORIGINAL_NUM_INPUTS, SaveLoadVersion::StoreIndustryCargo, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("accepts_cargo", SlIndustryAccepted::old_cargo, VarTypes::U8, INDUSTRY_NUM_INPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	    SLE_VAR(Industry, prod_level,                 VarTypes::U8),
+	SLEG_CONDARR("this_month_production", SlIndustryProduced::old_this_month_production, VarTypes::U16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("this_month_production", SlIndustryProduced::old_this_month_production, VarTypes::U16, INDUSTRY_NUM_OUTPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	SLEG_CONDARR("this_month_transported", SlIndustryProduced::old_this_month_transported, VarTypes::U16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("this_month_transported", SlIndustryProduced::old_this_month_transported, VarTypes::U16, INDUSTRY_NUM_OUTPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	SLEG_CONDARR("last_month_production", SlIndustryProduced::old_last_month_production, VarTypes::U16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("last_month_production", SlIndustryProduced::old_last_month_production, VarTypes::U16, INDUSTRY_NUM_OUTPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	SLEG_CONDARR("last_month_transported", SlIndustryProduced::old_last_month_transported, VarTypes::U16, INDUSTRY_ORIGINAL_NUM_OUTPUTS, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("last_month_transported", SlIndustryProduced::old_last_month_transported, VarTypes::U16, INDUSTRY_NUM_OUTPUTS, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
 
-	    SLE_VAR(Industry, counter,                    SLE_UINT16),
+	    SLE_VAR(Industry, counter,                    VarTypes::U16),
 
-	    SLE_VAR(Industry, type,                       SLE_UINT8),
-	    SLE_VAR(Industry, owner,                      SLE_UINT8),
-	    SLE_VAR(Industry, random_colour,              SLE_UINT8),
-	SLE_CONDVAR(Industry, last_prod_year,             SLE_FILE_U8 | SLE_VAR_I32,  SL_MIN_VERSION, SLV_31),
-	SLE_CONDVAR(Industry, last_prod_year,             SLE_INT32,                 SLV_31, SL_MAX_VERSION),
-	    SLE_VAR(Industry, was_cargo_delivered,        SLE_UINT8),
-	SLE_CONDVAR(Industry, ctlflags,                   SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
+	    SLE_VAR(Industry, type,                       VarTypes::U8),
+	    SLE_VAR(Industry, owner,                      VarTypes::U8),
+	    SLE_VAR(Industry, random_colour,              VarTypes::U8),
+	SLE_CONDVAR(Industry, last_prod_year, VarFileType::U8 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	SLE_CONDVAR(Industry, last_prod_year, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	    SLE_VAR(Industry, was_cargo_delivered,        VarTypes::U8),
+	SLE_CONDVAR(Industry, ctlflags, VarTypes::U8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(Industry, founder,                    SLE_UINT8,                 SLV_70, SL_MAX_VERSION),
-	SLE_CONDVAR(Industry, construction_date,          SLE_INT32,                 SLV_70, SL_MAX_VERSION),
-	SLE_CONDVAR(Industry, construction_type,          SLE_UINT8,                 SLV_70, SL_MAX_VERSION),
-	SLEG_CONDVAR("last_cargo_accepted_at[0]",  SlIndustryAccepted::old_last_accepted[0], SLE_INT32,     SLV_70, SLV_EXTEND_INDUSTRY_CARGO_SLOTS),
-	SLEG_CONDARR("last_cargo_accepted_at",     SlIndustryAccepted::old_last_accepted,    SLE_INT32, 16, SLV_EXTEND_INDUSTRY_CARGO_SLOTS, SLV_INDUSTRY_CARGO_REORGANISE),
-	SLE_CONDVAR(Industry, selected_layout,            SLE_UINT8,                 SLV_73, SL_MAX_VERSION),
-	SLE_CONDVAR(Industry, exclusive_supplier,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
-	SLE_CONDVAR(Industry, exclusive_consumer,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, founder, VarTypes::U8, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Industry, construction_date, VarTypes::I32, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Industry, construction_type, VarTypes::U8, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::MaxVersion),
+	SLEG_CONDVAR("last_cargo_accepted_at[0]", SlIndustryAccepted::old_last_accepted[0], VarTypes::I32, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SLEG_CONDARR("last_cargo_accepted_at", SlIndustryAccepted::old_last_accepted, VarTypes::I32, 16, SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
+	SLE_CONDVAR(Industry, selected_layout, VarTypes::U8, SaveLoadVersion::NewGRFIndustryLayout, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Industry, exclusive_supplier, VarTypes::U8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Industry, exclusive_consumer, VarTypes::U8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
 
-	SLEG_CONDARR("storage", _old_ind_persistent_storage.storage, SLE_UINT32, 16, SLV_76, SLV_161),
-	SLE_CONDREF(Industry, psa,                        REF_STORAGE,              SLV_161, SL_MAX_VERSION),
+	SLEG_CONDARR("storage", _old_ind_persistent_storage.storage, VarTypes::U32, 16, SaveLoadVersion::NewGRFPersistentStorage, SaveLoadVersion::PersistentStoragePool),
+	SLE_CONDREF(Industry, psa, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                SLV_82, SL_MAX_VERSION),
-	SLE_CONDSSTR(Industry, text,     SLE_STR | SLF_ALLOW_CONTROL,     SLV_INDUSTRY_TEXT, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, random, VarTypes::U16, SaveLoadVersion::NewGRFIndustryRandomTriggers, SaveLoadVersion::MaxVersion),
+	SLE_CONDSSTR(Industry, text, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::IndustryText, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(Industry, valid_history, SLE_UINT64, SLV_INDUSTRY_NUM_VALID_HISTORY, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, valid_history, VarTypes::U64, SaveLoadVersion::IndustryNumValidHistory, SaveLoadVersion::MaxVersion),
 
-	SLEG_CONDSTRUCTLIST("accepted", SlIndustryAccepted,                          SLV_INDUSTRY_CARGO_REORGANISE, SL_MAX_VERSION),
-	SLEG_CONDSTRUCTLIST("produced", SlIndustryProduced,                          SLV_INDUSTRY_CARGO_REORGANISE, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST("accepted", SlIndustryAccepted, SaveLoadVersion::IndustryCargoReorganise, SaveLoadVersion::MaxVersion),
+	SLEG_CONDSTRUCTLIST("produced", SlIndustryProduced, SaveLoadVersion::IndustryCargoReorganise, SaveLoadVersion::MaxVersion),
 };
 
 struct INDYChunkHandler : ChunkHandler {
-	INDYChunkHandler() : ChunkHandler('INDY', CH_TABLE) {}
+	INDYChunkHandler() : ChunkHandler("INDY", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -257,22 +261,22 @@ struct INDYChunkHandler : ChunkHandler {
 			SlObject(i, slt);
 
 			/* Before savegame version 161, persistent storages were not stored in a pool. */
-			if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_76)) {
+			if (IsSavegameVersionBefore(SaveLoadVersion::PersistentStoragePool) && !IsSavegameVersionBefore(SaveLoadVersion::NewGRFPersistentStorage)) {
 				/* Store the old persistent storage. The GRFID will be added later. */
 				assert(PersistentStorage::CanAllocateItem());
-				i->psa = PersistentStorage::Create(0, GSF_INVALID, TileIndex{});
+				i->psa = PersistentStorage::Create(GrfID{}, GrfSpecFeature::Invalid, TileIndex{});
 				std::copy(std::begin(_old_ind_persistent_storage.storage), std::end(_old_ind_persistent_storage.storage), std::begin(i->psa->storage));
 			}
-			if (IsSavegameVersionBefore(SLV_EXTEND_INDUSTRY_CARGO_SLOTS)) {
+			if (IsSavegameVersionBefore(SaveLoadVersion::ExtendIndustryCargoSlots)) {
 				LoadMoveAcceptsProduced(i, INDUSTRY_ORIGINAL_NUM_INPUTS, INDUSTRY_ORIGINAL_NUM_OUTPUTS);
-			} else if (IsSavegameVersionBefore(SLV_INDUSTRY_CARGO_REORGANISE)) {
+			} else if (IsSavegameVersionBefore(SaveLoadVersion::IndustryCargoReorganise)) {
 				LoadMoveAcceptsProduced(i, INDUSTRY_NUM_INPUTS, INDUSTRY_NUM_OUTPUTS);
 			}
 
-			if (IsSavegameVersionBefore(SLV_INDUSTRY_NUM_VALID_HISTORY)) {
+			if (IsSavegameVersionBefore(SaveLoadVersion::IndustryNumValidHistory)) {
 				/* The last month has always been recorded. */
 				size_t oldest_valid = LAST_MONTH;
-				if (!IsSavegameVersionBefore(SLV_PRODUCTION_HISTORY)) {
+				if (!IsSavegameVersionBefore(SaveLoadVersion::ProductionHistory)) {
 					/* History was extended but we did not keep track of valid history, so assume it from the oldest non-zero value. */
 					for (const auto &p : i->produced) {
 						if (!IsValidCargoType(p.cargo)) continue;
@@ -299,21 +303,21 @@ struct INDYChunkHandler : ChunkHandler {
 };
 
 struct IIDSChunkHandler : NewGRFMappingChunkHandler {
-	IIDSChunkHandler() : NewGRFMappingChunkHandler('IIDS', _industry_mngr) {}
+	IIDSChunkHandler() : NewGRFMappingChunkHandler("IIDS", _industry_mngr) {}
 };
 
 struct TIDSChunkHandler : NewGRFMappingChunkHandler {
-	TIDSChunkHandler() : NewGRFMappingChunkHandler('TIDS', _industile_mngr) {}
+	TIDSChunkHandler() : NewGRFMappingChunkHandler("TIDS", _industile_mngr) {}
 };
 
 /** Description of the data to save and load in #IndustryBuildData. */
 static const SaveLoad _industry_builder_desc[] = {
-	SLEG_VAR("wanted_inds", _industry_builder.wanted_inds, SLE_UINT32),
+	SLEG_VAR("wanted_inds", _industry_builder.wanted_inds, VarTypes::U32),
 };
 
 /** Industry builder. */
 struct IBLDChunkHandler : ChunkHandler {
-	IBLDChunkHandler() : ChunkHandler('IBLD', CH_TABLE) {}
+	IBLDChunkHandler() : ChunkHandler("IBLD", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -327,24 +331,24 @@ struct IBLDChunkHandler : ChunkHandler {
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_industry_builder_desc, _industry_builder_sl_compat);
 
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() == -1) return;
 		SlGlobList(slt);
-		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many IBLD entries");
+		if (!IsSavegameVersionBefore(SaveLoadVersion::RiffToArray) && SlIterateArray() != -1) SlErrorCorrupt("Too many IBLD entries");
 	}
 };
 
 /** Description of the data to save and load in #IndustryTypeBuildData. */
 static const SaveLoad _industrytype_builder_desc[] = {
-	SLE_VAR(IndustryTypeBuildData, probability,  SLE_UINT32),
-	SLE_VAR(IndustryTypeBuildData, min_number,   SLE_UINT8),
-	SLE_VAR(IndustryTypeBuildData, target_count, SLE_UINT16),
-	SLE_VAR(IndustryTypeBuildData, max_wait,     SLE_UINT16),
-	SLE_VAR(IndustryTypeBuildData, wait_count,   SLE_UINT16),
+	SLE_VAR(IndustryTypeBuildData, probability,  VarTypes::U32),
+	SLE_VAR(IndustryTypeBuildData, min_number,   VarTypes::U8),
+	SLE_VAR(IndustryTypeBuildData, target_count, VarTypes::U16),
+	SLE_VAR(IndustryTypeBuildData, max_wait,     VarTypes::U16),
+	SLE_VAR(IndustryTypeBuildData, wait_count,   VarTypes::U16),
 };
 
 /** Industry-type build data. */
 struct ITBLChunkHandler : ChunkHandler {
-	ITBLChunkHandler() : ChunkHandler('ITBL', CH_TABLE) {}
+	ITBLChunkHandler() : ChunkHandler("ITBL", ChunkType::Table) {}
 
 	void Save() const override
 	{

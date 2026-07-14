@@ -20,6 +20,21 @@ typedef uint16_t PacketSize; ///< Size of the whole packet.
 typedef uint8_t  PacketType; ///< Identifier for the packet
 
 /**
+ * Trait to mark an enumeration as a PacketType.
+ *
+ * All packets in the context of OpenTTD's protocols have the same basic structure.
+ * A single byte identifier of the packet and then two bytes for the length. That
+ * identifier is unique for each stream of packets, which are separate enumerations.
+ * This trait allows us to only allow one of these PacketType enumerations when
+ * creating the packet, but not any other enumeration. It is up to the developer to
+ * ensure that the right enumeration is used for a socket handler.
+ */
+template <typename enum_type>
+struct IsEnumPacketType {
+	static constexpr bool value = false; ///< True iff a PacketType.
+};
+
+/**
  * Internal entity of a packet. As everything is sent as a packet,
  * all network communication will need to call the functions that
  * populate the packet.
@@ -39,8 +54,8 @@ typedef uint8_t  PacketType; ///< Identifier for the packet
  *     (year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))
  */
 struct Packet {
-	static constexpr size_t EncodedLengthOfPacketSize() { return sizeof(PacketSize); }
-	static constexpr size_t EncodedLengthOfPacketType() { return sizeof(PacketType); }
+	static constexpr size_t ENCODED_LENGTH_OF_PACKET_SIZE = sizeof(PacketSize); ///< The length of the packet size in the byte stream once it's encoded.
+	static constexpr size_t ENCODED_LENGTH_OF_PACKET_TYPE = sizeof(PacketType); ///< The length of the packet type in the byte stream once it's encoded.
 private:
 	/** The current read/write position in the packet */
 	PacketSize pos;
@@ -53,8 +68,20 @@ private:
 	NetworkSocketHandler *cs;
 
 public:
-	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = EncodedLengthOfPacketSize());
+	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = Packet::ENCODED_LENGTH_OF_PACKET_SIZE);
 	Packet(NetworkSocketHandler *cs, PacketType type, size_t limit = COMPAT_MTU);
+
+	/**
+	 * Creates a packet to send
+	 * @param cs    The socket handler associated with the socket we are writing to; could be \c nullptr.
+	 * @param type  The type of the packet to send.
+	 * @param limit The maximum number of bytes the packet may have. Default is COMPAT_MTU.
+	 *              Be careful of compatibility with older clients/servers when changing
+	 *              the limit as it might break things if the other side is not expecting
+	 *              much larger packets than what they support.
+	 */
+	template <typename E, typename = std::enable_if_t<IsEnumPacketType<E>::value>>
+	Packet(NetworkSocketHandler *cs, E type, size_t limit = COMPAT_MTU) : Packet(cs, to_underlying(type), limit) {}
 
 	/* Sending/writing of packets */
 	void PrepareToSend();
@@ -62,6 +89,7 @@ public:
 	bool   CanWriteToPacket(size_t bytes_to_write);
 	void   Send_bool  (bool   data);
 	void   Send_uint8 (uint8_t  data);
+	/** @copydoc Packet::Send_uint8(uint8_t) */
 	void   Send_uint8 (const ConvertibleThroughBase auto &data) { this->Send_uint8(data.base()); }
 	void   Send_uint16(uint16_t data);
 	void   Send_uint32(uint32_t data);

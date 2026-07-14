@@ -12,10 +12,11 @@
 
 #include "base_media_base.h"
 
+/** Instantiation of BaseSetTraits for a SoundsSet. */
 template <> struct BaseSetTraits<struct SoundsSet> {
-	static constexpr size_t num_files = 1;
-	static constexpr bool search_in_tars = true;
-	static constexpr std::string_view set_type = "sounds";
+	static constexpr size_t num_files = 1; ///< Number of files in a sound set.
+	static constexpr bool search_in_tars = true; ///< Sounds can be in a tar file.
+	static constexpr std::string_view set_type = "sounds"; ///< The type of set.
 };
 
 /** All data of a sounds set. */

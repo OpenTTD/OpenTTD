@@ -71,7 +71,7 @@
 
 GrfSpecFeature RailTypeResolverObject::GetFeature() const
 {
-	return GSF_RAILTYPES;
+	return GrfSpecFeature::RailTypes;
 }
 
 uint32_t RailTypeResolverObject::GetDebugID() const
@@ -88,7 +88,7 @@ uint32_t RailTypeResolverObject::GetDebugID() const
  * @param param1 Extra parameter (first parameter of the callback, except railtypes do not have callbacks).
  * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
  */
-RailTypeResolverObject::RailTypeResolverObject(const RailTypeInfo *rti, TileIndex tile, TileContext context, RailTypeSpriteGroup rtsg, uint32_t param1, uint32_t param2)
+RailTypeResolverObject::RailTypeResolverObject(const RailTypeInfo *rti, TileIndex tile, TileContext context, RailSpriteType rtsg, uint32_t param1, uint32_t param2)
 	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), railtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
@@ -103,9 +103,9 @@ RailTypeResolverObject::RailTypeResolverObject(const RailTypeInfo *rti, TileInde
  * @param[out] num_results If not nullptr, return the number of sprites in the spriteset.
  * @return The sprite to draw.
  */
-SpriteID GetCustomRailSprite(const RailTypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context, uint *num_results)
+SpriteID GetCustomRailSprite(const RailTypeInfo *rti, TileIndex tile, RailSpriteType rtsg, TileContext context, uint *num_results)
 {
-	assert(rtsg < RTSG_END);
+	assert(rtsg < RailSpriteType::End);
 
 	if (rti->group[rtsg] == nullptr) return 0;
 
@@ -130,11 +130,11 @@ SpriteID GetCustomRailSprite(const RailTypeInfo *rti, TileIndex tile, RailTypeSp
  */
 SpriteID GetCustomSignalSprite(const RailTypeInfo *rti, TileIndex tile, SignalType type, SignalVariant var, SignalState state, bool gui)
 {
-	if (rti->group[RTSG_SIGNALS] == nullptr) return 0;
+	if (rti->group[RailSpriteType::Signals] == nullptr) return 0;
 
 	uint32_t param1 = gui ? 0x10 : 0x00;
-	uint32_t param2 = (type << 16) | (var << 8) | state;
-	RailTypeResolverObject object(rti, tile, TCX_NORMAL, RTSG_SIGNALS, param1, param2);
+	uint32_t param2 = (to_underlying(type) << 16) | (to_underlying(var) << 8) | to_underlying(state);
+	RailTypeResolverObject object(rti, tile, TileContext::Normal, RailSpriteType::Signals, param1, param2);
 
 	const auto *group = object.Resolve<ResultSpriteGroup>();
 	if (group == nullptr || group->num_sprites == 0) return 0;
@@ -212,24 +212,24 @@ void ConvertRailTypes()
 
 	for (const auto t : Map::Iterate()) {
 		switch (GetTileType(t)) {
-			case MP_RAILWAY:
+			case TileType::Railway:
 				SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				break;
 
-			case MP_ROAD:
+			case TileType::Road:
 				if (IsLevelCrossing(t)) {
 					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;
 
-			case MP_STATION:
+			case TileType::Station:
 				if (HasStationRail(t)) {
 					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;
 
-			case MP_TUNNELBRIDGE:
-				if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
+			case TileType::TunnelBridge:
+				if (GetTunnelBridgeTransportType(t) == TransportType::Rail) {
 					SetRailType(t, railtype_conversion_map[GetRailType(t)]);
 				}
 				break;
@@ -245,7 +245,7 @@ void SetCurrentRailTypeLabelList()
 {
 	_railtype_list.clear();
 
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+	for (RailType rt : EnumRange(RAILTYPE_END)) {
 		_railtype_list.emplace_back(GetRailTypeInfo(rt)->label, 0);
 	}
 }

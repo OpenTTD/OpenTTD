@@ -20,10 +20,10 @@ CommandCost CmdUpdateLeagueTableElementData(DoCommandFlags flags, LeagueTableEle
 CommandCost CmdUpdateLeagueTableElementScore(DoCommandFlags flags, LeagueTableElementID element, int64_t rating, const EncodedString &score);
 CommandCost CmdRemoveLeagueTableElement(DoCommandFlags flags, LeagueTableElementID element);
 
-DEF_CMD_TRAIT(CMD_CREATE_LEAGUE_TABLE, CmdCreateLeagueTable, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_CREATE_LEAGUE_TABLE_ELEMENT, CmdCreateLeagueTableElement, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_UPDATE_LEAGUE_TABLE_ELEMENT_DATA, CmdUpdateLeagueTableElementData, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_UPDATE_LEAGUE_TABLE_ELEMENT_SCORE, CmdUpdateLeagueTableElementScore, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
-DEF_CMD_TRAIT(CMD_REMOVE_LEAGUE_TABLE_ELEMENT, CmdRemoveLeagueTableElement, CommandFlag::Deity, CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::CreateLeagueTable, CmdCreateLeagueTable, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::CreateLeagueTableElement, CmdCreateLeagueTableElement, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::UpdateLeagueTableElementData, CmdUpdateLeagueTableElementData, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::UpdateLeagueTableElementScore, CmdUpdateLeagueTableElementScore, CommandFlags({CommandFlag::Deity, CommandFlag::StrCtrl}), CommandType::OtherManagement)
+DEF_CMD_TRAIT(Commands::RemoveLeagueTableElement, CmdRemoveLeagueTableElement, CommandFlag::Deity, CommandType::OtherManagement)
 
 #endif /* LEAGUE_CMD_H */

@@ -25,7 +25,7 @@
  */
 static ChangeInfoResult IgnoreRoadStopProperty(uint prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	switch (prop) {
 		case 0x09:
@@ -59,7 +59,7 @@ static ChangeInfoResult IgnoreRoadStopProperty(uint prop, ByteReader &buf)
 			break;
 
 		default:
-			ret = CIR_UNKNOWN;
+			ret = ChangeInfoResult::Unknown;
 			break;
 	}
 
@@ -68,11 +68,11 @@ static ChangeInfoResult IgnoreRoadStopProperty(uint prop, ByteReader &buf)
 
 static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, ByteReader &buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_ROADSTOPS_PER_GRF) {
 		GrfMsg(1, "RoadStopChangeInfo: RoadStop {} is invalid, max {}, ignoring", last, NUM_ROADSTOPS_PER_GRF);
-		return CIR_INVALID_ID;
+		return ChangeInfoResult::InvalidId;
 	}
 
 	if (_cur_gps.grffile->roadstops.size() < last) _cur_gps.grffile->roadstops.resize(last);
@@ -88,15 +88,13 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 		}
 
 		switch (prop) {
-			case 0x08: { // Road Stop Class ID
+			case 0x08: // Road Stop Class ID
 				if (rs == nullptr) {
 					rs = std::make_unique<RoadStopSpec>();
 				}
 
-				uint32_t classid = buf.ReadDWord();
-				rs->class_index = RoadStopClass::Allocate(std::byteswap(classid));
+				rs->class_index = RoadStopClass::Allocate(buf.ReadLabel<RoadStopClass::GlobalID>());
 				break;
-			}
 
 			case 0x09: // Road stop type
 				rs->stop_type = (RoadStopAvailabilityType)buf.ReadByte();
@@ -169,11 +167,11 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x16: // Badge list
-				rs->badges = ReadBadgeList(buf, GSF_ROADSTOPS);
+				rs->badges = ReadBadgeList(buf, GrfSpecFeature::RoadStops);
 				break;
 
 			default:
-				ret = CIR_UNKNOWN;
+				ret = ChangeInfoResult::Unknown;
 				break;
 		}
 	}
@@ -181,5 +179,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 	return ret;
 }
 
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADSTOPS>::Reserve(uint, uint, int, ByteReader &) { return CIR_UNHANDLED; }
-template <> ChangeInfoResult GrfChangeInfoHandler<GSF_ROADSTOPS>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadStopChangeInfo(first, last, prop, buf); }
+/** @copybrief GrfChangeInfoHandler::Reserve @return Always ChangeInfoResult::Unhandled. */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::RoadStops>::Reserve(uint, uint, int, ByteReader &) { return ChangeInfoResult::Unhandled; }
+/** @copydoc GrfChangeInfoHandler::Activation */
+template <> ChangeInfoResult GrfChangeInfoHandler<GrfSpecFeature::RoadStops>::Activation(uint first, uint last, int prop, ByteReader &buf) { return RoadStopChangeInfo(first, last, prop, buf); }

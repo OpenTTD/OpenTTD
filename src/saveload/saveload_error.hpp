@@ -18,7 +18,7 @@
 
 /**
  * Issue an SlErrorCorrupt with a format string.
- * @param format_string The formatting string to tell what to do with the remaining arguments.
+ * @param format The formatting string to tell what to do with the remaining arguments.
  * @param fmt_args The arguments to be passed to fmt.
  * @tparam Args The types of the fmt arguments.
  * @note This function does never return as it throws an exception to

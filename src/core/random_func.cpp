@@ -71,7 +71,7 @@ void SetRandomSeed(uint32_t seed)
 #ifdef RANDOM_DEBUG
 uint32_t Random(const std::source_location location)
 {
-	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != NetworkClientSocket::STATUS_INACTIVE))) {
+	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != NetworkClientSocket::ClientStatus::Inactive))) {
 		Debug(random, 0, "{:08x}; {:02x}; {:04x}; {:02x}; {}:{}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _frame_counter, _current_company, location.file_name(), location.line());
 	}
 

@@ -23,7 +23,7 @@ struct LoadFilter {
 	{
 	}
 
-	/** Make sure the writers are properly closed. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~LoadFilter() = default;
 
 	/**
@@ -47,6 +47,7 @@ struct LoadFilter {
  * Instantiator for a load filter.
  * @param chain The next filter in this chain.
  * @tparam T    The type of load filter to create.
+ * @return The created load filter.
  */
 template <typename T> std::shared_ptr<LoadFilter> CreateLoadFilter(std::shared_ptr<LoadFilter> chain)
 {
@@ -66,7 +67,7 @@ struct SaveFilter {
 	{
 	}
 
-	/** Make sure the writers are properly closed. */
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~SaveFilter() = default;
 
 	/**
@@ -74,7 +75,7 @@ struct SaveFilter {
 	 * @param buf The bytes to write.
 	 * @param len The number of bytes to write.
 	 */
-	virtual void Write(uint8_t *buf, size_t len) = 0;
+	virtual void Write(const uint8_t *buf, size_t len) = 0;
 
 	/**
 	 * Prepare everything to finish writing the savegame.
@@ -90,6 +91,7 @@ struct SaveFilter {
  * @param chain             The next filter in this chain.
  * @param compression_level The requested level of compression.
  * @tparam T                The type of save filter to create.
+ * @return The created save filter.
  */
 template <typename T> std::shared_ptr<SaveFilter> CreateSaveFilter(std::shared_ptr<SaveFilter> chain, uint8_t compression_level)
 {

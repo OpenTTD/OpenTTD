@@ -23,14 +23,14 @@ CommandCost CmdCloneOrder(DoCommandFlags flags, CloneOptions action, VehicleID v
 CommandCost CmdMoveOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
 CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID user_id);
 
-DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CommandFlag::Location, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CommandFlag::Location, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CommandFlag::Location, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CommandFlag::Location, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CommandFlag::Location, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CommandFlag::Location, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CommandFlag::Location, CommandType::RouteManagement)
-DEF_CMD_TRAIT(CMD_CLEAR_ORDER_BACKUP, CmdClearOrderBackup,  CommandFlag::ClientID, CommandType::ServerSetting)
+DEF_CMD_TRAIT(Commands::ModifyOrder, CmdModifyOrder, CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::SkipToOrder, CmdSkipToOrder, CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::DeleteOrder, CmdDeleteOrder, CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::InsertOrder, CmdInsertOrder, CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::OrderRefit, CmdOrderRefit, CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::CloneOrder, CmdCloneOrder, CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::MoveOrder, CmdMoveOrder, CommandFlag::Location, CommandType::RouteManagement)
+DEF_CMD_TRAIT(Commands::ClearOrderBackup, CmdClearOrderBackup, CommandFlag::ClientID, CommandType::ServerSetting)
 
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Order &order)

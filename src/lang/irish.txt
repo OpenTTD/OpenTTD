@@ -1201,8 +1201,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Socraigh leibh�
 STR_CONFIG_SETTING_RECESSIONS                                   :Cúluithe eacnamaíochta: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Má dhéantar seo a chumasú, féadfaidh cúluithe a bheith ann gach cúpla bliain. Le linn cúlú, bíonn an táirgeadh ar fad cuid mhaith níos ísle (téann sé ar ais chuig an leibhéal roimhe sin nuair a bheidh an cúlú thart)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ná ceadaigh cúlú traenacha i stáisiúin: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Má tá sé cumasaithe, ní rachaidh traenacha ar cúl i stáisiúin nach ceannstáisiúin iad, fiú má tá bealach níos giorra chuig an chéad cheann scríbe eile má dhéanann siad sin
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Tubaistí: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Cuir tubaistí, ar féidir leo feithiclí nó bonneagar a bhlocáil nó a scriosadh anois is arís, ar siúl nó as
@@ -1382,6 +1382,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Má dhéantar �
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Déan uathathnuachan ar an bhfeithicil nuair a éiríonn sé sean: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Má tá sé cumasaithe, déantar feithicil atá ag teacht chuig deireadh a ré a ionadú go huathoibríoch má tá na coinníollacha athnuachana comhlíonta
@@ -1591,12 +1593,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Taispeáin na h
 STR_CONFIG_SETTING_QUICKGOTO                                    :Orduithe feithiclí a chruthú go scioptha: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Réamh-roghnaigh 'téigh chuig cursóir' nuair a dhéantar fuinneog na n-orduithe a oscailt
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Cineál ráille réamhshocraithe (tar éis cluiche nua/cluiche a lódáil): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :An cineál iarnróid a roghnófar tar éis cluiche a thosú nó a lodáil. 'an chéad cheann atá ar fáil': roghnaíonn seo an cineál iarnróid is sine. 'an ceann deireanach atá ar fáil': roghnaíonn seo an cineál iarnróid is nuaí. 'an ceann is mó úsáide': roghnaíonn seo an cineál is mó atá in úsáid faoi láthair
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :An chéad cheann atá ar fáil
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :An cheann deiridh atá ar fáil
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ceann is mó a úsáidtear
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Taispeáin cosáin forchoimeádta iarnróid: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Tabhair dath difriúil ar iarnróid forchoimeádta le cabhrú le fadhbanna le traenacha a dhiúltaíonn dul isteach i mbloic atá bunaithe ar chosáin
@@ -1693,6 +1690,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Má tá sé cum
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cumasaigh teorainneacha luais vaigíní: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Má tá sé cumasaithe, úsáid teorainneacha luais na vaigíní freisin chun luas uasta traenacha a shocrú
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Díchumasaigh ráillí leictreacha: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Má dhéantar an socrú seo a chumasú ní bheidh sé riachtanach iarnróid a leictriú chun go mbeidh traenacha leictreacha in ann taisteal orthu
@@ -1993,7 +1991,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ag t
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ag tabhairt neamhaird ar an tsraith Bhunfhuaimeanna '{STRING}': níor aimsíodh í
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ag tabhairt neamhaird ar an tsraith Bhuncheoil '{STRING}': níor aimsíodh í
 
-# Video initalization errors
+# Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Earráid leis na socruithe físeáin...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... níor aimsaíodh GPU comhoiriúnach. Luasghéarú cura-earraí díchumasaithe
 
@@ -2218,15 +2216,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} {P
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} íoslódáilte go dtí seo
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} íoslódáilte go dtí seo
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Ag nascadh..
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Ag údarú..
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Ag fanacht..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Ag íoslódáil na léarscáile..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Ag próiseáil sonraí..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Ag clárú..
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ag fáil faisnéis an chluiche..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ag fáil faisnéis cuideachtaí..
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Dínasc
 
@@ -2558,6 +2554,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Fad an a
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Roghnaigh fad an stáisiúin iarnróid
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tarraing & Scaoil
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tóg stáisiún ag úsáid tarraing & scaoil
+
+
 
 
 
@@ -3739,6 +3737,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Iarracht
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Raon: {GOLD}{COMMA} tíl
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Cineál aerárthaigh: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3896,6 +3896,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tá tú
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Teachtaireacht ó dhéantóir feithiclí
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Táimid díreach tar éis {STRING} nua a dhearadh - an mbeadh suim agat úsáid eisiach a bhaint as ar feadh bliana, le go mbeimid in ann a fheiceáil mar a fheidhmíonn sé sula gcuirfimid ar fáil do chách é?
+
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :inneall gluaiste iarnróid
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :inneall gluaiste iarnróid leictrithe
@@ -4056,7 +4057,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Meáchan
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Meáchan: {LTBLUE}{WEIGHT_SHORT} {BLACK}Cumhacht: {LTBLUE}{POWER}{BLACK} Uas-luas: {LTBLUE}{VELOCITY} {BLACK}T.E. Uasta: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Brabús i mbliana: {LTBLUE}{CURRENCY_LONG} (anuraidh: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Iontaofacht: {LTBLUE}{COMMA}%  {BLACK}Líon na gcliseadh ón seirbhísiú deiridh: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Tógtha: {LTBLUE}{NUM}{BLACK} Luach: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Lastas: {LTBLUE}Gan lastas{STRING}
@@ -4179,7 +4179,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sonraí feithicle a bhunófar an léim air
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Céatadán lódáilte
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Iontaofacht
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luas uasta
@@ -4551,7 +4551,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ní féi
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ní féidir an baile a athainmniú...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ní féidir baile a bhunú anseo...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ní féidir an baile a fhairsingiú...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... roghearr to thaobh na léarscáile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... roghearr do bhaile eile
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... an iomarca bailte
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... níl a thuilleadh spáis ar an léarscáil

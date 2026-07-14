@@ -61,26 +61,24 @@ static void DisasterClearSquare(TileIndex tile)
 	if (EnsureNoVehicleOnGround(tile).Failed()) return;
 
 	switch (GetTileType(tile)) {
-		case MP_RAILWAY:
+		case TileType::Railway:
 			if (Company::IsHumanID(GetTileOwner(tile)) && !IsRailDepot(tile)) {
-				Backup<CompanyID> cur_company(_current_company, OWNER_WATER);
-				Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, tile);
-				cur_company.Restore();
+				AutoRestoreBackup cur_company(_current_company, OWNER_WATER);
+				Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile);
 
 				/* update signals in buffer */
 				UpdateSignalsInBuffer();
 			}
 			break;
 
-		case MP_HOUSE: {
-			Backup<CompanyID> cur_company(_current_company, OWNER_NONE);
-			Command<CMD_LANDSCAPE_CLEAR>::Do(DoCommandFlag::Execute, tile);
-			cur_company.Restore();
+		case TileType::House: {
+			AutoRestoreBackup cur_company(_current_company, OWNER_NONE);
+			Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile);
 			break;
 		}
 
-		case MP_TREES:
-		case MP_CLEAR:
+		case TileType::Trees:
+		case TileType::Clear:
 			DoClearSquare(tile);
 			break;
 
@@ -89,17 +87,27 @@ static void DisasterClearSquare(TileIndex tile)
 	}
 }
 
-static const SpriteID _disaster_images_1[] = {SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP};
-static const SpriteID _disaster_images_2[] = {SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT};
-static const SpriteID _disaster_images_3[] = {SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15};
-static const SpriteID _disaster_images_4[] = {SPR_SUB_SMALL_NE, SPR_SUB_SMALL_NE, SPR_SUB_SMALL_SE, SPR_SUB_SMALL_SE, SPR_SUB_SMALL_SW, SPR_SUB_SMALL_SW, SPR_SUB_SMALL_NW, SPR_SUB_SMALL_NW};
-static const SpriteID _disaster_images_5[] = {SPR_SUB_LARGE_NE, SPR_SUB_LARGE_NE, SPR_SUB_LARGE_SE, SPR_SUB_LARGE_SE, SPR_SUB_LARGE_SW, SPR_SUB_LARGE_SW, SPR_SUB_LARGE_NW, SPR_SUB_LARGE_NW};
-static const SpriteID _disaster_images_6[] = {SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER};
-static const SpriteID _disaster_images_7[] = {SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER};
-static const SpriteID _disaster_images_8[] = {SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A};
-static const SpriteID _disaster_images_9[] = {SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1};
+/** Sprites for blimp */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_1{SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP, SPR_BLIMP};
+/** Sprites for small UFO */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_2{SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT, SPR_UFO_SMALL_SCOUT};
+/** Sprites for combat aircraft */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_3{SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15, SPR_F_15};
+/** Sprites for small submarine */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_4{SPR_SUB_SMALL_NE, SPR_SUB_SMALL_NE, SPR_SUB_SMALL_SE, SPR_SUB_SMALL_SE, SPR_SUB_SMALL_SW, SPR_SUB_SMALL_SW, SPR_SUB_SMALL_NW, SPR_SUB_SMALL_NW};
+/** Sprites for large submarine */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_5{SPR_SUB_LARGE_NE, SPR_SUB_LARGE_NE, SPR_SUB_LARGE_SE, SPR_SUB_LARGE_SE, SPR_SUB_LARGE_SW, SPR_SUB_LARGE_SW, SPR_SUB_LARGE_NW, SPR_SUB_LARGE_NW};
+/** Sprites for large UFO */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_6{SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER, SPR_UFO_HARVESTER};
+/** Sprites for large UFO destroyer */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_7{SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER, SPR_XCOM_SKYRANGER};
+/** Sprites for combat helicopter */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_8{SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A, SPR_AH_64A};
+/** Sprites for combat helicopter rotor */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images_9{SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1, SPR_ROTOR_MOVING_1};
 
-static const SpriteID * const _disaster_images[] = {
+/** Sprites for each disaster vehicle. */
+static constexpr DirectionIndexArray<SpriteID> _disaster_images[] = {
 	_disaster_images_1, _disaster_images_1,                     ///< zeppeliner and zeppeliner shadow
 	_disaster_images_2, _disaster_images_2,                     ///< small ufo and small ufo shadow
 	_disaster_images_3, _disaster_images_3,                     ///< combat aircraft and shadow
@@ -219,8 +227,9 @@ void DisasterVehicle::UpdatePosition(int x, int y, int z)
  * 0: Zeppeliner initialization has found an airport, go there and crash
  * 1: Create crash and animate falling down for extra dramatic effect
  * 2: Create more smoke and leave debris on ground
- * 2: Clear the runway after some time and remove crashed zeppeliner
+ * 3: Clear the runway after some time and remove crashed zeppeliner
  * If not airport was found, only state 0 is reached until zeppeliner leaves map
+ * @copydoc DisasterVehicleTickProc
  */
 static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 {
@@ -257,6 +266,10 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		}
 
 		return true;
+	}
+
+	if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
+		Station::GetByTile(v->tile)->airport.blocks.Set({AirportBlock::Zeppeliner, AirportBlock::RunwayIn});
 	}
 
 	if (v->state > 2) {
@@ -300,10 +313,6 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 		v->age = CalendarTime::MIN_DATE;
 	}
 
-	if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
-		Station::GetByTile(v->tile)->airport.blocks.Reset({AirportBlock::Zeppeliner, AirportBlock::RunwayIn});
-	}
-
 	return true;
 }
 
@@ -337,7 +346,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *ufo)
 
 		uint n = 0; // Total number of targetable road vehicles.
 		for (const Company *c : Company::Iterate()) {
-			n += c->group_all[VEH_ROAD].num_vehicle;
+			n += c->group_all[VehicleType::Road].num_vehicle;
 		}
 
 		if (n == 0) {
@@ -367,7 +376,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *ufo)
 	} else {
 		/* Target a vehicle */
 		RoadVehicle *target = RoadVehicle::Get(ufo->dest_tile.base());
-		assert(target != nullptr && target->type == VEH_ROAD && target->IsFrontEngine());
+		assert(target != nullptr && target->type == VehicleType::Road && target->IsFrontEngine());
 
 		uint dist = Delta(ufo->x_pos, target->x_pos) + Delta(ufo->y_pos, target->y_pos);
 
@@ -432,6 +441,7 @@ static void DestructIndustry(Industry *i)
  * @param leave_at_top True iff the vehicle leaves the map at the north side.
  * @param news_message The string that's used as news message.
  * @param behaviour Only attack industries that have this behaviour set.
+ * @return \c true iff the vehicle still exists, i.e. has not been destroyed.
  */
 static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, bool leave_at_top, StringID news_message, IndustryBehaviour behaviour)
 {
@@ -479,7 +489,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 		if ((uint)x > Map::MaxX() * TILE_SIZE - 1) return true;
 
 		TileIndex tile = TileVirtXY(x, y);
-		if (!IsTileType(tile, MP_INDUSTRY)) return true;
+		if (!IsTileType(tile, TileType::Industry)) return true;
 
 		IndustryID ind = GetIndustryIndex(tile);
 		v->dest_tile = TileIndex{ind.base()};
@@ -493,19 +503,19 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16_t image_override, b
 	return true;
 }
 
-/** Airplane handling. */
+/** Airplane handling. @copydoc DisasterVehicleTickProc */
 static bool DisasterTick_Airplane(DisasterVehicle *v)
 {
 	return DisasterTick_Aircraft(v, SPR_F_15_FIRING, true, STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY, IndustryBehaviour::AirplaneAttacks);
 }
 
-/** Helicopter handling. */
+/** Helicopter handling. @copydoc DisasterVehicleTickProc */
 static bool DisasterTick_Helicopter(DisasterVehicle *v)
 {
 	return DisasterTick_Aircraft(v, SPR_AH_64A_FIRING, false, STR_NEWS_DISASTER_HELICOPTER_FACTORY, IndustryBehaviour::ChopperAttacks);
 }
 
-/** Helicopter rotor blades; keep these spinning */
+/** Helicopter rotor blades; keep these spinning. @copydoc DisasterVehicleTickProc */
 static bool DisasterTick_Helicopter_Rotors(DisasterVehicle *v)
 {
 	v->tick_counter++;
@@ -523,7 +533,8 @@ static bool DisasterTick_Helicopter_Rotors(DisasterVehicle *v)
  * (Big) Ufo handling, v->state states:
  * 0: Fly around to the middle of the map, then randomly for a while and home in on a piece of rail
  * 1: Land there and breakdown all trains in a radius of 12 tiles; and now we wait...
- *    because as soon as the Ufo lands, a fighter jet, a Skyranger, is called to clear up the mess
+ *    because as soon as the Ufo lands, a fighter jet, a Skyranger, is called to clear up the mess.
+ * @copydoc DisasterVehicleTickProc
  */
 static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 {
@@ -570,8 +581,8 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 			delete v;
 			return false;
 		}
-		DisasterVehicle *u = DisasterVehicle::Create(-6 * (int)TILE_SIZE, v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER, v->index);
-		DisasterVehicle *w = DisasterVehicle::Create(-6 * (int)TILE_SIZE, v->y_pos, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
+		DisasterVehicle *u = DisasterVehicle::Create(-6 * (int)TILE_SIZE, v->y_pos, Direction::SW, ST_BIG_UFO_DESTROYER, v->index);
+		DisasterVehicle *w = DisasterVehicle::Create(-6 * (int)TILE_SIZE, v->y_pos, Direction::SW, ST_BIG_UFO_DESTROYER_SHADOW);
 		u->SetNext(w);
 	} else if (v->state == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
@@ -624,7 +635,8 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 
 /**
  * Skyranger destroying (Big) Ufo handling, v->state states:
- * 0: Home in on landed Ufo and shoot it down
+ * 0: Home in on landed Ufo and shoot it down.
+ * @copydoc DisasterVehicleTickProc
  */
 static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 {
@@ -670,7 +682,8 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 
 /**
  * Submarine, v->state states:
- * Unused, just float around aimlessly and pop up at different places, turning around
+ * Unused, just float around aimlessly and pop up at different places, turning around.
+ * @copydoc DisasterVehicleTickProc
  */
 static bool DisasterTick_Submarine(DisasterVehicle *v)
 {
@@ -685,7 +698,7 @@ static bool DisasterTick_Submarine(DisasterVehicle *v)
 
 	TileIndex tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile)) {
-		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
+		TrackBits trackbits = TrackdirBitsToTrackBits(GetTileTrackStatus(tile, TransportType::Water, RoadTramType::Invalid).trackdirs);
 		if (trackbits == TRACK_BIT_ALL && !Chance16(1, 90)) {
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			v->UpdatePosition(gp.x, gp.y, v->z_pos);
@@ -693,18 +706,24 @@ static bool DisasterTick_Submarine(DisasterVehicle *v)
 		}
 	}
 
-	v->direction = ChangeDir(v->direction, GB(Random(), 0, 1) ? DIRDIFF_90RIGHT : DIRDIFF_90LEFT);
+	v->direction = ChangeDir(v->direction, GB(Random(), 0, 1) ? DirDiff::Right90 : DirDiff::Left90);
 
 	return true;
 }
 
 
-static bool DisasterTick_NULL(DisasterVehicle *)
+/** No-op vehicle tick. @copydoc DisasterVehicleTickProc */
+static bool DisasterTick_NULL([[maybe_unused]] DisasterVehicle *v)
 {
 	return true;
 }
 
-typedef bool DisasterVehicleTickProc(DisasterVehicle *v);
+/**
+ * Perform any actions for a given vehicle.
+ * @param v The vehicle to check.
+ * @return \c true iff the vehicle still exists, i.e. has not been destroyed.
+ */
+using DisasterVehicleTickProc = bool(DisasterVehicle *v);
 
 static DisasterVehicleTickProc * const _disastervehicle_tick_procs[] = {
 	DisasterTick_Zeppeliner, DisasterTick_NULL,
@@ -744,9 +763,9 @@ static void Disaster_Zeppeliner_Init()
 		}
 	}
 
-	DisasterVehicle *v = DisasterVehicle::Create(x, 0, DIR_SE, ST_ZEPPELINER);
+	DisasterVehicle *v = DisasterVehicle::Create(x, 0, Direction::SE, ST_ZEPPELINER);
 	/* Allocate shadow */
-	DisasterVehicle *u = DisasterVehicle::Create(x, 0, DIR_SE, ST_ZEPPELINER_SHADOW);
+	DisasterVehicle *u = DisasterVehicle::Create(x, 0, Direction::SE, ST_ZEPPELINER_SHADOW);
 	v->SetNext(u);
 }
 
@@ -760,16 +779,16 @@ static void Disaster_Small_Ufo_Init()
 	if (!Vehicle::CanAllocateItem(2)) return;
 
 	int x = TileX(RandomTile()) * TILE_SIZE + TILE_SIZE / 2;
-	DisasterVehicle *v = DisasterVehicle::Create(x, 0, DIR_SE, ST_SMALL_UFO);
+	DisasterVehicle *v = DisasterVehicle::Create(x, 0, Direction::SE, ST_SMALL_UFO);
 	v->dest_tile = TileXY(Map::SizeX() / 2, Map::SizeY() / 2);
 
 	/* Allocate shadow */
-	DisasterVehicle *u = DisasterVehicle::Create(x, 0, DIR_SE, ST_SMALL_UFO_SHADOW);
+	DisasterVehicle *u = DisasterVehicle::Create(x, 0, Direction::SE, ST_SMALL_UFO_SHADOW);
 	v->SetNext(u);
 }
 
 
-/* Combat airplane which destroys an oil refinery */
+/** Combat airplane which destroys an oil refinery. */
 static void Disaster_Airplane_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
@@ -789,8 +808,8 @@ static void Disaster_Airplane_Init()
 	int x = (Map::SizeX() + 9) * TILE_SIZE - 1;
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
-	DisasterVehicle *v = DisasterVehicle::Create(x, y, DIR_NE, ST_AIRPLANE);
-	DisasterVehicle *u = DisasterVehicle::Create(x, y, DIR_NE, ST_AIRPLANE_SHADOW);
+	DisasterVehicle *v = DisasterVehicle::Create(x, y, Direction::NE, ST_AIRPLANE);
+	DisasterVehicle *u = DisasterVehicle::Create(x, y, Direction::NE, ST_AIRPLANE_SHADOW);
 	v->SetNext(u);
 }
 
@@ -814,17 +833,16 @@ static void Disaster_Helicopter_Init()
 	int x = -16 * (int)TILE_SIZE;
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
-	DisasterVehicle *v = DisasterVehicle::Create(x, y, DIR_SW, ST_HELICOPTER);
-	DisasterVehicle *u = DisasterVehicle::Create(x, y, DIR_SW, ST_HELICOPTER_SHADOW);
+	DisasterVehicle *v = DisasterVehicle::Create(x, y, Direction::SW, ST_HELICOPTER);
+	DisasterVehicle *u = DisasterVehicle::Create(x, y, Direction::SW, ST_HELICOPTER_SHADOW);
 	v->SetNext(u);
 
-	DisasterVehicle *w = DisasterVehicle::Create(x, y, DIR_SW, ST_HELICOPTER_ROTORS);
+	DisasterVehicle *w = DisasterVehicle::Create(x, y, Direction::SW, ST_HELICOPTER_ROTORS);
 	u->SetNext(w);
 }
 
 
-/* Big Ufo which lands on a piece of rail and will consequently be shot
- * down by a combat airplane, destroying the surroundings */
+/** Big Ufo which lands on a piece of rail and will consequently be shot down by a combat airplane, destroying the surroundings. */
 static void Disaster_Big_Ufo_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
@@ -832,15 +850,19 @@ static void Disaster_Big_Ufo_Init()
 	int x = TileX(RandomTile()) * TILE_SIZE + TILE_SIZE / 2;
 	int y = Map::MaxX() * TILE_SIZE - 1;
 
-	DisasterVehicle *v = DisasterVehicle::Create(x, y, DIR_NW, ST_BIG_UFO);
+	DisasterVehicle *v = DisasterVehicle::Create(x, y, Direction::NW, ST_BIG_UFO);
 	v->dest_tile = TileXY(Map::SizeX() / 2, Map::SizeY() / 2);
 
 	/* Allocate shadow */
-	DisasterVehicle *u = DisasterVehicle::Create(x, y, DIR_NW, ST_BIG_UFO_SHADOW);
+	DisasterVehicle *u = DisasterVehicle::Create(x, y, Direction::NW, ST_BIG_UFO_SHADOW);
 	v->SetNext(u);
 }
 
 
+/**
+ * Initialise a submarine.
+ * @param subtype The sub type of submarine.
+ */
 static void Disaster_Submarine_Init(DisasterSubType subtype)
 {
 	if (!Vehicle::CanAllocateItem()) return;
@@ -852,25 +874,25 @@ static void Disaster_Submarine_Init(DisasterSubType subtype)
 
 	if (HasBit(r, 31)) {
 		y = Map::MaxY() * TILE_SIZE - TILE_SIZE / 2 - 1;
-		dir = DIR_NW;
+		dir = Direction::NW;
 	} else {
 		y = TILE_SIZE / 2;
 		if (_settings_game.construction.freeform_edges) y += TILE_SIZE;
-		dir = DIR_SE;
+		dir = Direction::SE;
 	}
 	if (!IsWaterTile(TileVirtXY(x, y))) return;
 
 	DisasterVehicle::Create(x, y, dir, subtype);
 }
 
-/* Curious submarine #1, just floats around */
+/** Curious submarine #1, just floats around. */
 static void Disaster_Small_Submarine_Init()
 {
 	Disaster_Submarine_Init(ST_SMALL_SUBMARINE);
 }
 
 
-/* Curious submarine #2, just floats around */
+/** Curious submarine #2, just floats around. */
 static void Disaster_Big_Submarine_Init()
 {
 	Disaster_Submarine_Init(ST_BIG_SUBMARINE);
@@ -884,9 +906,8 @@ static void Disaster_Big_Submarine_Init()
 static void Disaster_CoalMine_Init()
 {
 	int index = GB(Random(), 0, 4);
-	uint m;
 
-	for (m = 0; m < 15; m++) {
+	for (uint m = 0; m < 15; m++) {
 		for (const Industry *i : Industry::Iterate()) {
 			if (GetIndustrySpec(i->type)->behaviour.Test(IndustryBehaviour::CanSubsidence) && --index < 0) {
 				AddTileNewsItem(GetEncodedString(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE, i->town->index), NewsType::Accident, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
@@ -907,13 +928,15 @@ static void Disaster_CoalMine_Init()
 	}
 }
 
-struct Disaster {
+/** Initialisation function and time period to run the different disasters. */
+struct DisasterCreation {
 	DisasterInitProc *init_proc;      ///< The init function for this disaster.
 	TimerGameCalendar::Year min_year; ///< The first year this disaster will occur.
 	TimerGameCalendar::Year max_year; ///< The last year this disaster will occur.
 };
 
-static const Disaster _disasters[] = {
+/** Table per disaster subtype when to create disasters, and how to create them. */
+static const DisasterCreation _disasters[] = {
 	{Disaster_Zeppeliner_Init,      TimerGameCalendar::Year{1930}, TimerGameCalendar::Year{1955}}, // zeppeliner
 	{Disaster_Small_Ufo_Init,       TimerGameCalendar::Year{1940}, TimerGameCalendar::Year{1970}}, // ufo {small}
 	{Disaster_Airplane_Init,        TimerGameCalendar::Year{1960}, TimerGameCalendar::Year{1990}}, // airplane
@@ -924,6 +947,7 @@ static const Disaster _disasters[] = {
 	{Disaster_CoalMine_Init,        TimerGameCalendar::Year{1950}, TimerGameCalendar::Year{1985}}, // coalmine
 };
 
+/** Create a random disaster, if there is one available. */
 static void DoDisaster()
 {
 	std::vector<DisasterInitProc *> available_disasters;
@@ -939,13 +963,14 @@ static void DoDisaster()
 	available_disasters[RandomRange(static_cast<uint32_t>(available_disasters.size()))]();
 }
 
-
+/** Resets the introduction of the next disaster. */
 static void ResetDisasterDelay()
 {
 	_disaster_delay = GB(Random(), 0, 9) + 730;
 }
 
-static const IntervalTimer<TimerGameEconomy> _economy_disaster_daily({TimerGameEconomy::DAY, TimerGameEconomy::Priority::DISASTER}, [](auto)
+/** Daily trigger to check whether to add a new disaster. */
+static const IntervalTimer<TimerGameEconomy> _economy_disaster_daily({TimerGameEconomy::Trigger::Day, TimerGameEconomy::Priority::Disaster}, [](auto)
 {
 	if (--_disaster_delay != 0) return;
 
@@ -954,6 +979,7 @@ static const IntervalTimer<TimerGameEconomy> _economy_disaster_daily({TimerGameE
 	if (_settings_game.difficulty.disasters != 0) DoDisaster();
 });
 
+/** Starts up disasters. */
 void StartupDisasters()
 {
 	ResetDisasterDelay();
@@ -985,6 +1011,7 @@ void ReleaseDisasterVehicle(VehicleID vehicle)
 	if (v == nullptr) return;
 
 	/* primary disaster vehicles that have chosen target */
+	assert(v->type == VehicleType::Disaster);
 	assert(v->subtype == ST_SMALL_UFO);
 	assert(v->state != 0);
 

@@ -24,7 +24,7 @@
 
 /* static */ StationID ScriptWaypoint::GetWaypointID(TileIndex tile)
 {
-	if (!::IsValidTile(tile) || !::IsTileType(tile, MP_STATION) || ::Waypoint::GetByTile(tile) == nullptr) return StationID::Invalid();
+	if (!::IsValidTile(tile) || !::IsTileType(tile, TileType::Station) || ::Waypoint::GetByTile(tile) == nullptr) return StationID::Invalid();
 	return ::GetStationIndex(tile);
 }
 

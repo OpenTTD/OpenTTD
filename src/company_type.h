@@ -57,31 +57,29 @@ struct CompanyManagerFace {
 };
 
 /** The reason why the company was removed. */
-enum CompanyRemoveReason : uint8_t {
-	CRR_MANUAL,    ///< The company is manually removed.
-	CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
-	CRR_BANKRUPT,  ///< The company went belly-up.
+enum class CompanyRemoveReason : uint8_t {
+	Manual, ///< The company is manually removed.
+	Autoclean, ///< The company is removed due to autoclean.
+	Bankrupt, ///< The company went belly-up.
 
-	CRR_END,       ///< Sentinel for end.
+	End, ///< Sentinel for end.
 
-	CRR_NONE = CRR_MANUAL, ///< Dummy reason for actions that don't need one.
+	None = Manual, ///< Dummy reason for actions that don't need one.
 };
 
-/** The action to do with CMD_COMPANY_CTRL. */
-enum CompanyCtrlAction : uint8_t {
-	CCA_NEW,    ///< Create a new company.
-	CCA_NEW_AI, ///< Create a new AI company.
-	CCA_DELETE, ///< Delete a company.
-
-	CCA_END,    ///< Sentinel for end.
+/** The action to do with Commands::CompanyControl. */
+enum class CompanyCtrlAction : uint8_t {
+	New, ///< Create a new company.
+	NewAI, ///< Create a new AI company.
+	Delete, ///< Delete a company.
 };
 
-/** The action to do with CMD_COMPANY_ALLOW_LIST_CTRL. */
-enum CompanyAllowListCtrlAction : uint8_t {
-	CALCA_ADD, ///< Create a public key.
-	CALCA_REMOVE, ///< Remove a public key.
-
-	CALCA_END,    ///< Sentinel for end.
+/** The action to do with Commands::CompanyAllowListControl. */
+enum class CompanyAllowListCtrlAction : uint8_t {
+	AddKey, ///< Create a public key.
+	RemoveKey, ///< Remove a public key.
+	AllowAny, ///< Allow joining the company without a key.
+	AllowListed, ///< Allow only listed keys to join the company.
 };
 
 #endif /* COMPANY_TYPE_H */

@@ -21,6 +21,7 @@
 /**
  * Check if the API version provided by the AI is supported.
  * @param api_version The API version as provided by the AI.
+ * @return \c true if the given version is supported by this version of OpenTTD.
  */
 static bool CheckAPIVersion(const std::string &api_version)
 {

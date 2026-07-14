@@ -25,98 +25,96 @@ extern StoryPagePool _story_page_pool;
 extern uint32_t _story_page_element_next_sort_value;
 extern uint32_t _story_page_next_sort_value;
 
-/*
- * Each story page element is one of these types.
- */
-enum StoryPageElementType : uint8_t {
-	SPET_TEXT = 0,       ///< A text element.
-	SPET_LOCATION,       ///< An element that references a tile along with a one-line text.
-	SPET_GOAL,           ///< An element that references a goal.
-	SPET_BUTTON_PUSH,    ///< A push button that triggers an immediate event.
-	SPET_BUTTON_TILE,    ///< A button that allows the player to select a tile, and triggers an event with the tile.
-	SPET_BUTTON_VEHICLE, ///< A button that allows the player to select a vehicle, and triggers an event with the vehicle.
-	SPET_END,
-	INVALID_SPET = 0xFF,
+/** Each story page element is one of these types. */
+enum class StoryPageElementType : uint8_t {
+	Text = 0, ///< A text element.
+	Location, ///< An element that references a tile along with a one-line text.
+	Goal, ///< An element that references a goal.
+	ButtonPush, ///< A push button that triggers an immediate event.
+	ButtonTile, ///< A button that allows the player to select a tile, and triggers an event with the tile.
+	ButtonVehicle, ///< A button that allows the player to select a vehicle, and triggers an event with the vehicle.
+	Invalid = 0xFF, ///< Invalid story page element type.
 };
 
 /** Flags available for buttons */
-enum StoryPageButtonFlags : uint8_t {
-	SPBF_NONE        = 0,
-	SPBF_FLOAT_LEFT  = 1 << 0,
-	SPBF_FLOAT_RIGHT = 1 << 1,
+enum class StoryPageButtonFlag : uint8_t {
+	FloatLeft, ///< Button will float on the left.
+	FloatRight, ///< Button will float on the right.
 };
-DECLARE_ENUM_AS_BIT_SET(StoryPageButtonFlags)
+
+/** Bitset of \c StoryPageButtonFlag elements. */
+using StoryPageButtonFlags = EnumBitSet<StoryPageButtonFlag, uint8_t>;
 
 /** Mouse cursors usable by story page buttons. */
-enum StoryPageButtonCursor : uint8_t {
-	SPBC_MOUSE,
-	SPBC_ZZZ,
-	SPBC_BUOY,
-	SPBC_QUERY,
-	SPBC_HQ,
-	SPBC_SHIP_DEPOT,
-	SPBC_SIGN,
-	SPBC_TREE,
-	SPBC_BUY_LAND,
-	SPBC_LEVEL_LAND,
-	SPBC_TOWN,
-	SPBC_INDUSTRY,
-	SPBC_ROCKY_AREA,
-	SPBC_DESERT,
-	SPBC_TRANSMITTER,
-	SPBC_AIRPORT,
-	SPBC_DOCK,
-	SPBC_CANAL,
-	SPBC_LOCK,
-	SPBC_RIVER,
-	SPBC_AQUEDUCT,
-	SPBC_BRIDGE,
-	SPBC_RAIL_STATION,
-	SPBC_TUNNEL_RAIL,
-	SPBC_TUNNEL_ELRAIL,
-	SPBC_TUNNEL_MONO,
-	SPBC_TUNNEL_MAGLEV,
-	SPBC_AUTORAIL,
-	SPBC_AUTOELRAIL,
-	SPBC_AUTOMONO,
-	SPBC_AUTOMAGLEV,
-	SPBC_WAYPOINT,
-	SPBC_RAIL_DEPOT,
-	SPBC_ELRAIL_DEPOT,
-	SPBC_MONO_DEPOT,
-	SPBC_MAGLEV_DEPOT,
-	SPBC_CONVERT_RAIL,
-	SPBC_CONVERT_ELRAIL,
-	SPBC_CONVERT_MONO,
-	SPBC_CONVERT_MAGLEV,
-	SPBC_AUTOROAD,
-	SPBC_AUTOTRAM,
-	SPBC_ROAD_DEPOT,
-	SPBC_BUS_STATION,
-	SPBC_TRUCK_STATION,
-	SPBC_ROAD_TUNNEL,
-	SPBC_CLONE_TRAIN,
-	SPBC_CLONE_ROADVEH,
-	SPBC_CLONE_SHIP,
-	SPBC_CLONE_AIRPLANE,
-	SPBC_DEMOLISH,
-	SPBC_LOWERLAND,
-	SPBC_RAISELAND,
-	SPBC_PICKSTATION,
-	SPBC_BUILDSIGNALS,
-	SPBC_END,
-	INVALID_SPBC = 0xFF
+enum class StoryPageButtonCursor : uint8_t {
+	Mouse, ///< Use the Mouse cursor
+	Zzz, ///< Use the Zzz cursor
+	Buoy, ///< Use the Buoy cursor
+	Query, ///< Use the Query cursor
+	HQ, ///< Use the HQ cursor
+	ShipDepot, ///< Use the Ship Depot cursor
+	Sign, ///< Use the Sign cursor
+	Tree, ///< Use the Tree cursor
+	BuyLand, ///< Use the Buy Land cursor
+	LevelLand, ///< Use the Level Land cursor
+	Town, ///< Use the Town cursor
+	Industry, ///< Use the Industry cursor
+	RockyArea, ///< Use the RockyArea cursor
+	Desert, ///< Use the Desert cursor
+	Transmitter, ///< Use the Transmitter cursor
+	Airport, ///< Use the Airport cursor
+	Dock, ///< Use the Dock cursor
+	Canal, ///< Use the Canal cursor
+	Lock, ///< Use the Lock cursor
+	River, ///< Use the River cursor
+	Aqueduct, ///< Use the Aqueduct cursor
+	Bridge, ///< Use the Bridge cursor
+	RailStation, ///< Use the Rail Station cursor
+	TunnelRail, ///< Use the Tunnel Rail cursor
+	TunnelElrail, ///< Use the Tunnel Elrail cursor
+	TunnelMono, ///< Use the Tunnel Mono cursor
+	TunnelMaglev, ///< Use the Tunnel Maglev cursor
+	AutoRail, ///< Use the Auto Rail cursor
+	AutoElrail, ///< Use the Auto Elrail cursor
+	AutoMono, ///< Use the Auto Mono cursor
+	AutoMaglev, ///< Use the Auto Maglev cursor
+	Waypoint, ///< Use the Waypoint cursor
+	RailDepot, ///< Use the Rail Depot cursor
+	ElrailDepot, ///< Use the Elrail Depot cursor
+	MonoDepot, ///< Use the Mono Depot cursor
+	MaglevDepot, ///< Use the Maglev Depot cursor
+	ConvertRail, ///< Use the Convert Rail cursor
+	ConvertElrail, ///< Use the Convert Elrail cursor
+	ConvertMono, ///< Use the Convert Mono cursor
+	ConvertMaglev, ///< Use the Convert Maglev cursor
+	AutoRoad, ///< Use the Auto Road cursor
+	AutoTram, ///< Use the Auto Tram cursor
+	RoadDepot, ///< Use the Road Depot cursor
+	BusStation, ///< Use the Bus Station cursor
+	TruckStation, ///< Use the Truck Station cursor
+	RoadTunnel, ///< Use the Road Tunnel cursor
+	CloneTrain, ///< Use the Clone Train cursor
+	CloneRoadVeh, ///< Use the Clone Road Veh cursor
+	CloneShip, ///< Use the Clone Ship cursor
+	CloneAirplane, ///< Use the Clone Airplane cursor
+	Demolish, ///< Use the Demolish cursor
+	LowerLand, ///< Use the Lower Land cursor
+	RaiseLand, ///< Use the Raise Land cursor
+	PickStation, ///< Use the Pick Station cursor
+	BuildSignals, ///< Use the Build Signals cursor
+	End, ///< End marker.
+	Invalid = 0xFF, ///< Invalid story page button cursor.
 };
 
 /**
  * Checks if a StoryPageButtonCursor value is valid.
  *
- * @param wc The value to check
+ * @param cursor The value to check.
  * @return true if the given value is a valid StoryPageButtonCursor.
  */
 inline bool IsValidStoryPageButtonCursor(StoryPageButtonCursor cursor)
 {
-	return cursor < SPBC_END;
+	return cursor < StoryPageButtonCursor::End;
 }
 
 /** Helper to construct packed "id" values for button-type StoryPageElement */

@@ -59,7 +59,7 @@ TrueTypeFontCache::GlyphEntry &TrueTypeFontCache::SetGlyphPtr(GlyphID key, Glyph
 
 bool TrueTypeFontCache::GetDrawGlyphShadow()
 {
-	return this->fs == FS_NORMAL && GetFontAAState();
+	return this->fs == FontSize::Normal && GetFontAAState();
 }
 
 uint TrueTypeFontCache::GetGlyphWidth(GlyphID key)

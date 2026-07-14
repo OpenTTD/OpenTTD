@@ -40,10 +40,10 @@ static const uint MIN_MAP_SIZE      = 1U << MIN_MAP_SIZE_BITS; ///< Minimal map 
 static const uint MAX_MAP_SIZE      = 1U << MAX_MAP_SIZE_BITS; ///< Maximal map size = 4096
 
 /** Argument for CmdLevelLand describing what to do. */
-enum LevelMode : uint8_t {
-	LM_LEVEL, ///< Level the land.
-	LM_LOWER, ///< Lower the land.
-	LM_RAISE, ///< Raise the land.
+enum class LevelMode : uint8_t {
+	Level, ///< Level the land.
+	Lower, ///< Lower the land.
+	Raise, ///< Raise the land.
 };
 
 #endif /* MAP_TYPE_H */

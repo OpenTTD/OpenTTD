@@ -16,7 +16,7 @@ using StoryPageElementID = PoolID<uint16_t, struct StoryPageElementIDTag, 64000,
 using StoryPageID = PoolID<uint16_t, struct StoryPageIDTag, 64000, 0xFFFF>; ///< ID of a story page
 struct StoryPageElement;
 struct StoryPage;
-enum StoryPageElementType : uint8_t;
+enum class StoryPageElementType : uint8_t;
 
 #endif /* STORY_TYPE_H */
 

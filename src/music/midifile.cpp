@@ -410,7 +410,7 @@ static bool FixupMidiData(MidiFile &target)
  */
 bool MidiFile::ReadSMFHeader(const std::string &filename, SMFHeader &header)
 {
-	auto file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
+	auto file = FioFOpenFile(filename, "rb", Subdirectory::Baseset);
 	if (!file.has_value()) return false;
 	bool result = ReadSMFHeader(*file, header);
 	return result;
@@ -457,7 +457,7 @@ bool MidiFile::LoadFile(const std::string &filename)
 	this->tempos.clear();
 	this->tickdiv = 0;
 
-	auto file = FioFOpenFile(filename, "rb", Subdirectory::BASESET_DIR);
+	auto file = FioFOpenFile(filename, "rb", Subdirectory::Baseset);
 	if (!file.has_value()) return false;
 
 	SMFHeader header;
@@ -623,6 +623,9 @@ struct MpsMachine {
 
 	/**
 	 * Play one frame of data from one channel
+	 * @param[out] outblock The block to the music to.
+	 * @param channel The channel of the block to play.
+	 * @return The new delay for playing.
 	 */
 	uint16_t PlayChannelFrame(MidiFile::DataBlock &outblock, int channel)
 	{
@@ -748,6 +751,8 @@ struct MpsMachine {
 
 	/**
 	 * Play one frame of data into a block.
+	 * @param[out] block The block to write to.
+	 * @return \c true iff there is data to play.
 	 */
 	bool PlayFrame(MidiFile::DataBlock &block)
 	{
@@ -774,6 +779,7 @@ struct MpsMachine {
 
 	/**
 	 * Perform playback of whole song.
+	 * @return Always \c true.
 	 */
 	bool PlayInto()
 	{
@@ -905,7 +911,7 @@ static void WriteVariableLen(FileHandle &f, uint32_t value)
  */
 bool MidiFile::WriteSMF(const std::string &filename)
 {
-	auto of = FioFOpenFile(filename, "wb", Subdirectory::NO_DIRECTORY);
+	auto of = FioFOpenFile(filename, "wb", Subdirectory::None);
 	if (!of.has_value()) return false;
 	auto &f = *of;
 
@@ -1033,9 +1039,9 @@ bool MidiFile::WriteSMF(const std::string &filename)
 std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 {
 	if (song.filetype == MTT_STANDARDMIDI) {
-		std::string filename = FioFindFullPath(Subdirectory::BASESET_DIR, song.filename);
+		std::string filename = FioFindFullPath(Subdirectory::Baseset, song.filename);
 		if (!filename.empty()) return filename;
-		filename = FioFindFullPath(Subdirectory::OLD_GM_DIR, song.filename);
+		filename = FioFindFullPath(Subdirectory::OldGm, song.filename);
 		if (!filename.empty()) return filename;
 
 		return std::string();
@@ -1043,7 +1049,7 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 
 	if (song.filetype != MTT_MPSMIDI) return std::string();
 
-	std::string tempdirname = FioGetDirectory(Searchpath::SP_AUTODOWNLOAD_DIR, Subdirectory::BASESET_DIR);
+	std::string tempdirname = FioGetDirectory(Searchpath::AutodownloadDir, Subdirectory::Baseset);
 	{
 		std::string_view basename{song.filename};
 		auto fnstart = basename.rfind(PATHSEPCHAR);
@@ -1124,6 +1130,7 @@ MidiFile::MidiFile()
 	RegisterConsoleMidiCommands();
 }
 
+/** Remove ourselves from the _midifile_instance if needed. */
 MidiFile::~MidiFile()
 {
 	if (_midifile_instance == this) {

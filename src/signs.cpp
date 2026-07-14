@@ -61,6 +61,6 @@ void UpdateAllSignVirtCoords()
  */
 bool CompanyCanEditSign(const Sign *si)
 {
-	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GM_EDITOR) return false;
+	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GameMode::Editor) return false;
 	return true;
 }

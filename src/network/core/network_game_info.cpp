@@ -40,6 +40,7 @@ NetworkServerGameInfo _network_game_info; ///< Information about our game.
 /**
  * Get the network version string used by this build.
  * The returned string is guaranteed to be at most NETWORK_REVISION_LENGTH bytes including '\0' terminator.
+ * @return The revision string.
  */
 std::string_view GetNetworkRevisionString()
 {
@@ -98,6 +99,7 @@ static std::string_view ExtractNetworkRevisionHash(std::string_view revision_str
  * Checks whether the given version string is compatible with our version.
  * First tries to match the full string, if that fails, attempts to compare just git hashes.
  * @param other the version string to compare to
+ * @return \c true if the other version is deemed compatible.
  */
 bool IsNetworkCompatibleVersion(std::string_view other)
 {
@@ -120,6 +122,7 @@ bool IsNetworkCompatibleVersion(std::string_view other)
 
 /**
  * Check if an game entry is compatible with our client.
+ * @param ngi The game information to process and update the compatible field of.
  */
 void CheckGameCompatibility(NetworkGameInfo &ngi)
 {
@@ -129,7 +132,7 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
 
 	/* Check if we have all the GRFs on the client-system too. */
 	for (const auto &c : ngi.grfconfig) {
-		if (c->status == GCS_NOT_FOUND) ngi.compatible = false;
+		if (c->status == GRFStatus::NotFound) ngi.compatible = false;
 	}
 }
 
@@ -182,10 +185,10 @@ const NetworkServerGameInfo &GetCurrentNetworkServerGameInfo()
 static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::string_view name)
 {
 	/* Find the matching GRF file */
-	const GRFConfig *f = FindGRFConfig(config.ident.grfid, FGCM_EXACT, &config.ident.md5sum);
+	const GRFConfig *f = FindGRFConfig(config.ident.grfid, FindGRFConfigMode::Exact, &config.ident.md5sum);
 	if (f == nullptr) {
 		AddGRFTextToList(config.name, name.empty() ? GetString(STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN) : name);
-		config.status = GCS_NOT_FOUND;
+		config.status = GRFStatus::NotFound;
 	} else {
 		config.filename = f->filename;
 		config.name = f->name;
@@ -199,6 +202,7 @@ static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig &config, std::strin
  * Serializes the NetworkGameInfo struct to the packet.
  * @param p    the packet to write the data to.
  * @param info the NetworkGameInfo struct to serialize from.
+ * @param send_newgrf_names Whether to send the NewGRF names or not.
  */
 void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool send_newgrf_names)
 {
@@ -216,7 +220,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 	p.Send_uint64(info.ticks_playing);
 
 	/* NETWORK_GAME_INFO_VERSION = 6 */
-	p.Send_uint8(send_newgrf_names ? NST_GRFID_MD5_NAME : NST_GRFID_MD5);
+	p.Send_uint8(to_underlying(send_newgrf_names ? NewGRFSerializationType::GrfIdMd5Name : NewGRFSerializationType::GrfIdMd5));
 
 	/* NETWORK_GAME_INFO_VERSION = 5 */
 	GameInfo *game_info = Game::GetInfo();
@@ -267,11 +271,12 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
  * Deserializes the NetworkGameInfo struct from the packet.
  * @param p    the packet to read the data from.
  * @param info the NetworkGameInfo to deserialize into.
+ * @param newgrf_lookup_table Lookup table for index-mapped NewGRFs.
  */
 void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfoNewGRFLookupTable *newgrf_lookup_table)
 {
 	uint8_t game_info_version = p.Recv_uint8();
-	NewGRFSerializationType newgrf_serialisation = NST_GRFID_MD5;
+	NewGRFSerializationType newgrf_serialisation = NewGRFSerializationType::GrfIdMd5;
 
 	/*
 	 *              Please observe the order.
@@ -287,8 +292,8 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 			[[fallthrough]];
 
 		case 6:
-			newgrf_serialisation = (NewGRFSerializationType)p.Recv_uint8();
-			if (newgrf_serialisation >= NST_END) return;
+			newgrf_serialisation = static_cast<NewGRFSerializationType>(p.Recv_uint8());
+			if (newgrf_serialisation >= NewGRFSerializationType::End) return;
 			[[fallthrough]];
 
 		case 5: {
@@ -308,15 +313,15 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 			for (uint i = 0; i < num_grfs; i++) {
 				NamedGRFIdentifier grf;
 				switch (newgrf_serialisation) {
-					case NST_GRFID_MD5:
+					case NewGRFSerializationType::GrfIdMd5:
 						DeserializeGRFIdentifier(p, grf.ident);
 						break;
 
-					case NST_GRFID_MD5_NAME:
+					case NewGRFSerializationType::GrfIdMd5Name:
 						DeserializeGRFIdentifierWithName(p, grf);
 						break;
 
-					case NST_LOOKUP_ID: {
+					case NewGRFSerializationType::LookupId: {
 						if (newgrf_lookup_table == nullptr) return;
 						auto it = newgrf_lookup_table->find(p.Recv_uint32());
 						if (it == newgrf_lookup_table->end()) return;

@@ -86,6 +86,7 @@ struct TicToc {
 			GetStates().push_back(this);
 		}
 
+		/** Remove ourselves from the thread local states. */
 		~State()
 		{
 			/* Container might be already destroyed. */
@@ -111,6 +112,7 @@ struct TicToc {
 
 	inline TicToc(State &state) : state(state), chrono_start(std::chrono::high_resolution_clock::now()) { }
 
+	/** Update the state with the time since the constructor call. */
 	inline ~TicToc()
 	{
 		this->state.chrono_sum += (std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - this->chrono_start)).count();

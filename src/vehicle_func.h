@@ -101,6 +101,9 @@ private:
 /**
  * Loop over vehicles on a tile, and check whether a predicate is true for any of them.
  * The predicate must have the signature: bool Predicate(const Vehicle *);
+ * @param tile The tile to search on.
+ * @param predicate The filter to apply to find vehicles.
+ * @return \c true iff a suitable vehicle has been found within the given distance.
  */
 template <class UnaryPred>
 bool HasVehicleOnTile(TileIndex tile, UnaryPred &&predicate)
@@ -170,6 +173,11 @@ private:
 /**
  * Loop over vehicles near a given world coordinate, and check whether a predicate is true for any of them.
  * The predicate must have the signature: bool Predicate(const Vehicle *);
+ * @param x The world X-coordinate.
+ * @param y The world Y-coordinate.
+ * @param max_dist The maximum distance to consider.
+ * @param predicate The filter to apply to find vehicles.
+ * @return \c true iff a suitable vehicle has been found within the given distance.
  * @warning This only works for vehicles with proper Vehicle::Tile, so only ground vehicles outside wormholes.
  */
 template <class UnaryPred>
@@ -208,7 +216,7 @@ UnitID GetFreeUnitNumber(VehicleType type);
 
 void VehicleEnterDepot(Vehicle *v);
 
-bool CanBuildVehicleInfrastructure(VehicleType type, uint8_t subtype = 0);
+bool CanBuildVehicleInfrastructure(VehicleType type, RoadTramType subtype = RoadTramType::Invalid);
 
 /** Position information of a vehicle after it moved */
 struct GetNewVehiclePosResult {
@@ -227,7 +235,7 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y);
  */
 inline bool IsCompanyBuildableVehicleType(VehicleType type)
 {
-	return type < VEH_COMPANY_END;
+	return type < VehicleType::CompanyEnd;
 }
 
 /**
@@ -246,12 +254,12 @@ const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, En
 SpriteID GetEnginePalette(EngineID engine_type, CompanyID company);
 SpriteID GetVehiclePalette(const Vehicle *v);
 
-extern const StringID _veh_build_msg_table[];
-extern const StringID _veh_sell_msg_table[];
-extern const StringID _veh_sell_all_msg_table[];
-extern const StringID _veh_autoreplace_msg_table[];
-extern const StringID _veh_refit_msg_table[];
-extern const StringID _send_to_depot_msg_table[];
+extern VehicleTypeIndexArray<const StringID> _veh_build_msg_table;
+extern VehicleTypeIndexArray<const StringID> _veh_sell_msg_table;
+extern VehicleTypeIndexArray<const StringID> _veh_sell_all_msg_table;
+extern VehicleTypeIndexArray<const StringID> _veh_autoreplace_msg_table;
+extern VehicleTypeIndexArray<const StringID> _veh_refit_msg_table;
+extern VehicleTypeIndexArray<const StringID> _send_to_depot_msg_table;
 
 /* Functions to find the right command for certain vehicle type */
 inline StringID GetCmdBuildVehMsg(VehicleType type)
@@ -322,5 +330,6 @@ bool VehiclesHaveSameEngineList(const Vehicle *v1, const Vehicle *v2);
 bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2);
 
 bool IsUniqueVehicleName(const std::string &name);
+Direction VehicleEnterTileCoordinates(GetNewVehiclePosResult &gp, DiagDirection enterdir, Track track);
 
 #endif /* VEHICLE_FUNC_H */

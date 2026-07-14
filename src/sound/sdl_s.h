@@ -24,7 +24,8 @@ public:
 /** Factory for the SDL sound driver. */
 class FSoundDriver_SDL : public DriverFactoryBase {
 public:
-	FSoundDriver_SDL() : DriverFactoryBase(Driver::DT_SOUND, 5, "sdl", "SDL Sound Driver (param hz,samples)") {}
+	/** Create the factory. */
+	FSoundDriver_SDL() : DriverFactoryBase(Driver::Type::Sound, 5, "sdl", "SDL Sound Driver (param hz,samples)") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<SoundDriver_SDL>(); }
 };
 

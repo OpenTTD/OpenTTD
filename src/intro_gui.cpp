@@ -47,27 +47,13 @@
  * A viewport command for the main menu background (intro game).
  */
 struct IntroGameViewportCommand {
-	/** Horizontal alignment value. */
-	enum AlignmentH : uint8_t {
-		LEFT,
-		CENTRE,
-		RIGHT,
-	};
-	/** Vertical alignment value. */
-	enum AlignmentV : uint8_t {
-		TOP,
-		MIDDLE,
-		BOTTOM,
-	};
-
 	int command_index = 0;               ///< Sequence number of the command (order they are performed in).
 	Point position{ 0, 0 };              ///< Calculated world coordinate to position viewport top-left at.
 	VehicleID vehicle = VehicleID::Invalid(); ///< Vehicle to follow, or VehicleID::Invalid() if not following a vehicle.
 	uint delay = 0;                      ///< Delay until next command.
 	int zoom_adjust = 0;                 ///< Adjustment to zoom level from base zoom level.
 	bool pan_to_next = false;            ///< If true, do a smooth pan from this position to the next.
-	AlignmentH align_h = CENTRE;         ///< Horizontal alignment.
-	AlignmentV align_v = MIDDLE;         ///< Vertical alignment.
+	Alignment align = {AlignmentH::Centre, AlignmentV::Middle}; ///< Alignment.
 
 	/**
 	 * Calculate effective position.
@@ -83,15 +69,16 @@ struct IntroGameViewportCommand {
 		}
 
 		Point p;
-		switch (this->align_h) {
-			case LEFT: p.x = this->position.x; break;
-			case CENTRE: p.x = this->position.x - vp.virtual_width / 2; break;
-			case RIGHT: p.x = this->position.x - vp.virtual_width; break;
+		switch (this->align.ResolveRTL()) {
+			case AlignmentH::ForceLeft: p.x = this->position.x; break;
+			case AlignmentH::Centre: p.x = this->position.x - vp.virtual_width / 2; break;
+			case AlignmentH::ForceRight: p.x = this->position.x - vp.virtual_width; break;
+			default: NOT_REACHED();
 		}
-		switch (this->align_v) {
-			case TOP: p.y = this->position.y; break;
-			case MIDDLE: p.y = this->position.y - vp.virtual_height / 2; break;
-			case BOTTOM: p.y = this->position.y - vp.virtual_height; break;
+		switch (this->align.v) {
+			case AlignmentV::Top: p.y = this->position.y; break;
+			case AlignmentV::Middle: p.y = this->position.y - vp.virtual_height / 2; break;
+			case AlignmentV::Bottom: p.y = this->position.y - vp.virtual_height; break;
 		}
 		return p;
 	}
@@ -112,7 +99,7 @@ struct SelectGameWindow : public Window {
 	 * Find and parse all viewport command signs.
 	 * Fills the intro_viewport_commands vector and deletes parsed signs from the world.
 	 */
-	void ReadIntroGameViewportCommands()
+	void ReadIntroGameViewportCommand()
 	{
 		intro_viewport_commands.clear();
 
@@ -151,12 +138,12 @@ struct SelectGameWindow : public Window {
 				switch (toupper(c)) {
 					case '-': vc.zoom_adjust = +1; break;
 					case '+': vc.zoom_adjust = -1; break;
-					case 'T': vc.align_v = IntroGameViewportCommand::TOP; break;
-					case 'M': vc.align_v = IntroGameViewportCommand::MIDDLE; break;
-					case 'B': vc.align_v = IntroGameViewportCommand::BOTTOM; break;
-					case 'L': vc.align_h = IntroGameViewportCommand::LEFT; break;
-					case 'C': vc.align_h = IntroGameViewportCommand::CENTRE; break;
-					case 'R': vc.align_h = IntroGameViewportCommand::RIGHT; break;
+					case 'T': vc.align.v = AlignmentV::Top; break;
+					case 'M': vc.align.v = AlignmentV::Middle; break;
+					case 'B': vc.align.v = AlignmentV::Bottom; break;
+					case 'L': vc.align.h = AlignmentH::ForceLeft; break;
+					case 'C': vc.align.h = AlignmentH::Centre; break;
+					case 'R': vc.align.h = AlignmentH::ForceRight; break;
 					case 'P': vc.pan_to_next = true; break;
 					case 'V': vc.vehicle = static_cast<VehicleID>(consumer.ReadIntegerBase<uint32_t>(10, VehicleID::Invalid().base())); break;
 				}
@@ -183,7 +170,7 @@ struct SelectGameWindow : public Window {
 		this->FinishInitNested(0);
 		this->OnInvalidateData();
 
-		this->ReadIntroGameViewportCommands();
+		this->ReadIntroGameViewportCommand();
 	}
 
 	void OnRealtimeTick(uint delta_ms) override
@@ -267,11 +254,11 @@ struct SelectGameWindow : public Window {
 	{
 		switch (widget) {
 			case WID_SGI_BASESET:
-				DrawStringMultiLine(r, GetString(STR_INTRO_BASESET, _missing_extra_graphics), TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, GetString(STR_INTRO_BASESET, _missing_extra_graphics), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 				break;
 
 			case WID_SGI_TRANSLATION:
-				DrawStringMultiLine(r, GetString(STR_INTRO_TRANSLATION, _current_language->missing), TC_FROMSTRING, SA_CENTER);
+				DrawStringMultiLine(r, GetString(STR_INTRO_TRANSLATION, _current_language->missing), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 				break;
 		}
 	}
@@ -304,15 +291,15 @@ struct SelectGameWindow : public Window {
 				break;
 			case WID_SGI_LOAD_GAME:
 				_is_network_server = false;
-				ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD);
+				ShowSaveLoadDialog(AbstractFileType::Savegame, SaveLoadOperation::Load);
 				break;
 			case WID_SGI_PLAY_SCENARIO:
 				_is_network_server = false;
-				ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD);
+				ShowSaveLoadDialog(AbstractFileType::Scenario, SaveLoadOperation::Load);
 				break;
 			case WID_SGI_PLAY_HEIGHTMAP:
 				_is_network_server = false;
-				ShowSaveLoadDialog(FT_HEIGHTMAP,SLO_LOAD);
+				ShowSaveLoadDialog(AbstractFileType::Heightmap,SaveLoadOperation::Load);
 				break;
 			case WID_SGI_EDIT_SCENARIO:
 				_is_network_server = false;
@@ -321,7 +308,7 @@ struct SelectGameWindow : public Window {
 
 			case WID_SGI_PLAY_NETWORK:
 				if (!_network_available) {
-					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WL_ERROR);
+					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WarningLevel::Error);
 				} else {
 					ShowNetworkGameWindow();
 				}
@@ -332,7 +319,7 @@ struct SelectGameWindow : public Window {
 			case WID_SGI_HELP:            ShowHelpWindow(); break;
 			case WID_SGI_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WL_ERROR);
+					ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_NOTAVAILABLE), {}, WarningLevel::Error);
 				} else {
 					ShowNetworkContentListWindow();
 				}
@@ -343,54 +330,55 @@ struct SelectGameWindow : public Window {
 };
 
 static constexpr std::initializer_list<NWidgetPart> _nested_select_game_widgets = {
-	NWidget(WWT_CAPTION, COLOUR_BROWN), SetStringTip(STR_INTRO_CAPTION),
-	NWidget(WWT_PANEL, COLOUR_BROWN),
+	NWidget(WWT_CAPTION, Colours::Brown), SetStringTip(STR_INTRO_CAPTION),
+	NWidget(WWT_PANEL, Colours::Brown),
 		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.sparse),
 
 			/* Single player */
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_GENERATE_GAME), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_LANDSCAPING, STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_HEIGHTMAP), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SHOW_COUNTOURS, STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_SCENARIO), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SUBSIDIES, STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_LOAD_GAME), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SAVE, STR_INTRO_LOAD_GAME, STR_INTRO_TOOLTIP_LOAD_GAME), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_HIGHSCORE), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_COMPANY_LEAGUE, STR_INTRO_HIGHSCORE, STR_INTRO_TOOLTIP_HIGHSCORE), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_GENERATE_GAME), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_LANDSCAPING, STR_INTRO_NEW_GAME, STR_INTRO_TOOLTIP_NEW_GAME), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_PLAY_HEIGHTMAP), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SHOW_COUNTOURS, STR_INTRO_PLAY_HEIGHTMAP, STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_PLAY_SCENARIO), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SUBSIDIES, STR_INTRO_PLAY_SCENARIO, STR_INTRO_TOOLTIP_PLAY_SCENARIO), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_LOAD_GAME), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SAVE, STR_INTRO_LOAD_GAME, STR_INTRO_TOOLTIP_LOAD_GAME), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_HIGHSCORE), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_COMPANY_LEAGUE, STR_INTRO_HIGHSCORE, STR_INTRO_TOOLTIP_HIGHSCORE), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
 			EndContainer(),
 
 			/* Multi player */
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_PLAY_NETWORK), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_COMPANY_GENERAL, STR_INTRO_MULTIPLAYER, STR_INTRO_TOOLTIP_MULTIPLAYER), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_PLAY_NETWORK), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_COMPANY_GENERAL, STR_INTRO_MULTIPLAYER, STR_INTRO_TOOLTIP_MULTIPLAYER), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
 			EndContainer(),
 
-			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SGI_BASESET_SELECTION),
+			NWidget(NWID_SELECTION, Colours::Invalid, WID_SGI_BASESET_SELECTION),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SGI_BASESET), SetFill(1, 0),
+					NWidget(WWT_EMPTY, Colours::Invalid, WID_SGI_BASESET), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 
-			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_SGI_TRANSLATION_SELECTION),
+			NWidget(NWID_SELECTION, Colours::Invalid, WID_SGI_TRANSLATION_SELECTION),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SGI_TRANSLATION), SetFill(1, 0),
+					NWidget(WWT_EMPTY, Colours::Invalid, WID_SGI_TRANSLATION), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 
 			/* Other */
 			NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_OPTIONS), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SETTINGS, STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_CONTENT_DOWNLOAD), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SHOW_VEHICLES, STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_EDIT_SCENARIO), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SMALLMAP, STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
-				NWidget(WWT_PUSHIMGTEXTBTN, COLOUR_ORANGE, WID_SGI_HELP), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_QUERY, STR_INTRO_HELP, STR_INTRO_TOOLTIP_HELP), SetAlignment(SA_LEFT | SA_VERT_CENTER), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_OPTIONS), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SETTINGS, STR_INTRO_GAME_OPTIONS, STR_INTRO_TOOLTIP_GAME_OPTIONS), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_CONTENT_DOWNLOAD), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SHOW_VEHICLES, STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_EDIT_SCENARIO), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_SMALLMAP, STR_INTRO_SCENARIO_EDITOR, STR_INTRO_TOOLTIP_SCENARIO_EDITOR), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
+				NWidget(WWT_PUSHIMGTEXTBTN, Colours::Orange, WID_SGI_HELP), SetToolbarMinimalSize(1), SetSpriteStringTip(SPR_IMG_QUERY, STR_INTRO_HELP, STR_INTRO_TOOLTIP_HELP), SetAlignment({AlignmentH::Start, AlignmentV::Middle}), SetFill(1, 0),
 			EndContainer(),
 
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_SGI_EXIT), SetToolbarMinimalSize(1), SetStringTip(STR_INTRO_QUIT, STR_INTRO_TOOLTIP_QUIT),
+				NWidget(WWT_PUSHTXTBTN, Colours::Orange, WID_SGI_EXIT), SetToolbarMinimalSize(1), SetStringTip(STR_INTRO_QUIT, STR_INTRO_TOOLTIP_QUIT),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the select game window. */
 static WindowDesc _select_game_desc(
-	WDP_CENTER, {}, 0, 0,
-	WC_SELECT_GAME, WC_NONE,
+	WindowPosition::Center, {}, 0, 0,
+	WindowClass::SelectGame, WindowClass::None,
 	WindowDefaultFlag::NoClose,
 	_nested_select_game_widgets
 );
@@ -423,7 +411,7 @@ void AskExitGame()
 static void AskExitToGameMenuCallback(Window *, bool confirmed)
 {
 	if (confirmed) {
-		_switch_mode = SM_MENU;
+		_switch_mode = SwitchMode::Menu;
 		ClearErrorMessages();
 	}
 }
@@ -432,7 +420,7 @@ void AskExitToGameMenu()
 {
 	ShowQuery(
 		GetEncodedString(STR_ABANDON_GAME_CAPTION),
-		GetEncodedString((_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY),
+		GetEncodedString((_game_mode != GameMode::Editor) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY),
 		nullptr,
 		AskExitToGameMenuCallback,
 		true

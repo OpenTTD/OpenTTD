@@ -30,6 +30,7 @@ public:
 	 */
 	static std::unique_ptr<StringIterator> Create();
 
+	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~StringIterator() = default;
 
 	/**
@@ -49,12 +50,14 @@ public:
 
 	/**
 	 * Advance the cursor by one iteration unit.
+	 * @param what The iteration unit to advance by.
 	 * @return New cursor position (in bytes) or #END if the cursor is already at the end of the string.
 	 */
 	virtual size_t Next(IterType what = ITER_CHARACTER) = 0;
 
 	/**
 	 * Move the cursor back by one iteration unit.
+	 * @param what The iteration unit to move by.
 	 * @return New cursor position (in bytes) or #END if the cursor is already at the start of the string.
 	 */
 	virtual size_t Prev(IterType what = ITER_CHARACTER) = 0;

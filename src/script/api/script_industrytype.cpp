@@ -96,7 +96,7 @@
 	if (!IsValidIndustryType(industry_type)) return false;
 
 	const bool deity = ScriptCompanyMode::IsDeity();
-	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
+	if (::GetIndustryProbabilityCallback(industry_type, deity ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::UserCreation, 1) == 0) return false;
 	if (deity) return true;
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return true;
 
@@ -110,7 +110,7 @@
 
 	const bool deity = ScriptCompanyMode::IsDeity();
 	if (!deity && !::GetIndustrySpec(industry_type)->IsRawIndustry()) return false;
-	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
+	if (::GetIndustryProbabilityCallback(industry_type, deity ? IndustryAvailabilityCallType::RandomCreation : IndustryAvailabilityCallType::UserCreation, 1) == 0) return false;
 
 	/* raw_industry_construction == 2 means "prospect" */
 	return deity || _settings_game.construction.raw_industry_construction == 2;
@@ -124,7 +124,7 @@
 
 	uint32_t seed = ScriptBase::Rand();
 	uint32_t layout_index = ScriptBase::RandRange((uint32_t)::GetIndustrySpec(industry_type)->layouts.size());
-	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(tile, industry_type, layout_index, true, seed);
+	return ScriptObject::Command<Commands::BuildIndustry>::Do(tile, industry_type, layout_index, true, seed);
 }
 
 /* static */ bool ScriptIndustryType::ProspectIndustry(IndustryType industry_type)
@@ -133,7 +133,7 @@
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
 	uint32_t seed = ScriptBase::Rand();
-	return ScriptObject::Command<CMD_BUILD_INDUSTRY>::Do(TileIndex{}, industry_type, 0, false, seed);
+	return ScriptObject::Command<Commands::BuildIndustry>::Do(TileIndex{}, industry_type, 0, false, seed);
 }
 
 /* static */ bool ScriptIndustryType::IsBuiltOnWater(IndustryType industry_type)

@@ -27,8 +27,8 @@
  */
 void DrawWaypointSprite(int x, int y, StationClassID station_class, uint16_t station_type, RailType railtype)
 {
-	if (!DrawStationTile(x, y, railtype, AXIS_X, station_class, station_type)) {
-		StationPickerDrawSprite(x, y, StationType::RailWaypoint, railtype, INVALID_ROADTYPE, AXIS_X);
+	if (!DrawStationTile(x, y, railtype, Axis::X, station_class, station_type)) {
+		StationPickerDrawSprite(x, y, StationType::RailWaypoint, railtype, INVALID_ROADTYPE, to_underlying(Axis::X));
 	}
 }
 
@@ -42,10 +42,11 @@ TileArea Waypoint::GetTileArea(StationType type) const
 	}
 }
 
+/** Remove all references to this waypoint. */
 Waypoint::~Waypoint()
 {
 	if (CleaningPool()) return;
-	CloseWindowById(WC_WAYPOINT_VIEW, this->index);
+	CloseWindowById(WindowClass::WaypointView, this->index);
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
 	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 }

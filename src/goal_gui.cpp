@@ -15,6 +15,7 @@
 #include "viewport_func.h"
 #include "gui.h"
 #include "goal_base.h"
+#include "goal_gui.h"
 #include "core/geometry_func.hpp"
 #include "company_func.h"
 #include "company_base.h"
@@ -100,30 +101,30 @@ struct GoalListWindow : public Window {
 		/* Determine dst coordinate for goal and try to scroll to it. */
 		TileIndex xy;
 		switch (s->type) {
-			case GT_NONE: return;
+			case GoalType::None: return;
 
-			case GT_COMPANY:
+			case GoalType::Company:
 				/* s->dst here is not a tile, but a CompanyID.
 				 * Show the window with the overview of the company instead. */
 				ShowCompany((CompanyID)s->dst);
 				return;
 
-			case GT_TILE:
+			case GoalType::Tile:
 				if (!IsValidTile(s->dst)) return;
 				xy = TileIndex{s->dst};
 				break;
 
-			case GT_INDUSTRY:
+			case GoalType::Industry:
 				if (!Industry::IsValidID(s->dst)) return;
 				xy = Industry::Get(s->dst)->location.tile;
 				break;
 
-			case GT_TOWN:
+			case GoalType::Town:
 				if (!Town::IsValidID(s->dst)) return;
 				xy = Town::Get(s->dst)->xy;
 				break;
 
-			case GT_STORY_PAGE: {
+			case GoalType::StoryPage: {
 				if (!StoryPage::IsValidID(s->dst)) return;
 
 				/* Verify that:
@@ -185,7 +186,6 @@ struct GoalListWindow : public Window {
 	 * @param column Which column to draw.
 	 * @param wid Pointer to the goal list widget.
 	 * @param progress_col_width Width of the progress column.
-	 * @return max width of drawn text
 	 */
 	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const
 	{
@@ -211,11 +211,11 @@ struct GoalListWindow : public Window {
 						case GC_PROGRESS:
 							if (!s->progress.empty()) {
 								StringID str = s->completed ? STR_GOALS_PROGRESS_COMPLETE : STR_GOALS_PROGRESS;
-								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress.GetDecodedString()), TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+								DrawString(r.WithWidth(progress_col_width, !rtl), GetString(str, s->progress.GetDecodedString()), TextColour::FromString, AlignmentH::ForceRight);
 							}
 							break;
 					}
-					r.top += GetCharacterHeight(FS_NORMAL);
+					r.top += GetCharacterHeight(FontSize::Normal);
 				}
 				pos++;
 				num++;
@@ -277,29 +277,30 @@ struct GoalListWindow : public Window {
 /** Widgets of the #GoalListWindow. */
 static constexpr std::initializer_list<NWidgetPart> _nested_goals_list_widgets = {
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
-		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION),
-		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GOAL_SELECT_BUTTONS),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_GLOBAL_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_GLOBAL_BUTTON, STR_GOALS_GLOBAL_BUTTON_HELPTEXT),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_COMPANY_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_COMPANY_BUTTON, STR_GOALS_COMPANY_BUTTON_HELPTEXT),
+		NWidget(WWT_CLOSEBOX, Colours::Brown),
+		NWidget(WWT_CAPTION, Colours::Brown, WID_GOAL_CAPTION),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_GOAL_SELECT_BUTTONS),
+			NWidget(WWT_PUSHTXTBTN, Colours::Brown, WID_GOAL_GLOBAL_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_GLOBAL_BUTTON, STR_GOALS_GLOBAL_BUTTON_HELPTEXT),
+			NWidget(WWT_PUSHTXTBTN, Colours::Brown, WID_GOAL_COMPANY_BUTTON), SetMinimalSize(50, 0), SetStringTip(STR_GOALS_COMPANY_BUTTON, STR_GOALS_COMPANY_BUTTON_HELPTEXT),
 		EndContainer(),
-		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
-		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
-		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+		NWidget(WWT_SHADEBOX, Colours::Brown),
+		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
+		NWidget(WWT_STICKYBOX, Colours::Brown),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_BROWN, WID_GOAL_LIST), SetToolTip(STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR), SetResize(1, 1), SetMinimalTextLines(2, 0),
+		NWidget(WWT_PANEL, Colours::Brown, WID_GOAL_LIST), SetToolTip(STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER), SetScrollbar(WID_GOAL_SCROLLBAR), SetResize(1, 1), SetMinimalTextLines(2, 0),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_VSCROLLBAR, COLOUR_BROWN, WID_GOAL_SCROLLBAR),
-			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+			NWidget(NWID_VSCROLLBAR, Colours::Brown, WID_GOAL_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, Colours::Brown),
 		EndContainer(),
 	EndContainer(),
 };
 
+/** Window definition for the goal listing window. */
 static WindowDesc _goals_list_desc(
-	WDP_AUTO, "list_goals", 500, 127,
-	WC_GOALS_LIST, WC_NONE,
+	WindowPosition::Automatic, "list_goals", 500, 127,
+	WindowClass::GoalList, WindowClass::None,
 	{},
 	_nested_goals_list_widgets
 );
@@ -317,46 +318,39 @@ void ShowGoalsList(CompanyID company)
 
 /** Ask a question about a goal. */
 struct GoalQuestionWindow : public Window {
-	EncodedString question{}; ///< Question to ask (private copy).
-	int buttons = 0; ///< Number of valid buttons in #button.
-	std::array<int, 3> button{}; ///< Buttons to display.
-	TextColour colour{}; ///< Colour of the question text.
+	EncodedString question; ///< Question to ask (private copy).
+	GoalQuestionButtons buttons; ///< Buttons to display.
+	TextColour colour; ///< Colour of the question text.
 
-	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, TextColour colour, uint32_t button_mask, const EncodedString &question) : Window(desc), colour(colour)
+	/**
+	 * Construct a new Goal Question Window.
+	 * @param desc Window description.
+	 * @param window_number Number for the window.
+	 * @param colour Colour of the question text.
+	 * @param buttons Buttons to display.
+	 * @param question Question to ask.
+	 */
+	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, TextColour colour, GoalQuestionButtons buttons, const EncodedString &question)
+		: Window(desc), question(question), buttons(buttons), colour(colour)
 	{
-		this->question = question;
-
-		/* Figure out which buttons we have to enable. */
-		int n = 0;
-		for (uint bit : SetBitIterator(button_mask)) {
-			if (bit >= GOAL_QUESTION_BUTTON_COUNT) break;
-			this->button[n++] = bit;
-			if (n == 3) break;
-		}
-		this->buttons = n;
-		assert(this->buttons < 4);
+		assert(this->buttons.Count() < 4);
 
 		this->CreateNestedTree();
-		if (this->buttons == 0) {
+		if (this->buttons.None()) {
 			this->GetWidget<NWidgetStacked>(WID_GQ_BUTTONS)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		} else {
-			this->GetWidget<NWidgetStacked>(WID_GQ_BUTTONS)->SetDisplayedPlane(this->buttons - 1);
+			this->GetWidget<NWidgetStacked>(WID_GQ_BUTTONS)->SetDisplayedPlane(this->buttons.Count() - 1);
 		}
 		this->FinishInitNested(window_number);
 	}
-
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
-				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[0]);
-
 			case WID_GQ_BUTTON_2:
-				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[1]);
-
 			case WID_GQ_BUTTON_3:
-				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[2]);
+				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + to_underlying(this->buttons.GetNthSetBit(widget - WID_GQ_BUTTON_1).value_or(GoalQuestionButton::Cancel)));
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
@@ -367,17 +361,9 @@ struct GoalQuestionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GQ_BUTTON_1:
-				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[0]);
-				this->Close();
-				break;
-
 			case WID_GQ_BUTTON_2:
-				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[1]);
-				this->Close();
-				break;
-
 			case WID_GQ_BUTTON_3:
-				Command<CMD_GOAL_QUESTION_ANSWER>::Post(this->window_number, this->button[2]);
+				Command<Commands::GoalQuestionAnswer>::Post(this->window_number, this->buttons.GetNthSetBit(widget - WID_GQ_BUTTON_1).value_or(GoalQuestionButton::Cancel));
 				this->Close();
 				break;
 		}
@@ -394,7 +380,7 @@ struct GoalQuestionWindow : public Window {
 	{
 		if (widget != WID_GQ_QUESTION) return;
 
-		DrawStringMultiLine(r, this->question.GetDecodedString(), this->colour, SA_TOP | SA_HOR_CENTER);
+		DrawStringMultiLine(r, this->question.GetDecodedString(), this->colour, {AlignmentH::Centre, AlignmentV::Top});
 	}
 };
 
@@ -413,8 +399,8 @@ struct NestedGoalWidgets {
 		EndContainer(),
 		NWidget(WWT_PANEL, bg_colour),
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.modalpopup), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
-				NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetFill(1, 0),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTONS),
+				NWidget(WWT_EMPTY, Colours::Invalid, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetFill(1, 0),
+				NWidget(NWID_SELECTION, Colours::Invalid, WID_GQ_BUTTONS),
 					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(85, WidgetDimensions::unscaled.hsep_wide, 85),
 						NWidget(WWT_PUSHTXTBTN, btn_colour, WID_GQ_BUTTON_1), SetFill(1, 0),
 					EndContainer(),
@@ -433,47 +419,48 @@ struct NestedGoalWidgets {
 	};
 };
 
-static constexpr auto _nested_goal_question_widgets_question = NestedGoalWidgets<COLOUR_LIGHT_BLUE, COLOUR_LIGHT_BLUE, STR_GOAL_QUESTION_CAPTION_QUESTION>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_info     = NestedGoalWidgets<COLOUR_LIGHT_BLUE, COLOUR_LIGHT_BLUE, STR_GOAL_QUESTION_CAPTION_INFORMATION>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_warning  = NestedGoalWidgets<COLOUR_YELLOW,     COLOUR_YELLOW,     STR_GOAL_QUESTION_CAPTION_WARNING>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets<COLOUR_RED,        COLOUR_YELLOW,     STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_question = NestedGoalWidgets<Colours::LightBlue, Colours::LightBlue, STR_GOAL_QUESTION_CAPTION_QUESTION>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_info     = NestedGoalWidgets<Colours::LightBlue, Colours::LightBlue, STR_GOAL_QUESTION_CAPTION_INFORMATION>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_warning  = NestedGoalWidgets<Colours::Yellow,     Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_WARNING>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets<Colours::Red,        Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
 
-static WindowDesc _goal_question_list_desc[] = {
+/** Window definitions for the goal question windows. */
+static EnumIndexArray<WindowDesc, GoalQuestionType, GoalQuestionType::End> _goal_question_list_desc{{{
 	{
-		WDP_CENTER, {}, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WindowPosition::Center, {}, 0, 0,
+		WindowClass::GoalQuestion, WindowClass::None,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_question,
 	},
 	{
-		WDP_CENTER, {}, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WindowPosition::Center, {}, 0, 0,
+		WindowClass::GoalQuestion, WindowClass::None,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_info,
 	},
 	{
-		WDP_CENTER, {}, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WindowPosition::Center, {}, 0, 0,
+		WindowClass::GoalQuestion, WindowClass::None,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_warning,
 	},
 	{
-		WDP_CENTER, {}, 0, 0,
-		WC_GOAL_QUESTION, WC_NONE,
+		WindowPosition::Center, {}, 0, 0,
+		WindowClass::GoalQuestion, WindowClass::None,
 		WindowDefaultFlag::Construction,
 		_nested_goal_question_widgets_error,
 	},
-};
+}}};
 
 /**
  * Display a goal question.
  * @param id Window number to use.
  * @param type Type of question.
- * @param button_mask Buttons to display.
+ * @param buttons Buttons to display.
  * @param question Question to ask.
  */
-void ShowGoalQuestion(uint16_t id, uint8_t type, uint32_t button_mask, const EncodedString &question)
+void ShowGoalQuestion(uint16_t id, GoalQuestionType type, GoalQuestionButtons buttons, const EncodedString &question)
 {
-	assert(type < GQT_END);
-	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
+	assert(type < GoalQuestionType::End);
+	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == GoalQuestionType::Error ? TextColour::White : TextColour::Black, buttons, question);
 }

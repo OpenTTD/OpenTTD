@@ -18,6 +18,7 @@
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "cargo_type.h"
+#include "station_map.h"
 #include "station_type.h"
 #include "rail_type.h"
 #include "newgrf_spritegroup.h"
@@ -54,7 +55,7 @@ struct StationScopeResolver : public ScopeResolver {
 	 * @param tile %Tile of the station.
 	 */
 	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
-		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(INVALID_AXIS)
+		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(Axis::Invalid)
 	{
 	}
 
@@ -74,13 +75,13 @@ struct StationResolverObject : public SpecializedResolverObject<StationRandomTri
 
 	TownScopeResolver *GetTown();
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF:
+			case VarSpriteGroupScope::Self:
 				return &this->station_scope;
 
-			case VSG_SCOPE_PARENT: {
+			case VarSpriteGroupScope::Parent: {
 				TownScopeResolver *tsr = this->GetTown();
 				if (tsr != nullptr) return tsr;
 				[[fallthrough]];
@@ -97,27 +98,23 @@ struct StationResolverObject : public SpecializedResolverObject<StationRandomTri
 	uint32_t GetDebugID() const override;
 };
 
-static const uint32_t STATION_CLASS_LABEL_DEFAULT = 'DFLT';
-static const uint32_t STATION_CLASS_LABEL_WAYPOINT = 'WAYP';
+/** Class IDs for stations. */
+using StationClassID = PoolID<uint16_t, struct StationClassIDTag, UINT16_MAX, UINT16_MAX>;
 
-enum StationClassID : uint16_t {
-	STAT_CLASS_BEGIN = 0, ///< the lowest valid value
-	STAT_CLASS_DFLT = 0, ///< Default station class.
-	STAT_CLASS_WAYP, ///< Waypoint class.
-	STAT_CLASS_MAX = UINT16_MAX, ///< Maximum number of classes.
-};
-
-/** Allow incrementing of StationClassID variables */
-DECLARE_INCREMENT_DECREMENT_OPERATORS(StationClassID)
+static constexpr StationClassID STAT_CLASS_DFLT{0}; ///< Default station class.
+static constexpr StationClassID STAT_CLASS_WAYP{1}; ///< Waypoint class.
 
 /** Flags describing behaviour of NewGRF stations. */
 enum class StationSpecFlag : uint8_t {
 	SeparateGround = 0, ///< Use different sprite set for ground sprites.
-	DivByStationSize = 1, ///< Divide cargo amount by station size.
+	DivByStationSize = 1, ///< Divide cargo amount by station size (perimeter).
 	Cb141RandomBits = 2, ///< Callback 141 needs random bits.
 	CustomFoundations = 3, ///< Draw custom foundations.
 	ExtendedFoundations = 4, ///< Extended foundation block instead of simple.
+	DivByStationArea = 5, ///< Divide cargo amount by station area.
 };
+
+/** Bitset of \c StationSpecFlag elements. */
 using StationSpecFlags = EnumBitSet<StationSpecFlag, uint8_t>;
 
 /** Station specification. */
@@ -170,7 +167,10 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 		NoWires = 1, ///< Tile should NOT contain catenary wires.
 		Blocked = 2, ///< Tile is blocked to vehicles.
 	};
+
+	/** Bitset of \c TileFlag elements. */
 	using TileFlags = EnumBitSet<TileFlag, uint8_t>;
+
 	std::vector<TileFlags> tileflags; ///< List of tile flags.
 	std::vector<BridgeableTileInfo> bridgeable_info; ///< Per tile layout bridge information.
 
@@ -183,7 +183,10 @@ struct StationSpec : NewGRFSpecBase<StationClassID> {
 };
 
 /** Class containing information relating to station classes. */
-using StationClass = NewGRFClass<StationSpec, StationClassID, STAT_CLASS_MAX>;
+using StationClass = NewGRFClass<StationSpec, StationClassID>;
+
+static const StationClass::GlobalID STATION_CLASS_LABEL_DEFAULT{"DFLT"}; ///< Class label for default rail station.
+static const StationClass::GlobalID STATION_CLASS_LABEL_WAYPOINT{"WAYP"}; ///< Class label for default rail waypoints.
 
 const StationSpec *GetStationSpec(TileIndex t);
 
@@ -205,11 +208,11 @@ inline uint16_t GetStationLayoutKey(uint8_t platforms, uint8_t length)
  */
 inline bool IsWaypointClass(const StationClass &cls)
 {
-	return cls.global_id == STATION_CLASS_LABEL_WAYPOINT || GB(cls.global_id, 24, 8) == UINT8_MAX;
+	return cls.global_id == STATION_CLASS_LABEL_WAYPOINT || cls.global_id[0] == UINT8_MAX;
 }
 
 /* Evaluate a tile's position within a station, and return the result a bitstuffed format. */
-uint32_t GetPlatformInfo(Axis axis, uint8_t tile, int platforms, int length, int x, int y, bool centred);
+uint32_t GetPlatformInfo(StationGfx gfx, int platforms, int length, int platform, int position, bool centred);
 
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint32_t var10 = 0);
 void GetCustomStationRelocation(SpriteLayoutProcessor &processor, const StationSpec *statspec, BaseStation *st, TileIndex tile);

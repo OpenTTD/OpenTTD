@@ -32,26 +32,28 @@ enum class RailTypeFlag : uint8_t {
 	Allow90Deg      = 4, ///< Bit number for always allowed 90 degree turns, regardless of setting.
 	Disallow90Deg   = 5, ///< Bit number for never allowed 90 degree turns, regardless of setting.
 };
+
+/** Bitset of \c RailTypeFlag elements. */
 using RailTypeFlags = EnumBitSet<RailTypeFlag, uint8_t>;
 
 struct SpriteGroup;
 
-/** Sprite groups for a railtype. */
-enum RailTypeSpriteGroup : uint8_t {
-	RTSG_CURSORS,     ///< Cursor and toolbar icon images
-	RTSG_OVERLAY,     ///< Images for overlaying track
-	RTSG_GROUND,      ///< Main group of ground images
-	RTSG_TUNNEL,      ///< Main group of ground images for snow or desert
-	RTSG_WIRES,       ///< Catenary wires
-	RTSG_PYLONS,      ///< Catenary pylons
-	RTSG_BRIDGE,      ///< Bridge surface images
-	RTSG_CROSSING,    ///< Level crossing overlay images
-	RTSG_DEPOT,       ///< Depot images
-	RTSG_FENCES,      ///< Fence images
-	RTSG_TUNNEL_PORTAL, ///< Tunnel portal overlay
-	RTSG_SIGNALS,     ///< Signal images
-	RTSG_GROUND_COMPLETE, ///< Complete ground images
-	RTSG_END,
+/** Sprite types for a railtype. */
+enum class RailSpriteType : uint8_t {
+	UI, ///< Cursor and toolbar icon images
+	Overlay, ///< Images for overlaying track
+	Ground, ///< Main group of ground images
+	Tunnel, ///< Main group of ground images for snow or desert
+	Wires, ///< Catenary wires
+	Pylons, ///< Catenary pylons
+	Bridge, ///< Bridge surface images
+	Crossing, ///< Level crossing overlay images
+	Depot, ///< Depot images
+	Fences, ///< Fence images
+	TunnelPortal, ///< Tunnel portal overlay
+	Signals, ///< Signal images
+	GroundComplete, ///< Complete ground images
+	End, ///< End marker.
 };
 
 /**
@@ -147,7 +149,7 @@ public:
 		SpriteID build_depot;        ///< button for building depots
 		SpriteID build_tunnel;       ///< button for building a tunnel
 		SpriteID convert_rail;       ///< button for converting rail
-		SpriteID signals[SIGTYPE_END][2][2]; ///< signal GUI sprites (type, variant, state)
+		EnumIndexArray<EnumIndexArray<EnumIndexArray<SpriteID, SignalState, SignalState::End>, SignalVariant, SignalVariant::End>, SignalType, SignalType::End> signals; ///< signal GUI sprites (type, variant, state)
 	} gui_sprites;
 
 	struct {
@@ -262,18 +264,18 @@ public:
 	/**
 	 * NewGRF providing the Action3 for the railtype. nullptr if not available.
 	 */
-	const GRFFile *grffile[RTSG_END];
+	EnumIndexArray<const GRFFile *, RailSpriteType, RailSpriteType::End> grffile{};
 
 	/**
 	 * Sprite groups for resolving sprites
 	 */
-	const SpriteGroup *group[RTSG_END];
+	EnumIndexArray<const SpriteGroup *, RailSpriteType, RailSpriteType::End> group{};
 
 	std::vector<BadgeID> badges;
 
 	inline bool UsesOverlay() const
 	{
-		return this->group[RTSG_GROUND] != nullptr;
+		return this->group[RailSpriteType::Ground] != nullptr;
 	}
 
 	/**
@@ -282,6 +284,7 @@ public:
 	 *    is determined by normal rail. Check sprites 1005 and following for this order<p>
 	 * 2) The position where the railtype is loaded must always be the same, otherwise
 	 *    the offset will fail.
+	 * @return The offset.
 	 */
 	inline uint GetRailtypeSpriteOffset() const
 	{
@@ -451,7 +454,7 @@ inline Money RailClearCost(RailType railtype)
  * Calculates the cost of rail conversion
  * @param from The railtype we are converting from
  * @param to   The railtype we are converting to
- * @return Cost per TrackBit
+ * @return Cost per Track
  */
 inline Money RailConvertCost(RailType from, RailType to)
 {
@@ -496,7 +499,7 @@ inline Money SignalMaintenanceCost(uint32_t num)
 	return (_price[Price::InfrastructureRail] * 15 * num * (1 + IntSqrt(num))) >> 8; // 1 bit fraction for the multiplier and 7 bits scaling.
 }
 
-void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
+void DrawTrainDepotSprite(int x, int y, DiagDirection dir, RailType railtype);
 int TicksToLeaveDepot(const Train *v);
 
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);

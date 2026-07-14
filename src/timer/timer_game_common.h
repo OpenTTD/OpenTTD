@@ -23,22 +23,24 @@
  * Other than that, make sure you only set one callback per priority.
  *
  * For example:
- *   IntervalTimer<TimerGameCalendar>({TimerGameCalendar::DAY, TimerGameCalendar::Priority::NONE}, [](uint count) {});
+ *   IntervalTimer<TimerGameCalendar>({TimerGameCalendar::Trigger::Day, TimerGameCalendar::Priority::None}, [](uint count) {});
  *
  * @note Callbacks are executed in the game-thread.
  */
 template <class T>
 class TimerGame {
 public:
-	/** The type to store our dates in. */
+	/** The tag for making Date StrongType. */
 	template <class ST> struct DateTag;
+	/** The type to store our dates in. */
 	using Date = StrongType::Typedef<int32_t, DateTag<T>, StrongType::Compare, StrongType::Integer>;
 
 	/** The fraction of a date we're in, i.e. the number of ticks since the last date changeover. */
 	using DateFract = uint16_t;
 
-	/** Type for the year, note: 0 based, i.e. starts at the year 0. */
+	/** The tag for making Year StrongType. */
 	template <class ST> struct YearTag;
+	/** Type for the year, note: 0 based, i.e. starts at the year 0. */
 	using Year = StrongType::Typedef<int32_t, struct YearTag<T>, StrongType::Compare, StrongType::Integer>;
 	/** Type for the month, note: 0 based, i.e. 0 = January, 11 = December. */
 	using Month = uint8_t;
@@ -94,27 +96,30 @@ public:
 		return Date{(365 * year_as_int) + number_of_leap_years};
 	}
 
-	enum Trigger : uint8_t {
-		DAY,
-		WEEK,
-		MONTH,
-		QUARTER,
-		YEAR,
+	/** Trigger reasons for the timer based triggers. */
+	enum class Trigger : uint8_t {
+		Day, ///< Triggers daily.
+		Week, ///< Triggers every Tuesday.
+		Month, ///< Triggered at the first of the month.
+		Quarter, ///< Triggered every first of January, April, July and October.
+		Year, ///< Triggered every first of January.
 	};
 
-	enum Priority : uint8_t {
-		NONE, ///< These timers can be executed in any order; there is no Random() in them, so order is not relevant.
+	/** Different levels of priority to run the timers in. */
+	enum class Priority : uint8_t {
+		None, ///< These timers can be executed in any order; there is no Random() in them, so order is not relevant.
 
 		/* All other may have a Random() call in them, so order is important.
 		 * For safety, you can only setup a single timer on a single priority. */
-		COMPANY,
-		DISASTER,
-		ENGINE,
-		INDUSTRY,
-		STATION,
-		SUBSIDY,
-		TOWN,
-		VEHICLE,
+
+		Company, ///< Changes to companies.
+		Disaster, ///< Running disaster logic.
+		Engine, ///< Running engine availability updates.
+		Industry, ///< Running industry production changes.
+		Station, ///< Processing of goods statistics.
+		Subsidy, ///< Creating new subsidies.
+		Town, ///< Town growth and rating management.
+		Vehicle, ///< Income and profit warnings.
 	};
 
 	struct TPeriod {
@@ -136,7 +141,7 @@ public:
 		}
 	};
 
-	using TElapsed = uint;
+	using TElapsed = Trigger;
 	struct TStorage {};
 };
 

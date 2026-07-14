@@ -35,7 +35,7 @@ static const std::initializer_list<std::array<uint8_t, 32>> _public_keys_v1 = {
  */
 static std::string CalculateHashV1(const std::string &filename)
 {
-	auto f = FioFOpenFile(filename, "rb", NO_DIRECTORY);
+	auto f = FioFOpenFile(filename, "rb", Subdirectory::None);
 	if (!f.has_value()) return {};
 
 	std::array<uint8_t, 32> digest;
@@ -189,12 +189,13 @@ static bool ValidateSchema(const nlohmann::json &signatures, const std::string &
  * Validate that the signatures mentioned in the signature file are matching
  * the files in question.
  *
+ * @param filename The path to the file to validate.
  * @return True iff the files in the signature file passed validation.
  */
 static bool _ValidateSignatureFile(const std::string &filename)
 {
 	size_t filesize;
-	auto f = FioFOpenFile(filename, "rb", NO_DIRECTORY, &filesize);
+	auto f = FioFOpenFile(filename, "rb", Subdirectory::None, &filesize);
 	if (!f.has_value()) {
 		Debug(misc, 0, "Failed to validate signature: file not found: {}", filename);
 		return false;
@@ -262,6 +263,7 @@ static bool _ValidateSignatureFile(const std::string &filename)
  * @note if ALLOW_INVALID_SIGNATURE is defined, this function will always
  * return true (but will still report any errors in the console).
  *
+ * @param filename The path to the file to validate.
  * @return True iff the files in the signature file passed validation.
  */
 bool ValidateSignatureFile(const std::string &filename)

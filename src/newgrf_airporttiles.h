@@ -28,6 +28,7 @@ struct AirportTileScopeResolver : public ScopeResolver {
 
 	/**
 	 * Constructor of the scope resolver specific for airport tiles.
+	 * @param ro Surrounding resolver.
 	 * @param ats Specification of the airport tiles.
 	 * @param tile %Tile for the callback, only valid for airporttile callbacks.
 	 * @param st Station of the airport for which the callback is run, or \c nullptr for build gui.
@@ -51,11 +52,11 @@ struct AirportTileResolverObject : public ResolverObject {
 	AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
 			CallbackID callback = CBID_NO_CALLBACK, uint32_t callback_param1 = 0, uint32_t callback_param2 = 0);
 
-	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, uint8_t relative = 0) override
+	ScopeResolver *GetScope(VarSpriteGroupScope scope = VarSpriteGroupScope::Self, uint8_t relative = 0) override
 	{
 		switch (scope) {
-			case VSG_SCOPE_SELF: return &tiles_scope;
-			case VSG_SCOPE_PARENT: return &airport_scope;
+			case VarSpriteGroupScope::Self: return &tiles_scope;
+			case VarSpriteGroupScope::Parent: return &airport_scope;
 			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}

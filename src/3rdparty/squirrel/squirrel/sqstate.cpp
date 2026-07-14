@@ -193,7 +193,7 @@ SQSharedState::~SQSharedState()
 			t = nx;
 		}
 	}
-//	assert(_gc_chain==nullptr); //just to proove a theory
+//	assert(_gc_chain==nullptr); //just to prove a theory
 	while(_gc_chain){
 		_gc_chain->_uiRef--;
 		_gc_chain->Release();
@@ -227,7 +227,7 @@ SQInteger SQSharedState::GetMetaMethodIdxByName(const SQObjectPtr &name)
  * This is done internally by a vector onto which the to be freed instances are pushed. When
  * this is called when not already processing, this method will actually call the FinalFree
  * function which might cause more elements to end up in the queue which this method then
- * picks up continueing until it has processed all instances in that queue.
+ * picks up continuing until it has processed all instances in that queue.
  * @param collectable The collectable to (eventually) free.
  */
 void SQSharedState::DelayFinalFree(SQCollectable *collectable)

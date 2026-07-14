@@ -23,7 +23,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MT(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 5, f, INVALID_CARGO, e, 0, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
+#define MT(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 5, f, INVALID_CARGO, e, CargoTypes{}, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
 
 /**
  * Writes the properties of a multiple-unit train into the EngineInfo struct.
@@ -36,7 +36,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MM(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 5, f, INVALID_CARGO, e, 0, 8, EngineMiscFlags{EngineMiscFlag::RailIsMU}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
+#define MM(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 5, f, INVALID_CARGO, e, CargoTypes{}, 8, EngineMiscFlags{EngineMiscFlag::RailIsMU}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
 
 /**
  * Writes the properties of a train carriage into the EngineInfo struct.
@@ -49,7 +49,7 @@
  * @see MT
  * @note the 5 between b and f is the load amount
  */
-#define MW(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 5, f, INVALID_CARGO, e, 0, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
+#define MW(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 5, f, INVALID_CARGO, e, CargoTypes{}, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
 
 /**
  * Writes the properties of a road vehicle into the EngineInfo struct.
@@ -62,7 +62,7 @@
  * @param f Bitmask of the climates
  * @note the 5 between b and f is the load amount
  */
-#define MR(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 5, f, INVALID_CARGO, e, 0, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
+#define MR(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 5, f, INVALID_CARGO, e, CargoTypes{}, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
 
 /**
  * Writes the properties of a ship into the EngineInfo struct.
@@ -74,7 +74,7 @@
  * @param f Bitmask of the climates
  * @note the 10 between b and f is the load amount
  */
-#define MS(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 10, f, INVALID_CARGO, e, 0, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
+#define MS(a, b, c, d, e, f) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 10, f, INVALID_CARGO, e, CargoTypes{}, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
 
 /**
  * Writes the properties of an aeroplane into the EngineInfo struct.
@@ -85,16 +85,15 @@
  * @param e Bitmask of the climates
  * @note the 20 between b and e is the load amount
  */
-#define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 20, e, INVALID_CARGO, CT_INVALID, 0, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
+#define MA(a, b, c, d, e) { CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR + a, TimerGameCalendar::Year{c}, TimerGameCalendar::Year{d}, b, 20, e, INVALID_CARGO, CT_INVALID, CargoTypes{}, 8, EngineMiscFlags{}, VehicleCallbackMasks{}, 0, {}, STR_EMPTY, Ticks::CARGO_AGING_TICKS, EngineID::Invalid() }
 
-/* Climates
- * T = Temperate
- * A = Sub-Arctic
- * S = Sub-Tropic
- * Y = Toyland */
+/** Climate temperate. */
 #define T LandscapeType::Temperate
+/** Climate sub-arctic. */
 #define A LandscapeType::Arctic
+/** Climate sub-tropic. */
 #define S LandscapeType::Tropic
+/** Climate toyland. */
 #define Y LandscapeType::Toyland
 static constexpr EngineInfo _orig_engine_info[] = {
 	/*      base_intro     base_life
@@ -386,16 +385,16 @@ static constexpr EngineInfo _orig_engine_info[] = {
  * Air drag value depends on the top speed of the vehicle.
  */
 #define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, j, j, 0, d, e, f, g, h, k, i, 0, 0, VE_DEFAULT, 0, 76, 0, 0, 0 }
-#define M RAILVEH_MULTIHEAD
-#define W RAILVEH_WAGON
-#define G RAILVEH_SINGLEHEAD
-#define S EC_STEAM
-#define D EC_DIESEL
-#define E EC_ELECTRIC
-#define N EC_MONORAIL
-#define V EC_MAGLEV
-/* Wagons always have engine type 0, i.e. steam. */
-#define A EC_STEAM
+#define M RailVehicleType::Multihead
+#define W RailVehicleType::Wagon
+#define G RailVehicleType::Singlehead
+#define S EngineClass::Steam
+#define D EngineClass::Diesel
+#define E EngineClass::Electric
+#define N EngineClass::Monorail
+#define V EngineClass::Maglev
+/** Wagons always have engine type 0, i.e. steam. */
+#define A EngineClass::Steam
 
 #define R RAILTYPE_RAIL
 #define C RAILTYPE_ELECTRIC

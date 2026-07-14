@@ -78,7 +78,7 @@ size_t ObjectSpec::Count()
 bool ObjectSpec::IsEverAvailable() const
 {
 	return this->IsEnabled() && this->climate.Test(_settings_game.game_creation.landscape) &&
-			!this->flags.Test((_game_mode != GM_EDITOR && !_generating_world) ? ObjectFlag::OnlyInScenedit : ObjectFlag::OnlyInGame);
+			!this->flags.Test((_game_mode != GameMode::Editor && !_generating_world) ? ObjectFlag::OnlyInScenedit : ObjectFlag::OnlyInGame);
 }
 
 /**
@@ -115,7 +115,7 @@ uint ObjectSpec::Index() const
 /* static */ void ObjectSpec::BindToClasses()
 {
 	for (auto &spec : _object_specs) {
-		if (spec.IsEnabled() && spec.class_index != INVALID_OBJECT_CLASS) {
+		if (spec.IsEnabled() && spec.class_index != ObjectClassID::Invalid()) {
 			ObjectClass::Assign(&spec);
 		}
 	}
@@ -136,15 +136,18 @@ void ResetObjects()
 	}
 
 	/* Set class for originals. */
-	_object_specs[OBJECT_LIGHTHOUSE].class_index = ObjectClass::Allocate('LTHS');
-	_object_specs[OBJECT_TRANSMITTER].class_index = ObjectClass::Allocate('TRNS');
+	_object_specs[OBJECT_LIGHTHOUSE].class_index = ObjectClass::Allocate("LTHS");
+	_object_specs[OBJECT_TRANSMITTER].class_index = ObjectClass::Allocate("TRNS");
+
+	/* Reset any overrides that have been set. */
+	_object_mngr.ResetOverride();
 }
 
 template <>
 /* static */ void ObjectClass::InsertDefaults()
 {
-	ObjectClass::Get(ObjectClass::Allocate('LTHS'))->name = STR_OBJECT_CLASS_LTHS;
-	ObjectClass::Get(ObjectClass::Allocate('TRNS'))->name = STR_OBJECT_CLASS_TRNS;
+	ObjectClass::Get(ObjectClass::Allocate("LTHS"))->name = STR_OBJECT_CLASS_LTHS;
+	ObjectClass::Get(ObjectClass::Allocate("TRNS"))->name = STR_OBJECT_CLASS_TRNS;
 }
 
 template <>
@@ -154,11 +157,11 @@ bool ObjectClass::IsUIAvailable(uint index) const
 }
 
 /* Instantiate ObjectClass. */
-template class NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
+template class NewGRFClass<ObjectSpec, ObjectClassID>;
 
 /* virtual */ uint32_t ObjectScopeResolver::GetRandomBits() const
 {
-	return IsValidTile(this->tile) && IsTileType(this->tile, MP_OBJECT) ? GetObjectRandomBits(this->tile) : 0;
+	return IsValidTile(this->tile) && IsTileType(this->tile, TileType::Object) ? GetObjectRandomBits(this->tile) : 0;
 }
 
 /**
@@ -167,9 +170,9 @@ template class NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX>;
  * @param cur_grfid GRFID of the current callback chain
  * @return value encoded as per NFO specs
  */
-static uint32_t GetObjectIDAtOffset(TileIndex tile, uint32_t cur_grfid)
+static uint32_t GetObjectIDAtOffset(TileIndex tile, GrfID cur_grfid)
 {
-	if (!IsTileType(tile, MP_OBJECT)) {
+	if (!IsTileType(tile, TileType::Object)) {
 		return 0xFFFF;
 	}
 
@@ -199,7 +202,7 @@ static uint32_t GetObjectIDAtOffset(TileIndex tile, uint32_t cur_grfid)
 static uint32_t GetNearbyObjectTileInformation(uint8_t parameter, TileIndex tile, ObjectID index, bool grf_version8)
 {
 	if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
-	bool is_same_object = (IsTileType(tile, MP_OBJECT) && GetObjectIndex(tile) == index);
+	bool is_same_object = (IsTileType(tile, TileType::Object) && GetObjectIndex(tile) == index);
 
 	return GetNearbyTileInformation(tile, grf_version8) | (is_same_object ? 1 : 0) << 8;
 }
@@ -232,7 +235,7 @@ static uint32_t GetClosestObject(TileIndex tile, ObjectType type, const Object *
  * @param current  Object for which the inquiry is made
  * @return The formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
  */
-static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &object, uint8_t local_id, uint32_t grfid, TileIndex tile, const Object *current)
+static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &object, uint8_t local_id, GrfID grfid, TileIndex tile, const Object *current)
 {
 	uint32_t grf_id = static_cast<uint32_t>(object.GetRegister(0x100)); // Get the GRFID of the definition to look for in register 100h
 	uint32_t idx;
@@ -258,7 +261,6 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 	return Object::GetTypeCount(idx) << 16 | ClampTo<uint16_t>(GetClosestObject(tile, idx, current));
 }
 
-/** Used by the resolver to get values for feature 0F deterministic spritegroups. */
 /* virtual */ uint32_t ObjectScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
 {
 	/* We get the town from the object, or we calculate the closest
@@ -338,7 +340,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		case 0x46: return DistanceSquare(this->tile, t->xy);
 
 		/* Object colour */
-		case 0x47: return this->obj->colour;
+		case 0x47: return this->obj->recolour_offset;
 
 		/* Object view */
 		case 0x48: return this->obj->view;
@@ -349,7 +351,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		/* Get random tile bits at offset param */
 		case 0x61: {
 			TileIndex tile = GetNearbyTile(parameter, this->tile);
-			return (IsTileType(tile, MP_OBJECT) && Object::GetByTile(tile) == this->obj) ? GetObjectRandomBits(tile) : 0;
+			return (IsTileType(tile, TileType::Object) && Object::GetByTile(tile) == this->obj) ? GetObjectRandomBits(tile) : 0;
 		}
 
 		/* Land info of nearby tiles */
@@ -358,7 +360,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		/* Animation counter of nearby tile */
 		case 0x63: {
 			TileIndex tile = GetNearbyTile(parameter, this->tile);
-			return (IsTileType(tile, MP_OBJECT) && Object::GetByTile(tile) == this->obj) ? GetAnimationFrame(tile) : 0;
+			return (IsTileType(tile, TileType::Object) && Object::GetByTile(tile) == this->obj) ? GetAnimationFrame(tile) : 0;
 		}
 
 		/* Count of object, distance of closest instance */
@@ -377,6 +379,7 @@ unhandled:
 /**
  * Constructor of the object resolver.
  * @param obj Object being resolved.
+ * @param spec Specification of the object's type.
  * @param tile %Tile of the object.
  * @param view View of the object.
  * @param callback Callback ID.
@@ -412,7 +415,7 @@ TownScopeResolver *ObjectResolverObject::GetTown()
 
 GrfSpecFeature ObjectResolverObject::GetFeature() const
 {
-	return GSF_OBJECTS;
+	return GrfSpecFeature::Objects;
 }
 
 uint32_t ObjectResolverObject::GetDebugID() const
@@ -446,7 +449,7 @@ uint16_t GetObjectCallback(CallbackID callback, uint32_t param1, uint32_t param2
  */
 static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, const ObjectSpec *spec)
 {
-	PaletteID palette = (spec->flags.Test(ObjectFlag::Uses2CC) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->colour;
+	PaletteID palette = (spec->flags.Test(ObjectFlag::Uses2CC) ? SPR_2CCMAP_BASE : PALETTE_RECOLOUR_START) + Object::GetByTile(ti->tile)->recolour_offset;
 
 	SpriteID image = dts.ground.sprite;
 	PaletteID pal = dts.ground.pal;
@@ -461,7 +464,7 @@ static void DrawTileLayout(const TileInfo *ti, const DrawTileSpriteSpan &dts, co
 		}
 	}
 
-	DrawNewGRFTileSeq(ti, &dts, TO_STRUCTURES, 0, palette);
+	DrawNewGRFTileSeq(ti, &dts, TransparencyOption::Structures, 0, palette);
 }
 
 /**
@@ -502,8 +505,8 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 	if (Company::IsValidID(_local_company)) {
 		/* Get the colours of our company! */
 		if (spec->flags.Test(ObjectFlag::Uses2CC)) {
-			const Livery &l = Company::Get(_local_company)->livery[0];
-			palette = SPR_2CCMAP_BASE + l.colour1 + l.colour2 * 16;
+			const Livery &l = Company::Get(_local_company)->livery[LiveryScheme::Default];
+			palette = SPR_2CCMAP_BASE + l.GetRecolourOffset();
 		} else {
 			palette = GetCompanyPalette(_local_company);
 		}
@@ -572,6 +575,7 @@ static bool DoTriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimat
  * @param tile    The location of the triggered tile.
  * @param trigger The trigger that is triggered.
  * @param spec    The spec associated with the object.
+ * @return \c true iff the object has an animation trigger set.
  */
 bool TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
 {
@@ -583,6 +587,7 @@ bool TriggerObjectTileAnimation(Object *o, TileIndex tile, ObjectAnimationTrigge
  * @param o       The object that got triggered.
  * @param trigger The trigger that is triggered.
  * @param spec    The spec associated with the object.
+ * @return \c true iff all tiles of the object had an animation trigger set.
  */
 bool TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
 {

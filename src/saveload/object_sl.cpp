@@ -19,18 +19,18 @@
 #include "../safeguards.h"
 
 static const SaveLoad _object_desc[] = {
-	    SLE_VAR(Object, location.tile,              SLE_UINT32),
-	    SLE_VAR(Object, location.w,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_VAR(Object, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
-	    SLE_REF(Object, town,                       REF_TOWN),
-	    SLE_VAR(Object, build_date,                 SLE_UINT32),
-	SLE_CONDVAR(Object, colour,                     SLE_UINT8,                  SLV_148, SL_MAX_VERSION),
-	SLE_CONDVAR(Object, view,                       SLE_UINT8,                  SLV_155, SL_MAX_VERSION),
-	SLE_CONDVAR(Object, type,                       SLE_UINT16,                 SLV_186, SL_MAX_VERSION),
+	    SLE_VAR(Object, location.tile,              VarTypes::U32),
+	    SLE_VAR(Object, location.w,                 VarFileType::U8 | VarMemType::U16),
+	    SLE_VAR(Object, location.h,                 VarFileType::U8 | VarMemType::U16),
+	    SLE_REF(Object, town,                       SLRefType::Town),
+	    SLE_VAR(Object, build_date,                 VarTypes::U32),
+	SLE_CONDVARNAME(Object, recolour_offset, "colour", VarTypes::U8, SaveLoadVersion::IndustryPlatform, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Object, view, VarTypes::U8, SaveLoadVersion::NewGRFObjectView, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Object, type, VarTypes::U16, SaveLoadVersion::ObjectTypeToPool, SaveLoadVersion::MaxVersion),
 };
 
 struct OBJSChunkHandler : ChunkHandler {
-	OBJSChunkHandler() : ChunkHandler('OBJS', CH_TABLE) {}
+	OBJSChunkHandler() : ChunkHandler("OBJS", ChunkType::Table) {}
 
 	void Save() const override
 	{
@@ -58,7 +58,7 @@ struct OBJSChunkHandler : ChunkHandler {
 	{
 		for (Object *o : Object::Iterate()) {
 			SlObject(o, _object_desc);
-			if (IsSavegameVersionBefore(SLV_148) && !IsTileType(o->location.tile, MP_OBJECT)) {
+			if (IsSavegameVersionBefore(SaveLoadVersion::IndustryPlatform) && !IsTileType(o->location.tile, TileType::Object)) {
 				/* Due to a small bug stale objects could remain. */
 				delete o;
 			}
@@ -67,7 +67,7 @@ struct OBJSChunkHandler : ChunkHandler {
 };
 
 struct OBIDChunkHandler : NewGRFMappingChunkHandler {
-	OBIDChunkHandler() : NewGRFMappingChunkHandler('OBID', _object_mngr) {}
+	OBIDChunkHandler() : NewGRFMappingChunkHandler("OBID", _object_mngr) {}
 };
 
 static const OBIDChunkHandler OBID;

@@ -33,6 +33,8 @@ enum class BadgeFlag : uint8_t {
 
 	HasText, ///< Internal flag set if the badge has text.
 };
+
+/** Bitset of \c BridgeFlag elements. */
 using BadgeFlags = EnumBitSet<BadgeFlag, uint8_t>;
 
 using BadgeFilterChoices = std::unordered_map<BadgeClassID, BadgeID>;

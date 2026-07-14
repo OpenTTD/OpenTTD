@@ -1140,8 +1140,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stel hichte bou
 STR_CONFIG_SETTING_RECESSIONS                                   :Resesjes: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :By ynskeakeljen kinne der om de safolle jier resesjes plakfine. Under in resesje nim de produksje op alle flakken ôf (sadree in resesje oergean is giet de produkje wer nei it âlde nivo omheech)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Ferbied treinen te draaien yn stasjons: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :By ynskeakeljen sille treinen net draaie op net kopstasjons, ek net as der in koarter paad is nei de folgjende bestimming by it wol omdraaien
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Rampen: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skeakel rampen oan/út. Rampen kinne sa no en dan fiertugen en ynfrastruktuer sawol blokearje as ferneatigje
@@ -1312,6 +1312,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :By ynskeakeljen
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ferfang âlde fiertugen automatysk: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :By ynskeakeljen wurden fiertugen dy't hast op harren ein binne automatyske ferfongen
@@ -1499,12 +1501,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Lit oankomst- e
 STR_CONFIG_SETTING_QUICKGOTO                                    :Flugge oanmaak fan fiertúchoarders: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :By it iepenjen fan it oardersfinster direktst it 'gean-nei'-ark iepenje
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standert spoarsoart (by nij of bewarre spul): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Spoartype om te selektearjen nei it starten fan in nij spul. 'Earst beskikber' selektearret it âldste spoartype, 'Lêst beskikber' selektearret it nijste spoartype en 'Meast brûkt' selektearret is spoartyp hokker it measte brûkt wurdt
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Earst beskikber
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Lêst beskikber
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meast brûkt
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Lit reservearre spoar sjen: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Jou reservearre spoaren in oare kleur om it makliker te meistjen problemen mei paad-basearre seinblokken te sjen
@@ -1592,6 +1589,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :By ynskeakeljen
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Wagon snelheids limiet: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :By ynskeakeljen sille de faasjelimyten fan de weinen meinaam wurde by it bepalen fan de maksimale faasje foar in trein
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :skeakelje elektryske spoaren út: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :By ynskeakeljen ferfalt de ferplichting spoar te elektrifisearjen foardat dizze troch elektryske treinen brûkt wurde kin
@@ -1827,7 +1825,7 @@ STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :koe net fûn wu
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :Dat strykt net mei dizze ferzje fan OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ûnbekind
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -2021,15 +2019,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kl
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} Delhelle oant
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} delhelle
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Ferbyning meitsje...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisearje...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Wachtsje...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Lân delhelje...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Data ferwurkje...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrearje...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Spulynformaasje ophelje...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Bedriuwsynformaasje ophelje...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Ferbining ferbrekke
 
@@ -2259,6 +2255,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selektea
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Stasjon lengte
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selektear lengte fan treinstasjon
 STR_STATION_BUILD_DRAG_DROP                                     :Sleepe en los litte
+
+
 
 
 
@@ -3251,6 +3249,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. L�
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Berik: {GOLD}{COMMA} flakken
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Fleantúch type: {GOLD}{STRING}
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3370,6 +3370,7 @@ STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klik om 
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Berjocht fan fiertúgenfabrikant
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Wy hawwe sakrekt in nije {STRING} ûntwurpen - bisto ynteressearre yn in jier lang eksklusyf gebrûk fan dit fiertúch, sadat wy kinne sjen oft it goed wurket foardat wy it wrâldwiid beskikber meitsjen?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyf
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail lokomotyf
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglevlokomotyf
@@ -3478,7 +3479,6 @@ STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. sn
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krêft: {LTBLUE}{POWER}{BLACK} Maks. snelheid: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krêft: {LTBLUE}{POWER}{BLACK} Maks. snelheid: {LTBLUE}{VELOCITY} {BLACK}Maks. lûkkrêft: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}betrouberens: {LTBLUE}{COMMA}%  {BLACK}Stikken west sûnt lêste ûnderhâld: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteit: {LTBLUE}Gjin{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasiteit: {LTBLUE}{CARGO_LONG}{STRING}
@@ -3585,7 +3585,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laadpersintaazje
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouberens
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimale snelheid
@@ -3887,7 +3887,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kin gjin
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kin de namme net feroarje...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kin hjir gjin stêd boue...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kin stêd net grutter meitsje
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te ticht by de râne fan 'e map
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te ticht by in oare stêd
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te folle stêden
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der is gjin romte mear op'e kaart

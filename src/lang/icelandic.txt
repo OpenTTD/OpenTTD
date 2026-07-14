@@ -1087,8 +1087,8 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Stillingar á b
 STR_CONFIG_SETTING_RECESSIONS                                   :Efnahagslægð: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Ef virkt getur komið efnahagslægð á nokkurra ára fresti. Meðan á efnahagslægð stendur er öll framleiðsla marktækt minni (framleiðslan fellur í fyrra horf þegar efnahagslægðinni líkur)
 
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Banna lest að snúa í lestarstöð: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Ef virkt, munu lestar ekki snúa við á lestastöðvum sem eru ekki endastöðvarekki snúa við á lestarstöðvar, þó að styttri leið sé á næsta áfangastað þegar þær snúa við
+
+###length 3
 
 STR_CONFIG_SETTING_DISASTERS                                    :Hörmungar: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Kveikja eða slökkva á hörmungum, hörmungar sem af og til stoppa eða eyðileggja farartæki eða byggingar
@@ -1257,6 +1257,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Ef þessi still
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uppfæra faratæki sjálfvirkt þegar þau eldast: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ef þessi stilling er virk, eru farartæki endurnýjuð sjálfvirkt þegar endingartími þeirra er komin
@@ -1431,12 +1433,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sýna áætlað
 STR_CONFIG_SETTING_QUICKGOTO                                    :Fljótleg gerð skipana: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forvelja 'fara að' þegar skipana glugginn fyrir farartæki er opnaður
 
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Valin lestartegund (eftir nýjan leik/opnaðan leik): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tegund spors sem valið er fyrst eftir að leikur byrjar. 'Fyrsta mögulega' velur elstu gerð spors, 'Síðasta mögulega' velur nýjustu gerð spors og 'Mest notuð' velur það spor sem mest er af á kortinu
 ###length 3
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Fyrsta mögulega
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Síðasta mögulega
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest notuð
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Sýna frátekin spor: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Frátekin spor fá annan lit til að auðvelda að finna vandamál þegar lestar fara ekki inn á svæði
@@ -1526,6 +1523,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ef þessi still
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Leyfa hraðatakmarkanir vagna: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ef þessi stilling er virk er hámarkshraði á vögnum einnig notaður til að ákvarða hámarks hraða á járnbrautalestum
+
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Ekki nota rafknúnar lestir: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ef þessi stilling er virk er ekki boðið upp á að nota rafmagns knúnar járnbrautalestar né spor fyrir þá
@@ -1737,7 +1735,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... slep
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sleppi grunn hljóðsafni, '{STRING}' finnst ekki
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... sleppi grunn tónlistarsafni, '{STRING}' finnst ekki
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -1941,15 +1939,13 @@ STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} þ
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} hefur verið niðurhalað
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} niðurhöluð hingaðtil
 
-###length 8
+###length 6
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Tengist...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Staðfesti...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Bíð...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Hala niður korti...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Vinn úr gögnum...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Skrái...
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Næ í upplýsingar um leik...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Næ í upplýsingar um fyrirtæki...
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Aftengjast
 
@@ -2209,6 +2205,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Lengd le
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Veldu lengd lestarstöðvar
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Draga & Sleppa
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Byggja lestarstöð með 'draga og sleppa' aðferðinni
+
+
 
 
 
@@ -3195,6 +3193,8 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Allt nema {CARG
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Hámarks togkrafur: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Drægni: {GOLD}{COMMA} reitir
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -3333,6 +3333,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Þú er
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Skilaboð frá farartækisframleiðanda
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Við höfum hannað nýja {STRING} - hefðir þú áhuga á árs einkaleyfi á notkun þessa farartækis, svo að við getum athugað frammistöðu þess?
 
+
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lest
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einteinungs eimreið
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Segulsvifvagn
@@ -3464,7 +3465,6 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Þyngd: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Þyngd: {LTBLUE}{WEIGHT_SHORT} {BLACK}Afl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY} {BLACK}Hámarks dráttarafl.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Hagnaður í ár: {LTBLUE}{CURRENCY_LONG} (síðasta ár: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Framleiðsluár: {LTBLUE}{NUM}{BLACK} Verðgildi: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Burðargeta: {LTBLUE}Engin{STRING}
@@ -3586,7 +3586,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Stoppa
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gögn farartækis sem skilyrði byggja á
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Hleðsluhlutfall
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Áreiðanleiki
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Hámarkshraði
@@ -3939,7 +3939,6 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Get ekki
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Get ekki endurskírt bæ...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Get ekki byggt bæ hér...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Get ekki framlengt bæ...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... of nálægt brún kortsins
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... of nálægt öðrum bæ
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... of margir bæir
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... það er ekkert laust svæði á kortinu

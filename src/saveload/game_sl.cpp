@@ -27,9 +27,9 @@ static int         _game_saveload_version;
 static std::string _game_saveload_settings;
 
 static const SaveLoad _game_script_desc[] = {
-	   SLEG_SSTR("name",      _game_saveload_name,         SLE_STR),
-	   SLEG_SSTR("settings",  _game_saveload_settings,     SLE_STR),
-	    SLEG_VAR("version",   _game_saveload_version,   SLE_UINT32),
+	   SLEG_SSTR("name",      _game_saveload_name,         VarTypes::STR),
+	   SLEG_SSTR("settings",  _game_saveload_settings,     VarTypes::STR),
+	    SLEG_VAR("version",   _game_saveload_version,   VarTypes::U32),
 };
 
 static void SaveReal_GSDT(int)
@@ -52,27 +52,27 @@ static void SaveReal_GSDT(int)
 }
 
 struct GSDTChunkHandler : ChunkHandler {
-	GSDTChunkHandler() : ChunkHandler('GSDT', CH_TABLE) {}
+	GSDTChunkHandler() : ChunkHandler("GSDT", ChunkType::Table) {}
 
 	void Load() const override
 	{
 		const std::vector<SaveLoad> slt = SlCompatTableHeader(_game_script_desc, _game_script_sl_compat);
 
 		/* Free all current data */
-		GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME)->Change(std::nullopt);
+		GameConfig::GetConfig(GameConfig::ScriptSettingSource::ForceCurrentGame)->Change(std::nullopt);
 
 		if (SlIterateArray() == -1) return;
 
 		_game_saveload_version = -1;
 		SlObject(nullptr, slt);
 
-		if (_game_mode == GM_MENU || (_networking && !_network_server)) {
+		if (_game_mode == GameMode::Menu || (_networking && !_network_server)) {
 			GameInstance::LoadEmpty();
 			if (SlIterateArray() != -1) SlErrorCorrupt("Too many GameScript configs");
 			return;
 		}
 
-		GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
+		GameConfig *config = GameConfig::GetConfig(GameConfig::ScriptSettingSource::ForceCurrentGame);
 		if (!_game_saveload_name.empty()) {
 			config->Change(_game_saveload_name, _game_saveload_version, false);
 			if (!config->HasScript()) {
@@ -121,7 +121,7 @@ static uint32_t _game_saveload_strings;
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
 	static inline const SaveLoad description[] = {
-		SLEG_SSTR("string", _game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL | SLF_REPLACE_TABCRLF),
+		SLEG_SSTR("string", _game_saveload_string, VarTypes::STR | StringValidationSetting::AllowControlCode | StringValidationSetting::ReplaceTabCrNlWithSpace),
 	};
 	static inline const SaveLoadCompatTable compat_description = _game_language_string_sl_compat;
 
@@ -137,7 +137,7 @@ public:
 
 	void Load(LanguageStrings *ls) const override
 	{
-		uint32_t length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32_t)SlGetStructListLength(UINT32_MAX);
+		uint32_t length = IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength) ? _game_saveload_strings : (uint32_t)SlGetStructListLength(UINT32_MAX);
 
 		for (uint32_t i = 0; i < length; i++) {
 			SlObject(nullptr, this->GetLoadDescription());
@@ -147,13 +147,13 @@ public:
 };
 
 static const SaveLoad _game_language_desc[] = {
-	SLE_SSTR(LanguageStrings, language, SLE_STR),
-	SLEG_CONDVAR("count", _game_saveload_strings, SLE_UINT32, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
+	SLE_SSTR(LanguageStrings, language, VarTypes::STR),
+	SLEG_CONDVAR("count", _game_saveload_strings, VarTypes::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 	SLEG_STRUCTLIST("strings", SlGameLanguageString),
 };
 
 struct GSTRChunkHandler : ChunkHandler {
-	GSTRChunkHandler() : ChunkHandler('GSTR', CH_TABLE) {}
+	GSTRChunkHandler() : ChunkHandler("GSTR", ChunkType::Table) {}
 
 	void Load() const override
 	{

@@ -32,6 +32,7 @@ enum class VehicleRailFlag : uint8_t {
 	Stuck = 8, ///< Train can't get a path reservation.
 	LeavingStation = 9, ///< Train is just leaving a station.
 };
+/** Bitset of the %VehicleRailFlag elements. */
 using VehicleRailFlags = EnumBitSet<VehicleRailFlag, uint16_t>;
 
 /** Modes for ignoring signals. */
@@ -46,7 +47,7 @@ enum class ConsistChangeFlag : uint8_t {
 	Length, ///< Allow vehicles to change length.
 	Capacity, ///< Allow vehicles to change capacity.
 };
-
+/** Bitset of the %ConsistChangeFlag elements. */
 using ConsistChangeFlags = EnumBitSet<ConsistChangeFlag, uint8_t>;
 
 static constexpr ConsistChangeFlags CCF_TRACK{}; ///< Valid changes while vehicle is driving, and possibly changing tracks.
@@ -63,7 +64,7 @@ void CheckTrainsLengths();
 void FreeTrainTrackReservation(const Train *v);
 bool TryPathReserve(Train *v, bool mark_as_stuck = false, bool first_tile_okay = false);
 
-int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, int *station_ahead, int *station_length);
+int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *moving_front, int *station_ahead, int *station_length);
 
 void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, int &yoffs, EngineImageType image_type);
 
@@ -72,7 +73,7 @@ void NormalizeTrainVehInDepot(const Train *u);
 
 /** Variables that are cached to improve performance and such */
 struct TrainCache {
-	/* Cached wagon override spritegroup */
+	/** Cached wagon override spritegroup. */
 	const struct SpriteGroup *cached_override = nullptr;
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
@@ -82,37 +83,43 @@ struct TrainCache {
 	int16_t cached_curve_speed_mod = 0; ///< curve speed modifier of the entire train
 	uint16_t cached_max_curve_speed = 0; ///< max consist speed limited by curves
 
-	auto operator<=>(const TrainCache &) const = default;
+	/**
+	 * Compare variables with another instance of this class.
+	 * @param other The other instance of TrainCache.
+	 * @return The std::strong_ordering of the comparison.
+	 */
+	auto operator<=>(const TrainCache &other) const = default;
 };
 
 /**
  * 'Train' is either a loco or a wagon.
  */
-struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
-	VehicleRailFlags flags{};
+struct Train final : public GroundVehicle<Train, VehicleType::Train> {
+	VehicleRailFlags flags{}; ///< Which flags has this train currently set. @see VehicleRailFlag for more details.
 	uint16_t crash_anim_pos = 0; ///< Crash animation counter.
 	uint16_t wait_counter = 0; ///< Ticks waiting in front of a signal, ticks being stuck or a counter for forced proceeding through signals.
 
-	TrainCache tcache{};
+	TrainCache tcache{}; ///< Set of cached variables, recalculated on load and each time a vehicle is added to/removed from the consist.
 
-	/* Link between the two ends of a multiheaded engine */
+	/** Link between the two ends of a multiheaded engine. */
 	Train *other_multiheaded_part = nullptr;
 
-	RailTypes compatible_railtypes{};
-	RailTypes railtypes{};
+	RailTypes compatible_railtypes{}; ///< With which rail types the train is compatible.
+	RailTypes railtypes{}; ///< On which rail types the train can run.
 
-	TrackBits track{};
-	TrainForceProceeding force_proceed{};
+	TrackBits track{}; ///< On which track the train currently is.
+	TrainForceProceeding force_proceed{}; ///< How the train should behave when it encounters next obstacle.
 
+	/** Create new Train object. @copydoc GroundVehicle::GroundVehicle */
 	Train(VehicleID index) : GroundVehicleBase(index) {}
 	/** We want to 'destruct' the right class. */
 	~Train() override { this->PreDestructor(); }
 
-	friend struct GroundVehicle<Train, VEH_TRAIN>; // GroundVehicle needs to use the acceleration functions defined at Train.
+	friend struct GroundVehicle<Train, VehicleType::Train>; // GroundVehicle needs to use the acceleration functions defined at Train.
 
 	void MarkDirty() override;
 	void UpdateDeltaXY() override;
-	ExpensesType GetExpenseType(bool income) const override { return income ? EXPENSES_TRAIN_REVENUE : EXPENSES_TRAIN_RUN; }
+	ExpensesType GetExpenseType(bool income) const override { return income ? ExpensesType::TrainRevenue : ExpensesType::TrainRun; }
 	void PlayLeaveStationSound(bool force = false) const override;
 	bool IsPrimaryVehicle() const override { return this->IsFrontEngine(); }
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const override;
@@ -121,7 +128,7 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 	Money GetRunningCost() const override;
 	int GetCursorImageOffset() const;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
-	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
+	bool IsInDepot() const override { return this->track == Track::Depot; }
 	bool Tick() override;
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;
@@ -176,7 +183,8 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 		 * longer than the part after the center. This means we have to round up the
 		 * length of the next vehicle but may not round the length of the current
 		 * vehicle. */
-		return this->gcache.cached_veh_length / 2 + (this->Next() != nullptr ? this->Next()->gcache.cached_veh_length + 1 : 0) / 2;
+		uint8_t rounding = this->IsDrivingBackwards() ? 1 : 0;
+		return (this->gcache.cached_veh_length + rounding) / 2 + (this->GetMovingNext() != nullptr ? this->GetMovingNext()->gcache.cached_veh_length + 1 - rounding : 0) / 2;
 	}
 
 	/**
@@ -211,10 +219,10 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Power value from the articulated part in HP, or zero if it is not powered.
 	 */
-	inline uint16_t GetPoweredPartPower(const Train *head) const
+	inline uint16_t GetPoweredPartPower() const
 	{
 		/* For powered wagons the engine defines the type of engine (i.e. railtype) */
-		if (this->flags.Test(VehicleRailFlag::PoweredWagon) && HasPowerOnRail(head->railtypes, GetRailType(this->tile))) {
+		if (this->flags.Test(VehicleRailFlag::PoweredWagon) && HasPowerOnRail(this->railtypes, GetRailType(this->tile))) {
 			return RailVehInfo(this->gcache.first_engine)->pow_wag_power;
 		}
 
@@ -264,7 +272,7 @@ protected: // These functions should not be called outside acceleration code.
 	inline uint8_t GetAirDragArea() const
 	{
 		/* Air drag is higher in tunnels due to the limited cross-section. */
-		return (this->track == TRACK_BIT_WORMHOLE && this->vehstatus.Test(VehState::Hidden)) ? 28 : 14;
+		return (this->track == Track::Wormhole && this->vehstatus.Test(VehState::Hidden)) ? 28 : 14;
 	}
 
 	/**
@@ -340,7 +348,7 @@ protected: // These functions should not be called outside acceleration code.
 	inline bool TileMayHaveSlopedTrack() const
 	{
 		/* Any track that isn't TRACK_BIT_X or TRACK_BIT_Y cannot be sloped. */
-		return this->track == TRACK_BIT_X || this->track == TRACK_BIT_Y;
+		return this->track == Track::X || this->track == Track::Y;
 	}
 
 	/**

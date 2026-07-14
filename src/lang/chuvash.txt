@@ -587,6 +587,8 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Сылтӑмр�
 
 
 
+###length 3
+
 
 
 ###setting-zero-is-special
@@ -654,6 +656,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропор�
 
 ###setting-zero-is-special
 
+
+###setting-zero-is-special
 
 
 ###length 2
@@ -788,6 +792,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Грантсем: {STRING}
 
 ###length 3
@@ -867,7 +872,7 @@ STR_CONFIG_SETTING_AI                                           :Ӑмӑртуҫ�
 
 # Config errors
 
-# Video initalization errors
+# Video initialization errors
 
 # Intro window
 
@@ -990,7 +995,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 # Network connecting window
 
 
-###length 8
+###length 6
 
 
 
@@ -1061,6 +1066,8 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 # Rail waypoint construction window
 
 # Rail station construction window
+
+
 
 
 
@@ -1401,6 +1408,8 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 ###length VEHICLE_TYPES
 
 
+# Vehicle sort details
+
 ###length 3
 
 ###length VEHICLE_TYPES
@@ -1459,6 +1468,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 
 # Engine preview window
+
 
 
 
@@ -1547,7 +1557,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-###length 8
+###length 9
 ###next-name-looks-similar
 
 

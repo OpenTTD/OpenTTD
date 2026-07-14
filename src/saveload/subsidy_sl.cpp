@@ -17,20 +17,20 @@
 #include "../safeguards.h"
 
 static const SaveLoad _subsidies_desc[] = {
-	    SLE_VAR(Subsidy, cargo_type, SLE_UINT8),
-	SLE_CONDVAR(Subsidy, remaining,  SLE_FILE_U8 | SLE_VAR_U16, SL_MIN_VERSION, SLV_CUSTOM_SUBSIDY_DURATION),
-	SLE_CONDVAR(Subsidy, remaining,  SLE_UINT16,                SLV_CUSTOM_SUBSIDY_DURATION, SL_MAX_VERSION),
-	SLE_CONDVAR(Subsidy, awarded,    SLE_UINT8,                                     SLV_125, SL_MAX_VERSION),
-	SLE_CONDVARNAME(Subsidy, src.type, "src_type", SLE_UINT8,                       SLV_125, SL_MAX_VERSION),
-	SLE_CONDVARNAME(Subsidy, dst.type, "dst_type", SLE_UINT8,                       SLV_125, SL_MAX_VERSION),
-	SLE_CONDVARNAME(Subsidy, src.id, "src",  SLE_FILE_U8 | SLE_VAR_U16,             SL_MIN_VERSION, SLV_5),
-	SLE_CONDVARNAME(Subsidy, src.id, "src",  SLE_UINT16,                            SLV_5, SL_MAX_VERSION),
-	SLE_CONDVARNAME(Subsidy, dst.id, "dst",  SLE_FILE_U8 | SLE_VAR_U16,             SL_MIN_VERSION, SLV_5),
-	SLE_CONDVARNAME(Subsidy, dst.id, "dst",  SLE_UINT16,                            SLV_5, SL_MAX_VERSION),
+	    SLE_VAR(Subsidy, cargo_type, VarTypes::U8),
+	SLE_CONDVAR(Subsidy, remaining, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::CustomSubsidyDuration),
+	SLE_CONDVAR(Subsidy, remaining, VarTypes::U16, SaveLoadVersion::CustomSubsidyDuration, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Subsidy, awarded, VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+	SLE_CONDVARNAME(Subsidy, src.type, "src_type", VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+	SLE_CONDVARNAME(Subsidy, dst.type, "dst_type", VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+	SLE_CONDVARNAME(Subsidy, src.id, "src", VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
+	SLE_CONDVARNAME(Subsidy, src.id, "src", VarTypes::U16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
+	SLE_CONDVARNAME(Subsidy, dst.id, "dst", VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
+	SLE_CONDVARNAME(Subsidy, dst.id, "dst", VarTypes::U16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
 };
 
 struct SUBSChunkHandler : ChunkHandler {
-	SUBSChunkHandler() : ChunkHandler('SUBS', CH_TABLE) {}
+	SUBSChunkHandler() : ChunkHandler("SUBS", ChunkType::Table) {}
 
 	void Save() const override
 	{

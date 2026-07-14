@@ -44,7 +44,7 @@ OrderBackup::OrderBackup(OrderBackupID index) :
  * @param v    The vehicle to make a backup of.
  * @param user The user that is requesting the backup.
  */
-OrderBackup::OrderBackup(OrderBackupID index, const Vehicle *v, uint32_t user) :
+OrderBackup::OrderBackup(OrderBackupID index, const Vehicle *v, ClientID user) :
 	OrderBackupPool::PoolItem<&_order_backup_pool>(index), user(user), tile(v->tile), group(v->group_id)
 {
 	this->CopyConsistPropertiesFrom(v);
@@ -66,11 +66,11 @@ void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* If we had shared orders, recover that */
 	if (this->clone != nullptr) {
-		Command<CMD_CLONE_ORDER>::Do(DoCommandFlag::Execute, CO_SHARE, v->index, this->clone->index);
+		Command<Commands::CloneOrder>::Do(DoCommandFlag::Execute, CO_SHARE, v->index, this->clone->index);
 	} else if (!this->orders.empty() && OrderList::CanAllocateItem()) {
 		v->orders = OrderList::Create(std::move(this->orders), v);
 		/* Make sure buoys/oil rigs are updated in the station list. */
-		InvalidateWindowClassesData(WC_STATION_LIST, 0);
+		InvalidateWindowClassesData(WindowClass::StationList, 0);
 	}
 
 	/* Remove backed up name if it's no longer unique. */
@@ -83,7 +83,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 	if (v->cur_implicit_order_index >= v->GetNumOrders()) v->cur_implicit_order_index = v->cur_real_order_index;
 
 	/* Restore vehicle group */
-	Command<CMD_ADD_VEHICLE_GROUP>::Do(DoCommandFlag::Execute, this->group, v->index, false, VehicleListIdentifier{});
+	Command<Commands::AddVehicleToGroup>::Do(DoCommandFlag::Execute, this->group, v->index, false, VehicleListIdentifier{});
 }
 
 /**
@@ -92,7 +92,7 @@ void OrderBackup::DoRestore(Vehicle *v)
  * @param user The user that is requesting the backup.
  * @note Will automatically remove any previous backups of this user.
  */
-/* static */ void OrderBackup::Backup(const Vehicle *v, uint32_t user)
+/* static */ void OrderBackup::Backup(const Vehicle *v, ClientID user)
 {
 	/* Don't use reset as that broadcasts over the network to reset the variable,
 	 * which is what we are doing at the moment. */
@@ -110,7 +110,7 @@ void OrderBackup::DoRestore(Vehicle *v)
  * @param user The user that built the vehicle, thus wants to restore.
  * @note After restoration the backup will automatically be removed.
  */
-/* static */ void OrderBackup::Restore(Vehicle *v, uint32_t user)
+/* static */ void OrderBackup::Restore(Vehicle *v, ClientID user)
 {
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (v->tile != ob->tile || ob->user != user) continue;
@@ -126,7 +126,7 @@ void OrderBackup::DoRestore(Vehicle *v)
  * @param user The user associated with the OrderBackup.
  * @note Must not be used from the GUI!
  */
-/* static */ void OrderBackup::ResetOfUser(TileIndex tile, uint32_t user)
+/* static */ void OrderBackup::ResetOfUser(TileIndex tile, ClientID user)
 {
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		if (ob->user == user && (ob->tile == tile || tile == INVALID_TILE)) delete ob;
@@ -154,7 +154,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
  * @pre _network_server.
  * @note Must not be used from a command.
  */
-/* static */ void OrderBackup::ResetUser(uint32_t user)
+/* static */ void OrderBackup::ResetUser(ClientID user)
 {
 	assert(_network_server);
 
@@ -162,7 +162,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
 		/* If it's not a backup of us, ignore it. */
 		if (ob->user != user) continue;
 
-		Command<CMD_CLEAR_ORDER_BACKUP>::Post(TileIndex{}, static_cast<ClientID>(user));
+		Command<Commands::ClearOrderBackup>::Post(TileIndex{}, static_cast<ClientID>(user));
 		return;
 	}
 }
@@ -175,11 +175,11 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
  */
 /* static */ void OrderBackup::Reset(TileIndex t, bool from_gui)
 {
-	/* The user has CLIENT_ID_SERVER as default when network play is not active,
+	/* The user has ClientID::Server as default when network play is not active,
 	 * but compiled it. A network client has its own variable for the unique
 	 * client/user identifier. Finally if networking isn't compiled in the
 	 * default is just plain and simple: 0. */
-	uint32_t user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
+	ClientID user = _networking && !_network_server ? _network_own_client_id : ClientID::Server;
 
 	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		/* If this is a GUI action, and it's not a backup of us, ignore it. */
@@ -191,7 +191,7 @@ CommandCost CmdClearOrderBackup(DoCommandFlags flags, TileIndex tile, ClientID u
 			/* We need to circumvent the "prevention" from this command being executed
 			 * while the game is paused, so use the internal method. Nor do we want
 			 * this command to get its cost estimated when shift is pressed. */
-			Command<CMD_CLEAR_ORDER_BACKUP>::Unsafe<CommandCallback>(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<CMD_CLEAR_ORDER_BACKUP>::Args{ ob->tile, static_cast<ClientID>(user) });
+			Command<Commands::ClearOrderBackup>::Unsafe<CommandCallback>(STR_NULL, nullptr, true, false, ob->tile, CommandTraits<Commands::ClearOrderBackup>::Args{ ob->tile, static_cast<ClientID>(user) });
 		} else {
 			/* The command came from the game logic, i.e. the clearing of a tile.
 			 * In that case we have no need to actually sync this, just do it. */
