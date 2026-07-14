@@ -189,12 +189,6 @@ void SurveyCompiler(nlohmann::json &survey)
 #if defined(_MSC_VER)
 	survey["name"] = "MSVC";
 	survey["version"] = _MSC_VER;
-#elif defined(__ICC) && defined(__GNUC__)
-	survey["name"] = "ICC";
-	survey["version"] = __ICC;
-#	if defined(__GNUC__)
-		survey["extra"] = fmt::format("GCC {}.{}.{} mode", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
-#	endif
 #elif defined(__GNUC__)
 	survey["name"] = "GCC";
 	survey["version"] = fmt::format("{}.{}.{}", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
