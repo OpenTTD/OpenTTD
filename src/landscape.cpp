@@ -354,14 +354,14 @@ int GetSlopeZInCorner(Slope tileh, Corner corner)
  *
  * @note If a tile has a non-continuous halftile foundation, a corner can have different heights wrt. its edges.
  *
- * @pre z1 and z2 must be initialized (typ. with TileZ). The corner heights just get added.
- *
  * @param tileh The slope of the tile.
  * @param edge The edge of interest.
- * @param z1 Gets incremented by the height of the first corner of the edge. (near corner wrt. the camera)
- * @param z2 Gets incremented by the height of the second corner of the edge. (far corner wrt. the camera)
+ * @param z The z pos of the tile.
+ * @return \a z twice.
+ * First one incremented by the height of the first corner of the edge (near corner wrt. the camera),
+ * and the second one by the height of the second corner of the edge (far corner wrt. the camera).
  */
-void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2)
+std::tuple<int, int> GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int z)
 {
 	static const DiagDirectionIndexArray<std::array<Slope, 4>> corners{{{
 		/*    corner     |          steep slope
@@ -372,6 +372,9 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2)
 		{SLOPE_W, SLOPE_N, SLOPE_STEEP_W, SLOPE_STEEP_N}, // DiagDirection::NW, z1 = W, z2 = N
 	}}};
 
+	int z1 = z;
+	int z2 = z;
+
 	Slope halftile_test = IsHalftileSlope(tileh) ? SlopeWithOneCornerRaised(GetHalftileSlopeCorner(tileh)) : SLOPE_FLAT;
 	if (halftile_test == corners[edge][0]) z2 += TILE_HEIGHT; // The slope is non-continuous in z2. z2 is on the upper side.
 	if (halftile_test == corners[edge][1]) z1 += TILE_HEIGHT; // The slope is non-continuous in z1. z1 is on the upper side.
@@ -380,6 +383,8 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2)
 	if ((tileh & corners[edge][1]) != 0) z2 += TILE_HEIGHT; // z2 is raised
 	if (RemoveHalftileSlope(tileh) == corners[edge][2]) z1 += TILE_HEIGHT; // z1 is highest corner of a steep slope
 	if (RemoveHalftileSlope(tileh) == corners[edge][3]) z2 += TILE_HEIGHT; // z2 is highest corner of a steep slope
+
+	return {z1, z2};
 }
 
 /**
@@ -407,14 +412,10 @@ std::tuple<Slope, int> GetFoundationSlope(TileIndex tile)
  */
 static bool HasFoundation(TileIndex tile, Slope slope_here, uint z_here, DiagDirection edge)
 {
-	int z1_here = z_here;
-	int z2_here = z_here;
-	GetSlopePixelZOnEdge(slope_here, edge, z1_here, z2_here);
+	auto [z1_here, z2_here] = GetSlopePixelZOnEdge(slope_here, edge, z_here);
 
 	auto [slope, z] = GetFoundationPixelSlope(TileAddByDiagDir(tile, edge));
-	int z1 = z;
-	int z2 = z;
-	GetSlopePixelZOnEdge(slope, ChangeDiagDir(edge, DiagDirDiff::Reverse), z1, z2);
+	auto [z1, z2] = GetSlopePixelZOnEdge(slope, ChangeDiagDir(edge, DiagDirDiff::Reverse), z);
 
 	return (z1_here > z1) || (z2_here > z2);
 }

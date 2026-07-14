@@ -41,7 +41,7 @@ std::tuple<Slope, int> GetFoundationSlope(TileIndex tile);
 uint GetPartialPixelZ(int x, int y, Slope corners);
 int GetSlopePixelZ(int x, int y, bool ground_vehicle = false);
 int GetSlopePixelZOutsideMap(int x, int y);
-void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2);
+std::tuple<int, int> GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int z);
 
 /**
  * Determine the Z height of a corner relative to TileZ.
