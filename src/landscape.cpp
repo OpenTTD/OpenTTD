@@ -397,34 +397,26 @@ std::tuple<Slope, int> GetFoundationSlope(TileIndex tile)
 	return {tileh, z};
 }
 
-
-static bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
+/**
+ * Check if the tile has foundation on given edge.
+ * @param tile The tile to check.
+ * @param slope_here The slope of the \a tile.
+ * @param z_here The z of tile's foundation.
+ * @param edge The edge to check.
+ * @return \c true iff the tile has foundation on given edge.
+ */
+static bool HasFoundation(TileIndex tile, Slope slope_here, uint z_here, DiagDirection edge)
 {
-	int z_W_here = z_here;
-	int z_N_here = z_here;
-	GetSlopePixelZOnEdge(slope_here, DiagDirection::NW, z_W_here, z_N_here);
+	int z1_here = z_here;
+	int z2_here = z_here;
+	GetSlopePixelZOnEdge(slope_here, edge, z1_here, z2_here);
 
-	auto [slope, z] = GetFoundationPixelSlope(TileAddXY(tile, 0, -1));
-	int z_W = z;
-	int z_N = z;
-	GetSlopePixelZOnEdge(slope, DiagDirection::SE, z_W, z_N);
+	auto [slope, z] = GetFoundationPixelSlope(TileAddByDiagDir(tile, edge));
+	int z1 = z;
+	int z2 = z;
+	GetSlopePixelZOnEdge(slope, ChangeDiagDir(edge, DiagDirDiff::Reverse), z1, z2);
 
-	return (z_N_here > z_N) || (z_W_here > z_W);
-}
-
-
-static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
-{
-	int z_E_here = z_here;
-	int z_N_here = z_here;
-	GetSlopePixelZOnEdge(slope_here, DiagDirection::NE, z_E_here, z_N_here);
-
-	auto [slope, z] = GetFoundationPixelSlope(TileAddXY(tile, -1, 0));
-	int z_E = z;
-	int z_N = z;
-	GetSlopePixelZOnEdge(slope, DiagDirection::SW, z_E, z_N);
-
-	return (z_N_here > z_N) || (z_E_here > z_E);
+	return (z1_here > z1) || (z2_here > z2);
 }
 
 /**
@@ -440,8 +432,8 @@ uint GetFoundationSpriteBlock(TileIndex tile)
 {
 	auto [slope, z] = GetFoundationPixelSlope(tile);
 	uint block = 0;
-	if (!HasFoundationNW(tile, slope, z)) block += 1;
-	if (!HasFoundationNE(tile, slope, z)) block += 2;
+	if (!HasFoundation(tile, slope, z, DiagDirection::NW)) block += 1;
+	if (!HasFoundation(tile, slope, z, DiagDirection::NE)) block += 2;
 	return block;
 }
 
