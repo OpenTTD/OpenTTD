@@ -98,7 +98,7 @@ public:
 	 *  reliability (you most likely don't want to buy it).
 	 * @param engine_id The engine to get the reliability of.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) != ScriptVehicle::VT_TRAIN || !IsWagon(engine_id).
+	 * @pre GetVehicleType(engine_id) != (ScriptVehicle::VT_TRAIN && IsWagon(engine_id)).
 	 * @return The reliability the engine has.
 	 */
 	static SQInteger GetReliability(EngineID engine_id);
