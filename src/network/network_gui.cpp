@@ -2480,6 +2480,6 @@ struct SurveyResultTextfileWindow : public TextfileWindow {
  */
 void ShowSurveyResultTextfileWindow(Window *parent)
 {
-	parent->CloseChildWindowById(WindowClass::Textfile, TFT_SURVEY_RESULT);
-	new SurveyResultTextfileWindow(parent, TFT_SURVEY_RESULT);
+	parent->CloseChildWindowById(WindowClass::Textfile, TextfileType::SurveyResult);
+	new SurveyResultTextfileWindow(parent, TextfileType::SurveyResult);
 }

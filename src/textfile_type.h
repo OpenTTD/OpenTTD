@@ -10,20 +10,22 @@
 #ifndef TEXTFILE_TYPE_H
 #define TEXTFILE_TYPE_H
 
+#include "core/enum_type.hpp"
+
 /** Additional text files accompanying Tar archives */
-enum TextfileType : uint8_t {
-	TFT_CONTENT_BEGIN,
+enum class TextfileType : uint8_t {
+	ContentBegin, ///< This marker is used to generate the below three buttons in sequence by various of places in the code.
 
-	TFT_README = TFT_CONTENT_BEGIN, ///< Content readme
-	TFT_CHANGELOG,                  ///< Content changelog
-	TFT_LICENSE,                    ///< Content license
+	Readme = TextfileType::ContentBegin, ///< Content readme
+	Changelog, ///< Content changelog
+	License, ///< Content license
 
-	TFT_CONTENT_END, ///< This marker is used to generate the above three buttons in sequence by various of places in the code.
+	ContentEnd, ///< This marker is used to generate the above three buttons in sequence by various of places in the code.
 
-	TFT_SURVEY_RESULT = TFT_CONTENT_END, ///< Survey result (preview)
-	TFT_GAME_MANUAL,                ///< Game manual/documentation file
+	SurveyResult = TextfileType::ContentEnd, ///< Survey result (preview)
+	GameManual, ///< Game manual/documentation file
 
-	TFT_END,
+	End, ///< End marker.
 };
 DECLARE_ENUM_AS_ADDABLE(TextfileType)
 
