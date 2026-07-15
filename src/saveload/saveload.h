@@ -683,7 +683,6 @@ enum class VarFileType : uint8_t {
 
 /** The types/structures of data we have in memory. */
 enum class VarMemType : uint8_t {
-	/* 4 bits allocated a maximum of 16 types for NumberType */
 	Bool = 0, ///< A boolean value.
 	I8 = 1, ///< A 8 bit signed int.
 	U8 = 2, ///< A 8 bit unsigned int.
@@ -697,7 +696,7 @@ enum class VarMemType : uint8_t {
 	Str = 12, ///< string pointer
 	StrQ = 13, ///< string pointer enclosed in quotes
 	Name = 14, ///< old custom name to be converted to a string pointer
-	/* 1 more possible memory-primitives */
+	Label = 15, ///< A 4 character \c Label.
 };
 
 /** Container of a variable's characteristics about a variable's storage. */
@@ -769,6 +768,7 @@ struct VarTypes {
 	static constexpr VarType STR{ VarFileType::String, VarMemType::Str }; ///< Store string.
 	static constexpr VarType STRQ{ VarFileType::String, VarMemType::StrQ }; ///< Store a string with quotes.
 	static constexpr VarType NAME{ VarFileType::StringID, VarMemType::Name }; ///< A string stored in the custom string array.
+	static constexpr VarType LABEL{ VarFileType::U32, VarMemType::Label }; ///< Store a \c Label.
 };
 
 /** Type of data saved. */
@@ -841,6 +841,7 @@ inline constexpr size_t SlVarSize(VarMemType type)
 		case VarMemType::Str: return sizeof(std::string);
 		case VarMemType::StrQ: return sizeof(std::string);
 		case VarMemType::Name: return sizeof(std::string);
+		case VarMemType::Label: return sizeof(BaseLabel);
 		default: NOT_REACHED();
 	}
 }
@@ -884,6 +885,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 #define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) \
 	SaveLoad {name, cmd, type, length, from, to, [] (void *b, size_t) -> void * { \
 		static_assert(SlCheckVarSize(cmd, type, length, sizeof(static_cast<base *>(b)->variable))); \
+		static_assert(VarType{type}.mem != VarMemType::Label || std::is_base_of_v<BaseLabel, decltype(base::variable)>); \
 		assert(b != nullptr); \
 		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
 	}, extra, nullptr}
