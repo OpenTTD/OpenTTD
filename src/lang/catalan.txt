@@ -526,6 +526,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construcció d'
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Modificació del paisatge
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Planta arbres
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Situa un senyal
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :Situa objectes
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :So/música
@@ -646,14 +647,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Historial de càrregues
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produït
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Mostra/amaga el gràfic de càrrega produïda per aquesta indústria.
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportat
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Mostra/amaga el gràfic de càrrega transportada d'aquesta indústria.
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Entregades
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Mostra/amaga el gràfic de càrrega entregada a aquesta indústria.
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En espera
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Mostra/amaga el gràfic de càrrega en espera en aquesta indústria.
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historial de càrregues
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produït
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Mostra/amaga el gràfic de càrrega produïda per aquesta població.
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportades
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Mostra/amaga el gràfic de càrrega transportada des d'aquesta població.
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregat
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Mostra/amaga el gràfic de càrrega entregada a aquesta població.
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra ratis de rendiment detallats
 
@@ -1352,8 +1360,12 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :Alt
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si està activat, poden haver recessions periòdicament. Durant una recessió, tota la producció és significativament més baixa, tornant al nivell previ quan s'acabi el període de recessió.
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Permet que els trens donin la volta quan inverteixen el sentit: {STRING}
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Tots
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Només al final de línia
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Cap
 
 STR_CONFIG_SETTING_DISASTERS                                    :Catàstrofes: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Permet o no que passin catàstrofes que puguin bloquejar o destruir ocasionalment vehicles o infraestructures
@@ -1361,12 +1373,12 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Permet o no que
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de les alcaldies de les poblacions: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Establiu com afecta al prestigi de les companyies el soroll i els danys ambientals que provoquen. Aquest prestigi influirà en la futura acceptació o denegació d'accions de construcció a la població.
 
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Alçada màxima del mapa: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Altitud màxima del mapa: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Estableix l'alçada màxima del terreny del mapa. Amb «Automàtica», s'escollirà un valor adequat després que es generi el terreny.
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :Automàtica
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No es pot escollir aquest límit d'alçada del mapa. Hi ha almenys una muntanya al mapa que és més alta.
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No es pot escollir aquest límit d'altitud del mapa. Hi ha almenys una muntanya al mapa que és més alta.
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet la modificació del terreny sota edificis, rails, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permet modelar el terreny sota les vies, els edificis i altres elements sense eliminar-los.
@@ -1558,7 +1570,11 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Escala la produ
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Escala la producció de càrrega de les indústries segons aquest percentatge.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}{NBSP}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Caiguda del valor de la càrrega respecte el temps: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Ajusta la rapidesa amb la qual decreix el valor de la càrrega dels vehicles.
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}{NBSP}%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Sense caiguda
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Si està activat, quan un vehicle arriba al final de la seva vida útil es substitueix automàticament quan es compleixen les condicions d'autorenovació.
@@ -1795,7 +1811,11 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra als hora
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creació ràpida d'ordres per a vehicles: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselecciona el botó 'Vés a' quan s'obri la finestra d'ordres
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Tipus de rail, carretera o tramvia per defecte (després de la càrrega d'una desada o en una nova partida): {STRING}
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :El primer disponible
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :L'últim disponible
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :El que més es fa servir
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra els camins reservats: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dóna a les vies reservades un color diferent per visualitzar problemes d'encaminament de trens
@@ -1902,6 +1922,8 @@ STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :Quan s'activa, 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa límits de velocitat per als vagons: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si està activat, també utilitza els límits de velocitat dels vagons per a decidir la velocitat màxima del tren.
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :Activa l'abast màxim de les aeronaus: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :Quan l'opció està activada, els NewGRF poden limitar l'abast màxim de les aeronaus.
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
@@ -2209,22 +2231,22 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permetre als tr
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}S'ha produït un error en el fitxer de configuració...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}...error en la matriu «{STRING}».
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}...valor «{STRING}» invàlid per a «{STRING}».
+STR_CONFIG_ERROR                                                :S'ha produït un error en el fitxer de configuració...
+STR_CONFIG_ERROR_ARRAY                                          :Error a la matriu «{STRING}».
+STR_CONFIG_ERROR_INVALID_VALUE                                  :Valor «{STRING}» no vàlid per a «{STRING}».
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}...caràcters finals (espai, nova línia...) al final de la configuració de l'opció «{STRING}».
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}...s'ignorarà el fitxer NewGRF «{STRING}» perquè l'identificador del NewGRF és el mateix que el de «{STRING}».
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}...s'ignorarà el fitxer NewGRF invàlid «{STRING}»: {STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :S'ignorarà el fitxer NewGRF «{STRING}» perquè l'identificador del NewGRF és el mateix que el de «{STRING}».
+STR_CONFIG_ERROR_INVALID_GRF                                    :S'ignorarà el fitxer NewGRF invàlid «{STRING}»: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :no s'ha trobat.
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :insegur per a ús estàtic.
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF del sistema
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :no és compatible amb aquesta versió de l'OpenTTD.
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconegut.
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}...el nivell de compressió «{STRING}» no és vàlid.
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...el format de partida «{STRING}» no està disponible. Es revertirà a «{STRING}».
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :El nivell de compressió «{STRING}» no és vàlid.
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :El format de partida «{STRING}» no està disponible. Es revertirà a «{STRING}».
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :s'ignorarà el conjunt de gràfics base «{STRING}» perquè no s'ha trobat.
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}...s'ignorarà el conjunt de sons base «{STRING}» perquè no s'ha trobat.
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}...s'ignorarà el conjunt de peces de música «{STRING}» perquè no s'ha trobat.
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :S'ignorarà el conjunt de sons base «{STRING}» perquè no s'ha trobat.
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :S'ignorarà el conjunt de peces de música «{STRING}» perquè no s'ha trobat.
 
 # Video initialization errors
 STR_VIDEO_DRIVER_ERROR                                          :{WHITE}S'ha produït un error en la configuració de vídeo...
@@ -2301,8 +2323,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Juga am
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries i altres objectes inamovibles): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Els túnels es poden creuar: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció en aeroports petits tindran menys accidents: {ORANGE}{STRING}
-STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Edita l'alçada màxima del mapa: {ORANGE}{NUM}
-STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edita l'alçada màxima del terreny en el mapa
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Edita l'altitud màxima del mapa: {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edita l'altitud màxima del terreny en el mapa
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia la data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Canvia l'any actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació dels valors de producció: {ORANGE}{STRING}
@@ -3081,6 +3103,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Situa à
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineix àrea de desert.{}Amb Ctrl+clic, es treu l'àrea de desert.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Rebaixa una cantonada del terreny. Si la mida és 1×1 i amb Clic+arrossega, es rebaixa la primera cantonada seleccionada i s'anivella l'àrea a la nova alçària. Amb Ctrl+clic+arrossega, se selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Eleva una cantonada del terreny. Si la mida és 1×1 i amb Clic+arrossega, s'eleva la primera cantonada seleccionada i s'anivella l'àrea a la nova alçària. Amb Ctrl+clic+arrossega, se selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera un terreny aleatori
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crea un escenari nou
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Restableix el paisatge
@@ -3490,7 +3514,7 @@ STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tipus d'
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Terreny pla
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generar un terreny pla
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Terreny aleatori
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Alçada del terreny pla:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Alçària del terreny pla:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}Trieu l'altura de la terra per damunt del nivell de la mar.
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}Mou l'alçada del terreny pla un pas avall
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}Mou l'alçada del terreny pla un pas amunt
@@ -3692,7 +3716,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Un vehic
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Un vehicle «{1:ENGINE}» ha canviat la seva capacitat mentre estava fora del dipòsit o no ha canviat el tipus de càrrega a transportar.
 STR_BROKEN_VEHICLE_LENGTH                                       :El tren «{VEHICLE}» propietat de «{COMPANY}» té una llargada incorrecta, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF «{0:STRING}» dóna informació incorrecta.
+STR_NEWGRF_BUGGY                                                :El NewGRF «{0:STRING}» dóna informació incorrecta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació de «{1:ENGINE}» no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de la funció autorenova/substitueix.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :«{1:STRING}» ha provocat un bucle infinit en la crida de producció.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Callback' {1:HEX} ha retornat un resultat desconegut/invàlid {2:HEX}
@@ -4737,6 +4761,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessita revis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Temps de vida restant (anys)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Fiabilitat màxima
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Marxa enrere
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Com comparar les dades del vehicle al valor donat
@@ -5059,7 +5084,7 @@ STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... no s
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir el tipus d'imatge. Es necessita una imatge PNG de 8 o 24-bit
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguna cosa ha anat malament (probablement un fitxer corrupte)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Impossible carregar el terreny des del BMP...
+STR_ERROR_BMPMAP                                                :Impossible carregar el terreny des del BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir el tipus d'imatge
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... l'imatge és massa gran
@@ -5074,7 +5099,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Només s
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de pantalla enorme
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tindrà una resolució de {COMMA} x {COMMA} píxels. Es tardarà una estona a fer la captura. Vols continuar?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa d'alçades desat correctament amb el nom «{STRING}». El cim més alt té alçada {NUM}.
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa d'altituds desat correctament amb el nom «{STRING}». El cim més alt té altitud {NUM}.
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla desada correctament com a '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Error en la captura de pantalla!
 
@@ -5095,7 +5120,7 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}No es po
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lloc inadequat
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ja construït
 STR_ERROR_OWNED_BY                                              :{WHITE}... propietat de {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... l'àrea és propietat d'una altra companyia
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :L'àrea és propietat d'una altra companyia.
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... s'ha arribat al límit de neteja de paisatge
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... s'ha arribat al límit de neteja de cel·les
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... s'ha arribat al límit de plantat d'arbres
@@ -5131,7 +5156,7 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CUR
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No es pot amortitzar préstec...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}No es poden regalar els diners deixats pel banc...
 STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}No podeu donar diners a aquesta companyia...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No pots comprar la companyia...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :No es pot comprar la companyia...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No es pot construir la seu de la companyia...
 
 # Town related errors
@@ -5140,7 +5165,7 @@ STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No es po
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}No es pot expandir la població...
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... massa prop d'una altra població
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... massa poblacions
+STR_ERROR_TOO_MANY_TOWNS                                        :Massa poblacions
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...no queda espai al mapa.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obres en progrés
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquesta població...{}{}Hi ha una estació, un dipòsit o una cel·la pertanyent a la població que no pot ser eliminada
@@ -5148,7 +5173,7 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no h
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}La casa no es pot construir...
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :massa indústries
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :Massa indústries
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No es poden generar indústries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Aquí no es pot construir {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
@@ -5156,7 +5181,7 @@ STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}No es po
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... massa prop d'altres indústries
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...abans s'ha de fundar una població.
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... només un permès per població
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... només es pot construir en poblacions de més de 1200 hab.
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :Només es pot construir en poblacions de més de 1200 habitants.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... només es pot construir en àrees de selva tropical
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... només es pot construir en àrees de desert
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... només es pot construir en poblacions (substituint cases)
@@ -5174,10 +5199,10 @@ STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Canvieu els par
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Aquí no es pot construir una estació de tren...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}No es pot construir una parada d'autobús...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :No es pot construir una parada d'autobús...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}No es pot construir estació de mercaderies...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}No puc construir l'estació de tramvies de passatgers
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}No puc construir l'estació de tramvies de càrrega
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :No es pot construir l'estació de tramvies de càrrega
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Aquí no es pot construir un port...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Aquí no es pot construir un aeroport...
 
@@ -5185,10 +5210,10 @@ STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Fusiona 
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estació massa extensa
 STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... nombre de vies no vàlid
 STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... llargada no vàlida
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :massa estacions/àrees de càrrega
-STR_ERROR_TOO_MANY_STATION_SPECS                                :hi ha massa parts d'estacions de tren.
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :massa parades d'autobús
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses estacions de càrrega
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :Massa estacions/àrees de càrrega
+STR_ERROR_TOO_MANY_STATION_SPECS                                :Hi ha massa parts d'estacions de tren.
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :Massa parades d'autobús
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :Massa estacions de càrrega
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No es pot canviar el nom de l'estació...
@@ -5254,17 +5279,18 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipus de rail i
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No es pot moure el vehicle...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La màquina posterior sempre ha de seguir la seva parella davantera
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Incapaç de trobar el camí a la cotxera local
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible trobar la cotxera local
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :No es pot trobar el camí a la cotxera local.
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :Impossible trobar la cotxera local
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :Impossible trobar l'hangar local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipus de cotxera incorrecta
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... cada llista d'ordres només pot tenir una ordre d'espaiar.
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... no es poden fer servir ordres de càrrega completa quan el vehicle té una ordre d'espaiat.
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :no es poden espaiar vehicles que tenen una ordre de càrrega completa.
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... no pot fer servir ordres condicionals quan un vehicle té una ordre d'espaiat.
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :els vehicles no es poden espaiar si tenen ordres condicionals.
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :No es poden espaiar vehicles que tenen una ordre de càrrega completa.
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :No poden fer servir ordres condicionals quan un vehicle té una ordre d'espaiat.
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :Els vehicles no es poden espaiar si tenen ordres condicionals.
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} és massa llarg després de la substitució
@@ -5306,7 +5332,7 @@ STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}No hi ha
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}No hi ha vies de tramvia adequades.
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Aquí no es poden construir canals...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :Aquí no es poden construir canals...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Aquí no es pot construir una resclosa...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Aquí no es poden posar rius...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...s'ha de construir sobre l'aigua.
@@ -5323,23 +5349,27 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... el t
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Aquí no es poden plantar arbres...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Aquí no es pot construir el pont...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Aquí no es pot construir el pont...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}...abans s'ha d'enderrocar el pont.
-STR_ERROR_CAN_T_START_AND_END_ON                                :no es pot començar i acabar a la mateixa posició.
+STR_ERROR_CAN_T_START_AND_END_ON                                :No es pot començar i acabar a la mateixa posició.
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Les capçaleres del pont no són al mateix nivell
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El pont és massa baix pel terreny
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :El pont és massa baix per al terreny.
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}El pont és massa alt per a aquest terreny.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inici i final han d'estar en línia recta
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... els extrems del pont han d'estar tots dos a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... el pont és massa llarg
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}El pont acabaria fora del mapa
-STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}El pont és {HEIGHT} massa baix per a l'estació.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}El pont és {HEIGHT} massa baix per a la parada de carretera.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}El pont és {HEIGHT} massa baix per al moll.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}El pont és {HEIGHT} massa baix per a la boia.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}El pont és {HEIGHT} massa baix per al punt de pas.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}El pont és {HEIGHT} massa baix per al punt de pas de carretera.
-STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}El pont és {HEIGHT} massa baix per a la resclosa.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :El pont és {HEIGHT} massa baix per a l'estació.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :El pont és {HEIGHT} massa baix per a la parada de carretera.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :El pont és {HEIGHT} massa baix per al moll.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :El pont és {HEIGHT} massa baix per a la boia.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :El pont és {HEIGHT} massa baix per al punt de pas.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :El pont és {HEIGHT} massa baix per al punt de pas de carretera.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :El pont és {HEIGHT} massa baix per a la resclosa.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :El pont és {HEIGHT} massa baix per a la cotxera de trens.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :El pont és {HEIGHT} massa baix per a les cotxeres de vehicles de carretera.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :El pont és {HEIGHT} massa baix per a la drassana.
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :El pont és {HEIGHT} massa baix per a l'objecte.
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Aquí no es pot construir el túnel...
@@ -5351,7 +5381,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossib
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel massa llarg
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :massa objectes
+STR_ERROR_TOO_MANY_OBJECTS                                      :Massa objectes
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}No es pot construir l'objecte...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objecte en el camí
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... seu de la companyia en el camí
@@ -5409,9 +5439,9 @@ STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}No es po
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}No es pot comprar el vehicle ferroviari...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No es pot comprar l'automòbil...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}No es pot comprar el vaixell...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}No es pot comprar l'avió...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :No es pot comprar l'automòbil...
+STR_ERROR_CAN_T_BUY_SHIP                                        :No es pot comprar el vaixell...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :No es pot comprar l'aeronau...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot canviar el nom del tipus de vehicle ferroviari...
@@ -5437,10 +5467,10 @@ STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Hi ha ve
 STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Hi ha vaixells que no es poden autoreemplaçar...
 STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Hi ha aeronaus que no es poden autoreemplaçar...
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Massa vehicles en joc
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :Massa vehicles en joc
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}No es pot canviar l'interval de les revisions...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :vehicle destruït
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :Vehicle destruït
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... no tots els vehicles són idèntics.
 
@@ -5465,7 +5495,7 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}L'avió 
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}...no hi ha més espai disponible per ordres.
-STR_ERROR_TOO_MANY_ORDERS                                       :massa ordres
+STR_ERROR_TOO_MANY_ORDERS                                       :Massa ordres
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}No es pot afegir una nova ordre...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Aquesta ordre no es pot esborrar...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}No es pot modificar aquesta ordre...
@@ -5473,8 +5503,8 @@ STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Impossib
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Impossible saltar l'ordre actual...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossible saltar l'ordre seleccionada...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... el vehicle no pot anar a totes les estacions
-STR_ERROR_CAN_T_ADD_ORDER                                       :el vehicle no pot anar a aquesta estació.
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :un vehicle que comparteix aquesta ordre no pot anar a aquesta estació.
+STR_ERROR_CAN_T_ADD_ORDER                                       :El vehicle no pot anar a aquesta estació.
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :Un vehicle que comparteix aquesta ordre no pot anar a aquesta estació.
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... no tots els vehicles tenen les mateixes ordres.
 STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... no tots els vehicles comparteixen ordres.
 
@@ -5507,7 +5537,7 @@ STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'ho
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... l'horari encara no ha començat.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :massa senyals
+STR_ERROR_TOO_MANY_SIGNS                                        :Massa senyals
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Aquí no es pot situar un senyal...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No es pot canviar el nom del senyal...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :El senyal no es pot esborrar...

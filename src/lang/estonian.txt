@@ -703,14 +703,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Kaubaveo Ajalugu
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Toodetud
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Lülita tööstuse toodetud kauba graafik
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporditud
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Lülita tööstusest viidud kauba graafik
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Toimetatud
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Lülita tööstusesse viidud kauba graafik
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Ootamine
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Lülita tööstuses ootava kauba graafik
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Kaubaveo Ajalugu
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Toodetud
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Lülita asulas toodetud kauba graafik
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transporditud
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Lülita asulast viidud kauba graafik
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Toimetatud
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Lülita asulasse viidud kauba graafik
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näita põhjalike tegevushinnanguid
 
@@ -796,7 +803,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Vali 'uu
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street' stiilis muusikaprogrammi valimine
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vali 'isiklik 1' programm
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vali 'isiklik 2' programm
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Vahelda lugude segamine sisse/välja
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Vahelda lugude segamine
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näita muusikalugude valimise akent
 
 # Playlist window
@@ -1667,8 +1674,8 @@ STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originaalne gen
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
-STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maapinna tüüp: {STRING}
-STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis only) Maastiku mägisus
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maksimaalse kõrguse seadistus : {STRING}
+STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Vali maapinna küngaste ja mägede kõrgus
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Tööstustihedus: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määrab, kui palju tööstuseid tekib, ning kui palju neid mängu kestel olema peaks
@@ -1731,8 +1738,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päripäeva
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kõrguse level kui kõrgele lapik kaart läheb: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Üks või enam ruutu põhjaäärel pole tühjad
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Üks või enam ääreruutu pole vesi
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :Üks või enam ruutu põhjaäärel pole tühjad
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :Üks või enam ääreruutu pole vesi
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Jaama küljepikkuse ülempiirang: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Jaama ühe külje pikkuse ülempiirang. Suur väärtus teeb mängu aeglaseks
@@ -2287,14 +2294,14 @@ STR_CONFIG_ERROR_ARRAY                                          :vigane massiivi
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... väärtus «{STRING}» on «{STRING}» jaoks kõlbmatu
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... seadistuse lõpule järgnevad tähed '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :vigast NewGRF-i '{STRING}' ei arvestata: korduv NewGRF-i ID '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... eiratakse kõlbmatut NewGRF-i «{STRING}»: {STRING}
+STR_CONFIG_ERROR_INVALID_GRF                                    :eiratakse kõlbmatut NewGRF-i «{STRING}»: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ei leitud
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :muutumatus kasutuses ohtlik
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :süsteem NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :Mitteühilduv selle OpenTTD versiooniga
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tundmatu
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... tihendusaste «{STRING}» ei sobi
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... mängu salvestamise vormingut «{STRING}» ei ole. Taastatakse «{STRING}»
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :tihendusaste «{STRING}» ei sobi
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :mängu salvestamise vormingut «{STRING}» ei ole. Taastatakse «{STRING}»
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :eiratakse põhigraafika komplekti {STRING}: ei leitud
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :eiratakse põhihelide komplekti {STRING}: ei leitud
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :eiratakse põhimuusika komplekti «{STRING}»: ei leitud
@@ -2490,7 +2497,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Kuupäev
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}t {NUM}m
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}Mängitud aeg
 STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}Mängitud aeg, kui{}mäng ei olnud pausil
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Suhtluskeel, serveri osa, jne.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Serveri ühildavus ja autentimise info
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Loendis mängu klõpsamine valib selle
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Server, kus sa viimati mängisid:
@@ -3746,10 +3753,10 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Ettevaat
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Sa soovid muuta jooksvat mängu. See võib OpenTTD kokku jooksutada ja rikkuda pooleli oleva mängu. Ära nende vigade kohta vearaportit edasta.{}Kas sa oled jätkamises täiesti kindel?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ei saa faili lisada: korduv GRF ID
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sobivat faili ei leitud (ühilduv GRF fail on laaditud)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sobivat faili ei leitud (ühilduv NewGRF fail on laaditud)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Ei saa faili lisada: NewGRF failide limiit on saavutatud
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Puuduvatele failidele on laaditud ühilduvad GRF failid
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Puuduvatele failidele on laaditud ühilduvad NewGRF failid
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuduvad GRF failid on välja lülitatud
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuduolevad NewGRF failid
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Seisatuse lõpetamine võib põhjustada OpenTTD krahhi. Ära teavita järgnevatest krahhidest.{}Oled sa tõepoolest veendunud, et sa soovid seisatuse lõpetada?
@@ -3768,9 +3775,9 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :Depoost väljas
 STR_NEWGRF_BROKEN_CAPACITY                                      :Sõiduki '{1:ENGINE}' kandevõimet muudeti, kuid sõiduk ei olnud depoos ega ümberseadistamisel
 STR_BROKEN_VEHICLE_LENGTH                                       :Ettevõtte {1:COMPANY} rongil {0:VEHICLE} pikkus on kõlbmatu. Midagi on valesti NewGRF-iga. Mäng võib kokku joosta või sünkroonist välja minna
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' sisaldab väära teavet.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Veose/ümberseadistamise teave sõidukil '{1:ENGINE}' erineb ehitamisaegsest ostunimekirjast. Seetõttu võib uuendamisel või asendamisel ümberseadistamine ebaõnnestuda
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' põhjustas toodangu tagasikutsumises lõpmatu korduse
+STR_NEWGRF_BUGGY                                                :NewGRF '{STRING}' sisaldab väära teavet.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :Veose/ümberseadistamise teave sõidukil '{1:ENGINE}' erineb ehitamisaegsest ostunimekirjast. Seetõttu võib uuendamisel või asendamisel ümberseadistamine ebaõnnestuda
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :'{1:STRING}' põhjustas toodangu tagasikutsumises lõpmatu korduse
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Tagasikutse {1:HEX} tulemus {2:HEX} on kõlbmatu
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' vastas vigase veoseliigiga toodangu callback'is asukohas {2:HEX}
 
@@ -5015,7 +5022,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}GameScri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kontrolli GameScripti logi. Ctrl+klõps avab uues aknas
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Laadimiseks sobivat AI-d ei leitud.{}See AI on makett, ning ei tee midagi.{}AI-sid alla saab laadida kasutades 'aineste allalaadimise' süsteemi.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Üks skriptidest jooksis kokku. Palun teatada sellest skripti autorit koos ekraanipildiga AI/GamesScripti debugimise aknast
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Üks skriptidest jooksis kokku. Palun teatada sellest skripti autorit koos ekraanipildiga AI/GamesScripti debugimise aknast
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/GameScripti debugimise akent saab kasutada ainult serveris
 
 # AI configuration window
@@ -5331,7 +5338,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... koos
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Ühildamatud rööbasteetüübid
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Sõidukit ei saa liigutada...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Tagumine vedur järgneb alati eesmisele
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :tagumine vedur järgneb alati eesmisele
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :ei leia teed kohalikku depoosse
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :ei leia üles kohalikku depood
 STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :ei leia üles kohalikku angaari
@@ -5419,6 +5426,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :sild on {HEIGHT
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :sild on {HEIGHT} liiga madalal raudtee meldepunkti jaoks
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :sild on {HEIGHT} liiga madalal tee meldepunkti jaoks
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :sild on {HEIGHT} liiga madalal luku jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :sild on {HEIGHT} liiga madalal depoo jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :sild on {HEIGHT} liiga madalal depoo jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :sild on {HEIGHT} liiga madalal depoo jaoks
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :sild on {HEIGHT} liiga madalal objekti jaoks
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Siia ei saa tunnelit ehitada...
@@ -5460,7 +5471,7 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :õhusõiduk on 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Sõiduk pole saadaval
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Sõiduk pole saadaval
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Laev pole saadaval
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Õhusõiduk pole saadaval
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :õhusõiduk pole saadaval
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :Ei saa rongi ümberseadistada...
@@ -5545,7 +5556,7 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :õhusõiduk len
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :korraldustele pole rohkem ruumi
 STR_ERROR_TOO_MANY_ORDERS                                       :Liiga palju korraldusi
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ei saa lisada uut korraldust...
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :Ei saa lisada uut korraldust...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Seda korraldust ei saa kustutada...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Seda korraldust ei saa muuta...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :Seda korraldust ei saa liigutada...
@@ -5561,7 +5572,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Korralduste nim
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Korralduste jagamist ei saa peatada...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Korralduste nimekirja ei saa kopeerida...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liiga kaugel eelmisest sihtpunktist
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... ebapiisav õhusõiduki lennuulatus
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :ebapiisav õhusõiduki lennuulatus
 
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :Ei ole ühtegi rongijaama
