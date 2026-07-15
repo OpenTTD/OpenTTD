@@ -682,6 +682,7 @@ static inline uint SlCalcConvMemLen(VarMemType conv)
 		case VarMemType::I64: return sizeof(int64_t);
 		case VarMemType::U64: return sizeof(uint64_t);
 		case VarMemType::Null: return 0;
+		case VarMemType::Label: return sizeof(BaseLabel);
 
 		case VarMemType::Str:
 		case VarMemType::StrQ:
@@ -934,6 +935,13 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 {
 	switch (_sl.action) {
 		case SaveLoadAction::Save: {
+			if (conv == VarTypes::LABEL) {
+				/* Labels are a special case. They were read little endian but stored big endian, and as such reversed. */
+				BaseLabel *label = static_cast<BaseLabel *>(ptr);
+				for (auto it = label->rbegin(); it != label->rend(); it++) SlWriteByte(*it);
+				break;
+			}
+
 			int64_t x = ReadValue(ptr, conv.mem);
 
 			/* Write the value to the file and check if its value is in the desired range */
@@ -975,6 +983,13 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 		}
 		case SaveLoadAction::LoadCheck:
 		case SaveLoadAction::Load: {
+			if (conv == VarTypes::LABEL) {
+				/* Labels are a special case. They were read little endian but stored big endian, and as such reversed. */
+				BaseLabel *label = static_cast<BaseLabel *>(ptr);
+				for (auto it = label->rbegin(); it != label->rend(); it++) *it = SlReadByte();
+				break;
+			}
+
 			int64_t x;
 			/* Read a value from the file */
 			switch (conv.file) {
