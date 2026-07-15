@@ -136,9 +136,7 @@ static void DrawTile_Clear(TileInfo *ti)
 		uint8_t density = GetClearDensity(ti->tile);
 		DrawGroundSprite(_clear_land_sprites_snow_desert[density] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 		if (GetClearGround(ti->tile) == ClearGround::Rocks) {
-			/* There 4 levels of snowy overlay rocks, each with 19 sprites. */
-			++density;
-			DrawGroundSprite(SPR_OVERLAY_ROCKS_BASE + (density * 19) + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			DrawGroundSprite(_clear_land_sprites_snowy_rocks[density] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 		}
 
 		DrawBridgeMiddle(ti, {});

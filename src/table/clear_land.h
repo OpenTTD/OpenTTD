@@ -91,3 +91,11 @@ static const SpriteID _clear_land_sprites_snow_desert[4] = {
 	SPR_FLAT_3_QUART_SNOW_DESERT_TILE,
 	SPR_FLAT_SNOW_DESERT_TILE,
 };
+
+/** Sprites of the flat tile base for each snow density of rocky land. */
+static const SpriteID _clear_land_sprites_snowy_rocks[4] = {
+	SPR_OVERLAY_ROCKS_1_QUART_SNOW,
+	SPR_OVERLAY_ROCKS_2_QUART_SNOW,
+	SPR_OVERLAY_ROCKS_3_QUART_SNOW,
+	SPR_OVERLAY_ROCKS_FULL_SNOW,
+};

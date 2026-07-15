@@ -1579,7 +1579,7 @@ static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const
 	/* Draw original road base sprite */
 	SpriteID image = SPR_ROAD_Y + offset;
 	if (DrawRoadAsSnowOrDesert(snow_or_desert, roadside)) {
-		image += 19;
+		image += NUM_SLOPES;
 	} else {
 		switch (roadside) {
 			case Roadside::Barren:
@@ -1591,7 +1591,7 @@ static SpriteID GetRoadGroundSprite(const TileInfo *ti, Roadside roadside, const
 				break;
 
 			default:
-				image -= 19;
+				image -= NUM_SLOPES;
 				break; // Paved
 		}
 	}
@@ -1744,7 +1744,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 				Roadside roadside = GetRoadside(ti->tile);
 				if (DrawRoadAsSnowOrDesert(IsOnSnowOrDesert(ti->tile), roadside)) {
-					image += 19;
+					image += NUM_SLOPES;
 				} else {
 					switch (roadside) {
 						case Roadside::Barren:
@@ -1755,7 +1755,7 @@ static void DrawTile_Road(TileInfo *ti)
 							break;
 
 						default:
-							image -= 19;
+							image -= NUM_SLOPES;
 							break; // Paved
 					}
 				}
