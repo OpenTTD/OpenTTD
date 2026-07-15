@@ -39,14 +39,14 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_BASE_GRF_CONTENT_DOWNLOAD, ///< 'Get Content' button for base GRF.
 	WID_GO_BASE_GRF_OPEN_URL,      ///< Open base GRF URL.
 	WID_GO_BASE_GRF_TEXTFILE,      ///< Open base GRF readme, changelog (+1) or license (+2).
-	WID_GO_BASE_GRF_DESCRIPTION = WID_GO_BASE_GRF_TEXTFILE + TFT_CONTENT_END,     ///< Description of selected base GRF.
+	WID_GO_BASE_GRF_DESCRIPTION = WID_GO_BASE_GRF_TEXTFILE + to_underlying(TextfileType::ContentEnd), ///< Description of selected base GRF.
 	WID_GO_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX.
 	WID_GO_BASE_SFX_CONTENT_DOWNLOAD, ///< 'Get Content' button for base SFX.
 	WID_GO_TEXT_SFX_VOLUME,        ///< Sound effects volume label.
 	WID_GO_BASE_SFX_VOLUME,        ///< Change sound effects volume.
 	WID_GO_BASE_SFX_OPEN_URL,      ///< Open base SFX URL.
 	WID_GO_BASE_SFX_TEXTFILE,      ///< Open base SFX readme, changelog (+1) or license (+2).
-	WID_GO_BASE_SFX_DESCRIPTION = WID_GO_BASE_SFX_TEXTFILE + TFT_CONTENT_END,     ///< Description of selected base SFX.
+	WID_GO_BASE_SFX_DESCRIPTION = WID_GO_BASE_SFX_TEXTFILE + to_underlying(TextfileType::ContentEnd), ///< Description of selected base SFX.
 	WID_GO_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set.
 	WID_GO_BASE_MUSIC_CONTENT_DOWNLOAD, ///< 'Get Content' button for base music.
 	WID_GO_TEXT_MUSIC_VOLUME,      ///< Music volume label.
@@ -54,7 +54,7 @@ enum GameOptionsWidgets : WidgetID {
 	WID_GO_BASE_MUSIC_JUKEBOX,     ///< Open the jukebox.
 	WID_GO_BASE_MUSIC_OPEN_URL,    ///< Open base music URL.
 	WID_GO_BASE_MUSIC_TEXTFILE,    ///< Open base music readme, changelog (+1) or license (+2).
-	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + TFT_CONTENT_END, ///< Description of selected base music set.
+	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + to_underlying(TextfileType::ContentEnd), ///< Description of selected base music set.
 	WID_GO_VIDEO_ACCEL_BUTTON,     ///< Toggle for video acceleration.
 	WID_GO_VIDEO_ACCEL_TEXT,       ///< Text for video acceleration toggle.
 	WID_GO_VIDEO_VSYNC_BUTTON,     ///< Toggle for video vsync.

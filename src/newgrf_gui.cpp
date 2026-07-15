@@ -925,7 +925,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
-		if (widget >= WID_NS_NEWGRF_TEXTFILE && widget < WID_NS_NEWGRF_TEXTFILE + TFT_CONTENT_END) {
+		if (widget >= WID_NS_NEWGRF_TEXTFILE && widget < WID_NS_NEWGRF_TEXTFILE + TextfileType::ContentEnd) {
 			if (this->active_sel == nullptr && this->avail_sel == nullptr) return;
 
 			ShowNewGRFTextfileWindow(this, (TextfileType)(widget - WID_NS_NEWGRF_TEXTFILE), this->active_sel != nullptr ? this->active_sel : this->avail_sel);
@@ -1252,7 +1252,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		);
 
 		const GRFConfig *selected_config = (this->avail_sel == nullptr) ? this->active_sel : this->avail_sel;
-		for (TextfileType tft : EnumRange(TFT_CONTENT_BEGIN, TFT_CONTENT_END)) {
+		for (TextfileType tft : EnumRange(TextfileType::ContentBegin, TextfileType::ContentEnd)) {
 			this->SetWidgetDisabledState(WID_NS_NEWGRF_TEXTFILE + tft, selected_config == nullptr || !selected_config->GetTextfile(tft).has_value());
 		}
 		this->SetWidgetDisabledState(WID_NS_OPEN_URL, selected_config == nullptr || !selected_config->GetURL().has_value());
@@ -1846,13 +1846,13 @@ static constexpr std::initializer_list<NWidgetPart> _nested_newgrf_infopanel_wid
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
 				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_OPEN_URL), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TextfileType::Readme), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_TEXTFILE_VIEW_README, STR_TEXTFILE_VIEW_README_TOOLTIP),
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TextfileType::Changelog), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_TEXTFILE_VIEW_CHANGELOG_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_NS_NEWGRF_TEXTFILE + TextfileType::License), SetFill(1, 0), SetResize(1, 0),
 						SetStringTip(STR_TEXTFILE_VIEW_LICENCE, STR_TEXTFILE_VIEW_LICENCE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
