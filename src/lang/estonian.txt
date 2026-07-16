@@ -1190,7 +1190,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Rohkem teavet p
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :Hangi Sisu
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :Otsi allalaadimiseks uut ja uuendatut sisu
 
-STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :{LTBLUE}(puuduvad pistikprogrammid sotsiaalplatvormidega integreerumiseks)
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(puuduvad pistikprogrammid sotsiaalplatvormidega integreerumiseks)
 
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :Platvorm:
@@ -1661,7 +1661,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafikujoone l
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Graafikutes kasutatava joone laius. Peenem joon on täpsem, laiem joon on paremini näha ja värvid on selgemini eristatavad
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näita sõidukiehitusaknas NewGRF-i nime: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisa sõidukiehitusaknasse uus rida, mis näitab millisest NewGRF-ist sõiduk on pärit.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisa sõidukiehitusaknasse uus rida, mis näitab millisest NewGRF-ist sõiduk on pärit
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Näita kaupasid, mida sõidukid saavad vedada nimekirja aknas: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Kui aktiveeritud, siis kuvatakse sõidukite nimekirjas sõiduki kohal selle veos
 
@@ -3383,9 +3383,9 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kaadrisagedus
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK} Simuleerimissagedus: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Simuleeritud mänguhetkede arv sekundis.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Simuleeritud mänguhetkede arv sekundis
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Graafika kaadrisagedus: {STRING}
-STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Renderdatud videokaadrite arv sekundis.
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :Renderdatud videokaadrite arv sekundis.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Mängu kiiruskordaja hetkel: {DECIMAL}x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Kui kiiresti mäng jookseb võrreldes eeldatava kiirusega tavapärase simuleerimiskiiruse juures
 STR_FRAMERATE_CURRENT                                           :{WHITE}Hetkel
@@ -4872,8 +4872,8 @@ STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} lähim
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} lähima {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Ümberseadista: {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Ümberseadista: {STRING}, peatu)
+STR_ORDER_REFIT_ORDER                                           :{SPACE}(Ümberseadista: {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :{SPACE}(Ümberseadista: {STRING}, peatu)
 STR_ORDER_STOP_ORDER                                            :(Peatu)
 
 STR_ORDER_WAIT_TO_UNBUNCH                                       :(ootab hajutamist)
@@ -5139,7 +5139,7 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Mäng on
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :kaardi tekitamine katkes...{}... pole sobivaid kohti asulatele
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... stsenaariumis pole ühtegi asulat
 
-STR_ERROR_PNGMAP                                                :{WHITE}Ei suuda laadida maastiku PNG failist...
+STR_ERROR_PNGMAP                                                :Ei suuda laadida maastiku PNG failist...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... faili ei leitud
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ei suutnud pilditüüpi teisendada. Vaja läheb 8 või 24-bitist PNG pilti.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... midagi läks just valesti (tõenäoliselt rikutud fail)
@@ -5199,7 +5199,7 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :Siin ei saa maa
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Siin ei saa maad madaldada...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Ei saa maad siin tasandada...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Kaevandamine kahjustaks tunnelit
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Juba jõutud meretasemeni
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :juba jõutud meretasemeni
 STR_ERROR_TOO_HIGH                                              :{WHITE}Liiga kõrge
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... juba tasane
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :selle kohal olev sild oleks hiljem liiga kõrgel.
@@ -5291,7 +5291,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Siinset 
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Siinset reisitrammijaama ei saa lammutada...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Siinset kaubatrammijaama ei saa lammutada...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :peatus tuleb enne lammutada
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... siin pole peatust
+STR_ERROR_THERE_IS_NO_STATION                                   :siin pole peatust
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Raudteejaam tuleb enne lammutada
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :bussijaam tuleb enne lammutada
@@ -5372,7 +5372,7 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Siia ei saa rau
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Siit ei saa raudteed lammutada...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Siit ei saa signaale lammutada...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Siin ei saa signaale teisendada...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... siin pole rongiteed
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :siin pole rongiteed
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... siin pole signaale
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :Siin ei saa raudtee liiki muuta...
@@ -5384,8 +5384,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Siia ei saa sõ
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Trammiteed ei saa siia ehitada...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Siinset sõiduteed ei saa lammutada...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Siinset trammiteed ei saa lammutada...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... siin pole autoteed
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... siin pole trammiteed
+STR_ERROR_THERE_IS_NO_ROAD                                      :siin pole autoteed
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :siin pole trammiteed
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :Siin ei saa autoteeliiki ümber muuta...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Siin ei saa trammiliiki ümber muuta...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Puudub sobilik tee
@@ -5445,7 +5445,7 @@ STR_ERROR_TOO_MANY_OBJECTS                                      :liiga palju obj
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :Objekti ei saa ehitada...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :mingi objekt on ees
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... ettevõtte peakorter on ees
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Seda maad ei saa osta...
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Seda maad ei saa osta...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... see on juba sinu oma!
 STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... objekti rajamise limiit täis
 
@@ -5539,8 +5539,8 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Muuda Ne
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Sõidukeid ei ole veel saadaval
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Alusta mängu pärast {DATE_SHORT} või kasuta NewGRF-i, milles on varasemaid sõidukeid
 
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Linnas ehitatavaid maanteeliike pole saadaval
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Muuda oma NewGRF-i seadistust
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Linnas ehitatavad maanteeliigid pole saadaval
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Muuda oma NewGRF-i seadistust
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Linnas ehitatavaid maanteeliike pole veel saadaval
 STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Alusta uus mäng pärast {DATE_SHORT} või kasuta NewGRF-i, milles on varajasi linnas ehitatavaid maanteeliike
 
@@ -5583,8 +5583,8 @@ STR_ERROR_NO_AIRPORT                                            :Ei ole ühtegi 
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Ei ole ühtegi peatust, mis on ühilduva teeliigiga
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Ei ole ühtegi peatust, mis on ühilduv trammiliigiga
 STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Ei ole ühtegi peatust, mis sobiks liigendsõidukitele.{}Liigendsõiduk nõuab platsi asemel läbisõidupeatust
-STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}See lennuk ei saa maanduda sellel kopteriplatsil
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}See helikopter ei saa maanduda selles lennujaamas
+STR_ERROR_AIRPORT_NO_PLANES                                     :See lennuk ei saa maanduda sellel kopteriplatsil
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :See helikopter ei saa maanduda selles lennujaamas
 STR_ERROR_NO_RAIL_WAYPOINT                                      :Ei ole ühtegi rongitee meldepunkti
 STR_ERROR_NO_ROAD_WAYPOINT                                      :Ei ole ühtegi sõidutee meldepunkti
 STR_ERROR_NO_BUOY                                               :Ei ole ühtegi poid
