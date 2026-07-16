@@ -819,25 +819,118 @@ inline constexpr size_t SlVarSize(VarMemType type)
 }
 
 /**
- * Check if a saveload cmd/type/length entry matches the size of the variable.
- * @param cmd SaveLoadType of entry.
- * @param type VarType of entry.
- * @param length Array length of entry.
- * @param size Actual size of variable.
- * @return true iff the sizes match.
+ * Check whether the given memory type is valid for the file type.
+ * @param mem_type The way the data is stored in memory.
+ * @param file_type The way the data is stored in the save game.
+ * @return \c true iff the memory and file type are consistent with each other.
  */
-inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, size_t size)
+inline constexpr bool SlMemTypeValidForFileType(VarMemType mem_type, VarFileType file_type)
 {
-	switch (cmd) {
-		case SaveLoadType::Variable: return SlVarSize(type.mem) == size;
-		case SaveLoadType::Reference: return sizeof(void *) == size;
-		case SaveLoadType::String: return SlVarSize(type.mem) == size;
-		case SaveLoadType::Array: return SlVarSize(type.mem) * length <= size; // Partial load of array is permitted.
-		case SaveLoadType::Vector: return sizeof(std::vector<void *>) == size;
-		case SaveLoadType::ReferenceList: return sizeof(std::list<void *>) == size;
-		case SaveLoadType::ReferenceVector: return sizeof(std::vector<void *>) == size;
-		case SaveLoadType::SaveByte: return true;
-		default: NOT_REACHED();
+	switch (mem_type) {
+		case VarMemType::Bool: return file_type == VarFileType::I8;
+		case VarMemType::I8:
+		case VarMemType::U8:
+		case VarMemType::I16:
+		case VarMemType::U16:
+		case VarMemType::I32:
+		case VarMemType::U32:
+		case VarMemType::I64:
+		case VarMemType::U64:
+			switch (file_type) {
+				case VarFileType::I8:
+				case VarFileType::U8:
+				case VarFileType::I16:
+				case VarFileType::U16:
+				case VarFileType::I32:
+				case VarFileType::U32:
+				case VarFileType::I64:
+				case VarFileType::U64:
+					return true;
+				case VarFileType::StringID:
+					return mem_type == VarMemType::U32;
+				default:
+					return false;
+			}
+
+		case VarMemType::Null: return true;
+		case VarMemType::Str: return file_type == VarFileType::String;
+		case VarMemType::Name: return file_type == VarFileType::StringID;
+		case VarMemType::Label: return file_type == VarFileType::U32;
+		default: return false;
+	}
+}
+
+/**
+ * Check whether the numeric memory types match the actual type.
+ * @tparam T The actual type of the saved variable.
+ * @param type The VarType to compare to.
+ * @return \c true iff the types match.
+ */
+template <typename T>
+constexpr bool SlVarMemTypeMatches(VarMemType type)
+{
+	if constexpr (std::is_enum_v<T>) {
+		return SlVarMemTypeMatches<std::underlying_type_t<T>>(type);
+	} else if constexpr (ConvertibleThroughBase<T>) {
+		return SlVarMemTypeMatches<typename T::BaseType>(type);
+	} else {
+		switch (type) {
+			case VarMemType::Bool: return std::is_same_v<bool, T>;
+			case VarMemType::I8: return std::is_same_v<int8_t, T>;
+			case VarMemType::U8: return std::is_same_v<uint8_t, T> || std::is_same_v<char, T>;
+			case VarMemType::I16: return std::is_same_v<int16_t, T>;
+			case VarMemType::U16: return std::is_same_v<uint16_t, T>;
+			case VarMemType::I32: return std::is_same_v<int32_t, T>;
+			case VarMemType::U32: return std::is_same_v<uint32_t, T>;
+			case VarMemType::I64: return std::is_same_v<int64_t, T>;
+			case VarMemType::U64: return std::is_same_v<uint64_t, T>;
+			case VarMemType::Str:
+			case VarMemType::Name: return std::is_same_v<std::string, T>;
+			case VarMemType::Label: return std::is_base_of_v<BaseLabel, T>;
+			default: NOT_REACHED();
+		}
+	}
+}
+
+/**
+ * Helper function to check/validate the \c SaveLoadType, \c VarMemType and (array) length
+ * for the configuration of the \c SaveLoad objects desribing the save format.
+ * @tparam sl_type The basic way of referencing the data.
+ * @tparam mem_type The way the data is stored in memory for variables.
+ * @tparam T The type that we are checking.
+ * @tparam length The length of arrays.
+ */
+template <SaveLoadType sl_type, VarMemType mem_type, VarFileType file_type, typename T, size_t length = 0>
+constexpr void SlCheckMemoryType()
+{
+	if constexpr (sl_type == SaveLoadType::Variable) {
+		static_assert(SlVarMemTypeMatches<T>(mem_type));
+		static_assert(SlMemTypeValidForFileType(mem_type, file_type));
+	} else if constexpr (sl_type == SaveLoadType::Reference) {
+		static_assert(requires { typename std::remove_pointer_t<T>::Pool; });
+	} else if constexpr (sl_type == SaveLoadType::String) {
+		static_assert(std::is_same_v<std::string, T> || std::is_same_v<EncodedString, T>);
+	} else if constexpr (sl_type == SaveLoadType::Array) {
+		static_assert(SlVarSize(mem_type) * length <= sizeof(T)); // Partial setting/filling of an array is permitted.
+		if constexpr (!std::is_integral_v<typename T::value_type> && !std::is_enum_v<typename T::value_type> && !ConvertibleThroughBase<typename T::value_type>) {
+			/* Try to iterate through std::arrays in std::arrays to validate the value type. The total length is already checked. */
+			SlCheckMemoryType<SaveLoadType::Array, mem_type, file_type, typename T::value_type>();
+		} else {
+			SlCheckMemoryType<SaveLoadType::Variable, mem_type, file_type, typename T::value_type, length>();
+		}
+	} else if constexpr (sl_type == SaveLoadType::Vector) {
+		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
+		SlCheckMemoryType<SaveLoadType::Variable, mem_type, file_type, typename T::value_type>();
+	} else if constexpr (sl_type == SaveLoadType::ReferenceList) {
+		static_assert(std::is_base_of_v<std::list<typename T::value_type>, T>);
+		SlCheckMemoryType<SaveLoadType::Reference, mem_type, file_type, typename T::value_type>();
+	} else if constexpr (sl_type == SaveLoadType::ReferenceVector) {
+		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
+		SlCheckMemoryType<SaveLoadType::Reference, mem_type, file_type, typename T::value_type>();
+	} else if constexpr (sl_type == SaveLoadType::SaveByte) {
+		SlCheckMemoryType<SaveLoadType::Variable, VarMemType::U8, VarFileType::U8, T>();
+	} else {
+		static_assert(false); // Better than NOT_REACHED() as this triggers compile-time, NOT_REACHED() does at run time.
 	}
 }
 
@@ -856,8 +949,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  */
 #define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) \
 	SaveLoad {name, cmd, type, length, from, to, [] (void *b, size_t) -> void * { \
-		static_assert(SlCheckVarSize(cmd, type, length, sizeof(static_cast<base *>(b)->variable))); \
-		static_assert(VarType{type}.mem != VarMemType::Label || std::is_base_of_v<BaseLabel, decltype(base::variable)>); \
+		SlCheckMemoryType<cmd, VarType{type}.mem, VarType{type}.file, std::remove_cvref_t<decltype(base::variable)>, length>(); \
 		assert(b != nullptr); \
 		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
 	}, extra, nullptr}
@@ -1093,7 +1185,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  */
 #define SLEG_GENERAL(name, cmd, variable, type, length, from, to, extra) \
 	SaveLoad {name, cmd, type, length, from, to, [] (void *, size_t) -> void * { \
-		static_assert(SlCheckVarSize(cmd, type, length, sizeof(variable))); \
+		SlCheckMemoryType<cmd, VarType{type}.mem, VarType{type}.file, std::remove_cvref_t<decltype(variable)>, length>(); \
 		return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
 
 /**

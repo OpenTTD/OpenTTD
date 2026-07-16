@@ -15,6 +15,7 @@
 #include "saveload_internal.h"
 #include "../order_backup.h"
 #include "../settings_type.h"
+#include "../vehicle_base.h"
 #include "../network/network.h"
 
 #include "../safeguards.h"
