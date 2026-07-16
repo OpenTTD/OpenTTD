@@ -14,6 +14,7 @@
 
 #include "../economy_func.h"
 #include "../economy_base.h"
+#include "../vehicle_base.h"
 
 #include "../safeguards.h"
 

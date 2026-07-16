@@ -18,6 +18,7 @@
 #include "../vehicle_base.h"
 #include "../newgrf_station.h"
 #include "../newgrf_roadstop.h"
+#include "../town.h"
 #include "../timer/timer_game_calendar.h"
 
 #include "table/strings.h"

@@ -14,6 +14,7 @@
 
 #include "../object_base.h"
 #include "../object_map.h"
+#include "../town.h"
 #include "newgrf_sl.h"
 
 #include "../safeguards.h"

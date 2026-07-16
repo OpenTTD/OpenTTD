@@ -12,6 +12,7 @@
 #include "saveload.h"
 #include "compat/company_sl_compat.h"
 
+#include "../autoreplace_base.h"
 #include "../company_func.h"
 #include "../company_manager_face.h"
 #include "../fios.h"
