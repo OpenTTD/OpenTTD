@@ -44,8 +44,8 @@ public:
 
 class SlGamelogRevision : public DefaultSaveLoadHandler<SlGamelogRevision, LoggedChange> {
 public:
-	static const size_t GAMELOG_REVISION_LENGTH = 15;
-	static char revision_text[GAMELOG_REVISION_LENGTH];
+	static const size_t GAMELOG_REVISION_LENGTH = 15; ///< Length of the old revision text length.
+	static inline std::array<char, GAMELOG_REVISION_LENGTH> revision_text; ///< Temporary location to store the old revision text.
 
 	static inline const SaveLoad description[] = {
 		 SLEG_CONDARR("revision.text", SlGamelogRevision::revision_text, VarTypes::U8, GAMELOG_REVISION_LENGTH, SaveLoadVersion::MinVersion, SaveLoadVersion::StringGamelog),
@@ -74,8 +74,6 @@ public:
 
 	void LoadCheck(LoggedChange *lc) const override { this->Load(lc); }
 };
-
-/* static */ char SlGamelogRevision::revision_text[GAMELOG_REVISION_LENGTH];
 
 class SlGamelogOldver : public DefaultSaveLoadHandler<SlGamelogOldver, LoggedChange> {
 public:
