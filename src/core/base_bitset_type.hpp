@@ -48,13 +48,15 @@ public:
 
 	/**
 	 * Set the value-th bit.
+	 * @tparam Treturn_type The returned type to which this bit set will be cast.
 	 * @param value Bit to set.
 	 * @returns The bit set
 	 */
-	inline constexpr Timpl &Set(Tvalue_type value)
+	template <typename Treturn_type = Timpl> requires std::is_base_of_v<BaseBitSet<Timpl, Tvalue_type, Tstorage, Tmask>, Treturn_type>
+	inline constexpr Treturn_type &Set(Tvalue_type value)
 	{
 		this->data |= (1ULL << Timpl::DecayValueType(value));
-		return static_cast<Timpl&>(*this);
+		return static_cast<Treturn_type &>(*this);
 	}
 
 	/**

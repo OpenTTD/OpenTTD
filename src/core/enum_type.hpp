@@ -304,7 +304,19 @@ public:
 	using EnumType = BaseClass::ValueType;
 
 	constexpr EnumBitSet() : BaseClass() {}
-	constexpr EnumBitSet(Tenum value) : BaseClass() { this->Set(value); }
+
+	/**
+	 * Construct an EnumBitSet from an enum value.
+	 * @param value The single enum value to be set.
+	 */
+	constexpr EnumBitSet(Tenum value) : BaseClass()
+	{
+		/* MSVC 19.44 and older does not consider cast of dynamic type (e.g. BaseBitSet) to EnumBitSet as constant,
+		 * when the EnumBitSet is constructed inside an initializer list like we do for many lookup tables.
+		 * By setting the return type to BaseClass the cast becomes redundant and compilation does not fail. */
+		this->template Set<BaseClass>(value);
+	}
+
 	explicit constexpr EnumBitSet(Tstorage data) : BaseClass(data) {}
 
 	/**
@@ -314,7 +326,10 @@ public:
 	constexpr EnumBitSet(std::initializer_list<const Tenum> values) : BaseClass()
 	{
 		for (const Tenum &value : values) {
-			this->Set(value);
+			/* MSVC 19.44 and older does not consider cast of dynamic type (e.g. BaseBitSet) to EnumBitSet as constant,
+			 * when the EnumBitSet is constructed inside an initializer list like we do for many lookup tables.
+			 * By setting the return type to BaseClass the cast becomes redundant and compilation does not fail. */
+			this->template Set<BaseClass>(value);
 		}
 	}
 
