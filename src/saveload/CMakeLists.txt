@@ -34,7 +34,9 @@ add_files(
     saveload.cpp
     saveload.h
     saveload_filter.h
+    saveload_func.h
     saveload_internal.h
+    saveload_type.h
     settings_sl.cpp
     signs_sl.cpp
     station_sl.cpp

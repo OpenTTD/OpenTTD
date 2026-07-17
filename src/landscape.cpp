@@ -33,7 +33,7 @@
 #include "tree_cmd.h"
 #include "company_func.h"
 #include "company_gui.h"
-#include "saveload/saveload.h"
+#include "saveload/saveload_func.h"
 #include "framerate_type.h"
 #include "landscape_cmd.h"
 #include "terraform_cmd.h"

@@ -18,7 +18,7 @@
 #include "station_type.h"
 #include "vehicle_type.h"
 #include "timer/timer_game_tick.h"
-#include "saveload/saveload.h"
+#include "saveload/saveload_type.h"
 
 using OrderListPool = Pool<OrderList, OrderListID, 128>;
 extern OrderListPool _orderlist_pool;

@@ -12,6 +12,7 @@
 #include "league_base.h"
 #include "command_type.h"
 #include "command_func.h"
+#include "company_base.h"
 #include "industry.h"
 #include "story_base.h"
 #include "town.h"

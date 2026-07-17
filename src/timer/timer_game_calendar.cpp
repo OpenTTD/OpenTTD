@@ -19,6 +19,7 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
+#include "../settings_type.h"
 #include "timer.h"
 #include "timer_game_calendar.h"
 #include "../vehicle_base.h"

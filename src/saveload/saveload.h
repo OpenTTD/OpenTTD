@@ -10,7 +10,9 @@
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
+#include "saveload_type.h"
 #include "saveload_error.hpp"
+#include "saveload_func.h"
 #include "../core/label_type.hpp"
 #include "../fileio_type.h"
 #include "../fios.h"
@@ -422,24 +424,6 @@ enum class SaveLoadVersion : uint16_t {
 	MaxVersion, ///< Highest possible saveload version.
 };
 
-/** Save or load result codes. */
-enum class SaveLoadResult : uint8_t {
-	Ok, ///< completed successfully
-	Error, ///< error that was caught before internal structures were modified
-	ReInit, ///< error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
-};
-
-/** Deals with the type of the savegame, independent of extension */
-struct FileToSaveLoad {
-	SaveLoadOperation file_op;       ///< File operation to perform.
-	FiosType ftype;                  ///< File type.
-	std::string name;                ///< Name of the file.
-	EncodedString title;             ///< Internal name of the game.
-
-	void SetMode(const FiosType &ft, SaveLoadOperation fop = SaveLoadOperation::Load);
-	void Set(const FiosItem &item);
-};
-
 /** Types of save games. */
 enum SavegameType : uint8_t {
 	TTD, ///< TTD savegame (can be detected incorrectly)
@@ -449,22 +433,7 @@ enum SavegameType : uint8_t {
 	TTO, ///< TTO savegame
 	Invalid = 0xFF, ///< broken savegame (used internally)
 };
-
-extern FileToSaveLoad _file_to_saveload;
-
-std::string GenerateDefaultSaveName();
 void SetSaveLoadError(StringID str);
-EncodedString GetSaveLoadErrorType();
-EncodedString GetSaveLoadErrorMessage();
-SaveLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
-void WaitTillSaved();
-void ProcessAsyncSaveFinish();
-void DoExitSave();
-
-void DoAutoOrNetsave(FiosNumberedSaveName &counter);
-
-SaveLoadResult SaveWithFilter(std::shared_ptr<struct SaveFilter> writer, bool threaded);
-SaveLoadResult LoadWithFilter(std::shared_ptr<struct LoadFilter> reader);
 
 typedef void AutolengthProc(int);
 
@@ -540,9 +509,6 @@ using ChunkHandlerRef = std::reference_wrapper<const ChunkHandler>;
 
 /** A table of ChunkHandler entries. */
 using ChunkHandlerTable = std::span<const ChunkHandlerRef>;
-
-/** A table of SaveLoad entries. */
-using SaveLoadTable = std::span<const struct SaveLoad>;
 
 /** A table of SaveLoadCompat entries. */
 using SaveLoadCompatTable = std::span<const struct SaveLoadCompat>;
@@ -1366,8 +1332,6 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt);
 std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLoadCompatTable &slct);
 void SlObject(void *object, const SaveLoadTable &slt);
 
-bool SaveloadCrashWithMissingNewGRFs();
-
 /**
  * Read in bytes from the file/data structure but don't do
  * anything with them, discarding them in effect
@@ -1377,9 +1341,6 @@ inline void SlSkipBytes(size_t length)
 {
 	for (; length != 0; length--) SlReadByte();
 }
-
-extern std::string _savegame_format;
-extern bool _do_autosave;
 
 /**
  * Default handler for saving/loading a vector to/from disk.

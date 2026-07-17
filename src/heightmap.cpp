@@ -14,7 +14,7 @@
 #include "strings_func.h"
 #include "void_map.h"
 #include "error.h"
-#include "saveload/saveload.h"
+#include "saveload/saveload_func.h"
 #include "bmp.h"
 #include "gfx_func.h"
 #include "fios.h"

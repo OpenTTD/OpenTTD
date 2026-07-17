@@ -12,7 +12,7 @@
 #include "../../fileio_func.h"
 #include "../../string_func.h"
 #include "../../gamelog.h"
-#include "../../saveload/saveload.h"
+#include "../../saveload/saveload_func.h"
 #include "../../video/video_driver.hpp"
 #include "macos.h"
 

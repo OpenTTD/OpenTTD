@@ -24,7 +24,7 @@
 #include "town.h"
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"
-#include "saveload/saveload.h"
+#include "saveload/saveload_func.h"
 #include "progress.h"
 #include "error.h"
 #include "newgrf_townname.h"
