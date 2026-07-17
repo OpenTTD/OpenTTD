@@ -646,14 +646,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Godshistorik
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Producerat
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Slå på/av grafen för produktion av gods av denna industri
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporterat
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Slå på/av grafen för transport av gods från denna industri
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Levererat
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Slå på/av grafen för leverans av gods till denna industri
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Väntande
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Slå på/av grafen för väntande gods vid denna industri
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Godshistorik
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Producerat
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Slå på/av grafen för produktion av gods i denna stad
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transporterat
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Slå på/av grafen för transport av gods från denna stad
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Levererad
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Slå på/av grafen för leverans av gods till denna stad
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestationsgradering
 
