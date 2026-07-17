@@ -428,7 +428,7 @@ void MusicSystem::ChangePlaylistPosition(int ofs)
  */
 void MusicSystem::SaveCustomPlaylist(PlaylistChoice pl)
 {
-	uint8_t *settings_pl;
+	std::span<uint8_t> settings_pl;
 	if (pl == PlaylistChoice::Custom1) {
 		settings_pl = _settings_client.music.custom_1;
 	} else if (pl == PlaylistChoice::Custom2) {
@@ -438,7 +438,7 @@ void MusicSystem::SaveCustomPlaylist(PlaylistChoice pl)
 	}
 
 	size_t num = 0;
-	std::fill_n(settings_pl, NUM_SONGS_PLAYLIST, 0);
+	std::ranges::fill(settings_pl, 0);
 
 	for (const auto &song : this->standard_playlists[pl]) {
 		/* Music set indices in the settings playlist are 1-based, 0 means unused slot */
