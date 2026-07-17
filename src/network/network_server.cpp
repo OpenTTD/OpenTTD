@@ -17,7 +17,7 @@
 #include "../console_func.h"
 #include "../company_base.h"
 #include "../command_func.h"
-#include "../saveload/saveload.h"
+#include "../saveload/saveload_func.h"
 #include "../saveload/saveload_filter.h"
 #include "../station_base.h"
 #include "../genworld.h"

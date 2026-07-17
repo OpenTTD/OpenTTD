@@ -14,7 +14,7 @@
 #include "../station_base.h"
 #include "../cargotype.h"
 #include "../timer/timer_game_economy.h"
-#include "../saveload/saveload.h"
+#include "../saveload/saveload_type.h"
 #include "linkgraph_type.h"
 #include <utility>
 

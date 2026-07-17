@@ -18,7 +18,7 @@
 #include "source_type.h"
 #include "vehicle_type.h"
 #include "core/multimap.hpp"
-#include "saveload/saveload.h"
+#include "saveload/saveload_type.h"
 
 /** Unique identifier for a single cargo packet. */
 using CargoPacketID = PoolID<uint32_t, struct CargoPacketIDTag, 0xFFF000, 0xFFFFFF>;

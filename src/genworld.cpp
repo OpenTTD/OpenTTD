@@ -26,7 +26,7 @@
 #include "water.h"
 #include "video/video_driver.hpp"
 #include "tilehighlight_func.h"
-#include "saveload/saveload.h"
+#include "saveload/saveload_func.h"
 #include "void_map.h"
 #include "town.h"
 #include "newgrf.h"

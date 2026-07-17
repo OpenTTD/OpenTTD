@@ -10,7 +10,7 @@
 #include "../stdafx.h"
 #include "../gfx_func.h"
 #include "../blitter/factory.hpp"
-#include "../saveload/saveload.h"
+#include "../saveload/saveload_func.h"
 #include "../window_func.h"
 #include "null_v.h"
 

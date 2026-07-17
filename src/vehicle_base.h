@@ -15,6 +15,7 @@
 #include "command_type.h"
 #include "order_base.h"
 #include "cargopacket.h"
+#include "newgrf_type.h"
 #include "texteff.hpp"
 #include "engine_type.h"
 #include "order_func.h"
@@ -22,7 +23,7 @@
 #include "group_type.h"
 #include "base_consist.h"
 #include "network/network.h"
-#include "saveload/saveload.h"
+#include "saveload/saveload_type.h"
 #include "timer/timer_game_calendar.h"
 
 const uint TILE_AXIAL_DISTANCE = 192; ///< Logical length of the tile in any DiagDirection used in vehicle movement.

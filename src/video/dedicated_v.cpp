@@ -19,7 +19,7 @@
 #include "../fios.h"
 #include "../blitter/factory.hpp"
 #include "../company_func.h"
-#include "../saveload/saveload.h"
+#include "../saveload/saveload_func.h"
 #include "../thread.h"
 #include "../window_func.h"
 #include <iostream>

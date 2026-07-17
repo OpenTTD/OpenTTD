@@ -15,7 +15,7 @@
 #include "tile_type.h"
 #include "vehicle_type.h"
 #include "base_consist.h"
-#include "saveload/saveload.h"
+#include "saveload/saveload_type.h"
 
 /** Unique identifier for an order backup. */
 using OrderBackupID = PoolID<uint8_t, struct OrderBackupIDTag, 255, 0xFF>;

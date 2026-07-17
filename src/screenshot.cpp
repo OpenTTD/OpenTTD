@@ -16,7 +16,7 @@
 #include "screenshot_gui.h"
 #include "blitter/factory.hpp"
 #include "zoom_func.h"
-#include "saveload/saveload.h"
+#include "saveload/saveload_func.h"
 #include "company_func.h"
 #include "strings_func.h"
 #include "error.h"
