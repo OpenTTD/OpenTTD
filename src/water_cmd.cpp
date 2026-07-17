@@ -585,7 +585,8 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 {
 	switch (GetWaterTileType(tile)) {
-		case WaterTileType::Clear: {
+		case WaterTileType::Clear:
+		case WaterTileType::ClearRocks: {
 			if (flags.Test(DoCommandFlag::NoWater)) return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
 			Money base_cost = IsCanal(tile) ? _price[Price::ClearCanal] : _price[Price::ClearWater];
@@ -627,7 +628,8 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 			return CommandCost(ExpensesType::Construction, base_cost);
 		}
 
-		case WaterTileType::Coast: {
+		case WaterTileType::Coast:
+		case WaterTileType::CoastRocks: {
 			Slope slope = GetTileSlope(tile);
 
 			/* Make sure no vehicle is on the tile */
@@ -683,10 +685,16 @@ bool IsWateredTile(TileIndex tile, Direction from)
 		case TileType::Water:
 			switch (GetWaterTileType(tile)) {
 				default: NOT_REACHED();
-				case WaterTileType::Depot: case WaterTileType::Clear: return true;
-				case WaterTileType::Lock: return DiagDirToAxis(GetLockDirection(tile)) == DiagDirToAxis(DirToDiagDir(from));
+				case WaterTileType::Clear:
+				case WaterTileType::Depot:
+				case WaterTileType::ClearRocks:
+					return true;
+
+				case WaterTileType::Lock:
+					return DiagDirToAxis(GetLockDirection(tile)) == DiagDirToAxis(DirToDiagDir(from));
 
 				case WaterTileType::Coast:
+				case WaterTileType::CoastRocks:
 					switch (GetTileSlope(tile)) {
 						case SLOPE_W: return (from == Direction::SE) || (from == Direction::E) || (from == Direction::NE);
 						case SLOPE_S: return (from == Direction::NE) || (from == Direction::N) || (from == Direction::NW);
@@ -1007,6 +1015,18 @@ static void DrawTile_Water(TileInfo *ti)
 			DrawWaterDepot(ti);
 			DrawBridgeMiddle(ti, BRIDGEPILLARFLAGS_ALL);
 			break;
+
+		case WaterTileType::ClearRocks:
+			DrawWaterClassGround(ti);
+			DrawGroundSprite(SPR_OVERLAY_ROCKS_WATER_COAST + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			DrawBridgeMiddle(ti, {});
+			break;
+
+		case WaterTileType::CoastRocks:
+			DrawShoreTile(ti->tileh);
+			DrawGroundSprite(SPR_OVERLAY_ROCKS_WATER_COAST + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
+			DrawBridgeMiddle(ti, {});
+			break;
 	}
 }
 
@@ -1039,12 +1059,15 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc &td)
 				default: NOT_REACHED();
 			}
 			break;
+			/* TODO descriptions for rocky coasts */
 		case WaterTileType::Coast: td.str = STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK; break;
 		case WaterTileType::Lock : td.str = STR_LAI_WATER_DESCRIPTION_LOCK;               break;
 		case WaterTileType::Depot:
 			td.str = STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT;
 			td.build_date = Depot::GetByTile(tile)->build_date;
 			break;
+		case WaterTileType::ClearRocks: td.str = STR_LAI_WATER_DESCRIPTION_WATER_ROCKS; break;
+		case WaterTileType::CoastRocks: td.str = STR_LAI_WATER_DESCRIPTION_COAST_ROCKS; break;
 		default: NOT_REACHED();
 	}
 
@@ -1191,10 +1214,14 @@ static void DoFloodTile(TileIndex target)
 
 	AutoRestoreBackup cur_company(_current_company, OWNER_WATER);
 
+	/* Flooded rocks can stay as water-logged rocks. */
+	TileType tiletype = GetTileType(target);
+	bool is_rocks = tiletype == TileType::Clear && GetClearGround(target) == ClearGround::Rocks;
+
 	Slope tileh = GetTileSlope(target);
 	if (tileh != SLOPE_FLAT) {
 		/* make coast.. */
-		switch (GetTileType(target)) {
+		switch (tiletype) {
 			case TileType::Railway: {
 				if (!IsPlainRail(target)) break;
 				FloodVehicles(target);
@@ -1211,13 +1238,14 @@ static void DoFloodTile(TileIndex target)
 				}
 				[[fallthrough]];
 
-			case TileType::Clear:
+			case TileType::Clear: {
 				if (Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, target).Succeeded()) {
-					MakeShore(target);
+					MakeShore(target, is_rocks);
 					MarkTileDirtyByTile(target);
 					flooded = true;
 				}
 				break;
+			}
 
 			default:
 				break;
@@ -1228,7 +1256,7 @@ static void DoFloodTile(TileIndex target)
 
 		/* flood flat tile */
 		if (Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, target).Succeeded()) {
-			MakeSea(target);
+			MakeSea(target, is_rocks);
 			MarkTileDirtyByTile(target);
 			flooded = true;
 		}
@@ -1276,14 +1304,16 @@ static void DoDryUp(TileIndex tile)
 			MarkTileDirtyByTile(tile);
 			break;
 
-		case TileType::Water:
+		case TileType::Water: {
 			assert(IsCoast(tile));
 
+			bool is_rocks = GetWaterTileType(tile) == WaterTileType::CoastRocks;
 			if (Command<Commands::LandscapeClear>::Do(DoCommandFlag::Execute, tile).Succeeded()) {
-				MakeClear(tile, ClearGround::Grass, 3);
+				MakeClear(tile, is_rocks ? ClearGround::Rocks : ClearGround::Grass, 3);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
+		}
 
 		default: NOT_REACHED();
 	}
@@ -1477,6 +1507,8 @@ static CommandCost CheckBuildAbove_Water(TileIndex tile, [[maybe_unused]] DoComm
 	switch (GetWaterTileType(tile)) {
 		case WaterTileType::Clear:
 		case WaterTileType::Coast:
+		case WaterTileType::ClearRocks:
+		case WaterTileType::CoastRocks:
 			break;
 
 		case WaterTileType::Lock: {

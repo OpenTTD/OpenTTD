@@ -165,14 +165,18 @@ static void GraphicsNew(ByteReader &buf)
 
 	/* If the baseset or grf only provides sprites for flat tiles (pre #10282), duplicate those for use on slopes. */
 	bool dup_oneway_sprites = ((type == 0x09) && (offset + num <= ONEWAY_SLOPE_N_OFFSET));
+	bool dup_rock_sprites = ((type == 0x1A) && (offset + num <= SPR_OVERLAY_ROCKS_WATER_COAST - SPR_OVERLAY_ROCKS_BASE));
 
-	for (; num > 0; num--) {
+	for (int i = 0; i < num; ++i) {
 		_cur_gps.nfo_line++;
 		SpriteID load_index = (replace == 0 ? _cur_gps.spriteid++ : replace++);
 		LoadNextSprite(load_index, *_cur_gps.file, _cur_gps.nfo_line);
 		if (dup_oneway_sprites) {
 			DupSprite(load_index, load_index + ONEWAY_SLOPE_N_OFFSET);
 			DupSprite(load_index, load_index + ONEWAY_SLOPE_S_OFFSET);
+		}
+		if (dup_rock_sprites && i < NUM_SLOPES) {
+			DupSprite(load_index, load_index + SPR_OVERLAY_ROCKS_WATER_COAST - SPR_OVERLAY_ROCKS_BASE);
 		}
 	}
 
