@@ -144,7 +144,7 @@ enum class TrainFlipReversingAllowed : uint8_t {
 struct DifficultySettings {
 	uint8_t competitor_start_time; ///< Unused value, used to load old savegames.
 	uint8_t competitor_intelligence; ///< Unused value, used to load old savegames.
-	uint8_t line_reverse_mode; ///< Unused value, used to load old savegames.
+	bool line_reverse_mode; ///< Unused value, used to load old savegames.
 
 	uint8_t max_no_competitors; ///< the number of competitors (AIs)
 	uint16_t competitors_interval; ///< the interval (in minutes) between adding competitors

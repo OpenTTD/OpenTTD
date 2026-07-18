@@ -161,7 +161,7 @@ static const SaveLoad _view_desc[] = {
 	SLEG_CONDVAR("x", _saved_scrollpos_x, VarTypes::I32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	SLEG_CONDVAR("y", _saved_scrollpos_y, VarFileType::I16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	SLEG_CONDVAR("y", _saved_scrollpos_y, VarTypes::I32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	    SLEG_VAR("zoom", _saved_scrollpos_zoom, VarTypes::U8),
+	    SLEG_VAR("zoom", _saved_scrollpos_zoom, VarFileType::U8 | VarMemType::I8),
 };
 
 struct VIEWChunkHandler : ChunkHandler {
