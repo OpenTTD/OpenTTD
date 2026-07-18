@@ -19,7 +19,7 @@
 
 /** Save and load the mapping between a spec and the NewGRF it came from. */
 static const SaveLoad _newgrf_mapping_desc[] = {
-	SLE_VAR(EntityIDMapping, grfid, VarTypes::LABEL),
+	SLE_VAR(EntityIDMapping, grfid, VarTypes::LABEL_REVERSE),
 	SLE_CONDVAR(EntityIDMapping, entity_id, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
 	SLE_CONDVAR(EntityIDMapping, entity_id, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(EntityIDMapping, substitute_id, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
@@ -69,7 +69,7 @@ struct NGRFChunkHandler : ChunkHandler {
 
 	static inline const SaveLoad description[] = {
 		   SLE_SSTR(GRFConfig, filename,         VarTypes::STR),
-		    SLE_VAR(GRFConfig, ident.grfid, VarTypes::LABEL),
+		    SLE_VAR(GRFConfig, ident.grfid, VarTypes::LABEL_REVERSE),
 		    SLE_ARR(GRFConfig, ident.md5sum,     VarTypes::U8,  16),
 		SLE_CONDVAR(GRFConfig, version, VarTypes::U32, SaveLoadVersion::StoreNewGRFVersion, SaveLoadVersion::MaxVersion),
 		   SLEG_ARR("param", param,              VarTypes::U32, std::size(param)),
