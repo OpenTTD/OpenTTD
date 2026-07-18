@@ -498,7 +498,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Uara o ngā utu
 # Company league menu
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tūtohi rīki umanga
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Taipitopito arotake tutukinga
-STR_GRAPH_MENU_HIGHSCORE                                        :Tūtohi tauteitei
+STR_GRAPH_MENU_HIGHSCORE                                        :Tūtohi tautike
 
 # Industry menu
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Rārangi ahumahi
@@ -1986,7 +1986,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Te tau me tāia
 STR_CONFIG_SETTING_STARTING_YEAR                                :Tau tīmata: {STRING}
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Tau whakamutunga mō te tatau whiwhinga: {STRING}
-STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Te tau me mutu ai te tatau whiwhinga a te kēmu. I te mutunga o taua tau, ka hopukina te tatau o te umanga, ka whakaaria ai te mata tauteitei, engari ka taea te tākaro tonu i muri i tērā.{}Mēnā i mua tēnei i te tau tīmata, kāore rawa te mata tauteitei e whakaaria
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Te tau me mutu ai te tatau whiwhinga a te kēmu. I te mutunga o taua tau, ka hopukina te tatau o te umanga, ka whakaaria ai te mata tautike, engari ka taea te tākaro tonu i muri i tērā.{}Mēnā i mua tēnei i te tau tīmata, kāore rawa te mata tautike e whakaaria
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Kāore rawa
@@ -2266,7 +2266,7 @@ STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Pūtakat
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Kaitākarorau
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Kōwhiringa kēmu
-STR_INTRO_HIGHSCORE                                             :{BLACK}Tūtohi tauteitei
+STR_INTRO_HIGHSCORE                                             :{BLACK}Tūtohi tautike
 STR_INTRO_HELP                                                  :{BLACK}Āwhina me te puka āwhina
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ihirangi tuihono
 STR_INTRO_QUIT                                                  :{BLACK}Puta Atu
@@ -2284,7 +2284,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Tīpakon
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Tīpakona te momo taiao "taonga tākaro"
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Huakina ngā kōwhiringa kēmu
-STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Huakina te tūtohi tauteitei
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Huakina te tūtohi tautike
 STR_INTRO_TOOLTIP_HELP                                          :{BLACK}Tīkina he mauhanga me ngētahi rauemi tuihono
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kimihia he ihirangi hou hei tiki ake
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Puta atu i "OpenTTD"
