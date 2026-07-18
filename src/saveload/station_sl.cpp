@@ -714,7 +714,7 @@ public:
 };
 
 static const SaveLoad _station_desc[] = {
-	SLE_SAVEBYTE(BaseStation, facilities),
+	SaveLoad::SaveByte(SLE_NAME_AND_OBJECT_ADDRESS(BaseStation, facilities)),
 	SaveLoad::Struct<SlStationNormal>("normal"),
 	SaveLoad::Struct<SlStationWaypoint>("waypoint"),
 	SaveLoad::StructList<SlStationSpecList<StationSpec>>("speclist", SaveLoadVersion::NewGRFStations),

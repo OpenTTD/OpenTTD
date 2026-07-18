@@ -1104,7 +1104,7 @@ public:
 };
 
 static const SaveLoad _vehicle_desc[] = {
-	SLE_SAVEBYTE(Vehicle, type),
+	SaveLoad::SaveByte(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, type)),
 	SaveLoad::Struct<SlVehicleTrain>("train"),
 	SaveLoad::Struct<SlVehicleRoadVeh>("roadveh"),
 	SaveLoad::Struct<SlVehicleShip>("ship"),

@@ -756,6 +756,46 @@ enum class SaveLoadType : uint8_t {
 };
 
 
+/**
+ * Check whether the numeric memory types match the actual type.
+ * @tparam T The actual type of the saved variable.
+ * @param type The VarType to compare to.
+ * @return \c true iff the types match.
+ */
+template <typename T>
+constexpr bool SlVarMemTypeMatches(VarMemType type)
+{
+	if constexpr (std::is_enum_v<T>) {
+		return SlVarMemTypeMatches<std::underlying_type_t<T>>(type);
+	} else if constexpr (ConvertibleThroughBase<T>) {
+		return SlVarMemTypeMatches<typename T::BaseType>(type);
+	} else {
+		switch (type) {
+			case VarMemType::Bool: return std::is_same_v<bool, T>;
+			case VarMemType::I8: return std::is_same_v<int8_t, T>;
+			case VarMemType::U8: return std::is_same_v<uint8_t, T> || std::is_same_v<char, T>;
+			case VarMemType::I16: return std::is_same_v<int16_t, T>;
+			case VarMemType::U16: return std::is_same_v<uint16_t, T>;
+			case VarMemType::I32: return std::is_same_v<int32_t, T>;
+			case VarMemType::U32: return std::is_same_v<uint32_t, T>;
+			case VarMemType::I64: return std::is_same_v<int64_t, T>;
+			case VarMemType::U64: return std::is_same_v<uint64_t, T>;
+			case VarMemType::Str:
+			case VarMemType::Name: return std::is_same_v<std::string, T>;
+			case VarMemType::Label: return std::is_base_of_v<BaseLabel, T>;
+			default: NOT_REACHED();
+		}
+	}
+}
+
+#define SLE_OBJECT_ADDRESS(base, variable) static_cast<decltype(base::variable)*>(nullptr), \
+	[] (void *b, size_t) -> void * { \
+		assert(b != nullptr); \
+		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
+	}
+
+#define SLE_NAME_AND_OBJECT_ADDRESS(base, variable) #variable, SLE_OBJECT_ADDRESS(base, variable)
+
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 struct SaveLoad {
 	/**
@@ -817,6 +857,19 @@ struct SaveLoad {
 		};
 	}
 
+	template <typename T>
+	static SaveLoad SaveByte(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(SlVarMemTypeMatches<T>(VarMemType::U8));
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::SaveByte,
+			.conv = VarTypes::U8,
+			.version_from = from,
+			.version_to = to,
+			.address_proc = address_proc,
+		};
+	}
 };
 
 /**
@@ -902,38 +955,6 @@ inline constexpr bool SlMemTypeValidForFileType(VarMemType mem_type, VarFileType
 }
 
 /**
- * Check whether the numeric memory types match the actual type.
- * @tparam T The actual type of the saved variable.
- * @param type The VarType to compare to.
- * @return \c true iff the types match.
- */
-template <typename T>
-constexpr bool SlVarMemTypeMatches(VarMemType type)
-{
-	if constexpr (std::is_enum_v<T>) {
-		return SlVarMemTypeMatches<std::underlying_type_t<T>>(type);
-	} else if constexpr (ConvertibleThroughBase<T>) {
-		return SlVarMemTypeMatches<typename T::BaseType>(type);
-	} else {
-		switch (type) {
-			case VarMemType::Bool: return std::is_same_v<bool, T>;
-			case VarMemType::I8: return std::is_same_v<int8_t, T>;
-			case VarMemType::U8: return std::is_same_v<uint8_t, T> || std::is_same_v<char, T>;
-			case VarMemType::I16: return std::is_same_v<int16_t, T>;
-			case VarMemType::U16: return std::is_same_v<uint16_t, T>;
-			case VarMemType::I32: return std::is_same_v<int32_t, T>;
-			case VarMemType::U32: return std::is_same_v<uint32_t, T>;
-			case VarMemType::I64: return std::is_same_v<int64_t, T>;
-			case VarMemType::U64: return std::is_same_v<uint64_t, T>;
-			case VarMemType::Str:
-			case VarMemType::Name: return std::is_same_v<std::string, T>;
-			case VarMemType::Label: return std::is_base_of_v<BaseLabel, T>;
-			default: NOT_REACHED();
-		}
-	}
-}
-
-/**
  * Helper function to check/validate the \c SaveLoadType, \c VarMemType and (array) length
  * for the configuration of the \c SaveLoad objects desribing the save format.
  * @tparam sl_type The basic way of referencing the data.
@@ -968,8 +989,6 @@ constexpr void SlCheckMemoryType()
 	} else if constexpr (sl_type == SaveLoadType::ReferenceVector) {
 		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
 		SlCheckMemoryType<SaveLoadType::Reference, mem_type, file_type, typename T::value_type>();
-	} else if constexpr (sl_type == SaveLoadType::SaveByte) {
-		SlCheckMemoryType<SaveLoadType::Variable, VarMemType::U8, VarFileType::U8, T>();
 	} else {
 		static_assert(false); // Better than NOT_REACHED() as this triggers compile-time, NOT_REACHED() does at run time.
 	}
@@ -1200,18 +1219,6 @@ constexpr void SlCheckMemoryType()
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLE_REFVECTOR(base, variable, type) SLE_CONDREFVECTOR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Only write byte during saving; never read it during loading.
- * When using SLE_SAVEBYTE you will have to read this byte before the table
- * this is in is read. This also means SLE_SAVEBYTE can only be used at the
- * top of a chunk.
- * This is intended to be used to indicate what type of entry this is in a
- * list of entries.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- */
-#define SLE_SAVEBYTE(base, variable) SLE_GENERAL(SaveLoadType::SaveByte, base, variable, {}, 0, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion, 0)
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.
