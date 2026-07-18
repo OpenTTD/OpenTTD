@@ -29,7 +29,7 @@ static std::string _game_saveload_settings;
 static const SaveLoad _game_script_desc[] = {
 	   SLEG_SSTR("name",      _game_saveload_name,         VarTypes::STR),
 	   SLEG_SSTR("settings",  _game_saveload_settings,     VarTypes::STR),
-	    SLEG_VAR("version",   _game_saveload_version,   VarTypes::U32),
+	    SLEG_VAR("version",   _game_saveload_version,   VarFileType::U32 | VarMemType::I32),
 };
 
 static void SaveReal_GSDT(int)

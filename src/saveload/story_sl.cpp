@@ -74,7 +74,7 @@ struct STPEChunkHandler : ChunkHandler {
 static const SaveLoad _story_pages_desc[] = {
 	SLE_CONDVAR(StoryPage, sort_value, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
 	SLE_CONDVAR(StoryPage, sort_value, VarTypes::U32, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(StoryPage, date,       VarTypes::U32),
+	    SLE_VAR(StoryPage, date,       VarFileType::U32 | VarMemType::I32),
 	SLE_CONDVAR(StoryPage, company, VarFileType::U16 | VarMemType::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
 	SLE_CONDVAR(StoryPage, company, VarTypes::U8, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
 	   SLE_SSTR(StoryPage, title,      VarTypes::STR | StringValidationSetting::AllowControlCode),

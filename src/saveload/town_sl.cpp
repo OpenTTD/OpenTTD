@@ -312,8 +312,8 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, have_ratings, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
 	SLE_CONDARR(Town, ratings, VarTypes::I16, 8, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
 	SLE_CONDARR(Town, ratings, VarTypes::I16, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	SLE_CONDARR(Town, unwanted, VarTypes::I8, 8, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MoreCompanies),
-	SLE_CONDARR(Town, unwanted, VarTypes::I8, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	SLE_CONDARR(Town, unwanted, VarFileType::I8 | VarMemType::U8, 8, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MoreCompanies),
+	SLE_CONDARR(Town, unwanted, VarFileType::I8 | VarMemType::U8, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
 
 	/* Slots 0 and 2 are passengers and mail respectively for old saves. */
 	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_max", _old_pass_supplied[LAST_MONTH].production, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
@@ -346,7 +346,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, time_until_rebuild, VarTypes::U16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Town, grow_counter, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::TownGrowthControl),
 	SLE_CONDVAR(Town, grow_counter, VarTypes::U16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Town, growth_rate, VarFileType::U8 | VarMemType::I16, SaveLoadVersion::MinVersion, SaveLoadVersion::TownGrowthControl),
+	SLE_CONDVAR(Town, growth_rate, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::TownGrowthControl),
 	SLE_CONDVAR(Town, growth_rate, VarFileType::I16 | VarMemType::U16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::ScriptTownGrowth),
 	SLE_CONDVAR(Town, growth_rate, VarTypes::U16, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
 

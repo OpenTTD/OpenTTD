@@ -357,7 +357,7 @@ public:
 		SLE_CONDVAR(CompanyEconomyEntry, company_value, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
 		SLE_CONDVAR(CompanyEconomyEntry, company_value, VarTypes::I64, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
-		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], VarTypes::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::CountIndividualCargoes),
+		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], VarFileType::I32 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::CountIndividualCargoes),
 		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo, VarTypes::U32, 32, SaveLoadVersion::CountIndividualCargoes, SaveLoadVersion::ExtendCargotypes),
 		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo, VarTypes::U32, NUM_CARGO, SaveLoadVersion::ExtendCargotypes, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(CompanyEconomyEntry, performance_history, VarTypes::I32),
