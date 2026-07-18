@@ -392,8 +392,8 @@ public:
 		 SLE_CONDVAR(GoodsEntry, node, VarTypes::U16, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
 		SLEG_CONDVAR("old_num_flows", _old_num_flows, VarTypes::U32, SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
 		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo, VarTypes::U32, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
-		SLEG_CONDSTRUCTLIST("flow", SlStationFlow, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
-		SLEG_CONDSTRUCTLIST("cargo", SlStationCargo, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
+		SaveLoad::StructList<SlStationFlow>("flow", SaveLoadVersion::Cargodist),
+		SaveLoad::StructList<SlStationCargo>("cargo", SaveLoadVersion::Cargodist),
 	};
 
 	static inline const SaveLoadCompatTable compat_description = _station_goods_sl_compat;
@@ -527,8 +527,8 @@ static const SaveLoad _old_station_desc[] = {
 
 	SLE_CONDREFLIST(Station, loading_vehicles, SLRefType::Vehicle, SaveLoadVersion::FifoLoading, SaveLoadVersion::MaxVersion),
 
-	SLEG_STRUCTLIST("goods", SlStationGoods),
-	SLEG_CONDSTRUCTLIST("speclist", SlStationSpecList<StationSpec>, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
+	SaveLoad::StructList<SlStationGoods>("goods"),
+	SaveLoad::StructList<SlStationSpecList<StationSpec>>("speclist", SaveLoadVersion::NewGRFStations),
 };
 
 struct STNSChunkHandler : ChunkHandler {
@@ -595,7 +595,7 @@ public:
 		/* Used by newstations for graphic variations */
 		    SLE_VAR(BaseStation, random_bits,            VarTypes::U16),
 		    SLE_VARNAME(BaseStation, waiting_random_triggers, "waiting_triggers", VarTypes::U8),
-	   SLEG_STRUCTLIST("tile_waiting_triggers", SlStationWaitingTriggers),
+	SaveLoad::StructList<SlStationWaitingTriggers>("tile_waiting_triggers"),
 	 SLEG_CONDVAR("num_specs", SlStationSpecList<StationSpec>::last_num_specs, VarTypes::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_base_sl_compat;
@@ -622,7 +622,7 @@ public:
 class SlStationNormal : public DefaultSaveLoadHandler<SlStationNormal, BaseStation> {
 public:
 	static inline const SaveLoad description[] = {
-		SLEG_STRUCT("base", SlStationBase),
+		SaveLoad::Struct<SlStationBase>("base"),
 		    SLE_VAR(Station, train_station.tile,         VarTypes::U32),
 		    SLE_VAR(Station, train_station.w,            VarFileType::U8 | VarMemType::U16),
 		    SLE_VAR(Station, train_station.h,            VarFileType::U8 | VarMemType::U16),
@@ -654,8 +654,8 @@ public:
 		SLE_REFLIST(Station, loading_vehicles,           SLRefType::Vehicle),
 		SLE_CONDVAR(Station, always_accepted, VarFileType::U32 | VarMemType::U64, SaveLoadVersion::TownAcceptance, SaveLoadVersion::ExtendCargotypes),
 		SLE_CONDVAR(Station, always_accepted, VarTypes::U64, SaveLoadVersion::ExtendCargotypes, SaveLoadVersion::MaxVersion),
-		SLEG_CONDSTRUCTLIST("speclist", SlRoadStopTileData, SaveLoadVersion::NewGRFRoadStops, SaveLoadVersion::RoadStopTileData),
-		SLEG_STRUCTLIST("goods", SlStationGoods),
+		SaveLoad::StructList<SlRoadStopTileData>("speclist", SaveLoadVersion::NewGRFRoadStops, SaveLoadVersion::RoadStopTileData),
+		SaveLoad::StructList<SlStationGoods>("goods"),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_normal_sl_compat;
 
@@ -681,7 +681,7 @@ public:
 class SlStationWaypoint : public DefaultSaveLoadHandler<SlStationWaypoint, BaseStation> {
 public:
 	static inline const SaveLoad description[] = {
-		SLEG_STRUCT("base", SlStationBase),
+		SaveLoad::Struct<SlStationBase>("base"),
 		    SLE_VAR(Waypoint, town_cn,                   VarTypes::U16),
 
 		SLE_CONDVAR(Waypoint, train_station.tile, VarTypes::U32, SaveLoadVersion::MultiTileWaypoints, SaveLoadVersion::MaxVersion),
@@ -715,11 +715,11 @@ public:
 
 static const SaveLoad _station_desc[] = {
 	SLE_SAVEBYTE(BaseStation, facilities),
-	SLEG_STRUCT("normal", SlStationNormal),
-	SLEG_STRUCT("waypoint", SlStationWaypoint),
-	SLEG_CONDSTRUCTLIST("speclist", SlStationSpecList<StationSpec>, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
-	SLEG_CONDSTRUCTLIST("roadstopspeclist", SlStationSpecList<RoadStopSpec>, SaveLoadVersion::NewGRFRoadStops, SaveLoadVersion::MaxVersion),
-	SLEG_CONDSTRUCTLIST("roadstoptiledata", SlRoadStopTileData, SaveLoadVersion::RoadStopTileData, SaveLoadVersion::MaxVersion),
+	SaveLoad::Struct<SlStationNormal>("normal"),
+	SaveLoad::Struct<SlStationWaypoint>("waypoint"),
+	SaveLoad::StructList<SlStationSpecList<StationSpec>>("speclist", SaveLoadVersion::NewGRFStations),
+	SaveLoad::StructList<SlStationSpecList<RoadStopSpec>>("roadstopspeclist", SaveLoadVersion::NewGRFRoadStops),
+	SaveLoad::StructList<SlRoadStopTileData>("roadstoptiledata", SaveLoadVersion::RoadStopTileData),
 };
 
 struct STNNChunkHandler : ChunkHandler {

@@ -243,7 +243,7 @@ SaveLoadTable GetOrderListDescription()
 	static const SaveLoad _orderlist_desc[] = {
 		SLE_CONDVARNAME(OrderList, old_order_index, "first", VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
 		SLE_CONDVARNAME(OrderList, old_order_index, "first", VarTypes::U32, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrdersOwnedByOrderlist),
-		SLEG_CONDSTRUCTLIST("orders", SlOrders<OrderList>, SaveLoadVersion::OrdersOwnedByOrderlist, SaveLoadVersion::MaxVersion),
+		SaveLoad::StructList<SlOrders<OrderList>>("orders", SaveLoadVersion::OrdersOwnedByOrderlist),
 	};
 
 	return _orderlist_desc;
@@ -314,7 +314,7 @@ SaveLoadTable GetOrderBackupDescription()
 		 SLE_CONDVAR(OrderBackup, vehicle_flags, VarTypes::U16, SaveLoadVersion::ServiceIntervalPercent, SaveLoadVersion::MaxVersion),
 		SLE_CONDVARNAME(OrderBackup, old_order_index, "orders", VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
 		SLE_CONDVARNAME(OrderBackup, old_order_index, "orders", VarTypes::U32, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrdersOwnedByOrderlist),
-		SLEG_CONDSTRUCTLIST("orders", SlOrders<OrderBackup>, SaveLoadVersion::OrdersOwnedByOrderlist, SaveLoadVersion::MaxVersion),
+		SaveLoad::StructList<SlOrders<OrderBackup>>("orders", SaveLoadVersion::OrdersOwnedByOrderlist),
 	};
 
 	return _order_backup_desc;

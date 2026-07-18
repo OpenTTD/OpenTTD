@@ -63,7 +63,7 @@ public:
 		 SLE_VAR(Industry::AcceptedCargo, waiting, VarTypes::U16),
 		 SLE_VAR(Industry::AcceptedCargo, last_accepted, VarTypes::I32),
 		SLE_CONDVAR(Industry::AcceptedCargo, accumulated_waiting, VarTypes::U32, SaveLoadVersion::IndustryAcceptedHistory, SaveLoadVersion::MaxVersion),
-		SLEG_CONDSTRUCTLIST("history", SlIndustryAcceptedHistory, SaveLoadVersion::IndustryAcceptedHistory, SaveLoadVersion::MaxVersion),
+		SaveLoad::StructList<SlIndustryAcceptedHistory>("history", SaveLoadVersion::IndustryAcceptedHistory),
 	};
 	static inline const SaveLoadCompatTable compat_description = _industry_accepts_sl_compat;
 
@@ -124,7 +124,7 @@ public:
 		 SLE_VAR(Industry::ProducedCargo, cargo, VarTypes::U8),
 		 SLE_VAR(Industry::ProducedCargo, waiting, VarTypes::U16),
 		 SLE_VAR(Industry::ProducedCargo, rate, VarTypes::U8),
-		SLEG_STRUCTLIST("history", SlIndustryProducedHistory),
+		SaveLoad::StructList<SlIndustryProducedHistory>("history"),
 	};
 	static inline const SaveLoadCompatTable compat_description = _industry_produced_sl_compat;
 
@@ -207,8 +207,8 @@ static const SaveLoad _industry_desc[] = {
 
 	SLE_CONDVAR(Industry, valid_history, VarTypes::U64, SaveLoadVersion::IndustryNumValidHistory, SaveLoadVersion::MaxVersion),
 
-	SLEG_CONDSTRUCTLIST("accepted", SlIndustryAccepted, SaveLoadVersion::IndustryCargoReorganise, SaveLoadVersion::MaxVersion),
-	SLEG_CONDSTRUCTLIST("produced", SlIndustryProduced, SaveLoadVersion::IndustryCargoReorganise, SaveLoadVersion::MaxVersion),
+	SaveLoad::StructList<SlIndustryAccepted>("accepted", SaveLoadVersion::IndustryCargoReorganise),
+	SaveLoad::StructList<SlIndustryProduced>("produced", SaveLoadVersion::IndustryCargoReorganise),
 };
 
 struct INDYChunkHandler : ChunkHandler {

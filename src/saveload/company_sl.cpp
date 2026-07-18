@@ -296,7 +296,7 @@ class SlCompanyOldAI : public DefaultSaveLoadHandler<SlCompanyOldAI, CompanyProp
 public:
 	static inline const SaveLoad description[] = {
 		SLE_CONDVAR(CompanyOldAI, num_build_rec, VarTypes::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
-		SLEG_STRUCTLIST("buildrec", SlCompanyOldAIBuildRec),
+		SaveLoad::StructList<SlCompanyOldAIBuildRec>("buildrec"),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_old_ai_compat;
 
@@ -500,7 +500,7 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDSSTR(CompanyProperties, president_name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDVECTOR(CompanyProperties, allow_list, VarTypes::STR, SaveLoadVersion::CompanyAllowList, SaveLoadVersion::CompanyAllowListV2),
-	SLEG_CONDSTRUCTLIST("allow_list", SlAllowListData, SaveLoadVersion::CompanyAllowListV2, SaveLoadVersion::MaxVersion),
+	SaveLoad::StructList<SlAllowListData>("allow_list", SaveLoadVersion::CompanyAllowListV2),
 	SLE_VAR(CompanyProperties, allow_any, VarTypes::BOOL),
 
 	SLE_VARNAME(CompanyProperties, face.bits, "face", VarTypes::U32),
@@ -544,11 +544,11 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, terraform_limit, VarTypes::U32, SaveLoadVersion::TerraformLimits, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(CompanyProperties, clear_limit, VarTypes::U32, SaveLoadVersion::TerraformLimits, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(CompanyProperties, tree_limit, VarTypes::U32, SaveLoadVersion::AutoreplaceWhenOldTreeLimit, SaveLoadVersion::MaxVersion),
-	SLEG_STRUCT("settings", SlCompanySettings),
-	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI, SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
-	SLEG_STRUCT("cur_economy", SlCompanyEconomy),
-	SLEG_STRUCTLIST("old_economy", SlCompanyOldEconomy),
-	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries, SaveLoadVersion::Liveries, SaveLoadVersion::MaxVersion),
+	SaveLoad::Struct<SlCompanySettings>("settings"),
+	SaveLoad::Struct<SlCompanyOldAI>("old_ai", SaveLoadVersion::MinVersion, SaveLoadVersion::NoAI),
+	SaveLoad::Struct<SlCompanyEconomy>("cur_economy"),
+	SaveLoad::StructList<SlCompanyOldEconomy>("old_economy"),
+	SaveLoad::StructList<SlCompanyLiveries>("liveries", SaveLoadVersion::Liveries),
 };
 
 struct PLYRChunkHandler : ChunkHandler {

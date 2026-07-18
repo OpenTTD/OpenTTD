@@ -149,7 +149,7 @@ public:
 static const SaveLoad _game_language_desc[] = {
 	SLE_SSTR(LanguageStrings, language, VarTypes::STR),
 	SLEG_CONDVAR("count", _game_saveload_strings, VarTypes::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
-	SLEG_STRUCTLIST("strings", SlGameLanguageString),
+	SaveLoad::StructList<SlGameLanguageString>("strings"),
 };
 
 struct GSTRChunkHandler : ChunkHandler {

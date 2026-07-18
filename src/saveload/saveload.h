@@ -767,15 +767,56 @@ struct SaveLoad {
 	 */
 	using AddressFunction = void *(*)(void *base, size_t extra);
 
-	std::string name;    ///< Name of this field (optional, used for tables).
-	SaveLoadType cmd;    ///< The action to take with the saved/loaded type, All types need different action.
-	VarType conv;        ///< Type of the variable to be saved; this field combines both FileVarType and MemVarType.
-	uint16_t length;       ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
-	SaveLoadVersion version_from;   ///< Save/load the variable starting from this savegame version.
-	SaveLoadVersion version_to;     ///< Save/load the variable before this savegame version.
-	AddressFunction address_func; ///< Callback function the get the actual variable address in memory.
-	size_t extra_data;              ///< Extra data for the callback proc.
-	std::shared_ptr<SaveLoadHandler> handler; ///< Custom handler for Save/Load procs.
+	std::string name; ///< Name of this field (optional, used for tables).
+	SaveLoadType cmd; ///< The action to take with the saved/loaded type, All types need different action.
+	VarType conv{}; ///< Type of the variable to be saved; this field combines both FileVarType and MemVarType.
+	uint16_t length{}; ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
+	SaveLoadVersion version_from; ///< Save/load the variable starting from this savegame version.
+	SaveLoadVersion version_to; ///< Save/load the variable before this savegame version.
+	AddressFunction address_func = nullptr; ///< Callback function the get the actual variable address in memory.
+	size_t extra_data = 0; ///< Extra data for the callback proc.
+	std::shared_ptr<SaveLoadHandler> handler{}; ///< Custom handler for Save/Load procs.
+
+	/**
+	 * Storage of a structs, optionally in some savegame versions.
+	 * @tparam Thandler SaveLoadHandler for the structs.
+	 * @param name The name of the field.
+	 * @param from First savegame version that has the struct.
+	 * @param to Last savegame version that has the struct.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <typename Thandler> requires std::is_base_of_v<SaveLoadHandler, Thandler>
+	static SaveLoad Struct(std::string name, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Struct,
+			.version_from = from,
+			.version_to = to,
+			.handler = std::make_shared<Thandler>(),
+		};
+	}
+
+	/**
+	 * Storage of a list of structs, optionally in some savegame versions.
+	 * @param Thandler SaveLoadHandler for the list of structs.
+	 * @param name The name of the field.
+	 * @param from First savegame version that has the list.
+	 * @param to Last savegame version that has the list.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <typename Thandler> requires std::is_base_of_v<SaveLoadHandler, Thandler>
+	static SaveLoad StructList(std::string name, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::StructList,
+			.version_from = from,
+			.version_to = to,
+			.handler = std::make_shared<Thandler>(),
+		};
+	}
+
 };
 
 /**
@@ -1230,15 +1271,6 @@ constexpr void SlCheckMemoryType()
 #define SLEG_CONDSSTR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::String, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a structs in some savegame versions.
- * @param name     The name of the field.
- * @param handler  SaveLoadHandler for the structs.
- * @param from     First savegame version that has the struct.
- * @param to       Last savegame version that has the struct.
- */
-#define SLEG_CONDSTRUCT(name, handler, from, to) SaveLoad {name, SaveLoadType::Struct, {}, 0, from, to, nullptr, 0, std::make_shared<handler>()}
-
-/**
  * Storage of a global reference list in some savegame versions.
  * @param name     The name of the field.
  * @param variable Name of the global variable.
@@ -1257,15 +1289,6 @@ constexpr void SlCheckMemoryType()
  * @param to       Last savegame version that has the list.
  */
 #define SLEG_CONDVECTOR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Vector, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a list of structs in some savegame versions.
- * @param name     The name of the field.
- * @param handler  SaveLoadHandler for the list of structs.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLEG_CONDSTRUCTLIST(name, handler, from, to) SaveLoad {name, SaveLoadType::StructList, {}, 0, from, to, nullptr, 0, std::make_shared<handler>()}
 
 /**
  * Storage of a global variable in every savegame version.
@@ -1301,13 +1324,6 @@ constexpr void SlCheckMemoryType()
 #define SLEG_SSTR(name, variable, type) SLEG_CONDSSTR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
- * Storage of a structs in every savegame version.
- * @param name     The name of the field.
- * @param handler SaveLoadHandler for the structs.
- */
-#define SLEG_STRUCT(name, handler) SLEG_CONDSTRUCT(name, handler, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
  * Storage of a global reference list in every savegame version.
  * @param name     The name of the field.
  * @param variable Name of the global variable.
@@ -1322,13 +1338,6 @@ constexpr void SlCheckMemoryType()
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLEG_VECTOR(name, variable, type) SLEG_CONDVECTOR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a list of structs in every savegame version.
- * @param name    The name of the field.
- * @param handler SaveLoadHandler for the list of structs.
- */
-#define SLEG_STRUCTLIST(name, handler) SLEG_CONDSTRUCTLIST(name, handler, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Field name where the real SaveLoad can be located.
