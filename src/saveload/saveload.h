@@ -662,7 +662,8 @@ enum class VarMemType : uint8_t {
 	Str = 12, ///< string pointer
 	StrQ = 13, ///< string pointer enclosed in quotes
 	Name = 14, ///< old custom name to be converted to a string pointer
-	Label = 15, ///< A 4 character \c Label.
+	LabelReverse = 15, ///< A 4 character \c Label, stored in reverse.
+	LabelForward = 16, ///< A 4 character \c Label, stored as-is.
 };
 
 /** Container of a variable's characteristics about a variable's storage. */
@@ -734,7 +735,8 @@ struct VarTypes {
 	static constexpr VarType STR{ VarFileType::String, VarMemType::Str }; ///< Store string.
 	static constexpr VarType STRQ{ VarFileType::String, VarMemType::StrQ }; ///< Store a string with quotes.
 	static constexpr VarType NAME{ VarFileType::StringID, VarMemType::Name }; ///< A string stored in the custom string array.
-	static constexpr VarType LABEL{ VarFileType::U32, VarMemType::Label }; ///< Store a \c Label.
+	static constexpr VarType LABEL_REVERSE{ VarFileType::U32, VarMemType::LabelReverse }; ///< Store a \c Label in reverse.
+	static constexpr VarType LABEL_FORWARD{ VarFileType::U32, VarMemType::LabelForward }; ///< Store a \c Label as-is.
 };
 
 /** Type of data saved. */
@@ -807,7 +809,8 @@ inline constexpr size_t SlVarSize(VarMemType type)
 		case VarMemType::Str: return sizeof(std::string);
 		case VarMemType::StrQ: return sizeof(std::string);
 		case VarMemType::Name: return sizeof(std::string);
-		case VarMemType::Label: return sizeof(BaseLabel);
+		case VarMemType::LabelReverse: return sizeof(BaseLabel);
+		case VarMemType::LabelForward: return sizeof(BaseLabel);
 		default: NOT_REACHED();
 	}
 }
@@ -851,7 +854,7 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 #define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) \
 	SaveLoad {name, cmd, type, length, from, to, [] (void *b, size_t) -> void * { \
 		static_assert(SlCheckVarSize(cmd, type, length, sizeof(static_cast<base *>(b)->variable))); \
-		static_assert(VarType{type}.mem != VarMemType::Label || std::is_base_of_v<BaseLabel, decltype(base::variable)>); \
+		static_assert((VarType{type}.mem != VarMemType::LabelReverse && VarType{type}.mem != VarMemType::LabelForward) || std::is_base_of_v<BaseLabel, decltype(base::variable)>); \
 		assert(b != nullptr); \
 		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
 	}, extra, nullptr}

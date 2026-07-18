@@ -181,7 +181,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, build_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
 	SLE_CONDVAR(OldWaypoint, build_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(OldWaypoint, localidx, VarTypes::U8, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, grfid, VarTypes::LABEL, SaveLoadVersion::StoreWaypointIdInMap, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(OldWaypoint, grfid, VarTypes::LABEL_REVERSE, SaveLoadVersion::StoreWaypointIdInMap, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(OldWaypoint, owner, VarTypes::U8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
 };
 
