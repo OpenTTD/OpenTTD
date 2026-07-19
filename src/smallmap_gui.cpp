@@ -540,7 +540,7 @@ static inline uint32_t GetSmallMapLinkStatsPixels(TileIndex tile, TileType t)
 }
 
 /** Lookup table of minimap colours to use for each ClearGround type. */
-static constexpr uint32_t _vegetation_clear_bits[to_underlying(ClearGround::MaxSize)] = {
+static constexpr EnumIndexArray<uint32_t, ClearGround, ClearGround::MaxSize> _vegetation_clear_bits = {
 	MKCOLOUR_XXXX(PC_GRASS_LAND), ///< full grass
 	MKCOLOUR_XXXX(PC_ROUGH_LAND), ///< rough land
 	MKCOLOUR_XXXX(PC_GREY),       ///< rocks
@@ -567,7 +567,7 @@ static inline uint32_t GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 				if (GetClearDensity(tile) < 3) return MKCOLOUR_XXXX(PC_BARE_LAND);
 				if (GetTropicZone(tile) == TropicZone::Rainforest) return MKCOLOUR_XXXX(PC_RAINFOREST);
 			}
-			return _vegetation_clear_bits[to_underlying(GetClearGround(tile))];
+			return _vegetation_clear_bits[GetClearGround(tile)];
 
 		case TileType::Industry:
 			return IsTileForestIndustry(tile) ? MKCOLOUR_XXXX(PC_GREEN) : MKCOLOUR_XXXX(PC_DARK_RED);
