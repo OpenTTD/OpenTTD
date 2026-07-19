@@ -788,6 +788,38 @@ constexpr bool SlVarMemTypeMatches(VarMemType type)
 	}
 }
 
+template <typename T>
+constexpr VarMemType SlGetMemType()
+{
+	if constexpr (std::is_enum_v<T>) {
+		return SlGetMemType<std::underlying_type_t<T>>();
+	} else if constexpr (ConvertibleThroughBase<T>) {
+		return SlGetMemType<typename T::BaseType>();
+	} else if constexpr (std::is_same_v<bool, T>) {
+		return VarMemType::Bool;
+	} else if constexpr (std::is_same_v<int8_t, T>) {
+		return VarMemType::I8;
+	} else if constexpr (std::is_same_v<uint8_t, T> || std::is_same_v<char, T>) {
+		return VarMemType::U8;
+	} else if constexpr (std::is_same_v<int16_t, T>) {
+		return VarMemType::I16;
+	} else if constexpr (std::is_same_v<uint16_t, T>) {
+		return VarMemType::U16;
+	} else if constexpr (std::is_same_v<int32_t, T>) {
+		return VarMemType::I32;
+	} else if constexpr (std::is_same_v<uint32_t, T>) {
+		return VarMemType::U32;
+	} else if constexpr (std::is_same_v<int64_t, T>) {
+		return VarMemType::I64;
+	} else if constexpr (std::is_same_v<uint64_t, T>) {
+		return VarMemType::U64;
+	} else if constexpr (std::is_same_v<std::string, T>) {
+		return VarMemType::Str;
+	} else {
+		static_assert(false, "The given type is not supported");
+	}
+}
+
 #define SLE_OBJECT_ADDRESS(base, variable) static_cast<decltype(base::variable)*>(nullptr), \
 	[] (void *b, size_t) -> void * { \
 		assert(b != nullptr); \
@@ -839,6 +871,20 @@ struct SaveLoad {
 			.version_from = from,
 			.version_to = to,
 			.handler = std::make_shared<Thandler>(),
+		};
+	}
+
+	template <VarFileType file_type, typename T>
+	static SaveLoad Vector(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Vector,
+			.conv = {file_type, SlGetMemType<typename T::value_type>()},
+			.version_from = from,
+			.version_to = to,
+			.address_proc = address_proc,
 		};
 	}
 
@@ -1139,26 +1185,6 @@ constexpr void SlCheckMemoryType()
 #define SLE_CONDSSTRNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::String, name, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a vector of #SaveLoadType::Variable elements in some savegame versions.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Vector, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a vector of #SaveLoadType::Variable elements in some savegame versions.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Vector, base, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a variable in every version of a savegame.
  * @param base     Name of the class or struct containing the variable.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -1277,16 +1303,6 @@ constexpr void SlCheckMemoryType()
 #define SLEG_CONDSSTR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::String, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a global vector of #SaveLoadType::Variable elements in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLEG_CONDVECTOR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Vector, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a global variable in every savegame version.
  * @param name     The name of the field.
  * @param variable Name of the global variable.
@@ -1318,14 +1334,6 @@ constexpr void SlCheckMemoryType()
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLEG_SSTR(name, variable, type) SLEG_CONDSSTR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global vector of #SaveLoadType::Variable elements in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_VECTOR(name, variable, type) SLEG_CONDVECTOR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Field name where the real SaveLoad can be located.

@@ -864,8 +864,8 @@ public:
 		      SLE_VAR(RoadVehicle, overtaking_ctr,       VarTypes::U8),
 		      SLE_VAR(RoadVehicle, crashed_ctr,          VarTypes::U16),
 		      SLE_VAR(RoadVehicle, reverse_ctr,          VarTypes::U8),
-		SLEG_CONDVECTOR("path.td", rv_path_td, VarTypes::U8, SaveLoadVersion::RoadvehPathCache, SaveLoadVersion::PathCacheFormat),
-		SLEG_CONDVECTOR("path.tile", rv_path_tile, VarTypes::U32, SaveLoadVersion::RoadvehPathCache, SaveLoadVersion::PathCacheFormat),
+		SaveLoad::Vector<VarFileType::U8>("path.td", SLE_GLOBAL_ADDRESS(rv_path_td), SaveLoadVersion::RoadvehPathCache, SaveLoadVersion::PathCacheFormat),
+		SaveLoad::Vector<VarFileType::U32>("path.tile", SLE_GLOBAL_ADDRESS(rv_path_tile), SaveLoadVersion::RoadvehPathCache, SaveLoadVersion::PathCacheFormat),
 		SaveLoad::StructList<SlVehicleRoadVehPath>("path", SaveLoadVersion::PathCacheFormat),
 		 SLE_CONDVAR(RoadVehicle, gv_flags, VarTypes::U16, SaveLoadVersion::RvRealisticAcceleration, SaveLoadVersion::MaxVersion),
 	};
@@ -929,7 +929,7 @@ public:
 	static inline const SaveLoad description[] = {
 		SaveLoad::Struct<SlVehicleCommon>("common"),
 		      SLE_VAR(Ship, state,                     VarTypes::U8),
-		SLEG_CONDVECTOR("path", ship_path_td, VarTypes::U8, SaveLoadVersion::ShipPathCache, SaveLoadVersion::PathCacheFormat),
+		SaveLoad::Vector<VarFileType::U8>("path", SLE_GLOBAL_ADDRESS(ship_path_td), SaveLoadVersion::ShipPathCache, SaveLoadVersion::PathCacheFormat),
 		SaveLoad::StructList<SlVehicleShipPath>("path", SaveLoadVersion::PathCacheFormat),
 		 SLE_CONDVAR(Ship, rotation, VarTypes::U8, SaveLoadVersion::ShipRotation, SaveLoadVersion::MaxVersion),
 	};

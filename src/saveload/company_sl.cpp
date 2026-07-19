@@ -499,7 +499,7 @@ static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, president_name_2, VarTypes::U32),
 	SLE_CONDSSTR(CompanyProperties, president_name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVECTOR(CompanyProperties, allow_list, VarTypes::STR, SaveLoadVersion::CompanyAllowList, SaveLoadVersion::CompanyAllowListV2),
+	SaveLoad::Vector<VarFileType::String>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, allow_list), SaveLoadVersion::CompanyAllowList, SaveLoadVersion::CompanyAllowListV2),
 	SaveLoad::StructList<SlAllowListData>("allow_list", SaveLoadVersion::CompanyAllowListV2),
 	SLE_VAR(CompanyProperties, allow_any, VarTypes::BOOL),
 
