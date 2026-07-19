@@ -302,7 +302,7 @@ SaveLoadTable GetOrderBackupDescription()
 		     SLE_VAR(OrderBackup, group,                    VarTypes::U16),
 		 SLE_CONDVAR(OrderBackup, service_interval, VarFileType::U32 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::FixOrderBackup),
 		 SLE_CONDVAR(OrderBackup, service_interval, VarTypes::U16, SaveLoadVersion::FixOrderBackup, SaveLoadVersion::MaxVersion),
-		    SLE_SSTR(OrderBackup, name,                     VarTypes::STR),
+		SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, name)),
 		SaveLoad::Reference<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, clone), SaveLoadVersion::FixOrderBackup),
 		     SLE_VAR(OrderBackup, cur_real_order_index,     VarTypes::U8),
 		 SLE_CONDVAR(OrderBackup, cur_implicit_order_index, VarTypes::U8, SaveLoadVersion::BackupOrderState, SaveLoadVersion::MaxVersion),

@@ -480,7 +480,7 @@ public:
 	};
 
 	static inline const SaveLoad description[] = {
-		SLE_SSTR(KeyWrapper, key, VarTypes::STR),
+		SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(KeyWrapper, key)),
 	};
 	static inline const SaveLoadCompatTable compat_description = {};
 
@@ -493,18 +493,18 @@ public:
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          VarTypes::U32),
 	    SLE_VAR(CompanyProperties, name_1,          VarTypes::STRINGID),
-	SLE_CONDSSTR(CompanyProperties, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 
 	    SLE_VAR(CompanyProperties, president_name_1, VarTypes::STRINGID),
 	    SLE_VAR(CompanyProperties, president_name_2, VarTypes::U32),
-	SLE_CONDSSTR(CompanyProperties, president_name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, president_name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 
 	SaveLoad::Vector<VarFileType::String>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, allow_list), SaveLoadVersion::CompanyAllowList, SaveLoadVersion::CompanyAllowListV2),
 	SaveLoad::StructList<SlAllowListData>("allow_list", SaveLoadVersion::CompanyAllowListV2),
 	SLE_VAR(CompanyProperties, allow_any, VarTypes::BOOL),
 
 	SLE_VARNAME(CompanyProperties, face.bits, "face", VarTypes::U32),
-	SLE_CONDSSTRNAME(CompanyProperties, face.style_label, "face_style", VarTypes::STR, SaveLoadVersion::FaceStyles, SaveLoadVersion::MaxVersion),
+	SaveLoad::String("face_style", SLE_OBJECT_ADDRESS(CompanyProperties, face.style_label), {}, SaveLoadVersion::FaceStyles),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
 	SLE_CONDVAR(CompanyProperties, money, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::BigCurrency),

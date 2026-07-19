@@ -497,7 +497,7 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, train_station.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
 	    SLE_VAR(Station, string_id,                  VarTypes::STRINGID),
-	SLE_CONDSSTR(Station, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Station, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 	SLE_CONDVAR(Station, indtype, VarTypes::U8, SaveLoadVersion::NewGRFSuppliedStationName, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Station, had_vehicle_of_type, VarFileType::U16 | VarMemType::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::WaypointMoreLikeStation),
 	SLE_CONDVAR(Station, had_vehicle_of_type, VarTypes::U8, SaveLoadVersion::WaypointMoreLikeStation, SaveLoadVersion::MaxVersion),
@@ -586,7 +586,7 @@ public:
 		    SLE_VAR(BaseStation, xy,                     VarTypes::U32),
 		SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(BaseStation, town)),
 		    SLE_VAR(BaseStation, string_id,              VarTypes::STRINGID),
-		   SLE_SSTR(BaseStation, name,                   VarTypes::STR | StringValidationSetting::AllowControlCode),
+		SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(BaseStation, name), StringValidationSetting::AllowControlCode),
 		    SLE_VAR(BaseStation, delete_ctr,             VarTypes::U8),
 		    SLE_VAR(BaseStation, owner,                  VarTypes::U8),
 		    SLE_VAR(BaseStation, facilities,             VarTypes::U8),

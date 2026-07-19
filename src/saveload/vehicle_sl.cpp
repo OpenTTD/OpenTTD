@@ -658,7 +658,7 @@ public:
 
 		SaveLoad::Reference<SLRefType::OldVehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, next)),
 		SLE_CONDVAR(Vehicle, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-		SLE_CONDSSTR(Vehicle, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+		SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 		SLE_CONDVAR(Vehicle, unitnumber, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerUnitNumber),
 		SLE_CONDVAR(Vehicle, unitnumber, VarTypes::U16, SaveLoadVersion::LargerUnitNumber, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(Vehicle, owner,                 VarTypes::U8),

@@ -38,7 +38,7 @@ static const SaveLoad _engine_desc[] = {
 	 SLE_CONDVAR(Engine, company_avail, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
 	 SLE_CONDVAR(Engine, company_avail, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
 	 SLE_CONDVAR(Engine, company_hidden, VarTypes::U16, SaveLoadVersion::HideEnginesForCompany, SaveLoadVersion::MaxVersion),
-	SLE_CONDSSTR(Engine, name, VarTypes::STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Engine, name), {}, SaveLoadVersion::ReplaceCustomNameArray),
 };
 
 static TypedIndexContainer<std::vector<Engine>, EngineID> _temp_engine;

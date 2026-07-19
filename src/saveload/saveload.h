@@ -689,23 +689,18 @@ struct VarType {
 	constexpr VarType(SLRefType ref) : ref(ref) {}
 
 	/**
+	 * Create a String var type with the given string validation settings.
+	 * @param string_validation_settings How to validate the string.
+	 */
+	constexpr VarType(StringValidationSettings string_validation_settings) :
+		file(VarFileType::String), mem(VarMemType::Str), string_validation_settings(string_validation_settings) {}
+
+	/**
 	 * Equality operator.
 	 * @param other The element to compare to.
 	 * @return \c true iff all elements of this and other are the same.
 	 */
 	constexpr bool operator==(const VarType &other) const = default;
-
-	/**
-	 * Transitional helper function to add a \c SaveLoadFlag to this type.
-	 * @param string_validation_setting The string_validation_setting to set.
-	 * @return A copy of this with the string_validation_setting set.
-	 */
-	constexpr VarType operator|(StringValidationSetting string_validation_setting) const
-	{
-		VarType copy = *this;
-		copy.string_validation_settings.Set(string_validation_setting);
-		return copy;
-	}
 };
 
 /**
@@ -865,6 +860,20 @@ struct SaveLoad {
 			.name = std::move(name),
 			.cmd = SaveLoadType::Reference,
 			.conv = type,
+			.version_from = from,
+			.version_to = to,
+			.address_proc = address_proc,
+		};
+	}
+
+	template <typename T>
+	static SaveLoad String(std::string name, T *, SaveLoadAddrProc address_proc, StringValidationSettings string_validation_settings = {}, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(std::is_same_v<std::string, T> || std::is_same_v<EncodedString, T>);
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::String,
+			.conv = string_validation_settings,
 			.version_from = from,
 			.version_to = to,
 			.address_proc = address_proc,
@@ -1163,27 +1172,6 @@ constexpr void SlCheckMemoryType()
 #define SLE_CONDVARNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::Variable, name, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a \c std::string in some savegame versions.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the string.
- * @param to       Last savegame version that has the string.
- */
-#define SLE_CONDSSTR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::String, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a \c std::string in some savegame versions.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the string.
- * @param to       Last savegame version that has the string.
- */
-#define SLE_CONDSSTRNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::String, name, base, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a variable in every version of a savegame.
  * @param base     Name of the class or struct containing the variable.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -1199,23 +1187,6 @@ constexpr void SlCheckMemoryType()
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLE_VARNAME(base, variable, name, type) SLE_CONDVARNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a \c std::string in every savegame version.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_SSTR(base, variable, type) SLE_CONDSSTR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a \c std::string in every savegame version.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_SSTRNAME(base, variable, name, type) SLE_CONDSSTRNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.
@@ -1244,30 +1215,12 @@ constexpr void SlCheckMemoryType()
 #define SLEG_CONDVAR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Variable, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a global \c std::string in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the string.
- * @param to       Last savegame version that has the string.
- */
-#define SLEG_CONDSSTR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::String, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a global variable in every savegame version.
  * @param name     The name of the field.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLEG_VAR(name, variable, type) SLEG_CONDVAR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global \c std::string in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_SSTR(name, variable, type) SLEG_CONDSSTR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Field name where the real SaveLoad can be located.

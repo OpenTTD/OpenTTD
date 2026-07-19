@@ -27,8 +27,8 @@ static int         _game_saveload_version;
 static std::string _game_saveload_settings;
 
 static const SaveLoad _game_script_desc[] = {
-	   SLEG_SSTR("name",      _game_saveload_name,         VarTypes::STR),
-	   SLEG_SSTR("settings",  _game_saveload_settings,     VarTypes::STR),
+	SaveLoad::String("name", SLE_GLOBAL_ADDRESS(_game_saveload_name)),
+	SaveLoad::String("settings", SLE_GLOBAL_ADDRESS(_game_saveload_settings)),
 	    SLEG_VAR("version",   _game_saveload_version,   VarFileType::U32 | VarMemType::I32),
 };
 
@@ -121,7 +121,7 @@ static uint32_t _game_saveload_strings;
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
 	static inline const SaveLoad description[] = {
-		SLEG_SSTR("string", _game_saveload_string, VarTypes::STR | StringValidationSetting::AllowControlCode | StringValidationSetting::ReplaceTabCrNlWithSpace),
+		SaveLoad::String("string", SLE_GLOBAL_ADDRESS(_game_saveload_string), {StringValidationSetting::AllowControlCode, StringValidationSetting::ReplaceTabCrNlWithSpace}),
 	};
 	static inline const SaveLoadCompatTable compat_description = _game_language_string_sl_compat;
 
@@ -147,7 +147,7 @@ public:
 };
 
 static const SaveLoad _game_language_desc[] = {
-	SLE_SSTR(LanguageStrings, language, VarTypes::STR),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(LanguageStrings, language)),
 	SLEG_CONDVAR("count", _game_saveload_strings, VarTypes::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 	SaveLoad::StructList<SlGameLanguageString>("strings"),
 };

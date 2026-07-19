@@ -18,7 +18,7 @@
 
 static const SaveLoad _group_desc[] = {
 	 SLE_CONDVAR(Group, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(Group, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Group, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 	     SLE_VAR(Group, owner,              VarTypes::U8),
 	     SLE_VAR(Group, vehicle_type,       VarTypes::U8),
 	     SLE_VAR(Group, flags,              VarTypes::U8),

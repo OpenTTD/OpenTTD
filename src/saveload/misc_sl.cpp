@@ -102,7 +102,7 @@ static const SaveLoad _date_desc[] = {
 	    SLEG_VAR("company_tick_counter", _cur_company_tick_index, VarFileType::U8  | VarMemType::U32),
 	    SLEG_VAR("trees_tick_counter",     _trees_tick_ctr,         VarTypes::U8),
 	SLEG_CONDVAR("pause_mode", _pause_mode, VarTypes::U8, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MaxVersion),
-	SLEG_CONDSSTR("id", _game_session_stats.savegame_id, VarTypes::STR, SaveLoadVersion::SavegameId, SaveLoadVersion::MaxVersion),
+	SaveLoad::String("id", SLE_GLOBAL_ADDRESS(_game_session_stats.savegame_id), {}, SaveLoadVersion::SavegameId),
 	/* For older savegames, we load the current value as the "period"; afterload will set the "fired" and "elapsed". */
 	SLEG_CONDVAR("next_competitor_start", _new_competitor_timeout.period.value, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::NextCompetitorStartOverflow),
 	SLEG_CONDVAR("next_competitor_start", _new_competitor_timeout.period.value, VarTypes::U32, SaveLoadVersion::NextCompetitorStartOverflow, SaveLoadVersion::AIStartDate),

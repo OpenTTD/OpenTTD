@@ -302,7 +302,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, townnamegrfid, VarTypes::LABEL, SaveLoadVersion::NewGRFTownNames, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(Town, townnametype,          VarTypes::U16),
 	    SLE_VAR(Town, townnameparts,         VarTypes::U32),
-	SLE_CONDSSTR(Town, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Town, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 
 	    SLE_VAR(Town, flags,                 VarTypes::U8),
 	SLE_CONDVAR(Town, statues, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
@@ -340,7 +340,7 @@ static const SaveLoad _town_desc[] = {
 
 	SaveLoad::Array<VarFileType::U32, to_underlying(TownAcceptanceEffect::End)>(SLE_NAME_AND_OBJECT_ADDRESS(Town, goal), SaveLoadVersion::ScriptTownGrowth),
 
-	SLE_CONDSSTR(Town, text, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ScriptTownText, SaveLoadVersion::MaxVersion),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Town, text), StringValidationSetting::AllowControlCode, SaveLoadVersion::ScriptTownText),
 
 	SLE_CONDVAR(Town, time_until_rebuild, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::TownGrowthControl),
 	SLE_CONDVAR(Town, time_until_rebuild, VarTypes::U16, SaveLoadVersion::TownGrowthControl, SaveLoadVersion::MaxVersion),

@@ -25,7 +25,7 @@ static const SaveLoad _depot_desc[] = {
 	SLEG_CONDVAR("town_index", _town_index, VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::UniqueDepotNames),
 	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(Depot, town), SaveLoadVersion::UniqueDepotNames),
 	 SLE_CONDVAR(Depot, town_cn, VarTypes::U16, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
-	SLE_CONDSSTR(Depot, name, VarTypes::STR, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Depot, name), {}, SaveLoadVersion::UniqueDepotNames),
 	 SLE_CONDVAR(Depot, build_date, VarTypes::I32, SaveLoadVersion::NewGRFDepotBuildDate, SaveLoadVersion::MaxVersion),
 };
 
