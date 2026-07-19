@@ -436,6 +436,28 @@ static const EnumIndexArray<uint8_t, TileType, TileType::MaxSize> _tiletype_impo
 	2, // TileType::Object
 };
 
+/**
+ * Test if a water tile is a dry coast tile, i.e. no half water.
+ * @param tile The tile.
+ * @return true iff the tile is a dry coast tile.
+ */
+static bool IsDryCoast(TileIndex tile)
+{
+	return IsCoastTile(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
+}
+
+/**
+ * Get the mask pixel group for a tile from the given lookup table, taking account of coast tiles.
+ * @param tile The tile.
+ * @param t The tile type.
+ * @param table The tile type colour lookup table.
+ * @return The mask pixel group to use.
+ */
+static const AndOr &GetMaskPixelsForTileType(TileIndex tile, TileType t, const EnumIndexArray<AndOr, TileType, TileType::MaxSize> &table)
+{
+	if (IsDryCoast(tile)) return table[TileType::Clear];
+	return table[t];
+}
 
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Contour".
@@ -446,19 +468,19 @@ static const EnumIndexArray<uint8_t, TileType, TileType::MaxSize> _tiletype_impo
 static inline uint32_t GetSmallMapContoursPixels(TileIndex tile, TileType t)
 {
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-	return ApplyMask(cs->height_colours[TileHeight(tile)], _smallmap_contours_andor[t]);
+	return ApplyMask(cs->height_colours[TileHeight(tile)], GetMaskPixelsForTileType(tile, t, _smallmap_contours_andor));
 }
 
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Vehicles".
- *
+ * @param tile The tile of which we would like to get the colour.
  * @param t    Effective tile type of the tile (see #SmallMapWindow::GetTileColours).
  * @return The colour of tile in the small map in mode "Vehicles"
  */
-static inline uint32_t GetSmallMapVehiclesPixels(TileType t)
+static inline uint32_t GetSmallMapVehiclesPixels(TileIndex tile, TileType t)
 {
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-	return ApplyMask(cs->default_colour, _smallmap_vehicles_andor[t]);
+	return ApplyMask(cs->default_colour, GetMaskPixelsForTileType(tile, t, _smallmap_vehicles_andor));
 }
 
 /**
@@ -471,7 +493,7 @@ static inline uint32_t GetSmallMapVehiclesPixels(TileType t)
 static inline uint32_t GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
 {
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-	return ApplyMask(_smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour, _smallmap_vehicles_andor[t]);
+	return ApplyMask(_smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour, GetMaskPixelsForTileType(tile, t, _smallmap_vehicles_andor));
 }
 
 /**
@@ -526,7 +548,7 @@ static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 		default:
 			/* Ground colour */
 			const SmallMapColourScheme &cs = _heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-			return ApplyMask(cs.default_colour, _smallmap_contours_andor[t]);
+			return ApplyMask(cs.default_colour, GetMaskPixelsForTileType(tile, t, _smallmap_contours_andor));
 	}
 }
 
@@ -572,6 +594,10 @@ static inline uint32_t GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 			}
 			return _vegetation_clear_bits[GetClearGround(tile)];
 
+		case TileType::Water:
+			if (IsDryCoast(tile)) return (GetTropicZone(tile) == TropicZone::Rainforest) ? MKCOLOUR_XXXX(PC_RAINFOREST) : MKCOLOUR_XXXX(PC_GRASS_LAND);
+			return ApplyMask(MKCOLOUR_XXXX(PC_GRASS_LAND), _smallmap_vehicles_andor[t]);
+
 		case TileType::Industry:
 			return IsTileForestIndustry(tile) ? MKCOLOUR_XXXX(PC_GREEN) : MKCOLOUR_XXXX(PC_DARK_RED);
 
@@ -582,7 +608,7 @@ static inline uint32_t GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 			return (GetTropicZone(tile) == TropicZone::Rainforest) ? MKCOLOUR_XYYX(PC_RAINFOREST, PC_TREES) : MKCOLOUR_XYYX(PC_GRASS_LAND, PC_TREES);
 
 		default:
-			return ApplyMask(MKCOLOUR_XXXX(PC_GRASS_LAND), _smallmap_vehicles_andor[t]);
+			return ApplyMask(MKCOLOUR_XXXX(PC_GRASS_LAND), GetMaskPixelsForTileType(tile, t, _smallmap_vehicles_andor));
 	}
 }
 
@@ -613,7 +639,7 @@ uint32_t GetSmallMapOwnerPixels(TileIndex tile, TileType t, IncludeHeightmap inc
 	}
 
 	if ((o < MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE || o == OWNER_WATER) {
-		if (t == TileType::Water) return MKCOLOUR_XXXX(PC_WATER);
+		if (t == TileType::Water && !IsDryCoast(tile)) return MKCOLOUR_XXXX(PC_WATER);
 		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 		return ((include_heightmap == IncludeHeightmap::IfEnabled && _smallmap_show_heightmap) || include_heightmap == IncludeHeightmap::Always)
 			? cs->height_colours[TileHeight(tile)] : cs->default_colour;
@@ -1382,7 +1408,7 @@ protected:
 				return GetSmallMapContoursPixels(tile, et);
 
 			case SmallMapType::Vehicles:
-				return GetSmallMapVehiclesPixels(et);
+				return GetSmallMapVehiclesPixels(tile, et);
 
 			case SmallMapType::Industries:
 				return GetSmallMapIndustriesPixels(tile, et);
