@@ -614,7 +614,7 @@ public:
 	void FixPointers(void *object) const override { this->FixPointers(static_cast<TObject *>(object)); }
 };
 
-/** Type of reference (#SLE_REF, #SLE_CONDREF). */
+/** Type of reference (#SaveLoad::Reference, #SaveLoad::ReferenceList, #SaveLoad::ReferenceVector). */
 enum class SLRefType : uint8_t {
 	Vehicle = 1, ///< Load/save a reference to a vehicle.
 	Station = 2, ///< Load/save a reference to a station.
@@ -855,6 +855,21 @@ struct SaveLoad {
 	AddressFunction address_func = nullptr; ///< Callback function the get the actual variable address in memory.
 	size_t extra_data = 0; ///< Extra data for the callback proc.
 	std::shared_ptr<SaveLoadHandler> handler{}; ///< Custom handler for Save/Load procs.
+
+
+	template <SLRefType type, typename T>
+	static SaveLoad Reference(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(requires { typename std::remove_pointer_t<T>::Pool; });
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Reference,
+			.conv = type,
+			.version_from = from,
+			.version_to = to,
+			.address_proc = address_proc,
+		};
+	}
 
 	/**
 	 * Storage of a structs, optionally in some savegame versions.
@@ -1148,16 +1163,6 @@ constexpr void SlCheckMemoryType()
 #define SLE_CONDVARNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::Variable, name, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a reference in some savegame versions.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Type of the reference, a value from #SLRefType.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Reference, base, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a \c std::string in some savegame versions.
  * @param base     Name of the class or struct containing the string.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -1194,14 +1199,6 @@ constexpr void SlCheckMemoryType()
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLE_VARNAME(base, variable, name, type) SLE_CONDVARNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a reference in every version of a savegame.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Type of the reference, a value from #SLRefType.
- */
-#define SLE_REF(base, variable, type) SLE_CONDREF(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Storage of a \c std::string in every savegame version.
@@ -1247,16 +1244,6 @@ constexpr void SlCheckMemoryType()
 #define SLEG_CONDVAR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Variable, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a global reference in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLEG_CONDREF(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Reference, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a global \c std::string in some savegame versions.
  * @param name     The name of the field.
  * @param variable Name of the global variable.
@@ -1273,14 +1260,6 @@ constexpr void SlCheckMemoryType()
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLEG_VAR(name, variable, type) SLEG_CONDVAR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global reference in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_REF(name, variable, type) SLEG_CONDREF(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Storage of a global \c std::string in every savegame version.

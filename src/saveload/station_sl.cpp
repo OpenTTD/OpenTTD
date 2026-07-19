@@ -160,7 +160,7 @@ void AfterLoadRoadStops()
 static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop, xy,           VarTypes::U32),
 	SLE_VAR(RoadStop, status,       VarTypes::U8),
-	SLE_REF(RoadStop, next,         SLRefType::RoadStop),
+	SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(RoadStop, next)),
 };
 
 static uint16_t _waiting_acceptance;
@@ -492,7 +492,7 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, train_station.tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Station, airport.tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	SLE_CONDVAR(Station, airport.tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	    SLE_REF(Station, town,                       SLRefType::Town),
+	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(Station, town)),
 	    SLE_VAR(Station, train_station.w,            VarFileType::U8 | VarMemType::U16),
 	SLE_CONDVAR(Station, train_station.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
@@ -517,8 +517,8 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, build_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
 	SLE_CONDVAR(Station, build_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDREF(Station, bus_stops, SLRefType::RoadStop, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDREF(Station, truck_stops, SLRefType::RoadStop, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(Station, bus_stops), SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(Station, truck_stops), SaveLoadVersion::MultipleRoadStops),
 
 	/* Used by newstations for graphic variations */
 	SLE_CONDVAR(Station, random_bits, VarTypes::U16, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
@@ -584,7 +584,7 @@ class SlStationBase : public DefaultSaveLoadHandler<SlStationBase, BaseStation> 
 public:
 	static inline const SaveLoad description[] = {
 		    SLE_VAR(BaseStation, xy,                     VarTypes::U32),
-		    SLE_REF(BaseStation, town,                   SLRefType::Town),
+		SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(BaseStation, town)),
 		    SLE_VAR(BaseStation, string_id,              VarTypes::STRINGID),
 		   SLE_SSTR(BaseStation, name,                   VarTypes::STR | StringValidationSetting::AllowControlCode),
 		    SLE_VAR(BaseStation, delete_ctr,             VarTypes::U8),
@@ -627,8 +627,8 @@ public:
 		    SLE_VAR(Station, train_station.w,            VarFileType::U8 | VarMemType::U16),
 		    SLE_VAR(Station, train_station.h,            VarFileType::U8 | VarMemType::U16),
 
-		    SLE_REF(Station, bus_stops,                  SLRefType::RoadStop),
-		    SLE_REF(Station, truck_stops,                SLRefType::RoadStop),
+		SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(Station, bus_stops)),
+		SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(Station, truck_stops)),
 		SLE_CONDVAR(Station, ship_station.tile, VarTypes::U32, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Station, ship_station.w, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Station, ship_station.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
@@ -643,7 +643,7 @@ public:
 		SLE_VARNAME(Station, airport.blocks, "airport.flags", VarTypes::U64),
 		SLE_CONDVAR(Station, airport.rotation, VarTypes::U8, SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::MaxVersion),
 		SaveLoad::Array<VarFileType::U32, 16>("storage", SLE_GLOBAL_ADDRESS(_old_st_persistent_storage.storage), SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::PersistentStoragePool),
-		SLE_CONDREF(Station, airport.psa, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
+		SaveLoad::Reference<SLRefType::Storage>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.psa), SaveLoadVersion::PersistentStoragePool),
 
 		    SLE_VAR(Station, indtype,                    VarTypes::U8),
 

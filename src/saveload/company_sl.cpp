@@ -315,7 +315,7 @@ class SlCompanySettings : public DefaultSaveLoadHandler<SlCompanySettings, Compa
 public:
 	static inline const SaveLoad description[] = {
 		/* Engine renewal settings */
-		SLE_CONDREF(CompanyProperties, engine_renew_list, SLRefType::EngineRenew, SaveLoadVersion::EngineRenewPool, SaveLoadVersion::MaxVersion),
+		SaveLoad::Reference<SLRefType::EngineRenew>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, engine_renew_list), SaveLoadVersion::EngineRenewPool),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew, VarTypes::BOOL, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, VarTypes::I16, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew_money, VarTypes::U32, SaveLoadVersion::EngineRenew, SaveLoadVersion::MaxVersion),

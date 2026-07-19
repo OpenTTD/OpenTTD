@@ -83,7 +83,7 @@ struct ECMYChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _cargopayment_desc[] = {
-	    SLE_REF(CargoPayment, front,           SLRefType::Vehicle),
+	SaveLoad::Reference<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPayment, front)),
 	    SLE_VAR(CargoPayment, route_profit,    VarTypes::I64),
 	    SLE_VAR(CargoPayment, visual_profit,   VarTypes::I64),
 	SLE_CONDVAR(CargoPayment, visual_transfer, VarTypes::I64, SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),

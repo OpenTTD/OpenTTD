@@ -158,8 +158,8 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, location.tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(Industry, location.w,                 VarFileType::U8 | VarMemType::U16),
 	    SLE_VAR(Industry, location.h,                 VarFileType::U8 | VarMemType::U16),
-	    SLE_REF(Industry, town,                       SLRefType::Town),
-	SLE_CONDREF(Industry, neutral_station, SLRefType::Station, SaveLoadVersion::ServeNeutralIndustries, SaveLoadVersion::MaxVersion),
+	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(Industry, town)),
+	SaveLoad::Reference<SLRefType::Station>(SLE_NAME_AND_OBJECT_ADDRESS(Industry, neutral_station), SaveLoadVersion::ServeNeutralIndustries),
 	SaveLoad::Array<VarFileType::U8, INDUSTRY_ORIGINAL_NUM_OUTPUTS>("produced_cargo", SLE_GLOBAL_ADDRESS(SlIndustryProduced::old_cargo), SaveLoadVersion::StoreIndustryCargo, SaveLoadVersion::ExtendIndustryCargoSlots),
 	SaveLoad::Array<VarFileType::U8, INDUSTRY_NUM_OUTPUTS>("produced_cargo", SLE_GLOBAL_ADDRESS(SlIndustryProduced::old_cargo), SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
 	SaveLoad::Array<VarFileType::U16, INDUSTRY_ORIGINAL_NUM_INPUTS>("incoming_cargo_waiting", SLE_GLOBAL_ADDRESS(SlIndustryAccepted::old_waiting), SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::ExtendIndustryCargoSlots),
@@ -200,7 +200,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, exclusive_consumer, VarTypes::U8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
 
 	SaveLoad::Array<VarFileType::U32, 16>("storage", SLE_GLOBAL_ADDRESS(_old_ind_persistent_storage.storage), SaveLoadVersion::NewGRFPersistentStorage, SaveLoadVersion::PersistentStoragePool),
-	SLE_CONDREF(Industry, psa, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
+	SaveLoad::Reference<SLRefType::Storage>(SLE_NAME_AND_OBJECT_ADDRESS(Industry, psa), SaveLoadVersion::PersistentStoragePool),
 
 	SLE_CONDVAR(Industry, random, VarTypes::U16, SaveLoadVersion::NewGRFIndustryRandomTriggers, SaveLoadVersion::MaxVersion),
 	SLE_CONDSSTR(Industry, text, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::IndustryText, SaveLoadVersion::MaxVersion),

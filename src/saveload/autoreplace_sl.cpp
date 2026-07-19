@@ -20,7 +20,7 @@ static const SaveLoad _engine_renew_desc[] = {
 	    SLE_VAR(EngineRenew, from,     VarTypes::U16),
 	    SLE_VAR(EngineRenew, to,       VarTypes::U16),
 
-	    SLE_REF(EngineRenew, next,     SLRefType::EngineRenew),
+	SaveLoad::Reference<SLRefType::EngineRenew>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, next)),
 	SLE_CONDVAR(EngineRenew, group_id, VarTypes::U16, SaveLoadVersion::VehicleGroups, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(EngineRenew, replace_when_old, VarTypes::BOOL, SaveLoadVersion::AutoreplaceWhenOldTreeLimit, SaveLoadVersion::MaxVersion),
 };

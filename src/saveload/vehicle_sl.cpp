@@ -656,7 +656,7 @@ public:
 	static inline const SaveLoad description[] = {
 		    SLE_VAR(Vehicle, subtype,               VarTypes::U8),
 
-		    SLE_REF(Vehicle, next,                  SLRefType::OldVehicle),
+		SaveLoad::Reference<SLRefType::OldVehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, next)),
 		SLE_CONDVAR(Vehicle, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
 		SLE_CONDSSTR(Vehicle, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, unitnumber, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerUnitNumber),
@@ -731,7 +731,7 @@ public:
 
 		SLE_CONDVARNAME(Vehicle, old_orders, "orders", VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
 		SLE_CONDVARNAME(Vehicle, old_orders, "orders", VarTypes::U32, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrderList),
-		SLE_CONDREF(Vehicle, orders, SLRefType::OrderList, SaveLoadVersion::OrderList, SaveLoadVersion::MaxVersion),
+		SaveLoad::Reference<SLRefType::OrderList>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, orders), SaveLoadVersion::OrderList),
 
 		SLE_CONDVAR(Vehicle, age, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
 		SLE_CONDVAR(Vehicle, age, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
@@ -771,7 +771,7 @@ public:
 		SLE_CONDVAR(Vehicle, random_bits, VarTypes::U16, SaveLoadVersion::ExtendVehicleRandom, SaveLoadVersion::MaxVersion),
 		SLE_CONDVARNAME(Vehicle, waiting_random_triggers, "waiting_triggers", VarTypes::U8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
-		SLE_CONDREF(Vehicle, next_shared, SLRefType::Vehicle, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+		SaveLoad::Reference<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, next_shared), SaveLoadVersion::VehicleCurrencyStationChanges),
 		SLE_CONDVAR(Vehicle, group_id, VarTypes::U16, SaveLoadVersion::VehicleGroups, SaveLoadVersion::MaxVersion),
 
 		SLE_CONDVAR(Vehicle, current_order_time, VarFileType::U32 | VarMemType::I32, SaveLoadVersion::Timetables, SaveLoadVersion::TimetableTicksType),
@@ -1048,7 +1048,7 @@ public:
 class SlVehicleDisaster : public DefaultSaveLoadHandler<SlVehicleDisaster, Vehicle> {
 public:
 	static inline const SaveLoad description[] = {
-		    SLE_REF(Vehicle, next,                  SLRefType::OldVehicle),
+		SaveLoad::Reference<SLRefType::OldVehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, next)),
 
 		    SLE_VAR(Vehicle, subtype,               VarTypes::U8),
 		SLE_CONDVAR(Vehicle, tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
