@@ -794,6 +794,11 @@ constexpr bool SlVarMemTypeMatches(VarMemType type)
 		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
 	}
 
+#define SLE_GLOBAL_ADDRESS(variable) static_cast<decltype(variable)*>(nullptr), \
+	[] (void *, size_t) -> void * { \
+		return static_cast<void *>(std::addressof(variable)); \
+	}
+
 #define SLE_NAME_AND_OBJECT_ADDRESS(base, variable) #variable, SLE_OBJECT_ADDRESS(base, variable)
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
@@ -834,6 +839,21 @@ struct SaveLoad {
 			.version_from = from,
 			.version_to = to,
 			.handler = std::make_shared<Thandler>(),
+		};
+	}
+
+	template <SLRefType type, typename T>
+	static SaveLoad ReferenceList(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(std::is_base_of_v<std::list<typename T::value_type>, T>);
+		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::ReferenceList,
+			.conv = type,
+			.version_from = from,
+			.version_to = to,
+			.address_proc = address_proc,
 		};
 	}
 
@@ -1119,16 +1139,6 @@ constexpr void SlCheckMemoryType()
 #define SLE_CONDSSTRNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::String, name, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a list of #SaveLoadType::Reference elements in some savegame versions.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLE_CONDREFLIST(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::ReferenceList, base, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a vector of #SaveLoadType::Variable elements in some savegame versions.
  * @param base     Name of the class or struct containing the list.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -1210,14 +1220,6 @@ constexpr void SlCheckMemoryType()
 #define SLE_SSTRNAME(base, variable, name, type) SLE_CONDSSTRNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
- * Storage of a list of #SaveLoadType::Reference elements in every savegame version.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_REFLIST(base, variable, type) SLE_CONDREFLIST(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
  * Storage of global simple variables, references (pointers), and arrays.
  * @param name     The name of the field.
  * @param cmd      Load/save type. @see SaveLoadType
@@ -1275,16 +1277,6 @@ constexpr void SlCheckMemoryType()
 #define SLEG_CONDSSTR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::String, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a global reference list in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLEG_CONDREFLIST(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::ReferenceList, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a global vector of #SaveLoadType::Variable elements in some savegame versions.
  * @param name     The name of the field.
  * @param variable Name of the global variable.
@@ -1326,14 +1318,6 @@ constexpr void SlCheckMemoryType()
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLEG_SSTR(name, variable, type) SLEG_CONDSSTR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global reference list in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_REFLIST(name, variable, type) SLEG_CONDREFLIST(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Storage of a global vector of #SaveLoadType::Variable elements in every savegame version.
