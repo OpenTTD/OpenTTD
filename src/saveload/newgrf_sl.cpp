@@ -70,9 +70,9 @@ struct NGRFChunkHandler : ChunkHandler {
 	static inline const SaveLoad description[] = {
 		   SLE_SSTR(GRFConfig, filename,         VarTypes::STR),
 		    SLE_VAR(GRFConfig, ident.grfid, VarTypes::LABEL),
-		    SLE_ARR(GRFConfig, ident.md5sum,     VarTypes::U8,  16),
+		SaveLoad::Array<VarFileType::U8, MD5_HASH_BYTES>(SLE_NAME_AND_OBJECT_ADDRESS(GRFConfig, ident.md5sum)),
 		SLE_CONDVAR(GRFConfig, version, VarTypes::U32, SaveLoadVersion::StoreNewGRFVersion, SaveLoadVersion::MaxVersion),
-		   SLEG_ARR("param", param,              VarTypes::U32, std::size(param)),
+		SaveLoad::Array<VarFileType::U32, GRFConfig::MAX_NUM_PARAMS>("param", SLE_GLOBAL_ADDRESS(param)),
 		   SLEG_VAR("num_params", num_params,    VarTypes::U8),
 		SLE_CONDVAR(GRFConfig, palette, VarTypes::U8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
 	};

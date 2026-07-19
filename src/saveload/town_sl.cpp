@@ -310,10 +310,10 @@ static const SaveLoad _town_desc[] = {
 
 	SLE_CONDVAR(Town, have_ratings, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
 	SLE_CONDVAR(Town, have_ratings, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	SLE_CONDARR(Town, ratings, VarTypes::I16, 8, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	SLE_CONDARR(Town, ratings, VarTypes::I16, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	SLE_CONDARR(Town, unwanted, VarFileType::I8 | VarMemType::U8, 8, SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MoreCompanies),
-	SLE_CONDARR(Town, unwanted, VarFileType::I8 | VarMemType::U8, MAX_COMPANIES, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
+	SaveLoad::Array<VarFileType::I16, 8>(SLE_NAME_AND_OBJECT_ADDRESS(Town, ratings), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
+	SaveLoad::Array<VarFileType::I16, MAX_COMPANIES>(SLE_NAME_AND_OBJECT_ADDRESS(Town, ratings), SaveLoadVersion::MoreCompanies),
+	SaveLoad::Array<VarFileType::I8, 8>(SLE_NAME_AND_OBJECT_ADDRESS(Town, unwanted), SaveLoadVersion::TownTolerancePauseMode, SaveLoadVersion::MoreCompanies),
+	SaveLoad::Array<VarFileType::I8, MAX_COMPANIES>(SLE_NAME_AND_OBJECT_ADDRESS(Town, unwanted), SaveLoadVersion::MoreCompanies),
 
 	/* Slots 0 and 2 are passengers and mail respectively for old saves. */
 	SLEG_CONDVAR("supplied[CT_PASSENGERS].old_max", _old_pass_supplied[LAST_MONTH].production, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
@@ -338,7 +338,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].new_act, "received[TE_FOOD].new_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
 	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].new_act, "received[TE_WATER].new_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
 
-	SLE_CONDARR(Town, goal, VarTypes::U32, to_underlying(TownAcceptanceEffect::End), SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+	SaveLoad::Array<VarFileType::U32, to_underlying(TownAcceptanceEffect::End)>(SLE_NAME_AND_OBJECT_ADDRESS(Town, goal), SaveLoadVersion::ScriptTownGrowth),
 
 	SLE_CONDSSTR(Town, text, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ScriptTownText, SaveLoadVersion::MaxVersion),
 

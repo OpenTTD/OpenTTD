@@ -48,7 +48,7 @@ public:
 	static inline std::array<char, GAMELOG_REVISION_LENGTH> revision_text; ///< Temporary location to store the old revision text.
 
 	static inline const SaveLoad description[] = {
-		 SLEG_CONDARR("revision.text", SlGamelogRevision::revision_text, VarTypes::U8, GAMELOG_REVISION_LENGTH, SaveLoadVersion::MinVersion, SaveLoadVersion::StringGamelog),
+		SaveLoad::Array<VarFileType::U8, GAMELOG_REVISION_LENGTH>("revision.text", SLE_GLOBAL_ADDRESS(SlGamelogRevision::revision_text), SaveLoadVersion::MinVersion, SaveLoadVersion::StringGamelog),
 		SLE_CONDSSTRNAME(LoggedChangeRevision, text, "revision.text", VarTypes::STR, SaveLoadVersion::StringGamelog, SaveLoadVersion::MaxVersion),
 		     SLE_VARNAME(LoggedChangeRevision, newgrf,   "revision.newgrf",   VarTypes::U32),
 		     SLE_VARNAME(LoggedChangeRevision, slver,    "revision.slver",    VarTypes::U16),
@@ -126,7 +126,7 @@ class SlGamelogGrfadd : public DefaultSaveLoadHandler<SlGamelogGrfadd, LoggedCha
 public:
 	static inline const SaveLoad description[] = {
 		SLE_VARNAME(LoggedChangeGRFAdd, grfid, "grfadd.grfid", VarTypes::LABEL),
-		SLE_ARRNAME(LoggedChangeGRFAdd, md5sum, "grfadd.md5sum", VarTypes::U8,  16),
+		SaveLoad::Array<VarFileType::U8, MD5_HASH_BYTES>("grfadd.md5sum", SLE_OBJECT_ADDRESS(LoggedChangeGRFAdd, md5sum)),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_grfadd_sl_compat;
 
@@ -171,7 +171,7 @@ class SlGamelogGrfcompat : public DefaultSaveLoadHandler<SlGamelogGrfcompat, Log
 public:
 	static inline const SaveLoad description[] = {
 		SLE_VARNAME(LoggedChangeGRFChanged, grfid, "grfcompat.grfid", VarTypes::LABEL),
-		SLE_ARRNAME(LoggedChangeGRFChanged, md5sum, "grfcompat.md5sum", VarTypes::U8,  16),
+		SaveLoad::Array<VarFileType::U8, MD5_HASH_BYTES>("grfcompat.md5sum", SLE_OBJECT_ADDRESS(LoggedChangeGRFChanged, md5sum)),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_grfcompat_sl_compat;
 

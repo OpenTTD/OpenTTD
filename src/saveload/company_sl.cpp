@@ -359,8 +359,8 @@ public:
 		SLE_CONDVAR(CompanyEconomyEntry, company_value, VarTypes::I64, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
 		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], VarFileType::I32 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::CountIndividualCargoes),
-		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo, VarTypes::U32, 32, SaveLoadVersion::CountIndividualCargoes, SaveLoadVersion::ExtendCargotypes),
-		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo, VarTypes::U32, NUM_CARGO, SaveLoadVersion::ExtendCargotypes, SaveLoadVersion::MaxVersion),
+		SaveLoad::Array<VarFileType::U32, 32>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyEconomyEntry, delivered_cargo), SaveLoadVersion::CountIndividualCargoes, SaveLoadVersion::ExtendCargotypes),
+		SaveLoad::Array<VarFileType::U32, NUM_CARGO>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyEconomyEntry, delivered_cargo), SaveLoadVersion::ExtendCargotypes),
 		    SLE_VAR(CompanyEconomyEntry, performance_history, VarTypes::I32),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_economy_compat;
@@ -536,8 +536,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, bankrupt_value, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */
-	SLE_CONDARR(CompanyProperties, yearly_expenses, VarFileType::I32 | VarMemType::I64, 3 * 13, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
-	SLE_CONDARR(CompanyProperties, yearly_expenses, VarTypes::I64, 3 * 13, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+	SaveLoad::Array<VarFileType::I32, 3 * 13>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, yearly_expenses), SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCurrencyStationChanges),
+	SaveLoad::Array<VarFileType::I64, 3 * 13>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, yearly_expenses), SaveLoadVersion::VehicleCurrencyStationChanges),
 
 	SLE_CONDVAR(CompanyProperties, is_ai, VarTypes::BOOL, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 
