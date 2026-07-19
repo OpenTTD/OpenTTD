@@ -386,7 +386,7 @@ static inline uint32_t ApplyMask(uint32_t colour, const AndOr *mask)
 
 
 /** Colour masks for "Contour" and "Routes" modes. */
-static const EnumClassIndexContainer<std::array<AndOr, to_underlying(TileType::End) + 1>, TileType> _smallmap_contours_andor = {
+static const EnumIndexArray<AndOr, TileType, TileType::MaxSize> _smallmap_contours_andor = {
 	AndOr(MKCOLOUR_0000, MKCOLOUR_FFFF), // TileType::Clear
 	AndOr(MKCOLOUR_0XX0(PC_GREY), MKCOLOUR_F00F), // TileType::Railway
 	AndOr(MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F), // TileType::Road
@@ -398,11 +398,10 @@ static const EnumClassIndexContainer<std::array<AndOr, to_underlying(TileType::E
 	AndOr(MKCOLOUR_XXXX(PC_DARK_RED), MKCOLOUR_0000), // TileType::Industry
 	AndOr(MKCOLOUR_0000, MKCOLOUR_FFFF), // TileType::TunnelBridge
 	AndOr(MKCOLOUR_0XX0(PC_DARK_RED), MKCOLOUR_F00F), // TileType::Object
-	AndOr(MKCOLOUR_0XX0(PC_GREY), MKCOLOUR_F00F),
 };
 
 /** Colour masks for "Vehicles", "Industry", and "Vegetation" modes. */
-static const EnumClassIndexContainer<std::array<AndOr, to_underlying(TileType::End) + 1>, TileType> _smallmap_vehicles_andor = {
+static const EnumIndexArray<AndOr, TileType, TileType::MaxSize> _smallmap_vehicles_andor = {
 	AndOr(MKCOLOUR_0000, MKCOLOUR_FFFF), // TileType::Clear
 	AndOr(MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F), // TileType::Railway
 	AndOr(MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F), // TileType::Road
@@ -414,11 +413,10 @@ static const EnumClassIndexContainer<std::array<AndOr, to_underlying(TileType::E
 	AndOr(MKCOLOUR_XXXX(PC_DARK_RED), MKCOLOUR_0000), // TileType::Industry
 	AndOr(MKCOLOUR_0000, MKCOLOUR_FFFF), // TileType::TunnelBridge
 	AndOr(MKCOLOUR_0XX0(PC_DARK_RED), MKCOLOUR_F00F), // TileType::Object
-	AndOr(MKCOLOUR_0XX0(PC_BLACK), MKCOLOUR_F00F),
 };
 
 /** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
-static const EnumClassIndexContainer<std::array<uint8_t, to_underlying(TileType::End) + 1>, TileType> _tiletype_importance = {
+static const EnumIndexArray<uint8_t, TileType, TileType::MaxSize> _tiletype_importance = {
 	2, // TileType::Clear
 	8, // TileType::Railway
 	7, // TileType::Road
@@ -430,7 +428,6 @@ static const EnumClassIndexContainer<std::array<uint8_t, to_underlying(TileType:
 	6, // TileType::Industry
 	8, // TileType::TunnelBridge
 	2, // TileType::Object
-	0,
 };
 
 
