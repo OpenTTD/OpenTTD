@@ -51,6 +51,9 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/overlay_snowy_rocks_2.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/overlay_snowy_rocks_3.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/overlay_snowy_rocks_4.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/overlay_coastal_rocks.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/overlay_toyland_rocks.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/overlay_toyland_coastal_rocks.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/roadstops.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/road_waypoints.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/signals.png
