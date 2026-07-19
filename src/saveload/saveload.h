@@ -870,6 +870,21 @@ struct SaveLoad {
 			.address_proc = address_proc,
 		};
 	}
+
+	template <SLRefType type, typename T>
+	static SaveLoad ReferenceVector(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
+		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::ReferenceVector,
+			.conv = type,
+			.version_from = from,
+			.version_to = to,
+			.address_proc = address_proc,
+		};
+	}
 };
 
 /**
@@ -1114,16 +1129,6 @@ constexpr void SlCheckMemoryType()
 #define SLE_CONDREFLIST(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::ReferenceList, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a vector of #SaveLoadType::Reference elements in some savegame versions.
- * @param base     Name of the class or struct containing the vector.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the vector.
- * @param to       Last savegame version that has the vector.
- */
-#define SLE_CONDREFVECTOR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::ReferenceVector, base, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a vector of #SaveLoadType::Variable elements in some savegame versions.
  * @param base     Name of the class or struct containing the list.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -1211,14 +1216,6 @@ constexpr void SlCheckMemoryType()
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLE_REFLIST(base, variable, type) SLE_CONDREFLIST(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a vector of #SaveLoadType::Reference elements in every savegame version.
- * @param base     Name of the class or struct containing the vector.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_REFVECTOR(base, variable, type) SLE_CONDREFVECTOR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.
