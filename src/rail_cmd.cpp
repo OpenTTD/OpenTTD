@@ -178,7 +178,9 @@ RailType AllocateRailType(RailTypeLabel label)
 	return rt;
 }
 
-static const uint8_t _track_sloped_sprites[14] = {
+/** Lookup table to convert tile's slope into corresponding track sprite offset. */
+static constexpr NonSteepSlopeIndexArray<uint8_t> _track_sloped_sprites = {
+	0xFF, // Dummy value to prevent `index - 1` while accesing.
 	14, 15, 22, 13,
 	 0, 21, 17, 12,
 	23,  0, 18, 20,
@@ -257,7 +259,7 @@ static CommandCost CheckTrackCombination(TileIndex tile, TrackBits to_build)
 
 
 /** Valid TrackBits on a specific (non-steep)-slope without foundation */
-static const TrackBits _valid_tracks_without_foundation[15] = {
+static constexpr NonSteepSlopeIndexArray<TrackBits> _valid_tracks_without_foundation = {
 	TRACK_BIT_ALL,
 	Track::Right,
 	Track::Upper,
@@ -279,7 +281,7 @@ static const TrackBits _valid_tracks_without_foundation[15] = {
 };
 
 /** Valid TrackBits on a specific (non-steep)-slope with leveled foundation */
-static const TrackBits _valid_tracks_on_leveled_foundation[15] = {
+static constexpr NonSteepSlopeIndexArray<TrackBits> _valid_tracks_on_leveled_foundation = {{{
 	{},
 	Track::Left,
 	Track::Lower,
@@ -298,7 +300,7 @@ static const TrackBits _valid_tracks_on_leveled_foundation[15] = {
 	{Track::Y, Track::Upper, Track::Right},
 	TRACK_BIT_ALL,
 	TRACK_BIT_ALL,
-};
+}}};
 
 /**
  * Checks if a track combination is valid on a specific slope and returns the needed foundation.
@@ -2341,7 +2343,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	} else {
 		if (ti->tileh != SLOPE_FLAT) {
 			/* track on non-flat ground */
-			image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
+			image = _track_sloped_sprites[ti->tileh] + rti->base_sprites.track_y;
 		} else {
 			/* track on flat ground */
 			switch (track.base()) {
@@ -2400,14 +2402,14 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
 				DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
 			} else {
-				DrawGroundSprite(_track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
+				DrawGroundSprite(_track_sloped_sprites[ti->tileh] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
 			}
 		}
 		if (pbs.Test(Track::Y)) {
 			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
 				DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
 			} else {
-				DrawGroundSprite(_track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
+				DrawGroundSprite(_track_sloped_sprites[ti->tileh] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
 			}
 		}
 		if (pbs.Test(Track::Upper)) DrawGroundSprite(rti->base_sprites.single_n, PALETTE_CRASH, nullptr, 0, ti->tileh & SLOPE_N ? -(int)TILE_HEIGHT : 0);
@@ -2421,7 +2423,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 
 		/* Draw higher halftile-overlay: Use the sloped sprites with three corners raised. They probably best fit the lightning. */
 		Slope fake_slope = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
-		image = _track_sloped_sprites[fake_slope - 1] + rti->base_sprites.track_y;
+		image = _track_sloped_sprites[fake_slope] + rti->base_sprites.track_y;
 		pal = PAL_NONE;
 		switch (rgt) {
 			case RailGroundType::Barren: pal = PALETTE_TO_BARE_LAND; break;

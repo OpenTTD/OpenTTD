@@ -49,7 +49,7 @@
 /**
  * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
  */
-static const Directions _flood_from_dirs[] = {
+static const NonSteepSlopeIndexArray<Directions> _flood_from_dirs = {{{
 	{Direction::NW, Direction::SW, Direction::SE, Direction::NE}, // SLOPE_FLAT
 	{Direction::NE, Direction::SE}, // SLOPE_W
 	{Direction::NW, Direction::NE}, // SLOPE_S
@@ -65,7 +65,7 @@ static const Directions _flood_from_dirs[] = {
 	{Direction::SW}, // SLOPE_NE
 	{Direction::S, Direction::SW, Direction::SE}, // SLOPE_ENW, SLOPE_STEEP_N
 	{Direction::W, Direction::SW, Direction::NW}, // SLOPE_SEN, SLOPE_STEEP_E
-};
+}}};
 
 /**
  * Marks tile dirty if it is a canal or river tile.
@@ -956,9 +956,9 @@ void DrawShoreTile(Slope tileh)
 {
 	/* Converts the enum Slope into an offset based on SPR_SHORE_BASE.
 	 * This allows to calculate the proper sprite to display for this Slope */
-	static const uint8_t tileh_to_shoresprite[32] = {
+	static constexpr SlopeIndexArray<uint8_t> tileh_to_shoresprite = {
 		0, 1, 2, 3, 4, 16, 6, 7, 8, 9, 17, 11, 12, 13, 14, 0,
-		0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0,  5,  0, 10, 15, 0,
+		0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0,  5,  0, 10, 15,
 	};
 
 	assert(!IsHalftileSlope(tileh)); // Halftile slopes need to get handled earlier.
@@ -1388,7 +1388,7 @@ void ConvertGroundTilesIntoWaterTiles()
 /** @copydoc GetTileTrackStatusProc */
 static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, [[maybe_unused]] RoadTramType sub_mode, [[maybe_unused]] DiagDirection side)
 {
-	static const TrackBits coast_tracks[] = {{}, Track::Right, Track::Upper, {}, Track::Left, {}, {}, {}, Track::Lower, {}, {}, {}, {}, {}, {}, {}};
+	static constexpr NonSteepSlopeIndexArray<TrackBits> coast_tracks = {{{{}, Track::Right, Track::Upper, {}, Track::Left, {}, {}, {}, Track::Lower, {}, {}, {}, {}, {}, {}}}};
 
 	TrackBits ts;
 
@@ -1396,7 +1396,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 
 	switch (GetWaterTileType(tile)) {
 		case WaterTileType::Clear: ts = IsTileFlat(tile) ? TRACK_BIT_ALL : TrackBits{}; break;
-		case WaterTileType::Coast: ts = coast_tracks[GetTileSlope(tile) & 0xF]; break;
+		case WaterTileType::Coast: ts = coast_tracks[GetTileSlope(tile) & SLOPE_ELEVATED]; break;
 		case WaterTileType::Lock: ts = DiagDirToDiagTrack(GetLockDirection(tile)); break;
 		case WaterTileType::Depot: ts = AxisToTrack(GetShipDepotAxis(tile)); break;
 		default: return {};

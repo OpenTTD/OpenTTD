@@ -270,7 +270,7 @@ static int32_t LookupWithBuildOnSlopes(::Slope slope, const Array<RoadPartOrient
 	 * same but are only rotated. So to reduce the amount of lookup work that
 	 * needs to be done the data is made uniform.
 	 * This means rotating the existing parts. */
-	static const uint8_t base_rotates[] = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
+	static constexpr NonSteepSlopeIndexArray<uint8_t> base_rotates = {0, 0, 1, 0, 2, 0, 1, 0, 3, 3, 2, 3, 2, 2, 1};
 
 	if (slope >= SLOPE_ELEVATED) {
 		/* This slope is an invalid slope, so ignore it. */

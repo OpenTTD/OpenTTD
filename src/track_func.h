@@ -595,7 +595,7 @@ inline bool IsStraightRoadTrackdir(Trackdir dir)
 inline bool IsUphillTrackdir(Slope slope, Trackdir dir)
 {
 	assert(IsValidTrackdirForRoadVehicle(dir));
-	extern const TrackdirBits _uphill_trackdirs[];
+	extern const SlopeIndexArray<TrackdirBits> _uphill_trackdirs;
 	return _uphill_trackdirs[RemoveHalftileSlope(slope)].Test(dir);
 }
 

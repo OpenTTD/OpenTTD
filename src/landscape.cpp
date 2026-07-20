@@ -87,9 +87,9 @@ const EnumIndexArray<const TileTypeProcs *, TileType, TileType::MaxSize> _tile_t
 };
 
 /** landscape slope => sprite */
-extern const uint8_t _slope_to_sprite_offset[32] = {
+extern const SlopeIndexArray<uint8_t> _slope_to_sprite_offset = {
 	0, 1, 2, 3, 4, 5, 6,  7, 8, 9, 10, 11, 12, 13, 14, 0,
-	0, 0, 0, 0, 0, 0, 0, 16, 0, 0,  0, 17,  0, 15, 18, 0,
+	0, 0, 0, 0, 0, 0, 0, 16, 0, 0,  0, 17,  0, 15, 18,
 };
 
 static const uint TILE_UPDATE_FREQUENCY_LOG = 8;  ///< The logarithm of how many ticks it takes between tile updates (log base 2).
