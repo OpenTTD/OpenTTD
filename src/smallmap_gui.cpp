@@ -379,9 +379,15 @@ struct AndOr {
 	uint32_t mand;
 };
 
-static inline uint32_t ApplyMask(uint32_t colour, const AndOr *mask)
+/**
+ * Mix colours for a smallmap pixel group.
+ * @param colour The colours to mix
+ * @param mask The mask and base colours to apply.
+ * @return The mixed colours for the pixel group.
+ */
+static inline uint32_t ApplyMask(uint32_t colour, const AndOr &mask)
 {
-	return (colour & mask->mand) | mask->mor;
+	return (colour & mask.mand) | mask.mor;
 }
 
 
@@ -440,7 +446,7 @@ static const EnumIndexArray<uint8_t, TileType, TileType::MaxSize> _tiletype_impo
 static inline uint32_t GetSmallMapContoursPixels(TileIndex tile, TileType t)
 {
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-	return ApplyMask(cs->height_colours[TileHeight(tile)], &_smallmap_contours_andor[t]);
+	return ApplyMask(cs->height_colours[TileHeight(tile)], _smallmap_contours_andor[t]);
 }
 
 /**
@@ -452,7 +458,7 @@ static inline uint32_t GetSmallMapContoursPixels(TileIndex tile, TileType t)
 static inline uint32_t GetSmallMapVehiclesPixels(TileType t)
 {
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-	return ApplyMask(cs->default_colour, &_smallmap_vehicles_andor[t]);
+	return ApplyMask(cs->default_colour, _smallmap_vehicles_andor[t]);
 }
 
 /**
@@ -465,7 +471,7 @@ static inline uint32_t GetSmallMapVehiclesPixels(TileType t)
 static inline uint32_t GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
 {
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-	return ApplyMask(_smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour, &_smallmap_vehicles_andor[t]);
+	return ApplyMask(_smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour, _smallmap_vehicles_andor[t]);
 }
 
 /**
@@ -494,8 +500,8 @@ static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 				_smallmap_contours_andor[t].mand
 			};
 
-			const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-			return ApplyMask(cs->default_colour, &andor);
+			const SmallMapColourScheme &cs = _heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+			return ApplyMask(cs.default_colour, andor);
 		}
 
 		case TileType::Road: {
@@ -511,16 +517,16 @@ static inline uint32_t GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 					_smallmap_contours_andor[t].mand
 				};
 
-				const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-				return ApplyMask(cs->default_colour, &andor);
+				const SmallMapColourScheme &cs = _heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+				return ApplyMask(cs.default_colour, andor);
 			}
 			[[fallthrough]];
 		}
 
 		default:
 			/* Ground colour */
-			const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-			return ApplyMask(cs->default_colour, &_smallmap_contours_andor[t]);
+			const SmallMapColourScheme &cs = _heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+			return ApplyMask(cs.default_colour, _smallmap_contours_andor[t]);
 	}
 }
 
@@ -576,7 +582,7 @@ static inline uint32_t GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 			return (GetTropicZone(tile) == TropicZone::Rainforest) ? MKCOLOUR_XYYX(PC_RAINFOREST, PC_TREES) : MKCOLOUR_XYYX(PC_GRASS_LAND, PC_TREES);
 
 		default:
-			return ApplyMask(MKCOLOUR_XXXX(PC_GRASS_LAND), &_smallmap_vehicles_andor[t]);
+			return ApplyMask(MKCOLOUR_XXXX(PC_GRASS_LAND), _smallmap_vehicles_andor[t]);
 	}
 }
 
