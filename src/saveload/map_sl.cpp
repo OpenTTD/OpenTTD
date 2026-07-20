@@ -22,8 +22,8 @@ static uint32_t _map_dim_x;
 static uint32_t _map_dim_y;
 
 static const SaveLoad _map_desc[] = {
-	SLEG_CONDVAR("dim_x", _map_dim_x, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLEG_CONDVAR("dim_y", _map_dim_y, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U32>("dim_x", SLE_GLOBAL_ADDRESS(_map_dim_x), SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U32>("dim_y", SLE_GLOBAL_ADDRESS(_map_dim_y), SaveLoadVersion::MultipleRoadStops),
 };
 
 struct MAPSChunkHandler : ChunkHandler {

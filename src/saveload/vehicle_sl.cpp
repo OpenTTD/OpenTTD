@@ -690,13 +690,13 @@ public:
 
 		    SLE_VAR(Vehicle, cargo_type,            VarTypes::U8),
 		SLE_CONDVAR(Vehicle, cargo_subtype, VarTypes::U8, SaveLoadVersion::LiveryRefit, SaveLoadVersion::MaxVersion),
-		SLEG_CONDVAR("cargo_days", _cargo_periods, VarTypes::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
-		SLEG_CONDVAR("cargo_source", _cargo_source, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerCargoSource),
-		SLEG_CONDVAR("cargo_source", _cargo_source, VarTypes::U16, SaveLoadVersion::LargerCargoSource, SaveLoadVersion::CargoPackets),
-		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, VarTypes::U32, SaveLoadVersion::CargoSourceTile, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U8>("cargo_days", SLE_GLOBAL_ADDRESS(_cargo_periods), SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U8>("cargo_source", SLE_GLOBAL_ADDRESS(_cargo_source), SaveLoadVersion::MinVersion, SaveLoadVersion::LargerCargoSource),
+		SaveLoad::Variable<VarFileType::U16>("cargo_source", SLE_GLOBAL_ADDRESS(_cargo_source), SaveLoadVersion::LargerCargoSource, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("cargo_source_xy", SLE_GLOBAL_ADDRESS(_cargo_source_xy), SaveLoadVersion::CargoSourceTile, SaveLoadVersion::CargoPackets),
 		    SLE_VAR(Vehicle, cargo_cap,             VarTypes::U16),
 		SLE_CONDVAR(Vehicle, refit_cap, VarTypes::U16, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
-		SLEG_CONDVAR("cargo_count", _cargo_count, VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U16>("cargo_count", SLE_GLOBAL_ADDRESS(_cargo_count), SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
 		SaveLoad::ReferenceList<SLRefType::CargoPacket>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, cargo.packets), SaveLoadVersion::CargoPackets),
 		SaveLoad::Array<VarFileType::U32, to_underlying(VehicleCargoList::MoveToAction::End)>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, cargo.action_counts), SaveLoadVersion::CargoReservation),
 		SLE_CONDVAR(Vehicle, cargo_age_counter, VarTypes::U16, SaveLoadVersion::NewGRFCustomCargoAging, SaveLoadVersion::MaxVersion),
@@ -754,7 +754,7 @@ public:
 		SLE_CONDVAR(Vehicle, build_year, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 
 		    SLE_VAR(Vehicle, load_unload_ticks,     VarTypes::U16),
-		SLEG_CONDVAR("cargo_paid_for", _cargo_paid_for, VarTypes::U16, SaveLoadVersion::CountPaidForCargo, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U16>("cargo_paid_for", SLE_GLOBAL_ADDRESS(_cargo_paid_for), SaveLoadVersion::CountPaidForCargo),
 		SLE_CONDVAR(Vehicle, vehicle_flags, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::GradualLoading, SaveLoadVersion::ServiceIntervalPercent),
 		SLE_CONDVAR(Vehicle, vehicle_flags, VarTypes::U16, SaveLoadVersion::ServiceIntervalPercent, SaveLoadVersion::MaxVersion),
 
@@ -762,8 +762,8 @@ public:
 		SLE_CONDVAR(Vehicle, profit_this_year, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, profit_last_year, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
 		SLE_CONDVAR(Vehicle, profit_last_year, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
-		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::FeederShare, SaveLoadVersion::UnifyCurrency),
-		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::I32>("cargo_feeder_share", SLE_GLOBAL_ADDRESS(_cargo_feeder_share), SaveLoadVersion::FeederShare, SaveLoadVersion::UnifyCurrency),
+		SaveLoad::Variable<VarFileType::I64>("cargo_feeder_share", SLE_GLOBAL_ADDRESS(_cargo_feeder_share), SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CargoPackets),
 		SLE_CONDVAR(Vehicle, value, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
 		SLE_CONDVAR(Vehicle, value, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
 

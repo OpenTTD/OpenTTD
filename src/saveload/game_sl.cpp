@@ -29,7 +29,7 @@ static std::string _game_saveload_settings;
 static const SaveLoad _game_script_desc[] = {
 	SaveLoad::String("name", SLE_GLOBAL_ADDRESS(_game_saveload_name)),
 	SaveLoad::String("settings", SLE_GLOBAL_ADDRESS(_game_saveload_settings)),
-	    SLEG_VAR("version",   _game_saveload_version,   VarFileType::U32 | VarMemType::I32),
+	SaveLoad::Variable<VarFileType::U32>("version", SLE_GLOBAL_ADDRESS(_game_saveload_version)),
 };
 
 static void SaveReal_GSDT(int)
@@ -148,7 +148,7 @@ public:
 
 static const SaveLoad _game_language_desc[] = {
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(LanguageStrings, language)),
-	SLEG_CONDVAR("count", _game_saveload_strings, VarTypes::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
+	SaveLoad::Variable<VarFileType::U32>("count", SLE_GLOBAL_ADDRESS(_game_saveload_strings), SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 	SaveLoad::StructList<SlGameLanguageString>("strings"),
 };
 

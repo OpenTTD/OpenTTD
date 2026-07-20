@@ -265,7 +265,7 @@ class SlGamelogEmergency : public DefaultSaveLoadHandler<SlGamelogEmergency, Log
 public:
 	/** We need to store something, so store a "true" value. */
 	static inline const SaveLoad description[] = {
-		SLEG_CONDVAR("is_emergency_save", _is_emergency_save, VarTypes::BOOL, SaveLoadVersion::RiffToArray, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::Bool>("is_emergency_save", SLE_GLOBAL_ADDRESS(_is_emergency_save), SaveLoadVersion::RiffToArray),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_emergency_sl_compat;
 

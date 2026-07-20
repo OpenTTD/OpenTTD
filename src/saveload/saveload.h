@@ -635,6 +635,7 @@ enum class VarFileType : uint8_t {
 	 * NOTE: the SLE_FILE_NNN values are stored in the savegame! */
 	/* Value 0 is used to mark end-of-header in tables. Do not use here! */
 	I8 = 1, ///< A 8 bit signed int.
+	Bool = I8, ///< A bool is stored in an 8 bit signed integer field.
 	U8 = 2, ///< A 8 bit unsigned int.
 	I16 = 3, ///< A 16 bit signed int.
 	U16 = 4, ///< A 16 bit unsigned int.
@@ -823,7 +824,7 @@ constexpr VarMemType SlGetMemType()
 		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
 	}
 
-#define SLE_GLOBAL_ADDRESS(variable) static_cast<decltype(variable)*>(nullptr), \
+#define SLE_GLOBAL_ADDRESS(variable) static_cast<std::remove_cvref_t<decltype(variable)>*>(nullptr), \
 	[] (void *, size_t) -> void * { \
 		return static_cast<void *>(std::addressof(variable)); \
 	}
@@ -851,6 +852,19 @@ struct SaveLoad {
 	size_t extra_data = 0; ///< Extra data for the callback proc.
 	std::shared_ptr<SaveLoadHandler> handler{}; ///< Custom handler for Save/Load procs.
 
+
+	template <VarFileType file_type, typename T>
+	static SaveLoad Variable(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Variable,
+			.conv = {file_type, SlGetMemType<T>()},
+			.version_from = from,
+			.version_to = to,
+			.address_proc = address_proc,
+		};
+	}
 
 	template <SLRefType type, typename T>
 	static SaveLoad Reference(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
@@ -1203,24 +1217,6 @@ constexpr void SlCheckMemoryType()
 	SaveLoad {name, cmd, type, length, from, to, [] (void *, size_t) -> void * { \
 		SlCheckMemoryType<cmd, VarType{type}.mem, VarType{type}.file, std::remove_cvref_t<decltype(variable)>, length>(); \
 		return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
-
-/**
- * Storage of a global variable in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLEG_CONDVAR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Variable, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a global variable in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_VAR(name, variable, type) SLEG_CONDVAR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Field name where the real SaveLoad can be located.

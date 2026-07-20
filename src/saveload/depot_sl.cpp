@@ -22,7 +22,7 @@ static TownID _town_index;
 static const SaveLoad _depot_desc[] = {
 	 SLE_CONDVAR(Depot, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	 SLE_CONDVAR(Depot, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLEG_CONDVAR("town_index", _town_index, VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::UniqueDepotNames),
+	SaveLoad::Variable<VarFileType::U16>("town_index", SLE_GLOBAL_ADDRESS(_town_index), SaveLoadVersion::MinVersion, SaveLoadVersion::UniqueDepotNames),
 	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(Depot, town), SaveLoadVersion::UniqueDepotNames),
 	 SLE_CONDVAR(Depot, town_cn, VarTypes::U16, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Depot, name), {}, SaveLoadVersion::UniqueDepotNames),

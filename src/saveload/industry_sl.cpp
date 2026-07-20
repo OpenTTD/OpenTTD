@@ -193,7 +193,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, founder, VarTypes::U8, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Industry, construction_date, VarTypes::I32, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Industry, construction_type, VarTypes::U8, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::MaxVersion),
-	SLEG_CONDVAR("last_cargo_accepted_at[0]", SlIndustryAccepted::old_last_accepted[0], VarTypes::I32, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::ExtendIndustryCargoSlots),
+	SaveLoad::Variable<VarFileType::I32>("last_cargo_accepted_at[0]", SLE_GLOBAL_ADDRESS(SlIndustryAccepted::old_last_accepted[0]), SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::ExtendIndustryCargoSlots),
 	SaveLoad::Array<VarFileType::I32, 16>("last_cargo_accepted_at", SLE_GLOBAL_ADDRESS(SlIndustryAccepted::old_last_accepted), SaveLoadVersion::ExtendIndustryCargoSlots, SaveLoadVersion::IndustryCargoReorganise),
 	SLE_CONDVAR(Industry, selected_layout, VarTypes::U8, SaveLoadVersion::NewGRFIndustryLayout, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Industry, exclusive_supplier, VarTypes::U8, SaveLoadVersion::GSIndustryControl, SaveLoadVersion::MaxVersion),
@@ -313,7 +313,7 @@ struct TIDSChunkHandler : NewGRFMappingChunkHandler {
 
 /** Description of the data to save and load in #IndustryBuildData. */
 static const SaveLoad _industry_builder_desc[] = {
-	SLEG_VAR("wanted_inds", _industry_builder.wanted_inds, VarTypes::U32),
+	SaveLoad::Variable<VarFileType::U32>("wanted_inds", SLE_GLOBAL_ADDRESS(_industry_builder.wanted_inds)),
 };
 
 /** Industry builder. */

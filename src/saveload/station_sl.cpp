@@ -372,25 +372,25 @@ public:
 	static inline uint cargo_reserved_count;
 
 	static inline const SaveLoad description[] = {
-		SLEG_CONDVAR("waiting_acceptance", _waiting_acceptance, VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U16>("waiting_acceptance", SLE_GLOBAL_ADDRESS(_waiting_acceptance), SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
 		 SLE_CONDVAR(GoodsEntry, status, VarTypes::U8, SaveLoadVersion::CargoPackets, SaveLoadVersion::MaxVersion),
 		     SLE_VAR(GoodsEntry, time_since_pickup,    VarTypes::U8),
 		     SLE_VAR(GoodsEntry, rating,               VarTypes::U8),
-		SLEG_CONDVAR("cargo_source", _cargo_source, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerCargoSource),
-		SLEG_CONDVAR("cargo_source", _cargo_source, VarTypes::U16, SaveLoadVersion::LargerCargoSource, SaveLoadVersion::CargoPackets),
-		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, VarTypes::U32, SaveLoadVersion::CargoSourceTile, SaveLoadVersion::CargoPackets),
-		SLEG_CONDVAR("cargo_days", _cargo_periods, VarTypes::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U8>("cargo_source", SLE_GLOBAL_ADDRESS(_cargo_source), SaveLoadVersion::MinVersion, SaveLoadVersion::LargerCargoSource),
+		SaveLoad::Variable<VarFileType::U16>("cargo_source", SLE_GLOBAL_ADDRESS(_cargo_source), SaveLoadVersion::LargerCargoSource, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("cargo_source_xy", SLE_GLOBAL_ADDRESS(_cargo_source_xy), SaveLoadVersion::CargoSourceTile, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U8>("cargo_days", SLE_GLOBAL_ADDRESS(_cargo_periods), SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
 		     SLE_VAR(GoodsEntry, last_speed,           VarTypes::U8),
 		     SLE_VAR(GoodsEntry, last_age,             VarTypes::U8),
-		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, VarFileType::U32 | VarMemType::I64, SaveLoadVersion::TransferOrder, SaveLoadVersion::UnifyCurrency),
-		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("cargo_feeder_share", SLE_GLOBAL_ADDRESS(_cargo_feeder_share), SaveLoadVersion::TransferOrder, SaveLoadVersion::UnifyCurrency),
+		SaveLoad::Variable<VarFileType::I64>("cargo_feeder_share", SLE_GLOBAL_ADDRESS(_cargo_feeder_share), SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CargoPackets),
 		 SLE_CONDVAR(GoodsEntry, amount_fract, VarTypes::U8, SaveLoadVersion::FractionalCargoDelivery, SaveLoadVersion::MaxVersion),
 		SaveLoad::ReferenceList<SLRefType::CargoPacket>("packets", SLE_GLOBAL_ADDRESS(_packets), SaveLoadVersion::CargoPackets, SaveLoadVersion::Cargodist),
-		SLEG_CONDVAR("old_num_dests", _old_num_dests, VarTypes::U32, SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
-		SLEG_CONDVAR("cargo.reserved_count", SlStationGoods::cargo_reserved_count, VarTypes::U32, SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U32>("old_num_dests", SLE_GLOBAL_ADDRESS(_old_num_dests), SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
+		SaveLoad::Variable<VarFileType::U32>("cargo.reserved_count", SLE_GLOBAL_ADDRESS(SlStationGoods::cargo_reserved_count), SaveLoadVersion::CargoReservation),
 		 SLE_CONDVAR(GoodsEntry, link_graph, VarTypes::U16, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
 		 SLE_CONDVAR(GoodsEntry, node, VarTypes::U16, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
-		SLEG_CONDVAR("old_num_flows", _old_num_flows, VarTypes::U32, SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
+		SaveLoad::Variable<VarFileType::U32>("old_num_flows", SLE_GLOBAL_ADDRESS(_old_num_flows), SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
 		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo, VarTypes::U32, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
 		SaveLoad::StructList<SlStationFlow>("flow", SaveLoadVersion::Cargodist),
 		SaveLoad::StructList<SlStationCargo>("cargo", SaveLoadVersion::Cargodist),
@@ -523,7 +523,7 @@ static const SaveLoad _old_station_desc[] = {
 	/* Used by newstations for graphic variations */
 	SLE_CONDVAR(Station, random_bits, VarTypes::U16, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
 	SLE_CONDVARNAME(Station, waiting_random_triggers, "waiting_triggers", VarTypes::U8, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
-	SLEG_CONDVAR("num_specs", SlStationSpecList<StationSpec>::last_num_specs, VarTypes::U8, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>("num_specs", SLE_GLOBAL_ADDRESS(SlStationSpecList<StationSpec>::last_num_specs), SaveLoadVersion::NewGRFStations),
 
 	SaveLoad::ReferenceList<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Station, loading_vehicles), SaveLoadVersion::FifoLoading),
 
@@ -596,7 +596,7 @@ public:
 		    SLE_VAR(BaseStation, random_bits,            VarTypes::U16),
 		    SLE_VARNAME(BaseStation, waiting_random_triggers, "waiting_triggers", VarTypes::U8),
 	SaveLoad::StructList<SlStationWaitingTriggers>("tile_waiting_triggers"),
-	 SLEG_CONDVAR("num_specs", SlStationSpecList<StationSpec>::last_num_specs, VarTypes::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
+	SaveLoad::Variable<VarFileType::U8>("num_specs", SLE_GLOBAL_ADDRESS(SlStationSpecList<StationSpec>::last_num_specs), SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_base_sl_compat;
 
