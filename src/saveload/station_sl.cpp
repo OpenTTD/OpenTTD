@@ -209,7 +209,7 @@ template <typename T>
 class SlStationSpecList : public VectorSaveLoadHandler<SlStationSpecList<T>, BaseStation, SpecMapping<T>> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(SpecMapping<T>, grfid, VarTypes::LABEL_REVERSE, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
+		SLE_CONDVAR(SpecMapping<T>, grfid, VarTypes::LABEL, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(SpecMapping<T>, localidx, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::NewGRFStations, SaveLoadVersion::ExtendEntityMapping),
 		SLE_CONDVAR(SpecMapping<T>, localidx, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
 	};
@@ -222,6 +222,15 @@ public:
 	size_t GetLength() const override
 	{
 		return IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength) ? last_num_specs : SlGetStructListLength(UINT8_MAX);
+	}
+
+	void Load(BaseStation *object) const override
+	{
+		this->VectorSaveLoadHandler<SlStationSpecList<T>, BaseStation, SpecMapping<T>>::Load(object);
+
+		if (IsSavegameVersionBefore(SaveLoadVersion::LabelOrientationUnification)) {
+			for (auto m : this->GetVector(object)) std::ranges::reverse(m.grfid);
+		}
 	}
 };
 

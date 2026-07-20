@@ -299,7 +299,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	SLE_CONDVAR(Town, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 
-	SLE_CONDVAR(Town, townnamegrfid, VarTypes::LABEL_REVERSE, SaveLoadVersion::NewGRFTownNames, SaveLoadVersion::MaxVersion),
+	SLE_CONDVAR(Town, townnamegrfid, VarTypes::LABEL, SaveLoadVersion::NewGRFTownNames, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(Town, townnametype,          VarTypes::U16),
 	    SLE_VAR(Town, townnameparts,         VarTypes::U32),
 	SLE_CONDSSTR(Town, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
@@ -409,6 +409,8 @@ struct CITYChunkHandler : ChunkHandler {
 			if (IsSavegameVersionBefore(SaveLoadVersion::TownSupplyHistory)) {
 				t->valid_history = 1U << LAST_MONTH;
 			}
+
+			if (IsSavegameVersionBefore(SaveLoadVersion::LabelOrientationUnification)) std::ranges::reverse(t->townnamegrfid);
 
 			if (t->townnamegrfid.Empty() && !IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END) && GetStringTab(t->townnametype) != TEXT_TAB_OLD_CUSTOM) {
 				SlErrorCorrupt("Invalid town name generator");
