@@ -654,14 +654,14 @@ static Money  _cargo_feeder_share;
 class SlVehicleCommon : public DefaultSaveLoadHandler<SlVehicleCommon, Vehicle> {
 public:
 	static inline const SaveLoad description[] = {
-		    SLE_VAR(Vehicle, subtype,               VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, subtype)),
 
 		SaveLoad::Reference<SLRefType::OldVehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, next)),
 		SLE_CONDVAR(Vehicle, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
 		SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 		SLE_CONDVAR(Vehicle, unitnumber, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::LargerUnitNumber),
 		SLE_CONDVAR(Vehicle, unitnumber, VarTypes::U16, SaveLoadVersion::LargerUnitNumber, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Vehicle, owner,                 VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, owner)),
 		SLE_CONDVAR(Vehicle, tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 		SLE_CONDVAR(Vehicle, tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, dest_tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
@@ -673,39 +673,39 @@ public:
 		SLE_CONDVAR(Vehicle, y_pos, VarFileType::U32 | VarMemType::I32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, z_pos, VarFileType::U8 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
 		SLE_CONDVAR(Vehicle, z_pos, VarTypes::I32, SaveLoadVersion::VehicleCentreAndZPos, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Vehicle, direction,             VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, direction)),
 
-		    SLE_VAR(Vehicle, spritenum,             VarTypes::U8),
-		    SLE_VAR(Vehicle, engine_type,           VarTypes::U16),
-		    SLE_VAR(Vehicle, cur_speed,             VarTypes::U16),
-		    SLE_VAR(Vehicle, subspeed,              VarTypes::U8),
-		    SLE_VAR(Vehicle, acceleration,          VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, spritenum)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, engine_type)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, cur_speed)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, subspeed)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, acceleration)),
 		SLE_CONDVAR(Vehicle, motion_counter, VarTypes::U32, SaveLoadVersion::VehMotionCounter, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Vehicle, progress,              VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, progress)),
 
-		    SLE_VAR(Vehicle, vehstatus,             VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, vehstatus)),
 		SLE_CONDVAR(Vehicle, last_station_visited, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
 		SLE_CONDVAR(Vehicle, last_station_visited, VarTypes::U16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, last_loading_station, VarTypes::U16, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
 
-		    SLE_VAR(Vehicle, cargo_type,            VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, cargo_type)),
 		SLE_CONDVAR(Vehicle, cargo_subtype, VarTypes::U8, SaveLoadVersion::LiveryRefit, SaveLoadVersion::MaxVersion),
 		SaveLoad::Variable<VarFileType::U8>("cargo_days", SLE_GLOBAL_ADDRESS(_cargo_periods), SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
 		SaveLoad::Variable<VarFileType::U8>("cargo_source", SLE_GLOBAL_ADDRESS(_cargo_source), SaveLoadVersion::MinVersion, SaveLoadVersion::LargerCargoSource),
 		SaveLoad::Variable<VarFileType::U16>("cargo_source", SLE_GLOBAL_ADDRESS(_cargo_source), SaveLoadVersion::LargerCargoSource, SaveLoadVersion::CargoPackets),
 		SaveLoad::Variable<VarFileType::U32>("cargo_source_xy", SLE_GLOBAL_ADDRESS(_cargo_source_xy), SaveLoadVersion::CargoSourceTile, SaveLoadVersion::CargoPackets),
-		    SLE_VAR(Vehicle, cargo_cap,             VarTypes::U16),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, cargo_cap)),
 		SLE_CONDVAR(Vehicle, refit_cap, VarTypes::U16, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
 		SaveLoad::Variable<VarFileType::U16>("cargo_count", SLE_GLOBAL_ADDRESS(_cargo_count), SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
 		SaveLoad::ReferenceList<SLRefType::CargoPacket>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, cargo.packets), SaveLoadVersion::CargoPackets),
 		SaveLoad::Array<VarFileType::U32, to_underlying(VehicleCargoList::MoveToAction::End)>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, cargo.action_counts), SaveLoadVersion::CargoReservation),
 		SLE_CONDVAR(Vehicle, cargo_age_counter, VarTypes::U16, SaveLoadVersion::NewGRFCustomCargoAging, SaveLoadVersion::MaxVersion),
 
-		    SLE_VAR(Vehicle, day_counter,           VarTypes::U8),
-		    SLE_VAR(Vehicle, tick_counter,          VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, day_counter)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, tick_counter)),
 		SLE_CONDVAR(Vehicle, running_ticks, VarTypes::U8, SaveLoadVersion::FractionProfitRunningTicks, SaveLoadVersion::MaxVersion),
 
-		    SLE_VAR(Vehicle, cur_implicit_order_index,  VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, cur_implicit_order_index)),
 		SLE_CONDVAR(Vehicle, cur_real_order_index, VarTypes::U8, SaveLoadVersion::TrackRealAndAutoOrders, SaveLoadVersion::MaxVersion),
 
 		/* This next line is for version 4 and prior compatibility.. it temporarily reads
@@ -744,16 +744,16 @@ public:
 		SLE_CONDVAR(Vehicle, service_interval, VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
 		SLE_CONDVAR(Vehicle, service_interval, VarFileType::U32 | VarMemType::U16, SaveLoadVersion::BigDates, SaveLoadVersion::ServiceIntervalPercent),
 		SLE_CONDVAR(Vehicle, service_interval, VarTypes::U16, SaveLoadVersion::ServiceIntervalPercent, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Vehicle, reliability,           VarTypes::U16),
-		    SLE_VAR(Vehicle, reliability_spd_dec,   VarTypes::U16),
-		    SLE_VAR(Vehicle, breakdown_ctr,         VarTypes::U8),
-		    SLE_VAR(Vehicle, breakdown_delay,       VarTypes::U8),
-		    SLE_VAR(Vehicle, breakdowns_since_last_service, VarTypes::U8),
-		    SLE_VAR(Vehicle, breakdown_chance,      VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, reliability)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, reliability_spd_dec)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, breakdown_ctr)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, breakdown_delay)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, breakdowns_since_last_service)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, breakdown_chance)),
 		SLE_CONDVAR(Vehicle, build_year, VarFileType::U8 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
 		SLE_CONDVAR(Vehicle, build_year, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
 
-		    SLE_VAR(Vehicle, load_unload_ticks,     VarTypes::U16),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, load_unload_ticks)),
 		SaveLoad::Variable<VarFileType::U16>("cargo_paid_for", SLE_GLOBAL_ADDRESS(_cargo_paid_for), SaveLoadVersion::CountPaidForCargo),
 		SLE_CONDVAR(Vehicle, vehicle_flags, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::GradualLoading, SaveLoadVersion::ServiceIntervalPercent),
 		SLE_CONDVAR(Vehicle, vehicle_flags, VarTypes::U16, SaveLoadVersion::ServiceIntervalPercent, SaveLoadVersion::MaxVersion),
@@ -806,9 +806,9 @@ class SlVehicleTrain : public DefaultSaveLoadHandler<SlVehicleTrain, Vehicle> {
 public:
 	static inline const SaveLoad description[] = {
 		SaveLoad::Struct<SlVehicleCommon>("common"),
-		     SLE_VAR(Train, crash_anim_pos,      VarTypes::U16),
-		     SLE_VAR(Train, force_proceed,       VarTypes::U8),
-		     SLE_VAR(Train, track,               VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Train, crash_anim_pos)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Train, force_proceed)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Train, track)),
 
 		 SLE_CONDVAR(Train, flags, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::Yapp),
 		 SLE_CONDVAR(Train, flags, VarTypes::U16, SaveLoadVersion::Yapp, SaveLoadVersion::MaxVersion),
@@ -839,8 +839,8 @@ public:
 class SlVehicleRoadVehPath : public VectorSaveLoadHandler<SlVehicleRoadVehPath, RoadVehicle, RoadVehPathElement> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VAR(RoadVehPathElement, trackdir, VarTypes::U8),
-		SLE_VAR(RoadVehPathElement, tile, VarTypes::U32),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehPathElement, trackdir)),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehPathElement, tile)),
 	};
 	static inline const SaveLoadCompatTable compat_description = {};
 
@@ -857,13 +857,13 @@ public:
 
 	static inline const SaveLoad description[] = {
 		SaveLoad::Struct<SlVehicleCommon>("common"),
-		      SLE_VAR(RoadVehicle, state,                VarTypes::U8),
-		      SLE_VAR(RoadVehicle, frame,                VarTypes::U8),
-		      SLE_VAR(RoadVehicle, blocked_ctr,          VarTypes::U16),
-		      SLE_VAR(RoadVehicle, overtaking,           VarTypes::U8),
-		      SLE_VAR(RoadVehicle, overtaking_ctr,       VarTypes::U8),
-		      SLE_VAR(RoadVehicle, crashed_ctr,          VarTypes::U16),
-		      SLE_VAR(RoadVehicle, reverse_ctr,          VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehicle, state)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehicle, frame)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehicle, blocked_ctr)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehicle, overtaking)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehicle, overtaking_ctr)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehicle, crashed_ctr)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(RoadVehicle, reverse_ctr)),
 		SaveLoad::Vector<VarFileType::U8>("path.td", SLE_GLOBAL_ADDRESS(rv_path_td), SaveLoadVersion::RoadvehPathCache, SaveLoadVersion::PathCacheFormat),
 		SaveLoad::Vector<VarFileType::U32>("path.tile", SLE_GLOBAL_ADDRESS(rv_path_tile), SaveLoadVersion::RoadvehPathCache, SaveLoadVersion::PathCacheFormat),
 		SaveLoad::StructList<SlVehicleRoadVehPath>("path", SaveLoadVersion::PathCacheFormat),
@@ -915,7 +915,7 @@ public:
 class SlVehicleShipPath : public VectorSaveLoadHandler<SlVehicleShipPath, Ship, ShipPathElement> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VAR(ShipPathElement, trackdir, VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(ShipPathElement, trackdir)),
 	};
 	static inline const SaveLoadCompatTable compat_description = {};
 
@@ -928,7 +928,7 @@ public:
 
 	static inline const SaveLoad description[] = {
 		SaveLoad::Struct<SlVehicleCommon>("common"),
-		      SLE_VAR(Ship, state,                     VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Ship, state)),
 		SaveLoad::Vector<VarFileType::U8>("path", SLE_GLOBAL_ADDRESS(ship_path_td), SaveLoadVersion::ShipPathCache, SaveLoadVersion::PathCacheFormat),
 		SaveLoad::StructList<SlVehicleShipPath>("path", SaveLoadVersion::PathCacheFormat),
 		 SLE_CONDVAR(Ship, rotation, VarTypes::U8, SaveLoadVersion::ShipRotation, SaveLoadVersion::MaxVersion),
@@ -964,13 +964,13 @@ class SlVehicleAircraft : public DefaultSaveLoadHandler<SlVehicleAircraft, Vehic
 public:
 	static inline const SaveLoad description[] = {
 		SaveLoad::Struct<SlVehicleCommon>("common"),
-		     SLE_VAR(Aircraft, crashed_counter,       VarTypes::U16),
-		     SLE_VAR(Aircraft, pos,                   VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Aircraft, crashed_counter)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Aircraft, pos)),
 
 		 SLE_CONDVAR(Aircraft, targetairport, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
 		 SLE_CONDVAR(Aircraft, targetairport, VarTypes::U16, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
 
-		     SLE_VAR(Aircraft, state,                 VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Aircraft, state)),
 
 		 SLE_CONDVAR(Aircraft, previous_pos, VarTypes::U8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 		 SLE_CONDVAR(Aircraft, last_direction, VarTypes::U8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
@@ -1003,7 +1003,7 @@ public:
 class SlVehicleEffect : public DefaultSaveLoadHandler<SlVehicleEffect, Vehicle> {
 public:
 	static inline const SaveLoad description[] = {
-		     SLE_VAR(Vehicle, subtype,               VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, subtype)),
 
 		 SLE_CONDVAR(Vehicle, tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 		 SLE_CONDVAR(Vehicle, tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
@@ -1015,12 +1015,12 @@ public:
 		 SLE_CONDVAR(Vehicle, z_pos, VarFileType::U8 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
 		 SLE_CONDVAR(Vehicle, z_pos, VarTypes::I32, SaveLoadVersion::VehicleCentreAndZPos, SaveLoadVersion::MaxVersion),
 
-		     SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, VarFileType::U16 | VarMemType::U32),
-		     SLE_VAR(Vehicle, progress,              VarTypes::U8),
-		     SLE_VAR(Vehicle, vehstatus,             VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, sprite_cache.sprite_seq.seq[0].sprite)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, progress)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, vehstatus)),
 
-		     SLE_VAR(EffectVehicle, animation_state,    VarTypes::U16),
-		     SLE_VAR(EffectVehicle, animation_substate, VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EffectVehicle, animation_state)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(EffectVehicle, animation_substate)),
 
 		 SLE_CONDVAR(Vehicle, spritenum, VarTypes::U8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
 	};
@@ -1050,7 +1050,7 @@ public:
 	static inline const SaveLoad description[] = {
 		SaveLoad::Reference<SLRefType::OldVehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, next)),
 
-		    SLE_VAR(Vehicle, subtype,               VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, subtype)),
 		SLE_CONDVAR(Vehicle, tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 		SLE_CONDVAR(Vehicle, tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, dest_tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
@@ -1062,18 +1062,18 @@ public:
 		SLE_CONDVAR(Vehicle, y_pos, VarTypes::I32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, z_pos, VarFileType::U8 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
 		SLE_CONDVAR(Vehicle, z_pos, VarTypes::I32, SaveLoadVersion::VehicleCentreAndZPos, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Vehicle, direction,             VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, direction)),
 
-		    SLE_VAR(Vehicle, owner,                 VarTypes::U8),
-		    SLE_VAR(Vehicle, vehstatus,             VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, owner)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, vehstatus)),
 		SaveLoad::Variable<VarFileType::U8>("current_order.dest", SLE_OBJECT_ADDRESS(DisasterVehicle, state), SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
 		SaveLoad::Variable<VarFileType::U16>("current_order.dest", SLE_OBJECT_ADDRESS(DisasterVehicle, state), SaveLoadVersion::BigMap, SaveLoadVersion::DisasterVehState),
 		SLE_CONDVAR(DisasterVehicle, state, VarTypes::U16, SaveLoadVersion::DisasterVehState, SaveLoadVersion::MaxVersion),
 
-		    SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, VarFileType::U16 | VarMemType::U32),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, sprite_cache.sprite_seq.seq[0].sprite)),
 		SLE_CONDVAR(Vehicle, age, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
 		SLE_CONDVAR(Vehicle, age, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Vehicle, tick_counter,          VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, tick_counter)),
 
 		SLE_CONDVAR(DisasterVehicle, image_override, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphLocationDisasterStore),
 		SLE_CONDVAR(DisasterVehicle, image_override, VarTypes::U32, SaveLoadVersion::LinkgraphLocationDisasterStore, SaveLoadVersion::MaxVersion),

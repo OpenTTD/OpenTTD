@@ -31,12 +31,12 @@ static NodeID _linkgraph_from; ///< Contains the current "from" node being saved
 class SlLinkgraphEdge : public DefaultSaveLoadHandler<SlLinkgraphEdge, Node> {
 public:
 	static inline const SaveLoad description[] = {
-		    SLE_VAR(Edge, capacity,                 VarTypes::U32),
-		    SLE_VAR(Edge, usage,                    VarTypes::U32),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, capacity)),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, usage)),
 		SLE_CONDVAR(Edge, travel_time_sum, VarTypes::U64, SaveLoadVersion::LinkgraphTravelTime, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Edge, last_unrestricted_update, VarTypes::I32),
+		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, last_unrestricted_update)),
 		SLE_CONDVAR(Edge, last_restricted_update, VarTypes::I32, SaveLoadVersion::LinkgraphRestrictedFlow, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Edge, dest_node,                VarTypes::U16),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, dest_node)),
 		SaveLoad::Variable<VarFileType::U16>("next_edge", SLE_OBJECT_ADDRESS(Edge, dest_node), SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
 	};
 	static inline const SaveLoadCompatTable compat_description = _linkgraph_edge_sl_compat;
@@ -97,10 +97,10 @@ class SlLinkgraphNode : public DefaultSaveLoadHandler<SlLinkgraphNode, LinkGraph
 public:
 	static inline const SaveLoad description[] = {
 		SLE_CONDVAR(Node, xy, VarTypes::U32, SaveLoadVersion::LinkgraphLocationDisasterStore, SaveLoadVersion::MaxVersion),
-		    SLE_VAR(Node, supply,      VarTypes::U32),
-		    SLE_VAR(Node, demand,      VarTypes::U32),
-		    SLE_VAR(Node, station,     VarTypes::U16),
-		    SLE_VAR(Node, last_update, VarTypes::I32),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Node, supply)),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Node, demand)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Node, station)),
+		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Node, last_update)),
 		SaveLoad::StructList<SlLinkgraphEdge>("edges"),
 	};
 	static inline const SaveLoadCompatTable compat_description = _linkgraph_node_sl_compat;
@@ -136,9 +136,9 @@ public:
 SaveLoadTable GetLinkGraphDesc()
 {
 	static const SaveLoad link_graph_desc[] = {
-		 SLE_VAR(LinkGraph, last_compression, VarTypes::I32),
+		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(LinkGraph, last_compression)),
 		SaveLoad::Variable<VarFileType::U16>("num_nodes", SLE_GLOBAL_ADDRESS(_num_nodes), SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
-		 SLE_VAR(LinkGraph, cargo,            VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(LinkGraph, cargo)),
 		SaveLoad::StructList<SlLinkgraphNode>("nodes"),
 	};
 	return link_graph_desc;
@@ -182,8 +182,8 @@ SaveLoadTable GetLinkGraphJobDesc()
 	static std::vector<SaveLoad> saveloads;
 
 	static const SaveLoad job_desc[] = {
-		SLE_VAR(LinkGraphJob, join_date,        VarTypes::I32),
-		SLE_VAR(LinkGraphJob, link_graph.index, VarTypes::U16),
+		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(LinkGraphJob, join_date)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(LinkGraphJob, link_graph.index)),
 		SaveLoad::Struct<SlLinkgraphJobProxy>("linkgraph"),
 	};
 

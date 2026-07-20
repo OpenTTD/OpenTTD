@@ -16,14 +16,14 @@
 #include "../safeguards.h"
 
 static const SaveLoad _league_table_elements_desc[] = {
-	    SLE_VAR(LeagueTableElement, table,       VarTypes::U8),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, table)),
 	SLE_CONDVAR(LeagueTableElement, rating, VarFileType::U64 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
 	SLE_CONDVAR(LeagueTableElement, rating, VarTypes::I64, SaveLoadVersion::LinkgraphEdges, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(LeagueTableElement, company,     VarTypes::U8),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, company)),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, text), StringValidationSetting::AllowControlCode),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, score), StringValidationSetting::AllowControlCode),
-	    SLE_VAR(LeagueTableElement, link.type,   VarTypes::U8),
-	    SLE_VAR(LeagueTableElement, link.target, VarTypes::U32),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, link.type)),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, link.target)),
 };
 
 struct LEAEChunkHandler : ChunkHandler {

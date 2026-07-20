@@ -37,7 +37,7 @@ struct RAILChunkHandler : ChunkHandler {
 	RAILChunkHandler() : ChunkHandler("RAIL", ChunkType::Table) {}
 
 	static inline const SaveLoad description[] = {
-		SLE_VAR(LabelObject<RailTypeLabel>, label, VarTypes::LABEL),
+		SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(LabelObject<RailTypeLabel>, label)),
 	};
 
 	void Save() const override
@@ -73,8 +73,8 @@ struct ROTTChunkHandler : ChunkHandler {
 	ROTTChunkHandler() : ChunkHandler("ROTT", ChunkType::Table) {}
 
 	static inline const SaveLoad description[] = {
-		SLE_VAR(LabelObject<RoadTypeLabel>, label, VarTypes::LABEL),
-		SLE_VAR(LabelObject<RoadTypeLabel>, subtype, VarTypes::U8),
+		SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(LabelObject<RoadTypeLabel>, label)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(LabelObject<RoadTypeLabel>, subtype)),
 	};
 
 	void Save() const override

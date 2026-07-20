@@ -50,10 +50,10 @@ static const SaveLoad _economy_desc[] = {
 	SLE_CONDVAR(Economy, old_max_loan_unround_fract, VarTypes::U16, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::CumulatedInflation),
 	SLE_CONDVAR(Economy, inflation_prices, VarTypes::U64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Economy, inflation_payment, VarTypes::U64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(Economy, fluct,                         VarTypes::I16),
-	    SLE_VAR(Economy, interest_rate,                 VarTypes::U8),
-	    SLE_VAR(Economy, infl_amount,                   VarTypes::U8),
-	    SLE_VAR(Economy, infl_amount_pr,                VarTypes::U8),
+	SaveLoad::Variable<VarFileType::I16>(SLE_NAME_AND_OBJECT_ADDRESS(Economy, fluct)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Economy, interest_rate)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Economy, infl_amount)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Economy, infl_amount_pr)),
 	SLE_CONDVAR(Economy, industry_daily_change_counter, VarTypes::U32, SaveLoadVersion::SpreadIndustryProductionChanges, SaveLoadVersion::MaxVersion),
 };
 
@@ -84,8 +84,8 @@ struct ECMYChunkHandler : ChunkHandler {
 
 static const SaveLoad _cargopayment_desc[] = {
 	SaveLoad::Reference<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPayment, front)),
-	    SLE_VAR(CargoPayment, route_profit,    VarTypes::I64),
-	    SLE_VAR(CargoPayment, visual_profit,   VarTypes::I64),
+	SaveLoad::Variable<VarFileType::I64>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPayment, route_profit)),
+	SaveLoad::Variable<VarFileType::I64>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPayment, visual_profit)),
 	SLE_CONDVAR(CargoPayment, visual_transfer, VarTypes::I64, SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
 };
 

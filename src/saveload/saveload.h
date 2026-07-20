@@ -792,6 +792,8 @@ constexpr VarMemType SlGetMemType()
 		return SlGetMemType<std::underlying_type_t<T>>();
 	} else if constexpr (ConvertibleThroughBase<T>) {
 		return SlGetMemType<typename T::BaseType>();
+	} else if constexpr (std::is_base_of_v<BaseLabel, T>) {
+		return VarMemType::Label;
 	} else if constexpr (requires { typename T::value_type; }) {
 		return SlGetMemType<typename T::value_type>();
 	} else if constexpr (std::is_same_v<bool, T>) {
@@ -819,7 +821,7 @@ constexpr VarMemType SlGetMemType()
 	}
 }
 
-#define SLE_OBJECT_ADDRESS(base, variable) static_cast<decltype(base::variable)*>(nullptr), \
+#define SLE_OBJECT_ADDRESS(base, variable) static_cast<std::remove_cvref_t<decltype(base::variable)>*>(nullptr), \
 	[] (void *b, size_t) -> void * { \
 		assert(b != nullptr); \
 		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
@@ -1174,14 +1176,6 @@ constexpr void SlCheckMemoryType()
  * @param to       Last savegame version that has the field.
  */
 #define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Variable, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a variable in every version of a savegame.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.

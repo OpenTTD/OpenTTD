@@ -361,7 +361,7 @@ public:
 		SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], VarFileType::I32 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::CountIndividualCargoes),
 		SaveLoad::Array<VarFileType::U32, 32>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyEconomyEntry, delivered_cargo), SaveLoadVersion::CountIndividualCargoes, SaveLoadVersion::ExtendCargotypes),
 		SaveLoad::Array<VarFileType::U32, NUM_CARGO>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyEconomyEntry, delivered_cargo), SaveLoadVersion::ExtendCargotypes),
-		    SLE_VAR(CompanyEconomyEntry, performance_history, VarTypes::I32),
+		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyEconomyEntry, performance_history)),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_economy_compat;
 
@@ -491,17 +491,17 @@ public:
 
 /** Save/load of companies. */
 static const SaveLoad _company_desc[] = {
-	    SLE_VAR(CompanyProperties, name_2,          VarTypes::U32),
-	    SLE_VAR(CompanyProperties, name_1,          VarTypes::STRINGID),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, name_2)),
+	SaveLoad::Variable<VarFileType::StringID>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, name_1)),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 
-	    SLE_VAR(CompanyProperties, president_name_1, VarTypes::STRINGID),
-	    SLE_VAR(CompanyProperties, president_name_2, VarTypes::U32),
+	SaveLoad::Variable<VarFileType::StringID>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, president_name_1)),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, president_name_2)),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, president_name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
 
 	SaveLoad::Vector<VarFileType::String>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, allow_list), SaveLoadVersion::CompanyAllowList, SaveLoadVersion::CompanyAllowListV2),
 	SaveLoad::StructList<SlAllowListData>("allow_list", SaveLoadVersion::CompanyAllowListV2),
-	SLE_VAR(CompanyProperties, allow_any, VarTypes::BOOL),
+	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, allow_any)),
 
 	SaveLoad::Variable<VarFileType::U32>("face", SLE_OBJECT_ADDRESS(CompanyProperties, face.bits)),
 	SaveLoad::String("face_style", SLE_OBJECT_ADDRESS(CompanyProperties, face.style_label), {}, SaveLoadVersion::FaceStyles),
@@ -514,9 +514,9 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, current_loan, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(CompanyProperties, max_loan, VarTypes::I64, SaveLoadVersion::MaxLoanForCompany, SaveLoadVersion::MaxVersion),
 
-	    SLE_VAR(CompanyProperties, colour,                VarTypes::U8),
-	    SLE_VAR(CompanyProperties, money_fraction,        VarTypes::U8),
-	    SLE_VAR(CompanyProperties, block_preview,         VarTypes::U8),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, colour)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, money_fraction)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, block_preview)),
 
 	SLE_CONDVAR(CompanyProperties, location_of_HQ, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	SLE_CONDVAR(CompanyProperties, location_of_HQ, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
@@ -528,10 +528,10 @@ static const SaveLoad _company_desc[] = {
 
 	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent, VarTypes::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 
-	    SLE_VAR(CompanyProperties, months_of_bankruptcy,  VarTypes::U8),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, months_of_bankruptcy)),
 	SLE_CONDVAR(CompanyProperties, bankrupt_asked, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
 	SLE_CONDVAR(CompanyProperties, bankrupt_asked, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(CompanyProperties, bankrupt_timeout,      VarTypes::I16),
+	SaveLoad::Variable<VarFileType::I16>(SLE_NAME_AND_OBJECT_ADDRESS(CompanyProperties, bankrupt_timeout)),
 	SLE_CONDVAR(CompanyProperties, bankrupt_value, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
 	SLE_CONDVAR(CompanyProperties, bankrupt_value, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::MaxVersion),
 
