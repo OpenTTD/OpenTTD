@@ -7,8 +7,8 @@
 
 /** @file script_story_page.hpp Everything to manipulate a story page. */
 
-#ifndef SCRIPT_STORY_HPP
-#define SCRIPT_STORY_HPP
+#ifndef SCRIPT_STORY_PAGE_HPP
+#define SCRIPT_STORY_PAGE_HPP
 
 #include "script_company.hpp"
 #include "script_date.hpp"
@@ -367,5 +367,5 @@ public:
 	static StoryPageButtonFormatting MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype);
 };
 
-#endif /* SCRIPT_STORY_HPP */
+#endif /* SCRIPT_STORY_PAGE_HPP */
 
