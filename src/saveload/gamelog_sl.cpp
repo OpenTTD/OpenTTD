@@ -125,7 +125,7 @@ public:
 class SlGamelogGrfadd : public DefaultSaveLoadHandler<SlGamelogGrfadd, LoggedChange> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VARNAME(LoggedChangeGRFAdd, grfid, "grfadd.grfid", VarTypes::LABEL_REVERSE),
+		SLE_VARNAME(LoggedChangeGRFAdd, grfid, "grfadd.grfid", VarTypes::LABEL),
 		SLE_ARRNAME(LoggedChangeGRFAdd, md5sum, "grfadd.md5sum", VarTypes::U8,  16),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_grfadd_sl_compat;
@@ -148,7 +148,7 @@ public:
 class SlGamelogGrfrem : public DefaultSaveLoadHandler<SlGamelogGrfrem, LoggedChange> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VARNAME(LoggedChangeGRFRemoved, grfid, "grfrem.grfid", VarTypes::LABEL_REVERSE),
+		SLE_VARNAME(LoggedChangeGRFRemoved, grfid, "grfrem.grfid", VarTypes::LABEL),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_grfrem_sl_compat;
 
@@ -170,7 +170,7 @@ public:
 class SlGamelogGrfcompat : public DefaultSaveLoadHandler<SlGamelogGrfcompat, LoggedChange> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VARNAME(LoggedChangeGRFChanged, grfid, "grfcompat.grfid", VarTypes::LABEL_REVERSE),
+		SLE_VARNAME(LoggedChangeGRFChanged, grfid, "grfcompat.grfid", VarTypes::LABEL),
 		SLE_ARRNAME(LoggedChangeGRFChanged, md5sum, "grfcompat.md5sum", VarTypes::U8,  16),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_grfcompat_sl_compat;
@@ -193,7 +193,7 @@ public:
 class SlGamelogGrfparam : public DefaultSaveLoadHandler<SlGamelogGrfparam, LoggedChange> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VARNAME(LoggedChangeGRFParameterChanged, grfid, "grfparam.grfid", VarTypes::LABEL_REVERSE),
+		SLE_VARNAME(LoggedChangeGRFParameterChanged, grfid, "grfparam.grfid", VarTypes::LABEL),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_grfparam_sl_compat;
 
@@ -215,7 +215,7 @@ public:
 class SlGamelogGrfmove : public DefaultSaveLoadHandler<SlGamelogGrfmove, LoggedChange> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VARNAME(LoggedChangeGRFMoved, grfid, "grfmove.grfid", VarTypes::LABEL_REVERSE),
+		SLE_VARNAME(LoggedChangeGRFMoved, grfid, "grfmove.grfid", VarTypes::LABEL),
 		SLE_VARNAME(LoggedChangeGRFMoved, offset, "grfmove.offset", VarTypes::I32),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_grfmove_sl_compat;
@@ -239,7 +239,7 @@ class SlGamelogGrfbug : public DefaultSaveLoadHandler<SlGamelogGrfbug, LoggedCha
 public:
 	static inline const SaveLoad description[] = {
 		SLE_VARNAME(LoggedChangeGRFBug, data,  "grfbug.data",  VarTypes::U64),
-		SLE_VARNAME(LoggedChangeGRFBug, grfid, "grfbug.grfid", VarTypes::LABEL_REVERSE),
+		SLE_VARNAME(LoggedChangeGRFBug, grfid, "grfbug.grfid", VarTypes::LABEL),
 		SLE_VARNAME(LoggedChangeGRFBug, bug,   "grfbug.bug",   VarTypes::U8),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_grfbug_sl_compat;

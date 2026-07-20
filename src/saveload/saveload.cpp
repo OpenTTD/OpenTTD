@@ -682,8 +682,7 @@ static inline uint SlCalcConvMemLen(VarMemType conv)
 		case VarMemType::I64: return sizeof(int64_t);
 		case VarMemType::U64: return sizeof(uint64_t);
 		case VarMemType::Null: return 0;
-		case VarMemType::LabelReverse: return sizeof(BaseLabel);
-		case VarMemType::LabelForward: return sizeof(BaseLabel);
+		case VarMemType::Label: return sizeof(BaseLabel);
 
 		case VarMemType::Str:
 		case VarMemType::StrQ:
@@ -936,14 +935,11 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 {
 	switch (_sl.action) {
 		case SaveLoadAction::Save: {
-			if (conv == VarTypes::LABEL_REVERSE) {
+			if (conv == VarTypes::LABEL) {
+				/* Labels are written in reverse order as that is the way GrfIDs used to be written.
+				 * Changing the order means changing external applications that extract this data. */
 				BaseLabel *label = static_cast<BaseLabel *>(ptr);
 				for (auto it = label->rbegin(); it != label->rend(); it++) SlWriteByte(*it);
-				break;
-			}
-			if (conv == VarTypes::LABEL_FORWARD) {
-				BaseLabel *label = static_cast<BaseLabel *>(ptr);
-				for (auto it = label->begin(); it != label->end(); it++) SlWriteByte(*it);
 				break;
 			}
 
@@ -988,14 +984,13 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 		}
 		case SaveLoadAction::LoadCheck:
 		case SaveLoadAction::Load: {
-			if (conv == VarTypes::LABEL_REVERSE) {
+			if (conv == VarTypes::LABEL) {
+				/* Labels are written in reverse order as that is the way GrfIDs used to be written.
+				 * Changing the order means changing external applications that extract this data.
+				 * The road/rail type labels were in forward order. They are fixed when needed in
+				 * their respective loaders. */
 				BaseLabel *label = static_cast<BaseLabel *>(ptr);
 				for (auto it = label->rbegin(); it != label->rend(); it++) *it = SlReadByte();
-				break;
-			}
-			if (conv == VarTypes::LABEL_FORWARD) {
-				BaseLabel *label = static_cast<BaseLabel *>(ptr);
-				for (auto it = label->begin(); it != label->end(); it++) *it = SlReadByte();
 				break;
 			}
 
