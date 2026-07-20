@@ -20,13 +20,13 @@
 static TownID _town_index;
 
 static const SaveLoad _depot_desc[] = {
-	 SLE_CONDVAR(Depot, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	 SLE_CONDVAR(Depot, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Depot, xy), SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Depot, xy), SaveLoadVersion::MultipleRoadStops),
 	SaveLoad::Variable<VarFileType::U16>("town_index", SLE_GLOBAL_ADDRESS(_town_index), SaveLoadVersion::MinVersion, SaveLoadVersion::UniqueDepotNames),
 	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(Depot, town), SaveLoadVersion::UniqueDepotNames),
-	 SLE_CONDVAR(Depot, town_cn, VarTypes::U16, SaveLoadVersion::UniqueDepotNames, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Depot, town_cn), SaveLoadVersion::UniqueDepotNames),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Depot, name), {}, SaveLoadVersion::UniqueDepotNames),
-	 SLE_CONDVAR(Depot, build_date, VarTypes::I32, SaveLoadVersion::NewGRFDepotBuildDate, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Depot, build_date), SaveLoadVersion::NewGRFDepotBuildDate),
 };
 
 struct DEPTChunkHandler : ChunkHandler {

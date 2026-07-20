@@ -33,8 +33,8 @@ static const SaveLoad _cheats_desc[] = {
 	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(Cheats, setup_prod.value)),
 	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(Cheats, edit_max_hl.been_used)),
 	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(Cheats, edit_max_hl.value)),
-	SLE_CONDVAR(Cheats, station_rating.been_used, VarTypes::BOOL, SaveLoadVersion::StationRatingCheat, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Cheats, station_rating.value, VarTypes::BOOL, SaveLoadVersion::StationRatingCheat, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(Cheats, station_rating.been_used), SaveLoadVersion::StationRatingCheat),
+	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(Cheats, station_rating.value), SaveLoadVersion::StationRatingCheat),
 };
 
 

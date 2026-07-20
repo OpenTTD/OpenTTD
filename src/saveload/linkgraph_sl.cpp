@@ -33,9 +33,9 @@ public:
 	static inline const SaveLoad description[] = {
 		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, capacity)),
 		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, usage)),
-		SLE_CONDVAR(Edge, travel_time_sum, VarTypes::U64, SaveLoadVersion::LinkgraphTravelTime, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U64>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, travel_time_sum), SaveLoadVersion::LinkgraphTravelTime),
 		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, last_unrestricted_update)),
-		SLE_CONDVAR(Edge, last_restricted_update, VarTypes::I32, SaveLoadVersion::LinkgraphRestrictedFlow, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, last_restricted_update), SaveLoadVersion::LinkgraphRestrictedFlow),
 		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Edge, dest_node)),
 		SaveLoad::Variable<VarFileType::U16>("next_edge", SLE_OBJECT_ADDRESS(Edge, dest_node), SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
 	};
@@ -96,7 +96,7 @@ public:
 class SlLinkgraphNode : public DefaultSaveLoadHandler<SlLinkgraphNode, LinkGraph> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(Node, xy, VarTypes::U32, SaveLoadVersion::LinkgraphLocationDisasterStore, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Node, xy), SaveLoadVersion::LinkgraphLocationDisasterStore),
 		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Node, supply)),
 		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Node, demand)),
 		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Node, station)),

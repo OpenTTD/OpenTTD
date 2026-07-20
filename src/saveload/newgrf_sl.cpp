@@ -20,10 +20,10 @@
 /** Save and load the mapping between a spec and the NewGRF it came from. */
 static const SaveLoad _newgrf_mapping_desc[] = {
 	SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(EntityIDMapping, grfid)),
-	SLE_CONDVAR(EntityIDMapping, entity_id, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
-	SLE_CONDVAR(EntityIDMapping, entity_id, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(EntityIDMapping, substitute_id, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
-	SLE_CONDVAR(EntityIDMapping, substitute_id, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(EntityIDMapping, entity_id), SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EntityIDMapping, entity_id), SaveLoadVersion::ExtendEntityMapping),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(EntityIDMapping, substitute_id), SaveLoadVersion::MinVersion, SaveLoadVersion::ExtendEntityMapping),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EntityIDMapping, substitute_id), SaveLoadVersion::ExtendEntityMapping),
 };
 
 /**
@@ -71,10 +71,10 @@ struct NGRFChunkHandler : ChunkHandler {
 		SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(GRFConfig, filename)),
 		SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(GRFConfig, ident.grfid)),
 		SaveLoad::Array<VarFileType::U8, MD5_HASH_BYTES>(SLE_NAME_AND_OBJECT_ADDRESS(GRFConfig, ident.md5sum)),
-		SLE_CONDVAR(GRFConfig, version, VarTypes::U32, SaveLoadVersion::StoreNewGRFVersion, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(GRFConfig, version), SaveLoadVersion::StoreNewGRFVersion),
 		SaveLoad::Array<VarFileType::U32, GRFConfig::MAX_NUM_PARAMS>("param", SLE_GLOBAL_ADDRESS(param)),
 		SaveLoad::Variable<VarFileType::U8>("num_params", SLE_GLOBAL_ADDRESS(num_params)),
-		SLE_CONDVAR(GRFConfig, palette, VarTypes::U8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(GRFConfig, palette), SaveLoadVersion::NewGRFPalette),
 	};
 
 	void SaveParameters(const GRFConfig &config) const

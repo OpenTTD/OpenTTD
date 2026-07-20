@@ -132,12 +132,12 @@ SaveLoadTable GetCargoPacketDesc()
 		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, count)),
 		SaveLoad::Variable<VarFileType::U8>("days_in_transit", SLE_OBJECT_ADDRESS(CargoPacket, periods_in_transit), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoAge),
 		SaveLoad::Variable<VarFileType::U16>("days_in_transit", SLE_OBJECT_ADDRESS(CargoPacket, periods_in_transit), SaveLoadVersion::MoreCargoAge, SaveLoadVersion::PeriodsInTransitRename),
-		SLE_CONDVAR(CargoPacket, periods_in_transit, VarTypes::U16, SaveLoadVersion::PeriodsInTransitRename, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, periods_in_transit), SaveLoadVersion::PeriodsInTransitRename),
 		SaveLoad::Variable<VarFileType::I64>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, feeder_share)),
 		SaveLoad::Variable<VarFileType::U8>("source_type", SLE_OBJECT_ADDRESS(CargoPacket, source.type), SaveLoadVersion::RemoveSubsidyStationBinding),
 		SaveLoad::Variable<VarFileType::U16>("source_id", SLE_OBJECT_ADDRESS(CargoPacket, source.id), SaveLoadVersion::RemoveSubsidyStationBinding),
-		SLE_CONDVAR(CargoPacket, travelled.x, VarTypes::I16, SaveLoadVersion::CargoTravelled, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CargoPacket, travelled.y, VarTypes::I16, SaveLoadVersion::CargoTravelled, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::I16>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, travelled.x), SaveLoadVersion::CargoTravelled),
+		SaveLoad::Variable<VarFileType::I16>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, travelled.y), SaveLoadVersion::CargoTravelled),
 	};
 	return _cargopacket_desc;
 }

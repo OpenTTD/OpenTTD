@@ -26,8 +26,8 @@ static const SaveLoad _object_desc[] = {
 	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(Object, town)),
 	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Object, build_date)),
 	SaveLoad::Variable<VarFileType::U8>("colour", SLE_OBJECT_ADDRESS(Object, recolour_offset), SaveLoadVersion::IndustryPlatform),
-	SLE_CONDVAR(Object, view, VarTypes::U8, SaveLoadVersion::NewGRFObjectView, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Object, type, VarTypes::U16, SaveLoadVersion::ObjectTypeToPool, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Object, view), SaveLoadVersion::NewGRFObjectView),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Object, type), SaveLoadVersion::ObjectTypeToPool),
 };
 
 struct OBJSChunkHandler : ChunkHandler {

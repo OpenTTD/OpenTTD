@@ -18,9 +18,9 @@
 
 static const SaveLoad _subsidies_desc[] = {
 	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Subsidy, cargo_type)),
-	SLE_CONDVAR(Subsidy, remaining, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::CustomSubsidyDuration),
-	SLE_CONDVAR(Subsidy, remaining, VarTypes::U16, SaveLoadVersion::CustomSubsidyDuration, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Subsidy, awarded, VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Subsidy, remaining), SaveLoadVersion::MinVersion, SaveLoadVersion::CustomSubsidyDuration),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Subsidy, remaining), SaveLoadVersion::CustomSubsidyDuration),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Subsidy, awarded), SaveLoadVersion::RemoveSubsidyStationBinding),
 	SaveLoad::Variable<VarFileType::U8>("src_type", SLE_OBJECT_ADDRESS(Subsidy, src.type), SaveLoadVersion::RemoveSubsidyStationBinding),
 	SaveLoad::Variable<VarFileType::U8>("dst_type", SLE_OBJECT_ADDRESS(Subsidy, dst.type), SaveLoadVersion::RemoveSubsidyStationBinding),
 	SaveLoad::Variable<VarFileType::U8>("src", SLE_OBJECT_ADDRESS(Subsidy, src.id), SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),

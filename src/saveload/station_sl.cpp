@@ -210,9 +210,9 @@ template <typename T>
 class SlStationSpecList : public VectorSaveLoadHandler<SlStationSpecList<T>, BaseStation, SpecMapping<T>> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_CONDVAR(SpecMapping<T>, grfid, VarTypes::LABEL, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(SpecMapping<T>, localidx, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::NewGRFStations, SaveLoadVersion::ExtendEntityMapping),
-		SLE_CONDVAR(SpecMapping<T>, localidx, VarTypes::U16, SaveLoadVersion::ExtendEntityMapping, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(SpecMapping<T>, grfid), SaveLoadVersion::NewGRFStations),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(SpecMapping<T>, localidx), SaveLoadVersion::NewGRFStations, SaveLoadVersion::ExtendEntityMapping),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(SpecMapping<T>, localidx), SaveLoadVersion::ExtendEntityMapping),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_spec_list_sl_compat;
 
@@ -313,7 +313,7 @@ public:
 		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(FlowSaveLoad, source)),
 		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(FlowSaveLoad, via)),
 		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(FlowSaveLoad, share)),
-		SLE_CONDVAR(FlowSaveLoad, restricted, VarTypes::BOOL, SaveLoadVersion::LinkgraphRestrictedFlow, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(FlowSaveLoad, restricted), SaveLoadVersion::LinkgraphRestrictedFlow),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_flow_sl_compat;
 
@@ -373,7 +373,7 @@ public:
 
 	static inline const SaveLoad description[] = {
 		SaveLoad::Variable<VarFileType::U16>("waiting_acceptance", SLE_GLOBAL_ADDRESS(_waiting_acceptance), SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
-		 SLE_CONDVAR(GoodsEntry, status, VarTypes::U8, SaveLoadVersion::CargoPackets, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(GoodsEntry, status), SaveLoadVersion::CargoPackets),
 		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(GoodsEntry, time_since_pickup)),
 		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(GoodsEntry, rating)),
 		SaveLoad::Variable<VarFileType::U8>("cargo_source", SLE_GLOBAL_ADDRESS(_cargo_source), SaveLoadVersion::MinVersion, SaveLoadVersion::LargerCargoSource),
@@ -384,14 +384,14 @@ public:
 		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(GoodsEntry, last_age)),
 		SaveLoad::Variable<VarFileType::U32>("cargo_feeder_share", SLE_GLOBAL_ADDRESS(_cargo_feeder_share), SaveLoadVersion::TransferOrder, SaveLoadVersion::UnifyCurrency),
 		SaveLoad::Variable<VarFileType::I64>("cargo_feeder_share", SLE_GLOBAL_ADDRESS(_cargo_feeder_share), SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CargoPackets),
-		 SLE_CONDVAR(GoodsEntry, amount_fract, VarTypes::U8, SaveLoadVersion::FractionalCargoDelivery, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(GoodsEntry, amount_fract), SaveLoadVersion::FractionalCargoDelivery),
 		SaveLoad::ReferenceList<SLRefType::CargoPacket>("packets", SLE_GLOBAL_ADDRESS(_packets), SaveLoadVersion::CargoPackets, SaveLoadVersion::Cargodist),
 		SaveLoad::Variable<VarFileType::U32>("old_num_dests", SLE_GLOBAL_ADDRESS(_old_num_dests), SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
 		SaveLoad::Variable<VarFileType::U32>("cargo.reserved_count", SLE_GLOBAL_ADDRESS(SlStationGoods::cargo_reserved_count), SaveLoadVersion::CargoReservation),
-		 SLE_CONDVAR(GoodsEntry, link_graph, VarTypes::U16, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVAR(GoodsEntry, node, VarTypes::U16, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(GoodsEntry, link_graph), SaveLoadVersion::Cargodist),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(GoodsEntry, node), SaveLoadVersion::Cargodist),
 		SaveLoad::Variable<VarFileType::U32>("old_num_flows", SLE_GLOBAL_ADDRESS(_old_num_flows), SaveLoadVersion::Cargodist, SaveLoadVersion::SaveloadListLength),
-		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo, VarTypes::U32, SaveLoadVersion::Cargodist, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(GoodsEntry, max_waiting_cargo), SaveLoadVersion::Cargodist),
 		SaveLoad::StructList<SlStationFlow>("flow", SaveLoadVersion::Cargodist),
 		SaveLoad::StructList<SlStationCargo>("cargo", SaveLoadVersion::Cargodist),
 	};
@@ -486,21 +486,21 @@ public:
 };
 
 static const SaveLoad _old_station_desc[] = {
-	SLE_CONDVAR(Station, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(Station, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Station, train_station.tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(Station, train_station.tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Station, airport.tile, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(Station, airport.tile, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Station, xy), SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Station, xy), SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Station, train_station.tile), SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Station, train_station.tile), SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.tile), SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.tile), SaveLoadVersion::MultipleRoadStops),
 	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(Station, town)),
 	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, train_station.w)),
-	SLE_CONDVAR(Station, train_station.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, train_station.h), SaveLoadVersion::VehicleCurrencyStationChanges),
 
 	SaveLoad::Variable<VarFileType::StringID>(SLE_NAME_AND_OBJECT_ADDRESS(Station, string_id)),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Station, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDVAR(Station, indtype, VarTypes::U8, SaveLoadVersion::NewGRFSuppliedStationName, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Station, had_vehicle_of_type, VarFileType::U16 | VarMemType::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::WaypointMoreLikeStation),
-	SLE_CONDVAR(Station, had_vehicle_of_type, VarTypes::U8, SaveLoadVersion::WaypointMoreLikeStation, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, indtype), SaveLoadVersion::NewGRFSuppliedStationName),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Station, had_vehicle_of_type), SaveLoadVersion::MinVersion, SaveLoadVersion::WaypointMoreLikeStation),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, had_vehicle_of_type), SaveLoadVersion::WaypointMoreLikeStation),
 
 	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, time_since_load)),
 	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, time_since_unload)),
@@ -512,16 +512,16 @@ static const SaveLoad _old_station_desc[] = {
 	SaveLoad::Variable<VarFileType::U32>("airport.flags", SLE_OBJECT_ADDRESS(Station, airport.blocks), SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MoreAirportBlocks),
 	SaveLoad::Variable<VarFileType::U64>("airport.flags", SLE_OBJECT_ADDRESS(Station, airport.blocks), SaveLoadVersion::MoreAirportBlocks),
 
-	SLE_CONDVAR(Station, last_vehicle_type, VarTypes::U8, SaveLoadVersion::LastVehicleType, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, last_vehicle_type), SaveLoadVersion::LastVehicleType),
 
-	SLE_CONDVAR(Station, build_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
-	SLE_CONDVAR(Station, build_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Station, build_date), SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Station, build_date), SaveLoadVersion::BigDates),
 
 	SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(Station, bus_stops), SaveLoadVersion::MultipleRoadStops),
 	SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(Station, truck_stops), SaveLoadVersion::MultipleRoadStops),
 
 	/* Used by newstations for graphic variations */
-	SLE_CONDVAR(Station, random_bits, VarTypes::U16, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Station, random_bits), SaveLoadVersion::NewGRFStations),
 	SaveLoad::Variable<VarFileType::U8>("waiting_triggers", SLE_OBJECT_ADDRESS(Station, waiting_random_triggers), SaveLoadVersion::NewGRFStations),
 	SaveLoad::Variable<VarFileType::U8>("num_specs", SLE_GLOBAL_ADDRESS(SlStationSpecList<StationSpec>::last_num_specs), SaveLoadVersion::NewGRFStations),
 
@@ -629,19 +629,19 @@ public:
 
 		SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(Station, bus_stops)),
 		SaveLoad::Reference<SLRefType::RoadStop>(SLE_NAME_AND_OBJECT_ADDRESS(Station, truck_stops)),
-		SLE_CONDVAR(Station, ship_station.tile, VarTypes::U32, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Station, ship_station.w, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Station, ship_station.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Station, docking_station.tile, VarTypes::U32, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Station, docking_station.w, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Station, docking_station.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MultitileDocks, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Station, ship_station.tile), SaveLoadVersion::MultitileDocks),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, ship_station.w), SaveLoadVersion::MultitileDocks),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, ship_station.h), SaveLoadVersion::MultitileDocks),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Station, docking_station.tile), SaveLoadVersion::MultitileDocks),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, docking_station.w), SaveLoadVersion::MultitileDocks),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, docking_station.h), SaveLoadVersion::MultitileDocks),
 		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.tile)),
-		SLE_CONDVAR(Station, airport.w, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::StoreAirportSize, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Station, airport.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::StoreAirportSize, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.w), SaveLoadVersion::StoreAirportSize),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.h), SaveLoadVersion::StoreAirportSize),
 		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.type)),
-		SLE_CONDVAR(Station, airport.layout, VarTypes::U8, SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.layout), SaveLoadVersion::NewGRFAirportSmoke),
 		SaveLoad::Variable<VarFileType::U64>("airport.flags", SLE_OBJECT_ADDRESS(Station, airport.blocks)),
-		SLE_CONDVAR(Station, airport.rotation, VarTypes::U8, SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.rotation), SaveLoadVersion::NewGRFAirportSmoke),
 		SaveLoad::Array<VarFileType::U32, 16>("storage", SLE_GLOBAL_ADDRESS(_old_st_persistent_storage.storage), SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::PersistentStoragePool),
 		SaveLoad::Reference<SLRefType::Storage>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.psa), SaveLoadVersion::PersistentStoragePool),
 
@@ -652,8 +652,8 @@ public:
 		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, last_vehicle_type)),
 		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Station, had_vehicle_of_type)),
 		SaveLoad::ReferenceList<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Station, loading_vehicles)),
-		SLE_CONDVAR(Station, always_accepted, VarFileType::U32 | VarMemType::U64, SaveLoadVersion::TownAcceptance, SaveLoadVersion::ExtendCargotypes),
-		SLE_CONDVAR(Station, always_accepted, VarTypes::U64, SaveLoadVersion::ExtendCargotypes, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Station, always_accepted), SaveLoadVersion::TownAcceptance, SaveLoadVersion::ExtendCargotypes),
+		SaveLoad::Variable<VarFileType::U64>(SLE_NAME_AND_OBJECT_ADDRESS(Station, always_accepted), SaveLoadVersion::ExtendCargotypes),
 		SaveLoad::StructList<SlRoadStopTileData>("speclist", SaveLoadVersion::NewGRFRoadStops, SaveLoadVersion::RoadStopTileData),
 		SaveLoad::StructList<SlStationGoods>("goods"),
 	};
@@ -684,13 +684,13 @@ public:
 		SaveLoad::Struct<SlStationBase>("base"),
 		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Waypoint, town_cn)),
 
-		SLE_CONDVAR(Waypoint, train_station.tile, VarTypes::U32, SaveLoadVersion::MultiTileWaypoints, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Waypoint, train_station.w, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MultiTileWaypoints, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Waypoint, train_station.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MultiTileWaypoints, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Waypoint, waypoint_flags, VarTypes::U16, SaveLoadVersion::RoadWaypoints, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Waypoint, road_waypoint_area.tile, VarTypes::U32, SaveLoadVersion::RoadWaypoints, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Waypoint, road_waypoint_area.w, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::RoadWaypoints, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(Waypoint, road_waypoint_area.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::RoadWaypoints, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Waypoint, train_station.tile), SaveLoadVersion::MultiTileWaypoints),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Waypoint, train_station.w), SaveLoadVersion::MultiTileWaypoints),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Waypoint, train_station.h), SaveLoadVersion::MultiTileWaypoints),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Waypoint, waypoint_flags), SaveLoadVersion::RoadWaypoints),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Waypoint, road_waypoint_area.tile), SaveLoadVersion::RoadWaypoints),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Waypoint, road_waypoint_area.w), SaveLoadVersion::RoadWaypoints),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Waypoint, road_waypoint_area.h), SaveLoadVersion::RoadWaypoints),
 	};
 	static inline const SaveLoadCompatTable compat_description = _station_waypoint_sl_compat;
 

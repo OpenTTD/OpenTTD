@@ -785,17 +785,11 @@ constexpr bool SlVarMemTypeMatches(VarMemType type)
 	}
 }
 
-template <typename T>
+template <typename T, VarFileType file_type>
 constexpr VarMemType SlGetMemType()
 {
-	if constexpr (std::is_enum_v<T>) {
-		return SlGetMemType<std::underlying_type_t<T>>();
-	} else if constexpr (ConvertibleThroughBase<T>) {
-		return SlGetMemType<typename T::BaseType>();
-	} else if constexpr (std::is_base_of_v<BaseLabel, T>) {
+	if constexpr (std::is_base_of_v<BaseLabel, T>) {
 		return VarMemType::Label;
-	} else if constexpr (requires { typename T::value_type; }) {
-		return SlGetMemType<typename T::value_type>();
 	} else if constexpr (std::is_same_v<bool, T>) {
 		return VarMemType::Bool;
 	} else if constexpr (std::is_same_v<int8_t, T>) {
@@ -815,7 +809,17 @@ constexpr VarMemType SlGetMemType()
 	} else if constexpr (std::is_same_v<uint64_t, T>) {
 		return VarMemType::U64;
 	} else if constexpr (std::is_same_v<std::string, T>) {
-		return VarMemType::Str;
+		if constexpr (file_type == VarFileType::StringID) {
+			return VarMemType::Name; // Special transitional case for migrating from StringID to std::string.
+		} else {
+			return VarMemType::Str;
+		}
+	} else if constexpr (std::is_enum_v<T>) {
+		return SlGetMemType<std::underlying_type_t<T>, file_type>();
+	} else if constexpr (ConvertibleThroughBase<T>) {
+		return SlGetMemType<typename T::BaseType, file_type>();
+	} else if constexpr (requires { typename T::value_type; }) {
+		return SlGetMemType<typename T::value_type, file_type>();
 	} else {
 		static_assert(false, "The given type is not supported");
 	}
@@ -862,7 +866,7 @@ struct SaveLoad {
 		return SaveLoad{
 			.name = std::move(name),
 			.cmd = SaveLoadType::Variable,
-			.conv = {file_type, SlGetMemType<T>()},
+			.conv = {file_type, SlGetMemType<T, file_type>()},
 			.version_from = from,
 			.version_to = to,
 			.address_proc = address_proc,
@@ -920,11 +924,11 @@ struct SaveLoad {
 	template <VarFileType file_type, uint16_t length, typename T>
 	static SaveLoad Array(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
-		static_assert(SlVarSize(SlGetMemType<T>()) * length <= sizeof(T)); // Partial setting/filling of an array is permitted.
+		static_assert(SlVarSize(SlGetMemType<T, file_type>()) * length <= sizeof(T)); // Partial setting/filling of an array is permitted.
 		return SaveLoad{
 			.name = std::move(name),
 			.cmd = SaveLoadType::Array,
-			.conv = {file_type, SlGetMemType<T>()},
+			.conv = {file_type, SlGetMemType<T, file_type>()},
 			.length = length,
 			.version_from = from,
 			.version_to = to,
@@ -939,7 +943,7 @@ struct SaveLoad {
 		return SaveLoad{
 			.name = std::move(name),
 			.cmd = SaveLoadType::Vector,
-			.conv = {file_type, SlGetMemType<typename T::value_type>()},
+			.conv = {file_type, SlGetMemType<typename T::value_type, file_type>()},
 			.version_from = from,
 			.version_to = to,
 			.address_proc = address_proc,
@@ -1166,16 +1170,6 @@ constexpr void SlCheckMemoryType()
  * @note In general, it is better to use one of the SLE_* macros below.
  */
 #define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) SLE_GENERAL_NAME(cmd, #variable, base, variable, type, length, from, to, extra)
-
-/**
- * Storage of a variable in some savegame versions.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Variable, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.

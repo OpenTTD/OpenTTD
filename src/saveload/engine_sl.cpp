@@ -19,10 +19,10 @@
 #include "../safeguards.h"
 
 static const SaveLoad _engine_desc[] = {
-	 SLE_CONDVAR(Engine, intro_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
-	 SLE_CONDVAR(Engine, intro_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, age, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
-	 SLE_CONDVAR(Engine, age, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, intro_date), SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, intro_date), SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, age), SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, age), SaveLoadVersion::BigDates),
 	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, reliability)),
 	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, reliability_spd_dec)),
 	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, reliability_start)),
@@ -32,12 +32,12 @@ static const SaveLoad _engine_desc[] = {
 	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, duration_phase_2)),
 	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, duration_phase_3)),
 	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, flags)),
-	 SLE_CONDVAR(Engine, preview_asked, VarTypes::U16, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, preview_company, VarTypes::U8, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, preview_asked), SaveLoadVersion::RobustEnginePreview),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, preview_company), SaveLoadVersion::RobustEnginePreview),
 	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, preview_wait)),
-	 SLE_CONDVAR(Engine, company_avail, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	 SLE_CONDVAR(Engine, company_avail, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, company_hidden, VarTypes::U16, SaveLoadVersion::HideEnginesForCompany, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, company_avail), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, company_avail), SaveLoadVersion::MoreCompanies),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, company_hidden), SaveLoadVersion::HideEnginesForCompany),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Engine, name), {}, SaveLoadVersion::ReplaceCustomNameArray),
 };
 

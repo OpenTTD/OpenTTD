@@ -19,16 +19,16 @@
 
 /** Description of a sign within the savegame. */
 static const SaveLoad _sign_desc[] = {
-	SLE_CONDVAR(Sign, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SaveLoad::Variable<VarFileType::StringID>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, name), SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Sign, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDVAR(Sign, x, VarFileType::I16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
-	SLE_CONDVAR(Sign, y, VarFileType::I16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
-	SLE_CONDVAR(Sign, x, VarTypes::I32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Sign, y, VarTypes::I32, SaveLoadVersion::BigMap, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Sign, owner, VarTypes::U8, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Sign, z, VarFileType::U8 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
-	SLE_CONDVAR(Sign, z, VarTypes::I32, SaveLoadVersion::VehicleCentreAndZPos, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Sign, text_colour, VarTypes::U8, SaveLoadVersion::SignTextColours, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::I16>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, x), SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
+	SaveLoad::Variable<VarFileType::I16>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, y), SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, x), SaveLoadVersion::BigMap),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, y), SaveLoadVersion::BigMap),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, owner), SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, z), SaveLoadVersion::MinVersion, SaveLoadVersion::VehicleCentreAndZPos),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, z), SaveLoadVersion::VehicleCentreAndZPos),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Sign, text_colour), SaveLoadVersion::SignTextColours),
 };
 
 struct SIGNChunkHandler : ChunkHandler {

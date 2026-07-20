@@ -17,8 +17,8 @@
 
 static const SaveLoad _league_table_elements_desc[] = {
 	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, table)),
-	SLE_CONDVAR(LeagueTableElement, rating, VarFileType::U64 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
-	SLE_CONDVAR(LeagueTableElement, rating, VarTypes::I64, SaveLoadVersion::LinkgraphEdges, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U64>(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, rating), SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
+	SaveLoad::Variable<VarFileType::I64>(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, rating), SaveLoadVersion::LinkgraphEdges),
 	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, company)),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, text), StringValidationSetting::AllowControlCode),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(LeagueTableElement, score), StringValidationSetting::AllowControlCode),

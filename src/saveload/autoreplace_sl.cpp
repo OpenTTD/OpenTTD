@@ -21,8 +21,8 @@ static const SaveLoad _engine_renew_desc[] = {
 	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, to)),
 
 	SaveLoad::Reference<SLRefType::EngineRenew>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, next)),
-	SLE_CONDVAR(EngineRenew, group_id, VarTypes::U16, SaveLoadVersion::VehicleGroups, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(EngineRenew, replace_when_old, VarTypes::BOOL, SaveLoadVersion::AutoreplaceWhenOldTreeLimit, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, group_id), SaveLoadVersion::VehicleGroups),
+	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, replace_when_old), SaveLoadVersion::AutoreplaceWhenOldTreeLimit),
 };
 
 struct ERNWChunkHandler : ChunkHandler {

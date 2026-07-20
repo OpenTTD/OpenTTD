@@ -22,7 +22,7 @@ static const SaveLoad _goals_desc[] = {
 	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Goal, dst)),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Goal, text), StringValidationSetting::AllowControlCode),
 	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Goal, progress), StringValidationSetting::AllowControlCode, SaveLoadVersion::GoalProgressPlaneAcceleration),
-	 SLE_CONDVAR(Goal, completed, VarTypes::BOOL, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(Goal, completed), SaveLoadVersion::GoalProgressPlaneAcceleration),
 };
 
 struct GOALChunkHandler : ChunkHandler {
