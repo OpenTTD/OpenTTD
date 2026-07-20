@@ -641,6 +641,7 @@ enum class VarFileType : uint8_t {
 	U16 = 4, ///< A 16 bit unsigned int.
 	I32 = 5, ///< A 32 bit signed int.
 	U32 = 6, ///< A 32 bit unsigned int.
+	Label = U32, ///< A label is stored in an 32 bit unsigned integer field.
 	I64 = 7, ///< A 64 bit signed int.
 	U64 = 8, ///< A 64 bit unsigned int.
 	StringID = 9, ///< StringID offset into strings-array.
@@ -1175,32 +1176,12 @@ constexpr void SlCheckMemoryType()
 #define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Variable, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a variable in some savegame versions.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLE_CONDVARNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::Variable, name, base, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a variable in every version of a savegame.
  * @param base     Name of the class or struct containing the variable.
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a variable in every version of a savegame.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_VARNAME(base, variable, name, type) SLE_CONDVARNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.

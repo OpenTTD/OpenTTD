@@ -333,10 +333,10 @@ static const SaveLoad _town_desc[] = {
 	SaveLoad::Variable<VarFileType::U16>("supplied[CT_MAIL].new_act", SLE_GLOBAL_ADDRESS(_old_mail_supplied[THIS_MONTH].transported), SaveLoadVersion::MinVersion, SaveLoadVersion::LargerTownCargoStatistics),
 	SaveLoad::Variable<VarFileType::U32>("supplied[CT_MAIL].new_act", SLE_GLOBAL_ADDRESS(_old_mail_supplied[THIS_MONTH].transported), SaveLoadVersion::LargerTownCargoStatistics, SaveLoadVersion::ScriptTownGrowth),
 
-	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].old_act, "received[TE_FOOD].old_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
-	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].old_act, "received[TE_WATER].old_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
-	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].new_act, "received[TE_FOOD].new_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
-	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].new_act, "received[TE_WATER].new_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
+	SaveLoad::Variable<VarFileType::U16>("received[TE_FOOD].old_act", SLE_OBJECT_ADDRESS(Town, received[TownAcceptanceEffect::Food].old_act), SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
+	SaveLoad::Variable<VarFileType::U16>("received[TE_WATER].old_act", SLE_OBJECT_ADDRESS(Town, received[TownAcceptanceEffect::Water].old_act), SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
+	SaveLoad::Variable<VarFileType::U16>("received[TE_FOOD].new_act", SLE_OBJECT_ADDRESS(Town, received[TownAcceptanceEffect::Food].new_act), SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
+	SaveLoad::Variable<VarFileType::U16>("received[TE_WATER].new_act", SLE_OBJECT_ADDRESS(Town, received[TownAcceptanceEffect::Water].new_act), SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
 
 	SaveLoad::Array<VarFileType::U32, to_underlying(TownAcceptanceEffect::End)>(SLE_NAME_AND_OBJECT_ADDRESS(Town, goal), SaveLoadVersion::ScriptTownGrowth),
 

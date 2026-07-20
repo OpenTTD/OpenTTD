@@ -37,7 +37,7 @@ public:
 		    SLE_VAR(Edge, last_unrestricted_update, VarTypes::I32),
 		SLE_CONDVAR(Edge, last_restricted_update, VarTypes::I32, SaveLoadVersion::LinkgraphRestrictedFlow, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(Edge, dest_node,                VarTypes::U16),
-		SLE_CONDVARNAME(Edge, dest_node, "next_edge", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
+		SaveLoad::Variable<VarFileType::U16>("next_edge", SLE_OBJECT_ADDRESS(Edge, dest_node), SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
 	};
 	static inline const SaveLoadCompatTable compat_description = _linkgraph_edge_sl_compat;
 

@@ -503,7 +503,7 @@ static const SaveLoad _company_desc[] = {
 	SaveLoad::StructList<SlAllowListData>("allow_list", SaveLoadVersion::CompanyAllowListV2),
 	SLE_VAR(CompanyProperties, allow_any, VarTypes::BOOL),
 
-	SLE_VARNAME(CompanyProperties, face.bits, "face", VarTypes::U32),
+	SaveLoad::Variable<VarFileType::U32>("face", SLE_OBJECT_ADDRESS(CompanyProperties, face.bits)),
 	SaveLoad::String("face_style", SLE_OBJECT_ADDRESS(CompanyProperties, face.style_label), {}, SaveLoadVersion::FaceStyles),
 
 	/* money was changed to a 64 bit field in savegame version 1. */

@@ -508,9 +508,9 @@ static const SaveLoad _old_station_desc[] = {
 	    SLE_VAR(Station, owner,                      VarTypes::U8),
 	    SLE_VAR(Station, facilities,                 VarTypes::U8),
 	    SLE_VAR(Station, airport.type,               VarTypes::U8),
-	SLE_CONDVARNAME(Station, airport.blocks, "airport.flags", VarFileType::U16 | VarMemType::U64, SaveLoadVersion::MinVersion, SaveLoadVersion::BiggerStationVariables),
-	SLE_CONDVARNAME(Station, airport.blocks, "airport.flags", VarFileType::U32 | VarMemType::U64, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MoreAirportBlocks),
-	SLE_CONDVARNAME(Station, airport.blocks, "airport.flags", VarTypes::U64, SaveLoadVersion::MoreAirportBlocks, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>("airport.flags", SLE_OBJECT_ADDRESS(Station, airport.blocks), SaveLoadVersion::MinVersion, SaveLoadVersion::BiggerStationVariables),
+	SaveLoad::Variable<VarFileType::U32>("airport.flags", SLE_OBJECT_ADDRESS(Station, airport.blocks), SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MoreAirportBlocks),
+	SaveLoad::Variable<VarFileType::U64>("airport.flags", SLE_OBJECT_ADDRESS(Station, airport.blocks), SaveLoadVersion::MoreAirportBlocks),
 
 	SLE_CONDVAR(Station, last_vehicle_type, VarTypes::U8, SaveLoadVersion::LastVehicleType, SaveLoadVersion::MaxVersion),
 
@@ -522,7 +522,7 @@ static const SaveLoad _old_station_desc[] = {
 
 	/* Used by newstations for graphic variations */
 	SLE_CONDVAR(Station, random_bits, VarTypes::U16, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
-	SLE_CONDVARNAME(Station, waiting_random_triggers, "waiting_triggers", VarTypes::U8, SaveLoadVersion::NewGRFStations, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>("waiting_triggers", SLE_OBJECT_ADDRESS(Station, waiting_random_triggers), SaveLoadVersion::NewGRFStations),
 	SaveLoad::Variable<VarFileType::U8>("num_specs", SLE_GLOBAL_ADDRESS(SlStationSpecList<StationSpec>::last_num_specs), SaveLoadVersion::NewGRFStations),
 
 	SaveLoad::ReferenceList<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Station, loading_vehicles), SaveLoadVersion::FifoLoading),
@@ -594,7 +594,7 @@ public:
 
 		/* Used by newstations for graphic variations */
 		    SLE_VAR(BaseStation, random_bits,            VarTypes::U16),
-		    SLE_VARNAME(BaseStation, waiting_random_triggers, "waiting_triggers", VarTypes::U8),
+		SaveLoad::Variable<VarFileType::U8>("waiting_triggers", SLE_OBJECT_ADDRESS(BaseStation, waiting_random_triggers)),
 	SaveLoad::StructList<SlStationWaitingTriggers>("tile_waiting_triggers"),
 	SaveLoad::Variable<VarFileType::U8>("num_specs", SLE_GLOBAL_ADDRESS(SlStationSpecList<StationSpec>::last_num_specs), SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 	};
@@ -640,7 +640,7 @@ public:
 		SLE_CONDVAR(Station, airport.h, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::StoreAirportSize, SaveLoadVersion::MaxVersion),
 		    SLE_VAR(Station, airport.type,               VarTypes::U8),
 		SLE_CONDVAR(Station, airport.layout, VarTypes::U8, SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::MaxVersion),
-		SLE_VARNAME(Station, airport.blocks, "airport.flags", VarTypes::U64),
+		SaveLoad::Variable<VarFileType::U64>("airport.flags", SLE_OBJECT_ADDRESS(Station, airport.blocks)),
 		SLE_CONDVAR(Station, airport.rotation, VarTypes::U8, SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::MaxVersion),
 		SaveLoad::Array<VarFileType::U32, 16>("storage", SLE_GLOBAL_ADDRESS(_old_st_persistent_storage.storage), SaveLoadVersion::NewGRFAirportSmoke, SaveLoadVersion::PersistentStoragePool),
 		SaveLoad::Reference<SLRefType::Storage>(SLE_NAME_AND_OBJECT_ADDRESS(Station, airport.psa), SaveLoadVersion::PersistentStoragePool),

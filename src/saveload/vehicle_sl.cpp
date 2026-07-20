@@ -729,8 +729,8 @@ public:
 		SLE_CONDVAR(Vehicle, timetable_start, VarFileType::I32 | VarMemType::U64, SaveLoadVersion::TimetableStart, SaveLoadVersion::TimetableStartTicks),
 		SLE_CONDVAR(Vehicle, timetable_start, VarTypes::U64, SaveLoadVersion::TimetableStartTicks, SaveLoadVersion::MaxVersion),
 
-		SLE_CONDVARNAME(Vehicle, old_orders, "orders", VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
-		SLE_CONDVARNAME(Vehicle, old_orders, "orders", VarTypes::U32, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrderList),
+		SaveLoad::Variable<VarFileType::U16>("orders", SLE_OBJECT_ADDRESS(Vehicle, old_orders), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("orders", SLE_OBJECT_ADDRESS(Vehicle, old_orders), SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrderList),
 		SaveLoad::Reference<SLRefType::OrderList>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, orders), SaveLoadVersion::OrderList),
 
 		SLE_CONDVAR(Vehicle, age, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
@@ -769,7 +769,7 @@ public:
 
 		SLE_CONDVAR(Vehicle, random_bits, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::ExtendVehicleRandom),
 		SLE_CONDVAR(Vehicle, random_bits, VarTypes::U16, SaveLoadVersion::ExtendVehicleRandom, SaveLoadVersion::MaxVersion),
-		SLE_CONDVARNAME(Vehicle, waiting_random_triggers, "waiting_triggers", VarTypes::U8, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U8>("waiting_triggers", SLE_OBJECT_ADDRESS(Vehicle, waiting_random_triggers), SaveLoadVersion::VehicleCurrencyStationChanges),
 
 		SaveLoad::Reference<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(Vehicle, next_shared), SaveLoadVersion::VehicleCurrencyStationChanges),
 		SLE_CONDVAR(Vehicle, group_id, VarTypes::U16, SaveLoadVersion::VehicleGroups, SaveLoadVersion::MaxVersion),
@@ -1066,8 +1066,8 @@ public:
 
 		    SLE_VAR(Vehicle, owner,                 VarTypes::U8),
 		    SLE_VAR(Vehicle, vehstatus,             VarTypes::U8),
-		SLE_CONDVARNAME(DisasterVehicle, state, "current_order.dest", VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
-		SLE_CONDVARNAME(DisasterVehicle, state, "current_order.dest", VarTypes::U16, SaveLoadVersion::BigMap, SaveLoadVersion::DisasterVehState),
+		SaveLoad::Variable<VarFileType::U8>("current_order.dest", SLE_OBJECT_ADDRESS(DisasterVehicle, state), SaveLoadVersion::MinVersion, SaveLoadVersion::BigMap),
+		SaveLoad::Variable<VarFileType::U16>("current_order.dest", SLE_OBJECT_ADDRESS(DisasterVehicle, state), SaveLoadVersion::BigMap, SaveLoadVersion::DisasterVehState),
 		SLE_CONDVAR(DisasterVehicle, state, VarTypes::U16, SaveLoadVersion::DisasterVehState, SaveLoadVersion::MaxVersion),
 
 		    SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, VarFileType::U16 | VarMemType::U32),
