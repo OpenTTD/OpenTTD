@@ -573,6 +573,7 @@ private:
 enum class NWidContainerFlag : uint8_t {
 	EqualSize, ///< Containers should keep all their (resizing) children equally large.
 	BigFirst, ///< Allocate space to biggest resize first.
+	NoFill, ///< Don't pass child-widget fill on to container.
 };
 
 /** Bitset of \c NWidContainerFlag elements. */

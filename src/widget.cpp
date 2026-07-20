@@ -1622,6 +1622,8 @@ void NWidgetHorizontal::SetupSmallestSize(Window *w)
 	/* 3. Compute smallest, fill, and resize values of the container. */
 	for (const auto &child_wid : this->children) {
 		this->smallest_x += child_wid->smallest_x + child_wid->padding.Horizontal();
+		if (this->flags.Test(NWidContainerFlag::NoFill)) continue;
+
 		if (child_wid->fill_x > 0) {
 			if (this->fill_x == 0 || this->fill_x > child_wid->fill_x) this->fill_x = child_wid->fill_x;
 		}
@@ -1805,6 +1807,8 @@ void NWidgetVertical::SetupSmallestSize(Window *w)
 	/* 3. Compute smallest, fill, and resize values of the container. */
 	for (const auto &child_wid : this->children) {
 		this->smallest_y += child_wid->smallest_y + child_wid->padding.Vertical();
+		if (this->flags.Test(NWidContainerFlag::NoFill)) continue;
+
 		if (child_wid->fill_y > 0) {
 			if (this->fill_y == 0 || this->fill_y > child_wid->fill_y) this->fill_y = child_wid->fill_y;
 		}
