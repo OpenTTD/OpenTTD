@@ -31,11 +31,8 @@ enum TextDirection : uint8_t {
 enum StringTab : uint8_t {
 	/* Tabs 0..1 for regular strings */
 	TEXT_TAB_TOWN             =  4,
-	TEXT_TAB_INDUSTRY         =  9,
-	TEXT_TAB_STATION          = 12,
 	TEXT_TAB_SPECIAL          = 14,
 	TEXT_TAB_OLD_CUSTOM       = 15,
-	TEXT_TAB_VEHICLE          = 16,
 	/* Tab 17 for regular strings */
 	TEXT_TAB_OLD_NEWGRF       = 26,
 	TEXT_TAB_END              = 32, ///< End of language files.
