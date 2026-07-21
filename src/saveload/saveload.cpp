@@ -686,7 +686,6 @@ static inline uint SlCalcConvMemLen(VarMemType conv)
 		case VarMemType::LabelForward: return sizeof(BaseLabel);
 
 		case VarMemType::Str:
-		case VarMemType::StrQ:
 			return SlReadArrayLength();
 
 		case VarMemType::Name:
