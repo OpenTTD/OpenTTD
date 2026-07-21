@@ -78,8 +78,8 @@ static StringID TTDPStringIDToOTTDStringIDMapping(GRFStringID str)
 	assert(!IsInsideMM(str.base(), 0xD000, 0xD7FF));
 
 #define TEXTID_TO_STRINGID(begin, end, stringid, stringend) \
-	static_assert(stringend - stringid == end - begin); \
-	if (str.base() >= begin && str.base() <= end) return StringID{str.base() + (stringid - begin)}
+	static_assert(stringend.base() - stringid.base() == end - begin); \
+	if (str.base() >= begin && str.base() <= end) return StringID{str.base() + (stringid.base() - begin)}
 
 	/* We have some changes in our cargo strings, resulting in some missing. */
 	TEXTID_TO_STRINGID(0x000E, 0x002D, STR_CARGO_PLURAL_NOTHING,                      STR_CARGO_PLURAL_FIZZY_DRINKS);

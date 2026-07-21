@@ -277,7 +277,7 @@ std::string TranslateTTDPatchCodes(GrfID grfid, GRFLanguage language_id, bool al
 			{
 				uint16_t string = consumer.ReadUint16LE();
 				builder.PutUtf8(SCC_NEWGRF_STRINL);
-				builder.PutUtf8(MapGRFStringID(grfid, GRFStringID{string}));
+				builder.PutUtf8(MapGRFStringID(grfid, GRFStringID{string}).base());
 				break;
 			}
 			case 0x82:
@@ -843,7 +843,7 @@ static void ProcessNewGRFStringControlCode(char32_t scc, StringConsumer &consume
 			break;
 
 		case SCC_NEWGRF_STRINL: {
-			StringID stringid = consumer.ReadUtf8(STR_NULL);
+			StringID stringid{consumer.ReadUtf8(STR_NULL.base())};
 			/* We also need to handle the substring's stack usage. */
 			HandleNewGRFStringControlCodes(GetStringPtr(stringid), stack, params);
 			break;

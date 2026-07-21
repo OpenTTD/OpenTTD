@@ -23,7 +23,7 @@ public:
 	BadgeID index; ///< Index assigned to badge.
 	BadgeClassID class_index; ///< Index of class this badge belongs to.
 	BadgeFlags flags = {}; ///< Display flags
-	StringID name = 0; ///< Short name.
+	StringID name{}; ///< Short name.
 	GrfSpecFeatures features{}; ///< Bitmask of which features use this badge.
 	VariableGRFFileProps<GrfSpecFeature> grf_prop; ///< Sprite information.
 

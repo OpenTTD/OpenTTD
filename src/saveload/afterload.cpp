@@ -677,7 +677,7 @@ bool AfterLoadGame()
 		}
 
 		for (Town *t : Town::Iterate()) {
-			t->name = CopyFromOldName(t->townnametype);
+			t->name = CopyFromOldName(static_cast<StringID>(t->townnametype));
 			if (!t->name.empty()) t->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
 		}
 	}
