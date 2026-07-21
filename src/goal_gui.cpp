@@ -321,17 +321,18 @@ struct GoalQuestionWindow : public Window {
 	EncodedString question; ///< Question to ask (private copy).
 	GoalQuestionButtons buttons; ///< Buttons to display.
 	TextColour colour; ///< Colour of the question text.
+	GoalQuestionType type; ///< The type of question.
 
 	/**
 	 * Construct a new Goal Question Window.
 	 * @param desc Window description.
 	 * @param window_number Number for the window.
-	 * @param colour Colour of the question text.
+	 * @param type The type of question that is being asked.
 	 * @param buttons Buttons to display.
 	 * @param question Question to ask.
 	 */
-	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, TextColour colour, GoalQuestionButtons buttons, const EncodedString &question)
-		: Window(desc), question(question), buttons(buttons), colour(colour)
+	GoalQuestionWindow(WindowDesc &desc, WindowNumber window_number, GoalQuestionType type, GoalQuestionButtons buttons, const EncodedString &question)
+		: Window(desc), question(question), buttons(buttons), colour(type == GoalQuestionType::Error ? TextColour::White : TextColour::Black), type(type)
 	{
 		assert(this->buttons.Count() < 4);
 
@@ -347,6 +348,9 @@ struct GoalQuestionWindow : public Window {
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
+			case WID_GQ_CAPTION:
+				return GetString(STR_GOAL_QUESTION_CAPTION_QUESTION + to_underlying(this->type));
+
 			case WID_GQ_BUTTON_1:
 			case WID_GQ_BUTTON_2:
 			case WID_GQ_BUTTON_3:
@@ -390,12 +394,12 @@ struct GoalQuestionWindow : public Window {
  * @tparam btn_colour Button colour.
  * @tparam caption Window caption string.
  */
-template <Colours bg_colour, Colours btn_colour, StringID caption>
+template <Colours bg_colour, Colours btn_colour>
 struct NestedGoalWidgets {
 	static constexpr auto widgetparts = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_CLOSEBOX, bg_colour),
-			NWidget(WWT_CAPTION, bg_colour, WID_GQ_CAPTION), SetStringTip(caption, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+			NWidget(WWT_CAPTION, bg_colour, WID_GQ_CAPTION), SetStringTip(STR_NULL, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		EndContainer(),
 		NWidget(WWT_PANEL, bg_colour),
 			NWidget(NWID_VERTICAL), SetPadding(WidgetDimensions::unscaled.modalpopup), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0),
@@ -419,10 +423,10 @@ struct NestedGoalWidgets {
 	};
 };
 
-static constexpr auto _nested_goal_question_widgets_question = NestedGoalWidgets<Colours::LightBlue, Colours::LightBlue, STR_GOAL_QUESTION_CAPTION_QUESTION>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_info     = NestedGoalWidgets<Colours::LightBlue, Colours::LightBlue, STR_GOAL_QUESTION_CAPTION_INFORMATION>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_warning  = NestedGoalWidgets<Colours::Yellow,     Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_WARNING>::widgetparts;
-static constexpr auto _nested_goal_question_widgets_error    = NestedGoalWidgets<Colours::Red,        Colours::Yellow,     STR_GOAL_QUESTION_CAPTION_ERROR>::widgetparts;
+static constexpr auto _nested_goal_question_widgets_question = NestedGoalWidgets<Colours::LightBlue, Colours::LightBlue>::widgetparts; ///< Widgets for a question.
+static constexpr auto _nested_goal_question_widgets_info = NestedGoalWidgets<Colours::LightBlue, Colours::LightBlue>::widgetparts; ///< Widgets for a informational message.
+static constexpr auto _nested_goal_question_widgets_warning = NestedGoalWidgets<Colours::Yellow, Colours::Yellow>::widgetparts; ///< Widgets for a warning message.
+static constexpr auto _nested_goal_question_widgets_error = NestedGoalWidgets<Colours::Red, Colours::Yellow>::widgetparts; ///< Widgets for an error message.
 
 /** Window definitions for the goal question windows. */
 static EnumIndexArray<WindowDesc, GoalQuestionType, GoalQuestionType::End> _goal_question_list_desc{{{
@@ -462,5 +466,5 @@ static EnumIndexArray<WindowDesc, GoalQuestionType, GoalQuestionType::End> _goal
 void ShowGoalQuestion(uint16_t id, GoalQuestionType type, GoalQuestionButtons buttons, const EncodedString &question)
 {
 	assert(type < GoalQuestionType::End);
-	new GoalQuestionWindow(_goal_question_list_desc[type], id, type == GoalQuestionType::Error ? TextColour::White : TextColour::Black, buttons, question);
+	new GoalQuestionWindow(_goal_question_list_desc[type], id, type, buttons, question);
 }
