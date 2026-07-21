@@ -785,33 +785,66 @@ constexpr bool SlVarMemTypeMatches(VarMemType type)
 	}
 }
 
+constexpr bool SlIsIntegralFileType(VarFileType file_type)
+{
+	switch (file_type) {
+		case VarFileType::I8:
+		case VarFileType::U8:
+		case VarFileType::I16:
+		case VarFileType::U16:
+		case VarFileType::I32:
+		case VarFileType::U32:
+		case VarFileType::I64:
+		case VarFileType::U64:
+			return true;
+
+		default:
+			return false;
+	}
+}
+
 template <typename T, VarFileType file_type>
 constexpr VarMemType SlGetMemType()
 {
 	if constexpr (std::is_base_of_v<BaseLabel, T>) {
+		static_assert(file_type == VarFileType::Label);
 		return VarMemType::Label;
+	} else if constexpr (std::is_same_v<StringID, T>) {
+		static_assert(file_type == VarFileType::StringID);
+		static_assert(sizeof(T) == sizeof(uint32_t));
+		return VarMemType::U32;
 	} else if constexpr (std::is_same_v<bool, T>) {
+		static_assert(file_type == VarFileType::Bool);
 		return VarMemType::Bool;
 	} else if constexpr (std::is_same_v<int8_t, T>) {
+		static_assert(SlIsIntegralFileType(file_type));
 		return VarMemType::I8;
 	} else if constexpr (std::is_same_v<uint8_t, T> || std::is_same_v<char, T>) {
+		static_assert(SlIsIntegralFileType(file_type));
 		return VarMemType::U8;
 	} else if constexpr (std::is_same_v<int16_t, T>) {
+		static_assert(SlIsIntegralFileType(file_type));
 		return VarMemType::I16;
 	} else if constexpr (std::is_same_v<uint16_t, T>) {
+		static_assert(SlIsIntegralFileType(file_type));
 		return VarMemType::U16;
 	} else if constexpr (std::is_same_v<int32_t, T>) {
+		static_assert(SlIsIntegralFileType(file_type));
 		return VarMemType::I32;
 	} else if constexpr (std::is_same_v<uint32_t, T>) {
+		static_assert(SlIsIntegralFileType(file_type));
 		return VarMemType::U32;
 	} else if constexpr (std::is_same_v<int64_t, T>) {
+		static_assert(SlIsIntegralFileType(file_type));
 		return VarMemType::I64;
 	} else if constexpr (std::is_same_v<uint64_t, T>) {
+		static_assert(SlIsIntegralFileType(file_type));
 		return VarMemType::U64;
 	} else if constexpr (std::is_same_v<std::string, T>) {
 		if constexpr (file_type == VarFileType::StringID) {
 			return VarMemType::Name; // Special transitional case for migrating from StringID to std::string.
 		} else {
+			static_assert(file_type == VarFileType::String);
 			return VarMemType::Str;
 		}
 	} else if constexpr (std::is_enum_v<T>) {
@@ -992,7 +1025,7 @@ struct SaveLoad {
 		return SaveLoad{
 			.name = std::move(name),
 			.cmd = SaveLoadType::SaveByte,
-			.conv = VarTypes::U8,
+			.conv = {VarFileType::U8, SlGetMemType<T, VarFileType::U8>()},
 			.version_from = from,
 			.version_to = to,
 			.address_proc = address_proc,
