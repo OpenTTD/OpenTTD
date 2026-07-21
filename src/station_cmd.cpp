@@ -1250,8 +1250,8 @@ StationGfx RailStationTileLayout<StationType::Rail>::Iterator::operator*() const
 /**
  * Find a nearby station that joins this station.
  * @tparam T the class to find a station for
- * @tparam error_message the error message when building a station on top of others
  * @tparam F the filter functor type
+ * @param error_message the error message when building a station on top of others
  * @param existing_station an existing station we build over
  * @param station_to_join the station to join to
  * @param adjacent whether adjacent stations are allowed
@@ -1260,8 +1260,8 @@ StationGfx RailStationTileLayout<StationType::Rail>::Iterator::operator*() const
  * @param filter The filter to remove unwanted stations.
  * @return command cost with the error or 'okay'
  */
-template <class T, StringID error_message, class F>
-CommandCost FindJoiningBaseStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, T **st, F filter)
+template <class T, class F>
+CommandCost FindJoiningBaseStation(StringID error_message, StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, T **st, F filter)
 {
 	assert(*st == nullptr);
 	bool check_surrounding = true;
@@ -1307,7 +1307,7 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
  */
 static CommandCost FindJoiningStation(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Station **st)
 {
-	return FindJoiningBaseStation<Station, STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST>(existing_station, station_to_join, adjacent, ta, st, [](const Station *) -> bool { return true; });
+	return FindJoiningBaseStation<Station>(STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST, existing_station, station_to_join, adjacent, ta, st, [](const Station *) -> bool { return true; });
 }
 
 /**
@@ -1323,9 +1323,9 @@ static CommandCost FindJoiningStation(StationID existing_station, StationID stat
 CommandCost FindJoiningWaypoint(StationID existing_waypoint, StationID waypoint_to_join, bool adjacent, TileArea ta, Waypoint **wp, bool is_road)
 {
 	if (is_road) {
-		return FindJoiningBaseStation<Waypoint, STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST>(existing_waypoint, waypoint_to_join, adjacent, ta, wp, [](const Waypoint *wp) -> bool { return HasBit(wp->waypoint_flags, WPF_ROAD); });
+		return FindJoiningBaseStation<Waypoint>(STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST, existing_waypoint, waypoint_to_join, adjacent, ta, wp, [](const Waypoint *wp) -> bool { return HasBit(wp->waypoint_flags, WPF_ROAD); });
 	} else {
-		return FindJoiningBaseStation<Waypoint, STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST>(existing_waypoint, waypoint_to_join, adjacent, ta, wp, [](const Waypoint *wp) -> bool { return !HasBit(wp->waypoint_flags, WPF_ROAD); });
+		return FindJoiningBaseStation<Waypoint>(STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST, existing_waypoint, waypoint_to_join, adjacent, ta, wp, [](const Waypoint *wp) -> bool { return !HasBit(wp->waypoint_flags, WPF_ROAD); });
 	}
 }
 
@@ -2013,7 +2013,7 @@ CommandCost RemoveRoadWaypointStop(TileIndex tile, DoCommandFlags flags, int rep
  */
 static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID station_to_join, bool adjacent, TileArea ta, Station **st)
 {
-	return FindJoiningBaseStation<Station, STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST>(existing_stop, station_to_join, adjacent, ta, st, [](const Station *) -> bool { return true; });
+	return FindJoiningBaseStation<Station>(STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST, existing_stop, station_to_join, adjacent, ta, st, [](const Station *) -> bool { return true; });
 }
 
 /**
