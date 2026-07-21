@@ -315,7 +315,6 @@ std::string_view GetStringPtr(StringID string)
 	switch (GetStringTab(string)) {
 		case TEXT_TAB_GAMESCRIPT_START: return GetGameStringPtr(GetStringIndex(string));
 		/* 0xD0xx and 0xD4xx IDs have been converted earlier. */
-		case TEXT_TAB_OLD_NEWGRF: NOT_REACHED();
 		case TEXT_TAB_NEWGRF_START: return GetGRFStringPtr(GetStringIndex(string));
 		default: {
 			const size_t offset = _langpack.langtab_start[GetStringTab(string)] + GetStringIndex(string).base();
@@ -379,9 +378,6 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 			FormatString(builder, GetGameStringPtr(index), args, case_index, true);
 			return;
 		}
-
-		case TEXT_TAB_OLD_NEWGRF:
-			NOT_REACHED();
 
 		case TEXT_TAB_NEWGRF_START: {
 			FormatString(builder, GetGRFStringPtr(index), args, case_index);

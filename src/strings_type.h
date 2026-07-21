@@ -34,7 +34,6 @@ enum StringTab : uint8_t {
 	TEXT_TAB_SPECIAL          = 14,
 	TEXT_TAB_OLD_CUSTOM       = 15,
 	/* Tab 17 for regular strings */
-	TEXT_TAB_OLD_NEWGRF       = 26,
 	TEXT_TAB_END              = 32, ///< End of language files.
 	TEXT_TAB_GAMESCRIPT_START = 32, ///< Start of GameScript supplied strings.
 	TEXT_TAB_NEWGRF_START     = 64, ///< Start of NewGRF supplied strings.
