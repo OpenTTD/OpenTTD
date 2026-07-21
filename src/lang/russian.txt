@@ -4912,7 +4912,7 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Изме
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Выгрузить всё
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Разгрузиться, если груз принимается
-STR_ORDER_DROP_UNLOAD                                           :Выгрузить всё
+STR_ORDER_DROP_UNLOAD                                           :Принудительно выгрузить всё
 STR_ORDER_DROP_TRANSFER                                         :Передать
 STR_ORDER_DROP_NO_UNLOADING                                     :Не разгружаться
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Изменить способ разгрузки на указанной станции

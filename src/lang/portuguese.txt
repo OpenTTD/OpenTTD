@@ -4724,9 +4724,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Encher de qq. c
 STR_ORDER_DROP_NO_LOADING                                       :Sem carga
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Mudar o comportamento de carga da ordem selecionada
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarregar todas
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Forçar descarregar tudo
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarregar se aceite
-STR_ORDER_DROP_UNLOAD                                           :Descarregar todas
+STR_ORDER_DROP_UNLOAD                                           :Descarregar mesmo se não for aceite
 STR_ORDER_DROP_TRANSFER                                         :Transferir
 STR_ORDER_DROP_NO_UNLOADING                                     :Sem descarga
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Mudar o comportamento de descarga da ordem selecionada
@@ -4829,15 +4829,15 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Implíc
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Carga completa)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Encher com qualquer carga)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Sem carregar)
-STR_ORDER_UNLOAD                                                :{SPACE}(Descarregar e levar carga)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Descarregar e aguardar até encher)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Descarregar e aguardar até encher com qualquer carga)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Descarregar e partir vazio)
+STR_ORDER_UNLOAD                                                :{SPACE}(Forçar descarregar e levar carga)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Forçar descarregar e aguardar até encher)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Forçar descarregar e aguardar até encher com qualquer carga)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Forçar descarregar e partir vazio)
 STR_ORDER_TRANSFER                                              :{SPACE}(Transferir e levar carga)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transferir e aguardar até encher)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transferir e aguardar até encher com qualquer carga)
 STR_ORDER_TRANSFER_NO_LOAD                                      :{SPACE}(Transferir e partir vazio)
-STR_ORDER_NO_UNLOAD                                             :{SPACE}(Não descarregar e tomar carga)
+STR_ORDER_NO_UNLOAD                                             :{SPACE}(Não descarregar e levar carga)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :{SPACE}(Não descarregar e aguardar até encher)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :{SPACE}(Não descarregar e aguardar até encher com qualquer carga)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Sem carregar e descarregar)
@@ -4845,13 +4845,13 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Sem car
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Adaptar para transportar {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Carga completa com adaptação para {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Encher com qualquer carga com adaptação para {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Descarregar e tomar carga com adaptação para {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Descarregar e aguardar até encher com adaptação para {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Descarregar e aguardar até encher com qualquer carga com adaptação para {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transferir e tomar carga com adaptação para {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Forçar descarregar e levar carga com adaptação para {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Forçar descarregar e aguardar até encher com adaptação para {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Forçar descarregar e aguardar até encher com qualquer carga com adaptação para {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transferir e levar carga com adaptação para {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transferir e aguardar até encher com adaptação para {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transferir e aguardar até encher com qualquer carga com adaptação para {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Não descarregar e tomar carga com adaptação para {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :{SPACE}(Não descarregar e levar carga com adaptação para {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :{SPACE}(Não descarregar e aguardar até encher com adaptação para {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :{SPACE}(Não descarregar e aguardar até encher com qualquer carga com adaptação para {STRING})
 

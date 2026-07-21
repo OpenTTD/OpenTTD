@@ -4726,7 +4726,7 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Alterar 
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarregar tudo
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarregar se aceitado
-STR_ORDER_DROP_UNLOAD                                           :Descarregar tudo
+STR_ORDER_DROP_UNLOAD                                           :Descarregar mesmo se não for aceito
 STR_ORDER_DROP_TRANSFER                                         :Transferir
 STR_ORDER_DROP_NO_UNLOADING                                     :Não descarregar
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Alterar o modo de descarregar da ordem selecionada

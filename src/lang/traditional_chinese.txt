@@ -4723,9 +4723,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :滿載任一種
 STR_ORDER_DROP_NO_LOADING                                       :不裝載
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}修改選取指令的裝載行為
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}全部卸載
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}強制全部卸載
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :可接受則卸客貨
-STR_ORDER_DROP_UNLOAD                                           :全部卸載
+STR_ORDER_DROP_UNLOAD                                           :強制卸載即使不接受
 STR_ORDER_DROP_TRANSFER                                         :轉運
 STR_ORDER_DROP_NO_UNLOADING                                     :不卸載
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}修改選取指令的卸載行為
@@ -4828,31 +4828,31 @@ STR_ORDER_IMPLICIT                                              :（自動）
 STR_ORDER_FULL_LOAD                                             :（等候滿載）
 STR_ORDER_FULL_LOAD_ANY                                         :（滿載任一種類客貨）
 STR_ORDER_NO_LOAD                                               :（不裝載）
-STR_ORDER_UNLOAD                                                :（卸載後裝載客貨）
-STR_ORDER_UNLOAD_FULL_LOAD                                      :（卸載後等候滿載）
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :（卸載後等候任一種類滿載）
-STR_ORDER_UNLOAD_NO_LOAD                                        :（卸載後空車離開）
+STR_ORDER_UNLOAD                                                :（強制卸載後裝載客貨）
+STR_ORDER_UNLOAD_FULL_LOAD                                      :（強制卸載後等候滿載）
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :（強制卸載後等候任一種客貨滿載）
+STR_ORDER_UNLOAD_NO_LOAD                                        :（強制卸載後空車離開）
 STR_ORDER_TRANSFER                                              :（轉運且載客貨）
 STR_ORDER_TRANSFER_FULL_LOAD                                    :（轉運且等候滿載）
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :（轉運且等候任一種類滿載）
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :（轉運且等候任一種客貨滿載）
 STR_ORDER_TRANSFER_NO_LOAD                                      :（轉運後空車離開）
 STR_ORDER_NO_UNLOAD                                             :（不卸載且裝載）
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（不卸載且等候滿載）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（不卸載且等候任一種類滿載）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（不卸載且等候任一種客貨滿載）
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :（不卸載也不裝載）
 
 STR_ORDER_AUTO_REFIT                                            :（自動改裝為運載 {STRING}）
 STR_ORDER_FULL_LOAD_REFIT                                       :（自動改裝為運載 {STRING} 且等候滿載）
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :（自動改裝為運載 {STRING} 且等候滿載任一種客貨）
-STR_ORDER_UNLOAD_REFIT                                          :（卸載後改裝為運載 {STRING} 然後裝載客貨）
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :（卸載後改裝為運載 {STRING} 然後等候滿載）
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :（卸載後改裝為運載 {STRING} 然後等候滿載任一種客貨）
-STR_ORDER_TRANSFER_REFIT                                        :（轉運後改裝為運載 {STRING} 然後裝載客貨）
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :（轉運後改裝為運載 {STRING} 然後等候滿載）
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :（轉運後改裝為運載 {STRING} 然後等候滿載任一種客貨）
-STR_ORDER_NO_UNLOAD_REFIT                                       :（不卸載且改裝為運載 {STRING} 然後裝載客貨）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :（不卸載且改裝為運載 {STRING} 然後等候滿載）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :（不卸載且改裝為運載 {STRING} 然後等候滿載任一種客貨）
+STR_ORDER_UNLOAD_REFIT                                          :（強制卸載後改裝為運載 {STRING} 後裝載客貨）
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :（強制卸載後改裝為運載 {STRING} 後等候滿載）
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :（強制卸載後改裝為運載 {STRING} 後等候任一種客貨滿載）
+STR_ORDER_TRANSFER_REFIT                                        :（轉運後改裝為運載 {STRING} 後裝載客貨）
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :（轉運後改裝為運載 {STRING} 後等候滿載）
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :（轉運後改裝為運載 {STRING} 後等候任一種客貨滿載）
+STR_ORDER_NO_UNLOAD_REFIT                                       :（不卸載且改裝為運載 {STRING} 後裝載客貨）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :（不卸載且改裝為運載 {STRING} 後等候滿載）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :（不卸載且改裝為運載 {STRING} 後等候任一種客貨滿載）
 
 STR_ORDER_AUTO_REFIT_ANY                                        :可用貨物
 
