@@ -343,18 +343,6 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 	StringTab tab = GetStringTab(string);
 
 	switch (tab) {
-		case TEXT_TAB_TOWN:
-			if (IsInsideMM(string, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END) && !game_script) {
-				try {
-					GenerateTownNameString(builder, string - SPECSTR_TOWNNAME_START, args.GetNextParameter<uint32_t>());
-				} catch (const std::runtime_error &e) {
-					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
-					builder += "(invalid string parameter)";
-				}
-				return;
-			}
-			break;
-
 		case TEXT_TAB_SPECIAL:
 			if (!game_script) {
 				try {
