@@ -2379,7 +2379,7 @@ static void SlLoadChunks()
 /** Load all chunks for savegame checking */
 static void SlLoadCheckChunks()
 {
-	for (ChunkId id = SlReadChunkId(); id.Empty(); id = SlReadChunkId()) {
+	for (ChunkId id = SlReadChunkId(); !id.Empty(); id = SlReadChunkId()) {
 		Debug(sl, 2, "Loading chunk {}", id.AsString());
 
 		const ChunkHandler *ch = SlFindChunkHandler(id);
