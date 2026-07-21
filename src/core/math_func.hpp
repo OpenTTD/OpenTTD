@@ -252,6 +252,10 @@ constexpr bool IsInsideBS(const T x, const size_t base, const size_t size)
 	return static_cast<size_t>(x - base) < size;
 }
 
+/** Specialization of IsInsideBS for #ConvertibleThroughBase. @copydoc IsInsideBS(const T, const size_t, const size_t) */
+template <ConvertibleThroughBase T>
+constexpr bool IsInsideBS(const T x, const T base, const size_t size) noexcept { return IsInsideBS(x.base(), base.base(), size); }
+
 /**
  * Checks if a value is in an interval.
  *
@@ -270,6 +274,10 @@ constexpr bool IsInsideMM(const size_t x, const size_t min, const size_t max) no
 
 /** Specialization of IsInsideMM for #ConvertibleThroughBase. @copydoc IsInsideMM(const size_t, const size_t, const size_t) */
 constexpr bool IsInsideMM(const ConvertibleThroughBase auto x, const size_t min, const size_t max) noexcept { return IsInsideMM(x.base(), min, max); }
+
+/** Specialization of IsInsideMM for #ConvertibleThroughBase. @copydoc IsInsideMM(const size_t, const size_t, const size_t) */
+template <ConvertibleThroughBase T>
+constexpr bool IsInsideMM(const T x, const T min, const T max) noexcept { return IsInsideMM(x.base(), min.base(), max.base()); }
 
 /** Specialization of IsInsideMM for enums. @copydoc IsInsideMM(const size_t, const size_t, const size_t) */
 template <typename enum_type, std::enable_if_t<std::is_enum_v<enum_type>, bool> = true>

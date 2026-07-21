@@ -13,6 +13,7 @@
 #include "window_type.h"
 #include "company_type.h"
 #include "core/geometry_type.hpp"
+#include "strings_type.h"
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 Window *FindWindowByClass(WindowClass cls);
@@ -70,5 +71,13 @@ void CloseWindowByClass(WindowClass cls, int data = 0);
 bool EditBoxInGlobalFocus();
 bool FocusedWindowIsConsole();
 Point GetCaretPosition();
+
+/**
+ * Adding a window number to a string is a common occurence to get the caption for a vehicle type.
+ * @param string The base string.
+ * @param window_number The window number to add.
+ * @return The resulting \c StringID.
+ */
+constexpr StringID operator+(StringID string, WindowNumber window_number) noexcept { return string + static_cast<int32_t>(window_number); }
 
 #endif /* WINDOW_FUNC_H */

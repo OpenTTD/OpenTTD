@@ -104,7 +104,7 @@ EncodedString GetEncodedStringWithArgs(StringID str, std::span<const StringParam
 	std::string result;
 	StringBuilder builder(result);
 	builder.PutUtf8(SCC_ENCODED_INTERNAL);
-	builder.PutIntegerBase(str, 16);
+	builder.PutIntegerBase(str.base(), 16);
 
 	struct visitor {
 		StringBuilder &builder;
@@ -158,7 +158,7 @@ EncodedString EncodedString::ReplaceParam(size_t param, StringParameter &&data) 
 
 	StringID str;
 	if (auto r = consumer.TryReadIntegerBase<uint32_t>(16); r.has_value()) {
-		str = *r;
+		str = static_cast<StringID>(*r);
 	} else {
 		return {};
 	}
@@ -347,7 +347,7 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 		case TEXT_TAB_TOWN:
 			if (IsInsideMM(string, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END) && !game_script) {
 				try {
-					GenerateTownNameString(builder, string - SPECSTR_TOWNNAME_START, args.GetNextParameter<uint32_t>());
+					GenerateTownNameString(builder, (string - SPECSTR_TOWNNAME_START).base(), args.GetNextParameter<uint32_t>());
 				} catch (const std::runtime_error &e) {
 					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
 					builder += "(invalid string parameter)";
@@ -1045,7 +1045,7 @@ static void DecodeEncodedString(StringConsumer &consumer, bool game_script, Stri
 					return;
 				}
 				assert(!record.AnyBytesLeft());
-				param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param));
+				param = MakeStringID(TEXT_TAB_GAMESCRIPT_START, StringIndexInTab(param)).base();
 				sub_args.emplace_back(param);
 				break;
 			}
@@ -1175,7 +1175,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					break;
 
 				case SCC_NEWGRF_STRINL: {
-					StringID substr = consumer.ReadUtf8(STR_NULL);
+					StringID substr{consumer.ReadUtf8(STR_NULL.base())};
 					std::string_view ptr = GetStringPtr(substr);
 					str_stack.emplace(ptr, args.GetOffset(), next_substr_case_index); // this may invalidate "consumer"
 					next_substr_case_index = 0;
@@ -1377,12 +1377,12 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						break;
 					}
 
-					switch (CargoSpec::Get(cargo)->units_volume) {
-						case STR_TONS:
+					switch (CargoSpec::Get(cargo)->units_volume.base()) {
+						case STR_TONS.base():
 							amount = _units_weight[_settings_game.locale.units_weight].c.ToDisplay(amount);
 							break;
 
-						case STR_LITERS:
+						case STR_LITERS.base():
 							amount = _units_volume[_settings_game.locale.units_volume].c.ToDisplay(amount);
 							break;
 
@@ -1407,8 +1407,8 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					}
 
 					StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
-					switch (cargo_str) {
-						case STR_TONS: {
+					switch (cargo_str.base()) {
+						case STR_TONS.base(): {
 							assert(_settings_game.locale.units_weight < lengthof(_units_weight));
 							const auto &x = _units_weight[_settings_game.locale.units_weight];
 							auto tmp_params = MakeParameters(x.c.ToDisplay(amount), x.decimal_places);
@@ -1416,7 +1416,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 							break;
 						}
 
-						case STR_LITERS: {
+						case STR_LITERS.base(): {
 							assert(_settings_game.locale.units_volume < lengthof(_units_volume));
 							const auto &x = _units_volume[_settings_game.locale.units_volume];
 							auto tmp_params = MakeParameters(x.c.ToDisplay(amount), x.decimal_places);
@@ -1988,23 +1988,23 @@ static void GenPresidentName(StringBuilder &builder, uint32_t seed)
 
 static bool GetSpecialNameString(StringBuilder &builder, StringID string, StringParameters &args)
 {
-	switch (string) {
-		case SPECSTR_SILLY_NAME: // Not used in new companies, but retained for old-loader savegames
+	switch (string.base()) {
+		case SPECSTR_SILLY_NAME.base(): // Not used in new companies, but retained for old-loader savegames
 			builder += _silly_company_names[std::min<size_t>(args.GetNextParameter<uint16_t>(), std::size(_silly_company_names) - 1)];
 			return true;
 
-		case SPECSTR_ANDCO_NAME: // used for Foobar & Co company names
+		case SPECSTR_ANDCO_NAME.base(): // used for Foobar & Co company names
 			GenAndCoName(builder, args.GetNextParameter<uint32_t>());
 			return true;
 
-		case SPECSTR_PRESIDENT_NAME: // President name
+		case SPECSTR_PRESIDENT_NAME.base(): // President name
 			GenPresidentName(builder, args.GetNextParameter<uint32_t>());
 			return true;
 	}
 
 	/* TownName Transport company names, with the appropriate town name. */
 	if (IsInsideMM(string, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_END)) {
-		GenerateTownNameString(builder, string - SPECSTR_COMPANY_NAME_START, args.GetNextParameter<uint32_t>());
+		GenerateTownNameString(builder, (string - SPECSTR_COMPANY_NAME_START).base(), args.GetNextParameter<uint32_t>());
 		builder += " Transport";
 		return true;
 	}

@@ -21,7 +21,7 @@
  */
 inline StringTab GetStringTab(StringID str)
 {
-	StringTab result = (StringTab)(str >> TAB_SIZE_BITS);
+	StringTab result = static_cast<StringTab>(str.base() >> TAB_SIZE_BITS);
 	if (result >= TEXT_TAB_NEWGRF_START) return TEXT_TAB_NEWGRF_START;
 	if (result >= TEXT_TAB_GAMESCRIPT_START) return TEXT_TAB_GAMESCRIPT_START;
 	return result;
@@ -34,7 +34,7 @@ inline StringTab GetStringTab(StringID str)
  */
 inline StringIndexInTab GetStringIndex(StringID str)
 {
-	return StringIndexInTab{str - (GetStringTab(str) << TAB_SIZE_BITS)};
+	return StringIndexInTab{str.base() - (GetStringTab(str) << TAB_SIZE_BITS)};
 }
 
 /**
@@ -53,7 +53,7 @@ inline StringID MakeStringID(StringTab tab, StringIndexInTab index)
 		assert(tab < TEXT_TAB_END);
 		assert(index < TAB_SIZE);
 	}
-	return (tab << TAB_SIZE_BITS) + index.base();
+	return StringID{(tab << TAB_SIZE_BITS) + index.base()};
 }
 
 /**

@@ -1050,24 +1050,24 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 		/* Draw the value of the currently selected sort property to the right (or left in RTL), if applicable */
 		std::string sort_prop_detail;
 
-		switch (GetEngineSortNames(type)[sort_criteria]) {
-			case STR_SORT_BY_ENGINE_ID:
+		switch (GetEngineSortNames(type)[sort_criteria].base()) {
+			case STR_SORT_BY_ENGINE_ID.base():
 				/* No extra interesting info to show in this case */
 				break;
-			case STR_SORT_BY_COST:
+			case STR_SORT_BY_COST.base():
 				sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_COST, e->GetCost());
 				break;
-			case STR_SORT_BY_MAX_SPEED:
+			case STR_SORT_BY_MAX_SPEED.base():
 				if (int max_speed = e->GetDisplayMaxSpeed(); max_speed != 0) {
 					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_SPEED, PackVelocity(max_speed, Engine::Get(item.engine_id)->type));
 				}
 				break;
-			case STR_SORT_BY_POWER:
+			case STR_SORT_BY_POWER.base():
 				if (int power = e->GetPower(); power != 0) {
 					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_POWER, power);
 				}
 				break;
-			case STR_SORT_BY_TRACTIVE_EFFORT:
+			case STR_SORT_BY_TRACTIVE_EFFORT.base():
 				/* Allow trucks, and allow trains that are not wagons */
 				if (type == VehicleType::Road || (type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon)) {
 					auto max_te = e->GetDisplayMaxTractiveEffort();
@@ -1076,31 +1076,31 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 					}
 				}
 				break;
-			case STR_SORT_BY_INTRO_DATE: {
+			case STR_SORT_BY_INTRO_DATE.base(): {
 					TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(e->intro_date);
 					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_INTRO_DATE, ymd.year);
 				}
 				break;
-			case STR_SORT_BY_NAME:
+			case STR_SORT_BY_NAME.base():
 				/* No extra interesting info to show in this case */
 				break;
-			case STR_SORT_BY_RUNNING_COST:
+			case STR_SORT_BY_RUNNING_COST.base():
 				if (int running_cost = e->GetRunningCost(); running_cost != 0) {
 					sort_prop_detail = GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD : STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR, running_cost);
 				}
 				break;
-			case STR_SORT_BY_POWER_VS_RUNNING_COST:
+			case STR_SORT_BY_POWER_VS_RUNNING_COST.base():
 				/* NOTE: No point showing the actual values of power/running cost, because they are affected by cost factors, which make the math off */
 				if (Money rc = e->GetRunningCost(); rc != 0) {
 					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST, 100 * e->GetPower() / rc, /* digits for DECIMAL */ 2);
 				}
 				break;
-			case STR_SORT_BY_RELIABILITY:
+			case STR_SORT_BY_RELIABILITY.base():
 				if (auto isWagon = e->type == VehicleType::Train && e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Wagon; !isWagon) {
 					sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_RELIABILITY, ToPercent16(e->reliability));
 				}
 				break;
-			case STR_SORT_BY_CARGO_CAPACITY: {
+			case STR_SORT_BY_CARGO_CAPACITY.base(): {
 					uint total_capacity;
 					switch (type) {
 						case VehicleType::Train:
@@ -1127,7 +1127,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 					}
 				}
 				break;
-			case STR_SORT_BY_RANGE:
+			case STR_SORT_BY_RANGE.base():
 				if (e->type == VehicleType::Aircraft) {
 					if (uint16_t range = e->GetRange(); range != 0) {
 						sort_prop_detail = GetString(STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE, range);

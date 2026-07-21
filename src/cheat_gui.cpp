@@ -296,14 +296,14 @@ struct CheatWindow : Window {
 					/* Draw [<][>] boxes for settings of an integer-type */
 					DrawArrowButtons(button_left, y + button_y_offset, Colours::Yellow, clicked - (i * 2), true, true);
 
-					switch (ce->str) {
+					switch (ce->str.base()) {
 						/* Display date for change date cheat */
-						case STR_CHEAT_CHANGE_DATE:
+						case STR_CHEAT_CHANGE_DATE.base():
 							str = GetString(ce->str, TimerGameCalendar::date);
 							break;
 
 						/* Draw coloured flag for change company cheat */
-						case STR_CHEAT_CHANGE_COMPANY: {
+						case STR_CHEAT_CHANGE_COMPANY.base(): {
 							str = GetString(ce->str, val + 1);
 							uint offset = WidgetDimensions::scaled.hsep_indent + GetStringBoundingBox(str).width;
 							DrawCompanyIcon(_local_company, rtl ? text_right - offset - WidgetDimensions::scaled.hsep_indent : text_left + offset, y + icon_y_offset);
@@ -385,14 +385,14 @@ struct CheatWindow : Window {
 					break;
 
 				default:
-					switch (ce.str) {
+					switch (ce.str.base()) {
 						/* Display date for change date cheat */
-						case STR_CHEAT_CHANGE_DATE:
+						case STR_CHEAT_CHANGE_DATE.base():
 							width = std::max(width, GetStringBoundingBox(GetString(ce.str, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 11, 31))).width);
 							break;
 
 						/* Draw coloured flag for change company cheat */
-						case STR_CHEAT_CHANGE_COMPANY:
+						case STR_CHEAT_CHANGE_COMPANY.base():
 							width = std::max(width, GetStringBoundingBox(GetString(ce.str, MAX_COMPANIES)).width + WidgetDimensions::scaled.hsep_wide);
 							break;
 

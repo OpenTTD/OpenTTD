@@ -240,7 +240,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 	void WriteStringID(const std::string &name, size_t stringid) override
 	{
 		if (prev + 1 != stringid) this->output_stream << "\n";
-		fmt::print(this->output_stream, "static const StringID {} = 0x{:X};\n", name, stringid);
+		fmt::print(this->output_stream, "static constexpr StringID {}{{0x{:X}}};\n", name, stringid);
 		prev = stringid;
 		total_strings++;
 	}
