@@ -918,7 +918,7 @@ void WriteValue(void *ptr, VarMemType conv, int64_t val)
 		case VarMemType::U32: *static_cast<uint32_t *>(ptr) = val; break;
 		case VarMemType::I64: *static_cast<int64_t *>(ptr) = val; break;
 		case VarMemType::U64: *static_cast<uint64_t *>(ptr) = val; break;
-		case VarMemType::Name: *reinterpret_cast<std::string *>(ptr) = CopyFromOldName(val); break;
+		case VarMemType::Name: *reinterpret_cast<std::string *>(ptr) = CopyFromOldName(static_cast<StringID>(val)); break;
 		case VarMemType::Null: break;
 		default: NOT_REACHED();
 	}
@@ -1010,7 +1010,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 				case VarFileType::U32: x = static_cast<uint32_t>(SlReadUint32()); break;
 				case VarFileType::I64: x = static_cast<int64_t>(SlReadUint64()); break;
 				case VarFileType::U64: x = static_cast<uint64_t>(SlReadUint64()); break;
-				case VarFileType::StringID: x = RemapOldStringID(static_cast<uint16_t>(SlReadUint16())); break;
+				case VarFileType::StringID: x = RemapOldStringID(static_cast<StringID>(SlReadUint16())).base(); break;
 				default: NOT_REACHED();
 			}
 

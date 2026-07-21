@@ -209,7 +209,7 @@ struct CHKPChunkHandler : ChunkHandler {
 			SlObject(&wp, _old_waypoint_desc);
 
 			if (IsSavegameVersionBefore(SaveLoadVersion::LinkWaypointToTown)) {
-				wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
+				wp.town_cn = (wp.string_id.base() & 0xC000) == 0xC000 ? (wp.string_id.base() >> 8) & 0x3F : 0;
 				wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
 			} else if (IsSavegameVersionBefore(SaveLoadVersion::WaypointMoreLikeStation)) {
 				/* Only for versions 12 .. 122 */
