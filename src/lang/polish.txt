@@ -5109,7 +5109,7 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pełny załadun
 STR_ORDER_DROP_NO_LOADING                                       :Nie ładuj
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień sposób załadunku w zaznaczonym poleceniu
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Wymuś rozładunek wszystkiego
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Wymuś rozładunek
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Rozładuj, jeśli akceptowane
 STR_ORDER_DROP_UNLOAD                                           :Wymuś rozładunek, nawet nieakceptowane
 STR_ORDER_DROP_TRANSFER                                         :Pozostaw do przeładunku

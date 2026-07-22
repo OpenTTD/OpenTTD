@@ -1150,8 +1150,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Signatura 
 
 STR_BASESET_STATUS                                              :{STRING} {RED}(hi ha {NUM} fitxer{P " que fa falta o està corromput" "s que fan falta o estan corromputs"})
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No s'ha pogut obtenir la llista de resolucions permeses
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Ha fallat el mode pantalla completa
+STR_ERROR_RESOLUTION_LIST_FAILED                                :La llista de resolucions permeses no s'ha pogut obtenir.
+STR_ERROR_FULLSCREEN_FAILED                                     :El mode pantalla completa ha fallat.
 
 # Custom currency window
 
@@ -1517,7 +1517,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permet situar p
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permet la construcció de passos a nivell als carrers propietat de les poblacions
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permet circular a través de les parades en carreteres propietat de competidors: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permet la construcció de passos a nivell en els carrers propietat d'altres companyies
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :Aquesta opció no es pot canviar si hi ha vehicles a la partida.
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manteniment de la infraestructura: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Si està activat, s'han de pagar costos de manteniment per infraestructures. El cost creix proporcionalment amb la mida de la xarxa de transport i, en conseqüència, afecta més a les companyies grosses que a les petites.
@@ -1668,7 +1668,7 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Millorat
 
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Costat per on condueixen els automòbils: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Escollir el costat de conducció
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Escolliu el costat per on condueixen els vehicles de carretera.{}Això també afecta al costat on es posen els gràfics de semàfors i senyals.{}Potser caldrà tornar a carregar la partida per tal que el canvi s'apliqui del tot.
 
 ###length 2
 STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Per l'esquerra
@@ -2251,7 +2251,7 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :S'ignorarà el 
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :S'ignorarà el conjunt de peces de música «{STRING}» perquè no s'ha trobat.
 
 # Video initialization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}S'ha produït un error en la configuració de vídeo...
+STR_VIDEO_DRIVER_ERROR                                          :S'ha produït un error en la configuració de vídeo...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :No s'ha trobat cap GPU compatible. Es desactiva l'acceleració per programari.
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :El controlador de la GPU ha fallat durant la partida. Es desactiva l'acceleració per maquinari.
 
@@ -2689,8 +2689,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha deixat la partida ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha canviat el seu nom a {STRING}.
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha donat {CURRENCY_LONG} a {STRING}.
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha tancat la sessió
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor es reinicia...{}{}Espereu un moment...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :El servidor ha tancat la sessió.
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :El servidor es reinicia...{}{}Espereu un moment...
 STR_NETWORK_MESSAGE_KICKED                                      :*** S'ha expulsat {STRING}. Motiu: {STRING}
 
 STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :El registre al servidor ha fallat.
@@ -2741,7 +2741,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Selecci
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependències: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetes: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :L'OpenTTD s'ha compilat sense compatibilitat «zlib»...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... no és possible descarregar continguts!
+STR_CONTENT_NO_ZLIB_SUB                                         :No es poden descarregar continguts!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gràfics base
@@ -2766,7 +2766,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}{
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :No s'ha pogut connectar amb el servidor de continguts...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :La descàrrega ha fallat...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :No es pot escriure al fitxer.
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han pogut descomprimir els fitxers descarregats
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :Els fitxers descarregats no s'han pogut descomprimir.
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gràfics que falten
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}L'OpenTTD necessita gràfics per funcionar, però no se n'han trobat. Voleu permetre a l'OpenTTD descarregar i instal·lar aquests gràfics?
@@ -2838,7 +2838,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcció de
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construeix vies de tren. Amb Ctrl+clic, es trauran les vies. Amb Maj, se'n mostra el cost estimat.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construeix vies de tren utilitzant el mode Autorail. Amb Ctrl+clic, es trauen les vies en lloc de construir-les. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construeix unes cotxeres (per a construir i revisar trens). Amb Maj, només es mostrarà el cost estimat de l'acció.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construeix un punt de control en una via de ferrocarril. Amb Ctrl, es poden construir nous punts de control i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construeix un punt de pas en una via de ferrocarril. Amb Ctrl, es poden construir nous punts de pas i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren en vies de ferrocarril. Amb Ctrl+clic, es construeix l'estil de senyal alternatiu.{}Amb Clic+arrossega, es construeixen senyals a la secció marcada amb l'espaiat desitjat. Amb Clic+arrossega, es construeixen senyals al llarg de la via fins que es troba una cruïlla, estació o senyal amb l'espaiat desitjat. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix ponts de tren. Amb Maj, només es mostrarà el cost estimat de l'acció.
@@ -2895,22 +2895,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Esborra la col�
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Esteu segur que voleu esborrar aquesta col·lecció?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Esteu segur que voleu esborrar aquesta col·lecció? Hi ha elements de fitxers NewGRF desactivats.
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Trieu quina classe d'estació voleu veure.
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Trieu quina classe d'estació voleu veure. Amb Ctrl+clic, s'afegeixen o es trauen als elements desats.
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Trieu quin tipus d'estació voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Seleccioneu quina col·lecció d'estacions voleu veure.
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Trieu quina classe de punts de control voleu veure.
-STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Trieu quin tipus de punt de control voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Trieu quina classe de punts de pas voleu veure. Amb Ctrl+clic, s'afegeixen o es trauen als elements desats.
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Trieu quin tipus de punt de pas voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Seleccioneu quina col·lecció de punts de pas voleu veure.
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Trieu quina classe d'estacions d'autobús voleu veure.
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Trieu quina classe d'estacions d'autobús voleu veure. Amb Ctrl+clic, s'afegeixen o es trauen als elements desats.
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Trieu quin tipus d'estació d'autobús voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Seleccioneu quina col·lecció d'estacions d'autobús voleu veure.
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Trieu quina classe d'estació de camions voleu veure.
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Trieu quina classe d'estació de camions voleu veure. Amb Ctrl+clic, s'afegeixen o es trauen als elements desats.
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Trieu un tipus d'estació de camió a construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Seleccioneu quina col·lecció d'estacions de camions voleu veure.
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Trieu quina classe d'objectes voleu veure. Amb Ctrl+clic, s'afegeixen o es trauen als elements desats.
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Trieu quin tipus d'objecte voleu construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats. Amb Ctrl+clic+arrossega es selecciona l'àrea en diagonal. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Seleccioneu quina col·lecció d'objectes voleu veure.
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Trieu quina zona de població voleu veure.
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Trieu quina zona de població voleu veure. Amb Ctrl+clic, s'afegeixen o es trauen als elements desats.
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Trieu quin tipus de casa construir. Amb Ctrl+clic, s'afegeix o es trau l'element de la llista de desats.
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Seleccioneu quina col·lecció de cases voleu veure.
 
@@ -2989,7 +2989,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construe
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construeix seccions de tramvia amb el mode Autocarretera. Amb Ctrl+clic, es trauen les vies de tramvia en lloc de construir-les. Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construeix una cotxera (per a comprar i revisar vehicles). Amb Maj, només es mostrarà el cost estimat de l'acció.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construeix cotxeres de tramvies (per a comprar i revisar tramvies). Amb Maj, només es mostrarà el cost estimat de l'acció.
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construeix un punt de control de carretera. Amb Ctrl, es poden construir nous punts de control i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}Construeix un punt de pas de carretera. Amb Ctrl+clic, es poden construir nous punts de pas i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Construeix un punt de control en tramvies. Amb Ctrl, es poden construir nous punts de control i ajuntar-los amb d'altres ja existents. Amb Maj, es mostrarà el cost estimat de construcció.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construeix estacions d'autobús. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construeix estacions de tramvia per a passatgers. Amb Ctrl, es poden ajuntar estacions. Amb Maj, se'n mostra el cost estimat.
@@ -3101,7 +3101,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planta b
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de terreny
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Situa àrees de roques al paisatge
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Situa àrees de roques al paisatge.{}Amb Ctrl+clic, es trauen àrees senceres de roques.
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineix àrea de desert.{}Amb Ctrl+clic, es treu l'àrea de desert.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
@@ -3279,7 +3279,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Estació de cam
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Parada d'autobús
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Moll per vaixells
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boia
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Punt de Control
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Punt de pas
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Aigua
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
@@ -3544,10 +3544,10 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Passant 
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Executant l'script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparant la partida
 
-STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Ha fallat la càrrega de dades de poblacions.
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Format del fitxer JSON incorrecte
-STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}Dades de {STRING} amb format incorrecte
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}Les coordenades de {STRING} tenen un format incorrecte. Cal que siguin nombres entre 0 i 1 que expressin la proporció de la dimensió total del mapa d'alçades.
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :La càrrega de dades de poblacions ha fallat.
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :Format del fitxer JSON incorrecte
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :Dades de {STRING} amb format incorrecte
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :Les coordenades de {STRING} tenen un format incorrecte. Cal que siguin nombres entre 0 i 1 que expressin la proporció de la dimensió total del mapa d'altituds.
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :No s'ha pogut trobar una ubicació vàlida per a {NUM} poblaci{P ó ons}. S'ha{P "" "n"} creat {P "un " ""}senyal{P "" s} a {P "la posició indicada." "les posicions indicades."}
 
@@ -3667,8 +3667,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Alerta: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}El NewGRF "{STRING}" ha retornat un error fatal:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}El NewGRF "{STRING}" ha retornat un error:{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :El NewGRF «{STRING}» ha retornat un error fatal:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :El NewGRF «{STRING}» ha retornat un error:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} no funcionarà amb la versió TTDPatch informada per l'OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} és per a la versió {2:STRING} del TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} està dissenyat per a fer-se servir amb {2:STRING}
@@ -3695,12 +3695,12 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :«Callback» de
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Esteu a punt de fer canvis en una partida activa que poden fer que l'OpenTTD falli. No envieu cap informe d'error produït després d'efectuar aquests canvis crítics.{}Esteu completament segur que voleu fer-los?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir el fitxer: ID de NewGRF duplicat
+STR_NEWGRF_DUPLICATE_GRFID                                      :El fitxer no es pot afegir: ID de NewGRF duplicat
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}El fitxer coincident no s'ha trobat (els NewGRF compatibles s'han carregat)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}No es pot afegir el fitxer: Límit de fitxers NewGRF assolit
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :El fitxer no es pot afegir: Límit de fitxers NewGRF assolit
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :S'han carregat els NewGRF compatibles per als fitxers que fan falta.
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els fitxers NewGRF que fan falta han estat desactivats
+STR_NEWGRF_DISABLED_WARNING                                     :Els fitxers NewGRF que fan falta s'han desactivat.
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten fitxers NewGRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reprendre la partida pot provocar errors de l'OpenTTD. No informeu errors de fallades posteriors d'aquesta partida.{}Esteu segur de reprendre la partida?
 
@@ -3719,10 +3719,10 @@ STR_NEWGRF_BROKEN_CAPACITY                                      :Un vehicle «{1
 STR_BROKEN_VEHICLE_LENGTH                                       :El tren «{VEHICLE}» propietat de «{COMPANY}» té una llargada incorrecta, probablement a causa de problemes amb els NewGRF. La partida podria dessincronitzar-se o fallar.
 
 STR_NEWGRF_BUGGY                                                :El NewGRF «{0:STRING}» dóna informació incorrecta.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació de «{1:ENGINE}» no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de la funció autorenova/substitueix.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :La informació de càrrega/remodelació de «{1:ENGINE}» no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de la funció autorenova/substitueix.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :«{1:STRING}» ha provocat un bucle infinit en la crida de producció.
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}'Callback' {1:HEX} ha retornat un resultat desconegut/invàlid {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' ha retornat un tipus de càrrega no vàlid a {2:HEX}.
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :El «callback» {1:HEX} ha retornat un resultat desconegut/invàlid {2:HEX}.
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :«{1:STRING}» ha retornat un tipus de càrrega no vàlid a {2:HEX}.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<càrrega invàlida>
@@ -4832,7 +4832,7 @@ STR_ORDER_NO_LOAD                                               :{SPACE}(No carr
 STR_ORDER_UNLOAD                                                :{SPACE}(Força la descàrrega i agafa càrrega)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Força la descàrrega i espera que es carregui del tot)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Força la descàrrega i espera una càrrega completa qualsevol)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Descarrega i deixa buit)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Força la descàrrega i deixa'l buit)
 STR_ORDER_TRANSFER                                              :{SPACE}(Transfereix i agafa càrrega)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transfereix i espera una càrrega completa)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transfereix i espera qualsevol càrrega completa)
@@ -4845,7 +4845,7 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(No desc
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Remodelació a {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Càrrega completa amb remodelació a {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Càrrega completa de qualsevol càrrega amb remodelació a {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Descarrega i pren la càrrega amb remodelació a {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Força la descàrrega i pren la càrrega amb remodelació a {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Força la descàrrega i espera fins a càrrega completa amb remodelació a {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Força la descàrrega i espera fins a càrrega completa qualsevol amb remodelació a {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transfereix i pren la càrrega amb remodelació a {STRING})
@@ -5078,13 +5078,13 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partida es va desar amb una versió sense suport de tramvies. S'han eliminat tots els tramvies
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generació del mapa avortada...{}{}... no hi ha llocs adequats per a les poblacions.
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :La generació del mapa s'ha cancel·lat...{}{}No hi ha llocs adequats per a les poblacions.
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :En aquest escenari no hi ha poblacions.
 
-STR_ERROR_PNGMAP                                                :{WHITE}Impossible carregar un terreny des del PNG...
+STR_ERROR_PNGMAP                                                :No es pot carregar el terreny des del PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :El fitxer no s'ha trobat.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir el tipus d'imatge. Es necessita una imatge PNG de 8 o 24-bit
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguna cosa ha anat malament (probablement un fitxer corrupte)
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :El tipus d'imatge no s'ha pogut convertir. Es necessita una imatge PNG de 8 o 24 bits.
+STR_ERROR_PNGMAP_MISC                                           :Alguna cosa ha anat malament, probablement un fitxer corrupte.
 
 STR_ERROR_BMPMAP                                                :Impossible carregar el terreny des del BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :El tipus d'imatge no s'ha pogut canviar.
@@ -5102,18 +5102,18 @@ STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura 
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tindrà una resolució de {COMMA} x {COMMA} píxels. Es tardarà una estona a fer la captura. Vols continuar?
 
 STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa d'altituds desat correctament amb el nom «{STRING}». El cim més alt té altitud {NUM}.
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla desada correctament com a '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Error en la captura de pantalla!
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Captura de pantalla desada correctament amb el nom «{STRING}».
+STR_ERROR_SCREENSHOT_FAILED                                     :S'ha produït un error en la captura de pantalla!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Missatge
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Missatge de {COMPANY}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora del marc del mapa
+STR_ERROR_OFF_EDGE_OF_MAP                                       :Fora del mapa
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :Massa a prop de la vora del mapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :No teniu prou diners. Us fan falta {CURRENCY_LONG}.
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Es necessita un terreny pla
+STR_ERROR_FLAT_LAND_REQUIRED                                    :Es necessita terreny pla.
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :Terreny inclinat en la direcció incorrecta
 STR_ERROR_CAN_T_DO_THIS                                         :No es pot fer...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :Primer, s'ha d'enderrocar l'edifici.
@@ -5123,26 +5123,26 @@ STR_ERROR_SITE_UNSUITABLE                                       :Lloc inadequat
 STR_ERROR_ALREADY_BUILT                                         :Ja està construït.
 STR_ERROR_OWNED_BY                                              :Propietat de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :L'àrea és propietat d'una altra companyia.
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... s'ha arribat al límit de neteja de paisatge
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... s'ha arribat al límit de neteja de cel·les
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... s'ha arribat al límit de plantat d'arbres
-STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}...el nom ha de ser únic.
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{STRING} pel mig
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :S'ha arribat al límit de modificació del terreny.
+STR_ERROR_CLEARING_LIMIT_REACHED                                :S'ha arribat al límit de neteja de cel·les.
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :S'ha arribat al límit de plantat d'arbres.
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :El nom ha de ser únic.
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{STRING} pel mig
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :No està permès mentre la partida està en pausa.
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :Les autoritats locals de {TOWN} no permeten fer-ho.
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :L'autoritat local de {TOWN} denega el permís per a construir un altre aeroport en aquesta població.
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :Les autoritats locals de {TOWN} rebutgen donar el permís per a l'aeroport degut al soroll que provocaria.
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}El teu intent de suborn ha estat descobert per un investigador regional
+STR_ERROR_BRIBE_FAILED                                          :El vostre intent de suborn ha estat descobert per un investigador regional.
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Aquí no es pot elevar el terreny...
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :Aquí no es pot elevar el terreny...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Aquest terreny no es pot rebaixar...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Aquí no es pot anivellar...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Aquí no es pot anivellar...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :L'excavació pot malmetre el túnel.
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :Ja és a nivell de mar.
-STR_ERROR_TOO_HIGH                                              :{WHITE}Massa alt
+STR_ERROR_TOO_HIGH                                              :Massa alt
 STR_ERROR_ALREADY_LEVELLED                                      :Ja és pla.
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :Després del canvi, el pont que hi ha a sobre seria massa alt.
 STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :Abans cal traure el riu.
@@ -5153,48 +5153,48 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :El nom de presi
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :L'import màxim permès del préstec és {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :No es pot demanar més diners...
-STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... No queda préstec per amortitzar
+STR_ERROR_LOAN_ALREADY_REPAID                                   :No teniu cap préstec a amortitzar.
 STR_ERROR_CURRENCY_REQUIRED                                     :En calen {CURRENCY_LONG}.
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No es pot amortitzar préstec...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}No es poden regalar els diners deixats pel banc...
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}No podeu donar diners a aquesta companyia...
+STR_ERROR_CAN_T_REPAY_LOAN                                      :El préstec no es pot amortitzar...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Els diners deixats pel banc no es poden regalar...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :No podeu donar diners a aquesta companyia...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :No es pot comprar la companyia...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :No es pot construir la seu de la companyia...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :No es poden construir poblacions...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :No es pot canviar el nom de la població...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :Aquí no es pot construir cap població...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :La població no es pot expandir...
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :Massa a prop d'una altra població
 STR_ERROR_TOO_MANY_TOWNS                                        :Massa poblacions
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :No queda més espai al mapa.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :Obres en curs
 STR_ERROR_TOWN_CAN_T_DELETE                                     :Aquesta població no es pot eliminar...{}{}Hi ha una estació, un dipòsit o una cel·la pertanyent a la població que no es pot traure.
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hi ha un lloc adequat per situar l'estàtua al centre d'aquesta població
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :No hi ha cap lloc adequat al centre d'aquesta població per a posar l'estàtua.
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :La casa no es pot construir...
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :Massa indústries
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :No es poden generar indústries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :Aquí no es pot construir {STRING}...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
-STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}No es pot fer la prospecció per a la indústria...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :Aquest tipus d'indústria aquí no es pot construir...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :La prospecció per a la indústria no es pot fer...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :Massa a prop d'altres indústries
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...abans s'ha de fundar una població.
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... només un permès per població
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :Abans s'ha de fundar una població.
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :Només se'n permet un per població.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :Només es pot construir en poblacions de més de 1200 habitants.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :Només es pot construir en àrees de selva tropical.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :Només es pot construir en àrees de desert.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :Només es pot construir en poblacions (substituint cases).
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :Només es pot construir a prop del centre de les poblacions.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :Només es pot construir en zones baixes.
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... només es pot situar prop dels límits del mapa
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :Només es pot situar a prop dels límits del mapa.
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :El bosc només es pot plantar en estatges amb neu.
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :Només es pot construir en estatges amb neu.
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :Només es pot construir en estatges sense neu.
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}La fundació ha fallat la prospecció per mala sort. Proveu-ho de nou.
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :La fundació ha fallat la prospecció per mala sort. Proveu-ho de nou.
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :No hi havia llocs apropiats per a fer la prospecció d'aquesta indústria.
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :No hi havia llocs adequats per a indústries «{STRING}».
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Canvieu els paràmetres de generació de mapa per a obtenir-ne un de millor.
@@ -5280,7 +5280,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :Està format pe
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipus de rail incompatibles
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :El vehicle no es pot moure...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La màquina posterior sempre ha de seguir la seva parella davantera
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :La màquina posterior sempre ha de seguir la seva parella davantera.
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :No es pot trobar el camí a la cotxera local.
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :Impossible trobar la cotxera local
 STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :Impossible trobar l'hangar local
@@ -5302,7 +5302,7 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :El vehicle nou 
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :El vehicle nou no pot complir el remodelat de l'ordre {NUM}.
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinació de vies impossible
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :Combinació de vies impossible
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :Abans s'han de treure els senyals.
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :No hi ha vies de tren apropiades.
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :Abans s'ha de treure la via.
@@ -5317,19 +5317,19 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Aquí no es pot
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :No hi ha via de tren.
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :No hi ha senyals.
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Aquí no es pot convertir el tipus de via...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :El tipus de via no es pot convertir...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :Abans s'ha de traure la carretera.
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... les carreteres de sentit únic no poden tenir encreuaments
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :Les carreteres de sentit únic no poden tenir encreuaments.
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Aquí no es pot construir una carretera...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Aquí no es pot construir una via de tramvia...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Aquí no es pot treure una carretera...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :Aquesta via de tramvia no es pot traure...
 STR_ERROR_THERE_IS_NO_ROAD                                      :No hi ha carretera.
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :Aquí no hi ha cap via de tramvia.
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Aquí no es pot convertir el tipus de carretera...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Aquí no es pot convertir el tipus de tramvia...
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :El tipus de carretera no es pot convertir...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :El tipus de tramvia no es pot convertir...
 STR_ERROR_NO_SUITABLE_ROAD                                      :La carretera no és adequada.
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :No hi ha vies de tramvia adequades.
 
@@ -5337,7 +5337,7 @@ STR_ERROR_NO_SUITABLE_TRAMWAY                                   :No hi ha vies d
 STR_ERROR_CAN_T_BUILD_CANALS                                    :Aquí no es pot construir canals...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :Aquí no es pot construir una resclosa...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :Aquí no s'hi pot posar rius...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...s'ha de construir sobre l'aigua.
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :S'ha de construir a sobre de l'aigua.
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :No es pot construir a sobre de l'aigua.
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :No es pot construir a mar obert.
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :No es pot construir sobre el canal.
@@ -5346,9 +5346,9 @@ STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :Abans s'ha d'en
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Aquí no es pot construir un aqüeducte...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... aquí ja hi ha arbres
+STR_ERROR_TREE_ALREADY_HERE                                     :Aquí ja hi ha arbres.
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :El terreny no és vàlid per a aquest tipus d'arbre.
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Aquí no es poden plantar arbres...
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Aquí no es poden plantar arbres...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Aquí no es pot construir el pont...
@@ -5356,10 +5356,10 @@ STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :Abans s'ha d'en
 STR_ERROR_CAN_T_START_AND_END_ON                                :No es pot començar i acabar a la mateixa posició.
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :Les capçaleres del pont no estan al mateix nivell.
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :El pont és massa baix per al terreny.
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}El pont és massa alt per a aquest terreny.
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :El pont és massa alt per a aquest terreny.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :Inici i final han d'estar en línia recta.
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... els extrems del pont han d'estar tots dos a terra
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... el pont és massa llarg
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :Els extrems del pont han d'estar ambdós a terra.
+STR_ERROR_BRIDGE_TOO_LONG                                       :El pont és massa llarg.
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :El pont acabaria fora del mapa.
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :El pont és {HEIGHT} massa baix per a l'estació.
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :El pont és {HEIGHT} massa baix per a la parada de carretera.
@@ -5379,8 +5379,8 @@ STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :Lloc inadequat 
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :Abans s'ha d'enderrocar el túnel.
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :Hi ha un altre túnel pel mig.
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :El túnel acabaria fora del mapa.
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossible excavar la terra a l'altre extrem del túnel
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel massa llarg
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :No es pot excavar la terra a l'altre extrem del túnel.
+STR_ERROR_TUNNEL_TOO_LONG                                       :Túnel massa llarg
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :Massa objectes
@@ -5437,7 +5437,7 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :No es pot parar
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :No es pot enviar el tren a cotxeres...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :El vehicle no es pot enviar a la cotxera...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :El vaixell no es pot enviar a la drassana...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}No es pot enviar l'avió a l'hangar...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :L'avió no es pot enviar a l'hangar...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_BUY_TRAIN                                       :Aquest vehicle ferroviari no es pot comprar...
@@ -5491,7 +5491,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :No es pot fer q
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :No es pot invertir el sentit de circulació del tren...
 STR_ERROR_TRAIN_START_NO_POWER                                  :El tren no té potència.
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No s'ha pogut fer girar el vehicle...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :El vehicle no s'ha pogut girar...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :L'avió està volant.
 
@@ -5519,7 +5519,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :L'avió no té 
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :No hi ha cap estació de tren.
 STR_ERROR_NO_BUS_STATION                                        :No hi ha cap estació d'autobusos.
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}No hi ha cap estació de camions
+STR_ERROR_NO_TRUCK_STATION                                      :No hi ha cap estació de camions.
 STR_ERROR_NO_DOCK                                               :No hi ha cap moll.
 STR_ERROR_NO_AIRPORT                                            :No hi ha cap aeroport/heliport.
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :No hi ha parades amb un tipus de carretera compatible.
@@ -5528,14 +5528,14 @@ STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :No hi ha parade
 STR_ERROR_AIRPORT_NO_PLANES                                     :L'avió no pot aterrar en aquest heliport.
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :L'helicòpter no pot aterrar en aquest aeroport.
 STR_ERROR_NO_RAIL_WAYPOINT                                      :No hi ha cap punt de pas.
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}No hi ha cap punt de control de carretera.
+STR_ERROR_NO_ROAD_WAYPOINT                                      :No hi ha cap punt de control de carretera.
 STR_ERROR_NO_BUOY                                               :No hi ha cap boia.
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible establir l'horari del vehicle...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :L'horari del vehicle no es pot establir...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :Els vehicles només poden esperar a les estacions.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :Aquest vehicle no para en aquesta estació.
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... l'horari està incomplet.
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :L'horari està incomplet.
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :L'horari encara no ha començat.
 
 # Sign related errors
