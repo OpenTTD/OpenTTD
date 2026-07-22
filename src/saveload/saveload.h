@@ -894,7 +894,7 @@ struct SaveLoad {
 
 
 	template <VarFileType file_type, typename T>
-	static SaveLoad Variable(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad Variable(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		return SaveLoad{
 			.name = std::move(name),
@@ -903,6 +903,7 @@ struct SaveLoad {
 			.version_from = from,
 			.version_to = to,
 			.address_proc = address_proc,
+			.extra_data = extra,
 		};
 	}
 
@@ -921,7 +922,7 @@ struct SaveLoad {
 	}
 
 	template <typename T>
-	static SaveLoad String(std::string name, T *, SaveLoadAddrProc address_proc, StringValidationSettings string_validation_settings = {}, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad String(std::string name, T *, SaveLoadAddrProc address_proc, StringValidationSettings string_validation_settings = {}, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		static_assert(std::is_same_v<std::string, T> || std::is_same_v<EncodedString, T>);
 		return SaveLoad{
@@ -931,6 +932,7 @@ struct SaveLoad {
 			.version_from = from,
 			.version_to = to,
 			.address_proc = address_proc,
+			.extra_data = extra,
 		};
 	}
 
@@ -955,7 +957,7 @@ struct SaveLoad {
 	}
 
 	template <VarFileType file_type, uint16_t length, typename T>
-	static SaveLoad Array(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad Array(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		static_assert(SlVarSize(SlGetMemType<T, file_type>()) * length <= sizeof(T)); // Partial setting/filling of an array is permitted.
 		return SaveLoad{
@@ -966,6 +968,7 @@ struct SaveLoad {
 			.version_from = from,
 			.version_to = to,
 			.address_proc = address_proc,
+			.extra_data = extra,
 		};
 	}
 
@@ -1169,56 +1172,6 @@ constexpr void SlCheckMemoryType()
 		static_assert(false); // Better than NOT_REACHED() as this triggers compile-time, NOT_REACHED() does at run time.
 	}
 }
-
-/**
- * Storage of simple variables, references (pointers), and arrays.
- * @param cmd      Load/save type. @see SaveLoadType
- * @param name     Field name for table chunks.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- * @param extra    Extra data to pass to the address callback function.
- * @note In general, it is better to use one of the SLE_* macros below.
- */
-#define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) \
-	SaveLoad {name, cmd, type, length, from, to, [] (void *b, size_t) -> void * { \
-		SlCheckMemoryType<cmd, VarType{type}.mem, VarType{type}.file, std::remove_cvref_t<decltype(base::variable)>, length>(); \
-		assert(b != nullptr); \
-		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
-	}, extra, nullptr}
-
-/**
- * Storage of simple variables, references (pointers), and arrays with a custom name.
- * @param cmd      Load/save type. @see SaveLoadType
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- * @param extra    Extra data to pass to the address callback function.
- * @note In general, it is better to use one of the SLE_* macros below.
- */
-#define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) SLE_GENERAL_NAME(cmd, #variable, base, variable, type, length, from, to, extra)
-
-/**
- * Storage of global simple variables, references (pointers), and arrays.
- * @param name     The name of the field.
- * @param cmd      Load/save type. @see SaveLoadType
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- * @param extra    Extra data to pass to the address callback function.
- * @note In general, it is better to use one of the SLEG_* macros below.
- */
-#define SLEG_GENERAL(name, cmd, variable, type, length, from, to, extra) \
-	SaveLoad {name, cmd, type, length, from, to, [] (void *, size_t) -> void * { \
-		SlCheckMemoryType<cmd, VarType{type}.mem, VarType{type}.file, std::remove_cvref_t<decltype(variable)>, length>(); \
-		return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
 
 /**
  * Field name where the real SaveLoad can be located.
