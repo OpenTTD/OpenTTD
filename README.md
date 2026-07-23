@@ -12,6 +12,11 @@
     - 0.5) [Validation / gating model](#05-validation--gating-model)
     - 0.6) [Ground rules (short version)](#06-ground-rules-short-version)
     - 0.7) [Relationship to upstream OpenTTD](#07-relationship-to-upstream-openttd)
+    - 0.8) [Research questions](#08-research-questions)
+    - 0.9) [Agent and cognition concepts under evaluation](#09-agent-and-cognition-concepts-under-evaluation)
+    - 0.10) [Integration points](#010-integration-points)
+    - 0.11) [Experiment lifecycle, outputs, and evidence policy](#011-experiment-lifecycle-outputs-and-evidence-policy)
+    - 0.12) [Limitations](#012-limitations)
 - 1.0) [About](#10-about)
     - 1.1) [Downloading OpenTTD](#11-downloading-openttd)
     - 1.2) [OpenTTD gameplay manual](#12-openttd-gameplay-manual)
@@ -335,6 +340,86 @@ git diff upstream/master -- COPYING.md CREDITS.md  # (if an upstream remote is c
 ```
 
 Everything this fork adds lives in the paths listed in the tree in 0.4 above, plus the "0.0) About this fork" section of this very file — the upstream game, its build system, its license, and its credits are otherwise carried forward unmodified.
+
+### 0.8) Research questions
+
+These are open questions this fork is used to investigate, not conclusions — none of them should be read as already answered:
+
+- Can an agent correctly classify a requested change into the right one of the four kinds of change (0.1, `AGENTS.md`) before touching anything, and scope it accordingly?
+- Does a tiered, cost-matched validation model (smoke/change/full, 0.5) actually get used proportionately to change size in practice, or does it get over- or under-applied under time pressure?
+- Does fail-closed status reporting (never rounding PARTIAL up to PASS, 0.6) hold up consistently across many sessions, or does drift toward optimistic reporting appear over time?
+- How well does a change made in a large, convention-heavy, deterministic-lockstep codebase (OpenTTD) hold up against the specific invariants that actually break it — e.g. mutating game state outside `src/command.cpp`, or a savegame-incompatible field change — rather than merely compiling and passing existing tests?
+- When the admin-network bridge described in [`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) is used to let an external process control a Company AI, can success or failure of an issued directive be reported using the same PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy already used for build/test gates?
+- If repository-level retrieval or shared agent coordination state (0.9) is ever wired into sessions working in this fork, does it measurably change scoping accuracy or gate outcomes compared to sessions without it?
+
+### 0.9) Agent and cognition concepts under evaluation
+
+This section separates what's actually confirmed from what isn't. Sources: this README's own 0.2 (studied directly from `~/dev/prismatic-platform` in an earlier session), and, where noted, this fork's local, git-excluded `.aiad/`/`.claude/` directories — personal Claude Code tooling imported from Prismatic for local reference (`AGENTS.md`). Neither source was re-verified live against `~/dev/prismatic-platform` while this section was written (0.12).
+
+#### AIG
+
+Not defined in any source available to this session. This document does not expand or guess at the term; it's intentionally left out of this glossary rather than defined speculatively. A future revision should only define it after reading an explicit definition in Prismatic's own documentation.
+
+#### RAG (retrieval-augmented context)
+
+Prismatic's own imported agent tooling repeatedly describes retrieval-augmented generation as a real mechanism elsewhere in that platform — embedding-based retrieval over indexed content, with named quality dimensions such as retrieval precision and context-relevance scoring. **None of this is currently wired into how agents work in this OpenTTD fork**: a session here reads repository files directly with ordinary tools, not through an indexed retrieval layer. RAG is listed as a **conceptual** integration point (0.10) — something this fork could plausibly be used to evaluate if a retrieval layer were ever pointed at it — not a mechanism in current use. If it is used here in the future, a retrieved passage's relevance score would not by itself be evidence that the retrieved content is correct or applicable (0.11).
+
+#### Blackboard-style coordination
+
+The same local tooling repeatedly references a shared, topic-namespaced put/subscribe coordination store used to share state, hypotheses, and evidence across multiple specialized agents elsewhere in Prismatic. As with RAG, **this is not currently used by sessions working in this fork** — there is no shared coordination state between agent sessions here beyond the git history and this documentation. It's listed as a **conceptual** integration point: relevant open questions include whether shared state reduces duplicated work and improves handoffs between sessions, or whether it just as easily propagates an incorrect assumption from one session to the next. The existence of shared state is not itself evidence of better coordination.
+
+#### Prismatic agents / roles
+
+The imported local tooling defines a very large number of specialized, individually named agents, but not a small, generic role taxonomy (e.g. "planner / implementer / reviewer / verifier") that this document can responsibly claim maps onto sessions in this fork. No such mapping is asserted here. This fork's own experiment workflow (0.11) instead uses its own generic steps — plan, implement, validate, report — carried out by whichever coding agent is working a given session, under human oversight; these are not claimed to correspond to specific named Prismatic agent roles.
+
+### 0.10) Integration points
+
+| Integration point | Role | Data / artifacts | Status |
+|---|---|---|---|
+| Repository access | A coding agent reads and edits this fork's working tree under `AGENTS.md` ground rules | Git history, diffs, working-tree state | Implemented |
+| Task specification | A session's stated goal, classified into one of the four kinds of change (0.1) | Task prompt, base revision | Implemented |
+| Build/test validation gates | `tools/gate.sh` smoke / change / full tiers wrapping this repo's own CMake/CTest toolchain | Exit codes, build/test output | Implemented (0.5) |
+| Experiment reporting | `research/experiment-template.md` | A filled-in report; a working note, not committed or gated by default | Implemented (manual, not automated) |
+| Admin-network control/observation bridge | Standalone `openttd-prismatic-bridge` service drives a Company AI via OpenTTD's admin network (`start_ai`/`reload_ai`) and exposes a REST/WebSocket observation API | HTTP/WebSocket traffic, admin-network TCP traffic | Implemented — Phase 1 only (see `research/prismatic-bridge/ARCHITECTURE.md` §5); lives in a separate, standalone repository, not this one |
+| Prismatic decision-making wired to the bridge (`prismatic_monte_carlo` / `prismatic_deduction` / `prismatic_intelligence_fusion`) | Would compute the settings string the bridge sends to the in-game AI | A settings string via `/decision/pull` | Planned, not started (Phase 3/5 of the same document) |
+| World seeding from real elevation/GIS data | Headless `-G <heightmap>` start | A heightmap file | Experimental / partially confirmed — the headless start path itself works; the data-prep pipeline (Phase 4) has not been built |
+| Repository-level retrieval (RAG) feeding an agent's context in this fork | n/a | n/a | Conceptual (0.9) — referenced in Prismatic's own tooling, not confirmed as used in sessions here |
+| Shared coordination state (Blackboard-style) across agent sessions in this fork | n/a | n/a | Conceptual (0.9) — same caveat |
+| Human oversight / approval | Every commit, push, override, and large design change requires an explicit, current instruction (0.6) | This repository's own commit history; design docs such as `research/prismatic-bridge/ARCHITECTURE.md`, which is itself gated phase-by-phase on human approval | Implemented |
+
+### 0.11) Experiment lifecycle, outputs, and evidence policy
+
+A session working in this fork is expected to, in order:
+
+1. State the task and which of the four kinds of change it is (0.1, `AGENTS.md`).
+2. Record the base revision and working-tree state (`git status`, `git rev-parse --short HEAD`).
+3. Make a scoped change.
+4. Run the validation tier matching the change's size (0.5).
+5. Capture the exact commands run and their exit status — not a summary like "tests passed."
+6. Record what wasn't covered or remains uncertain.
+7. Classify the result — `PASS` / `FAIL` / `PARTIAL` / `NOT RUN` / `NOT APPLICABLE` (`research/README.md`) — never rounded up.
+8. Optionally record all of the above in a copy of [`research/experiment-template.md`](./research/experiment-template.md); it's a working note kept at the operator's discretion, not a committed or gated artifact by default.
+
+Expected artifacts, when produced: the change itself (diff or commit, if any); the exact validation commands and their exit codes; a filled experiment report in the shape of `experiment-template.md`, if one is kept; and, for bridge-related work, the bridge's own test output and observation-endpoint state (`research/prismatic-bridge/ARCHITECTURE.md` §3) — which lives in a separate repository, not this one.
+
+Claims and evidence discipline:
+
+- A successful build shows the change compiles under the tested configuration — not that it's behaviorally correct.
+- A passing test run supports only the behavior actually covered by the tests that ran.
+- A generated diff or patch is an artifact, not a finding — the finding is the recorded validation outcome and its interpretation.
+- An agent's own confidence or self-assessment is not independent validation.
+- No result is `PASS` unless the validating command was actually run and actually succeeded (0.6, `research/README.md`).
+- A retrieval score or a shared-coordination-state entry (0.9), if either is ever used here, is not by itself evidence that the retrieved content or shared assumption was correct.
+
+### 0.12) Limitations
+
+- Results produced in this fork are specific to the tasks, prompts, and repository revision they were produced against — not a general claim about agentic software engineering.
+- OpenTTD is one large C++ codebase with its own particular conventions (0.1); it is not a representative sample of all software projects, languages, or domains.
+- Agent behavior depends on the specific model, tools, and context available in a given session; results from one configuration don't automatically transfer to another.
+- Passing this fork's existing tests demonstrates only the behavior those tests actually cover (0.11).
+- This fork's own gating and reporting model (0.5, 0.6) is itself one of the things being evaluated here, not a proven-correct baseline — see 0.2.4's "D — rejected, not transferable" row for a concrete example of a Prismatic-side pattern this fork deliberately did not adopt.
+- The admin-network bridge to a running OpenTTD server (`research/prismatic-bridge/ARCHITECTURE.md`) is, as of this document, a standalone service with an idling AI script and an undefined decision contract (its own Phase 2/3); findings about "an agent controlling a game" are currently limited to the control/observation transport working, not to any strategic decision quality.
+- This revision of this section was written in a session with no live read access to `~/dev/prismatic-platform` (the active permission mode denied filesystem access outside this repository for most of the session). Its Prismatic-sourced claims rely on content already verified and written into this README in an earlier session that did have access (0.2), plus this fork's own locally cached, git-excluded agent tooling imported from Prismatic, filtered for sober, checkable claims. `AIG` in particular could not be verified either way and is therefore omitted rather than guessed at (0.9).
 
 ## 1.0) About
 
