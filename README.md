@@ -219,6 +219,8 @@ flowchart TB
 
 This is where "napojení na reálný svět" — connecting automated inference to actual external reality (a real cadastral registry, a real power grid, real OSINT sources, real due-diligence subjects) — is most concrete, and where a wrong or overconfident automated conclusion has the highest real cost. It's the strongest concrete case for the closing point of 0.1: the fail-closed reporting discipline validated in this OpenTTD fork is meant to transfer back to exactly this kind of high-stakes, real-world-grounded work — not to a context where an optimistic-but-wrong status report would be harmless.
 
+**A concrete step in this direction is being designed, not just described in the abstract:** [`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) is a design (no code yet, on either side) for a real bidirectional bridge between a running OpenTTD server and Prismatic — controlling a company via OpenTTD's existing admin-network + Game Script API (`ScriptCompanyMode`), observing game state, and eventually seeding the world from real elevation data and driving decisions from `prismatic_monte_carlo`/`prismatic_deduction`/`prismatic_intelligence_fusion`. It's phased, and each phase needs its own approval before being built.
+
 ### 0.3) What this fork is not
 
 - **Not affiliated with, and not a contribution channel to, the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project** — despite being hosted on GitHub as `korczis/OpenTTD`, it has no operational relationship to the upstream repository: no shared issue tracker, no CI feeding results back upstream, no listing as an active fork in any contribution sense.
