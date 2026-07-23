@@ -393,6 +393,7 @@ cmd_run() {
 
   if [[ -n "${COMMANDS_JSONL:-}" ]]; then
     local obj
+    : >> "$COMMANDS_JSONL"  # guarantee it exists before `wc -l <` below (see common.sh's run_and_record for why)
     obj=$(printf '{"seq":%d,"purpose":"%s","command":"%s","cwd":"%s","started_at":"%s","ended_at":"%s","exit_code":%d,"log":"%s"}' \
       "$(( $(wc -l < "$COMMANDS_JSONL" 2>/dev/null || echo 0) + 1 ))" \
       "run:$PROFILE" "$(json_escape "(sleep $startup_delay; printf 'research_status\\nquit\\n') | ${run_args[*]}")" \

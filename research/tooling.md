@@ -92,6 +92,20 @@ When research instrumentation is off (`baseline-release`), `research_status` is 
 all — the console command is simply unknown, which is itself the evidence that the default build
 is unaffected.
 
+**Known startup race, and its workaround.** The dedicated server's stdin console loop starts
+consuming input before console-command registration and map generation finish — a command piped
+in immediately after process start can get a false "not found" even though it's compiled in
+(reproduced directly: even the built-in `help` command was lost without a delay). `run` works
+around this with a fixed `sleep 5` before writing `research_status`/`quit` to stdin — confirmed
+empirically (not a documented engine guarantee) against runs as short as a 3s delay succeeding
+under normal load. **This is a fixed delay, not a readiness signal**: under heavy concurrent system
+load (observed `load average` in the 30–90 range from several simultaneous builds on the same
+machine) a single `run` can still race and produce an empty `diagnostics/research_status.txt` even
+with the 5s margin — `run` appends a `limitations` entry automatically when this happens rather
+than silently reporting success, and a retry has reliably succeeded in every case observed so far.
+If this becomes a recurring problem, the real fix is polling `runtime/stderr.log` for the "Map
+generated, starting game" line instead of a fixed sleep, not simply increasing the delay further.
+
 ## Manifest schema
 
 `tools/research/schema/experiment-manifest.schema.json`, `schema_version` `"1.0.0"`. JSON, not
@@ -189,7 +203,17 @@ what an external orchestrator does with a completed `manifest.json` beyond readi
   for you implicitly).
 - **`run` produces an empty `diagnostics/research_status.txt`**: check `runtime/stderr.log` first
   — a missing usable graphics/base set (see `CLAUDE.md` §Running) is the most likely cause of a
-  headless start failing before the console command is even read.
+  headless start failing before the console command is even read; the startup-race workaround
+  above (5s fixed delay) can also still lose the race under heavy system load — retry once before
+  assuming anything is actually broken, and check `limitations.jsonl` for an automatic note.
+- **`configure`/`build` fails with `'source_location' file not found`**: the documented macOS CLT
+  gotcha from `CLAUDE.md` §Build — an Xcode Command Line Tools install older than Xcode 15 ships a
+  libc++ without `<source_location>`. `configure` already prefers Homebrew's LLVM toolchain
+  automatically on macOS when `CC`/`CXX` aren't already set in the environment (confirmed: this is
+  what makes `baseline-release` buildable on such a machine at all — before this was wired in,
+  `configure`'s own "already matches, reusing" fast path could mask the problem for a
+  previously-good build dir while a *fresh* configure of a new profile hit it immediately). If it
+  still fails, `brew install llvm` and retry, or export `CC`/`CXX` yourself to a working compiler.
 - **Shared `build-research/` contention**: this build directory is also used directly by hand and
   potentially by other concurrent sessions in this fork. `configure`/`build` are safe to re-run
   (idempotent for identical inputs) but two full builds racing on a heavily loaded machine will

@@ -131,6 +131,13 @@ run_and_record() {
   end=$(utc_now)
   if [[ -n "${COMMANDS_JSONL:-}" ]]; then
     local obj
+    # Guarantee the file exists before the `<` redirection below -- on a
+    # brand-new experiment's first recorded command, COMMANDS_JSONL doesn't
+    # exist yet, and a shell input redirection to a missing file prints its
+    # own "No such file or directory" to stderr that the command's *own*
+    # `2>/dev/null` cannot suppress (that only covers wc's stderr, not the
+    # shell's redirection-setup error) -- harmless but confusing noise.
+    : >> "$COMMANDS_JSONL"
     obj=$(printf '{"seq":%d,"purpose":"%s","command":"%s","cwd":"%s","started_at":"%s","ended_at":"%s","exit_code":%d,"log":"%s"}' \
       "$(( $(wc -l < "$COMMANDS_JSONL" 2>/dev/null || echo 0) + 1 ))" \
       "$(json_escape "$purpose")" \
