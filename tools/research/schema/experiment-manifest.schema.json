@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/korczis/OpenTTD/tools/research/schema/experiment-manifest.schema.json",
+  "title": "korczis/OpenTTD research-fork experiment manifest",
+  "description": "Versioned, machine-readable output of tools/research/research. This schema documents the shape of a generated manifest.json -- it is NOT itself a claim that OpenTTD's internal APIs referenced from `internal_access`/`instrumentation` are stable; those remain RESEARCH-ONLY/UNSTABLE regardless of this schema's own version discipline. See research/tooling.md.",
+  "type": "object",
+  "required": [
+    "schema_version", "experiment_id", "created_at_utc", "repository", "task",
+    "build", "runtime", "internal_access", "instrumentation", "commands",
+    "validations", "observations", "claims", "observer_effects",
+    "limitations", "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Bump on any breaking field change; this file's own filename stays stable, $id does not encode the version so older manifests remain self-describing via this field."
+    },
+    "experiment_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string" },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "completed_at_utc": { "type": ["string", "null"], "format": "date-time" },
+    "repository": {
+      "type": "object",
+      "required": ["name", "root", "revision", "branch", "dirty_before"],
+      "properties": {
+        "name": { "type": "string" },
+        "root": { "type": "string", "description": "Environment-specific absolute path; expected to differ between clones." },
+        "revision": { "type": "string" },
+        "branch": { "type": "string" },
+        "dirty_before": { "type": "boolean" },
+        "dirty_after": { "type": ["boolean", "null"] }
+      }
+    },
+    "task": {
+      "type": "object",
+      "description": "Short scope description, not a full chat transcript. String fields are 'NOT APPLICABLE' when not supplied.",
+      "properties": {
+        "description": { "type": "string" },
+        "research_question": { "type": "string" },
+        "hypothesis": { "type": "string" },
+        "scope": { "type": "string" },
+        "acceptance_criteria": { "type": "string" }
+      }
+    },
+    "orchestrator": {
+      "type": "object",
+      "description": "Opaque external-orchestrator reference (e.g. Prismatic). Never interpreted by this tooling.",
+      "properties": { "run_id": { "type": "string" } }
+    },
+    "agent_configuration": {
+      "type": "object",
+      "description": "Opaque agent/session metadata only -- never hidden chain-of-thought.",
+      "properties": {
+        "agent_run_id": { "type": "string" },
+        "agent_role": { "type": "string" },
+        "task_id": { "type": "string" }
+      }
+    },
+    "retrieval_context": {
+      "description": "Opaque RAG/retrieval reference, or the literal string 'NOT APPLICABLE'. Conceptual integration point -- see README.md 0.9/0.10.",
+      "type": "string"
+    },
+    "blackboard_context": {
+      "description": "Opaque shared-coordination-state reference, or 'NOT APPLICABLE'. Conceptual integration point.",
+      "type": "string"
+    },
+    "evaluation_reference": {
+      "description": "Opaque cross-run evaluation reference, or 'NOT APPLICABLE'.",
+      "type": "string"
+    },
+    "build": {
+      "type": "object",
+      "required": ["profile", "result_status"],
+      "properties": {
+        "profile": { "type": "string", "enum": ["research-debug", "baseline-release", "research-asan", "NOT APPLICABLE"] },
+        "build_type": { "type": "string" },
+        "build_dir": { "type": "string" },
+        "research_instrumentation": { "type": "string", "enum": ["ON", "OFF", "NOT APPLICABLE"] },
+        "configure_command": { "type": "string" },
+        "result_status": { "type": "string", "enum": ["PASS", "FAIL", "CONFIGURED", "NOT RUN"] },
+        "result_exit_code": { "type": ["integer", "null"] }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "command": { "type": "string" },
+        "flags": { "type": "string" },
+        "started_at": { "type": "string" },
+        "ended_at": { "type": "string" },
+        "exit_code": { "type": ["integer", "null"] }
+      }
+    },
+    "internal_access": {
+      "type": "object",
+      "required": ["apis_used", "internals_exposed", "mutating"],
+      "properties": {
+        "apis_used": { "type": "array", "items": { "type": "string" } },
+        "internals_exposed": { "type": "array", "items": { "type": "string" } },
+        "mutating": { "type": "boolean" }
+      }
+    },
+    "instrumentation": {
+      "type": "object",
+      "properties": {
+        "compile_time_gate": { "type": "string" },
+        "points": { "type": "array", "items": { "type": "string" } },
+        "active": { "type": "string" }
+      }
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["seq", "purpose", "command", "cwd", "started_at", "ended_at", "exit_code", "log"],
+        "properties": {
+          "seq": { "type": "integer" },
+          "purpose": { "type": "string" },
+          "command": { "type": "string", "description": "Redacted -- secret-bearing argument patterns are replaced with [REDACTED] before this is written." },
+          "cwd": { "type": "string" },
+          "started_at": { "type": "string" },
+          "ended_at": { "type": "string" },
+          "exit_code": { "type": "integer" },
+          "log": { "type": "string", "description": "Path relative to the experiment directory." }
+        }
+      }
+    },
+    "validations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate", "command", "status", "exit_code", "scope"],
+        "properties": {
+          "gate": { "type": "string", "enum": ["smoke", "change", "full", "research"] },
+          "command": { "type": "string" },
+          "status": { "type": "string", "enum": ["PASS", "FAIL", "PARTIAL", "NOT RUN", "NOT APPLICABLE", "INCONCLUSIVE"] },
+          "exit_code": { "type": ["integer", "null"] },
+          "scope": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Directly doctorable facts only -- e.g. 'command X exited 0'. Not interpretation."
+    },
+    "preliminary_findings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional interpretation; each entry must reference an observation or artifact. Empty by default."
+    },
+    "claims": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Empty by default. This tooling never auto-generates a claim -- see research/tooling.md 'Claims discipline'."
+    },
+    "observer_effects": { "type": "array", "items": { "type": "string" } },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "status": {
+      "type": "string",
+      "enum": ["PASS", "FAIL", "PARTIAL", "NOT RUN", "NOT APPLICABLE", "INCONCLUSIVE"]
+    }
+  }
+}

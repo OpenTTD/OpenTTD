@@ -62,6 +62,7 @@ function(set_options)
     option(OPTION_DOCS_ONLY "Build only docs target" OFF)
     option(OPTION_ALLOW_INVALID_SIGNATURE "Allow loading of content with invalid signatures" OFF)
     option(OPTION_LINE_IN_DOXYGEN_WARNINGS "Print line number in doxygen warnings" ON)
+    option(OPTION_RESEARCH_INSTRUMENTATION "Enable research-only diagnostic instrumentation (private research fork; default off, no effect on default/release builds when off -- see AGENTS.md)" OFF)
 
     if (OPTION_DOCS_ONLY)
         set(OPTION_TOOLS_ONLY ON PARENT_SCOPE)
@@ -99,6 +100,7 @@ function(show_options)
     message(STATUS "Option Install FHS - ${OPTION_INSTALL_FHS}")
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
     message(STATUS "Option Use NSIS - ${OPTION_USE_NSIS}")
+    message(STATUS "Option Research Instrumentation - ${OPTION_RESEARCH_INSTRUMENTATION}")
 
     if(OPTION_SURVEY_KEY)
         message(STATUS "Option Survey Key - USED")
@@ -129,6 +131,10 @@ function(add_definitions_based_on_options)
 
     if(OPTION_SURVEY_KEY)
         add_definitions(-DSURVEY_KEY="${OPTION_SURVEY_KEY}")
+    endif()
+
+    if(OPTION_RESEARCH_INSTRUMENTATION)
+        add_definitions(-DOTTD_RESEARCH_INSTRUMENTATION)
     endif()
 
     if(OPTION_ALLOW_INVALID_SIGNATURE)

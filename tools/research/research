@@ -1,0 +1,587 @@
+#!/usr/bin/env bash
+# Canonical research-mode tooling entry point for this OpenTTD research fork.
+# See AGENTS.md ("Research-mode access to internals") and research/tooling.md
+# for the full policy and architecture this wraps. This script never commits,
+# pushes, or performs network operations.
+set -uo pipefail
+
+SELF="$(basename "$0")"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/lib" && pwd)"
+
+# shellcheck source=lib/common.sh
+source "$LIB_DIR/common.sh"
+# shellcheck source=lib/profiles.sh
+source "$LIB_DIR/profiles.sh"
+# shellcheck source=lib/manifest.sh
+source "$LIB_DIR/manifest.sh"
+
+DEFAULT_OUTPUT_ROOT="$ROOT_DIR/build-research-runs"
+
+usage() {
+  cat <<EOF
+Usage: $SELF <command> [options]
+
+Commands:
+  doctor                        Report repo/tool/profile state. Never mutates.
+  init      --experiment-id ID  Create an evidence bundle + initial manifest.
+  configure --profile P         Configure (or reuse) a profile's build dir.
+  build     --profile P         Build a profile's build dir.
+  run       --profile P         Run the research_status demonstrator headless.
+  validate  --gate G [--gate G2 ...]
+                                 Run one or more gates: smoke|change|full|research.
+  report                         Finalize manifest.json + write summary.md.
+  clean                          Remove one experiment's evidence bundle only.
+
+Common options:
+  --experiment-id ID   Required by all commands except doctor/--help.
+  --profile P          research-debug | baseline-release | research-asan
+  --output-dir DIR     Evidence-bundle root (default: build-research-runs/)
+  --dry-run            Print planned commands; execute nothing.
+  -h, --help           Show this help and exit.
+
+'init'-only metadata options (all optional; stored verbatim, never
+interpreted -- opaque references for an external orchestrator such as
+Prismatic):
+  --task TEXT --research-question TEXT --hypothesis TEXT --scope TEXT
+  --acceptance-criteria TEXT --orchestrator-run-id ID --agent-run-id ID
+  --agent-role ROLE --task-id ID --retrieval-ref REF --blackboard-ref REF
+  --evaluation-ref REF
+Equivalent env vars (used when the matching flag is absent):
+  RESEARCH_ORCHESTRATOR_RUN_ID, RESEARCH_AGENT_RUN_ID, RESEARCH_AGENT_ROLE,
+  RESEARCH_TASK_ID, RESEARCH_RETRIEVAL_REF, RESEARCH_BLACKBOARD_REF,
+  RESEARCH_EVALUATION_REF.
+
+Exit codes: 0 ok, 2 invalid args, 3 missing prerequisite, 4 configure
+failed, 5 build failed, 6 validation failed, 7 runtime failed, 8 manifest
+failure, 9 unsafe path refused.
+
+Guarantees: never commits or pushes, never touches files outside this
+repository (or the explicit --output-dir), never makes network calls.
+EOF
+}
+
+[[ $# -ge 1 ]] || { usage; exit "$EXIT_INVALID_ARGS"; }
+
+COMMAND=""
+case "$1" in
+  -h|--help) usage; exit "$EXIT_OK" ;;
+  doctor|init|configure|build|run|validate|report|clean) COMMAND="$1"; shift ;;
+  *) log_error "unknown command: $1"; usage; exit "$EXIT_INVALID_ARGS" ;;
+esac
+
+EXPERIMENT_ID=""
+PROFILE=""
+OUTPUT_ROOT="$DEFAULT_OUTPUT_ROOT"
+DRY_RUN=0
+GATES=()
+
+TASK_DESC="" RESEARCH_QUESTION="" HYPOTHESIS="" SCOPE="" ACCEPTANCE_CRITERIA=""
+ORCH_RUN_ID="${RESEARCH_ORCHESTRATOR_RUN_ID:-}"
+AGENT_RUN_ID="${RESEARCH_AGENT_RUN_ID:-}"
+AGENT_ROLE="${RESEARCH_AGENT_ROLE:-}"
+TASK_ID="${RESEARCH_TASK_ID:-}"
+RETRIEVAL_REF="${RESEARCH_RETRIEVAL_REF:-}"
+BLACKBOARD_REF="${RESEARCH_BLACKBOARD_REF:-}"
+EVAL_REF="${RESEARCH_EVALUATION_REF:-}"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --experiment-id) EXPERIMENT_ID="${2:?--experiment-id requires a value}"; shift 2 ;;
+    --profile) PROFILE="${2:?--profile requires a value}"; shift 2 ;;
+    --output-dir) OUTPUT_ROOT="${2:?--output-dir requires a value}"; shift 2 ;;
+    --dry-run) DRY_RUN=1; shift ;;
+    --gate) GATES+=("${2:?--gate requires a value}"); shift 2 ;;
+    --task) TASK_DESC="${2:?}"; shift 2 ;;
+    --research-question) RESEARCH_QUESTION="${2:?}"; shift 2 ;;
+    --hypothesis) HYPOTHESIS="${2:?}"; shift 2 ;;
+    --scope) SCOPE="${2:?}"; shift 2 ;;
+    --acceptance-criteria) ACCEPTANCE_CRITERIA="${2:?}"; shift 2 ;;
+    --orchestrator-run-id) ORCH_RUN_ID="${2:?}"; shift 2 ;;
+    --agent-run-id) AGENT_RUN_ID="${2:?}"; shift 2 ;;
+    --agent-role) AGENT_ROLE="${2:?}"; shift 2 ;;
+    --task-id) TASK_ID="${2:?}"; shift 2 ;;
+    --retrieval-ref) RETRIEVAL_REF="${2:?}"; shift 2 ;;
+    --blackboard-ref) BLACKBOARD_REF="${2:?}"; shift 2 ;;
+    --evaluation-ref) EVAL_REF="${2:?}"; shift 2 ;;
+    -h|--help) usage; exit "$EXIT_OK" ;;
+    *) log_error "$COMMAND: unknown option: $1"; usage; exit "$EXIT_INVALID_ARGS" ;;
+  esac
+done
+
+# Resolve OUTPUT_ROOT to an absolute path (portable: no `realpath` dependency).
+case "$OUTPUT_ROOT" in
+  /*) : ;;
+  *) OUTPUT_ROOT="$PWD/$OUTPUT_ROOT" ;;
+esac
+
+require_experiment_id() {
+  [[ -n "$EXPERIMENT_ID" ]] || die "$EXIT_INVALID_ARGS" "$COMMAND requires --experiment-id"
+}
+
+# Validated as soon as it's known, for every command, not just the ones that
+# happen to call require_experiment_id -- an experiment-id containing "/" or
+# ".." must never reach a path concatenation (e.g. `clean`'s rm -rf target).
+if [[ -n "$EXPERIMENT_ID" ]] && ! is_safe_experiment_id "$EXPERIMENT_ID"; then
+  die "$EXIT_UNSAFE_PATH" "unsafe --experiment-id: '$EXPERIMENT_ID' (only [A-Za-z0-9._-]+ allowed, no path separators)"
+fi
+
+require_profile() {
+  [[ -n "$PROFILE" ]] || die "$EXIT_INVALID_ARGS" "$COMMAND requires --profile"
+  profile_build_dir "$PROFILE" >/dev/null 2>&1 || die "$EXIT_INVALID_ARGS" "unknown profile: $PROFILE (valid: $(profile_list | tr '\n' ' '))"
+}
+
+# --- doctor -----------------------------------------------------------------
+
+cmd_doctor() {
+  local ok=0
+  printf 'repository root:        %s\n' "$ROOT_DIR"
+  if [[ ! -d "$ROOT_DIR/.git" ]]; then
+    printf 'git repository:         NOT FOUND\n'
+    ok=1
+  else
+    printf 'git branch:             %s\n' "$(git -C "$ROOT_DIR" branch --show-current 2>/dev/null || echo unknown)"
+    printf 'git revision:           %s\n' "$(git -C "$ROOT_DIR" rev-parse --short HEAD 2>/dev/null || echo unknown)"
+    if [[ -n "$(git -C "$ROOT_DIR" status --porcelain 2>/dev/null)" ]]; then
+      printf 'working tree:           dirty\n'
+    else
+      printf 'working tree:           clean\n'
+    fi
+  fi
+
+  local tool
+  for tool in cmake ctest git; do
+    if command -v "$tool" >/dev/null 2>&1; then
+      printf 'required tool %-10s available (%s)\n' "$tool" "$(command -v "$tool")"
+    else
+      printf 'required tool %-10s MISSING\n' "$tool"
+      ok=1
+    fi
+  done
+  for tool in jq python3 timeout gtimeout; do
+    if command -v "$tool" >/dev/null 2>&1; then
+      printf 'optional tool %-10s available\n' "$tool"
+    else
+      printf 'optional tool %-10s not found (degraded fallback will be used)\n' "$tool"
+    fi
+  done
+
+  local p dir
+  printf '\nbuild profiles:\n'
+  for p in $(profile_list); do
+    dir=$(profile_build_dir "$p")
+    if [[ -f "$dir/CMakeCache.txt" ]]; then
+      printf '  %-18s configured at %s\n' "$p" "$dir"
+    else
+      printf '  %-18s not configured (%s)\n' "$p" "$dir"
+    fi
+    printf '      %s\n' "$(profile_description "$p")"
+  done
+
+  printf '\noutput root:            %s\n' "$OUTPUT_ROOT"
+  if is_safe_output_dir "$OUTPUT_ROOT"; then
+    printf 'output root safety:     ok (not repo root, not a tracked path)\n'
+  else
+    printf 'output root safety:     REFUSED -- would collide with a tracked/root path\n'
+    ok=1
+  fi
+
+  return $ok
+}
+
+# --- init ---------------------------------------------------------------
+
+cmd_init() {
+  require_experiment_id
+  is_safe_output_dir "$OUTPUT_ROOT" || die "$EXIT_UNSAFE_PATH" "refusing unsafe --output-dir: $OUTPUT_ROOT"
+
+  EXPERIMENT_DIR="$OUTPUT_ROOT/$EXPERIMENT_ID"
+  if [[ -d "$EXPERIMENT_DIR" ]]; then
+    log_warn "init: $EXPERIMENT_DIR already exists, reinitializing metadata (evidence subdirs kept)"
+  fi
+
+  if [[ "$DRY_RUN" == "1" ]]; then
+    log_info "[dry-run] would create $EXPERIMENT_DIR and write initial manifest.json"
+    return 0
+  fi
+
+  mkdir -p "$EXPERIMENT_DIR"/{git,build,validation,runtime,diagnostics}
+  export_experiment_paths
+
+  local dirty=false
+  [[ -n "$(git -C "$ROOT_DIR" status --porcelain 2>/dev/null)" ]] && dirty=true
+  git -C "$ROOT_DIR" status --porcelain > "$EXPERIMENT_DIR/git/status-before.txt" 2>/dev/null || true
+  git -C "$ROOT_DIR" diff --stat > "$EXPERIMENT_DIR/git/diff-stat.txt" 2>/dev/null || true
+
+  set_state CREATED_AT "$(utc_now)"
+  set_state REPO_REVISION "$(git -C "$ROOT_DIR" rev-parse --short HEAD 2>/dev/null || echo unknown)"
+  set_state REPO_BRANCH "$(git -C "$ROOT_DIR" branch --show-current 2>/dev/null || echo unknown)"
+  set_state DIRTY_BEFORE "$dirty"
+  set_state TASK_DESC "$TASK_DESC"
+  set_state RESEARCH_QUESTION "$RESEARCH_QUESTION"
+  set_state HYPOTHESIS "$HYPOTHESIS"
+  set_state SCOPE "$SCOPE"
+  set_state ACCEPTANCE_CRITERIA "$ACCEPTANCE_CRITERIA"
+  set_state ORCH_RUN_ID "$ORCH_RUN_ID"
+  set_state AGENT_RUN_ID "$AGENT_RUN_ID"
+  set_state AGENT_ROLE "$AGENT_ROLE"
+  set_state TASK_ID "$TASK_ID"
+  set_state RETRIEVAL_REF "$RETRIEVAL_REF"
+  set_state BLACKBOARD_REF "$BLACKBOARD_REF"
+  set_state EVAL_REF "$EVAL_REF"
+
+  manifest_write "initial"
+  log_info "init: created $EXPERIMENT_DIR"
+  log_info "init: manifest at $MANIFEST_JSON"
+}
+
+# --- configure ------------------------------------------------------------
+
+cmd_configure() {
+  require_profile
+  [[ -n "$EXPERIMENT_ID" ]] && { EXPERIMENT_DIR="$OUTPUT_ROOT/$EXPERIMENT_ID"; export_experiment_paths; [[ -d "$EXPERIMENT_DIR" ]] || die "$EXIT_MISSING_PREREQ" "no such experiment: $EXPERIMENT_ID (run 'init' first)"; }
+
+  local build_dir build_type research_flag extra
+  build_dir=$(profile_build_dir "$PROFILE")
+  build_type=$(profile_cmake_build_type "$PROFILE")
+  research_flag=$(profile_research_instrumentation "$PROFILE")
+  extra=$(profile_extra_cmake_args "$PROFILE")
+
+  local -a cmake_args=(-S "$ROOT_DIR" -B "$build_dir" "-DCMAKE_BUILD_TYPE=$build_type" "-DOPTION_RESEARCH_INSTRUMENTATION=$research_flag")
+  if [[ -n "$extra" ]]; then
+    local -a extra_arr
+    read -ra extra_arr <<< "$extra"
+    cmake_args+=("${extra_arr[@]}")
+  fi
+
+  # macOS gotcha (see CLAUDE.md): the system Xcode CLT's libc++ may predate
+  # <source_location> (used by src/stdafx.h), failing every profile's build
+  # with "'source_location' file not found" -- confirmed by actually hitting
+  # this on a fresh (non-cached) configure of baseline-release in this
+  # environment. Prefer Homebrew's LLVM toolchain unless CC/CXX are already
+  # set (never override an explicit caller choice).
+  local research_cc="" research_cxx=""
+  if [[ "$(uname -s)" == "Darwin" && -z "${CC:-}" && -z "${CXX:-}" ]] && command -v brew >/dev/null 2>&1; then
+    local llvm_prefix; llvm_prefix=$(brew --prefix llvm 2>/dev/null || true)
+    if [[ -n "$llvm_prefix" && -x "$llvm_prefix/bin/clang++" ]]; then
+      research_cc="$llvm_prefix/bin/clang"
+      research_cxx="$llvm_prefix/bin/clang++"
+      log_info "macOS: using Homebrew LLVM toolchain ($research_cxx) for <source_location> support (see CLAUDE.md); export CC/CXX yourself to override"
+    else
+      log_warn "macOS: Homebrew LLVM toolchain not found -- build may fail with a 'source_location' error on older Xcode CLT (see CLAUDE.md); install with 'brew install llvm'"
+    fi
+  fi
+
+  if [[ -f "$build_dir/CMakeCache.txt" ]]; then
+    local cached_type cached_research
+    cached_type=$(grep -m1 '^CMAKE_BUILD_TYPE:' "$build_dir/CMakeCache.txt" | cut -d= -f2)
+    cached_research=$(grep -m1 '^OPTION_RESEARCH_INSTRUMENTATION:' "$build_dir/CMakeCache.txt" | cut -d= -f2)
+    if [[ "$cached_type" == "$build_type" && "$cached_research" == "$research_flag" ]]; then
+      log_info "configure: $build_dir already matches profile '$PROFILE' (build_type=$build_type, research_instrumentation=$research_flag) -- reusing, not reconfiguring"
+      [[ -n "${EXPERIMENT_ID:-}" ]] && append_observation "configure: reused existing $build_dir for profile $PROFILE without reconfiguring (already matched)"
+    else
+      die "$EXIT_CONFIGURE_FAIL" "$build_dir exists but does not match profile '$PROFILE' (found build_type=$cached_type research_instrumentation=$cached_research, expected $build_type/$research_flag) -- refusing to silently reconfigure a build dir that may hold other in-progress work. Remove it manually first if a fresh configure is intended."
+    fi
+    set_build_state "$build_dir" "$build_type" "$research_flag" "${cmake_args[*]}"
+    return 0
+  fi
+
+  if [[ "$DRY_RUN" == "1" ]]; then
+    if [[ -n "$research_cc" ]]; then
+      log_info "[dry-run] CC=$research_cc CXX=$research_cxx cmake ${cmake_args[*]}"
+    else
+      log_info "[dry-run] cmake ${cmake_args[*]}"
+    fi
+    set_build_state "$build_dir" "$build_type" "$research_flag" "${cmake_args[*]}"
+    return 0
+  fi
+
+  local logfile="${EXPERIMENT_DIR:-/tmp}/build/configure.log"
+  [[ -n "${EXPERIMENT_DIR:-}" ]] || logfile="/tmp/research-configure-$PROFILE.log"
+  local rc
+  if [[ -n "$research_cc" ]]; then
+    CC="$research_cc" CXX="$research_cxx" run_and_record "configure:$PROFILE" "$logfile" cmake "${cmake_args[@]}"
+  else
+    run_and_record "configure:$PROFILE" "$logfile" cmake "${cmake_args[@]}"
+  fi
+  rc=$?
+  set_build_state "$build_dir" "$build_type" "$research_flag" "${cmake_args[*]}"
+  [[ -n "${EXPERIMENT_ID:-}" ]] && set_state BUILD_RESULT_STATUS "$([[ $rc -eq 0 ]] && echo CONFIGURED || echo FAIL)"
+  [[ $rc -eq 0 ]] || die "$EXIT_CONFIGURE_FAIL" "cmake configure failed for profile $PROFILE (exit $rc) -- see $logfile"
+}
+
+set_build_state() {
+  [[ -n "${EXPERIMENT_ID:-}" ]] || return 0
+  set_state BUILD_PROFILE "$PROFILE"
+  set_state BUILD_DIR "$1"
+  set_state BUILD_TYPE "$2"
+  set_state BUILD_RESEARCH_MODE "$3"
+  set_state BUILD_CONFIGURE_CMD "$4"
+}
+
+# --- build ------------------------------------------------------------------
+
+cmd_build() {
+  require_profile
+  require_experiment_id
+  EXPERIMENT_DIR="$OUTPUT_ROOT/$EXPERIMENT_ID"
+  export_experiment_paths
+  [[ -d "$EXPERIMENT_DIR" ]] || die "$EXIT_MISSING_PREREQ" "no such experiment: $EXPERIMENT_ID (run 'init' first)"
+
+  profile_is_buildable "$PROFILE" || die "$EXIT_INVALID_ARGS" "profile '$PROFILE' is configure-only in this fork (see research/tooling.md) -- not built or run"
+
+  local build_dir; build_dir=$(profile_build_dir "$PROFILE")
+  [[ -f "$build_dir/CMakeCache.txt" ]] || die "$EXIT_MISSING_PREREQ" "$build_dir is not configured yet -- run 'configure --profile $PROFILE' first"
+
+  local jobs
+  jobs=$(command -v nproc >/dev/null 2>&1 && nproc || sysctl -n hw.ncpu 2>/dev/null || echo 4)
+
+  local logfile="$EXPERIMENT_DIR/build/build.log"
+  run_and_record "build:$PROFILE" "$logfile" cmake --build "$build_dir" -j"$jobs"
+  local rc=$?
+  set_state BUILD_RESULT_STATUS "$([[ $rc -eq 0 ]] && echo PASS || echo FAIL)"
+  set_state BUILD_RESULT_EXIT "$rc"
+  append_observation "build: cmake --build $build_dir -j$jobs exited $rc"
+  [[ $rc -eq 0 ]] || die "$EXIT_BUILD_FAIL" "build failed for profile $PROFILE (exit $rc) -- see $logfile"
+  log_info "build: PASS ($build_dir/openttd)"
+}
+
+# --- run (instrumentation demonstrator capture) -----------------------------
+
+cmd_run() {
+  require_profile
+  require_experiment_id
+  EXPERIMENT_DIR="$OUTPUT_ROOT/$EXPERIMENT_ID"
+  export_experiment_paths
+  [[ -d "$EXPERIMENT_DIR" ]] || die "$EXIT_MISSING_PREREQ" "no such experiment: $EXPERIMENT_ID (run 'init' first)"
+  profile_is_buildable "$PROFILE" || die "$EXIT_INVALID_ARGS" "profile '$PROFILE' is configure-only in this fork -- nothing to run"
+
+  local build_dir binary; build_dir=$(profile_build_dir "$PROFILE"); binary="$build_dir/openttd"
+  [[ -x "$binary" ]] || die "$EXIT_MISSING_PREREQ" "binary not found: $binary (run 'build --profile $PROFILE' first)"
+
+  local cfg="$EXPERIMENT_DIR/runtime/openttd-research.cfg"
+  local stdout_log="$EXPERIMENT_DIR/runtime/stdout.log"
+  local stderr_log="$EXPERIMENT_DIR/runtime/stderr.log"
+  : > "$cfg"
+
+  local seed=1
+  local -a run_args=("$binary" -D -x -g -G "$seed" -c "$cfg" -d misc=0)
+  # A headless dedicated server spends a few real seconds on map generation
+  # before its console-input loop (src/video/dedicated_v.cpp) starts reading
+  # stdin; a command piped in immediately races that startup and is silently
+  # dropped (verified empirically: even the built-in 'help' command is lost
+  # without this delay). 5s is a generous margin over the ~2-3s observed.
+  local startup_delay=5
+  local start end rc
+  start=$(utc_now)
+  if [[ "$DRY_RUN" == "1" ]]; then
+    log_info "[dry-run] (sleep $startup_delay; printf 'research_status\\nquit\\n') | ${run_args[*]}"
+    rc=0
+  else
+    (sleep "$startup_delay"; printf 'research_status\nquit\n') | run_with_timeout 30 "${run_args[@]}" >"$stdout_log" 2>"$stderr_log"
+    rc=$?
+  fi
+  end=$(utc_now)
+
+  grep '^research_status' "$stdout_log" > "$EXPERIMENT_DIR/diagnostics/research_status.txt" 2>/dev/null || true
+
+  set_state RUNTIME_COMMAND "(sleep $startup_delay; printf 'research_status\\nquit\\n') | ${run_args[*]}"
+  set_state RUNTIME_FLAGS "-D -x -g -G $seed -d misc=0"
+  set_state RUNTIME_STARTED "$start"
+  set_state RUNTIME_ENDED "$end"
+  set_state RUNTIME_EXIT "$rc"
+
+  if [[ -n "${COMMANDS_JSONL:-}" ]]; then
+    local obj
+    obj=$(printf '{"seq":%d,"purpose":"%s","command":"%s","cwd":"%s","started_at":"%s","ended_at":"%s","exit_code":%d,"log":"%s"}' \
+      "$(( $(wc -l < "$COMMANDS_JSONL" 2>/dev/null || echo 0) + 1 ))" \
+      "run:$PROFILE" "$(json_escape "(sleep $startup_delay; printf 'research_status\\nquit\\n') | ${run_args[*]}")" \
+      "$(json_escape "$ROOT_DIR")" "$start" "$end" "$rc" "runtime/stdout.log")
+    append_json_object_line "$COMMANDS_JSONL" "$obj"
+  fi
+
+  if [[ -s "$EXPERIMENT_DIR/diagnostics/research_status.txt" ]]; then
+    append_observation "run: research_status produced: $(cat "$EXPERIMENT_DIR/diagnostics/research_status.txt")"
+  else
+    append_observation "run: research_status produced no matching output line (profile=$PROFILE, exit=$rc); see runtime/stdout.log and runtime/stderr.log"
+    append_limitation "run: no research_status output captured for profile $PROFILE in this run"
+  fi
+
+  if [[ $rc -ne 0 ]]; then
+    log_warn "run: $binary exited $rc -- see $stderr_log"
+    return "$EXIT_RUNTIME_FAIL"
+  fi
+  log_info "run: captured diagnostics/research_status.txt"
+}
+
+# --- validate ----------------------------------------------------------------
+
+cmd_validate() {
+  require_experiment_id
+  EXPERIMENT_DIR="$OUTPUT_ROOT/$EXPERIMENT_ID"
+  export_experiment_paths
+  [[ -d "$EXPERIMENT_DIR" ]] || die "$EXIT_MISSING_PREREQ" "no such experiment: $EXPERIMENT_ID (run 'init' first)"
+  [[ ${#GATES[@]} -gt 0 ]] || GATES=(research)
+
+  local overall=0
+  local g
+  for g in "${GATES[@]}"; do
+    case "$g" in
+      smoke|change|full)
+        local logfile="$EXPERIMENT_DIR/validation/$g.log"
+        local rc status
+        if [[ "$DRY_RUN" == "1" ]]; then
+          log_info "[dry-run] tools/gate.sh $g"
+          rc=0
+        else
+          "$ROOT_DIR/tools/gate.sh" "$g" > "$logfile" 2>&1
+          rc=$?
+        fi
+        status=$([[ $rc -eq 0 ]] && echo PASS || echo FAIL)
+        append_validation_record "$g" "tools/gate.sh $g" "$status" "$rc" "$g" ""
+        log_info "validate:$g -> $status (exit $rc)"
+        [[ $rc -eq 0 ]] || overall=1
+        ;;
+      research)
+        local out
+        out=$(gate_research)
+        printf '%s\n' "$out"
+        if printf '%s' "$out" | grep -q 'PASS'; then
+          append_validation_record "research" "tools/research/research validate --gate research" "PASS" 0 "manifest completeness" ""
+        else
+          local reason; reason=$(printf '%s' "$out" | grep FAIL | head -1 | sed 's/.*-- //')
+          append_validation_record "research" "tools/research/research validate --gate research" "FAIL" 1 "manifest completeness" "$reason"
+          overall=1
+        fi
+        ;;
+      *)
+        die "$EXIT_INVALID_ARGS" "unknown gate: $g (valid: smoke change full research)"
+        ;;
+    esac
+  done
+  return $overall
+}
+
+# --- report ------------------------------------------------------------------
+
+cmd_report() {
+  require_experiment_id
+  EXPERIMENT_DIR="$OUTPUT_ROOT/$EXPERIMENT_ID"
+  export_experiment_paths
+  [[ -d "$EXPERIMENT_DIR" ]] || die "$EXIT_MISSING_PREREQ" "no such experiment: $EXPERIMENT_ID (run 'init' first)"
+
+  load_state
+  local dirty_after=false
+  [[ -n "$(git -C "$ROOT_DIR" status --porcelain 2>/dev/null)" ]] && dirty_after=true
+  git -C "$ROOT_DIR" status --porcelain > "$EXPERIMENT_DIR/git/status-after.txt" 2>/dev/null || true
+  set_state DIRTY_AFTER "$dirty_after"
+  set_state COMPLETED_AT "$(utc_now)"
+
+  # Fail-closed status aggregation: PASS only if every recorded validation
+  # and every recorded command exited 0; else FAIL if anything explicitly
+  # failed, else PARTIAL (something ran, nothing definitive), else NOT RUN.
+  local any_ran=0 any_fail=0
+  if [[ -s "${VALIDATIONS_JSONL:-/dev/null}" ]]; then
+    any_ran=1
+    grep -q '"status":"FAIL"' "$VALIDATIONS_JSONL" && any_fail=1
+  fi
+  if [[ -s "${COMMANDS_JSONL:-/dev/null}" ]]; then
+    any_ran=1
+    grep -Eq '"exit_code":[1-9][0-9]*' "$COMMANDS_JSONL" && any_fail=1
+  fi
+
+  local final_status
+  if [[ "$any_ran" -eq 0 ]]; then
+    final_status="NOT RUN"
+  elif [[ "$any_fail" -eq 1 ]]; then
+    final_status="FAIL"
+  elif [[ -s "${VALIDATIONS_JSONL:-/dev/null}" ]]; then
+    final_status="PASS"
+  else
+    final_status="PARTIAL"
+  fi
+  set_state STATUS "$final_status"
+
+  manifest_write "final"
+
+  local summary="$EXPERIMENT_DIR/summary.md"
+  load_state
+  {
+    printf '# Experiment report: %s\n\n' "$EXPERIMENT_ID"
+    printf -- '- **Date:** %s\n' "${COMPLETED_AT:-}"
+    printf -- '- **Base revision:** `%s` (branch `%s`)\n' "${REPO_REVISION:-}" "${REPO_BRANCH:-}"
+    printf -- '- **Goal / hypothesis:** %s\n' "${HYPOTHESIS:-${TASK_DESC:-not recorded}}"
+    printf -- '- **Build/debug configuration:** profile=%s build_type=%s research_instrumentation=%s\n\n' \
+      "${BUILD_PROFILE:-NOT APPLICABLE}" "${BUILD_TYPE:-NOT APPLICABLE}" "${BUILD_RESEARCH_MODE:-NOT APPLICABLE}"
+    printf '## Validation performed\n\n| Command | Exit status | Notes |\n|---|---|---|\n'
+    if [[ -s "${VALIDATIONS_JSONL:-/dev/null}" ]]; then
+      while IFS= read -r line; do
+        local cmd st ec
+        cmd=$(printf '%s' "$line" | sed -nE 's/.*"command":"([^"]*)".*/\1/p')
+        st=$(printf '%s' "$line" | sed -nE 's/.*"status":"([^"]*)".*/\1/p')
+        ec=$(printf '%s' "$line" | sed -nE 's/.*"exit_code":([0-9]+).*/\1/p')
+        printf '| `%s` | %s | %s |\n' "$cmd" "$ec" "$st"
+      done < "$VALIDATIONS_JSONL"
+    else
+      printf '| (none recorded) | | NOT RUN |\n'
+    fi
+    printf '\n## Result\n\n'
+    if [[ -s "${OBSERVATIONS_JSONL:-/dev/null}" ]]; then
+      while IFS= read -r line; do
+        printf -- '- %s\n' "$(printf '%s' "$line" | sed -E 's/^"(.*)"$/\1/')"
+      done < "$OBSERVATIONS_JSONL"
+    else
+      printf -- '- no observations recorded\n'
+    fi
+    printf '\nObservations are listed in the order recorded (append-only across repeated commands within this experiment, so an earlier failed attempt and a later successful retry can both appear -- see `commands.jsonl` for the full sequence). This summary is generated, not authored -- it restates recorded facts, it does not add interpretation.\n\n'
+    printf '## Known limitations\n\n'
+    if [[ -s "${LIMITATIONS_JSONL:-/dev/null}" ]]; then
+      while IFS= read -r line; do
+        printf -- '- %s\n' "$(printf '%s' "$line" | sed -E 's/^"(.*)"$/\1/')"
+      done < "$LIMITATIONS_JSONL"
+    else
+      printf -- '- none recorded\n'
+    fi
+    printf '\n## Status\n\n%s\n' "$final_status"
+  } > "$summary"
+
+  log_info "report: status=$final_status"
+  log_info "report: manifest at $MANIFEST_JSON"
+  log_info "report: summary at $summary"
+}
+
+# --- clean -------------------------------------------------------------------
+
+cmd_clean() {
+  require_experiment_id
+  local target="$OUTPUT_ROOT/$EXPERIMENT_ID"
+  [[ "$target" == "$OUTPUT_ROOT"/* && "$target" != "$OUTPUT_ROOT" ]] || die "$EXIT_UNSAFE_PATH" "refusing to remove non-experiment path: $target"
+  [[ -d "$target" ]] || die "$EXIT_MISSING_PREREQ" "no such experiment dir: $target"
+  if [[ "$DRY_RUN" == "1" ]]; then
+    log_info "[dry-run] rm -rf $target"
+    return 0
+  fi
+  rm -rf "$target"
+  log_info "clean: removed $target"
+}
+
+# --- shared experiment path wiring -------------------------------------------
+
+export_experiment_paths() {
+  MANIFEST_JSON="$EXPERIMENT_DIR/manifest.json"
+  COMMANDS_JSONL="$EXPERIMENT_DIR/commands.jsonl"
+  VALIDATIONS_JSONL="$EXPERIMENT_DIR/validations.jsonl"
+  OBSERVATIONS_JSONL="$EXPERIMENT_DIR/observations.jsonl"
+  LIMITATIONS_JSONL="$EXPERIMENT_DIR/limitations.jsonl"
+}
+
+case "$COMMAND" in
+  doctor) cmd_doctor; exit $? ;;
+  init) cmd_init; exit $? ;;
+  configure) cmd_configure; exit $? ;;
+  build) cmd_build; exit $? ;;
+  run) cmd_run; exit $? ;;
+  validate) cmd_validate; exit $? ;;
+  report) cmd_report; exit $? ;;
+  clean) cmd_clean; exit $? ;;
+esac

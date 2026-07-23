@@ -46,6 +46,11 @@
 #include "3rdparty/fmt/chrono.h"
 #include "company_cmd.h"
 #include "misc_cmd.h"
+#ifdef OTTD_RESEARCH_INSTRUMENTATION
+#include "vehicle_base.h"
+#include "company_base.h"
+#include "timer/timer_game_tick.h"
+#endif
 
 #if defined(WITH_ZLIB)
 #include "network/network_content.h"
@@ -1745,6 +1750,35 @@ static bool ConGetSysDate(std::span<std::string_view> argv)
 	return true;
 }
 
+#ifdef OTTD_RESEARCH_INSTRUMENTATION
+/**
+ * RESEARCH-ONLY / UNSTABLE: dump a small, read-only snapshot of internal state
+ * (tick counter, current date, pool item counts) as a single machine-parseable
+ * line, for the research tooling in tools/research/ to capture as evidence.
+ *
+ * Only compiled in when OPTION_RESEARCH_INSTRUMENTATION is ON (default OFF) --
+ * see AGENTS.md "Research-mode access to internals". Never mutates state.
+ * @copydoc IConsoleCmdProc
+ */
+static bool ConResearchStatus(std::span<std::string_view> argv)
+{
+	if (argv.empty()) {
+		IConsolePrint(CC_HELP, "RESEARCH-ONLY/UNSTABLE: print a read-only internal-state snapshot for research tooling. Usage: 'research_status'.");
+		IConsolePrint(CC_HELP, "Only available in builds configured with -DOPTION_RESEARCH_INSTRUMENTATION=ON.");
+		return true;
+	}
+
+	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
+	IConsolePrint(CC_DEFAULT,
+		"research_status instrumentation=on tick={} date={:04d}-{:02d}-{:02d} vehicles={} companies={}",
+		TimerGameTick::counter,
+		ymd.year, ymd.month + 1, ymd.day,
+		Vehicle::GetNumItems(),
+		Company::GetNumItems());
+	return true;
+}
+#endif /* OTTD_RESEARCH_INSTRUMENTATION */
+
 /** Create an alias for a command. @copydoc IConsoleCmdProc */
 static bool ConAlias(std::span<std::string_view> argv)
 {
@@ -2977,6 +3011,9 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("getseed",                 ConGetSeed);
 	IConsole::CmdRegister("getdate",                 ConGetDate);
 	IConsole::CmdRegister("getsysdate",              ConGetSysDate);
+#ifdef OTTD_RESEARCH_INSTRUMENTATION
+	IConsole::CmdRegister("research_status",         ConResearchStatus);
+#endif
 	IConsole::CmdRegister("quit",                    ConExit);
 	IConsole::CmdRegister("resetengines",            ConResetEngines,     ConHookNoNetwork);
 	IConsole::CmdRegister("reset_enginepool",        ConResetEnginePool,  ConHookNoNetwork);
