@@ -5,12 +5,13 @@
 ## Table of contents
 
 - 0.0) [About this fork](#00-about-this-fork)
-    - 0.1) [Purpose](#01-purpose)
-    - 0.2) [What this fork is not](#02-what-this-fork-is-not)
-    - 0.3) [What this fork adds on top of upstream OpenTTD](#03-what-this-fork-adds-on-top-of-upstream-openttd)
-    - 0.4) [Validation / gating model](#04-validation--gating-model)
-    - 0.5) [Ground rules (short version)](#05-ground-rules-short-version)
-    - 0.6) [Relationship to upstream OpenTTD](#06-relationship-to-upstream-openttd)
+    - 0.1) [Purpose and goals](#01-purpose-and-goals)
+    - 0.2) [Relationship to the Prismatic platform](#02-relationship-to-the-prismatic-platform)
+    - 0.3) [What this fork is not](#03-what-this-fork-is-not)
+    - 0.4) [What this fork adds on top of upstream OpenTTD](#04-what-this-fork-adds-on-top-of-upstream-openttd)
+    - 0.5) [Validation / gating model](#05-validation--gating-model)
+    - 0.6) [Ground rules (short version)](#06-ground-rules-short-version)
+    - 0.7) [Relationship to upstream OpenTTD](#07-relationship-to-upstream-openttd)
 - 1.0) [About](#10-about)
     - 1.1) [Downloading OpenTTD](#11-downloading-openttd)
     - 1.2) [OpenTTD gameplay manual](#12-openttd-gameplay-manual)
@@ -33,30 +34,48 @@
 
 Sections 1.0 onward below are the **original upstream OpenTTD README**, kept intact for its technical value and attribution. This section only documents what's specific to this fork.
 
-### 0.1) Purpose
+### 0.1) Purpose and goals
 
 OpenTTD plays two roles at once in this repository:
 
 - **System under test.** `src/`, `regression/`, the build system, and OpenTTD's own engineering conventions (savegame compatibility, the deterministic command-pattern architecture, `CODINGSTYLE.md`) are the real substrate an agent has to actually respect to make a correct, working change — that's what makes it useful as a validation target instead of a toy.
 - **Not a product being developed here.** Nothing in this fork is intended to become an OpenTTD feature or fix. Changes exist to produce evidence about *how the change was made and validated*, not to ship gameplay value.
 
-### 0.2) What this fork is not
+Concretely, this fork exists to:
+
+- **validate and stress-test the Prismatic platform** against a real, non-trivial, long-lived codebase, rather than a purpose-built toy;
+- **run controlled experiments with coding agents** — planning, scoping, and executing changes under explicit constraints;
+- **evaluate the quality of changes, fixes, and refactors, and the decision processes behind them** — not just whether a diff compiles, but whether the reasoning that produced it holds up;
+- **measure the reproducibility, quality, and reliability of agentic workflows** — can the same task, run again, be trusted to produce a comparable, honestly-reported result;
+- **develop and validate gating, tooling orchestration, and experimental protocols** — the layered `tools/gate.sh` model and the `research/` reporting taxonomy in this repository are themselves part of what's being evaluated, not just scaffolding around it.
+
+### 0.2) Relationship to the Prismatic platform
+
+**Prismatic** is a separate, private agent-orchestration / AI-assisted software-engineering platform under active development by korczis (its own repository, `~/dev/prismatic-platform`, is not part of this repository and is never modified by work done here). It has its own substantial agent tooling, layered local-validation workflow, and process conventions.
+
+This fork's relationship to it is one-directional and deliberately arm's-length:
+
+- **Principles flow from Prismatic into this fork, adapted — not copied wholesale.** Where Prismatic's own workflow conventions contain a generic, stack-independent idea (for example: a cheap/standard/expensive tiered validation model with one entry point per tier, or a fail-closed reporting taxonomy that refuses to round an uncertain result up to "passed"), this fork re-implements that *idea* against OpenTTD's own CMake/CTest toolchain in `AGENTS.md`, `tools/gate.sh`, and `research/`. Prismatic-specific implementation detail (its language/framework, its own tool names, its internal branding and doctrine) is deliberately left behind — see `AGENTS.md` for the explicit classification of what was and wasn't carried over.
+- **OpenTTD is an external, independent validation target on purpose.** It was not built by, and is not a component of, Prismatic. That independence is the point: results produced in this fork say something about how agentic workflows and gating designs hold up against unfamiliar, real-world engineering conventions, rather than against code that was already shaped to fit the platform.
+- **Nothing flows back automatically.** Findings from working in this fork inform Prismatic's own design by human judgment, not by any automated sync — there is no tooling in either repository that writes from one into the other.
+
+### 0.3) What this fork is not
 
 - Not affiliated with, and not a contribution channel to, the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project.
 - Not a place where issues or pull requests get opened upstream — everything stays local to this fork.
 - Not bound, as a *local* rule, by upstream's own contribution process (`CONTRIBUTING.md`, PR templates, commit-message grammar, "ask before large changes"). That process describes upstream's repository, not this one — it's kept here only as background technical reference.
 
-### 0.3) What this fork adds on top of upstream OpenTTD
+### 0.4) What this fork adds on top of upstream OpenTTD
 
 | Path | Purpose |
 |---|---|
 | [`AGENTS.md`](./AGENTS.md) | Vendor-neutral ground rules for any coding agent working here: the four kinds of change, no-upstream / no-auto-commit / protect-dirty-tree rules, fail-closed reporting, the validation-layer model. |
 | [`CLAUDE.md`](./CLAUDE.md) | Claude Code-specific workflow notes (points to `AGENTS.md` first), plus OpenTTD's own build/run/test commands, architecture, and code style as technical reference. |
-| [`tools/gate.sh`](./tools/gate.sh) | Single entry point for layered local validation — see 0.4 below. |
+| [`tools/gate.sh`](./tools/gate.sh) | Single entry point for layered local validation — see 0.5 below. |
 | [`research/`](./research/) | The validation-layer writeup and a PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE experiment-report template. |
 | `.claude/`, `.aiad/` *(not committed)* | Personal Claude Code tooling imported from a sibling private project, kept strictly local via `.git/info/exclude`. |
 
-### 0.4) Validation / gating model
+### 0.5) Validation / gating model
 
 Local validation is layered by cost, with one entry point (`tools/gate.sh`) for the build/test tiers:
 
@@ -69,7 +88,7 @@ Local validation is layered by cost, with one entry point (`tools/gate.sh`) for 
 
 All three build/test tiers are thin wrappers around OpenTTD's own existing CMake/CTest toolchain (see `CLAUDE.md` §Test) — there is no separate lint/format gate, because no such tool currently exists in this codebase, and this fork doesn't fake one. Full details and the experiment-report taxonomy are in [`research/README.md`](./research/README.md).
 
-### 0.5) Ground rules (short version)
+### 0.6) Ground rules (short version)
 
 The full rules live in [`AGENTS.md`](./AGENTS.md); in short:
 
@@ -79,7 +98,7 @@ The full rules live in [`AGENTS.md`](./AGENTS.md); in short:
 - Prefer minimal, scoped changes over broad refactors.
 - Report validation honestly: never claim a gate passed if it wasn't run, and never round an ambiguous result up to PASS.
 
-### 0.6) Relationship to upstream OpenTTD
+### 0.7) Relationship to upstream OpenTTD
 
 This fork tracks upstream OpenTTD as its technical foundation and does not modify its license, copyright, or attribution — see [3.0) Licensing](#30-licensing) and [4.0) Credits](#40-credits) below, both unchanged from upstream. Everything from section 1.0 onward is the original upstream README.
 
