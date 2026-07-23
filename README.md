@@ -134,6 +134,36 @@ This fork's relationship to Prismatic is one-directional and deliberately arm's-
 - **Principles flow from Prismatic into this fork, adapted — not copied wholesale.** Where Prismatic's own workflow conventions contain a generic, stack-independent idea (for example: a cheap/standard/expensive tiered validation model with one entry point per tier, or a fail-closed reporting taxonomy that refuses to round an uncertain result up to "passed"), this fork re-implements that *idea* against OpenTTD's own CMake/CTest toolchain in `AGENTS.md`, `tools/gate.sh`, and `research/`. Prismatic-specific implementation detail (its language/framework, its own tool and app names, its internal branding, doctrine, and domain-specific policies) is deliberately left behind — see `AGENTS.md` for the explicit classification of what was and wasn't carried over, and why.
 - **Nothing flows back automatically.** Findings from working in this fork inform Prismatic's own design by human judgment, not by any automated sync — there is no tooling in either repository that writes from one into the other. `~/dev/prismatic-platform` is read for inspiration; it is never edited from here.
 
+#### 0.2.4) Integration mechanics — what actually gets read, and how
+
+"Adapted, not copied" isn't a vague policy statement — every principle that made it into this fork followed the same concrete pipeline:
+
+```mermaid
+flowchart LR
+    A["Read a specific file in<br/>~/dev/prismatic-platform<br/>(never guessed from its name)"] --> B{"Classify"}
+    B -- "A: generic,<br/>stack-independent" --> C["Re-implement the idea against<br/>OpenTTD's own CMake/CTest toolchain"]
+    B -- "B: sound idea,<br/>needs adaptation" --> C
+    B -- "C: Prismatic-specific,<br/>inspiration only" --> D["Noted in this README,<br/>not ported"]
+    B -- "D: not transferable<br/>(stack- or domain-specific)" --> D
+    C --> E["Written ONCE into<br/>AGENTS.md / tools/gate.sh / research/"]
+    E --> F["Validated with tools/gate.sh<br/>against OpenTTD itself"]
+```
+
+Concrete examples of what actually crossed that pipeline while this fork's tooling was built — not hypothetical, this is what happened:
+
+| Studied in Prismatic | Category | Landed as, in this fork |
+|---|---|---|
+| `justfile`'s `check` / `precommit` / `ci` tiers (~30s / ~2-3min / ~5-10min, one entry point per tier, "these match what CI runs too") | A — generic pattern | `tools/gate.sh smoke` / `change` / `full` |
+| Fail-closed completion taxonomy (`VERIFIED` / `PARTIALLY VERIFIED` / `BLOCKED`; "don't mark VERIFIED unless every blocking criterion actually passed") | A — generic pattern | `research/README.md`'s PASS / FAIL / PARTIAL / NOT RUN / NOT APPLICABLE taxonomy |
+| "No self-authorized gate bypass; an override may only be prepared at a human's own request, with their stated reason attached" | A — generic pattern | `AGENTS.md` ground rules |
+| Mandatory report sections (mission, actions taken, files modified, next steps) enforced by a session-end hook before a report is accepted | A, simplified | `research/experiment-template.md`'s required fields |
+| `mix compile` / `mix test` / `credo` / `dialyzer` as the actual per-tier check commands | B — needs adaptation | `cmake --build` / `ctest` (OpenTTD has no lint tool, so no lint step was invented to match) |
+| Git Worktree Operating System (`just wt-new` / `wt-claim` / `wt-doctor`, mandatory per-session isolated worktrees so concurrent agents never share a dirty root) | C — inspiration only | Not built here; this fork instead follows the lighter-weight "check `git status`, protect the existing dirty tree" rule already in `AGENTS.md`, which addresses the same underlying concern for a solo fork with no concurrent sessions |
+| A build-failing check that greps for and *forbids* rollback logic in database migrations | D — rejected, not transferable | Explicitly not echoed: OpenTTD's real rule points the opposite way — savegames must stay loadable forever (`src/saveload/`), so "forbid going backward" is the wrong instinct here |
+| GitLab server-side pre-receive hook enforcing an `AIAD-Gate` commit trailer, with a multi-approver override protocol | D — not transferable | Not applicable — a solo private fork has no server-side git hooks and no second approver |
+
+This wasn't a one-time import. If this fork's gating model changes in the future, new principles would be expected to cross the same pipeline — read the specific source, classify it, adapt (or reject) it explicitly, write it once.
+
 ### 0.3) What this fork is not
 
 - Not affiliated with, and not a contribution channel to, the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project.
