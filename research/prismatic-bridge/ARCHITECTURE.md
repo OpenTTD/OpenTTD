@@ -129,7 +129,7 @@ flowchart TD
         MC --> Ded["prismatic_deduction<br/>(not integrated yet)"]
         Ded --> Directive["POST /decision/pull result<br/>{ai, company_id, settings}<br/>-- endpoint exists, contract undefined"]
         Directive --> Bridge2["openttd-prismatic-bridge<br/>-- BUILT"]
-        Bridge2 -- "start_ai / reload_ai<br/>-- BUILT" --> GameLive["PrismaticAI in OpenTTD<br/>-- idles, no strategy yet"]
+        Bridge2 -- "start_ai / reload_ai<br/>-- BUILT" --> GameLive["PrismaticAI in OpenTTD<br/>-- builds a real single-town<br/>bus route, verified live"]
         GameLive -- "/state, /companies,<br/>/ws/events -- BUILT" --> Fusion2
     end
 ```
@@ -146,7 +146,7 @@ Each remaining phase should be approved before starting — this table tracks re
 |---|---|---|---|---|
 | 0 | This document | Done (this revision) | No (read-only research) | Human review |
 | 1 | Control-path round trip: standalone bridge speaking the Admin Network protocol; `start_ai`/`reload_ai` reachable over HTTP; a real, externally-steerable (if idling) Company AI | **Done** — `~/dev/openttd-prismatic-bridge` (Python/FastAPI, `bridge/`, `ai/PrismaticAI/*.nut`, 8/8 unit tests passing) | No — bridge is standalone | Bridge repo's own `pytest tests/`; manually confirmed end-to-end per its README's `curl` examples |
-| 2 | Real company strategy: `ai/PrismaticAI/main.nut` actually builds/buys/routes, driven by its settings string, instead of idling | Not started (explicitly flagged as a follow-up in the bridge repo's own README) | No | Bridge repo's tests + a manual in-game check (does the track actually get built) |
+| 2 | Real company strategy: `ai/PrismaticAI/main.nut` actually builds/buys/routes, driven by its settings string, instead of idling | **Done** — single-town bus route (two stops on the town's own already-connected road network, a depot, 1-3 buses scaled by `aggressiveness`); intercity routes (real road pathfinding across arbitrary terrain) remain a follow-up | No | Bridge repo's `pytest tests/` (unaffected — this is a `.nut` change) + a real in-game check: reloading a company with this script took it from `busses: 0, company_value: 1` to `busses: 3, company_value: 11025, performance: 30` |
 | 3 | Decision contract: define what `/decision/pull` actually returns and where `PRISMATIC_DECISION_URL` points; wire something on the `prismatic-platform` side to answer it | Not started | **Yes** — first real touch of `prismatic-platform` | Both sides' gates |
 | 4 | World seeding from real elevation/GIS data via `-G`; town-data JSON path researched and either used headlessly or explicitly deferred | Not started | No (data-prep pipeline, could live in either repo) | `tools/gate.sh` + a manual headless-start check |
 | 5 | Live decision-making wired to `prismatic_monte_carlo`/`prismatic_deduction`/`prismatic_dd`/`prismatic_intelligence_fusion` instead of a placeholder — this is where "využití maxima features" actually lands | Not started | Yes | Both sides' gates + a `research/experiment-template.md` report per experiment run |
