@@ -768,7 +768,7 @@ struct SaveLoad {
 	 * @param extra An extra offset to apply. Mostly 0, except for a few LinkGraph settings variables.
 	 * @return The address of the variable.
 	 */
-	using AddressFunction = void *(*)(void *base, size_t extra);
+	using AddressFunction = const void *(*)(const void *base, size_t extra);
 
 	std::string name;    ///< Name of this field (optional, used for tables).
 	SaveLoadType cmd;    ///< The action to take with the saved/loaded type, All types need different action.
@@ -860,11 +860,11 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @note In general, it is better to use one of the SLE_* macros below.
  */
 #define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) \
-	SaveLoad {name, cmd, type, length, from, to, [] (void *b, size_t) -> void * { \
-		static_assert(SlCheckVarSize(cmd, type, length, sizeof(static_cast<base *>(b)->variable))); \
+	SaveLoad {name, cmd, type, length, from, to, [] (const void *b, size_t) -> const void * { \
+		static_assert(SlCheckVarSize(cmd, type, length, sizeof(static_cast<const base *>(b)->variable))); \
 		static_assert((VarType{type}.mem != VarMemType::LabelReverse && VarType{type}.mem != VarMemType::LabelForward) || std::is_base_of_v<BaseLabel, decltype(base::variable)>); \
 		assert(b != nullptr); \
-		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
+		return std::addressof(static_cast<const base *>(b)->variable); \
 	}, extra, nullptr}
 
 /**
@@ -1097,9 +1097,9 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
  * @note In general, it is better to use one of the SLEG_* macros below.
  */
 #define SLEG_GENERAL(name, cmd, variable, type, length, from, to, extra) \
-	SaveLoad {name, cmd, type, length, from, to, [] (void *, size_t) -> void * { \
+	SaveLoad {name, cmd, type, length, from, to, [] (const void *, size_t) -> const void * { \
 		static_assert(SlCheckVarSize(cmd, type, length, sizeof(variable))); \
-		return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
+		return std::addressof(variable); }, extra, nullptr}
 
 /**
  * Storage of a global variable in some savegame versions.
@@ -1314,7 +1314,7 @@ inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 
 	/* Everything else should be a non-null pointer. */
 	assert(sld.address_func != nullptr);
-	return sld.address_func(const_cast<void *>(object), sld.extra_data);
+	return const_cast<void *>(sld.address_func(object, sld.extra_data));
 }
 
 int64_t ReadValue(const void *ptr, VarMemType conv);
