@@ -34,6 +34,43 @@
 
 Sections 1.0 onward below are the **original upstream OpenTTD README**, kept intact for its technical value and attribution. This section only documents what's specific to this fork.
 
+**At a glance:**
+
+```
++-------------------------------+   studied, adapted    +--------------------------------+
+|  ~/dev/prismatic-platform     |  ------------------->  |  korczis/OpenTTD (this fork)   |
+|  (private, NEVER modified     |  generic principles    |  (private, this repository)    |
+|   from this repository)       |  only — no code,       |                                 |
+|                                |  no domain content     |  * C++20 game -- system under  |
+|  * Elixir/Phoenix umbrella    |                         |    test (src/, regression/)    |
+|  * OSINT / decision-support   |                         |  * tools/gate.sh --            |
+|  * just check/precommit/ci    |                         |    smoke / change / full       |
+|  * 546 AIAD agents, 233 cmds  |                         |  * AGENTS.md / CLAUDE.md /     |
+|  * git-worktree session OS    |                         |    research/                   |
++-------------------------------+                         +--------------------------------+
+              ^                                                          |
+              |             no automated sync -- human judgement only    |
+              +----------------------------------------------------------+
+```
+
+```mermaid
+flowchart LR
+    subgraph P["~/dev/prismatic-platform (private, untouched)"]
+        P1["Elixir/Phoenix umbrella<br/>OSINT / decision-support"]
+        P2["just check / precommit / ci"]
+        P3["546 AIAD agents, 233 commands"]
+    end
+
+    subgraph F["korczis/OpenTTD (this fork)"]
+        F1["System under test: C++20, CMake/CTest"]
+        F2["tools/gate.sh: smoke / change / full"]
+        F3["AGENTS.md, CLAUDE.md, research/"]
+    end
+
+    P -- "generic principles only<br/>(read, adapted, never copied wholesale)" --> F
+    F -. "no automated sync —<br/>human judgement only" .-> P
+```
+
 ### 0.1) Purpose and goals
 
 OpenTTD plays two roles at once in this repository:
