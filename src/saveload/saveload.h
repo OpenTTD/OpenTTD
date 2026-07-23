@@ -758,17 +758,25 @@ enum class SaveLoadType : uint8_t {
 	ReferenceVector = 12, ///< Save/load a vector of #SaveLoadType::Reference elements.
 };
 
-typedef void *SaveLoadAddrProc(void *base, size_t extra);
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 struct SaveLoad {
+	/**
+	 * Function that returns the address of a variable.
+	 * @param base In case the variable comes from an object, this is the pointer to the begin of that object.
+	 *             Will be non-nullptr for objects, can be both non-nullptr and nullptr for global variables.
+	 * @param extra An extra offset to apply. Mostly 0, except for a few LinkGraph settings variables.
+	 * @return The address of the variable.
+	 */
+	using AddressFunction = void *(*)(void *base, size_t extra);
+
 	std::string name;    ///< Name of this field (optional, used for tables).
 	SaveLoadType cmd;    ///< The action to take with the saved/loaded type, All types need different action.
 	VarType conv;        ///< Type of the variable to be saved; this field combines both FileVarType and MemVarType.
 	uint16_t length;       ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
 	SaveLoadVersion version_from;   ///< Save/load the variable starting from this savegame version.
 	SaveLoadVersion version_to;     ///< Save/load the variable before this savegame version.
-	SaveLoadAddrProc *address_proc; ///< Callback proc the get the actual variable address in memory.
+	AddressFunction address_func; ///< Callback function the get the actual variable address in memory.
 	size_t extra_data;              ///< Extra data for the callback proc.
 	std::shared_ptr<SaveLoadHandler> handler; ///< Custom handler for Save/Load procs.
 };
@@ -1300,13 +1308,13 @@ inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 {
 	/* Entry is a null-variable, mostly used to read old savegames etc. */
 	if (sld.conv.mem == VarMemType::Null) {
-		assert(sld.address_proc == nullptr);
+		assert(sld.address_func == nullptr);
 		return nullptr;
 	}
 
 	/* Everything else should be a non-null pointer. */
-	assert(sld.address_proc != nullptr);
-	return sld.address_proc(const_cast<void *>(object), sld.extra_data);
+	assert(sld.address_func != nullptr);
+	return sld.address_func(const_cast<void *>(object), sld.extra_data);
 }
 
 int64_t ReadValue(const void *ptr, VarMemType conv);
