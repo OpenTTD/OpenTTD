@@ -15,6 +15,10 @@ Four layers, increasing in cost. Match the layer to the size of the change — d
 
 `tools/gate.sh --help` documents the exact commands each layer runs. All three are thin wrappers around this repo's own existing CMake/CTest toolchain (see `CLAUDE.md`) — there is no separate lint/format gate because no such tool (e.g. a `.clang-format` config) currently exists in this codebase; don't fake one.
 
+## Internals, debugging, and instrumentation
+
+Using internal APIs, debug builds, assertions, sanitizers, tracing, or research-only instrumentation is explicitly allowed in this fork — see [AGENTS.md](../AGENTS.md) §"Research-mode access to internals" for the full policy. What matters for an experiment report: state the exact build/runtime configuration used (e.g. `OPTION_USE_ASSERTS`, compiler flags, `-d <facility>=<level>`, any added instrumentation), and don't generalize a debug-build or instrumented result to release-build behavior without separate evidence. Instrumentation itself can alter timing, memory layout, or scheduling — note that as a known limitation when it applies.
+
 ## Recording an experiment
 
 Copy [`experiment-template.md`](./experiment-template.md), fill it in, and keep it wherever is convenient for you (this directory is a reasonable default, but filled-in reports are not required to be committed — they're working notes, not gated artifacts). The template is the versioned, reusable part; a specific experiment's report is not.

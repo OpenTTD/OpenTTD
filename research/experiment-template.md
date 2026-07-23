@@ -4,6 +4,7 @@
 - **Base revision:** `git rev-parse --short HEAD` output
 - **Goal / hypothesis:** what you set out to test or change, and what result would confirm or refute it.
 - **Changed files:** `git diff --name-only <base>` output, or a short list.
+- **Build/debug configuration (if relevant):** debug vs. release build, `OPTION_USE_ASSERTS`, sanitizer flags, `-d <facility>=<level>`, or any other research-only instrumentation used — see `AGENTS.md` §"Research-mode access to internals". Omit if the experiment used only the default `tools/gate.sh` configuration.
 
 ## Validation performed
 

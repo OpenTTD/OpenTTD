@@ -6,6 +6,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `korczis/OpenTTD` is a private academic research fork used as a validation target for the Prismatic platform, not staged for upstream contribution. The full ground rules, the four-kinds-of-change distinction, and the layered validation model (`tools/gate.sh`, `research/`) live in [AGENTS.md](./AGENTS.md) and apply to Claude Code exactly as to any other agent — read that first. This file only adds Claude-specific workflow notes and OpenTTD's own technical reference (build/run/test, architecture, code style) on top.
 
+## Research mode: internals, debugging, and instrumentation
+
+The full policy is defined once, vendor-neutrally, in [AGENTS.md](./AGENTS.md) under "Research-mode access to internals" — read it first; this section only adds Claude Code-specific workflow on top.
+
+- Internals are not off-limits here. Upstream's own contribution norms (public-API purity, ABI stability, etc.) explain *why* the code looks the way it does, but they are not this fork's local process authority (see AGENTS.md, and the "Project culture" section below, which documents *upstream's* norms for context only).
+- A debug build, an added trace point, a state dump, or a research-only hook is a legitimate deliverable of a session here — not something to avoid or apologize for.
+- Research-only code is allowed to be intrusive (added counters, timestamps, invariant checks, state snapshots) when the experiment needs it — see AGENTS.md's containment rules for keeping it scoped and removable.
+- Changes must still be scoped, auditable in the diff, and reversible; report the debug/build configuration actually used.
+- Never mark a validation step as PASS that wasn't actually run — this applies to research/debug validation exactly as much as to build/test gates (`research/README.md`).
+- Use an internal API directly rather than inventing an artificial public abstraction just to preserve a production design ideal the experiment doesn't need.
+
+When an experiment depends on an internal implementation detail, record that dependency explicitly rather than hiding it behind misleadingly generic terminology.
+
+Workflow for a task that needs internal observability:
+
+1. Identify the research question.
+2. Identify the internal state or behavior that must become observable.
+3. Check for an existing debug or internal interface first — e.g. `-d <facility>=<level>` (facilities in `src/debug.h`: `driver`, `grf`, `map`, `misc`, `net`, `sprite`, `oldloader`, `yapf`, `fontcache`, `script`, `sl`, `gamelog`, `desync`, `console`, `random`), `OPTION_USE_ASSERTS`, or existing logging.
+4. Reuse it when practical.
+5. Otherwise add the smallest research-only hook or instrumentation point.
+6. Gate or clearly label the interface (e.g. `RESEARCH-ONLY` / `DEBUG-ONLY` / `UNSTABLE` — see AGENTS.md).
+7. Capture the exact build and runtime configuration (CMake options, compiler flags, runtime flags).
+8. Run the relevant validation tier (`tools/gate.sh`, see README.md 0.5).
+9. Report observer effects and limitations.
+10. Do not generalize beyond the tested configuration.
+
+Final-report checklist for a session that touched internals: internal APIs used, internals exposed, instrumentation added, debug flags enabled, runtime flags enabled, generated diagnostic artifacts, build type, validation performed, observer effects, release-build applicability, and cleanup/containment status.
+
 ## What this is
 
 OpenTTD is a C++20 open-source transport simulation game (a re-implementation/extension of Transport Tycoon Deluxe). It's a mature, long-lived project (20+ years) with a large, careful, mostly-volunteer maintainer base upstream. The "Project culture" section below documents *their* norms for context (e.g. if reading upstream docs/history), not rules this fork must follow.
