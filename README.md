@@ -164,6 +164,61 @@ Concrete examples of what actually crossed that pipeline while this fork's tooli
 
 This wasn't a one-time import. If this fork's gating model changes in the future, new principles would be expected to cross the same pipeline — read the specific source, classify it, adapt (or reject) it explicitly, write it once.
 
+#### 0.2.5) Selected Prismatic capabilities of particular interest
+
+Within Prismatic's ~90 applications, the ones most relevant to *why* rigorous, honestly-reported agentic validation matters are the ones with the highest real-world stakes: OSINT collection, due-diligence synthesis, and quantitative modeling that's directly wired to real external systems. Read from each application's own README, not guessed from its name:
+
+| Application | What it actually does |
+|---|---|
+| `prismatic_osint_core` | The core OSINT (open-source intelligence) framework — the foundation the other OSINT collectors build on. |
+| `prismatic_osint_sources`, `prismatic_osint_business_financial`, `prismatic_osint_czech_legal`, `prismatic_osint_eu_institutions`, `prismatic_osint_network`, `prismatic_osint_social_media`, `prismatic_osint_czech_courts` | 84+ source adapters and domain-specific collectors — business/financial records, the Czech legal system, EU institutions, network infrastructure, social media, Czech courts. |
+| `prismatic_dd` | The Due Diligence platform itself (production status). |
+| `prismatic_intelligence_fusion` | Cross-system fusion hub: links OSINT, DD, Academy, and Storage into one workflow through a shared knowledge graph, with Bayesian confidence aggregation across independent sources — its own README is explicit that "isolated signals have limited value; fusion across domains multiplies intelligence value through correlation, contradiction detection, and confidence aggregation." |
+| `prismatic_monte_carlo` | A probabilistic-simulation / uncertainty-quantification engine. |
+| `prismatic_deduction` | A deterministic, purely functional logical inference engine over typed claim graphs (subject–predicate–object), with an R1–R4 rule engine for contradiction and missing-premise detection. |
+| `prismatic_bifurcation` | Dynamic-systems analysis and bifurcation detection. |
+| `prismatic_power_graph` | A versioned graph store modeling real Czech/EU power-grid entities (companies by IČO, individuals, EU institutions) and their relationships (ownership, board membership), hybrid in-memory (ETS) + KuzuDB persistence. |
+| `prismatic_property_intelligence` | Czech real-estate intelligence with a direct integration into ČÚZK (the Czech cadastral authority) for property data, valuation, and ownership verification against the official registry. |
+| `prismatic_re_sources` | Real-estate market data source connectors feeding the above. |
+| `prismatic_perimeter` | External attack-surface management (EASM) — continuous discovery and risk-scoring of real internet-facing assets (domains, IPs, certificates, cloud resources). |
+| `prismatic_detection_engine` | A multi-vector correlation engine unifying entity correlation, threat analysis, data-quality validation, ML pattern detection, and competitive intelligence behind one API. |
+| `prismatic_visitor_intelligence` | High-throughput (10,000+ events/sec target) real-time visitor and company-identification intelligence. |
+
+```mermaid
+flowchart TB
+    subgraph Sources["Real-world data sources"]
+        OS["OSINT source adapters<br/>(84+, various domains)"]
+        RE["Real-estate market data"]
+        CUZK["Czech cadastral registry (ČÚZK)"]
+    end
+
+    subgraph Modeling["Modeling / real-world connection"]
+        MC["Monte Carlo —<br/>uncertainty quantification"]
+        DED["Deduction —<br/>claim-graph inference"]
+        BIF["Bifurcation —<br/>dynamic systems analysis"]
+        PG["Power Graph —<br/>power-grid entity graph"]
+        PI["Property Intelligence —<br/>real-estate valuation"]
+    end
+
+    subgraph Product["Product surface"]
+        DD["Due Diligence platform"]
+        FUS["Intelligence Fusion —<br/>cross-system correlation"]
+        DET["Detection Engine"]
+        PER["Perimeter —<br/>attack-surface management"]
+    end
+
+    OS --> FUS
+    RE --> PI
+    CUZK --> PI
+    PI --> Modeling
+    Modeling --> FUS
+    FUS --> DD
+    FUS --> DET
+    FUS --> PER
+```
+
+This is where "napojení na reálný svět" — connecting automated inference to actual external reality (a real cadastral registry, a real power grid, real OSINT sources, real due-diligence subjects) — is most concrete, and where a wrong or overconfident automated conclusion has the highest real cost. It's the strongest concrete case for the closing point of 0.1: the fail-closed reporting discipline validated in this OpenTTD fork is meant to transfer back to exactly this kind of high-stakes, real-world-grounded work — not to a context where an optimistic-but-wrong status report would be harmless.
+
 ### 0.3) What this fork is not
 
 - **Not affiliated with, and not a contribution channel to, the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project** — despite being hosted on GitHub as `korczis/OpenTTD`, it has no operational relationship to the upstream repository: no shared issue tracker, no CI feeding results back upstream, no listing as an active fork in any contribution sense.
