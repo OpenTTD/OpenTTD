@@ -333,6 +333,15 @@ cmd_build() {
   local build_dir; build_dir=$(profile_build_dir "$PROFILE")
   [[ -f "$build_dir/CMakeCache.txt" ]] || die "$EXIT_MISSING_PREREQ" "$build_dir is not configured yet -- run 'configure --profile $PROFILE' first"
 
+  # Record profile/build facts unconditionally -- do not rely on a prior
+  # `configure` call having been made under this same --experiment-id (it
+  # may have been configured standalone, or by an earlier experiment). Only
+  # BUILD_CONFIGURE_CMD falls back to a placeholder, since that field (unlike
+  # the other three, which are deterministic given the profile) has real
+  # historical value when this experiment's own `configure` already set it.
+  load_state
+  set_build_state "$build_dir" "$(profile_cmake_build_type "$PROFILE")" "$(profile_research_instrumentation "$PROFILE")" "${BUILD_CONFIGURE_CMD:-(reused pre-existing configure)}"
+
   local jobs
   jobs=$(command -v nproc >/dev/null 2>&1 && nproc || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 

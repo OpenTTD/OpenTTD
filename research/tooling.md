@@ -68,8 +68,8 @@ still only *conceptual* integration points from this fork's side.
 
 | Profile | Build dir | Build type | `OPTION_RESEARCH_INSTRUMENTATION` | Notes |
 |---|---|---|---|---|
-| `research-debug` | `build-research/` | Debug | ON | Asserts on. The experimental configuration; compiles in `research_status` and any future research-only hooks. |
-| `baseline-release` | `build-research-baseline-release/` | RelWithDebInfo | OFF | `OPTION_USE_ASSERTS=OFF` explicitly, for a clean comparison baseline distinct from `tools/gate.sh`'s own `build/` (which keeps asserts on for its dev-loop purpose). |
+| `research-debug` | `build-research/` | Debug | ON | Asserts on. The experimental configuration; compiles in `research_status` and any future research-only hooks. Built and run end-to-end; confirmed via `strings` that `research_status` is present in the binary. |
+| `baseline-release` | `build-research-baseline-release/` | RelWithDebInfo | OFF | `OPTION_USE_ASSERTS=OFF` explicitly, for a clean comparison baseline distinct from `tools/gate.sh`'s own `build/` (which keeps asserts on for its dev-loop purpose). Built end-to-end (clean, only benign linker warnings); confirmed via `strings` that `research_status` is absent from the binary, completing the ON/OFF comparison pair. |
 | `research-asan` | `build-research-asan/` | Debug | ON | `-fsanitize=address,undefined` passed directly (no dedicated CMake option exists in this codebase — see `AGENTS.md`). **Configure-only in this fork so far** — `build`/`run` refuse this profile outright rather than silently taking a very expensive third full build; see Limitations. |
 
 `configure` refuses to silently reconfigure a build directory whose existing `CMakeCache.txt`
