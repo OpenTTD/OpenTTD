@@ -646,6 +646,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Sejarah Kargo
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Telah diproduksi
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Tampilkan atau sembunyikan grafik kargo yang diproduksi oleh industri ini
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Telah diantar
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Telah dikirim
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Menunggu

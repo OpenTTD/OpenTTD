@@ -4723,9 +4723,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full load any c
 STR_ORDER_DROP_NO_LOADING                                       :No loading
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Change the loading behavior of the highlighted order
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Unload all
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Force unload all
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Unload if accepted
-STR_ORDER_DROP_UNLOAD                                           :Unload all
+STR_ORDER_DROP_UNLOAD                                           :Force unload even if not accepted
 STR_ORDER_DROP_TRANSFER                                         :Transfer
 STR_ORDER_DROP_NO_UNLOADING                                     :No unloading
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change the unloading behavior of the highlighted order
@@ -4828,10 +4828,10 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Implici
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Full load)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Full load any cargo)
 STR_ORDER_NO_LOAD                                               :{SPACE}(No loading)
-STR_ORDER_UNLOAD                                                :{SPACE}(Unload and take cargo)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Unload and wait for full load)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Unload and wait for any full load)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Unload and leave empty)
+STR_ORDER_UNLOAD                                                :{SPACE}(Force unload and take cargo)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Force unload and wait for full load)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Force unload and wait for any full load)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Force unload and leave empty)
 STR_ORDER_TRANSFER                                              :{SPACE}(Transfer and take cargo)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transfer and wait for full load)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transfer and wait for any full load)
@@ -4844,9 +4844,9 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(No unlo
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Refit to {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Full load with refit to {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Full load any cargo with refit to {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Unload and take cargo with refit to {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Unload and wait for full load with refit to {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Unload and wait for any full load with refit to {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Force unload and take cargo with refit to {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Force unload and wait for full load with refit to {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Force unload and wait for any full load with refit to {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transfer and take cargo with refit to {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transfer and wait for full load with refit to {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transfer and wait for any full load with refit to {STRING})

@@ -2145,9 +2145,9 @@ STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Tika o te tuari
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Ka nui ake te tautuhinga, ka roa ake te wā ka tātaitia ai te kauwhata hono e te pūtukatuka matua. Mēnā ka roa te wā, ka kite pea koe i te takaware. Heoi anō, mēnā ka tautuhitia ki tētahi uara iti, kāore te tuari e tika, ka kite hoki pea koe kāore te utanga e tukuna ki ngā wāhi e pīrangitia ana e koe
 
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Pānga a te mamao ki te popono: {STRING}
-STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Mēnā ka tautuhitia tēnei ki tētahi uara neke atu i te 0, ko te mamao i waenganui o te teihana taketake A o ngētahi utanga me te ūnga E ka pā ki te tatau o te utanga kia tukuna mai i A ki E. Ka mamao ake a E i A, ka iti ake te tatau o te utanga ka tukuna. Ka nui ake te tautuhinga, ka iti ake te tatau o te utanga ka tukuna ki ngā teihana mamao, otirā ka nui ake te tatau ka tukuna ki ngā teihana tata
+STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Mēnā ka tautuhitia tēnei ki tētahi uara neke atu i te 0, ko te mamao i waenganui o te teihana taketake A o ngētahi utanga me te ūnga E ka pā ki te tatau o te utanga kia tukuna mai i A ki E. Ka mamao ake a E i A, ka iti iho te tatau o te utanga ka tukuna. Ka nui ake te tautuhinga, ka iti iho te tatau o te utanga ka tukuna ki ngā teihana mamao, otirā ka nui ake te tatau ka tukuna ki ngā teihana tata
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Tatau o te utanga e hoki ana mō te aratau hangarite: {STRING}
-STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ina iti ake tēnei i te 100%, ka āhua ōrite te tuari hangarite ki te tuari hikuwaru. Ka ouou ake te tatau o te utanga ka pīrangitia ki te tuku whakamuri mēnā ka tukuna tētahi tatau ki tētahi teihana. Ina tautuhitia ki te 0%, ka ōrite pū te tuari hangarite ki te tuari hikuwaru
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Ina iti iho tēnei i te 100%, ka āhua ōrite te tuari hangarite ki te tuari hikuwaru. Ka ouou ake te tatau o te utanga ka pīrangitia ki te tuku whakamuri mēnā ka tukuna tētahi tatau ki tētahi teihana. Ina tautuhitia ki te 0%, ka ōrite pū te tuari hangarite ki te tuari hikuwaru
 
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Kohura o ngā ara poto i mua i te whakamahi i ngā ara kītanga nui: {STRING}
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :I te maha o ngā wā, ka maha ngā ara i waenganui o te rua teihana. Ka mātua whakakī te hātepe i te ara poto rawaatu, kātahi, ka whakamahia te ara poto tuarua āpānoa kia kohura tērā, ka pērā tonu te hātepe. Ka whakatau tatangia te kohura kia taurite ki te kītanga me te whakamahinga kua whakamaheretia. I te wā kua kohura ngā ara katoa, mēnā ka toe te popono, ka kūkātia ngā ara katoa, e mariu ana ki ngā ara kītanga nui. Engari i te nuinga o te wā, kāore e tika te whakatau tata i te kītanga. Ka tukuna koe kia tautuhi i te ōrau me whakakī ai he ara poto i te haerenga tuatahi i mua i te kōwhiri i tētahi ara roa ake. Tautuhitia ki raro iho i te 100% kia karo ai i ngā teihana kōpipiri mēnā kāore i tika te whakatau tata i te kītanga
@@ -3416,7 +3416,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Tāuru i
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Hanga Whenua
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Rahi o te mahere:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Tīpako i te rahi o te mahere ki ngā papariki. Ka iti ake te tatau o ngā papariki e wātea ana
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Tīpako i te rahi o te mahere ki ngā papariki. Ka iti iho te tatau o ngā papariki e wātea ana
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Tatau o ngā tāone:
 STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}Tīpako i te apiapi tāone, tautuhi rānei i tētahi tau
@@ -4768,8 +4768,8 @@ STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Whakamuri
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Me pēwhea te whakataurite te raraunga waka ki te uara kua tukuna
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ka ōrite ki te
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :kāore e ōrite ki te
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ka iti ake i te
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :ka iti ake, ka ōrite rānei ki te
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ka iti iho i te
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :ka iti iho, ka ōrite rānei ki te
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :ka nui ake i te
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :ka nui ake, ka ōrite rānei ki te
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :ka pono
