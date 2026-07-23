@@ -75,18 +75,37 @@ flowchart LR
 
 OpenTTD plays two roles at once in this repository:
 
-- **System under test.** `src/`, `regression/`, the build system, and OpenTTD's own engineering conventions (savegame compatibility, the deterministic command-pattern architecture, `CODINGSTYLE.md`) are the real substrate an agent has to actually respect to make a correct, working change — that's what makes it useful as a validation target instead of a toy.
-- **Not a product being developed here.** Nothing in this fork is intended to become an OpenTTD feature or fix. Changes exist to produce evidence about *how the change was made and validated*, not to ship gameplay value.
+- **System under test.** `src/`, `regression/`, the build system, and OpenTTD's own engineering conventions are the real substrate an agent has to actually respect to make a correct, working change — that's what makes it useful as a validation target instead of a toy. Concretely, this means things like: the deterministic command-pattern architecture (`src/command.cpp`) that every game-state mutation must go through, because multiplayer is bit-identical lockstep across clients; backward-compatible savegame versioning (`src/saveload/`) where a field, once shipped, can never simply be deleted; a YAPF pathfinder specialized per vehicle type; and a project-wide Doxygen documentation convention enforced by warning-heavy compiler flags. An agent that ignores any of these doesn't just write ugly code — it writes code that would desync a multiplayer game or corrupt old savegames, which is exactly the kind of "looks fine, is actually broken" failure this fork exists to catch before it's reported as a pass.
+- **Not a product being developed here.** Nothing in this fork is intended to become an OpenTTD feature or fix, and no change here is judged by whether it improves gameplay. Changes exist to produce evidence about *how the change was made and validated* — the deliverable of a session in this repository is closer to an experiment report (see `research/experiment-template.md`) than to a shipped feature.
 
 Concretely, this fork exists to:
 
-- **validate and stress-test the Prismatic platform** against a real, non-trivial, long-lived codebase, rather than a purpose-built toy;
-- **run controlled experiments with coding agents** — planning, scoping, and executing changes under explicit constraints;
-- **evaluate the quality of changes, fixes, and refactors, and the decision processes behind them** — not just whether a diff compiles, but whether the reasoning that produced it holds up;
-- **measure the reproducibility, quality, and reliability of agentic workflows** — can the same task, run again, be trusted to produce a comparable, honestly-reported result;
-- **develop and validate gating, tooling orchestration, and experimental protocols** — the layered `tools/gate.sh` model and the `research/` reporting taxonomy in this repository are themselves part of what's being evaluated, not just scaffolding around it.
+- **validate and stress-test the Prismatic platform** against a real, non-trivial, long-lived codebase, rather than a purpose-built toy. A toy codebase can be shaped to be easy for an agent to succeed in; OpenTTD wasn't built for that and doesn't bend to make results look better than they are.
+- **run controlled experiments with coding agents** — planning, scoping, and executing changes under explicit constraints (see the four kinds of change below), so that a given experiment has a stated goal, a bounded surface area, and a predictable way to tell whether it succeeded.
+- **evaluate the quality of changes, fixes, and refactors, and the decision processes behind them** — not just whether a diff compiles, but whether the reasoning that produced it holds up: did the agent correctly identify the relevant convention (e.g. "this touches game state, so it must go through a command handler"), or did it get a working-looking result for the wrong reason.
+- **measure the reproducibility, quality, and reliability of agentic workflows** — can the same task, run again (possibly by a different agent, or the same agent on a different day), be trusted to produce a comparable, honestly-reported result, rather than a one-off lucky success.
+- **develop and validate gating, tooling orchestration, and experimental protocols** — the layered `tools/gate.sh` model and the `research/` reporting taxonomy in this repository are themselves part of what's being evaluated, not just scaffolding around it: a gating design that's too cheap to catch real problems, or too expensive to actually get used, is itself a negative result worth knowing about.
+
+Every change made in this fork should be traceable to at least one of the five goals above — if it isn't, it's probably out of scope for this repository (see 0.3).
 
 Why this matters beyond the mechanics: Prismatic's actual application domain (see 0.2.1) is decision-support work where a wrong or overconfident answer has real cost. That's part of why this fork insists on the fail-closed reporting habit described in 0.6 — never claiming PASS on untested work — rather than on optimistic status reporting: the gating discipline being validated here is meant to transfer back to a context where it actually matters, not just to look tidy in a research repo.
+
+**The four kinds of change** (from `AGENTS.md`) that every experiment in this fork is classified as, before it's touched:
+
+```mermaid
+flowchart TD
+    Start(["A change is about to be made"]) --> Q1{"Does it touch<br/>src/, regression/, docs/<br/>under upstream conventions?"}
+    Q1 -- yes --> C1["1. Product change<br/>(subject to OpenTTD's own<br/>engineering conventions)"]
+    Q1 -- no --> Q2{"Does it touch<br/>tools/gate.sh or research/?"}
+    Q2 -- yes --> C2["2. Experimental infrastructure change<br/>(this fork's own validation tooling)"]
+    Q2 -- no --> Q3{"Does it touch<br/>.claude/ or .aiad/?"}
+    Q3 -- yes --> C3["3. Agentic tooling change<br/>(local-only, never committed)"]
+    Q3 -- no --> C4["4. Documentation change<br/>(README / AGENTS.md / CLAUDE.md)"]
+    C1 --> Gate["Validated by the matching tools/gate.sh tier —<br/>see 0.5"]
+    C2 --> Gate
+    C4 --> Gate
+    C3 --> Local["Stays local — no gate needed,<br/>never enters git history"]
+```
 
 ### 0.2) Relationship to the Prismatic platform
 
