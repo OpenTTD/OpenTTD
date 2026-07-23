@@ -166,9 +166,10 @@ This wasn't a one-time import. If this fork's gating model changes in the future
 
 ### 0.3) What this fork is not
 
-- Not affiliated with, and not a contribution channel to, the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project.
-- Not a place where issues or pull requests get opened upstream — everything stays local to this fork.
-- Not bound, as a *local* rule, by upstream's own contribution process (`CONTRIBUTING.md`, PR templates, commit-message grammar, "ask before large changes"). That process describes upstream's repository, not this one — it's kept here only as background technical reference.
+- **Not affiliated with, and not a contribution channel to, the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project** — despite being hosted on GitHub as `korczis/OpenTTD`, it has no operational relationship to the upstream repository: no shared issue tracker, no CI feeding results back upstream, no listing as an active fork in any contribution sense.
+- **Not a place where issues or pull requests get opened upstream** — everything, including changes that happen to turn out well, stays local to this fork. A change proven here becoming an actual upstream contribution would require a separate, deliberate decision and a freshly-prepared PR built for that purpose specifically — that's out of scope for anything done in this repository by default.
+- **Not bound, as a *local* rule, by upstream's own contribution process** (`CONTRIBUTING.md`, PR templates, the strict commit-message grammar, "ask before large changes" discussion norms, the "AI-generated contributions are against policy" clause, `commit-checker`/`docs-checker` CI). That whole process exists to let a large volunteer maintainer base safely accept changes from strangers into a shared project — it describes upstream's own governance model, not this one. This fork has a single owner and no external reviewers, so that model simply doesn't map onto it; it's kept in this fork's docs purely as background technical reference (e.g. it explains conventions visible in the code).
+- **Not a public showcase of "an AI agent wrote OpenTTD code."** Results produced here are for informing Prismatic's own design, not for demonstrating agentic coding to an audience — hence the emphasis on honest, fail-closed reporting over polished-looking output.
 
 ### 0.4) What this fork adds on top of upstream OpenTTD
 
@@ -179,6 +180,30 @@ This wasn't a one-time import. If this fork's gating model changes in the future
 | [`tools/gate.sh`](./tools/gate.sh) | Single entry point for layered local validation — see 0.5 below. |
 | [`research/`](./research/) | The validation-layer writeup and a PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE experiment-report template. |
 | `.claude/`, `.aiad/` *(not committed)* | Personal Claude Code tooling imported from a sibling private project, kept strictly local via `.git/info/exclude`. |
+
+Laid out as a tree, to make the upstream/fork boundary explicit:
+
+```
+korczis/OpenTTD/
+├── src/, regression/, docs/, cmake/, os/, media/, bin/     <- upstream OpenTTD, conventions unmodified
+├── CMakeLists.txt, COMPILING.md, CODINGSTYLE.md, ...       <- upstream build system & docs, unmodified
+├── CONTRIBUTING.md, .github/                               <- upstream contribution process (background reference only, see 0.3)
+├── COPYING.md, CREDITS.md                                  <- upstream license & attribution, unmodified (see 0.7)
+│
+├── README.md            <- upstream content preserved below "0.0) About this fork" (this document)
+├── AGENTS.md             * fork-added: vendor-neutral agent ground rules
+├── CLAUDE.md              * fork-added pointer + preserved upstream-technical reference content
+│
+├── tools/
+│   └── gate.sh            * fork-added: smoke / change / full validation entry point
+│
+├── research/
+│   ├── README.md          * fork-added: gating model + PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy
+│   └── experiment-template.md  * fork-added: experiment report template
+│
+├── .claude/                 (fork-added, LOCAL ONLY — .git/info/exclude, never committed, never pushed)
+└── .aiad/                   (fork-added, LOCAL ONLY — .git/info/exclude, never committed, never pushed)
+```
 
 ### 0.5) Validation / gating model
 
