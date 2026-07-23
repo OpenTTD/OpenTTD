@@ -758,21 +758,14 @@ enum class SaveLoadType : uint8_t {
  * @param base The base class name.
  * @param variable The variable name.
  */
-#define SLE_OBJECT_ADDRESS(base, variable) static_cast<std::remove_cvref_t<decltype(base::variable)>*>(nullptr), \
-	[] (const void *b, size_t) -> const void * { \
-		assert(b != nullptr); \
-		return std::addressof(static_cast<const base *>(b)->variable); \
-	}
+#define SLE_OBJECT_ADDRESS(base, variable) +[] (const void *b, size_t) -> const auto * { return std::addressof(static_cast<const base *>(b)->variable); }
 
 /**
  * Macro to be able to pass the variable type and construct the SaveLoad::AddressFunction given a global variable name.
  * This is used as second parameter to all the SaveLoad 'constructor' functions.
  * @param variable The variable name.
  */
-#define SLE_GLOBAL_ADDRESS(variable) static_cast<std::remove_cvref_t<decltype(variable)>*>(nullptr), \
-	[] (const void *, size_t) -> const void * { \
-		return std::addressof(variable); \
-	}
+#define SLE_GLOBAL_ADDRESS(variable) +[] (const void *, size_t) -> const auto * { return std::addressof(variable); }
 
 /**
  * Macro to be able to pass the variable name, variable type and construct the SaveLoad::AddressFunction given a base class and variable name.
@@ -786,12 +779,14 @@ enum class SaveLoadType : uint8_t {
 struct SaveLoad {
 	/**
 	 * Function that returns the address of a variable.
+	 * @tparam R The return type of the function.
 	 * @param base In case the variable comes from an object, this is the pointer to the begin of that object.
 	 *             Will be non-nullptr for objects, can be both non-nullptr and nullptr for global variables.
 	 * @param extra An extra offset to apply. Mostly 0, except for a few LinkGraph settings variables.
 	 * @return The address of the variable.
 	 */
-	using AddressFunction = const void *(*)(const void *base, size_t extra);
+	template <typename R = void>
+	using AddressFunction = const R *(*)(const void *base, size_t extra);
 
 	std::string name; ///< Name of this field (optional, used for tables).
 	SaveLoadType cmd; ///< The action to take with the saved/loaded type, All types need different action.
@@ -799,7 +794,7 @@ struct SaveLoad {
 	uint16_t length{}; ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
 	SaveLoadVersion version_from; ///< Save/load the variable starting from this savegame version.
 	SaveLoadVersion version_to; ///< Save/load the variable before this savegame version.
-	AddressFunction address_func = nullptr; ///< Callback function the get the actual variable address in memory.
+	AddressFunction<> address_func = nullptr; ///< Callback function the get the actual variable address in memory.
 	size_t extra_data = 0; ///< Extra data for the callback proc.
 	std::shared_ptr<SaveLoadHandler> handler{}; ///< Custom handler for Save/Load procs.
 
@@ -888,6 +883,22 @@ struct SaveLoad {
 		}
 	}
 
+	/**
+	 * To be able to get the type information into the SaveLoad constructing functions, we need some infrastructure.
+	 * The easiest way to achieve this is *not* casting away the type information in the lambda that gets our address,
+	 * however to store this we need to erase this type. This function practically erases this type.
+	 * @tparam T Return type of the given address function.
+	 * @param address_func The function to convert.
+	 * @return The \c AddressFunction.
+	 */
+	template <typename T>
+	static constexpr AddressFunction<> ToAddressFunction(AddressFunction<T> address_func)
+	{
+		/* The reinterpret_cast is nasty, but we are only casting away the type of the return. */
+		static_assert(std::is_same_v<AddressFunction<>, decltype(ToAddressFunction<void>(nullptr))>);
+		return reinterpret_cast<AddressFunction<>>(address_func);
+	}
+
 
 	/**
 	 * Storage of a variable in some savegame versions.
@@ -901,7 +912,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <VarFileType file_type, typename T>
-	static SaveLoad Variable(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	static SaveLoad Variable(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		return SaveLoad{
 			.name = std::move(name),
@@ -909,7 +921,7 @@ struct SaveLoad {
 			.conv = {file_type, DetermineMemType<T, file_type>()},
 			.version_from = from,
 			.version_to = to,
-			.address_func = address_func,
+			.address_func = ToAddressFunction(address_func),
 			.extra_data = extra,
 		};
 	}
@@ -925,7 +937,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <SLRefType type, typename T>
-	static SaveLoad Reference(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad Reference(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		static_assert(requires { typename std::remove_pointer_t<T>::Pool; });
 		return SaveLoad{
@@ -934,7 +947,7 @@ struct SaveLoad {
 			.conv = type,
 			.version_from = from,
 			.version_to = to,
-			.address_func = address_func,
+			.address_func = ToAddressFunction(address_func),
 		};
 	}
 
@@ -950,7 +963,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <typename T>
-	static SaveLoad String(std::string name, T *, AddressFunction address_func, StringValidationSettings string_validation_settings = {}, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	static SaveLoad String(std::string name, AddressFunction<T> address_func, StringValidationSettings string_validation_settings = {},
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		static_assert(std::is_same_v<std::string, T> || std::is_same_v<EncodedString, T>);
 		return SaveLoad{
@@ -959,7 +973,7 @@ struct SaveLoad {
 			.conv = string_validation_settings,
 			.version_from = from,
 			.version_to = to,
-			.address_func = address_func,
+			.address_func = ToAddressFunction(address_func),
 			.extra_data = extra,
 		};
 	}
@@ -973,7 +987,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <typename T> requires std::is_base_of_v<SaveLoadHandler, T>
-	static SaveLoad Struct(std::string name, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad Struct(std::string name,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		return SaveLoad{
 			.name = std::move(name),
@@ -997,7 +1012,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <VarFileType file_type, uint16_t length, typename T>
-	static SaveLoad Array(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	static SaveLoad Array(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		static_assert(SlVarSize(DetermineMemType<T, file_type>()) * length <= sizeof(T)); // Partial setting/filling of an array is permitted.
 		return SaveLoad{
@@ -1007,7 +1023,7 @@ struct SaveLoad {
 			.length = length,
 			.version_from = from,
 			.version_to = to,
-			.address_func = address_func,
+			.address_func = ToAddressFunction(address_func),
 			.extra_data = extra,
 		};
 	}
@@ -1023,7 +1039,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <VarFileType file_type, typename T>
-	static SaveLoad Vector(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad Vector(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
 		return SaveLoad{
@@ -1032,7 +1049,7 @@ struct SaveLoad {
 			.conv = {file_type, DetermineMemType<typename T::value_type, file_type>()},
 			.version_from = from,
 			.version_to = to,
-			.address_func = address_func,
+			.address_func = ToAddressFunction(address_func),
 		};
 	}
 
@@ -1047,7 +1064,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <SLRefType type, typename T>
-	static SaveLoad ReferenceList(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad ReferenceList(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		static_assert(std::is_base_of_v<std::list<typename T::value_type>, T>);
 		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
@@ -1057,7 +1075,7 @@ struct SaveLoad {
 			.conv = type,
 			.version_from = from,
 			.version_to = to,
-			.address_func = address_func,
+			.address_func = ToAddressFunction(address_func),
 		};
 	}
 
@@ -1070,7 +1088,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <typename T> requires std::is_base_of_v<SaveLoadHandler, T>
-	static SaveLoad StructList(std::string name, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad StructList(std::string name,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		return SaveLoad{
 			.name = std::move(name),
@@ -1091,7 +1110,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <typename T>
-	static SaveLoad SaveByte(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad SaveByte(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		return SaveLoad{
 			.name = std::move(name),
@@ -1099,7 +1119,7 @@ struct SaveLoad {
 			.conv = {VarFileType::U8, DetermineMemType<T, VarFileType::U8>()},
 			.version_from = from,
 			.version_to = to,
-			.address_func = address_func,
+			.address_func = ToAddressFunction(address_func),
 		};
 	}
 
@@ -1114,7 +1134,8 @@ struct SaveLoad {
 	 * @return The constructed SaveLoad object.
 	 */
 	template <SLRefType type, typename T>
-	static SaveLoad ReferenceVector(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad ReferenceVector(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
 		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
@@ -1124,7 +1145,7 @@ struct SaveLoad {
 			.conv = type,
 			.version_from = from,
 			.version_to = to,
-			.address_func = address_func,
+			.address_func = ToAddressFunction(address_func),
 		};
 	}
 };
