@@ -1,16 +1,54 @@
 # AGENTS.md
 
-Guidance for coding agents (Claude Code, or any other AI coding tool) working in this repository.
+Vendor-neutral instructions for any coding agent (Claude Code, or any other AI coding tool) working in this repository.
 
-## Private fork — academic research project
+## What this repository actually is
 
-This repository (`korczis/OpenTTD`) is a **private fork** belonging to korczis, used as an academic research project. It is not the official OpenTTD project.
+`korczis/OpenTTD` is **not** the official OpenTTD project and is **not** staged for upstream contribution. It is korczis's private academic research fork: a real, complex, long-lived C++ codebase used as a **test/validation target for the Prismatic platform** — a testbed for evaluating coding-agent workflows, gating design, change/refactor quality, and reproducibility of agent-driven engineering. The goal of work here is never "prepare an OpenTTD pull request."
 
-- **Never push to, or open issues/PRs against, the upstream [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) repository.** All work here — commits, branches, experiments — stays local to this fork (`git@github.com:korczis/OpenTTD.git`).
-- Upstream's contribution rules (see `CONTRIBUTING.md` and the "Project culture" section of [CLAUDE.md](./CLAUDE.md)) describe *their* norms for their own repository. They're kept in this fork's docs as background/context only — they are not constraints this fork's own workflow needs to satisfy.
-- `.claude/` and `.aiad/` contain personal Claude Code tooling (commands, agents, skills, hooks) imported from another private project for use in this research context. They are git-ignored locally (via `.git/info/exclude`) and must never be committed or pushed.
+Two things live in this repository, and they play different roles:
+
+- **OpenTTD itself** (`src/`, `regression/`, `docs/`, the build system) — the system under test / technical substrate. Its own engineering conventions (`CODINGSTYLE.md`, savegame compatibility rules, the command-pattern architecture described in `CLAUDE.md`, etc.) remain real technical constraints *when you touch that code* — they're part of what makes the substrate meaningful to experiment against, not upstream red tape.
+- **This fork's own research/process layer** (`AGENTS.md`, `CLAUDE.md`, `research/`, `tools/gate.sh`, and the locally-excluded `.claude/`/`.aiad/`) — the experimental scaffolding around it.
+
+Upstream's own contribution process — `CONTRIBUTING.md`, the PR template, the "AI-generated contributions are against policy" clause, `commit-checker`/`docs-checker`/`rebase-checker` CI, the strict commit-message grammar — describes *their* rules for *their* repository. Read it as background technical reference if useful (e.g. it explains why the code looks the way it does), but it is **not** this fork's process authority and must never be treated as a blocking gate here.
+
+## Ground rules
+
+- **No upstream interaction.** Never push to, or open issues/PRs against, `OpenTTD/OpenTTD`. Everything here — commits, branches, experiments — stays local to `korczis/OpenTTD`.
+- **No commit or push without an explicit, current instruction.** A prior approval does not carry forward to later turns or later, different changes.
+- **Protect the existing working tree.** Before any command that could discard uncommitted work (`checkout`/`restore`/`reset`/`clean`, `rm -rf` inside the repo), check `git status` first and preserve what's already there. Don't overwrite in-progress work you didn't create this session.
+- **Prefer minimal, scoped changes over broad refactors.** This is a research substrate, not a product to polish.
+- **Distinguish four kinds of change**, and be explicit about which one you're making:
+  1. **Product change** — edits to OpenTTD's own game code/docs, under upstream's own conventions (`src/`, `docs/`, etc.).
+  2. **Experimental infrastructure change** — this fork's own validation tooling (`tools/gate.sh`, `research/`).
+  3. **Agentic tooling change** — the locally-excluded `.claude/`/`.aiad/` (see below).
+  4. **Documentation change** — `README.md`, `AGENTS.md`, `CLAUDE.md`, or similar.
+- **Experimental changes are allowed**, provided they are explicitly scoped, their effect is measurable, they're reversible, and they're validated by the matching gate below — not shipped on vibes.
+- **Never report untested work as passing.** If a gate wasn't run, say "NOT RUN," not "should be fine." If a result is ambiguous, treat it as not-passing rather than rounding up — fail closed, not open.
+- **Never invent your own bypass for a failing gate.** No silent `--no-verify`, no "I'll fix it in a follow-up commit" (a failed gate means nothing was committed — there's nothing to patch after the fact), no quietly narrowing scope just to dodge a failure. If a gate can't be satisfied, say so plainly and let the human decide; only add an explicit override at the human's own request, with their stated reason attached.
+- **State which validation layers actually ran**, with the exact commands and their exit status, whenever reporting a change as done — see the taxonomy in `research/README.md`.
+- **Don't blindly follow upstream's contribution workflow** (commit-message grammar, PR templates, "ask before large changes" discussion norms) unless it's actually relevant to a technical verification you're doing — it is not this fork's local process.
+
+## Validation layers
+
+One entry point, three build/test tiers of increasing cost, plus a reporting layer:
+
+| Tier | Entry point | Cost | Purpose |
+|---|---|---|---|
+| Smoke | `tools/gate.sh smoke` | cheapest | fast feedback while actively iterating |
+| Change | `tools/gate.sh change` | standard | before calling a task done |
+| Full | `tools/gate.sh full` | expensive | significant changes, or an experimental baseline |
+| Research/evaluation | `research/experiment-template.md` | n/a | records what was actually done and validated for an experiment |
+
+Run `tools/gate.sh --help` for the exact commands each tier runs, and see `research/README.md` for the PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy. `full` is not required for small or documentation-only changes — match the tier to the size of the change.
+
+## `.claude/` and `.aiad/` (local agentic tooling)
+
+These directories hold personal Claude Code tooling (commands, agents, skills, hooks) imported from another private project for local reference. They are excluded from git via `.git/info/exclude` — deliberately *not* `.gitignore`, since this exclusion is machine/person-local and not a rule every clone of this fork should inherit — and must stay uncommitted. Any generally-useful principle worth keeping from them belongs in *this* file, written once here, not copied into a second or third location.
 
 ## Where to look
 
-- [CLAUDE.md](./CLAUDE.md) — build/test/run instructions, architecture overview, and code style notes for this codebase.
-- [README.md](./README.md) — project overview (carries the same private-fork notice).
+- [CLAUDE.md](./CLAUDE.md) — Claude-specific workflow notes, plus OpenTTD's build/test/run commands, architecture, and code style (all still real technical reference).
+- [README.md](./README.md) — short public-facing explanation of what this repository is.
+- [research/README.md](./research/README.md) — the gating model and experiment-report taxonomy in full.

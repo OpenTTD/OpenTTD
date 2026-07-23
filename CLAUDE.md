@@ -2,13 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Private fork — academic research project
+## Private fork — see AGENTS.md first
 
-This repository (`korczis/OpenTTD`) is a **private fork** belonging to korczis, used as an academic research project. It is a working copy for local experimentation only:
-
-- **Nothing from this fork is intended for upstream.** Do not open issues/PRs against the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) repository, do not push branches there, and do not treat the upstream `CONTRIBUTING.md` submission rules (below) as something we need to satisfy — they're kept here only as background on the *upstream* project's norms, not as constraints on this fork's own workflow.
-- `.claude/` and `.aiad/` in this working tree contain personal Claude Code tooling (commands/agents/skills/hooks) imported from another private project. They are excluded from git via `.git/info/exclude` (local-only, not committed) and must stay that way — never remove that exclusion or commit those directories.
-- See [AGENTS.md](./AGENTS.md) for the equivalent notice aimed at generic coding-agent tooling.
+`korczis/OpenTTD` is a private academic research fork used as a validation target for the Prismatic platform, not staged for upstream contribution. The full ground rules, the four-kinds-of-change distinction, and the layered validation model (`tools/gate.sh`, `research/`) live in [AGENTS.md](./AGENTS.md) and apply to Claude Code exactly as to any other agent — read that first. This file only adds Claude-specific workflow notes and OpenTTD's own technical reference (build/run/test, architecture, code style) on top.
 
 ## What this is
 
@@ -53,6 +49,8 @@ ctest -j$(nproc) --timeout 120
 ```
 
 This runs both the C++ unit tests (`src/tests/`, Catch2-based, see `src/tests/CMakeLists.txt`) and the regression suite (`regression/`) which exercises the AI/GameScript API (Squirrel) end-to-end. `CTEST_OUTPUT_ON_FAILURE=1` is useful to set. To run a single ctest test: `ctest -R <name>`.
+
+For this fork's own layered validation (smoke/change/full — see [AGENTS.md](./AGENTS.md)), use `tools/gate.sh` instead of calling cmake/ctest by hand; it wraps exactly these commands with the right tier of cost for the situation.
 
 There is no separate lint step beyond compiler warnings (build is warning-heavy: `-Wall -Wextra -Wcast-qual -Wundef ...`) and the coding-style/commit-message checks enforced by CI and the git hooks described below.
 

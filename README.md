@@ -1,6 +1,6 @@
 # OpenTTD
 
-> **Private fork notice:** This repository (`korczis/OpenTTD`) is a private fork used as an academic research project by korczis. It is **not** intended for upstream contribution — changes here stay local to this fork and are never submitted as PRs/issues to the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project. See [CLAUDE.md](./CLAUDE.md) and [AGENTS.md](./AGENTS.md) for details.
+> **Private fork notice:** `korczis/OpenTTD` is not the official OpenTTD project and is not staged for upstream contribution. It is korczis's private academic research fork, used as a real-world validation target for the Prismatic platform — evaluating coding-agent workflows, gating, and reproducibility against a large, real C++ codebase. Upstream [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) remains the original project and the technical foundation this fork builds on. See [AGENTS.md](./AGENTS.md) for this fork's ground rules and validation layers, and [CLAUDE.md](./CLAUDE.md) for Claude-specific workflow plus OpenTTD build/architecture reference.
 
 ## Table of contents
 
