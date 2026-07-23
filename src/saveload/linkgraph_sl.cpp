@@ -194,14 +194,14 @@ SaveLoadTable GetLinkGraphJobDesc()
 	/* We store the offset of each member of the #LinkGraphSettings in the
 	 * extra data of the saveload struct. Use it together with the address
 	 * of the settings struct inside the job to find the final memory address. */
-	static SaveLoadAddrProc * const proc = [](void *b, size_t extra) -> void * { return const_cast<void *>(static_cast<const void *>(reinterpret_cast<const char *>(std::addressof(static_cast<LinkGraphJob *>(b)->settings)) + extra)); };
+	static SaveLoad::AddressFunction const func = [](void *b, size_t extra) -> void * { return const_cast<void *>(static_cast<const void *>(reinterpret_cast<const char *>(std::addressof(static_cast<LinkGraphJob *>(b)->settings)) + extra)); };
 
 	/* Build the SaveLoad array on first call and don't touch it later on */
 	if (saveloads.empty()) {
 		GetSaveLoadFromSettingTable(_linkgraph_settings, saveloads);
 
 		for (auto &sl : saveloads) {
-			sl.address_proc = proc;
+			sl.address_func = func;
 		}
 
 		for (auto &sld : job_desc) {
