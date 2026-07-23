@@ -14,8 +14,11 @@
 #include "saveload_error.hpp"
 #include "saveload_func.h"
 #include "../core/label_type.hpp"
+#include "../cargopacket.h"
 #include "../fileio_type.h"
 #include "../fios.h"
+#include "../linkgraph/linkgraph.h"
+#include "../linkgraph/linkgraphjob.h"
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were
@@ -884,6 +887,31 @@ struct SaveLoad {
 	}
 
 	/**
+	 * Checks whether the memory type and given reference type match.
+	 * @tparam T The type of the reference in memory.
+	 * @param ref_type The specified reference type.
+	 * @return \c true iff the memory and reference type match.
+	 */
+	template <typename T>
+	static constexpr bool IsValidRefType(SLRefType ref_type)
+	{
+		switch (ref_type) {
+			case SLRefType::OldVehicle: // Old vehicles we save as new ones
+			case SLRefType::Vehicle: return std::is_base_of_v<Vehicle, T>;
+			case SLRefType::Station: return std::is_base_of_v<BaseStation, T>;
+			case SLRefType::Town: return std::is_same_v<Town, T>;
+			case SLRefType::RoadStop: return std::is_same_v<RoadStop, T>;
+			case SLRefType::EngineRenew: return std::is_same_v<EngineRenew, T>;
+			case SLRefType::CargoPacket: return std::is_same_v<CargoPacket, T>;
+			case SLRefType::OrderList: return std::is_same_v<OrderList, T>;
+			case SLRefType::Storage: return std::is_same_v<PersistentStorage, T>;
+			case SLRefType::LinkGraph: return std::is_same_v<LinkGraph, T>;
+			case SLRefType::LinkGraphJob: return std::is_same_v<LinkGraphJob, T>;
+			default: NOT_REACHED(); // Add a check for the new reference type above here.
+		}
+	}
+
+	/**
 	 * To be able to get the type information into the SaveLoad constructing functions, we need some infrastructure.
 	 * The easiest way to achieve this is *not* casting away the type information in the lambda that gets our address,
 	 * however to store this we need to erase this type. This function practically erases this type.
@@ -1069,6 +1097,7 @@ struct SaveLoad {
 	{
 		static_assert(std::is_base_of_v<std::list<typename T::value_type>, T>);
 		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
+		static_assert(IsValidRefType<std::remove_pointer_t<typename T::value_type>>(type));
 		return SaveLoad{
 			.name = std::move(name),
 			.cmd = SaveLoadType::ReferenceList,
@@ -1139,6 +1168,7 @@ struct SaveLoad {
 	{
 		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
 		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
+		static_assert(IsValidRefType<std::remove_pointer_t<typename T::value_type>>(type));
 		return SaveLoad{
 			.name = std::move(name),
 			.cmd = SaveLoadType::ReferenceVector,
