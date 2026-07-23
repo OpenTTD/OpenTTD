@@ -27,9 +27,14 @@ Workflow for a task that needs internal observability:
 4. Reuse it when practical.
 5. Otherwise add the smallest research-only hook or instrumentation point.
 6. Gate or clearly label the interface (e.g. `RESEARCH-ONLY` / `DEBUG-ONLY` / `UNSTABLE` — see AGENTS.md).
-7. Capture the exact build and runtime configuration (CMake options, compiler flags, runtime flags).
-8. Run the relevant validation tier (`tools/gate.sh`, see README.md 0.5).
-9. Report observer effects and limitations.
+7. Capture the exact build and runtime configuration — `tools/research/research init` then
+   `configure`/`build --profile research-debug` (or `baseline-release` for a comparison run)
+   records the CMake options, compiler flags, and runtime flags into `manifest.json`
+   automatically; see `research/tooling.md`.
+8. Run the relevant validation tier — `tools/research/research validate --gate change` (wraps
+   `tools/gate.sh change`) and/or `--gate research` (manifest completeness), see README.md 0.5.
+9. Report observer effects and limitations — `tools/research/research report` finalizes
+   `manifest.json` and generates `summary.md` from what was actually recorded.
 10. Do not generalize beyond the tested configuration.
 
 Final-report checklist for a session that touched internals: internal APIs used, internals exposed, instrumentation added, debug flags enabled, runtime flags enabled, generated diagnostic artifacts, build type, validation performed, observer effects, release-build applicability, and cleanup/containment status.

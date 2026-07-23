@@ -240,7 +240,8 @@ This is where "napojení na reálný svět" — connecting automated inference t
 | [`AGENTS.md`](./AGENTS.md) | Vendor-neutral ground rules for any coding agent working here: the four kinds of change, no-upstream / no-auto-commit / protect-dirty-tree rules, fail-closed reporting, the validation-layer model, and the research-mode policy for internals/debug/instrumentation access. |
 | [`CLAUDE.md`](./CLAUDE.md) | Claude Code-specific workflow notes (points to `AGENTS.md` first), plus OpenTTD's own build/run/test commands, architecture, and code style as technical reference. |
 | [`tools/gate.sh`](./tools/gate.sh) | Single entry point for layered local validation — see 0.5 below. |
-| [`research/`](./research/) | The validation-layer writeup and a PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE experiment-report template. |
+| [`tools/research/research`](./tools/research/research) | Canonical research-mode CLI: build profiles, headless instrumentation capture, a machine-readable experiment manifest, and a generated evidence bundle — see [`research/tooling.md`](./research/tooling.md). |
+| [`research/`](./research/) | The validation-layer writeup, the experiment-report template, and the detailed tooling reference. |
 | `.claude/`, `.aiad/` *(not committed)* | Personal Claude Code tooling imported from a sibling private project, kept strictly local via `.git/info/exclude`. |
 
 Laid out as a tree, to make the upstream/fork boundary explicit:
@@ -257,11 +258,13 @@ korczis/OpenTTD/
 ├── CLAUDE.md              * fork-added pointer + preserved upstream-technical reference content
 │
 ├── tools/
-│   └── gate.sh            * fork-added: smoke / change / full validation entry point
+│   ├── gate.sh            * fork-added: smoke / change / full validation entry point
+│   └── research/          * fork-added: research-mode CLI (doctor/init/configure/build/run/validate/report/clean)
 │
 ├── research/
 │   ├── README.md          * fork-added: gating model + PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy
-│   └── experiment-template.md  * fork-added: experiment report template
+│   ├── experiment-template.md  * fork-added: experiment report template (manual/freeform)
+│   └── tooling.md         * fork-added: tools/research/research reference (architecture, schema, profiles)
 │
 ├── .claude/                 (fork-added, LOCAL ONLY — .git/info/exclude, never committed, never pushed)
 └── .aiad/                   (fork-added, LOCAL ONLY — .git/info/exclude, never committed, never pushed)
@@ -276,9 +279,9 @@ Local validation is layered by cost, with one entry point (`tools/gate.sh`) for 
 | Smoke | `tools/gate.sh smoke` | cheapest | fast feedback while actively iterating |
 | Change | `tools/gate.sh change` | standard | before calling a task/change done |
 | Full | `tools/gate.sh full` | expensive | significant changes, or an experimental baseline |
-| Research/evaluation | [`research/experiment-template.md`](./research/experiment-template.md) | n/a | records what was actually done and validated for an experiment |
+| Research/evaluation | `tools/research/research validate --gate research` | n/a | lints a generated `manifest.json` for completeness/honesty (see `research/tooling.md`); [`research/experiment-template.md`](./research/experiment-template.md) remains available for a freeform, manually-written report |
 
-All three build/test tiers are thin wrappers around OpenTTD's own existing CMake/CTest toolchain (see `CLAUDE.md` §Test) — there is no separate lint/format gate, because no such tool currently exists in this codebase, and this fork doesn't fake one. Full details and the experiment-report taxonomy are in [`research/README.md`](./research/README.md).
+All three build/test tiers are thin wrappers around OpenTTD's own existing CMake/CTest toolchain (see `CLAUDE.md` §Test) — there is no separate lint/format gate, because no such tool currently exists in this codebase, and this fork doesn't fake one. Full details and the experiment-report taxonomy are in [`research/README.md`](./research/README.md); the research-mode CLI itself (build profiles, the instrumentation demonstrator, the manifest schema, the evidence-bundle layout) is in [`research/tooling.md`](./research/tooling.md).
 
 What each tier actually runs, and why the cost differs:
 
@@ -379,10 +382,11 @@ The imported local tooling defines a very large number of specialized, individua
 | Repository access | A coding agent reads and edits this fork's working tree under `AGENTS.md` ground rules | Git history, diffs, working-tree state | Implemented |
 | Task specification | A session's stated goal, classified into one of the four kinds of change (0.1) | Task prompt, base revision | Implemented |
 | Build/test validation gates | `tools/gate.sh` smoke / change / full tiers wrapping this repo's own CMake/CTest toolchain | Exit codes, build/test output | Implemented (0.5) |
-| Experiment reporting | `research/experiment-template.md` | A filled-in report; a working note, not committed or gated by default | Implemented (manual, not automated) |
+| Experiment reporting | `tools/research/research report` generates `manifest.json` + `summary.md`; `research/experiment-template.md` remains for a manual, freeform note | A generated evidence bundle under `build-research-runs/<id>/` (not committed or gated by default), or a filled-in template copy | Implemented (automated CLI path + manual template, both valid) |
+| Research-mode build/instrumentation capture | `tools/research/research configure/build/run` against `research-debug`/`baseline-release`/`research-asan` profiles, capturing the `research_status` demonstrator headless | `manifest.json`'s `build`/`runtime`/`instrumentation` fields, `diagnostics/research_status.txt` | Implemented (`research-debug`/`baseline-release`); `research-asan` is configure-only so far |
 | Admin-network control/observation bridge | Standalone `openttd-prismatic-bridge` service drives a Company AI via OpenTTD's admin network (`start_ai`/`reload_ai`) and exposes a REST/WebSocket observation API | HTTP/WebSocket traffic, admin-network TCP traffic | Implemented — Phase 1 only (see `research/prismatic-bridge/ARCHITECTURE.md` §5); lives in a separate, standalone repository, not this one |
 | Prismatic decision-making wired to the bridge (`prismatic_monte_carlo` / `prismatic_deduction` / `prismatic_intelligence_fusion`) | Would compute the settings string the bridge sends to the in-game AI | A settings string via `/decision/pull` | Planned, not started (Phase 3/5 of the same document) |
-| World seeding from real elevation/GIS data | Headless `-G <heightmap>` start | A heightmap file | Experimental / partially confirmed — the headless start path itself works; the data-prep pipeline (Phase 4) has not been built |
+| World seeding from real elevation/GIS data | Headless `-g <heightmap-file>` start (corrected from an earlier `-G` typo — `-G` is the map-generation random seed flag, unrelated) | A heightmap file | Experimental / partially confirmed — the headless start path itself works; the data-prep pipeline (Phase 4) has not been built |
 | Repository-level retrieval (RAG) feeding an agent's context in this fork | n/a | n/a | Conceptual (0.9) — referenced in Prismatic's own tooling, not confirmed as used in sessions here |
 | Shared coordination state (Blackboard-style) across agent sessions in this fork | n/a | n/a | Conceptual (0.9) — same caveat |
 | Human oversight / approval | Every commit, push, override, and large design change requires an explicit, current instruction (0.6) | This repository's own commit history; design docs such as `research/prismatic-bridge/ARCHITECTURE.md`, which is itself gated phase-by-phase on human approval | Implemented |
@@ -398,7 +402,7 @@ A session working in this fork is expected to, in order:
 5. Capture the exact commands run and their exit status — not a summary like "tests passed."
 6. Record what wasn't covered or remains uncertain.
 7. Classify the result — `PASS` / `FAIL` / `PARTIAL` / `NOT RUN` / `NOT APPLICABLE` (`research/README.md`) — never rounded up.
-8. Optionally record all of the above in a copy of [`research/experiment-template.md`](./research/experiment-template.md); it's a working note kept at the operator's discretion, not a committed or gated artifact by default.
+8. Optionally record all of the above in a copy of [`research/experiment-template.md`](./research/experiment-template.md); it's a working note kept at the operator's discretion, not a committed or gated artifact by default. Alternatively, when the experiment touches a build/instrumentation profile, `tools/research/research init` → `configure` → `build` → `run` → `validate --gate research` → `report` automates steps 2–7 into a generated `manifest.json` + `summary.md` (see [`research/tooling.md`](./research/tooling.md)) — both paths are valid; the CLI produces structured evidence, the template is for freeform narrative.
 
 Expected artifacts, when produced: the change itself (diff or commit, if any); the exact validation commands and their exit codes; a filled experiment report in the shape of `experiment-template.md`, if one is kept; and, for bridge-related work, the bridge's own test output and observation-endpoint state (`research/prismatic-bridge/ARCHITECTURE.md` §3) — which lives in a separate repository, not this one.
 

@@ -78,6 +78,15 @@ Within an already-scoped task, an agent may:
 
 Label a research-only interface for what it is — `RESEARCH-ONLY`, `INTERNAL`, `UNSTABLE`, `DEBUG-ONLY`, `EXPERIMENTAL`, or whatever fits — and note, as relevant: why it exists, whether it's compile-time or runtime gated, whether it's off by default, what it exposes, whether it can affect behavior, and known observer effects. Not every hook needs every one of these; document what actually applies. Prefer containment that's already available (compile-time/runtime gating, default-off, local-only, easy to remove) over a mechanism with no off switch. **Research permission is not a license for unrelated refactoring, broad visibility changes, or permanent global debug output** — keep the experimental surface to what the task actually needs.
 
+### Tooling
+
+`tools/research/research` (see [`research/tooling.md`](./research/tooling.md)) is the canonical
+mechanism for the workflow described above: build profiles for research-debug/baseline-release/
+research-asan, a headless capture path for research-only console commands, a versioned
+machine-readable manifest, and a generated evidence bundle. Prefer it over ad hoc `cmake`/`ctest`
+invocations when the task is an explicit experiment; `tools/gate.sh` remains the right tool for
+ordinary smoke/change/full validation of a non-experimental change.
+
 ### Reporting
 
 - State which internal APIs, internals, or instrumentation were used or changed.
