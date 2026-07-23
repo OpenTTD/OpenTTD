@@ -862,7 +862,7 @@ struct SaveLoad {
 
 
 	template <VarFileType file_type, typename T>
-	static SaveLoad Variable(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	static SaveLoad Variable(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		return SaveLoad{
 			.name = std::move(name),
@@ -870,13 +870,13 @@ struct SaveLoad {
 			.conv = {file_type, SlGetMemType<T, file_type>()},
 			.version_from = from,
 			.version_to = to,
-			.address_proc = address_proc,
+			.address_func = address_func,
 			.extra_data = extra,
 		};
 	}
 
 	template <SLRefType type, typename T>
-	static SaveLoad Reference(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad Reference(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		static_assert(requires { typename std::remove_pointer_t<T>::Pool; });
 		return SaveLoad{
@@ -885,12 +885,12 @@ struct SaveLoad {
 			.conv = type,
 			.version_from = from,
 			.version_to = to,
-			.address_proc = address_proc,
+			.address_func = address_func,
 		};
 	}
 
 	template <typename T>
-	static SaveLoad String(std::string name, T *, SaveLoadAddrProc address_proc, StringValidationSettings string_validation_settings = {}, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	static SaveLoad String(std::string name, T *, AddressFunction address_func, StringValidationSettings string_validation_settings = {}, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		static_assert(std::is_same_v<std::string, T> || std::is_same_v<EncodedString, T>);
 		return SaveLoad{
@@ -899,7 +899,7 @@ struct SaveLoad {
 			.conv = string_validation_settings,
 			.version_from = from,
 			.version_to = to,
-			.address_proc = address_proc,
+			.address_func = address_func,
 			.extra_data = extra,
 		};
 	}
@@ -925,7 +925,7 @@ struct SaveLoad {
 	}
 
 	template <VarFileType file_type, uint16_t length, typename T>
-	static SaveLoad Array(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	static SaveLoad Array(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
 	{
 		static_assert(SlVarSize(SlGetMemType<T, file_type>()) * length <= sizeof(T)); // Partial setting/filling of an array is permitted.
 		return SaveLoad{
@@ -935,13 +935,13 @@ struct SaveLoad {
 			.length = length,
 			.version_from = from,
 			.version_to = to,
-			.address_proc = address_proc,
+			.address_func = address_func,
 			.extra_data = extra,
 		};
 	}
 
 	template <VarFileType file_type, typename T>
-	static SaveLoad Vector(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad Vector(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
 		return SaveLoad{
@@ -950,12 +950,12 @@ struct SaveLoad {
 			.conv = {file_type, SlGetMemType<typename T::value_type, file_type>()},
 			.version_from = from,
 			.version_to = to,
-			.address_proc = address_proc,
+			.address_func = address_func,
 		};
 	}
 
 	template <SLRefType type, typename T>
-	static SaveLoad ReferenceList(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad ReferenceList(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		static_assert(std::is_base_of_v<std::list<typename T::value_type>, T>);
 		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
@@ -965,7 +965,7 @@ struct SaveLoad {
 			.conv = type,
 			.version_from = from,
 			.version_to = to,
-			.address_proc = address_proc,
+			.address_func = address_func,
 		};
 	}
 
@@ -990,7 +990,7 @@ struct SaveLoad {
 	}
 
 	template <typename T>
-	static SaveLoad SaveByte(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad SaveByte(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		return SaveLoad{
 			.name = std::move(name),
@@ -998,12 +998,12 @@ struct SaveLoad {
 			.conv = {VarFileType::U8, SlGetMemType<T, VarFileType::U8>()},
 			.version_from = from,
 			.version_to = to,
-			.address_proc = address_proc,
+			.address_func = address_func,
 		};
 	}
 
 	template <SLRefType type, typename T>
-	static SaveLoad ReferenceVector(std::string name, T *, SaveLoadAddrProc address_proc, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	static SaveLoad ReferenceVector(std::string name, T *, AddressFunction address_func, SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
 	{
 		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
 		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
@@ -1013,7 +1013,7 @@ struct SaveLoad {
 			.conv = type,
 			.version_from = from,
 			.version_to = to,
-			.address_proc = address_proc,
+			.address_func = address_func,
 		};
 	}
 };
