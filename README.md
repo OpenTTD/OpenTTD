@@ -1,5 +1,7 @@
 # OpenTTD
 
+> **Private fork notice:** This repository (`korczis/OpenTTD`) is a private fork used as an academic research project by korczis. It is **not** intended for upstream contribution — changes here stay local to this fork and are never submitted as PRs/issues to the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project. See [CLAUDE.md](./CLAUDE.md) and [AGENTS.md](./AGENTS.md) for details.
+
 ## Table of contents
 
 - 1.0) [About](#10-about)
