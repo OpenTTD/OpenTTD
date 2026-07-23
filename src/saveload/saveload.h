@@ -759,9 +759,9 @@ enum class SaveLoadType : uint8_t {
  * @param variable The variable name.
  */
 #define SLE_OBJECT_ADDRESS(base, variable) static_cast<std::remove_cvref_t<decltype(base::variable)>*>(nullptr), \
-	[] (void *b, size_t) -> void * { \
+	[] (const void *b, size_t) -> const void * { \
 		assert(b != nullptr); \
-		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
+		return std::addressof(static_cast<const base *>(b)->variable); \
 	}
 
 /**
@@ -770,8 +770,8 @@ enum class SaveLoadType : uint8_t {
  * @param variable The variable name.
  */
 #define SLE_GLOBAL_ADDRESS(variable) static_cast<std::remove_cvref_t<decltype(variable)>*>(nullptr), \
-	[] (void *, size_t) -> void * { \
-		return static_cast<void *>(std::addressof(variable)); \
+	[] (const void *, size_t) -> const void * { \
+		return std::addressof(variable); \
 	}
 
 /**
@@ -791,7 +791,7 @@ struct SaveLoad {
 	 * @param extra An extra offset to apply. Mostly 0, except for a few LinkGraph settings variables.
 	 * @return The address of the variable.
 	 */
-	using AddressFunction = void *(*)(void *base, size_t extra);
+	using AddressFunction = const void *(*)(const void *base, size_t extra);
 
 	std::string name; ///< Name of this field (optional, used for tables).
 	SaveLoadType cmd; ///< The action to take with the saved/loaded type, All types need different action.
@@ -1240,7 +1240,7 @@ inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 
 	/* Everything else should be a non-null pointer. */
 	assert(sld.address_func != nullptr);
-	return sld.address_func(const_cast<void *>(object), sld.extra_data);
+	return const_cast<void *>(sld.address_func(object, sld.extra_data));
 }
 
 int64_t ReadValue(const void *ptr, VarMemType conv);
