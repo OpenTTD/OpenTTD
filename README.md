@@ -49,15 +49,34 @@ Concretely, this fork exists to:
 - **measure the reproducibility, quality, and reliability of agentic workflows** — can the same task, run again, be trusted to produce a comparable, honestly-reported result;
 - **develop and validate gating, tooling orchestration, and experimental protocols** — the layered `tools/gate.sh` model and the `research/` reporting taxonomy in this repository are themselves part of what's being evaluated, not just scaffolding around it.
 
+Why this matters beyond the mechanics: Prismatic's actual application domain (see 0.2.1) is decision-support work where a wrong or overconfident answer has real cost. That's part of why this fork insists on the fail-closed reporting habit described in 0.6 — never claiming PASS on untested work — rather than on optimistic status reporting: the gating discipline being validated here is meant to transfer back to a context where it actually matters, not just to look tidy in a research repo.
+
 ### 0.2) Relationship to the Prismatic platform
 
-**Prismatic** is a separate, private agent-orchestration / AI-assisted software-engineering platform under active development by korczis (its own repository, `~/dev/prismatic-platform`, is not part of this repository and is never modified by work done here). It has its own substantial agent tooling, layered local-validation workflow, and process conventions.
+#### 0.2.1) What Prismatic is
 
-This fork's relationship to it is one-directional and deliberately arm's-length:
+**Prismatic** is a separate, private platform under active development by korczis — its own repository, `~/dev/prismatic-platform`, is not part of this repository and is never modified by work done here. Studied directly from that repository (its own `mix.exs` and `CLAUDE.md`) rather than guessed:
 
-- **Principles flow from Prismatic into this fork, adapted — not copied wholesale.** Where Prismatic's own workflow conventions contain a generic, stack-independent idea (for example: a cheap/standard/expensive tiered validation model with one entry point per tier, or a fail-closed reporting taxonomy that refuses to round an uncertain result up to "passed"), this fork re-implements that *idea* against OpenTTD's own CMake/CTest toolchain in `AGENTS.md`, `tools/gate.sh`, and `research/`. Prismatic-specific implementation detail (its language/framework, its own tool names, its internal branding and doctrine) is deliberately left behind — see `AGENTS.md` for the explicit classification of what was and wasn't carried over.
-- **OpenTTD is an external, independent validation target on purpose.** It was not built by, and is not a component of, Prismatic. That independence is the point: results produced in this fork say something about how agentic workflows and gating designs hold up against unfamiliar, real-world engineering conventions, rather than against code that was already shaped to fit the platform.
-- **Nothing flows back automatically.** Findings from working in this fork inform Prismatic's own design by human judgment, not by any automated sync — there is no tooling in either repository that writes from one into the other.
+- It's an Elixir/Phoenix **umbrella monorepo** — dozens of independent applications under `apps/` (OSINT source connectors, storage backends across several engines, browser automation/crawling, an internal agent-orchestration kernel, a web front end, and more), built around **interactive decision-support and OSINT (open-source intelligence) work** — the platform's own stated focus is due-diligence investigation, critical-infrastructure threat analysis, and M&A-style research.
+- It carries a correspondingly large investment in its **own AI-agent engineering tooling**: several hundred specialized agent definitions and domain-specific commands under its own `.claude/`/`.aiad/`, a layered `just check` / `just precommit` / `just ci` local-validation workflow (the direct ancestor of this fork's `tools/gate.sh` smoke/change/full tiers), and a git-worktree-based session-isolation system so multiple agent sessions can work without stepping on each other.
+- Its process documentation is dense, self-referential, and specific to its own stack and internal conventions — useful as raw material to mine for generic principles, not something to import wholesale (see 0.2.3).
+
+#### 0.2.2) Why an unrelated, external codebase is used to validate it
+
+A platform whose actual job is decision-support/OSINT analysis can't cleanly validate its own agentic tooling against its own codebase — an agent that's good at editing code that's already full of hooks and conventions *for* the very tooling being tested doesn't tell you much about how well that tooling generalizes. OpenTTD was picked deliberately because it shares essentially nothing with Prismatic:
+
+- it's a 20+ year old, large, real C++20 codebase (500+ subdirectories under `src/` alone) with its own strict, unrelated engineering conventions — a deterministic command-pattern architecture, backward-compatible savegame versioning going back decades, a heavy Doxygen documentation style;
+- it has nothing to do with Elixir, Phoenix, OSINT, or decision-support workflows, so no part of it was shaped to be agent-friendly or Prismatic-friendly;
+- it has an established, independently working build and test toolchain (CMake + CTest, 98 pre-existing tests) that this fork's own gating model can be checked against without having to trust the very tooling under evaluation to grade itself.
+
+That independence is the point: results produced in this fork say something about how Prismatic's agentic workflows and gating designs hold up against unfamiliar, real-world engineering conventions, rather than against code that was already shaped to fit the platform.
+
+#### 0.2.3) What is adapted vs. left behind
+
+This fork's relationship to Prismatic is one-directional and deliberately arm's-length:
+
+- **Principles flow from Prismatic into this fork, adapted — not copied wholesale.** Where Prismatic's own workflow conventions contain a generic, stack-independent idea (for example: a cheap/standard/expensive tiered validation model with one entry point per tier, or a fail-closed reporting taxonomy that refuses to round an uncertain result up to "passed"), this fork re-implements that *idea* against OpenTTD's own CMake/CTest toolchain in `AGENTS.md`, `tools/gate.sh`, and `research/`. Prismatic-specific implementation detail (its language/framework, its own tool and app names, its internal branding, doctrine, and domain-specific policies) is deliberately left behind — see `AGENTS.md` for the explicit classification of what was and wasn't carried over, and why.
+- **Nothing flows back automatically.** Findings from working in this fork inform Prismatic's own design by human judgment, not by any automated sync — there is no tooling in either repository that writes from one into the other. `~/dev/prismatic-platform` is read for inspiration; it is never edited from here.
 
 ### 0.3) What this fork is not
 
