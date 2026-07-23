@@ -244,7 +244,6 @@ uint64_t GetParamMaxValue(uint64_t max_value, uint min_count, FontSize size)
 }
 
 static void StationGetSpecialString(StringBuilder &builder, StationFacilities x);
-static bool GetSpecialNameString(StringBuilder &builder, StringID string, StringParameters &args);
 
 static void FormatString(StringBuilder &builder, std::string_view str, StringParameters &args, uint case_index = 0, bool game_script = false, bool dry_run = false);
 
@@ -343,18 +342,6 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 	StringTab tab = GetStringTab(string);
 
 	switch (tab) {
-		case TEXT_TAB_SPECIAL:
-			if (!game_script) {
-				try {
-					if (GetSpecialNameString(builder, string, args)) return;
-				} catch (const std::runtime_error &e) {
-					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
-					builder += "(invalid string parameter)";
-					return;
-				}
-			}
-			break;
-
 		case TEXT_TAB_OLD_CUSTOM:
 			/* Old table for custom names. This is no longer used */
 			if (!game_script) {
@@ -1598,8 +1585,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						auto tmp_params = MakeParameters(c->name);
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
-						auto tmp_params = MakeParameters(c->name_2);
-						GetStringWithArgs(builder, c->name_1, tmp_params);
+						GetSpecialNameString(builder, c->name_1, c->name_2);
 					}
 					break;
 				}
@@ -1711,8 +1697,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						auto tmp_params = MakeParameters(c->president_name);
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
-						auto tmp_params = MakeParameters(c->president_name_2);
-						GetStringWithArgs(builder, c->president_name_1, tmp_params);
+						GetSpecialNameString(builder, c->president_name_1, c->president_name_2);
 					}
 					break;
 				}
@@ -1970,30 +1955,31 @@ static void GenPresidentName(StringBuilder &builder, uint32_t seed)
 	builder += GetSurname(seed);
 }
 
-static bool GetSpecialNameString(StringBuilder &builder, StringID string, StringParameters &args)
+void GetSpecialNameString(StringBuilder &builder, StringID string, uint32_t seed)
 {
 	switch (string) {
 		case SPECSTR_SILLY_NAME: // Not used in new companies, but retained for old-loader savegames
-			builder += _silly_company_names[std::min<size_t>(args.GetNextParameter<uint16_t>(), std::size(_silly_company_names) - 1)];
-			return true;
+			builder += _silly_company_names[std::min<size_t>(seed, std::size(_silly_company_names) - 1)];
+			break;
 
 		case SPECSTR_ANDCO_NAME: // used for Foobar & Co company names
-			GenAndCoName(builder, args.GetNextParameter<uint32_t>());
-			return true;
+			GenAndCoName(builder, seed);
+			break;
 
 		case SPECSTR_PRESIDENT_NAME: // President name
-			GenPresidentName(builder, args.GetNextParameter<uint32_t>());
-			return true;
-	}
+			GenPresidentName(builder, seed);
+			break;
 
-	/* TownName Transport company names, with the appropriate town name. */
-	if (IsInsideMM(string, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_END)) {
-		GenerateTownNameString(builder, string - SPECSTR_COMPANY_NAME_START, args.GetNextParameter<uint32_t>());
-		builder += " Transport";
-		return true;
+		default:
+			/* TownName Transport company names, with the appropriate town name. */
+			if (IsInsideMM(string, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_END)) {
+				GenerateTownNameString(builder, string - SPECSTR_COMPANY_NAME_START, seed);
+				builder += " Transport";
+			} else {
+				builder += "(invalid string parameter)";
+			}
+			break;
 	}
-
-	return false;
 }
 
 /**
