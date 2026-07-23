@@ -218,19 +218,66 @@ Local validation is layered by cost, with one entry point (`tools/gate.sh`) for 
 
 All three build/test tiers are thin wrappers around OpenTTD's own existing CMake/CTest toolchain (see `CLAUDE.md` §Test) — there is no separate lint/format gate, because no such tool currently exists in this codebase, and this fork doesn't fake one. Full details and the experiment-report taxonomy are in [`research/README.md`](./research/README.md).
 
+What each tier actually runs, and why the cost differs:
+
+```mermaid
+flowchart TD
+    S(["tools/gate.sh smoke"]) --> S1["git diff --check<br/>(unstaged + staged)"]
+    S1 --> S2{"build/ already<br/>configured?"}
+    S2 -- no --> SErr["fail fast:<br/>run change/full first"]
+    S2 -- yes --> S3["cmake --build build<br/>(incremental)"]
+    S3 --> SOpt["optional: ctest -R &lt;regex&gt;<br/>(targeted tests only)"]
+
+    C(["tools/gate.sh change"]) --> C1["git diff --check"]
+    C1 --> C2{"build/ configured?"}
+    C2 -- no --> C2a["cmake -S . -B build<br/>(initial configure)"]
+    C2 -- yes --> C3
+    C2a --> C3["cmake --build build<br/>(incremental)"]
+    C3 --> C4["ctest --test-dir build<br/>(FULL suite, all 98 tests)"]
+    C4 --> C5["git status --porcelain<br/>(review for stray generated files)"]
+
+    F(["tools/gate.sh full"]) --> F1["rm -rf build-fullgate<br/>(clean room, build/ untouched)"]
+    F1 --> F2["cmake -S . -B build-fullgate<br/>(fresh configure)"]
+    F2 --> F3["cmake --build build-fullgate<br/>(clean build, no cache)"]
+    F3 --> F4["ctest --test-dir build-fullgate<br/>(full suite, from scratch)"]
+```
+
+This is measured, not estimated: the last real run of `tools/gate.sh change` against this repository built cleanly and passed **98/98 tests in 7.40 seconds** (see the change history of this file and `tools/gate.sh` for when). `full` deliberately builds into `build-fullgate/` rather than wiping the existing `build/` — that keeps a fast iteration build available even while a clean-room validation run is being prepared or reviewed.
+
 ### 0.6) Ground rules (short version)
 
 The full rules live in [`AGENTS.md`](./AGENTS.md); in short:
 
-- No pushes, issues, or PRs to upstream OpenTTD, ever.
-- No commit or push without an explicit, current instruction — prior approval doesn't carry forward to later, different changes.
-- Protect the existing working tree; check `git status` before anything destructive.
-- Prefer minimal, scoped changes over broad refactors.
-- Report validation honestly: never claim a gate passed if it wasn't run, and never round an ambiguous result up to PASS.
+- **No pushes, issues, or PRs to upstream OpenTTD, ever.** This fork's git history and this fork's GitHub repository are the only places any of this work is visible.
+- **No commit or push without an explicit, current instruction** — prior approval doesn't carry forward to later, different changes. Every commit in this repository's history was made in direct response to an explicit instruction in the session that produced it, not inferred from "you approved something like this before."
+- **Protect the existing working tree** — check `git status` before anything destructive (`checkout`/`restore`/`reset`/`clean`, `rm -rf` inside the repo), and never discard uncommitted work that wasn't created in the current session.
+- **Prefer minimal, scoped changes over broad refactors** — this is a research substrate, not a product to polish; a large unscoped diff is harder to attribute to a specific experiment goal (see 0.1).
+- **Report validation honestly** — never claim a gate passed if it wasn't run, and never round an ambiguous result up to PASS. Concretely, this is why 0.5 above states plainly which tier was actually last measured, rather than implying all three run on every change.
+
+The anti-bypass rule specifically, since it's the one most tempting to shortcut under time pressure:
+
+```mermaid
+flowchart LR
+    G["A gate fails,<br/>or can't be run"] --> D{"What happens next?"}
+    D -- "allowed" --> R1["Report it plainly:<br/>FAIL / NOT RUN, with why"]
+    D -- "allowed, human-initiated" --> R2["Human explicitly requests an<br/>override, with a stated reason —<br/>agent may then record it"]
+    D -- "never" --> X1["Agent silently retries with<br/>--no-verify or similar"]
+    D -- "never" --> X2["Agent narrows scope quietly<br/>just to make the gate pass"]
+    D -- "never" --> X3["Agent commits and plans a<br/>'follow-up fix' — a failed gate<br/>means nothing was committed,<br/>so there is nothing to follow up"]
+```
 
 ### 0.7) Relationship to upstream OpenTTD
 
 This fork tracks upstream OpenTTD as its technical foundation and does not modify its license, copyright, or attribution — see [3.0) Licensing](#30-licensing) and [4.0) Credits](#40-credits) below, both unchanged from upstream. Everything from section 1.0 onward is the original upstream README.
+
+This is a checkable claim, not just an assertion — from the repository root:
+
+```bash
+git log --oneline -- COPYING.md CREDITS.md   # only upstream commits should appear
+git diff upstream/master -- COPYING.md CREDITS.md  # (if an upstream remote is configured) empty diff expected
+```
+
+Everything this fork adds lives in the paths listed in the tree in 0.4 above, plus the "0.0) About this fork" section of this very file — the upstream game, its build system, its license, and its credits are otherwise carried forward unmodified.
 
 ## 1.0) About
 
