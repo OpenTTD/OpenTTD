@@ -1,9 +1,16 @@
 # OpenTTD
 
-> **Private fork notice:** `korczis/OpenTTD` is not the official OpenTTD project and is not staged for upstream contribution. It is korczis's private academic research fork, used as a real-world validation target for the Prismatic platform — evaluating coding-agent workflows, gating, and reproducibility against a large, real C++ codebase. Upstream [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) remains the original project and the technical foundation this fork builds on. See [AGENTS.md](./AGENTS.md) for this fork's ground rules and validation layers, and [CLAUDE.md](./CLAUDE.md) for Claude-specific workflow plus OpenTTD build/architecture reference.
+> **Private fork notice:** `korczis/OpenTTD` is not the official OpenTTD project and is not staged for upstream contribution. See [0.0) About this fork](#00-about-this-fork) below for what it actually is.
 
 ## Table of contents
 
+- 0.0) [About this fork](#00-about-this-fork)
+    - 0.1) [Purpose](#01-purpose)
+    - 0.2) [What this fork is not](#02-what-this-fork-is-not)
+    - 0.3) [What this fork adds on top of upstream OpenTTD](#03-what-this-fork-adds-on-top-of-upstream-openttd)
+    - 0.4) [Validation / gating model](#04-validation--gating-model)
+    - 0.5) [Ground rules (short version)](#05-ground-rules-short-version)
+    - 0.6) [Relationship to upstream OpenTTD](#06-relationship-to-upstream-openttd)
 - 1.0) [About](#10-about)
     - 1.1) [Downloading OpenTTD](#11-downloading-openttd)
     - 1.2) [OpenTTD gameplay manual](#12-openttd-gameplay-manual)
@@ -19,6 +26,62 @@
     - 2.4) [Translating](#24-translating)
 - 3.0) [Licensing](#30-licensing)
 - 4.0) [Credits](#40-credits)
+
+## 0.0) About this fork
+
+`korczis/OpenTTD` is a **private research fork**, not the official OpenTTD project and not staged for upstream contribution. It is owned by korczis and used as a real, complex, long-lived C++ codebase to validate the **Prismatic platform** — a research effort evaluating coding-agent workflows: how agents plan and scope changes, how gating and reproducibility hold up in practice, and how agent-driven engineering behaves against a substrate too large and too convention-heavy to fake.
+
+Sections 1.0 onward below are the **original upstream OpenTTD README**, kept intact for its technical value and attribution. This section only documents what's specific to this fork.
+
+### 0.1) Purpose
+
+OpenTTD plays two roles at once in this repository:
+
+- **System under test.** `src/`, `regression/`, the build system, and OpenTTD's own engineering conventions (savegame compatibility, the deterministic command-pattern architecture, `CODINGSTYLE.md`) are the real substrate an agent has to actually respect to make a correct, working change — that's what makes it useful as a validation target instead of a toy.
+- **Not a product being developed here.** Nothing in this fork is intended to become an OpenTTD feature or fix. Changes exist to produce evidence about *how the change was made and validated*, not to ship gameplay value.
+
+### 0.2) What this fork is not
+
+- Not affiliated with, and not a contribution channel to, the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project.
+- Not a place where issues or pull requests get opened upstream — everything stays local to this fork.
+- Not bound, as a *local* rule, by upstream's own contribution process (`CONTRIBUTING.md`, PR templates, commit-message grammar, "ask before large changes"). That process describes upstream's repository, not this one — it's kept here only as background technical reference.
+
+### 0.3) What this fork adds on top of upstream OpenTTD
+
+| Path | Purpose |
+|---|---|
+| [`AGENTS.md`](./AGENTS.md) | Vendor-neutral ground rules for any coding agent working here: the four kinds of change, no-upstream / no-auto-commit / protect-dirty-tree rules, fail-closed reporting, the validation-layer model. |
+| [`CLAUDE.md`](./CLAUDE.md) | Claude Code-specific workflow notes (points to `AGENTS.md` first), plus OpenTTD's own build/run/test commands, architecture, and code style as technical reference. |
+| [`tools/gate.sh`](./tools/gate.sh) | Single entry point for layered local validation — see 0.4 below. |
+| [`research/`](./research/) | The validation-layer writeup and a PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE experiment-report template. |
+| `.claude/`, `.aiad/` *(not committed)* | Personal Claude Code tooling imported from a sibling private project, kept strictly local via `.git/info/exclude`. |
+
+### 0.4) Validation / gating model
+
+Local validation is layered by cost, with one entry point (`tools/gate.sh`) for the build/test tiers:
+
+| Tier | Command | Cost | When to use it |
+|---|---|---|---|
+| Smoke | `tools/gate.sh smoke` | cheapest | fast feedback while actively iterating |
+| Change | `tools/gate.sh change` | standard | before calling a task/change done |
+| Full | `tools/gate.sh full` | expensive | significant changes, or an experimental baseline |
+| Research/evaluation | [`research/experiment-template.md`](./research/experiment-template.md) | n/a | records what was actually done and validated for an experiment |
+
+All three build/test tiers are thin wrappers around OpenTTD's own existing CMake/CTest toolchain (see `CLAUDE.md` §Test) — there is no separate lint/format gate, because no such tool currently exists in this codebase, and this fork doesn't fake one. Full details and the experiment-report taxonomy are in [`research/README.md`](./research/README.md).
+
+### 0.5) Ground rules (short version)
+
+The full rules live in [`AGENTS.md`](./AGENTS.md); in short:
+
+- No pushes, issues, or PRs to upstream OpenTTD, ever.
+- No commit or push without an explicit, current instruction — prior approval doesn't carry forward to later, different changes.
+- Protect the existing working tree; check `git status` before anything destructive.
+- Prefer minimal, scoped changes over broad refactors.
+- Report validation honestly: never claim a gate passed if it wasn't run, and never round an ambiguous result up to PASS.
+
+### 0.6) Relationship to upstream OpenTTD
+
+This fork tracks upstream OpenTTD as its technical foundation and does not modify its license, copyright, or attribution — see [3.0) Licensing](#30-licensing) and [4.0) Credits](#40-credits) below, both unchanged from upstream. Everything from section 1.0 onward is the original upstream README.
 
 ## 1.0) About
 
