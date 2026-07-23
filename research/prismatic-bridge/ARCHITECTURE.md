@@ -1,12 +1,12 @@
 # Prismatic ↔ OpenTTD bridge — architecture design
 
-**Status: design only. No bridge code exists yet, on either side. Nothing in `~/dev/prismatic-platform` has been touched.**
+**Status: Phase 1 (wire-protocol + basic control-path round trip) is real and built — as a standalone third repository, `~/dev/openttd-prismatic-bridge` (Python/FastAPI), not inside `~/dev/prismatic-platform`.** This document was originally written before that repository existed and proposed a different mechanism (a Game-Script JSON relay, an Elixir/Rust-NIF client living inside `prismatic-platform`); it's since been corrected to describe what was actually built, which superseded that proposal — see §3 and §7 for exactly how and why. `~/dev/prismatic-platform` itself has still not been touched by any of this.
 
-This document exists to get a concrete, technically-grounded design approved *before* writing any code, per this fork's own "ask before large changes" rule (`AGENTS.md`). It classifies as an **experimental infrastructure change** under the four kinds of change in `AGENTS.md`/`README.md` §0.1 — it's part of this fork's own validation scaffolding, not a product change to OpenTTD itself.
+This document exists to keep a concrete, technically-grounded design approved and up to date, per this fork's own "ask before large changes" rule (`AGENTS.md`). It classifies as an **experimental infrastructure change** under the four kinds of change in `AGENTS.md`/`README.md` §0.1 — it's part of this fork's own validation scaffolding, not a product change to OpenTTD itself.
 
 ## 1. What's being asked for
 
-In the owner's own words: use Prismatic to control the in-game player/company, model the game world from real-world data, connect real OSINT/due-diligence/modeling data, reuse OpenTTD's existing UI as-is, and build a genuine two-sided backend bridge into `~/dev/prismatic-platform` that makes use of as much of Prismatic's existing capability (§0.2.5 of the README: OSINT, due diligence, Monte Carlo, deduction, power-grid/property modeling, intelligence fusion) as makes sense.
+In the owner's own words: use Prismatic to control the in-game player/company, model the game world from real-world data, connect real OSINT/due-diligence/modeling data, reuse OpenTTD's existing UI as-is, and build a genuine backend bridge that makes use of as much of Prismatic's existing capability (§0.2.5 of the README: OSINT, due diligence, Monte Carlo, deduction, power-grid/property modeling, intelligence fusion) as makes sense.
 
 Restated as four separate technical goals, since they don't all use the same mechanism:
 
@@ -17,60 +17,91 @@ Restated as four separate technical goals, since they don't all use the same mec
 
 ## 2. What OpenTTD actually supports (verified against source, not assumed)
 
-Before designing anything, this fork's existing admin-network, scripting, and world-generation code was read directly (see commit history of this file's directory for the research pass). Confirmed facts:
+Before designing anything, this fork's existing admin-network, scripting, and world-generation code was read directly. Confirmed facts:
 
 - **The admin network** (`docs/admin_network.md`, `src/network/network_admin.cpp`, `src/network/core/tcp_admin.h`) is a real, documented, packet-based TCP protocol (default port 3977, configured via `network.server_admin_port` / `network.admin_password` in `openttd.cfg`, see `src/table/settings/network_settings.ini` and `network_secrets_settings.ini`). It's the only sanctioned way for an external process to talk to a running game.
-- **`PacketAdminType::AdminGameScript`** lets an admin client send an arbitrary JSON string into the currently-running **Game Script** (`ReceiveAdminGameScript` → `Game::NewEvent(new ScriptEventAdminPort(json))`, `network_admin.cpp:530`). The reverse path, `ScriptAdmin::Send` (`src/script/api/script_admin.cpp:119`), lets a Game Script push a JSON table back out to every connected admin as `PacketAdminType::ServerGameScript`. **This bidirectional JSON channel is the actual bridge transport** — it already exists, nothing needs to be invented at the protocol level.
-- **`rcon` is not a control channel.** `AdminRemoteConsoleCommand` only reaches `IConsoleCmdExec` (server-console commands: kick/ban/settings/etc.), not `DoCommand` gameplay execution. Do not build company control on rcon.
-- **Squirrel scripts (both company AI and Game Scripts) have no socket or file I/O.** `src/script/squirrel_std.cpp` registers only the math stdlib — no io/system/blob libs anywhere in the codebase. A script cannot "phone home" on its own; the admin TCP connection is the only door in or out, and it's Prismatic's side that has to hold that connection open.
-- **`ScriptCompanyMode`** (`src/script/api/script_companymode.hpp`, Game-Script-only) lets a Game Script switch into *any* company's context and issue normal commands "as if the real player is executing them," restoring the original context afterward. **This is the actual company-control mechanism** — combined with the standard `Script*` command API (build track, buy/manage vehicles, set orders, etc., the same API real AI opponents use).
-- **Observation** is available two ways: (a) admin-network subscriptions/polls for `Date`, `CompanyInfo`, `CompanyEconomy`, `CompanyStats`, `Chat`, `Console` — standard, stable, built in; (b) `CmdLogging`, a live feed of every incoming `DoCommand` — useful for debugging, but its docs explicitly warn the format isn't stable across versions, so nothing should depend on it long-term. Prefer (a), plus whatever state the relay Game Script chooses to push itself via `ScriptAdmin::Send`, which is entirely under this fork's own control.
-- **World seeding from real elevation data is confirmed reachable headlessly today**: `-G <heightmap-file>` on the command line loads a grayscale heightmap and starts a new game with no GUI required (`src/openttd.cpp`, `SwitchMode::StartHeightmap` → `MakeNewGame`). The companion **JSON town-data importer** described in `docs/importing_town_data.md` (built for exactly this kind of real GIS/OpenStreetMap-derived data) is documented only as a Scenario Editor GUI workflow — whether it's reachable headlessly/scriptably is **not yet confirmed** and needs its own research spike before Phase 4 below is designed in detail.
-- **A dedicated server (`-D`)** already runs a plain tick loop with no GUI dependency, its own stdin console, and can run the admin-network listener at the same time — a legitimate, already-existing host for a bridge-controlled game.
+- **`rcon` cannot issue arbitrary gameplay `Commands` directly** — `AdminRemoteConsoleCommand` only reaches `IConsoleCmdExec` (server-console commands), not `DoCommand` execution. But — and this is the key insight the actually-built bridge uses — **`IConsoleCmdExec` includes `start_ai [<AI>] [<settings>]` and `reload_ai <company-id>`**, which (re)start a company's AI script with a caller-supplied settings string. That's a real, if coarse-grained, external control path that doesn't need any new OpenTTD-side code at all: a settings string reachable over rcon, read by a normal AI script through the standard `AIController.GetSetting()` API. **This is the mechanism actually implemented — see §3.**
+- **`PacketAdminType::AdminGameScript`** also exists and would work: it lets an admin client send an arbitrary JSON string into a running **Game Script** (`ReceiveAdminGameScript` → `Game::NewEvent(new ScriptEventAdminPort(json))`, `network_admin.cpp:530`), with `ScriptAdmin::Send` (`src/script/api/script_admin.cpp:119`) as the reverse path. Combined with `ScriptCompanyMode` (`src/script/api/script_companymode.hpp`, Game-Script-only — lets a Game Script act inside any company's context "as if the real player is executing it"), this would give live, fine-grained, low-latency bidirectional control. **This was the original proposal in this document and remains a valid future upgrade path (§7) for finer-grained control than restarting an AI script gives you — it was not what got built first, because `start_ai`/`reload_ai` needed zero new OpenTTD-side script code to prove the control path end-to-end.**
+- **Squirrel scripts (both company AI and Game Scripts) have no socket or file I/O.** `src/script/squirrel_std.cpp` registers only the math stdlib — no io/system/blob libs anywhere in the codebase. A script cannot "phone home" on its own; the admin TCP connection is the only door in or out, and something outside the game process has to hold that connection open. This is true regardless of which control mechanism is used, and is why a bridge process is unavoidable no matter what.
+- **Observation** is available two ways: (a) admin-network subscriptions/polls for `Date`, `CompanyInfo`, `CompanyEconomy`, `CompanyStats`, `Chat`, `Console` — standard, stable, built in, and what's actually implemented today (§3); (b) `CmdLogging`, a live feed of every incoming `DoCommand` — useful for debugging, but its docs explicitly warn the format isn't stable across versions, so nothing should depend on it long-term.
+- **World seeding from real elevation data is confirmed reachable headlessly today**: `-G <heightmap-file>` on the command line loads a grayscale heightmap and starts a new game with no GUI required (`src/openttd.cpp`, `SwitchMode::StartHeightmap` → `MakeNewGame`). The companion **JSON town-data importer** described in `docs/importing_town_data.md` (built for exactly this kind of real GIS/OpenStreetMap-derived data) is documented only as a Scenario Editor GUI workflow — whether it's reachable headlessly/scriptably is **not yet confirmed** and needs its own research spike before Phase 4 below is designed in detail. Not started.
+- **A dedicated server (`-D`)** already runs a plain tick loop with no GUI dependency, its own stdin console, and can run the admin-network listener at the same time — confirmed as the actual host in `~/dev/openttd-prismatic-bridge`'s own run instructions (redirecting stdin from `/dev/null`, since an inherited/closed stdin makes `-D` treat EOF as a shutdown request).
 
-## 3. Architecture
+## 3. Architecture — as actually built
+
+The realized architecture is **three independent repositories/services**, not two:
+
+```
+korczis/OpenTTD                openttd-prismatic-bridge         prismatic-platform
+(this repo)                    (standalone, GitLab)              (untouched so far)
++------------------+           +------------------------+       +---------------------+
+| openttd -D        |          | Python 3 / FastAPI      |       | ~90 Elixir/Phoenix   |
+| dedicated server   | <--TCP-- |  bridge/admin_client.py |       | apps -- OSINT, DD,   |
+|  runs ai/          |  :3977  |  bridge/protocol.py     |       | Monte Carlo,         |
+|  PrismaticAI/*.nut  |  admin  |  bridge/main.py (REST + |<-HTTP-|  deduction, power     |
+|  (real Company AI,  |  net    |    /ws/events WebSocket)|  ??   |  graph, property      |
+|   externally        |         +------------------------+       |  intelligence, ...   |
+|   steerable)        |                                          |  (not integrated yet) |
++--------------------+                                          +----------------------+
+```
 
 ```mermaid
 flowchart LR
-    subgraph OpenTTD["korczis/OpenTTD -- dedicated server (-D)"]
-        GS["Relay Game Script (new Squirrel code)<br/>@api game"]
-        CM["ScriptCompanyMode +<br/>standard Script* command API"]
+    subgraph OpenTTD["korczis/OpenTTD -- openttd -D (dedicated server)"]
+        AI["ai/PrismaticAI/*.nut<br/>real Company AI script<br/>(lives in the bridge repo,<br/>installed into OpenTTD's<br/>personal ai/ directory)"]
         World["Game world / companies / economy"]
-        Admin["Admin network listener<br/>(network.server_admin_port)"]
+        AdminSrv["Admin network listener<br/>network.server_admin_port"]
 
-        Admin -- "AdminGameScript packet<br/>(JSON directive)" --> GS
-        GS -- "ScriptCompanyMode::StartCompanyMode(id)" --> CM
-        CM -- "build / buy / route / manage" --> World
-        World -- "state" --> GS
-        GS -- "ScriptAdmin.Send(json)" --> Admin
+        AdminSrv -- "start_ai / reload_ai<br/>(rcon, with settings string)" --> AI
+        AI -- "AIController.GetSetting()<br/>reads aggressiveness, heartbeat_seconds" --> World
+        World -- "state" --> AdminSrv
     end
 
-    subgraph Prismatic["~/dev/prismatic-platform (Elixir/Phoenix)"]
-        Client["NEW: prismatic_openttd_bridge<br/>admin-network TCP client"]
-        Fusion["prismatic_intelligence_fusion"]
-        Model["prismatic_monte_carlo /<br/>prismatic_deduction /<br/>prismatic_bifurcation"]
-        Real["prismatic_osint_* / prismatic_dd /<br/>prismatic_power_graph /<br/>prismatic_property_intelligence"]
-        Storage["prismatic_storage_*"]
+    subgraph Bridge["openttd-prismatic-bridge (standalone, Python/FastAPI)"]
+        AdminClient["bridge/admin_client.py<br/>owns the Admin Network TCP connection<br/>auto-reconnect every 5s"]
+        Protocol["bridge/protocol.py<br/>packet encode/decode,<br/>plain AdminJoin auth"]
+        REST["bridge/main.py<br/>/health /state /companies<br/>/rcon /ai/start /ai/reload<br/>/ai/stop /ai/list /ai/available<br/>/decision/pull /ws/events"]
 
-        Real --> Fusion --> Model --> Client
-        Client -- "observed state" --> Storage
+        AdminClient <--> Protocol
+        REST --> AdminClient
     end
 
-    Admin <-- "TCP :3977, admin protocol,<br/>network.admin_password" --> Client
+    subgraph Prismatic["~/dev/prismatic-platform (not integrated yet)"]
+        Consumer["Whatever calls the bridge's<br/>HTTP API -- shape not assumed<br/>beyond {ai, company_id, settings}"]
+    end
+
+    AdminSrv <-- "TCP :3977, admin protocol,<br/>network.admin_password" --> AdminClient
+    Consumer -- "HTTP :8730 (Swagger at /docs)" --> REST
+    REST -. "PRISMATIC_DECISION_URL<br/>(unset by default)" .-> Consumer
 ```
 
-- **Nothing about the OpenTTD game client or UI changes.** A human can still connect and play normally, or just watch; the relay Game Script and admin connection are invisible to the client-side rendering/input path (§0.1's goal 1, "UI reuse," is satisfied by construction — there's no mechanism here that touches `src/video/`, `src/gfx.cpp`, or any widget code).
-- **The relay Game Script is new code that must be written**, but it's *content*, not an engine change — it's a `.nut` script loaded like any other Game Script, not a modification to `src/`. It belongs under `research/prismatic-bridge/` in this fork (experimental infrastructure, per `AGENTS.md`'s four kinds of change), not under `src/game/`.
-- **`prismatic_openttd_bridge` is new code that must be written on the Prismatic side** — nothing in the current ~90 applications speaks OpenTTD's admin-network wire protocol. This is the one piece of the whole design that requires touching `~/dev/prismatic-platform`, which is why it's called out explicitly rather than assumed.
+- **`prismatic-platform` doesn't need to speak OpenTTD's binary admin protocol at all.** That was the single biggest assumption this document originally made (an Elixir NIF client living inside the umbrella) and it turned out to be unnecessary — the standalone bridge already speaks it, in Python, and exposes a normal REST/WebSocket API instead. Whatever eventually calls `PRISMATIC_DECISION_URL` / gets polled by `/decision/pull` just needs to speak HTTP and return `{"ai": str, "company_id": int, "settings": str}` — trivial from any Elixir/Phoenix controller, no protocol work needed on that side.
+- **`prismatic_openttd_bridge` as an Elixir app inside `prismatic-platform` was never built, and doesn't need to be**, given the above — unless a future decision explicitly wants the admin-network client itself to live inside the Elixir umbrella instead of as a sibling service (see §7).
+- **Nothing about the OpenTTD game client or UI changes.** A human can still connect and play normally, or just watch; goal 4 from §1 ("UI reuse") is satisfied by construction — nothing here touches `src/video/`, `src/gfx.cpp`, or any widget code.
+- **`ai/PrismaticAI/*.nut` is real code that exists**, but it's *content* (a normal Company AI script, loaded from OpenTTD's personal `ai/` directory like any other), not an engine change — no `src/` modification was needed. It currently proves the control path (settings are readable, a heartbeat is loggable) but "intentionally idles" — no build/buy/route logic is implemented yet (see Phase 2, §5).
 
-### 3.1) Implementation choice for `prismatic_openttd_bridge`: Rust NIFs via Rustler
+### 3.1) Why Python/FastAPI, not Rust+Rustler — and what "Rust" would actually mean now
 
-The admin-network protocol is packet-based binary TCP (length-prefixed packets, fixed-width integer/string fields, its own auth handshake) — exactly the kind of thing worth implementing in Rust rather than hand-rolled Elixir binary pattern-matching. Checked directly rather than assumed: **this is not a new dependency for Prismatic** — `apps/prismatic_audio/native/` and `apps/prismatic_quantum_security/native/` are existing Rustler-based NIF crates in that codebase already (and `prismatic_web`'s `mix.exs` already depends on `rustler`), so `prismatic_openttd_bridge` would follow an established, already-working convention rather than introduce a new toolchain.
+An earlier instruction in this session asked for the bridge to use Rust + Rustler + NIFs. That request predates knowing `openttd-prismatic-bridge` already existed as a working, tested (8/8 unit tests passing), standalone **Python** service — not an Elixir app, so **Rustler doesn't directly apply**: Rustler specifically binds Rust to the BEAM/Elixir; a standalone Python service would use a different binding (PyO3/`maturin`), or could be rewritten as a native Rust service with no host language at all (e.g. `axum` + `tokio`).
 
-Proposed split of responsibility, chosen specifically to avoid a real NIF pitfall:
+This document doesn't resolve that discrepancy by picking one and silently rewriting working code — that would be a large, unrequested change (see `AGENTS.md`: prefer minimal changes, ask before large ones). The real options, laid out for an explicit decision:
+
+| Option | What it means | Cost |
+|---|---|---|
+| **Keep Python as-is** | No change. `bridge/protocol.py`'s hand-written struct-style packet encode/decode stays Python. | None — already working, 8/8 tests passing. |
+| **Accelerate `bridge/protocol.py` with a Rust extension via PyO3/`maturin`** | Rewrite just the packet encode/decode layer in Rust, expose it to the existing FastAPI app as a Python extension module. Closest analog to the original "Rust NIF" idea, just for Python instead of Elixir. | Moderate — new build toolchain (`maturin`) for this one repo; packet parsing isn't currently a measured bottleneck, so the benefit is unproven. |
+| **Rewrite the whole bridge natively in Rust** (e.g. `axum`) | Retire FastAPI/uvicorn entirely. | Large — a full rewrite of a repo that already works and is tested. |
+| **Move the admin-network client into `prismatic-platform` as an Elixir app with a Rustler NIF** | The original proposal in this document's first draft — `native/openttd_admin_protocol/` following the `prismatic_audio`/`prismatic_quantum_security` convention (confirmed to already exist in that codebase), Elixir owning the socket, Rust NIF doing pure encode/decode only (to avoid blocking a BEAM scheduler thread — see the original design rationale preserved below). Would mean retiring the standalone bridge repo, or keeping it only for non-Elixir consumers. | Large — duplicates working functionality inside a different repo/language, only justified if `prismatic-platform` itself needs to own the connection rather than call an HTTP API. |
+
+**No option has been chosen.** Given a working, tested implementation already exists, the default going forward is "don't rewrite it without a concrete reason" — but this table exists so the choice is explicit next time it comes up, not re-litigated from scratch.
+
+<details>
+<summary>Original Rustler/NIF design rationale (preserved for reference, not currently applied)</summary>
+
+The admin-network protocol is packet-based binary TCP (length-prefixed packets, fixed-width integer/string fields, its own auth handshake). If the client ever does move into `prismatic-platform` as an Elixir app, the proposed split was:
 
 - **Rust NIF (`native/openttd_admin_protocol/`)**: pure packet **encode/decode only** — turn a raw byte buffer into a typed Elixir term (packet type + fields) and back. Pure, fast, deterministic, safe to run as a regular (non-dirty) NIF because it never blocks.
-- **Elixir owns the TCP socket** (`:gen_tcp` / a `GenServer` or `:ranch`-style connection process) and calls into the Rust NIF once per packet for encode/decode. This deliberately avoids the classic Rustler mistake of doing blocking socket I/O *inside* a NIF, which stalls a BEAM scheduler thread — that would need a "dirty" NIF or a Rust-side OS thread bridged back via `rustler::Env`/a resource type, meaningfully more complex for no benefit here, since packet parsing itself is fast enough to be a normal NIF and the socket already belongs on the Elixir/OTP side where supervision, backpressure, and reconnect logic are cheap to get right.
+- **Elixir owns the TCP socket** (`:gen_tcp` / a `GenServer`) and calls into the Rust NIF once per packet for encode/decode. This deliberately avoids the classic Rustler mistake of doing blocking socket I/O *inside* a NIF, which stalls a BEAM scheduler thread.
 
 ```mermaid
 flowchart LR
@@ -79,7 +110,7 @@ flowchart LR
     Sock -- "decoded packet" --> Logic["Elixir: routing to<br/>Fusion / Monte Carlo / Deduction"]
 ```
 
-This keeps the same phase boundaries as §5 below — Phase 1 becomes "scaffold `native/openttd_admin_protocol` (Rust, encode/decode of the handful of packet types needed for the round trip) + a thin Elixir `GenServer` socket owner," not a rewrite of the plan.
+</details>
 
 ## 4. Data flow for "modelování světa" / "napojit reálná data"
 
@@ -87,50 +118,59 @@ Two distinct data flows, on different timescales — conflating them was the mai
 
 ```mermaid
 flowchart TD
-    subgraph Slow["World seeding -- offline, once per scenario"]
+    subgraph Slow["World seeding -- offline, once per scenario -- NOT STARTED"]
         Geo["Real elevation / GIS data"] --> HM["Heightmap export<br/>(grayscale PNG/BMP)"]
         HM --> Start["openttd -D -G heightmap.png<br/>(headless new-game start)"]
     end
 
-    subgraph Fast["Decision-making -- live, continuous"]
-        OSINT["prismatic_osint_* / prismatic_dd"] --> Fusion2["prismatic_intelligence_fusion"]
-        Fusion2 --> MC["prismatic_monte_carlo<br/>(uncertainty-aware forecasts)"]
-        MC --> Ded["prismatic_deduction<br/>(claim-graph reasoning:<br/>should we build/buy/expand?)"]
-        Ded --> Directive["Structured JSON directive<br/>e.g. build_rail / buy_vehicle / set_orders"]
-        Directive -- "AdminGameScript" --> GameLive["Live OpenTTD company,<br/>via the relay Game Script"]
-        GameLive -- "observed outcome" --> Fusion2
+    subgraph Fast["Decision-making -- live, continuous -- PARTIALLY BUILT"]
+        OSINT["prismatic_osint_* / prismatic_dd<br/>(not integrated yet)"] --> Fusion2["prismatic_intelligence_fusion<br/>(not integrated yet)"]
+        Fusion2 --> MC["prismatic_monte_carlo<br/>(not integrated yet)"]
+        MC --> Ded["prismatic_deduction<br/>(not integrated yet)"]
+        Ded --> Directive["POST /decision/pull result<br/>{ai, company_id, settings}<br/>-- endpoint exists, contract undefined"]
+        Directive --> Bridge2["openttd-prismatic-bridge<br/>-- BUILT"]
+        Bridge2 -- "start_ai / reload_ai<br/>-- BUILT" --> GameLive["PrismaticAI in OpenTTD<br/>-- idles, no strategy yet"]
+        GameLive -- "/state, /companies,<br/>/ws/events -- BUILT" --> Fusion2
     end
 ```
 
-- **World seeding** happens once (or rarely) per scenario, offline, before the server even starts — it's a data-preparation step, not a running integration.
-- **Decision-making** is the actual live bridge — continuous, small JSON messages, low frequency relative to OpenTTD's own tick rate (game-economy decisions happen on the order of seconds-to-minutes of game time, not every tick).
-- The two are independent: Phase 4 (world seeding) can be built or skipped without affecting Phases 1–3 (control/observation), and vice versa.
+- **World seeding** happens once (or rarely) per scenario, offline, before the server even starts — it's a data-preparation step, not a running integration. Not started.
+- **Decision-making**: the bridge's transport (`/decision/pull`, `/ai/start`, `/ai/reload/{id}`, the observation endpoints) is built and tested; what's missing is (a) an actual strategy in `ai/PrismaticAI/main.nut` that does something with its settings besides log a heartbeat, and (b) anything on the `prismatic-platform` side that computes a settings string worth sending.
+- The two are independent: world seeding can be built or skipped without affecting the control/observation loop, and vice versa.
 
 ## 5. Phased plan
 
-Each phase should be re-approved before starting the next one — this table is a proposal, not a commitment to build all five.
+Each remaining phase should be approved before starting — this table tracks real status, not just a proposal anymore.
 
-| Phase | Goal | Touches `prismatic-platform`? | Validated by |
-|---|---|---|---|
-| 0 | This document | No (read-only research) | Human review of this doc |
-| 1 | Wire-protocol round trip: a trivial relay GS that echoes `AdminGameScript` JSON back via `ScriptAdmin.Send`; `native/openttd_admin_protocol` Rust NIF (Rustler) for packet encode/decode + a thin Elixir `GenServer` socket owner that connects, authenticates, sends one message, receives the echo | **Yes** — `prismatic_openttd_bridge` scaffold (Elixir app + Rust NIF crate, following the `prismatic_audio`/`prismatic_quantum_security` convention) | `tools/gate.sh` (OpenTTD side, once the relay GS has any automated check) + Prismatic's own `just check` (which already covers Rust-backed apps) |
-| 2 | Real company control: JSON schema for `build_rail`/`buy_vehicle`/`set_orders`/etc.; relay GS uses `ScriptCompanyMode` + `Script*` API to execute them | Yes | Both sides' gates, plus a manual in-game check (does the track actually get built) |
-| 3 | Observation loop: periodic `CompanyEconomy`/`CompanyStats` push from the relay into `prismatic_storage_*`, closing the loop so decisions can be evaluated against outcomes | Yes | Both sides' gates |
-| 4 | World seeding from real elevation/GIS data via `-G`; town-data JSON path researched and either used headlessly or explicitly deferred | Yes (data-prep pipeline) | `tools/gate.sh` + a manual headless-start check |
-| 5 | Live decision-making wired to `prismatic_monte_carlo`/`prismatic_deduction`/`prismatic_dd`/`prismatic_intelligence_fusion` instead of a hardcoded test script — this is where "využití maxima features" actually lands | Yes | Both sides' gates + a `research/experiment-template.md` report per experiment run |
+| Phase | Goal | Status | Touches `prismatic-platform`? | Validated by |
+|---|---|---|---|---|
+| 0 | This document | Done (this revision) | No (read-only research) | Human review |
+| 1 | Control-path round trip: standalone bridge speaking the Admin Network protocol; `start_ai`/`reload_ai` reachable over HTTP; a real, externally-steerable (if idling) Company AI | **Done** — `~/dev/openttd-prismatic-bridge` (Python/FastAPI, `bridge/`, `ai/PrismaticAI/*.nut`, 8/8 unit tests passing) | No — bridge is standalone | Bridge repo's own `pytest tests/`; manually confirmed end-to-end per its README's `curl` examples |
+| 2 | Real company strategy: `ai/PrismaticAI/main.nut` actually builds/buys/routes, driven by its settings string, instead of idling | Not started (explicitly flagged as a follow-up in the bridge repo's own README) | No | Bridge repo's tests + a manual in-game check (does the track actually get built) |
+| 3 | Decision contract: define what `/decision/pull` actually returns and where `PRISMATIC_DECISION_URL` points; wire something on the `prismatic-platform` side to answer it | Not started | **Yes** — first real touch of `prismatic-platform` | Both sides' gates |
+| 4 | World seeding from real elevation/GIS data via `-G`; town-data JSON path researched and either used headlessly or explicitly deferred | Not started | No (data-prep pipeline, could live in either repo) | `tools/gate.sh` + a manual headless-start check |
+| 5 | Live decision-making wired to `prismatic_monte_carlo`/`prismatic_deduction`/`prismatic_dd`/`prismatic_intelligence_fusion` instead of a placeholder — this is where "využití maxima features" actually lands | Not started | Yes | Both sides' gates + a `research/experiment-template.md` report per experiment run |
 
 ## 6. Explicitly out of scope for now
 
-- Any change to OpenTTD's `src/` — the entire design routes through the existing admin-network + Game Script API precisely so `src/` never needs to change.
+- Any change to OpenTTD's `src/` — the entire design routes through the existing admin-network + AI-script API precisely so `src/` never needs to change. Still true; nothing built so far touched `src/`.
 - Any change to OpenTTD's UI/rendering/input path — confirmed unnecessary (§3).
-- Relying on `rcon` or `CmdLogging` as load-bearing mechanisms — confirmed wrong/unstable (§2).
+- Relying on `CmdLogging` as a load-bearing mechanism — confirmed unstable-by-design (§2).
+- The secure `AdminJoinSecure` (X25519) auth handshake — the bridge repo currently implements only the plain/insecure `AdminJoin` path, fine for localhost dev, explicitly flagged in its own README as not done for anything beyond that.
 - Headless town-data JSON import — unconfirmed, deferred to its own research spike before Phase 4 commits to it.
-- Building any of Phases 1–5 in this session — this document is Phase 0 only, per the explicit instruction that started it.
+- Rewriting the working Python bridge in Rust — not decided either way, see §3.1.
+- Building Phases 2–5 in this session — that's real feature/integration work in (at least) two repositories and needs its own explicit go-ahead per phase.
 
 ## 7. Open questions / risks
 
-- **Wire protocol implementation cost on the Prismatic side.** The admin-network protocol (packet-based binary TCP, its own auth handshake) has to be implemented from scratch — no existing client library was found in either repository, in Rust or Elixir. Lower risk than it would otherwise be, since `prismatic_audio`/`prismatic_quantum_security` already prove the Rustler/native-crate pattern works in this codebase, but the protocol implementation itself (packet types, auth handshake, framing) is still new work. Still the single biggest effort unknown in the whole plan.
-- **NIF/scheduler discipline.** §3.1's split (Rust NIF = pure encode/decode only, Elixir owns the socket) is a deliberate choice to avoid blocking a BEAM scheduler thread inside a NIF — it should be treated as a hard constraint during Phase 1 implementation, not just a suggestion, since relaxing it later (e.g. "just do the socket read in Rust too, it's simpler") is exactly the kind of shortcut that causes hard-to-diagnose BEAM scheduler starvation under load.
-- **Command latency / game-tick alignment.** `ScriptCompanyMode`-issued commands still go through the normal two-phase (test + execute) command pipeline and, in a networked game, the deterministic-lockstep command queue — a directive sent by Prismatic won't execute instantly, and the relay GS needs a defined way to report success/failure back (mirroring this fork's own PASS/FAIL/PARTIAL/NOT RUN taxonomy from `research/README.md` would be a natural fit for per-directive reporting).
-- **Versioning.** Both `docs/admin_network.md` and the `CmdLogging` packet explicitly warn that formats can change between OpenTTD versions. A relay built against this fork's current revision may need updating if this fork's OpenTTD base is ever updated.
+- **The Rust/Rustler question (§3.1)** is the most concrete open item carried over from this session specifically — it wasn't resolved, just laid out with real options and costs instead of silently applied to code that already works.
+- **`/decision/pull` contract is undefined.** The bridge's own README is explicit that "nothing here assumes its shape beyond `{"ai": str, "company_id": int, "settings": str}`" — Phase 3 needs an actual decision here before `prismatic-platform` can be wired in at all.
+- **Command latency / game-tick alignment**, for a future upgrade to the finer-grained `ScriptCompanyMode`/Game-Script channel (§2): those commands still go through the normal two-phase (test + execute) pipeline and, in a networked game, the deterministic-lockstep queue — a directive wouldn't execute instantly, and whatever issues it needs a defined way to report success/failure back. Mirroring this fork's own PASS/FAIL/PARTIAL/NOT RUN taxonomy from `research/README.md` would be a natural fit, and would apply equally well to reporting on `start_ai`/`reload_ai` calls today.
+- **Versioning.** `docs/admin_network.md` explicitly warns formats can change between OpenTTD versions; `bridge/protocol.py` is written against this fork's current revision and would need updating if this fork's OpenTTD base is ever updated.
+- **Coarse-grained control.** `start_ai`/`reload_ai` can restart an AI with new settings, but there's no way to send it a *mid-run* directive without restarting it (losing in-progress state) — worth keeping in mind once Phase 2's real strategy exists; this is exactly the gap the `AdminGameScript`/`ScriptCompanyMode` channel from §2 would close if finer-grained live control ever becomes necessary.
 - **Scope of "maximum features."** §0.2.5 lists ~13 Prismatic applications with real-world data connections; wiring all of them in is a large surface. Phase 5 should probably pick one concrete decision domain first (e.g., "should this company build a rail line here, informed by `prismatic_power_graph` infrastructure data") rather than attempting breadth immediately.
+
+## 8. See also
+
+- `~/dev/openttd-prismatic-bridge` — the actual bridge implementation and its own README (run instructions, endpoint list, what's a real follow-up).
+- [`README.md`](../../README.md) §0.2.5 of this repository — the Prismatic applications this bridge is ultimately meant to connect to.
