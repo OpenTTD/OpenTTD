@@ -174,6 +174,30 @@ struct CompanyNewsInformation : NewsAllocatedData {
 	CompanyNewsInformation(StringID title, const struct Company *c, const struct Company *other = nullptr);
 };
 
+/**
+ * Data that needs to be stored for massage with an engine.
+ */
+struct EnginePreviewNewsInformation : NewsAllocatedData {
+	std::string title; ///< The title of the popup window.
+	std::vector<std::string> additional_messages; ///< Additional information inserted between the title and engine's properties.
+
+	/**
+	 * Constructs new EnginePreviewNewsInformation.
+	 * @param p_title The title of the popup window.
+	 */
+	EnginePreviewNewsInformation(const EncodedString &p_title) : title(p_title.GetDecodedString()) {}
+	EnginePreviewNewsInformation(const std::string &p_title) : title(p_title) {} ///< @copydoc EnginePreviewNewsInformation::EnginePreviewNewsInformation
+
+	/**
+	 * Appends a new string to the additional information.
+	 * @param message The string to append.
+	 */
+	void AddAdditionalMessage(const EncodedString &message)
+	{
+		this->additional_messages.push_back(message.GetDecodedString() + '\n');
+	}
+};
+
 using NewsContainer = std::list<NewsItem>; ///< Container type for storing news items.
 using NewsIterator = NewsContainer::const_iterator; ///< Iterator type for news items.
 
