@@ -765,7 +765,9 @@ std::tuple<CommandCost, Money> CmdClearArea(DoCommandFlags flags, TileIndex tile
 			last_error = std::move(ret);
 
 			/* We may not clear more tiles. */
-			if (c != nullptr && GB(c->clear_limit, 16, 16) < 1) break;
+			if (c != nullptr && GB(c->clear_limit, 16, 16) < 1) {
+				return { CommandCost(STR_ERROR_CLEARING_LIMIT_REACHED), 0 };
+			}
 			continue;
 		}
 
