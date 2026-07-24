@@ -397,15 +397,14 @@ static const SaveLoad _script_byte[] = {
 			}
 			std::string_view view;
 			sq_getstring(vm, index, view);
-			size_t len = view.size() + 1;
-			if (len >= 255) {
-				ScriptLog::Error("Maximum string length is 254 chars. No data saved.");
+			if (view.size() > 255) {
+				ScriptLog::Error("Maximum string length is 255 chars. No data saved.");
 				return false;
 			}
 			if (!test) {
-				_script_sl_byte = (uint8_t)len;
+				_script_sl_byte = static_cast<uint8_t>(view.size());
 				SlObject(nullptr, _script_byte);
-				SlCopy(const_cast<char *>(view.data()), len, VarTypes::I8);
+				SlCopy(const_cast<char *>(view.data()), view.size(), VarTypes::I8);
 			}
 			return true;
 		}
@@ -611,9 +610,9 @@ bool ScriptInstance::IsPaused()
 
 		case SQSL_STRING: {
 			SlObject(nullptr, _script_byte);
-			static char buf[std::numeric_limits<decltype(_script_sl_byte)>::max()];
-			SlCopy(buf, _script_sl_byte, VarTypes::I8);
-			if (data != nullptr) data->push_back(StrMakeValid(std::string_view(buf, _script_sl_byte)));
+			std::string buf(_script_sl_byte, '\0');
+			SlCopy(buf.data(), buf.size(), VarTypes::I8);
+			if (data != nullptr) data->push_back(StrMakeValid(std::move(buf)));
 			return true;
 		}
 
