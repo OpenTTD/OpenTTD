@@ -25,6 +25,7 @@
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 
 #include "prismatic_mcp.h"
+#include "prismatic_mcp_detail.h"
 
 #include "../3rdparty/nlohmann/json.hpp"
 #include "../core/random_func.hpp"
@@ -106,11 +107,7 @@ std::string ToHex(std::span<const uint8_t> bytes)
 bool TokenMatches(std::string_view presented_hex)
 {
 	if (!_mcp.token_valid) return false;
-	std::string expected = ToHex(_mcp.token);
-	if (presented_hex.size() != expected.size()) return false;
-	unsigned diff = 0;
-	for (size_t i = 0; i < expected.size(); i++) diff |= (unsigned)(expected[i] ^ presented_hex[i]);
-	return diff == 0;
+	return detail::ConstantTimeEquals(presented_hex, ToHex(_mcp.token));
 }
 
 std::string_view TrimOWS(std::string_view s)
@@ -276,13 +273,10 @@ constexpr size_t MAX_APPROVALS = 64;
 constexpr size_t MAX_PROVENANCE = 128;
 constexpr uint64_t APPROVAL_TTL_TICKS = 100000; ///< generous; the operator approves interactively
 
-/** FNV-1a 64-bit digest, rendered hex. Deterministic, no secrets. */
+/** FNV-1a 64-bit digest of tool+args, via the shared pure helper. */
 std::string ArgDigest(std::string_view tool, const json &args)
 {
-	std::string canonical = std::string(tool) + "|" + args.dump();
-	uint64_t h = 1469598103934665603ull;
-	for (unsigned char ch : canonical) { h ^= ch; h *= 1099511628211ull; }
-	return fmt::format("{:016x}", h);
+	return detail::ArgDigestHex(tool, args.dump());
 }
 
 PendingApproval *FindApproval(uint64_t id)
@@ -291,11 +285,7 @@ PendingApproval *FindApproval(uint64_t id)
 	return nullptr;
 }
 
-/** The typed action catalogue this build actually adapts. Deterministic order. */
-bool IsKnownActionType(std::string_view type)
-{
-	return type == "game.set_pause";
-}
+using detail::IsKnownActionType;
 
 /* ---- JSON-RPC dispatch (main thread) -------------------------------------- */
 
@@ -599,10 +589,7 @@ std::string HandleHttpRequest(std::string_view raw, size_t header_end, size_t co
 	}
 
 	/* Bearer auth, constant-time. */
-	std::string_view bearer;
-	if (auth.size() > 7 && (auth.substr(0, 7) == "Bearer " || auth.substr(0, 7) == "bearer ")) {
-		bearer = TrimOWS(auth.substr(7));
-	}
+	std::string_view bearer = detail::ExtractBearer(auth);
 	if (!TokenMatches(bearer)) {
 		_mcp.requests_denied++;
 		return HttpResponse(401, "Unauthorized", R"({"error":"missing or invalid bearer token"})",
@@ -659,17 +646,10 @@ bool TryCompleteHeaders(Connection &c)
 	c.header_end = end + 4;
 	c.headers_done = true;
 
-	/* Find Content-Length (case-insensitive). */
-	std::string lower = c.inbuf.substr(0, c.header_end);
-	for (char &ch : lower) ch = (char)tolower(ch);
-	size_t p = lower.find("content-length:");
-	if (p != std::string::npos) {
-		p += strlen("content-length:");
-		while (p < lower.size() && (lower[p] == ' ' || lower[p] == '\t')) p++;
-		size_t end = lower.find_first_not_of("0123456789", p);
-		unsigned long long value = 0;
-		std::from_chars(lower.c_str() + p, lower.c_str() + (end == std::string::npos ? lower.size() : end), value);
-		c.content_length = (size_t)value;
+	/* Content-Length via the shared pure parser (case-insensitive). */
+	std::optional<size_t> cl = detail::ParseContentLength(std::string_view(c.inbuf).substr(0, c.header_end));
+	if (cl.has_value()) {
+		c.content_length = *cl;
 		if (c.content_length > MAX_REQUEST_BODY) { CloseConnection(c); return false; }
 	}
 	return true;

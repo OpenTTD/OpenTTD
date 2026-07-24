@@ -16,6 +16,7 @@ add_test_files(
     string_func.cpp
     test_main.cpp
     test_network_crypto.cpp
+    test_prismatic_mcp.cpp
     test_script_admin.cpp
     test_window_desc.cpp
     tilearea.cpp
