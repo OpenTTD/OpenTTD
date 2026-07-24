@@ -779,6 +779,75 @@ struct SaveLoad {
 	AddressFunction address_func; ///< Callback function the get the actual variable address in memory.
 	size_t extra_data;              ///< Extra data for the callback proc.
 	std::shared_ptr<SaveLoadHandler> handler; ///< Custom handler for Save/Load procs.
+
+	/**
+	 * Check whether the given file type is stored as a simple number.
+	 * @param file_type The file type to check.
+	 * @return \c true iff signed or unsigned 8, 16, 32 or 64 bit integer.
+	 */
+	static constexpr bool IsIntegralFileType(VarFileType file_type)
+	{
+		switch (file_type) {
+			case VarFileType::I8:
+			case VarFileType::U8:
+			case VarFileType::I16:
+			case VarFileType::U16:
+			case VarFileType::I32:
+			case VarFileType::U32:
+			case VarFileType::I64:
+			case VarFileType::U64:
+				return true;
+
+			default:
+				return false;
+		}
+	}
+
+	/**
+	 * Determine the \c VarMemType type given the variable's \c decltype and occasionally the file type to distinguish options.
+	 * If feasible a sanity check is do to check the file type against the variable's \c decltype, for example to prevent a bool to be saved as string.
+	 * @tparam T The variable's \c decltype.
+	 * @tparam file_type The way this variable will be/is stored in the save file.
+	 * @return The \c VarMemType.
+	 * @note file_type is a template parameter to be able to perform all type checks at compile time.
+	 */
+	template <typename T, VarFileType file_type>
+	static constexpr VarMemType DetermineMemType()
+	{
+		if constexpr (std::is_same_v<StringID, T>) {
+			static_assert(file_type == VarFileType::StringID);
+			static_assert(sizeof(T) == sizeof(uint32_t));
+			return VarMemType::U32;
+		} else if constexpr (std::is_same_v<int8_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::I8;
+		} else if constexpr (std::is_same_v<uint8_t, T> || std::is_same_v<char, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::U8;
+		} else if constexpr (std::is_same_v<int16_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::I16;
+		} else if constexpr (std::is_same_v<uint16_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::U16;
+		} else if constexpr (std::is_same_v<int32_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::I32;
+		} else if constexpr (std::is_same_v<uint32_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::U32;
+		} else if constexpr (std::is_same_v<int64_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::I64;
+		} else if constexpr (std::is_same_v<uint64_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::U64;
+		} else if constexpr (ConvertibleThroughBase<T>) {
+			return DetermineMemType<typename T::BaseType, file_type>();
+		} else {
+			static_assert(false, "The given type is not supported");
+		}
+	}
 };
 
 /**
@@ -1342,6 +1411,19 @@ void SlCopy(void *object, size_t length, VarType conv);
 std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt);
 std::vector<SaveLoad> SlCompatTableHeader(const SaveLoadTable &slt, const SaveLoadCompatTable &slct);
 void SlObject(void *object, const SaveLoadTable &slt);
+
+/**
+ * Copy the data from the collection to the save, or from the save into the collection depending on the save-load state.
+ * @tparam file_type The way the data is stored in the save file.
+ * @tparam T The type of the collection, to get the \c value_type from.
+ * @param collection The 'ContiguousContainer' with data to save, or to load the data into.
+ */
+template <VarFileType file_type, typename T>
+static inline void SlCopy(T &collection)
+{
+	std::span span{collection}; // Let std::span worry about what is passed being a contiguous container.
+	SlCopy(span.data(), span.size(), file_type | SaveLoad::DetermineMemType<std::remove_const_t<typename T::value_type>, file_type>());
+}
 
 /**
  * Read in bytes from the file/data structure but don't do

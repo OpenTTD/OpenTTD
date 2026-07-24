@@ -174,7 +174,7 @@ struct ORDRChunkHandler : ChunkHandler {
 				len /= sizeof(uint16_t);
 				std::vector<uint16_t> orders(len);
 
-				SlCopy(&orders[0], len, VarTypes::U16);
+				SlCopy<VarFileType::U16>(orders);
 
 				for (size_t i = 0; i < len; ++i) {
 					auto &item = AllocateOldOrder(i);
@@ -184,7 +184,7 @@ struct ORDRChunkHandler : ChunkHandler {
 				len /= sizeof(uint32_t);
 				std::vector<uint32_t> orders(len);
 
-				SlCopy(&orders[0], len, VarTypes::U32);
+				SlCopy<VarFileType::U32>(orders);
 
 				for (size_t i = 0; i < len; ++i) {
 					auto &item = AllocateOldOrder(i);

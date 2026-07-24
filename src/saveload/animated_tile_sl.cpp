@@ -52,7 +52,7 @@ struct ANITChunkHandler : ChunkHandler {
 			size_t count = SlGetFieldLength() / sizeof(_animated_tiles.front());
 			_animated_tiles.clear();
 			_animated_tiles.resize(count);
-			SlCopy(_animated_tiles.data(), count, VarTypes::U32);
+			SlCopy<VarFileType::U32>(_animated_tiles);
 			return;
 		}
 
