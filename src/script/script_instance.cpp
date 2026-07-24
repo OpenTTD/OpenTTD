@@ -31,6 +31,7 @@
 #include "../signs_type.h"
 #include "../story_type.h"
 #include "../misc/endian_buffer.hpp"
+#include "../texteff.hpp"
 
 #include "../safeguards.h"
 
@@ -326,6 +327,10 @@ void ScriptInstance::CollectGarbage()
 	instance.engine->InsertResult(EndianBufferReader::ToValue<LeagueTableID>(ScriptObject::GetLastCommandResData()));
 }
 
+/* static */ void ScriptInstance::DoCommandReturnTextEffectID(ScriptInstance &instance)
+{
+	instance.engine->InsertResult(EndianBufferReader::ToValue<ScriptTextEffectID>(ScriptObject::GetLastCommandResData()));
+}
 
 ScriptStorage &ScriptInstance::GetStorage()
 {
