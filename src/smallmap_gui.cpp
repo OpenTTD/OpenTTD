@@ -1995,40 +1995,36 @@ public:
 	}
 };
 
-/** Widget parts of the smallmap display. */
+/** Widget parts of the smallmap display and image buttons. */
 static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_display = {
-	NWidget(WWT_PANEL, Colours::Brown, WID_SM_MAP_BORDER),
-		NWidget(WWT_INSET, Colours::Brown, WID_SM_MAP), SetMinimalSize(346, 140), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
-	EndContainer(),
-};
-
-/** Widget parts of the smallmap legend bar + image buttons. */
-static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_bar = {
-	NWidget(WWT_PANEL, Colours::Brown),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, Colours::Invalid, WID_SM_LEGEND), SetResize(1, 1),
-			NWidget(NWID_VERTICAL),
-				/* Top button row. */
-				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, Colours::Brown, WID_SM_MAP_BORDER),
+			NWidget(WWT_INSET, Colours::Brown, WID_SM_MAP), SetResize(1, 1), SetPadding(2, 2, 2, 2), EndContainer(),
+		EndContainer(),
+		NWidget(NWID_VERTICAL),
+			/* Smallmap action buttons. */
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+				/* First button column. */
+				NWidget(NWID_VERTICAL, {NWidContainerFlag::EqualSize, NWidContainerFlag::NoFill}),
 					NWidget(WWT_PUSHIMGBTN, Colours::Brown, WID_SM_ZOOM_IN),
 							SetSpriteTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN), SetFill(1, 1),
 					NWidget(WWT_PUSHIMGBTN, Colours::Brown, WID_SM_CENTERMAP),
 							SetSpriteTip(SPR_IMG_SMALLMAP, STR_SMALLMAP_CENTER_TOOLTIP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_BLANK),
-							SetSpriteTip(SPR_EMPTY), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_CONTOUR),
-							SetSpriteTip(SPR_IMG_SHOW_COUNTOURS, STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_VEHICLES),
-							SetSpriteTip(SPR_IMG_SHOW_VEHICLES, STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP), SetFill(1, 1),
-					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_INDUSTRIES),
-							SetSpriteTip(SPR_IMG_INDUSTRY, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP), SetFill(1, 1),
 				EndContainer(),
-				/* Bottom button row. */
-				NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+				/* Second button column. */
+				NWidget(NWID_VERTICAL, {NWidContainerFlag::EqualSize, NWidContainerFlag::NoFill}),
 					NWidget(WWT_PUSHIMGBTN, Colours::Brown, WID_SM_ZOOM_OUT),
 							SetSpriteTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT), SetFill(1, 1),
 					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_TOGGLETOWNNAME),
 							SetSpriteTip(SPR_IMG_TOWN, STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF), SetFill(1, 1),
+				EndContainer(),
+			EndContainer(),
+			NWidget(WWT_PANEL, Colours::Brown), SetFill(0, 1), SetResize(0, 1),
+			EndContainer(),
+			/* Smallmap display mode buttons. */
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+				/* First button column. */
+				NWidget(NWID_VERTICAL, {NWidContainerFlag::EqualSize, NWidContainerFlag::NoFill}),
 					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_LINKSTATS),
 							SetSpriteTip(SPR_IMG_CARGOFLOW, STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP), SetFill(1, 1),
 					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_ROUTES),
@@ -2038,9 +2034,25 @@ static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_bar = {
 					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_OWNERS),
 							SetSpriteTip(SPR_IMG_COMPANY_GENERAL, STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP), SetFill(1, 1),
 				EndContainer(),
-				NWidget(NWID_SPACER), SetResize(0, 1),
+				/* Second button column. */
+				NWidget(NWID_VERTICAL, {NWidContainerFlag::EqualSize, NWidContainerFlag::NoFill}),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_BLANK),
+							SetSpriteTip(SPR_EMPTY), SetFill(1, 1),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_CONTOUR),
+							SetSpriteTip(SPR_IMG_SHOW_COUNTOURS, STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP), SetFill(1, 1),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_VEHICLES),
+							SetSpriteTip(SPR_IMG_SHOW_VEHICLES, STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP), SetFill(1, 1),
+					NWidget(WWT_IMGBTN, Colours::Brown, WID_SM_INDUSTRIES),
+							SetSpriteTip(SPR_IMG_INDUSTRY, STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP), SetFill(1, 1),
+				EndContainer(),
 			EndContainer(),
 		EndContainer(),
+	EndContainer(),
+};
+
+/** Widget parts of the smallmap legend bar. */
+static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_bar = {
+	NWidget(WWT_PANEL, Colours::Brown, WID_SM_LEGEND), SetResize(1, 1),
 	EndContainer(),
 };
 
@@ -2065,7 +2077,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_widgets = {
 	/* Bottom button row and resize box. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_SELECTION, Colours::Invalid, WID_SM_SELECT_BUTTONS),
-			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, Colours::Brown, WID_SM_ENABLE_ALL), SetStringTip(STR_SMALLMAP_ENABLE_ALL),
 				NWidget(WWT_PUSHTXTBTN, Colours::Brown, WID_SM_DISABLE_ALL), SetStringTip(STR_SMALLMAP_DISABLE_ALL),
 				NWidget(WWT_TEXTBTN, Colours::Brown, WID_SM_SHOW_HEIGHT), SetStringTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
@@ -2087,7 +2099,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_smallmap_widgets = {
 
 /** Window definition for the smallmap window. */
 static WindowDesc _smallmap_desc(
-	WindowPosition::Automatic, "smallmap", 484, 314,
+	WindowPosition::Automatic, "smallmap", 0, 0,
 	WindowClass::SmallMap, WindowClass::None,
 	{},
 	_nested_smallmap_widgets
