@@ -611,7 +611,7 @@ bool ScriptInstance::IsPaused()
 		case SQSL_STRING: {
 			SlObject(nullptr, _script_byte);
 			std::string buf(_script_sl_byte, '\0');
-			SlCopy(buf.data(), buf.size(), VarTypes::I8);
+			SlCopy<VarFileType::I8>(buf);
 			if (data != nullptr) data->push_back(StrMakeValid(std::move(buf)));
 			return true;
 		}

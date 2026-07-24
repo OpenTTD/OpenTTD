@@ -143,7 +143,7 @@ struct ENGSChunkHandler : ChunkHandler {
 		 * was always 256 entries. */
 		TypedIndexContainer<std::array<StringID, 256>, EngineID> names{};
 
-		SlCopy(names.data(), std::size(names), VarTypes::STRINGID);
+		SlCopy<VarFileType::StringID>(names);
 
 		/* Copy each string into the temporary engine array. */
 		for (EngineID engine = EngineID::Begin(); engine < std::size(names); ++engine) {
