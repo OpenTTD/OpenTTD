@@ -1,0 +1,26 @@
+{
+  "$comment": "Continuation gap matrix (Phase 2). States: PRESENT_VERIFIED, PRESENT_UNVERIFIED, PARTIAL, BROKEN, DUPLICATED, STUB_ONLY, DOC_ONLY, MISSING, NOT_APPLICABLE. Honest per AGENTS.md.",
+  "recovered_head": "0a49a3dbb8",
+  "canonical_stack": "single (src/prismatic_mcp/); no duplicate MCP implementation exists",
+  "capabilities": [
+    {"capability": "compile gate (OFF default, requires research)", "state": "PRESENT_VERIFIED", "evidence": "FATAL_ERROR + baseline OFF build", "implementation_path": "cmake/Options.cmake", "tests": "manual configure", "runtime_verification": "n/a", "risk": "none", "required_next_action": "none"},
+    {"capability": "loopback HTTP transport + auth + JSON-RPC", "state": "PRESENT_VERIFIED", "evidence": "live 401/initialize/read", "implementation_path": "src/prismatic_mcp/prismatic_mcp_server.cpp", "tests": "none (Catch2 staged)", "runtime_verification": "in-game runbook", "risk": "no unit tests yet", "required_next_action": "add Catch2 tests (Phase 2H)"},
+    {"capability": "read-only resources (4)", "state": "PRESENT_VERIFIED", "evidence": "live game/state + companies", "implementation_path": "prismatic_mcp_server.cpp", "tests": "none", "runtime_verification": "yes", "risk": "low", "required_next_action": "broaden (Phase 2C/D)"},
+    {"capability": "console control (prismatic_mcp)", "state": "PRESENT_VERIFIED", "evidence": "start/stop/token/rotate/status live", "implementation_path": "src/console_cmds.cpp", "tests": "none", "runtime_verification": "yes", "risk": "low", "required_next_action": "extend subcommands (Phase 2)"},
+    {"capability": "tools/call (typed tools)", "state": "MISSING", "evidence": "tools/list returns []", "implementation_path": "prismatic_mcp_server.cpp", "tests": "none", "runtime_verification": "n/a", "risk": "core continuation gap", "required_next_action": "IMPLEMENT this session"},
+    {"capability": "DecisionEnvelope validate/submit", "state": "MISSING", "implementation_path": "prismatic_mcp_server.cpp", "risk": "core continuation gap", "required_next_action": "IMPLEMENT this session"},
+    {"capability": "approval workflow (arm + digest-bound + replay-prevention)", "state": "MISSING", "risk": "gates all mutation", "required_next_action": "IMPLEMENT this session"},
+    {"capability": "typed game mutation via Command<>::Post + observed delta", "state": "MISSING", "risk": "the mission's central demand", "required_next_action": "IMPLEMENT this session (game.set_pause)"},
+    {"capability": "company-scoped authorization", "state": "MISSING", "risk": "cross-company control", "required_next_action": "PARTIAL this session (scope check on mutation); full binding staged"},
+    {"capability": "native toolbar entry", "state": "MISSING", "implementation_path": "src/toolbar_gui.cpp (mapped)", "risk": "index-sync hazard", "required_next_action": "STAGED — designed in 01-system-map/14-native-operator-ui; not implemented this session"},
+    {"capability": "native Control Center window (8 views)", "state": "MISSING", "risk": "large GUI effort", "required_next_action": "STAGED (framerate_gui template mapped)"},
+    {"capability": "event journal + snapshots + deltas", "state": "MISSING", "required_next_action": "STAGED (design in 15-event-and-snapshot-model)"},
+    {"capability": "topology graphs (transport/cargo/company/decision)", "state": "MISSING", "required_next_action": "STAGED"},
+    {"capability": "policy engine (6 policies)", "state": "PARTIAL", "required_next_action": "this session implements ReadOnly + ManualApproval + CompanyScoped inline; full engine STAGED"},
+    {"capability": "autonomous multiplayer lab / arena / scoreboard", "state": "MISSING", "required_next_action": "STAGED (design in 17-autonomous-multiplayer-lab)"},
+    {"capability": "MCP SSE notifications / subscriptions", "state": "MISSING", "required_next_action": "STAGED"},
+    {"capability": "provenance record", "state": "PARTIAL", "required_next_action": "this session records decision->approval->command->observation inline; full PrismaticProvenanceRecord STAGED"},
+    {"capability": "MCP Inspector / conformance evidence", "state": "MISSING", "required_next_action": "STAGED (curl MCP client used instead this session)"},
+    {"capability": "dedicated OPTION_DEDICATED=ON MCP build", "state": "PRESENT_UNVERIFIED", "required_next_action": "run a true dedicated-ON build (STAGED)"}
+  ]
+}

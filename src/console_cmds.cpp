@@ -1794,7 +1794,7 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 {
 	if (argv.size() < 2) {
 		IConsolePrint(CC_HELP, "RESEARCH-ONLY/UNSTABLE: control the embedded loopback MCP server.");
-		IConsolePrint(CC_HELP, "Usage: 'prismatic_mcp <status|start [port]|stop|endpoint|token|rotate>'.");
+		IConsolePrint(CC_HELP, "Usage: 'prismatic_mcp <status|start [port]|stop|endpoint|token|rotate|approvals|approve <id>|deny <id>|decisions [n]>'.");
 		return true;
 	}
 
@@ -1836,6 +1836,26 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 	if (sub == "rotate") {
 		PrismaticMCP::RotateToken();
 		IConsolePrint(CC_INFO, "Bearer token rotated (existing sessions invalidated).");
+		return true;
+	}
+	if (sub == "approvals") {
+		IConsolePrint(CC_INFO, "{}", PrismaticMCP::ListApprovals());
+		return true;
+	}
+	if (sub == "approve" || sub == "deny") {
+		if (argv.size() < 3) { IConsolePrint(CC_ERROR, "Usage: prismatic_mcp {} <approval_id>", sub); return true; }
+		auto pid = ParseInteger(argv[2]);
+		if (!pid.has_value()) { IConsolePrint(CC_ERROR, "Invalid approval id."); return true; }
+		std::string msg;
+		bool ok = (sub == "approve") ? PrismaticMCP::ApproveById((uint64_t)*pid, msg)
+		                             : PrismaticMCP::DenyById((uint64_t)*pid, msg);
+		IConsolePrint(ok ? CC_INFO : CC_ERROR, "{}", msg);
+		return true;
+	}
+	if (sub == "decisions") {
+		int n = 20;
+		if (argv.size() >= 3) { auto v = ParseInteger(argv[2]); if (v.has_value()) n = (int)*v; }
+		IConsolePrint(CC_INFO, "{}", PrismaticMCP::DecisionTrace(n));
 		return true;
 	}
 

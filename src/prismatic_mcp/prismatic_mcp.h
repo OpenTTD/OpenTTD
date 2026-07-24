@@ -55,6 +55,16 @@ void RotateToken();
 /** One machine-readable status line for the console (never contains the token). */
 std::string GetStatusLine();
 
+/* --- approval workflow (operator surface for the console) ------------------ */
+/** Human-readable list of pending approvals (id, tool, args). Never a token. */
+std::string ListApprovals();
+/** Approve a pending mutation by id; returns false if not found/expired. */
+bool ApproveById(uint64_t id, std::string &message);
+/** Deny a pending mutation by id. */
+bool DenyById(uint64_t id, std::string &message);
+/** Machine-readable summary of the decision/provenance trace for the console. */
+std::string DecisionTrace(int max_rows);
+
 } // namespace PrismaticMCP
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

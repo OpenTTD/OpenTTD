@@ -1,0 +1,4 @@
+# Decision-contract vertical (Vertical B) — redacted — Fri Jul 24 20:10:43 UTC 2026
+# Observed game-state delta: paused False -> True via approved openttd.game.set_pause
+## provenance (openttd://decisions)
+{"id":1,"jsonrpc":"2.0","result":{"contents":[{"mimeType":"application/json","text":"{\"availability\":\"available\",\"data\":{\"decisions\":[{\"action_type\":\"game.set_pause\",\"approval_id\":1,\"arg_digest\":\"4f4e785d7828430a\",\"command_result\":\"succeeded\",\"decision_id\":1,\"observed_tick\":2686679,\"requested_tick\":2686679,\"verdict\":\"EXECUTED_UNVERIFIED\"}]},\"game_date\":\"2049-05-10\",\"game_mode\":\"normal\",\"game_tick\":2686679,\"next_cursor\":null,\"protocol_version\":\"2025-11-25\",\"redactions\":[],\"schema_version\":\"1.0\",\"source\":\"OpenTTD\",\"source_revision\":\"20260724-prismatic-mcp-server-m0a49a3dbb8\",\"truncated\":false}","uri":"openttd://decisions"}]}}

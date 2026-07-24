@@ -39,6 +39,9 @@
 #include "../timer/timer_game_tick.h"
 #include "../network/core/os_abstraction.h"
 #include "../network/core/address.h"
+#include "../command_func.h"
+#include "../command_type.h"
+#include "../misc_cmd.h"
 
 #include <array>
 #include <charconv>
@@ -214,6 +217,8 @@ json ResourceCompanies()
 	return env;
 }
 
+json ResourceDecisions(); // defined below, in the decision/approval section
+
 /** Static resource catalogue. Deterministic order; each entry is read-only here. */
 struct ResourceEntry {
 	const char *uri;
@@ -221,12 +226,76 @@ struct ResourceEntry {
 	const char *description;
 	json (*build)();
 };
-const std::array<ResourceEntry, 4> RESOURCES = {{
+const std::array<ResourceEntry, 5> RESOURCES = {{
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
 	{"openttd://companies", "Companies", "All companies with basic finances (server-visible)", &ResourceCompanies},
+	{"openttd://decisions", "Decisions", "Provenance trace: decision -> approval -> command -> observed verdict", &ResourceDecisions},
 }};
+
+/* ---- decision / approval / provenance (main thread) ----------------------- *
+ * The mission's core continuation vertical: a typed DecisionEnvelope is validated
+ * (non-mutating), then a mutation tool is *gated* behind a two-phase, digest-bound,
+ * operator approval before it ever touches the game via Command<>::Post. Because
+ * tool handlers run inside Poll() on the main thread, the command executes on the
+ * correct thread through the normal deterministic command path -- never a raw pool
+ * write, never a mutation off the main thread. Approval is one-time (replay of an
+ * approved call requires a fresh approval), and the digest binds the approval to
+ * the exact arguments so post-approval argument changes are rejected. */
+
+enum class ApprovalState : uint8_t { Pending, Approved, Denied, Consumed };
+
+struct PendingApproval {
+	uint64_t id = 0;
+	std::string tool;
+	std::string arg_digest;      ///< FNV-1a of tool + canonical args; binds approval to exact args.
+	std::string args_summary;    ///< Human-readable, shown in the console approval prompt.
+	uint64_t created_tick = 0;
+	uint64_t expiry_tick = 0;
+	ApprovalState state = ApprovalState::Pending;
+};
+
+/** Bounded provenance record: decision -> approval -> command -> observed verdict. */
+struct ProvenanceRecord {
+	uint64_t decision_id = 0;
+	uint64_t approval_id = 0;
+	std::string action_type;
+	std::string arg_digest;
+	std::string command_result;   ///< "succeeded"/"failed"/"not_executed"
+	std::string verdict;          ///< distinguishes EXECUTED from VERIFIED_SUCCESS (observed effect)
+	uint64_t requested_tick = 0;
+	uint64_t observed_tick = 0;
+};
+
+std::vector<PendingApproval> _approvals;
+std::vector<ProvenanceRecord> _provenance;
+uint64_t _next_approval_id = 1;
+uint64_t _next_decision_id = 1;
+constexpr size_t MAX_APPROVALS = 64;
+constexpr size_t MAX_PROVENANCE = 128;
+constexpr uint64_t APPROVAL_TTL_TICKS = 100000; ///< generous; the operator approves interactively
+
+/** FNV-1a 64-bit digest, rendered hex. Deterministic, no secrets. */
+std::string ArgDigest(std::string_view tool, const json &args)
+{
+	std::string canonical = std::string(tool) + "|" + args.dump();
+	uint64_t h = 1469598103934665603ull;
+	for (unsigned char ch : canonical) { h ^= ch; h *= 1099511628211ull; }
+	return fmt::format("{:016x}", h);
+}
+
+PendingApproval *FindApproval(uint64_t id)
+{
+	for (auto &a : _approvals) if (a.id == id) return &a;
+	return nullptr;
+}
+
+/** The typed action catalogue this build actually adapts. Deterministic order. */
+bool IsKnownActionType(std::string_view type)
+{
+	return type == "game.set_pause";
+}
 
 /* ---- JSON-RPC dispatch (main thread) -------------------------------------- */
 
@@ -238,6 +307,173 @@ json RpcError(const json &id, int code, std::string_view message)
 json RpcResult(const json &id, json result)
 {
 	return json{{"jsonrpc", "2.0"}, {"id", id}, {"result", std::move(result)}};
+}
+
+/* ---- decision tools ------------------------------------------------------- */
+
+/** openttd://decisions -- the provenance trace (execution vs verified-outcome). */
+json ResourceDecisions()
+{
+	json env = MakeEnvelope();
+	json arr = json::array();
+	for (const auto &p : _provenance) {
+		arr.push_back({
+			{"decision_id", p.decision_id}, {"approval_id", p.approval_id},
+			{"action_type", p.action_type}, {"arg_digest", p.arg_digest},
+			{"command_result", p.command_result}, {"verdict", p.verdict},
+			{"requested_tick", p.requested_tick}, {"observed_tick", p.observed_tick},
+		});
+	}
+	env["data"] = json{{"decisions", std::move(arr)}};
+	return env;
+}
+
+/** Non-mutating validation of a typed action + args (mission §10/§11). */
+json ValidateAction(std::string_view type, const json &args, json &errors)
+{
+	json result;
+	bool valid = true;
+	if (!IsKnownActionType(type)) { errors.push_back("unknown action type"); valid = false; }
+	if (type == "game.set_pause") {
+		if (!args.contains("pause") || !args["pause"].is_boolean()) {
+			errors.push_back("game.set_pause requires boolean 'pause'");
+			valid = false;
+		}
+	}
+	result["valid"] = valid;
+	result["errors"] = errors;
+	result["current_snapshot_id"] = fmt::format("tick-{}", (uint64_t)TimerGameTick::counter);
+	result["required_scope"] = (type == "game.set_pause") ? "SERVER_ADMIN" : "GAME_MUTATION";
+	result["approval_required"] = true;   // no mutation is ever auto-approved in this build
+	result["mutating"] = true;
+	return result;
+}
+
+/** Execute an approved, digest-bound action via the normal command path. Main thread. */
+json ExecuteAction(std::string_view type, const json &args, std::string &command_result, std::string &verdict)
+{
+	json observed;
+	if (type == "game.set_pause") {
+		bool want = args["pause"].get<bool>();
+		/* SERVER_ADMIN synchronized command -- the deterministic path, not a raw write. */
+		bool ok = Command<Commands::Pause>::Post(PauseMode::Normal, want);
+		command_result = ok ? "succeeded" : "failed";
+		bool now_paused = _pause_mode.Any();      // observed post-command state
+		observed["paused"] = now_paused;
+		/* Verdict distinguishes EXECUTED from VERIFIED_SUCCESS: only claim success
+		 * if the observed effect matches the intent. */
+		verdict = (ok && now_paused == want) ? "VERIFIED_SUCCESS" : (ok ? "EXECUTED_UNVERIFIED" : "VERIFIED_FAILURE");
+	} else {
+		command_result = "not_executed";
+		verdict = "INVALID";
+	}
+	return observed;
+}
+
+/** tools/call for the typed decision + mutation tools. */
+json HandleToolsCall(const json &id, const json &params)
+{
+	if (!params.contains("name") || !params["name"].is_string()) {
+		return RpcError(id, -32602, "Invalid params: missing tool name");
+	}
+	std::string name = params["name"].get<std::string>();
+	json args = params.contains("arguments") ? params["arguments"] : json::object();
+
+	/* Non-mutating validation tool. */
+	if (name == "openttd.decision.validate") {
+		std::string type = args.value("action_type", args.contains("action") ? args["action"].value("type", "") : "");
+		json aargs = args.contains("action") ? args["action"].value("arguments", json::object()) : args.value("arguments", json::object());
+		json errs = json::array();
+		json v = ValidateAction(type, aargs, errs);
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", v.dump()}}})}, {"isError", false}});
+	}
+
+	if (name == "openttd.decision.list_action_types") {
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", json{{"action_types", json::array({"game.set_pause"})}}.dump()}}})}});
+	}
+
+	/* The gated mutation tool. Two-phase: pending_approval -> (operator approves) -> executed. */
+	if (name == "openttd.game.set_pause" || name == "openttd.decision.submit") {
+		std::string type = "game.set_pause";
+		json aargs = args;
+		if (name == "openttd.decision.submit") {
+			type = args.value("action", json::object()).value("type", "");
+			aargs = args.value("action", json::object()).value("arguments", json::object());
+		}
+		json errs = json::array();
+		json v = ValidateAction(type, aargs, errs);
+		if (!v["valid"].get<bool>()) {
+			return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", v.dump()}}})}, {"isError", true}});
+		}
+
+		std::string digest = ArgDigest(type, aargs);
+		uint64_t now = (uint64_t)TimerGameTick::counter;
+
+		/* Is there an APPROVED, non-expired, non-consumed approval bound to this exact digest? */
+		for (auto &a : _approvals) {
+			if (a.state == ApprovalState::Approved && a.arg_digest == digest && now <= a.expiry_tick) {
+				std::string cmd_result, verdict;
+				json observed = ExecuteAction(type, aargs, cmd_result, verdict);
+				a.state = ApprovalState::Consumed;   // one-time: replay needs a fresh approval
+				ProvenanceRecord pr;
+				pr.decision_id = _next_decision_id++;
+				pr.approval_id = a.id;
+				pr.action_type = type;
+				pr.arg_digest = digest;
+				pr.command_result = cmd_result;
+				pr.verdict = verdict;
+				pr.requested_tick = now;
+				pr.observed_tick = (uint64_t)TimerGameTick::counter;
+				if (_provenance.size() >= MAX_PROVENANCE) _provenance.erase(_provenance.begin());
+				_provenance.push_back(pr);
+				json out = {{"status", "executed"}, {"approval_id", a.id}, {"decision_id", pr.decision_id},
+					{"command_result", cmd_result}, {"verdict", verdict}, {"observed", observed}};
+				return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}, {"isError", cmd_result != "succeeded"}});
+			}
+		}
+
+		/* Otherwise: reuse an existing pending approval for this digest, or create one. */
+		for (auto &a : _approvals) {
+			if (a.state == ApprovalState::Pending && a.arg_digest == digest && now <= a.expiry_tick) {
+				json out = {{"status", "pending_approval"}, {"approval_id", a.id}, {"argument_digest", digest},
+					{"message", "Approval required in OpenTTD: prismatic_mcp approve " + fmt::format("{}", a.id)}};
+				return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}});
+			}
+		}
+		if (_approvals.size() >= MAX_APPROVALS) _approvals.erase(_approvals.begin());
+		PendingApproval pa;
+		pa.id = _next_approval_id++;
+		pa.tool = type;
+		pa.arg_digest = digest;
+		pa.args_summary = aargs.dump();
+		pa.created_tick = now;
+		pa.expiry_tick = now + APPROVAL_TTL_TICKS;
+		pa.state = ApprovalState::Pending;
+		_approvals.push_back(pa);
+		Debug(net, 1, "[prismatic-mcp] pending approval #{} for {} args={} (approve in console: prismatic_mcp approve {})",
+			pa.id, type, pa.args_summary, pa.id);
+		json out = {{"status", "pending_approval"}, {"approval_id", pa.id}, {"argument_digest", digest},
+			{"expires_at_tick", pa.expiry_tick},
+			{"message", "Approval required in OpenTTD: prismatic_mcp approve " + fmt::format("{}", pa.id)}};
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}});
+	}
+
+	return RpcError(id, -32602, "Unknown tool");
+}
+
+/** Static tool catalogue for tools/list. */
+json ToolsList()
+{
+	json arr = json::array();
+	arr.push_back({{"name", "openttd.decision.validate"}, {"description", "Validate a typed action/DecisionEnvelope without mutating game state"},
+		{"inputSchema", {{"type", "object"}}}});
+	arr.push_back({{"name", "openttd.decision.list_action_types"}, {"description", "List typed action types this build can execute"},
+		{"inputSchema", {{"type", "object"}}}});
+	arr.push_back({{"name", "openttd.decision.submit"}, {"description", "Submit a DecisionEnvelope; returns a pending approval until an operator approves, then executes via the normal command path"},
+		{"inputSchema", {{"type", "object"}, {"required", json::array({"action"})}}}});
+	arr.push_back({{"name", "openttd.game.set_pause"}, {"description", "Approval-gated: pause/unpause via Commands::Pause. Requires operator approval (two-phase, digest-bound)"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"pause", {{"type", "boolean"}}}}}, {"required", json::array({"pause"})}}}});
+	return json{{"tools", arr}};
 }
 
 /** Dispatch a single JSON-RPC request object. Returns std::nullopt for notifications. */
@@ -286,7 +522,11 @@ std::optional<json> DispatchOne(const json &req)
 		}
 		return RpcError(id, -32602, "Unknown resource uri");
 	}
-	if (method == "tools/list") return RpcResult(id, json{{"tools", json::array()}});
+	if (method == "tools/list") return RpcResult(id, ToolsList());
+	if (method == "tools/call") {
+		if (!req.contains("params")) return RpcError(id, -32602, "Invalid params");
+		return HandleToolsCall(id, req["params"]);
+	}
 	if (method == "prompts/list") return RpcResult(id, json{{"prompts", json::array()}});
 
 	return is_notification ? std::nullopt : std::optional<json>(RpcError(id, -32601, "Method not found"));
@@ -602,6 +842,59 @@ void RotateToken()
 	_mcp.token_valid = true;
 	/* No session table yet; rotation simply invalidates the old bearer value. */
 	Debug(net, 1, "[prismatic-mcp] bearer token rotated");
+}
+
+std::string ListApprovals()
+{
+	if (_approvals.empty()) return "no approvals";
+	uint64_t now = (uint64_t)TimerGameTick::counter;
+	std::string s;
+	for (const auto &a : _approvals) {
+		const char *st = a.state == ApprovalState::Pending ? "PENDING" :
+			a.state == ApprovalState::Approved ? "APPROVED" :
+			a.state == ApprovalState::Denied ? "DENIED" : "CONSUMED";
+		bool expired = now > a.expiry_tick && a.state == ApprovalState::Pending;
+		s += fmt::format("#{} {} {}{} tool={} args={}\n", a.id, st, expired ? "(EXPIRED) " : "",
+			"", a.tool, a.args_summary);
+	}
+	return s;
+}
+
+bool ApproveById(uint64_t id, std::string &message)
+{
+	PendingApproval *a = FindApproval(id);
+	if (a == nullptr) { message = fmt::format("no approval #{}", id); return false; }
+	uint64_t now = (uint64_t)TimerGameTick::counter;
+	if (a->state != ApprovalState::Pending) { message = fmt::format("approval #{} is not pending", id); return false; }
+	if (now > a->expiry_tick) { message = fmt::format("approval #{} expired", id); return false; }
+	a->state = ApprovalState::Approved;
+	message = fmt::format("approved #{} ({}) -- resubmit the tool call to execute", id, a->tool);
+	Debug(net, 1, "[prismatic-mcp] operator approved #{} ({})", id, a->tool);
+	return true;
+}
+
+bool DenyById(uint64_t id, std::string &message)
+{
+	PendingApproval *a = FindApproval(id);
+	if (a == nullptr) { message = fmt::format("no approval #{}", id); return false; }
+	a->state = ApprovalState::Denied;
+	message = fmt::format("denied #{}", id);
+	return true;
+}
+
+std::string DecisionTrace(int max_rows)
+{
+	if (_provenance.empty()) return "no decisions executed";
+	std::string s;
+	int start = (int)_provenance.size() - max_rows;
+	if (start < 0) start = 0;
+	for (size_t i = (size_t)start; i < _provenance.size(); i++) {
+		const auto &p = _provenance[i];
+		s += fmt::format("decision #{} approval #{} {} result={} verdict={} req_tick={} obs_tick={}\n",
+			p.decision_id, p.approval_id, p.action_type, p.command_result, p.verdict,
+			p.requested_tick, p.observed_tick);
+	}
+	return s;
 }
 
 std::string GetStatusLine()
