@@ -1261,6 +1261,7 @@ static void SlCopyInternal(void *object, size_t length, VarType conv)
  */
 void SlCopy(void *object, size_t length, VarType conv)
 {
+	assert(object != nullptr); // Use SlSkipBytes instead
 	if (_sl.action == SaveLoadAction::Ptrs || _sl.action == SaveLoadAction::Null) return;
 
 	/* Automatically calculate the length? */

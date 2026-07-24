@@ -23,10 +23,9 @@ struct PRICChunkHandler : ChunkHandler {
 
 	void Load() const override
 	{
-		/* Old games store 49 base prices, very old games store them as int32_t */
-		VarFileType vt = IsSavegameVersionBefore(SaveLoadVersion::UnifyCurrency) ? VarFileType::I32 : VarFileType::I64;
-		SlCopy(nullptr, 49, vt | VarMemType::Null);
-		SlCopy(nullptr, 49, VarFileType::U16 | VarMemType::Null);
+		size_t num_prices = 49;
+		size_t record_size = (IsSavegameVersionBefore(SaveLoadVersion::UnifyCurrency) ? sizeof(uint32_t) : sizeof(uint64_t)) + sizeof(uint16_t);
+		SlSkipBytes(num_prices * record_size);
 	}
 };
 
@@ -36,10 +35,9 @@ struct CAPRChunkHandler : ChunkHandler {
 
 	void Load() const override
 	{
-		uint num_cargo = IsSavegameVersionBefore(SaveLoadVersion::NewGRFCargo) ? 12 : IsSavegameVersionBefore(SaveLoadVersion::ExtendCargotypes) ? 32 : NUM_CARGO;
-		VarFileType vt = IsSavegameVersionBefore(SaveLoadVersion::UnifyCurrency) ? VarFileType::I32 : VarFileType::I64;
-		SlCopy(nullptr, num_cargo, vt | VarMemType::Null);
-		SlCopy(nullptr, num_cargo, VarFileType::U16 | VarMemType::Null);
+		size_t num_cargo = IsSavegameVersionBefore(SaveLoadVersion::NewGRFCargo) ? 12 : IsSavegameVersionBefore(SaveLoadVersion::ExtendCargotypes) ? 32 : NUM_CARGO;
+		size_t record_size = sizeof(uint16_t) + (IsSavegameVersionBefore(SaveLoadVersion::UnifyCurrency) ? sizeof(uint32_t) : sizeof(uint64_t));
+		SlSkipBytes(num_cargo * record_size);
 	}
 };
 
