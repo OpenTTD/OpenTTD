@@ -6,3 +6,7 @@ docs/gamedocs/*
 docs/source/*
 /out
 /vcpkg_installed
+
+# Zola-generated GitHub Pages site output (source lives in /zola, built by
+# .github/workflows/gh-pages.yml -- never commit the generated site).
+/zola/public

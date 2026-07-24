@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+
+{% block content %}
+<article>
+  {{ section.content | safe }}
+</article>
+{% endblock content %}

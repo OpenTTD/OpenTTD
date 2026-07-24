@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <a class="brand" href="{{ get_url(path="/") }}">korczis/OpenTTD</a>
+      <a href="https://github.com/korczis/OpenTTD">GitHub</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock content %}
+  </main>
+  <footer class="site-footer">
+    <p>Private research fork of OpenTTD — not affiliated with the official OpenTTD project. See the repository's <code>README.md</code> for context.</p>
+  </footer>
+</body>
+</html>
