@@ -318,7 +318,7 @@ static void ShutdownGame()
  * Load the introduction game.
  * @param load_newgrfs Whether to load the NewGRFs or not.
  */
-static void LoadIntroGame(bool load_newgrfs = true)
+void LoadIntroGame(bool load_newgrfs)
 {
 	_game_mode = GameMode::Menu;
 
@@ -328,12 +328,23 @@ static void LoadIntroGame(bool load_newgrfs = true)
 	ResetWindowSystem();
 	SetupColoursAndInitialWindow();
 
+	constexpr EnumIndexArray<std::string_view, LandscapeType, LandscapeType::End> dat_file = {
+		"temperate_title.dat",
+		"arctic_title.dat",
+		"tropic_title.dat",
+		"toyland_title.dat",
+	};
+
 	/* Load the default opening screen savegame */
-	if (SaveOrLoad("opntitle.dat", SaveLoadOperation::Load, DetailedFileType::GameFile, Subdirectory::Baseset) != SaveLoadResult::Ok) {
+	SetClimateIndependentTitleGame(false);
+	if (SaveOrLoad("opntitle.dat", SaveLoadOperation::Load, DetailedFileType::GameFile, Subdirectory::Baseset) == SaveLoadResult::Ok) {
+		SetLocalCompany(CompanyID::Begin());
+		SetClimateIndependentTitleGame(true);
+	} else if (SaveOrLoad(dat_file[_settings_newgame.game_creation.landscape], SaveLoadOperation::Load, DetailedFileType::GameFile, Subdirectory::Baseset) == SaveLoadResult::Ok) {
+		SetLocalCompany(CompanyID::Begin());
+	} else {
 		GenerateWorld(GWM_EMPTY, 64, 64); // if failed loading, make empty world.
 		SetLocalCompany(COMPANY_SPECTATOR);
-	} else {
-		SetLocalCompany(CompanyID::Begin());
 	}
 
 	FixTitleGameZoom();

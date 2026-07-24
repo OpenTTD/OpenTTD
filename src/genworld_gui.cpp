@@ -33,6 +33,7 @@
 #include "ai/ai_gui.hpp"
 #include "game/game_gui.hpp"
 #include "industry.h"
+#include "gui.h"
 #include "core/string_consumer.hpp"
 
 #include "widgets/genworld_widget.h"
@@ -401,6 +402,8 @@ static const StringID _average_height[] = {STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUT
 static_assert(std::size(_num_inds) == to_underlying(IndustryDensity::End));
 
 struct GenerateLandscapeWindow : public Window {
+	static bool climate_independent_title_game; ///< Whether the loaded title game does not depend on climate.
+
 	WidgetID widget_id{};
 	uint x = 0;
 	uint y = 0;
@@ -546,6 +549,7 @@ struct GenerateLandscapeWindow : public Window {
 			case LandscapeType::Arctic:    climate_plane = 0; break;
 			case LandscapeType::Tropic:    climate_plane = 1; break;
 			case LandscapeType::Toyland:   climate_plane = 2; break;
+			default: NOT_REACHED();
 		}
 		this->GetWidget<NWidgetStacked>(WID_GL_CLIMATE_SEL_LABEL)->SetDisplayedPlane(climate_plane);
 		this->GetWidget<NWidgetStacked>(WID_GL_CLIMATE_SEL_SELECTOR)->SetDisplayedPlane(climate_plane);
@@ -662,10 +666,24 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_TEMPERATE:
 			case WID_GL_ARCTIC:
 			case WID_GL_TROPICAL:
-			case WID_GL_TOYLAND:
+			case WID_GL_TOYLAND: {
+				if (_settings_newgame.game_creation.landscape == LandscapeType(widget - WID_GL_TEMPERATE)) break;
 				SetNewLandscapeType(LandscapeType(widget - WID_GL_TEMPERATE));
 				SndClickBeep();
+				if (climate_independent_title_game) break;
+
+				/* Store curent window position. */
+				int left = this->left;
+				int top = this->top;
+
+				LoadIntroGame(); // Closes all windows.
+
+				/* Reopen the generate landscape window and move it to old position. */
+				Window *w = ShowGenerateLandscape();
+				w->left = left;
+				w->top = top;
 				break;
+			}
 
 			case WID_GL_MAPSIZE_X_PULLDOWN: // Mapsize X
 				ShowDropDownList(this, BuildMapsizeDropDown(), _settings_newgame.game_creation.map_x, WID_GL_MAPSIZE_X_PULLDOWN);
@@ -1015,6 +1033,7 @@ struct GenerateLandscapeWindow : public Window {
 		this->InvalidateData();
 	}
 };
+bool GenerateLandscapeWindow::climate_independent_title_game;
 
 /** Window definition for the landscape generation window. */
 static WindowDesc _generate_landscape_desc(
@@ -1032,7 +1051,21 @@ static WindowDesc _heightmap_load_desc(
 	_nested_heightmap_load_widgets
 );
 
-static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
+/**
+ * Set whether each climate has its own title game.
+ * @param is_independent Whether the loaded title game does not depend on climate.
+ */
+void SetClimateIndependentTitleGame(bool is_independent)
+{
+	GenerateLandscapeWindow::climate_independent_title_game = is_independent;
+}
+
+/**
+ * Create and show a new GenerateLandscapeWindow.
+ * @param mode For what mode the window is being created.
+ * @return The new window.
+ */
+static Window *_ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 {
 	uint x = 0;
 	uint y = 0;
@@ -1044,7 +1077,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 
 	if (mode == GLWM_HEIGHTMAP) {
 		/* If the function returns negative, it means there was a problem loading the heightmap */
-		if (!GetHeightmapDimensions(_file_to_saveload.ftype.detailed, _file_to_saveload.name, &x, &y)) return;
+		if (!GetHeightmapDimensions(_file_to_saveload.ftype.detailed, _file_to_saveload.name, &x, &y)) return nullptr;
 	}
 
 	WindowDesc &desc = (mode == GLWM_HEIGHTMAP) ? _heightmap_load_desc : _generate_landscape_desc;
@@ -1057,12 +1090,16 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 	}
 
 	SetWindowDirty(WindowClass::GenerateLandscape, mode);
+	return w;
 }
 
-/** Start with a normal game. */
-void ShowGenerateLandscape()
+/**
+ * Start with a normal game.
+ * @return The new game creation window.
+ */
+Window *ShowGenerateLandscape()
 {
-	_ShowGenerateLandscape(GLWM_GENERATE);
+	return _ShowGenerateLandscape(GLWM_GENERATE);
 }
 
 /** Start with loading a heightmap. */

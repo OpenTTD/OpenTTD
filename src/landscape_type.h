@@ -18,6 +18,7 @@ enum class LandscapeType : uint8_t {
 	Arctic = 1, ///< Landscape with snow levels.
 	Tropic = 2, ///< Landscape with distinct rainforests and deserts,
 	Toyland = 3, ///< Landscape with funky industries and vehicles.
+	End, ///< End marker.
 };
 
 /** Bitset of \c LandscapeType elements. */

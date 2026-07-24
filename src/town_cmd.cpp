@@ -2808,6 +2808,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile, TownExpandModes modes)
 		case LandscapeType::Arctic: zones.Set(maxz > HighestSnowLine() ? HouseZone::ClimateSubarcticAboveSnow : HouseZone::ClimateSubarcticBelowSnow); break;
 		case LandscapeType::Tropic: zones.Set(HouseZone::ClimateSubtropic); break;
 		case LandscapeType::Toyland: zones.Set(HouseZone::ClimateToyland); break;
+		default: NOT_REACHED();
 	}
 
 	/* bits 0-4 are used
