@@ -23,6 +23,7 @@
 #include "../core/math_func.hpp"
 #include "../framerate_type.h"
 #include "../progress.h"
+#include "../settings_type.h"
 #include "../thread.h"
 #include "../window_func.h"
 #include "allegro_v.h"
@@ -406,7 +407,12 @@ bool VideoDriver_Allegro::PollEvent()
 	} else if (keypressed()) {
 		char32_t character;
 		uint keycode = ConvertAllegroKeyIntoMy(&character);
-		HandleKeypress(keycode, character);
+		/* Suppress WASD keys when WASD scrolling is active, but allow Alt+WASD through. */
+		uint key_only = keycode & ~WKC_SPECIAL_KEYS;
+		bool is_wasd = key_only == 'W' || key_only == 'A' || key_only == 'S' || key_only == 'D';
+		if (!(is_wasd && _settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus() && !(key_shifts & KB_ALT_FLAG))) {
+			HandleKeypress(keycode, character);
+		}
 	}
 
 	return false;
@@ -472,6 +478,12 @@ void VideoDriver_Allegro::InputLoop()
 	_dirkeys.Set(DirectionKey::Up, key[KEY_UP]);
 	_dirkeys.Set(DirectionKey::Right, key[KEY_RIGHT]);
 	_dirkeys.Set(DirectionKey::Down, key[KEY_DOWN]);
+	if (_settings_client.gui.wasd_scrolling && !EditBoxInGlobalFocus()) {
+		if (key[KEY_A]) _dirkeys.Set(DirectionKey::Left);
+		if (key[KEY_W]) _dirkeys.Set(DirectionKey::Up);
+		if (key[KEY_D]) _dirkeys.Set(DirectionKey::Right);
+		if (key[KEY_S]) _dirkeys.Set(DirectionKey::Down);
+	}
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }
