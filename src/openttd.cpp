@@ -75,6 +75,10 @@
 #include "core/string_consumer.hpp"
 #include "window_func.h"
 
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+#include "prismatic_mcp/prismatic_mcp.h"
+#endif
+
 #include "linkgraph/linkgraphschedule.h"
 
 #include <system_error>
@@ -283,6 +287,10 @@ static void ParseResolution(Dimension &res, std::string_view s)
 static void ShutdownGame()
 {
 	IConsoleFree();
+
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	PrismaticMCP::Shutdown(); // RESEARCH-ONLY: stop MCP listener, clear token
+#endif
 
 	if (_network_available) NetworkShutDown(); // Shut down the network and close any open connections
 
@@ -752,6 +760,10 @@ int openttd_main(std::span<std::string_view> arguments)
 
 	SocialIntegration::Initialize();
 	NetworkStartUp(); // initialize network-core
+
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	PrismaticMCP::Init(); // RESEARCH-ONLY: embedded MCP server (listener started only on explicit request)
+#endif
 
 	if (!HandleBootstrap()) {
 		ShutdownGame();
@@ -1358,6 +1370,10 @@ void GameLoop()
 
 	/* Check for UDP stuff */
 	if (_network_available) NetworkBackgroundLoop();
+
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	PrismaticMCP::Poll(); // RESEARCH-ONLY: service the loopback MCP listener on the main thread
+#endif
 
 	DebugSendRemoteMessages();
 

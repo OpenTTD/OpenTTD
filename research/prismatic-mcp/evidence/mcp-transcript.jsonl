@@ -1,0 +1,7 @@
+# MCP in-game vertical transcript (redacted) — Fri Jul 24 19:01:07 UTC 2026
+# server: OpenTTD 20260724-prismatic-mcp-server-m0822f6b762
+
+## initialize
+{"error":"missing or invalid bearer token"}
+## resources/read openttd://meta/build
+{"error":"missing or invalid bearer token"}

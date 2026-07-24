@@ -63,6 +63,7 @@ function(set_options)
     option(OPTION_ALLOW_INVALID_SIGNATURE "Allow loading of content with invalid signatures" OFF)
     option(OPTION_LINE_IN_DOXYGEN_WARNINGS "Print line number in doxygen warnings" ON)
     option(OPTION_RESEARCH_INSTRUMENTATION "Enable research-only diagnostic instrumentation (private research fork; default off, no effect on default/release builds when off -- see AGENTS.md)" OFF)
+    option(OPTION_PRISMATIC_MCP_SERVER "Embed a RESEARCH-ONLY loopback MCP server (requires OPTION_RESEARCH_INSTRUMENTATION; default off -- see research/prismatic-mcp/)" OFF)
 
     if (OPTION_DOCS_ONLY)
         set(OPTION_TOOLS_ONLY ON PARENT_SCOPE)
@@ -101,6 +102,7 @@ function(show_options)
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
     message(STATUS "Option Use NSIS - ${OPTION_USE_NSIS}")
     message(STATUS "Option Research Instrumentation - ${OPTION_RESEARCH_INSTRUMENTATION}")
+    message(STATUS "Option Prismatic MCP Server - ${OPTION_PRISMATIC_MCP_SERVER}")
 
     if(OPTION_SURVEY_KEY)
         message(STATUS "Option Survey Key - USED")
@@ -135,6 +137,16 @@ function(add_definitions_based_on_options)
 
     if(OPTION_RESEARCH_INSTRUMENTATION)
         add_definitions(-DOTTD_RESEARCH_INSTRUMENTATION)
+    endif()
+
+    # RESEARCH-ONLY: the embedded MCP server is a research instrument, so it may
+    # only be built as part of a research-instrumented build. Fail the configure
+    # loudly rather than silently enabling research mode (mission gate 10).
+    if(OPTION_PRISMATIC_MCP_SERVER)
+        if(NOT OPTION_RESEARCH_INSTRUMENTATION)
+            message(FATAL_ERROR "OPTION_PRISMATIC_MCP_SERVER requires OPTION_RESEARCH_INSTRUMENTATION=ON (research-only feature; see research/prismatic-mcp/).")
+        endif()
+        add_definitions(-DOTTD_PRISMATIC_MCP_SERVER)
     endif()
 
     if(OPTION_ALLOW_INVALID_SIGNATURE)

@@ -51,6 +51,9 @@
 #include "company_base.h"
 #include "timer/timer_game_tick.h"
 #endif
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+#include "prismatic_mcp/prismatic_mcp.h"
+#endif
 
 #if defined(WITH_ZLIB)
 #include "network/network_content.h"
@@ -1779,6 +1782,68 @@ static bool ConResearchStatus(std::span<std::string_view> argv)
 }
 #endif /* OTTD_RESEARCH_INSTRUMENTATION */
 
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+/**
+ * RESEARCH-ONLY / UNSTABLE: control and inspect the embedded loopback MCP server.
+ * The server is off by default and binds 127.0.0.1/::1 only; the bearer token is
+ * shown here for the local operator and is never written to openttd.cfg or normal
+ * logs. Only compiled in when OPTION_PRISMATIC_MCP_SERVER=ON. See
+ * research/prismatic-mcp/. @copydoc IConsoleCmdProc
+ */
+static bool ConPrismaticMcp(std::span<std::string_view> argv)
+{
+	if (argv.size() < 2) {
+		IConsolePrint(CC_HELP, "RESEARCH-ONLY/UNSTABLE: control the embedded loopback MCP server.");
+		IConsolePrint(CC_HELP, "Usage: 'prismatic_mcp <status|start [port]|stop|endpoint|token|rotate>'.");
+		return true;
+	}
+
+	std::string_view sub = argv[1];
+	if (sub == "status") {
+		IConsolePrint(CC_INFO, "{}", PrismaticMCP::GetStatusLine());
+		return true;
+	}
+	if (sub == "start") {
+		uint16_t port = 0;
+		if (argv.size() >= 3) {
+			auto v = ParseInteger(argv[2]);
+			if (v.has_value()) port = (uint16_t)*v;
+		}
+		std::string error;
+		if (PrismaticMCP::Start(port, error)) {
+			IConsolePrint(CC_INFO, "MCP server started: {}", PrismaticMCP::GetEndpoint());
+			IConsolePrint(CC_WARNING, "Bearer token (local operator only, not logged): {}", PrismaticMCP::GetToken());
+		} else {
+			IConsolePrint(CC_ERROR, "MCP server failed to start: {}", error);
+		}
+		return true;
+	}
+	if (sub == "stop") {
+		PrismaticMCP::Stop();
+		IConsolePrint(CC_INFO, "MCP server stopped.");
+		return true;
+	}
+	if (sub == "endpoint") {
+		std::string ep = PrismaticMCP::GetEndpoint();
+		IConsolePrint(CC_INFO, "{}", ep.empty() ? "(server not running)" : ep);
+		return true;
+	}
+	if (sub == "token") {
+		std::string t = PrismaticMCP::GetToken();
+		IConsolePrint(CC_WARNING, "{}", t.empty() ? "(server not running)" : t);
+		return true;
+	}
+	if (sub == "rotate") {
+		PrismaticMCP::RotateToken();
+		IConsolePrint(CC_INFO, "Bearer token rotated (existing sessions invalidated).");
+		return true;
+	}
+
+	IConsolePrint(CC_ERROR, "Unknown subcommand '{}'. Try 'prismatic_mcp' for usage.", sub);
+	return true;
+}
+#endif /* OTTD_PRISMATIC_MCP_SERVER */
+
 /** Create an alias for a command. @copydoc IConsoleCmdProc */
 static bool ConAlias(std::span<std::string_view> argv)
 {
@@ -3013,6 +3078,9 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("getsysdate",              ConGetSysDate);
 #ifdef OTTD_RESEARCH_INSTRUMENTATION
 	IConsole::CmdRegister("research_status",         ConResearchStatus);
+#endif
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	IConsole::CmdRegister("prismatic_mcp",           ConPrismaticMcp);
 #endif
 	IConsole::CmdRegister("quit",                    ConExit);
 	IConsole::CmdRegister("resetengines",            ConResetEngines,     ConHookNoNetwork);
