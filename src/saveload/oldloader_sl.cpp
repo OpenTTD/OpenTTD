@@ -1584,7 +1584,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState &ls, int)
 
 				ClearGRFConfigList(_grfconfig);
 				while (len != 0) {
-					GrfID grfid = UnflattenNewGRFLabel<GrfID>(ReadUint32(ls));
+					GrfID grfid = UnflattenNewGRFLabel<GrfID>(std::byteswap(ReadUint32(ls)));
 
 					if (ReadByte(ls) == 1) {
 						auto c = std::make_unique<GRFConfig>("TTDP game, no information");
