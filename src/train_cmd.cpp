@@ -43,6 +43,8 @@
 
 #include "safeguards.h"
 
+extern void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);
+
 static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck);
 static bool TrainCheckIfLineEnds(Train *v, bool reverse = true);
 bool TrainController(Train *v, Vehicle *nomove, bool reverse = true); // Also used in vehicle_sl.cpp.
@@ -2113,6 +2115,86 @@ static void ReverseTrainDirection(Train *consist)
 }
 
 /**
+ * Flip an articulated vehicle around within its consist.
+ * @param v %Train to flip.
+ * @return Front of the train after the flip operation
+ */
+static Train *ReverseArticulatedTrainDirection(Train *v)
+{
+	Train *const start = v->GetFirstEnginePart();
+	Train *const end = v->GetLastEnginePart();
+
+	if (start == end || start == nullptr) {
+		return v->First();
+	}
+
+	assert(end);
+
+	Train *after_end = end->Next();
+	Train *before_start = start->Previous();
+
+	if (before_start) {
+		before_start->SetNext(nullptr);
+	}
+
+	TrainList segment;
+	Train *current = start;
+	while (current != after_end && current != nullptr) {
+		segment.push_back(current);
+
+		/* invert the flip flag because this is the only place we look at every single vehicle */
+		current->flags.Flip(VehicleRailFlag::Flipped);
+		current->InvalidateNewGRFCache();
+
+		/* break up the segment here because when we go to stitch it back together later we don't want to make a looped train */
+		Train *next = current->Next();
+		current->SetNext(nullptr);
+		current = next;
+	}
+
+	/* turn every part around */
+	for (size_t i = segment.size() - 1; i > 0; --i) {
+		segment[i]->SetNext(segment[i - 1]);
+	}
+
+	/* swap crucial flags between the front and rear vehicles */
+	std::swap(start->type, end->type);
+	std::swap(start->flags, end->flags);
+	std::swap(start->vehstatus, end->vehstatus);
+	std::swap(start->vehicle_flags, end->vehicle_flags);
+	std::swap(start->gv_flags, end->gv_flags);
+	std::swap(start->subtype, end->subtype);
+	std::swap(start->unitnumber, end->unitnumber);
+
+	std::swap(start->vcache, end->vcache);
+	std::swap(start->gcache, end->gcache);
+
+	std::swap(start->age, end->age);
+	std::swap(start->max_age, end->max_age);
+	std::swap(start->reliability, end->reliability);
+	std::swap(start->reliability_spd_dec, end->reliability_spd_dec);
+
+	/* stitch our newly reversed section back into the train */
+	if (before_start != nullptr) {
+		before_start->SetNext(end);
+	}
+	segment.front()->SetNext(after_end);
+
+	/* Update caches */
+	Train *new_first = end;
+	while (new_first->Previous() != nullptr) new_first = new_first->Previous();
+
+	Train *new_end = start;
+	while (new_end->Next() != nullptr) new_end = new_end->Next();
+
+	for (Train *it = new_first; it != nullptr; it = it->Next()) {
+		it->SetNext(it->Next());
+	}
+
+	return new_first;
+}
+
+/**
  * Reverse train.
  * @param flags type of operation
  * @param veh_id train to reverse
@@ -2130,7 +2212,7 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 	if (reverse_single_veh) {
 		/* turn a single unit around */
 
-		if (v->IsMultiheaded() || EngInfo(v->engine_type)->callback_mask.Test(VehicleCallbackMask::ArticEngine)) {
+		if (v->IsMultiheaded()) {
 			return CommandCost(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS);
 		}
 
@@ -2141,13 +2223,32 @@ CommandCost CmdReverseTrainDirection(DoCommandFlags flags, VehicleID veh_id, boo
 		}
 
 		if (flags.Test(DoCommandFlag::Execute)) {
-			v->flags.Flip(VehicleRailFlag::Flipped);
+			if (EngInfo(v->engine_type)->callback_mask.Test(VehicleCallbackMask::ArticEngine)) {
+				Train *old_front = front;
+				front = ReverseArticulatedTrainDirection(v);
 
-			front->ConsistChanged(CCF_ARRANGE);
-			SetWindowDirty(WindowClass::VehicleDepot, front->tile);
-			SetWindowDirty(WindowClass::VehicleDetails, front->index);
-			InvalidateWindowData(WindowClass::VehicleView, front->index);
-			SetWindowClassesDirty(WindowClass::TrainList);
+				if (old_front != front) {
+					NormaliseTrainHead(front);
+					ChangeVehicleViewWindow(old_front->index, front->index);
+				} else {
+					InvalidateWindowData(WindowClass::VehicleRefit, front->index);
+					InvalidateWindowData(WindowClass::VehicleOrders, front->index);
+					InvalidateNewGRFInspectWindow(GrfSpecFeature::Trains, front->index);
+
+					InvalidateWindowData(WindowClass::VehicleView, front->index);
+				}
+
+				InvalidateWindowData(WindowClass::VehicleDepot, v->tile);
+				InvalidateWindowClassesData(WindowClass::TrainList, 0);
+			} else {
+				v->flags.Flip(VehicleRailFlag::Flipped);
+
+				front->ConsistChanged(CCF_ARRANGE);
+				SetWindowDirty(WindowClass::VehicleDepot, front->tile);
+				SetWindowDirty(WindowClass::VehicleDetails, front->index);
+				InvalidateWindowData(WindowClass::VehicleView, front->index);
+				SetWindowClassesDirty(WindowClass::TrainList);
+			}
 		}
 	} else {
 		/* turn the whole train around */
