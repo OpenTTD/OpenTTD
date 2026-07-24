@@ -1327,9 +1327,9 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if (_settings_game.difficulty.vehicle_breakdowns == VehicleBreakdowns::Reduced && v->current_order.IsType(OT_LOADING)) return;
 
 	/* Decrease reliability. */
-	int rel, rel_old;
-	v->reliability = rel = std::max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
-	if ((rel_old >> 8) != (rel >> 8)) SetWindowDirty(WindowClass::VehicleDetails, v->index);
+	int rel_old = v->reliability;
+	v->reliability = Clamp(rel_old - v->reliability_spd_dec, 0, Engine::Get(v->engine_type)->reliability);
+	if ((rel_old >> 8) != (v->reliability >> 8)) SetWindowDirty(WindowClass::VehicleDetails, v->index);
 
 	/* Some vehicles lose reliability but won't break down. */
 	/* Breakdowns are disabled. */
@@ -1351,7 +1351,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	v->breakdown_chance = ClampTo<uint8_t>(chance);
 
 	/* Calculate reliability value to use in comparison. */
-	rel = v->reliability;
+	int rel = v->reliability;
 	if (v->type == VehicleType::Ship) rel += 0x6666;
 
 	/* Reduce the chance if the player has chosen the Reduced setting. */
