@@ -47,13 +47,13 @@ TownNameParams::TownNameParams(const Town *t) :
  */
 static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint32_t townnameparts)
 {
-	if (par->grfid.Empty()) {
-		auto tmp_params = MakeParameters(townnameparts);
-		GetStringWithArgs(builder, par->type, tmp_params);
-		return;
+	if (!par->grfid.Empty()) {
+		GRFTownNameGenerate(builder, par->grfid, par->type, townnameparts);
+	} else if (IsInsideMM(par->type, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END)) {
+		GenerateTownNameString(builder, par->type - SPECSTR_TOWNNAME_START, townnameparts);
+	} else {
+		builder += "(invalid town name)";
 	}
-
-	GRFTownNameGenerate(builder, par->grfid, par->type, townnameparts);
 }
 
 /**

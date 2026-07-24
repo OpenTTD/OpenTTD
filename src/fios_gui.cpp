@@ -8,6 +8,7 @@
 /** @file fios_gui.cpp GUIs for loading/saving games, scenarios, heightmaps, ... */
 
 #include "stdafx.h"
+#include "core/string_builder.hpp"
 #include "saveload/saveload_func.h"
 #include "error.h"
 #include "gui.h"
@@ -16,6 +17,7 @@
 #include "network/network.h"
 #include "network/network_content.h"
 #include "strings_func.h"
+#include "strings_internal.h"
 #include "fileio_func.h"
 #include "fios.h"
 #include "window_func.h"
@@ -639,7 +641,10 @@ public:
 					const CompanyProperties &c = *pair.second;
 					if (c.name.empty()) {
 						AutoRestoreBackup landscape_backup(_settings_game.game_creation.landscape, _load_check_data.landscape);
-						DrawString(tr, GetString(STR_SAVELOAD_DETAIL_COMPANY_INDEX, pair.first + 1, c.name_1, c.name_2));
+						std::string name;
+						StringBuilder builder{name};
+						GetSpecialNameString(builder, c.name_1, c.name_2);
+						DrawString(tr, GetString(STR_SAVELOAD_DETAIL_COMPANY_INDEX, pair.first + 1, STR_JUST_RAW_STRING, name));
 					} else {
 						DrawString(tr, GetString(STR_SAVELOAD_DETAIL_COMPANY_INDEX, pair.first + 1, STR_JUST_RAW_STRING, c.name));
 					}
