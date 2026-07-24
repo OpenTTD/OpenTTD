@@ -553,28 +553,43 @@ static Colours GenerateCompanyColour()
 }
 
 /**
+ * Set a company's president name based on seed, if the name is unique and shorter than the max length.
+ * @param other_names List of names that cannot be used.
+ * @param c The company of the president name to set.
+ * @param seed The random seed.
+ * @return True iff the name was set.
+ */
+static bool SetPresidentName(std::span<const std::string> other_names, Company *c, uint32_t seed)
+{
+	assert(c != nullptr);
+
+	c->president_name_1 = SPECSTR_PRESIDENT_NAME;
+	c->president_name_2 = seed;
+
+	/* President name must not be too long. */
+	std::string name = GetString(STR_PRESIDENT_NAME, c->index);
+	if (Utf8StringLength(name) >= MAX_LENGTH_PRESIDENT_NAME_CHARS) return false;
+
+	/* No presidents must have this name already. */
+	if (std::ranges::find(other_names, name) != other_names.end()) return false;
+
+	return true;
+}
+
+/**
  * Generate a random president name of a company.
  * @param c Company that needs a new president name.
  */
 static void GeneratePresidentName(Company *c)
 {
+	/* Collect existing president names. */
+	std::vector<std::string> other_names;
+	for (const Company *cc : Company::Iterate()) {
+		if (cc != c) other_names.emplace_back(GetString(STR_PRESIDENT_NAME, cc->index));
+	}
+
 	for (;;) {
-restart:;
-		c->president_name_2 = Random();
-		c->president_name_1 = SPECSTR_PRESIDENT_NAME;
-
-		/* Reserve space for extra unicode character. We need to do this to be able
-		 * to detect too long president name. */
-		std::string name = GetString(STR_PRESIDENT_NAME, c->index);
-		if (Utf8StringLength(name) >= MAX_LENGTH_PRESIDENT_NAME_CHARS) continue;
-
-		for (const Company *cc : Company::Iterate()) {
-			if (c != cc) {
-				std::string other_name = GetString(STR_PRESIDENT_NAME, cc->index);
-				if (name == other_name) goto restart;
-			}
-		}
-		return;
+		if (SetPresidentName(other_names, c, Random())) return;
 	}
 }
 
