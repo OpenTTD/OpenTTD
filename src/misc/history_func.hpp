@@ -152,4 +152,29 @@ void FillFromHistory(const HistoryData<T> *history, ValidHistoryMask valid_histo
 	}
 }
 
+/**
+ * Compress unsigned integer into 16 bits, in a way that increases dynamic range at the expense of precision for large values.
+ * @note The largest compressable value is 3963072. Values beyond this will be clamped.
+ * @param num Value to compress.
+ * @return Range compressed value.
+ */
+inline uint16_t RxCompress(uint32_t num)
+{
+	if (num <= 0x100) return num;
+	if (num <= 0x7900) return 0x100 + ((num - 0x100) >> 3);
+	return ClampTo<uint16_t>(0x1000 + ((num - 0x7900) >> 6));
+}
+
+/**
+ * Decompress a range-compressed integer.
+ * @param num Range compressed value.
+ * @return Decompressed value.
+ */
+inline uint32_t RxDecompress(uint16_t num)
+{
+	if (num > 0x1000) return ((num - 0x1000) << 6) + 0x7900;
+	if (num > 0x100) return ((num - 0x100) << 3) + 0x100;
+	return num;
+}
+
 #endif /* HISTORY_FUNC_HPP */
