@@ -17,12 +17,12 @@
 #include "../safeguards.h"
 
 static const SaveLoad _engine_renew_desc[] = {
-	    SLE_VAR(EngineRenew, from,     VarTypes::U16),
-	    SLE_VAR(EngineRenew, to,       VarTypes::U16),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, from)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, to)),
 
-	    SLE_REF(EngineRenew, next,     SLRefType::EngineRenew),
-	SLE_CONDVAR(EngineRenew, group_id, VarTypes::U16, SaveLoadVersion::VehicleGroups, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(EngineRenew, replace_when_old, VarTypes::BOOL, SaveLoadVersion::AutoreplaceWhenOldTreeLimit, SaveLoadVersion::MaxVersion),
+	SaveLoad::Reference<SLRefType::EngineRenew>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, next)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, group_id), SaveLoadVersion::VehicleGroups),
+	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(EngineRenew, replace_when_old), SaveLoadVersion::AutoreplaceWhenOldTreeLimit),
 };
 
 struct ERNWChunkHandler : ChunkHandler {

@@ -790,14 +790,14 @@ public:
 	 * Automatically convert to int32_t.
 	 * @return The window number.
 	 */
-	operator int32_t() const { return value; }
+	constexpr operator int32_t() const { return value; }
 
 	/**
 	 * Automatically convert to any other type that might be requested.
 	 * @return The window number in the requested type.
 	 */
 	template <typename T> requires (std::is_enum_v<T> || std::is_class_v<T>)
-	operator T() const { return static_cast<T>(value); };
+	constexpr operator T() const { return static_cast<T>(value); };
 
 	/**
 	 * Compare the right hand side against our window number.

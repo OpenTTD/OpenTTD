@@ -37,7 +37,7 @@ struct RAILChunkHandler : ChunkHandler {
 	RAILChunkHandler() : ChunkHandler("RAIL", ChunkType::Table) {}
 
 	static inline const SaveLoad description[] = {
-		SLE_VAR(LabelObject<RailTypeLabel>, label, VarTypes::LABEL_FORWARD),
+		SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(LabelObject<RailTypeLabel>, label)),
 	};
 
 	void Save() const override
@@ -63,6 +63,7 @@ struct RAILChunkHandler : ChunkHandler {
 
 		while (SlIterateArray() != -1) {
 			SlObject(&lo, slt);
+			 if (IsSavegameVersionBefore(SaveLoadVersion::LabelOrientationUnification)) std::ranges::reverse(lo.label);
 			_railtype_list.push_back(lo);
 		}
 	}
@@ -72,8 +73,8 @@ struct ROTTChunkHandler : ChunkHandler {
 	ROTTChunkHandler() : ChunkHandler("ROTT", ChunkType::Table) {}
 
 	static inline const SaveLoad description[] = {
-		SLE_VAR(LabelObject<RoadTypeLabel>, label, VarTypes::LABEL_FORWARD),
-		SLE_VAR(LabelObject<RoadTypeLabel>, subtype, VarTypes::U8),
+		SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(LabelObject<RoadTypeLabel>, label)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(LabelObject<RoadTypeLabel>, subtype)),
 	};
 
 	void Save() const override
@@ -101,6 +102,7 @@ struct ROTTChunkHandler : ChunkHandler {
 
 		while (SlIterateArray() != -1) {
 			SlObject(&lo, slt);
+			 if (IsSavegameVersionBefore(SaveLoadVersion::LabelOrientationUnification)) std::ranges::reverse(lo.label);
 			_roadtype_list.push_back(lo);
 		}
 	}

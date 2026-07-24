@@ -797,24 +797,17 @@ void IntSettingDesc::ResetToDefault(void *object) const
 std::string StringSettingDesc::FormatValue(const void *object) const
 {
 	const std::string &str = this->Read(object);
-	switch (this->save.conv.mem) {
-		case VarMemType::Str: return str;
+	if (!this->flags.Test(SettingFlag::QuotedString)) return str;
 
-		case VarMemType::StrQ:
-			if (str.empty()) {
-				return str;
-			}
-			return fmt::format("\"{}\"", str);
-
-		default: NOT_REACHED();
-	}
+	if (str.empty()) return str;
+	return fmt::format("\"{}\"", str);
 }
 
 bool StringSettingDesc::IsSameValue(const IniItem *item, void *object) const
 {
-	/* The ini parsing removes the quotes, which are needed to retain the spaces in STRQs,
+	/* The ini parsing removes the quotes. To retain spaces, the string needs to be quoted,
 	 * so those values are always different in the parsed ini item than they should be. */
-	if (this->save.conv.mem == VarMemType::StrQ) return false;
+	if (this->flags.Test(SettingFlag::QuotedString)) return false;
 
 	const std::string &str = this->Read(object);
 	return item->value->compare(str) == 0;
@@ -1930,10 +1923,7 @@ void SyncCompanySettings()
 bool SetSettingValue(const StringSettingDesc *sd, std::string_view value, bool force_newgame)
 {
 	assert(sd->flags.Test(SettingFlag::NoNetworkSync));
-
-	if (sd->save.conv.mem == VarMemType::StrQ && value == "(null)") {
-		value = {};
-	}
+	if (sd->flags.Test(SettingFlag::QuotedString) && value == "(null)") value = {};
 
 	const void *object = (_game_mode == GameMode::Menu || force_newgame) ? &_settings_newgame : &_settings_game;
 	sd->AsStringSetting()->ChangeValue(object, std::string{value});

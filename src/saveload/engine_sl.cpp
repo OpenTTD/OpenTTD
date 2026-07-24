@@ -19,26 +19,26 @@
 #include "../safeguards.h"
 
 static const SaveLoad _engine_desc[] = {
-	 SLE_CONDVAR(Engine, intro_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
-	 SLE_CONDVAR(Engine, intro_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, age, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
-	 SLE_CONDVAR(Engine, age, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	     SLE_VAR(Engine, reliability,         VarTypes::U16),
-	     SLE_VAR(Engine, reliability_spd_dec, VarTypes::U16),
-	     SLE_VAR(Engine, reliability_start,   VarTypes::U16),
-	     SLE_VAR(Engine, reliability_max,     VarTypes::U16),
-	     SLE_VAR(Engine, reliability_final,   VarTypes::U16),
-	     SLE_VAR(Engine, duration_phase_1,    VarTypes::U16),
-	     SLE_VAR(Engine, duration_phase_2,    VarTypes::U16),
-	     SLE_VAR(Engine, duration_phase_3,    VarTypes::U16),
-	     SLE_VAR(Engine, flags,               VarTypes::U8),
-	 SLE_CONDVAR(Engine, preview_asked, VarTypes::U16, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, preview_company, VarTypes::U8, SaveLoadVersion::RobustEnginePreview, SaveLoadVersion::MaxVersion),
-	     SLE_VAR(Engine, preview_wait,        VarTypes::U8),
-	 SLE_CONDVAR(Engine, company_avail, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
-	 SLE_CONDVAR(Engine, company_avail, VarTypes::U16, SaveLoadVersion::MoreCompanies, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Engine, company_hidden, VarTypes::U16, SaveLoadVersion::HideEnginesForCompany, SaveLoadVersion::MaxVersion),
-	SLE_CONDSSTR(Engine, name, VarTypes::STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, intro_date), SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, intro_date), SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, age), SaveLoadVersion::MinVersion, SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, age), SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, reliability)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, reliability_spd_dec)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, reliability_start)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, reliability_max)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, reliability_final)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, duration_phase_1)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, duration_phase_2)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, duration_phase_3)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, flags)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, preview_asked), SaveLoadVersion::RobustEnginePreview),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, preview_company), SaveLoadVersion::RobustEnginePreview),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, preview_wait)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, company_avail), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCompanies),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, company_avail), SaveLoadVersion::MoreCompanies),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Engine, company_hidden), SaveLoadVersion::HideEnginesForCompany),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Engine, name), {}, SaveLoadVersion::ReplaceCustomNameArray),
 };
 
 static TypedIndexContainer<std::vector<Engine>, EngineID> _temp_engine;
@@ -155,10 +155,10 @@ struct ENGSChunkHandler : ChunkHandler {
 
 /** Save and load the mapping between the engine id in the pool, and the grf file it came from. */
 static const SaveLoad _engine_id_mapping_desc[] = {
-	SLE_VAR(EngineIDMapping, grfid, VarTypes::LABEL_REVERSE),
-	SLE_VAR(EngineIDMapping, internal_id,   VarTypes::U16),
-	SLE_VAR(EngineIDMapping, type,          VarTypes::U8),
-	SLE_VAR(EngineIDMapping, substitute_id, VarTypes::U8),
+	SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(EngineIDMapping, grfid)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(EngineIDMapping, internal_id)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(EngineIDMapping, type)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(EngineIDMapping, substitute_id)),
 };
 
 struct EIDSChunkHandler : ChunkHandler {

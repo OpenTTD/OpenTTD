@@ -29,13 +29,13 @@ void AfterLoadStoryBook()
 }
 
 static const SaveLoad _story_page_elements_desc[] = {
-	SLE_CONDVAR(StoryPageElement, sort_value, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
-	SLE_CONDVAR(StoryPageElement, sort_value, VarTypes::U32, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(StoryPageElement, page,          VarTypes::U16),
-	SLE_CONDVAR(StoryPageElement, type, VarFileType::U16 | VarMemType::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
-	SLE_CONDVAR(StoryPageElement, type, VarTypes::U8, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(StoryPageElement, referenced_id, VarTypes::U32),
-	   SLE_SSTR(StoryPageElement, text,          VarTypes::STR | StringValidationSetting::AllowControlCode),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPageElement, sort_value), SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPageElement, sort_value), SaveLoadVersion::Storybooks),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPageElement, page)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPageElement, type), SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPageElement, type), SaveLoadVersion::Storybooks),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPageElement, referenced_id)),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(StoryPageElement, text), StringValidationSetting::AllowControlCode),
 };
 
 struct STPEChunkHandler : ChunkHandler {
@@ -72,12 +72,12 @@ struct STPEChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _story_pages_desc[] = {
-	SLE_CONDVAR(StoryPage, sort_value, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
-	SLE_CONDVAR(StoryPage, sort_value, VarTypes::U32, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(StoryPage, date,       VarFileType::U32 | VarMemType::I32),
-	SLE_CONDVAR(StoryPage, company, VarFileType::U16 | VarMemType::U8, SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
-	SLE_CONDVAR(StoryPage, company, VarTypes::U8, SaveLoadVersion::Storybooks, SaveLoadVersion::MaxVersion),
-	   SLE_SSTR(StoryPage, title,      VarTypes::STR | StringValidationSetting::AllowControlCode),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPage, sort_value), SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPage, sort_value), SaveLoadVersion::Storybooks),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPage, date)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPage, company), SaveLoadVersion::MinVersion, SaveLoadVersion::Storybooks),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(StoryPage, company), SaveLoadVersion::Storybooks),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(StoryPage, title), StringValidationSetting::AllowControlCode),
 };
 
 struct STPAChunkHandler : ChunkHandler {

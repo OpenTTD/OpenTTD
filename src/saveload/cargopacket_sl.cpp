@@ -125,19 +125,19 @@
 SaveLoadTable GetCargoPacketDesc()
 {
 	static const SaveLoad _cargopacket_desc[] = {
-		SLE_VARNAME(CargoPacket, first_station, "source", VarTypes::U16),
-		SLE_VAR(CargoPacket, source_xy,       VarTypes::U32),
-		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", VarFileType::U32 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::RemoveLoadedAtXY),
-		SLE_CONDVARNAME(CargoPacket, next_hop, "loaded_at_xy", VarTypes::U16, SaveLoadVersion::RemoveLoadedAtXY, SaveLoadVersion::MaxVersion),
-		SLE_VAR(CargoPacket, count,           VarTypes::U16),
-		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", VarFileType::U8 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoAge),
-		SLE_CONDVARNAME(CargoPacket, periods_in_transit, "days_in_transit", VarTypes::U16, SaveLoadVersion::MoreCargoAge, SaveLoadVersion::PeriodsInTransitRename),
-		SLE_CONDVAR(CargoPacket, periods_in_transit, VarTypes::U16, SaveLoadVersion::PeriodsInTransitRename, SaveLoadVersion::MaxVersion),
-		SLE_VAR(CargoPacket, feeder_share,    VarTypes::I64),
-		SLE_CONDVARNAME(CargoPacket, source.type, "source_type", VarTypes::U8, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
-		SLE_CONDVARNAME(CargoPacket, source.id, "source_id", VarTypes::U16, SaveLoadVersion::RemoveSubsidyStationBinding, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CargoPacket, travelled.x, VarTypes::I16, SaveLoadVersion::CargoTravelled, SaveLoadVersion::MaxVersion),
-		SLE_CONDVAR(CargoPacket, travelled.y, VarTypes::I16, SaveLoadVersion::CargoTravelled, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U16>("source", SLE_OBJECT_ADDRESS(CargoPacket, first_station)),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, source_xy)),
+		SaveLoad::Variable<VarFileType::U32>("loaded_at_xy", SLE_OBJECT_ADDRESS(CargoPacket, next_hop), SaveLoadVersion::MinVersion, SaveLoadVersion::RemoveLoadedAtXY),
+		SaveLoad::Variable<VarFileType::U16>("loaded_at_xy", SLE_OBJECT_ADDRESS(CargoPacket, next_hop), SaveLoadVersion::RemoveLoadedAtXY),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, count)),
+		SaveLoad::Variable<VarFileType::U8>("days_in_transit", SLE_OBJECT_ADDRESS(CargoPacket, periods_in_transit), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoAge),
+		SaveLoad::Variable<VarFileType::U16>("days_in_transit", SLE_OBJECT_ADDRESS(CargoPacket, periods_in_transit), SaveLoadVersion::MoreCargoAge, SaveLoadVersion::PeriodsInTransitRename),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, periods_in_transit), SaveLoadVersion::PeriodsInTransitRename),
+		SaveLoad::Variable<VarFileType::I64>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, feeder_share)),
+		SaveLoad::Variable<VarFileType::U8>("source_type", SLE_OBJECT_ADDRESS(CargoPacket, source.type), SaveLoadVersion::RemoveSubsidyStationBinding),
+		SaveLoad::Variable<VarFileType::U16>("source_id", SLE_OBJECT_ADDRESS(CargoPacket, source.id), SaveLoadVersion::RemoveSubsidyStationBinding),
+		SaveLoad::Variable<VarFileType::I16>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, travelled.x), SaveLoadVersion::CargoTravelled),
+		SaveLoad::Variable<VarFileType::I16>(SLE_NAME_AND_OBJECT_ADDRESS(CargoPacket, travelled.y), SaveLoadVersion::CargoTravelled),
 	};
 	return _cargopacket_desc;
 }

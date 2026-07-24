@@ -443,7 +443,7 @@ static void GenerateCompanyName(Company *c)
 	uint32_t strp;
 	std::string name;
 	if (t->name.empty() && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END)) {
-		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_COMPANY_NAME_START;
+		str = SPECSTR_COMPANY_NAME_START + (t->townnametype - SPECSTR_TOWNNAME_START);
 		strp = t->townnameparts;
 
 verify_name:;

@@ -15,6 +15,7 @@
 #include "saveload_internal.h"
 #include "../order_backup.h"
 #include "../settings_type.h"
+#include "../vehicle_base.h"
 #include "../network/network.h"
 
 #include "../safeguards.h"
@@ -144,15 +145,15 @@ OldOrderSaveLoadItem &AllocateOldOrder(size_t pool_index)
 SaveLoadTable GetOrderDescription()
 {
 	static const SaveLoad _order_desc[] = {
-		     SLE_VARNAME(OldOrderSaveLoadItem, order.type,  "type",  VarTypes::U8),
-		     SLE_VARNAME(OldOrderSaveLoadItem, order.flags, "flags", VarTypes::U8),
-		     SLE_VARNAME(OldOrderSaveLoadItem, order.dest,  "dest",  VarTypes::U16),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, next, "next", VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, next, "next", VarTypes::U32, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.refit_cargo, "refit_cargo", VarTypes::U8, SaveLoadVersion::RefitOrders, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.wait_time, "wait_time", VarTypes::U16, SaveLoadVersion::Timetables, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.travel_time, "travel_time", VarTypes::U16, SaveLoadVersion::Timetables, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVARNAME(OldOrderSaveLoadItem, order.max_speed, "max_speed", VarTypes::U16, SaveLoadVersion::OrderMaxSpeed, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U8>("type", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.type)),
+		SaveLoad::Variable<VarFileType::U8>("flags", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.flags)),
+		SaveLoad::Variable<VarFileType::U16>("dest", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.dest)),
+		SaveLoad::Variable<VarFileType::U16>("next", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, next), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("next", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, next), SaveLoadVersion::MoreCargoPackets),
+		SaveLoad::Variable<VarFileType::U8>("refit_cargo", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.refit_cargo), SaveLoadVersion::RefitOrders),
+		SaveLoad::Variable<VarFileType::U16>("wait_time", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.wait_time), SaveLoadVersion::Timetables),
+		SaveLoad::Variable<VarFileType::U16>("travel_time", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.travel_time), SaveLoadVersion::Timetables),
+		SaveLoad::Variable<VarFileType::U16>("max_speed", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.max_speed), SaveLoadVersion::OrderMaxSpeed),
 	};
 
 	return _order_desc;
@@ -218,13 +219,13 @@ template <typename T>
 class SlOrders : public VectorSaveLoadHandler<SlOrders<T>, T, Order> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_VAR(Order, type,        VarTypes::U8),
-		SLE_VAR(Order, flags,       VarTypes::U8),
-		SLE_VAR(Order, dest,        VarTypes::U16),
-		SLE_VAR(Order, refit_cargo, VarTypes::U8),
-		SLE_VAR(Order, wait_time,   VarTypes::U16),
-		SLE_VAR(Order, travel_time, VarTypes::U16),
-		SLE_VAR(Order, max_speed,   VarTypes::U16),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Order, type)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Order, flags)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Order, dest)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Order, refit_cargo)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Order, wait_time)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Order, travel_time)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Order, max_speed)),
 	};
 	static inline const SaveLoadCompatTable compat_description = {};
 
@@ -240,9 +241,9 @@ template class SlOrders<OrderBackup>;
 SaveLoadTable GetOrderListDescription()
 {
 	static const SaveLoad _orderlist_desc[] = {
-		SLE_CONDVARNAME(OrderList, old_order_index, "first", VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
-		SLE_CONDVARNAME(OrderList, old_order_index, "first", VarTypes::U32, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrdersOwnedByOrderlist),
-		SLEG_CONDSTRUCTLIST("orders", SlOrders<OrderList>, SaveLoadVersion::OrdersOwnedByOrderlist, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U16>("first", SLE_OBJECT_ADDRESS(OrderList, old_order_index), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("first", SLE_OBJECT_ADDRESS(OrderList, old_order_index), SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrdersOwnedByOrderlist),
+		SaveLoad::StructList<SlOrders<OrderList>>("orders", SaveLoadVersion::OrdersOwnedByOrderlist),
 	};
 
 	return _orderlist_desc;
@@ -296,24 +297,24 @@ struct ORDLChunkHandler : ChunkHandler {
 SaveLoadTable GetOrderBackupDescription()
 {
 	static const SaveLoad _order_backup_desc[] = {
-		     SLE_VAR(OrderBackup, user,                     VarTypes::U32),
-		     SLE_VAR(OrderBackup, tile,                     VarTypes::U32),
-		     SLE_VAR(OrderBackup, group,                    VarTypes::U16),
-		 SLE_CONDVAR(OrderBackup, service_interval, VarFileType::U32 | VarMemType::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::FixOrderBackup),
-		 SLE_CONDVAR(OrderBackup, service_interval, VarTypes::U16, SaveLoadVersion::FixOrderBackup, SaveLoadVersion::MaxVersion),
-		    SLE_SSTR(OrderBackup, name,                     VarTypes::STR),
-		 SLE_CONDREF(OrderBackup, clone, SLRefType::Vehicle, SaveLoadVersion::FixOrderBackup, SaveLoadVersion::MaxVersion),
-		     SLE_VAR(OrderBackup, cur_real_order_index,     VarTypes::U8),
-		 SLE_CONDVAR(OrderBackup, cur_implicit_order_index, VarTypes::U8, SaveLoadVersion::BackupOrderState, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVAR(OrderBackup, current_order_time, VarFileType::U32 | VarMemType::I32, SaveLoadVersion::BackupOrderState, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVAR(OrderBackup, lateness_counter, VarTypes::I32, SaveLoadVersion::BackupOrderState, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVAR(OrderBackup, timetable_start, VarFileType::I32 | VarMemType::U64, SaveLoadVersion::BackupOrderState, SaveLoadVersion::TimetableStartTicksFix),
-		 SLE_CONDVAR(OrderBackup, timetable_start, VarTypes::U64, SaveLoadVersion::TimetableStartTicksFix, SaveLoadVersion::MaxVersion),
-		 SLE_CONDVAR(OrderBackup, vehicle_flags, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::BackupOrderState, SaveLoadVersion::ServiceIntervalPercent),
-		 SLE_CONDVAR(OrderBackup, vehicle_flags, VarTypes::U16, SaveLoadVersion::ServiceIntervalPercent, SaveLoadVersion::MaxVersion),
-		SLE_CONDVARNAME(OrderBackup, old_order_index, "orders", VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
-		SLE_CONDVARNAME(OrderBackup, old_order_index, "orders", VarTypes::U32, SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrdersOwnedByOrderlist),
-		SLEG_CONDSTRUCTLIST("orders", SlOrders<OrderBackup>, SaveLoadVersion::OrdersOwnedByOrderlist, SaveLoadVersion::MaxVersion),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, user)),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, tile)),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, group)),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, service_interval), SaveLoadVersion::MinVersion, SaveLoadVersion::FixOrderBackup),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, service_interval), SaveLoadVersion::FixOrderBackup),
+		SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, name)),
+		SaveLoad::Reference<SLRefType::Vehicle>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, clone), SaveLoadVersion::FixOrderBackup),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, cur_real_order_index)),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, cur_implicit_order_index), SaveLoadVersion::BackupOrderState),
+		SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, current_order_time), SaveLoadVersion::BackupOrderState),
+		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, lateness_counter), SaveLoadVersion::BackupOrderState),
+		SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, timetable_start), SaveLoadVersion::BackupOrderState, SaveLoadVersion::TimetableStartTicksFix),
+		SaveLoad::Variable<VarFileType::U64>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, timetable_start), SaveLoadVersion::TimetableStartTicksFix),
+		SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, vehicle_flags), SaveLoadVersion::BackupOrderState, SaveLoadVersion::ServiceIntervalPercent),
+		SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(OrderBackup, vehicle_flags), SaveLoadVersion::ServiceIntervalPercent),
+		SaveLoad::Variable<VarFileType::U16>("orders", SLE_OBJECT_ADDRESS(OrderBackup, old_order_index), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("orders", SLE_OBJECT_ADDRESS(OrderBackup, old_order_index), SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::OrdersOwnedByOrderlist),
+		SaveLoad::StructList<SlOrders<OrderBackup>>("orders", SaveLoadVersion::OrdersOwnedByOrderlist),
 	};
 
 	return _order_backup_desc;

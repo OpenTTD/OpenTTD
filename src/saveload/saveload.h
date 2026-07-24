@@ -14,8 +14,11 @@
 #include "saveload_error.hpp"
 #include "saveload_func.h"
 #include "../core/label_type.hpp"
+#include "../cargopacket.h"
 #include "../fileio_type.h"
 #include "../fios.h"
+#include "../linkgraph/linkgraph.h"
+#include "../linkgraph/linkgraphjob.h"
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were
@@ -420,6 +423,7 @@ enum class SaveLoadVersion : uint16_t {
 
 	DriveBackwards, ///< Saveload version: 365, GitHub pull request: 15379\n Trains can drive backwards.
 	DepotsUnderBridges, ///< Saveload version: 366, GitHub pull request: 15836\n Allow depots under bridges.
+	LabelOrientationUnification, ///< Saveload version: 367, GitHub pull request: 15888\n Unify the orientation in which labels are written.
 
 	MaxVersion, ///< Highest possible saveload version.
 };
@@ -613,7 +617,7 @@ public:
 	void FixPointers(void *object) const override { this->FixPointers(static_cast<TObject *>(object)); }
 };
 
-/** Type of reference (#SLE_REF, #SLE_CONDREF). */
+/** Type of reference (#SaveLoad::Reference, #SaveLoad::ReferenceList, #SaveLoad::ReferenceVector). */
 enum class SLRefType : uint8_t {
 	Vehicle = 1, ///< Load/save a reference to a vehicle.
 	Station = 2, ///< Load/save a reference to a station.
@@ -634,11 +638,13 @@ enum class VarFileType : uint8_t {
 	 * NOTE: the SLE_FILE_NNN values are stored in the savegame! */
 	/* Value 0 is used to mark end-of-header in tables. Do not use here! */
 	I8 = 1, ///< A 8 bit signed int.
+	Bool = I8, ///< A bool is stored in an 8 bit signed integer field.
 	U8 = 2, ///< A 8 bit unsigned int.
 	I16 = 3, ///< A 16 bit signed int.
 	U16 = 4, ///< A 16 bit unsigned int.
 	I32 = 5, ///< A 32 bit signed int.
 	U32 = 6, ///< A 32 bit unsigned int.
+	Label = U32, ///< A label is stored in an 32 bit unsigned integer field.
 	I64 = 7, ///< A 64 bit signed int.
 	U64 = 8, ///< A 64 bit unsigned int.
 	StringID = 9, ///< StringID offset into strings-array.
@@ -660,10 +666,8 @@ enum class VarMemType : uint8_t {
 	U64 = 8, ///< A 64 bit unsigned int.
 	Null = 9, ///< useful to write zeros in savegame.
 	Str = 12, ///< string pointer
-	StrQ = 13, ///< string pointer enclosed in quotes
 	Name = 14, ///< old custom name to be converted to a string pointer
-	LabelReverse = 15, ///< A 4 character \c Label, stored in reverse.
-	LabelForward = 16, ///< A 4 character \c Label, stored as-is.
+	Label = 15, ///< A 4 character \c Label, stored as-is.
 };
 
 /** Container of a variable's characteristics about a variable's storage. */
@@ -690,23 +694,18 @@ struct VarType {
 	constexpr VarType(SLRefType ref) : ref(ref) {}
 
 	/**
+	 * Create a String var type with the given string validation settings.
+	 * @param string_validation_settings How to validate the string.
+	 */
+	constexpr VarType(StringValidationSettings string_validation_settings) :
+		file(VarFileType::String), mem(VarMemType::Str), string_validation_settings(string_validation_settings) {}
+
+	/**
 	 * Equality operator.
 	 * @param other The element to compare to.
 	 * @return \c true iff all elements of this and other are the same.
 	 */
 	constexpr bool operator==(const VarType &other) const = default;
-
-	/**
-	 * Transitional helper function to add a \c SaveLoadFlag to this type.
-	 * @param string_validation_setting The string_validation_setting to set.
-	 * @return A copy of this with the string_validation_setting set.
-	 */
-	constexpr VarType operator|(StringValidationSetting string_validation_setting) const
-	{
-		VarType copy = *this;
-		copy.string_validation_settings.Set(string_validation_setting);
-		return copy;
-	}
 };
 
 /**
@@ -733,10 +732,8 @@ struct VarTypes {
 	static constexpr VarType U64{ VarFileType::U64, VarMemType::U64 }; ///< Store a 64 bits unsigned int.
 	static constexpr VarType STRINGID{ VarFileType::StringID, VarMemType::U32 }; ///< Store a StringID.
 	static constexpr VarType STR{ VarFileType::String, VarMemType::Str }; ///< Store string.
-	static constexpr VarType STRQ{ VarFileType::String, VarMemType::StrQ }; ///< Store a string with quotes.
 	static constexpr VarType NAME{ VarFileType::StringID, VarMemType::Name }; ///< A string stored in the custom string array.
-	static constexpr VarType LABEL_REVERSE{ VarFileType::U32, VarMemType::LabelReverse }; ///< Store a \c Label in reverse.
-	static constexpr VarType LABEL_FORWARD{ VarFileType::U32, VarMemType::LabelForward }; ///< Store a \c Label as-is.
+	static constexpr VarType LABEL{ VarFileType::U32, VarMemType::Label }; ///< Store a \c Label as-is.
 };
 
 /** Type of data saved. */
@@ -758,19 +755,429 @@ enum class SaveLoadType : uint8_t {
 	ReferenceVector = 12, ///< Save/load a vector of #SaveLoadType::Reference elements.
 };
 
-typedef void *SaveLoadAddrProc(void *base, size_t extra);
+/**
+ * Macro to be able to pass the variable type and construct the SaveLoad::AddressFunction given a base class and variable name.
+ * This is used as second parameter to all the SaveLoad 'constructor' functions.
+ * @param base The base class name.
+ * @param variable The variable name.
+ */
+#define SLE_OBJECT_ADDRESS(base, variable) +[] (const void *b, size_t) -> const auto * { return std::addressof(static_cast<const base *>(b)->variable); }
+
+/**
+ * Macro to be able to pass the variable type and construct the SaveLoad::AddressFunction given a global variable name.
+ * This is used as second parameter to all the SaveLoad 'constructor' functions.
+ * @param variable The variable name.
+ */
+#define SLE_GLOBAL_ADDRESS(variable) +[] (const void *, size_t) -> const auto * { return std::addressof(variable); }
+
+/**
+ * Macro to be able to pass the variable name, variable type and construct the SaveLoad::AddressFunction given a base class and variable name.
+ * This is used as first parameter to all the SaveLoad 'constructor' functions.
+ * @param base The base class name.
+ * @param variable The variable name.
+ */
+#define SLE_NAME_AND_OBJECT_ADDRESS(base, variable) #variable, SLE_OBJECT_ADDRESS(base, variable)
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 struct SaveLoad {
-	std::string name;    ///< Name of this field (optional, used for tables).
-	SaveLoadType cmd;    ///< The action to take with the saved/loaded type, All types need different action.
-	VarType conv;        ///< Type of the variable to be saved; this field combines both FileVarType and MemVarType.
-	uint16_t length;       ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
-	SaveLoadVersion version_from;   ///< Save/load the variable starting from this savegame version.
-	SaveLoadVersion version_to;     ///< Save/load the variable before this savegame version.
-	SaveLoadAddrProc *address_proc; ///< Callback proc the get the actual variable address in memory.
-	size_t extra_data;              ///< Extra data for the callback proc.
-	std::shared_ptr<SaveLoadHandler> handler; ///< Custom handler for Save/Load procs.
+	/**
+	 * Function that returns the address of a variable.
+	 * @tparam R The return type of the function.
+	 * @param base In case the variable comes from an object, this is the pointer to the begin of that object.
+	 *             Will be non-nullptr for objects, can be both non-nullptr and nullptr for global variables.
+	 * @param extra An extra offset to apply. Mostly 0, except for a few LinkGraph settings variables.
+	 * @return The address of the variable.
+	 */
+	template <typename R = void>
+	using AddressFunction = const R *(*)(const void *base, size_t extra);
+
+	std::string name; ///< Name of this field (optional, used for tables).
+	SaveLoadType cmd; ///< The action to take with the saved/loaded type, All types need different action.
+	VarType conv{}; ///< Type of the variable to be saved; this field combines both FileVarType and MemVarType.
+	uint16_t length{}; ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
+	SaveLoadVersion version_from; ///< Save/load the variable starting from this savegame version.
+	SaveLoadVersion version_to; ///< Save/load the variable before this savegame version.
+	AddressFunction<> address_func = nullptr; ///< Callback function the get the actual variable address in memory.
+	size_t extra_data = 0; ///< Extra data for the callback proc.
+	std::shared_ptr<SaveLoadHandler> handler{}; ///< Custom handler for Save/Load procs.
+
+	/**
+	 * Check whether the given file type is stored as a simple number.
+	 * @param file_type The file type to check.
+	 * @return \c true iff signed or unsigned 8, 16, 32 or 64 bit integer.
+	 */
+	static constexpr bool IsIntegralFileType(VarFileType file_type)
+	{
+		switch (file_type) {
+			case VarFileType::I8:
+			case VarFileType::U8:
+			case VarFileType::I16:
+			case VarFileType::U16:
+			case VarFileType::I32:
+			case VarFileType::U32:
+			case VarFileType::I64:
+			case VarFileType::U64:
+				return true;
+
+			default:
+				return false;
+		}
+	}
+
+	/**
+	 * Determine the \c VarMemType type given the variable's \c decltype and occasionally the file type to distinguish options.
+	 * If feasible a sanity check is do to check the file type against the variable's \c decltype, for example to prevent a bool to be saved as string.
+	 * @tparam T The variable's \c decltype.
+	 * @tparam file_type The way this variable will be/is stored in the save file.
+	 * @return The \c VarMemType.
+	 */
+	template <typename T, VarFileType file_type>
+	static constexpr VarMemType DetermineMemType()
+	{
+		if constexpr (std::is_base_of_v<BaseLabel, T>) {
+			static_assert(file_type == VarFileType::Label);
+			return VarMemType::Label;
+		} else if constexpr (std::is_same_v<StringID, T>) {
+			static_assert(file_type == VarFileType::StringID);
+			static_assert(sizeof(T) == sizeof(uint32_t));
+			return VarMemType::U32;
+		} else if constexpr (std::is_same_v<bool, T>) {
+			static_assert(file_type == VarFileType::Bool);
+			return VarMemType::Bool;
+		} else if constexpr (std::is_same_v<int8_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::I8;
+		} else if constexpr (std::is_same_v<uint8_t, T> || std::is_same_v<char, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::U8;
+		} else if constexpr (std::is_same_v<int16_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::I16;
+		} else if constexpr (std::is_same_v<uint16_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::U16;
+		} else if constexpr (std::is_same_v<int32_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::I32;
+		} else if constexpr (std::is_same_v<uint32_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::U32;
+		} else if constexpr (std::is_same_v<int64_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::I64;
+		} else if constexpr (std::is_same_v<uint64_t, T>) {
+			static_assert(IsIntegralFileType(file_type));
+			return VarMemType::U64;
+		} else if constexpr (std::is_same_v<std::string, T>) {
+			if constexpr (file_type == VarFileType::StringID) {
+				return VarMemType::Name; // Special transitional case for migrating from StringID to std::string.
+			} else {
+				static_assert(file_type == VarFileType::String);
+				return VarMemType::Str;
+			}
+		} else if constexpr (std::is_enum_v<T>) {
+			return DetermineMemType<std::underlying_type_t<T>, file_type>();
+		} else if constexpr (ConvertibleThroughBase<T>) {
+			return DetermineMemType<typename T::BaseType, file_type>();
+		} else if constexpr (requires { typename T::value_type; }) {
+			return DetermineMemType<typename T::value_type, file_type>();
+		} else {
+			static_assert(false, "The given type is not supported");
+		}
+	}
+
+	/**
+	 * Checks whether the memory type and given reference type match.
+	 * @tparam T The type of the reference in memory.
+	 * @param ref_type The specified reference type.
+	 * @return \c true iff the memory and reference type match.
+	 */
+	template <typename T>
+	static constexpr bool IsValidRefType(SLRefType ref_type)
+	{
+		switch (ref_type) {
+			case SLRefType::OldVehicle: // Old vehicles we save as new ones
+			case SLRefType::Vehicle: return std::is_base_of_v<Vehicle, T>;
+			case SLRefType::Station: return std::is_base_of_v<BaseStation, T>;
+			case SLRefType::Town: return std::is_same_v<Town, T>;
+			case SLRefType::RoadStop: return std::is_same_v<RoadStop, T>;
+			case SLRefType::EngineRenew: return std::is_same_v<EngineRenew, T>;
+			case SLRefType::CargoPacket: return std::is_same_v<CargoPacket, T>;
+			case SLRefType::OrderList: return std::is_same_v<OrderList, T>;
+			case SLRefType::Storage: return std::is_same_v<PersistentStorage, T>;
+			case SLRefType::LinkGraph: return std::is_same_v<LinkGraph, T>;
+			case SLRefType::LinkGraphJob: return std::is_same_v<LinkGraphJob, T>;
+			default: NOT_REACHED(); // Add a check for the new reference type above here.
+		}
+	}
+
+	/**
+	 * To be able to get the type information into the SaveLoad constructing functions, we need some infrastructure.
+	 * The easiest way to achieve this is *not* casting away the type information in the lambda that gets our address,
+	 * however to store this we need to erase this type. This function practically erases this type.
+	 * @tparam T Return type of the given address function.
+	 * @param address_func The function to convert.
+	 * @return The \c AddressFunction.
+	 */
+	template <typename T>
+	static constexpr AddressFunction<> ToAddressFunction(AddressFunction<T> address_func)
+	{
+		/* The reinterpret_cast is nasty, but we are only casting away the type of the return. */
+		static_assert(std::is_same_v<AddressFunction<>, decltype(ToAddressFunction<void>(nullptr))>);
+		return reinterpret_cast<AddressFunction<>>(address_func);
+	}
+
+
+	/**
+	 * Storage of a variable in some savegame versions.
+	 * @tparam file_type Storage type of the variable in the savegame.
+	 * @tparam T The type of the variable in memory. This is automatically deduced and used for validation.
+	 * @param name Field name for table chunks.
+	 * @param address_func Function to get the address of the variable.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @param extra Arbitrary extra data to pass to the \c address_func.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <VarFileType file_type, typename T>
+	static SaveLoad Variable(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	{
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Variable,
+			.conv = {file_type, DetermineMemType<T, file_type>()},
+			.version_from = from,
+			.version_to = to,
+			.address_func = ToAddressFunction(address_func),
+			.extra_data = extra,
+		};
+	}
+
+	/**
+	 * Storage of a reference to a pool element in some savegame versions.
+	 * @tparam type The type of reference.
+	 * @tparam T The type of the reference in memory. This is automatically deduced and used for validation.
+	 * @param name Field name for table chunks.
+	 * @param address_func Function to get the address of the reference.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <SLRefType type, typename T>
+	static SaveLoad Reference(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(requires { typename std::remove_pointer_t<T>::Pool; });
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Reference,
+			.conv = type,
+			.version_from = from,
+			.version_to = to,
+			.address_func = ToAddressFunction(address_func),
+		};
+	}
+
+	/**
+	 * Storage of a string in some savegame versions.
+	 * @tparam T The type of the field in memory. This is automatically deduced and used for validation.
+	 * @param name Field name for table chunks.
+	 * @param address_func Function to get the address of the string.
+	 * @param string_validation_settings Settings to the string validation that is performed.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @param extra Arbitrary extra data to pass to the \c address_func.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <typename T>
+	static SaveLoad String(std::string name, AddressFunction<T> address_func, StringValidationSettings string_validation_settings = {},
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	{
+		static_assert(std::is_same_v<std::string, T> || std::is_same_v<EncodedString, T>);
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::String,
+			.conv = string_validation_settings,
+			.version_from = from,
+			.version_to = to,
+			.address_func = ToAddressFunction(address_func),
+			.extra_data = extra,
+		};
+	}
+
+	/**
+	 * Storage of a structs, optionally in some savegame versions.
+	 * @tparam T SaveLoadHandler for the structs.
+	 * @param name The name of the field.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <typename T> requires std::is_base_of_v<SaveLoadHandler, T>
+	static SaveLoad Struct(std::string name,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Struct,
+			.version_from = from,
+			.version_to = to,
+			.handler = std::make_shared<T>(),
+		};
+	}
+
+	/**
+	 * Storage of an array in some savegame versions.
+	 * @tparam file_type Storage type of the array's elements in the savegame.
+	 * @tparam length The length of the array.
+	 * @tparam T The type of the field in memory. This is automatically deduced and used for validation.
+	 * @param name Field name for table chunks.
+	 * @param address_func Function to get the address of the array.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @param extra Arbitrary extra data to pass to the \c address_func.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <VarFileType file_type, uint16_t length, typename T>
+	static SaveLoad Array(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion, size_t extra = 0)
+	{
+		static_assert(SlVarSize(DetermineMemType<T, file_type>()) * length <= sizeof(T)); // Partial setting/filling of an array is permitted.
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Array,
+			.conv = {file_type, DetermineMemType<T, file_type>()},
+			.length = length,
+			.version_from = from,
+			.version_to = to,
+			.address_func = ToAddressFunction(address_func),
+			.extra_data = extra,
+		};
+	}
+
+	/**
+	 * Storage of a vector in some savegame versions.
+	 * @tparam file_type Storage type of the vector's elements in the savegame.
+	 * @tparam T The type of the field in memory. This is automatically deduced and used for validation.
+	 * @param name Field name for table chunks.
+	 * @param address_func Function to get the address of the vector.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <VarFileType file_type, typename T>
+	static SaveLoad Vector(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::Vector,
+			.conv = {file_type, DetermineMemType<typename T::value_type, file_type>()},
+			.version_from = from,
+			.version_to = to,
+			.address_func = ToAddressFunction(address_func),
+		};
+	}
+
+	/**
+	 * Storage of a list of references to pool elements in some savegame versions.
+	 * @tparam type The type of reference.
+	 * @tparam T The type of the field in memory. This is automatically deduced and used for validation.
+	 * @param name Field name for table chunks.
+	 * @param address_func Function to get the address of the list.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <SLRefType type, typename T>
+	static SaveLoad ReferenceList(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(std::is_base_of_v<std::list<typename T::value_type>, T>);
+		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
+		static_assert(IsValidRefType<std::remove_pointer_t<typename T::value_type>>(type));
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::ReferenceList,
+			.conv = type,
+			.version_from = from,
+			.version_to = to,
+			.address_func = ToAddressFunction(address_func),
+		};
+	}
+
+	/**
+	 * Storage of a list of structs, optionally in some savegame versions.
+	 * @tparam T SaveLoadHandler for the list of structs.
+	 * @param name The name of the field.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <typename T> requires std::is_base_of_v<SaveLoadHandler, T>
+	static SaveLoad StructList(std::string name,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::StructList,
+			.version_from = from,
+			.version_to = to,
+			.handler = std::make_shared<T>(),
+		};
+	}
+
+	/**
+	 * Storage of a byte variable in some savegame versions that is not automatically read by the SaveLoad code.
+	 * @tparam T The type of the variable in memory. This is automatically deduced and used for validation.
+	 * @param name Field name for table chunks.
+	 * @param address_func Function to get the address of the variable.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <typename T>
+	static SaveLoad SaveByte(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::SaveByte,
+			.conv = {VarFileType::U8, DetermineMemType<T, VarFileType::U8>()},
+			.version_from = from,
+			.version_to = to,
+			.address_func = ToAddressFunction(address_func),
+		};
+	}
+
+	/**
+	 * Storage of a vector of references to pool elements in some savegame versions.
+	 * @tparam type The type of reference.
+	 * @tparam T The type of the field in memory. This is automatically deduced and used for validation.
+	 * @param name Field name for table chunks.
+	 * @param address_func Function to get the address of the vector.
+	 * @param from First savegame version that has the field. Defaults to the first version.
+	 * @param to Last savegame version that has the field. Defaults to the last version.
+	 * @return The constructed SaveLoad object.
+	 */
+	template <SLRefType type, typename T>
+	static SaveLoad ReferenceVector(std::string name, AddressFunction<T> address_func,
+			SaveLoadVersion from = SaveLoadVersion::MinVersion, SaveLoadVersion to = SaveLoadVersion::MaxVersion)
+	{
+		static_assert(std::is_base_of_v<std::vector<typename T::value_type>, T>);
+		static_assert(requires { typename std::remove_pointer_t<typename T::value_type>::Pool; });
+		static_assert(IsValidRefType<std::remove_pointer_t<typename T::value_type>>(type));
+		return SaveLoad{
+			.name = std::move(name),
+			.cmd = SaveLoadType::ReferenceVector,
+			.conv = type,
+			.version_from = from,
+			.version_to = to,
+			.address_func = ToAddressFunction(address_func),
+		};
+	}
 };
 
 /**
@@ -807,433 +1214,11 @@ inline constexpr size_t SlVarSize(VarMemType type)
 		case VarMemType::U64: return sizeof(uint64_t);
 		case VarMemType::Null: return sizeof(void *);
 		case VarMemType::Str: return sizeof(std::string);
-		case VarMemType::StrQ: return sizeof(std::string);
 		case VarMemType::Name: return sizeof(std::string);
-		case VarMemType::LabelReverse: return sizeof(BaseLabel);
-		case VarMemType::LabelForward: return sizeof(BaseLabel);
+		case VarMemType::Label: return sizeof(BaseLabel);
 		default: NOT_REACHED();
 	}
 }
-
-/**
- * Check if a saveload cmd/type/length entry matches the size of the variable.
- * @param cmd SaveLoadType of entry.
- * @param type VarType of entry.
- * @param length Array length of entry.
- * @param size Actual size of variable.
- * @return true iff the sizes match.
- */
-inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, size_t size)
-{
-	switch (cmd) {
-		case SaveLoadType::Variable: return SlVarSize(type.mem) == size;
-		case SaveLoadType::Reference: return sizeof(void *) == size;
-		case SaveLoadType::String: return SlVarSize(type.mem) == size;
-		case SaveLoadType::Array: return SlVarSize(type.mem) * length <= size; // Partial load of array is permitted.
-		case SaveLoadType::Vector: return sizeof(std::vector<void *>) == size;
-		case SaveLoadType::ReferenceList: return sizeof(std::list<void *>) == size;
-		case SaveLoadType::ReferenceVector: return sizeof(std::vector<void *>) == size;
-		case SaveLoadType::SaveByte: return true;
-		default: NOT_REACHED();
-	}
-}
-
-/**
- * Storage of simple variables, references (pointers), and arrays.
- * @param cmd      Load/save type. @see SaveLoadType
- * @param name     Field name for table chunks.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- * @param extra    Extra data to pass to the address callback function.
- * @note In general, it is better to use one of the SLE_* macros below.
- */
-#define SLE_GENERAL_NAME(cmd, name, base, variable, type, length, from, to, extra) \
-	SaveLoad {name, cmd, type, length, from, to, [] (void *b, size_t) -> void * { \
-		static_assert(SlCheckVarSize(cmd, type, length, sizeof(static_cast<base *>(b)->variable))); \
-		static_assert((VarType{type}.mem != VarMemType::LabelReverse && VarType{type}.mem != VarMemType::LabelForward) || std::is_base_of_v<BaseLabel, decltype(base::variable)>); \
-		assert(b != nullptr); \
-		return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); \
-	}, extra, nullptr}
-
-/**
- * Storage of simple variables, references (pointers), and arrays with a custom name.
- * @param cmd      Load/save type. @see SaveLoadType
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- * @param extra    Extra data to pass to the address callback function.
- * @note In general, it is better to use one of the SLE_* macros below.
- */
-#define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) SLE_GENERAL_NAME(cmd, #variable, base, variable, type, length, from, to, extra)
-
-/**
- * Storage of a variable in some savegame versions.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Variable, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a variable in some savegame versions.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLE_CONDVARNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::Variable, name, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a reference in some savegame versions.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Type of the reference, a value from #SLRefType.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Reference, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a fixed-size array of #SaveLoadType::Variable elements in some savegame versions.
- * @param base     Name of the class or struct containing the array.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- * @param from     First savegame version that has the array.
- * @param to       Last savegame version that has the array.
- */
-#define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SaveLoadType::Array, base, variable, type, length, from, to, 0)
-
-/**
- * Storage of a fixed-size array of #SaveLoadType::Variable elements in some savegame versions.
- * @param base     Name of the class or struct containing the array.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- * @param from     First savegame version that has the array.
- * @param to       Last savegame version that has the array.
- */
-#define SLE_CONDARRNAME(base, variable, name, type, length, from, to) SLE_GENERAL_NAME(SaveLoadType::Array, name, base, variable, type, length, from, to, 0)
-
-/**
- * Storage of a \c std::string in some savegame versions.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the string.
- * @param to       Last savegame version that has the string.
- */
-#define SLE_CONDSSTR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::String, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a \c std::string in some savegame versions.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the string.
- * @param to       Last savegame version that has the string.
- */
-#define SLE_CONDSSTRNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::String, name, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a list of #SaveLoadType::Reference elements in some savegame versions.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLE_CONDREFLIST(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::ReferenceList, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a vector of #SaveLoadType::Reference elements in some savegame versions.
- * @param base     Name of the class or struct containing the vector.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the vector.
- * @param to       Last savegame version that has the vector.
- */
-#define SLE_CONDREFVECTOR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::ReferenceVector, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a vector of #SaveLoadType::Variable elements in some savegame versions.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Vector, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a vector of #SaveLoadType::Variable elements in some savegame versions.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLE_CONDVECTOR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Vector, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a variable in every version of a savegame.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a variable in every version of a savegame.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_VARNAME(base, variable, name, type) SLE_CONDVARNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a reference in every version of a savegame.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Type of the reference, a value from #SLRefType.
- */
-#define SLE_REF(base, variable, type) SLE_CONDREF(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of fixed-size array of #SaveLoadType::Variable elements in every version of a savegame.
- * @param base     Name of the class or struct containing the array.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- */
-#define SLE_ARR(base, variable, type, length) SLE_CONDARR(base, variable, type, length, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of fixed-size array of #SaveLoadType::Variable elements in every version of a savegame.
- * @param base     Name of the class or struct containing the array.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- */
-#define SLE_ARRNAME(base, variable, name, type, length) SLE_CONDARRNAME(base, variable, name, type, length, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a \c std::string in every savegame version.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_SSTR(base, variable, type) SLE_CONDSSTR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a \c std::string in every savegame version.
- * @param base     Name of the class or struct containing the string.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_SSTRNAME(base, variable, name, type) SLE_CONDSSTRNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a list of #SaveLoadType::Reference elements in every savegame version.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_REFLIST(base, variable, type) SLE_CONDREFLIST(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a vector of #SaveLoadType::Reference elements in every savegame version.
- * @param base     Name of the class or struct containing the vector.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_REFVECTOR(base, variable, type) SLE_CONDREFVECTOR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Only write byte during saving; never read it during loading.
- * When using SLE_SAVEBYTE you will have to read this byte before the table
- * this is in is read. This also means SLE_SAVEBYTE can only be used at the
- * top of a chunk.
- * This is intended to be used to indicate what type of entry this is in a
- * list of entries.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- */
-#define SLE_SAVEBYTE(base, variable) SLE_GENERAL(SaveLoadType::SaveByte, base, variable, {}, 0, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion, 0)
-
-/**
- * Storage of global simple variables, references (pointers), and arrays.
- * @param name     The name of the field.
- * @param cmd      Load/save type. @see SaveLoadType
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- * @param extra    Extra data to pass to the address callback function.
- * @note In general, it is better to use one of the SLEG_* macros below.
- */
-#define SLEG_GENERAL(name, cmd, variable, type, length, from, to, extra) \
-	SaveLoad {name, cmd, type, length, from, to, [] (void *, size_t) -> void * { \
-		static_assert(SlCheckVarSize(cmd, type, length, sizeof(variable))); \
-		return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
-
-/**
- * Storage of a global variable in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLEG_CONDVAR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Variable, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a global reference in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLEG_CONDREF(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Reference, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a global fixed-size array of #SaveLoadType::Variable elements in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- * @param from     First savegame version that has the array.
- * @param to       Last savegame version that has the array.
- */
-#define SLEG_CONDARR(name, variable, type, length, from, to) SLEG_GENERAL(name, SaveLoadType::Array, variable, type, length, from, to, 0)
-
-/**
- * Storage of a global \c std::string in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the string.
- * @param to       Last savegame version that has the string.
- */
-#define SLEG_CONDSSTR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::String, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a structs in some savegame versions.
- * @param name     The name of the field.
- * @param handler  SaveLoadHandler for the structs.
- * @param from     First savegame version that has the struct.
- * @param to       Last savegame version that has the struct.
- */
-#define SLEG_CONDSTRUCT(name, handler, from, to) SaveLoad {name, SaveLoadType::Struct, {}, 0, from, to, nullptr, 0, std::make_shared<handler>()}
-
-/**
- * Storage of a global reference list in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLEG_CONDREFLIST(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::ReferenceList, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a global vector of #SaveLoadType::Variable elements in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLEG_CONDVECTOR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Vector, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a list of structs in some savegame versions.
- * @param name     The name of the field.
- * @param handler  SaveLoadHandler for the list of structs.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLEG_CONDSTRUCTLIST(name, handler, from, to) SaveLoad {name, SaveLoadType::StructList, {}, 0, from, to, nullptr, 0, std::make_shared<handler>()}
-
-/**
- * Storage of a global variable in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_VAR(name, variable, type) SLEG_CONDVAR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global reference in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_REF(name, variable, type) SLEG_CONDREF(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global fixed-size array of #SaveLoadType::Variable elements in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param length   Number of elements in the array.
- */
-#define SLEG_ARR(name, variable, type, length) SLEG_CONDARR(name, variable, type, length, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global \c std::string in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_SSTR(name, variable, type) SLEG_CONDSSTR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a structs in every savegame version.
- * @param name     The name of the field.
- * @param handler SaveLoadHandler for the structs.
- */
-#define SLEG_STRUCT(name, handler) SLEG_CONDSTRUCT(name, handler, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global reference list in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_REFLIST(name, variable, type) SLEG_CONDREFLIST(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global vector of #SaveLoadType::Variable elements in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_VECTOR(name, variable, type) SLEG_CONDVECTOR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a list of structs in every savegame version.
- * @param name    The name of the field.
- * @param handler SaveLoadHandler for the list of structs.
- */
-#define SLEG_STRUCTLIST(name, handler) SLEG_CONDSTRUCTLIST(name, handler, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Field name where the real SaveLoad can be located.
@@ -1300,13 +1285,13 @@ inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 {
 	/* Entry is a null-variable, mostly used to read old savegames etc. */
 	if (sld.conv.mem == VarMemType::Null) {
-		assert(sld.address_proc == nullptr);
+		assert(sld.address_func == nullptr);
 		return nullptr;
 	}
 
 	/* Everything else should be a non-null pointer. */
-	assert(sld.address_proc != nullptr);
-	return sld.address_proc(const_cast<void *>(object), sld.extra_data);
+	assert(sld.address_func != nullptr);
+	return const_cast<void *>(sld.address_func(object, sld.extra_data));
 }
 
 int64_t ReadValue(const void *ptr, VarMemType conv);

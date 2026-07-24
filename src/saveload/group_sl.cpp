@@ -17,16 +17,16 @@
 #include "../safeguards.h"
 
 static const SaveLoad _group_desc[] = {
-	 SLE_CONDVAR(Group, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(Group, name, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
-	     SLE_VAR(Group, owner,              VarTypes::U8),
-	     SLE_VAR(Group, vehicle_type,       VarTypes::U8),
-	     SLE_VAR(Group, flags,              VarTypes::U8),
-	 SLE_CONDVAR(Group, livery.in_use, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, livery.colour1, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, livery.colour2, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, parent, VarTypes::U16, SaveLoadVersion::GroupHierarchy, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, number, VarTypes::U16, SaveLoadVersion::GroupNumbers, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::StringID>(SLE_NAME_AND_OBJECT_ADDRESS(Group, name), SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Group, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Group, owner)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Group, vehicle_type)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Group, flags)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Group, livery.in_use), SaveLoadVersion::GroupLiveries),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Group, livery.colour1), SaveLoadVersion::GroupLiveries),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Group, livery.colour2), SaveLoadVersion::GroupLiveries),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Group, parent), SaveLoadVersion::GroupHierarchy),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Group, number), SaveLoadVersion::GroupNumbers),
 };
 
 struct GRPSChunkHandler : ChunkHandler {

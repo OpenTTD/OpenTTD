@@ -17,12 +17,12 @@
 #include "../safeguards.h"
 
 static const SaveLoad _goals_desc[] = {
-	     SLE_VAR(Goal, company,   VarFileType::U16 | VarMemType::U8),
-	     SLE_VAR(Goal, type,      VarFileType::U16 | VarMemType::U8),
-	     SLE_VAR(Goal, dst,       VarTypes::U32),
-	    SLE_SSTR(Goal, text,      VarTypes::STR | StringValidationSetting::AllowControlCode),
-	SLE_CONDSSTR(Goal, progress, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Goal, completed, VarTypes::BOOL, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Goal, company)),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Goal, type)),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Goal, dst)),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Goal, text), StringValidationSetting::AllowControlCode),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(Goal, progress), StringValidationSetting::AllowControlCode, SaveLoadVersion::GoalProgressPlaneAcceleration),
+	SaveLoad::Variable<VarFileType::Bool>(SLE_NAME_AND_OBJECT_ADDRESS(Goal, completed), SaveLoadVersion::GoalProgressPlaneAcceleration),
 };
 
 struct GOALChunkHandler : ChunkHandler {

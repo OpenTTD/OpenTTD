@@ -14,19 +14,20 @@
 
 #include "../object_base.h"
 #include "../object_map.h"
+#include "../town.h"
 #include "newgrf_sl.h"
 
 #include "../safeguards.h"
 
 static const SaveLoad _object_desc[] = {
-	    SLE_VAR(Object, location.tile,              VarTypes::U32),
-	    SLE_VAR(Object, location.w,                 VarFileType::U8 | VarMemType::U16),
-	    SLE_VAR(Object, location.h,                 VarFileType::U8 | VarMemType::U16),
-	    SLE_REF(Object, town,                       SLRefType::Town),
-	    SLE_VAR(Object, build_date,                 VarFileType::U32 | VarMemType::I32),
-	SLE_CONDVARNAME(Object, recolour_offset, "colour", VarTypes::U8, SaveLoadVersion::IndustryPlatform, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Object, view, VarTypes::U8, SaveLoadVersion::NewGRFObjectView, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Object, type, VarTypes::U16, SaveLoadVersion::ObjectTypeToPool, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Object, location.tile)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Object, location.w)),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Object, location.h)),
+	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(Object, town)),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(Object, build_date)),
+	SaveLoad::Variable<VarFileType::U8>("colour", SLE_OBJECT_ADDRESS(Object, recolour_offset), SaveLoadVersion::IndustryPlatform),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(Object, view), SaveLoadVersion::NewGRFObjectView),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(Object, type), SaveLoadVersion::ObjectTypeToPool),
 };
 
 struct OBJSChunkHandler : ChunkHandler {

@@ -168,21 +168,21 @@ void ResetOldWaypoints()
 }
 
 static const SaveLoad _old_waypoint_desc[] = {
-	SLE_CONDVAR(OldWaypoint, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(OldWaypoint, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, town_index, VarTypes::U16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::WaypointMoreLikeStation),
-	SLE_CONDREF(OldWaypoint, town, SLRefType::Town, SaveLoadVersion::WaypointMoreLikeStation, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, town_cn, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::MoreWaypointsPerTown),
-	SLE_CONDVAR(OldWaypoint, town_cn, VarTypes::U16, SaveLoadVersion::MoreWaypointsPerTown, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, string_id, VarTypes::STRINGID, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(OldWaypoint, name, VarTypes::STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(OldWaypoint, delete_ctr, VarTypes::U8),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, xy), SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U32>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, xy), SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, town_index), SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::WaypointMoreLikeStation),
+	SaveLoad::Reference<SLRefType::Town>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, town), SaveLoadVersion::WaypointMoreLikeStation),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, town_cn), SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::MoreWaypointsPerTown),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, town_cn), SaveLoadVersion::MoreWaypointsPerTown),
+	SaveLoad::Variable<VarFileType::StringID>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, string_id), SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SaveLoad::String(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, name), {}, SaveLoadVersion::ReplaceCustomNameArray),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, delete_ctr)),
 
-	SLE_CONDVAR(OldWaypoint, build_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
-	SLE_CONDVAR(OldWaypoint, build_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, localidx, VarTypes::U8, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, grfid, VarTypes::LABEL_REVERSE, SaveLoadVersion::StoreWaypointIdInMap, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, owner, VarTypes::U8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, build_date), SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::I32>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, build_date), SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, localidx), SaveLoadVersion::BiggerStationVariables),
+	SaveLoad::Variable<VarFileType::Label>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, grfid), SaveLoadVersion::StoreWaypointIdInMap),
+	SaveLoad::Variable<VarFileType::U8>(SLE_NAME_AND_OBJECT_ADDRESS(OldWaypoint, owner), SaveLoadVersion::NewGRFPalette),
 };
 
 struct CHKPChunkHandler : ChunkHandler {
@@ -209,7 +209,7 @@ struct CHKPChunkHandler : ChunkHandler {
 			SlObject(&wp, _old_waypoint_desc);
 
 			if (IsSavegameVersionBefore(SaveLoadVersion::LinkWaypointToTown)) {
-				wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
+				wp.town_cn = (wp.string_id.base() & 0xC000) == 0xC000 ? (wp.string_id.base() >> 8) & 0x3F : 0;
 				wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
 			} else if (IsSavegameVersionBefore(SaveLoadVersion::WaypointMoreLikeStation)) {
 				/* Only for versions 12 .. 122 */

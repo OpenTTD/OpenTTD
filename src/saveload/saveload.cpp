@@ -682,11 +682,9 @@ static inline uint SlCalcConvMemLen(VarMemType conv)
 		case VarMemType::I64: return sizeof(int64_t);
 		case VarMemType::U64: return sizeof(uint64_t);
 		case VarMemType::Null: return 0;
-		case VarMemType::LabelReverse: return sizeof(BaseLabel);
-		case VarMemType::LabelForward: return sizeof(BaseLabel);
+		case VarMemType::Label: return sizeof(BaseLabel);
 
 		case VarMemType::Str:
-		case VarMemType::StrQ:
 			return SlReadArrayLength();
 
 		case VarMemType::Name:
@@ -918,7 +916,7 @@ void WriteValue(void *ptr, VarMemType conv, int64_t val)
 		case VarMemType::U32: *static_cast<uint32_t *>(ptr) = val; break;
 		case VarMemType::I64: *static_cast<int64_t *>(ptr) = val; break;
 		case VarMemType::U64: *static_cast<uint64_t *>(ptr) = val; break;
-		case VarMemType::Name: *reinterpret_cast<std::string *>(ptr) = CopyFromOldName(val); break;
+		case VarMemType::Name: *reinterpret_cast<std::string *>(ptr) = CopyFromOldName(static_cast<StringID>(val)); break;
 		case VarMemType::Null: break;
 		default: NOT_REACHED();
 	}
@@ -936,14 +934,11 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 {
 	switch (_sl.action) {
 		case SaveLoadAction::Save: {
-			if (conv == VarTypes::LABEL_REVERSE) {
+			if (conv == VarTypes::LABEL) {
+				/* Labels are written in reverse order as that is the way GrfIDs used to be written.
+				 * Changing the order means changing external applications that extract this data. */
 				BaseLabel *label = static_cast<BaseLabel *>(ptr);
 				for (auto it = label->rbegin(); it != label->rend(); it++) SlWriteByte(*it);
-				break;
-			}
-			if (conv == VarTypes::LABEL_FORWARD) {
-				BaseLabel *label = static_cast<BaseLabel *>(ptr);
-				for (auto it = label->begin(); it != label->end(); it++) SlWriteByte(*it);
 				break;
 			}
 
@@ -988,14 +983,13 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 		}
 		case SaveLoadAction::LoadCheck:
 		case SaveLoadAction::Load: {
-			if (conv == VarTypes::LABEL_REVERSE) {
+			if (conv == VarTypes::LABEL) {
+				/* Labels are written in reverse order as that is the way GrfIDs used to be written.
+				 * Changing the order means changing external applications that extract this data.
+				 * The road/rail type labels were in forward order. They are fixed when needed in
+				 * their respective loaders. */
 				BaseLabel *label = static_cast<BaseLabel *>(ptr);
 				for (auto it = label->rbegin(); it != label->rend(); it++) *it = SlReadByte();
-				break;
-			}
-			if (conv == VarTypes::LABEL_FORWARD) {
-				BaseLabel *label = static_cast<BaseLabel *>(ptr);
-				for (auto it = label->begin(); it != label->end(); it++) *it = SlReadByte();
 				break;
 			}
 
@@ -1010,7 +1004,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 				case VarFileType::U32: x = static_cast<uint32_t>(SlReadUint32()); break;
 				case VarFileType::I64: x = static_cast<int64_t>(SlReadUint64()); break;
 				case VarFileType::U64: x = static_cast<uint64_t>(SlReadUint64()); break;
-				case VarFileType::StringID: x = RemapOldStringID(static_cast<uint16_t>(SlReadUint16())); break;
+				case VarFileType::StringID: x = RemapOldStringID(static_cast<StringID>(SlReadUint16())).base(); break;
 				default: NOT_REACHED();
 			}
 
