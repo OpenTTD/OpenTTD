@@ -8,6 +8,7 @@
 /** @file object_cmd.cpp Handling of object tiles. */
 
 #include "stdafx.h"
+#include "clear_map.h"
 #include "landscape.h"
 #include "command_func.h"
 #include "company_func.h"
@@ -742,6 +743,44 @@ static bool ClickTile_Object(TileIndex tile)
 }
 
 /**
+ * Randomly place rocks around a lighthouse.
+ * @param tile The lighthouse tile.
+ */
+static void PlaceRocksAroundTile(TileIndex tile)
+{
+	for (TileIndex build_tile : SpiralTileSequence(tile, 7)) {
+		switch (GetTileType(build_tile)) {
+			case TileType::Clear:
+				if (GetClearGround(build_tile) == ClearGround::Grass && RandomRange(10) == 0) {
+					SetClearGroundDensity(build_tile, ClearGround::Rocks, 3);
+				}
+				break;
+
+			case TileType::Water:
+				switch (GetWaterTileType(build_tile)) {
+					case WaterTileType::Clear:
+						if (GetWaterClass(build_tile) == WaterClass::Sea && RandomRange(4) == 0) {
+							SetWaterTileType(build_tile, WaterTileType::ClearRocks);
+						}
+						break;
+
+					case WaterTileType::Coast:
+						if (RandomRange(3) == 0) {
+							SetWaterTileType(build_tile, WaterTileType::CoastRocks);
+						}
+						break;
+
+					default:
+						break;
+				}
+				break;
+
+			default: break;
+		}
+	}
+}
+
+/**
  * Try to build a lighthouse near a coast tile.
  * @param coast_tile The tile to try building near.
  * @return \c true iff a lighthouse was built.
@@ -764,6 +803,7 @@ static bool TryBuildLighthouseNearTile(TileIndex coast_tile)
 	for (TileIndex build_tile : SpiralTileSequence(coast_tile, 3)) {
 		if (!IsTileType(build_tile, TileType::Clear) || !IsTileFlat(build_tile) || IsBridgeAbove(build_tile)) continue;
 		BuildObject(OBJECT_LIGHTHOUSE, build_tile);
+		PlaceRocksAroundTile(build_tile);
 		return true;
 	}
 

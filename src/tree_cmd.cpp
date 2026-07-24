@@ -60,7 +60,8 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 {
 	switch (GetTileType(tile)) {
 		case TileType::Water:
-			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
+			/* Consistency with normal rocky tiles, coast with rocks is not eligable for trees. */
+			return !IsBridgeAbove(tile) && GetWaterTileType(tile) == WaterTileType::Coast && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
 
 		case TileType::Clear:
 			return !IsBridgeAbove(tile) && !IsClearGround(tile, ClearGround::Fields) && !IsClearGround(tile, ClearGround::Rocks) &&

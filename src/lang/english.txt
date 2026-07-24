@@ -3286,6 +3286,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Lock
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :River
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Coast or riverbank
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Ship depot
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Rocks
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Coast or riverbank with rocks
 
 # Industries come directly from their industry names
 

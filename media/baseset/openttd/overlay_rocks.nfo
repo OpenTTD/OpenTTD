@@ -4,7 +4,8 @@
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
 //
    -1 * 0	 0C "Overlay rocks"
-   -1 * 3	 05 1A 5F
+   -1 * 0    07 83 01 \7= 03 73
+   -1 * 3	 05 1A 72
 
 // Plain overlay rocks (unused...)
    -1 sprites/overlay_rocks.png 8bpp    1 1  64  31 -31    0 normal
@@ -110,3 +111,71 @@
    -1 sprites/overlay_snowy_rocks_4.png 8bpp 1281 1  64  15 -31    0 normal
    -1 sprites/overlay_snowy_rocks_4.png 8bpp 1361 1  64  31 -31   -8 normal
    -1 sprites/overlay_snowy_rocks_4.png 8bpp 1441 1  64  31 -31   -8 normal
+
+// Coastal rocks
+   -1 sprites/overlay_coastal_rocks.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp   81 1  64  31 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  161 1  64  23 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  241 1  64  23 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  321 1  64  31 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  401 1  64  31 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  481 1  64  23 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  561 1  64  23 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  641 1  64  39 -31   -8 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  721 1  64  39 -31   -8 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  801 1  64  31 -31   -8 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  881 1  64  31 -31   -8 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp  961 1  64  39 -31   -8 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp 1041 1  64  39 -31   -8 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp 1121 1  64  31 -31   -8 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp 1201 1  64  47 -31  -16 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp 1281 1  64  15 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp 1361 1  64  31 -31   -8 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp 1441 1  64  31 -31   -8 normal
+
+   -1 * 6    07 83 01 \7! 03 28
+   -1 * 3	 05 1A 13
+
+// Toyland rocks
+   -1 sprites/overlay_toyland_rocks.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp   81 1  64  31 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  161 1  64  23 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  241 1  64  23 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  321 1  64  31 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  401 1  64  31 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  481 1  64  23 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  561 1  64  23 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  641 1  64  39 -31   -8 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  721 1  64  39 -31   -8 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  801 1  64  31 -31   -8 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  881 1  64  31 -31   -8 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp  961 1  64  39 -31   -8 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp 1041 1  64  39 -31   -8 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp 1121 1  64  31 -31   -8 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp 1201 1  64  47 -31  -16 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp 1281 1  64  15 -31    0 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp 1361 1  64  31 -31   -8 normal
+   -1 sprites/overlay_toyland_rocks.png 8bpp 1441 1  64  31 -31   -8 normal
+
+   -1 * 3	 05 9A 13 5F
+
+// Toyland coastal rocks
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp   81 1  64  31 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  161 1  64  23 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  241 1  64  23 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  321 1  64  31 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  401 1  64  31 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  481 1  64  23 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  561 1  64  23 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  641 1  64  39 -31   -8 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  721 1  64  39 -31   -8 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  801 1  64  31 -31   -8 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  881 1  64  31 -31   -8 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp  961 1  64  39 -31   -8 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1041 1  64  39 -31   -8 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1121 1  64  31 -31   -8 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1201 1  64  47 -31  -16 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1281 1  64  15 -31    0 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1361 1  64  31 -31   -8 normal
+   -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1441 1  64  31 -31   -8 normal

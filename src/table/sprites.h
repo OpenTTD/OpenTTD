@@ -363,7 +363,8 @@ static constexpr SpriteID SPR_OVERLAY_ROCKS_1_QUART_SNOW = SPR_OVERLAY_ROCKS_BAS
 static constexpr SpriteID SPR_OVERLAY_ROCKS_2_QUART_SNOW = SPR_OVERLAY_ROCKS_BASE + NUM_SLOPES * 2; ///< Rocks with half snow density.
 static constexpr SpriteID SPR_OVERLAY_ROCKS_3_QUART_SNOW = SPR_OVERLAY_ROCKS_BASE + NUM_SLOPES * 3; ///< Rocks with 3/4 snow density.
 static constexpr SpriteID SPR_OVERLAY_ROCKS_FULL_SNOW = SPR_OVERLAY_ROCKS_BASE + NUM_SLOPES * 4; ///< Rocks with full snow density.
-static constexpr uint16_t OVERLAY_ROCKS_SPRITE_COUNT = NUM_SLOPES * 5; ///< Total number of rock overlays.
+static constexpr SpriteID SPR_OVERLAY_ROCKS_WATER_COAST = SPR_OVERLAY_ROCKS_BASE + NUM_SLOPES * 5; ///< Rocks on water and coast.
+static constexpr uint16_t OVERLAY_ROCKS_SPRITE_COUNT = NUM_SLOPES * 6; ///< Total number of rock overlays.
 /** @} */
 
 /** @{
