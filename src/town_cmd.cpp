@@ -850,7 +850,11 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc &td)
 	bool house_completed = IsHouseCompleted(tile);
 
 	td.str = hs->building_name;
-	td.town_can_upgrade = !IsHouseProtected(tile);
+
+	/* Show if a player has protected the house, or if the house property is set for protection.
+	 * Note that houses also have a callback which overrides their property (player choice is always respected),
+	 * but it's impossible to know the possible results of the callback in runtime so it's not evaluated here. */
+	td.town_can_upgrade = !IsHousePlayerProtected(tile) && !hs->extra_flags.Test(HouseExtraFlag::BuildingIsProtected);
 
 	std::array<int32_t, 1> regs100;
 	uint16_t callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, Town::GetByTile(tile), tile, regs100);
@@ -2505,7 +2509,7 @@ HouseZone GetTownRadiusGroup(const Town *t, TileIndex tile)
  * @param stage The current construction stage of the house.
  * @param type The type of house.
  * @param random_bits Random bits for newgrf houses to use.
- * @param is_protected Whether the house is protected from the town upgrading it.
+ * @param is_protected Whether a player has marked the house as protected from the town upgrading it.
  * @pre The house can be built here.
  */
 static inline void ClearMakeHouseTile(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits, bool is_protected)
@@ -2529,7 +2533,7 @@ static inline void ClearMakeHouseTile(TileIndex tile, Town *t, uint8_t counter, 
  * @param type The type of house.
  * @param stage The current construction stage.
  * @param random_bits Random bits for newgrf houses to use.
- * @param is_protected Whether the house is protected from the town upgrading it.
+ * @param is_protected Whether a player has marked the house as protected from the town upgrading it.
  * @pre The house can be built here.
  */
 static void MakeTownHouse(TileIndex tile, Town *t, uint8_t counter, uint8_t stage, HouseID type, uint8_t random_bits, bool is_protected)
@@ -2746,7 +2750,7 @@ static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, int maxz, bool nosl
  * @param house The @a HouseID of the house.
  * @param random_bits The random data to be associated with the house.
  * @param house_completed Should the house be placed already complete, instead of under construction?
- * @param is_protected Whether the house is protected from the town upgrading it.
+ * @param is_protected Whether a player has marked the house as protected from the town upgrading it.
  */
 static void BuildTownHouse(Town *t, TileIndex tile, const HouseSpec *hs, HouseID house, uint8_t random_bits, bool house_completed, bool is_protected)
 {
@@ -2904,7 +2908,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile, TownExpandModes modes)
 		/* Special houses that there can be only one of. */
 		t->flags.Set(oneof);
 
-		BuildTownHouse(t, tile, hs, house, random_bits, false, hs->extra_flags.Test(HouseExtraFlag::BuildingIsProtected));
+		BuildTownHouse(t, tile, hs, house, random_bits, false, false);
 
 		return true;
 	}
@@ -2917,7 +2921,7 @@ static bool TryBuildTownHouse(Town *t, TileIndex tile, TownExpandModes modes)
  * @param flags Type of operation.
  * @param tile Tile on which to place the house.
  * @param house The HouseID of the house spec.
- * @param is_protected Whether the house is protected from the town upgrading it.
+ * @param is_protected Whether a player has marked the house as protected from the town upgrading it.
  * @param replace Whether to automatically demolish an existing house on this tile, if present.
  * @return Empty cost or an error.
  */
@@ -2983,7 +2987,7 @@ CommandCost CmdPlaceHouse(DoCommandFlags flags, TileIndex tile, HouseID house, b
  * @param tile End tile of area dragging.
  * @param start_tile Start tile of area dragging.
  * @param house The HouseID of the house spec.
- * @param is_protected Whether the house is protected from the town upgrading it.
+ * @param is_protected Whether a player has marked the house as protected from the town upgrading it.
  * @param replace Whether we can replace existing houses.
  * @param diagonal Whether to use the Diagonal or Orthogonal tile iterator.
  * @return Empty cost or an error.
