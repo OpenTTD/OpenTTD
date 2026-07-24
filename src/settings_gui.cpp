@@ -1068,7 +1068,7 @@ struct GameOptionsWindow : Window {
 					this->SetWidgetDirty(WID_GO_GUI_SCALE_AUTO_TEXT);
 				}
 
-				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, _ctrl_pressed ? 0 : SCALE_NMARKS, this->gui_scale)) {
+				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, GetMaxSafeGuiScale(), _ctrl_pressed ? 0 : CalcScaleNMarks(GetMaxSafeGuiScale()), this->gui_scale)) {
 					this->gui_scale_changed = true;
 					this->SetWidgetDirty(widget);
 				}
