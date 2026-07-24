@@ -51,7 +51,7 @@ struct ANITChunkHandler : ChunkHandler {
 		if (IsSavegameVersionBefore(SaveLoadVersion::RiffToArray)) {
 			size_t count = SlGetFieldLength() / sizeof(_animated_tiles.front());
 			_animated_tiles.clear();
-			_animated_tiles.resize(_animated_tiles.size() + count);
+			_animated_tiles.resize(count);
 			SlCopy(_animated_tiles.data(), count, VarTypes::U32);
 			return;
 		}
