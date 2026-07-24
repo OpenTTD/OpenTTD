@@ -354,14 +354,14 @@ int GetSlopeZInCorner(Slope tileh, Corner corner)
  *
  * @note If a tile has a non-continuous halftile foundation, a corner can have different heights wrt. its edges.
  *
- * @pre z1 and z2 must be initialized (typ. with TileZ). The corner heights just get added.
- *
  * @param tileh The slope of the tile.
  * @param edge The edge of interest.
- * @param z1 Gets incremented by the height of the first corner of the edge. (near corner wrt. the camera)
- * @param z2 Gets incremented by the height of the second corner of the edge. (far corner wrt. the camera)
+ * @param z The z pos of the tile.
+ * @return \a z twice.
+ * First one incremented by the height of the first corner of the edge (near corner wrt. the camera),
+ * and the second one by the height of the second corner of the edge (far corner wrt. the camera).
  */
-void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2)
+std::tuple<int, int> GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int z)
 {
 	static const DiagDirectionIndexArray<std::array<Slope, 4>> corners{{{
 		/*    corner     |          steep slope
@@ -372,6 +372,9 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2)
 		{SLOPE_W, SLOPE_N, SLOPE_STEEP_W, SLOPE_STEEP_N}, // DiagDirection::NW, z1 = W, z2 = N
 	}}};
 
+	int z1 = z;
+	int z2 = z;
+
 	Slope halftile_test = IsHalftileSlope(tileh) ? SlopeWithOneCornerRaised(GetHalftileSlopeCorner(tileh)) : SLOPE_FLAT;
 	if (halftile_test == corners[edge][0]) z2 += TILE_HEIGHT; // The slope is non-continuous in z2. z2 is on the upper side.
 	if (halftile_test == corners[edge][1]) z1 += TILE_HEIGHT; // The slope is non-continuous in z1. z1 is on the upper side.
@@ -380,6 +383,8 @@ void GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int &z1, int &z2)
 	if ((tileh & corners[edge][1]) != 0) z2 += TILE_HEIGHT; // z2 is raised
 	if (RemoveHalftileSlope(tileh) == corners[edge][2]) z1 += TILE_HEIGHT; // z1 is highest corner of a steep slope
 	if (RemoveHalftileSlope(tileh) == corners[edge][3]) z2 += TILE_HEIGHT; // z2 is highest corner of a steep slope
+
+	return {z1, z2};
 }
 
 /**
@@ -397,34 +402,40 @@ std::tuple<Slope, int> GetFoundationSlope(TileIndex tile)
 	return {tileh, z};
 }
 
-
-bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
+/**
+ * Check if the tile has foundation on given edge.
+ * @param tile The tile to check.
+ * @param slope_here The slope of the \a tile.
+ * @param z_here The z of tile's foundation.
+ * @param edge The edge to check.
+ * @return \c true iff the tile has foundation on given edge.
+ */
+static bool HasFoundation(TileIndex tile, Slope slope_here, uint z_here, DiagDirection edge)
 {
-	int z_W_here = z_here;
-	int z_N_here = z_here;
-	GetSlopePixelZOnEdge(slope_here, DiagDirection::NW, z_W_here, z_N_here);
+	auto [z1_here, z2_here] = GetSlopePixelZOnEdge(slope_here, edge, z_here);
 
-	auto [slope, z] = GetFoundationPixelSlope(TileAddXY(tile, 0, -1));
-	int z_W = z;
-	int z_N = z;
-	GetSlopePixelZOnEdge(slope, DiagDirection::SE, z_W, z_N);
+	auto [slope, z] = GetFoundationPixelSlope(TileAddByDiagDir(tile, edge));
+	auto [z1, z2] = GetSlopePixelZOnEdge(slope, ChangeDiagDir(edge, DiagDirDiff::Reverse), z);
 
-	return (z_N_here > z_N) || (z_W_here > z_W);
+	return (z1_here > z1) || (z2_here > z2);
 }
 
-
-bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
+/**
+ * Get the sprite block to use for a foundation.
+ * @param tile Tile to draw a foundation on.
+ * @return The needed block of foundations sprites.
+ * Block 0: Walls at NW and NE edge.
+ * Block 1: Wall at NE edge.
+ * Block 2: Wall at NW edge.
+ * Block 3: No walls at NW or NE edge.
+ */
+uint GetFoundationSpriteBlock(TileIndex tile)
 {
-	int z_E_here = z_here;
-	int z_N_here = z_here;
-	GetSlopePixelZOnEdge(slope_here, DiagDirection::NE, z_E_here, z_N_here);
-
-	auto [slope, z] = GetFoundationPixelSlope(TileAddXY(tile, -1, 0));
-	int z_E = z;
-	int z_N = z;
-	GetSlopePixelZOnEdge(slope, DiagDirection::SW, z_E, z_N);
-
-	return (z_N_here > z_N) || (z_E_here > z_E);
+	auto [slope, z] = GetFoundationPixelSlope(tile);
+	uint block = 0;
+	if (!HasFoundation(tile, slope, z, DiagDirection::NW)) block += 1;
+	if (!HasFoundation(tile, slope, z, DiagDirection::NE)) block += 2;
+	return block;
 }
 
 /**
@@ -439,17 +450,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	/* Two part foundations must be drawn separately */
 	assert(f != Foundation::SteepBoth);
 
-	uint sprite_block = 0;
-	auto [slope, z] = GetFoundationPixelSlope(ti->tile);
-
-	/* Select the needed block of foundations sprites
-	 * Block 0: Walls at NW and NE edge
-	 * Block 1: Wall  at        NE edge
-	 * Block 2: Wall  at NW        edge
-	 * Block 3: No walls at NW or NE edge
-	 */
-	if (!HasFoundationNW(ti->tile, slope, z)) sprite_block += 1;
-	if (!HasFoundationNE(ti->tile, slope, z)) sprite_block += 2;
+	uint sprite_block = GetFoundationSpriteBlock(ti->tile);
 
 	/* Use the original slope sprites if NW and NE borders should be visible */
 	SpriteID leveled_base = (sprite_block == 0 ? (int)SPR_FOUNDATION_BASE : (SPR_SLOPES_VIRTUAL_BASE + sprite_block * TRKFOUND_BLOCK_SIZE));
