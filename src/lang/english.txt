@@ -3399,6 +3399,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Load
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Load the selected game
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Load the selected heightmap
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Load the selected town data
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}New Folder
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Create a new folder in the current location
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Enter a name for the new folder
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Game Details
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No information available
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING1}
@@ -5065,6 +5068,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Autosave failed
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Unable to read drive
 STR_ERROR_GAME_SAVE_FAILED                                      :Game save failed...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Unable to delete file
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Cannot create folder...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :A file or folder with that name already exists
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Folder name cannot contain special characters
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Folder name cannot start with a dot
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :You do not have permission to create a folder here
 STR_ERROR_GAME_LOAD_FAILED                                      :Game load failed...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internal error: {RAW_STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Broken savegame - {RAW_STRING}

@@ -126,6 +126,38 @@ std::string FiosGetCurrentPath()
 }
 
 /**
+ * Create a new subdirectory inside the current FIOS path.
+ * The caller must validate the name against path traversal. This function only reports the OS-level result.
+ * @param name Name of the directory to create (a single path segment, not a path).
+ * @return The outcome of the creation attempt.
+ */
+DirectoryCreateResult FiosCreateDirectory(std::string_view name)
+{
+	assert(_fios_path != nullptr);
+
+	/* Remove trailing path separator, if present. */
+	std::string_view base = *_fios_path;
+	if (!base.empty() && base.back() == PATHSEPCHAR) base.remove_suffix(1);
+	/* Join with a single separator, converting via OTTD2FS so non-ASCII names work on Windows. */
+	std::filesystem::path target = OTTD2FS(fmt::format("{}{}{}", base, PATHSEP, name));
+
+	std::error_code error_code;
+	if (std::filesystem::create_directory(target, error_code)) {
+		return DirectoryCreateResult::Success;
+	}
+
+	/* A false return with no error means the target already exists. Confirm it is a directory to tell it apart from a stray file or other entry. */
+	if (!error_code) {
+		return std::filesystem::is_directory(target, error_code) ? DirectoryCreateResult::AlreadyExists : DirectoryCreateResult::OtherError;
+	}
+
+	/* An existing non-directory file shows up here as file_exists. */
+	if (error_code == std::errc::file_exists) return DirectoryCreateResult::AlreadyExists;
+	if (error_code == std::errc::permission_denied || error_code == std::errc::read_only_file_system) return DirectoryCreateResult::PermissionDenied;
+	return DirectoryCreateResult::OtherError;
+}
+
+/**
  * Browse to a new path based on the passed \a item, starting at #_fios_path.
  * @param *item Item telling us what to do.
  * @return \c true when the path got changed.
