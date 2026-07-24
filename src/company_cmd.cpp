@@ -429,6 +429,44 @@ CommandCost CheckTileOwnership(TileIndex tile)
 }
 
 /**
+ * Set a company name based on type and seed, if the name is unique and shorter than the max length.
+ * @param other_names List of names that cannot be used.
+ * @param c The company of the name to set.
+ * @param t The nearby town, for news message.
+ * @param str The type of name.
+ * @param strp The random seed.
+ * @return True iff the name was set.
+ */
+static bool SetCompanyName(std::span<const std::string> other_names, Company *c, const Town *t, StringID str, uint32_t strp)
+{
+	assert(c != nullptr);
+	assert(t != nullptr);
+
+	/* Name must not be too long. */
+	std::string name = GetString(str, strp);
+	if (Utf8StringLength(name) >= MAX_LENGTH_COMPANY_NAME_CHARS) return false;
+
+	/* No companies must have this name already. */
+	if (std::ranges::find(other_names, name) != other_names.end()) return false;
+
+	c->name_1 = str;
+	c->name_2 = strp;
+
+	MarkWholeScreenDirty();
+	AI::BroadcastNewEvent(new ScriptEventCompanyRenamed(c->index, name));
+	Game::NewEvent(new ScriptEventCompanyRenamed(c->index, name));
+
+	if (!c->is_ai) return true;
+
+	auto cni = std::make_unique<CompanyNewsInformation>(STR_NEWS_COMPANY_LAUNCH_TITLE, c);
+	EncodedString headline = GetEncodedString(STR_NEWS_COMPANY_LAUNCH_DESCRIPTION, cni->company_name, t->index);
+	AddNewsItem(std::move(headline),
+		NewsType::CompanyInfo, NewsStyle::Company, {}, c->last_build_coordinate, {}, std::move(cni));
+
+	return true;
+}
+
+/**
  * Generate the name of a company from the last build coordinate.
  * @param c Company to give a name.
  */
@@ -437,51 +475,24 @@ static void GenerateCompanyName(Company *c)
 	if (c->name_1 != STR_SV_UNNAMED) return;
 	if (c->last_build_coordinate == 0) return;
 
-	Town *t = ClosestTownFromTile(c->last_build_coordinate, UINT_MAX);
-
-	StringID str;
-	uint32_t strp;
-	std::string name;
-	if (t->name.empty() && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END)) {
-		str = SPECSTR_COMPANY_NAME_START + (t->townnametype - SPECSTR_TOWNNAME_START);
-		strp = t->townnameparts;
-
-verify_name:;
-		/* No companies must have this name already */
-		for (const Company *cc : Company::Iterate()) {
-			if (cc->name_1 == str && cc->name_2 == strp) goto bad_town_name;
-		}
-
-		name = GetString(str, strp);
-		if (Utf8StringLength(name) >= MAX_LENGTH_COMPANY_NAME_CHARS) goto bad_town_name;
-
-set_name:;
-		c->name_1 = str;
-		c->name_2 = strp;
-
-		MarkWholeScreenDirty();
-		AI::BroadcastNewEvent(new ScriptEventCompanyRenamed(c->index, name));
-		Game::NewEvent(new ScriptEventCompanyRenamed(c->index, name));
-
-		if (c->is_ai) {
-			auto cni = std::make_unique<CompanyNewsInformation>(STR_NEWS_COMPANY_LAUNCH_TITLE, c);
-			EncodedString headline = GetEncodedString(STR_NEWS_COMPANY_LAUNCH_DESCRIPTION, cni->company_name, t->index);
-			AddNewsItem(std::move(headline),
-				NewsType::CompanyInfo, NewsStyle::Company, {}, c->last_build_coordinate, {}, std::move(cni));
-		}
-		return;
+	/* Collect existing company names. */
+	std::vector<std::string> other_names;
+	for (const Company *cc : Company::Iterate()) {
+		if (cc != c) other_names.emplace_back(GetString(STR_COMPANY_NAME, cc->index));
 	}
-bad_town_name:;
+
+	const Town *t = ClosestTownFromTile(c->last_build_coordinate, UINT_MAX);
+
+	if (t->name.empty() && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_END)) {
+		if (SetCompanyName(other_names, c, t, SPECSTR_COMPANY_NAME_START + (t->townnametype - SPECSTR_TOWNNAME_START), t->townnameparts)) return;
+	}
 
 	if (c->president_name_1 == SPECSTR_PRESIDENT_NAME) {
-		str = SPECSTR_ANDCO_NAME;
-		strp = c->president_name_2;
-		name = GetString(str, strp);
-		goto set_name;
-	} else {
-		str = SPECSTR_ANDCO_NAME;
-		strp = Random();
-		goto verify_name;
+		if (SetCompanyName(other_names, c, t, SPECSTR_ANDCO_NAME, c->president_name_2)) return;
+	}
+
+	for (;;) {
+		if (SetCompanyName(other_names, c, t, SPECSTR_ANDCO_NAME, Random())) return;
 	}
 }
 
