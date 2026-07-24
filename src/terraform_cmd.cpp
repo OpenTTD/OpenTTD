@@ -17,6 +17,7 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "core/backup_type.hpp"
+#include "core/random_func.hpp"
 #include "terraform_cmd.h"
 #include "landscape_cmd.h"
 
@@ -257,6 +258,10 @@ std::tuple<CommandCost, Money, TileIndex> CmdTerraformLand(DoCommandFlags flags,
 			Backup<bool> old_generating_world(_generating_world);
 			if (_game_mode == GameMode::Editor) old_generating_world.Change(true); // used to create green terraformed land
 			DoCommandFlags tile_flags = flags | DoCommandFlag::Auto | DoCommandFlag::ForceClearTile;
+
+			/* If the tile is being lowered, make rocks to simulate excavaation/blasting. Slopes are always rocky, but only some flat tiles get rocks. */
+			if (!dir_up && (tileh != SLOPE_FLAT || Chance16(1, 3))) tile_flags = tile_flags | DoCommandFlag::ClearToRocks;
+
 			if (pass == 0) {
 				tile_flags.Reset(DoCommandFlag::Execute);
 				tile_flags.Set(DoCommandFlag::NoModifyTownRating);
