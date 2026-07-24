@@ -254,21 +254,31 @@ cmd_configure() {
     cmake_args+=("${extra_arr[@]}")
   fi
 
-  # macOS gotcha (see CLAUDE.md): the system Xcode CLT's libc++ may predate
+  # macOS gotcha (see CLAUDE.md): an older Xcode CLT's libc++ may predate
   # <source_location> (used by src/stdafx.h), failing every profile's build
-  # with "'source_location' file not found" -- confirmed by actually hitting
-  # this on a fresh (non-cached) configure of baseline-release in this
-  # environment. Prefer Homebrew's LLVM toolchain unless CC/CXX are already
-  # set (never override an explicit caller choice).
+  # with "'source_location' file not found". This tool used to force Homebrew's
+  # LLVM unconditionally -- but on a modern Xcode whose system compiler already
+  # has <source_location>, that override can itself *break* the build when the
+  # Homebrew LLVM's libc++ header search paths don't match the current macOS SDK
+  # (e.g. hundreds of "unknown type name 'size_t'" errors). So probe the system
+  # compiler first and only fall back to Homebrew LLVM when it genuinely lacks
+  # <source_location>. An explicit caller CC/CXX always wins and is never
+  # overridden.
   local research_cc="" research_cxx=""
-  if [[ "$(uname -s)" == "Darwin" && -z "${CC:-}" && -z "${CXX:-}" ]] && command -v brew >/dev/null 2>&1; then
-    local llvm_prefix; llvm_prefix=$(brew --prefix llvm 2>/dev/null || true)
-    if [[ -n "$llvm_prefix" && -x "$llvm_prefix/bin/clang++" ]]; then
-      research_cc="$llvm_prefix/bin/clang"
-      research_cxx="$llvm_prefix/bin/clang++"
-      log_info "macOS: using Homebrew LLVM toolchain ($research_cxx) for <source_location> support (see CLAUDE.md); export CC/CXX yourself to override"
+  if [[ "$(uname -s)" == "Darwin" && -z "${CC:-}" && -z "${CXX:-}" ]]; then
+    if cxx_supports_source_location "c++"; then
+      log_info "macOS: system compiler (c++) supports <source_location> -- using it, no toolchain override needed"
+    elif command -v brew >/dev/null 2>&1; then
+      local llvm_prefix; llvm_prefix=$(brew --prefix llvm 2>/dev/null || true)
+      if [[ -n "$llvm_prefix" && -x "$llvm_prefix/bin/clang++" ]]; then
+        research_cc="$llvm_prefix/bin/clang"
+        research_cxx="$llvm_prefix/bin/clang++"
+        log_info "macOS: system compiler lacks <source_location>; falling back to Homebrew LLVM ($research_cxx) (see CLAUDE.md); export CC/CXX yourself to override"
+      else
+        log_warn "macOS: system compiler lacks <source_location> and Homebrew LLVM not found -- build will likely fail (see CLAUDE.md); install with 'brew install llvm'"
+      fi
     else
-      log_warn "macOS: Homebrew LLVM toolchain not found -- build may fail with a 'source_location' error on older Xcode CLT (see CLAUDE.md); install with 'brew install llvm'"
+      log_warn "macOS: system compiler lacks <source_location> and brew not available -- build will likely fail (see CLAUDE.md)"
     fi
   fi
 

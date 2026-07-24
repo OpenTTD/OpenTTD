@@ -84,6 +84,27 @@ run_with_timeout() {
   return "$rc"
 }
 
+# Probe whether a C++ compiler can compile a C++20 translation unit that uses
+# <source_location> (required by src/stdafx.h). Compile-only (-c, no link), so
+# it needs no full SDK link environment and stays fast. Returns 0 if supported.
+# Used on macOS to decide whether a Homebrew LLVM fallback is actually needed:
+# modern Xcode (AppleClang 15+) already ships <source_location>, and forcing a
+# Homebrew LLVM whose libc++ header search paths don't match the current SDK
+# can itself *break* an otherwise-working system-compiler build.
+cxx_supports_source_location() {
+  local cxx="${1:-c++}"
+  command -v "$cxx" >/dev/null 2>&1 || return 1
+  local tmpd
+  tmpd=$(mktemp -d 2>/dev/null) || return 1
+  printf '#include <source_location>\nint main(){return static_cast<int>(std::source_location::current().line()*0);}\n' > "$tmpd/probe.cpp"
+  local rc=1
+  if "$cxx" -std=c++20 -c "$tmpd/probe.cpp" -o "$tmpd/probe.o" >/dev/null 2>&1; then
+    rc=0
+  fi
+  rm -rf "$tmpd"
+  return $rc
+}
+
 # --- generic append-only JSON line files, embedded as arrays at report time ---
 
 # Append a fully-formed JSON object (already valid JSON text) as one line.

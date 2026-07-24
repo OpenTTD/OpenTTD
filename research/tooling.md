@@ -208,12 +208,15 @@ what an external orchestrator does with a completed `manifest.json` beyond readi
   assuming anything is actually broken, and check `limitations.jsonl` for an automatic note.
 - **`configure`/`build` fails with `'source_location' file not found`**: the documented macOS CLT
   gotcha from `CLAUDE.md` §Build — an Xcode Command Line Tools install older than Xcode 15 ships a
-  libc++ without `<source_location>`. `configure` already prefers Homebrew's LLVM toolchain
-  automatically on macOS when `CC`/`CXX` aren't already set in the environment (confirmed: this is
-  what makes `baseline-release` buildable on such a machine at all — before this was wired in,
-  `configure`'s own "already matches, reusing" fast path could mask the problem for a
-  previously-good build dir while a *fresh* configure of a new profile hit it immediately). If it
-  still fails, `brew install llvm` and retry, or export `CC`/`CXX` yourself to a working compiler.
+  libc++ without `<source_location>`. On macOS (when `CC`/`CXX` aren't already set), `configure`
+  first probes the *system* compiler for `<source_location>` support and uses it when present; it
+  only falls back to Homebrew's LLVM toolchain when the system compiler genuinely lacks it. This
+  probe-first behaviour matters both ways: on an older CLT it still auto-selects Homebrew LLVM, but
+  on a modern Xcode it deliberately does *not* override the working system compiler — forcing a
+  Homebrew LLVM whose libc++ header search paths don't match the current macOS SDK can itself break
+  an otherwise-fine build (hundreds of `unknown type name 'size_t'` errors). If the fallback path is
+  taken but still fails, `brew install llvm` and retry, or export `CC`/`CXX` yourself to a working
+  compiler.
 - **Shared `build-research/` contention**: this build directory is also used directly by hand and
   potentially by other concurrent sessions in this fork. `configure`/`build` are safe to re-run
   (idempotent for identical inputs) but two full builds racing on a heavily loaded machine will
