@@ -87,7 +87,7 @@ void MoveBuoysToWaypoints()
 		wp->build_date = build_date;
 		wp->owner      = train ? GetTileOwner(xy) : OWNER_NONE;
 
-		if (IsInsideBS(string_id, STR_SV_STNAME_BUOY, 9)) wp->town_cn = string_id - STR_SV_STNAME_BUOY;
+		if (IsInsideBS(string_id, STR_SV_STNAME_BUOY, 9)) wp->town_cn = (string_id - STR_SV_STNAME_BUOY).base();
 
 		if (train) {
 			/* When we make a rail waypoint of the station, convert the map as well. */

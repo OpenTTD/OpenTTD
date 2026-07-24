@@ -869,7 +869,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc &td)
 	}
 
 	if (!house_completed) {
-		td.dparam = td.str;
+		td.dparam = td.str.base();
 		td.str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 

@@ -49,7 +49,7 @@ static void GetTownName(StringBuilder &builder, const TownNameParams *par, uint3
 {
 	if (par->grfid.Empty()) {
 		auto tmp_params = MakeParameters(townnameparts);
-		GetStringWithArgs(builder, par->type, tmp_params);
+		GetStringWithArgs(builder, static_cast<StringID>(par->type), tmp_params);
 		return;
 	}
 

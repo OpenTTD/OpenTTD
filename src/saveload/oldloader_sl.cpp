@@ -795,7 +795,7 @@ static bool LoadOldStation(LoadgameState &ls, int num)
 			if (IsInsideBS(_old_string_id, 0x180F, 32)) {
 				st->string_id = STR_SV_STNAME + (_old_string_id - 0x180F); // automatic name
 			} else {
-				st->string_id = _old_string_id + 0x2800; // custom name
+				st->string_id = static_cast<StringID>(_old_string_id + 0x2800); // custom name
 			}
 
 			if (st->airport.blocks.Test(AirportBlock{8})) {
@@ -806,7 +806,7 @@ static bool LoadOldStation(LoadgameState &ls, int num)
 				st->airport.type = 0; // small airport
 			}
 		} else {
-			st->string_id = RemapOldStringID(_old_string_id);
+			st->string_id = RemapOldStringID(static_cast<StringID>(_old_string_id));
 		}
 	} else {
 		delete st;
@@ -1011,28 +1011,28 @@ static bool LoadOldCompany(LoadgameState &ls, int num)
 
 		/* Company name */
 		if (_old_string_id == 0 || _old_string_id == 0x4C00) {
-			_old_string_id = STR_SV_UNNAMED; // "Unnamed"
+			_old_string_id = STR_SV_UNNAMED.base(); // "Unnamed"
 		} else if (GB(_old_string_id, 8, 8) == 0x52) {
 			_old_string_id += 0x2A00; // Custom name
 		} else {
-			_old_string_id = RemapOldStringID(_old_string_id += 0x240D); // Automatic name
+			_old_string_id = RemapOldStringID(static_cast<StringID>(_old_string_id += 0x240D)).base(); // Automatic name
 		}
-		c->name_1 = _old_string_id;
+		c->name_1 = static_cast<StringID>(_old_string_id);
 
 		/* Manager name */
 		switch (_old_string_id_2) {
-			case 0x4CDA: _old_string_id_2 = SPECSTR_PRESIDENT_NAME;    break; // automatic name
-			case 0x0006: _old_string_id_2 = STR_SV_EMPTY;              break; // empty name
+			case 0x4CDA: _old_string_id_2 = SPECSTR_PRESIDENT_NAME.base(); break; // automatic name
+			case 0x0006: _old_string_id_2 = STR_SV_EMPTY.base(); break; // empty name
 			default:     _old_string_id_2 = _old_string_id_2 + 0x2A00; break; // custom name
 		}
-		c->president_name_1 = _old_string_id_2;
+		c->president_name_1 = static_cast<StringID>(_old_string_id_2);
 
 		c->colour = RemapTTOColour(c->colour);
 
 		if (num != 0) c->is_ai = true;
 	} else {
-		c->name_1 = RemapOldStringID(_old_string_id);
-		c->president_name_1 = RemapOldStringID(_old_string_id_2);
+		c->name_1 = RemapOldStringID(static_cast<StringID>(_old_string_id));
+		c->president_name_1 = RemapOldStringID(static_cast<StringID>(_old_string_id_2));
 
 		if (num == 0) {
 			/* If the first company has no name, make sure we call it UNNAMED */
@@ -1335,15 +1335,15 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 
 			switch (_old_string_id) {
 				case 0x0000: break; // empty (invalid vehicles)
-				case 0x0006: _old_string_id  = STR_SV_EMPTY;              break; // empty (special vehicles)
-				case 0x8495: _old_string_id  = STR_SV_TRAIN_NAME;         break; // "Train X"
-				case 0x8842: _old_string_id  = STR_SV_ROAD_VEHICLE_NAME;  break; // "Road Vehicle X"
-				case 0x8C3B: _old_string_id  = STR_SV_SHIP_NAME;          break; // "Ship X"
-				case 0x9047: _old_string_id  = STR_SV_AIRCRAFT_NAME;      break; // "Aircraft X"
-				default:     _old_string_id += 0x2A00;                    break; // custom name
+				case 0x0006: _old_string_id = STR_SV_EMPTY.base(); break; // empty (special vehicles)
+				case 0x8495: _old_string_id = STR_SV_TRAIN_NAME.base(); break; // "Train X"
+				case 0x8842: _old_string_id = STR_SV_ROAD_VEHICLE_NAME.base(); break; // "Road Vehicle X"
+				case 0x8C3B: _old_string_id = STR_SV_SHIP_NAME.base(); break; // "Ship X"
+				case 0x9047: _old_string_id = STR_SV_AIRCRAFT_NAME.base(); break; // "Aircraft X"
+				default: _old_string_id += 0x2A00; break; // custom name
 			}
 
-			ls.vehicle_names[_current_vehicle_id] = _old_string_id;
+			ls.vehicle_names[_current_vehicle_id] = static_cast<StringID>(_old_string_id);
 		} else {
 			/* Read the vehicle type and allocate the right vehicle */
 			switch (ReadByte(ls)) {
@@ -1360,7 +1360,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 			if (!LoadChunk(ls, v, vehicle_chunk)) return false;
 			if (v == nullptr) continue;
 
-			ls.vehicle_names[_current_vehicle_id] = RemapOldStringID(_old_string_id);
+			ls.vehicle_names[_current_vehicle_id] = RemapOldStringID(static_cast<StringID>(_old_string_id));
 
 			/* This should be consistent, else we have a big problem... */
 			if (v->index != _current_vehicle_id) {
@@ -1429,9 +1429,9 @@ static bool LoadOldSign(LoadgameState &ls, int num)
 
 	if (_old_string_id != 0) {
 		if (_savegame_type == SavegameType::TTO) {
-			if (_old_string_id != 0x140A) si->name = CopyFromOldName(_old_string_id + 0x2A00);
+			if (_old_string_id != 0x140A) si->name = CopyFromOldName(static_cast<StringID>(_old_string_id + 0x2A00));
 		} else {
-			si->name = CopyFromOldName(RemapOldStringID(_old_string_id));
+			si->name = CopyFromOldName(RemapOldStringID(static_cast<StringID>(_old_string_id)));
 		}
 		si->owner = OWNER_NONE;
 	} else {
@@ -1473,7 +1473,7 @@ static bool LoadOldEngine(LoadgameState &ls, int num)
 static bool LoadOldEngineName(LoadgameState &ls, int num)
 {
 	Engine *e = GetTempDataEngine(static_cast<EngineID>(num));
-	e->name = CopyFromOldName(RemapOldStringID(ReadUint16(ls)));
+	e->name = CopyFromOldName(RemapOldStringID(static_cast<StringID>(ReadUint16(ls))));
 	return true;
 }
 
