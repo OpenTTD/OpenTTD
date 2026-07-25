@@ -1217,9 +1217,9 @@ STR_RIVERS_MODERATE                                             :適量
 STR_RIVERS_LOT                                                  :多
 
 ###length 3
-STR_DISASTER_NONE                                               :無
-STR_DISASTER_REDUCED                                            :減少
-STR_DISASTER_NORMAL                                             :普通
+STR_BREAKDOWNS_NONE                                             :無
+STR_BREAKDOWNS_REDUCED                                          :減少
+STR_BREAKDOWNS_NORMAL                                           :普通
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

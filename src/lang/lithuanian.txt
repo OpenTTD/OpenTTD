@@ -1356,9 +1356,9 @@ STR_RIVERS_MODERATE                                             :Vidutiniškai
 STR_RIVERS_LOT                                                  :Daug
 
 ###length 3
-STR_DISASTER_NONE                                               :Nėra
-STR_DISASTER_REDUCED                                            :Sumažintas
-STR_DISASTER_NORMAL                                             :Normalus
+STR_BREAKDOWNS_NONE                                             :Nėra
+STR_BREAKDOWNS_REDUCED                                          :Sumažintas
+STR_BREAKDOWNS_NORMAL                                           :Normalus
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

@@ -1180,9 +1180,9 @@ STR_RIVERS_MODERATE                                             :Средно
 STR_RIVERS_LOT                                                  :Много
 
 ###length 3
-STR_DISASTER_NONE                                               :Никакви
-STR_DISASTER_REDUCED                                            :Намалени
-STR_DISASTER_NORMAL                                             :Нормални
+STR_BREAKDOWNS_NONE                                             :Никакви
+STR_BREAKDOWNS_REDUCED                                          :Намалени
+STR_BREAKDOWNS_NORMAL                                           :Нормални
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

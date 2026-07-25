@@ -1240,9 +1240,9 @@ STR_RIVERS_MODERATE                                             :Stredne
 STR_RIVERS_LOT                                                  :Veľa
 
 ###length 3
-STR_DISASTER_NONE                                               :Žiadne
-STR_DISASTER_REDUCED                                            :Obmedzené
-STR_DISASTER_NORMAL                                             :Normálne
+STR_BREAKDOWNS_NONE                                             :Žiadne
+STR_BREAKDOWNS_REDUCED                                          :Obmedzené
+STR_BREAKDOWNS_NORMAL                                           :Normálne
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

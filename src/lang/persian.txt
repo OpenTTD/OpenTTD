@@ -1089,9 +1089,9 @@ STR_RIVERS_MODERATE                                             :متوسط
 STR_RIVERS_LOT                                                  :زیاد
 
 ###length 3
-STR_DISASTER_NONE                                               :هیچکدام
-STR_DISASTER_REDUCED                                            :کم
-STR_DISASTER_NORMAL                                             :عادی
+STR_BREAKDOWNS_NONE                                             :هیچکدام
+STR_BREAKDOWNS_REDUCED                                          :کم
+STR_BREAKDOWNS_NORMAL                                           :عادی
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

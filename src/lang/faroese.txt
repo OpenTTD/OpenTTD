@@ -976,9 +976,9 @@ STR_RIVERS_MODERATE                                             :Miðal
 STR_RIVERS_LOT                                                  :Nógvir
 
 ###length 3
-STR_DISASTER_NONE                                               :Ongar
-STR_DISASTER_REDUCED                                            :Færri
-STR_DISASTER_NORMAL                                             :Vanligar
+STR_BREAKDOWNS_NONE                                             :Ongar
+STR_BREAKDOWNS_REDUCED                                          :Færri
+STR_BREAKDOWNS_NORMAL                                           :Vanligar
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

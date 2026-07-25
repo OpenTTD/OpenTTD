@@ -1212,9 +1212,9 @@ STR_RIVERS_MODERATE                                             :Middels
 STR_RIVERS_LOT                                                  :Mange
 
 ###length 3
-STR_DISASTER_NONE                                               :Ingen
-STR_DISASTER_REDUCED                                            :Redusert
-STR_DISASTER_NORMAL                                             :Normalt
+STR_BREAKDOWNS_NONE                                             :Ingen
+STR_BREAKDOWNS_REDUCED                                          :Redusert
+STR_BREAKDOWNS_NORMAL                                           :Normalt
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

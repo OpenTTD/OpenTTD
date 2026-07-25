@@ -1209,9 +1209,9 @@ STR_RIVERS_MODERATE                                             :Meadhanach
 STR_RIVERS_LOT                                                  :Mòran dhiubh
 
 ###length 3
-STR_DISASTER_NONE                                               :Cha tachair seo idir
-STR_DISASTER_REDUCED                                            :Ainneamh
-STR_DISASTER_NORMAL                                             :Àbhaisteach
+STR_BREAKDOWNS_NONE                                             :Cha tachair seo idir
+STR_BREAKDOWNS_REDUCED                                          :Ainneamh
+STR_BREAKDOWNS_NORMAL                                           :Àbhaisteach
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

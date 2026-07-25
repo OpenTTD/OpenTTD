@@ -1115,9 +1115,9 @@ STR_RIVERS_MODERATE                                             :中程度
 STR_RIVERS_LOT                                                  :多い
 
 ###length 3
-STR_DISASTER_NONE                                               :なし
-STR_DISASTER_REDUCED                                            :軽減
-STR_DISASTER_NORMAL                                             :普通
+STR_BREAKDOWNS_NONE                                             :なし
+STR_BREAKDOWNS_REDUCED                                          :軽減
+STR_BREAKDOWNS_NORMAL                                           :普通
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :×1.5

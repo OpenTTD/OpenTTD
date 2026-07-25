@@ -1210,9 +1210,9 @@ STR_RIVERS_MODERATE                                             :Bình Thường
 STR_RIVERS_LOT                                                  :Nhiều
 
 ###length 3
-STR_DISASTER_NONE                                               :Không Có
-STR_DISASTER_REDUCED                                            :Giảm
-STR_DISASTER_NORMAL                                             :Thường
+STR_BREAKDOWNS_NONE                                             :Không Có
+STR_BREAKDOWNS_REDUCED                                          :Giảm
+STR_BREAKDOWNS_NORMAL                                           :Thường
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

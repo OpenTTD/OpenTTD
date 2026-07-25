@@ -1024,9 +1024,9 @@ STR_RIVERS_MODERATE                                             :Middelmatig
 STR_RIVERS_LOT                                                  :Baie
 
 ###length 3
-STR_DISASTER_NONE                                               :Geen
-STR_DISASTER_REDUCED                                            :Verminder
-STR_DISASTER_NORMAL                                             :Normaal
+STR_BREAKDOWNS_NONE                                             :Geen
+STR_BREAKDOWNS_REDUCED                                          :Verminder
+STR_BREAKDOWNS_NORMAL                                           :Normaal
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

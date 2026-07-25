@@ -1209,9 +1209,9 @@ STR_RIVERS_MODERATE                                             :Cymhedrol
 STR_RIVERS_LOT                                                  :Llawer
 
 ###length 3
-STR_DISASTER_NONE                                               :Dim
-STR_DISASTER_REDUCED                                            :Llai
-STR_DISASTER_NORMAL                                             :Arferol
+STR_BREAKDOWNS_NONE                                             :Dim
+STR_BREAKDOWNS_REDUCED                                          :Llai
+STR_BREAKDOWNS_NORMAL                                           :Arferol
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

@@ -1110,9 +1110,9 @@ STR_RIVERS_MODERATE                                             :בינוני
 STR_RIVERS_LOT                                                  :הרבה
 
 ###length 3
-STR_DISASTER_NONE                                               :ללא
-STR_DISASTER_REDUCED                                            :מופחת
-STR_DISASTER_NORMAL                                             :רגיל
+STR_BREAKDOWNS_NONE                                             :ללא
+STR_BREAKDOWNS_REDUCED                                          :מופחת
+STR_BREAKDOWNS_NORMAL                                           :רגיל
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

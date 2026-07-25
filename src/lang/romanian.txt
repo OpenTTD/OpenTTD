@@ -1185,9 +1185,9 @@ STR_RIVERS_MODERATE                                             :Mediu
 STR_RIVERS_LOT                                                  :Multe
 
 ###length 3
-STR_DISASTER_NONE                                               :Deloc
-STR_DISASTER_REDUCED                                            :Redus
-STR_DISASTER_NORMAL                                             :Frecvență normală
+STR_BREAKDOWNS_NONE                                             :Deloc
+STR_BREAKDOWNS_REDUCED                                          :Redus
+STR_BREAKDOWNS_NORMAL                                           :Frecvență normală
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1,5

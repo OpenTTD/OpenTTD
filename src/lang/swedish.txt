@@ -1217,9 +1217,9 @@ STR_RIVERS_MODERATE                                             :Mellan
 STR_RIVERS_LOT                                                  :Många
 
 ###length 3
-STR_DISASTER_NONE                                               :Ingen
-STR_DISASTER_REDUCED                                            :Reducerad
-STR_DISASTER_NORMAL                                             :Normal
+STR_BREAKDOWNS_NONE                                             :Ingen
+STR_BREAKDOWNS_REDUCED                                          :Reducerad
+STR_BREAKDOWNS_NORMAL                                           :Normal
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

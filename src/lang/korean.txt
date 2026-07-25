@@ -1218,9 +1218,9 @@ STR_RIVERS_MODERATE                                             :적당히
 STR_RIVERS_LOT                                                  :많이
 
 ###length 3
-STR_DISASTER_NONE                                               :고장 안남
-STR_DISASTER_REDUCED                                            :적음
-STR_DISASTER_NORMAL                                             :일반
+STR_BREAKDOWNS_NONE                                             :고장 안남
+STR_BREAKDOWNS_REDUCED                                          :적음
+STR_BREAKDOWNS_NORMAL                                           :일반
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :1.5배 지급

@@ -995,9 +995,9 @@ STR_RIVERS_MODERATE                                             :Ez asko ez gutx
 STR_RIVERS_LOT                                                  :Asko
 
 ###length 3
-STR_DISASTER_NONE                                               :Ezer ez
-STR_DISASTER_REDUCED                                            :Mugatua
-STR_DISASTER_NORMAL                                             :Normala
+STR_BREAKDOWNS_NONE                                             :Ezer ez
+STR_BREAKDOWNS_REDUCED                                          :Mugatua
+STR_BREAKDOWNS_NORMAL                                           :Normala
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

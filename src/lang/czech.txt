@@ -1297,9 +1297,9 @@ STR_RIVERS_MODERATE                                             :Více
 STR_RIVERS_LOT                                                  :Mnoho
 
 ###length 3
-STR_DISASTER_NONE                                               :žádné
-STR_DISASTER_REDUCED                                            :snížené
-STR_DISASTER_NORMAL                                             :běžné
+STR_BREAKDOWNS_NONE                                             :žádné
+STR_BREAKDOWNS_REDUCED                                          :snížené
+STR_BREAKDOWNS_NORMAL                                           :běžné
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :1,5x

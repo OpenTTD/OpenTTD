@@ -972,9 +972,9 @@ STR_RIVERS_MODERATE                                             :درمیانے
 STR_RIVERS_LOT                                                  :بہت سے
 
 ###length 3
-STR_DISASTER_NONE                                               :کوئی نہیں
-STR_DISASTER_REDUCED                                            :کم
-STR_DISASTER_NORMAL                                             :نارمل
+STR_BREAKDOWNS_NONE                                             :کوئی نہیں
+STR_BREAKDOWNS_REDUCED                                          :کم
+STR_BREAKDOWNS_NORMAL                                           :نارمل
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

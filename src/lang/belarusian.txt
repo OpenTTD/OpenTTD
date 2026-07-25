@@ -1482,9 +1482,9 @@ STR_RIVERS_MODERATE                                             :Сярэдня�
 STR_RIVERS_LOT                                                  :Вялікая
 
 ###length 3
-STR_DISASTER_NONE                                               :Выключаны
-STR_DISASTER_REDUCED                                            :Зьніжаныя
-STR_DISASTER_NORMAL                                             :Звычайныя
+STR_BREAKDOWNS_NONE                                             :Выключаны
+STR_BREAKDOWNS_REDUCED                                          :Зьніжаныя
+STR_BREAKDOWNS_NORMAL                                           :Звычайныя
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

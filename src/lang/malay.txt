@@ -979,9 +979,9 @@ STR_RIVERS_MODERATE                                             :Pertengahan
 STR_RIVERS_LOT                                                  :Banyak
 
 ###length 3
-STR_DISASTER_NONE                                               :Tiada
-STR_DISASTER_REDUCED                                            :Dikurangkan
-STR_DISASTER_NORMAL                                             :Biasa
+STR_BREAKDOWNS_NONE                                             :Tiada
+STR_BREAKDOWNS_REDUCED                                          :Dikurangkan
+STR_BREAKDOWNS_NORMAL                                           :Biasa
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5
