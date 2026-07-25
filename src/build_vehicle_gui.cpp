@@ -264,11 +264,8 @@ static bool EnginePowerVsRunningCostSorter(const GUIEngineListItem &a, const GUI
 /** Determines order of train engines by capacity. @copydoc GUIList::Sorter */
 static bool TrainEngineCapacitySorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
 {
-	const RailVehicleInfo *rvi_a = RailVehInfo(a.engine_id);
-	const RailVehicleInfo *rvi_b = RailVehInfo(b.engine_id);
-
-	int va = GetTotalCapacityOfArticulatedParts(a.engine_id) * (rvi_a->railveh_type == RailVehicleType::Multihead ? 2 : 1);
-	int vb = GetTotalCapacityOfArticulatedParts(b.engine_id) * (rvi_b->railveh_type == RailVehicleType::Multihead ? 2 : 1);
+	int va = GetTotalCapacityOfArticulatedParts(a.engine_id);
+	int vb = GetTotalCapacityOfArticulatedParts(b.engine_id);
 	int r = va - vb;
 
 	/* Use EngineID to sort instead since we want consistent sorting */
@@ -1104,7 +1101,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 					uint total_capacity;
 					switch (type) {
 						case VehicleType::Train:
-							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id) * (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Multihead ? 2 : 1);
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id);
 							break;
 						case VehicleType::Road:
 							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id);
