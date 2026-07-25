@@ -1217,9 +1217,9 @@ STR_RIVERS_MODERATE                                             :Keskisuuri
 STR_RIVERS_LOT                                                  :Monia
 
 ###length 3
-STR_DISASTER_NONE                                               :Ei mitään
-STR_DISASTER_REDUCED                                            :Vähennetty
-STR_DISASTER_NORMAL                                             :Tavallinen
+STR_BREAKDOWNS_NONE                                             :Ei mitään
+STR_BREAKDOWNS_REDUCED                                          :Vähennetty
+STR_BREAKDOWNS_NORMAL                                           :Tavallinen
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :× 1,5

@@ -975,9 +975,9 @@ STR_RIVERS_MODERATE                                             :Miðlungs
 STR_RIVERS_LOT                                                  :Margar
 
 ###length 3
-STR_DISASTER_NONE                                               :Ekkert
-STR_DISASTER_REDUCED                                            :Minnkað
-STR_DISASTER_NORMAL                                             :Venjulegt
+STR_BREAKDOWNS_NONE                                             :Ekkert
+STR_BREAKDOWNS_REDUCED                                          :Minnkað
+STR_BREAKDOWNS_NORMAL                                           :Venjulegt
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

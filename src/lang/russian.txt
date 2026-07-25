@@ -1366,9 +1366,9 @@ STR_RIVERS_MODERATE                                             :Среднее
 STR_RIVERS_LOT                                                  :Большое
 
 ###length 3
-STR_DISASTER_NONE                                               :нет
-STR_DISASTER_REDUCED                                            :сниженная
-STR_DISASTER_NORMAL                                             :обычная
+STR_BREAKDOWNS_NONE                                             :нет
+STR_BREAKDOWNS_REDUCED                                          :сниженная
+STR_BREAKDOWNS_NORMAL                                           :обычная
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1,5

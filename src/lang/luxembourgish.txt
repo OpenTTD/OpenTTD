@@ -1210,9 +1210,9 @@ STR_RIVERS_MODERATE                                             :Mëttel
 STR_RIVERS_LOT                                                  :Vill
 
 ###length 3
-STR_DISASTER_NONE                                               :Keng
-STR_DISASTER_REDUCED                                            :Manner
-STR_DISASTER_NORMAL                                             :Normal
+STR_BREAKDOWNS_NONE                                             :Keng
+STR_BREAKDOWNS_REDUCED                                          :Manner
+STR_BREAKDOWNS_NORMAL                                           :Normal
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

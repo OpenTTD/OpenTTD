@@ -1305,9 +1305,9 @@ STR_RIVERS_MODERATE                                             :Mezmultaj
 STR_RIVERS_LOT                                                  :Multaj
 
 ###length 3
-STR_DISASTER_NONE                                               :Neniu
-STR_DISASTER_REDUCED                                            :Malpli
-STR_DISASTER_NORMAL                                             :Normale
+STR_BREAKDOWNS_NONE                                             :Neniu
+STR_BREAKDOWNS_REDUCED                                          :Malpli
+STR_BREAKDOWNS_NORMAL                                           :Normale
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

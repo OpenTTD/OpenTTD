@@ -526,7 +526,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Харпӑр х
 ###length 4
 
 ###length 3
-STR_DISASTER_NONE                                               :Ҫук
+STR_BREAKDOWNS_NONE                                             :Ҫук
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

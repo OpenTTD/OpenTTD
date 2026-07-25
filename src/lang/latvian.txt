@@ -1210,9 +1210,9 @@ STR_RIVERS_MODERATE                                             :Vidējs daudzum
 STR_RIVERS_LOT                                                  :Daudzas
 
 ###length 3
-STR_DISASTER_NONE                                               :Nav
-STR_DISASTER_REDUCED                                            :samazināta
-STR_DISASTER_NORMAL                                             :Parasta
+STR_BREAKDOWNS_NONE                                             :Nav
+STR_BREAKDOWNS_REDUCED                                          :samazināta
+STR_BREAKDOWNS_NORMAL                                           :Parasta
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

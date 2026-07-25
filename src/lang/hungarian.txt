@@ -1281,9 +1281,9 @@ STR_RIVERS_MODERATE                                             :Közepes
 STR_RIVERS_LOT                                                  :Sok
 
 ###length 3
-STR_DISASTER_NONE                                               :Nincs
-STR_DISASTER_REDUCED                                            :Ritka
-STR_DISASTER_NORMAL                                             :Normál
+STR_BREAKDOWNS_NONE                                             :Nincs
+STR_BREAKDOWNS_REDUCED                                          :Ritka
+STR_BREAKDOWNS_NORMAL                                           :Normál
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :1,5x

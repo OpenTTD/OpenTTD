@@ -1133,9 +1133,9 @@ STR_RIVERS_MODERATE                                             :நடுத்
 STR_RIVERS_LOT                                                  :பல
 
 ###length 3
-STR_DISASTER_NONE                                               :ஒன்றுமில்லை
-STR_DISASTER_REDUCED                                            :குறைக்கப்பட்ட
-STR_DISASTER_NORMAL                                             :இயல்பான
+STR_BREAKDOWNS_NONE                                             :ஒன்றுமில்லை
+STR_BREAKDOWNS_REDUCED                                          :குறைக்கப்பட்ட
+STR_BREAKDOWNS_NORMAL                                           :இயல்பான
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

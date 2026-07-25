@@ -1274,9 +1274,9 @@ STR_RIVERS_MODERATE                                             :Keskmiselt
 STR_RIVERS_LOT                                                  :Palju
 
 ###length 3
-STR_DISASTER_NONE                                               :Ei
-STR_DISASTER_REDUCED                                            :Vähem
-STR_DISASTER_NORMAL                                             :Keskmiselt
+STR_BREAKDOWNS_NONE                                             :Ei
+STR_BREAKDOWNS_REDUCED                                          :Vähem
+STR_BREAKDOWNS_NORMAL                                           :Keskmiselt
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :1,5x

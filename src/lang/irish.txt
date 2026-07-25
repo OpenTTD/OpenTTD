@@ -1074,9 +1074,9 @@ STR_RIVERS_MODERATE                                             :Meánach
 STR_RIVERS_LOT                                                  :Go leor
 
 ###length 3
-STR_DISASTER_NONE                                               :Gan tubaistí
-STR_DISASTER_REDUCED                                            :Laghdaithe
-STR_DISASTER_NORMAL                                             :Gnáth
+STR_BREAKDOWNS_NONE                                             :Gan tubaistí
+STR_BREAKDOWNS_REDUCED                                          :Laghdaithe
+STR_BREAKDOWNS_NORMAL                                           :Gnáth
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

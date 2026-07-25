@@ -389,7 +389,7 @@ STR_AI_SPEED_FAST                                               :तेज़
 ###length 4
 
 ###length 3
-STR_DISASTER_NORMAL                                             :सामान्य
+STR_BREAKDOWNS_NORMAL                                           :सामान्य
 
 ###length 4
 

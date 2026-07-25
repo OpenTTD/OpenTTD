@@ -1218,9 +1218,9 @@ STR_RIVERS_MODERATE                                             :Normal
 STR_RIVERS_LOT                                                  :Molts
 
 ###length 3
-STR_DISASTER_NONE                                               :Cap
-STR_DISASTER_REDUCED                                            :Reduït
-STR_DISASTER_NORMAL                                             :Normal
+STR_BREAKDOWNS_NONE                                             :Cap
+STR_BREAKDOWNS_REDUCED                                          :Reduït
+STR_BREAKDOWNS_NORMAL                                           :Normal
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1,5

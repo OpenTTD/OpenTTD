@@ -1310,9 +1310,9 @@ STR_RIVERS_MODERATE                                             :Μεσαία
 STR_RIVERS_LOT                                                  :Πολλά
 
 ###length 3
-STR_DISASTER_NONE                                               :Καμία
-STR_DISASTER_REDUCED                                            :Μειωμένες
-STR_DISASTER_NORMAL                                             :Κανονικές
+STR_BREAKDOWNS_NONE                                             :Καμία
+STR_BREAKDOWNS_REDUCED                                          :Μειωμένες
+STR_BREAKDOWNS_NORMAL                                           :Κανονικές
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

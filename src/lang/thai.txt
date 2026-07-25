@@ -1017,9 +1017,9 @@ STR_RIVERS_MODERATE                                             :ปานกล
 STR_RIVERS_LOT                                                  :หลาย
 
 ###length 3
-STR_DISASTER_NONE                                               :ไม่มี
-STR_DISASTER_REDUCED                                            :ภาวะลดลง
-STR_DISASTER_NORMAL                                             :ภาวะปกติ
+STR_BREAKDOWNS_NONE                                             :ไม่มี
+STR_BREAKDOWNS_REDUCED                                          :ภาวะลดลง
+STR_BREAKDOWNS_NORMAL                                           :ภาวะปกติ
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :1.5 เท่า

@@ -1217,9 +1217,9 @@ STR_RIVERS_MODERATE                                             :Wawaenga
 STR_RIVERS_LOT                                                  :Maha
 
 ###length 3
-STR_DISASTER_NONE                                               :Kore
-STR_DISASTER_REDUCED                                            :Whakapaku
-STR_DISASTER_NORMAL                                             :Taunoa
+STR_BREAKDOWNS_NONE                                             :Kore
+STR_BREAKDOWNS_REDUCED                                          :Whakapaku
+STR_BREAKDOWNS_NORMAL                                           :Taunoa
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

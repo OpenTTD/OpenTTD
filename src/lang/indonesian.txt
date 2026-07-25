@@ -1211,9 +1211,9 @@ STR_RIVERS_MODERATE                                             :Sedang
 STR_RIVERS_LOT                                                  :Banyak
 
 ###length 3
-STR_DISASTER_NONE                                               :Tidak pernah
-STR_DISASTER_REDUCED                                            :Dikurangi
-STR_DISASTER_NORMAL                                             :Normal
+STR_BREAKDOWNS_NONE                                             :Tidak pernah
+STR_BREAKDOWNS_REDUCED                                          :Dikurangi
+STR_BREAKDOWNS_NORMAL                                           :Normal
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

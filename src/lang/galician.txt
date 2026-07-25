@@ -1209,9 +1209,9 @@ STR_RIVERS_MODERATE                                             :Medio
 STR_RIVERS_LOT                                                  :Moitos
 
 ###length 3
-STR_DISASTER_NONE                                               :Ningún
-STR_DISASTER_REDUCED                                            :Reducido
-STR_DISASTER_NORMAL                                             :Normal
+STR_BREAKDOWNS_NONE                                             :Ningún
+STR_BREAKDOWNS_REDUCED                                          :Reducido
+STR_BREAKDOWNS_NORMAL                                           :Normal
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :x1.5

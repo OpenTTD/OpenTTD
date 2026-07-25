@@ -1201,9 +1201,9 @@ STR_RIVERS_MODERATE                                             :Mediocris
 STR_RIVERS_LOT                                                  :Magnus
 
 ###length 3
-STR_DISASTER_NONE                                               :Nullae
-STR_DISASTER_REDUCED                                            :Rarae
-STR_DISASTER_NORMAL                                             :Mediocres
+STR_BREAKDOWNS_NONE                                             :Nullae
+STR_BREAKDOWNS_REDUCED                                          :Rarae
+STR_BREAKDOWNS_NORMAL                                           :Mediocres
 
 ###length 4
 STR_SUBSIDY_X1_5                                                :Sesquiplex
