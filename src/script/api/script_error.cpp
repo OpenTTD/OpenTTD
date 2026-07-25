@@ -31,21 +31,10 @@ ScriptError::ScriptErrorMapString ScriptError::error_map_string = ScriptError::S
 
 /* static */ ScriptErrorType ScriptError::StringToError(StringID internal_string_id)
 {
-	StringIndexInTab index = GetStringIndex(internal_string_id);
 	switch (GetStringTab(internal_string_id)) {
 		case TEXT_TAB_NEWGRF_START:
 		case TEXT_TAB_GAMESCRIPT_START:
 			return ERR_NEWGRF_SUPPLIED_ERROR; // NewGRF strings.
-
-		case TEXT_TAB_SPECIAL:
-			if (index < 0xE4) break; // Player name
-			[[fallthrough]];
-
-		case TEXT_TAB_TOWN:
-			if (index < 0xC0) break; // Town name
-			/* These strings are 'random' and have no meaning.
-			 * They actually shouldn't even be returned as error messages. */
-			return ERR_UNKNOWN;
 
 		default:
 			break;

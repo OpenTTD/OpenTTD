@@ -228,6 +228,7 @@ std::string GetStringWithArgs(StringID string, StringParameters &args);
 void GenerateTownNameString(StringBuilder &builder, size_t lang, uint32_t seed);
 void GetTownName(StringBuilder &builder, const struct Town *t);
 void GRFTownNameGenerate(StringBuilder &builder, GrfID grfid, uint16_t gen, uint32_t seed);
+void GetSpecialNameString(StringBuilder &builder, StringID string, uint32_t seed);
 
 char32_t RemapNewGRFStringControlCode(char32_t scc, StringConsumer &consumer);
 
