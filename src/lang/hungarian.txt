@@ -1730,12 +1730,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nincs
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Eredeti
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Javított
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Közúti járművek: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Melyik oldalon közlekedjenek a közúti járművek
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Közúti járművek közlekedési oldala: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Válaszd ki a közúti járművek közlekedési oldalát.{}Ez befolyásolja a jelzések oldalát és a szemafor grafikát.{}Elképzelhető, hogy igényli a játék újra töltését a változtatás teljes érvénybe lépéséhez.
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Balra hajtás
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Jobbra hajtás
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Bal
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Jobb
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Magasságtérkép forgatása: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :A magasságtérkép elforgatásának beállítása a játékvilágba való illesztéshez
@@ -2958,10 +2958,10 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Kollekció tör
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Biztosan törölni akarod ezt a kollekciót?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Biztos, hogy törölni szeretnéd ezt a kollekciót? Vannak benne elemek a tiltott NewGRF-ekből!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Válaszd ki a megjeleníteni kívánt állomástípust
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Válaszd ki a megjeleníteni kívánt állomástípust. Ctrl+kattintás a mentett elemek hozzáadásához, eltávolításához
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Válassz ki egy állomástípust az építéshez. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Jelöljön ki egy állomás kollekciót a megjelenítéshez
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Válassz egy útpontot amit meg akarsz jeleníteni
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Válassz egy útpontot amit meg akarsz jeleníteni. Ctrl+kattintás a mentett elemek hozzáadásához, eltávolításához
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Válassz egy útpontot az építéshez. Ctrl+katintás a mentett elemek hozzáadásához vagy eltávolításához
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Jelöljön ki egy útpont kollekciót a megjelenítéshez
 STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Válaszd ki a megjeleníteni kívánt buszállomás-típust
@@ -2970,10 +2970,10 @@ STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Jelöljön ki e
 STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Válaszd ki a megjeleníteni kívánt teherautó-típust
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Válassz egy teherautóállomás-típust az építéshez. Ctrl + kattintás a mentett elemek hozzáadásához vagy eltávolításához
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Jelöljön ki egy hajóállomás kollekciót a megjelenítéshez
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Válaszd ki a megjelenítendő elemcsoportot
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Válaszd ki a megjelenítendő elemcsoportot. Ctrl+kattintás a mentett elemek hozzáadásához, eltávolításához
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Válaszd ki az építendő elem típusát. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához. Ctrl+kattintás+húzás a terület átlós kijelöléséhez. Nyomd meg a Shift billentyűt is, ha csak a költségbecslést szeretnéd megjeleníteni
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Jelöljön ki egy objektum kollekciót a megjelenítéshez
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Válassz egy település-zónát amit meg akarsz jeleníteni
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Válassz egy település-zónát amit meg akarsz jeleníteni. Ctrl+kattintás a mentett elemek hozzáadásához, eltávolításához
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Válassz egy ház típúst az építéshez. Ctrl+kattintás a mentett elemek hozzáadásához vagy eltávolításához
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Jelöljön ki egy ház kollekciót a megjelenítéshez
 
@@ -4787,9 +4787,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Telerakodás b�
 STR_ORDER_DROP_NO_LOADING                                       :Nincs berakodás
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijelölt célponton a berakodási szokások beállítása
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Teljes kirakodás
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Kényszerített teljes kirakodás
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Kirakodás ha fogadott
-STR_ORDER_DROP_UNLOAD                                           :Teljes kirakodás
+STR_ORDER_DROP_UNLOAD                                           :Kényszerített teljes kirakodás, akkor is ha nem fogadott
 STR_ORDER_DROP_TRANSFER                                         :Elszállítás
 STR_ORDER_DROP_NO_UNLOADING                                     :Nincs kirakodás
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a kirakodási szokások beállítása
@@ -4892,10 +4892,10 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Automat
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Telerakodás)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Bármiből teljes berakodás)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Nincs berakodás)
-STR_ORDER_UNLOAD                                                :{SPACE}(Kirakodás és rakományfelvétel)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Kirakodás és mindenből teljes berakodás)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Kirakodás és bármiből teljes berakodás)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Kirakodás és üresen indulás)
+STR_ORDER_UNLOAD                                                :{SPACE}(Kinyszerített kirakodás és rakományfelvétel)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Kényszerített kirakodás és mindenből teljes berakodás)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Kényszerített kirakodás és bármiből teljes berakodás)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Kényszerített kirakodás és üresen indulás)
 STR_ORDER_TRANSFER                                              :(Elszállítás és rakományfelvétel)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Elszállítás és mindenből teljes berakodás)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Elszállítás és bármiből teljes berakodás)
@@ -4908,9 +4908,9 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Nincs k
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Átalakítás {STRING} szállítására)
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Mindenből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Bármiből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Kirakodás, rakományfelvétel és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Kényszerített kirakodás, rakományfelvétel és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Kényszerített kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Kényszerített kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Elszállítás, rakományfelvétel és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Elszállítás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Elszállítás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
