@@ -252,8 +252,8 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16_t *mail_capacity) const
 		case VehicleType::Train:
 			capacity = GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY,        this->VehInfo<RailVehicleInfo>().capacity, v);
 
-			/* In purchase list add the capacity of the second head. Always use the plain property for this. */
-			if (v == nullptr && this->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Multihead) capacity += this->VehInfo<RailVehicleInfo>().capacity;
+			/* In purchase list multiply the capacity by 2 for dual headed engines */
+			if (v == nullptr && this->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Multihead) capacity *=2;
 			break;
 
 		case VehicleType::Road:
