@@ -1104,7 +1104,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 					uint total_capacity;
 					switch (type) {
 						case VehicleType::Train:
-							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id) * (e->VehInfo<RailVehicleInfo>().railveh_type == RailVehicleType::Multihead ? 2 : 1);
+							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id);
 							break;
 						case VehicleType::Road:
 							total_capacity = GetTotalCapacityOfArticulatedParts(item.engine_id);
