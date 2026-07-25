@@ -24,6 +24,10 @@
 #include "core/backup_type.hpp"
 #include "core/geometry_func.hpp"
 #include "viewport_func.h"
+#include "debug.h"
+
+#include <chrono>
+#include <limits>
 
 #include "table/animcursors.h"
 #include "table/string_colours.h"
@@ -1743,6 +1747,60 @@ void SetCursor(CursorID icon, PaletteID pal)
 	}
 }
 
+void DebugCursorState(std::string_view source, int device_x, int device_y, bool relative)
+{
+	if (_debug_driver_level < 1) return;
+
+	static auto last_log = std::chrono::steady_clock::time_point{};
+	static int last_pos_x = std::numeric_limits<int>::min();
+	static int last_pos_y = std::numeric_limits<int>::min();
+	static int last_device_x = std::numeric_limits<int>::min();
+	static int last_device_y = std::numeric_limits<int>::min();
+	static bool last_relative = false;
+	static bool last_in_window = false;
+	static bool last_fix_at = false;
+	static bool last_fullscreen = false;
+	static bool last_visible = false;
+
+	const int pos_x = _cursor.pos.x;
+	const int pos_y = _cursor.pos.y;
+	const bool in_window = _cursor.in_window;
+	const bool fix_at = _cursor.fix_at;
+	const bool fullscreen = _fullscreen;
+	const bool visible = _cursor.visible;
+
+	const bool changed = pos_x != last_pos_x || pos_y != last_pos_y ||
+			device_x != last_device_x || device_y != last_device_y ||
+			relative != last_relative || in_window != last_in_window ||
+			fix_at != last_fix_at || fullscreen != last_fullscreen ||
+			visible != last_visible;
+
+	const auto now = std::chrono::steady_clock::now();
+	const bool have_logged = last_log.time_since_epoch().count() != 0;
+	/* Unchanged: at most once per second. Changed: log promptly, but coalesce to 100ms to avoid flood. */
+	if (!changed) {
+		if (have_logged && now - last_log < std::chrono::seconds(1)) return;
+	} else {
+		if (have_logged && now - last_log < std::chrono::milliseconds(100)) return;
+	}
+
+	Debug(driver, 1,
+			"cursor[{}]: pos=({}, {}) device_{}=({}, {}) delta=({}, {}) in_window={} fix_at={} fullscreen={} visible={} dirty={}",
+			source, pos_x, pos_y, relative ? "rel" : "abs", device_x, device_y,
+			_cursor.delta.x, _cursor.delta.y, in_window, fix_at, fullscreen, visible, _cursor.dirty);
+
+	last_pos_x = pos_x;
+	last_pos_y = pos_y;
+	last_device_x = device_x;
+	last_device_y = device_y;
+	last_relative = relative;
+	last_in_window = in_window;
+	last_fix_at = fix_at;
+	last_fullscreen = fullscreen;
+	last_visible = visible;
+	last_log = now;
+}
+
 /**
  * Update cursor position based on a relative change.
  *
@@ -1755,6 +1813,8 @@ void CursorVars::UpdateCursorPositionRelative(int delta_x, int delta_y)
 
 	this->delta.x = delta_x;
 	this->delta.y = delta_y;
+
+	DebugCursorState("cursor-update-rel", delta_x, delta_y, true);
 }
 
 /**
@@ -1768,15 +1828,17 @@ bool CursorVars::UpdateCursorPosition(int x, int y)
 	this->delta.x = x - this->pos.x;
 	this->delta.y = y - this->pos.y;
 
+	bool warp = false;
 	if (this->fix_at) {
-		return this->delta.x != 0 || this->delta.y != 0;
+		warp = this->delta.x != 0 || this->delta.y != 0;
 	} else if (this->pos.x != x || this->pos.y != y) {
 		this->dirty = true;
 		this->pos.x = x;
 		this->pos.y = y;
 	}
 
-	return false;
+	DebugCursorState("cursor-update", x, y, false);
+	return warp;
 }
 
 bool ChangeResInGame(int width, int height)
@@ -1786,7 +1848,10 @@ bool ChangeResInGame(int width, int height)
 
 bool ToggleFullScreen(bool fs)
 {
+	Debug(driver, 1, "cursor: ToggleFullScreen request={} current={}", fs, _fullscreen);
 	bool result = VideoDriver::GetInstance()->ToggleFullscreen(fs);
+	Debug(driver, 1, "cursor: ToggleFullScreen done result={} current={}", result, _fullscreen);
+	DebugCursorState("fullscreen-toggle", _cursor.pos.x, _cursor.pos.y, false);
 	if (_fullscreen != fs && _resolutions.empty()) {
 		Debug(driver, 0, "Could not find a suitable fullscreen resolution");
 	}

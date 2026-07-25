@@ -39,6 +39,9 @@
 
 #include "../../table/sprites.h"
 
+/** Rate-limited cursor/mouse diagnostic; defined in gfx.cpp. Enable with -d driver=1. */
+void DebugCursorState(std::string_view source, int device_x, int device_y, bool relative = false);
+
 /* Table data for key mapping. */
 #include "cocoa_keys.h"
 
@@ -628,6 +631,8 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 - (void)mouseEntered:(NSEvent *)theEvent
 {
 	_cursor.in_window = true;
+	Debug(driver, 1, "cursor: cocoa mouseEntered");
+	DebugCursorState("cocoa-enter", _cursor.pos.x, _cursor.pos.y, false);
 }
 /**
  * Make OpenTTD aware that it has NO control over the mouse.
@@ -637,6 +642,8 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 {
 	if ([ self window ] != nil) UndrawMouseCursor();
 	_cursor.in_window = false;
+	Debug(driver, 1, "cursor: cocoa mouseExited");
+	DebugCursorState("cocoa-exit", _cursor.pos.x, _cursor.pos.y, false);
 }
 
 /**
@@ -1481,12 +1488,18 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	NSPoint loc = [ driver->cocoaview convertPoint:[ [ aNotification object ] mouseLocationOutsideOfEventStream ] fromView:nil ];
 	BOOL inside = ([ driver->cocoaview hitTest:loc ] == driver->cocoaview);
 
+	Debug(driver, 1, "cursor: windowDidEnterFullScreen loc=({:.1f}, {:.1f}) inside={} in_window={}",
+			loc.x, loc.y, static_cast<bool>(inside), _cursor.in_window);
+
 	if (inside) {
 		/* We don't care about the event, but the compiler does. */
 		NSEvent *e = [ [ NSEvent alloc ] init ];
 		[ driver->cocoaview mouseEntered:e ];
 		[ e release ];
+	} else {
+		Debug(driver, 1, "cursor: windowDidEnterFullScreen did not synthesise mouseEntered (mouse outside view)");
 	}
+	DebugCursorState("cocoa-fullscreen-enter", _cursor.pos.x, _cursor.pos.y, false);
 }
 /**
  * Screen the window is on changed.

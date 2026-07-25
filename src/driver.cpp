@@ -39,6 +39,16 @@ bool _blitter_autodetected;          ///< Was the blitter autodetected or specif
 static const std::string HWACCELERATION_TEST_FILE = "hwaccel.dat"; ///< Filename to test if we crashed last time we tried to use hardware acceleration.
 
 /**
+ * Log which video backend was selected and related display settings.
+ * @param video_driver The started video driver instance.
+ */
+static void LogVideoBackend(const VideoDriver *video_driver)
+{
+	Debug(driver, 1, "video backend: name='{}' info='{}' fullscreen={} hw_accel={} vsync={}",
+			video_driver->GetName(), video_driver->GetInfoString(), _fullscreen, _video_hw_accel, _video_vsync);
+}
+
+/**
  * Get a string parameter the list of parameters.
  * @param parm The parameters.
  * @param name The parameter name we're looking for.
@@ -150,6 +160,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				auto err = newd->Start({});
 				if (!err) {
 					Debug(driver, 1, "Successfully probed {} driver '{}'", GetDriverTypeName(type), d->name);
+					if (type == Driver::Type::Video) LogVideoBackend(static_cast<const VideoDriver *>(newd.get()));
 					GetActiveDriver(type) = std::move(newd);
 					return true;
 				}
@@ -195,6 +206,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 			}
 
 			Debug(driver, 1, "Successfully loaded {} driver '{}'", GetDriverTypeName(type), d->name);
+			if (type == Driver::Type::Video) LogVideoBackend(static_cast<const VideoDriver *>(newd.get()));
 			GetActiveDriver(type) = std::move(newd);
 			return true;
 		}

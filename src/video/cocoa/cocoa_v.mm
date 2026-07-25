@@ -38,6 +38,9 @@
 #include "../../window_func.h"
 #include "../../window_gui.h"
 
+/** Rate-limited cursor/mouse diagnostic; defined in gfx.cpp. Enable with -d driver=1. */
+void DebugCursorState(std::string_view source, int device_x, int device_y, bool relative = false);
+
 #import <sys/param.h> /* for MAXPATHLEN */
 #import <sys/time.h> /* gettimeofday */
 
@@ -178,6 +181,9 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
  */
 bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
+	Debug(driver, 1, "cursor: Cocoa ToggleFullscreen request={} IsFullscreen={} _fullscreen={}",
+			full_screen, this->IsFullscreen(), _fullscreen);
+
 	if (this->IsFullscreen() == full_screen) return true;
 
 	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
@@ -188,9 +194,13 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 
 		this->UpdateVideoModes();
 		InvalidateWindowClassesData(WindowClass::GameOptions, 3);
+		Debug(driver, 1, "cursor: Cocoa ToggleFullscreen applied IsFullscreen={} _fullscreen={}",
+				this->IsFullscreen(), _fullscreen);
+		DebugCursorState("cocoa-toggle-fullscreen", _cursor.pos.x, _cursor.pos.y, false);
 		return true;
 	}
 
+	Debug(driver, 1, "cursor: Cocoa ToggleFullscreen unsupported by window");
 	return false;
 }
 
@@ -448,6 +458,15 @@ void VideoDriver_Cocoa::InputLoop()
 	this->fast_forward_key_pressed = _tab_is_down;
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+
+	/* Poll OS mouse position even when no mouseMoved events arrive (e.g. during fullscreen settle). */
+	if (_debug_driver_level >= 1 && this->window != nil && this->cocoaview != nil) {
+		NSPoint screen_mouse = [ NSEvent mouseLocation ];
+		NSPoint win_pt = [ this->window convertRectFromScreen:NSMakeRect(screen_mouse.x, screen_mouse.y, 0, 0) ].origin;
+		NSPoint view_pt = [ this->cocoaview convertPoint:win_pt fromView:nil ];
+		NSPoint real_pt = [ this->cocoaview getRealRect:NSMakeRect(view_pt.x, this->cocoaview.bounds.size.height - view_pt.y, 0, 0) ].origin;
+		DebugCursorState("cocoa-poll", static_cast<int>(real_pt.x), static_cast<int>(real_pt.y), false);
+	}
 }
 
 /** Main game loop. */
