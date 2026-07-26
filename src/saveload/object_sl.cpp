@@ -14,6 +14,7 @@
 
 #include "../object_base.h"
 #include "../object_map.h"
+#include "../town.h"
 #include "newgrf_sl.h"
 
 #include "../safeguards.h"
@@ -22,7 +23,7 @@ static const SaveLoad _object_desc[] = {
 	    SLE_VAR(Object, location.tile,              VarTypes::U32),
 	    SLE_VAR(Object, location.w,                 VarFileType::U8 | VarMemType::U16),
 	    SLE_VAR(Object, location.h,                 VarFileType::U8 | VarMemType::U16),
-	    SLE_REF(Object, town,                       SLRefType::Town),
+	SaveLoad::Reference<SLRefType::Town>("town", SLE_OBJECT_ADDRESS(Object, town)),
 	    SLE_VAR(Object, build_date,                 VarFileType::U32 | VarMemType::I32),
 	SLE_CONDVARNAME(Object, recolour_offset, "colour", VarTypes::U8, SaveLoadVersion::IndustryPlatform, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(Object, view, VarTypes::U8, SaveLoadVersion::NewGRFObjectView, SaveLoadVersion::MaxVersion),
