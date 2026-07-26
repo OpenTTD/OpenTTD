@@ -17,12 +17,12 @@
 #include "../safeguards.h"
 
 static const SaveLoad _goals_desc[] = {
-	     SLE_VAR(Goal, company,   VarFileType::U16 | VarMemType::U8),
-	     SLE_VAR(Goal, type,      VarFileType::U16 | VarMemType::U8),
-	     SLE_VAR(Goal, dst,       VarTypes::U32),
+	SaveLoad::Variable<VarFileType::U16>("company", SLE_OBJECT_ADDRESS(Goal, company)),
+	SaveLoad::Variable<VarFileType::U16>("type", SLE_OBJECT_ADDRESS(Goal, type)),
+	SaveLoad::Variable<VarFileType::U32>("dst", SLE_OBJECT_ADDRESS(Goal, dst)),
 	SaveLoad::String("text", SLE_OBJECT_ADDRESS(Goal, text), StringValidationSetting::AllowControlCode),
 	SaveLoad::String("progress", SLE_OBJECT_ADDRESS(Goal, progress), StringValidationSetting::AllowControlCode, SaveLoadVersion::GoalProgressPlaneAcceleration),
-	 SLE_CONDVAR(Goal, completed, VarTypes::BOOL, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::Bool>("completed", SLE_OBJECT_ADDRESS(Goal, completed), SaveLoadVersion::GoalProgressPlaneAcceleration),
 };
 
 struct GOALChunkHandler : ChunkHandler {

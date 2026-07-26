@@ -17,16 +17,16 @@
 #include "../safeguards.h"
 
 static const SaveLoad _group_desc[] = {
-	 SLE_CONDVAR(Group, name, VarTypes::NAME, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SaveLoad::Variable<VarFileType::StringID>("name", SLE_OBJECT_ADDRESS(Group, name), SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
 	SaveLoad::String("name", SLE_OBJECT_ADDRESS(Group, name), StringValidationSetting::AllowControlCode, SaveLoadVersion::ReplaceCustomNameArray),
-	     SLE_VAR(Group, owner,              VarTypes::U8),
-	     SLE_VAR(Group, vehicle_type,       VarTypes::U8),
-	     SLE_VAR(Group, flags,              VarTypes::U8),
-	 SLE_CONDVAR(Group, livery.in_use, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, livery.colour1, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, livery.colour2, VarTypes::U8, SaveLoadVersion::GroupLiveries, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, parent, VarTypes::U16, SaveLoadVersion::GroupHierarchy, SaveLoadVersion::MaxVersion),
-	 SLE_CONDVAR(Group, number, VarTypes::U16, SaveLoadVersion::GroupNumbers, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U8>("owner", SLE_OBJECT_ADDRESS(Group, owner)),
+	SaveLoad::Variable<VarFileType::U8>("vehicle_type", SLE_OBJECT_ADDRESS(Group, vehicle_type)),
+	SaveLoad::Variable<VarFileType::U8>("flags", SLE_OBJECT_ADDRESS(Group, flags)),
+	SaveLoad::Variable<VarFileType::U8>("livery.in_use", SLE_OBJECT_ADDRESS(Group, livery.in_use), SaveLoadVersion::GroupLiveries),
+	SaveLoad::Variable<VarFileType::U8>("livery.colour1", SLE_OBJECT_ADDRESS(Group, livery.colour1), SaveLoadVersion::GroupLiveries),
+	SaveLoad::Variable<VarFileType::U8>("livery.colour2", SLE_OBJECT_ADDRESS(Group, livery.colour2), SaveLoadVersion::GroupLiveries),
+	SaveLoad::Variable<VarFileType::U16>("parent", SLE_OBJECT_ADDRESS(Group, parent), SaveLoadVersion::GroupHierarchy),
+	SaveLoad::Variable<VarFileType::U16>("number", SLE_OBJECT_ADDRESS(Group, number), SaveLoadVersion::GroupNumbers),
 };
 
 struct GRPSChunkHandler : ChunkHandler {
