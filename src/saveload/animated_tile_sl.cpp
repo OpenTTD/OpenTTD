@@ -19,7 +19,7 @@
 extern std::vector<TileIndex> _animated_tiles;
 
 static const SaveLoad _animated_tile_desc[] = {
-	 SLEG_VECTOR("tiles", _animated_tiles, VarTypes::U32),
+	SaveLoad::Vector<VarFileType::U32>("tiles", SLE_GLOBAL_ADDRESS(_animated_tiles)),
 };
 
 struct ANITChunkHandler : ChunkHandler {
