@@ -316,7 +316,7 @@ inline bool IsLock(Tile t)
 inline DiagDirection GetLockDirection(Tile t)
 {
 	assert(IsLock(t));
-	return (DiagDirection)GB(t.m5(), WBL_LOCK_ORIENT_BEGIN, WBL_LOCK_ORIENT_COUNT);
+	return static_cast<DiagDirection>(GB(t.m5(), WBL_LOCK_ORIENT_BEGIN, WBL_LOCK_ORIENT_COUNT));
 }
 
 /**

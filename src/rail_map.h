@@ -114,7 +114,7 @@ inline void SetHasSignals(Tile tile, bool signals)
  */
 inline RailType GetRailType(Tile t)
 {
-	return (RailType)GB(t.m8(), 0, 6);
+	return static_cast<RailType>(GB(t.m8(), 0, 6));
 }
 
 /**
@@ -170,7 +170,7 @@ inline bool HasTrack(Tile tile, Track track)
  */
 inline DiagDirection GetRailDepotDirection(Tile t)
 {
-	return (DiagDirection)GB(t.m5(), 0, 2);
+	return static_cast<DiagDirection>(GB(t.m5(), 0, 2));
 }
 
 /**

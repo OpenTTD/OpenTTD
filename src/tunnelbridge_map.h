@@ -26,7 +26,7 @@
 inline DiagDirection GetTunnelBridgeDirection(Tile t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
-	return (DiagDirection)GB(t.m5(), 0, 2);
+	return static_cast<DiagDirection>(GB(t.m5(), 0, 2));
 }
 
 /**
@@ -39,7 +39,7 @@ inline DiagDirection GetTunnelBridgeDirection(Tile t)
 inline TransportType GetTunnelBridgeTransportType(Tile t)
 {
 	assert(IsTileType(t, TileType::TunnelBridge));
-	return (TransportType)GB(t.m5(), 2, 2);
+	return static_cast<TransportType>(GB(t.m5(), 2, 2));
 }
 
 /**
