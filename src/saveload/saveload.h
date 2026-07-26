@@ -1476,18 +1476,6 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 #define SLE_REFVECTOR(base, variable, type) SLE_CONDREFVECTOR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
- * Only write byte during saving; never read it during loading.
- * When using SLE_SAVEBYTE you will have to read this byte before the table
- * this is in is read. This also means SLE_SAVEBYTE can only be used at the
- * top of a chunk.
- * This is intended to be used to indicate what type of entry this is in a
- * list of entries.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- */
-#define SLE_SAVEBYTE(base, variable) SLE_GENERAL(SaveLoadType::SaveByte, base, variable, {}, 0, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion, 0)
-
-/**
  * Storage of global simple variables, references (pointers), and arrays.
  * @param name     The name of the field.
  * @param cmd      Load/save type. @see SaveLoadType
