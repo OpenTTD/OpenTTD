@@ -1678,6 +1678,12 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, int x, int y, uint
 		child_wid->current_y = ComputeMaxSize(child_wid->smallest_y, given_height - child_wid->padding.Vertical(), vert_step);
 	}
 
+	for (const auto &child_wid : this->children) {
+		auto [pref_x, _] = child_wid->GetPreferredSizeForSize(child_wid->current_x, child_wid->current_y);
+		additional_length += child_wid->current_x - pref_x;
+		child_wid->current_x = pref_x;
+	}
+
 	/* First.5 loop: count how many children are of the biggest step size. */
 	if (flags.Test(NWidContainerFlag::BigFirst) && biggest_stepsize > 0) {
 		for (const auto &child_wid : this->children) {
@@ -1850,6 +1856,12 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, int x, int y, uint g
 
 		uint hor_step = (sizing == SizingType::Smallest) ? 1 : child_wid->GetHorizontalStepSize(sizing);
 		child_wid->current_x = ComputeMaxSize(child_wid->smallest_x, given_width - child_wid->padding.Horizontal(), hor_step);
+	}
+
+	for (const auto &child_wid : this->children) {
+		auto [_, pref_y] = child_wid->GetPreferredSizeForSize(child_wid->current_x, child_wid->current_y);
+		additional_length += child_wid->current_y - pref_y;
+		child_wid->current_y = pref_y;
 	}
 
 	/* First.5 loop: count how many children are of the biggest step size. */
