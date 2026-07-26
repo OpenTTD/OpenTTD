@@ -20,21 +20,21 @@ ScriptNewGRFList::ScriptNewGRFList()
 {
 	for (const auto &c : _grfconfig) {
 		if (!c->flags.Test(GRFConfigFlag::Static)) {
-			this->AddItem(FlattenNewGRFLabel(c->ident.grfid));
+			this->AddItem(std::byteswap(FlattenNewGRFLabel(c->ident.grfid)));
 		}
 	}
 }
 
 /* static */ bool ScriptNewGRF::IsLoaded(SQInteger grfid)
 {
-	GrfID id = UnflattenNewGRFLabel<GrfID>(grfid);
+	GrfID id = UnflattenNewGRFLabel<GrfID>(std::byteswap(static_cast<uint32_t>(grfid)));
 
 	return std::ranges::any_of(_grfconfig, [id](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == id; });
 }
 
 /* static */ SQInteger ScriptNewGRF::GetVersion(SQInteger grfid)
 {
-	GrfID id = UnflattenNewGRFLabel<GrfID>(grfid);
+	GrfID id = UnflattenNewGRFLabel<GrfID>(std::byteswap(static_cast<uint32_t>(grfid)));
 
 	auto it = std::ranges::find_if(_grfconfig, [id](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == id; });
 	if (it != std::end(_grfconfig)) return (*it)->version;
@@ -44,7 +44,7 @@ ScriptNewGRFList::ScriptNewGRFList()
 
 /* static */ std::optional<std::string> ScriptNewGRF::GetName(SQInteger grfid)
 {
-	GrfID id = UnflattenNewGRFLabel<GrfID>(grfid);
+	GrfID id = UnflattenNewGRFLabel<GrfID>(std::byteswap(static_cast<uint32_t>(grfid)));
 
 	auto it = std::ranges::find_if(_grfconfig, [id](const auto &c) { return !c->flags.Test(GRFConfigFlag::Static) && c->ident.grfid == id; });
 	if (it != std::end(_grfconfig)) return (*it)->GetName();

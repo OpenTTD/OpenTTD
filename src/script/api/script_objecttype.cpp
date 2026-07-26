@@ -52,5 +52,5 @@
 {
 	EnforcePrecondition(INVALID_OBJECT_TYPE, IsInsideBS(grf_local_id, 0x00, NUM_OBJECTS_PER_GRF));
 
-	return _object_mngr.GetID(grf_local_id, UnflattenNewGRFLabel<GrfID>(grfid));
+	return _object_mngr.GetID(grf_local_id, UnflattenNewGRFLabel<GrfID>(std::byteswap(static_cast<uint32_t>(grfid))));
 }

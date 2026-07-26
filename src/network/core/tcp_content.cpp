@@ -74,7 +74,7 @@ std::optional<std::string> ContentInfo::GetTextfile(TextfileType type) const
 			tmp = Game::GetScannerLibrary()->FindMainScript(*this, true);
 			break;
 		case ContentType::NewGRF: {
-			const GRFConfig *gc = FindGRFConfig(UnflattenNewGRFLabel<GrfID>(this->unique_id), FindGRFConfigMode::Exact, &this->md5sum);
+			const GRFConfig *gc = FindGRFConfig(UnflattenNewGRFLabel<GrfID>(std::byteswap(this->unique_id)), FindGRFConfigMode::Exact, &this->md5sum);
 			if (gc != nullptr) tmp = gc->filename;
 			break;
 		}

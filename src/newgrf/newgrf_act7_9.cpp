@@ -251,7 +251,7 @@ static void SkipIf(ByteReader &buf)
 	} else if (param == 0x88) {
 		/* GRF ID checks */
 
-		GrfID grfid = UnflattenNewGRFLabel<GrfID>(std::byteswap(cond_val));
+		GrfID grfid = UnflattenNewGRFLabel<GrfID>(cond_val);
 		GRFConfig *c = GetGRFConfig(grfid, std::byteswap(mask));
 
 		if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {
