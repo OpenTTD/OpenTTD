@@ -30,6 +30,7 @@
 #include "articulated_vehicles.h"
 #include "error.h"
 #include "engine_base.h"
+#include "script/api/script_event_types.hpp"
 #include "timer/timer.h"
 #include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"

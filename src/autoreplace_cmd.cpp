@@ -28,6 +28,7 @@
 #include "order_cmd.h"
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
+#include "script/api/script_event_types.hpp"
 
 #include "table/strings.h"
 

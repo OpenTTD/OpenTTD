@@ -46,6 +46,7 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "landscape_cmd.h"
+#include "script/api/script_event_types.hpp"
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
 

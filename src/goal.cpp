@@ -24,6 +24,7 @@
 #include "network/network_base.h"
 #include "network/network_func.h"
 #include "goal_cmd.h"
+#include "script/api/script_event_types.hpp"
 
 #include "safeguards.h"
 

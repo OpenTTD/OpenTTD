@@ -23,6 +23,7 @@
 #include "../map_func.h"
 #include "../rev.h"
 #include "../game/game.hpp"
+#include "../script/api/script_event_types.hpp"
 
 #include "table/strings.h"
 

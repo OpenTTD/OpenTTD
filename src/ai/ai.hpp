@@ -10,7 +10,7 @@
 #ifndef AI_HPP
 #define AI_HPP
 
-#include "../script/api/script_event_types.hpp"
+#include "../script/api/script_event.hpp"
 #include "ai_scanner.hpp"
 
 /**

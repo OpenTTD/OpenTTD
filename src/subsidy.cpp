@@ -26,6 +26,7 @@
 #include "string_func.h"
 #include "tile_cmd.h"
 #include "subsidy_cmd.h"
+#include "script/api/script_event_types.hpp"
 #include "timer/timer.h"
 #include "timer/timer_game_economy.h"
 

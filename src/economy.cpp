@@ -53,6 +53,7 @@
 #include "company_cmd.h"
 #include "economy_cmd.h"
 #include "vehicle_cmd.h"
+#include "script/api/script_event_types.hpp"
 #include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
