@@ -16,14 +16,14 @@
 #include "../safeguards.h"
 
 static const SaveLoad _league_table_elements_desc[] = {
-	    SLE_VAR(LeagueTableElement, table,       VarTypes::U8),
-	SLE_CONDVAR(LeagueTableElement, rating, VarFileType::U64 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
-	SLE_CONDVAR(LeagueTableElement, rating, VarTypes::I64, SaveLoadVersion::LinkgraphEdges, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(LeagueTableElement, company,     VarTypes::U8),
+	SaveLoad::Variable<VarFileType::U8>("table", SLE_OBJECT_ADDRESS(LeagueTableElement, table)),
+	SaveLoad::Variable<VarFileType::U64>("rating", SLE_OBJECT_ADDRESS(LeagueTableElement, rating), SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
+	SaveLoad::Variable<VarFileType::I64>("rating", SLE_OBJECT_ADDRESS(LeagueTableElement, rating), SaveLoadVersion::LinkgraphEdges),
+	SaveLoad::Variable<VarFileType::U8>("company", SLE_OBJECT_ADDRESS(LeagueTableElement, company)),
 	SaveLoad::String("text", SLE_OBJECT_ADDRESS(LeagueTableElement, text), StringValidationSetting::AllowControlCode),
 	SaveLoad::String("score", SLE_OBJECT_ADDRESS(LeagueTableElement, score), StringValidationSetting::AllowControlCode),
-	    SLE_VAR(LeagueTableElement, link.type,   VarTypes::U8),
-	    SLE_VAR(LeagueTableElement, link.target, VarTypes::U32),
+	SaveLoad::Variable<VarFileType::U8>("link.type", SLE_OBJECT_ADDRESS(LeagueTableElement, link.type)),
+	SaveLoad::Variable<VarFileType::U32>("link.target", SLE_OBJECT_ADDRESS(LeagueTableElement, link.target)),
 };
 
 struct LEAEChunkHandler : ChunkHandler {

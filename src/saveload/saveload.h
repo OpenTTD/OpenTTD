@@ -1272,44 +1272,6 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 #define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) SLE_GENERAL_NAME(cmd, #variable, base, variable, type, length, from, to, extra)
 
 /**
- * Storage of a variable in some savegame versions.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::Variable, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a variable in some savegame versions.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLE_CONDVARNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::Variable, name, base, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a variable in every version of a savegame.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a variable in every version of a savegame.
- * @param base     Name of the class or struct containing the variable.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param name     Field name for table chunks.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_VARNAME(base, variable, name, type) SLE_CONDVARNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
  * Storage of global simple variables, references (pointers), and arrays.
  * @param name     The name of the field.
  * @param cmd      Load/save type. @see SaveLoadType
@@ -1324,24 +1286,6 @@ inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t leng
 	SaveLoad {name, cmd, type, length, from, to, [] (const void *, size_t) -> const void * { \
 		static_assert(SlCheckVarSize(cmd, type, length, sizeof(variable))); \
 		return std::addressof(variable); }, extra, nullptr}
-
-/**
- * Storage of a global variable in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the field.
- * @param to       Last savegame version that has the field.
- */
-#define SLEG_CONDVAR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::Variable, variable, type, 0, from, to, 0)
-
-/**
- * Storage of a global variable in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_VAR(name, variable, type) SLEG_CONDVAR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Field name where the real SaveLoad can be located.
