@@ -49,7 +49,7 @@ public:
 
 	static inline const SaveLoad description[] = {
 		SaveLoad::Array<VarFileType::U8, GAMELOG_REVISION_LENGTH>("revision.text", SLE_GLOBAL_ADDRESS(SlGamelogRevision::revision_text), SaveLoadVersion::MinVersion, SaveLoadVersion::StringGamelog),
-		SLE_CONDSSTRNAME(LoggedChangeRevision, text, "revision.text", VarTypes::STR, SaveLoadVersion::StringGamelog, SaveLoadVersion::MaxVersion),
+		SaveLoad::String("revision.text", SLE_OBJECT_ADDRESS(LoggedChangeRevision, text), {}, SaveLoadVersion::StringGamelog),
 		     SLE_VARNAME(LoggedChangeRevision, newgrf,   "revision.newgrf",   VarTypes::U32),
 		     SLE_VARNAME(LoggedChangeRevision, slver,    "revision.slver",    VarTypes::U16),
 		     SLE_VARNAME(LoggedChangeRevision, modified, "revision.modified", VarTypes::U8),
@@ -101,7 +101,7 @@ public:
 class SlGamelogSetting : public DefaultSaveLoadHandler<SlGamelogSetting, LoggedChange> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_SSTRNAME(LoggedChangeSettingChanged, name,   "setting.name",   VarTypes::STR),
+		SaveLoad::String("setting.name", SLE_OBJECT_ADDRESS(LoggedChangeSettingChanged, name)),
 		 SLE_VARNAME(LoggedChangeSettingChanged, oldval, "setting.oldval", VarTypes::I32),
 		 SLE_VARNAME(LoggedChangeSettingChanged, newval, "setting.newval", VarTypes::I32),
 	};
