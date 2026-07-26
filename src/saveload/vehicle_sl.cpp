@@ -805,7 +805,7 @@ public:
 class SlVehicleTrain : public DefaultSaveLoadHandler<SlVehicleTrain, Vehicle> {
 public:
 	static inline const SaveLoad description[] = {
-		 SLEG_STRUCT("common", SlVehicleCommon),
+		SaveLoad::Struct<SlVehicleCommon>("common"),
 		     SLE_VAR(Train, crash_anim_pos,      VarTypes::U16),
 		     SLE_VAR(Train, force_proceed,       VarTypes::U8),
 		     SLE_VAR(Train, track,               VarTypes::U8),
@@ -856,7 +856,7 @@ public:
 	/** @} */
 
 	static inline const SaveLoad description[] = {
-		  SLEG_STRUCT("common", SlVehicleCommon),
+		SaveLoad::Struct<SlVehicleCommon>("common"),
 		      SLE_VAR(RoadVehicle, state,                VarTypes::U8),
 		      SLE_VAR(RoadVehicle, frame,                VarTypes::U8),
 		      SLE_VAR(RoadVehicle, blocked_ctr,          VarTypes::U16),
@@ -866,7 +866,7 @@ public:
 		      SLE_VAR(RoadVehicle, reverse_ctr,          VarTypes::U8),
 		SLEG_CONDVECTOR("path.td", rv_path_td, VarTypes::U8, SaveLoadVersion::RoadvehPathCache, SaveLoadVersion::PathCacheFormat),
 		SLEG_CONDVECTOR("path.tile", rv_path_tile, VarTypes::U32, SaveLoadVersion::RoadvehPathCache, SaveLoadVersion::PathCacheFormat),
-		SLEG_CONDSTRUCTLIST("path", SlVehicleRoadVehPath, SaveLoadVersion::PathCacheFormat, SaveLoadVersion::MaxVersion),
+		SaveLoad::StructList<SlVehicleRoadVehPath>("path", SaveLoadVersion::PathCacheFormat),
 		 SLE_CONDVAR(RoadVehicle, gv_flags, VarTypes::U16, SaveLoadVersion::RvRealisticAcceleration, SaveLoadVersion::MaxVersion),
 	};
 	static inline const SaveLoadCompatTable compat_description = _vehicle_roadveh_sl_compat;
@@ -927,10 +927,10 @@ public:
 	static inline std::vector<Trackdir> ship_path_td;
 
 	static inline const SaveLoad description[] = {
-		  SLEG_STRUCT("common", SlVehicleCommon),
+		SaveLoad::Struct<SlVehicleCommon>("common"),
 		      SLE_VAR(Ship, state,                     VarTypes::U8),
 		SLEG_CONDVECTOR("path", ship_path_td, VarTypes::U8, SaveLoadVersion::ShipPathCache, SaveLoadVersion::PathCacheFormat),
-		SLEG_CONDSTRUCTLIST("path", SlVehicleShipPath, SaveLoadVersion::PathCacheFormat, SaveLoadVersion::MaxVersion),
+		SaveLoad::StructList<SlVehicleShipPath>("path", SaveLoadVersion::PathCacheFormat),
 		 SLE_CONDVAR(Ship, rotation, VarTypes::U8, SaveLoadVersion::ShipRotation, SaveLoadVersion::MaxVersion),
 	};
 	static inline const SaveLoadCompatTable compat_description = _vehicle_ship_sl_compat;
@@ -963,7 +963,7 @@ public:
 class SlVehicleAircraft : public DefaultSaveLoadHandler<SlVehicleAircraft, Vehicle> {
 public:
 	static inline const SaveLoad description[] = {
-		 SLEG_STRUCT("common", SlVehicleCommon),
+		SaveLoad::Struct<SlVehicleCommon>("common"),
 		     SLE_VAR(Aircraft, crashed_counter,       VarTypes::U16),
 		     SLE_VAR(Aircraft, pos,                   VarTypes::U8),
 
@@ -1105,12 +1105,12 @@ public:
 
 static const SaveLoad _vehicle_desc[] = {
 	SLE_SAVEBYTE(Vehicle, type),
-	SLEG_STRUCT("train", SlVehicleTrain),
-	SLEG_STRUCT("roadveh", SlVehicleRoadVeh),
-	SLEG_STRUCT("ship", SlVehicleShip),
-	SLEG_STRUCT("aircraft", SlVehicleAircraft),
-	SLEG_STRUCT("effect", SlVehicleEffect),
-	SLEG_STRUCT("disaster", SlVehicleDisaster),
+	SaveLoad::Struct<SlVehicleTrain>("train"),
+	SaveLoad::Struct<SlVehicleRoadVeh>("roadveh"),
+	SaveLoad::Struct<SlVehicleShip>("ship"),
+	SaveLoad::Struct<SlVehicleAircraft>("aircraft"),
+	SaveLoad::Struct<SlVehicleEffect>("effect"),
+	SaveLoad::Struct<SlVehicleDisaster>("disaster"),
 };
 
 struct VEHSChunkHandler : ChunkHandler {

@@ -187,7 +187,7 @@ class SlTownSupplied : public VectorSaveLoadHandler<SlTownSupplied, Town, Town::
 public:
 	inline static const SaveLoad description[] = {
 		SLE_VAR(Town::SuppliedCargo, cargo, VarTypes::U8),
-		SLEG_STRUCTLIST("history", SlTownSuppliedHistory),
+		SaveLoad::StructList<SlTownSuppliedHistory>("history"),
 	};
 	inline const static SaveLoadCompatTable compat_description = {};
 
@@ -230,7 +230,7 @@ public:
 	/** Saveload description for handler. */
 	inline static const SaveLoad description[] = {
 		SLE_VAR(Town::AcceptedCargo, cargo, VarTypes::U8),
-		SLEG_STRUCTLIST("history", SlTownAcceptedHistory),
+		SaveLoad::StructList<SlTownAcceptedHistory>("history"),
 	};
 	/** Compatibility saveload description for handler. */
 	inline const static SaveLoadCompatTable compat_description = {};
@@ -362,11 +362,11 @@ static const SaveLoad _town_desc[] = {
 
 	SLE_CONDREFVECTOR(Town, psa_list, SLRefType::Storage, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::MaxVersion),
 
-	SLEG_CONDSTRUCTLIST("supplied", SlTownOldSupplied, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::TownSupplyHistory),
-	SLEG_CONDSTRUCTLIST("supplied", SlTownSupplied, SaveLoadVersion::TownSupplyHistory, SaveLoadVersion::MaxVersion),
-	SLEG_STRUCTLIST("accepted", SlTownAccepted),
-	SLEG_CONDSTRUCTLIST("received", SlTownReceived, SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
-	SLEG_CONDSTRUCTLIST("acceptance_matrix", SlTownAcceptanceMatrix, SaveLoadVersion::InfrastructureMaintenanceCosts, SaveLoadVersion::RemoveTownCargoCache),
+	SaveLoad::StructList<SlTownOldSupplied>("supplied", SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::TownSupplyHistory),
+	SaveLoad::StructList<SlTownSupplied>("supplied", SaveLoadVersion::TownSupplyHistory),
+	SaveLoad::StructList<SlTownAccepted>("accepted"),
+	SaveLoad::StructList<SlTownReceived>("received", SaveLoadVersion::ScriptTownGrowth),
+	SaveLoad::StructList<SlTownAcceptanceMatrix>("acceptance_matrix", SaveLoadVersion::InfrastructureMaintenanceCosts, SaveLoadVersion::RemoveTownCargoCache),
 };
 
 struct HIDSChunkHandler : NewGRFMappingChunkHandler {
