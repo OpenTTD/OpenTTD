@@ -20,8 +20,8 @@ static const SaveLoad _league_table_elements_desc[] = {
 	SLE_CONDVAR(LeagueTableElement, rating, VarFileType::U64 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::LinkgraphEdges),
 	SLE_CONDVAR(LeagueTableElement, rating, VarTypes::I64, SaveLoadVersion::LinkgraphEdges, SaveLoadVersion::MaxVersion),
 	    SLE_VAR(LeagueTableElement, company,     VarTypes::U8),
-	   SLE_SSTR(LeagueTableElement, text,        VarTypes::STR | StringValidationSetting::AllowControlCode),
-	   SLE_SSTR(LeagueTableElement, score,       VarTypes::STR | StringValidationSetting::AllowControlCode),
+	SaveLoad::String("text", SLE_OBJECT_ADDRESS(LeagueTableElement, text), StringValidationSetting::AllowControlCode),
+	SaveLoad::String("score", SLE_OBJECT_ADDRESS(LeagueTableElement, score), StringValidationSetting::AllowControlCode),
 	    SLE_VAR(LeagueTableElement, link.type,   VarTypes::U8),
 	    SLE_VAR(LeagueTableElement, link.target, VarTypes::U32),
 };
@@ -52,9 +52,9 @@ struct LEAEChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _league_tables_desc[] = {
-	SLE_SSTR(LeagueTable, title, VarTypes::STR | StringValidationSetting::AllowControlCode),
-	SLE_SSTR(LeagueTable, header, VarTypes::STR | StringValidationSetting::AllowControlCode),
-	SLE_SSTR(LeagueTable, footer, VarTypes::STR | StringValidationSetting::AllowControlCode),
+	SaveLoad::String("title", SLE_OBJECT_ADDRESS(LeagueTable, title), StringValidationSetting::AllowControlCode),
+	SaveLoad::String("header", SLE_OBJECT_ADDRESS(LeagueTable, header), StringValidationSetting::AllowControlCode),
+	SaveLoad::String("footer", SLE_OBJECT_ADDRESS(LeagueTable, footer), StringValidationSetting::AllowControlCode),
 };
 
 struct LEATChunkHandler : ChunkHandler {
