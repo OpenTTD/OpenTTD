@@ -311,7 +311,7 @@ static std::unique_ptr<LoggedChange> MakeLoggedChange(GamelogChangeType type)
 class SlGamelogAction : public DefaultSaveLoadHandler<SlGamelogAction, LoggedAction> {
 public:
 	static inline const SaveLoad description[] = {
-		SLE_SAVEBYTE(LoggedChange, ct),
+		SaveLoad::SaveByte("ct", SLE_OBJECT_ADDRESS(LoggedChange, ct)),
 		SaveLoad::Struct<SlGamelogMode>("mode"),
 		SaveLoad::Struct<SlGamelogRevision>("revision"),
 		SaveLoad::Struct<SlGamelogOldver>("oldver"),
