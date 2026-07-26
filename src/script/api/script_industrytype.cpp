@@ -161,5 +161,5 @@
 {
 	EnforcePrecondition(IT_INVALID, IsInsideBS(grf_local_id, 0x00, NUM_INDUSTRYTYPES_PER_GRF));
 
-	return _industry_mngr.GetID(grf_local_id, UnflattenNewGRFLabel<GrfID>(grfid));
+	return _industry_mngr.GetID(grf_local_id, UnflattenNewGRFLabel<GrfID>(std::byteswap(static_cast<uint32_t>(grfid))));
 }

@@ -389,7 +389,7 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
  */
 void SerializeGRFIdentifier(Packet &p, const GRFIdentifier &grf)
 {
-	p.Send_uint32(FlattenNewGRFLabel(grf.grfid));
+	p.Send_uint32(std::byteswap(FlattenNewGRFLabel(grf.grfid)));
 	p.Send_bytes(grf.md5sum);
 }
 
@@ -400,7 +400,7 @@ void SerializeGRFIdentifier(Packet &p, const GRFIdentifier &grf)
  */
 void DeserializeGRFIdentifier(Packet &p, GRFIdentifier &grf)
 {
-	grf.grfid = UnflattenNewGRFLabel<GrfID>(p.Recv_uint32());
+	grf.grfid = UnflattenNewGRFLabel<GrfID>(std::byteswap(p.Recv_uint32()));
 	p.Recv_bytes(grf.md5sum);
 }
 
