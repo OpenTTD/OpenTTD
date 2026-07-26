@@ -27,6 +27,8 @@
 #include "../script/script_gui.h"
 #include "../script_config.hpp"
 
+#include "../widgets/game_widget.h"
+
 #include "table/strings.h"
 
 #include "../safeguards.h"

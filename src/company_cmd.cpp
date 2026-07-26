@@ -43,6 +43,7 @@
 #include "timer/timer_window.h"
 #include "road_gui.h"
 
+#include "widgets/company_widget.h"
 #include "widgets/statusbar_widget.h"
 
 #include "table/strings.h"

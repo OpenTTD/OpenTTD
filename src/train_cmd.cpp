@@ -38,6 +38,8 @@
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
 
+#include "widgets/vehicle_widget.h"
+
 #include "table/strings.h"
 #include "table/train_sprites.h"
 

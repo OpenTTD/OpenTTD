@@ -39,6 +39,8 @@
 #include "ship_cmd.h"
 #include <charconv>
 
+#include "widgets/vehicle_widget.h"
+
 #include "table/strings.h"
 
 #include "safeguards.h"

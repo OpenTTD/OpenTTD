@@ -27,6 +27,8 @@
 #include "../fios.h"
 #include "network_content_gui.h"
 
+#include "../widgets/network_content_widget.h"
+#include "../widgets/misc_widget.h"
 
 #include "table/strings.h"
 #include "../table/sprites.h"

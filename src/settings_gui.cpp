@@ -55,6 +55,9 @@
 #include "settingentry_gui.h"
 #include "core/string_consumer.hpp"
 
+#include "widgets/settings_widget.h"
+#include "widgets/misc_widget.h"
+
 #include "table/strings.h"
 
 #include "dropdown_common_type.h"
