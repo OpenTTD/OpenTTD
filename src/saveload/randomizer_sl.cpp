@@ -14,8 +14,8 @@
 #include "../safeguards.h"
 
 static const SaveLoad _randomizer_desc[] = {
-	SLE_VAR(Randomizer, state[0], VarTypes::U32),
-	SLE_VAR(Randomizer, state[1], VarTypes::U32),
+	SaveLoad::Variable<VarFileType::U32>("state[0]", SLE_OBJECT_ADDRESS(Randomizer, state[0])),
+	SaveLoad::Variable<VarFileType::U32>("state[1]", SLE_OBJECT_ADDRESS(Randomizer, state[1])),
 };
 
 struct SRNDChunkHandler : ChunkHandler {

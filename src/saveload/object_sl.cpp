@@ -20,14 +20,14 @@
 #include "../safeguards.h"
 
 static const SaveLoad _object_desc[] = {
-	    SLE_VAR(Object, location.tile,              VarTypes::U32),
-	    SLE_VAR(Object, location.w,                 VarFileType::U8 | VarMemType::U16),
-	    SLE_VAR(Object, location.h,                 VarFileType::U8 | VarMemType::U16),
+	SaveLoad::Variable<VarFileType::U32>("location.tile", SLE_OBJECT_ADDRESS(Object, location.tile)),
+	SaveLoad::Variable<VarFileType::U8>("location.w", SLE_OBJECT_ADDRESS(Object, location.w)),
+	SaveLoad::Variable<VarFileType::U8>("location.h", SLE_OBJECT_ADDRESS(Object, location.h)),
 	SaveLoad::Reference<SLRefType::Town>("town", SLE_OBJECT_ADDRESS(Object, town)),
-	    SLE_VAR(Object, build_date,                 VarFileType::U32 | VarMemType::I32),
-	SLE_CONDVARNAME(Object, recolour_offset, "colour", VarTypes::U8, SaveLoadVersion::IndustryPlatform, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Object, view, VarTypes::U8, SaveLoadVersion::NewGRFObjectView, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Object, type, VarTypes::U16, SaveLoadVersion::ObjectTypeToPool, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U32>("build_date", SLE_OBJECT_ADDRESS(Object, build_date)),
+	SaveLoad::Variable<VarFileType::U8>("colour", SLE_OBJECT_ADDRESS(Object, recolour_offset), SaveLoadVersion::IndustryPlatform),
+	SaveLoad::Variable<VarFileType::U8>("view", SLE_OBJECT_ADDRESS(Object, view), SaveLoadVersion::NewGRFObjectView),
+	SaveLoad::Variable<VarFileType::U16>("type", SLE_OBJECT_ADDRESS(Object, type), SaveLoadVersion::ObjectTypeToPool),
 };
 
 struct OBJSChunkHandler : ChunkHandler {
