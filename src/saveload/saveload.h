@@ -1359,16 +1359,6 @@ constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, siz
 #define SLE_CONDSSTRNAME(base, variable, name, type, from, to) SLE_GENERAL_NAME(SaveLoadType::String, name, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a list of #SaveLoadType::Reference elements in some savegame versions.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLE_CONDREFLIST(base, variable, type, from, to) SLE_GENERAL(SaveLoadType::ReferenceList, base, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a vector of #SaveLoadType::Variable elements in some savegame versions.
  * @param base     Name of the class or struct containing the list.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -1450,14 +1440,6 @@ constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, siz
 #define SLE_SSTRNAME(base, variable, name, type) SLE_CONDSSTRNAME(base, variable, name, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
- * Storage of a list of #SaveLoadType::Reference elements in every savegame version.
- * @param base     Name of the class or struct containing the list.
- * @param variable Name of the variable in the class or struct referenced by \a base.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLE_REFLIST(base, variable, type) SLE_CONDREFLIST(base, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
  * Storage of global simple variables, references (pointers), and arrays.
  * @param name     The name of the field.
  * @param cmd      Load/save type. @see SaveLoadType
@@ -1515,16 +1497,6 @@ constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, siz
 #define SLEG_CONDSSTR(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::String, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a global reference list in some savegame versions.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- * @param from     First savegame version that has the list.
- * @param to       Last savegame version that has the list.
- */
-#define SLEG_CONDREFLIST(name, variable, type, from, to) SLEG_GENERAL(name, SaveLoadType::ReferenceList, variable, type, 0, from, to, 0)
-
-/**
  * Storage of a global vector of #SaveLoadType::Variable elements in some savegame versions.
  * @param name     The name of the field.
  * @param variable Name of the global variable.
@@ -1566,14 +1538,6 @@ constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, siz
  * @param type     Storage of the data in memory and in the savegame.
  */
 #define SLEG_SSTR(name, variable, type) SLEG_CONDSSTR(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
-
-/**
- * Storage of a global reference list in every savegame version.
- * @param name     The name of the field.
- * @param variable Name of the global variable.
- * @param type     Storage of the data in memory and in the savegame.
- */
-#define SLEG_REFLIST(name, variable, type) SLEG_CONDREFLIST(name, variable, type, SaveLoadVersion::MinVersion, SaveLoadVersion::MaxVersion)
 
 /**
  * Storage of a global vector of #SaveLoadType::Variable elements in every savegame version.
