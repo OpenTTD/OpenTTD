@@ -329,7 +329,7 @@ static void ParamSet(ByteReader &buf)
 			}
 		} else {
 			/* Read another GRF File's parameter */
-			GrfID grfid = UnflattenNewGRFLabel<GrfID>(data);
+			GrfID grfid = UnflattenNewGRFLabel<GrfID>(std::byteswap(data));
 			const GRFFile *file = GetFileByGRFID(grfid);
 			GRFConfig *c = GetGRFConfig(grfid);
 			if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {

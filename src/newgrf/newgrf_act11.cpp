@@ -25,7 +25,7 @@
 static void ImportGRFSound(SoundEntry *sound)
 {
 	const GRFFile *file;
-	GrfID grfid = UnflattenNewGRFLabel<GrfID>(_cur_gps.file->ReadDword());
+	GrfID grfid = UnflattenNewGRFLabel<GrfID>(std::byteswap(_cur_gps.file->ReadDword()));
 	SoundID sound_id = _cur_gps.file->ReadWord();
 
 	file = GetFileByGRFID(grfid);

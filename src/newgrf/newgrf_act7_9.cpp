@@ -16,6 +16,7 @@
 #include "../rail.h"
 #include "../road.h"
 #include "../settings_type.h"
+#include "../string_func.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 
@@ -250,7 +251,8 @@ static void SkipIf(ByteReader &buf)
 	} else if (param == 0x88) {
 		/* GRF ID checks */
 
-		GRFConfig *c = GetGRFConfig(UnflattenNewGRFLabel<GrfID>(cond_val), mask);
+		GrfID grfid = UnflattenNewGRFLabel<GrfID>(std::byteswap(cond_val));
+		GRFConfig *c = GetGRFConfig(grfid, std::byteswap(mask));
 
 		if (c != nullptr && c->flags.Test(GRFConfigFlag::Static) && !_cur_gps.grfconfig->flags.Test(GRFConfigFlag::Static) && _networking) {
 			DisableStaticNewGRFInfluencingNonStaticNewGRFs(*c);
@@ -258,7 +260,7 @@ static void SkipIf(ByteReader &buf)
 		}
 
 		if (condtype != 10 && c == nullptr) {
-			GrfMsg(7, "SkipIf: GRFID 0x{:08X} unknown, skipping test", std::byteswap(cond_val));
+			GrfMsg(7, "SkipIf: GRFID {} unknown, skipping test", FormatArrayAsHex(grfid));
 			return;
 		}
 
