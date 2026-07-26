@@ -152,6 +152,17 @@ public:
 	virtual void SetupSmallestSize(Window *w) = 0;
 	virtual void AssignSizePosition(SizingType sizing, int x, int y, uint given_width, uint given_height, bool rtl) = 0;
 
+	/**
+	 * Get a widget's preferred size for a given size.
+	 * @param given_width The given width.
+	 * @param given_height The given height.
+	 * @return pair containing preferred width and height.
+	 */
+	virtual std::pair<uint, uint> GetPreferredSizeForSize(uint given_width, uint given_height)
+	{
+		return {given_width, given_height};
+	}
+
 	virtual void FillWidgetLookup(WidgetLookup &widget_lookup);
 
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
