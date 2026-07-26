@@ -112,8 +112,8 @@ inline bool IsLevelCrossingTile(Tile t)
 inline RoadBits GetRoadBits(Tile t, RoadTramType rtt)
 {
 	assert(IsNormalRoad(t));
-	if (rtt == RoadTramType::Tram) return (RoadBits)GB(t.m3(), 0, 4);
-	return (RoadBits)GB(t.m5(), 0, 4);
+	if (rtt == RoadTramType::Tram) return static_cast<RoadBits>(GB(t.m3(), 0, 4));
+	return static_cast<RoadBits>(GB(t.m5(), 0, 4));
 }
 
 /**
@@ -152,7 +152,7 @@ inline void SetRoadBits(Tile t, RoadBits r, RoadTramType rtt)
 inline RoadType GetRoadTypeRoad(Tile t)
 {
 	assert(MayHaveRoad(t));
-	return (RoadType)GB(t.m4(), 0, 6);
+	return static_cast<RoadType>(GB(t.m4(), 0, 6));
 }
 
 /**
@@ -163,7 +163,7 @@ inline RoadType GetRoadTypeRoad(Tile t)
 inline RoadType GetRoadTypeTram(Tile t)
 {
 	assert(MayHaveRoad(t));
-	return (RoadType)GB(t.m8(), 6, 6);
+	return static_cast<RoadType>(GB(t.m8(), 6, 6));
 }
 
 /**
@@ -244,11 +244,11 @@ inline bool HasTileAnyRoadType(Tile t, RoadTypes rts)
 inline Owner GetRoadOwner(Tile t, RoadTramType rtt)
 {
 	assert(MayHaveRoad(t));
-	if (rtt == RoadTramType::Road) return (Owner)GB(IsNormalRoadTile(t) ? t.m1() : t.m7(), 0, 5);
+	if (rtt == RoadTramType::Road) return static_cast<Owner>(GB(IsNormalRoadTile(t) ? t.m1() : t.m7(), 0, 5));
 
 	/* Trams don't need OWNER_TOWN, and remapping OWNER_NONE
 	 * to OWNER_TOWN makes it use one bit less */
-	Owner o = (Owner)GB(t.m3(), 4, 4);
+	Owner o = static_cast<Owner>(GB(t.m3(), 4, 4));
 	return o == OWNER_TOWN ? OWNER_NONE : o;
 }
 

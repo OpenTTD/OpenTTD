@@ -189,7 +189,7 @@ inline void SetFieldType(Tile t, uint f)
 inline IndustryID GetIndustryIndexOfField(Tile t)
 {
 	assert(GetClearGround(t) == ClearGround::Fields);
-	return(IndustryID) t.m2();
+	return static_cast<IndustryID>(t.m2());
 }
 
 /**

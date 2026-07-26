@@ -181,7 +181,7 @@ inline Owner GetTileOwner(Tile tile)
 	assert(!IsTileType(tile, TileType::House));
 	assert(!IsTileType(tile, TileType::Industry));
 
-	return (Owner)GB(tile.m1(), 0, 5);
+	return static_cast<Owner>(GB(tile.m1(), 0, 5));
 }
 
 /**
