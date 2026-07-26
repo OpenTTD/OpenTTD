@@ -40,6 +40,9 @@
 #include "../game/game_info.hpp"
 #include "../game/game_instance.hpp"
 
+#include "../widgets/script_widget.h"
+#include "../widgets/misc_widget.h"
+
 #include "table/strings.h"
 
 #include "../safeguards.h"

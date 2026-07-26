@@ -40,6 +40,8 @@
 #include "timer/timer.h"
 #include "timer/timer_window.h"
 
+#include "widgets/osk_widget.h"
+
 #include "table/strings.h"
 
 #include "safeguards.h"
