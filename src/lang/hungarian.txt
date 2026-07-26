@@ -3906,6 +3906,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kattintással a fő nézetet a célra állítja. Ctrl+kattintással új nézet nyílik a gazdasági épület/település/mező helyzeténél
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Kérdés
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Információ
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Figyelmeztetés

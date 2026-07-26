@@ -3823,6 +3823,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}将屏幕中心移动到当前工业或城镇所占格的位置。按住 <Ctrl> 键点选会在新视点中显示目标位置
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}帮助索引
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}信息
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}警告

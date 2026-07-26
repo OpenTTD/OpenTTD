@@ -3499,6 +3499,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}クリックするとメイン画面を対象となる産業・街・タイルに移動します。Ctrl+クリックで新たなビューポートを開いて対象を表示します
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}質問
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}情報
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}警告

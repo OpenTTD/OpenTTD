@@ -3402,6 +3402,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}הקלק על מטרה כדי למרכז את התצוגה הראשית על תעשיה/עיירה/משבצת. קליק תוך כדי לחיצה על מקש Ctrl פותח חלון תצוגה חדש במיקום התעשיה/העיירה/המשבצת
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :שאלה
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :מידע
 STR_GOAL_QUESTION_CAPTION_WARNING                               :אזהרה

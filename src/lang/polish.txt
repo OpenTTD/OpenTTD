@@ -4222,6 +4222,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na cel, aby wyśrodkować widok główny na przedsiębiorstwie/mieście/polu. Użyj Ctrl, aby otworzyć nowy podgląd na jego lokalizację
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pytanie
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacja
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Ostrzeżenie

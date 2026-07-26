@@ -3843,6 +3843,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Feu clic sobre l'objectiu per a centrar la vista principal a sobre de la indústria/població/cel·la. Amb Ctrl+clic, s'obre una nova vista a sobre de la indústria/població/cel·la.
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pregunta
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informació
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Avís

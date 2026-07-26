@@ -3937,6 +3937,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klaku la celon por centri la ĉefvidon ĉe la industrio/urbo/landkvadrato. Stir+Klaku por malfermi novan vidujon ĉe la loko de la industrio/urbo/landkvadrato
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Demando
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informoj
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Atentu

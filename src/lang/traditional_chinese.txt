@@ -3842,6 +3842,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}點選目標可將有關工業或市鎮又或是方格置於畫面正中央。按下 <Ctrl> 點選目標可於有關工業或市鎮又或是方格位置開啟新檢視視窗
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}問題
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}資訊
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}警告

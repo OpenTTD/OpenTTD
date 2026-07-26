@@ -3843,6 +3843,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}산업시설/도시/칸의 위치로 화면을 이동하려면 클릭하세요. CTRL+클릭하면 산업시설/도시/칸의 위치를 기준으로 새로운 외부 화면을 엽니다
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}질의
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}정보
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}경고

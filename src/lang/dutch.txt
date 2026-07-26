@@ -3788,6 +3788,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel centreert venster op industrie/stad/tegel. Ctrl+Klik opent een nieuw venster op de locatie van de industrie/stad/tegel.
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Vraag
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informatie
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Waarschuwing

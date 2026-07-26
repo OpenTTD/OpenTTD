@@ -2336,6 +2336,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :سوال
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :معلومات
 STR_GOAL_QUESTION_CAPTION_WARNING                               :انتباہ

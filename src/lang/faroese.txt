@@ -2749,6 +2749,7 @@ STR_GOALS_NONE                                                  :{ORANGE}- Einki
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Trýst á mál fyri at savna høvuðs sýni á ídnað/bygd/punt. Ctrl+trýst letur upp nýggjan sýnisglugga á ídnað/bygd/punt
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Spurningur
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Kunning
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Ávaring

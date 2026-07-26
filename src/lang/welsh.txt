@@ -3823,6 +3823,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch ar amcan i ganoli'r brif olygfa ar y diwydiant/tref/teil Mae Ctrl+Clic yn agor ffenestr golwg newydd ar leoliad y diwydiant/tref/teil
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Cwestiwn
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Gwybodaeth
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Rhybudd

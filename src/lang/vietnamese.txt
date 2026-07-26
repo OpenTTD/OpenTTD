@@ -3835,6 +3835,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click vào mục tiêu để canh giữa cửa sổ lớn chính vào ô/đô thị/nhà máy tương ứng. Ctrl+Click để mở bằng các cửa sổ ô/đô thị/nhà máy tương ứng
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Câu Hỏi
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Thông Tin
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Cảnh Báo

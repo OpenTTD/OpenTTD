@@ -2942,6 +2942,7 @@ STR_GOALS_PROGRESS                                              :{ORANGE}{STRING
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Fraach
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Ynformaasje
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Warskôging

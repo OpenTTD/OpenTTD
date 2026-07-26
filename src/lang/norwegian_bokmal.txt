@@ -3837,6 +3837,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikk på mål for å sentrere hovedvisningen på industri/by/rute . Ctrl+klikk for å åpner et nytt tilleggsvindu på lokasjonen til industrien/byen/ruten
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Spørsmål
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informasjon
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Advarsel

@@ -3153,6 +3153,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}คลิ๊กเลือกที่เป้าหมายเพื่อพาไปยังจุดเริ่มต้นที่จะทำตามเป้าหมาย
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}คำถาม
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}ข้อมูลต่างๆ
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}คำเตือน

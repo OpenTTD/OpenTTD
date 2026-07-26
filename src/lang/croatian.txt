@@ -3319,6 +3319,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cilj za centriranje središnjeg pogleda na industriju/grad/polje. Ctrl+Klik otvara novi prozor s pogledom na lokaciju industrije/grada/polja
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pitanje
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informacija
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Upozorenje

@@ -3941,6 +3941,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клац мишею на цілі відобразить по центру головного вікна виробництво/місто/клітинку. Ctrl+клац мишею відкриє нове вікно з видом на підприємство/місто/клітинку
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Питання
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Інформація
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Попередження

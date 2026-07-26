@@ -3842,6 +3842,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klicka på målet för att centrera huvudvyn på industrin/byn/rutan. Ctrl+klicka för att öppna en ny fönstervy över industrin/byn/rutan
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Fråga
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Information
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Varning

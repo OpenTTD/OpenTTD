@@ -3824,6 +3824,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik på mål for at centrere hovedvinduet over industri/by/felt Ctrl+klik åbner et nyt vindue over industri/by/felt lokation
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Spørgsmål
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Information
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Advarsel

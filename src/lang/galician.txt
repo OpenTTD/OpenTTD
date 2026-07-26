@@ -3783,6 +3783,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Pincha nun obxectivo para centrar a vista principal na industria/cidade/cadro. Ctrl+Clic abre unha nova ventá na localización da industria/cidade/cadro
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pregunta
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Información
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Aviso

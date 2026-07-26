@@ -3382,6 +3382,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliceáil ar an sprioc chun an príomhamharc a lárú ar an tionscal/baile/tíle. Ctrl+Cliceáil chun fuinneog amhairc nua a oscailt ar shuíomh an tionscail/an bhaile/na tíle
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Ceist
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Faisnéis
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Rabhadh

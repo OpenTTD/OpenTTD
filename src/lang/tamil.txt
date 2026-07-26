@@ -3318,6 +3318,7 @@ STR_GOALS_PROGRESS                                              :{ORANGE}{STRING
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}கேள்வி
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}தகவல்
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}எச்சரிக்கை

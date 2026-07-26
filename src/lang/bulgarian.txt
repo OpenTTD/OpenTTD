@@ -3699,6 +3699,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликнете на задачата, за да се центрира камерата върху фабрика/град/поле от картата. Ctrl+Click отваря прозорец с нов изглед към фабриката/града/полето от картата
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Въпрос
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Информация
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Внимание

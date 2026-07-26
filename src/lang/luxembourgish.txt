@@ -3830,6 +3830,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick op Ziel fir d'Haptfënster op d'Industrie/Stad/Feld ze zentréiren. Ctrl+Klick mëcht eng nei Fënster op der Industrie/Stad/Feld-Positioun op
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Fro
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informatioun
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Warnung

@@ -3830,6 +3830,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikšķināt uz mērķa, lai centrētu galveno skatu uz ražotni/pilsētu/lauciņu. Ctrl+klikšķis atver jaunu skatvietu uz ražotni/pilsētu/lauciņu
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Jautājums
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informācija
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Brīdinājums

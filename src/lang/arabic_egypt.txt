@@ -3056,6 +3056,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}اسئله
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}معلومات
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}تحذير

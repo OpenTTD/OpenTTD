@@ -3144,6 +3144,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel om skerm oor die industrie/stad/teël te sentreer. Ctrl+klik maak 'n nuwe venster vir die industrie/stad/teël oop
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Vraag
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Inligting
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Waarskuwing

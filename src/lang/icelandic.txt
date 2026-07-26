@@ -2903,6 +2903,7 @@ STR_GOALS_NONE                                                  :{ORANGE}- Engin
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Smelltu á markmiðið til að miðja aðal sjónarhornið á iðnað/bæ/reit. Ctrl+smella opnar nýtt sjónarhorn á iðnað/bæ/reit
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Spurning
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Upplýsingar
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Varúð

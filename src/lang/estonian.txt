@@ -3900,6 +3900,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klõpsa eesmärgil, et liigutada vaateaken tööstuse/asula/ruudu asukohale. Ctrl+klõps, et avada uus vaateaken tööstuse/asula/ruudu kohal
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Küsimus
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Teave
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Hoiatus

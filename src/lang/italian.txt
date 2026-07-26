@@ -3768,6 +3768,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Fare clic su un obiettivo per centrare la visuale principale sull'industria, città o casella. Ctrl+Clic per aprire una nuova finestra di visualizzazione sulla posizione dell'industria,città o casella
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Domanda
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informazioni
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Avviso

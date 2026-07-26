@@ -3833,6 +3833,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik pada tujuan untuk mengarahkan pandangan pada tengah industri/kota/kotak. Ctrl+klik untuk membuka jendela baru pada lokasi industri/kota/kotak
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pertanyaan
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informasi
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Peringatan

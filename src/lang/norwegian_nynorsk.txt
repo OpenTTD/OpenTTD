@@ -2998,6 +2998,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikk på mål for å gå til industri/by/rute. Ctrl+klikk åpner eit nytt tilleggsvindauge over industrien/byen/ruta sin lokasjon.
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Spørsmål
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informasjon
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Åtvaring

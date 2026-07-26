@@ -3707,6 +3707,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click pe țintă pentru a centra ecranul principal pe industrie/oraș/zonă. Ctrl+Click pentru a deschide o fereastră nouă de vizualizare a industriei/orașului/zonei
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Întrebare
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informație
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Atenționare

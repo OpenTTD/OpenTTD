@@ -3843,6 +3843,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Ana görünümü istenen fabrika/şehir/karoya getirmek için hedefe tıklayın. Ctrl + Sol Tıklama fabrikanın/şehrin/karonun olduğu yere ait bir görünüm penceresi açar.
 
 # Goal question window
+###length 4
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Soru
 STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Bilgi
 STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Uyarı
