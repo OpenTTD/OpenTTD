@@ -101,7 +101,7 @@ public:
 		    SLE_VAR(Node, demand,      VarTypes::U32),
 		    SLE_VAR(Node, station,     VarTypes::U16),
 		    SLE_VAR(Node, last_update, VarTypes::I32),
-		SLEG_STRUCTLIST("edges", SlLinkgraphEdge),
+		SaveLoad::StructList<SlLinkgraphEdge>("edges"),
 	};
 	static inline const SaveLoadCompatTable compat_description = _linkgraph_node_sl_compat;
 
@@ -139,7 +139,7 @@ SaveLoadTable GetLinkGraphDesc()
 		 SLE_VAR(LinkGraph, last_compression, VarTypes::I32),
 		SLEG_CONDVAR("num_nodes", _num_nodes, VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::SaveloadListLength),
 		 SLE_VAR(LinkGraph, cargo,            VarTypes::U8),
-		SLEG_STRUCTLIST("nodes", SlLinkgraphNode),
+		SaveLoad::StructList<SlLinkgraphNode>("nodes"),
 	};
 	return link_graph_desc;
 }
@@ -184,7 +184,7 @@ SaveLoadTable GetLinkGraphJobDesc()
 	static const SaveLoad job_desc[] = {
 		SLE_VAR(LinkGraphJob, join_date,        VarTypes::I32),
 		SLE_VAR(LinkGraphJob, link_graph.index, VarTypes::U16),
-		SLEG_STRUCT("linkgraph", SlLinkgraphJobProxy),
+		SaveLoad::Struct<SlLinkgraphJobProxy>("linkgraph"),
 	};
 
 	/* The member offset arithmetic below is only valid if the types in question

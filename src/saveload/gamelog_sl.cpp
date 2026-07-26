@@ -312,17 +312,17 @@ class SlGamelogAction : public DefaultSaveLoadHandler<SlGamelogAction, LoggedAct
 public:
 	static inline const SaveLoad description[] = {
 		SLE_SAVEBYTE(LoggedChange, ct),
-		SLEG_STRUCT("mode", SlGamelogMode),
-		SLEG_STRUCT("revision", SlGamelogRevision),
-		SLEG_STRUCT("oldver", SlGamelogOldver),
-		SLEG_STRUCT("setting", SlGamelogSetting),
-		SLEG_STRUCT("grfadd", SlGamelogGrfadd),
-		SLEG_STRUCT("grfrem", SlGamelogGrfrem),
-		SLEG_STRUCT("grfcompat", SlGamelogGrfcompat),
-		SLEG_STRUCT("grfparam", SlGamelogGrfparam),
-		SLEG_STRUCT("grfmove", SlGamelogGrfmove),
-		SLEG_STRUCT("grfbug", SlGamelogGrfbug),
-		SLEG_STRUCT("emergency", SlGamelogEmergency),
+		SaveLoad::Struct<SlGamelogMode>("mode"),
+		SaveLoad::Struct<SlGamelogRevision>("revision"),
+		SaveLoad::Struct<SlGamelogOldver>("oldver"),
+		SaveLoad::Struct<SlGamelogSetting>("setting"),
+		SaveLoad::Struct<SlGamelogGrfadd>("grfadd"),
+		SaveLoad::Struct<SlGamelogGrfrem>("grfrem"),
+		SaveLoad::Struct<SlGamelogGrfcompat>("grfcompat"),
+		SaveLoad::Struct<SlGamelogGrfparam>("grfparam"),
+		SaveLoad::Struct<SlGamelogGrfmove>("grfmove"),
+		SaveLoad::Struct<SlGamelogGrfbug>("grfbug"),
+		SaveLoad::Struct<SlGamelogEmergency>("emergency"),
 	};
 	static inline const SaveLoadCompatTable compat_description = _gamelog_action_sl_compat;
 
@@ -369,7 +369,7 @@ static const SaveLoad _gamelog_desc[] = {
 	SLE_CONDVAR(LoggedAction, at, VarTypes::U8, SaveLoadVersion::RiffToArray, SaveLoadVersion::MaxVersion),
 	SLE_CONDVAR(LoggedAction, tick, VarFileType::U16 | VarMemType::U64, SaveLoadVersion::MinVersion, SaveLoadVersion::U64TickCounter),
 	SLE_CONDVAR(LoggedAction, tick, VarTypes::U64, SaveLoadVersion::U64TickCounter, SaveLoadVersion::MaxVersion),
-	SLEG_STRUCTLIST("action", SlGamelogAction),
+	SaveLoad::StructList<SlGamelogAction>("action"),
 };
 
 struct GLOGChunkHandler : ChunkHandler {
