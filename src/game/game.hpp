@@ -10,9 +10,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include "../script/api/script_event.hpp"
 #include "game_scanner.hpp"
-
-#include "../script/api/script_event_types.hpp"
 
 /**
  * Main Game class. Contains all functions needed to start, stop, save and load Game Scripts.

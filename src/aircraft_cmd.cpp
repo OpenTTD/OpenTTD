@@ -37,6 +37,7 @@
 #include "framerate_type.h"
 #include "aircraft_cmd.h"
 #include "vehicle_cmd.h"
+#include "script/api/script_event_types.hpp"
 
 #include "widgets/vehicle_widget.h"
 

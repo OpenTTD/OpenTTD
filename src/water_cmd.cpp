@@ -41,6 +41,7 @@
 #include "landscape_cmd.h"
 #include "pathfinder/water_regions.h"
 #include "town_type.h"
+#include "script/api/script_event_types.hpp"
 
 #include "table/strings.h"
 

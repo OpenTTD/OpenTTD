@@ -19,6 +19,7 @@
 #include "pathfinder/yapf/yapf.h"
 #include "strings_func.h"
 #include "tunnelbridge_map.h"
+#include "script/api/script_event_types.hpp"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
 #include "vehicle_func.h"

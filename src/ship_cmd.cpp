@@ -35,6 +35,7 @@
 #include "industry.h"
 #include "industry_map.h"
 #include "ship_cmd.h"
+#include "script/api/script_event_types.hpp"
 
 #include "table/strings.h"
 
