@@ -19,6 +19,7 @@
 #include "game_info.hpp"
 
 #include "table/strings.h"
+#include "../table/control_codes.h"
 #include "../table/strgen_tables.h"
 
 #include "../safeguards.h"
