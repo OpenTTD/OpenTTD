@@ -282,7 +282,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 
 	/* Half tile slopes coincide only with horizontal/vertical track.
 	 * Faking a flat slope results in the correct sprites on positions. */
-	Corner halftile_corner = CORNER_INVALID;
+	Corner halftile_corner = Corner::Invalid;
 	if (IsHalftileSlope(tileh[TileSource::Home])) {
 		halftile_corner = GetHalftileSlopeCorner(tileh[TileSource::Home]);
 		tileh[TileSource::Home] = SLOPE_FLAT;
@@ -311,7 +311,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	SpriteID pylon_halftile = IsValidCorner(halftile_corner) ? GetPylonBase(ti->tile, TileContext::UpperHalftile) : pylon_normal;
 
 	for (DiagDirection i : EnumRange(DiagDirection::End)) {
-		SpriteID pylon_base = (IsValidCorner(halftile_corner) && HasBit(InclinedSlope(i), halftile_corner)) ? pylon_halftile : pylon_normal;
+		SpriteID pylon_base = (IsValidCorner(halftile_corner) && HasBit(InclinedSlope(i), to_underlying(halftile_corner))) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		int elevation = GetPCPElevation(ti->tile, i);
 
@@ -454,10 +454,10 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	SpriteID wire_halftile = IsValidCorner(halftile_corner) ? GetWireBase(ti->tile, TileContext::UpperHalftile) : wire_normal;
 	Track halftile_track;
 	switch (halftile_corner) {
-		case CORNER_W: halftile_track = Track::Left; break;
-		case CORNER_S: halftile_track = Track::Lower; break;
-		case CORNER_E: halftile_track = Track::Right; break;
-		case CORNER_N: halftile_track = Track::Upper; break;
+		case Corner::W: halftile_track = Track::Left; break;
+		case Corner::S: halftile_track = Track::Lower; break;
+		case Corner::E: halftile_track = Track::Right; break;
+		case Corner::N: halftile_track = Track::Upper; break;
 		default: halftile_track = Track::Invalid; break;
 	}
 
