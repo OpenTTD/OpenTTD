@@ -374,7 +374,7 @@ struct ExtendedTextColour {
 	 * @param tc The network encoded colour.
 	 * @return The decoded colour.
 	 */
-	constexpr static ExtendedTextColour FromNetwork(uint16_t tc) { return ExtendedTextColour{static_cast<TextColour>(tc & 0xFF), ExtendedTextColourFlags(tc >> 8)}; }
+	static constexpr ExtendedTextColour FromNetwork(uint16_t tc) { return ExtendedTextColour{static_cast<TextColour>(tc & 0xFF), ExtendedTextColourFlags(tc >> 8)}; }
 
 	/**
 	 * Encode this text colour for sending over the network.

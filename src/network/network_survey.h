@@ -39,7 +39,7 @@ public:
 	 * Check whether a survey is possible.
 	 * @return \c true.
 	 */
-	constexpr static bool IsSurveyPossible()
+	static constexpr bool IsSurveyPossible()
 	{
 		return true;
 	}
