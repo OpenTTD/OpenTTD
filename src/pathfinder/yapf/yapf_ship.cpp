@@ -357,7 +357,7 @@ public:
 	 * @param td Trackdir of current node.
 	 * @returns true if a preferred direction, false otherwise.
 	 */
-	inline static bool IsPreferredShipDirection(TileIndex tile, Trackdir td)
+	static inline bool IsPreferredShipDirection(TileIndex tile, Trackdir td)
 	{
 		const bool odd_x = TileX(tile) & 1;
 		const bool odd_y = TileY(tile) & 1;

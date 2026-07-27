@@ -88,11 +88,11 @@ struct CFollowTrackT {
 		this->railtypes = railtype_override;
 	}
 
-	[[debug_inline]] inline static TransportType TT() { return Ttr_type_; }
-	[[debug_inline]] inline static bool IsWaterTT() { return TT() == TransportType::Water; }
-	[[debug_inline]] inline static bool IsRailTT() { return TT() == TransportType::Rail; }
+	[[debug_inline]] static inline TransportType TT() { return Ttr_type_; }
+	[[debug_inline]] static inline bool IsWaterTT() { return TT() == TransportType::Water; }
+	[[debug_inline]] static inline bool IsRailTT() { return TT() == TransportType::Rail; }
 	inline bool IsTram() { return IsRoadTT() && RoadTypeIsTram(RoadVehicle::From(this->veh)->roadtype); }
-	[[debug_inline]] inline static bool IsRoadTT() { return TT() == TransportType::Road; }
+	[[debug_inline]] static inline bool IsRoadTT() { return TT() == TransportType::Road; }
 	static inline bool Allow90degTurns() { return T90deg_turns_allowed_; }
 	static inline bool DoTrackMasking() { return Tmask_reserved_tracks; }
 
