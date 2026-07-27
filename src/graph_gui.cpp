@@ -202,13 +202,13 @@ protected:
 		StringID tooltip; ///< Tooltip for this range.
 	};
 
-	static inline constexpr GraphScale MONTHLY_SCALE_WALLCLOCK[] = {
+	static constexpr GraphScale MONTHLY_SCALE_WALLCLOCK[] = {
 		{STR_GRAPH_LAST_24_MINUTES_TIME_LABEL, HISTORY_MONTH.total_division, ECONOMY_MONTH_MINUTES, &HISTORY_MONTH},
 		{STR_GRAPH_LAST_72_MINUTES_TIME_LABEL, HISTORY_QUARTER.total_division, ECONOMY_QUARTER_MINUTES, &HISTORY_QUARTER},
 		{STR_GRAPH_LAST_288_MINUTES_TIME_LABEL, HISTORY_YEAR.total_division, ECONOMY_YEAR_MINUTES, &HISTORY_YEAR},
 	};
 
-	static inline constexpr GraphScale MONTHLY_SCALE_CALENDAR[] = {
+	static constexpr GraphScale MONTHLY_SCALE_CALENDAR[] = {
 		{STR_GRAPH_LAST_24_MONTHS, HISTORY_MONTH.total_division, ECONOMY_MONTH_MINUTES, &HISTORY_MONTH},
 		{STR_GRAPH_LAST_24_QUARTERS, HISTORY_QUARTER.total_division, ECONOMY_QUARTER_MINUTES, &HISTORY_QUARTER},
 		{STR_GRAPH_LAST_24_YEARS, HISTORY_YEAR.total_division, ECONOMY_YEAR_MINUTES, &HISTORY_YEAR},
@@ -1727,7 +1727,7 @@ CompanyID PerformanceRatingDetailWindow::company = CompanyID::Invalid();
 /*******************************/
 
 struct IndustryProductionGraphWindow : BaseCargoGraphWindow {
-	static inline constexpr GraphRange RANGE_LABELS[] = {
+	static constexpr GraphRange RANGE_LABELS[] = {
 		{STR_GRAPH_INDUSTRY_RANGE_PRODUCED, STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP},
 		{STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED, STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP},
 		{STR_GRAPH_INDUSTRY_RANGE_DELIVERED, STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP},
@@ -1904,7 +1904,7 @@ void ShowIndustryProductionGraph(WindowNumber window_number)
 }
 
 struct TownCargoGraphWindow : BaseCargoGraphWindow {
-	static inline constexpr GraphRange RANGE_LABELS[] = {
+	static constexpr GraphRange RANGE_LABELS[] = {
 		{STR_GRAPH_TOWN_RANGE_PRODUCED, STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP},
 		{STR_GRAPH_TOWN_RANGE_TRANSPORTED, STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP},
 		{STR_GRAPH_TOWN_RANGE_DELIVERED, STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP},

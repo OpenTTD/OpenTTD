@@ -80,10 +80,10 @@ struct CommandInfo {
 };
 /* Helpers to generate the master command table from the command traits. */
 template <typename T>
-inline constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::flags, T::type }; };
+constexpr CommandInfo CommandFromTrait() noexcept { return { T::name, T::flags, T::type }; };
 
 template <typename T, T... i>
-inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
+constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noexcept {
 	return EnumIndexArray<CommandInfo, Commands, static_cast<Commands>(sizeof...(i))>{{{ CommandFromTrait<CommandTraits<static_cast<Commands>(i)>>()... }}};
 }
 

@@ -36,8 +36,8 @@ template <class T>
 class SpriteCollMap {
 	EnumIndexArray<T, ZoomLevel, ZoomLevel::End> data{};
 public:
-	inline constexpr T &operator[](const ZoomLevel &zoom) { return this->data[zoom]; }
-	inline constexpr const T &operator[](const ZoomLevel &zoom) const { return this->data[zoom]; }
+	constexpr T &operator[](const ZoomLevel &zoom) { return this->data[zoom]; }
+	constexpr const T &operator[](const ZoomLevel &zoom) const { return this->data[zoom]; }
 
 	T &Root() { return this->data[ZoomLevel::Min]; }
 	const T &Root() const { return this->data[ZoomLevel::Min]; }

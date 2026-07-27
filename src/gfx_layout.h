@@ -141,13 +141,13 @@ public:
 		int16_t right; ///< Right-most position of glyph.
 		int16_t top; ///< Top-most position of glyph.
 
-		constexpr inline Position(int16_t left, int16_t right, int16_t top) : left(left), right(right), top(top) { }
+		constexpr Position(int16_t left, int16_t right, int16_t top) : left(left), right(right), top(top) { }
 
 		/**
 		 * Conversion from a single point to a Position.
 		 * @param pt The point to create the position for.
 		 */
-		constexpr inline Position(const Point &pt) : left(pt.x), right(pt.x), top(pt.y) { }
+		constexpr Position(const Point &pt) : left(pt.x), right(pt.x), top(pt.y) { }
 	};
 
 	/** Visual run contains data about the bit of text with the same font. */

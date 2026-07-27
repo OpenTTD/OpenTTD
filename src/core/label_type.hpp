@@ -16,7 +16,7 @@ struct BaseLabel : std::array<uint8_t, 4> {
 	 * Check whether the label is empty.
 	 * @return \c true iff the label is empty, i.e. all zeros.
 	 */
-	constexpr inline bool Empty() const
+	constexpr bool Empty() const
 	{
 		return std::ranges::all_of(*this, [](uint8_t b) { return b == 0; });
 	};

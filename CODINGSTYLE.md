@@ -12,6 +12,7 @@ What is simple to some might appear very complicated to others. Documentation he
 * Use Foo() instead of Foo(void).
 * Prefer using "const" for reference and compound parameters when appropriate.
 * If a member function can be a const function, make it so.
+* Order of qualifiers is `static inline` / `static constexpr`, don't use `inline` with `constexpr`.
 ```c++
 void ThisIsAFunction()
 {

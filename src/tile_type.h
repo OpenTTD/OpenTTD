@@ -97,6 +97,6 @@ static_assert(sizeof(TileIndex) == 4);
 /**
  * The very nice invalid tile marker
  */
-inline constexpr TileIndex INVALID_TILE = TileIndex{ (uint32_t)-1 };
+constexpr TileIndex INVALID_TILE = TileIndex{ (uint32_t)-1 };
 
 #endif /* TILE_TYPE_H */
