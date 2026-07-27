@@ -22,6 +22,7 @@ void IConsoleSetSetting(std::string_view name, int32_t value);
 void IConsoleGetSetting(std::string_view name, bool force_newgame = false);
 void IConsoleListSettings(std::string_view prefilter);
 
+void LoadGameCreationLandscape();
 void LoadFromConfig(bool minimal = false);
 void SaveToConfig();
 

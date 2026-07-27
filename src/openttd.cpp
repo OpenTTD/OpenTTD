@@ -810,6 +810,7 @@ int openttd_main(std::span<std::string_view> arguments)
 	DriverFactoryBase::SelectDriver(musicdriver, Driver::Type::Music);
 
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
+	LoadGameCreationLandscape(); // Preload the _settings_newgame.game_creation.landscape, so correct title game is loaded as a background for loading settings.
 	LoadIntroGame(false);
 
 	/* ScanNewGRFFiles now has control over the scanner. */
