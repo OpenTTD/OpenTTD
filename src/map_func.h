@@ -73,13 +73,13 @@ public:
 	 * Implicit conversion to the TileIndex.
 	 * @return The converted tile index.
 	 */
-	[[debug_inline]] inline constexpr operator TileIndex() const { return this->tile; }
+	[[debug_inline]] constexpr operator TileIndex() const { return this->tile; }
 
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 * @return The (unsigned) integer representation of the tile location.
 	 */
-	[[debug_inline]] inline constexpr operator uint() const { return this->tile.base(); }
+	[[debug_inline]] constexpr operator uint() const { return this->tile.base(); }
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)

@@ -46,7 +46,7 @@ constexpr CommandFlags GetCommandFlags()
  * @param cmd_flags Flags from GetCommandFlags
  * @return flags for DoCommand
  */
-static constexpr inline DoCommandFlags CommandFlagsToDCFlags(CommandFlags cmd_flags)
+static constexpr DoCommandFlags CommandFlagsToDCFlags(CommandFlags cmd_flags)
 {
 	DoCommandFlags flags = {};
 	if (cmd_flags.Test(CommandFlag::NoWater)) flags.Set(DoCommandFlag::NoWater);

@@ -102,7 +102,7 @@ static constexpr auto _callback_tuple = std::make_tuple(
 
 /* Helpers to generate the callback table from the callback list. */
 
-inline constexpr size_t _callback_tuple_size = std::tuple_size_v<decltype(_callback_tuple)>;
+constexpr size_t _callback_tuple_size = std::tuple_size_v<decltype(_callback_tuple)>;
 
 template <size_t... i>
 inline auto MakeCallbackTable(std::index_sequence<i...>) noexcept
@@ -165,7 +165,7 @@ constexpr UnpackDispatchT MakeUnpackNetworkCommand(std::index_sequence<i...>) no
 }
 
 template <typename T, T... i, size_t... j>
-inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>, std::index_sequence<j...>) noexcept
+constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>, std::index_sequence<j...>) noexcept
 {
 	return EnumIndexArray<CommandDispatch, Commands, static_cast<Commands>(sizeof...(i))>{{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, MakeUnpackNetworkCommand<static_cast<Commands>(i)>(std::make_index_sequence<_callback_tuple_size>{}) }... }}};
 }
