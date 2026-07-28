@@ -128,9 +128,43 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 	MakeTree(tile, treetype, count, growth, ground, density);
 }
 
+TreeOverrideManager _tree_mngr(std::size(_original_tree_specs), 255, TREE_INVALID);
+
 std::vector<TreeSpec> _tree_specs; ///< Information about all tree specs.
 std::vector<TreeType> _active_treetypes; ///< List of active tree types.
 EnumIndexArray<std::vector<TreeType>, TropicZone, TropicZone::End> _tropic_treetypes; ///< Lists of tree types for each tropic zone.
+
+/**
+ * Method to install the new tree data in its proper slot
+ * The slot assignment is internal of this method, since it requires
+ * checking what is available
+ * @param spec TreeSprite that comes from the grf decoding process
+ */
+void TreeOverrideManager::SetEntitySpec(TreeSpec &&spec)
+{
+	/* First step : We need to find if this tree is already specified in the savegame data. */
+	TreeType treetype = static_cast<TreeType>(this->AddEntityID(spec.grf_prop.local_id, spec.grf_prop.grfid, spec.grf_prop.subst_id));
+
+	if (treetype == this->invalid_id) {
+		GrfMsg(1, "TreeOverrideManager.SetEntitySpec: Too many tree tiles allocated. Ignoring.");
+		return;
+	}
+
+	/* Now that we know we can use the given id, copy the spec to its final destination. */
+	if (treetype >= _tree_specs.size()) _tree_specs.resize(treetype + 1);
+	_tree_specs[treetype] = std::move(spec);
+
+	/* Now add the overrides. */
+	for (int i = 0; i < this->max_offset; i++) {
+		TreeSpec *overridden_tree = &_tree_specs[i];
+
+		if (this->entity_overrides[i] != _tree_specs[treetype].grf_prop.local_id || this->grfid_overrides[i] != _tree_tile_info[treetype].grf_prop.grfid) continue;
+
+		overridden_tree->grf_prop.override_id = treetype;
+		this->entity_overrides[i] = this->invalid_id;
+		this->grfid_overrides[i] = {};
+	}
+}
 
 /**
  * Reset trees to their default state.
@@ -139,6 +173,8 @@ void ResetTrees()
 {
 	_tree_specs.clear();
 	_tree_specs.assign(std::begin(_original_tree_specs), std::end(_original_tree_specs));
+
+	_tree_mngr.ResetOverride();
 }
 
 /**

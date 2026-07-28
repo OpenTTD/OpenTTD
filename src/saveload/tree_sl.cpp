@@ -5,24 +5,22 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file tree_func.h Function definitions related to tree tiles. */
+/** @file tree_sl.cpp Code handling saving and loading of trees. */
 
-#ifndef TREE_FUNC_H
-#define TREE_FUNC_H
+#include "../stdafx.h"
 
-#include "gfx_type.h"
-#include "tree_map.h"
+#include "saveload.h"
+#include "newgrf_sl.h"
 
-void ResetTrees();
-void FinaliseTrees();
+#include "../safeguards.h"
 
-std::span<const TreeType> GetTreeTypes();
-PalSpriteID GetTreeSprite(TreeType treetype);
+struct TTIDChunkHandler : NewGRFMappingChunkHandler {
+	TTIDChunkHandler() : NewGRFMappingChunkHandler("TTID", _tree_mngr) {}
+};
 
-void PlaceTree(TileIndex tile, uint32_t r, bool keep_density = false);
-void PlaceTreesRandomly();
-uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
+static const TTIDChunkHandler TTID;
+static const ChunkHandlerRef tree_chunk_handlers[] = {
+	TTID,
+};
 
-const Coord2D<uint8_t> *GetTreePositions(uint8_t seed);
-
-#endif /* TREE_FUNC_H */
+extern const ChunkHandlerTable _tree_chunk_handlers(tree_chunk_handlers);

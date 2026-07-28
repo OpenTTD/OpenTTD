@@ -12,6 +12,7 @@
 
 #include "gfx_type.h"
 #include "landscape_type.h"
+#include "newgrf_commons.h"
 #include "strings_type.h"
 #include "tile_type.h"
 
@@ -19,6 +20,7 @@
 struct TreeSprite {
 	SpriteID normal; ///< Sprite for normal terrain.
 	SpriteID snowy; ///< Sprite for snowy terrain.
+	SubstituteGRFFileProps grf_prop{};
 };
 
 /** Information about a tree tile. */
@@ -32,6 +34,7 @@ struct TreeSpec {
 	LandscapeTypes landscapes{}; ///< Landscapes this tree tile may appear in.
 	TropicZones tropiczones{}; ///< Tropical zones this tree tile may appear in.
 	uint8_t probability = 255; ///< Probability of this tree tile being randomly created.
+	SubstituteGRFFileProps grf_prop{};
 };
 
 #endif /* TREE_TYPE_H */
