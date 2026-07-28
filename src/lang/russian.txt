@@ -4950,7 +4950,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Требует�
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Всегда
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Оставшийся срок службы (лет)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Максимальная надёжность
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Движется назад
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Медленно движется назад
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Условие перехода
