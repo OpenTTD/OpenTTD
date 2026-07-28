@@ -639,6 +639,41 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 struct TreeListEnt : PalSpriteID, Coord2D<int8_t> {};
 
+/**
+ * Draw a tree sprite list.
+ * @param ti Tile info of tile to draw.
+ * @param te List of tree sprites and positions.
+ * @param trees Number of trees to draw.
+ */
+static void DrawTreeList(const TileInfo *ti, std::span<TreeListEnt> te, uint trees)
+{
+	int z = ti->z + GetSlopeMaxPixelZ(ti->tileh) / 2;
+
+	/* Combine trees into one sprite object */
+	StartSpriteCombine();
+
+	/* Draw trees in a sorted way */
+	for (; trees > 0; trees--) {
+		uint min = te[0].x + te[0].y;
+		uint mi = 0;
+
+		for (uint i = 1; i < trees; i++) {
+			if (static_cast<uint>(te[i].x + te[i].y) < min) {
+				min = te[i].x + te[i].y;
+				mi = i;
+			}
+		}
+
+		SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, 48}, {te[mi].x, te[mi].y, 0}};
+		AddSortableSpriteToDraw(te[mi].sprite, te[mi].pal, ti->x, ti->y, z, bounds, IsTransparencySet(TransparencyOption::Trees));
+
+		/* Replace the removed one with the last one */
+		te[mi] = te[trees - 1];
+	}
+
+	EndSpriteCombine();
+}
+
 /** @copydoc DrawTileProc */
 static void DrawTile_Trees(TileInfo *ti)
 {
@@ -667,9 +702,6 @@ static void DrawTile_Trees(TileInfo *ti)
 	const PalSpriteID *s = _tree_layout_sprite[index];
 	const Coord2D<uint8_t> *d = _tree_layout_xy[GB(tmp, 2, 2)];
 
-	/* combine trees into one sprite object */
-	StartSpriteCombine();
-
 	TreeListEnt te[4];
 
 	/* put the trees to draw in a list */
@@ -687,28 +719,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		d++;
 	}
 
-	/* draw them in a sorted way */
-	int z = ti->z + GetSlopeMaxPixelZ(ti->tileh) / 2;
-
-	for (; trees > 0; trees--) {
-		uint min = te[0].x + te[0].y;
-		uint mi = 0;
-
-		for (uint i = 1; i < trees; i++) {
-			if ((uint)(te[i].x + te[i].y) < min) {
-				min = te[i].x + te[i].y;
-				mi = i;
-			}
-		}
-
-		SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, 48}, {te[mi].x, te[mi].y, 0}};
-		AddSortableSpriteToDraw(te[mi].sprite, te[mi].pal, ti->x, ti->y, z, bounds, IsTransparencySet(TransparencyOption::Trees));
-
-		/* replace the removed one with the last one */
-		te[mi] = te[trees - 1];
-	}
-
-	EndSpriteCombine();
+	DrawTreeList(ti, te, trees);
 }
 
 
