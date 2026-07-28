@@ -75,22 +75,22 @@ inline void SetHouseType(Tile t, HouseID house_id)
 }
 
 /**
- * Check if the house is protected from removal by towns.
+ * Check if a house is protected by a player from removal by towns.
  * @param t The tile.
  * @return If the house is protected from the town upgrading it.
  */
-inline bool IsHouseProtected(Tile t)
+inline bool IsHousePlayerProtected(Tile t)
 {
 	assert(IsTileType(t, TileType::House));
 	return HasBit(t.m3(), 5);
 }
 
 /**
- * Set a house as protected from removal by towns.
+ * Set a house as protected by a player from removal by towns.
  * @param t The tile.
  * @param house_protected Whether the house is protected from the town upgrading it.
  */
-inline void SetHouseProtected(Tile t, bool house_protected)
+inline void SetHousePlayerProtected(Tile t, bool house_protected)
 {
 	assert(IsTileType(t, TileType::House));
 	SB(t.m3(), 5, 1, house_protected ? 1 : 0);
@@ -383,7 +383,7 @@ inline void MakeHouseTile(Tile t, TownID tid, uint8_t counter, uint8_t stage, Ho
 	SetHouseType(t, type);
 	SetHouseCompleted(t, stage == TOWN_HOUSE_COMPLETED);
 	t.m5() = IsHouseCompleted(t) ? 0 : (stage << 3 | counter);
-	SetHouseProtected(t, house_protected);
+	SetHousePlayerProtected(t, house_protected);
 	SetAnimationFrame(t, 0);
 	SetHouseProcessingTime(t, HouseSpec::Get(type)->processing_time);
 	SB(t.m8(), 12, 4, 0);
