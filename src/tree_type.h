@@ -13,6 +13,7 @@
 #include "gfx_type.h"
 #include "landscape_type.h"
 #include "newgrf_commons.h"
+#include "sound_type.h"
 #include "strings_type.h"
 #include "tile_type.h"
 
@@ -30,6 +31,7 @@ struct TreeSpec {
 
 	std::array<std::array<uint8_t, NUM_TREES>, NUM_TREE_VARIANTS> trees{}; ///< TreeSprite for each tree of the tile.
 	std::array<std::array<PaletteID, NUM_TREES>, NUM_TREE_VARIANTS> palettes{}; ///< Palette remaps for each sprite.
+	std::array<SoundID, 4> random_sounds{INVALID_SOUND, INVALID_SOUND, INVALID_SOUND, INVALID_SOUND}; ///< Up to 4 random sounds to play.
 	StringID name{}; ///< Name of tree.
 	LandscapeTypes landscapes{}; ///< Landscapes this tree tile may appear in.
 	TropicZones tropiczones{}; ///< Tropical zones this tree tile may appear in.

@@ -110,6 +110,8 @@ static constexpr uint8_t TREE_BASE_A = 19; ///< Base tree sprite index for defau
 static constexpr uint8_t TREE_BASE_S = 27; ///< Base tree sprite index for default subtropic trees.
 static constexpr uint8_t TREE_BASE_Y = 45; ///< Base tree sprite index for default toyland trees.
 
+static constexpr std::array<SoundID, 4> TREE_SOUNDS_RAINFOREST{SND_42_RAINFOREST_1, SND_43_RAINFOREST_2, SND_44_RAINFOREST_3, SND_48_RAINFOREST_4};
+
 /** Tree tile information for original trees. */
 static constexpr std::initializer_list<TreeSpec> _original_tree_specs = {
 	// Temperate
@@ -322,6 +324,7 @@ static constexpr std::initializer_list<TreeSpec> _original_tree_specs = {
 			{TREE_BASE_S + 2, TREE_BASE_S + 2, TREE_BASE_S + 11, TREE_BASE_S + 15},
 			{TREE_BASE_S + 2, TREE_BASE_S + 7, TREE_BASE_S + 2, TREE_BASE_S + 2},
 		}},
+		.random_sounds = TREE_SOUNDS_RAINFOREST,
 		.name = STR_LAI_TREE_NAME_RAINFOREST,
 		.landscapes = LandscapeType::Tropic,
 		.tropiczones = TropicZone::Rainforest,
@@ -333,6 +336,7 @@ static constexpr std::initializer_list<TreeSpec> _original_tree_specs = {
 			{TREE_BASE_S + 3, TREE_BASE_S + 3, TREE_BASE_S + 8, TREE_BASE_S + 17},
 			{TREE_BASE_S + 3, TREE_BASE_S + 7, TREE_BASE_S + 3, TREE_BASE_S + 16},
 		}},
+		.random_sounds = TREE_SOUNDS_RAINFOREST,
 		.name = STR_LAI_TREE_NAME_RAINFOREST,
 		.landscapes = LandscapeType::Tropic,
 		.tropiczones = TropicZone::Rainforest,
@@ -344,6 +348,7 @@ static constexpr std::initializer_list<TreeSpec> _original_tree_specs = {
 			{TREE_BASE_S + 6, TREE_BASE_S + 2, TREE_BASE_S + 8, TREE_BASE_S + 6},
 			{TREE_BASE_S + 6, TREE_BASE_S + 15, TREE_BASE_S + 3, TREE_BASE_S + 6},
 		}},
+		.random_sounds = TREE_SOUNDS_RAINFOREST,
 		.name = STR_LAI_TREE_NAME_RAINFOREST,
 		.landscapes = LandscapeType::Tropic,
 		.tropiczones = TropicZone::Rainforest,
@@ -355,6 +360,7 @@ static constexpr std::initializer_list<TreeSpec> _original_tree_specs = {
 			{TREE_BASE_S + 7, TREE_BASE_S + 2, TREE_BASE_S + 15, TREE_BASE_S + 6},
 			{TREE_BASE_S + 7, TREE_BASE_S + 7, TREE_BASE_S + 3, TREE_BASE_S + 17},
 		}},
+		.random_sounds = TREE_SOUNDS_RAINFOREST,
 		.name = STR_LAI_TREE_NAME_RAINFOREST,
 		.landscapes = LandscapeType::Tropic,
 		.tropiczones = TropicZone::Rainforest,
@@ -366,6 +372,7 @@ static constexpr std::initializer_list<TreeSpec> _original_tree_specs = {
 			{TREE_BASE_S + 11, TREE_BASE_S + 3, TREE_BASE_S + 15, TREE_BASE_S + 11},
 			{TREE_BASE_S + 11, TREE_BASE_S + 15, TREE_BASE_S + 3, TREE_BASE_S + 16},
 		}},
+		.random_sounds = TREE_SOUNDS_RAINFOREST,
 		.name = STR_LAI_TREE_NAME_RAINFOREST,
 		.landscapes = LandscapeType::Tropic,
 		.tropiczones = TropicZone::Rainforest,
@@ -377,6 +384,7 @@ static constexpr std::initializer_list<TreeSpec> _original_tree_specs = {
 			{TREE_BASE_S + 16, TREE_BASE_S + 3, TREE_BASE_S + 15, TREE_BASE_S + 11},
 			{TREE_BASE_S + 16, TREE_BASE_S + 15, TREE_BASE_S + 16, TREE_BASE_S + 17},
 		}},
+		.random_sounds = TREE_SOUNDS_RAINFOREST,
 		.name = STR_LAI_TREE_NAME_RAINFOREST,
 		.landscapes = LandscapeType::Tropic,
 		.tropiczones = TropicZone::Rainforest,
@@ -388,6 +396,7 @@ static constexpr std::initializer_list<TreeSpec> _original_tree_specs = {
 			{TREE_BASE_S + 15, TREE_BASE_S + 3, TREE_BASE_S + 15, TREE_BASE_S + 15},
 			{TREE_BASE_S + 15, TREE_BASE_S + 15, TREE_BASE_S + 16, TREE_BASE_S + 17},
 		}},
+		.random_sounds = TREE_SOUNDS_RAINFOREST,
 		.name = STR_LAI_TREE_NAME_RAINFOREST,
 		.landscapes = LandscapeType::Tropic,
 		.tropiczones = TropicZone::Rainforest,

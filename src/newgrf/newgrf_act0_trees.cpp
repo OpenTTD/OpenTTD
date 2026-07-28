@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
+#include "../newgrf_sound.h"
 #include "../tree_func.h"
 #include "../tree_type.h"
 #include "newgrf_bytereader.h"
@@ -83,6 +84,17 @@ static ChangeInfoResult TreesChangeInfo(uint first, uint last, int prop, ByteRea
 			case 0x0C: // Probability
 				treespec->probability = buf.ReadByte();
 				break;
+
+			case 0x0D: { // Random sound effects
+				treespec->random_sounds.fill(INVALID_SOUND);
+				uint8_t num_sounds = buf.ReadByte();
+				for (uint8_t j = 0; j < num_sounds; ++j) {
+					uint8_t sound = buf.ReadByte();
+					if (j >= std::size(treespec->random_sounds)) continue;
+					treespec->random_sounds[j] = GetNewGRFSoundID(_cur_gps.grffile, sound);
+				}
+				break;
+			}
 
 			default:
 				ret = ChangeInfoResult::Unknown;

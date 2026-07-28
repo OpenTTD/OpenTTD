@@ -889,28 +889,11 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc &td)
 
 static void TileLoopTreesDesert(TileIndex tile)
 {
-	switch (GetTropicZone(tile)) {
-		case TropicZone::Desert:
-			if (GetTreeGround(tile) != TreeGround::SnowOrDesert) {
-				SetTreeGroundDensity(tile, TreeGround::SnowOrDesert, 3);
-				MarkTileDirtyByTile(tile);
-			}
-			break;
+	if (GetTropicZone(tile) != TropicZone::Desert) return;
 
-		case TropicZone::Rainforest: {
-			static const SoundFx forest_sounds[] = {
-				SND_42_RAINFOREST_1,
-				SND_43_RAINFOREST_2,
-				SND_44_RAINFOREST_3,
-				SND_48_RAINFOREST_4
-			};
-			uint32_t r = Random();
-
-			if (Chance16I(1, 200, r) && _settings_client.sound.ambient) SndPlayTileFx(forest_sounds[GB(r, 16, 2)], tile);
-			break;
-		}
-
-		default: break;
+	if (GetTreeGround(tile) != TreeGround::SnowOrDesert) {
+		SetTreeGroundDensity(tile, TreeGround::SnowOrDesert, 3);
+		MarkTileDirtyByTile(tile);
 	}
 }
 
@@ -969,6 +952,23 @@ static bool TreesOnTileCanSpread(TileIndex tile)
 	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
+/**
+ * Randomly play an ambient sound for a tree.
+ * @param tile The tile of the tile.
+ * @param tree_spec The tree spec of the tree.
+ */
+static void TreePlayAmbientSound(TileIndex tile, const TreeSpec &tree_spec)
+{
+	/* At least one sound must be set. */
+	if (tree_spec.random_sounds.front() == INVALID_SOUND) return;
+
+	uint32_t r = Random();
+	if (Chance16I(1, 200, r) && _settings_client.sound.ambient) {
+		SoundID sound = tree_spec.random_sounds[GB(r, 16, 2)];
+		if (sound != INVALID_SOUND) SndPlayTileFx(sound, tile);
+	}
+}
+
 /** @copydoc TileLoopProc */
 static void TileLoop_Trees(TileIndex tile)
 {
@@ -981,6 +981,10 @@ static void TileLoop_Trees(TileIndex tile)
 			default: break;
 		}
 	}
+
+	TreeType treetype = GetTreeType(tile);
+	const TreeSpec &tree_spec = _tree_specs[treetype];
+	TreePlayAmbientSound(tile, tree_spec);
 
 	AmbientSoundEffect(tile);
 
@@ -1007,7 +1011,7 @@ static void TileLoop_Trees(TileIndex tile)
 	switch (GetTreeGrowth(tile)) {
 		case TreeGrowthStage::Grown: // regular sized tree
 			if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
-					!_tree_specs[GetTreeType(tile)].tropiczones.Test(TropicZone::Desert) &&
+					!tree_spec.tropiczones.Test(TropicZone::Desert) &&
 					GetTropicZone(tile) == TropicZone::Desert) {
 				AddTreeGrowth(tile, 1);
 			} else {
@@ -1026,8 +1030,6 @@ static void TileLoop_Trees(TileIndex tile)
 
 					case 2: { // add a neighbouring tree
 						if (!TreesOnTileCanSpread(tile)) break;
-
-						TreeType treetype = GetTreeType(tile);
 
 						tile += TileOffsByDir(static_cast<Direction>(RandomRange(to_underlying(Direction::End))));
 
