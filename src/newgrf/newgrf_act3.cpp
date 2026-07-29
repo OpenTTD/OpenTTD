@@ -254,15 +254,19 @@ struct CanalMapSpriteGroupHandler : MapSpriteGroupHandler {
 	}
 };
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<StationSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->stations.size() ? grffile->stations[local_id].get() : nullptr; }
 struct StationMapSpriteGroupHandler : CargoTypeMapSpriteGroupHandler<StationSpec, StationClass> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<HouseSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->housespec.size() ? grffile->housespec[local_id].get() : nullptr; }
 struct TownHouseMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<HouseSpec> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<IndustrySpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->industryspec.size() ? grffile->industryspec[local_id].get() : nullptr; }
 struct IndustryMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<IndustrySpec> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<IndustryTileSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->indtspec.size() ? grffile->indtspec[local_id].get() : nullptr; }
 struct IndustryTileMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<IndustryTileSpec> {};
 
@@ -281,6 +285,7 @@ struct CargoMapSpriteGroupHandler : MapSpriteGroupHandler {
 	}
 };
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<ObjectSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->objectspec.size() ? grffile->objectspec[local_id].get() : nullptr; }
 struct ObjectMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<ObjectSpec> {};
 
@@ -323,12 +328,15 @@ struct RoadTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapDefault(uint16_t, const SpriteGroup *) override {}
 };
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<AirportSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->airportspec.size() ? grffile->airportspec[local_id].get() : nullptr; }
 struct AirportMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<AirportSpec> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<AirportTileSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->airtspec.size() ? grffile->airtspec[local_id].get() : nullptr; }
 struct AirportTileMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<AirportTileSpec> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<RoadStopSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->roadstops.size() ? grffile->roadstops[local_id].get() : nullptr; }
 struct RoadStopMapSpriteGroupHandler : CargoTypeMapSpriteGroupHandler<RoadStopSpec, RoadStopClass> {};
 

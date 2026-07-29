@@ -129,14 +129,14 @@ struct GRFFile {
 	uint sound_offset = 0;
 	uint16_t num_sounds = 0;
 
-	std::vector<std::unique_ptr<struct StationSpec>> stations;
-	std::vector<std::unique_ptr<struct HouseSpec>> housespec;
-	std::vector<std::unique_ptr<struct IndustrySpec>> industryspec;
-	std::vector<std::unique_ptr<struct IndustryTileSpec>> indtspec;
-	std::vector<std::unique_ptr<struct ObjectSpec>> objectspec;
-	std::vector<std::unique_ptr<struct AirportSpec>> airportspec;
-	std::vector<std::unique_ptr<struct AirportTileSpec>> airtspec;
-	std::vector<std::unique_ptr<struct RoadStopSpec>> roadstops;
+	std::vector<std::unique_ptr<struct StationSpec>> stations; ///< Station definitions.
+	std::vector<std::unique_ptr<struct HouseSpec>> housespec; ///< House definitions.
+	std::vector<std::unique_ptr<struct IndustrySpec>> industryspec; ///< Industry definitions.
+	std::vector<std::unique_ptr<struct IndustryTileSpec>> indtspec; ///< Industry Tile definitions.
+	std::vector<std::unique_ptr<struct ObjectSpec>> objectspec; ///< Object definitions.
+	std::vector<std::unique_ptr<struct AirportSpec>> airportspec; ///< Airport definitions.
+	std::vector<std::unique_ptr<struct AirportTileSpec>> airtspec; ///< Airport Tile definitions.
+	std::vector<std::unique_ptr<struct RoadStopSpec>> roadstops; ///< RoadStop definitions.
 
 	std::vector<uint32_t> param{};
 
