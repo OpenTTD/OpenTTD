@@ -1724,10 +1724,6 @@ STR_CONFIG_SETTING_PAN_WITH_WASD_HELPTEXT                       :Use W, A, S, D 
 
 STR_CONFIG_SETTING_PAN_SPEED                                    :Panning speed: {STRING2}
 STR_CONFIG_SETTING_PAN_SPEED_HELPTEXT                           :Set the speed of panning the viewport with the keyboard
-###length 3
-STR_CONFIG_SETTING_PAN_SPEED_1X                                 :1x
-STR_CONFIG_SETTING_PAN_SPEED_2X                                 :2x
-STR_CONFIG_SETTING_PAN_SPEED_3X                                 :3x
 
 STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :Traditional toolbar menu selection behaviour: {STRING2}
 STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :Choose selection behaviour of toolbar menus. If off, toolbar menus will stay open until a selection is made. If on, toolbar menus will activate when the mouse button is released.

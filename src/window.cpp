@@ -2866,7 +2866,7 @@ static void HandleKeyScrolling()
 	 * doesn't have an edit-box as focused widget.
 	 */
 	if (_dirkeys.Any() && !EditBoxInGlobalFocus()) {
-		int factor = (_shift_pressed ? 50 : 10) * (_settings_client.gui.pan_speed + 1);
+		int factor = (_shift_pressed ? 50 : 10) * _settings_client.gui.pan_speed;
 
 		if (_game_mode != GameMode::Menu && _game_mode != GameMode::Bootstrap) {
 			/* Key scrolling stops following a vehicle. */
