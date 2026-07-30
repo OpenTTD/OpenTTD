@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `korczis/OpenTTD` is a private academic research fork used as a validation target for the Prismatic platform, not staged for upstream contribution. The full ground rules, the four-kinds-of-change distinction, and the layered validation model (`tools/gate.sh`, `research/`) live in [AGENTS.md](./AGENTS.md) and apply to Claude Code exactly as to any other agent — read that first. This file only adds Claude-specific workflow notes and OpenTTD's own technical reference (build/run/test, architecture, code style) on top.
 
+One concrete example of research-mode work living in this fork: [`src/prismatic_mcp/`](./src/prismatic_mcp/) is an embedded, research-only, compile-gated MCP server (default OFF, requires `OPTION_RESEARCH_INSTRUMENTATION=ON`) — see [`research/prismatic-mcp/README.md`](./research/prismatic-mcp/README.md) for what's actually implemented vs. staged before assuming either.
+
 ## Research mode: internals, debugging, and instrumentation
 
 The full policy is defined once, vendor-neutrally, in [AGENTS.md](./AGENTS.md) under "Research-mode access to internals" — read it first; this section only adds Claude Code-specific workflow on top.

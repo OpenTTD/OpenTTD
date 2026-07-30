@@ -105,6 +105,7 @@ These directories hold personal Claude Code tooling (commands, agents, skills, h
 - [CLAUDE.md](./CLAUDE.md) — Claude-specific workflow notes, plus OpenTTD's build/test/run commands, architecture, and code style (all still real technical reference).
 - [README.md](./README.md) — short public-facing explanation of what this repository is.
 - [research/README.md](./research/README.md) — the gating model and experiment-report taxonomy in full.
+- [research/prismatic-mcp/README.md](./research/prismatic-mcp/README.md) — the embedded, research-only, compile-gated MCP server: what's actually implemented vs. staged, build/run/connect, and the phase-ordered research trail. Read this fork's own ground rules above first; nothing here overrides them.
 
 <!-- majordomus:begin 63d5f7830571 294efe4fb028e737 -->
 # AGENTS.md

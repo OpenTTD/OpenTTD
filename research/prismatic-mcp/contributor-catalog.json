@@ -1,0 +1,167 @@
+{
+  "$comment": "Single data source for generated contributor-facing docs (README.md Getting Started section, research/prismatic-mcp/README.md CTA, the Zola site CTA and JSON-LD). Do not hand-edit the generated blocks this drives -- edit this file and rerun tools/research/generate_prismatic_docs.py. Enforced by tools/check-prismatic-docs.sh via tools/gate.sh change.",
+  "schema_version": "1.0",
+  "generator": "tools/research/generate_prismatic_docs.py",
+  "project": {
+    "name": "Prismatic MCP Server",
+    "tagline": "Research-only, loopback-only, compile-gated Model Context Protocol server embedded in this OpenTTD fork",
+    "status_summary": "A real, compiling, connectable read-only vertical, plus one gated mutation (game.set_pause via a two-phase digest-bound approval). See 05-implementation-plan.md for the honest per-phase status. Native GUI, a broader action catalogue, company scoping, autonomous multiplayer lab, and full conformance evidence are staged, not implemented.",
+    "repo_url": "https://github.com/korczis/OpenTTD",
+    "docs_index_path": "research/prismatic-mcp/README.md"
+  },
+  "cta": {
+    "label": "Get started: Prismatic MCP for contributors",
+    "url": "https://github.com/korczis/OpenTTD/blob/master/research/prismatic-mcp/README.md",
+    "subtext": "Research-only \u00b7 loopback-only \u00b7 compile-gated. Read AGENTS.md before touching anything."
+  },
+  "getting_started_steps": [
+    {
+      "title": "Read the ground rules first",
+      "detail": "AGENTS.md (vendor-neutral ground rules for any agent/contributor working in this fork), then CLAUDE.md.",
+      "paths": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ]
+    },
+    {
+      "title": "Read the MCP research trail",
+      "detail": "research/prismatic-mcp/README.md is the entry point; 00-baseline.md through 19-continuation-runbook.md are phase-ordered.",
+      "paths": [
+        "research/prismatic-mcp/README.md"
+      ]
+    },
+    {
+      "title": "Configure with the feature gate ON",
+      "detail": "OPTION_PRISMATIC_MCP_SERVER defaults OFF and requires OPTION_RESEARCH_INSTRUMENTATION=ON.",
+      "command": "cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON -DCMAKE_C_COMPILER=\"$(brew --prefix llvm)/bin/clang\" -DCMAKE_CXX_COMPILER=\"$(brew --prefix llvm)/bin/clang++\""
+    },
+    {
+      "title": "Build",
+      "command": "cmake --build build-mcp --target openttd -j$(sysctl -n hw.ncpu)"
+    },
+    {
+      "title": "Run the unit tests",
+      "detail": "Catch2 tests for the security-critical helpers (digest binding, auth parsing, constant-time compare) are ctest-discoverable.",
+      "command": "cmake --build build-mcp --target openttd_test -j$(sysctl -n hw.ncpu) && ctest --test-dir build-mcp -R prismatic --output-on-failure"
+    },
+    {
+      "title": "Start the server and connect",
+      "detail": "In the in-game console: prismatic_mcp start, then prismatic_mcp token to get the bearer token. Never share the token; it is never logged.",
+      "paths": [
+        "research/prismatic-mcp/10-in-game-runbook.md"
+      ]
+    },
+    {
+      "title": "Run the local validation gate before proposing a change",
+      "command": "tools/gate.sh change"
+    }
+  ],
+  "doc_index": [
+    {
+      "path": "research/prismatic-mcp/README.md",
+      "title": "Entry point: build/run/connect, boundaries",
+      "kind": "index"
+    },
+    {
+      "path": "research/prismatic-mcp/00-baseline.md",
+      "title": "Baseline (Phase 0): repo/toolchain state before implementation",
+      "kind": "phase"
+    },
+    {
+      "path": "research/prismatic-mcp/01-openttd-system-map.md",
+      "title": "OpenTTD system map (Phase 1): real call paths, file:line anchored",
+      "kind": "phase"
+    },
+    {
+      "path": "research/prismatic-mcp/02-threat-model.md",
+      "title": "Threat model (Phase 2)",
+      "kind": "phase"
+    },
+    {
+      "path": "research/prismatic-mcp/03-architecture-options.md",
+      "title": "Architecture options considered (Phase 3)",
+      "kind": "phase"
+    },
+    {
+      "path": "research/prismatic-mcp/04-architecture-decision-record.md",
+      "title": "Architecture decision record (Phase 4)",
+      "kind": "phase"
+    },
+    {
+      "path": "research/prismatic-mcp/05-implementation-plan.md",
+      "title": "Implementation plan and honest per-phase status",
+      "kind": "phase"
+    },
+    {
+      "path": "research/prismatic-mcp/07-resource-catalog.md",
+      "title": "MCP resource catalog",
+      "kind": "reference"
+    },
+    {
+      "path": "research/prismatic-mcp/08-tool-catalog.md",
+      "title": "MCP tool catalog",
+      "kind": "reference"
+    },
+    {
+      "path": "research/prismatic-mcp/09-testing.md",
+      "title": "Testing approach",
+      "kind": "reference"
+    },
+    {
+      "path": "research/prismatic-mcp/10-in-game-runbook.md",
+      "title": "In-game runbook and the verified vertical",
+      "kind": "runbook"
+    },
+    {
+      "path": "research/prismatic-mcp/11-continuation-baseline.md",
+      "title": "Continuation baseline (Phase 2 recovery)",
+      "kind": "phase"
+    },
+    {
+      "path": "research/prismatic-mcp/12-continuation-plan.md",
+      "title": "Continuation plan and adversarial review (Phase 2)",
+      "kind": "phase"
+    },
+    {
+      "path": "research/prismatic-mcp/16-decision-contract.md",
+      "title": "Decision contract and approval workflow",
+      "kind": "reference"
+    },
+    {
+      "path": "research/prismatic-mcp/18-continuation-testing.md",
+      "title": "Continuation testing",
+      "kind": "reference"
+    },
+    {
+      "path": "research/prismatic-mcp/19-continuation-runbook.md",
+      "title": "Continuation runbook",
+      "kind": "runbook"
+    },
+    {
+      "path": "research/prismatic-mcp/exposure-coverage-matrix.md",
+      "title": "Exposure coverage matrix (honest per-domain status)",
+      "kind": "matrix"
+    },
+    {
+      "path": "research/prismatic-mcp/spec-compliance-matrix.md",
+      "title": "MCP spec compliance matrix (stable 2025-11-25)",
+      "kind": "matrix"
+    },
+    {
+      "path": "research/prismatic-mcp/internal-surface-inventory.json",
+      "title": "Machine-readable internal surface inventory",
+      "kind": "data"
+    },
+    {
+      "path": "research/prismatic-mcp/continuation-gap-matrix.json",
+      "title": "Machine-readable continuation gap matrix",
+      "kind": "data"
+    }
+  ],
+  "known_limitations": [
+    "Native GUI (toolbar entry, Control Center window) is not implemented -- console command parity only.",
+    "No autonomous multiplayer arena/lab exists.",
+    "Exactly one mutating action type is implemented: game.set_pause, via a two-phase digest-bound approval (openttd.decision.submit -> console 'prismatic_mcp approve <id>' -> execute). No company-scoped authorization, no action budget, no other action types exist yet.",
+    "This catalog itself has no automated freshness check against the actual doc_index file list beyond what tools/check-prismatic-docs.sh diffs -- new docs must be added here by hand."
+  ]
+}

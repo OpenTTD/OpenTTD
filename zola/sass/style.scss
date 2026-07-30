@@ -75,3 +75,30 @@ code {
   font-size: 0.9rem;
   border-top: 1px solid rgba(127, 127, 127, 0.3);
 }
+
+.cta-bar {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  background: var(--link);
+  color: var(--bg);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  filter: brightness(1.1);
+}
+
+.cta-subtext {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
