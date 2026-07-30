@@ -4764,7 +4764,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessita revis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Temps de vida restant (anys)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Fiabilitat màxima
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Marxa enrere
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Marxa enrere a velocitat reduïda
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Com comparar les dades del vehicle al valor donat
