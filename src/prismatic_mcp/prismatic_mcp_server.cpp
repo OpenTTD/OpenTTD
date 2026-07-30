@@ -483,8 +483,10 @@ std::optional<json> DispatchOne(const json &req)
 			{"protocolVersion", std::string(PROTOCOL_VERSION)},
 			{"capabilities", caps},
 			{"serverInfo", {{"name", "openttd-prismatic-mcp"}, {"version", _openttd_revision}}},
-			{"instructions", "RESEARCH-ONLY embedded OpenTTD MCP server. Read-only resources are live; "
-			 "no game-state mutation is exposed by this build."},
+			{"instructions", "RESEARCH-ONLY embedded OpenTTD MCP server. Read-only resources are live. "
+			 "One gated mutation is exposed: openttd.game.set_pause via openttd.decision.validate/submit, "
+			 "requiring operator approval in the OpenTTD console ('prismatic_mcp approve <id>') before a "
+			 "resubmitted, argument-identical call executes it. No other action types exist yet."},
 		};
 		return RpcResult(id, result);
 	}

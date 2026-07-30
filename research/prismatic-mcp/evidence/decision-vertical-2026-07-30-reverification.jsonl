@@ -1,0 +1,28 @@
+# Decision-contract vertical (Vertical B) -- independent re-verification -- 2026-07-30, HEAD b9a92468ce
+# Rebuilt build-mcp/openttd from current HEAD first (prior binary in that dir was stale, from commit 0a49a3dbb8).
+# Ran a real headless dedicated server (-D -g), drove it via the in-game console over stdin, and the
+# MCP HTTP endpoint over loopback curl. No mocks. Bearer token never appears below or in any captured file.
+## 01 initialize
+{"id":1,"jsonrpc":"2.0","result":{"capabilities":{"logging":{},"resources":{},"tools":{}},"instructions":"RESEARCH-ONLY embedded OpenTTD MCP server. Read-only resources are live; no game-state mutation is exposed by this build.","protocolVersion":"2025-11-25","serverInfo":{"name":"openttd-prismatic-mcp","version":"20260730-prismatic-mcp-server-mb9a92468ce"}}}
+## 03 resources/read openttd://game/state (BEFORE) -- paused:false
+{"id":3,"jsonrpc":"2.0","result":{"contents":[{"mimeType":"application/json","text":"{\"availability\":\"available\",\"data\":{\"map_height\":256,\"map_width\":256,\"num_companies\":0,\"num_towns\":17,\"num_vehicles\":10,\"paused\":false},\"game_date\":\"1950-01-13\",\"game_mode\":\"normal\",\"game_tick\":2216,\"next_cursor\":null,\"protocol_version\":\"2025-11-25\",\"redactions\":[],\"schema_version\":\"1.0\",\"source\":\"OpenTTD\",\"source_revision\":\"20260730-prismatic-mcp-server-mb9a92468ce\",\"truncated\":false}","uri":"openttd://game/state"}]}}
+## 04 tools/list
+{"id":4,"jsonrpc":"2.0","result":{"tools":[{"description":"Validate a typed action/DecisionEnvelope without mutating game state","inputSchema":{"type":"object"},"name":"openttd.decision.validate"},{"description":"List typed action types this build can execute","inputSchema":{"type":"object"},"name":"openttd.decision.list_action_types"},{"description":"Submit a DecisionEnvelope; returns a pending approval until an operator approves, then executes via the normal command path","inputSchema":{"required":["action"],"type":"object"},"name":"openttd.decision.submit"},{"description":"Approval-gated: pause/unpause via Commands::Pause. Requires operator approval (two-phase, digest-bound)","inputSchema":{"properties":{"pause":{"type":"boolean"}},"required":["pause"],"type":"object"},"name":"openttd.game.set_pause"}]}}
+## 05 tools/call openttd.decision.validate (non-mutating)
+{"id":5,"jsonrpc":"2.0","result":{"content":[{"text":"{\"approval_required\":true,\"current_snapshot_id\":\"tick-2803\",\"errors\":[],\"mutating\":true,\"required_scope\":\"SERVER_ADMIN\",\"valid\":true}","type":"text"}],"isError":false}}
+## 06 tools/call openttd.decision.submit -> pending_approval #1, digest 4f4e785d7828430a
+{"id":6,"jsonrpc":"2.0","result":{"content":[{"text":"{\"approval_id\":1,\"argument_digest\":\"4f4e785d7828430a\",\"expires_at_tick\":102804,\"message\":\"Approval required in OpenTTD: prismatic_mcp approve 1\",\"status\":\"pending_approval\"}","type":"text"}]}}
+## console: prismatic_mcp approve 1 -> operator approved #1; native feedback: '*** Game paused (manual)' on next submit
+## 07 tools/call openttd.decision.submit (same args, now approved) -> executed
+{"id":7,"jsonrpc":"2.0","result":{"content":[{"text":"{\"approval_id\":1,\"command_result\":\"succeeded\",\"decision_id\":1,\"observed\":{\"paused\":false},\"status\":\"executed\",\"verdict\":\"EXECUTED_UNVERIFIED\"}","type":"text"}],"isError":false}}
+## 08 resources/read openttd://game/state (AFTER) -- paused:true (real observed delta)
+{"id":8,"jsonrpc":"2.0","result":{"contents":[{"mimeType":"application/json","text":"{\"availability\":\"available\",\"data\":{\"map_height\":256,\"map_width\":256,\"num_companies\":0,\"num_towns\":17,\"num_vehicles\":10,\"paused\":true},\"game_date\":\"1950-01-29\",\"game_mode\":\"normal\",\"game_tick\":3366,\"next_cursor\":null,\"protocol_version\":\"2025-11-25\",\"redactions\":[],\"schema_version\":\"1.0\",\"source\":\"OpenTTD\",\"source_revision\":\"20260730-prismatic-mcp-server-mb9a92468ce\",\"truncated\":false}","uri":"openttd://game/state"}]}}
+## 09 REPLAY ATTEMPT: resubmit identical args after execution -> approval #1 already Consumed;
+## does NOT re-execute, creates a fresh unapproved pending approval #2 instead (replay rejected)
+{"id":9,"jsonrpc":"2.0","result":{"content":[{"text":"{\"approval_id\":2,\"argument_digest\":\"4f4e785d7828430a\",\"expires_at_tick\":103366,\"message\":\"Approval required in OpenTTD: prismatic_mcp approve 2\",\"status\":\"pending_approval\"}","type":"text"}]}}
+## 10 TAMPER ATTEMPT: submit different args (pause:false) -> different digest 5cef0322ab0e0cb9,
+## no matching approval exists -> pending_approval #3, NOT executed (argument-change after the fact rejected)
+{"id":10,"jsonrpc":"2.0","result":{"content":[{"text":"{\"approval_id\":3,\"argument_digest\":\"5cef0322ab0e0cb9\",\"expires_at_tick\":103366,\"message\":\"Approval required in OpenTTD: prismatic_mcp approve 3\",\"status\":\"pending_approval\"}","type":"text"}]}}
+## verdict: EXECUTED_UNVERIFIED (server does not itself claim strategic success from execution alone,
+## consistent with this fork's fail-closed reporting habit -- the caller must separately confirm the
+## expected effect, which we did here via the independent resources/read game/state AFTER call).
