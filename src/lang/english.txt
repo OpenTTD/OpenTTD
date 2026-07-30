@@ -1720,7 +1720,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap or when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 
 STR_CONFIG_SETTING_PAN_WITH_WASD                                :Use WASD for viewport panning: {STRING2}
-STR_CONFIG_SETTING_PAN_WITH_WASD_HELPTEXT                       :Use W, A, S, D keys to pan the main viewport instead of the arrow keys. When enabled, arrow keys remain available for text input and UI navigation, but any existing hotkeys mapped to W, A, S or D are disabled
+STR_CONFIG_SETTING_PAN_WITH_WASD_HELPTEXT                       :Use W, A, S, D keys to pan the main viewport. When enabled, arrow keys remain available for text input and UI navigation, but any existing hotkeys mapped to W, A, S or D are disabled
 
 STR_CONFIG_SETTING_PAN_SPEED                                    :Panning speed: {STRING2}
 STR_CONFIG_SETTING_PAN_SPEED_HELPTEXT                           :Set the speed of panning the viewport with the keyboard
