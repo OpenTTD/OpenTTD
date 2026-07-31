@@ -91,6 +91,13 @@ inline uint32_t RandomRange(uint32_t limit, const std::source_location location 
 	return ScaleToLimit(Random(location), limit);
 }
 
+/** @copydoc RandomRange */
+template <typename T> requires std::is_enum_v<T>
+inline T RandomRange(T limit, const std::source_location location = std::source_location::current())
+{
+	return static_cast<T>(RandomRange(to_underlying(limit), location));
+}
+
 inline uint32_t InteractiveRandom()
 {
 	return _interactive_random.Next();
