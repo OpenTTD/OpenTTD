@@ -21,6 +21,13 @@
  * Other changes:
  * \li GSTown::ExpandTown Change to town expansion to match expected behaviour with the 'allow_town_roads' setting
  *
+ * API additions:
+ * \li GSEventCompanyEngine
+ * \li GSEventEnginePreviewAccepted
+ * \li GSEventEnginePreviewEnded
+ * \li GSCompany::SetBlockPreview
+ * \li GSCompany::GetBlockPreview
+ *
  * \b 15.0
  *
  * API additions:
