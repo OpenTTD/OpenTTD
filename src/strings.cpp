@@ -2301,6 +2301,17 @@ std::string_view GetCurrentLanguageIsoCode()
 	return _langpack.langpack->isocode;
 }
 
+/**
+ * Get the Windows language ID of the currently loaded language.
+ * This distinguishes regional variants that share the same ISO code,
+ * e.g. Simplified Chinese (0x0804) vs Traditional Chinese (0x0404).
+ * @return the Windows language ID.
+ */
+uint16_t GetCurrentLanguageWinLangId()
+{
+	return _langpack.langpack->winlangid;
+}
+
 void BaseStringMissingGlyphSearcher::DetermineRequiredGlyphs(FontSizes fontsizes)
 {
 	this->missing_fontsizes.Reset();

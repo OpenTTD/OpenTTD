@@ -59,19 +59,25 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	/* Use monospaced fonts when asked for it. */
 	if (info->callback->missing_fontsizes.Test(FontSize::Monospace) && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
-	/* The font has to have at least one of the supported locales to be usable. */
-	auto check_bitfields = [&]() {
-		/* First try Unicode Subset Bitfield. */
-		for (uint8_t i = 0; i < 4; i++) {
-			if ((metric->ntmFontSig.fsUsb[i] & info->locale.lsUsb[i]) != 0) return true;
+	/* The font has to have at least one of the supported code pages to be usable.
+	 * Only the Code Page Bitfield is checked: unlike the Unicode Subset Bitfield,
+	 * it distinguishes regional variants, e.g. CP936 (Simplified Chinese) from
+	 * CP950 (Traditional Chinese), so a Simplified Chinese locale does not select
+	 * a Traditional Chinese font and vice versa. */
+	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) {
+		/* On some systems metric->ntmFontSig seems to contain garbage. */
+		FONTSIGNATURE fs{};
+		HFONT font = CreateFontIndirect(&logfont->elfLogFont);
+		if (font != nullptr) {
+			HDC dc = GetDC(nullptr);
+			HGDIOBJ oldfont = SelectObject(dc, font);
+			GetTextCharsetInfo(dc, &fs, 0);
+			SelectObject(dc, oldfont);
+			ReleaseDC(nullptr, dc);
+			DeleteObject(font);
 		}
-		/* Keep Code Page Bitfield as a fallback. */
-		for (uint8_t i = 0; i < 2; i++) {
-			if ((metric->ntmFontSig.fsCsb[i] & info->locale.lsCsbSupported[i]) != 0) return true;
-		}
-		return false;
-	};
-	if (!check_bitfields()) return 1;
+		if ((fs.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (fs.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
+	}
 
 	char font_name[MAX_PATH];
 	convert_from_fs(logfont->elfFullName, font_name);
@@ -263,6 +269,17 @@ void Win32FontCache::ClearFontCache()
 	GetGlyphIndicesW(this->dc, chars, key >= 0x010000U ? 2 : 1, glyphs, GGI_MARK_NONEXISTING_GLYPHS);
 
 	if (glyphs[0] != 0xFFFF) return glyphs[0];
+
+	/* Most fonts do not have a glyph for space separators other than the
+	 * regular space (e.g. EM SPACE is missing from virtually every CJK font).
+	 * A space separator does not need its own glyph to be rendered: it is
+	 * whitespace. Map it to the regular space glyph so it renders as a blank
+	 * instead of a missing-glyph box, and so it does not disqualify a font
+	 * during the fallback search. */
+	if (glyphs[0] == 0xFFFF && IsSpaceSeparator(key) && key != ' ') {
+		return this->MapCharToGlyph(' ', allow_fallback);
+	}
+
 	return allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END ? this->parent->MapCharToGlyph(key) : 0;
 }
 
@@ -304,13 +321,24 @@ public:
 	{
 		Debug(fontcache, 1, "Trying fallback fonts");
 		EFCParam langInfo;
-		std::wstring lang = OTTD2FS(language_isocode.substr(0, language_isocode.find('_')));
-		if (GetLocaleInfoEx(lang.c_str(), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
-			/* Invalid isocode or some other mysterious error, can't determine fallback font. */
-			Debug(fontcache, 1, "Can't get locale info for fallback font (isocode={})", language_isocode);
-			return false;
+		/* Use the Windows language ID from the language pack. Unlike the ISO code,
+		 * it distinguishes regional variants that share one ISO code, e.g.
+		 * Simplified Chinese (0x0804) from Traditional Chinese (0x0404), so the
+		 * correct locale font signature (and thus the correct fallback font, e.g.
+		 * Microsoft YaHei vs Microsoft JhengHei) is selected. */
+		uint16_t winlangid = GetCurrentLanguageWinLangId();
+		if (winlangid != 0 && GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) != 0) {
+			langInfo.callback = callback;
+		} else {
+			/* Fall back to the ISO code if the language pack has no Windows language ID. */
+			std::wstring lang = OTTD2FS(language_isocode.substr(0, language_isocode.find('_')));
+			if (GetLocaleInfoEx(lang.c_str(), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
+				/* Invalid isocode or some other mysterious error, can't determine fallback font. */
+				Debug(fontcache, 1, "Can't get locale info for fallback font (isocode={}, winlangid=0x{:x})", language_isocode, winlangid);
+				return false;
+			}
+			langInfo.callback = callback;
 		}
-		langInfo.callback = callback;
 
 		LOGFONT font;
 		/* Enumerate all fonts. */
