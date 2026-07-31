@@ -1432,4 +1432,54 @@ private:
 	std::string new_name; ///< The new name of the president.
 };
 
+/**
+ * Event VehicleOld, indicating a vehicle getting old.
+ * @api ai
+ */
+class ScriptEventVehicleOld : public ScriptEvent {
+public:
+#ifndef DOXYGEN_API
+	/**
+	 * The ageing severity of the vehicle.
+	 */
+	enum AgeingSeverity {
+		AS_OLD, ///< The vehicle is old.
+		AS_VERY_OLD, ///< The vehicle is very old.
+		AS_VERY_OLD_URGENT ///< The vehicle is very old, urgently needing replacement.
+	};
+	/**
+	 * @param vehicle_id The vehicle that is old.
+	 * @param ageing_severity The ageing severity of the vehicle.
+	 */
+	ScriptEventVehicleOld(VehicleID vehicle_id, AgeingSeverity ageing_severity) :
+		ScriptEvent(ET_VEHICLE_OLD),
+		vehicle_id(vehicle_id),
+		ageing_severity(ageing_severity)
+	{}
+#endif /* DOXYGEN_API */
+
+	/**
+	 * Convert a ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventVehicleOld *Convert(ScriptEvent *instance) { return dynamic_cast<ScriptEventVehicleOld *>(instance); }
+
+	/**
+	 * Get the VehicleID of the vehicle that is old.
+	 * @return The VehicleID of the vehicle that is old.
+	 */
+	VehicleID GetVehicleID() const { return this->vehicle_id; }
+
+	/**
+	 * Get the ageing severity of the vehicle that is old.
+	 * @return The ageing severity of the vehicle that is old.
+	 */
+	AgeingSeverity GetAgeingSeverity() const { return this->ageing_severity; }
+
+private:
+	VehicleID vehicle_id; ///< The vehicle that is old.
+	AgeingSeverity ageing_severity; ///< The ageing severity of the vehicle that is old.
+};
+
 #endif /* SCRIPT_EVENT_TYPES_HPP */
