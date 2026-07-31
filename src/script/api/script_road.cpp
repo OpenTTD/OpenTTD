@@ -18,6 +18,8 @@
 #include "../../strings_func.h"
 #include "../../newgrf_roadstop.h"
 #include "../../script/squirrel_helper_type.hpp"
+#include "../../waypoint_func.h"
+#include "../../waypoint_cmd.h"
 
 #include "../../safeguards.h"
 
@@ -558,6 +560,34 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return ScriptObject::Command<Commands::BuildRoadDepot>::Do(tile, ScriptObject::GetRoadType(), entrance_dir);
 }
 
+/* static */ bool ScriptRoad::BuildRoadWaypoint(TileIndex tile)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, IsRoadTile(tile));
+	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
+
+	Axis axis = GetAxisForNewRoadWaypoint(tile);
+
+	return ScriptObject::Command<Commands::BuildRoadWaypoint>::Do(tile, axis, 1, 1, ROADSTOP_CLASS_WAYP, 0, StationID::Invalid(), false);
+}
+
+/* static */ bool ScriptRoad::RemoveRoadWaypointTileRectangle(TileIndex tile, TileIndex tile2)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, ::IsValidTile(tile2));
+
+	return ScriptObject::Command<Commands::RemoveFromRoadWaypoint>::Do(tile, tile2);
+}
+
+/* static */ bool ScriptRoad::IsRoadWaypointTile(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return false;
+
+	return ::IsRoadWaypointTile(tile);
+}
+
 /* static */ bool ScriptRoad::_BuildRoadStationInternal(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, bool drive_through, StationID station_id)
 {
 	EnforceCompanyModeValid(false);
@@ -638,6 +668,7 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 		case BT_DEPOT:      return ::GetPrice(Price::BuildDepotRoad, 1, nullptr);
 		case BT_BUS_STOP:   return ::GetPrice(Price::BuildStationBus, 1, nullptr);
 		case BT_TRUCK_STOP: return ::GetPrice(Price::BuildStationTruck, 1, nullptr);
+		case BT_WAYPOINT: return ::GetPrice(Price::BuildStationTruck, 1, nullptr);
 		default: return -1;
 	}
 }

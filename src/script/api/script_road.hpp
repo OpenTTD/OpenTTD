@@ -85,6 +85,7 @@ public:
 		BT_DEPOT,      ///< Build a road depot
 		BT_BUS_STOP,   ///< Build a bus stop
 		BT_TRUCK_STOP, ///< Build a truck stop
+		BT_WAYPOINT, ///< Build a road waypoint
 	};
 
 	/**
@@ -424,6 +425,40 @@ public:
 	 * @return Whether the road depot has been/can be build or not.
 	 */
 	static bool BuildRoadDepot(TileIndex tile, TileIndex front);
+
+	/**
+	 * Build a road waypoint.
+	 * @param tile Place to build the waypoint.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre IsRoadTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
+	 * @exception ScriptError::ERR_BRIDGE_TOO_LOW
+	 * @exception ScriptError::ERR_STATION_TOO_SPREAD_OUT
+	 * @return Whether the road waypoint has been/can be build or not.
+	 */
+	static bool BuildRoadWaypoint(TileIndex tile);
+
+	/**
+	 * Remove all road waypoint pieces within a rectangle on the map.
+	 * @param tile One corner of the rectangle to clear.
+	 * @param tile2 The opposite corner.
+	 * @pre IsValidTile(tile).
+	 * @pre IsValidTile(tile2).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @exception ScriptRoad::ERR_UNSUITABLE_ROAD
+	 * @return Whether at least one tile has been/can be cleared or not.
+	 */
+	static bool RemoveRoadWaypointTileRectangle(TileIndex tile, TileIndex tile2);
+
+	/**
+	 * Checks whether the given tile is actually a tile with a road waypoint.
+	 * @param tile The tile to check.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @return True if and only if the tile has a road waypoint.
+	 */
+	static bool IsRoadWaypointTile(TileIndex tile);
 
 	/**
 	 * Builds a road bus or truck station.

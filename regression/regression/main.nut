@@ -1490,6 +1490,26 @@ function Regression::Road()
 	print("    SetCurrentRoadType(Tram):      " + AIRoad.SetCurrentRoadType(AIRoad.ROADTYPE_TRAM));
 	print("    GetCurrentRoadType():          " + AIRoad.GetCurrentRoadType());
 
+	print("  Waypoint");
+	print("    IsRoadWaypointTile():               " + AIRoad.IsRoadWaypointTile(27492));
+	print("    BuildRoadFull():                    " + AIRoad.BuildRoadFull(26980, 29028));
+	print("    BuildRoadFull():                    " + AIRoad.BuildRoadFull(27998, 28007));
+	print("    GetBuildCost():                     " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_WAYPOINT));
+	print("    BuildRoadWaypoint():                " + AIRoad.BuildRoadWaypoint(27492));
+	print("    IsRoadWaypointTile():               " + AIRoad.IsRoadWaypointTile(27492));
+	print("    BuildRoadWaypoint():                " + AIRoad.BuildRoadWaypoint(28004)); // crossroads
+	print("    RemoveRoadWaypointTileRectangle():  " + AIRoad.RemoveRoadWaypointTileRectangle(27492, 27492));
+
+	// Waypoint on one way road
+	print("    RemoveRoadFull():                   " + AIRoad.RemoveRoadFull(26980, 29028));
+	print("    RemoveRoadFull():                   " + AIRoad.RemoveRoadFull(27998, 28007));
+	print("    BuildOneWayRoad():                  " + AIRoad.BuildOneWayRoad(26980, 29028));
+	print("    IsRoadWaypointTile():               " + AIRoad.IsRoadWaypointTile(27492));
+	print("    BuildRoadWaypoint():                " + AIRoad.BuildRoadWaypoint(27492));
+	print("    IsRoadWaypointTile():               " + AIRoad.IsRoadWaypointTile(27492));
+	print("    RemoveRoadWaypointTileRectangle():  " + AIRoad.RemoveRoadWaypointTileRectangle(27492, 27492));
+	print("    RemoveRoadFull():                   " + AIRoad.RemoveRoadFull(26980, 29028));
+
 	print("  Depot");
 	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33411));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(0, 1));
@@ -2473,4 +2493,3 @@ function Regression::Start()
 	}
 	list.Valuate(Infinite);
 }
-
