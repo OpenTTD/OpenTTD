@@ -300,12 +300,24 @@ public:
 	void SetEntitySpec(ObjectSpec &&spec);
 };
 
+struct TreeSpec;
+class TreeOverrideManager : public OverrideManagerBase {
+protected:
+	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
+public:
+	TreeOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
+
+	void SetEntitySpec(TreeSpec &&spec);
+};
+
 extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
 extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
 extern ObjectOverrideManager _object_mngr;
+extern TreeOverrideManager _tree_mngr;
 
 uint32_t GetTerrainType(TileIndex tile, TileContext context = TileContext::Normal);
 TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets = true, Axis axis = Axis::Invalid);

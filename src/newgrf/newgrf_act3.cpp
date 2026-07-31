@@ -27,6 +27,7 @@
 #include "../vehicle_base.h"
 #include "../road.h"
 #include "../newgrf_roadstop.h"
+#include "../tree_type.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
@@ -360,6 +361,9 @@ struct BadgeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	}
 };
 
+template <> auto *GetSpec<TreeSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->treespecs.size() ? grffile->treespecs[local_id].get() : nullptr; }
+struct TreeTileMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<TreeSpec> {};
+
 static void MapSpriteGroup(ByteReader &buf, uint8_t idcount, MapSpriteGroupHandler &&handler)
 {
 	/* Read IDs to map into memory. */
@@ -450,6 +454,7 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 		case GrfSpecFeature::AirportTiles: MapSpriteGroup(buf, idcount, AirportTileMapSpriteGroupHandler{}); return;
 		case GrfSpecFeature::RoadStops: MapSpriteGroup(buf, idcount, RoadStopMapSpriteGroupHandler{}); return;
 		case GrfSpecFeature::Badges: MapSpriteGroup(buf, idcount, BadgeMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Trees: MapSpriteGroup(buf, idcount, TreeTileMapSpriteGroupHandler{}); return;
 
 		default:
 			GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);

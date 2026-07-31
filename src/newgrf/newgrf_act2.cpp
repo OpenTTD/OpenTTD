@@ -743,6 +743,7 @@ static const SpriteGroup *ReadSpriteGroup(ByteReader &buf, GrfSpecFeature featur
 				case GrfSpecFeature::Objects:
 				case GrfSpecFeature::IndustryTiles:
 				case GrfSpecFeature::RoadStops:
+				case GrfSpecFeature::Trees:
 					return ReadTileLayoutSpriteGroup(buf, feature, type);
 
 				case GrfSpecFeature::Industries:
