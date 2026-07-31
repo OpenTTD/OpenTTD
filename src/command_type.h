@@ -380,6 +380,10 @@ enum class Commands : uint8_t {
 	UpdateLeagueTableElementScore, ///< update the score of a league table element
 	RemoveLeagueTableElement, ///< remove a league table element
 
+	CreateTextEffect, ///< create a new text effect
+	UpdateTextEffect, ///< update a text effect
+	RemoveTextEffect, ///< remove a text effect
+
 	End, ///< @important Must ALWAYS be on the end of this list!! (period)
 };
 

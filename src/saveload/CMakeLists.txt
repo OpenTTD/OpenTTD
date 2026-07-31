@@ -44,6 +44,7 @@ add_files(
     strings_sl.cpp
     story_sl.cpp
     subsidy_sl.cpp
+    texteff_sl.cpp
     town_sl.cpp
     vehicle_sl.cpp
     waypoint_sl.cpp
