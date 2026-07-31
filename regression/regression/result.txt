@@ -10876,21 +10876,21 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Terraforming--
   DemolishTile():       true
   DemolishTile():       true
-  GetBankBalance():     1999216685
+  GetBankBalance():     1999216535
   LowerTile():          false
   RaiseTile():          true
-  GetBankBalance():     1999156124
+  GetBankBalance():     1999155974
   LowerTile():          true
-  GetBankBalance():     1999155563
+  GetBankBalance():     1999155413
   LowerTile():          true
   RaiseTile():          true
-  GetBankBalance():     1999124603
+  GetBankBalance():     1999124453
   RaiseTile():          false
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999122125
+  GetBankBalance():     1999121225
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          false
@@ -10898,37 +10898,37 @@ ERROR: IsEnd() is invalid as Begin() is never called
   LowerTile():          false
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999116574
+  GetBankBalance():     1999114924
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999100519
+  GetBankBalance():     1999098869
   RaiseTile():          false
   LowerTile():          true
-  GetBankBalance():     1999098443
+  GetBankBalance():     1999096793
   RaiseTile():          true
   RaiseTile():          true
-  GetBankBalance():     1999088221
+  GetBankBalance():     1999086571
   LevelTiles():         true
   LevelTiles():         false
-  GetBankBalance():     1999078593
+  GetBankBalance():     1999076793
   LevelTiles():         true
   LevelTiles():         true
-  GetBankBalance():     1998792514
+  GetBankBalance():     1998774964
   LowerTile():          false
   RaiseTile():          true
   RaiseTile():          false
   LowerTile():          true
-  GetBankBalance():     1998786415
+  GetBankBalance():     1998768865
   RaiseTile():          true
   LowerTile():          true
   LowerTile():          false
-  GetBankBalance():     1998785248
+  GetBankBalance():     1998766948
   RaiseTile():          false
   LowerTile():          true
   LowerTile():          false
   RaiseTile():          false
   RaiseTile():          true
-  GetBankBalance():     1998738752
+  GetBankBalance():     1998720302
 --Valuate() with excessive CPU usage--
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
