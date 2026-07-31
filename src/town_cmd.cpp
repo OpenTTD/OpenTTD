@@ -249,16 +249,6 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 	TownDrawHouseLift
 };
 
-/**
- * Return a random direction
- *
- * @return a random direction
- */
-static inline DiagDirection RandomDiagDir()
-{
-	return static_cast<DiagDirection>(RandomRange(to_underlying(DiagDirection::End)));
-}
-
 /** @copydoc DrawTileProc */
 static void DrawTile_Town(TileInfo *ti)
 {
@@ -1544,7 +1534,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 				if (Chance16(1, 4)) {
 					/* Randomize a new target dir */
-					do target_dir = RandomDiagDir(); while (target_dir == source_dir);
+					do target_dir = RandomRange(DiagDirection::End); while (target_dir == source_dir);
 				}
 
 				if (!IsRoadAllowedHere(t1, TileAddByDiagDir(tile, target_dir), target_dir)) {
@@ -1601,7 +1591,7 @@ static TownGrowthResult GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, Dia
 
 		/* Possibly extend the road in a direction.
 		 * Randomize a direction and if it has a road, bail out. */
-		target_dir = RandomDiagDir();
+		target_dir = RandomRange(DiagDirection::End);
 		RoadBits target_rb = DiagDirToRoadBits(target_dir);
 		TileIndex house_tile; // position of a possible house
 
@@ -1826,7 +1816,7 @@ static bool GrowTownAtRoad(Town *t, TileIndex tile, TownExpandModes modes)
 				if (cur_rb.None()) return false;
 				RoadBits target_bits;
 				do {
-					target_dir = RandomDiagDir();
+					target_dir = RandomRange(DiagDirection::End);
 					target_bits = DiagDirToRoadBits(target_dir);
 				} while (!cur_rb.Any(target_bits));
 				cur_rb.Reset(target_bits);
