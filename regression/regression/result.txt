@@ -8556,6 +8556,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
   Depot
     IsRailTile():                  false
     BuildRailDepot():              false
+    RemoveRailDepot():             false
+    BuildRailDepot():              true
+    RemoveRailDepot():             true
     BuildRailDepot():              false
     BuildRailDepot():              true
     BuildRailDepot():              true
@@ -10628,11 +10631,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
+    14 => 1
+    13 => 1
+    12 => 1
     17 => 0
     16 => 0
-    14 => 0
-    13 => 0
-    12 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -10641,10 +10644,10 @@ ERROR: IsEnd() is invalid as Begin() is never called
     12 => 5490
   AgeLeft ListDump:
     16 => 10980
-    14 => 10980
+    14 => 10979
     17 => 7320
-    13 => 5490
-    12 => 5490
+    13 => 5489
+    12 => 5489
   CurrentSpeed ListDump:
     12 => 27
     17 => 0
@@ -10662,7 +10665,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     16 => 0
     14 => 0
     13 => 0
-    12 => 0
+    12 => -1
   ProfitLastYear ListDump:
     17 => 0
     16 => 0
@@ -10876,21 +10879,21 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Terraforming--
   DemolishTile():       true
   DemolishTile():       true
-  GetBankBalance():     1999216685
+  GetBankBalance():     1999216100
   LowerTile():          false
   RaiseTile():          true
-  GetBankBalance():     1999156124
+  GetBankBalance():     1999155538
   LowerTile():          true
-  GetBankBalance():     1999155563
+  GetBankBalance():     1999154977
   LowerTile():          true
   RaiseTile():          true
-  GetBankBalance():     1999124603
+  GetBankBalance():     1999124019
   RaiseTile():          false
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999122125
+  GetBankBalance():     1999121541
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          false
@@ -10898,37 +10901,37 @@ ERROR: IsEnd() is invalid as Begin() is never called
   LowerTile():          false
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999116574
+  GetBankBalance():     1999115990
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999100519
+  GetBankBalance():     1999099935
   RaiseTile():          false
   LowerTile():          true
-  GetBankBalance():     1999098443
+  GetBankBalance():     1999097859
   RaiseTile():          true
   RaiseTile():          true
-  GetBankBalance():     1999088221
+  GetBankBalance():     1999087637
   LevelTiles():         true
   LevelTiles():         false
-  GetBankBalance():     1999078593
+  GetBankBalance():     1999078009
   LevelTiles():         true
   LevelTiles():         true
-  GetBankBalance():     1998792514
+  GetBankBalance():     1998791930
   LowerTile():          false
   RaiseTile():          true
   RaiseTile():          false
   LowerTile():          true
-  GetBankBalance():     1998786415
+  GetBankBalance():     1998785830
   RaiseTile():          true
   LowerTile():          true
   LowerTile():          false
-  GetBankBalance():     1998785248
+  GetBankBalance():     1998784663
   RaiseTile():          false
   LowerTile():          true
   LowerTile():          false
   RaiseTile():          false
   RaiseTile():          true
-  GetBankBalance():     1998738752
+  GetBankBalance():     1998745667
 --Valuate() with excessive CPU usage--
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
@@ -10937,7 +10940,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2474]
+*FUNCTION [Start()] regression/main.nut line [2477]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE

@@ -242,6 +242,18 @@ public:
 	static bool BuildRailDepot(TileIndex tile, TileIndex front);
 
 	/**
+	 * Removes a rail depot.
+	 * @param tile Place to remove the depot from.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre Tile is a rail depot.
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
+	 * @return Whether the rail depot has been/can be removed or not.
+	 */
+	static bool RemoveRailDepot(TileIndex tile);
+
+	/**
 	 * Build a rail station.
 	 * @param tile Place to build the station.
 	 * @param direction The direction to build the station.

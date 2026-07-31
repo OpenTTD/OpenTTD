@@ -15,6 +15,7 @@
 #include "script_cargo.hpp"
 #include "../../debug.h"
 #include "../../station_base.h"
+#include "../../landscape_cmd.h"
 #include "../../newgrf_generic.h"
 #include "../../newgrf_station.h"
 #include "../../strings_func.h"
@@ -146,6 +147,16 @@
 	DiagDirection entrance_dir = (::TileX(tile) == ::TileX(front)) ? (::TileY(tile) < ::TileY(front) ? DiagDirection::SE : DiagDirection::NW) : (::TileX(tile) < ::TileX(front) ? DiagDirection::SW : DiagDirection::NE);
 
 	return ScriptObject::Command<Commands::BuildRailDepot>::Do(tile, (::RailType)ScriptObject::GetRailType(), entrance_dir);
+}
+
+/* static */ bool ScriptRail::RemoveRailDepot(TileIndex tile)
+{
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, IsTileType(tile, TileType::Railway))
+	EnforcePrecondition(false, GetRailTileType(tile) == RailTileType::Depot);
+
+	return ScriptObject::Command<Commands::LandscapeClear>::Do(tile);
 }
 
 /* static */ bool ScriptRail::BuildRailStation(TileIndex tile, RailTrack direction, SQInteger num_platforms, SQInteger platform_length, StationID station_id)
