@@ -21,6 +21,10 @@
  * Other changes:
  * \li GSTown::ExpandTown Change to town expansion to match expected behaviour with the 'allow_town_roads' setting
  *
+ * API additions:
+ * \li GSController::GetPeakAllocatedMemory
+ * \li GSController::GetAllocatedMemory
+ *
  * \b 15.0
  *
  * API additions:
