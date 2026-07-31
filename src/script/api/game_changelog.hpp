@@ -21,6 +21,9 @@
  * Other changes:
  * \li GSTown::ExpandTown Change to town expansion to match expected behaviour with the 'allow_town_roads' setting
  *
+ * API additions:
+ * \li GSAirport::AT_OILRIG
+ *
  * \b 15.0
  *
  * API additions:

@@ -34,6 +34,7 @@ public:
 		AT_HELIPORT      = ::AT_HELIPORT,      ///< The heliport.
 		AT_HELISTATION   = ::AT_HELISTATION,   ///< The helistation.
 		AT_HELIDEPOT     = ::AT_HELIDEPOT,     ///< The helidepot.
+		AT_OILRIG        = ::AT_OILRIG,        ///< The oil rig heliport.
 		AT_INVALID       = ::AT_INVALID,       ///< Invalid airport.
 	};
 
