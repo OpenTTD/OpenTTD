@@ -4764,7 +4764,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :점검 필요�
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :항상
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :남은 수명 (년)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :최대 신뢰도
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :뒤로 이동할 때
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :저속으로 뒤로 이동할 때
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}왼쪽의 비교조건과 오른쪽의 입력값을 비교할 연산자를 선택합니다

@@ -954,7 +954,9 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :Kies die basis 
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :Addisionele informasie oor die basis musiek stel
 
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(geen inproppe vir integrasie met sosiale platforms geïnstalleer nie)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :inprop-string
 
 
 
