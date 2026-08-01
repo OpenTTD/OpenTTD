@@ -1149,8 +1149,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}无效签�
 
 STR_BASESET_STATUS                                              :{STRING} {RED}（共有 {NUM} 份缺失或损坏的文件）
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}检索支持的分辨率列表失败
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}无法切换到全屏模式
+STR_ERROR_RESOLUTION_LIST_FAILED                                :无法检索支持的分辨率列表
+STR_ERROR_FULLSCREEN_FAILED                                     :无法切换到全屏模式
 
 # Custom currency window
 
@@ -1378,7 +1378,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :设置高原的
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :（自动）
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}您不能把最高地面高度限制设为这个值，因为地图上至少有一座山的高度大于该值
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :不能把最高地面高度限制设为这个值。地图上至少有一座山海拔大于该值
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在基建设施底下改变地形：{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :允许在建筑和轨道下方改变地形而不需要拆除他们
@@ -2234,8 +2234,8 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变�
 # Config errors
 STR_CONFIG_ERROR                                                :配置文件错误……
 STR_CONFIG_ERROR_ARRAY                                          :……数组“{STRING}”存在错误
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}……“{STRING}”不是“{STRING}”的有效值
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}……有多余字符在设定的结尾处“{STRING}”
+STR_CONFIG_ERROR_INVALID_VALUE                                  :“{STRING}”不是“{STRING}”的有效值
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :设置项“{STRING}”的末尾有残留字符
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :正忽略 NewGRF“{STRING}”：重复的 NewGRF ID “{STRING}”
 STR_CONFIG_ERROR_INVALID_GRF                                    :正忽略无效的 NewGRF“{STRING}”：{STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :未找到
@@ -2250,8 +2250,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :正忽略基础
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :……正忽略基础音乐组“{STRING}”：未找到
 
 # Video initialization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}图形设置错误……
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}……找不到合适的 GPU。硬件加速已禁用
+STR_VIDEO_DRIVER_ERROR                                          :图形设置错误……
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :找不到合适的 GPU。已禁用硬件加速
 STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :GPU 驱动程序导致游戏崩溃。硬件加速已禁用
 
 # Intro window
@@ -2389,15 +2389,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}简易
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}切换到简易头像选单
 STR_FACE_LOAD                                                   :{BLACK}载入头像
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}载入预存喜好的头像
-STR_FACE_LOAD_DONE                                              :{WHITE}你喜好的头像已经从 OpenTTD 配置文件中读取
+STR_FACE_LOAD_DONE                                              :喜好的头像已经从 OpenTTD 配置文件中读取
 STR_FACE_FACECODE                                               :{BLACK}头像编号
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}检视或设定公司总裁头像编号
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}检视或设定公司总裁头像编号
-STR_FACE_FACECODE_SET                                           :{WHITE}已应用新头像
-STR_FACE_FACECODE_ERR                                           :{WHITE}无法设置总裁头像编号，编号必须在 0 ~ 4,294,967,295 范围内！
+STR_FACE_FACECODE_SET                                           :已应用新头像
+STR_FACE_FACECODE_ERR                                           :无法设置总裁头像编号，编号必须在 0 ~ 4,294,967,295 范围内！
 STR_FACE_SAVE                                                   :{BLACK}储存头像
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}储存喜好的头像
-STR_FACE_SAVE_DONE                                              :{WHITE}该头像将作为你的喜好储存至 OpenTTD 配置文件中
+STR_FACE_SAVE_DONE                                              :该头像将作为你的喜好储存至 OpenTTD 配置文件中
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :是
@@ -2894,22 +2894,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :删除收藏夹
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}确定删除此收藏夹吗？
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}确定删除此收藏夹吗？收藏夹内尚有来自未激活 NewGRF 的项目！
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :选择显示的车站类别
+STR_PICKER_STATION_CLASS_TOOLTIP                                :选择显示的车站类别。按住 <Ctrl> 键单击可增加或移除收藏的项目
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :选择建造的车站类型。按住 <Ctrl> 键操作以保存或删除当前项目
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :选择展示的车站收藏夹
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :选择显示的路点类别
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :选择显示的路点类别。按住 <Ctrl> 键单击可增加或移除收藏的项目
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :选择建造的路点类型。按住<Ctrl>键以添加或删除已保存的项目
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :选择展示的路点收藏夹
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :选择显示的公共汽车站类别
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :选择显示的公共汽车站类别。按住 <Ctrl> 键单击可增加或移除收藏的项目
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :选择建造的公共汽车站类型。按住 <Ctrl> 键操作以保存或删除当前项目
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :选择展示的汽车站收藏夹
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :选择显示的汽车货场类别
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :选择显示的汽车货场类别。按住 <Ctrl> 键单击可增加或移除收藏的项目
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :选择建造的汽车货场类型。按住 <Ctrl> 键操作以保存或删除当前项目
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :选择展示的汽车货场收藏夹
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :选择显示的物件类别
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :选择显示的物件类别。按住 <Ctrl> 键单击可增加或移除收藏的项目
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :选择建造的物件类型。按住 <Ctrl> 键选择物件以保存或删除当前项目。按住 <Ctrl> 键拖拽以沿对角线放置，按住 <Shift> 键以显示预计费用
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :选择展示的物件收藏夹
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :选择显示的城镇区域
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :选择显示的城镇区域。按住 <Ctrl> 键单击可增加或移除收藏的项目
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :选择建造的房屋类型。按住 <Ctrl> 键操作以保存或删除当前项目
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :选择展示的房屋收藏夹
 
@@ -3543,10 +3543,10 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}地貌�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}当前脚本
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}准备游戏
 
-STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}城镇数据读取失败
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}JSON 文件格式不正确
-STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} 的数据格式不正确
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} 的坐标数据格式不正确。坐标必须为 0…1 之间的一个数，代表在高度图上的位置
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :城镇数据读取失败
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :JSON 文件格式不正确
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING} 的数据格式不正确
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{STRING} 的坐标数据格式不正确。坐标必须为 0…1 之间的一个数，代表在高度图上的位置
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :无法为 {NUM} 座城镇找到合适的生成位置；已在城镇的原定位置放置标志
 
@@ -3667,7 +3667,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}错误：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}严重错误：{SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :NewGRF"{STRING}"发生了严重错误：{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF "{STRING}" 发生了一个错误：{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :NewGRF "{STRING}" 发生了一个错误：{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} 不能与 OpenTTD 报告的 TTDPatch 版本兼容
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} 是为 {2:STRING} 版 TTD 开发的
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :“{1:STRING}”必须与“{2:STRING}”一起使用
@@ -3694,12 +3694,12 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :无效的生产
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}此操作将改变一个进行中的游戏，可能导致游戏崩溃或破坏游戏资料。修改后遇到错误时请不要向开发者报告。{}真的确定继续吗？
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}不能添加文件：重复的 NewGRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :不能添加文件：重复的 NewGRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}未找到匹配的文件（已载入兼容的 NewGRF）
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}加入的 NewGRF 文件达到上限，不能再新增
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :加入的 NewGRF 文件达到上限，不能再新增
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :已为缺失的文件载入兼容的 NewGRF
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}已禁用缺失的 NewGRF 文件
+STR_NEWGRF_DISABLED_WARNING                                     :已禁用缺失的 NewGRF 文件
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}无法找到 NewGRF 文件
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暂停可能造成 OpenTTD 游戏错误，请不要将向开发人员报告接下来可能出现的错误情形。{}真的确定取消暂停吗？
 
@@ -3715,10 +3715,10 @@ STR_NEWGRF_BROKEN                                               :NewGRF“{0:STR
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :其在“{1:ENGINE}”不在车库内时改变了动力车厢的状态
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :其在“{1:ENGINE}”不在车库内时改変了列车长度
 STR_NEWGRF_BROKEN_CAPACITY                                      :其在“{1:ENGINE}”不在车库内或不在改装时改変了容量
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}{1:COMPANY} 所拥有的列车 {0:VEHICLE} 长度无效。这个错误可能是由 NewGRF 导致的。游戏可能会无法同步或崩溃
+STR_BROKEN_VEHICLE_LENGTH                                       :{1:COMPANY} 所拥有的列车 {0:VEHICLE} 长度无效。这个错误可能是由 NewGRF 导致的。游戏可能会无法同步或崩溃
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF“{STRING}”提供了错误的信息
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买列表中“{1:ENGINE}”的货物/改装信息与购买后的信息不同。这可能会导致自动更新或自动替换时无法正确改装此载具
+STR_NEWGRF_BUGGY                                                :NewGRF“{STRING}”提供了错误的信息
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :购买列表中“{1:ENGINE}”的货物或改装信息与购买后的信息不同，可能会导致自动更新或自动替换时无法正确改装此载具
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :“{1:STRING}”在生产回调函数中产生了一个死循环
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :回调函数 {1:HEX} 返回了一个未知/错误的结果：{2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :“{1:STRING}”返回了错误的货物类型。位于生产回调函数 {2:HEX} 处
@@ -4832,7 +4832,7 @@ STR_ORDER_NO_LOAD                                               :（不装载）
 STR_ORDER_UNLOAD                                                :（强制卸载，装载）
 STR_ORDER_UNLOAD_FULL_LOAD                                      :（强制卸载，等待满载）
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :（强制卸载，等待任一货物满载）
-STR_ORDER_UNLOAD_NO_LOAD                                        :（卸载，空车离开）
+STR_ORDER_UNLOAD_NO_LOAD                                        :（强制卸载，空车离开）
 STR_ORDER_TRANSFER                                              :（转运，装载）
 STR_ORDER_TRANSFER_FULL_LOAD                                    :（转运，等待满载）
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :（转运，等待任一货物满载）
@@ -4845,7 +4845,7 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :（不卸载，
 STR_ORDER_AUTO_REFIT                                            :（改装为运载{STRING}）
 STR_ORDER_FULL_LOAD_REFIT                                       :（改装为运载{STRING}后等待满载）
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :（改装为运载{STRING}后等待任一货物满载）
-STR_ORDER_UNLOAD_REFIT                                          :（卸载，改装为运载{STRING}后装载）
+STR_ORDER_UNLOAD_REFIT                                          :（强制卸载，改装为运载{STRING}后装载）
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :（强制卸载，改装为运载{STRING}后等待满载）
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :（强制卸载，改装为运载{STRING}后等待任一货物满载）
 STR_ORDER_TRANSFER_REFIT                                        :（转运，改装为运载{STRING}后装载）
@@ -5061,8 +5061,8 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}预计�
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}预计收入：{CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}保存仍在继续{}请耐心等待！
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}自动保存失败
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :保存仍在继续，{}请耐心等待！
+STR_ERROR_AUTOSAVE_FAILED                                       :自动保存失败
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}无法读取硬盘
 STR_ERROR_GAME_SAVE_FAILED                                      :保存游戏失败……
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :无法删除文件
@@ -5078,16 +5078,16 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<不可用>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}此存档版本不支持路面电车，已移除所有路面电车
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}地图生成失败……{}{}……无合适地点建设城镇
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}当前场景中没有城镇……
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :地图生成失败……{}{}……无合适地点建设城镇
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :当前场景中没有城镇……
 
-STR_ERROR_PNGMAP                                                :{WHITE}无法从 PNG 文件中读取场景……
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}……文件未找到
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}……不能转换图像格式{}请使用 8 位或 24 位 PNG 格式图片
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}……似乎出现了错误（可能是损坏的文件等）
+STR_ERROR_PNGMAP                                                :无法从 PNG 文件中读取场景……
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :未找到文件
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :不能转换图像格式，请使用 8 位或 24 位 PNG 格式图片
+STR_ERROR_PNGMAP_MISC                                           :抱歉，出现一点状况（可能是文件损坏）
 
 STR_ERROR_BMPMAP                                                :无法从 BMP 文件中读取地形……
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}……不能转换图像格式
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :不能转换图像格式
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :图像过大
 
@@ -5103,98 +5103,98 @@ STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}屏幕�
 
 STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :成功保存高度图为“{STRING}”。最高峰高度是 {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :成功保存屏幕截图为“{STRING}”
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}屏幕截图失败！
+STR_ERROR_SCREENSHOT_FAILED                                     :屏幕截图失败！
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}消息
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}来自 {COMPANY} 的消息
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}超过地图边界
+STR_ERROR_OFF_EDGE_OF_MAP                                       :超过地图边界
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :距离地图边缘过近
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :资金不足 - 需要 {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :需要平坦的地面
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}土地倾斜的方向不对
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能这样做……
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必须先摧毁建筑
-STR_ERROR_BUILDING_IS_PROTECTED                                 :{WHITE}……建筑物被保护
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :土地倾斜方向不正确
+STR_ERROR_CAN_T_DO_THIS                                         :不能这样做……
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :必须先摧毁建筑
+STR_ERROR_BUILDING_IS_PROTECTED                                 :建筑物被保护
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :无法清除这个区域……
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}……地点不合适
+STR_ERROR_SITE_UNSUITABLE                                       :地点不合适
 STR_ERROR_ALREADY_BUILT                                         :已经建成
-STR_ERROR_OWNED_BY                                              :{WHITE}……由 {STRING} 所有
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}……此区域由另一公司所有
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}……已达地形限制
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}……已达地块清理限制
+STR_ERROR_OWNED_BY                                              :属于 {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :此区域属于其他公司
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :已达地形限制
+STR_ERROR_CLEARING_LIMIT_REACHED                                :已达地块清除限制
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :已达植树量上限
-STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复！请重新命名
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}被 {STRING} 挡住
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :名称重复。请重新命名
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :被 {STRING} 挡住
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :暂停时不能进行此操作
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{TOWN} 地方政府不批准此操作
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}地方政府{}不同意在本市范围内再兴建一座机场
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 考虑到噪音控制，地方当局拒绝修建机场
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}当地检察机关发现了你的贿赂行动
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{TOWN} 地方政府不同意在本市范围内再兴建一座机场
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{TOWN} 地方政府因噪音管制拒绝修建新机场
+STR_ERROR_BRIBE_FAILED                                          :当地检察机关发现了你的贿赂行动
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :不能提高这里的地面……
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}不能降低这里的地面……
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}无法在此处变更地形……
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}挖掘将破坏隧道
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :不能降低这里的地面……
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :无法修改此处地形……
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :挖掘将破坏隧道
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :……已到海平面
-STR_ERROR_TOO_HIGH                                              :{WHITE}……太高
+STR_ERROR_TOO_HIGH                                              :太高
 STR_ERROR_ALREADY_LEVELLED                                      :已经平整
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :于地形上的桥梁会过高
-STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}必须先移除河流
+STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :必须先移除河流
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :无法修改公司名称……
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :不能更改总裁的名字……
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}……最大贷款额度是{CURRENCY_LONG}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :最大贷款额度是 {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :无法借更多钱……
-STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}……没有要偿还的贷款
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}……需要{CURRENCY_LONG}
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}不能偿还贷款……
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}不能给予银行贷款……
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}不能给予该公司资金……
+STR_ERROR_LOAN_ALREADY_REPAID                                   :没有要偿还的贷款
+STR_ERROR_CURRENCY_REQUIRED                                     :需要{CURRENCY_LONG}
+STR_ERROR_CAN_T_REPAY_LOAN                                      :不能偿还贷款……
+STR_ERROR_INSUFFICIENT_FUNDS                                    :不能给予他人银行贷款……
+STR_ERROR_CAN_T_GIVE_MONEY                                      :不能给予该公司资金……
 STR_ERROR_CAN_T_BUY_COMPANY                                     :不能收购公司……
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :不能设置公司总部……
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}无法建设城镇……
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :无法建设城镇……
 STR_ERROR_CAN_T_RENAME_TOWN                                     :不能重命名城镇……
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :不能在这里建设城镇……
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}无法扩展城镇……
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :无法扩展城镇……
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :……距离另一城镇过近
 STR_ERROR_TOO_MANY_TOWNS                                        :地图中的城镇过多
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :地图没有足够空间
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :无法删除城镇……{}{}城镇范围内尚有车站、车库或无法移除的区块
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}……城市中心没有合适的地方放置公司塑像
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :城镇中心没有合适的地方建设公司雕像
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :不能建造房屋……
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :工业设施过多
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}不能生成工业设施……
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :不能生成工业设施……
 STR_ERROR_CAN_T_BUILD_HERE                                      :不能在这里建设 {STRING} ……
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :不能在此处建设这种类型的工业设施……
-STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}无法勘探工业……
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :无法勘探工业……
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :……距离另一工业设施过近
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}……必须先建设一个城镇
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}……每个城镇只能建设一个
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :必须先建设一个城镇
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :每个城镇只能建设一个
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :只能在人口超过 1200 的城镇建造
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}……只能在雨林中建设
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :只能在雨林中建设
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :只能在沙漠中建设
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}……只能在城镇中建设（在房屋上建设）
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}……只能在城市中心附近建造
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :只能在城镇中建设（需在房屋上建设）
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :只能在城市中心附近建造
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :只能在低海拔区域建设
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}……只能放置在地图边缘
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :只能放置在地图边缘
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :……林场只能设置在雪线以上的地方
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :只能在雪线以上建造
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :只能在雪线以下建造
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}勘探由于运气不好而失败；请再试一次
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :勘探由于运气不好而失败；请再试一次
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :没有合适的地方勘探这种工业
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :没有合适的地方建设“{STRING}”工业
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :请更改参数以生成更适当的地图场景
@@ -5219,28 +5219,28 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :已设置的汽
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :距离另一码头过近
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :距离另一机场过近
 STR_ERROR_CAN_T_RENAME_STATION                                  :不能重命名车站……
-STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}无法移动车站标志……
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :无法移动车站标志……
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :道路属于城镇
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :道路方向不正确
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :通过式车站不能建在转角处
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :不能在岔路口修建通过式车站
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}不能拆除站台的一部分……
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :不能拆除部分车站……
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :必须先拆除火车站
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :不能移除公共汽车站……
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}不能移除汽车货场……
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}无法移除客运电车车站……
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :不能移除汽车货场……
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :无法移除客运电车车站……
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :无法移除货运电车站……
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :必须先拆除汽车站
 STR_ERROR_THERE_IS_NO_STATION                                   :这里没有车站
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}必须先拆除火车站
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :必须先拆除火车站
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :必须先拆除公共汽车站
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}必须先拆除汽车货场
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}请先拆除客运电车站
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :必须先拆除汽车货场
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :请先拆除客运电车站
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :必须先拆除货运电车站
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}必须先拆除码头
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :必须先拆除码头
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :必须先拆除机场
 
 # Waypoint related errors
@@ -5249,16 +5249,16 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :距离另一路
 
 STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :不能在这里设置路点……
 STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :不能在这里设置路点……
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}不能将浮标放置在这里……
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :不能在这里放置浮标……
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :不能更改路点名称……
-STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}无法移动路点标志……
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :无法移动路点标志……
 
-STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}不能拆除此处的铁路路点……
-STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}不能拆除此处的道路路点……
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :不能拆除此处的铁路路点……
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :不能拆除此处的道路路点……
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :必须先拆除铁路路点
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :必须先拆除道路路点
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}……指定的位置有浮标
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}……其他公司正在使用此浮标！
+STR_ERROR_BUOY_IN_THE_WAY                                       :指定的位置有浮标
+STR_ERROR_BUOY_IS_IN_USE                                        :其他公司正在使用此浮标！
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :不能在这里建设列车车库……
@@ -5268,19 +5268,19 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :不能在这里
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :无法重命名车库……
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}……列车只能停在车库中
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :列车只能停在车库中
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :必须停在车库中
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}……船只只能在船坞内停下
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :船只只能在船坞内停下
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :飞机只有在机库中才可停止
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}只有列车停在车库中时才能更改挂车
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列车过长
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :只有列车停在车库中时才能更改挂车
+STR_ERROR_TRAIN_TOO_LONG                                        :列车过长
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :无法调转列车方向……
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :由多节车厢组成
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :铁路类型不匹配
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}无法移动载具……
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}后端车头一定要跟着前端车头
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :无法移动载具……
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :后端车头一定要跟着前端车头
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :无法找到前往附近车库的路径
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :无法在附近找到车库
 STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :无法在附近找到机库
@@ -5288,56 +5288,56 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :无法在附近
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :车库类型错误
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}……载具只能有一项自动调节班次命令
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :载具只能有一项自动调节班次命令
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :不能对有自动调节班次命令的载具应用满载命令
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :不能对有满载命令的载具应用自动调节班次
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :不能对有自动调节班次命令的载具应用条件命令
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :不能对有条件命令的载具应用自动调节班次
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}在更新后总长会过长
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE}在更新后总长会过长
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :当前没有应用自动替换/自动更新规则
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :（现金不够）
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :新载具无法运输{STRING}
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :新载具无法在调度命令 #{NUM} 处改装
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可能的轨道组合
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必须先拆除信号灯
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}没有合适的轨道
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :不可能组合轨道
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :必须先拆除信号灯
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :没有合适的轨道
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :必须先拆除轨道
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}道路为单行道或道路已封闭
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}该轨道类型不允许建设平交道
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :道路是单行道或道路已封闭
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :该轨道类型不允许建设平交道
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :该道路类型不允许建设平交道
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :不能在这里设置信号灯……
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :不能在这里铺设轨道……
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :不能拆除此处的轨道……
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}不能移除此处的信号灯……
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}无法转换此处的信号灯……
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :不能移除此处的信号灯……
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :无法转换此处的信号灯……
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :这里没有铁路
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}……这里没有信号灯
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :这里没有信号灯
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :不能转换铁路类型……
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :必须先拆除公路
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}……单行道不能有交叉路口
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :单行道不能有交叉路口
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :不能在这里修筑公路……
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :不能在这里建设电车道……
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}不能拆除这里的公路……
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}无法移除此处的电车道……
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :不能拆除这里的公路……
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :无法移除此处的电车道……
 STR_ERROR_THERE_IS_NO_ROAD                                      :这里没有道路
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :这里没有电车轨道
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :无法转换道路类型……
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :无法转换电车道类型……
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}没有合适的道路
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}没有合适的电车道
+STR_ERROR_NO_SUITABLE_ROAD                                      :没有合适的道路
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :没有合适的电车道
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :不能在这里兴建运河……
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :不能在这里兴建船闸……
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :不能在这里开凿河流……
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}……必须在水上建造
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :必须在水上建造
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :……不能在水上建造
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :……不能在海上建设
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :……不能在运河上建设
@@ -5346,21 +5346,21 @@ STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :必须先拆除
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :无法在此建设渡槽……
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}……此处已有树木
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}……树木种类与地形不符
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}不能在这里植树……
+STR_ERROR_TREE_ALREADY_HERE                                     :此处已有树木
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :树木种类与地形不符
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :不能在这里植树……
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :不能在这里架设桥梁……
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :必须先拆除桥梁
 STR_ERROR_CAN_T_START_AND_END_ON                                :起止点不能相同
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}桥梁起止点不在同一水平高度
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :桥梁起止点不在同一水平高度
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :桥梁太接近地面
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}桥梁对于此种地形而言太高
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}起止两端必须在一条线上
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}……桥梁两端必须都位于地面上
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}……桥梁太长
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}桥梁终点将越出地图
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :桥梁高度不适应地形
+STR_ERROR_START_AND_END_MUST_BE_IN                              :起止两端必须在一条线上
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :桥梁两端必须都位于地面上
+STR_ERROR_BRIDGE_TOO_LONG                                       :桥梁太长
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :桥梁终点将越出地图
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :桥梁过低，尚需 {HEIGHT}净空以建设车站
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :桥梁过低，尚需 {HEIGHT}净空以建设车站
 STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :桥梁过低，尚需 {HEIGHT}净空以建设码头
@@ -5375,26 +5375,26 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :桥梁过低，
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :不能在这里开凿隧道……
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}此处不适合作为隧道入口
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}必须先拆除隧道
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}规划位置中有另一条隧道
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}隧道出口将超出地图边界
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :此处不适合作为隧道入口
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :必须先拆除隧道
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :规划位置中有另一条隧道
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :隧道出口将超出地图边界
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :无法挖掘隧道出口
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}……隧道过长
+STR_ERROR_TUNNEL_TOO_LONG                                       :隧道过长
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :已设置的物件太多
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :无法建立物件……
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}目标处有其他物体
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}……目标处有公司总部
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能购买这个地块……
+STR_ERROR_OBJECT_IN_THE_WAY                                     :目标处有其他物体
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :目标处有公司总部
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :不能购买这个地块……
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :已经拥有此地块！
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}……已达物件建造上限
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :已达物件建造上限
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :无法新建分组……
 STR_ERROR_GROUP_CAN_T_DELETE                                    :无法删除分组……
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}无法重命名分组……
+STR_ERROR_GROUP_CAN_T_RENAME                                    :无法重命名分组……
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :无法指定父级分组……
 STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :分组结构不能出现循环
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :无法从分组移除所有载具……
@@ -5404,15 +5404,15 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :无法向分组
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}指定的位置有列车
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}指定的位置有汽车
+STR_ERROR_TRAIN_IN_THE_WAY                                      :指定的位置有列车
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :指定的位置有汽车
 STR_ERROR_SHIP_IN_THE_WAY                                       :指定的位置有船只
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :指定的位置有飞机
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :列车不可用
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}车辆不可用
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}船只不可用
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :车辆不可用
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :船只不可用
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :飞机已停产
 
 ###length VEHICLE_TYPES
@@ -5434,10 +5434,10 @@ STR_ERROR_CAN_T_STOP_START_SHIP                                 :不能停止/�
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :不能停止/启动飞机……
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}不能命令列车前往车库……
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :不能命令列车前往车库……
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :不能命令汽车前往车库……
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :不能命令船只前往船坞……
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}不能命令飞机返回机库……
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :不能命令飞机返回机库……
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_BUY_TRAIN                                       :不能购买列车……
@@ -5472,7 +5472,7 @@ STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :无法自动替
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :游戏中的载具过多
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :不能改变维护周期……
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}……载具已撞毁
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :载具已撞毁
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :部分载具与其他载具不同
 
@@ -5496,43 +5496,43 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :车辆无法调
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :飞机正在飞行
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}无法新增命令
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :无法新增命令
 STR_ERROR_TOO_MANY_ORDERS                                       :命令太多
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}不能插入新的调度计划……
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :不能插入新命令……
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :不能删除命令……
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}不能执行这个命令……
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}不能移动这条命令……
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}不能跳过当前命令……
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}不能跳转到选定的命令……
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :不能修改此命令……
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :不能移动这条命令……
+STR_ERROR_CAN_T_SKIP_ORDER                                      :不能跳过当前命令……
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :不能跳转到选定的命令……
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :载具无法前往所有站点
 STR_ERROR_CAN_T_ADD_ORDER                                       :载具无法前往车站
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :一部共享此调度计划的载具无法前往该站
 STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :载具的调度计划并非全部相同
-STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}……载具的并非全部共享同一调度计划
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :尚有载具未共享同一调度计划
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}不能共享调度计划……
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :不能共享调度计划……
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :不能停止共享调度计划……
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :不能复制调度计划……
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}……距离前一目的地太远
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :距离前一目的地太远
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :飞机飞行距离不足
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}没有火车站
-STR_ERROR_NO_BUS_STATION                                        :{WHITE}没有公交车站
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}没有货车站
-STR_ERROR_NO_DOCK                                               :{WHITE}这里没有码头
-STR_ERROR_NO_AIRPORT                                            :{WHITE}没有机场/直升机场
+STR_ERROR_NO_RAIL_STATION                                       :没有火车站
+STR_ERROR_NO_BUS_STATION                                        :没有汽车站
+STR_ERROR_NO_TRUCK_STATION                                      :没有货车站
+STR_ERROR_NO_DOCK                                               :这里没有码头
+STR_ERROR_NO_AIRPORT                                            :没有机场或直升机场
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :没有兼容载具对应道路类型的站点
 STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :没有兼容此有轨电车道路类型的站点
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}铰接式车辆无站点可停靠。{}铰接式车辆仅可停靠于通过式车站，不可停靠于港湾式车站
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :铰接式车辆无站点可停靠。{}铰接式车辆仅可停靠于通过式车站，不可停靠于港湾式车站
 STR_ERROR_AIRPORT_NO_PLANES                                     :这架飞机不能降落在这个直升机场
 STR_ERROR_AIRPORT_NO_HELICOPTERS                                :这架直升机不能降落在这个机场
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}没有铁路路点
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}没有道路路点
-STR_ERROR_NO_BUOY                                               :{WHITE}没有浮标
+STR_ERROR_NO_RAIL_WAYPOINT                                      :没有铁路路点
+STR_ERROR_NO_ROAD_WAYPOINT                                      :没有道路路点
+STR_ERROR_NO_BUOY                                               :没有浮标
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}无法为载具编制时刻表……
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :无法为载具编制时刻表……
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :载具只能在车站停靠等待
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :此载具不停靠此站
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :尚未完成时刻表编排

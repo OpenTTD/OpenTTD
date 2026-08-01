@@ -4725,9 +4725,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Bir kargoyu yü
 STR_ORDER_DROP_NO_LOADING                                       :Yükleme yapma
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Seçili emrin doldurma davranışını değiştir
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Tümünü boşalt
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Tümünü zorla boşalt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Kabul edilirse yükle
-STR_ORDER_DROP_UNLOAD                                           :Tümünü boşalt
+STR_ORDER_DROP_UNLOAD                                           :Kabul edilmese bile zorla boşalt
 STR_ORDER_DROP_TRANSFER                                         :Aktar
 STR_ORDER_DROP_NO_UNLOADING                                     :Boşaltma yapma
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Seçili emrin boşaltma davranışını değiştir
@@ -4764,7 +4764,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Bakım gerektir
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Her zaman
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Kalan ömrü (yıl)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Azami güvenilirlik
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Geriye doğru sür
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Geriye doğru azaltılmış hızda sür
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Araç verisinin verilen değerle nasıl karşılaştırılacağı
@@ -4830,10 +4830,10 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Örtük
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Tam yükle)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Bir kargoyu tam yükle)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Yükleme yapma)
-STR_ORDER_UNLOAD                                                :{SPACE}(Kargoyu boşalt ve al)
+STR_ORDER_UNLOAD                                                :{SPACE}(Kargoyu zorla boşalt ve al)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Boşalt ve tam yüklemeyi bekle)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Boşalt ve bir tam dolduruşu bekle)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Boşalt ve boş kal)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Zorla boşalt ve boş kal)
 STR_ORDER_TRANSFER                                              :{SPACE}(Aktar ve kargoyu al)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Aktar ve tam dolduruşu bekle)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Aktar ve herhangi bir tam dolduruşu bekle)
@@ -4846,7 +4846,7 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Boşalt
 STR_ORDER_AUTO_REFIT                                            :{SPACE}({STRING} taşımak için)
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}({STRING} taşımak için tam doldur)
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}({STRING} taşımak için herhangi bir kargoyu tam doldur)
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}({STRING} taşımak için boşalt ve kargoyu al)
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Yükü zorla boşalt ve {STRING}'e yeniden donatılmış halde yükle)
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}({STRING} taşımak için boşalt ve tam doldur)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}({STRING} taşımak için boşalt ve herhangi bir kargoyu tam doldur)
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}({STRING} taşımak için aktar ve kargo al)
