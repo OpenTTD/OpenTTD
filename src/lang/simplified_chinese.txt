@@ -2447,7 +2447,7 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}上一�
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}点击选择您上次加入的服务器
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}游戏信息
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}客户端： {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}客户端：　{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}场景类型：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地图尺寸：{WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}游戏版本：{WHITE}{STRING}

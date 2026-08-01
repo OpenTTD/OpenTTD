@@ -95,6 +95,7 @@ extern TextDirection _current_text_dir; ///< Text direction of the currently sel
 
 void InitializeLanguagePacks();
 std::string_view GetCurrentLanguageIsoCode();
+uint16_t GetCurrentLanguageWinLangId();
 std::string_view GetListSeparator();
 std::string_view GetEllipsis();
 

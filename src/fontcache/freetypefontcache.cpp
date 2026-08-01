@@ -200,6 +200,16 @@ GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 
 	FT_UInt glyph = FT_Get_Char_Index(this->face, key);
 
+	if (glyph == 0 && IsSpaceSeparator(key) && key != ' ') {
+		/* Most fonts do not have a glyph for space separators other than the
+		 * regular space (e.g. EM SPACE is missing from virtually every CJK font).
+		 * A space separator does not need its own glyph to be rendered: it is
+		 * whitespace. Map it to the regular space glyph so it renders as a blank
+		 * instead of a missing-glyph box, and so it does not disqualify a font
+		 * during the fallback search. */
+		return FT_Get_Char_Index(this->face, ' ');
+	}
+
 	if (glyph == 0 && allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
 		return this->parent->MapCharToGlyph(key);
 	}

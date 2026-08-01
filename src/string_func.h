@@ -143,6 +143,26 @@ inline bool IsWhitespace(char32_t c)
 	return c == 0x0020 /* SPACE */ || c == 0x3000; /* IDEOGRAPHIC SPACE */
 }
 
+/**
+ * Check whether UNICODE character is a space separator (category Zs).
+ * These characters are rendered as whitespace, but many fonts do not
+ * define a glyph for them (e.g. EM SPACE), so they should not be treated
+ * as a hard requirement when searching for a fallback font. Instead the
+ * regular space glyph can be used to render them.
+ * @param c UNICODE character to check
+ * @return a boolean value whether 'c' is a space separator or not
+ */
+inline bool IsSpaceSeparator(char32_t c)
+{
+	return c == 0x0020 || /* SPACE */
+	       c == 0x00A0 || /* NO-BREAK SPACE */
+	       c == 0x1680 || /* OGHAM SPACE MARK */
+	       (c >= 0x2000 && c <= 0x200A) || /* EN QUAD .. HAIR SPACE */
+	       c == 0x202F || /* NARROW NO-BREAK SPACE */
+	       c == 0x205F || /* MEDIUM MATHEMATICAL SPACE */
+	       c == 0x3000;   /* IDEOGRAPHIC SPACE */
+}
+
 /* Needed for NetBSD version (so feature) testing */
 #if defined(__NetBSD__) || defined(__FreeBSD__)
 #include <sys/param.h>
