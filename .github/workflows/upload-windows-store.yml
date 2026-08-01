@@ -24,7 +24,7 @@ jobs:
         path: openttd-windows-store
 
     - name: Configure Microsoft Store CLI
-      uses: microsoft/microsoft-store-apppublisher@v1.3
+      uses: microsoft/microsoft-store-apppublisher@v1.4
 
     - name: Reconfigure store credentials
       run: msstore reconfigure `
