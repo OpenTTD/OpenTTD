@@ -59,24 +59,23 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	/* Use monospaced fonts when asked for it. */
 	if (info->callback->missing_fontsizes.Test(FontSize::Monospace) && (logfont->elfLogFont.lfPitchAndFamily & (FF_MODERN | FIXED_PITCH)) != (FF_MODERN | FIXED_PITCH)) return 1;
 
-	/* The font has to have at least one of the supported code pages to be usable.
-	 * Only the Code Page Bitfield is checked: unlike the Unicode Subset Bitfield,
-	 * it distinguishes regional variants, e.g. CP936 (Simplified Chinese) from
-	 * CP950 (Traditional Chinese), so a Simplified Chinese locale does not select
-	 * a Traditional Chinese font and vice versa. */
-	if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) {
-		/* On some systems metric->ntmFontSig seems to contain garbage. */
-		FONTSIGNATURE fs{};
-		HFONT font = CreateFontIndirect(&logfont->elfLogFont);
-		if (font != nullptr) {
-			HDC dc = GetDC(nullptr);
-			HGDIOBJ oldfont = SelectObject(dc, font);
-			GetTextCharsetInfo(dc, &fs, 0);
-			SelectObject(dc, oldfont);
-			ReleaseDC(nullptr, dc);
-			DeleteObject(font);
+	/* The font has to have at least one of the supported locales to be usable.
+	 * Locales with a code page (e.g. CP936 for Simplified Chinese, CP950 for
+	 * Traditional Chinese) use the Code Page Bitfield, which distinguishes
+	 * regional variants so a Simplified Chinese locale does not select a
+	 * Traditional Chinese font and vice versa. Unicode-only scripts (e.g. Tamil)
+	 * have no code page, so fall back to the Unicode Subset Bitfield for those. */
+	if (info->locale.lsCsbSupported[0] != 0 || info->locale.lsCsbSupported[1] != 0) {
+		if ((metric->ntmFontSig.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (metric->ntmFontSig.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
+	} else {
+		bool unicode_match = false;
+		for (uint8_t i = 0; i < 4; i++) {
+			if ((metric->ntmFontSig.fsUsb[i] & info->locale.lsUsb[i]) != 0) {
+				unicode_match = true;
+				break;
+			}
 		}
-		if ((fs.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (fs.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
+		if (!unicode_match) return 1;
 	}
 
 	char font_name[MAX_PATH];
@@ -326,10 +325,13 @@ public:
 		 * Simplified Chinese (0x0804) from Traditional Chinese (0x0404), so the
 		 * correct locale font signature (and thus the correct fallback font, e.g.
 		 * Microsoft YaHei vs Microsoft JhengHei) is selected. */
+		/* Use the Windows language ID from the language pack. Unlike the ISO code,
+		 * it distinguishes regional variants that share one ISO code, e.g.
+		 * Simplified Chinese (0x0804) from Traditional Chinese (0x0404), so the
+		 * correct locale font signature (and thus the correct fallback font, e.g.
+		 * Microsoft YaHei vs Microsoft JhengHei) is selected. */
 		uint16_t winlangid = GetCurrentLanguageWinLangId();
-		if (winlangid != 0 && GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) != 0) {
-			langInfo.callback = callback;
-		} else {
+		if (winlangid == 0 || GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
 			/* Fall back to the ISO code if the language pack has no Windows language ID. */
 			std::wstring lang = OTTD2FS(language_isocode.substr(0, language_isocode.find('_')));
 			if (GetLocaleInfoEx(lang.c_str(), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
@@ -337,8 +339,8 @@ public:
 				Debug(fontcache, 1, "Can't get locale info for fallback font (isocode={}, winlangid=0x{:x})", language_isocode, winlangid);
 				return false;
 			}
-			langInfo.callback = callback;
 		}
+		langInfo.callback = callback;
 
 		LOGFONT font;
 		/* Enumerate all fonts. */
