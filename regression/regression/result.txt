@@ -8415,6 +8415,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsCanalTile():        false
   GetBankBalance():     1999979304
   BuildWaterDepot():    true
+  GetWaterDepotName():  Chenfingbourne Ship Depot
+  RenameWaterDepot():   true
+  GetWaterDepotName():  test new name
   BuildDock():          true
   BuildBuoy():          true
   BuildLock():          true
@@ -8563,6 +8566,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRailDepot():              true
     BuildRailDepot():              true
     BuildRailDepot():              true
+    GetRailDepotName():            Little Frutford Train Depot
+    RenameRailDepot():             true
+    GetRailDepotName():            test new name
     GetRailDepotFrontTile():       33412
     IsBuildable():                 false
     DepotList
@@ -8657,6 +8663,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRoadDepot():              true
     BuildRoadDepot():              true
     BuildRoadDepot():              true
+    GetRoadDepotName():            Little Frutford Road Vehicle Depot
+    RenameRoadDepot():             true
+    GetRoadDepotName():            test new name
     HasRoadType(Road):             true
     HasRoadType(Tram):             false
     GetLastError():                0
@@ -10631,11 +10640,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
+    17 => 1
+    16 => 1
     14 => 1
     13 => 1
     12 => 1
-    17 => 0
-    16 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -10643,9 +10652,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10980
+    16 => 10979
     14 => 10979
-    17 => 7320
+    17 => 7319
     13 => 5489
     12 => 5489
   CurrentSpeed ListDump:
@@ -10879,7 +10888,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Terraforming--
   DemolishTile():       true
   DemolishTile():       true
-  GetBankBalance():     1999216100
+  GetBankBalance():     1999216099
   LowerTile():          false
   RaiseTile():          true
   GetBankBalance():     1999155538
@@ -10913,10 +10922,10 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetBankBalance():     1999087637
   LevelTiles():         true
   LevelTiles():         false
-  GetBankBalance():     1999078009
+  GetBankBalance():     1999078008
   LevelTiles():         true
   LevelTiles():         true
-  GetBankBalance():     1998791930
+  GetBankBalance():     1998791929
   LowerTile():          false
   RaiseTile():          true
   RaiseTile():          false
@@ -10940,7 +10949,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2477]
+*FUNCTION [Start()] regression/main.nut line [2486]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE

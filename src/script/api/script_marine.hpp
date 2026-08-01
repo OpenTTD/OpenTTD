@@ -177,6 +177,29 @@ public:
 	static bool RemoveWaterDepot(TileIndex tile);
 
 	/**
+	 * Rename ship depot.
+	 * @param tile The ship depot location to set the name of.
+	 * @param name The new name of the depot (can be either a raw string, or a ScriptText object).
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsWaterDepotTile(tile).
+	 * @pre name != null && len(name) != 0.
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
+	 * @return True if the name was changed, false otherwise
+	 */
+	static bool RenameWaterDepot(TileIndex tile, Text *name);
+
+	/**
+	 * Get the name of a ship depot.
+	 * @param tile The ship depot location to get the name of.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsWaterDepotTile(tile).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @return The name of the ship depot, or null if failed.
+	 */
+	static std::optional<std::string> GetWaterDepotName(TileIndex tile);
+
+	/**
 	 * Removes a dock.
 	 * @param tile Any tile of the dock.
 	 * @pre ScriptMap::IsValidTile(tile).
