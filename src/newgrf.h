@@ -137,6 +137,7 @@ struct GRFFile {
 	std::vector<std::unique_ptr<struct AirportSpec>> airportspec; ///< Airport definitions.
 	std::vector<std::unique_ptr<struct AirportTileSpec>> airtspec; ///< Airport Tile definitions.
 	std::vector<std::unique_ptr<struct RoadStopSpec>> roadstops; ///< RoadStop definitions.
+	std::vector<std::unique_ptr<struct TreeSpec>> treespecs; ///< Tree definitions.
 
 	std::vector<uint32_t> param{};
 

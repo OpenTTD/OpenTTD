@@ -12,6 +12,7 @@
 
 #include "gfx_type.h"
 #include "landscape_type.h"
+#include "newgrf_commons.h"
 #include "strings_type.h"
 #include "tile_type.h"
 
@@ -53,6 +54,7 @@ struct TreeSpec {
 	TropicZones tropiczones{}; ///< Tropical zones this tree tile may appear in.
 	std::array<uint8_t, 4> probability{}; ///< Probability of this tree tile being randomly created (first entry) or being included in extra lots (remaining entries)
 	std::array<TreeClasses, 4> classes{}; ///< Compatibility tree classes.
+	SubstituteGRFFileProps grf_prop{}; ///< properties related the the grf file
 };
 
 /** Information about a tree tile. */

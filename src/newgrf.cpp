@@ -42,6 +42,7 @@
 #include "vehicle_base.h"
 #include "road.h"
 #include "tree_func.h"
+#include "tree_type.h"
 #include "newgrf_roadstop.h"
 #include "newgrf/newgrf_bytereader.h"
 #include "newgrf/newgrf_internal_vehicle.h"
@@ -1215,6 +1216,26 @@ static void FinaliseAirportsArray()
 	}
 }
 
+/**
+ * Add all new trees to the trees array. Trees properties can be set at any
+ * time in the GRF file, so we can only add a tree spec to the tree array
+ * after the file has finished loading.
+ */
+static void FinaliseTreesArray()
+{
+	for (auto &file : _grf_files) {
+		for (auto &tree_spec : file.treespecs) {
+			if (tree_spec != nullptr && tree_spec->grf_prop.HasGrfFile()) {
+				_tree_mngr.SetEntitySpec(std::move(*tree_spec));
+			}
+		}
+
+		/* Won't be used again */
+		file.treespecs.clear();
+		file.treespecs.shrink_to_fit();
+	}
+}
+
 /** Helper class to invoke a GrfActionHandler. */
 struct InvokeGrfActionHandler {
 	template <uint8_t TAction>
@@ -1668,6 +1689,7 @@ static void AfterLoadGRFs()
 	/* Add all new objects to the object array. */
 	FinaliseObjectsArray();
 
+	FinaliseTreesArray();
 	FinaliseTrees();
 
 	InitializeSortedCargoSpecs();
