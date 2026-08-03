@@ -648,14 +648,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Varehistorikk
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produsert
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Vis/skjul graf for varer produsert av denne industrien
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transportert
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Vis/skjul graf for varer transportert fra denne industrien
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Levert
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Vis/skjul graf for varer levert til denne industrien
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Venter
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Vis/skjul graf for varer som venter ved denne industrien
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Varehistorikk
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produsert
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Vis/skjul graf for varer produsert av denne byen
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportert
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Vis/skjul graf for varer transportert fra denne byen
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Levert
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Vis/skjul graf for varer levert til denne byen
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljerte prestasjonsmålinger
 
@@ -1661,12 +1668,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ingen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Forbedret
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Kjøretøy: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Velg kjøresiden
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Kjøretøy kjøreside: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Velg kjøretøys kjøreside.{}Dette kan også påvirke signalside og -grafikk.{}Det kan være nødvendig å laste spille på nytt for å få full effekt
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Venstrekjøring
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Høyrekjøring
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Venstre
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Høyre
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Høydekartrotering: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Velg hvilken vei høydekartet er rotert for å passe inn i spillverdenen
@@ -2889,22 +2896,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Slett samling
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Er du sikker på at du vil slette denne samlingen?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Er du sikker på at du vil slette denne samlingen? Det er elementer fra deaktiverte NewGRF i den!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Velg stasjonsklassen du vil vise
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Velg stasjonsklassen du vil vise. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Velg type stasjon å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Velg en samling av stasjoner å vise
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Velg veipunktklassen du vil vise
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Velg veipunktklassen du vil vise. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Velg type veipunkt å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Velg en samling av veipunkt å vise
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Velg type busterminal du vil vise
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Velg type busterminal du vil vise. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Velg type bussterminal å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Velg en samling av bussterminaler å vise
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Velg en type godsterminal du vil vise
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Velg en type godsterminal du vil vise. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Velg type godsterminal å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Velg en samling av godsterminaler å vise
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Velg objektklassen du vil vise
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Velg objektklassen du vil vise. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Velg type objekt å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer. Ctrl+klikk+dra for å velge areal diagonalt. Trykk også Shift for å kun vise kostnadsestimat
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Velg en samling av objekter å vise
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Velg byområdet du vil vise
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Velg byområdet du vil vise. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Velg type hus å bygge. Ctrl+klikk for å legge til eller fjerne lagrede elementer
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Velg en samling av hus å vise
 
@@ -4719,9 +4726,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full last av mi
 STR_ORDER_DROP_NO_LOADING                                       :Ingen lasting
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Endre lasterutinene for den merkede ordren
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Loss av alt
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Tving loss av alt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Losse hvis godtatt
-STR_ORDER_DROP_UNLOAD                                           :Loss av alt
+STR_ORDER_DROP_UNLOAD                                           :Tving loss av alt også uten mottak
 STR_ORDER_DROP_TRANSFER                                         :Overfør
 STR_ORDER_DROP_NO_UNLOADING                                     :Ingen lossing
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Endre lossingsrutinene for den merkede ordren
@@ -4758,7 +4765,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Trenger vedlike
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltid
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Gjenstående levetid (år)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Største pålitelighet
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Kjører baklengs
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Kjører baklengs med redusert hastighet
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hvordan sammenligne kjøretøyets data til den gitte verdi
@@ -4824,10 +4831,10 @@ STR_ORDER_IMPLICIT                                              :{WHITE}(Ubeting
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Full last av alle varetyper)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Full last av minst en varetype)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Ingen lasting)
-STR_ORDER_UNLOAD                                                :{SPACE}(Loss av og last på varer)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Loss av og vent på full last)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Loss av og vent på første fulle last)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Loss av og forlat tom)
+STR_ORDER_UNLOAD                                                :{SPACE}(Tving loss av og last på varer)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Tving loss av og vent på full last)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Tving loss av og vent på første fulle last)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Tving loss av og forlat tom)
 STR_ORDER_TRANSFER                                              :{SPACE}(Overfør og last på varer)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Overfør og vent på full last)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Overfør og vent på første fulle last)
@@ -4840,9 +4847,9 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{WHITE}(Ingen a
 STR_ORDER_AUTO_REFIT                                            :{WHITE}(Ombygging til {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Full last med ombygging til {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Full last av minst en varetype med ombygging til {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Loss av og last på med ombygging til {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Loss av og vent på full last med ombygging til {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Loss av og vent på første fulle last med ombygging til {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Tving loss av og last på med ombygging til {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Tving loss av og vent på full last med ombygging til {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Tving loss av og vent på første fulle last med ombygging til {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Overfør og last på varer med ombygging til {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Overfør og vent på full last med ombygging til {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Overfør og vent på første fulle last med ombygging til {STRING})
@@ -5363,6 +5370,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :broen er {HEIGH
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :broen er {HEIGHT} for lav for et veipunkt
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :broen er {HEIGHT} for lav for et veipunkt
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :broen er {HEIGHT} for lav for en sluse
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :bru er {HEIGHT} for lav for togstall
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :bru er {HEIGHT} for lav for garasje
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :bru er {HEIGHT} for lav for skipsdokk
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :bru er {HEIGHT} for lav for objekt
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Kan ikke bygge tunnel her...
