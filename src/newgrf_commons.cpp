@@ -26,6 +26,7 @@
 #include "error.h"
 #include "strings_func.h"
 #include "string_func.h"
+#include "tree_type.h"
 
 #include "table/strings.h"
 

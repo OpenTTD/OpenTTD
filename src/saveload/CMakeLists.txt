@@ -45,6 +45,7 @@ add_files(
     story_sl.cpp
     subsidy_sl.cpp
     town_sl.cpp
+    tree_sl.cpp
     vehicle_sl.cpp
     waypoint_sl.cpp
     water_regions_sl.cpp
