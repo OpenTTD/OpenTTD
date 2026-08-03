@@ -131,10 +131,77 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 	MakeTree(tile, treetype, count, growth, ground, density);
 }
 
+TreeOverrideManager _tree_mngr(std::size(_original_tree_specs), UINT16_MAX, UINT16_MAX);
+TreeTileOverrideManager _treetile_mngr(0, UINT8_MAX, TREE_INVALID);
+
 std::vector<TreeSpec> _tree_specs; ///< Information about all tree specs.
 std::vector<TreeTileSpec> _tree_tile_specs; ///< Information about all tree tile specs.
 std::vector<TreeType> _active_treetypes; ///< List of active tree types.
 EnumIndexArray<std::vector<TreeType>, TropicZone, TropicZone::End> _tropic_treetypes; ///< Lists of tree types for each tropic zone.
+
+/**
+ * Method to install the new tree data in its proper slot
+ * The slot assignment is internal of this method, since it requires
+ * checking what is available
+ * @param spec TreeSpec that comes from the grf decoding process
+ */
+void TreeOverrideManager::SetEntitySpec(TreeSpec &&spec)
+{
+	/* First step : We need to find if this tree is already specified in the savegame data. */
+	uint16_t tree = this->AddEntityID(spec.grf_prop.local_id, spec.grf_prop.grfid, spec.grf_prop.subst_id);
+
+	if (tree == this->invalid_id) {
+		GrfMsg(Severity::Error, "TreeOverrideManager.SetEntitySpec: Too many trees allocated. Ignoring.");
+		return;
+	}
+
+	/* Now that we know we can use the given id, copy the spec to its final destination. */
+	if (tree >= _tree_specs.size()) _tree_specs.resize(tree + 1);
+	_tree_specs[tree] = std::move(spec);
+
+	/* Now add the overrides. */
+	for (int i = 0; i < this->max_offset; i++) {
+		TreeSpec &overridden_tree = _tree_specs[i];
+
+		if (this->entity_overrides[i] != _tree_specs[tree].grf_prop.local_id || this->grfid_overrides[i] != _tree_specs[tree].grf_prop.grfid) continue;
+
+		overridden_tree.grf_prop.override_id = tree;
+		this->entity_overrides[i] = this->invalid_id;
+		this->grfid_overrides[i] = {};
+	}
+}
+
+/**
+ * Method to install the new tree data in its proper slot
+ * The slot assignment is internal of this method, since it requires
+ * checking what is available
+ * @param spec TreeTileSpec that comes from the tree generation process.
+ */
+void TreeTileOverrideManager::SetEntitySpec(TreeTileSpec &&spec)
+{
+	/* First step : We need to find if this treetile is already specified in the savegame data. */
+	uint16_t treetile = this->AddEntityID(spec.grf_prop.local_id, spec.grf_prop.grfid, spec.grf_prop.subst_id);
+
+	if (treetile == this->invalid_id) {
+		GrfMsg(Severity::Error, "TreeTileOverrideManager.SetEntitySpec: Too many trees allocated. Ignoring.");
+		return;
+	}
+
+	/* Now that we know we can use the given id, copy the spec to its final destination. */
+	if (treetile >= _tree_tile_specs.size()) _tree_tile_specs.resize(treetile + 1);
+	_tree_tile_specs[treetile] = std::move(spec);
+
+	/* Now add the overrides. */
+	for (int i = 0; i < this->max_offset; i++) {
+		TreeTileSpec &overridden_treetile = _tree_tile_specs[i];
+
+		if (this->entity_overrides[i] != _tree_tile_specs[treetile].grf_prop.local_id || this->grfid_overrides[i] != _tree_tile_specs[treetile].grf_prop.grfid) continue;
+
+		overridden_treetile.grf_prop.override_id = treetile;
+		this->entity_overrides[i] = this->invalid_id;
+		this->grfid_overrides[i] = {};
+	}
+}
 
 /**
  * Reset trees to their default state.
@@ -148,6 +215,9 @@ void ResetTrees()
 	_tree_specs.assign(_original_tree_specs.begin(), _original_tree_specs.end());
 
 	_tree_tile_specs.clear();
+
+	_tree_mngr.ResetOverride();
+	_treetile_mngr.ResetOverride();
 }
 
 /**
@@ -164,15 +234,15 @@ static void GenerateTreeTileSpecs()
 
 	std::vector<uint16_t> subtree_candidates;
 
+	uint local_id = 0;
 	for (auto it = _tree_specs.begin(); it != _tree_specs.end(); ++it) {
 		/* Do not build a layout if the tree has no chance of being placed. */
 		if (it->probability[0] == 0) continue;
 		if (!it->landscapes.Test(_settings_game.game_creation.landscape)) continue;
 
 		size_t tree = std::distance(_tree_specs.begin(), it);
-		// if (std::ranges::find_if(_tree_tile_specs, [tree](const auto &tts) { return tts.trees[0][0] == tree; }) != _tree_tile_specs.end()) continue;
 
-		auto &tts = _tree_tile_specs.emplace_back();
+		TreeTileSpec tts{};
 		tts.name = it->name;
 		tts.landscapes = it->landscapes;
 		tts.tropiczones = it->tropiczones;
@@ -223,6 +293,16 @@ static void GenerateTreeTileSpecs()
 				tts.flags.Set(_tree_specs[subtree].flags);
 			}
 		}
+
+		if (it->grf_prop.grfid.Empty()) {
+			tts.grf_prop.local_id = local_id;
+			tts.grf_prop.subst_id = TREE_INVALID;
+			++local_id;
+		} else {
+			tts.grf_prop = it->grf_prop;
+		}
+		_treetile_mngr.AddEntityID(tts.grf_prop.local_id, tts.grf_prop.grfid, tts.grf_prop.subst_id); // pre-reserve the tile slot
+		_treetile_mngr.SetEntitySpec(std::move(tts));
 	}
 
 	RestoreRandomSeeds(saved_seeds);
