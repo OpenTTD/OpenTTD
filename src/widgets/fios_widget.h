@@ -25,6 +25,7 @@ enum SaveLoadWidgets : WidgetID {
 	WID_SL_SAVE_OSK_TITLE,          ///< Title textbox, only available for save operations.
 	WID_SL_DELETE_SELECTION,        ///< Delete button, only available for save operations.
 	WID_SL_SAVE_GAME,               ///< Save button, only available for save operations.
+	WID_SL_NEW_DIRECTORY,           ///< Button to create a new directory in the current path.
 	WID_SL_CONTENT_DOWNLOAD_SEL,    ///< Selection 'stack' to 'hide' the content download.
 	WID_SL_DETAILS,                 ///< Panel with game details.
 	WID_SL_NEWGRF_INFO,             ///< Button to open NewGgrf configuration.
