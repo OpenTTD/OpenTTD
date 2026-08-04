@@ -85,6 +85,7 @@ public:
 		BT_DEPOT,      ///< Build a road depot
 		BT_BUS_STOP,   ///< Build a bus stop
 		BT_TRUCK_STOP, ///< Build a truck stop
+		BT_WAYPOINT,   ///< Build a road waypoint
 	};
 
 	/**
@@ -106,7 +107,7 @@ public:
 	/**
 	 * Checks whether the given tile is actually a tile with road that can be
 	 *  used to traverse a tile. This excludes road depots and 'normal' road
-	 *  stations, but includes drive through stations.
+	 *  stations, but includes drive through stations and waypoints.
 	 * @param tile The tile to check.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if and only if the tile has road.
@@ -140,6 +141,15 @@ public:
 	 * @return True if and only if the tile has a drive through road station.
 	 */
 	static bool IsDriveThroughRoadStationTile(TileIndex tile);
+
+	/**
+	 * Checks whether the given tile is actually a tile with a road waypoint.
+	 * @param tile The tile to check.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @return True if and only if the tile has a road waypoint.
+	 */
+	static bool IsRoadWaypointTile(TileIndex tile);
 
 	/**
 	 * Check if a given RoadType is available.
@@ -290,22 +300,22 @@ public:
 	static TileIndex GetRoadDepotFrontTile(TileIndex depot);
 
 	/**
-	 * Gets the tile in front of a road station.
-	 * @param station The road station tile.
-	 * @pre IsRoadStationTile(station).
-	 * @return The tile in front of the road station.
+	 * Gets the tile in front of a road station, drive through road station or waypoint.
+	 * @param tile The road station, drive through road station or waypoint tile.
+	 * @pre IsRoadStationTile(tile) || IsRoadWaypoint(tile).
+	 * @return The tile in front of the road station, drive through road station or waypoint.
 	 */
-	static TileIndex GetRoadStationFrontTile(TileIndex station);
+	static TileIndex GetRoadStationFrontTile(TileIndex tile);
 
 	/**
-	 * Gets the tile at the back of a drive through road station.
-	 *  So, one side of the drive through station is retrieved with
-	 *  GetTileInFrontOfStation, the other with this function.
-	 * @param station The road station tile.
-	 * @pre IsDriveThroughRoadStationTile(station).
-	 * @return The tile at the back of the drive through road station.
+	 * Gets the tile at the back of a drive through road station or waypoint.
+	 *  So, one side of the drive through is retrieved with
+	 *  GetRoadStationFrontTile, the other with this function.
+	 * @param tile The drive through tile.
+	 * @pre IsDriveThroughRoadStationTile(tile) || IsRoadWaypointTile(tile).
+	 * @return The tile at the back of the drive through road station or waypoint.
 	 */
-	static TileIndex GetDriveThroughBackTile(TileIndex station);
+	static TileIndex GetDriveThroughBackTile(TileIndex tile);
 
 	/**
 	 * Builds a road from the center of tile start to the center of tile end.
@@ -480,6 +490,23 @@ public:
 	static bool BuildDriveThroughRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
 
 	/**
+	 * Builds a road waypoint.
+	 * @param tile Place to build the waypoint.
+	 * @param waypoint_id The waypoint to join, ScriptBaseStation::STATION_NEW or ScriptBaseStation::STATION_JOIN_ADJACENT.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre IsRoadTile(tile).
+	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @pre 'tile' is a straight road.
+	 * @pre waypoint_id == ScriptBaseStation::STATION_NEW || waypoint_id == ScriptBaseStation::STATION_JOIN_ADJACENT || ScriptWaypoint::IsValidWaypoint(waypoint_id).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
+	 * @exception ScriptRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD
+	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
+	 * @return Whether the road waypoint has been/can be built or not.
+	 */
+	static bool BuildRoadWaypoint(TileIndex tile, StationID waypoint_id);
+
+	/**
 	 * Removes a road from the center of tile start to the center of tile end.
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
@@ -541,6 +568,18 @@ public:
 	 * @return Whether the station has been/can be removed or not.
 	 */
 	static bool RemoveRoadStation(TileIndex tile);
+
+	/**
+	 * Removes all road waypoint pieces within a rectangle on the map.
+	 * @param tile One corner of the rectangle to clear.
+	 * @param tile2 The opposite corner.
+	 * @note The road is kept after removal.
+	 * @pre IsValidTile(tile).
+	 * @pre IsValidTile(tile2).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @return Whether at least one tile has been/can be cleared or not.
+	 */
+	static bool RemoveRoadWaypointTileRectangle(TileIndex tile, TileIndex tile2);
 
 	/**
 	 * Get the baseprice of building a road-related object.

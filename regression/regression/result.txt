@@ -8433,7 +8433,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   Location ListDump:
     28481
   HasWaypointType:
-    false  true  false
+    false  false  true  false
 
   RemoveWaterDepot():   true
   RemoveDock():         true
@@ -8469,10 +8469,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
   ROADTYPE_ROAD,BT_DEPOT:      375
   ROADTYPE_ROAD,BT_BUS_STOP:   150
   ROADTYPE_ROAD,BT_TRUCK_STOP: 150
+  ROADTYPE_ROAD,BT_WAYPOINT:   150
   ROADTYPE_TRAM,BT_ROAD:       -1
   ROADTYPE_TRAM,BT_DEPOT:      -1
   ROADTYPE_TRAM,BT_BUS_STOP:   -1
   ROADTYPE_TRAM,BT_TRUCK_STOP: -1
+  ROADTYPE_TRAM,BT_WAYPOINT:   -1
  -Water-
   BT_DOCK:  262
   BT_DEPOT: 525
@@ -8707,6 +8709,54 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetDriveThroughBackTile():     33416
     GetRoadStationFrontTile():     33414
     IsRoadTile():                  true
+  Waypoint
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    IsRoadWaypointTile():          false
+    BuildRoad():                   true
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           true
+    BuildRoadFull():               true
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           false
+    BuildRoadWaypoint():           true
+    BuildRoadWaypoint():           true
+    BuildOneWayRoadFull():         true
+    BuildRoadWaypoint():           true
+    IsRoadWaypointTile():          true
+    GetWaypointID():               8
+    IsValidWaypoint():             true
+    GetStationID():                8
+    IsValidStation():              false
+    IsValidBaseStation():          true
+    IsRoadWaypointTile():          true
+    IsRoadDepotTile():             false
+    IsRoadStationTile():           false
+    IsDriveThroughRoadStationTile(): false
+    IsRoadTile():                  true
+    GetNeighbourRoadCount():       2
+    AreRoadTilesConnected():       true
+    GetDriveThroughBackTile():     33922
+    GetRoadStationFrontTile():     33410
+    IsBuildable():                 false
+    BuildRoadWaypoint():           false
+    RemoveRoadWaypointTileRectangle(): true
+    RemoveRoadWaypointTileRectangle(): false
+
+--AIWaypointList(ROAD)--
+  Count():             3
+  Location ListDump:
+    33664
+    33922
+    33665
+  HasWaypointType:
+    false  true  false  false
+    false  true  false  false
+    false  true  false  false
 
 --Sign--
   BuildSign(33410, 'Some Sign'):       0
@@ -10541,12 +10591,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():       33417
     GetEngineType():     153
     GetUnitNumber():     1
-    GetAge():            0
+    GetAge():            1
     GetMaxAge():         5490
-    GetAgeLeft():        5490
+    GetAgeLeft():        5489
     GetCurrentSpeed():   7
     GetRunningCost():    421
-    GetProfitThisYear(): 0
+    GetProfitThisYear(): -1
     GetProfitLastYear(): 0
     GetCurrentValue():   5947
     GetVehicleType():    1
@@ -10556,7 +10606,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsInDepot():         false
     GetNumWagons():      1
     GetWagonEngineType(): 153
-    GetWagonAge():       0
+    GetWagonAge():       1
     GetLength():         8
   GetOwner():           1
   BuildVehicle():       14
@@ -10631,11 +10681,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
-    14 => 1
     13 => 1
     12 => 1
     17 => 0
     16 => 0
+    14 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -10644,7 +10694,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     12 => 5490
   AgeLeft ListDump:
     16 => 10980
-    14 => 10979
+    14 => 10980
     17 => 7320
     13 => 5489
     12 => 5489
@@ -10879,21 +10929,21 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --Terraforming--
   DemolishTile():       true
   DemolishTile():       true
-  GetBankBalance():     1999216100
+  GetBankBalance():     1999214115
   LowerTile():          false
   RaiseTile():          true
-  GetBankBalance():     1999155538
+  GetBankBalance():     1999153554
   LowerTile():          true
-  GetBankBalance():     1999154977
+  GetBankBalance():     1999152993
   LowerTile():          true
   RaiseTile():          true
-  GetBankBalance():     1999124019
+  GetBankBalance():     1999122020
   RaiseTile():          false
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999121541
+  GetBankBalance():     1999119542
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          false
@@ -10901,37 +10951,37 @@ ERROR: IsEnd() is invalid as Begin() is never called
   LowerTile():          false
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999115990
+  GetBankBalance():     1999113676
   RaiseTile():          true
   LowerTile():          true
-  GetBankBalance():     1999099935
+  GetBankBalance():     1999097621
   RaiseTile():          false
   LowerTile():          true
-  GetBankBalance():     1999097859
+  GetBankBalance():     1999095545
   RaiseTile():          true
   RaiseTile():          true
-  GetBankBalance():     1999087637
+  GetBankBalance():     1999085323
   LevelTiles():         true
   LevelTiles():         false
-  GetBankBalance():     1999078009
+  GetBankBalance():     1999075695
   LevelTiles():         true
   LevelTiles():         true
-  GetBankBalance():     1998791930
+  GetBankBalance():     1998789616
   LowerTile():          false
   RaiseTile():          true
   RaiseTile():          false
   LowerTile():          true
-  GetBankBalance():     1998785830
+  GetBankBalance():     1998783517
   RaiseTile():          true
   LowerTile():          true
   LowerTile():          false
-  GetBankBalance():     1998784663
+  GetBankBalance():     1998782350
   RaiseTile():          false
   LowerTile():          true
   LowerTile():          false
   RaiseTile():          false
   RaiseTile():          true
-  GetBankBalance():     1998745667
+  GetBankBalance():     1998743354
 --Valuate() with excessive CPU usage--
 constructor failed with: excessive CPU usage in list filter function
 Your script made an error: excessive CPU usage in valuator function
@@ -10940,7 +10990,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2477]
+*FUNCTION [Start()] regression/main.nut line [2529]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE
