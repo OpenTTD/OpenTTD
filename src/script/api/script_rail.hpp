@@ -360,6 +360,29 @@ public:
 	static bool RemoveRailStationTileRectangle(TileIndex tile, TileIndex tile2, bool keep_rail);
 
 	/**
+	 * Rename rail depot.
+	 * @param tile The rail depot location to set the name of.
+	 * @param name The new name of the depot (can be either a raw string, or a ScriptText object).
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsRailDepotTile(tile).
+	 * @pre name != null && len(name) != 0.
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
+	 * @return True if the name was changed, false otherwise
+	 */
+	static bool RenameRailDepot(TileIndex tile, Text *name);
+
+	/**
+	 * Get the name of a rail depot.
+	 * @param tile The rail depot location to get the name of.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsRailDepotTile(tile).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @return The name of the rail depot, or null if failed.
+	 */
+	static std::optional<std::string> GetRailDepotName(TileIndex tile);
+
+	/**
 	 * Get all RailTracks on the given tile.
 	 * @note A depot has no railtracks.
 	 * @param tile The tile to check.
