@@ -35,6 +35,7 @@ enum EditorTerraformToolbarWidgets : WidgetID {
 	WID_ETT_RAISE_LAND,                          ///< Raise land button.
 	WID_ETT_LEVEL_LAND,                          ///< Level land button.
 	WID_ETT_PLACE_ROCKS,                         ///< Place rocks button.
+	WID_ETT_PLACE_ROUGH,                         ///< Place rough land button.
 	WID_ETT_PLACE_DESERT,                        ///< Place desert button (in tropical climate).
 	WID_ETT_PLACE_OBJECT,                        ///< Place transmitter button.
 	WID_ETT_BUTTONS_END,                         ///< End of pushable buttons.
