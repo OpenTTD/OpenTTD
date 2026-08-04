@@ -12,12 +12,14 @@
 #include "stdafx.h"
 
 #include "core/random_func.hpp"
+#include "company_base.h"
 #include "timer/timer.h"
 #include "timer/timer_game_tick.h"
 #include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "vehicle_type.h"
 #include "window_func.h"
+#include "window_gui.h"
 
 #include "safeguards.h"
 
