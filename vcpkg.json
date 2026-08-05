@@ -46,6 +46,9 @@
       "name": "opusfile"
     },
     {
+      "name": "soxr"
+    },
+    {
       "name": "sdl2",
       "platform": "linux"
     },

@@ -21,6 +21,7 @@ struct MixerChannel;
 typedef void(*MxStreamCallback)(int16_t *buffer, size_t samples);
 
 bool MxInitialize(uint rate);
+uint32_t MxGetRate();
 void MxMixSamples(void *buffer, uint samples);
 
 MixerChannel *MxAllocateChannel();

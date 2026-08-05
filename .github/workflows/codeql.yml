@@ -49,6 +49,7 @@ jobs:
           libopus-dev \
           libopusfile-dev \
           libsdl2-dev \
+          libsoxr-dev \
           zlib1g-dev \
           # EOF
 

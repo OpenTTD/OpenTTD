@@ -12,13 +12,16 @@
 #include "sound_type.h"
 #include "soundloader_type.h"
 #include "soundloader_func.h"
+#include "soundresampler_type.h"
 #include "string_func.h"
+#include "mixer.h"
 #include "newgrf_sound.h"
 #include "random_access_file_type.h"
 
 #include "safeguards.h"
 
 template class ProviderManager<SoundLoader>;
+template class ProviderManager<SoundResampler>;
 
 bool LoadSoundData(SoundEntry &sound, bool new_format, SoundID sound_id, const std::string &name)
 {
@@ -42,6 +45,14 @@ bool LoadSoundData(SoundEntry &sound, bool new_format, SoundID sound_id, const s
 	assert(sound.rate != 0);
 
 	Debug(grf, 2, "LoadSound [{}]: channels {}, sample rate {}, bits per sample {}, length {}", sound.file->GetSimplifiedFilename(), sound.channels, sound.rate, sound.bits_per_sample, sound.file_size);
+
+	/* Convert sample rate if needed. */
+	const uint32_t play_rate = MxGetRate();
+	if (play_rate != sound.rate) {
+		for (auto &resampler : ProviderManager<SoundResampler>::GetProviders()) {
+			if (resampler->Resample(sound, play_rate)) break;
+		}
+	}
 
 	/* Mixer always requires an extra sample at the end for the built-in linear resampler. */
 	sound.data->resize(sound.data->size() + sound.channels * sound.bits_per_sample / 8);
