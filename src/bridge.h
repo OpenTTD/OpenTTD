@@ -43,10 +43,11 @@ struct BridgeSpec {
 	PaletteID pal;                      ///< the palette which is used in the GUI
 	StringID material;                  ///< the string that contains the bridge description
 	StringID transport_name[2];         ///< description of the bridge, when built for road or rail
-	std::vector<std::vector<PalSpriteID>> sprite_table; ///< table of sprites for drawing the bridge
-	uint8_t flags;                         ///< bit 0 set: disable drawing of far pillars.
-	ControlFlags ctrl_flags{}; ///< control flags
 	BridgeMiddlePillarFlags pillar_flags{}; ///< bridge pillar flags.
+	uint8_t flags = 0; ///< bit 0 set: disable drawing of far pillars.
+
+	ControlFlags ctrl_flags{}; ///< control flags, NewGRF-only
+	std::vector<std::vector<PalSpriteID>> sprite_table{}; ///< table of sprites for drawing the bridge, NewGRF-only
 };
 
 extern BridgeSpec _bridge[MAX_BRIDGES];

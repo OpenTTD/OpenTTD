@@ -733,22 +733,6 @@ static const std::span<const std::span<const PalSpriteID>> _bridge_sprite_table[
 	_bridge_sprite_table_tubular_silicon,
 };
 
-/**
- * Describes the data that defines each bridge in the game
- * @param y   year of availability
- * @param mnl minimum length (not counting bridge heads)
- * @param mxl maximum length (not counting bridge heads)
- * @param p   price multiplier
- * @param mxs maximum speed allowed (1 unit = 1/1.6 mph = 1 km-ish/h)
- * @param spr sprite to use in purchase GUI
- * @param plt palette for the sprite in purchase GUI
- * @param dsc description of the bridge in purchase GUI
- * @param nrl description of the rail bridge in query tool
- * @param nrd description of the road bridge in query tool
- */
-#define MBR(y, mnl, mxl, p, mxs, spr, plt, dsc, nrl, nrd, pillars) \
-	{TimerGameCalendar::Year{y}, mnl, mxl, p, mxs, spr, plt, dsc, { nrl, nrd }, {}, 0, {}, pillars}
-
 static constexpr BridgePillarFlags BRIDGEPILLARFLAGS_ALL_CORNERS = {
 	BridgePillarFlag::CornerW, BridgePillarFlag::CornerS, BridgePillarFlag::CornerE, BridgePillarFlag::CornerN
 };
@@ -794,56 +778,55 @@ static constexpr BridgeMiddlePillarFlags CANTILEVER_PILLARS = {{
 
 const BridgeSpec _orig_bridge[] = {
 /*
-	       year of availability
-	       |  minimum length
-	       |  |   maximum length
-	       |  |   |        price multiplier
-	       |  |   |        |    maximum speed
-	       |  |   |        |    |  sprite to use in GUI
-	       |  |   |        |    |  |      palette in GUI
-	   string with description               name on rail                                         name on road
-	   |                              |      |                                                    | */
-	MBR(   0, 0, 0xFFFF,  80,  32, 0xA24, PAL_NONE,
-	   STR_BRIDGE_NAME_WOODEN,               STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN,              STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN, ALL_PILLARS),
+	 year of availability
+	 |                              minimum length
+	 |                              |  maximum length
+	 |                              |  |           price multiplier
+	 |                              |  |           |    maximum speed
+	 |                              |  |           |    |    sprite to use in GUI
+	 |                              |  |           |    |    |      palette in GUI
+	 | string with description      |  |     name on rail    |      |                             name on road                                          pillar flags
+	 | |                            |  |     |     |    |    |      |                             |                                                     | */
+	{CalendarTime::MIN_YEAR,        0, UINT16_MAX,  80,  32, 0xA24, PAL_NONE,
+	   STR_BRIDGE_NAME_WOODEN,              {STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN,              STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN},              ALL_PILLARS},
 
-	MBR(   0, 0,      2, 112,  48, 0xA26, PALETTE_TO_STRUCT_RED,
-	   STR_BRIDGE_NAME_CONCRETE,             STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE,            STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE, ALL_PILLARS),
+	{CalendarTime::MIN_YEAR,        0,          2, 112,  48, 0xA26, PALETTE_TO_STRUCT_RED,
+	   STR_BRIDGE_NAME_CONCRETE,            {STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE,            STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE},            ALL_PILLARS},
 
-	MBR(1930, 0,      5, 144,  64, 0xA25, PAL_NONE,
-	   STR_BRIDGE_NAME_GIRDER_STEEL,         STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL,        STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL, ALL_PILLARS),
+	{TimerGameCalendar::Year{1930}, 0,          5, 144,  64, 0xA25, PAL_NONE,
+	   STR_BRIDGE_NAME_GIRDER_STEEL,        {STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL,        STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL},        ALL_PILLARS},
 
-	MBR(   0, 2,     10, 168,  80, 0xA22, PALETTE_TO_STRUCT_CONCRETE,
-	   STR_BRIDGE_NAME_SUSPENSION_CONCRETE,  STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE, STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE, SUSPENSION_PILLARS),
+	{CalendarTime::MIN_YEAR,        2,         10, 168,  80, 0xA22, PALETTE_TO_STRUCT_CONCRETE,
+	   STR_BRIDGE_NAME_SUSPENSION_CONCRETE, {STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE, STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE}, SUSPENSION_PILLARS},
 
-	MBR(1930, 3, 0xFFFF, 185,  96, 0xA22, PAL_NONE,
-	   STR_BRIDGE_NAME_SUSPENSION_STEEL,     STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL, SUSPENSION_PILLARS),
+	{TimerGameCalendar::Year{1930}, 3, UINT16_MAX, 185,  96, 0xA22, PAL_NONE,
+	   STR_BRIDGE_NAME_SUSPENSION_STEEL,    {STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL},    SUSPENSION_PILLARS},
 
-	MBR(1930, 3, 0xFFFF, 192, 112, 0xA22, PALETTE_TO_STRUCT_YELLOW,
-	   STR_BRIDGE_NAME_SUSPENSION_STEEL,     STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL, SUSPENSION_PILLARS),
+	{TimerGameCalendar::Year{1930}, 3, UINT16_MAX, 192, 112, 0xA22, PALETTE_TO_STRUCT_YELLOW,
+	   STR_BRIDGE_NAME_SUSPENSION_STEEL,    {STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL},    SUSPENSION_PILLARS},
 
-	MBR(1930, 3,      7, 224, 160, 0xA23, PAL_NONE,
-	   STR_BRIDGE_NAME_CANTILEVER_STEEL,     STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL, CANTILEVER_PILLARS),
+	{TimerGameCalendar::Year{1930}, 3,          7, 224, 160, 0xA23, PAL_NONE,
+	   STR_BRIDGE_NAME_CANTILEVER_STEEL,    {STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL},    CANTILEVER_PILLARS},
 
-	MBR(1930, 3,      8, 232, 208, 0xA23, PALETTE_TO_STRUCT_BROWN,
-	   STR_BRIDGE_NAME_CANTILEVER_STEEL,     STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL, CANTILEVER_PILLARS),
+	{TimerGameCalendar::Year{1930}, 3,          8, 232, 208, 0xA23, PALETTE_TO_STRUCT_BROWN,
+	   STR_BRIDGE_NAME_CANTILEVER_STEEL,    {STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL},    CANTILEVER_PILLARS},
 
-	MBR(1930, 3,      9, 248, 240, 0xA23, PALETTE_TO_STRUCT_RED,
-	   STR_BRIDGE_NAME_CANTILEVER_STEEL,     STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL, CANTILEVER_PILLARS),
+	{TimerGameCalendar::Year{1930}, 3,          9, 248, 240, 0xA23, PALETTE_TO_STRUCT_RED,
+	   STR_BRIDGE_NAME_CANTILEVER_STEEL,    {STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL,    STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL},    CANTILEVER_PILLARS},
 
-	MBR(1930, 0,      2, 240, 256, 0xA27, PAL_NONE,
-	   STR_BRIDGE_NAME_GIRDER_STEEL,         STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL,        STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL, ALL_PILLARS),
+	{TimerGameCalendar::Year{1930}, 0,          2, 240, 256, 0xA27, PAL_NONE,
+	   STR_BRIDGE_NAME_GIRDER_STEEL,        {STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL,        STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL},        ALL_PILLARS},
 
-	MBR(1995, 2, 0xFFFF, 255, 320, 0xA28, PAL_NONE,
-	   STR_BRIDGE_NAME_TUBULAR_STEEL,        STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL,       STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL, CANTILEVER_PILLARS),
+	{TimerGameCalendar::Year{1995}, 2, UINT16_MAX, 255, 320, 0xA28, PAL_NONE,
+	   STR_BRIDGE_NAME_TUBULAR_STEEL,       {STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL,       STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL},       CANTILEVER_PILLARS},
 
-	MBR(2005, 2, 0xFFFF, 380, 512, 0xA28, PALETTE_TO_STRUCT_YELLOW,
-	   STR_BRIDGE_NAME_TUBULAR_STEEL,        STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL,       STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL, CANTILEVER_PILLARS),
+	{TimerGameCalendar::Year{2005}, 2, UINT16_MAX, 380, 512, 0xA28, PALETTE_TO_STRUCT_YELLOW,
+	   STR_BRIDGE_NAME_TUBULAR_STEEL,       {STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL,       STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL},       CANTILEVER_PILLARS},
 
-	MBR(2010, 2, 0xFFFF, 510, 608, 0xA28, PALETTE_TO_STRUCT_CONCRETE,
-	   STR_BRIDGE_TUBULAR_SILICON,           STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL,       STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL, CANTILEVER_PILLARS),
+	{TimerGameCalendar::Year{2010}, 2, UINT16_MAX, 510, 608, 0xA28, PALETTE_TO_STRUCT_CONCRETE,
+	   STR_BRIDGE_TUBULAR_SILICON,          {STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL,       STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL},       CANTILEVER_PILLARS},
 };
 
-#undef MBR
 #undef MN
 #undef MR
 #undef MW
