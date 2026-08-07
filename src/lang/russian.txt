@@ -664,6 +664,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Удалить 
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информация об участке земли
 STR_ABOUT_MENU_HELP                                             :Помощь и документация
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Режим сохранения экрана
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Отладка ИИ / скриптов
 STR_ABOUT_MENU_SCREENSHOT                                       :Снимок экрана
@@ -3276,6 +3277,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Созд
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Генератор карты
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Разместить скалы на карте.{}Ctrl+щелчок убирает скалы.
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Разместить неровности на карте.{}Ctrl+щелчок - убрать неровности.
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Указать область, занимаемую пустыней.{}Ctrl+щелчок убирает песок.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Увеличить площадь изменения рельефа
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Уменьшить площадь изменения рельефа
@@ -3574,6 +3576,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Загр
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Загрузить выбранную игру
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Загрузить выбранную карту высот
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Загрузка выбранного файла для создания городов
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Новый каталог
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Создать новый каталог в указанном месте
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Укажите имя нового каталога
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Информация об игре
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Нет информации.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -5253,6 +5258,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Автомат�
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Не удалось прочитать диск
 STR_ERROR_GAME_SAVE_FAILED                                      :Невозможно сохранить игру...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Невозможно удалить файл
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Каталог не может быть создан...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Каталог или файл с таким именем уже существует.
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Имя каталога не должно содержать специальные символы.
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Имя каталога не должно начинаться с точки.
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :У вас нет разрешений для создания этого каталога.
 STR_ERROR_GAME_LOAD_FAILED                                      :Невозможно загрузить игру...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Внутренняя ошибка: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл повреждён - {STRING}

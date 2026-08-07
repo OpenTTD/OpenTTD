@@ -539,6 +539,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
 STR_ABOUT_MENU_HELP                                             :Ajuda e manuais
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Ativar/desativar o modo de protetor de ecrã
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Abrir/Fechar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA/Scripts de jogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
@@ -3102,6 +3103,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantar 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Gerar Terreno
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Colocar áreas rochosas no terreno.{}Ctrl+Clique para remover áreas rochosas
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Colocar áreas irregulares no modo de paisagismo.{}Ctrl+clique para remover as áreas irregulares
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definir área de deserto.{}Ctrl+Clique para remover área de deserto
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumentar área de terreno a baixar/levantar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuir área de terreno a baixar/levantar
@@ -3400,6 +3402,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carregar
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carregar o jogo selecionado
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carregar mapa de altura selecionado
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Carregar dados da localidade selecionada
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Nova Pasta
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Criar uma nova pasta na localização atual
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Introduza um nome para a nova pasta
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes do Jogo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -5067,6 +5072,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Falha ao guarda
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Não é possível ler unidade do sistema
 STR_ERROR_GAME_SAVE_FAILED                                      :Falha ao guardar jogo...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :não é possível eliminar ficheiro
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Não é possível criar pasta...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Já existe um ficheiro ou uma pasta com este nome
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :O nome da pasta não pode ter caracteres especiais
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :O nome da pasta não pode começar por um ponto
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Não tem permissão para criar uma pasta aqui
 STR_ERROR_GAME_LOAD_FAILED                                      :Falha ao carregar jogo...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ficheiro corrompido - {STRING}

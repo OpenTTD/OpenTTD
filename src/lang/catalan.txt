@@ -539,6 +539,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Esborra tots el
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Detalls de les caselles
 STR_ABOUT_MENU_HELP                                             :Ajuda i manuals
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Commuta el mode protector de pantalla
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Commuta la consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de les IA i l'script de partida
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
@@ -3102,6 +3103,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planta b
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de terreny
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Situa àrees de roques al paisatge.{}Amb Ctrl+clic, es trauen àrees senceres de roques.
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Definiu terreny irregular al mapa.{}Amb Ctrl+clic, es trauran les àrees irregulars.
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineix àrea de desert.{}Amb Ctrl+clic, es treu l'àrea de desert.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
@@ -3400,6 +3402,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carrega
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carrega la partida seleccionada
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Carrega el mapa d'alçades seleccionat
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Carrega les dades de les poblacions triades
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Carpeta nova
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Crea una carpeta nova a la ubicació actual.
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Escriu un nom per a la carpeta
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalls de la partida
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hi ha informació disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -5067,6 +5072,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :La desada autom
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible llegir la unitat de disc
 STR_ERROR_GAME_SAVE_FAILED                                      :La partida no s'ha pogut desar...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :El fitxer no es pot esborrar.
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :La carpeta no es pot crear...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Ja existeix un fitxer o carpeta amb aquest nom.
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :El nom de la carpeta no pot contenir caràcters especials.
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :El nom de la carpeta no pot començar amb un punt.
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :No teniu permís per a crear una carpeta aquí.
 STR_ERROR_GAME_LOAD_FAILED                                      :La partida no s'ha pogut carregar...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error Intern: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :El fitxer de la partida està corromput - {STRING}

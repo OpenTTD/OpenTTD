@@ -539,6 +539,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :모든 뉴스 �
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :지형 정보
 STR_ABOUT_MENU_HELP                                             :도움말 & 매뉴얼
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :화면 보호기 모드 전환
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
 STR_ABOUT_MENU_AI_DEBUG                                         :인공지능/게임 스크립트 디버그
 STR_ABOUT_MENU_SCREENSHOT                                       :스크린샷 찍기
@@ -3102,6 +3103,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}지면�
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}지형 만들기
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}암석 지역을 지정합니다.{}CTRL+클릭하면 암석 지역을 제거합니다
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}거친 표면 지역을 지정합니다.{}CTRL + 클릭하면 거친 표면 지역을 제거합니다
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}사막 지역을 지정합니다.{}CTRL+클릭하면 사막 지역을 제거할 수 있습니다
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}지형 편집툴의 크기를 키움
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}지형 편집툴의 크기를 줄임
@@ -3400,6 +3402,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}불러�
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}선택한 게임을 불러옵니다
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}선택한 높이맵을 불러옵니다
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}선택한 도시 데이터를 불러옵니다
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}새 폴더
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}현재 위치에 새로운 폴더를 만듭니다
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}새 폴더 이름을 입력하세요
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}게임 상세 정보
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}사용 가능한 정보 없음
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -5067,6 +5072,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :자동 저장 �
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}드라이브를 읽을 수 없습니다
 STR_ERROR_GAME_SAVE_FAILED                                      :게임을 저장하지 못 했습니다...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :파일을 삭제할 수 없습니다
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :폴더를 생성할 수 없습니다...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :이미 존재하는 폴더나 파일 이름입니다
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :폴더 이름에는 특수 문자를 사용할 수 없습니다
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :폴더 이름은 점(.)으로 시작할 수 없습니다
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :이 위치에 폴더를 생성할 수 있는 권한이 없습니다
 STR_ERROR_GAME_LOAD_FAILED                                      :게임을 불러오지 못 했습니다...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :내부 오류: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :손상된 게임 저장 파일 - {STRING}

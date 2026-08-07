@@ -4724,9 +4724,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full last någo
 STR_ORDER_DROP_NO_LOADING                                       :Lasta ej
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ändra lastningsbeteende för markerad order
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Lasta av allt
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Tvinga fram avlastning av allt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Lasta av om accepterat
-STR_ORDER_DROP_UNLOAD                                           :Lasta av allt
+STR_ORDER_DROP_UNLOAD                                           :Tvinga fram avlastning även om lasten inte accepteras
 STR_ORDER_DROP_TRANSFER                                         :Överför
 STR_ORDER_DROP_NO_UNLOADING                                     :Ej avlastning
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändra avlastningsbeteende för markerad order
@@ -4829,10 +4829,10 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Underf�
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Full last)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Full last någon godstyp)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Ingen lastning)
-STR_ORDER_UNLOAD                                                :{SPACE}(Lasta av och lasta gods)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Lasta av och vänta på full last)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Lasta av och vänta på full last av någon godstyp)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Lasta av och lämna tom)
+STR_ORDER_UNLOAD                                                :{SPACE}(Tvinga fram avlastning och lasta gods)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Tvinga fram avlastning och vänta på full last)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Tvinga fram avlastning och vänta på full last av någon godstyp)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Tvinga fram avlastning och lämna tom)
 STR_ORDER_TRANSFER                                              :{SPACE}(Överför och lasta gods)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Överför och vänta på full last)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Överför och vänta på full last av någon godstyp)
@@ -4845,9 +4845,9 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Lasta e
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Auto-anpassa till {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Vänta på full last och auto-anpassa till {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Vänta på full last av någon godstyp och auto-anpassa till {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Lasta av och på gods. Auto-anpassa till {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Lasta av och vänta på full last. Auto-anpassa till {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Lasta av och vänta på full last av någon godstyp. Auto-anpassa till {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Tvinga fram avlastning och lasta gods efter auto-anpassning till {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Tvinga fram avlastning och vänta på full last efter auto-anpassning till {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Tvinga fram avlastning och vänta på full last av någon godstyp efter auto-anpassning till {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Överför och lasta gods. Auto-anpassa till {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Överför och vänta på full last. Auto-anpassa till {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Överför och vänta på full last av någon godstyp. Auto-anpassa till {STRING})

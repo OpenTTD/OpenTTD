@@ -538,6 +538,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Poista kaikki v
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-alueen tiedot
 STR_ABOUT_MENU_HELP                                             :Ohjeet ja oppaat
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Näytönsäästäjätila päälle/pois
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsoli
 STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn/peliskriptin virheenjäljitys
 STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus
@@ -3101,6 +3102,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Istuta i
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Maanrakennus
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Sijoita kallioisia alueita maastoon.{}Ctrl+napsautus poistaa kallioisia alueita
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Sijoita epätasaisia alueita maastoon.{}Ctrl+napsautus poistaa epätasaisia alueita
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Määrittele aavikkoalue.{}Ctrl+napsautus poistaa aavikkoalueen.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Suurenna madallettavan/korotettavan maa-alueen kokoa
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pienennä madallettavan/korotettavan maa-alueen kokoa
@@ -3387,7 +3389,7 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Lataa sk
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Lataa korkeuskartta
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Tallenna korkeuskartta
 STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Lataa kuntatietoja
-STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Siirry tallennusten oletuskansioon napsauttamalla tätä
+STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Siirry tallennusten oletushakemistoon napsauttamalla tätä
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} vapaana
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista asemista, hakemistoista ja tallennetuista peleistä
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Valittu nimi pelitallenteelle
@@ -3399,6 +3401,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lataa
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lataa valittu peli
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Lataa valittu korkeuskartta
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Lataa valitut kuntatiedot
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Uusi hakemisto
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Luo uusi hakemisto nykyiseen sijaintiin
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Anna nimi uudelle hakemistolle
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Tietoja pelistä
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tietoja ei ole saatavilla
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -5066,6 +5071,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Automaattitalle
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Asemaa ei voi lukea.
 STR_ERROR_GAME_SAVE_FAILED                                      :Pelin tallennus epäonnistui…
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Tiedostoa ei voi poistaa
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Hakemistoa ei voi luoda…
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Tämänniminen tiedosto tai hakemisto on jo olemassa
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Hakemiston nimi ei saa sisältää erikoismerkkejä
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Hakemiston nimi ei voi alkaa pisteellä
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Sinulla ei ole oikeutta luoda hakemistoa tähän
 STR_ERROR_GAME_LOAD_FAILED                                      :Pelin lataus epäonnistui…
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Sisäinen virhe: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Viallinen tallennus – {STRING}

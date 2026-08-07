@@ -917,6 +917,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Usuń wszystkie
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o terenie
 STR_ABOUT_MENU_HELP                                             :Pomoc i instrukcje
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Tryb wygaszacza ekranu
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Włącz/wyłącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / Game Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut obrazu
@@ -3481,6 +3482,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Sadź du
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umieść skalisty teren.{}Użyj Ctrl, aby usunąć skały
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Umieść wyboisty teren.{}Użyj Ctrl, aby usunąć wyboisty teren
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Wyznacz obszar pustyni.{}Użyj Ctrl, aby usunąć obszar pustyni
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zwiększ rozmiar obniżanego/podwyższanego terenu
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmniejsz rozmiar obniżanego/podwyższanego terenu
@@ -3779,6 +3781,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Wczytaj
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Wczytaj wybraną grę
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Wczytaj wybraną mapę wysokości
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Wczytaj zaznaczone dane o miastach
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Nowy Folder
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Utwórz nowy folder w bieżącej lokalizacji
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Wpisz nazwę dla nowego folderu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Szczegóły Gry
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Brak dostępnych informacji
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -5452,6 +5457,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Błąd automaty
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nie można odczytać napędu
 STR_ERROR_GAME_SAVE_FAILED                                      :Nie można zapisać gry...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Nie można usunąć pliku
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Nie można utworzyć folderu...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Plik lub folder o tej nazwie już istnieje
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Nazwa folderu nie może zawierać znaków specjalnych
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Nazwa folderu nie może zaczynać się od kropki
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Nie masz uprawnień do tworzenia folderu w tym miejscu
 STR_ERROR_GAME_LOAD_FAILED                                      :Nie można wczytać gry...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Błąd wewnętrzny: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Zepsuta zapisana gra - {STRING}
