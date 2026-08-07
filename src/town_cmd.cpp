@@ -1339,11 +1339,11 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 		}
 	}
 
+	RoadType rt = GetTownRoadType();
 	for (uint8_t times = 0; times <= 22; times++) {
 		uint8_t bridge_type = RandomRange(MAX_BRIDGES - 1);
 
 		/* Can we actually build the bridge? */
-		RoadType rt = GetTownRoadType();
 		if (Command<Commands::BuildBridge>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildBridge>()), tile, bridge_tile, TransportType::Road, bridge_type, INVALID_RAILTYPE, rt).Succeeded()) {
 			Command<Commands::BuildBridge>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildBridge>()).Set(DoCommandFlag::Execute), tile, bridge_tile, TransportType::Road, bridge_type, INVALID_RAILTYPE, rt);
 			return true;
