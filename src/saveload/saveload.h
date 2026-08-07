@@ -844,10 +844,10 @@ struct SaveLoad {
 		} else if constexpr (std::is_same_v<uint64_t, T>) {
 			static_assert(IsIntegralFileType(file_type));
 			return VarMemType::U64;
-		} else if constexpr (ConvertibleThroughBase<T>) {
-			return DetermineMemType<typename T::BaseType, file_type>();
 		} else {
-			static_assert(false, "The given type is not supported");
+			/* If in the following assert bare false is used the compilation fails on gcc 12.2.0. */
+			static_assert(ConvertibleThroughBase<T>, "The given type is not supported");
+			return DetermineMemType<typename T::BaseType, file_type>();
 		}
 	}
 };
