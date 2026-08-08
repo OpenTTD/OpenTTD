@@ -3,6 +3,8 @@ include(FindPackageHandleStandardArgs)
 find_library(Soxr_LIBRARY
 	NAMES soxr
 )
+
+include(FixVcpkgLibrary)
 FixVcpkgLibrary(Soxr)
 
 set(Soxr_COMPILE_OPTIONS "" CACHE STRING "Extra compile options of soxr")

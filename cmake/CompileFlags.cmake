@@ -33,6 +33,7 @@ macro(compile_flags)
     if(MINGW)
         add_link_options(
             "$<$<NOT:$<CONFIG:Debug>>:-fstack-protector>" # Prevent undefined references when _FORTIFY_SOURCE > 0
+            "$<$<CXX_COMPILER_ID:GNU>:-lgomp>" # Prevent undefined references in libsoxr
         )
         if(CMAKE_SIZEOF_VOID_P EQUAL 8)
             add_compile_options(
