@@ -1049,7 +1049,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, uint8_t type, DiagDire
 static void PlantFarmField(TileIndex tile, IndustryID industry)
 {
 	if (_settings_game.game_creation.landscape == LandscapeType::Arctic) {
-		if (GetTileZ(tile) + 2 >= GetSnowLine()) return;
+		if (GetTileZ(tile) + 2 >= GetSnowLine(tile)) return;
 	}
 
 	/* determine field size */

@@ -1831,7 +1831,7 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 			 * from the entry edge. For tunnels this is the lowest point for bridges the highest point.
 			 * (Independent of foundations) */
 			int z = IsBridge(tile) ? GetTileMaxZ(tile) : GetTileZ(tile);
-			if (snow_or_desert != (z > GetSnowLine())) {
+			if (snow_or_desert != (z > GetSnowLine(tile))) {
 				SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
 				MarkTileDirtyByTile(tile);
 			}

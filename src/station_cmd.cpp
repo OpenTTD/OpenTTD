@@ -3175,7 +3175,7 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 		/* Decide snow/desert from tile */
 		switch (_settings_game.game_creation.landscape) {
 			case LandscapeType::Arctic:
-				snow_desert = (uint)ti->z > GetSnowLine() * TILE_HEIGHT;
+				snow_desert = (uint)ti->z > GetSnowLine(ti->tile) * TILE_HEIGHT;
 				break;
 
 			case LandscapeType::Tropic:
@@ -3760,7 +3760,7 @@ static void TileLoop_Station(TileIndex tile)
 		case StationType::RoadWaypoint: {
 			switch (_settings_game.game_creation.landscape) {
 				case LandscapeType::Arctic:
-					if (IsRoadWaypointOnSnowOrDesert(tile) != (GetTileZ(tile) > GetSnowLine())) {
+					if (IsRoadWaypointOnSnowOrDesert(tile) != (GetTileZ(tile) > GetSnowLine(tile))) {
 						ToggleRoadWaypointOnSnowOrDesert(tile);
 						MarkTileDirtyByTile(tile);
 					}

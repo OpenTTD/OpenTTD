@@ -234,24 +234,32 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				} else {
 					auto snow_line = std::make_unique<SnowLine>();
 
-					for (uint i = 0; i < SNOW_LINE_MONTHS; i++) {
-						for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
-							uint8_t &level = snow_line->table[i][j];
-							level = buf.ReadByte();
-							if (_cur_gps.grffile->grf_version >= 8) {
-								if (level != 0xFF) level = level * (1 + _settings_game.construction.map_height_limit) / 256;
-							} else {
-								if (level >= 128) {
-									/* no snow */
-									level = 0xFF;
-								} else {
-									level = level * (1 + _settings_game.construction.map_height_limit) / 128;
-								}
-							}
+					/* Read the snow line table, making a note of when value transitions occur. */
+					uint last_level = UINT_MAX;
+					uint last_day = 0;
+					for (uint i = 0; i < SNOW_LINE_MONTHS * SNOW_LINE_DAYS; ++i) {
+						uint8_t level = buf.ReadByte();
 
-							snow_line->highest_value = std::max(snow_line->highest_value, level);
-							snow_line->lowest_value = std::min(snow_line->lowest_value, level);
+						/* Level is only recorded on transition, or long periods of stability. */
+						if (level == last_level && i - last_day < 32) continue;
+						last_level = level;
+						last_day = i;
+
+						if (_cur_gps.grffile->grf_version >= 8) {
+							if (level != 0xFF) level = level * (1 + _settings_game.construction.map_height_limit) / 256;
+						} else {
+							if (level >= 128) {
+								/* no snow */
+								level = 0xFF;
+							} else {
+								level = level * (1 + _settings_game.construction.map_height_limit) / 128;
+							}
 						}
+
+						snow_line->table.emplace_back(i, level);
+
+						snow_line->highest_value = std::max(snow_line->highest_value, level);
+						snow_line->lowest_value = std::min(snow_line->lowest_value, level);
 					}
 					SetSnowLine(std::move(snow_line));
 				}
@@ -523,7 +531,7 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 		/* case 0x1F: // locale dependent settings not implemented to avoid desync */
 
 		case 0x20: { // snow line height
-			uint8_t snowline = GetSnowLine();
+			uint8_t snowline = GetRawSnowLine();
 			if (_settings_game.game_creation.landscape == LandscapeType::Arctic && snowline <= _settings_game.construction.map_height_limit) {
 				*value = Clamp(snowline * (grffile->grf_version >= 8 ? 1 : TILE_HEIGHT), 0, 0xFE);
 			} else {

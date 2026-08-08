@@ -605,17 +605,76 @@ void SetSnowLine(std::unique_ptr<SnowLine> &&snow_line)
 	_snow_line = std::move(snow_line);
 }
 
+/** Size of the snow line dither table in one dimension. */
+static constexpr uint SNOW_LINE_DITHER_SIZE = 8;
+
+/** Size of the snow line dither table in both dimensions. */
+static constexpr uint SNOW_LINE_DITHER_SIZE_SQ = SNOW_LINE_DITHER_SIZE * SNOW_LINE_DITHER_SIZE;
+
 /**
- * Get the current snow line, either variable or static.
- * @return the snow line height.
+ * Get a fractional snow line height for a variable snow line.
+ * @return the snow line height, as a fixed-point value.
  * @ingroup SnowLineGroup
  */
-uint8_t GetSnowLine()
+static uint GetFractionalSnowLine()
+{
+	int day_of_year = (TimerGameCalendar::date - TimerGameCalendar::DateAtStartOfYear(TimerGameCalendar::year)).base();
+
+	/* Find the entry for next the day of year. */
+	auto it = std::ranges::upper_bound(_snow_line->table, day_of_year, std::less{}, &SnowLine::Transition::first);
+	if (it == std::end(_snow_line->table)) it = std::begin(_snow_line->table);
+
+	/* Get the previous entry, taking care of wrapping from start to end. */
+	auto prev = it;
+	if (prev == std::begin(_snow_line->table)) prev = std::end(_snow_line->table);
+	prev = std::prev(prev);
+
+	int start = prev->first;
+	if (it->first == 0) start -= SNOW_LINE_MONTHS * SNOW_LINE_DAYS;
+
+	int length = (it->first - start) * Ticks::DAY_TICKS;
+	int progress = (day_of_year - start) * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
+
+	/* Apply linear interpolation between previous and next transition. */
+	return ((prev->second * SNOW_LINE_DITHER_SIZE_SQ) * (length - progress) + ((it->second * SNOW_LINE_DITHER_SIZE_SQ) * progress)) / length;
+}
+
+/**
+ * Get the current snow line, either variable or static.
+ * @return the snow line height
+ * @ingroup SnowLineGroup
+ */
+uint GetRawSnowLine()
 {
 	if (_snow_line == nullptr) return _settings_game.game_creation.snow_line_height;
 
-	TimerGameCalendar::YearMonthDay ymd = TimerGameCalendar::ConvertDateToYMD(TimerGameCalendar::date);
-	return _snow_line->table[ymd.month][ymd.day];
+	return GetFractionalSnowLine() / SNOW_LINE_DITHER_SIZE_SQ;
+}
+
+/**
+ * Get the current snow line height for a tile.
+ * @param tile the tile to get the snow line for.
+ * @return the snow line height.
+ * @ingroup SnowLineGroup
+ */
+uint8_t GetSnowLine(TileIndex tile)
+{
+	if (_snow_line == nullptr) return _settings_game.game_creation.snow_line_height;
+
+	/* 8x8 ordered dither lookup table. */
+	static constexpr uint8_t dither_table[SNOW_LINE_DITHER_SIZE][SNOW_LINE_DITHER_SIZE] = {
+		{ 0, 32,  8, 40,  2, 34, 10, 42},
+		{48, 16, 56, 24, 50, 18, 58, 26},
+		{12, 44,  4, 36, 14, 46,  6, 38},
+		{60, 28, 52, 20, 62, 30, 54, 22},
+		{ 3, 35, 11, 43,  1, 33,  9, 41},
+		{51, 19, 59, 27, 49, 17, 57, 25},
+		{15, 47,  7, 39, 13, 45,  5, 37},
+		{63, 31, 55, 23, 61, 29, 53, 21},
+	};
+
+	uint8_t threshold = dither_table[TileX(tile) % SNOW_LINE_DITHER_SIZE][TileY(tile) % SNOW_LINE_DITHER_SIZE];
+	return (threshold + GetFractionalSnowLine()) / SNOW_LINE_DITHER_SIZE_SQ;
 }
 
 /**

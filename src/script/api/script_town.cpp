@@ -151,7 +151,7 @@
 
 	switch (t->goal[static_cast<TownAcceptanceEffect>(towneffect_id)]) {
 		case TOWN_GROWTH_WINTER:
-			if (TileHeight(t->xy) >= GetSnowLine() && t->cache.population > 90) return 1;
+			if (TileHeight(t->xy) >= GetSnowLine(t->xy) && t->cache.population > 90) return 1;
 			return 0;
 
 		case TOWN_GROWTH_DESERT:

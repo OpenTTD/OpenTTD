@@ -2016,7 +2016,7 @@ static void TileLoop_Road(TileIndex tile)
 		case LandscapeType::Arctic: {
 			/* Roads use the snow level of their maximum height minus one, unless flat. */
 			int tile_z = (std::get<Slope>(GetFoundationSlope(tile)) == SLOPE_FLAT) ? GetTileMaxZ(tile) : GetTileMaxZ(tile) - 1;
-			if (IsOnSnowOrDesert(tile) != (tile_z > GetSnowLine())) {
+			if (IsOnSnowOrDesert(tile) != (tile_z > GetSnowLine(tile))) {
 				ToggleSnowOrDesert(tile);
 				MarkTileDirtyByTile(tile);
 			}

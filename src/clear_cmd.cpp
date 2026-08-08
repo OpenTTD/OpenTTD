@@ -208,7 +208,7 @@ static void UpdateFences(TileIndex tile)
  */
 static void TileLoopClearAlps(TileIndex tile)
 {
-	int k = GetTileZ(tile) - GetSnowLine() + 1;
+	int k = GetTileZ(tile) - GetSnowLine(tile) + 1;
 
 	if (!IsSnowTile(tile)) {
 		/* Below the snow line, do nothing if no snow. */

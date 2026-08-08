@@ -390,7 +390,7 @@ void PlaceTreesRandomly()
 			/* The higher we get, the more trees we plant */
 			j = GetTileZ(tile) * 2;
 			/* Above snowline more trees! */
-			if (_settings_game.game_creation.landscape == LandscapeType::Arctic && ht > GetSnowLine()) j *= 3;
+			if (_settings_game.game_creation.landscape == LandscapeType::Arctic && ht > GetSnowLine(tile)) j *= 3;
 			/* Scale generation by maximum map height. */
 			if (max_height > MAP_HEIGHT_LIMIT_ORIGINAL) j = j * MAP_HEIGHT_LIMIT_ORIGINAL / max_height;
 			while (j--) {
@@ -779,7 +779,7 @@ static void TileLoopTreesDesert(TileIndex tile)
 
 static void TileLoopTreesAlps(TileIndex tile)
 {
-	int k = GetTileZ(tile) - GetSnowLine() + 1;
+	int k = GetTileZ(tile) - GetSnowLine(tile) + 1;
 
 	if (k < 0) {
 		switch (GetTreeGround(tile)) {

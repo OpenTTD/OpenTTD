@@ -367,7 +367,7 @@ uint32_t GetTerrainType(TileIndex tile, TileContext context)
 
 				case TileType::TunnelBridge:
 					if (context == TileContext::OnBridge) {
-						has_snow = (GetBridgeHeight(tile) > GetSnowLine());
+						has_snow = (GetBridgeHeight(tile) > GetSnowLine(tile));
 					} else {
 						/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 						if (_generating_world) goto genworld; // we do not care about foundations here
@@ -380,13 +380,13 @@ uint32_t GetTerrainType(TileIndex tile, TileContext context)
 				case TileType::Industry:
 				case TileType::Object:
 					/* These tiles usually have a levelling foundation. So use max Z */
-					has_snow = (GetTileMaxZ(tile) > GetSnowLine());
+					has_snow = (GetTileMaxZ(tile) > GetSnowLine(tile));
 					break;
 
 				case TileType::Void:
 				case TileType::Water:
 				genworld:
-					has_snow = (GetTileZ(tile) > GetSnowLine());
+					has_snow = (GetTileZ(tile) > GetSnowLine(tile));
 					break;
 
 				default: NOT_REACHED();

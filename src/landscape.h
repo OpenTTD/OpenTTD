@@ -21,14 +21,18 @@ static const uint SNOW_LINE_DAYS   = 32; ///< Number of days in each month in th
  * @ingroup SnowLineGroup
  */
 struct SnowLine {
-	uint8_t table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]; ///< Height of the snow line each day of the year
+	/** Day of year and height level transition. */
+	using Transition = std::pair<int16_t, uint8_t>;
+
+	std::vector<Transition> table{}; ///< Height of the snow line each month of the year
 	uint8_t highest_value = 0; ///< Highest snow line of the year
 	uint8_t lowest_value = UINT8_MAX; ///< Lowest snow line of the year
 };
 
 bool IsSnowLineSet();
 void SetSnowLine(std::unique_ptr<SnowLine> &&snow_line);
-uint8_t GetSnowLine();
+uint GetRawSnowLine();
+uint8_t GetSnowLine(TileIndex tile);
 uint8_t HighestSnowLine();
 uint8_t LowestSnowLine();
 void ClearSnowLine();

@@ -2713,8 +2713,9 @@ static void TileLoop_Rail(TileIndex tile)
 			 * for sloped track, it is 'z' of lower part
 			 * for two track bits, it is 'z' of higher track bit
 			 * For non-continuous foundations (and STEEP_BOTH), 'half' is set */
-			if (z > GetSnowLine()) {
-				if (half && z - GetSnowLine() == 1) {
+			uint8_t snow_line = GetSnowLine(tile);
+			if (z > snow_line) {
+				if (half && z - snow_line == 1) {
 					/* track on non-continuous foundation, lower part is not under snow */
 					new_ground = RailGroundType::HalfTileSnow;
 				} else {

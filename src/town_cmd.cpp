@@ -3911,7 +3911,7 @@ static void UpdateTownGrowth(Town *t)
 		for (TownAcceptanceEffect i : EnumRange(TownAcceptanceEffect::End)) {
 			switch (t->goal[i]) {
 				case TOWN_GROWTH_WINTER:
-					if (TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->cache.population > 90) return;
+					if (TileHeight(t->xy) >= GetSnowLine(t->xy) && t->received[i].old_act == 0 && t->cache.population > 90) return;
 					break;
 				case TOWN_GROWTH_DESERT:
 					if (GetTropicZone(t->xy) == TropicZone::Desert && t->received[i].old_act == 0 && t->cache.population > 60) return;
