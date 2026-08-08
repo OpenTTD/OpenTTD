@@ -14,6 +14,9 @@
 #include "../gfx_func.h"
 #include "../palette_func.h"
 
+/** Alpha value used to label pixels as already darkened. */
+static constexpr uint8_t ALREADY_DARKENED_ALPHA_LABEL = 254;
+
 /** Base for all 32bpp blitters. */
 class Blitter_32bppBase : public Blitter {
 public:
@@ -129,6 +132,22 @@ public:
 		uint b = colour.b;
 
 		return Colour(r * nom / denom, g * nom / denom, b * nom / denom);
+	}
+
+	/**
+	 * Make a pixel looks like it is transparent, unless it has been darkened before (stored in alpha channel).
+	 * @param colour the colour already on the screen.
+	 * @param nom the amount of transparency, nominator, makes colour lighter.
+	 * @param denom denominator, makes colour darker.
+	 * @return the new colour for the screen, or the exact same colour if the pixel was darkened before.
+	 */
+	static inline Colour MakeTransparentOnce(Colour colour, uint nom, uint denom = 256)
+	{
+		if (colour.a == ALREADY_DARKENED_ALPHA_LABEL) return colour;
+
+		Colour new_colour = MakeTransparent(colour, nom, denom);
+		new_colour.a = ALREADY_DARKENED_ALPHA_LABEL;
+		return new_colour;
 	}
 
 	/**
