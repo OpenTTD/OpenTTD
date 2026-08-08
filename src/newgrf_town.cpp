@@ -11,6 +11,7 @@
 #include "debug.h"
 #include "town.h"
 #include "newgrf_town.h"
+#include "newgrf_cargo.h"
 #include "timer/timer_game_tick.h"
 
 #include "safeguards.h"
@@ -22,6 +23,26 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 	if (it == std::end(t->supplied)) return 0;
 
 	return ClampTo<uint16_t>(std::invoke(proj, it->history[period]));
+}
+
+/**
+ * Get cargo history for a town via cargo translation table.
+ * @param t Town to query.
+ * @param parameter Cargo ID from callback.
+ * @param grffile GRF file to use for cargo translation.
+ * @param period Period to query.
+ * @param proj Projection to apply on the history data.
+ * @return The cargo quantity for the given period and projection, or 0 if invalid.
+ */
+static uint32_t TownHistoryHelperCargoID(const Town *t, uint32_t parameter, const GRFFile *grffile, uint period, auto proj)
+{
+	CargoType cargo = GetCargoTranslation(parameter, grffile);
+	if (!IsValidCargoType(cargo)) return 0;
+
+	auto it = t->GetCargoSupplied(cargo);
+	if (it == std::end(t->supplied)) return 0;
+
+	return ClampTo<uint32_t>(std::invoke(proj, it->history[period]));
 }
 
 /* virtual */ uint32_t TownScopeResolver::GetVariable(uint8_t variable, [[maybe_unused]] uint32_t parameter, bool &available) const
@@ -40,6 +61,12 @@ static uint16_t TownHistoryHelper(const Town *t, CargoLabel label, uint period, 
 
 		/* Town index */
 		case 0x41: return this->t->index.base();
+
+		/* Recent cargo production and transport, by cargo label */
+		case 0x61: return TownHistoryHelperCargoID(this->t, parameter, this->ro.grffile, THIS_MONTH, &Town::SuppliedHistory::production);
+		case 0x62: return TownHistoryHelperCargoID(this->t, parameter, this->ro.grffile, THIS_MONTH, &Town::SuppliedHistory::transported);
+		case 0x63: return TownHistoryHelperCargoID(this->t, parameter, this->ro.grffile, LAST_MONTH, &Town::SuppliedHistory::production);
+		case 0x64: return TownHistoryHelperCargoID(this->t, parameter, this->ro.grffile, LAST_MONTH, &Town::SuppliedHistory::transported);
 
 		/* Get a variable from the persistent storage */
 		case 0x7C: {
