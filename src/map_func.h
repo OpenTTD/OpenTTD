@@ -73,13 +73,13 @@ public:
 	 * Implicit conversion to the TileIndex.
 	 * @return The converted tile index.
 	 */
-	[[debug_inline]] inline constexpr operator TileIndex() const { return this->tile; }
+	[[debug_inline]] constexpr operator TileIndex() const { return this->tile; }
 
 	/**
 	 * Implicit conversion to the uint for bounds checking.
 	 * @return The (unsigned) integer representation of the tile location.
 	 */
-	[[debug_inline]] inline constexpr operator uint() const { return this->tile.base(); }
+	[[debug_inline]] constexpr operator uint() const { return this->tile.base(); }
 
 	/**
 	 * The type (bits 4..7), bridges (2..3), rainforest/desert (0..1)
@@ -240,7 +240,7 @@ public:
 	 * @note try to avoid using this one
 	 * @return 2^"return value" == Map::SizeX()
 	 */
-	[[debug_inline]] inline static uint LogX()
+	[[debug_inline]] static inline uint LogX()
 	{
 		return Map::log_x;
 	}
@@ -259,7 +259,7 @@ public:
 	 * Get the size of the map along the X
 	 * @return the number of tiles along the X of the map
 	 */
-	[[debug_inline]] inline static uint SizeX()
+	[[debug_inline]] static inline uint SizeX()
 	{
 		return Map::size_x;
 	}
@@ -277,7 +277,7 @@ public:
 	 * Get the size of the map
 	 * @return the number of tiles of the map
 	 */
-	[[debug_inline]] inline static uint Size()
+	[[debug_inline]] static inline uint Size()
 	{
 		return Map::size;
 	}
@@ -286,7 +286,7 @@ public:
 	 * Gets the maximum X coordinate within the map, including TileType::Void
 	 * @return the maximum X coordinate
 	 */
-	[[debug_inline]] inline static uint MaxX()
+	[[debug_inline]] static inline uint MaxX()
 	{
 		return Map::SizeX() - 1;
 	}
@@ -373,7 +373,7 @@ public:
  * @param y The y coordinate of the tile
  * @return The TileIndex calculated by the coordinate
  */
-[[debug_inline]] inline static TileIndex TileXY(uint x, uint y)
+[[debug_inline]] static inline TileIndex TileXY(uint x, uint y)
 {
 	return TileIndex{(y << Map::LogX()) + x};
 }
@@ -404,7 +404,7 @@ inline TileIndexDiff TileDiffXY(int x, int y)
  * @param y The virtual y coordinate of the tile.
  * @return The TileIndex calculated by the coordinate.
  */
-[[debug_inline]] inline static TileIndex TileVirtXY(uint x, uint y)
+[[debug_inline]] static inline TileIndex TileVirtXY(uint x, uint y)
 {
 	return TileIndex{(y >> 4 << Map::LogX()) + (x >> 4)};
 }
@@ -416,7 +416,7 @@ TileIndex TileVirtXYClampedToMap(int x, int y);
  * @param tile the tile to get the X component of
  * @return the X component
  */
-[[debug_inline]] inline static uint TileX(TileIndex tile)
+[[debug_inline]] static inline uint TileX(TileIndex tile)
 {
 	return tile.base() & Map::MaxX();
 }
@@ -426,7 +426,7 @@ TileIndex TileVirtXYClampedToMap(int x, int y);
  * @param tile the tile to get the Y component of
  * @return the Y component
  */
-[[debug_inline]] inline static uint TileY(TileIndex tile)
+[[debug_inline]] static inline uint TileY(TileIndex tile)
 {
 	return tile.base() >> Map::LogX();
 }
