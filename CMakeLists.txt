@@ -331,7 +331,7 @@ if(NOT OPTION_DEDICATED)
     link_package(ICU_I18N TARGET ICU::i18n)
     link_package(ICU_UC TARGET ICU::uc)
     link_package(OpusFile TARGET OpusFile::opusfile)
-    link_package(Soxr)
+    link_package(Soxr TARGET Soxr::soxr)
 
     if(SDL2_FOUND AND OPENGL_FOUND AND UNIX)
         # SDL2 dynamically loads OpenGL if needed, so do not link to OpenGL when

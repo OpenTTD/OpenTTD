@@ -3,6 +3,8 @@ include(FindPackageHandleStandardArgs)
 find_library(Soxr_LIBRARY
 	NAMES soxr
 )
+
+include(FixVcpkgLibrary)
 FixVcpkgLibrary(Soxr)
 
 set(Soxr_COMPILE_OPTIONS "" CACHE STRING "Extra compile options of soxr")
@@ -30,5 +32,10 @@ if(Soxr_FOUND)
 			INTERFACE_LINK_FLAGS "${Soxr_LINK_FLAGS}"
 		)
 		FixVcpkgTarget(Soxr Soxr::soxr)
+
+		# Prevent undefined references in UCRT64 MinGW environment
+		if(MINGW AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+			set_property(TARGET Soxr::soxr APPEND PROPERTY INTERFACE_LINK_LIBRARIES gomp)
+		endif()
 	endif()
 endif()
