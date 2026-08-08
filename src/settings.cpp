@@ -1396,6 +1396,21 @@ bool IsConversionNeeded(const ConfigIniFile &ini, const std::string &group, cons
 	return true;
 }
 
+/** Load only the _settings_newgame.game_creation.landscape setting from the configuration files. */
+void LoadGameCreationLandscape()
+{
+	static constexpr std::array<const std::string_view, 4> many = {"temperate", "arctic", "tropic", "toyland"};
+	ConfigIniFile generic_ini(_config_file);
+
+	const IniGroup *group = generic_ini.GetGroup("game_creation");
+	if (group == nullptr) return;
+	const IniItem *item = group->GetItem("landscape");
+	if (item == nullptr) return;
+
+	std::optional<uint8_t> load_value = OneOfManySettingDesc::ParseSingleValue(*item->value, many);
+	_settings_newgame.game_creation.landscape = LandscapeType{load_value.value_or(to_underlying(LandscapeType::Temperate))};
+}
+
 /**
  * Load the values from the configuration files
  * @param startup Load the minimal amount of the configuration to "bootstrap" the blitter and such.
