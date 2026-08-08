@@ -48,6 +48,8 @@
 
 #include "safeguards.h"
 
+//static constexpr uint ROAD_DEPOT_TRACKBIT_FACTOR = 64;
+
 /** Helper type for lists/vectors of road vehicles */
 typedef std::vector<RoadVehicle *> RoadVehicleList;
 
@@ -1183,6 +1185,8 @@ CommandCost CmdBuildRoadDepot(DoCommandFlags flags, TileIndex tile, RoadType rt,
 			MakeDefaultName(dep);
 
 			/* A road depot has two road bits. */
+			//updated to make it so company incurs mainance fee by constant amount when building depot
+			//per bug request
 			UpdateCompanyRoadInfrastructure(rt, _current_company, ROAD_DEPOT_TRACKBIT_FACTOR);
 		}
 
@@ -1195,6 +1199,7 @@ CommandCost CmdBuildRoadDepot(DoCommandFlags flags, TileIndex tile, RoadType rt,
 
 static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlags flags)
 {
+	
 	if (_current_company != OWNER_WATER) {
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Failed()) return ret;
@@ -1209,6 +1214,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlags flags)
 			/* A road depot has two road bits. */
 			RoadType rt = GetRoadTypeRoad(tile);
 			if (rt == INVALID_ROADTYPE) rt = GetRoadTypeTram(tile);
+			//updated the infrastructure cost if removed by constant amount, per request of bug
 			c->infrastructure.road[rt] -= ROAD_DEPOT_TRACKBIT_FACTOR;
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
@@ -2325,6 +2331,7 @@ static VehicleEnterTileStates VehicleEnterTile_Road(Vehicle *v, TileIndex tile, 
 /** @copydoc ChangeTileOwnerProc */
 static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owner)
 {
+	//updated current branch to change the infrastructure maintance by constant amount if ownership changed for both owners
 	if (IsRoadDepot(tile)) {
 		if (GetTileOwner(tile) == old_owner) {
 			if (new_owner == INVALID_OWNER) {
@@ -2333,8 +2340,8 @@ static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owne
 				/* A road depot has two road bits. No need to dirty windows here, we'll redraw the whole screen anyway. */
 				RoadType rt = GetRoadTypeRoad(tile);
 				if (rt == INVALID_ROADTYPE) rt = GetRoadTypeTram(tile);
-				Company::Get(old_owner)->infrastructure.road[rt] -= 2;
-				Company::Get(new_owner)->infrastructure.road[rt] += 2;
+				Company::Get(old_owner)->infrastructure.road[rt] -= ROAD_DEPOT_TRACKBIT_FACTOR;
+				Company::Get(new_owner)->infrastructure.road[rt] += ROAD_DEPOT_TRACKBIT_FACTOR;
 
 				SetTileOwner(tile, new_owner);
 				for (RoadTramType rtt : ROADTRAMTYPES_ALL) {
