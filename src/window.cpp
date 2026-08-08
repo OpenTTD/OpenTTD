@@ -2689,6 +2689,13 @@ void HandleKeypress(uint keycode, char32_t key)
 		}
 	}
 
+	/* When WASD panning is enabled, suppress W/A/S/D from triggering hotkeys.
+	 * Text input is already handled above, so edit boxes still work. */
+	if (_settings_client.gui.pan_with_wasd) {
+		uint k = keycode & 0xFF;
+		if (k == 'W' || k == 'A' || k == 'S' || k == 'D') return;
+	}
+
 	/* Call the event, start with the uppermost window, but ignore the toolbar. */
 	for (Window *w : Window::IterateFromFront()) {
 		if (w->window_class == WindowClass::MainToolbar) continue;
@@ -2859,7 +2866,7 @@ static void HandleKeyScrolling()
 	 * doesn't have an edit-box as focused widget.
 	 */
 	if (_dirkeys.Any() && !EditBoxInGlobalFocus()) {
-		int factor = _shift_pressed ? 50 : 10;
+		int factor = (_shift_pressed ? 50 : 10) * _settings_client.gui.pan_speed;
 
 		if (_game_mode != GameMode::Menu && _game_mode != GameMode::Bootstrap) {
 			/* Key scrolling stops following a vehicle. */

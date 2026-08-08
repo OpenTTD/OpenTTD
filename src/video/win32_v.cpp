@@ -1011,10 +1011,17 @@ void VideoDriver_Win32Base::InputLoop()
 
 	/* Determine which directional keys are down. */
 	if (this->has_focus) {
-		_dirkeys.Set(DirectionKey::Left, GetAsyncKeyState(VK_LEFT));
-		_dirkeys.Set(DirectionKey::Up, GetAsyncKeyState(VK_UP));
-		_dirkeys.Set(DirectionKey::Right, GetAsyncKeyState(VK_RIGHT));
-		_dirkeys.Set(DirectionKey::Down, GetAsyncKeyState(VK_DOWN));
+		if (_settings_client.gui.pan_with_wasd) {
+			_dirkeys.Set(DirectionKey::Left, GetAsyncKeyState('A'));
+			_dirkeys.Set(DirectionKey::Up, GetAsyncKeyState('W'));
+			_dirkeys.Set(DirectionKey::Right, GetAsyncKeyState('D'));
+			_dirkeys.Set(DirectionKey::Down, GetAsyncKeyState('S'));
+		} else {
+			_dirkeys.Set(DirectionKey::Left, GetAsyncKeyState(VK_LEFT));
+			_dirkeys.Set(DirectionKey::Up, GetAsyncKeyState(VK_UP));
+			_dirkeys.Set(DirectionKey::Right, GetAsyncKeyState(VK_RIGHT));
+			_dirkeys.Set(DirectionKey::Down, GetAsyncKeyState(VK_DOWN));
+		}
 	} else {
 		_dirkeys.Reset();
 	}
