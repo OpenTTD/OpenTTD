@@ -422,7 +422,7 @@ TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets, 
 }
 
 /**
- * Common part of station var 0x67, house var 0x62, indtile var 0x60, industry var 0x62.
+ * Common part of station var 0x67, house var 0x62, indtile var 0x60, industry var 0x62, town var 0x60.
  *
  * @param tile the tile of interest.
  * @param grf_version8 True, if we are dealing with a new NewGRF which uses GRF version >= 8.
