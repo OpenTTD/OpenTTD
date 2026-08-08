@@ -365,7 +365,7 @@ static uint8_t _script_sl_byte; ///< Used as source/target by the script saveloa
 
 /** SaveLoad array that saves/loads exactly one byte. */
 static const SaveLoad _script_byte[] = {
-	SLEG_VAR("type", _script_sl_byte, VarTypes::U8),
+	SaveLoad::Variable<VarFileType::U8>("type", SLE_GLOBAL_ADDRESS(_script_sl_byte)),
 };
 
 /* static */ bool ScriptInstance::SaveObject(HSQUIRRELVM vm, SQInteger index, int max_depth, bool test)
