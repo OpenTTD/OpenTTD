@@ -375,11 +375,11 @@ PalSpriteID GetTreeSprite(TreeType treetype)
  * @param tile The tile to get a random TreeType from
  * @param seed The seed for randomness, must be less or equal to 255.
  * @param prob Probability, must be less or equal to 255.
+ * @param treetypes Span of tree types to consider.
  * @return The random tree type
  */
-static TreeType GetRandomTreeType(TileIndex tile, uint seed, uint prob)
+static TreeType GetRandomTreeType([[maybe_unused]] TileIndex tile, uint seed, uint prob, std::span<const TreeType> treetypes)
 {
-	auto treetypes = GetTreeTypesForTile(tile);
 	if (treetypes.empty()) return TREE_INVALID;
 
 	TreeType tt = treetypes[seed * std::size(treetypes) / 256];
@@ -397,12 +397,15 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed, uint prob)
  * @param tile The tile to make a tree-tile from
  * @param r The randomness value from a Random() value
  * @param keep_density Whether to keep the existing ground density of the tile.
+ * @param treetypes Span of tree types to consider.
  */
-void PlaceTree(TileIndex tile, uint32_t r, bool keep_density)
+void PlaceTreeFromClass(TileIndex tile, uint32_t r, bool keep_density, std::span<const TreeType> treetypes)
 {
-	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8), GB(Random(), 0, 8));
+	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8), GB(Random(), 0, 8), treetypes);
 
 	if (tree != TREE_INVALID) {
+		if (!IsTreeTypeValidForTile(tile, tree)) return;
+
 		PlantTreesOnTile(tile, tree, GB(r, 22, 2), static_cast<TreeGrowthStage>(std::min<uint8_t>(GB(r, 16, 3), to_underlying(TreeGrowthStage::Dead))));
 		MarkTileDirtyByTile(tile);
 
@@ -415,6 +418,21 @@ void PlaceTree(TileIndex tile, uint32_t r, bool keep_density)
 			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
 		}
 	}
+}
+
+/**
+ * Make a random tree tile of the given tile
+ *
+ * Create a new tree-tile for the given tile. The second parameter is used for
+ * randomness like type and number of trees.
+ *
+ * @param tile The tile to make a tree-tile from
+ * @param r The randomness value from a Random() value
+ * @param keep_density Whether to keep the existing ground density of the tile.
+ */
+void PlaceTree(TileIndex tile, uint32_t r, bool keep_density)
+{
+	PlaceTreeFromClass(tile, r, keep_density, GetTreeTypesForTile(tile));
 }
 
 struct BlobHarmonic {
@@ -535,10 +553,26 @@ static void PlaceTreeGroups(uint num_groups)
 	/* Shape in which trees may be contained. Array is here to reduce allocations. */
 	std::array<Point, GROVE_SEGMENTS> grove;
 
+	std::vector<TreeType> tree_candidates;
+
 	do {
 		TileIndex center_tile = RandomTile();
 
 		CreateRandomStarShapedPolygon(GROVE_RADIUS, grove);
+
+		uint32_t r = Random();
+		TreeType treetype = GetRandomTreeType(center_tile, GB(r, 0, 8), GB(r, 16, 8), GetTreeTypesForTile(center_tile));
+		if (treetype == TREE_INVALID) continue;
+
+		TreeClasses classes = GetTreeTileSpec(treetype).classes;
+
+		tree_candidates.clear();
+		tree_candidates.push_back(treetype);
+
+		for (const auto &tt : GetTreeTypesForTile(center_tile)) {
+			if (tt == treetype) continue;
+			if (classes.Any(GetTreeTileSpec(tt).classes)) tree_candidates.push_back(tt);
+		}
 
 		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
 			IncreaseGeneratingWorldProgress(GenWorldProgress::Trees);
@@ -552,7 +586,12 @@ static void PlaceTreeGroups(uint num_groups)
 			if (!CanPlantTreesOnTile(cur_tile, true)) continue;
 			if (!IsPointInStarShapedPolygon(x, y, grove)) continue;
 
-			PlaceTree(cur_tile, r);
+			if (GB(r, 5, 2) == 0) {
+				/* 25% chance of any type of tree. */
+				PlaceTreeFromClass(cur_tile, r, false, GetTreeTypesForTile(cur_tile));
+			} else {
+				PlaceTreeFromClass(cur_tile, r, false, tree_candidates);
+			}
 		}
 
 	} while (--num_groups);
@@ -798,7 +837,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				TreeType treetype = (TreeType)tree_to_plant;
 				if (treetype == TREE_INVALID) {
 					uint r = Random();
-					treetype = GetRandomTreeType(current_tile, GB(r, 24, 8), GB(r, 0, 8));
+					treetype = GetRandomTreeType(current_tile, GB(r, 24, 8), GB(r, 0, 8), GetTreeTypesForTile(current_tile));
 					if (treetype == TREE_INVALID) return CMD_ERROR;
 				}
 
