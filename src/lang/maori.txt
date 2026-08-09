@@ -276,10 +276,10 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Tāuru i
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Tāuru i ngā kupu tāpua kia tātari i te rārangi mō
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Kōwhiri i te raupapa whakarōpū
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Kōwhiri i te ahu whakaraupapa (whakaheke/whakapiki)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Kōwhiri i te paearu whakaraupapa
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Kōwhiri i te ahunga raupapa (whakaheke/whakapiki)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Kōwhiri i te paearu raupapa
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Kōwhiri i te paearu tātari
-STR_BUTTON_SORT_BY                                              :{BLACK}Whakaraupapa
+STR_BUTTON_SORT_BY                                              :{BLACK}Raupapa
 STR_BUTTON_CATCHMENT                                            :{BLACK}Rohe hopuhopu
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Hohoko i te whakaari rohe hopuhopu
 
@@ -538,6 +538,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Muku i ngā kar
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Pārongo whenua
 STR_ABOUT_MENU_HELP                                             :Āwhina & puka āwhina
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Hohoko i te aratau pūtiaki mata
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hohoko i te tāhono kuputuhi
 STR_ABOUT_MENU_AI_DEBUG                                         :Patuiro kaitākaro hangahanga/hōtuhi kēmu
 STR_ABOUT_MENU_SCREENSHOT                                       :Kapomata
@@ -1493,7 +1494,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tuku kia whakar
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tuku i ngā umanga kia hoatu moni ki ngā tāone kia whakahouhou ai i ngā rori kia auwaha i ngā ratonga rori i roto i te tāone
 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tuku kia hoatu moni ki ngā umanga kē: {STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tuku kia whakawhiti moni i waenganui o ngā umanga i te aratau kaitākarorau
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tuku kia whakawhiti moni i waenganui o ngā umanga i te aratau kaitākaromaha
 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Tau whakarea o te taumaha o te utanga kia whaihangaia ai ngā tereina taumaha: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Tautuhi i te pānga o te kawe utanga i roto i ngā tereina. Ka whakauaua atu he uara nui ake i te kawe utanga mō ngā tereina, inarā i ngā puke
@@ -1886,8 +1887,8 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ina kā tēnei 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Ārai i te rorohiko kei hanga kaipuke: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ina kā tēnei tautuhinga, tē taea te hanga kaipuke e te kaitākaro rorohiko
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tuku kia whakamahi kaitākaro hangahanga i te aratau kaitākarorau: {STRING}
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tuku i ngā kaitākaro hangahanga kia whai wāhi i ngā kēmu kaitākarorau
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tuku kia whakamahi kaitākaro hangahanga i te aratau kaitākaromaha: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tuku i ngā kaitākaro hangahanga kia whai wāhi i ngā kēmu kaitākaromaha
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes i mua i te whakaokioki i ngā hōtuhi: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Te tatau mōrahi o ngā mahi ka taea e ia hōtuhi i tētahi wā
@@ -2263,7 +2264,7 @@ STR_INTRO_LOAD_GAME                                             :{BLACK}Utaina h
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Tākaro i tētahi takiwā
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Tākaro i tētahi mahereteitei
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Pūtakatā takiwā
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Kaitākarorau
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Kaitākaromaha
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Kōwhiringa kēmu
 STR_INTRO_HIGHSCORE                                             :{BLACK}Tūtohi tautike
@@ -2423,7 +2424,7 @@ STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Tūmatanui
 STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY                       :Pōwhiri anake
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Kaitākarorau
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Kaitākaromaha
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ingoa o te kaitākaro:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ko te ingoa ka mōhiotia ai koe e ngā kaitākaro kē
 
@@ -2434,7 +2435,7 @@ STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Kiritaki
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Ngā kiritaki tuihono / ngā kiritaki mōrahi{}Ngā umanga tuihono / ngā umanga mōrahi
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Rahi o te mahere
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Te rahi o te mahere o te kēmu{}Pāwhiria kia whakaraupapa ki te horahanga
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Te rahi o te mahere o te kēmu{}Pāwhiria kia raupapa ki te horahanga
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Tau
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Te tau nei
 STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}h {NUM}m
@@ -2482,10 +2483,10 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Tāurua 
 STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS                    :{BLACK}Tāuru i te wāhitau o te tūmau, te waehere pōwhiri rānei
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Tīmataia he kēmu kaitākarorau hou
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Tīmataia he kēmu kaitākaromaha hou
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ingoa o te kēmu:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ka whakaaria te ingoa o te kēmu ki ngā kaitākaro kē i roto i te tahua tīpako kēmu kaitākarorau
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ka whakaaria te ingoa o te kēmu ki ngā kaitākaro kē i roto i te tahua tīpako kēmu kaitākaromaha
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Tautuhitia he kupuhuna
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Tiakina tō kēmu ki tētahi kupuhuna mēnā kāore koe i te hiahia kia tomopai tūmatanui te kēmu
 
@@ -2617,8 +2618,8 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :I ngaro te hono
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :Tē taea te uta te kōnae tiakikēmu
 STR_NETWORK_ERROR_SERVER_START                                  :Tē taea te tīmata te tūmau
 STR_NETWORK_ERROR_SERVER_ERROR                                  :I kitea he hapa kawa, ka katia ai te hononga
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Kāore anō kia tautuhitia te ingoa o tō kaitākaro. Ka taea te tautuhi i runga i te matapihi Kaitākarorau
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Kāore anō kia tautuhitia te ingoa o tō tūmau. Ka taea te tautuhi i runga i te matapihi Kaitākarorau
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Kāore anō kia tautuhitia te ingoa o tō kaitākaro. Ka taea te tautuhi i runga i te matapihi Kaitākaromaha
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Kāore anō kia tautuhitia te ingoa o tō tūmau. Ka taea te tautuhi i runga i te matapihi Kaitākaromaha
 STR_NETWORK_ERROR_WRONG_REVISION                                :Ehara i te taurite te whakaputanga o tēnei kiritaki me te whakaputanga o te tūmau
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :Kupuhuna hē
 STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :Kāore koe i roto i te rārangi o ngā kiritaki ka whakaaetia
@@ -3101,6 +3102,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Whakatō
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Hanga Whenua
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Maka rohe tokatoka ki te whenua.{}Pātaki+Pāwhiri kia tango rohe tokatoka
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Maka rohe tuarangaranga i te whenua.{}Pātaki+Pāwhiri kia tango rohe tuarangaranga
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Tautuhi i te rohe onepū.{}Pātaki+Pāwhiri kia tangohia te rohe onepū
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Whakarahi i te horahanga o te whenua hei whakaheke/hiki
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Whakapaku i te horahanga o te whenua hei whakaheke/hiki
@@ -3399,6 +3401,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Uta
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Uta i te kēmu kua tīpakona
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Uta i te mahereteitei kua tīpakona
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Uta i te raraunga tāone kua tīpakona
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Kōpaki Hou
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Hanga i tētahi kōpaki hou i te wāhi nei
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Tāurua he ingoa mō te kōpaki hou
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Taipitopito Kēmu
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Kāore he pārongo i te wātea
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -4188,7 +4193,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Waka rererangi 
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Rōpū - pāwhiria he rōpū kia rārangitia ngā waka katoa o tēnei rōpū. Tōtaka rōpū kia whakaraupapa i te hirahira
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Rōpū - pāwhiria he rōpū kia rārangitia ngā waka katoa o tēnei rōpū. Tōtaka rōpū kia raupapa i te hirahira
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Pāwhiri kia hangaia he rōpū
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Muku i te rōpū kua tīpakona
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Tapa anō i te rōpū kua tīpakona
@@ -4763,7 +4768,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Hiahia kia tapi
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Wā katoa
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Wāora e toe ana (tau)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Horopū mōrahi
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Whakamuri
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Whakamuri pōturi ake
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Me pēwhea te whakataurite te raraunga waka ki te uara kua tukuna
@@ -5066,6 +5071,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :I mūhore te ti
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Tē taea te pānui te puku
 STR_ERROR_GAME_SAVE_FAILED                                      :I mūhore te tiaki i te kēmu...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Tē taea te muku te kōnae
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Tē taea te hanga i te kōpaki...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :He kōnae kē, kōpaki kē rānei kei reira tēnā ingoa
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Tē āheia ngā pūtohu motuhake i roto i te ingoa o te kōpaki
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Tē āhei te ingoa o te kōpaki kia tīmata ki tētahi ira
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Kāore he whakaaetanga kei a koe kia hanga kōpaki i konei
 STR_ERROR_GAME_LOAD_FAILED                                      :I mūhore te uta i te kēmu...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Hapa o roto: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Kōnae tiakikēmu pakaru - {STRING}

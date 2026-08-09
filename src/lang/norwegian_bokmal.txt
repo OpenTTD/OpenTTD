@@ -540,6 +540,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Slett alle meld
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_HELP                                             :Hjelp og manualer
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Vis/skjul skjermsparer
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :KI/Game Script-feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermbilde
@@ -3103,6 +3104,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant st
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landskapsgenerering
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasser steinete felt i landskapet{}Ctrl+klikk for å fjerne steinete områder
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Plasser gjengrodde felt i landskapet{}Ctrl+klikk for å fjerne steinete områder
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Ctrl+klikk for å fjerne ørkenområde
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Øk størrelse av landareal for heving/senking
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reduser størrelse av landareal for heving/senking
@@ -3401,6 +3403,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Last inn
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Last inn det valgte spillet
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Last inn valgte høydekart
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Last inn valgte bydata
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Ny mappe
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Lag ny mappe her
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{BLACK}Skriv inn et navn på den nye mappen
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spilldetaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen informasjon tilgjengelig.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -5068,6 +5073,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Automatisk lagr
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan ikke lese fra disk
 STR_ERROR_GAME_SAVE_FAILED                                      :Lagring av spillet mislyktes...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Kan ikke slette fil
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Kunne ikke opprette ny mappe...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :En fil eller mappe med dette navnet finnes allerede
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Mappenavn kan ikke inneholde spesialtegn
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Mappenavn kan ikke begynne med punktum
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Du har ikke rettigheter til å opprette mappe her
 STR_ERROR_GAME_LOAD_FAILED                                      :Lasting av spill mislyktes...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern feil: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ødelagt lagret spill - {STRING}

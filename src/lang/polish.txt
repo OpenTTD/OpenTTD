@@ -5461,7 +5461,7 @@ STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Nie można utwo
 STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Plik lub folder o tej nazwie już istnieje
 STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Nazwa folderu nie może zawierać znaków specjalnych
 STR_ERROR_DIRECTORY_LEADING_DOT                                 :Nazwa folderu nie może zaczynać się od kropki
-STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Nie masz uprawnień do tworzenia folderu w tym miejscu
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Nie masz uprawnień do utworzenia folderu w tym miejscu
 STR_ERROR_GAME_LOAD_FAILED                                      :Nie można wczytać gry...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Błąd wewnętrzny: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Zepsuta zapisana gra - {STRING}

@@ -626,6 +626,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Forigi ĉiujn m
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landkvadrataj informoj
 STR_ABOUT_MENU_HELP                                             :Helpo & manlibroj
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Baskuligi ekrankurtenan reĝimon
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Baskuligi konzolon
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Ludoskripta sencimigo
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
@@ -3195,6 +3196,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planti g
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generado de tero
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Meti rokecajn lokojn en la lando.{}Stir+Klaku por forigi rokecajn lokojn
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Meti malglatajn lokojn en la lando.{}Stir+Klaku por forigi malglatajn lokojn
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Difini dezertan regionon.{}Stir+Klaku por forigi dezertan regionon
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Grandigi landparton por (mal)altigi
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Malgrandigi landparton por (mal)altigi
@@ -3493,6 +3495,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ŝarĝi
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ŝarĝi la elektitan ludon
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Ŝarĝi la elektitan altecmapon
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Ŝarĝi la datumon de elektita urbo
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Nova dosierujo
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Krei novan dosierujon en la aktuala loko
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Enigu nomon por la nova dosierujo
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detaloj de la ludo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ne disponeblas informoj
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -4829,9 +4834,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Ŝarĝu plene a
 STR_ORDER_DROP_NO_LOADING                                       :Ne ŝarĝu
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ŝanĝi la ŝarĝagon de la emfazita ordono
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Malŝarĝu ĉion
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Devige malŝarĝu ĉion
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Malŝarĝu se akceptita
-STR_ORDER_DROP_UNLOAD                                           :Malŝarĝu ĉion
+STR_ORDER_DROP_UNLOAD                                           :Devige malŝarĝu malgraŭ akcepto
 STR_ORDER_DROP_TRANSFER                                         :Transigo
 STR_ORDER_DROP_NO_UNLOADING                                     :Ne malŝarĝu
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ŝanĝi la malŝarĝagon de la emfazita ordono
@@ -4868,7 +4873,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Bontenado neces
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ĉiam
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Resta vivo (jaroj)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksimuma fidindeco
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :veturas malantaŭen
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :veturas malantaŭen kun limigita rapideco
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kiel kompari la veturilajn datumoj al la donita valoro
@@ -4934,10 +4939,10 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Aŭtoma
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Ŝarĝu plene)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Ŝarĝu plene ajnan ŝarĝon)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Ne ŝarĝu)
-STR_ORDER_UNLOAD                                                :{SPACE}(Malŝarĝu kaj prenu ŝarĝon)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Malŝarĝu kaj atendu plenan ŝarĝon)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Malŝarĝu kaj atendu ajnan plenan ŝarĝon)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Malŝarĝu kaj foriru malplena)
+STR_ORDER_UNLOAD                                                :{SPACE}(Devige malŝarĝu kaj prenu ŝarĝon)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Devige malŝarĝu kaj atendu plenan ŝarĝon)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Devige malŝarĝu kaj atendu ajnan plenan ŝarĝon)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Devige malŝarĝu kaj foriru malplena)
 STR_ORDER_TRANSFER                                              :{SPACE}(Transigu kaj prenu ŝarĝon)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transigu kaj atendu plenan ŝarĝon)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transigu kaj atendu ajnan plenan ŝarĝon)
@@ -4950,9 +4955,9 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Ne mal�
 STR_ORDER_AUTO_REFIT                                            :(Readaptu por {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Ŝarĝu plene, kun readapto por {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Ŝarĝu plene ajnan ŝarĝon, kun readapto por {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Malŝarĝu kaj prenu ŝarĝojn, kun readapto por {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Malŝarĝu kaj atendu por la plena ŝarĝo, kun readapto por {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Malŝarĝu kaj atendu por ian plenan ŝarĝon kun readapto por {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Devige malŝarĝu kaj prenu ŝarĝojn, kun readapto por {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Devige malŝarĝu kaj atendu por la plena ŝarĝo, kun readapto por {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Devige malŝarĝu kaj atendu por ia plena ŝarĝo, kun readapto por {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transigu kaj prenu ŝarĝojn, kun readapto por {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transigu kaj atendu plenan ŝarĝon, kun readapto por {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transigu kaj atendu por ian plenan ŝarĝon, kun readapto por {STRING})
@@ -5171,6 +5176,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Aŭtomata konse
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ne eblas legi diskon
 STR_ERROR_GAME_SAVE_FAILED                                      :Ludkonservado fiaskis...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Ne eblas forviŝi dosieron
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Ne povas krei dosierujon...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Dosiero aŭ dosierujo kun tiu nomo ankaŭ ekzistas
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Nomo de dosierujo ne povas enhavi specialajn signojn
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Nomo de dosierujo ne povas komenci kun punkto
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Vi ne havas permeson krei dosierujon ĉi tie
 STR_ERROR_GAME_LOAD_FAILED                                      :Ludŝarĝado fiaskis...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna eraro: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Rompa konservludo - {STRING}
