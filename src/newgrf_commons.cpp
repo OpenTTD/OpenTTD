@@ -38,11 +38,8 @@
  * @param invalid is the ID used to identify an invalid entity id
  */
 OverrideManagerBase::OverrideManagerBase(uint16_t offset, uint16_t maximum, uint16_t invalid)
+	: max_offset(offset), max_entities(maximum), invalid_id(invalid)
 {
-	this->max_offset = offset;
-	this->max_entities = maximum;
-	this->invalid_id = invalid;
-
 	this->mappings.resize(this->max_entities);
 	this->entity_overrides.resize(this->max_offset);
 	std::fill(this->entity_overrides.begin(), this->entity_overrides.end(), this->invalid_id);
