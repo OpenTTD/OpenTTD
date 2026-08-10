@@ -387,18 +387,18 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hentikan
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Percepat maju waktu permainan
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opsi dan pengaturan
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Simpan, tinggalkan, keluar OpenTTD
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Tampilkan peta, tambahan viewport atau daftar pengenal
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Tampilkan daftar kota
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Tampilkan subsidi
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Buka peta, jendela pandangan baru tambahan, aliran kargo atau daftar tanda pengenal
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Buka direktori kota atau bangun kota
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Buka daftar subsidi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Buka daftar stasiun perusahaan
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Buka informasi keuangan perusahaan
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Buka informasi umum perusahaan
-STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Tampilkan buku cerita
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Buka buku cerita
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Buka daftar sasaran
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Buka grafik perusahaan dan daftar biaya kargo
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Buka tabel liga perusahaan
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Danai pembangunan industri baru atau daftar semua industri
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Tampilkan daftar kereta perusahaan. Ctrl-klik untuk membuka-tutup daftar kendaraan.
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Buka direktori industri, rantai industri, atau danai konstruksi industri baru
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Buka daftar kereta perusahaan. Ctrl+Klik untuk menampilkan atau menyembunyikan grup kendaraan, berkebalikan dengan pengaturan yang dipilih
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Buka daftar kendaraan jalanan perusahaan. Ctrl+Klik untuk menampilkan atau menyembunyikan grup kendaraan, berkebalikan dengan pengaturan yang dipilih
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Buka daftar kapal perusahaan. Ctrl+Klik untuk menampilkan atau menyembunyikan grup kendaraan, berkebalikan dengan pengaturan yang dipilih
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Buka daftar pesawat perusahaan. Ctrl+Klik untuk menampilkan atau menyembunyikan grup kendaraan, berkebalikan dengan pengaturan yang dipilih
@@ -409,7 +409,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Membangu
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Membangun infrastruktur jalur trem
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Membangun infrastruktur jalur kapal
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Membangun bandara
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Buka toolbar lansekap untuk menaik-turunkan tanah, menanam pohon, dsb.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Buka menu lanskap, menu pohon, atau letakkan tanda pengenal
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Tampilkan jendela suara/musik
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Buka pesan/berita terakhir, riwayat pesan atau hapus semua pesan
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasi area daratan, pengambilan gambar, tentang OpenTTD dan alat pengembangan
@@ -423,7 +423,7 @@ STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_BACKWARD_TOOLTIP    :{BLACK}Mundurka
 STR_SCENEDIT_TOOLBAR_MOVE_THE_STARTING_DATE_FORWARD_TOOLTIP     :{BLACK}Majukan tanggal mulai sejauh 1 tahun
 STR_SCENEDIT_TOOLBAR_SET_DATE_TOOLTIP                           :{BLACK}Klik untuk mengisi tahun mulai
 STR_SCENEDIT_TOOLBAR_DISPLAY_MAP_TOWN_DIRECTORY_TOOLTIP         :{BLACK}Tampilkan peta, daftar kota
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Pertumbuhan Lansekap
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION_TOOLTIP               :{BLACK}Buka menu lanskap atau buat dunia baru
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Pertumbuhan Kota
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Membuat Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Pembangunan Jalan
@@ -1317,10 +1317,10 @@ STR_CONFIG_SETTING_INFINITE_MONEY                               :Uang tak terbat
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :Izinkan pengeluaran tanpa batas dan nonaktifkan kebangkrutan perusahaan
 
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Maksimum pinjaman awal: {STRING}
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jumlah maksimum yang dapat dipinjam (tanpa menghitung inflasi)
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Jumlah maksimum pinjaman (tanpa menghitung inflasi). Jika diatur ke "Tidak ada pinjaman", tidak ada uang yang akan tersedia kecuali disediakan oleh Skrip Permainan atau pengaturan "Uang tidak terbatas"
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_VALUE                   :{CURRENCY_LONG}
 ###setting-zero-is-special
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Tidak ada pinjaman {RED}Memerlukan Game Script untuk menyediakan dana awal
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_DISABLED                :Tidak ada pinjaman
 
 STR_CONFIG_SETTING_INTEREST_RATE                                :Bunga pinjaman: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Bunga pinjaman; juga mengendalikan inflasi jika dinyalakan
@@ -1414,7 +1414,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Kemiringan untu
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kemiringan untuk kendaraan. Nilai yang lebih tinggi membuat lebih sulit menaiki bukit
 
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Kereta dan kapal dilarang belok 90 derajat: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Belokan 90 derajat terjadi ketika rel horizontal diikuti langsung oleh rel vertikal di ubin berikutnya, jadi membuatnya berputar balik di ujung ubin daripada memutar 45 derajat di kombinasi rel lain. Ini juga berlaku pada radius belokan kapal.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Belokan 90 derajat terjadi ketika rel horizontal langung diikuti oleh rel vertikal di ubin yang bersebelahan, sehingga mengakibatkan kereta berbelok 90 derajat ketika melewati tepi ubin alih-alih 45 derajat yang biasa didapat dari kombinasi jalur lainnya
 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ijinkan menggabung stasiun meski tidak menempel: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Izinkan penambahan bagian dari stasiun tanpa menyentuh bagian yang sudah ada, dengan Ctrl+Klik ketika menambahkan bagian baru
@@ -1605,7 +1605,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Ketebalan garis
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Tebal garis pada grafik. Garis tipis akan mudah dibaca dengan akurat, garis tebal akan lebih mudah untuk dilihat dan warna-warna akan lebih jelas dari satu sama lain
 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Tampilkan nama NewGRF di jendela beli kendaraan: {STRING}
-STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tambahkan garis ke jendela beli kendaraan, yang menunjukkan NewGRF kendaraan yang dipilih berasal.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tambahkan sebuah garis ke jendela pembelian kendaraan, yang menunjukkan NewGRF asal kendaraan yang dipilih
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS                          :Tampilkan jenis kargo yang dapat diangkut oleh kendaraan di jendela daftar: {STRING}
 STR_CONFIG_SETTING_SHOW_CARGO_IN_LISTS_HELPTEXT                 :Jika aktif maka beban transportasi kendaraan akan terlihat diatasnya di daftar kendaraan
 
@@ -1829,7 +1829,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Secara otomatis
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Membongkar sinyal secara otomatis selama konstruksi rel jika sinyal menghalangi. Perhatikan bahwa hal ini berpotensi menyebabkan kecelakaan kereta api
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Batas kecepatan maju cepat: {STRING}
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Batasi secepat apa permainan melaju saat maju cepat diaktifkan. 0 = tanpa batas (secepat yang bisa diatasi komputermu). Nilai di bawah 100% memperlambat gim. Batas maksimal tergantung pada spesifikasi komputer dan dapat bervariasi tergantung pada gim.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Batasi seberapa cepat permainan berjalan ketika maju cepat diaktifkan. 0 = tanpa batas (secepat yang bisa diatasi komputer Anda). Nilai di bawah 100% akan memperlambat permainan. Batas maksimal tergantung pada spesifikasi komputer Anda dan dapat bervariasi tergantung pada permainan
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% kecepatan normal
 ###setting-zero-is-special
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Tanpa batas (secepat komputer Anda memungkinkan)
@@ -2490,7 +2490,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nama per
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Atur kata sandi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi permainan ini dengan kata kunci jika anda tidak ingin membiarkannya terbuka untuk umum
 
-STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilitas
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilitas:
 STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Orang lain bisa melihat server Anda di daftar umum
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klien
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimum jumlah klien:
@@ -2699,7 +2699,7 @@ STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :Server Anda tid
 STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :Pemain lain tidak akan bisa tersambung ke servermu
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Mengunduh konten
+STR_CONTENT_TITLE                                               :{WHITE}Konten Daring
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipe
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Jenis konten
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nama
@@ -2716,7 +2716,7 @@ STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Cari kon
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Anda keluar dari OpenTTD!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Syarat dan ketentuan untuk menguduh konten dari situs web luar berbeda-beda.{}Anda harus merujuk ke situs web luar tersebut untuk petunjuk pemasangan kontennya ke OpenTTD.{} Apakah anda ingin melanjutkan?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tanda/nama filter:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Kunjungi laman
+STR_CONTENT_OPEN_URL                                            :{BLACK}Laman Web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Kunjungi laman untuk konten ini
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Unduh
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Mulai unduh konten terpilih
@@ -3018,7 +3018,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tentukan
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientasi Terminal Bus
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Pilih arah terminal bus
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientasi stasiun truk
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Pilih arah terminal bongkar muat truk
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Pilih arah stasiun truk
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientasi halte trem penumpang
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Pilih arah halte trem penumpang
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Arah stasiun trem angkutan barang
@@ -3074,7 +3074,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Tingkat 
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Proses Lansekap
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Turunkan sebuah ujung dataran. Klik+Geser untuk menurunkan ujung yang pertama dipilih dan meratakan area yang dipilih ke tinggi ujung baru. Ctrl+Klik+Geser untuk memilih area secara diagonal. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Naikkan ujung daratan. Klik+Geser untuk menaikkan ujung yang pertama dipilih dan meratakan area yang dipilih ke tinggi ujung baru. Ctrl+Klik+Geser untuk memilih area secara diagonal. Juga tekan Shift untuk menampilkan perkiraan biaya
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ratakan permukaan setinggi ujung kotak terpilih. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ratakan permukaan setinggi ujung yang pertama dipilih. Ctrl+Klik+Geser untuk memilih area secara diagonal. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk digunakan pada masa depan. Ctrl+Klik+Geser untuk memilih area secara diagonal. Juga tekan Shift untuk menampilkan perkiraan biaya
 
 # Object construction window
@@ -3093,11 +3093,11 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Tanam je
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Pohon Acak
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Menanam pohon secara acak pada lansekap
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
-STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Tanam pohon tunggal dengan menyeret ke atas lanskap.
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Tanam pohon tunggal dengan menggeser di atas lanskap
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Kelompok Pohon
-STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Tanam hutan kecil dengan menyeret ke atas lanskap.
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Tanam hutan kecil dengan menggeser di atas lanskap
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Hutan
-STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Tanam hutan besar dengan menyeret ke atas lanskap.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Tanam hutan besar dengan menggeser di atas lanskap
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pertumbuhan Wilayah
@@ -3119,7 +3119,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Apakah a
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pertumbuhan Kota
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Kota baru
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Membangun kota baru. Shift untuk menampilkan perkiraan biaya
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Bangun kota baru. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Kota secara acak
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Membangun kota di lokasi secara acak
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Buat kota secara acak
@@ -3901,7 +3901,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Menuju k
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referensi sasaran yang tidak berlaku
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama-nama stasiun - klik pada nama untuk mengarahkan pandangan utama pada stasiun. Ctrl+Click akan membuka viewport baru pada lokasi stasiun
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama-nama stasiun - klik pada nama untuk mengarahkan pandangan utama pada stasiun. Ctrl+Click untuk membuka jendela pandangan baru pada lokasi stasiun
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}Tekan CTRL untuk memilih lebih dari satu item
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasiun
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -4198,7 +4198,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik unt
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Hapus kelompok terpilih
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ubah nama kelompok terpilih
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Mengubah livery dari grup yang dipilih
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik untuk melindungi grup ini dari penggantian otomatis global. Ctrl+Klik untuk juga melindungi sub-grup.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik untuk melindungi grup ini dari penggantian global otomatis. Ctrl+Klik untuk melindungi sub-grup juga
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Hapus Kelompok
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Apakah Anda yakin untuk menghapus kelompok ini dan turunannya ?
@@ -4283,7 +4283,7 @@ STR_CARGO_TYPE_FILTER_NONE                                      :Tidak ada
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Daftar pilihan kereta. Klik pada kendaraan untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis kendaraan ini
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Daftar pilihan kendaraan jalan raya. Klik pada kendaraan untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis kendaraan ini
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Daftar pilihan kapal. Klik pada kapal untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis kapal ini
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Daftar pilihan Pesawat - Klik pada pesawat untuk informasi
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Daftar pilihan Pesawat. Klik pada pesawat untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis pesawat ini
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Beli Kendaraan
@@ -4558,7 +4558,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Tampilka
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Tampilkan informasi kereta. Ctrl+Klik untuk menampilkan grup kereta
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Tampilkan detail kendaraan jalan raya. Ctrl+Klik untuk menampilkan grup kendaraan jalan raya
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Tampilkan detail kapal
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Tampilkan detail kapal. Ctrl+Klik untuk menampilkan grup kapal
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Tampilkan detail pesawat. Ctrl+Klik untuk menampilkan grup pesawat
 
 ###length VEHICLE_TYPES
@@ -4683,7 +4683,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Kapasita
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}{}{BLACK}Hasil refit: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Biaya modifikasi: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pendapatan dari refit: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pilih kendaraan yg akan dimodifikasi. Drag untuk memilih sekaligus beberapa kendaraan. Klik pada ruang kosong untuk memilih semua kendaraan. Ctrl+Klik untuk memilih kendaraan berikut rangkaiannya
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pilih kendaraan yg akan direnovasi. Klik+Geser untuk memilih beberapa kendaraan sekaligus. Klik pada ruang kosong untuk memilih seluruh kendaraan. Ctrl+Klik untuk memilih kendaraan dan rangkaian yang mengikutinya
 
 ###length VEHICLE_TYPES
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pilih jenis kargo yang akan dibawa kereta
@@ -4967,7 +4967,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}lanjutkan proses AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat proses yang dilakukan AI. Ctrl+Klik untuk membuka di jendela baru
 STR_AI_GAME_SCRIPT                                              :{BLACK}Skrip Permainan
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Periksa catatan skrip permainan
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Periksa catatan Skrip Permainan. Ctrl+Klik untuk membuka di jendela baru
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Tidak ada AI yang cocok digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda bisa mengunduh AI melalui sistem 'Konten Online'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Salah satu skrip berjalan telah mogok. Mohon untuk melaporkan ini kepada pembuat skrip dengan potongan layar dari Jendela Debug AI/Skrip Permainan
@@ -5088,7 +5088,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game telah disimpan pada versi tanpa dukungan trem. Semua Trem telah dihilangkan
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Pebuatan peta dibatalkan...{}... tak ada lokasi kota yang cocok
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Pembuatan peta dibatalkan...{}{}... tidak ada lokasi kota yang cocok
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :tidak ada kota di skenario ini
 
 STR_ERROR_PNGMAP                                                :Tidak dapat memuat lanskap dari PNG...
@@ -5111,8 +5111,8 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Hanya ef
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Tangkapan layar besar
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Resolusi tangkapan layar {COMMA} x {COMMA} piksel. Membuat tangkapan layar akan memakan waktu. Anda ingin melanjutkan?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Peta ketinggian sudah disimpan sebagai '{STRING}'. Puncak tertinggi adalah {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Pengambilan gambar telah berhasil disimpan sebagai '{STRING}'
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :Peta ketinggian telah berhasil disimpan sebagai '{STRING}'. Puncak tertinggi adalah {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Tangkapan layar telah berhasil disimpan sebagai '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Pengambilan gambar gagal
 
 # Error message titles
@@ -5123,7 +5123,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Pesan d
 STR_ERROR_OFF_EDGE_OF_MAP                                       :melewati batas tepi peta
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :terlalu dekat dengan tepi peta
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :dana tidak cukup - dibutuhkan {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Daratan harus datar
+STR_ERROR_FLAT_LAND_REQUIRED                                    :daratan harus datar
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Kemiringan daratan tidak sesuai
 STR_ERROR_CAN_T_DO_THIS                                         :Tidak dapat melakukan ini...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :bangunan harus dihancurkan terlebih dahulu
@@ -5165,7 +5165,7 @@ STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :besar pinjaman 
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Tidak dapat meminjam uang lagi...
 STR_ERROR_LOAN_ALREADY_REPAID                                   :tidak ada hutang yang harus dibayar
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... dibutuhkan {CURRENCY_LONG}
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak dapat membayar hutang...
+STR_ERROR_CAN_T_REPAY_LOAN                                      :Tidak dapat membayar hutang...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak dapat memberikan uang yang berasal dari pinjaman bank...
 STR_ERROR_CAN_T_GIVE_MONEY                                      :Tidak dapat memberikan uang kepada perusahaan ini...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :Tidak dapat membeli perusahaan...
@@ -5181,7 +5181,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :terlalu banyak 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :tidak ada lagi ruang tersisa dalam peta
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Jalan sedang dikerjakan
 STR_ERROR_TOWN_CAN_T_DELETE                                     :Tidak dapat menghancurkan kota ini...{}{}Sebuah stasiun atau depo masih merujuk pada kota ini atau ubin milik kota tidak dapat dihapus
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tidak ada tempat yang cocok untuk patung di tengah kota ini
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :tidak ada tempat yang cocok untuk patung di tengah kota ini
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :Tidak dapat membangun rumah...
 
 # Industry related errors
@@ -5199,7 +5199,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :hanya dapat dib
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :hanya dapat dibangun di kota (menggantikan rumah)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :hanya dapat dibangun di dekat pusat kota
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :hanya dapat dibangun di dataran rendah
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... hanya dapat diletakkan didekat batas peta
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :hanya dapat diletakkan di dekat batas peta
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :hutan hanya dapat ditanam di atas garis salju
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :hanya dapat dibangun di atas garis salju
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :hanya dapat dibangun di bawah garis salju
@@ -5268,7 +5268,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Tidak dapat mem
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :harus membongkar titik jalan rel terlebih dahulu
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :harus membongkar titik jalan jalanan terlebih dahulu
 STR_ERROR_BUOY_IN_THE_WAY                                       :pelampung menghalangi
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... pelampung sedang dipakai oleh perusahaan lain!
+STR_ERROR_BUOY_IS_IN_USE                                        :pelampung sedang dipakai oleh perusahaan lain!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :Tidak dapat membangun depo kereta di sini...
@@ -5278,7 +5278,7 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Tidak dapat mem
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :Tidak dapat mengubah nama bengkel/depo/galangan/hanggar...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... harus dihentikan di depo
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :harus dihentikan di dalam depo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :harus dihentikan di dalam bengkel
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :harus dihentikan di dalam galangan
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :harus dihentikan di dalam hanggar
@@ -5312,9 +5312,9 @@ STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :Kendaraan baru 
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :Kendaraan baru tidak dapat melakukan renovasi pada perintah {NUM}
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Kombinasi rel yang mustahil
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :kombinasi rel yang mustahil
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :harus membongkar sinyal terlebih dahulu
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tidak tersedia rel yang sesuai
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :tidak ada rel yang cocok
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :harus membongkar rel terlebih dahulu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :jalanan satu arah atau terhalang
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :perlintasan sebidang tidak diperbolehkan pada jenis rel ini
@@ -5331,7 +5331,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :Tidak dapat men
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :harus membongkar jalanan terlebih dahulu
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... jalan satu arah tak bisa memiliki simpangan
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :jalanan satu arah tidak boleh memiliki persimpangan
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Tidak dapat membangun jalan di sini...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Tidak dapat membangun jalur trem di sini...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Tidak dapat membongkar jalan dari sini...
@@ -5340,8 +5340,8 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :tidak ada jalan
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :tidak ada jalur trem
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :Tidak dapat mengubah jenis jalan raya di sini...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Tidak dapat mengubah jenis jalur trem di sini...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Tidak ada jalan yang cocok
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Jalur Tram tidak ada yang cocok
+STR_ERROR_NO_SUITABLE_ROAD                                      :tidak ada jalanan yang cocok
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :tidak ada jalur trem yang cocok
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :Tidak dapat membangun kanal di sini...
@@ -5363,7 +5363,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Tidak dapat men
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Tidak dapat membangun jembatan di sini...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :harus menghancurkan jembatan terlebih dahulu
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Tidak dapat awal dan akhir pada spot/titik lokasi yang sama
+STR_ERROR_CAN_T_START_AND_END_ON                                :tidak dapat berawal dan berakhir di lokasi yang sama
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :ujung jembatan tidak berada pada ketinggian yang sama
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :jembatan terlalu rendah untuk daratan
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :jembatan terlalu tinggi untuk daratan ini.
@@ -5388,15 +5388,15 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Tidak dapat mem
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :lokasi tidak sesuai untuk jalur masuk terowongan
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :harus membongkar terowongan terlebih dahulu
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :bersinggungan dengan terowongan lain
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Terowongan boleh berakhir di luar peta
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :terowongan akan berakhir di luar peta
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :tidak dapat menyesuaikan kemiringan tanah di ujung lain terowongan
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... terowongan terlalu panjang
+STR_ERROR_TUNNEL_TOO_LONG                                       :terowongan terlalu panjang
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :terlalu banyak objek
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :Tidak dapat membangun objek...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}terhalang obyek
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... terhalang kantor pusat perusahaan
+STR_ERROR_OBJECT_IN_THE_WAY                                     :objek menghalangi jalan
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :kantor pusat perusahaan menghalangi jalan
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Tidak dapat membeli area ini...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :Anda sudah memilikinya!
 STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :batas konstruksi objek telah tercapai
@@ -5415,13 +5415,13 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Tidak dapat men
 
 ###length VEHICLE_TYPES
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Kereta menghalangi jalan
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Kendaraan jalan raya menghalangi jalan
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :kendaraan jalan raya menghalangi jalan
 STR_ERROR_SHIP_IN_THE_WAY                                       :kapal menghalangi jalan
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :pesawat menghalangi jalan
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Kereta tidak tersedia
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Bus/truk tidak tersedia
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :kendaraan jalan raya tidak tersedia
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Kapal tidak tersedia
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :pesawat tidak tersedia
 
@@ -5446,7 +5446,7 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Tidak dapat men
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :Tidak dapat mengirim kereta ke depo...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Tidak dapat mengirim kendaraan jalanan ke bengkel...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Tidak dapat memerintahkan kapal ke galangan...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :Tidak dapat mengirim kapal ke galangan...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :Tidak dapat mengirim pesawat ke hanggar...
 
 ###length VEHICLE_TYPES
@@ -5499,7 +5499,7 @@ STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Mulai permainan
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :Tidak dapat memutar balik arah kereta...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Kereta tidak bertenaga
+STR_ERROR_TRAIN_START_NO_POWER                                  :kereta tidak bertenaga
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :Tidak dapat memutar kendaraan...
 
@@ -5529,7 +5529,7 @@ STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :pesawat tidak m
 # Extra messages which go on the third line of errors, explaining why orders failed
 STR_ERROR_NO_RAIL_STATION                                       :Tidak ada stasiun kereta
 STR_ERROR_NO_BUS_STATION                                        :Tidak ada stasiun bus
-STR_ERROR_NO_TRUCK_STATION                                      :{WHITE}Tidak ada stasiun lori
+STR_ERROR_NO_TRUCK_STATION                                      :Tidak ada stasiun truk
 STR_ERROR_NO_DOCK                                               :Tidak ada pelabuhan
 STR_ERROR_NO_AIRPORT                                            :Tidak ada bandara/pangkalan helikopter
 STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Tidak ada pemberhentian dengan jenis jalan yang kompatibel
@@ -5542,7 +5542,7 @@ STR_ERROR_NO_ROAD_WAYPOINT                                      :Tidak ada titik
 STR_ERROR_NO_BUOY                                               :Tidak ada pelampung
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tidak dapat membuat jadwal keberangkatan kendaraan...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :tidak dapat membuat jadwal kendaraan...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :kendaran hanya dapat menunggu di stasiun
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :kendaraan tidak berhenti pada stasiun ini
 STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... Jadwal tidak kompatibel
