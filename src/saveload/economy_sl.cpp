@@ -14,6 +14,7 @@
 
 #include "../economy_func.h"
 #include "../economy_base.h"
+#include "../vehicle_base.h"
 
 #include "../safeguards.h"
 
@@ -42,16 +43,16 @@ struct CAPRChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDVAR(Economy, old_max_loan_unround, VarFileType::I32 | VarMemType::I64, SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
-	SLE_CONDVAR(Economy, old_max_loan_unround, VarTypes::I64, SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CumulatedInflation),
-	SLE_CONDVAR(Economy, old_max_loan_unround_fract, VarTypes::U16, SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::CumulatedInflation),
-	SLE_CONDVAR(Economy, inflation_prices, VarTypes::U64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(Economy, inflation_payment, VarTypes::U64, SaveLoadVersion::CumulatedInflation, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(Economy, fluct,                         VarTypes::I16),
-	    SLE_VAR(Economy, interest_rate,                 VarTypes::U8),
-	    SLE_VAR(Economy, infl_amount,                   VarTypes::U8),
-	    SLE_VAR(Economy, infl_amount_pr,                VarTypes::U8),
-	SLE_CONDVAR(Economy, industry_daily_change_counter, VarTypes::U32, SaveLoadVersion::SpreadIndustryProductionChanges, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::I32>("old_max_loan_unround", SLE_OBJECT_ADDRESS(Economy, old_max_loan_unround), SaveLoadVersion::MinVersion, SaveLoadVersion::UnifyCurrency),
+	SaveLoad::Variable<VarFileType::I64>("old_max_loan_unround", SLE_OBJECT_ADDRESS(Economy, old_max_loan_unround), SaveLoadVersion::UnifyCurrency, SaveLoadVersion::CumulatedInflation),
+	SaveLoad::Variable<VarFileType::U16>("old_max_loan_unround_fract", SLE_OBJECT_ADDRESS(Economy, old_max_loan_unround_fract), SaveLoadVersion::CargoPaymentOverflow, SaveLoadVersion::CumulatedInflation),
+	SaveLoad::Variable<VarFileType::U64>("inflation_prices", SLE_OBJECT_ADDRESS(Economy, inflation_prices), SaveLoadVersion::CumulatedInflation),
+	SaveLoad::Variable<VarFileType::U64>("inflation_payment", SLE_OBJECT_ADDRESS(Economy, inflation_payment), SaveLoadVersion::CumulatedInflation),
+	SaveLoad::Variable<VarFileType::I16>("fluct", SLE_OBJECT_ADDRESS(Economy, fluct)),
+	SaveLoad::Variable<VarFileType::U8>("interest_rate", SLE_OBJECT_ADDRESS(Economy, interest_rate)),
+	SaveLoad::Variable<VarFileType::U8>("infl_amount", SLE_OBJECT_ADDRESS(Economy, infl_amount)),
+	SaveLoad::Variable<VarFileType::U8>("infl_amount_pr", SLE_OBJECT_ADDRESS(Economy, infl_amount_pr)),
+	SaveLoad::Variable<VarFileType::U32>("industry_daily_change_counter", SLE_OBJECT_ADDRESS(Economy, industry_daily_change_counter), SaveLoadVersion::SpreadIndustryProductionChanges),
 };
 
 /** Economy variables */
@@ -80,10 +81,10 @@ struct ECMYChunkHandler : ChunkHandler {
 };
 
 static const SaveLoad _cargopayment_desc[] = {
-	    SLE_REF(CargoPayment, front,           SLRefType::Vehicle),
-	    SLE_VAR(CargoPayment, route_profit,    VarTypes::I64),
-	    SLE_VAR(CargoPayment, visual_profit,   VarTypes::I64),
-	SLE_CONDVAR(CargoPayment, visual_transfer, VarTypes::I64, SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
+	SaveLoad::Reference<SLRefType::Vehicle>("front", SLE_OBJECT_ADDRESS(CargoPayment, front)),
+	SaveLoad::Variable<VarFileType::I64>("route_profit", SLE_OBJECT_ADDRESS(CargoPayment, route_profit)),
+	SaveLoad::Variable<VarFileType::I64>("visual_profit", SLE_OBJECT_ADDRESS(CargoPayment, visual_profit)),
+	SaveLoad::Variable<VarFileType::I64>("visual_transfer", SLE_OBJECT_ADDRESS(CargoPayment, visual_transfer), SaveLoadVersion::CargoReservation),
 };
 
 struct CAPYChunkHandler : ChunkHandler {
