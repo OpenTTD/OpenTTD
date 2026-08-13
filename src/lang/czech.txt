@@ -503,9 +503,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}Generov�
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}Vytvořit nebo generovat průmyslové objekty
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}Výstavba silniční sítě
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}Výstavba tramvajové tratě
-STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Vysadit stromy. Pro výběr oblasti diagonálně použijte Ctrl+Klik+Táhnout. Pro zobrazení pouze odhadu ceny stiskněte Shift.
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}Vysadit stromy. Ctrl vybírá oblast diagonálně. Podrž Shift pro zobrazení odhadu ceny
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}Umístit popisek
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Umístit objekt. Pro výběr oblasti diagonálně použij Ctrl+Klik+Táhnout. Podrž Shift pro zobrazení odhadu ceny.
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}Umístit objekt. Ctrl vybírá území úhlopříčně. Podrž Shift pro zobrazení odhadu ceny.
 
 # Scenario editor file menu
 ###length 7
@@ -613,6 +613,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Smazat všechny
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informace o zemi
 STR_ABOUT_MENU_HELP                                             :Nápověda a příručky
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Přepnout režim spořiče obrazovky
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobrazit nebo skrýt konzoli
 STR_ABOUT_MENU_AI_DEBUG                                         :Ladění AI / herních skriptů
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
@@ -733,14 +734,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - historie nákladu
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Vyprodukováno
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Zobrazit nebo skrýt graf nákladu vyprodukovaného tímto průmyslem
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Přepraveno
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Zobrazit nebo skrýt graf nákladu přepraveného z tohoto průmyslu
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Doručeno
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Zobrazit nebo skrýt graf nákladu dopraveného do tohoto průmyslu
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Čeká
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Zobrazit nebo skrýt graf nákladu čekajícího v tomto průmyslu
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - historie nákladu
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Vyprodukováno
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Zobrazit nebo skrýt graf nákladu produkovaného tímto městem
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Přepraveno
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Zobrazit nebo skrýt graf nákladu přepraveného z tohoto města
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Doručeno
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Zobrazit nebo skrýt graf nákladu dopraveného do tohoto města
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Zobrazit podrobné hodnocení výkonu
 
@@ -1011,7 +1019,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Order review system / warnings
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} má příliš málo příkazů
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} nemá žádné příkazy
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{VEHICLE} nemá žádné příkazy
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} má zdvojené příkazy
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} má v příkazech neplatnou stanici
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} má v příkazech letiště, jehož dráha je příliš krátká
@@ -1150,7 +1158,7 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :Zvolit jazyk u�
 STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% dokončeno)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :Na celou obrazovku
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Zaškrtnutím této volby poběží OpenTTD na celé obrazovce
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :Povolením této volby poběží OpenTTD na celé obrazovce
 
 STR_GAME_OPTIONS_RESOLUTION                                     :Rozlišení obrazovky
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :Zvolit rozlišení obrazovky
@@ -1162,7 +1170,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :Zaškrtni, poku
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Nastavení vstoupí v platnost pouze po restartu hry
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :VSync
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Zaškrtní tento box pro v-sync obrazovky. Změna se projeví po znovu spuštění hry. Funguje to pouze pro povolenou hardwarovou akceleraci.
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :Povolit v-sync obrazovky. Změna se projeví po znovu spuštění hry. Tato fukce je dostupná pouze v případě, že povolená hardwarová akcelerace.
 
 STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktuální ovladač: {STRING}
 
@@ -1174,12 +1182,12 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Automaticky det
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Zaškrtni pro automatické nastavení velikosti uživatelského rozhraní
 
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :Škálovat úkosy
-STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zaškrtni toto políčko pro škálování úkosů dle velikosti uživatelského rozhraní
+STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Zapni pro škálování úkosů dle velikosti uživatelského rozhraní
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Používat tradiční písma ze sprite
-STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Zaškrtni toto políčko, pokud dáváš přednost tradičním písmům pevné velikosti ze sprite
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Povol tuto možnost, pokud dáváš přednost tradičním písmům pevné velikosti ze sprite
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-aliasovat písma
-STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Zaškrtni toto políčko pro zapnutí anti-aliasování škálovatelných písem
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Povolit anti-aliasování škálovatelných písem
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
@@ -1229,8 +1237,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Neplatný 
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} chybějící{P "" "" ch}/poškozen{P ý é ých} soubor{P "" y ů})
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nepodařilo se získat seznam podporovaných rozlišení
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Selhalo přepnutí na celou obrazovku
+STR_ERROR_RESOLUTION_LIST_FAILED                                :Nepodařilo se získat seznam podporovaných rozlišení obrazovky
+STR_ERROR_FULLSCREEN_FAILED                                     :Přepnutí na celou obrazovku selhalo
 
 # Custom currency window
 
@@ -1458,7 +1466,7 @@ STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Nastav maximál
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automaticky)
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nelze změnit maximální výšku mapy na tuto hodnotu. Alespoň jedna hora na mapě je vyšší.
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :Nelze změnit maximální výšku mapy na tuto hodnotu. Alespoň jedna hora na mapě je vyšší než zadaná hodnota.
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Povolit srovnání terénu pod budovami, kolejemi atd. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Povoluje změnu terénu pod budovami a tratěmi bez jejich odstranění
@@ -1596,7 +1604,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Povolit průjez
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povolit stavbu průjezdních zastávek na silnicích vlastněných městy
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Povolit stavění průjezdných zastávek na silnicích vlastněných jinými společnostmi.
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Udržování infrastruktury: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Pokud je zapnuto, je třeba platit za údržbu infrastruktury. Náklady vzrůstají společně s velikostí dopravní sítě, takže velké společnosti platí více než malé.
@@ -1650,6 +1658,9 @@ STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :Násobek produk
 STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :Násobit produkci nákladu průmyslem tímto procentem.
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM} %
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :Násobitel stárnutí plateb za náklad: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :Nastav, jak rychle klasá hodnota nákladu naloženého ve vozidle
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 ###setting-zero-is-special
 STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :Žádná degradace
 
@@ -1743,8 +1754,8 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :žádný
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :původní
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :vylepšený
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Silniční vozidla: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Zvol na jaké straně vozovky jezdí vozidla
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Strana cesty na jaké jezdí silniční vozidla: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Zvol na které straně cesty jezdí silniční vozidla.{}Toto nastevení se může dotknout také toho, na které straně se nacházejí návěstidla, přídně jejich grafiku{}Pro úplnou aplikace tohoto nastavení může být nutný restart hry
 
 ###length 2
 STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Vlevo
@@ -1758,8 +1769,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Doprava
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Výšková úroveň pro plochou krajinu: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :Alespoň jeden dílek na severním okraji není prázdný
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :Alespoň jeden dílek na jednom z okrajů není zaplaven
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maximální rozsah stanice: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximální plocha kterou může zabírat jediná stanice a všechny její části. Vysoké hodnoty zpomalí hru.
@@ -2082,25 +2093,25 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Podíl ze zisku
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentuální podíl příjmu, který je předán mezistanicím v překládacích systémech, předá větší kontrolu nad příjmem
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Při tažení umisťovat návěstidla každých: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Nastav vzdálenost v jaké budou semafory vystavěny za překážkou (výhybka) při stavbě tahem
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Nastav vzdálenost v jaké budou návěstidla vystavěna za překážkou (výhybka) při stavbě tahem
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} polí
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Při přetahování udržovat stálou vzdálenost mezi signály: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Zvol chování umisťování semaforů při Ctrl+tažení. Pokud je vypnuto, semafory jsou umístěny okolo mostů a tunelů, aby se zabránilo velkým úsekům bez semaforů. Pokud je povoleno, semafory jsou umístěny každých N polí, takže je zarovnání semaforů u souběžných tratí jednoduší.
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Při přetahování udržovat stálou vzdálenost mezi návěstidly: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Zvol chování umisťování návěstidel při Ctrl+tažení. Pokud je vypnuto, návěstidla jsou umístěna okolo mostů a tunelů, aby se zabránilo velkým úsekům bez návěstidel. Pokud je povoleno, návěstidla jsou umístěny každých N polí, takže je zarovnání návěstidel u souběžných tratí jednoduší.
 
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Semafory automaticky stavět do roku: {STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Nastav rok, ve kterém budou používány elektrické semafory. Před tímto rokem jsou používány mechanické, které fungují stejně ale mají jiný vzhled
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Mechanická návěstidla automaticky stavět do roku: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Nastav rok, od kterého začnou být používána světelná návěstidla. Před tímto rokem jsou používány mechanické, které fungují stejně, ale mají jiný vzhled
 
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Vybírat dokola návěstidla: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vyber které semafory budou nabízeny při Ctrl+klikání při jejich stavbě.
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Vyber která návěstidla budou nabízeny při Ctrl+klikání při jejich stavbě.
 ###length 2
 STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :Pouze současná skupina
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Vše viditelné
 
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraz signály typu: {STRING}
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Vyber, které signály jsou zobrazené v panelu nástrojů signálů
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :Zobraz návěstidla typu: {STRING}
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :Vyber, které typy návěstidel jsou zobrazené v panelu pro stavbu návěstidel
 ###length 2
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Pouze Path signály
-STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Všechny signály
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_PATH                         :Pouze PBS návěstidla
+STR_CONFIG_SETTING_SIGNAL_GUI_MODE_ALL_CYCLE_PATH               :Všechny druhy návěstidel
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Rozvržení silnic pro nová města: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Rozložení silniční sítě ve městech
@@ -2113,8 +2124,8 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Náhodně
 
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Města smějí stavět silnice: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Povolí městům stavět silnice pro růst. Zakaž k zabránění výstavby silnic městy.
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Města smějí stavět přejezdy: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolení tohoto nastavení umožní městům, budovat železniční přejezdy
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Povolit městům stavět železníční přejezdy: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolení tohoto nastavení umožní městům aby budovaly železniční přejezdy
 
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Omezovat výstavbu letišť hlukovými limity: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Povolit městům blokovat stavbu letiště na základě jejich úrovně přijatelnosti hluku, která je založena na populaci města a velikosti a vzdálenosti letiště. Pokud je toto nastavení zakázáno, města povolují pouze dvě letiště, pokud není postoj místní autority nastaven na "Povolený"
@@ -2303,33 +2314,33 @@ STR_CONFIG_SETTING_AI                                           :Konkurenti
 STR_CONFIG_SETTING_AI_NPC                                       :Umělá inteligence
 STR_CONFIG_SETTING_NETWORK                                      :Síť
 
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatické otáčení vlaků na semaforech: {STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Povoluje vlakům otočit se na semaforech, pokud čekají příliš dlouho
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatické otáčení vlaků u návěstidel: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Povoluje vlakům otočit se u návěstidel, pokud čekají příliš dlouho
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Změnit hodnotu nastavení
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Chyba v konfiguračním souboru...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... chyba v poli '{STRING}'
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... neplatná hodnota '{STRING}' pro '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... koncové znaky na konci nastavení '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorována grafika '{STRING}': duplicitní NewGRF ID s '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignorovány neplatné grafiky '{STRING}': {STRING}
+STR_CONFIG_ERROR                                                :Chyba v konfiguračním souboru...
+STR_CONFIG_ERROR_ARRAY                                          :chyba v poli '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :neplatná hodnota '{STRING}' pro '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :koncové znaky na konci nastavení '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :ignorována grafika '{STRING}': duplicitní NewGRF ID s '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :ignorovány neplatné grafiky '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nenalezeno
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nebezpečné pro statické použití
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :systém grafik
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nekompatibilní s touto verzí OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neznámé
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... úroveň komprese '{STRING}' není platná
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formát uložené hry '{STRING}' není dostupný. Návrat na '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorování základní grafické sady '{STRING}': nenalezeno
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorování základní hudební sady '{STRING}': nenalezeno
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorování základní hudební sady '{STRING}': nenalezeno
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :úroveň komprese '{STRING}' není platná
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :formát uložené hry '{STRING}' není dostupný. Návrat na '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :Ignorování základní grafické sady '{STRING}': nenalezeno
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :ignorování základní hudební sady '{STRING}': nenalezeno
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :ignorování základní hudební sady '{STRING}': nenalezeno
 
 # Video initialization errors
-STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Chyba v nastavení zobrazení...
-STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nebyla nalezena kompatibilní grafická karta. Hardwarová akcelerace zakázána
-STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... grafická karta způsobila pád hry. Hadwarová akcelerace byla zakázána
+STR_VIDEO_DRIVER_ERROR                                          :Chyba v nastavení zobrazení...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :nebyla nalezena kompatibilní grafická karta. Hardwarová akcelerace bude zakázána
+STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :Ovladač grafické karta způsobil pád hry. Hadwarová akcelerace byla zakázána
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
@@ -2466,15 +2477,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Jednodu�
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Základní výběr tváře
 STR_FACE_LOAD                                                   :{BLACK}Nahrát
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Nahrát oblíbený obličej
-STR_FACE_LOAD_DONE                                              :{WHITE}Tvůj oblíbený obličej se nahrál z konfiguračního souboru
+STR_FACE_LOAD_DONE                                              :Tvůj oblíbený obličej se nahrál z konfiguračního souboru
 STR_FACE_FACECODE                                               :{BLACK}Kód tváře hráče
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Zobrazit a/nebo nastavit číslo tváře prezidenta
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobrazit nebo nastavit kód tváře prezidenta
-STR_FACE_FACECODE_SET                                           :{WHITE}Nová tvář prezidenta byla nastavena
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nepodařilo se nastavit kód tváře prezidenta – musí se jednat o platné označení a číslo
+STR_FACE_FACECODE_SET                                           :Nová tvář prezidenta byla nastavena
+STR_FACE_FACECODE_ERR                                           :Nepodařilo se nastavit kód tváře prezidenta – musí se jednat o platné označení a číslo
 STR_FACE_SAVE                                                   :{BLACK}Uložit
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblíbený obličej
-STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena do konfiguračního souboru jako tvá oblíbená
+STR_FACE_SAVE_DONE                                              :Tato tvář bude uložena do konfiguračního souboru jako tvá oblíbená
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ano
@@ -2686,33 +2697,33 @@ STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadej zprávu
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Žádná síťová zařízení nebyla nalezena
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server neodpověděl na požadavek
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nelze se připojit kvůli rozdílným grafikám
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Síť - synchronizace hry selhala
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Síť - spojení ztraceno
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nelze nahrát uloženou hru ze serveru
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nelze spustit server
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Vznikla chyba v protokolu a naše spojení je přerušeno
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :Žádná síťová zařízení nebyla nalezena
+STR_NETWORK_ERROR_NOCONNECTION                                  :Server v časovém limitu neodpověděl na požadavek
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :Nelze se připojit kvůli rozdílným grafikám
+STR_NETWORK_ERROR_DESYNC                                        :Síť - synchronizace hry selhala
+STR_NETWORK_ERROR_LOSTCONNECTION                                :Síť - spojení ztraceno
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :Nelze nahrát uloženou hru ze serveru
+STR_NETWORK_ERROR_SERVER_START                                  :Nepodařilo se spustit server
+STR_NETWORK_ERROR_SERVER_ERROR                                  :Vznikla chyba v protokolu a naše spojení je přerušeno
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :Tvé herní jméno nebylo nastaveno. Jméno může být nastaveno v horní části okna pro více hráčů.
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :Název tvého serveru nebyl nastaven. Název je možné nastavit na horním okraji Multiplayer okna.
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revize hry tohoto klienta neodpovídá revizi hry na serveru
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Špatné heslo
-STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :{WHITE}Nejsi na seznamu povolených klientů
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server je plný
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jsi blokován serverem
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Byl jsi vyhozen ze hry
-STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Důvod: {STRING}
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Používání cheatů není na tomto serveru povoleno
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Posíláte serveru příliš mnoho příkazů
-STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Vložení hesla ti trvalo příliš dlouho
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tvůj počítač je přiliš pomalý pro udržení kroku se serverem
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tvému počítači trvalo stahování mapy příliš dlouho
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tvému počítači trvalo připojování na server příliš dlouho
-STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Jméno vašeho hráče není platné
+STR_NETWORK_ERROR_WRONG_REVISION                                :Revize hry tohoto klienta neodpovídá revizi hry na serveru
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :Špatné heslo
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :Nejsi na seznamu povolených klientů
+STR_NETWORK_ERROR_SERVER_FULL                                   :Server je plný
+STR_NETWORK_ERROR_SERVER_BANNED                                 :Na tomto serveru jsi zabanován
+STR_NETWORK_ERROR_KICKED                                        :Byl jsi vyhozen ze hry
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :Důvod: {STRING}
+STR_NETWORK_ERROR_CHEATER                                       :Používání cheatů je na tomto serveru zakázáno
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :Posíláte serveru příliš mnoho příkazů
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :Zadání hesla ti trvalo příliš dlouho
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :Tvůj počítač je přiliš pomalý pro udržení kroku se serverem
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :Tvému počítači trvalo stahování mapy příliš dlouho
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :tvému počítači trvalo připojování na server příliš dlouho
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :Jméno tvého hráče není platné
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Pravděpodobná ztráta spojení
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Během poslední{P 0 "" ch ch} {NUM} sekund{P y "" ""} nepřišla ze serveru žádná data
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :Pravděpodobná ztráta spojení
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :Během poslední{P 0 "" ch ch} {NUM} sekund{P y "" ""} nepřišla ze serveru žádná data
 
 ###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :všeobecná chyba
@@ -2765,14 +2776,14 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} za
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opouští hru ({STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} si změnil jméno na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} poslal(a) {CURRENCY_LONG} společnosti {STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukončil relaci
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se restartuje...{}Počkejte prosím...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :Server ukončil relaci
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :Server se restartuje...{}Počkejte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} byl vyhozen. Důvod: ({STRING})
 
-STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Registrace serveru selhala
-STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :{WHITE}S tímto zvacím kódem se už zaregistroval jiný server. Přepínám na lokální typ hry.
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Váš server neumožňuje vzdálené připojení
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Ostatní hráči se nebudou moci k tvému serveru připojit
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :Registrace serveru selhala
+STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :S tímto zvacím kódem se už zaregistroval jiný server. Přepínám na lokální typ hry.
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :Váš server neumožňuje vzdálené připojení
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :Ostatní hráči se nebudou moci k tvému serveru připojit
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Součásti ke stažení
@@ -2816,8 +2827,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Velikos
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vybráno kvůli: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Závislosti: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Klíčová slova: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD není zkompilován s knihovnou "zlib"...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... takže nelze stahovat obsah!
+STR_CONTENT_NO_ZLIB                                             :OpenTTD nebylo zkompilováno s knihovnou "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :takže nelze stahovat obsah!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Základní grafika
@@ -2839,10 +2850,10 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Stahová
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} z{NBSP}{BYTES} staženo ({NUM}{NBSP}%)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nešlo se připojit k serveru s obsahem...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Stahování selhalo...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... do souboru nešlo zapsat
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nešlo rozbalit stažený soubor
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :Nepodařilo se připojit k serveru s obsahem...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :Stahování selhalo...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :do souboru se nedá zapisovat
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :Nepodařilo se rozbalit stažený soubor
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Chybějící grafika
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD vyžaduje grafiky, které nebyly nalezeny. Povolíš OpenTTD stáhnout a nainstalovat tyto grafiky?
@@ -2919,7 +2930,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Postavit
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Umístit návěstidla. Pomocí Ctrl vybereš mezi mechanickými a světelnými{}Tažením umístíš návěstidla na rovném úseku tratě a s přidržením Ctrl až do dalšího křížení{}Kliknutím na tlačítko s Ctrl otevřeš okno s výběrem návěstidel{}Podrž Shift pro zobrazení odhadu ceny
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Postavit železniční most. Podrž Shift pro zobrazení odhadu ceny
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Postavit železniční tunel. Podrž Shift pro zobrazení odhadu ceny
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Přepnout režim stavba/odstranění pro kolejí, semaforů, směrování a stanic. Při stisku Ctrl a kliknutí odebere také koleje ze směrování a stanic
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Přepnout režim stavba/odstranění pro kolejí, návěstidel, směrování a stanic. Při stisku Ctrl a kliknutí odebere také koleje ze směrování a stanic
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Změnit nebo vylepšit druh kolejí (na tento). Podrž Shift pro zobrazení odhadu ceny
 
 STR_RAIL_NAME_RAILROAD                                          :Železnice
@@ -2971,22 +2982,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Odstranit kolek
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Opravdu chceš smazat tuto kolekci?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Opravdu chceš smazat tuto kolekci? Nacházejí se v ní prvky z deaktivovyných NewGRF!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Vyber typ stanice pro zobrazení
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Vyber typ stanice pro zobrazení. Podrž Ctrl pro přidání nebo odebrání z uložených položek
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Zvol typ stanice pro stavbu. Podrž Ctrl pro přidaní nebo odebrání z oblíbených položek
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Výběr kolekce stanic pro zobrazení
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Vyber typ směrování pro zobrazení
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Vyber typ směrování pro zobrazení. Podrž Ctrl pro přidaní nebo odebrání z uložených položek
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Zvol typ směrování sta stavbu. Podrž Shift pro přidání nebo odebrání z oblíbených položek
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Vybrat kolekci bodů pro zobrazení
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Vyber typ autobusové zastávky pro zobrazení
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Vyber typ autobusové zastávky pro zobrazení. Podrž Ctrl pro přidaní nebo odebrání z uložených položek
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Zvol typ autobusové zastávky pro stavbu. Podrž Ctrl pro přidání nebo odebrání z oblíbených položek
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Vybrat kolekci autobusových zastávek pro zobrazení
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Vyber typ nákladní rampy pro zobrazení
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Vyber typ nákladní rampy pro zobrazení. Podrž Ctrl pro přidání nebo odebrání z uložených položek.
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Vyber typ nákladní rampy pro stavbu. Podrž Ctrl pro přidaní nebo odebrání z oblíbených položek
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Vybrat kolekci nákladních ramp pro zobrazení
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Vyber typ objektu pro zobrazení
-STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Vyber objekt, který chceš stavět. Podrž Ctrl pro přidaní nebo odebrání z oblíbených položek nebo úhlopříčný výběr. Pro zobrazení odhadu ceny podrž i Shift.
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Vyber typ objektu pro zobrazení. Podrž Ctrl pro přidaní nebo odebrání z uložených položek
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Vyber objekt, který chceš stavět. Podrž Ctrl pro přidaní nebo odebrání z oblíbených položek nebo úhlopříčný výběr. Podrž Shift pro zobrazení odhadu ceny
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Vybrat kolekci objektů pro zobrazení
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Vyber městskou zónu pro zobrazení
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Vyber městskou zónu pro zobrazení. Podrž Ctrl pro přidaní nebo odebrání z uložených položek
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Zvol typ domu pro stavbu. Podrž Shift pro přidání nebo odebrání z oblíbených položek
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Výběr kolekce domů pro zobrazení
 
@@ -3021,19 +3032,19 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Původní směr
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výběr návěstidel
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale je nezbytné nastavit správnou barvu vjezdových a kombinovaných pre-signálů
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinované návěstidlo (semafor){}Kombinované návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" pre-signálů
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Dokonalejší (PBS) návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Obyčejné návěstidlo (elektrické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vjezdové návěstidlo (elektrické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale je nezbytné nastavit správnou barvu vjezdových a kombinovaných pre-signálů
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinované návěstidlo (elektrické){}Kombinované návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" návěstidel
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Dokonalejší (PBS) návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Převod signálu{}Kliknutím na existující signál převeďte na vybraný typ signálu a variantu. Při stisknutí Ctrl+Kliku přepněte existující variantu. Stisknutím Shift+Kliku zobrazí odhadované náklady na převod.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčejné návěstidlo (mechanické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vjezdové návěstidlo (mechanické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Odjezdové návěstidlo (mechanické){}Chová se stejně jako obyčejné, ale je nezbytné nastavit správnou barvu vjezdových a kombinovaných pre-signálů
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinované návěstidlo (mechanické){}Kombinované návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" pre-signálů
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Dokonalejší (PBS) návěstidlo (mechanické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (mechanické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Obyčejné návěstidlo (světelné){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vjezdové návěstidlo (světelné){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Odjezdové návěstidlo (světelné){}Chová se stejně jako obyčejné, ale je nezbytné nastavit správnou barvu vjezdových a kombinovaných pre-signálů
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinované návěstidlo (světelné){}Kombinované návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" návěstidel
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Dokonalejší (PBS) návěstidlo (světelné){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (světelné){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Změna typu návěstidla{}Kliknutím na existující návěstidlo jej převedeš na vybraný typ návěstidla a variantu. Při stisknutí Ctrl+Kliku přepněte existující variantu. Podrž Shift pro zobrazení odhadu ceny
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Rozestup při stavbě návěstidel tažením
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Snížit rozestup mezi návěstidly
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zvýšit rozestup mezi návěstidly
@@ -3070,7 +3081,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}Postavit
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Postavit autobusovou zastávku. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Postavit tramvajovou zastávku pro cestující. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Postavit nákladovou rampu. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postavit nákladovou rampu pro tramvaj. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postavit tramvajovou nákladovou rampu. Pomocí Ctrl ji připojíš k jiné. Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Stavět nebo nestavět jednosměrné silnice
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Postavit silniční most. Podrž Shift pro zobrazení odhadu ceny
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Postavit tramvajový most. Podrž Shift pro zobrazení odhadu ceny
@@ -3087,8 +3098,8 @@ STR_ROAD_NAME_TRAM                                              :Tramvajová tra
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientace garáže
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Výběr orientace garáže
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientace tramvajového depa
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Zvol směr tramvajového depa
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientace tramvajové vozovny
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Zvol směr tramvajové vozovny
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientace autobusové zastávky
@@ -3148,9 +3159,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Vytvář
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Úpravy krajiny
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Snížit roh země. Tažení sníží první vybraný roh a vybranou oblast na jeho novou výšku. Ctrl vybírá diagonální oblast. Podrž Shift pro zobrazení odhadu ceny
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Snížit roh země. Tažení sníží první vybraný roh a vybranou oblast na jeho novou výšku. Ctrl vybírá oblast diagonálně. Podrž Shift pro zobrazení odhadu ceny
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvýšit roh země. Tažení zvyšuje první vybraný roh a vybranou oblast na jeho novou výšku. Ctrl vybírá diagonální oblast. Podrž Shift pro zobrazení odhadu ceny
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Srovnat terén na výšku prvního vybraného rohu. Ctrl vybírá diagonální oblast. Podrž Shift pro zobrazení odhadu ceny
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Srovnat terén na výšku prvního vybraného rohu. Ctrl vybírá oblast diagonálně. Podrž Shift pro zobrazení odhadu ceny
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakoupit pozemek pro budoucí užití. Podrž Shift pro zobrazení odhadu ceny
 
 # Object construction window
@@ -3177,12 +3188,13 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Vysadit 
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovat zemi
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umístit kamenitá území po mapě
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umístit kamenitá území po mapě.{}Podrž Ctrl pro odstranění kamenitých území z mapy
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Umístit hrubé plochy na mapu.{}Podrž Ctrl po odstranění hrubých ploch
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Vytvořit pouštní oblast{}S přidrženým CTRL ji odstraníš
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zvětšit oblast země pro snížení/zvýšení
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmenšit oblast země pro snížení/zvýšení
 STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Snížit bod nebo oblast země. Je li rozsah 1x1, přetáhni pro snížení terénu na úroveň prvního vybraného bodu. Ctrl vybírá diagonální oblast. Podrž Shift pro zobrazení odhadu ceny
-STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Zvýšit bod nebo oblast země. Je li rozsah 1x1, přetáhni pro snížení terénu na úroveň prvního vybraného bodu. Ctrl vybírá diagonální oblast. Podrž Shift pro zobrazení odhadu ceny
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Zvýšit bod nebo oblast země. Je li rozsah 1x1, přetáhni pro snížení terénu na úroveň prvního vybraného bodu. Ctrl vybírá oblast diagonálně. Podrž Shift pro zobrazení odhadu ceny
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generovat náhodnou zemi
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Vytvořit nový scénář
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Smazat krajinu
@@ -3482,6 +3494,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Nahrát
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Rozehrát vybranou hru
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Načíst označenou výškovou mapu
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Načíst data vybraného města
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Nová složka
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Vytvořit novou složku v aktuálním umístění
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Zadejte název pro novou složku
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Vlastnosti hry
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Není dostupná žádná informace
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3510,7 +3525,7 @@ STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}Zvol po�
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Množství průmyslu:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}Vyber množství průmyslu nebo jeho vlastní počet
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Nejvyšší vrchol:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Zvolte nadmořskou výšku nejvyšší hory, kterou se hra pokusí vytvořit
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}Zvol nadmořskou výšku nejvyšší hory, kterou se hra pokusí vytvořit
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}Zvýšit maximální možnou výšku nejvyššího vrcholu na mapě o jednu úroveň
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}Snížit maximální možnou výšku nejvyššího vrcholu na mapě o jednu úroveň
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrytí sněhem:
@@ -3626,12 +3641,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spoušt�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Rozbíhání skriptu
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Připravování hry
 
-STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :{WHITE}Načítání dat města selhalo
-STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :{WHITE}Soubor JSON má nespravný formát
-STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{WHITE}{STRING} data mají nesprávný formát
-STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{WHITE}{STRING} souřadnice mají nesprávný formát. Musejí být od 0 do 1 jako poměrná část celkového rozměru výškové mapy
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :Načítání dat města selhalo
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :Soubor JSON má neplatný formát
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING} data mají nesprávný formát
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{STRING} souřadnice mají nesprávný formát. Musejí být od 0 do 1 jako poměrná část celkového rozměru výškové mapy
 
-STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{WHITE} Nenalezeno platné místo pro {NUM} měst{P o a ""}. Místo nich byl{P a y y} vytvořen{P a y y} znač{P ka ky ky} na zamýšlen{P ém ých ých} míst{P ě ech ech}
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :Nenalezeno platné místo pro {NUM} měst{P o a ""}. Místo nich byl{P a y y} vytvořen{P a y y} znač{P ka ky ky} na zamýšlen{P ém ých ých} míst{P ě ech ech}
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavení grafických souborů
@@ -3749,8 +3764,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varování: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Závažná chyba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}V NewGRF "{STRING}" se vyskytla kritická chyba:{}{STRING}
-STR_NEWGRF_ERROR_POPUP                                          :{WHITE}V NewGRF "{STRING}" došlo k chybě{}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :V NewGRF "{STRING}" se vyskytla kritická chyba:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :V NewGRF "{STRING}" došlo k chybě{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovat s verzí TTDPatche, kterou OpenTTD hlásí
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pro TTD verzi {2:STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navržen pro práci s {STRING}
@@ -3777,12 +3792,12 @@ STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Neplatné zpět
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě se chystáš změnit nastavení za běžící hry. To může to shodit OpenTTD nebo způsobit zaseknutí hry. Neupozorňujte na to jako na bug.{}Jste si tím opravdu jisti?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nelze přidat soubor: duplicitní NewGRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :Nelze přidat soubor: duplicitní ID NewGRF
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nebyl nalezen (načetl se kompatibilní NewGRF)
-STR_NEWGRF_TOO_MANY_NEWGRFS                                     :{WHITE}Nemůžu přidat soubor. Dosažen limit NewGRF souborů
+STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Nemůžu přidat soubor. Dosažen limit NewGRF souborů
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní NewGRF se načetly místo chybějících
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící grafiky byly vypnuty
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Kompatibilní NewGRF se načetly místo chybějících
+STR_NEWGRF_DISABLED_WARNING                                     :Chybějící grafiky byly vypnuty
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící soubory NewGRF grafik
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
 
@@ -3795,16 +3810,16 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}některé 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Změnil se stav lokomotivy '{1:ENGINE}', když nebyla v depu
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Změnilo délku vozidla '{1:ENGINE}', když nebylo v depu
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Změnila se kapacita vozidla '{1:ENGINE}', i když nebylo v depu nebo nebylo přestavováno
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :Změnil se stav lokomotivy '{1:ENGINE}', když nebyla v depu
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :Změnilo délku vozidla '{1:ENGINE}', když nebylo v depu
+STR_NEWGRF_BROKEN_CAPACITY                                      :Změnila se kapacita vozidla '{1:ENGINE}', i když nebylo v depu nebo nebylo přestavováno
+STR_BROKEN_VEHICLE_LENGTH                                       :Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informace o nákladu/možnosti přestavby pro '{1:ENGINE}' se po nákupu změnily. To může způsobit problémy při automatické výměně vozidel
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Grafika '{1:STRING}' způsobila nekonečnou smyčku v callbacku produkce průmyslu
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Funkce {1:HEX} vrátila neznámý / neplatný výsledek {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' vrátil neplatný typ nákladu ve zpětném volání produkce na {2:HEX}
+STR_NEWGRF_BUGGY                                                :Grafika '{0:STRING}' poskytuje neplatné informace
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :Informace o nákladu/možnosti přestavby pro '{1:ENGINE}' se po nákupu změnily. To může způsobit problémy při automatické výměně vozidel
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :Grafika '{1:STRING}' způsobila nekonečnou smyčku v callbacku produkce průmyslu
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :Funkce {1:HEX} vrátila neznámý / neplatný výsledek {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :'{1:STRING}' vrátil neplatný typ nákladu ve zpětném volání produkce na {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
@@ -4166,7 +4181,7 @@ STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Při nep
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktura {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Železniční oblasti:
-STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Semafory
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Návěstidla
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Silniční oblasti:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Tramvajové tratě:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vodní oblasti:
@@ -4477,10 +4492,10 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonovat
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonovat letadlo
 
 ###length VEHICLE_TYPES
-STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Vytvořit kopii vlaku se všemi vagony. Klikni napřed na toto tlačítko a následně na vlak uvnitř nebo vně depa. Se stisknutou klávesou Ctrl při kliku se budou sdílet příkazy. Podrž Shift při kliku pro zobrazení odhadu ceny bez provedení nákupu.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Vytvořit kopii silničního vozidla. Klepni na toto tlačítko a pak na vozidlo v nebo vně depa. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadované ceny
-STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Vytvořit kopii lodě. Klepni na toto tlačítko a pak na loď v nebo vně lodního depa. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
-STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Vytvořit kopii letadla. Klepni na toto tlačítko a pak na letadlo v nebo vně hangáru. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
+STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP                             :{BLACK}Vytvořit kopii vlaku se všemi vagony. Klikni napřed na toto tlačítko a následně na vlak uvnitř nebo vně depa. Podrž Ctrl pro vytvoření kopie se sdílenými příkazy. Podrž Shift pro zobrazení odhadu ceny bez provedení nákupu.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_TOOLTIP                      :{BLACK}Vytvořit kopii silničního vozidla. Klepni na toto tlačítko a pak na vozidlo v nebo vně depa. Podrž Ctrl pro vytvoření kopie se sdílenými příkazy. Podrž Shift pro zobrazení odhadu ceny bez provedení nákupu.
+STR_DEPOT_CLONE_SHIP_DEPOT_TOOLTIP                              :{BLACK}Vytvořit kopii lodě. Klepni na toto tlačítko a pak na loď v nebo vně lodního depa. Podrž Ctrl pro vytvoření kopie se sdílenými příkazy. Podrž Shift pro zobrazení odhadu ceny bez provedení nákupu.
+STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Vytvořit kopii letadla. Klepni na toto tlačítko a pak na letadlo v nebo vně hangáru. Podrž Ctrl pro vytvoření kopie se sdílenými příkazy. Podrž Shift pro zobrazení odhadu ceny bez provedení nákupu.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Vystředit pohled na vlakové depo. Ctrl+Klik otevře nový pohled
@@ -4614,12 +4629,12 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslat l
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslat letadlo do hangáru. Ctrl+Kliknutí pouze pro servis.
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Vytvořit kopii vlaku se všemi vagony. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Vytvořit kopii vlaku se všemi vagony. Podrž Ctrl pro vytvoření kopie se sdílenými příkazy. Podrž Shift pro zobrazení odhadu ceny bez provedení nákupu.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Vytvořit kopii silničního vozidla. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Vytvořit kopii lodě. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Vytvořit kopii letadla. Se stisknutým Ctrl se budou sdílet příkazy. Podrž Shift pro zobrazení odhadu ceny
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Vytvořit kopii letadla. Podrž Ctrl pro vytvoření kopie se sdílenými příkazy. Podrž Shift pro zobrazení odhadu ceny bez provedení nákupu.
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Donuť vlak pokračovat bez čekání na povolení od semaforu
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Donuť vlak pokračovat bez čekání na povolení od návěstidla
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Otočit vlak
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Otoč vozidlo
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Vycentrovat hlavní zobrazení na cíl objednávky. Ctrl+Klik pro otevření nového zobrazení na umístění cíle pokynu.
@@ -4849,7 +4864,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vyžaduje údr�
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vždy
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Zbývající životnost (v letech)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Nejvyšší dosažitelná spolehlivost
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Jízda dozadu
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Jízda vzad sníženou rychlostí
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porovnat vlastnost vozidla se zadanou hodnotou
@@ -4915,10 +4930,10 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Implici
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Úplně naložit)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Úplně naložit cokoliv)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Nenakládat)
-STR_ORDER_UNLOAD                                                :{SPACE}(Vyložit a vzít náklad)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(vyložit a plně naložit)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(vyložit a plně naložit čímkoliv)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Vylozit a nechat pradzne)
+STR_ORDER_UNLOAD                                                :{SPACE}(Nuceně vyložit a vzít náklad)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Nuceně vyložit a plně naložit)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Nuceně vyložit a plně naložit čímkoliv)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Vyložit a nechat prázdné)
 STR_ORDER_TRANSFER                                              :{SPACE}(Přeložit a vzít náklad)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Přeložit a počkat na úplné naložení)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Přeložit a počkat na úplné naložení čehokoliv)
@@ -4932,8 +4947,8 @@ STR_ORDER_AUTO_REFIT                                            :{SPACE}(Přesta
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Úplně naložit s přestavbou na {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Úplně naložit cokoliv s přestavbou na {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Vyložit a naložit náklad s přestavbou na {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Vyložit a počkat na plné naložení s přestavěním na {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Vyložit a počkat na naložení čehokoliv s přestavěním na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Nuceně vyložit a počkat na plné naložení s přestavěním na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Nuceně vyložit a počkat na naložení čehokoliv s přestavěním na {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Přeložit a naložit náklad s přestavbou na {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Přeložit a počkat na úplné naložení s přestavbou na {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Přeložit a počkat na úplné naložení čehokoliv s přestavbou na {STRING})
@@ -5051,7 +5066,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Herní s
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Zkontroluj log herních skriptů. Podrž Ctrl pro zobrazení v novém okně
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nebyla nalezena žádná AI.{}Tato AI je výchozí a nedělá vůbec nic.{}Spoustu AI ale můžeš stáhnout v "Stahování součástí"
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno na ladění AI / herních skriptů je dostupné pouze na serveru
 
 # AI configuration window
@@ -5147,12 +5162,17 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Odhadova
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Odhadovaný příjem: {CURRENCY_LONG}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ukládání ještě běží,{}počkej prosím, než doběhne!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :Ukládání stále ještě probíhá,{}počkej prosím, než doběhne!
 STR_ERROR_AUTOSAVE_FAILED                                       :Automatické uložení selhalo
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nelze číst z jednotky
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Uložení hry selhalo...
+STR_ERROR_GAME_SAVE_FAILED                                      :Uložení hry selhalo...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nelze smazat soubor
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nelze načíst hru...
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Nepodařilo se vytvořit složku...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Složka s tímto názvem již existuje
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Název složky nesmí obsahovat speciální znaky
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Název složky nesmí začínat tečkou
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Nemáš oprávnění vytvořit složku v aktuálním umístění
+STR_ERROR_GAME_LOAD_FAILED                                      :Nelze načíst hru...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Vnitřní chyba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Poškozená hra - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Uložená hra je z novější verze
@@ -5164,18 +5184,18 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nedostupné>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generování mapy zrušeno...{}{}... nebylo možné založit žádné město
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... v tomto scénáři není ani jedno město
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Generování mapy zrušeno...{}{}... nebylo možné založit žádné město
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :v tomto scénáři není žádné město
 
-STR_ERROR_PNGMAP                                                :{WHITE}Nebylo možné nahrát krajinu z PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... soubor nenalezen
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nelze převést formát obrázku. Je nutno použít 8- nebo 24bitové barvy
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... něco se prostě pokazilo (soubor je asi poškozený)
+STR_ERROR_PNGMAP                                                :Nebylo možné nahrát krajinu z PNG...
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :soubor nenalezen
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :nelze převést formát obrázku. Je nutné použít PNG soubor s 8- nebo 24bitovými barvami
+STR_ERROR_PNGMAP_MISC                                           :něco se prostě pokazilo (soubor je asi poškozený)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Nebylo možné nahrát krajinu z BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nelze převést formát obrázku
+STR_ERROR_BMPMAP                                                :Nebylo možné nahrát krajinu z BMP...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :nelze převést formát obrázku
 
-STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... obrázek je příliš velký
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :obrázek je příliš velký
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Varování kvůli velikosti
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Tak velká změna velikosti zdrojové mapy není doporučena. Pokračovat v generování?
@@ -5187,266 +5207,266 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Byl nale
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Velký screenshot
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Snímek obrazovky bude mít rozlišení {COMMA} x {COMMA} pixelů. Toto může nějakou chvíli trvat. Chcete pokračovat?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Výšková mapa úspěšně uložena jako '{STRING}'. Nejvyšší vrchol je {NUM}
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot úspěšně uložen jako '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot neuložen!
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :Výšková mapa byla úspěšně uložena jako '{STRING}'. Nejvyšší vrchol je {NUM}
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Snímek obrazovky byl úspěšně uložen jako '{STRING}'
+STR_ERROR_SCREENSHOT_FAILED                                     :Vytvoření snímku obrazovky se bohužel nepodařilo...
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Zpráva
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Zpráva od {COMPANY}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Mimo okraj mapy
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Moc blízko k okraji mapy
+STR_ERROR_OFF_EDGE_OF_MAP                                       :mimo okraj mapy
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :moc blízko k okraji mapy
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :Nedostatek peněz - je potřeba {CURRENCY_LONG}
-STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Je potřeba plochá země
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Země skloněna nesprávným směrem
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tohle nelze provést...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Budova musí být nejprve zničena
+STR_ERROR_FLAT_LAND_REQUIRED                                    :je potřeba plochá země
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :země skloněna nesprávným směrem
+STR_ERROR_CAN_T_DO_THIS                                         :Tohle nelze provést...
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :budova musí být nejprve zničena
 STR_ERROR_BUILDING_IS_PROTECTED                                 :budova je chráněná
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nelze vyčistit tuto oblast...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nepoužitelné místo
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... již vystavěno
-STR_ERROR_OWNED_BY                                              :{WHITE}... vlastněno {STRING}
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Nelze vyčistit tuto oblast...
+STR_ERROR_SITE_UNSUITABLE                                       :nepoužitelné místo
+STR_ERROR_ALREADY_BUILT                                         :již vystavěno
+STR_ERROR_OWNED_BY                                              :vlastněno {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :území je vlastněno jinou společností
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... dosažen limit pro úpravu terénu
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... dosažen limit pro čištění dláždic
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... výsadba stromů dosáhla limitu
-STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Jméno musí být jedinečné
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}V cestě překáží {STRING}
-STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nelze v pozastavené hře
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :dosažen limit pro úpravy terénu
+STR_ERROR_CLEARING_LIMIT_REACHED                                :dosažen limit pro čištění dláždic
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :bylo disaženo limitů výsadby stromů
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :jméno musí být jedinečné
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :v cestě stojí {STRING}
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :Nelze v pozastavené hře
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Místní správa města {TOWN} odmítla vydat povolení
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Místní správa města {TOWN} zakazuje stavbu dalšího letiště v tomto městě
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Zastupitelstvo města {TOWN} odmítá vydat povolení na stavbu letiště kvůli hlukovým limitům
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :Místní správa města {TOWN} odmítla vydat povolení
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :Místní správa města {TOWN} zakazuje stavbu dalšího letiště v tomto městě
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :Zastupitelstvo města {TOWN} odmítá vydat povolení na stavbu letiště kvůli hlukovým limitům
 STR_ERROR_BRIBE_FAILED                                          :Tvůj pokus o úplatek byl objeven regionálním vyšetřovatelem
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Zde nelze zvednout terén...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Zde nelze snížit terén...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Zde nelze srovnat terén...
-STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Úprava terénu by poškodila tunel
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... již na úrovni moře
-STR_ERROR_TOO_HIGH                                              :{WHITE}... příliš vysoko
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... už je plochý
-STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Most by po této úpravě byl příliš vysoko.
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :Zde nelze zvýšit terén...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Zde nelze snížit terén...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Zde nelze vyrovnat terén...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :úprava terénu by poškodila tunel
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :již na úrovni moře
+STR_ERROR_TOO_HIGH                                              :příliš vysoko
+STR_ERROR_ALREADY_LEVELLED                                      :už je plochý
+STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :most by po této úpravě byl příliš vysoko.
 STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :je nutné neprve odstranit řeku
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nelze přejmenovat společnost...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nelze přejmenovat prezidenta...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Nelze přejmenovat společnost...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Nelze přejmenovat prezidenta...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... nejvyšší možná výše půjčky je {CURRENCY_LONG}
-STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nelze půjčit více peněz...
-STR_ERROR_LOAN_ALREADY_REPAID                                   :{WHITE}... žádný dluh ke splacení
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... je potřeba {CURRENCY_LONG}
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nelze splatit dluh...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nelze darovat peníze půjčené z banky...
-STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Této společnosti nemůžeš poslat peníze...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nelze koupit společnost...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nelze postavit ředitelství společnosti...
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :nejvyšší možná výše půjčky je {CURRENCY_LONG}
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Nelze si půjčit více peněz...
+STR_ERROR_LOAN_ALREADY_REPAID                                   :žádný dluh ke splacení
+STR_ERROR_CURRENCY_REQUIRED                                     :je potřeba {CURRENCY_LONG}
+STR_ERROR_CAN_T_REPAY_LOAN                                      :Nelze splatit dluh...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Nelze darovat peníze půjčené z banky...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :Této společnosti nemůžeš poslat peníze...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :Nelze koupit společnost...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Zde nelze postavit ředitelství společnosti...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nelze vybudovat žádná města...
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nelze přejmenovat město...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Zde nelze postavit město...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Město nemůže být rozšířeno...
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... moc blízko k jinému městu
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... příliš mnoho měst
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... na mapě už není místo
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Silnice je v rekonstrukci
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Město nelze smazat...{}{}Některá stanice nebo depo na toto město odkazuje, nebo nelze odstranit dlaždici vlastněnou městem.
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... v tomto městě není žádné místo vhodné pro umístění sochy
-STR_ERROR_CAN_T_BUILD_HOUSE                                     :{WHITE}Zde nelze postavit dům...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :Nelze vybudovat žádná města...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :Nelze přejmenovat město...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :Zde nelze postavit město...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :Město nemůže být rozšířeno...
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :příliš blízko k jinému městu
+STR_ERROR_TOO_MANY_TOWNS                                        :příliš mnoho měst
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :na mapě už není místo
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :silnice je v rekonstrukci
+STR_ERROR_TOWN_CAN_T_DELETE                                     :Město nelze smazat...{}{}Některá stanice nebo depo na toto město odkazuje, nebo nelze odstranit dlaždici vlastněnou městem.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :v tomto městě není žádné místo vhodné pro umístění sochy
+STR_ERROR_CAN_T_BUILD_HOUSE                                     :Zde nelze postavit dům...
 
 # Industry related errors
-STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... příliš mnoho průmyslu
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nelze vygenerovat žádný průmysl...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Zde nelze postavit {STRING} ...
-STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Zde nelze postavit tento druh průmyslu...
-STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :{WHITE}Není možné založit průmysl ...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... příliš blízko k jinému průmyslu
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... je nutné nejprve vystavět město
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... je povolena jen jedna na město
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... může být budováno jen ve městech s populací 1200 lidí a více
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... může se vybudovat jedině v pralese
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... může se postavit jedině v poušti
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... může se postavit jedině ve městě (místo nějakých domů)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... může být postaveno pouze poblíž centra města
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... může se postavit jen v nížinách
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... může být umístěno pouze poblíž okrajů mapy
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :příliš mnoho průmyslu
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :Nelze vygenerovat žádný průmysl...
+STR_ERROR_CAN_T_BUILD_HERE                                      :Zde nelze postavit {STRING} ...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :Zde nelze postavit tento typ průmyslu...
+STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :Není možné vybudovat průmysl ...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :příliš blízko k jinému průmyslu
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :je nutné nejprve vybudovat město
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :je povolena jen jedna na město
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :lze postavit jen ve městech s populací 1200 lidí a více
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :lze vybudovat jedině v pralese
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :lze postavit jedině v poušti
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :lze postavit jedině ve městě (místo nějakých domů)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :může být postaveno pouze poblíž centra města
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :lze postavit jen v nížinách
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :může být umístěno pouze poblíž okrajů mapy
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :Les lze vysadit pouze nad sněžnou čárou
-STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... může být postaven pouze nad sněžnou čarou
-STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... může být postaven pouze pod sněžnou čarou
+STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :může být postaven pouze nad sněžnou čarou
+STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :může být postaven pouze pod sněžnou čarou
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Smůla, financování průzkumu se nezdařilo; zkus to znovu
-STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :{WHITE}Na mapě nebyla žádná vhodná místa pro založení tohoto typu průmyslu
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Na mapě nebyla žádná vhodná místa pro '{STRING}'
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Pro získání lepší mapy změňte parametry jejího generování
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :smůla, financování průzkumu se nezdařilo; zkus to znovu
+STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :na mapě nebyla žádná vhodná místa pro založení tohoto typu průmyslu
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :Na mapě nebyla žádná vhodná místa pro '{STRING}'
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Pro získání lepší mapy změňte parametry jejího generování
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :Zde nelze postavit nádraží…
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Nelze postavit autobusovou stanici…
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nelze postavit nákladovou rampu...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nelze postavit tramvajovou stanici pro cestující...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Nelze postavit nákladovou tramvajovou stanici…
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Zde nelze postavit přístav...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :Zde nelze postavit autobusovou zastávku…
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :Zde nelze postavit nakládkovou rampu...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :Zde nelze postavit tramvajovou zastávku...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :Zde nelze postavit tramvajové nákladiště…
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :Zde nelze postavit přístav...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :Zde nelze postavit letiště…
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :spojuje více jak jedno existující nádraží nebo nákladovou rampu...
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stanice je příliš rozlehlá
-STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... nepodporovaný počet kolejí
-STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... nepodporovaná délka
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Příliš mnoho nádraží nebo nákladových ramp
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Příliš mnoho staničních částí
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Příliš mnoho autobusových zastávek
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Příliš mnoho zastávek nákladních automobilů
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Příliš blízko k jinému doku
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Příliš blízko k jinému letišti
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nelze přejmenovat stanici...
-STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Nelze posunout značku stanice
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... silnice vlastněná obcí
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... silnice je otočena jiným směrem
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... průjezdné zastávky nemohou být v zatáčce
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... průjezdné zastávky nemohou být na křižovatce
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :stanice je příliš rozlehlá
+STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :nepodporovaný počet kolejí
+STR_ERROR_STATION_DISALLOWED_LENGTH                             :nepodporovaná délka
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :příliš mnoho nádraží nebo nákladových ramp
+STR_ERROR_TOO_MANY_STATION_SPECS                                :příliš mnoho částí stanice
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :příliš mnoho autobusových zastávek
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :příliš mnoho nákladních ramp
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :příliš blízko k jinému doku
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :příliš blízko k jinému letišti
+STR_ERROR_CAN_T_RENAME_STATION                                  :Nelze přejmenovat stanici...
+STR_ERROR_CAN_T_MOVE_STATION_NAME                               :Nelze přesunout značku stanice...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :silnice vlastněná obcí
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :silnice je otočena nesprávným směrem
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :průjezdné zastávky se nemohou necházet v zatáčce
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :průjezdné zastávky se nemohou nacházet na křižovatce
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nelze odstranit část stanice...
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :Nelze odstranit část stanice...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :Je nejprve nutno odstranit stanici
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nelze odstranit autobusovou zastávku...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nelze odstranit nákladovou rampu...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nelze zbourat tramvajovou stanici pro cestující...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nelze odstranit nákladní tramvajovou stanici...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Je nutné nejprve odstranit konec silnice
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... není zde žádná stanice
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :Nelze odstranit autobusovou zastávku...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :Nelze odstranit nákladovou rampu...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :Nelze odstranit tramvajovou zastávku...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :Nelze odstranit tramvajovou nákladní rampu...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :je nutné nejprve odstranit konec silnice
+STR_ERROR_THERE_IS_NO_STATION                                   :není zde žádná stanice
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Je nutné nejprve zničit stanici
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :je nutné nejprve zničit stanici
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :je nutné nejprve odstranit autobusovou zastávku
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Je nutné nejprve zničit nákladovou rampu
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Je nutné nejdříve zbourat tramvajovou stanici pro cestující
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :je nutné nejprve zničit nákladovou rampu
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :Je nutné nejdříve zbourat tramvajovou zastávku
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :je nutné nejprve odstranit nákladní tramvajovou stanici
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Je nutné nejprve zničit dok
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :je nutné nejprve zničit dok
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :je nutné nejprve zničit letiště
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Sousedí s více než jedním existujícím bodem na trase
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Příliš blízko k jinému směrování
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :sousedí s více než jedním existujícím bodem na trase
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :příliš blízko k jinému směrování
 
-STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :{WHITE}Zde nelze postavit směrování...
-STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :{WHITE}Zde nelze postavit směrování...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Zde nelze umístit bójku...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nelze přejmenovat směrování...
-STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :{WHITE}Nelze posunout značku směřování...
+STR_ERROR_CAN_T_BUILD_RAIL_WAYPOINT                             :Zde nelze postavit směrování...
+STR_ERROR_CAN_T_BUILD_ROAD_WAYPOINT                             :Zde nelze postavit směrování...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :Zde nelze umístit bóji...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :Nelze přejmenovat směrování...
+STR_ERROR_CAN_T_MOVE_WAYPOINT_NAME                              :Nelze přesunout značku směřování...
 
-STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :{WHITE}Zde nelze zbourat směrování...
-STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Zde nelze odstranit směrovaní...
+STR_ERROR_CAN_T_REMOVE_RAIL_WAYPOINT                            :Zde nelze odstranit směrování...
+STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :Zde nelze odstranit směrovaní...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :Je nutné nejprve odstranit směrování
-STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Je nutné nejprve odstranit směrování
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bójka v cestě
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bójka je používána jinou společností!
+STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :je nutné nejprve odstranit směrování
+STR_ERROR_BUOY_IN_THE_WAY                                       :bójka v cestě
+STR_ERROR_BUOY_IS_IN_USE                                        :bójka je používána jinou společností!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Zde nelze postavit vlakové depo...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Zde nelze postavit garáž...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Zde nelze postavit depo pro tramvaje...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Zde nelze postavit lodní depo...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :Zde nelze postavit železniční depo...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :Zde nelze postavit garáž...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :Zde nelze postavit tramvajovou vozovnu...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :Zde nelze postavit lodní depo...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nelze přejmenovat depo...
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :Nelze přejmenovat depo...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... musí stát v depu
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musí být zastaven v garáži
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... musí být zastavena v depu
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... musí být zastaveno v hangáru
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :musí stát v depu
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :musí být zastaven v garáži
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :musí být zastavena v depu
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :musí být zastaveno v hangáru
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky lze měnit, jen když stojí v depu
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Příliš dlouhý vlak
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nelze otočit vozidlo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... se skládá z několika vozů
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :vlaky lze měnit jen v případě, že jsou odstavené v depu
+STR_ERROR_TRAIN_TOO_LONG                                        :vlak je moc dlouhý
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :Nelze otočit vozidlo...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :se skládá z několika vozů
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Neslučitelné druhy kolejí
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nelze přesunout vozidlo...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Zadní stroj vždy doprovází svůj protějšek vepředu
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Nelze přesunout vozidlo...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :zadní stroj vždy doprovází svůj protějšek vepředu
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :nelze najít cestu do místního depa...
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :nelze najít místní garáž
 STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :nepodařilo se najít místní hangár
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nevhodný druh depa
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :nevhodný druh depa
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... může mít pouze jeden příkaz pro vytvoření rozestupu
-STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... příkaz plně naložit nelze použít dokud má vozidlo příkaz na vytvoření rozestupu
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... nelze vytvořit rozestup pro vozidlo s příkazem plně naložit
-STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... nelze použít podmíněné příkazy dokud má vozidlo příkaz pro vytvoření rozestupu
-STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... nelze vytvořit rozestup pro vozidla s podmíněným příkazem.
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :může mít pouze jeden příkaz pro vytvoření rozestupu
+STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :příkaz plně naložit nelze použít dokud má vozidlo příkaz na vytvoření rozestupu
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :nelze vytvořit rozestup pro vozidlo s příkazem plně naložit
+STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :nelze použít podmíněné příkazy dokud má vozidlo příkaz pro vytvoření rozestupu
+STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :nelze vytvořit rozestup pro vozidla s podmíněným příkazem.
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je po výměně moc dlouhý
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Žádné pravidlo pro výměnu vozidel se nepoužilo
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} je po výměně moc dlouhý
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :Žádné pravidlo pro výměnu vozidel se nepoužilo
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(finanční limit)
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Nové vozidlo nemůže převážet {STRING}
-STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nové vozidlo nemůže být přestavěno (příkaz {NUM})
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :Nové vozidlo nemůže převážet {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :Nové vozidlo nemůže být přestavěno (příkaz {NUM})
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemožná kombinace kolejí
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Je nutné nejprve odstranit semafor
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žádné použitelné koleje
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :nemožná kombinace kolejí
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Je nutné nejprve odstranit návěstidlo
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :žádné použitelné koleje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :Je nutné nejprve odstranit koleje
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Silnice je jednosměrná nebo zablokovaná
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Tento typ kolejí nedovoluje výstavbu železničních přejezdů
-STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Tento typ silnice nedovoluje výstavbu železničních přejezdů.
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Zde nelze postavit semafory...
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :silnice je jednosměrná nebo zablokovaná
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :tento typ kolejí neumožňuje stavbu železničních přejezdů
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :tento typ silnice neumožňuje výstavbu železničních přejezdů
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Zde nelze postavit návěstidla...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Zde nelze postavit koleje…
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Odsud nelze odstranit koleje...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Odsud nelze odstranit semafory...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Zde nelze změnit návěstidla...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... nejsou zde žádné koleje
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nejsou zde žádné semafory
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Odsud nelze odstranit koleje...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Odsud nelze odstranit návěstidla...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Zde nelze změnit typ návěstidla...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :nejsou zde žádné koleje
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nejsou zde žádná návěstidla
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Zde nelze změnit typ kolejí...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :Zde nelze změnit typ kolejí...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Je nutné nejprve odstranit silnici
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... na jednosměrných silnicích nemůžou být křižovatky
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Zde nelze postavit silnici...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Zde nelze postavit tramvajovou trať...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Odsud nelze odstranit silnici...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Odsud nelze odstranit tramvajovou trať...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... není zde žádná silnice
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... není zde žádná tramvajová trať
-STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Zde nelze změnit typ silnice...
-STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Zde nelze změnit druh tramvajové tratě...
-STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Neexistuje vhodná silnice
-STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Neexistuje vhodná tramvajová trať
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :je nutné nejprve odstranit silnici
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :na jednosměrných silnicích nemůžou být křižovatky
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :Zde nelze postavit silnici...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :Zde nelze postavit tramvajovou trať...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :Zde nelze odstranit silnici...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :Zde nelze odstranit tramvajovou trať...
+STR_ERROR_THERE_IS_NO_ROAD                                      :není zde žádná silnice
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :není zde žádná tramvajová trať
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :Zde nelze změnit typ silnice...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :Zde nelze změnit typ tramvajové tratě...
+STR_ERROR_NO_SUITABLE_ROAD                                      :neexistuje vhodná silnice
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :neexistuje vhodná tramvajová trať
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :Zde nelze postavit průplav…
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Zde nelze postavit zdymadlo...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Zde nelze vytvořit řeku...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musí být postaven na vodě
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nelze stavět na vodě
-STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nelze stavět na otevřeném moři
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nelze stavět na průplavu
-STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nelze stavět na řece
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :Zde nelze postavit zdymadlo...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :Zde nelze vytvořit řeku...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :musí být postaven na vodě
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :nelze stavět na vodě
+STR_ERROR_CAN_T_BUILD_ON_SEA                                    :nelze stavět na otevřeném moři
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :nelze stavět na průplavu
+STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :nelze stavět na řece
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :je nutné nejprve odstranit kanál
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :Zde nelze postavit akvadukt…
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... strom už tu je
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... nevhodný terén pro tento typ stromu
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Zde nelze vysadit strom...
+STR_ERROR_TREE_ALREADY_HERE                                     :strom už tu je
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :nevhodný terén pro tento typ stromu
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Zde nelze vysadit strom...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Zde nelze postavit most…
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :je nutné nejprve odstranit most
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nelze začít a skončit na stejném místě
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Nájezdy na most nejsou ve stejné výšce
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je pro terén moc nízký
-STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}Most je příliš vysoko na tento terén.
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začátek a konec musí být ve stejné výšce
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba konce mostu musí být na zemi
-STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... most je příliš dlouhý
-STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Most by končil mimo mapu
+STR_ERROR_CAN_T_START_AND_END_ON                                :nelze začít a skončit na stejném místě
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :nájezdy na most nejsou ve stejné výšce
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :most je pro terén moc nízký
+STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :most je příliš vysoko na tento terén.
+STR_ERROR_START_AND_END_MUST_BE_IN                              :začátek a konec musí být ve stejné výšce
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :oba konce mostu musí být na zemi
+STR_ERROR_BRIDGE_TOO_LONG                                       :most je příliš dlouhý
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :most by končil mimo mapu
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Most je o {HEIGHT} moc nízko pro stanici
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Most je o {HEIGHT} moc nízký pro konec silnice
 STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Most je o {HEIGHT} moc nízko pro přístav
@@ -5456,36 +5476,36 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Most je 
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :{WHITE}Most je o {HEIGHT} moc nízko pro zdymadlo
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Zde nelze postavit tunel...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Místo nevhodné pro vjezd do tunelu
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Je nutné nejprve zničit tunel
-STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}V cestě je jiný tunel
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel by končil mimo mapu
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nelze vyrovnat zem na druhém konci tunelu
-STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel je příliš dlouhý
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Zde nelze postavit tunel...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :Místo není použitelné pro vjezd do tunelu
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :je nutné nejprve zničit tunel
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :v cestě je jiný tunel
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :tunel by končil mimo mapu
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :nelze vyrovnat zem na druhém konci tunelu
+STR_ERROR_TUNNEL_TOO_LONG                                       :tunel je příliš dlouhý
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... příliš mnoho objektů
-STR_ERROR_TOO_MANY_OBJECTS.nom                                  :{WHITE}... příliš mnoho objektů
-STR_ERROR_TOO_MANY_OBJECTS.gen                                  :{WHITE}... příliš mnoha objektů
-STR_ERROR_TOO_MANY_OBJECTS.dat                                  :{WHITE}... příliš mnoha objektům
-STR_ERROR_TOO_MANY_OBJECTS.acc                                  :{WHITE}... příliš mnoho objektů
-STR_ERROR_TOO_MANY_OBJECTS.voc                                  :{WHITE}... příliš mnoho objektů!
-STR_ERROR_TOO_MANY_OBJECTS.loc                                  :{WHITE}... příliš mnoha objektech
-STR_ERROR_TOO_MANY_OBJECTS.ins                                  :{WHITE}... příliš mnoha objekty
-STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Objekt nemůže být postaven...
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V cestě je objekt
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... v cestě je ředitelství společnosti
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nelze zakoupit tento pozemek...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... již vlastníš!
-STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :{WHITE}... dosažen limit pro výstavbu objektů
+STR_ERROR_TOO_MANY_OBJECTS                                      :příliš mnoho objektů
+STR_ERROR_TOO_MANY_OBJECTS.nom                                  :příliš mnoho objektů
+STR_ERROR_TOO_MANY_OBJECTS.gen                                  :příliš mnoha objektů
+STR_ERROR_TOO_MANY_OBJECTS.dat                                  :příliš mnoha objektům
+STR_ERROR_TOO_MANY_OBJECTS.acc                                  :příliš mnoho objektů
+STR_ERROR_TOO_MANY_OBJECTS.voc                                  :příliš mnoho objektů!
+STR_ERROR_TOO_MANY_OBJECTS.loc                                  :příliš mnoha objektech
+STR_ERROR_TOO_MANY_OBJECTS.ins                                  :příliš mnoha objekty
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :Zde nemůže být postaven objekt...
+STR_ERROR_OBJECT_IN_THE_WAY                                     :objekt je v cestě
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :v cestě je ředitelství společnosti
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :Nelze zakoupit tento pozemek...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :již vlastníš!
+STR_ERROR_BUILD_OBJECT_LIMIT_REACHED                            :byl dosažen limit pro výstavbu objektů
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :Nelze vytvořit skupinu…
 STR_ERROR_GROUP_CAN_T_DELETE                                    :Nelze vymazat skupinu…
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nelze přejmenovat skupinu...
-STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nelze nastavit nadřazenou skupinu
-STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... skupina nemůže patřit do skupiny, která patří pod ní
+STR_ERROR_GROUP_CAN_T_RENAME                                    :Nelze přejmenovat skupinu...
+STR_ERROR_GROUP_CAN_T_SET_PARENT                                :Nelze nastavit nadřazenou skupinu
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :skupina nemůže patřit do skupiny, která patří pod ní
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :Nelze odstranit všechna vozidla ze skupiny…
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :Nelze přidat vozidlo do skupiny…
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Nelze přidat sdílená vozidla do skupiny…
@@ -5493,145 +5513,145 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Nelze přidat s
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}V cestě je vlak
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Silniční vozidlo v cestě
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Loď v cestě
+STR_ERROR_TRAIN_IN_THE_WAY                                      :v cestě je vlak
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :silniční vozidlo v cestě
+STR_ERROR_SHIP_IN_THE_WAY                                       :loď je v cestě
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :letadlo v cestě
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vozidlo není dostupné
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vozidlo není dostupné
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Loď není dostupná
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Letadlo není dostupné
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :vozidlo není dostupné
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :vozidlo není dostupné
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :loď není dostupná
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :letadlo není dostupné
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nelze přestavět vlak...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Nelze přestavet silniční vozidlo...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nelze přestavět loď...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nelze přestavět letadlo...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :Nelze přestavět vlak...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :Nelze přestavet silniční vozidlo...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :Nelze přestavět loď...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Nelze přestavět letadlo...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Nelze pojmenovat vlak...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nelze přejmenovat silniční vozidlo...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nelze přejmenovat loď...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nelze přejmenovat letadlo
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :Nelze přejmenovat vlak...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Nelze přejmenovat silniční vozidlo...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :Nelze přejmenovat loď...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Nelze přejmenovat letadlo
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nelze rozjet/zastavit vlak...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nelze rozjet/zastavit silniční vozidlo...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nelze rozjet/zastavit loď...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nelze rozjet/zastavit letadlo...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :Nelze rozjet/zastavit vlak...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :Nelze rozjet/zastavit silniční vozidlo...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :Nelze rozjet/zastavit loď...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :Nelze rozjet/zastavit letadlo...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Nelze poslat vlak do depa...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nelze poslat silniční vozidlo do garáže...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nelze poslat loď do depa...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nelze poslat letadlo do hangáru...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :Vlak nelze poslat do depa...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :Silniční vozidlo nelze poslat do garáže...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :Nelze poslat loď do depa...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :Letadlo nelze poslat do hangáru...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nelze koupit vagon nebo lokomotivu...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nelze koupit nové silniční vozidlo...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nelze koupit loď...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nelze koupit letadlo...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :Nelze zakoupit vagon nebo lokomotivu...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :Nelze koupit nové silniční vozidlo...
+STR_ERROR_CAN_T_BUY_SHIP                                        :Nelze koupit loď...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Nelze koupit letadlo...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Nelze přejmenovat typ železničního vozidla...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nelze přejmenovat typ silničního vozidla...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nelze přejmenovat typ lodi...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nelze přejmenovat typ letadla...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :Nelze přejmenovat typ železničního vozidla...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Nelze přejmenovat typ silničního vozidla...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :Nelze přejmenovat typ lodi...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Nelze přejmenovat typ letadla...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Nelze prodat vagon nebo lokomotivu...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Nelze prodat silniční vozidlo...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Nelze prodat loď...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Nelze prodat letadlo...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Nelze prodat vagon nebo lokomotivu...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Nelze prodat silniční vozidlo...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Nelze prodat loď...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Nelze prodat letadlo...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Nelze prodat všechna železniční vozidla...
-STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Nelze prodat všechna silniční vozidla...
-STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Nelze prodat všechny lodě...
-STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :{WHITE}Nelze prodat všechna letadla...
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Nelze prodat všechna železniční vozidla...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Nelze prodat všechna silniční vozidla...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Nelze prodat všechny lodě...
+STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Nelze prodat všechna letadla...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Nelze automaticky vyměnit vlaky...
-STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Nelze automaticky vyměnit silniční vozidla...
-STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Nelze automaticky vyměnit lodě...
-STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Nepodařilo se provést automatickou náhradu letadla...
+STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :Nelze automaticky vyměnit vlaky...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Nelze automaticky vyměnit silniční vozidla...
+STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :Nelze automaticky vyměnit lodě...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Nepodařilo se provést automatickou náhradu letadla...
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Příliš mnoho vozidel ve hře
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nelze změnit interval oprav...
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :příliš mnoho vozidel ve hře
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :Nelze změnit interval oprav...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozidlo bylo zničeno
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :vozidlo bylo zničeno
 
-STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... všechna vozidla nejsou identická
+STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :všechna vozidla nejsou stajná
 
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}Žádná vozidla nejsou dostupná
-STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Zmeň nastavení NewGRF
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Zatím nejsou dostupná žádná vozidla
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začni hrát po {DATE_SHORT} nebo použij NewGRF, které zajistí dřívější vozidla
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :Žádná vozidla nejsou dostupná
+STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :Zmeň nastavení NewGRF
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :Zatím nejsou dostupná žádná vozidla
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :Začni hrát po {DATE_SHORT} nebo použij NewGRF, které zajistí dřívější vozidla
 
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :{WHITE}Nejsou k dispozici žádné obcemi budovatelné typy silnic
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :{WHITE}Změň si svoji konfiguraci NewGRF
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :{WHITE}Zatím nejsou k dispozici žádné obcemi budovatelné typy silnic
-STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :{WHITE}Začni hrát po {DATE_SHORT} nebo použij NewGRF, které zajistí dřívější obcemi budovatelné typy silnic
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL                    :Nejsou k dispozici žádné typy silnic, které můžou obce budovat
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_AT_ALL_EXPLANATION        :Změň si svoji konfiguraci NewGRF
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET                       :Zatím nejsou k dispozici žádné typy silnic, které mohou obce budovat
+STR_ERROR_NO_TOWN_ROADTYPES_AVAILABLE_YET_EXPLANATION           :Začni hrát po {DATE_SHORT} nebo použij NewGRF, které zajistí dřívější typy silnic, které mohou obce budovat
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nelze nechat vlak projet semafory v nebezpečí...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nelze obrátit vlak...
-STR_ERROR_TRAIN_START_NO_POWER                                  :Vlak potřebuje trolej
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nelze nechat vlak projet návěstidlo v nebezpečí...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :Nelze obrátit vlak...
+STR_ERROR_TRAIN_START_NO_POWER                                  :vlak potřebuje trolej
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Nelze otočit vozidlo...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :Nelze otočit vozidlo...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Letadlo letí
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :Letadlo letí
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Nedostatek prostoru na příkazy
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Příliš mnoho příkazů
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nelze přidat nový příkaz...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Nelze smazat tento příkaz...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nelze změnit tento příkaz...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nelze přesunout tento příkaz...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nelze přeskočit současný příkaz...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nelze přeskočit na označený příkaz...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... prostředek se nedostane do všech stanic
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :nedostatek prostoru na příkazy
+STR_ERROR_TOO_MANY_ORDERS                                       :příliš mnoho příkazů
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :Nelze přidat nový příkaz...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :Nelze smazat tento příkaz...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :Nelze změnit tento příkaz...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :Nelze přesunout tento příkaz...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :Nelze přeskočit současný příkaz...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :Nelze přeskočit na vybraný příkaz...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :vozidlo se nedostane do všech stanic
 STR_ERROR_CAN_T_ADD_ORDER                                       :Do této stanice se vozidlo nedostane
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :Vozidlo sdílející tento příkaz se to této stanice nedostane
-STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :{WHITE}... ne všechna vozidla mají stejné příkazy
-STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :{WHITE}... ne všechna vozidla sdílí příkazy
+STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST                         :ne všechna vozidla mají stejné příkazy
+STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST                        :ne všechna vozidla sdílí příkazy
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nelze sdílet seznam příkazů...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nelze zastavit sdílení seznamu příkazů...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nelze kopírovat seznam příkazů...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... příliš daleko od předcházejícího cíle
-STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... letadlo nemá dostatečný dolet
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :Nelze sdílet seznam příkazů...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :Nelze zastavit sdílení seznamu příkazů...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :Nelze kopírovat seznam příkazů...
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :příliš daleko od předcházejícího cíle
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :letadlo nemá dostatečný dolet
 
 # Extra messages which go on the third line of errors, explaining why orders failed
-STR_ERROR_NO_RAIL_STATION                                       :{WHITE}Není zde žádná železniční stanice
-STR_ERROR_NO_BUS_STATION                                        :Není zde žádná autobusová stanice
+STR_ERROR_NO_RAIL_STATION                                       :Není zde žádná železniční stanice
+STR_ERROR_NO_BUS_STATION                                        :Není zde žádná autobusová zastávka
 STR_ERROR_NO_TRUCK_STATION                                      :Není zde žádná nákladní rampa
-STR_ERROR_NO_DOCK                                               :{WHITE}Není zde žádný přístav
-STR_ERROR_NO_AIRPORT                                            :{WHITE}Zde není žádné letiště
-STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :{WHITE}Nejsou zde žádné zastávky kompatibilní s tímto druhem silnice
-STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :{WHITE}Zde není žádná zastávka kompatibilní s tímto typem tramvaje
-STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :{WHITE}Nejsou zde žádné stanice vhodné pro kloubové silniční vozidla.{}Kloubové silniční vozidla vyžadují průjezdnou stanici.
-STR_ERROR_AIRPORT_NO_PLANES                                     :{WHITE}Toto letadlo nemůže přistát na tomto letišti
-STR_ERROR_AIRPORT_NO_HELICOPTERS                                :{WHITE}Tato helikoptéra nemůže přistát na tomto letišti
-STR_ERROR_NO_RAIL_WAYPOINT                                      :{WHITE}Zde není žádný železniční průjezdný bod
-STR_ERROR_NO_ROAD_WAYPOINT                                      :{WHITE}Zde není žádné silniční směrování
-STR_ERROR_NO_BUOY                                               :{WHITE}Zde není žádná bójka
+STR_ERROR_NO_DOCK                                               :Není zde žádný přístav
+STR_ERROR_NO_AIRPORT                                            :Zde není žádné letiště
+STR_ERROR_NO_STOP_COMPATIBLE_ROAD_TYPE                          :Nejsou zde žádné zastávky kompatibilní s tímto druhem silnice
+STR_ERROR_NO_STOP_COMPATIBLE_TRAM_TYPE                          :Zde není žádná zastávka kompatibilní s tímto typem tramvaje
+STR_ERROR_NO_STOP_ARTICULATED_VEHICLE                           :Nejsou zde žádné stanice vhodné pro kloubové silniční vozidla.{}Kloubové silniční vozidla vyžadují průjezdnou zastávku.
+STR_ERROR_AIRPORT_NO_PLANES                                     :Toto letadlo nemůže přistát na tomto letišti
+STR_ERROR_AIRPORT_NO_HELICOPTERS                                :Tato helikoptéra nemůže přistát na tomto letišti
+STR_ERROR_NO_RAIL_WAYPOINT                                      :Zde není žádné směrování
+STR_ERROR_NO_ROAD_WAYPOINT                                      :Zde není žádné silniční směrování
+STR_ERROR_NO_BUOY                                               :Zde není žádná bójka
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tomuto vozidlu nejde nastavit jízdní řád...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozidla mohou čekat jen ve stanicích
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Toto vozidlo v této stanici nestaví
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... jízdní řád je neúplný
-STR_ERROR_TIMETABLE_NOT_STARTED                                 :{WHITE}... jízdní řád ještě nezačal
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :Tomuto vozidlu nejde nastavit jízdní řád...
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :vozidla mohou čekat jen ve stanicích
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :toto vozidlo v této stanici nezastavuje
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :jízdní řád je neúplný
+STR_ERROR_TIMETABLE_NOT_STARTED                                 :jízdní řád ještě nezačal
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... příliš mnoho popisků
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Zde nelze umístit nápis...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nelze změnit nápis...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nelze smazat nápis...
+STR_ERROR_TOO_MANY_SIGNS                                        :příliš mnoho popisků
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :Zde nelze umístit nápis...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :Nelze změnit nápis...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :Nelze smazat nápis...
 
 # Translatable comment for OpenTTD's desktop shortcut
 ###external 1

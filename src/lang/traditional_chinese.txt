@@ -3101,9 +3101,9 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}框選�
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}產生地形
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}在場景中產生岩石區。{}按住 <Ctrl> 點選以移除岩石區
-STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}在場景中放置崎嶇地帶。{}按住 <Ctrl> 點選以移除崎嶇地帶
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}定義沙漠區域。{}按住 <Ctrl> 點選可移除沙漠區域
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}在場景中設置岩石地帶。{}按住 <Ctrl> 點選以移除岩石地帶
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}在場景中設置崎嶇地帶。{}按住 <Ctrl> 點選以移除崎嶇地帶
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}劃出沙漠範圍。{}按住 <Ctrl> 點選可移除沙漠範圍
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加地形升降的範圍
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}減少地形升降的範圍
 STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}降低土地上的地點或區域。如果尺寸是 1x1 ，點選並拖曳以降低所選擇的地點，並平整所選取區域的土地。按住 <Ctrl> 鍵點選並拖曳以斜向選擇區域。另按住 <Shift> 鍵選擇則可顯示預估成本
@@ -5072,7 +5072,7 @@ STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}無法�
 STR_ERROR_GAME_SAVE_FAILED                                      :遊戲儲存失敗……
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :無法刪除檔案
 STR_ERROR_CANNOT_CREATE_DIRECTORY                               :無法建立資料夾
-STR_ERROR_DIRECTORY_NAME_IN_USE                                 :已有相同名稱的檔案或資料夾存在
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :已有相同名稱的檔案或資料夾
 STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :資料夾名稱不能含有特殊字元
 STR_ERROR_DIRECTORY_LEADING_DOT                                 :資料夾名稱不能以句號或點做開頭
 STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :你沒有權限在這裡建立資料夾
