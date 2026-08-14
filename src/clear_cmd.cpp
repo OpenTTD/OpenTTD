@@ -339,6 +339,40 @@ static void TileLoop_Clear(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
+/**
+ * Test if a tile may have rocks on.
+ * @param tile The tile index.
+ * @return true if the tile may have rocks.
+ */
+static bool TileMayHaveRocks(TileIndex tile)
+{
+	switch (GetTileType(tile)) {
+		case TileType::Clear: return true;
+		case TileType::Water: return IsCoast(tile);
+		default: return false;
+	}
+}
+
+/**
+ * Make a tile that may have rocks on have rocks on.
+ * @param tile The tile index.
+ */
+static void TileMakeRocks(TileIndex tile)
+{
+	switch (GetTileType(tile)) {
+		case TileType::Clear:
+			SetClearGroundDensity(tile, ClearGround::Rocks, 3);
+			break;
+
+		case TileType::Water:
+			SetWaterTileType(tile, WaterTileType::CoastRocks);
+			break;
+
+		default:
+			break;
+	}
+}
+
 void GenerateClearTile()
 {
 	uint i, gi;
@@ -362,17 +396,17 @@ void GenerateClearTile()
 		tile = RandomTileSeed(r);
 
 		IncreaseGeneratingWorldProgress(GenWorldProgress::RoughAndRocks);
-		if (IsTileType(tile, TileType::Clear)) {
+		if (TileMayHaveRocks(tile)) {
 			uint j = GB(r, 16, 4) + 5;
 			for (;;) {
 				TileIndex tile_new;
 
-				SetClearGroundDensity(tile, ClearGround::Rocks, 3);
+				TileMakeRocks(tile);
 				MarkTileDirtyByTile(tile);
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDiagDir((DiagDirection)GB(Random(), 0, 2));
-				} while (!IsTileType(tile_new, TileType::Clear));
+				} while (!TileMayHaveRocks(tile_new));
 				tile = tile_new;
 			}
 get_out:;
