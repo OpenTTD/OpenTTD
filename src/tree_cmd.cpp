@@ -764,15 +764,18 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc &td)
 	td.owner[0] = GetTileOwner(tile);
 }
 
-static void TileLoopTreesDesert(TileIndex tile)
+/**
+ * Handle the tile loop of desert trees.
+ * @param tile The tree tile.
+ * @return \c true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopTreesDesert(TileIndex tile)
 {
 	switch (GetTropicZone(tile)) {
 		case TropicZone::Desert:
-			if (GetTreeGround(tile) != TreeGround::SnowOrDesert) {
-				SetTreeGroundDensity(tile, TreeGround::SnowOrDesert, 3);
-				MarkTileDirtyByTile(tile);
-			}
-			break;
+			if (GetTreeGround(tile) == TreeGround::SnowOrDesert) return false;
+			SetTreeGroundDensity(tile, TreeGround::SnowOrDesert, 3);
+			return true;
 
 		case TropicZone::Rainforest: {
 			static const SoundFx forest_sounds[] = {
@@ -784,22 +787,28 @@ static void TileLoopTreesDesert(TileIndex tile)
 			uint32_t r = Random();
 
 			if (Chance16I(1, 200, r) && _settings_client.sound.ambient) SndPlayTileFx(forest_sounds[GB(r, 16, 2)], tile);
-			break;
+			return false;
 		}
 
-		default: break;
+		default:
+			return false;
 	}
 }
 
-static void TileLoopTreesAlps(TileIndex tile)
+/**
+ * Handle the tile loop of arctic trees.
+ * @param tile The tree tile.
+ * @return \c true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopTreesAlps(TileIndex tile)
 {
 	int k = GetTileZ(tile) - GetSnowLine() + 1;
 
 	if (k < 0) {
 		switch (GetTreeGround(tile)) {
 			case TreeGround::SnowOrDesert: SetTreeGroundDensity(tile, TreeGround::Grass, 3); break;
-			case TreeGround::RoughSnow:  SetTreeGroundDensity(tile, TreeGround::Rough, 3); break;
-			default: return;
+			case TreeGround::RoughSnow: SetTreeGroundDensity(tile, TreeGround::Rough, 3); break;
+			default: return false;
 		}
 	} else {
 		uint density = std::min<uint>(k, 3);
@@ -816,10 +825,10 @@ static void TileLoopTreesAlps(TileIndex tile)
 					SndPlayTileFx((r & 0x80000000) ? SND_39_ARCTIC_SNOW_2 : SND_34_ARCTIC_SNOW_1, tile);
 				}
 			}
-			return;
+			return false;
 		}
 	}
-	MarkTileDirtyByTile(tile);
+	return true;
 }
 
 /**
@@ -846,15 +855,161 @@ static bool TreesOnTileCanSpread(TileIndex tile)
 	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
+/**
+ * Handle a grown tree on a tile.
+ * @param tile The tree tile.
+ * @return \c true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopHandleGrownTree(TileIndex tile)
+{
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
+			GetTreeType(tile) != TREE_CACTUS &&
+			GetTropicZone(tile) == TropicZone::Desert) {
+		AddTreeGrowth(tile, 1);
+		return true;
+	}
+
+	switch (GB(Random(), 0, 3)) {
+		case 0: // Start the dying stages.
+			AddTreeGrowth(tile, 1);
+			return true;
+
+		case 1: // Add a tree.
+			if (GetTreeCount(tile) < 4 && TreesOnTileCanSpread(tile)) {
+				AddTreeCount(tile, 1);
+				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
+				return true;
+			}
+			[[fallthrough]];
+
+		case 2: { // Add a neighbouring tree.
+			if (!TreesOnTileCanSpread(tile)) return false;
+
+			TreeType treetype = GetTreeType(tile);
+
+			tile += TileOffsByDir(RandomRange(Direction::End));
+
+			if (!CanPlantTreesOnTile(tile, false)) return false;
+
+			/* Don't plant trees if ground was freshly cleared. */
+			if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == ClearGround::Grass && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return false;
+
+			PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
+			return true;
+		}
+
+		default: // Do nothing.
+			return false;
+	}
+}
+
+/**
+ * Handle a dead tree on a tile.
+ * @param tile The tree tile.
+ * @return \c true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopHandleDeadTree(TileIndex tile)
+{
+	if (!TreesOnTileCanSpread(tile)) {
+		/* If trees can't spread just plant a new one to prevent deforestation. */
+		SetTreeGrowth(tile, TreeGrowthStage::Growing1);
+		return true;
+	}
+
+	if (GetTreeCount(tile) > 1) {
+		/* More than one tree, delete it. */
+		AddTreeCount(tile, -1);
+		SetTreeGrowth(tile, TreeGrowthStage::Grown);
+		return true;
+	}
+
+	/* Just one tree, change type into an appropriate clear tile. */
+	switch (GetTreeGround(tile)) {
+		case TreeGround::Shore:
+			MakeShore(tile);
+			break;
+
+		case TreeGround::Grass:
+			MakeClear(tile, ClearGround::Grass, GetTreeDensity(tile));
+			break;
+
+		case TreeGround::Rough:
+			MakeClear(tile, ClearGround::Rough, 3);
+			break;
+
+		case TreeGround::RoughSnow: {
+			uint density = GetTreeDensity(tile);
+			MakeClear(tile, ClearGround::Rough, 3);
+			MakeSnow(tile, density);
+			break;
+		}
+
+		default: // snow or desert
+			if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
+				MakeClear(tile, ClearGround::Desert, GetTreeDensity(tile));
+			} else {
+				uint density = GetTreeDensity(tile);
+				MakeClear(tile, ClearGround::Grass, 3);
+				MakeSnow(tile, density);
+			}
+			break;
+	}
+	return true;
+}
+
+/**
+ * Handle update cycle for grass on tree tiles.
+ * @param tile The tree tile.
+ * @param cycle The current tree cycle.
+ * @return \c true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopHandleTreeGroundCycle(TileIndex tile, uint32_t cycle)
+{
+	/* Handle growth of grass (under trees/on TileType::Trees tiles) at every 8th processings, like it's done for grass on TileType::Clear tiles. */
+	if ((cycle & 7) != 7) return false;
+	if (GetTreeGround(tile) != TreeGround::Grass) return false;
+
+	uint density = GetTreeDensity(tile);
+	if (density >= 3) return false;
+
+	SetTreeGroundDensity(tile, TreeGround::Grass, density + 1);
+	return true;
+}
+
+/**
+ * Handle tree update cycle.
+ * @param tile The tree tile.
+ * @param cycle The current tree cycle.
+ * @return \c true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopHandleTreeCycle(TileIndex tile, uint32_t cycle)
+{
+	static const uint32_t TREE_UPDATE_FREQUENCY = 16;  // How many tile updates happen for one tree update
+	if (cycle % TREE_UPDATE_FREQUENCY != TREE_UPDATE_FREQUENCY - 1) return false;
+
+	switch (GetTreeGrowth(tile)) {
+		case TreeGrowthStage::Grown: // regular sized tree
+			return TileLoopHandleGrownTree(tile);
+
+		case TreeGrowthStage::Dead: // final stage of tree destruction
+			return TileLoopHandleDeadTree(tile);
+
+		default:
+			AddTreeGrowth(tile, 1);
+			return true;
+	}
+}
+
 /** @copydoc TileLoopProc */
 static void TileLoop_Trees(TileIndex tile)
 {
+	bool mark_dirty = false;
 	if (GetTreeGround(tile) == TreeGround::Shore) {
 		TileLoop_Water(tile);
 	} else {
 		switch (_settings_game.game_creation.landscape) {
-			case LandscapeType::Tropic: TileLoopTreesDesert(tile); break;
-			case LandscapeType::Arctic: TileLoopTreesAlps(tile);   break;
+			case LandscapeType::Tropic: mark_dirty = TileLoopTreesDesert(tile); break;
+			case LandscapeType::Arctic: mark_dirty = TileLoopTreesAlps(tile); break;
 			default: break;
 		}
 	}
@@ -863,106 +1018,16 @@ static void TileLoop_Trees(TileIndex tile)
 
 	/* TimerGameTick::counter is incremented by 256 between each call, so ignore lower 8 bits.
 	 * Also, we use a simple hash to spread the updates evenly over the map.
-	 * 11 and 9 are just some co-prime numbers for better spread.
-	 */
+	 * 11 and 9 are just some co-prime numbers for better spread. */
 	uint32_t cycle = 11 * TileX(tile) + 9 * TileY(tile) + (TimerGameTick::counter >> 8);
 
-	/* Handle growth of grass (under trees/on TileType::Trees tiles) at every 8th processings, like it's done for grass on TileType::Clear tiles. */
-	if ((cycle & 7) == 7 && GetTreeGround(tile) == TreeGround::Grass) {
-		uint density = GetTreeDensity(tile);
-		if (density < 3) {
-			SetTreeGroundDensity(tile, TreeGround::Grass, density + 1);
-			MarkTileDirtyByTile(tile);
-		}
+	mark_dirty |= TileLoopHandleTreeGroundCycle(tile, cycle);
+
+	if (_settings_game.construction.extra_tree_placement != ETP_NO_GROWTH_NO_SPREAD) {
+		mark_dirty |= TileLoopHandleTreeCycle(tile, cycle);
 	}
 
-	if (_settings_game.construction.extra_tree_placement == ETP_NO_GROWTH_NO_SPREAD) return;
-
-	static const uint32_t TREE_UPDATE_FREQUENCY = 16;  // How many tile updates happen for one tree update
-	if (cycle % TREE_UPDATE_FREQUENCY != TREE_UPDATE_FREQUENCY - 1) return;
-
-	switch (GetTreeGrowth(tile)) {
-		case TreeGrowthStage::Grown: // regular sized tree
-			if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
-					GetTreeType(tile) != TREE_CACTUS &&
-					GetTropicZone(tile) == TropicZone::Desert) {
-				AddTreeGrowth(tile, 1);
-			} else {
-				switch (GB(Random(), 0, 3)) {
-					case 0: // start destructing
-						AddTreeGrowth(tile, 1);
-						break;
-
-					case 1: // add a tree
-						if (GetTreeCount(tile) < 4 && TreesOnTileCanSpread(tile)) {
-							AddTreeCount(tile, 1);
-							SetTreeGrowth(tile, TreeGrowthStage::Growing1);
-							break;
-						}
-						[[fallthrough]];
-
-					case 2: { // add a neighbouring tree
-						if (!TreesOnTileCanSpread(tile)) break;
-
-						TreeType treetype = GetTreeType(tile);
-
-						tile += TileOffsByDir(RandomRange(Direction::End));
-
-						if (!CanPlantTreesOnTile(tile, false)) return;
-
-						/* Don't plant trees, if ground was freshly cleared */
-						if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == ClearGround::Grass && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
-
-						PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
-
-						break;
-					}
-
-					default:
-						return;
-				}
-			}
-			break;
-
-		case TreeGrowthStage::Dead: // final stage of tree destruction
-			if (!TreesOnTileCanSpread(tile)) {
-				/* if trees can't spread just plant a new one to prevent deforestation */
-				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
-			} else if (GetTreeCount(tile) > 1) {
-				/* more than one tree, delete it */
-				AddTreeCount(tile, -1);
-				SetTreeGrowth(tile, TreeGrowthStage::Grown);
-			} else {
-				/* just one tree, change type into TileType::Clear */
-				switch (GetTreeGround(tile)) {
-					case TreeGround::Shore: MakeShore(tile); break;
-					case TreeGround::Grass: MakeClear(tile, ClearGround::Grass, GetTreeDensity(tile)); break;
-					case TreeGround::Rough: MakeClear(tile, ClearGround::Rough, 3); break;
-					case TreeGround::RoughSnow: {
-						uint density = GetTreeDensity(tile);
-						MakeClear(tile, ClearGround::Rough, 3);
-						MakeSnow(tile, density);
-						break;
-					}
-					default: // snow or desert
-						if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
-							MakeClear(tile, ClearGround::Desert, GetTreeDensity(tile));
-						} else {
-							uint density = GetTreeDensity(tile);
-							MakeClear(tile, ClearGround::Grass, 3);
-							MakeSnow(tile, density);
-						}
-						break;
-				}
-			}
-			break;
-
-		default:
-			AddTreeGrowth(tile, 1);
-			break;
-	}
-
-	MarkTileDirtyByTile(tile);
+	if (mark_dirty) MarkTileDirtyByTile(tile);
 }
 
 /**
