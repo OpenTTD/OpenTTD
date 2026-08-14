@@ -382,7 +382,7 @@ static void TileMakeRocks(TileIndex tile)
  * @param tile Initial tile.
  * @param count Number of rocks to attempt to place.
  */
-static void GenerateRocks(TileIndex tile, uint32_t count)
+void GenerateRocks(TileIndex tile, uint32_t count)
 {
 	if (!TileMayHaveRocks(tile, false)) return;
 

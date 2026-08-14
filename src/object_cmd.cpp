@@ -8,6 +8,7 @@
 /** @file object_cmd.cpp Handling of object tiles. */
 
 #include "stdafx.h"
+#include "clear_map.h"
 #include "landscape.h"
 #include "command_func.h"
 #include "company_func.h"
@@ -764,6 +765,16 @@ static bool TryBuildLighthouseNearTile(TileIndex coast_tile)
 	for (TileIndex build_tile : SpiralTileSequence(coast_tile, 3)) {
 		if (!IsTileType(build_tile, TileType::Clear) || !IsTileFlat(build_tile) || IsBridgeAbove(build_tile)) continue;
 		BuildObject(OBJECT_LIGHTHOUSE, build_tile);
+
+		/* Generate rocks from each coast tile surrounding the chosen coast tile. This is done because we don't have
+		 * control of the direction of GenerateRocks, so this gives more chance for rocks to be generated in water. */
+		uint32_t r = Random();
+		for (TileIndex rock_tile : SpiralTileSequence(coast_tile, 3)) {
+			if (!IsCoastTile(rock_tile)) continue;
+			GenerateRocks(rock_tile, GB(r, 0, 4) + 5);
+			r >>= 4;
+		}
+
 		return true;
 	}
 
