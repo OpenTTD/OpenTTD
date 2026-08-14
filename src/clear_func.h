@@ -14,5 +14,6 @@
 
 void DrawRoughLandTile(const TileInfo *ti);
 void DrawClearLandTile(const TileInfo *ti, uint8_t density);
+void GenerateRocks(TileIndex tile, uint32_t count);
 
 #endif /* CLEAR_FUNC_H */
