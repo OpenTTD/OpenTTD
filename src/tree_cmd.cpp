@@ -63,10 +63,10 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 {
 	switch (GetTileType(tile)) {
 		case TileType::Water:
-			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
+			return IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
 
 		case TileType::Clear:
-			return !IsBridgeAbove(tile) && !IsClearGround(tile, ClearGround::Fields) && !IsClearGround(tile, ClearGround::Rocks) &&
+			return !IsClearGround(tile, ClearGround::Fields) && !IsClearGround(tile, ClearGround::Rocks) &&
 			       (allow_desert || !IsClearGround(tile, ClearGround::Desert));
 
 		default: return false;
@@ -406,6 +406,12 @@ void PlaceTreeFromClass(TileIndex tile, uint32_t r, bool keep_density, std::span
 	if (tree != TREE_INVALID) {
 		if (!IsTreeTypeValidForTile(tile, tree)) return;
 
+		if (IsBridgeAbove(tile)) {
+			const auto &tts = GetTreeTileSpec(tree);
+			int height_diff = GetTileMaxZ(tile) + tts.height - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+			if (height_diff > 0) return;
+		}
+
 		PlantTreesOnTile(tile, tree, GB(r, 22, 2), static_cast<TreeGrowthStage>(std::min<uint8_t>(GB(r, 16, 3), to_underlying(TreeGrowthStage::Dead))));
 		MarkTileDirtyByTile(tile);
 
@@ -723,6 +729,10 @@ uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, ui
 				MarkTileDirtyByTile(tile_to_plant, 0);
 				planted++;
 			} else if (CanPlantTreesOnTile(tile_to_plant, allow_desert)) {
+				if (IsBridgeAbove(tile)) {
+					int height_diff = GetTileMaxZ(tile) + tts.height - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+					if (height_diff > 0) continue;
+				}
 				PlantTreesOnTile(tile_to_plant, treetype, 0, TreeGrowthStage::Grown);
 				MarkTileDirtyByTile(tile_to_plant, 0);
 				planted++;
@@ -829,11 +839,6 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				[[fallthrough]];
 
 			case TileType::Clear: {
-				if (IsBridgeAbove(current_tile)) {
-					msg = STR_ERROR_SITE_UNSUITABLE;
-					continue;
-				}
-
 				TreeType treetype = (TreeType)tree_to_plant;
 				if (treetype == TREE_INVALID) {
 					uint r = Random();
@@ -845,6 +850,15 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				if (treetype != TREE_INVALID && _game_mode != GameMode::Editor && !IsTreeTypeValidForTile(current_tile, treetype)) {
 					msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
 					continue;
+				}
+
+				if (IsBridgeAbove(current_tile)) {
+					const auto &tts = GetTreeTileSpec(treetype);
+					int height_diff = GetTileMaxZ(current_tile) + tts.height - GetBridgeHeight(GetSouthernBridgeEnd(current_tile));
+					if (height_diff > 0) {
+						msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
+						continue;
+					}
 				}
 
 				/* Test tree limit. */
@@ -960,7 +974,10 @@ static void DrawTile_Trees(TileInfo *ti)
 	}
 
 	/* Do not draw trees when the invisible trees setting is set */
-	if (IsInvisibilitySet(TransparencyOption::Trees)) return;
+	if (IsInvisibilitySet(TransparencyOption::Trees)) {
+		DrawBridgeMiddle(ti, {});
+		return;
+	}
 
 	const TreeTileSpec &tts = GetTreeTileSpec(GetTreeType(ti->tile));
 
@@ -994,6 +1011,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	}
 
 	DrawTreeList(ti, te, trees, tts.height * TILE_HEIGHT);
+	DrawBridgeMiddle(ti, {});
 }
 
 
@@ -1148,6 +1166,11 @@ static bool TileLoopHandleGrownTree(TileIndex tile, const TreeTileSpec &tts)
 
 			/* Don't plant trees, if ground was freshly cleared */
 			if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == ClearGround::Grass && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return false;
+
+			if (IsBridgeAbove(tile)) {
+				int height_diff = GetTileMaxZ(tile) + tts.height - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+				if (height_diff > 0) return false;
+			}
 
 			PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
 			return true;
@@ -1335,6 +1358,11 @@ static void PlantRandomTree(bool rainforest)
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8), GB(Random(), 0, 8), GetTreeTypesForTile(tile));
 	if (tree == TREE_INVALID) return;
 
+	if (IsBridgeAbove(tile)) {
+		int height_diff = GetTileMaxZ(tile) + GetTreeTileSpec(tree).height - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+		if (height_diff > 0) return;
+	}
+
 	PlantTreesOnTile(tile, tree, 0, TreeGrowthStage::Growing1);
 }
 
@@ -1367,6 +1395,15 @@ void InitializeTrees()
 	_trees_tick_ctr = 0;
 }
 
+/** @copydoc CheckBuildAboveProc */
+static CommandCost CheckBuildAbove_Trees(TileIndex tile, DoCommandFlags flags, [[maybe_unused]] Axis axis, int height)
+{
+	const auto &tts = GetTreeTileSpec(GetTreeType(tile));
+
+	int height_diff = GetTileMaxZ(tile) + tts.height - height;
+	if (height_diff > 0) return Command<Commands::LandscapeClear>::Do(flags, tile);
+	return CommandCost();
+}
 
 /** TileTypeProcs definitions for TileType::Trees tiles. */
 extern const TileTypeProcs _tile_type_trees_procs = {
@@ -1375,5 +1412,6 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	.clear_tile_proc = ClearTile_Trees,
 	.get_tile_desc_proc = GetTileDesc_Trees,
 	.tile_loop_proc = TileLoop_Trees,
-	.terraform_tile_proc = [](TileIndex tile, DoCommandFlags flags, int, Slope) { return Command<Commands::LandscapeClear>::Do(flags, tile); }
+	.terraform_tile_proc = [](TileIndex tile, DoCommandFlags flags, int, Slope) { return Command<Commands::LandscapeClear>::Do(flags, tile); },
+	.check_build_above_proc = CheckBuildAbove_Trees,
 };
