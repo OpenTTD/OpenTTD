@@ -158,9 +158,9 @@ struct IndustrySpec {
 struct IndustryTileSpec {
 	std::array<CargoType, INDUSTRY_NUM_INPUTS> accepts_cargo; ///< Cargo accepted by this tile
 	std::array<int8_t, INDUSTRY_NUM_INPUTS> acceptance; ///< Level of acceptance per cargo type (signed, may be negative!)
-	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
-	uint8_t anim_production;                 ///< Animation frame to start when goods are produced
-	uint8_t anim_next;                       ///< Next frame in an animation
+	Slope slopes_refused; ///< slope pattern on which this tile cannot be built
+	IndustryGfx anim_production; ///< Animation frame to start when goods are produced
+	IndustryGfx anim_next; ///< Next frame in an animation
 	/**
 	 * When true, the tile has to be drawn using the animation
 	 * state instead of the construction stage
@@ -197,18 +197,14 @@ extern std::array<IndustryType, NUM_INDUSTRYTYPES> _sorted_industry_types;
  */
 inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
 {
-	/* the 0xFF should be GFX_WATERTILE_SPECIALCHECK but for reasons of include mess,
-	 * we'll simplify the writing.
-	 * Basically, the first test is required since the GFX_WATERTILE_SPECIALCHECK value
+	/* Basically, the first test is required since the GFX_WATERTILE_SPECIALCHECK value
 	 * will never be assigned as a tile index and is only required in order to do some
 	 * tests while building the industry (as in WATER REQUIRED */
-	if (gfx != 0xFF) {
-		assert(gfx < NUM_INDUSTRYTILES);
-		const IndustryTileSpec *it = &_industry_tile_specs[gfx];
-		return it->grf_prop.override_id == INVALID_INDUSTRYTILE ? gfx : it->grf_prop.override_id;
-	} else {
-		return gfx;
-	}
+	if (gfx == GFX_WATERTILE_SPECIALCHECK) return gfx;
+
+	assert(gfx < NUM_INDUSTRYTILES);
+	const IndustryTileSpec *it = &_industry_tile_specs[gfx];
+	return it->grf_prop.override_id == INVALID_INDUSTRYTILE ? gfx : it->grf_prop.override_id;
 }
 
 #endif /* INDUSTRYTYPE_H */
