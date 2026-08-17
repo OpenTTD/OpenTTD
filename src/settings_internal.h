@@ -77,7 +77,7 @@ struct IniItem;
  * @tparam TTo The type to convert to.
  */
 template <typename T, typename TTo>
-concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, TTo> || (is_scoped_enum_v<T> && std::is_convertible_v<std::underlying_type_t<T>, TTo>);
+concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, TTo> || (std::is_scoped_enum_v<T> && std::is_convertible_v<std::underlying_type_t<T>, TTo>);
 
 /** Properties of config file settings. */
 struct SettingDesc {
@@ -224,7 +224,7 @@ struct IntSettingDesc : SettingDesc {
 	{
 		if constexpr (ConvertibleThroughBase<Tdef>) {
 			this->def = def.base();
-		} else if constexpr (is_scoped_enum_v<Tdef>) {
+		} else if constexpr (std::is_scoped_enum_v<Tdef>) {
 			this->def = std::to_underlying(def);
 		} else {
 			this->def = def;
@@ -232,7 +232,7 @@ struct IntSettingDesc : SettingDesc {
 
 		if constexpr (ConvertibleThroughBase<Tmin>) {
 			this->min = min.base();
-		} else if constexpr (is_scoped_enum_v<Tmin>) {
+		} else if constexpr (std::is_scoped_enum_v<Tmin>) {
 			this->min = std::to_underlying(min);
 		} else {
 			this->min = min;
@@ -240,7 +240,7 @@ struct IntSettingDesc : SettingDesc {
 
 		if constexpr (ConvertibleThroughBase<Tmax>) {
 			this->max = max.base();
-		} else if constexpr (is_scoped_enum_v<Tmax>) {
+		} else if constexpr (std::is_scoped_enum_v<Tmax>) {
 			this->max = std::to_underlying(max);
 		} else {
 			this->max = max;
@@ -248,7 +248,7 @@ struct IntSettingDesc : SettingDesc {
 
 		if constexpr (ConvertibleThroughBase<Tinterval>) {
 			this->interval = interval.base();
-		} else if constexpr (is_scoped_enum_v<Tinterval>) {
+		} else if constexpr (std::is_scoped_enum_v<Tinterval>) {
 			this->interval = std::to_underlying(interval);
 		} else {
 			this->interval = interval;
