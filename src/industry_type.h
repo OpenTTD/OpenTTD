@@ -49,7 +49,7 @@ static const IndustryType NEW_INDUSTRYOFFSET     = 37;                ///< origi
 static const IndustryType NUM_INDUSTRYTYPES      = 240;               ///< total number of industry types, new and old; limited to 240 because we need some special ids like IT_INVALID, IT_AI_UNKNOWN, IT_AI_TOWN, ...
 static const IndustryType IT_INVALID             = 0xFF;
 
-static const IndustryGfx  INDUSTRYTILE_NOANIM    = 0xFF;              ///< flag to mark industry tiles as having no animation
+static const IndustryGfx INDUSTRYTILE_NOANIM = UINT16_MAX; ///< Sentinel value to mark industry tiles as having no animation
 static const IndustryGfx  NEW_INDUSTRYTILEOFFSET = 175;               ///< original number of tiles
 static const IndustryGfx  NUM_INDUSTRYTILES      = 512;               ///< total number of industry tiles, new and old
 static const IndustryGfx  INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES; ///< one above amount is considered invalid
@@ -93,7 +93,7 @@ static constexpr IndustryGfx GFX_BUBBLE_CATCHER = 162;
 static constexpr IndustryGfx GFX_TOFFEE_QUARRY = 165;
 static constexpr IndustryGfx GFX_SUGAR_MINE_SIEVE = 174;
 /** @} */
-static constexpr IndustryGfx GFX_WATERTILE_SPECIALCHECK = 0xFF; ///< Sentinel marker in industry layout to perform a water tile check.
+static constexpr IndustryGfx GFX_WATERTILE_SPECIALCHECK = UINT16_MAX; ///< Sentinel marker in industry layout to perform a water tile check.
 
 static const int INDUSTRY_COMPLETED = 3; ///< final stage of industry construction.
 
