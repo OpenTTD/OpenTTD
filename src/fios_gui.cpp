@@ -670,8 +670,8 @@ public:
 			if (tr.top > tr.bottom) return;
 
 			/* Climate */
-			if (to_underlying(_load_check_data.landscape) < NUM_LANDSCAPE) {
-				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + to_underlying(_load_check_data.landscape)));
+			if (std::to_underlying(_load_check_data.landscape) < NUM_LANDSCAPE) {
+				DrawString(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + std::to_underlying(_load_check_data.landscape)));
 				tr.top += GetCharacterHeight(FontSize::Normal);
 			}
 
@@ -698,7 +698,7 @@ public:
 				if (tr.top > tr.bottom) return;
 
 				/* NewGrf compatibility */
-				DrawString(tr, GetString(STR_SAVELOAD_DETAIL_GRFSTATUS, _load_check_data.grfconfig.empty() ? STR_NEWGRF_LIST_NONE : STR_NEWGRF_LIST_ALL_FOUND + to_underlying(_load_check_data.grf_compatibility)));
+				DrawString(tr, GetString(STR_SAVELOAD_DETAIL_GRFSTATUS, _load_check_data.grfconfig.empty() ? STR_NEWGRF_LIST_NONE : STR_NEWGRF_LIST_ALL_FOUND + std::to_underlying(_load_check_data.grf_compatibility)));
 				tr.top += GetCharacterHeight(FontSize::Normal);
 			}
 			if (tr.top > tr.bottom) return;

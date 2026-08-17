@@ -103,7 +103,7 @@ static void GetCargoSuffix(uint cargo, CargoSuffixType cst, const Industry *ind,
 	if (indspec->callback_mask.Test(IndustryCallbackMask::CargoSuffix)) {
 		TileIndex t = (cst != CargoSuffixType::Fund) ? ind->location.tile : INVALID_TILE;
 		std::array<int32_t, 16> regs100;
-		uint16_t callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (to_underlying(cst) << 8) | cargo, const_cast<Industry *>(ind), ind_type, t, regs100);
+		uint16_t callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (std::to_underlying(cst) << 8) | cargo, const_cast<Industry *>(ind), ind_type, t, regs100);
 		if (callback == CALLBACK_FAILED) return;
 
 		if (indspec->grf_prop.grffile->grf_version < 8) {
@@ -176,7 +176,7 @@ static inline void GetAllCargoSuffixes(CargoSuffixDirection use_input, CargoSuff
 		for (uint j = 0; j < lengthof(suffixes); j++) {
 			if (IsValidCargoType(cargoes[j])) {
 				uint8_t local_id = indspec->grf_prop.grffile->cargo_map[cargoes[j]]; // should we check the value for valid?
-				uint cargotype = local_id << 16 | to_underlying(use_input);
+				uint cargotype = local_id << 16 | std::to_underlying(use_input);
 				GetCargoSuffix(cargotype, cst, ind, ind_type, indspec, suffixes[j]);
 			} else {
 				suffixes[j].text.clear();
@@ -225,7 +225,7 @@ void GetCargoSuffix(CargoSuffixDirection use_input, CargoSuffixType cst, const I
 	if (!IsValidCargoType(cargo)) return;
 	if (indspec->behaviour.Test(IndustryBehaviour::CargoTypesUnlimited)) {
 		uint8_t local_id = indspec->grf_prop.grffile->cargo_map[cargo]; // should we check the value for valid?
-		uint cargotype = local_id << 16 | to_underlying(use_input);
+		uint cargotype = local_id << 16 | std::to_underlying(use_input);
 		GetCargoSuffix(cargotype, cst, ind, ind_type, indspec, suffix);
 	} else if (use_input == CargoSuffixDirection::In) {
 		if (slot < INDUSTRY_ORIGINAL_NUM_INPUTS) GetCargoSuffix(slot, cst, ind, ind_type, indspec, suffix);

@@ -74,7 +74,7 @@ static void FeatureNewName(ByteReader &buf)
 	               id, endid, feature, lang);
 
 	/* Feature overlay to make non-generic strings unique in their feature. We use feature + 1 so that generic strings stay as they are. */
-	uint32_t feature_overlay = generic ? 0 : ((to_underlying(feature) + 1) << 16);
+	uint32_t feature_overlay = generic ? 0 : ((std::to_underlying(feature) + 1) << 16);
 
 	for (; id < endid && buf.HasData(); id++) {
 		std::string_view name = buf.ReadString();

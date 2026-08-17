@@ -32,12 +32,12 @@ public:
 	 */
 	enum GoalType : uint8_t {
 		/* Note: these values represent part of the in-game GoalType enum */
-		GT_NONE = to_underlying(::GoalType::None), ///< Destination is not linked.
-		GT_TILE = to_underlying(::GoalType::Tile), ///< Destination is a tile.
-		GT_INDUSTRY = to_underlying(::GoalType::Industry), ///< Destination is an industry.
-		GT_TOWN = to_underlying(::GoalType::Town), ///< Destination is a town.
-		GT_COMPANY = to_underlying(::GoalType::Company), ///< Destination is a company.
-		GT_STORY_PAGE = to_underlying(::GoalType::StoryPage), ///< Destination is a story page.
+		GT_NONE = std::to_underlying(::GoalType::None), ///< Destination is not linked.
+		GT_TILE = std::to_underlying(::GoalType::Tile), ///< Destination is a tile.
+		GT_INDUSTRY = std::to_underlying(::GoalType::Industry), ///< Destination is an industry.
+		GT_TOWN = std::to_underlying(::GoalType::Town), ///< Destination is a town.
+		GT_COMPANY = std::to_underlying(::GoalType::Company), ///< Destination is a company.
+		GT_STORY_PAGE = std::to_underlying(::GoalType::StoryPage), ///< Destination is a story page.
 	};
 
 	/**
@@ -45,10 +45,10 @@ public:
 	 * Basically the title of the question window.
 	 */
 	enum QuestionType {
-		QT_QUESTION = to_underlying(::GoalQuestionType::Question), ///< Asking a simple question; title: Question.
-		QT_INFORMATION = to_underlying(::GoalQuestionType::Information), ///< Showing an informational message; title: Information.
-		QT_WARNING = to_underlying(::GoalQuestionType::Warning), ///< Showing a warning; title: Warning.
-		QT_ERROR = to_underlying(::GoalQuestionType::Error), ///< Showing an error; title: Error.
+		QT_QUESTION = std::to_underlying(::GoalQuestionType::Question), ///< Asking a simple question; title: Question.
+		QT_INFORMATION = std::to_underlying(::GoalQuestionType::Information), ///< Showing an informational message; title: Information.
+		QT_WARNING = std::to_underlying(::GoalQuestionType::Warning), ///< Showing a warning; title: Warning.
+		QT_ERROR = std::to_underlying(::GoalQuestionType::Error), ///< Showing an error; title: Error.
 	};
 
 	/**

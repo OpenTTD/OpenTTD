@@ -185,7 +185,7 @@ struct InvokeGrfChangeInfoHandler {
 	 */
 	static ChangeInfoResult Invoke(GrfSpecFeature feature, uint first, uint last, int prop, ByteReader &buf, GrfLoadingStage stage)
 	{
-		Invoker func = to_underlying(feature) < std::size(funcs) ? funcs[feature] : nullptr;
+		Invoker func = std::to_underlying(feature) < std::size(funcs) ? funcs[feature] : nullptr;
 		if (func == nullptr) return ChangeInfoResult::Unknown;
 		return func(first, last, prop, buf, stage);
 	}

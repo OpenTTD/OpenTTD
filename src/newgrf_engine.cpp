@@ -536,9 +536,9 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			DirDiff b = (u_n == nullptr) ?  DirDiff::Same : DirDifference(v->direction, u_n->direction);
 			DirDiff t = ChangeDirDiff(f, b);
 
-			return ((t > DirDiff::Reverse ? to_underlying(t) | 8 : to_underlying(t)) << 16) |
-			       ((b > DirDiff::Reverse ? to_underlying(b) | 8 : to_underlying(b)) <<  8) |
-			       ( f > DirDiff::Reverse ? to_underlying(f) | 8 : to_underlying(f));
+			return ((t > DirDiff::Reverse ? std::to_underlying(t) | 8 : std::to_underlying(t)) << 16) |
+			       ((b > DirDiff::Reverse ? std::to_underlying(b) | 8 : std::to_underlying(b)) <<  8) |
+			       ( f > DirDiff::Reverse ? std::to_underlying(f) | 8 : std::to_underlying(f));
 		}
 
 		case 0x46: // Motion counter
@@ -655,7 +655,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 			/* Get direction difference. */
 			bool prev = static_cast<int8_t>(parameter) < 0;
 			DirDiff dirdiff = prev ? DirDifference(u->direction, v->direction) : DirDifference(v->direction, u->direction);
-			uint32_t ret = to_underlying(dirdiff);
+			uint32_t ret = std::to_underlying(dirdiff);
 			if (dirdiff > DirDiff::Reverse) ret |= 0x08;
 
 			if (u->vehstatus.Test(VehState::Hidden)) ret |= 0x80;
@@ -761,7 +761,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 	 * (see http://marcin.ttdpatch.net/sv1codec/TTD-locations.html#_VehicleArray)
 	 */
 	switch (variable - 0x80) {
-		case 0x00: return to_underlying(v->type) + 0x10;
+		case 0x00: return std::to_underlying(v->type) + 0x10;
 		case 0x01: return MapOldSubType(v);
 		case 0x02: break; // not implemented
 		case 0x03: break; // not implemented
@@ -816,7 +816,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		case 0x1C: return v->y_pos;
 		case 0x1D: return GB(v->y_pos, 8, 8);
 		case 0x1E: return v->z_pos;
-		case 0x1F: return to_underlying(object->rotor_in_gui ? Direction::W : v->direction); // for rotors the spriteset contains animation frames, so NewGRF need a different way to tell the helicopter orientation.
+		case 0x1F: return std::to_underlying(object->rotor_in_gui ? Direction::W : v->direction); // for rotors the spriteset contains animation frames, so NewGRF need a different way to tell the helicopter orientation.
 		case 0x20: break; // not implemented
 		case 0x21: break; // not implemented
 		case 0x22: break; // not implemented
@@ -1119,11 +1119,11 @@ static void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction d
 	bool sprite_stack = EngInfo(engine)->misc_flags.Test(EngineMiscFlag::SpriteStack);
 	uint max_stack = sprite_stack ? static_cast<uint>(std::size(result->seq)) : 1;
 	for (uint stack = 0; stack < max_stack; ++stack) {
-		object.callback_param1 = to_underlying(image_type) | (stack << 8);
+		object.callback_param1 = std::to_underlying(image_type) | (stack << 8);
 		const auto *group = object.Resolve<ResultSpriteGroup>();
 		int32_t reg100 = sprite_stack ? object.GetRegister(0x100) : 0;
 		if (group != nullptr && group->num_sprites != 0) {
-			result->seq[result->count].sprite = group->sprite + (to_underlying(direction) % group->num_sprites);
+			result->seq[result->count].sprite = group->sprite + (std::to_underlying(direction) % group->num_sprites);
 			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
 			result->count++;
 		}
@@ -1161,7 +1161,7 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 	bool sprite_stack = e->info.misc_flags.Test(EngineMiscFlag::SpriteStack);
 	uint max_stack = sprite_stack ? static_cast<uint>(std::size(result->seq)) : 1;
 	for (uint stack = 0; stack < max_stack; ++stack) {
-		object.callback_param1 = to_underlying(image_type) | (stack << 8);
+		object.callback_param1 = std::to_underlying(image_type) | (stack << 8);
 		const auto *group = object.Resolve<ResultSpriteGroup>();
 		int32_t reg100 = sprite_stack ? object.GetRegister(0x100) : 0;
 		if (group != nullptr && group->num_sprites != 0) {
@@ -1259,7 +1259,7 @@ int GetEngineProperty(EngineID engine, PropertyID property, int orig_value, cons
  */
 std::optional<bool> TestVehicleBuildProbability(Vehicle *v, BuildProbabilityType type)
 {
-	uint16_t p = GetVehicleCallback(CBID_VEHICLE_BUILD_PROBABILITY, to_underlying(type), 0, v->engine_type, v);
+	uint16_t p = GetVehicleCallback(CBID_VEHICLE_BUILD_PROBABILITY, std::to_underlying(type), 0, v->engine_type, v);
 	if (p == CALLBACK_FAILED) return std::nullopt;
 
 	const uint16_t PROBABILITY_RANGE = 100;

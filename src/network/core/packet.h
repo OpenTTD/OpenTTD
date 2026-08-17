@@ -81,7 +81,7 @@ public:
 	 *              much larger packets than what they support.
 	 */
 	template <typename E, typename = std::enable_if_t<IsEnumPacketType<E>::value>>
-	Packet(NetworkSocketHandler *cs, E type, size_t limit = COMPAT_MTU) : Packet(cs, to_underlying(type), limit) {}
+	Packet(NetworkSocketHandler *cs, E type, size_t limit = COMPAT_MTU) : Packet(cs, std::to_underlying(type), limit) {}
 
 	/* Sending/writing of packets */
 	void PrepareToSend();

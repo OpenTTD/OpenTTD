@@ -267,7 +267,7 @@ inline std::string_view FontSizeToName(FontSize fs)
 {
 	static const std::string_view SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
 	assert(fs < FontSize::End);
-	return SIZE_TO_NAME[to_underlying(fs)];
+	return SIZE_TO_NAME[std::to_underlying(fs)];
 }
 
 /**
@@ -380,7 +380,7 @@ struct ExtendedTextColour {
 	 * Encode this text colour for sending over the network.
 	 * @return The encoded colour.
 	 */
-	constexpr uint16_t ToNetwork() const { return to_underlying(this->colour) | this->flags.base() << 8; }
+	constexpr uint16_t ToNetwork() const { return std::to_underlying(this->colour) | this->flags.base() << 8; }
 };
 
 /* A few values that are related to animations using palette changes */

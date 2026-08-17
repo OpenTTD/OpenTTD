@@ -176,7 +176,7 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 
 	Slope tileh = GetTileSlope(tile);
 	if (tileh != SLOPE_FLAT &&
-			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << to_underlying(axis))) || !(tileh & ~(0x3 << to_underlying(axis))))) {
+			(!_settings_game.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << std::to_underlying(axis))) || !(tileh & ~(0x3 << std::to_underlying(axis))))) {
 		return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
 	}
 
@@ -256,12 +256,12 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		CommandCost ret = IsValidTileForWaypoint(tile, axis, &est);
 		if (ret.Failed()) return ret;
 
-		StationGfx gfx = *it + to_underlying(axis);
+		StationGfx gfx = *it + std::to_underlying(axis);
 		if (spec != nullptr) {
 			uint32_t platinfo = GetPlatformInfo(gfx, count, 1, i, 0, false);
 			/* As the station is not yet completely finished, the station does not yet exist. */
 			uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, spec, nullptr, INVALID_TILE);
-			if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + to_underlying(axis);
+			if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + std::to_underlying(axis);
 		}
 
 		ret = IsRailStationBridgeAboveOk(tile, spec, StationType::RailWaypoint, gfx);
@@ -330,13 +330,13 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 			SetCustomStationSpecIndex(tile, *specindex);
 
 			if (spec != nullptr) {
-				uint32_t platinfo = GetPlatformInfo(*it + to_underlying(axis), count, 1, i, 0, false);
+				uint32_t platinfo = GetPlatformInfo(*it + std::to_underlying(axis), count, 1, i, 0, false);
 
 				/* As the station is not yet completely finished, the station does not yet exist. */
 				uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, spec, nullptr, tile);
 				if (callback != CALLBACK_FAILED) {
 					if (callback <= UINT8_MAX) {
-						SetStationGfx(tile, (callback & ~1) + to_underlying(axis));
+						SetStationGfx(tile, (callback & ~1) + std::to_underlying(axis));
 					} else {
 						ErrorUnknownCallbackResult(spec->grf_prop.grfid, CBID_STATION_BUILD_TILE_LAYOUT, callback);
 					}

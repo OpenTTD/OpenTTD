@@ -195,7 +195,7 @@ void Town::InitializeLayout(TownLayout layout)
 		return;
 	}
 
-	this->layout = static_cast<TownLayout>(TileHash(TileX(this->xy), TileY(this->xy)) % (to_underlying(TownLayout::End) - 1));
+	this->layout = static_cast<TownLayout>(TileHash(TileX(this->xy), TileY(this->xy)) % (std::to_underlying(TownLayout::End) - 1));
 }
 
 /**
@@ -1955,11 +1955,11 @@ void UpdateTownRadius(Town *t)
 		/* Actually we are proportional to sqrt() but that's right because we are covering an area.
 		 * The offsets are to make sure the radii do not decrease in size when going from the table
 		 * to the calculated value.*/
-		t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)] = mass * 15 - 40;
-		t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownOutskirt)] = mass * 9 - 15;
-		t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownOuterSuburb)] = 0;
-		t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownInnerSuburb)] = mass * 5 - 5;
-		t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownCentre)] = mass * 3 + 5;
+		t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)] = mass * 15 - 40;
+		t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownOutskirt)] = mass * 9 - 15;
+		t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownOuterSuburb)] = 0;
+		t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownInnerSuburb)] = mass * 5 - 5;
+		t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownCentre)] = mass * 3 + 5;
 	}
 }
 
@@ -2054,7 +2054,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32_t townnameparts, TownSi
 
 	t->larger_town = city;
 
-	int x = to_underlying(size) * 16 + 3;
+	int x = std::to_underlying(size) * 16 + 3;
 	if (size == TownSize::Random) x = (Random() & 0xF) + 8;
 	/* Don't create huge cities when founding town in-game */
 	if (city && (!manual || _game_mode == GameMode::Editor)) x *= _settings_game.economy.initial_city_size;
@@ -2486,7 +2486,7 @@ HouseZone GetTownRadiusGroup(const Town *t, TileIndex tile)
 
 	HouseZone smallest = HouseZone::TownEdge;
 	for (HouseZone i : HZ_ZONE_ALL) {
-		if (dist < t->cache.squared_town_zone_radius[to_underlying(i)]) smallest = i;
+		if (dist < t->cache.squared_town_zone_radius[std::to_underlying(i)]) smallest = i;
 	}
 
 	return smallest;
@@ -3423,10 +3423,10 @@ uint8_t GetTownActionCost(TownAction action)
 	static const uint8_t town_action_costs[] = {
 		2, 4, 9, 35, 48, 53, 117, 175
 	};
-	static_assert(std::size(town_action_costs) == to_underlying(TownAction::End));
+	static_assert(std::size(town_action_costs) == std::to_underlying(TownAction::End));
 
-	assert(to_underlying(action) < std::size(town_action_costs));
-	return town_action_costs[to_underlying(action)];
+	assert(std::to_underlying(action) < std::size(town_action_costs));
+	return town_action_costs[std::to_underlying(action)];
 }
 
 /**
@@ -3685,7 +3685,7 @@ static TownActionProc * const _town_action_proc[] = {
 	TownActionBuyRights,
 	TownActionBribe
 };
-static_assert(std::size(_town_action_proc) == to_underlying(TownAction::End));
+static_assert(std::size(_town_action_proc) == std::to_underlying(TownAction::End));
 
 /**
  * Get a list of available town authority actions.
@@ -3752,13 +3752,13 @@ TownActions GetMaskOfTownActions(CompanyID cid, const Town *t)
 CommandCost CmdDoTownAction(DoCommandFlags flags, TownID town_id, TownAction action)
 {
 	Town *t = Town::GetIfValid(town_id);
-	if (t == nullptr || to_underlying(action) >= std::size(_town_action_proc)) return CMD_ERROR;
+	if (t == nullptr || std::to_underlying(action) >= std::size(_town_action_proc)) return CMD_ERROR;
 
 	if (!GetMaskOfTownActions(_current_company, t).Test(action)) return CMD_ERROR;
 
 	CommandCost cost(ExpensesType::Other, _price[Price::TownAction] * GetTownActionCost(action) >> 8);
 
-	CommandCost ret = _town_action_proc[to_underlying(action)](t, flags);
+	CommandCost ret = _town_action_proc[std::to_underlying(action)](t, flags);
 	if (ret.Failed()) return ret;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
@@ -3775,9 +3775,9 @@ static void ForAllStationsNearTown(Town *t, Func func)
 	 * The true radius is not stored or calculated anywhere, only the squared radius. */
 	/* The efficiency of this search might be improved for large towns and many stations on the map,
 	 * by using an integer square root approximation giving a value not less than the true square root. */
-	uint search_radius = t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)] / 2;
+	uint search_radius = t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)] / 2;
 	ForAllStationsRadius(t->xy, search_radius, [&](const Station * st) {
-		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]) {
+		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]) {
 			func(st);
 		}
 	});
@@ -4107,7 +4107,7 @@ CommandCost CheckforTownRating(DoCommandFlags flags, Town *t, TownRatingCheckTyp
 	}
 
 	/* minimum rating needed to be allowed to remove stuff */
-	static const int needed_rating[][to_underlying(TownRatingCheckType::End)] = {
+	static const int needed_rating[][std::to_underlying(TownRatingCheckType::End)] = {
 		/*                   RoadRemove,                     TunnelBridgeRemove */
 		{    RATING_ROAD_NEEDED_LENIENT,    RATING_TUNNEL_BRIDGE_NEEDED_LENIENT}, // Lenient
 		{    RATING_ROAD_NEEDED_NEUTRAL,    RATING_TUNNEL_BRIDGE_NEEDED_NEUTRAL}, // Neutral
@@ -4119,7 +4119,7 @@ CommandCost CheckforTownRating(DoCommandFlags flags, Town *t, TownRatingCheckTyp
 	 * owned by a town no removal if rating is lower than ... depends now on
 	 * difficulty setting. Minimum town rating selected by difficulty level
 	 */
-	int needed = needed_rating[_settings_game.difficulty.town_council_tolerance][to_underlying(type)];
+	int needed = needed_rating[_settings_game.difficulty.town_council_tolerance][std::to_underlying(type)];
 
 	if (GetRating(t) < needed) {
 		return CommandCostWithParam(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS, t->index);

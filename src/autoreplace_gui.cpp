@@ -283,7 +283,7 @@ public:
 		this->vscroll[1] = this->GetScrollbar(WID_RV_RIGHT_SCROLLBAR);
 
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_RV_SHOW_HIDDEN_ENGINES);
-		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + to_underlying(vehicletype), STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + to_underlying(vehicletype));
+		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + std::to_underlying(vehicletype), STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + std::to_underlying(vehicletype));
 		widget->SetLowered(this->show_hidden_engines);
 		this->FinishInitNested(vehicletype);
 

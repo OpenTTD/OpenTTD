@@ -855,9 +855,9 @@ protected:
 	 */
 	void SwitchMapType(SmallMapType map_type)
 	{
-		this->RaiseWidget(WID_SM_CONTOUR + to_underlying(this->map_type));
+		this->RaiseWidget(WID_SM_CONTOUR + std::to_underlying(this->map_type));
 		this->map_type = map_type;
-		this->LowerWidget(WID_SM_CONTOUR + to_underlying(this->map_type));
+		this->LowerWidget(WID_SM_CONTOUR + std::to_underlying(this->map_type));
 
 		this->SetupWidgetData();
 
@@ -1491,7 +1491,7 @@ public:
 		_smallmap_industry_highlight = IT_INVALID;
 		this->overlay = std::make_unique<LinkGraphOverlay>(this, WID_SM_MAP, CargoTypes{}, this->GetOverlayCompanyMask(), 1);
 		this->CreateNestedTree();
-		this->LowerWidget(WID_SM_CONTOUR + to_underlying(this->map_type));
+		this->LowerWidget(WID_SM_CONTOUR + std::to_underlying(this->map_type));
 
 		this->RebuildColourIndexIfNecessary();
 
@@ -1552,7 +1552,7 @@ public:
 	{
 		switch (widget) {
 			case WID_SM_CAPTION:
-				return GetString(STR_SMALLMAP_CAPTION, STR_SMALLMAP_TYPE_CONTOURS + to_underlying(this->map_type));
+				return GetString(STR_SMALLMAP_CAPTION, STR_SMALLMAP_TYPE_CONTOURS + std::to_underlying(this->map_type));
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

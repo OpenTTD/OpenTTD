@@ -283,7 +283,7 @@ constexpr bool IsInsideMM(const T x, const T min, const T max) noexcept { return
 template <typename enum_type, std::enable_if_t<std::is_enum_v<enum_type>, bool> = true>
 constexpr bool IsInsideMM(enum_type x, enum_type min, enum_type max) noexcept
 {
-	return IsInsideMM(to_underlying(x), to_underlying(min), to_underlying(max));
+	return IsInsideMM(std::to_underlying(x), std::to_underlying(min), std::to_underlying(max));
 }
 
 /**

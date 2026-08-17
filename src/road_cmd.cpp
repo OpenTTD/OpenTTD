@@ -618,7 +618,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 			company = OWNER_TOWN;
 
 			/* If we are not within a town, we are not owned by the town */
-			if (town == nullptr || DistanceSquare(tile, town->xy) > town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]) {
+			if (town == nullptr || DistanceSquare(tile, town->xy) > town->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]) {
 				company = OWNER_NONE;
 			}
 		}
@@ -1704,7 +1704,7 @@ static void DrawRoadBits(TileInfo *ti)
 	}
 
 	/* Draw extra details. */
-	for (const DrawRoadTileStruct *drts = _road_display_table[to_underlying(roadside)][(road | tram).base()]; drts->image != 0; drts++) {
+	for (const DrawRoadTileStruct *drts = _road_display_table[std::to_underlying(roadside)][(road | tram).base()]; drts->image != 0; drts++) {
 		DrawRoadDetail(drts->image, ti, drts->subcoord_x, drts->subcoord_y, 0x10, is_transparent);
 	}
 }
@@ -1742,7 +1742,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			/* Draw base ground */
 			if (rti->UsesOverlay()) {
-				SpriteID image = SPR_ROAD_Y + to_underlying(axis);
+				SpriteID image = SPR_ROAD_Y + std::to_underlying(axis);
 
 				Roadside roadside = GetRoadside(ti->tile);
 				if (DrawRoadAsSnowOrDesert(IsOnSnowOrDesert(ti->tile), roadside)) {
@@ -1764,7 +1764,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 				DrawGroundSprite(image, pal);
 			} else {
-				SpriteID image = rti->base_sprites.crossing + to_underlying(axis);
+				SpriteID image = rti->base_sprites.crossing + std::to_underlying(axis);
 				if (IsCrossingBarred(ti->tile)) image += 2;
 
 				Roadside roadside = GetRoadside(ti->tile);
@@ -1788,13 +1788,13 @@ static void DrawTile_Road(TileInfo *ti)
 				DrawGroundSprite(image, pal);
 			}
 
-			DrawRoadOverlays(ti, pal, road_rti, tram_rti, to_underlying(axis), to_underlying(axis));
+			DrawRoadOverlays(ti, pal, road_rti, tram_rti, std::to_underlying(axis), std::to_underlying(axis));
 
 			/* Draw rail/PBS overlay */
 			bool draw_pbs = _game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile);
 			if (rti->UsesOverlay()) {
 				pal = draw_pbs ? PALETTE_CRASH : PAL_NONE;
-				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Crossing) + to_underlying(axis);
+				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Crossing) + std::to_underlying(axis);
 				DrawGroundSprite(rail, pal);
 
 				Axis road_axis = GetCrossingRoadAxis(ti->tile);
@@ -2064,7 +2064,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			/* Adjust road ground type depending on 'grp' (grp is the distance to the center) */
-			const Roadside *new_rs = (_settings_game.game_creation.landscape == LandscapeType::Toyland) ? _town_road_types_2[to_underlying(grp)] : _town_road_types[to_underlying(grp)];
+			const Roadside *new_rs = (_settings_game.game_creation.landscape == LandscapeType::Toyland) ? _town_road_types_2[std::to_underlying(grp)] : _town_road_types[std::to_underlying(grp)];
 			Roadside cur_rs = GetRoadside(tile);
 
 			/* We have our desired type, do nothing */
@@ -2259,7 +2259,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc &td)
 			break;
 
 		default: {
-			td.str = (road_rt != INVALID_ROADTYPE ? _road_tile_strings[to_underlying(GetRoadside(tile))] : STR_LAI_ROAD_DESCRIPTION_TRAMWAY);
+			td.str = (road_rt != INVALID_ROADTYPE ? _road_tile_strings[std::to_underlying(GetRoadside(tile))] : STR_LAI_ROAD_DESCRIPTION_TRAMWAY);
 			break;
 		}
 	}

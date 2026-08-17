@@ -784,7 +784,7 @@ public:
 	WindowNumber(ConvertibleThroughBase auto value) : value(value.base()) {}
 	/** @copydoc WindowNumber(int32_t) */
 	template <typename T> requires is_scoped_enum_v<T>
-	WindowNumber(T value) : value(to_underlying(value)) {}
+	WindowNumber(T value) : value(std::to_underlying(value)) {}
 
 	/**
 	 * Automatically convert to int32_t.
@@ -809,7 +809,7 @@ public:
 	constexpr bool operator==(const ConvertibleThroughBase auto &rhs) const { return this->value == static_cast<int32_t>(rhs.base()); }
 	/** @copydoc operator== */
 	template <typename T> requires is_scoped_enum_v<T>
-	constexpr bool operator==(const T &rhs) const { return this->value == static_cast<int32_t>(to_underlying(rhs)); }
+	constexpr bool operator==(const T &rhs) const { return this->value == static_cast<int32_t>(std::to_underlying(rhs)); }
 };
 
 /** State of handling an event. */

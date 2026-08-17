@@ -424,8 +424,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action,
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientChat);
 
-	p->Send_uint8(to_underlying(action));
-	p->Send_uint8(to_underlying(type));
+	p->Send_uint8(std::to_underlying(action));
+	p->Send_uint8(std::to_underlying(type));
 	p->Send_uint32(dest);
 	p->Send_string(msg);
 	p->Send_uint64(data);
@@ -445,7 +445,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientError);
 
-	p->Send_uint8(to_underlying(errorno));
+	p->Send_uint8(std::to_underlying(errorno));
 	my_client->SendPacket(std::move(p));
 	return NetworkRecvStatus::Okay;
 }
@@ -1131,7 +1131,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerNewGame(Packet &)
 		/* To throttle the reconnects a bit, every clients waits its
 		 * Client ID modulo 16 + 1 (value 0 means no reconnect).
 		 * This way reconnects should be spread out a bit. */
-		_network_reconnect = to_underlying(_network_own_client_id) % 16 + 1;
+		_network_reconnect = std::to_underlying(_network_own_client_id) % 16 + 1;
 		ShowErrorMessage(GetEncodedString(STR_NETWORK_MESSAGE_SERVER_REBOOT), {}, WarningLevel::Critical);
 	}
 

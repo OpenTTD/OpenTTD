@@ -479,7 +479,7 @@ struct GameOptionsWindow : Window {
 		DropDownList list;
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: { // Setup currencies dropdown
-				*selected_index = to_underlying(this->opt->locale.currency);
+				*selected_index = std::to_underlying(this->opt->locale.currency);
 				Currencies disabled = _game_mode == GameMode::Menu ? Currencies{} : GetMaskOfAllowedCurrencies().Flip();
 
 				/* Add non-custom currencies; sorted naturally */

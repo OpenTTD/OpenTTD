@@ -1094,7 +1094,7 @@ static CommandCost CheckFlatLandRoadStop(TileIndex cur_tile, int &allowed_z, con
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret.GetCost());
 
-	ret = IsRoadStationBridgeAboveOk(cur_tile, spec, station_type, is_drive_through ? GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + to_underlying(axis) : FindFirstBit(invalid_dirs.base()));
+	ret = IsRoadStationBridgeAboveOk(cur_tile, spec, station_type, is_drive_through ? GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + std::to_underlying(axis) : FindFirstBit(invalid_dirs.base()));
 	if (ret.Failed()) return ret;
 
 	/* If station is set, then we have special handling to allow building on top of already existing stations.
@@ -1509,12 +1509,12 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 			/* Don't check the layout if there's no bridge above anyway. */
 			if (!IsBridgeAbove(tile)) continue;
 
-			StationGfx gfx = *it + to_underlying(axis);
+			StationGfx gfx = *it + std::to_underlying(axis);
 			if (statspec != nullptr) {
 				uint32_t platinfo = GetPlatformInfo(gfx, numtracks, plat_len, i, j, false);
 				/* As the station is not yet completely finished, the station does not yet exist. */
 				uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, INVALID_TILE);
-				if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + to_underlying(axis);
+				if (callback != CALLBACK_FAILED && callback <= UINT8_MAX) gfx = (callback & ~1) + std::to_underlying(axis);
 			}
 
 			ret = IsRailStationBridgeAboveOk(tile, statspec, StationType::Rail, gfx);
@@ -1586,13 +1586,13 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 				SetAnimationFrame(tile, 0);
 
 				if (statspec != nullptr) {
-					uint32_t platinfo = GetPlatformInfo(*it + to_underlying(axis), numtracks, plat_len, i, j, false);
+					uint32_t platinfo = GetPlatformInfo(*it + std::to_underlying(axis), numtracks, plat_len, i, j, false);
 
 					/* As the station is not yet completely finished, the station does not yet exist. */
 					uint16_t callback = GetStationCallback(CBID_STATION_BUILD_TILE_LAYOUT, platinfo, 0, statspec, nullptr, tile);
 					if (callback != CALLBACK_FAILED) {
 						if (callback <= UINT8_MAX) {
-							SetStationGfx(tile, (callback & ~1) + to_underlying(axis));
+							SetStationGfx(tile, (callback & ~1) + std::to_underlying(axis));
 						} else {
 							ErrorUnknownCallbackResult(statspec->grf_prop.grfid, CBID_STATION_BUILD_TILE_LAYOUT, callback);
 						}
@@ -2914,7 +2914,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
 	if (ret.Failed()) return ret;
 
-	ret = IsDockBridgeAboveOk(tile, to_underlying(direction));
+	ret = IsDockBridgeAboveOk(tile, std::to_underlying(direction));
 	if (ret.Failed()) return ret;
 
 	CommandCost cost(ExpensesType::Construction, _price[Price::BuildStationDock]);
@@ -2928,7 +2928,7 @@ CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	ret = IsDockBridgeAboveOk(tile_cur, GFX_DOCK_BASE_WATER_PART + to_underlying(DiagDirToAxis(direction)));
+	ret = IsDockBridgeAboveOk(tile_cur, GFX_DOCK_BASE_WATER_PART + std::to_underlying(DiagDirToAxis(direction)));
 	if (ret.Failed()) return ret;
 
 	/* Get the water class of the water tile before it is cleared.*/
@@ -3297,7 +3297,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 				if (statspec->callback_mask.Test(StationCallbackMask::DrawTileLayout)) {
 					uint16_t callback = GetStationCallback(CBID_STATION_DRAW_TILE_LAYOUT, 0, 0, statspec, st, ti->tile);
-					if (callback != CALLBACK_FAILED) tile_layout = (callback & ~1) + to_underlying(GetRailStationAxis(ti->tile));
+					if (callback != CALLBACK_FAILED) tile_layout = (callback & ~1) + std::to_underlying(GetRailStationAxis(ti->tile));
 				}
 
 				/* Ensure the chosen tile layout is valid for this custom station */
@@ -4035,7 +4035,7 @@ static void UpdateStationRating(Station *st)
 				| (ClampTo<uint16_t>(ge->max_waiting_cargo) << 8)
 				| (ClampTo<uint8_t>(last_speed) << 24);
 			/* Convert to the 'old' vehicle types */
-			uint32_t var10 = (st->last_vehicle_type == VehicleType::Invalid) ? 0x0 : (to_underlying(st->last_vehicle_type) + 0x10);
+			uint32_t var10 = (st->last_vehicle_type == VehicleType::Invalid) ? 0x0 : (std::to_underlying(st->last_vehicle_type) + 0x10);
 			uint16_t callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
 			if (callback != CALLBACK_FAILED) {
 				skip = true;

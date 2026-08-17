@@ -1250,9 +1250,9 @@ struct BuildVehicleWindow : Window {
 		if (refit) refit = Engine::Get(this->sel_engine)->GetDefaultCargoType() != this->cargo_filter_criteria;
 
 		if (refit) {
-			widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + to_underlying(this->vehicle_type), STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP + to_underlying(this->vehicle_type));
+			widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + std::to_underlying(this->vehicle_type), STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP + std::to_underlying(this->vehicle_type));
 		} else {
-			widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + to_underlying(this->vehicle_type), STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP + to_underlying(this->vehicle_type));
+			widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + std::to_underlying(this->vehicle_type), STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP + std::to_underlying(this->vehicle_type));
 		}
 	}
 
@@ -1277,16 +1277,16 @@ struct BuildVehicleWindow : Window {
 		if (this->listview_mode) this->GetWidget<NWidgetStacked>(WID_BV_BUILD_SEL)->SetDisplayedPlane(SZSP_NONE);
 
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_BV_LIST);
-		widget->SetToolTip(STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP + to_underlying(type));
+		widget->SetToolTip(STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP + std::to_underlying(type));
 
 		widget = this->GetWidget<NWidgetCore>(WID_BV_SHOW_HIDE);
-		widget->SetToolTip(STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP + to_underlying(type));
+		widget->SetToolTip(STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP + std::to_underlying(type));
 
 		widget = this->GetWidget<NWidgetCore>(WID_BV_RENAME);
-		widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON + to_underlying(type), STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP + to_underlying(type));
+		widget->SetStringTip(STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON + std::to_underlying(type), STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP + std::to_underlying(type));
 
 		widget = this->GetWidget<NWidgetCore>(WID_BV_SHOW_HIDDEN_ENGINES);
-		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + to_underlying(type), STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + to_underlying(type));
+		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN + std::to_underlying(type), STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + std::to_underlying(type));
 		widget->SetLowered(this->show_hidden_engines);
 
 		this->details_height = ((this->vehicle_type == VehicleType::Train) ? 10 : 9);
@@ -1797,7 +1797,7 @@ struct BuildVehicleWindow : Window {
 				EngineID sel_eng = this->sel_engine;
 				if (sel_eng != EngineID::Invalid()) {
 					this->rename_engine = sel_eng;
-					ShowQueryString(GetString(STR_ENGINE_NAME, PackEngineNameDParam(sel_eng, EngineNameContext::Generic)), STR_QUERY_RENAME_TRAIN_TYPE_CAPTION + to_underlying(this->vehicle_type), MAX_LENGTH_ENGINE_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
+					ShowQueryString(GetString(STR_ENGINE_NAME, PackEngineNameDParam(sel_eng, EngineNameContext::Generic)), STR_QUERY_RENAME_TRAIN_TYPE_CAPTION + std::to_underlying(this->vehicle_type), MAX_LENGTH_ENGINE_NAME_CHARS, this, CS_ALPHANUMERAL, {QueryStringFlag::EnableDefault, QueryStringFlag::LengthIsInChars});
 				}
 				break;
 			}
@@ -1841,7 +1841,7 @@ struct BuildVehicleWindow : Window {
 					const RoadTypeInfo *rti = GetRoadTypeInfo(this->filter.roadtype);
 					return GetString(rti->strings.build_caption);
 				}
-				return GetString((this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + to_underlying(this->vehicle_type));
+				return GetString((this->listview_mode ? STR_VEHICLE_LIST_AVAILABLE_TRAINS : STR_BUY_VEHICLE_TRAIN_ALL_CAPTION) + std::to_underlying(this->vehicle_type));
 
 			case WID_BV_SORT_DROPDOWN:
 				return GetString(GetEngineSortNames(this->vehicle_type)[this->sort_criteria]);
@@ -1852,9 +1852,9 @@ struct BuildVehicleWindow : Window {
 			case WID_BV_SHOW_HIDE: {
 				const Engine *e = (this->sel_engine == EngineID::Invalid()) ? nullptr : Engine::Get(this->sel_engine);
 				if (e != nullptr && e->IsHidden(_local_company)) {
-					return GetString(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + to_underlying(this->vehicle_type));
+					return GetString(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + std::to_underlying(this->vehicle_type));
 				}
-				return GetString(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + to_underlying(this->vehicle_type));
+				return GetString(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + std::to_underlying(this->vehicle_type));
 			}
 
 			default:
@@ -1897,15 +1897,15 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_BUILD:
-				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + to_underlying(this->vehicle_type));
-				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + to_underlying(this->vehicle_type)));
+				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON + std::to_underlying(this->vehicle_type));
+				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON + std::to_underlying(this->vehicle_type)));
 				size.width += padding.width;
 				size.height += padding.height;
 				break;
 
 			case WID_BV_SHOW_HIDE:
-				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + to_underlying(this->vehicle_type));
-				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + to_underlying(this->vehicle_type)));
+				size = GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON + std::to_underlying(this->vehicle_type));
+				size = maxdim(size, GetStringBoundingBox(STR_BUY_VEHICLE_TRAIN_SHOW_TOGGLE_BUTTON + std::to_underlying(this->vehicle_type)));
 				size.width += padding.width;
 				size.height += padding.height;
 				break;
@@ -1968,7 +1968,7 @@ struct BuildVehicleWindow : Window {
 	{
 		if (!str.has_value()) return;
 
-		Command<Commands::RenameEngine>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + to_underlying(this->vehicle_type), this->rename_engine, *str);
+		Command<Commands::RenameEngine>::Post(STR_ERROR_CAN_T_RENAME_TRAIN_TYPE + std::to_underlying(this->vehicle_type), this->rename_engine, *str);
 	}
 
 	void OnDropdownSelect(WidgetID widget, int index, int click_result) override

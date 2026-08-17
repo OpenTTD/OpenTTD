@@ -146,7 +146,7 @@ inline void SetTreeGroundDensity(Tile t, TreeGround g, uint d)
 {
 	assert(IsTileType(t, TileType::Trees)); // XXX incomplete
 	SB(t.m2(), 4, 2, d);
-	SB(t.m2(), 6, 3, to_underlying(g));
+	SB(t.m2(), 6, 3, std::to_underlying(g));
 	SetWaterClass(t, g == TreeGround::Shore ? WaterClass::Sea : WaterClass::Invalid);
 }
 
@@ -227,7 +227,7 @@ inline void AddTreeGrowth(Tile t, int a)
 inline void SetTreeGrowth(Tile t, TreeGrowthStage g)
 {
 	assert(IsTileType(t, TileType::Trees)); // XXX incomplete
-	SB(t.m5(), 0, 3, to_underlying(g));
+	SB(t.m5(), 0, 3, std::to_underlying(g));
 }
 
 /**
@@ -247,10 +247,10 @@ inline void MakeTree(Tile t, TreeType type, uint count, TreeGrowthStage growth, 
 	SetTileType(t, TileType::Trees);
 	SetTileOwner(t, OWNER_NONE);
 	SetWaterClass(t, ground == TreeGround::Shore ? WaterClass::Sea : WaterClass::Invalid);
-	t.m2() = to_underlying(ground) << 6 | density << 4 | 0;
+	t.m2() = std::to_underlying(ground) << 6 | density << 4 | 0;
 	t.m3() = type;
 	t.m4() = 0 << 5 | 0 << 2;
-	t.m5() = count << 6 | to_underlying(growth);
+	t.m5() = count << 6 | std::to_underlying(growth);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;

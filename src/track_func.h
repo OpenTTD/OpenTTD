@@ -62,7 +62,7 @@ inline bool IsValidTrackdir(Trackdir trackdir)
 inline Track AxisToTrack(Axis a)
 {
 	assert(IsValidAxis(a));
-	return static_cast<Track>(to_underlying(a));
+	return static_cast<Track>(std::to_underlying(a));
 }
 
 /**
@@ -204,7 +204,7 @@ inline Trackdir FindFirstTrackdir(TrackdirBits trackdirs)
 inline Track TrackToOppositeTrack(Track t)
 {
 	assert(IsValidTrack(t));
-	return static_cast<Track>(to_underlying(t) ^ 1);
+	return static_cast<Track>(std::to_underlying(t) ^ 1);
 }
 
 /**
@@ -220,7 +220,7 @@ inline Track TrackToOppositeTrack(Track t)
 inline Trackdir ReverseTrackdir(Trackdir trackdir)
 {
 	assert(IsValidTrackdirForRoadVehicle(trackdir));
-	return static_cast<Trackdir>(to_underlying(trackdir) ^ 8);
+	return static_cast<Trackdir>(std::to_underlying(trackdir) ^ 8);
 }
 
 /**
@@ -235,7 +235,7 @@ inline Trackdir ReverseTrackdir(Trackdir trackdir)
 inline Track TrackdirToTrack(Trackdir trackdir)
 {
 	assert(IsValidTrackdir(trackdir));
-	return static_cast<Track>(to_underlying(trackdir) & 0x7);
+	return static_cast<Track>(std::to_underlying(trackdir) & 0x7);
 }
 
 /**
@@ -419,7 +419,7 @@ inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir)
 inline Track DiagDirToDiagTrack(DiagDirection diagdir)
 {
 	assert(IsValidDiagDirection(diagdir));
-	return static_cast<Track>(to_underlying(diagdir) & 1);
+	return static_cast<Track>(std::to_underlying(diagdir) & 1);
 }
 
 /**
@@ -568,7 +568,7 @@ inline bool TrackOverlapsTracks(TrackBits tracks, Track track)
 inline bool IsReversingRoadTrackdir(Trackdir dir)
 {
 	assert(IsValidTrackdirForRoadVehicle(dir));
-	return (to_underlying(dir) & 0x07) >= 6;
+	return (std::to_underlying(dir) & 0x07) >= 6;
 }
 
 /**
@@ -579,7 +579,7 @@ inline bool IsReversingRoadTrackdir(Trackdir dir)
 inline bool IsStraightRoadTrackdir(Trackdir dir)
 {
 	assert(IsValidTrackdirForRoadVehicle(dir));
-	return (to_underlying(dir) & 0x06) == 0;
+	return (std::to_underlying(dir) & 0x06) == 0;
 }
 
 /**

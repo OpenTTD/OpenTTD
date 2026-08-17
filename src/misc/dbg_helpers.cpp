@@ -27,7 +27,7 @@ static const std::string_view trackdir_names[] = {
  */
 std::string ValueStr(Trackdir td)
 {
-	return fmt::format("{} ({})", to_underlying(td), ItemAt(td, trackdir_names, "UNK", Trackdir::Invalid, "INV"));
+	return fmt::format("{} ({})", std::to_underlying(td), ItemAt(td, trackdir_names, "UNK", Trackdir::Invalid, "INV"));
 }
 
 /**
@@ -53,7 +53,7 @@ static const std::string_view diagdir_names[] = {
  */
 std::string ValueStr(DiagDirection dd)
 {
-	return fmt::format("{} ({})", to_underlying(dd), ItemAt(dd, diagdir_names, "UNK", DiagDirection::Invalid, "INV"));
+	return fmt::format("{} ({})", std::to_underlying(dd), ItemAt(dd, diagdir_names, "UNK", DiagDirection::Invalid, "INV"));
 }
 
 
@@ -69,7 +69,7 @@ static const std::string_view signal_type_names[] = {
  */
 std::string ValueStr(SignalType t)
 {
-	return fmt::format("{} ({})", to_underlying(t), ItemAt(t, signal_type_names, "UNK"));
+	return fmt::format("{} ({})", std::to_underlying(t), ItemAt(t, signal_type_names, "UNK"));
 }
 
 

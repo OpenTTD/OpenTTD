@@ -76,9 +76,9 @@ static DropDownList BuildVisibilityDropDownList()
 {
 	DropDownList list;
 
-	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_LOCAL, to_underlying(ServerGameType::Local)));
-	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY, to_underlying(ServerGameType::InviteOnly)));
-	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_PUBLIC, to_underlying(ServerGameType::Public)));
+	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_LOCAL, std::to_underlying(ServerGameType::Local)));
+	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY, std::to_underlying(ServerGameType::InviteOnly)));
+	list.push_back(MakeDropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_PUBLIC, std::to_underlying(ServerGameType::Public)));
 
 	return list;
 }
@@ -657,7 +657,7 @@ public:
 		} else { // show game info
 			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_CLIENTS, sel->info.clients_on, sel->info.clients_max, sel->info.companies_on, sel->info.companies_max));
 
-			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + to_underlying(sel->info.landscape))); // landscape
+			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_LANDSCAPE, STR_CLIMATE_TEMPERATE_LANDSCAPE + std::to_underlying(sel->info.landscape))); // landscape
 
 			tr.top = DrawStringMultiLine(tr, GetString(STR_NETWORK_SERVER_LIST_MAP_SIZE, sel->info.map_width, sel->info.map_height)); // map size
 
@@ -999,7 +999,7 @@ struct NetworkStartServerWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
-				return GetString(STR_NETWORK_SERVER_VISIBILITY_LOCAL + to_underlying(_settings_client.network.server_game_type));
+				return GetString(STR_NETWORK_SERVER_VISIBILITY_LOCAL + std::to_underlying(_settings_client.network.server_game_type));
 
 			case WID_NSS_CLIENTS_TXT:
 				return GetString(STR_NETWORK_START_SERVER_CLIENTS_SELECT, _settings_client.network.max_clients);
@@ -1045,7 +1045,7 @@ struct NetworkStartServerWindow : public Window {
 				break;
 
 			case WID_NSS_CONNTYPE_BTN: // Connection type
-				ShowDropDownList(this, BuildVisibilityDropDownList(), to_underlying(_settings_client.network.server_game_type), WID_NSS_CONNTYPE_BTN);
+				ShowDropDownList(this, BuildVisibilityDropDownList(), std::to_underlying(_settings_client.network.server_game_type), WID_NSS_CONNTYPE_BTN);
 				break;
 
 			case WID_NSS_CLIENTS_BTND:    case WID_NSS_CLIENTS_BTNU:    // Click on up/down button for number of clients
@@ -1662,8 +1662,8 @@ private:
 	static void OnClickClientAdmin(NetworkClientListWindow *w, Point pt, ClientID client_id)
 	{
 		DropDownList list;
-		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK, to_underlying(DropDownAction::AdminKickClient)));
-		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN, to_underlying(DropDownAction::AdminBanClient)));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK, std::to_underlying(DropDownAction::AdminKickClient)));
+		list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN, std::to_underlying(DropDownAction::AdminBanClient)));
 
 		Rect wi_rect;
 		wi_rect.left   = pt.x;
@@ -1684,10 +1684,10 @@ private:
 	static void OnClickCompanyAdmin(NetworkClientListWindow *w, Point pt, CompanyID company_id)
 	{
 		DropDownList list;
-		if (_network_server) list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, to_underlying(DropDownAction::AdminResetCompany), NetworkCompanyHasClients(company_id)));
+		if (_network_server) list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, std::to_underlying(DropDownAction::AdminResetCompany), NetworkCompanyHasClients(company_id)));
 		if (const Company *c = Company::GetIfValid(company_id); c != nullptr && !c->is_ai) {
-			list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY, to_underlying(DropDownAction::CompanyAllowAny), c->allow_any));
-			list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED, to_underlying(DropDownAction::CompanyAllowListed), !c->allow_any));
+			list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY, std::to_underlying(DropDownAction::CompanyAllowAny), c->allow_any));
+			list.push_back(MakeDropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED, std::to_underlying(DropDownAction::CompanyAllowListed), !c->allow_any));
 		}
 
 		Rect wi_rect;
@@ -1706,7 +1706,7 @@ private:
 	 */
 	static void OnClickClientChat(NetworkClientListWindow *, Point, ClientID client_id)
 	{
-		ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, to_underlying(client_id));
+		ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, std::to_underlying(client_id));
 	}
 
 	/**
@@ -1858,13 +1858,13 @@ public:
 				return _network_server ? _settings_client.network.server_name : _network_server_name;
 
 			case WID_CL_SERVER_VISIBILITY:
-				return GetString(STR_NETWORK_SERVER_VISIBILITY_LOCAL + to_underlying(_settings_client.network.server_game_type));
+				return GetString(STR_NETWORK_SERVER_VISIBILITY_LOCAL + std::to_underlying(_settings_client.network.server_game_type));
 
 			case WID_CL_SERVER_INVITE_CODE:
 				return _network_server_connection_type == ConnectionType::Unknown ? std::string{} : _network_server_invite_code;
 
 			case WID_CL_SERVER_CONNECTION_TYPE:
-				return GetString(STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN + to_underlying(_network_server_connection_type));
+				return GetString(STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN + std::to_underlying(_network_server_connection_type));
 
 			case WID_CL_CLIENT_NAME: {
 				const NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
@@ -1898,7 +1898,7 @@ public:
 			case WID_CL_SERVER_VISIBILITY:
 				if (!_network_server) break;
 
-				ShowDropDownList(this, BuildVisibilityDropDownList(), to_underlying(_settings_client.network.server_game_type), WID_CL_SERVER_VISIBILITY);
+				ShowDropDownList(this, BuildVisibilityDropDownList(), std::to_underlying(_settings_client.network.server_game_type), WID_CL_SERVER_VISIBILITY);
 				break;
 
 			case WID_CL_MATRIX: {
@@ -2124,7 +2124,7 @@ struct NetworkJoinStatusWindow : Window {
 						break;
 				}
 				DrawFrameRect(ir.WithWidth(ir.Width() * progress / 100, _current_text_dir == TD_RTL), Colours::Mauve, {});
-				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)), STR_NETWORK_CONNECTING_1 + to_underlying(_network_join_status), TextColour::FromString, AlignmentH::Centre);
+				DrawString(ir.left, ir.right, CentreBounds(ir.top, ir.bottom, GetCharacterHeight(FontSize::Normal)), STR_NETWORK_CONNECTING_1 + std::to_underlying(_network_join_status), TextColour::FromString, AlignmentH::Centre);
 				break;
 			}
 
@@ -2155,7 +2155,7 @@ struct NetworkJoinStatusWindow : Window {
 			case WID_NJS_PROGRESS_BAR:
 				/* Account for the statuses */
 				for (NetworkJoinStatus i : EnumRange(NetworkJoinStatus::End)) {
-					size = maxdim(size, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + to_underlying(i)));
+					size = maxdim(size, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + std::to_underlying(i)));
 				}
 				/* For the number of waiting (other) players */
 				size = maxdim(size, GetStringBoundingBox(GetString(STR_NETWORK_CONNECTING_WAITING, GetParamMaxValue(MAX_CLIENTS))));

@@ -32,7 +32,7 @@ inline std::string_view ItemAt(E idx, std::span<const std::string_view> names, s
 	if (static_cast<size_t>(idx) >= std::size(names)) {
 		return unknown_name;
 	}
-	return names[to_underlying(idx)];
+	return names[std::to_underlying(idx)];
 }
 
 /**
@@ -72,7 +72,7 @@ inline std::string ComposeName(Tbitset value, std::span<const std::string_view> 
 	std::string out;
 	for (auto index : value) {
 		if (!out.empty()) out += "+";
-		out += to_underlying(index) < std::size(names) ? names[to_underlying(index)] : unknown_name;
+		out += std::to_underlying(index) < std::size(names) ? names[std::to_underlying(index)] : unknown_name;
 	}
 	return out;
 }

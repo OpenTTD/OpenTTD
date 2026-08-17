@@ -112,7 +112,7 @@ GrfSpecFeature CanalResolverObject::GetFeature() const
 
 uint32_t CanalResolverObject::GetDebugID() const
 {
-	return to_underlying(this->feature);
+	return std::to_underlying(this->feature);
 }
 
 /**

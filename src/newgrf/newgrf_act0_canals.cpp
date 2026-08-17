@@ -26,7 +26,7 @@ static ChangeInfoResult CanalChangeInfo(uint first, uint last, int prop, ByteRea
 {
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
-	if (last > to_underlying(CanalFeature::End)) {
+	if (last > std::to_underlying(CanalFeature::End)) {
 		GrfMsg(1, "CanalChangeInfo: Canal feature 0x{:02X} is invalid, max {}, ignoring", last, CanalFeature::End);
 		return ChangeInfoResult::InvalidId;
 	}

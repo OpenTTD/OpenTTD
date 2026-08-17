@@ -118,7 +118,7 @@ std::tuple<CommandCost, VehicleID, uint, uint16_t, CargoArray> CmdBuildVehicle(D
 	VehicleType type = GetDepotVehicleType(tile);
 
 	/* Validate the engine type. */
-	if (!IsEngineBuildable(eid, type, _current_company)) return { CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + to_underlying(type)), VehicleID::Invalid(), 0, 0, {} };
+	if (!IsEngineBuildable(eid, type, _current_company)) return { CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + std::to_underlying(type)), VehicleID::Invalid(), 0, 0, {} };
 
 	/* Validate the cargo type. */
 	if (cargo >= NUM_CARGO && IsValidCargoType(cargo)) return { CMD_ERROR, VehicleID::Invalid(), 0, 0, {} };
@@ -258,7 +258,7 @@ CommandCost CmdSellVehicle(DoCommandFlags flags, VehicleID v_id, bool sell_chain
 
 	if (front->vehstatus.Test(VehState::Crashed)) return CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED);
 
-	if (!front->IsStoppedInDepot()) return CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + to_underlying(front->type));
+	if (!front->IsStoppedInDepot()) return CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + std::to_underlying(front->type));
 
 	if (v->type == VehicleType::Train) {
 		ret = CmdSellRailWagon(flags, v, sell_chain, backup_order, client_id);
@@ -523,7 +523,7 @@ std::tuple<CommandCost, uint, uint16_t, CargoArray> CmdRefitVehicle(DoCommandFla
 			!free_wagon && // used by autoreplace/renew
 			(!auto_refit || !front->current_order.IsType(OT_LOADING)) && // refit inside stations
 			!front->IsStoppedInDepot()) { // refit inside depots
-		return { CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + to_underlying(front->type)), 0, 0, {} };
+		return { CommandCost(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + std::to_underlying(front->type)), 0, 0, {} };
 	}
 
 	if (front->vehstatus.Test(VehState::Crashed)) return { CommandCost(STR_ERROR_VEHICLE_IS_DESTROYED), 0, 0, {} };

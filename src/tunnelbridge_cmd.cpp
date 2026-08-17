@@ -344,7 +344,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		company = OWNER_TOWN;
 
 		/* If we are not within a town, we are not owned by the town */
-		if (town == nullptr || DistanceSquare(tile_start, town->xy) > town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]) {
+		if (town == nullptr || DistanceSquare(tile_start, town->xy) > town->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]) {
 			company = OWNER_NONE;
 		}
 	}
@@ -665,7 +665,7 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		company = OWNER_TOWN;
 
 		/* If we are not within a town, we are not owned by the town */
-		if (town == nullptr || DistanceSquare(start_tile, town->xy) > town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)]) {
+		if (town == nullptr || DistanceSquare(start_tile, town->xy) > town->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)]) {
 			company = OWNER_NONE;
 		}
 	}
@@ -1342,7 +1342,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (HasTunnelBridgeSnowOrDesert(ti->tile)) image += railtype_overlay != 0 ? 8 : 32;
 
-		image += to_underlying(tunnelbridge_direction) * 2;
+		image += std::to_underlying(tunnelbridge_direction) * 2;
 		DrawGroundSprite(image, PAL_NONE);
 
 		if (transport_type == TransportType::Road) {
@@ -1358,7 +1358,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (road_rti->UsesOverlay()) {
 					SpriteID ground = GetCustomRoadSprite(road_rti, ti->tile, RoadSpriteType::Tunnel);
 					if (ground != 0) {
-						DrawGroundSprite(ground + to_underlying(tunnelbridge_direction), PAL_NONE);
+						DrawGroundSprite(ground + std::to_underlying(tunnelbridge_direction), PAL_NONE);
 						draw_underlay = false;
 					}
 				}
@@ -1366,7 +1366,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (tram_rti->UsesOverlay()) {
 					SpriteID ground = GetCustomRoadSprite(tram_rti, ti->tile, RoadSpriteType::Tunnel);
 					if (ground != 0) {
-						DrawGroundSprite(ground + to_underlying(tunnelbridge_direction), PAL_NONE);
+						DrawGroundSprite(ground + std::to_underlying(tunnelbridge_direction), PAL_NONE);
 						draw_underlay = false;
 					}
 				}
@@ -1395,20 +1395,20 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			if (catenary_sprite_base != 0) {
 				catenary = true;
 				StartSpriteCombine();
-				AddSortableSpriteToDraw(catenary_sprite_base + to_underlying(tunnelbridge_direction), PAL_NONE, *ti, catenary_bounds[tunnelbridge_direction], IsTransparencySet(TransparencyOption::Catenary));
+				AddSortableSpriteToDraw(catenary_sprite_base + std::to_underlying(tunnelbridge_direction), PAL_NONE, *ti, catenary_bounds[tunnelbridge_direction], IsTransparencySet(TransparencyOption::Catenary));
 			}
 		} else {
 			const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			if (rti->UsesOverlay()) {
 				SpriteID surface = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Tunnel);
-				if (surface != 0) DrawGroundSprite(surface + to_underlying(tunnelbridge_direction), PAL_NONE);
+				if (surface != 0) DrawGroundSprite(surface + std::to_underlying(tunnelbridge_direction), PAL_NONE);
 			}
 
 			/* PBS debugging, draw reserved tracks darker */
 			if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasTunnelBridgeReservation(ti->tile)) {
 				if (rti->UsesOverlay()) {
 					SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay);
-					DrawGroundSprite(overlay + RTO_X + to_underlying(DiagDirToAxis(tunnelbridge_direction)), PALETTE_CRASH);
+					DrawGroundSprite(overlay + RTO_X + std::to_underlying(DiagDirToAxis(tunnelbridge_direction)), PALETTE_CRASH);
 				} else {
 					DrawGroundSprite(DiagDirToAxis(tunnelbridge_direction) == Axis::X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH);
 				}
@@ -1429,7 +1429,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		AddSortableSpriteToDraw(image + 1, PAL_NONE, *ti, roof_bounds[tunnelbridge_direction], false);
 		/* Draw railtype tunnel portal overlay if defined. */
-		if (railtype_overlay != 0) AddSortableSpriteToDraw(railtype_overlay + to_underlying(tunnelbridge_direction), PAL_NONE, *ti, roof_bounds[tunnelbridge_direction], false);
+		if (railtype_overlay != 0) AddSortableSpriteToDraw(railtype_overlay + std::to_underlying(tunnelbridge_direction), PAL_NONE, *ti, roof_bounds[tunnelbridge_direction], false);
 
 		if (catenary || railtype_overlay != 0) EndSpriteCombine();
 
@@ -1478,7 +1478,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		AddSortableSpriteToDraw(psid[0].sprite, psid[0].pal, *ti, {{}, {TILE_SIZE, TILE_SIZE, static_cast<uint8_t>(ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT)}, {}});
 
 		if (transport_type == TransportType::Road) {
-			uint offset = to_underlying(tunnelbridge_direction);
+			uint offset = std::to_underlying(tunnelbridge_direction);
 			int z = ti->z;
 			if (ti->tileh != SLOPE_FLAT) {
 				offset = (offset + 1) & 1;
@@ -1499,7 +1499,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
 						AddSortableSpriteToDraw(surface + ((DiagDirToAxis(tunnelbridge_direction) == Axis::X) ? RTBO_X : RTBO_Y), PAL_NONE, *ti, {{0, 0, TILE_HEIGHT}, {TILE_SIZE, TILE_SIZE, 0}, {}});
 					} else {
-						AddSortableSpriteToDraw(surface + RTBO_SLOPE + to_underlying(tunnelbridge_direction), PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT}, {}});
+						AddSortableSpriteToDraw(surface + RTBO_SLOPE + std::to_underlying(tunnelbridge_direction), PAL_NONE, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT}, {}});
 					}
 				}
 			}
@@ -1509,15 +1509,15 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				if (rti->UsesOverlay()) {
 					SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay);
 					if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
-						AddSortableSpriteToDraw(overlay + RTO_X + to_underlying(DiagDirToAxis(tunnelbridge_direction)), PALETTE_CRASH, *ti, {{0, 0, TILE_HEIGHT}, {TILE_SIZE, TILE_SIZE, 0}, {}});
+						AddSortableSpriteToDraw(overlay + RTO_X + std::to_underlying(DiagDirToAxis(tunnelbridge_direction)), PALETTE_CRASH, *ti, {{0, 0, TILE_HEIGHT}, {TILE_SIZE, TILE_SIZE, 0}, {}});
 					} else {
-						AddSortableSpriteToDraw(overlay + RTO_SLOPE_NE + to_underlying(tunnelbridge_direction), PALETTE_CRASH, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT}, {}});
+						AddSortableSpriteToDraw(overlay + RTO_SLOPE_NE + std::to_underlying(tunnelbridge_direction), PALETTE_CRASH, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT}, {}});
 					}
 				} else {
 					if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
 						AddSortableSpriteToDraw(DiagDirToAxis(tunnelbridge_direction) == Axis::X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH, *ti, {{0, 0, TILE_HEIGHT}, {TILE_SIZE, TILE_SIZE, 0}, {}});
 					} else {
-						AddSortableSpriteToDraw(rti->base_sprites.single_sloped + to_underlying(tunnelbridge_direction), PALETTE_CRASH, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT}, {}});
+						AddSortableSpriteToDraw(rti->base_sprites.single_sloped + std::to_underlying(tunnelbridge_direction), PALETTE_CRASH, *ti, {{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT}, {}});
 					}
 				}
 			}
@@ -1668,20 +1668,20 @@ void DrawBridgeMiddle(const TileInfo *ti, BridgePillarFlags blocked_pillars)
 
 	if (transport_type == TransportType::Road) {
 		/* DrawBridgeRoadBits() calls EndSpriteCombine() and StartSpriteCombine() */
-		DrawBridgeRoadBits(rampsouth, x, y, bridge_z, to_underlying(OtherAxis(axis)), false, is_custom_layout);
+		DrawBridgeRoadBits(rampsouth, x, y, bridge_z, std::to_underlying(OtherAxis(axis)), false, is_custom_layout);
 	} else if (transport_type == TransportType::Rail) {
 		const RailTypeInfo *rti = GetRailTypeInfo(GetRailType(rampsouth));
 		if ((is_custom_layout || rti->UsesOverlay()) && !IsInvisibilitySet(TransparencyOption::Bridges)) {
 			SpriteID surface = rti->UsesOverlay() ? GetCustomRailSprite(rti, rampsouth, RailSpriteType::Bridge, TileContext::OnBridge) : rti->base_sprites.bridge_deck;
 			if (surface != 0) {
-				AddSortableSpriteToDraw(surface + to_underlying(axis), PAL_NONE, x, y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TransparencyOption::Bridges));
+				AddSortableSpriteToDraw(surface + std::to_underlying(axis), PAL_NONE, x, y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TransparencyOption::Bridges));
 			}
 		}
 
 		if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && !IsInvisibilitySet(TransparencyOption::Bridges) && HasTunnelBridgeReservation(rampnorth)) {
 			if (rti->UsesOverlay()) {
 				SpriteID overlay = GetCustomRailSprite(rti, rampnorth, RailSpriteType::Overlay, TileContext::OnBridge);
-				AddSortableSpriteToDraw(overlay + RTO_X + to_underlying(axis), PALETTE_CRASH, ti->x, ti->y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TransparencyOption::Bridges));
+				AddSortableSpriteToDraw(overlay + RTO_X + std::to_underlying(axis), PALETTE_CRASH, ti->x, ti->y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TransparencyOption::Bridges));
 			} else {
 				AddSortableSpriteToDraw(axis == Axis::X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH, ti->x, ti->y, bridge_z, {{}, {TILE_SIZE, TILE_SIZE, 0}, {}}, IsTransparencySet(TransparencyOption::Bridges));
 			}
@@ -1762,7 +1762,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc &td)
 	if (IsTunnel(tile)) {
 		td.str = (tt == TransportType::Rail) ? STR_LAI_TUNNEL_DESCRIPTION_RAILROAD : STR_LAI_TUNNEL_DESCRIPTION_ROAD;
 	} else { // IsBridge(tile)
-		td.str = (tt == TransportType::Water) ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[to_underlying(tt)];
+		td.str = (tt == TransportType::Water) ? STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[std::to_underlying(tt)];
 	}
 	td.owner[0] = GetTileOwner(tile);
 
@@ -2018,7 +2018,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 			/* We're at the tunnel exit ?? */
 			if (dir == ReverseDiagDir(vdir) && frame == TILE_SIZE - _tunnel_visibility_frame[dir] && z == 0) {
 				rv->tile = tile;
-				rv->state = to_underlying(DiagDirToDiagTrackdir(vdir));
+				rv->state = std::to_underlying(DiagDirToDiagTrackdir(vdir));
 				rv->frame = frame;
 				rv->vehstatus.Reset(VehState::Hidden);
 				return VehicleEnterTileState::EnteredWormhole;
@@ -2074,7 +2074,7 @@ static VehicleEnterTileStates VehicleEnterTile_TunnelBridge(Vehicle *v, TileInde
 				case VehicleType::Road: {
 					RoadVehicle *rv = RoadVehicle::From(v);
 					if (rv->state == RVSB_WORMHOLE) {
-						rv->state = to_underlying(DiagDirToDiagTrackdir(vdir));
+						rv->state = std::to_underlying(DiagDirToDiagTrackdir(vdir));
 						rv->frame = 0;
 						return VehicleEnterTileState::EnteredWormhole;
 					}

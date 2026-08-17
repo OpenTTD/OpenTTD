@@ -72,7 +72,7 @@ enum SettingType : uint8_t {
 struct IniItem;
 
 /**
- * Type is convertible to TTo, either directly, through ConvertibleThroughBase or through to_underlying.
+ * Type is convertible to TTo, either directly, through ConvertibleThroughBase or through std::to_underlying.
  * @tparam T The type under consideration.
  * @tparam TTo The type to convert to.
  */
@@ -225,7 +225,7 @@ struct IntSettingDesc : SettingDesc {
 		if constexpr (ConvertibleThroughBase<Tdef>) {
 			this->def = def.base();
 		} else if constexpr (is_scoped_enum_v<Tdef>) {
-			this->def = to_underlying(def);
+			this->def = std::to_underlying(def);
 		} else {
 			this->def = def;
 		}
@@ -233,7 +233,7 @@ struct IntSettingDesc : SettingDesc {
 		if constexpr (ConvertibleThroughBase<Tmin>) {
 			this->min = min.base();
 		} else if constexpr (is_scoped_enum_v<Tmin>) {
-			this->min = to_underlying(min);
+			this->min = std::to_underlying(min);
 		} else {
 			this->min = min;
 		}
@@ -241,7 +241,7 @@ struct IntSettingDesc : SettingDesc {
 		if constexpr (ConvertibleThroughBase<Tmax>) {
 			this->max = max.base();
 		} else if constexpr (is_scoped_enum_v<Tmax>) {
-			this->max = to_underlying(max);
+			this->max = std::to_underlying(max);
 		} else {
 			this->max = max;
 		}
@@ -249,7 +249,7 @@ struct IntSettingDesc : SettingDesc {
 		if constexpr (ConvertibleThroughBase<Tinterval>) {
 			this->interval = interval.base();
 		} else if constexpr (is_scoped_enum_v<Tinterval>) {
-			this->interval = to_underlying(interval);
+			this->interval = std::to_underlying(interval);
 		} else {
 			this->interval = interval;
 		}

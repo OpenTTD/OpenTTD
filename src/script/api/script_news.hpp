@@ -24,13 +24,13 @@ public:
 	 */
 	enum NewsType {
 		/* Arbitrary selection of NewsTypes which might make sense for scripts */
-		NT_ACCIDENT          = to_underlying(::NewsType::Accident),         ///< Category accidents.
-		NT_COMPANY_INFO      = to_underlying(::NewsType::CompanyInfo),      ///< Category company info.
-		NT_ECONOMY           = to_underlying(::NewsType::Economy),          ///< Category economy.
-		NT_ADVICE            = to_underlying(::NewsType::Advice),           ///< Category vehicle advice.
-		NT_ACCEPTANCE        = to_underlying(::NewsType::Acceptance),       ///< Category acceptance changes.
-		NT_SUBSIDIES         = to_underlying(::NewsType::Subsidies),        ///< Category subsidies.
-		NT_GENERAL           = to_underlying(::NewsType::General),          ///< Category general.
+		NT_ACCIDENT          = std::to_underlying(::NewsType::Accident),         ///< Category accidents.
+		NT_COMPANY_INFO      = std::to_underlying(::NewsType::CompanyInfo),      ///< Category company info.
+		NT_ECONOMY           = std::to_underlying(::NewsType::Economy),          ///< Category economy.
+		NT_ADVICE            = std::to_underlying(::NewsType::Advice),           ///< Category vehicle advice.
+		NT_ACCEPTANCE        = std::to_underlying(::NewsType::Acceptance),       ///< Category acceptance changes.
+		NT_SUBSIDIES         = std::to_underlying(::NewsType::Subsidies),        ///< Category subsidies.
+		NT_GENERAL           = std::to_underlying(::NewsType::General),          ///< Category general.
 	};
 
 	/**

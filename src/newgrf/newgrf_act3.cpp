@@ -244,7 +244,7 @@ struct CanalMapSpriteGroupHandler : MapSpriteGroupHandler {
 
 	void MapDefault(uint16_t local_id, const SpriteGroup *group) override
 	{
-		if (local_id >= to_underlying(CanalFeature::End)) {
+		if (local_id >= std::to_underlying(CanalFeature::End)) {
 			GrfMsg(1, "CanalMapSpriteGroup: Canal subset {} out of range, skipping", local_id);
 		} else {
 			auto &feature = _water_feature[static_cast<CanalFeature>(local_id)];
@@ -335,7 +335,7 @@ struct RoadStopMapSpriteGroupHandler : CargoTypeMapSpriteGroupHandler<RoadStopSp
 struct BadgeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
 	{
-		if (cid >= to_underlying(GrfSpecFeature::End)) return;
+		if (cid >= std::to_underlying(GrfSpecFeature::End)) return;
 
 		auto found = _cur_gps.grffile->badge_map.find(local_id);
 		if (found == std::end(_cur_gps.grffile->badge_map)) {

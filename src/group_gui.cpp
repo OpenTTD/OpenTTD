@@ -244,7 +244,7 @@ private:
 		this->column_size[VGC_FOLD] = maxdim(GetScaledSpriteSize(SPR_CIRCLE_FOLDED), GetScaledSpriteSize(SPR_CIRCLE_UNFOLDED));
 		this->tiny_step_height = this->column_size[VGC_FOLD].height;
 
-		this->column_size[VGC_NAME] = maxdim(GetStringBoundingBox(STR_GROUP_DEFAULT_TRAINS + to_underlying(this->vli.vtype)), GetStringBoundingBox(STR_GROUP_ALL_TRAINS + to_underlying(this->vli.vtype)));
+		this->column_size[VGC_NAME] = maxdim(GetStringBoundingBox(STR_GROUP_DEFAULT_TRAINS + std::to_underlying(this->vli.vtype)), GetStringBoundingBox(STR_GROUP_ALL_TRAINS + std::to_underlying(this->vli.vtype)));
 		this->column_size[VGC_NAME].width = std::max(170u, this->column_size[VGC_NAME].width) + WidgetDimensions::scaled.hsep_indent;
 		this->tiny_step_height = std::max(this->tiny_step_height, this->column_size[VGC_NAME].height);
 
@@ -309,8 +309,8 @@ private:
 	 */
 	std::string GetGroupNameString(GroupID g_id) const
 	{
-		if (IsAllGroupID(g_id)) return GetString(STR_GROUP_ALL_TRAINS + to_underlying(this->vli.vtype));
-		if (IsDefaultGroupID(g_id)) return GetString(STR_GROUP_DEFAULT_TRAINS + to_underlying(this->vli.vtype));
+		if (IsAllGroupID(g_id)) return GetString(STR_GROUP_ALL_TRAINS + std::to_underlying(this->vli.vtype));
+		if (IsDefaultGroupID(g_id)) return GetString(STR_GROUP_DEFAULT_TRAINS + std::to_underlying(this->vli.vtype));
 		return GetString(STR_GROUP_NAME, g_id);
 	}
 
@@ -433,14 +433,14 @@ public:
 		this->BuildGroupList(vli.company);
 		this->group_sb->SetCount(this->groups.size());
 
-		this->GetWidget<NWidgetCore>(WID_GL_CAPTION)->SetString(STR_VEHICLE_LIST_TRAIN_CAPTION + to_underlying(this->vli.vtype));
-		this->GetWidget<NWidgetCore>(WID_GL_LIST_VEHICLE)->SetToolTip(STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + to_underlying(this->vli.vtype));
+		this->GetWidget<NWidgetCore>(WID_GL_CAPTION)->SetString(STR_VEHICLE_LIST_TRAIN_CAPTION + std::to_underlying(this->vli.vtype));
+		this->GetWidget<NWidgetCore>(WID_GL_LIST_VEHICLE)->SetToolTip(STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + std::to_underlying(this->vli.vtype));
 
-		this->GetWidget<NWidgetCore>(WID_GL_CREATE_GROUP)->SetSprite(SPR_GROUP_CREATE_TRAIN + to_underlying(this->vli.vtype));
-		this->GetWidget<NWidgetCore>(WID_GL_RENAME_GROUP)->SetSprite(SPR_GROUP_RENAME_TRAIN + to_underlying(this->vli.vtype));
-		this->GetWidget<NWidgetCore>(WID_GL_DELETE_GROUP)->SetSprite(SPR_GROUP_DELETE_TRAIN + to_underlying(this->vli.vtype));
-		this->GetWidget<NWidgetCore>(WID_GL_LIVERY_GROUP)->SetSprite(SPR_GROUP_LIVERY_TRAIN + to_underlying(this->vli.vtype));
-		this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->SetSprite(SPR_GROUP_REPLACE_OFF_TRAIN + to_underlying(this->vli.vtype));
+		this->GetWidget<NWidgetCore>(WID_GL_CREATE_GROUP)->SetSprite(SPR_GROUP_CREATE_TRAIN + std::to_underlying(this->vli.vtype));
+		this->GetWidget<NWidgetCore>(WID_GL_RENAME_GROUP)->SetSprite(SPR_GROUP_RENAME_TRAIN + std::to_underlying(this->vli.vtype));
+		this->GetWidget<NWidgetCore>(WID_GL_DELETE_GROUP)->SetSprite(SPR_GROUP_DELETE_TRAIN + std::to_underlying(this->vli.vtype));
+		this->GetWidget<NWidgetCore>(WID_GL_LIVERY_GROUP)->SetSprite(SPR_GROUP_LIVERY_TRAIN + std::to_underlying(this->vli.vtype));
+		this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->SetSprite(SPR_GROUP_REPLACE_OFF_TRAIN + std::to_underlying(this->vli.vtype));
 
 		this->FinishInitNested(window_number);
 		this->owner = vli.company;
@@ -562,7 +562,7 @@ public:
 				return GetString(this->GetCargoFilterLabel(this->cargo_filter_criteria));
 
 			case WID_GL_AVAILABLE_VEHICLES:
-				return GetString(STR_VEHICLE_LIST_AVAILABLE_TRAINS + to_underlying(this->vli.vtype));
+				return GetString(STR_VEHICLE_LIST_AVAILABLE_TRAINS + std::to_underlying(this->vli.vtype));
 
 			case WID_GL_CAPTION:
 				/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
@@ -625,7 +625,7 @@ public:
 		/* If not a default group and the group has replace protection, show an enabled replace sprite. */
 		uint16_t protect_sprite = SPR_GROUP_REPLACE_OFF_TRAIN;
 		if (!IsDefaultGroupID(group) && !IsAllGroupID(group) && Group::Get(group)->flags.Test(GroupFlag::ReplaceProtection)) protect_sprite = SPR_GROUP_REPLACE_ON_TRAIN;
-		this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->SetSprite(protect_sprite + to_underlying(this->vli.vtype));
+		this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->SetSprite(protect_sprite + std::to_underlying(this->vli.vtype));
 
 		/* Set text of "group by" dropdown widget. */
 		this->GetWidget<NWidgetCore>(WID_GL_GROUP_BY_DROPDOWN)->SetString(std::data(this->vehicle_group_by_names)[this->grouping]);
@@ -1230,7 +1230,7 @@ static void ShowCompanyGroupInternal(CompanyID company, VehicleType vehicle_type
 {
 	if (!Company::IsValidID(company)) return;
 
-	assert(to_underlying(vehicle_type) < std::size(_vehicle_group_desc));
+	assert(std::to_underlying(vehicle_type) < std::size(_vehicle_group_desc));
 	VehicleListIdentifier vli(VehicleListType::Group, vehicle_type, company);
 	VehicleGroupWindow *w = AllocateWindowDescFront<VehicleGroupWindow, Tneed_existing_window>(_vehicle_group_desc[vehicle_type], vli.ToWindowNumber(), vli);
 	if (w != nullptr) w->SelectGroup(group);

@@ -108,7 +108,7 @@ void ResetGenericCallbacks()
  */
 void AddGenericCallback(GrfSpecFeature feature, const GRFFile *file, const SpriteGroup *group)
 {
-	if (to_underlying(feature) >= std::size(_gcl)) {
+	if (std::to_underlying(feature) >= std::size(_gcl)) {
 		GrfMsg(5, "AddGenericCallback: Unsupported feature 0x{:02X}", feature);
 		return;
 	}
@@ -167,7 +167,7 @@ GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callba
  */
 static std::pair<const GRFFile *, uint16_t> GetGenericCallbackResult(GrfSpecFeature feature, ResolverObject &object, uint32_t param1_grfv7, uint32_t param1_grfv8, std::span<int32_t> regs100 = {})
 {
-	assert(to_underlying(feature) < std::size(_gcl));
+	assert(std::to_underlying(feature) < std::size(_gcl));
 
 	/* Test each feature callback sprite group. */
 	for (const auto &it : _gcl[feature]) {
@@ -248,8 +248,8 @@ void AmbientSoundEffectCallback(TileIndex tile)
 	GenericResolverObject object(false, CBID_SOUNDS_AMBIENT_EFFECT);
 	object.generic_scope.feature = GrfSpecFeature::SoundEffects;
 
-	uint32_t param1_v7 = to_underlying(GetTileType(tile)) << 28 | Clamp(TileHeight(tile), 0, 15) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
-	uint32_t param1_v8 = to_underlying(GetTileType(tile)) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? to_underlying(GetWaterClass(tile)) : 0) << 3 | GetTerrainType(tile);
+	uint32_t param1_v7 = std::to_underlying(GetTileType(tile)) << 28 | Clamp(TileHeight(tile), 0, 15) << 24 | GB(r, 16, 8) << 16 | GetTerrainType(tile);
+	uint32_t param1_v8 = std::to_underlying(GetTileType(tile)) << 24 | GetTileZ(tile) << 16 | GB(r, 16, 8) << 8 | (HasTileWaterClass(tile) ? std::to_underlying(GetWaterClass(tile)) : 0) << 3 | GetTerrainType(tile);
 
 	/* Run callback. */
 	auto callback = GetGenericCallbackResult(GrfSpecFeature::SoundEffects, object, param1_v7, param1_v8);

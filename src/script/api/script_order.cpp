@@ -315,8 +315,8 @@ static ScriptOrder::OrderPosition RealOrderPositionToScriptOrderPosition(Vehicle
 			break;
 
 		case OT_GOTO_STATION:
-			order_flags |= static_cast<ScriptOrderFlags>(to_underlying(order->GetLoadType())   << 5);
-			order_flags |= static_cast<ScriptOrderFlags>(to_underlying(order->GetUnloadType()) << 2);
+			order_flags |= static_cast<ScriptOrderFlags>(std::to_underlying(order->GetLoadType())   << 5);
+			order_flags |= static_cast<ScriptOrderFlags>(std::to_underlying(order->GetUnloadType()) << 2);
 			break;
 
 		default: break;
@@ -621,7 +621,7 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance &instance)
 				OrderDepotAction data = OrderDepotAction::AlwaysGo;
 				if ((order_flags & OF_SERVICE_IF_NEEDED) != 0) data = OrderDepotAction::Service;
 				if ((order_flags & OF_STOP_IN_DEPOT) != 0) data = OrderDepotAction::Stop;
-				return ScriptObject::Command<Commands::ModifyOrder>::Do(&::_DoCommandReturnSetOrderFlags, vehicle_id, order_pos, MOF_DEPOT_ACTION, to_underlying(data));
+				return ScriptObject::Command<Commands::ModifyOrder>::Do(&::_DoCommandReturnSetOrderFlags, vehicle_id, order_pos, MOF_DEPOT_ACTION, std::to_underlying(data));
 			}
 			break;
 

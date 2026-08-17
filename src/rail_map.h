@@ -83,7 +83,7 @@ inline bool HasSignals(Tile t)
 inline void SetHasSignals(Tile tile, bool signals)
 {
 	assert(IsPlainRailTile(tile));
-	SB(tile.m5(), 6, 2, to_underlying(signals ? RailTileType::Signals : RailTileType::Normal));
+	SB(tile.m5(), 6, 2, std::to_underlying(signals ? RailTileType::Signals : RailTileType::Normal));
 }
 
 /**
@@ -211,7 +211,7 @@ inline void SetTrackReservation(Tile t, TrackBits b)
 	assert(IsPlainRailTile(t));
 	assert(!TracksOverlap(b));
 	Track track = RemoveFirstTrack(b);
-	SB(t.m2(), 8, 3, IsValidTrack(track) ? to_underlying(track) + 1 : 0);
+	SB(t.m2(), 8, 3, IsValidTrack(track) ? std::to_underlying(track) + 1 : 0);
 	AssignBit(t.m2(), 11, b.Any());
 }
 
@@ -318,8 +318,8 @@ inline void SetSignalType(Tile t, Track track, SignalType s)
 {
 	assert(GetRailTileType(t) == RailTileType::Signals);
 	uint8_t pos = (track == Track::Lower || track == Track::Right) ? 4 : 0;
-	SB(t.m2(), pos, 3, to_underlying(s));
-	if (!IsValidTrack(track)) SB(t.m2(), 4, 3, to_underlying(s));
+	SB(t.m2(), pos, 3, std::to_underlying(s));
+	if (!IsValidTrack(track)) SB(t.m2(), 4, 3, std::to_underlying(s));
 }
 
 /**
@@ -398,8 +398,8 @@ inline SignalVariant GetSignalVariant(Tile t, Track track)
 inline void SetSignalVariant(Tile t, Track track, SignalVariant v)
 {
 	uint8_t pos = (track == Track::Lower || track == Track::Right) ? 7 : 3;
-	SB(t.m2(), pos, 1, to_underlying(v));
-	if (!IsValidTrack(track)) SB(t.m2(), 7, 1, to_underlying(v));
+	SB(t.m2(), pos, 1, std::to_underlying(v));
+	if (!IsValidTrack(track)) SB(t.m2(), 7, 1, std::to_underlying(v));
 }
 
 /**
@@ -590,7 +590,7 @@ enum class RailGroundType : uint8_t {
  */
 inline void SetRailGroundType(Tile t, RailGroundType rgt)
 {
-	SB(t.m4(), 0, 4, to_underlying(rgt));
+	SB(t.m4(), 0, 4, std::to_underlying(rgt));
 }
 
 /**
@@ -629,7 +629,7 @@ inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = to_underlying(RailTileType::Normal) << 6 | b.base();
+	t.m5() = std::to_underlying(RailTileType::Normal) << 6 | b.base();
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = r;
@@ -643,7 +643,7 @@ inline void MakeRailNormal(Tile t, Owner o, TrackBits b, RailType r)
 inline void SetRailDepotExitDirection(Tile tile, DiagDirection dir)
 {
 	assert(IsRailDepotTile(tile));
-	SB(tile.m5(), 0, 2, to_underlying(dir));
+	SB(tile.m5(), 0, 2, std::to_underlying(dir));
 }
 
 /**
@@ -662,7 +662,7 @@ inline void MakeRailDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m2() = depot_id.base();
 	tile.m3() = 0;
 	tile.m4() = 0;
-	tile.m5() = to_underlying(RailTileType::Depot) << 6 | to_underlying(dir);
+	tile.m5() = std::to_underlying(RailTileType::Depot) << 6 | std::to_underlying(dir);
 	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = 0;
 	tile.m8() = rail_type;

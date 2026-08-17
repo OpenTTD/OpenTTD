@@ -478,7 +478,7 @@ struct SignWindow : Window, SignList {
 				return GetString(this->name_editbox.caption);
 
 			case WID_QES_COLOUR:
-				return GetString(STR_COLOUR_DARK_BLUE + to_underlying(this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour)));
+				return GetString(STR_COLOUR_DARK_BLUE + std::to_underlying(this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour)));
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);
@@ -491,7 +491,7 @@ struct SignWindow : Window, SignList {
 			const Dimension square_size = GetSpriteSize(SPR_SQUARE);
 			const uint string_padding = square_size.width + WidgetDimensions::scaled.hsep_normal + padding.width;
 			for (Colours colour : EnumRange(Colours::End)) {
-				size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + to_underlying(colour)).width + string_padding);
+				size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + std::to_underlying(colour)).width + string_padding);
 			}
 			size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DEFAULT).width + string_padding);
 			return;
@@ -504,9 +504,9 @@ struct SignWindow : Window, SignList {
 	{
 		DropDownList list;
 		for (Colours colour : EnumRange(Colours::End)) {
-			list.emplace_back(MakeDropDownListIconItem(SPR_SQUARE, GetColourPalette(colour), STR_COLOUR_DARK_BLUE + to_underlying(colour), colour));
+			list.emplace_back(MakeDropDownListIconItem(SPR_SQUARE, GetColourPalette(colour), STR_COLOUR_DARK_BLUE + std::to_underlying(colour), colour));
 		}
-		const int selected = to_underlying(this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour));
+		const int selected = std::to_underlying(this->new_colour.value_or(Sign::Get(this->cur_sign)->text_colour));
 		ShowDropDownList(this, std::move(list), selected, WID_QES_COLOUR);
 	}
 

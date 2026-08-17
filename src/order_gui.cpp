@@ -272,7 +272,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 			} else {
 				/* Show non-stop, refit and stop location only in the order window. */
 				if (!order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
-					StringID str = _station_load_types[order->IsRefit()][to_underlying(unload)][to_underlying(load)];
+					StringID str = _station_load_types[order->IsRefit()][std::to_underlying(unload)][std::to_underlying(load)];
 					if (str != INVALID_STRING_ID) {
 						if (order->IsRefit()) {
 							line += GetString(str, order->IsAutoRefit() ? STR_ORDER_AUTO_REFIT_ANY : CargoSpec::Get(order->GetRefitCargo())->name);
@@ -285,7 +285,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 				if (v->type == VehicleType::Train && !order->GetNonStopType().Test(OrderNonStopFlag::GoVia)) {
 					/* Only show the stopping location if other than the default chosen by the player. */
 					if (order->GetStopLocation() != _settings_client.gui.stop_location) {
-						line += GetString(STR_ORDER_STOP_LOCATION_NEAR_END + to_underlying(order->GetStopLocation()));
+						line += GetString(STR_ORDER_STOP_LOCATION_NEAR_END + std::to_underlying(order->GetStopLocation()));
 					}
 				}
 			}
@@ -301,7 +301,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 				line = GetString(STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT, GetOrderGoToString(*order));
 			} else {
 				/* Going to the nearest depot. */
-				line = GetString(STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT, GetOrderGoToString(*order), STR_ORDER_TRAIN_DEPOT + to_underlying(v->type));
+				line = GetString(STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT, GetOrderGoToString(*order), STR_ORDER_TRAIN_DEPOT + std::to_underlying(v->type));
 			}
 
 			/* Do not show stopping in the depot in the timetable window. */
@@ -335,8 +335,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 
 				line = GetString((occ == OrderConditionComparator::IsTrue || occ == OrderConditionComparator::IsFalse) ? STR_ORDER_CONDITIONAL_TRUE_FALSE : STR_ORDER_CONDITIONAL_NUM,
 					order->GetConditionSkipToOrder() + 1,
-					STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(order->GetConditionVariable()),
-					STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + to_underlying(occ),
+					STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + std::to_underlying(order->GetConditionVariable()),
+					STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + std::to_underlying(occ),
 					value);
 			}
 
@@ -606,7 +606,7 @@ private:
 		}
 		if (order->GetLoadType() == load_type) return; // If we still match, do nothing
 
-		Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, to_underlying(load_type));
+		Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, std::to_underlying(load_type));
 	}
 
 	/**
@@ -622,7 +622,7 @@ private:
 			if (order == nullptr) return;
 			i = order->GetDepotOrderType().Test(OrderDepotTypeFlag::Service) ? OrderDepotAction::AlwaysGo : OrderDepotAction::Service;
 		}
-		Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_DEPOT_ACTION, to_underlying(i.value()));
+		Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_DEPOT_ACTION, std::to_underlying(i.value()));
 	}
 
 	/**
@@ -655,11 +655,11 @@ private:
 		}
 		if (order->GetUnloadType() == unload_type) return; // If we still match, do nothing
 
-		Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_UNLOAD, to_underlying(unload_type));
+		Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_UNLOAD, std::to_underlying(unload_type));
 
 		/* Transfer and unload orders with leave empty as default */
 		if (unload_type == OrderUnloadType::Transfer || unload_type == OrderUnloadType::Unload) {
-			Command<Commands::ModifyOrder>::Post(this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, to_underlying(OrderLoadType::NoLoad));
+			Command<Commands::ModifyOrder>::Post(this->vehicle->tile, this->vehicle->index, sel_ord, MOF_LOAD, std::to_underlying(OrderLoadType::NoLoad));
 			this->SetWidgetDirty(WID_O_FULL_LOAD);
 		}
 	}
@@ -777,7 +777,7 @@ public:
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_O_SCROLLBAR);
 		if (NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_O_DEPOT_ACTION); nwid != nullptr) {
-			nwid->SetToolTip(STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP + to_underlying(v->type));
+			nwid->SetToolTip(STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP + std::to_underlying(v->type));
 		}
 		this->FinishInitNested(v->index);
 
@@ -805,7 +805,7 @@ public:
 			case WID_O_COND_VARIABLE: {
 				Dimension d = {0, 0};
 				for (const auto &ocv : _order_conditional_variable) {
-					d = maxdim(d, GetStringBoundingBox(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv)));
+					d = maxdim(d, GetStringBoundingBox(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + std::to_underlying(ocv)));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -1037,8 +1037,8 @@ public:
 					}
 					OrderConditionVariable ocv = order->GetConditionVariable();
 					/* Set the strings for the dropdown boxes. */
-					this->GetWidget<NWidgetCore>(WID_O_COND_VARIABLE)->SetString(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv));
-					this->GetWidget<NWidgetCore>(WID_O_COND_COMPARATOR)->SetString(_order_conditional_condition[to_underlying(order->GetConditionComparator())]);
+					this->GetWidget<NWidgetCore>(WID_O_COND_VARIABLE)->SetString(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + std::to_underlying(ocv));
+					this->GetWidget<NWidgetCore>(WID_O_COND_COMPARATOR)->SetString(_order_conditional_condition[std::to_underlying(order->GetConditionComparator())]);
 					this->SetWidgetDisabledState(WID_O_COND_COMPARATOR, ocv == OrderConditionVariable::Unconditionally);
 					this->SetWidgetDisabledState(WID_O_COND_VALUE, ocv == OrderConditionVariable::DrivingBackwards || ocv == OrderConditionVariable::RequiresService || ocv == OrderConditionVariable::Unconditionally);
 					break;
@@ -1204,7 +1204,7 @@ public:
 					if (this->vehicle->type == VehicleType::Train && sel < this->vehicle->GetNumOrders()) {
 						Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER,
 								this->vehicle->tile, this->vehicle->index, sel,
-								MOF_STOP_LOCATION, (to_underlying(this->vehicle->GetOrder(sel)->GetStopLocation()) + 1) % to_underlying(OrderStopLocation::End));
+								MOF_STOP_LOCATION, (std::to_underlying(this->vehicle->GetOrder(sel)->GetStopLocation()) + 1) % std::to_underlying(OrderStopLocation::End));
 					}
 				} else {
 					/* Select clicked order */
@@ -1267,7 +1267,7 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_FullLoad(OrderLoadType::FullLoadAny, true);
 				} else {
-					ShowDropDownMenu(this, _order_full_load_dropdown, to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType()), WID_O_FULL_LOAD, 0, 2);
+					ShowDropDownMenu(this, _order_full_load_dropdown, std::to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType()), WID_O_FULL_LOAD, 0, 2);
 				}
 				break;
 
@@ -1275,7 +1275,7 @@ public:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
 					this->OrderClick_Unload(OrderUnloadType::Unload, true);
 				} else {
-					ShowDropDownMenu(this, _order_unload_dropdown, to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType()), WID_O_UNLOAD, 0, 8);
+					ShowDropDownMenu(this, _order_unload_dropdown, std::to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType()), WID_O_UNLOAD, 0, 8);
 				}
 				break;
 
@@ -1284,7 +1284,7 @@ public:
 				break;
 
 			case WID_O_DEPOT_ACTION:
-				ShowDropDownMenu(this, _order_depot_action_dropdown, to_underlying(DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel()))), WID_O_DEPOT_ACTION, 0, 0);
+				ShowDropDownMenu(this, _order_depot_action_dropdown, std::to_underlying(DepotActionStringIndex(this->vehicle->GetOrder(this->OrderGetSel()))), WID_O_DEPOT_ACTION, 0, 0);
 				break;
 
 			case WID_O_REFIT_DROPDOWN:
@@ -1303,16 +1303,16 @@ public:
 				DropDownList list;
 				for (const auto &ocv : _order_conditional_variable) {
 					if (ocv == OrderConditionVariable::DrivingBackwards && this->vehicle->type != VehicleType::Train) continue;
-					list.push_back(MakeDropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + to_underlying(ocv), to_underlying(ocv)));
+					list.push_back(MakeDropDownListStringItem(STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + std::to_underlying(ocv), std::to_underlying(ocv)));
 				}
-				ShowDropDownList(this, std::move(list), to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable()), WID_O_COND_VARIABLE);
+				ShowDropDownList(this, std::move(list), std::to_underlying(this->vehicle->GetOrder(this->OrderGetSel())->GetConditionVariable()), WID_O_COND_VARIABLE);
 				break;
 			}
 
 			case WID_O_COND_COMPARATOR: {
 				const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 				assert(o != nullptr);
-				ShowDropDownMenu(this, _order_conditional_condition, to_underlying(o->GetConditionComparator()), WID_O_COND_COMPARATOR, 0, (o->GetConditionVariable() == OrderConditionVariable::RequiresService || o->GetConditionVariable() == OrderConditionVariable::DrivingBackwards) ? 0x3F : 0xC0);
+				ShowDropDownMenu(this, _order_conditional_condition, std::to_underlying(o->GetConditionComparator()), WID_O_COND_COMPARATOR, 0, (o->GetConditionVariable() == OrderConditionVariable::RequiresService || o->GetConditionVariable() == OrderConditionVariable::DrivingBackwards) ? 0x3F : 0xC0);
 				break;
 			}
 

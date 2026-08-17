@@ -33,12 +33,12 @@ public:
 	 * The type of a link.
 	 */
 	enum LinkType : uint8_t {
-		LINK_NONE = to_underlying(::LinkType::None), ///< No link
-		LINK_TILE = to_underlying(::LinkType::Tile), ///< Link a tile
-		LINK_INDUSTRY = to_underlying(::LinkType::Industry), ///< Link an industry
-		LINK_TOWN = to_underlying(::LinkType::Town), ///< Link a town
-		LINK_COMPANY = to_underlying(::LinkType::Company), ///< Link a company
-		LINK_STORY_PAGE = to_underlying(::LinkType::StoryPage), ///< Link a story page
+		LINK_NONE = std::to_underlying(::LinkType::None), ///< No link
+		LINK_TILE = std::to_underlying(::LinkType::Tile), ///< Link a tile
+		LINK_INDUSTRY = std::to_underlying(::LinkType::Industry), ///< Link an industry
+		LINK_TOWN = std::to_underlying(::LinkType::Town), ///< Link a town
+		LINK_COMPANY = std::to_underlying(::LinkType::Company), ///< Link a company
+		LINK_STORY_PAGE = std::to_underlying(::LinkType::StoryPage), ///< Link a story page
 	};
 
 	/**

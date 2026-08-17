@@ -920,7 +920,7 @@ static void DrawTileSelectionRect(const TileInfo *ti, PaletteID pal)
 	SpriteID sel;
 	if (IsHalftileSlope(ti->tileh)) {
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
-		SpriteID sel2 = SPR_HALFTILE_SELECTION_FLAT + to_underlying(halftile_corner);
+		SpriteID sel2 = SPR_HALFTILE_SELECTION_FLAT + std::to_underlying(halftile_corner);
 		DrawSelectionSprite(sel2, pal, ti, 7 + TILE_HEIGHT, FoundationPart::Halftile);
 
 		Corner opposite_corner = OppositeCorner(halftile_corner);
@@ -929,7 +929,7 @@ static void DrawTileSelectionRect(const TileInfo *ti, PaletteID pal)
 		} else {
 			sel = ((ti->tileh & SlopeWithOneCornerRaised(opposite_corner)) != 0 ? SPR_HALFTILE_SELECTION_UP : SPR_HALFTILE_SELECTION_FLAT);
 		}
-		sel += to_underlying(opposite_corner);
+		sel += std::to_underlying(opposite_corner);
 	} else {
 		sel = SPR_SELECT_TILE + SlopeToSpriteOffset(ti->tileh);
 	}
@@ -2059,8 +2059,8 @@ void UpdateViewportPosition(Window *w, uint32_t delta_ms)
 static bool MarkViewportDirty(const Viewport &vp, int left, int top, int right, int bottom)
 {
 	/* Rounding wrt. zoom-out level */
-	right += (1 << to_underlying(vp.zoom)) - 1;
-	bottom += (1 << to_underlying(vp.zoom)) - 1;
+	right += (1 << std::to_underlying(vp.zoom)) - 1;
+	bottom += (1 << std::to_underlying(vp.zoom)) - 1;
 
 	right -= vp.virtual_left;
 	if (right <= 0) return false;

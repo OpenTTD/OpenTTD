@@ -379,9 +379,9 @@ TextColour GetContrastColour(PixelColour background, uint8_t threshold)
  */
 struct ColourGradients
 {
-	using ColourGradient = std::array<PixelColour, to_underlying(Shade::End)>;
+	using ColourGradient = std::array<PixelColour, std::to_underlying(Shade::End)>;
 
-	static inline std::array<ColourGradient, to_underlying(Colours::End)> gradient{};
+	static inline std::array<ColourGradient, std::to_underlying(Colours::End)> gradient{};
 };
 
 /**
@@ -392,7 +392,7 @@ struct ColourGradients
  */
 PixelColour GetColourGradient(Colours colour, Shade shade)
 {
-	return ColourGradients::gradient[to_underlying(colour) % to_underlying(Colours::End)][to_underlying(shade) % to_underlying(Shade::End)];
+	return ColourGradients::gradient[std::to_underlying(colour) % std::to_underlying(Colours::End)][std::to_underlying(shade) % std::to_underlying(Shade::End)];
 }
 
 /**
@@ -405,5 +405,5 @@ void SetColourGradient(Colours colour, Shade shade, PixelColour palette_index)
 {
 	assert(colour < Colours::End);
 	assert(shade < Shade::End);
-	ColourGradients::gradient[to_underlying(colour) % to_underlying(Colours::End)][to_underlying(shade) % to_underlying(Shade::End)] = palette_index;
+	ColourGradients::gradient[std::to_underlying(colour) % std::to_underlying(Colours::End)][std::to_underlying(shade) % std::to_underlying(Shade::End)] = palette_index;
 }

@@ -582,7 +582,7 @@ struct FramerateWindow : Window {
 					if (_pf_data[e].num_valid == 0) continue;
 					Dimension line_size;
 					if (e < PerformanceElement::AI0) {
-						line_size = GetStringBoundingBox(STR_FRAMERATE_GAMELOOP + to_underlying(e));
+						line_size = GetStringBoundingBox(STR_FRAMERATE_GAMELOOP + std::to_underlying(e));
 					} else {
 						line_size = GetStringBoundingBox(GetString(STR_FRAMERATE_AI, GetAIIndex(e) + 1, GetAIName(e)));
 					}
@@ -679,7 +679,7 @@ struct FramerateWindow : Window {
 						skip--;
 					} else {
 						if (e < PerformanceElement::AI0) {
-							DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + to_underlying(e), TextColour::FromString, AlignmentH::Start);
+							DrawString(r.left, r.right, y, STR_FRAMERATE_GAMELOOP + std::to_underlying(e), TextColour::FromString, AlignmentH::Start);
 						} else {
 							DrawString(r.left, r.right, y, GetString(STR_FRAMERATE_AI, GetAIIndex(e) + 1, GetAIName(e)), TextColour::FromString, AlignmentH::Start);
 						}
@@ -778,7 +778,7 @@ struct FrametimeGraphWindow : Window {
 		switch (widget) {
 			case WID_FGW_CAPTION:
 				if (this->element < PerformanceElement::AI0) {
-					return GetString(STR_FRAMETIME_CAPTION_GAMELOOP + to_underlying(this->element));
+					return GetString(STR_FRAMETIME_CAPTION_GAMELOOP + std::to_underlying(this->element));
 				}
 				return GetString(STR_FRAMETIME_CAPTION_AI, GetAIIndex(this->element) + 1, GetAIName(this->element));
 

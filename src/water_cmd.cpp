@@ -321,12 +321,12 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlags flags)
  */
 static uint8_t GetLockPartMinimalBridgeHeight(LockPart lock_part)
 {
-	static constexpr uint8_t MINIMAL_BRIDGE_HEIGHT[to_underlying(LockPart::End)] = {
+	static constexpr uint8_t MINIMAL_BRIDGE_HEIGHT[std::to_underlying(LockPart::End)] = {
 		2, // LockPart::Middle
 		3, // LockPart::Lower
 		2, // LockPart::Upper
 	};
-	return MINIMAL_BRIDGE_HEIGHT[to_underlying(lock_part)];
+	return MINIMAL_BRIDGE_HEIGHT[std::to_underlying(lock_part)];
 }
 
 /**

@@ -316,7 +316,7 @@ static WindowDesc *_news_window_layout[] = {
 
 static WindowDesc &GetNewsWindowLayout(NewsStyle style)
 {
-	uint layout = to_underlying(style);
+	uint layout = std::to_underlying(style);
 	assert(layout < lengthof(_news_window_layout));
 	return *_news_window_layout[layout];
 }

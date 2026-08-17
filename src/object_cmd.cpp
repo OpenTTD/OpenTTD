@@ -782,7 +782,7 @@ static void TryBuildTownLighthouse(Town *town)
 	if (GetTileZ(start_tile) > 4) return;
 
 	/* Create a perimeter a random distance around the town to search. */
-	int radius = town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)];
+	int radius = town->cache.squared_town_zone_radius[std::to_underlying(HouseZone::TownEdge)];
 	radius = std::sqrt(radius);
 	radius += RandomRange(radius);
 

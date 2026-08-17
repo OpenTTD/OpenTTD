@@ -93,7 +93,7 @@ inline int GetBridgePixelHeight(TileIndex tile)
  */
 inline void ClearSingleBridgeMiddle(Tile t, Axis a)
 {
-	ClrBit(t.type(), 2 + to_underlying(a));
+	ClrBit(t.type(), 2 + std::to_underlying(a));
 }
 
 /**
@@ -113,7 +113,7 @@ inline void ClearBridgeMiddle(Tile t)
  */
 inline void SetBridgeMiddle(Tile t, Axis a)
 {
-	SetBit(t.type(), 2 + to_underlying(a));
+	SetBit(t.type(), 2 + std::to_underlying(a));
 }
 
 /**
@@ -133,7 +133,7 @@ inline void MakeBridgeRamp(Tile t, Owner o, BridgeType bridgetype, DiagDirection
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = 1 << 7 | to_underlying(tt) << 2 | to_underlying(d);
+	t.m5() = 1 << 7 | std::to_underlying(tt) << 2 | std::to_underlying(d);
 	SB(t.m6(), 2, 4, bridgetype);
 	SB(t.m6(), 6, 2, 0);
 	t.m7() = 0;

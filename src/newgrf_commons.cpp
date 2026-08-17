@@ -330,7 +330,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec &&spec)
 uint32_t GetTerrainType(TileIndex tile, TileContext context)
 {
 	switch (_settings_game.game_creation.landscape) {
-		case LandscapeType::Tropic: return to_underlying(GetTropicZone(tile));
+		case LandscapeType::Tropic: return std::to_underlying(GetTropicZone(tile));
 		case LandscapeType::Arctic: {
 			bool has_snow;
 			switch (GetTileType(tile)) {
@@ -437,9 +437,9 @@ uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 
 	auto [tileh, z] = GetTilePixelSlope(tile);
 	/* Return 0 if the tile is a land tile */
-	uint8_t terrain_type = (HasTileWaterClass(tile) ? (to_underlying(GetWaterClass(tile)) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == TileType::Water ? 1 : 0) << 1;
+	uint8_t terrain_type = (HasTileWaterClass(tile) ? (std::to_underlying(GetWaterClass(tile)) + 1) & 3 : 0) << 5 | GetTerrainType(tile) << 2 | (tile_type == TileType::Water ? 1 : 0) << 1;
 	if (grf_version8) z /= TILE_HEIGHT;
-	return to_underlying(tile_type) << 24 | ClampTo<uint8_t>(z) << 16 | terrain_type << 8 | tileh;
+	return std::to_underlying(tile_type) << 24 | ClampTo<uint8_t>(z) << 16 | terrain_type << 8 | tileh;
 }
 
 /**
@@ -451,7 +451,7 @@ uint32_t GetNearbyTileInformation(TileIndex tile, bool grf_version8)
 uint32_t GetCompanyInfo(CompanyID owner, const Livery *l)
 {
 	if (l == nullptr && Company::IsValidID(owner)) l = &Company::Get(owner)->livery[LiveryScheme::Default];
-	return owner.base() | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (to_underlying(l->colour1) << 24) | (to_underlying(l->colour2) << 28) : 0);
+	return owner.base() | (Company::IsValidAiID(owner) ? 0x10000 : 0) | (l != nullptr ? (std::to_underlying(l->colour1) << 24) | (std::to_underlying(l->colour2) << 28) : 0);
 }
 
 /**
