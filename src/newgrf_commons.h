@@ -289,8 +289,6 @@ public:
 
 struct ObjectSpec;
 class ObjectOverrideManager : public OverrideManagerBase {
-protected:
-	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
 	ObjectOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
