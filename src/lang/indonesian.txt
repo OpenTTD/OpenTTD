@@ -410,9 +410,9 @@ STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Membangu
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Membangun infrastruktur jalur kapal
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Membangun bandara
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Buka menu lanskap, menu pohon, atau letakkan tanda pengenal
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Tampilkan jendela suara/musik
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Buka jendela suara/musik
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Buka pesan/berita terakhir, riwayat pesan atau hapus semua pesan
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasi area daratan, pengambilan gambar, tentang OpenTTD dan alat pengembangan
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Buka informasi daratan, menu tangkapan layar, kredit OpenTTD, atau alat pengembangan
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Berpindah toolbar
 
 # Extra tooltips for the scenario editor toolbar
@@ -448,7 +448,7 @@ STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :Letakkan rumah
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Pengaturan AI
-STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Pengaturan Game script
+STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :Pengaturan skrip permainan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
 STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :Pengaturan bak pasir
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
@@ -519,7 +519,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Pembangunan Jal
 STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstruksi Perairan.
 
 # Aairport construction menu
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Konstruksi Bandara
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Konstruksi bandara
 
 # Landscaping menu
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Proses Landsekap
@@ -539,15 +539,15 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Hapus semua pes
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi area daratan
 STR_ABOUT_MENU_HELP                                             :Bantuan & panduan
 STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Aktifkan atau nonaktifkan mode penghemat layar
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hidup/matikan Layar Konsol
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Tampilkan atau sembunyikan konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :Debug skrip AI/Permainan
-STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar
+STR_ABOUT_MENU_SCREENSHOT                                       :Tangkapan Layar
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Tampilkan laju bingkai
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penyelaras sprite
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Hidup/Matikan kotak batas
-STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Menampilkan pewarnaan dari area kotor
-STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Alihkan kerangka widget
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Tampilkan atau sembunyikan kotak pembatas
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Tampilkan atau sembunyikan pewarnaan area kotor
+STR_ABOUT_MENU_TOGGLE_WIDGET_OUTLINES                           :Tampilkan atau sembunyikan kerangka gawit
 
 ###length 31
 STR_DAY_NUMBER_1ST                                              :1
@@ -1150,8 +1150,8 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Kata kunci
 
 STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file hilang/rusak
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Tidak bisa mendapatkan daftar resolusi layak
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus layar penuh gagal
+STR_ERROR_RESOLUTION_LIST_FAILED                                :Tidak dapat mengambil daftar resolusi yang didukung
+STR_ERROR_FULLSCREEN_FAILED                                     :Mode layar penuh gagal
 
 # Custom currency window
 
@@ -1257,7 +1257,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :Perluas semua
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :Persempit semua
 STR_CONFIG_SETTING_RESET_ALL                                    :Atur ulang semua pengaturan
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(penjelasan belum tersedia)
-STR_CONFIG_SETTING_VALUE                                        :{PUSH_COLOUR}{ORANGE}{STRING}{POP_COLOUR}
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Nilai standar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipe setting: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Setting klien (tidak disimpan di penyimpanan; mempengaruhi semua permainan)
@@ -1631,7 +1631,7 @@ STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Tinggi garis sa
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Atur di ketinggian mana salju akan dimulai pada lanskap sub-arktik. Salju juga memengaruhi pembangunan industri dan syarat pertumbuhan kota. Hanya dapat dimodifikasi melalui Editor Skenario atau dihitung melalui "cakupan salju"
 
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cakupan salju: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Mengontrol perkiraan jumlah salju di lanskap sub-arktik. Salju juga berpengaruh pada generasi industri dan syarat pertumbuhan kota. Hanya digunakan selama pembuatan peta. Tanah yang berada tepat di atas permukaan laut selalu tanpa salju
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Atur perkiraan jumlah salju di lanskap sub-arktik. Salju juga memengaruhi pembangunan industri dan syarat pertumbuhan kota. Hanya akan digunakan selama pembuatan peta. Tanah yang sejajar dengan permukaan laut dan ubin pesisir tidak akan bersalju
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Cakupan gurun: {STRING}
@@ -1655,7 +1655,7 @@ STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :Normal
 STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :Dataran Tinggi
 
 STR_CONFIG_SETTING_VARIETY                                      :Distribusi variasi: {STRING}
-STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(hanya TerraGenesis) Menentukan apakah bentang darat berisi area bergunung dan rata. Karena ini hanya akan mengakibatkan bentang darat yang lebih rata, pengaturan yang lain seharusnya ditetap 'bergunung'
+STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :Atur apakah peta berisi area pegunungan dan area yang rata. Semakin tinggi keragaman, semakin besar perbedaan ketinggian area pegunungan dan area yang rata
 
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Jumlahnya sungai: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Memilih berapa banyak sungai untuk membuat
@@ -2301,8 +2301,8 @@ STR_QUIT_NO                                                     :{BLACK}Tidak
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Tinggalkan Permainan
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah Anda yakin untuk meninggalkan permainan?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apakah Anda yakin untuk meninggalkan skenario ini ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah Anda yakin ingin meninggalkan permainan ini?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apakah Anda yakin ingin meninggalkan skenario ini?
 
 # Help window
 STR_HELP_WINDOW_CAPTION                                         :{WHITE}Bantuan & Petunjuk
@@ -2844,7 +2844,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bangun s
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bangun jembatan kereta. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bangun terowongan kereta. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangun/membongkar rel kereta, sinyal, titik jalan, dan stasiun. Ctrl+Klik untuk membongkar rel pada titik jalan dan stasiun sekaligus
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konversi jenis rel. Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konversi/Tingkatkan jenis rel. Juga tekan Shift untuk menampilkan perkiraan biaya
 
 STR_RAIL_NAME_RAILROAD                                          :Rel Kereta
 STR_RAIL_NAME_ELRAIL                                            :Rel Kereta Listrik
@@ -2898,13 +2898,13 @@ STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Apakah 
 STR_PICKER_STATION_CLASS_TOOLTIP                                :Pilih kelas stasiun untuk ditampilkan. Ctrl+Klik untuk menambah atau mengurangi dari daftar barang yang tersimpan
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Pilih jenis stasiun untuk dibangun. Ctrl+Klik untuk menambah atau menghapus barang yang tersimpan
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Pilih koleksi stasiun untuk ditampilkan
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Pilih kelas titik jalan untuk ditampilkan
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Pilih kelas titik jalan untuk ditampilkan. Ctrl+Klik untuk menambah atau mengurangi dari daftar barang yang tersimpan
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Pilih titik jalan untuk dibangun. Ctrl+Klik untuk menambah atau menghapus barang yang tersimpan
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Pilih koleksi titik jalan untuk ditampilkan
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Pilih kelas stasiun bus untuk ditampilkan
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Pilih kelas stasiun bus untuk ditampilkan. Ctrl+Klik untuk menambah atau mengurangi dari daftar barang yang tersimpan
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Pilih jenis terminal bus untuk dibangun. Ctrl+Klik untuk menambah atau menghapus barang yang tersimpan
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Pilih koleksi terminal bus untuk ditampilkan
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Piliih kelas stasiun truk untuk ditampilkan
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Piliih kelas stasiun truk untuk ditampilkan. Ctrl+Klik untuk menambah atau mengurangi dari daftar barang yang tersimpan
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Pilih jenis stasiun truk untuk dibangun. Ctrl+Klik untuk menambah atau menghapus barang yang tersimpan
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Pilih koleksi stasiun truk untuk ditampilkan
 STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Pilih kelas objek untuk ditampilkan. Ctrl+Klik untuk menambah atau mengurangi dari daftar barang yang tersimpan
@@ -3002,8 +3002,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bangun t
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bangun terowongan trem. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bangun/Bongkar konstruksi jalanan
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Membangun/bongkar konstruksi jalur trem
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Konversi/Tingkatkan jenis jalanan. Juga tekan Shift untuk menampilkan perkiraan biaya
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konversi/Tingkatkan jenis trem. Juga tekan Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Konversi/Tingkatkan jenis jalan raya. Juga tekan Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konversi/Tingkatkan jenis jalur trem. Juga tekan Shift untuk menampilkan perkiraan biaya
 
 STR_ROAD_NAME_ROAD                                              :Jalan
 STR_ROAD_NAME_TRAM                                              :Jalur trem
@@ -3031,7 +3031,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bangun k
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bangun pintu air kanal. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bangun galangan kapal (untuk pembelian dan perbaikan kapal). Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bangun pelabuhan. Ctrl+Klik untuk memilih stasiun lain untuk digabung. Juga tekan Shift untuk menampilkan perkiraan biaya
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Tempatkan pelampung yang dapat digunakan sebagai petunjuk arah. Shift untuk menampilkan perkiraan biaya
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Letakkan pelampung yang dapat digunakan sebagai titik jalan. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bangun jembatan air. Juga tekan Shift untuk menampilkan perkiraan biaya
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Bangun kanal. Ctrl+Klik pada ketinggian permukaan laut untuk membanjiri area dengan air laut saja
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Letakkan sungai. Ctrl+Klik untuk memilh area secara diagonal
@@ -3055,18 +3055,18 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Tata let
 
 STR_AIRPORT_SMALL                                               :Bandara Kecil
 STR_AIRPORT_CITY                                                :Bandara Kota
-STR_AIRPORT_METRO                                               :Metropolitan
-STR_AIRPORT_INTERNATIONAL                                       :Internasional
+STR_AIRPORT_METRO                                               :Bandara Metropolitan
+STR_AIRPORT_INTERNATIONAL                                       :Bandara Internasional
 STR_AIRPORT_COMMUTER                                            :Bandara Komuter
 STR_AIRPORT_INTERCONTINENTAL                                    :Bandara Antar Benua
-STR_AIRPORT_HELIPORT                                            :Helipad
-STR_AIRPORT_HELIDEPOT                                           :Hangar Helipad
-STR_AIRPORT_HELISTATION                                         :Bandara Helikopter
+STR_AIRPORT_HELIPORT                                            :Landasan Helikopter
+STR_AIRPORT_HELIDEPOT                                           :Bandara Helikopter Kecil
+STR_AIRPORT_HELISTATION                                         :Bandara Helikopter Besar
 
-STR_AIRPORT_CLASS_SMALL                                         :Ukuran kecil
-STR_AIRPORT_CLASS_LARGE                                         :Ukuran besar
-STR_AIRPORT_CLASS_HUB                                           :Ukuran super
-STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopad
+STR_AIRPORT_CLASS_SMALL                                         :Bandara kecil
+STR_AIRPORT_CLASS_LARGE                                         :Bandara besar
+STR_AIRPORT_CLASS_HUB                                           :Bandara super besar
+STR_AIRPORT_CLASS_HELIPORTS                                     :Bandara helikopter
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Tingkat Kebisingan: {GOLD}{COMMA}
 
@@ -3276,7 +3276,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Tanaman Kaktus
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Stasiun Kereta
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Hangar Pesawat
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Bandara
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Area bongkar muat truk
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Stasiun truk
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Terminal Bus
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Pelabuhan
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Pelampung
@@ -3456,7 +3456,7 @@ STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}Pengatur
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}Buka pengaturan NewGRF
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}Pengaturan AI
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Buka pengaturan AI
-STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Pengaturan Script Permainan
+STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Pengaturan Skrip Permainan
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Buka pengaturan skrip permainan
 
 ###length 21
@@ -3720,7 +3720,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Perilaku
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :NewGRF tersebut akan mengubah keadaan gerbong listrik '{1:ENGINE}' ketika tidak berada di dalam depo
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :NewGRF tersebut akan mengubah panjang kereta '{1:ENGINE}' ketika tidak berada di dalam depo
 STR_NEWGRF_BROKEN_CAPACITY                                      :NewGRF tersebut akan mengubah kapasitas kendaraan '{1:ENGINE}' ketika tidak berada di dalam depo atau renovasi
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin tidak sinkron atau crash
+STR_BROKEN_VEHICLE_LENGTH                                       :Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin tidak sinkron atau mogok
 
 STR_NEWGRF_BUGGY                                                :NewGRF '{0:STRING}' memberikan informasi yang salah
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :Informasi kargo/renovasi untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini mungkin dapat menyebabkan pembaruan/penggantian otomatis gagal merenovasi dengan benar
@@ -4407,7 +4407,7 @@ STR_DEPOT_CLONE_AIRCRAFT_HANGAR_TOOLTIP                         :{BLACK}Ini akan
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi depo. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi depo
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan utama pada lokasi bengkel kendaraan jalan raya. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi bengkel kendaraan jalan raya
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi galangan kapal. Ctrl+Click akan membuka viewport baru pada lokasi galangan kapal
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi galangan kapal. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi galangan kapal
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Arahkan pandangan utama pada lokasi hanggar. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi hanggar
 
 ###length VEHICLE_TYPES
@@ -4521,9 +4521,9 @@ STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Pandangan utama lokasi pusat kereta api. Klik ganda akan mengikuti kereta di tampilan utama. Ctrl+Click membuka viewport baru pada lokasi kereta
-STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Pandangan utama lokasi kendaraan. Klik dua kali akan mengikuti kendaraan dalam tampilan utama. Ctrl+Click membuka viewport baru pada lokasi kendaraan
-STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Tampilan utama pusat di lokasi kapal. Klik ganda akan mengikuti kapal dalam tampilan utama. Ctrl+Click membuka viewport baru di lokasi kapal
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Arahkan pandangan utama pada lokasi kereta. Klik dua kali untuk mengikuti kereta dalam pandangan utama. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi kereta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Arahkan pandangan utama pada lokasi kendaraan jalan raya. Klik dua kali untuk mengikuti kendaraan jalan raya dalam pandangan utama. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi kendaraan jalan raya
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Arahkan pandangan utama pusat pada lokasi kapal. Klik dua kali untuk mengikuti kapal dalam pandangan utama. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi kapal
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Arahkan pandangan utama pada lokasi pesawat. Klik dua kali untuk mengikuti pesawat dalam pandangan utama. Ctrl+Klik untuk membuka jendela pandangan baru pada lokasi pesawat
 
 ###length VEHICLE_TYPES
@@ -4950,14 +4950,14 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Pilih ta
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Debug skrip AI
+STR_AI_DEBUG                                                    :{WHITE}Debug Skrip AI/Permainan
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (versi {NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nama skrip AI
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Pengaturan
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pengaturan skrip AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}mengaktifkan/mematikan peristirahatan ketika pesan AI sesuai dengan string istirahat
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Aktifkan/nonaktifkan pemberhentian ketika pesan log AI sesuai dengan string berhenti
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Berhenti saat:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Berhenti pada
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ketika pesan log AI sesuai dengan isi kotak, permainan dihentikan
@@ -4975,10 +4975,10 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Jendela
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION_AI                                        :{WHITE}Pengaturan AI
-STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Pengaturan Game Script
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skrip Permainan yang akan di jalankan di permainan berikutnya
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yang akan dijalankan pada permainan berikutnya
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
+STR_AI_CONFIG_CAPTION_GAMESCRIPT                                :{WHITE}Pengaturan Skrip Permainan
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skrip Permainan yang akan dimuat pada permainan berikutnya
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yang akan dimuat pada permainan berikutnya
+STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain manusia
 STR_AI_CONFIG_RANDOM_AI                                         :AI Acak
 STR_AI_CONFIG_NONE                                              :(tidak ada)
 STR_AI_CONFIG_NAME_VERSION                                      :{STRING} {YELLOW}v{NUM}
@@ -4986,19 +4986,19 @@ STR_AI_CONFIG_MAX_COMPETITORS                                   :{LTBLUE}Jumlah 
 STR_AI_CONFIG_COMPETITORS_INTERVAL                              :{LTBLUE}Interval antara permulaan kompetitor: {ORANGE}{COMMA} menit
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Naikkan
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Naikkan AI terpilih dalam daftar
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Naikkan AI yang dipilih di dalam daftar
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Turunkan
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Turunkan AI terpilih dalam daftar
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Turunkan AI yang dipilih di dalam daftar
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skrip Permainan
 STR_AI_CONFIG_GAMESCRIPT_PARAM                                  :{SILVER}Parameter
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
 STR_AI_CONFIG_CHANGE_AI                                         :{BLACK}Pilih AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Skrip Permainan
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat skrip yang lain. Ctrl+Click untuk menampilkan versi yang tersedia
-STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurasikan
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Mengkonfigurasi parameter skrip AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :{BLACK}Pilih Skrip Permainan
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat skrip yang lain. Ctrl+Klik untuk menampilkan semua versi yang tersedia
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurasi
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurasi parameter skrip AI
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Tersedia {STRING}
@@ -5092,14 +5092,14 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :Pembuatan peta 
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :tidak ada kota di skenario ini
 
 STR_ERROR_PNGMAP                                                :Tidak dapat memuat lanskap dari PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... berkas tidak ada
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi. Diperlukan PNG 8 atau 24-bit
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... maaf, terjadi kesalahan (mungkin berkasnya rusak)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :berkas tidak ditemukan
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :tidak dapat mengonversi jenis gambar. Diperlukan gambar PNG 8 atau 24-bit
+STR_ERROR_PNGMAP_MISC                                           :maaf, terjadi kesalahan (mungkin berkasnya rusak)
 
 STR_ERROR_BMPMAP                                                :Tidak dapat memuat lanskap dari BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :tidak dapat mengonversi jenis gambar
 
-STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... gambar terlalu besar
+STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :gambar terlalu besar
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Peringatan Skala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ukuran peta terlalu besar dan tidak direkomendasikan. Lanjutkan?
@@ -5113,7 +5113,7 @@ STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Resolus
 
 STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :Peta ketinggian telah berhasil disimpan sebagai '{STRING}'. Puncak tertinggi adalah {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :Tangkapan layar telah berhasil disimpan sebagai '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Pengambilan gambar gagal
+STR_ERROR_SCREENSHOT_FAILED                                     :Pengambilan tangkapan layar gagal!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Pesan
@@ -5124,16 +5124,16 @@ STR_ERROR_OFF_EDGE_OF_MAP                                       :melewati batas 
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :terlalu dekat dengan tepi peta
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :dana tidak cukup - dibutuhkan {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :daratan harus datar
-STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Kemiringan daratan tidak sesuai
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :daratan miring ke arah yang salah
 STR_ERROR_CAN_T_DO_THIS                                         :Tidak dapat melakukan ini...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :bangunan harus dihancurkan terlebih dahulu
 STR_ERROR_BUILDING_IS_PROTECTED                                 :bangunan dilindungi
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :Tidak dapat membersihkan area ini...
 STR_ERROR_SITE_UNSUITABLE                                       :lokasi tidak sesuai
 STR_ERROR_ALREADY_BUILT                                         :sudah dibangun
-STR_ERROR_OWNED_BY                                              :{WHITE}... dimiliki oleh {STRING}
+STR_ERROR_OWNED_BY                                              :dimiliki oleh {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :area ini dimiliki oleh perusahaan lain
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... batas pengubahan lansekap terlampaui
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :batas pengubahan lanskap telah tercapai
 STR_ERROR_CLEARING_LIMIT_REACHED                                :batas penghapusan ubin telah tercapai
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :batas penanaman pohon telah tercapai
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :nama haruslah unik
@@ -5152,7 +5152,7 @@ STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :Tidak dapat men
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :Tidak dapat meratakan daratan di sini...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :penggalian akan merusak terowongan
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :sudah berada pada ketinggian permukaan laut
-STR_ERROR_TOO_HIGH                                              :{WHITE}Terlalu tinggi
+STR_ERROR_TOO_HIGH                                              :terlalu tinggi
 STR_ERROR_ALREADY_LEVELLED                                      :sudah rata
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :jembatan di atas tanah akan terlalu tinggi pada akhirnya.
 STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :harus menghancurkan sungai terlebih dahulu
@@ -5164,9 +5164,9 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :Tidak dapat men
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :besar pinjaman maksimal yang diizinkan adalah {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :Tidak dapat meminjam uang lagi...
 STR_ERROR_LOAN_ALREADY_REPAID                                   :tidak ada hutang yang harus dibayar
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... dibutuhkan {CURRENCY_LONG}
+STR_ERROR_CURRENCY_REQUIRED                                     :dibutuhkan {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :Tidak dapat membayar hutang...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak dapat memberikan uang yang berasal dari pinjaman bank...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :Tidak dapat memberikan uang yang berasal dari pinjaman bank...
 STR_ERROR_CAN_T_GIVE_MONEY                                      :Tidak dapat memberikan uang kepada perusahaan ini...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :Tidak dapat membeli perusahaan...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :Tidak dapat membangun kantor pusat perusahaan...
@@ -5179,7 +5179,7 @@ STR_ERROR_CAN_T_EXPAND_TOWN                                     :Tidak dapat mem
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :terlalu dekat dengan kota lain
 STR_ERROR_TOO_MANY_TOWNS                                        :terlalu banyak kota
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :tidak ada lagi ruang tersisa dalam peta
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Jalan sedang dikerjakan
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :jalanan sedang dikerjakan
 STR_ERROR_TOWN_CAN_T_DELETE                                     :Tidak dapat menghancurkan kota ini...{}{}Sebuah stasiun atau depo masih merujuk pada kota ini atau ubin milik kota tidak dapat dihapus
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :tidak ada tempat yang cocok untuk patung di tengah kota ini
 STR_ERROR_CAN_T_BUILD_HOUSE                                     :Tidak dapat membangun rumah...
@@ -5191,7 +5191,7 @@ STR_ERROR_CAN_T_BUILD_HERE                                      :Tidak dapat mem
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :Tidak dapat membangun jenis industri ini di sini...
 STR_ERROR_CAN_T_PROSPECT_INDUSTRY                               :Tidak dapat prospeksi industri...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :terlalu dekat dengan industri lain
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... harus membangun kota terlebih dahulu
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :harus membangun kota terlebih dahulu
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :hanya diizinkan satu di setiap kota
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :hanya dapat dibangun di kota dengan populasi minimum 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :hanya dapat dibangun di area hutan hujan
@@ -5204,7 +5204,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :hutan hanya dap
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :hanya dapat dibangun di atas garis salju
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :hanya dapat dibangun di bawah garis salju
 
-STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :{WHITE}Rencana pendanaan mengalami kegagalan; mohon dicoba kembali
+STR_ERROR_PROSPECTING_WAS_UNLUCKY                               :pendanaan prospeksi gagal; coba lagi
 STR_ERROR_NO_SUITABLE_PLACES_FOR_PROSPECTING                    :tidak ada tempat yang sesuai untuk prospeksi industri ini
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :Tidak ada tempat yang sesuai untuk industri '{STRING}'
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :Ubah parameter pembuatan peta untuk memperoleh peta yang lebih baik
@@ -5283,11 +5283,11 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :harus dihentika
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :harus dihentikan di dalam galangan
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :harus dihentikan di dalam hanggar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam depo
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :kereta hanya dapat diubah ketika berhenti di dalam depo
 STR_ERROR_TRAIN_TOO_LONG                                        :kereta terlalu panjang
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :Tidak dapat memutar balik arah kendaraan...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :terdiri dari rangkaian unit
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Jenis rel tidak sesuai
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :jenis rel tidak sesuai
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :Tidak dapat memindahkan kendaraan...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :mesin bagian belakang akan selalu mengikuti bagian depannya
@@ -5295,7 +5295,7 @@ STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :tidak dapat men
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :tidak dapat menemukan depo terdekat
 STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :tidak dapat menemukan hanggar terdekat
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis bengkel salah
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :jenis depo salah
 
 # Depot unbunching related errors
 STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :hanya dapat memiliki satu perintah melepas gabungan
@@ -5323,7 +5323,7 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :Tidak dapat mem
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :Tidak dapat membangun jalur rel di sini...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :Tidak dapat membongkar rel dari sini...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :Tidak dapat membongkar sinyal dari sini...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Tidak dapat mengubah sinyal ini...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :Tidak dapat mengubah sinyal di sini...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :tidak ada rel
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :tidak ada sinyal
 
@@ -5414,15 +5414,15 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Tidak dapat men
 # Generic vehicle errors
 
 ###length VEHICLE_TYPES
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Kereta menghalangi jalan
+STR_ERROR_TRAIN_IN_THE_WAY                                      :kereta menghalangi jalan
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :kendaraan jalan raya menghalangi jalan
 STR_ERROR_SHIP_IN_THE_WAY                                       :kapal menghalangi jalan
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :pesawat menghalangi jalan
 
 ###length VEHICLE_TYPES
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Kereta tidak tersedia
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :kereta tidak tersedia
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :kendaraan jalan raya tidak tersedia
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Kapal tidak tersedia
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :kapal tidak tersedia
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :pesawat tidak tersedia
 
 ###length VEHICLE_TYPES
@@ -5545,7 +5545,7 @@ STR_ERROR_NO_BUOY                                               :Tidak ada pelam
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :tidak dapat membuat jadwal kendaraan...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :kendaran hanya dapat menunggu di stasiun
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :kendaraan tidak berhenti pada stasiun ini
-STR_ERROR_TIMETABLE_INCOMPLETE                                  :{WHITE}... Jadwal tidak kompatibel
+STR_ERROR_TIMETABLE_INCOMPLETE                                  :jadwal tidak utuh
 STR_ERROR_TIMETABLE_NOT_STARTED                                 :jadwal belum dimulai
 
 # Sign related errors

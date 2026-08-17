@@ -116,7 +116,7 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} v
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gummi
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} socker
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}leksak{P "" er}
-STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}godispås{P e ar}
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}säck{P "" ar} godis
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} sockervadd
 STR_QUANTITY_BUBBLES                                            :{COMMA} bubbl{P a or}
@@ -163,7 +163,7 @@ STR_ABBREV_ALL                                                  :ALLA
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passagerare
-STR_BAGS                                                        :{COMMA}{NBSP}väsk{P a or}
+STR_BAGS                                                        :{COMMA}{NBSP}säck{P "" ar}
 STR_TONS                                                        :{COMMA}{NBSP}ton
 STR_LITERS                                                      :{COMMA}{NBSP}liter
 STR_ITEMS                                                       :{COMMA}{NBSP}stycke{P "" n}
