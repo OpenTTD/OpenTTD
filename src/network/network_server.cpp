@@ -2064,6 +2064,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 		/* The client has joined another company. */
 		std::string company_name = GetString(STR_COMPANY_NAME, company_id);
 		NetworkServerSendChat(NetworkAction::CompanyJoin, NetworkChatDestinationType::Broadcast, 0, company_name, client_id);
+		Company::Get(company_id)->months_empty = 0; // Reset upon joining as client might not remain the whole month.
 	}
 
 	InvalidateWindowData(WindowClass::NetworkClientList, 0);
