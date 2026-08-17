@@ -260,8 +260,6 @@ public:
 
 struct IndustryTileSpec;
 class IndustryTileOverrideManager : public OverrideManagerBase {
-protected:
-	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
 	IndustryTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}

@@ -469,7 +469,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 								/* Declared as been valid, can be used */
 								it.gfx = tempid;
 							}
-						} else if (it.gfx == GFX_WATERTILE_SPECIALCHECK) {
+						} else if (it.gfx == 0xFF) {
+							it.gfx = GFX_WATERTILE_SPECIALCHECK;
 							it.ti.x = (int8_t)GB(it.ti.x, 0, 8);
 							it.ti.y = (int8_t)GB(it.ti.y, 0, 8);
 
