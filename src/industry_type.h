@@ -56,6 +56,45 @@ static const IndustryGfx  INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES; ///< one a
 
 static const IndustryGfx NUM_INDUSTRYTILES_PER_GRF = NUM_INDUSTRYTILES; ///< Maximum number of industry tiles per NewGRF.
 
+/** @{
+ * The following constants are indices used to know what to draw for this industry tile.
+ * They all are pointing toward array _industry_draw_tile_data, in table/industry_land.h
+ * How to calculate the correct position ? GFXid << 2 | IndustryStage (0 to 3)
+ */
+static constexpr IndustryGfx GFX_COAL_MINE_TOWER_NOT_ANIMATED = 0;
+static constexpr IndustryGfx GFX_COAL_MINE_TOWER_ANIMATED = 1;
+static constexpr IndustryGfx GFX_POWERPLANT_CHIMNEY = 8;
+static constexpr IndustryGfx GFX_POWERPLANT_SPARKS = 10;
+static constexpr IndustryGfx GFX_OILRIG_1 = 24;
+static constexpr IndustryGfx GFX_OILRIG_2 = 25;
+static constexpr IndustryGfx GFX_OILRIG_3 = 26;
+static constexpr IndustryGfx GFX_OILRIG_4 = 27;
+static constexpr IndustryGfx GFX_OILRIG_5 = 28;
+static constexpr IndustryGfx GFX_OILWELL_NOT_ANIMATED = 29;
+static constexpr IndustryGfx GFX_OILWELL_ANIMATED_1 = 30;
+static constexpr IndustryGfx GFX_OILWELL_ANIMATED_2 = 31;
+static constexpr IndustryGfx GFX_OILWELL_ANIMATED_3 = 32;
+static constexpr IndustryGfx GFX_COPPER_MINE_TOWER_NOT_ANIMATED = 47;
+static constexpr IndustryGfx GFX_COPPER_MINE_TOWER_ANIMATED = 48;
+static constexpr IndustryGfx GFX_COPPER_MINE_CHIMNEY = 49;
+static constexpr IndustryGfx GFX_GOLD_MINE_TOWER_NOT_ANIMATED = 79;
+static constexpr IndustryGfx GFX_GOLD_MINE_TOWER_ANIMATED = 88;
+static constexpr IndustryGfx GFX_TOY_FACTORY = 143;
+static constexpr IndustryGfx GFX_PLASTIC_FOUNTAIN_ANIMATED_1 = 148;
+static constexpr IndustryGfx GFX_PLASTIC_FOUNTAIN_ANIMATED_2 = 149;
+static constexpr IndustryGfx GFX_PLASTIC_FOUNTAIN_ANIMATED_3 = 150;
+static constexpr IndustryGfx GFX_PLASTIC_FOUNTAIN_ANIMATED_4 = 151;
+static constexpr IndustryGfx GFX_PLASTIC_FOUNTAIN_ANIMATED_5 = 152;
+static constexpr IndustryGfx GFX_PLASTIC_FOUNTAIN_ANIMATED_6 = 153;
+static constexpr IndustryGfx GFX_PLASTIC_FOUNTAIN_ANIMATED_7 = 154;
+static constexpr IndustryGfx GFX_PLASTIC_FOUNTAIN_ANIMATED_8 = 155;
+static constexpr IndustryGfx GFX_BUBBLE_GENERATOR = 161;
+static constexpr IndustryGfx GFX_BUBBLE_CATCHER = 162;
+static constexpr IndustryGfx GFX_TOFFEE_QUARRY = 165;
+static constexpr IndustryGfx GFX_SUGAR_MINE_SIEVE = 174;
+/** @} */
+static constexpr IndustryGfx GFX_WATERTILE_SPECIALCHECK = 0xFF; ///< Sentinel marker in industry layout to perform a water tile check.
+
 static const int INDUSTRY_COMPLETED = 3; ///< final stage of industry construction.
 
 static const int INDUSTRY_NUM_INPUTS = 16;  ///< Number of cargo types an industry can accept
