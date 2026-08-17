@@ -278,8 +278,6 @@ public:
 
 struct AirportTileSpec;
 class AirportTileOverrideManager : public OverrideManagerBase {
-protected:
-	bool CheckValidNewID(uint16_t testid) override { return testid != 0xFF; }
 public:
 	AirportTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}
