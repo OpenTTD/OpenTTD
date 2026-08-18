@@ -360,6 +360,11 @@ CommandCost CommandHelperBase::InternalExecuteProcessResult(Commands cmd, Comman
 	 * i.e. cost and error state are the same. */
 	bool test_and_exec_can_differ = cmd_flags.Test(CommandFlag::NoTest);
 	if (!test_and_exec_can_differ) {
+		if (res_test.GetCost() != res_exec.GetCost() || res_test.Failed() != res_exec.Failed()) {
+			Debug(misc, 0, "COMMAND ASSERTION FAILED: cmd={} flags={:x}", cmd, cmd_flags);
+			Debug(misc, 0, "TEST: failed={} cost={} message={}", res_test.Failed(), res_test.GetCost(), res_test.GetErrorMessage());
+			Debug(misc, 0, "EXEC: failed={} cost={} message={}", res_exec.Failed(), res_exec.GetCost(), res_exec.GetErrorMessage());
+		}
 		assert(res_test.GetCost() == res_exec.GetCost() && res_test.Failed() == res_exec.Failed()); // sanity check
 	} else if (res_exec.Failed()) {
 		return res_exec;

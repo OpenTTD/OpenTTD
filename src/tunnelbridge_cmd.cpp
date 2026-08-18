@@ -381,8 +381,8 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	CommandCost terraform_cost_north = CheckBridgeSlope(BRIDGE_PIECE_NORTH, direction, tileh_start, z_start);
 	CommandCost terraform_cost_south = CheckBridgeSlope(BRIDGE_PIECE_SOUTH, direction, tileh_end,   z_end);
 
-	/* Aqueducts can't be built of flat land. */
-	if (transport_type == TransportType::Water && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+	/* Aqueducts can be built on flat land and will auto-terraform if needed, 
+	 * but bridgeheads must be at the same height. */
 	if (z_start != z_end) return CommandCost(STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
 	CommandCost cost(ExpensesType::Construction);
@@ -465,7 +465,7 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 	} else {
 		/* Build a new bridge. */
 
-		bool allow_on_slopes = (_settings_game.construction.build_on_slopes && transport_type != TransportType::Water);
+		bool allow_on_slopes = _settings_game.construction.build_on_slopes;
 
 		/* Try and clear the start landscape */
 		CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, tile_start);
@@ -483,6 +483,38 @@ CommandCost CmdBuildBridge(DoCommandFlags flags, TileIndex tile_end, TileIndex t
 		/* false - end tile slope check */
 		if (terraform_cost_south.Failed() || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes)) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(terraform_cost_south.GetCost());
+
+		/* for aqueducts, slope of end tile must be complementary to the slope of the start tile */
+		if (transport_type == TransportType::Water && tileh_end != ComplementSlope(tileh_start)) {
+			/* Check if the tile to be terraformed is the start or end tile */
+			TileIndex terraformTile;
+			Slope terraformTileh;
+			if (tileh_start == SLOPE_N || tileh_start == SLOPE_S || tileh_start == SLOPE_W || tileh_start == SLOPE_E) {
+				terraformTile = tile_end;
+				terraformTileh = tileh_end ^ ComplementSlope(tileh_start);
+			} else {
+				terraformTile = tile_start;
+				terraformTileh = tileh_start ^ ComplementSlope(tileh_end);
+			}
+
+			/* Mark the entire bridge as already cleared for the terraform command.
+			 * This prevents Commands::TerraformLand and CheckBuildAbove from double-charging
+			 * for clearing trees on the bridgeheads or middle tiles. */
+			ClearedObjectArea *coa = FindClearedObject(terraformTile);
+			if (coa == nullptr) {
+				coa = &_cleared_object_areas.emplace_back(ClearedObjectArea{ terraformTile, TileArea(tile_start, tile_end) });
+			}
+
+			/* Hide ALL tiles in the bridge from being double-charged by temporarily setting first_tile to an invalid, non-ignored value.
+			 * We cannot use INVALID_TILE because FindClearedObject ignores it.
+			 * We use INVALID_TILE - 1 so Commands::LandscapeClear skips the clearing cost for EVERY tile in the bridge.
+			 * We DO NOT restore it later, because CheckBuildAbove also needs to skip double-charging the bridgeheads! */
+			coa->first_tile = INVALID_TILE - 1;
+
+			CommandCost ret = ExtractCommandCost(Command<Commands::TerraformLand>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::NoWater), terraformTile, terraformTileh, true));
+			if (ret.Failed()) return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+			cost.AddCost(ret);
+		}
 
 		/* Check for bridges above the bridge ramps. */
 		for (TileIndex tile : {tile_start, tile_end}) {
@@ -751,26 +783,13 @@ CommandCost CmdBuildTunnel(DoCommandFlags flags, TileIndex start_tile, Transport
 		}
 
 		/* Hide the tile from the terraforming command */
-		TileIndex old_first_tile = coa->first_tile;
-		coa->first_tile = INVALID_TILE;
-
-		/* Commands::TerraformLand may append further items to _cleared_object_areas,
-		 * however it will never erase or re-order existing items.
-		 * _cleared_object_areas is a value-type self-resizing vector, therefore appending items
-		 * may result in a backing-store re-allocation, which would invalidate the coa pointer.
-		 * The index of the coa pointer into the _cleared_object_areas vector remains valid,
-		 * and can be used safely after the Commands::TerraformLand operation.
-		 * Deliberately clear the coa pointer to avoid leaving dangling pointers which could
-		 * inadvertently be dereferenced.
-		 */
-		ClearedObjectArea *begin = _cleared_object_areas.data();
-		assert(coa >= begin && coa < begin + _cleared_object_areas.size());
-		size_t coa_index = coa - begin;
-		assert(coa_index < UINT_MAX); // more than 2**32 cleared areas would be a bug in itself
-		coa = nullptr;
+		/* Hide ALL tiles in the tunnel from being double-charged by temporarily setting first_tile to an invalid, non-ignored value.
+		 * We cannot use INVALID_TILE because FindClearedObject ignores it.
+		 * We use INVALID_TILE - 1 so Commands::LandscapeClear skips the clearing cost for EVERY tile in the tunnel.
+		 * We DO NOT restore it later, because CheckBuildAbove also needs to skip double-charging! */
+		coa->first_tile = INVALID_TILE - 1;
 
 		ret = ExtractCommandCost(Command<Commands::TerraformLand>::Do(flags, end_tile, end_tileh & start_tileh, false));
-		_cleared_object_areas[(uint)coa_index].first_tile = old_first_tile;
 		if (ret.Failed()) return CommandCost(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
 		cost.AddCost(ret.GetCost());
 	}
