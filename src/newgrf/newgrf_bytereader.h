@@ -123,6 +123,14 @@ public:
 		if (result.size() != len) throw OTTDByteReaderSignal();
 	}
 
+	/**
+	 * Get number of already read bytes.
+	 * @return The number of bytes read so far.
+	 */
+	size_t GetBytesRead() const
+	{
+		return this->consumer.GetBytesRead();
+	}
 };
 
 #endif /* NEWGRF_BYTEREADER_H */
