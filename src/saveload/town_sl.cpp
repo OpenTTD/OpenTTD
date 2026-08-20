@@ -185,7 +185,7 @@ public:
 
 class SlTownSupplied : public VectorSaveLoadHandler<SlTownSupplied, Town, Town::SuppliedCargo> {
 public:
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_VAR(Town::SuppliedCargo, cargo, VarTypes::U8),
 		SLEG_STRUCTLIST("history", SlTownSuppliedHistory),
 	};
@@ -228,7 +228,7 @@ public:
 class SlTownAccepted : public VectorSaveLoadHandler<SlTownAccepted, Town, Town::AcceptedCargo> {
 public:
 	/** Saveload description for handler. */
-	inline static const SaveLoad description[] = {
+	static inline const SaveLoad description[] = {
 		SLE_VAR(Town::AcceptedCargo, cargo, VarTypes::U8),
 		SLEG_STRUCTLIST("history", SlTownAcceptedHistory),
 	};

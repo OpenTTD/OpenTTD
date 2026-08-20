@@ -872,7 +872,7 @@ struct SaveLoadCompat {
  * @param type VarType to get size of.
  * @return size of type in bytes.
  */
-inline constexpr size_t SlVarSize(VarMemType type)
+constexpr size_t SlVarSize(VarMemType type)
 {
 	switch (type) {
 		case VarMemType::Bool: return sizeof(bool);
@@ -902,7 +902,7 @@ inline constexpr size_t SlVarSize(VarMemType type)
  * @param size Actual size of variable.
  * @return true iff the sizes match.
  */
-inline constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, size_t size)
+constexpr bool SlCheckVarSize(SaveLoadType cmd, VarType type, size_t length, size_t size)
 {
 	switch (cmd) {
 		case SaveLoadType::Variable: return SlVarSize(type.mem) == size;
