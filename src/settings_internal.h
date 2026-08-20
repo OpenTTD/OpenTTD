@@ -29,6 +29,7 @@ enum class SettingFlag : uint8_t {
 	NotInConfig, ///< Do not save to config file.
 	NoNetworkSync, ///< Do not synchronize over network (but it is saved if SettingFlag::NotInSave is not set).
 	Sandbox, ///< This setting is a sandbox setting.
+	QuotedString, ///< This setting's string must be quoted when stored in the ini file.
 };
 
 /** Bitset of \c SettingFlag elements. */
