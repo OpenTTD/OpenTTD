@@ -95,7 +95,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustryTileSpec(GetIndustryGfx(this->tile))->badges, parameter);
 	}
 
-	Debug(Facility::Grf, Severity::Error, "Unhandled industry tile variable 0x{:X}", variable);
+	this->ro.UnhandledVariable(variable);
 
 	available = false;
 	return UINT_MAX;

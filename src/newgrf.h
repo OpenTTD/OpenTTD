@@ -239,6 +239,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset);
 void ReloadNewGRFData(); // in saveload/afterload.cpp
 void ResetNewGRFData();
 void ResetPersistentNewGRFData();
+void ResetUnhandledVariableWarnings();
 
 void GrfMsgI(Severity severity, const std::string &msg);
 #define GrfMsg(severity, format_string, ...) do { if ((severity) == Severity::Critical || IsVisibleSeverity(Facility::Grf, (severity))) GrfMsgI(severity, fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__)); } while (false)

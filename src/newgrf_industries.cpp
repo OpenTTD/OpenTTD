@@ -208,7 +208,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 	const IndustrySpec *indspec = GetIndustrySpec(this->type);
 
 	if (this->industry == nullptr) {
-		Debug(Facility::Grf, Severity::Error, "Unhandled variable 0x{:X} (no available industry) in callback 0x{:x}", variable, this->ro.callback);
+		this->ro.UnhandledVariable(variable);
 
 		available = false;
 		return UINT_MAX;
@@ -421,7 +421,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		}
 	}
 
-	Debug(Facility::Grf, Severity::Error, "Unhandled industry variable 0x{:X}", variable);
+	this->ro.UnhandledVariable(variable);
 
 	available = false;
 	return UINT_MAX;
