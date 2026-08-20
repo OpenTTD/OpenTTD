@@ -1328,6 +1328,7 @@ void Aircraft::MarkDirty()
 	if (this->subtype == AIR_HELICOPTER) {
 		GetRotorImage(this, EngineImageType::OnMap, &this->Next()->Next()->sprite_cache.sprite_seq);
 	}
+	UpdateAircraftCache(this);
 }
 
 
