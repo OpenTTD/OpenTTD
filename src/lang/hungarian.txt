@@ -601,6 +601,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Az összes üze
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Területinformáció
 STR_ABOUT_MENU_HELP                                             :Súgó és útmutatók
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Képernyővédő mód be/ki
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konzol be/ki
 STR_ABOUT_MENU_AI_DEBUG                                         :MI/játékszkript nyomkövetése
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
@@ -3165,6 +3166,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}A tájon
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Táj szerkesztése
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Sziklás területek elhelyezése a térképen.{}Ctrl+kattintással a sziklás terület eltávolítása
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Durva területek elhelyezése a térképen..{}Ctrl+kattintással a durva terület eltávolítása
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sivatag létrehozása.{}Ctrl+kattintás a sivatag eltávolításához
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület növelése
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület csökkentése
@@ -3463,6 +3465,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Betölt
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Betölti a kiválasztott játékmentést
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Betölti a kiválasztott magasságtérképet
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}A kiválasztott város betöltése
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Új mappa
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Új mappa létrehozása az aktuális útvonalon
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Add meg az új mappa nevét
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Részletek
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nincs elérhető információ
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -5130,6 +5135,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Automatikus men
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nem olvasható a meghajtó
 STR_ERROR_GAME_SAVE_FAILED                                      :A mentés sikertelen...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Nem sikerült törölni a fájlt
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Sikertelen mappa létrehozás...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Egy fájl vagy mappa már létezik ezen a néven
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :A mappa nevek nem tartalmazhatnak speciális karaktert
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :A mappa neve nem kezdődhet ponttal
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Nincs jogosultságod mappa létrehozására itt
 STR_ERROR_GAME_LOAD_FAILED                                      :A betöltés sikertelen...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Belső hiba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Hibás játékállás-mentés - {STRING}
