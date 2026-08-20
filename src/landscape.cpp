@@ -30,7 +30,7 @@
 #include "animated_tile_func.h"
 #include "core/random_func.hpp"
 #include "object_base.h"
-#include "tree_cmd.h"
+#include "tree_func.h"
 #include "company_func.h"
 #include "company_gui.h"
 #include "saveload/saveload_func.h"

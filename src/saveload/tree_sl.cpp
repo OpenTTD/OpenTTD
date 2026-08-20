@@ -5,15 +5,22 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file tree_cmd.h Command definitions related to tree tiles. */
+/** @file tree_sl.cpp Code handling saving and loading of trees. */
 
-#ifndef TREE_CMD_H
-#define TREE_CMD_H
+#include "../stdafx.h"
 
-#include "command_type.h"
+#include "saveload.h"
+#include "newgrf_sl.h"
 
-CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal);
+#include "../safeguards.h"
 
-DEF_CMD_TRAIT(Commands::PlantTree, CmdPlantTree, CommandFlag::Auto, CommandType::LandscapeConstruction)
+struct TRIDChunkHandler : NewGRFMappingChunkHandler {
+	TRIDChunkHandler() : NewGRFMappingChunkHandler("TRID", _tree_mngr) {}
+};
 
-#endif /* TREE_CMD_H */
+static const TRIDChunkHandler TRID;
+static const ChunkHandlerRef tree_chunk_handlers[] = {
+	TRID,
+};
+
+extern const ChunkHandlerTable _tree_chunk_handlers(tree_chunk_handlers);

@@ -23,8 +23,11 @@
 #include "core/geometry_type.hpp"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
+#include "newgrf_tree.h"
 #include "timer/timer_game_tick.h"
 #include "tree_cmd.h"
+#include "tree_func.h"
+#include "tree_type.h"
 #include "landscape_cmd.h"
 
 #include "table/strings.h"
@@ -60,10 +63,10 @@ static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 {
 	switch (GetTileType(tile)) {
 		case TileType::Water:
-			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
+			return IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile));
 
 		case TileType::Clear:
-			return !IsBridgeAbove(tile) && !IsClearGround(tile, ClearGround::Fields) && !IsClearGround(tile, ClearGround::Rocks) &&
+			return !IsClearGround(tile, ClearGround::Fields) && !IsClearGround(tile, ClearGround::Rocks) &&
 			       (allow_desert || !IsClearGround(tile, ClearGround::Desert));
 
 		default: return false;
@@ -126,6 +129,242 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
 	MakeTree(tile, treetype, count, growth, ground, density);
 }
 
+TreeOverrideManager _tree_mngr(std::size(_original_tree_specs), UINT16_MAX, UINT16_MAX);
+
+std::vector<TreeSpec> _tree_specs; ///< Information about all tree specs.
+std::vector<TreeTileSpec> _tree_tile_specs; ///< Information about all tree tile specs.
+std::vector<TreeType> _active_treetypes; ///< List of active tree types.
+EnumIndexArray<std::vector<TreeType>, TropicZone, TropicZone::End> _tropic_treetypes; ///< Lists of tree types for each tropic zone.
+
+/**
+ * Method to install the new tree data in its proper slot
+ * The slot assignment is internal of this method, since it requires
+ * checking what is available
+ * @param spec TreeSprite that comes from the grf decoding process
+ */
+void TreeOverrideManager::SetEntitySpec(TreeSpec &&spec)
+{
+	/* First step : We need to find if this tree is already specified in the savegame data. */
+	uint16_t tree = this->AddEntityID(spec.grf_prop.local_id, spec.grf_prop.grfid, spec.grf_prop.subst_id);
+
+	if (tree == this->invalid_id) {
+		GrfMsg(1, "TreeOverrideManager.SetEntitySpec: Too many trees allocated. Ignoring.");
+		return;
+	}
+
+	/* Now that we know we can use the given id, copy the spec to its final destination. */
+	if (tree >= _tree_specs.size()) _tree_specs.resize(tree + 1);
+	_tree_specs[tree] = std::move(spec);
+
+	/* Now add the overrides. */
+	for (int i = 0; i < this->max_offset; i++) {
+		TreeSpec &overridden_tree = _tree_specs[i];
+
+		if (this->entity_overrides[i] != _tree_specs[tree].grf_prop.local_id || this->grfid_overrides[i] != _tree_specs[tree].grf_prop.grfid) continue;
+
+		overridden_tree.grf_prop.override_id = tree;
+		this->entity_overrides[i] = this->invalid_id;
+		this->grfid_overrides[i] = {};
+	}
+}
+
+/**
+ * Get the original tree specs.
+ * @return Span of original tree specs.
+ */
+std::span<const TreeSpec> GetOriginalTreeSpecs()
+{
+	return _original_tree_specs;
+}
+
+/**
+ * Reset trees to their default state.
+ */
+void ResetTrees()
+{
+	_active_treetypes.clear();
+	_tropic_treetypes.fill({});
+
+	_tree_specs.clear();
+	_tree_specs.assign(_original_tree_specs.begin(), _original_tree_specs.end());
+
+	_tree_tile_specs.clear();
+
+	_tree_mngr.ResetOverride();
+}
+
+/**
+ * Generate tree tile specs.
+ */
+static void GenerateTreeTileSpecs()
+{
+	/* Tree layouts are randomly generated. Use a fixed seed to ensure layouts are the same when loading saved games. */
+	SavedRandomSeeds saved_seeds;
+	SaveRandomSeeds(&saved_seeds);
+	SetRandomSeed(0xB1674EE5);
+
+	uint num_trees = std::size(_tree_specs);
+
+	std::vector<uint16_t> subtree_candidates;
+
+	for (auto it = _tree_specs.begin(); it != _tree_specs.end(); ++it) {
+		/* Do not build a layout if the tree has no chance of being placed. */
+		if (it->probability[0] == 0) continue;
+		if (!it->landscapes.Test(_settings_game.game_creation.landscape)) continue;
+
+		size_t tree = std::distance(_tree_specs.begin(), it);
+		// if (std::ranges::find_if(_tree_tile_specs, [tree](const auto &tts) { return tts.trees[0][0] == tree; }) != _tree_tile_specs.end()) continue;
+
+		auto &tts = _tree_tile_specs.emplace_back();
+		tts.name = it->name;
+		tts.landscapes = it->landscapes;
+		tts.tropiczones = it->tropiczones;
+		tts.probability = it->probability[0];
+		tts.flags = it->flags;
+		tts.max_trees = Clamp(it->max_trees, 1, TreeTileSpec::NUM_TREES);
+		tts.height = Clamp(it->height, 1, 30);
+
+		for (const auto &tc : it->classes) {
+			tts.classes.Set(tc);
+		}
+
+		for (uint i = 0; i < TreeTileSpec::NUM_TREE_VARIANTS; ++i) {
+			tts.trees[i][0] = tree;
+			tts.palettes[i][0] = it->flags.Test(TreeFlag::Colour) ? GetColourPalette(RandomRange(Colours::End)) : PAL_NONE;
+		}
+
+		uint8_t prob = 0;
+
+		for (uint j = 1; j < TreeTileSpec::NUM_TREES; ++j) {
+			subtree_candidates.clear();
+
+			if (j < tts.max_trees && !it->classes[j].None() && it->probability[j] < 128) {
+				/* Build a list of compatible trees. */
+				for (uint l = 0; l < num_trees; ++l) {
+					if (l == tree) continue;
+
+					const auto &ts = _tree_specs[l];
+					if (j >= ts.max_trees) continue;
+					if (tts.height < ts.height) continue;
+					if (!tts.landscapes.Any(ts.landscapes)) continue;
+					if (!it->classes[j].Any(ts.classes[0])) continue;
+					subtree_candidates.push_back(l);
+				}
+			}
+
+			for (uint i = 0; i < TreeTileSpec::NUM_TREE_VARIANTS; ++i) {
+				uint subtree = tree;
+
+				if (!subtree_candidates.empty()) {
+					uint32_t r = Random();
+					prob = GB(prob ^ r, 0, 7);
+					if (prob >= it->probability[j]) subtree = subtree_candidates[ScaleToLimit(r, subtree_candidates.size())];
+				}
+
+				tts.trees[i][j] = subtree;
+				tts.palettes[i][j] = _tree_specs[subtree].flags.Test(TreeFlag::Colour) ? GetColourPalette(RandomRange(Colours::End)) : PAL_NONE;
+				tts.flags.Set(_tree_specs[subtree].flags);
+			}
+		}
+	}
+
+	RestoreRandomSeeds(saved_seeds);
+}
+
+/**
+ * Finalise tree information.
+ */
+void FinaliseTrees()
+{
+	GenerateTreeTileSpecs();
+
+	_active_treetypes.clear();
+	_tropic_treetypes.fill({});
+
+	for (auto it = _tree_tile_specs.begin(); it != _tree_tile_specs.end(); ++it) {
+		if (!it->landscapes.Test(_settings_game.game_creation.landscape)) continue;
+
+		TreeType treetype = static_cast<TreeType>(std::distance(_tree_tile_specs.begin(), it));
+		_active_treetypes.push_back(treetype);
+		for (TropicZone zone : it->tropiczones) {
+			_tropic_treetypes[zone].push_back(treetype);
+		}
+	}
+}
+
+/**
+ * Get list of currently active tree types.
+ * @return Active tree types.
+ */
+std::span<const TreeType> GetTreeTypes()
+{
+	return _active_treetypes;
+}
+
+/**
+ * Get the TreeSpec for a tree.
+ * @param tree The tree.
+ * @return The TreeSpec.
+ */
+const TreeSpec &GetTreeSpec(uint16_t tree)
+{
+	assert(tree < std::size(_tree_specs));
+	return _tree_specs[tree];
+}
+
+/**
+ * Get the TreeTileSpec for a tree type.
+ * @param treetype The tree type.
+ * @return The TreeTileSpec.
+ */
+static const TreeTileSpec &GetTreeTileSpec(TreeType treetype)
+{
+	assert(treetype < std::size(_tree_tile_specs));
+	return _tree_tile_specs[treetype];
+}
+
+/**
+ * Get list of tree types that could be placed on a tile.
+ * @param tile The tile.
+ * @return Tree types suitable for tile.
+ */
+static std::span<const TreeType> GetTreeTypesForTile(TileIndex tile)
+{
+	switch (_settings_game.game_creation.landscape) {
+		case LandscapeType::Tropic: return _tropic_treetypes[GetTropicZone(tile)];
+		default: return _active_treetypes;
+	}
+}
+
+/**
+ * Test if a particular tree type can be placed on a tile.
+ * @param tile The tile.
+ * @param treetype The tree type.
+ * @return \c true iff the tree type can be placed on the tile.
+ */
+static bool IsTreeTypeValidForTile(TileIndex tile, TreeType treetype)
+{
+	switch (_settings_game.game_creation.landscape) {
+		case LandscapeType::Tropic: return GetTreeTileSpec(treetype).tropiczones.Test(GetTropicZone(tile));
+		default: return true;
+	}
+}
+
+/**
+ * Get sprite and palette to represent a tree tile in the place tree window.
+ * @param treetype The tree type.
+ * @return Sprite and palette for tree type.
+ */
+PalSpriteID GetTreeSprite(TreeType treetype)
+{
+	const auto &tts = GetTreeTileSpec(treetype);
+
+	SpriteID base = GetCustomTreeSprite(INVALID_TILE, tts.trees[0][0], 0);
+	if (base == 0) base = GetTreeSpec(tts.trees[0][0]).normal;
+
+	return {base + to_underlying(TreeGrowthStage::Growing3), tts.palettes[0][0]};
+}
+
 /**
  * Get a random TreeType for the given tile based on a given seed
  *
@@ -134,27 +373,56 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, Tree
  * to get such a value.
  *
  * @param tile The tile to get a random TreeType from
- * @param seed The seed for randomness, must be less or equal 256
+ * @param seed The seed for randomness, must be less or equal to 255.
+ * @param prob Probability, must be less or equal to 255.
+ * @param treetypes Span of tree types to consider.
  * @return The random tree type
  */
-static TreeType GetRandomTreeType(TileIndex tile, uint seed)
+static TreeType GetRandomTreeType([[maybe_unused]] TileIndex tile, uint seed, uint prob, std::span<const TreeType> treetypes)
 {
-	switch (_settings_game.game_creation.landscape) {
-		case LandscapeType::Temperate:
-			return static_cast<TreeType>(seed * TREE_COUNT_TEMPERATE / 256 + TREE_TEMPERATE);
+	if (treetypes.empty()) return TREE_INVALID;
 
-		case LandscapeType::Arctic:
-			return static_cast<TreeType>(seed * TREE_COUNT_SUB_ARCTIC / 256 + TREE_SUB_ARCTIC);
+	TreeType tt = treetypes[seed * std::size(treetypes) / 256];
 
-		case LandscapeType::Tropic:
-			switch (GetTropicZone(tile)) {
-				case TropicZone::Normal: return static_cast<TreeType>(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
-				case TropicZone::Desert: return static_cast<TreeType>((seed > 12) ? TREE_INVALID : TREE_CACTUS);
-				default:                 return static_cast<TreeType>(seed * TREE_COUNT_RAINFOREST / 256 + TREE_RAINFOREST);
-			}
+	if (prob > GetTreeTileSpec(tt).probability) return TREE_INVALID;
+	return tt;
+}
 
-		default:
-			return static_cast<TreeType>(seed * TREE_COUNT_TOYLAND / 256 + TREE_TOYLAND);
+/**
+ * Make a random tree tile of the given tile
+ *
+ * Create a new tree-tile for the given tile. The second parameter is used for
+ * randomness like type and number of trees.
+ *
+ * @param tile The tile to make a tree-tile from
+ * @param r The randomness value from a Random() value
+ * @param keep_density Whether to keep the existing ground density of the tile.
+ * @param treetypes Span of tree types to consider.
+ */
+void PlaceTreeFromClass(TileIndex tile, uint32_t r, bool keep_density, std::span<const TreeType> treetypes)
+{
+	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8), GB(Random(), 0, 8), treetypes);
+
+	if (tree != TREE_INVALID) {
+		if (!IsTreeTypeValidForTile(tile, tree)) return;
+
+		if (IsBridgeAbove(tile)) {
+			const auto &tts = GetTreeTileSpec(tree);
+			int height_diff = GetTileMaxZ(tile) + tts.height - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+			if (height_diff > 0) return;
+		}
+
+		PlantTreesOnTile(tile, tree, GB(r, 22, 2), static_cast<TreeGrowthStage>(std::min<uint8_t>(GB(r, 16, 3), to_underlying(TreeGrowthStage::Dead))));
+		MarkTileDirtyByTile(tile);
+
+		/* Maybe keep the existing ground density.*/
+		if (keep_density) return;
+
+		/* Rerandomize ground, if neither snow nor shore */
+		TreeGround ground = GetTreeGround(tile);
+		if (ground != TreeGround::SnowOrDesert && ground != TreeGround::RoughSnow && ground != TreeGround::Shore) {
+			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
+		}
 	}
 }
 
@@ -170,21 +438,7 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed)
  */
 void PlaceTree(TileIndex tile, uint32_t r, bool keep_density)
 {
-	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
-
-	if (tree != TREE_INVALID) {
-		PlantTreesOnTile(tile, tree, GB(r, 22, 2), static_cast<TreeGrowthStage>(std::min<uint8_t>(GB(r, 16, 3), to_underlying(TreeGrowthStage::Dead))));
-		MarkTileDirtyByTile(tile);
-
-		/* Maybe keep the existing ground density.*/
-		if (keep_density) return;
-
-		/* Rerandomize ground, if neither snow nor shore */
-		TreeGround ground = GetTreeGround(tile);
-		if (ground != TreeGround::SnowOrDesert && ground != TreeGround::RoughSnow && ground != TreeGround::Shore) {
-			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
-		}
-	}
+	PlaceTreeFromClass(tile, r, keep_density, GetTreeTypesForTile(tile));
 }
 
 struct BlobHarmonic {
@@ -305,10 +559,26 @@ static void PlaceTreeGroups(uint num_groups)
 	/* Shape in which trees may be contained. Array is here to reduce allocations. */
 	std::array<Point, GROVE_SEGMENTS> grove;
 
+	std::vector<TreeType> tree_candidates;
+
 	do {
 		TileIndex center_tile = RandomTile();
 
 		CreateRandomStarShapedPolygon(GROVE_RADIUS, grove);
+
+		uint32_t r = Random();
+		TreeType treetype = GetRandomTreeType(center_tile, GB(r, 0, 8), GB(r, 16, 8), GetTreeTypesForTile(center_tile));
+		if (treetype == TREE_INVALID) continue;
+
+		TreeClasses classes = GetTreeTileSpec(treetype).classes;
+
+		tree_candidates.clear();
+		tree_candidates.push_back(treetype);
+
+		for (const auto &tt : GetTreeTypesForTile(center_tile)) {
+			if (tt == treetype) continue;
+			if (classes.Any(GetTreeTileSpec(tt).classes)) tree_candidates.push_back(tt);
+		}
 
 		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
 			IncreaseGeneratingWorldProgress(GenWorldProgress::Trees);
@@ -322,7 +592,12 @@ static void PlaceTreeGroups(uint num_groups)
 			if (!CanPlantTreesOnTile(cur_tile, true)) continue;
 			if (!IsPointInStarShapedPolygon(x, y, grove)) continue;
 
-			PlaceTree(cur_tile, r);
+			if (GB(r, 5, 2) == 0) {
+				/* 25% chance of any type of tree. */
+				PlaceTreeFromClass(cur_tile, r, false, GetTreeTypesForTile(cur_tile));
+			} else {
+				PlaceTreeFromClass(cur_tile, r, false, tree_candidates);
+			}
 		}
 
 	} while (--num_groups);
@@ -432,8 +707,8 @@ void PlaceTreesRandomly()
 uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone)
 {
 	assert(_game_mode == GameMode::Editor); // Due to InteractiveRandom being used in this function
-	assert(treetype < TREE_TOYLAND + TREE_COUNT_TOYLAND);
-	const bool allow_desert = treetype == TREE_CACTUS;
+	const auto &tts = GetTreeTileSpec(treetype);
+	const bool allow_desert = tts.tropiczones.Test(TropicZone::Desert);
 	uint planted = 0;
 
 	for (; count > 0; count--) {
@@ -448,12 +723,16 @@ uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, ui
 		const int32_t yofs = mkcoord();
 		const TileIndex tile_to_plant = TileAddWrap(tile, xofs, yofs);
 		if (tile_to_plant != INVALID_TILE) {
-			if (IsTileType(tile_to_plant, TileType::Trees) && GetTreeCount(tile_to_plant) < 4) {
+			if (IsTileType(tile_to_plant, TileType::Trees) && GetTreeCount(tile_to_plant) < tts.max_trees) {
 				AddTreeCount(tile_to_plant, 1);
 				SetTreeGrowth(tile_to_plant, TreeGrowthStage::Growing1);
 				MarkTileDirtyByTile(tile_to_plant, 0);
 				planted++;
 			} else if (CanPlantTreesOnTile(tile_to_plant, allow_desert)) {
+				if (IsBridgeAbove(tile)) {
+					int height_diff = GetTileMaxZ(tile) + tts.height - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+					if (height_diff > 0) continue;
+				}
 				PlantTreesOnTile(tile_to_plant, treetype, 0, TreeGrowthStage::Grown);
 				MarkTileDirtyByTile(tile_to_plant, 0);
 				planted++;
@@ -461,7 +740,7 @@ uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, ui
 		}
 	}
 
-	if (set_zone && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
+	if (set_zone && tts.tropiczones.Test(TropicZone::Rainforest)) {
 		for (TileIndex t : TileArea(tile).Expand(radius)) {
 			if (GetTileType(t) != TileType::Void && DistanceSquare(tile, t) < radius * radius) SetTropicZone(t, TropicZone::Rainforest);
 		}
@@ -518,7 +797,10 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
-	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)])) return CMD_ERROR;
+	if (tree_to_plant != TREE_INVALID) {
+		const auto treetypes = GetTreeTypes();
+		if (std::ranges::find(treetypes, tree_to_plant) == std::end(treetypes)) return CMD_ERROR;
+	}
 
 	Company *c = (_game_mode != GameMode::Editor) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
@@ -529,7 +811,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 		switch (GetTileType(current_tile)) {
 			case TileType::Trees:
 				/* no more space for trees? */
-				if (GetTreeCount(current_tile) == 4) {
+				if (GetTreeCount(current_tile) >= GetTreeTileSpec(GetTreeType(current_tile)).max_trees) {
 					msg = STR_ERROR_TREE_ALREADY_HERE;
 					continue;
 				}
@@ -557,22 +839,26 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				[[fallthrough]];
 
 			case TileType::Clear: {
-				if (IsBridgeAbove(current_tile)) {
-					msg = STR_ERROR_SITE_UNSUITABLE;
+				TreeType treetype = (TreeType)tree_to_plant;
+				if (treetype == TREE_INVALID) {
+					uint r = Random();
+					treetype = GetRandomTreeType(current_tile, GB(r, 24, 8), GB(r, 0, 8), GetTreeTypesForTile(current_tile));
+					if (treetype == TREE_INVALID) return CMD_ERROR;
+				}
+
+				/* Be a bit picky about which trees go where. */
+				if (treetype != TREE_INVALID && _game_mode != GameMode::Editor && !IsTreeTypeValidForTile(current_tile, treetype)) {
+					msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
 					continue;
 				}
 
-				TreeType treetype = (TreeType)tree_to_plant;
-				/* Be a bit picky about which trees go where. */
-				if (_settings_game.game_creation.landscape == LandscapeType::Tropic && treetype != TREE_INVALID && (
-						/* No cacti outside the desert */
-						(treetype == TREE_CACTUS && GetTropicZone(current_tile) != TropicZone::Desert) ||
-						/* No rainforest trees outside the rainforest, except in the editor mode where it makes those tiles rainforest tile */
-						(IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS) && GetTropicZone(current_tile) != TropicZone::Rainforest && _game_mode != GameMode::Editor) ||
-						/* And no subtropical trees in the desert/rainforest */
-						(IsInsideMM(treetype, TREE_SUB_TROPICAL, TREE_TOYLAND) && GetTropicZone(current_tile) != TropicZone::Normal))) {
-					msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
-					continue;
+				if (IsBridgeAbove(current_tile)) {
+					const auto &tts = GetTreeTileSpec(treetype);
+					int height_diff = GetTileMaxZ(current_tile) + tts.height - GetBridgeHeight(GetSouthernBridgeEnd(current_tile));
+					if (height_diff > 0) {
+						msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
+						continue;
+					}
 				}
 
 				/* Test tree limit. */
@@ -602,18 +888,13 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 				}
 
 				if (flags.Test(DoCommandFlag::Execute)) {
-					if (treetype == TREE_INVALID) {
-						treetype = GetRandomTreeType(current_tile, GB(Random(), 24, 8));
-						if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
-					}
-
 					/* Plant full grown trees in scenario editor */
 					PlantTreesOnTile(current_tile, treetype, 0, _game_mode == GameMode::Editor ? TreeGrowthStage::Grown : TreeGrowthStage::Growing1);
 					MarkTileDirtyByTile(current_tile);
 					if (c != nullptr) c->tree_limit -= 1 << 16;
 
 					/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
-					if (_game_mode == GameMode::Editor && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
+					if (_game_mode == GameMode::Editor && GetTreeTileSpec(treetype).tropiczones.Test(TropicZone::Rainforest)) {
 						SetTropicZone(current_tile, TropicZone::Rainforest);
 					}
 				}
@@ -639,6 +920,49 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 struct TreeListEnt : PalSpriteID, Coord2D<int8_t> {};
 
+/**
+ * Draw a tree sprite list.
+ * @param ti Tile info of tile to draw.
+ * @param te List of tree sprites and positions.
+ * @param trees Number of trees to draw.
+ */
+static void DrawTreeList(const TileInfo *ti, std::span<TreeListEnt> te, uint trees, uint8_t height)
+{
+	int z = ti->z + GetSlopeMaxPixelZ(ti->tileh) / 2;
+
+	/* Combine trees into one sprite object */
+	StartSpriteCombine();
+
+	/* Draw trees in a sorted way */
+	for (; trees > 0; trees--) {
+		uint min = te[0].x + te[0].y;
+		uint mi = 0;
+
+		for (uint i = 1; i < trees; i++) {
+			if (static_cast<uint>(te[i].x + te[i].y) < min) {
+				min = te[i].x + te[i].y;
+				mi = i;
+			}
+		}
+
+		SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, height}, {te[mi].x, te[mi].y, 0}};
+		AddSortableSpriteToDraw(te[mi].sprite, te[mi].pal, ti->x, ti->y, z, bounds, IsTransparencySet(TransparencyOption::Trees));
+
+		/* Replace the removed one with the last one */
+		te[mi] = te[trees - 1];
+	}
+
+	EndSpriteCombine();
+}
+
+static std::pair<uint, uint> GetTreeVariantPosition(TileIndex tile)
+{
+	int x = TileX(tile) * TILE_SIZE;
+	int y = TileY(tile) * TILE_SIZE;
+	uint tmp = CountBits(tile.base() + x + y);
+	return {(TileHash2Bit(x, y) << 2) | GB(tmp, 0, 2), GB(tmp, 2, 2)};
+}
+
 /** @copydoc DrawTileProc */
 static void DrawTile_Trees(TileInfo *ti)
 {
@@ -650,65 +974,44 @@ static void DrawTile_Trees(TileInfo *ti)
 	}
 
 	/* Do not draw trees when the invisible trees setting is set */
-	if (IsInvisibilitySet(TransparencyOption::Trees)) return;
-
-	uint tmp = CountBits(ti->tile.base() + ti->x + ti->y);
-	uint index = GB(tmp, 0, 2) + (GetTreeType(ti->tile) << 2);
-
-	/* different tree styles above one of the grounds */
-	if ((GetTreeGround(ti->tile) == TreeGround::SnowOrDesert || GetTreeGround(ti->tile) == TreeGround::RoughSnow) &&
-			GetTreeDensity(ti->tile) >= 2 &&
-			IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
-		index += 164 - (TREE_SUB_ARCTIC << 2);
+	if (IsInvisibilitySet(TransparencyOption::Trees)) {
+		DrawBridgeMiddle(ti, {});
+		return;
 	}
 
-	assert(index < lengthof(_tree_layout_sprite));
+	const TreeTileSpec &tts = GetTreeTileSpec(GetTreeType(ti->tile));
 
-	const PalSpriteID *s = _tree_layout_sprite[index];
-	const Coord2D<uint8_t> *d = _tree_layout_xy[GB(tmp, 2, 2)];
-
-	/* combine trees into one sprite object */
-	StartSpriteCombine();
+	/* different tree styles above one of the grounds */
+	bool snowy = tts.landscapes.Test(LandscapeType::Arctic) &&
+			(GetTreeGround(ti->tile) == TreeGround::SnowOrDesert || GetTreeGround(ti->tile) == TreeGround::RoughSnow) &&
+			GetTreeDensity(ti->tile) >= 2;
 
 	TreeListEnt te[4];
 
 	/* put the trees to draw in a list */
 	uint trees = GetTreeCount(ti->tile);
 
-	for (uint i = 0; i < trees; i++) {
-		SpriteID sprite = s[0].sprite + to_underlying(i == trees - 1 ? GetTreeGrowth(ti->tile) : TreeGrowthStage::Grown);
-		PaletteID pal = s[0].pal;
+	auto [variant, position] = GetTreeVariantPosition(ti->tile);
+	const auto &sprites = tts.trees[variant];
+	const auto &palettes = tts.palettes[variant];
+	const Coord2D<uint8_t> *d = _tree_layout_xy[position];
 
-		te[i].sprite = sprite;
-		te[i].pal    = pal;
+	for (uint i = 0; i < trees; i++) {
+		SpriteID base = GetCustomTreeSprite(ti->tile, sprites[i], i);
+		if (base == 0) {
+			const auto &ts = GetTreeSpec(sprites[i]);
+			base = snowy ? ts.snowy : ts.normal;
+		}
+
+		te[i].sprite = base + to_underlying(i == trees - 1 ? GetTreeGrowth(ti->tile) : TreeGrowthStage::Grown);
+		te[i].pal = palettes[i];
 		te[i].x = d->x;
 		te[i].y = d->y;
-		s++;
 		d++;
 	}
 
-	/* draw them in a sorted way */
-	int z = ti->z + GetSlopeMaxPixelZ(ti->tileh) / 2;
-
-	for (; trees > 0; trees--) {
-		uint min = te[0].x + te[0].y;
-		uint mi = 0;
-
-		for (uint i = 1; i < trees; i++) {
-			if ((uint)(te[i].x + te[i].y) < min) {
-				min = te[i].x + te[i].y;
-				mi = i;
-			}
-		}
-
-		SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, 48}, {te[mi].x, te[mi].y, 0}};
-		AddSortableSpriteToDraw(te[mi].sprite, te[mi].pal, ti->x, ti->y, z, bounds, IsTransparencySet(TransparencyOption::Trees));
-
-		/* replace the removed one with the last one */
-		te[mi] = te[trees - 1];
-	}
-
-	EndSpriteCombine();
+	DrawTreeList(ti, te, trees, tts.height * TILE_HEIGHT);
+	DrawBridgeMiddle(ti, {});
 }
 
 
@@ -729,7 +1032,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 	}
 
 	uint num = GetTreeCount(tile);
-	if (IsInsideMM(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
+	if (GetTreeTileSpec(GetTreeType(tile)).tropiczones.Test(TropicZone::Rainforest)) num *= 4;
 
 	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
 
@@ -739,14 +1042,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 /** @copydoc GetTileDescProc */
 static void GetTileDesc_Trees(TileIndex tile, TileDesc &td)
 {
-	TreeType tt = GetTreeType(tile);
-
-	if (IsInsideMM(tt, TREE_RAINFOREST, TREE_CACTUS)) {
-		td.str = STR_LAI_TREE_NAME_RAINFOREST;
-	} else {
-		td.str = tt == TREE_CACTUS ? STR_LAI_TREE_NAME_CACTUS_PLANTS : STR_LAI_TREE_NAME_TREES;
-	}
-
+	td.str = GetTreeTileSpec(GetTreeType(tile)).name;
 	td.owner[0] = GetTileOwner(tile);
 }
 
@@ -832,6 +1128,174 @@ static bool TreesOnTileCanSpread(TileIndex tile)
 	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
+/**
+ * Handle a grown tree on a tile.
+ * @param tile The tree tile.
+ * @return true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopHandleGrownTree(TileIndex tile, const TreeTileSpec &tts)
+{
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
+			!tts.tropiczones.Test(TropicZone::Desert) &&
+			GetTropicZone(tile) == TropicZone::Desert) {
+		AddTreeGrowth(tile, 1);
+		return true;
+	}
+
+	switch (GB(Random(), 0, 3)) {
+		case 0: // Start the dying stages.
+			AddTreeGrowth(tile, 1);
+			return true;
+
+		case 1: // Add a tree.
+			if (GetTreeCount(tile) < tts.max_trees && TreesOnTileCanSpread(tile)) {
+				AddTreeCount(tile, 1);
+				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
+				return true;
+			}
+			[[fallthrough]];
+
+		case 2: { // Add a neighbouring tree.
+			if (!TreesOnTileCanSpread(tile)) return false;
+
+			TreeType treetype = GetTreeType(tile);
+
+			tile += TileOffsByDir(RandomRange(Direction::End));
+
+			if (!CanPlantTreesOnTile(tile, false)) return false;
+
+			/* Don't plant trees, if ground was freshly cleared */
+			if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == ClearGround::Grass && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return false;
+
+			if (IsBridgeAbove(tile)) {
+				int height_diff = GetTileMaxZ(tile) + tts.height - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+				if (height_diff > 0) return false;
+			}
+
+			PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
+			return true;
+		}
+
+		default: // Do nothing.
+			return false;
+	}
+}
+
+/**
+ * Handle a dead tree on a tile.
+ * @param tile The tree tile.
+ * @return true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopHandleDeadTree(TileIndex tile)
+{
+	if (!TreesOnTileCanSpread(tile)) {
+		/* if trees can't spread just plant a new one to prevent deforestation */
+		SetTreeGrowth(tile, TreeGrowthStage::Growing1);
+		return true;
+	}
+
+	if (GetTreeCount(tile) > 1) {
+		/* more than one tree, delete it */
+		AddTreeCount(tile, -1);
+		SetTreeGrowth(tile, TreeGrowthStage::Grown);
+		return true;
+	}
+
+	/* just one tree, change type into TileType::Clear */
+	switch (GetTreeGround(tile)) {
+		case TreeGround::Shore:
+			MakeShore(tile);
+			break;
+
+		case TreeGround::Grass:
+			MakeClear(tile, ClearGround::Grass, GetTreeDensity(tile));
+			break;
+
+		case TreeGround::Rough:
+			MakeClear(tile, ClearGround::Rough, 3);
+			break;
+
+		case TreeGround::RoughSnow: {
+			uint density = GetTreeDensity(tile);
+			MakeClear(tile, ClearGround::Rough, 3);
+			MakeSnow(tile, density);
+			break;
+		}
+
+		default: // snow or desert
+			if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
+				MakeClear(tile, ClearGround::Desert, GetTreeDensity(tile));
+			} else {
+				uint density = GetTreeDensity(tile);
+				MakeClear(tile, ClearGround::Grass, 3);
+				MakeSnow(tile, density);
+			}
+			break;
+	}
+	return true;
+}
+
+/**
+ * Handle update cycle for grass on tree tiles.
+ * @param tile The tree tile.
+ * @param cycle The current tree cycle.
+ * @return true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopHandleTreeGroundCycle(TileIndex tile, uint32_t cycle)
+{
+	/* Handle growth of grass (under trees/on TileType::Trees tiles) at every 8th processings, like it's done for grass on TileType::Clear tiles. */
+	if ((cycle & 7) != 7) return false;
+	if (GetTreeGround(tile) != TreeGround::Grass) return false;
+
+	uint density = GetTreeDensity(tile);
+	if (density >= 3) return false;
+
+	SetTreeGroundDensity(tile, TreeGround::Grass, density + 1);
+	return true;
+}
+
+/**
+ * Handle tree update cycle.
+ * @param tile The tree tile.
+ * @param tts The tree tile spec.* @param cycle The current tree cycle.
+ * @return true iff the tile was updated and needs to be marked dirty.
+ */
+static bool TileLoopHandleTreeCycle(TileIndex tile, uint32_t cycle)
+{
+	static const uint32_t TREE_UPDATE_FREQUENCY = 16;  // How many tile updates happen for one tree update
+	if (cycle % TREE_UPDATE_FREQUENCY != TREE_UPDATE_FREQUENCY - 1) return false;
+
+	const TreeTileSpec &tts = GetTreeTileSpec(GetTreeType(tile));
+
+	bool mark_dirty = false;
+
+	/* Update monthly refresh if requested. */
+	if (tts.flags.Test(TreeFlag::MonthlyRefresh) && GetTreeMonth(tile) != TimerGameCalendar::month) {
+		SetTreeMonth(tile, TimerGameCalendar::month);
+		mark_dirty = true;
+	}
+
+	/* Skip cycles to slow tree growth. */
+	const auto &ts = GetTreeSpec(tts.trees[GetTreeVariantPosition(tile).first][GetTreeCount(tile) - 1]);
+	if (ts.cycle_interval > 1) {
+		/* Take into account that We already only process every TREE_UPDATE_FREQUENCY cycles. */
+		uint cycle_interval = ts.cycle_interval * TREE_UPDATE_FREQUENCY;
+		if (cycle % cycle_interval != cycle_interval - 1) return mark_dirty;
+	}
+
+	switch (GetTreeGrowth(tile)) {
+		case TreeGrowthStage::Grown: // regular sized tree
+			return TileLoopHandleGrownTree(tile, tts) | mark_dirty;
+
+		case TreeGrowthStage::Dead: // final stage of tree destruction
+			return TileLoopHandleDeadTree(tile) | mark_dirty;
+
+		default:
+			AddTreeGrowth(tile, 1);
+			return true;
+	}
+}
+
 /** @copydoc TileLoopProc */
 static void TileLoop_Trees(TileIndex tile)
 {
@@ -853,102 +1317,13 @@ static void TileLoop_Trees(TileIndex tile)
 	 */
 	uint32_t cycle = 11 * TileX(tile) + 9 * TileY(tile) + (TimerGameTick::counter >> 8);
 
-	/* Handle growth of grass (under trees/on TileType::Trees tiles) at every 8th processings, like it's done for grass on TileType::Clear tiles. */
-	if ((cycle & 7) == 7 && GetTreeGround(tile) == TreeGround::Grass) {
-		uint density = GetTreeDensity(tile);
-		if (density < 3) {
-			SetTreeGroundDensity(tile, TreeGround::Grass, density + 1);
-			MarkTileDirtyByTile(tile);
-		}
+	bool mark_dirty = TileLoopHandleTreeGroundCycle(tile, cycle);
+
+	if (_settings_game.construction.extra_tree_placement != ETP_NO_GROWTH_NO_SPREAD) {
+		mark_dirty |= TileLoopHandleTreeCycle(tile, cycle);
 	}
 
-	if (_settings_game.construction.extra_tree_placement == ETP_NO_GROWTH_NO_SPREAD) return;
-
-	static const uint32_t TREE_UPDATE_FREQUENCY = 16;  // How many tile updates happen for one tree update
-	if (cycle % TREE_UPDATE_FREQUENCY != TREE_UPDATE_FREQUENCY - 1) return;
-
-	switch (GetTreeGrowth(tile)) {
-		case TreeGrowthStage::Grown: // regular sized tree
-			if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
-					GetTreeType(tile) != TREE_CACTUS &&
-					GetTropicZone(tile) == TropicZone::Desert) {
-				AddTreeGrowth(tile, 1);
-			} else {
-				switch (GB(Random(), 0, 3)) {
-					case 0: // start destructing
-						AddTreeGrowth(tile, 1);
-						break;
-
-					case 1: // add a tree
-						if (GetTreeCount(tile) < 4 && TreesOnTileCanSpread(tile)) {
-							AddTreeCount(tile, 1);
-							SetTreeGrowth(tile, TreeGrowthStage::Growing1);
-							break;
-						}
-						[[fallthrough]];
-
-					case 2: { // add a neighbouring tree
-						if (!TreesOnTileCanSpread(tile)) break;
-
-						TreeType treetype = GetTreeType(tile);
-
-						tile += TileOffsByDir(RandomRange(Direction::End));
-
-						if (!CanPlantTreesOnTile(tile, false)) return;
-
-						/* Don't plant trees, if ground was freshly cleared */
-						if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == ClearGround::Grass && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
-
-						PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
-
-						break;
-					}
-
-					default:
-						return;
-				}
-			}
-			break;
-
-		case TreeGrowthStage::Dead: // final stage of tree destruction
-			if (!TreesOnTileCanSpread(tile)) {
-				/* if trees can't spread just plant a new one to prevent deforestation */
-				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
-			} else if (GetTreeCount(tile) > 1) {
-				/* more than one tree, delete it */
-				AddTreeCount(tile, -1);
-				SetTreeGrowth(tile, TreeGrowthStage::Grown);
-			} else {
-				/* just one tree, change type into TileType::Clear */
-				switch (GetTreeGround(tile)) {
-					case TreeGround::Shore: MakeShore(tile); break;
-					case TreeGround::Grass: MakeClear(tile, ClearGround::Grass, GetTreeDensity(tile)); break;
-					case TreeGround::Rough: MakeClear(tile, ClearGround::Rough, 3); break;
-					case TreeGround::RoughSnow: {
-						uint density = GetTreeDensity(tile);
-						MakeClear(tile, ClearGround::Rough, 3);
-						MakeSnow(tile, density);
-						break;
-					}
-					default: // snow or desert
-						if (_settings_game.game_creation.landscape == LandscapeType::Tropic) {
-							MakeClear(tile, ClearGround::Desert, GetTreeDensity(tile));
-						} else {
-							uint density = GetTreeDensity(tile);
-							MakeClear(tile, ClearGround::Grass, 3);
-							MakeSnow(tile, density);
-						}
-						break;
-				}
-			}
-			break;
-
-		default:
-			AddTreeGrowth(tile, 1);
-			break;
-	}
-
-	MarkTileDirtyByTile(tile);
+	if (mark_dirty) MarkTileDirtyByTile(tile);
 }
 
 /**
@@ -980,8 +1355,13 @@ static void PlantRandomTree(bool rainforest)
 	if (rainforest && GetTropicZone(tile) != TropicZone::Rainforest) return;
 	if (!CanPlantTreesOnTile(tile, false)) return;
 
-	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
+	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8), GB(Random(), 0, 8), GetTreeTypesForTile(tile));
 	if (tree == TREE_INVALID) return;
+
+	if (IsBridgeAbove(tile)) {
+		int height_diff = GetTileMaxZ(tile) + GetTreeTileSpec(tree).height - GetBridgeHeight(GetSouthernBridgeEnd(tile));
+		if (height_diff > 0) return;
+	}
 
 	PlantTreesOnTile(tile, tree, 0, TreeGrowthStage::Growing1);
 }
@@ -1015,6 +1395,15 @@ void InitializeTrees()
 	_trees_tick_ctr = 0;
 }
 
+/** @copydoc CheckBuildAboveProc */
+static CommandCost CheckBuildAbove_Trees(TileIndex tile, DoCommandFlags flags, [[maybe_unused]] Axis axis, int height)
+{
+	const auto &tts = GetTreeTileSpec(GetTreeType(tile));
+
+	int height_diff = GetTileMaxZ(tile) + tts.height - height;
+	if (height_diff > 0) return Command<Commands::LandscapeClear>::Do(flags, tile);
+	return CommandCost();
+}
 
 /** TileTypeProcs definitions for TileType::Trees tiles. */
 extern const TileTypeProcs _tile_type_trees_procs = {
@@ -1023,5 +1412,6 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	.clear_tile_proc = ClearTile_Trees,
 	.get_tile_desc_proc = GetTileDesc_Trees,
 	.tile_loop_proc = TileLoop_Trees,
-	.terraform_tile_proc = [](TileIndex tile, DoCommandFlags flags, int, Slope) { return Command<Commands::LandscapeClear>::Do(flags, tile); }
+	.terraform_tile_proc = [](TileIndex tile, DoCommandFlags flags, int, Slope) { return Command<Commands::LandscapeClear>::Do(flags, tile); },
+	.check_build_above_proc = CheckBuildAbove_Trees,
 };
