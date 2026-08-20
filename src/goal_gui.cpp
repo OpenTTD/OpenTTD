@@ -349,12 +349,12 @@ struct GoalQuestionWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GQ_CAPTION:
-				return GetString(STR_GOAL_QUESTION_CAPTION_QUESTION + to_underlying(this->type));
+				return GetString(STR_GOAL_QUESTION_CAPTION_QUESTION + std::to_underlying(this->type));
 
 			case WID_GQ_BUTTON_1:
 			case WID_GQ_BUTTON_2:
 			case WID_GQ_BUTTON_3:
-				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + to_underlying(this->buttons.GetNthSetBit(widget - WID_GQ_BUTTON_1).value_or(GoalQuestionButton::Cancel)));
+				return GetString(STR_GOAL_QUESTION_BUTTON_CANCEL + std::to_underlying(this->buttons.GetNthSetBit(widget - WID_GQ_BUTTON_1).value_or(GoalQuestionButton::Cancel)));
 
 			default:
 				return this->Window::GetWidgetString(widget, stringid);

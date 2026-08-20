@@ -21,6 +21,6 @@ ScriptTownList::ScriptTownList(HSQUIRRELVM vm)
 ScriptTownEffectList::ScriptTownEffectList()
 {
 	for (TownAcceptanceEffect i : EnumRange(TownAcceptanceEffect::End)) {
-		this->AddItem(to_underlying(i));
+		this->AddItem(std::to_underlying(i));
 	}
 }

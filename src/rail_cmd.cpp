@@ -821,7 +821,7 @@ static const TrackdirIndexArray<TileIndexDiffC> _trackdelta{{{
  */
 static Trackdir GetOtherTrackdir(Trackdir trackdir)
 {
-	return static_cast<Trackdir>(to_underlying(trackdir) ^ 1);
+	return static_cast<Trackdir>(std::to_underlying(trackdir) ^ 1);
 }
 
 static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileIndex end)
@@ -851,7 +851,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 			(trdx >= 0 && dx < 0) ||
 			(trdy <= 0 && dy > 0) ||
 			(trdy >= 0 && dy < 0)) {
-		if (!HasBit(to_underlying(*trackdir), 3)) { // first direction is invalid, try the other
+		if (!HasBit(std::to_underlying(*trackdir), 3)) { // first direction is invalid, try the other
 			*trackdir = ReverseTrackdir(*trackdir); // reverse the direction
 			trdx = -trdx;
 			trdy = -trdy;
@@ -1168,7 +1168,7 @@ CommandCost CmdBuildSingleSignal(DoCommandFlags flags, TileIndex tile, Track tra
 
 				} else if (ctrl_pressed) {
 					/* cycle between cycle_start and cycle_end */
-					sigtype = static_cast<SignalType>(to_underlying(GetSignalType(tile, track)) + 1);
+					sigtype = static_cast<SignalType>(std::to_underlying(GetSignalType(tile, track)) + 1);
 
 					if (sigtype < cycle_start || sigtype > cycle_stop) sigtype = cycle_start;
 
@@ -1932,7 +1932,7 @@ static void DrawSingleSignal(TileIndex tile, const RailTypeInfo *rti, Track trac
 	} else {
 		/* Normal electric signals are stored in a different sprite block than all other signals. */
 		sprite = (type == SignalType::Block && variant == SignalVariant::Electric) ? SPR_ORIGINAL_SIGNALS_BASE : SPR_SIGNALS_BASE - 16;
-		sprite += to_underlying(type) * 16 + to_underlying(variant) * 64 + image * 2 + to_underlying(condition) + (type >= SignalType::Path ? 64 : 0);
+		sprite += std::to_underlying(type) * 16 + std::to_underlying(variant) * 64 + image * 2 + std::to_underlying(condition) + (type >= SignalType::Path ? 64 : 0);
 	}
 
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, GetSafeSlopeZ(x, y, track), {{}, {1, 1, BB_HEIGHT_UNDER_BRIDGE}, {}});

@@ -213,7 +213,7 @@ static bool FixTTOMapArray()
 {
 	for (auto tile : Map::Iterate()) {
 		TileType tt = GetTileType(tile);
-		if (to_underlying(tt) == 11) {
+		if (std::to_underlying(tt) == 11) {
 			/* TTO has a different way of storing monorail.
 			 * Instead of using bits in m3 it uses a different tile type. */
 			tile.m3() = 1; // rail type = monorail (in TTD)
@@ -467,7 +467,7 @@ static inline Colours RemapTTOColour(Colours tto)
 
 	if (static_cast<size_t>(tto) >= std::size(tto_colour_remap)) return Colours::Grey; // this shouldn't happen
 
-	return tto_colour_remap[to_underlying(tto)];
+	return tto_colour_remap[std::to_underlying(tto)];
 }
 
 static inline uint RemapTownIndex(uint x)
@@ -1814,7 +1814,7 @@ bool LoadTTDMain(LoadgameState &ls)
 	FixTTDDepots();
 
 	/* Fix some general stuff */
-	if (to_underlying(_settings_game.game_creation.landscape) >= NUM_LANDSCAPE) _settings_game.game_creation.landscape = LandscapeType::Temperate;
+	if (std::to_underlying(_settings_game.game_creation.landscape) >= NUM_LANDSCAPE) _settings_game.game_creation.landscape = LandscapeType::Temperate;
 
 	/* Fix the game to be compatible with OpenTTD */
 	FixOldTowns();

@@ -482,7 +482,7 @@ static void SetColourRemap(ExtendedTextColour colour)
 	bool no_shade = colour.flags.Test(ExtendedTextColourFlag::NoShade) || colour.colour == TextColour::Black;
 	bool raw_colour = colour.flags.Test(ExtendedTextColourFlag::IsPaletteColour);
 
-	_string_colourremap[1] = raw_colour ? to_underlying(colour.colour) : _string_colourmap[to_underlying(colour.colour)].p;
+	_string_colourremap[1] = raw_colour ? std::to_underlying(colour.colour) : _string_colourmap[std::to_underlying(colour.colour)].p;
 	_string_colourremap[2] = no_shade ? 0 : 1;
 	_colour_remap_ptr = _string_colourremap;
 }

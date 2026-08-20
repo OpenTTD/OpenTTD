@@ -258,7 +258,7 @@ public:
 
 	void Load(Town *t) const override
 	{
-		size_t length = IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength) ? to_underlying(TownAcceptanceEffect::End) : SlGetStructListLength(to_underlying(TownAcceptanceEffect::End));
+		size_t length = IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength) ? std::to_underlying(TownAcceptanceEffect::End) : SlGetStructListLength(std::to_underlying(TownAcceptanceEffect::End));
 		for (size_t i = 0; i < length; i++) {
 			SlObject(&t->received[static_cast<TownAcceptanceEffect>(i)], this->GetLoadDescription());
 		}
@@ -338,7 +338,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Food].new_act, "received[TE_FOOD].new_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
 	SLE_CONDVARNAME(Town, received[TownAcceptanceEffect::Water].new_act, "received[TE_WATER].new_act", VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::ScriptTownGrowth),
 
-	SLE_CONDARR(Town, goal, VarTypes::U32, to_underlying(TownAcceptanceEffect::End), SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
+	SLE_CONDARR(Town, goal, VarTypes::U32, std::to_underlying(TownAcceptanceEffect::End), SaveLoadVersion::ScriptTownGrowth, SaveLoadVersion::MaxVersion),
 
 	SLE_CONDSSTR(Town, text, VarTypes::STR | StringValidationSetting::AllowControlCode, SaveLoadVersion::ScriptTownText, SaveLoadVersion::MaxVersion),
 

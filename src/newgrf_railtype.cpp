@@ -33,7 +33,7 @@
 			case 0x41: return 0;
 			case 0x42: return 0;
 			case 0x43: return TimerGameCalendar::date.base();
-			case 0x44: return to_underlying(HouseZone::TownEdge);
+			case 0x44: return std::to_underlying(HouseZone::TownEdge);
 			case 0x45: {
 				RailType rt = this->rti->Index();
 				uint8_t local = GetReverseRailTypeTranslation(rt, this->ro.grffile);
@@ -57,7 +57,7 @@
 			} else if (IsLevelCrossingTile(this->tile)) {
 				t = ClosestTownFromTile(this->tile, UINT_MAX);
 			}
-			return to_underlying(t != nullptr ? GetTownRadiusGroup(t, this->tile) : HouseZone::TownEdge);
+			return std::to_underlying(t != nullptr ? GetTownRadiusGroup(t, this->tile) : HouseZone::TownEdge);
 		}
 		case 0x45:
 			return GetTrackTypes(this->tile, ro.grffile);
@@ -133,7 +133,7 @@ SpriteID GetCustomSignalSprite(const RailTypeInfo *rti, TileIndex tile, SignalTy
 	if (rti->group[RailSpriteType::Signals] == nullptr) return 0;
 
 	uint32_t param1 = gui ? 0x10 : 0x00;
-	uint32_t param2 = (to_underlying(type) << 16) | (to_underlying(var) << 8) | to_underlying(state);
+	uint32_t param2 = (std::to_underlying(type) << 16) | (std::to_underlying(var) << 8) | std::to_underlying(state);
 	RailTypeResolverObject object(rti, tile, TileContext::Normal, RailSpriteType::Signals, param1, param2);
 
 	const auto *group = object.Resolve<ResultSpriteGroup>();

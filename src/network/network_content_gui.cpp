@@ -465,7 +465,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	/** Sort content by state. @copydoc GUIList::Sorter */
 	static bool StateSorter(const ContentInfo * const &a, const ContentInfo * const &b)
 	{
-		int r = to_underlying(a->state) - to_underlying(b->state);
+		int r = std::to_underlying(a->state) - std::to_underlying(b->state);
 		if (r == 0) return TypeSorter(a, b);
 		return r < 0;
 	}
@@ -722,7 +722,7 @@ public:
 		if (this->selected == nullptr) return;
 
 		/* And fill the rest of the details when there's information to place there */
-		DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FontSize::Normal), hr.bottom, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + to_underlying(this->selected->state), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
+		DrawStringMultiLine(hr.left, hr.right, hr.top + GetCharacterHeight(FontSize::Normal), hr.bottom, STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED + std::to_underlying(this->selected->state), TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
 
 		/* Also show the total download size, so keep some space from the bottom */
 		tr.bottom -= GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_wide;

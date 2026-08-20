@@ -538,7 +538,7 @@ public:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus CloseConnection(NetworkRecvStatus status) = 0;
-	~NetworkGameSocketHandler() override = default;
+	~NetworkGameSocketHandler() override;
 
 	/**
 	 * Sets the client info for this socket handler.

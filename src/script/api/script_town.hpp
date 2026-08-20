@@ -32,49 +32,49 @@ public:
 		 * absolute percentage, so 10% becomes 35%, with a max of 99%)
 		 * for all stations within 10 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_SMALL  = to_underlying(::TownAction::AdvertiseSmall),
+		TOWN_ACTION_ADVERTISE_SMALL  = std::to_underlying(::TownAction::AdvertiseSmall),
 
 		/**
 		 * The cargo ratings temporary gains 44% of rating (in
 		 * absolute percentage, so 10% becomes 54%, with a max of 99%)
 		 * for all stations within 15 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_MEDIUM = to_underlying(::TownAction::AdvertiseMedium),
+		TOWN_ACTION_ADVERTISE_MEDIUM = std::to_underlying(::TownAction::AdvertiseMedium),
 
 		/**
 		 * The cargo ratings temporary gains 63% of rating (in
 		 * absolute percentage, so 10% becomes 73%, with a max of 99%)
 		 * for all stations within 20 tiles.
 		 */
-		TOWN_ACTION_ADVERTISE_LARGE  = to_underlying(::TownAction::AdvertiseLarge),
+		TOWN_ACTION_ADVERTISE_LARGE  = std::to_underlying(::TownAction::AdvertiseLarge),
 
 		/**
 		 * Rebuild the roads of this town for 6 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_ROAD_REBUILD     = to_underlying(::TownAction::RoadRebuild),
+		TOWN_ACTION_ROAD_REBUILD     = std::to_underlying(::TownAction::RoadRebuild),
 
 		/**
 		 * Build a statue in this town.
 		 */
-		TOWN_ACTION_BUILD_STATUE     = to_underlying(::TownAction::BuildStatue),
+		TOWN_ACTION_BUILD_STATUE     = std::to_underlying(::TownAction::BuildStatue),
 
 		/**
 		 * Fund the creation of extra buildings for 3 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_FUND_BUILDINGS   = to_underlying(::TownAction::FundBuildings),
+		TOWN_ACTION_FUND_BUILDINGS   = std::to_underlying(::TownAction::FundBuildings),
 
 		/**
 		 * Buy exclusive rights for this town for 12 economy-months.
 		 * @see \ref ScriptEconomyTime
 		 */
-		TOWN_ACTION_BUY_RIGHTS       = to_underlying(::TownAction::BuyRights),
+		TOWN_ACTION_BUY_RIGHTS       = std::to_underlying(::TownAction::BuyRights),
 
 		/**
 		 * Bribe the town in order to get a higher rating.
 		 */
-		TOWN_ACTION_BRIBE            = to_underlying(::TownAction::Bribe),
+		TOWN_ACTION_BRIBE            = std::to_underlying(::TownAction::Bribe),
 	};
 
 	/**
@@ -98,11 +98,11 @@ public:
 	 */
 	enum RoadLayout {
 		/* Note: these values represent part of the in-game TownLayout enum */
-		ROAD_LAYOUT_ORIGINAL = to_underlying(::TownLayout::Original), ///< Original algorithm (min. 1 distance between roads).
-		ROAD_LAYOUT_BETTER_ROADS = to_underlying(::TownLayout::BetterRoads), ///< Extended original algorithm (min. 2 distance between roads).
-		ROAD_LAYOUT_2x2 = to_underlying(::TownLayout::Grid2x2), ///< Geometric 2x2 grid algorithm
-		ROAD_LAYOUT_3x3 = to_underlying(::TownLayout::Grid3x3), ///< Geometric 3x3 grid algorithm
-		ROAD_LAYOUT_RANDOM = to_underlying(::TownLayout::Random), ///< Random road layout
+		ROAD_LAYOUT_ORIGINAL = std::to_underlying(::TownLayout::Original), ///< Original algorithm (min. 1 distance between roads).
+		ROAD_LAYOUT_BETTER_ROADS = std::to_underlying(::TownLayout::BetterRoads), ///< Extended original algorithm (min. 2 distance between roads).
+		ROAD_LAYOUT_2x2 = std::to_underlying(::TownLayout::Grid2x2), ///< Geometric 2x2 grid algorithm
+		ROAD_LAYOUT_3x3 = std::to_underlying(::TownLayout::Grid3x3), ///< Geometric 3x3 grid algorithm
+		ROAD_LAYOUT_RANDOM = std::to_underlying(::TownLayout::Random), ///< Random road layout
 
 		/* Custom added value, only valid for this API */
 		ROAD_LAYOUT_INVALID = -1, ///< The layout for invalid towns.
@@ -112,9 +112,9 @@ public:
 	 * Possible town construction sizes.
 	 */
 	enum TownSize {
-		TOWN_SIZE_SMALL = to_underlying(::TownSize::Small), ///< Small town.
-		TOWN_SIZE_MEDIUM = to_underlying(::TownSize::Medium), ///< Medium town.
-		TOWN_SIZE_LARGE = to_underlying(::TownSize::Large), ///< Large town.
+		TOWN_SIZE_SMALL = std::to_underlying(::TownSize::Small), ///< Small town.
+		TOWN_SIZE_MEDIUM = std::to_underlying(::TownSize::Medium), ///< Medium town.
+		TOWN_SIZE_LARGE = std::to_underlying(::TownSize::Large), ///< Large town.
 
 		TOWN_SIZE_INVALID = -1, ///< Invalid town size.
 	};

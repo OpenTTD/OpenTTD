@@ -24,12 +24,12 @@ WindowNumber VehicleListIdentifier::ToWindowNumber() const
 {
 	uint8_t c = this->company == OWNER_NONE ? 0xF : this->company.base();
 	assert(c < (1 << 4));
-	assert(to_underlying(this->vtype) < (1 << 2));
+	assert(std::to_underlying(this->vtype) < (1 << 2));
 	assert(this->index < (1 << 20));
 	assert(this->type < VehicleListType::End);
-	static_assert(to_underlying(VehicleListType::End) <= (1 << 3));
+	static_assert(std::to_underlying(VehicleListType::End) <= (1 << 3));
 
-	return c << 28 | to_underlying(this->type) << 23 | to_underlying(this->vtype) << 26 | this->index;
+	return c << 28 | std::to_underlying(this->type) << 23 | std::to_underlying(this->vtype) << 26 | this->index;
 }
 
 /**

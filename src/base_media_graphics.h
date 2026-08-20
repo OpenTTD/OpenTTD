@@ -33,7 +33,7 @@ struct GRFConfig;
 
 /** Instantiation of BaseSetTraits for a GraphicSet. */
 template <> struct BaseSetTraits<struct GraphicsSet> {
-	static constexpr size_t num_files = to_underlying(GraphicsFileType::End); ///< Number of files in a graphics set.
+	static constexpr size_t num_files = std::to_underlying(GraphicsFileType::End); ///< Number of files in a graphics set.
 	static constexpr bool search_in_tars = true; ///< Graphics can be in a tar file.
 	static constexpr std::string_view set_type = "graphics"; ///< The type of set.
 };

@@ -109,7 +109,7 @@ struct ExpensesList {
 	{
 		uint width = 0;
 		for (const ExpensesType &et : this->items) {
-			width = std::max(width, GetStringBoundingBox(STR_FINANCES_SECTION_CONSTRUCTION + to_underlying(et)).width);
+			width = std::max(width, GetStringBoundingBox(STR_FINANCES_SECTION_CONSTRUCTION + std::to_underlying(et)).width);
 		}
 		return width;
 	}
@@ -174,7 +174,7 @@ static void DrawCategory(const Rect &r, int start_y, const ExpensesList &list)
 	tr.top = start_y;
 
 	for (const ExpensesType &et : list.items) {
-		DrawString(tr, STR_FINANCES_SECTION_CONSTRUCTION + to_underlying(et));
+		DrawString(tr, STR_FINANCES_SECTION_CONSTRUCTION + std::to_underlying(et));
 		tr.top += GetCharacterHeight(FontSize::Normal);
 	}
 }
@@ -603,7 +603,7 @@ template <SpriteID TSprite = SPR_SQUARE>
 class DropDownListColourItem : public DropDownIcon<DropDownString<DropDownListItem>> {
 public:
 	DropDownListColourItem(int colour, bool masked) :
-			DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GetColourPalette(static_cast<Colours>(colour % to_underlying(Colours::End))), GetString(colour < to_underlying(Colours::End) ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT), colour, masked)
+			DropDownIcon<DropDownString<DropDownListItem>>(TSprite, GetColourPalette(static_cast<Colours>(colour % std::to_underlying(Colours::End))), GetString(colour < std::to_underlying(Colours::End) ? (STR_COLOUR_DARK_BLUE + colour) : STR_COLOUR_DEFAULT), colour, masked)
 
 	{
 	}
@@ -617,7 +617,7 @@ public:
  */
 constexpr uint8_t GetColourOffset(const Livery &l, bool primary)
 {
-	return to_underlying(primary ? l.colour1 : l.colour2);
+	return std::to_underlying(primary ? l.colour1 : l.colour2);
 }
 
 /** Company livery colour scheme window. */
@@ -670,11 +670,11 @@ private:
 		DropDownList list;
 		if (default_livery != nullptr) {
 			/* Add Colours::End to put the colour out of range, but also allow us to show what the default is */
-			default_col = GetColourOffset(*default_livery, primary) + to_underlying(Colours::End);
+			default_col = GetColourOffset(*default_livery, primary) + std::to_underlying(Colours::End);
 			list.push_back(std::make_unique<DropDownListColourItem<>>(default_col, false));
 		}
 		for (Colours colour : EnumRange(Colours::End)) {
-			list.push_back(std::make_unique<DropDownListColourItem<>>(to_underlying(colour), used_colours.Test(colour)));
+			list.push_back(std::make_unique<DropDownListColourItem<>>(std::to_underlying(colour), used_colours.Test(colour)));
 		}
 
 		uint8_t sel;
@@ -778,7 +778,7 @@ public:
 				/* The matrix widget below needs enough room to print all the schemes. */
 				Dimension d = {0, 0};
 				for (LiveryScheme scheme : _loaded_newgrf_features.used_liveries) {
-					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + to_underlying(scheme)));
+					d = maxdim(d, GetStringBoundingBox(STR_LIVERY_DEFAULT + std::to_underlying(scheme)));
 				}
 
 				size.width = std::max(size.width, 5 + d.width + padding.width);
@@ -804,7 +804,7 @@ public:
 				this->square = GetSpriteSize(SPR_SQUARE);
 				int string_padding = this->square.width + WidgetDimensions::scaled.hsep_normal + padding.width;
 				for (Colours colour : EnumRange(Colours::End)) {
-					size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + to_underlying(colour)).width + string_padding);
+					size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DARK_BLUE + std::to_underlying(colour)).width + string_padding);
 				}
 				size.width = std::max(size.width, GetStringBoundingBox(STR_COLOUR_DEFAULT).width + string_padding);
 				break;
@@ -898,12 +898,12 @@ public:
 
 			/* Text below the first dropdown. */
 			DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour1), pri_squ.left, y + square_offs);
-			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Primary)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colour1) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
+			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Primary)) ? STR_COLOUR_DARK_BLUE + std::to_underlying(livery.colour1) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
 				DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour2), sec_squ.left, y + square_offs);
-				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Secondary)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colour2) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
+				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Secondary)) ? STR_COLOUR_DARK_BLUE + std::to_underlying(livery.colour2) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
 			}
 
 			y += this->line_height;
@@ -915,7 +915,7 @@ public:
 			int pos = this->vscroll->GetPosition();
 			for (LiveryScheme scheme : this->visible_schemes) {
 				if (pos-- > 0) continue;
-				draw_livery(GetString(STR_LIVERY_DEFAULT + to_underlying(scheme)), c->livery[scheme], this->sel.schemes.Test(scheme), scheme == LiveryScheme::Default, 0);
+				draw_livery(GetString(STR_LIVERY_DEFAULT + std::to_underlying(scheme)), c->livery[scheme], this->sel.schemes.Test(scheme), scheme == LiveryScheme::Default, 0);
 			}
 		} else {
 			auto [first, last] = this->vscroll->GetVisibleRangeIterators(this->groups);
@@ -1037,7 +1037,7 @@ public:
 
 		if (data != -1) {
 			/* data contains a VehicleType, rebuild list if it is displayed */
-			if (this->livery_class == static_cast<LiveryClass>(to_underlying(LiveryClass::GroupRail) + data)) {
+			if (this->livery_class == static_cast<LiveryClass>(std::to_underlying(LiveryClass::GroupRail) + data)) {
 				this->groups.ForceRebuild();
 				this->BuildGroupList(this->window_number);
 				this->SetRows();

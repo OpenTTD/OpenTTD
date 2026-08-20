@@ -389,7 +389,7 @@ bool HandleBootstrap()
 	static const EnumIndexArray<uint8_t, Colours, Colours::End> offsets = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0, 0, 0, 0x04, 0x08 };
 	for (Colours i : EnumRange(Colours::End)) {
 		for (Shade j : EnumRange(Shade::End)) {
-			SetColourGradient(i, j, PixelColour(offsets[i] + to_underlying(j)));
+			SetColourGradient(i, j, PixelColour(offsets[i] + std::to_underlying(j)));
 		}
 	}
 

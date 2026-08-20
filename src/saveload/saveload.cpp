@@ -72,7 +72,7 @@
 
 #include "../safeguards.h"
 
-extern const SaveLoadVersion SAVEGAME_VERSION{to_underlying(SaveLoadVersion::MaxVersion) - 1}; ///< Current savegame version of OpenTTD.
+extern const SaveLoadVersion SAVEGAME_VERSION{std::to_underlying(SaveLoadVersion::MaxVersion) - 1}; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
@@ -595,10 +595,10 @@ struct SavegameFileType {
 	 * @param file_type The file type.
 	 * @param has_field_length Does this field have a length?
 	 */
-	SavegameFileType(VarFileType file_type, bool has_field_length = false) : storage(to_underlying(file_type))
+	SavegameFileType(VarFileType file_type, bool has_field_length = false) : storage(std::to_underlying(file_type))
 	{
 		/* 0 is not allowed as it's the end-of-table marker, larger is not allowed due to the field length bit. */
-		assert(IsInsideMM(to_underlying(file_type), 1, 1 << HAS_FIELD_LENGTH_BIT));
+		assert(IsInsideMM(std::to_underlying(file_type), 1, 1 << HAS_FIELD_LENGTH_BIT));
 		AssignBit(this->storage, HAS_FIELD_LENGTH_BIT, has_field_length);
 	}
 
@@ -2207,7 +2207,7 @@ static void SlLoadChunk(const ChunkHandler &ch)
 {
 	uint8_t m = SlReadByte();
 
-	_sl.chunk_type = static_cast<ChunkType>(m & to_underlying(ChunkType::FileTypeMask));
+	_sl.chunk_type = static_cast<ChunkType>(m & std::to_underlying(ChunkType::FileTypeMask));
 	_sl.obj_len = 0;
 	_sl.expect_table_header = (_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable);
 
@@ -2260,7 +2260,7 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
 {
 	uint8_t m = SlReadByte();
 
-	_sl.chunk_type = static_cast<ChunkType>(m & to_underlying(ChunkType::FileTypeMask));
+	_sl.chunk_type = static_cast<ChunkType>(m & std::to_underlying(ChunkType::FileTypeMask));
 	_sl.obj_len = 0;
 	_sl.expect_table_header = (_sl.chunk_type == ChunkType::Table || _sl.chunk_type == ChunkType::SparseTable);
 
@@ -2326,13 +2326,13 @@ static void SlSaveChunk(const ChunkHandler &ch)
 		case ChunkType::Table:
 		case ChunkType::Array:
 			_sl.last_array_index = 0;
-			SlWriteByte(to_underlying(_sl.chunk_type));
+			SlWriteByte(std::to_underlying(_sl.chunk_type));
 			ch.Save();
 			SlWriteArrayLength(0); // Terminate arrays
 			break;
 		case ChunkType::SparseTable:
 		case ChunkType::SparseArray:
-			SlWriteByte(to_underlying(_sl.chunk_type));
+			SlWriteByte(std::to_underlying(_sl.chunk_type));
 			ch.Save();
 			SlWriteArrayLength(0); // Terminate arrays
 			break;
@@ -3060,7 +3060,7 @@ static SaveLoadResult SaveFileToDisk(bool threaded)
 		/* We have written our stuff to memory, now write it to file! */
 		_sl.sf->Write(fmt.tag.data(), fmt.tag.size());
 
-		uint32_t version = TO_BE32(to_underlying(SAVEGAME_VERSION) << 16);
+		uint32_t version = TO_BE32(std::to_underlying(SAVEGAME_VERSION) << 16);
 		_sl.sf->Write(reinterpret_cast<uint8_t *>(&version), sizeof(version));
 
 		_sl.sf = fmt.init_write(_sl.sf, compression);

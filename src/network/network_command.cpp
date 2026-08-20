@@ -170,7 +170,7 @@ inline constexpr auto MakeDispatchTable(std::integer_sequence<T, i...>, std::ind
 	return EnumIndexArray<CommandDispatch, Commands, static_cast<Commands>(sizeof...(i))>{{{ { &SanitizeCmdStrings<static_cast<Commands>(i)>, &NetworkReplaceCommandClientId<static_cast<Commands>(i)>, MakeUnpackNetworkCommand<static_cast<Commands>(i)>(std::make_index_sequence<_callback_tuple_size>{}) }... }}};
 }
 /** Command dispatch table. */
-static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{}, std::make_index_sequence<_callback_tuple_size>{});
+static constexpr auto _cmd_dispatch = MakeDispatchTable(std::make_integer_sequence<std::underlying_type_t<Commands>, std::to_underlying(Commands::End)>{}, std::make_index_sequence<_callback_tuple_size>{});
 
 #ifdef SILENCE_GCC_FUNCTION_POINTER_CAST
 #	pragma GCC diagnostic pop
@@ -395,7 +395,7 @@ std::optional<std::string_view> NetworkGameSocketHandler::ReceiveCommand(Packet 
 void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket &cp)
 {
 	p.Send_uint8(cp.company);
-	p.Send_uint16(to_underlying(cp.cmd));
+	p.Send_uint16(std::to_underlying(cp.cmd));
 	p.Send_uint16(cp.err_msg.base());
 	p.Send_buffer(cp.data);
 

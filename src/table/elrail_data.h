@@ -493,7 +493,7 @@ enum RailCatenarySprite : uint8_t {
  * d) both
  * PCP exists.
  */
-static const RailCatenarySprite _rail_wires[5][to_underlying(Track::End)][4] = {
+static const RailCatenarySprite _rail_wires[5][std::to_underlying(Track::End)][4] = {
 	{ // Tileh == 0
 		{INVALID_CATENARY, WIRE_X_FLAT_NE,   WIRE_X_FLAT_SW,   WIRE_X_FLAT_BOTH},
 		{INVALID_CATENARY, WIRE_Y_FLAT_SE,   WIRE_Y_FLAT_NW,   WIRE_Y_FLAT_BOTH},

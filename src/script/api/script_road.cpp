@@ -118,7 +118,7 @@
 	RoadBits r2 = ::GetAnyRoadBits(t2, rtt); // TODO
 
 	RoadBit dir_1 = (::TileX(t1) == ::TileX(t2)) ? (::TileY(t1) < ::TileY(t2) ? RoadBit::SE : RoadBit::NW) : (::TileX(t1) < ::TileX(t2) ? RoadBit::SW : RoadBit::NE);
-	RoadBit dir_2 = static_cast<RoadBit>(2 ^ to_underlying(dir_1));
+	RoadBit dir_2 = static_cast<RoadBit>(2 ^ std::to_underlying(dir_1));
 
 	DisallowedRoadDirections drd2 = IsNormalRoadTile(t2) ? GetDisallowedRoadDirections(t2) : DisallowedRoadDirections{};
 
@@ -435,7 +435,7 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 
 	Array<TileIndex> existing;
 	for (RoadBit roadbit : rb) {
-		existing.emplace_back(neighbours[to_underlying(roadbit)]);
+		existing.emplace_back(neighbours[std::to_underlying(roadbit)]);
 	}
 
 	return ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::GetSlope(tile), std::move(existing), start - tile, end - tile);

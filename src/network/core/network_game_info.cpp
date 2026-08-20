@@ -221,7 +221,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 	p.Send_uint64(info.ticks_playing);
 
 	/* NETWORK_GAME_INFO_VERSION = 6 */
-	p.Send_uint8(to_underlying(send_newgrf_names ? NewGRFSerializationType::GrfIdMd5Name : NewGRFSerializationType::GrfIdMd5));
+	p.Send_uint8(std::to_underlying(send_newgrf_names ? NewGRFSerializationType::GrfIdMd5Name : NewGRFSerializationType::GrfIdMd5));
 
 	/* NETWORK_GAME_INFO_VERSION = 5 */
 	GameInfo *game_info = Game::GetInfo();
@@ -264,7 +264,7 @@ void SerializeNetworkGameInfo(Packet &p, const NetworkServerGameInfo &info, bool
 	p.Send_uint8 (info.spectators_on);
 	p.Send_uint16(info.map_width);
 	p.Send_uint16(info.map_height);
-	p.Send_uint8 (to_underlying(info.landscape));
+	p.Send_uint8 (std::to_underlying(info.landscape));
 	p.Send_bool  (info.dedicated);
 }
 
@@ -373,7 +373,7 @@ void DeserializeNetworkGameInfo(Packet &p, NetworkGameInfo &info, const GameInfo
 			info.landscape      = LandscapeType{p.Recv_uint8()};
 			info.dedicated      = p.Recv_bool  ();
 
-			if (to_underlying(info.landscape) >= NUM_LANDSCAPE) info.landscape = LandscapeType::Temperate;
+			if (std::to_underlying(info.landscape) >= NUM_LANDSCAPE) info.landscape = LandscapeType::Temperate;
 	}
 
 	/* For older servers, estimate the ticks running based on the calendar date. */

@@ -306,7 +306,7 @@ static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool alw
 	if (e == EngineID::Invalid() || IsEngineBuildable(e, v->type, _current_company)) return CommandCost();
 
 	/* The engine we need is not available. Report error to user */
-	return CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + to_underlying(v->type));
+	return CommandCost(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + std::to_underlying(v->type));
 }
 
 /**

@@ -182,7 +182,7 @@ void Aircraft::GetImage(Direction direction, EngineImageType image_type, Vehicle
 	}
 
 	assert(IsValidImageIndex<VehicleType::Aircraft>(spritenum));
-	result->Set(to_underlying(direction) + _aircraft_sprite[spritenum]);
+	result->Set(std::to_underlying(direction) + _aircraft_sprite[spritenum]);
 }
 
 void GetRotorImage(const Aircraft *v, EngineImageType image_type, VehicleSpriteSeq *result)
@@ -212,7 +212,7 @@ static void GetAircraftIcon(EngineID engine, EngineImageType image_type, Vehicle
 	}
 
 	assert(IsValidImageIndex<VehicleType::Aircraft>(spritenum));
-	result->Set(to_underlying(Direction::W) + _aircraft_sprite[spritenum]);
+	result->Set(std::to_underlying(Direction::W) + _aircraft_sprite[spritenum]);
 }
 
 void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
@@ -850,7 +850,7 @@ static uint8_t AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *a
 		dir = delta_y < 0 ? DiagDirection::NW : DiagDirection::SE;
 	}
 	dir = ChangeDiagDir(dir, DiagDirDifference(DiagDirection::NE, DirToDiagDir(rotation)));
-	return apc->entry_points[to_underlying(dir)];
+	return apc->entry_points[std::to_underlying(dir)];
 }
 
 

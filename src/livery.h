@@ -100,7 +100,7 @@ struct Livery {
 	 */
 	inline uint8_t GetRecolourOffset(bool use_secondary = true) const
 	{
-		return use_secondary ? to_underlying(this->colour1) + to_underlying(this->colour2) * 16 : to_underlying(this->colour1);
+		return use_secondary ? std::to_underlying(this->colour1) + std::to_underlying(this->colour2) * 16 : std::to_underlying(this->colour1);
 	}
 };
 

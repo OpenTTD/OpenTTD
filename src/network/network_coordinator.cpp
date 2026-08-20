@@ -473,7 +473,7 @@ void ClientNetworkCoordinatorSocketHandler::Register()
 
 	auto p = std::make_unique<Packet>(this, PacketCoordinatorType::ServerRegister);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
-	p->Send_uint8(to_underlying(_settings_client.network.server_game_type));
+	p->Send_uint8(std::to_underlying(_settings_client.network.server_game_type));
 	p->Send_uint16(_settings_client.network.server_port);
 	if (_settings_client.network.server_invite_code.empty() || _settings_client.network.server_invite_code_secret.empty()) {
 		p->Send_string("");

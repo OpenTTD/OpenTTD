@@ -110,7 +110,7 @@ void MusicSystem::BuildPlaylists()
 		/* Don't add the theme song to standard playlists */
 		if (i > 0) {
 			this->standard_playlists[PlaylistChoice::All].push_back(entry);
-			PlaylistChoice theme = static_cast<PlaylistChoice>(to_underlying(PlaylistChoice::OldStyle) + (i - 1) / NUM_SONGS_CLASS);
+			PlaylistChoice theme = static_cast<PlaylistChoice>(std::to_underlying(PlaylistChoice::OldStyle) + (i - 1) / NUM_SONGS_CLASS);
 			this->standard_playlists[theme].push_back(std::move(entry));
 		}
 	}
@@ -492,14 +492,14 @@ struct MusicTrackSelectionWindow : public Window {
 		this->LowerWidget(WID_MTS_LIST_LEFT);
 		this->LowerWidget(WID_MTS_LIST_RIGHT);
 		this->SetWidgetDisabledState(WID_MTS_CLEAR, !IsCustomPlaylist(_settings_client.music.playlist));
-		this->LowerWidget(WID_MTS_ALL + to_underlying(_settings_client.music.playlist));
+		this->LowerWidget(WID_MTS_ALL + std::to_underlying(_settings_client.music.playlist));
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
 			case WID_MTS_PLAYLIST:
-				return GetString(STR_PLAYLIST_PROGRAM, STR_MUSIC_PLAYLIST_ALL + to_underlying(_settings_client.music.playlist));
+				return GetString(STR_PLAYLIST_PROGRAM, STR_MUSIC_PLAYLIST_ALL + std::to_underlying(_settings_client.music.playlist));
 
 			case WID_MTS_CAPTION:
 				return GetString(STR_PLAYLIST_MUSIC_SELECTION_SETNAME, BaseMusic::GetUsedSet()->name);
@@ -518,7 +518,7 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		if (!gui_scope) return;
 		for (PlaylistChoice playlist : EnumRange(PlaylistChoice::ThemeOnly)) {
-			this->SetWidgetLoweredState(WID_MTS_ALL + to_underlying(playlist), playlist == _settings_client.music.playlist);
+			this->SetWidgetLoweredState(WID_MTS_ALL + std::to_underlying(playlist), playlist == _settings_client.music.playlist);
 		}
 		this->SetWidgetDisabledState(WID_MTS_CLEAR, !IsCustomPlaylist(_settings_client.music.playlist));
 
@@ -685,7 +685,7 @@ struct MusicWindow : public Window {
 	MusicWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
-		this->LowerWidget(WID_M_ALL + to_underlying(_settings_client.music.playlist));
+		this->LowerWidget(WID_M_ALL + std::to_underlying(_settings_client.music.playlist));
 		this->SetWidgetLoweredState(WID_M_SHUFFLE, _settings_client.music.shuffle);
 
 		UpdateDisabledButtons();
@@ -799,7 +799,7 @@ struct MusicWindow : public Window {
 	{
 		if (!gui_scope) return;
 		for (PlaylistChoice playlist : EnumRange(PlaylistChoice::ThemeOnly)) {
-			this->SetWidgetLoweredState(WID_M_ALL + to_underlying(playlist), playlist == _settings_client.music.playlist);
+			this->SetWidgetLoweredState(WID_M_ALL + std::to_underlying(playlist), playlist == _settings_client.music.playlist);
 		}
 
 		UpdateDisabledButtons();

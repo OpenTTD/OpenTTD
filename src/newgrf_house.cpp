@@ -349,7 +349,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 		case 0x41: return IsTileType(this->tile, TileType::House) ? GetHouseAge(this->tile).base() : 0;
 
 		/* Town zone */
-		case 0x42: return to_underlying(GetTownRadiusGroup(this->town, this->tile));
+		case 0x42: return std::to_underlying(GetTownRadiusGroup(this->town, this->tile));
 
 		/* Terrain type */
 		case 0x43: return GetTerrainType(this->tile);

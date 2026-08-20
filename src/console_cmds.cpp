@@ -1345,8 +1345,8 @@ static bool ConEchoC(std::span<std::string_view> argv)
 	if (argv.size() < 3) return false;
 
 	auto colour = ParseInteger(argv[1]);
-	if (!colour.has_value() || !IsInsideMM(*colour, to_underlying(TextColour::Begin), to_underlying(TextColour::End))) {
-		IConsolePrint(CC_ERROR, "The colour must be a number between {} and {}.", TextColour::Begin, to_underlying(TextColour::End) - 1);
+	if (!colour.has_value() || !IsInsideMM(*colour, std::to_underlying(TextColour::Begin), std::to_underlying(TextColour::End))) {
+		IConsolePrint(CC_ERROR, "The colour must be a number between {} and {}.", TextColour::Begin, std::to_underlying(TextColour::End) - 1);
 		return true;
 	}
 
@@ -2023,7 +2023,7 @@ static bool ConCompanies(std::span<std::string_view> argv)
 		/* Grab the company name */
 		std::string company_name = GetString(STR_COMPANY_NAME, c->index);
 
-		std::string colour = GetString(STR_COLOUR_DARK_BLUE + to_underlying(_company_colours[c->index]));
+		std::string colour = GetString(STR_COLOUR_DARK_BLUE + std::to_underlying(_company_colours[c->index]));
 		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
 			c->inaugurated_year, (int64_t)c->money, (int64_t)c->current_loan, (int64_t)CalculateCompanyValue(c),
@@ -2107,10 +2107,10 @@ static bool ConSayClient(std::span<std::string_view> argv)
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, to_underlying(*client_id), argv[2]);
+		NetworkClientSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, std::to_underlying(*client_id), argv[2]);
 	} else {
 		bool from_admin = (_redirect_console_to_admin < AdminID::Invalid());
-		NetworkServerSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, to_underlying(*client_id), argv[2], ClientID::Server, from_admin);
+		NetworkServerSendChat(NetworkAction::ChatClient, NetworkChatDestinationType::Client, std::to_underlying(*client_id), argv[2], ClientID::Server, from_admin);
 	}
 
 	return true;

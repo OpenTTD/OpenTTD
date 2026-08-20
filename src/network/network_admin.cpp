@@ -137,7 +137,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendError(NetworkErrorCode er
 
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerError);
 
-	p->Send_uint8(to_underlying(error));
+	p->Send_uint8(std::to_underlying(error));
 	this->SendPacket(std::move(p));
 
 	std::string error_message = GetString(GetNetworkErrorMsg(error));
@@ -162,7 +162,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendProtocol()
 
 	for (AdminUpdateType i : EnumRange(AdminUpdateType::End)) {
 		p->Send_bool  (true);
-		p->Send_uint16(to_underlying(i));
+		p->Send_uint16(std::to_underlying(i));
 		p->Send_uint16(_admin_update_type_frequencies[i].base());
 	}
 
@@ -186,7 +186,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendWelcome()
 
 	p->Send_string(""); // Used to be map-name.
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
-	p->Send_uint8 (to_underlying(_settings_game.game_creation.landscape));
+	p->Send_uint8 (std::to_underlying(_settings_game.game_creation.landscape));
 	p->Send_uint32(TimerGameCalendar::ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1).base());
 	p->Send_uint16(Map::SizeX());
 	p->Send_uint16(Map::SizeY());
@@ -241,7 +241,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientJoin);
 
-	p->Send_uint32(to_underlying(client_id));
+	p->Send_uint32(std::to_underlying(client_id));
 	this->SendPacket(std::move(p));
 
 	return NetworkRecvStatus::Okay;
@@ -260,7 +260,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkC
 
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientInfo);
 
-	p->Send_uint32(to_underlying(ci->client_id));
+	p->Send_uint32(std::to_underlying(ci->client_id));
 	p->Send_string(cs == nullptr ? "" : const_cast<NetworkAddress &>(cs->client_address).GetHostname());
 	p->Send_string(ci->client_name);
 	p->Send_uint8 (0); // Used to be language
@@ -282,7 +282,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientUpdate(const Networ
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientUpdate);
 
-	p->Send_uint32(to_underlying(ci->client_id));
+	p->Send_uint32(std::to_underlying(ci->client_id));
 	p->Send_string(ci->client_name);
 	p->Send_uint8 (ci->client_playas);
 
@@ -300,7 +300,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientQuit(ClientID clien
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientQuit);
 
-	p->Send_uint32(to_underlying(client_id));
+	p->Send_uint32(std::to_underlying(client_id));
 	this->SendPacket(std::move(p));
 
 	return NetworkRecvStatus::Okay;
@@ -316,8 +316,8 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientError(ClientID clie
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerClientError);
 
-	p->Send_uint32(to_underlying(client_id));
-	p->Send_uint8(to_underlying(error));
+	p->Send_uint32(std::to_underlying(client_id));
+	p->Send_uint8(std::to_underlying(error));
 	this->SendPacket(std::move(p));
 
 	return NetworkRecvStatus::Okay;
@@ -350,7 +350,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 	p->Send_uint8 (c->index);
 	p->Send_string(GetString(STR_COMPANY_NAME, c->index));
 	p->Send_string(GetString(STR_PRESIDENT_NAME, c->index));
-	p->Send_uint8(to_underlying(c->colour));
+	p->Send_uint8(std::to_underlying(c->colour));
 	p->Send_bool  (true);
 	p->Send_uint32(c->inaugurated_year.base());
 	p->Send_bool  (c->is_ai);
@@ -374,7 +374,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 	p->Send_uint8 (c->index);
 	p->Send_string(GetString(STR_COMPANY_NAME, c->index));
 	p->Send_string(GetString(STR_PRESIDENT_NAME, c->index));
-	p->Send_uint8(to_underlying(c->colour));
+	p->Send_uint8(std::to_underlying(c->colour));
 	p->Send_bool  (true);
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
 
@@ -394,7 +394,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyRemove(CompanyID c
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerCompanyRemove);
 
 	p->Send_uint8(company_id);
-	p->Send_uint8(to_underlying(acrr));
+	p->Send_uint8(std::to_underlying(acrr));
 
 	this->SendPacket(std::move(p));
 
@@ -472,9 +472,9 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerChat);
 
-	p->Send_uint8(to_underlying(action));
-	p->Send_uint8(to_underlying(desttype));
-	p->Send_uint32(to_underlying(client_id));
+	p->Send_uint8(std::to_underlying(action));
+	p->Send_uint8(std::to_underlying(desttype));
+	p->Send_uint32(std::to_underlying(client_id));
 	p->Send_string(msg);
 	p->Send_uint64(data);
 
@@ -612,7 +612,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdNames()
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerCommandNames);
 
-	for (uint16_t i = 0; i < to_underlying(Commands::End); i++) {
+	for (uint16_t i = 0; i < std::to_underlying(Commands::End); i++) {
 		std::string_view cmdname = GetCommandName(static_cast<Commands>(i));
 
 		/* Should COMPAT_MTU be exceeded, start a new packet
@@ -647,9 +647,9 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID clien
 {
 	auto p = std::make_unique<Packet>(this, PacketAdminType::ServerCommandLogging);
 
-	p->Send_uint32(to_underlying(client_id));
+	p->Send_uint32(std::to_underlying(client_id));
 	p->Send_uint8 (cp.company);
-	p->Send_uint16(to_underlying(cp.cmd));
+	p->Send_uint16(std::to_underlying(cp.cmd));
 	p->Send_buffer(cp.data);
 	p->Send_uint32(cp.frame);
 

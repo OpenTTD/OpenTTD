@@ -135,7 +135,7 @@ inline void SetTileType(Tile tile, TileType type)
 	 * edges of the map. If _settings_game.construction.freeform_edges is true,
 	 * the upper edges of the map are also VOID tiles. */
 	assert(IsInnerTile(tile) == (type != TileType::Void));
-	SB(tile.type(), 4, TILE_TYPE_BITS, to_underlying(type));
+	SB(tile.type(), 4, TILE_TYPE_BITS, std::to_underlying(type));
 }
 
 /**
@@ -226,7 +226,7 @@ inline void SetTropicZone(Tile tile, TropicZone type)
 {
 	assert(tile < Map::Size());
 	assert(!IsTileType(tile, TileType::Void) || type == TropicZone::Normal);
-	SB(tile.type(), 0, 2, to_underlying(type));
+	SB(tile.type(), 0, 2, std::to_underlying(type));
 }
 
 /**

@@ -1543,7 +1543,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 				uint score_info_width = 0;
 				for (ScoreID i : EnumRange(ScoreID::End)) {
-					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + to_underlying(i)).width);
+					score_info_width = std::max(score_info_width, GetStringBoundingBox(STR_PERFORMANCE_DETAIL_VEHICLES + std::to_underlying(i)).width);
 				}
 				score_info_width += GetStringBoundingBox(GetString(STR_JUST_COMMA, GetParamMaxValue(1000))).width + WidgetDimensions::scaled.hsep_wide;
 
@@ -1623,7 +1623,7 @@ struct PerformanceRatingDetailWindow : Window {
 		uint bar_top  = CentreBounds(r.top, r.bottom, this->bar_height);
 		uint text_top = CentreBounds(r.top, r.bottom, GetCharacterHeight(FontSize::Normal));
 
-		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + to_underlying(score_type));
+		DrawString(this->score_info_left, this->score_info_right, text_top, STR_PERFORMANCE_DETAIL_VEHICLES + std::to_underlying(score_type));
 
 		/* Draw the score */
 		DrawString(this->score_info_left, this->score_info_right, text_top, GetString(STR_JUST_COMMA, score), TextColour::Black, AlignmentH::End);
@@ -2087,7 +2087,7 @@ static std::unique_ptr<NWidgetBase> MakePerformanceDetailPanels()
 		STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP,
 	};
 
-	static_assert(lengthof(performance_tips) == to_underlying(ScoreID::End));
+	static_assert(lengthof(performance_tips) == std::to_underlying(ScoreID::End));
 
 	auto vert = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	for (WidgetID widnum = WID_PRD_SCORE_FIRST; widnum <= WID_PRD_SCORE_LAST; widnum++) {

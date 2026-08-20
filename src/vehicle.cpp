@@ -567,7 +567,7 @@ CommandCost EnsureNoVehicleOnGround(TileIndex tile)
 		if (v->type == VehicleType::Disaster || (v->type == VehicleType::Aircraft && v->subtype == AIR_SHADOW)) continue;
 		if (v->z_pos > z) continue;
 
-		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + to_underlying(v->type));
+		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + std::to_underlying(v->type));
 	}
 	return CommandCost();
 }
@@ -589,7 +589,7 @@ CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle 
 		for (const Vehicle *v : VehiclesOnTile(t)) {
 			if (v->type != VehicleType::Train && v->type != VehicleType::Road && v->type != VehicleType::Ship) continue;
 			if (v == ignore) continue;
-			return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + to_underlying(v->type));
+			return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + std::to_underlying(v->type));
 		}
 	}
 	return CommandCost();
@@ -615,7 +615,7 @@ CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits)
 		const Train *t = Train::From(v);
 		if ((t->track != track_bits) && !TracksOverlap(t->track | track_bits)) continue;
 
-		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + to_underlying(v->type));
+		return CommandCost(STR_ERROR_TRAIN_IN_THE_WAY + std::to_underlying(v->type));
 	}
 	return CommandCost();
 }
@@ -1671,7 +1671,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 			/* Announce that the vehicle is waiting to players and AIs. */
 			if (v->owner == _local_company) {
-				AddVehicleAdviceNewsItem(AdviceType::VehicleWaiting, GetEncodedString(STR_NEWS_TRAIN_IS_WAITING + to_underlying(v->type), v->index), v->index);
+				AddVehicleAdviceNewsItem(AdviceType::VehicleWaiting, GetEncodedString(STR_NEWS_TRAIN_IS_WAITING + std::to_underlying(v->type), v->index), v->index);
 			}
 			AI::NewEvent(v->owner, new ScriptEventVehicleWaitingInDepot(v->index));
 		}
@@ -2726,7 +2726,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 				/* Also set the offset */
 				visual_effect = (VE_OFFSET_CENTRE - (e->VehInfo<RailVehicleInfo>().engclass == EngineClass::Steam ? 4 : 0)) << VE_OFFSET_START;
 			}
-			SB(visual_effect, VE_TYPE_START, VE_TYPE_COUNT, to_underlying(e->VehInfo<RailVehicleInfo>().engclass) - to_underlying(EngineClass::Steam) + VE_TYPE_STEAM);
+			SB(visual_effect, VE_TYPE_START, VE_TYPE_COUNT, std::to_underlying(e->VehInfo<RailVehicleInfo>().engclass) - std::to_underlying(EngineClass::Steam) + VE_TYPE_STEAM);
 		}
 	}
 
@@ -2876,10 +2876,10 @@ void Vehicle::ShowVisualEffect() const
 			if (effect_model >= VisualEffectSpawnModel::End) effect_model = VisualEffectSpawnModel::None; // unknown spawning model
 		} else {
 			effect_model = static_cast<VisualEffectSpawnModel>(GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT));
-			assert(to_underlying(effect_model) != to_underlying(VE_TYPE_DEFAULT)); // should have been resolved by UpdateVisualEffect
-			static_assert(to_underlying(VisualEffectSpawnModel::Steam) == to_underlying(VE_TYPE_STEAM));
-			static_assert(to_underlying(VisualEffectSpawnModel::Diesel) == to_underlying(VE_TYPE_DIESEL));
-			static_assert(to_underlying(VisualEffectSpawnModel::Electric) == to_underlying(VE_TYPE_ELECTRIC));
+			assert(std::to_underlying(effect_model) != std::to_underlying(VE_TYPE_DEFAULT)); // should have been resolved by UpdateVisualEffect
+			static_assert(std::to_underlying(VisualEffectSpawnModel::Steam) == std::to_underlying(VE_TYPE_STEAM));
+			static_assert(std::to_underlying(VisualEffectSpawnModel::Diesel) == std::to_underlying(VE_TYPE_DIESEL));
+			static_assert(std::to_underlying(VisualEffectSpawnModel::Electric) == std::to_underlying(VE_TYPE_ELECTRIC));
 		}
 
 		/* Show no smoke when:

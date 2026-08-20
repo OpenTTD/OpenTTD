@@ -92,7 +92,7 @@ inline constexpr auto MakeCommandsFromTraits(std::integer_sequence<T, i...>) noe
  *
  * This contains the #CommandInfo for all possible #Commands functions.
  */
-static constexpr auto _command_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, to_underlying(Commands::End)>{});
+static constexpr auto _command_table = MakeCommandsFromTraits(std::make_integer_sequence<std::underlying_type_t<Commands>, std::to_underlying(Commands::End)>{});
 
 
 /**
@@ -102,7 +102,7 @@ static constexpr auto _command_table = MakeCommandsFromTraits(std::make_integer_
  */
 bool IsValidCommand(Commands cmd)
 {
-	return to_underlying(cmd) < _command_table.size();
+	return std::to_underlying(cmd) < _command_table.size();
 }
 
 /**
@@ -148,10 +148,10 @@ bool IsCommandAllowedWhilePaused(Commands cmd)
 		CommandPauseLevel::NoActions, // CommandType::ServerSetting
 		CommandPauseLevel::NoActions, // CommandType::Cheat
 	};
-	static_assert(std::size(command_type_lookup) == to_underlying(CommandType::End));
+	static_assert(std::size(command_type_lookup) == std::to_underlying(CommandType::End));
 
 	assert(IsValidCommand(cmd));
-	return _game_mode == GameMode::Editor || command_type_lookup[to_underlying(_command_table[cmd].type)] <= _settings_game.construction.command_pause_level;
+	return _game_mode == GameMode::Editor || command_type_lookup[std::to_underlying(_command_table[cmd].type)] <= _settings_game.construction.command_pause_level;
 }
 
 /**

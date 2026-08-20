@@ -137,7 +137,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 			case 0x08: { // Cost base factor
 				int factor = buf.ReadByte();
 
-				if (id < to_underlying(Price::End)) {
+				if (id < std::to_underlying(Price::End)) {
 					_cur_gps.grffile->price_base_multipliers[static_cast<Price>(id)] = std::min<int>(factor - 8, MAX_PRICE_MODIFIER);
 				} else {
 					GrfMsg(1, "GlobalVarChangeInfo: Price {} out of range, ignoring", id);
@@ -438,11 +438,11 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 		}
 
 		case 0x03: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
-			*value = to_underlying(_settings_game.game_creation.landscape);
+			*value = std::to_underlying(_settings_game.game_creation.landscape);
 			return true;
 
 		case 0x06: // road traffic side, bit 4 clear=left, set=right
-			*value = to_underlying(_settings_game.vehicle.road_side) << 4;
+			*value = std::to_underlying(_settings_game.vehicle.road_side) << 4;
 			return true;
 
 		case 0x09: // date fraction
@@ -488,7 +488,7 @@ bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile)
 			return true;
 
 		case 0x12: // Game mode
-			*value = to_underlying(_game_mode);
+			*value = std::to_underlying(_game_mode);
 			return true;
 
 		/* case 0x13: // Tile refresh offset to left    not implemented */

@@ -152,7 +152,7 @@ inline void SetClearCounter(Tile t, uint c)
 inline void SetClearGroundDensity(Tile t, ClearGround type, uint density)
 {
 	assert(IsTileType(t, TileType::Clear)); // XXX incomplete
-	t.m5() = 0 << 5 | to_underlying(type) << 2 | density;
+	t.m5() = 0 << 5 | std::to_underlying(type) << 2 | density;
 }
 
 

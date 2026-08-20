@@ -43,24 +43,24 @@ public:
 	 */
 	enum TextColour {
 		/* Note: these values represent part of the in-game TextColour enum */
-		TC_BLUE = to_underlying(::TextColour::Blue), ///< Blue colour.
-		TC_SILVER = to_underlying(::TextColour::Silver), ///< Silver colour.
-		TC_GOLD = to_underlying(::TextColour::Gold), ///< Gold colour.
-		TC_RED = to_underlying(::TextColour::Red), ///< Red colour.
-		TC_PURPLE = to_underlying(::TextColour::Purple), ///< Purple colour.
-		TC_LIGHT_BROWN = to_underlying(::TextColour::LightBrown), ///< Light brown colour.
-		TC_ORANGE = to_underlying(::TextColour::Orange), ///< Orange colour.
-		TC_GREEN = to_underlying(::TextColour::Green), ///< Green colour.
-		TC_YELLOW = to_underlying(::TextColour::Yellow), ///< Yellow colour.
-		TC_DARK_GREEN = to_underlying(::TextColour::DarkGreen), ///< Dark green colour.
-		TC_CREAM = to_underlying(::TextColour::Cream), ///< Cream colour.
-		TC_BROWN = to_underlying(::TextColour::Brown), ///< Brown colour.
-		TC_WHITE = to_underlying(::TextColour::White), ///< White colour.
-		TC_LIGHT_BLUE = to_underlying(::TextColour::LightBlue), ///< Light blue colour.
-		TC_GREY = to_underlying(::TextColour::Grey), ///< Grey colour.
-		TC_DARK_BLUE = to_underlying(::TextColour::DarkBlue), ///< Dark blue colour.
-		TC_BLACK = to_underlying(::TextColour::Black), ///< Black colour.
-		TC_INVALID = to_underlying(::TextColour::Invalid), ///< Invalid colour.
+		TC_BLUE = std::to_underlying(::TextColour::Blue), ///< Blue colour.
+		TC_SILVER = std::to_underlying(::TextColour::Silver), ///< Silver colour.
+		TC_GOLD = std::to_underlying(::TextColour::Gold), ///< Gold colour.
+		TC_RED = std::to_underlying(::TextColour::Red), ///< Red colour.
+		TC_PURPLE = std::to_underlying(::TextColour::Purple), ///< Purple colour.
+		TC_LIGHT_BROWN = std::to_underlying(::TextColour::LightBrown), ///< Light brown colour.
+		TC_ORANGE = std::to_underlying(::TextColour::Orange), ///< Orange colour.
+		TC_GREEN = std::to_underlying(::TextColour::Green), ///< Green colour.
+		TC_YELLOW = std::to_underlying(::TextColour::Yellow), ///< Yellow colour.
+		TC_DARK_GREEN = std::to_underlying(::TextColour::DarkGreen), ///< Dark green colour.
+		TC_CREAM = std::to_underlying(::TextColour::Cream), ///< Cream colour.
+		TC_BROWN = std::to_underlying(::TextColour::Brown), ///< Brown colour.
+		TC_WHITE = std::to_underlying(::TextColour::White), ///< White colour.
+		TC_LIGHT_BLUE = std::to_underlying(::TextColour::LightBlue), ///< Light blue colour.
+		TC_GREY = std::to_underlying(::TextColour::Grey), ///< Grey colour.
+		TC_DARK_BLUE = std::to_underlying(::TextColour::DarkBlue), ///< Dark blue colour.
+		TC_BLACK = std::to_underlying(::TextColour::Black), ///< Black colour.
+		TC_INVALID = std::to_underlying(::TextColour::Invalid), ///< Invalid colour.
 	};
 
 	/**

@@ -47,9 +47,9 @@ enum RoadVehicleStates : uint8_t {
 
 	/* Bit sets of the above specified bits */
 	RVSB_IN_ROAD_STOP            = 1 << RVS_IN_ROAD_STOP,     ///< The vehicle is in a road stop
-	RVSB_IN_ROAD_STOP_END        = RVSB_IN_ROAD_STOP + to_underlying(Trackdir::End),
+	RVSB_IN_ROAD_STOP_END        = RVSB_IN_ROAD_STOP + std::to_underlying(Trackdir::End),
 	RVSB_IN_DT_ROAD_STOP         = 1 << RVS_IN_DT_ROAD_STOP,  ///< The vehicle is in a drive-through road stop
-	RVSB_IN_DT_ROAD_STOP_END     = RVSB_IN_DT_ROAD_STOP + to_underlying(Trackdir::End),
+	RVSB_IN_DT_ROAD_STOP_END     = RVSB_IN_DT_ROAD_STOP + std::to_underlying(Trackdir::End),
 
 	RVSB_DRIVE_SIDE              = 1 << RVS_DRIVE_SIDE,       ///< The vehicle is at the opposite side of the road
 
