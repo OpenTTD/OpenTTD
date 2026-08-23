@@ -435,7 +435,8 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
 	if (cur_width > max_width) {
 		/* Create a break-iterator to find a good place to break lines. */
 		auto break_iterator = ICUParagraphLayoutFactory::GetBreakIterator();
-		break_iterator->setText(icu::UnicodeString(this->buff, this->buff_length));
+		icu::UnicodeString text(this->buff, this->buff_length);
+		break_iterator->setText(text);
 
 		auto overflow_run = last_run - 1;
 
