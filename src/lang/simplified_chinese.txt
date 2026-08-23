@@ -538,6 +538,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :删除全部消
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :查询地块信息
 STR_ABOUT_MENU_HELP                                             :帮助和指南
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :切换屏保模式
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台模式
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / 游戏脚本调试
 STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图
@@ -3101,6 +3102,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}在地�
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}生成土地
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :在地图上设置岩石。{}按住 <Ctrl> 键单击以移除岩石
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :在地图上设置粗糙地带。{}按住 <Ctrl> 键单击以移除粗糙地带
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}划出沙漠区域{}按住 <Ctrl> 键操作以移除沙漠区域
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}减少要升高/降低的土地面积
@@ -3399,6 +3401,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}载入
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}载入所选
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}载入选定的高度图
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}载入选定的城镇数据
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :新建文件夹
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :在当前位置新建文件夹
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :输入新文件夹名称
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}游戏详情
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}无可用信息
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}：{WHITE}{STRING}
@@ -5066,6 +5071,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :自动保存失
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}无法读取硬盘
 STR_ERROR_GAME_SAVE_FAILED                                      :保存游戏失败……
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :无法删除文件
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :创建文件夹失败
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :该文件或文件夹名称已经存在
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :文件夹名不能包含特殊字符
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :文件夹名不能以“.”开头
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :您没有权限在此新建文件夹
 STR_ERROR_GAME_LOAD_FAILED                                      :读取游戏失败……
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :内部错误：{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :无法识别的存档 - {STRING}

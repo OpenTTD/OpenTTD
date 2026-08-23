@@ -1148,7 +1148,7 @@ STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}Plugin gan
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}Versi tidak didukung
 STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}Kata kunci tidak tepat
 
-STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} file hilang/rusak
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM} berkas hilang/rusak
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :Tidak dapat mengambil daftar resolusi yang didukung
 STR_ERROR_FULLSCREEN_FAILED                                     :Mode layar penuh gagal
@@ -2852,8 +2852,8 @@ STR_RAIL_NAME_MONORAIL                                          :Monorel
 STR_RAIL_NAME_MAGLEV                                            :Maglev
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Pilihan arah depo
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tentukan arah depo menghadap
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Arah Depo Kereta
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pilih arah depo kereta
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
@@ -2951,16 +2951,16 @@ STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinyal K
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinyal Kombo (semaphore){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinyal Jalur (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinyal Jalur Searah (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinyal Blok (elektris){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinyal Masuk (elektris){}Akan berwarna hijau jika, dan hanya jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada bagian jalur berikutnya. Jika tidak, akan berwarna merah
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinyal Keluar (elektris){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaannya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinyal Blok (listrik){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta pada satu blok yang sama dalam waktu yang sama
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinyal Masuk (listrik){}Akan berwarna hijau jika ada satu atau lebih sinyal keluar yang berwarna hijau pada bagian jalur berikutnya. Jika tidak, akan berwarna merah
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinyal Keluar (listrik){}Cara kerjanya sama dengan sinyal blok, akan tetapi penggunaannya lebih ditujukan untuk menghasilkan warna yang benar pada sinyal masuk dan sinyal kombo
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinyal Kombo (listrik){}Sinyal kombo berfungsi sebagai sinyal masuk sekaligus sinyal keluar. Ini memungkinkan Anda untuk membuat "pohon-pohon" sinyal muka yang besar
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinyal Jalur (listrik){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki blok sinyal pada saat yang sama, jika kereta dapat mencari jalur ke titik pemberhentian yang aman. Sinyal jalur biasa dapat dilewati dari belakang
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinyal Jalur Searah (listrik){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki blok sinyal pada saat yang sama, jika kereta dapat mencari jalur ke titik pemberhentian yang aman. Sinyal jalur searah tidak dapat dilewati dari belakang
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konversi Sinyal{}Klik pada sinyal yang sudah ada untuk mengonversi ke jenis dan varian sinyal yang dipilih. Ctrl+Klik untuk beralih varian yang ada. Shift+Klik akan menampilkan perkiraan biaya
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Kerapatan Sinyal
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Kurangi kerapatan sinyal
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tambah kerapatan sinyal
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Jarak antara sinyal saat diseret
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Kurangi jarak antara sinyal
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tambahkan jarak antara sinyal
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Pilih Jembatan Rel
@@ -2970,10 +2970,10 @@ STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
 STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensi, Baja
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balok, Baja
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Beton, Baja
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Suspensi, Beton
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Gantung, Baja
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Gelagar, Baja
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Kantilever, Baja
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Gantung, Beton
 STR_BRIDGE_NAME_WOODEN                                          :Kayu
 STR_BRIDGE_NAME_CONCRETE                                        :Beton
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Pipa, Baja
@@ -3009,10 +3009,10 @@ STR_ROAD_NAME_ROAD                                              :Jalan
 STR_ROAD_NAME_TRAM                                              :Jalur trem
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Arah Bengkel Kendaraan
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih arah bengkel kendaraan
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Arah bengkel trem
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tentukan arah bengkel trem menghadap
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Arah Bengkel Kendaraan Jalan Raya
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih arah bengkel kendaraan jalan raya
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Arah Depo Trem
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih arah depo trem
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientasi Terminal Bus
@@ -4952,19 +4952,19 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Pilih ta
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Debug Skrip AI/Permainan
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (versi {NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nama skrip AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nama skrip
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Pengaturan
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pengaturan skrip AI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pengaturan skrip
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan AI, muat ulang script, dan jalankan ulang AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Aktifkan/nonaktifkan pemberhentian ketika pesan log AI sesuai dengan string berhenti
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Berhenti saat:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Berhenti pada
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ketika pesan log AI sesuai dengan isi kotak, permainan dihentikan
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Persis Besar-Kecil
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hidup matikan pengecekan besar-kecil huruf pada pesan AI dengan kotak pencarian
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ketika sebuah pesan log AI sesuai dengan string ini, permainan akan dijeda
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Persis besar-kecil huruf
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Aktifkan atau nonaktifkan pengecekan besar-kecil huruf pada pesan log AI dengan string berhenti
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutkan
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}lanjutkan proses AI
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Lanjutkan proses AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat proses yang dilakukan AI. Ctrl+Klik untuk membuka di jendela baru
 STR_AI_GAME_SCRIPT                                              :{BLACK}Skrip Permainan
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Periksa catatan Skrip Permainan. Ctrl+Klik untuk membuka di jendela baru
@@ -5004,14 +5004,14 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigur
 STR_AI_LIST_CAPTION                                             :{WHITE}Tersedia {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skrip Permainan
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk memilih skrip AI
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk memilih sebuah skrip
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Pembuat: {ORANGE}{STRING}
 STR_AI_LIST_VERSION                                             :{LTBLUE}Versi: {ORANGE}{NUM}
-STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
+STR_AI_LIST_URL                                                 :{LTBLUE}Tautan: {ORANGE}{STRING}
 
-STR_AI_LIST_ACCEPT                                              :{BLACK}Terapkan
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih skrip AI yg disorot
+STR_AI_LIST_ACCEPT                                              :{BLACK}Terima
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih skrip yang dipilih
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Ambil tangkapan layar
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Tangkapan layar normal
@@ -5560,15 +5560,15 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Permainan simul
 
 # Translatable descriptions in media/baseset/*.ob* files
 ###external 10
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik orisinil Transport Tycoon Deluxe versi DOS.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Grafik orisinil Transport Tycoon Deluxe versi DOS (Jerman).
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik orisinil Transport Tycoon Deluxe versi Windows.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Efek suara orisinil Transport Tycoon Deluxe versi DOS.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Efek suara orisinil Transport Tycoon Deluxe versi Windows.
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Grafik orisinal Transport Tycoon Deluxe edisi DOS.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Grafik orisinal Transport Tycoon Deluxe edisi DOS (Jerman).
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Grafik orisinal Transport Tycoon Deluxe edisi Windows.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Efek suara orisinal Transport Tycoon Deluxe edisi DOS.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Efek suara orisinal Transport Tycoon Deluxe edisi Windows.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Paket efek suara tanpa suara apapun.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Musik pengiring orisinil Transport Tycoon Deluxe versi Windows.
-STR_BASEMUSIC_DOS_DESCRIPTION                                   :Musik orisinil Transport Tycoon Deluxe versi DOS.
-STR_BASEMUSIC_TTO_DESCRIPTION                                   :Musik orisinil Transport Tycoon (Orisinil/Editor Dunia) versi DOS.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Musik orisinal Transport Tycoon Deluxe edisi Windows.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Musik orisinal Transport Tycoon Deluxe edisi DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Musik orisinal Transport Tycoon (Orisinal/Editor Dunia) edisi DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Paket musik tanpa musik sungguhan.
 
 ##id 0x2000
