@@ -2945,13 +2945,13 @@ STR_STATION_CLASS_WAYP_WAYPOINT                                 :Waypoint bawaan
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Pemilihan Sinyal
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinyal Blok (semaphore){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinyal Masuk(semaphore){}Akan berwarna hijau jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada jalur berikutnya. Jika tidak, akan berwarna merah
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinyal Keluar (semaphore){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaanya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinyal Kombo (semaphore){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinyal Jalur (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinyal Jalur Searah (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinyal Blok (listrik){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta pada satu blok yang sama dalam waktu yang sama
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinyal Blok (semafor){}Ini adalah jenis sinyal yang paling umum, hanya memperbolehkan satu kereta pada satu blok yang sama dalam waktu yang sama
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinyal Masuk(semafor){}Akan berwarna hijau jika ada satu atau lebih sinyal keluar yang berwarna hijau pada bagian jalur berikutnya. Jika tidak, akan berwarna merah
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinyal Keluar (semafor){}Cara kerjanya sama dengan sinyal blok, akan tetapi penggunaannya lebih ditujukan untuk menghasilkan warna yang benar pada sinyal masuk dan sinyal kombo
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinyal Kombo (semafor){}Sinyal kombo berfungsi sebagai sinyal masuk sekaligus sinyal keluar. Ini memungkinkan Anda untuk membuat "pohon-pohon" sinyal muka yang besar
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinyal Jalur (semafor){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki blok sinyal pada saat yang sama, jika kereta dapat mencari jalur ke titik pemberhentian yang aman. Sinyal jalur biasa dapat dilewati dari belakang
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinyal Jalur Searah (semafor){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki blok sinyal pada saat yang sama, jika kereta dapat mencari jalur ke titik pemberhentian yang aman. Sinyal jalur searah tidak dapat dilewati dari belakang
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinyal Blok (listrik){}Ini adalah jenis sinyal yang paling umum, hanya memperbolehkan satu kereta pada satu blok yang sama dalam waktu yang sama
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinyal Masuk (listrik){}Akan berwarna hijau jika ada satu atau lebih sinyal keluar yang berwarna hijau pada bagian jalur berikutnya. Jika tidak, akan berwarna merah
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinyal Keluar (listrik){}Cara kerjanya sama dengan sinyal blok, akan tetapi penggunaannya lebih ditujukan untuk menghasilkan warna yang benar pada sinyal masuk dan sinyal kombo
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinyal Kombo (listrik){}Sinyal kombo berfungsi sebagai sinyal masuk sekaligus sinyal keluar. Ini memungkinkan Anda untuk membuat "pohon-pohon" sinyal muka yang besar
@@ -4082,8 +4082,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Perusahaan
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Manajer
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Masukkan jumlah uang yang ingin anda berikan
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
-STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Dengan mengambil alih {COMPANY} secara agresif, kamu akan membeli seluruh aset, membayarkan seluruh hutang, dan membayar profit selama dua tahun.{}{}Estimasi jumlahnya adalah {CURRENCY_LONG}.{}{}Apa kamu ingin melanjutkan pengambilalihan ini?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami sedang mencari perusahaan transportasi untuk mengambil alih perusahaan kami.{}{}Apakah Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}Dengan mengambil alih {COMPANY} secara agresif, Anda akan membeli seluruh aset, membayarkan seluruh hutang, dan membayar laba perusahaan selama dua tahun.{}{}Estimasi jumlahnya adalah {CURRENCY_LONG}.{}{}Apakah Anda ingin melanjutkan pengambilalihan ini?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktur milik {COMPANY}
@@ -4222,15 +4222,15 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Kereta listrik 
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Monorel Baru
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Maglev Baru
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Kendaraan Baru
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Kendaraan Jalan Raya Baru
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Kendaraan Trem Baru
 
 # Vehicle availability
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Kereta Baru
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Kendaraan Baru
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Kendaraan Jalan Raya Baru
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Kapal Baru
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Buat Pesawat
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Pesawat Baru
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Biaya: {GOLD}{CURRENCY_LONG}{BLACK} Berat: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Biaya: {GOLD}{CURRENCY_LONG}{BLACK} (Biaya karoseri: {GOLD}{CURRENCY_LONG}{BLACK}) Beban: {GOLD}{WEIGHT_SHORT}
@@ -4283,19 +4283,19 @@ STR_CARGO_TYPE_FILTER_NONE                                      :Tidak ada
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Daftar pilihan kereta. Klik pada kendaraan untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis kendaraan ini
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Daftar pilihan kendaraan jalan raya. Klik pada kendaraan untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis kendaraan ini
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Daftar pilihan kapal. Klik pada kapal untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis kapal ini
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Daftar pilihan Pesawat. Klik pada pesawat untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis pesawat ini
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Daftar pilihan pesawat. Klik pada pesawat untuk menampilkan informasi. Ctrl+Klik untuk menampilkan atau menyembunyikan jenis pesawat ini
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Beli Kendaraan
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Beli Kendaraan
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Beli Kendaraan Jalan Raya
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Beli Kapal
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Beli Pesawat
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Beli dan restorasi kendaraan
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Beli dan restorasi kendaraan
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Beli dan restorasi kapal yang dipilih
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Beli dan ubah kargo pesawat
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Beli dan Renovasi Kendaraan Jalan Raya
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Beli dan Renovasi Kapal
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Beli dan Renovasi Pesawat
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Beli kereta yang dipilih. Juga tekan Shift untuk menampilkan perkiraan biaya
@@ -4311,13 +4311,13 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Beli dan
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ubah Nama
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ganti Nama
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ubah Nama
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Ubah Nama
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Ubah Nama
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Ganti nama tipe kereta yang dipilih
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Ganti nama jenis kendaraan
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Ubah nama jenis kendaraan jalan raya
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Ubah nama jenis kapal
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Ubah nama jenis pesawat
 
@@ -4335,9 +4335,9 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Tampilka
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Menampilkan/Sembunyikan jenis kendaraan kereta
-STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Menampilkan/Sembunyikan jenis kendaraan bus/truk
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Menampilkan/Sembunyikan jenis kendaraan kapal
-STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Menampilkan/Sembunyikan jenis kendaraan pesawat
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Tampilkan/Sembunyikan jenis kendaraan jalan raya
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Tampilkan/Sembunyikan jenis kapal
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Tampilkan/Sembunyikan jenis pesawat
 
 ###length VEHICLE_TYPES
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Ubah nama jenis kereta
@@ -5457,7 +5457,7 @@ STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :Tidak dapat mem
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :Tidak dapat mengubah nama jenis kereta...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Tidak dapat mengganti nama jenis kendaraan jalanan...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Tidak dapat mengganti nama jenis kendaraan jalan raya...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :Tidak dapat mengubah nama jenis kapal...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Tidak dapat mengubah nama jenis pesawat...
 
