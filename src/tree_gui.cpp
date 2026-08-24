@@ -19,32 +19,15 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "tree_map.h"
+#include "tree_func.h"
 #include "tree_cmd.h"
 
 #include "widgets/tree_widget.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "table/tree_land.h"
 
 #include "safeguards.h"
-
-void PlaceTreesRandomly();
-uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
-
-/** Tree Sprites with their palettes */
-const PalSpriteID tree_sprites[] = {
-	{ 1621, PAL_NONE }, { 1635, PAL_NONE }, { 1656, PAL_NONE }, { 1579, PAL_NONE },
-	{ 1607, PAL_NONE }, { 1593, PAL_NONE }, { 1614, PAL_NONE }, { 1586, PAL_NONE },
-	{ 1663, PAL_NONE }, { 1677, PAL_NONE }, { 1691, PAL_NONE }, { 1705, PAL_NONE },
-	{ 1711, PAL_NONE }, { 1746, PAL_NONE }, { 1753, PAL_NONE }, { 1732, PAL_NONE },
-	{ 1739, PAL_NONE }, { 1718, PAL_NONE }, { 1725, PAL_NONE }, { 1760, PAL_NONE },
-	{ 1838, PAL_NONE }, { 1844, PAL_NONE }, { 1866, PAL_NONE }, { 1871, PAL_NONE },
-	{ 1899, PAL_NONE }, { 1935, PAL_NONE }, { 1928, PAL_NONE }, { 1915, PAL_NONE },
-	{ 1887, PAL_NONE }, { 1908, PAL_NONE }, { 1824, PAL_NONE }, { 1943, PAL_NONE },
-	{ 1950, PAL_NONE }, { 1957, PALETTE_TO_GREEN }, { 1964, PALETTE_TO_RED },        { 1971, PAL_NONE },
-	{ 1978, PAL_NONE }, { 1985, PALETTE_TO_RED, },  { 1992, PALETTE_TO_PALE_GREEN }, { 1999, PALETTE_TO_YELLOW }, { 2006, PALETTE_TO_RED }
-};
 
 /**
  * Calculate the maximum size of all tree sprites
@@ -52,20 +35,11 @@ const PalSpriteID tree_sprites[] = {
  */
 static Dimension GetMaxTreeSpriteSize()
 {
-	const uint16_t base = _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
-	const uint16_t count = _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
+	Dimension size{};
+	Point offset{};
 
-	Dimension size, this_size;
-	Point offset;
-	/* Avoid to use it uninitialized */
-	size.width = ScaleGUITrad(32); // default width - WD_FRAMERECT_LEFT
-	size.height = ScaleGUITrad(39); // default height - BUTTON_BOTTOM_OFFSET
-	offset.x = 0;
-	offset.y = 0;
-
-	for (int i = base; i < base + count; i++) {
-		if (i >= (int)lengthof(tree_sprites)) return size;
-		this_size = GetSpriteSize(tree_sprites[i].sprite, &offset);
+	for (const TreeType &treetype : GetTreeTypes()) {
+		Dimension this_size = GetSpriteSize(GetTreeSprite(treetype).sprite, &offset);
 		size.width = std::max<int>(size.width, 2 * std::max<int>(this_size.width, -offset.x));
 		size.height = std::max<int>(size.height, std::max<int>(this_size.height, -offset.y));
 	}
@@ -88,7 +62,7 @@ class BuildTreesWindow : public Window
 		PM_FOREST_LG,
 	};
 
-	int tree_to_plant = -1; ///< Tree number to plant, \c TREE_INVALID for a random tree.
+	int index_to_plant = -1; ///< Index of active trees to plant, \c -1 for a random tree.
 	PlantingMode mode = PM_NORMAL; ///< Current mode for planting
 
 	/**
@@ -98,22 +72,22 @@ class BuildTreesWindow : public Window
 	{
 		this->RaiseButtons();
 
-		const int current_tree = this->tree_to_plant;
+		if (this->index_to_plant >= 0) {
+			/* SetObjectToPlace may call ResetObjectToPlace which would reset index_to_plant to -1. */
+			AutoRestoreBackup backup(this->index_to_plant);
 
-		if (this->tree_to_plant >= 0) {
 			/* Activate placement */
 			SndConfirmBeep();
 			SetObjectToPlace(SPR_CURSOR_TREE, PAL_NONE, HT_RECT | HT_DIAGONAL, this->window_class, this->window_number);
-			this->tree_to_plant = current_tree; // SetObjectToPlace may call ResetObjectToPlace which may reset tree_to_plant to -1
 		} else {
 			/* Deactivate placement */
 			ResetObjectToPlace();
 		}
 
-		if (this->tree_to_plant == TREE_INVALID) {
+		if (this->index_to_plant == TREE_INVALID) {
 			this->LowerWidget(WID_BT_TYPE_RANDOM);
-		} else if (this->tree_to_plant >= 0) {
-			this->LowerWidget(WID_BT_TYPE_BUTTON_FIRST + this->tree_to_plant);
+		} else if (this->index_to_plant >= 0) {
+			this->LowerWidget(WID_BT_TYPE_BUTTON_FIRST + this->index_to_plant);
 		}
 
 		switch (this->mode) {
@@ -126,16 +100,31 @@ class BuildTreesWindow : public Window
 		this->SetDirty();
 	}
 
+	/**
+	 * Get the tree type of the currently selected tree.
+	 * @return the current tree type, or \c TREE_INVALID
+	 */
+	TreeType GetSelectedTreeType() const
+	{
+		if (this->index_to_plant < 0) return TREE_INVALID;
+
+		const auto treetypes = GetTreeTypes();
+		if (static_cast<size_t>(this->index_to_plant) < treetypes.size()) return treetypes[this->index_to_plant];
+
+		return TREE_INVALID;
+	}
+
 	void DoPlantForest(TileIndex tile)
 	{
-		TreeType treetype = (TreeType)this->tree_to_plant;
-		if (this->tree_to_plant == TREE_INVALID) {
-			treetype = (TreeType)(InteractiveRandomRange(_tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)]) + _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)]);
+		TreeType treetype = this->GetSelectedTreeType();
+		if (treetype == TREE_INVALID) {
+			const auto treetypes = GetTreeTypes();
+			treetype = treetypes[InteractiveRandomRange(static_cast<uint32_t>(treetypes.size()))];
 		}
 		const uint radius = this->mode == PM_FOREST_LG ? 12 : 5;
 		const uint count = this->mode == PM_FOREST_LG ? 12 : 5;
 		/* Create tropic zones only when the tree type is selected by the user and not picked randomly. */
-		PlaceTreeGroupAroundTile(tile, treetype, radius, count, this->tree_to_plant != TREE_INVALID);
+		PlaceTreeGroupAroundTile(tile, treetype, radius, count, this->index_to_plant != TREE_INVALID);
 	}
 
 public:
@@ -165,9 +154,15 @@ public:
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
-			const int index = widget - WID_BT_TYPE_BUTTON_FIRST;
+			auto tree_types = GetTreeTypes();
+
+			size_t index = widget - WID_BT_TYPE_BUTTON_FIRST;
+			if (index >= tree_types.size()) return;
+
+			auto ps = GetTreeSprite(tree_types[index]);
+
 			/* Trees "grow" in the centre on the bottom line of the buttons */
-			DrawSprite(tree_sprites[index].sprite, tree_sprites[index].pal, CentreBounds(r.left, r.right, 0), r.bottom - ScaleGUITrad(BUTTON_BOTTOM_OFFSET));
+			DrawSprite(ps.sprite, ps.pal, CentreBounds(r.left, r.right, 0), r.bottom - ScaleGUITrad(BUTTON_BOTTOM_OFFSET));
 		}
 	}
 
@@ -175,7 +170,7 @@ public:
 	{
 		switch (widget) {
 			case WID_BT_TYPE_RANDOM: // tree of random type.
-				this->tree_to_plant = this->tree_to_plant == TREE_INVALID ? -1 : TREE_INVALID;
+				this->index_to_plant = this->index_to_plant == TREE_INVALID ? -1 : TREE_INVALID;
 				this->UpdateMode();
 				break;
 
@@ -205,7 +200,7 @@ public:
 			default:
 				if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
 					const int index = widget - WID_BT_TYPE_BUTTON_FIRST;
-					this->tree_to_plant = this->tree_to_plant == index ? -1 : index;
+					this->index_to_plant = this->index_to_plant == index ? -1 : index;
 					this->UpdateMode();
 				}
 				break;
@@ -229,7 +224,7 @@ public:
 			TileIndex tile = TileVirtXY(pt.x, pt.y);
 
 			if (this->mode == PM_NORMAL) {
-				Command<Commands::PlantTree>::Post(tile, tile, this->tree_to_plant, false);
+				Command<Commands::PlantTree>::Post(tile, tile, this->GetSelectedTreeType(), false);
 			} else {
 				this->DoPlantForest(tile);
 			}
@@ -239,13 +234,13 @@ public:
 	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
 		if (_game_mode != GameMode::Editor && this->mode == PM_NORMAL && pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
-			Command<Commands::PlantTree>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->tree_to_plant, _ctrl_pressed);
+			Command<Commands::PlantTree>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->GetSelectedTreeType(), _ctrl_pressed);
 		}
 	}
 
 	void OnPlaceObjectAbort() override
 	{
-		this->tree_to_plant = -1;
+		this->index_to_plant = -1;
 		this->UpdateMode();
 	}
 };
@@ -258,26 +253,26 @@ public:
  */
 static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
 {
-	const uint8_t type_base = _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
-	const uint8_t type_count = _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
+	auto treetypes = GetTreeTypes();
+	uint32_t num_treetypes = std::size(treetypes);
 
 	/* Toyland has 9 tree types, which look better in 3x3 than 4x3 */
-	const int num_columns = type_count == 9 ? 3 : 4;
-	const int num_rows = CeilDiv(type_count, num_columns);
-	uint8_t cur_type = type_base;
+	const int num_columns = num_treetypes == 9 ? 3 : 4;
+	const int num_rows = CeilDiv(num_treetypes, num_columns);
 
 	auto vstack = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
 	vstack->SetPIP(0, 1, 0);
 
+	uint32_t index = 0;
 	for (int row = 0; row < num_rows; row++) {
 		auto hstack = std::make_unique<NWidgetHorizontal>(NWidContainerFlag::EqualSize);
 		hstack->SetPIP(0, 1, 0);
 		for (int col = 0; col < num_columns; col++) {
-			if (cur_type > type_base + type_count) break;
-			auto button = std::make_unique<NWidgetBackground>(WWT_PANEL, Colours::Grey, WID_BT_TYPE_BUTTON_FIRST + cur_type);
+			if (index >= num_treetypes) break;
+			auto button = std::make_unique<NWidgetBackground>(WWT_PANEL, Colours::Grey, WID_BT_TYPE_BUTTON_FIRST + index);
 			button->SetToolTip(STR_PLANT_TREE_TOOLTIP);
 			hstack->Add(std::move(button));
-			cur_type++;
+			++index;
 		}
 		vstack->Add(std::move(hstack));
 	}

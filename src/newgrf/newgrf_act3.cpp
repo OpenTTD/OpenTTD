@@ -27,6 +27,7 @@
 #include "../vehicle_base.h"
 #include "../road.h"
 #include "../newgrf_roadstop.h"
+#include "../tree_type.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal_vehicle.h"
 #include "newgrf_internal.h"
@@ -254,15 +255,19 @@ struct CanalMapSpriteGroupHandler : MapSpriteGroupHandler {
 	}
 };
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<StationSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->stations.size() ? grffile->stations[local_id].get() : nullptr; }
 struct StationMapSpriteGroupHandler : CargoTypeMapSpriteGroupHandler<StationSpec, StationClass> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<HouseSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->housespec.size() ? grffile->housespec[local_id].get() : nullptr; }
 struct TownHouseMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<HouseSpec> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<IndustrySpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->industryspec.size() ? grffile->industryspec[local_id].get() : nullptr; }
 struct IndustryMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<IndustrySpec> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<IndustryTileSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->indtspec.size() ? grffile->indtspec[local_id].get() : nullptr; }
 struct IndustryTileMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<IndustryTileSpec> {};
 
@@ -281,6 +286,7 @@ struct CargoMapSpriteGroupHandler : MapSpriteGroupHandler {
 	}
 };
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<ObjectSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->objectspec.size() ? grffile->objectspec[local_id].get() : nullptr; }
 struct ObjectMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<ObjectSpec> {};
 
@@ -323,12 +329,15 @@ struct RoadTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapDefault(uint16_t, const SpriteGroup *) override {}
 };
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<AirportSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->airportspec.size() ? grffile->airportspec[local_id].get() : nullptr; }
 struct AirportMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<AirportSpec> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<AirportTileSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->airtspec.size() ? grffile->airtspec[local_id].get() : nullptr; }
 struct AirportTileMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<AirportTileSpec> {};
 
+/** @copydoc GetSpec */
 template <> auto *GetSpec<RoadStopSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->roadstops.size() ? grffile->roadstops[local_id].get() : nullptr; }
 struct RoadStopMapSpriteGroupHandler : CargoTypeMapSpriteGroupHandler<RoadStopSpec, RoadStopClass> {};
 
@@ -359,6 +368,10 @@ struct BadgeMapSpriteGroupHandler : MapSpriteGroupHandler {
 		}
 	}
 };
+
+/** @copydoc GetSpec */
+template <> auto *GetSpec<TreeSpec>(GRFFile *grffile, uint16_t local_id) { return local_id < grffile->treespecs.size() ? grffile->treespecs[local_id].get() : nullptr; }
+struct TreeMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<TreeSpec> {};
 
 static void MapSpriteGroup(ByteReader &buf, uint8_t idcount, MapSpriteGroupHandler &&handler)
 {
@@ -450,6 +463,7 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 		case GrfSpecFeature::AirportTiles: MapSpriteGroup(buf, idcount, AirportTileMapSpriteGroupHandler{}); return;
 		case GrfSpecFeature::RoadStops: MapSpriteGroup(buf, idcount, RoadStopMapSpriteGroupHandler{}); return;
 		case GrfSpecFeature::Badges: MapSpriteGroup(buf, idcount, BadgeMapSpriteGroupHandler{}); return;
+		case GrfSpecFeature::Trees: MapSpriteGroup(buf, idcount, TreeMapSpriteGroupHandler{}); return;
 
 		default:
 			GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);

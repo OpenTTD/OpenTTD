@@ -1560,6 +1560,8 @@ static const SpriteID SPR_SELECT_TOYLAND             = 4888;
 static const SpriteID SPR_SELECT_TOYLAND_PUSHED      = 4889;
 /** @} */
 
+static constexpr SpriteID SPR_TREE_BASE = 1576; ///< Base sprite of all trees.
+
 /** @defgroup cursor_sprites Cursor sprite numbers.
  * @{ */
 /** @split_group{cursor_sprites}
