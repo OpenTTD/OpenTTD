@@ -184,7 +184,7 @@ static std::string RemoveUnderscores(std::string name)
  */
 static void IConsoleAliasExec(const IConsoleAlias *alias, std::span<std::string> tokens, uint recurse_count)
 {
-	Debug(console, 6, "Requested command is an alias; parsing...");
+	Debug(console, Severity::Debug2, "Requested command is an alias; parsing...");
 
 	if (recurse_count > ICON_MAX_RECURSE) {
 		IConsolePrint(CC_ERROR, "Too many alias expansions, recursion limit reached.");
@@ -272,7 +272,7 @@ void IConsoleCmdExec(std::string_view command_string, const uint recurse_count)
 {
 	if (command_string[0] == '#') return; // comments
 
-	Debug(console, 4, "Executing cmdline: '{}'", command_string);
+	Debug(console, Severity::Info, "Executing cmdline: '{}'", command_string);
 
 	std::string buffer;
 	StringBuilder builder{buffer};
@@ -331,7 +331,7 @@ void IConsoleCmdExec(std::string_view command_string, const uint recurse_count)
 	}
 
 	for (size_t i = 0; i < tokens.size(); i++) {
-		Debug(console, 8, "Token {} is: '{}'", i, tokens[i]);
+		Debug(console, Severity::Trace2, "Token {} is: '{}'", i, tokens[i]);
 	}
 
 	if (tokens.empty() || tokens[0].empty()) return; // don't execute empty commands

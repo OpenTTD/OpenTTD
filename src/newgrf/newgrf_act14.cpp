@@ -40,7 +40,7 @@ static bool ChangeGRFURL(GRFLanguage langid, std::string_view str)
 static bool ChangeGRFNumUsedParams(size_t len, ByteReader &buf)
 {
 	if (len != 1) {
-		GrfMsg(2, "StaticGRFInfo: expected only 1 byte for 'INFO'->'NPAR' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected only 1 byte for 'INFO'->'NPAR' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		_cur_gps.grfconfig->num_valid_params = std::min(buf.ReadByte(), GRFConfig::MAX_NUM_PARAMS);
@@ -52,7 +52,7 @@ static bool ChangeGRFNumUsedParams(size_t len, ByteReader &buf)
 static bool ChangeGRFPalette(size_t len, ByteReader &buf)
 {
 	if (len != 1) {
-		GrfMsg(2, "StaticGRFInfo: expected only 1 byte for 'INFO'->'PALS' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected only 1 byte for 'INFO'->'PALS' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		char data = buf.ReadByte();
@@ -63,7 +63,7 @@ static bool ChangeGRFPalette(size_t len, ByteReader &buf)
 			case 'W': pal = GRFP_GRF_WINDOWS; break;
 			case 'D': pal = GRFP_GRF_DOS;     break;
 			default:
-				GrfMsg(2, "StaticGRFInfo: unexpected value '{:02X}' for 'INFO'->'PALS', ignoring this field", data);
+				GrfMsg(Severity::Warning, "StaticGRFInfo: unexpected value '{:02X}' for 'INFO'->'PALS', ignoring this field", data);
 				break;
 		}
 		if (pal != GRFP_GRF_UNSET) {
@@ -78,7 +78,7 @@ static bool ChangeGRFPalette(size_t len, ByteReader &buf)
 static bool ChangeGRFBlitter(size_t len, ByteReader &buf)
 {
 	if (len != 1) {
-		GrfMsg(2, "StaticGRFInfo: expected only 1 byte for 'INFO'->'BLTR' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected only 1 byte for 'INFO'->'BLTR' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		char data = buf.ReadByte();
@@ -87,7 +87,7 @@ static bool ChangeGRFBlitter(size_t len, ByteReader &buf)
 			case '8': pal = GRFP_BLT_UNSET; break;
 			case '3': pal = GRFP_BLT_32BPP;  break;
 			default:
-				GrfMsg(2, "StaticGRFInfo: unexpected value '{:02X}' for 'INFO'->'BLTR', ignoring this field", data);
+				GrfMsg(Severity::Warning, "StaticGRFInfo: unexpected value '{:02X}' for 'INFO'->'BLTR', ignoring this field", data);
 				return true;
 		}
 		_cur_gps.grfconfig->palette &= ~GRFP_BLT_MASK;
@@ -100,7 +100,7 @@ static bool ChangeGRFBlitter(size_t len, ByteReader &buf)
 static bool ChangeGRFVersion(size_t len, ByteReader &buf)
 {
 	if (len != 4) {
-		GrfMsg(2, "StaticGRFInfo: expected 4 bytes for 'INFO'->'VRSN' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected 4 bytes for 'INFO'->'VRSN' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		/* Set min_loadable_version as well (default to minimal compatibility) */
@@ -113,16 +113,16 @@ static bool ChangeGRFVersion(size_t len, ByteReader &buf)
 static bool ChangeGRFMinVersion(size_t len, ByteReader &buf)
 {
 	if (len != 4) {
-		GrfMsg(2, "StaticGRFInfo: expected 4 bytes for 'INFO'->'MINV' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected 4 bytes for 'INFO'->'MINV' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		_cur_gps.grfconfig->min_loadable_version = buf.ReadDWord();
 		if (_cur_gps.grfconfig->version == 0) {
-			GrfMsg(2, "StaticGRFInfo: 'MINV' defined before 'VRSN' or 'VRSN' set to 0, ignoring this field");
+			GrfMsg(Severity::Warning, "StaticGRFInfo: 'MINV' defined before 'VRSN' or 'VRSN' set to 0, ignoring this field");
 			_cur_gps.grfconfig->min_loadable_version = 0;
 		}
 		if (_cur_gps.grfconfig->version < _cur_gps.grfconfig->min_loadable_version) {
-			GrfMsg(2, "StaticGRFInfo: 'MINV' defined as {}, limiting it to 'VRSN'", _cur_gps.grfconfig->min_loadable_version);
+			GrfMsg(Severity::Warning, "StaticGRFInfo: 'MINV' defined as {}, limiting it to 'VRSN'", _cur_gps.grfconfig->min_loadable_version);
 			_cur_gps.grfconfig->min_loadable_version = _cur_gps.grfconfig->version;
 		}
 	}
@@ -149,7 +149,7 @@ static bool ChangeGRFParamDescription(GRFLanguage langid, std::string_view str)
 static bool ChangeGRFParamType(size_t len, ByteReader &buf)
 {
 	if (len != 1) {
-		GrfMsg(2, "StaticGRFInfo: expected 1 byte for 'INFO'->'PARA'->'TYPE' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected 1 byte for 'INFO'->'PARA'->'TYPE' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		GRFParameterType type = static_cast<GRFParameterType>(buf.ReadByte());
@@ -160,7 +160,7 @@ static bool ChangeGRFParamType(size_t len, ByteReader &buf)
 				break;
 
 			default:
-				GrfMsg(3, "StaticGRFInfo: unknown parameter type {}, ignoring this field", type);
+				GrfMsg(Severity::Notice, "StaticGRFInfo: unknown parameter type {}, ignoring this field", type);
 				break;
 		}
 	}
@@ -171,10 +171,10 @@ static bool ChangeGRFParamType(size_t len, ByteReader &buf)
 static bool ChangeGRFParamLimits(size_t len, ByteReader &buf)
 {
 	if (_cur_parameter->type != GRFParameterType::UintEnum) {
-		GrfMsg(2, "StaticGRFInfo: 'INFO'->'PARA'->'LIMI' is only valid for parameters with type uint/enum, ignoring this field");
+		GrfMsg(Severity::Warning, "StaticGRFInfo: 'INFO'->'PARA'->'LIMI' is only valid for parameters with type uint/enum, ignoring this field");
 		buf.Skip(len);
 	} else if (len != 8) {
-		GrfMsg(2, "StaticGRFInfo: expected 8 bytes for 'INFO'->'PARA'->'LIMI' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected 8 bytes for 'INFO'->'PARA'->'LIMI' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		uint32_t min_value = buf.ReadDWord();
@@ -183,7 +183,7 @@ static bool ChangeGRFParamLimits(size_t len, ByteReader &buf)
 			_cur_parameter->min_value = min_value;
 			_cur_parameter->max_value = max_value;
 		} else {
-			GrfMsg(2, "StaticGRFInfo: 'INFO'->'PARA'->'LIMI' values are incoherent, ignoring this field");
+			GrfMsg(Severity::Warning, "StaticGRFInfo: 'INFO'->'PARA'->'LIMI' values are incoherent, ignoring this field");
 		}
 	}
 	return true;
@@ -193,12 +193,12 @@ static bool ChangeGRFParamLimits(size_t len, ByteReader &buf)
 static bool ChangeGRFParamMask(size_t len, ByteReader &buf)
 {
 	if (len < 1 || len > 3) {
-		GrfMsg(2, "StaticGRFInfo: expected 1 to 3 bytes for 'INFO'->'PARA'->'MASK' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected 1 to 3 bytes for 'INFO'->'PARA'->'MASK' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		uint8_t param_nr = buf.ReadByte();
 		if (param_nr >= GRFConfig::MAX_NUM_PARAMS) {
-			GrfMsg(2, "StaticGRFInfo: invalid parameter number in 'INFO'->'PARA'->'MASK', param {}, ignoring this field", param_nr);
+			GrfMsg(Severity::Warning, "StaticGRFInfo: invalid parameter number in 'INFO'->'PARA'->'MASK', param {}, ignoring this field", param_nr);
 			buf.Skip(len - 1);
 		} else {
 			_cur_parameter->param_nr = param_nr;
@@ -214,7 +214,7 @@ static bool ChangeGRFParamMask(size_t len, ByteReader &buf)
 static bool ChangeGRFParamDefault(size_t len, ByteReader &buf)
 {
 	if (len != 4) {
-		GrfMsg(2, "StaticGRFInfo: expected 4 bytes for 'INFO'->'PARA'->'DEFA' but got {}, ignoring this field", len);
+		GrfMsg(Severity::Warning, "StaticGRFInfo: expected 4 bytes for 'INFO'->'PARA'->'DEFA' but got {}, ignoring this field", len);
 		buf.Skip(len);
 	} else {
 		_cur_parameter->def_value = buf.ReadDWord();
@@ -279,7 +279,7 @@ static bool ChangeGRFParamValueNames(ByteReader &buf)
 	while (type != 0) {
 		uint32_t id = buf.ReadDWord();
 		if (type != 'T' || id > _cur_parameter->max_value) {
-			GrfMsg(2, "StaticGRFInfo: all child nodes of 'INFO'->'PARA'->param_num->'VALU' should have type 't' and the value/bit number as id");
+			GrfMsg(Severity::Warning, "StaticGRFInfo: all child nodes of 'INFO'->'PARA'->param_num->'VALU' should have type 't' and the value/bit number as id");
 			if (!SkipUnknownInfo(buf, type)) return false;
 			type = buf.ReadByte();
 			continue;
@@ -323,7 +323,7 @@ static bool HandleParameterInfo(ByteReader &buf)
 	while (type != 0) {
 		uint32_t id = buf.ReadDWord();
 		if (type != 'C' || id >= _cur_gps.grfconfig->num_valid_params) {
-			GrfMsg(2, "StaticGRFInfo: all child nodes of 'INFO'->'PARA' should have type 'C' and their parameter number as id");
+			GrfMsg(Severity::Warning, "StaticGRFInfo: all child nodes of 'INFO'->'PARA' should have type 'C' and their parameter number as id");
 			if (!SkipUnknownInfo(buf, type)) return false;
 			type = buf.ReadByte();
 			continue;
@@ -451,7 +451,7 @@ static bool HandleNode(uint8_t type, NodeID id, ByteReader &buf, std::span<const
 		return std::visit(evaluate_visitor{buf}, tag.handler);
 	}
 
-	GrfMsg(2, "StaticGRFInfo: unknown type/id combination found, type={:c}, id={}", type, id.AsString());
+	GrfMsg(Severity::Warning, "StaticGRFInfo: unknown type/id combination found, type={:c}, id={}", type, id.AsString());
 	return SkipUnknownInfo(buf, type);
 }
 

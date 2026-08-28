@@ -336,7 +336,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, HouseSpec::Get(this->house_id)->badges, parameter);
 		}
 
-		Debug(grf, 1, "Unhandled house variable 0x{:X}", variable);
+		Debug(grf, Severity::Error, "Unhandled house variable 0x{:X}", variable);
 		available = false;
 		return UINT_MAX;
 	}
@@ -451,7 +451,7 @@ static uint32_t GetDistanceFromNearbyHouse(uint8_t parameter, TileIndex start_ti
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, HouseSpec::Get(this->house_id)->badges, parameter);
 	}
 
-	Debug(grf, 1, "Unhandled house variable 0x{:X}", variable);
+	Debug(grf, Severity::Error, "Unhandled house variable 0x{:X}", variable);
 
 	available = false;
 	return UINT_MAX;

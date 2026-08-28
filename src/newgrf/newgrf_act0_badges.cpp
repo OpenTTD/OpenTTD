@@ -21,14 +21,14 @@ static ChangeInfoResult BadgeChangeInfo(uint first, uint last, int prop, ByteRea
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last >= UINT16_MAX) {
-		GrfMsg(1, "BadgeChangeInfo: Tag {} is invalid, max {}, ignoring", last, UINT16_MAX - 1);
+		GrfMsg(Severity::Error, "BadgeChangeInfo: Tag {} is invalid, max {}, ignoring", last, UINT16_MAX - 1);
 		return ChangeInfoResult::InvalidId;
 	}
 
 	for (uint id = first; id < last; ++id) {
 		auto it = _cur_gps.grffile->badge_map.find(id);
 		if (prop != 0x08 && it == std::end(_cur_gps.grffile->badge_map)) {
-			GrfMsg(1, "BadgeChangeInfo: Attempt to modify undefined tag {}, ignoring", id);
+			GrfMsg(Severity::Error, "BadgeChangeInfo: Attempt to modify undefined tag {}, ignoring", id);
 			return ChangeInfoResult::InvalidId;
 		}
 

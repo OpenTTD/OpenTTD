@@ -10,6 +10,7 @@
 #ifndef GAMELOG_H
 #define GAMELOG_H
 
+#include "debug_type.h"
 #include "newgrf_config.h"
 #include "newgrf_type.h"
 
@@ -66,7 +67,7 @@ public:
 	void Reset();
 
 	void Print(std::function<void(const std::string &)> proc);
-	void PrintDebug(int level);
+	void PrintDebug(Severity severity);
 	void PrintConsole();
 
 	void Emergency();

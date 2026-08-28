@@ -91,7 +91,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
 	this->font_name = name;
 
-	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
+	Debug(fontcache, Severity::Warning, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
 GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
@@ -301,7 +301,7 @@ public:
 				result = FontCache::TryFallback(callback->missing_fontsizes, callback->missing_glyphs, std::string{name});
 				if (result) {
 					FontCache::AddFallback(callback->missing_fontsizes, name);
-					Debug(fontcache, 2, "CT-Font for {}: {}", language_isocode, name);
+					Debug(fontcache, Severity::Warning, "CT-Font for {}: {}", language_isocode, name);
 					break;
 				}
 			}

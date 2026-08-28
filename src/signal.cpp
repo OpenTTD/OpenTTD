@@ -159,7 +159,7 @@ public:
 	{
 		if (this->IsFull()) {
 			overflowed = true;
-			Debug(misc, 0, "SignalSegment too complex. Set {} is full (maximum {})", name, items);
+			Debug(misc, Severity::Critical, "SignalSegment too complex. Set {} is full (maximum {})", name, items);
 			return false; // set is full
 		}
 

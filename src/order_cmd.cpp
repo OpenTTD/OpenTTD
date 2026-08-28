@@ -505,7 +505,7 @@ void OrderList::DebugCheckSanity() const
 	TimerGameTick::Ticks check_timetable_duration = 0;
 	TimerGameTick::Ticks check_total_duration = 0;
 
-	Debug(misc, 6, "Checking OrderList {} for sanity...", this->index);
+	Debug(misc, Severity::Debug2, "Checking OrderList {} for sanity...", this->index);
 
 	for (const Order &o : this->orders) {
 		++check_num_orders;
@@ -523,7 +523,7 @@ void OrderList::DebugCheckSanity() const
 		assert(v->orders == this);
 	}
 	assert(this->num_vehicles == check_num_vehicles);
-	Debug(misc, 6, "... detected {} orders ({} manual), {} vehicles, {} timetabled, {} total",
+	Debug(misc, Severity::Debug2, "... detected {} orders ({} manual), {} vehicles, {} timetabled, {} total",
 			(uint)this->GetNumOrders(), (uint)this->num_manual_orders,
 			this->num_vehicles, this->timetable_duration, this->total_duration);
 }

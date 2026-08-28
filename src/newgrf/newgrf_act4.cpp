@@ -50,7 +50,7 @@ static void FeatureNewName(ByteReader &buf)
 
 	GrfSpecFeature feature{buf.ReadByte()};
 	if (feature >= GrfSpecFeature::End && feature != GrfSpecFeature::OriginalStrings) {
-		GrfMsg(1, "FeatureNewName: Unsupported feature 0x{:02X}, skipping", feature);
+		GrfMsg(Severity::Error, "FeatureNewName: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
@@ -70,7 +70,7 @@ static void FeatureNewName(ByteReader &buf)
 
 	uint16_t endid = id + num;
 
-	GrfMsg(6, "FeatureNewName: About to rename engines {}..{} (feature 0x{:02X}) in language 0x{:02X}",
+	GrfMsg(Severity::Debug2, "FeatureNewName: About to rename engines {}..{} (feature 0x{:02X}) in language 0x{:02X}",
 	               id, endid, feature, lang);
 
 	/* Feature overlay to make non-generic strings unique in their feature. We use feature + 1 so that generic strings stay as they are. */
@@ -78,7 +78,7 @@ static void FeatureNewName(ByteReader &buf)
 
 	for (; id < endid && buf.HasData(); id++) {
 		std::string_view name = buf.ReadString();
-		GrfMsg(8, "FeatureNewName: 0x{:04X} <- {}", id, StrMakeValid(name));
+		GrfMsg(Severity::Trace2, "FeatureNewName: 0x{:04X} <- {}", id, StrMakeValid(name));
 
 		switch (feature) {
 			case GrfSpecFeature::Trains:
@@ -99,7 +99,7 @@ static void FeatureNewName(ByteReader &buf)
 				if (!generic) {
 					auto found = _cur_gps.grffile->badge_map.find(id);
 					if (found == std::end(_cur_gps.grffile->badge_map)) {
-						GrfMsg(1, "FeatureNewName: Attempt to name undefined badge 0x{:X}, ignoring", id);
+						GrfMsg(Severity::Error, "FeatureNewName: Attempt to name undefined badge 0x{:X}, ignoring", id);
 					} else {
 						Badge &badge = *GetBadge(found->second);
 						badge.name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{feature_overlay | id}, lang, true, false, name, STR_UNDEFINED);
@@ -119,7 +119,7 @@ static void FeatureNewName(ByteReader &buf)
 				switch (GB(id, 8, 8)) {
 					case 0xC4: // Station class name
 						if (GB(id, 0, 8) >= _cur_gps.grffile->stations.size() || _cur_gps.grffile->stations[GB(id, 0, 8)] == nullptr) {
-							GrfMsg(1, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
+							GrfMsg(Severity::Error, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
 							StationClassID class_index = _cur_gps.grffile->stations[GB(id, 0, 8)]->class_index;
 							StationClass::Get(class_index)->name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
@@ -128,7 +128,7 @@ static void FeatureNewName(ByteReader &buf)
 
 					case 0xC5: // Station name
 						if (GB(id, 0, 8) >= _cur_gps.grffile->stations.size() || _cur_gps.grffile->stations[GB(id, 0, 8)] == nullptr) {
-							GrfMsg(1, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
+							GrfMsg(Severity::Error, "FeatureNewName: Attempt to name undefined station 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
 							_cur_gps.grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
@@ -136,7 +136,7 @@ static void FeatureNewName(ByteReader &buf)
 
 					case 0xC7: // Airporttile name
 						if (GB(id, 0, 8) >= _cur_gps.grffile->airtspec.size() || _cur_gps.grffile->airtspec[GB(id, 0, 8)] == nullptr) {
-							GrfMsg(1, "FeatureNewName: Attempt to name undefined airport tile 0x{:X}, ignoring", GB(id, 0, 8));
+							GrfMsg(Severity::Error, "FeatureNewName: Attempt to name undefined airport tile 0x{:X}, ignoring", GB(id, 0, 8));
 						} else {
 							_cur_gps.grffile->airtspec[GB(id, 0, 8)]->name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
@@ -144,14 +144,14 @@ static void FeatureNewName(ByteReader &buf)
 
 					case 0xC9: // House name
 						if (GB(id, 0, 8) >= _cur_gps.grffile->housespec.size() || _cur_gps.grffile->housespec[GB(id, 0, 8)] == nullptr) {
-							GrfMsg(1, "FeatureNewName: Attempt to name undefined house 0x{:X}, ignoring.", GB(id, 0, 8));
+							GrfMsg(Severity::Error, "FeatureNewName: Attempt to name undefined house 0x{:X}, ignoring.", GB(id, 0, 8));
 						} else {
 							_cur_gps.grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur_gps.grffile->grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 
 					default:
-						GrfMsg(7, "FeatureNewName: Unsupported ID (0x{:04X})", id);
+						GrfMsg(Severity::Trace1, "FeatureNewName: Unsupported ID (0x{:04X})", id);
 						break;
 				}
 				break;

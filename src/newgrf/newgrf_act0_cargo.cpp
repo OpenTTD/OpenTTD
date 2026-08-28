@@ -52,7 +52,7 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_CARGO) {
-		GrfMsg(2, "CargoChangeInfo: Cargo type {} out of range (max {})", last, NUM_CARGO - 1);
+		GrfMsg(Severity::Warning, "CargoChangeInfo: Cargo type {} out of range (max {})", last, NUM_CARGO - 1);
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -151,7 +151,7 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 					case 0x09: cs->town_acceptance_effect = TownAcceptanceEffect::Water; break;
 					case 0x0B: cs->town_acceptance_effect = TownAcceptanceEffect::Food; break;
 					default:
-						GrfMsg(1, "CargoChangeInfo: Unknown town growth substitute value {}, setting to none.", substitute_type);
+						GrfMsg(Severity::Error, "CargoChangeInfo: Unknown town growth substitute value {}, setting to none.", substitute_type);
 						[[fallthrough]];
 					case 0xFF: cs->town_acceptance_effect = TownAcceptanceEffect::None; break;
 				}
@@ -177,7 +177,7 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 					case 0x00: cs->town_production_effect = TownProductionEffect::Passengers; break;
 					case 0x02: cs->town_production_effect = TownProductionEffect::Mail; break;
 					default:
-						GrfMsg(1, "CargoChangeInfo: Unknown town production substitute value {}, setting to none.", substitute_type);
+						GrfMsg(Severity::Error, "CargoChangeInfo: Unknown town production substitute value {}, setting to none.", substitute_type);
 						[[fallthrough]];
 					case 0xFF: cs->town_production_effect = TownProductionEffect::None; break;
 				}
