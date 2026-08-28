@@ -3289,6 +3289,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Eclusa
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rio
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Litoral ou margem
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Depósito de embarcações
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Rochas
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Costa ou margem de rio com rochas
 
 # Industries come directly from their industry names
 

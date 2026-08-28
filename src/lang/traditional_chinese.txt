@@ -3225,7 +3225,7 @@ STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}市鎮�
 STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}市鎮可升級：{LTBLUE}不可
 
 # Description of land area of different tiles
-STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :石頭
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :岩石
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :荒地
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :裸地
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
@@ -3288,6 +3288,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :水閘
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :河流
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :海岸或河邊
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :船塢
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :岩石
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :海岸或河邊有岩石
 
 # Industries come directly from their industry names
 

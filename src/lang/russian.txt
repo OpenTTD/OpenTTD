@@ -3463,6 +3463,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Шлюз
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Река
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Морской или речной берег
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Верфь
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Камни
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Каменистый берег
 
 # Industries come directly from their industry names
 

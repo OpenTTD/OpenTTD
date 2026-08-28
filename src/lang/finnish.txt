@@ -3288,6 +3288,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Sulku
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Joki
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Rannikko tai joentörmä
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Telakka
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Kivikkoa
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Kivinen rannikko tai törmä
 
 # Industries come directly from their industry names
 

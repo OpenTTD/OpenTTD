@@ -3289,6 +3289,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :갑문
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :강
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :해안 또는 강기슭
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :정박소
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :암석
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :암석이 있는 해안 또는 강기슭
 
 # Industries come directly from their industry names
 

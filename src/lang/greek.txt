@@ -3381,6 +3381,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Κλείδωμ�
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Ποτάμι
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Ακτή ή όχθη ποταμού
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Ναυπηγείο πλοίων
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Πέτρες
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Ακτή ή όχθη ποταμού με πέτρες
 
 # Industries come directly from their industry names
 

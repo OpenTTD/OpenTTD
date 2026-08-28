@@ -1470,7 +1470,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :{G=m}extremo in
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :{G=m}meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :{G=m}extremo oposto
 
-STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o rato está na borda do mapa: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o rato está no limite do mapa: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quando ativo, os visualizadores começam a deslocar-se logo que o rato esteja no extremo da janela
 ###length 4
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desativado
@@ -1626,7 +1626,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Nível de densi
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máxima entre o limite do mapa e Refinarias de Petróleo: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre a borda do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isto garante que elas fiquem perto da costa. Em mapas com mais de 256 mosaicos esse valor é aumentado
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre o limite do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isto garante que elas fiquem perto da costa. Em mapas com mais de 256 mosaicos esse valor é aumentado
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha da neve: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Escolher a que altura a neve começa na paisagem subártica. A neve também afeta a geração de indústrias e os requisitos de crescimento das localidades. Só pode ser modificado através do Editor de Cenários ou é calculado através da "cobertura da neve"
@@ -3287,8 +3287,10 @@ STR_LAI_WATER_DESCRIPTION_WATER                                 :Água
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Dique
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rio
-STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Costa ou margem
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Costa ou margem de rio
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Estaleiro naval
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Rochas
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Costa ou margem de rio com rochas
 
 # Industries come directly from their industry names
 
