@@ -221,7 +221,7 @@ void BaseVehicleListWindow::BuildVehicleList()
 {
 	if (!this->vehgroups.NeedRebuild()) return;
 
-	Debug(misc, 3, "Building vehicle list type {} for company {} given index {}", this->vli.type, this->vli.company, this->vli.index);
+	Debug(misc, Severity::Notice, "Building vehicle list type {} for company {} given index {}", this->vli.type, this->vli.company, this->vli.index);
 
 	this->vehgroups.clear();
 
@@ -2246,7 +2246,7 @@ public:
 		if (this->vehgroups.NeedResort()) {
 			StationID station = (this->vli.type == VehicleListType::Station) ? this->vli.ToStationID() : StationID::Invalid();
 
-			Debug(misc, 3, "Periodic resort {} list company {} at station {}", this->vli.vtype, this->owner, station);
+			Debug(misc, Severity::Notice, "Periodic resort {} list company {} at station {}", this->vli.vtype, this->owner, station);
 			this->SetDirty();
 		}
 	}

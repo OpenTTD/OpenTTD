@@ -259,7 +259,7 @@ void CommandHelperBase::InternalPostResult(CommandCost &res, TileIndex tile, boo
  */
 void CommandHelperBase::LogCommandExecution(Commands cmd, StringID err_message, const CommandDataBuffer &args, bool failed)
 {
-	Debug(desync, 1, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameEconomy::date.base(), TimerGameEconomy::date_fract, _current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
+	Debug(desync, Severity::Error, "{}: {:08x}; {:02x}; {:02x}; {:08x}; {:08x}; {} ({})", failed ? "cmdf" : "cmd", (uint32_t)TimerGameEconomy::date.base(), TimerGameEconomy::date_fract, _current_company, cmd, err_message, FormatArrayAsHex(args), GetCommandName(cmd));
 }
 
 /**
@@ -324,7 +324,7 @@ std::tuple<bool, bool, bool> CommandHelperBase::InternalExecuteValidateTestAndPr
 		BasePersistentStorageArray::SwitchMode(PSM_ENTER_COMMAND);
 	}
 
-	return { false, _debug_desync_level >= 1, send_net };
+	return { false, _debug_desync_level >= Severity::Error, send_net };
 }
 
 /**

@@ -33,7 +33,7 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 	const auto &type_map = (rtt == RoadTramType::Tram) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 
 	if (last > std::size(type_map)) {
-		GrfMsg(1, "RoadTypeChangeInfo: Road type {} is invalid, max {}, ignoring", last, std::size(type_map));
+		GrfMsg(Severity::Error, "RoadTypeChangeInfo: Road type {} is invalid, max {}, ignoring", last, std::size(type_map));
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -84,7 +84,7 @@ static ChangeInfoResult RoadTypeChangeInfo(uint first, uint last, int prop, Byte
 								if (GetRoadTramType(resolved_rt) == rtt) {
 									rti->powered_roadtypes.Set(resolved_rt);
 								} else {
-									GrfMsg(1, "RoadTypeChangeInfo: Powered road type list: Road type {} road/tram type does not match road type {}, ignoring", resolved_rt, rt);
+									GrfMsg(Severity::Error, "RoadTypeChangeInfo: Powered road type list: Road type {} road/tram type does not match road type {}, ignoring", resolved_rt, rt);
 								}
 								break;
 							case 0x18: rti->introduction_required_roadtypes.Set(resolved_rt); break;
@@ -153,7 +153,7 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 	auto &type_map = (rtt == RoadTramType::Tram) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
 
 	if (last > std::size(type_map)) {
-		GrfMsg(1, "RoadTypeReserveInfo: Road type {} is invalid, max {}, ignoring", last, std::size(type_map));
+		GrfMsg(Severity::Error, "RoadTypeReserveInfo: Road type {} is invalid, max {}, ignoring", last, std::size(type_map));
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -166,7 +166,7 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 					/* Set up new road type */
 					rt = AllocateRoadType(rtl, rtt);
 				} else if (GetRoadTramType(rt) != rtt) {
-					GrfMsg(1, "RoadTypeReserveInfo: Road type {} is invalid type (road/tram), ignoring", id);
+					GrfMsg(Severity::Error, "RoadTypeReserveInfo: Road type {} is invalid type (road/tram), ignoring", id);
 					return ChangeInfoResult::InvalidId;
 				}
 
@@ -193,7 +193,7 @@ static ChangeInfoResult RoadTypeReserveInfo(uint first, uint last, int prop, Byt
 					}
 					break;
 				}
-				GrfMsg(1, "RoadTypeReserveInfo: Ignoring property 1D for road type {} because no label was set", id);
+				GrfMsg(Severity::Error, "RoadTypeReserveInfo: Ignoring property 1D for road type {} because no label was set", id);
 				/* FALL THROUGH */
 
 			case 0x0F: // Powered roadtype list

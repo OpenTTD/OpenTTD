@@ -144,6 +144,7 @@ add_files(
     date_gui.h
     debug.cpp
     debug.h
+    debug_type.h
     dedicated.cpp
     depot.cpp
     depot_base.h

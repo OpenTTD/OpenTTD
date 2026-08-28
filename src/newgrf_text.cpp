@@ -113,7 +113,7 @@ struct UnmappedChoiceList {
 		if (this->strings.find(0) == this->strings.end()) {
 			/* In case of a (broken) NewGRF without a default,
 			 * assume an empty string. */
-			GrfMsg(1, "choice list misses default value");
+			GrfMsg(Severity::Error, "choice list misses default value");
 			this->strings[0] = std::string();
 		}
 
@@ -189,7 +189,7 @@ struct UnmappedChoiceList {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0];
 				size_t len = str.size();
-				if (len > UINT8_MAX) GrfMsg(1, "choice list string is too long");
+				if (len > UINT8_MAX) GrfMsg(Severity::Error, "choice list string is too long");
 				builder.PutUint8(ClampTo<uint8_t>(len));
 			}
 
@@ -257,7 +257,7 @@ std::string TranslateTTDPatchCodes(GrfID grfid, GRFLanguage language_id, bool al
 				if (allow_newlines) {
 					builder.PutChar(0x0A);
 				} else {
-					GrfMsg(1, "Detected newline in string that does not allow one");
+					GrfMsg(Severity::Error, "Detected newline in string that does not allow one");
 				}
 				break;
 			case 0x0E: builder.PutUtf8(SCC_TINYFONT); break;
@@ -347,13 +347,13 @@ std::string TranslateTTDPatchCodes(GrfID grfid, GRFLanguage language_id, bool al
 					case 0x11:
 						if (!mapping_pg.has_value() && !mapping_c.has_value()) {
 							if (code == 0x10) consumer.SkipUint8(); // Skip the index
-							GrfMsg(1, "choice list {} marker found when not expected", code == 0x10 ? "next" : "default");
+							GrfMsg(Severity::Error, "choice list {} marker found when not expected", code == 0x10 ? "next" : "default");
 							break;
 						} else {
 							auto &mapping = mapping_pg ? mapping_pg : mapping_c;
 							int index = (code == 0x10 ? consumer.ReadUint8() : 0);
 							if (mapping->strings.find(index) != mapping->strings.end()) {
-								GrfMsg(1, "duplicate choice list string, ignoring");
+								GrfMsg(Severity::Error, "duplicate choice list string, ignoring");
 							} else {
 								builder = StringBuilder(mapping->strings[index]);
 								if (!mapping_pg) dest_c = mapping->strings[index];
@@ -363,7 +363,7 @@ std::string TranslateTTDPatchCodes(GrfID grfid, GRFLanguage language_id, bool al
 
 					case 0x12:
 						if (!mapping_pg.has_value() && !mapping_c.has_value()) {
-							GrfMsg(1, "choice list end marker found when not expected");
+							GrfMsg(Severity::Error, "choice list end marker found when not expected");
 						} else {
 							auto &mapping = mapping_pg ? mapping_pg : mapping_c;
 							auto &new_dest = mapping_pg && dest_c ? dest_c->get() : dest;
@@ -382,7 +382,7 @@ std::string TranslateTTDPatchCodes(GrfID grfid, GRFLanguage language_id, bool al
 						auto &mapping = code == 0x14 ? mapping_c : mapping_pg;
 						/* Case mapping can have nested plural/gender mapping. Otherwise nesting is invalid. */
 						if (mapping.has_value() || mapping_pg.has_value()) {
-							GrfMsg(1, "choice lists can't be stacked, it's going to get messy now...");
+							GrfMsg(Severity::Error, "choice lists can't be stacked, it's going to get messy now...");
 							if (code != 0x14) consumer.SkipUint8();
 						} else {
 							static const StringControlCode mp[] = { SCC_GENDER_LIST, SCC_SWITCH_CASE, SCC_PLURAL_LIST };
@@ -409,7 +409,7 @@ std::string TranslateTTDPatchCodes(GrfID grfid, GRFLanguage language_id, bool al
 					case 0x21: builder.PutUtf8(SCC_NEWGRF_PRINT_DWORD_FORCE); break;
 
 					default:
-						GrfMsg(1, "missing handler for extended format code");
+						GrfMsg(Severity::Error, "missing handler for extended format code");
 						break;
 				}
 				break;
@@ -442,7 +442,7 @@ std::string TranslateTTDPatchCodes(GrfID grfid, GRFLanguage language_id, bool al
 
 string_end:
 	if (mapping_pg.has_value() || mapping_c.has_value()) {
-		GrfMsg(1, "choice list was incomplete, the whole list is ignored");
+		GrfMsg(Severity::Error, "choice list was incomplete, the whole list is ignored");
 	}
 
 	return dest;
@@ -537,7 +537,7 @@ static StringID AddGRFString(GrfID grfid, GRFStringID stringid, GRFLanguage lang
 	std::string newtext = TranslateTTDPatchCodes(grfid, langid_to_add, allow_newlines, text_to_add);
 	AddGRFTextToList(it->textholder, langid_to_add, newtext);
 
-	GrfMsg(3, "Added 0x{:X} grfid {} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, FormatArrayAsHex(grfid), stringid, langid_to_add, newtext, MakeStringID(TEXT_TAB_NEWGRF_START, id));
+	GrfMsg(Severity::Notice, "Added 0x{:X} grfid {} string 0x{:X} lang 0x{:X} string '{}' ({:X})", id, FormatArrayAsHex(grfid), stringid, langid_to_add, newtext, MakeStringID(TEXT_TAB_NEWGRF_START, id));
 
 	return MakeStringID(TEXT_TAB_NEWGRF_START, id);
 }

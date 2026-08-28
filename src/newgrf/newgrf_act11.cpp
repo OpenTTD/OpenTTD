@@ -30,16 +30,16 @@ static void ImportGRFSound(SoundEntry *sound)
 
 	file = GetFileByGRFID(grfid);
 	if (file == nullptr || file->sound_offset == 0) {
-		GrfMsg(1, "ImportGRFSound: Source file not available");
+		GrfMsg(Severity::Error, "ImportGRFSound: Source file not available");
 		return;
 	}
 
 	if (sound_id >= file->num_sounds) {
-		GrfMsg(1, "ImportGRFSound: Sound effect {} is invalid", sound_id);
+		GrfMsg(Severity::Error, "ImportGRFSound: Sound effect {} is invalid", sound_id);
 		return;
 	}
 
-	GrfMsg(2, "ImportGRFSound: Copying sound {} ({}) from file {}", sound_id, file->sound_offset + sound_id, FormatArrayAsHex(grfid));
+	GrfMsg(Severity::Warning, "ImportGRFSound: Copying sound {} ({}) from file {}", sound_id, file->sound_offset + sound_id, FormatArrayAsHex(grfid));
 
 	*sound = *GetSound(file->sound_offset + sound_id);
 
@@ -104,10 +104,10 @@ static void GRFSound(ByteReader &buf)
 		if (grf_container_version >= 2 && type == 0xFD) {
 			/* Reference to sprite section. */
 			if (invalid) {
-				GrfMsg(1, "GRFSound: Sound index out of range (multiple Action 11?)");
+				GrfMsg(Severity::Error, "GRFSound: Sound index out of range (multiple Action 11?)");
 				file.SkipBytes(len);
 			} else if (len != 4) {
-				GrfMsg(1, "GRFSound: Invalid sprite section import");
+				GrfMsg(Severity::Error, "GRFSound: Invalid sprite section import");
 				file.SkipBytes(len);
 			} else {
 				uint32_t id = file.ReadDword();
@@ -117,14 +117,14 @@ static void GRFSound(ByteReader &buf)
 		}
 
 		if (type != 0xFF) {
-			GrfMsg(1, "GRFSound: Unexpected RealSprite found, skipping");
+			GrfMsg(Severity::Error, "GRFSound: Unexpected RealSprite found, skipping");
 			file.SkipBytes(7);
 			SkipSpriteData(*_cur_gps.file, type, len - 8);
 			continue;
 		}
 
 		if (invalid) {
-			GrfMsg(1, "GRFSound: Sound index out of range (multiple Action 11?)");
+			GrfMsg(Severity::Error, "GRFSound: Sound index out of range (multiple Action 11?)");
 			file.SkipBytes(len);
 		}
 
@@ -134,7 +134,7 @@ static void GRFSound(ByteReader &buf)
 				/* Allocate sound only in init stage. */
 				if (_cur_gps.stage == GrfLoadingStage::Init) {
 					if (grf_container_version >= 2) {
-						GrfMsg(1, "GRFSound: Inline sounds are not supported for container version >= 2");
+						GrfMsg(Severity::Error, "GRFSound: Inline sounds are not supported for container version >= 2");
 					} else {
 						LoadGRFSound(offs, sound + i);
 					}
@@ -146,7 +146,7 @@ static void GRFSound(ByteReader &buf)
 				if (_cur_gps.stage == GrfLoadingStage::Activation) {
 					/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
 					 * importing sounds, so this is probably all wrong... */
-					if (file.ReadByte() != 0) GrfMsg(1, "GRFSound: Import type mismatch");
+					if (file.ReadByte() != 0) GrfMsg(Severity::Error, "GRFSound: Import type mismatch");
 					ImportGRFSound(sound + i);
 				} else {
 					file.SkipBytes(len - 1); // already read <action>
@@ -154,7 +154,7 @@ static void GRFSound(ByteReader &buf)
 				break;
 
 			default:
-				GrfMsg(1, "GRFSound: Unexpected Action {:x} found, skipping", action);
+				GrfMsg(Severity::Error, "GRFSound: Unexpected Action {:x} found, skipping", action);
 				file.SkipBytes(len - 1); // already read <action>
 				break;
 		}
@@ -170,7 +170,7 @@ static void SkipAct11(ByteReader &buf)
 
 	_cur_gps.skip_sprites = buf.ReadWord();
 
-	GrfMsg(3, "SkipAct11: Skipping {} sprites", _cur_gps.skip_sprites);
+	GrfMsg(Severity::Notice, "SkipAct11: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
 /** @copydoc GrfActionHandler::FileScan */

@@ -57,7 +57,7 @@ void SetCustomEngineSprites(EngineID engine, CargoType cargo, const SpriteGroup 
 	Engine *e = Engine::Get(engine);
 
 	if (e->grf_prop.GetSpriteGroup(cargo) != nullptr) {
-		GrfMsg(6, "SetCustomEngineSprites: engine {} cargo {} already has group -- replacing", engine, cargo);
+		GrfMsg(Severity::Debug2, "SetCustomEngineSprites: engine {} cargo {} already has group -- replacing", engine, cargo);
 	}
 	e->grf_prop.SetSpriteGroup(cargo, group);
 }
@@ -972,7 +972,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		default: break;
 	}
 
-	Debug(grf, 1, "Unhandled vehicle variable 0x{:X}, type 0x{:X}", variable, (uint)v->type);
+	Debug(grf, Severity::Error, "Unhandled vehicle variable 0x{:X}, type 0x{:X}", variable, (uint)v->type);
 
 	available = false;
 	return UINT_MAX;

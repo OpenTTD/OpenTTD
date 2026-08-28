@@ -79,7 +79,7 @@ inline bool StartNewThread(std::thread *thr, std::string_view name, TFn&& _Fx, T
 		return true;
 	} catch (const std::system_error &e) {
 		/* Something went wrong, the system we are running on might not support threads. */
-		Debug(misc, 1, "Can't create thread '{}': {}", name, e.what());
+		Debug(misc, Severity::Error, "Can't create thread '{}': {}", name, e.what());
 	}
 
 	return false;

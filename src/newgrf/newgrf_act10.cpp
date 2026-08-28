@@ -29,7 +29,7 @@ static void DefineGotoLabel(ByteReader &buf)
 
 	_cur_gps.grffile->labels.emplace_back(nfo_label, _cur_gps.nfo_line, _cur_gps.file->GetPos());
 
-	GrfMsg(2, "DefineGotoLabel: GOTO target with label 0x{:02X}", nfo_label);
+	GrfMsg(Severity::Warning, "DefineGotoLabel: GOTO target with label 0x{:02X}", nfo_label);
 }
 
 /** @copybrief GrfActionHandler::FileScan */

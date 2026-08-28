@@ -43,7 +43,7 @@ Tindex NewGRFClass<Tspec, Tindex>::Allocate(GlobalID global_id)
 		return it->Index();
 	}
 
-	GrfMsg(2, "ClassAllocate: already allocated {} classes, using default", Tindex::End().base());
+	GrfMsg(Severity::Warning, "ClassAllocate: already allocated {} classes, using default", Tindex::End().base());
 	return static_cast<Tindex>(0);
 }
 

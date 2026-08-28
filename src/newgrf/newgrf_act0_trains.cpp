@@ -52,7 +52,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 					case 1: _gted[e->index].railtypelabels.push_back(RAILTYPE_LABEL_MONO); break;
 					case 2: _gted[e->index].railtypelabels.push_back(RAILTYPE_LABEL_MAGLEV); break;
 					default:
-						GrfMsg(1, "RailVehicleChangeInfo: Invalid track type {} specified, ignoring", tracktype);
+						GrfMsg(Severity::Error, "RailVehicleChangeInfo: Invalid track type {} specified, ignoring", tracktype);
 						break;
 				}
 				break;
@@ -104,7 +104,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				if (IsValidNewGRFImageIndex<VehicleType::Train>(spriteid)) {
 					rvi->image_index = spriteid;
 				} else {
-					GrfMsg(1, "RailVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);
+					GrfMsg(Severity::Error, "RailVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);
 					rvi->image_index = 0;
 				}
 				break;
@@ -136,7 +136,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				} else {
 					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur_gps.grffile);
-					if (ei->cargo_type == INVALID_CARGO) GrfMsg(2, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
+					if (ei->cargo_type == INVALID_CARGO) GrfMsg(Severity::Warning, "RailVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				ei->cargo_label = CT_INVALID;
 				break;
@@ -151,7 +151,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				break;
 
 			case 0x18: // AI rank
-				GrfMsg(2, "RailVehicleChangeInfo: Property 0x18 'AI rank' not used by NoAI, ignored.");
+				GrfMsg(Severity::Warning, "RailVehicleChangeInfo: Property 0x18 'AI rank' not used by NoAI, ignored.");
 				buf.ReadByte();
 				break;
 
@@ -248,7 +248,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 				uint8_t weight = buf.ReadByte();
 
 				if (weight > 4) {
-					GrfMsg(2, "RailVehicleChangeInfo: Nonsensical weight of {} tons, ignoring", weight << 8);
+					GrfMsg(Severity::Warning, "RailVehicleChangeInfo: Nonsensical weight of {} tons, ignoring", weight << 8);
 				} else {
 					SB(rvi->weight, 8, 8, weight);
 				}
@@ -338,7 +338,7 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 					if (tracktype < _cur_gps.grffile->railtype_list.size()) {
 						_gted[e->index].railtypelabels.push_back(_cur_gps.grffile->railtype_list[tracktype]);
 					} else {
-						GrfMsg(1, "RailVehicleChangeInfo: Invalid track type {} specified, ignoring", tracktype);
+						GrfMsg(Severity::Error, "RailVehicleChangeInfo: Invalid track type {} specified, ignoring", tracktype);
 					}
 				}
 				break;

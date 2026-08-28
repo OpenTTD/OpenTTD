@@ -39,7 +39,7 @@ static void CfgApply(ByteReader &buf)
 
 	/* Check if the sprite is a pseudo sprite. We can't operate on real sprites. */
 	if (type != 0xFF) {
-		GrfMsg(2, "CfgApply: Ignoring (next sprite is real, unsupported)");
+		GrfMsg(Severity::Warning, "CfgApply: Ignoring (next sprite is real, unsupported)");
 
 		/* Reset the file position to the start of the next sprite */
 		file.SeekTo(pos, SEEK_SET);
@@ -80,11 +80,11 @@ static void CfgApply(ByteReader &buf)
 		/* If the parameter is a GRF parameter (not an internal variable) check
 		 * if it (and all further sequential parameters) has been defined. */
 		if (param_num < 0x80 && (param_num + (param_size - 1) / 4) >= std::size(_cur_gps.grffile->param)) {
-			GrfMsg(2, "CfgApply: Ignoring (param {} not set)", (param_num + (param_size - 1) / 4));
+			GrfMsg(Severity::Warning, "CfgApply: Ignoring (param {} not set)", (param_num + (param_size - 1) / 4));
 			break;
 		}
 
-		GrfMsg(8, "CfgApply: Applying {} bytes from parameter 0x{:02X} at offset 0x{:04X}", param_size, param_num, offset);
+		GrfMsg(Severity::Trace2, "CfgApply: Applying {} bytes from parameter 0x{:02X} at offset 0x{:04X}", param_size, param_num, offset);
 
 		bool carry = false;
 		for (uint i = 0; i < param_size && offset + i < num; i++) {
