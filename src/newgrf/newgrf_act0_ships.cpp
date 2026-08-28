@@ -52,7 +52,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				if (IsValidNewGRFImageIndex<VehicleType::Ship>(spriteid)) {
 					svi->image_index = spriteid;
 				} else {
-					GrfMsg(1, "ShipVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);
+					GrfMsg(Severity::Error, "ShipVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);
 					svi->image_index = 0;
 				}
 				break;
@@ -80,7 +80,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 				} else {
 					/* Use translated cargo. Might result in INVALID_CARGO (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur_gps.grffile);
-					if (ei->cargo_type == INVALID_CARGO) GrfMsg(2, "ShipVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
+					if (ei->cargo_type == INVALID_CARGO) GrfMsg(Severity::Warning, "ShipVehicleChangeInfo: Invalid cargo type {}, using first refittable", ctype);
 				}
 				ei->cargo_label = CT_INVALID;
 				break;

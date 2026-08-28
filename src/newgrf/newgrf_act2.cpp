@@ -74,7 +74,7 @@ TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool in
 		/* Use sprite from Action 1 */
 		uint index = GB(grf_sprite->sprite, 0, 14);
 		if (use_cur_spritesets && (!_cur_gps.IsValidSpriteSet(feature, index) || _cur_gps.GetNumEnts(feature, index) == 0)) {
-			GrfMsg(1, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset {}", index);
+			GrfMsg(Severity::Error, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset {}", index);
 			grf_sprite->sprite = SPR_IMG_QUERY;
 			grf_sprite->pal = PAL_NONE;
 		} else {
@@ -84,7 +84,7 @@ TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool in
 			SetBit(grf_sprite->sprite, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
 	} else if ((flags & TLF_SPRITE_VAR10) && !(flags & TLF_SPRITE_REG_FLAGS)) {
-		GrfMsg(1, "ReadSpriteLayoutSprite: Spritelayout specifies var10 value for non-action-1 sprite");
+		GrfMsg(Severity::Error, "ReadSpriteLayoutSprite: Spritelayout specifies var10 value for non-action-1 sprite");
 		DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
 		return flags;
 	}
@@ -93,7 +93,7 @@ TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool in
 		/* Use palette from Action 1 */
 		uint index = GB(grf_sprite->pal, 0, 14);
 		if (use_cur_spritesets && (!_cur_gps.IsValidSpriteSet(feature, index) || _cur_gps.GetNumEnts(feature, index) == 0)) {
-			GrfMsg(1, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset {} for 'palette'", index);
+			GrfMsg(Severity::Error, "ReadSpriteLayoutSprite: Spritelayout uses undefined custom spriteset {} for 'palette'", index);
 			grf_sprite->pal = PAL_NONE;
 		} else {
 			SpriteID sprite = use_cur_spritesets ? _cur_gps.GetSprite(feature, index) : index;
@@ -102,7 +102,7 @@ TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool in
 			SetBit(grf_sprite->pal, SPRITE_MODIFIER_CUSTOM_SPRITE);
 		}
 	} else if ((flags & TLF_PALETTE_VAR10) && !(flags & TLF_PALETTE_REG_FLAGS)) {
-		GrfMsg(1, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 value for non-action-1 palette");
+		GrfMsg(Severity::Error, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 value for non-action-1 palette");
 		DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
 		return flags;
 	}
@@ -144,7 +144,7 @@ static void ReadSpriteLayoutRegisters(ByteReader &buf, TileLayoutFlags flags, bo
 	if (flags & TLF_SPRITE_VAR10) {
 		regs.sprite_var10 = buf.ReadByte();
 		if (regs.sprite_var10 > TLR_MAX_VAR10) {
-			GrfMsg(1, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 ({}) exceeding the maximal allowed value {}", regs.sprite_var10, TLR_MAX_VAR10);
+			GrfMsg(Severity::Error, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 ({}) exceeding the maximal allowed value {}", regs.sprite_var10, TLR_MAX_VAR10);
 			DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
 			return;
 		}
@@ -153,7 +153,7 @@ static void ReadSpriteLayoutRegisters(ByteReader &buf, TileLayoutFlags flags, bo
 	if (flags & TLF_PALETTE_VAR10) {
 		regs.palette_var10 = buf.ReadByte();
 		if (regs.palette_var10 > TLR_MAX_VAR10) {
-			GrfMsg(1, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 ({}) exceeding the maximal allowed value {}", regs.palette_var10, TLR_MAX_VAR10);
+			GrfMsg(Severity::Error, "ReadSpriteLayoutRegisters: Spritelayout specifies var10 ({}) exceeding the maximal allowed value {}", regs.palette_var10, TLR_MAX_VAR10);
 			DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
 			return;
 		}
@@ -187,7 +187,7 @@ bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_s
 	if (_cur_gps.skip_sprites < 0) return true;
 
 	if (flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS)) {
-		GrfMsg(1, "ReadSpriteLayout: Spritelayout uses invalid flag 0x{:X} for ground sprite", flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS));
+		GrfMsg(Severity::Error, "ReadSpriteLayout: Spritelayout uses invalid flag 0x{:X} for ground sprite", flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS));
 		DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
 		return true;
 	}
@@ -202,7 +202,7 @@ bool ReadSpriteLayout(ByteReader &buf, uint num_building_sprites, bool use_cur_s
 		if (_cur_gps.skip_sprites < 0) return true;
 
 		if (flags & ~valid_flags) {
-			GrfMsg(1, "ReadSpriteLayout: Spritelayout uses unknown flag 0x{:X}", flags & ~valid_flags);
+			GrfMsg(Severity::Error, "ReadSpriteLayout: Spritelayout uses unknown flag 0x{:X}", flags & ~valid_flags);
 			DisableGrf(STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT);
 			return true;
 		}
@@ -299,7 +299,7 @@ static const SpriteGroup *GetGroupFromGroupID(uint8_t setid, uint8_t type, uint1
 	if (groupid == GROUPID_CALLBACK_FAILED) return nullptr;
 
 	if (groupid > MAX_SPRITEGROUP || _cur_gps.spritegroups[groupid] == nullptr) {
-		GrfMsg(1, "GetGroupFromGroupID(0x{:02X}:0x{:02X}): Groupid 0x{:04X} does not exist, leaving empty", setid, type, groupid);
+		GrfMsg(Severity::Error, "GetGroupFromGroupID(0x{:02X}:0x{:02X}): Groupid 0x{:04X} does not exist, leaving empty", setid, type, groupid);
 		return nullptr;
 	}
 
@@ -319,7 +319,7 @@ static const SpriteGroup *CreateGroupFromGroupID(GrfSpecFeature feature, uint8_t
 	if (HasBit(spriteid, 15)) return GetCallbackResultGroup(spriteid);
 
 	if (!_cur_gps.IsValidSpriteSet(feature, spriteid)) {
-		GrfMsg(1, "CreateGroupFromGroupID(0x{:02X}:0x{:02X}): Sprite set {} invalid", setid, type, spriteid);
+		GrfMsg(Severity::Error, "CreateGroupFromGroupID(0x{:02X}:0x{:02X}): Sprite set {} invalid", setid, type, spriteid);
 		return nullptr;
 	}
 
@@ -485,7 +485,7 @@ static const SpriteGroup *ReadRandomizedSpriteGroup(ByteReader &buf, GrfSpecFeat
 
 	uint8_t num_groups = buf.ReadByte();
 	if (!HasExactlyOneBit(num_groups)) {
-		GrfMsg(1, "NewSpriteGroup: Random Action 2 nrand should be power of 2");
+		GrfMsg(Severity::Error, "NewSpriteGroup: Random Action 2 nrand should be power of 2");
 	}
 
 	group->groups.reserve(num_groups);
@@ -510,21 +510,21 @@ static const SpriteGroup *ReadRealSpriteGroup(ByteReader &buf, GrfSpecFeature fe
 	uint8_t num_loading = buf.ReadByte();
 
 	if (!_cur_gps.HasValidSpriteSets(feature)) {
-		GrfMsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
+		GrfMsg(Severity::Fatal, "NewSpriteGroup: No sprite set to work on! Skipping");
 		return nullptr;
 	}
 
-	GrfMsg(6, "NewSpriteGroup: New SpriteGroup 0x{:02X}, {} loaded, {} loading", setid, num_loaded, num_loading);
+	GrfMsg(Severity::Debug2, "NewSpriteGroup: New SpriteGroup 0x{:02X}, {} loaded, {} loading", setid, num_loaded, num_loading);
 
 	if (num_loaded + num_loading == 0) {
-		GrfMsg(1, "NewSpriteGroup: no result, skipping invalid RealSpriteGroup");
+		GrfMsg(Severity::Error, "NewSpriteGroup: no result, skipping invalid RealSpriteGroup");
 		return nullptr;
 	}
 
 	if (num_loaded + num_loading == 1) {
 		/* Avoid creating 'Real' sprite group if only one option. */
 		uint16_t spriteid = buf.ReadWord();
-		GrfMsg(8, "NewSpriteGroup: one result, skipping RealSpriteGroup = subset {}", spriteid);
+		GrfMsg(Severity::Trace2, "NewSpriteGroup: one result, skipping RealSpriteGroup = subset {}", spriteid);
 		return CreateGroupFromGroupID(feature, setid, type, spriteid);
 	}
 
@@ -534,20 +534,20 @@ static const SpriteGroup *ReadRealSpriteGroup(ByteReader &buf, GrfSpecFeature fe
 	loaded.reserve(num_loaded);
 	for (uint i = 0; i < num_loaded; i++) {
 		loaded.push_back(buf.ReadWord());
-		GrfMsg(8, "NewSpriteGroup: + rg->loaded[{}] = subset {}", i, loaded[i]);
+		GrfMsg(Severity::Trace2, "NewSpriteGroup: + rg->loaded[{}] = subset {}", i, loaded[i]);
 	}
 
 	loading.reserve(num_loading);
 	for (uint i = 0; i < num_loading; i++) {
 		loading.push_back(buf.ReadWord());
-		GrfMsg(8, "NewSpriteGroup: + rg->loading[{}] = subset {}", i, loading[i]);
+		GrfMsg(Severity::Trace2, "NewSpriteGroup: + rg->loading[{}] = subset {}", i, loading[i]);
 	}
 
 	bool loaded_same = !loaded.empty() && std::adjacent_find(loaded.begin(), loaded.end(), std::not_equal_to<>()) == loaded.end();
 	bool loading_same = !loading.empty() && std::adjacent_find(loading.begin(), loading.end(), std::not_equal_to<>()) == loading.end();
 	if (loaded_same && loading_same && loaded[0] == loading[0]) {
 		/* Both lists only contain the same value, so don't create 'Real' sprite group */
-		GrfMsg(8, "NewSpriteGroup: same result, skipping RealSpriteGroup = subset {}", loaded[0]);
+		GrfMsg(Severity::Trace2, "NewSpriteGroup: same result, skipping RealSpriteGroup = subset {}", loaded[0]);
 		return CreateGroupFromGroupID(feature, setid, type, loaded[0]);
 	}
 
@@ -602,7 +602,7 @@ static const SpriteGroup *ReadTileLayoutSpriteGroup(ByteReader &buf, GrfSpecFeat
 static const SpriteGroup *ReadIndustryProductionSpriteGroup(ByteReader &buf, uint8_t type)
 {
 	if (type > 2) {
-		GrfMsg(1, "NewSpriteGroup: Unsupported industry production version {}, skipping", type);
+		GrfMsg(Severity::Error, "NewSpriteGroup: Unsupported industry production version {}, skipping", type);
 		return nullptr;
 	}
 
@@ -693,7 +693,7 @@ static const SpriteGroup *ReadIndustryProductionSpriteGroup(ByteReader &buf, uin
 static const SpriteGroup *ReadSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8_t setid, uint8_t type)
 {
 	if (feature >= GrfSpecFeature::End) {
-		GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
+		GrfMsg(Severity::Error, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return nullptr;
 	}
 
@@ -719,7 +719,7 @@ static const SpriteGroup *ReadSpriteGroup(ByteReader &buf, GrfSpecFeature featur
 		/* Neither a variable or randomized sprite group... must be a real group */
 		default:
 			if (type >= 0x80) {
-				GrfMsg(0, "NewSpriteGroup: Reserved group type 0x{:02X}, skipping", type);
+				GrfMsg(Severity::Fatal, "NewSpriteGroup: Reserved group type 0x{:02X}, skipping", type);
 				return nullptr;
 			}
 
@@ -749,7 +749,7 @@ static const SpriteGroup *ReadSpriteGroup(ByteReader &buf, GrfSpecFeature featur
 					return ReadIndustryProductionSpriteGroup(buf, type);
 
 				default:
-					GrfMsg(1, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
+					GrfMsg(Severity::Error, "NewSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 					return nullptr;
 			}
 	}

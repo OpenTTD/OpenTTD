@@ -44,7 +44,7 @@ bool NetworkCoordinatorSocketHandler::HandlePacket(Packet &p)
 		case PacketCoordinatorType::GameCoordinatorTurnConnect: return this->ReceiveGameCoordinatorTurnConnect(p);
 
 		default:
-			Debug(net, 0, "[tcp/coordinator] Received invalid packet type {}", type);
+			Debug(net, Severity::Fatal, "[tcp/coordinator] Received invalid packet type {}", type);
 			return false;
 	}
 }
@@ -80,7 +80,7 @@ bool NetworkCoordinatorSocketHandler::ReceivePackets()
  */
 bool NetworkCoordinatorSocketHandler::ReceiveInvalidPacket(PacketCoordinatorType type)
 {
-	Debug(net, 0, "[tcp/coordinator] Received illegal packet type {}", type);
+	Debug(net, Severity::Fatal, "[tcp/coordinator] Received illegal packet type {}", type);
 	return false;
 }
 

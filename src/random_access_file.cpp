@@ -93,7 +93,7 @@ void RandomAccessFile::SeekTo(size_t pos, int mode)
 
 	this->pos = pos;
 	if (fseek(*this->file_handle, this->pos, SEEK_SET) < 0) {
-		Debug(misc, 0, "Seeking in {} failed", this->filename);
+		Debug(misc, Severity::Fatal, "Seeking in {} failed", this->filename);
 	}
 
 	/* Reset the buffer, so the next ReadByte will read bytes from the file. */

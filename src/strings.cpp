@@ -349,7 +349,7 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 				try {
 					GenerateTownNameString(builder, (string - SPECSTR_TOWNNAME_START).base(), args.GetNextParameter<uint32_t>());
 				} catch (const std::runtime_error &e) {
-					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
+					Debug(misc, Severity::Fatal, "GetStringWithArgs: {}", e.what());
 					builder += "(invalid string parameter)";
 				}
 				return;
@@ -361,7 +361,7 @@ void GetStringWithArgs(StringBuilder &builder, StringID string, StringParameters
 				try {
 					if (GetSpecialNameString(builder, string, args)) return;
 				} catch (const std::runtime_error &e) {
-					Debug(misc, 0, "GetStringWithArgs: {}", e.what());
+					Debug(misc, Severity::Fatal, "GetStringWithArgs: {}", e.what());
 					builder += "(invalid string parameter)";
 					return;
 				}
@@ -1862,7 +1862,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 					break;
 			}
 		} catch (std::out_of_range &e) {
-			Debug(misc, 0, "FormatString: {}", e.what());
+			Debug(misc, Severity::Fatal, "FormatString: {}", e.what());
 			builder += "(invalid parameter)";
 		}
 	}
@@ -2232,15 +2232,15 @@ static void FillLanguageList(const std::string &path)
 		/* Check whether the file is of the correct version */
 		std::string file = FS2OTTD(lmd.file.native());
 		if (!GetLanguageFileHeader(file, &lmd)) {
-			Debug(misc, 3, "{} is not a valid language file", file);
+			Debug(misc, Severity::Notice, "{} is not a valid language file", file);
 		} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
-			Debug(misc, 3, "{}'s language ID is already known", file);
+			Debug(misc, Severity::Notice, "{}'s language ID is already known", file);
 		} else {
 			_languages.push_back(std::move(lmd));
 		}
 	}
 	if (error_code) {
-		Debug(misc, 9, "Unable to open directory {}: {}", path, error_code.message());
+		Debug(misc, Severity::Trace3, "Unable to open directory {}: {}", path, error_code.message());
 	}
 }
 

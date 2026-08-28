@@ -29,12 +29,12 @@ static ChangeInfoResult SoundEffectChangeInfo(uint first, uint last, int prop, B
 	if (first == last) return ret;
 
 	if (_cur_gps.grffile->sound_offset == 0) {
-		GrfMsg(1, "SoundEffectChangeInfo: No effects defined, skipping");
+		GrfMsg(Severity::Error, "SoundEffectChangeInfo: No effects defined, skipping");
 		return ChangeInfoResult::InvalidId;
 	}
 
 	if (last - ORIGINAL_SAMPLE_COUNT > _cur_gps.grffile->num_sounds) {
-		GrfMsg(1, "SoundEffectChangeInfo: Attempting to change undefined sound effect ({}), max ({}). Ignoring.", last, ORIGINAL_SAMPLE_COUNT + _cur_gps.grffile->num_sounds);
+		GrfMsg(Severity::Error, "SoundEffectChangeInfo: Attempting to change undefined sound effect ({}), max ({}). Ignoring.", last, ORIGINAL_SAMPLE_COUNT + _cur_gps.grffile->num_sounds);
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -54,7 +54,7 @@ static ChangeInfoResult SoundEffectChangeInfo(uint first, uint last, int prop, B
 				SoundID orig_sound = buf.ReadByte();
 
 				if (orig_sound >= ORIGINAL_SAMPLE_COUNT) {
-					GrfMsg(1, "SoundEffectChangeInfo: Original sound {} not defined (max {})", orig_sound, ORIGINAL_SAMPLE_COUNT);
+					GrfMsg(Severity::Error, "SoundEffectChangeInfo: Original sound {} not defined (max {})", orig_sound, ORIGINAL_SAMPLE_COUNT);
 				} else {
 					SoundEntry *old_sound = GetSound(orig_sound);
 

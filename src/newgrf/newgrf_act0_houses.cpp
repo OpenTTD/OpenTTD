@@ -98,7 +98,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_HOUSES_PER_GRF) {
-		GrfMsg(1, "TownHouseChangeInfo: Too many houses loaded ({}), max ({}). Ignoring.", last, NUM_HOUSES_PER_GRF);
+		GrfMsg(Severity::Error, "TownHouseChangeInfo: Too many houses loaded ({}), max ({}). Ignoring.", last, NUM_HOUSES_PER_GRF);
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -125,7 +125,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 					continue;
 				} else if (subs_id >= NEW_HOUSE_OFFSET) {
 					/* The substitute id must be one of the original houses. */
-					GrfMsg(2, "TownHouseChangeInfo: Attempt to use new house {} as substitute house for {}. Ignoring.", subs_id, id);
+					GrfMsg(Severity::Warning, "TownHouseChangeInfo: Attempt to use new house {} as substitute house for {}. Ignoring.", subs_id, id);
 					continue;
 				}
 
@@ -229,7 +229,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 
 				/* The house being overridden must be an original house. */
 				if (override_id >= NEW_HOUSE_OFFSET) {
-					GrfMsg(2, "TownHouseChangeInfo: Attempt to override new house {} with house id {}. Ignoring.", override_id, id);
+					GrfMsg(Severity::Warning, "TownHouseChangeInfo: Attempt to override new house {} with house id {}. Ignoring.", override_id, id);
 					continue;
 				}
 

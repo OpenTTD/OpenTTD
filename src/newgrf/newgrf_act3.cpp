@@ -44,24 +44,24 @@ static CargoType TranslateCargo(GrfSpecFeature feature, uint8_t ctype)
 
 	/* Check if the cargo type is out of bounds of the cargo translation table */
 	if (ctype >= cargo_list.size()) {
-		GrfMsg(1, "TranslateCargo: Cargo type {} out of range (max {}), skipping.", ctype, (unsigned int)_cur_gps.grffile->cargo_list.size() - 1);
+		GrfMsg(Severity::Error, "TranslateCargo: Cargo type {} out of range (max {}), skipping.", ctype, (unsigned int)_cur_gps.grffile->cargo_list.size() - 1);
 		return INVALID_CARGO;
 	}
 
 	/* Look up the cargo label from the translation table */
 	CargoLabel cl = cargo_list[ctype];
 	if (cl == CT_INVALID) {
-		GrfMsg(5, "TranslateCargo: Cargo type {} not available in this climate, skipping.", ctype);
+		GrfMsg(Severity::Debug1, "TranslateCargo: Cargo type {} not available in this climate, skipping.", ctype);
 		return INVALID_CARGO;
 	}
 
 	CargoType cargo_type = GetCargoTypeByLabel(cl);
 	if (!IsValidCargoType(cargo_type)) {
-		GrfMsg(5, "TranslateCargo: Cargo '{}' unsupported, skipping.", cl.AsString());
+		GrfMsg(Severity::Debug1, "TranslateCargo: Cargo '{}' unsupported, skipping.", cl.AsString());
 		return INVALID_CARGO;
 	}
 
-	GrfMsg(6, "TranslateCargo: Cargo '{}' mapped to cargo type {}.", cl.AsString(), cargo_type);
+	GrfMsg(Severity::Debug2, "TranslateCargo: Cargo '{}' mapped to cargo type {}.", cl.AsString(), cargo_type);
 	return cargo_type;
 }
 
@@ -69,7 +69,7 @@ static CargoType TranslateCargo(GrfSpecFeature feature, uint8_t ctype)
 static bool IsValidGroupID(uint16_t groupid, std::string_view function)
 {
 	if (groupid > MAX_SPRITEGROUP || _cur_gps.spritegroups[groupid] == nullptr) {
-		GrfMsg(1, "{}: Spritegroup 0x{:04X} out of range or empty, skipping.", function, groupid);
+		GrfMsg(Severity::Error, "{}: Spritegroup 0x{:04X} out of range or empty, skipping.", function, groupid);
 		return false;
 	}
 
@@ -88,11 +88,11 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 		idcount = GB(idcount, 0, 7);
 
 		if (last_engines.empty()) {
-			GrfMsg(0, "VehicleMapSpriteGroup: WagonOverride: No engine to do override with");
+			GrfMsg(Severity::Fatal, "VehicleMapSpriteGroup: WagonOverride: No engine to do override with");
 			return;
 		}
 
-		GrfMsg(6, "VehicleMapSpriteGroup: WagonOverride: {} engines, {} wagons", last_engines.size(), idcount);
+		GrfMsg(Severity::Debug2, "VehicleMapSpriteGroup: WagonOverride: {} engines, {} wagons", last_engines.size(), idcount);
 	} else {
 		last_engines.resize(idcount);
 	}
@@ -119,7 +119,7 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 		uint16_t groupid = buf.ReadWord();
 		if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) continue;
 
-		GrfMsg(8, "VehicleMapSpriteGroup: * [{}] Cargo type 0x{:X}, group id 0x{:02X}", c, ctype, groupid);
+		GrfMsg(Severity::Trace2, "VehicleMapSpriteGroup: * [{}] Cargo type 0x{:X}, group id 0x{:02X}", c, ctype, groupid);
 
 		CargoType cargo_type = TranslateCargo(feature, ctype);
 		if (!IsValidCargoType(cargo_type)) continue;
@@ -127,7 +127,7 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 		for (uint i = 0; i < idcount; i++) {
 			EngineID engine = engines[i];
 
-			GrfMsg(7, "VehicleMapSpriteGroup: [{}] Engine {}...", i, engine);
+			GrfMsg(Severity::Trace1, "VehicleMapSpriteGroup: [{}] Engine {}...", i, engine);
 
 			if (wagover) {
 				SetWagonOverrideSprites(engine, cargo_type, _cur_gps.spritegroups[groupid], last_engines);
@@ -140,7 +140,7 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 	uint16_t groupid = buf.ReadWord();
 	if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) return;
 
-	GrfMsg(8, "-- Default group id 0x{:04X}", groupid);
+	GrfMsg(Severity::Trace2, "-- Default group id 0x{:04X}", groupid);
 
 	for (uint i = 0; i < idcount; i++) {
 		EngineID engine = engines[i];
@@ -189,9 +189,9 @@ struct PurchaseDefaultMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
 	{
 		if (cid != 0xFF) {
-			GrfMsg(1, "MapSpriteGroup: Invalid cargo bitnum {}, skipping.", cid);
+			GrfMsg(Severity::Error, "MapSpriteGroup: Invalid cargo bitnum {}, skipping.", cid);
 		} else if (T *spec = GetSpec<T>(_cur_gps.grffile, local_id); spec == nullptr) {
-			GrfMsg(1, "MapSpriteGroup: {} undefined, skipping.", local_id);
+			GrfMsg(Severity::Error, "MapSpriteGroup: {} undefined, skipping.", local_id);
 		} else {
 			spec->grf_prop.SetSpriteGroup(StandardSpriteGroup::Purchase, group);
 		}
@@ -200,7 +200,7 @@ struct PurchaseDefaultMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapDefault(uint16_t local_id, const SpriteGroup *group) override
 	{
 		if (T *spec = GetSpec<T>(_cur_gps.grffile, local_id); spec == nullptr) {
-			GrfMsg(1, "MapSpriteGroup: {} undefined, skipping.", local_id);
+			GrfMsg(Severity::Error, "MapSpriteGroup: {} undefined, skipping.", local_id);
 		} else {
 			spec->grf_prop.SetSpriteGroup(StandardSpriteGroup::Default, group);
 			spec->grf_prop.SetGRFFile(_cur_gps.grffile);
@@ -218,7 +218,7 @@ struct CargoTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 		if (!IsValidCargoType(cargo_type)) return;
 
 		if (T *spec = GetSpec<T>(_cur_gps.grffile, local_id); spec == nullptr) {
-			GrfMsg(1, "MapSpriteGroup: {} undefined, skipping", local_id);
+			GrfMsg(Severity::Error, "MapSpriteGroup: {} undefined, skipping", local_id);
 		} else {
 			spec->grf_prop.SetSpriteGroup(cargo_type, group);
 		}
@@ -227,9 +227,9 @@ struct CargoTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapDefault(uint16_t local_id, const SpriteGroup *group) override
 	{
 		if (T *spec = GetSpec<T>(_cur_gps.grffile, local_id); spec == nullptr) {
-			GrfMsg(1, "MapSpriteGroup: {} undefined, skipping", local_id);
+			GrfMsg(Severity::Error, "MapSpriteGroup: {} undefined, skipping", local_id);
 		} else if (spec->grf_prop.HasGrfFile()) {
-			GrfMsg(1, "MapSpriteGroup: {} mapped multiple times, skipping", local_id);
+			GrfMsg(Severity::Error, "MapSpriteGroup: {} mapped multiple times, skipping", local_id);
 		} else {
 			spec->grf_prop.SetSpriteGroup(CargoGRFFileProps::SG_DEFAULT, group);
 			spec->grf_prop.SetGRFFile(_cur_gps.grffile);
@@ -245,7 +245,7 @@ struct CanalMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapDefault(uint16_t local_id, const SpriteGroup *group) override
 	{
 		if (local_id >= to_underlying(CanalFeature::End)) {
-			GrfMsg(1, "CanalMapSpriteGroup: Canal subset {} out of range, skipping", local_id);
+			GrfMsg(Severity::Error, "CanalMapSpriteGroup: Canal subset {} out of range, skipping", local_id);
 		} else {
 			auto &feature = _water_feature[static_cast<CanalFeature>(local_id)];
 			feature.grffile = _cur_gps.grffile;
@@ -272,7 +272,7 @@ struct CargoMapSpriteGroupHandler : MapSpriteGroupHandler {
 	void MapDefault(uint16_t local_id, const SpriteGroup *group) override
 	{
 		if (local_id >= NUM_CARGO) {
-			GrfMsg(1, "CargoMapSpriteGroup: Cargo type {} out of range, skipping", local_id);
+			GrfMsg(Severity::Error, "CargoMapSpriteGroup: Cargo type {} out of range, skipping", local_id);
 		} else {
 			CargoSpec *cs = CargoSpec::Get(local_id);
 			cs->grffile = _cur_gps.grffile;
@@ -339,7 +339,7 @@ struct BadgeMapSpriteGroupHandler : MapSpriteGroupHandler {
 
 		auto found = _cur_gps.grffile->badge_map.find(local_id);
 		if (found == std::end(_cur_gps.grffile->badge_map)) {
-			GrfMsg(1, "BadgeMapSpriteGroup: Badge {} undefined, skipping", local_id);
+			GrfMsg(Severity::Error, "BadgeMapSpriteGroup: Badge {} undefined, skipping", local_id);
 		} else {
 			auto &badge = *GetBadge(found->second);
 			badge.grf_prop.SetSpriteGroup(static_cast<GrfSpecFeature>(cid), group);
@@ -350,7 +350,7 @@ struct BadgeMapSpriteGroupHandler : MapSpriteGroupHandler {
 	{
 		auto found = _cur_gps.grffile->badge_map.find(local_id);
 		if (found == std::end(_cur_gps.grffile->badge_map)) {
-			GrfMsg(1, "BadgeMapSpriteGroup: Badge {} undefined, skipping", local_id);
+			GrfMsg(Severity::Error, "BadgeMapSpriteGroup: Badge {} undefined, skipping", local_id);
 		} else {
 			auto &badge = *GetBadge(found->second);
 			badge.grf_prop.SetSpriteGroup(GrfSpecFeature::Default, group);
@@ -409,7 +409,7 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 	uint8_t idcount = buf.ReadByte();
 
 	if (feature >= GrfSpecFeature::End) {
-		GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
+		GrfMsg(Severity::Error, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
@@ -420,7 +420,7 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 		uint16_t groupid = buf.ReadWord();
 		if (!IsValidGroupID(groupid, "FeatureMapSpriteGroup")) return;
 
-		GrfMsg(6, "FeatureMapSpriteGroup: Adding generic feature callback for feature 0x{:02X}", feature);
+		GrfMsg(Severity::Debug2, "FeatureMapSpriteGroup: Adding generic feature callback for feature 0x{:02X}", feature);
 
 		AddGenericCallback(feature, _cur_gps.grffile, _cur_gps.spritegroups[groupid]);
 		return;
@@ -429,7 +429,7 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 	/* Mark the feature as used by the grf (generic callbacks do not count) */
 	_cur_gps.grffile->grf_features.Set(feature);
 
-	GrfMsg(6, "FeatureMapSpriteGroup: Feature 0x{:02X}, {} ids", feature, idcount);
+	GrfMsg(Severity::Debug2, "FeatureMapSpriteGroup: Feature 0x{:02X}, {} ids", feature, idcount);
 
 	switch (feature) {
 		case GrfSpecFeature::Trains:
@@ -452,7 +452,7 @@ static void FeatureMapSpriteGroup(ByteReader &buf)
 		case GrfSpecFeature::Badges: MapSpriteGroup(buf, idcount, BadgeMapSpriteGroupHandler{}); return;
 
 		default:
-			GrfMsg(1, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
+			GrfMsg(Severity::Error, "FeatureMapSpriteGroup: Unsupported feature 0x{:02X}, skipping", feature);
 			return;
 	}
 }

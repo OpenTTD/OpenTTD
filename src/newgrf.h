@@ -11,6 +11,7 @@
 #define NEWGRF_H
 
 #include "cargotype.h"
+#include "debug_type.h"
 #include "livery.h"
 #include "rail_type.h"
 #include "road_type.h"
@@ -239,8 +240,8 @@ void ReloadNewGRFData(); // in saveload/afterload.cpp
 void ResetNewGRFData();
 void ResetPersistentNewGRFData();
 
-void GrfMsgI(int severity, const std::string &msg);
-#define GrfMsg(severity, format_string, ...) do { if ((severity) == 0 || _debug_grf_level >= (severity)) GrfMsgI(severity, fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__)); } while (false)
+void GrfMsgI(Severity severity, const std::string &msg);
+#define GrfMsg(severity, format_string, ...) do { if ((severity) == Severity::Fatal || _debug_grf_level >= (severity)) GrfMsgI(severity, fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__)); } while (false)
 
 bool GetGlobalVariable(uint8_t param, uint32_t *value, const GRFFile *grffile);
 

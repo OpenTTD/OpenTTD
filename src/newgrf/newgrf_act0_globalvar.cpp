@@ -45,7 +45,7 @@ template <typename T, typename TGetTableFunc>
 static ChangeInfoResult LoadTranslationTable(uint first, uint last, ByteReader &buf, TGetTableFunc gettable, std::string_view name)
 {
 	if (first != 0) {
-		GrfMsg(1, "LoadTranslationTable: {} translation table must start at zero", name);
+		GrfMsg(Severity::Error, "LoadTranslationTable: {} translation table must start at zero", name);
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -59,7 +59,7 @@ static ChangeInfoResult LoadTranslationTable(uint first, uint last, ByteReader &
 	GRFFile *grf_override = GetCurrentGRFOverride();
 	if (grf_override != nullptr) {
 		/* GRF override is present, copy the translation table to the overridden GRF as well. */
-		GrfMsg(1, "LoadTranslationTable: Copying {} translation table to override GRFID {}", name, FormatArrayAsHex(grf_override->grfid));
+		GrfMsg(Severity::Error, "LoadTranslationTable: Copying {} translation table to override GRFID {}", name, FormatArrayAsHex(grf_override->grfid));
 		std::vector<T> &override_table = gettable(*grf_override);
 		override_table = translation_table;
 	}
@@ -70,7 +70,7 @@ static ChangeInfoResult LoadTranslationTable(uint first, uint last, ByteReader &
 static ChangeInfoResult LoadBadgeTranslationTable(uint first, uint last, ByteReader &buf, std::vector<BadgeID> &translation_table, std::string_view name)
 {
 	if (first != 0 && first != std::size(translation_table)) {
-		GrfMsg(1, "LoadBadgeTranslationTable: {} translation table must start at zero or {}", name, std::size(translation_table));
+		GrfMsg(Severity::Error, "LoadBadgeTranslationTable: {} translation table must start at zero or {}", name, std::size(translation_table));
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -140,7 +140,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				if (id < to_underlying(Price::End)) {
 					_cur_gps.grffile->price_base_multipliers[static_cast<Price>(id)] = std::min<int>(factor - 8, MAX_PRICE_MODIFIER);
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Price {} out of range, ignoring", id);
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: Price {} out of range, ignoring", id);
 				}
 				break;
 			}
@@ -168,7 +168,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					 * to be compatible */
 					_currency_specs[curidx].rate = rate / 1000;
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Currency multipliers {} out of range, ignoring", id);
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: Currency multipliers {} out of range, ignoring", id);
 				}
 				break;
 			}
@@ -185,7 +185,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					 * since newgrf specs said that only 0 and 1 can be set for symbol_pos */
 					_currency_specs[curidx].symbol_pos = HasBit(options, 8) ? CurrencySymbolPosition::Suffix : CurrencySymbolPosition::Prefix;
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Currency option {} out of range, ignoring", id);
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: Currency option {} out of range, ignoring", id);
 				}
 				break;
 			}
@@ -197,7 +197,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				if (curidx < Currency::End) {
 					_currency_specs[curidx].prefix = std::move(prefix);
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", id);
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", id);
 				}
 				break;
 			}
@@ -209,7 +209,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				if (curidx < Currency::End) {
 					_currency_specs[curidx].suffix = std::move(suffix);
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", id);
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: Currency symbol {} out of range, ignoring", id);
 				}
 				break;
 			}
@@ -221,16 +221,16 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				if (curidx < Currency::End) {
 					_currency_specs[curidx].to_euro = year_euro;
 				} else {
-					GrfMsg(1, "GlobalVarChangeInfo: Euro intro date {} out of range, ignoring", id);
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: Euro intro date {} out of range, ignoring", id);
 				}
 				break;
 			}
 
 			case 0x10: // Snow line height table
 				if (last > 1 || IsSnowLineSet()) {
-					GrfMsg(1, "GlobalVarChangeInfo: The snowline can only be set once ({})", last);
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: The snowline can only be set once ({})", last);
 				} else if (buf.Remaining() < SNOW_LINE_MONTHS * SNOW_LINE_DAYS) {
-					GrfMsg(1, "GlobalVarChangeInfo: Not enough entries set in the snowline table ({})", buf.Remaining());
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: Not enough entries set in the snowline table ({})", buf.Remaining());
 				} else {
 					auto snow_line = std::make_unique<SnowLine>();
 
@@ -269,7 +269,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				GRFLanguage langid = static_cast<GRFLanguage>(id); // The current index, i.e. language.
 				const LanguageMetadata *lang = langid < GRFLanguage::End ? GetLanguage(langid) : nullptr;
 				if (lang == nullptr) {
-					GrfMsg(1, "GlobalVarChangeInfo: Language {} is not known, ignoring", langid);
+					GrfMsg(Severity::Error, "GlobalVarChangeInfo: Language {} is not known, ignoring", langid);
 					/* Skip over the data. */
 					if (prop == 0x15) {
 						buf.ReadByte();
@@ -284,7 +284,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 				if (prop == 0x15) {
 					uint plural_form = buf.ReadByte();
 					if (plural_form >= LANGUAGE_MAX_PLURAL) {
-						GrfMsg(1, "GlobalVarChanceInfo: Plural form {} is out of range, ignoring", plural_form);
+						GrfMsg(Severity::Error, "GlobalVarChanceInfo: Plural form {} is out of range, ignoring", plural_form);
 					} else {
 						_cur_gps.grffile->language_map[langid].plural_form = plural_form;
 					}
@@ -307,14 +307,14 @@ static ChangeInfoResult GlobalVarChangeInfo(uint first, uint last, int prop, Byt
 					if (prop == 0x13) {
 						map.openttd_id = lang->GetGenderIndex(name);
 						if (map.openttd_id >= MAX_NUM_GENDERS) {
-							GrfMsg(1, "GlobalVarChangeInfo: Gender name {} is not known, ignoring", StrMakeValid(name));
+							GrfMsg(Severity::Error, "GlobalVarChangeInfo: Gender name {} is not known, ignoring", StrMakeValid(name));
 						} else {
 							_cur_gps.grffile->language_map[langid].gender_map.push_back(map);
 						}
 					} else {
 						map.openttd_id = lang->GetCaseIndex(name);
 						if (map.openttd_id >= MAX_NUM_CASES) {
-							GrfMsg(1, "GlobalVarChangeInfo: Case name {} is not known, ignoring", StrMakeValid(name));
+							GrfMsg(Severity::Error, "GlobalVarChangeInfo: Case name {} is not known, ignoring", StrMakeValid(name));
 						} else {
 							_cur_gps.grffile->language_map[langid].case_map.push_back(map);
 						}

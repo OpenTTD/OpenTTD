@@ -262,7 +262,7 @@ static LRESULT HandleCharMsg(uint keycode, char32_t charcode)
 
 	/* Did we get a lead surrogate? If yes, store and exit. */
 	if (Utf16IsLeadSurrogate(charcode)) {
-		if (prev_char != 0) Debug(driver, 1, "Got two UTF-16 lead surrogates, dropping the first one");
+		if (prev_char != 0) Debug(driver, Severity::Error, "Got two UTF-16 lead surrogates, dropping the first one");
 		prev_char = charcode;
 		return 0;
 	}
@@ -272,7 +272,7 @@ static LRESULT HandleCharMsg(uint keycode, char32_t charcode)
 		if (Utf16IsTrailSurrogate(charcode)) {
 			charcode = Utf16DecodeSurrogate(prev_char, charcode);
 		} else {
-			Debug(driver, 1, "Got an UTF-16 lead surrogate without a trail surrogate, dropping the lead surrogate");
+			Debug(driver, Severity::Error, "Got an UTF-16 lead surrogate without a trail surrogate, dropping the lead surrogate");
 		}
 	}
 	prev_char = 0;
@@ -975,7 +975,7 @@ std::optional<std::string_view> VideoDriver_Win32Base::Initialize()
 	this->width  = this->width_org  = _cur_resolution.width;
 	this->height = this->height_org = _cur_resolution.height;
 
-	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
+	Debug(driver, Severity::Warning, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
 	return std::nullopt;
 }
 
@@ -1509,7 +1509,7 @@ void VideoDriver_Win32OpenGL::ToggleVsync(bool vsync)
 	if (_wglSwapIntervalEXT != nullptr) {
 		_wglSwapIntervalEXT(vsync);
 	} else if (vsync) {
-		Debug(driver, 0, "OpenGL: Vsync requested, but not supported by driver");
+		Debug(driver, Severity::Fatal, "OpenGL: Vsync requested, but not supported by driver");
 	}
 }
 
@@ -1528,7 +1528,7 @@ std::optional<std::string_view> VideoDriver_Win32OpenGL::AllocateContext()
 		int attribs[] = {
 			WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
 			WGL_CONTEXT_MINOR_VERSION_ARB, 5,
-			WGL_CONTEXT_FLAGS_ARB, _debug_driver_level >= 8 ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
+			WGL_CONTEXT_FLAGS_ARB, _debug_driver_level >= Severity::Trace2 ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
 			_hasWGLARBCreateContextProfile ? WGL_CONTEXT_PROFILE_MASK_ARB : 0, WGL_CONTEXT_CORE_PROFILE_BIT_ARB, // Terminate list if WGL_ARB_create_context_profile isn't supported.
 			0
 		};

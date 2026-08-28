@@ -340,7 +340,7 @@ bool CocoaSetupApplication()
 
 	/* Tell the dock about us */
 	OSStatus returnCode = TransformProcessType(&psn, kProcessTransformToForegroundApplication);
-	if (returnCode != 0) Debug(driver, 0, "Could not change to foreground application. Error {}", (int)returnCode);
+	if (returnCode != 0) Debug(driver, Severity::Fatal, "Could not change to foreground application. Error {}", (int)returnCode);
 
 	/* Disable the system-wide tab feature as we only have one window. */
 	if ([ NSWindow respondsToSelector:@selector(setAllowsAutomaticWindowTabbing:) ]) {
@@ -911,9 +911,9 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 		if (!EditBoxInGlobalFocus() || IsInsideMM(pressed_key & ~WKC_SPECIAL_KEYS, WKC_F1, WKC_PAUSE + 1)) {
 			HandleKeypress(pressed_key, unicode);
 		}
-		Debug(driver, 3, "cocoa_v: QZ_KeyEvent: {:x} ({:x}), down, mapping: {:x}", keycode, (int)unicode, pressed_key);
+		Debug(driver, Severity::Notice, "cocoa_v: QZ_KeyEvent: {:x} ({:x}), down, mapping: {:x}", keycode, (int)unicode, pressed_key);
 	} else {
-		Debug(driver, 3, "cocoa_v: QZ_KeyEvent: {:x} ({:x}), up", keycode, (int)unicode);
+		Debug(driver, Severity::Notice, "cocoa_v: QZ_KeyEvent: {:x} ({:x}), up", keycode, (int)unicode);
 	}
 
 	return interpret_keys;

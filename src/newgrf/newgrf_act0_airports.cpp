@@ -52,7 +52,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_AIRPORTS_PER_GRF) {
-		GrfMsg(1, "AirportChangeInfo: Too many airports, trying id ({}), max ({}). Ignoring.", last, NUM_AIRPORTS_PER_GRF);
+		GrfMsg(Severity::Error, "AirportChangeInfo: Too many airports, trying id ({}), max ({}). Ignoring.", last, NUM_AIRPORTS_PER_GRF);
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -63,7 +63,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 		auto &as = _cur_gps.grffile->airportspec[id];
 
 		if (as == nullptr && prop != 0x08 && prop != 0x09) {
-			GrfMsg(2, "AirportChangeInfo: Attempt to modify undefined airport {}, ignoring", id);
+			GrfMsg(Severity::Warning, "AirportChangeInfo: Attempt to modify undefined airport {}, ignoring", id);
 			return ChangeInfoResult::InvalidId;
 		}
 
@@ -77,7 +77,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 					continue;
 				} else if (subs_id >= NEW_AIRPORT_OFFSET) {
 					/* The substitute id must be one of the original airports. */
-					GrfMsg(2, "AirportChangeInfo: Attempt to use new airport {} as substitute airport for {}. Ignoring.", subs_id, id);
+					GrfMsg(Severity::Warning, "AirportChangeInfo: Attempt to use new airport {} as substitute airport for {}. Ignoring.", subs_id, id);
 					continue;
 				}
 
@@ -116,7 +116,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 
 					for (;;) {
 						if (definition_end < buf.GetBytesRead()) {
-							GrfMsg(3, "AirportChangeInfo: Incorrect size for airport tile layout definition for airport {}.", id);
+							GrfMsg(Severity::Notice, "AirportChangeInfo: Incorrect size for airport tile layout definition for airport {}.", id);
 							/* Avoid warning twice */
 							definition_end = SIZE_MAX;
 						}
@@ -140,7 +140,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 							uint16_t tempid = _airporttile_mngr.GetID(local_tile_id, _cur_gps.grffile->grfid);
 
 							if (tempid == INVALID_AIRPORTTILE) {
-								GrfMsg(2, "AirportChangeInfo: Attempt to use airport tile {} with airport id {}, not yet defined. Ignoring.", local_tile_id, id);
+								GrfMsg(Severity::Warning, "AirportChangeInfo: Attempt to use airport tile {} with airport id {}, not yet defined. Ignoring.", local_tile_id, id);
 								invalid_layout = true;
 							} else {
 								/* Declared as been valid, can be used */
@@ -150,7 +150,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 							tile.ti.x = static_cast<int8_t>(GB(tile.ti.x, 0, 8));
 							tile.ti.y = static_cast<int8_t>(GB(tile.ti.y, 0, 8));
 						} else if (tile.gfx >= NEW_AIRPORTTILE_OFFSET) {
-							GrfMsg(2, "AirportChangeInfo: Attempt to use invalid airport tile {} with airport id {}. Ignoring.", tile.gfx, id);
+							GrfMsg(Severity::Warning, "AirportChangeInfo: Attempt to use invalid airport tile {} with airport id {}. Ignoring.", tile.gfx, id);
 							invalid_layout = true;
 						}
 
@@ -168,7 +168,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 
 					if (!ValidateAirportLayout(layout)) {
 						/* The airport layout was not valid, so skip this one. */
-						GrfMsg(1, "AirportChangeInfo: Invalid airport layout for airport id {}. Ignoring", id);
+						GrfMsg(Severity::Error, "AirportChangeInfo: Invalid airport layout for airport id {}. Ignoring", id);
 					} else {
 						layouts.push_back(layout);
 					}
@@ -223,7 +223,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_AIRPORTTILES_PER_GRF) {
-		GrfMsg(1, "AirportTileChangeInfo: Too many airport tiles loaded ({}), max ({}). Ignoring.", last, NUM_AIRPORTTILES_PER_GRF);
+		GrfMsg(Severity::Error, "AirportTileChangeInfo: Too many airport tiles loaded ({}), max ({}). Ignoring.", last, NUM_AIRPORTTILES_PER_GRF);
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -234,7 +234,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 		auto &tsp = _cur_gps.grffile->airtspec[id];
 
 		if (prop != 0x08 && tsp == nullptr) {
-			GrfMsg(2, "AirportTileChangeInfo: Attempt to modify undefined airport tile {}. Ignoring.", id);
+			GrfMsg(Severity::Warning, "AirportTileChangeInfo: Attempt to modify undefined airport tile {}. Ignoring.", id);
 			return ChangeInfoResult::InvalidId;
 		}
 
@@ -243,7 +243,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 				uint8_t subs_id = buf.ReadByte();
 				if (subs_id >= NEW_AIRPORTTILE_OFFSET) {
 					/* The substitute id must be one of the original airport tiles. */
-					GrfMsg(2, "AirportTileChangeInfo: Attempt to use new airport tile {} as substitute airport tile for {}. Ignoring.", subs_id, id);
+					GrfMsg(Severity::Warning, "AirportTileChangeInfo: Attempt to use new airport tile {} as substitute airport tile for {}. Ignoring.", subs_id, id);
 					continue;
 				}
 
@@ -268,7 +268,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 
 				/* The airport tile being overridden must be an original airport tile. */
 				if (override_id >= NEW_AIRPORTTILE_OFFSET) {
-					GrfMsg(2, "AirportTileChangeInfo: Attempt to override new airport tile {} with airport tile id {}. Ignoring.", override_id, id);
+					GrfMsg(Severity::Warning, "AirportTileChangeInfo: Attempt to override new airport tile {} with airport tile id {}. Ignoring.", override_id, id);
 					continue;
 				}
 

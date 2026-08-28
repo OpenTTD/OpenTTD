@@ -168,7 +168,7 @@ uint32_t GetParamVal(uint8_t param, uint32_t *cond_val)
 			if (param < 0x80) return _cur_gps.grffile->GetParam(param);
 
 			/* In-game variable. */
-			GrfMsg(1, "Unsupported in-game variable 0x{:02X}", param);
+			GrfMsg(Severity::Error, "Unsupported in-game variable 0x{:02X}", param);
 			return UINT_MAX;
 	}
 }
@@ -206,11 +206,11 @@ static void SkipIf(ByteReader &buf)
 	}
 
 	if (param < 0x80 && std::size(_cur_gps.grffile->param) <= param) {
-		GrfMsg(7, "SkipIf: Param {} undefined, skipping test", param);
+		GrfMsg(Severity::Trace1, "SkipIf: Param {} undefined, skipping test", param);
 		return;
 	}
 
-	GrfMsg(7, "SkipIf: Test condtype {}, param 0x{:02X}, condval 0x{:08X}", condtype, param, cond_val);
+	GrfMsg(Severity::Trace1, "SkipIf: Test condtype {}, param 0x{:02X}, condval 0x{:08X}", condtype, param, cond_val);
 
 	/* condtypes that do not use 'param' are always valid.
 	 * condtypes that use 'param' are either not valid for param 0x88, or they are only valid for param 0x88.
@@ -246,7 +246,7 @@ static void SkipIf(ByteReader &buf)
 				result = rt != INVALID_ROADTYPE && RoadTypeIsTram(rt);
 				break;
 			}
-			default: GrfMsg(1, "SkipIf: Unsupported condition type {:02X}. Ignoring", condtype); return;
+			default: GrfMsg(Severity::Error, "SkipIf: Unsupported condition type {:02X}. Ignoring", condtype); return;
 		}
 	} else if (param == 0x88) {
 		/* GRF ID checks */
@@ -260,7 +260,7 @@ static void SkipIf(ByteReader &buf)
 		}
 
 		if (condtype != 10 && c == nullptr) {
-			GrfMsg(7, "SkipIf: GRFID {} unknown, skipping test", FormatArrayAsHex(grfid));
+			GrfMsg(Severity::Trace1, "SkipIf: GRFID {} unknown, skipping test", FormatArrayAsHex(grfid));
 			return;
 		}
 
@@ -287,7 +287,7 @@ static void SkipIf(ByteReader &buf)
 				result = c == nullptr || c->status == GRFStatus::Disabled || c->status == GRFStatus::NotFound;
 				break;
 
-			default: GrfMsg(1, "SkipIf: Unsupported GRF condition type {:02X}. Ignoring", condtype); return;
+			default: GrfMsg(Severity::Error, "SkipIf: Unsupported GRF condition type {:02X}. Ignoring", condtype); return;
 		}
 	} else {
 		/* Tests that use 'param' and are not GRF ID checks.  */
@@ -305,12 +305,12 @@ static void SkipIf(ByteReader &buf)
 				break;
 			case 0x05: result = (param_val & mask) > cond_val;
 				break;
-			default: GrfMsg(1, "SkipIf: Unsupported condition type {:02X}. Ignoring", condtype); return;
+			default: GrfMsg(Severity::Error, "SkipIf: Unsupported condition type {:02X}. Ignoring", condtype); return;
 		}
 	}
 
 	if (!result) {
-		GrfMsg(2, "SkipIf: Not skipping sprites, test was false");
+		GrfMsg(Severity::Warning, "SkipIf: Not skipping sprites, test was false");
 		return;
 	}
 
@@ -334,13 +334,13 @@ static void SkipIf(ByteReader &buf)
 	}
 
 	if (choice != nullptr) {
-		GrfMsg(2, "SkipIf: Jumping to label 0x{:X} at line {}, test was true", choice->label, choice->nfo_line);
+		GrfMsg(Severity::Warning, "SkipIf: Jumping to label 0x{:X} at line {}, test was true", choice->label, choice->nfo_line);
 		_cur_gps.file->SeekTo(choice->pos, SEEK_SET);
 		_cur_gps.nfo_line = choice->nfo_line;
 		return;
 	}
 
-	GrfMsg(2, "SkipIf: Skipping {} sprites, test was true", numsprites);
+	GrfMsg(Severity::Warning, "SkipIf: Skipping {} sprites, test was true", numsprites);
 	_cur_gps.skip_sprites = numsprites;
 	if (_cur_gps.skip_sprites == 0) {
 		/* Zero means there are no sprites to skip, so

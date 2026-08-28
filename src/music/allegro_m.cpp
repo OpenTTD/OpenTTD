@@ -29,20 +29,20 @@ extern int _allegro_instance_count;
 std::optional<std::string_view> MusicDriver_Allegro::Start(const StringList &)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
-		Debug(driver, 0, "allegro: install_allegro failed '{}'", allegro_error);
+		Debug(driver, Severity::Fatal, "allegro: install_allegro failed '{}'", allegro_error);
 		return "Failed to set up Allegro";
 	}
 	_allegro_instance_count++;
 
 	/* Initialise the sound */
 	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, nullptr) != 0) {
-		Debug(driver, 0, "allegro: install_sound failed '{}'", allegro_error);
+		Debug(driver, Severity::Fatal, "allegro: install_sound failed '{}'", allegro_error);
 		return "Failed to set up Allegro sound";
 	}
 
 	/* Okay, there's no soundcard */
 	if (midi_card == MIDI_NONE) {
-		Debug(driver, 0, "allegro: no midi card found");
+		Debug(driver, Severity::Fatal, "allegro: no midi card found");
 		return "No sound card found";
 	}
 

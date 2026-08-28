@@ -121,7 +121,7 @@ std::optional<std::string_view> VideoDriver_SDL_OpenGL::AllocateContext()
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
-	if (_debug_driver_level >= 8) {
+	if (_debug_driver_level >= Severity::Trace2) {
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
 	}
 

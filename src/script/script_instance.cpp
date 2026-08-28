@@ -114,7 +114,7 @@ bool ScriptInstance::LoadCompatibilityScript(std::string_view api_version, Subdi
 		if (this->engine->LoadScript(buf)) return true;
 
 		ScriptLog::Error(fmt::format("Failed to load API compatibility script for {}", api_version));
-		Debug(script, 0, "Error compiling / running API compatibility script: {}", buf);
+		Debug(script, Severity::Fatal, "Error compiling / running API compatibility script: {}", buf);
 		return false;
 	}
 
@@ -172,7 +172,7 @@ void ScriptInstance::Continue()
 
 void ScriptInstance::Died()
 {
-	Debug(script, 0, "The script died unexpectedly.");
+	Debug(script, Severity::Fatal, "The script died unexpectedly.");
 	this->is_dead = true;
 	this->in_shutdown = true;
 
@@ -815,7 +815,7 @@ bool ScriptInstance::DoCommandCallback(const CommandCost &result, const CommandD
 	ScriptObject::ActiveInstance active(*this);
 
 	if (!ScriptObject::CheckLastCommand(data, cmd)) {
-		Debug(script, 1, "DoCommandCallback terminating a script, last command does not match expected command");
+		Debug(script, Severity::Error, "DoCommandCallback terminating a script, last command does not match expected command");
 		return false;
 	}
 

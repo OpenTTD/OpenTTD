@@ -93,7 +93,7 @@ std::vector<BadgeID> ReadBadgeList(ByteReader &buf, GrfSpecFeature feature)
 	while (count-- > 0) {
 		uint16_t local_index = buf.ReadWord();
 		if (local_index >= std::size(_cur_gps.grffile->badge_list)) {
-			GrfMsg(1, "ReadBadgeList: Badge label {} out of range (max {}), skipping.", local_index, std::size(_cur_gps.grffile->badge_list) - 1);
+			GrfMsg(Severity::Error, "ReadBadgeList: Badge label {} out of range (max {}), skipping.", local_index, std::size(_cur_gps.grffile->badge_list) - 1);
 			continue;
 		}
 
@@ -122,11 +122,11 @@ bool HandleChangeInfoResult(std::string_view caller, ChangeInfoResult cir, GrfSp
 			return false;
 
 		case ChangeInfoResult::Unhandled:
-			GrfMsg(1, "{}: Ignoring property 0x{:02X} of feature 0x{:02X} (not implemented)", caller, property, feature);
+			GrfMsg(Severity::Error, "{}: Ignoring property 0x{:02X} of feature 0x{:02X} (not implemented)", caller, property, feature);
 			return false;
 
 		case ChangeInfoResult::Unknown:
-			GrfMsg(0, "{}: Unknown property 0x{:02X} of feature 0x{:02X}, disabling", caller, property, feature);
+			GrfMsg(Severity::Fatal, "{}: Unknown property 0x{:02X} of feature 0x{:02X}, disabling", caller, property, feature);
 			[[fallthrough]];
 
 		case ChangeInfoResult::InvalidId: {
@@ -211,18 +211,18 @@ static void FeatureChangeInfo(ByteReader &buf)
 	uint engine   = buf.ReadExtendedByte();
 
 	if (feature >= GrfSpecFeature::End) {
-		GrfMsg(1, "FeatureChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
+		GrfMsg(Severity::Error, "FeatureChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
-	GrfMsg(6, "FeatureChangeInfo: Feature 0x{:02X}, {} properties, to apply to {}+{}",
+	GrfMsg(Severity::Debug2, "FeatureChangeInfo: Feature 0x{:02X}, {} properties, to apply to {}+{}",
 	               feature, numprops, engine, numinfo);
 
 	/* Test if feature handles change. */
 	ChangeInfoResult cir_test = InvokeGrfChangeInfoHandler::Invoke(feature, 0, 0, 0, buf, GrfLoadingStage::Activation);
 	if (cir_test == ChangeInfoResult::Unhandled) return;
 	if (cir_test == ChangeInfoResult::Unknown) {
-		GrfMsg(1, "FeatureChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
+		GrfMsg(Severity::Error, "FeatureChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 
@@ -280,7 +280,7 @@ static void ReserveChangeInfo(ByteReader &buf)
 	ChangeInfoResult cir_test = InvokeGrfChangeInfoHandler::Invoke(feature, 0, 0, 0, buf, GrfLoadingStage::Reserve);
 	if (cir_test == ChangeInfoResult::Unhandled) return;
 	if (cir_test == ChangeInfoResult::Unknown) {
-		GrfMsg(1, "ReserveChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
+		GrfMsg(Severity::Error, "ReserveChangeInfo: Unsupported feature 0x{:02X}, skipping", feature);
 		return;
 	}
 

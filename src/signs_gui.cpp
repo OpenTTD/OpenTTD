@@ -63,7 +63,7 @@ struct SignList {
 	{
 		if (!this->signs.NeedRebuild()) return;
 
-		Debug(misc, 3, "Building sign list");
+		Debug(misc, Severity::Notice, "Building sign list");
 
 		this->signs.clear();
 		this->signs.reserve(Sign::GetNumItems());

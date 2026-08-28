@@ -237,7 +237,7 @@ size_t GRFGetSizeOfDataSection(FileHandle &f)
 			/* Valid container version 2, get data section size. */
 			size_t offset = (static_cast<size_t>(data[13]) << 24) | (static_cast<size_t>(data[12]) << 16) | (static_cast<size_t>(data[11]) << 8) | static_cast<size_t>(data[10]);
 			if (offset >= 1 * 1024 * 1024 * 1024) {
-				Debug(grf, 0, "Unexpectedly large offset for NewGRF");
+				Debug(grf, Severity::Fatal, "Unexpectedly large offset for NewGRF");
 				/* Having more than 1 GiB of data is very implausible. Mostly because then
 				 * all pools in OpenTTD are flooded already. Or it's just Action C all over.
 				 * In any case, the offsets to graphics will likely not work either. */
@@ -438,7 +438,7 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 			 * same grfid, as it most likely is compatible */
 			f = FindGRFConfig(c->ident.grfid, FindGRFConfigMode::Compatible, nullptr, c->version);
 			if (f != nullptr) {
-				Debug(grf, 1, "NewGRF {} ({}) not found; checksum {}. Compatibility mode on", FormatArrayAsHex(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
+				Debug(grf, Severity::Error, "NewGRF {} ({}) not found; checksum {}. Compatibility mode on", FormatArrayAsHex(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 				if (!c->flags.Test(GRFConfigFlag::Compatible)) {
 					/* Preserve original_md5sum after it has been assigned */
 					c->flags.Set(GRFConfigFlag::Compatible);
@@ -451,13 +451,13 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfigList &grfconfig)
 			}
 
 			/* No compatible grf was found, mark it as disabled */
-			Debug(grf, 0, "NewGRF {} ({}) not found; checksum {}", FormatArrayAsHex(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
+			Debug(grf, Severity::Fatal, "NewGRF {} ({}) not found; checksum {}", FormatArrayAsHex(c->ident.grfid), c->filename, FormatArrayAsHex(c->ident.md5sum));
 
 			c->status = GRFStatus::NotFound;
 			res = GRFListCompatibility::NotFound;
 		} else {
 compatible_grf:
-			Debug(grf, 1, "Loading GRF {} from {}", FormatArrayAsHex(f->ident.grfid), f->filename);
+			Debug(grf, Severity::Error, "Loading GRF {} from {}", FormatArrayAsHex(f->ident.grfid), f->filename);
 			/* The filename could be the filename as in the savegame. As we need
 			 * to load the GRF here, we need the correct filename, so overwrite that
 			 * in any case and set the name and info when it is not set already.
@@ -558,10 +558,10 @@ void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 	ClearGRFConfigList(_all_grfs);
 	TarScanner::DoScan(TarScanner::Mode::NewGRF);
 
-	Debug(grf, 1, "Scanning for NewGRFs");
+	Debug(grf, Severity::Error, "Scanning for NewGRFs");
 	uint num = GRFFileScanner::DoScan();
 
-	Debug(grf, 1, "Scan complete, found {} files", num);
+	Debug(grf, Severity::Error, "Scan complete, found {} files", num);
 	std::ranges::sort(_all_grfs, GRFSorter);
 	NetworkAfterNewGRFScan();
 

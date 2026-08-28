@@ -176,14 +176,14 @@ public:
 
 		const bool destination_found = (this->best_dest_node != nullptr);
 
-		if (_debug_yapf_level >= 3) {
+		if (_debug_yapf_level >= Severity::Notice) {
 			const UnitID veh_idx = (this->vehicle != nullptr) ? this->vehicle->unitnumber : 0;
 			const char ttc = Yapf().TransportTypeChar();
 			const float cache_hit_ratio = (this->stats_cache_hits == 0) ? 0.0f : ((float)this->stats_cache_hits / (float)(this->stats_cache_hits + this->stats_cost_calcs) * 100.0f);
 			const int cost = destination_found ? this->best_dest_node->cost : -1;
 			const int dist = destination_found ? this->best_dest_node->estimate - this->best_dest_node->cost : -1;
 
-			Debug(yapf, 3, "[YAPF{}]{}{:4d} - {} rounds - {} open - {} closed - CHR {:4.1f}% - C {} D {}",
+			Debug(yapf, Severity::Notice, "[YAPF{}]{}{:4d} - {} rounds - {} open - {} closed - CHR {:4.1f}% - C {} D {}",
 				ttc, destination_found ? '-' : '!', veh_idx, this->num_steps, this->nodes.OpenCount(), this->nodes.ClosedCount(), cache_hit_ratio, cost, dist
 			);
 		}

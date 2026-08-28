@@ -21,13 +21,13 @@ extern void CheckExternalFiles();
  * Log error from reading basesets.
  * @param full_filename the full filename of the loaded file
  * @param detail detail log message
- * @param level debug level
+ * @param severity debug severity
  */
 template <class T>
-void BaseSet<T>::LogError(std::string_view full_filename, std::string_view detail, int level) const
+void BaseSet<T>::LogError(std::string_view full_filename, std::string_view detail, Severity severity) const
 {
-	Debug(misc, level, "Loading base {}set details failed: {}", BaseSet<T>::SET_TYPE, full_filename);
-	Debug(misc, level, "  {}", detail);
+	Debug(misc, severity, "Loading base {}set details failed: {}", BaseSet<T>::SET_TYPE, full_filename);
+	Debug(misc, severity, "  {}", detail);
 }
 
 /**
@@ -165,7 +165,7 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 		item = origin != nullptr ? origin->GetItem(filename) : nullptr;
 		if (item == nullptr) item = origin != nullptr ? origin->GetItem("default") : nullptr;
 		if (item == nullptr || !item->value.has_value()) {
-			this->LogError(full_filename, fmt::format("origin.{} field missing", filename), 1);
+			this->LogError(full_filename, fmt::format("origin.{} field missing", filename), Severity::Error);
 			file->missing_warning.clear();
 		} else {
 			file->missing_warning = item->value.value();
@@ -183,13 +183,13 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 
 			case MD5File::ChecksumResult::Mismatch:
 				/* This is normal for original sample.cat, which either matches with orig_dos or orig_win. */
-				this->LogError(full_filename, fmt::format("MD5 checksum mismatch for: {}", filename), original_set ? 1 : 0);
+				this->LogError(full_filename, fmt::format("MD5 checksum mismatch for: {}", filename), original_set ? Severity::Error : Severity::Fatal);
 				this->found_files++;
 				break;
 
 			case MD5File::ChecksumResult::NoFile:
 				/* Missing files is normal for the original basesets. Use lower debug level */
-				this->LogError(full_filename, fmt::format("File is missing: {}", filename), original_set ? 1 : 0);
+				this->LogError(full_filename, fmt::format("File is missing: {}", filename), original_set ? Severity::Error : Severity::Fatal);
 				break;
 		}
 	}
@@ -200,7 +200,7 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 template <class Tbase_set>
 bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_length, const std::string &)
 {
-	Debug(misc, 1, "Checking {} for base {} set", filename, BaseSet<Tbase_set>::SET_TYPE);
+	Debug(misc, Severity::Error, "Checking {} for base {} set", filename, BaseSet<Tbase_set>::SET_TYPE);
 
 	auto set = std::make_unique<Tbase_set>();
 	IniFile ini{};
@@ -222,7 +222,7 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 		if (((*existing)->valid_files == set->valid_files && (*existing)->version >= set->version) ||
 				(*existing)->valid_files > set->valid_files) {
 
-			Debug(misc, 1, "Not adding {} ({}) as base {} set (duplicate, {})", set->name, fmt::join(set->version, "."),
+			Debug(misc, Severity::Error, "Not adding {} ({}) as base {} set (duplicate, {})", set->name, fmt::join(set->version, "."),
 					BaseSet<Tbase_set>::SET_TYPE,
 					(*existing)->valid_files > set->valid_files ? "fewer valid files" : "lower version");
 
@@ -238,16 +238,16 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 		/* Keep baseset configuration, if compatible */
 		set->CopyCompatibleConfig(**existing);
 
-		Debug(misc, 1, "Removing {} ({}) as base {} set (duplicate, {})", (*existing)->name, fmt::join((*existing)->version, "."), BaseSet<Tbase_set>::SET_TYPE,
+		Debug(misc, Severity::Error, "Removing {} ({}) as base {} set (duplicate, {})", (*existing)->name, fmt::join((*existing)->version, "."), BaseSet<Tbase_set>::SET_TYPE,
 				(*existing)->valid_files < set->valid_files ? "fewer valid files" : "lower version");
 
 		/* Existing set is worse, move it to duplicates and replace with the current set. */
 		duplicate_sets.push_back(std::move(*existing));
 
-		Debug(misc, 1, "Adding {} ({}) as base {} set", set->name, fmt::join(set->version, "."), BaseSet<Tbase_set>::SET_TYPE);
+		Debug(misc, Severity::Error, "Adding {} ({}) as base {} set", set->name, fmt::join(set->version, "."), BaseSet<Tbase_set>::SET_TYPE);
 		*existing = std::move(set);
 	} else {
-		Debug(misc, 1, "Adding {} ({}) as base {} set", set->name, set->version, BaseSet<Tbase_set>::SET_TYPE);
+		Debug(misc, Severity::Error, "Adding {} ({}) as base {} set", set->name, set->version, BaseSet<Tbase_set>::SET_TYPE);
 		available_sets.push_back(std::move(set));
 	}
 

@@ -27,19 +27,19 @@
 
 void CDECL StrgenWarningI(const std::string &msg)
 {
-	Debug(script, 0, "{}:{}: warning: {}", _strgen.file, _strgen.cur_line, msg);
+	Debug(script, Severity::Fatal, "{}:{}: warning: {}", _strgen.file, _strgen.cur_line, msg);
 	_strgen.warnings++;
 }
 
 void CDECL StrgenErrorI(const std::string &msg)
 {
-	Debug(script, 0, "{}:{}: error: {}", _strgen.file, _strgen.cur_line, msg);
+	Debug(script, Severity::Fatal, "{}:{}: error: {}", _strgen.file, _strgen.cur_line, msg);
 	_strgen.errors++;
 }
 
 void CDECL StrgenFatalI(const std::string &msg)
 {
-	Debug(script, 0, "{}:{}: FATAL: {}", _strgen.file, _strgen.cur_line, msg);
+	Debug(script, Severity::Fatal, "{}:{}: FATAL: {}", _strgen.file, _strgen.cur_line, msg);
 	throw std::exception();
 }
 

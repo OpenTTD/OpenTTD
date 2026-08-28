@@ -89,7 +89,7 @@ TypedIndexContainer<std::vector<GRFTempEngineData>, EngineID> _gted;  ///< Tempo
  * @param severity debugging severity level, see debug.h
  * @param msg the message
  */
-void GrfMsgI(int severity, const std::string &msg)
+void GrfMsgI(Severity severity, const std::string &msg)
 {
 	if (_cur_gps.grfconfig == nullptr) {
 		Debug(grf, severity, "{}", msg);
@@ -187,10 +187,10 @@ void SetNewGRFOverride(GrfID source_grfid, GrfID target_grfid)
 {
 	if (target_grfid.Empty()) {
 		_grf_id_overrides.erase(source_grfid);
-		GrfMsg(5, "SetNewGRFOverride: Removed override of {}", FormatArrayAsHex(source_grfid));
+		GrfMsg(Severity::Debug1, "SetNewGRFOverride: Removed override of {}", FormatArrayAsHex(source_grfid));
 	} else {
 		_grf_id_overrides[source_grfid] = target_grfid;
-		GrfMsg(5, "SetNewGRFOverride: Added override of {} to {}", FormatArrayAsHex(source_grfid), FormatArrayAsHex(target_grfid));
+		GrfMsg(Severity::Debug1, "SetNewGRFOverride: Added override of {} to {}", FormatArrayAsHex(source_grfid), FormatArrayAsHex(target_grfid));
 	}
 }
 
@@ -228,9 +228,9 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 			scope_grfid = it->second;
 			const GRFFile *grf_match = GetFileByGRFID(scope_grfid);
 			if (grf_match == nullptr) {
-				GrfMsg(5, "Tried mapping from GRFID {} to {} but target is not loaded", FormatArrayAsHex(file->grfid), FormatArrayAsHex(scope_grfid));
+				GrfMsg(Severity::Debug1, "Tried mapping from GRFID {} to {} but target is not loaded", FormatArrayAsHex(file->grfid), FormatArrayAsHex(scope_grfid));
 			} else {
-				GrfMsg(5, "Mapping from GRFID {} to {}", FormatArrayAsHex(file->grfid), FormatArrayAsHex(scope_grfid));
+				GrfMsg(Severity::Debug1, "Mapping from GRFID {} to {}", FormatArrayAsHex(file->grfid), FormatArrayAsHex(scope_grfid));
 			}
 		}
 
@@ -252,7 +252,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 
 		if (!e->grf_prop.HasGrfFile()) {
 			e->grf_prop.SetGRFFile(file);
-			GrfMsg(5, "Replaced engine at index {} for GRFID {}, type {}, index {}", e->index, FormatArrayAsHex(file->grfid), type, internal_id);
+			GrfMsg(Severity::Debug1, "Replaced engine at index {} for GRFID {}, type {}, index {}", e->index, FormatArrayAsHex(file->grfid), type, internal_id);
 		}
 
 		return e;
@@ -261,7 +261,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 	if (static_access) return nullptr;
 
 	if (!Engine::CanAllocateItem()) {
-		GrfMsg(0, "Can't allocate any more engines");
+		GrfMsg(Severity::Fatal, "Can't allocate any more engines");
 		return nullptr;
 	}
 
@@ -283,7 +283,7 @@ Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16_t internal_id
 		for (RailType rt : e->VehInfo<RailVehicleInfo>().railtypes) _gted[e->index].railtypelabels.push_back(GetRailTypeInfo(rt)->label);
 	}
 
-	GrfMsg(5, "Created new engine at index {} for GRFID {}, type {}, index {}", e->index, FormatArrayAsHex(file->grfid), type, internal_id);
+	GrfMsg(Severity::Debug1, "Created new engine at index {} for GRFID {}, type {}, index {}", e->index, FormatArrayAsHex(file->grfid), type, internal_id);
 
 	return e;
 }
@@ -348,7 +348,7 @@ void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location,
 	static const uint32_t size  = 6;      ///< Size of each base price record
 
 	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= to_underlying(Price::End)) {
-		GrfMsg(1, "{}: Unsupported running cost base 0x{:04X}, ignoring", error_location, base_pointer);
+		GrfMsg(Severity::Error, "{}: Unsupported running cost base 0x{:04X}, ignoring", error_location, base_pointer);
 		return;
 	}
 
@@ -924,7 +924,7 @@ static void FinaliseEngineArray()
 			/* Engine looped back on itself, so clear the variant. */
 			e->info.variant_id = EngineID::Invalid();
 
-			GrfMsg(1, "FinaliseEngineArray: Variant of engine {:x} in '{}' loops back on itself", e->grf_prop.local_id, e->GetGRF()->filename);
+			GrfMsg(Severity::Error, "FinaliseEngineArray: Variant of engine {:x} in '{}' loops back on itself", e->grf_prop.local_id, e->GetGRF()->filename);
 			break;
 		}
 
@@ -975,7 +975,7 @@ static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseS
 				(next2 == nullptr || !next2->enabled || next2->building_flags.Any(BUILDING_HAS_1_TILE) ||
 				next3 == nullptr || !next3->enabled || next3->building_flags.Any(BUILDING_HAS_1_TILE)))) {
 		hs.enabled = false;
-		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs.grf_prop.local_id);
+		if (!filename.empty()) Debug(grf, Severity::Error, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
@@ -985,7 +985,7 @@ static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseS
 	if ((hs.building_flags.Any(BUILDING_HAS_2_TILES) && next1->population != 0) ||
 			(hs.building_flags.Any(BUILDING_HAS_4_TILES) && (next2->population != 0 || next3->population != 0))) {
 		hs.enabled = false;
-		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs.grf_prop.local_id);
+		if (!filename.empty()) Debug(grf, Severity::Error, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
@@ -993,14 +993,14 @@ static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseS
 	 * This check should only be done for NewGRF houses because grf_prop.subst_id is not set for original houses.*/
 	if (!filename.empty() && (hs.building_flags & BUILDING_HAS_1_TILE) != (HouseSpec::Get(hs.grf_prop.subst_id)->building_flags & BUILDING_HAS_1_TILE)) {
 		hs.enabled = false;
-		Debug(grf, 1, "FinaliseHouseArray: {} defines house {} with different house size then it's substitute type. Disabling house.", filename, hs.grf_prop.local_id);
+		Debug(grf, Severity::Error, "FinaliseHouseArray: {} defines house {} with different house size then it's substitute type. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
 	/* Make sure that additional parts of multitile houses are not available. */
 	if (!hs.building_flags.Any(BUILDING_HAS_1_TILE) && hs.building_availability.Any(HZ_ZONE_ALL) && hs.building_availability.Any(HZ_CLIMATE_ALL)) {
 		hs.enabled = false;
-		if (!filename.empty()) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs.grf_prop.local_id);
+		if (!filename.empty()) Debug(grf, Severity::Error, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
@@ -1238,9 +1238,9 @@ struct InvokeGrfActionHandler {
 	{
 		Invoker func = action < std::size(funcs) ? funcs[action] : nullptr;
 		if (func == nullptr) {
-			GrfMsg(7, "DecodeSpecialSprite: Skipping unknown action 0x{:02X}", action);
+			GrfMsg(Severity::Trace1, "DecodeSpecialSprite: Skipping unknown action 0x{:02X}", action);
 		} else {
-			GrfMsg(7, "DecodeSpecialSprite: Handling action 0x{:02X} in stage {}", action, stage);
+			GrfMsg(Severity::Trace1, "DecodeSpecialSprite: Handling action 0x{:02X} in stage {}", action, stage);
 			func(buf, stage);
 		}
 	}
@@ -1265,7 +1265,7 @@ static void DecodeSpecialSprite(ReusableBuffer<uint8_t> &allocator, uint num, Gr
 		/* Use the preloaded sprite data. */
 		buf = it->second.data();
 		assert(it->second.size() == num);
-		GrfMsg(7, "DecodeSpecialSprite: Using preloaded pseudo sprite data");
+		GrfMsg(Severity::Trace1, "DecodeSpecialSprite: Using preloaded pseudo sprite data");
 
 		/* Skip the real (original) content of this action. */
 		_cur_gps.file->SeekTo(num, SEEK_CUR);
@@ -1277,14 +1277,14 @@ static void DecodeSpecialSprite(ReusableBuffer<uint8_t> &allocator, uint num, Gr
 		uint8_t action = br.ReadByte();
 
 		if (action == 0xFF) {
-			GrfMsg(2, "DecodeSpecialSprite: Unexpected data block, skipping");
+			GrfMsg(Severity::Warning, "DecodeSpecialSprite: Unexpected data block, skipping");
 		} else if (action == 0xFE) {
-			GrfMsg(2, "DecodeSpecialSprite: Unexpected import block, skipping");
+			GrfMsg(Severity::Warning, "DecodeSpecialSprite: Unexpected import block, skipping");
 		} else {
 			InvokeGrfActionHandler::Invoke(action, stage, br);
 		}
 	} catch (...) {
-		GrfMsg(1, "DecodeSpecialSprite: Tried to read past end of pseudo-sprite data");
+		GrfMsg(Severity::Error, "DecodeSpecialSprite: Tried to read past end of pseudo-sprite data");
 		DisableGrf(STR_NEWGRF_ERROR_READ_BOUNDS);
 	}
 }
@@ -1300,11 +1300,11 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 	AutoRestoreBackup cur_file(_cur_gps.file, &file);
 	AutoRestoreBackup cur_config(_cur_gps.grfconfig, &config);
 
-	Debug(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '{}'", config.filename);
+	Debug(grf, Severity::Warning, "LoadNewGRFFile: Reading NewGRF-file '{}'", config.filename);
 
 	uint8_t grf_container_version = file.GetContainerVersion();
 	if (grf_container_version == 0) {
-		Debug(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
+		Debug(grf, Severity::Trace1, "LoadNewGRFFile: Custom .grf has invalid format");
 		return;
 	}
 
@@ -1321,7 +1321,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 		/* Read compression value. */
 		uint8_t compression = file.ReadByte();
 		if (compression != 0) {
-			Debug(grf, 7, "LoadNewGRFFile: Unsupported compression format");
+			Debug(grf, Severity::Trace1, "LoadNewGRFFile: Unsupported compression format");
 			return;
 		}
 	}
@@ -1333,7 +1333,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 	if (num == 4 && file.ReadByte() == 0xFF) {
 		file.ReadDword();
 	} else {
-		Debug(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
+		Debug(grf, Severity::Trace1, "LoadNewGRFFile: Custom .grf has invalid format");
 		return;
 	}
 
@@ -1349,7 +1349,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 			if (_cur_gps.skip_sprites == 0) {
 				/* Limit the special sprites to 1 MiB. */
 				if (num > 1024 * 1024) {
-					GrfMsg(0, "LoadNewGRFFile: Unexpectedly large sprite, disabling");
+					GrfMsg(Severity::Fatal, "LoadNewGRFFile: Unexpectedly large sprite, disabling");
 					DisableGrf(STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
 					break;
 				}
@@ -1365,7 +1365,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 			}
 		} else {
 			if (_cur_gps.skip_sprites == 0) {
-				GrfMsg(0, "LoadNewGRFFile: Unexpected sprite, disabling");
+				GrfMsg(Severity::Fatal, "LoadNewGRFFile: Unexpected sprite, disabling");
 				DisableGrf(STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
 				break;
 			}
@@ -1513,7 +1513,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p : EnumRange(Price::End)) {
 			/* No price defined -> nothing to do */
 			if (!features.Test(_price_base_specs[p].grf_feature) || source.price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
-			Debug(grf, 3, "'{}' overrides price base multiplier {} of '{}'", source.filename, p, dest.filename);
+			Debug(grf, Severity::Notice, "'{}' overrides price base multiplier {} of '{}'", source.filename, p, dest.filename);
 			dest.price_base_multipliers[p] = source.price_base_multipliers[p];
 		}
 	}
@@ -1531,7 +1531,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p : EnumRange(Price::End)) {
 			/* Already a price defined -> nothing to do */
 			if (!features.Test(_price_base_specs[p].grf_feature) || dest.price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
-			Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, source.filename, dest.filename);
+			Debug(grf, Severity::Notice, "Price base multiplier {} from '{}' propagated to '{}'", p, source.filename, dest.filename);
 			dest.price_base_multipliers[p] = source.price_base_multipliers[p];
 		}
 	}
@@ -1549,7 +1549,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p : EnumRange(Price::End)) {
 			if (!features.Test(_price_base_specs[p].grf_feature)) continue;
 			if (source.price_base_multipliers[p] != dest.price_base_multipliers[p]) {
-				Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, dest.filename, source.filename);
+				Debug(grf, Severity::Notice, "Price base multiplier {} from '{}' propagated to '{}'", p, dest.filename, source.filename);
 			}
 			source.price_base_multipliers[p] = dest.price_base_multipliers[p];
 		}
@@ -1580,11 +1580,11 @@ static void FinalisePriceBaseMultipliers()
 				if (!file.grf_features.Test(_price_base_specs[p].grf_feature)) {
 					/* The grf does not define any objects of the feature,
 					 * so it must be a difficulty setting. Apply it globally */
-					Debug(grf, 3, "'{}' sets global price base multiplier {}", file.filename, p);
+					Debug(grf, Severity::Notice, "'{}' sets global price base multiplier {}", file.filename, p);
 					SetPriceBaseMultiplier(p, price_base_multipliers[p]);
 					price_base_multipliers[p] = 0;
 				} else {
-					Debug(grf, 3, "'{}' sets local price base multiplier {}", file.filename, p);
+					Debug(grf, Severity::Notice, "'{}' sets local price base multiplier {}", file.filename, p);
 				}
 			}
 		}
@@ -1835,7 +1835,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 			Subdirectory subdir = num_grfs < num_baseset ? Subdirectory::Baseset : Subdirectory::NewGrf;
 			if (!FioCheckFileExists(c->filename, subdir)) {
-				Debug(grf, 0, "NewGRF file is missing '{}'; disabling", c->filename);
+				Debug(grf, Severity::Fatal, "NewGRF file is missing '{}'; disabling", c->filename);
 				c->status = GRFStatus::NotFound;
 				continue;
 			}
@@ -1844,7 +1844,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 			if (!c->flags.Test(GRFConfigFlag::Static) && !c->flags.Test(GRFConfigFlag::System)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
-					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
+					Debug(grf, Severity::Fatal, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
 					c->status = GRFStatus::Disabled;
 					c->errors.emplace_back(STR_NEWGRF_ERROR_MSG_FATAL, 0, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 					continue;
@@ -1862,7 +1862,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 				assert(GetFileByGRFID(c->ident.grfid) == _cur_gps.grffile);
 				ClearTemporaryNewGRFData(_cur_gps.grffile);
 				BuildCargoTranslationMap();
-				Debug(sprite, 2, "LoadNewGRF: Currently {} sprites are loaded", _cur_gps.spriteid);
+				Debug(sprite, Severity::Warning, "LoadNewGRF: Currently {} sprites are loaded", _cur_gps.spriteid);
 			} else if (stage == GrfLoadingStage::Init && c->flags.Test(GRFConfigFlag::InitOnly)) {
 				/* We're not going to activate this, so free whatever data we allocated */
 				ClearTemporaryNewGRFData(_cur_gps.grffile);

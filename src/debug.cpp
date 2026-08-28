@@ -36,30 +36,30 @@ std::mutex _debug_remote_console_mutex; ///< Mutex to guard the queue of debug m
 std::vector<QueuedDebugItem> _debug_remote_console_queue; ///< Queue for debug messages to be passed to NetworkAdminConsole or IConsolePrint.
 std::vector<QueuedDebugItem> _debug_remote_console_queue_spare; ///< Spare queue to swap with _debug_remote_console_queue.
 
-int _debug_driver_level;
-int _debug_grf_level;
-int _debug_map_level;
-int _debug_misc_level;
-int _debug_net_level;
-int _debug_sprite_level;
-int _debug_oldloader_level;
-int _debug_yapf_level;
-int _debug_fontcache_level;
-int _debug_script_level;
-int _debug_sl_level;
-int _debug_gamelog_level;
-int _debug_desync_level;
-int _debug_console_level;
+Severity _debug_driver_level;
+Severity _debug_grf_level;
+Severity _debug_map_level;
+Severity _debug_misc_level;
+Severity _debug_net_level;
+Severity _debug_sprite_level;
+Severity _debug_oldloader_level;
+Severity _debug_yapf_level;
+Severity _debug_fontcache_level;
+Severity _debug_script_level;
+Severity _debug_sl_level;
+Severity _debug_gamelog_level;
+Severity _debug_desync_level;
+Severity _debug_console_level;
 #ifdef RANDOM_DEBUG
-int _debug_random_level;
+Severity _debug_random_level;
 #endif
 
 struct DebugLevel {
 	std::string_view name;
-	int *level;
+	Severity &level;
 };
 
-#define DEBUG_LEVEL(x) { #x, &_debug_##x##_level }
+#define DEBUG_LEVEL(x) { #x, _debug_##x##_level }
 static const std::initializer_list<DebugLevel> _debug_levels{
 	DEBUG_LEVEL(driver),
 	DEBUG_LEVEL(grf),
@@ -105,12 +105,12 @@ void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_itera
 /**
  * Internal function for outputting the debug line.
  * @param category The category/classification of the debug message.
- * @param level The severity of the debug level; lower is more likely to be shown.
+ * @param severity The severity of the debug level; lower is more likely to be shown.
  * @param message The message to output.
  */
-void DebugPrint(std::string_view category, int level, std::string &&message)
+void DebugPrint(std::string_view category, Severity severity, std::string &&message)
 {
-	if (category == "desync" && level != 0) {
+	if (category == "desync" && severity != Severity::Fatal) {
 		static auto f = FioFOpenFile("commands-out.log", "wb", Subdirectory::Autosave);
 		if (!f.has_value()) return;
 
@@ -125,7 +125,7 @@ void DebugPrint(std::string_view category, int level, std::string &&message)
 		fflush(*f);
 #endif
 	} else {
-		fmt::print(stderr, "{}dbg: [{}:{}] {}\n", GetLogPrefix(true), category, level, message);
+		fmt::print(stderr, "{}dbg: [{}:{}] {}\n", GetLogPrefix(true), category, severity, message);
 
 		if (_debug_remote_console.load()) {
 			/* Only add to the queue when there is at least one consumer of the data. */
@@ -147,13 +147,13 @@ void SetDebugString(std::string_view s, SetDebugStringErrorFunc error_func)
 	StringConsumer consumer{s};
 
 	/* Store planned changes into map during parse */
-	std::map<std::string_view, int> new_levels;
+	std::map<std::string_view, Severity> new_levels;
 
 	/* Global debugging level? */
 	auto level = consumer.TryReadIntegerBase<int>(10);
 	if (level.has_value()) {
 		for (const auto &debug_level : _debug_levels) {
-			new_levels[debug_level.name] = *level;
+			new_levels[debug_level.name] = static_cast<Severity>(*level);
 		}
 	}
 
@@ -182,14 +182,14 @@ void SetDebugString(std::string_view s, SetDebugStringErrorFunc error_func)
 			return;
 		}
 
-		new_levels[it->name] = *level;
+		new_levels[it->name] = static_cast<Severity>(*level);
 	}
 
 	/* Apply the changes after parse is successful */
 	for (const auto &debug_level : _debug_levels) {
 		const auto &nl = new_levels.find(debug_level.name);
 		if (nl != new_levels.end()) {
-			*debug_level.level = nl->second;
+			debug_level.level = nl->second;
 		}
 	}
 }
@@ -204,7 +204,7 @@ std::string GetDebugString()
 	std::string result;
 	for (const auto &debug_level : _debug_levels) {
 		if (!result.empty()) result += ", ";
-		format_append(result, "{}={}", debug_level.name, *debug_level.level);
+		format_append(result, "{}={}", debug_level.name, debug_level.level);
 	}
 	return result;
 }

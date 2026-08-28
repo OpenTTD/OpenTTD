@@ -666,7 +666,7 @@ int openttd_main(std::span<std::string_view> arguments)
 	DeterminePaths(arguments[0], only_local_path);
 	TarScanner::DoScan(TarScanner::Mode::Baseset);
 
-	if (dedicated) Debug(net, 3, "Starting dedicated server, version {}", _openttd_revision);
+	if (dedicated) Debug(net, Severity::Notice, "Starting dedicated server, version {}", _openttd_revision);
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 
 #if defined(UNIX)
@@ -730,7 +730,7 @@ int openttd_main(std::span<std::string_view> arguments)
 	/* Initialize game palette */
 	GfxInitPalettes();
 
-	Debug(misc, 1, "Loading blitter...");
+	Debug(misc, Severity::Error, "Loading blitter...");
 	if (blitter.empty() && !_ini_blitter.empty()) blitter = _ini_blitter;
 	_blitter_autodetected = blitter.empty();
 	/* Activate the initial blitter.
@@ -953,7 +953,7 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 		 * server is a better reaction than starting the server with a newly
 		 * generated map as it is quite likely to be started from a script.
 		 */
-		Debug(net, 0, "Loading requested map failed; closing server.");
+		Debug(net, Severity::Fatal, "Loading requested map failed; closing server.");
 		_exit_game = true;
 		return false;
 	}
@@ -972,7 +972,7 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 		 * nothing else to do than start a new game, as it might have failed
 		 * trying to reload the originally loaded savegame/scenario.
 		 */
-		Debug(net, 0, "Loading game failed, so a new (random) game will be started");
+		Debug(net, Severity::Fatal, "Loading game failed, so a new (random) game will be started");
 		MakeNewGame(false, true);
 		return false;
 	}
@@ -1241,7 +1241,7 @@ void StateGameLoop()
 		CallWindowGameTickEvent();
 		NewsLoop();
 	} else {
-		if (_debug_desync_level > 2 && TimerGameEconomy::date_fract == 0 && (TimerGameEconomy::date.base() & 0x1F) == 0) {
+		if (_debug_desync_level > Severity::Warning && TimerGameEconomy::date_fract == 0 && (TimerGameEconomy::date.base() & 0x1F) == 0) {
 			/* Save the desync savegame if needed. */
 			std::string name = fmt::format("dmp_cmds_{:08x}_{:08x}.sav", _settings_game.game_creation.generation_seed, TimerGameEconomy::date);
 			SaveOrLoad(name, SaveLoadOperation::Save, DetailedFileType::GameFile, Subdirectory::Autosave, false);

@@ -72,7 +72,7 @@ void SetRandomSeed(uint32_t seed)
 uint32_t Random(const std::source_location location)
 {
 	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != NetworkClientSocket::ClientStatus::Inactive))) {
-		Debug(random, 0, "{:08x}; {:02x}; {:04x}; {:02x}; {}:{}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _frame_counter, _current_company, location.file_name(), location.line());
+		Debug(random, Severity::Fatal, "{:08x}; {:02x}; {:04x}; {:02x}; {}:{}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _frame_counter, _current_company, location.file_name(), location.line());
 	}
 
 	return _random.Next();
@@ -121,7 +121,7 @@ void RandomBytesWithFallback(std::span<uint8_t> buf)
 #endif
 
 	static bool warned_once = false;
-	Debug(misc, warned_once ? 1 : 0, "Cryptographically-strong random generator unavailable; using fallback");
+	Debug(misc, warned_once ? Severity::Error : Severity::Fatal, "Cryptographically-strong random generator unavailable; using fallback");
 	warned_once = true;
 
 	for (uint i = 0; i < buf.size(); i++) {

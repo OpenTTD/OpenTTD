@@ -71,7 +71,7 @@ void AirportTileOverrideManager::SetEntitySpec(AirportTileSpec &&airpts)
 	StationGfx airpt_id = this->AddEntityID(airpts.grf_prop.local_id, airpts.grf_prop.grfid, airpts.grf_prop.subst_id);
 
 	if (airpt_id == this->invalid_id) {
-		GrfMsg(1, "AirportTile.SetEntitySpec: Too many airport tiles allocated. Ignoring.");
+		GrfMsg(Severity::Error, "AirportTile.SetEntitySpec: Too many airport tiles allocated. Ignoring.");
 		return;
 	}
 
@@ -196,7 +196,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, GrfI
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->ats->badges, parameter);
 	}
 
-	Debug(grf, 1, "Unhandled airport tile variable 0x{:X}", variable);
+	Debug(grf, Severity::Error, "Unhandled airport tile variable 0x{:X}", variable);
 
 	available = false;
 	return UINT_MAX;

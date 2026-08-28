@@ -30,7 +30,7 @@ public:
 
 	void OnFailure() override
 	{
-		Debug(net, 9, "Turn::OnFailure()");
+		Debug(net, Severity::Trace3, "Turn::OnFailure()");
 
 		this->handler->connecter = nullptr;
 
@@ -39,7 +39,7 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
-		Debug(net, 9, "Turn::OnConnect()");
+		Debug(net, Severity::Trace3, "Turn::OnConnect()");
 
 		this->handler->connecter = nullptr;
 
@@ -49,7 +49,7 @@ public:
 
 bool ClientNetworkTurnSocketHandler::ReceiveServerError(Packet &)
 {
-	Debug(net, 9, "ReceiveServerError()");
+	Debug(net, Severity::Trace3, "ReceiveServerError()");
 
 	this->ConnectFailure();
 
@@ -59,7 +59,7 @@ bool ClientNetworkTurnSocketHandler::ReceiveServerError(Packet &)
 bool ClientNetworkTurnSocketHandler::ReceiveServerConnected(Packet &p)
 {
 	std::string hostname = p.Recv_string(NETWORK_HOSTNAME_LENGTH);
-	Debug(net, 9, "Turn::ReceiveServerConnected({})", hostname);
+	Debug(net, Severity::Trace3, "Turn::ReceiveServerConnected({})", hostname);
 
 	/* Act like we no longer have a socket, as we are handing it over to the
 	 * game handler. */
@@ -77,7 +77,7 @@ bool ClientNetworkTurnSocketHandler::ReceiveServerConnected(Packet &p)
  */
 void ClientNetworkTurnSocketHandler::Connect()
 {
-	Debug(net, 9, "Turn::Connect()");
+	Debug(net, Severity::Trace3, "Turn::Connect()");
 
 	this->connect_started = true;
 	this->connecter = TCPConnecter::Create<NetworkTurnConnecter>(this, this->connection_string);
@@ -101,7 +101,7 @@ void ClientNetworkTurnSocketHandler::Connect()
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_string(ticket);
 
-	Debug(net, 9, "Turn::SendTurn({})", ticket);
+	Debug(net, Severity::Trace3, "Turn::SendTurn({})", ticket);
 	turn_handler->SendPacket(std::move(p));
 
 	return turn_handler;

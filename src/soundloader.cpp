@@ -36,7 +36,7 @@ bool LoadSoundData(SoundEntry &sound, bool new_format, SoundID sound_id, const s
 	}
 
 	if (sound.data->empty()) {
-		Debug(grf, 0, "LoadSound [{}]: Failed to load sound '{}' for slot {}", sound.file->GetSimplifiedFilename(), name, sound_id);
+		Debug(grf, Severity::Fatal, "LoadSound [{}]: Failed to load sound '{}' for slot {}", sound.file->GetSimplifiedFilename(), name, sound_id);
 		return false;
 	}
 
@@ -44,7 +44,7 @@ bool LoadSoundData(SoundEntry &sound, bool new_format, SoundID sound_id, const s
 	assert(sound.channels == 1);
 	assert(sound.rate != 0);
 
-	Debug(grf, 2, "LoadSound [{}]: channels {}, sample rate {}, bits per sample {}, length {}", sound.file->GetSimplifiedFilename(), sound.channels, sound.rate, sound.bits_per_sample, sound.file_size);
+	Debug(grf, Severity::Warning, "LoadSound [{}]: channels {}, sample rate {}, bits per sample {}, length {}", sound.file->GetSimplifiedFilename(), sound.channels, sound.rate, sound.bits_per_sample, sound.file_size);
 
 	/* Convert sample rate if needed. */
 	const uint32_t play_rate = MxGetRate();

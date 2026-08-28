@@ -202,7 +202,7 @@ X25519AuthenticationHandler::X25519AuthenticationHandler(const X25519SecretKey &
 bool X25519AuthenticationHandler::ReceiveRequest(Packet &p)
 {
 	if (p.RemainingBytesToTransfer() != X25519_KEY_SIZE + X25519_NONCE_SIZE) {
-		Debug(net, 1, "[crypto] Received auth response of illegal size; authentication aborted.");
+		Debug(net, Severity::Error, "[crypto] Received auth response of illegal size; authentication aborted.");
 		return false;
 	}
 
@@ -221,7 +221,7 @@ bool X25519AuthenticationHandler::SendResponse(Packet &p, std::string_view deriv
 {
 	if (!this->derived_keys.Exchange(this->peer_public_key, X25519KeyExchangeSide::CLIENT,
 			this->our_secret_key, this->our_public_key, derived_key_extra_payload)) {
-		Debug(net, 0, "[crypto] Peer sent an illegal public key; authentication aborted.");
+		Debug(net, Severity::Fatal, "[crypto] Peer sent an illegal public key; authentication aborted.");
 		return false;
 	}
 
@@ -288,7 +288,7 @@ std::unique_ptr<NetworkEncryptionHandler> X25519AuthenticationHandler::CreateSer
 NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::ReceiveResponse(Packet &p, std::string_view derived_key_extra_payload)
 {
 	if (p.RemainingBytesToTransfer() != X25519_KEY_SIZE + X25519_MAC_SIZE + X25519_KEY_EXCHANGE_MESSAGE_SIZE) {
-		Debug(net, 1, "[crypto] Received auth response of illegal size; authentication aborted.");
+		Debug(net, Severity::Error, "[crypto] Received auth response of illegal size; authentication aborted.");
 		return NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated;
 	}
 
@@ -301,7 +301,7 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 
 	if (!this->derived_keys.Exchange(this->peer_public_key, X25519KeyExchangeSide::SERVER,
 			this->our_secret_key, this->our_public_key, derived_key_extra_payload)) {
-		Debug(net, 0, "[crypto] Peer sent an illegal public key; authentication aborted.");
+		Debug(net, Severity::Fatal, "[crypto] Peer sent an illegal public key; authentication aborted.");
 		return NetworkAuthenticationServerHandler::ResponseResult::NotAuthenticated;
 	}
 
@@ -339,9 +339,9 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 	X25519SecretKey key{};
 	if (!ConvertHexToBytes(secret_key, key)) {
 		if (secret_key.empty()) {
-			Debug(net, 3, "[crypto] Creating a new random key");
+			Debug(net, Severity::Notice, "[crypto] Creating a new random key");
 		} else {
-			Debug(net, 0, "[crypto] Found invalid secret key, creating a new random key");
+			Debug(net, Severity::Fatal, "[crypto] Found invalid secret key, creating a new random key");
 		}
 		key = X25519SecretKey::CreateRandom();
 		secret_key = FormatArrayAsHex(key);
@@ -371,13 +371,13 @@ NetworkAuthenticationServerHandler::ResponseResult X25519AuthenticationHandler::
 
 	this->current_handler = it->get();
 
-	Debug(net, 9, "Received {} authentication request", this->GetName());
+	Debug(net, Severity::Trace3, "Received {} authentication request", this->GetName());
 	return this->current_handler->ReceiveRequest(p);
 }
 
 /* virtual */ bool CombinedAuthenticationClientHandler::SendResponse(struct Packet &p)
 {
-	Debug(net, 9, "Sending {} authentication response", this->GetName());
+	Debug(net, Severity::Trace3, "Sending {} authentication response", this->GetName());
 
 	return this->current_handler->SendResponse(p);
 }
@@ -407,7 +407,7 @@ void CombinedAuthenticationServerHandler::Add(CombinedAuthenticationServerHandle
 
 /* virtual */ void CombinedAuthenticationServerHandler::SendRequest(struct Packet &p)
 {
-	Debug(net, 9, "Sending {} authentication request", this->GetName());
+	Debug(net, Severity::Trace3, "Sending {} authentication request", this->GetName());
 
 	p.Send_uint8(to_underlying(this->handlers.back()->GetAuthenticationMethod()));
 	this->handlers.back()->SendRequest(p);
@@ -415,7 +415,7 @@ void CombinedAuthenticationServerHandler::Add(CombinedAuthenticationServerHandle
 
 /* virtual */ NetworkAuthenticationServerHandler::ResponseResult CombinedAuthenticationServerHandler::ReceiveResponse(struct Packet &p)
 {
-	Debug(net, 9, "Receiving {} authentication response", this->GetName());
+	Debug(net, Severity::Trace3, "Receiving {} authentication response", this->GetName());
 
 	ResponseResult result = this->handlers.back()->ReceiveResponse(p);
 	if (result != ResponseResult::NotAuthenticated) return result;

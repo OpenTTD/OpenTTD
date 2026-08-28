@@ -10,6 +10,7 @@
 #ifndef BASE_MEDIA_BASE_H
 #define BASE_MEDIA_BASE_H
 
+#include "debug_type.h"
 #include "fileio_func.h"
 #include "textfile_type.h"
 #include "textfile_gui.h"
@@ -93,7 +94,7 @@ struct BaseSet {
 		return BaseSet<T>::NUM_FILES - this->valid_files;
 	}
 
-	void LogError(std::string_view full_filename, std::string_view detail, int level = 0) const;
+	void LogError(std::string_view full_filename, std::string_view detail, Severity severity = {}) const;
 	const IniItem *GetMandatoryItem(std::string_view full_filename, const IniGroup &group, std::string_view name) const;
 
 	bool FillSetDetails(const IniFile &ini, const std::string &path, const std::string &full_filename, bool allow_empty_filename = true);

@@ -121,7 +121,7 @@ ScriptObject::DisableDoCommandScope::DisableDoCommandScope()
 /* static */ void ScriptObject::SetLastCommand(const CommandDataBuffer &data, Commands cmd)
 {
 	ScriptStorage &s = GetStorage();
-	Debug(script, 6, "SetLastCommand company={:02d} cmd={} data={}", s.root_company, cmd, FormatArrayAsHex(data));
+	Debug(script, Severity::Debug2, "SetLastCommand company={:02d} cmd={} data={}", s.root_company, cmd, FormatArrayAsHex(data));
 	s.last_data = data;
 	s.last_cmd = cmd;
 }
@@ -129,7 +129,7 @@ ScriptObject::DisableDoCommandScope::DisableDoCommandScope()
 /* static */ bool ScriptObject::CheckLastCommand(const CommandDataBuffer &data, Commands cmd)
 {
 	ScriptStorage &s = GetStorage();
-	Debug(script, 6, "CheckLastCommand company={:02d} cmd={} data={}", s.root_company, cmd, FormatArrayAsHex(data));
+	Debug(script, Severity::Debug2, "CheckLastCommand company={:02d} cmd={} data={}", s.root_company, cmd, FormatArrayAsHex(data));
 	if (s.last_cmd != cmd) return false;
 	if (s.last_data != data) return false;
 	return true;

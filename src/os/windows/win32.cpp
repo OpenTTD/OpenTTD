@@ -292,7 +292,7 @@ void DetermineBasePaths(std::string_view exe)
 		wchar_t config_dir[MAX_PATH];
 		convert_to_fs(_config_file, path);
 		if (!GetFullPathName(path, static_cast<DWORD>(std::size(config_dir)), config_dir, nullptr)) {
-			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
+			Debug(misc, Severity::Fatal, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[Searchpath::WorkingDir].clear();
 		} else {
 			std::string tmp(FS2OTTD(config_dir));
@@ -304,13 +304,13 @@ void DetermineBasePaths(std::string_view exe)
 	}
 
 	if (!GetModuleFileName(nullptr, path, static_cast<DWORD>(std::size(path)))) {
-		Debug(misc, 0, "GetModuleFileName failed ({})", GetLastError());
+		Debug(misc, Severity::Fatal, "GetModuleFileName failed ({})", GetLastError());
 		_searchpaths[Searchpath::BinaryDir].clear();
 	} else {
 		wchar_t exec_dir[MAX_PATH];
 		convert_to_fs(exe, path);
 		if (!GetFullPathName(path, static_cast<DWORD>(std::size(exec_dir)), exec_dir, nullptr)) {
-			Debug(misc, 0, "GetFullPathName failed ({})", GetLastError());
+			Debug(misc, Severity::Fatal, "GetFullPathName failed ({})", GetLastError());
 			_searchpaths[Searchpath::BinaryDir].clear();
 		} else {
 			std::string tmp(FS2OTTD(exec_dir));

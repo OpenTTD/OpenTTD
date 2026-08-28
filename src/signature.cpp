@@ -73,17 +73,17 @@ static bool ValidateChecksum(const std::string &filename, const std::string &che
 	if (version == "1") {
 		calculated_hash = CalculateHashV1(filename);
 	} else {
-		Debug(misc, 0, "Failed to validate signature: unknown checksum version: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: unknown checksum version: {}", filename);
 		return false;
 	}
 
 	/* Validate the checksum is the same. */
 	if (calculated_hash.empty()) {
-		Debug(misc, 0, "Failed to validate signature: couldn't calculate checksum for: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: couldn't calculate checksum for: {}", filename);
 		return false;
 	}
 	if (calculated_hash != hash) {
-		Debug(misc, 0, "Failed to validate signature: checksum mismatch for: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: checksum mismatch for: {}", filename);
 		return false;
 	}
 
@@ -113,7 +113,7 @@ static bool ValidateSignature(const std::string &signature, const nlohmann::json
 	if (version == "1") {
 		std::array<uint8_t, 64> sig;
 		if (sig_value.size() != 128 || !ConvertHexToBytes(sig_value, sig)) {
-			Debug(misc, 0, "Failed to validate signature: invalid signature: {}", filename);
+			Debug(misc, Severity::Fatal, "Failed to validate signature: invalid signature: {}", filename);
 			return false;
 		}
 
@@ -125,10 +125,10 @@ static bool ValidateSignature(const std::string &signature, const nlohmann::json
 			}
 		}
 
-		Debug(misc, 0, "Failed to validate signature: signature validation failed: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: signature validation failed: {}", filename);
 		return false;
 	} else {
-		Debug(misc, 0, "Failed to validate signature: unknown signature version: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: unknown signature version: {}", filename);
 		return false;
 	}
 
@@ -145,18 +145,18 @@ static bool ValidateSignature(const std::string &signature, const nlohmann::json
 static bool ValidateSchema(const nlohmann::json &signatures, const std::string &filename)
 {
 	if (signatures["files"].is_null()) {
-		Debug(misc, 0, "Failed to validate signature: no files found: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: no files found: {}", filename);
 		return false;
 	}
 
 	if (signatures["signature"].is_null()) {
-		Debug(misc, 0, "Failed to validate signature: no signature found: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: no signature found: {}", filename);
 		return false;
 	}
 
 	for (auto &signature : signatures["files"]) {
 		if (signature["filename"].is_null() || signature["checksum"].is_null()) {
-			Debug(misc, 0, "Failed to validate signature: invalid entry in files: {}", filename);
+			Debug(misc, Severity::Fatal, "Failed to validate signature: invalid entry in files: {}", filename);
 			return false;
 		}
 
@@ -164,13 +164,13 @@ static bool ValidateSchema(const nlohmann::json &signatures, const std::string &
 		const std::string sig_checksum = signature["checksum"];
 
 		if (sig_filename.empty() || sig_checksum.empty()) {
-			Debug(misc, 0, "Failed to validate signature: invalid entry in files: {}", filename);
+			Debug(misc, Severity::Fatal, "Failed to validate signature: invalid entry in files: {}", filename);
 			return false;
 		}
 
 		auto pos = sig_checksum.find('$');
 		if (pos == std::string::npos) {
-			Debug(misc, 0, "Failed to validate signature: invalid checksum format: {}", filename);
+			Debug(misc, Severity::Fatal, "Failed to validate signature: invalid checksum format: {}", filename);
 			return false;
 		}
 	}
@@ -178,7 +178,7 @@ static bool ValidateSchema(const nlohmann::json &signatures, const std::string &
 	const std::string signature = signatures["signature"];
 	auto pos = signature.find('$');
 	if (pos == std::string::npos) {
-		Debug(misc, 0, "Failed to validate signature: invalid signature format: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: invalid signature format: {}", filename);
 		return false;
 	}
 
@@ -197,14 +197,14 @@ static bool _ValidateSignatureFile(const std::string &filename)
 	size_t filesize;
 	auto f = FioFOpenFile(filename, "rb", Subdirectory::None, &filesize);
 	if (!f.has_value()) {
-		Debug(misc, 0, "Failed to validate signature: file not found: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: file not found: {}", filename);
 		return false;
 	}
 
 	std::string text(filesize, '\0');
 	size_t len = fread(text.data(), filesize, 1, *f);
 	if (len != 1) {
-		Debug(misc, 0, "Failed to validate signature: failed to read file: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: failed to read file: {}", filename);
 		return false;
 	}
 
@@ -212,7 +212,7 @@ static bool _ValidateSignatureFile(const std::string &filename)
 	try {
 		signatures = nlohmann::json::parse(text);
 	} catch (nlohmann::json::exception &) {
-		Debug(misc, 0, "Failed to validate signature: not a valid JSON file: {}", filename);
+		Debug(misc, Severity::Fatal, "Failed to validate signature: not a valid JSON file: {}", filename);
 		return false;
 	}
 

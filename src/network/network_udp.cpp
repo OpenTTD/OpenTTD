@@ -73,7 +73,7 @@ void ServerNetworkUDPSocketHandler::ReceiveClientFindServer(Packet &, NetworkAdd
 	Packet packet(this, PacketUDPType::ServerResponse);
 	this->SendPacket(packet, client_addr);
 
-	Debug(net, 7, "Queried from {}", client_addr.GetHostname());
+	Debug(net, Severity::Trace1, "Queried from {}", client_addr.GetHostname());
 }
 
 /* Communication with servers (we are client) */
@@ -88,7 +88,7 @@ public:
 
 void ClientNetworkUDPSocketHandler::ReceiveServerResponse(Packet &, NetworkAddress &client_addr)
 {
-	Debug(net, 3, "Server response from {}", client_addr.GetAddressAsString());
+	Debug(net, Severity::Notice, "Server response from {}", client_addr.GetAddressAsString());
 
 	NetworkAddServer(client_addr.GetAddressAsString(false), false, true);
 }
@@ -100,7 +100,7 @@ void ClientNetworkUDPSocketHandler::ReceiveServerResponse(Packet &, NetworkAddre
 static void NetworkUDPBroadCast(NetworkUDPSocketHandler &socket)
 {
 	for (NetworkAddress &addr : _broadcast_list) {
-		Debug(net, 5, "Broadcasting to {}", addr.GetHostname());
+		Debug(net, Severity::Debug1, "Broadcasting to {}", addr.GetHostname());
 
 		Packet p(&socket, PacketUDPType::ClientFindServer);
 		socket.SendPacket(p, addr, true, true);
@@ -113,7 +113,7 @@ void NetworkUDPSearchGame()
 	/* We are still searching.. */
 	if (_network_udp_broadcast > 0) return;
 
-	Debug(net, 3, "Searching server");
+	Debug(net, Severity::Notice, "Searching server");
 
 	NetworkUDPBroadCast(*_udp_client.socket);
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
@@ -125,7 +125,7 @@ void NetworkUDPInitialize()
 	/* If not closed, then do it. */
 	if (_udp_server.socket != nullptr) NetworkUDPClose();
 
-	Debug(net, 3, "Initializing UDP listeners");
+	Debug(net, Severity::Notice, "Initializing UDP listeners");
 	assert(_udp_client.socket == nullptr && _udp_server.socket == nullptr);
 
 	_udp_client.socket = std::make_unique<ClientNetworkUDPSocketHandler>();
@@ -152,7 +152,7 @@ void NetworkUDPClose()
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
-	Debug(net, 5, "Closed UDP listeners");
+	Debug(net, Severity::Debug1, "Closed UDP listeners");
 }
 
 /** Receive the UDP packets. */

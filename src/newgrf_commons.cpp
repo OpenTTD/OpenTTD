@@ -156,7 +156,7 @@ void HouseOverrideManager::SetEntitySpec(HouseSpec &&hs)
 	HouseID house_id = this->AddEntityID(hs.grf_prop.local_id, hs.grf_prop.grfid, hs.grf_prop.subst_id);
 
 	if (house_id == this->invalid_id) {
-		GrfMsg(1, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
+		GrfMsg(Severity::Error, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
 		return;
 	}
 
@@ -254,7 +254,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec &&inds)
 	}
 
 	if (ind_id == this->invalid_id) {
-		GrfMsg(1, "Industry.SetEntitySpec: Too many industries allocated. Ignoring.");
+		GrfMsg(Severity::Error, "Industry.SetEntitySpec: Too many industries allocated. Ignoring.");
 		return;
 	}
 
@@ -269,7 +269,7 @@ void IndustryTileOverrideManager::SetEntitySpec(IndustryTileSpec &&its)
 	IndustryGfx indt_id = this->AddEntityID(its.grf_prop.local_id, its.grf_prop.grfid, its.grf_prop.subst_id);
 
 	if (indt_id == this->invalid_id) {
-		GrfMsg(1, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
+		GrfMsg(Severity::Error, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
 		return;
 	}
 
@@ -308,7 +308,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec &&spec)
 	}
 
 	if (type == this->invalid_id) {
-		GrfMsg(1, "Object.SetEntitySpec: Too many objects allocated. Ignoring.");
+		GrfMsg(Severity::Error, "Object.SetEntitySpec: Too many objects allocated. Ignoring.");
 		return;
 	}
 
@@ -520,9 +520,9 @@ void ErrorUnknownCallbackResult(GrfID grfid, uint16_t cbid, uint16_t cb_res)
 	}
 
 	/* debug output */
-	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY, grfconfig->GetName())));
+	Debug(grf, Severity::Fatal, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY, grfconfig->GetName())));
 
-	Debug(grf, 0, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, std::monostate{}, cbid, cb_res)));
+	Debug(grf, Severity::Fatal, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, std::monostate{}, cbid, cb_res)));
 }
 
 /**

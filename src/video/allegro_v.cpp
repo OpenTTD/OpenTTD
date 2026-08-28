@@ -190,7 +190,7 @@ static bool CreateMainSurface(uint w, uint h)
 
 	GetAvailableVideoMode(&w, &h);
 	if (set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, w, h, 0, 0) != 0) {
-		Debug(driver, 0, "Allegro: Couldn't allocate a window to draw on '{}'", allegro_error);
+		Debug(driver, Severity::Fatal, "Allegro: Couldn't allocate a window to draw on '{}'", allegro_error);
 		return false;
 	}
 
@@ -323,8 +323,8 @@ static uint32_t ConvertAllegroKeyIntoMy(char32_t *character)
 	if (key_shifts & KB_CTRL_FLAG)  key |= WKC_CTRL;
 	if (key_shifts & KB_ALT_FLAG)   key |= WKC_ALT;
 #if 0
-	Debug(driver, 0, "Scancode character pressed {}", scancode);
-	Debug(driver, 0, "Unicode character pressed {}", unicode);
+	Debug(driver, Severity::Fatal, "Scancode character pressed {}", scancode);
+	Debug(driver, Severity::Fatal, "Unicode character pressed {}", unicode);
 #endif
 
 	*character = unicode;
@@ -421,7 +421,7 @@ int _allegro_instance_count = 0;
 std::optional<std::string_view> VideoDriver_Allegro::Start(const StringList &param)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
-		Debug(driver, 0, "allegro: install_allegro failed '{}'", allegro_error);
+		Debug(driver, Severity::Fatal, "allegro: install_allegro failed '{}'", allegro_error);
 		return "Failed to set up Allegro";
 	}
 	_allegro_instance_count++;

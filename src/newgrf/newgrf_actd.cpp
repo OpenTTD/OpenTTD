@@ -127,7 +127,7 @@ static uint32_t GetPatchVariable(uint8_t param)
 			return _settings_game.game_creation.generation_seed;
 
 		default:
-			GrfMsg(2, "ParamSet: Unknown Patch variable 0x{:02X}.", param);
+			GrfMsg(Severity::Warning, "ParamSet: Unknown Patch variable 0x{:02X}.", param);
 			return 0;
 	}
 }
@@ -151,7 +151,7 @@ static uint32_t PerformGRM(std::span<GrfID> grm, uint16_t count, uint8_t op, uin
 		uint32_t index = _cur_gps.grffile->GetParam(target);
 		if (index < std::size(grm)) return FlattenNewGRFLabel(grm[index]);
 
-		GrfMsg(1, "ParamSet: GRM: Parameter {} refers to invalid {} id {}", target, type, index);
+		GrfMsg(Severity::Error, "ParamSet: GRM: Parameter {} refers to invalid {} id {}", target, type, index);
 		return 0;
 	}
 
@@ -173,7 +173,7 @@ static uint32_t PerformGRM(std::span<GrfID> grm, uint16_t count, uint8_t op, uin
 	if (size == count) {
 		/* Got the slot... */
 		if (op == 0 || op == 3) {
-			GrfMsg(2, "ParamSet: GRM: Reserving {} {} at {}", count, type, start);
+			GrfMsg(Severity::Warning, "ParamSet: GRM: Reserving {} {} at {}", count, type, start);
 			for (uint i = 0; i < count; i++) grm[start + i] = _cur_gps.grffile->grfid;
 		}
 		return start;
@@ -182,12 +182,12 @@ static uint32_t PerformGRM(std::span<GrfID> grm, uint16_t count, uint8_t op, uin
 	/* Unable to allocate */
 	if (op != 4 && op != 5) {
 		/* Deactivate GRF */
-		GrfMsg(0, "ParamSet: GRM: Unable to allocate {} {}, deactivating", count, type);
+		GrfMsg(Severity::Fatal, "ParamSet: GRM: Unable to allocate {} {}, deactivating", count, type);
 		DisableGrf(STR_NEWGRF_ERROR_GRM_FAILED);
 		return UINT_MAX;
 	}
 
-	GrfMsg(1, "ParamSet: GRM: Unable to allocate {} {}", count, type);
+	GrfMsg(Severity::Error, "ParamSet: GRM: Unable to allocate {} {}", count, type);
 	return UINT_MAX;
 }
 
@@ -235,7 +235,7 @@ static void ParamSet(ByteReader &buf)
 	 *   an earlier action D */
 	if (HasBit(oper, 7)) {
 		if (target < 0x80 && target < std::size(_cur_gps.grffile->param)) {
-			GrfMsg(7, "ParamSet: Param {} already defined, skipping", target);
+			GrfMsg(Severity::Trace1, "ParamSet: Param {} already defined, skipping", target);
 			return;
 		}
 
@@ -259,13 +259,13 @@ static void ParamSet(ByteReader &buf)
 						if (op == 0) {
 							/* Check if the allocated sprites will fit below the original sprite limit */
 							if (_cur_gps.spriteid + count >= 16384) {
-								GrfMsg(0, "ParamSet: GRM: Unable to allocate {} sprites; try changing NewGRF order", count);
+								GrfMsg(Severity::Fatal, "ParamSet: GRM: Unable to allocate {} sprites; try changing NewGRF order", count);
 								DisableGrf(STR_NEWGRF_ERROR_GRM_FAILED);
 								return;
 							}
 
 							/* Reserve space at the current sprite ID */
-							GrfMsg(4, "ParamSet: GRM: Allocated {} sprites at {}", count, _cur_gps.spriteid);
+							GrfMsg(Severity::Info, "ParamSet: GRM: Allocated {} sprites at {}", count, _cur_gps.spriteid);
 							_grm_sprites[GRFLocation{_cur_gps.grffile->grfid, _cur_gps.nfo_line}] = std::make_pair(_cur_gps.spriteid, count);
 							_cur_gps.spriteid += count;
 						}
@@ -301,7 +301,7 @@ static void ParamSet(ByteReader &buf)
 								case 0:
 									/* Return space reserved during reservation stage */
 									src1 = _grm_sprites[GRFLocation{_cur_gps.grffile->grfid, _cur_gps.nfo_line}].first;
-									GrfMsg(4, "ParamSet: GRM: Using pre-allocated sprites at {}", src1);
+									GrfMsg(Severity::Info, "ParamSet: GRM: Using pre-allocated sprites at {}", src1);
 									break;
 
 								case 1:
@@ -309,7 +309,7 @@ static void ParamSet(ByteReader &buf)
 									break;
 
 								default:
-									GrfMsg(1, "ParamSet: GRM: Unsupported operation {} for general sprites", op);
+									GrfMsg(Severity::Error, "ParamSet: GRM: Unsupported operation {} for general sprites", op);
 									return;
 							}
 							break;
@@ -320,7 +320,7 @@ static void ParamSet(ByteReader &buf)
 							if (_cur_gps.skip_sprites == -1) return;
 							break;
 
-						default: GrfMsg(1, "ParamSet: GRM: Unsupported feature 0x{:X}", feature); return;
+						default: GrfMsg(Severity::Error, "ParamSet: GRM: Unsupported feature 0x{:X}", feature); return;
 					}
 				} else {
 					/* Ignore GRM during initialization */
@@ -432,7 +432,7 @@ static void ParamSet(ByteReader &buf)
 			}
 			break;
 
-		default: GrfMsg(0, "ParamSet: Unknown operation {}, skipping", oper); return;
+		default: GrfMsg(Severity::Fatal, "ParamSet: Unknown operation {}, skipping", oper); return;
 	}
 
 	switch (target) {
@@ -461,7 +461,7 @@ static void ParamSet(ByteReader &buf)
 		case 0x96: // Tile refresh offset downwards
 		case 0x97: // Snow line height -- Better supported by feature 8 property 10h (snow line table) TODO: implement by filling the entire snow line table with the given value
 		case 0x99: // Global ID offset -- Not necessary since IDs are remapped automatically
-			GrfMsg(7, "ParamSet: Skipping unimplemented target 0x{:02X}", target);
+			GrfMsg(Severity::Trace1, "ParamSet: Skipping unimplemented target 0x{:02X}", target);
 			break;
 
 		case 0x9E: { // Miscellaneous GRF features
@@ -485,7 +485,7 @@ static void ParamSet(ByteReader &buf)
 		}
 
 		case 0x9F: // locale-dependent settings
-			GrfMsg(7, "ParamSet: Skipping unimplemented target 0x{:02X}", target);
+			GrfMsg(Severity::Trace1, "ParamSet: Skipping unimplemented target 0x{:02X}", target);
 			break;
 
 		default:
@@ -494,7 +494,7 @@ static void ParamSet(ByteReader &buf)
 				if (target >= std::size(_cur_gps.grffile->param)) _cur_gps.grffile->param.resize(target + 1);
 				_cur_gps.grffile->param[target] = res;
 			} else {
-				GrfMsg(7, "ParamSet: Skipping unknown target 0x{:02X}", target);
+				GrfMsg(Severity::Trace1, "ParamSet: Skipping unknown target 0x{:02X}", target);
 			}
 			break;
 	}

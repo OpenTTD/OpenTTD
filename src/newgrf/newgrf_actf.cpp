@@ -35,7 +35,7 @@ static void FeatureTownName(ByteReader &buf)
 	GRFTownName *townname = AddGRFTownName(grfid);
 
 	uint8_t id = buf.ReadByte();
-	GrfMsg(6, "FeatureTownName: definition 0x{:02X}", id & 0x7F);
+	GrfMsg(Severity::Debug2, "FeatureTownName: definition 0x{:02X}", id & 0x7F);
 
 	if (HasBit(id, 7)) {
 		/* Final definition */
@@ -50,7 +50,7 @@ static void FeatureTownName(ByteReader &buf)
 
 			std::string_view name = buf.ReadString();
 
-			GrfMsg(6, "FeatureTownName: lang 0x{:X} (new_scheme: {}) -> '{}'", lang, new_scheme, TranslateTTDPatchCodes(grfid, GRFLanguage::Fallback, false, name));
+			GrfMsg(Severity::Debug2, "FeatureTownName: lang 0x{:X} (new_scheme: {}) -> '{}'", lang, new_scheme, TranslateTTDPatchCodes(grfid, GRFLanguage::Fallback, false, name));
 
 			style = AddGRFString(grfid, GRFStringID{id}, lang, new_scheme, false, name, STR_UNDEFINED);
 
@@ -60,7 +60,7 @@ static void FeatureTownName(ByteReader &buf)
 	}
 
 	uint8_t parts = buf.ReadByte();
-	GrfMsg(6, "FeatureTownName: {} parts", parts);
+	GrfMsg(Severity::Debug2, "FeatureTownName: {} parts", parts);
 
 	townname->partlists[id].reserve(parts);
 	for (uint partnum = 0; partnum < parts; partnum++) {
@@ -69,7 +69,7 @@ static void FeatureTownName(ByteReader &buf)
 		partlist.bitstart = buf.ReadByte();
 		partlist.bitcount = buf.ReadByte();
 		partlist.maxprob  = 0;
-		GrfMsg(6, "FeatureTownName: part {} contains {} texts and will use GB(seed, {}, {})", partnum, texts, partlist.bitstart, partlist.bitcount);
+		GrfMsg(Severity::Debug2, "FeatureTownName: part {} contains {} texts and will use GB(seed, {}, {})", partnum, texts, partlist.bitstart, partlist.bitcount);
 
 		partlist.parts.reserve(texts);
 		for (uint textnum = 0; textnum < texts; textnum++) {
@@ -79,21 +79,21 @@ static void FeatureTownName(ByteReader &buf)
 			if (HasBit(part.prob, 7)) {
 				uint8_t ref_id = buf.ReadByte();
 				if (ref_id >= GRFTownName::MAX_LISTS || townname->partlists[ref_id].empty()) {
-					GrfMsg(0, "FeatureTownName: definition 0x{:02X} doesn't exist, deactivating", ref_id);
+					GrfMsg(Severity::Fatal, "FeatureTownName: definition 0x{:02X} doesn't exist, deactivating", ref_id);
 					DelGRFTownName(grfid);
 					DisableGrf(STR_NEWGRF_ERROR_INVALID_ID);
 					return;
 				}
 				part.id = ref_id;
-				GrfMsg(6, "FeatureTownName: part {}, text {}, uses intermediate definition 0x{:02X} (with probability {})", partnum, textnum, ref_id, part.prob & 0x7F);
+				GrfMsg(Severity::Debug2, "FeatureTownName: part {}, text {}, uses intermediate definition 0x{:02X} (with probability {})", partnum, textnum, ref_id, part.prob & 0x7F);
 			} else {
 				std::string_view text = buf.ReadString();
 				part.text = TranslateTTDPatchCodes(grfid, GRFLanguage::Fallback, false, text);
-				GrfMsg(6, "FeatureTownName: part {}, text {}, '{}' (with probability {})", partnum, textnum, part.text, part.prob);
+				GrfMsg(Severity::Debug2, "FeatureTownName: part {}, text {}, '{}' (with probability {})", partnum, textnum, part.text, part.prob);
 			}
 			partlist.maxprob += GB(part.prob, 0, 7);
 		}
-		GrfMsg(6, "FeatureTownName: part {}, total probability {}", partnum, partlist.maxprob);
+		GrfMsg(Severity::Debug2, "FeatureTownName: part {}, total probability {}", partnum, partlist.maxprob);
 	}
 }
 

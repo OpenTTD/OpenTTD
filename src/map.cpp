@@ -45,7 +45,7 @@
 		FatalError("Invalid map size");
 	}
 
-	Debug(map, 1, "Allocating map of size {}x{}", size_x, size_y);
+	Debug(map, Severity::Error, "Allocating map of size {}x{}", size_x, size_y);
 
 	Map::log_x = FindFirstBit(size_x);
 	Map::log_y = FindFirstBit(size_y);
