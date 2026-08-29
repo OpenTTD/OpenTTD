@@ -212,15 +212,15 @@ public:
 		this->Window::Close();
 	}
 
+	void OnInit() override
+	{
+		this->button_size = maxdim(GetStringBoundingBox(STR_MISSING_GRAPHICS_YES_DOWNLOAD), GetStringBoundingBox(STR_MISSING_GRAPHICS_NO_QUIT));
+		this->button_size.width += WidgetDimensions::scaled.frametext.Horizontal();
+		this->button_size.height += WidgetDimensions::scaled.frametext.Vertical();
+	}
+
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
-		/* We cache the button size. This is safe as no reinit can happen here. */
-		if (this->button_size.width == 0) {
-			this->button_size = maxdim(GetStringBoundingBox(STR_MISSING_GRAPHICS_YES_DOWNLOAD), GetStringBoundingBox(STR_MISSING_GRAPHICS_NO_QUIT));
-			this->button_size.width += WidgetDimensions::scaled.frametext.Horizontal();
-			this->button_size.height += WidgetDimensions::scaled.frametext.Vertical();
-		}
-
 		switch (widget) {
 			case WID_BAFD_QUESTION:
 				/* The question is twice as wide as the buttons, and determine the height based on the width. */
