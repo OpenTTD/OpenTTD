@@ -247,7 +247,7 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 		Debug(misc, 1, "Adding {} ({}) as base {} set", set->name, fmt::join(set->version, "."), BaseSet<Tbase_set>::SET_TYPE);
 		*existing = std::move(set);
 	} else {
-		Debug(grf, 1, "Adding {} ({}) as base {} set", set->name, set->version, BaseSet<Tbase_set>::SET_TYPE);
+		Debug(misc, 1, "Adding {} ({}) as base {} set", set->name, set->version, BaseSet<Tbase_set>::SET_TYPE);
 		available_sets.push_back(std::move(set));
 	}
 
