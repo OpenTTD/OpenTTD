@@ -11,6 +11,7 @@
 #include "gfx_layout_icu.h"
 
 #include "debug.h"
+#include "misc/autorelease.hpp"
 #include "strings_func.h"
 #include "language.h"
 #include "table/control_codes.h"
@@ -249,23 +250,21 @@ int ICUParagraphLayout::ICULine::GetWidth() const
  */
 std::vector<ICURun> ItemizeBidi(UChar *buff, size_t length)
 {
-	auto ubidi = ubidi_open();
+	auto ubidi = AutoRelease<UBiDi, ubidi_close>(ubidi_open());
 
 	auto parLevel = _current_text_dir == TD_RTL ? UBIDI_RTL : UBIDI_LTR;
 
 	UErrorCode err = U_ZERO_ERROR;
-	ubidi_setPara(ubidi, buff, length, parLevel, nullptr, &err);
+	ubidi_setPara(ubidi.get(), buff, length, parLevel, nullptr, &err);
 	if (U_FAILURE(err)) {
 		Debug(fontcache, 0, "Failed to set paragraph: {}", u_errorName(err));
-		ubidi_close(ubidi);
-		return std::vector<ICURun>();
+		return {};
 	}
 
-	int32_t count = ubidi_countRuns(ubidi, &err);
+	int32_t count = ubidi_countRuns(ubidi.get(), &err);
 	if (U_FAILURE(err)) {
 		Debug(fontcache, 0, "Failed to count runs: {}", u_errorName(err));
-		ubidi_close(ubidi);
-		return std::vector<ICURun>();
+		return {};
 	}
 
 	std::vector<ICURun> runs;
@@ -278,14 +277,13 @@ std::vector<ICURun> ItemizeBidi(UChar *buff, size_t length)
 
 		/* Fetch the embedding level, so we can order bidi correctly later on. */
 		UBiDiLevel level;
-		ubidi_getLogicalRun(ubidi, start_pos, &logical_pos, &level);
+		ubidi_getLogicalRun(ubidi.get(), start_pos, &logical_pos, &level);
 
 		runs.emplace_back(start_pos, logical_pos - start_pos, level);
 	}
 
 	assert(static_cast<size_t>(count) == runs.size());
 
-	ubidi_close(ubidi);
 	return runs;
 }
 
