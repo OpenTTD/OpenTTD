@@ -399,23 +399,56 @@ void GenerateRocks(TileIndex tile, uint32_t count)
 	}
 }
 
+/**
+ * Test if a tile may have rough ground on.
+ * @param tile The tile index.
+ * @return true if the tile may have rough ground.
+ */
+static bool TileMayHaveRough(TileIndex tile)
+{
+	return IsTileType(tile, TileType::Clear) && !IsClearGround(tile, ClearGround::Desert);
+}
+
+/**
+ * Generate a cluster of rough ground.
+ * @param tile Initial tile.
+ * @param count Number of rough ground tiles to attempt to place.
+ */
+static void GenerateRough(TileIndex tile, uint32_t count)
+{
+	if (!TileMayHaveRough(tile)) return;
+
+	for (;;) {
+		SetClearGroundDensity(tile, ClearGround::Rough, 3);
+		MarkTileDirtyByTile(tile);
+
+		TileIndex tile_new;
+		do {
+			if (--count == 0) return;
+			tile_new = tile + TileOffsByDiagDir(RandomRange(DiagDirection::End));
+		} while (!TileMayHaveRough(tile_new));
+		tile = tile_new;
+	}
+}
+
+/**
+ * Generate rough and rocky features on clear tiles.
+ */
 void GenerateClearTile()
 {
-	uint i, gi;
-	TileIndex tile;
-
-	/* add rough tiles */
-	i = Map::ScaleBySize(GB(Random(), 0, 10) + 0x400);
-	gi = Map::ScaleBySize(GB(Random(), 0, 7) + 0x80);
+	uint i = Map::ScaleBySize(GB(Random(), 0, 9) + 0x200);
+	uint gi = Map::ScaleBySize(GB(Random(), 0, 7) + 0x80);
 
 	SetGeneratingWorldProgress(GenWorldProgress::RoughAndRocks, gi + i);
+
+	/* Add rough tiles. */
 	do {
+		uint32_t r = Random();
 		IncreaseGeneratingWorldProgress(GenWorldProgress::RoughAndRocks);
-		tile = RandomTile();
-		if (IsTileType(tile, TileType::Clear) && !IsClearGround(tile, ClearGround::Desert)) SetClearGroundDensity(tile, ClearGround::Rough, 3);
+		GenerateRough(RandomTileSeed(r), GB(r, 24, 3) + 1);
 	} while (--i);
 
-	/* add rocky tiles */
+	/* Add rocky tiles. */
 	i = gi;
 	do {
 		uint32_t r = Random();
