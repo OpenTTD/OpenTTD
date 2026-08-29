@@ -24,12 +24,12 @@ struct Hotkey {
 	Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, int num);
 
 	/** @copydoc Hotkey(uint16_t, const std::string &, int) */
-	template <typename EnumType> requires is_scoped_enum_v<EnumType>
-	Hotkey(uint16_t default_keycode, const std::string &name, EnumType num) : Hotkey(default_keycode, name, to_underlying(num)) {}
+	template <typename EnumType> requires std::is_scoped_enum_v<EnumType>
+	Hotkey(uint16_t default_keycode, const std::string &name, EnumType num) : Hotkey(default_keycode, name, std::to_underlying(num)) {}
 
 	/** @copydoc Hotkey(const std::vector<uint16_t> &, const std::string &, int) */
-	template <typename EnumType> requires is_scoped_enum_v<EnumType>
-	Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, EnumType num) : Hotkey(default_keycodes, name, to_underlying(num)) {}
+	template <typename EnumType> requires std::is_scoped_enum_v<EnumType>
+	Hotkey(const std::vector<uint16_t> &default_keycodes, const std::string &name, EnumType num) : Hotkey(default_keycodes, name, std::to_underlying(num)) {}
 
 	void AddKeycode(uint16_t keycode);
 

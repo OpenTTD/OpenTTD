@@ -906,10 +906,10 @@ struct BuildRailToolbarWindow : Window {
 		Hotkey('T', "tunnel", WID_RAT_BUILD_TUNNEL),
 		Hotkey('R', "remove", WID_RAT_REMOVE),
 		Hotkey('C', "convert", WID_RAT_CONVERT_RAIL),
-		Hotkey(WKC_L_BRACKET, "prev_railtype", to_underlying(SpecialListHotkeys::PreviousItem)),
-		Hotkey(WKC_R_BRACKET, "next_railtype", to_underlying(SpecialListHotkeys::NextItem)),
-		Hotkey(WKC_L_BRACKET | WKC_CTRL, "first_railtype", to_underlying(SpecialListHotkeys::FirstItem)),
-		Hotkey(WKC_R_BRACKET | WKC_CTRL, "last_railtype", to_underlying(SpecialListHotkeys::LastItem)),
+		Hotkey(WKC_L_BRACKET, "prev_railtype", std::to_underlying(SpecialListHotkeys::PreviousItem)),
+		Hotkey(WKC_R_BRACKET, "next_railtype", std::to_underlying(SpecialListHotkeys::NextItem)),
+		Hotkey(WKC_L_BRACKET | WKC_CTRL, "first_railtype", std::to_underlying(SpecialListHotkeys::FirstItem)),
+		Hotkey(WKC_R_BRACKET | WKC_CTRL, "last_railtype", std::to_underlying(SpecialListHotkeys::LastItem)),
 	}, RailToolbarGlobalHotkeys};
 };
 
@@ -1088,7 +1088,7 @@ public:
 	void DrawType(int x, int y, int cls_id, int id) const override
 	{
 		if (!DrawStationTile(x, y, _cur_railtype, _station_gui.axis, this->GetClassIndex(cls_id), id)) {
-			StationPickerDrawSprite(x, y, StationType::Rail, _cur_railtype, INVALID_ROADTYPE, 2 + to_underlying(_station_gui.axis));
+			StationPickerDrawSprite(x, y, StationType::Rail, _cur_railtype, INVALID_ROADTYPE, 2 + std::to_underlying(_station_gui.axis));
 		}
 	}
 
@@ -1178,7 +1178,7 @@ public:
 
 	void OnInit() override
 	{
-		this->LowerWidget(WID_BRAS_PLATFORM_DIR_X + to_underlying(_station_gui.axis));
+		this->LowerWidget(WID_BRAS_PLATFORM_DIR_X + std::to_underlying(_station_gui.axis));
 		if (_settings_client.gui.station_dragdrop) {
 			this->LowerWidget(WID_BRAS_PLATFORM_DRAG_N_DROP);
 		} else {
@@ -1306,9 +1306,9 @@ public:
 		switch (widget) {
 			case WID_BRAS_PLATFORM_DIR_X:
 			case WID_BRAS_PLATFORM_DIR_Y:
-				this->RaiseWidget(WID_BRAS_PLATFORM_DIR_X + to_underlying(_station_gui.axis));
+				this->RaiseWidget(WID_BRAS_PLATFORM_DIR_X + std::to_underlying(_station_gui.axis));
 				_station_gui.axis = static_cast<Axis>(widget - WID_BRAS_PLATFORM_DIR_X);
-				this->LowerWidget(WID_BRAS_PLATFORM_DIR_X + to_underlying(_station_gui.axis));
+				this->LowerWidget(WID_BRAS_PLATFORM_DIR_X + std::to_underlying(_station_gui.axis));
 
 				this->SetSelectedSize();
 				SndClickBeep();
@@ -1624,8 +1624,8 @@ public:
 	{
 		if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
 			/* Extract signal from widget number. */
-			SignalType type = static_cast<SignalType>((widget - WID_BS_SEMAPHORE_NORM) % to_underlying(SignalType::End));
-			SignalVariant var = static_cast<SignalVariant>(to_underlying(SignalVariant::Semaphore) - (widget - WID_BS_SEMAPHORE_NORM) / to_underlying(SignalType::End)); // SignalVariant order is reversed compared to the widgets.
+			SignalType type = static_cast<SignalType>((widget - WID_BS_SEMAPHORE_NORM) % std::to_underlying(SignalType::End));
+			SignalVariant var = static_cast<SignalVariant>(std::to_underlying(SignalVariant::Semaphore) - (widget - WID_BS_SEMAPHORE_NORM) / std::to_underlying(SignalType::End)); // SignalVariant order is reversed compared to the widgets.
 			SpriteID sprite = GetRailTypeInfo(_cur_railtype)->gui_sprites.signals[type][var][static_cast<SignalState>(this->IsWidgetLowered(widget))];
 
 			this->DrawSignalSprite(r, sprite);
@@ -1647,9 +1647,9 @@ public:
 			case WID_BS_ELECTRIC_COMBO:
 			case WID_BS_ELECTRIC_PBS:
 			case WID_BS_ELECTRIC_PBS_OWAY:
-				this->RaiseWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + to_underlying(_cur_signal_type));
+				this->RaiseWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + std::to_underlying(_cur_signal_type));
 
-				_cur_signal_type = static_cast<SignalType>((uint)((widget - WID_BS_SEMAPHORE_NORM) % to_underlying(SignalType::End)));
+				_cur_signal_type = static_cast<SignalType>((uint)((widget - WID_BS_SEMAPHORE_NORM) % std::to_underlying(SignalType::End)));
 				_cur_signal_variant = widget >= WID_BS_ELECTRIC_NORM ? SignalVariant::Electric : SignalVariant::Semaphore;
 
 				/* Update default (last-used) signal type in config file. */
@@ -1695,7 +1695,7 @@ public:
 	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
-		this->LowerWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + to_underlying(_cur_signal_type));
+		this->LowerWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + std::to_underlying(_cur_signal_type));
 
 		this->SetWidgetLoweredState(WID_BS_CONVERT, _convert_signal_button);
 
@@ -1811,7 +1811,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 			AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 			int x = (ir.Width()  - ScaleSpriteTrad(64)) / 2 + ScaleSpriteTrad(31);
 			int y = (ir.Height() + ScaleSpriteTrad(48)) / 2 - ScaleSpriteTrad(31);
-			DrawTrainDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BRAD_DEPOT_NE + to_underlying(DiagDirection::NE)), _cur_railtype);
+			DrawTrainDepotSprite(x, y, static_cast<DiagDirection>(widget - WID_BRAD_DEPOT_NE + std::to_underlying(DiagDirection::NE)), _cur_railtype);
 		}
 	}
 
@@ -2064,7 +2064,7 @@ void ResetSignalVariant(int32_t)
 		Window *w = FindWindowById(WindowClass::BuildSignal, 0);
 		if (w != nullptr) {
 			w->SetDirty();
-			w->RaiseWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + to_underlying(_cur_signal_type));
+			w->RaiseWidget((_cur_signal_variant == SignalVariant::Electric ? WID_BS_ELECTRIC_NORM : WID_BS_SEMAPHORE_NORM) + std::to_underlying(_cur_signal_type));
 		}
 		_cur_signal_variant = new_variant;
 	}

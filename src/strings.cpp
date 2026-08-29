@@ -1645,7 +1645,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 						GetStringWithArgs(builder, STR_JUST_RAW_STRING, tmp_params);
 					} else {
 						auto tmp_params = MakeParameters(d->town->index, d->town_cn + 1);
-						GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_TRAIN + 2 * to_underlying(vt) + (d->town_cn == 0 ? 0 : 1), tmp_params);
+						GetStringWithArgs(builder, STR_FORMAT_DEPOT_NAME_TRAIN + 2 * std::to_underlying(vt) + (d->town_cn == 0 ? 0 : 1), tmp_params);
 					}
 					break;
 				}
@@ -1852,7 +1852,7 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 				}
 
 				case SCC_COLOUR: { // {COLOUR}
-					StringControlCode scc = static_cast<StringControlCode>(SCC_BLUE + to_underlying(args.GetNextParameter<Colours>()));
+					StringControlCode scc = static_cast<StringControlCode>(SCC_BLUE + std::to_underlying(args.GetNextParameter<Colours>()));
 					if (IsInsideMM(scc, SCC_BLUE, SCC_COLOUR)) builder.PutUtf8(scc);
 					break;
 				}

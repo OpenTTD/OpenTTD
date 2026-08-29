@@ -32,7 +32,7 @@ struct CYapfRailSegmentKey {
 
 	inline void Set(const CYapfNodeKeyTrackDir &node_key)
 	{
-		this->value = (node_key.tile.base() << 4) | to_underlying(node_key.td);
+		this->value = (node_key.tile.base() << 4) | std::to_underlying(node_key.td);
 	}
 
 	inline int32_t CalcHash() const

@@ -398,7 +398,7 @@ static const StringID _num_inds[]    = {STR_FUNDING_ONLY, STR_MINIMAL, STR_NUM_V
 static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, STR_VARIETY_LOW, STR_VARIETY_MEDIUM, STR_VARIETY_HIGH, STR_VARIETY_VERY_HIGH};
 static const StringID _average_height[] = {STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO, STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS, STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL, STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS};
 
-static_assert(std::size(_num_inds) == to_underlying(IndustryDensity::End));
+static_assert(std::size(_num_inds) == std::to_underlying(IndustryDensity::End));
 
 struct GenerateLandscapeWindow : public Window {
 	WidgetID widget_id{};
@@ -411,7 +411,7 @@ struct GenerateLandscapeWindow : public Window {
 	{
 		this->InitNested(number);
 
-		this->LowerWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_GL_TEMPERATE);
+		this->LowerWidget(std::to_underlying(_settings_newgame.game_creation.landscape) + WID_GL_TEMPERATE);
 
 		this->mode = this->window_number;
 
@@ -466,13 +466,13 @@ struct GenerateLandscapeWindow : public Window {
 				if (_settings_newgame.difficulty.industry_density == IndustryDensity::Custom) {
 					return GetString(STR_NUM_CUSTOM_NUMBER, _settings_newgame.game_creation.custom_industry_number);
 				}
-				return GetString(_num_inds[to_underlying(_settings_newgame.difficulty.industry_density)]);
+				return GetString(_num_inds[std::to_underlying(_settings_newgame.difficulty.industry_density)]);
 
 			case WID_GL_MAX_HEIGHT_PULLDOWN:
 				if (_settings_newgame.difficulty.terrain_type == GenworldMaxHeight::Custom) {
 					return GetString(STR_TERRAIN_TYPE_CUSTOM_VALUE, _settings_newgame.game_creation.custom_terrain_type);
 				}
-				return GetString(_max_height[to_underlying(_settings_newgame.difficulty.terrain_type)]);
+				return GetString(_max_height[std::to_underlying(_settings_newgame.difficulty.terrain_type)]);
 
 			case WID_GL_WATER_PULLDOWN:
 				if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
@@ -484,8 +484,8 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_RIVER_PULLDOWN:      return GetString(_rivers[_settings_newgame.game_creation.amount_of_rivers]);
 			case WID_GL_SMOOTHNESS_PULLDOWN: return GetString(_smoothness[_settings_newgame.game_creation.tgen_smoothness]);
 			case WID_GL_VARIETY_PULLDOWN:    return GetString(_variety[_settings_newgame.game_creation.variety]);
-			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: return GetString(_average_height[to_underlying(_settings_newgame.game_creation.average_height)]);
-			case WID_GL_BORDERS_PULLDOWN: return GetString(_borders[to_underlying(_settings_newgame.game_creation.water_border_presets)]);
+			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: return GetString(_average_height[std::to_underlying(_settings_newgame.game_creation.average_height)]);
+			case WID_GL_BORDERS_PULLDOWN: return GetString(_borders[std::to_underlying(_settings_newgame.game_creation.water_border_presets)]);
 			case WID_GL_WATER_NE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_NW: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
 			case WID_GL_WATER_SE: return GetString((_settings_newgame.game_creation.water_borders == BorderFlag::Random) ? STR_MAPGEN_BORDER_RANDOM : _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast) ? STR_MAPGEN_BORDER_WATER : STR_MAPGEN_BORDER_FREEFORM);
@@ -684,7 +684,7 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN: // Number of industries
-				ShowDropDownMenu(this, _num_inds, to_underlying(_settings_newgame.difficulty.industry_density), WID_GL_INDUSTRY_PULLDOWN, 0, 0);
+				ShowDropDownMenu(this, _num_inds, std::to_underlying(_settings_newgame.difficulty.industry_density), WID_GL_INDUSTRY_PULLDOWN, 0, 0);
 				break;
 
 			case WID_GL_GENERATE_BUTTON: { // Generate
@@ -792,7 +792,7 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_MAX_HEIGHT_PULLDOWN: // Max height
 				/* For the original map generation only the first four are valid. */
-				ShowDropDownMenu(this, _max_height, to_underlying(_settings_newgame.difficulty.terrain_type), WID_GL_MAX_HEIGHT_PULLDOWN, 0, _settings_newgame.game_creation.land_generator == LG_ORIGINAL ? ~0xF : 0);
+				ShowDropDownMenu(this, _max_height, std::to_underlying(_settings_newgame.difficulty.terrain_type), WID_GL_MAX_HEIGHT_PULLDOWN, 0, _settings_newgame.game_creation.land_generator == LG_ORIGINAL ? ~0xF : 0);
 				break;
 
 			case WID_GL_WATER_PULLDOWN: { // Water quantity
@@ -818,13 +818,13 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_AVERAGE_HEIGHT_PULLDOWN: // Average height
-				ShowDropDownMenu(this, _average_height, to_underlying(_settings_newgame.game_creation.average_height), WID_GL_AVERAGE_HEIGHT_PULLDOWN, 0, 0);
+				ShowDropDownMenu(this, _average_height, std::to_underlying(_settings_newgame.game_creation.average_height), WID_GL_AVERAGE_HEIGHT_PULLDOWN, 0, 0);
 				break;
 
 			/* Map borders */
 			case WID_GL_BORDERS_PULLDOWN:
 				/* WHen loading a heightmap, hide the first option "Random". */
-				ShowDropDownMenu(this, _borders, to_underlying(_settings_newgame.game_creation.water_border_presets), WID_GL_BORDERS_PULLDOWN, 0, mode == GLWM_HEIGHTMAP ? (1U << 0) : 0);
+				ShowDropDownMenu(this, _borders, std::to_underlying(_settings_newgame.game_creation.water_border_presets), WID_GL_BORDERS_PULLDOWN, 0, mode == GLWM_HEIGHTMAP ? (1U << 0) : 0);
 				break;
 
 			case WID_GL_WATER_NW:
@@ -1096,7 +1096,7 @@ struct CreateScenarioWindow : public Window
 	CreateScenarioWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
-		this->LowerWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
+		this->LowerWidget(std::to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
 	}
 
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
@@ -1173,7 +1173,7 @@ struct CreateScenarioWindow : public Window
 			case WID_CS_ARCTIC:
 			case WID_CS_TROPICAL:
 			case WID_CS_TOYLAND:
-				this->RaiseWidget(to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
+				this->RaiseWidget(std::to_underlying(_settings_newgame.game_creation.landscape) + WID_CS_TEMPERATE);
 				SetNewLandscapeType(LandscapeType(widget - WID_CS_TEMPERATE));
 				break;
 
@@ -1481,7 +1481,7 @@ void ShowGenerateWorldProgress()
 static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uint total)
 {
 	static const int percent_table[] = {0, 5, 14, 17, 20, 40, 55, 60, 65, 80, 85, 95, 99, 100 };
-	static_assert(lengthof(percent_table) == to_underlying(GenWorldProgress::End) + 1);
+	static_assert(lengthof(percent_table) == std::to_underlying(GenWorldProgress::End) + 1);
 	assert(cls < GenWorldProgress::End);
 
 	/* Check if we really are generating the world.
@@ -1503,11 +1503,11 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 		GenWorldStatus::cls     = _generation_class_table[cls];
 		GenWorldStatus::current = progress;
 		GenWorldStatus::total   = total;
-		GenWorldStatus::percent = percent_table[to_underlying(cls)];
+		GenWorldStatus::percent = percent_table[std::to_underlying(cls)];
 	}
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
-	GenWorldStatus::percent = percent_table[to_underlying(cls)] + (percent_table[to_underlying(cls) + 1] - percent_table[to_underlying(cls)]) * (GenWorldStatus::current == 0 ? 0 : GenWorldStatus::current - 1) / GenWorldStatus::total;
+	GenWorldStatus::percent = percent_table[std::to_underlying(cls)] + (percent_table[std::to_underlying(cls) + 1] - percent_table[std::to_underlying(cls)]) * (GenWorldStatus::current == 0 ? 0 : GenWorldStatus::current - 1) / GenWorldStatus::total;
 
 	if (_network_dedicated) {
 		static uint last_percent = 0;

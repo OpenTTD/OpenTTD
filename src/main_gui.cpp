@@ -410,7 +410,7 @@ struct MainWindow : Window
 
 			case GHK_CHAT_SERVER: // send text to the server
 				if (_networking && !_network_server) {
-					ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, to_underlying(ClientID::Server));
+					ShowNetworkChatQueryWindow(NetworkChatDestinationType::Client, std::to_underlying(ClientID::Server));
 				}
 				break;
 
@@ -557,7 +557,7 @@ void SetupColoursAndInitialWindow()
 		const uint8_t *b = GetNonSprite(GetColourPalette(i), SpriteType::Recolour) + 1;
 		assert(b != nullptr);
 		for (Shade j : EnumRange(Shade::End)) {
-			SetColourGradient(i, j, PixelColour{b[0xC6 + to_underlying(j)]});
+			SetColourGradient(i, j, PixelColour{b[0xC6 + std::to_underlying(j)]});
 		}
 	}
 

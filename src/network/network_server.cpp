@@ -131,7 +131,7 @@ struct PacketWriter : SaveFilter {
 		std::lock_guard<std::mutex> lock(this->mutex);
 
 		while (!this->packets.empty()) {
-			bool last_packet = this->packets.front()->GetPacketType() == to_underlying(PacketGameType::ServerMapDone);
+			bool last_packet = this->packets.front()->GetPacketType() == std::to_underlying(PacketGameType::ServerMapDone);
 			this->cs->SendPacket(std::move(this->packets.front()));
 			this->packets.pop_front();
 
@@ -331,7 +331,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientIn
 
 	if (ci->client_id != ClientID::Invalid) {
 		auto p = std::make_unique<Packet>(this, PacketGameType::ServerClientInfo);
-		p->Send_uint32(to_underlying(ci->client_id));
+		p->Send_uint32(std::to_underlying(ci->client_id));
 		p->Send_uint8 (ci->client_playas);
 		p->Send_string(ci->client_name);
 		p->Send_string(ci->public_key);
@@ -369,7 +369,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 	auto p = std::make_unique<Packet>(this, PacketGameType::ServerError);
 
-	p->Send_uint8(to_underlying(error));
+	p->Send_uint8(std::to_underlying(error));
 	if (!reason.empty()) p->Send_string(reason);
 	this->SendPacket(std::move(p));
 
@@ -504,7 +504,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 	_network_game_info.clients_on++;
 
 	auto p = std::make_unique<Packet>(this, PacketGameType::ServerWelcome);
-	p->Send_uint32(to_underlying(this->client_id));
+	p->Send_uint32(std::to_underlying(this->client_id));
 	this->SendPacket(std::move(p));
 
 	/* Transmit info about all the active clients */
@@ -636,7 +636,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendJoin(ClientID client_id)
 
 	auto p = std::make_unique<Packet>(this, PacketGameType::ServerClientJoined);
 
-	p->Send_uint32(to_underlying(client_id));
+	p->Send_uint32(std::to_underlying(client_id));
 
 	this->SendPacket(std::move(p));
 	return NetworkRecvStatus::Okay;
@@ -723,8 +723,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
 
 	auto p = std::make_unique<Packet>(this, PacketGameType::ServerChat);
 
-	p->Send_uint8(to_underlying(action));
-	p->Send_uint32(to_underlying(client_id));
+	p->Send_uint8(std::to_underlying(action));
+	p->Send_uint32(std::to_underlying(client_id));
 	p->Send_bool  (self_send);
 	p->Send_string(msg);
 	p->Send_uint64(data);
@@ -770,8 +770,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendErrorQuit(ClientID client_
 
 	auto p = std::make_unique<Packet>(this, PacketGameType::ServerErrorQuit);
 
-	p->Send_uint32(to_underlying(client_id));
-	p->Send_uint8(to_underlying(errorno));
+	p->Send_uint32(std::to_underlying(client_id));
+	p->Send_uint8(std::to_underlying(errorno));
 
 	this->SendPacket(std::move(p));
 	return NetworkRecvStatus::Okay;
@@ -788,7 +788,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendQuit(ClientID client_id)
 
 	auto p = std::make_unique<Packet>(this, PacketGameType::ServerQuit);
 
-	p->Send_uint32(to_underlying(client_id));
+	p->Send_uint32(std::to_underlying(client_id));
 
 	this->SendPacket(std::move(p));
 	return NetworkRecvStatus::Okay;
@@ -850,7 +850,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMove(ClientID client_id, C
 
 	auto p = std::make_unique<Packet>(this, PacketGameType::ServerMove);
 
-	p->Send_uint32(to_underlying(client_id));
+	p->Send_uint32(std::to_underlying(client_id));
 	p->Send_uint8(company_id);
 	this->SendPacket(std::move(p));
 	return NetworkRecvStatus::Okay;
@@ -1160,7 +1160,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::ReceiveClientCommand(Packet &p
 
 		/* Check if we are full - else it's possible for spectators to send a Commands::CompanyControl and the company is created regardless of max_companies! */
 		if (Company::GetNumItems() >= _settings_client.network.max_companies) {
-			NetworkServerSendChat(NetworkAction::ServerMessage, NetworkChatDestinationType::Client, to_underlying(ci->client_id), "cannot create new company, server full", ClientID::Server);
+			NetworkServerSendChat(NetworkAction::ServerMessage, NetworkChatDestinationType::Client, std::to_underlying(ci->client_id), "cannot create new company, server full", ClientID::Server);
 			return NetworkRecvStatus::Okay;
 		}
 	}
@@ -2003,7 +2003,7 @@ void NetworkServerShowStatusToConsole()
 		if (ci == nullptr) continue;
 		uint lag = NetworkCalculateLag(cs);
 
-		std::string_view status = (to_underlying(cs->status) < std::size(stat_str) ? stat_str[cs->status] : "unknown");
+		std::string_view status = (std::to_underlying(cs->status) < std::size(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrint(CC_INFO, "Client #{}  name: '{}'  status: '{}'  frame-lag: {}  company: {}  IP: {}",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),

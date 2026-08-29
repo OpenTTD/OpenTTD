@@ -2307,7 +2307,7 @@ static uint32_t GetScaledIndustryGenerationProbability(IndustryType it, std::opt
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	if (water.has_value() && ind_spc->behaviour.Test(IndustryBehaviour::BuiltOnWater) != *water) return 0;
 
-	uint32_t chance = ind_spc->appear_creation[to_underlying(_settings_game.game_creation.landscape)];
+	uint32_t chance = ind_spc->appear_creation[std::to_underlying(_settings_game.game_creation.landscape)];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			(_game_mode != GameMode::Editor && _settings_game.difficulty.industry_density == IndustryDensity::FundedOnly) ||
 			(chance = GetIndustryProbabilityCallback(it, IndustryAvailabilityCallType::MapGeneration, chance)) == 0) {
@@ -2338,7 +2338,7 @@ static uint16_t GetIndustryGamePlayProbability(IndustryType it, uint8_t *min_num
 	}
 
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
-	uint8_t chance = ind_spc->appear_ingame[to_underlying(_settings_game.game_creation.landscape)];
+	uint8_t chance = ind_spc->appear_ingame[std::to_underlying(_settings_game.game_creation.landscape)];
 	if (!ind_spc->enabled || ind_spc->layouts.empty() ||
 			(ind_spc->behaviour.Test(IndustryBehaviour::Before1950) && TimerGameCalendar::year > 1950) ||
 			(ind_spc->behaviour.Test(IndustryBehaviour::After1960) && TimerGameCalendar::year < 1960) ||
@@ -2367,12 +2367,12 @@ static uint GetNumberOfIndustries()
 		0,    // custom
 	};
 
-	assert(lengthof(numof_industry_table) == to_underlying(IndustryDensity::End));
+	assert(lengthof(numof_industry_table) == std::to_underlying(IndustryDensity::End));
 	IndustryDensity density = (_game_mode != GameMode::Editor) ? _settings_game.difficulty.industry_density : IndustryDensity::VeryLow;
 
 	if (density == IndustryDensity::Custom) return std::min<uint>(IndustryPool::MAX_SIZE, _settings_game.game_creation.custom_industry_number);
 
-	return std::min<uint>(IndustryPool::MAX_SIZE, Map::ScaleBySize(numof_industry_table[to_underlying(density)]));
+	return std::min<uint>(IndustryPool::MAX_SIZE, Map::ScaleBySize(numof_industry_table[std::to_underlying(density)]));
 }
 
 /**

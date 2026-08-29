@@ -299,7 +299,7 @@ static inline Roadside GetRoadWaypointRoadside(Tile tile)
 static inline void SetRoadWaypointRoadside(Tile tile, Roadside s)
 {
 	assert(IsRoadWaypointTile(tile));
-	SB(tile.m3(), 2, 2, to_underlying(s));
+	SB(tile.m3(), 2, 2, std::to_underlying(s));
 }
 
 /**
@@ -717,7 +717,7 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
 	t.m4() = 0;
 	t.m5() = section;
 	SB(t.m6(), 2, 1, 0);
-	SB(t.m6(), 3, 4, to_underlying(st));
+	SB(t.m6(), 3, 4, std::to_underlying(st));
 	SB(t.m6(), 7, 1, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -734,7 +734,7 @@ inline void MakeStation(Tile t, Owner o, StationID sid, StationType st, uint8_t 
  */
 inline void MakeRailStation(Tile t, Owner o, StationID sid, Axis a, uint8_t section, RailType rt)
 {
-	MakeStation(t, o, sid, StationType::Rail, section + to_underlying(a));
+	MakeStation(t, o, sid, StationType::Rail, section + std::to_underlying(a));
 	SetRailType(t, rt);
 	SetRailStationReservation(t, false);
 }
@@ -750,7 +750,7 @@ inline void MakeRailStation(Tile t, Owner o, StationID sid, Axis a, uint8_t sect
  */
 inline void MakeRailWaypoint(Tile t, Owner o, StationID sid, Axis a, uint8_t section, RailType rt)
 {
-	MakeStation(t, o, sid, StationType::RailWaypoint, section + to_underlying(a));
+	MakeStation(t, o, sid, StationType::RailWaypoint, section + std::to_underlying(a));
 	SetRailType(t, rt);
 	SetRailStationReservation(t, false);
 }
@@ -767,7 +767,7 @@ inline void MakeRailWaypoint(Tile t, Owner o, StationID sid, Axis a, uint8_t sec
  */
 inline void MakeRoadStop(Tile t, Owner o, StationID sid, RoadStopType rst, RoadType road_rt, RoadType tram_rt, DiagDirection d)
 {
-	MakeStation(t, o, sid, (rst == RoadStopType::Bus ? StationType::Bus : StationType::Truck), to_underlying(d));
+	MakeStation(t, o, sid, (rst == RoadStopType::Bus ? StationType::Bus : StationType::Truck), std::to_underlying(d));
 	SetRoadTypes(t, road_rt, tram_rt);
 	SetRoadOwner(t, RoadTramType::Road, o);
 	SetRoadOwner(t, RoadTramType::Tram, o);
@@ -787,7 +787,7 @@ inline void MakeRoadStop(Tile t, Owner o, StationID sid, RoadStopType rst, RoadT
  */
 inline void MakeDriveThroughRoadStop(Tile t, Owner station, Owner road, Owner tram, StationID sid, StationType rst, RoadType road_rt, RoadType tram_rt, Axis a)
 {
-	MakeStation(t, station, sid, rst, GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + to_underlying(a));
+	MakeStation(t, station, sid, rst, GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + std::to_underlying(a));
 	SetRoadTypes(t, road_rt, tram_rt);
 	SetRoadOwner(t, RoadTramType::Road, road);
 	SetRoadOwner(t, RoadTramType::Tram, tram);
@@ -830,8 +830,8 @@ inline void MakeBuoy(Tile t, StationID sid, WaterClass wc)
  */
 inline void MakeDock(Tile t, Owner o, StationID sid, DiagDirection d, WaterClass wc)
 {
-	MakeStation(t, o, sid, StationType::Dock, to_underlying(d));
-	MakeStation(TileIndex(t) + TileOffsByDiagDir(d), o, sid, StationType::Dock, GFX_DOCK_BASE_WATER_PART + to_underlying(DiagDirToAxis(d)), wc);
+	MakeStation(t, o, sid, StationType::Dock, std::to_underlying(d));
+	MakeStation(TileIndex(t) + TileOffsByDiagDir(d), o, sid, StationType::Dock, GFX_DOCK_BASE_WATER_PART + std::to_underlying(DiagDirToAxis(d)), wc);
 }
 
 /**

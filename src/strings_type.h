@@ -96,8 +96,8 @@ struct StringParameter {
 	 * @tparam T the type of the scoped enum.
 	 * @param data the scoped enum value.
 	 */
-	template <typename T> requires is_scoped_enum_v<T>
-	inline StringParameter(const T &data) : data(static_cast<uint64_t>(to_underlying(data))), type(0) {}
+	template <typename T> requires std::is_scoped_enum_v<T>
+	inline StringParameter(const T &data) : data(static_cast<uint64_t>(std::to_underlying(data))), type(0) {}
 };
 
 /**

@@ -347,7 +347,7 @@ void ConvertTTDBasePrice(uint32_t base_pointer, std::string_view error_location,
 	static const uint32_t start = 0x4B34; ///< Position of first base price
 	static const uint32_t size  = 6;      ///< Size of each base price record
 
-	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= to_underlying(Price::End)) {
+	if (base_pointer < start || (base_pointer - start) % size != 0 || (base_pointer - start) / size >= std::to_underlying(Price::End)) {
 		GrfMsg(1, "{}: Unsupported running cost base 0x{:04X}, ignoring", error_location, base_pointer);
 		return;
 	}

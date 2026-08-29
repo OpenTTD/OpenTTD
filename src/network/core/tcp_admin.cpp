@@ -16,10 +16,10 @@
 #include "../../safeguards.h"
 
 /* Make sure that these enums match. */
-static_assert(to_underlying(CompanyRemoveReason::Manual)    == to_underlying(AdminCompanyRemoveReason::Manual));
-static_assert(to_underlying(CompanyRemoveReason::Autoclean) == to_underlying(AdminCompanyRemoveReason::Autoclean));
-static_assert(to_underlying(CompanyRemoveReason::Bankrupt)  == to_underlying(AdminCompanyRemoveReason::Bankrupt));
-static_assert(to_underlying(CompanyRemoveReason::End)       == to_underlying(AdminCompanyRemoveReason::End));
+static_assert(std::to_underlying(CompanyRemoveReason::Manual)    == std::to_underlying(AdminCompanyRemoveReason::Manual));
+static_assert(std::to_underlying(CompanyRemoveReason::Autoclean) == std::to_underlying(AdminCompanyRemoveReason::Autoclean));
+static_assert(std::to_underlying(CompanyRemoveReason::Bankrupt)  == std::to_underlying(AdminCompanyRemoveReason::Bankrupt));
+static_assert(std::to_underlying(CompanyRemoveReason::End)       == std::to_underlying(AdminCompanyRemoveReason::End));
 
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool)
 {

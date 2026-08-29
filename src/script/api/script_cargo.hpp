@@ -47,12 +47,12 @@ public:
 	 */
 	enum TownEffect {
 		/* Note: these values represent part of the in-game TownEffect enum */
-		TE_NONE       = to_underlying(::TownAcceptanceEffect::None),       ///< This cargo has no effect on a town
-		TE_PASSENGERS = to_underlying(::TownAcceptanceEffect::Passengers), ///< This cargo supplies passengers to a town
-		TE_MAIL       = to_underlying(::TownAcceptanceEffect::Mail),       ///< This cargo supplies mail to a town
-		TE_GOODS      = to_underlying(::TownAcceptanceEffect::Goods),      ///< This cargo supplies goods to a town
-		TE_WATER      = to_underlying(::TownAcceptanceEffect::Water),      ///< This cargo supplies water to a town
-		TE_FOOD       = to_underlying(::TownAcceptanceEffect::Food),       ///< This cargo supplies food to a town
+		TE_NONE       = std::to_underlying(::TownAcceptanceEffect::None),       ///< This cargo has no effect on a town
+		TE_PASSENGERS = std::to_underlying(::TownAcceptanceEffect::Passengers), ///< This cargo supplies passengers to a town
+		TE_MAIL       = std::to_underlying(::TownAcceptanceEffect::Mail),       ///< This cargo supplies mail to a town
+		TE_GOODS      = std::to_underlying(::TownAcceptanceEffect::Goods),      ///< This cargo supplies goods to a town
+		TE_WATER      = std::to_underlying(::TownAcceptanceEffect::Water),      ///< This cargo supplies water to a town
+		TE_FOOD       = std::to_underlying(::TownAcceptanceEffect::Food),       ///< This cargo supplies food to a town
 	};
 
 	/**
@@ -69,9 +69,9 @@ public:
 	 * Type of cargo distribution.
 	 */
 	enum DistributionType {
-		DT_MANUAL = to_underlying(::DistributionType::Manual), ///< Manual distribution.
-		DT_ASYMMETRIC = to_underlying(::DistributionType::Asymmetric), ///< Asymmetric distribution. Usually cargo will only travel in one direction.
-		DT_SYMMETRIC = to_underlying(::DistributionType::Symmetric), ///< Symmetric distribution. The same amount of cargo travels in each direction between each pair of nodes.
+		DT_MANUAL = std::to_underlying(::DistributionType::Manual), ///< Manual distribution.
+		DT_ASYMMETRIC = std::to_underlying(::DistributionType::Asymmetric), ///< Asymmetric distribution. Usually cargo will only travel in one direction.
+		DT_SYMMETRIC = std::to_underlying(::DistributionType::Symmetric), ///< Symmetric distribution. The same amount of cargo travels in each direction between each pair of nodes.
 		INVALID_DISTRIBUTION_TYPE = 0xFFFF, ///< Invalid distribution type.
 	};
 

@@ -183,7 +183,7 @@ enum class IniFileVersion : uint16_t {
 	MaxVersion, ///< Highest possible ini-file version.
 };
 
-const IniFileVersion INIFILE_VERSION{to_underlying(IniFileVersion::MaxVersion) - 1}; ///< Current ini-file version of OpenTTD.
+const IniFileVersion INIFILE_VERSION{std::to_underlying(IniFileVersion::MaxVersion) - 1}; ///< Current ini-file version of OpenTTD.
 
 /**
  * Find whether a string was a valid int setting

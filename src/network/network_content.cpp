@@ -192,7 +192,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 	this->Connect();
 
 	auto p = std::make_unique<Packet>(this, PacketContentType::ClientInfoList);
-	p->Send_uint8 (to_underlying(type));
+	p->Send_uint8 (std::to_underlying(type));
 	p->Send_uint32(0xffffffff);
 	p->Send_uint8 (1);
 	p->Send_string("vanilla");

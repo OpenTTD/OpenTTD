@@ -84,7 +84,7 @@ private:
 	TownActions displayed_actions_on_previous_painting{}; ///< Actions that were available on the previous call to OnPaint()
 	TownActions enabled_actions{}; ///< Actions that are enabled in settings.
 	TownActions available_actions{}; ///< Actions that are available to execute for the current company.
-	std::array<StringID, to_underlying(TownAction::End)> action_tooltips{};
+	std::array<StringID, std::to_underlying(TownAction::End)> action_tooltips{};
 
 	Dimension icon_size{}; ///< Dimensions of company icon
 	Dimension exclusive_size{}; ///< Dimensions of exclusive icon
@@ -215,7 +215,7 @@ public:
 			if (this->available_actions.Test(i)) action_colour = TextColour::Orange;
 			if (this->sel_action == i) action_colour = TextColour::White;
 
-			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i), action_colour);
+			DrawString(r, STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + std::to_underlying(i), action_colour);
 			r.top += GetCharacterHeight(FontSize::Normal);
 		}
 	}
@@ -236,7 +236,7 @@ public:
 					bool affordable = Company::IsValidID(_local_company) && action_cost < GetAvailableMoney(_local_company);
 
 					DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.framerect),
-						GetString(this->action_tooltips[to_underlying(this->sel_action)], action_cost),
+						GetString(this->action_tooltips[std::to_underlying(this->sel_action)], action_cost),
 						affordable ? TextColour::Yellow : TextColour::Red);
 				}
 				break;
@@ -251,7 +251,7 @@ public:
 				Dimension d = {0, 0};
 				for (TownAction i : EnumRange(TownAction::End)) {
 					Money price = _price[Price::TownAction] * GetTownActionCost(i) >> 8;
-					d = maxdim(d, GetStringMultiLineBoundingBox(GetString(this->action_tooltips[to_underlying(i)], price), size));
+					d = maxdim(d, GetStringMultiLineBoundingBox(GetString(this->action_tooltips[std::to_underlying(i)], price), size));
 				}
 				d.width += padding.width;
 				d.height += padding.height;
@@ -260,10 +260,10 @@ public:
 			}
 
 			case WID_TA_COMMAND_LIST:
-				size.height = (to_underlying(TownAction::End) + 1) * GetCharacterHeight(FontSize::Normal) + padding.height;
+				size.height = (std::to_underlying(TownAction::End) + 1) * GetCharacterHeight(FontSize::Normal) + padding.height;
 				size.width = GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTIONS_TITLE).width;
 				for (TownAction i : EnumRange(TownAction::End)) {
-					size.width = std::max(size.width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + to_underlying(i)).width + padding.width);
+					size.width = std::max(size.width, GetStringBoundingBox(STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN + std::to_underlying(i)).width + padding.width);
 				}
 				size.width += padding.width;
 				break;
@@ -1205,13 +1205,13 @@ public:
 		}
 
 		for (WidgetID i = WID_TF_SIZE_SMALL; i <= WID_TF_SIZE_RANDOM; i++) {
-			this->SetWidgetLoweredState(i, i == WID_TF_SIZE_SMALL + to_underlying(this->town_size));
+			this->SetWidgetLoweredState(i, i == WID_TF_SIZE_SMALL + std::to_underlying(this->town_size));
 		}
 
 		this->SetWidgetLoweredState(WID_TF_CITY, this->city);
 
 		for (WidgetID i = WID_TF_LAYOUT_ORIGINAL; i <= WID_TF_LAYOUT_RANDOM; i++) {
-			this->SetWidgetLoweredState(i, i == WID_TF_LAYOUT_ORIGINAL + to_underlying(this->town_layout));
+			this->SetWidgetLoweredState(i, i == WID_TF_LAYOUT_ORIGINAL + std::to_underlying(this->town_layout));
 		}
 
 		this->SetWidgetLoweredState(WID_TF_EXPAND_BUILDINGS, FoundTownWindow::expand_modes.Test(TownExpandMode::Buildings));
@@ -1527,8 +1527,8 @@ public:
 	int GetSelectedType() const override { return sel_type; }
 	void SetSelectedType(int id) const override { sel_type = id; }
 
-	static HouseZone GetHouseZoneFromClassId(int cls_id) { return static_cast<HouseZone>(to_underlying(HouseZone::TownEdge) + cls_id); }
-	static int GetClassIdFromHouseZone(HouseZones zones) { return FindFirstBit((zones & HZ_ZONE_ALL).base()) - to_underlying(HouseZone::TownEdge); }
+	static HouseZone GetHouseZoneFromClassId(int cls_id) { return static_cast<HouseZone>(std::to_underlying(HouseZone::TownEdge) + cls_id); }
+	static int GetClassIdFromHouseZone(HouseZones zones) { return FindFirstBit((zones & HZ_ZONE_ALL).base()) - std::to_underlying(HouseZone::TownEdge); }
 
 	StringID GetTypeName(int cls_id, int id) const override
 	{

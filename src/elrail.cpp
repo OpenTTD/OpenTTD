@@ -311,7 +311,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	SpriteID pylon_halftile = IsValidCorner(halftile_corner) ? GetPylonBase(ti->tile, TileContext::UpperHalftile) : pylon_normal;
 
 	for (DiagDirection i : EnumRange(DiagDirection::End)) {
-		SpriteID pylon_base = (IsValidCorner(halftile_corner) && HasBit(InclinedSlope(i), to_underlying(halftile_corner))) ? pylon_halftile : pylon_normal;
+		SpriteID pylon_base = (IsValidCorner(halftile_corner) && HasBit(InclinedSlope(i), std::to_underlying(halftile_corner))) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		int elevation = GetPCPElevation(ti->tile, i);
 
@@ -470,7 +470,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 
 		assert(pcp_config != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
 		assert(!IsSteepSlope(tileh[TileSource::Home]));
-		const SortableSpriteStruct &sss = _rail_catenary_sprite_data[_rail_wires[tileh_selector][to_underlying(t)][pcp_config]];
+		const SortableSpriteStruct &sss = _rail_catenary_sprite_data[_rail_wires[tileh_selector][std::to_underlying(t)][pcp_config]];
 
 		/*
 		 * The "wire"-sprite position is inside the tile, i.e. 0 <= sss->?_offset < TILE_SIZE.

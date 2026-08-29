@@ -300,7 +300,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 					if (parameter != 0) tile = GetNearbyTile(parameter, tile, true, this->axis); // only perform if it is required
 
 					Slope tileh = GetTileSlope(tile);
-					bool swap = (this->axis == Axis::Y && HasBit(tileh, to_underlying(Corner::W)) != HasBit(tileh, to_underlying(Corner::E)));
+					bool swap = (this->axis == Axis::Y && HasBit(tileh, std::to_underlying(Corner::W)) != HasBit(tileh, std::to_underlying(Corner::E)));
 
 					return GetNearbyTileInformation(tile, this->ro.grffile->grf_version >= 8) ^ (swap ? SLOPE_EW : 0);
 				}
@@ -361,7 +361,7 @@ TownScopeResolver *StationResolverObject::GetTown()
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 
 			Slope tileh = GetTileSlope(tile);
-			bool swap = (axis == Axis::Y && HasBit(tileh, to_underlying(Corner::W)) != HasBit(tileh, to_underlying(Corner::E)));
+			bool swap = (axis == Axis::Y && HasBit(tileh, std::to_underlying(Corner::W)) != HasBit(tileh, std::to_underlying(Corner::E)));
 
 			return GetNearbyTileInformation(tile, this->ro.grffile->grf_version >= 8) ^ (swap ? SLOPE_EW : 0);
 		}
@@ -700,7 +700,7 @@ CommandCost PerformStationTileSlopeCheck(TileIndex north_tile, TileIndex cur_til
 	Slope slope = GetTileSlope(cur_tile);
 
 	StationResolverObject object(statspec, nullptr, cur_tile, CBID_STATION_LAND_SLOPE_CHECK,
-			(slope << 4) | (slope ^ (axis == Axis::Y && HasBit(slope, to_underlying(Corner::W)) != HasBit(slope, to_underlying(Corner::E)) ? SLOPE_EW : 0)),
+			(slope << 4) | (slope ^ (axis == Axis::Y && HasBit(slope, std::to_underlying(Corner::W)) != HasBit(slope, std::to_underlying(Corner::E)) ? SLOPE_EW : 0)),
 			(numtracks << 24) | (plat_len << 16) | (axis == Axis::Y ? TileX(diff) << 8 | TileY(diff) : TileY(diff) << 8 | TileX(diff)));
 	object.station_scope.axis = axis;
 
@@ -844,9 +844,9 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	DrawTileSpriteSpan tmp_rail_layout;
 
 	if (statspec->renderdata.empty()) {
-		sprites = GetStationTileLayout(StationType::Rail, tile + to_underlying(axis));
+		sprites = GetStationTileLayout(StationType::Rail, tile + std::to_underlying(axis));
 	} else {
-		layout = &statspec->renderdata[(tile < statspec->renderdata.size()) ? tile + to_underlying(axis) : to_underlying(axis)];
+		layout = &statspec->renderdata[(tile < statspec->renderdata.size()) ? tile + std::to_underlying(axis) : std::to_underlying(axis)];
 		if (!layout->NeedsPreprocessing()) {
 			sprites = layout;
 			layout = nullptr;
@@ -963,7 +963,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 				if (IsValidCargoType(cargo_type)) {
 					var18_extra |= ss->grf_prop.grffile->cargo_map[cargo_type] << 8;
 				}
-				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), to_underlying(trigger) | var18_extra);
+				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIMATION_TRIGGER, ss, st, tile, (random_bits << 16) | GB(Random(), 0, 16), std::to_underlying(trigger) | var18_extra);
 			}
 		}
 	}
@@ -999,7 +999,7 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	}
 
 	/* Store triggers now for var 5F */
-	TriggerArea ta = tas[to_underlying(trigger)];
+	TriggerArea ta = tas[std::to_underlying(trigger)];
 	if (ta == TA_WHOLE) st->waiting_random_triggers.Set(trigger);
 	StationRandomTriggers used_random_triggers;
 

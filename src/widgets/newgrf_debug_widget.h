@@ -38,7 +38,7 @@ enum SpriteAlignerWidgets : WidgetID {
 	WID_SA_LIST,        ///< Queried sprite list.
 	WID_SA_SCROLLBAR,   ///< Scrollbar for sprite list.
 	WID_SA_ZOOM,        ///< Zoom level buttons (from ZoomLevel::Begin to ZoomLevel::Max).
-	WID_SA_ZOOM_LAST = WID_SA_ZOOM + to_underlying(ZoomLevel::Max), ///< Marker for last zoom level button.
+	WID_SA_ZOOM_LAST = WID_SA_ZOOM + std::to_underlying(ZoomLevel::Max), ///< Marker for last zoom level button.
 	WID_SA_RESET_REL,   ///< Reset relative sprite offset
 	WID_SA_CENTRE,      ///< Toggle centre sprite.
 	WID_SA_CROSSHAIR,   ///< Toggle crosshair.

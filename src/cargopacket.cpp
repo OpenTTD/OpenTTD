@@ -555,7 +555,7 @@ template <VehicleCargoList::MoveToAction Tfrom, VehicleCargoList::MoveToAction T
 uint VehicleCargoList::Reassign(uint max_move)
 {
 	static_assert(Tfrom != MoveToAction::Transfer && Tto != MoveToAction::Transfer);
-	static_assert(to_underlying(Tfrom) - to_underlying(Tto) == 1 || to_underlying(Tto) - to_underlying(Tfrom) == 1);
+	static_assert(std::to_underlying(Tfrom) - std::to_underlying(Tto) == 1 || std::to_underlying(Tto) - std::to_underlying(Tfrom) == 1);
 	max_move = std::min(this->action_counts[Tfrom], max_move);
 	this->action_counts[Tfrom] -= max_move;
 	this->action_counts[Tto] += max_move;

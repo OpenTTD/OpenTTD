@@ -95,7 +95,7 @@ void TextfileWindow::ConstructWindow()
 	this->CreateNestedTree();
 	this->vscroll = this->GetScrollbar(WID_TF_VSCROLLBAR);
 	this->hscroll = this->GetScrollbar(WID_TF_HSCROLLBAR);
-	this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetStringTip(STR_TEXTFILE_README_CAPTION + to_underlying(this->file_type), STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
+	this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetStringTip(STR_TEXTFILE_README_CAPTION + std::to_underlying(this->file_type), STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 	this->GetWidget<NWidgetStacked>(WID_TF_SEL_JUMPLIST)->SetDisplayedPlane(SZSP_HORIZONTAL);
 	this->FinishInitNested(this->file_type);
 

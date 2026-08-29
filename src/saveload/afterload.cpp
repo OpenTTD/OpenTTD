@@ -164,7 +164,7 @@ static void ConvertTownOwner()
 	for (auto tile : Map::Iterate()) {
 		switch (GetTileType(tile)) {
 			case TileType::Road:
-				if (GB(tile.m5(), 4, 2) == to_underlying(RoadTileType::Crossing) && HasBit(tile.m3(), 7)) {
+				if (GB(tile.m5(), 4, 2) == std::to_underlying(RoadTileType::Crossing) && HasBit(tile.m3(), 7)) {
 					tile.m3() = OWNER_TOWN.base();
 				}
 				[[fallthrough]];
@@ -197,7 +197,7 @@ static void UpdateCurrencies()
 		Currency::NOK, Currency::EUR, Currency::RON,
 	};
 
-	_settings_game.locale.currency = convert_currency[to_underlying(_settings_game.locale.currency)];
+	_settings_game.locale.currency = convert_currency[std::to_underlying(_settings_game.locale.currency)];
 }
 
 /**
@@ -458,7 +458,7 @@ static void FixOwnerOfRailTrack(Tile t)
 		SetTileType(t, TileType::Road);
 		SetTileOwner(t, road);
 		t.m3() = (hasroad ? bits.base() : 0);
-		t.m5() = (hastram ? bits.base() : 0) | to_underlying(RoadTileType::Normal) << 6;
+		t.m5() = (hastram ? bits.base() : 0) | std::to_underlying(RoadTileType::Normal) << 6;
 		SB(t.m6(), 2, 4, 0);
 		SetRoadOwner(t, RoadTramType::Tram, tram);
 		return;
@@ -701,7 +701,7 @@ bool AfterLoadGame()
 	}
 
 	/* convert road side to my format. */
-	if (to_underlying(_settings_game.vehicle.road_side) != 0) _settings_game.vehicle.road_side = RoadVehicleDrivingSide::Right;
+	if (std::to_underlying(_settings_game.vehicle.road_side) != 0) _settings_game.vehicle.road_side = RoadVehicleDrivingSide::Right;
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList(_grfconfig);
@@ -916,7 +916,7 @@ bool AfterLoadGame()
 						ResetSignalHandlers();
 						return false;
 					}
-					SB(t.m6(), 3, 3, to_underlying(st));
+					SB(t.m6(), 3, 3, std::to_underlying(st));
 					break;
 				}
 			}
@@ -1011,8 +1011,8 @@ bool AfterLoadGame()
 
 				case TileType::Road:
 					t.m4() |= (t.m2() << 4);
-					if (GB(t.m5(), 4, 2) == to_underlying(RoadTileType::Depot)) break;
-					if ((GB(t.m5(), 4, 2) == to_underlying(RoadTileType::Crossing) ? (Owner)t.m3() : GetTileOwner(t)) == OWNER_TOWN) {
+					if (GB(t.m5(), 4, 2) == std::to_underlying(RoadTileType::Depot)) break;
+					if ((GB(t.m5(), 4, 2) == std::to_underlying(RoadTileType::Crossing) ? (Owner)t.m3() : GetTileOwner(t)) == OWNER_TOWN) {
 						SetTownIndex(t, CalcClosestTownFromTile(t)->index);
 					} else {
 						SetTownIndex(t, TownID::Begin());
@@ -1245,7 +1245,7 @@ bool AfterLoadGame()
 							SetTileType(t, TileType::Road);
 							t.m2() = town.base();
 							t.m3() = 0;
-							t.m5() = AxisToRoadBits(OtherAxis(axis)).base() | to_underlying(RoadTileType::Normal) << 6;
+							t.m5() = AxisToRoadBits(OtherAxis(axis)).base() | std::to_underlying(RoadTileType::Normal) << 6;
 							SB(t.m6(), 2, 4, 0);
 							t.m7() = 1 << 6;
 							SetRoadOwner(t, RoadTramType::Tram, OWNER_NONE);
@@ -1272,7 +1272,7 @@ bool AfterLoadGame()
 					DiagDirection dir = ReverseDiagDir(XYNSToDiagDir(axis, north_south));
 					TransportType type = static_cast<TransportType>(GB(t.m5(), 1, 2));
 
-					t.m5() = 1 << 7 | to_underlying(type) << 2 | to_underlying(dir);
+					t.m5() = 1 << 7 | std::to_underlying(type) << 2 | std::to_underlying(dir);
 				}
 			}
 		}
@@ -1413,10 +1413,10 @@ bool AfterLoadGame()
 						 * (see the code somewhere above) so don't use m4, use m2 instead. */
 
 						/* convert old PBS signals to combo-signals */
-						if (HasBit(t.m2(), 2)) SB(t.m2(), 0, 2, to_underlying(SignalType::Combo));
+						if (HasBit(t.m2(), 2)) SB(t.m2(), 0, 2, std::to_underlying(SignalType::Combo));
 
 						/* move the signal variant back */
-						SB(t.m2(), 2, 1, to_underlying(HasBit(t.m2(), 3) ? SignalVariant::Semaphore : SignalVariant::Electric));
+						SB(t.m2(), 2, 1, std::to_underlying(HasBit(t.m2(), 3) ? SignalVariant::Semaphore : SignalVariant::Electric));
 						ClrBit(t.m2(), 3);
 					}
 
@@ -1699,7 +1699,7 @@ bool AfterLoadGame()
 		/* Setting difficulty industry_density other than zero get bumped to +1
 		 * since a new option (very low at position 1) has been added */
 		if (_settings_game.difficulty.industry_density > IndustryDensity::FundedOnly) {
-			_settings_game.difficulty.industry_density = static_cast<IndustryDensity>(to_underlying(_settings_game.difficulty.industry_density) + 1);
+			_settings_game.difficulty.industry_density = static_cast<IndustryDensity>(std::to_underlying(_settings_game.difficulty.industry_density) + 1);
 		}
 
 		/* Same goes for number of towns, although no test is needed, just an increment */
@@ -2170,7 +2170,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::RoadLayoutPerTown)) {
 		/* allow_town_roads is added, set it if town_layout wasn't TL_NO_ROADS */
-		uint8_t old_town_layout = to_underlying(_settings_game.economy.town_layout);
+		uint8_t old_town_layout = std::to_underlying(_settings_game.economy.town_layout);
 		if (old_town_layout == 0) { // was TL_NO_ROADS
 			_settings_game.economy.allow_town_roads = false;
 			_settings_game.economy.town_layout = TownLayout::BetterRoads;
@@ -2591,7 +2591,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SaveLoadVersion::IndustryPlatform)) {
 		for (Object *o : Object::Iterate()) {
 			Owner owner = GetTileOwner(o->location.tile);
-			o->recolour_offset = (owner == OWNER_NONE) ? GB(Random(), 0, 4) : to_underlying(Company::Get(owner)->livery[LiveryScheme::Default].colour1);
+			o->recolour_offset = (owner == OWNER_NONE) ? GB(Random(), 0, 4) : std::to_underlying(Company::Get(owner)->livery[LiveryScheme::Default].colour1);
 		}
 	}
 
@@ -2677,7 +2677,7 @@ bool AfterLoadGame()
 
 				switch (v->type) {
 					case VehicleType::Train: Train::From(v)->track = DiagDirToDiagTrack(vdir); break;
-					case VehicleType::Road: RoadVehicle::From(v)->state = to_underlying(DiagDirToDiagTrackdir(vdir)); RoadVehicle::From(v)->frame = frame; break;
+					case VehicleType::Road: RoadVehicle::From(v)->state = std::to_underlying(DiagDirToDiagTrackdir(vdir)); RoadVehicle::From(v)->frame = frame; break;
 					default: NOT_REACHED();
 				}
 			}
@@ -2691,7 +2691,7 @@ bool AfterLoadGame()
 			bool loading = rv->current_order.IsType(OT_LOADING) || rv->current_order.IsType(OT_LEAVESTATION);
 			if (HasBit(rv->state, RVS_IN_ROAD_STOP)) {
 				extern const uint8_t _road_stop_stop_frame[];
-				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > _road_stop_stop_frame[rv->state - RVSB_IN_ROAD_STOP + (to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE)]);
+				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > _road_stop_stop_frame[rv->state - RVSB_IN_ROAD_STOP + (std::to_underlying(_settings_game.vehicle.road_side) << RVS_DRIVE_SIDE)]);
 			} else if (HasBit(rv->state, RVS_IN_DT_ROAD_STOP)) {
 				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > RVC_DRIVE_THROUGH_STOP_FRAME);
 			}
@@ -2844,7 +2844,7 @@ bool AfterLoadGame()
 		/* Setting difficulty industry_density other than zero get bumped to +1
 		 * since a new option (minimal at position 1) has been added */
 		if (_settings_game.difficulty.industry_density > IndustryDensity::FundedOnly) {
-			_settings_game.difficulty.industry_density = static_cast<IndustryDensity>(to_underlying(_settings_game.difficulty.industry_density) + 1);
+			_settings_game.difficulty.industry_density = static_cast<IndustryDensity>(std::to_underlying(_settings_game.difficulty.industry_density) + 1);
 		}
 	}
 

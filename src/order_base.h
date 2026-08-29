@@ -203,13 +203,13 @@ public:
 	 * Set how the consist must be loaded.
 	 * @param load_type The new load type, i.e. whether to load.
 	 */
-	inline void SetLoadType(OrderLoadType load_type) { SB(this->flags, 4, 3, to_underlying(load_type)); }
+	inline void SetLoadType(OrderLoadType load_type) { SB(this->flags, 4, 3, std::to_underlying(load_type)); }
 
 	/**
 	 * Set how the consist must be unloaded.
 	 * @param unload_type The new unload type, i.e. whether to unload.
 	 */
-	inline void SetUnloadType(OrderUnloadType unload_type) { SB(this->flags, 0, 3, to_underlying(unload_type)); }
+	inline void SetUnloadType(OrderUnloadType unload_type) { SB(this->flags, 0, 3, std::to_underlying(unload_type)); }
 
 	/**
 	 * Set whether we must stop at stations or not.
@@ -221,7 +221,7 @@ public:
 	 * Set where we must stop at the platform.
 	 * @param stop_location The location to stop at.
 	 */
-	inline void SetStopLocation(OrderStopLocation stop_location) { SB(this->type, 4, 2, to_underlying(stop_location)); }
+	inline void SetStopLocation(OrderStopLocation stop_location) { SB(this->type, 4, 2, std::to_underlying(stop_location)); }
 
 	/**
 	 * Set the cause to go to the depot.
@@ -239,13 +239,13 @@ public:
 	 * Set variable we have to compare.
 	 * @param condition_variable The new variable to compare on.
 	 */
-	inline void SetConditionVariable(OrderConditionVariable condition_variable) { SB(this->dest.value, 11, 5, to_underlying(condition_variable)); }
+	inline void SetConditionVariable(OrderConditionVariable condition_variable) { SB(this->dest.value, 11, 5, std::to_underlying(condition_variable)); }
 
 	/**
 	 * Set the comparator to use.
 	 * @param condition_comparator The new comparator to compare with.
 	 */
-	inline void SetConditionComparator(OrderConditionComparator condition_comparator) { SB(this->type, 5, 3, to_underlying(condition_comparator)); }
+	inline void SetConditionComparator(OrderConditionComparator condition_comparator) { SB(this->type, 5, 3, std::to_underlying(condition_comparator)); }
 
 	/**
 	 * Get the order to skip to.

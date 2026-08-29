@@ -767,7 +767,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 	SaveRandomSeeds(&saved_seeds);
 	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
 	              ei->base_intro.base() ^
-	              to_underlying(e->type) ^
+	              std::to_underlying(e->type) ^
 	              FlattenNewGRFLabel(e->GetGRFID()));
 	uint32_t r = Random();
 
@@ -794,7 +794,7 @@ void StartupOneEngine(Engine *e, const TimerGameCalendar::YearMonthDay &aging_ym
 	SetRandomSeed(_settings_game.game_creation.generation_seed ^ seed ^
 	              (re->index.base() << 16) ^ (re->info.base_intro.base() << 12) ^ (re->info.decay_speed << 8) ^
 	              (re->info.lifelength.base() << 4) ^ re->info.retire_early ^
-	              to_underlying(e->type) ^
+	              std::to_underlying(e->type) ^
 	              FlattenNewGRFLabel(e->GetGRFID()));
 
 	/* Base reliability defined as a percentage of UINT16_MAX. */

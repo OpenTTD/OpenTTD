@@ -109,7 +109,7 @@ inline bool IsSlopeWithOneCornerRaised(Slope s)
 inline Slope SlopeWithOneCornerRaised(Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return static_cast<Slope>(1 << to_underlying(corner));
+	return static_cast<Slope>(1 << std::to_underlying(corner));
 }
 
 /**
@@ -193,7 +193,7 @@ static constexpr inline int GetSlopeMaxPixelZ(Slope s)
  */
 inline Corner OppositeCorner(Corner corner)
 {
-	return static_cast<Corner>(to_underlying(corner) ^ 2);
+	return static_cast<Corner>(std::to_underlying(corner) ^ 2);
 }
 
 /**
@@ -284,7 +284,7 @@ inline Slope InclinedSlope(DiagDirection dir)
 static constexpr inline Slope HalftileSlope(Slope s, Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return static_cast<Slope>(s | SLOPE_HALFTILE | (to_underlying(corner) << 6));
+	return static_cast<Slope>(s | SLOPE_HALFTILE | (std::to_underlying(corner) << 6));
 }
 
 
@@ -343,7 +343,7 @@ inline bool IsNonContinuousFoundation(Foundation f)
 inline Corner GetHalftileFoundationCorner(Foundation f)
 {
 	assert(IsInsideMM(f, Foundation::HalfTileW, Foundation::HalfTileEnd));
-	return static_cast<Corner>(to_underlying(f) - to_underlying(Foundation::HalfTileW));
+	return static_cast<Corner>(std::to_underlying(f) - std::to_underlying(Foundation::HalfTileW));
 }
 
 /**
@@ -366,7 +366,7 @@ inline bool IsSpecialRailFoundation(Foundation f)
 inline Corner GetRailFoundationCorner(Foundation f)
 {
 	assert(IsSpecialRailFoundation(f));
-	return static_cast<Corner>(to_underlying(f) - to_underlying(Foundation::RailW));
+	return static_cast<Corner>(std::to_underlying(f) - std::to_underlying(Foundation::RailW));
 }
 
 /**

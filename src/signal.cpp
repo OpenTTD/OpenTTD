@@ -609,8 +609,8 @@ void AddTrackToSignalBuffer(TileIndex tile, Track track, Owner owner)
 
 	_last_owner = owner;
 
-	_globset.Add(tile, _search_dir_1[to_underlying(track)]);
-	_globset.Add(tile, _search_dir_2[to_underlying(track)]);
+	_globset.Add(tile, _search_dir_1[std::to_underlying(track)]);
+	_globset.Add(tile, _search_dir_2[std::to_underlying(track)]);
 
 	if (_globset.Items() >= SIG_GLOB_UPDATE) {
 		/* too many items, force update */

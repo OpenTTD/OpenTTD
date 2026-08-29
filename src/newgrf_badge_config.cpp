@@ -67,7 +67,7 @@ static BadgeClassConfig _badge_config;
 std::span<BadgeClassConfigItem> GetBadgeClassConfiguration(GrfSpecFeature feature)
 {
 	assert(BadgeClassConfig::CONFIGURABLE_FEATURES.Test(feature));
-	assert(to_underlying(feature) < std::size(_badge_config.features));
+	assert(std::to_underlying(feature) < std::size(_badge_config.features));
 	return _badge_config.features[feature];
 }
 

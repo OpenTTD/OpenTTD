@@ -698,7 +698,7 @@ public:
 		SLE_CONDVAR(Vehicle, refit_cap, VarTypes::U16, SaveLoadVersion::GoalProgressPlaneAcceleration, SaveLoadVersion::MaxVersion),
 		SLEG_CONDVAR("cargo_count", _cargo_count, VarTypes::U16, SaveLoadVersion::MinVersion, SaveLoadVersion::CargoPackets),
 		SLE_CONDREFLIST(Vehicle, cargo.packets, SLRefType::CargoPacket, SaveLoadVersion::CargoPackets, SaveLoadVersion::MaxVersion),
-		SLE_CONDARR(Vehicle, cargo.action_counts, VarTypes::U32, to_underlying(VehicleCargoList::MoveToAction::End), SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
+		SLE_CONDARR(Vehicle, cargo.action_counts, VarTypes::U32, std::to_underlying(VehicleCargoList::MoveToAction::End), SaveLoadVersion::CargoReservation, SaveLoadVersion::MaxVersion),
 		SLE_CONDVAR(Vehicle, cargo_age_counter, VarTypes::U16, SaveLoadVersion::NewGRFCustomCargoAging, SaveLoadVersion::MaxVersion),
 
 		    SLE_VAR(Vehicle, day_counter,           VarTypes::U8),

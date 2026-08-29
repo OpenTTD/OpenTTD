@@ -75,10 +75,10 @@ enum Slope : uint8_t {
 
 	SLOPE_HALFTILE = 0x20,                                  ///< one halftile is leveled (non continuous slope)
 	SLOPE_HALFTILE_MASK = 0xE0,                             ///< three bits used for halftile slopes
-	SLOPE_HALFTILE_W = SLOPE_HALFTILE | (to_underlying(Corner::W) << 6), ///< the west halftile is leveled (non continuous slope)
-	SLOPE_HALFTILE_S = SLOPE_HALFTILE | (to_underlying(Corner::S) << 6), ///< the south halftile is leveled (non continuous slope)
-	SLOPE_HALFTILE_E = SLOPE_HALFTILE | (to_underlying(Corner::E) << 6), ///< the east halftile is leveled (non continuous slope)
-	SLOPE_HALFTILE_N = SLOPE_HALFTILE | (to_underlying(Corner::N) << 6), ///< the north halftile is leveled (non continuous slope)
+	SLOPE_HALFTILE_W = SLOPE_HALFTILE | (std::to_underlying(Corner::W) << 6), ///< the west halftile is leveled (non continuous slope)
+	SLOPE_HALFTILE_S = SLOPE_HALFTILE | (std::to_underlying(Corner::S) << 6), ///< the south halftile is leveled (non continuous slope)
+	SLOPE_HALFTILE_E = SLOPE_HALFTILE | (std::to_underlying(Corner::E) << 6), ///< the east halftile is leveled (non continuous slope)
+	SLOPE_HALFTILE_N = SLOPE_HALFTILE | (std::to_underlying(Corner::N) << 6), ///< the north halftile is leveled (non continuous slope)
 };
 DECLARE_ENUM_AS_BIT_SET(Slope)
 

@@ -92,7 +92,7 @@ static void GetShipIcon(EngineID engine, EngineImageType image_type, VehicleSpri
 	}
 
 	assert(IsValidImageIndex<VehicleType::Ship>(spritenum));
-	result->Set(to_underlying(Direction::W) + _ship_sprites[spritenum]);
+	result->Set(std::to_underlying(Direction::W) + _ship_sprites[spritenum]);
 }
 
 void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
@@ -146,7 +146,7 @@ void Ship::GetImage(Direction direction, EngineImageType image_type, VehicleSpri
 	}
 
 	assert(IsValidImageIndex<VehicleType::Ship>(spritenum));
-	result->Set(_ship_sprites[spritenum] + to_underlying(direction));
+	result->Set(_ship_sprites[spritenum] + std::to_underlying(direction));
 }
 
 static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)

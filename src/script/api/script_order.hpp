@@ -89,15 +89,15 @@ public:
 	 */
 	enum OrderCondition {
 		/* Note: these values represent part of the in-game OrderConditionVariable enum */
-		OC_LOAD_PERCENTAGE     = to_underlying(::OrderConditionVariable::LoadPercentage), ///< Skip based on the amount of load, value is in tons.
-		OC_RELIABILITY         = to_underlying(::OrderConditionVariable::Reliability), ///< Skip based on the reliability, value is percent (0..100).
-		OC_MAX_RELIABILITY     = to_underlying(::OrderConditionVariable::MaxReliability), ///< Skip based on the maximum reliability.  Value in percent
-		OC_MAX_SPEED           = to_underlying(::OrderConditionVariable::MaxSpeed), ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
-		OC_AGE                 = to_underlying(::OrderConditionVariable::Age), ///< Skip based on the age, value is in calendar-years. @see \ref ScriptCalendarTime
-		OC_REQUIRES_SERVICE    = to_underlying(::OrderConditionVariable::RequiresService), ///< Skip when the vehicle requires service, no value.
-		OC_UNCONDITIONALLY     = to_underlying(::OrderConditionVariable::Unconditionally), ///< Always skip, no compare function, no value.
-		OC_REMAINING_LIFETIME  = to_underlying(::OrderConditionVariable::RemainingLifetime), ///< Skip based on the remaining lifetime in calendar-years. @see \ref ScriptCalendarTime
-		OC_IS_REVERSING        = to_underlying(::OrderConditionVariable::DrivingBackwards), ///< Skip when the vehicle is reversing.
+		OC_LOAD_PERCENTAGE     = std::to_underlying(::OrderConditionVariable::LoadPercentage), ///< Skip based on the amount of load, value is in tons.
+		OC_RELIABILITY         = std::to_underlying(::OrderConditionVariable::Reliability), ///< Skip based on the reliability, value is percent (0..100).
+		OC_MAX_RELIABILITY     = std::to_underlying(::OrderConditionVariable::MaxReliability), ///< Skip based on the maximum reliability.  Value in percent
+		OC_MAX_SPEED           = std::to_underlying(::OrderConditionVariable::MaxSpeed), ///< Skip based on the maximum speed, value is in OpenTTD's internal speed unit, see ScriptEngine::GetMaxSpeed.
+		OC_AGE                 = std::to_underlying(::OrderConditionVariable::Age), ///< Skip based on the age, value is in calendar-years. @see \ref ScriptCalendarTime
+		OC_REQUIRES_SERVICE    = std::to_underlying(::OrderConditionVariable::RequiresService), ///< Skip when the vehicle requires service, no value.
+		OC_UNCONDITIONALLY     = std::to_underlying(::OrderConditionVariable::Unconditionally), ///< Always skip, no compare function, no value.
+		OC_REMAINING_LIFETIME  = std::to_underlying(::OrderConditionVariable::RemainingLifetime), ///< Skip based on the remaining lifetime in calendar-years. @see \ref ScriptCalendarTime
+		OC_IS_REVERSING        = std::to_underlying(::OrderConditionVariable::DrivingBackwards), ///< Skip when the vehicle is reversing.
 
 		/* Custom added value, only valid for this API */
 		OC_INVALID             = -1,                       ///< An invalid condition, do not use.
@@ -108,14 +108,14 @@ public:
 	 */
 	enum CompareFunction {
 		/* Note: these values represent part of the in-game OrderConditionComparator enum */
-		CF_EQUALS        = to_underlying(::OrderConditionComparator::Equal), ///< Skip if both values are equal
-		CF_NOT_EQUALS    = to_underlying(::OrderConditionComparator::NotEqual), ///< Skip if both values are not equal
-		CF_LESS_THAN     = to_underlying(::OrderConditionComparator::LessThan), ///< Skip if the value is less than the limit
-		CF_LESS_EQUALS   = to_underlying(::OrderConditionComparator::LessThanOrEqual), ///< Skip if the value is less or equal to the limit
-		CF_MORE_THAN     = to_underlying(::OrderConditionComparator::MoreThan), ///< Skip if the value is more than the limit
-		CF_MORE_EQUALS   = to_underlying(::OrderConditionComparator::MoreThanOrEqual), ///< Skip if the value is more or equal to the limit
-		CF_IS_TRUE       = to_underlying(::OrderConditionComparator::IsTrue), ///< Skip if the variable is true
-		CF_IS_FALSE      = to_underlying(::OrderConditionComparator::IsFalse), ///< Skip if the variable is false
+		CF_EQUALS        = std::to_underlying(::OrderConditionComparator::Equal), ///< Skip if both values are equal
+		CF_NOT_EQUALS    = std::to_underlying(::OrderConditionComparator::NotEqual), ///< Skip if both values are not equal
+		CF_LESS_THAN     = std::to_underlying(::OrderConditionComparator::LessThan), ///< Skip if the value is less than the limit
+		CF_LESS_EQUALS   = std::to_underlying(::OrderConditionComparator::LessThanOrEqual), ///< Skip if the value is less or equal to the limit
+		CF_MORE_THAN     = std::to_underlying(::OrderConditionComparator::MoreThan), ///< Skip if the value is more than the limit
+		CF_MORE_EQUALS   = std::to_underlying(::OrderConditionComparator::MoreThanOrEqual), ///< Skip if the value is more or equal to the limit
+		CF_IS_TRUE       = std::to_underlying(::OrderConditionComparator::IsTrue), ///< Skip if the variable is true
+		CF_IS_FALSE      = std::to_underlying(::OrderConditionComparator::IsFalse), ///< Skip if the variable is false
 
 		/* Custom added value, only valid for this API */
 		CF_INVALID       = -1,                 ///< Invalid compare function, do not use.

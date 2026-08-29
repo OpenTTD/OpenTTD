@@ -72,7 +72,7 @@ static inline uint GetFeatureIndex(uint window_number)
 static inline uint GetInspectWindowNumber(GrfSpecFeature feature, uint index)
 {
 	assert((index >> 24) == 0);
-	return (to_underlying(feature) << 24) | index;
+	return (std::to_underlying(feature) << 24) | index;
 }
 
 static inline uint GetInspectWindowNumber(GrfSpecFeature feature, ConvertibleThroughBase auto index) { return GetInspectWindowNumber(feature, index.base()); }
@@ -1049,7 +1049,7 @@ struct SpriteAlignerWindow : Window {
 				break;
 
 			default:
-				if (IsInsideBS(widget, WID_SA_ZOOM, to_underlying(ZoomLevel::End))) {
+				if (IsInsideBS(widget, WID_SA_ZOOM, std::to_underlying(ZoomLevel::End))) {
 					SpriteAlignerWindow::zoom = static_cast<ZoomLevel>(widget - WID_SA_ZOOM);
 					this->InvalidateData(0, true);
 				}
@@ -1088,8 +1088,8 @@ struct SpriteAlignerWindow : Window {
 
 		SpriteAlignerWindow::zoom = Clamp(SpriteAlignerWindow::zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 		for (ZoomLevel z : EnumRange(ZoomLevel::End)) {
-			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + to_underlying(z));
-			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + to_underlying(z));
+			this->SetWidgetsDisabledState(z < _settings_client.gui.zoom_min || z > _settings_client.gui.zoom_max, WID_SA_ZOOM + std::to_underlying(z));
+			this->SetWidgetsLoweredState(SpriteAlignerWindow::zoom == z, WID_SA_ZOOM + std::to_underlying(z));
 		}
 	}
 
@@ -1169,12 +1169,12 @@ static constexpr std::initializer_list<NWidgetPart> _nested_sprite_aligner_widge
 					NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_SA_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
-					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::In4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::In2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::Normal)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::Out2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::Out4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
-					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + to_underlying(ZoomLevel::Out8x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + std::to_underlying(ZoomLevel::In4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_MIN), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + std::to_underlying(ZoomLevel::In2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_IN_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + std::to_underlying(ZoomLevel::Normal)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_NORMAL), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + std::to_underlying(ZoomLevel::Out2x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + std::to_underlying(ZoomLevel::Out4x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_SA_ZOOM + std::to_underlying(ZoomLevel::Out8x)), SetStringTip(STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

@@ -134,7 +134,7 @@ static void UpdateElement(StoryPageElement &pe, TileIndex tile, uint32_t referen
 void StoryPageButtonData::SetColour(Colours button_colour)
 {
 	assert(button_colour < Colours::End);
-	SB(this->referenced_id, 0, 8, to_underlying(button_colour));
+	SB(this->referenced_id, 0, 8, std::to_underlying(button_colour));
 }
 
 /**
@@ -153,7 +153,7 @@ void StoryPageButtonData::SetFlags(StoryPageButtonFlags flags)
 void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
 {
 	assert(cursor < StoryPageButtonCursor::End);
-	SB(this->referenced_id, 8, 8, to_underlying(cursor));
+	SB(this->referenced_id, 8, 8, std::to_underlying(cursor));
 }
 
 /**
@@ -163,7 +163,7 @@ void StoryPageButtonData::SetCursor(StoryPageButtonCursor cursor)
 void StoryPageButtonData::SetVehicleType(VehicleType vehtype)
 {
 	assert(vehtype == VehicleType::Invalid || vehtype < VehicleType::CompanyEnd);
-	SB(this->referenced_id, 16, 8, to_underlying(vehtype));
+	SB(this->referenced_id, 16, 8, std::to_underlying(vehtype));
 }
 
 /**
@@ -212,7 +212,7 @@ VehicleType StoryPageButtonData::GetVehicleType() const
  */
 bool StoryPageButtonData::ValidateColour() const
 {
-	return GB(this->referenced_id, 0, 8) < to_underlying(Colours::End);
+	return GB(this->referenced_id, 0, 8) < std::to_underlying(Colours::End);
 }
 
 /**

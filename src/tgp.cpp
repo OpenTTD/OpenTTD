@@ -254,7 +254,7 @@ static Height TGPGetMaxHeight()
 	};
 
 	int map_size_bucket = std::min(Map::LogX(), Map::LogY()) - MIN_MAP_SIZE_BITS;
-	int max_height_from_table = max_height[to_underlying(_settings_game.difficulty.terrain_type)][map_size_bucket];
+	int max_height_from_table = max_height[std::to_underlying(_settings_game.difficulty.terrain_type)][map_size_bucket];
 
 	/* If there is a manual map height limit, clamp to it. */
 	if (_settings_game.construction.map_height_limit != 0) {

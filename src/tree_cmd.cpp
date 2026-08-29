@@ -174,7 +174,7 @@ void PlaceTree(TileIndex tile, uint32_t r, bool keep_density)
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
 
 	if (tree != TREE_INVALID) {
-		PlantTreesOnTile(tile, tree, GB(r, 22, 2), static_cast<TreeGrowthStage>(std::min<uint8_t>(GB(r, 16, 3), to_underlying(TreeGrowthStage::Dead))));
+		PlantTreesOnTile(tile, tree, GB(r, 22, 2), static_cast<TreeGrowthStage>(std::min<uint8_t>(GB(r, 16, 3), std::to_underlying(TreeGrowthStage::Dead))));
 		MarkTileDirtyByTile(tile);
 
 		/* Maybe keep the existing ground density.*/
@@ -519,7 +519,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 	if (start_tile >= Map::Size()) return CMD_ERROR;
 	/* Check the tree type within the current climate */
-	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)])) return CMD_ERROR;
+	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)], _tree_count_by_landscape[std::to_underlying(_settings_game.game_creation.landscape)])) return CMD_ERROR;
 
 	Company *c = (_game_mode != GameMode::Editor) ? Company::GetIfValid(_current_company) : nullptr;
 	int limit = (c == nullptr ? INT32_MAX : GB(c->tree_limit, 16, 16));
@@ -677,7 +677,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	uint trees = GetTreeCount(ti->tile);
 
 	for (uint i = 0; i < trees; i++) {
-		SpriteID sprite = s[0].sprite + to_underlying(i == trees - 1 ? GetTreeGrowth(ti->tile) : TreeGrowthStage::Grown);
+		SpriteID sprite = s[0].sprite + std::to_underlying(i == trees - 1 ? GetTreeGrowth(ti->tile) : TreeGrowthStage::Grown);
 		PaletteID pal = s[0].pal;
 
 		te[i].sprite = sprite;

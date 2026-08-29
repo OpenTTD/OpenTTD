@@ -501,7 +501,7 @@ static void GenerateCompanyName(Company *c)
 /** Sorting weights for the company colours. */
 static const EnumIndexArray<uint8_t, Colours, Colours::End> _colour_sort{2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
 /** Similar colours, so we can try to prevent same coloured companies. */
-static const std::initializer_list<Colours> _similar_colour[to_underlying(Colours::End)] = {
+static const std::initializer_list<Colours> _similar_colour[std::to_underlying(Colours::End)] = {
 	{Colours::Blue, Colours::LightBlue }, // Colours::DarkBlue
 	{Colours::Green, Colours::DarkGreen }, // Colours::PaleGreen
 	{}, // Colours::Pink
@@ -527,7 +527,7 @@ static const std::initializer_list<Colours> _similar_colour[to_underlying(Colour
 static Colours GenerateCompanyColour()
 {
 	/* Initialize colour table. */
-	std::vector<Colours> colours(to_underlying(Colours::End));
+	std::vector<Colours> colours(std::to_underlying(Colours::End));
 	std::iota(colours.begin(), colours.end(), Colours::Begin);
 
 	/* And randomize it */
@@ -544,7 +544,7 @@ static Colours GenerateCompanyColour()
 		/* This company's colour is not available at all. */
 		std::erase(colours, c->colour);
 
-		for (Colours similar : _similar_colour[to_underlying(c->colour)]) {
+		for (Colours similar : _similar_colour[std::to_underlying(c->colour)]) {
 			auto it = std::ranges::find(colours, similar);
 			if (it != colours.end()) std::rotate(it, it + 1, colours.end());
 		}

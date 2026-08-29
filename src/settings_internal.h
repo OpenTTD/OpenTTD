@@ -72,12 +72,12 @@ enum SettingType : uint8_t {
 struct IniItem;
 
 /**
- * Type is convertible to TTo, either directly, through ConvertibleThroughBase or through to_underlying.
+ * Type is convertible to TTo, either directly, through ConvertibleThroughBase or through std::to_underlying.
  * @tparam T The type under consideration.
  * @tparam TTo The type to convert to.
  */
 template <typename T, typename TTo>
-concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, TTo> || (is_scoped_enum_v<T> && std::is_convertible_v<std::underlying_type_t<T>, TTo>);
+concept ConvertibleThroughBaseOrUnderlyingOrTo = ConvertibleThroughBaseOrTo<T, TTo> || (std::is_scoped_enum_v<T> && std::is_convertible_v<std::underlying_type_t<T>, TTo>);
 
 /** Properties of config file settings. */
 struct SettingDesc {
@@ -224,32 +224,32 @@ struct IntSettingDesc : SettingDesc {
 	{
 		if constexpr (ConvertibleThroughBase<Tdef>) {
 			this->def = def.base();
-		} else if constexpr (is_scoped_enum_v<Tdef>) {
-			this->def = to_underlying(def);
+		} else if constexpr (std::is_scoped_enum_v<Tdef>) {
+			this->def = std::to_underlying(def);
 		} else {
 			this->def = def;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tmin>) {
 			this->min = min.base();
-		} else if constexpr (is_scoped_enum_v<Tmin>) {
-			this->min = to_underlying(min);
+		} else if constexpr (std::is_scoped_enum_v<Tmin>) {
+			this->min = std::to_underlying(min);
 		} else {
 			this->min = min;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tmax>) {
 			this->max = max.base();
-		} else if constexpr (is_scoped_enum_v<Tmax>) {
-			this->max = to_underlying(max);
+		} else if constexpr (std::is_scoped_enum_v<Tmax>) {
+			this->max = std::to_underlying(max);
 		} else {
 			this->max = max;
 		}
 
 		if constexpr (ConvertibleThroughBase<Tinterval>) {
 			this->interval = interval.base();
-		} else if constexpr (is_scoped_enum_v<Tinterval>) {
-			this->interval = to_underlying(interval);
+		} else if constexpr (std::is_scoped_enum_v<Tinterval>) {
+			this->interval = std::to_underlying(interval);
 		} else {
 			this->interval = interval;
 		}

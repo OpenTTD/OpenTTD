@@ -422,16 +422,16 @@ public:
 	 */
 	size_t GetNumLiveries() const
 	{
-		if (IsSavegameVersionBefore(SaveLoadVersion::TramLivery)) return to_underlying(LiveryScheme::End) - 4;
-		if (IsSavegameVersionBefore(SaveLoadVersion::MaglevMonorailPaxWagonLivery)) return to_underlying(LiveryScheme::End) - 2;
-		if (IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength)) return to_underlying(LiveryScheme::End);
+		if (IsSavegameVersionBefore(SaveLoadVersion::TramLivery)) return std::to_underlying(LiveryScheme::End) - 4;
+		if (IsSavegameVersionBefore(SaveLoadVersion::MaglevMonorailPaxWagonLivery)) return std::to_underlying(LiveryScheme::End) - 2;
+		if (IsSavegameVersionBefore(SaveLoadVersion::SaveloadListLength)) return std::to_underlying(LiveryScheme::End);
 		/* Read from the savegame how long the list is. */
-		return SlGetStructListLength(to_underlying(LiveryScheme::End));
+		return SlGetStructListLength(std::to_underlying(LiveryScheme::End));
 	}
 
 	void Save(CompanyProperties *c) const override
 	{
-		SlSetStructListLength(to_underlying(LiveryScheme::End));
+		SlSetStructListLength(std::to_underlying(LiveryScheme::End));
 		for (auto &livery : c->livery) {
 			SlObject(&livery, this->GetDescription());
 		}
@@ -457,7 +457,7 @@ public:
 
 		if (IsSavegameVersionBefore(SaveLoadVersion::MaglevMonorailPaxWagonLivery)) {
 			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
-			std::move_backward(std::begin(c->livery) + to_underlying(LiveryScheme::FreightWagon) - 2, std::end(c->livery) - 2, std::end(c->livery));
+			std::move_backward(std::begin(c->livery) + std::to_underlying(LiveryScheme::FreightWagon) - 2, std::end(c->livery) - 2, std::end(c->livery));
 			c->livery[LiveryScheme::PassengerWagonMonorail] = c->livery[LiveryScheme::Monorail];
 			c->livery[LiveryScheme::PassengerWagonMaglev] = c->livery[LiveryScheme::Maglev];
 		}

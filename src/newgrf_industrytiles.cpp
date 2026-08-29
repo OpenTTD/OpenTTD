@@ -70,7 +70,7 @@ uint32_t GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 		case 0x41: return GetTerrainType(this->tile);
 
 		/* Current town zone of the tile in the nearest town */
-		case 0x42: return to_underlying(GetTownRadiusGroup(ClosestTownFromTile(this->tile, UINT_MAX), this->tile));
+		case 0x42: return std::to_underlying(GetTownRadiusGroup(ClosestTownFromTile(this->tile, UINT_MAX), this->tile));
 
 		/* Relative position */
 		case 0x43: return GetRelativePosition(this->tile, this->industry->location.tile);
@@ -240,7 +240,7 @@ CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind
 	ind.founder = founder;
 
 	std::array<int32_t, 16> regs100;
-	uint16_t callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, to_underlying(creation_type) << 8 | static_cast<uint32_t>(layout_index), gfx, &ind, ind_tile, regs100);
+	uint16_t callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, std::to_underlying(creation_type) << 8 | static_cast<uint32_t>(layout_index), gfx, &ind, ind_tile, regs100);
 	if (callback_res == CALLBACK_FAILED) {
 		if (!IsSlopeRefused(GetTileSlope(ind_tile), its->slopes_refused)) return CommandCost();
 		return CommandCost(STR_ERROR_SITE_UNSUITABLE);
@@ -281,7 +281,7 @@ static bool DoTriggerIndustryTileAnimation(TileIndex tile, IndustryAnimationTrig
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
 	if (!itspec->animation.triggers.Test(iat)) return false;
 
-	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIMATION_TRIGGER, itspec, Industry::GetByTile(tile), tile, random, to_underlying(iat) | var18_extra);
+	IndustryAnimationBase::ChangeAnimationFrame(CBID_INDTILE_ANIMATION_TRIGGER, itspec, Industry::GetByTile(tile), tile, random, std::to_underlying(iat) | var18_extra);
 	return true;
 }
 

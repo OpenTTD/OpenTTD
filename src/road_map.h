@@ -497,7 +497,7 @@ inline Roadside GetRoadside(Tile tile)
  */
 inline void SetRoadside(Tile tile, Roadside s)
 {
-	SB(tile.m6(), 3, 3, to_underlying(s));
+	SB(tile.m6(), 3, 3, std::to_underlying(s));
 }
 
 /**
@@ -638,7 +638,7 @@ inline void MakeRoadNormal(Tile t, RoadBits bits, RoadType road_rt, RoadType tra
 	SetTileOwner(t, road);
 	t.m2() = town.base();
 	t.m3() = (tram_rt != INVALID_ROADTYPE ? bits.base() : 0);
-	t.m5() = (road_rt != INVALID_ROADTYPE ? bits.base() : 0) | to_underlying(RoadTileType::Normal) << 6;
+	t.m5() = (road_rt != INVALID_ROADTYPE ? bits.base() : 0) | std::to_underlying(RoadTileType::Normal) << 6;
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
 	t.m8() = 0;
@@ -665,7 +665,7 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 	t.m2() = town.base();
 	t.m3() = 0;
 	t.m4() = INVALID_ROADTYPE;
-	t.m5() = to_underlying(RoadTileType::Crossing) << 6 | to_underlying(roaddir);
+	t.m5() = std::to_underlying(RoadTileType::Crossing) << 6 | std::to_underlying(roaddir);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = road.base();
 	t.m8() = INVALID_ROADTYPE << 6 | rat;
@@ -681,7 +681,7 @@ inline void MakeRoadCrossing(Tile t, Owner road, Owner tram, Owner rail, Axis ro
 inline void SetRoadDepotExitDirection(Tile tile, DiagDirection dir)
 {
 	assert(IsRoadDepotTile(tile));
-	SB(tile.m5(), 0, 2, to_underlying(dir));
+	SB(tile.m5(), 0, 2, std::to_underlying(dir));
 }
 
 /**
@@ -699,7 +699,7 @@ inline void MakeRoadDepot(Tile tile, Owner owner, DepotID depot_id, DiagDirectio
 	tile.m2() = depot_id.base();
 	tile.m3() = 0;
 	tile.m4() = INVALID_ROADTYPE;
-	tile.m5() = to_underlying(RoadTileType::Depot) << 6 | to_underlying(dir);
+	tile.m5() = std::to_underlying(RoadTileType::Depot) << 6 | std::to_underlying(dir);
 	SB(tile.m6(), 2, 6, 0);
 	tile.m7() = owner.base();
 	tile.m8() = INVALID_ROADTYPE << 6;

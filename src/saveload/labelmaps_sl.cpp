@@ -84,7 +84,7 @@ struct ROTTChunkHandler : ChunkHandler {
 		for (RoadType r : EnumRange(ROADTYPE_END)) {
 			const RoadTypeInfo *rti = GetRoadTypeInfo(r);
 			lo.label = rti->label;
-			lo.subtype = to_underlying(GetRoadTramType(r));
+			lo.subtype = std::to_underlying(GetRoadTramType(r));
 
 			SlSetArrayIndex(r);
 			SlObject(&lo, description);

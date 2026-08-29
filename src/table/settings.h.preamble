@@ -44,8 +44,8 @@ constexpr bool DoesMaxFitVariable(T max, VarType type)
 }
 
 /** @copydoc DoesMaxFitVariable */
-template <typename T> requires is_scoped_enum_v<T>
-constexpr bool DoesMaxFitVariable(T max, VarType type) { return DoesMaxFitVariable(to_underlying(max), type); }
+template <typename T> requires std::is_scoped_enum_v<T>
+constexpr bool DoesMaxFitVariable(T max, VarType type) { return DoesMaxFitVariable(std::to_underlying(max), type); }
 
 /** @copydoc DoesMaxFitVariable */
 template <typename T> requires ConvertibleThroughBase<T>

@@ -21,7 +21,7 @@
  */
 inline int ScaleByZoom(int value, ZoomLevel zoom)
 {
-	return value << to_underlying(zoom);
+	return value << std::to_underlying(zoom);
 }
 
 /**
@@ -33,7 +33,7 @@ inline int ScaleByZoom(int value, ZoomLevel zoom)
  */
 inline int UnScaleByZoom(int value, ZoomLevel zoom)
 {
-	return (value + (1 << to_underlying(zoom)) - 1) >> to_underlying(zoom);
+	return (value + (1 << std::to_underlying(zoom)) - 1) >> std::to_underlying(zoom);
 }
 
 /**
@@ -55,7 +55,7 @@ inline int AdjustByZoom(int value, int zoom)
  */
 inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 {
-	return value << to_underlying(zoom);
+	return value << std::to_underlying(zoom);
 }
 
 /**
@@ -66,7 +66,7 @@ inline int ScaleByZoomLower(int value, ZoomLevel zoom)
  */
 inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 {
-	return value >> to_underlying(zoom);
+	return value >> std::to_underlying(zoom);
 }
 
 /**

@@ -1227,7 +1227,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 
 		case MOF_STOP_LOCATION:
 			if (v->type != VehicleType::Train) return CMD_ERROR;
-			if (data >= to_underlying(OrderStopLocation::End)) return CMD_ERROR;
+			if (data >= std::to_underlying(OrderStopLocation::End)) return CMD_ERROR;
 			break;
 
 		case MOF_UNLOAD: {

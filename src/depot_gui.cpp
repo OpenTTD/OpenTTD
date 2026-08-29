@@ -629,18 +629,18 @@ struct DepotWindow : Window {
 	 */
 	void SetupWidgetData(VehicleType type)
 	{
-		this->GetWidget<NWidgetCore>(WID_D_STOP_ALL)->SetToolTip(STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP + to_underlying(type));
-		this->GetWidget<NWidgetCore>(WID_D_START_ALL)->SetToolTip(STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP + to_underlying(type));
-		this->GetWidget<NWidgetCore>(WID_D_SELL)->SetToolTip(STR_DEPOT_TRAIN_SELL_TOOLTIP + to_underlying(type));
-		this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->SetToolTip(STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP + to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_STOP_ALL)->SetToolTip(STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP + std::to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_START_ALL)->SetToolTip(STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP + std::to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_SELL)->SetToolTip(STR_DEPOT_TRAIN_SELL_TOOLTIP + std::to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_SELL_ALL)->SetToolTip(STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP + std::to_underlying(type));
 
-		this->GetWidget<NWidgetCore>(WID_D_BUILD)->SetStringTip(STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON + to_underlying(type), STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP + to_underlying(type));
-		this->GetWidget<NWidgetCore>(WID_D_CLONE)->SetStringTip(STR_DEPOT_CLONE_TRAIN + to_underlying(type), STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP + to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_BUILD)->SetStringTip(STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON + std::to_underlying(type), STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP + std::to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_CLONE)->SetStringTip(STR_DEPOT_CLONE_TRAIN + std::to_underlying(type), STR_DEPOT_CLONE_TRAIN_DEPOT_TOOLTIP + std::to_underlying(type));
 
-		this->GetWidget<NWidgetCore>(WID_D_LOCATION)->SetToolTip(STR_DEPOT_TRAIN_LOCATION_TOOLTIP + to_underlying(type));
-		this->GetWidget<NWidgetCore>(WID_D_VEHICLE_LIST)->SetToolTip(STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP + to_underlying(type));
-		this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->SetToolTip(STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP + to_underlying(type));
-		this->GetWidget<NWidgetCore>(WID_D_MATRIX)->SetToolTip(STR_DEPOT_TRAIN_LIST_TOOLTIP + to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_LOCATION)->SetToolTip(STR_DEPOT_TRAIN_LOCATION_TOOLTIP + std::to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_VEHICLE_LIST)->SetToolTip(STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP + std::to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_AUTOREPLACE)->SetToolTip(STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP + std::to_underlying(type));
+		this->GetWidget<NWidgetCore>(WID_D_MATRIX)->SetToolTip(STR_DEPOT_TRAIN_LIST_TOOLTIP + std::to_underlying(type));
 
 		switch (type) {
 			default: NOT_REACHED();
@@ -938,10 +938,10 @@ struct DepotWindow : Window {
 	{
 		if (_ctrl_pressed) {
 			/* Share-clone, do not open new viewport, and keep tool active */
-			Command<Commands::CloneVehicle>::Post(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying(v->type), TileIndex(this->window_number), v->index, true);
+			Command<Commands::CloneVehicle>::Post(STR_ERROR_CAN_T_BUY_TRAIN + std::to_underlying(v->type), TileIndex(this->window_number), v->index, true);
 		} else {
 			/* Copy-clone, open viewport for new vehicle, and deselect the tool (assume player wants to change things on new vehicle) */
-			if (Command<Commands::CloneVehicle>::Post(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying(v->type), CcCloneVehicle, TileIndex(this->window_number), v->index, false)) {
+			if (Command<Commands::CloneVehicle>::Post(STR_ERROR_CAN_T_BUY_TRAIN + std::to_underlying(v->type), CcCloneVehicle, TileIndex(this->window_number), v->index, false)) {
 				ResetObjectToPlace();
 			}
 		}
@@ -969,11 +969,11 @@ struct DepotWindow : Window {
 				})) {
 					OnVehicleSelect(*begin);
 				} else {
-					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying((*begin)->type)),
+					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + std::to_underlying((*begin)->type)),
 						GetEncodedString(STR_ERROR_CAN_T_COPY_ORDER_VEHICLE_LIST), WarningLevel::Info);
 				}
 			} else {
-				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying((*begin)->type)),
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + std::to_underlying((*begin)->type)),
 					GetEncodedString(STR_ERROR_CAN_T_CLONE_VEHICLE_LIST), WarningLevel::Info);
 			}
 		} else {
@@ -986,11 +986,11 @@ struct DepotWindow : Window {
 				})) {
 					OnVehicleSelect(*begin);
 				} else {
-					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying((*begin)->type)),
+					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + std::to_underlying((*begin)->type)),
 						GetEncodedString(STR_ERROR_CAN_T_SHARE_ORDER_VEHICLE_LIST), WarningLevel::Info);
 				}
 			} else {
-				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying((*begin)->type)),
+				ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + std::to_underlying((*begin)->type)),
 					GetEncodedString(STR_ERROR_CAN_T_CLONE_VEHICLE_LIST), WarningLevel::Info);
 			}
 		}

@@ -76,7 +76,7 @@ EnumIndexArray<TarFileList, Subdirectory, Subdirectory::End> _tar_filelist;
  */
 static bool IsValidSearchPath(Searchpath sp)
 {
-	return to_underlying(sp) < _searchpaths.size() && !_searchpaths[sp].empty();
+	return std::to_underlying(sp) < _searchpaths.size() && !_searchpaths[sp].empty();
 }
 
 static void FillValidSearchPaths(bool only_local_path)

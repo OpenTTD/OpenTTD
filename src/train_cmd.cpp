@@ -503,7 +503,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 static SpriteID GetDefaultTrainSprite(uint8_t spritenum, Direction direction)
 {
 	assert(IsValidImageIndex<VehicleType::Train>(spritenum));
-	return ((to_underlying(direction) + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
+	return ((std::to_underlying(direction) + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
 }
 
 /**
@@ -2272,7 +2272,7 @@ void Train::PlayLeaveStationSound(bool force) const
 
 	if (PlayVehicleSound(this, VSE_START, force)) return;
 
-	SndPlayVehicleFx(sfx[to_underlying(RailVehInfo(this->engine_type)->engclass)], this);
+	SndPlayVehicleFx(sfx[std::to_underlying(RailVehInfo(this->engine_type)->engclass)], this);
 }
 
 /**
@@ -3733,7 +3733,7 @@ static void DeleteLastWagon(Train *v)
 		}
 
 		/* It is important that these two are the first in the loop, as reservation cannot deal with every trackbit combination */
-		assert(Track::Begin == Track::X && to_underlying(Track::Y) == to_underlying(Track::Begin) + 1);
+		assert(Track::Begin == Track::X && std::to_underlying(Track::Y) == std::to_underlying(Track::Begin) + 1);
 		for (Track t : remaining_trackbits) TryReserveRailTrack(tile, t);
 	}
 

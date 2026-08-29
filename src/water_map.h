@@ -93,7 +93,7 @@ inline WaterTileType GetWaterTileType(Tile t)
 inline void SetWaterTileType(Tile t, WaterTileType type)
 {
 	assert(IsTileType(t, TileType::Water));
-	SB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT, to_underlying(type));
+	SB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT, std::to_underlying(type));
 }
 
 /**
@@ -128,7 +128,7 @@ inline WaterClass GetWaterClass(Tile t)
 inline void SetWaterClass(Tile t, WaterClass wc)
 {
 	assert(HasTileWaterClass(t));
-	SB(t.m1(), 5, 2, to_underlying(wc));
+	SB(t.m1(), 5, 2, std::to_underlying(wc));
 }
 
 /**
@@ -271,7 +271,7 @@ inline DepotPart GetShipDepotPart(Tile t)
  */
 inline DiagDirection GetShipDepotDirection(Tile t)
 {
-	return XYNSToDiagDir(GetShipDepotAxis(t), to_underlying(GetShipDepotPart(t)));
+	return XYNSToDiagDir(GetShipDepotAxis(t), std::to_underlying(GetShipDepotPart(t)));
 }
 
 /**
@@ -476,7 +476,7 @@ inline void MakeShipDepot(Tile t, Owner o, DepotID did, DepotPart part, Axis a, 
 	t.m2() = did.base();
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = to_underlying(part) << WBL_DEPOT_PART | to_underlying(a) << WBL_DEPOT_AXIS;
+	t.m5() = std::to_underlying(part) << WBL_DEPOT_PART | std::to_underlying(a) << WBL_DEPOT_AXIS;
 	SetWaterTileType(t, WaterTileType::Depot);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
@@ -501,7 +501,7 @@ inline void MakeLockTile(Tile t, Owner o, LockPart part, DiagDirection dir, Wate
 	t.m2() = 0;
 	t.m3() = 0;
 	t.m4() = 0;
-	t.m5() = to_underlying(part) << WBL_LOCK_PART_BEGIN | to_underlying(dir) << WBL_LOCK_ORIENT_BEGIN;
+	t.m5() = std::to_underlying(part) << WBL_LOCK_PART_BEGIN | std::to_underlying(dir) << WBL_LOCK_ORIENT_BEGIN;
 	SetWaterTileType(t, WaterTileType::Lock);
 	SB(t.m6(), 2, 6, 0);
 	t.m7() = 0;
