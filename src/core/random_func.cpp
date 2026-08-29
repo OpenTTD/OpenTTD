@@ -120,9 +120,9 @@ void RandomBytesWithFallback(std::span<uint8_t> buf)
 #	warning "No cryptographically-strong random generator available; using a fallback instead"
 #endif
 
-	static bool warned_once = false;
-	Debug(Facility::Misc, warned_once ? Severity::Error : Severity::Fatal, "Cryptographically-strong random generator unavailable; using fallback");
-	warned_once = true;
+	static Severity severity = Severity::Fatal;
+	Debug(Facility::Misc, severity, "Cryptographically-strong random generator unavailable; using fallback");
+	severity = Severity::Error;
 
 	for (uint i = 0; i < buf.size(); i++) {
 		buf[i] = static_cast<uint8_t>(InteractiveRandom());

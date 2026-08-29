@@ -32,12 +32,12 @@ extern const uint8_t _palmap_w2d[];
  */
 static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
 {
-	static Severity warning_level = Severity::Fatal;
-	if (warning_level == Severity::Fatal) {
+	static Severity severity = Severity::Fatal;
+	if (severity == Severity::Fatal) {
 		ShowErrorMessage(GetEncodedString(STR_NEWGRF_ERROR_CORRUPT_SPRITE, file.GetSimplifiedFilename()), {}, WarningLevel::Error);
 	}
-	Debug(Facility::Sprite, warning_level, "[{}] Loading corrupted sprite from {} at position {}", line, file.GetSimplifiedFilename(), file_pos);
-	warning_level = Severity::Debug2;
+	Debug(Facility::Sprite, severity, "[{}] Loading corrupted sprite from {} at position {}", line, file.GetSimplifiedFilename(), file_pos);
+	severity = Severity::Debug2;
 	return false;
 }
 
@@ -180,9 +180,9 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 		}
 
 		if (dest_size > sprite_size) {
-			static Severity warning_level = Severity::Fatal;
-			Debug(Facility::Sprite, warning_level, "Ignoring {} unused extra bytes from the sprite from {} at position {}", dest_size - sprite_size, file.GetSimplifiedFilename(), file_pos);
-			warning_level = Severity::Debug2;
+			static Severity severity = Severity::Fatal;
+			Debug(Facility::Sprite, severity, "Ignoring {} unused extra bytes from the sprite from {} at position {}", dest_size - sprite_size, file.GetSimplifiedFilename(), file_pos);
+			severity = Severity::Debug2;
 		}
 
 		dest = dest_orig.get();
