@@ -91,7 +91,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	std::error_code ec;
 	std::filesystem::rename(OTTD2FS(file_new), OTTD2FS(filename), ec);
 	if (ec) {
-		Debug(misc, Severity::Critical, "Renaming {} to {} failed; configuration not saved: {}", file_new, filename, ec.message());
+		Debug(Facility::Misc, Severity::Critical, "Renaming {} to {} failed; configuration not saved: {}", file_new, filename, ec.message());
 	}
 
 #ifdef __EMSCRIPTEN__

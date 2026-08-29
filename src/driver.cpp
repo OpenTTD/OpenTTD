@@ -131,7 +131,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 					if (!filename.empty()) {
 						FioRemove(filename);
 
-						Debug(driver, Severity::Error, "Probing {} driver '{}' skipped due to earlier crash", GetDriverTypeName(type), d->name);
+						Debug(Facility::Driver, Severity::Error, "Probing {} driver '{}' skipped due to earlier crash", GetDriverTypeName(type), d->name);
 
 						_video_hw_accel = false;
 						ErrorMessageData msg(GetEncodedString(STR_VIDEO_DRIVER_ERROR), GetEncodedString(STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH), true);
@@ -149,13 +149,13 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 
 				auto err = newd->Start({});
 				if (!err) {
-					Debug(driver, Severity::Error, "Successfully probed {} driver '{}'", GetDriverTypeName(type), d->name);
+					Debug(Facility::Driver, Severity::Error, "Successfully probed {} driver '{}'", GetDriverTypeName(type), d->name);
 					GetActiveDriver(type) = std::move(newd);
 					return true;
 				}
 
 				GetActiveDriver(type) = std::move(oldd);
-				Debug(driver, Severity::Error, "Probing {} driver '{}' failed with error: {}", GetDriverTypeName(type), d->name, *err);
+				Debug(Facility::Driver, Severity::Error, "Probing {} driver '{}' failed with error: {}", GetDriverTypeName(type), d->name, *err);
 
 				if (type == Driver::Type::Video && _video_hw_accel && d->UsesHardwareAcceleration()) {
 					_video_hw_accel = false;
@@ -194,7 +194,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				UserError("Unable to load driver '{}'. The error was: {}", d->name, *err);
 			}
 
-			Debug(driver, Severity::Error, "Successfully loaded {} driver '{}'", GetDriverTypeName(type), d->name);
+			Debug(Facility::Driver, Severity::Error, "Successfully loaded {} driver '{}'", GetDriverTypeName(type), d->name);
 			GetActiveDriver(type) = std::move(newd);
 			return true;
 		}

@@ -147,7 +147,7 @@ static uint32_t GetNearbyTileInformation(uint8_t parameter, TileIndex tile, bool
 		case 0xD5: return this->t->fund_buildings_months;
 	}
 
-	Debug(grf, Severity::Error, "Unhandled town variable 0x{:X}", variable);
+	Debug(Facility::Grf, Severity::Error, "Unhandled town variable 0x{:X}", variable);
 
 	available = false;
 	return UINT_MAX;
