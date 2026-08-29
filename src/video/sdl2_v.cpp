@@ -124,7 +124,7 @@ static uint FindStartupDisplay(uint startup_display)
 	for (int display = 0; display < num_displays; ++display) {
 		SDL_Rect r;
 		if (SDL_GetDisplayBounds(display, &r) == 0 && IsInsideBS(mx, r.x, r.w) && IsInsideBS(my, r.y, r.h)) {
-			Debug(driver, Severity::Error, "SDL2: Mouse is at ({}, {}), use display {} ({}, {}, {}, {})", mx, my, display, r.x, r.y, r.w, r.h);
+			Debug(Facility::Driver, Severity::Error, "SDL2: Mouse is at ({}, {}), use display {} ({}, {}, {}, {})", mx, my, display, r.x, r.y, r.w, r.h);
 			return display;
 		}
 	}
@@ -175,7 +175,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 		flags);
 
 	if (this->sdl_window == nullptr) {
-		Debug(driver, Severity::Fatal, "SDL2: Couldn't allocate a window to draw on: {}", SDL_GetError());
+		Debug(Facility::Driver, Severity::Fatal, "SDL2: Couldn't allocate a window to draw on: {}", SDL_GetError());
 		return false;
 	}
 
@@ -206,7 +206,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 bool VideoDriver_SDL_Base::CreateMainSurface(uint w, uint h, bool resize)
 {
 	GetAvailableVideoMode(&w, &h);
-	Debug(driver, Severity::Error, "SDL2: using mode {}x{}", w, h);
+	Debug(Facility::Driver, Severity::Error, "SDL2: using mode {}x{}", w, h);
 
 	if (!this->CreateMainWindow(w, h)) return false;
 	if (resize) SDL_SetWindowSize(this->sdl_window, w, h);
@@ -595,7 +595,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Initialize()
 	if (error) return error;
 
 	FindResolutions();
-	Debug(driver, Severity::Warning, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
+	Debug(Facility::Driver, Severity::Warning, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
 
 	return std::nullopt;
 }
@@ -623,7 +623,7 @@ std::optional<std::string_view> VideoDriver_SDL_Base::Start(const StringList &pa
 	}
 
 	const char *dname = SDL_GetCurrentVideoDriver();
-	Debug(driver, Severity::Error, "SDL2: using driver '{}'", dname);
+	Debug(Facility::Driver, Severity::Error, "SDL2: using driver '{}'", dname);
 
 	this->driver_info = this->GetName();
 	this->driver_info += " (";
@@ -743,20 +743,20 @@ bool VideoDriver_SDL_Base::ToggleFullscreen(bool fullscreen)
 		/* Find fullscreen window size */
 		SDL_DisplayMode dm;
 		if (SDL_GetCurrentDisplayMode(SDL_GetWindowDisplayIndex(this->sdl_window), &dm) < 0) {
-			Debug(driver, Severity::Fatal, "SDL_GetCurrentDisplayMode() failed: {}", SDL_GetError());
+			Debug(Facility::Driver, Severity::Fatal, "SDL_GetCurrentDisplayMode() failed: {}", SDL_GetError());
 		} else {
 			SDL_SetWindowSize(this->sdl_window, dm.w, dm.h);
 		}
 	}
 
-	Debug(driver, Severity::Error, "SDL2: Setting {}", fullscreen ? "fullscreen" : "windowed");
+	Debug(Facility::Driver, Severity::Error, "SDL2: Setting {}", fullscreen ? "fullscreen" : "windowed");
 	int ret = SDL_SetWindowFullscreen(this->sdl_window, fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
 	if (ret == 0) {
 		/* Switching resolution succeeded, set fullscreen value of window. */
 		_fullscreen = fullscreen;
 		if (!fullscreen) SDL_SetWindowSize(this->sdl_window, w, h);
 	} else {
-		Debug(driver, Severity::Fatal, "SDL_SetWindowFullscreen() failed: {}", SDL_GetError());
+		Debug(Facility::Driver, Severity::Fatal, "SDL_SetWindowFullscreen() failed: {}", SDL_GetError());
 	}
 
 	InvalidateWindowClassesData(WindowClass::GameOptions, 3);

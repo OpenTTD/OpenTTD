@@ -81,7 +81,7 @@ TypedIndexContainer<std::vector<GRFTempEngineData>, EngineID> _gted;  ///< Tempo
 
 /**
  * Debug() function dedicated to newGRF debugging messages
- * Function is essentially the same as Debug(grf, severity, ...) with the
+ * Function is essentially the same as Debug(Facility::Grf, severity, ...) with the
  * addition of file:line information when parsing grf files.
  * @note for the above reason(s) GrfMsg() should ONLY be used for
  * loading/parsing grf files, not for runtime debug messages as there
@@ -92,9 +92,9 @@ TypedIndexContainer<std::vector<GRFTempEngineData>, EngineID> _gted;  ///< Tempo
 void GrfMsgI(Severity severity, const std::string &msg)
 {
 	if (_cur_gps.grfconfig == nullptr) {
-		Debug(grf, severity, "{}", msg);
+		Debug(Facility::Grf, severity, "{}", msg);
 	} else {
-		Debug(grf, severity, "[{}:{}] {}", _cur_gps.grfconfig->filename, _cur_gps.nfo_line, msg);
+		Debug(Facility::Grf, severity, "[{}:{}] {}", _cur_gps.grfconfig->filename, _cur_gps.nfo_line, msg);
 	}
 }
 
@@ -975,7 +975,7 @@ static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseS
 				(next2 == nullptr || !next2->enabled || next2->building_flags.Any(BUILDING_HAS_1_TILE) ||
 				next3 == nullptr || !next3->enabled || next3->building_flags.Any(BUILDING_HAS_1_TILE)))) {
 		hs.enabled = false;
-		if (!filename.empty()) Debug(grf, Severity::Error, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs.grf_prop.local_id);
+		if (!filename.empty()) Debug(Facility::Grf, Severity::Error, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
@@ -985,7 +985,7 @@ static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseS
 	if ((hs.building_flags.Any(BUILDING_HAS_2_TILES) && next1->population != 0) ||
 			(hs.building_flags.Any(BUILDING_HAS_4_TILES) && (next2->population != 0 || next3->population != 0))) {
 		hs.enabled = false;
-		if (!filename.empty()) Debug(grf, Severity::Error, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs.grf_prop.local_id);
+		if (!filename.empty()) Debug(Facility::Grf, Severity::Error, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
@@ -993,14 +993,14 @@ static bool IsHouseSpecValid(HouseSpec &hs, const HouseSpec *next1, const HouseS
 	 * This check should only be done for NewGRF houses because grf_prop.subst_id is not set for original houses.*/
 	if (!filename.empty() && (hs.building_flags & BUILDING_HAS_1_TILE) != (HouseSpec::Get(hs.grf_prop.subst_id)->building_flags & BUILDING_HAS_1_TILE)) {
 		hs.enabled = false;
-		Debug(grf, Severity::Error, "FinaliseHouseArray: {} defines house {} with different house size then it's substitute type. Disabling house.", filename, hs.grf_prop.local_id);
+		Debug(Facility::Grf, Severity::Error, "FinaliseHouseArray: {} defines house {} with different house size then it's substitute type. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
 	/* Make sure that additional parts of multitile houses are not available. */
 	if (!hs.building_flags.Any(BUILDING_HAS_1_TILE) && hs.building_availability.Any(HZ_ZONE_ALL) && hs.building_availability.Any(HZ_CLIMATE_ALL)) {
 		hs.enabled = false;
-		if (!filename.empty()) Debug(grf, Severity::Error, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs.grf_prop.local_id);
+		if (!filename.empty()) Debug(Facility::Grf, Severity::Error, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs.grf_prop.local_id);
 		return false;
 	}
 
@@ -1300,11 +1300,11 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 	AutoRestoreBackup cur_file(_cur_gps.file, &file);
 	AutoRestoreBackup cur_config(_cur_gps.grfconfig, &config);
 
-	Debug(grf, Severity::Warning, "LoadNewGRFFile: Reading NewGRF-file '{}'", config.filename);
+	Debug(Facility::Grf, Severity::Warning, "LoadNewGRFFile: Reading NewGRF-file '{}'", config.filename);
 
 	uint8_t grf_container_version = file.GetContainerVersion();
 	if (grf_container_version == 0) {
-		Debug(grf, Severity::Trace1, "LoadNewGRFFile: Custom .grf has invalid format");
+		Debug(Facility::Grf, Severity::Trace1, "LoadNewGRFFile: Custom .grf has invalid format");
 		return;
 	}
 
@@ -1321,7 +1321,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 		/* Read compression value. */
 		uint8_t compression = file.ReadByte();
 		if (compression != 0) {
-			Debug(grf, Severity::Trace1, "LoadNewGRFFile: Unsupported compression format");
+			Debug(Facility::Grf, Severity::Trace1, "LoadNewGRFFile: Unsupported compression format");
 			return;
 		}
 	}
@@ -1333,7 +1333,7 @@ static void LoadNewGRFFileFromFile(GRFConfig &config, GrfLoadingStage stage, Spr
 	if (num == 4 && file.ReadByte() == 0xFF) {
 		file.ReadDword();
 	} else {
-		Debug(grf, Severity::Trace1, "LoadNewGRFFile: Custom .grf has invalid format");
+		Debug(Facility::Grf, Severity::Trace1, "LoadNewGRFFile: Custom .grf has invalid format");
 		return;
 	}
 
@@ -1513,7 +1513,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p : EnumRange(Price::End)) {
 			/* No price defined -> nothing to do */
 			if (!features.Test(_price_base_specs[p].grf_feature) || source.price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
-			Debug(grf, Severity::Notice, "'{}' overrides price base multiplier {} of '{}'", source.filename, p, dest.filename);
+			Debug(Facility::Grf, Severity::Notice, "'{}' overrides price base multiplier {} of '{}'", source.filename, p, dest.filename);
 			dest.price_base_multipliers[p] = source.price_base_multipliers[p];
 		}
 	}
@@ -1531,7 +1531,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p : EnumRange(Price::End)) {
 			/* Already a price defined -> nothing to do */
 			if (!features.Test(_price_base_specs[p].grf_feature) || dest.price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
-			Debug(grf, Severity::Notice, "Price base multiplier {} from '{}' propagated to '{}'", p, source.filename, dest.filename);
+			Debug(Facility::Grf, Severity::Notice, "Price base multiplier {} from '{}' propagated to '{}'", p, source.filename, dest.filename);
 			dest.price_base_multipliers[p] = source.price_base_multipliers[p];
 		}
 	}
@@ -1549,7 +1549,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p : EnumRange(Price::End)) {
 			if (!features.Test(_price_base_specs[p].grf_feature)) continue;
 			if (source.price_base_multipliers[p] != dest.price_base_multipliers[p]) {
-				Debug(grf, Severity::Notice, "Price base multiplier {} from '{}' propagated to '{}'", p, dest.filename, source.filename);
+				Debug(Facility::Grf, Severity::Notice, "Price base multiplier {} from '{}' propagated to '{}'", p, dest.filename, source.filename);
 			}
 			source.price_base_multipliers[p] = dest.price_base_multipliers[p];
 		}
@@ -1580,11 +1580,11 @@ static void FinalisePriceBaseMultipliers()
 				if (!file.grf_features.Test(_price_base_specs[p].grf_feature)) {
 					/* The grf does not define any objects of the feature,
 					 * so it must be a difficulty setting. Apply it globally */
-					Debug(grf, Severity::Notice, "'{}' sets global price base multiplier {}", file.filename, p);
+					Debug(Facility::Grf, Severity::Notice, "'{}' sets global price base multiplier {}", file.filename, p);
 					SetPriceBaseMultiplier(p, price_base_multipliers[p]);
 					price_base_multipliers[p] = 0;
 				} else {
-					Debug(grf, Severity::Notice, "'{}' sets local price base multiplier {}", file.filename, p);
+					Debug(Facility::Grf, Severity::Notice, "'{}' sets local price base multiplier {}", file.filename, p);
 				}
 			}
 		}
@@ -1835,7 +1835,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 			Subdirectory subdir = num_grfs < num_baseset ? Subdirectory::Baseset : Subdirectory::NewGrf;
 			if (!FioCheckFileExists(c->filename, subdir)) {
-				Debug(grf, Severity::Fatal, "NewGRF file is missing '{}'; disabling", c->filename);
+				Debug(Facility::Grf, Severity::Fatal, "NewGRF file is missing '{}'; disabling", c->filename);
 				c->status = GRFStatus::NotFound;
 				continue;
 			}
@@ -1844,7 +1844,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 
 			if (!c->flags.Test(GRFConfigFlag::Static) && !c->flags.Test(GRFConfigFlag::System)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
-					Debug(grf, Severity::Fatal, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
+					Debug(Facility::Grf, Severity::Fatal, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
 					c->status = GRFStatus::Disabled;
 					c->errors.emplace_back(STR_NEWGRF_ERROR_MSG_FATAL, 0, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 					continue;
@@ -1862,7 +1862,7 @@ void LoadNewGRF(SpriteID load_index, uint num_baseset)
 				assert(GetFileByGRFID(c->ident.grfid) == _cur_gps.grffile);
 				ClearTemporaryNewGRFData(_cur_gps.grffile);
 				BuildCargoTranslationMap();
-				Debug(sprite, Severity::Warning, "LoadNewGRF: Currently {} sprites are loaded", _cur_gps.spriteid);
+				Debug(Facility::Sprite, Severity::Warning, "LoadNewGRF: Currently {} sprites are loaded", _cur_gps.spriteid);
 			} else if (stage == GrfLoadingStage::Init && c->flags.Test(GRFConfigFlag::InitOnly)) {
 				/* We're not going to activate this, so free whatever data we allocated */
 				ClearTemporaryNewGRFData(_cur_gps.grffile);

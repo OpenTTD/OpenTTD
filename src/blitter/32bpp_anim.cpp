@@ -318,7 +318,7 @@ void Blitter_32bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 		return;
 	}
 
-	Debug(misc, Severity::Fatal, "32bpp blitter doesn't know how to draw this colour table ('{}')", pal);
+	Debug(Facility::Misc, Severity::Fatal, "32bpp blitter doesn't know how to draw this colour table ('{}')", pal);
 }
 
 void Blitter_32bppAnim::SetPixel(void *video, int x, int y, PixelColour colour)

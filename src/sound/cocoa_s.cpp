@@ -117,7 +117,7 @@ void SoundDriver_Cocoa::Stop()
 
 	/* stop processing the audio unit */
 	if (AudioOutputUnitStop(_outputAudioUnit) != noErr) {
-		Debug(driver, Severity::Fatal, "cocoa_s: Core_CloseAudio: AudioOutputUnitStop failed");
+		Debug(Facility::Driver, Severity::Fatal, "cocoa_s: Core_CloseAudio: AudioOutputUnitStop failed");
 		return;
 	}
 
@@ -125,12 +125,12 @@ void SoundDriver_Cocoa::Stop()
 	callback.inputProc = 0;
 	callback.inputProcRefCon = 0;
 	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
-		Debug(driver, Severity::Fatal, "cocoa_s: Core_CloseAudio: AudioUnitSetProperty (kAudioUnitProperty_SetRenderCallback) failed");
+		Debug(Facility::Driver, Severity::Fatal, "cocoa_s: Core_CloseAudio: AudioUnitSetProperty (kAudioUnitProperty_SetRenderCallback) failed");
 		return;
 	}
 
 	if (AudioComponentInstanceDispose(_outputAudioUnit) != noErr) {
-		Debug(driver, Severity::Fatal, "cocoa_s: Core_CloseAudio: AudioComponentInstanceDispose failed");
+		Debug(Facility::Driver, Severity::Fatal, "cocoa_s: Core_CloseAudio: AudioComponentInstanceDispose failed");
 		return;
 	}
 }

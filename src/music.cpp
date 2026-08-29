@@ -139,13 +139,13 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				this->songinfo[i].filetype = MTT_MPSMIDI;
 				auto value = ParseInteger(*item->value);
 				if (!value.has_value()) {
-					Debug(misc, Severity::Fatal, "Invalid base music set song index: {}/{}", filename, *item->value);
+					Debug(Facility::Misc, Severity::Fatal, "Invalid base music set song index: {}/{}", filename, *item->value);
 					continue;
 				}
 				this->songinfo[i].cat_index = *value;
 				auto songname = GetMusicCatEntryName(filename, this->songinfo[i].cat_index);
 				if (!songname.has_value()) {
-					Debug(misc, Severity::Fatal, "Base music set song missing from CAT file: {}/{}", filename, this->songinfo[i].cat_index);
+					Debug(Facility::Misc, Severity::Fatal, "Base music set song missing from CAT file: {}/{}", filename, this->songinfo[i].cat_index);
 					continue;
 				}
 				this->songinfo[i].songname = *songname;
@@ -177,7 +177,7 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				if (item != nullptr && item->value.has_value() && !item->value->empty()) {
 					this->songinfo[i].songname = item->value.value();
 				} else {
-					Debug(misc, Severity::Fatal, "Base music set song name missing: {}", filename);
+					Debug(Facility::Misc, Severity::Fatal, "Base music set song name missing: {}", filename);
 					return false;
 				}
 			}

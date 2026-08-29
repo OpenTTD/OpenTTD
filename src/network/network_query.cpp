@@ -44,7 +44,7 @@ bool QueryNetworkGameSocketHandler::CheckConnection()
 
 	/* If there was no response in 5 seconds, terminate the query. */
 	if (lag > std::chrono::seconds(5)) {
-		Debug(net, Severity::Fatal, "Timeout while waiting for response from {}", this->connection_string);
+		Debug(Facility::Net, Severity::Fatal, "Timeout while waiting for response from {}", this->connection_string);
 		this->CloseConnection(NetworkRecvStatus::ConnectionLost);
 		return false;
 	}
@@ -81,7 +81,7 @@ void QueryNetworkGameSocketHandler::Send()
  */
 NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 {
-	Debug(net, Severity::Trace3, "Query::SendGameInfo()");
+	Debug(Facility::Net, Severity::Trace3, "Query::SendGameInfo()");
 
 	this->SendPacket(std::make_unique<Packet>(this, PacketGameType::ClientGameInfo));
 	return NetworkRecvStatus::Okay;
@@ -89,7 +89,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::SendGameInfo()
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerFull(Packet &)
 {
-	Debug(net, Severity::Trace3, "Query::ReceiveServerFull()");
+	Debug(Facility::Net, Severity::Trace3, "Query::ReceiveServerFull()");
 
 	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NetworkGameStatus::Full;
@@ -102,7 +102,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerFull(Packet &)
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerBanned(Packet &)
 {
-	Debug(net, Severity::Trace3, "Query::ReceiveServerBanned()");
+	Debug(Facility::Net, Severity::Trace3, "Query::ReceiveServerBanned()");
 
 	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 	item->status = NetworkGameStatus::Banned;
@@ -115,7 +115,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerBanned(Packet &)
 
 NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerGameInfo(Packet &p)
 {
-	Debug(net, Severity::Trace3, "Query::ReceiveServerGameInfo()");
+	Debug(Facility::Net, Severity::Trace3, "Query::ReceiveServerGameInfo()");
 
 	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 
@@ -138,7 +138,7 @@ NetworkRecvStatus QueryNetworkGameSocketHandler::ReceiveServerError(Packet &p)
 {
 	NetworkErrorCode error = static_cast<NetworkErrorCode>(p.Recv_uint8());
 
-	Debug(net, Severity::Trace3, "Query::ReceiveServerError(): error={}", error);
+	Debug(Facility::Net, Severity::Trace3, "Query::ReceiveServerError(): error={}", error);
 
 	NetworkGame *item = NetworkGameListAddItem(this->connection_string);
 

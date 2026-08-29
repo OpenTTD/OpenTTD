@@ -89,7 +89,7 @@ void AddChangedPersistentStorage(BasePersistentStorageArray *storage)
 
 	/* Discard all temporary changes */
 	for (auto &it : *_changed_storage_arrays) {
-		Debug(desync, Severity::Warning, "warning: discarding persistent storage changes: Feature {}, GrfID {}, Tile {}", it->feature, FormatArrayAsHex(it->grfid), it->tile);
+		Debug(Facility::Desync, Severity::Warning, "warning: discarding persistent storage changes: Feature {}, GrfID {}, Tile {}", it->feature, FormatArrayAsHex(it->grfid), it->tile);
 		it->ClearChanges();
 	}
 	_changed_storage_arrays->clear();

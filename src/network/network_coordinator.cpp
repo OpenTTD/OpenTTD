@@ -128,7 +128,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorError(Packet &
 {
 	NetworkCoordinatorErrorType error = static_cast<NetworkCoordinatorErrorType>(p.Recv_uint8());
 	std::string detail = p.Recv_string(NETWORK_ERROR_DETAIL_LENGTH);
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorError({}, {})", error, detail);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorError({}, {})", error, detail);
 
 	switch (error) {
 		case NetworkCoordinatorErrorType::Unknown:
@@ -169,7 +169,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorError(Packet &
 			return false;
 
 		default:
-			Debug(net, Severity::Fatal, "Invalid error type {} received from Game Coordinator", error);
+			Debug(Facility::Net, Severity::Fatal, "Invalid error type {} received from Game Coordinator", error);
 			this->CloseConnection();
 			return false;
 	}
@@ -183,7 +183,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorRegisterAck(Pa
 	_settings_client.network.server_invite_code = p.Recv_string(NETWORK_INVITE_CODE_LENGTH);
 	_settings_client.network.server_invite_code_secret = p.Recv_string(NETWORK_INVITE_CODE_SECRET_LENGTH);
 	_network_server_connection_type = static_cast<ConnectionType>(p.Recv_uint8());
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorRegisterAck({}, {})", _settings_client.network.server_invite_code, _network_server_connection_type);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorRegisterAck({}, {})", _settings_client.network.server_invite_code, _network_server_connection_type);
 
 	if (_network_server_connection_type == ConnectionType::Isolated) {
 		ShowErrorMessage(
@@ -222,14 +222,14 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorRegisterAck(Pa
 			default: game_type = "Unknown"; break; // Should never happen, but don't fail if it does.
 		}
 
-		Debug(net, Severity::Notice, "----------------------------------------");
-		Debug(net, Severity::Notice, "Your server is now registered with the Game Coordinator:");
-		Debug(net, Severity::Notice, "  Game type:       {}", game_type);
-		Debug(net, Severity::Notice, "  Connection type: {}", connection_type);
-		Debug(net, Severity::Notice, "  Invite code:     {}", _network_server_invite_code);
-		Debug(net, Severity::Notice, "----------------------------------------");
+		Debug(Facility::Net, Severity::Notice, "----------------------------------------");
+		Debug(Facility::Net, Severity::Notice, "Your server is now registered with the Game Coordinator:");
+		Debug(Facility::Net, Severity::Notice, "  Game type:       {}", game_type);
+		Debug(Facility::Net, Severity::Notice, "  Connection type: {}", connection_type);
+		Debug(Facility::Net, Severity::Notice, "  Invite code:     {}", _network_server_invite_code);
+		Debug(Facility::Net, Severity::Notice, "----------------------------------------");
 	} else {
-		Debug(net, Severity::Notice, "Game Coordinator registered our server with invite code '{}'", _network_server_invite_code);
+		Debug(Facility::Net, Severity::Notice, "Game Coordinator registered our server with invite code '{}'", _network_server_invite_code);
 	}
 
 	return true;
@@ -238,7 +238,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorRegisterAck(Pa
 bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorListing(Packet &p)
 {
 	uint8_t servers = p.Recv_uint16();
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorListing({})", servers);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorListing({})", servers);
 
 	/* End of list; we can now remove all expired items from the list. */
 	if (servers == 0) {
@@ -272,7 +272,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorConnecting(Pac
 {
 	std::string token = p.Recv_string(NETWORK_TOKEN_LENGTH);
 	std::string invite_code = p.Recv_string(NETWORK_INVITE_CODE_LENGTH);
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorConnecting({}, {})", token, invite_code);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorConnecting({}, {})", token, invite_code);
 
 	/* Find the connecter based on the invite code. */
 	auto connecter_pre_it = this->connecter_pre.find(invite_code);
@@ -291,7 +291,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorConnecting(Pac
 bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorConnectFailed(Packet &p)
 {
 	std::string token = p.Recv_string(NETWORK_TOKEN_LENGTH);
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorConnectFailed({})", token);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorConnectFailed({})", token);
 	this->CloseToken(token);
 
 	return true;
@@ -303,7 +303,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorDirectConnect(
 	uint8_t tracking_number = p.Recv_uint8();
 	std::string hostname = p.Recv_string(NETWORK_HOSTNAME_LENGTH);
 	uint16_t port = p.Recv_uint16();
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorDirectConnect({}, {}, {}, {})", token, tracking_number, hostname, port);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorDirectConnect({}, {}, {}, {})", token, tracking_number, hostname, port);
 
 	/* Ensure all other pending connection attempts are killed. */
 	if (this->game_connecter != nullptr) {
@@ -318,7 +318,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorDirectConnect(
 bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorStunRequest(Packet &p)
 {
 	std::string token = p.Recv_string(NETWORK_TOKEN_LENGTH);
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorStunRequest({})", token);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorStunRequest({})", token);
 
 	this->stun_handlers[token][AF_INET6] = ClientNetworkStunSocketHandler::Stun(token, AF_INET6);
 	this->stun_handlers[token][AF_INET] = ClientNetworkStunSocketHandler::Stun(token, AF_INET);
@@ -364,7 +364,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorNewGRFLookup(P
 	this->newgrf_lookup_table_cursor = p.Recv_uint32();
 
 	uint16_t newgrfs = p.Recv_uint16();
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorNewGRFLookup({}, {})", this->newgrf_lookup_table_cursor, newgrfs);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorNewGRFLookup({}, {})", this->newgrf_lookup_table_cursor, newgrfs);
 	for (; newgrfs> 0; newgrfs--) {
 		uint32_t index = p.Recv_uint32();
 		DeserializeGRFIdentifierWithName(p, this->newgrf_lookup_table[index]);
@@ -378,7 +378,7 @@ bool ClientNetworkCoordinatorSocketHandler::ReceiveGameCoordinatorTurnConnect(Pa
 	uint8_t tracking_number = p.Recv_uint8();
 	std::string ticket = p.Recv_string(NETWORK_TOKEN_LENGTH);
 	std::string connection_string = p.Recv_string(NETWORK_HOSTNAME_PORT_LENGTH);
-	Debug(net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorTurnConnect({}, {}, {}, {})", token, tracking_number, ticket, connection_string);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::ReceiveGameCoordinatorTurnConnect({}, {}, {}, {})", token, tracking_number, ticket, connection_string);
 
 	/* Ensure all other pending connection attempts are killed. */
 	if (this->game_connecter != nullptr) {
@@ -483,7 +483,7 @@ void ClientNetworkCoordinatorSocketHandler::Register()
 		p->Send_string(_settings_client.network.server_invite_code_secret);
 	}
 
-	Debug(net, Severity::Trace3, "Coordinator::SendRegister({}, {}, {})", _settings_client.network.server_game_type, _settings_client.network.server_port, _settings_client.network.server_invite_code);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::SendRegister({}, {}, {})", _settings_client.network.server_game_type, _settings_client.network.server_port, _settings_client.network.server_invite_code);
 	this->SendPacket(std::move(p));
 }
 
@@ -492,13 +492,13 @@ void ClientNetworkCoordinatorSocketHandler::Register()
  */
 void ClientNetworkCoordinatorSocketHandler::SendServerUpdate()
 {
-	Debug(net, Severity::Debug2, "Sending server update to Game Coordinator");
+	Debug(Facility::Net, Severity::Debug2, "Sending server update to Game Coordinator");
 
 	auto p = std::make_unique<Packet>(this, PacketCoordinatorType::ServerUpdate, TCP_MTU);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	SerializeNetworkGameInfo(*p, GetCurrentNetworkServerGameInfo(), this->next_update.time_since_epoch() != std::chrono::nanoseconds::zero());
 
-	Debug(net, Severity::Trace3, "Coordinator::SendServerUpdate()");
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::SendServerUpdate()");
 	this->SendPacket(std::move(p));
 
 	this->next_update = std::chrono::steady_clock::now() + NETWORK_COORDINATOR_DELAY_BETWEEN_UPDATES;
@@ -519,7 +519,7 @@ void ClientNetworkCoordinatorSocketHandler::GetListing()
 	p->Send_string(_openttd_revision);
 	p->Send_uint32(this->newgrf_lookup_table_cursor);
 
-	Debug(net, Severity::Trace3, "Coordinator::SendGetListing({}, {})", _openttd_revision, this->newgrf_lookup_table_cursor);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::SendGetListing({}, {})", _openttd_revision, this->newgrf_lookup_table_cursor);
 	this->SendPacket(std::move(p));
 }
 
@@ -550,7 +550,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectToServer(std::string_view inv
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_string(invite_code);
 
-	Debug(net, Severity::Trace3, "Coordinator::SendConnectToClient({})", invite_code);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::SendConnectToClient({})", invite_code);
 	this->SendPacket(std::move(p));
 }
 
@@ -569,7 +569,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectFailure(std::string_view toke
 	p->Send_string(token);
 	p->Send_uint8(tracking_number);
 
-	Debug(net, Severity::Trace3, "Coordinator::SendConnectFailure({}, {})", token, tracking_number);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::SendConnectFailure({}, {})", token, tracking_number);
 	this->SendPacket(std::move(p));
 
 	/* We do not close the associated connecter here yet, as the
@@ -592,7 +592,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(std::string_view toke
 
 	if (_network_server) {
 		if (!ServerNetworkGameSocketHandler::ValidateClient(sock, address)) return;
-		Debug(net, Severity::Notice, "[{}] Client connected from {} on frame {}", ServerNetworkGameSocketHandler::GetName(), address.GetHostname(), _frame_counter);
+		Debug(Facility::Net, Severity::Notice, "[{}] Client connected from {} on frame {}", ServerNetworkGameSocketHandler::GetName(), address.GetHostname(), _frame_counter);
 		ServerNetworkGameSocketHandler::AcceptConnection(sock, address);
 	} else {
 		/* The client informs the Game Coordinator about the success. The server
@@ -600,7 +600,7 @@ void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(std::string_view toke
 		auto p = std::make_unique<Packet>(this, PacketCoordinatorType::ClientConnected);
 		p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 		p->Send_string(token);
-		Debug(net, Severity::Trace3, "Coordinator::SendConnectSuccess({})", token);
+		Debug(Facility::Net, Severity::Trace3, "Coordinator::SendConnectSuccess({})", token);
 		this->SendPacket(std::move(p));
 
 		/* Find the connecter; it can happen it no longer exist, in cases where
@@ -634,7 +634,7 @@ void ClientNetworkCoordinatorSocketHandler::StunResult(std::string_view token, u
 	p->Send_string(token);
 	p->Send_uint8(family);
 	p->Send_bool(result);
-	Debug(net, Severity::Trace3, "Coordinator::SendStunResult({}, {}, {})", token, family, result);
+	Debug(Facility::Net, Severity::Trace3, "Coordinator::SendStunResult({}, {}, {})", token, family, result);
 	this->SendPacket(std::move(p));
 }
 
@@ -776,7 +776,7 @@ void ClientNetworkCoordinatorSocketHandler::SendReceive()
 			return;
 		}
 
-		Debug(net, Severity::Error, "Connection with Game Coordinator lost; reconnecting...");
+		Debug(Facility::Net, Severity::Error, "Connection with Game Coordinator lost; reconnecting...");
 		this->Register();
 		return;
 	}

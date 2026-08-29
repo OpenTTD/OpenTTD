@@ -28,7 +28,7 @@ static void ScanInfo(ByteReader &buf)
 
 	if (grf_version < 2 || grf_version > 8) {
 		_cur_gps.grfconfig->flags.Set(GRFConfigFlag::Invalid);
-		Debug(grf, Severity::Fatal, "{}: NewGRF \"{}\" (GRFID {}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur_gps.grfconfig->filename, StrMakeValid(name), FormatArrayAsHex(grfid), grf_version);
+		Debug(Facility::Grf, Severity::Fatal, "{}: NewGRF \"{}\" (GRFID {}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur_gps.grfconfig->filename, StrMakeValid(name), FormatArrayAsHex(grfid), grf_version);
 	}
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
@@ -65,7 +65,7 @@ static void GRFInfo(ByteReader &buf)
 	}
 
 	if (_cur_gps.grffile->grfid != grfid) {
-		Debug(grf, Severity::Fatal, "GRFInfo: GRFID {} in FILESCAN stage does not match GRFID {} in INIT/RESERVE/ACTIVATION stage", FormatArrayAsHex(_cur_gps.grffile->grfid), FormatArrayAsHex(grfid));
+		Debug(Facility::Grf, Severity::Fatal, "GRFInfo: GRFID {} in FILESCAN stage does not match GRFID {} in INIT/RESERVE/ACTIVATION stage", FormatArrayAsHex(_cur_gps.grffile->grfid), FormatArrayAsHex(grfid));
 		_cur_gps.grffile->grfid = grfid;
 	}
 
@@ -73,7 +73,7 @@ static void GRFInfo(ByteReader &buf)
 	_cur_gps.grfconfig->status = _cur_gps.stage < GrfLoadingStage::Reserve ? GRFStatus::Initialised : GRFStatus::Activated;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	Debug(grf, Severity::Error, "GRFInfo: Loaded GRFv{} set {} - {} (palette: {}, version: {})", version, FormatArrayAsHex(grfid), StrMakeValid(name), (_cur_gps.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur_gps.grfconfig->version);
+	Debug(Facility::Grf, Severity::Error, "GRFInfo: Loaded GRFv{} set {} - {} (palette: {}, version: {})", version, FormatArrayAsHex(grfid), StrMakeValid(name), (_cur_gps.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur_gps.grfconfig->version);
 }
 
 /** @copydoc GrfActionHandler::FileScan */

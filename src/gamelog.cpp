@@ -322,7 +322,7 @@ void Gamelog::PrintConsole()
 void Gamelog::PrintDebug(Severity severity)
 {
 	this->Print([severity](const std::string &s) {
-		Debug(gamelog, severity, "{}", s);
+		Debug(Facility::Gamelog, severity, "{}", s);
 	});
 }
 

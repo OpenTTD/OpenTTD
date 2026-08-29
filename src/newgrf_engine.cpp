@@ -972,7 +972,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 		default: break;
 	}
 
-	Debug(grf, Severity::Error, "Unhandled vehicle variable 0x{:X}, type 0x{:X}", variable, (uint)v->type);
+	Debug(Facility::Grf, Severity::Error, "Unhandled vehicle variable 0x{:X}, type 0x{:X}", variable, (uint)v->type);
 
 	available = false;
 	return UINT_MAX;

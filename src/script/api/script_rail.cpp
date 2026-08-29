@@ -204,7 +204,7 @@
 	if (res.second != CALLBACK_FAILED) {
 		const StationSpec *spec = StationClass::GetByGrf(res.first->grfid, res.second);
 		if (spec == nullptr) {
-			Debug(grf, Severity::Error, "{} returned an invalid station ID for 'AI construction/purchase selection (18)' callback", res.first->filename);
+			Debug(Facility::Grf, Severity::Error, "{} returned an invalid station ID for 'AI construction/purchase selection (18)' callback", res.first->filename);
 		} else {
 			/* We might have gotten an usable station spec. Try to build it, but if it fails we'll fall back to the original station. */
 			if (ScriptObject::Command<Commands::BuildRailStation>::Do(tile, (::RailType)GetCurrentRailType(), axis, num_platforms, platform_length, spec->class_index, spec->index, to_join, adjacent)) return true;

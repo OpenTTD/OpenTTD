@@ -3489,7 +3489,7 @@ static int PositionWindow(Window *w, WindowClass clss, int setting)
  */
 int PositionMainToolbar(Window *w)
 {
-	Debug(misc, Severity::Debug1, "Repositioning Main Toolbar...");
+	Debug(Facility::Misc, Severity::Debug1, "Repositioning Main Toolbar...");
 	return PositionWindow(w, WindowClass::MainToolbar, _settings_client.gui.toolbar_pos);
 }
 
@@ -3500,7 +3500,7 @@ int PositionMainToolbar(Window *w)
  */
 int PositionStatusbar(Window *w)
 {
-	Debug(misc, Severity::Debug1, "Repositioning statusbar...");
+	Debug(Facility::Misc, Severity::Debug1, "Repositioning statusbar...");
 	return PositionWindow(w, WindowClass::Statusbar, _settings_client.gui.statusbar_pos);
 }
 
@@ -3511,7 +3511,7 @@ int PositionStatusbar(Window *w)
  */
 int PositionNewsMessage(Window *w)
 {
-	Debug(misc, Severity::Debug1, "Repositioning news message...");
+	Debug(Facility::Misc, Severity::Debug1, "Repositioning news message...");
 	return PositionWindow(w, WindowClass::News, _settings_client.gui.statusbar_pos);
 }
 
@@ -3522,7 +3522,7 @@ int PositionNewsMessage(Window *w)
  */
 int PositionNetworkChatWindow(Window *w)
 {
-	Debug(misc, Severity::Debug1, "Repositioning network chat window...");
+	Debug(Facility::Misc, Severity::Debug1, "Repositioning network chat window...");
 	return PositionWindow(w, WindowClass::NetworkChat, _settings_client.gui.statusbar_pos);
 }
 

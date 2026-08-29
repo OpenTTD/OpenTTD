@@ -128,7 +128,7 @@ void SaveToHighScore()
 					fwrite(hs.name.data(), name_length, 1, fp) > 1 || // Yes... could be 0 bytes too
 					fwrite(&hs.score, sizeof(hs.score), 1, fp) != 1 ||
 					fwrite("  ", 2, 1, fp) != 1) { // Used to be hs.title, not saved anymore; compatibility
-				Debug(misc, Severity::Error, "Could not save highscore.");
+				Debug(Facility::Misc, Severity::Error, "Could not save highscore.");
 				return;
 			}
 		}
@@ -155,7 +155,7 @@ void LoadFromHighScore()
 					fread(buffer, name_length, 1, fp) > 1 || // Yes... could be 0 bytes too
 					fread(&hs.score, sizeof(hs.score), 1, fp) !=  1 ||
 					fseek(fp, 2, SEEK_CUR) == -1) { // Used to be hs.title, not saved anymore; compatibility
-				Debug(misc, Severity::Error, "Highscore corrupted");
+				Debug(Facility::Misc, Severity::Error, "Highscore corrupted");
 				return;
 			}
 			hs.name = StrMakeValid(std::string_view(buffer, name_length));

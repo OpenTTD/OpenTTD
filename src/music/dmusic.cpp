@@ -273,7 +273,7 @@ bool DLSFile::ReadDLSRegion(FileHandle &f, DWORD list_length, std::vector<DLSReg
 				break;
 
 			default:
-				Debug(driver, Severity::Trace1, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
+				Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
 				fseek(f, chunk.length, SEEK_CUR);
 				break;
 		}
@@ -296,11 +296,11 @@ bool DLSFile::ReadDLSRegionList(FileHandle &f, DWORD list_length, DLSInstrument 
 			if (list_type == FOURCC_RGN) {
 				this->ReadDLSRegion(f, chunk.length - sizeof(list_type), instrument.regions);
 			} else {
-				Debug(driver, Severity::Trace1, "DLS: Ignoring unknown list chunk of type {}{}{}{}", (char)(list_type & 0xFF), (char)((list_type >> 8) & 0xFF), (char)((list_type >> 16) & 0xFF), (char)((list_type >> 24) & 0xFF));
+				Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring unknown list chunk of type {}{}{}{}", (char)(list_type & 0xFF), (char)((list_type >> 8) & 0xFF), (char)((list_type >> 16) & 0xFF), (char)((list_type >> 24) & 0xFF));
 				fseek(f, chunk.length - sizeof(list_type), SEEK_CUR);
 			}
 		} else {
-			Debug(driver, Severity::Trace1, "DLS: Ignoring chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
+			Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
 			fseek(f, chunk.length, SEEK_CUR);
 		}
 	}
@@ -342,7 +342,7 @@ bool DLSFile::ReadDLSInstrument(FileHandle &f, DWORD list_length)
 				break;
 
 			default:
-				Debug(driver, Severity::Trace1, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
+				Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
 				fseek(f, chunk.length, SEEK_CUR);
 				break;
 		}
@@ -363,15 +363,15 @@ bool DLSFile::ReadDLSInstrumentList(FileHandle &f, DWORD list_length)
 			if (fread(&list_type, sizeof(list_type), 1, f) != 1) return false;
 
 			if (list_type == FOURCC_INS) {
-				Debug(driver, Severity::Debug2, "DLS: Reading instrument {}", (int)instruments.size());
+				Debug(Facility::Driver, Severity::Debug2, "DLS: Reading instrument {}", (int)instruments.size());
 
 				if (!this->ReadDLSInstrument(f, chunk.length - sizeof(list_type))) return false;
 			} else {
-				Debug(driver, Severity::Trace1, "DLS: Ignoring unknown list chunk of type {}{}{}{}", (char)(list_type & 0xFF), (char)((list_type >> 8) & 0xFF), (char)((list_type >> 16) & 0xFF), (char)((list_type >> 24) & 0xFF));
+				Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring unknown list chunk of type {}{}{}{}", (char)(list_type & 0xFF), (char)((list_type >> 8) & 0xFF), (char)((list_type >> 16) & 0xFF), (char)((list_type >> 24) & 0xFF));
 				fseek(f, chunk.length - sizeof(list_type), SEEK_CUR);
 			}
 		} else {
-			Debug(driver, Severity::Trace1, "DLS: Ignoring chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
+			Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
 			fseek(f, chunk.length, SEEK_CUR);
 		}
 	}
@@ -428,7 +428,7 @@ bool DLSFile::ReadDLSWave(FileHandle &f, DWORD list_length, long offset)
 				break;
 
 			default:
-				Debug(driver, Severity::Trace1, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
+				Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
 				fseek(f, chunk.length, SEEK_CUR);
 				break;
 		}
@@ -453,15 +453,15 @@ bool DLSFile::ReadDLSWaveList(FileHandle &f, DWORD list_length)
 			if (fread(&list_type, sizeof(list_type), 1, f) != 1) return false;
 
 			if (list_type == FOURCC_wave) {
-				Debug(driver, Severity::Debug2, "DLS: Reading wave {}", waves.size());
+				Debug(Facility::Driver, Severity::Debug2, "DLS: Reading wave {}", waves.size());
 
 				if (!this->ReadDLSWave(f, chunk.length - sizeof(list_type), chunk_offset - base_offset)) return false;
 			} else {
-				Debug(driver, Severity::Trace1, "DLS: Ignoring unknown list chunk of type {}{}{}{}", (char)(list_type & 0xFF), (char)((list_type >> 8) & 0xFF), (char)((list_type >> 16) & 0xFF), (char)((list_type >> 24) & 0xFF));
+				Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring unknown list chunk of type {}{}{}{}", (char)(list_type & 0xFF), (char)((list_type >> 8) & 0xFF), (char)((list_type >> 16) & 0xFF), (char)((list_type >> 24) & 0xFF));
 				fseek(f, chunk.length - sizeof(list_type), SEEK_CUR);
 			}
 		} else {
-			Debug(driver, Severity::Trace1, "DLS: Ignoring chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
+			Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
 			fseek(f, chunk.length, SEEK_CUR);
 		}
 	}
@@ -471,7 +471,7 @@ bool DLSFile::ReadDLSWaveList(FileHandle &f, DWORD list_length)
 
 bool DLSFile::LoadFile(std::string_view file)
 {
-	Debug(driver, Severity::Warning, "DMusic: Try to load DLS file {}", file);
+	Debug(Facility::Driver, Severity::Warning, "DMusic: Try to load DLS file {}", file);
 
 	auto of = FileHandle::Open(file, "rb");
 	if (!of.has_value()) return false;
@@ -486,7 +486,7 @@ bool DLSFile::LoadFile(std::string_view file)
 
 	hdr.length -= sizeof(FOURCC);
 
-	Debug(driver, Severity::Warning, "DMusic: Parsing DLS file");
+	Debug(Facility::Driver, Severity::Warning, "DMusic: Parsing DLS file");
 
 	DLSHEADER header{};
 
@@ -534,7 +534,7 @@ bool DLSFile::LoadFile(std::string_view file)
 				break;
 
 			default:
-				Debug(driver, Severity::Trace1, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
+				Debug(Facility::Driver, Severity::Trace1, "DLS: Ignoring unknown chunk {}{}{}{}", (char)(chunk.type & 0xFF), (char)((chunk.type >> 8) & 0xFF), (char)((chunk.type >> 16) & 0xFF), (char)((chunk.type >> 24) & 0xFF));
 				fseek(f, chunk.length, SEEK_CUR);
 				break;
 		}
@@ -629,7 +629,7 @@ static void TransmitNotesOff(IDirectMusicBuffer *buffer, REFERENCE_TIME block_ti
 
 static void MidiThreadProc()
 {
-	Debug(driver, Severity::Warning, "DMusic: Entering playback thread");
+	Debug(Facility::Driver, Severity::Warning, "DMusic: Entering playback thread");
 
 	REFERENCE_TIME last_volume_time = 0; // timestamp of the last volume change
 	REFERENCE_TIME block_time = 0;       // timestamp of the last block sent to the port
@@ -661,7 +661,7 @@ static void MidiThreadProc()
 		}
 
 		if (_playback.do_stop) {
-			Debug(driver, Severity::Warning, "DMusic thread: Stopping playback");
+			Debug(Facility::Driver, Severity::Warning, "DMusic thread: Stopping playback");
 
 			/* Turn all notes off and wait a bit to allow the messages to be handled. */
 			clock->GetTime(&cur_time);
@@ -676,7 +676,7 @@ static void MidiThreadProc()
 
 		if (wfso == WAIT_OBJECT_0) {
 			if (_playback.do_start) {
-				Debug(driver, Severity::Warning, "DMusic thread: Starting playback");
+				Debug(Facility::Driver, Severity::Warning, "DMusic thread: Starting playback");
 				{
 					/* New scope to limit the time the mutex is locked. */
 					std::lock_guard<std::mutex> lock(_thread_mutex);
@@ -716,14 +716,14 @@ static void MidiThreadProc()
 					preload_bytes += block.data.size();
 					if (block.ticktime >= current_segment.start) {
 						if (current_segment.loop) {
-							Debug(driver, Severity::Warning, "DMusic: timer: loop from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, block.realtime / 1000.0, preload_bytes);
+							Debug(Facility::Driver, Severity::Warning, "DMusic: timer: loop from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, block.realtime / 1000.0, preload_bytes);
 							current_segment.start_block = bl;
 							break;
 						} else {
 							/* Skip the transmission delay compensation performed in the Win32 MIDI driver.
 							 * The DMusic driver will most likely be used with the MS softsynth, which is not subject to transmission delays.
 							 */
-							Debug(driver, Severity::Warning, "DMusic: timer: start from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, block.realtime / 1000.0, preload_bytes);
+							Debug(Facility::Driver, Severity::Warning, "DMusic: timer: start from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, block.realtime / 1000.0, preload_bytes);
 							playback_start_time -= block.realtime * MIDITIME_TO_REFTIME;
 							break;
 						}
@@ -738,7 +738,7 @@ static void MidiThreadProc()
 			/* Check for volume change. */
 			if (current_volume != _playback.new_volume) {
 				if (current_time - last_volume_time > 10 * MS_TO_REFTIME) {
-					Debug(driver, Severity::Warning, "DMusic thread: volume change");
+					Debug(Facility::Driver, Severity::Warning, "DMusic thread: volume change");
 					current_volume = _playback.new_volume;
 					last_volume_time = current_time;
 					for (int ch = 0; ch < 16; ch++) {
@@ -756,7 +756,7 @@ static void MidiThreadProc()
 				/* check that block isn't at end-of-song override */
 				if (current_segment.end > 0 && block.ticktime >= current_segment.end) {
 					if (current_segment.loop) {
-						Debug(driver, Severity::Warning, "DMusic thread: Looping song");
+						Debug(Facility::Driver, Severity::Warning, "DMusic thread: Looping song");
 						current_block = current_segment.start_block;
 						playback_start_time = current_time - current_file.blocks[current_block].realtime * MIDITIME_TO_REFTIME;
 					} else {
@@ -770,13 +770,13 @@ static void MidiThreadProc()
 				if (block.realtime * MIDITIME_TO_REFTIME > playback_time +  3 *_playback.preload_time * MS_TO_REFTIME) {
 					/* Stop the thread loop until we are at the preload time of the next block. */
 					next_timeout = Clamp((block.realtime * MIDITIME_TO_REFTIME - playback_time) / MS_TO_REFTIME - _playback.preload_time, 0, 1000);
-					Debug(driver, Severity::Trace3, "DMusic thread: Next event in {} ms (music {}, ref {})", next_timeout, block.realtime * MIDITIME_TO_REFTIME, playback_time);
+					Debug(Facility::Driver, Severity::Trace3, "DMusic thread: Next event in {} ms (music {}, ref {})", next_timeout, block.realtime * MIDITIME_TO_REFTIME, playback_time);
 					break;
 				}
 
 				/* Timestamp of the current block. */
 				block_time = playback_start_time + block.realtime * MIDITIME_TO_REFTIME;
-				Debug(driver, Severity::Trace3, "DMusic thread: Streaming block {} (cur={}, block={})", current_block, current_time / MS_TO_REFTIME, block_time / MS_TO_REFTIME);
+				Debug(Facility::Driver, Severity::Trace3, "DMusic thread: Streaming block {} (cur={}, block={})", current_block, current_time / MS_TO_REFTIME, block_time / MS_TO_REFTIME);
 
 				const uint8_t *data = block.data.data();
 				size_t remaining = block.data.size();
@@ -869,7 +869,7 @@ static void MidiThreadProc()
 		}
 	}
 
-	Debug(driver, Severity::Warning, "DMusic: Exiting playback thread");
+	Debug(Facility::Driver, Severity::Warning, "DMusic: Exiting playback thread");
 
 	/* Turn all notes off and wait a bit to allow the messages to be handled by real hardware. */
 	clock->GetTime(&cur_time);
@@ -912,7 +912,7 @@ static std::optional<std::string_view> LoadDefaultDLSFile(std::optional<std::str
 				if (SUCCEEDED(RegQueryValueEx(hkDM, L"GMFilePath", nullptr, nullptr, (LPBYTE)dls_path, &buf_size))) {
 					wchar_t expand_path[MAX_PATH * 2];
 					ExpandEnvironmentStrings(dls_path, expand_path, static_cast<DWORD>(std::size(expand_path)));
-					if (!dls_file.LoadFile(FS2OTTD(expand_path))) Debug(driver, Severity::Error, "Failed to load default GM DLS file from registry");
+					if (!dls_file.LoadFile(FS2OTTD(expand_path))) Debug(Facility::Driver, Severity::Error, "Failed to load default GM DLS file from registry");
 				}
 				RegCloseKey(hkDM);
 			}
@@ -1133,17 +1133,17 @@ std::optional<std::string_view> MusicDriver_DMusic::Start(const StringList &parm
 	_playback.preload_time = GetDriverParamInt(parm, "preload", 50);
 
 	int pIdx = GetDriverParamInt(parm, "port", -1);
-	if (_debug_driver_level >= Severity::Error) {
+	if (IsVisibleSeverity(Facility::Driver, Severity::Error)) {
 		/* Print all valid output ports. */
 		char desc[DMUS_MAX_DESCRIPTION];
 
 		DMUS_PORTCAPS caps{};
 		caps.dwSize = sizeof(DMUS_PORTCAPS);
 
-		Debug(driver, Severity::Error, "Detected DirectMusic ports:");
+		Debug(Facility::Driver, Severity::Error, "Detected DirectMusic ports:");
 		for (int i = 0; _music->EnumPort(i, &caps) == S_OK; i++) {
 			if (caps.dwClass == DMUS_PC_OUTPUTCLASS) {
-				Debug(driver, Severity::Error, " {}: {}{}", i, convert_from_fs(caps.wszDescription, desc), i == pIdx ? " (selected)" : "");
+				Debug(Facility::Driver, Severity::Error, " {}: {}{}", i, convert_from_fs(caps.wszDescription, desc), i == pIdx ? " (selected)" : "");
 			}
 		}
 	}

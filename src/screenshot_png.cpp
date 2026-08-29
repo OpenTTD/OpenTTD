@@ -169,13 +169,13 @@ public:
 private:
 	static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 	{
-		Debug(misc, Severity::Fatal, "[libpng] error: {} - {}", message, *static_cast<std::string_view *>(png_get_error_ptr(png_ptr)));
+		Debug(Facility::Misc, Severity::Fatal, "[libpng] error: {} - {}", message, *static_cast<std::string_view *>(png_get_error_ptr(png_ptr)));
 		longjmp(png_jmpbuf(png_ptr), 1);
 	}
 
 	static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 	{
-		Debug(misc, Severity::Error, "[libpng] warning: {} - {}", message, *static_cast<std::string_view *>(png_get_error_ptr(png_ptr)));
+		Debug(Facility::Misc, Severity::Error, "[libpng] warning: {} - {}", message, *static_cast<std::string_view *>(png_get_error_ptr(png_ptr)));
 	}
 
 private:

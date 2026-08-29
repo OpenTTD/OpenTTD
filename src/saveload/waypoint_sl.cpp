@@ -101,12 +101,12 @@ void MoveWaypointsToBaseStations()
 		/* Sometimes waypoint (sign) locations became disconnected from their actual location in
 		 * the map array. If this is the case, try to locate the actual location in the map array */
 		if (!IsTileType(t, TileType::Railway) || GetRailTileType(t) != RailTileType{2} /* RAIL_TILE_WAYPOINT */ || Tile(t).m2() != wp.index) {
-			Debug(sl, Severity::Fatal, "Found waypoint tile {} with invalid position", t);
+			Debug(Facility::Sl, Severity::Fatal, "Found waypoint tile {} with invalid position", t);
 			t = INVALID_TILE;
 			for (auto tile : Map::Iterate()) {
 				if (IsTileType(tile, TileType::Railway) && GetRailTileType(tile) == RailTileType{2} /* RAIL_TILE_WAYPOINT */ && tile.m2() == wp.index) {
 					t = TileIndex(tile);
-					Debug(sl, Severity::Fatal, "Found actual waypoint position at {}", TileIndex(tile));
+					Debug(Facility::Sl, Severity::Fatal, "Found actual waypoint position at {}", TileIndex(tile));
 					break;
 				}
 			}

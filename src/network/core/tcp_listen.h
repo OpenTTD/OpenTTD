@@ -45,10 +45,10 @@ public:
 				Packet p(nullptr, Tban_packet);
 				p.PrepareToSend();
 
-				Debug(net, Severity::Warning, "[{}] Banned ip tried to join ({}), refused", Tsocket::GetName(), entry);
+				Debug(Facility::Net, Severity::Warning, "[{}] Banned ip tried to join ({}), refused", Tsocket::GetName(), entry);
 
 				if (p.TransferOut(SocketSender{s}) < 0) {
-					Debug(net, Severity::Fatal, "[{}] send failed: {}", Tsocket::GetName(), NetworkError::GetLast().AsString());
+					Debug(Facility::Net, Severity::Fatal, "[{}] send failed: {}", Tsocket::GetName(), NetworkError::GetLast().AsString());
 				}
 				closesocket(s);
 				return false;
@@ -63,7 +63,7 @@ public:
 			p.PrepareToSend();
 
 			if (p.TransferOut(SocketSender{s}) < 0) {
-				Debug(net, Severity::Fatal, "[{}] send failed: {}", Tsocket::GetName(), NetworkError::GetLast().AsString());
+				Debug(Facility::Net, Severity::Fatal, "[{}] send failed: {}", Tsocket::GetName(), NetworkError::GetLast().AsString());
 			}
 			closesocket(s);
 
@@ -91,7 +91,7 @@ public:
 			SetNonBlocking(s); // XXX error handling?
 
 			NetworkAddress address(sin, sin_len);
-			Debug(net, Severity::Notice, "[{}] Client connected from {} on frame {}", Tsocket::GetName(), address.GetHostname(), _frame_counter);
+			Debug(Facility::Net, Severity::Notice, "[{}] Client connected from {} on frame {}", Tsocket::GetName(), address.GetHostname(), _frame_counter);
 
 			SetNoDelay(s); // XXX error handling?
 
@@ -158,7 +158,7 @@ public:
 		}
 
 		if (sockets.empty()) {
-			Debug(net, Severity::Fatal, "Could not start network: could not create listening socket");
+			Debug(Facility::Net, Severity::Fatal, "Could not start network: could not create listening socket");
 			ShowNetworkError(STR_NETWORK_ERROR_SERVER_START);
 			return false;
 		}
@@ -173,7 +173,7 @@ public:
 			closesocket(s.first);
 		}
 		sockets.clear();
-		Debug(net, Severity::Debug1, "[{}] Closed listeners", Tsocket::GetName());
+		Debug(Facility::Net, Severity::Debug1, "[{}] Closed listeners", Tsocket::GetName());
 	}
 };
 

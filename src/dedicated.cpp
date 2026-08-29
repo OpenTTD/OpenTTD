@@ -50,8 +50,8 @@ void DedicatedFork()
 
 		default:
 			/* We're the parent */
-			Debug(net, Severity::Fatal, "Loading dedicated server...");
-			Debug(net, Severity::Fatal, "  - Forked to background with pid {}", pid);
+			Debug(Facility::Net, Severity::Fatal, "Loading dedicated server...");
+			Debug(Facility::Net, Severity::Fatal, "  - Forked to background with pid {}", pid);
 			exit(0);
 	}
 }

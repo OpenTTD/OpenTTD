@@ -196,7 +196,7 @@ static uint32_t GetAirportTileIDAtOffset(TileIndex tile, const Station *st, GrfI
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, this->ats->badges, parameter);
 	}
 
-	Debug(grf, Severity::Error, "Unhandled airport tile variable 0x{:X}", variable);
+	Debug(Facility::Grf, Severity::Error, "Unhandled airport tile variable 0x{:X}", variable);
 
 	available = false;
 	return UINT_MAX;

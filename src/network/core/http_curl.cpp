@@ -132,7 +132,7 @@ void CurlSetOption(CURL *curl, auto option, auto value)
 {
 	CURLcode res = curl_easy_setopt(curl, option, value);
 	if (res != CURLE_OK) {
-		Debug(net, Severity::Fatal, "Could not execute curl_easy_setopt for {} [{}]", option, res);
+		Debug(Facility::Net, Severity::Fatal, "Could not execute curl_easy_setopt for {} [{}]", option, res);
 	}
 }
 
@@ -161,7 +161,7 @@ void HttpThread()
 		curl_easy_reset(curl);
 		curl_slist *headers = nullptr;
 
-		if (_debug_net_level >= Severity::Debug1) {
+		if (IsVisibleSeverity(Facility::Net, Severity::Debug1)) {
 			CurlSetOption(curl, CURLOPT_VERBOSE, 1L);
 		}
 
@@ -205,7 +205,7 @@ void HttpThread()
 
 		/* Setup our (C-style) callback function which we pipe back into the callback. */
 		CurlSetOption(curl, CURLOPT_WRITEFUNCTION, +[](char *ptr, size_t size, size_t nmemb, void *userdata) -> size_t {
-			Debug(net, Severity::Debug2, "HTTP callback: {} bytes", size * nmemb);
+			Debug(Facility::Net, Severity::Debug2, "HTTP callback: {} bytes", size * nmemb);
 			HTTPThreadSafeCallback *callback = static_cast<HTTPThreadSafeCallback *>(userdata);
 
 			/* Copy the buffer out of CURL. OnReceiveData() will free it when done. */
@@ -234,14 +234,14 @@ void HttpThread()
 		curl_slist_free_all(headers);
 
 		if (res == CURLE_OK) {
-			Debug(net, Severity::Error, "HTTP request succeeded");
+			Debug(Facility::Net, Severity::Error, "HTTP request succeeded");
 			request->callback.OnReceiveData(nullptr, 0);
 		} else {
 			long status_code = 0;
 			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &status_code);
 
 			/* No need to be verbose about rate limiting. */
-			Debug(net, (request->callback.cancelled || _http_thread_exit || status_code == HTTP_429_TOO_MANY_REQUESTS) ? Severity::Error : Severity::Fatal, "HTTP request failed: status_code: {}, error: {}", status_code, curl_easy_strerror(res));
+			Debug(Facility::Net, (request->callback.cancelled || _http_thread_exit || status_code == HTTP_429_TOO_MANY_REQUESTS) ? Severity::Error : Severity::Fatal, "HTTP request failed: status_code: {}, error: {}", status_code, curl_easy_strerror(res));
 			request->callback.OnFailure();
 		}
 
@@ -276,12 +276,12 @@ void NetworkHTTPInitialize()
 			}
 		}
 	}
-	Debug(net, Severity::Notice, "Using certificate file: {}", _http_ca_file.empty() ? "none" : _http_ca_file);
-	Debug(net, Severity::Notice, "Using certificate path: {}", _http_ca_path.empty() ? "none" : _http_ca_path);
+	Debug(Facility::Net, Severity::Notice, "Using certificate file: {}", _http_ca_file.empty() ? "none" : _http_ca_file);
+	Debug(Facility::Net, Severity::Notice, "Using certificate path: {}", _http_ca_path.empty() ? "none" : _http_ca_path);
 
 	/* Tell the user why HTTPS will not be working. */
 	if (_http_ca_file.empty() && _http_ca_path.empty()) {
-		Debug(net, Severity::Fatal, "No certificate files or directories found, HTTPS will not work!");
+		Debug(Facility::Net, Severity::Fatal, "No certificate files or directories found, HTTPS will not work!");
 	}
 #endif /* UNIX */
 

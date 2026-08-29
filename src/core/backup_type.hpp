@@ -48,7 +48,7 @@ struct Backup {
 		if (this->valid) {
 			/* We cannot assert here, as missing restoration is 'normal' when exceptions are thrown.
 			 * Exceptions are especially used to abort world generation. */
-			Debug(misc, Severity::Fatal, "{}:{}: Backed-up value was not restored!", this->location.file_name(), this->location.line());
+			Debug(Facility::Misc, Severity::Fatal, "{}:{}: Backed-up value was not restored!", this->location.file_name(), this->location.line());
 			this->Restore();
 		}
 	}

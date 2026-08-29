@@ -36,7 +36,7 @@ static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
 	if (warning_level == Severity::Fatal) {
 		ShowErrorMessage(GetEncodedString(STR_NEWGRF_ERROR_CORRUPT_SPRITE, file.GetSimplifiedFilename()), {}, WarningLevel::Error);
 	}
-	Debug(sprite, warning_level, "[{}] Loading corrupted sprite from {} at position {}", line, file.GetSimplifiedFilename(), file_pos);
+	Debug(Facility::Sprite, warning_level, "[{}] Loading corrupted sprite from {} at position {}", line, file.GetSimplifiedFilename(), file_pos);
 	warning_level = Severity::Debug2;
 	return false;
 }
@@ -181,7 +181,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 
 		if (dest_size > sprite_size) {
 			static Severity warning_level = Severity::Fatal;
-			Debug(sprite, warning_level, "Ignoring {} unused extra bytes from the sprite from {} at position {}", dest_size - sprite_size, file.GetSimplifiedFilename(), file_pos);
+			Debug(Facility::Sprite, warning_level, "Ignoring {} unused extra bytes from the sprite from {} at position {}", dest_size - sprite_size, file.GetSimplifiedFilename(), file_pos);
 			warning_level = Severity::Debug2;
 		}
 
@@ -311,7 +311,7 @@ static ZoomLevels LoadSpriteV2(SpriteLoader::SpriteCollection &sprite, SpriteFil
 
 			if (loaded_sprites.Test(zoom_lvl)) {
 				/* We already have this zoom level, skip sprite. */
-				Debug(sprite, Severity::Error, "Ignoring duplicate zoom level sprite {} from {}", id, file.GetSimplifiedFilename());
+				Debug(Facility::Sprite, Severity::Error, "Ignoring duplicate zoom level sprite {} from {}", id, file.GetSimplifiedFilename());
 				file.SkipBytes(num - 2);
 				continue;
 			}

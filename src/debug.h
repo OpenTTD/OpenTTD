@@ -13,34 +13,29 @@
 #include "cpu.h"
 #include <chrono>
 #include "debug_type.h"
+#include "core/enum_type.hpp"
 #include "core/format.hpp"
 
 /**
+ * Test if debug severity is visible for the given facility.
+ * @param facility The debug facility.
+ * @param severity The debug severity.
+ * @return \c true iff the debug severity level for the facility is visible.
+ */
+inline bool IsVisibleSeverity(Facility facility, Severity severity)
+{
+	extern EnumIndexArray<Severity, Facility, Facility::End> _debug_level;
+	return _debug_level[facility] >= severity;
+}
+
+/**
  * Output a line of debugging information.
- * @param category The category of debug information.
+ * @param facility The debug facility.
  * @param severity The maximum debug level this message should be shown at. When the debug level for this category is set lower, then the message will not be shown.
  * @param format_string The formatting string of the message.
  */
-#define Debug(category, severity, format_string, ...) do { if ((severity) == Severity::Fatal || _debug_ ## category ## _level >= (severity)) DebugPrint(#category, severity, fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__)); } while (false)
-void DebugPrint(std::string_view category, Severity severity, std::string &&message);
-
-extern Severity _debug_driver_level;
-extern Severity _debug_grf_level;
-extern Severity _debug_map_level;
-extern Severity _debug_misc_level;
-extern Severity _debug_net_level;
-extern Severity _debug_sprite_level;
-extern Severity _debug_oldloader_level;
-extern Severity _debug_yapf_level;
-extern Severity _debug_fontcache_level;
-extern Severity _debug_script_level;
-extern Severity _debug_sl_level;
-extern Severity _debug_gamelog_level;
-extern Severity _debug_desync_level;
-extern Severity _debug_console_level;
-#ifdef RANDOM_DEBUG
-extern Severity _debug_random_level;
-#endif
+#define Debug(facility, severity, format_string, ...) do { if ((severity) == Severity::Fatal || IsVisibleSeverity((facility), (severity))) DebugPrint(facility, severity, fmt::format(FMT_STRING(format_string) __VA_OPT__(,) __VA_ARGS__)); } while (false)
+void DebugPrint(Facility facility, Severity severity, std::string &&message);
 
 void DumpDebugFacilityNames(std::back_insert_iterator<std::string> &output_iterator);
 using SetDebugStringErrorFunc = void(std::string_view);
@@ -88,7 +83,7 @@ struct TicToc {
 
 		void OutputAndReset(const std::string_view prefix = "")
 		{
-			Debug(misc, Severity::Fatal, "[{}] [{}] {} calls in {} us [avg: {:.1f} us]", prefix, this->name, this->count, this->chrono_sum, this->chrono_sum / static_cast<double>(this->count));
+			Debug(Facility::Misc, Severity::Fatal, "[{}] [{}] {} calls in {} us [avg: {:.1f} us]", prefix, this->name, this->count, this->chrono_sum, this->chrono_sum / static_cast<double>(this->count));
 			this->count = 0;
 			this->chrono_sum = 0;
 		}

@@ -280,12 +280,12 @@ public:
 		if (max_penalty != 0) pf1.DisableCache(true);
 		FindDepotData result1 = pf1.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_penalty, reverse_penalty);
 
-		if (_debug_desync_level >= Severity::Warning) {
+		if (IsVisibleSeverity(Facility::Desync, Severity::Warning)) {
 			Tpf pf2;
 			pf2.DisableCache(true);
 			FindDepotData result2 = pf2.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_penalty, reverse_penalty);
 			if (result1.tile != result2.tile || (result1.reverse != result2.reverse)) {
-				Debug(desync, Severity::Warning, "warning: FindNearestDepotTwoWay cache mismatch: {} vs {}",
+				Debug(Facility::Desync, Severity::Warning, "warning: FindNearestDepotTwoWay cache mismatch: {} vs {}",
 						result1.tile != INVALID_TILE ? "T" : "F",
 						result2.tile != INVALID_TILE ? "T" : "F");
 				DumpState(pf1, pf2);
@@ -357,7 +357,7 @@ public:
 		/* Create pathfinder instance */
 		Tpf pf1;
 		bool result1;
-		if (_debug_desync_level < Severity::Warning) {
+		if (!IsVisibleSeverity(Facility::Desync, Severity::Warning)) {
 			result1 = pf1.FindNearestSafeTile(v, t1, td, override_railtype, false);
 		} else {
 			bool result2 = pf1.FindNearestSafeTile(v, t1, td, override_railtype, true);
@@ -365,7 +365,7 @@ public:
 			pf2.DisableCache(true);
 			result1 = pf2.FindNearestSafeTile(v, t1, td, override_railtype, false);
 			if (result1 != result2) {
-				Debug(desync, Severity::Warning, "warning: FindSafeTile cache mismatch: {} vs {}", result2 ? "T" : "F", result1 ? "T" : "F");
+				Debug(Facility::Desync, Severity::Warning, "warning: FindSafeTile cache mismatch: {} vs {}", result2 ? "T" : "F", result1 ? "T" : "F");
 				DumpState(pf1, pf2);
 			}
 		}
@@ -436,7 +436,7 @@ public:
 		Tpf pf1;
 		Trackdir result1;
 
-		if (_debug_desync_level < Severity::Warning) {
+		if (!IsVisibleSeverity(Facility::Desync, Severity::Warning)) {
 			result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest);
 		} else {
 			result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_found, false, nullptr, nullptr);
@@ -444,7 +444,7 @@ public:
 			pf2.DisableCache(true);
 			Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_found, reserve_track, target, dest);
 			if (result1 != result2) {
-				Debug(desync, Severity::Warning, "warning: ChooseRailTrack cache mismatch: {} vs {}", result1, result2);
+				Debug(Facility::Desync, Severity::Warning, "warning: ChooseRailTrack cache mismatch: {} vs {}", result1, result2);
 				DumpState(pf1, pf2);
 			}
 		}
@@ -507,12 +507,12 @@ public:
 		Tpf pf1;
 		bool result1 = pf1.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
 
-		if (_debug_desync_level >= Severity::Warning) {
+		if (IsVisibleSeverity(Facility::Desync, Severity::Warning)) {
 			Tpf pf2;
 			pf2.DisableCache(true);
 			bool result2 = pf2.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
 			if (result1 != result2) {
-				Debug(desync, Severity::Warning, "warning: CheckReverseTrain cache mismatch: {} vs {}", result1 ? "T" : "F", result2 ? "T" : "F");
+				Debug(Facility::Desync, Severity::Warning, "warning: CheckReverseTrain cache mismatch: {} vs {}", result1 ? "T" : "F", result2 ? "T" : "F");
 				DumpState(pf1, pf2);
 			}
 		}

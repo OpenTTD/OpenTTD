@@ -191,7 +191,7 @@ void Squirrel::CompileError(HSQUIRRELVM vm, std::string_view desc, std::string_v
 	engine->crashed = true;
 	SQPrintFunc *func = engine->print_func;
 	if (func == nullptr) {
-		Debug(misc, Severity::Fatal, "[Squirrel] Compile error: {}", msg);
+		Debug(Facility::Misc, Severity::Fatal, "[Squirrel] Compile error: {}", msg);
 	} else {
 		(*func)(true, msg);
 	}
@@ -326,8 +326,8 @@ void Squirrel::AddClassBegin(std::string_view class_name, std::string_view paren
 	sq_pushstring(this->vm, class_name);
 	sq_pushstring(this->vm, parent_class);
 	if (SQ_FAILED(sq_get(this->vm, -3))) {
-		Debug(misc, Severity::Fatal, "[squirrel] Failed to initialize class '{}' based on parent class '{}'", class_name, parent_class);
-		Debug(misc, Severity::Fatal, "[squirrel] Make sure that '{}' exists before trying to define '{}'", parent_class, class_name);
+		Debug(Facility::Misc, Severity::Fatal, "[squirrel] Failed to initialize class '{}' based on parent class '{}'", class_name, parent_class);
+		Debug(Facility::Misc, Severity::Fatal, "[squirrel] Make sure that '{}' exists before trying to define '{}'", parent_class, class_name);
 		return;
 	}
 	sq_newclass(this->vm, SQTrue);
@@ -426,7 +426,7 @@ bool Squirrel::CallMethod(HSQOBJECT instance, std::string_view method_name, HSQO
 	/* Find the function-name inside the script */
 	sq_pushstring(this->vm, method_name);
 	if (SQ_FAILED(sq_get(this->vm, -2))) {
-		Debug(misc, Severity::Fatal, "[squirrel] Could not find '{}' in the class", method_name);
+		Debug(Facility::Misc, Severity::Fatal, "[squirrel] Could not find '{}' in the class", method_name);
 		sq_settop(this->vm, top);
 		return false;
 	}
@@ -490,14 +490,14 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, std::string_view method_name, 
 	}
 
 	if (SQ_FAILED(sq_get(vm, -2))) {
-		Debug(misc, Severity::Fatal, "[squirrel] Failed to find class by the name '{}{}'", prepend_API_name ? engine->GetAPIName() : "", class_name);
+		Debug(Facility::Misc, Severity::Fatal, "[squirrel] Failed to find class by the name '{}{}'", prepend_API_name ? engine->GetAPIName() : "", class_name);
 		sq_settop(vm, oldtop);
 		return false;
 	}
 
 	/* Create the instance */
 	if (SQ_FAILED(sq_createinstance(vm, -1))) {
-		Debug(misc, Severity::Fatal, "[squirrel] Failed to create instance for class '{}{}'", prepend_API_name ? engine->GetAPIName() : "", class_name);
+		Debug(Facility::Misc, Severity::Fatal, "[squirrel] Failed to create instance for class '{}{}'", prepend_API_name ? engine->GetAPIName() : "", class_name);
 		sq_settop(vm, oldtop);
 		return false;
 	}
@@ -561,7 +561,7 @@ void Squirrel::Initialize()
 
 	/* Handle compile-errors ourself, so we can display it nicely */
 	sq_setcompilererrorhandler(this->vm, &Squirrel::CompileError);
-	sq_notifyallexceptions(this->vm, _debug_script_level > Severity::Debug1);
+	sq_notifyallexceptions(this->vm, IsVisibleSeverity(Facility::Script, Severity::Debug2));
 	/* Set a good print-function */
 	sq_setprintfunc(this->vm, &Squirrel::PrintFunc);
 	/* Handle runtime-errors ourself, so we can display it nicely */
@@ -742,7 +742,7 @@ bool Squirrel::LoadScript(HSQUIRRELVM vm, const std::string &script, bool in_roo
 	}
 
 	vm->_ops_till_suspend = ops_left;
-	Debug(misc, Severity::Fatal, "[squirrel] Failed to compile '{}'", script);
+	Debug(Facility::Misc, Severity::Fatal, "[squirrel] Failed to compile '{}'", script);
 	return false;
 }
 

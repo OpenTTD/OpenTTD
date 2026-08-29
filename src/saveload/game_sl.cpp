@@ -81,15 +81,15 @@ struct GSDTChunkHandler : ChunkHandler {
 				config->Change(_game_saveload_name, -1, false);
 				if (!config->HasScript()) {
 					if (_game_saveload_name != "%_dummy") {
-						Debug(script, Severity::Fatal, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
-						Debug(script, Severity::Fatal, "This game will continue to run without GameScript.");
+						Debug(Facility::Script, Severity::Fatal, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
+						Debug(Facility::Script, Severity::Fatal, "This game will continue to run without GameScript.");
 					} else {
-						Debug(script, Severity::Fatal, "The savegame had no GameScript available at the time of saving.");
-						Debug(script, Severity::Fatal, "This game will continue to run without GameScript.");
+						Debug(Facility::Script, Severity::Fatal, "The savegame had no GameScript available at the time of saving.");
+						Debug(Facility::Script, Severity::Fatal, "This game will continue to run without GameScript.");
 					}
 				} else {
-					Debug(script, Severity::Fatal, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
-					Debug(script, Severity::Fatal, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
+					Debug(Facility::Script, Severity::Fatal, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
+					Debug(Facility::Script, Severity::Fatal, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 				}
 				/* Make sure the GameScript doesn't get the saveload data, as it was not the
 				 *  writer of the saveload data in the first place */

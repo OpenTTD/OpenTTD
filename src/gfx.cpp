@@ -1788,7 +1788,7 @@ bool ToggleFullScreen(bool fs)
 {
 	bool result = VideoDriver::GetInstance()->ToggleFullscreen(fs);
 	if (_fullscreen != fs && _resolutions.empty()) {
-		Debug(driver, Severity::Fatal, "Could not find a suitable fullscreen resolution");
+		Debug(Facility::Driver, Severity::Fatal, "Could not find a suitable fullscreen resolution");
 	}
 	return result;
 }

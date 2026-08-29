@@ -139,7 +139,7 @@ void AddGenericCallback(GrfSpecFeature feature, const GRFFile *file, const Sprit
 		}
 	}
 
-	Debug(grf, Severity::Error, "Unhandled generic feature variable 0x{:02X}", variable);
+	Debug(Facility::Grf, Severity::Error, "Unhandled generic feature variable 0x{:02X}", variable);
 
 	available = false;
 	return UINT_MAX;

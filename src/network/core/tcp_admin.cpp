@@ -80,7 +80,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet &p)
 		case PacketAdminType::ServerEnableEncryption: return this->ReceiveServerEnableEncryption(p);
 
 		default:
-			Debug(net, Severity::Fatal, "[tcp/admin] Received invalid packet type {} from '{}' ({})", type, this->admin_name, this->admin_version);
+			Debug(Facility::Net, Severity::Fatal, "[tcp/admin] Received invalid packet type {} from '{}' ({})", type, this->admin_name, this->admin_version);
 			this->CloseConnection();
 			return NetworkRecvStatus::MalformedPacket;
 	}
@@ -111,7 +111,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::ReceivePackets()
  */
 NetworkRecvStatus NetworkAdminSocketHandler::ReceiveInvalidPacket(PacketAdminType type)
 {
-	Debug(net, Severity::Fatal, "[tcp/admin] Received illegal packet type {} from admin {} ({})", type, this->admin_name, this->admin_version);
+	Debug(Facility::Net, Severity::Fatal, "[tcp/admin] Received illegal packet type {} from admin {} ({})", type, this->admin_name, this->admin_version);
 	return NetworkRecvStatus::MalformedPacket;
 }
 

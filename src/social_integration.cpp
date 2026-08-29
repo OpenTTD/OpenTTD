@@ -69,7 +69,7 @@ public:
 	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &) override
 	{
 		std::string basepath = filename.substr(basepath_length);
-		Debug(misc, Severity::Error, "[Social Integration: {}] Loading ...", basepath);
+		Debug(Facility::Misc, Severity::Error, "[Social Integration: {}] Loading ...", basepath);
 
 		auto &plugin = _plugins.emplace_back(std::make_unique<InternalSocialIntegrationPlugin>(filename, basepath));
 
@@ -81,7 +81,7 @@ public:
 		if (plugin->library->HasError()) {
 			plugin->external.state = SocialIntegrationPlugin::FAILED;
 
-			Debug(misc, Severity::Fatal, "[Social Integration: {}] Failed to load library: {}", basepath, plugin->library->GetLastError());
+			Debug(Facility::Misc, Severity::Fatal, "[Social Integration: {}] Failed to load library: {}", basepath, plugin->library->GetLastError());
 			return false;
 		}
 
@@ -89,7 +89,7 @@ public:
 		if (plugin->library->HasError()) {
 			plugin->external.state = SocialIntegrationPlugin::UNSUPPORTED_API;
 
-			Debug(misc, Severity::Fatal, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_GetInfo: {}", basepath, plugin->library->GetLastError());
+			Debug(Facility::Misc, Severity::Fatal, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_GetInfo: {}", basepath, plugin->library->GetLastError());
 			return false;
 		}
 
@@ -97,7 +97,7 @@ public:
 		if (plugin->library->HasError()) {
 			plugin->external.state = SocialIntegrationPlugin::UNSUPPORTED_API;
 
-			Debug(misc, Severity::Fatal, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_Init: {}", basepath, plugin->library->GetLastError());
+			Debug(Facility::Misc, Severity::Fatal, "[Social Integration: {}] Failed to find symbol SocialPlugin_v1_Init: {}", basepath, plugin->library->GetLastError());
 			return false;
 		}
 
@@ -115,7 +115,7 @@ public:
 		if (_loaded_social_platform.find(lc_social_platform) != _loaded_social_platform.end()) {
 			plugin->external.state = SocialIntegrationPlugin::DUPLICATE;
 
-			Debug(misc, Severity::Fatal, "[Social Integration: {}] Another plugin for {} is already loaded", basepath, plugin->plugin_info.social_platform);
+			Debug(Facility::Misc, Severity::Fatal, "[Social Integration: {}] Another plugin for {} is already loaded", basepath, plugin->plugin_info.social_platform);
 			return false;
 		}
 		_loaded_social_platform.insert(std::move(lc_social_platform));
@@ -125,19 +125,19 @@ public:
 			case OTTD_SOCIAL_INTEGRATION_V1_INIT_SUCCESS:
 				plugin->external.state = SocialIntegrationPlugin::RUNNING;
 
-				Debug(misc, Severity::Error, "[Social Integration: {}] Loaded for {}: {} ({})", basepath, plugin->plugin_info.social_platform, plugin->plugin_info.name, plugin->plugin_info.version);
+				Debug(Facility::Misc, Severity::Error, "[Social Integration: {}] Loaded for {}: {} ({})", basepath, plugin->plugin_info.social_platform, plugin->plugin_info.name, plugin->plugin_info.version);
 				return true;
 
 			case OTTD_SOCIAL_INTEGRATION_V1_INIT_FAILED:
 				plugin->external.state = SocialIntegrationPlugin::FAILED;
 
-				Debug(misc, Severity::Fatal, "[Social Integration: {}] Failed to initialize", basepath);
+				Debug(Facility::Misc, Severity::Fatal, "[Social Integration: {}] Failed to initialize", basepath);
 				return false;
 
 			case OTTD_SOCIAL_INTEGRATION_V1_INIT_PLATFORM_NOT_RUNNING:
 				plugin->external.state = SocialIntegrationPlugin::PLATFORM_NOT_RUNNING;
 
-				Debug(misc, Severity::Error, "[Social Integration: {}] Failed to initialize: {} is not running", basepath, plugin->plugin_info.social_platform);
+				Debug(Facility::Misc, Severity::Error, "[Social Integration: {}] Failed to initialize: {} is not running", basepath, plugin->plugin_info.social_platform);
 				return false;
 
 			default:
@@ -201,7 +201,7 @@ void SocialIntegration::RunCallbacks()
 
 		if (plugin->plugin_api.run_callbacks != nullptr) {
 			if (!plugin->plugin_api.run_callbacks()) {
-				Debug(misc, Severity::Error, "[Social Plugin: {}] Requested to be unloaded", plugin->external.basepath);
+				Debug(Facility::Misc, Severity::Error, "[Social Plugin: {}] Requested to be unloaded", plugin->external.basepath);
 
 				_loaded_social_platform.erase(plugin->plugin_info.social_platform);
 				plugin->external.state = SocialIntegrationPlugin::UNLOADED;

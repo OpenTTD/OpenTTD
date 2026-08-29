@@ -227,9 +227,9 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	auto end = std::chrono::steady_clock::now();
 	std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 	if (!_resolve_timeout_error_message_shown && duration >= std::chrono::seconds(5)) {
-		Debug(net, Severity::Fatal, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} took {} seconds",
+		Debug(Facility::Net, Severity::Fatal, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} took {} seconds",
 				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), duration.count());
-		Debug(net, Severity::Fatal, "  this is likely an issue in the DNS name resolver's configuration causing it to time out");
+		Debug(Facility::Net, Severity::Fatal, "  this is likely an issue in the DNS name resolver's configuration causing it to time out");
 		_resolve_timeout_error_message_shown = true;
 	}
 
@@ -238,7 +238,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
-			Debug(net, Severity::Fatal, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} failed: {}",
+			Debug(Facility::Net, Severity::Fatal, "getaddrinfo for hostname \"{}\", port {}, address family {} and socket type {} failed: {}",
 				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)));
 		}
 		return INVALID_SOCKET;
@@ -297,32 +297,32 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 	if (sock == INVALID_SOCKET) {
 		std::string_view type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
 		std::string_view family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
-		Debug(net, Severity::Fatal, "Could not create {} {} socket: {}", type, family, NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Fatal, "Could not create {} {} socket: {}", type, family, NetworkError::GetLast().AsString());
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype == SOCK_STREAM && !SetNoDelay(sock)) {
-		Debug(net, Severity::Error, "Setting no-delay mode failed: {}", NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Error, "Setting no-delay mode failed: {}", NetworkError::GetLast().AsString());
 	}
 
 	if (!SetReusePort(sock)) {
-		Debug(net, Severity::Fatal, "Setting reuse-address mode failed: {}", NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Fatal, "Setting reuse-address mode failed: {}", NetworkError::GetLast().AsString());
 	}
 
 	int on = 1;
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, reinterpret_cast<const char *>(&on), sizeof(on)) == -1) {
-		Debug(net, Severity::Notice, "Could not disable IPv4 over IPv6: {}", NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Notice, "Could not disable IPv4 over IPv6: {}", NetworkError::GetLast().AsString());
 	}
 
 	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		Debug(net, Severity::Fatal, "Could not bind socket on {}: {}", address, NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Fatal, "Could not bind socket on {}: {}", address, NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		Debug(net, Severity::Fatal, "Could not listen on socket: {}", NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Fatal, "Could not listen on socket: {}", NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
@@ -330,10 +330,10 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 	/* Connection succeeded */
 
 	if (!SetNonBlocking(sock)) {
-		Debug(net, Severity::Fatal, "Setting non-blocking mode failed: {}", NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Fatal, "Setting non-blocking mode failed: {}", NetworkError::GetLast().AsString());
 	}
 
-	Debug(net, Severity::Notice, "Listening on {}", address);
+	Debug(Facility::Net, Severity::Notice, "Listening on {}", address);
 	return sock;
 }
 
@@ -399,7 +399,7 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 	sockaddr_storage addr = {};
 	socklen_t addr_len = sizeof(addr);
 	if (getpeername(sock, (sockaddr *)&addr, &addr_len) != 0) {
-		Debug(net, Severity::Fatal, "Failed to get address of the peer: {}", NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Fatal, "Failed to get address of the peer: {}", NetworkError::GetLast().AsString());
 		return NetworkAddress();
 	}
 	return NetworkAddress(addr, addr_len);
@@ -415,7 +415,7 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 	sockaddr_storage addr = {};
 	socklen_t addr_len = sizeof(addr);
 	if (getsockname(sock, (sockaddr *)&addr, &addr_len) != 0) {
-		Debug(net, Severity::Fatal, "Failed to get address of the socket: {}", NetworkError::GetLast().AsString());
+		Debug(Facility::Net, Severity::Fatal, "Failed to get address of the socket: {}", NetworkError::GetLast().AsString());
 		return NetworkAddress();
 	}
 	return NetworkAddress(addr, addr_len);

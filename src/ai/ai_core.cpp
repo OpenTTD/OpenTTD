@@ -199,14 +199,14 @@ static constexpr PerformanceElement GetAIPerformanceElement(CompanyID company)
 	for (CompanyID c = CompanyID::Begin(); c < MAX_COMPANIES; ++c) {
 		if (_settings_game.script_config.ai[c] != nullptr && _settings_game.script_config.ai[c]->HasScript()) {
 			if (!_settings_game.script_config.ai[c]->ResetInfo(true)) {
-				Debug(script, Severity::Fatal, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.script_config.ai[c]->GetName());
+				Debug(Facility::Script, Severity::Fatal, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_game.script_config.ai[c]->GetName());
 				_settings_game.script_config.ai[c]->Change(std::nullopt);
 			}
 		}
 
 		if (_settings_newgame.script_config.ai[c] != nullptr && _settings_newgame.script_config.ai[c]->HasScript()) {
 			if (!_settings_newgame.script_config.ai[c]->ResetInfo(false)) {
-				Debug(script, Severity::Fatal, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_newgame.script_config.ai[c]->GetName());
+				Debug(Facility::Script, Severity::Fatal, "After a reload, the AI by the name '{}' was no longer found, and removed from the list.", _settings_newgame.script_config.ai[c]->GetName());
 				_settings_newgame.script_config.ai[c]->Change(std::nullopt);
 			}
 		}

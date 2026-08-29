@@ -48,7 +48,7 @@ public:
 		bool success;
 
 		if (pixelformat == 32) {
-			Debug(misc, Severity::Fatal, "Can't convert a 32bpp screenshot to PCX format. Please pick another format.");
+			Debug(Facility::Misc, Severity::Fatal, "Can't convert a 32bpp screenshot to PCX format. Please pick another format.");
 			return false;
 		}
 		if (pixelformat != 8 || w == 0) return false;

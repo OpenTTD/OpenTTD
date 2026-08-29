@@ -26,8 +26,8 @@ extern void CheckExternalFiles();
 template <class T>
 void BaseSet<T>::LogError(std::string_view full_filename, std::string_view detail, Severity severity) const
 {
-	Debug(misc, severity, "Loading base {}set details failed: {}", BaseSet<T>::SET_TYPE, full_filename);
-	Debug(misc, severity, "  {}", detail);
+	Debug(Facility::Misc, severity, "Loading base {}set details failed: {}", BaseSet<T>::SET_TYPE, full_filename);
+	Debug(Facility::Misc, severity, "  {}", detail);
 }
 
 /**
@@ -200,7 +200,7 @@ bool BaseSet<T>::FillSetDetails(const IniFile &ini, const std::string &path, con
 template <class Tbase_set>
 bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_length, const std::string &)
 {
-	Debug(misc, Severity::Error, "Checking {} for base {} set", filename, BaseSet<Tbase_set>::SET_TYPE);
+	Debug(Facility::Misc, Severity::Error, "Checking {} for base {} set", filename, BaseSet<Tbase_set>::SET_TYPE);
 
 	auto set = std::make_unique<Tbase_set>();
 	IniFile ini{};
@@ -222,7 +222,7 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 		if (((*existing)->valid_files == set->valid_files && (*existing)->version >= set->version) ||
 				(*existing)->valid_files > set->valid_files) {
 
-			Debug(misc, Severity::Error, "Not adding {} ({}) as base {} set (duplicate, {})", set->name, fmt::join(set->version, "."),
+			Debug(Facility::Misc, Severity::Error, "Not adding {} ({}) as base {} set (duplicate, {})", set->name, fmt::join(set->version, "."),
 					BaseSet<Tbase_set>::SET_TYPE,
 					(*existing)->valid_files > set->valid_files ? "fewer valid files" : "lower version");
 
@@ -238,16 +238,16 @@ bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_
 		/* Keep baseset configuration, if compatible */
 		set->CopyCompatibleConfig(**existing);
 
-		Debug(misc, Severity::Error, "Removing {} ({}) as base {} set (duplicate, {})", (*existing)->name, fmt::join((*existing)->version, "."), BaseSet<Tbase_set>::SET_TYPE,
+		Debug(Facility::Misc, Severity::Error, "Removing {} ({}) as base {} set (duplicate, {})", (*existing)->name, fmt::join((*existing)->version, "."), BaseSet<Tbase_set>::SET_TYPE,
 				(*existing)->valid_files < set->valid_files ? "fewer valid files" : "lower version");
 
 		/* Existing set is worse, move it to duplicates and replace with the current set. */
 		duplicate_sets.push_back(std::move(*existing));
 
-		Debug(misc, Severity::Error, "Adding {} ({}) as base {} set", set->name, fmt::join(set->version, "."), BaseSet<Tbase_set>::SET_TYPE);
+		Debug(Facility::Misc, Severity::Error, "Adding {} ({}) as base {} set", set->name, fmt::join(set->version, "."), BaseSet<Tbase_set>::SET_TYPE);
 		*existing = std::move(set);
 	} else {
-		Debug(misc, Severity::Error, "Adding {} ({}) as base {} set", set->name, set->version, BaseSet<Tbase_set>::SET_TYPE);
+		Debug(Facility::Misc, Severity::Error, "Adding {} ({}) as base {} set", set->name, set->version, BaseSet<Tbase_set>::SET_TYPE);
 		available_sets.push_back(std::move(set));
 	}
 

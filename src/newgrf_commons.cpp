@@ -520,9 +520,9 @@ void ErrorUnknownCallbackResult(GrfID grfid, uint16_t cbid, uint16_t cb_res)
 	}
 
 	/* debug output */
-	Debug(grf, Severity::Fatal, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY, grfconfig->GetName())));
+	Debug(Facility::Grf, Severity::Fatal, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY, grfconfig->GetName())));
 
-	Debug(grf, Severity::Fatal, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, std::monostate{}, cbid, cb_res)));
+	Debug(Facility::Grf, Severity::Fatal, "{}", StrMakeValid(GetString(STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT, std::monostate{}, cbid, cb_res)));
 }
 
 /**

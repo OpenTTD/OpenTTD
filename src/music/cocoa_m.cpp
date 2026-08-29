@@ -60,7 +60,7 @@ static void DoSetVolume()
 		}
 	}
 	if (output_unit == nullptr) {
-		Debug(driver, Severity::Error, "cocoa_m: Failed to get output node to set volume");
+		Debug(Facility::Driver, Severity::Error, "cocoa_m: Failed to get output node to set volume");
 		return;
 	}
 
@@ -112,7 +112,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 {
 	std::string filename = MidiFile::GetSMFFile(song);
 
-	Debug(driver, Severity::Warning, "cocoa_m: trying to play '{}'", filename);
+	Debug(Facility::Driver, Severity::Warning, "cocoa_m: trying to play '{}'", filename);
 
 	this->StopSong();
 	if (_sequence != nullptr) {
@@ -123,7 +123,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	if (filename.empty()) return;
 
 	if (NewMusicSequence(&_sequence) != noErr) {
-		Debug(driver, Severity::Fatal, "cocoa_m: Failed to create music sequence");
+		Debug(Facility::Driver, Severity::Fatal, "cocoa_m: Failed to create music sequence");
 		return;
 	}
 
@@ -131,7 +131,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	CFAutoRelease<CFURLRef> url(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file.data(), os_file.length(), false));
 
 	if (MusicSequenceFileLoad(_sequence, url.get(), kMusicSequenceFile_AnyType, 0) != noErr) {
-		Debug(driver, Severity::Fatal, "cocoa_m: Failed to load MIDI file");
+		Debug(Facility::Driver, Severity::Fatal, "cocoa_m: Failed to load MIDI file");
 		return;
 	}
 
@@ -141,7 +141,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	MusicSequenceGetAUGraph(_sequence, &graph);
 	AUGraphOpen(graph);
 	if (AUGraphInitialize(graph) != noErr) {
-		Debug(driver, Severity::Fatal, "cocoa_m: Failed to initialize AU graph");
+		Debug(Facility::Driver, Severity::Fatal, "cocoa_m: Failed to initialize AU graph");
 		return;
 	}
 
@@ -166,7 +166,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	if (MusicPlayerStart(_player) != noErr) return;
 	_playing = true;
 
-	Debug(driver, Severity::Notice, "cocoa_m: playing '{}'", filename);
+	Debug(Facility::Driver, Severity::Notice, "cocoa_m: playing '{}'", filename);
 }
 
 

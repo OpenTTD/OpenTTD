@@ -104,7 +104,7 @@ uint32_t GetTrackTypes(TileIndex tile, const GRFFile *grffile)
 			return GetTrackTypes(this->tile, ro.grffile);
 	}
 
-	Debug(grf, Severity::Error, "Unhandled road type tile variable 0x{:X}", variable);
+	Debug(Facility::Grf, Severity::Error, "Unhandled road type tile variable 0x{:X}", variable);
 
 	available = false;
 	return UINT_MAX;

@@ -78,7 +78,7 @@ static void CreateWindowsConsoleThread()
 	_hThread = CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, nullptr, 0, &dwThreadId);
 	if (_hThread == nullptr) UserError("Cannot create console thread!");
 
-	Debug(driver, Severity::Warning, "Windows console thread started");
+	Debug(Facility::Driver, Severity::Warning, "Windows console thread started");
 }
 
 static void CloseWindowsConsoleThread()
@@ -86,7 +86,7 @@ static void CloseWindowsConsoleThread()
 	CloseHandle(_hThread);
 	CloseHandle(_hInputReady);
 	CloseHandle(_hWaitForInputHandling);
-	Debug(driver, Severity::Warning, "Windows console thread shut down");
+	Debug(Facility::Driver, Severity::Warning, "Windows console thread shut down");
 }
 
 #endif
@@ -131,7 +131,7 @@ std::optional<std::string_view> VideoDriver_Dedicated::Start(const StringList &)
 	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
 #endif
 
-	Debug(driver, Severity::Error, "Loading dedicated server");
+	Debug(Facility::Driver, Severity::Error, "Loading dedicated server");
 	return std::nullopt;
 }
 

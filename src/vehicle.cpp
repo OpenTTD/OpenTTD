@@ -351,9 +351,9 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	}
 
 	/* debug output */
-	Debug(grf, Severity::Fatal, "{}", StrMakeValid(GetString(part1, grfconfig->GetName())));
+	Debug(Facility::Grf, Severity::Fatal, "{}", StrMakeValid(GetString(part1, grfconfig->GetName())));
 
-	Debug(grf, Severity::Fatal, "{}", StrMakeValid(GetString(part2, std::monostate{}, engine)));
+	Debug(Facility::Grf, Severity::Fatal, "{}", StrMakeValid(GetString(part2, std::monostate{}, engine)));
 }
 
 /**
@@ -2358,7 +2358,7 @@ void Vehicle::CancelReservation(StationID next, Station *st)
 	for (Vehicle *v = this; v != nullptr; v = v->next) {
 		VehicleCargoList &cargo = v->cargo;
 		if (cargo.ActionCount(VehicleCargoList::MoveToAction::Load) > 0) {
-			Debug(misc, Severity::Error, "cancelling cargo reservation");
+			Debug(Facility::Misc, Severity::Error, "cancelling cargo reservation");
 			cargo.Return(UINT_MAX, &st->goods[v->cargo_type].GetOrCreateData().cargo, next, v->tile);
 		}
 		cargo.KeepAll();

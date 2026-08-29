@@ -177,7 +177,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 			case 0x82: return this->industry->town->index.base();
 			case 0x83:
 			case 0x84:
-			case 0x85: Debug(grf, Severity::Fatal, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
+			case 0x85: Debug(Facility::Grf, Severity::Fatal, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
 
 			/* Number of the layout */
 			case 0x86: return this->industry->selected_layout;
@@ -208,7 +208,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 	const IndustrySpec *indspec = GetIndustrySpec(this->type);
 
 	if (this->industry == nullptr) {
-		Debug(grf, Severity::Error, "Unhandled variable 0x{:X} (no available industry) in callback 0x{:x}", variable, this->ro.callback);
+		Debug(Facility::Grf, Severity::Error, "Unhandled variable 0x{:X} (no available industry) in callback 0x{:x}", variable, this->ro.callback);
 
 		available = false;
 		return UINT_MAX;
@@ -364,7 +364,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		case 0x82: return this->industry->town->index.base();
 		case 0x83:
 		case 0x84:
-		case 0x85: Debug(grf, Severity::Fatal, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
+		case 0x85: Debug(Facility::Grf, Severity::Fatal, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
 		case 0x86: return this->industry->location.w;
 		case 0x87: return this->industry->location.h;// xy dimensions
 
@@ -421,7 +421,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		}
 	}
 
-	Debug(grf, Severity::Error, "Unhandled industry variable 0x{:X}", variable);
+	Debug(Facility::Grf, Severity::Error, "Unhandled industry variable 0x{:X}", variable);
 
 	available = false;
 	return UINT_MAX;

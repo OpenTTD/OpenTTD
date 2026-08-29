@@ -257,13 +257,13 @@ std::vector<ICURun> ItemizeBidi(UChar *buff, size_t length)
 	UErrorCode err = U_ZERO_ERROR;
 	ubidi_setPara(ubidi.get(), buff, length, parLevel, nullptr, &err);
 	if (U_FAILURE(err)) {
-		Debug(fontcache, Severity::Fatal, "Failed to set paragraph: {}", u_errorName(err));
+		Debug(Facility::Fontcache, Severity::Fatal, "Failed to set paragraph: {}", u_errorName(err));
 		return {};
 	}
 
 	int32_t count = ubidi_countRuns(ubidi.get(), &err);
 	if (U_FAILURE(err)) {
-		Debug(fontcache, Severity::Fatal, "Failed to count runs: {}", u_errorName(err));
+		Debug(Facility::Fontcache, Severity::Fatal, "Failed to count runs: {}", u_errorName(err));
 		return {};
 	}
 

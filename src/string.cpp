@@ -60,7 +60,7 @@ void strecpy(std::span<char> dst, std::string_view src)
 #if defined(STRGEN) || defined(SETTINGSGEN)
 		FatalError("String too long for destination buffer");
 #else /* STRGEN || SETTINGSGEN */
-		Debug(misc, Severity::Fatal, "String too long for destination buffer");
+		Debug(Facility::Misc, Severity::Fatal, "String too long for destination buffer");
 		src = src.substr(0, std::size(dst) - 1U);
 #endif /* STRGEN || SETTINGSGEN */
 	}

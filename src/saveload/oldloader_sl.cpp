@@ -126,7 +126,7 @@ static uint32_t RemapOldTownName(uint32_t townnameparts, uint8_t old_town_name_t
 			return fix_num(townnameparts - 86, lengthof(_name_french_real), 0);
 
 		case 2: // German
-			Debug(misc, Severity::Fatal, "German Townnames are buggy ({})", townnameparts);
+			Debug(Facility::Misc, Severity::Fatal, "German Townnames are buggy ({})", townnameparts);
 			return townnameparts;
 
 		case 4: // Latin-American
@@ -561,9 +561,9 @@ static void ReadTTDPatchFlags(LoadgameState &ls)
 	for (TileIndex i{}; i < 9; i++) ClearOldMap3(i);
 	for (TileIndex i = TileXY(0, Map::MaxY()); i < Map::Size(); i++) ClearOldMap3(i);
 
-	if (_savegame_type == SavegameType::TTDP2) Debug(oldloader, Severity::Warning, "Found TTDPatch game");
+	if (_savegame_type == SavegameType::TTDP2) Debug(Facility::Oldloader, Severity::Warning, "Found TTDPatch game");
 
-	Debug(oldloader, Severity::Notice, "Vehicle-multiplier is set to {} ({} vehicles)", ls.vehicle_multiplier, ls.vehicle_multiplier * 850);
+	Debug(Facility::Oldloader, Severity::Notice, "Vehicle-multiplier is set to {} ({} vehicles)", ls.vehicle_multiplier, ls.vehicle_multiplier * 850);
 }
 
 static std::array<Town::SuppliedHistory, 2> _old_pass_supplied{};
@@ -1153,7 +1153,7 @@ static bool LoadOldVehicleUnion(LoadgameState &ls, int)
 
 	/* This chunk size should always be 10 bytes */
 	if (ls.total_read - temp != 10) {
-		Debug(oldloader, Severity::Fatal, "Assert failed in VehicleUnion: invalid chunk size");
+		Debug(Facility::Oldloader, Severity::Fatal, "Assert failed in VehicleUnion: invalid chunk size");
 		return false;
 	}
 
@@ -1364,7 +1364,7 @@ bool LoadOldVehicle(LoadgameState &ls, int num)
 
 			/* This should be consistent, else we have a big problem... */
 			if (v->index != _current_vehicle_id) {
-				Debug(oldloader, Severity::Fatal, "Loading failed - vehicle-array is invalid");
+				Debug(Facility::Oldloader, Severity::Fatal, "Loading failed - vehicle-array is invalid");
 				return false;
 			}
 		}
@@ -1568,7 +1568,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState &ls, int)
 {
 	ReadTTDPatchFlags(ls);
 
-	Debug(oldloader, Severity::Warning, "Found {} extra chunk(s)", _old_extra_chunk_nums);
+	Debug(Facility::Oldloader, Severity::Warning, "Found {} extra chunk(s)", _old_extra_chunk_nums);
 
 	for (int i = 0; i != _old_extra_chunk_nums; i++) {
 		uint16_t id = ReadUint16(ls);
@@ -1590,7 +1590,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState &ls, int)
 						auto c = std::make_unique<GRFConfig>("TTDP game, no information");
 						c->ident.grfid = grfid;
 
-						Debug(oldloader, Severity::Notice, "TTDPatch game using GRF file with GRFID {}", FormatArrayAsHex(c->ident.grfid));
+						Debug(Facility::Oldloader, Severity::Notice, "TTDPatch game using GRF file with GRFID {}", FormatArrayAsHex(c->ident.grfid));
 						AppendToGRFConfigList(_grfconfig, std::move(c));
 					}
 					len -= 5;
@@ -1604,14 +1604,14 @@ static bool LoadTTDPatchExtraChunks(LoadgameState &ls, int)
 			/* TTDPatch version and configuration */
 			case 0x3:
 				_ttdp_version = ReadUint32(ls);
-				Debug(oldloader, Severity::Notice, "Game saved with TTDPatch version {}.{}.{} r{}",
+				Debug(Facility::Oldloader, Severity::Notice, "Game saved with TTDPatch version {}.{}.{} r{}",
 					GB(_ttdp_version, 24, 8), GB(_ttdp_version, 20, 4), GB(_ttdp_version, 16, 4), GB(_ttdp_version, 0, 16));
 				len -= 4;
 				while (len-- != 0) ReadByte(ls); // skip the configuration
 				break;
 
 			default:
-				Debug(oldloader, Severity::Info, "Skipping unknown extra chunk {}", id);
+				Debug(Facility::Oldloader, Severity::Info, "Skipping unknown extra chunk {}", id);
 				while (len-- != 0) ReadByte(ls);
 				break;
 		}
@@ -1798,17 +1798,17 @@ static const OldChunks main_chunk[] = {
 
 bool LoadTTDMain(LoadgameState &ls)
 {
-	Debug(oldloader, Severity::Notice, "Reading main chunk...");
+	Debug(Facility::Oldloader, Severity::Notice, "Reading main chunk...");
 
 	_read_ttdpatch_flags = false;
 
 	/* Load the biggest chunk */
 	if (!LoadChunk(ls, nullptr, main_chunk)) {
-		Debug(oldloader, Severity::Fatal, "Loading failed");
+		Debug(Facility::Oldloader, Severity::Fatal, "Loading failed");
 		return false;
 	}
 
-	Debug(oldloader, Severity::Notice, "Done, converting game data...");
+	Debug(Facility::Oldloader, Severity::Notice, "Done, converting game data...");
 
 	FixTTDMapArray();
 	FixTTDDepots();
@@ -1823,15 +1823,15 @@ bool LoadTTDMain(LoadgameState &ls)
 	/* We have a new difficulty setting */
 	_settings_game.difficulty.town_council_tolerance = Clamp(_old_diff_level, 0, 2);
 
-	Debug(oldloader, Severity::Notice, "Finished converting game data");
-	Debug(oldloader, Severity::Error, "TTD(Patch) savegame successfully converted");
+	Debug(Facility::Oldloader, Severity::Notice, "Finished converting game data");
+	Debug(Facility::Oldloader, Severity::Error, "TTD(Patch) savegame successfully converted");
 
 	return true;
 }
 
 bool LoadTTOMain(LoadgameState &ls)
 {
-	Debug(oldloader, Severity::Notice, "Reading main chunk...");
+	Debug(Facility::Oldloader, Severity::Notice, "Reading main chunk...");
 
 	_read_ttdpatch_flags = false;
 
@@ -1840,10 +1840,10 @@ bool LoadTTOMain(LoadgameState &ls)
 
 	/* Load the biggest chunk */
 	if (!LoadChunk(ls, nullptr, main_chunk)) {
-		Debug(oldloader, Severity::Fatal, "Loading failed");
+		Debug(Facility::Oldloader, Severity::Fatal, "Loading failed");
 		return false;
 	}
-	Debug(oldloader, Severity::Notice, "Done, converting game data...");
+	Debug(Facility::Oldloader, Severity::Notice, "Done, converting game data...");
 
 	if (_settings_game.game_creation.town_name != 0) _settings_game.game_creation.town_name++;
 
@@ -1851,7 +1851,7 @@ bool LoadTTOMain(LoadgameState &ls)
 	_trees_tick_ctr = 0xFF;
 
 	if (!FixTTOMapArray() || !FixTTOEngines()) {
-		Debug(oldloader, Severity::Fatal, "Conversion failed");
+		Debug(Facility::Oldloader, Severity::Fatal, "Conversion failed");
 		return false;
 	}
 
@@ -1868,8 +1868,8 @@ bool LoadTTOMain(LoadgameState &ls)
 	 * the vehicles stay the same" */
 	_economy.inflation_payment = std::min(_economy.inflation_payment * 124 / 74, MAX_INFLATION);
 
-	Debug(oldloader, Severity::Notice, "Finished converting game data");
-	Debug(oldloader, Severity::Error, "TTO savegame successfully converted");
+	Debug(Facility::Oldloader, Severity::Notice, "Finished converting game data");
+	Debug(Facility::Oldloader, Severity::Error, "TTO savegame successfully converted");
 
 	return true;
 }

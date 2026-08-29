@@ -86,10 +86,10 @@ void NetworkFindBroadcastIPs(NetworkAddressList *broadcast)
 	NetworkFindBroadcastIPsInternal(broadcast);
 
 	/* Now display to the debug all the detected ips */
-	Debug(net, Severity::Notice, "Detected broadcast addresses:");
+	Debug(Facility::Net, Severity::Notice, "Detected broadcast addresses:");
 	int i = 0;
 	for (NetworkAddress &addr : *broadcast) {
 		addr.SetPort(NETWORK_DEFAULT_PORT);
-		Debug(net, Severity::Notice, "  {}) {}", i++, addr.GetHostname());
+		Debug(Facility::Net, Severity::Notice, "  {}) {}", i++, addr.GetHostname());
 	}
 }

@@ -1823,7 +1823,7 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* error handling */
 	if (v->pos >= apc->nofelements) {
-		Debug(misc, Severity::Fatal, "[Ap] position {} is not valid for current airport. Max position is {}", v->pos, apc->nofelements - 1);
+		Debug(Facility::Misc, Severity::Fatal, "[Ap] position {} is not valid for current airport. Max position is {}", v->pos, apc->nofelements - 1);
 		assert(v->pos < apc->nofelements);
 	}
 
@@ -1862,7 +1862,7 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 		current = current->next.get();
 	} while (current != nullptr);
 
-	Debug(misc, Severity::Fatal, "[Ap] cannot move further on Airport! (pos {} state {}) for vehicle {}", v->pos, v->state, v->index);
+	Debug(Facility::Misc, Severity::Fatal, "[Ap] cannot move further on Airport! (pos {} state {}) for vehicle {}", v->pos, v->state, v->index);
 	NOT_REACHED();
 }
 

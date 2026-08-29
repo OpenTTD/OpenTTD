@@ -448,14 +448,14 @@ void APIENTRY DebugOutputCallback(GLenum, GLenum type, GLuint, GLenum severity, 
 		case GL_DEBUG_TYPE_PORTABILITY:         type_str = "Portability"; break;
 	}
 
-	Debug(driver, Severity::Debug2, "OpenGL: {} ({}) - {}", type_str, severity_str, message);
+	Debug(Facility::Driver, Severity::Debug2, "OpenGL: {} ({}) - {}", type_str, severity_str, message);
 }
 
 /** Enable OpenGL debug messages if supported. */
 void SetupDebugOutput()
 {
 #ifndef NO_DEBUG_MESSAGES
-	if (_debug_driver_level < Severity::Debug2) return;
+	if (!IsVisibleSeverity(Facility::Driver, Severity::Debug2)) return;
 
 	if (IsOpenGLVersionAtLeast(4, 3)) {
 		BindGLProc(_glDebugMessageControl, "glDebugMessageControl");
@@ -468,11 +468,11 @@ void SetupDebugOutput()
 	if (_glDebugMessageControl != nullptr && _glDebugMessageCallback != nullptr) {
 		/* Enable debug output. As synchronous debug output costs performance, we only enable it with a high debug level. */
 		_glEnable(GL_DEBUG_OUTPUT);
-		if (_debug_driver_level >= Severity::Trace2) _glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+		if (IsVisibleSeverity(Facility::Driver, Severity::Trace2)) _glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 
 		_glDebugMessageCallback(&DebugOutputCallback, nullptr);
 		/* Enable all messages on highest debug level.*/
-		_glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, _debug_driver_level >= Severity::Trace3 ? GL_TRUE : GL_FALSE);
+		_glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, IsVisibleSeverity(Facility::Driver, Severity::Trace3) ? GL_TRUE : GL_FALSE);
 		/* Get debug messages for errors and undefined/deprecated behaviour. */
 		_glDebugMessageControl(GL_DONT_CARE, GL_DEBUG_TYPE_ERROR, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 		_glDebugMessageControl(GL_DONT_CARE, GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR, GL_DONT_CARE, 0, nullptr, GL_TRUE);
@@ -564,7 +564,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 
 	if (!ver.has_value() || !vend.has_value() || !renderer.has_value()) return "OpenGL not supported";
 
-	Debug(driver, Severity::Error, "OpenGL driver: {} - {} ({})", *vend, *renderer, *ver);
+	Debug(Facility::Driver, Severity::Error, "OpenGL driver: {} - {} ({})", *vend, *renderer, *ver);
 
 #ifndef GL_ALLOW_SOFTWARE_RENDERER
 	/* Don't use MESA software rendering backends as they are slower than
@@ -610,10 +610,10 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 #endif
 
 	if (this->persistent_mapping_supported && !BindPersistentBufferExtensions()) {
-		Debug(driver, Severity::Error, "OpenGL claims to support persistent buffer mapping but doesn't export all functions, not using persistent mapping.");
+		Debug(Facility::Driver, Severity::Error, "OpenGL claims to support persistent buffer mapping but doesn't export all functions, not using persistent mapping.");
 		this->persistent_mapping_supported = false;
 	}
-	if (this->persistent_mapping_supported) Debug(driver, Severity::Notice, "OpenGL: Using persistent buffer mapping");
+	if (this->persistent_mapping_supported) Debug(Facility::Driver, Severity::Notice, "OpenGL: Using persistent buffer mapping");
 
 	/* Check maximum texture size against screen resolution. */
 	GLint max_tex_size = 0;
@@ -625,7 +625,7 @@ std::optional<std::string_view> OpenGLBackend::Init(const Dimension &screen_res)
 	_glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_tex_units);
 	if (max_tex_units < 4) return "Not enough simultaneous textures supported";
 
-	Debug(driver, Severity::Warning, "OpenGL shading language version: {}, texture units = {}", GlGetString(GL_SHADING_LANGUAGE_VERSION).value_or("Unknown version"), max_tex_units);
+	Debug(Facility::Driver, Severity::Warning, "OpenGL shading language version: {}, texture units = {}", GlGetString(GL_SHADING_LANGUAGE_VERSION).value_or("Unknown version"), max_tex_units);
 
 	if (!this->InitShaders()) return "Failed to initialize shaders";
 
@@ -795,7 +795,7 @@ static bool VerifyShader(GLuint shader)
 	_glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_len);
 	if (log_len > 0) {
 		_glGetShaderInfoLog(shader, log_len, nullptr, log_buf.Allocate(log_len));
-		Debug(driver, result != GL_TRUE ? Severity::Fatal : Severity::Warning, "{}", log_buf.GetBuffer()); // Always print on failure.
+		Debug(Facility::Driver, result != GL_TRUE ? Severity::Fatal : Severity::Warning, "{}", log_buf.GetBuffer()); // Always print on failure.
 	}
 
 	return result == GL_TRUE;
@@ -818,7 +818,7 @@ static bool VerifyProgram(GLuint program)
 	_glGetProgramiv(program, GL_INFO_LOG_LENGTH, &log_len);
 	if (log_len > 0) {
 		_glGetProgramInfoLog(program, log_len, nullptr, log_buf.Allocate(log_len));
-		Debug(driver, result != GL_TRUE ? Severity::Fatal : Severity::Warning, "{}", log_buf.GetBuffer()); // Always print on failure.
+		Debug(Facility::Driver, result != GL_TRUE ? Severity::Fatal : Severity::Warning, "{}", log_buf.GetBuffer()); // Always print on failure.
 	}
 
 	return result == GL_TRUE;

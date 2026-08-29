@@ -56,6 +56,6 @@
 	}
 
 	/* Also still print to debug window */
-	Debug(script, static_cast<Severity>(level), "[{}] [{}] {}", ScriptObject::GetRootCompany(), logc, line.text);
+	Debug(Facility::Script, static_cast<Severity>(level), "[{}] [{}] {}", ScriptObject::GetRootCompany(), logc, line.text);
 	InvalidateWindowClassesData(WindowClass::ScriptDebug, ScriptObject::GetRootCompany());
 }
