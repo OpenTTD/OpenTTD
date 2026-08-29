@@ -112,17 +112,17 @@ public:
 #else
 		static constexpr Severity severity = Severity::Error;
 #endif
-		Debug(misc, severity, "TILE: {0} (0x{0:x}) ({1},{2})", (TileIndex)tile, TileX(tile), TileY(tile));
-		Debug(misc, severity, "type   = 0x{:x}", tile.type());
-		Debug(misc, severity, "height = 0x{:x}", tile.height());
-		Debug(misc, severity, "m1     = 0x{:x}", tile.m1());
-		Debug(misc, severity, "m2     = 0x{:x}", tile.m2());
-		Debug(misc, severity, "m3     = 0x{:x}", tile.m3());
-		Debug(misc, severity, "m4     = 0x{:x}", tile.m4());
-		Debug(misc, severity, "m5     = 0x{:x}", tile.m5());
-		Debug(misc, severity, "m6     = 0x{:x}", tile.m6());
-		Debug(misc, severity, "m7     = 0x{:x}", tile.m7());
-		Debug(misc, severity, "m8     = 0x{:x}", tile.m8());
+		Debug(Facility::Misc, severity, "TILE: {0} (0x{0:x}) ({1},{2})", (TileIndex)tile, TileX(tile), TileY(tile));
+		Debug(Facility::Misc, severity, "type   = 0x{:x}", tile.type());
+		Debug(Facility::Misc, severity, "height = 0x{:x}", tile.height());
+		Debug(Facility::Misc, severity, "m1     = 0x{:x}", tile.m1());
+		Debug(Facility::Misc, severity, "m2     = 0x{:x}", tile.m2());
+		Debug(Facility::Misc, severity, "m3     = 0x{:x}", tile.m3());
+		Debug(Facility::Misc, severity, "m4     = 0x{:x}", tile.m4());
+		Debug(Facility::Misc, severity, "m5     = 0x{:x}", tile.m5());
+		Debug(Facility::Misc, severity, "m6     = 0x{:x}", tile.m6());
+		Debug(Facility::Misc, severity, "m7     = 0x{:x}", tile.m7());
+		Debug(Facility::Misc, severity, "m8     = 0x{:x}", tile.m8());
 
 		PrintWaterRegionDebugInfo(tile);
 	}

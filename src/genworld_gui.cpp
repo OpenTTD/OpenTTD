@@ -1521,7 +1521,7 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 		/* Never show steps smaller than 2%, even if it is a mod 5% */
 		if (GenWorldStatus::percent <= last_percent + 2) return;
 
-		Debug(net, Severity::Notice, "Map generation percentage complete: {}", GenWorldStatus::percent);
+		Debug(Facility::Net, Severity::Notice, "Map generation percentage complete: {}", GenWorldStatus::percent);
 		last_percent = GenWorldStatus::percent;
 
 		return;

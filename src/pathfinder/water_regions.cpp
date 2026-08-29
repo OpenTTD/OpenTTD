@@ -126,7 +126,7 @@ public:
 	 */
 	void ForceUpdate()
 	{
-		Debug(map, Severity::Notice, "Updating water region ({},{})", GetWaterRegionX(this->tile_area.tile), GetWaterRegionY(this->tile_area.tile));
+		Debug(Facility::Map, Severity::Notice, "Updating water region ({},{})", GetWaterRegionX(this->tile_area.tile), GetWaterRegionY(this->tile_area.tile));
 		this->data.has_cross_region_aqueducts = false;
 
 		/* Acquire a tile patch label array if this region does not already have one */
@@ -194,13 +194,13 @@ public:
 
 	void PrintDebugInfo()
 	{
-		Debug(map, Severity::Trace3, "Water region {},{} labels and edge traversability = ...", GetWaterRegionX(this->tile_area.tile), GetWaterRegionY(this->tile_area.tile));
+		Debug(Facility::Map, Severity::Trace3, "Water region {},{} labels and edge traversability = ...", GetWaterRegionX(this->tile_area.tile), GetWaterRegionY(this->tile_area.tile));
 
 		const size_t max_element_width = fmt::format("{}", this->NumberOfPatches()).size();
 
 		std::string traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DiagDirection::NW), WATER_REGION_EDGE_LENGTH);
-		Debug(map, Severity::Trace3, "    {:{}}", fmt::join(traversability, " "), max_element_width);
-		Debug(map, Severity::Trace3, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
+		Debug(Facility::Map, Severity::Trace3, "    {:{}}", fmt::join(traversability, " "), max_element_width);
+		Debug(Facility::Map, Severity::Trace3, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
 
 		for (int y = 0; y < WATER_REGION_EDGE_LENGTH; ++y) {
 			std::string line{};
@@ -212,12 +212,12 @@ public:
 					line = fmt::format("{:{}} {}", label, max_element_width, line);
 				}
 			}
-			Debug(map, Severity::Trace3, "{} | {}| {}", GB(this->GetEdgeTraversabilityBits(DiagDirection::SW), y, 1), line, GB(this->GetEdgeTraversabilityBits(DiagDirection::NE), y, 1));
+			Debug(Facility::Map, Severity::Trace3, "{} | {}| {}", GB(this->GetEdgeTraversabilityBits(DiagDirection::SW), y, 1), line, GB(this->GetEdgeTraversabilityBits(DiagDirection::NE), y, 1));
 		}
 
-		Debug(map, Severity::Trace3, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
+		Debug(Facility::Map, Severity::Trace3, "  +{:->{}}+", "", WATER_REGION_EDGE_LENGTH * (max_element_width + 1) + 1);
 		traversability = fmt::format("{:0{}b}", this->GetEdgeTraversabilityBits(DiagDirection::SE), WATER_REGION_EDGE_LENGTH);
-		Debug(map, Severity::Trace3, "    {:{}}", fmt::join(traversability, " "), max_element_width);
+		Debug(Facility::Map, Severity::Trace3, "    {:{}}", fmt::join(traversability, " "), max_element_width);
 	}
 };
 
@@ -320,7 +320,7 @@ void InvalidateWaterRegion(TileIndex tile)
 
 	auto invalidate_region = [](TileIndex tile) {
 		const WaterRegionIndex water_region_index = GetWaterRegionIndex(tile);
-		if (!_is_water_region_valid[water_region_index]) Debug(map, Severity::Notice, "Invalidated water region ({},{})", GetWaterRegionX(tile), GetWaterRegionY(tile));
+		if (!_is_water_region_valid[water_region_index]) Debug(Facility::Map, Severity::Notice, "Invalidated water region ({},{})", GetWaterRegionX(tile), GetWaterRegionY(tile));
 		_is_water_region_valid[water_region_index] = false;
 	};
 
@@ -425,7 +425,7 @@ void AllocateWaterRegions()
 	_is_water_region_valid.clear();
 	_is_water_region_valid.resize(number_of_regions, false);
 
-	Debug(map, Severity::Warning, "Allocating {} x {} water regions", GetWaterRegionMapSizeX(), GetWaterRegionMapSizeY());
+	Debug(Facility::Map, Severity::Warning, "Allocating {} x {} water regions", GetWaterRegionMapSizeX(), GetWaterRegionMapSizeY());
 	assert(_is_water_region_valid.size() == _water_region_data.size());
 }
 

@@ -24,4 +24,24 @@ enum class Severity : uint8_t {
 	Trace3, ///< Trace information #3.
 };
 
+/** Debug facilities. */
+enum class Facility : uint8_t {
+	Driver, ///< Driver message facility.
+	Grf, ///< Grf message facility.
+	Map, ///< Map message facility.
+	Misc, ///< Misc message facility.
+	Net, ///< Net message facility.
+	Sprite, ///< Sprite message facility.
+	Oldloader, ///< Oldloader message facility.
+	Yapf, ///< Yapf message facility.
+	Fontcache, ///< Fontcache message facility.
+	Script, ///< Script message facility.
+	Sl, ///< Saveload message facility.
+	Gamelog, ///< Gamelog message facility.
+	Desync, ///< Desync message facility.
+	Console, ///< Console message facility.
+	Random, ///< Random message facility.
+	End, ///< End marker.
+};
+
 #endif /* DEBUG_TYPE_H */

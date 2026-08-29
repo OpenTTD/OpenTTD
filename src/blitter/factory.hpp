@@ -68,7 +68,7 @@ protected:
 			 */
 			blitters.insert(Blitters::value_type(this->name, this));
 		} else {
-			Debug(driver, Severity::Error, "Not registering blitter {} as it is not usable", name);
+			Debug(Facility::Driver, Severity::Error, "Not registering blitter {} as it is not usable", name);
 		}
 	}
 
@@ -102,7 +102,7 @@ public:
 
 		GetActiveBlitter() = b->CreateInstance();
 
-		Debug(driver, Severity::Error, "Successfully {} blitter '{}'", name.empty() ? "probed" : "loaded", GetCurrentBlitter()->GetName());
+		Debug(Facility::Driver, Severity::Error, "Successfully {} blitter '{}'", name.empty() ? "probed" : "loaded", GetCurrentBlitter()->GetName());
 		return GetCurrentBlitter();
 	}
 

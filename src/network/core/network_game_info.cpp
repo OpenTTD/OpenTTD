@@ -78,7 +78,7 @@ std::string_view GetNetworkRevisionString()
 			network_revision.replace(hash_end, std::string::npos, githash_suffix);
 		}
 		assert(network_revision.size() < NETWORK_REVISION_LENGTH); // size does not include terminator, constant does, hence strictly less than
-		Debug(net, Severity::Notice, "Network revision name: {}", network_revision);
+		Debug(Facility::Net, Severity::Notice, "Network revision name: {}", network_revision);
 	}
 
 	return network_revision;

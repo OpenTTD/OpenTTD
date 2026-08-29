@@ -35,7 +35,7 @@
 #if defined(STRGEN) || defined(SETTINGSGEN)
 	FatalErrorI(std::move(msg));
 #else
-	DebugPrint("misc", Severity::Critical, std::move(msg));
+	DebugPrint(Facility::Misc, Severity::Critical, std::move(msg));
 #endif
 }
 
