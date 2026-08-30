@@ -3288,6 +3288,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Sluss
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Flod
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Kust eller flodbank
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Skeppsvarv
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Stenar
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Kust eller flodbank med stenar
 
 # Industries come directly from their industry names
 
