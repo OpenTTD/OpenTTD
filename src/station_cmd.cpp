@@ -11,6 +11,7 @@
 #include "core/flatset_type.hpp"
 #include "aircraft.h"
 #include "bridge_map.h"
+#include "tilearea_spiral.h"
 #include "vehiclelist_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
@@ -70,6 +71,8 @@
 #include "cheat_type.h"
 #include "road_func.h"
 #include "station_layout_type.h"
+#include "tilearea_airport.h"
+#include "tilearea_airportlayout.h"
 
 #include "widgets/station_widget.h"
 #include "widgets/misc_widget.h"
@@ -613,8 +616,7 @@ static std::pair<CargoArray, CargoTypes> GetAcceptanceAroundStation(const Statio
 	CargoArray acceptance{};
 	CargoTypes always_accepted{};
 
-	BitmapTileIterator it(st->catchment_tiles);
-	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+	for (TileIndex tile : st->catchment_tiles) {
 		AddAcceptedCargo(tile, acceptance, always_accepted);
 	}
 
@@ -863,12 +865,12 @@ static CommandCost CheckFlatLandAirport(AirportTileTableIterator tile_iter, DoCo
 	CommandCost cost(ExpensesType::Construction);
 	int allowed_z = -1;
 
-	for (; tile_iter != INVALID_TILE; ++tile_iter) {
-		CommandCost ret = CheckBuildableTile(tile_iter, {}, allowed_z, true);
+	for (; *tile_iter != INVALID_TILE; ++tile_iter) {
+		CommandCost ret = CheckBuildableTile(*tile_iter, {}, allowed_z, true);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret.GetCost());
 
-		ret = Command<Commands::LandscapeClear>::Do(flags, tile_iter);
+		ret = Command<Commands::LandscapeClear>::Do(flags, *tile_iter);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret.GetCost());
 	}
@@ -2538,11 +2540,11 @@ uint8_t GetAirportNoiseLevelForDistance(const AirportSpec *as, uint distance)
  * @param as airport's description
  * @param rotation airport's rotation
  * @param tile origin tile (top corner of the airport)
- * @param it An iterator over all airport tiles (consumed)
+ * @param iter An iterator over all airport tiles (consumed)
  * @param[out] mindist Minimum distance to town
  * @return nearest town to airport
  */
-Town *AirportGetNearestTown(const AirportSpec *as, Direction rotation, TileIndex tile, TileIterator &&it, uint &mindist)
+Town *AirportGetNearestTown(const AirportSpec *as, Direction rotation, TileIndex tile, TileIteratorWrapper<AirportTileIterator, AirportTileTableIterator> &&iter, uint &mindist)
 {
 	assert(Town::GetNumItems() > 0);
 
@@ -2559,7 +2561,8 @@ Town *AirportGetNearestTown(const AirportSpec *as, Direction rotation, TileIndex
 
 	mindist = UINT_MAX - 1; // prevent overflow
 
-	for (TileIndex cur_tile = *it; cur_tile != INVALID_TILE; cur_tile = ++it) {
+	for (; *iter != INVALID_TILE; ++iter) {
+		TileIndex cur_tile = *iter;
 		assert(IsInsideBS(TileX(cur_tile), perimeter_min_x, width));
 		assert(IsInsideBS(TileY(cur_tile), perimeter_min_y, height));
 		if (TileX(cur_tile) == perimeter_min_x || TileX(cur_tile) == perimeter_max_x || TileY(cur_tile) == perimeter_min_y || TileY(cur_tile) == perimeter_max_y) {
@@ -2691,7 +2694,7 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 		return CommandCost(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT);
 	}
 
-	for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); iter != INVALID_TILE; ++iter) {
+	for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); *iter != INVALID_TILE; ++iter) {
 		cost.AddCost(_price[Price::BuildStationAirport]);
 	}
 
@@ -2707,18 +2710,17 @@ CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airpor
 
 		st->spread.Add(airport_area);
 
-		for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); iter != INVALID_TILE; ++iter) {
-			Tile t(iter);
-			MakeAirport(t, st->owner, st->index, iter.GetStationGfx(), WaterClass::Invalid);
-			SetStationTileRandomBits(t, GB(Random(), 0, 4));
-			st->airport.Add(iter);
+		for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); *iter != INVALID_TILE; ++iter) {
+			MakeAirport(*iter, st->owner, st->index, iter.GetStationGfx(), WaterClass::Invalid);
+			SetStationTileRandomBits(*iter, GB(Random(), 0, 4));
+			st->airport.Add(*iter);
 
-			if (AirportTileSpec::Get(GetTranslatedAirportTileID(iter.GetStationGfx()))->animation.status != AnimationStatus::NoAnimation) AddAnimatedTile(t);
+			if (AirportTileSpec::Get(GetTranslatedAirportTileID(iter.GetStationGfx()))->animation.status != AnimationStatus::NoAnimation) AddAnimatedTile(*iter);
 		}
 
 		/* Only call the animation trigger after all tiles have been built */
-		for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); iter != INVALID_TILE; ++iter) {
-			TriggerAirportTileAnimation(st, iter, AirportAnimationTrigger::Built);
+		for (AirportTileTableIterator iter(as->layouts[layout].tiles, tile); *iter != INVALID_TILE; ++iter) {
+			TriggerAirportTileAnimation(st, *iter, AirportAnimationTrigger::Built);
 		}
 
 		UpdateAirplanesOnNewStation(st);
@@ -3888,8 +3890,7 @@ void TriggerWatchedCargoCallbacks(Station *st)
 	if (cargoes.None()) return;
 
 	/* Loop over all houses in the catchment. */
-	BitmapTileIterator it(st->catchment_tiles);
-	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+	for (TileIndex tile : st->catchment_tiles) {
 		if (IsTileType(tile, TileType::House)) {
 			TriggerHouseAnimation_WatchedCargoAccepted(tile, cargoes);
 		}

@@ -21,7 +21,7 @@
  */
 class ScriptTileList : public ScriptList {
 private:
-	std::optional<OrthogonalTileIterator> resume_iter;
+	std::optional<OrthogonalTileArea::iterator> resume_iter;
 protected:
 	bool SaveObject(HSQUIRRELVM) const override;
 	ScriptObject *CloneObject() const override;

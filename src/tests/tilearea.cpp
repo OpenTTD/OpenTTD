@@ -12,7 +12,7 @@
 #include "../3rdparty/catch2/catch.hpp"
 
 #include "../core/geometry_type.hpp"
-#include "../tilearea_type.h"
+#include "../tilearea_spiral.h"
 #include "../map_func.h"
 
 #include "../safeguards.h"

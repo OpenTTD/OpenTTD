@@ -11,6 +11,7 @@
 
 #include "../../water.h"
 #include "../../genworld.h"
+#include "../../tilearea_spiral.h"
 #include "yapf.hpp"
 
 #include "../../safeguards.h"

@@ -62,7 +62,7 @@ private:
 			default:
 				NOT_REACHED();
 		}
-		return this->wp->GetTileArea(type).GetCenterTile();
+		return this->wp->GetTileArea(type).GetCentreTile();
 	}
 
 public:

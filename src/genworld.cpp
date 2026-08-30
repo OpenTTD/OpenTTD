@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "landscape.h"
 #include "company_func.h"
+#include "tilearea_spiral.h"
 #include "town_cmd.h"
 #include "signs_cmd.h"
 #include "3rdparty/nlohmann/json.hpp"

@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "road.h"
 #include "road_internal.h"
+#include "tilearea_type.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "company_func.h"
@@ -2492,37 +2493,37 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	CommandCost error = CommandCost((rtt == RoadTramType::Tram) ? STR_ERROR_NO_SUITABLE_TRAMWAY : STR_ERROR_NO_SUITABLE_ROAD); // by default, there is no road to convert.
 	bool found_convertible_road = false; // whether we actually did convert any road/tram (see bug #7633)
 
-	std::unique_ptr<TileIterator> iter = TileIterator::Create(area_start, area_end, diagonal);
-	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
+	auto tilearea = CreateOrthoDiagonalArea(area_end, area_start, diagonal);
+	for (TileIndex cur_tile : tilearea) {
 		/* Is road present on tile? */
-		if (!MayHaveRoad(tile)) continue;
+		if (!MayHaveRoad(cur_tile)) continue;
 
 		/* Converting to the same subtype? */
-		RoadType from_type = GetRoadType(tile, rtt);
+		RoadType from_type = GetRoadType(cur_tile, rtt);
 		if (from_type == INVALID_ROADTYPE || from_type == to_type) continue;
 
 		/* Check if there is any infrastructure on tile */
-		TileType tt = GetTileType(tile);
+		TileType tt = GetTileType(cur_tile);
 		switch (tt) {
 			case TileType::Station:
-				if (!IsAnyRoadStop(tile)) continue;
+				if (!IsAnyRoadStop(cur_tile)) continue;
 				break;
 			case TileType::Road:
-				if (IsLevelCrossing(tile) && RoadNoLevelCrossing(to_type)) {
+				if (IsLevelCrossing(cur_tile) && RoadNoLevelCrossing(to_type)) {
 					error.MakeError(STR_ERROR_CROSSING_DISALLOWED_ROAD);
 					continue;
 				}
 				break;
 			case TileType::TunnelBridge:
-				if (GetTunnelBridgeTransportType(tile) != TransportType::Road) continue;
+				if (GetTunnelBridgeTransportType(cur_tile) != TransportType::Road) continue;
 				break;
 			default: continue;
 		}
 
 		/* Trying to convert other's road */
-		Owner owner = GetRoadOwner(tile, rtt);
+		Owner owner = GetRoadOwner(cur_tile, rtt);
 		if (!CanConvertUnownedRoadType(owner, rtt)) {
-			CommandCost ret = CheckOwnership(owner, tile);
+			CommandCost ret = CheckOwnership(owner, cur_tile);
 			if (ret.Failed()) {
 				error = std::move(ret);
 				continue;
@@ -2532,7 +2533,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		/* Base the ability to replace town roads and bridges on the town's
 		 * acceptance of destructive actions. */
 		if (owner == OWNER_TOWN) {
-			Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
+			Town *t = ClosestTownFromTile(cur_tile, _settings_game.economy.dist_local_authority);
 			CommandCost ret = CheckforTownRating({}, t, tt == TileType::TunnelBridge ? TownRatingCheckType::TunnelBridgeRemove : TownRatingCheckType::RoadRemove);
 			if (ret.Failed()) {
 				error = std::move(ret);
@@ -2544,7 +2545,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		 * Tunnels and bridges have special check later */
 		if (tt != TileType::TunnelBridge) {
 			if (!HasPowerOnRoad(from_type, to_type)) {
-				CommandCost ret = EnsureNoVehicleOnGround(tile);
+				CommandCost ret = EnsureNoVehicleOnGround(cur_tile);
 				if (ret.Failed()) {
 					error = std::move(ret);
 					continue;
@@ -2553,17 +2554,17 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				if (rtt == RoadTramType::Road && owner == OWNER_TOWN) {
 					error.MakeError(STR_ERROR_OWNED_BY);
 					if (IsLocalCompany()) {
-						auto params = GetParamsForOwnedBy(OWNER_TOWN, tile);
+						auto params = GetParamsForOwnedBy(OWNER_TOWN, cur_tile);
 						error.SetEncodedMessage(GetEncodedStringWithArgs(STR_ERROR_OWNED_BY, params));
 					}
 					continue;
 				}
 			}
 
-			uint num_pieces = GetAnyRoadBits(tile, rtt).Count();
-			if (tt == TileType::Station && IsBayRoadStopTile(tile)) {
+			uint num_pieces = GetAnyRoadBits(cur_tile, rtt).Count();
+			if (tt == TileType::Station && IsBayRoadStopTile(cur_tile)) {
 				num_pieces *= ROAD_STOP_TRACKBIT_FACTOR;
-			} else if (tt == TileType::Road && IsRoadDepot(tile)) {
+			} else if (tt == TileType::Road && IsRoadDepot(cur_tile)) {
 				num_pieces *= ROAD_DEPOT_TRACKBIT_FACTOR;
 			}
 
@@ -2573,40 +2574,36 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 			if (flags.Test(DoCommandFlag::Execute)) { // we can safely convert, too
 				/* Call ConvertRoadTypeOwner() to update the company infrastructure counters. */
 				if (owner == _current_company) {
-					ConvertRoadTypeOwner(tile, num_pieces, owner, from_type, to_type);
+					ConvertRoadTypeOwner(cur_tile, num_pieces, owner, from_type, to_type);
 				}
 
 				/* Perform the conversion */
-				SetRoadType(tile, rtt, to_type);
-				MarkTileDirtyByTile(tile);
+				SetRoadType(cur_tile, rtt, to_type);
+				MarkTileDirtyByTile(cur_tile);
 
 				/* update power of train on this tile */
-				for (Vehicle *v : VehiclesOnTile(tile)) {
+				for (Vehicle *v : VehiclesOnTile(cur_tile)) {
 					if (v->type == VehicleType::Road) include(affected_rvs, RoadVehicle::From(v)->First());
 				}
 
-				if (IsRoadDepotTile(tile)) {
+				if (IsRoadDepotTile(cur_tile)) {
 					/* Update build vehicle window related to this depot */
-					InvalidateWindowData(WindowClass::VehicleDepot, tile);
-					InvalidateWindowData(WindowClass::BuildVehicle, tile);
+					InvalidateWindowData(WindowClass::VehicleDepot, cur_tile);
+					InvalidateWindowData(WindowClass::BuildVehicle, cur_tile);
 				}
 			}
 		} else {
-			TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
+			TileIndex endtile = GetOtherTunnelBridgeEnd(cur_tile);
 
 			/* If both ends of tunnel/bridge are in the range, do not try to convert twice -
 			 * it would cause assert because of different test and exec runs */
-			if (endtile < tile) {
-				if (diagonal) {
-					if (DiagonalTileArea(area_start, area_end).Contains(endtile)) continue;
-				} else {
-					if (OrthogonalTileArea(area_start, area_end).Contains(endtile)) continue;
-				}
+			if (endtile < cur_tile) {
+				if (tilearea.Contains(endtile)) continue;
 			}
 
 			/* When not converting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
 			if (!HasPowerOnRoad(from_type, to_type)) {
-				CommandCost ret = TunnelBridgeIsFree(tile, endtile);
+				CommandCost ret = TunnelBridgeIsFree(cur_tile, endtile);
 				if (ret.Failed()) {
 					error = std::move(ret);
 					continue;
@@ -2615,7 +2612,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				if (rtt == RoadTramType::Road && owner == OWNER_TOWN) {
 					error.MakeError(STR_ERROR_OWNED_BY);
 					if (IsLocalCompany()) {
-						auto params = GetParamsForOwnedBy(OWNER_TOWN, tile);
+						auto params = GetParamsForOwnedBy(OWNER_TOWN, cur_tile);
 						error.SetEncodedMessage(GetEncodedStringWithArgs(STR_ERROR_OWNED_BY, params));
 					}
 					continue;
@@ -2623,7 +2620,7 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 			}
 
 			/* There are 2 pieces on *every* tile of the bridge or tunnel */
-			uint num_pieces = (GetTunnelBridgeLength(tile, endtile) + 2) * 2;
+			uint num_pieces = (GetTunnelBridgeLength(cur_tile, endtile) + 2) * 2;
 			found_convertible_road = true;
 			cost.AddCost(num_pieces * RoadConvertCost(from_type, to_type));
 
@@ -2632,25 +2629,25 @@ CommandCost CmdConvertRoad(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				if (owner == _current_company) {
 					/* Each piece should be counted TUNNELBRIDGE_TRACKBIT_FACTOR times
 					 * for the infrastructure counters (cause of #8297). */
-					ConvertRoadTypeOwner(tile, num_pieces * TUNNELBRIDGE_TRACKBIT_FACTOR, owner, from_type, to_type);
-					SetTunnelBridgeOwner(tile, endtile, _current_company);
+					ConvertRoadTypeOwner(cur_tile, num_pieces * TUNNELBRIDGE_TRACKBIT_FACTOR, owner, from_type, to_type);
+					SetTunnelBridgeOwner(cur_tile, endtile, _current_company);
 				}
 
 				/* Perform the conversion */
-				SetRoadType(tile,    rtt, to_type);
+				SetRoadType(cur_tile, rtt, to_type);
 				SetRoadType(endtile, rtt, to_type);
 
-				for (Vehicle *v : VehiclesOnTile(tile)) {
+				for (Vehicle *v : VehiclesOnTile(cur_tile)) {
 					if (v->type == VehicleType::Road) include(affected_rvs, RoadVehicle::From(v)->First());
 				}
 				for (Vehicle *v : VehiclesOnTile(endtile)) {
 					if (v->type == VehicleType::Road) include(affected_rvs, RoadVehicle::From(v)->First());
 				}
 
-				if (IsBridge(tile)) {
-					MarkBridgeDirty(tile);
+				if (IsBridge(cur_tile)) {
+					MarkBridgeDirty(cur_tile);
 				} else {
-					MarkTileDirtyByTile(tile);
+					MarkTileDirtyByTile(cur_tile);
 					MarkTileDirtyByTile(endtile);
 				}
 			}

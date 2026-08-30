@@ -16,7 +16,7 @@
 #include "subsidy_type.h"
 #include "industry_map.h"
 #include "industrytype.h"
-#include "tilearea_type.h"
+#include "tilearea_orthogonal.h"
 #include "station_base.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"

@@ -1061,7 +1061,7 @@ protected:
 			const uint16_t &legend_text_width = _industry_to_name_string_width[i->type];
 
 			/* Remap the industry coordinate */
-			const TileIndex &tile = i->location.GetCenterTile();
+			const TileIndex &tile = i->location.GetCentreTile();
 			const Point pt = this->RemapTile(TileX(tile), TileY(tile));
 			const int x = pt.x - this->subscroll - (legend_text_width / 2);
 			const int y = pt.y + vertical_padding;
@@ -1531,7 +1531,7 @@ public:
 	 */
 	Point GetStationMiddle(const Station *st) const
 	{
-		TileIndex tile = st->spread.GetCenterTile();
+		TileIndex tile = st->spread.GetCentreTile();
 		Point ret = this->RemapTile(TileX(tile), TileY(tile));
 
 		/* Same magic 3 as in DrawVehicles; that's where I got it from.

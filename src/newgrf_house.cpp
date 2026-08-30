@@ -17,6 +17,7 @@
 #include "newgrf_sound.h"
 #include "company_func.h"
 #include "company_base.h"
+#include "tilearea_spiral.h"
 #include "town.h"
 #include "genworld.h"
 #include "newgrf_animation_base.h"

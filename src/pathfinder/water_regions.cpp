@@ -10,7 +10,7 @@
 #include "../stdafx.h"
 #include "../map_func.h"
 #include "water_regions.h"
-#include "../tilearea_type.h"
+#include "../tilearea_orthogonal.h"
 #include "../track_func.h"
 #include "../transport_type.h"
 #include "../landscape.h"
@@ -83,8 +83,8 @@ public:
 		, tile_area(TileXY(region_x * WATER_REGION_EDGE_LENGTH, region_y * WATER_REGION_EDGE_LENGTH), WATER_REGION_EDGE_LENGTH, WATER_REGION_EDGE_LENGTH)
 	{}
 
-	OrthogonalTileIterator begin() const { return this->tile_area.begin(); }
-	OrthogonalTileIterator end() const { return this->tile_area.end(); }
+	auto begin() const { return this->tile_area.begin(); }
+	auto end() const { return this->tile_area.end(); }
 
 	/**
 	 * Returns a set of bits indicating whether an edge tile on a particular side is traversable or not. These

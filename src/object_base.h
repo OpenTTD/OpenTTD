@@ -13,7 +13,7 @@
 #include "core/pool_type.hpp"
 #include "gfx_type.h"
 #include "object_type.h"
-#include "tilearea_type.h"
+#include "tilearea_orthogonal.h"
 #include "town_type.h"
 #include "timer/timer_game_calendar.h"
 

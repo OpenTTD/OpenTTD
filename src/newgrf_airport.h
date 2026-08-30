@@ -17,7 +17,6 @@
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
-#include "tilearea_type.h"
 
 /** Copy from station_map.h */
 typedef uint8_t StationGfx;
@@ -26,46 +25,6 @@ typedef uint8_t StationGfx;
 struct AirportTileTable {
 	TileIndexDiffC ti; ///< Tile offset from  the top-most airport tile.
 	StationGfx gfx; ///< AirportTile to use for this tile.
-};
-
-/** Iterator to iterate over all tiles belonging to an airport spec. */
-class AirportTileTableIterator : public TileIterator {
-private:
-	std::span<const AirportTileTable> att; ///< The offsets.
-	TileIndex base_tile; ///< The tile we base the offsets off.
-	std::span<const AirportTileTable>::iterator iter;
-
-public:
-	/**
-	 * Construct the iterator.
-	 * @param att The TileTable we want to iterate over.
-	 * @param base_tile The basetile for all offsets.
-	 */
-	AirportTileTableIterator(std::span<const AirportTileTable> att, TileIndex base_tile)
-		: TileIterator(base_tile + ToTileIndexDiff(att.front().ti))
-		, att(att), base_tile(base_tile), iter(att.begin())
-	{
-	}
-
-	inline TileIterator& operator ++() override
-	{
-		++this->iter;
-		if (this->iter == std::end(att)) {
-			this->tile = INVALID_TILE;
-		} else {
-			this->tile = this->base_tile + ToTileIndexDiff(this->iter->ti);
-		}
-		return *this;
-	}
-
-	/**
-	 * Get the StationGfx for the current tile.
-	 * @return The identifier of the graphics for this tile.
-	 */
-	StationGfx GetStationGfx() const
-	{
-		return this->iter->gfx;
-	}
 };
 
 /** Class IDs for airports. */

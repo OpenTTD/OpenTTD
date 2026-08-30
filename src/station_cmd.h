@@ -16,11 +16,15 @@
 #include "station_type.h"
 #include "newgrf_roadstop.h"
 #include "newgrf_station.h"
+#include "tilearea_airport.h"
+#include "tilearea_airportlayout.h"
+#include "tilearea_wrapper.h"
 
 struct Town;
+struct AirportSpec;
 
-extern Town *AirportGetNearestTown(const struct AirportSpec *as, Direction rotation, TileIndex tile, TileIterator &&it, uint &mindist);
-extern uint8_t GetAirportNoiseLevelForDistance(const struct AirportSpec *as, uint distance);
+extern Town *AirportGetNearestTown(const AirportSpec *as, Direction rotation, TileIndex tile, TileIteratorWrapper<AirportTileIterator, AirportTileTableIterator> &&iter, uint &mindist);
+extern uint8_t GetAirportNoiseLevelForDistance(const AirportSpec *as, uint distance);
 
 CommandCost CmdBuildAirport(DoCommandFlags flags, TileIndex tile, uint8_t airport_type, uint8_t layout, StationID station_to_join, bool allow_adjacent);
 CommandCost CmdBuildDock(DoCommandFlags flags, TileIndex tile, StationID station_to_join, bool adjacent);

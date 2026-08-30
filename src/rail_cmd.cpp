@@ -8,6 +8,7 @@
 /** @file rail_cmd.cpp Handling of rail tiles. */
 
 #include "stdafx.h"
+#include "tilearea_type.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "depot_base.h"
@@ -1572,38 +1573,38 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
 	bool found_convertible_track = false; // whether we actually did convert some track (see bug #7633)
 
-	std::unique_ptr<TileIterator> iter = TileIterator::Create(area_start, area_end, diagonal);
-	for (; (tile = *iter) != INVALID_TILE; ++(*iter)) {
-		TileType tt = GetTileType(tile);
+	auto tilearea = CreateOrthoDiagonalArea(area_end, area_start, diagonal);
+	for (TileIndex cur_tile : tilearea) {
+		TileType tt = GetTileType(cur_tile);
 
 		/* Check if there is any track on tile */
 		switch (tt) {
 			case TileType::Railway:
 				break;
 			case TileType::Station:
-				if (!HasStationRail(tile)) continue;
+				if (!HasStationRail(cur_tile)) continue;
 				break;
 			case TileType::Road:
-				if (!IsLevelCrossing(tile)) continue;
+				if (!IsLevelCrossing(cur_tile)) continue;
 				if (RailNoLevelCrossings(totype)) {
 					error.MakeError(STR_ERROR_CROSSING_DISALLOWED_RAIL);
 					continue;
 				}
 				break;
 			case TileType::TunnelBridge:
-				if (GetTunnelBridgeTransportType(tile) != TransportType::Rail) continue;
+				if (GetTunnelBridgeTransportType(cur_tile) != TransportType::Rail) continue;
 				break;
 			default: continue;
 		}
 
 		/* Original railtype we are converting from */
-		RailType type = GetRailType(tile);
+		RailType type = GetRailType(cur_tile);
 
 		/* Converting to the same type or converting 'hidden' elrail -> rail */
 		if (type == totype || (_settings_game.vehicle.disable_elrails && totype == RAILTYPE_RAIL && type == RAILTYPE_ELECTRIC)) continue;
 
 		/* Trying to convert other's rail */
-		CommandCost ret = CheckTileOwnership(tile);
+		CommandCost ret = CheckTileOwnership(cur_tile);
 		if (ret.Failed()) {
 			error = std::move(ret);
 			continue;
@@ -1615,15 +1616,15 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		 * Tunnels and bridges have special check later */
 		if (tt != TileType::TunnelBridge) {
 			if (!IsCompatibleRail(type, totype)) {
-				ret = IsPlainRailTile(tile) ? EnsureNoTrainOnTrackBits(tile, GetTrackBits(tile)) : EnsureNoVehicleOnGround(tile);
+				ret = IsPlainRailTile(cur_tile) ? EnsureNoTrainOnTrackBits(cur_tile, GetTrackBits(cur_tile)) : EnsureNoVehicleOnGround(cur_tile);
 				if (ret.Failed()) {
 					error = std::move(ret);
 					continue;
 				}
 			}
 			if (flags.Test(DoCommandFlag::Execute)) { // we can safely convert, too
-				for (Track track : GetReservedTrackbits(tile)) {
-					Train *v = GetTrainForReservation(tile, track);
+				for (Track track : GetReservedTrackbits(cur_tile)) {
+					Train *v = GetTrainForReservation(cur_tile, track);
 					if (v != nullptr && !HasPowerOnRail(v->railtypes, totype)) {
 						/* No power on new rail type, reroute. */
 						FreeTrainTrackReservation(v);
@@ -1632,11 +1633,11 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 
 				/* Update the company infrastructure counters. */
-				if (!IsRailStationTile(tile) || !IsStationTileBlocked(tile)) {
-					Company *c = Company::Get(GetTileOwner(tile));
-					uint num_pieces = IsLevelCrossingTile(tile) ? LEVELCROSSING_TRACKBIT_FACTOR : 1;
-					if (IsPlainRailTile(tile)) {
-						TrackBits bits = GetTrackBits(tile);
+				if (!IsRailStationTile(cur_tile) || !IsStationTileBlocked(cur_tile)) {
+					Company *c = Company::Get(GetTileOwner(cur_tile));
+					uint num_pieces = IsLevelCrossingTile(cur_tile) ? LEVELCROSSING_TRACKBIT_FACTOR : 1;
+					if (IsPlainRailTile(cur_tile)) {
+						TrackBits bits = GetTrackBits(cur_tile);
 						num_pieces = bits.Count();
 						if (TracksOverlap(bits)) num_pieces *= num_pieces;
 					}
@@ -1645,10 +1646,10 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					DirtyCompanyInfrastructureWindows(c->index);
 				}
 
-				SetRailType(tile, totype);
-				MarkTileDirtyByTile(tile);
+				SetRailType(cur_tile, totype);
+				MarkTileDirtyByTile(cur_tile);
 				/* update power of train on this tile */
-				for (Vehicle *v : VehiclesOnTile(tile)) {
+				for (Vehicle *v : VehiclesOnTile(cur_tile)) {
 					if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 				}
 			}
@@ -1657,15 +1658,15 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 		switch (tt) {
 			default: NOT_REACHED();
 			case TileType::Railway:
-				switch (GetRailTileType(tile)) {
+				switch (GetRailTileType(cur_tile)) {
 					case RailTileType::Depot:
 						if (flags.Test(DoCommandFlag::Execute)) {
 							/* notify YAPF about the track layout change */
-							YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
+							YapfNotifyTrackLayoutChange(cur_tile, GetRailDepotTrack(cur_tile));
 
 							/* Update build vehicle window related to this depot */
-							InvalidateWindowData(WindowClass::VehicleDepot, tile);
-							InvalidateWindowData(WindowClass::BuildVehicle, tile);
+							InvalidateWindowData(WindowClass::VehicleDepot, cur_tile);
+							InvalidateWindowData(WindowClass::BuildVehicle, cur_tile);
 						}
 						found_convertible_track = true;
 						cost.AddCost(RailConvertCost(type, totype));
@@ -1674,32 +1675,28 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					default: // RailTileType::Normal, RailTileType::Signals
 						if (flags.Test(DoCommandFlag::Execute)) {
 							/* notify YAPF about the track layout change */
-							for (Track track : GetTrackBits(tile)) {
-								YapfNotifyTrackLayoutChange(tile, track);
+							for (Track track : GetTrackBits(cur_tile)) {
+								YapfNotifyTrackLayoutChange(cur_tile, track);
 							}
 						}
 						found_convertible_track = true;
-						cost.AddCost(RailConvertCost(type, totype) * GetTrackBits(tile).Count());
+						cost.AddCost(RailConvertCost(type, totype) * GetTrackBits(cur_tile).Count());
 						break;
 				}
 				break;
 
 			case TileType::TunnelBridge: {
-				TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
+				TileIndex endtile = GetOtherTunnelBridgeEnd(cur_tile);
 
 				/* If both ends of tunnel/bridge are in the range, do not try to convert twice -
 				 * it would cause assert because of different test and exec runs */
-				if (endtile < tile) {
-					if (diagonal) {
-						if (DiagonalTileArea(area_start, area_end).Contains(endtile)) continue;
-					} else {
-						if (OrthogonalTileArea(area_start, area_end).Contains(endtile)) continue;
-					}
+				if (endtile < cur_tile) {
+					if (tilearea.Contains(endtile)) continue;
 				}
 
 				/* When not converting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
-				if (!IsCompatibleRail(GetRailType(tile), totype)) {
-					ret = TunnelBridgeIsFree(tile, endtile);
+				if (!IsCompatibleRail(GetRailType(cur_tile), totype)) {
+					ret = TunnelBridgeIsFree(cur_tile, endtile);
 					if (ret.Failed()) {
 						error = std::move(ret);
 						continue;
@@ -1707,9 +1704,9 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 				}
 
 				if (flags.Test(DoCommandFlag::Execute)) {
-					Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
-					if (HasTunnelBridgeReservation(tile)) {
-						Train *v = GetTrainForReservation(tile, track);
+					Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(cur_tile));
+					if (HasTunnelBridgeReservation(cur_tile)) {
+						Train *v = GetTrainForReservation(cur_tile, track);
 						if (v != nullptr && !HasPowerOnRail(v->railtypes, totype)) {
 							/* No power on new rail type, reroute. */
 							FreeTrainTrackReservation(v);
@@ -1718,43 +1715,43 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 					}
 
 					/* Update the company infrastructure counters. */
-					uint num_pieces = (GetTunnelBridgeLength(tile, endtile) + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
-					Company *c = Company::Get(GetTileOwner(tile));
-					c->infrastructure.rail[GetRailType(tile)] -= num_pieces;
+					uint num_pieces = (GetTunnelBridgeLength(cur_tile, endtile) + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
+					Company *c = Company::Get(GetTileOwner(cur_tile));
+					c->infrastructure.rail[GetRailType(cur_tile)] -= num_pieces;
 					c->infrastructure.rail[totype] += num_pieces;
 					DirtyCompanyInfrastructureWindows(c->index);
 
-					SetRailType(tile, totype);
+					SetRailType(cur_tile, totype);
 					SetRailType(endtile, totype);
 
-					for (Vehicle *v : VehiclesOnTile(tile)) {
+					for (Vehicle *v : VehiclesOnTile(cur_tile)) {
 						if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 					}
 					for (Vehicle *v : VehiclesOnTile(endtile)) {
 						if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
 					}
 
-					YapfNotifyTrackLayoutChange(tile, track);
+					YapfNotifyTrackLayoutChange(cur_tile, track);
 					YapfNotifyTrackLayoutChange(endtile, track);
 
-					if (IsBridge(tile)) {
-						MarkBridgeDirty(tile);
+					if (IsBridge(cur_tile)) {
+						MarkBridgeDirty(cur_tile);
 					} else {
-						MarkTileDirtyByTile(tile);
+						MarkTileDirtyByTile(cur_tile);
 						MarkTileDirtyByTile(endtile);
 					}
 				}
 
 				found_convertible_track = true;
-				cost.AddCost((GetTunnelBridgeLength(tile, endtile) + 2) * RailConvertCost(type, totype));
+				cost.AddCost((GetTunnelBridgeLength(cur_tile, endtile) + 2) * RailConvertCost(type, totype));
 				break;
 			}
 
 			case TileType::Station:
 			case TileType::Road:
 				if (flags.Test(DoCommandFlag::Execute)) {
-					Track track = ((tt == TileType::Station) ? GetRailStationTrack(tile) : GetCrossingRailTrack(tile));
-					YapfNotifyTrackLayoutChange(tile, track);
+					Track track = ((tt == TileType::Station) ? GetRailStationTrack(cur_tile) : GetCrossingRailTrack(cur_tile));
+					YapfNotifyTrackLayoutChange(cur_tile, track);
 				}
 
 				found_convertible_track = true;
