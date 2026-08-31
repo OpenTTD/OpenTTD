@@ -17,9 +17,6 @@
 #include "town_type.h"
 #include "newgrf_roadstop.h"
 
-void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt);
-void UpdateNearestTownForRoadTiles(bool invalidate);
-
 CommandCost CmdBuildLongRoad(DoCommandFlags flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, DisallowedRoadDirections drd, bool start_half, bool end_half, bool is_ai);
 std::tuple<CommandCost, Money> CmdRemoveLongRoad(DoCommandFlags flags, TileIndex end_tile, TileIndex start_tile, RoadType rt, Axis axis, bool start_half, bool end_half);
 CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, RoadType rt, DisallowedRoadDirections toggle_drd, TownID town_id);

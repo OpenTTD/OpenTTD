@@ -2214,7 +2214,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 		}
 
 		Backup<bool> old_generating_world(_generating_world, true);
-		UpdateNearestTownForRoadTiles(true);
+		bool road_pending = UpdateNearestTownForRoadTiles(true);
 		Town *t;
 		if (random_location) {
 			t = CreateRandomTown(20, townnameparts, size, city, layout);
@@ -2223,7 +2223,7 @@ std::tuple<CommandCost, Money, TownID> CmdFoundTown(DoCommandFlags flags, TileIn
 			DoCreateTown(t, tile, townnameparts, size, city, layout, true);
 		}
 
-		UpdateNearestTownForRoadTiles(false);
+		if (road_pending) UpdateNearestTownForRoadTiles(false);
 		old_generating_world.Restore();
 
 		if (t == nullptr) return { CommandCost(STR_ERROR_NO_SPACE_FOR_TOWN), 0, TownID::Invalid() };
