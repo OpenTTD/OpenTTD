@@ -140,7 +140,7 @@ inline bool IsPrintable(char32_t c)
  */
 inline bool IsWhitespace(char32_t c)
 {
-	return c == 0x0020 /* SPACE */ || c == 0x3000; /* IDEOGRAPHIC SPACE */
+	return c == 0x0020 /* SPACE */ || (c >= 0x2000 && c <= 0x200C) || c == 0x3000; /* IDEOGRAPHIC SPACE */
 }
 
 /* Needed for NetBSD version (so feature) testing */
