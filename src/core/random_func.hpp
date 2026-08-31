@@ -38,6 +38,24 @@ struct Randomizer {
 	 * @return Random number in [0,\a limit)
 	 */
 	inline uint32_t Next(uint32_t limit) { return ScaleToLimit(this->Next(), limit); }
+
+	using result_type = uint32_t; ///< The result type of this random engine.
+
+	/**
+	 * Get the minimum value of this random engine.
+	 * @return The minimum output value.
+	 */
+	static constexpr result_type min() { return std::numeric_limits<result_type>::min(); }
+
+	/**
+	 * Get the maximum value of this random engine.
+	 * @return The maximum output value.
+	 */
+	static constexpr result_type max() { return std::numeric_limits<result_type>::max(); }
+
+	void seed(result_type seed);
+	result_type operator()();
+	void discard(size_t count);
 };
 extern Randomizer _random; ///< Random used in the game state calculations
 extern Randomizer _interactive_random; ///< Random used everywhere else, where it does not (directly) influence the game state

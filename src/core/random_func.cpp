@@ -59,6 +59,35 @@ void Randomizer::SetSeed(uint32_t seed)
 }
 
 /**
+ * Seed this random engine.
+ * @param seed The new seed.
+ */
+void  Randomizer::seed(result_type seed)
+{
+	this->SetSeed(seed);
+}
+
+/**
+ * Generator a random number.
+ * @return The random number.
+ */
+Randomizer::result_type Randomizer::operator()()
+{
+	return this->Next();
+}
+
+/**
+ * Discard random numbers.
+ * @param count The number of random numbers to discard.
+ */
+void Randomizer::discard(size_t count)
+{
+	for (; count > 0; --count) {
+		this->Next();
+	}
+}
+
+/**
  * (Re)set the state of the random number generators.
  * @param seed the new state
  */
