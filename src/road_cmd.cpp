@@ -1945,10 +1945,13 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
  * Updates cached nearest town for all road tiles
  * @param invalidate are we just invalidating cached data?
  * @pre invalidate == true implies _generating_world == true
+ * @return \c true iff at least one non-town-owned road is enocuntered.
  */
-void UpdateNearestTownForRoadTiles(bool invalidate)
+bool UpdateNearestTownForRoadTiles(bool invalidate)
 {
 	assert(!invalidate || _generating_world);
+
+	bool found = false;
 
 	for (const auto t : Map::Iterate()) {
 		if (IsTileType(t, TileType::Road) && !IsRoadDepot(t) && !HasTownOwnedRoad(t)) {
@@ -1958,8 +1961,11 @@ void UpdateNearestTownForRoadTiles(bool invalidate)
 				if (town != nullptr) tid = town->index;
 			}
 			SetTownIndex(t, tid);
+			found = true;
 		}
 	}
+
+	return found;
 }
 
 /** @copydoc GetSlopePixelZProc */

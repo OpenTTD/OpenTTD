@@ -1314,11 +1314,11 @@ public:
 		if (!value.has_value()) return;
 
 		AutoRestoreBackup old_generating_world(_generating_world, true);
-		UpdateNearestTownForRoadTiles(true);
+		bool road_pending = UpdateNearestTownForRoadTiles(true);
 		if (!GenerateTowns(this->town_layout, value)) {
 			ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_GENERATE_TOWN), GetEncodedString(STR_ERROR_NO_SPACE_FOR_TOWN), WarningLevel::Info);
 		}
-		UpdateNearestTownForRoadTiles(false);
+		if (road_pending) UpdateNearestTownForRoadTiles(false);
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
