@@ -231,6 +231,20 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 		if (!IsValidTile(t)) return CommandCost(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP); // Might be off the map
 	}
 
+	TileIndex centre_tile = ta.GetCenterTile();
+	if (spec->clear_diameter > 0) {
+		uint diameter = spec->clear_diameter + std::max(size_x, size_y) - 1;
+		for (auto t : SpiralTileSequence(centre_tile, diameter)) {
+			if (IsObjectTypeTile(t, spec->Index())) return CommandCost(STR_ERROR_OBJECT_IN_THE_WAY);
+		}
+	}
+
+	if (spec->min_tile_height > 0 || spec->max_tile_height < UINT8_MAX) {
+		uint z = GetTileZ(centre_tile);
+		if (spec->min_tile_height > z) return CommandCost(STR_ERROR_OBJECT_IN_THE_WAY);
+		if (z > spec->max_tile_height) return CommandCost(STR_ERROR_OBJECT_IN_THE_WAY);
+	}
+
 	if (type == OBJECT_OWNED_LAND) {
 		/* Owned land is special as it can be placed on any slope. */
 		cost.AddCost(Command<Commands::LandscapeClear>::Do(flags, tile));
@@ -322,14 +336,11 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 		}
 	}
 
+	if (spec->flags.Test(ObjectFlag::FlatLand) && !IsTileFlat(tile)) return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
+
 	int hq_score = 0;
 	uint build_object_size = 1;
 	switch (type) {
-		case OBJECT_TRANSMITTER:
-		case OBJECT_LIGHTHOUSE:
-			if (!IsTileFlat(tile)) return CommandCost(STR_ERROR_FLAT_LAND_REQUIRED);
-			break;
-
 		case OBJECT_OWNED_LAND:
 			if (IsTileType(tile, TileType::Object) &&
 					IsTileOwner(tile, _current_company) &&
@@ -380,6 +391,17 @@ CommandCost CmdBuildObject(DoCommandFlags flags, TileIndex tile, ObjectType type
 
 		/* Subtract the tile from the build limit. */
 		if (c != nullptr) c->build_object_limit -= build_object_size << 16;
+
+		if (spec->flags.Test(ObjectFlag::CreateRocks)) {
+			/* Generate rocks from each coast tile surrounding the chosen coast tile. This is done because we don't have
+			 * control of the direction of GenerateRocks, so this gives more chance for rocks to be generated in water. */
+			uint32_t r = Random();
+			for (TileIndex rock_tile : SpiralTileSequence(tile, 3)) {
+				if (!IsCoastTile(rock_tile)) continue;
+				GenerateRocks(rock_tile, GB(r, 0, 4) + 5);
+				r >>= 4;
+			}
+		}
 	}
 
 	cost.AddCost(spec->GetBuildCost() * build_object_size);
@@ -743,54 +765,49 @@ static bool ClickTile_Object(TileIndex tile)
 }
 
 /**
- * Try to build a lighthouse near a coast tile.
- * @param coast_tile The tile to try building near.
- * @return \c true iff a lighthouse was built.
+ * Try to build an object near a tile.
+ * @param tile The tile to try building near.
+ * @param spec The object spec.
+ * @return \c true iff an object was built.
  */
-static bool TryBuildLighthouseNearTile(TileIndex coast_tile)
+static bool TryBuildObjectNearTile(TileIndex tile, const ObjectSpec &spec)
 {
 	if (!Object::CanAllocateItem()) return false;
-	if (!IsValidTile(coast_tile)) return false;
+	if (!IsValidTile(tile)) return false;
 
-	/* We always start on a coast tile. */
-	if (!IsTileType(coast_tile, TileType::Water) || GetWaterTileType(coast_tile) != WaterTileType::Coast) return false;
+	if (spec.flags.Test(ObjectFlag::PlaceNearCoast)) {
+		/* We always start on a coast tile. */
+		if (!IsTileType(tile, TileType::Water) || GetWaterTileType(tile) != WaterTileType::Coast) return false;
+	}
 
-	/* Don't build near another lighthouse. */
-	constexpr uint LIGHTHOUSE_MIN_DISTANCE_DIAMETER = 16 * 2 + 1; // 16 tile radius, plus middle tile.
-	for (auto t : SpiralTileSequence(coast_tile, LIGHTHOUSE_MIN_DISTANCE_DIAMETER)) {
-		if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return false;
+	/* Don't build near another object of the same tile. */
+	for (auto t : SpiralTileSequence(tile, spec.clear_diameter)) {
+		if (IsObjectTypeTile(t, spec.Index())) return false;
 	}
 
 	/* Find a suitable tile nearby to build. */
-	for (TileIndex build_tile : SpiralTileSequence(coast_tile, 3)) {
+	for (TileIndex build_tile : SpiralTileSequence(tile, 3)) {
 		if (!IsTileType(build_tile, TileType::Clear) || !IsTileFlat(build_tile) || IsBridgeAbove(build_tile)) continue;
-		BuildObject(OBJECT_LIGHTHOUSE, build_tile);
 
-		/* Generate rocks from each coast tile surrounding the chosen coast tile. This is done because we don't have
-		 * control of the direction of GenerateRocks, so this gives more chance for rocks to be generated in water. */
-		uint32_t r = Random();
-		for (TileIndex rock_tile : SpiralTileSequence(coast_tile, 3)) {
-			if (!IsCoastTile(rock_tile)) continue;
-			GenerateRocks(rock_tile, GB(r, 0, 4) + 5);
-			r >>= 4;
-		}
-
-		return true;
+		uint8_t view = RandomRange(spec.views);
+		if (CmdBuildObject({DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating}, build_tile, spec.Index(), view).Succeeded()) return true;
 	}
 
 	return false;
 }
 
 /**
- * Try to build a lighthouse near a town.
- * @param town The town to build the lighthouse near.
+ * Try to build an object near a town.
+ * @param town The town to build the object near.
+ * @param spec The object spec.
+ * @return \c true iff an object was built.
  */
-static void TryBuildTownLighthouse(Town *town)
+static bool TryBuildObjectNearTown(Town *town, const ObjectSpec &spec)
 {
 	TileIndex start_tile = town->xy;
 
-	/* As a sanity check to speed up generation, a town in the mountains is unlikely to have a lighthouse. */
-	if (GetTileZ(start_tile) > 4) return;
+	/* As a sanity check to speed up generation, a town in the mountains is unlikely to have an object near the coast. */
+	if (spec.flags.Test(ObjectFlag::PlaceNearCoast) && GetTileZ(start_tile) > spec.max_tile_height) return false;
 
 	/* Create a perimeter a random distance around the town to search. */
 	int radius = town->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)];
@@ -799,29 +816,37 @@ static void TryBuildTownLighthouse(Town *town)
 
 	/* Find the northern tile of the perimeter for the SpiralTileSequence. */
 	start_tile = TileAddWrap(town->xy, -radius, -radius);
-	if (!IsValidTile(start_tile)) return;
+	if (!IsValidTile(start_tile)) return false;
 
 	/* Search the perimeter for a suitable tile. */
-	for (TileIndex coast_tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
-		if (TryBuildLighthouseNearTile(coast_tile)) return;
+	for (TileIndex tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
+		if (TryBuildObjectNearTile(tile, spec)) return true;
 	}
+
+	return false;
 }
 
 /**
- * Try to build lighthouses near every town.
+ * Try to build objects near every town.
+ * @param spec The object spec.
+ * @param amount The number of objects to try to generate.
  */
-static void BuildTownLighthouses()
+static void BuildTownObjects(const ObjectSpec &spec, uint16_t &amount)
 {
 	for (Town *town : Town::Iterate()) {
-		TryBuildTownLighthouse(town);
+		if (!TryBuildObjectNearTown(town, spec)) continue;
+
+		--amount;
+		if (amount == 0) break;
 	}
 }
 
 /**
- * Try to build a lighthouse along the coast.
- * @return \c true iff a lighthouse was built.
+ * Try to build an object along the coast.
+ * @param spec The object spec.
+ * @return \c true iff an object was built.
  */
-static bool TryBuildCoastLighthouse()
+static bool TryBuildCoastObject(const ObjectSpec &spec)
 {
 	uint maxx = Map::MaxX();
 	uint maxy = Map::MaxY();
@@ -845,7 +870,7 @@ static bool TryBuildCoastLighthouse()
 
 	/* Now walk inwards until we find a valid tile, or hit the other edge of the map. */
 	while (IsValidTile(tile)) {
-		if (TryBuildLighthouseNearTile(tile)) return true;
+		if (TryBuildObjectNearTile(tile, spec)) return true;
 		tile += TileOffsByDiagDir(dir);
 	}
 
@@ -853,32 +878,16 @@ static bool TryBuildCoastLighthouse()
 }
 
 /**
- * Try to build lighthouses along coasts.
- * @param amount The number of lighthouses to try to generate.
+ * Try to build objects along coasts.
+ * @param spec The object spec.
+ * @param amount The number of objects to try to generate.
  */
-static void BuildCoastLighthouses(uint16_t amount)
+static void BuildCoastObjects(const ObjectSpec &spec, uint16_t &amount)
 {
 	for (uint j = amount; j != 0; j--) {
-		TryBuildCoastLighthouse();
+		if (!TryBuildCoastObject(spec)) continue;
+		--amount;
 	}
-}
-
-/**
- * Try to build a transmitter.
- * @return True iff a transmitter was built.
- */
-static bool TryBuildTransmitter()
-{
-	TileIndex tile = RandomTile();
-	int h;
-	if (IsTileType(tile, TileType::Clear) && IsTileFlat(tile, &h) && h >= 4 && !IsBridgeAbove(tile)) {
-		for (auto t : SpiralTileSequence(tile, 9)) {
-			if (IsObjectTypeTile(t, OBJECT_TRANSMITTER)) return false;
-		}
-		BuildObject(OBJECT_TRANSMITTER, tile);
-		return true;
-	}
-	return false;
 }
 
 /**
@@ -923,25 +932,14 @@ void GenerateObjects()
 		}
 
 		/* Ready to place objects. */
-		switch (spec.Index()) {
-			case OBJECT_TRANSMITTER:
-				for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
-					if (TryBuildTransmitter()) amount--;
-				}
-				break;
+		if (spec.flags.Test(ObjectFlag::PlaceNearTowns)) BuildTownObjects(spec, amount);
+		if (spec.flags.Test(ObjectFlag::PlaceNearCoast)) BuildCoastObjects(spec, amount);
 
-			case OBJECT_LIGHTHOUSE:
-				BuildTownLighthouses();
-				BuildCoastLighthouses(amount);
-				break;
-
-			default:
-				for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
-					uint8_t view = RandomRange(spec.views);
-					if (CmdBuildObject({ DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating }, RandomTile(), spec.Index(), view).Succeeded()) amount--;
-				}
-				break;
+		for (uint j = Map::ScaleBySize(1000); j != 0 && amount != 0 && Object::CanAllocateItem(); j--) {
+			uint8_t view = RandomRange(spec.views);
+			if (CmdBuildObject({ DoCommandFlag::Execute, DoCommandFlag::Auto, DoCommandFlag::NoTestTownRating, DoCommandFlag::NoModifyTownRating }, RandomTile(), spec.Index(), view).Succeeded()) --amount;
 		}
+
 		IncreaseGeneratingWorldProgress(GenWorldProgress::Objects);
 	}
 }
@@ -987,12 +985,13 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlags flags, int z_new, Slope tileh_new)
 {
 	ObjectType type = GetObjectType(tile);
+	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	if (type == OBJECT_OWNED_LAND) {
 		/* Owned land remains unsold */
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Succeeded()) return CommandCost();
-	} else if (AutoslopeEnabled() && type != OBJECT_TRANSMITTER && type != OBJECT_LIGHTHOUSE) {
+	} else if (AutoslopeEnabled() && !spec->flags.Test(ObjectFlag::FlatLand)) {
 		/* Behaviour:
 		 *  - Both new and old slope must not be steep.
 		 *  - TileMaxZ must not be changed.
@@ -1002,8 +1001,6 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlags flags, in
 		Slope tileh_old = GetTileSlope(tile);
 		/* TileMaxZ must not be changed. Slopes must not be steep. */
 		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
-			const ObjectSpec *spec = ObjectSpec::Get(type);
-
 			/* Call callback 'disable autosloping for objects'. */
 			if (spec->callback_mask.Test(ObjectCallbackMask::Autoslope)) {
 				/* If the callback fails, allow autoslope. */
