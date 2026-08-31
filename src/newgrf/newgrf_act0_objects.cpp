@@ -35,6 +35,9 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader &buf)
 		case 0x16:
 		case 0x17:
 		case 0x18:
+		case 0x1B:
+		case 0x1C:
+		case 0x1D:
 			buf.ReadByte();
 			break;
 
@@ -50,6 +53,7 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader &buf)
 		case 0x08:
 		case 0x0E:
 		case 0x0F:
+		case 0x1A:
 			buf.ReadDWord();
 			break;
 
@@ -141,7 +145,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x10: // Flags
-				spec->flags = (ObjectFlags)buf.ReadWord();
+				spec->flags = static_cast<ObjectFlags>(buf.ReadWord());
 				_loaded_newgrf_features.has_2CC |= spec->flags.Test(ObjectFlag::Uses2CC);
 				break;
 
@@ -184,6 +188,23 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 
 			case 0x19: // Badge list
 				spec->badges = ReadBadgeList(buf, GrfSpecFeature::Objects);
+				break;
+
+			case 0x1A: // More flags
+				spec->flags = static_cast<ObjectFlags>(buf.ReadDWord());
+				_loaded_newgrf_features.has_2CC |= spec->flags.Test(ObjectFlag::Uses2CC);
+				break;
+
+			case 0x1B: // Diameter to avoid same objects.
+				spec->clear_diameter = buf.ReadByte();
+				break;
+
+			case 0x1C: // Minimum tile height.
+				spec->min_tile_height = buf.ReadByte();
+				break;
+
+			case 0x1D: // Maximum tile height.
+				spec->max_tile_height = buf.ReadByte();
 				break;
 
 			default:
