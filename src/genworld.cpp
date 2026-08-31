@@ -480,32 +480,24 @@ void LoadTownData()
 	std::vector<ParsedTown> town_data = ParseTownData(text);
 	if (town_data.empty()) return;
 
-	std::vector<std::pair<Town *, uint> > towns;
+	std::vector<std::pair<const Town *, uint> > towns;
 	uint failed_towns = 0;
 
-	for (ParsedTown &town : town_data) {
-		TownID town_id;
+	AutoRestoreBackup old_generating_world(_generating_world, true);
+	bool road_pending = UpdateNearestTownForRoadTiles(true);
 
-		/* Try founding on the target tile, and if that doesn't work, find the nearest suitable tile up to 16 tiles away.
-		 * The target might be on water, blocked somehow, or on a steep slope that can't be terraformed by the founding command. */
-		for (TileIndex tile : SpiralTileSequence(town.target_tile, 16, 0, 0)) {
-			std::tuple<CommandCost, Money, TownID> result = Command<Commands::FoundTown>::Do(DoCommandFlag::Execute, tile, TownSize::Small, town.is_city, _settings_game.economy.town_layout, false, 0, town.name);
-
-			town_id = std::get<TownID>(result);
-
-			/* Check if the command succeeded. */
-			if (town_id != TownID::Invalid()) break;
-		}
+	for (auto &town : town_data) {
+		const Town *t = TryGenerateNamedTownAroundTile(town.target_tile, TownSize::Small, town.is_city, _settings_game.economy.town_layout, town.name);
 
 		/* If we still fail to found the town, we'll create a sign at the intended location and tell the player how many towns we failed to create in an error message.
 		 * This allows the player to diagnose a heightmap misalignment, if towns end up in the sea, or place towns manually, if in rough terrain. */
-		if (town_id == TownID::Invalid()) {
+		if (t == nullptr) {
 			Command<Commands::PlaceSign>::Post(town.target_tile, town.name);
 			failed_towns++;
 			continue;
 		}
 
-		towns.emplace_back(std::make_pair(Town::Get(town_id), town.population));
+		towns.emplace_back(t, town.population);
 	}
 
 	/* If we couldn't found a town (or multiple), display a message to the player with the number of failed towns. */
@@ -514,10 +506,7 @@ void LoadTownData()
 	}
 
 	/* Now that we've created the towns, let's grow them to their target populations. */
-	for (const auto &item : towns) {
-		Town *t = item.first;
-		uint population = item.second;
-
+	for (const auto &[t, population] : towns) {
 		/* Grid towns can grow almost forever, but the town growth algorithm gets less and less efficient as it wanders roads randomly,
 		 * so we set an arbitrary limit. With a flat map and a 3x3 grid layout this results in about 4900 houses, or 2800 houses with "Better roads." */
 		int try_limit = 1000;
@@ -535,4 +524,6 @@ void LoadTownData()
 			if (t->cache.num_houses <= before) fail_limit--;
 		} while (fail_limit > 0 && try_limit-- > 0 && t->cache.population < population);
 	}
+
+	if (road_pending) UpdateNearestTownForRoadTiles(false);
 }
