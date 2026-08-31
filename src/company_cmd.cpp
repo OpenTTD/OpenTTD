@@ -531,10 +531,7 @@ static Colours GenerateCompanyColour()
 	std::iota(colours.begin(), colours.end(), Colours::Begin);
 
 	/* And randomize it */
-	for (uint i = 0; i < 100; i++) {
-		uint r = Random();
-		std::swap(colours[GB(r, 0, 4)], colours[GB(r, 4, 4)]);
-	}
+	std::ranges::shuffle(colours, _random);
 
 	/* Sort it according to the values in _colour_sort. */
 	std::ranges::stable_sort(colours, std::greater_equal{}, [](auto &i) { return _colour_sort[i]; });

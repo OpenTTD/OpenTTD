@@ -199,10 +199,7 @@ void MusicSystem::Shuffle()
 
 	uint set_index = this->GetSetIndex();
 	this->active_playlist = this->standard_playlists[this->selected_playlist];
-	for (size_t i = 0; i < this->active_playlist.size(); i++) {
-		size_t shuffle_index = InteractiveRandom() % (this->active_playlist.size() - i);
-		std::swap(this->active_playlist[i], this->active_playlist[i + shuffle_index]);
-	}
+	std::ranges::shuffle(this->active_playlist, _interactive_random);
 	this->SetPositionBySetIndex(set_index);
 
 	InvalidateWindowData(WindowClass::MusicTrackSelection, 0);
