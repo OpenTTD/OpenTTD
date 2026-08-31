@@ -140,7 +140,7 @@ void MoveWaypointsToBaseStations()
 			if (specindex.has_value()) AssignSpecToStation(wp.spec, new_wp, *specindex);
 			SetCustomStationSpecIndex(tile, specindex.value_or(0));
 		}
-		new_wp->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
+		new_wp->spread.Add(tile);
 
 		wp.new_index = new_wp->index;
 	}

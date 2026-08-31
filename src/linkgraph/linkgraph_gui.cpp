@@ -78,7 +78,7 @@ void LinkGraphOverlay::RebuildCache()
 	this->GetWidgetDpi(&dpi);
 
 	for (const Station *sta : Station::Iterate()) {
-		if (sta->rect.IsEmpty()) continue;
+		if (sta->spread.IsEmpty()) continue;
 
 		Point pta = this->GetStationMiddle(sta);
 
@@ -104,7 +104,7 @@ void LinkGraphOverlay::RebuildCache()
 
 				/* Show links between stations of selected companies or "neutral" ones like oilrigs. */
 				if (stb->owner != OWNER_NONE && sta->owner != OWNER_NONE && !this->company_mask.Test(stb->owner)) continue;
-				if (stb->rect.IsEmpty()) continue;
+				if (stb->spread.IsEmpty()) continue;
 
 				if (!this->IsLinkVisible(pta, this->GetStationMiddle(stb), &dpi)) continue;
 

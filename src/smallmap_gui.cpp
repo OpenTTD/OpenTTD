@@ -1531,9 +1531,8 @@ public:
 	 */
 	Point GetStationMiddle(const Station *st) const
 	{
-		int x = CentreBounds(st->rect.left, st->rect.right, 0);
-		int y = CentreBounds(st->rect.top, st->rect.bottom, 0);
-		Point ret = this->RemapTile(x, y);
+		TileIndex tile = st->spread.GetCenterTile();
+		Point ret = this->RemapTile(TileX(tile), TileY(tile));
 
 		/* Same magic 3 as in DrawVehicles; that's where I got it from.
 		 * No idea what it is, but without it the result looks bad.

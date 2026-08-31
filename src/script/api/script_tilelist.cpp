@@ -181,8 +181,6 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 {
 	if (!ScriptStation::IsValidStation(station_id)) return;
 
-	const StationRect *rect = &::Station::Get(station_id)->rect;
-
 	EnumBitSet<StationType, uint8_t> station_types = {};
 	/* Convert ScriptStation::StationType to ::StationType, but do it in a
 	 *  bitmask, so we can scan for multiple entries at the same time. */
@@ -192,8 +190,7 @@ ScriptTileList_StationType::ScriptTileList_StationType(StationID station_id, Scr
 	if ((station_type & ScriptStation::STATION_AIRPORT) != 0)    station_types.Set({::StationType::Airport, ::StationType::Oilrig});
 	if ((station_type & ScriptStation::STATION_DOCK) != 0)       station_types.Set({::StationType::Dock, ::StationType::Oilrig});
 
-	TileArea ta(::TileXY(rect->left, rect->top), rect->Width(), rect->Height());
-	for (TileIndex cur_tile : ta) {
+	for (TileIndex cur_tile : ::Station::Get(station_id)->spread) {
 		if (!::IsTileType(cur_tile, TileType::Station)) continue;
 		if (::GetStationIndex(cur_tile) != station_id) continue;
 		if (!station_types.Test(::GetStationType(cur_tile))) continue;
