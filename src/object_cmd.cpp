@@ -25,6 +25,7 @@
 #include "cheat_type.h"
 #include "object.h"
 #include "cargopacket.h"
+#include "core/container_func.hpp"
 #include "core/random_func.hpp"
 #include "core/pool_func.hpp"
 #include "object_map.h"
@@ -827,14 +828,31 @@ static bool TryBuildObjectNearTown(Town *town, const ObjectSpec &spec)
 }
 
 /**
+ * Get a randomised list of town indexes.
+ * @return List of town indexes.
+ */
+std::vector<TownID> GetRandomisedTownList()
+{
+	std::vector<TownID> towns;
+	towns.reserve(Town::GetNumItems());
+	for (const Town *t : Town::Iterate()) {
+		towns.push_back(t->index);
+	}
+	Shuffle(towns, _random);
+	return towns;
+}
+
+/**
  * Try to build objects near every town.
  * @param spec The object spec.
  * @param amount The number of objects to try to generate.
  */
 static void BuildTownObjects(const ObjectSpec &spec, uint16_t &amount)
 {
-	for (Town *town : Town::Iterate()) {
-		if (!TryBuildObjectNearTown(town, spec)) continue;
+	std::vector<TownID> towns = GetRandomisedTownList();
+
+	for (TownID town : towns) {
+		if (!TryBuildObjectNearTown(Town::Get(town), spec)) continue;
 
 		--amount;
 		if (amount == 0) break;
