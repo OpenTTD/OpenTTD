@@ -114,7 +114,7 @@ jobs:
 
     - name: Setup vcpkg
       id: vcpkg
-      uses: OpenTTD/actions/setup-vcpkg@v6
+      uses: OpenTTD/actions/setup-vcpkg@v7
       with:
         vcpkg-location: /vcpkg
         mono-install-command: 'yum install -y mono-complete'
