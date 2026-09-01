@@ -10,6 +10,8 @@
 #ifndef CONTAINER_FUNC_HPP
 #define CONTAINER_FUNC_HPP
 
+#include "random_func.hpp"
+
 /**
  * Helper function to append an item to a container if it is not already contained.
  * The container must have a \c emplace_back function.
@@ -59,6 +61,21 @@ auto Slide(TIter first, TIter last, TIter position) -> std::pair<TIter, TIter>
 	if (last < position) return { std::rotate(first, last, position), position };
 	if (position < first) return { position, std::rotate(position, first, last) };
 	return { first, last };
+}
+
+/**
+ * Shuffle the contents of a container.
+ * @tparam Tcontainer The container type.
+ * @param container A reference to the container to be shuffled.
+ * @param randomizer The randomizer to use to shuffle the container.
+ */
+template <typename Tcontainer>
+void Shuffle(Tcontainer &container, Randomizer &randomizer)
+{
+	for (int i = static_cast<int>(container.size()) - 1; i >= 0; --i) {
+		int j = randomizer.Next() % (i + 1);
+		if (i != j) std::swap(container[i], container[j]);
+	}
 }
 
 #endif /* CONTAINER_FUNC_HPP */
