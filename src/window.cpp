@@ -2639,6 +2639,22 @@ EventState Window::HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode
 }
 
 /**
+ * Call the OnHotkey handler for a window.
+ * @note Clears shift and ctrl keystate to allow hotkeys to use modifiers.
+ * @param w The window.
+ * @param hotkey The hotkey.
+ * @return EventState of the hotkey handler.
+ */
+static EventState HandleHotkey(Window *w, int hotkey)
+{
+	/* Clear global modifier keys so they do not interfere with modifiers assigned to hotkeys. */
+	AutoRestoreBackup _shift_backup{_shift_pressed, false};
+	AutoRestoreBackup _ctrl_backup{_ctrl_pressed, false};
+
+	return w->OnHotkey(hotkey);
+}
+
+/**
  * Handle Toolbar hotkey events - can come from a source like the MacBook Touch Bar.
  * @param hotkey Hotkey code
  */
@@ -2649,7 +2665,7 @@ void HandleToolbarHotkey(int hotkey)
 	Window *w = FindWindowById(WindowClass::MainToolbar, 0);
 	if (w != nullptr) {
 		if (w->window_desc.hotkeys != nullptr) {
-			if (hotkey >= 0 && w->OnHotkey(hotkey) == EventState::Handled) return;
+			if (hotkey >= 0 && HandleHotkey(w, hotkey) == EventState::Handled) return;
 		}
 	}
 }
@@ -2694,7 +2710,7 @@ void HandleKeypress(uint keycode, char32_t key)
 		if (w->window_class == WindowClass::MainToolbar) continue;
 		if (w->window_desc.hotkeys != nullptr) {
 			int hotkey = w->window_desc.hotkeys->CheckMatch(keycode);
-			if (hotkey >= 0 && w->OnHotkey(hotkey) == EventState::Handled) return;
+			if (hotkey >= 0 && HandleHotkey(w, hotkey) == EventState::Handled) return;
 		}
 		if (w->OnKeyPress(key, keycode) == EventState::Handled) return;
 	}
@@ -2704,7 +2720,7 @@ void HandleKeypress(uint keycode, char32_t key)
 	if (w != nullptr) {
 		if (w->window_desc.hotkeys != nullptr) {
 			int hotkey = w->window_desc.hotkeys->CheckMatch(keycode);
-			if (hotkey >= 0 && w->OnHotkey(hotkey) == EventState::Handled) return;
+			if (hotkey >= 0 && HandleHotkey(w, hotkey) == EventState::Handled) return;
 		}
 		if (w->OnKeyPress(key, keycode) == EventState::Handled) return;
 	}

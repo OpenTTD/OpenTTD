@@ -8,6 +8,8 @@
 /** @file hotkeys.cpp Implementation of hotkey related functions. */
 
 #include "stdafx.h"
+#include "core/backup_type.hpp"
+#include "gfx_func.h"
 #include "openttd.h"
 #include "hotkeys.h"
 #include "ini_type.h"
@@ -341,13 +343,29 @@ void SaveHotkeysToConfig()
 	SaveLoadHotkeys(true);
 }
 
+/**
+ * Call the global handler for a hotkey.
+ * @note Clears shift and ctrl keystate to allow hotkeys to use modifiers.
+ * @param func The global hotkey handler.
+ * @param hotkey The hotkey.
+ * @return EventState of the hotkey handler.
+ */
+static EventState HandleGlobalHotkey(HotkeyList::GlobalHotkeyHandlerFunc func, int hotkey)
+{
+	/* Clear global modifier keys so they do not interfere with modifiers assigned to hotkeys. */
+	AutoRestoreBackup _shift_backup{_shift_pressed, false};
+	AutoRestoreBackup _ctrl_backup{_ctrl_pressed, false};
+
+	return func(hotkey);
+}
+
 void HandleGlobalHotkeys([[maybe_unused]] char32_t key, uint16_t keycode)
 {
 	for (HotkeyList *list : *_hotkey_lists) {
 		if (list->global_hotkey_handler == nullptr) continue;
 
 		int hotkey = list->CheckMatch(keycode, true);
-		if (hotkey >= 0 && (list->global_hotkey_handler(hotkey) == EventState::Handled)) return;
+		if (hotkey >= 0 && HandleGlobalHotkey(list->global_hotkey_handler, hotkey) == EventState::Handled) return;
 	}
 }
 
