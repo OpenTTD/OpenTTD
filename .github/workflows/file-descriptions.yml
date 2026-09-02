@@ -19,7 +19,7 @@ jobs:
         fetch-depth: 4
 
     - name: Get pull-request commits
-      uses: OpenTTD/actions/checkout-pull-request@v6
+      uses: OpenTTD/actions/checkout-pull-request@v7
 
     - name: Check descriptions of source files
       run: |
