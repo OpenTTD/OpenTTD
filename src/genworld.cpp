@@ -353,6 +353,106 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	_GenerateWorld();
 }
 
+/** Parsed town data. */
+struct ParsedTown {
+	std::string name; ///< The name of the town.
+	uint population; ///< The target population of the town when created in OpenTTD. If input is blank, defaults to 0.
+	bool is_city; ///< Should it be created as a city in OpenTTD? If input is blank, defaults to false.
+	TileIndex target_tile; ///< The target tile of the town.
+};
+
+/**
+ * Translation coordates from a proportions to TileIndex.
+ * @param x The X proportion between 0..1.
+ * @param y The Y proportion between 0..1.
+ * @return The translated TileIndex, or INVALID_TILE if out of bounds.
+ */
+static TileIndex TranslateCoordinates(float x, float y)
+{
+	if (x <= 0.0f || y <= 0.0f || x >= 1.0f || y >= 1.0f) return INVALID_TILE;
+
+	/* Determine the target tile.. */
+	switch (_settings_game.game_creation.heightmap_rotation) {
+		case HM_CLOCKWISE:
+			/* Tile coordinates align with what we expect. */
+			return TileXY(x * Map::MaxX(), y * Map::MaxY());
+
+		case HM_COUNTER_CLOCKWISE:
+			/* Tile coordinates are rotated and must be adjusted. */
+			return TileXY((1 - y) * Map::MaxX(), x * Map::MaxY());
+
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
+ * Parse town data from json text.
+ * @param text The json formatted text.
+ * @return List of towns to create.
+ */
+static std::vector<ParsedTown> ParseTownData(std::string_view text)
+{
+	/* Now parse the JSON. */
+	nlohmann::json town_data;
+	try {
+		town_data = nlohmann::json::parse(text);
+	} catch (nlohmann::json::exception &) {
+		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
+		return {};
+	}
+
+	/* Check for JSON formatting errors with the array of towns. */
+	if (!town_data.is_array()) {
+		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
+		return {};
+	}
+
+	std::vector<ParsedTown> towns;
+
+	/* Iterate through towns and attempt to found them. */
+	for (auto &feature : town_data) {
+		ParsedTown &town = towns.emplace_back();
+
+		/* Ensure JSON is formatted properly. */
+		if (!feature.is_object()) {
+			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
+			return {};
+		}
+
+		/* Check to ensure all fields exist and are of the correct type.
+		 * If the town name is formatted wrong, all we can do is give a general warning. */
+		if (!feature.contains("name") || !feature.at("name").is_string()) {
+			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
+			return {};
+		}
+
+		feature.at("name").get_to(town.name);
+
+		/* If other fields are formatted wrong, we can actually inform the player which town is the problem. */
+		if (!feature.contains("population") || !feature.at("population").is_number() ||
+				!feature.contains("city") || !feature.at("city").is_boolean() ||
+				!feature.contains("x") || !feature.at("x").is_number() ||
+				!feature.contains("y") || !feature.at("y").is_number()) {
+			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY, town.name), WarningLevel::Error);
+			return {};
+		}
+
+		/* Set town properties. */
+		feature.at("population").get_to(town.population);
+		feature.at("city").get_to(town.is_city);
+
+		/* Find the target tile for the town. */
+		town.target_tile = TranslateCoordinates(feature.at("x").get<float>(), feature.at("y").get<float>());
+		if (town.target_tile == INVALID_TILE) {
+			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_BAD_COORDINATE, town.name), WarningLevel::Error);
+			return {};
+		}
+	}
+
+	return towns;
+}
+
 /**
  * Load town data from _file_to_saveload, place towns at the appropriate locations, and expand them to their target populations.
  */
@@ -377,91 +477,19 @@ void LoadTownData()
 		return;
 	}
 
-	/* Now parse the JSON. */
-	nlohmann::json town_data;
-	try {
-		town_data = nlohmann::json::parse(text);
-	} catch (nlohmann::json::exception &) {
-		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
-		return;
-	}
-
-	/* Check for JSON formatting errors with the array of towns. */
-	if (!town_data.is_array()) {
-		ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
-		return;
-	}
+	std::vector<ParsedTown> town_data = ParseTownData(text);
+	if (town_data.empty()) return;
 
 	std::vector<std::pair<Town *, uint> > towns;
 	uint failed_towns = 0;
 
-	/* Iterate through towns and attempt to found them. */
-	for (auto &feature : town_data) {
-		std::string name; // The name of the town.
-		uint population; // The target population of the town when created in OpenTTD. If input is blank, defaults to 0.
-		bool is_city; // Should it be created as a city in OpenTTD? If input is blank, defaults to false.
-		float x_proportion; // The X coordinate of the town, as a proportion 0..1 of the maximum X coordinate.
-		float y_proportion; // The Y coordinate of the town, as a proportion 0..1 of the maximum Y coordinate.
+	for (ParsedTown &town : town_data) {
+		TownID town_id;
 
-		/* Ensure JSON is formatted properly. */
-		if (!feature.is_object()) {
-			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
-			return;
-		}
-
-		/* Check to ensure all fields exist and are of the correct type.
-		 * If the town name is formatted wrong, all we can do is give a general warning. */
-		if (!feature.contains("name") || !feature.at("name").is_string()) {
-			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED), GetEncodedString(STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY), WarningLevel::Error);
-			return;
-		}
-
-		/* If other fields are formatted wrong, we can actually inform the player which town is the problem. */
-		if (!feature.contains("population") || !feature.at("population").is_number() ||
-				!feature.contains("city") || !feature.at("city").is_boolean() ||
-				!feature.contains("x") || !feature.at("x").is_number() ||
-				!feature.contains("y") || !feature.at("y").is_number()) {
-			feature.at("name").get_to(name);
-			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-				GetEncodedString(STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY, name), WarningLevel::Error);
-			return;
-		}
-
-		/* Set town properties. */
-		feature.at("name").get_to(name);
-		feature.at("population").get_to(population);
-		feature.at("city").get_to(is_city);
-
-		/* Set town coordinates. */
-		feature.at("x").get_to(x_proportion);
-		feature.at("y").get_to(y_proportion);
-
-		/* Check for improper coordinates and warn the player. */
-		if (x_proportion <= 0.0f || y_proportion <= 0.0f || x_proportion >= 1.0f || y_proportion >= 1.0f) {
-			ShowErrorMessage(GetEncodedString(STR_TOWN_DATA_ERROR_LOAD_FAILED),
-				GetEncodedString(STR_TOWN_DATA_ERROR_BAD_COORDINATE, name), WarningLevel::Error);
-			return;
-		}
-
-		/* Find the target tile for the town. */
-		TileIndex target_tile;
-		switch (_settings_game.game_creation.heightmap_rotation) {
-			case HM_CLOCKWISE:
-				/* Tile coordinates align with what we expect. */
-				target_tile = TileXY(x_proportion * Map::MaxX(), y_proportion * Map::MaxY());
-				break;
-			case HM_COUNTER_CLOCKWISE:
-				/* Tile coordinates are rotated and must be adjusted. */
-				target_tile = TileXY((1 - y_proportion) * Map::MaxX(), x_proportion * Map::MaxY());
-				break;
-			default: NOT_REACHED();
-		}
-
-		TownID town_id; // The TownID of the town in OpenTTD. Not imported, but set during the founding process and stored here for convenience.
 		/* Try founding on the target tile, and if that doesn't work, find the nearest suitable tile up to 16 tiles away.
 		 * The target might be on water, blocked somehow, or on a steep slope that can't be terraformed by the founding command. */
-		for (auto tile : SpiralTileSequence(target_tile, 16, 0, 0)) {
-			std::tuple<CommandCost, Money, TownID> result = Command<Commands::FoundTown>::Do(DoCommandFlag::Execute, tile, TownSize::Small, is_city, _settings_game.economy.town_layout, false, 0, name);
+		for (TileIndex tile : SpiralTileSequence(town.target_tile, 16, 0, 0)) {
+			std::tuple<CommandCost, Money, TownID> result = Command<Commands::FoundTown>::Do(DoCommandFlag::Execute, tile, TownSize::Small, town.is_city, _settings_game.economy.town_layout, false, 0, town.name);
 
 			town_id = std::get<TownID>(result);
 
@@ -472,12 +500,12 @@ void LoadTownData()
 		/* If we still fail to found the town, we'll create a sign at the intended location and tell the player how many towns we failed to create in an error message.
 		 * This allows the player to diagnose a heightmap misalignment, if towns end up in the sea, or place towns manually, if in rough terrain. */
 		if (town_id == TownID::Invalid()) {
-			Command<Commands::PlaceSign>::Post(target_tile, name);
+			Command<Commands::PlaceSign>::Post(town.target_tile, town.name);
 			failed_towns++;
 			continue;
 		}
 
-		towns.emplace_back(std::make_pair(Town::Get(town_id), population));
+		towns.emplace_back(std::make_pair(Town::Get(town_id), town.population));
 	}
 
 	/* If we couldn't found a town (or multiple), display a message to the player with the number of failed towns. */
