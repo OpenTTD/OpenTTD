@@ -2159,7 +2159,7 @@ bool ProcessOrders(Vehicle *v)
 
 	/* If it is unchanged, keep it. */
 	if (order->Equals(v->current_order) && (v->type == VehicleType::Aircraft || v->dest_tile != INVALID_TILE) &&
-			(v->type != VehicleType::Ship || !order->IsType(OT_GOTO_STATION) || Station::Get(order->GetDestination().ToStationID())->ship_station.tile != INVALID_TILE)) {
+			(v->type != VehicleType::Ship || !order->IsType(OT_GOTO_STATION) || !Station::Get(order->GetDestination().ToStationID())->ship_station.IsEmpty())) {
 		return false;
 	}
 

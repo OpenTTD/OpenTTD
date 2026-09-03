@@ -32,6 +32,12 @@ struct OrthogonalTileArea {
 
 	OrthogonalTileArea(TileIndex start, TileIndex end);
 
+	/**
+	 * Test if this tile area is empty.
+	 * @return \c true iff the tile area is empty.
+	 */
+	inline bool IsEmpty() const { return this->tile == INVALID_TILE; }
+
 	void Add(TileIndex to_add);
 
 	/**
