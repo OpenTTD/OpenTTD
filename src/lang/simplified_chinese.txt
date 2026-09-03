@@ -3288,6 +3288,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :船闸
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :河
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :海岸线或河岸
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :船坞
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :岩石
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :海岸或河岸处有岩石
 
 # Industries come directly from their industry names
 

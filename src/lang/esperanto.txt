@@ -3382,6 +3382,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Kluzo
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rivero
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Mara aŭ rivera bordo
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Ŝipgaraĝo
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Rokoj
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Mara aŭ rivera bordo kun rokoj
 
 # Industries come directly from their industry names
 
