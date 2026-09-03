@@ -50,11 +50,12 @@ Case::Case(uint8_t caseidx, std::string_view string) :
  * Create a new string.
  * @param name    The name of the string.
  * @param english The english "translation" of the string.
+ * @param section The section for this string.
  * @param index   The index in the string table.
  * @param line    The line this string was found on.
  */
-LangString::LangString(std::string_view name, std::string_view english, size_t index, size_t line) :
-		name(name), english(english), index(index), line(line)
+LangString::LangString(std::string_view name, std::string_view english, std::string_view section, size_t index, size_t line) :
+		name(name), english(english), section(section), index(index), line(line)
 {
 }
 
@@ -532,7 +533,7 @@ void StringReader::HandleString(std::string_view src)
 		}
 
 		/* Allocate a new LangString */
-		this->data.Add(std::make_unique<LangString>(str_name, value, this->data.next_string_id++, _strgen.cur_line));
+		this->data.Add(std::make_unique<LangString>(str_name, value, this->data.next_section, this->data.next_string_id++, _strgen.cur_line));
 	} else {
 		if (ent == nullptr) {
 			StrgenWarning("String name '{}' does not exist in master file", str_name);
@@ -557,6 +558,8 @@ void StringReader::HandleString(std::string_view src)
 			ent->line = _strgen.cur_line;
 		}
 	}
+
+	this->data.last_section = this->data.next_section;
 }
 
 void StringReader::HandlePragma(std::string_view str, LanguagePackHeader &lang)
@@ -601,17 +604,17 @@ void StringReader::ParseFile()
  * Write the header information.
  * @param data The data about the string.
  */
-void HeaderWriter::WriteHeader(const StringData &data)
+void HeaderWriter::WriteHeader(const StringData &data, std::string_view section)
 {
 	size_t last = 0;
 	for (size_t i = 0; i < data.max_strings; i++) {
 		if (data.strings[i] != nullptr) {
-			this->WriteStringID(data.strings[i]->name, i);
+			if (data.strings[i]->section == section) this->WriteStringID(data.strings[i]->name, i);
 			last = i;
 		}
 	}
 
-	this->WriteStringID("STR_LAST_STRINGID", last);
+	if (section.empty()) this->WriteStringID("STR_LAST_STRINGID", last);
 }
 
 static size_t TranslateArgumentIdx(size_t argidx, size_t offset)

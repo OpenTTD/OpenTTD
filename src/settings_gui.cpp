@@ -59,6 +59,7 @@
 #include "widgets/misc_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_metadata.h"
 
 #include "dropdown_common_type.h"
 

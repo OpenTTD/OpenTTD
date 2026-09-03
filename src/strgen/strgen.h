@@ -15,6 +15,7 @@
 #include "../string_type.h"
 #include "../3rdparty/fmt/format.h"
 
+#include <string_view>
 #include <unordered_map>
 #include <array>
 
@@ -31,11 +32,12 @@ struct LangString {
 	std::string name;       ///< Name of the string.
 	std::string english;    ///< English text.
 	std::string translated; ///< Translated text.
+	std::string_view section; ///< The string section.
 	size_t index;           ///< The index in the language file.
 	size_t line;            ///< Line of string in source-file.
 	std::vector<Case> translated_cases; ///< Cases of the translation.
 
-	LangString(std::string_view name, std::string_view english, size_t index, size_t line);
+	LangString(std::string_view name, std::string_view english, std::string_view section, size_t index, size_t line);
 	void FreeTranslation();
 };
 
@@ -46,6 +48,8 @@ struct StringData {
 	size_t tabs;          ///< The number of 'tabs' of strings.
 	size_t max_strings;   ///< The maximum number of strings.
 	size_t next_string_id;///< The next string ID to allocate.
+	std::string_view next_section; ///< The next section to use.
+	std::string_view last_section; ///< The last section.
 
 	StringData(size_t tabs);
 	void FreeTranslation();
@@ -98,13 +102,14 @@ struct HeaderWriter {
 	/**
 	 * Finalise writing the file.
 	 * @param data The data about the string.
+	 * @param stanza Write ending stanza.
 	 */
-	virtual void Finalise(const StringData &data) = 0;
+	virtual void Finalise(const StringData &data, bool stanza) = 0;
 
 	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~HeaderWriter() = default;
 
-	void WriteHeader(const StringData &data);
+	void WriteHeader(const StringData &data, std::string_view section);
 };
 
 /** Base class for all language writers. */
