@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "core/bitmath_func.hpp"
+#include "cpu.h"
 
 #include "safeguards.h"
 
@@ -72,7 +73,6 @@ static CPUIDArray CPUID([[maybe_unused]] int type)
 		info[3] |= (1<<26); /* HasCPUIDFlag(1, 3, 26) */
 #	endif
 	}
-}
 #endif
 	return info;
 }
