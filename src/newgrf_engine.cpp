@@ -515,7 +515,7 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 
 				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));
 
-				if (st != nullptr && st->airport.tile != INVALID_TILE) {
+				if (st != nullptr && !st->airport.IsEmpty()) {
 					airporttype = st->airport.GetSpec()->ttd_airport_type;
 				}
 

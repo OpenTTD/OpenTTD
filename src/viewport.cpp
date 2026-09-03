@@ -3672,7 +3672,7 @@ void MarkCatchmentTilesDirty()
 	}
 
 	if (_viewport_highlight_station != nullptr) {
-		if (_viewport_highlight_station->catchment_tiles.tile == INVALID_TILE) {
+		if (_viewport_highlight_station->catchment_tiles.IsEmpty()) {
 			MarkWholeScreenDirty();
 			_viewport_highlight_station = nullptr;
 		} else {

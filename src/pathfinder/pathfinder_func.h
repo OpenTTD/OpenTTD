@@ -28,7 +28,7 @@ inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile, Stati
 	TileArea ta = st->GetTileArea(station_type);
 
 	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
-	if (ta.tile == INVALID_TILE) return st->xy;
+	if (ta.IsEmpty()) return st->xy;
 
 	uint minx = TileX(ta.tile);  // topmost corner of station
 	uint miny = TileY(ta.tile);

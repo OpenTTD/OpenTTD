@@ -321,7 +321,7 @@ bool TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTr
 
 bool TriggerAirportAnimation(Station *st, AirportAnimationTrigger trigger, CargoType cargo_type)
 {
-	if (st->airport.tile == INVALID_TILE) return false;
+	if (st->airport.IsEmpty()) return false;
 
 	bool ret = true;
 	uint32_t random = Random();

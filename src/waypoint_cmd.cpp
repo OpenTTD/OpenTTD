@@ -281,7 +281,7 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		if (wp->owner != _current_company) return CommandCost(STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT);
 
 		/* Check if we want to expand an already existing waypoint. */
-		if (wp->train_station.tile != INVALID_TILE) {
+		if (!wp->train_station.IsEmpty()) {
 			ret = CanExpandRailStation(wp, new_location);
 			if (ret.Failed()) return ret;
 		}

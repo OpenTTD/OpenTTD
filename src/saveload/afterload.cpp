@@ -2494,7 +2494,7 @@ bool AfterLoadGame()
 	/* Oilrig was moved from id 15 to 9. */
 	if (IsSavegameVersionBefore(SaveLoadVersion::RvRealisticAcceleration)) {
 		for (Station *st : Station::Iterate()) {
-			if (st->airport.tile != INVALID_TILE && st->airport.type == 15) {
+			if (!st->airport.IsEmpty() && st->airport.type == 15) {
 				st->airport.type = AT_OILRIG;
 			}
 		}
@@ -2502,7 +2502,7 @@ bool AfterLoadGame()
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::StoreAirportSize)) {
 		for (Station *st : Station::Iterate()) {
-			if (st->airport.tile != INVALID_TILE) {
+			if (!st->airport.IsEmpty()) {
 				st->airport.w = st->airport.GetSpec()->size_x;
 				st->airport.h = st->airport.GetSpec()->size_y;
 			}
@@ -3250,7 +3250,7 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SaveLoadVersion::RepairObjectDockingTiles)) {
 		/* Placing objects on docking tiles was not updating adjacent station's docking tiles. */
 		for (Station *st : Station::Iterate()) {
-			if (st->ship_station.tile != INVALID_TILE) UpdateStationDockingTiles(st);
+			if (!st->ship_station.IsEmpty()) UpdateStationDockingTiles(st);
 		}
 	}
 
