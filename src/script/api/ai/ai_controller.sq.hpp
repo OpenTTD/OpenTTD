@@ -9,7 +9,7 @@
 
 #include "../script_controller.hpp"
 
-template <> SQInteger PushClassName<ScriptController, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIController"); return 1; }
+template <> void PushClassName<ScriptController, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIController"); }
 
 void SQAIController_Register(Squirrel &engine)
 {

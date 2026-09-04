@@ -372,6 +372,7 @@ private:
 
 #define SQ_OK (0)
 #define SQ_ERROR (-1)
+#define SQ_RETURN (1) /* a value was left on the stack */
 
 #define SQ_FAILED(res) (res<0)
 #define SQ_SUCCEEDED(res) (res>=0)
