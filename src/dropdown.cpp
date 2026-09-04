@@ -44,17 +44,19 @@ std::unique_ptr<DropDownListItem> MakeDropDownListDividerItem()
  * @param value The value to use when the item becomes selected.
  * @param masked Whether the item should be masked out.
  * @param shaded Whether the item should be shaded.
+ * @param indent By what factor the string should be indent.
  * @return Unique pointer to newly created drop down item.
  */
-std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(StringID str, int value, bool masked, bool shaded, uint indent)
 {
-	return MakeDropDownListStringItem(GetString(str), value, masked, shaded);
+	return MakeDropDownListStringItem(GetString(str), value, masked, shaded, indent);
 }
 
 /** @copydoc MakeDropDownListStringItem */
-std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, int value, bool masked, bool shaded, uint indent)
 {
-	return std::make_unique<DropDownListStringItem>(std::move(str), value, masked, shaded);
+	if (indent == 0) return std::make_unique<DropDownListStringItem>(std::move(str), value, masked, shaded);
+	return std::make_unique<DropDownIndent<DropDownListStringItem>>(indent, std::move(str), value, masked, shaded);
 }
 
 /**
@@ -65,20 +67,23 @@ std::unique_ptr<DropDownListItem> MakeDropDownListStringItem(std::string &&str, 
  * @param value The value to use when the item becomes selected.
  * @param masked Whether the item should be masked out.
  * @param shaded Whether the item should be shaded.
+ * @param indent By what factor the sprite and the string should be indent.
  * @return Unique pointer to newly created drop down item.
  */
-std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded, uint indent)
 {
-	return std::make_unique<DropDownListIconItem>(sprite, palette, GetString(str), value, masked, shaded);
+	if (indent == 0) return std::make_unique<DropDownListIconItem>(sprite, palette, GetString(str), value, masked, shaded);
+	return std::make_unique<DropDownIndent<DropDownListIconItem>>(indent, sprite, palette, GetString(str), value, masked, shaded);
 }
 
 /**
  * @copydoc MakeDropDownListIconItem
  * @param dim The rect specifying what part from the sprite should be used as an icon.
  */
-std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded)
+std::unique_ptr<DropDownListItem> MakeDropDownListIconItem(const Dimension &dim, SpriteID sprite, PaletteID palette, StringID str, int value, bool masked, bool shaded, uint indent)
 {
-	return std::make_unique<DropDownListIconItem>(dim, sprite, palette, GetString(str), value, masked, shaded);
+	if (indent == 0) return std::make_unique<DropDownListIconItem>(dim, sprite, palette, GetString(str), value, masked, shaded);
+	return std::make_unique<DropDownIndent<DropDownListIconItem>>(indent, dim, sprite, palette, GetString(str), value, masked, shaded);
 }
 
 /**
