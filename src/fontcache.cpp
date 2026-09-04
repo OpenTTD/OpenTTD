@@ -132,14 +132,7 @@ void SetFont(FontSize fontsize, const std::string &font, uint size)
 
 	if (fontsize != FontSize::Monospace) {
 		/* Try to reload only the modified font. */
-		FontCacheSettings backup = _fcsettings;
-		for (FontSize fs : EnumRange(FontSize::End)) {
-			if (fs == fontsize) continue;
-			FontCache *fc = FontCache::Get(fs);
-			GetFontCacheSubSetting(fs)->font = fc->HasParent() ? fc->GetFontName() : "";
-		}
-		CheckForMissingGlyphs();
-		_fcsettings = std::move(backup);
+		CheckForMissingGlyphs(fontsize);
 	} else {
 		FontCache::LoadFontCaches(fontsize);
 	}
