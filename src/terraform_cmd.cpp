@@ -369,8 +369,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 				 * completely off due to it basically counting terraforming double, so it being
 				 * cut off earlier might even give a better estimate in some cases. */
 				if (--limit <= 0) {
-					had_success = true;
-					break;
+					return { CommandCost(STR_ERROR_TERRAFORM_LIMIT_REACHED), 0, error_tile };
 				}
 			}
 
