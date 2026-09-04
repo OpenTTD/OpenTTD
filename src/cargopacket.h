@@ -356,6 +356,18 @@ protected:
 				this->action_counts[MoveToAction::Load] == this->count);
 	}
 
+	/**
+	 * Gets the action type that is currently represented by the metadata of the cargo packet
+	 * @return the type of action represented by this cargo packet
+	 */
+	inline MoveToAction GetAction() const
+	{
+		if (this->action_counts[MoveToAction::Load] > 0) return MoveToAction::Load;
+		if (this->action_counts[MoveToAction::Keep] > 0) return MoveToAction::Keep;
+		if (this->action_counts[MoveToAction::Deliver] > 0) return MoveToAction::Deliver;
+		return MoveToAction::Transfer;
+	}
+
 	void AddToCache(const CargoPacket *cp);
 	void RemoveFromCache(const CargoPacket *cp, uint count);
 
