@@ -195,6 +195,12 @@ These include:
 
 You may also want the guide to [compiling OpenTTD](./COMPILING.md).
 
+## Code reviews
+
+OpenTTD has been developed and maintained by many people over the years.
+We can use your help reviewing contributions, to keep that chain of people going into the future.
+
+Please see our [Reviewing](./REVIEWING.md) guide for more information.
 
 ## Use of AI
 
