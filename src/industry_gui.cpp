@@ -2537,7 +2537,7 @@ struct IndustryCargoesWindow : public Window {
 	typedef std::vector<CargoesRow> Fields;
 
 	Fields fields{}; ///< Fields to display in the #WID_IC_PANEL.
-	uint ind_cargo = 0; ///< If less than #NUM_INDUSTRYTYPES, an industry type, else a cargo type + NUM_INDUSTRYTYPES.
+	int ind_cargo = 0; ///< If -1, houses; if less than #NUM_INDUSTRYTYPES, an industry type; else a cargo type + NUM_INDUSTRYTYPES.
 	Dimension cargo_textsize{}; ///< Size to hold any cargo text, as well as STR_INDUSTRY_CARGOES_SELECT_CARGO.
 	Dimension ind_textsize{}; ///< Size to hold any industry type text, as well as STR_INDUSTRY_CARGOES_SELECT_INDUSTRY.
 	Scrollbar *vscroll = nullptr;
@@ -2586,7 +2586,13 @@ struct IndustryCargoesWindow : public Window {
 		/* Decide about the size of the box holding the text of an industry type. */
 		this->ind_textsize.width = 0;
 		this->ind_textsize.height = 0;
-		CargoesField::max_cargoes = 0;
+		uint houses_accept = 0, houses_supply = 0;
+		HouseZones climate_mask = GetClimateMaskForLandscape();
+		for (const CargoSpec *cargo : CargoSpec::Iterate()) {
+			houses_supply += HousesCanSupply(cargo->Index());
+			houses_accept += HousesCanAccept(climate_mask, cargo->Index());
+		}
+		CargoesField::max_cargoes = std::max<uint>(houses_accept, houses_supply);
 		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
@@ -2642,7 +2648,9 @@ struct IndustryCargoesWindow : public Window {
 	{
 		if (widget != WID_IC_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		if (this->ind_cargo < NUM_INDUSTRYTYPES) {
+		if (this->ind_cargo < 0) {
+			return GetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, STR_INDUSTRY_CARGOES_HOUSES);
+		} else if (this->ind_cargo < NUM_INDUSTRYTYPES) {
 			const IndustrySpec *indsp = GetIndustrySpec(this->ind_cargo);
 			return GetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, indsp->name);
 		} else {
@@ -2669,6 +2677,17 @@ struct IndustryCargoesWindow : public Window {
 	}
 
 	/**
+	 * Can houses be used to supply this cargo? Depends on the cargo's town production effect.
+	 * @param cargo_type The cargo to query.
+	 * @return True if this cargo can be supplied by houses.
+	 */
+	static bool HousesCanSupply(CargoType cargo_type)
+	{
+		TownProductionEffect tpe = CargoSpec::Get(cargo_type)->town_production_effect;
+		return tpe == TownProductionEffect::Passengers || tpe == TownProductionEffect::Mail;
+	}
+
+	/**
 	 * Can houses be used to supply one of the cargoes?
 	 * @param cargoes Span of cargo list.
 	 * @return Houses can supply at least one of the cargoes.
@@ -2677,8 +2696,25 @@ struct IndustryCargoesWindow : public Window {
 	{
 		for (const CargoType cargo_type : cargoes) {
 			if (!IsValidCargoType(cargo_type)) continue;
-			TownProductionEffect tpe = CargoSpec::Get(cargo_type)->town_production_effect;
-			if (tpe == TownProductionEffect::Passengers || tpe == TownProductionEffect::Mail) return true;
+			if (HousesCanSupply(cargo_type)) return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Can houses be used as customers of this cargo? Depends on whether houses are marked as accepting it.
+	 * @param climate_mask The climate whose house types to check.
+	 * @param cargo_type The cargo to query.
+	 * @return True if this cargo can be accepted by houses of the given climate.
+	 */
+	static bool HousesCanAccept(HouseZones climate_mask, CargoType cargo_type)
+	{
+		for (const auto &hs : HouseSpec::Specs()) {
+			if (!hs.enabled || !hs.building_availability.Any(climate_mask)) continue;
+
+			for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
+				if (hs.cargo_acceptance[j] > 0 && cargo_type == hs.accepts_cargo[j]) return true;
+			}
 		}
 		return false;
 	}
@@ -2694,14 +2730,7 @@ struct IndustryCargoesWindow : public Window {
 
 		for (const CargoType cargo_type : cargoes) {
 			if (!IsValidCargoType(cargo_type)) continue;
-
-			for (const auto &hs : HouseSpec::Specs()) {
-				if (!hs.enabled || !hs.building_availability.Any(climate_mask)) continue;
-
-				for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
-					if (hs.cargo_acceptance[j] > 0 && cargo_type == hs.accepts_cargo[j]) return true;
-				}
-			}
+			if (HousesCanAccept(climate_mask, cargo_type)) return true;
 		}
 		return false;
 	}
@@ -2846,6 +2875,96 @@ struct IndustryCargoesWindow : public Window {
 				supp_count++;
 			}
 			if (HasCommonValidCargo(central_sp->produced_cargo, indsp->accepts_cargo)) {
+				this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 4, it);
+				_displayed_industries.set(it);
+				cust_count++;
+			}
+		}
+		if (houses_supply) {
+			this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, NUM_INDUSTRYTYPES);
+			supp_count++;
+		}
+		if (houses_accept) {
+			this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 4, NUM_INDUSTRYTYPES);
+			cust_count++;
+		}
+
+		this->ShortenCargoColumn(1, 1, num_indrows);
+		this->ShortenCargoColumn(3, 1, num_indrows);
+		this->vscroll->SetCount(num_indrows);
+		this->SetDirty();
+		this->NotifySmallmap();
+	}
+
+	/**
+	 * Compute what and where to display for the special "Houses" industry.
+	 */
+	void ComputeHousesDisplay()
+	{
+		this->ind_cargo = -1;
+		_displayed_industries.reset();
+
+		this->fields.clear();
+		CargoesRow &first_row = this->fields.emplace_back();
+		first_row.columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
+		first_row.columns[1].MakeEmpty(CargoesFieldType::SmallEmpty);
+		first_row.columns[2].MakeEmpty(CargoesFieldType::SmallEmpty);
+		first_row.columns[3].MakeEmpty(CargoesFieldType::SmallEmpty);
+		first_row.columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
+
+		std::vector<CargoType> accepts_cargo;
+		std::vector<CargoType> produced_cargo;
+		bool houses_supply = false, houses_accept = false;
+		HouseZones climate_mask = GetClimateMaskForLandscape();
+		for (const CargoSpec *cargo : CargoSpec::Iterate()) {
+			bool supplied = HousesCanSupply(cargo->Index());
+			bool accepted = HousesCanAccept(climate_mask, cargo->Index());
+			if (supplied) {
+				produced_cargo.push_back(cargo->Index());
+			}
+			if (accepted) {
+				accepts_cargo.push_back(cargo->Index());
+			}
+			if (supplied && accepted) {
+				houses_supply = houses_accept = true;
+			}
+		}
+
+		/* Make a field consisting of two cargo columns. */
+		int num_supp = CountMatchingProducingIndustries(accepts_cargo) + houses_supply;
+		int num_cust = CountMatchingAcceptingIndustries(produced_cargo) + houses_accept;
+		int num_indrows = std::max(3, std::max(num_supp, num_cust)); // One is needed for the industry, and 2 for the cargo labels.
+		for (int i = 0; i < num_indrows; i++) {
+			CargoesRow &row = this->fields.emplace_back();
+			row.columns[0].MakeEmpty(CargoesFieldType::Empty);
+			row.columns[1].MakeCargo(accepts_cargo);
+			row.columns[2].MakeEmpty(CargoesFieldType::Empty);
+			row.columns[3].MakeCargo(produced_cargo);
+			row.columns[4].MakeEmpty(CargoesFieldType::Empty);
+		}
+		/* Add central industry. */
+		int central_row = 1 + num_indrows / 2;
+		this->fields[central_row].columns[2].MakeIndustry(NUM_INDUSTRYTYPES);
+		this->fields[central_row].ConnectIndustryProduced(2);
+		this->fields[central_row].ConnectIndustryAccepted(2);
+
+		/* Add cargo labels. */
+		this->fields[central_row - 1].MakeCargoLabel(2, true);
+		this->fields[central_row + 1].MakeCargoLabel(2, false);
+
+		/* Add suppliers and customers of houses. */
+		int supp_count = 0;
+		int cust_count = 0;
+		for (IndustryType it : _sorted_industry_types) {
+			const IndustrySpec *indsp = GetIndustrySpec(it);
+			if (!indsp->enabled) continue;
+
+			if (HasCommonValidCargo(accepts_cargo, indsp->produced_cargo)) {
+				this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, it);
+				_displayed_industries.set(it);
+				supp_count++;
+			}
+			if (HasCommonValidCargo(produced_cargo, indsp->accepts_cargo)) {
 				this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 4, it);
 				_displayed_industries.set(it);
 				cust_count++;
@@ -3048,7 +3167,11 @@ struct IndustryCargoesWindow : public Window {
 				const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
 				switch (fld->type) {
 					case CargoesFieldType::Industry:
-						if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES) this->ComputeIndustryDisplay(fld->u.industry.ind_type);
+						if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
+							this->ComputeIndustryDisplay(fld->u.industry.ind_type);
+						} else {
+							this->ComputeHousesDisplay();
+						}
 						break;
 
 					case CargoesFieldType::Cargo: {
@@ -3098,6 +3221,7 @@ struct IndustryCargoesWindow : public Window {
 
 			case WID_IC_IND_DROPDOWN: {
 				DropDownList lst;
+				lst.push_back(MakeDropDownListStringItem(STR_TOWN_BUILDING_NAME_HOUSES_1, -1));
 				for (IndustryType ind : _sorted_industry_types) {
 					const IndustrySpec *indsp = GetIndustrySpec(ind);
 					if (!indsp->enabled) continue;
@@ -3105,7 +3229,7 @@ struct IndustryCargoesWindow : public Window {
 				}
 				if (!lst.empty()) {
 					static std::string cargo_filter;
-					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
+					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? this->ind_cargo : -2;
 					ShowDropDownList(this, std::move(lst), selected, WID_IC_IND_DROPDOWN, 0, DropDownOption::Filterable, &cargo_filter);
 				}
 				break;
@@ -3115,15 +3239,17 @@ struct IndustryCargoesWindow : public Window {
 
 	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
-		if (index < 0) return;
-
 		switch (widget) {
 			case WID_IC_CARGO_DROPDOWN:
-				this->ComputeCargoDisplay(static_cast<CargoType>(index));
+				if (index >= 0) this->ComputeCargoDisplay(static_cast<CargoType>(index));
 				break;
 
 			case WID_IC_IND_DROPDOWN:
-				this->ComputeIndustryDisplay(index);
+				if (index == -1) {
+					this->ComputeHousesDisplay();
+				} else if (index >= 0) {
+					this->ComputeIndustryDisplay(index);
+				}
 				break;
 		}
 	}
@@ -3151,7 +3277,7 @@ struct IndustryCargoesWindow : public Window {
 			}
 
 			case CargoesFieldType::Industry:
-				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES && (this->ind_cargo >= NUM_INDUSTRYTYPES || fieldxy.x != 2)) {
+				if (this->ind_cargo >= NUM_INDUSTRYTYPES || fieldxy.x != 2) {
 					GuiShowTooltips(this, GetEncodedString(STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP), close_cond);
 				}
 				return true;
