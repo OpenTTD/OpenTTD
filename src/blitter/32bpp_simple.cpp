@@ -66,7 +66,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 				case BlitterMode::Transparent:
 					/* Make the current colour a bit more black, so it looks like this image is transparent */
 					if (src->a != 0) {
-						*dst = MakeTransparent(*dst, 192);
+						*dst = MakeTransparentOnce(*dst, 192);
 					}
 					break;
 

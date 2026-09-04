@@ -243,15 +243,16 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 							/* If the anim buffer contains a colour value, the image composition will
 							 * only look at the RGB brightness value. As such, we can simply darken the
 							 * RGB value to darken the anim colour. */
-							Colour b = *anim != 0 ? Colour(GetColourBrightness(*dst), 0, 0) : *dst;
-							*dst = this->MakeTransparent(b, 3, 4);
+							Colour b = *anim != 0 ? Colour(GetColourBrightness(*dst), 0, 0, dst->a) : *dst;
+							*dst = this->MakeTransparentOnce(b, 3, 4);
 							anim++;
 							dst++;
 						} while (--n != 0);
 					} else {
 						do {
 							Colour b = this->RealizeBlendedColour(*anim, *dst);
-							*dst = this->MakeTransparent(b, (256 * 4 - src_px->a), 256 * 4);
+							b.a = dst->a; // Keep original pixel alpha to avoid double darkening
+							*dst = this->MakeTransparentOnce(b, (256 * 4 - src_px->a), 256 * 4);
 							*anim = 0; // Animation colours don't work with alpha-blending.
 							anim++;
 							dst++;
