@@ -83,7 +83,7 @@ static WindowDesc _textfile_desc(
 	_nested_textfile_widgets
 );
 
-TextfileWindow::TextfileWindow(Window *parent, TextfileType file_type) : Window(_textfile_desc), BaseStringMissingGlyphSearcher(FontSize::Monospace), file_type(file_type)
+TextfileWindow::TextfileWindow(Window *parent, TextfileType file_type) : Window(_textfile_desc), file_type(file_type)
 {
 	/* Init of nested tree is deferred.
 	 * TextfileWindow::ConstructWindow must be called by the inheriting window. */
@@ -912,7 +912,7 @@ void TextfileWindow::LoadText(std::string_view buf)
 	this->AfterLoadText();
 	this->ReflowContent();
 
-	CheckForMissingGlyphs(this);
+	CheckForMissingGlyphs(FontSize::Monospace, this);
 
 	/* The font may have changed when searching for glyphs, so ensure widget sizes are updated just in case. */
 	this->ReInit();

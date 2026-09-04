@@ -381,7 +381,7 @@ bool HandleBootstrap()
 	/* Initialise the font cache. */
 	InitializeUnicodeGlyphMap();
 	/* Next "force" finding a suitable non-sprite font as the local font is missing. */
-	CheckForMissingGlyphs();
+	CheckForMissingGlyphs(FontSize::Normal);
 
 	/* Initialise the palette. The biggest step is 'faking' some recolour sprites.
 	 * This way the mauve and gray colours work and we can show the user interface. */
