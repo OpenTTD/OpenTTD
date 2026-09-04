@@ -2331,12 +2331,6 @@ void BaseStringMissingGlyphSearcher::DetermineRequiredGlyphs(FontSizes fontsizes
 
 /** Helper for searching through the language pack. */
 class LanguagePackGlyphSearcher : public BaseStringMissingGlyphSearcher {
-public:
-	/**
-	 * Create this language pack glyph searcher.
-	 */
-	LanguagePackGlyphSearcher() : BaseStringMissingGlyphSearcher(FONTSIZES_REQUIRED) {}
-
 private:
 	uint i; ///< Iterator for the primary language tables.
 	uint j; ///< Iterator for the secondary language tables.
@@ -2377,17 +2371,18 @@ private:
  * mean it might use characters that are not in the
  * font, which is the whole reason this check has
  * been added.
+ * @param fontsizes Font sizes to consider.
  * @param searcher  The methods to use to search for strings to check.
  *                  If nullptr the loaded language pack searcher is used.
  */
-void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
+void CheckForMissingGlyphs(FontSizes fontsizes, MissingGlyphSearcher *searcher)
 {
 	static LanguagePackGlyphSearcher pack_searcher;
 	if (searcher == nullptr) searcher = &pack_searcher;
 
-	FontCache::LoadFontCaches(searcher->fontsizes);
+	FontCache::LoadFontCaches(fontsizes);
 
-	searcher->DetermineRequiredGlyphs(searcher->fontsizes);
+	searcher->DetermineRequiredGlyphs(fontsizes);
 	bool bad_font = searcher->missing_fontsizes.Any();
 
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
@@ -2418,7 +2413,7 @@ void CheckForMissingGlyphs(MissingGlyphSearcher *searcher)
 #endif
 
 	/* Update the font width cache */
-	LoadStringWidthTable(searcher->fontsizes);
+	LoadStringWidthTable(fontsizes);
 
 	if (bad_font) {
 		/* All attempts have failed. Display an error. As we do not want the string to be translated by
