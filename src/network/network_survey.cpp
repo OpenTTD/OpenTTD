@@ -89,16 +89,16 @@ std::string NetworkSurveyHandler::CreatePayload(Reason reason, bool for_preview)
 void NetworkSurveyHandler::Transmit(Reason reason, bool blocking)
 {
 	if constexpr (!NetworkSurveyHandler::IsSurveyPossible()) {
-		Debug(net, 4, "Survey: not possible to send survey; most likely due to missing JSON library at compile-time");
+		Debug(Facility::Net, Severity::Info, "Survey: not possible to send survey; most likely due to missing JSON library at compile-time");
 		return;
 	}
 
 	if (_settings_client.network.participate_survey != ParticipateSurvey::Yes) {
-		Debug(net, 5, "Survey: user is not participating in survey; skipping survey");
+		Debug(Facility::Net, Severity::Debug1, "Survey: user is not participating in survey; skipping survey");
 		return;
 	}
 
-	Debug(net, 1, "Survey: sending survey results");
+	Debug(Facility::Net, Severity::Error, "Survey: sending survey results");
 	NetworkHTTPSocketHandler::Connect(NetworkSurveyUriString(), this, this->CreatePayload(reason));
 
 	if (blocking) {
@@ -116,7 +116,7 @@ void NetworkSurveyHandler::Transmit(Reason reason, bool blocking)
 
 void NetworkSurveyHandler::OnFailure()
 {
-	Debug(net, 1, "Survey: failed to send survey results");
+	Debug(Facility::Net, Severity::Error, "Survey: failed to send survey results");
 	this->transmitted = true;
 	this->transmitted_cv.notify_all();
 }
@@ -124,7 +124,7 @@ void NetworkSurveyHandler::OnFailure()
 void NetworkSurveyHandler::OnReceiveData(std::unique_ptr<char[]> data, size_t)
 {
 	if (data == nullptr) {
-		Debug(net, 1, "Survey: survey results sent");
+		Debug(Facility::Net, Severity::Error, "Survey: survey results sent");
 		this->transmitted = true;
 		this->transmitted_cv.notify_all();
 	}

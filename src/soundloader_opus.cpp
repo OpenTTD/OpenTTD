@@ -58,7 +58,7 @@ public:
 		int error = 0;
 		auto of = AutoRelease<OggOpusFile, op_free>(op_open_memory(tmp.data(), tmp.size(), &error));
 		if (error != 0) {
-			Debug(grf, 0, "SoundLoader_Opus: Unable to open stream.");
+			Debug(Facility::Grf, Severity::Fatal, "SoundLoader_Opus: Unable to open stream.");
 			return false;
 		}
 
@@ -71,14 +71,14 @@ public:
 			if (read == 0) break;
 
 			if (read < 0) {
-				Debug(grf, 0, "SoundLoader_Opus: Unexpected end of stream.");
+				Debug(Facility::Grf, Severity::Fatal, "SoundLoader_Opus: Unexpected end of stream.");
 				data.clear();
 				return false;
 			}
 
 			int channels = op_channel_count(of.get(), link_index);
 			if (channels != 1) {
-				Debug(grf, 0, "SoundLoader_Opus: Unsupported channels {}, expected 1.", channels);
+				Debug(Facility::Grf, Severity::Fatal, "SoundLoader_Opus: Unsupported channels {}, expected 1.", channels);
 				data.clear();
 				return false;
 			}

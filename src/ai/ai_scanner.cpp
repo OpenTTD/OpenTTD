@@ -54,7 +54,7 @@ void AIScannerInfo::RegisterAPI(class Squirrel &engine)
 AIInfo *AIScannerInfo::SelectRandomAI() const
 {
 	if (_game_mode == GameMode::Menu) {
-		Debug(script, 0, "The intro game should not use AI, loading 'dummy' AI.");
+		Debug(Facility::Script, Severity::Fatal, "The intro game should not use AI, loading 'dummy' AI.");
 		return this->info_dummy.get();
 	}
 
@@ -63,7 +63,7 @@ AIInfo *AIScannerInfo::SelectRandomAI() const
 
 	uint num_random_ais = std::ranges::distance(random_ais);
 	if (num_random_ais == 0) {
-		Debug(script, 0, "No suitable AI found, loading 'dummy' AI.");
+		Debug(Facility::Script, Severity::Fatal, "No suitable AI found, loading 'dummy' AI.");
 		return this->info_dummy.get();
 	}
 

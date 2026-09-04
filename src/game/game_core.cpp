@@ -153,7 +153,7 @@
 	 *  the GameConfig. If not, remove the Game from the list. */
 	if (_settings_game.script_config.game != nullptr && _settings_game.script_config.game->HasScript()) {
 		if (!_settings_game.script_config.game->ResetInfo(true)) {
-			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_game.script_config.game->GetName());
+			Debug(Facility::Script, Severity::Fatal, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_game.script_config.game->GetName());
 			_settings_game.script_config.game->Change(std::nullopt);
 			if (Game::instance != nullptr) Game::ResetInstance();
 		} else if (Game::instance != nullptr) {
@@ -162,7 +162,7 @@
 	}
 	if (_settings_newgame.script_config.game != nullptr && _settings_newgame.script_config.game->HasScript()) {
 		if (!_settings_newgame.script_config.game->ResetInfo(false)) {
-			Debug(script, 0, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_newgame.script_config.game->GetName());
+			Debug(Facility::Script, Severity::Fatal, "After a reload, the GameScript by the name '{}' was no longer found, and removed from the list.", _settings_newgame.script_config.game->GetName());
 			_settings_newgame.script_config.game->Change(std::nullopt);
 		}
 	}

@@ -55,13 +55,13 @@ public:
 			if (tag == WavTag{"fmt "}) {
 				uint16_t format = file.ReadWord();
 				if (format != 1) {
-					Debug(grf, 0, "SoundLoader_Wav: Unsupported format {}, expected 1 (uncompressed PCM).", format);
+					Debug(Facility::Grf, Severity::Fatal, "SoundLoader_Wav: Unsupported format {}, expected 1 (uncompressed PCM).", format);
 					return false;
 				}
 
 				sound.channels = file.ReadWord();
 				if (sound.channels != 1) {
-					Debug(grf, 0, "SoundLoader_Wav: Unsupported channels {}, expected 1.", sound.channels);
+					Debug(Facility::Grf, Severity::Fatal, "SoundLoader_Wav: Unsupported channels {}, expected 1.", sound.channels);
 					return false;
 				}
 
@@ -73,7 +73,7 @@ public:
 
 				sound.bits_per_sample = file.ReadWord();
 				if (sound.bits_per_sample != 8 && sound.bits_per_sample != 16) {
-					Debug(grf, 0, "SoundLoader_Wav: Unsupported bits_per_sample {}, expected 8 or 16.", sound.bits_per_sample);
+					Debug(Facility::Grf, Severity::Fatal, "SoundLoader_Wav: Unsupported bits_per_sample {}, expected 8 or 16.", sound.bits_per_sample);
 					return false;
 				}
 
@@ -83,7 +83,7 @@ public:
 				uint align = sound.channels * sound.bits_per_sample / 8;
 				if (Align(size, align) != size) {
 					/* Ensure length is aligned correctly for channels and BPS. */
-					Debug(grf, 0, "SoundLoader_Wav: Unexpected end of stream.");
+					Debug(Facility::Grf, Severity::Fatal, "SoundLoader_Wav: Unexpected end of stream.");
 					return false;
 				}
 

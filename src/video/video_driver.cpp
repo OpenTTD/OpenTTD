@@ -91,7 +91,7 @@ void VideoDriver::StartGameThread()
 		this->is_game_threaded = StartNewThread(&this->game_thread, "ottd:game", &VideoDriver::GameThreadThunk, this);
 	}
 
-	Debug(driver, 1, "using {}thread for game-loop", this->is_game_threaded ? "" : "no ");
+	Debug(Facility::Driver, Severity::Error, "using {}thread for game-loop", this->is_game_threaded ? "" : "no ");
 }
 
 void VideoDriver::StopGameThread()

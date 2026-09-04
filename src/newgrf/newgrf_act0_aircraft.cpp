@@ -50,7 +50,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 				if (IsValidNewGRFImageIndex<VehicleType::Aircraft>(spriteid)) {
 					avi->image_index = spriteid;
 				} else {
-					GrfMsg(1, "AircraftVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);
+					GrfMsg(Severity::Error, "AircraftVehicleChangeInfo: Invalid Sprite {} specified, ignoring", orig_spriteid);
 					avi->image_index = 0;
 				}
 				break;

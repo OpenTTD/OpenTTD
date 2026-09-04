@@ -875,7 +875,7 @@ public:
 	{
 		/* The two vectors should be the same size, but if not we can just ignore the cache and not cause more issues. */
 		if (rv_path_td.size() != rv_path_tile.size()) {
-			Debug(sl, 1, "Found RoadVehicle {} with invalid path cache, ignoring.", rv.index);
+			Debug(Facility::Sl, Severity::Error, "Found RoadVehicle {} with invalid path cache, ignoring.", rv.index);
 			return;
 		}
 		size_t n = std::min(rv_path_td.size(), rv_path_tile.size());

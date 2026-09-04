@@ -116,7 +116,7 @@ bool NetworkContentSocketHandler::HandlePacket(Packet &p)
 		case PacketContentType::ServerContent: return this->ReceiveServerContent(p);
 
 		default:
-			Debug(net, 0, "[tcp/content] Received invalid packet type {}", type);
+			Debug(Facility::Net, Severity::Fatal, "[tcp/content] Received invalid packet type {}", type);
 			return false;
 	}
 }
@@ -165,7 +165,7 @@ bool NetworkContentSocketHandler::ReceivePackets()
  */
 bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
 {
-	Debug(net, 0, "[tcp/content] Received illegal packet type {}", type);
+	Debug(Facility::Net, Severity::Fatal, "[tcp/content] Received illegal packet type {}", type);
 	return false;
 }
 

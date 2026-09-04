@@ -72,7 +72,7 @@ public:
 
 		if (error != nullptr) {
 			/* Could not resample, try using the original data as-is without resampling instead. */
-			Debug(misc, 0, "Failed to resample: {}", soxr_strerror(error));
+			Debug(Facility::Misc, Severity::Fatal, "Failed to resample: {}", soxr_strerror(error));
 			data.swap(tmp);
 		} else {
 			sound.rate = play_rate;

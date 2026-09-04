@@ -123,7 +123,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	assert(this->sock != INVALID_SOCKET);
 
 	if (!this->HasClientQuit()) {
-		Debug(net, 3, "Closed client connection {}", this->client_id);
+		Debug(Facility::Net, Severity::Notice, "Closed client connection {}", this->client_id);
 
 		this->SendPackets(true);
 
@@ -237,8 +237,8 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 			if (_sync_seed_1 != _random.state[0]) {
 #endif
 				ShowNetworkError(STR_NETWORK_ERROR_DESYNC);
-				Debug(desync, 1, "sync_err: {:08x}; {:02x}", TimerGameEconomy::date, TimerGameEconomy::date_fract);
-				Debug(net, 0, "Sync error detected");
+				Debug(Facility::Desync, Severity::Error, "sync_err: {:08x}; {:02x}", TimerGameEconomy::date, TimerGameEconomy::date_fract);
+				Debug(Facility::Net, Severity::Fatal, "Sync error detected");
 				my_client->ClientError(NetworkRecvStatus::Desync);
 				return false;
 			}
@@ -253,7 +253,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 
 			_sync_frame = 0;
 		} else if (_sync_frame < _frame_counter) {
-			Debug(net, 1, "Missed frame for sync-test: {} / {}", _sync_frame, _frame_counter);
+			Debug(Facility::Net, Severity::Error, "Missed frame for sync-test: {} / {}", _sync_frame, _frame_counter);
 			_sync_frame = 0;
 		}
 	}
@@ -286,11 +286,11 @@ NetworkJoinInfo _network_join;
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 {
-	Debug(net, 9, "Client::SendJoin()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendJoin()");
 
-	Debug(net, 9, "Client::status = JOIN");
+	Debug(Facility::Net, Severity::Trace3, "Client::status = JOIN");
 	my_client->status = ServerStatus::Join;
-	Debug(net, 9, "Client::join_status = Authorizing");
+	Debug(Facility::Net, Severity::Trace3, "Client::join_status = Authorizing");
 	_network_join_status = NetworkJoinStatus::Authorizing;
 	SetWindowDirty(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join);
 
@@ -308,7 +308,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendIdentify()
 {
-	Debug(net, 9, "Client::SendIdentify()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendIdentify()");
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientIdentify);
 	p->Send_string(_settings_client.network.client_name); // Client name
@@ -323,7 +323,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendIdentify()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 {
-	Debug(net, 9, "Client::SendNewGRFsOk()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendNewGRFsOk()");
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientNewGRFsChecked);
 	my_client->SendPacket(std::move(p));
@@ -336,7 +336,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendAuthResponse()
 {
-	Debug(net, 9, "Client::SendAuthResponse()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendAuthResponse()");
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientAuthenticationResponse);
 	my_client->authentication_handler->SendResponse(*p);
@@ -351,9 +351,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAuthResponse()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 {
-	Debug(net, 9, "Client::SendGetMap()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendGetMap()");
 
-	Debug(net, 9, "Client::status = MAP_WAIT");
+	Debug(Facility::Net, Severity::Trace3, "Client::status = MAP_WAIT");
 	my_client->status = ServerStatus::MapWait;
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientGetMap);
@@ -367,9 +367,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 {
-	Debug(net, 9, "Client::SendMapOk()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendMapOk()");
 
-	Debug(net, 9, "Client::status = ACTIVE");
+	Debug(Facility::Net, Severity::Trace3, "Client::status = ACTIVE");
 	my_client->status = ServerStatus::Active;
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientMapOk);
@@ -383,7 +383,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 {
-	Debug(net, 9, "Client::SendAck()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendAck()");
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientAck);
 
@@ -400,7 +400,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket &cp)
 {
-	Debug(net, 9, "Client::SendCommand(): cmd={}", cp.cmd);
+	Debug(Facility::Net, Severity::Trace3, "Client::SendCommand(): cmd={}", cp.cmd);
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientCommand);
 	my_client->NetworkGameSocketHandler::SendCommand(*p, cp);
@@ -420,7 +420,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacke
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, NetworkChatDestinationType type, int dest, std::string_view msg, int64_t data)
 {
-	Debug(net, 9, "Client::SendChat(): action={}, type={}, dest={}", action, type, dest);
+	Debug(Facility::Net, Severity::Trace3, "Client::SendChat(): action={}, type={}, dest={}", action, type, dest);
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientChat);
 
@@ -441,7 +441,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action,
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode errorno)
 {
-	Debug(net, 9, "Client::SendError(): errorno={}", errorno);
+	Debug(Facility::Net, Severity::Trace3, "Client::SendError(): errorno={}", errorno);
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientError);
 
@@ -457,7 +457,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode err
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const std::string &name)
 {
-	Debug(net, 9, "Client::SendSetName()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendSetName()");
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientSetName);
 
@@ -472,7 +472,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const std::string 
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
 {
-	Debug(net, 9, "Client::SendQuit()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendQuit()");
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientQuit);
 
@@ -488,7 +488,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(std::string_view pass, std::string_view command)
 {
-	Debug(net, 9, "Client::SendRCon()");
+	Debug(Facility::Net, Severity::Trace3, "Client::SendRCon()");
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientRemoteConsoleCommand);
 	p->Send_string(pass);
@@ -504,7 +504,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(std::string_view pass
  */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company)
 {
-	Debug(net, 9, "Client::SendMove(): company={}", company);
+	Debug(Facility::Net, Severity::Trace3, "Client::SendMove(): company={}", company);
 
 	auto p = std::make_unique<Packet>(my_client, PacketGameType::ClientMove);
 	p->Send_uint8(company);
@@ -531,7 +531,7 @@ extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, Detaile
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerFull(Packet &)
 {
-	Debug(net, 9, "Client::ReceiveServerFull()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerFull()");
 
 	/* We try to join a server which is full */
 	ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_SERVER_FULL), {}, WarningLevel::Critical);
@@ -541,7 +541,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerFull(Packet &)
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerBanned(Packet &)
 {
-	Debug(net, 9, "Client::ReceiveServerBanned()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerBanned()");
 
 	/* We try to join a server where we are banned */
 	ShowErrorMessage(GetEncodedString(STR_NETWORK_ERROR_SERVER_BANNED), {}, WarningLevel::Critical);
@@ -558,7 +558,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerClientInfo(Packet
 	ClientID client_id = (ClientID)p.Recv_uint32();
 	CompanyID playas = (CompanyID)p.Recv_uint8();
 
-	Debug(net, 9, "Client::ReceiveServerClientInfo(): client_id={}, playas={}", client_id, playas);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerClientInfo(): client_id={}, playas={}", client_id, playas);
 
 	std::string name = p.Recv_string(NETWORK_NAME_LENGTH);
 	std::string public_key = p.Recv_string(NETWORK_PUBLIC_KEY_LENGTH);
@@ -656,7 +656,7 @@ static StringID GetLongNetworkErrorString(NetworkErrorCode error)
 NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerError(Packet &p)
 {
 	NetworkErrorCode error = static_cast<NetworkErrorCode>(p.Recv_uint8());
-	Debug(net, 9, "Client::ReceiveServerError(): error={}", error);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerError(): error={}", error);
 
 	StringID err = GetLongNetworkErrorString(error);
 	/* In case of kicking a client, we assume there is a kick message in the packet if we can read one byte */
@@ -681,7 +681,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerCheckNewGRFs(Pack
 	uint grf_count = p.Recv_uint8();
 	NetworkRecvStatus ret = NetworkRecvStatus::Okay;
 
-	Debug(net, 9, "Client::ReceiveServerCheckNewGRFs(): grf_count={}", grf_count);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerCheckNewGRFs(): grf_count={}", grf_count);
 
 	/* Check all GRFs */
 	for (; grf_count > 0; grf_count--) {
@@ -692,7 +692,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerCheckNewGRFs(Pack
 		const GRFConfig *f = FindGRFConfig(c.grfid, FindGRFConfigMode::Exact, &c.md5sum);
 		if (f == nullptr) {
 			/* We do not know this GRF, bail out of initialization */
-			Debug(grf, 0, "NewGRF {} not found; checksum {}", FormatArrayAsHex(c.grfid), FormatArrayAsHex(c.md5sum));
+			Debug(Facility::Grf, Severity::Fatal, "NewGRF {} not found; checksum {}", FormatArrayAsHex(c.grfid), FormatArrayAsHex(c.md5sum));
 			ret = NetworkRecvStatus::NewGRFMismatch;
 		}
 	}
@@ -723,10 +723,10 @@ class ClientGamePasswordRequestHandler : public NetworkAuthenticationPasswordReq
 NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerAuthenticationRequest(Packet &p)
 {
 	if (this->status != ServerStatus::Join && this->status != ServerStatus::AuthGame) return NetworkRecvStatus::MalformedPacket;
-	Debug(net, 9, "Client::status = AUTH_GAME");
+	Debug(Facility::Net, Severity::Trace3, "Client::status = AUTH_GAME");
 	this->status = ServerStatus::AuthGame;
 
-	Debug(net, 9, "Client::ReceiveServerAuthenticationRequest()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerAuthenticationRequest()");
 
 	if (this->authentication_handler == nullptr) {
 		this->authentication_handler = NetworkAuthenticationClientHandler::Create(std::make_shared<ClientGamePasswordRequestHandler>(),
@@ -749,7 +749,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerEnableEncryption(
 {
 	if (this->status != ServerStatus::AuthGame || this->authentication_handler == nullptr) return NetworkRecvStatus::MalformedPacket;
 
-	Debug(net, 9, "Client::ReceiveServerEnableEncryption()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerEnableEncryption()");
 
 	if (!this->authentication_handler->ReceiveEnableEncryption(p)) return NetworkRecvStatus::MalformedPacket;
 
@@ -757,7 +757,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerEnableEncryption(
 	this->send_encryption_handler = this->authentication_handler->CreateClientToServerEncryptionHandler();
 	this->authentication_handler = nullptr;
 
-	Debug(net, 9, "Client::status = ENCRYPTED");
+	Debug(Facility::Net, Severity::Trace3, "Client::status = ENCRYPTED");
 	this->status = ServerStatus::Encrypted;
 
 	return this->SendIdentify();
@@ -766,12 +766,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerEnableEncryption(
 NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerWelcome(Packet &p)
 {
 	if (this->status < ServerStatus::Encrypted || this->status >= ServerStatus::Authorized) return NetworkRecvStatus::MalformedPacket;
-	Debug(net, 9, "Client::status = AUTHORIZED");
+	Debug(Facility::Net, Severity::Trace3, "Client::status = AUTHORIZED");
 	this->status = ServerStatus::Authorized;
 
 	_network_own_client_id = (ClientID)p.Recv_uint32();
 
-	Debug(net, 9, "Client::ReceiveServerWelcome(): client_id={}", _network_own_client_id);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerWelcome(): client_id={}", _network_own_client_id);
 
 	/* Start receiving the map */
 	return SendGetMap();
@@ -782,10 +782,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerWaitForMap(Packet
 	/* We set the internal wait state when requesting the map. */
 	if (this->status != ServerStatus::MapWait) return NetworkRecvStatus::MalformedPacket;
 
-	Debug(net, 9, "Client::ReceiveServerWaitForMap()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerWaitForMap()");
 
 	/* But... only now we set the join status to waiting, instead of requesting. */
-	Debug(net, 9, "Client::join_status = Waiting");
+	Debug(Facility::Net, Severity::Trace3, "Client::join_status = Waiting");
 	_network_join_status = NetworkJoinStatus::Waiting;
 	_network_join_waiting = p.Recv_uint8();
 	SetWindowDirty(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join);
@@ -796,7 +796,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerWaitForMap(Packet
 NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapBegin(Packet &p)
 {
 	if (this->status < ServerStatus::Authorized || this->status >= ServerStatus::Map) return NetworkRecvStatus::MalformedPacket;
-	Debug(net, 9, "Client::status = MAP");
+	Debug(Facility::Net, Severity::Trace3, "Client::status = MAP");
 	this->status = ServerStatus::Map;
 
 	if (this->savegame != nullptr) return NetworkRecvStatus::MalformedPacket;
@@ -805,12 +805,12 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapBegin(Packet &
 
 	_frame_counter = _frame_counter_server = _frame_counter_max = p.Recv_uint32();
 
-	Debug(net, 9, "Client::ReceiveServerMapBegin(): frame_counter={}", _frame_counter);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerMapBegin(): frame_counter={}", _frame_counter);
 
 	_network_join_bytes = 0;
 	_network_join_bytes_total = 0;
 
-	Debug(net, 9, "Client::join_status = Downloading");
+	Debug(Facility::Net, Severity::Trace3, "Client::join_status = Downloading");
 	_network_join_status = NetworkJoinStatus::Downloading;
 	SetWindowDirty(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join);
 
@@ -825,7 +825,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapSize(Packet &p
 	_network_join_bytes_total = p.Recv_uint32();
 	SetWindowDirty(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join);
 
-	Debug(net, 9, "Client::ReceiveServerMapSize(): bytes_total={}", _network_join_bytes_total);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerMapSize(): bytes_total={}", _network_join_bytes_total);
 
 	return NetworkRecvStatus::Okay;
 }
@@ -849,9 +849,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapDone(Packet &)
 	if (this->status != ServerStatus::Map) return NetworkRecvStatus::MalformedPacket;
 	if (this->savegame == nullptr) return NetworkRecvStatus::MalformedPacket;
 
-	Debug(net, 9, "Client::ReceiveServerMapDone()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerMapDone()");
 
-	Debug(net, 9, "Client::join_status = Processing");
+	Debug(Facility::Net, Severity::Trace3, "Client::join_status = Processing");
 	_network_join_status = NetworkJoinStatus::Processing;
 	SetWindowDirty(WindowClass::NetworkStatus, NetworkStatusWindowNumber::Join);
 
@@ -893,7 +893,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMapDone(Packet &)
 		if (_network_join.company != COMPANY_SPECTATOR) {
 			/* We have arrived and ready to start playing; send a command to make a new company;
 			 * the server will give us a client-id and let us in */
-			Debug(net, 9, "Client::join_status = Registering");
+			Debug(Facility::Net, Severity::Trace3, "Client::join_status = Registering");
 			_network_join_status = NetworkJoinStatus::Registering;
 			ShowJoinStatusWindow();
 			Command<Commands::CompanyControl>::Post(CompanyCtrlAction::New, CompanyID::Invalid(), CompanyRemoveReason::None, _network_own_client_id);
@@ -936,7 +936,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerFrame(Packet &p)
 	 *  We do this only once per day, to save some bandwidth ;) */
 	if (!_network_first_time && last_ack_frame < _frame_counter) {
 		last_ack_frame = _frame_counter + Ticks::DAY_TICKS;
-		Debug(net, 7, "Sent ACK at {}", _frame_counter);
+		Debug(Facility::Net, Severity::Trace1, "Sent ACK at {}", _frame_counter);
 		SendAck();
 	}
 
@@ -953,7 +953,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerSync(Packet &p)
 	_sync_seed_2 = p.Recv_uint32();
 #endif
 
-	Debug(net, 9, "Client::ReceiveServerSync(): sync_frame={}, sync_seed_1={}", _sync_frame, _sync_seed_1);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerSync(): sync_frame={}, sync_seed_1={}", _sync_frame, _sync_seed_1);
 
 	return NetworkRecvStatus::Okay;
 }
@@ -967,7 +967,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerCommand(Packet &p
 	cp.frame    = p.Recv_uint32();
 	cp.my_cmd   = p.Recv_bool();
 
-	Debug(net, 9, "Client::ReceiveServerCommand(): cmd={}, frame={}", cp.cmd, cp.frame);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerCommand(): cmd={}, frame={}", cp.cmd, cp.frame);
 
 	if (err.has_value()) {
 		IConsolePrint(CC_WARNING, "Dropping server connection due to {}.", *err);
@@ -992,7 +992,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerChat(Packet &p)
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 	int64_t data = p.Recv_uint64();
 
-	Debug(net, 9, "Client::ReceiveServerChat(): action={}, client_id={}, self_send={}", action, client_id, self_send);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerChat(): action={}, client_id={}, self_send={}", action, client_id, self_send);
 
 	ci_to = NetworkClientInfo::GetByClientID(client_id);
 	if (ci_to == nullptr) return NetworkRecvStatus::Okay;
@@ -1038,7 +1038,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerExternalChat(Pack
 	std::string user = p.Recv_string(NETWORK_CHAT_LENGTH);
 	std::string msg = p.Recv_string(NETWORK_CHAT_LENGTH);
 
-	Debug(net, 9, "Client::ReceiveServerExternalChat(): source={}", source);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerExternalChat(): source={}", source);
 
 	if (!IsValidConsoleColour(colour)) return NetworkRecvStatus::MalformedPacket;
 
@@ -1053,7 +1053,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerErrorQuit(Packet 
 
 	ClientID client_id = (ClientID)p.Recv_uint32();
 
-	Debug(net, 9, "Client::ReceiveServerErrorQuit(): client_id={}", client_id);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerErrorQuit(): client_id={}", client_id);
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
@@ -1072,14 +1072,14 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerQuit(Packet &p)
 
 	ClientID client_id = (ClientID)p.Recv_uint32();
 
-	Debug(net, 9, "Client::ReceiveServerQuit(): client_id={}", client_id);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerQuit(): client_id={}", client_id);
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
 		NetworkTextMessage(NetworkAction::ClientLeave, CC_DEFAULT, false, ci->client_name, "", STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 		delete ci;
 	} else {
-		Debug(net, 1, "Unknown client ({}) is leaving the game", client_id);
+		Debug(Facility::Net, Severity::Error, "Unknown client ({}) is leaving the game", client_id);
 	}
 
 	InvalidateWindowData(WindowClass::NetworkClientList, 0);
@@ -1094,7 +1094,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerClientJoined(Pack
 
 	ClientID client_id = (ClientID)p.Recv_uint32();
 
-	Debug(net, 9, "Client::ReceiveServerClientJoined(): client_id={}", client_id);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerClientJoined(): client_id={}", client_id);
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
@@ -1108,7 +1108,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerClientJoined(Pack
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerShutdown(Packet &)
 {
-	Debug(net, 9, "Client::ReceiveServerShutdown()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerShutdown()");
 
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
@@ -1123,7 +1123,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerShutdown(Packet &
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerNewGame(Packet &)
 {
-	Debug(net, 9, "Client::ReceiveServerNewGame()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerNewGame()");
 
 	/* Only when we're trying to join we really
 	 * care about the server shutting down. */
@@ -1144,7 +1144,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerRemoteConsoleComm
 {
 	if (this->status < ServerStatus::Authorized) return NetworkRecvStatus::MalformedPacket;
 
-	Debug(net, 9, "Client::ReceiveServerRemoteConsoleCommand()");
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerRemoteConsoleCommand()");
 
 	ExtendedTextColour colour = ExtendedTextColour::FromNetwork(p.Recv_uint16());
 	if (!IsValidConsoleColour(colour)) return NetworkRecvStatus::MalformedPacket;
@@ -1164,11 +1164,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerMove(Packet &p)
 	ClientID client_id{p.Recv_uint32()};
 	CompanyID company_id{p.Recv_uint8()};
 
-	Debug(net, 9, "Client::ReceiveServerMove(): client_id={}, company_id={}", client_id, company_id);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerMove(): client_id={}, company_id={}", client_id, company_id);
 
 	if (client_id == ClientID::Invalid) {
 		/* definitely an invalid client id, debug message and do nothing. */
-		Debug(net, 1, "Received invalid client index = 0");
+		Debug(Facility::Net, Severity::Error, "Received invalid client index = 0");
 		return NetworkRecvStatus::MalformedPacket;
 	}
 
@@ -1195,7 +1195,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::ReceiveServerConfigurationUpda
 
 	InvalidateWindowData(WindowClass::NetworkClientList, 0);
 
-	Debug(net, 9, "Client::ReceiveServerConfigurationUpdate(): max_companies={}", _network_server_max_companies);
+	Debug(Facility::Net, Severity::Trace3, "Client::ReceiveServerConfigurationUpdate(): max_companies={}", _network_server_max_companies);
 
 	return NetworkRecvStatus::Okay;
 }
@@ -1239,7 +1239,7 @@ void NetworkClient_Connected()
 	_frame_counter_server = 0;
 	last_ack_frame = 0;
 
-	Debug(net, 9, "Client::NetworkClient_Connected()");
+	Debug(Facility::Net, Severity::Trace3, "Client::NetworkClient_Connected()");
 
 	/* Request the game-info */
 	MyClient::SendJoin();

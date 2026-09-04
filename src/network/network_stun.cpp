@@ -40,7 +40,7 @@ public:
 
 	void OnFailure() override
 	{
-		Debug(net, 9, "Stun::OnFailure(): family={}", this->family);
+		Debug(Facility::Net, Severity::Trace3, "Stun::OnFailure(): family={}", this->family);
 
 		this->stun_handler->connecter = nullptr;
 
@@ -52,7 +52,7 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
-		Debug(net, 9, "Stun::OnConnect(): family={}", this->family);
+		Debug(Facility::Net, Severity::Trace3, "Stun::OnConnect(): family={}", this->family);
 
 		this->stun_handler->connecter = nullptr;
 
@@ -77,7 +77,7 @@ void ClientNetworkStunSocketHandler::Connect(std::string_view token, uint8_t fam
 	this->token = token;
 	this->family = family;
 
-	Debug(net, 9, "Stun::Connect(): family={}", this->family);
+	Debug(Facility::Net, Severity::Trace3, "Stun::Connect(): family={}", this->family);
 
 	this->connecter = TCPConnecter::Create<NetworkStunConnecter>(this, NetworkStunConnectionString(), token, family);
 }
@@ -99,7 +99,7 @@ std::unique_ptr<ClientNetworkStunSocketHandler> ClientNetworkStunSocketHandler::
 	p->Send_string(token);
 	p->Send_uint8(family);
 
-	Debug(net, 9, "Stun::SendStun({}, {})", token, family);
+	Debug(Facility::Net, Severity::Trace3, "Stun::SendStun({}, {})", token, family);
 	stun_handler->SendPacket(std::move(p));
 
 	return stun_handler;

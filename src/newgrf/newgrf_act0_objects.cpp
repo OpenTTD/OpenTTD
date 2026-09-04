@@ -78,7 +78,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 	ChangeInfoResult ret = ChangeInfoResult::Success;
 
 	if (last > NUM_OBJECTS_PER_GRF) {
-		GrfMsg(1, "ObjectChangeInfo: Too many objects loaded ({}), max ({}). Ignoring.", last, NUM_OBJECTS_PER_GRF);
+		GrfMsg(Severity::Error, "ObjectChangeInfo: Too many objects loaded ({}), max ({}). Ignoring.", last, NUM_OBJECTS_PER_GRF);
 		return ChangeInfoResult::InvalidId;
 	}
 
@@ -122,7 +122,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 			case 0x0C: // Size
 				spec->size = buf.ReadByte();
 				if (GB(spec->size, 0, 4) == 0 || GB(spec->size, 4, 4) == 0) {
-					GrfMsg(0, "ObjectChangeInfo: Invalid object size requested (0x{:X}) for object id {}. Ignoring.", spec->size, id);
+					GrfMsg(Severity::Fatal, "ObjectChangeInfo: Invalid object size requested (0x{:X}) for object id {}. Ignoring.", spec->size, id);
 					spec->size = OBJECT_SIZE_1X1;
 				}
 				break;
@@ -173,7 +173,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 			case 0x17: // Views
 				spec->views = buf.ReadByte();
 				if (spec->views != 1 && spec->views != 2 && spec->views != 4) {
-					GrfMsg(2, "ObjectChangeInfo: Invalid number of views ({}) for object id {}. Ignoring.", spec->views, id);
+					GrfMsg(Severity::Warning, "ObjectChangeInfo: Invalid number of views ({}) for object id {}. Ignoring.", spec->views, id);
 					spec->views = 1;
 				}
 				break;

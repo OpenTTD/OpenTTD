@@ -266,7 +266,7 @@ static std::string GetFontCacheFontName(FontSize fs)
 	}
 
 	if (matching_chars < glyphs.size()) {
-		Debug(fontcache, 1, "Font \"{}\" misses {} glyphs", name, glyphs.size() - matching_chars);
+		Debug(Facility::Fontcache, Severity::Error, "Font \"{}\" misses {} glyphs", name, glyphs.size() - matching_chars);
 		return false;
 	}
 

@@ -286,7 +286,7 @@ void NetworkTextMessage(NetworkAction action, ExtendedTextColour colour, bool se
 		default: builder += GetString(STR_NETWORK_CHAT_ALL, name, str); break;
 	}
 
-	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, message);
+	Debug(Facility::Desync, Severity::Error, "msg: {:08x}; {:02x}; {}", TimerGameEconomy::date, TimerGameEconomy::date_fract, message);
 	IConsolePrint(colour, message);
 	NetworkAddChatMessage(colour, _settings_client.gui.network_chat_timeout, message);
 }
@@ -665,7 +665,7 @@ public:
 
 	void OnFailure() override
 	{
-		Debug(net, 9, "Query::OnFailure(): connection_string={}", this->connection_string);
+		Debug(Facility::Net, Severity::Trace3, "Query::OnFailure(): connection_string={}", this->connection_string);
 
 		NetworkGame *item = NetworkGameListAddItem(connection_string);
 		item->status = NetworkGameStatus::Offline;
@@ -676,7 +676,7 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
-		Debug(net, 9, "Query::OnConnect(): connection_string={}", this->connection_string);
+		Debug(Facility::Net, Severity::Trace3, "Query::OnConnect(): connection_string={}", this->connection_string);
 
 		QueryNetworkGameSocketHandler::QueryServer(s, this->connection_string);
 	}
@@ -690,7 +690,7 @@ void NetworkQueryServer(std::string_view connection_string)
 {
 	if (!_network_available) return;
 
-	Debug(net, 9, "NetworkQueryServer(): connection_string={}", connection_string);
+	Debug(Facility::Net, Severity::Trace3, "NetworkQueryServer(): connection_string={}", connection_string);
 
 	/* Mark the entry as refreshing, so the GUI can show the refresh is pending. */
 	NetworkGame *item = NetworkGameListAddItem(connection_string);
@@ -773,14 +773,14 @@ public:
 
 	void OnFailure() override
 	{
-		Debug(net, 9, "Client::OnFailure(): connection_string={}", this->connection_string);
+		Debug(Facility::Net, Severity::Trace3, "Client::OnFailure(): connection_string={}", this->connection_string);
 
 		ShowNetworkError(STR_NETWORK_ERROR_NOCONNECTION);
 	}
 
 	void OnConnect(SOCKET s) override
 	{
-		Debug(net, 9, "Client::OnConnect(): connection_string={}", this->connection_string);
+		Debug(Facility::Net, Severity::Trace3, "Client::OnConnect(): connection_string={}", this->connection_string);
 
 		_networking = true;
 		_network_own_client_id = ClientID{};
@@ -808,7 +808,7 @@ public:
  */
 bool NetworkClientConnectGame(std::string_view connection_string, CompanyID default_company, const std::string &join_server_password)
 {
-	Debug(net, 9, "NetworkClientConnectGame(): connection_string={}", connection_string);
+	Debug(Facility::Net, Severity::Trace3, "NetworkClientConnectGame(): connection_string={}", connection_string);
 
 	CompanyID join_as = default_company;
 	std::string resolved_connection_string = ServerAddress::Parse(connection_string, NETWORK_DEFAULT_PORT, &join_as).connection_string;
@@ -845,7 +845,7 @@ void NetworkClientJoinGame()
 	NetworkInitialize();
 
 	_settings_client.network.last_joined = _network_join.connection_string;
-	Debug(net, 9, "status = Connecting");
+	Debug(Facility::Net, Severity::Trace3, "status = Connecting");
 	_network_join_status = NetworkJoinStatus::Connecting;
 	ShowJoinStatusWindow();
 
@@ -904,14 +904,14 @@ static void CheckClientAndServerName()
 	static const std::string fallback_client_name = "Unnamed Client";
 	StrTrimInPlace(_settings_client.network.client_name);
 	if (_settings_client.network.client_name.empty() || _settings_client.network.client_name == fallback_client_name) {
-		Debug(net, 1, "No \"client_name\" has been set, using \"{}\" instead. Please set this now using the \"name <new name>\" command", fallback_client_name);
+		Debug(Facility::Net, Severity::Error, "No \"client_name\" has been set, using \"{}\" instead. Please set this now using the \"name <new name>\" command", fallback_client_name);
 		_settings_client.network.client_name = fallback_client_name;
 	}
 
 	static const std::string fallback_server_name = "Unnamed Server";
 	StrTrimInPlace(_settings_client.network.server_name);
 	if (_settings_client.network.server_name.empty() || _settings_client.network.server_name == fallback_server_name) {
-		Debug(net, 1, "No \"server_name\" has been set, using \"{}\" instead. Please set this now using the \"server_name <new name>\" command", fallback_server_name);
+		Debug(Facility::Net, Severity::Error, "No \"server_name\" has been set, using \"{}\" instead. Please set this now using the \"server_name <new name>\" command", fallback_server_name);
 		_settings_client.network.server_name = fallback_server_name;
 	}
 }
@@ -934,17 +934,17 @@ bool NetworkServerStart()
 	NetworkDisconnect(false);
 	NetworkInitialize(false);
 	NetworkUDPInitialize();
-	Debug(net, 5, "Starting listeners for clients");
+	Debug(Facility::Net, Severity::Debug1, "Starting listeners for clients");
 	if (!ServerNetworkGameSocketHandler::Listen(_settings_client.network.server_port)) return false;
 
 	/* Only listen for admins when the authentication is configured. */
 	if (_settings_client.network.AdminAuthenticationConfigured()) {
-		Debug(net, 5, "Starting listeners for admins");
+		Debug(Facility::Net, Severity::Debug1, "Starting listeners for admins");
 		if (!ServerNetworkAdminSocketHandler::Listen(_settings_client.network.server_admin_port)) return false;
 	}
 
 	/* Try to start UDP-server */
-	Debug(net, 5, "Starting listeners for incoming server queries");
+	Debug(Facility::Net, Severity::Debug1, "Starting listeners for incoming server queries");
 	NetworkUDPServerListen();
 
 	_network_server = true;
@@ -1141,7 +1141,7 @@ void NetworkGameLoop()
 			/* We don't want to log multiple times if paused. */
 			static TimerGameEconomy::Date last_log;
 			if (last_log != TimerGameEconomy::date) {
-				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _random.state[0], _random.state[1]);
+				Debug(Facility::Desync, Severity::Error, "sync: {:08x}; {:02x}; {:08x}; {:08x}", TimerGameEconomy::date, TimerGameEconomy::date_fract, _random.state[0], _random.state[1]);
 				last_log = TimerGameEconomy::date;
 			}
 		}
@@ -1155,7 +1155,7 @@ void NetworkGameLoop()
 		static bool check_sync_state = false;
 		static uint32_t sync_state[2];
 		if (!f.has_value() && next_date == 0) {
-			Debug(desync, 0, "Cannot open commands.log");
+			Debug(Facility::Desync, Severity::Fatal, "Cannot open commands.log");
 			next_date = TimerGameEconomy::Date(1);
 		}
 
@@ -1163,15 +1163,15 @@ void NetworkGameLoop()
 			if (TimerGameEconomy::date == next_date && TimerGameEconomy::date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->cmd, cp->err_msg, nullptr, cp->company, cp->data);
-					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, _current_company.base(), cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
+					Debug(Facility::Desync, Severity::Fatal, "Injecting: {:08x}; {:02x}; {:02x}; {:08x}; {} ({})", TimerGameEconomy::date, TimerGameEconomy::date_fract, _current_company.base(), cp->cmd, FormatArrayAsHex(cp->data), GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
 				if (check_sync_state) {
 					if (sync_state[0] == _random.state[0] && sync_state[1] == _random.state[1]) {
-						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", TimerGameEconomy::date, TimerGameEconomy::date_fract);
+						Debug(Facility::Desync, Severity::Fatal, "Sync check: {:08x}; {:02x}; match", TimerGameEconomy::date, TimerGameEconomy::date_fract);
 					} else {
-						Debug(desync, 0, "Sync check: {:08x}; {:02x}; mismatch expected {{{:08x}, {:08x}}}, got {{{:08x}, {:08x}}}",
+						Debug(Facility::Desync, Severity::Fatal, "Sync check: {:08x}; {:02x}; mismatch expected {{{:08x}, {:08x}}}, got {{{:08x}, {:08x}}}",
 									TimerGameEconomy::date, TimerGameEconomy::date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
 						NOT_REACHED();
 					}
@@ -1181,7 +1181,7 @@ void NetworkGameLoop()
 
 			/* Skip all entries in the command-log till we caught up with the current game again. */
 			if (TimerGameEconomy::date > next_date || (TimerGameEconomy::date == next_date && TimerGameEconomy::date_fract > next_date_fract)) {
-				Debug(desync, 0, "Skipping to next command at {:08x}:{:02x}", next_date, next_date_fract);
+				Debug(Facility::Desync, Severity::Fatal, "Skipping to next command at {:08x}:{:02x}", next_date, next_date_fract);
 				if (cp != nullptr) {
 					delete cp;
 					cp = nullptr;
@@ -1233,7 +1233,7 @@ void NetworkGameLoop()
 				bool valid = consumer.ReadIf("; ");
 				next_date_fract = consumer.ReadIntegerBase<uint32_t>(16);
 				assert(valid);
-				Debug(desync, 0, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
+				Debug(Facility::Desync, Severity::Fatal, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = Commands::Pause;
@@ -1255,16 +1255,16 @@ void NetworkGameLoop()
 				/* A message that is not very important to the log playback, but part of the log. */
 #ifndef DEBUG_FAILED_DUMP_COMMANDS
 			} else if (consumer.ReadIf("cmdf: ")) {
-				Debug(desync, 0, "Skipping replay of failed command: {}", consumer.Read(StringConsumer::npos));
+				Debug(Facility::Desync, Severity::Fatal, "Skipping replay of failed command: {}", consumer.Read(StringConsumer::npos));
 #endif
 			} else {
 				/* Can't parse a line; what's wrong here? */
-				Debug(desync, 0, "Trying to parse: {}", consumer.Read(StringConsumer::npos));
+				Debug(Facility::Desync, Severity::Fatal, "Trying to parse: {}", consumer.Read(StringConsumer::npos));
 				NOT_REACHED();
 			}
 		}
 		if (f.has_value() && feof(*f)) {
-			Debug(desync, 0, "End of commands.log");
+			Debug(Facility::Desync, Severity::Fatal, "End of commands.log");
 			f.reset();
 		}
 #endif /* DEBUG_DUMP_COMMANDS */
@@ -1322,7 +1322,7 @@ void NetworkGameLoop()
 /** This tries to launch the network for a given OS */
 void NetworkStartUp()
 {
-	Debug(net, 3, "Starting network");
+	Debug(Facility::Net, Severity::Notice, "Starting network");
 
 	/* Network is available */
 	_network_available = NetworkCoreInitialize();
@@ -1332,7 +1332,7 @@ void NetworkStartUp()
 
 	NetworkInitialize();
 	NetworkUDPInitialize();
-	Debug(net, 3, "Network online, multiplayer available");
+	Debug(Facility::Net, Severity::Notice, "Network online, multiplayer available");
 	NetworkFindBroadcastIPs(&_broadcast_list);
 	NetworkHTTPInitialize();
 }
@@ -1344,7 +1344,7 @@ void NetworkShutDown()
 	NetworkHTTPUninitialize();
 	NetworkUDPClose();
 
-	Debug(net, 3, "Shutting down network");
+	Debug(Facility::Net, Severity::Notice, "Shutting down network");
 
 	_network_available = false;
 

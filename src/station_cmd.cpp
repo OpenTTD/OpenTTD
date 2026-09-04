@@ -4275,7 +4275,7 @@ void IncreaseStats(Station *st, CargoType cargo, StationID next_station_id, uint
 				ge2.link_graph = lg->index;
 				ge2.node = lg->AddNode(st2);
 			} else {
-				Debug(misc, 0, "Can't allocate link graph");
+				Debug(Facility::Misc, Severity::Fatal, "Can't allocate link graph");
 			}
 		} else {
 			lg = LinkGraph::Get(ge2.link_graph);
@@ -4425,7 +4425,7 @@ static uint UpdateStationWaiting(Station *st, CargoType cargo, uint amount, Sour
 			ge.link_graph = lg->index;
 			ge.node = lg->AddNode(st);
 		} else {
-			Debug(misc, 0, "Can't allocate link graph");
+			Debug(Facility::Misc, Severity::Fatal, "Can't allocate link graph");
 		}
 	} else {
 		lg = LinkGraph::Get(ge.link_graph);
@@ -4713,7 +4713,7 @@ void UpdateStationDockingTiles(Station *st)
 void BuildOilRig(TileIndex tile)
 {
 	if (!Station::CanAllocateItem()) {
-		Debug(misc, 0, "Can't allocate station for oilrig at 0x{:X}, reverting to oilrig only", tile);
+		Debug(Facility::Misc, Severity::Fatal, "Can't allocate station for oilrig at 0x{:X}, reverting to oilrig only", tile);
 		return;
 	}
 

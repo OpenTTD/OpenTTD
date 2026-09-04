@@ -585,8 +585,8 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SaveLoadVersion::PauseModes)) {
 		_pause_mode = (_pause_mode.base() == 2) ? PauseMode::Normal : PauseModes{};
 	} else if (_network_dedicated && _pause_mode.Test(PauseMode::Error)) {
-		Debug(net, 0, "The loading savegame was paused due to an error state");
-		Debug(net, 0, "  This savegame cannot be used for multiplayer");
+		Debug(Facility::Net, Severity::Fatal, "The loading savegame was paused due to an error state");
+		Debug(Facility::Net, Severity::Fatal, "  This savegame cannot be used for multiplayer");
 		/* Restore the signals */
 		ResetSignalHandlers();
 		return false;
@@ -2403,7 +2403,7 @@ bool AfterLoadGame()
 			/* At some point, invalid depots were saved into the game (possibly those removed in the past?)
 			 * Remove them here, so they don't cause issues further down the line */
 			if (!IsDepotTile(tile)) {
-				Debug(sl, 0, "Removing invalid depot {} at {}, {}", d->index, TileX(d->xy), TileY(d->xy));
+				Debug(Facility::Sl, Severity::Fatal, "Removing invalid depot {} at {}, {}", d->index, TileX(d->xy), TileY(d->xy));
 				delete d;
 				d = nullptr;
 				continue;
@@ -3434,7 +3434,7 @@ bool AfterLoadGame()
 	AfterLoadCompanyStats();
 	AfterLoadStoryBook();
 
-	_gamelog.PrintDebug(1);
+	_gamelog.PrintDebug(Severity::Error);
 
 	InitializeWindowsAndCaches();
 	/* Restore the signals */

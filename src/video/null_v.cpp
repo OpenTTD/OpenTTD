@@ -37,7 +37,7 @@ std::optional<std::string_view> VideoDriver_Null::Start(const StringList &parm)
 	ScreenSizeChanged();
 
 	/* Do not render, nor blit */
-	Debug(misc, 1, "Forcing blitter 'null'...");
+	Debug(Facility::Misc, Severity::Error, "Forcing blitter 'null'...");
 	BlitterFactory::SelectBlitter("null");
 	return std::nullopt;
 }

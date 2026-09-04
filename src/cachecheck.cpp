@@ -37,7 +37,7 @@ void CheckCaches()
 {
 	/* Return here so it is easy to add checks that are run
 	 * always to aid testing of caches. */
-	if (_debug_desync_level <= 1) return;
+	if (!IsVisibleSeverity(Facility::Desync, Severity::Warning)) return;
 
 	/* Check the town caches. */
 	std::vector<TownCache> old_town_caches;
@@ -51,7 +51,7 @@ void CheckCaches()
 	uint i = 0;
 	for (Town *t : Town::Iterate()) {
 		if (old_town_caches[i] != t->cache) {
-			Debug(desync, 2, "warning: town cache mismatch: town {}", t->index);
+			Debug(Facility::Desync, Severity::Warning, "warning: town cache mismatch: town {}", t->index);
 		}
 		i++;
 	}
@@ -65,7 +65,7 @@ void CheckCaches()
 	i = 0;
 	for (const Company *c : Company::Iterate()) {
 		if (old_infrastructure[i] != c->infrastructure) {
-			Debug(desync, 2, "warning: infrastructure cache mismatch: company {}", c->index);
+			Debug(Facility::Desync, Severity::Warning, "warning: infrastructure cache mismatch: company {}", c->index);
 		}
 		i++;
 	}
@@ -115,23 +115,23 @@ void CheckCaches()
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			FillNewGRFVehicleCache(u);
 			if (grf_cache[length] != u->grf_cache) {
-				Debug(desync, 2, "warning: newgrf cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
+				Debug(Facility::Desync, Severity::Warning, "warning: newgrf cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
 			}
 			if (veh_cache[length] != u->vcache) {
-				Debug(desync, 2, "warning: vehicle cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
+				Debug(Facility::Desync, Severity::Warning, "warning: vehicle cache mismatch: type {}, vehicle {}, company {}, unit number {}, wagon {}", v->type, v->index, v->owner, v->unitnumber, length);
 			}
 			switch (u->type) {
 				case VehicleType::Train:
 					if (gro_cache[length] != Train::From(u)->gcache) {
-						Debug(desync, 2, "warning: train ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
+						Debug(Facility::Desync, Severity::Warning, "warning: train ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					if (tra_cache[length] != Train::From(u)->tcache) {
-						Debug(desync, 2, "warning: train cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
+						Debug(Facility::Desync, Severity::Warning, "warning: train cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					break;
 				case VehicleType::Road:
 					if (gro_cache[length] != RoadVehicle::From(u)->gcache) {
-						Debug(desync, 2, "warning: road vehicle ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
+						Debug(Facility::Desync, Severity::Warning, "warning: road vehicle ground vehicle cache mismatch: vehicle {}, company {}, unit number {}, wagon {}", v->index, v->owner, v->unitnumber, length);
 					}
 					break;
 				default:
@@ -188,11 +188,11 @@ void CheckCaches()
 		}
 		UpdateStationDockingTiles(st);
 		if (ta.tile != st->docking_station.tile || ta.w != st->docking_station.w || ta.h != st->docking_station.h) {
-			Debug(desync, 2, "warning: station docking mismatch: station {}, company {}", st->index, st->owner);
+			Debug(Facility::Desync, Severity::Warning, "warning: station docking mismatch: station {}, company {}", st->index, st->owner);
 		}
 		for (TileIndex tile : ta) {
 			if (docking_tiles[tile] != IsDockingTile(tile)) {
-				Debug(desync, 2, "warning: docking tile mismatch: tile {}", tile);
+				Debug(Facility::Desync, Severity::Warning, "warning: docking tile mismatch: tile {}", tile);
 			}
 		}
 	}
@@ -203,7 +203,7 @@ void CheckCaches()
 	i = 0;
 	for (Station *st : Station::Iterate()) {
 		if (st->industries_near != old_station_industries_near[i]) {
-			Debug(desync, 2, "warning: station industries near mismatch: station {}", st->index);
+			Debug(Facility::Desync, Severity::Warning, "warning: station industries near mismatch: station {}", st->index);
 		}
 		i++;
 	}
@@ -212,14 +212,14 @@ void CheckCaches()
 	i = 0;
 	for (Town *t : Town::Iterate()) {
 		if (t->stations_near != old_town_stations_near[i]) {
-			Debug(desync, 2, "warning: town stations near mismatch: town {}", t->index);
+			Debug(Facility::Desync, Severity::Warning, "warning: town stations near mismatch: town {}", t->index);
 		}
 		i++;
 	}
 	i = 0;
 	for (Industry *ind : Industry::Iterate()) {
 		if (ind->stations_near != old_industry_stations_near[i]) {
-			Debug(desync, 2, "warning: industry stations near mismatch: industry {}", ind->index);
+			Debug(Facility::Desync, Severity::Warning, "warning: industry stations near mismatch: industry {}", ind->index);
 		}
 		i++;
 	}
@@ -230,13 +230,13 @@ void CheckCaches()
 
 		/* Check that the last vehicle is actually last. */
 		if (v->Last()->Next() != nullptr) {
-			Debug(desync, 2, "warning: vehicle cache mismatch, last vehicle must not have a next vehicle: type {}, vehicle {}, company {}, unit number {}, invalid 'Last()'", v->type, v->index, v->owner, v->unitnumber);
+			Debug(Facility::Desync, Severity::Warning, "warning: vehicle cache mismatch, last vehicle must not have a next vehicle: type {}, vehicle {}, company {}, unit number {}, invalid 'Last()'", v->type, v->index, v->owner, v->unitnumber);
 		}
 
 		/* Ensure that all vehicles in the chain have the same last vehicle. */
 		for (Vehicle *u = v; u != nullptr; u = u->Next()) {
 			if (u->Last() != v->Last()) {
-				Debug(desync, 2, "warning: vehicle cache mismatch, all vehicles in chain must have same last vehicle: type {}, vehicle {}, company {}, unit number {}, invalid 'Last()'", v->type, v->index, v->owner, v->unitnumber);
+				Debug(Facility::Desync, Severity::Warning, "warning: vehicle cache mismatch, all vehicles in chain must have same last vehicle: type {}, vehicle {}, company {}, unit number {}, invalid 'Last()'", v->type, v->index, v->owner, v->unitnumber);
 			}
 		}
 	}

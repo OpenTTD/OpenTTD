@@ -25,7 +25,7 @@ static void GRFComment(ByteReader &buf)
 	if (!buf.HasData()) return;
 
 	std::string_view text = buf.ReadString();
-	GrfMsg(2, "GRFComment: {}", StrMakeValid(text));
+	GrfMsg(Severity::Warning, "GRFComment: {}", StrMakeValid(text));
 }
 
 /** @copybrief GrfActionHandler::FileScan */

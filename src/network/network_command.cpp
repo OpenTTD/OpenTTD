@@ -401,7 +401,7 @@ void NetworkGameSocketHandler::SendCommand(Packet &p, const CommandPacket &cp)
 
 	size_t callback = FindCallbackIndex(cp.callback);
 	if (callback > UINT8_MAX || _cmd_dispatch[cp.cmd].Unpack[callback] == nullptr) {
-		Debug(net, 0, "Unknown callback for command; no callback sent (command: {})", cp.cmd);
+		Debug(Facility::Net, Severity::Fatal, "Unknown callback for command; no callback sent (command: {})", cp.cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
 	p.Send_uint8 ((uint8_t)callback);

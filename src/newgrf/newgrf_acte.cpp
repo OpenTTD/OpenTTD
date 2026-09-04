@@ -53,7 +53,7 @@ static void GRFInhibit(ByteReader &buf)
 
 		/* Unset activation flag */
 		if (file != nullptr && file != _cur_gps.grfconfig) {
-			GrfMsg(2, "GRFInhibit: Deactivating file '{}'", file->filename);
+			GrfMsg(Severity::Warning, "GRFInhibit: Deactivating file '{}'", file->filename);
 			GRFError *error = DisableGrf(STR_NEWGRF_ERROR_FORCEFULLY_DISABLED, file);
 			error->data = _cur_gps.grfconfig->GetName();
 		}

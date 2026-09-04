@@ -112,7 +112,7 @@ static StringID TTDPStringIDToOTTDStringIDMapping(GRFStringID str)
 
 	if (str.base() == 0) return STR_EMPTY;
 
-	Debug(grf, 0, "Unknown StringID 0x{:04X} remapped to STR_EMPTY. Please open a Feature Request if you need it", str);
+	Debug(Facility::Grf, Severity::Fatal, "Unknown StringID 0x{:04X} remapped to STR_EMPTY. Please open a Feature Request if you need it", str);
 
 	return STR_EMPTY;
 }

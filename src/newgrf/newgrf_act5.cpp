@@ -31,14 +31,14 @@ static uint16_t SanitizeSpriteOffset(uint16_t &num, uint16_t offset, int max_spr
 {
 
 	if (offset >= max_sprites) {
-		GrfMsg(1, "GraphicsNew: {} sprite offset must be less than {}, skipping", name, max_sprites);
+		GrfMsg(Severity::Error, "GraphicsNew: {} sprite offset must be less than {}, skipping", name, max_sprites);
 		uint orig_num = num;
 		num = 0;
 		return orig_num;
 	}
 
 	if (offset + num > max_sprites) {
-		GrfMsg(4, "GraphicsNew: {} sprite overflow, truncating...", name);
+		GrfMsg(Severity::Info, "GraphicsNew: {} sprite overflow, truncating...", name);
 		uint orig_num = num;
 		num = std::max(max_sprites - offset, 0);
 		return orig_num - num;
@@ -107,7 +107,7 @@ static void GraphicsNew(ByteReader &buf)
 	if ((type == 0x0D) && (num == 10) && _cur_gps.grfconfig->flags.Test(GRFConfigFlag::System)) {
 		/* Special not-TTDP-compatible case used in openttd.grf
 		 * Missing shore sprites and initialisation of SPR_SHORE_BASE */
-		GrfMsg(2, "GraphicsNew: Loading 10 missing shore sprites from extra grf.");
+		GrfMsg(Severity::Warning, "GraphicsNew: Loading 10 missing shore sprites from extra grf.");
 		LoadNextSprite(SPR_SHORE_BASE +  0, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_STEEP_S
 		LoadNextSprite(SPR_SHORE_BASE +  5, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_STEEP_W
 		LoadNextSprite(SPR_SHORE_BASE +  7, *_cur_gps.file, _cur_gps.nfo_line++); // SLOPE_WSE
@@ -124,7 +124,7 @@ static void GraphicsNew(ByteReader &buf)
 
 	/* Supported type? */
 	if ((type >= std::size(_action5_types)) || (_action5_types[type].block_type == Action5BlockType::Invalid)) {
-		GrfMsg(2, "GraphicsNew: Custom graphics (type 0x{:02X}) sprite block of length {} (unimplemented, ignoring)", type, num);
+		GrfMsg(Severity::Warning, "GraphicsNew: Custom graphics (type 0x{:02X}) sprite block of length {} (unimplemented, ignoring)", type, num);
 		_cur_gps.skip_sprites = num;
 		return;
 	}
@@ -135,14 +135,14 @@ static void GraphicsNew(ByteReader &buf)
 	 * except for the long version of the shore type:
 	 * Ignore offset if not allowed */
 	if ((action5_type->block_type != Action5BlockType::AllowOffset) && (offset != 0)) {
-		GrfMsg(1, "GraphicsNew: {} (type 0x{:02X}) do not allow an <offset> field. Ignoring offset.", action5_type->name, type);
+		GrfMsg(Severity::Error, "GraphicsNew: {} (type 0x{:02X}) do not allow an <offset> field. Ignoring offset.", action5_type->name, type);
 		offset = 0;
 	}
 
 	/* Ignore action5 if too few sprites are specified. (for TTDP compatibility)
 	 * This does not make sense, if <offset> is allowed */
 	if ((action5_type->block_type == Action5BlockType::Fixed) && (num < action5_type->min_sprites)) {
-		GrfMsg(1, "GraphicsNew: {} (type 0x{:02X}) count must be at least {}. Only {} were specified. Skipping.", action5_type->name, type, action5_type->min_sprites, num);
+		GrfMsg(Severity::Error, "GraphicsNew: {} (type 0x{:02X}) count must be at least {}. Only {} were specified. Skipping.", action5_type->name, type, action5_type->min_sprites, num);
 		_cur_gps.skip_sprites = num;
 		return;
 	}
@@ -152,7 +152,7 @@ static void GraphicsNew(ByteReader &buf)
 	SpriteID replace = action5_type->sprite_base + offset;
 
 	/* Load <num> sprites starting from <replace>, then skip <skip_num> sprites. */
-	GrfMsg(2, "GraphicsNew: Replacing sprites {} to {} of {} (type 0x{:02X}) at SpriteID 0x{:04X}", offset, offset + num - 1, action5_type->name, type, replace);
+	GrfMsg(Severity::Warning, "GraphicsNew: Replacing sprites {} to {} of {} (type 0x{:02X}) at SpriteID 0x{:04X}", offset, offset + num - 1, action5_type->name, type, replace);
 
 	if (type == 0x0D) _loaded_newgrf_features.shore = ShoreReplacement::Action5;
 
@@ -192,7 +192,7 @@ static void SkipAct5(ByteReader &buf)
 	/* Skip the sprites of this action */
 	_cur_gps.skip_sprites = buf.ReadExtendedByte();
 
-	GrfMsg(3, "SkipAct5: Skipping {} sprites", _cur_gps.skip_sprites);
+	GrfMsg(Severity::Notice, "SkipAct5: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
 /** @copydoc GrfActionHandler::FileScan */

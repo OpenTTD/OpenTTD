@@ -108,24 +108,23 @@ public:
 		this->InitNested();
 
 #if defined(_DEBUG)
-#	define LANDINFOD_LEVEL 0
+		static constexpr Severity severity = Severity::Fatal;
 #else
-#	define LANDINFOD_LEVEL 1
+		static constexpr Severity severity = Severity::Error;
 #endif
-		Debug(misc, LANDINFOD_LEVEL, "TILE: {0} (0x{0:x}) ({1},{2})", (TileIndex)tile, TileX(tile), TileY(tile));
-		Debug(misc, LANDINFOD_LEVEL, "type   = 0x{:x}", tile.type());
-		Debug(misc, LANDINFOD_LEVEL, "height = 0x{:x}", tile.height());
-		Debug(misc, LANDINFOD_LEVEL, "m1     = 0x{:x}", tile.m1());
-		Debug(misc, LANDINFOD_LEVEL, "m2     = 0x{:x}", tile.m2());
-		Debug(misc, LANDINFOD_LEVEL, "m3     = 0x{:x}", tile.m3());
-		Debug(misc, LANDINFOD_LEVEL, "m4     = 0x{:x}", tile.m4());
-		Debug(misc, LANDINFOD_LEVEL, "m5     = 0x{:x}", tile.m5());
-		Debug(misc, LANDINFOD_LEVEL, "m6     = 0x{:x}", tile.m6());
-		Debug(misc, LANDINFOD_LEVEL, "m7     = 0x{:x}", tile.m7());
-		Debug(misc, LANDINFOD_LEVEL, "m8     = 0x{:x}", tile.m8());
+		Debug(Facility::Misc, severity, "TILE: {0} (0x{0:x}) ({1},{2})", (TileIndex)tile, TileX(tile), TileY(tile));
+		Debug(Facility::Misc, severity, "type   = 0x{:x}", tile.type());
+		Debug(Facility::Misc, severity, "height = 0x{:x}", tile.height());
+		Debug(Facility::Misc, severity, "m1     = 0x{:x}", tile.m1());
+		Debug(Facility::Misc, severity, "m2     = 0x{:x}", tile.m2());
+		Debug(Facility::Misc, severity, "m3     = 0x{:x}", tile.m3());
+		Debug(Facility::Misc, severity, "m4     = 0x{:x}", tile.m4());
+		Debug(Facility::Misc, severity, "m5     = 0x{:x}", tile.m5());
+		Debug(Facility::Misc, severity, "m6     = 0x{:x}", tile.m6());
+		Debug(Facility::Misc, severity, "m7     = 0x{:x}", tile.m7());
+		Debug(Facility::Misc, severity, "m8     = 0x{:x}", tile.m8());
 
 		PrintWaterRegionDebugInfo(tile);
-#undef LANDINFOD_LEVEL
 	}
 
 	void OnInit() override

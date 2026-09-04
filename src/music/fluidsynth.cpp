@@ -64,12 +64,12 @@ static void RenderMusicStream(int16_t *buffer, size_t samples)
 static void load_and_execute_config_file(fluid_cmd_handler_t *cmd_handler, const char *config_file)
 {
 	if (std::filesystem::exists(config_file)) {
-		Debug(driver, 2, "Fluidsynth: Attempting to load config file '{}'", config_file);
+		Debug(Facility::Driver, Severity::Warning, "Fluidsynth: Attempting to load config file '{}'", config_file);
 		if (fluid_source(cmd_handler, config_file) < 0) {
-			Debug(driver, 0, "Fluidsynth: Failed to execute command configuration file '{}'", config_file);
+			Debug(Facility::Driver, Severity::Fatal, "Fluidsynth: Failed to execute command configuration file '{}'", config_file);
 		}
 	} else {
-		Debug(driver, 1, "Fluidsynth: Failed to load config file '{}' - file doesn't exist", config_file);
+		Debug(Facility::Driver, Severity::Error, "Fluidsynth: Failed to load config file '{}' - file doesn't exist", config_file);
 	}
 }
 
@@ -80,7 +80,7 @@ std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &
 	auto sfont_name = GetDriverParam(param, "soundfont");
 	int sfont_id;
 
-	Debug(driver, 1, "Fluidsynth: sf {}", sfont_name.has_value() ? *sfont_name : "(null)");
+	Debug(Facility::Driver, Severity::Error, "Fluidsynth: sf {}", sfont_name.has_value() ? *sfont_name : "(null)");
 
 	/* Create the settings. */
 	_midi.settings = new_fluid_settings();
@@ -104,7 +104,7 @@ std::optional<std::string_view> MusicDriver_FluidSynth::Start(const StringList &
 	/* Install the music render routine and set up the samplerate */
 	uint32_t samplerate = MxSetMusicSource(RenderMusicStream);
 	fluid_settings_setnum(_midi.settings, "synth.sample-rate", samplerate);
-	Debug(driver, 1, "Fluidsynth: samplerate {:.0f}", (float)samplerate);
+	Debug(Facility::Driver, Severity::Error, "Fluidsynth: samplerate {:.0f}", (float)samplerate);
 
 	/* Create the synthesizer. */
 	_midi.synth = new_fluid_synth(_midi.settings);
@@ -181,18 +181,18 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 
 	_midi.player = new_fluid_player(_midi.synth);
 	if (_midi.player == nullptr) {
-		Debug(driver, 0, "Could not create midi player");
+		Debug(Facility::Driver, Severity::Fatal, "Could not create midi player");
 		return;
 	}
 
 	if (fluid_player_add(_midi.player, filename.c_str()) != FLUID_OK) {
-		Debug(driver, 0, "Could not open music file");
+		Debug(Facility::Driver, Severity::Fatal, "Could not open music file");
 		delete_fluid_player(_midi.player);
 		_midi.player = nullptr;
 		return;
 	}
 	if (fluid_player_play(_midi.player) != FLUID_OK) {
-		Debug(driver, 0, "Could not start midi player");
+		Debug(Facility::Driver, Severity::Fatal, "Could not start midi player");
 		delete_fluid_player(_midi.player);
 		_midi.player = nullptr;
 		return;
@@ -229,6 +229,6 @@ void MusicDriver_FluidSynth::SetVolume(uint8_t vol)
 	/* Set gain using OpenTTD's volume, as a number between 0 and max_gain. */
 	double gain = (1.0 * vol) / 128.0 * _midi.max_gain;
 	if (fluid_settings_setnum(_midi.settings, "synth.gain", gain) != FLUID_OK) {
-		Debug(driver, 0, "Could not set volume");
+		Debug(Facility::Driver, Severity::Fatal, "Could not set volume");
 	}
 }

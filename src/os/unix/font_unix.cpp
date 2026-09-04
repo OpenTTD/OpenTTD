@@ -201,7 +201,7 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, MissingGlyp
 		}
 
 		if (matching_chars < callback->missing_glyphs.size()) {
-			Debug(fontcache, 1, "Font \"{}\" misses {} glyphs", FromFcString(file), callback->missing_glyphs.size() - matching_chars);
+			Debug(Facility::Fontcache, Severity::Error, "Font \"{}\" misses {} glyphs", FromFcString(file), callback->missing_glyphs.size() - matching_chars);
 			continue;
 		}
 

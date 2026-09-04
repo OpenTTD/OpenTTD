@@ -49,14 +49,14 @@ static void SpriteReplace(ByteReader &buf)
 		uint8_t num_sprites = buf.ReadByte();
 		uint16_t first_sprite = buf.ReadWord();
 
-		GrfMsg(2, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}",
+		GrfMsg(Severity::Warning, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}",
 			i, num_sprites, first_sprite
 		);
 
 		if (first_sprite + num_sprites >= SPR_OPENTTD_BASE) {
 			/* Outside allowed range, check for GRM sprite reservations. */
 			if (!IsGRMReservedSprite(first_sprite, num_sprites)) {
-				GrfMsg(0, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}, above limit of {} and not within reserved range, ignoring.",
+				GrfMsg(Severity::Fatal, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}, above limit of {} and not within reserved range, ignoring.",
 					i, num_sprites, first_sprite, SPR_OPENTTD_BASE);
 
 				/* Load the sprites at the current location so they will do nothing instead of appearing to work. */
@@ -91,7 +91,7 @@ static void SkipActA(ByteReader &buf)
 		buf.ReadWord();
 	}
 
-	GrfMsg(3, "SkipActA: Skipping {} sprites", _cur_gps.skip_sprites);
+	GrfMsg(Severity::Notice, "SkipActA: Skipping {} sprites", _cur_gps.skip_sprites);
 }
 
 /** @copydoc GrfActionHandler::FileScan */

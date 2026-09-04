@@ -981,7 +981,7 @@ static void AILoadConfig(const IniFile &ini, std::string_view grpname)
 		config->Change(item.name);
 		if (!config->HasScript()) {
 			if (item.name != "none") {
-				Debug(script, 0, "The AI by the name '{}' was no longer found, and removed from the list.", item.name);
+				Debug(Facility::Script, Severity::Fatal, "The AI by the name '{}' was no longer found, and removed from the list.", item.name);
 				continue;
 			}
 		}
@@ -1008,7 +1008,7 @@ static void GameLoadConfig(const IniFile &ini, std::string_view grpname)
 	config->Change(item.name);
 	if (!config->HasScript()) {
 		if (item.name != "none") {
-			Debug(script, 0, "The GameScript by the name '{}' was no longer found, and removed from the list.", item.name);
+			Debug(Facility::Script, Severity::Fatal, "The GameScript by the name '{}' was no longer found, and removed from the list.", item.name);
 			return;
 		}
 	}

@@ -112,12 +112,12 @@ struct AIPLChunkHandler : ChunkHandler {
 					config->Change(_ai_saveload_name, -1, false);
 					if (!config->HasScript()) {
 						if (_ai_saveload_name != "%_dummy") {
-							Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-							Debug(script, 0, "Configuration switched to Random AI.");
+							Debug(Facility::Script, Severity::Fatal, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+							Debug(Facility::Script, Severity::Fatal, "Configuration switched to Random AI.");
 						}
 					} else {
-						Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-						Debug(script, 0, "The latest version of that AI has been configured instead");
+						Debug(Facility::Script, Severity::Fatal, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+						Debug(Facility::Script, Severity::Fatal, "The latest version of that AI has been configured instead");
 					}
 				}
 			}
@@ -137,15 +137,15 @@ struct AIPLChunkHandler : ChunkHandler {
 				config->Change(_ai_saveload_name, -1, false);
 				if (!config->HasScript()) {
 					if (_ai_saveload_name != "%_dummy") {
-						Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-						Debug(script, 0, "A random other AI will be loaded in its place.");
+						Debug(Facility::Script, Severity::Fatal, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+						Debug(Facility::Script, Severity::Fatal, "A random other AI will be loaded in its place.");
 					} else {
-						Debug(script, 0, "The savegame had no AIs available at the time of saving.");
-						Debug(script, 0, "A random available AI will be loaded now.");
+						Debug(Facility::Script, Severity::Fatal, "The savegame had no AIs available at the time of saving.");
+						Debug(Facility::Script, Severity::Fatal, "A random available AI will be loaded now.");
 					}
 				} else {
-					Debug(script, 0, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-					Debug(script, 0, "The latest version of that AI has been loaded instead, but it'll not get the savegame data as it's incompatible.");
+					Debug(Facility::Script, Severity::Fatal, "The savegame has an AI by the name '{}', version {} which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+					Debug(Facility::Script, Severity::Fatal, "The latest version of that AI has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 				}
 				/* Make sure the AI doesn't get the saveload data, as it was not the
 				 *  writer of the saveload data in the first place */

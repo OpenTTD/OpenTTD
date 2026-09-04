@@ -104,13 +104,13 @@ bool LoadNewGRFSound(SoundEntry &sound, SoundID sound_id)
 
 	/* Test string termination */
 	if (name[name_len] != '\0') {
-		Debug(grf, 2, "LoadNewGRFSound [{}]: Name not properly terminated", file.GetSimplifiedFilename());
+		Debug(Facility::Grf, Severity::Warning, "LoadNewGRFSound [{}]: Name not properly terminated", file.GetSimplifiedFilename());
 		return false;
 	}
 
 	if (LoadSoundData(sound, true, sound_id, StrMakeValid(name))) return true;
 
-	Debug(grf, 1, "LoadNewGRFSound [{}]: does not contain any sound data", file.GetSimplifiedFilename());
+	Debug(Facility::Grf, Severity::Error, "LoadNewGRFSound [{}]: does not contain any sound data", file.GetSimplifiedFilename());
 
 	/* Clear everything that was read */
 	sound = {};
