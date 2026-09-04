@@ -38,10 +38,14 @@ enum class ObjectFlag : uint8_t {
 	AllowUnderBridge = 11, ///< Object can built under a bridge.
 	AnimRandomBits   = 12, ///< Object wants random bits in "next animation frame" callback.
 	ScaleByWater     = 13, ///< Object count is roughly scaled by water amount at edges.
+	PlaceNearTowns   = 14, ///< Object should be placed near towns.
+	PlaceNearCoast   = 15, ///< Object should be placed near coast.
+	CreateRocks      = 16, ///< Create rocky tiles around the object.
+	FlatLand         = 17, ///< Create object only on flat land.
 };
 
 /** Bitset of \c ObjectFlag elements. */
-using ObjectFlags = EnumBitSet<ObjectFlag, uint16_t>;
+using ObjectFlags = EnumBitSet<ObjectFlag, uint32_t>;
 
 static const uint8_t OBJECT_SIZE_1X1 = 0x11; ///< The value of a NewGRF's size property when the object is 1x1 tiles: low nibble for X, high nibble for Y.
 
@@ -71,6 +75,9 @@ struct ObjectSpec : NewGRFSpecBase<ObjectClassID> {
 	uint8_t height;                 ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.
 	uint8_t views;                  ///< The number of views.
 	uint8_t generate_amount;        ///< Number of objects which are attempted to be generated per 256^2 map during world generation.
+	uint8_t clear_diameter = 0; ///< Diameter to avoid objects of the same type.
+	uint8_t min_tile_height = 0; ///< Minimum tile height for the centre of this object.
+	uint8_t max_tile_height = UINT8_MAX; ///< Maximum tile height for the centre of this object.
 	std::vector<BadgeID> badges;
 
 	/**
