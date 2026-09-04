@@ -363,27 +363,6 @@ uint Station::GetCatchmentRadius() const
 }
 
 /**
- * Determines catchment rectangle of this station
- * @return clamped catchment rectangle
- */
-Rect Station::GetCatchmentRect() const
-{
-	assert(!this->rect.IsEmpty());
-
-	/* Compute acceptance rectangle */
-	int catchment_radius = this->GetCatchmentRadius();
-
-	Rect ret = {
-		std::max<int>(this->rect.left   - catchment_radius, 0),
-		std::max<int>(this->rect.top    - catchment_radius, 0),
-		std::min<int>(this->rect.right  + catchment_radius, Map::MaxX()),
-		std::min<int>(this->rect.bottom + catchment_radius, Map::MaxY())
-	};
-
-	return ret;
-}
-
-/**
  * Add nearby industry to station's industries_near list if it accepts cargo.
  * For industries that are already on the list update distance if it's closer.
  * @param ind  Industry
@@ -471,7 +450,7 @@ void Station::RecomputeCatchment(bool no_clear_nearby_lists)
 	this->industries_near.clear();
 	if (!no_clear_nearby_lists) this->RemoveFromAllNearbyLists();
 
-	if (this->rect.IsEmpty()) {
+	if (this->spread.IsEmpty()) {
 		this->catchment_tiles.Reset();
 		return;
 	}
@@ -494,11 +473,10 @@ void Station::RecomputeCatchment(bool no_clear_nearby_lists)
 		return;
 	}
 
-	this->catchment_tiles.Initialize(GetCatchmentRect());
+	this->catchment_tiles.Initialize(TileArea{this->spread}.Expand(this->GetCatchmentRadius()));
 
 	/* Loop finding all station tiles */
-	TileArea ta(TileXY(this->rect.left, this->rect.top), TileXY(this->rect.right, this->rect.bottom));
-	for (TileIndex tile : ta) {
+	for (TileIndex tile : this->spread) {
 		if (!IsTileType(tile, TileType::Station) || GetStationIndex(tile) != this->index) continue;
 
 		uint r = GetTileCatchmentRadius(tile, this);
@@ -541,171 +519,27 @@ void Station::RecomputeCatchment(bool no_clear_nearby_lists)
 	for (Station *st : Station::Iterate()) { st->RecomputeCatchment(true); }
 }
 
-/************************************************************************/
-/*                     StationRect implementation                       */
-/************************************************************************/
-
-StationRect::StationRect()
-{
-	this->MakeEmpty();
-}
-
-void StationRect::MakeEmpty()
-{
-	this->left = this->top = this->right = this->bottom = 0;
-}
-
 /**
- * Determines whether a given point (x, y) is within a certain distance of
- * the station rectangle.
- * @note x and y are in Tile coordinates
- * @param x X coordinate
- * @param y Y coordinate
- * @param distance The maximum distance a point may have (L1 norm)
- * @return true if the point is within distance tiles of the station rectangle
+ * Check if adding a new area to a station will exceed the maximum station spread.
+ * @param area The existing station spread area.
+ * @param new_area The new area to add.
+ * @return CommandCost
  */
-bool StationRect::PtInExtendedRect(int x, int y, int distance) const
+CommandCost CheckStationSpread(TileArea area, const TileArea &new_area)
 {
-	return this->left - distance <= x && x <= this->right + distance &&
-			this->top - distance <= y && y <= this->bottom + distance;
-}
+	/* Check for incorrect width / length. */
+	if (new_area.w == 0 || new_area.h == 0) return CMD_ERROR;
 
-bool StationRect::IsEmpty() const
-{
-	return this->left == 0 || this->left > this->right || this->top > this->bottom;
-}
+	/* Check if the first and last tile are valid. */
+	if (!IsValidTile(new_area.tile) || TileAddWrap(new_area.tile, new_area.w - 1, new_area.h - 1) == INVALID_TILE) return CMD_ERROR;
 
-CommandCost StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
-{
-	int x = TileX(tile);
-	int y = TileY(tile);
-	if (this->IsEmpty()) {
-		/* we are adding the first station tile */
-		if (mode != ADD_TEST) {
-			this->left = this->right = x;
-			this->top = this->bottom = y;
-		}
-	} else if (!this->PtInExtendedRect(x, y)) {
-		/* current rect is not empty and new point is outside this rect
-		 * make new spread-out rectangle */
-		Rect new_rect = {std::min(x, this->left), std::min(y, this->top), std::max(x, this->right), std::max(y, this->bottom)};
+	area.Add(new_area);
 
-		/* check new rect dimensions against preset max */
-		int w = new_rect.Width();
-		int h = new_rect.Height();
-		if (mode != ADD_FORCE && (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread)) {
-			assert(mode != ADD_TRY);
-			return CommandCost(STR_ERROR_STATION_TOO_SPREAD_OUT);
-		}
-
-		/* spread-out ok, return true */
-		if (mode != ADD_TEST) {
-			/* we should update the station rect */
-			*this = new_rect;
-		}
-	} else {
-		; // new point is inside the rect, we don't need to do anything
+	if (area.w > _settings_game.station.station_spread || area.h > _settings_game.station.station_spread) {
+		return CommandCost(STR_ERROR_STATION_TOO_SPREAD_OUT);
 	}
+
 	return CommandCost();
-}
-
-CommandCost StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode)
-{
-	if (mode == ADD_FORCE || (w <= _settings_game.station.station_spread && h <= _settings_game.station.station_spread)) {
-		/* Important when the old rect is completely inside the new rect, resp. the old one was empty. */
-		CommandCost ret = this->BeforeAddTile(tile, mode);
-		if (ret.Succeeded()) ret = this->BeforeAddTile(TileAddXY(tile, w - 1, h - 1), mode);
-		return ret;
-	}
-	return CommandCost();
-}
-
-/**
- * Check whether station tiles of the given station id exist in the given rectangle
- * @param st_id    Station ID to look for in the rectangle
- * @param left_a   Minimal tile X edge of the rectangle
- * @param top_a    Minimal tile Y edge of the rectangle
- * @param right_a  Maximal tile X edge of the rectangle (inclusive)
- * @param bottom_a Maximal tile Y edge of the rectangle (inclusive)
- * @return \c true if a station tile with the given \a st_id exists in the rectangle, \c false otherwise
- */
-/* static */ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
-{
-	TileArea ta(TileXY(left_a, top_a), TileXY(right_a, bottom_a));
-	for (TileIndex tile : ta) {
-		if (IsTileType(tile, TileType::Station) && GetStationIndex(tile) == st_id) return true;
-	}
-
-	return false;
-}
-
-bool StationRect::AfterRemoveTile(BaseStation *st, TileIndex tile)
-{
-	int x = TileX(tile);
-	int y = TileY(tile);
-
-	/* look if removed tile was on the bounding rect edge
-	 * and try to reduce the rect by this edge
-	 * do it until we have empty rect or nothing to do */
-	for (;;) {
-		/* check if removed tile is on rect edge */
-		bool left_edge = (x == this->left);
-		bool right_edge = (x == this->right);
-		bool top_edge = (y == this->top);
-		bool bottom_edge = (y == this->bottom);
-
-		/* can we reduce the rect in either direction? */
-		bool reduce_x = ((left_edge || right_edge) && !ScanForStationTiles(st->index, x, this->top, x, this->bottom));
-		bool reduce_y = ((top_edge || bottom_edge) && !ScanForStationTiles(st->index, this->left, y, this->right, y));
-		if (!(reduce_x || reduce_y)) break; // nothing to do (can't reduce)
-
-		if (reduce_x) {
-			/* reduce horizontally */
-			if (left_edge) {
-				/* move left edge right */
-				this->left = x = x + 1;
-			} else {
-				/* move right edge left */
-				this->right = x = x - 1;
-			}
-		}
-		if (reduce_y) {
-			/* reduce vertically */
-			if (top_edge) {
-				/* move top edge down */
-				this->top = y = y + 1;
-			} else {
-				/* move bottom edge up */
-				this->bottom = y = y - 1;
-			}
-		}
-
-		if (left > right || top > bottom) {
-			/* can't continue, if the remaining rectangle is empty */
-			this->MakeEmpty();
-			return true; // empty remaining rect
-		}
-	}
-	return false; // non-empty remaining rect
-}
-
-bool StationRect::AfterRemoveRect(BaseStation *st, TileArea ta)
-{
-	assert(this->PtInExtendedRect(TileX(ta.tile), TileY(ta.tile)));
-	assert(this->PtInExtendedRect(TileX(ta.tile) + ta.w - 1, TileY(ta.tile) + ta.h - 1));
-
-	bool empty = this->AfterRemoveTile(st, ta.tile);
-	if (ta.w != 1 || ta.h != 1) empty = empty || this->AfterRemoveTile(st, TileAddXY(ta.tile, ta.w - 1, ta.h - 1));
-	return empty;
-}
-
-StationRect& StationRect::operator = (const Rect &src)
-{
-	this->left = src.left;
-	this->top = src.top;
-	this->right = src.right;
-	this->bottom = src.bottom;
-	return *this;
 }
 
 /**
