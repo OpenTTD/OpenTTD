@@ -1518,9 +1518,9 @@ CommandCost CmdBuildRailStation(DoCommandFlags flags, TileIndex tile_org, RailTy
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		st->train_station = new_location;
 		st->AddFacility(StationFacility::Train, new_location.tile);
 
+		st->train_station.Add(new_location);
 		st->spread.Add(new_location);
 
 		if (specindex.has_value()) AssignSpecToStation(statspec, st, *specindex);

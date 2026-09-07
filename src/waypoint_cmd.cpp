@@ -301,13 +301,14 @@ CommandCost CmdBuildRailWaypoint(DoCommandFlags flags, TileIndex start_tile, Axi
 		wp->owner = GetTileOwner(start_tile);
 
 		wp->spread.Add(new_location);
+		wp->train_station.Add(new_location);
+
 		if (specindex.has_value()) AssignSpecToStation(spec, wp, *specindex);
 
 		wp->delete_ctr = 0;
 		wp->facilities.Set(StationFacility::Train);
 		wp->build_date = TimerGameCalendar::date;
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
-		wp->train_station = new_location;
 
 		if (wp->town == nullptr) MakeDefaultName(wp);
 
