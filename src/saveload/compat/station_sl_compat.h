@@ -89,21 +89,21 @@ const SaveLoadCompat _station_base_sl_compat[] = {
 /** Original field order for SlStationNormal. */
 const SaveLoadCompat _station_normal_sl_compat[] = {
 	SLC_VAR("base"),
-	SLC_VAR("train_station.tile"),
-	SLC_VAR("train_station.w"),
-	SLC_VAR("train_station.h"),
+	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::DontSaveStationArea), // train_station.tile
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::DontSaveStationArea), // train_station.w
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::DontSaveStationArea), // train_station.h
 	SLC_VAR("bus_stops"),
 	SLC_VAR("truck_stops"),
 	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::MultitileDocks),
-	SLC_VAR("ship_station.tile"),
-	SLC_VAR("ship_station.w"),
-	SLC_VAR("ship_station.h"),
-	SLC_VAR("docking_station.tile"),
-	SLC_VAR("docking_station.w"),
-	SLC_VAR("docking_station.h"),
-	SLC_VAR("airport.tile"),
-	SLC_VAR("airport.w"),
-	SLC_VAR("airport.h"),
+	SLC_NULL(4, SaveLoadVersion::MultitileDocks, SaveLoadVersion::DontSaveStationArea), // ship_station.tile
+	SLC_NULL(1, SaveLoadVersion::MultitileDocks, SaveLoadVersion::DontSaveStationArea), // ship_station.w
+	SLC_NULL(1, SaveLoadVersion::MultitileDocks, SaveLoadVersion::DontSaveStationArea), // ship_station.h
+	SLC_NULL(4, SaveLoadVersion::MultitileDocks, SaveLoadVersion::DontSaveStationArea), // docking_station.tile
+	SLC_NULL(1, SaveLoadVersion::MultitileDocks, SaveLoadVersion::DontSaveStationArea), // docking_station.w
+	SLC_NULL(1, SaveLoadVersion::MultitileDocks, SaveLoadVersion::DontSaveStationArea), // docking_station.h
+	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::DontSaveStationArea), // airport.tile
+	SLC_NULL(1, SaveLoadVersion::StoreAirportSize, SaveLoadVersion::DontSaveStationArea), // airport.w
+	SLC_NULL(1, SaveLoadVersion::StoreAirportSize, SaveLoadVersion::DontSaveStationArea), // airport.h
 	SLC_VAR("airport.type"),
 	SLC_VAR("airport.layout"),
 	SLC_VAR("airport.flags"),
@@ -124,9 +124,9 @@ const SaveLoadCompat _station_normal_sl_compat[] = {
 const SaveLoadCompat _station_waypoint_sl_compat[] = {
 	SLC_VAR("base"),
 	SLC_VAR("town_cn"),
-	SLC_VAR("train_station.tile"),
-	SLC_VAR("train_station.w"),
-	SLC_VAR("train_station.h"),
+	SLC_NULL(4, SaveLoadVersion::MultiTileWaypoints, SaveLoadVersion::DontSaveStationArea), // train_station.tile
+	SLC_NULL(1, SaveLoadVersion::MultiTileWaypoints, SaveLoadVersion::DontSaveStationArea), // train_station.w
+	SLC_NULL(1, SaveLoadVersion::MultiTileWaypoints, SaveLoadVersion::DontSaveStationArea), // train_station.h
 };
 
 /** Original field order for _station_desc. */
@@ -141,13 +141,15 @@ const SaveLoadCompat _station_sl_compat[] = {
 const SaveLoadCompat _old_station_sl_compat[] = {
 	SLC_VAR("xy"),
 	SLC_NULL(4, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	SLC_VAR("train_station.tile"),
-	SLC_VAR("airport.tile"),
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops), // train_station.tile
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::DontSaveStationArea), // train_station.tile
+	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops), // airport.tile
+	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::DontSaveStationArea), // airport.tile
 	SLC_NULL(2, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
 	SLC_NULL(4, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MultitileDocks),
 	SLC_VAR("town"),
-	SLC_VAR("train_station.w"),
-	SLC_VAR("train_station.h"),
+	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::DontSaveStationArea), // train_station.w
+	SLC_NULL(1, SaveLoadVersion::VehicleCurrencyStationChanges, SaveLoadVersion::DontSaveStationArea), // train_station.h
 	SLC_NULL(1, SaveLoadVersion::MinVersion, SaveLoadVersion::TownTolerancePauseMode),
 	SLC_VAR("string_id"),
 	SLC_VAR("name"),

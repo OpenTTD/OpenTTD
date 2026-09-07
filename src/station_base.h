@@ -536,13 +536,13 @@ public:
 	RoadStop *GetPrimaryRoadStop(const RoadVehicle *v) const;
 
 	RoadStop *bus_stops = nullptr; ///< All the road stops
-	TileArea bus_station{}; ///< Tile area the bus 'station' part covers
+	TileArea bus_station{}; ///< NOSAVE: Tile area the bus 'station' part covers
 	RoadStop *truck_stops = nullptr; ///< All the truck stops
-	TileArea truck_station{}; ///< Tile area the truck 'station' part covers
+	TileArea truck_station{}; ///< NOSAVE: Tile area the truck 'station' part covers
 
 	Airport airport{}; ///< Tile area the airport covers
-	TileArea ship_station{}; ///< Tile area the ship 'station' part covers
-	TileArea docking_station{}; ///< Tile area the docking tiles cover
+	TileArea ship_station{}; ///< NOSAVE: Tile area the ship 'station' part covers
+	TileArea docking_station{}; ///< NOSAVE: Tile area the docking tiles cover
 
 	IndustryType indtype = IT_INVALID; ///< Industry type to get the name from
 
