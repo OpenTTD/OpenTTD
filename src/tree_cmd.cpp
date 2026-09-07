@@ -527,7 +527,8 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
 		TileIndex current_tile = *iter;
-		switch (GetTileType(current_tile)) {
+		TileType tile_type = GetTileType(current_tile);
+		switch (tile_type) {
 			case TileType::Trees:
 				/* no more space for trees? */
 				if (GetTreeCount(current_tile) == 4) {
@@ -582,19 +583,26 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 					break;
 				}
 
-				if (IsTileType(current_tile, TileType::Clear)) {
+				bool tile_needs_to_be_cleared = false;
+				if (tile_type == TileType::Clear) {
 					/* Remove fields or rocks. Note that the ground will get barrened */
 					switch (GetClearGround(current_tile)) {
 						case ClearGround::Fields:
-						case ClearGround::Rocks: {
-							CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
-							if (ret.Failed()) return ret;
-							cost.AddCost(ret.GetCost());
+						case ClearGround::Rocks:
+							tile_needs_to_be_cleared = true;
 							break;
-						}
 
-						default: break;
+						default:
+							break;
 					}
+				} else if (tile_type == TileType::Water) {
+					tile_needs_to_be_cleared = GetWaterTileType(current_tile) != WaterTileType::Coast;
+				}
+
+				if (tile_needs_to_be_cleared) {
+					CommandCost ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
+					if (ret.Failed()) return ret;
+					cost.AddCost(ret.GetCost());
 				}
 
 				if (_game_mode != GameMode::Editor && Company::IsValidID(_current_company)) {
