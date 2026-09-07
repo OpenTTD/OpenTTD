@@ -50,19 +50,6 @@ public:
 		this->data.clear();
 	}
 
-	/**
-	 * Initialize the BitmapTileArea with the specified Rect.
-	 * @param r Rect to use.
-	 */
-	void Initialize(const Rect &r)
-	{
-		this->tile = TileXY(r.left, r.top);
-		this->w = r.Width();
-		this->h = r.Height();
-		this->data.clear();
-		this->data.resize(Index(w, h));
-	}
-
 	void Initialize(const TileArea &ta)
 	{
 		this->tile = ta.tile;

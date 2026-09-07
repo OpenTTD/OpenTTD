@@ -941,7 +941,7 @@ bool AfterLoadGame()
 				if (!IsBuoy(t) && bst->owner != GetTileOwner(t)) SlErrorCorrupt("Wrong owner for station tile");
 
 				/* Set up station spread */
-				bst->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
+				bst->spread.Add(t);
 
 				/* Waypoints don't have road stops/oil rigs in the old format */
 				if (!Station::IsExpected(bst)) break;

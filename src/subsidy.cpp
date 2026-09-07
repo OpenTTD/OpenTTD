@@ -508,7 +508,7 @@ bool CheckSubsidised(CargoType cargo_type, CompanyID company, Source src, const 
 	/* Remember all towns near this station (at least one house in its catchment radius)
 	 * which are destination of subsidised path. Do that only if needed */
 	std::vector<const Town *> towns_near;
-	if (!st->rect.IsEmpty()) {
+	if (!st->spread.IsEmpty()) {
 		for (const Subsidy *s : Subsidy::Iterate()) {
 			/* Don't create the cache if there is no applicable subsidy with town as destination */
 			if (s->dst.type != SourceType::Town) continue;

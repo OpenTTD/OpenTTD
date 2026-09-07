@@ -41,6 +41,17 @@ struct OrthogonalTileArea {
 	void Add(TileIndex to_add);
 
 	/**
+	 * Add another tile area to this tile area.
+	 * @param area The tile area to add.
+	 */
+	inline void Add(const OrthogonalTileArea &area)
+	{
+		/* Only the top and bottom corners need to be added. */
+		this->Add(area.tile);
+		this->Add(TileAddXY(area.tile, area.w - 1, area.h - 1));
+	}
+
+	/**
 	 * Clears the 'tile area', i.e. make the tile invalid.
 	 */
 	void Clear()

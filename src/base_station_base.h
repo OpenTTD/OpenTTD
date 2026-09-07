@@ -32,28 +32,6 @@ struct RoadStopTileData {
 	uint8_t animation_frame = 0;
 };
 
-/** StationRect - used to track station spread out rectangle - cheaper than scanning whole map */
-struct StationRect : public Rect {
-	enum StationRectMode : uint8_t {
-		ADD_TEST = 0,
-		ADD_TRY,
-		ADD_FORCE
-	};
-
-	StationRect();
-	void MakeEmpty();
-	bool PtInExtendedRect(int x, int y, int distance = 0) const;
-	bool IsEmpty() const;
-	CommandCost BeforeAddTile(TileIndex tile, StationRectMode mode);
-	CommandCost BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode);
-	bool AfterRemoveTile(BaseStation *st, TileIndex tile);
-	bool AfterRemoveRect(BaseStation *st, TileArea ta);
-
-	static bool ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a);
-
-	StationRect& operator = (const Rect &src);
-};
-
 /** Base class for all station-ish types */
 struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	TileIndex xy = INVALID_TILE; ///< Base tile of the station
@@ -82,7 +60,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	CargoTypes cached_roadstop_cargo_triggers{}; ///< NOSAVE: Combined cargo trigger bitmask for road stops
 
 	TileArea train_station{INVALID_TILE, 0, 0}; ///< Tile area the train 'station' part covers
-	StationRect rect{}; ///< NOSAVE: Station spread out rectangle maintained by StationRect::xxx() functions
+	TileArea spread{}; ///< NOSAVE: Station spread tile area.
 
 	std::vector<RoadStopTileData> custom_roadstop_tile_data{}; ///< List of custom road stop tile data
 
