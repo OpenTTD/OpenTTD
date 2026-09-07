@@ -3289,6 +3289,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Resclosa
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Riu
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Costa o marge de riu
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Drassana
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Roques
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Costa o riba amb roques
 
 # Industries come directly from their industry names
 
