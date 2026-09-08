@@ -10,6 +10,7 @@
 #include "stdafx.h"
 
 #include "gfx_layout_fallback.h"
+#include "gfx_func.h"
 #include "string_func.h"
 #include "zoom_func.h"
 
@@ -42,16 +43,15 @@ public:
 		std::vector<GlyphID> glyphs; ///< The glyphs we're drawing.
 		std::vector<Position> positions; ///< The positions of the glyphs.
 		std::vector<int> glyph_to_char; ///< The char index of the glyphs.
-
-		Font *font;       ///< The font used to layout these.
+		Font font; ///< The font used to layout these.
 
 	public:
-		FallbackVisualRun(Font *font, const char32_t *chars, int glyph_count, int char_offset, int x);
-		const Font *GetFont() const override { return this->font; }
+		FallbackVisualRun(const Font &font, const char32_t *chars, int glyph_count, int char_offset, int x);
+		const Font &GetFont() const override { return this->font; }
 		size_t GetGlyphCount() const override { return this->glyphs.size(); }
 		std::span<const GlyphID> GetGlyphs() const override { return this->glyphs; }
 		std::span<const Position> GetPositions() const override { return this->positions; }
-		int GetLeading() const override { return this->GetFont()->fc->GetHeight(); }
+		int GetLeading() const override { return this->font.GetFontCache().GetHeight(); }
 		std::span<const int> GetGlyphToCharMap() const override { return this->glyph_to_char; }
 	};
 
@@ -109,10 +109,11 @@ public:
  * @param char_offset This run's offset from the start of the layout input string.
  * @param x           The initial x position for this run.
  */
-FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const char32_t *chars, int char_count, int char_offset, int x) :
+FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(const Font &font, const char32_t *chars, int char_count, int char_offset, int x) :
 		font(font)
 {
-	const bool isbuiltin = font->fc->IsBuiltInFont();
+	FontCache &fc = font.GetFontCache();
+	const bool isbuiltin = fc.IsBuiltInFont();
 
 	this->glyphs.reserve(char_count);
 	this->glyph_to_char.reserve(char_count);
@@ -120,12 +121,12 @@ FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const 
 
 	int advance = x;
 	for (int i = 0; i < char_count; i++) {
-		const GlyphID &glyph_id = this->glyphs.emplace_back(font->fc->MapCharToGlyph(chars[i]));
-		int x_advance = font->fc->GetGlyphWidth(glyph_id);
+		const GlyphID &glyph_id = this->glyphs.emplace_back(fc.MapCharToGlyph(chars[i]));
+		int x_advance = fc.GetGlyphWidth(glyph_id);
 		if (isbuiltin) {
-			this->positions.emplace_back(advance, advance + x_advance - 1, font->fc->GetAscender()); // Apply sprite font's ascender.
+			this->positions.emplace_back(advance, advance + x_advance - 1, fc.GetAscender()); // Apply sprite font's ascender.
 		} else if (chars[i] >= SCC_SPRITE_START && chars[i] <= SCC_SPRITE_END) {
-			this->positions.emplace_back(advance, advance + x_advance - 1, (font->fc->GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(font->fc->GetSize()))) / 2); // Align sprite font to centre
+			this->positions.emplace_back(advance, advance + x_advance - 1, (fc.GetHeight() - ScaleSpriteTrad(FontCache::GetDefaultFontHeight(fc.GetSize()))) / 2); // Align sprite font to centre
 		} else {
 			this->positions.emplace_back(advance, advance + x_advance - 1, 0); // No ascender adjustment.
 		}
@@ -198,7 +199,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 	if (*this->buffer == '\0') {
 		/* Only a newline. */
 		this->buffer = nullptr;
-		l->emplace_back(this->runs.begin()->second, this->buffer, 0, 0, 0);
+		l->emplace_back(this->runs.front().second, this->buffer, 0, 0, 0);
 		return l;
 	}
 
@@ -209,7 +210,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		assert(iter != this->runs.end());
 	}
 
-	const FontCache *fc = iter->second->fc;
+	FontSize fontsize = iter->second.fontsize;
 	const char32_t *next_run = this->buffer_begin + iter->first;
 
 	const char32_t *begin = this->buffer;
@@ -243,7 +244,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		if (IsWhitespace(c)) last_space = this->buffer;
 
 		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
-			int char_width = GetCharacterWidth(fc->GetSize(), c);
+			int char_width = GetCharacterWidth(fontsize, c);
 			width += char_width;
 			if (width > max_width) {
 				/* The string is longer than maximum width so we need to decide

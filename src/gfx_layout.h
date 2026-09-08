@@ -12,29 +12,52 @@
 
 #include "misc/lrucache.hpp"
 #include "fontcache.h"
-#include "gfx_func.h"
-#include "core/math_func.hpp"
 
 #include <string_view>
+
+/**
+ * Container with information about a font.
+ */
+class Font {
+public:
+	FontSize fontsize = FontSize::End; ///< The font size.
+	ExtendedTextColour colour = TextColour::Invalid; ///< The text colour.
+
+	/**
+	 * Compare with another instance of this class.
+	 * @return The std::strong_ordering of the comparison.
+	 */
+	constexpr auto operator<=>(const Font &) const = default;
+
+	/**
+	 * Get the font cache of this font.
+	 * @return The font cache.
+	 */
+	inline FontCache &GetFontCache() const { return *FontCache::Get(this->fontsize); }
+};
 
 /**
  * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
  * of the same text, e.g. on line breaks.
  */
-struct FontState {
-	FontSize fontsize; ///< Current font size.
-	ExtendedTextColour cur_colour; ///< Current text colour.
+class FontState : public Font {
+public:
 	std::vector<ExtendedTextColour> colour_stack; ///< Stack of colours to assist with colour switching.
 
 	/** Create the font state with an invalid state. */
-	FontState() : fontsize(FontSize::End), cur_colour(TextColour::Invalid) {}
+	FontState() = default;
+
 	/**
 	 * Create the font state.
 	 * @param colour The colour of the font.
 	 * @param fontsize The size of the font.
 	 */
-	FontState(ExtendedTextColour colour, FontSize fontsize) : fontsize(fontsize), cur_colour(colour) {}
+	FontState(FontSize fontsize, ExtendedTextColour colour) : Font(fontsize, colour) {}
 
+	/**
+	 * Compare with another instance of this class.
+	 * @return The std::strong_ordering of the comparison.
+	 */
 	auto operator<=>(const FontState &) const = default;
 
 	/**
@@ -45,7 +68,7 @@ struct FontState {
 	{
 		assert((c.colour >= TextColour::Begin && c.colour < TextColour::End) || c.colour == TextColour::Invalid);
 		assert(!c.flags.Test(ExtendedTextColourFlag::IsPaletteColour));
-		if (!this->cur_colour.flags.Test(ExtendedTextColourFlag::Forced)) this->cur_colour = c;
+		if (!this->colour.flags.Test(ExtendedTextColourFlag::Forced)) this->colour = c;
 	}
 
 	/**
@@ -63,7 +86,7 @@ struct FontState {
 	 */
 	inline void PushColour()
 	{
-		colour_stack.push_back(this->cur_colour);
+		colour_stack.push_back(this->colour);
 	}
 
 	/**
@@ -106,25 +129,14 @@ template <> struct std::hash<FontState> {
 	std::size_t operator()(const FontState &state) const noexcept
 	{
 		size_t h1 = std::hash<FontSize>{}(state.fontsize);
-		size_t h2 = std::hash<ExtendedTextColour>{}(state.cur_colour);
+		size_t h2 = std::hash<ExtendedTextColour>{}(state.colour);
 		size_t h3 = std::hash<std::vector<ExtendedTextColour>>{}(state.colour_stack);
 		return h1 ^ (h2 << 1) ^ (h3 << 2);
 	}
 };
 
-/**
- * Container with information about a font.
- */
-class Font {
-public:
-	FontCache *fc;     ///< The font we are using.
-	ExtendedTextColour colour; ///< The colour this font has to be.
-
-	Font(FontSize size, ExtendedTextColour colour);
-};
-
-/** Mapping from index to font. The pointer is owned by FontColourMap. */
-using FontMap = std::vector<std::pair<int, Font *>>;
+/** Mapping from index to font. */
+using FontMap = std::vector<std::pair<int, Font>>;
 
 /**
  * Interface to glue fallback and normal layouter into one.
@@ -160,7 +172,7 @@ public:
 		 * Get the font.
 		 * @return The font used for this run.
 		 */
-		virtual const Font *GetFont() const = 0;
+		virtual const Font &GetFont() const = 0;
 
 		/**
 		 * Get the number of glyphs.
@@ -299,11 +311,7 @@ private:
 
 	static LineCacheItem &GetCachedParagraphLayout(std::string_view str, const FontState &state);
 
-	using FontColourMap = std::map<ExtendedTextColour, std::unique_ptr<Font>>;
-	static EnumIndexArray<FontColourMap, FontSize, FontSize::End> fonts; ///< The colour mapping of each of the fonts.
 public:
-	static Font *GetFont(FontSize size, ExtendedTextColour colour);
-
 	Layouter(std::string_view str, int maxw = INT32_MAX, FontSize fontsize = FontSize::Normal);
 	Dimension GetBounds();
 	ParagraphLayouter::Position GetCharPosition(std::string_view::const_iterator ch) const;

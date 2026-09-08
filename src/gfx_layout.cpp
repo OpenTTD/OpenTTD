@@ -37,21 +37,6 @@
 /** Cache of ParagraphLayout lines. */
 std::unique_ptr<Layouter::LineCache> Layouter::linecache;
 
-/** Cache of Font instances. */
-EnumIndexArray<Layouter::FontColourMap, FontSize, FontSize::End> Layouter::fonts;
-
-
-/**
- * Construct a new font.
- * @param size   The font size to use for this font.
- * @param colour The colour to draw this font in.
- */
-Font::Font(FontSize size, ExtendedTextColour colour) :
-		fc(FontCache::Get(size)), colour(colour)
-{
-	assert(size < FontSize::End);
-}
-
 /**
  * Helper for getting a ParagraphLayouter of the given type.
  *
@@ -71,7 +56,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	const typename T::CharType *buffer_last = buff_begin + str.size() + 1;
 	typename T::CharType *buff = buff_begin;
 	FontMap &font_mapping = line.runs;
-	Font *f = Layouter::GetFont(state.fontsize, state.cur_colour);
+	Font f{state};
 
 	font_mapping.clear();
 
@@ -107,7 +92,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 		if (font_mapping.empty() || font_mapping.back().first != buff - buff_begin) {
 			font_mapping.emplace_back(buff - buff_begin, f);
 		}
-		f = Layouter::GetFont(state.fontsize, state.cur_colour);
+		f = state;
 	}
 
 	/* Better safe than sorry. */
@@ -128,7 +113,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
  */
 Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(str)
 {
-	FontState state(TextColour::Invalid, fontsize);
+	FontState state(fontsize, TextColour::Invalid);
 
 	while (true) {
 		auto line_length = str.find_first_of('\n');
@@ -341,21 +326,6 @@ ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 }
 
 /**
- * Get a static font instance.
- * @param size The size of font.
- * @param colour The font's colour.
- * @return The cached font.
- */
-Font *Layouter::GetFont(FontSize size, ExtendedTextColour colour)
-{
-	FontColourMap::iterator it = fonts[size].find(colour);
-	if (it != fonts[size].end()) return it->second.get();
-
-	fonts[size][colour] = std::make_unique<Font>(size, colour);
-	return fonts[size][colour].get();
-}
-
-/**
  * Perform initialization of layout engine.
  */
 void Layouter::Initialize()
@@ -369,10 +339,8 @@ void Layouter::Initialize()
  * Reset cached font information.
  * @param size Font size to reset.
  */
-void Layouter::ResetFontCache(FontSize size)
+void Layouter::ResetFontCache([[maybe_unused]] FontSize size)
 {
-	fonts[size].clear();
-
 	/* We must reset the linecache since it references the just freed fonts */
 	ResetLineCache();
 

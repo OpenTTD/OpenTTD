@@ -539,7 +539,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		 * another size would be chosen it won't have truncated too little for
 		 * the truncation dots.
 		 */
-		truncation_layout.emplace(GetEllipsis(), INT32_MAX, line.GetVisualRun(0).GetFont()->fc->GetSize());
+		truncation_layout.emplace(GetEllipsis(), INT32_MAX, line.GetVisualRun(0).GetFont().fontsize);
 		truncation_width = truncation_layout->GetBounds().width;
 
 		/* Is there enough space even for an ellipsis? */
@@ -595,15 +595,15 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 			const ParagraphLayouter::VisualRun &run = line.GetVisualRun(run_index);
 			const auto &glyphs = run.GetGlyphs();
 			const auto &positions = run.GetPositions();
-			const Font *f = run.GetFont();
+			const Font &f = run.GetFont();
 
-			FontCache *fc = f->fc;
-			ExtendedTextColour colour{f->colour};
+			FontCache &fc = f.GetFontCache();
+			ExtendedTextColour colour{f.colour};
 			if (colour == TextColour::Invalid || initial_colour.flags.Test(ExtendedTextColourFlag::Forced)) colour = initial_colour;
 			bool colour_has_shadow = !colour.flags.Test(ExtendedTextColourFlag::NoShade) && colour != TextColour::Black;
 			/* Update the last colour for the truncation ellipsis. */
 			last_colour = colour;
-			if (do_shadow && (!fc->GetDrawGlyphShadow() || !colour_has_shadow)) continue;
+			if (do_shadow && (!fc.GetDrawGlyphShadow() || !colour_has_shadow)) continue;
 			SetColourRemap(do_shadow ? TextColour::Black : colour);
 
 			for (size_t i = 0; i < run.GetGlyphCount(); i++) {
@@ -619,7 +619,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 				/* Truncated away. */
 				if (truncation && (begin_x < min_x || end_x > max_x)) continue;
 
-				const Sprite *sprite = fc->GetGlyph(glyph);
+				const Sprite *sprite = fc.GetGlyph(glyph);
 				/* Check clipping (the "+ 1" is for the shadow). */
 				if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
 
