@@ -3715,8 +3715,8 @@ static void DeleteLastWagon(Train *v)
 		trackbits = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
 	}
 
-	Track track = TrackBitsToTrack(trackbits);
-	if (HasReservedTracks(tile, trackbits)) {
+	if (trackbits != Track::Depot && HasReservedTracks(tile, trackbits)) {
+		Track track = TrackBitsToTrack(trackbits);
 		UnreserveRailTrack(tile, track);
 
 		/* If there are still crashed vehicles on the tile, give the track reservation to them */
@@ -3751,7 +3751,7 @@ static void DeleteLastWagon(Train *v)
 	if (IsTileType(tile, TileType::TunnelBridge) || IsRailDepotTile(tile)) {
 		UpdateSignalsOnSegment(tile, DiagDirection::Invalid, owner);
 	} else {
-		SetSignalsOnBothDir(tile, track, owner);
+		SetSignalsOnBothDir(tile, TrackBitsToTrack(trackbits), owner);
 	}
 }
 
