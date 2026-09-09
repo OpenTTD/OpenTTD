@@ -66,11 +66,6 @@ public:
 	{
 		return this->iter->gfx;
 	}
-
-	std::unique_ptr<TileIterator> Clone() const override
-	{
-		return std::make_unique<AirportTileTableIterator>(*this);
-	}
 };
 
 /** Class IDs for airports. */

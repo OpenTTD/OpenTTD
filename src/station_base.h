@@ -633,11 +633,6 @@ public:
 		}
 		return *this;
 	}
-
-	std::unique_ptr<TileIterator> Clone() const override
-	{
-		return std::make_unique<AirportTileIterator>(*this);
-	}
 };
 
 void RebuildStationKdtree();

@@ -160,12 +160,6 @@ public:
 	virtual TileIterator& operator ++() = 0;
 
 	/**
-	 * Allocate a new iterator that is a copy of this one.
-	 * @return A clone of this iterator.
-	 */
-	virtual std::unique_ptr<TileIterator> Clone() const = 0;
-
-	/**
 	 * Equality comparison.
 	 * @param rhs The other iterator to compare to.
 	 * @return \c true iff the tile of both iterators is the same.
@@ -232,11 +226,6 @@ public:
 		}
 		return *this;
 	}
-
-	std::unique_ptr<TileIterator> Clone() const override
-	{
-		return std::make_unique<OrthogonalTileIterator>(*this);
-	}
 };
 
 /** Iterator to iterate over a diagonal area of the map. */
@@ -271,11 +260,6 @@ public:
 	}
 
 	TileIterator& operator ++() override;
-
-	std::unique_ptr<TileIterator> Clone() const override
-	{
-		return std::make_unique<DiagonalTileIterator>(*this);
-	}
 };
 
 /**
