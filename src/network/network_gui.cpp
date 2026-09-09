@@ -1745,7 +1745,7 @@ private:
 			if (_network_own_client_id != ci->client_id && client_playas != COMPANY_SPECTATOR && !ci->CanJoinCompany(client_playas)) line.AddButton<ClientButton>(SPR_JOIN, STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP, Colours::Green, ci->client_id, &NetworkClientListWindow::OnClickClientAuthorize);
 		}
 
-		/* Disable the chat button when there are players in this company. */
+		/* Disable the chat button when there are no players in this company. */
 		chat_button.disabled = !has_players;
 	}
 
