@@ -12,8 +12,6 @@
 
 #include "../gfx_type.h"
 
-#include <chrono>
-
 /**
  * Timer that represents the game-ticks. It will pause when the game is paused.
  *

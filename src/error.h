@@ -15,8 +15,6 @@
 #include "command_type.h"
 #include "core/geometry_type.hpp"
 
-#include <chrono>
-
 struct GRFFile;
 
 /** Message severity/type */
