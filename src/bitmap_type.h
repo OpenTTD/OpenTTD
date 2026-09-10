@@ -112,11 +112,6 @@ public:
 		}
 		return *this;
 	}
-
-	std::unique_ptr<TileIterator> Clone() const override
-	{
-		return std::make_unique<BitmapTileIterator>(*this);
-	}
 };
 
 #endif /* BITMAP_TYPE_HPP */
