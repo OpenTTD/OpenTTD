@@ -93,16 +93,22 @@
 	return ::IsTileType(tile, TileType::Station);
 }
 
+/* static */ bool ScriptTile::IsValidSlope(Slope slope)
+{
+	/* All values of ::Slope are valid */
+	return (slope & ~static_cast<Slope>(std::numeric_limits<std::underlying_type_t<::Slope>>::max())) == 0;
+}
+
 /* static */ bool ScriptTile::IsSteepSlope(Slope slope)
 {
-	if ((slope & ~(SLOPE_ELEVATED | SLOPE_STEEP | SLOPE_HALFTILE_MASK)) != 0) return false;
+	if (!IsValidSlope(slope)) return false;
 
 	return ::IsSteepSlope((::Slope)slope);
 }
 
 /* static */ bool ScriptTile::IsHalftileSlope(Slope slope)
 {
-	if ((slope & ~(SLOPE_ELEVATED | SLOPE_STEEP | SLOPE_HALFTILE_MASK)) != 0) return false;
+	if (!IsValidSlope(slope)) return false;
 
 	return ::IsHalftileSlope((::Slope)slope);
 }

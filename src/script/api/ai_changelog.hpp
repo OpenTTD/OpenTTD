@@ -21,6 +21,7 @@
  *
  * API additions:
  * \li AIRail.RemoveRailDepot
+ * \li AITile::IsValidSlope
  *
  * \b 15.0
  *
