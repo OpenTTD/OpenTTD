@@ -60,6 +60,8 @@
 
 #include "table/strings.h"
 #include "table/strings_metadata.h"
+#include "table/strings_newgrf.h"
+#include "table/strings_textfiles.h"
 
 #include "dropdown_common_type.h"
 

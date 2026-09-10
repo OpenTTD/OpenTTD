@@ -17,7 +17,7 @@
 #include "../timer/timer_game_calendar.h"
 #include "saveload_internal.h"
 
-#include "table/strings.h"
+#include "table/strings_station_names.h"
 
 #include "../safeguards.h"
 

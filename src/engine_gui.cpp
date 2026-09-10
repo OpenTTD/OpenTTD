@@ -30,6 +30,7 @@
 #include "widgets/engine_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_vehicles.h"
 
 #include "safeguards.h"
 

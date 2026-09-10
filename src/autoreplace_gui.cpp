@@ -34,6 +34,8 @@
 #include "widgets/autoreplace_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_groups.h"
+#include "table/strings_vehicles.h"
 
 #include "safeguards.h"
 

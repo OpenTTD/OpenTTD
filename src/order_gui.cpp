@@ -39,6 +39,8 @@
 #include "widgets/order_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_orders.h"
+#include "table/strings_timetables.h"
 
 #include "safeguards.h"
 

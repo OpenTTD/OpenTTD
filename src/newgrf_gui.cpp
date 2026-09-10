@@ -38,6 +38,9 @@
 
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "table/strings_newgrf.h"
+#include "table/strings_textfiles.h"
+#include "table/strings_worldgen.h"
 
 #include "safeguards.h"
 

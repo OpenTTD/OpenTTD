@@ -36,6 +36,8 @@
 #include "timer/timer_game_calendar.h"
 
 #include "table/strings.h"
+#include "table/strings_companies.h"
+#include "table/strings_engine_names.h"
 #include "table/engines.h"
 
 #include "safeguards.h"

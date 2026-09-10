@@ -54,6 +54,7 @@
 #include "widgets/industry_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_industries.h"
 
 #include <bitset>
 

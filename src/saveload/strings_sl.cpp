@@ -13,7 +13,7 @@
 #include "../core/string_builder.hpp"
 #include "saveload_internal.h"
 
-#include "table/strings.h"
+#include "table/strings_station_names.h"
 
 #include "../safeguards.h"
 

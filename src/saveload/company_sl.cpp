@@ -21,6 +21,8 @@
 #include "../strings_func.h"
 
 #include "table/strings.h"
+#include "table/strings_companies.h"
+#include "table/strings_station_names.h"
 
 #include "../safeguards.h"
 

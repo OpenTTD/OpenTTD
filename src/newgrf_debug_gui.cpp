@@ -46,6 +46,8 @@
 #include "widgets/newgrf_debug_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_cargo.h"
+#include "table/strings_newgrf.h"
 
 #include "safeguards.h"
 
