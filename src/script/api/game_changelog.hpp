@@ -20,7 +20,13 @@
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
- * \li GSRail.RemoveRailDepot
+ * \li GSRail::RemoveRailDepot
+ * \li GSRoad::GetRoadDepotName
+ * \li GSRoad::RenameRoadDepot
+ * \li GSRail::GetRailDepotName
+ * \li GSRail::RenameRailDepot
+ * \li GSMarine::GetWaterDepotName
+ * \li GSMarine::RenameWaterDepot
  *
  * Other changes:
  * \li GSTown::ExpandTown Change to town expansion to match expected behaviour with the 'allow_town_roads' setting

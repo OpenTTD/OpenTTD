@@ -1170,6 +1170,9 @@ function Regression::Marine()
 
 	local accounting = AIAccounting();
 	print("  BuildWaterDepot():    " + AIMarine.BuildWaterDepot(28479, 28478));
+	print("  GetWaterDepotName():  " + AIMarine.GetWaterDepotName(28479));
+	print("  RenameWaterDepot():   " + AIMarine.RenameWaterDepot(28479, "test new name"));
+	print("  GetWaterDepotName():  " + AIMarine.GetWaterDepotName(28479));
 	print("  BuildDock():          " + AIMarine.BuildDock(29253, AIStation.STATION_JOIN_ADJACENT));
 	print("  BuildBuoy():          " + AIMarine.BuildBuoy(28481));
 	print("  BuildLock():          " + AIMarine.BuildLock(28487));
@@ -1405,6 +1408,9 @@ function Regression::Rail()
 	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(33411, 33410));
 	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(33411, 33414));
 	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(33411, 33412));
+	print("    GetRailDepotName():            " + AIRail.GetRailDepotName(33411));
+	print("    RenameRailDepot():             " + AIRail.RenameRailDepot(33411, "test new name"));
+	print("    GetRailDepotName():            " + AIRail.GetRailDepotName(33411));
 	print("    GetRailDepotFrontTile():       " + AIRail.GetRailDepotFrontTile(33411));
 	print("    IsBuildable():                 " + AITile.IsBuildable(33411));
 	local list = AIDepotList(AITile.TRANSPORT_RAIL);
@@ -1502,6 +1508,9 @@ function Regression::Road()
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(33411, 33410));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(33411, 33414));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(33411, 33412));
+	print("    GetRoadDepotName():            " + AIRoad.GetRoadDepotName(33411));
+	print("    RenameRoadDepot():             " + AIRoad.RenameRoadDepot(33411, "test new name"));
+	print("    GetRoadDepotName():            " + AIRoad.GetRoadDepotName(33411));
 	print("    HasRoadType(Road):             " + AIRoad.HasRoadType(33411, AIRoad.ROADTYPE_ROAD));
 	print("    HasRoadType(Tram):             " + AIRoad.HasRoadType(33411, AIRoad.ROADTYPE_TRAM));
 	print("    GetLastError():                " + AIError.GetLastError());

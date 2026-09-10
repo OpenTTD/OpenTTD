@@ -18,6 +18,11 @@
 #include "../../strings_func.h"
 #include "../../newgrf_roadstop.h"
 #include "../../script/squirrel_helper_type.hpp"
+#include "../../depot_base.h"
+#include "../../depot_cmd.h"
+#include "../../depot_func.h"
+#include "../../string_func.h"
+#include "table/strings.h"
 
 #include "../../safeguards.h"
 
@@ -617,6 +622,31 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	EnforcePrecondition(false, GetRoadTileType(tile) == RoadTileType::Depot);
 
 	return ScriptObject::Command<Commands::LandscapeClear>::Do(tile);
+}
+
+/* static */ bool ScriptRoad::RenameRoadDepot(TileIndex tile, Text *name)
+{
+	ScriptObjectRef counter(name);
+
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, IsRoadDepotTile(tile));
+
+	EnforcePrecondition(false, name != nullptr);
+	const std::string &text = name->GetDecodedText();
+	EnforcePreconditionEncodedText(false, text);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_DEPOT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+
+	return ScriptObject::Command<Commands::RenameDepot>::Do(GetDepotIndex(tile), text);
+}
+
+/* static */ std::optional<std::string> ScriptRoad::GetRoadDepotName(TileIndex tile)
+{
+	EnforceCompanyModeValid(std::nullopt);
+	EnforcePrecondition(std::nullopt, ::IsValidTile(tile));
+	EnforcePrecondition(std::nullopt, IsRoadDepotTile(tile));
+
+	return ::StrMakeValid(::GetString(STR_DEPOT_NAME, VehicleType::Road, Depot::GetByTile(tile)->index), {});
 }
 
 /* static */ bool ScriptRoad::RemoveRoadStation(TileIndex tile)

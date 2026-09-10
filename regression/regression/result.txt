@@ -8413,6 +8413,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsLockTile():         false
   IsCanalTile():        false
   BuildWaterDepot():    true
+  GetWaterDepotName():  Chenfingbourne Ship Depot
+  RenameWaterDepot():   true
+  GetWaterDepotName():  test new name
   BuildDock():          true
   BuildBuoy():          true
   BuildLock():          true
@@ -8561,6 +8564,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRailDepot():              true
     BuildRailDepot():              true
     BuildRailDepot():              true
+    GetRailDepotName():            Little Frutford Train Depot
+    RenameRailDepot():             true
+    GetRailDepotName():            test new name
     GetRailDepotFrontTile():       33412
     IsBuildable():                 false
     DepotList
@@ -8655,6 +8661,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     BuildRoadDepot():              true
     BuildRoadDepot():              true
     BuildRoadDepot():              true
+    GetRoadDepotName():            Little Frutford Road Vehicle Depot
+    RenameRoadDepot():             true
+    GetRoadDepotName():            test new name
     HasRoadType(Road):             true
     HasRoadType(Tram):             false
     GetLastError():                0
@@ -10629,11 +10638,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     14 => 1
     12 => 1
   Age ListDump:
+    17 => 1
+    16 => 1
     14 => 1
     13 => 1
     12 => 1
-    17 => 0
-    16 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -10641,9 +10650,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     13 => 5490
     12 => 5490
   AgeLeft ListDump:
-    16 => 10980
+    16 => 10979
     14 => 10979
-    17 => 7320
+    17 => 7319
     13 => 5489
     12 => 5489
   CurrentSpeed ListDump:
@@ -10938,7 +10947,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2493]
+*FUNCTION [Start()] regression/main.nut line [2502]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE

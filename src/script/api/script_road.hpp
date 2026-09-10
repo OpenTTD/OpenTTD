@@ -531,6 +531,29 @@ public:
 	static bool RemoveRoadDepot(TileIndex tile);
 
 	/**
+	 * Rename road depot.
+	 * @param tile The road depot location to set the name of.
+	 * @param name The new name of the depot (can be either a raw string, or a ScriptText object).
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsRoadDepotTile(tile).
+	 * @pre name != null && len(name) != 0.
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
+	 * @return True if the name was changed, false otherwise
+	 */
+	static bool RenameRoadDepot(TileIndex tile, Text *name);
+
+	/**
+	 * Get the name of a road depot.
+	 * @param tile The road depot location to get the name of.
+	 * @pre ScriptMap::IsValidTile(tile).
+	 * @pre ScriptMap::IsRoadDepotTile(tile).
+	 * @game @pre ScriptCompanyMode::IsValid().
+	 * @return The name of the road depot, or null if failed.
+	 */
+	static std::optional<std::string> GetRoadDepotName(TileIndex tile);
+
+	/**
 	 * Removes a road bus or truck station.
 	 * @param tile Place to remove the station from.
 	 * @pre ScriptMap::IsValidTile(tile).

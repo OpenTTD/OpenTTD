@@ -17,6 +17,11 @@
 #include "../../tile_cmd.h"
 #include "../../water_cmd.h"
 #include "../../waypoint_cmd.h"
+#include "../../depot_base.h"
+#include "../../depot_cmd.h"
+#include "../../depot_func.h"
+#include "../../string_func.h"
+#include "table/strings.h"
 
 #include "../../safeguards.h"
 
@@ -126,6 +131,31 @@
 	EnforcePrecondition(false, IsWaterDepotTile(tile));
 
 	return ScriptObject::Command<Commands::LandscapeClear>::Do(tile);
+}
+
+/* static */ bool ScriptMarine::RenameWaterDepot(TileIndex tile, Text *name)
+{
+	ScriptObjectRef counter(name);
+
+	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, IsWaterDepotTile(tile));
+
+	EnforcePrecondition(false, name != nullptr);
+	const std::string &text = name->GetDecodedText();
+	EnforcePreconditionEncodedText(false, text);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_DEPOT_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);
+
+	return ScriptObject::Command<Commands::RenameDepot>::Do(GetDepotIndex(tile), text);
+}
+
+/* static */ std::optional<std::string> ScriptMarine::GetWaterDepotName(TileIndex tile)
+{
+	EnforceCompanyModeValid(std::nullopt);
+	EnforcePrecondition(std::nullopt, ::IsValidTile(tile));
+	EnforcePrecondition(std::nullopt, IsWaterDepotTile(tile));
+
+	return ::StrMakeValid(::GetString(STR_DEPOT_NAME, VehicleType::Ship, Depot::GetByTile(tile)->index), {});
 }
 
 /* static */ bool ScriptMarine::RemoveDock(TileIndex tile)
