@@ -11,6 +11,7 @@
 #define TABLE_COMPANY_FACE_H
 
 #include "../company_manager_face.h"
+#include "table/strings.h"
 
 /* Definitions for default face variables.
  * Faces are drawn in the listed order, so sprite layers must be ordered
