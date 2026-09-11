@@ -1222,6 +1222,7 @@ function Regression::Order()
 	print("");
 	print("--Order--");
 	print("  GetOrderCount():       " + AIOrder.GetOrderCount(12));
+	print("  GetOrderCount():       " + AIOrder.GetOrderCount(9999));
 	print("  GetOrderDestination(): " + AIOrder.GetOrderDestination(12, 1));
 	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.OF_TRANSFER));
 	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.OF_TRANSFER | AIOrder.OF_UNLOAD));
@@ -2110,11 +2111,14 @@ function Regression::Vehicle()
 	print("  GetWagonAge():        " + AIVehicle.GetWagonAge(17, 2));
 	print("  GetWagonEngineType(): " + AIVehicle.GetWagonEngineType(17 3));
 	print("  GetWagonAge():        " + AIVehicle.GetWagonAge(17, 3));
+	print("  GetVehicleType():     " + AIVehicle.GetVehicleType(14));
+	print("  GetLength():          " + AIVehicle.GetLength(14));
 
 	print("  --Refit--");
 	print("    GetBuildWithRefitCapacity(): " + AIVehicle.GetBuildWithRefitCapacity(28479, 211, 255));
 	print("    GetBuildWithRefitCapacity(): " + AIVehicle.GetBuildWithRefitCapacity(28479, 211, 0));
 	print("    GetBuildWithRefitCapacity(): " + AIVehicle.GetBuildWithRefitCapacity(28479, 211, 9));
+	print("    GetBuildWithRefitCapacity(): " + AIVehicle.GetBuildWithRefitCapacity(28481, 211, 0));
 	print("    BuildVehicleWithRefit():     " + AIVehicle.BuildVehicleWithRefit(28479, 211, 9));
 	print("    GetCapacity():               " + AIVehicle.GetCapacity(20, 9));
 	print("    GetCapacity():               " + AIVehicle.GetCapacity(20, 5));
