@@ -10586,10 +10586,13 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetWagonAge():        0
   GetWagonEngineType(): 65535
   GetWagonAge():        -1
+  GetVehicleType():     3
+  GetLength():          -1
   --Refit--
     GetBuildWithRefitCapacity(): -1
     GetBuildWithRefitCapacity(): 0
     GetBuildWithRefitCapacity(): 160
+    GetBuildWithRefitCapacity(): -1
     BuildVehicleWithRefit():     20
     GetCapacity():               160
     GetCapacity():               0
@@ -10703,6 +10706,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 
 --Order--
   GetOrderCount():       0
+  GetOrderCount():       -1
   GetOrderDestination(): -1
   AreOrderFlagsValid():  true
   AreOrderFlagsValid():  false
@@ -10938,7 +10942,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2493]
+*FUNCTION [Start()] regression/main.nut line [2497]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE
