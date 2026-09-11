@@ -745,10 +745,14 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				/* Before trains could drive backwards, many NewGRFs faked this effect by swapping sprites when the Reversed flag was set.
 				 * To maintain their intended behaviour, only pass them the Reversed flag if the vehicle is not driving backwards. */
 				if (t->flags.Test(VehicleRailFlag::Reversed) != t->IsDrivingBackwards()) SetBit(modflags, 8);
+
+				if (v->IsDrivingBackwards()) SetBit(modflags, 11);
 			}
+
+			if (v->type == VehicleType::Ship && Ship::From(v)->flags.Test(VehicleShipFlag::SecondEndFacingForward)) SetBit(modflags, 11);
+
 			if (v->vehicle_flags.Test(VehicleFlag::CargoUnloading)) SetBit(modflags, 1);
 			if (v->vehicle_flags.Test(VehicleFlag::BuiltAsPrototype)) SetBit(modflags, 10);
-			if (v->IsDrivingBackwards()) SetBit(modflags, 11);
 
 			return variable == 0xFE ? modflags : GB(modflags, 8, 8);
 		}
