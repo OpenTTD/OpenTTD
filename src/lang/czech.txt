@@ -5469,7 +5469,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :most je příli
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :most by končil mimo mapu
 STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :{WHITE}Most je o {HEIGHT} moc nízko pro stanici
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :{WHITE}Most je o {HEIGHT} moc nízký pro konec silnice
-STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :{WHITE}Most je o {HEIGHT} moc nízko pro přístav
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :most je o {HEIGHT} moc nízko pro přístav
 STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :{WHITE}Most s výškou {HEIGHT} moc nízko pro bójku
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :{WHITE}Most je o {HEIGHT} moc nízko pro směřování
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :{WHITE}Most je o {HEIGHT} moc nízko pro směřování
