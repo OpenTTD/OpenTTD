@@ -3290,6 +3290,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Sluse
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Elv
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Kyst eller elvebredd
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Skipsdokk
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Skjær
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Kyst eller elvebredd med skjær
 
 # Industries come directly from their industry names
 
