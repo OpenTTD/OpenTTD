@@ -197,7 +197,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		uint16_t new_cap = e_u->DetermineCapacity(u);
 		if (allowed_changes.Test(ConsistChangeFlag::Capacity)) {
 			/* Update vehicle capacity. */
-			if (u->cargo_cap > new_cap) u->cargo.Truncate(new_cap);
+			if (u->cargo.TotalCount() > new_cap) u->cargo.Truncate(u->cargo.TotalCount() - new_cap);
 			u->refit_cap = std::min(new_cap, u->refit_cap);
 			u->cargo_cap = new_cap;
 		} else {
