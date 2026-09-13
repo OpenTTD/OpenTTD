@@ -168,21 +168,21 @@ void ResetOldWaypoints()
 }
 
 static const SaveLoad _old_waypoint_desc[] = {
-	SLE_CONDVAR(OldWaypoint, xy, VarFileType::U16 | VarMemType::U32, SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
-	SLE_CONDVAR(OldWaypoint, xy, VarTypes::U32, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, town_index, VarTypes::U16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::WaypointMoreLikeStation),
-	SLE_CONDREF(OldWaypoint, town, SLRefType::Town, SaveLoadVersion::WaypointMoreLikeStation, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, town_cn, VarFileType::U8 | VarMemType::U16, SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::MoreWaypointsPerTown),
-	SLE_CONDVAR(OldWaypoint, town_cn, VarTypes::U16, SaveLoadVersion::MoreWaypointsPerTown, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, string_id, VarTypes::STRINGID, SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
-	SLE_CONDSSTR(OldWaypoint, name, VarTypes::STR, SaveLoadVersion::ReplaceCustomNameArray, SaveLoadVersion::MaxVersion),
-	    SLE_VAR(OldWaypoint, delete_ctr, VarTypes::U8),
+	SaveLoad::Variable<VarFileType::U16>("xy", SLE_OBJECT_ADDRESS(OldWaypoint, xy), SaveLoadVersion::MinVersion, SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U32>("xy", SLE_OBJECT_ADDRESS(OldWaypoint, xy), SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Variable<VarFileType::U16>("town_index", SLE_OBJECT_ADDRESS(OldWaypoint, town_index), SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::WaypointMoreLikeStation),
+	SaveLoad::Reference<SLRefType::Town>("town", SLE_OBJECT_ADDRESS(OldWaypoint, town), SaveLoadVersion::WaypointMoreLikeStation),
+	SaveLoad::Variable<VarFileType::U8>("town_cn", SLE_OBJECT_ADDRESS(OldWaypoint, town_cn), SaveLoadVersion::LinkWaypointToTown, SaveLoadVersion::MoreWaypointsPerTown),
+	SaveLoad::Variable<VarFileType::U16>("town_cn", SLE_OBJECT_ADDRESS(OldWaypoint, town_cn), SaveLoadVersion::MoreWaypointsPerTown),
+	SaveLoad::Variable<VarFileType::StringID>("string_id", SLE_OBJECT_ADDRESS(OldWaypoint, string_id), SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
+	SaveLoad::String("name", SLE_OBJECT_ADDRESS(OldWaypoint, name), {}, SaveLoadVersion::ReplaceCustomNameArray),
+	SaveLoad::Variable<VarFileType::U8>("delete_ctr", SLE_OBJECT_ADDRESS(OldWaypoint, delete_ctr)),
 
-	SLE_CONDVAR(OldWaypoint, build_date, VarFileType::U16 | VarMemType::I32, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
-	SLE_CONDVAR(OldWaypoint, build_date, VarTypes::I32, SaveLoadVersion::BigDates, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, localidx, VarTypes::U8, SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, grfid, VarTypes::LABEL, SaveLoadVersion::StoreWaypointIdInMap, SaveLoadVersion::MaxVersion),
-	SLE_CONDVAR(OldWaypoint, owner, VarTypes::U8, SaveLoadVersion::NewGRFPalette, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::U16>("build_date", SLE_OBJECT_ADDRESS(OldWaypoint, build_date), SaveLoadVersion::BiggerStationVariables, SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::I32>("build_date", SLE_OBJECT_ADDRESS(OldWaypoint, build_date), SaveLoadVersion::BigDates),
+	SaveLoad::Variable<VarFileType::U8>("localidx", SLE_OBJECT_ADDRESS(OldWaypoint, localidx), SaveLoadVersion::BiggerStationVariables),
+	SaveLoad::Variable<VarFileType::Label>("grfid", SLE_OBJECT_ADDRESS(OldWaypoint, grfid), SaveLoadVersion::StoreWaypointIdInMap),
+	SaveLoad::Variable<VarFileType::U8>("owner", SLE_OBJECT_ADDRESS(OldWaypoint, owner), SaveLoadVersion::NewGRFPalette),
 };
 
 struct CHKPChunkHandler : ChunkHandler {

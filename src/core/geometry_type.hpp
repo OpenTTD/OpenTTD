@@ -103,11 +103,19 @@ using Point = Coord2D<int>;
 
 /** Dimensions (a width and height) of a rectangle in 2D */
 struct Dimension {
-	uint width;
-	uint height;
+	using value_type = uint32_t; ///< The type of the values; hack to make this look enough like a std::array for saving/loading resolutions
+	value_type width = 0; ///< The width of the rectangle.
+	value_type height = 0; ///< The height of the rectangle.
 
-	constexpr Dimension() : width(0), height(0) {}
-	constexpr Dimension(uint w, uint h) : width(w), height(h) {}
+	/** Create a 0x0 dimension. */
+	constexpr Dimension() = default;
+
+	/**
+	 * Create a dimension.
+	 * @param w The width.
+	 * @param h The height.
+	 */
+	constexpr Dimension(value_type w, value_type h) : width(w), height(h) {}
 
 	bool operator< (const Dimension &other) const
 	{

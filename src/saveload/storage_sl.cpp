@@ -18,9 +18,9 @@
 
 /** Description of the data to save and load in #PersistentStorage. */
 static const SaveLoad _storage_desc[] = {
-	 SLE_CONDVAR(PersistentStorage, grfid, VarTypes::LABEL, SaveLoadVersion::MultipleRoadStops, SaveLoadVersion::MaxVersion),
-	 SLE_CONDARR(PersistentStorage, storage, VarFileType::U32 | VarMemType::I32, 16, SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::ExtendPersistentStorage),
-	 SLE_CONDARR(PersistentStorage, storage, VarFileType::U32 | VarMemType::I32, 256, SaveLoadVersion::ExtendPersistentStorage, SaveLoadVersion::MaxVersion),
+	SaveLoad::Variable<VarFileType::Label>("grfid", SLE_OBJECT_ADDRESS(PersistentStorage, grfid), SaveLoadVersion::MultipleRoadStops),
+	SaveLoad::Array<VarFileType::U32, 16>("storage", SLE_OBJECT_ADDRESS(PersistentStorage, storage), SaveLoadVersion::PersistentStoragePool, SaveLoadVersion::ExtendPersistentStorage),
+	SaveLoad::Array<VarFileType::U32, 256>("storage", SLE_OBJECT_ADDRESS(PersistentStorage, storage), SaveLoadVersion::ExtendPersistentStorage),
 };
 
 /** Persistent storage data. */
