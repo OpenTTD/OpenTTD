@@ -168,6 +168,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		/* Variables available during construction check. */
 
 		switch (variable) {
+			case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), this->ro);
 			case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
 
 			case 0x80: return this->tile.base();
@@ -352,6 +353,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 			NOT_REACHED();
 		}
 
+		case 0x79: return GetNearbyBadgeVariableResult(*this->ro.grffile, GetNearbyTile(parameter, this->tile), this->ro);
 		case 0x7A: return GetBadgeVariableResult(*this->ro.grffile, GetIndustrySpec(this->type)->badges, parameter);
 
 		/* Get a variable from the persistent storage */
