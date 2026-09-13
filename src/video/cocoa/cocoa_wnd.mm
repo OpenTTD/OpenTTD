@@ -850,10 +850,14 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 - (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(char32_t)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers
 {
 	switch (keycode) {
-		case QZ_UP: _dirkeys.Set(DirectionKey::Up, down); break;
-		case QZ_DOWN: _dirkeys.Set(DirectionKey::Down, down); break;
-		case QZ_LEFT: _dirkeys.Set(DirectionKey::Left, down); break;
-		case QZ_RIGHT: _dirkeys.Set(DirectionKey::Right, down); break;
+		case QZ_UP:    if (!_settings_client.gui.pan_with_wasd) _dirkeys.Set(DirectionKey::Up, down); break;
+		case QZ_DOWN:  if (!_settings_client.gui.pan_with_wasd) _dirkeys.Set(DirectionKey::Down, down); break;
+		case QZ_LEFT:  if (!_settings_client.gui.pan_with_wasd) _dirkeys.Set(DirectionKey::Left, down); break;
+		case QZ_RIGHT: if (!_settings_client.gui.pan_with_wasd) _dirkeys.Set(DirectionKey::Right, down); break;
+		case QZ_w:     if (_settings_client.gui.pan_with_wasd) _dirkeys.Set(DirectionKey::Up, down); break;
+		case QZ_a:     if (_settings_client.gui.pan_with_wasd) _dirkeys.Set(DirectionKey::Left, down); break;
+		case QZ_s:     if (_settings_client.gui.pan_with_wasd) _dirkeys.Set(DirectionKey::Down, down); break;
+		case QZ_d:     if (_settings_client.gui.pan_with_wasd) _dirkeys.Set(DirectionKey::Right, down); break;
 
 		case QZ_TAB:
 			_tab_is_down = down;
