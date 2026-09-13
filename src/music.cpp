@@ -77,6 +77,27 @@ static const std::string_view _music_file_names[] = {
 /** Make sure we aren't messing things up. */
 static_assert(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
 
+/**
+ * Determine the track type for a music file.
+ * @param filename Music file to inspect.
+ * @param format Optional explicit format item from the music set.
+ * @return Track type, or std::nullopt if the explicit format is invalid.
+ */
+static std::optional<MusicTrackType> GetMusicTrackType(std::string_view filename, const IniItem *format)
+{
+	if (format != nullptr && format->value.has_value() && !format->value->empty()) {
+		if (StrEqualsIgnoreCase(*format->value, "midi") || StrEqualsIgnoreCase(*format->value, "standardmidi") || StrEqualsIgnoreCase(*format->value, "standard_midi")) return MTT_STANDARDMIDI;
+		if (StrEqualsIgnoreCase(*format->value, "opus") || StrEqualsIgnoreCase(*format->value, "ogg_opus") || StrEqualsIgnoreCase(*format->value, "oggopus")) return MTT_OPUS;
+
+		Debug(grf, 0, "Invalid base music set song format: {}", *format->value);
+		return std::nullopt;
+	}
+
+	if (StrEndsWithIgnoreCase(filename, ".opus") || StrEndsWithIgnoreCase(filename, ".ogg")) return MTT_OPUS;
+
+	return MTT_STANDARDMIDI;
+}
+
 /** @copydoc BaseSet::GetFilenames */
 template <>
 /* static */ std::span<const std::string_view> BaseSet<MusicSet>::GetFilenames()
@@ -123,6 +144,7 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 		this->num_available = 0;
 		const IniGroup *names = ini.GetGroup("names");
 		const IniGroup *catindex = ini.GetGroup("catindex");
+		const IniGroup *formats = ini.GetGroup("formats");
 		const IniGroup *timingtrim = ini.GetGroup("timingtrim");
 		uint tracknr = 1;
 		for (uint i = 0; i < lengthof(this->songinfo); i++) {
@@ -150,7 +172,10 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				}
 				this->songinfo[i].songname = *songname;
 			} else {
-				this->songinfo[i].filetype = MTT_STANDARDMIDI;
+				const IniItem *format = formats != nullptr ? formats->GetItem(_music_file_names[i]) : nullptr;
+				auto filetype = GetMusicTrackType(filename, format);
+				if (!filetype.has_value()) continue;
+				this->songinfo[i].filetype = *filetype;
 			}
 
 			std::string_view trimmed_filename{filename};
@@ -173,7 +198,7 @@ bool MusicSet::FillSetDetails(const IniFile &ini, const std::string &path, const
 				}
 			}
 
-			if (this->songinfo[i].filetype == MTT_STANDARDMIDI) {
+			if (this->songinfo[i].filetype != MTT_MPSMIDI) {
 				if (item != nullptr && item->value.has_value() && !item->value->empty()) {
 					this->songinfo[i].songname = item->value.value();
 				} else {
