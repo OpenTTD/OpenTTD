@@ -21,15 +21,16 @@
  */
 class ScriptBaseStation : public ScriptObject {
 public:
-	static constexpr StationID STATION_NEW = ::NEW_STATION; ///< Build a new station
-	static constexpr StationID STATION_JOIN_ADJACENT = ::ADJACENT_STATION; ///< Join an neighbouring station if one exists
-	static constexpr StationID STATION_INVALID = ::StationID::Invalid(); ///< Invalid station id.
+	static constexpr StationID STATION_NEW = ::NEW_STATION; ///< Build a new station or waypoint
+	static constexpr StationID STATION_JOIN_ADJACENT = ::ADJACENT_STATION; ///< Join a neighbouring station or waypoint if one exists
+	static constexpr StationID STATION_INVALID = ::StationID::Invalid(); ///< Invalid station or waypoint id.
 
 	/**
 	 * Checks whether the given basestation is valid and owned by you.
 	 * @param station_id The station to check.
 	 * @return True if and only if the basestation is valid.
 	 * @note IsValidBaseStation == (IsValidStation || IsValidWaypoint).
+	 * @api -all
 	 */
 	static bool IsValidBaseStation(StationID station_id);
 
@@ -43,18 +44,18 @@ public:
 	static ScriptCompany::CompanyID GetOwner(StationID station_id);
 
 	/**
-	 * Get the name of a basestation.
-	 * @param station_id The basestation to get the name of.
-	 * @pre IsValidBaseStation(station_id).
-	 * @return The name of the station.
+	 * Get the name of a station or waypoint.
+	 * @param station_id The station or waypoint to get the name of.
+	 * @pre IsValidStation(station_id) || IsValidWaypoint(station_id).
+	 * @return The name of the station or waypoint.
 	 */
 	static std::optional<std::string> GetName(StationID station_id);
 
 	/**
-	 * Set the name this basestation.
-	 * @param station_id The basestation to set the name of.
-	 * @param name The new name of the station (can be either a raw string, or a ScriptText object).
-	 * @pre IsValidBaseStation(station_id).
+	 * Set the name of a station or waypoint.
+	 * @param station_id The station or waypoint to set the name of.
+	 * @param name The new name of the station or waypoint (can be either a raw string, or a ScriptText object).
+	 * @pre IsValidStation(station_id) || IsValidWaypoint(station_id).
 	 * @pre name != null && len(name) != 0.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
@@ -63,19 +64,19 @@ public:
 	static bool SetName(StationID station_id, Text *name);
 
 	/**
-	 * Get the current location of a basestation.
-	 * @param station_id The basestation to get the location of.
-	 * @pre IsValidBaseStation(station_id).
-	 * @return The tile the basestation sign above it.
-	 * @note The tile is not necessarily a station tile (and if it is, it could also belong to another station).
+	 * Get the current location of a station or waypoint.
+	 * @param station_id The station or waypoint to get the location of.
+	 * @pre IsValidStation(station_id) || IsValidWaypoint(station_id).
+	 * @return The tile with the station or waypoint sign above it.
+	 * @note The tile is not necessarily a station or waypoint tile (and if it is, it could also belong to another station or waypoint).
 	 * @see ScriptTileList_StationType.
 	 */
 	static TileIndex GetLocation(StationID station_id);
 
 	/**
-	 * Get the last calendar-date a station part was added to this station.
-	 * @param station_id The station to look at.
-	 * @return The last calendar-date some part of this station was build.
+	 * Get the last calendar-date a station or waypoint part was added to this station or waypoint.
+	 * @param station_id The station or waypoint to look at.
+	 * @return The last calendar-date some part of this station or waypoint was built.
 	 * @see \ref ScriptCalendarTime
 	 */
 	static ScriptDate::Date GetConstructionDate(StationID station_id);
