@@ -26,6 +26,13 @@ struct ShipPathElement {
 
 using ShipPathCache = std::vector<ShipPathElement>;
 
+/** Ship flags. */
+enum class VehicleShipFlag : uint8_t {
+	SecondEndFacingForward = 0, ///< Whether the other end is facing forward. Only applies to dual-ended ships.
+};
+/** Bitset of the %VehicleShipFlag elements. */
+using VehicleShipFlags = EnumBitSet<VehicleShipFlag, uint8_t>;
+
 /**
  * All ships have this type.
  */
@@ -33,6 +40,7 @@ struct Ship final : public SpecializedVehicle<Ship, VehicleType::Ship> {
 	ShipPathCache path{}; ///< Cached path.
 	TrackBits state{}; ///< The "track" the ship is following.
 	Direction rotation = Direction::Invalid; ///< Visible direction.
+	VehicleShipFlags flags; ///< Ship-specific flags. @see VehicleShipFlags.
 	int16_t rotation_x_pos = 0; ///< NOSAVE: X Position before rotation.
 	int16_t rotation_y_pos = 0; ///< NOSAVE: Y Position before rotation.
 

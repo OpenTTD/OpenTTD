@@ -175,6 +175,7 @@ enum class ExtraEngineFlag : uint8_t {
 	JoinPreview     = 2, ///< Engine will join exclusive preview with variant parent.
 	SyncReliability = 3, ///< Engine reliability will be synced with variant parent.
 	HasCab          = 4, ///< Train wagon has a cab and can lead a train when backing up, without any speed reduction.
+	IsDoubleEnded   = 5, ///< Ship is double-ended, it can reverse direction without having to turn around.
 };
 
 /** Bitset of \c ExtraEngineFlag elements. */
