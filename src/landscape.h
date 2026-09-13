@@ -133,7 +133,7 @@ inline uint ApplyPixelFoundationToSlope(Foundation f, Slope &s)
 uint GetFoundationSpriteBlock (TileIndex tile);
 void DrawFoundation(TileInfo *ti, Foundation f);
 
-void DoClearSquare(TileIndex tile);
+void DoClearSquare(TileIndex tile, bool make_rocks = false);
 void RunTileLoop();
 
 void InitializeLandscape();
