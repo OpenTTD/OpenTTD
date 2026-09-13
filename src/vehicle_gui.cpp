@@ -2351,8 +2351,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
 
 static_assert(WID_VD_DETAILS_CARGO_CARRIED    == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_CARGO   );
 static_assert(WID_VD_DETAILS_TRAIN_VEHICLES   == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_INFO    );
-static_assert(WID_VD_DETAILS_CAPACITY_OF_EACH == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_CAPACITY);
-static_assert(WID_VD_DETAILS_TOTAL_CARGO      == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_TOTALS  );
+static_assert(WID_VD_DETAILS_TOTALS           == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_TOTALS  );
 
 /** Vehicle details widgets (other than train). */
 static constexpr std::initializer_list<NWidgetPart> _nested_nontrain_vehicle_details_widgets = {
@@ -2405,10 +2404,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_train_vehicle_detail
 				SetStringTip(STR_VEHICLE_DETAIL_TAB_CARGO, STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_VD_DETAILS_TRAIN_VEHICLES), SetMinimalSize(99, 12),
 				SetStringTip(STR_VEHICLE_DETAIL_TAB_INFORMATION, STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
-		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_VD_DETAILS_CAPACITY_OF_EACH), SetMinimalSize(99, 12),
-				SetStringTip(STR_VEHICLE_DETAIL_TAB_CAPACITIES, STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
-		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_VD_DETAILS_TOTAL_CARGO), SetMinimalSize(99, 12),
-				SetStringTip(STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_VD_DETAILS_TOTALS), SetMinimalSize(99, 12),
+				SetStringTip(STR_VEHICLE_DETAIL_TAB_TOTALS, STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
 };
@@ -2776,13 +2773,11 @@ struct VehicleDetailsWindow : Window {
 
 			case WID_VD_DETAILS_CARGO_CARRIED:
 			case WID_VD_DETAILS_TRAIN_VEHICLES:
-			case WID_VD_DETAILS_CAPACITY_OF_EACH:
-			case WID_VD_DETAILS_TOTAL_CARGO:
+			case WID_VD_DETAILS_TOTALS:
 				this->SetWidgetsLoweredState(false,
 					WID_VD_DETAILS_CARGO_CARRIED,
 					WID_VD_DETAILS_TRAIN_VEHICLES,
-					WID_VD_DETAILS_CAPACITY_OF_EACH,
-					WID_VD_DETAILS_TOTAL_CARGO);
+					WID_VD_DETAILS_TOTALS);
 
 				this->tab = (TrainDetailsWindowTabs)(widget - WID_VD_DETAILS_CARGO_CARRIED);
 				this->SetDirty();
