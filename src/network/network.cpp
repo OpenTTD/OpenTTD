@@ -132,7 +132,7 @@ NetworkClientInfo::~NetworkClientInfo()
 bool NetworkClientInfo::CanJoinCompany(CompanyID company_id) const
 {
 	Company *c = Company::GetIfValid(company_id);
-	return c != nullptr && (c->allow_any || c->allow_list.Contains(this->public_key));
+	return c != nullptr && (c->allow_any || this->client_id == ClientID::Server || c->allow_list.Contains(this->public_key));
 }
 
 /**
