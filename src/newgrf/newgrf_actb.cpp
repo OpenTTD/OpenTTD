@@ -13,7 +13,7 @@
 #include "newgrf_internal.h"
 #include "../language.h"
 
-#include "table/strings.h"
+#include "table/strings_newgrf.h"
 
 #include "../safeguards.h"
 

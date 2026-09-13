@@ -35,6 +35,7 @@
 #include "oldloader.h"
 
 #include "table/strings.h"
+#include "table/strings_station_names.h"
 #include "../table/engines.h"
 #include "../table/townname.h"
 

@@ -17,6 +17,9 @@
 #include "newgrf_stringmapping.h"
 
 #include "table/strings.h"
+#include "table/strings_cargo.h"
+#include "table/strings_industry_names.h"
+#include "table/strings_building_names.h"
 
 #include "../safeguards.h"
 

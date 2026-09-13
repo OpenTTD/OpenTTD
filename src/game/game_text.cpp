@@ -153,7 +153,7 @@ struct StringNameWriter : HeaderWriter {
 		if (stringid == this->strings.size()) this->strings.emplace_back(name);
 	}
 
-	void Finalise(const StringData &) override
+	void Finalise(const StringData &, bool) override
 	{
 		/* Nothing to do. */
 	}
@@ -297,7 +297,7 @@ void GameStrings::Compile()
 	ExtractStringParams(data, this->string_params);
 
 	StringNameWriter id_writer(this->string_names);
-	id_writer.WriteHeader(data);
+	id_writer.WriteHeader(data, {});
 
 	for (const auto &p : this->raw_strings) {
 		data.FreeTranslation();

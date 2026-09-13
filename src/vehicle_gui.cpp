@@ -46,6 +46,10 @@
 #include "group_cmd.h"
 
 #include "table/strings.h"
+#include "table/strings_depots.h"
+#include "table/strings_groups.h"
+#include "table/strings_stations.h"
+#include "table/strings_vehicles.h"
 
 #include "safeguards.h"
 

@@ -30,6 +30,7 @@
 #include "widgets/story_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_storybook.h"
 #include "table/sprites.h"
 
 #include "safeguards.h"

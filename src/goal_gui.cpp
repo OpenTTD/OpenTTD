@@ -28,6 +28,7 @@
 #include "widgets/goal_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_goals.h"
 
 #include "safeguards.h"
 

@@ -48,6 +48,8 @@
 #include "widgets/statusbar_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_companies.h"
+#include "table/strings_station_names.h"
 #include "table/company_face.h"
 
 #include "safeguards.h"

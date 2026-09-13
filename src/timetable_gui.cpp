@@ -33,6 +33,9 @@
 
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "table/strings_orders.h"
+#include "table/strings_timetables.h"
+#include "table/strings_units.h"
 
 #include "safeguards.h"
 

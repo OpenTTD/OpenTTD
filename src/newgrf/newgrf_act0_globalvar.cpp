@@ -28,7 +28,7 @@
 #include "newgrf_internal.h"
 #include "newgrf_stringmapping.h"
 
-#include "table/strings.h"
+#include "table/strings_metadata.h"
 
 #include "../safeguards.h"
 

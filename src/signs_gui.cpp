@@ -36,6 +36,8 @@
 #include "widgets/sign_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_stations.h"
+#include "table/strings_towns.h"
 #include "table/sprites.h"
 
 #include "safeguards.h"

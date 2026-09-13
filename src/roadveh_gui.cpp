@@ -17,6 +17,7 @@
 #include "zoom_func.h"
 
 #include "table/strings.h"
+#include "table/strings_vehicles.h"
 
 #include "safeguards.h"
 

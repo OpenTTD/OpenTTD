@@ -22,6 +22,8 @@ STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(undefined string)
 STR_JUST_NOTHING                                                :Nothing
 
+##section cargo
+
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
@@ -169,6 +171,8 @@ STR_LITERS                                                      :{COMMA}{NBSP}li
 STR_ITEMS                                                       :{COMMA}{NBSP}item{P "" s}
 STR_CRATES                                                      :{COMMA}{NBSP}crate{P "" s}
 
+##endsection
+
 STR_COLOUR_DEFAULT                                              :Default
 ###length 17
 STR_COLOUR_DARK_BLUE                                            :Dark Blue
@@ -208,6 +212,7 @@ STR_COLOUR_SECONDARY_GREY                                       :Grey
 STR_COLOUR_SECONDARY_WHITE                                      :White
 STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :Same As Primary
 
+##section units
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
@@ -266,6 +271,8 @@ STR_UNITS_MINUTES                                               :{NUM}{NBSP}minu
 
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}year{P "" s}
 STR_UNITS_PERIODS                                               :{NUM}{NBSP}period{P "" s}
+
+##endsection
 
 STR_LIST_SEPARATOR                                              :,{SPACE}
 STR_TRUNCATION_ELLIPSIS                                         :...
@@ -2332,6 +2339,8 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Change c
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING}
 STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fix station ratings at 100%: {ORANGE}{STRING}
 
+##section companies
+
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Colour Scheme
 
@@ -2416,6 +2425,8 @@ STR_FACE_JACKET                                                 :Jacket:
 STR_FACE_COLLAR                                                 :Collar:
 STR_FACE_TIE                                                    :Tie:
 STR_FACE_EARRING                                                :Earring:
+
+##endsection
 
 # Matches ServerGameType
 ###length 3
@@ -2943,6 +2954,8 @@ STR_STATION_CLASS_DFLT_ROADSTOP                                 :Default road st
 STR_STATION_CLASS_WAYP                                          :Waypoints
 STR_STATION_CLASS_WAYP_WAYPOINT                                 :Default waypoint
 
+##section signals
+
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signal Selection
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Block Signal (semaphore){}This is the most basic type of signal, allowing only one train to be in the same block at the same time
@@ -2962,6 +2975,9 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dragging
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Decrease dragging signal distance
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Increase dragging signal distance
 
+##endsection
+##section bridges
+
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Select Rail Bridge
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Select Road Bridge
@@ -2970,6 +2986,10 @@ STR_SELECT_BRIDGE_INFO_NAME                                     :{GOLD}{STRING}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED                           :{GOLD}{STRING},{} {VELOCITY}
 STR_SELECT_BRIDGE_INFO_NAME_COST                                :{GOLD}{STRING},{} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_INFO_NAME_MAX_SPEED_COST                      :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
+
+##endsection
+##section bridge_names
+
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspension, Steel
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Girder, Steel
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, Steel
@@ -2979,6 +2999,8 @@ STR_BRIDGE_NAME_CONCRETE                                        :Concrete
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Tubular, Steel
 STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silicon
 
+##endsection
+##section roads
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Road Construction
@@ -3024,6 +3046,9 @@ STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Select p
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Freight Tram Station Orientation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Select freight tram station orientation
 
+##endsection
+##section waterways
+
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterways Construction
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterways
@@ -3043,6 +3068,9 @@ STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Select s
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Dock
 
+##endsection
+##section airports
+
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Airports
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build airport. Ctrl+Click to select another station to join. Also press Shift to show cost estimate only
@@ -3052,6 +3080,10 @@ STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Airport 
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Select size/type of airport
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Airport class
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {NUM}
+STR_STATION_BUILD_NOISE                                         :{BLACK}Noise generated: {GOLD}{COMMA}
+
+##endsection
+##section airport_names
 
 STR_AIRPORT_SMALL                                               :Small
 STR_AIRPORT_CITY                                                :City
@@ -3068,7 +3100,7 @@ STR_AIRPORT_CLASS_LARGE                                         :Large airports
 STR_AIRPORT_CLASS_HUB                                           :Hub airports
 STR_AIRPORT_CLASS_HELIPORTS                                     :Helicopter airports
 
-STR_STATION_BUILD_NOISE                                         :{BLACK}Noise generated: {GOLD}{COMMA}
+##endsection
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landscaping
@@ -3116,6 +3148,8 @@ STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Remove a
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reset Landscape
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Are you sure you want to remove all company-owned property?
 
+##section towns
+
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Town Generation
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}New Town
@@ -3158,6 +3192,9 @@ STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 grid
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 grid
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Random
 
+##endsection
+##section industries
+
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Industry Funding
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choose the appropriate industry from this list
@@ -3190,6 +3227,8 @@ STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Select c
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Select the cargo you want to display
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Select industry
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Select the industry you want to display
+
+##endsection
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Area Information
@@ -3325,6 +3364,8 @@ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{RAW_STRING} The OpenTTD team
 
+##section framerate
+
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Frame Rate
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING2}{WHITE} ({DECIMAL}x)
@@ -3382,6 +3423,7 @@ STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI scripts t
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Game script
 STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {RAW_STRING}
 
+##endsection
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Save Game
@@ -3419,6 +3461,8 @@ STR_SAVELOAD_DIRECTORY                                          :{RAW_STRING} (D
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{RAW_STRING} (Parent directory)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a name for the savegame
+
+##section worldgen
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}World Generation
@@ -3556,6 +3600,9 @@ STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{RAW_STRING} da
 STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{RAW_STRING} coordinates formatted incorrectly, must be 0 to 1 as a proportion of the total heightmap dimension
 
 STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :Could not find valid location to found {NUM} town{P "" s}. Created {P "a " ""}sign{P "" s} at the intended location{P "" s} instead
+
+##endsection
+##section newgrf
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Settings
@@ -3705,6 +3752,8 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :Can't add file:
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matching file not found (compatible NewGRF loaded)
 STR_NEWGRF_TOO_MANY_NEWGRFS                                     :Can't add file: NewGRF file limit reached
 
+##endsection
+
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :Compatible NewGRF(s) loaded for missing files
 STR_NEWGRF_DISABLED_WARNING                                     :Missing NewGRF file(s) have been disabled
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing NewGRF file(s)
@@ -3758,6 +3807,8 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Go to pr
 STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}Colour of the sign's text
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Enter a name for the sign
+
+##section towns
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Towns ({COMMA} of {COMMA})
@@ -3834,6 +3885,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{Y
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}Buy exclusive transport rights in town for 12 minutes.{}Town authority will not allow passengers and cargo to use your competitors' stations. A successful bribe from a competitor will cancel this contract.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}Bribe the local authority to increase your rating and abort a competitor's exclusive transport rights, at the risk of a severe penalty if caught.{}{POP_COLOUR}Cost: {CURRENCY_LONG}
 
+##endsection
+##section goals
+
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Goals
@@ -3876,6 +3930,9 @@ STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Postpone
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Surrender
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Close
 
+##endsection
+##section subsidies
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidies on offer for services taking:
@@ -3889,6 +3946,9 @@ STR_SUBSIDIES_OFFERED_EXPIRY_TIME                               :within {UNITS_M
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_DATE                            :until {DATE_SHORT}
 STR_SUBSIDIES_SUBSIDISED_EXPIRY_TIME                            :{UNITS_MONTHS_OR_MINUTES} remaining
 
+##endsection
+##section storybook
+
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY} Story Book
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Global Story Book
@@ -3901,6 +3961,9 @@ STR_STORY_BOOK_PREV_PAGE_TOOLTIP                                :{BLACK}Go to pr
 STR_STORY_BOOK_NEXT_PAGE                                        :{BLACK}Next
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Go to next page
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Invalid goal reference
+
+##endsection
+##section stations
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Station names - click on name to centre main view on station. Ctrl+Click to open a new viewport on station location
@@ -3991,6 +4054,9 @@ STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}Change b
 
 STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}Edit waypoint sign
 
+##endsection
+##section finances
+
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finances {BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
@@ -4035,6 +4101,9 @@ STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Increase
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Repay {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Repay part of loan. Ctrl+Click to repay as much loan as possible
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastructure
+
+##endsection
+##section companies
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -4101,6 +4170,9 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Airports
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/year
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/period
 
+##endsection
+##section industries
+
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries ({COMMA} of {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- None -
@@ -4139,6 +4211,9 @@ STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRI
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production (multiple of 8, up to 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Change production level (percentage, up to 800%)
+
+##endsection
+##section vehicles
 
 # Vehicle lists
 ###length VEHICLE_TYPES
@@ -4180,6 +4255,9 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}See a li
 
 STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
 
+##endsection
+##section groups
+
 # Group window
 ###length VEHICLE_TYPES
 STR_GROUP_ALL_TRAINS                                            :All trains
@@ -4216,6 +4294,9 @@ STR_GROUP_PROFIT_LAST_YEAR                                      :Profit last yea
 STR_GROUP_PROFIT_LAST_PERIOD                                    :Profit last period:
 STR_GROUP_OCCUPANCY                                             :Current usage:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
+
+##endsection
+##section vehicles
 
 # Build vehicle window
 ###length 4
@@ -4347,6 +4428,9 @@ STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Rename r
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Rename ship type
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Rename aircraft type
 
+##endsection
+##section depots
+
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
@@ -4432,6 +4516,9 @@ STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Click to
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Drag train engine here to sell the whole train
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}You are about to sell all the vehicles in the depot. Are you sure?
+
+##endsection
+##section vehicles
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Message from vehicle manufacturer
@@ -4705,6 +4792,9 @@ STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Refit ro
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Refit ship to carry highlighted cargo type
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Refit aircraft to carry highlighted cargo type
 
+##endsection
+##section orders
+
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Orders)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Timetable
@@ -4877,6 +4967,9 @@ STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Jump to order {
 
 STR_INVALID_ORDER                                               :{RED} (Invalid Order)
 
+##endsection
+##section timetables
+
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Orders
@@ -4941,6 +5034,7 @@ STR_TIMETABLE_DEPARTURE_DATE                                    :D: {COLOUR}{DAT
 STR_TIMETABLE_ARRIVAL_SECONDS_IN_FUTURE                         :A: {COLOUR}{COMMA} sec
 STR_TIMETABLE_DEPARTURE_SECONDS_IN_FUTURE                       :D: {COLOUR}{COMMA} sec
 
+##endsection
 
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Set date
@@ -4950,6 +5044,7 @@ STR_DATE_DAY_TOOLTIP                                            :{BLACK}Select d
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Select month
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Select year
 
+##section scripts
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI/Game Script Debug
@@ -5015,6 +5110,14 @@ STR_AI_LIST_URL                                                 :{LTBLUE}URL: {O
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accept
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Select highlighted script
 
+# Script Parameters
+STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI Parameters
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Game Script Parameters
+STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
+STR_AI_SETTINGS_SETTING                                         :{RAW_STRING}: {ORANGE}{STRING1}
+
+##endsection
+
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Take a screenshot
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normal screenshot
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Fully zoomed in screenshot
@@ -5023,12 +5126,7 @@ STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Whole ma
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Heightmap screenshot
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap screenshot
 
-# Script Parameters
-STR_AI_SETTINGS_CAPTION_AI                                      :{WHITE}AI Parameters
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :{WHITE}Game Script Parameters
-STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
-STR_AI_SETTINGS_SETTING                                         :{RAW_STRING}: {ORANGE}{STRING1}
-
+##section textfiles
 
 # Textfile window
 STR_TEXTFILE_JUMPLIST                                           :{WHITE}Table of Contents
@@ -5051,6 +5149,7 @@ STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}
 STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}Preview of survey result
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :{WHITE}OpenTTD document '{RAW_STRING}'
 
+##endsection
 
 # Vehicle loading indicators
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
@@ -5573,6 +5672,8 @@ STR_BASEMUSIC_DOS_DESCRIPTION                                   :Original Transp
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :Original Transport Tycoon (Original/World Editor) DOS edition music.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :A music pack without actual music.
 
+##section building_names
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Tall office block
@@ -5608,6 +5709,9 @@ STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Igloo
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teapot-House
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Piggy-Bank
+
+##endsection
+##section industry_names
 
 ##id 0x4800
 # industry names
@@ -5649,8 +5753,12 @@ STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Bubble Generato
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Toffee Quarry
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Sugar Mine
 
+##endsection
+
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
+
+##section station_names
 
 ##id 0x6000
 STR_SV_EMPTY                                                    :
@@ -5690,7 +5798,11 @@ STR_SV_STNAME_HELIPORT                                          :{STRING1} Helip
 STR_SV_STNAME_FOREST                                            :{STRING1} Forest
 STR_SV_STNAME_FALLBACK                                          :{STRING1} Station #{NUM}
 
+##endsection
+
 ############ end of savegame specific region!
+
+##section engine_names
 
 ##id 0x8000
 ###length 116
@@ -5957,6 +6069,8 @@ STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizze
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario Helicopter
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 Helicopter
 STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut Helicopter
+
+##endsection
 
 ##id 0x8800
 # Formatting of some strings
