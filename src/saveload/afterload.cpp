@@ -601,29 +601,6 @@ bool AfterLoadGame()
 		_pause_mode.Reset({PauseMode::ActiveClients, PauseMode::Join});
 	}
 
-	/* In very old versions, size of train stations was stored differently.
-	 * They had swapped width and height if station was built along the Y axis.
-	 * TTO and TTD used 3 bits for width/height, while OpenTTD used 4.
-	 * Because the data stored by TTDPatch are unusable for rail stations > 7x7,
-	 * recompute the width and height. Doing this unconditionally for all old
-	 * savegames simplifies the code. */
-	if (IsSavegameVersionBefore(SaveLoadVersion::VehicleCurrencyStationChanges)) {
-		for (Station *st : Station::Iterate()) {
-			st->train_station.w = st->train_station.h = 0;
-		}
-		for (auto t : Map::Iterate()) {
-			if (!IsTileType(t, TileType::Station)) continue;
-			if (t.m5() > 7) continue; // is it a rail station tile?
-			Station *st = Station::Get(t.m2());
-			assert(st->train_station.tile != 0);
-			int dx = TileX(t) - TileX(st->train_station.tile);
-			int dy = TileY(t) - TileY(st->train_station.tile);
-			assert(dx >= 0 && dy >= 0);
-			st->train_station.w = std::max<uint16_t>(st->train_station.w, dx + 1);
-			st->train_station.h = std::max<uint16_t>(st->train_station.h, dy + 1);
-		}
-	}
-
 	if (IsSavegameVersionBefore(SaveLoadVersion::MaxBridgeMapHeight)) {
 		_settings_game.construction.map_height_limit = 15;
 
@@ -686,12 +663,6 @@ bool AfterLoadGame()
 	ResetOldNames();
 
 	if (IsSavegameVersionBefore(SaveLoadVersion::DistantStationJoining)) {
-		/* no station is determined by 'tile == INVALID_TILE' now (instead of '0') */
-		for (Station *st : Station::Iterate()) {
-			if (st->airport.tile       == 0) st->airport.tile = INVALID_TILE;
-			if (st->train_station.tile == 0) st->train_station.tile   = INVALID_TILE;
-		}
-
 		/* the same applies to Company::location_of_HQ */
 		for (Company *c : Company::Iterate()) {
 			if (c->location_of_HQ == 0 || (IsSavegameVersionBefore(SaveLoadVersion::TownTolerancePauseMode) && c->location_of_HQ == 0xFFFF)) {
@@ -2305,17 +2276,23 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(SaveLoadVersion::MultiTileWaypoints) && !IsSavegameVersionBeforeOrAt(SaveLoadVersion::MinVersion)) {
-		/* The train station tile area was added, but for really old (TTDPatch) it's already valid. */
-		for (Waypoint *wp : Waypoint::Iterate()) {
-			if (wp->facilities.Test(StationFacility::Train)) {
-				wp->train_station.tile = wp->xy;
-				wp->train_station.w = 1;
-				wp->train_station.h = 1;
-			} else {
-				wp->train_station.tile = INVALID_TILE;
-				wp->train_station.w = 0;
-				wp->train_station.h = 0;
+	{
+		for (auto t : Map::Iterate()) {
+			if (!IsTileType(t, TileType::Station)) continue;
+
+			BaseStation *st = BaseStation::GetByTile(t);
+			assert(st != nullptr);
+
+			st->spread.Add(t);
+
+			switch (GetStationType(t)) {
+				case StationType::Rail: Station::From(st)->train_station.Add(t); break;
+				case StationType::Airport: Station::From(st)->airport.Add(t); break;
+				case StationType::Oilrig: Station::From(st)->ship_station.Add(t); break;
+				case StationType::Dock: Station::From(st)->ship_station.Add(t); break;
+				case StationType::RailWaypoint: Waypoint::From(st)->train_station.Add(t); break;
+				case StationType::RoadWaypoint: Waypoint::From(st)->road_waypoint_area.Add(t); break;
+				default: break;
 			}
 		}
 	}
@@ -2496,15 +2473,6 @@ bool AfterLoadGame()
 		for (Station *st : Station::Iterate()) {
 			if (!st->airport.IsEmpty() && st->airport.type == 15) {
 				st->airport.type = AT_OILRIG;
-			}
-		}
-	}
-
-	if (IsSavegameVersionBefore(SaveLoadVersion::StoreAirportSize)) {
-		for (Station *st : Station::Iterate()) {
-			if (!st->airport.IsEmpty()) {
-				st->airport.w = st->airport.GetSpec()->size_x;
-				st->airport.h = st->airport.GetSpec()->size_y;
 			}
 		}
 	}
@@ -3240,18 +3208,11 @@ bool AfterLoadGame()
 			if (IsTileType(t, TileType::Water) || IsTileType(t, TileType::Railway) || IsTileType(t, TileType::Station) || IsTileType(t, TileType::TunnelBridge)) {
 				SetDockingTile(t, false);
 			}
-			/* Add docks and oilrigs to Station::ship_station. */
-			if (IsTileType(t, TileType::Station)) {
-				if (IsDock(t) || IsOilRig(t)) Station::GetByTile(t)->ship_station.Add(t);
-			}
 		}
 	}
 
-	if (IsSavegameVersionBefore(SaveLoadVersion::RepairObjectDockingTiles)) {
-		/* Placing objects on docking tiles was not updating adjacent station's docking tiles. */
-		for (Station *st : Station::Iterate()) {
-			if (!st->ship_station.IsEmpty()) UpdateStationDockingTiles(st);
-		}
+	for (Station *st : Station::Iterate()) {
+		if (!st->ship_station.IsEmpty()) UpdateStationDockingTiles(st);
 	}
 
 	/* Make sure all industries exclusive supplier/consumer set correctly. */

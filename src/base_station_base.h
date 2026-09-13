@@ -59,7 +59,7 @@ struct BaseStation : StationPool::PoolItem<&_station_pool> {
 	CargoTypes cached_cargo_triggers{}; ///< NOSAVE: Combined cargo trigger bitmask
 	CargoTypes cached_roadstop_cargo_triggers{}; ///< NOSAVE: Combined cargo trigger bitmask for road stops
 
-	TileArea train_station{INVALID_TILE, 0, 0}; ///< Tile area the train 'station' part covers
+	TileArea train_station{INVALID_TILE, 0, 0}; ///< NOSAVE: Tile area the train 'station' part covers
 	TileArea spread{}; ///< NOSAVE: Station spread tile area.
 
 	std::vector<RoadStopTileData> custom_roadstop_tile_data{}; ///< List of custom road stop tile data
