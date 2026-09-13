@@ -374,6 +374,20 @@ void VehicleCargoList::RemoveFromMeta(const CargoPacket *cp, MoveToAction action
 }
 
 /**
+ * Try to remove a packet or part of it from the metadata.
+ * @param cp Packet to be removed.
+ * @param action MoveToAction of the packet (for updating the counts).
+ * @param count Amount of cargo to be removed.
+ * @return Amount of cargo removed.
+ */
+uint VehicleCargoList::TryRemoveFromMeta(const CargoPacket *cp, MoveToAction action, uint count)
+{
+	uint remove = std::min(this->action_counts[action], count);
+	if (remove > 0) this->RemoveFromMeta(cp, action, remove);
+	return remove;
+}
+
+/**
  * Adds a packet to the metadata.
  * @param cp Packet to be added.
  * @param action MoveToAction of the packet.
