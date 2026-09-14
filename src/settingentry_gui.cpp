@@ -718,6 +718,7 @@ SettingsContainer &GetSettingsTree()
 			accounting->Add(new SettingEntry("difficulty.vehicle_costs"));
 			accounting->Add(new SettingEntry("difficulty.construction_cost"));
 			accounting->Add(new SettingEntry("economy.cargo_aging_rate"));
+			accounting->Add(new SettingEntry("difficulty.water_clearing_cost_exponent"));
 		}
 
 		SettingsPage *vehicles = main->Add(new SettingsPage(STR_CONFIG_SETTING_VEHICLES));
@@ -868,6 +869,7 @@ SettingsContainer &GetSettingsTree()
 				trees->Add(new SettingEntry("game_creation.tree_placer"));
 				trees->Add(new SettingEntry("construction.extra_tree_placement"));
 			}
+			environment->Add(new SettingEntry("difficulty.water_depth_erosion_speed"));
 		}
 
 		SettingsPage *ai = main->Add(new SettingsPage(STR_CONFIG_SETTING_AI));

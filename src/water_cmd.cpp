@@ -68,6 +68,11 @@ static const NonSteepSlopeIndexArray<Directions> _flood_from_dirs = {{{
 	{Direction::W, Direction::SW, Direction::NW}, // SLOPE_SEN, SLOPE_STEEP_E
 }}};
 
+const WaterDepth CANAL_MAX_WATER_DEPTH      = 2; ///< Maximum depth canals can be built over
+
+const int WATER_DEPTH_METRES_PER_UNIT = 20; ///< How many metres of depth one unit represents
+const int WATER_DEPTH_METRES_ZERO     = 10; ///< Depth in metres for water depth zero
+
 /**
  * Marks tile dirty if it is a canal or river tile.
  * Called to avoid glitches when flooding tiles next to canal tile.
@@ -120,6 +125,7 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 		return CommandCost(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 	}
 
+
 	for (Tile t : {tile, tile2}) {
 		if (IsBridgeAbove(t)) {
 			int height_diff = GetTileMaxZ(t) + MINIMAL_DEPOT_BRIDGE_HEIGHT - GetBridgeHeight(GetSouthernBridgeEnd(t));
@@ -139,12 +145,14 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 	CommandCost cost = CommandCost(ExpensesType::Construction, _price[Price::BuildDepotShip]);
 
 	bool add_cost = !IsWaterTile(tile);
+	WaterDepth depth1 = HasWaterDepth(tile) ? GetWaterDepth(tile) : WATER_DEPTH_MIN;
 	CommandCost ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
 		cost.AddCost(ret.GetCost());
 	}
 	add_cost = !IsWaterTile(tile2);
+	WaterDepth depth2 = HasWaterDepth(tile2) ? GetWaterDepth(tile2) : WATER_DEPTH_MIN;
 	ret = Command<Commands::LandscapeClear>::Do(flags | DoCommandFlag::Auto, tile2);
 	if (ret.Failed()) return ret;
 	if (add_cost) {
@@ -166,6 +174,8 @@ CommandCost CmdBuildShipDepot(DoCommandFlags flags, TileIndex tile, Axis axis)
 
 		MakeShipDepot(tile,  _current_company, depot->index, DepotPart::North, axis, wc1);
 		MakeShipDepot(tile2, _current_company, depot->index, DepotPart::South, axis, wc2);
+		SetWaterDepth(tile,  depth1);
+		SetWaterDepth(tile2, depth2);
 		CheckForDockingTile(tile);
 		CheckForDockingTile(tile2);
 		MarkTileDirtyByTile(tile);
@@ -275,7 +285,17 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 		default: break;
 	}
 
-	if (wc != WaterClass::Invalid) CheckForDockingTile(tile);
+	if (wc != WaterClass::Invalid) {
+		/* Restore the water depth from surrounding tiles */
+		WaterDepth min_water_depth = WATER_DEPTH_MAX + 1;
+		for (Direction dir : EnumRange(Direction::End)) {
+			const TileIndex dest = tile + TileOffsByDir(dir);
+			if (IsValidTile(dest) && IsWaterTile(dest)) min_water_depth = std::min(min_water_depth, GetWaterDepth(dest));
+		}
+		if (min_water_depth <= WATER_DEPTH_MAX) SetWaterDepth(tile, min_water_depth);
+
+		CheckForDockingTile(tile);
+	}
 	MarkTileDirtyByTile(tile);
 }
 
@@ -526,6 +546,13 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 		/* Outside the editor, prevent building canals over your own or OWNER_NONE owned canals */
 		if (water && IsCanal(current_tile) && _game_mode != GameMode::Editor && (IsTileOwner(current_tile, _current_company) || IsTileOwner(current_tile, OWNER_NONE))) continue;
 
+		WaterDepth depth = water ? GetWaterDepth(current_tile) : WATER_DEPTH_MIN;
+		if (depth > CANAL_MAX_WATER_DEPTH) {
+			/* Too deep to convert to canal, pretend the tile has to be demolished and rebuilt */
+			water = false;
+			depth = CANAL_MAX_WATER_DEPTH;
+		}
+
 		ret = Command<Commands::LandscapeClear>::Do(flags, current_tile);
 		if (ret.Failed()) return ret;
 
@@ -560,6 +587,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 
 				default:
 					MakeCanal(current_tile, _current_company, Random());
+					SetWaterDepth(current_tile, depth);
 					if (Company::IsValidID(_current_company)) {
 						Company::Get(_current_company)->infrastructure.water++;
 						DirtyCompanyInfrastructureWindows(_current_company);
@@ -581,6 +609,21 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 	}
 }
 
+/**
+ * Multiplier to apply to clear water depending on the depth.
+ * @param depth Depth of the water.
+ * @return Multiplier to apply based on the difficulty setting.
+ */
+static int WaterClearCostMultiplier(WaterDepth depth)
+{
+	const int real_depth = std::max<int>(depth, 1);
+	switch (_settings_game.difficulty.water_clearing_cost_exponent) {
+		case 0: return 1;
+		case 1: return real_depth;
+		case 2: return real_depth * real_depth;
+		default: NOT_REACHED();
+	}
+}
 
 /** @copydoc ClearTileProc */
 static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
@@ -590,7 +633,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 		case WaterTileType::ClearRocks: {
 			if (flags.Test(DoCommandFlag::NoWater)) return CommandCost(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
-			Money base_cost = IsCanal(tile) ? _price[Price::ClearCanal] : _price[Price::ClearWater];
+			const Money base_cost = IsCanal(tile) ? _price[Price::ClearCanal] : _price[Price::ClearWater];
 			/* Make sure freeform edges are allowed or it's not an edge tile. */
 			if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(tile), 1, Map::MaxX() - 1) ||
 					!IsInsideMM(TileY(tile), 1, Map::MaxY() - 1))) {
@@ -606,6 +649,9 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				ret = CheckTileOwnership(tile);
 				if (ret.Failed()) return ret;
 			}
+
+			/* Adjust for deep water clearing cost */
+			const int cost_multiplier = WaterClearCostMultiplier(GetWaterDepth(tile));
 
 			if (flags.Test(DoCommandFlag::Execute)) {
 				if (IsCanal(tile) && Company::IsValidID(owner)) {
@@ -626,7 +672,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 				ClearNeighbourNonFloodingStates(tile);
 			}
 
-			return CommandCost(ExpensesType::Construction, base_cost);
+			return CommandCost(ExpensesType::Construction, base_cost * cost_multiplier);
 		}
 
 		case WaterTileType::Coast:
@@ -637,15 +683,18 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlags flags)
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
 			if (ret.Failed()) return ret;
 
+			/* Adjust for deep water clearing cost */
+			const int cost_multiplier = WaterClearCostMultiplier(GetWaterDepth(tile));
+
 			if (flags.Test(DoCommandFlag::Execute)) {
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
 				ClearNeighbourNonFloodingStates(tile);
 			}
 			if (IsSlopeWithOneCornerRaised(slope)) {
-				return CommandCost(ExpensesType::Construction, _price[Price::ClearWater]);
+				return CommandCost(ExpensesType::Construction, _price[Price::ClearWater] * cost_multiplier);
 			} else {
-				return CommandCost(ExpensesType::Construction, _price[Price::ClearRough]);
+				return CommandCost(ExpensesType::Construction, _price[Price::ClearRough] * cost_multiplier);
 			}
 		}
 
@@ -762,6 +811,9 @@ static void DrawWaterSprite(SpriteID base, uint offset, CanalFeature feature, Ti
 	if (base != SPR_FLAT_WATER_TILE) {
 		/* Only call offset callback if the sprite is NewGRF-provided. */
 		offset = GetCanalSpriteOffset(feature, tile, offset);
+	} else {
+		/* Use the regular base sprite for the depth */
+		base = GetWaterBaseSprite(GetWaterDepth(tile));
 	}
 	DrawGroundSprite(base + offset, PAL_NONE);
 }
@@ -824,10 +876,14 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 	}
 }
 
-/** Draw a plain sea water tile with no edges */
-static void DrawSeaWater(TileIndex)
+/**
+ * Draw a plain sea water tile with no edges.
+ * @param tile The tile to draw as sea water.
+ */
+static void DrawSeaWater(TileIndex tile)
 {
-	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
+	const WaterDepth depth = HasWaterDepth(tile) ? GetWaterDepth(tile) : 0;
+	DrawGroundSprite(GetWaterBaseSprite(depth), PAL_NONE);
 }
 
 /**
@@ -955,6 +1011,9 @@ static void DrawRiverWater(const TileInfo *ti)
 		}
 	}
 
+	/* If the plain flat tile was selected, use a depth indicating sprite instead. */
+	if (image == SPR_FLAT_WATER_TILE && offset == 0) image = GetWaterBaseSprite(GetWaterDepth(ti->tile));
+
 	DrawGroundSprite(image + offset, PAL_NONE);
 
 	/* Draw river edges if available. */
@@ -994,6 +1053,13 @@ static void DrawTile_Water(TileInfo *ti)
 	switch (GetWaterTileType(ti->tile)) {
 		case WaterTileType::Clear:
 			DrawWaterClassGround(ti);
+#ifdef _DEBUG
+			if (_cur_dpi->zoom <= ZoomLevel::Viewport) {
+				WaterDepth depth = GetWaterDepth(ti->tile);
+				SpriteID spr = SPR_ASCII_SPACE_SMALL + (depth > 9 ? depth + 'A' - 10 : depth + '0') - ' ';
+				DrawGroundSprite(spr, static_cast<int>(TextColour::Gold) | (1 << PALETTE_TEXT_RECOLOUR));
+			}
+#endif
 			/* A plain water tile can be traversed in any direction, so setting blocked pillars here would mean all bridges
 			 * with edges would have no pillars above water. Instead prefer current behaviour of ships passing through. */
 			DrawBridgeMiddle(ti, {});
@@ -1052,14 +1118,17 @@ static int GetSlopePixelZ_Water(TileIndex tile, uint x, uint y, [[maybe_unused]]
 static void GetTileDesc_Water(TileIndex tile, TileDesc &td)
 {
 	switch (GetWaterTileType(tile)) {
-		case WaterTileType::Clear:
+		case WaterTileType::Clear: {
 			switch (GetWaterClass(tile)) {
 				case WaterClass::Sea:   td.str = STR_LAI_WATER_DESCRIPTION_WATER; break;
 				case WaterClass::Canal: td.str = STR_LAI_WATER_DESCRIPTION_CANAL; break;
 				case WaterClass::River: td.str = STR_LAI_WATER_DESCRIPTION_RIVER; break;
 				default: NOT_REACHED();
 			}
+			const WaterDepth depth = GetWaterDepth(tile);
+			td.dparam = (depth == 0) ? WATER_DEPTH_METRES_ZERO : depth * WATER_DEPTH_METRES_PER_UNIT;
 			break;
+		}
 		case WaterTileType::Coast: td.str = STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK; break;
 		case WaterTileType::Lock : td.str = STR_LAI_WATER_DESCRIPTION_LOCK;               break;
 		case WaterTileType::Depot:
@@ -1330,6 +1399,18 @@ void TileLoop_Water(TileIndex tile)
 	if (IsTileType(tile, TileType::Water)) {
 		AmbientSoundEffect(tile);
 		if (IsNonFloodingWaterTile(tile)) return;
+	}
+
+	/* Only do depth erosion on rare occasions (at maximum erosion speed).
+	 * 6 bits matched means once every 16384 ticks, or about 221 days between erosion. */
+	bool do_erosion = IsTileType(tile, TileType::Water) && (TileHash2Bit(TileX(tile), TileY(tile)) << 4 | GB(GetWaterTileRandomBits(tile), 0, 4)) == GB(TimerGameTick::counter, 8, 6);
+	/* Slower erosion is achieved by a chance roll (probability is further decreased by the effect of neighbour tiles changing slowly too) */
+	if (_settings_game.difficulty.water_depth_erosion_speed == 2) do_erosion = do_erosion && Chance16(1, 3);
+	if (_settings_game.difficulty.water_depth_erosion_speed == 1) do_erosion = do_erosion && Chance16(1, 30);
+	if (_settings_game.difficulty.water_depth_erosion_speed == 0) do_erosion = false;
+
+	if (do_erosion) {
+		if (ErodeWaterTileDepth(tile)) MarkTileDirtyByTile(tile);
 	}
 
 	switch (GetFloodingBehaviour(tile)) {

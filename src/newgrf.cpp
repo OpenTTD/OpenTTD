@@ -477,6 +477,9 @@ void ResetNewGRFData()
 
 	ResetFaces();
 
+	/* Reset the water depth sprite mapping. */
+	ClearWaterDepthSprites();
+
 	/* Reset the snowline table. */
 	ClearSnowLine();
 

@@ -411,6 +411,8 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 		case 0xAA: return this->industry->counter;
 		case 0xAB: return GB(this->industry->counter, 8, 8);
 		case 0xAC: return this->industry->was_cargo_delivered;
+		case 0xAD: return this->industry->water_depth_min;
+		case 0xAE: return this->industry->water_depth_max;
 
 		case 0xB0: return ClampTo<uint16_t>(this->industry->construction_date - CalendarTime::DAYS_TILL_ORIGINAL_BASE_YEAR); // Date when built since 1920 (in days)
 		case 0xB3: return to_underlying(this->industry->construction_type); // Construction type
@@ -555,6 +557,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
 	ind.random = initial_random_bits;
 	ind.founder = founder;
 	ind.psa = nullptr;
+	GetIndustryLayoutWaterDepthMinMax(indspec->layouts[layout], tile, ind.water_depth_min, ind.water_depth_max);
 
 	IndustriesResolverObject object(tile, &ind, type, seed, CBID_INDUSTRY_LOCATION, 0, to_underlying(creation_type));
 	std::array<int32_t, 16> regs100;

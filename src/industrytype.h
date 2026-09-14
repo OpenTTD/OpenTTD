@@ -11,6 +11,7 @@
 #define INDUSTRYTYPE_H
 
 #include "map_type.h"
+#include "water_map.h"
 #include "slope_type.h"
 #include "industry_type.h"
 #include "landscape_type.h"
@@ -181,6 +182,7 @@ struct IndustryTileSpec {
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries data
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles data
 void ResetIndustries();
+bool GetIndustryLayoutWaterDepthMinMax(const IndustryTileLayout &layout, TileIndex base_tile, WaterDepth &min_depth, WaterDepth &max_depth);
 
 extern IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];

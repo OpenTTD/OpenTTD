@@ -205,6 +205,14 @@
 	return (z + ::GetSlopeZInCorner(slope, (::Corner)corner));
 }
 
+/* static */ SQInteger ScriptTile::GetWaterDepth(TileIndex tile)
+{
+	if (!::IsValidTile(tile)) return -1;
+	if (!::IsWaterTile(tile)) return 0;
+
+	return ::GetWaterDepth(tile);
+}
+
 /* static */ ScriptCompany::CompanyID ScriptTile::GetOwner(TileIndex tile)
 {
 	if (!::IsValidTile(tile)) return ScriptCompany::COMPANY_INVALID;

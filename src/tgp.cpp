@@ -735,8 +735,8 @@ static void HeightMapAdjustWaterLevel(int64_t water_percent, Height h_max_new)
 	for (Height &h : _height_map.h) {
 		/* Transform height from range h_water_level..h_max into 0..h_max_new range */
 		h = (Height)(((int)h_max_new) * (h - h_water_level) / (h_max - h_water_level)) + I2H(1);
-		/* Make sure all values are in the proper range (0..h_max_new) */
-		if (h < 0) h = I2H(0);
+		/* Make sure all values are in the proper range (-water_depth_max..h_max_new) */
+		h = std::max<Height>(h, I2H(-WATER_DEPTH_MAX));
 		if (h >= h_max_new) h = h_max_new - 1;
 	}
 }
@@ -1079,6 +1079,19 @@ void GenerateTerrainPerlin()
 	for (int y = 0; y < _height_map.size_y; y++) {
 		for (int x = 0; x < _height_map.size_x; x++) {
 			TgenSetTileHeight(TileXY(x, y), Clamp(H2I(_height_map.height(x, y)), 0, max_height));
+		}
+	}
+
+	/* Make deep water */
+	for (int y = 0; y < _height_map.size_y; y++) {
+		for (int x = 0; x < _height_map.size_x; x++) {
+			const TileIndex t = TileXY(x, y);
+			if (!IsValidTile(t)) continue;
+			const int h = H2I(_height_map.height(x, y));
+			if (h < 0 && GetTileSlope(t) == SLOPE_FLAT) {
+				MakeSea(t);
+				SetWaterDepth(t, Clamp(-h, WATER_DEPTH_MIN, WATER_DEPTH_MAX));
+			}
 		}
 	}
 

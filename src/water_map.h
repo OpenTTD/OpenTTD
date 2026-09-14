@@ -56,6 +56,11 @@ inline bool IsValidWaterClass(WaterClass wc)
 	return wc < WaterClass::Invalid;
 }
 
+using WaterDepth = uint8_t; ///< Type representing the water depth a of a tile.
+static constexpr WaterDepth WATER_DEPTH_MIN  = 0;  ///< Smallest permitted water depth level.
+static constexpr WaterDepth WATER_DEPTH_DEEP = 1;  ///< Smallest depth value that counts as "deep" water (not shallow).
+static constexpr WaterDepth WATER_DEPTH_MAX  = 15; ///< Largest permitted water depth level (4 bits).
+
 /** Sections of the water depot. */
 enum class DepotPart : uint8_t {
 	North = 0, ///< Northern part of a depot.
@@ -73,6 +78,7 @@ enum class LockPart : uint8_t {
 DECLARE_INCREMENT_DECREMENT_OPERATORS(LockPart)
 
 bool IsPossibleDockingTile(Tile t);
+bool ErodeWaterTileDepth(TileIndex tile);
 
 /**
  * Get the water tile type of a tile.
@@ -194,6 +200,54 @@ inline bool IsRiver(Tile t)
 inline bool IsWaterTile(Tile t)
 {
 	return IsTileType(t, TileType::Water) && IsWater(t);
+}
+
+/**
+ * Does the tile have a depth?
+ * @param t Tile to query.
+ * @return \c true if it has a dpeth.
+ */
+static inline bool HasWaterDepth(Tile t)
+{
+	switch (GetTileType(t)) {
+		case TileType::Water:
+		case TileType::Industry:
+			return true;
+		default:
+			return false;
+	}
+}
+
+/**
+ * Get the depth of water on a water tile.
+ * @param t Tile to query.
+ * @return Depth of water (range 0 to 15)
+ * @pre IsTileType(t, TileType::Water) || IsTileType(t, TileType::Industry)
+ */
+static inline WaterDepth GetWaterDepth(Tile t)
+{
+	extern WaterDepth GetIndustryTileWaterDepth(TileIndex tile);
+	switch (GetTileType(t)) {
+		case TileType::Water:
+			return GB(t.m3(), 1, 4);
+		case TileType::Industry:
+			return GetIndustryTileWaterDepth(t);
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
+ * Set the depth of water on a water tile.
+ * @param t Tile to set.
+ * @param depth Depth of water (range 0 to 15)
+ * @pre IsTileType(t, TileType::Water)
+ */
+static inline void SetWaterDepth(Tile t, WaterDepth depth)
+{
+	assert(IsTileType(t, TileType::Water));
+	assert(depth <= WATER_DEPTH_MAX);
+	SB(t.m3(), 1, 4, depth);
 }
 
 /**
@@ -408,9 +462,10 @@ inline void MakeShore(Tile t, bool rocks = false)
  * @param o The owner of the water
  * @param wc The class of water the tile has to be
  * @param random_bits Eventual random bits to be set for this tile
+ * @param depth Depth of water at tile.
  * @param rocks Whether the tile should have rocks on.
  */
-inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, bool rocks = false)
+inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, WaterDepth depth, bool rocks = false)
 {
 	SetTileType(t, TileType::Water);
 	SetTileOwner(t, o);
@@ -418,6 +473,7 @@ inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, bool 
 	SetDockingTile(t, false);
 	t.m2() = 0;
 	t.m3() = 0;
+	SB(t.m3(), 1, 4, depth);
 	t.m4() = random_bits;
 	t.m5() = 0;
 	SetWaterTileType(t, rocks ? WaterTileType::ClearRocks : WaterTileType::Clear);
@@ -433,7 +489,7 @@ inline void MakeWater(Tile t, Owner o, WaterClass wc, uint8_t random_bits, bool 
  */
 inline void MakeSea(Tile t, bool rocks = false)
 {
-	MakeWater(t, OWNER_WATER, WaterClass::Sea, 0, rocks);
+	MakeWater(t, OWNER_WATER, WaterClass::Sea, 0, 0, rocks);
 }
 
 /**
@@ -443,7 +499,7 @@ inline void MakeSea(Tile t, bool rocks = false)
  */
 inline void MakeRiver(Tile t, uint8_t random_bits)
 {
-	MakeWater(t, OWNER_WATER, WaterClass::River, random_bits);
+	MakeWater(t, OWNER_WATER, WaterClass::River, random_bits, 0);
 }
 
 /**
@@ -455,7 +511,7 @@ inline void MakeRiver(Tile t, uint8_t random_bits)
 inline void MakeCanal(Tile t, Owner o, uint8_t random_bits)
 {
 	assert(o != OWNER_WATER);
-	MakeWater(t, o, WaterClass::Canal, random_bits);
+	MakeWater(t, o, WaterClass::Canal, random_bits, 0);
 }
 
 /**

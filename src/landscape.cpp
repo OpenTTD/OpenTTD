@@ -106,6 +106,14 @@ static const uint TILE_UPDATE_FREQUENCY = 1 << TILE_UPDATE_FREQUENCY_LOG;  ///< 
 static std::unique_ptr<SnowLine> _snow_line;
 
 /**
+ * Ground sprites to use for water of different depths.
+ *
+ * If this is \c std::nullopt, the default water sprite from the baseset is used.
+ * Otherwise it points to an array of SpriteID values.
+ */
+static std::optional<WaterDepthSpriteArray> _water_depth_sprites = std::nullopt;
+
+/**
  * Map 2D viewport or smallmap coordinate to 3D world or tile coordinate.
  * Function takes into account height of tiles and foundations.
  *
@@ -646,6 +654,34 @@ void ClearSnowLine()
 {
 	_snow_line = nullptr;
 }
+
+/**
+ * Change the water depth sprite mapping.
+ * @param table Array with FLAT_WATER_DEPTH_SPRITE_COUNT SpriteID values to use for each depth level.
+ */
+void SetWaterDepthSprites(const WaterDepthSpriteArray &table)
+{
+	_water_depth_sprites = table;
+}
+
+/**
+ * Get the tile to use for flat water at a specific depth.
+ * @param depth Depth of water to get the sprite for.
+ * @return Water sprite of this specific depth, or standard flat water if none are set.
+ */
+SpriteID GetWaterBaseSprite(WaterDepth depth)
+{
+	assert(depth < FLAT_WATER_DEPTH_SPRITE_COUNT);
+	if (_water_depth_sprites.has_value()) return _water_depth_sprites.value()[depth];
+	return SPR_FLAT_WATER_TILE;
+}
+
+/** Reset the water depth sprite mapping to no depth mapping. */
+void ClearWaterDepthSprites()
+{
+	_water_depth_sprites = std::nullopt;
+}
+
 
 /**
  * Check if all tiles on the map edge should be considered water borders.
@@ -1514,6 +1550,77 @@ static void CreateRivers()
 }
 
 /**
+ * Perform "erosion" of a single water tile, adjusting its depth closer to neighbours
+ * @param tile The tile to erode
+ * @return True if the tile was modified
+ * @pre IsTileType(tile, MP_WATER)
+ */
+bool ErodeWaterTileDepth(TileIndex tile)
+{
+	assert(IsTileType(tile, TileType::Water));
+	assert(GetWaterClass(tile) != WaterClass::Invalid); // real, open water tiles can't be WATER_CLASS_INVALID
+
+	/* Coast tiles don't erode */
+	if (!IsWaterTile(tile)) return false;
+	/* Canals are artificial and don't erode */
+	if (GetWaterClass(tile) == WaterClass::Canal) return false;
+
+	/* Count number of water tiles around this tile.
+	 * If there are any non-water tiles next by, fill the tile to be shallower, else maybe make deeper. */
+	uint8_t num_water_tiles = 0;
+	uint8_t required_water_tiles = static_cast<uint8_t>(Direction::End);
+	WaterDepth min_water_depth = WATER_DEPTH_MAX;
+	WaterDepth max_water_depth = WATER_DEPTH_MIN;
+
+	for (Direction dir : EnumRange(Direction::End)) {
+		TileIndex dest = tile + TileOffsByDir(dir);
+		if (!IsValidTile(dest)) {
+			/* Map edges don't count for requirements */
+			required_water_tiles--;
+			continue;
+		}
+		if (!HasTileWaterClass(dest)) continue;
+		if (!IsTileOnWater(dest)) continue;
+		if (IsTileType(dest, TileType::Water) && GetWaterTileType(dest) == WaterTileType::Coast) continue;
+		num_water_tiles++;
+
+		if (IsTileType(dest, TileType::Water)) {
+			const WaterDepth depth = GetWaterDepth(dest);
+			min_water_depth = std::min(min_water_depth, depth);
+			max_water_depth = std::max(max_water_depth, depth);
+		}
+	}
+
+	if (GetWaterClass(tile) != WaterClass::Sea) max_water_depth = 2;
+
+	const WaterDepth current_depth = GetWaterDepth(tile);
+	if (num_water_tiles < required_water_tiles && current_depth > WATER_DEPTH_MIN) {
+		SetWaterDepth(tile, current_depth - 1);
+		return true;
+	} else if (num_water_tiles == required_water_tiles) {
+		WaterDepth new_depth = current_depth + 1;
+		new_depth = std::min<WaterDepth>(min_water_depth + 1, new_depth);
+		if (current_depth > WATER_DEPTH_MIN) new_depth = (WaterDepth)std::max<int>(new_depth, current_depth - 1);
+		SetWaterDepth(tile, Clamp(new_depth, WATER_DEPTH_MIN, WATER_DEPTH_MAX));
+		return new_depth != current_depth;
+	}
+
+	return false;
+}
+
+/** Run erosion over all water tiles on map repeatedly, until no more changes */
+void ErodeAllWaterTiles()
+{
+	for (int iteration = 0; iteration < WATER_DEPTH_MAX; iteration++) {
+		bool changed = false;
+		for (const auto tile : Map::Iterate()) {
+			if (IsTileType(tile, TileType::Water)) changed |= ErodeWaterTileDepth(tile);
+		}
+		if (!changed) break;
+	}
+}
+
+/**
  * Calculate what height would be needed to cover N% of the landmass.
  *
  * The function allows both snow and desert/tropic line to be calculated. It
@@ -1625,6 +1732,8 @@ bool GenerateLandscape(uint8_t mode)
 	static constexpr uint GLS_OTHER = 0; ///< Extra steps for other landscapes
 	uint steps = (_settings_game.game_creation.landscape == LandscapeType::Tropic) ? GLS_TROPIC : GLS_OTHER;
 
+	bool need_depth_erosion = true;
+
 	if (mode == GWM_HEIGHTMAP) {
 		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_HEIGHTMAP);
 		if (!LoadHeightmap(_file_to_saveload.ftype.detailed, _file_to_saveload.name)) {
@@ -1634,6 +1743,7 @@ bool GenerateLandscape(uint8_t mode)
 	} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
 		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_TERRAGENESIS);
 		GenerateTerrainPerlin();
+		need_depth_erosion = false;
 	} else {
 		SetGeneratingWorldProgress(GenWorldProgress::Landscape, steps + GLS_ORIGINAL);
 		if (_settings_game.construction.freeform_edges) {
@@ -1715,6 +1825,7 @@ bool GenerateLandscape(uint8_t mode)
 	}
 
 	CreateRivers();
+	if (need_depth_erosion) ErodeAllWaterTiles();
 	return true;
 }
 

@@ -377,8 +377,14 @@ static const SpriteID SPR_BRIDGE_DECKS_MGLV = SPR_BRIDGE_DECKS_BASE + 12;
 static const SpriteID SPR_BRIDGE_DECKS_ROAD = SPR_BRIDGE_DECKS_BASE + 18;
 /** @} */
 
+/** @{
+ * Sprites for flat water with depth */
+static const SpriteID SPR_FLAT_WATER_DEPTH_BASE = SPR_PALETTE_BASE + PALETTE_SPRITE_COUNT;
+static const uint16_t FLAT_WATER_DEPTH_SPRITE_COUNT = 16;
+/** @} */
+
 /** From where can we start putting NewGRFs. */
-static const SpriteID SPR_NEWGRFS_BASE = SPR_BRIDGE_DECKS_BASE + BRIDGE_DECKS_SPRITE_COUNT;
+static const SpriteID SPR_NEWGRFS_BASE = SPR_FLAT_WATER_DEPTH_BASE + FLAT_WATER_DEPTH_SPRITE_COUNT;
 
 /** Manager face sprites.
  * @{ */
