@@ -1773,7 +1773,7 @@ private:
 		for (const Company *c : Company::Iterate()) {
 			if (c->index == client_playas) continue;
 
-			this->RebuildListCompany(c->index, client_playas, _network_server || c->allow_any || (own_ci != nullptr && c->allow_list.Contains(own_ci->public_key)));
+			this->RebuildListCompany(c->index, client_playas, own_ci != nullptr && own_ci->CanJoinCompany(c->index));
 		}
 
 		/* Spectators */
