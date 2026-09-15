@@ -1097,23 +1097,25 @@ static Money DeliverGoods(int num_pieces, CargoType cargo_type, StationID dest, 
 	/* Update station statistics */
 	if (accepted_total > 0) {
 		st->goods[cargo_type].status.Set({GoodsEntry::State::EverAccepted, GoodsEntry::State::CurrentMonth, GoodsEntry::State::AcceptedBigtick});
-	}
+		st->goods[cargo_type].GetOrCreateHistory().accepted += accepted_total;
 
-	/* Update company statistics */
-	company->cur_economy.delivered_cargo[cargo_type] += accepted_total;
+		/* Update company statistics */
+		company->cur_economy.delivered_cargo[cargo_type] += accepted_total;
 
-	/* Increase town's counter for town effects */
-	const CargoSpec *cs = CargoSpec::Get(cargo_type);
-	st->town->received[cs->town_acceptance_effect].new_act += accepted_total;
-	if (accepted_total - accepted_ind > 0) {
-		/* Cargo not delivered to an industry must go to the town. */
-		st->town->GetOrCreateCargoAccepted(cargo_type).history[THIS_MONTH].accepted += accepted_total - accepted_ind;
+		/* Increase town's counter for town effects */
+		const CargoSpec *cs = CargoSpec::Get(cargo_type);
+		st->town->received[cs->town_acceptance_effect].new_act += accepted_total;
+		if (accepted_total - accepted_ind > 0) {
+			/* Cargo not delivered to an industry must go to the town. */
+			st->town->GetOrCreateCargoAccepted(cargo_type).history[THIS_MONTH].accepted += accepted_total - accepted_ind;
+		}
 	}
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(accepted_total, distance, periods_in_transit, cargo_type);
 
-	/* Update the cargo monitor. */
+	/* Update the cargo monitor. Only count the amount not accepted by an industry, as DeliverGoodsToIndustry will
+	 * have updated the cargo monitor for that already. */
 	AddCargoDelivery(cargo_type, company->index, accepted_total - accepted_ind, src, st);
 
 	/* Modify profit if a subsidy is in effect */

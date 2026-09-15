@@ -604,6 +604,12 @@ enum class WindowClass : uint16_t {
 	TownCargoGraph,
 
 	/**
+	 * Station cargo history graph; %Window numbers:
+	 *   - #StationID = #GraphWidgets
+	 */
+	StationCargoGraph,
+
+	/**
 	 * Company infrastructure overview; %Window numbers:
 	 *   - #CompanyID = #CompanyInfrastructureWidgets
 	 */
