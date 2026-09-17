@@ -603,7 +603,7 @@ bool ScriptInstance::IsPaused()
 	switch (_script_sl_byte) {
 		case SQSL_INT: {
 			int64_t value;
-			SlCopy(&value, 1, IsSavegameVersionBefore(SaveLoadVersion::ScriptInt64) ? VarFileType::I32 | VarMemType::I64 : VarTypes::I64);
+			SlCopy(&value, 1, IsSavegameVersionBefore(SaveLoadVersion::ScriptInt64) ? VarType{VarFileType::I32, VarMemType::I64} : VarTypes::I64);
 			if (data != nullptr) data->push_back(static_cast<SQInteger>(value));
 			return true;
 		}

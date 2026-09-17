@@ -709,17 +709,6 @@ struct VarType {
 	constexpr bool operator==(const VarType &other) const = default;
 };
 
-/**
- * Transitional helper function to combine a file and memory storage configuration.
- * @param file The file configuration.
- * @param mem The memory configuration.
- * @return The created \c VarType.
- */
-constexpr VarType operator|(VarFileType file, VarMemType mem)
-{
-	return {file, mem};
-}
-
 /** Container for holding some default \c VarType instances. */
 struct VarTypes {
 	static constexpr VarType BOOL{ VarFileType::Bool, VarMemType::Bool }; ///< Store a boolean (as int8).
@@ -1324,7 +1313,7 @@ template <VarFileType file_type, typename T>
 static inline void SlCopy(T &collection)
 {
 	std::span span{collection}; // Let std::span worry about what is passed being a contiguous container.
-	SlCopy(span.data(), span.size(), file_type | SaveLoad::DetermineMemType<std::remove_const_t<typename T::value_type>, file_type>());
+	SlCopy(span.data(), span.size(), {file_type, SaveLoad::DetermineMemType<std::remove_const_t<typename T::value_type>, file_type>()});
 }
 
 /**
