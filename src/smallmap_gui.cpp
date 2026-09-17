@@ -47,7 +47,8 @@ static int _smallmap_cargo_count;    ///< Number of cargos in the link stats leg
 struct LegendAndColour {
 	StringID legend{}; ///< String corresponding to the coloured item.
 	PixelColour colour{}; ///< Colour of the item on the map.
-	IndustryType type = IT_INVALID; ///< Type of industry. Only valid for industry entries.
+	IndustryType industry_type = IT_INVALID; ///< Type of industry. Only valid for industry entries.
+	CargoType cargo_type = INVALID_CARGO; ///< Type of cargo. Only valid for cargo entries.
 	uint8_t height = 0; ///< Height in tiles. Only valid for height legend entries.
 	CompanyID company = CompanyID::Invalid(); ///< Company to display. Only valid for company entries of the owner legend.
 	bool show_on_map = true; ///< For filtering industries, if \c true, industry is shown on the map in colour.
@@ -169,7 +170,7 @@ void BuildIndustriesLegend()
 		if (indsp->enabled) {
 			_legend_from_industries[j].legend = indsp->name;
 			_legend_from_industries[j].colour = indsp->map_colour;
-			_legend_from_industries[j].type = ind;
+			_legend_from_industries[j].industry_type = ind;
 			_legend_from_industries[j].show_on_map = true;
 			_legend_from_industries[j].col_break = false;
 			_legend_from_industries[j].end = false;
@@ -200,7 +201,7 @@ void BuildLinkStatsLegend()
 
 		_legend_linkstats[i].legend = cs->name;
 		_legend_linkstats[i].colour = cs->legend_colour;
-		_legend_linkstats[i].type = cs->Index();
+		_legend_linkstats[i].cargo_type = cs->Index();
 		_legend_linkstats[i].show_on_map = true;
 	}
 
@@ -1264,7 +1265,7 @@ protected:
 	{
 		CargoTypes cargo_mask{};
 		for (int i = 0; i != _smallmap_cargo_count; ++i) {
-			if (_legend_linkstats[i].show_on_map) cargo_mask.Set(static_cast<CargoType>(_legend_linkstats[i].type));
+			if (_legend_linkstats[i].show_on_map) cargo_mask.Set(_legend_linkstats[i].cargo_type);
 		}
 		this->overlay->SetCargoMask(cargo_mask);
 	}
@@ -1664,10 +1665,10 @@ public:
 						case SmallMapType::Industries:
 							/* Industry name must be formatted, since it's not in tiny font in the specs.
 							 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
-							if (tbl.show_on_map && tbl.type == _smallmap_industry_highlight) {
+							if (tbl.show_on_map && tbl.industry_type == _smallmap_industry_highlight) {
 								legend_colour = _smallmap_industry_highlight_state ? PC_WHITE : PC_BLACK;
 							}
-							this->DrawLegend(text, icon, tbl.show_on_map, GetString(STR_SMALLMAP_INDUSTRY, tbl.legend, Industry::GetIndustryTypeCount(tbl.type)));
+							this->DrawLegend(text, icon, tbl.show_on_map, GetString(STR_SMALLMAP_INDUSTRY, tbl.legend, Industry::GetIndustryTypeCount(tbl.industry_type)));
 							break;
 
 						case SmallMapType::LinkStats:
@@ -1838,7 +1839,7 @@ public:
 				if (this->map_type != SmallMapType::Industries) this->SwitchMapType(SmallMapType::Industries);
 
 				for (int i = 0; i != _smallmap_industry_count; i++) {
-					_legend_from_industries[i].show_on_map = _displayed_industries.test(_legend_from_industries[i].type);
+					_legend_from_industries[i].show_on_map = _displayed_industries.test(_legend_from_industries[i].industry_type);
 				}
 				break;
 			}
@@ -1890,7 +1891,7 @@ public:
 		if (widget == WID_SM_LEGEND && this->map_type == SmallMapType::Industries) {
 			int industry_pos = GetPositionOnLegend(pt);
 			if (industry_pos >= 0 && industry_pos < _smallmap_industry_count) {
-				new_highlight = _legend_from_industries[industry_pos].type;
+				new_highlight = _legend_from_industries[industry_pos].industry_type;
 			}
 		}
 		if (new_highlight != _smallmap_industry_highlight) {
