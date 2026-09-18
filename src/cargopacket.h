@@ -361,6 +361,7 @@ protected:
 
 	void AddToMeta(const CargoPacket *cp, MoveToAction action);
 	void RemoveFromMeta(const CargoPacket *cp, MoveToAction action, uint count);
+	uint TryRemoveFromMeta(const CargoPacket *cp, MoveToAction action, uint count);
 
 	static MoveToAction ChooseAction(const CargoPacket *cp, StationID cargo_next,
 			StationID current_station, bool accepted, std::span<const StationID> next_station);

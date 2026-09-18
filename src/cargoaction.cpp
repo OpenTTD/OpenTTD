@@ -93,7 +93,14 @@ template <>
 bool CargoRemoval<VehicleCargoList>::operator()(CargoPacket *cp)
 {
 	uint remove = this->Preprocess(cp);
-	this->source->RemoveFromMeta(cp, VehicleCargoList::MoveToAction::Keep, remove);
+
+	uint remaining = remove;
+	for (VehicleCargoList::MoveToAction action : {VehicleCargoList::MoveToAction::Keep, VehicleCargoList::MoveToAction::Transfer, VehicleCargoList::MoveToAction::Deliver, VehicleCargoList::MoveToAction::Load}) {
+		remaining -= this->source->TryRemoveFromMeta(cp, action, remaining);
+		if (remaining == 0) break;
+	}
+	assert(remaining == 0);
+
 	return this->Postprocess(cp, remove);
 }
 
