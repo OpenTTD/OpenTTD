@@ -1191,7 +1191,7 @@ CargoPayment::~CargoPayment()
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
 
 	const Vehicle *moving_front = this->front->GetMovingFront();
-	if (this->route_profit != 0 && IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD)) {
+	if (this->route_profit != 0 && IsLocalCompany() && !PlayVehicleSound(this->front, VehicleSoundEvent::LoadUnload)) {
 		SndPlayVehicleFx(SND_14_CASHTILL, this->front);
 	}
 

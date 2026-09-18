@@ -15,16 +15,16 @@
 #include "vehicle_type.h"
 
 /** Events at which a sound might be played. */
-enum VehicleSoundEvent : uint8_t {
-	VSE_START         = 1, ///< Vehicle starting, i.e. leaving, the station.
-	VSE_TUNNEL        = 2, ///< Train entering a tunnel.
-	VSE_BREAKDOWN     = 3, ///< Vehicle breaking down.
-	VSE_RUNNING       = 4, ///< Vehicle running normally.
-	VSE_TOUCHDOWN     = 5, ///< Whenever a plane touches down.
-	VSE_VISUAL_EFFECT = 6, ///< Vehicle visual effect (steam, diesel smoke or electric spark) is shown.
-	VSE_RUNNING_16    = 7, ///< Every 16 ticks while the vehicle is running (speed > 0).
-	VSE_STOPPED_16    = 8, ///< Every 16 ticks while the vehicle is stopped (speed == 0).
-	VSE_LOAD_UNLOAD   = 9, ///< Whenever cargo payment is made for a vehicle.
+enum class VehicleSoundEvent : uint8_t {
+	Start = 1, ///< Vehicle starting, i.e. leaving, the station.
+	Tunnel = 2, ///< Train entering a tunnel.
+	Breakdown = 3, ///< Vehicle breaking down.
+	Running = 4, ///< Vehicle running normally.
+	Touchdown = 5, ///< Whenever a plane touches down.
+	VisualEffect = 6, ///< Vehicle visual effect (steam, diesel smoke or electric spark) is shown.
+	Running16 = 7, ///< Every 16 ticks while the vehicle is running (speed > 0).
+	Stopped16 = 8, ///< Every 16 ticks while the vehicle is stopped (speed == 0).
+	LoadUnload = 9, ///< Whenever cargo payment is made for a vehicle.
 };
 
 
