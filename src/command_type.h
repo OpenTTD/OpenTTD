@@ -400,6 +400,7 @@ enum class DoCommandFlag : uint8_t {
 	AllTiles, ///< allow this command also on TileType::Void tiles
 	NoModifyTownRating, ///< do not change town rating
 	ForceClearTile, ///< do not only remove the object on the tile, but also clear any water left on it
+	ClearToRocks, ///< when clearing land, make rocks instead of bare dirt/grass
 };
 
 /** Bitset of \c DoCommandFlag elements. */

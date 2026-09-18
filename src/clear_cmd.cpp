@@ -48,7 +48,12 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 		price.AddCost(_price[clear_price_table[ground]]);
 	}
 
-	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
+	if (flags.Test(DoCommandFlag::Execute)) {
+		DoClearSquare(tile);
+
+		/* We might want to clear to rocks instead of dirt/grass. */
+		if (flags.Test(DoCommandFlag::ClearToRocks)) MakeClear(tile, ClearGround::Rocks, 3);
+	}
 
 	return price;
 }

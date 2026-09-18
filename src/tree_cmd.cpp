@@ -740,7 +740,12 @@ static CommandCost ClearTile_Trees(TileIndex tile, DoCommandFlags flags)
 	uint num = GetTreeCount(tile);
 	if (IsInsideMM(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
 
-	if (flags.Test(DoCommandFlag::Execute)) DoClearSquare(tile);
+	if (flags.Test(DoCommandFlag::Execute)) {
+		DoClearSquare(tile);
+
+		/* We might want to clear to rocks instead of dirt/grass. */
+		if (flags.Test(DoCommandFlag::ClearToRocks)) MakeClear(tile, ClearGround::Rocks, 3);
+	}
 
 	return CommandCost(ExpensesType::Construction, num * _price[Price::ClearTrees]);
 }
