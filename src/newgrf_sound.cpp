@@ -154,7 +154,7 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event, bool force)
 	/* Check that the vehicle type uses the sound effect callback */
 	if (!EngInfo(v->engine_type)->callback_mask.Test(VehicleCallbackMask::SoundEffect)) return false;
 
-	callback = GetVehicleCallback(CBID_VEHICLE_SOUND_EFFECT, event, 0, v->engine_type, v);
+	callback = GetVehicleCallback(CBID_VEHICLE_SOUND_EFFECT, to_underlying(event), 0, v->engine_type, v);
 	/* Play default sound if callback fails */
 	if (callback == CALLBACK_FAILED) return false;
 

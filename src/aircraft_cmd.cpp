@@ -587,7 +587,7 @@ void HandleAircraftEnterHangar(Aircraft *v)
 
 static void PlayAircraftSound(const Vehicle *v)
 {
-	if (!PlayVehicleSound(v, VSE_START)) {
+	if (!PlayVehicleSound(v, VehicleSoundEvent::Start)) {
 		SndPlayVehicleFx(AircraftVehInfo(v->engine_type)->sfx, v);
 	}
 }
@@ -914,7 +914,7 @@ static bool AircraftController(Aircraft *v)
 		if (u->cur_speed > 32) {
 			v->cur_speed = 0;
 			if (--u->cur_speed == 32) {
-				if (!PlayVehicleSound(v, VSE_START)) {
+				if (!PlayVehicleSound(v, VehicleSoundEvent::Start)) {
 					SoundID sfx = AircraftVehInfo(v->engine_type)->sfx;
 					/* For compatibility with old NewGRF we ignore the sfx property, unless a NewGRF-defined sound is used.
 					 * The baseset has only one helicopter sound, so this only limits using plane or cow sounds. */
@@ -1449,7 +1449,7 @@ static void AircraftLandAirplane(Aircraft *v)
 
 	TriggerAirportTileAnimation(st, vt, AirportAnimationTrigger::AirplaneTouchdown);
 
-	if (!PlayVehicleSound(v, VSE_TOUCHDOWN)) {
+	if (!PlayVehicleSound(v, VehicleSoundEvent::Touchdown)) {
 		SndPlayVehicleFx(SND_17_SKID_PLANE, v);
 	}
 }
