@@ -1,6 +1,6 @@
 ## 16.x
 
-### 16.0-beta3 (2026-09-15)
+### 16.0-beta3 (2026-09-19)
 
 - Feature: Double-ended ships (#16002)
 - Feature: [Script] AI API to remove rail depot (#15933)
@@ -8,6 +8,7 @@
 - Feature: Screensaver Mode (#15350)
 - Add: Use LibSoxr for high quality sample-rate conversion (#15924)
 - Add: Allow placing/erasing rough terrain in scenario editor (#15624)
+- Add: Show train length in reworked vehicle info panel (#15389)
 - Add: [NewGRF] Number of nearby stations for towns (#15200)
 - Add: [NewGRF] Town additional information (#15198)
 - Add: [NewGRF] Nearby tile info for towns (#15194)
@@ -23,12 +24,15 @@
 - Change: Move small map buttons to side of window (#15885)
 - Change: Update wording of force unload order (#15880)
 - Change: New coast and toyland rock overlay sprites (#15869)
+- Change: Lowering tiles when terraforming makes rocky slopes (#15822)
 - Change: Limit purchase list rows to 1.5x original design height (#15749)
 - Change: Clip content in purchase list to each row (#15749)
 - Change: Account for driving cabs in driving backwards conditional order (#15494)
 - Change: [NewGRF] Ensure modflags bit 8 respects old behavior when train is driving backwards (#15485)
+- Change: Allow road vehicles to overtake through junctions between one-way roads (#15445)
 - Change: Use new game setting for disable_elrails when loading very old save (#14481)
 - Change: [NewGRF] Remove per-grf industry tile limit (#12183)
+- Fix #15824: Game crash when truncating cargo of crashed vehicle (#16005)
 - Fix: Reducing a vehicle's cargo capacity incorrectly truncated the cargo. (#16004)
 - Fix #15506: [Script] Avoid ternary signed/unsigned conversion when returning literal -1 (#16001)
 - Fix #15759: Inconsistency in disabled electric rails compatibility (#15994)
