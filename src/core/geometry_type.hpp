@@ -310,6 +310,17 @@ struct Rect {
 	}
 
 	/**
+	 * Centre a horizontal dimension within this Rect.
+	 * @param width The horizontal dimension.
+	 * @return the new resized Rect.
+	 */
+	[[nodiscard]] inline Rect CentreToWidth(int width) const
+	{
+		int new_left = CentreBounds(this->left, this->right, width);
+		return {new_left, this->top, new_left + width - 1, this->bottom};
+	}
+
+	/**
 	 * Centre a vertical dimension within this Rect.
 	 * @param height The vertical dimension.
 	 * @return the new resized Rect.
