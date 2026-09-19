@@ -808,14 +808,16 @@ static void TryBuildTownLighthouse(Town *town)
 	start_tile = TileAddWrap(town->xy, -radius, -radius);
 	if (!IsValidTile(start_tile)) return;
 
-	/* Search the perimeter for a suitable tile. */
+	/* Make a list of valid lighthouse locations on the perimeter. */
+	std::vector<TileIndex> locations;
 	for (TileIndex coast_tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
 		TileIndex t = FindNearbyLighthouseSpot(coast_tile);
-		if (t != INVALID_TILE) {
-			BuildLighthouseAndRocks(t);
-			return;
-		}
+		if (t != INVALID_TILE) locations.emplace_back(t);
 	}
+
+	/* If we've found any valid tiles, pick a random one. */
+	if (locations.size() == 0) return;
+	BuildLighthouseAndRocks(locations[RandomRange(static_cast<uint32_t>(locations.size()))]);
 }
 
 /**
