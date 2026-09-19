@@ -1,6 +1,7 @@
 add_test_files(
     alternating_iterator.cpp
     bitmath_func.cpp
+    endian_buffer.cpp
     enum_over_optimisation.cpp
     flatset_type.cpp
     history_func.cpp
