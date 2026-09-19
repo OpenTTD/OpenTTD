@@ -2273,7 +2273,7 @@ void Train::PlayLeaveStationSound(bool force) const
 		SND_41_DEPARTURE_MAGLEV
 	};
 
-	if (PlayVehicleSound(this, VSE_START, force)) return;
+	if (PlayVehicleSound(this, VehicleSoundEvent::Start, force)) return;
 
 	SndPlayVehicleFx(sfx[to_underlying(RailVehInfo(this->engine_type)->engclass)], this);
 }

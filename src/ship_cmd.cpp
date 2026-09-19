@@ -316,7 +316,7 @@ void Ship::MarkDirty()
 
 void Ship::PlayLeaveStationSound(bool force) const
 {
-	if (PlayVehicleSound(this, VSE_START, force)) return;
+	if (PlayVehicleSound(this, VehicleSoundEvent::Start, force)) return;
 	SndPlayVehicleFx(ShipVehInfo(this->engine_type)->sfx, this);
 }
 

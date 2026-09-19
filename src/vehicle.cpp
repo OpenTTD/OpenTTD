@@ -1056,13 +1056,13 @@ void CallVehicleTicks()
 				}
 
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
-				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
+				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VehicleSoundEvent::Running);
 
 				/* Play an alternating running sound every 16 ticks */
 				if (GB(v->tick_counter, 0, 4) == 0) {
 					/* Play running sound when speed > 0 and not braking */
 					bool running = (front->cur_speed > 0) && !front->vehstatus.Any({VehState::Stopped, VehState::TrainSlowing});
-					PlayVehicleSound(v, running ? VSE_RUNNING_16 : VSE_STOPPED_16);
+					PlayVehicleSound(v, running ? VehicleSoundEvent::Running16 : VehicleSoundEvent::Stopped16);
 				}
 
 				break;
@@ -1396,7 +1396,7 @@ bool Vehicle::HandleBreakdown()
 			} else {
 				this->cur_speed = 0;
 
-				if (!PlayVehicleSound(this, VSE_BREAKDOWN)) {
+				if (!PlayVehicleSound(this, VehicleSoundEvent::Breakdown)) {
 					bool train_or_ship = this->type == VehicleType::Train || this->type == VehicleType::Ship;
 					SndPlayVehicleFx((_settings_game.game_creation.landscape != LandscapeType::Toyland) ?
 						(train_or_ship ? SND_10_BREAKDOWN_TRAIN_SHIP : SND_0F_BREAKDOWN_ROADVEHICLE) :
@@ -2977,7 +2977,7 @@ void Vehicle::ShowVisualEffect() const
 		}
 	} while ((v = v->Next()) != nullptr);
 
-	if (sound) PlayVehicleSound(this, VSE_VISUAL_EFFECT);
+	if (sound) PlayVehicleSound(this, VehicleSoundEvent::VisualEffect);
 }
 
 /**
