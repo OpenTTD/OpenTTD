@@ -16,7 +16,7 @@
 #include "../spritecache.h"
 #include "grf.hpp"
 
-#include "table/strings.h"
+#include "table/strings_newgrf.h"
 
 #include "../safeguards.h"
 

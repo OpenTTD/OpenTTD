@@ -33,7 +33,7 @@
 #include <atomic>
 #include <mutex>
 
-#include "table/strings.h"
+#include "table/strings_framerate.h"
 
 #include "safeguards.h"
 

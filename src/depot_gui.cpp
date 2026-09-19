@@ -37,6 +37,7 @@
 #include "widgets/depot_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_depots.h"
 
 #include "safeguards.h"
 

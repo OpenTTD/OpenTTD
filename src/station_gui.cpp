@@ -40,6 +40,9 @@
 #include "widgets/misc_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_cargo.h"
+#include "table/strings_stations.h"
+#include "table/strings_vehicles.h"
 
 #include "dropdown_common_type.h"
 

@@ -42,6 +42,10 @@
 #include <stack>
 
 #include "table/strings.h"
+#include "table/strings_cargo.h"
+#include "table/strings_metadata.h"
+#include "table/strings_station_names.h"
+#include "table/strings_units.h"
 #include "table/control_codes.h"
 #include "3rdparty/fmt/std.h"
 

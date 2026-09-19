@@ -17,6 +17,7 @@
 #include "town.h"
 
 #include "table/strings.h"
+#include "table/strings_airport_names.h"
 
 #include "newgrf_class_func.h"
 

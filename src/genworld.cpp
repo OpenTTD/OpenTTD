@@ -43,7 +43,7 @@
 #include "thread.h"
 #include "tgp.h"
 
-#include "table/strings.h"
+#include "table/strings_worldgen.h"
 
 #include "safeguards.h"
 

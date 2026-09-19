@@ -50,6 +50,8 @@
 #include "widgets/rail_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_signals.h"
+#include "table/strings_vehicles.h"
 
 #include "safeguards.h"
 

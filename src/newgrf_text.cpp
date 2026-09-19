@@ -32,6 +32,7 @@
 #include <ranges>
 
 #include "table/strings.h"
+#include "table/strings_metadata.h"
 #include "table/control_codes.h"
 
 #include "safeguards.h"
