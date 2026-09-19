@@ -3577,9 +3577,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pisua: {
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Irabaziak aurten: {LTBLUE}{CURRENCY_LONG} (iaz: {CURRENCY_LONG})
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Sortua: {LTBLUE}{NUM}{BLACK} Balioa: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Edukiera: {LTBLUE}Ezer ez{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Edukiera: {LTBLUE}{CARGO_LONG}{STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Edukiera: {LTBLUE}{CARGO_LONG}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Edukiera: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferentzia kredituak: {LTBLUE}{CURRENCY_LONG}
@@ -3598,22 +3596,18 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Hegazkin
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Sortua: {LTBLUE}{NUM}{BLACK} Balioa: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Balioa: {LTBLUE}{CURRENCY_LONG}
 
+
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Trenaren zama guztiaren kopurua:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Hutsik
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} {STATION}-tik
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} {STATION} (x{NUM})-tik
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Zama
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Zamaren xehetasunak erakutsi
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Xehetasunak
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Tren ibilgailuen xehetasunak ikusi
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Edukierak
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Ibilgailu bakoitzaren edukierak ikusi
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Zama guztia
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Trenaren zama edukiera osoa ikusi, zama motaren arabera
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Edukiera: {LTBLUE}{STRING}
 

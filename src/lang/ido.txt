@@ -1413,9 +1413,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komencin
 
 
 
+
+
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Kargajo
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informo
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 
 
 # Vehicle refit

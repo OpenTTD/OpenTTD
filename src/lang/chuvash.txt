@@ -1520,7 +1520,6 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑт: {LTBLUE}Ҫук пул{STRING}
 
 
 
@@ -1528,6 +1527,8 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 ###length VEHICLE_TYPES
 
 # Extra buttons for train details windows
+
+
 
 
 

@@ -4010,9 +4010,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}இந�
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}இந்த வருட இலாபம்: {LTBLUE}{CURRENCY_LONG} (சென்ற வருடம்: {CURRENCY_LONG}) {BLACK}கு. திறன்: {LTBLUE}{POWER_TO_WEIGHT}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}கட்டப்பட்டது: {LTBLUE}{NUM}{BLACK} மதிப்பு: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}கொள்ளளவு: {LTBLUE}ஒன்றுமில்லை{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}கொள்ளளவு: {LTBLUE}{CARGO_LONG}{STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}கொள்ளளவு: {LTBLUE}{CARGO_LONG}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}கொள்ளளவு: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}இடமாற்றம் வரவுகள்: {LTBLUE}{CURRENCY_LONG}
@@ -4039,22 +4037,18 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}வி�
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   கட்டப்பட்டது: {LTBLUE}{NUM}{BLACK} மதிப்பு: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   மதிப்பு: {LTBLUE}{CURRENCY_LONG}
 
+
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tஇரயிலின் மொத்த சரக்குக் கொள்ளளவு:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}காலி
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} {STATION} -இலிருந்து
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} {STATION}-இலிருந்து (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}சரக்கு
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}ஏற்றப்பட்டுள்ள சரக்குகள் பற்றிய விவரங்களை காட்டு
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}தகவல்
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}இரயிலின் வாகனங்கள் பற்றிய விவரங்களை காட்டு
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}கொள்ளளவுகள்
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}ஒவ்வொரு வாகனத்தின் கொள்ளளவினை காட்டு
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}மொத்த சரக்கு
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}இரயிலின் மொத்தக் கொள்ளளவினைக் காட்டு, சரக்கு வகைப்படி பிரித்தவாறு
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}கொள்ளளவு: {LTBLUE}{STRING}
 

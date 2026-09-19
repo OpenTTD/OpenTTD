@@ -4729,9 +4729,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Gajno ĉ
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fidindo: {LTBLUE}{COMMA}% (maks.: {COMMA}%) {BLACK}Paneoj ekde lasta servo: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Konstruita: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Enhaveco: {LTBLUE}Neniu{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacito: {LTBLUE}{CARGO_LONG}{STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacito: {LTBLUE}{CARGO_LONG}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Enhaveco: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj kreditoj: {LTBLUE}{CURRENCY_LONG}
@@ -4764,22 +4762,18 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Alinomi 
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valoro: {LTBLUE}{CURRENCY_LONG}
 
+
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tuta ŝarĝkapablo de ĉi tiu vagonaro:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Malplena
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} de {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} de {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Ŝarĝo
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Montri detalojn de portata ŝarĝo
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informoj
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Montri detalojn de vagonaroj
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapabloj
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Montri kapablojn de ĉiu veturilo
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tuta ŝarĝo
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Montri tutan kapablon de vagonaro, dividite laŭ ŝarĝtipo
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacito: {LTBLUE}{STRING}
 

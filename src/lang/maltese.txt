@@ -1280,6 +1280,8 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 
+
+
 # Vehicle refit
 
 ###length VEHICLE_TYPES

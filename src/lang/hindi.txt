@@ -1353,7 +1353,8 @@ STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE
 
 
 
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}क्षमता
+
+
 
 
 # Vehicle refit

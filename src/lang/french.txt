@@ -539,6 +539,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Effacer tous le
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Outil d'inspection du paysage
 STR_ABOUT_MENU_HELP                                             :Aide et manuels
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Activer/Désactiver le mode écran de veille
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Afficher/Cacher la console
 STR_ABOUT_MENU_AI_DEBUG                                         :Débogage de scripts
 STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran
@@ -647,14 +648,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Historique des cargaisons
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produit
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Afficher/Cacher le graphique des marchandises produites par cette industrie
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporté
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Afficher/Cacher le graphique des marchandises transportées depuis cette industrie
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Livré
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Afficher/Cacher le graphique des marchandises livrées à cette industrie
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En attente
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Afficher/Cacher le graphique des marchandises en attente à cette industrie
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historique des cargaisons
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produit
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Afficher/Cacher le graphique des marchandises produites par cette ville
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transporté
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Afficher/Cacher le graphique des marchandises transportées depuis cette ville
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Livré
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Afficher/Cacher le graphique des marchandises livrées à cette ville
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Afficher le détail de l'évaluation de la performance
 
@@ -1660,12 +1668,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Aucun
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Amélioré
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Véhicules routiers{NBSP}: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Choisir le côté de circulation
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Coté de circulation des véhicules routiers{NBSP}: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Choisir le côté de circulation.{}Cela peut aussi affecter le coté des signaux et les graphismes des sémaphores.{}Il peut être nécessaire de recharger la partie pour que le changement soit pleinement effectif
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Conduite à gauche
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Conduite à droite
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Gauche
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Droite
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotation de la carte d'altitude{NBSP}: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Choisir de quelle manière l'image de la carte d'altitude est pivotée pour s'insérer correctement dans la carte actuelle.
@@ -1805,7 +1813,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Afficher les te
 STR_CONFIG_SETTING_QUICKGOTO                                    :Création rapide des ordres de véhicule{NBSP}: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Présélectionner le curseur "aller vers" lors de l'ouverture de la fenêtre d'ordres
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Type de rail, route et tramway par défaut (après nouvelle partie/chargement){NBSP}: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Type de rail, route et tramway à utiliser au début ou au chargement d'une partie. "premier disponible" sélectionne le type de voies le plus ancien, "dernier disponible" sélectionne le type de voies le plus récent, et "le plus utilisé" sélectionne le type qui est actuellement le plus utilisé
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :Premier disponible
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Dernier disponible
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :Le plus utilisé
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Afficher les réservations de chemin sur les voies{NBSP}: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Donne une couleur différente aux voies réservées afin d'aider à résoudre les problèmes de trains refusant de s'engager dans des tronçons encadrés par des signaux de passage
@@ -2883,22 +2896,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Supprimer cette
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Êtes-vous sûr de vouloir supprimer cette collection ?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Êtes-vous sûr de vouloir supprimer cette collection ? Elle contient des items provenant de NewGRFs désactivés !
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Séléctionner un type de station à afficher
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Sélectionner un type de station à afficher. Ctrl pour ajouter ou retirer des éléments enregistrés
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Séléctionner un type de station à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Sélectionner une collection de stations à afficher
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Séléctionner un type de point à afficher
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Sélectionner un type de point de passage à afficher. Ctrl pour ajouter ou retirer des éléments enregistrés
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Séléctionner un point à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Sélectionner une collection de points de passage à afficher
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Séléctionner un type d'arrêt de bus à afficher
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Sélectionner un type d'arrêt de bus à afficher. Ctrl pour ajouter ou retirer des éléments enregistrés
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Séléctionner un type d'arrêt de bus à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Sélectionner une collection d'arrêts de bus à afficher
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Séléctionner un type d'aire de chargement à afficher
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Sélectionner un type d'aire de chargement à afficher. Ctrl pour ajouter ou retirer des éléments enregistrés
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Séléctionner un type d'aire de chargement à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Sélectionner une collection d'aires de chargement à afficher
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Séléctionner un type d'objet à afficher
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Sélectionner un type d'objet à afficher. Ctrl pour ajouter ou retirer des éléments enregistrés
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Séléctionner un type d'objet à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés. Ctrl+Clic+Déplacer pour séléctionner en diagonale. Shift pour afficher seulement le coût estimé.
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Sélectionner une collection d'objets à afficher
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Séléctionner un type de zone de ville à afficher
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Sélectionner un type de zone de ville à afficher. Ctrl pour ajouter ou retirer des éléments enregistrés
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Séléctionner un type de maison à construire. Ctrl+Clic pour ajouter ou retirer des éléments sauvegardés.
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Sélectionner une collection de maisons à afficher
 
@@ -3089,7 +3102,8 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planter 
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Création du terrain
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placer des zones rocheuses sur le terrain
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placer des zones rocheuses sur le terrain.{}Ctrl pour retirer les zones rocheuses
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Placer des zones en friche sur le terrain.{}Ctrl pour retirer les zones en friche
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Définir une zone désertique.{}Ctrl-clic pour retirer une zone désertique
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenter la superficie du terrain à modifier
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuer la superficie du terrain à modifier
@@ -3212,13 +3226,13 @@ STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}La ville
 STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}La ville peut améliorer{NBSP}: {LTBLUE}Non
 
 # Description of land area of different tiles
-STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Roches
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rochers
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terre en friche
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terre nue
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Herbe
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Champs
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Désert
-STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Roches couvertes de neige
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :Rochers couverts de neige
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :Terre en friche couverte de neige
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :Herbe couverte de neige
 
@@ -3275,6 +3289,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Écluse
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rivière
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Rivage ou berge
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Dépôt naval
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Rochers
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Rivage ou berge avec rochers
 
 # Industries come directly from their industry names
 
@@ -3388,6 +3404,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Charger
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Charger la partie sélectionnée
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Charger la carte d'altitude sélectionnée
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Charger les données des villes sélectionnées
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Nouveau répertoire
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Créer un nouveau répertoire à l'emplacement actuel
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Entrer un nom pour le nouveau répertoire
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Détails
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Pas d'informations disponibles
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}{NBSP}: {WHITE}{STRING}
@@ -4606,9 +4625,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}Profit c
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité{NBSP}: {LTBLUE}{COMMA}{NBSP}% (max: {COMMA}%) {BLACK} − Pannes depuis le dernier entretien{NBSP}: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK} − Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacité{NBSP}: {LTBLUE}Aucune{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO_LONG}{STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO_LONG}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits de transfert{NBSP}: {LTBLUE}{CURRENCY_LONG}
@@ -4641,22 +4658,18 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renommer
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} − Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
+
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacité totale de ce train{NBSP}:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vide
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} de {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} de {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Cargaison
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Afficher des informations sur les marchandises transportées
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informations
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Afficher des informations sur la locomotive et les wagons
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Capacités
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Afficher la capacité de chaque wagon
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Charge totale
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Afficher la capacité totale du train, par type de cargaison
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacité{NBSP}: {LTBLUE}{STRING}
 
@@ -4713,9 +4726,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Chargement comp
 STR_ORDER_DROP_NO_LOADING                                       :Pas de chargement
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Modifier le comportement de chargement de l'ordre sélectionné
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Décharger tout
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Forcer le déchargement complet
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Décharger si accepté
-STR_ORDER_DROP_UNLOAD                                           :Décharger tout
+STR_ORDER_DROP_UNLOAD                                           :Forcer le déchargement même si non accepté
 STR_ORDER_DROP_TRANSFER                                         :Transférer
 STR_ORDER_DROP_NO_UNLOADING                                     :Pas de déchargement
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Modifier le comportement de déchargement de l'ordre sélectionné
@@ -4752,7 +4765,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Entretien néce
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Toujours
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Durée de vie restante (années)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Fiabilité maximum
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Marche arrière
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Marche arrière à vitesse réduite
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Comment comparer les données du véhicule à la valeur donnée
@@ -4818,10 +4831,10 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Implici
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Charger complètement)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Charger complètement pour un seul type)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Pas de chargement)
-STR_ORDER_UNLOAD                                                :{SPACE}(Décharger et charger)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Décharger et attendre pleine charge)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Décharger et attendre pleine charge pour un seul type)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Décharger et laisser vide)
+STR_ORDER_UNLOAD                                                :{SPACE}(Forcer le déchargement et charger)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Forcer le déchargement et attendre pleine charge)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Forcer le déchargement et attendre pleine charge pour un seul type)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Forcer le déchargement et laisser vide)
 STR_ORDER_TRANSFER                                              :{SPACE}(Transférer et charger)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Transférer et attendre pleine charge)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Transférer et attendre pleine charge pour un seul type)
@@ -4834,9 +4847,9 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Ne pas 
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Réaménager pour {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Charger complétement avec réaménagement pour {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Charger complétement pour un seul type avec réaménagement pour {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Décharger et charger avec réaménagement pour {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Décharger et attendre pleine charge avec réaménagement pour {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Décharger et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Forcer le déchargement et charger avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Forcer le déchargement et attendre pleine charge avec réaménagement pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Forcer le déchargement et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Transférer et charger avec réaménagement pour {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Transférer et attendre pleine charge avec réaménagement pour {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Transférer et attendre pleine charge pour un seul type avec réaménagement pour {STRING})
@@ -5055,6 +5068,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Échec de l'enr
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible d'accéder au disque
 STR_ERROR_GAME_SAVE_FAILED                                      :La sauvegarde a échoué...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Impossible de supprimer le fichier
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Impossible de créer le répertoire
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Un fichier ou un répertoire avec ce nom existe déjà
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Le nom du répertoire ne peut pas contenir de caractères spéciaux
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Le nom du répertoire ne peut pas commencer par un point
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Vous n'avez pas la permission de créer un répertoire ici
 STR_ERROR_GAME_LOAD_FAILED                                      :Le chargement a échoué...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erreur interne{NBSP}: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sauvegarde corrompue − {STRING}
@@ -5357,6 +5375,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :le pont est {HE
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :le pont est {HEIGHT} trop bas pour le point de passage ferroviaire
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :le pont est {HEIGHT} trop bas pour le point de passage routier
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :le pont est {HEIGHT} trop bas pour l'écluse
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :le pont est {HEIGHT} trop bas pour le dépôt ferroviaire
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :le pont est {HEIGHT} trop bas pour le dépôt routier
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :le pont est {HEIGHT} trop bas pour le dépôt naval
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :le pont est {HEIGHT} trop bas pour l'objet
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Impossible de construire un tunnel ici...

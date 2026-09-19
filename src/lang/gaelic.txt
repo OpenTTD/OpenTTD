@@ -3953,9 +3953,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Cuideam:
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Prothaid am bliadhna: {LTBLUE}{CURRENCY_LONG} (an-uiridh: {CURRENCY_LONG})
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Air a {G 0 thogail togail}: {LTBLUE}{NUM}{BLACK} Luach: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Tomhas-lìonaidh: {LTBLUE}—{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Tomhas-lìonaidh: {LTBLUE}{CARGO_LONG}{STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Tomhas-lìonaidh: {LTBLUE}{CARGO_LONG}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Tomhas-lìonaidh: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Creideas tar-aisig: {LTBLUE}{CURRENCY_LONG}
@@ -3975,22 +3973,18 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Thoir ai
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Air a {G 0 thogail togail}: {LTBLUE}{NUM}{BLACK} Luach: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Luach: {LTBLUE}{CURRENCY_LONG}
 
+
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tomhas-lìonaidh carago iomlan aig an trèan seo:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Falamh
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} bho {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} bho {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{G=m}{BLACK}Carago
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Seall mion-fhiosrachadh mun charago ga ghiùlan
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Fiosrachadh
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Seall mion-fhiosrachadh air carbadan-rèile
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Tomhasan-lìonaidh
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Seall an tomhas-lìonaidh aig gach carbad
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Carago iomlan
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Seall an carago iomlan aig an trèan, air a roinneadh le seòrsa a' charago
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Tomhas-lìonaidh: {LTBLUE}{STRING}
 

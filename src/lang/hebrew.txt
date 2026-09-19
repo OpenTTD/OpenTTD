@@ -974,6 +974,10 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :בחר פרק �
 # Autosave dropdown
 ###length 5
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :כבוי
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_10_MINUTES             :כל 10 דקות
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_30_MINUTES             :כל 30 דקות
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_60_MINUTES             :כל 60 דקות
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_120_MINUTES            :כל 120 דקות
 
 STR_GAME_OPTIONS_LANGUAGE                                       :שפה
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :בחר את שפת הממשק
@@ -1038,8 +1042,15 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :בחר בערכ
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :מידע נוסף אודות ערכת המוזיקה הבסיסית
 
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(לא הותקנו תוספים לאינטגרציה עם רשתות חברתיות)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :פלטפורמה:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :מצב התוסף:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}נכשל באתחול
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} לא פעילה
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}עותק כפול של תוסף
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}חתימה לא חוקית
 
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}שגיאה ביצירת רשימה של רזולוציות אפשריות
@@ -1793,6 +1804,8 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :השנה בה �
 STR_CONFIG_SETTING_STARTING_YEAR                                :{STRING} :שנת התחלה
 
 STR_CONFIG_SETTING_ENDING_YEAR                                  :ניקוד סוף שנה: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :השנה בה המשחק מסתיים למטרות חישוב ניקוד. בסוף שנה זו, הניקוד של החברה יירשם וטבלת הניקוד המירבי תוצג, אבל השחקן יכול להמשיך לשחק אחרי כן.{}אם היא לפני שנת ההתחלה, טבלת הניקוד המירבי לא תוצג אף פעם
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :לעולם לא
 
@@ -1888,7 +1901,7 @@ STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :הגבל את �
 ###length 3
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{STRING} : קצב ההתרחבות של העיירות
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :מהירות גדילת עיירות
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :מהירות התרחבות עיירות
 ###length 5
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :מבוטל
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :איטי
@@ -2026,6 +2039,7 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... מת
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... לא נמצא כרטיס מסך תואם, האצת חומרה מושבתת
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
 
 STR_INTRO_NEW_GAME                                              :{BLACK}משחק חדש
 STR_INTRO_LOAD_GAME                                             :{BLACK}טען משחק
@@ -2063,6 +2077,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}בתרג
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}צא
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}אתה בטוח שברצונך לצאת מ-OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}כן
 STR_QUIT_NO                                                     :{BLACK}לא
 
@@ -2398,6 +2413,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :מחכה לעד
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :עוזב
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} הצטרף למשחק
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} הצטרף למשחק (Client #{NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} הצטרף ל{STRING}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :***{STRING} הצטרף למשחק כצופה
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} הקים חברה חדשה (#{NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :({1:STRING}) עזב את המשחק {NBSP}{0:STRING} ***
@@ -2589,11 +2605,27 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :החלף הצג
 
 
 STR_HOUSE_PICKER_CAPTION                                        :בחירת בית
+STR_HOUSE_PICKER_NAME                                           :{BLACK}שם: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}אוכלוסיה: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}שנים: {GOLD}{NUM}-{NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}שנים: {GOLD}כולן
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}שנים: {GOLD}החל מ-{NUM}
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}שנים: {GOLD}עד {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}גודל: {GOLD}{NUM}x{NUM} משבצות
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}מטען שהתקבל: {GOLD}{STRING}
 STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}מטען שיוצר: {GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :קצה
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :פרוורים
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :פרוורים חיצוניים
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :פרוורים פנימיים
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :מרכז העיירה
 
+STR_HOUSE_PICKER_PROTECT                                        :מנע שדרוגים
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :בחר אם בית זה יהיה מוגן מהחלפה עם התרחבות העיירה
 
+STR_HOUSE_PICKER_REPLACE                                        :החלף קיים
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :בחר אם להסיר אוטומטית בית קיים על המשבצת עליה מונח בית זה
 
 STR_STATION_CLASS_DFLT                                          :ברירת מחדל
 STR_STATION_CLASS_DFLT_STATION                                  :תחנת ברירת מחדל
@@ -3187,6 +3219,9 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}גירס
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{SILVER}{STRING}{BLACK}: פלטת צבעים
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :ברירת מחדל (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :ברירת מחדל (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :מורשת (W)
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :מורשת (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{SILVER}{STRING}{BLACK} :פרמטריֿם
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}לא קיים מידע
@@ -3248,6 +3283,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}אזהרה: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{SILVER}{STRING}{RED}: שגיאה
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{SILVER}{STRING}{RED} :שגיאה חמורה
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :ה-, "{STRING}", NewGRF החזיר שגיאה קריטית:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} לא יעבוד עם גרסת ה-TTDPatch שדווחה ע"י OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} היא עבור גרסת {STRING} של TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} נועד להיות בשימוש יחד עם {STRING}
@@ -3535,6 +3571,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}הכנסה
 STR_FINANCES_OPERATING_EXPENSES_TITLE                           :{WHITE}הוצאות תפעול
+STR_FINANCES_CAPITAL_EXPENSES_TITLE                             :{WHITE}הוצאות הון
 
 
 ###length 13
@@ -3929,6 +3966,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}?אתה
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}הודעה מיצרן הרכב
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}?חדש/ה! האם אתה מעוניין לבחון כלי זה באופן בלעדי לפני הוצאתו לשוק {STRING} זה עתה סיימנו את תכנונו של
 
+STR_ENGINE_PREVIEW_NEXT                                         :הבא
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :קטר רכבת
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :קטר רכבת חשמלי
@@ -3944,6 +3982,7 @@ STR_ENGINE_PREVIEW_COST_WEIGHT                                  :עלות: {CURR
 STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :עלות: {CURRENCY_LONG} מהירות מרבית: {VELOCITY}
 STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :עלות הפעלה: {CURRENCY_LONG} לשנה
 STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :עלות הפעלה: {CURRENCY_LONG} לתקופה
+STR_ENGINE_PREVIEW_CAPACITY                                     :קיבולת: {CARGO_LONG}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}החלף {STRING} - {STRING}
@@ -3991,7 +4030,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :רכבות פס
 STR_REPLACE_ROAD_VEHICLES                                       :רכבי כביש
 STR_REPLACE_TRAM_VEHICLES                                       :רכבות קלות
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}הסרת קרונות ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}שמור על האורך המקורי של הרכבת בעת שימוש בהחלפה אוטומטית, במידה והקטר מאריך את הרכבת הסר קרונות מתחילת הרכבת
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+לחיצה כדי להחל על תתי-קבוצות
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4084,9 +4125,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}משקל
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}רווח בשנה הנוכחת: {LTBLUE}{CURRENCY_LONG} (שנה שעברה: {CURRENCY_LONG})
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}נבנה: {LTBLUE}{NUM}{BLACK} ערך: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}קיבולת: {LTBLUE}אין{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}קיבולת: {LTBLUE}{CARGO_LONG}{STRING}
-STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}קיבולת: {LTBLUE}{CARGO_LONG}{STRING} (x{NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}קיבולת: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}העברת סכום: {LTBLUE}{CURRENCY_LONG}
@@ -4112,22 +4151,18 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}תן ש�
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{2:CURRENCY_LONG}{BLACK}  :ערך {LTBLUE}{1:NUM}{BLACK}  :נבנה {LTBLUE}{0:ENGINE}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{1:CURRENCY_LONG}{BLACK} :שווי {LTBLUE}{0:ENGINE}
 
+
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}:סה"כ קיבולת הסחורה ברכבת זאת
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}ריקה
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{1:STATION} מ {NBSP}{0:CARGO_LONG}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}(x{2:NUM}){1:STATION} מ {NBSP}{0:CARGO_LONG}
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}משא
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}הצג פרטי המשא
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}מידע
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}הצג פרטי הקרונות
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}קיבולות
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}הצג קיבולת לכל קרון
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}סה"כ סחורה
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}הצג את הקיבולת הכללית של הרכבת בפיצול לסוגי מטען
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK} :קיבולת {LTBLUE}{STRING}
 
@@ -4271,6 +4306,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(ועצור {ST
 STR_ORDER_STOP_ORDER                                            :(עצור)
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(לא ניתן להשתמש בתחנה){POP_COLOUR} {STRING} {STATION}
 
 STR_ORDER_IMPLICIT                                              :(משתמע)
@@ -4354,7 +4390,8 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}אפס �
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}אפס את פרק הזמן לשהייה ביעד שנבחר
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}שנה מגבלת מהירות
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}שנה את מהירות הנסיעה המירבית של הפקודה המסומנת
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}שנה את מהירות הנסיעה המירבית של הפקודה המסומנת. Ctrl+לחיצה כדי לקבוע מהירות לכל הפקודות
+STR_TIMETABLE_CHANGE_SPEED_QUERY                                :שנה מגבלת מהירות
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}הסר מגבלת מהירות
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}הסר את מהירות הנסיעה המירבית של הפקודה המסומנת
@@ -4529,6 +4566,7 @@ STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}!לא י
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}הודעה
+STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}הודעה מ{COMPANY}
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}מחוץ לשטח המפה
@@ -4758,12 +4796,23 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}לא נ�
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}יש לפרק את הגשר תחילה
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}לא ניתן להתחיל ולסיים באותה הנקודה
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}צדדי הגשר לא באותו הגובה
-STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}גשר נמוך מידי עבור השטח
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :גשר נמוך מידי עבור השטח
 STR_ERROR_BRIDGE_TOO_HIGH_FOR_TERRAIN                           :{WHITE}גשר גבוה מדי עבור פני השטח.
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}התחלה וסיום חייבים להיות באותו הקו
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... קצות הגשר צריכים להיות על קרקע
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... גשר ארוך מידי
 STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}הגשר יסתיים מחוץ למפה
+STR_ERROR_BRIDGE_TOO_LOW_FOR_STATION                            :גשר נמוך מידי ב-{HEIGHT} בשביל תחנה
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADSTOP                           :גשר נמוך מידי ב-{HEIGHT} בשביל נקודת ציון
+STR_ERROR_BRIDGE_TOO_LOW_FOR_DOCK                               :גשר נמוך מידי ב-{HEIGHT} בשביל מזח
+STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :גשר נמוך מידי ב-{HEIGHT} בשביל מצוף
+STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :גשר נמוך מידי ב-{HEIGHT} בשביל נקודת ציון
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :גשר נמוך מידי ב-{HEIGHT} בשביל נקודת ציון
+STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :גשר נמוך מידי ב-{HEIGHT} בשביל תא שייט
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :גשר נמוך מידי ב-{HEIGHT} בשביל מוסך רכבות
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :גשר נמוך מידי ב-{HEIGHT} בשביל מוסך
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :גשר נמוך מידי ב-{HEIGHT} בשביל מבדוק
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :גשר נמוך מידי ב-{HEIGHT} בשביל אוביקט
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}לא ניתן להקים מנהרה כאן...

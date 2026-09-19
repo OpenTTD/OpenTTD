@@ -2606,6 +2606,8 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شرو�
 
 
 
+
+
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}سامان
 
 
