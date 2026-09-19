@@ -39,7 +39,7 @@ Window *ShowBuildDocksScenToolbar();
 Window *ShowBuildAirToolbar();
 
 /* tgp_gui.cpp */
-void ShowGenerateLandscape();
+Window *ShowGenerateLandscape();
 void ShowHeightmapLoad();
 
 /* misc_gui.cpp */
