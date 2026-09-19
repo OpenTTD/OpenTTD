@@ -19,6 +19,7 @@
 #include "genworld.h"
 #include "autoslope.h"
 #include "clear_func.h"
+#include "terraform_cmd.h"
 #include "water.h"
 #include "window_func.h"
 #include "company_gui.h"
@@ -745,16 +746,24 @@ static bool ClickTile_Object(TileIndex tile)
 /**
  * Build a lighthouse and its rocks on a given tile.
  * @param tile The tile to build the lighthouse upon.
+ * @param island Do we need to start by terraforming an island onto an open sea tile?
  */
-static void BuildLighthouseAndRocks(TileIndex tile)
+static void BuildLighthouseAndRocks(TileIndex tile, bool island)
 {
+	/* Maybe create an island under the lighthouse. */
+	if (island) {
+		assert(IsTileType(tile, TileType::Water) && GetWaterTileType(tile) == WaterTileType::Clear && GetWaterClass(tile) == WaterClass::Sea);
+		Command<Commands::TerraformLand>::Do(DoCommandFlag::Execute, tile, SLOPE_ELEVATED, true);
+	}
+
 	BuildObject(OBJECT_LIGHTHOUSE, tile);
 
 	/* Generate rocks from each surrounding coast tile surrounding the lighthouse. This is done because we don't have
 	 * control of the direction of GenerateRocks, so this gives more chance for rocks to be generated in water. */
 	uint32_t r = Random();
 	for (TileIndex rock_tile : SpiralTileSequence(tile, 3)) {
-		if (!IsCoastTile(rock_tile)) continue;
+		/* If we've just terraformed an island, the new coast tiles haven't flooded yet. */
+		if (!island && !IsCoastTile(rock_tile)) continue;
 		GenerateRocks(rock_tile, GB(r, 0, 4) + 5);
 		r >>= 4;
 	}
@@ -763,15 +772,16 @@ static void BuildLighthouseAndRocks(TileIndex tile)
 /**
  * Try to find a tile nearby suitable to place a lighthouse.
  * @param tile The tile to try building near.
+ * @param island Should we find an open sea tile to terraform into an island under the lighthouse?
  * @return A tile nearby that is suitable for a lighthouse, or INVALID_TILE if none are found.
  */
-static TileIndex FindNearbyLighthouseSpot(TileIndex tile)
+static TileIndex FindNearbyLighthouseSpot(TileIndex tile, bool island)
 {
 	if (!Object::CanAllocateItem()) return INVALID_TILE;
 	if (!IsValidTile(tile)) return INVALID_TILE;
 
-	/* We always start on a coast tile. */
-	if (!IsTileType(tile, TileType::Water) || GetWaterTileType(tile) != WaterTileType::Coast) return INVALID_TILE;
+	/* We always start on a water tile. */
+	if (!IsTileType(tile, TileType::Water)) return INVALID_TILE;
 
 	/* Don't build near another lighthouse. */
 	constexpr uint LIGHTHOUSE_MIN_DISTANCE_DIAMETER = 16 * 2 + 1; // 16 tile radius, plus middle tile.
@@ -779,10 +789,26 @@ static TileIndex FindNearbyLighthouseSpot(TileIndex tile)
 		if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return INVALID_TILE;
 	}
 
-	/* Find a suitable tile nearby to build. */
-	for (TileIndex t : SpiralTileSequence(tile, 3)) {
-		if (!IsTileType(t, TileType::Clear) || !IsTileFlat(t) || IsBridgeAbove(t)) continue;
-		return t;
+	if (island) {
+		/* Islands can only be constructed on open sea tiles. */
+		if (GetWaterTileType(tile) != WaterTileType::Clear || GetWaterClass(tile) != WaterClass::Sea || IsBridgeAbove(tile)) return INVALID_TILE;
+
+		/* We don't want to block the mouth of a river. */
+		for (auto t : SpiralTileSequence(tile, 3)) {
+			if (IsTileType(t, TileType::Water) && GetWaterClass(t) == WaterClass::River) return INVALID_TILE;
+		}
+
+		/* We've found a suitable tile to build an island. */
+		return tile;
+	} else {
+		/* If not building an island, we must be on a coast tile. */
+		if (GetWaterTileType(tile) != WaterTileType::Coast) return INVALID_TILE;
+
+		/* Find a suitable tile nearby to build. */
+		for (TileIndex t : SpiralTileSequence(tile, 3)) {
+			if (!IsTileType(t, TileType::Clear) || !IsTileFlat(t) || IsBridgeAbove(t)) continue;
+			return t;
+		}
 	}
 
 	return INVALID_TILE;
@@ -808,16 +834,19 @@ static void TryBuildTownLighthouse(Town *town)
 	start_tile = TileAddWrap(town->xy, -radius, -radius);
 	if (!IsValidTile(start_tile)) return;
 
+	/* There's a small chance that we'll allow picking a sea tile and terraforming an island for the lighthouse to sit upon. */
+	bool island = Chance16(1, 8);
+
 	/* Make a list of valid lighthouse locations on the perimeter. */
 	std::vector<TileIndex> locations;
 	for (TileIndex coast_tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
-		TileIndex t = FindNearbyLighthouseSpot(coast_tile);
+		TileIndex t = FindNearbyLighthouseSpot(coast_tile, island);
 		if (t != INVALID_TILE) locations.emplace_back(t);
 	}
 
 	/* If we've found any valid tiles, pick a random one. */
 	if (locations.size() == 0) return;
-	BuildLighthouseAndRocks(locations[RandomRange(static_cast<uint32_t>(locations.size()))]);
+	BuildLighthouseAndRocks(locations[RandomRange(static_cast<uint32_t>(locations.size()))], island);
 }
 
 /**
@@ -858,9 +887,9 @@ static bool TryBuildCoastLighthouse()
 
 	/* Now walk inwards until we find a valid tile, or hit the other edge of the map. */
 	while (IsValidTile(tile)) {
-		TileIndex t = FindNearbyLighthouseSpot(tile);
+		TileIndex t = FindNearbyLighthouseSpot(tile, false);
 		if (t != INVALID_TILE) {
-			BuildLighthouseAndRocks(t);
+			BuildLighthouseAndRocks(t, false);
 			return true;
 		}
 
