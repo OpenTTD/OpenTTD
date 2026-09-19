@@ -743,42 +743,49 @@ static bool ClickTile_Object(TileIndex tile)
 }
 
 /**
- * Try to build a lighthouse near a coast tile.
- * @param coast_tile The tile to try building near.
- * @return \c true iff a lighthouse was built.
+ * Build a lighthouse and its rocks on a given tile.
+ * @param tile The tile to build the lighthouse upon.
  */
-static bool TryBuildLighthouseNearTile(TileIndex coast_tile)
+static void BuildLighthouseAndRocks(TileIndex tile)
 {
-	if (!Object::CanAllocateItem()) return false;
-	if (!IsValidTile(coast_tile)) return false;
+	BuildObject(OBJECT_LIGHTHOUSE, tile);
+
+	/* Generate rocks from each surrounding coast tile surrounding the lighthouse. This is done because we don't have
+	 * control of the direction of GenerateRocks, so this gives more chance for rocks to be generated in water. */
+	uint32_t r = Random();
+	for (TileIndex rock_tile : SpiralTileSequence(tile, 3)) {
+		if (!IsCoastTile(rock_tile)) continue;
+		GenerateRocks(rock_tile, GB(r, 0, 4) + 5);
+		r >>= 4;
+	}
+}
+
+/**
+ * Try to find a tile nearby suitable to place a lighthouse.
+ * @param tile The tile to try building near.
+ * @return A tile nearby that is suitable for a lighthouse, or INVALID_TILE if none are found.
+ */
+static TileIndex FindNearbyLighthouseSpot(TileIndex tile)
+{
+	if (!Object::CanAllocateItem()) return INVALID_TILE;
+	if (!IsValidTile(tile)) return INVALID_TILE;
 
 	/* We always start on a coast tile. */
-	if (!IsTileType(coast_tile, TileType::Water) || GetWaterTileType(coast_tile) != WaterTileType::Coast) return false;
+	if (!IsTileType(tile, TileType::Water) || GetWaterTileType(tile) != WaterTileType::Coast) return INVALID_TILE;
 
 	/* Don't build near another lighthouse. */
 	constexpr uint LIGHTHOUSE_MIN_DISTANCE_DIAMETER = 16 * 2 + 1; // 16 tile radius, plus middle tile.
-	for (auto t : SpiralTileSequence(coast_tile, LIGHTHOUSE_MIN_DISTANCE_DIAMETER)) {
-		if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return false;
+	for (auto t : SpiralTileSequence(tile, LIGHTHOUSE_MIN_DISTANCE_DIAMETER)) {
+		if (IsObjectTypeTile(t, OBJECT_LIGHTHOUSE)) return INVALID_TILE;
 	}
 
 	/* Find a suitable tile nearby to build. */
-	for (TileIndex build_tile : SpiralTileSequence(coast_tile, 3)) {
-		if (!IsTileType(build_tile, TileType::Clear) || !IsTileFlat(build_tile) || IsBridgeAbove(build_tile)) continue;
-		BuildObject(OBJECT_LIGHTHOUSE, build_tile);
-
-		/* Generate rocks from each coast tile surrounding the chosen coast tile. This is done because we don't have
-		 * control of the direction of GenerateRocks, so this gives more chance for rocks to be generated in water. */
-		uint32_t r = Random();
-		for (TileIndex rock_tile : SpiralTileSequence(coast_tile, 3)) {
-			if (!IsCoastTile(rock_tile)) continue;
-			GenerateRocks(rock_tile, GB(r, 0, 4) + 5);
-			r >>= 4;
-		}
-
-		return true;
+	for (TileIndex t : SpiralTileSequence(tile, 3)) {
+		if (!IsTileType(t, TileType::Clear) || !IsTileFlat(t) || IsBridgeAbove(t)) continue;
+		return t;
 	}
 
-	return false;
+	return INVALID_TILE;
 }
 
 /**
@@ -803,7 +810,11 @@ static void TryBuildTownLighthouse(Town *town)
 
 	/* Search the perimeter for a suitable tile. */
 	for (TileIndex coast_tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
-		if (TryBuildLighthouseNearTile(coast_tile)) return;
+		TileIndex t = FindNearbyLighthouseSpot(coast_tile);
+		if (t != INVALID_TILE) {
+			BuildLighthouseAndRocks(t);
+			return;
+		}
 	}
 }
 
@@ -845,7 +856,12 @@ static bool TryBuildCoastLighthouse()
 
 	/* Now walk inwards until we find a valid tile, or hit the other edge of the map. */
 	while (IsValidTile(tile)) {
-		if (TryBuildLighthouseNearTile(tile)) return true;
+		TileIndex t = FindNearbyLighthouseSpot(tile);
+		if (t != INVALID_TILE) {
+			BuildLighthouseAndRocks(t);
+			return true;
+		}
+
 		tile += TileOffsByDiagDir(dir);
 	}
 
