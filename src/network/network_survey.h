@@ -41,7 +41,11 @@ public:
 	 */
 	static constexpr bool IsSurveyPossible()
 	{
+#ifdef SURVEY_KEY
 		return true;
+#else
+		return false;
+#endif
 	}
 
 private:
