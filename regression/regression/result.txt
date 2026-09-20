@@ -10895,7 +10895,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   LowerTile():          true
   RaiseTile():          true
   LowerTile():          true
-  GetCosts():           3078
+  GetCosts():           2478
   LowerTile():          false
   LowerTile():          true
   RaiseTile():          false
@@ -10918,7 +10918,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetCosts():           9778
   LevelTiles():         true
   LevelTiles():         true
-  GetCosts():           288629
+  GetCosts():           288179
   LowerTile():          false
   RaiseTile():          true
   RaiseTile():          false
@@ -10927,7 +10927,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   RaiseTile():          true
   LowerTile():          true
   LowerTile():          false
-  GetCosts():           1317
+  GetCosts():           1167
   RaiseTile():          false
   LowerTile():          true
   LowerTile():          false
