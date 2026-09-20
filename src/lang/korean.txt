@@ -1683,7 +1683,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :평지 시나리오의 평지 높이: {STRING}
 ###length 2
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :지도 북쪽 맨 가장자리에 있는 지형의 칸 중 하나 이상이 비어있지 않습니다
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :지도 북쪽 맨 가장자리에 있는 지형의 칸 중 하나 이상이 비어 있지 않습니다
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :지도 맨 가장자리에 있는 칸 중 하나 이상이 물이 아닙니다
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :역의 최대 크기: {STRING}
@@ -4658,18 +4658,23 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}항공�
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}열차 길이: {LTBLUE}{DECIMAL}칸
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}이 열차의 총 수송량:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}이 열차의 전체 화물:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}비어 있음 ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{2:STATION}{3:STRING}에서 출발한 {0:CARGO_LONG} ({1:CARGO_SHORT})
 
-STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}비어있음
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}비어 있음
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} (출발지: {STATION})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}화물
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}현재 싣고 있는 화물 정보를 보여줍니다
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}정보
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}각 차량의 상세 정보를 보여줍니다
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}전체
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}열차의 전체 화물, 수송량, 길이를 보여줍니다
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}수송량: {LTBLUE}{STRING}
 

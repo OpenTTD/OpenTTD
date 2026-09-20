@@ -2307,6 +2307,8 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}מאחו
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :זרוק
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :חסום (באן)
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :מחק
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :הרשה כל לקוח
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :הרשה רק ללקוחות מהרשימה
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}פעולת אדמין
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}האם אתה בטוח שברצונך לזרוק את '{STRING}'?
@@ -2603,6 +2605,7 @@ STR_PICKER_MODE_SAVED_TOOLTIP                                   :החלף הצג
 
 
 
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :בחר אוסף בתים להציג
 
 STR_HOUSE_PICKER_CAPTION                                        :בחירת בית
 STR_HOUSE_PICKER_NAME                                           :{BLACK}שם: {GOLD}{STRING}
@@ -3045,6 +3048,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}שמור
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}טען תרחיש
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}טען מפת גבהים
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}שמור מפת גבהים
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}טען נתוני עיירה
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}לחץ כאן כדי לעבור לתיקית בחירת מחדל של שמירות
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}בתים פנויים {BYTES}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}רשימה של כוננים, תיקיות וקובצי משחקים שמורים
@@ -3056,6 +3060,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}שמור
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}טען
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}טען את המשחק שנבחר
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}טען את מפת הגבהים שנבחרה
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}טען את נתוני העיירה הנבחרת
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}פרטי משחק
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}אין מידע זמין
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3063,6 +3068,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}סינון:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}החלף קובץ
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}האם אתה בטוח שברצונך לדרוס את הקובץ הקיים?
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}מחק קובץ
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}האם אתה בטוח שברצונך למחוק את הקובץ?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (ספרייה)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (ספריית אב)
 
@@ -3085,6 +3092,7 @@ STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}הפסג
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}הקטן את הגובה המרבי של הפסגה הגבוהה ביותר במפה באחד
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK} :כמות ימים/אגמים
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}בחר את גובה הים
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}נהרות:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK} :חלקלקות
 STR_MAPGEN_VARIETY                                              :{BLACK}הפצה מגוונת:
@@ -3365,8 +3373,10 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}עבור
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}הכנס שם סימניה
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}ערים ({COMMA} מתוך {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- אין -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}שמות ערים - לחץ על שם כדי למקד את התצוגה על העיר. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום העיר
 STR_TOWN_POPULATION                                             :{BLACK}אוכלוסיית העולם: {COMMA}
 
@@ -3380,6 +3390,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} נמסר
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (עדיין דרוש)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (נמסר)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}עיירה גדלה כל {ORANGE}{UNITS_DAYS_OR_SECONDS}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}עיירה גדלה כל {ORANGE}{UNITS_DAYS_OR_SECONDS} (ממומנת)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}העיירה {RED}איננה{BLACK} גדלה
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{ORANGE}{1:COMMA}{BLACK} :מירבית {ORANGE}{0:COMMA}{BLACK} :רמת הרעש המותרת בעיר זו
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}מקד את התצוגה על מיקום העיר. Ctrl+לחיצה פותח חלונית תצוגה חדשה במיקום העיר
@@ -3724,6 +3736,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}שלח �
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :החלף כלי רכב
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :שלח לטיפול
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}{1:CURRENCY_LONG} :בשנה שעברה{NBSP} {0:CURRENCY_LONG}) :רווח השנה
+STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :שלח רכבת למוסך
@@ -4042,7 +4055,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}מרכז
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}.שלח את הרכבת למוסך
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}.שלח את כלי הרכב למוסך
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}שלח את כלי הרכב למוסך. Ctrl+לחיצה יתחזק בלבד
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}שלח את כלי השייט למבדוק
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sשלח את כלי הטייס לסככת המטוסים
 
@@ -4123,6 +4136,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}משקל
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}משקל: {LTBLUE}{WEIGHT_SHORT} {BLACK}הספק: {LTBLUE}{POWER}{BLACK} מהירות מקסימלית: {LTBLUE}{VELOCITY} {BLACK}T.E. מקסימלי: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}רווח בשנה הנוכחת: {LTBLUE}{CURRENCY_LONG} (שנה שעברה: {CURRENCY_LONG})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}מהימנות: {LTBLUE}{COMMA}% (max: {COMMA}%) {BLACK}קלקולים מאז טיפול אחרון: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}נבנה: {LTBLUE}{NUM}{BLACK} ערך: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}קיבולת: {LTBLUE}{CARGO_LONG}{STRING}
@@ -4130,6 +4144,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}קיבו
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}העברת סכום: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}מרווח בין טיפולים: {LTBLUE}{COMMA}{NBSP}ימים{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}מרווח בין טיפולים: {LTBLUE}{COMMA}%{BLACK} {STRING}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}הגדל את מרווח התיקון ב-10 ימים. Ctrl וקליק על מנת להקטין את מרווח התיקון ב-5 ימים
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}הגדל את מרווח התיקון ב-5 דקות. Ctrl וקליק על מנת להקטין את מרווח התיקון בדקה אחת
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}הגדל את מרווח התיקון ב-10%. Ctrl וקליק על מנת להקטין את מרווח התיקון ב-5%
@@ -4229,7 +4245,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}שנה �
 STR_ORDER_REFIT                                                 :{BLACK}התאם מחדש
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}בחר את סוג המיטען אליו יותאם הכלי ביעד זה
 STR_ORDER_REFIT_AUTO                                            :{BLACK}אבזור מחדש בתחנה
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}בחרלאיזה סוג מטען לאבזר מחדש בפקודה זו. Ctrl+לחיצה כדי להסיר את הוראת האבזור מחדש. אבזור מחדש יתרחש רק אם כלי הרכב מאפשר זאת
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}בחר לאיזה סוג מטען לאבזר מחדש בפקודה זו. Ctrl+לחיצה כדי להסיר את הוראת האבזור מחדש. אבזור מחדש יתרחש רק אם כלי הרכב מאפשר זאת
 STR_ORDER_DROP_REFIT_AUTO                                       :מטען קבוע
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :מטען זמין
 
@@ -4365,6 +4381,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}לוח �
 STR_TIMETABLE_NO_TRAVEL                                         :ללא מסע
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :סע (אוטומטי; לוח זמנים נקבע לפי הפקודה הידנית הבאה)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :(מסע (ללא לוח זמנים
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :סע במהירות שהיא לכל היותר {VELOCITY} (ללא לוח זמנים)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} ערוך מסע ל
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :סע למשך {STRING} במהירות שהיא לכל היותר {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :מסע (עבור {STRING}, לא מתוזמן)
@@ -4502,6 +4519,7 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}רשיו
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "קרא אותי" של {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} רשימת שינויים של {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} רשיון של {STRING}
+STR_TEXTFILE_SURVEY_RESULT_CAPTION                              :{WHITE}צפייה מקדימה בתוצאות הסקר
 STR_TEXTFILE_GAME_MANUAL_CAPTION                                :מסמך OpenTTD '{STRING}' {WHITE}
 
 
@@ -4575,7 +4593,7 @@ STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}{CURRENC
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}דרושה קרקע שטוחה
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}שיפוע הקרקע בכיוון לא נכון
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}לא ניתן לעשות זאת...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}יש להסיר את הבניין תחילה
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :יש להסיר את הבניין תחילה
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}לא ניתן לפנות אזור זה...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... אזור לא מתאים
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... כבר בנוי

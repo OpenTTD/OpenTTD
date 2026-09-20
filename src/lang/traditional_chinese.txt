@@ -340,7 +340,7 @@ STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年盈利
 STR_SORT_BY_PROFIT_THIS_PERIOD                                  :本期盈利
 STR_SORT_BY_AGE                                                 :年齡
 STR_SORT_BY_RELIABILITY                                         :可靠性
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :總容量，依貨物種類排序
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :總載量，依貨物種類排序
 STR_SORT_BY_MAX_SPEED                                           :最高速度
 STR_SORT_BY_MODEL                                               :型號
 STR_SORT_BY_VALUE                                               :價值
@@ -4657,10 +4657,13 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}命名�
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   購於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   價值：{LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}列車長度：{LTBLUE}{DECIMAL}格
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}此列車的總容量：
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}該列車總載量：
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}空載（{CARGO_LONG}）{STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{CARGO_LONG}（{CARGO_SHORT}）來自{STATION}{STRING}
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} 來自 {STATION}
@@ -4669,6 +4672,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}貨物
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}顯示運載貨物詳細資料
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}資訊
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}顯示車輛詳細資料
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}總計
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}顯示列車的總載量、運能及長度
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}容量：{LTBLUE}{STRING}
 

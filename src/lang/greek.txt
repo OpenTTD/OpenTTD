@@ -4758,10 +4758,13 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Ονομ
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Κατασκευασμένο: {LTBLUE}{NUM}{BLACK} Αξία: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Αξία: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}Μήκος τρένου: {LTBLUE}{DECIMAL} πλακίδι{P "ο" α}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Συνολική χωρητικότητα φορτίου του τρένου:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Συνολικό φορτίο του τρένου:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}Άδειο ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) από {STATION}{STRING}
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Άδειο
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} από τον σταθμό {STATION}
@@ -4770,6 +4773,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Φορτ
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Παρουσίαση λεπτομερειών μεταφερόμενων εμπορευμάτων
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Πληροφορίες
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Εμφάνιση των λεπτομερειών των βαγονιών
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}Σύνολα
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}Εμφάνιση συνολικού φορτίου, χωρητικότητας και μήκους του τρένου
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Χωρητικότητα: {LTBLUE}{STRING}
 
