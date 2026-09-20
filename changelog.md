@@ -1,5 +1,9 @@
 ## 16.x
 
+### 16.0-beta4 (2026-09-20)
+
+- Fix #16018: Don't desync when terraforming (#16021)
+
 ### 16.0-beta3 (2026-09-19)
 
 - Feature: Double-ended ships (#16002)
