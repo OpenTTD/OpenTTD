@@ -12,4 +12,4 @@
 
 void ShowGSConfigWindow();
 
-#endif /* AI_GUI_HPP */
+#endif /* GAME_GUI_HPP */

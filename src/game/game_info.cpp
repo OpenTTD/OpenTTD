@@ -68,7 +68,7 @@ template <> SQInteger PushClassName<GameInfo, ScriptType::GS>(HSQUIRRELVM vm) { 
 	} else {
 		info->is_developer_only = false;
 	}
-	/* Try to get the API version the AI is written for. */
+	/* Try to get the API version the Game Script is written for. */
 	if (!info->CheckMethod("GetAPIVersion")) return SQ_ERROR;
 	if (!info->engine->CallStringMethod(info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
 	if (!CheckAPIVersion(info->api_version)) {
