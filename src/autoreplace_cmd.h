@@ -17,8 +17,10 @@
 
 CommandCost CmdAutoreplaceVehicle(DoCommandFlags flags, VehicleID veh_id);
 CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_engine_type, EngineID new_engine_type, bool when_old);
+CommandCost CmdMassRailtypeUpgrade(DoCommandFlags flags, GroupID group, EngineID new_engine);
 
 DEF_CMD_TRAIT(Commands::AutoreplaceVehicle, CmdAutoreplaceVehicle, {}, CommandType::VehicleManagement)
 DEF_CMD_TRAIT(Commands::SetAutoreplace, CmdSetAutoReplace, {}, CommandType::VehicleManagement)
+DEF_CMD_TRAIT(Commands::MassRailtypeUpgrade, CmdMassRailtypeUpgrade, CommandFlag::NoTest, CommandType::VehicleManagement) // the depot conversion and the replacements only happen in the exec run, so the test run cannot predict the cost
 
 #endif /* AUTOREPLACE_CMD_H */

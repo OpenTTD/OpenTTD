@@ -4519,6 +4519,26 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon re
 STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click to also apply to sub-groups
 
+STR_REPLACE_MASS_UPGRADE_BUTTON                                 :{BLACK}Mass Upgrade Railtype
+STR_REPLACE_MASS_UPGRADE_TOOLTIP                                :{BLACK}Upgrade all trains in a group to a different railtype in one action, once they are all in depots
+
+STR_MASS_UPGRADE_CAPTION                                        :{WHITE}Mass Railtype Upgrade
+STR_MASS_UPGRADE_GROUP_TOOLTIP                                  :{BLACK}Select the group of trains to upgrade
+STR_MASS_UPGRADE_RAILTYPE_TOOLTIP                               :{BLACK}Choose the rail type you want to upgrade to. Filters the list of locomotives on the right
+STR_MASS_UPGRADE_LOCOMOTIVES_IN_GROUP                           :{YELLOW}Locomotives in group
+STR_MASS_UPGRADE_LOCOMOTIVES_IN_GROUP_TOOLTIP                   :{BLACK}Column with locomotive types currently used by the selected group
+STR_MASS_UPGRADE_UPGRADE_TO                                     :{YELLOW}Upgrade to
+STR_MASS_UPGRADE_UPGRADE_TO_TOOLTIP                             :{BLACK}Column with locomotives available to upgrade to
+STR_MASS_UPGRADE_LEFT_ARRAY_TOOLTIP                             :{BLACK}Select a locomotive type to view its details
+STR_MASS_UPGRADE_RIGHT_ARRAY_TOOLTIP                            :{BLACK}Select the locomotive type you want to upgrade to
+STR_MASS_UPGRADE_STATUS                                         :{BLACK}{NUM} of {NUM} trains in depot
+STR_MASS_UPGRADE_STATUS_TOOLTIP                                 :{BLACK}Every train in the selected group must be stopped inside a depot before the group can be upgraded
+STR_MASS_UPGRADE_ALL_TRAINS                                     :All trains
+STR_MASS_UPGRADE_SEND_TO_DEPOT                                  :{BLACK}Send to Depot
+STR_MASS_UPGRADE_SEND_TO_DEPOT_TOOLTIP                          :{BLACK}Send all trains in the selected group to a depot, so they can be upgraded
+STR_MASS_UPGRADE_GO                                             :{BLACK}Upgrade
+STR_MASS_UPGRADE_GO_TOOLTIP                                     :{BLACK}Upgrade all trains in the selected group to the selected locomotive type, once they are all in depots
+
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
@@ -5311,6 +5331,14 @@ STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :No autoreplace/
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(money limit)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :New vehicle can't carry {STRING}
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :New vehicle can't do refit in order {NUM}
+
+STR_ERROR_MASS_UPGRADE_FAILED                                   :{WHITE}Can't upgrade railtype of group...
+STR_ERROR_MASS_UPGRADE_NO_VEHICLES                              :{WHITE}No trains in this group
+STR_ERROR_MASS_UPGRADE_NOT_IN_DEPOT                             :{WHITE}Not all trains in this group are in a depot
+STR_ERROR_MASS_UPGRADE_NO_WAGON                                 :{WHITE}No suitable wagon found for cargo {STRING} on the target rail type
+STR_ERROR_MASS_UPGRADE_TOO_MANY_VEHICLES                        :{WHITE}Not enough space in the vehicle pool to upgrade this group
+STR_ERROR_MASS_UPGRADE_NOT_ENOUGH_MONEY                         :{WHITE}Not enough money - upgrading this group requires approximately {CURRENCY_LONG}
+STR_MASS_UPGRADE_SOME_FAILED                                    :{WHITE}{NUM} train(s) could not be upgraded and are left in the converted depot
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :impossible track combination

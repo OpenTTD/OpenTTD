@@ -28,6 +28,11 @@
 #include "order_cmd.h"
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
+#include "rail_cmd.h"
+#include "rail.h"
+#include "rail_map.h"
+#include "vehicle_gui.h"
+#include "error.h"
 #include "script/api/script_event_types.hpp"
 
 #include "table/strings.h"
@@ -860,6 +865,270 @@ CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_e
 		SetWindowDirty(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VehicleListType::Group, vt, _current_company).ToWindowNumber());
 	}
 	if (flags.Test(DoCommandFlag::Execute) && IsLocalCompany()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
+
+	return cost;
+}
+
+/**
+ * Find the best buildable wagon that can replace a wagon engine type carrying any of a set of cargoes
+ * (e.g. because different trains carry different cargo in wagons of the same engine type).
+ * Uses a dry-run build to ask the actual (NewGRF-aware) refit machinery whether a candidate can carry
+ * each cargo and how much of it, instead of comparing default cargo types, so refittable wagons (e.g. FIRS) work.
+ * @param cargoes All cargoes some instance of the old wagon engine is currently carrying.
+ * @param railtype Target railtype the replacement wagon must run on.
+ * @param tile A tile in a depot, used to perform the dry-run builds.
+ * @param[out] failing_cargo If no replacement was found, set to the first cargo that ruled out every remaining candidate.
+ * @return The best matching EngineID (highest worst-case capacity across all cargoes), or EngineID::Invalid() if none was found.
+ */
+static EngineID FindMassUpgradeWagonReplacement(const std::set<CargoType> &cargoes, RailType railtype, CargoType &failing_cargo)
+{
+	failing_cargo = cargoes.empty() ? INVALID_CARGO : *cargoes.begin();
+
+	/* Candidates that are statically eligible (buildable wagon on the target railtype). */
+	std::vector<EngineID> candidates;
+	for (const Engine *e : Engine::IterateType(VehicleType::Train)) {
+		if (!IsEngineBuildable(e->index, VehicleType::Train, _current_company)) continue;
+		if (e->VehInfo<RailVehicleInfo>().railveh_type != RailVehicleType::Wagon) continue;
+		if (!e->VehInfo<RailVehicleInfo>().railtypes.Test(railtype)) continue;
+		candidates.push_back(e->index);
+	}
+
+	/* Narrow the candidates down, cargo by cargo, keeping track of the worst-case capacity of each survivor.
+	 * Note: this deliberately asks the engine what it can be refitted to and how much it can hold, rather than
+	 * dry-running a purchase. A purchase query needs a depot tile, and at this point the trains are still
+	 * standing in depots of the OLD railtype, so every candidate for the new railtype would be rejected. */
+	std::vector<bool> alive(candidates.size(), true);
+	std::vector<uint> worst_capacity(candidates.size(), UINT_MAX);
+
+	for (CargoType cargo : cargoes) {
+		bool any_alive = false;
+		for (size_t i = 0; i < candidates.size(); i++) {
+			if (!alive[i]) continue;
+
+			if (!GetUnionOfArticulatedRefitMasks(candidates[i], true).Test(cargo)) {
+				alive[i] = false;
+				continue;
+			}
+
+			/* Capacity is only a tie-breaker, never a disqualifier: this reports the capacity of the
+			 * engine's DEFAULT configuration, so a wagon that is refittable to this cargo but defaults to
+			 * another one legitimately reports zero here. Fall back to its headline capacity in that case. */
+			uint capacity = GetCapacityOfArticulatedParts(candidates[i])[cargo];
+			if (capacity == 0) capacity = GetTotalCapacityOfArticulatedParts(candidates[i]);
+
+			worst_capacity[i] = std::min<uint>(worst_capacity[i], capacity);
+			any_alive = true;
+		}
+
+		if (!any_alive) {
+			failing_cargo = cargo;
+			return EngineID::Invalid();
+		}
+	}
+
+	EngineID best = EngineID::Invalid();
+	uint best_capacity = 0;
+	for (size_t i = 0; i < candidates.size(); i++) {
+		if (!alive[i]) continue;
+		if (best == EngineID::Invalid() || worst_capacity[i] > best_capacity) {
+			best = candidates[i];
+			best_capacity = worst_capacity[i];
+		}
+	}
+
+	return best;
+}
+
+/**
+ * Upgrade all trains of a group (or all trains of the company) to a different railtype in one action.
+ * All trains must already be standing in a depot; the depot tiles they occupy are converted to the new
+ * railtype, and every train is then replaced using the normal autoreplace machinery.
+ * @param flags type of operation
+ * @param group The group of trains to upgrade, or the special all/default group IDs.
+ * @param new_engine The engine to convert the group's locomotives to.
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdMassRailtypeUpgrade(DoCommandFlags flags, GroupID group, EngineID new_engine)
+{
+	Company *c = Company::GetIfValid(_current_company);
+	if (c == nullptr) return CMD_ERROR;
+
+	if (Group::IsValidID(group)) {
+		const Group *g = Group::Get(group);
+		if (g->owner != _current_company) return CMD_ERROR;
+		if (g->vehicle_type != VehicleType::Train) return CMD_ERROR;
+	} else if (!IsAllGroupID(group) && !IsDefaultGroupID(group)) {
+		return CMD_ERROR;
+	}
+
+	if (!Engine::IsValidID(new_engine)) return CMD_ERROR;
+	const Engine *e_new = Engine::Get(new_engine);
+	if (e_new->type != VehicleType::Train) return CMD_ERROR;
+	if (!IsEngineBuildable(new_engine, VehicleType::Train, _current_company)) return CMD_ERROR;
+	const RailVehicleInfo &new_rvi = e_new->VehInfo<RailVehicleInfo>();
+	if (new_rvi.railveh_type == RailVehicleType::Wagon) return CMD_ERROR;
+
+	if (new_rvi.railtypes.None()) return CMD_ERROR;
+	RailType target_railtype = *new_rvi.railtypes.begin();
+
+	/* Collect the trains to upgrade: all owned front engines in the requested group (or all trains). */
+	std::vector<Train *> trains;
+	for (Train *t : Train::Iterate()) {
+		if (t->owner != _current_company || !t->IsFrontEngine()) continue;
+		if (!IsAllGroupID(group) && !GroupIsInGroup(t->group_id, group)) continue;
+		trains.push_back(t);
+	}
+
+	if (trains.empty()) return CommandCost(STR_ERROR_MASS_UPGRADE_NO_VEHICLES);
+
+	/* All-or-nothing: every collected train must already be in a depot. */
+	for (const Train *t : trains) {
+		if (!t->IsChainInDepot()) return CommandCost(STR_ERROR_MASS_UPGRADE_NOT_IN_DEPOT);
+	}
+
+	/* First pass: collect every cargo that any instance of each old wagon engine type is currently carrying.
+	 * With refittable NewGRF wagons (e.g. FIRS) the same engine type commonly carries different cargoes on
+	 * different trains, so a replacement must be found that can carry all of them, not just the first seen. */
+	std::map<EngineID, std::set<CargoType>> wagon_cargoes;
+	for (Train *t : trains) {
+		for (Train *w = t; w != nullptr; w = w->GetNextUnit()) {
+			if (RailVehInfo(w->engine_type)->railveh_type != RailVehicleType::Wagon) continue;
+
+			CargoType cargo = IsValidCargoType(w->cargo_type) ? w->cargo_type : Engine::Get(w->engine_type)->GetDefaultCargoType();
+			wagon_cargoes[w->engine_type].insert(cargo);
+		}
+	}
+
+	/* Second pass: build the old engine -> new engine replacement map, one entry per distinct engine type. */
+	std::map<EngineID, EngineID> replacements;
+	for (Train *t : trains) {
+		for (Train *w = t; w != nullptr; w = w->GetNextUnit()) {
+			EngineID old_engine = w->engine_type;
+			if (replacements.count(old_engine) != 0) continue;
+
+			if (RailVehInfo(old_engine)->railveh_type != RailVehicleType::Wagon) {
+				replacements[old_engine] = new_engine;
+				continue;
+			}
+
+			CargoType failing_cargo;
+			EngineID candidate = FindMassUpgradeWagonReplacement(wagon_cargoes[old_engine], target_railtype, failing_cargo);
+			if (candidate == EngineID::Invalid()) {
+				CommandCost err;
+				err.MakeError(STR_ERROR_MASS_UPGRADE_NO_WAGON);
+				err.SetEncodedMessage(GetEncodedString(STR_ERROR_MASS_UPGRADE_NO_WAGON, CargoSpec::Get(failing_cargo)->name));
+				return err;
+			}
+			replacements[old_engine] = candidate;
+		}
+	}
+
+	/* Pre-flight check: replacement temporarily builds new vehicle parts alongside the old ones (one new
+	 * part per old unit), so make sure the vehicle pool has room for them before any depot is touched. */
+	uint total_parts = 0;
+	for (const Train *t : trains) {
+		for (const Train *w = t; w != nullptr; w = w->Next()) total_parts++;
+	}
+	if (!Vehicle::CanAllocateItem(total_parts)) return CommandCost(STR_ERROR_MASS_UPGRADE_TOO_MANY_VEHICLES);
+
+	/* Pre-flight check: can the company afford all the replacements?
+	 * ponytail: this is an ESTIMATE, not the real cost. It ignores the resale value of the old vehicles
+	 * (so it is conservative/pessimistic - it may refuse an upgrade that would actually be affordable once
+	 * the old vehicles are sold) and it ignores refit costs entirely. Being conservative is the right
+	 * direction here: refusing cleanly beats converting depots and stranding trains halfway through. */
+	Money total_purchase_cost = 0;
+	for (const Train *t : trains) {
+		for (const Train *w = t; w != nullptr; w = w->GetNextUnit()) {
+			/* Every unit walked here was walked identically when the map was built, so a miss should be
+			 * impossible - but skip rather than throw, so a mismatch can never crash the game. */
+			auto it = replacements.find(w->engine_type);
+			if (it == replacements.end()) continue;
+			total_purchase_cost += Engine::Get(it->second)->GetCost();
+		}
+	}
+	if (total_purchase_cost > c->money) {
+		CommandCost err;
+		err.MakeError(STR_ERROR_MASS_UPGRADE_NOT_ENOUGH_MONEY);
+		err.SetEncodedMessage(GetEncodedString(STR_ERROR_MASS_UPGRADE_NOT_ENOUGH_MONEY, total_purchase_cost));
+		return err;
+	}
+
+	/* Convert the depot tiles the trains are standing on to the target railtype. The normal ConvertRail
+	 * command refuses to do this while a train occupies the depot (which every collected train does, by
+	 * the depot check above), so use the dedicated helper that skips that occupancy gate. Remember the
+	 * original railtype of each tile so a depot can be rolled back if every replacement on it fails. */
+	std::set<TileIndex> depot_tiles;
+	for (const Train *t : trains) depot_tiles.insert(t->tile);
+
+	std::map<TileIndex, RailType> original_railtypes;
+	for (TileIndex tile : depot_tiles) original_railtypes[tile] = GetRailType(tile);
+
+	for (TileIndex tile : depot_tiles) {
+		CommandCost ret = ConvertRailDepotTileWithVehicle(tile, target_railtype, flags);
+		if (ret.Failed()) return ret;
+	}
+
+	/* ponytail: the cost estimate is not computed on the test pass, so the confirmation dialog will not show a
+	 * price for this action. The Add/Remove engine replacement dance below only produces a meaningful result
+	 * when actually executed, and repeating it purely to estimate cost is not worth the complexity here. */
+	if (!flags.Test(DoCommandFlag::Execute)) {
+		return CommandCost(ExpensesType::NewVehicles, (Money)0);
+	}
+
+	for (const auto &[old_engine, replacement_engine] : replacements) {
+		AddEngineReplacementForCompany(c, old_engine, replacement_engine, group, false, flags);
+	}
+
+	CommandCost cost(ExpensesType::NewVehicles, (Money)0);
+	uint failed_trains = 0;
+	std::set<TileIndex> tiles_with_success;
+	std::set<TileIndex> tiles_with_failure;
+
+	/* Replacing a train deletes its old vehicles, so work from stable IDs rather than from the
+	 * pointers collected before any mutation happened. */
+	std::vector<VehicleID> train_ids;
+	train_ids.reserve(trains.size());
+	for (const Train *t : trains) train_ids.push_back(t->index);
+
+	for (VehicleID id : train_ids) {
+		Train *t = Train::GetIfValid(id);
+		if (t == nullptr) continue;
+
+		/* Capture the depot tile before replacing: on success the old train (and its ->tile) is gone. */
+		TileIndex tile = t->tile;
+
+		CommandCost ret = Command<Commands::AutoreplaceVehicle>::Do(flags, id);
+		if (ret.Succeeded()) {
+			cost.AddCost(std::move(ret));
+			tiles_with_success.insert(tile);
+		} else {
+			failed_trains++;
+			tiles_with_failure.insert(tile);
+		}
+	}
+
+	for (const auto &pair : replacements) {
+		RemoveEngineReplacementForCompany(c, pair.first, group, flags);
+	}
+
+	/* Roll back the railtype of any depot where every replacement failed, so the stranded train(s) in it
+	 * are left in a depot they can still use.
+	 * ponytail: if a depot had at least one SUCCESSFUL replacement alongside a failed one, it is not rolled
+	 * back - the converted train parked there needs the new railtype. In that mixed case the failed train
+	 * is left stranded in a depot of the new railtype; the player has to sell it or convert manually. */
+	for (TileIndex tile : tiles_with_failure) {
+		if (tiles_with_success.count(tile) != 0) continue;
+		ConvertRailDepotTileWithVehicle(tile, original_railtypes[tile], flags);
+	}
+
+	if (failed_trains != 0 && IsLocalCompany()) {
+		ShowErrorMessage(GetEncodedString(STR_MASS_UPGRADE_SOME_FAILED, failed_trains), {}, WarningLevel::Warning);
+	}
+
+	if (IsLocalCompany()) {
+		SetWindowDirty(WindowClass::ReplaceVehicle, VehicleType::Train);
+		SetWindowDirty(GetWindowClassForVehicleType(VehicleType::Train), VehicleListIdentifier(VehicleListType::Group, VehicleType::Train, _current_company).ToWindowNumber());
+	}
 
 	return cost;
 }

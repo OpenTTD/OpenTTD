@@ -380,6 +380,8 @@ enum class Commands : uint8_t {
 	UpdateLeagueTableElementScore, ///< update the score of a league table element
 	RemoveLeagueTableElement, ///< remove a league table element
 
+	MassRailtypeUpgrade, ///< upgrade all trains of a group to a different railtype in one action
+
 	End, ///< @important Must ALWAYS be on the end of this list!! (period)
 };
 
