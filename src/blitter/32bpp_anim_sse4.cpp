@@ -382,7 +382,7 @@ next_line:
  * @param animated Whether the sprite is animated.
  */
 template <BlitterMode mode, Blitter_32bppSSE_Base::ReadMode read_mode, Blitter_32bppSSE_Base::BlockType bt_last, bool translucent>
-inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom, bool animated)
+inline void Blitter_32bppSSE4_Anim::Draw(const ::Blitter::BlitterParams *bp, ZoomLevel zoom, bool animated)
 {
 	if (animated) {
 		this->Draw<mode, read_mode, bt_last, translucent, true>(bp, zoom);
@@ -399,7 +399,7 @@ inline void Blitter_32bppSSE4_Anim::Draw(const Blitter::BlitterParams *bp, ZoomL
  * @param mode blitter mode
  * @param zoom zoom level at which we are drawing
  */
-void Blitter_32bppSSE4_Anim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+void Blitter_32bppSSE4_Anim::Draw(::Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
 	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
