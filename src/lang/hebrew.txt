@@ -278,6 +278,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}בחר\�
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}בחר קריטריון סינון
 STR_BUTTON_SORT_BY                                              :{BLACK}מיון לפי
 STR_BUTTON_CATCHMENT                                            :{BLACK}כיסוי
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}הצג/הסתר שטח כיסוי
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}סגור חלון
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}כותרת החלון - גרור להזזה
@@ -2850,7 +2851,7 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}תעשי
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}בתים
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}הקלק על התעשיה כדי לראות את הספקים והלקוחות שלה
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}הקלק על המטען כדי לראות את הספקים והלקוחות שלו
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}הצג שרשרת
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}שרשרת תעשיות
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}הצג תעשיות המייצרות ומקבלות מטען
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}קישור למפה הקטנה
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}בחר גם את התעשיות המוצגות במפה הקטנה
@@ -4288,6 +4289,7 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}דלג
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}דלג על היעד הנוכחי, עבור ליעד הבא
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}מחק
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}מחק הכל
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}מחק את היעד המודגש
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}מחק את כל הפקודות
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}הפסק שיתוף
@@ -4399,6 +4401,7 @@ STR_TIMETABLE_STATUS_LATE                                       :{BLACK}{STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}{STRING} רכב זה מקדים ב
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}לוח זמנים זה עדיין לא התחיל
 
+STR_TIMETABLE_START                                             :{BLACK}התחל לוח זמנים
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}שנה זמן
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}שנה את פרק הזמן לשהייה ביעד שנבחר
@@ -5051,7 +5054,7 @@ STR_INDUSTRY_NAME_OIL_REFINERY                                  :בית זיקו
 STR_INDUSTRY_NAME_OIL_RIG                                       :אסדת קידוח נפט
 STR_INDUSTRY_NAME_FACTORY                                       :מפעל
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :בית דפוס
-STR_INDUSTRY_NAME_STEEL_MILL                                    :מכרה ברזל
+STR_INDUSTRY_NAME_STEEL_MILL                                    :מפעל פלדה
 STR_INDUSTRY_NAME_FARM                                          :חווה
 STR_INDUSTRY_NAME_FARM.gen                                      :חוות
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :מכרה נחושת
