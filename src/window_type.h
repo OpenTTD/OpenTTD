@@ -235,6 +235,12 @@ enum class WindowClass : uint16_t {
 	ReplaceVehicle,
 
 	/**
+	 * Mass railtype upgrade window; %Window numbers:
+	 *   - 0 = #MassUpgradeWidgets
+	 */
+	MassRailtypeUpgrade,
+
+	/**
 	 * Vehicle timetable; %Window numbers:
 	 *   - #VehicleID = #VehicleTimetableWidgets
 	 */

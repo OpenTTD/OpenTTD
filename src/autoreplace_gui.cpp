@@ -19,6 +19,9 @@
 #include "autoreplace_func.h"
 #include "company_func.h"
 #include "engine_base.h"
+#include "engine_func.h"
+#include "vehicle_func.h"
+#include "train.h"
 #include "window_gui.h"
 #include "engine_gui.h"
 #include "settings_func.h"
@@ -30,12 +33,16 @@
 #include "autoreplace_cmd.h"
 #include "group_cmd.h"
 #include "settings_cmd.h"
+#include "vehicle_cmd.h"
+#include "vehiclelist.h"
 
 #include "widgets/autoreplace_widget.h"
 
 #include "table/strings.h"
 
 #include "safeguards.h"
+
+static void ShowMassUpgradeWindow(GroupID group);
 
 /** Compare the (NewGRF) list position. @copydoc GUIList::Sorter. */
 static bool EngineNumberSorter(const GUIEngineListItem &a, const GUIEngineListItem &b)
@@ -579,6 +586,10 @@ public:
 				break;
 			}
 
+			case WID_RV_MASS_UPGRADE:
+				ShowMassUpgradeWindow(this->sel_group);
+				break;
+
 			case WID_RV_LEFT_MATRIX:
 			case WID_RV_RIGHT_MATRIX: {
 				uint8_t click_side;
@@ -755,6 +766,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_replace_rail_vehicle
 		NWidget(NWID_PUSHBUTTON_DROPDOWN, Colours::Grey, WID_RV_START_REPLACE), SetMinimalSize(139, 12), SetStringTip(STR_REPLACE_VEHICLES_START, STR_REPLACE_START_BUTTON_TOOLTIP),
 		NWidget(WWT_PANEL, Colours::Grey, WID_RV_INFO_TAB), SetMinimalSize(167, 12), SetToolTip(STR_REPLACE_REPLACE_INFO_TAB_TOOLTIP), SetResize(1, 0),
 		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_RV_MASS_UPGRADE), SetMinimalSize(150, 12), SetStringTip(STR_REPLACE_MASS_UPGRADE_BUTTON, STR_REPLACE_MASS_UPGRADE_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_RV_STOP_REPLACE), SetMinimalSize(150, 12), SetStringTip(STR_REPLACE_VEHICLES_STOP, STR_REPLACE_STOP_BUTTON_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
@@ -895,4 +907,490 @@ void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 		case VehicleType::Road: new ReplaceVehicleWindow(_replace_road_vehicle_desc, vehicletype, id_g); break;
 		default: new ReplaceVehicleWindow(_replace_vehicle_desc, vehicletype, id_g); break;
 	}
+}
+
+/**
+ * Window to upgrade all trains of a group to a different railtype/engine in one action.
+ * Modelled on #ReplaceVehicleWindow: a left list of locomotive types currently in use by the
+ * selected group, and a right list of candidate locomotives to upgrade to.
+ */
+class MassUpgradeWindow : public Window {
+	std::array<EngineID, 2> sel_engine{EngineID::Invalid(), EngineID::Invalid()}; ///< Selected engine on the left (in use) and right (upgrade target).
+	std::array<GUIEngineList, 2> engines{}; ///< Left and right list of engines.
+	GroupID sel_group = ALL_GROUP; ///< Group of trains to upgrade.
+	int details_height = 0; ///< Minimal needed height of the details panels, in text lines (found so far).
+	uint8_t sort_criteria = 0; ///< Criteria of sorting vehicles.
+	bool descending_sort_order = false; ///< Order of sorting vehicles.
+	bool show_hidden_engines = false; ///< Whether to show the hidden engines.
+	RailType sel_railtype = INVALID_RAILTYPE; ///< Rail type filter for the upgrade target list. #INVALID_RAILTYPE to show all.
+	std::array<Scrollbar *, 2> vscroll{};
+	GUIBadgeClasses badge_classes{};
+	std::vector<GroupID> group_list{}; ///< Groups shown in the group dropdown, indexed the same as the dropdown entries.
+
+	/** Build the dropdown list of the local company's train groups, with "All trains" first. */
+	DropDownList BuildGroupDropDownList()
+	{
+		DropDownList list;
+		this->group_list.clear();
+
+		this->group_list.push_back(ALL_GROUP);
+		list.push_back(MakeDropDownListStringItem(STR_MASS_UPGRADE_ALL_TRAINS, 0));
+
+		int index = 1;
+		for (const Group *g : Group::Iterate()) {
+			if (g->owner != _local_company || g->vehicle_type != VehicleType::Train) continue;
+
+			this->group_list.push_back(g->index);
+			list.push_back(MakeDropDownListStringItem(GetString(STR_GROUP_NAME, g->index), index));
+			index++;
+		}
+
+		return list;
+	}
+
+	/**
+	 * Generate an engines list.
+	 * @param draw_left true if generating the left list (locomotives in use by the group), otherwise the right (upgrade target) list.
+	 */
+	void GenerateEngineList(bool draw_left)
+	{
+		FlatSet<EngineID> variants;
+		EngineID selected_engine = EngineID::Invalid();
+		uint8_t side = draw_left ? 0 : 1;
+
+		GUIEngineList list;
+
+		for (const Engine *e : Engine::IterateType(VehicleType::Train)) {
+			EngineID eid = e->index;
+			if (RailVehInfo(eid)->railveh_type == RailVehicleType::Wagon) continue;
+
+			if (draw_left) {
+				if (GetGroupNumEngines(_local_company, this->sel_group, eid) == 0) continue;
+			} else {
+				if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
+				if (!IsEngineBuildable(eid, VehicleType::Train, _local_company)) continue;
+				if (this->sel_railtype != INVALID_RAILTYPE && !RailVehInfo(eid)->railtypes.Test(this->sel_railtype)) continue;
+			}
+
+			list.emplace_back(eid, e->info.variant_id, (side == 0) ? EngineDisplayFlags{} : e->display_flags, 0);
+
+			if (side == 1) {
+				EngineID parent = e->info.variant_id;
+				while (parent != EngineID::Invalid() && variants.insert(parent).second) {
+					parent = Engine::Get(parent)->info.variant_id;
+				}
+			}
+			if (eid == this->sel_engine[side]) selected_engine = eid; // The selected engine is still in the list
+		}
+
+		if (side == 1) {
+			/* ensure primary engine of variant group is in list */
+			for (const auto &variant : variants) {
+				if (std::ranges::find(list, variant, &GUIEngineListItem::engine_id) == list.end()) {
+					const Engine *e = Engine::Get(variant);
+					list.emplace_back(variant, e->info.variant_id, e->display_flags | EngineDisplayFlag::Shaded, 0);
+				}
+			}
+		}
+
+		this->sel_engine[side] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
+
+		/* Both lists honour the user-chosen sort criteria/order, unlike the plain replace window's left list. */
+		_engine_sort_direction = this->descending_sort_order;
+		EngList_Sort(list, GetEngineSortFunctions(VehicleType::Train)[this->sort_criteria]);
+
+		this->engines[side].clear();
+		if (side == 1) {
+			GUIEngineListAddChildren(this->engines[side], list);
+		} else {
+			this->engines[side].swap(list);
+		}
+	}
+
+	/** Generate the lists, if they need rebuilding. */
+	void GenerateLists()
+	{
+		if (this->engines[0].NeedRebuild()) {
+			this->GenerateEngineList(true);
+			this->vscroll[0]->SetCount(this->engines[0].size());
+		}
+		if (this->engines[1].NeedRebuild()) {
+			this->GenerateEngineList(false);
+			this->vscroll[1]->SetCount(this->engines[1].size());
+		}
+		this->engines[0].RebuildDone();
+		this->engines[1].RebuildDone();
+	}
+
+	/**
+	 * Count how many of the selected group's trains are in a depot.
+	 * @return Pair of (trains in depot, total trains).
+	 */
+	std::pair<uint, uint> CountTrainsInDepot() const
+	{
+		uint total = 0, in_depot = 0;
+		for (const Train *t : Train::Iterate()) {
+			if (t->owner != _local_company || !t->IsFrontEngine()) continue;
+			if (this->sel_group != ALL_GROUP && !GroupIsInGroup(t->group_id, this->sel_group)) continue;
+
+			total++;
+			if (t->IsChainInDepot()) in_depot++;
+		}
+		return {in_depot, total};
+	}
+
+public:
+	MassUpgradeWindow(WindowDesc &desc, GroupID id_g) : Window(desc)
+	{
+		this->engines[0].ForceRebuild();
+		this->engines[1].ForceRebuild();
+		this->details_height = 10;
+		this->show_hidden_engines = _engine_sort_show_hidden_engines[VehicleType::Train];
+
+		this->CreateNestedTree();
+		this->vscroll[0] = this->GetScrollbar(WID_MU_LEFT_SCROLLBAR);
+		this->vscroll[1] = this->GetScrollbar(WID_MU_RIGHT_SCROLLBAR);
+
+		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_MU_SHOW_HIDDEN_ENGINES);
+		widget->SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN, STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP);
+		widget->SetLowered(this->show_hidden_engines);
+		this->FinishInitNested(0);
+
+		this->sort_criteria = _engine_sort_last_criteria[VehicleType::Train];
+		this->descending_sort_order = _engine_sort_last_order[VehicleType::Train];
+		this->owner = _local_company;
+		this->sel_group = Group::IsValidID(id_g) || IsAllGroupID(id_g) ? id_g : ALL_GROUP;
+	}
+
+	void OnInit() override
+	{
+		this->badge_classes = GUIBadgeClasses(GetGrfSpecFeature(VehicleType::Train));
+	}
+
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
+	{
+		switch (widget) {
+			case WID_MU_SORT_ASCENDING_DESCENDING: {
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->GetString());
+				d.width += padding.width + Window::SortButtonWidth() * 2; // Doubled since the string is centred and it also looks better.
+				d.height += padding.height;
+				size = maxdim(size, d);
+				break;
+			}
+
+			case WID_MU_LEFT_MATRIX:
+			case WID_MU_RIGHT_MATRIX:
+				fill.height = resize.height = GetEngineListHeight(VehicleType::Train);
+				size.height = 8 * resize.height;
+				break;
+
+			case WID_MU_LEFT_DETAILS:
+			case WID_MU_RIGHT_DETAILS:
+				size.height = GetCharacterHeight(FontSize::Normal) * this->details_height + padding.height;
+				break;
+
+			case WID_MU_STATUS: {
+				/* Reserve room for the widest plausible counts rather than the current ones, so the panel
+				 * does not need to resize as trains arrive in their depots. */
+				Dimension d = GetStringBoundingBox(GetString(STR_MASS_UPGRADE_STATUS, 8888, 8888));
+				d.width += padding.width;
+				d.height += padding.height;
+				size = maxdim(size, d);
+				break;
+			}
+
+			case WID_MU_RAIL_TYPE_DROPDOWN: {
+				Dimension d = {0, 0};
+				for (const RailType &rt : _sorted_railtypes) {
+					d = maxdim(d, GetStringBoundingBox(GetRailTypeInfo(rt)->strings.replace_text));
+				}
+				d.width += padding.width;
+				d.height += padding.height;
+				size = maxdim(size, d);
+				break;
+			}
+		}
+	}
+
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		switch (widget) {
+			case WID_MU_GROUP_DROPDOWN:
+				return this->sel_group == ALL_GROUP ? GetString(STR_MASS_UPGRADE_ALL_TRAINS) : GetString(STR_GROUP_NAME, this->sel_group);
+
+			case WID_MU_SORT_DROPDOWN:
+				return GetString(GetEngineSortNames(VehicleType::Train)[this->sort_criteria]);
+
+			case WID_MU_RAIL_TYPE_DROPDOWN:
+				return GetString(this->sel_railtype == INVALID_RAILTYPE ? STR_REPLACE_ALL_RAILTYPE : GetRailTypeInfo(this->sel_railtype)->strings.replace_text);
+
+			default:
+				return this->Window::GetWidgetString(widget, stringid);
+		}
+	}
+
+	void DrawWidget(const Rect &r, WidgetID widget) const override
+	{
+		switch (widget) {
+			case WID_MU_SORT_ASCENDING_DESCENDING:
+				this->DrawSortButton(WID_MU_SORT_ASCENDING_DESCENDING, this->descending_sort_order);
+				break;
+
+			case WID_MU_STATUS: {
+				/* Drawn here rather than via a label widget: a label paints no background, so the window
+				 * behind it shows through and successive redraws stack on top of each other. */
+				auto [in_depot, total] = this->CountTrainsInDepot();
+				Rect tr = r.Shrink(WidgetDimensions::scaled.framerect);
+				DrawString(tr.CentreToHeight(GetCharacterHeight(FontSize::Normal)), GetString(STR_MASS_UPGRADE_STATUS, in_depot, total), TextColour::Black, AlignmentH::Centre);
+				break;
+			}
+
+			case WID_MU_LEFT_MATRIX:
+			case WID_MU_RIGHT_MATRIX: {
+				int side = (widget == WID_MU_LEFT_MATRIX) ? 0 : 1;
+
+				/* Do the actual drawing */
+				DrawEngineList(VehicleType::Train, r, this->engines[side], *this->vscroll[side], this->sel_engine[side], side == 0, this->sel_group, this->badge_classes, this->sort_criteria);
+				break;
+			}
+		}
+	}
+
+	void OnPaint() override
+	{
+		if (this->engines[0].NeedRebuild() || this->engines[1].NeedRebuild()) this->GenerateLists();
+
+		auto [in_depot, total] = this->CountTrainsInDepot();
+		this->SetWidgetDisabledState(WID_MU_UPGRADE, this->sel_engine[1] == EngineID::Invalid() || total == 0 || in_depot != total);
+
+		this->DrawWidgets();
+
+		if (!this->IsShaded()) {
+			int needed_height = this->details_height;
+			/* Draw details panels. */
+			for (int side = 0; side < 2; side++) {
+				if (this->sel_engine[side] != EngineID::Invalid()) {
+					/* Use default engine details without refitting */
+					const Engine *e = Engine::Get(this->sel_engine[side]);
+					TestedEngineDetails ted;
+					ted.cost = 0;
+					ted.FillDefaultCapacities(e);
+
+					const Rect r = this->GetWidget<NWidgetBase>(side == 0 ? WID_MU_LEFT_DETAILS : WID_MU_RIGHT_DETAILS)->GetCurrentRect()
+							.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
+					int text_end = DrawVehiclePurchaseInfo(r.left, r.right, r.top, this->sel_engine[side], ted);
+					needed_height = std::max(needed_height, (text_end - r.top) / GetCharacterHeight(FontSize::Normal));
+				}
+			}
+			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
+				this->details_height = needed_height;
+				this->ReInit();
+				return;
+			}
+		}
+	}
+
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	{
+		switch (widget) {
+			case WID_MU_GROUP_DROPDOWN: {
+				auto it = std::ranges::find(this->group_list, this->sel_group);
+				int selected = (it != this->group_list.end()) ? static_cast<int>(std::distance(this->group_list.begin(), it)) : 0;
+				ShowDropDownList(this, this->BuildGroupDropDownList(), selected, WID_MU_GROUP_DROPDOWN);
+				break;
+			}
+
+			case WID_MU_RAIL_TYPE_DROPDOWN: { // Railtype selection dropdown menu
+				static std::string railtype_filter;
+				ShowDropDownList(this, GetRailTypeDropDownList(true, true), this->sel_railtype, widget, 0, DropDownOption::Filterable, &railtype_filter);
+				break;
+			}
+
+			case WID_MU_SORT_ASCENDING_DESCENDING:
+				this->descending_sort_order ^= true;
+				_engine_sort_last_order[VehicleType::Train] = this->descending_sort_order;
+				this->engines[0].ForceRebuild();
+				this->engines[1].ForceRebuild();
+				this->SetDirty();
+				break;
+
+			case WID_MU_SHOW_HIDDEN_ENGINES:
+				this->show_hidden_engines ^= true;
+				_engine_sort_show_hidden_engines[VehicleType::Train] = this->show_hidden_engines;
+				this->engines[1].ForceRebuild();
+				this->SetWidgetLoweredState(widget, this->show_hidden_engines);
+				this->SetDirty();
+				break;
+
+			case WID_MU_SORT_DROPDOWN:
+				DisplayVehicleSortDropDown(this, VehicleType::Train, this->sort_criteria, WID_MU_SORT_DROPDOWN);
+				break;
+
+			case WID_MU_LEFT_MATRIX:
+			case WID_MU_RIGHT_MATRIX: {
+				uint8_t click_side = (widget == WID_MU_LEFT_MATRIX) ? 0 : 1;
+
+				EngineID e = EngineID::Invalid();
+				const auto it = this->vscroll[click_side]->GetScrolledItemFromWidget(this->engines[click_side], pt.y, this, widget);
+				if (it != this->engines[click_side].end()) {
+					const auto &item = *it;
+					const Rect r = this->GetWidget<NWidgetBase>(widget)->GetCurrentRect().Shrink(WidgetDimensions::scaled.matrix).WithWidth(WidgetDimensions::scaled.hsep_indent * (item.indent + 1), _current_text_dir == TD_RTL);
+					if (item.flags.Test(EngineDisplayFlag::HasVariants) && IsInsideMM(r.left, r.right, pt.x)) {
+						/* toggle folded flag on engine */
+						assert(item.variant_id != EngineID::Invalid());
+						Engine *engine = Engine::Get(item.variant_id);
+						engine->display_flags.Flip(EngineDisplayFlag::IsFolded);
+
+						InvalidateWindowData(WindowClass::MassRailtypeUpgrade, 0, 0);
+						InvalidateWindowClassesData(WindowClass::BuildVehicle); // The build windows needs updating as well
+						return;
+					}
+					if (!item.flags.Test(EngineDisplayFlag::Shaded)) e = item.engine_id;
+				}
+
+				if (e == this->sel_engine[click_side]) break; // we clicked the one we already selected
+				this->sel_engine[click_side] = e;
+				this->SetDirty();
+				break;
+			}
+
+			case WID_MU_SEND_TO_DEPOT: {
+				VehicleListIdentifier vli(VehicleListType::Group, VehicleType::Train, _local_company, this->sel_group);
+				Command<Commands::SendVehicleToDepot>::Post(GetCmdSendToDepotMsg(VehicleType::Train), VehicleID::Invalid(), DepotCommandFlag::MassSend, vli);
+				break;
+			}
+
+			case WID_MU_UPGRADE:
+				Command<Commands::MassRailtypeUpgrade>::Post(STR_ERROR_MASS_UPGRADE_FAILED, this->sel_group, this->sel_engine[1]);
+				break;
+		}
+	}
+
+	void OnDropdownSelect(WidgetID widget, int index, int) override
+	{
+		switch (widget) {
+			case WID_MU_GROUP_DROPDOWN:
+				if (this->sel_group == this->group_list[index]) return;
+				this->sel_group = this->group_list[index];
+				this->vscroll[0]->SetPosition(0);
+				this->engines[0].ForceRebuild();
+				this->SetDirty();
+				break;
+
+			case WID_MU_RAIL_TYPE_DROPDOWN: {
+				RailType temp = (RailType)index;
+				if (temp == this->sel_railtype) return; // we didn't select a new one. No need to change anything
+				this->sel_railtype = temp;
+				this->vscroll[1]->SetPosition(0);
+				this->engines[1].ForceRebuild();
+				this->SetDirty();
+				break;
+			}
+
+			case WID_MU_SORT_DROPDOWN:
+				if (this->sort_criteria != index) {
+					this->sort_criteria = index;
+					_engine_sort_last_criteria[VehicleType::Train] = this->sort_criteria;
+					this->engines[0].ForceRebuild();
+					this->engines[1].ForceRebuild();
+					this->SetDirty();
+				}
+				break;
+		}
+	}
+
+	void OnResize() override
+	{
+		this->vscroll[0]->SetCapacityFromWidget(this, WID_MU_LEFT_MATRIX);
+		this->vscroll[1]->SetCapacityFromWidget(this, WID_MU_RIGHT_MATRIX);
+	}
+
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data Information about the changed data.
+	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
+	 */
+	void OnInvalidateData([[maybe_unused]] int data = 0, [[maybe_unused]] bool gui_scope = true) override
+	{
+		this->engines[0].ForceRebuild();
+		this->engines[1].ForceRebuild();
+	}
+
+	void OnGameTick() override
+	{
+		/* No invalidation hook fires when a train enters/leaves a depot elsewhere, so poll for the status line and button state. */
+		this->SetDirty();
+	}
+};
+
+static constexpr std::initializer_list<NWidgetPart> _nested_mass_upgrade_widgets = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, Colours::Grey),
+		NWidget(WWT_CAPTION, Colours::Grey, WID_MU_CAPTION), SetStringTip(STR_MASS_UPGRADE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, Colours::Grey),
+		NWidget(WWT_DEFSIZEBOX, Colours::Grey),
+		NWidget(WWT_STICKYBOX, Colours::Grey),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		NWidget(WWT_PANEL, Colours::Grey),
+			NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_MASS_UPGRADE_LOCOMOTIVES_IN_GROUP, STR_MASS_UPGRADE_LOCOMOTIVES_IN_GROUP_TOOLTIP), SetFill(1, 1), SetMinimalTextLines(1, WidgetDimensions::unscaled.framerect.Vertical()), SetResize(1, 0),
+		EndContainer(),
+		NWidget(WWT_PANEL, Colours::Grey),
+			NWidget(WWT_LABEL, Colours::Invalid), SetStringTip(STR_MASS_UPGRADE_UPGRADE_TO, STR_MASS_UPGRADE_UPGRADE_TO_TOOLTIP), SetFill(1, 1), SetMinimalTextLines(1, WidgetDimensions::unscaled.framerect.Vertical()), SetResize(1, 0),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_DROPDOWN, Colours::Grey, WID_MU_GROUP_DROPDOWN), SetMinimalSize(136, 12), SetToolTip(STR_MASS_UPGRADE_GROUP_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_DROPDOWN, Colours::Grey, WID_MU_RAIL_TYPE_DROPDOWN), SetToolTip(STR_MASS_UPGRADE_RAILTYPE_TOOLTIP),
+			EndContainer(),
+			NWidget(WWT_PANEL, Colours::Grey), SetResize(1, 0), EndContainer(),
+		EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_MU_SORT_ASCENDING_DESCENDING), SetStringTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER), SetFill(1, 1),
+				NWidget(WWT_DROPDOWN, Colours::Grey, WID_MU_SORT_DROPDOWN), SetResize(1, 0), SetFill(1, 1), SetToolTip(STR_TOOLTIP_SORT_CRITERIA),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_TEXTBTN, Colours::Grey, WID_MU_SHOW_HIDDEN_ENGINES), SetStringTip(STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN, STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP),
+				NWidget(WWT_PANEL, Colours::Grey), SetResize(1, 0), SetFill(1, 1), EndContainer(),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		NWidget(WWT_MATRIX, Colours::Grey, WID_MU_LEFT_MATRIX), SetMinimalSize(216, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_MASS_UPGRADE_LEFT_ARRAY_TOOLTIP), SetResize(1, 1), SetScrollbar(WID_MU_LEFT_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_MU_LEFT_SCROLLBAR),
+		NWidget(WWT_MATRIX, Colours::Grey, WID_MU_RIGHT_MATRIX), SetMinimalSize(216, 0), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_MASS_UPGRADE_RIGHT_ARRAY_TOOLTIP), SetResize(1, 1), SetScrollbar(WID_MU_RIGHT_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, Colours::Grey, WID_MU_RIGHT_SCROLLBAR),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
+		NWidget(WWT_PANEL, Colours::Grey, WID_MU_LEFT_DETAILS), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PANEL, Colours::Grey, WID_MU_RIGHT_DETAILS), SetMinimalSize(240, 122), SetResize(1, 0), EndContainer(),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, Colours::Grey, WID_MU_STATUS), SetMinimalSize(167, 12), SetToolTip(STR_MASS_UPGRADE_STATUS_TOOLTIP), SetFill(1, 0), SetResize(1, 0),
+		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_MU_SEND_TO_DEPOT), SetMinimalSize(150, 12), SetStringTip(STR_MASS_UPGRADE_SEND_TO_DEPOT, STR_MASS_UPGRADE_SEND_TO_DEPOT_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_MU_UPGRADE), SetMinimalSize(150, 12), SetStringTip(STR_MASS_UPGRADE_GO, STR_MASS_UPGRADE_GO_TOOLTIP),
+		NWidget(WWT_RESIZEBOX, Colours::Grey),
+	EndContainer(),
+};
+
+/** Window definition for the mass railtype upgrade window. */
+static WindowDesc _mass_upgrade_desc(
+	WindowPosition::Automatic, "mass_railtype_upgrade", 500, 140,
+	WindowClass::MassRailtypeUpgrade, WindowClass::None,
+	WindowDefaultFlag::Construction,
+	_nested_mass_upgrade_widgets
+);
+
+/**
+ * Show the mass railtype upgrade window.
+ * @param id_g The group to preselect in the group dropdown.
+ */
+static void ShowMassUpgradeWindow(GroupID id_g)
+{
+	CloseWindowById(WindowClass::MassRailtypeUpgrade, 0);
+	new MassUpgradeWindow(_mass_upgrade_desc, id_g);
 }

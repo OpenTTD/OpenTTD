@@ -36,9 +36,35 @@ enum ReplaceVehicleWidgets : WidgetID {
 	WID_RV_RAIL_TYPE_DROPDOWN, ///< Dropdown to select railtype.
 	WID_RV_TRAIN_ENGINEWAGON_DROPDOWN, ///< Dropdown to select engines and/or wagons.
 	WID_RV_TRAIN_WAGONREMOVE_TOGGLE, ///< Button to toggle removing wagons.
+	WID_RV_MASS_UPGRADE, ///< Button to open the mass railtype upgrade window.
 
 	/* Road only widgets. */
 	WID_RV_ROAD_TYPE_DROPDOWN, ///< Dropdown to select roadtype.
+};
+
+/** Widgets of the #MassUpgradeWindow class. */
+enum MassUpgradeWidgets : WidgetID {
+	WID_MU_CAPTION, ///< Caption of the window.
+
+	/* Controls row. */
+	WID_MU_GROUP_DROPDOWN, ///< Dropdown to select the group of trains to upgrade.
+	WID_MU_RAIL_TYPE_DROPDOWN, ///< Dropdown to filter the upgrade target list by rail type.
+	WID_MU_SORT_ASCENDING_DESCENDING, ///< Ascending/descending sort order button.
+	WID_MU_SORT_DROPDOWN, ///< Dropdown for the sort criteria.
+	WID_MU_SHOW_HIDDEN_ENGINES, ///< Toggle whether to display the hidden vehicles.
+
+	/* Left and right matrix + details. */
+	WID_MU_LEFT_MATRIX, ///< The matrix of locomotives currently in use by the group, on the left.
+	WID_MU_LEFT_SCROLLBAR, ///< The scrollbar for the matrix on the left.
+	WID_MU_RIGHT_MATRIX, ///< The matrix of upgrade target locomotives, on the right.
+	WID_MU_RIGHT_SCROLLBAR, ///< The scrollbar for the matrix on the right.
+	WID_MU_LEFT_DETAILS, ///< Details of the entry on the left.
+	WID_MU_RIGHT_DETAILS, ///< Details of the entry on the right.
+
+	/* Bottom row. */
+	WID_MU_STATUS, ///< Status line showing how many trains are in depot.
+	WID_MU_SEND_TO_DEPOT, ///< Button to send the selected group of trains to depot.
+	WID_MU_UPGRADE, ///< Button to perform the upgrade.
 };
 
 #endif /* WIDGETS_AUTOREPLACE_WIDGET_H */
