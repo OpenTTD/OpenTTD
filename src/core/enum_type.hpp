@@ -333,6 +333,17 @@ public:
 		}
 	}
 
+	/**
+	 * Construct an EnumBitSet from a span of enum values. Invalid values are skipped.
+	 * @param values Span of enum values.
+	 */
+	EnumBitSet(std::span<const Tenum> values) : BaseClass()
+	{
+		for (const Tenum &value : values) {
+			if (value < Tend_value) this->Set(value);
+		}
+	}
+
 	constexpr auto operator <=>(const EnumBitSet &) const noexcept = default;
 
 	static constexpr size_t DecayValueType(const BaseClass::ValueType &value) { return to_underlying(value); }
