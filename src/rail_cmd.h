@@ -27,6 +27,8 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 CommandCost CmdBuildSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, SignalType sigtype, SignalVariant sigvar, bool mode, bool autofill, bool minimise_gaps, uint8_t signal_density);
 CommandCost CmdRemoveSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex end_tile, Track track, bool autofill);
 
+CommandCost ConvertRailDepotTileWithVehicle(TileIndex tile, RailType totype, DoCommandFlags flags);
+
 DEF_CMD_TRAIT(Commands::BuildRailLong, CmdBuildRailroadTrack, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)
 DEF_CMD_TRAIT(Commands::RemoveRailLong, CmdRemoveRailroadTrack, CommandFlag::Auto, CommandType::LandscapeConstruction)
 DEF_CMD_TRAIT(Commands::BuildRail, CmdBuildSingleRail, CommandFlags({CommandFlag::Auto, CommandFlag::NoWater}), CommandType::LandscapeConstruction)

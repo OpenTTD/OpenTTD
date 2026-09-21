@@ -1777,6 +1777,82 @@ CommandCost CmdConvertRail(DoCommandFlags flags, TileIndex tile, TileIndex area_
 	return found_convertible_track ? cost : error;
 }
 
+/**
+ * Convert a single rail depot tile to a different railtype while a train is still parked on it, skipping
+ * the EnsureNoVehicleOnGround occupancy gate that CmdConvertRail applies whenever the old and new railtypes
+ * are not power-compatible (e.g. rail -> monorail/maglev).
+ *
+ * This exists for CmdMassRailtypeUpgrade: the replacement engine for a depot cannot be bought until the
+ * depot's railtype matches it, but the depot cannot be converted through the normal command while the old
+ * train that is about to be replaced is still sitting in it - the two steps are mutually blocking. Skipping
+ * the occupancy check is only safe here because the caller guarantees the train is stopped in the depot and
+ * is sold/replaced immediately afterwards; the train's own railtype/power caches are still refreshed below
+ * (mirroring what CmdConvertRail does) so it is never left in an inconsistent state in the meantime.
+ *
+ * This is a plain helper, not a command, and must never be used for general track conversion. It does not
+ * change the behaviour or network serialisation of CmdConvertRail itself.
+ * @param tile The rail depot tile to convert.
+ * @param totype The railtype to convert the depot to.
+ * @param flags The command flags to use.
+ * @return The cost of the conversion, or an error.
+ */
+CommandCost ConvertRailDepotTileWithVehicle(TileIndex tile, RailType totype, DoCommandFlags flags)
+{
+	if (!IsRailDepotTile(tile)) return CMD_ERROR;
+
+	CommandCost ret = CheckTileOwnership(tile);
+	if (ret.Failed()) return ret;
+
+	RailType type = GetRailType(tile);
+	if (type == totype) return CMD_ERROR;
+
+	if (flags.Test(DoCommandFlag::Execute)) {
+		std::vector<Train *> vehicles_affected;
+		TrainList affected_trains;
+
+		/* Free any track reservation held by a train that would have no power on the new railtype. */
+		for (Track track : GetReservedTrackbits(tile)) {
+			Train *v = GetTrainForReservation(tile, track);
+			if (v != nullptr && !HasPowerOnRail(v->railtypes, totype)) {
+				FreeTrainTrackReservation(v);
+				vehicles_affected.push_back(v);
+			}
+		}
+
+		/* Update the company infrastructure counters. A depot is always a single piece of track. */
+		Company *c = Company::Get(GetTileOwner(tile));
+		c->infrastructure.rail[type] -= 1;
+		c->infrastructure.rail[totype] += 1;
+		DirtyCompanyInfrastructureWindows(c->index);
+
+		SetRailType(tile, totype);
+		MarkTileDirtyByTile(tile);
+
+		/* Update power/railtype caches of any train on this tile. */
+		for (Vehicle *v : VehiclesOnTile(tile)) {
+			if (v->type == VehicleType::Train) include(affected_trains, Train::From(v)->First());
+		}
+
+		/* notify YAPF about the track layout change */
+		YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
+
+		/* Update build vehicle window related to this depot */
+		InvalidateWindowData(WindowClass::VehicleDepot, tile);
+		InvalidateWindowData(WindowClass::BuildVehicle, tile);
+
+		for (Train *v : vehicles_affected) {
+			TryPathReserve(v, true);
+		}
+
+		/* Railtype changed, update trains as when entering different track */
+		for (Train *v : affected_trains) {
+			v->ConsistChanged(CCF_TRACK);
+		}
+	}
+
+	return CommandCost(ExpensesType::Construction, RailConvertCost(type, totype));
+}
+
 static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlags flags)
 {
 	if (_current_company != OWNER_WATER) {
