@@ -4295,7 +4295,7 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}מחק �
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}הפסק שיתוף
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}הפסק את שיתוף רשימת הפקודות. קליק בשילוב לחיצה על מקש Ctrl מוחק בנוסף את כל הפקודות עבור כלי רכב זה
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}עבור אל
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}לך אל
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :עבור דרך המוסך הקרוב
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :עבור דרך סככת המטוסים הקרובה
 STR_ORDER_CONDITIONAL                                           :דילוג מותנה על יעד
