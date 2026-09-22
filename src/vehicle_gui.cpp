@@ -23,6 +23,7 @@
 #include "depot_map.h"
 #include "group_gui.h"
 #include "strings_func.h"
+#include "core/utf8.hpp"
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
@@ -1727,6 +1728,142 @@ static void DrawSmallOrderList(const OrderList *orderlist, int left, int right, 
 }
 
 /**
+ * Collect the display names of the destinations of an order list, e.g.
+ * {"Station A", "Depot B (unbunch)", "Waypoint C"}. Only station, waypoint and
+ * (specific) depot orders are listed; other order types are skipped.
+ * @param orderlist The order list to describe.
+ * @param vtype     Vehicle type owning the orders (needed to name depots).
+ * @return The ordered list of destination names.
+ */
+static std::vector<std::string> GetVehicleRouteStopNames(const OrderList *orderlist, VehicleType vtype)
+{
+	std::vector<std::string> stops;
+	if (orderlist == nullptr) return stops;
+
+	for (const Order &order : orderlist->GetOrders()) {
+		switch (order.GetType()) {
+			case OT_GOTO_STATION:
+				stops.push_back(GetString(STR_STATION_NAME, order.GetDestination()));
+				break;
+
+			case OT_GOTO_WAYPOINT:
+				stops.push_back(GetString(STR_WAYPOINT_NAME, order.GetDestination()));
+				break;
+
+			case OT_GOTO_DEPOT: {
+				/* "Go to nearest depot" orders have no fixed destination to name. */
+				if (order.GetDepotActionType().Test(OrderDepotActionFlag::NearestDepot)) break;
+				std::string name = GetString(STR_DEPOT_NAME, vtype, order.GetDestination());
+				if (order.GetDepotActionType().Test(OrderDepotActionFlag::Unbunch)) {
+					name = GetString(STR_VEHICLE_LIST_ROUTE_UNBUNCH, std::move(name));
+				}
+				stops.push_back(std::move(name));
+				break;
+			}
+
+			default:
+				break;
+		}
+	}
+
+	return stops;
+}
+
+/**
+ * Build the full one-line route description of an order list, e.g.
+ * "Station A - Depot B (unbunch) - Waypoint C", without any truncation.
+ * @param orderlist The order list to describe.
+ * @param vtype     Vehicle type owning the orders (needed to name depots).
+ * @return The route string, or an empty string if there are no stops.
+ */
+static std::string GetVehicleFullRouteString(const OrderList *orderlist, VehicleType vtype)
+{
+	std::vector<std::string> stops = GetVehicleRouteStopNames(orderlist, vtype);
+	if (stops.empty()) return {};
+
+	const std::string separator = GetString(STR_VEHICLE_LIST_ROUTE_SEPARATOR);
+	std::string route;
+	for (std::string &stop : stops) {
+		if (!route.empty()) route += separator;
+		route += stop;
+	}
+	return route;
+}
+
+/**
+ * Build a one-line textual description of the route of an order list, e.g.
+ * "Station A - Depot B (unbunch) - Waypoint C" prefixed with a separator bullet. If the whole
+ * route does not fit within @p max_width, it is cut off at the exact character that still fits
+ * and an ellipsis is appended, so the available width is filled as fully as possible.
+ * @param orderlist The order list to describe.
+ * @param vtype     Vehicle type owning the orders (needed to name depots).
+ * @param max_width Maximum width, in pixels, the drawn string may occupy.
+ * @return The formatted route string, or an empty string if nothing fits or there are no stops.
+ */
+static std::string GetVehicleRouteString(const OrderList *orderlist, VehicleType vtype, uint max_width)
+{
+	std::string route = GetVehicleFullRouteString(orderlist, vtype);
+	if (route.empty()) return {};
+
+	/* Common case: the whole route fits. */
+	if (GetStringBoundingBox(GetString(STR_VEHICLE_LIST_ROUTE, route)).width <= max_width) {
+		return GetString(STR_VEHICLE_LIST_ROUTE, std::move(route));
+	}
+
+	/* Otherwise keep as many characters as fit and append an ellipsis. Collect the byte
+	 * offsets of the character boundaries so we can binary-search the longest prefix. */
+	const std::string ellipsis = GetString(STR_VEHICLE_LIST_ROUTE_ELLIPSIS);
+	Utf8View view(route);
+	std::vector<size_t> boundaries;
+	for (auto c = view.begin(), end = view.end(); c != end; ++c) boundaries.push_back(c.GetByteOffset());
+	boundaries.push_back(route.size());
+
+	/* Largest number of leading characters whose formatted "<prefix>..." still fits. */
+	auto fits = [&](size_t chars) {
+		std::string_view prefix = std::string_view(route).substr(0, boundaries[chars]);
+		return GetStringBoundingBox(GetString(STR_VEHICLE_LIST_ROUTE, std::string(prefix) + ellipsis)).width <= max_width;
+	};
+
+	size_t lo = 0, hi = boundaries.size() - 1, best = 0;
+	while (lo <= hi) {
+		size_t mid = (lo + hi) / 2;
+		if (fits(mid)) {
+			best = mid;
+			lo = mid + 1;
+		} else {
+			if (mid == 0) break;
+			hi = mid - 1;
+		}
+	}
+
+	if (best == 0) return {};
+	return GetString(STR_VEHICLE_LIST_ROUTE, std::string(std::string_view(route).substr(0, boundaries[best])) + ellipsis);
+}
+
+/**
+ * Show the full (untruncated) route of the vehicle or shared order group under the cursor as
+ * a tooltip. Shared by the plain vehicle list and the group window.
+ * @param pt         The point where the mouse is hovering, in window coordinates.
+ * @param widget     The vehicle-list matrix widget the mouse is hovering over.
+ * @param close_cond Under what condition the tooltip should be closed.
+ * @return Whether a tooltip was shown.
+ */
+bool BaseVehicleListWindow::ShowVehicleRouteTooltip(Point pt, WidgetID widget, TooltipCloseCondition close_cond)
+{
+	auto it = this->vscroll->GetScrolledItemFromWidget(this->vehgroups, pt.y, this, widget);
+	if (it == this->vehgroups.end()) return false;
+
+	const GUIVehicleGroup &vehgroup = *it;
+	if (vehgroup.NumVehicles() == 0) return false;
+
+	std::string route = GetVehicleFullRouteString(vehgroup.vehicles_begin[0]->orders, this->vli.vtype);
+	if (route.empty()) return false;
+
+	GuiShowTooltips(this, GetEncodedString(STR_JUST_RAW_STRING, std::move(route)), close_cond);
+	return true;
+}
+
+/**
  * Draws an image of a vehicle chain
  * @param v         Front vehicle
  * @param r         Rect to draw at
@@ -1802,10 +1939,29 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	for (auto it = first; it != last; ++it) {
 		const GUIVehicleGroup &vehgroup = *it;
 
-		DrawString(tr.left, tr.right, ir.bottom - GetCharacterHeight(FontSize::Small) - WidgetDimensions::scaled.framerect.bottom,
+		int profit_y = ir.bottom - GetCharacterHeight(FontSize::Small) - WidgetDimensions::scaled.framerect.bottom;
+		int profit_edge = DrawString(tr.left, tr.right, profit_y,
 				GetString(TimerGameEconomy::UsingWallclockUnits() ? STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD : STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR,
 						vehgroup.GetDisplayProfitThisYear(),
 						vehgroup.GetDisplayProfitLastYear()));
+
+		/* Append the route after the profit, filling the remaining width. Widening the window shows more of it. */
+		{
+			const OrderList *orderlist = vehgroup.vehicles_begin[0]->orders;
+			if (rtl) {
+				int route_right = profit_edge - WidgetDimensions::scaled.hsep_normal;
+				if (route_right > tr.left) {
+					std::string route = GetVehicleRouteString(orderlist, this->vli.vtype, route_right - tr.left);
+					if (!route.empty()) DrawString(tr.left, route_right, profit_y, route);
+				}
+			} else {
+				int route_left = profit_edge + WidgetDimensions::scaled.hsep_normal;
+				if (route_left < tr.right) {
+					std::string route = GetVehicleRouteString(orderlist, this->vli.vtype, tr.right - route_left);
+					if (!route.empty()) DrawString(route_left, tr.right, profit_y, route);
+				}
+			}
+		}
 
 		DrawVehicleProfitButton(vehgroup.GetOldestVehicleAge(), vehgroup.GetDisplayProfitLastYear(), vehgroup.NumVehicles(), vehicle_button_x, ir.top + GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal);
 
@@ -2113,6 +2269,12 @@ public:
 			last_overlay_state = ShowCargoIconOverlay();
 			this->SetDirty();
 		}
+	}
+
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget == WID_VL_LIST) return this->ShowVehicleRouteTooltip(pt, widget, close_cond);
+		return false;
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override

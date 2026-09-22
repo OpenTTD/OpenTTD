@@ -4168,6 +4168,10 @@ STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLA
 STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}Profit this period: {CURRENCY_LONG} (last period: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING1} {STRING1}
+STR_VEHICLE_LIST_ROUTE                                          :{TINY_FONT}{BLACK}·{NBSP}{RAW_STRING}
+STR_VEHICLE_LIST_ROUTE_SEPARATOR                                :{SPACE}-{SPACE}
+STR_VEHICLE_LIST_ROUTE_UNBUNCH                                  :{RAW_STRING}{SPACE}(unbunch)
+STR_VEHICLE_LIST_ROUTE_ELLIPSIS                                 :...
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send to depot
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Send to depot

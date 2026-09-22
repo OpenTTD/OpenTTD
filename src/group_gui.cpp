@@ -736,6 +736,12 @@ public:
 		}
 	}
 
+	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget == WID_GL_LIST_VEHICLE) return this->ShowVehicleRouteTooltip(pt, widget, close_cond);
+		return false;
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {

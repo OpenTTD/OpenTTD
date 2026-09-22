@@ -113,6 +113,7 @@ struct BaseVehicleListWindow : public Window {
 	void UpdateSortingFromGrouping();
 
 	void DrawVehicleListItems(VehicleID selected_vehicle, int line_height, const Rect &r) const;
+	bool ShowVehicleRouteTooltip(Point pt, WidgetID widget, TooltipCloseCondition close_cond);
 	void UpdateVehicleGroupBy(GroupBy group_by);
 	void SortVehicleList();
 	void BuildVehicleList();
