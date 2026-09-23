@@ -525,6 +525,16 @@ struct GenerateLandscapeWindow : public Window {
 			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == LG_ORIGINAL || !_settings_newgame.construction.freeform_edges || _settings_newgame.game_creation.water_borders == BorderFlag::Random,
 					WID_GL_WATER_NW, WID_GL_WATER_NE, WID_GL_WATER_SE, WID_GL_WATER_SW);
 
+			/* Explain why these options are unavailable with the original land generator. */
+			const bool original_generator = _settings_newgame.game_creation.land_generator == LG_ORIGINAL;
+			this->GetWidget<NWidgetCore>(WID_GL_SMOOTHNESS_PULLDOWN)->SetToolTip(original_generator ? STR_MAPGEN_NOT_AVAILABLE_WITH_ORIGINAL_GENERATOR_TOOLTIP : STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT);
+			this->GetWidget<NWidgetCore>(WID_GL_VARIETY_PULLDOWN)->SetToolTip(original_generator ? STR_MAPGEN_NOT_AVAILABLE_WITH_ORIGINAL_GENERATOR_TOOLTIP : STR_CONFIG_SETTING_VARIETY_HELPTEXT);
+			this->GetWidget<NWidgetCore>(WID_GL_BORDERS_PULLDOWN)->SetToolTip(original_generator ? STR_MAPGEN_NOT_AVAILABLE_WITH_ORIGINAL_GENERATOR_TOOLTIP : STR_MAPGEN_BORDER_TYPE_TOOLTIP);
+			this->GetWidget<NWidgetCore>(WID_GL_WATER_NW)->SetToolTip(original_generator ? STR_MAPGEN_NOT_AVAILABLE_WITH_ORIGINAL_GENERATOR_TOOLTIP : STR_MAPGEN_NORTHWEST_TOOLTIP);
+			this->GetWidget<NWidgetCore>(WID_GL_WATER_NE)->SetToolTip(original_generator ? STR_MAPGEN_NOT_AVAILABLE_WITH_ORIGINAL_GENERATOR_TOOLTIP : STR_MAPGEN_NORTHEAST_TOOLTIP);
+			this->GetWidget<NWidgetCore>(WID_GL_WATER_SE)->SetToolTip(original_generator ? STR_MAPGEN_NOT_AVAILABLE_WITH_ORIGINAL_GENERATOR_TOOLTIP : STR_MAPGEN_SOUTHEAST_TOOLTIP);
+			this->GetWidget<NWidgetCore>(WID_GL_WATER_SW)->SetToolTip(original_generator ? STR_MAPGEN_NOT_AVAILABLE_WITH_ORIGINAL_GENERATOR_TOOLTIP : STR_MAPGEN_SOUTHWEST_TOOLTIP);
+
 			this->SetWidgetLoweredState(WID_GL_WATER_NW, _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthWest));
 			this->SetWidgetLoweredState(WID_GL_WATER_NE, _settings_newgame.game_creation.water_borders.Test(BorderFlag::NorthEast));
 			this->SetWidgetLoweredState(WID_GL_WATER_SE, _settings_newgame.game_creation.water_borders.Test(BorderFlag::SouthEast));
