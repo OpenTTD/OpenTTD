@@ -3460,6 +3460,8 @@ STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI Setti
 STR_MAPGEN_AI_SETTINGS_TOOLTIP                                  :{BLACK}Open AI settings
 STR_MAPGEN_GS_SETTINGS                                          :{BLACK}Game Script Settings
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}Open game script settings
+STR_MAPGEN_GENERATOR                                            :Land generator:
+STR_MAPGEN_GENERATOR_TOOLTIP                                    :Select the landscape generator. Some options are disabled depending on the generator.
 
 ###length 21
 STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :English (Original)

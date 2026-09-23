@@ -17,6 +17,7 @@ enum GenerateLandscapeWidgets : WidgetID {
 	WID_GL_TROPICAL,                    ///< Button with icon "Tropical".
 	WID_GL_TOYLAND,                     ///< Button with icon "Toyland".
 
+	WID_GL_GENERATOR_DROPDOWN, ///< Dropdown for landscape generator choice.
 	WID_GL_MAPSIZE_X_PULLDOWN,          ///< Dropdown 'map X size'.
 	WID_GL_MAPSIZE_Y_PULLDOWN,          ///< Dropdown 'map Y size'.
 

@@ -126,6 +126,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 					/* Labels on the left side (global column 3). */
 					NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
+						NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_GENERATOR, STR_MAPGEN_GENERATOR_TOOLTIP), SetFill(1, 1),
 						NWidget(NWID_SELECTION, Colours::Invalid, WID_GL_CLIMATE_SEL_LABEL),
 							NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_SNOW_COVERAGE, STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT), SetFill(1, 1),
 							NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_DESERT_COVERAGE, STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT), SetFill(1, 1),
@@ -136,12 +137,11 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 						NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_NUMBER_OF_TOWNS, STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_SEA_LEVEL, STR_MAPGEN_SEA_LEVEL_TOOLTIP), SetFill(1, 1),
-						/* Spacer due to fewer items in columns 3-4 than in 1-2. */
-						NWidget(NWID_SPACER), SetFill(1, 1),
 					EndContainer(),
 
 					/* Widgets on the right side (global column 4). */
 					NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
+						NWidget(WWT_DROPDOWN, Colours::Orange, WID_GL_GENERATOR_DROPDOWN), SetToolTip(STR_MAPGEN_GENERATOR_TOOLTIP), SetFill(1, 1),
 						/* Climate selector. */
 						NWidget(NWID_SELECTION, Colours::Invalid, WID_GL_CLIMATE_SEL_SELECTOR),
 							/* Snow coverage. */
@@ -169,8 +169,6 @@ static constexpr std::initializer_list<NWidgetPart> _nested_generate_landscape_w
 						NWidget(WWT_DROPDOWN, Colours::Orange, WID_GL_TOWN_PULLDOWN), SetToolTip(STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, Colours::Orange, WID_GL_INDUSTRY_PULLDOWN), SetToolTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, Colours::Orange, WID_GL_WATER_PULLDOWN), SetToolTip(STR_MAPGEN_SEA_LEVEL_TOOLTIP), SetFill(1, 1),
-						/* Spacer due to fewer items in columns 3-4 than in 1-2. */
-						NWidget(NWID_SPACER), SetFill(1, 1),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -267,6 +265,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_heightmap_load_widge
 				NWidget(NWID_HORIZONTAL), SetPIP(0, WidgetDimensions::unscaled.hsep_normal, 0),
 					/* Right half labels (global column 3) */
 					NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
+						NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_GENERATOR, STR_MAPGEN_GENERATOR_TOOLTIP), SetFill(1, 1),
 						NWidget(NWID_SELECTION, Colours::Invalid, WID_GL_CLIMATE_SEL_LABEL),
 							NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_SNOW_COVERAGE, STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT), SetFill(1, 1),
 							NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_DESERT_COVERAGE, STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT), SetFill(1, 1),
@@ -276,11 +275,11 @@ static constexpr std::initializer_list<NWidgetPart> _nested_heightmap_load_widge
 						NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_TOWN_NAME_LABEL, STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_NUMBER_OF_TOWNS, STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_TEXT, Colours::Invalid), SetStringTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP), SetFill(1, 1),
-						NWidget(NWID_SPACER), SetFill(1, 1),
 					EndContainer(),
 
 					/* Right half widgets (global column 4) */
 					NWidget(NWID_VERTICAL, NWidContainerFlag::EqualSize), SetPIP(0, WidgetDimensions::unscaled.vsep_sparse, 0),
+						NWidget(WWT_DROPDOWN, Colours::Orange, WID_GL_GENERATOR_DROPDOWN), SetToolTip(STR_MAPGEN_GENERATOR_TOOLTIP), SetFill(1, 1),
 						/* Climate selector. */
 						NWidget(NWID_SELECTION, Colours::Invalid, WID_GL_CLIMATE_SEL_SELECTOR),
 							/* Snow coverage. */
@@ -307,7 +306,6 @@ static constexpr std::initializer_list<NWidgetPart> _nested_heightmap_load_widge
 						NWidget(WWT_DROPDOWN, Colours::Orange, WID_GL_TOWNNAME_DROPDOWN), SetToolTip(STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, Colours::Orange, WID_GL_TOWN_PULLDOWN), SetToolTip(STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP), SetFill(1, 1),
 						NWidget(WWT_DROPDOWN, Colours::Orange, WID_GL_INDUSTRY_PULLDOWN), SetToolTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP), SetFill(1, 1),
-						NWidget(NWID_SPACER), SetFill(1, 1),
 					EndContainer(),
 				EndContainer(),
 			EndContainer(),
@@ -397,6 +395,7 @@ static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_N
 static const StringID _num_inds[]    = {STR_FUNDING_ONLY, STR_MINIMAL, STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM};
 static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, STR_VARIETY_LOW, STR_VARIETY_MEDIUM, STR_VARIETY_HIGH, STR_VARIETY_VERY_HIGH};
 static const StringID _average_height[] = {STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO, STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS, STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL, STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS};
+static const StringID _landscape_generators[] = {STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL, STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS};
 
 static_assert(std::size(_num_inds) == to_underlying(IndustryDensity::End));
 
@@ -435,6 +434,7 @@ struct GenerateLandscapeWindow : public Window {
 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
 	{
 		switch (widget) {
+			case WID_GL_GENERATOR_DROPDOWN: return GetString(_landscape_generators[_settings_newgame.game_creation.land_generator]);
 			case WID_GL_START_DATE_TEXT:      return GetString(STR_JUST_DATE_LONG, TimerGameCalendar::ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 			case WID_GL_MAPSIZE_X_PULLDOWN:   return GetString(STR_JUST_INT, 1LL << _settings_newgame.game_creation.map_x);
 			case WID_GL_MAPSIZE_Y_PULLDOWN:   return GetString(STR_JUST_INT, 1LL << _settings_newgame.game_creation.map_y);
@@ -593,6 +593,10 @@ struct GenerateLandscapeWindow : public Window {
 				d = GetStringBoundingBox(GetString(STR_JUST_DATE_LONG, TimerGameCalendar::ConvertYMDToDate(CalendarTime::MAX_YEAR, 0, 1)));
 				break;
 
+			case WID_GL_GENERATOR_DROPDOWN:
+				strs = _landscape_generators;
+				break;
+
 			case WID_GL_MAPSIZE_X_PULLDOWN:
 			case WID_GL_MAPSIZE_Y_PULLDOWN:
 				d = GetStringBoundingBox(GetString(STR_JUST_INT, GetParamMaxValue(MAX_MAP_SIZE)));
@@ -673,6 +677,10 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_MAPSIZE_Y_PULLDOWN: // Mapsize Y
 				ShowDropDownList(this, BuildMapsizeDropDown(), _settings_newgame.game_creation.map_y, WID_GL_MAPSIZE_Y_PULLDOWN);
+				break;
+
+			case WID_GL_GENERATOR_DROPDOWN: // Mapsize X
+				ShowDropDownMenu(this, _landscape_generators, _settings_newgame.game_creation.land_generator, widget, 0, 0);
 				break;
 
 			case WID_GL_TOWN_PULLDOWN: // Number of towns
@@ -879,6 +887,7 @@ struct GenerateLandscapeWindow : public Window {
 		switch (widget) {
 			case WID_GL_MAPSIZE_X_PULLDOWN:     _settings_newgame.game_creation.map_x = index; break;
 			case WID_GL_MAPSIZE_Y_PULLDOWN:     _settings_newgame.game_creation.map_y = index; break;
+			case WID_GL_GENERATOR_DROPDOWN: _settings_newgame.game_creation.land_generator = index; break;
 			case WID_GL_RIVER_PULLDOWN:         _settings_newgame.game_creation.amount_of_rivers = index; break;
 			case WID_GL_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 			case WID_GL_VARIETY_PULLDOWN:       _settings_newgame.game_creation.variety = index; break;
