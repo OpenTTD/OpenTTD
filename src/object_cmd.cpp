@@ -823,8 +823,13 @@ static bool TryBuildObjectNearTown(Town *town, const ObjectSpec &spec)
 	start_tile = TileAddWrap(town->xy, -radius, -radius);
 	if (!IsValidTile(start_tile)) return false;
 
+	/* SpiralTileSequence always starts at the top, build a tile list and shuffle. */
+	std::vector<TileIndex> perimeter;
+	for (TileIndex tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) perimeter.push_back(tile);
+	Shuffle(perimeter, _random);
+
 	/* Search the perimeter for a suitable tile. */
-	for (TileIndex tile : SpiralTileSequence(start_tile, 1, radius * 2, radius * 2)) {
+	for (TileIndex tile : perimeter) {
 		if (TryBuildObjectNearTile(tile, spec)) return true;
 	}
 
