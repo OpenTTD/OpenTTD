@@ -4721,10 +4721,13 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Repülő
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Érték: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}Vonat hossza: {LTBLUE}{DECIMAL} mező
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Teljes szállítási kapacitása ennek a vonatnak:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Teljes rakománya ennek a vonatnak:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}Üres ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) {STATION}{STRING} állomásról
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Üres
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} {STATION} állomásról
@@ -4733,6 +4736,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Rakomán
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}A szállított rakomány részletei
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Információ
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}A vonat kocsiainak részletei
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}Összesen
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}A vonat teljes rakományának, kapacitásának és hosszának megjelenítése
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacitás: {LTBLUE}{STRING}
 
