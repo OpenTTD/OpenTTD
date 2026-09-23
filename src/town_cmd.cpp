@@ -14,6 +14,8 @@
 #include "road_internal.h" /* Cleaning up road bits */
 #include "road_cmd.h"
 #include "landscape.h"
+#include "tilearea_spiral.h"
+#include "tilearea_type.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
 #include "command_func.h"
@@ -3035,9 +3037,7 @@ CommandCost CmdPlaceHouseArea(DoCommandFlags flags, TileIndex tile, TileIndex st
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 
-	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
-	for (; *iter != INVALID_TILE; ++(*iter)) {
-		TileIndex t = *iter;
+	for (TileIndex t : CreateOrthoDiagonalArea(tile, start_tile, diagonal)) {
 		CommandCost ret = Command<Commands::PlaceHouse>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, house, is_protected, replace);
 
 		/* If we've reached the limit, stop building (or testing). */

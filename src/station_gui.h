@@ -12,7 +12,7 @@
 
 #include "core/geometry_type.hpp"
 #include "command_type.h"
-#include "tilearea_type.h"
+#include "tilearea_orthogonal.h"
 #include "window_type.h"
 #include "station_type.h"
 

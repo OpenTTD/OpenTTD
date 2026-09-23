@@ -11,7 +11,7 @@
 #define STATION_TYPE_H
 
 #include "core/pool_type.hpp"
-#include "tilearea_type.h"
+#include "tilearea_orthogonal.h"
 
 using StationID = PoolID<uint16_t, struct StationIDTag, 64000, 0xFFFF>;
 static constexpr StationID NEW_STATION{0xFFFD};

@@ -9,6 +9,8 @@
 
 #include "stdafx.h"
 #include "landscape.h"
+#include "tilearea_spiral.h"
+#include "tilearea_type.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"
@@ -511,9 +513,7 @@ CommandCost CmdBuildCanal(DoCommandFlags flags, TileIndex tile, TileIndex start_
 
 	CommandCost cost(ExpensesType::Construction);
 
-	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
-	for (; *iter != INVALID_TILE; ++(*iter)) {
-		TileIndex current_tile = *iter;
+	for (TileIndex current_tile : CreateOrthoDiagonalArea(tile, start_tile, diagonal)) {
 		CommandCost ret;
 
 		Slope slope = GetTileSlope(current_tile);

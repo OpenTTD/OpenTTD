@@ -14,6 +14,7 @@
 #include "textbuf_gui.h"
 #include "company_func.h"
 #include "command_func.h"
+#include "tilearea_spiral.h"
 #include "vehicle_gui.h"
 #include "cargotype.h"
 #include "station_gui.h"

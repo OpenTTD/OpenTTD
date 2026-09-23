@@ -88,7 +88,6 @@ add_files(
     base_media_music.h
     base_media_sounds.h
     base_station_base.h
-    bitmap_type.h
     bmp.cpp
     bmp.h
     bootstrap_gui.cpp
@@ -525,7 +524,18 @@ add_files(
     tile_map.h
     tile_type.h
     tilearea.cpp
+    tilearea_airport.h
+    tilearea_airportlayout.h
+    tilearea_bitmap.cpp
+    tilearea_bitmap.h
+    tilearea_diagonal.cpp
+    tilearea_diagonal.h
+    tilearea_orthogonal.cpp
+    tilearea_orthogonal.h
+    tilearea_spiral.cpp
+    tilearea_spiral.h
     tilearea_type.h
+    tilearea_wrapper.h
     tilehighlight_func.h
     tilehighlight_type.h
     timetable.h

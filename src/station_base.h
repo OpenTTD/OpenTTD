@@ -18,7 +18,7 @@
 #include "industry_type.h"
 #include "linkgraph/linkgraph_type.h"
 #include "newgrf_storage.h"
-#include "bitmap_type.h"
+#include "tilearea_bitmap.h"
 
 static const uint8_t INITIAL_STATION_RATING = 175;
 static const uint8_t MAX_STATION_RATING = 255;
@@ -587,7 +587,7 @@ public:
 
 	inline bool TileIsInCatchment(TileIndex tile) const
 	{
-		return this->catchment_tiles.HasTile(tile);
+		return this->catchment_tiles.Contains(tile);
 	}
 
 	inline bool TileBelongsToRailStation(TileIndex tile) const override
@@ -608,31 +608,6 @@ public:
 	uint32_t GetNewGRFVariable(const ResolverObject &object, uint8_t variable, uint8_t parameter, bool &available) const override;
 
 	TileArea GetTileArea(StationType type) const override;
-};
-
-/** Iterator to iterate over all tiles belonging to an airport. */
-class AirportTileIterator : public OrthogonalTileIterator {
-private:
-	const Station *st = nullptr; ///< The station the airport is a part of.
-
-public:
-	/**
-	 * Construct the iterator.
-	 * @param st Station the airport is part of.
-	 */
-	AirportTileIterator(const Station *st) : OrthogonalTileIterator(st->airport), st(st)
-	{
-		if (!st->TileBelongsToAirport(this->tile)) ++(*this);
-	}
-
-	inline TileIterator& operator ++() override
-	{
-		this->OrthogonalTileIterator::operator++();
-		while (this->tile != INVALID_TILE && !st->TileBelongsToAirport(this->tile)) {
-			this->OrthogonalTileIterator::operator++();
-		}
-		return *this;
-	}
 };
 
 void RebuildStationKdtree();

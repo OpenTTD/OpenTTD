@@ -3674,8 +3674,7 @@ void MarkCatchmentTilesDirty()
 			MarkWholeScreenDirty();
 			_viewport_highlight_station = nullptr;
 		} else {
-			BitmapTileIterator it(_viewport_highlight_station->catchment_tiles);
-			for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+			for (TileIndex tile : _viewport_highlight_station->catchment_tiles) {
 				MarkTileDirtyByTile(tile);
 			}
 		}

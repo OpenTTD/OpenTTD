@@ -433,8 +433,7 @@ void Station::RemoveFromAllNearbyLists()
  */
 bool Station::CatchmentCoversTown(TownID t) const
 {
-	BitmapTileIterator it(this->catchment_tiles);
-	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+	for (TileIndex tile : this->catchment_tiles) {
 		if (IsTileType(tile, TileType::House) && GetTownIndex(tile) == t) return true;
 	}
 	return false;
@@ -451,7 +450,7 @@ void Station::RecomputeCatchment(bool no_clear_nearby_lists)
 	if (!no_clear_nearby_lists) this->RemoveFromAllNearbyLists();
 
 	if (this->spread.IsEmpty()) {
-		this->catchment_tiles.Reset();
+		this->catchment_tiles.Clear();
 		return;
 	}
 
@@ -460,7 +459,7 @@ void Station::RecomputeCatchment(bool no_clear_nearby_lists)
 		this->catchment_tiles.Initialize(this->industry->location);
 		for (TileIndex tile : this->industry->location) {
 			if (IsTileType(tile, TileType::Industry) && GetIndustryIndex(tile) == this->industry->index) {
-				this->catchment_tiles.SetTile(tile);
+				this->catchment_tiles.Add(tile);
 			}
 		}
 		/* The industry's stations_near may have been computed before its neutral station was built so clear and re-add here. */
@@ -484,12 +483,11 @@ void Station::RecomputeCatchment(bool no_clear_nearby_lists)
 
 		/* This tile sub-loop doesn't need to test any tiles, they are simply added to the catchment set. */
 		TileArea ta2 = TileArea(tile, 1, 1).Expand(r);
-		for (TileIndex tile2 : ta2) this->catchment_tiles.SetTile(tile2);
+		for (TileIndex tile2 : ta2) this->catchment_tiles.Add(tile2);
 	}
 
 	/* Search catchment tiles for towns and industries */
-	BitmapTileIterator it(this->catchment_tiles);
-	for (TileIndex tile = it; tile != INVALID_TILE; tile = ++it) {
+	for (TileIndex tile : this->catchment_tiles) {
 		if (IsTileType(tile, TileType::House)) {
 			Town *t = Town::GetByTile(tile);
 			t->stations_near.insert(this);

@@ -12,6 +12,8 @@
 #include "landscape.h"
 #include "command_func.h"
 #include "company_func.h"
+#include "tilearea_spiral.h"
+#include "tilearea_type.h"
 #include "viewport_func.h"
 #include "company_base.h"
 #include "town.h"
@@ -414,9 +416,7 @@ CommandCost CmdBuildObjectArea(DoCommandFlags flags, TileIndex tile, TileIndex s
 	const Company *c = Company::GetIfValid(_current_company);
 	int limit = (c == nullptr ? INT32_MAX : GB(c->build_object_limit, 16, 16));
 
-	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
-	for (; *iter != INVALID_TILE; ++(*iter)) {
-		TileIndex t = *iter;
+	for (TileIndex t : CreateOrthoDiagonalArea(tile, start_tile, diagonal)) {
 		CommandCost ret = Command<Commands::BuildObject>::Do(DoCommandFlags{flags}.Reset(DoCommandFlag::Execute), t, type, view);
 
 		/* If we've reached the limit, stop building (or testing). */

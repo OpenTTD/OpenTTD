@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "command_func.h"
+#include "tilearea_type.h"
 #include "tunnel_map.h"
 #include "bridge_map.h"
 #include "viewport_func.h"
@@ -350,9 +351,7 @@ std::tuple<CommandCost, Money, TileIndex> CmdLevelLand(DoCommandFlags flags, Til
 	if (limit == 0) return { CommandCost(STR_ERROR_TERRAFORM_LIMIT_REACHED), 0, INVALID_TILE };
 
 	TileIndex error_tile = INVALID_TILE;
-	std::unique_ptr<TileIterator> iter = TileIterator::Create(tile, start_tile, diagonal);
-	for (; *iter != INVALID_TILE; ++(*iter)) {
-		TileIndex t = *iter;
+	for (TileIndex t : CreateOrthoDiagonalArea(tile, start_tile, diagonal)) {
 		uint curh = TileHeight(t);
 		while (curh != h) {
 			CommandCost ret;
