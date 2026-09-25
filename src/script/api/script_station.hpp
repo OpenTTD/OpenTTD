@@ -26,16 +26,16 @@ public:
 	 * @see ScriptErrorType
 	 */
 	enum ErrorMessages {
-		/** Base for station related errors */
+		/** Base for station related errors. */
 		ERR_STATION_BASE = ScriptError::ERR_CAT_STATION << ScriptError::ERR_CAT_BIT_SIZE,
 
-		/** The station is build too close to another station, airport or dock */
+		/** The station is build too close to another station, airport or dock. */
 		ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, // [STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT, STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK]
 
-		/** There are too many stations, airports and docks in the game */
+		/** There are too many stations, airports and docks in the game. */
 		ERR_STATION_TOO_MANY_STATIONS,            // [STR_ERROR_TOO_MANY_STATIONS_LOADING, STR_ERROR_TOO_MANY_TRUCK_STOPS, STR_ERROR_TOO_MANY_BUS_STOPS]
 
-		/** There are too many stations, airports of docks in a town */
+		/** There are too many stations, airports or docks in a town. */
 		ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    // [STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT]
 	};
 
@@ -61,7 +61,7 @@ public:
 
 	/**
 	 * Get the StationID of a tile, if there is a station.
-	 * @param tile The tile to find the stationID of
+	 * @param tile The tile to find the stationID of.
 	 * @return StationID of the station.
 	 * @post Use IsValidStation() to see if the station is valid.
 	 */
@@ -171,7 +171,7 @@ public:
 	static SQInteger GetCargoPlannedFromVia(StationID station_id, StationID from_station_id, StationID via_station_id, CargoType cargo_type);
 
 	/**
-	 * Check whether the given cargo at the given station a rating.
+	 * Check whether the given cargo at the given station has a rating.
 	 * @param station_id The station to get the cargo-rating state of.
 	 * @param cargo_type The cargo to get the cargo-rating state of.
 	 * @pre IsValidStation(station_id).
@@ -239,8 +239,7 @@ public:
 	static bool IsWithinTownInfluence(StationID station_id, TownID town_id);
 
 	/**
-	 * Check if any part of the station contains a station of the type
-	 *  StationType
+	 * Check if any part of the station contains a station of the type StationType.
 	 * @param station_id The station to look at.
 	 * @param station_type The StationType to look for.
 	 * @return True if the station has a station part of the type StationType.
