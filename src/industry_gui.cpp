@@ -1961,583 +1961,758 @@ static WindowDesc _industry_cargoes_desc(
 	_nested_industry_cargoes_widgets
 );
 
-/** Available types of field. */
-enum class CargoesFieldType : uint8_t {
-	Empty, ///< Empty field.
-	SmallEmpty, ///< Empty small field (for the header).
-	Industry, ///< Display industry.
-	Cargo, ///< Display cargo connections.
-	CargoLabel, ///< Display cargo labels.
-	Header, ///< Header text.
-};
+/** Base cargo chain field. */
+class ChainField {
+public:
+	static constexpr uint MAX_CARGOES = 16; ///< Maximum number of cargoes carried in a field.
 
-static const uint MAX_CARGOES = 16; ///< Maximum number of cargoes carried in a #CargoesFieldType::Cargo field in #CargoesField.
+	using CargoSlotMask = uint16_t; ///< Type present a mask of cargo slots.
+	static_assert(std::numeric_limits<CargoSlotMask>::digits >= MAX_CARGOES);
 
-/** Data about a single field in the #IndustryCargoesWindow panel. */
-struct CargoesField {
-	static int vert_inter_industry_space;
-	static int blob_distance;
+	static_assert(MAX_CARGOES >= std::tuple_size_v<decltype(IndustrySpec::produced_cargo)>);
+	static_assert(MAX_CARGOES >= std::tuple_size_v<decltype(IndustrySpec::accepts_cargo)>);
 
-	static Dimension legend;
-	static Dimension cargo_border;
-	static Dimension cargo_line;
-	static Dimension cargo_space;
-	static Dimension cargo_stub;
+	static constexpr PixelColour CARGO_LINE_COLOUR = PC_BLACK; ///< Line colour around the cargo.
 
-	static const PixelColour INDUSTRY_LINE_COLOUR;
-	static const PixelColour CARGO_LINE_COLOUR;
+	static inline FontSize fontsize = FontSize::Normal; ///< Font size of industry chain strings.
 
-	static int small_height, normal_height;
-	static int cargo_field_width;
-	static int industry_width;
-	static uint max_cargoes;
+	static inline CargoTypes town_accepts; ///< Mask of cargo types accepted by towns.
+	static inline CargoTypes town_produces; ///< Mask of cargo types produced by towns.
 
-	using Cargoes = uint16_t;
-	static_assert(std::numeric_limits<Cargoes>::digits >= MAX_CARGOES);
+	static inline int vert_inter_industry_space; ///< Amount of space between two industries in a column.
+	static inline int blob_distance; ///< Distance of the industry legend colour from the edge of the industry box.
 
-	CargoesFieldType type{}; ///< Type of field.
-	union {
-		struct {
-			IndustryType ind_type; ///< Industry type (#NUM_INDUSTRYTYPES means 'houses').
-			std::array<CargoType, MAX_CARGOES> other_produced; ///< Cargoes produced but not used in this figure.
-			std::array<CargoType, MAX_CARGOES> other_accepted; ///< Cargoes accepted but not used in this figure.
-		} industry; ///< Industry data (for #CargoesFieldType::Industry).
-		struct {
-			std::array<CargoType, MAX_CARGOES> vertical_cargoes; ///< Cargoes running from top to bottom (cargo type or #INVALID_CARGO).
-			Cargoes supp_cargoes; ///< Cargoes in \c vertical_cargoes entering from the left.
-			Cargoes cust_cargoes; ///< Cargoes in \c vertical_cargoes leaving to the right.
-			uint8_t num_cargoes; ///< Number of cargoes.
-			uint8_t top_end; ///< Stop at the top of the vertical cargoes.
-			uint8_t bottom_end; ///< Stop at the bottom of the vertical cargoes.
-		} cargo; ///< Cargo data (for #CargoesFieldType::Cargo).
-		struct {
-			std::array<CargoType, MAX_CARGOES> cargoes; ///< Cargoes to display (or #INVALID_CARGO).
-			bool left_align; ///< Align all cargo texts to the left (else align to the right).
-		} cargo_label;   ///< Label data (for #CargoesFieldType::CargoLabel).
-		StringID header; ///< Header text (for #CargoesFieldType::Header).
-	} u{}; ///< Data for each type.
+	static inline Dimension legend; ///< Dimension of the legend blob.
+	static inline Dimension cargo_border; ///< Dimensions of border between cargo lines and industry boxes.
+	static inline Dimension cargo_line; ///< Dimensions of cargo lines.
+	static inline Dimension cargo_space; ///< Dimensions of space between cargo lines.
+	static inline Dimension cargo_stub; ///< Dimensions of cargo stub (unconnected cargo line.)
+
+	static inline int small_height; ///< Height of the header row.
+	static inline int normal_height; ///< Height of the non-header rows.
+	static inline int connection_field_width; ///< Width of a cargo connection field.
+	static inline int industry_width; ///< Width of an industry field.
+	static inline uint max_cargoes; ///< Largest number of cargoes actually on any industry.
 
 	/**
-	 * Make one of the empty fields (#CargoesFieldType::Empty or #CargoesFieldType::SmallEmpty).
-	 * @param type Type of empty field.
+	 * Get the height of all cargo connections in a row.
+	 * @return The height of all cargo connections.
 	 */
-	void MakeEmpty(CargoesFieldType type)
+	static uint GetConnectionHeight()
 	{
-		this->type = type;
+		return ChainField::max_cargoes * (ChainField::cargo_line.height + ChainField::cargo_space.height) - ChainField::cargo_space.height;
 	}
+
+	virtual ~ChainField() = default;
 
 	/**
-	 * Make an industry type field.
-	 * @param ind_type Industry type (#NUM_INDUSTRYTYPES means 'houses').
-	 * @note #other_accepted and #other_produced should be filled later.
+	 * Get this field as a specific type implemention.
+	 * @tparam T The type of chain field.
+	 * @return The field if is of the requested type.
 	 */
-	void MakeIndustry(IndustryType ind_type)
-	{
-		this->type = CargoesFieldType::Industry;
-		this->u.industry.ind_type = ind_type;
-		std::fill(std::begin(this->u.industry.other_accepted), std::end(this->u.industry.other_accepted), INVALID_CARGO);
-		std::fill(std::begin(this->u.industry.other_produced), std::end(this->u.industry.other_produced), INVALID_CARGO);
-	}
+	template <typename T> T *Get() { return dynamic_cast<T *>(this); }
 
 	/**
-	 * Connect a cargo from an industry to the #CargoesFieldType::Cargo column.
-	 * @param cargo Cargo to connect.
-	 * @param producer Cargo is produced (if \c false, cargo is assumed to be accepted).
-	 * @return Horizontal connection index, or \c -1 if not accepted at all.
+	 * Get this field as a specific type implemention.
+	 * @tparam T The type of chain field.
+	 * @return The field if is of the requested type.
 	 */
-	int ConnectCargo(CargoType cargo, bool producer)
-	{
-		assert(this->type == CargoesFieldType::Cargo);
-		if (!IsValidCargoType(cargo)) return -1;
-
-		/* Find the vertical cargo column carrying the cargo. */
-		int column = -1;
-		for (int i = 0; i < this->u.cargo.num_cargoes; i++) {
-			if (cargo == this->u.cargo.vertical_cargoes[i]) {
-				column = i;
-				break;
-			}
-		}
-		if (column < 0) return -1;
-
-		if (producer) {
-			assert(!HasBit(this->u.cargo.supp_cargoes, column));
-			SetBit(this->u.cargo.supp_cargoes, column);
-		} else {
-			assert(!HasBit(this->u.cargo.cust_cargoes, column));
-			SetBit(this->u.cargo.cust_cargoes, column);
-		}
-		return column;
-	}
+	template <typename T> const T *Get() const { return dynamic_cast<const T *>(this); }
 
 	/**
-	 * Does this #CargoesFieldType::Cargo field have a horizontal connection?
-	 * @return \c true if a horizontal connection exists, \c false otherwise.
+	 * Get the width of this field.
+	 * @return THe width.
 	 */
-	bool HasConnection()
-	{
-		assert(this->type == CargoesFieldType::Cargo);
-
-		return this->u.cargo.supp_cargoes != 0 || this->u.cargo.cust_cargoes != 0;
-	}
+	virtual int Width() const { return ChainField::industry_width; }
 
 	/**
-	 * Make a piece of cargo column.
-	 * @param cargoes Span of #CargoType (may contain #INVALID_CARGO).
-	 * @note #supp_cargoes and #cust_cargoes should be filled in later.
+	 * Get the height of this field.
+	 * @return The height.
 	 */
-	void MakeCargo(const std::span<const CargoType> cargoes)
-	{
-		this->type = CargoesFieldType::Cargo;
-		assert(std::size(cargoes) <= std::size(this->u.cargo.vertical_cargoes));
-		auto insert = std::copy_if(std::begin(cargoes), std::end(cargoes), std::begin(this->u.cargo.vertical_cargoes), IsValidCargoType);
-		this->u.cargo.num_cargoes = static_cast<uint8_t>(std::distance(std::begin(this->u.cargo.vertical_cargoes), insert));
-		CargoTypeComparator comparator;
-		std::sort(std::begin(this->u.cargo.vertical_cargoes), insert, comparator);
-		std::fill(insert, std::end(this->u.cargo.vertical_cargoes), INVALID_CARGO);
-		this->u.cargo.top_end = false;
-		this->u.cargo.bottom_end = false;
-		this->u.cargo.supp_cargoes = 0;
-		this->u.cargo.cust_cargoes = 0;
-	}
-
-	/**
-	 * Make a field displaying cargo type names.
-	 * @param cargoes    Span of #CargoType (may contain #INVALID_CARGO).
-	 * @param left_align ALign texts to the left (else to the right).
-	 */
-	void MakeCargoLabel(const std::span<const CargoType> cargoes, bool left_align)
-	{
-		this->type = CargoesFieldType::CargoLabel;
-		assert(std::size(cargoes) <= std::size(this->u.cargo_label.cargoes));
-		auto insert = std::copy(std::begin(cargoes), std::end(cargoes), std::begin(this->u.cargo_label.cargoes));
-		std::fill(insert, std::end(this->u.cargo_label.cargoes), INVALID_CARGO);
-		this->u.cargo_label.left_align = left_align;
-	}
-
-	/**
-	 * Make a header above an industry column.
-	 * @param textid Text to display.
-	 */
-	void MakeHeader(StringID textid)
-	{
-		this->type = CargoesFieldType::Header;
-		this->u.header = textid;
-	}
-
-	/**
-	 * For a #CargoesFieldType::Cargo, compute the left position of the left-most vertical cargo connection.
-	 * @param xpos Left position of the field.
-	 * @return Left position of the left-most vertical cargo column.
-	 */
-	int GetCargoBase(int xpos) const
-	{
-		assert(this->type == CargoesFieldType::Cargo);
-		int n = this->u.cargo.num_cargoes;
-
-		return xpos + cargo_field_width / 2 - (CargoesField::cargo_line.width * n + CargoesField::cargo_space.width * (n - 1)) / 2;
-	}
+	virtual int Height() const { return ChainField::normal_height; }
 
 	/**
 	 * Draw the field.
-	 * @param xpos Position of the left edge.
-	 * @param ypos Position of the top edge.
+	 * @param r Rect to draw within.
 	 */
-	void Draw(int xpos, int ypos) const
-	{
-		switch (this->type) {
-			case CargoesFieldType::Empty:
-			case CargoesFieldType::SmallEmpty:
-				break;
+	virtual void Draw([[maybe_unused]] Rect r) = 0;
 
-			case CargoesFieldType::Header:
-				ypos += (small_height - GetCharacterHeight(FontSize::Normal)) / 2;
-				DrawString(xpos, xpos + industry_width, ypos, this->u.header, TextColour::White, AlignmentH::Centre);
-				break;
-
-			case CargoesFieldType::Industry: {
-				int ypos1 = ypos + vert_inter_industry_space / 2;
-				int ypos2 = ypos + normal_height - 1 - vert_inter_industry_space / 2;
-				int xpos2 = xpos + industry_width - 1;
-				DrawRectOutline({xpos, ypos1, xpos2, ypos2}, INDUSTRY_LINE_COLOUR);
-				ypos += (normal_height - GetCharacterHeight(FontSize::Normal)) / 2;
-				if (this->u.industry.ind_type < NUM_INDUSTRYTYPES) {
-					const IndustrySpec *indsp = GetIndustrySpec(this->u.industry.ind_type);
-					DrawString(xpos, xpos2, ypos, indsp->name, TextColour::White, AlignmentH::Centre);
-
-					/* Draw the industry legend. */
-					int blob_left, blob_right;
-					if (_current_text_dir == TD_RTL) {
-						blob_right = xpos2 - blob_distance;
-						blob_left  = blob_right - CargoesField::legend.width;
-					} else {
-						blob_left  = xpos + blob_distance;
-						blob_right = blob_left + CargoesField::legend.width;
-					}
-					GfxFillRect(blob_left,     ypos2 - blob_distance - CargoesField::legend.height,     blob_right,     ypos2 - blob_distance,     PC_BLACK); // Border
-					GfxFillRect(blob_left + 1, ypos2 - blob_distance - CargoesField::legend.height + 1, blob_right - 1, ypos2 - blob_distance - 1, indsp->map_colour);
-				} else {
-					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TextColour::FromString, AlignmentH::Centre);
-				}
-
-				/* Draw the other_produced/other_accepted cargoes. */
-				std::span<const CargoType> other_right, other_left;
-				if (_current_text_dir == TD_RTL) {
-					other_right = this->u.industry.other_accepted;
-					other_left  = this->u.industry.other_produced;
-				} else {
-					other_right = this->u.industry.other_produced;
-					other_left  = this->u.industry.other_accepted;
-				}
-				ypos1 += CargoesField::cargo_border.height + (GetCharacterHeight(FontSize::Normal) - CargoesField::cargo_line.height) / 2;
-				for (uint i = 0; i < CargoesField::max_cargoes; i++) {
-					if (IsValidCargoType(other_right[i])) {
-						const CargoSpec *csp = CargoSpec::Get(other_right[i]);
-						int xp = xpos + industry_width + CargoesField::cargo_stub.width;
-						DrawHorConnection(xpos + industry_width, xp - 1, ypos1, csp);
-						GfxDrawLine(xp, ypos1, xp, ypos1 + CargoesField::cargo_line.height - 1, CARGO_LINE_COLOUR);
-					}
-					if (IsValidCargoType(other_left[i])) {
-						const CargoSpec *csp = CargoSpec::Get(other_left[i]);
-						int xp = xpos - CargoesField::cargo_stub.width;
-						DrawHorConnection(xp + 1, xpos - 1, ypos1, csp);
-						GfxDrawLine(xp, ypos1, xp, ypos1 + CargoesField::cargo_line.height - 1, CARGO_LINE_COLOUR);
-					}
-					ypos1 += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
-				}
-				break;
-			}
-
-			case CargoesFieldType::Cargo: {
-				int cargo_base = this->GetCargoBase(xpos);
-				int top = ypos + (this->u.cargo.top_end ? vert_inter_industry_space / 2 + 1 : 0);
-				int bot = ypos - (this->u.cargo.bottom_end ? vert_inter_industry_space / 2 + 1 : 0) + normal_height - 1;
-				int colpos = cargo_base;
-				for (int i = 0; i < this->u.cargo.num_cargoes; i++) {
-					if (this->u.cargo.top_end) GfxDrawLine(colpos, top - 1, colpos + CargoesField::cargo_line.width - 1, top - 1, CARGO_LINE_COLOUR);
-					if (this->u.cargo.bottom_end) GfxDrawLine(colpos, bot + 1, colpos + CargoesField::cargo_line.width - 1, bot + 1, CARGO_LINE_COLOUR);
-					GfxDrawLine(colpos, top, colpos, bot, CARGO_LINE_COLOUR);
-					colpos++;
-					const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[i]);
-					GfxFillRect(colpos, top, colpos + CargoesField::cargo_line.width - 2, bot, csp->legend_colour, FillRectMode::Opaque);
-					colpos += CargoesField::cargo_line.width - 2;
-					GfxDrawLine(colpos, top, colpos, bot, CARGO_LINE_COLOUR);
-					colpos += 1 + CargoesField::cargo_space.width;
-				}
-
-				Cargoes hor_left, hor_right;
-				if (_current_text_dir == TD_RTL) {
-					hor_left  = this->u.cargo.cust_cargoes;
-					hor_right = this->u.cargo.supp_cargoes;
-				} else {
-					hor_left  = this->u.cargo.supp_cargoes;
-					hor_right = this->u.cargo.cust_cargoes;
-				}
-				ypos += CargoesField::cargo_border.height + vert_inter_industry_space / 2 + (GetCharacterHeight(FontSize::Normal) - CargoesField::cargo_line.height) / 2;
-				for (uint i = 0; i < MAX_CARGOES; i++) {
-					if (HasBit(hor_left, i)) {
-						int col = i;
-						int dx = 0;
-						const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[col]);
-						for (; col > 0; col--) {
-							int lf = cargo_base + col * CargoesField::cargo_line.width + (col - 1) * CargoesField::cargo_space.width;
-							DrawHorConnection(lf, lf + CargoesField::cargo_space.width - dx, ypos, csp);
-							dx = 1;
-						}
-						DrawHorConnection(xpos, cargo_base - dx, ypos, csp);
-					}
-					if (HasBit(hor_right, i)) {
-						int col = i;
-						int dx = 0;
-						const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[col]);
-						for (; col < this->u.cargo.num_cargoes - 1; col++) {
-							int lf = cargo_base + (col + 1) * CargoesField::cargo_line.width + col * CargoesField::cargo_space.width;
-							DrawHorConnection(lf + dx - 1, lf + CargoesField::cargo_space.width - 1, ypos, csp);
-							dx = 1;
-						}
-						DrawHorConnection(cargo_base + col * CargoesField::cargo_space.width + (col + 1) * CargoesField::cargo_line.width - 1 + dx, xpos + CargoesField::cargo_field_width - 1, ypos, csp);
-					}
-					ypos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
-				}
-				break;
-			}
-
-			case CargoesFieldType::CargoLabel:
-				ypos += CargoesField::cargo_border.height + vert_inter_industry_space / 2;
-				for (uint i = 0; i < MAX_CARGOES; i++) {
-					if (IsValidCargoType(this->u.cargo_label.cargoes[i])) {
-						const CargoSpec *csp = CargoSpec::Get(this->u.cargo_label.cargoes[i]);
-						DrawString(xpos + WidgetDimensions::scaled.framerect.left, xpos + industry_width - 1 - WidgetDimensions::scaled.framerect.right, ypos, csp->name, TextColour::White,
-								(this->u.cargo_label.left_align) ? AlignmentH::Start : AlignmentH::End);
-					}
-					ypos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
-				}
-				break;
-
-			default:
-				NOT_REACHED();
-		}
-	}
+	/** Result type of testing clicked position. */
+	using ClickedAtResult = std::variant<std::monostate, HouseID, IndustryType, CargoType>;
 
 	/**
-	 * Decide which cargo was clicked at in a #CargoesFieldType::Cargo field.
-	 * @param left  Left industry neighbour if available (else \c nullptr should be supplied).
-	 * @param right Right industry neighbour if available (else \c nullptr should be supplied).
-	 * @param pt    Click position in the cargo field.
-	 * @return Cargo clicked at, or #INVALID_CARGO if none.
+	 * Decide which industry or cargo was clicked at.
+	 * @param r Rect of this cargo field.
+	 * @param pt Click position in the cargo field.
+	 * @return Industry or cargo clicked at.
 	 */
-	CargoType CargoClickedAt(const CargoesField *left, const CargoesField *right, Point pt) const
-	{
-		assert(this->type == CargoesFieldType::Cargo);
-
-		/* Vertical matching. */
-		int cpos = this->GetCargoBase(0);
-		uint col;
-		for (col = 0; col < this->u.cargo.num_cargoes; col++) {
-			if (pt.x < cpos) break;
-			if (pt.x < cpos + static_cast<int>(CargoesField::cargo_line.width)) return this->u.cargo.vertical_cargoes[col];
-			cpos += CargoesField::cargo_line.width + CargoesField::cargo_space.width;
-		}
-		/* col = 0 -> left of first col, 1 -> left of 2nd col, ... this->u.cargo.num_cargoes right of last-col. */
-
-		int vpos = (vert_inter_industry_space / 2) + CargoesField::cargo_border.height + (GetCharacterHeight(FontSize::Normal) - CargoesField::cargo_line.height) / 2;
-		uint row;
-		for (row = 0; row < MAX_CARGOES; row++) {
-			if (pt.y < vpos) return INVALID_CARGO;
-			if (pt.y < vpos + static_cast<int>(CargoesField::cargo_line.height)) break;
-			vpos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
-		}
-		if (row == MAX_CARGOES) return INVALID_CARGO;
-
-		/* row = 0 -> at first horizontal row, row = 1 -> second horizontal row, 2 = 3rd horizontal row. */
-		if (col == 0) {
-			if (HasBit(this->u.cargo.supp_cargoes, row)) return this->u.cargo.vertical_cargoes[row];
-			if (left != nullptr) {
-				if (left->type == CargoesFieldType::Industry) return left->u.industry.other_produced[row];
-				if (left->type == CargoesFieldType::CargoLabel && !left->u.cargo_label.left_align) return left->u.cargo_label.cargoes[row];
-			}
-			return INVALID_CARGO;
-		}
-		if (col == this->u.cargo.num_cargoes) {
-			if (HasBit(this->u.cargo.cust_cargoes, row)) return this->u.cargo.vertical_cargoes[row];
-			if (right != nullptr) {
-				if (right->type == CargoesFieldType::Industry) return right->u.industry.other_accepted[row];
-				if (right->type == CargoesFieldType::CargoLabel && right->u.cargo_label.left_align) return right->u.cargo_label.cargoes[row];
-			}
-			return INVALID_CARGO;
-		}
-		if (row >= col) {
-			/* Clicked somewhere in-between vertical cargo connection.
-			 * Since the horizontal connection is made in the same order as the vertical list, the above condition
-			 * ensures we are left-below the main diagonal, thus at the supplying side.
-			 */
-			if (HasBit(this->u.cargo.supp_cargoes, row)) return this->u.cargo.vertical_cargoes[row];
-			return INVALID_CARGO;
-		}
-		/* Clicked at a customer connection. */
-		if (HasBit(this->u.cargo.cust_cargoes, row)) return this->u.cargo.vertical_cargoes[row];
-		return INVALID_CARGO;
-	}
-
-	/**
-	 * Decide what cargo the user clicked in the cargo label field.
-	 * @param pt Click position in the cargo label field.
-	 * @return Cargo clicked at, or #INVALID_CARGO if none.
-	 */
-	CargoType CargoLabelClickedAt(Point pt) const
-	{
-		assert(this->type == CargoesFieldType::CargoLabel);
-
-		int vpos = vert_inter_industry_space / 2 + CargoesField::cargo_border.height;
-		uint row;
-		for (row = 0; row < MAX_CARGOES; row++) {
-			if (pt.y < vpos) return INVALID_CARGO;
-			if (pt.y < vpos + GetCharacterHeight(FontSize::Normal)) break;
-			vpos += GetCharacterHeight(FontSize::Normal) + CargoesField::cargo_space.height;
-		}
-		if (row == MAX_CARGOES) return INVALID_CARGO;
-		return this->u.cargo_label.cargoes[row];
-	}
-
-private:
-	/**
-	 * Draw a horizontal cargo connection.
-	 * @param left  Left-most coordinate to draw.
-	 * @param right Right-most coordinate to draw.
-	 * @param top   Top coordinate of the cargo connection.
-	 * @param csp   Cargo to draw.
-	 */
-	static void DrawHorConnection(int left, int right, int top, const CargoSpec *csp)
-	{
-		GfxDrawLine(left, top, right, top, CARGO_LINE_COLOUR);
-		GfxFillRect(left, top + 1, right, top + CargoesField::cargo_line.height - 2, csp->legend_colour, FillRectMode::Opaque);
-		GfxDrawLine(left, top + CargoesField::cargo_line.height - 1, right, top + CargoesField::cargo_line.height - 1, CARGO_LINE_COLOUR);
-	}
+	virtual ClickedAtResult ClickedAt([[maybe_unused]] Rect r, [[maybe_unused]] Point pt) const { return {}; }
 };
 
-static_assert(MAX_CARGOES >= std::tuple_size_v<decltype(IndustrySpec::produced_cargo)>);
-static_assert(MAX_CARGOES >= std::tuple_size_v<decltype(IndustrySpec::accepts_cargo)>);
-
-Dimension CargoesField::legend;       ///< Dimension of the legend blob.
-Dimension CargoesField::cargo_border; ///< Dimensions of border between cargo lines and industry boxes.
-Dimension CargoesField::cargo_line;   ///< Dimensions of cargo lines.
-Dimension CargoesField::cargo_space;  ///< Dimensions of space between cargo lines.
-Dimension CargoesField::cargo_stub;   ///< Dimensions of cargo stub (unconnected cargo line.)
-
-int CargoesField::small_height;      ///< Height of the header row.
-int CargoesField::normal_height;     ///< Height of the non-header rows.
-int CargoesField::industry_width;    ///< Width of an industry field.
-int CargoesField::cargo_field_width; ///< Width of a cargo field.
-uint CargoesField::max_cargoes;      ///< Largest number of cargoes actually on any industry.
-int CargoesField::vert_inter_industry_space; ///< Amount of space between two industries in a column.
-
-int CargoesField::blob_distance; ///< Distance of the industry legend colour from the edge of the industry box.
-
-const PixelColour CargoesField::INDUSTRY_LINE_COLOUR = PC_YELLOW; ///< Line colour of the industry type box.
-const PixelColour CargoesField::CARGO_LINE_COLOUR    = PC_YELLOW; ///< Line colour around the cargo.
-
-/** A single row of #CargoesField. */
-struct CargoesRow {
-	CargoesField columns[5]; ///< One row of fields.
+/** Field representing a header label. */
+class HeaderChainField : public ChainField {
+public:
+	StringID header; ///< Header string.
 
 	/**
-	 * Connect industry production cargoes to the cargo column after it.
-	 * @param column Column of the industry.
+	 * Construct a new Header chain field.
+	 * @param header The header string.
 	 */
-	void ConnectIndustryProduced(int column)
-	{
-		CargoesField *ind_fld   = this->columns + column;
-		CargoesField *cargo_fld = this->columns + column + 1;
-		assert(ind_fld->type == CargoesFieldType::Industry && cargo_fld->type == CargoesFieldType::Cargo);
+	HeaderChainField(StringID header) : header(header) {}
 
-		std::fill(std::begin(ind_fld->u.industry.other_produced), std::end(ind_fld->u.industry.other_produced), INVALID_CARGO);
+	int Height() const override;
+	void Draw(Rect r) override;
+};
 
-		if (ind_fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
-			CargoType others[MAX_CARGOES]; // Produced cargoes not carried in the cargo column.
-			int other_count = 0;
+int HeaderChainField::Height() const
+{
+	return ChainField::small_height;
+}
 
-			const IndustrySpec *indsp = GetIndustrySpec(ind_fld->u.industry.ind_type);
-			assert(CargoesField::max_cargoes <= std::size(indsp->produced_cargo));
-			for (uint i = 0; i < CargoesField::max_cargoes; i++) {
-				int col = cargo_fld->ConnectCargo(indsp->produced_cargo[i], true);
-				if (col < 0) others[other_count++] = indsp->produced_cargo[i];
+void HeaderChainField::Draw(Rect r)
+{
+	DrawStringMultiLine(r, this->header, TextColour::White, {AlignmentH::Centre, AlignmentV::Middle}, false, ChainField::fontsize);
+}
+
+/** Field representing cargo connections. */
+class ConnectionChainField : public ChainField {
+public:
+	std::array<CargoType, ChainField::MAX_CARGOES> vertical_cargoes; ///< Cargoes running from top to bottom (cargo type or #INVALID_CARGO).
+	CargoSlotMask supp_cargoes = 0; ///< Bitmask of cargoes in \c vertical_cargoes entering from the left.
+	CargoSlotMask cust_cargoes = 0; ///< Bitmask of cargoes in \c vertical_cargoes leaving to the right.
+	CargoSlotMask skip_cargoes = 0; ///< Stop at the top of the vertical cargoes.
+	CargoSlotMask top_end = 0; ///< Stop at the top of the vertical cargoes.
+	CargoSlotMask bottom_end = 0; ///< Stop at the bottom of the vertical cargoes.
+	uint8_t num_cargoes; ///< Number of cargoes.
+
+	ConnectionChainField(CargoTypes cargo_types);
+	int Width() const override;
+	void Draw(Rect r) override;
+	int ConnectCargo(CargoType cargo, bool producer);
+	CargoSlotMask GetConnections(bool accepting, bool supplying) const;
+	ClickedAtResult ClickedAt(Rect r, Point pt) const override;
+};
+
+/** Field representing something that accepts and produces cargo. */
+class AcceptsProducesChainField : public ChainField {
+public:
+	std::array<CargoType, ChainField::MAX_CARGOES> other_produced; ///< Cargoes produced but not used in this figure.
+	std::array<CargoType, ChainField::MAX_CARGOES> other_accepted; ///< Cargoes accepted but not used in this figure.
+
+	AcceptsProducesChainField();
+	void Draw(Rect r) override;
+	ClickedAtResult ClickedAt(Rect r, Point pt) const override;
+
+	/**
+	 * Connected the cargo types produced by this field.
+	 * @return The produced cargo types.
+	 */
+	virtual CargoTypes GetProduced() = 0;
+
+	/**
+	 * Connected the cargo types accepted by this field.
+	 * @return The accepted cargo types..
+	 */
+	virtual CargoTypes GetAccepted() = 0;
+};
+
+/**
+ * Construct a new Accepts/Produces chain field.
+ */
+AcceptsProducesChainField::AcceptsProducesChainField()
+{
+	this->other_produced.fill(INVALID_CARGO);
+	this->other_accepted.fill(INVALID_CARGO);
+}
+
+void AcceptsProducesChainField::Draw(Rect r)
+{
+	bool rtl = _current_text_dir == TD_RTL;
+
+	/* Draw the other_produced/other_accepted cargoes. */
+	std::span<const CargoType> other_right, other_left;
+	if (rtl) {
+		other_right = this->other_accepted;
+		other_left = this->other_produced;
+	} else {
+		other_right = this->other_produced;
+		other_left = this->other_accepted;
+	}
+
+	/* Draw the unconnected cargo stubs. */
+	r = r.CentreToHeight(ChainField::GetConnectionHeight()).WithHeight(ChainField::cargo_line.height);
+	for (uint i = 0; i < ChainField::max_cargoes; ++i) {
+		if (IsValidCargoType(other_right[i])) {
+			Rect r_stub = r.WithX(r.right + 1, r.right + ChainField::cargo_stub.width);
+			GfxFillRect(r_stub, CARGO_LINE_COLOUR);
+			GfxFillRect(r_stub.Shrink({0, WidgetDimensions::scaled.bevel.top, WidgetDimensions::scaled.bevel.right, WidgetDimensions::scaled.bevel.bottom}), CargoSpec::Get(other_right[i])->legend_colour);
+		}
+
+		if (IsValidCargoType(other_left[i])) {
+			Rect r_stub = r.WithX(r.left - ChainField::cargo_stub.width, r.left - 1);
+			GfxFillRect(r_stub, CARGO_LINE_COLOUR);
+			GfxFillRect(r_stub.Shrink({WidgetDimensions::scaled.bevel.left, WidgetDimensions::scaled.bevel.top, 0, WidgetDimensions::scaled.bevel.bottom}), CargoSpec::Get(other_left[i])->legend_colour);
+		}
+
+		r = r.Translate(0, ChainField::cargo_line.height + ChainField::cargo_space.height);
+	}
+}
+
+ChainField::ClickedAtResult AcceptsProducesChainField::ClickedAt(Rect r, Point pt) const
+{
+	/* Click is outside the rect, check the cargo stubs. */
+	bool rtl = _current_text_dir == TD_RTL;
+
+	std::span<const CargoType> other_right, other_left;
+	if (rtl) {
+		other_right = this->other_accepted;
+		other_left = this->other_produced;
+	} else {
+		other_right = this->other_produced;
+		other_left = this->other_accepted;
+	}
+
+	r = r.CentreToHeight(ChainField::GetConnectionHeight()).WithHeight(ChainField::cargo_line.height);
+	for (uint i = 0; i < ChainField::max_cargoes; ++i) {
+		if (IsValidCargoType(other_right[i])) {
+			Rect r_stub = r.WithX(r.right + 1, r.right + ChainField::cargo_stub.width);
+			if (r_stub.Contains(pt)) return other_right[i];
+		}
+
+		if (IsValidCargoType(other_left[i])) {
+			Rect r_stub = r.WithX(r.left - ChainField::cargo_stub.width, r.left - 1);
+			if (r_stub.Contains(pt)) return other_left[i];
+		}
+
+		r = r.Translate(0, ChainField::cargo_line.height + ChainField::cargo_space.height);
+	}
+
+	return {};
+}
+
+/** Field representing an industry. */
+class IndustryChainField : public AcceptsProducesChainField {
+public:
+	IndustryType industry_type; ///< Industry type (#NUM_INDUSTRYTYPES means 'houses').
+	Colours colour; ///< Colour for this industry.
+
+	IndustryChainField(IndustryType industry_type);
+	void Draw(Rect r) override;
+	ClickedAtResult ClickedAt(Rect r, Point pt) const override;
+	CargoTypes GetProduced() override;
+	CargoTypes GetAccepted() override;
+};
+
+/**
+ * Construct a new Industry chain field.
+ * @param industry_type The industry type.
+ */
+IndustryChainField::IndustryChainField(IndustryType industry_type) : industry_type(industry_type)
+{
+	const IndustrySpec *indsp = GetIndustrySpec(this->industry_type);
+	if (indsp->life_type.Test(IndustryLifeType::Extractive)) {
+		this->colour = Colours::LightBlue;
+	} else if (indsp->life_type.Test(IndustryLifeType::Processing)) {
+		this->colour = Colours::Brown;
+	} else if (indsp->life_type.Test(IndustryLifeType::Organic)) {
+		this->colour = Colours::PaleGreen;
+	} else {
+		/* Black hole industry */
+		this->colour = Colours::DarkGreen;
+	}
+}
+
+void IndustryChainField::Draw(Rect r)
+{
+	const IndustrySpec *indsp = GetIndustrySpec(this->industry_type);
+	DrawFrameRect(r, this->colour, {});
+	DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), indsp->name, TextColour::White, {AlignmentH::Centre, AlignmentV::Middle}, false, ChainField::fontsize);
+
+	Rect blob = r.Shrink(blob_distance).CentreToWidth(ChainField::legend.width).WithHeight(ChainField::legend.height, true);
+	GfxFillRect(blob, PC_BLACK);
+	GfxFillRect(blob.Shrink(WidgetDimensions::scaled.bevel), indsp->map_colour);
+
+	this->AcceptsProducesChainField::Draw(r);
+}
+
+ChainField::ClickedAtResult IndustryChainField::ClickedAt(Rect r, Point pt) const
+{
+	if (r.Contains(pt)) return this->industry_type;
+	return this->AcceptsProducesChainField::ClickedAt(r, pt);
+}
+
+CargoTypes IndustryChainField::GetProduced()
+{
+	const IndustrySpec *indsp = GetIndustrySpec(this->industry_type);
+	return CargoTypes(indsp->produced_cargo);
+}
+
+CargoTypes IndustryChainField::GetAccepted()
+{
+	const IndustrySpec *indsp = GetIndustrySpec(this->industry_type);
+	return CargoTypes(indsp->accepts_cargo);
+}
+
+/** Field representing a house. */
+class HouseChainField : public AcceptsProducesChainField {
+public:
+	void Draw(Rect r) override;
+	ClickedAtResult ClickedAt(Rect r, Point pt) const override;
+	CargoTypes GetProduced() override;
+	CargoTypes GetAccepted() override;
+};
+
+void HouseChainField::Draw(Rect r)
+{
+	DrawFrameRect(r, Colours::Grey, {});
+	DrawStringMultiLine(r.Shrink(WidgetDimensions::scaled.frametext), STR_INDUSTRY_CARGOES_HOUSES, TextColour::White, {AlignmentH::Centre, AlignmentV::Middle}, false, ChainField::fontsize);
+
+	this->AcceptsProducesChainField::Draw(r);
+}
+
+ChainField::ClickedAtResult HouseChainField::ClickedAt(Rect r, Point pt) const
+{
+	if (r.Contains(pt)) return HouseID{};
+	return this->AcceptsProducesChainField::ClickedAt(r, pt);
+}
+
+CargoTypes HouseChainField::GetProduced()
+{
+	return ChainField::town_produces;
+}
+
+CargoTypes HouseChainField::GetAccepted()
+{
+	return ChainField::town_accepts;
+}
+
+/** Field presenting cargo names. */
+class CargoChainField : public ChainField {
+public:
+	std::array<CargoType, ChainField::MAX_CARGOES> cargo_types; ///< Cargoes to display (or #INVALID_CARGO).
+	Alignment align; ///< The text alignment.
+
+	CargoChainField(std::span<const CargoType> cargo_types, Alignment align);
+	void Draw(Rect r) override;
+	ClickedAtResult ClickedAt(Rect r, Point pt) const override;
+};
+
+/**
+ * Construct a new cargo label chain field.
+ * @param cargo_types The cargo types of this label field.
+ * @param align The text alignment.
+ */
+CargoChainField::CargoChainField(std::span<const CargoType> cargo_types, Alignment align) : align(align)
+{
+	assert(std::size(cargo_types) <= std::size(this->cargo_types));
+
+	auto r = std::ranges::copy(cargo_types, std::begin(this->cargo_types));
+	std::fill(r.out, std::end(this->cargo_types), INVALID_CARGO);
+}
+
+void CargoChainField::Draw(Rect r)
+{
+	r = r.CentreToHeight(ChainField::GetConnectionHeight() + GetCharacterHeight(ChainField::fontsize) - ChainField::cargo_line.height);
+
+	for (uint i = 0; i < ChainField::MAX_CARGOES; i++) {
+		if (IsValidCargoType(this->cargo_types[i])) {
+			DrawString(r.Shrink(WidgetDimensions::scaled.framerect, RectPadding::zero), CargoSpec::Get(this->cargo_types[i])->name, TextColour::White, this->align, false, ChainField::fontsize);
+		}
+		r = r.Translate(0, ChainField::cargo_line.height + ChainField::cargo_space.height);
+	}
+}
+
+ChainField::ClickedAtResult CargoChainField::ClickedAt(Rect r, Point pt) const
+{
+	r = r.CentreToHeight(ChainField::GetConnectionHeight() + GetCharacterHeight(ChainField::fontsize) - ChainField::cargo_line.height);
+	r = r.WithHeight(GetCharacterHeight(ChainField::fontsize), false);
+
+	for (CargoType cargo_type : this->cargo_types) {
+		if (!IsValidCargoType(cargo_type)) break;
+		if (r.Contains(pt)) return cargo_type;
+		r = r.Translate(0, ChainField::cargo_line.height + ChainField::cargo_space.height);
+	}
+
+	return {};
+}
+
+/**
+ * Construct a new cargo connection chain field.
+ * @param cargo_types The cargo types.
+ */
+ConnectionChainField::ConnectionChainField(CargoTypes cargo_types)
+{
+	assert(cargo_types.Count() <= std::size(this->vertical_cargoes));
+
+	auto it = this->vertical_cargoes.begin();
+	for (CargoType cargo_type : cargo_types) *it++ = cargo_type;
+
+	this->num_cargoes = static_cast<uint8_t>(std::distance(std::begin(this->vertical_cargoes), it));
+
+	std::sort(std::begin(this->vertical_cargoes), it, CargoTypeComparator{});
+	std::fill(it, std::end(this->vertical_cargoes), INVALID_CARGO);
+}
+
+int ConnectionChainField::Width() const
+{
+	return ChainField::connection_field_width;
+}
+
+void ConnectionChainField::Draw(Rect r)
+{
+	if (this->skip_cargoes == UINT16_MAX) return;
+
+	int col_step = ChainField::cargo_line.width + ChainField::cargo_space.width;
+	int row_step = ChainField::cargo_line.height + ChainField::cargo_space.height;
+	uint width = this->num_cargoes * col_step - ChainField::cargo_space.width;
+	Rect col_base = r.CentreToWidth(width).WithWidth(ChainField::cargo_line.width, false);
+	Rect row_base = r.CentreToHeight(ChainField::GetConnectionHeight()).WithHeight(ChainField::cargo_line.height, false);
+
+	uint16_t hor_left, hor_right;
+	if (_current_text_dir == TD_RTL) {
+		hor_left = this->cust_cargoes;
+		hor_right = this->supp_cargoes;
+	} else {
+		hor_left = this->supp_cargoes;
+		hor_right = this->cust_cargoes;
+	}
+
+	/* Draw columns */
+	for (int i = 0; i < this->num_cargoes; ++i) {
+		if (!HasBit(this->skip_cargoes, i)) {
+			Rect col = col_base;
+			RectPadding col_padding = WidgetDimensions::scaled.bevel;
+			if (HasBit(this->top_end, i)) {
+				col.top = row_base.top;
+			} else {
+				col_padding.top = 0;
+				col.top -= ChainField::vert_inter_industry_space / 2;
+			}
+			if (HasBit(this->bottom_end, i)) {
+				col.bottom = row_base.bottom;
+			} else {
+				col_padding.bottom = 0;
+				col.bottom += ChainField::vert_inter_industry_space / 2;
 			}
 
-			/* Allocate other cargoes in the empty holes of the horizontal cargo connections. */
-			for (uint i = 0; i < CargoesField::max_cargoes && other_count > 0; i++) {
-				if (HasBit(cargo_fld->u.cargo.supp_cargoes, i)) ind_fld->u.industry.other_produced[i] = others[--other_count];
-			}
+			GfxFillRect(col, CARGO_LINE_COLOUR);
+
+			if (HasBit(hor_left, i)) GfxFillRect(row_base.WithX(row_base.left, col_base.left), CARGO_LINE_COLOUR);
+			if (HasBit(hor_right, i)) GfxFillRect(row_base.WithX(col_base.right, row_base.right), CARGO_LINE_COLOUR);
+
+			PixelColour pc = CargoSpec::Get(this->vertical_cargoes[i])->legend_colour;
+			GfxFillRect(col.Shrink(col_padding), pc);
+
+			if (HasBit(hor_left, i)) GfxFillRect(row_base.WithX(row_base.left, col_base.left + WidgetDimensions::scaled.bevel.left - 1).Shrink(RectPadding::zero, WidgetDimensions::scaled.bevel), pc);
+			if (HasBit(hor_right, i)) GfxFillRect(row_base.WithX(col_base.right - WidgetDimensions::scaled.bevel.left + 1, row_base.right).Shrink(RectPadding::zero, WidgetDimensions::scaled.bevel), pc);
+		}
+
+		col_base = col_base.Translate(col_step, 0);
+		row_base = row_base.Translate(0, row_step);
+	}
+}
+
+/**
+ * Connect a cargo to the cargo column.
+ * @param cargo Cargo to connect.
+ * @param producer Cargo is produced (if \c false, cargo is assumed to be accepted).
+ * @return Horizontal connection index, or \c -1 if not connected at all.
+ */
+int ConnectionChainField::ConnectCargo(CargoType cargo, bool producer)
+{
+	assert(IsValidCargoType(cargo));
+
+	/* Find the vertical cargo column carrying the cargo. */
+	auto it = std::ranges::find(this->vertical_cargoes, cargo);
+	if (it == this->vertical_cargoes.end()) return -1;
+
+	int column = static_cast<int>(std::distance(this->vertical_cargoes.begin(), it));
+
+	if (producer) {
+		assert(!HasBit(this->supp_cargoes, column));
+		SetBit(this->supp_cargoes, column);
+	} else {
+		assert(!HasBit(this->cust_cargoes, column));
+		SetBit(this->cust_cargoes, column);
+	}
+
+	return column;
+}
+
+/**
+ * Get the cargo connections.
+ * @param accepting Include accepting connections.
+ * @param supplying Include supplying connections.
+ * @return The requested cargo connections.
+ */
+ChainField::CargoSlotMask ConnectionChainField::GetConnections(bool accepting, bool supplying) const
+{
+	CargoSlotMask mask = 0;
+	if (accepting) mask |= this->supp_cargoes;
+	if (supplying) mask |= this->cust_cargoes;
+	return mask;
+}
+
+ChainField::ClickedAtResult ConnectionChainField::ClickedAt(Rect r, Point pt) const
+{
+	if (this->skip_cargoes == UINT16_MAX) return {};
+
+	int col_step = ChainField::cargo_line.width + ChainField::cargo_space.width;
+	int row_step = ChainField::cargo_line.height + ChainField::cargo_space.height;
+	uint width = this->num_cargoes * col_step - ChainField::cargo_space.width;
+	Rect col_base = r.CentreToWidth(width).WithWidth(ChainField::cargo_line.width, false);
+	Rect row_base = r.CentreToHeight(ChainField::GetConnectionHeight()).WithHeight(ChainField::cargo_line.height, false);
+
+	uint16_t hor_left, hor_right;
+	if (_current_text_dir == TD_RTL) {
+		hor_left = this->cust_cargoes;
+		hor_right = this->supp_cargoes;
+	} else {
+		hor_left = this->supp_cargoes;
+		hor_right = this->cust_cargoes;
+	}
+
+	col_base = col_base.Translate(this->num_cargoes * col_step, 0);
+	row_base = row_base.Translate(0, this->num_cargoes * row_step);
+
+	/* Work backwards as higher slots are drawn last. */
+	for (int i = static_cast<int>(this->num_cargoes) - 1; i >= 0; --i) {
+		col_base = col_base.Translate(-col_step, 0);
+		row_base = row_base.Translate(0, -row_step);
+
+		if (HasBit(this->skip_cargoes, i)) continue;
+
+		Rect col = col_base;
+		if (HasBit(this->top_end, i)) {
+			col.top = row_base.top;
 		} else {
-			/* Houses only display cargo that towns produce. */
-			for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
-				CargoType cargo_type = cargo_fld->u.cargo.vertical_cargoes[i];
-				TownProductionEffect tpe = CargoSpec::Get(cargo_type)->town_production_effect;
-				if (tpe == TownProductionEffect::Passengers || tpe == TownProductionEffect::Mail) cargo_fld->ConnectCargo(cargo_type, true);
-			}
+			col.top -= ChainField::vert_inter_industry_space / 2;
+		}
+		if (HasBit(this->bottom_end, i)) {
+			col.bottom = row_base.bottom;
+		} else {
+			col.bottom += ChainField::vert_inter_industry_space / 2;
+		}
+
+		CargoType cargo_type = this->vertical_cargoes[i];
+
+		if (col.Contains(pt)) return cargo_type;
+		if (HasBit(hor_left, i) && row_base.WithX(row_base.left, col_base.left).Contains(pt)) return cargo_type;
+		if (HasBit(hor_right, i) && row_base.WithX(col_base.right, row_base.right).Contains(pt)) return cargo_type;
+	}
+
+	return {};
+}
+
+/** A single row of #ChainField. */
+class ChainRow {
+public:
+	static const int MAX_COLUMNS = 5; ///< Maximum number of columns in a row.
+	std::array<std::unique_ptr<ChainField>, MAX_COLUMNS> columns{}; ///< One row of fields.
+
+	/**
+	 * Test if a given column index is valid.
+	 * @param column The column index.
+	 * @return \c true iff the column index is valid.
+	 */
+	static bool IsValidColumn(int column)
+	{
+		return column >= 0 && column < static_cast<int>(std::tuple_size_v<decltype(ChainRow::columns)>);
+	}
+
+	/**
+	 * Get the height of this row of fields.
+	 * @return The height of this row.
+	 */
+	int Height() const
+	{
+		int height = 0;
+		for (const std::unique_ptr<ChainField> &fld : this->columns) {
+			if (fld == nullptr) continue;
+			height = std::max(height, fld->Height());
+		}
+		return height;
+	}
+
+	/**
+	 * Draw this row of fields.
+	 * @param r Rect to draw within.
+	 */
+	void Draw(Rect r) const
+	{
+		bool rtl = _current_text_dir == TD_RTL;
+		for (int col = 0; col < MAX_COLUMNS; ++col) {
+			int width = (col & 1) ? ChainField::connection_field_width : ChainField::industry_width;
+			if (this->columns[col] != nullptr) this->columns[col]->Draw(r.WithWidth(width, rtl));
+			r = r.Indent(width, rtl);
 		}
 	}
 
 	/**
-	 * Construct a #CargoesFieldType::CargoLabel field.
-	 * @param column    Column to create the new field.
+	 * Get the ClickedAt result for a field in this row.
+	 * @param r The rect of the row.
+	 * @param pt The click position.
+	 * @return \c ChainField::ClickedAtResult
+	 */
+	ChainField::ClickedAtResult ClickedAt(Rect r, Point pt) const
+	{
+		bool rtl = _current_text_dir == TD_RTL;
+
+		for (int col = 0; col < MAX_COLUMNS; ++col) {
+			int width = (col & 1) ? ChainField::connection_field_width : ChainField::industry_width;
+			Rect r_col = r.WithWidth(width, rtl);
+
+			if (IsValidColumn(col) && this->columns[col] != nullptr) {
+				auto result = this->columns[col]->ClickedAt(r_col, pt);
+				if (!std::holds_alternative<std::monostate>(result)) return result;
+			}
+
+			r = r.Indent(width, rtl);
+		}
+
+		return {};
+	}
+
+	/**
+	 * Connect produced cargoes to the connection column after it.
+	 * @param column Column of the industry or house.
+	 */
+	void ConnectProducedCargo(int column)
+	{
+		assert(IsValidColumn(column));
+		AcceptsProducesChainField *ind_fld = this->columns[column]->Get<AcceptsProducesChainField>();
+		ConnectionChainField *conn_fld = IsValidColumn(column + 1) ? this->columns[column + 1]->Get<ConnectionChainField>() : nullptr;
+		assert(ind_fld != nullptr);
+
+		ind_fld->other_produced.fill(INVALID_CARGO);
+		CargoTypes others = ind_fld->GetProduced();
+
+		ChainField::CargoSlotMask used_slots{};
+		if (conn_fld != nullptr) {
+			for (CargoType cargo_type : others) {
+				if (conn_fld->ConnectCargo(cargo_type, true) >= 0) others.Reset(cargo_type);
+			}
+			used_slots = conn_fld->supp_cargoes;
+		}
+
+		/* Allocate other cargoes in the empty holes of the horizontal cargo connections. */
+		auto it = others.begin();
+		auto last = others.end();
+		for (uint i = 0; i != ChainField::max_cargoes && it != last; ++i) {
+			if (HasBit(used_slots, i)) continue;
+			ind_fld->other_produced[i] = *it;
+			++it;
+		}
+	}
+
+	/**
+	 * Construct a Cargo chain field.
+	 * @param column Column for the new field.
 	 * @param accepting Display accepted cargo (if \c false, display produced cargo).
 	 */
 	void MakeCargoLabel(int column, bool accepting)
 	{
-		CargoType cargoes[MAX_CARGOES];
-		std::fill(std::begin(cargoes), std::end(cargoes), INVALID_CARGO);
+		assert(IsValidColumn(column) && IsValidColumn(accepting ? column - 1 : column + 1));
+		assert(this->columns[column] == nullptr);
 
-		CargoesField *label_fld = this->columns + column;
-		CargoesField *cargo_fld = this->columns + (accepting ? column - 1 : column + 1);
+		std::array<CargoType, ChainField::ChainField::MAX_CARGOES> cargo_types;
+		cargo_types.fill(INVALID_CARGO);
 
-		assert(cargo_fld->type == CargoesFieldType::Cargo && label_fld->type == CargoesFieldType::Empty);
-		for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
-			int col = cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], !accepting);
-			if (col >= 0) cargoes[col] = cargo_fld->u.cargo.vertical_cargoes[i];
+		ConnectionChainField *conn_fld = this->columns[accepting ? column - 1 : column + 1]->Get<ConnectionChainField>();
+		assert(conn_fld != nullptr);
+
+		for (uint i = 0; i < conn_fld->num_cargoes; i++) {
+			int col = conn_fld->ConnectCargo(conn_fld->vertical_cargoes[i], !accepting);
+			if (col >= 0) cargo_types[col] = conn_fld->vertical_cargoes[i];
 		}
-		label_fld->MakeCargoLabel(cargoes, accepting);
+
+		this->columns[column] = std::make_unique<CargoChainField>(cargo_types, accepting ? AlignmentH::Start : AlignmentH::End);
 	}
 
-
 	/**
-	 * Connect industry accepted cargoes to the cargo column before it.
-	 * @param column Column of the industry.
+	 * Connect accepted cargoes to the connection column before it.
+	 * @param column Column of the industry or house.
 	 */
-	void ConnectIndustryAccepted(int column)
+	void ConnectAcceptedCargo(int column)
 	{
-		CargoesField *ind_fld   = this->columns + column;
-		CargoesField *cargo_fld = this->columns + column - 1;
-		assert(ind_fld->type == CargoesFieldType::Industry && cargo_fld->type == CargoesFieldType::Cargo);
+		assert(IsValidColumn(column));
+		AcceptsProducesChainField *ind_fld = this->columns[column]->Get<AcceptsProducesChainField>();
+		ConnectionChainField *conn_fld = IsValidColumn(column - 1) ? this->columns[column - 1]->Get<ConnectionChainField>() : nullptr;
+		assert(ind_fld != nullptr);
 
-		std::fill(std::begin(ind_fld->u.industry.other_accepted), std::end(ind_fld->u.industry.other_accepted), INVALID_CARGO);
+		ind_fld->other_accepted.fill(INVALID_CARGO);
+		CargoTypes others = ind_fld->GetAccepted();
 
-		if (ind_fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
-			CargoType others[MAX_CARGOES]; // Accepted cargoes not carried in the cargo column.
-			int other_count = 0;
-
-			const IndustrySpec *indsp = GetIndustrySpec(ind_fld->u.industry.ind_type);
-			assert(CargoesField::max_cargoes <= std::size(indsp->accepts_cargo));
-			for (uint i = 0; i < CargoesField::max_cargoes; i++) {
-				int col = cargo_fld->ConnectCargo(indsp->accepts_cargo[i], false);
-				if (col < 0) others[other_count++] = indsp->accepts_cargo[i];
+		ChainField::CargoSlotMask used_slots{};
+		if (conn_fld != nullptr) {
+			for (CargoType cargo_type : others) {
+				if (conn_fld->ConnectCargo(cargo_type, false) >= 0) others.Reset(cargo_type);
 			}
+			used_slots = conn_fld->cust_cargoes;
+		}
 
-			/* Allocate other cargoes in the empty holes of the horizontal cargo connections. */
-			for (uint i = 0; i < CargoesField::max_cargoes && other_count > 0; i++) {
-				if (!HasBit(cargo_fld->u.cargo.cust_cargoes, i)) ind_fld->u.industry.other_accepted[i] = others[--other_count];
-			}
-		} else {
-			/* Houses only display what is demanded. */
-			for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
-				for (const auto &hs : HouseSpec::Specs()) {
-					if (!hs.enabled) continue;
-
-					for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
-						if (hs.cargo_acceptance[j] > 0 && cargo_fld->u.cargo.vertical_cargoes[i] == hs.accepts_cargo[j]) {
-							cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], false);
-							goto next_cargo;
-						}
-					}
-				}
-next_cargo: ;
-			}
+		/* Allocate other cargoes in the empty holes of the horizontal cargo connections. */
+		auto it = others.begin();
+		auto last = others.end();
+		for (uint i = 0; i != ChainField::max_cargoes && it != last; ++i) {
+			if (HasBit(used_slots, i)) continue;
+			ind_fld->other_accepted[i] = *it;
+			++it;
 		}
 	}
 };
 
+/**
+ * Get the maximal size for cargo names.
+ * @param fs The font size.
+ * @return The maximal size.
+ */
+static Dimension GetMaximalSizeCargoString(FontSize fs = FontSize::Normal)
+{
+	auto op = [fs](const Dimension &d, const CargoSpec *cs) { return maxdim(d, GetStringBoundingBox(cs->name, fs)); };
+	return std::accumulate(_sorted_cargo_specs.begin(), _sorted_cargo_specs.end(), Dimension{}, op);
+}
+
+/**
+ * Get the maximal size for industry type names.
+ * @param fs The font size.
+ * @return The maximal size.
+ */
+static Dimension GetMaximalSizeIndustryString(FontSize fs = FontSize::Normal)
+{
+	auto op = [fs](const Dimension &d, IndustryType it) { return maxdim(d, GetStringBoundingBox(GetIndustrySpec(it)->name, fs)); };
+	return std::accumulate(_sorted_industry_types.begin(), _sorted_industry_types.end(), Dimension{}, op);
+}
 
 /**
  * Window displaying the cargo connections around an industry (or cargo).
  *
  * The main display is constructed from 'fields', rectangles that contain an industry, piece of the cargo connection, cargo labels, or headers.
  * For a nice display, the following should be kept in mind:
- * - A #CargoesFieldType::Header is always at the top of an column of #CargoesFieldType::Industry fields.
- * - A #CargoesFieldType::CargoLabel field is also always put in a column of #CargoesFieldType::Industry fields.
- * - The top row contains #CargoesFieldType::Header and #CargoesFieldType::SmallEmpty fields.
- * - Cargo connections have a column of their own (#CargoesFieldType::Cargo fields).
- * - Cargo accepted or produced by an industry, but not carried in a cargo connection, is drawn in the space of a cargo column attached to the industry.
- *   The information however is part of the industry.
+ * - A \c HeaderChainField is always at the top of an column of \c AcceptsProducesChainField fields.
+ * - A \c CargoChainField field is also always put in a column of \c AcceptsProducesChainField fields.
+ * - The top row contains \c HeaderChainField and empty fields.
+ * - Cargo connections have a column of their own, made up of \c ConnectionChainField fields.
+ * - Cargo accepted or produced by an industry/house, but not carried in a cargo connection, is drawn in the space of a cargo column attached to the industry/house.
+ *   The information however is part of the industry/house.
  *
  * This results in the following invariants:
- * - Width of a #CargoesFieldType::Industry column is large enough to hold all industry type labels, all cargo labels, and all header texts.
- * - Height of a #CargoesFieldType::Industry is large enough to hold a header line, or a industry type line, \c N cargo labels
- *   (where \c N is the maximum number of cargoes connected between industries), \c N connections of cargo types, and space
+ * - Width of a \c AcceptsProducesChainField column is large enough to hold all industry type labels, all cargo labels, and all header texts.
+ * - Height of a \c AcceptsProducesChainField is large enough to hold a header line, or a industry type line, \c ChainField::MAX_CARGOES cargo labels
+ *   (where \c ChainField::MAX_CARGOES is the maximum number of cargoes connected between industries), \c ChainField::MAX_CARGOES connections of cargo types, and space
  *   between two industry types (1/2 above it, and 1/2 underneath it).
- * - Width of a cargo field (#CargoesFieldType::Cargo) is large enough to hold \c N vertical columns (one for each type of cargo).
+ * - Width of a \c ConnectionChainField is large enough to hold \c ChainField::MAX_CARGOES vertical columns (one for each type of cargo).
  *   Also, space is needed between an industry and the leftmost/rightmost column to draw the non-carried cargoes.
- * - Height of a #CargoesFieldType::Cargo field is equally high as the height of the #CargoesFieldType::Industry.
- * - A field at the top (#CargoesFieldType::Header or #CargoesFieldType::SmallEmpty) match the width of the fields below them (#CargoesFieldType::Industry respectively
- *   #CargoesFieldType::Cargo), the height should be sufficient to display the header text.
+ * - Height of a \c ConnectionChainField field is equally high as the height of the \c AcceptsProducesChainField.
+ * - A \c HeaderChainField or empty field at the top match the width of the fields below them, the height should be sufficient to display the header text.
  *
  * When displaying the cargoes around an industry type, five columns are needed (supplying industries, accepted cargoes, the industry,
  * produced cargoes, customer industries). Displaying the industries around a cargo needs three columns (supplying industries, the cargo,
- * customer industries). The remaining two columns are set to #CargoesFieldType::Empty with a width equal to the average of a cargo and an industry column.
+ * customer industries). The remaining two columns are empty and unused.
  */
 struct IndustryCargoesWindow : public Window {
-	typedef std::vector<CargoesRow> Fields;
-
-	Fields fields{}; ///< Fields to display in the #WID_IC_PANEL.
-	uint ind_cargo = 0; ///< If less than #NUM_INDUSTRYTYPES, an industry type, else a cargo type + NUM_INDUSTRYTYPES.
+	std::vector<ChainRow> rows{}; ///< Fields to display in the #WID_IC_PANEL.
+	std::variant<IndustryType, CargoType, HouseID> ind_cargo; ///< The displayed industry or cargo type.
 	Dimension cargo_textsize{}; ///< Size to hold any cargo text, as well as STR_INDUSTRY_CARGOES_SELECT_CARGO.
 	Dimension ind_textsize{}; ///< Size to hold any industry type text, as well as STR_INDUSTRY_CARGOES_SELECT_INDUSTRY.
 	Scrollbar *vscroll = nullptr;
@@ -2551,81 +2726,112 @@ struct IndustryCargoesWindow : public Window {
 		this->OnInvalidateData(id);
 	}
 
-	void OnInit() override
+	/**
+	 * Count the maximal number of cargo types handled by all industry types.
+	 * @return Number of cargo types handled by industry types.
+	 */
+	uint CountIndustryCargoTypes()
 	{
-		/* Initialize static CargoesField size variables. */
-		Dimension d = GetStringBoundingBox(STR_INDUSTRY_CARGOES_PRODUCERS);
-		d = maxdim(d, GetStringBoundingBox(STR_INDUSTRY_CARGOES_CUSTOMERS));
-		d.width  += WidgetDimensions::scaled.frametext.Horizontal();
-		d.height += WidgetDimensions::scaled.frametext.Vertical();
-		CargoesField::small_height = d.height;
-
-		/* Size of the legend blob -- slightly larger than the smallmap legend blob. */
-		CargoesField::legend.height = GetCharacterHeight(FontSize::Small);
-		CargoesField::legend.width = CargoesField::legend.height * 9 / 6;
-
-		/* Size of cargo lines. */
-		CargoesField::cargo_line.width = ScaleGUITrad(6);
-		CargoesField::cargo_line.height = CargoesField::cargo_line.width;
-
-		/* Size of border between cargo lines and industry boxes. */
-		CargoesField::cargo_border.width = CargoesField::cargo_line.width * 3 / 2;
-		CargoesField::cargo_border.height = CargoesField::cargo_line.width / 2;
-
-		/* Size of space between cargo lines. */
-		CargoesField::cargo_space.width = CargoesField::cargo_line.width / 2;
-		CargoesField::cargo_space.height = CargoesField::cargo_line.height / 2;
-
-		/* Size of cargo stub (unconnected cargo line.) */
-		CargoesField::cargo_stub.width = CargoesField::cargo_line.width / 2;
-		CargoesField::cargo_stub.height = CargoesField::cargo_line.height; /* Unused */
-
-		CargoesField::vert_inter_industry_space = WidgetDimensions::scaled.vsep_wide;
-		CargoesField::blob_distance = WidgetDimensions::scaled.hsep_normal;
-
-		/* Decide about the size of the box holding the text of an industry type. */
-		this->ind_textsize.width = 0;
-		this->ind_textsize.height = 0;
-		CargoesField::max_cargoes = 0;
+		uint max_cargoes = 0;
 		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
-			this->ind_textsize = maxdim(this->ind_textsize, GetStringBoundingBox(indsp->name));
-			CargoesField::max_cargoes = std::max<uint>(CargoesField::max_cargoes, std::ranges::count_if(indsp->accepts_cargo, IsValidCargoType));
-			CargoesField::max_cargoes = std::max<uint>(CargoesField::max_cargoes, std::ranges::count_if(indsp->produced_cargo, IsValidCargoType));
+			max_cargoes = std::max<uint>(max_cargoes, std::ranges::count_if(indsp->accepts_cargo, IsValidCargoType));
+			max_cargoes = std::max<uint>(max_cargoes, std::ranges::count_if(indsp->produced_cargo, IsValidCargoType));
 		}
-		d.width = std::max(d.width, this->ind_textsize.width);
-		d.height = this->ind_textsize.height;
-		this->ind_textsize = maxdim(this->ind_textsize, GetStringBoundingBox(STR_INDUSTRY_CARGOES_SELECT_INDUSTRY));
+		return max_cargoes;
+	}
 
-		/* Compute max size of the cargo texts. */
-		this->cargo_textsize.width = 0;
-		this->cargo_textsize.height = 0;
-		for (const CargoSpec *csp : CargoSpec::Iterate()) {
-			this->cargo_textsize = maxdim(this->cargo_textsize, GetStringBoundingBox(csp->name));
+	/**
+	 * Count the maximal number of cargo types handled by all houses.
+	 * Updates the accept and produce cargo type masks handled by houses.
+	 * @return Number of cargo types handled by houses.
+	 */
+	uint CountHouseCargoTypes() const
+	{
+		HouseZones climate_mask = GetClimateMaskForLandscape();
+
+		ChainField::town_accepts.Reset();
+		ChainField::town_produces.Reset();
+
+		/* Count cargoes accepted by houses. Houses are single field, so we need the total across all house types. */
+		for (const HouseSpec &hs : HouseSpec::Specs()) {
+			if (!hs.enabled || !hs.building_availability.Any(climate_mask)) continue;
+			ChainField::town_accepts.Set({hs.accepts_cargo});
 		}
-		d = maxdim(d, this->cargo_textsize); // Box must also be wide enough to hold any cargo label.
-		this->cargo_textsize = maxdim(this->cargo_textsize, GetStringBoundingBox(STR_INDUSTRY_CARGOES_SELECT_CARGO));
+
+		/* Count cargoes produced by town effects. */
+		for (const CargoSpec *cs : _sorted_cargo_specs) {
+			if (cs->town_production_effect != TownProductionEffect::None) ChainField::town_produces.Set(cs->Index());
+		}
+
+		return std::max(ChainField::town_accepts.Count(), ChainField::town_produces.Count());
+	}
+
+	void OnInit() override
+	{
+		/* Initialize static CargoesField size variables. */
+		Dimension d = GetStringBoundingBox(STR_INDUSTRY_CARGOES_SOURCES, ChainField::fontsize);
+		d = maxdim(d, GetStringBoundingBox(STR_INDUSTRY_CARGOES_DESTINATIONS, ChainField::fontsize));
+		ChainField::small_height = d.height + WidgetDimensions::scaled.frametext.Vertical();
+
+		/* Size of the legend blob -- same size as the smallmap legend blob. */
+		ChainField::legend.height = GetCharacterHeight(FontSize::Small) - ScaleGUITrad(1);
+		ChainField::legend.width = GetCharacterHeight(FontSize::Small) * 9 / 6;
+
+		/* Size of cargo lines. */
+		ChainField::cargo_line.width = ScaleGUITrad(6);
+		ChainField::cargo_line.height = ChainField::cargo_line.width;
+
+		/* Size of border between cargo lines and industry boxes. */
+		ChainField::cargo_border.width = ChainField::cargo_line.width * 3 / 2;
+		ChainField::cargo_border.height = ChainField::cargo_line.width / 2;
+
+		/* Size of space between cargo lines. */
+		ChainField::cargo_space.width = ChainField::cargo_line.width / 2;
+		ChainField::cargo_space.height = std::max<uint>(GetCharacterHeight(ChainField::fontsize) + WidgetDimensions::scaled.vsep_normal - ChainField::cargo_line.height, ChainField::cargo_line.height / 2);
+
+		/* Size of cargo stub (unconnected cargo line.) */
+		ChainField::cargo_stub.width = ChainField::cargo_line.width * 2 / 3;
+		ChainField::cargo_stub.height = ChainField::cargo_line.height; /* Unused */
+
+		ChainField::vert_inter_industry_space = WidgetDimensions::scaled.vsep_wide;
+		ChainField::blob_distance = WidgetDimensions::scaled.hsep_normal;
+
+		/* Get the number of cargo types that need to be displayed. */
+		ChainField::max_cargoes = std::max<uint>(this->CountIndustryCargoTypes(), this->CountHouseCargoTypes());
+
+		/* Compute size of the cargo and industry labels. */
+		d = maxdim(d, GetMaximalSizeCargoString(ChainField::fontsize));
+		d = maxdim(d, GetMaximalSizeIndustryString(ChainField::fontsize));
 
 		d.width += WidgetDimensions::scaled.frametext.Horizontal();
-		/* Ensure the height is enough for the industry type text, for the horizontal connections, and for the cargo labels. */
-		uint min_ind_height = CargoesField::cargo_border.height * 2 + CargoesField::max_cargoes * GetCharacterHeight(FontSize::Normal) + (CargoesField::max_cargoes - 1) * CargoesField::cargo_space.height;
+		/* Ensure the height is enough for all connections. */
+		uint min_ind_height = ChainField::cargo_border.height * 2 + ChainField::GetConnectionHeight();
 		d.height = std::max(d.height + WidgetDimensions::scaled.frametext.Vertical(), min_ind_height);
 
-		CargoesField::industry_width = d.width;
-		CargoesField::normal_height = d.height + CargoesField::vert_inter_industry_space;
+		ChainField::industry_width = d.width;
+		ChainField::normal_height = d.height;
 
-		/* Width of a #CargoesFieldType::Cargo field. */
-		CargoesField::cargo_field_width = CargoesField::cargo_border.width * 2 + CargoesField::cargo_line.width * CargoesField::max_cargoes + CargoesField::cargo_space.width * (CargoesField::max_cargoes - 1);
+		/* Width of a cargo connection field. */
+		ChainField::connection_field_width = ChainField::cargo_border.width * 2 + ChainField::max_cargoes * (ChainField::cargo_line.width + ChainField::cargo_space.width) - ChainField::cargo_space.width;
+
+		/* Compute size for cargo selection dropdown. */
+		this->cargo_textsize = GetMaximalSizeCargoString();
+		this->cargo_textsize.width += GetLargestCargoIconSize().width + WidgetDimensions::scaled.hsep_normal;
+		this->cargo_textsize = maxdim(this->cargo_textsize, GetStringBoundingBox(STR_INDUSTRY_CARGOES_SELECT_CARGO));
+
+		/* Compute size for industry selection dropdown. */
+		this->ind_textsize = maxdim(GetMaximalSizeIndustryString(), GetStringBoundingBox(STR_INDUSTRY_CARGOES_SELECT_INDUSTRY));
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {
 			case WID_IC_PANEL:
-				fill.height = resize.height = CargoesField::normal_height;
-				size.width = CargoesField::industry_width * 3 + CargoesField::cargo_field_width * 2 + WidgetDimensions::scaled.frametext.Horizontal();
-				size.height = CargoesField::small_height + 2 * resize.height + WidgetDimensions::scaled.frametext.Vertical();
+				fill.height = resize.height = ChainField::normal_height + ChainField::vert_inter_industry_space;
+				size.width = ChainField::cargo_stub.width * 2 + ChainField::industry_width * 3 + ChainField::connection_field_width * 2 + WidgetDimensions::scaled.frametext.Horizontal();
+				size.height = ChainField::small_height + 2 * resize.height + WidgetDimensions::scaled.frametext.Vertical();
 				break;
 
 			case WID_IC_IND_DROPDOWN:
@@ -2642,30 +2848,12 @@ struct IndustryCargoesWindow : public Window {
 	{
 		if (widget != WID_IC_CAPTION) return this->Window::GetWidgetString(widget, stringid);
 
-		if (this->ind_cargo < NUM_INDUSTRYTYPES) {
-			const IndustrySpec *indsp = GetIndustrySpec(this->ind_cargo);
-			return GetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, indsp->name);
-		} else {
-			const CargoSpec *csp = CargoSpec::Get(this->ind_cargo - NUM_INDUSTRYTYPES);
-			return GetString(STR_INDUSTRY_CARGOES_CARGO_CAPTION, csp->name);
-		}
-	}
-
-	/**
-	 * Do the two sets of cargoes have a valid cargo in common?
-	 * @param cargoes1 Span of the first cargo list.
-	 * @param cargoes2 Span of the second cargo list.
-	 * @return Arrays have at least one valid cargo in common.
-	 */
-	static bool HasCommonValidCargo(const std::span<const CargoType> cargoes1, const std::span<const CargoType> cargoes2)
-	{
-		for (const CargoType cargo_type1 : cargoes1) {
-			if (!IsValidCargoType(cargo_type1)) continue;
-			for (const CargoType cargo_type2 : cargoes2) {
-				if (cargo_type1 == cargo_type2) return true;
-			}
-		}
-		return false;
+		struct visitor {
+			std::string operator()(IndustryType industry_type) { return GetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, GetIndustrySpec(industry_type)->name); }
+			std::string operator()(CargoType cargo_type) { return GetString(STR_INDUSTRY_CARGOES_CARGO_CAPTION, CargoSpec::Get(cargo_type)->name); }
+			std::string operator()(HouseID) { return GetString(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, STR_INDUSTRY_CARGOES_HOUSES); }
+		};
+		return std::visit(visitor{}, this->ind_cargo);
 	}
 
 	/**
@@ -2673,14 +2861,9 @@ struct IndustryCargoesWindow : public Window {
 	 * @param cargoes Span of cargo list.
 	 * @return Houses can supply at least one of the cargoes.
 	 */
-	static bool HousesCanSupply(const std::span<const CargoType> cargoes)
+	static bool HousesCanSupply(CargoTypes cargoes)
 	{
-		for (const CargoType cargo_type : cargoes) {
-			if (!IsValidCargoType(cargo_type)) continue;
-			TownProductionEffect tpe = CargoSpec::Get(cargo_type)->town_production_effect;
-			if (tpe == TownProductionEffect::Passengers || tpe == TownProductionEffect::Mail) return true;
-		}
-		return false;
+		return ChainField::town_produces.Any(cargoes);
 	}
 
 	/**
@@ -2688,22 +2871,9 @@ struct IndustryCargoesWindow : public Window {
 	 * @param cargoes Span of cargo list.
 	 * @return Houses can accept at least one of the cargoes.
 	 */
-	static bool HousesCanAccept(const std::span<const CargoType> cargoes)
+	static bool HousesCanAccept(CargoTypes cargoes)
 	{
-		HouseZones climate_mask = GetClimateMaskForLandscape();
-
-		for (const CargoType cargo_type : cargoes) {
-			if (!IsValidCargoType(cargo_type)) continue;
-
-			for (const auto &hs : HouseSpec::Specs()) {
-				if (!hs.enabled || !hs.building_availability.Any(climate_mask)) continue;
-
-				for (uint j = 0; j < lengthof(hs.accepts_cargo); j++) {
-					if (hs.cargo_acceptance[j] > 0 && cargo_type == hs.accepts_cargo[j]) return true;
-				}
-			}
-		}
-		return false;
+		return ChainField::town_accepts.Any(cargoes);
 	}
 
 	/**
@@ -2711,14 +2881,14 @@ struct IndustryCargoesWindow : public Window {
 	 * @param cargoes Cargoes to search.
 	 * @return Number of industries that have an accepted cargo in common with the supplied set.
 	 */
-	static int CountMatchingAcceptingIndustries(const std::span<const CargoType> cargoes)
+	static int CountMatchingAcceptingIndustries(CargoTypes cargoes)
 	{
 		int count = 0;
 		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 
-			if (HasCommonValidCargo(cargoes, indsp->accepts_cargo)) count++;
+			if (cargoes.Any({indsp->accepts_cargo})) count++;
 		}
 		return count;
 	}
@@ -2728,14 +2898,14 @@ struct IndustryCargoesWindow : public Window {
 	 * @param cargoes Cargoes to search.
 	 * @return Number of industries that have a produced cargo in common with the supplied set.
 	 */
-	static int CountMatchingProducingIndustries(const std::span<const CargoType> cargoes)
+	static int CountMatchingProducingIndustries(CargoTypes cargoes)
 	{
 		int count = 0;
 		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 
-			if (HasCommonValidCargo(cargoes, indsp->produced_cargo)) count++;
+			if (cargoes.Any({indsp->produced_cargo})) count++;
 		}
 		return count;
 	}
@@ -2743,39 +2913,58 @@ struct IndustryCargoesWindow : public Window {
 	/**
 	 * Shorten the cargo column to just the part between industries.
 	 * @param column Column number of the cargo column.
-	 * @param top    Current top row.
+	 * @param top Current top row.
+	 * @param middle Current middle row.
 	 * @param bottom Current bottom row.
+	 * @param accepting Handle accepting cargoes.
+	 * @param supplying Handle supplying cargoes.
 	 */
-	void ShortenCargoColumn(int column, int top, int bottom)
+	void ShortenConnectionsColumn(int column, int top, int middle, int bottom, bool accepting, bool supplying)
 	{
-		while (top < bottom && !this->fields[top].columns[column].HasConnection()) {
-			this->fields[top].columns[column].MakeEmpty(CargoesFieldType::Empty);
-			top++;
-		}
-		this->fields[top].columns[column].u.cargo.top_end = true;
+		CargoChainField::CargoSlotMask last_skip = UINT16_MAX;
 
-		while (bottom > top && !this->fields[bottom].columns[column].HasConnection()) {
-			this->fields[bottom].columns[column].MakeEmpty(CargoesFieldType::Empty);
-			bottom--;
+		for (int i = top; i <= middle; ++i) {
+			ConnectionChainField *fld = this->rows[i].columns[column]->Get<ConnectionChainField>();
+			if (fld == nullptr) continue;
+
+			fld->top_end = last_skip;
+
+			if (accepting && this->rows[i].columns[column + 1]->Get<CargoChainField>() != nullptr) break;
+			if (i == middle) break;
+
+			/* Skip cargos until they are first connected. */
+			fld->skip_cargoes = last_skip & ~fld->GetConnections(accepting, supplying);
+			last_skip = fld->skip_cargoes;
 		}
-		this->fields[bottom].columns[column].u.cargo.bottom_end = true;
+
+		last_skip = UINT16_MAX;
+		for (int i = bottom; i >= middle; --i) {
+			ConnectionChainField *fld = this->rows[i].columns[column]->Get<ConnectionChainField>();
+			if (fld == nullptr) continue;
+
+			fld->bottom_end = last_skip;
+
+			if (supplying && this->rows[i].columns[column - 1]->Get<CargoChainField>() != nullptr) break;
+			if (i == middle) break;
+
+			/* Skip cargos until they are first connected. */
+			fld->skip_cargoes = last_skip & ~fld->GetConnections(accepting, supplying);
+			last_skip = fld->skip_cargoes;
+		}
 	}
 
 	/**
-	 * Place an industry in the fields.
-	 * @param row Row of the new industry.
-	 * @param col Column of the new industry.
-	 * @param it  Industry to place.
+	 * Place a industry or house in the fields.
+	 * @param field The industry or house field to place.
+	 * @param row Row of the new field.
+	 * @param col Column of the new field.
 	 */
-	void PlaceIndustry(int row, int col, IndustryType it)
+	void PlaceAndConnect(std::unique_ptr<AcceptsProducesChainField> &&field, int row, int col)
 	{
-		assert(this->fields[row].columns[col].type == CargoesFieldType::Empty);
-		this->fields[row].columns[col].MakeIndustry(it);
-		if (col == 0) {
-			this->fields[row].ConnectIndustryProduced(col);
-		} else {
-			this->fields[row].ConnectIndustryAccepted(col);
-		}
+		assert(this->rows[row].columns[col] == nullptr);
+		this->rows[row].columns[col] = std::move(field);
+		this->rows[row].ConnectProducedCargo(col);
+		this->rows[row].ConnectAcceptedCargo(col);
 	}
 
 	/**
@@ -2791,147 +2980,154 @@ struct IndustryCargoesWindow : public Window {
 	}
 
 	/**
-	 * Compute what and where to display for industry type \a it.
-	 * @param displayed_it Industry type to display.
+	 * Compute what and where to display for an Accepts/Produces chain field.
+	 * @param field The Accepts/Produces chain field.
+	 * @param accepts List of cargo types the field accepts.
+	 * @param produces List of cargo types the field produces.
 	 */
-	void ComputeIndustryDisplay(IndustryType displayed_it)
+	void ComputeAcceptsProducesIndustryDisplay(std::unique_ptr<AcceptsProducesChainField> &&field, CargoTypes accepts, CargoTypes produces)
 	{
-		this->ind_cargo = displayed_it;
-		_displayed_industries.reset();
-		_displayed_industries.set(displayed_it);
+		this->rows.clear();
+		ChainRow &first_row = this->rows.emplace_back();
+		first_row.columns[0] = std::make_unique<HeaderChainField>(STR_INDUSTRY_CARGOES_SOURCES);
+		first_row.columns[4] = std::make_unique<HeaderChainField>(STR_INDUSTRY_CARGOES_DESTINATIONS);
 
-		this->fields.clear();
-		CargoesRow &first_row = this->fields.emplace_back();
-		first_row.columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
-		first_row.columns[1].MakeEmpty(CargoesFieldType::SmallEmpty);
-		first_row.columns[2].MakeEmpty(CargoesFieldType::SmallEmpty);
-		first_row.columns[3].MakeEmpty(CargoesFieldType::SmallEmpty);
-		first_row.columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
+		bool houses_supply = HousesCanSupply(accepts);
+		bool houses_accept = HousesCanAccept(produces);
 
-		const IndustrySpec *central_sp = GetIndustrySpec(displayed_it);
-		bool houses_supply = HousesCanSupply(central_sp->accepts_cargo);
-		bool houses_accept = HousesCanAccept(central_sp->produced_cargo);
-		/* Make a field consisting of two cargo columns. */
-		int num_supp = CountMatchingProducingIndustries(central_sp->accepts_cargo) + houses_supply;
-		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo) + houses_accept;
+		int num_supp = CountMatchingProducingIndustries(accepts) + houses_supply;
+		int num_cust = CountMatchingAcceptingIndustries(produces) + houses_accept;
 		int num_indrows = std::max(3, std::max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
+
+		/* Make a field consisting of two cargo columns. */
 		for (int i = 0; i < num_indrows; i++) {
-			CargoesRow &row = this->fields.emplace_back();
-			row.columns[0].MakeEmpty(CargoesFieldType::Empty);
-			row.columns[1].MakeCargo(central_sp->accepts_cargo);
-			row.columns[2].MakeEmpty(CargoesFieldType::Empty);
-			row.columns[3].MakeCargo(central_sp->produced_cargo);
-			row.columns[4].MakeEmpty(CargoesFieldType::Empty);
+			ChainRow &row = this->rows.emplace_back();
+			row.columns[1] = std::make_unique<ConnectionChainField>(accepts);
+			row.columns[3] = std::make_unique<ConnectionChainField>(produces);
 		}
-		/* Add central industry. */
+
+		/* Add central accepts/produces field. */
 		int central_row = 1 + num_indrows / 2;
-		this->fields[central_row].columns[2].MakeIndustry(displayed_it);
-		this->fields[central_row].ConnectIndustryProduced(2);
-		this->fields[central_row].ConnectIndustryAccepted(2);
+		this->rows[central_row].columns[2] = std::move(field);
+		this->rows[central_row].ConnectProducedCargo(2);
+		this->rows[central_row].ConnectAcceptedCargo(2);
 
 		/* Add cargo labels. */
-		this->fields[central_row - 1].MakeCargoLabel(2, true);
-		this->fields[central_row + 1].MakeCargoLabel(2, false);
+		this->rows[central_row - 1].MakeCargoLabel(2, true);
+		this->rows[central_row + 1].MakeCargoLabel(2, false);
 
-		/* Add suppliers and customers of the 'it' industry. */
-		int supp_count = 0;
-		int cust_count = 0;
+		/* Determine start positions, with different rounding to look better with the label position for each side. */
+		int supp_pos = 1 + (num_indrows + 1 - num_supp) / 2;
+		int cust_pos = 1 + (num_indrows - num_cust) / 2;
+
+		/* Add suppliers and customers. */
 		for (IndustryType it : _sorted_industry_types) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 
-			if (HasCommonValidCargo(central_sp->accepts_cargo, indsp->produced_cargo)) {
-				this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, it);
+			if (accepts.Any({indsp->produced_cargo})) {
+				this->PlaceAndConnect(std::make_unique<IndustryChainField>(it), supp_pos++, 0);
 				_displayed_industries.set(it);
-				supp_count++;
 			}
-			if (HasCommonValidCargo(central_sp->produced_cargo, indsp->accepts_cargo)) {
-				this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 4, it);
+			if (produces.Any({indsp->accepts_cargo})) {
+				this->PlaceAndConnect(std::make_unique<IndustryChainField>(it), cust_pos++, 4);
 				_displayed_industries.set(it);
-				cust_count++;
 			}
-		}
-		if (houses_supply) {
-			this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, NUM_INDUSTRYTYPES);
-			supp_count++;
-		}
-		if (houses_accept) {
-			this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 4, NUM_INDUSTRYTYPES);
-			cust_count++;
 		}
 
-		this->ShortenCargoColumn(1, 1, num_indrows);
-		this->ShortenCargoColumn(3, 1, num_indrows);
+		if (houses_supply) this->PlaceAndConnect(std::make_unique<HouseChainField>(), supp_pos++, 0);
+		if (houses_accept) this->PlaceAndConnect(std::make_unique<HouseChainField>(), cust_pos++, 4);
+
+		this->ShortenConnectionsColumn(1, 1, central_row, num_indrows, true, false);
+		this->ShortenConnectionsColumn(3, 1, central_row, num_indrows, false, true);
 		this->vscroll->SetCount(num_indrows);
 		this->SetDirty();
 		this->NotifySmallmap();
 	}
 
 	/**
-	 * Compute what and where to display for cargo type \a cargo_type.
-	 * @param cargo_type Cargo type to display.
+	 * Compute the display for an industry type.
+	 * @param industry_type Industry type to display.
+	 * @return \c true iff the industry type is valid.
 	 */
-	void ComputeCargoDisplay(CargoType cargo_type)
+	bool ComputeIndustryDisplay(IndustryType industry_type)
 	{
-		this->ind_cargo = cargo_type + NUM_INDUSTRYTYPES;
+		if (industry_type >= NUM_INDUSTRYTYPES) return false;
+		this->ind_cargo = industry_type;
+		_displayed_industries.reset();
+		_displayed_industries.set(industry_type);
+
+		const IndustrySpec *indsp = GetIndustrySpec(industry_type);
+		ComputeAcceptsProducesIndustryDisplay(std::make_unique<IndustryChainField>(industry_type), {indsp->accepts_cargo}, {indsp->produced_cargo});
+		return true;
+	}
+
+	/**
+	 * Compute the display for a house
+	 * @return \c true
+	 */
+	bool ComputeHouseDisplay()
+	{
+		this->ind_cargo = HouseID{};
 		_displayed_industries.reset();
 
-		this->fields.clear();
-		CargoesRow &first_row = this->fields.emplace_back();
-		first_row.columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
-		first_row.columns[1].MakeEmpty(CargoesFieldType::SmallEmpty);
-		first_row.columns[2].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
-		first_row.columns[3].MakeEmpty(CargoesFieldType::SmallEmpty);
-		first_row.columns[4].MakeEmpty(CargoesFieldType::SmallEmpty);
+		ComputeAcceptsProducesIndustryDisplay(std::make_unique<HouseChainField>(), ChainField::town_accepts, ChainField::town_produces);
+		return true;
+	}
 
-		auto cargoes = std::span(&cargo_type, 1);
+	/**
+	 * Compute what and where to display for cargo type \a cargo_type.
+	 * @param cargo_type Cargo type to display.
+	 * @return \c true iff the cargo type is valid.
+	 */
+	bool ComputeCargoDisplay(CargoType cargo_type)
+	{
+		if (!IsValidCargoType(cargo_type)) return false;
+		this->ind_cargo = cargo_type;
+		_displayed_industries.reset();
+
+		this->rows.clear();
+		ChainRow &first_row = this->rows.emplace_back();
+		first_row.columns[0] = std::make_unique<HeaderChainField>(STR_INDUSTRY_CARGOES_SOURCES);
+		first_row.columns[2] = std::make_unique<HeaderChainField>(STR_INDUSTRY_CARGOES_DESTINATIONS);
+
+		CargoTypes cargoes = cargo_type;
 		bool houses_supply = HousesCanSupply(cargoes);
 		bool houses_accept = HousesCanAccept(cargoes);
 		int num_supp = CountMatchingProducingIndustries(cargoes) + houses_supply + 1; // Ensure room for the cargo label.
 		int num_cust = CountMatchingAcceptingIndustries(cargoes) + houses_accept;
 		int num_indrows = std::max(num_supp, num_cust);
 		for (int i = 0; i < num_indrows; i++) {
-			CargoesRow &row = this->fields.emplace_back();
-			row.columns[0].MakeEmpty(CargoesFieldType::Empty);
-			row.columns[1].MakeCargo(cargoes);
-			row.columns[2].MakeEmpty(CargoesFieldType::Empty);
-			row.columns[3].MakeEmpty(CargoesFieldType::Empty);
-			row.columns[4].MakeEmpty(CargoesFieldType::Empty);
+			ChainRow &row = this->rows.emplace_back();
+			row.columns[1] = std::make_unique<ConnectionChainField>(cargoes);
 		}
 
-		this->fields[num_indrows].MakeCargoLabel(0, false); // Add cargo labels at the left bottom.
-
 		/* Add suppliers and customers of the cargo. */
-		int supp_count = 0;
-		int cust_count = 0;
+		int supp_pos = 1 + (num_indrows - num_supp) / 2;
+		int cust_pos = 1 + (num_indrows - num_cust) / 2;
 		for (IndustryType it : _sorted_industry_types) {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 
-			if (HasCommonValidCargo(cargoes, indsp->produced_cargo)) {
-				this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, it);
+			if (cargoes.Any({indsp->produced_cargo})) {
+				this->PlaceAndConnect(std::make_unique<IndustryChainField>(it), supp_pos++, 0);
 				_displayed_industries.set(it);
-				supp_count++;
 			}
-			if (HasCommonValidCargo(cargoes, indsp->accepts_cargo)) {
-				this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 2, it);
+			if (cargoes.Any({indsp->accepts_cargo})) {
+				this->PlaceAndConnect(std::make_unique<IndustryChainField>(it), cust_pos++, 2);
 				_displayed_industries.set(it);
-				cust_count++;
 			}
 		}
-		if (houses_supply) {
-			this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, NUM_INDUSTRYTYPES);
-			supp_count++;
-		}
-		if (houses_accept) {
-			this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 2, NUM_INDUSTRYTYPES);
-			cust_count++;
-		}
+		if (houses_supply) this->PlaceAndConnect(std::make_unique<HouseChainField>(), supp_pos++, 0);
+		if (houses_accept) this->PlaceAndConnect(std::make_unique<HouseChainField>(), cust_pos++, 2);
 
-		this->ShortenCargoColumn(1, 1, num_indrows);
+		this->rows[supp_pos].MakeCargoLabel(0, false); // Add cargo labels at the left bottom.
+
+		this->ShortenConnectionsColumn(1, 1, num_indrows, num_indrows, true, true);
 		this->vscroll->SetCount(num_indrows);
 		this->SetDirty();
 		this->NotifySmallmap();
+		return true;
 	}
 
 	/**
@@ -2953,6 +3149,24 @@ struct IndustryCargoesWindow : public Window {
 		this->ComputeIndustryDisplay(data);
 	}
 
+	/**
+	 * Get the area covered by the cargo chain display.
+	 * @param r Rect of the panel widget.
+	 * @return Rect wtihin the panel widget.
+	 */
+	Rect GetRowRect(const Rect &r) const
+	{
+		const NWidgetBase *nw = this->GetWidget<NWidgetBase>(WID_IC_PANEL);
+		bool showing_cargo = std::holds_alternative<CargoType>(this->ind_cargo);
+
+		return r
+			.Shrink(WidgetDimensions::scaled.frametext)
+			.Translate(0, -this->vscroll->GetPosition() * nw->resize_y)
+			.CentreToWidth(showing_cargo
+				? (2 * ChainField::industry_width + 1 * ChainField::connection_field_width)
+				: (3 * ChainField::industry_width + 2 * ChainField::connection_field_width));
+	}
+
 	void DrawWidget(const Rect &r, WidgetID widget) const override
 	{
 		if (widget != WID_IC_PANEL) return;
@@ -2960,114 +3174,51 @@ struct IndustryCargoesWindow : public Window {
 		Rect ir = r.Shrink(WidgetDimensions::scaled.bevel);
 		DrawPixelInfo tmp_dpi;
 		if (!FillDrawPixelInfo(&tmp_dpi, ir)) return;
+		/* Keep coordinates relative to the window. */
+		tmp_dpi.left += ir.left;
+		tmp_dpi.top += ir.top;
 		AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 
-		int left_pos = WidgetDimensions::scaled.frametext.left - WidgetDimensions::scaled.bevel.left;
-		if (this->ind_cargo >= NUM_INDUSTRYTYPES) left_pos += (CargoesField::industry_width + CargoesField::cargo_field_width) / 2;
-		int last_column = (this->ind_cargo < NUM_INDUSTRYTYPES) ? 4 : 2;
-
-		const NWidgetBase *nwp = this->GetWidget<NWidgetBase>(WID_IC_PANEL);
-		int vpos = WidgetDimensions::scaled.frametext.top - WidgetDimensions::scaled.bevel.top - this->vscroll->GetPosition() * nwp->resize_y;
-		int row_height = CargoesField::small_height;
-		for (const auto &field : this->fields) {
-			if (vpos + row_height >= 0) {
-				int xpos = left_pos;
-				int col, dir;
-				if (_current_text_dir == TD_RTL) {
-					col = last_column;
-					dir = -1;
-				} else {
-					col = 0;
-					dir = 1;
-				}
-				while (col >= 0 && col <= last_column) {
-					field.columns[col].Draw(xpos, vpos);
-					xpos += (col & 1) ? CargoesField::cargo_field_width : CargoesField::industry_width;
-					col += dir;
-				}
-			}
-			vpos += row_height;
-			if (vpos >= height) break;
-			row_height = CargoesField::normal_height;
+		Rect r_row = this->GetRowRect(r);
+		for (const ChainRow &row : this->rows) {
+			int row_height = row.Height();
+			row.Draw(r_row.WithHeight(row_height));
+			r_row = r_row.Translate(0, row_height + ChainField::vert_inter_industry_space);
 		}
 	}
 
 	/**
-	 * Calculate in which field was clicked, and within the field, at what position.
+	 * Calculate in which field was clicked.
 	 * @param pt Clicked position in the #WID_IC_PANEL widget.
-	 * @param fieldxy If \c true is returned, field x/y coordinate of \a pt.
-	 * @param xy      If \c true is returned, x/y coordinate with in the field.
-	 * @return Clicked at a valid position.
+	 * @return Whether a field was clicked, the field's column and row, and the Rect of the field.
 	 */
-	bool CalculatePositionInWidget(Point pt, Point *fieldxy, Point *xy)
+	ChainField::ClickedAtResult ClickedAt(Point pt) const
 	{
 		const NWidgetBase *nw = this->GetWidget<NWidgetBase>(WID_IC_PANEL);
-		pt.x -= nw->pos_x;
-		pt.y -= nw->pos_y;
+		Rect r = this->GetRowRect(nw->GetCurrentRect());
 
-		int vpos = WidgetDimensions::scaled.frametext.top + CargoesField::small_height - this->vscroll->GetPosition() * nw->resize_y;
-		if (pt.y < vpos) return false;
-
-		int row = (pt.y - vpos) / CargoesField::normal_height; // row is relative to row 1.
-		if (row + 1 >= (int)this->fields.size()) return false;
-		vpos = pt.y - vpos - row * CargoesField::normal_height; // Position in the row + 1 field
-		row++; // rebase row to match index of this->fields.
-
-		int xpos = 2 * WidgetDimensions::scaled.frametext.left + ((this->ind_cargo < NUM_INDUSTRYTYPES) ? 0 :  (CargoesField::industry_width + CargoesField::cargo_field_width) / 2);
-		if (pt.x < xpos) return false;
-		int column;
-		for (column = 0; column <= 5; column++) {
-			int width = (column & 1) ? CargoesField::cargo_field_width : CargoesField::industry_width;
-			if (pt.x < xpos + width) break;
-			xpos += width;
+		for (auto it = this->rows.begin(); it != this->rows.end(); ++it) {
+			uint row_height = it->Height();
+			r = r.WithHeight(row_height);
+			if (pt.y >= r.top && pt.y <= r.bottom) return it->ClickedAt(r, pt);
+			r = r.Translate(0, row_height + ChainField::vert_inter_industry_space);
 		}
-		int num_columns = (this->ind_cargo < NUM_INDUSTRYTYPES) ? 4 : 2;
-		if (column > num_columns) return false;
-		xpos = pt.x - xpos;
 
-		/* Return both positions, compensating for RTL languages (which works due to the equal symmetry in both displays). */
-		fieldxy->y = row;
-		xy->y = vpos;
-		if (_current_text_dir == TD_RTL) {
-			fieldxy->x = num_columns - column;
-			xy->x = ((column & 1) ? CargoesField::cargo_field_width : CargoesField::industry_width) - xpos;
-		} else {
-			fieldxy->x = column;
-			xy->x = xpos;
-		}
-		return true;
+		return {};
 	}
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_IC_PANEL: {
-				Point fieldxy, xy;
-				if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return;
-
-				const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
-				switch (fld->type) {
-					case CargoesFieldType::Industry:
-						if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES) this->ComputeIndustryDisplay(fld->u.industry.ind_type);
-						break;
-
-					case CargoesFieldType::Cargo: {
-						CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : nullptr;
-						CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : nullptr;
-						CargoType cargo_type = fld->CargoClickedAt(lft, rgt, xy);
-						if (IsValidCargoType(cargo_type)) this->ComputeCargoDisplay(cargo_type);
-						break;
-					}
-
-					case CargoesFieldType::CargoLabel: {
-						CargoType cargo_type = fld->CargoLabelClickedAt(xy);
-						if (IsValidCargoType(cargo_type)) this->ComputeCargoDisplay(cargo_type);
-						break;
-					}
-
-					default:
-						break;
-				}
+				struct visitor {
+					IndustryCargoesWindow *w;
+					bool operator()(std::monostate) { return false; }
+					bool operator()(HouseID) { return this->w->ComputeHouseDisplay(); }
+					bool operator()(IndustryType industry_type) { return this->w->ComputeIndustryDisplay(industry_type); }
+					bool operator()(CargoType cargo_type) { return this->w->ComputeCargoDisplay(cargo_type); }
+				};
+				if (std::visit(visitor{this}, this->ClickedAt(pt))) SndClickBeep();
 				break;
 			}
 
@@ -3090,7 +3241,8 @@ struct IndustryCargoesWindow : public Window {
 				}
 				if (!lst.empty()) {
 					static std::string cargo_filter;
-					int selected = (this->ind_cargo >= NUM_INDUSTRYTYPES) ? (int)(this->ind_cargo - NUM_INDUSTRYTYPES) : -1;
+					int selected = -1;
+					if (CargoType *ptr = std::get_if<CargoType>(&this->ind_cargo); ptr != nullptr) selected = to_underlying(*ptr);
 					ShowDropDownList(this, std::move(lst), selected, WID_IC_CARGO_DROPDOWN, 0, DropDownOption::Filterable, &cargo_filter);
 				}
 				break;
@@ -3103,9 +3255,16 @@ struct IndustryCargoesWindow : public Window {
 					if (!indsp->enabled) continue;
 					lst.push_back(MakeDropDownListStringItem(indsp->name, ind));
 				}
+				if (!lst.empty()) lst.push_back(MakeDropDownListDividerItem());
+				lst.push_back(MakeDropDownListStringItem(STR_INDUSTRY_CARGOES_HOUSES, INT_MAX));
 				if (!lst.empty()) {
 					static std::string cargo_filter;
-					int selected = (this->ind_cargo < NUM_INDUSTRYTYPES) ? (int)this->ind_cargo : -1;
+					int selected = -1;
+					if (IndustryType *ptr = std::get_if<IndustryType>(&this->ind_cargo); ptr != nullptr) {
+						selected = *ptr;
+					} else if (std::holds_alternative<HouseID>(this->ind_cargo)) {
+						selected = INT_MAX;
+					}
 					ShowDropDownList(this, std::move(lst), selected, WID_IC_IND_DROPDOWN, 0, DropDownOption::Filterable, &cargo_filter);
 				}
 				break;
@@ -3115,15 +3274,17 @@ struct IndustryCargoesWindow : public Window {
 
 	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
-		if (index < 0) return;
-
 		switch (widget) {
 			case WID_IC_CARGO_DROPDOWN:
-				this->ComputeCargoDisplay(static_cast<CargoType>(index));
+				if (index >= 0) this->ComputeCargoDisplay(static_cast<CargoType>(index));
 				break;
 
 			case WID_IC_IND_DROPDOWN:
-				this->ComputeIndustryDisplay(index);
+				if (index == INT_MAX) {
+					this->ComputeHouseDisplay();
+				} else if (index >= 0) {
+					this->ComputeIndustryDisplay(index);
+				}
 				break;
 		}
 	}
@@ -3132,45 +3293,38 @@ struct IndustryCargoesWindow : public Window {
 	{
 		if (widget != WID_IC_PANEL) return false;
 
-		Point fieldxy, xy;
-		if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return false;
-
-		const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
-		CargoType cargo_type = INVALID_CARGO;
-		switch (fld->type) {
-			case CargoesFieldType::Cargo: {
-				CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : nullptr;
-				CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : nullptr;
-				cargo_type = fld->CargoClickedAt(lft, rgt, xy);
-				break;
+		struct visitor {
+			IndustryCargoesWindow *w; ///< The industry cargoes window.
+			TooltipCloseCondition close_cond; ///< The tooltip condition.
+			bool operator()(std::monostate)
+			{
+				return false;
 			}
-
-			case CargoesFieldType::CargoLabel: {
-				cargo_type = fld->CargoLabelClickedAt(xy);
-				break;
-			}
-
-			case CargoesFieldType::Industry:
-				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES && (this->ind_cargo >= NUM_INDUSTRYTYPES || fieldxy.x != 2)) {
-					GuiShowTooltips(this, GetEncodedString(STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP), close_cond);
-				}
+			bool operator()(HouseID)
+			{
+				GuiShowTooltips(this->w, GetEncodedString(STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP, STR_INDUSTRY_CARGOES_HOUSES, ChainField::town_accepts, ChainField::town_produces), this->close_cond);
 				return true;
+			}
+			bool operator()(IndustryType industry_type)
+			{
+				const IndustrySpec *indsp = GetIndustrySpec(industry_type);
+				GuiShowTooltips(this->w, GetEncodedString(STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP, indsp->name, CargoTypes{indsp->accepts_cargo}, CargoTypes{indsp->produced_cargo}), this->close_cond);
+				return true;
+			}
+			bool operator()(CargoType cargo_type)
+			{
+				if (!IsValidCargoType(cargo_type)) return false;
+				GuiShowTooltips(this->w, GetEncodedString(CargoSpec::Get(cargo_type)->name), close_cond);
+				return true;
+			}
+		};
 
-			default:
-				break;
-		}
-		if (IsValidCargoType(cargo_type) && (this->ind_cargo < NUM_INDUSTRYTYPES || cargo_type != this->ind_cargo - NUM_INDUSTRYTYPES)) {
-			const CargoSpec *csp = CargoSpec::Get(cargo_type);
-			GuiShowTooltips(this, GetEncodedString(STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, csp->name), close_cond);
-			return true;
-		}
-
-		return false;
+		return std::visit(visitor{this, close_cond}, this->ClickedAt(pt));
 	}
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_IC_PANEL, WidgetDimensions::scaled.framerect.Vertical() + CargoesField::small_height);
+		this->vscroll->SetCapacityFromWidget(this, WID_IC_PANEL, WidgetDimensions::scaled.framerect.Vertical() + ChainField::small_height);
 	}
 };
 
