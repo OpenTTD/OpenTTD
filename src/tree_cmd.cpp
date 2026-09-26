@@ -537,8 +537,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 				/* Test tree limit. */
 				if (--limit < 1) {
-					msg = STR_ERROR_TREE_PLANT_LIMIT_REACHED;
-					break;
+					return CommandCost(STR_ERROR_TREE_PLANT_LIMIT_REACHED);
 				}
 
 				if (flags.Test(DoCommandFlag::Execute)) {
@@ -578,8 +577,7 @@ CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_t
 
 				/* Test tree limit. */
 				if (--limit < 1) {
-					msg = STR_ERROR_TREE_PLANT_LIMIT_REACHED;
-					break;
+					return CommandCost(STR_ERROR_TREE_PLANT_LIMIT_REACHED);
 				}
 
 				bool tile_needs_to_be_cleared = false;
