@@ -169,7 +169,7 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 		CGColorRelease(colour);
 
 		/* Install a size callback for our special private-use sprite glyphs in case the font does not provide them. */
-		for (ssize_t c = last; c < position; c++) {
+		for (int c = last; c < position; c++) {
 			if (buff[c] >= SCC_SPRITE_START && buff[c] <= SCC_SPRITE_END && font->fc->MapCharToGlyph(buff[c], false) == 0) {
 				CFAutoRelease<CTRunDelegateRef> del(CTRunDelegateCreate(&_sprite_font_callback, (void *)(size_t)(buff[c] | (to_underlying(font->fc->GetSize()) << 24))));
 				/* According to the official documentation, if a run delegate is used, the char should always be 0xFFFC. */
