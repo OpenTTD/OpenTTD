@@ -63,8 +63,13 @@ static const Dimension _default_resolutions[] = {
 };
 
 
-VideoDriver_Cocoa::VideoDriver_Cocoa(bool uses_hardware_acceleration)
-	: VideoDriver(uses_hardware_acceleration)
+/**
+ * Create the video driver.
+ * @param uses_hardware_acceleration Whether hardware acceleration is used by this driver.
+ * @param supports_animation_buffer Whether this driver supports a hardware accelerated animation buffer.
+ */
+VideoDriver_Cocoa::VideoDriver_Cocoa(bool uses_hardware_acceleration, bool supports_animation_buffer)
+	: VideoDriver(uses_hardware_acceleration, supports_animation_buffer)
 {
 	this->setup         = false;
 	this->buffer_locked = false;

@@ -49,7 +49,7 @@ class FBlitter_40bppAnim : public BlitterFactory {
 protected:
 	bool IsUsable() const override
 	{
-		return VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->HasAnimBuffer();
+		return VideoDriver::GetInstance() == nullptr || VideoDriver::GetInstance()->SupportsAnimationBuffer();
 	}
 
 public:

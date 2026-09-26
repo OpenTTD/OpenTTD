@@ -20,8 +20,9 @@ public:
 	/**
 	 * Create the video driver.
 	 * @param uses_hardware_acceleration Whether hardware acceleration is used by this instance of the driver.
+	 * @param supports_animation_buffer Whether this driver supports a hardware accelerated animation buffer.
 	 */
-	VideoDriver_SDL_Base(bool uses_hardware_acceleration = false) : VideoDriver(uses_hardware_acceleration) {}
+	VideoDriver_SDL_Base(bool uses_hardware_acceleration = false, bool supports_animation_buffer = false) : VideoDriver(uses_hardware_acceleration, supports_animation_buffer) {}
 
 	std::optional<std::string_view> Start(const StringList &param) override;
 
