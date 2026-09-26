@@ -49,7 +49,6 @@ typedef unsigned long in_addr_t;
 
 #if !(defined(__MINGW32__) || defined(__CYGWIN__))
 	/* Windows has some different names for some types */
-	typedef SSIZE_T ssize_t;
 	typedef int socklen_t;
 #	define IPPROTO_IPV6 41
 #endif /* !(__MINGW32__ && __CYGWIN__) */
@@ -146,7 +145,7 @@ struct SocketSender {
 	 * @param buffer The buffer to write.
 	 * @return The number of elements/bytes that were written, or -1 upon an error.
 	 */
-	ssize_t operator()(std::span<const uint8_t> buffer)
+	std::ptrdiff_t operator()(std::span<const uint8_t> buffer)
 	{
 		return send(this->sock, reinterpret_cast<const char *>(buffer.data()), static_cast<int>(buffer.size()), 0);
 	}
@@ -161,7 +160,7 @@ struct SocketReceiver {
 	 * @param buffer The buffer to read into.
 	 * @return The number of elements/bytes that were read, or -1 upon an error.
 	 */
-	ssize_t operator()(std::span<uint8_t> buffer)
+	std::ptrdiff_t operator()(std::span<uint8_t> buffer)
 	{
 		return recv(this->sock, reinterpret_cast<char *>(buffer.data()), static_cast<int>(buffer.size()), 0);
 	}
