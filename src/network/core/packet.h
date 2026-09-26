@@ -128,7 +128,7 @@ public:
 	 * @return The return value of the transfer_function.
 	 */
 	template <typename F>
-	ssize_t TransferOutWithLimit(F transfer_function, size_t limit)
+	std::ptrdiff_t TransferOutWithLimit(F transfer_function, size_t limit)
 	{
 		size_t amount = std::min(this->RemainingBytesToTransfer(), limit);
 		if (amount == 0) return 0;
@@ -136,7 +136,7 @@ public:
 		assert(this->pos < this->buffer.size());
 		assert(this->pos + amount <= this->buffer.size());
 		auto output_buffer = std::span<const uint8_t>(this->buffer.data() + this->pos, amount);
-		ssize_t bytes = transfer_function(output_buffer);
+		std::ptrdiff_t bytes = transfer_function(output_buffer);
 		if (bytes > 0) this->pos += bytes;
 		return bytes;
 	}
@@ -151,7 +151,7 @@ public:
 	 * @return The return value of the transfer_function.
 	 */
 	template <typename F>
-	ssize_t TransferOut(F transfer_function)
+	std::ptrdiff_t TransferOut(F transfer_function)
 	{
 		return TransferOutWithLimit(transfer_function, std::numeric_limits<size_t>::max());
 	}
@@ -180,7 +180,7 @@ public:
 	 * @return The return value of the transfer_function.
 	 */
 	template <typename F>
-	ssize_t TransferIn(F transfer_function)
+	std::ptrdiff_t TransferIn(F transfer_function)
 	{
 		size_t amount = this->RemainingBytesToTransfer();
 		if (amount == 0) return 0;
@@ -188,7 +188,7 @@ public:
 		assert(this->pos < this->buffer.size());
 		assert(this->pos + amount <= this->buffer.size());
 		auto input_buffer = std::span<uint8_t>(this->buffer.data() + this->pos, amount);
-		ssize_t bytes = transfer_function(input_buffer);
+		std::ptrdiff_t bytes = transfer_function(input_buffer);
 		if (bytes > 0) this->pos += bytes;
 		return bytes;
 	}

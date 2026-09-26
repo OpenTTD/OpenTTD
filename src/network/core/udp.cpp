@@ -92,7 +92,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet &p, NetworkAddress &recv, bool a
 		}
 
 		/* Send the buffer */
-		ssize_t res = p.TransferOut([&](std::span<const uint8_t> buffer) {
+		std::ptrdiff_t res = p.TransferOut([&](std::span<const uint8_t> buffer) {
 			return sendto(s.first, reinterpret_cast<const char *>(buffer.data()), static_cast<int>(buffer.size()), 0, reinterpret_cast<const struct sockaddr *>(send.GetAddress()), send.GetAddressLength());
 		});
 		Debug(Facility::Net, Severity::Trace1, "sendto({})", send.GetAddressAsString());
@@ -119,7 +119,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 
 			/* Try to receive anything */
 			SetNonBlocking(s.first); // Some OSes seem to lose the non-blocking status of the socket
-			ssize_t nbytes = p.TransferIn([&](std::span<uint8_t> buffer) {
+			std::ptrdiff_t nbytes = p.TransferIn([&](std::span<uint8_t> buffer) {
 				return recvfrom(s.first, reinterpret_cast<char *>(buffer.data()), static_cast<int>(buffer.size()), 0, reinterpret_cast<struct sockaddr *>(&client_addr), &client_len);
 			});
 
