@@ -92,6 +92,7 @@ void ShowGenerateWorldProgress();
 void StartNewGameWithoutGUI(uint32_t seed);
 void ShowCreateScenario();
 void StartScenarioEditor();
+void SetClimateIndependentTitleGame(bool is_independent);
 
 extern bool _generating_world;
 
