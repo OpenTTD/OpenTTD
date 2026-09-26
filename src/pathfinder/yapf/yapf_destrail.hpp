@@ -11,8 +11,8 @@
 #define YAPF_DESTRAIL_HPP
 
 #include "../../train.h"
+#include "../../waypoint_base.h"
 #include "../pathfinder_func.h"
-#include "../pathfinder_type.h"
 
 class CYapfDestinationRailBase {
 protected:

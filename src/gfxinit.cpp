@@ -8,11 +8,12 @@
 /** @file gfxinit.cpp Initializing of the (GRF) graphics. */
 
 #include "stdafx.h"
-#include "fios.h"
 #include "newgrf.h"
+#include "newgrf_config.h"
 #include "3rdparty/md5/md5.h"
 #include "fontcache.h"
 #include "gfx_func.h"
+#include "spritecache.h"
 #include "transparency.h"
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"

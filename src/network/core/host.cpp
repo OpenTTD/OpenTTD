@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "address.h"
+#include "config.h"
 
 #include "../../safeguards.h"
 

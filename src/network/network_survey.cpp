@@ -9,13 +9,12 @@
 
 #include "../stdafx.h"
 #include "network_survey.h"
-#include "../settings_table.h"
-#include "network.h"
+#include "core/config.h"
 #include "network_func.h"
 #include "../debug.h"
+#include "../settings_type.h"
 #include "../survey.h"
 #include "../3rdparty/fmt/chrono.h"
-#include "../3rdparty/fmt/std.h"
 
 #include "../safeguards.h"
 

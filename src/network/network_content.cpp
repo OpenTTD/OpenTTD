@@ -19,7 +19,6 @@
 #include "../base_media_graphics.h"
 #include "../base_media_music.h"
 #include "../base_media_sounds.h"
-#include "../settings_type.h"
 #include "../strings_func.h"
 #include "../timer/timer.h"
 #include "../timer/timer_window.h"

@@ -13,8 +13,8 @@
 #include "../newgrf_station.h"
 #include "../vehicle_base.h"
 #include "../town.h"
-#include "../newgrf.h"
 #include "../timer/timer_game_calendar.h"
+#include "saveload_error.hpp"
 #include "saveload_internal.h"
 
 #include "table/strings.h"

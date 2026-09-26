@@ -11,9 +11,9 @@
 #include "../debug.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/game_sl_compat.h"
 
-#include "../string_func.h"
 #include "../game/game.hpp"
 #include "../game/game_config.hpp"
 #include "../network/network.h"

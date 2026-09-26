@@ -12,7 +12,6 @@
 #include "script_log.hpp"
 #include "../../debug.h"
 #include "../../window_func.h"
-#include "../../string_func.h"
 
 #include "../../safeguards.h"
 

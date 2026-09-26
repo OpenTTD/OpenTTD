@@ -16,7 +16,6 @@
 #include "company_type.h"
 #include "tile_type.h"
 #include "widget_type.h"
-#include "string_type.h"
 
 /**
  * Flags to describe the look of the frame

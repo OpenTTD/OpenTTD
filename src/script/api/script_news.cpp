@@ -15,7 +15,6 @@
 #include "script_town.hpp"
 #include "script_error.hpp"
 #include "../../command_type.h"
-#include "../../string_func.h"
 #include "../../news_cmd.h"
 
 #include "../../safeguards.h"

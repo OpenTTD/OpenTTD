@@ -10,6 +10,7 @@
 #ifndef SIGNS_BASE_H
 #define SIGNS_BASE_H
 
+#include "gfx_type.h"
 #include "signs_type.h"
 #include "viewport_type.h"
 #include "core/pool_type.hpp"

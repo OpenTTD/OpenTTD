@@ -10,8 +10,8 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../saveload/saveload.h"
+#include "../saveload/saveload_error.hpp"
 
-#include "../script/squirrel_class.hpp"
 #include "../script/squirrel_std.hpp"
 
 #include "script_fatalerror.hpp"

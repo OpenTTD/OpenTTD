@@ -10,13 +10,13 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "station_base.h"
+#include "station_func.h"
 #include "waypoint_base.h"
 #include "roadstop_base.h"
 #include "newgrf_badge.h"
 #include "newgrf_cargo.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
-#include "newgrf_sound.h"
 #include "newgrf_railtype.h"
 #include "town.h"
 #include "newgrf_town.h"
@@ -24,6 +24,7 @@
 #include "tunnelbridge_map.h"
 #include "newgrf_animation_base.h"
 #include "timer/timer_game_calendar.h"
+#include "tile_cmd.h"
 
 #include "table/strings.h"
 

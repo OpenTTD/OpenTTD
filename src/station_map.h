@@ -13,9 +13,7 @@
 #include "rail_map.h"
 #include "road_map.h"
 #include "water_map.h"
-#include "station_func.h"
 #include "rail.h"
-#include "road.h"
 
 typedef uint8_t StationGfx; ///< Index of station graphics. @see _station_display_datas
 

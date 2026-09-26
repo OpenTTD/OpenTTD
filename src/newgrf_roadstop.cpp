@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "station_base.h"
-#include "roadstop_base.h"
+#include "station_func.h"
 #include "newgrf_badge.h"
 #include "newgrf_roadstop.h"
 #include "newgrf_cargo.h"
@@ -18,13 +18,11 @@
 #include "gfx_type.h"
 #include "company_func.h"
 #include "road.h"
-#include "window_type.h"
 #include "timer/timer_game_calendar.h"
 #include "town.h"
 #include "tile_cmd.h"
 #include "viewport_func.h"
 #include "newgrf_animation_base.h"
-#include "newgrf_sound.h"
 
 #include "table/strings.h"
 

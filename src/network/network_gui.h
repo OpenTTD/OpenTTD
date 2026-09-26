@@ -10,12 +10,10 @@
 #ifndef NETWORK_GUI_H
 #define NETWORK_GUI_H
 
-#include "../company_type.h"
 #include "../timer/timer_game_calendar.h"
 #include "../economy_type.h"
 #include "../window_type.h"
 #include "network_type.h"
-#include "network_gamelist.h"
 
 class NetworkAuthenticationPasswordRequest;
 void ShowNetworkNeedPassword(std::shared_ptr<NetworkAuthenticationPasswordRequest> request);

@@ -12,7 +12,6 @@
 #include "error.h"
 #include "gui.h"
 #include "command_func.h"
-#include "network/network_type.h"
 #include "network/network.h"
 #include "genworld.h"
 #include "strings_func.h"

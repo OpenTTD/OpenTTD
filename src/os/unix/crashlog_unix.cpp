@@ -8,6 +8,7 @@
 /** @file crashlog_unix.cpp Unix crash log handler. */
 
 #include "../../stdafx.h"
+#include "../../core/format.hpp"
 #include "../../crashlog.h"
 #include "../../fileio_func.h"
 #include "../../string_func.h"

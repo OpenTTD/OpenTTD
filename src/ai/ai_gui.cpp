@@ -13,10 +13,10 @@
 #include "../window_func.h"
 #include "../network/network.h"
 #include "../settings_func.h"
+#include "../strings_func.h"
 #include "../network/network_content.h"
 #include "../core/geometry_func.hpp"
 
-#include "ai.hpp"
 #include "ai_gui.hpp"
 #include "ai_config.hpp"
 #include "ai_info.hpp"

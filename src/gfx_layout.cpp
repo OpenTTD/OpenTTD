@@ -13,7 +13,6 @@
 #include "string_func.h"
 #include "strings_func.h"
 #include "core/utf8.hpp"
-#include "debug.h"
 
 #include "table/control_codes.h"
 

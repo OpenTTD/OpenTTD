@@ -11,7 +11,6 @@
 #include "debug.h"
 #include "water_map.h"
 #include "error_func.h"
-#include "string_func.h"
 #include "pathfinder/water_regions.h"
 
 #include "safeguards.h"

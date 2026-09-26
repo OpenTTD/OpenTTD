@@ -18,7 +18,6 @@
 #include "command_func.h"
 #include "company_base.h"
 #include "story_base.h"
-#include "string_func.h"
 #include "goal_gui.h"
 #include "network/network.h"
 #include "network/network_base.h"

@@ -8,6 +8,7 @@
 /** @file town_cmd.cpp Handling of town tiles. */
 
 #include "stdafx.h"
+#include "bridge.h"
 #include "misc/history_type.hpp"
 #include "misc/history_func.hpp"
 #include "road.h"
@@ -22,6 +23,7 @@
 #include "company_func.h"
 #include "industry.h"
 #include "station_base.h"
+#include "station_func.h"
 #include "waypoint_base.h"
 #include "station_kdtree.h"
 #include "company_base.h"
@@ -48,7 +50,6 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "depot_base.h"
-#include "object_map.h"
 #include "object_base.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"

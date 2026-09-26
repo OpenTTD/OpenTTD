@@ -8,7 +8,7 @@
 /** @file object_cmd.cpp Handling of object tiles. */
 
 #include "stdafx.h"
-#include "clear_map.h"
+#include "bridge.h"
 #include "landscape.h"
 #include "command_func.h"
 #include "company_func.h"

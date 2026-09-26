@@ -12,6 +12,7 @@
 
 #include "debug_type.h"
 #include "fileio_func.h"
+#include "string_type.h"
 #include "textfile_type.h"
 #include "textfile_gui.h"
 #include "3rdparty/md5/md5.h"

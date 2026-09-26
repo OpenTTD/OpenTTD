@@ -11,7 +11,6 @@
 #define QUERYSTRING_GUI_H
 
 #include "textbuf_type.h"
-#include "textbuf_gui.h"
 #include "window_gui.h"
 
 /**

@@ -10,10 +10,9 @@
 #ifndef SCRIPT_CARGO_MONITOR_HPP
 #define SCRIPT_CARGO_MONITOR_HPP
 
-#include "script_list.hpp"
 #include "script_object.hpp"
 #include "script_company.hpp"
-#include "../../cargomonitor.h"
+#include "../../industry_type.h"
 
 /**
  * Class that handles all cargo movement monitoring related functions.

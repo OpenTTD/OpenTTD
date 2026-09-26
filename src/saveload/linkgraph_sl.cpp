@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/linkgraph_sl_compat.h"
 
 #include "../linkgraph/linkgraph.h"

@@ -11,6 +11,7 @@
 #include "../string_func.h"
 #include "../strings_func.h"
 #include "../core/string_builder.hpp"
+#include "saveload_error.hpp"
 #include "saveload_internal.h"
 
 #include "table/strings.h"

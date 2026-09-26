@@ -22,6 +22,7 @@
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "querystring_gui.h"
+#include "textbuf_gui.h"
 #include "engine_func.h"
 #include "landscape_type.h"
 #include "genworld.h"
@@ -30,7 +31,6 @@
 #include "gamelog.h"
 #include "stringfilter_type.h"
 #include "misc_cmd.h"
-#include "gamelog_internal.h"
 
 #include "widgets/fios_widget.h"
 

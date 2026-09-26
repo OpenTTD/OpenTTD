@@ -12,7 +12,6 @@
 
 #include "order_type.h"
 #include "vehicle_type.h"
-#include "company_type.h"
 
 /* Functions */
 void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool hangar = false);

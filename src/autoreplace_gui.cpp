@@ -10,8 +10,6 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
-#include "newgrf_badge.h"
-#include "newgrf_engine.h"
 #include "rail.h"
 #include "road.h"
 #include "strings_func.h"

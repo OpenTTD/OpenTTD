@@ -11,9 +11,7 @@
 #define CARGOMONITOR_H
 
 #include "cargo_type.h"
-#include "company_func.h"
-#include "industry.h"
-#include "town.h"
+#include "source_type.h"
 #include "core/overflowsafe_type.hpp"
 
 struct Station;

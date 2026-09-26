@@ -10,7 +10,8 @@
 #ifndef DEMANDS_H
 #define DEMANDS_H
 
-#include "linkgraphjob_base.h"
+#include "linkgraphjob.h"
+#include "linkgraphschedule.h"
 
 /**
  * Calculate the demands. This class has a state, but is recreated for each

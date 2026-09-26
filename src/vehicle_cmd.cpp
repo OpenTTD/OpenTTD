@@ -17,6 +17,7 @@
 #include "aircraft.h"
 #include "newgrf_text.h"
 #include "vehicle_func.h"
+#include "vehicle_gui.h"
 #include "string_func.h"
 #include "depot_map.h"
 #include "vehiclelist.h"

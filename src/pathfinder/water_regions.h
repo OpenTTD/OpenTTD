@@ -12,7 +12,6 @@
 
 #include "../core/strong_typedef_type.hpp"
 #include "../tile_type.h"
-#include "../map_func.h"
 
 using WaterRegionIndex = StrongType::Typedef<uint, struct TWaterRegionIndexTag, StrongType::Compare>;
 using WaterRegionPatchLabel = StrongType::Typedef<uint8_t, struct TWaterRegionPatchLabelTag, StrongType::Compare, StrongType::Integer>;

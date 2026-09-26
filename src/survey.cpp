@@ -15,15 +15,15 @@
 #include "network/network.h"
 #include "rev.h"
 #include "settings_type.h"
-#include "string_func.h"
-#include "timer/timer_game_tick.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
 #include "3rdparty/fmt/ranges.h"
 
+#include "company_base.h"
 #include "currency_func.h"
 #include "fontcache.h"
 #include "language.h"
+#include "newgrf_config.h"
 
 #include "ai/ai_info.hpp"
 #include "game/game.hpp"
@@ -33,7 +33,6 @@
 #include "sound/sound_driver.hpp"
 #include "video/video_driver.hpp"
 
-#include "base_media_base.h"
 #include "base_media_graphics.h"
 #include "base_media_music.h"
 #include "base_media_sounds.h"

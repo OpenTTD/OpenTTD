@@ -10,8 +10,6 @@
 #ifndef STRONG_TYPEDEF_TYPE_HPP
 #define STRONG_TYPEDEF_TYPE_HPP
 
-#include "../3rdparty/fmt/format.h"
-
 namespace StrongType {
 	/**
 	 * Mix-in which makes the new Typedef comparable with itself and its base type.

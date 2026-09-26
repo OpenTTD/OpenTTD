@@ -10,10 +10,10 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_func.h"
 #include "compat/signs_sl_compat.h"
 
 #include "../signs_base.h"
-#include "../fios.h"
 
 #include "../safeguards.h"
 

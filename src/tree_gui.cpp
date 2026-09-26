@@ -16,7 +16,6 @@
 #include "command_func.h"
 #include "core/random_func.hpp"
 #include "sound_func.h"
-#include "strings_func.h"
 #include "zoom_func.h"
 #include "tree_map.h"
 #include "tree_cmd.h"

@@ -9,7 +9,6 @@
 
 #include "../stdafx.h"
 #include "geometry_func.hpp"
-#include "math_func.hpp"
 #include "../strings_func.h"
 #include "../strings_type.h"
 

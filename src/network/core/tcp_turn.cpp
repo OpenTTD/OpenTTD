@@ -8,7 +8,6 @@
 /** @file tcp_turn.cpp Basic functions to receive and send TURN packets. */
 
 #include "../../stdafx.h"
-#include "../../timer/timer_game_calendar.h"
 #include "../../debug.h"
 #include "tcp_turn.h"
 

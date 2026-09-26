@@ -8,7 +8,7 @@
 /** @file dedicated.cpp Forking support for dedicated servers. */
 
 #include "stdafx.h"
-#include "fileio_func.h"
+#include "fileio_type.h"
 #include "debug.h"
 
 std::string _log_file; ///< Filename to reroute output of a forked OpenTTD to

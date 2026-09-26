@@ -10,8 +10,6 @@
 #ifndef STRING_FUNC_H
 #define STRING_FUNC_H
 
-#include <iosfwd>
-
 #include "string_type.h"
 
 void strecpy(std::span<char> dst, std::string_view src);
@@ -155,11 +153,6 @@ inline bool IsNonbreakingWhitespace(char32_t c)
 		|| c == 0x200D /* ZERO WIDTH JOINER */
 		|| c == 0x2060; /* WORD JOINER */
 }
-
-/* Needed for NetBSD version (so feature) testing */
-#if defined(__NetBSD__) || defined(__FreeBSD__)
-#include <sys/param.h>
-#endif
 
 std::optional<std::string_view> GetEnv(const char *variable);
 

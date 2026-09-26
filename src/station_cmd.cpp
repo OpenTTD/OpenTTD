@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "core/flatset_type.hpp"
 #include "aircraft.h"
+#include "bridge.h"
 #include "bridge_map.h"
 #include "tilearea_spiral.h"
 #include "vehiclelist_func.h"
@@ -58,7 +59,6 @@
 #include "company_gui.h"
 #include "linkgraph/linkgraph_base.h"
 #include "linkgraph/refresh.h"
-#include "tunnelbridge_map.h"
 #include "station_cmd.h"
 #include "waypoint_cmd.h"
 #include "landscape_cmd.h"
@@ -75,7 +75,6 @@
 #include "tilearea_airportlayout.h"
 
 #include "widgets/station_widget.h"
-#include "widgets/misc_widget.h"
 
 #include "table/strings.h"
 #include "table/station_land.h"

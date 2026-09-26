@@ -10,8 +10,6 @@
 #ifndef NETWORK_UDP_H
 #define NETWORK_UDP_H
 
-#include "core/address.h"
-
 void NetworkUDPInitialize();
 void NetworkUDPSearchGame();
 void NetworkUDPClose();

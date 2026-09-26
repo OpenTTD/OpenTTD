@@ -16,6 +16,7 @@
 #include "../../fontcache.h"
 #include "../../fontcache/truetypefontcache.h"
 #include "../../library_loader.h"
+#include "../../spritecache.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../zoom_func.h"

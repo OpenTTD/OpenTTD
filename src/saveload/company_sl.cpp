@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/company_sl_compat.h"
 
 #include "../autoreplace_base.h"

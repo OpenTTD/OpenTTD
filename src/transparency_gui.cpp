@@ -11,7 +11,6 @@
 #include "window_gui.h"
 #include "transparency.h"
 #include "sound_func.h"
-#include "settings_type.h"
 
 #include "widgets/transparency_widget.h"
 

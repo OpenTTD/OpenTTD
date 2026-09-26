@@ -23,6 +23,7 @@
 #include "../stringfilter_type.h"
 #include "../querystring_gui.h"
 #include "../core/geometry_func.hpp"
+#include "../textbuf_gui.h"
 #include "../textfile_gui.h"
 #include "../fios.h"
 #include "network_content_gui.h"

@@ -16,7 +16,6 @@
 #include "order_type.h"
 #include "cargo_type.h"
 #include "source_type.h"
-#include "vehicle_type.h"
 #include "core/multimap.hpp"
 #include "saveload/saveload_type.h"
 

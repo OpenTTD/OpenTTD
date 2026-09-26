@@ -11,7 +11,6 @@
 #define NEWGRF_BADGE_CONFIG_H
 
 #include "newgrf.h"
-#include "newgrf_badge_type.h"
 
 class BadgeClassConfigItem {
 public:

@@ -12,7 +12,6 @@
 #include "script_log.hpp"
 #include "../../network/network_admin.h"
 #include "../script_instance.hpp"
-#include "../../string_func.h"
 #include "../../3rdparty/nlohmann/json.hpp"
 
 #include "../../safeguards.h"

@@ -11,7 +11,6 @@
 #include "script_map.hpp"
 #include "script_station.hpp"
 #include "script_cargo.hpp"
-#include "../../station_base.h"
 #include "../../landscape_cmd.h"
 #include "../../road_cmd.h"
 #include "../../station_cmd.h"

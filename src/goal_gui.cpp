@@ -22,7 +22,6 @@
 #include "company_gui.h"
 #include "story_base.h"
 #include "command_func.h"
-#include "string_func.h"
 #include "goal_cmd.h"
 
 #include "widgets/goal_widget.h"

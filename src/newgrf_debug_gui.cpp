@@ -12,7 +12,6 @@
 #include "core/geometry_func.hpp"
 #include "window_gui.h"
 #include "window_func.h"
-#include "random_access_file_type.h"
 #include "spritecache.h"
 #include "string_func.h"
 #include "strings_func.h"

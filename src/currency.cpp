@@ -8,7 +8,6 @@
 /** @file currency.cpp Support for different currencies. */
 
 #include "stdafx.h"
-#include "core/bitmath_func.hpp"
 
 #include "currency_func.h"
 #include "news_func.h"

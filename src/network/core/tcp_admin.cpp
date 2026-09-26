@@ -9,7 +9,6 @@
 
 #include "../../stdafx.h"
 
-#include "../network_internal.h"
 #include "tcp_admin.h"
 #include "../../debug.h"
 

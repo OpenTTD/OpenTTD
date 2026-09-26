@@ -10,7 +10,6 @@
 #ifndef NETWORK_CORE_TCP_LISTEN_H
 #define NETWORK_CORE_TCP_LISTEN_H
 
-#include "tcp.h"
 #include "../network.h"
 #include "../network_func.h"
 #include "../network_internal.h"

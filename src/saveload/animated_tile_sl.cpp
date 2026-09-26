@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/animated_tile_sl_compat.h"
 
 #include "../tile_type.h"

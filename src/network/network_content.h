@@ -10,11 +10,13 @@
 #ifndef NETWORK_CONTENT_H
 #define NETWORK_CONTENT_H
 
-#include <ranges>
 #include "core/tcp_content.h"
 #include "core/http.h"
-#include <unordered_map>
 #include "../core/container_func.hpp"
+#include "../newgrf_config.h"
+
+#include <ranges>
+#include <unordered_map>
 
 /** Vector with content info */
 using ContentVector = std::vector<std::unique_ptr<ContentInfo>>;

@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/settings_sl_compat.h"
 
 #include "../settings_type.h"

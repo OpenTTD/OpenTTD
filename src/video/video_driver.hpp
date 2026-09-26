@@ -16,11 +16,7 @@
 #include "../core/math_func.hpp"
 #include "../gfx_func.h"
 #include "../settings_type.h"
-#include "../zoom_type.h"
-#include "../network/network_func.h"
-#include <atomic>
 #include <chrono>
-#include <condition_variable>
 #include <mutex>
 #include <thread>
 

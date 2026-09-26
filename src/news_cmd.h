@@ -10,9 +10,9 @@
 #ifndef NEWS_CMD_H
 #define NEWS_CMD_H
 
-#include "command_func.h"
+#include "command_type.h"
 #include "company_type.h"
-#include "news_func.h"
+#include "news_type.h"
 
 CommandCost CmdCustomNewsItem(DoCommandFlags flags, NewsType type, CompanyID company, NewsReference reference, const EncodedString &text);
 

@@ -10,8 +10,6 @@
 #ifndef STRINGFILTER_TYPE_H
 #define STRINGFILTER_TYPE_H
 
-#include "strings_type.h"
-
 /**
  * String filter and state.
  *

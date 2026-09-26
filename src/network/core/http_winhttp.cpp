@@ -9,13 +9,13 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
-#include "../../rev.h"
-#include "../network_internal.h"
 
 #include "http.h"
 #include "http_shared.h"
+#include "network_game_info.h"
 
 #include <mutex>
+#include <windows.h>
 #include <winhttp.h>
 
 #include "../../safeguards.h"

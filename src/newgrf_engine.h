@@ -15,7 +15,6 @@
 #include "newgrf_properties.h"
 #include "vehicle_type.h"
 #include "engine_type.h"
-#include "gfx_type.h"
 #include "newgrf_spritegroup.h"
 
 /** Resolver for a vehicle scope. */

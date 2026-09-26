@@ -8,6 +8,7 @@
 /** @file water_cmd.cpp Handling of water tiles. */
 
 #include "stdafx.h"
+#include "bridge.h"
 #include "landscape.h"
 #include "tilearea_spiral.h"
 #include "tilearea_type.h"
@@ -34,7 +35,6 @@
 #include "game/game.hpp"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
-#include "timer/timer_game_calendar.h"
 #include "company_base.h"
 #include "company_gui.h"
 #include "newgrf_generic.h"

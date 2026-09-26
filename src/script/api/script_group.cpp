@@ -14,7 +14,6 @@
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../autoreplace_func.h"
-#include "../../settings_func.h"
 #include "../../vehicle_base.h"
 #include "../../autoreplace_cmd.h"
 #include "../../group_cmd.h"

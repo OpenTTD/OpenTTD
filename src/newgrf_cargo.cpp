@@ -8,7 +8,6 @@
 /** @file newgrf_cargo.cpp Implementation of NewGRF cargoes. */
 
 #include "stdafx.h"
-#include "debug.h"
 #include "newgrf_cargo.h"
 #include "newgrf_spritegroup.h"
 

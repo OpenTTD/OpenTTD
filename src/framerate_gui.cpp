@@ -15,7 +15,6 @@
 #include "newgrf_sound.h"
 #include "window_gui.h"
 #include "window_func.h"
-#include "string_func.h"
 #include "strings_func.h"
 #include "console_func.h"
 #include "console_type.h"

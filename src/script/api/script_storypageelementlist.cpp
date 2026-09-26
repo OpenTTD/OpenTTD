@@ -9,6 +9,7 @@
 
 #include "../../stdafx.h"
 #include "script_storypageelementlist.hpp"
+#include "script_story_page.hpp"
 #include "../../story_base.h"
 
 #include "../../safeguards.h"

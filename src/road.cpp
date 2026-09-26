@@ -19,7 +19,6 @@
 #include "landscape.h"
 #include "road.h"
 #include "road_func.h"
-#include "roadveh.h"
 
 #include "safeguards.h"
 

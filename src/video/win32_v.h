@@ -11,8 +11,6 @@
 #define VIDEO_WIN32_H
 
 #include "video_driver.hpp"
-#include <mutex>
-#include <condition_variable>
 #include <windows.h>
 
 /** Base class for Windows video drivers. */

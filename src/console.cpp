@@ -16,7 +16,8 @@
 #include "network/network_admin.h"
 #include "debug.h"
 #include "console_func.h"
-#include "settings_type.h"
+#include "fileio_type.h"
+#include "string_func.h"
 
 #include "safeguards.h"
 

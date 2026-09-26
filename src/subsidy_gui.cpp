@@ -12,10 +12,8 @@
 #include "town.h"
 #include "window_gui.h"
 #include "strings_func.h"
-#include "timer/timer_game_calendar.h"
 #include "viewport_func.h"
 #include "gui.h"
-#include "subsidy_func.h"
 #include "subsidy_base.h"
 #include "core/geometry_func.hpp"
 

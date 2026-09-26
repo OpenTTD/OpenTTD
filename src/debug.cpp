@@ -11,7 +11,6 @@
 #include "core/string_consumer.hpp"
 #include "console_func.h"
 #include "debug.h"
-#include "string_func.h"
 #include "fileio_func.h"
 #include "settings_type.h"
 #include <mutex>

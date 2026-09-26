@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "texteff.hpp"
 #include "transparency.h"
-#include "strings_func.h"
 #include "viewport_func.h"
 #include "settings_type.h"
 #include "command_type.h"

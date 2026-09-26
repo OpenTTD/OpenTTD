@@ -33,7 +33,6 @@
 #include "zoom_func.h"
 #include "framerate_type.h"
 #include "industry.h"
-#include "industry_map.h"
 #include "ship_cmd.h"
 #include "script/api/script_event_types.hpp"
 

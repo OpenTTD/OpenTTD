@@ -10,14 +10,14 @@
 #include "stdafx.h"
 #include "blitter/base.hpp"
 #include "blitter/factory.hpp"
-#include "fileio_func.h"
 #include "gfx_type.h"
 #include "landscape_type.h"
 #include "palette_func.h"
 #include "settings_type.h"
-#include "thread.h"
 
 #include "table/palettes.h"
+
+#include <mutex>
 
 #include "safeguards.h"
 

@@ -11,7 +11,6 @@
 #include "spriteloader/grf.hpp"
 #include "spriteloader/makeindexed.h"
 #include "error_func.h"
-#include "strings_func.h"
 #include "zoom_func.h"
 #include "settings_type.h"
 #include "blitter/factory.hpp"

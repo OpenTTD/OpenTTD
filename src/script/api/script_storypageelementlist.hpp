@@ -11,8 +11,7 @@
 #define SCRIPT_STORYPAGEELEMENTLIST_HPP
 
 #include "script_list.hpp"
-#include "script_company.hpp"
-#include "script_story_page.hpp"
+#include "../../story_type.h"
 
 /**
  * Create a list of all story page elements.

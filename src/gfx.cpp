@@ -10,10 +10,10 @@
 #include "stdafx.h"
 #include "gfx_func.h"
 #include "gfx_layout.h"
-#include "progress.h"
 #include "zoom_func.h"
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"
+#include "spritecache.h"
 #include "strings_func.h"
 #include "settings_type.h"
 #include "network/network.h"
@@ -28,7 +28,6 @@
 #include "table/animcursors.h"
 #include "table/string_colours.h"
 #include "table/sprites.h"
-#include "table/control_codes.h"
 
 #include "safeguards.h"
 

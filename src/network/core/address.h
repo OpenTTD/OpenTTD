@@ -11,9 +11,7 @@
 #define NETWORK_CORE_ADDRESS_H
 
 #include "os_abstraction.h"
-#include "config.h"
 #include "../../company_type.h"
-#include "../../string_func.h"
 
 
 class NetworkAddress;

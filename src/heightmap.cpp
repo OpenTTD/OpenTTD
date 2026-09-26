@@ -8,16 +8,15 @@
 /** @file heightmap.cpp Creating of maps from heightmaps. */
 
 #include "stdafx.h"
+#include "core/random_func.hpp"
 #include "heightmap.h"
 #include "landscape.h"
 #include "clear_map.h"
 #include "strings_func.h"
 #include "void_map.h"
 #include "error.h"
-#include "saveload/saveload_func.h"
 #include "bmp.h"
 #include "gfx_func.h"
-#include "fios.h"
 #include "fileio_func.h"
 
 #include "table/strings.h"

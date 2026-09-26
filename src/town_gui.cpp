@@ -30,6 +30,7 @@
 #include "road_cmd.h"
 #include "landscape.h"
 #include "querystring_gui.h"
+#include "textbuf_gui.h"
 #include "window_func.h"
 #include "townname_func.h"
 #include "core/backup_type.hpp"

@@ -11,6 +11,7 @@
 #include "script_bridge.hpp"
 #include "script_rail.hpp"
 #include "../script_instance.hpp"
+#include "../../bridge.h"
 #include "../../bridge_map.h"
 #include "../../strings_func.h"
 #include "../../landscape_cmd.h"

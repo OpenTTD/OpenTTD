@@ -13,7 +13,6 @@
 #include "core/flatset_type.hpp"
 #include "newgrf.h"
 #include "tile_type.h"
-#include "vehicle_type.h"
 
 /** Current state of spritepicker */
 enum NewGrfDebugSpritePickerMode : uint8_t {

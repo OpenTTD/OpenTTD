@@ -12,6 +12,7 @@
 #include "train.h"
 #include "vehiclelist.h"
 #include "vehicle_func.h"
+#include "vehicle_gui.h"
 #include "autoreplace_base.h"
 #include "autoreplace_func.h"
 #include "string_func.h"

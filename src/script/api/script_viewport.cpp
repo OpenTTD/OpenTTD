@@ -12,7 +12,6 @@
 #include "script_viewport.hpp"
 #include "script_game.hpp"
 #include "script_map.hpp"
-#include "../script_instance.hpp"
 #include "../../viewport_func.h"
 #include "../../viewport_cmd.h"
 

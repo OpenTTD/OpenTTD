@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/gamelog_sl_compat.h"
 
 #include "../gamelog_internal.h"

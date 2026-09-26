@@ -13,6 +13,7 @@
 #include "command_func.h"
 #include "engine_func.h"
 #include "vehicle_func.h"
+#include "vehicle_gui.h"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "articulated_vehicles.h"

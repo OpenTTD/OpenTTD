@@ -12,8 +12,7 @@
 
 #include "misc/lrucache.hpp"
 #include "fontcache.h"
-#include "gfx_func.h"
-#include "core/math_func.hpp"
+#include "gfx_type.h"
 
 #include <string_view>
 

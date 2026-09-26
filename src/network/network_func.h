@@ -19,7 +19,6 @@
 
 #include "network_type.h"
 #include "../core/convertible_through_base.hpp"
-#include "../console_type.h"
 #include "../gfx_type.h"
 #include "../openttd.h"
 #include "../company_type.h"

@@ -11,7 +11,7 @@
 #define PATHFINDER_FUNC_H
 
 #include "../tile_cmd.h"
-#include "../waypoint_base.h"
+#include "../base_station_base.h"
 
 /**
  * Calculates the tile of given station that is closest to a given tile

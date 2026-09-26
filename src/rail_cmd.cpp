@@ -8,6 +8,7 @@
 /** @file rail_cmd.cpp Handling of rail tiles. */
 
 #include "stdafx.h"
+#include "bridge.h"
 #include "tilearea_type.h"
 #include "viewport_func.h"
 #include "command_func.h"
@@ -20,7 +21,6 @@
 #include "water.h"
 #include "tunnelbridge_map.h"
 #include "vehicle_func.h"
-#include "sound_func.h"
 #include "tunnelbridge.h"
 #include "elrail_func.h"
 #include "town.h"
@@ -28,8 +28,6 @@
 #include "company_base.h"
 #include "core/backup_type.hpp"
 #include "core/container_func.hpp"
-#include "timer/timer_game_calendar.h"
-#include "strings_func.h"
 #include "company_gui.h"
 #include "object_map.h"
 #include "rail_cmd.h"

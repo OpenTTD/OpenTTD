@@ -9,7 +9,9 @@
 
 #include "stdafx.h"
 #include "cargomonitor.h"
+#include "industry.h"
 #include "station_base.h"
+#include "town.h"
 
 #include "safeguards.h"
 

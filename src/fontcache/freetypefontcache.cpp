@@ -14,9 +14,10 @@
 #include "../debug.h"
 #include "../fontcache.h"
 #include "../blitter/factory.hpp"
-#include "../zoom_func.h"
 #include "../fileio_func.h"
 #include "../error_func.h"
+#include "../spritecache.h"
+#include "../zoom_func.h"
 #include "../../os/unix/font_unix.h"
 #include "truetypefontcache.h"
 

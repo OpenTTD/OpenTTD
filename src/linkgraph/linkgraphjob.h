@@ -10,9 +10,9 @@
 #ifndef LINKGRAPHJOB_H
 #define LINKGRAPHJOB_H
 
-#include "../thread.h"
 #include "linkgraph.h"
 #include <atomic>
+#include <thread>
 
 class LinkGraphJob;
 class Path;

@@ -9,8 +9,6 @@
 
 #include "stdafx.h"
 #include "base_consist.h"
-#include "vehicle_base.h"
-#include "string_func.h"
 
 #include "safeguards.h"
 

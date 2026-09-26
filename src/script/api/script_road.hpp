@@ -13,7 +13,6 @@
 #include "script_tile.hpp"
 #include "../squirrel_helper_type.hpp"
 #include "../../station_type.h"
-#include "../../road.h"
 
 /**
  * Class that handles all road related functions.

@@ -9,10 +9,10 @@
 
 #include "stdafx.h"
 #include "3rdparty/md5/md5.h"
+#include "core/container_func.hpp"
 #include "core/string_consumer.hpp"
 #include "fileio_func.h"
 #include "fios.h"
-#include "network/network_content.h"
 #include "screenshot.h"
 #include "string_func.h"
 #include "strings_func.h"

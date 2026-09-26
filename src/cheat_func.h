@@ -10,8 +10,6 @@
 #ifndef CHEAT_FUNC_H
 #define CHEAT_FUNC_H
 
-#include "cheat_type.h"
-
 void ShowCheatWindow();
 
 

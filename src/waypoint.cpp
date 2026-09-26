@@ -12,6 +12,7 @@
 #include "order_func.h"
 #include "window_func.h"
 #include "newgrf_station.h"
+#include "station_func.h"
 #include "waypoint_base.h"
 #include "viewport_kdtree.h"
 

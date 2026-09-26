@@ -10,7 +10,6 @@
 #ifndef BLITTER_BASE_HPP
 #define BLITTER_BASE_HPP
 
-#include "../spritecache.h"
 #include "../spriteloader/spriteloader.hpp"
 
 /** The modes of blitting we can do. */

@@ -10,9 +10,9 @@
 #ifndef SCRIPT_OBJECTTYPE_HPP
 #define SCRIPT_OBJECTTYPE_HPP
 
-#include "script_list.hpp"
+#include "script_object.hpp"
 
-#include "../../newgrf_object.h"
+#include "../../object_type.h"
 
 /**
  * Class that handles all object-type related functions.

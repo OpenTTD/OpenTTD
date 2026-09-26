@@ -15,6 +15,7 @@
 #include "viewport_func.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_callbacks.h"
+#include "newgrf_sound.h"
 #include "tile_map.h"
 
 template <typename Tobj>

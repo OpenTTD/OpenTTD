@@ -10,7 +10,6 @@
 #ifndef NEWGRF_INDUSTRYTILES_H
 #define NEWGRF_INDUSTRYTILES_H
 
-#include "newgrf_animation_type.h"
 #include "newgrf_industries.h"
 
 /** Resolver for the industry tiles scope. */

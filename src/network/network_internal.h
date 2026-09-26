@@ -10,13 +10,11 @@
 #ifndef NETWORK_INTERNAL_H
 #define NETWORK_INTERNAL_H
 
-#include "network_func.h"
 #include "core/tcp_coordinator.h"
 #include "core/tcp_game.h"
 
 #include "../command_type.h"
-#include "../command_func.h"
-#include "../misc/endian_buffer.hpp"
+#include "../gfx_type.h"
 #include "../strings_type.h"
 
 #ifdef RANDOM_DEBUG

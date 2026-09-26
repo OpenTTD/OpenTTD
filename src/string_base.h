@@ -10,8 +10,6 @@
 #ifndef STRING_BASE_H
 #define STRING_BASE_H
 
-#include "string_type.h"
-
 /** Class for iterating over different kind of parts of a string. */
 class StringIterator {
 public:

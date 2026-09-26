@@ -37,7 +37,6 @@
 #include "newgrf_object.h"
 #include "network/core/config.h"
 #include "smallmap_gui.h"
-#include "genworld.h"
 #include "error_func.h"
 #include "vehicle_base.h"
 #include "road.h"

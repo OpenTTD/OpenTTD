@@ -17,6 +17,7 @@
 #include "tilearea_spiral.h"
 #include "vehicle_gui.h"
 #include "cargotype.h"
+#include "station_func.h"
 #include "station_gui.h"
 #include "strings_func.h"
 #include "string_func.h"

@@ -12,8 +12,6 @@
 #include "window_gui.h"
 #include "textfile_gui.h"
 #include "fileio_func.h"
-#include "table/control_codes.h"
-#include "string_func.h"
 #include "openttd.h"
 #include "help_gui.h"
 

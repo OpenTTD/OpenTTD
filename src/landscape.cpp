@@ -10,6 +10,7 @@
 /** @defgroup SnowLineGroup Snowline functions and data structures */
 
 #include "stdafx.h"
+#include "bridge_map.h"
 #include "heightmap.h"
 #include "clear_map.h"
 #include "spritecache.h"
@@ -22,7 +23,6 @@
 #include "void_map.h"
 #include "tgp.h"
 #include "genworld.h"
-#include "fios.h"
 #include "error_func.h"
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_tick.h"

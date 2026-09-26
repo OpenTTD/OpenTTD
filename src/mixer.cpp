@@ -13,7 +13,6 @@
 #include "core/math_func.hpp"
 #include "framerate_type.h"
 #include "mixer.h"
-#include "settings_type.h"
 
 #include "safeguards.h"
 

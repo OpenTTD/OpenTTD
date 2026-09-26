@@ -21,6 +21,7 @@
 #include "strings_func.h"
 #include "sound_func.h"
 #include "vehicle_func.h"
+#include "vehicle_gui.h"
 #include "company_func.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"

@@ -13,6 +13,7 @@
 #include "../network_internal.h"
 #include "../../debug.h"
 #include "../../error.h"
+#include "../../openttd.h"
 #include "../../strings_func.h"
 
 #include "table/strings.h"

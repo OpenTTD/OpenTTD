@@ -10,9 +10,7 @@
 #ifndef NETWORK_CORE_CORE_H
 #define NETWORK_CORE_CORE_H
 
-#include "../../newgrf_config.h"
 #include "../network_crypto.h"
-#include "config.h"
 
 bool NetworkCoreInitialize();
 void NetworkCoreShutdown();

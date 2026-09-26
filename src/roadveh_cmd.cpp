@@ -8,11 +8,13 @@
 /** @file roadveh_cmd.cpp Handling of road vehicles. */
 
 #include "stdafx.h"
+#include "bridge.h"
 #include "roadveh.h"
 #include "command_func.h"
 #include "error_func.h"
 #include "news_func.h"
 #include "station_base.h"
+#include "station_func.h"
 #include "company_func.h"
 #include "articulated_vehicles.h"
 #include "newgrf_sound.h"

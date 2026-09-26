@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 
 #include "address.h"
+#include "../network_func.h"
 #include "../network_internal.h"
 #include "../../debug.h"
 #include "../../core/string_consumer.hpp"

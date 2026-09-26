@@ -11,6 +11,7 @@
  */
 
 #include "stdafx.h"
+#include "bridge.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"
@@ -21,7 +22,6 @@
 #include "newgrf_sound.h"
 #include "autoslope.h"
 #include "tunnelbridge_map.h"
-#include "strings_func.h"
 #include "timer/timer_game_calendar.h"
 #include "clear_func.h"
 #include "vehicle_func.h"

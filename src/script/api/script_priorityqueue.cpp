@@ -12,7 +12,6 @@
 #include "script_error.hpp"
 #include "../squirrel_helper.hpp"
 #include "../script_instance.hpp"
-#include "../../debug.h"
 
 #include "../../safeguards.h"
 

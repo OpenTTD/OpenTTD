@@ -23,6 +23,7 @@
 #include "network.h"
 #include "network_client.h"
 #include "network_base.h"
+#include "network_func.h"
 
 #include "../widgets/network_chat_widget.h"
 

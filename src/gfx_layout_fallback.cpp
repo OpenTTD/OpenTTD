@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 
+#include "gfx_func.h"
 #include "gfx_layout_fallback.h"
 #include "string_func.h"
 #include "zoom_func.h"

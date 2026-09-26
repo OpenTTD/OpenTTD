@@ -12,7 +12,6 @@
 #include "newgrf_airporttiles.h"
 #include "newgrf_badge.h"
 #include "newgrf_spritegroup.h"
-#include "newgrf_sound.h"
 #include "station_base.h"
 #include "water.h"
 #include "landscape.h"
@@ -20,7 +19,6 @@
 #include "town.h"
 #include "newgrf_animation_base.h"
 
-#include "table/strings.h"
 #include "table/airporttiles.h"
 
 #include "safeguards.h"

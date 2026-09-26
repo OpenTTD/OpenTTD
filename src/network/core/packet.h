@@ -10,7 +10,6 @@
 #ifndef NETWORK_CORE_PACKET_H
 #define NETWORK_CORE_PACKET_H
 
-#include "os_abstraction.h"
 #include "config.h"
 #include "core.h"
 #include "../../core/convertible_through_base.hpp"

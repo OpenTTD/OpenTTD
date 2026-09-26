@@ -37,6 +37,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "company_func.h"
+#include "company_base.h"
 #include "rev.h"
 #include "error.h"
 #include "gamelog.h"
@@ -49,7 +50,6 @@
 #include "newgrf_badge_config.h"
 #include "base_media_base.h"
 #include "base_media_graphics.h"
-#include "fios.h"
 #include "fileio_func.h"
 #include "settings_cmd.h"
 

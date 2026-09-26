@@ -8,7 +8,6 @@
 /** @file tcp_coordinator.cpp Basic functions to receive and send Game Coordinator packets. */
 
 #include "../../stdafx.h"
-#include "../../timer/timer_game_calendar.h"
 #include "../../debug.h"
 #include "tcp_coordinator.h"
 

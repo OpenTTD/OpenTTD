@@ -10,9 +10,7 @@
 #ifndef NETWORK_GAMELIST_H
 #define NETWORK_GAMELIST_H
 
-#include "core/address.h"
 #include "core/network_game_info.h"
-#include "network_type.h"
 
 /** The status a server can be in. */
 enum class NetworkGameStatus : uint8_t {

@@ -30,7 +30,6 @@
 #include "signs_cmd.h"
 #include "timer/timer.h"
 #include "timer/timer_window.h"
-#include "dropdown_common_type.h"
 #include "dropdown_func.h"
 
 #include "widgets/sign_widget.h"

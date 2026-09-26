@@ -10,7 +10,7 @@
 #ifndef SCRIPT_OBJECTTYPELIST_HPP
 #define SCRIPT_OBJECTTYPELIST_HPP
 
-#include "script_objecttype.hpp"
+#include "script_list.hpp"
 
 /**
  * Creates a list of valid object types.

@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/misc_sl_compat.h"
 
 #include "../timer/timer_game_calendar.h"
