@@ -11,6 +11,7 @@
 #define RAILTYPES_H
 
 #include "table/strings.h"
+#include "table/strings_vehicles.h"
 
 /**
  * Global Railtype definition

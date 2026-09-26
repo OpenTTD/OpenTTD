@@ -44,7 +44,7 @@
 #endif
 #include <charconv>
 
-#include "table/strings.h"
+#include "table/strings_station_names.h"
 
 #include "../safeguards.h"
 

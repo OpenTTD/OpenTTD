@@ -7,6 +7,8 @@
 
 /** @file town_land.h Sprites to use and how to display them for town tiles. */
 
+#include "table/strings_building_names.h"
+
 /**
  * Writes the data into the Town Tile Drawing Struct
  * @param s1 The first sprite of the building, mostly the ground sprite

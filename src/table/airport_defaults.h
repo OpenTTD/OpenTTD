@@ -11,6 +11,7 @@
 #define AIRPORT_DEFAULTS_H
 
 #include "../timer/timer_game_calendar.h"
+#include "table/strings_airport_names.h"
 
 /**
  * Definition of an airport tiles layout.

@@ -38,6 +38,7 @@
 #include "widgets/genworld_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_worldgen.h"
 
 #include "dropdown_common_type.h"
 

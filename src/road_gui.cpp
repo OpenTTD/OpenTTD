@@ -49,6 +49,8 @@
 #include "widgets/road_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_roads.h"
+#include "table/strings_vehicles.h"
 
 #include "safeguards.h"
 

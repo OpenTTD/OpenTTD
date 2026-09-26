@@ -74,6 +74,9 @@
 #include "network/network_func.h"
 
 #include "table/strings.h"
+#include "table/strings_goals.h"
+#include "table/strings_storybook.h"
+#include "table/strings_worldgen.h"
 
 #include "dropdown_common_type.h"
 

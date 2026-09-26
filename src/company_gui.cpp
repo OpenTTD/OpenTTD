@@ -51,6 +51,8 @@
 #include "widgets/company_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_companies.h"
+#include "table/strings_finances.h"
 
 #include "dropdown_common_type.h"
 

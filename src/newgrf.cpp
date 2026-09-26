@@ -47,7 +47,7 @@
 #include "newgrf/newgrf_internal.h"
 #include "newgrf/newgrf_stringmapping.h"
 
-#include "table/strings.h"
+#include "table/strings_newgrf.h"
 #include "table/pricebase.h"
 
 #include "safeguards.h"

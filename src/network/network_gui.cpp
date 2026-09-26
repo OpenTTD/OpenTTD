@@ -46,6 +46,8 @@
 #include "../widgets/network_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_newgrf.h"
+#include "table/strings_worldgen.h"
 #include "../table/sprites.h"
 
 #ifdef __EMSCRIPTEN__
