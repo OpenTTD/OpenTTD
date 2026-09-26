@@ -12,6 +12,24 @@
 
 #include "32bpp_optimized.hpp"
 
+/**
+ * Converts video buffer pointer into the animation buffer pointer.
+ * @param video The video buffer's pointer.
+ * @param animation_buffer The animation buffer.
+ * @param animation_buffer_pitch The pitch of the animation buffer.
+ * @return The animation buffer pointer.
+ */
+template <typename T>
+static inline T * ScreenToAnimationBuffer(const void *video, T *animation_buffer, int animation_buffer_pitch)
+{
+	ptrdiff_t raw_offset = static_cast<const uint32_t *>(video) - static_cast<const uint32_t *>(_screen.dst_ptr);
+	if (_screen.pitch == animation_buffer_pitch) return &animation_buffer[raw_offset];
+
+	ptrdiff_t lines = raw_offset / _screen.pitch;
+	ptrdiff_t across = raw_offset % _screen.pitch;
+	return &animation_buffer[across + (lines * animation_buffer_pitch)];
+}
+
 /** The optimised 32 bpp blitter with palette animation. */
 class Blitter_32bppAnim : public Blitter_32bppOptimized {
 protected:
@@ -57,13 +75,14 @@ public:
 		return this->palette.palette[index];
 	}
 
-	inline int ScreenToAnimOffset(const uint32_t *video)
+	/**
+	 * Converts video buffer pointer into the animation buffer pointer.
+	 * @param video The video buffer's pointer.
+	 * @return The animation buffer pointer.
+	 */
+	inline uint16_t *ScreenToAnimationBuffer(const void *video)
 	{
-		int raw_offset = video - (const uint32_t *)_screen.dst_ptr;
-		if (_screen.pitch == this->anim_buf_pitch) return raw_offset;
-		int lines = raw_offset / _screen.pitch;
-		int across = raw_offset % _screen.pitch;
-		return across + (lines * this->anim_buf_pitch);
+		return ::ScreenToAnimationBuffer(video, this->anim_buf, this->anim_buf_pitch);
 	}
 
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);

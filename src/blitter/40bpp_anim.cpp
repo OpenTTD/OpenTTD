@@ -12,6 +12,7 @@
 #include "../settings_type.h"
 #include "../video/video_driver.hpp"
 #include "../palette_func.h"
+#include "32bpp_anim.hpp"
 #include "40bpp_anim.hpp"
 #include "common.hpp"
 
@@ -26,6 +27,15 @@ static FBlitter_40bppAnim iFBlitter_40bppAnim;
 /** Cached black value. */
 static const Colour _black_colour{0, 0, 0};
 
+/**
+ * Converts video buffer pointer into the animation buffer pointer.
+ * @param video The video buffer's pointer.
+ * @return The animation buffer pointer.
+ */
+static inline uint8_t *ScreenToAnimationBuffer(const void *video)
+{
+	return ::ScreenToAnimationBuffer(video, VideoDriver::GetInstance()->GetAnimBuffer(), _screen.pitch);
+}
 
 void Blitter_40bppAnim::SetPixel(void *video, int x, int y, PixelColour colour)
 {
@@ -35,7 +45,7 @@ void Blitter_40bppAnim::SetPixel(void *video, int x, int y, PixelColour colour)
 		size_t y_offset = static_cast<size_t>(y) * _screen.pitch;
 		*((Colour *)video + x + y_offset) = _black_colour;
 
-		VideoDriver::GetInstance()->GetAnimBuffer()[((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + x + y_offset] = colour.p;
+		ScreenToAnimationBuffer(video)[x + y_offset] = colour.p;
 	}
 }
 
@@ -48,7 +58,7 @@ void Blitter_40bppAnim::DrawRect(void *video, int width, int height, PixelColour
 	}
 
 	assert(VideoDriver::GetInstance()->GetAnimBuffer() != nullptr);
-	uint8_t *anim_line = ((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + VideoDriver::GetInstance()->GetAnimBuffer();
+	uint8_t *anim_line = ScreenToAnimationBuffer(video);
 
 	do {
 		Colour *dst = (Colour *)video;
@@ -74,7 +84,7 @@ void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int 
 	}
 
 	assert(VideoDriver::GetInstance()->GetAnimBuffer() != nullptr);
-	uint8_t *anim = ((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + VideoDriver::GetInstance()->GetAnimBuffer();
+	uint8_t *anim = ScreenToAnimationBuffer(video);
 
 	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
 		*((Colour *)video + x + y * _screen.pitch) = _black_colour;
@@ -111,7 +121,7 @@ inline void Blitter_40bppAnim::Draw(const Blitter::BlitterParams *bp, ZoomLevel 
 	/* skip lines in dst */
 	Colour *dst = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
 	assert(VideoDriver::GetInstance()->GetAnimBuffer() != nullptr);
-	uint8_t *anim = VideoDriver::GetInstance()->GetAnimBuffer() + ((uint32_t *)bp->dst - (uint32_t *)_screen.dst_ptr) + bp->top * bp->pitch + bp->left;
+	uint8_t *anim = ScreenToAnimationBuffer(dst);
 
 	/* store so we don't have to access it via bp every time (compiler assumes pointer aliasing) */
 	const uint8_t *remap = bp->remap;
@@ -357,7 +367,7 @@ void Blitter_40bppAnim::DrawColourMappingRect(void *dst, int width, int height, 
 	}
 
 	Colour *udst = (Colour *)dst;
-	uint8_t *anim = VideoDriver::GetInstance()->GetAnimBuffer() + ((uint32_t *)dst - (uint32_t *)_screen.dst_ptr);
+	uint8_t *anim = ScreenToAnimationBuffer(dst);
 
 	if (pal == PALETTE_TO_TRANSPARENT) {
 		/* If the anim buffer contains a colour value, the image composition will
@@ -413,9 +423,8 @@ void Blitter_40bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 	uint32_t *dst = (uint32_t *)video;
 	const uint32_t *usrc = (const uint32_t *)src;
 
-	uint8_t *anim_buf = VideoDriver::GetInstance()->GetAnimBuffer();
-	if (anim_buf == nullptr) return;
-	uint8_t *anim_line = ((uint32_t *)video - (uint32_t *)_screen.dst_ptr) + anim_buf;
+	if (VideoDriver::GetInstance()->GetAnimBuffer() == nullptr) return;
+	uint8_t *anim_line = ScreenToAnimationBuffer(video);
 
 	for (; height > 0; height--) {
 		std::copy_n(usrc, width, dst);
@@ -435,9 +444,8 @@ void Blitter_40bppAnim::CopyToBuffer(const void *video, void *dst, int width, in
 	uint32_t *udst = (uint32_t *)dst;
 	const uint32_t *src = (const uint32_t *)video;
 
-	uint8_t *anim_buf = VideoDriver::GetInstance()->GetAnimBuffer();
-	if (anim_buf == nullptr) return;
-	const uint8_t *anim_line = ((const uint32_t *)video - (uint32_t *)_screen.dst_ptr) + anim_buf;
+	if (VideoDriver::GetInstance()->GetAnimBuffer() == nullptr) return;
+	const uint8_t *anim_line = ScreenToAnimationBuffer(video);
 
 	for (; height > 0; height--) {
 		std::copy_n(src, width, udst);
@@ -452,15 +460,14 @@ void Blitter_40bppAnim::CopyToBuffer(const void *video, void *dst, int width, in
 
 void Blitter_40bppAnim::CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch)
 {
-	uint8_t *anim_buf = VideoDriver::GetInstance()->GetAnimBuffer();
-	if (anim_buf == nullptr) {
+	if (VideoDriver::GetInstance()->GetAnimBuffer() == nullptr) {
 		Blitter_32bppOptimized::CopyImageToBuffer(video, dst, width, height, dst_pitch);
 		return;
 	}
 
 	uint32_t *udst = (uint32_t *)dst;
 	const uint32_t *src = (const uint32_t *)video;
-	const uint8_t *anim_line = ((const uint32_t *)video - (uint32_t *)_screen.dst_ptr) + anim_buf;
+	const uint8_t *anim_line = ScreenToAnimationBuffer(video);
 
 	for (; height > 0; height--) {
 		for (int x = 0; x < width; x++) {
