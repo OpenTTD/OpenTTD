@@ -364,17 +364,17 @@ protected:
 	std::chrono::steady_clock::time_point next_game_tick;
 	std::chrono::steady_clock::time_point next_draw_tick;
 
-	bool fast_forward_key_pressed = false; ///< The fast-forward key is being pressed.
-	bool fast_forward_via_key = false; ///< The fast-forward was enabled by key press.
-
-	bool is_game_threaded = true;
 	std::thread game_thread;
 	std::mutex game_state_mutex;
 	std::mutex game_thread_wait_mutex;
 
+	uint8_t *anim_buffer = nullptr; ///< The animation buffer if supported/used.
+
 	const bool uses_hardware_acceleration; ///< Whether hardware acceleration is used or not.
 	const bool supports_animation; ///< Whether this driver supports hardware accelerated animation.
-	uint8_t *anim_buffer = nullptr; ///< The animation buffer if supported/used.
+	bool fast_forward_key_pressed = false; ///< The fast-forward key is being pressed.
+	bool fast_forward_via_key = false; ///< The fast-forward was enabled by key press.
+	bool is_game_threaded = true; ///< Whether the game is allowed to use threads; cleared in the driver implementation constructors if required.
 
 	static void GameThreadThunk(VideoDriver *drv);
 
