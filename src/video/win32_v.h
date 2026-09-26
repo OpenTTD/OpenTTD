@@ -18,6 +18,10 @@
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
 public:
+	/**
+	 * Constructor for the Windows video driver base class.
+	 * @param uses_hardware_acceleration True if the driver uses hardware acceleration, false otherwise.
+	 */
 	VideoDriver_Win32Base(bool uses_hardware_acceleration = false) : VideoDriver(uses_hardware_acceleration), main_wnd(nullptr), fullscreen(false), buffer_locked(false) {}
 
 	void Stop() override;
@@ -47,6 +51,7 @@ protected:
 	int height_org = 0;     ///< Original monitor resolution height, before we changed it.
 
 	bool buffer_locked;     ///< Video buffer was locked by the main thread.
+	Palette local_palette;  ///< Current palette to use for drawing.
 
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
@@ -84,6 +89,12 @@ protected:
 	 * @param hWnd The window handle of the changed window.
 	 */
 	virtual void PaletteChanged(HWND hWnd) = 0;
+
+	/**
+	 * Determines whether minimising and restoring fullscreen windows is done with ToggleFullscreen method.
+	 * @return True if ToggleFullscreen should be used, false otherwise.
+	 */
+	virtual bool MinimiseRestoreWithToggleFullscreen() { return false; }
 
 private:
 	friend LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -123,7 +134,7 @@ public:
 /** The factory for Windows' video driver. */
 class FVideoDriver_Win32GDI : public DriverFactoryBase {
 public:
-	FVideoDriver_Win32GDI() : DriverFactoryBase(Driver::Type::Video, 9, "win32", "Win32 GDI Video Driver") {}
+	FVideoDriver_Win32GDI() : DriverFactoryBase(Driver::Type::Video, 8, "win32", "Win32 GDI Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Win32GDI>(); }
 };
 
@@ -181,7 +192,7 @@ protected:
 /** The factory for Windows' OpenGL video driver. */
 class FVideoDriver_Win32OpenGL : public DriverFactoryBase {
 public:
-	FVideoDriver_Win32OpenGL() : DriverFactoryBase(Driver::Type::Video, 10, "win32-opengl", "Win32 OpenGL Video Driver") {}
+	FVideoDriver_Win32OpenGL() : DriverFactoryBase(Driver::Type::Video, 9, "win32-opengl", "Win32 OpenGL Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Win32OpenGL>(); }
 
 protected:
