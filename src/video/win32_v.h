@@ -18,7 +18,13 @@
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
 public:
-	VideoDriver_Win32Base(bool uses_hardware_acceleration = false) : VideoDriver(uses_hardware_acceleration), main_wnd(nullptr), fullscreen(false), buffer_locked(false) {}
+	/**
+	 * Create the video driver.
+	 * @param uses_hardware_acceleration Whether hardware acceleration is used by this driver.
+	 * @param supports_animation Whether this driver supports animation.
+	 */
+	VideoDriver_Win32Base(bool uses_hardware_acceleration = false, bool supports_animation = false) :
+			VideoDriver(uses_hardware_acceleration, supports_animation) {}
 
 	void Stop() override;
 
@@ -37,8 +43,8 @@ public:
 	std::vector<int> GetListOfMonitorRefreshRates() override;
 
 protected:
-	HWND main_wnd;          ///< Handle to system window.
-	bool fullscreen;        ///< Whether to use (true) fullscreen mode.
+	HWND main_wnd = nullptr; ///< Handle to system window.
+	bool fullscreen = false; ///< Whether to use (true) fullscreen mode.
 	bool has_focus = false; ///< Does our window have system focus?
 	Rect dirty_rect;        ///< Region of the screen that needs redrawing.
 	int width = 0;          ///< Width in pixels of our display surface.
@@ -46,7 +52,7 @@ protected:
 	int width_org = 0;      ///< Original monitor resolution width, before we changed it.
 	int height_org = 0;     ///< Original monitor resolution height, before we changed it.
 
-	bool buffer_locked;     ///< Video buffer was locked by the main thread.
+	bool buffer_locked = false; ///< Video buffer was locked by the main thread.
 
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
@@ -91,8 +97,6 @@ private:
 /** The GDI video driver for windows. */
 class VideoDriver_Win32GDI : public VideoDriver_Win32Base {
 public:
-	VideoDriver_Win32GDI() : dib_sect(nullptr), gdi_palette(nullptr), buffer_bits(nullptr) {}
-
 	std::optional<std::string_view> Start(const StringList &param) override;
 
 	void Stop() override;
@@ -102,9 +106,9 @@ public:
 	std::string_view GetName() const override { return "win32"; }
 
 protected:
-	HBITMAP  dib_sect;      ///< System bitmap object referencing our rendering buffer.
-	HPALETTE gdi_palette;   ///< Palette object for 8bpp blitter.
-	void     *buffer_bits;  ///< Internal rendering buffer.
+	HBITMAP dib_sect = nullptr; ///< System bitmap object referencing our rendering buffer.
+	HPALETTE gdi_palette = nullptr; ///< Palette object for 8bpp blitter.
+	void *buffer_bits = nullptr;  ///< Internal rendering buffer.
 
 	void Paint() override;
 	void *GetVideoPointer() override { return this->buffer_bits; }
@@ -132,7 +136,7 @@ public:
 /** The OpenGL video driver for windows. */
 class VideoDriver_Win32OpenGL : public VideoDriver_Win32Base {
 public:
-	VideoDriver_Win32OpenGL() : VideoDriver_Win32Base(true), dc(nullptr), gl_rc(nullptr), anim_buffer(nullptr), driver_info(this->GetName()) {}
+	VideoDriver_Win32OpenGL() : VideoDriver_Win32Base(true, true), driver_info(this->GetName()) {}
 
 	std::optional<std::string_view> Start(const StringList &param) override;
 
@@ -150,9 +154,6 @@ public:
 
 	void ClearSystemSprites() override;
 
-	bool HasAnimBuffer() override { return true; }
-	uint8_t *GetAnimBuffer() override { return this->anim_buffer; }
-
 	void ToggleVsync(bool vsync) override;
 
 	std::string_view GetName() const override { return "win32-opengl"; }
@@ -160,9 +161,8 @@ public:
 	std::string_view GetInfoString() const override { return this->driver_info; }
 
 protected:
-	HDC    dc;          ///< Window device context.
-	HGLRC  gl_rc;       ///< OpenGL context.
-	uint8_t *anim_buffer; ///< Animation buffer from OpenGL back-end.
+	HDC dc = nullptr; ///< Window device context.
+	HGLRC gl_rc = nullptr; ///< OpenGL context.
 	std::string driver_info; ///< Information string about selected driver.
 
 	uint8_t GetFullscreenBpp() override { return 32; } // OpenGL is always 32 bpp.

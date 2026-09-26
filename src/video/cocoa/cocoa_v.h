@@ -35,7 +35,7 @@ public:
 	OTTD_CocoaWindowDelegate *delegate; //!< Window delegate object
 
 public:
-	VideoDriver_Cocoa(bool uses_hardware_acceleration = false);
+	VideoDriver_Cocoa(bool uses_hardware_acceleration = false, bool supports_animation = false);
 
 	void Stop() override;
 	void MainLoop() override;

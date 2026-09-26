@@ -37,7 +37,13 @@ class VideoDriver : public Driver {
 	const uint DEFAULT_WINDOW_HEIGHT = 480u; ///< Default window height.
 
 public:
-	VideoDriver(bool uses_hardware_acceleration = false) : fast_forward_key_pressed(false), fast_forward_via_key(false), is_game_threaded(true), uses_hardware_acceleration(uses_hardware_acceleration) {}
+	/**
+	 * Create the video driver.
+	 * @param uses_hardware_acceleration Whether hardware acceleration is used by this driver.
+	 * @param supports_animation Whether this driver supports animation.
+	 */
+	VideoDriver(bool uses_hardware_acceleration = false, bool supports_animation = false) :
+			uses_hardware_acceleration(uses_hardware_acceleration), supports_animation(supports_animation) {}
 
 	/**
 	 * Mark a particular area dirty.
@@ -133,18 +139,18 @@ public:
 	 * Does this video driver support a separate animation buffer in addition to the colour buffer?
 	 * @return True if a separate animation buffer is supported.
 	 */
-	virtual bool HasAnimBuffer()
+	constexpr bool HasAnimBuffer() const
 	{
-		return false;
+		return this->supports_animation;
 	}
 
 	/**
 	 * Get a pointer to the animation buffer of the video back-end.
 	 * @return Pointer to the buffer or nullptr if no animation buffer is supported.
 	 */
-	virtual uint8_t *GetAnimBuffer()
+	constexpr uint8_t *GetAnimBuffer() const
 	{
-		return nullptr;
+		return this->anim_buffer;
 	}
 
 	/**
@@ -358,15 +364,17 @@ protected:
 	std::chrono::steady_clock::time_point next_game_tick;
 	std::chrono::steady_clock::time_point next_draw_tick;
 
-	bool fast_forward_key_pressed; ///< The fast-forward key is being pressed.
-	bool fast_forward_via_key; ///< The fast-forward was enabled by key press.
+	bool fast_forward_key_pressed = false; ///< The fast-forward key is being pressed.
+	bool fast_forward_via_key = false; ///< The fast-forward was enabled by key press.
 
-	bool is_game_threaded;
+	bool is_game_threaded = true;
 	std::thread game_thread;
 	std::mutex game_state_mutex;
 	std::mutex game_thread_wait_mutex;
 
-	bool uses_hardware_acceleration;
+	const bool uses_hardware_acceleration; ///< Whether hardware acceleration is used or not.
+	const bool supports_animation; ///< Whether this driver supports hardware accelerated animation.
+	uint8_t *anim_buffer = nullptr; ///< The animation buffer if supported/used.
 
 	static void GameThreadThunk(VideoDriver *drv);
 
