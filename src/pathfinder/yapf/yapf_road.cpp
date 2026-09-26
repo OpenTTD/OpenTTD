@@ -113,6 +113,22 @@ public:
 	/** @copydoc CYapfBaseT::PfCalcCostFunc */
 	inline bool PfCalcCost(Node &n, [[maybe_unused]] const TrackFollower *follower)
 	{
+		/* If the parent node is the origin then we need to calculate the cost for this node first.
+		 * this is because the origin nodes cost was not being included in the path cost */
+		if (n.parent != nullptr && n.parent->parent == nullptr)
+		{
+			int parent_cost = Yapf().OneTileCost(n.parent->key.tile, n.parent->key.td);
+			n.parent->cost = parent_cost;
+		}
+
+		/* If the parent node is the origin then we need to calculate the cost for this node first.
+		 * this is because the origin nodes cost was not being included in the path cost */
+		if (n.parent != nullptr && n.parent->parent == nullptr)
+		{
+			int parent_cost = Yapf().OneTileCost(n.parent->key.tile, n.parent->key.td);
+			n.parent->cost = parent_cost;
+		}
+
 		int segment_cost = 0;
 		uint tiles = 0;
 		/* start at n.key.tile / n.key.td and walk to the end of segment */
