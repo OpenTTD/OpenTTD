@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "core/backup_type.hpp"
 #include "fileio_func.h"
-#include "fontcache.h"
 #include "gfx_type.h"
 #include "gfx_func.h"
 #include "string_func.h"

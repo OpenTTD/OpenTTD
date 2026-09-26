@@ -14,7 +14,6 @@
 #include "newgrf_house.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
-#include "newgrf_sound.h"
 #include "company_func.h"
 #include "company_base.h"
 #include "tilearea_spiral.h"

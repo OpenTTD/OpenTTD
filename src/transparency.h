@@ -12,7 +12,6 @@
 
 #include "gfx_func.h"
 #include "openttd.h"
-#include "core/bitmath_func.hpp"
 #include "station_type.h"
 
 /**

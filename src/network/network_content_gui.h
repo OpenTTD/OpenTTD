@@ -12,7 +12,6 @@
 
 #include "network_content.h"
 #include "../window_gui.h"
-#include "../widgets/network_content_widget.h"
 
 /** Base window for showing the download status of content */
 class BaseNetworkContentDownloadStatusWindow : public Window, ContentCallback {

@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
+#include "../newgrf_text.h"
 #include "../newgrf_townname.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"

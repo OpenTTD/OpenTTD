@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../error.h"
+#include "../strings_func.h"
 
 #include "../script/squirrel_class.hpp"
 

@@ -11,10 +11,6 @@
 
 #include "autocompletion.h"
 
-#include "console_internal.h"
-#include "town.h"
-#include "network/network_base.h"
-
 #include "safeguards.h"
 
 /**

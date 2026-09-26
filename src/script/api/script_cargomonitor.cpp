@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 #include "script_cargo.hpp"
 #include "script_cargomonitor.hpp"
+#include "../../cargomonitor.h"
 #include "../../town.h"
 #include "../../industry.h"
 

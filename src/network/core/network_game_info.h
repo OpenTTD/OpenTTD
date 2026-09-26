@@ -72,7 +72,6 @@
 #ifndef NETWORK_CORE_GAME_INFO_H
 #define NETWORK_CORE_GAME_INFO_H
 
-#include "config.h"
 #include "core.h"
 #include "../../newgrf_config.h"
 #include "../../timer/timer_game_calendar.h"

@@ -10,9 +10,7 @@
 #ifndef GENWORLD_H
 #define GENWORLD_H
 
-#include "company_type.h"
 #include "landscape_type.h"
-#include <thread>
 
 /** Constants related to world generation */
 enum LandscapeGenerator : uint8_t {

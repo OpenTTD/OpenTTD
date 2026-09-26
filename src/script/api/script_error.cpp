@@ -9,7 +9,6 @@
 
 #include "../../stdafx.h"
 #include "script_error.hpp"
-#include "../../string_func.h"
 #include "../../strings_func.h"
 
 #include "../../safeguards.h"

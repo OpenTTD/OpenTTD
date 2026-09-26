@@ -10,7 +10,6 @@
 #ifndef YAPF_COMMON_HPP
 #define YAPF_COMMON_HPP
 
-#include "../../core/bitmath_func.hpp"
 #include "../../tile_type.h"
 #include "../../track_type.h"
 

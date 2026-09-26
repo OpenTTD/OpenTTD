@@ -11,6 +11,7 @@
 #define NEWGRF_ROADSTATION_H
 
 #include "bridge_type.h"
+#include "economy_func.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_badge_type.h"
@@ -18,7 +19,6 @@
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "newgrf_town.h"
-#include "road.h"
 
 struct TileInfo;
 

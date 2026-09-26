@@ -17,10 +17,8 @@
 #include "../../industry.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../station_base.h"
 #include "../../newgrf_industries.h"
 #include "../../industry_cmd.h"
-#include "../../timer/timer_game_calendar.h"
 
 #include "table/strings.h"
 

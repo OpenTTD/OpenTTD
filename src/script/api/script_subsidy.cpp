@@ -14,7 +14,6 @@
 #include "script_town.hpp"
 #include "script_error.hpp"
 #include "../../subsidy_base.h"
-#include "../../station_base.h"
 #include "../../subsidy_cmd.h"
 
 #include "../../safeguards.h"

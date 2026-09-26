@@ -14,7 +14,6 @@
 #include "genworld.h"
 #include "newgrf_badge.h"
 #include "newgrf_object.h"
-#include "newgrf_sound.h"
 #include "object_base.h"
 #include "object_map.h"
 #include "timer/timer_game_calendar.h"

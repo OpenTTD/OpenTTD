@@ -16,7 +16,6 @@
 #include "newgrf_callbacks.h"
 #include "strings_type.h"
 #include "landscape_type.h"
-#include "core/bitmath_func.hpp"
 
 /** Town growth effect when delivering cargo. */
 enum class TownAcceptanceEffect : uint8_t {

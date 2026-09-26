@@ -12,7 +12,6 @@
 #include "core/network_game_info.h"
 #include "network_admin.h"
 #include "network_server.h"
-#include "network_udp.h"
 #include "network_base.h"
 #include "../console_func.h"
 #include "../company_base.h"

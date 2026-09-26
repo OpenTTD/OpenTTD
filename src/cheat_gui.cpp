@@ -16,7 +16,6 @@
 #include "vehicle_base.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
-#include "string_func.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "rail_gui.h"

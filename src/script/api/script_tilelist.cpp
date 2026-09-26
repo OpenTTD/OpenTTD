@@ -12,6 +12,7 @@
 #include "script_industry.hpp"
 #include "../../industry.h"
 #include "../../station_base.h"
+#include "../../station_func.h"
 
 #include "../../safeguards.h"
 

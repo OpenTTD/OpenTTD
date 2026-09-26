@@ -10,7 +10,7 @@
 #ifndef SCRIPT_INDUSTRYTYPELIST_HPP
 #define SCRIPT_INDUSTRYTYPELIST_HPP
 
-#include "script_industrytype.hpp"
+#include "script_list.hpp"
 
 /**
  * Creates a list of valid industry types.

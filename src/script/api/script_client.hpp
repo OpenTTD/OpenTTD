@@ -10,10 +10,8 @@
 #ifndef SCRIPT_CLIENT_HPP
 #define SCRIPT_CLIENT_HPP
 
-#include "script_text.hpp"
 #include "script_date.hpp"
 #include "script_company.hpp"
-#include "../../network/network_type.h"
 
 /**
  * Class that handles all client related functions.

@@ -11,6 +11,7 @@
 #include "../debug.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
+#include "../newgrf_text.h"
 #include "../language.h"
 
 #include "table/strings.h"

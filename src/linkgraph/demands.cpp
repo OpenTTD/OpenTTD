@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "demands.h"
+#include "linkgraphjob_base.h"
 #include "../core/math_func.hpp"
 #include <queue>
 

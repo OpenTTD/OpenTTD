@@ -18,7 +18,6 @@
 
 #include "../../stdafx.h"
 #include "os_abstraction.h"
-#include "../../string_func.h"
 #include "../../3rdparty/fmt/format.h"
 #include <mutex>
 

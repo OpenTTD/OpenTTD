@@ -17,8 +17,6 @@
 #include "script_story_page.hpp"
 #include "../script_instance.hpp"
 #include "../../goal_base.h"
-#include "../../string_func.h"
-#include "../../network/network_base.h"
 #include "../../goal_cmd.h"
 
 #include "../../safeguards.h"

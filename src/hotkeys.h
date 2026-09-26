@@ -11,9 +11,7 @@
 #define HOTKEYS_H
 
 #include "core/enum_type.hpp"
-#include "gfx_type.h"
 #include "window_type.h"
-#include "string_type.h"
 
 /**
  * All data for a single hotkey. The name (for saving/loading a configfile),

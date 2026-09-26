@@ -10,7 +10,6 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
-#include "cpu.h"
 #include <chrono>
 #include "debug_type.h"
 #include "core/enum_type.hpp"

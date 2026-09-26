@@ -11,10 +11,10 @@
 #include "../debug.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/ai_sl_compat.h"
 
 #include "../company_base.h"
-#include "../string_func.h"
 
 #include "../ai/ai.hpp"
 #include "../ai/ai_config.hpp"

@@ -11,7 +11,6 @@
 #define BASE_STATION_BASE_H
 
 #include "core/pool_type.hpp"
-#include "command_type.h"
 #include "viewport_type.h"
 #include "station_map.h"
 #include "timer/timer_game_calendar.h"

@@ -8,8 +8,7 @@
 /** @file 40bpp_anim.cpp Implementation of the animated 40 bpp blitter. */
 
 #include "../stdafx.h"
-#include "../zoom_func.h"
-#include "../settings_type.h"
+#include "../spritecache.h"
 #include "../video/video_driver.hpp"
 #include "../palette_func.h"
 #include "40bpp_anim.hpp"

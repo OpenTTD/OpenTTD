@@ -12,10 +12,8 @@
 #include "landscape.h"
 #include "newgrf_badge.h"
 #include "newgrf_industrytiles.h"
-#include "newgrf_sound.h"
 #include "industry.h"
 #include "town.h"
-#include "command_func.h"
 #include "water.h"
 #include "newgrf_animation_base.h"
 

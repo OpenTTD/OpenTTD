@@ -10,8 +10,8 @@
 #ifndef CLEAR_MAP_H
 #define CLEAR_MAP_H
 
-#include "bridge_map.h"
 #include "industry_type.h"
+#include "tile_map.h"
 
 static constexpr size_t CLEAR_GROUND_BITS = 3; ///< How many bits in map array are dedicated for clear ground type.
 

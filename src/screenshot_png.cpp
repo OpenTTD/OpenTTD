@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "core/math_func.hpp"
 #include "debug.h"
-#include "fileio_func.h"
 #include "screenshot_type.h"
 #include "3rdparty/fmt/ranges.h"
 
@@ -21,7 +20,6 @@
 #include "newgrf_config.h"
 #include "ai/ai_info.hpp"
 #include "company_base.h"
-#include "base_media_base.h"
 #include "base_media_graphics.h"
 #endif /* PNG_TEXT_SUPPORTED */
 

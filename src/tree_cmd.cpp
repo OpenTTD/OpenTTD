@@ -8,6 +8,7 @@
 /** @file tree_cmd.cpp Handling of tree tiles. */
 
 #include "stdafx.h"
+#include "bridge_map.h"
 #include "clear_map.h"
 #include "landscape.h"
 #include "tilearea_type.h"

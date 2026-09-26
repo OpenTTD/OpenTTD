@@ -10,9 +10,6 @@
 #ifndef OLDLOADER_H
 #define OLDLOADER_H
 
-#include "saveload.h"
-#include "../tile_type.h"
-
 static const uint BUFFER_SIZE = 4096;
 static const uint OLD_MAP_SIZE = 256;
 

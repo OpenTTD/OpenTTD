@@ -22,6 +22,7 @@
 #include "sound_func.h"
 #include "window_func.h"
 #include "company_base.h"
+#include "company_func.h"
 #include "zoom_func.h"
 #include "strings_func.h"
 #include "blitter/factory.hpp"

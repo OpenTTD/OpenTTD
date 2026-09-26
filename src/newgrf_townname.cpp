@@ -14,7 +14,6 @@
 
 #include "stdafx.h"
 #include "newgrf_townname.h"
-#include "string_func.h"
 #include "strings_internal.h"
 
 #include "table/strings.h"

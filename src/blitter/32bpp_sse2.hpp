@@ -24,6 +24,7 @@
 #define FULL_ANIMATION 0
 #endif
 
+#include "../cpu.h"
 #include "32bpp_sse_type.h"
 
 /** Base methods for 32bpp SSE blitters. */

@@ -14,7 +14,6 @@
 #include "script_industrytype.hpp"
 #include "script_cargo.hpp"
 #include "../../debug.h"
-#include "../../station_base.h"
 #include "../../landscape_cmd.h"
 #include "../../newgrf_generic.h"
 #include "../../newgrf_station.h"

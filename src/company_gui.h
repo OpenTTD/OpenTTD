@@ -11,7 +11,7 @@
 #define COMPANY_GUI_H
 
 #include "company_type.h"
-#include "group.h"
+#include "group_type.h"
 #include "gfx_type.h"
 
 ExtendedTextColour GetDrawStringCompanyColour(CompanyID company);

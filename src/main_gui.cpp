@@ -8,11 +8,9 @@
 /** @file main_gui.cpp Handling of the main viewport. */
 
 #include "stdafx.h"
-#include "currency_type.h"
 #include "spritecache.h"
 #include "window_gui.h"
 #include "window_func.h"
-#include "textbuf_gui.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "console_gui.h"
@@ -21,10 +19,7 @@
 #include "map_func.h"
 #include "sound_func.h"
 #include "transparency.h"
-#include "strings_func.h"
 #include "zoom_func.h"
-#include "company_base.h"
-#include "company_func.h"
 #include "toolbar_gui.h"
 #include "statusbar_gui.h"
 #include "linkgraph/linkgraph_gui.h"

@@ -9,10 +9,8 @@
 
 #include "../../stdafx.h"
 #include "script_newgrf.hpp"
-#include "../../core/bitmath_func.hpp"
 #include "../../newgrf_config.h"
 #include "../../newgrf.h"
-#include "../../string_func.h"
 
 #include "../../safeguards.h"
 

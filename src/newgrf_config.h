@@ -13,7 +13,7 @@
 #include "strings_type.h"
 #include "fileio_type.h"
 #include "textfile_type.h"
-#include "newgrf_text.h"
+#include "newgrf_text_type.h"
 #include "3rdparty/md5/md5.h"
 
 /** GRF config bit flags */

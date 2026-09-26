@@ -11,9 +11,6 @@
 #include "string_consumer.hpp"
 
 #include "utf8.hpp"
-#include "string_builder.hpp"
-
-#include "../string_func.h"
 
 #if defined(STRGEN) || defined(SETTINGSGEN)
 #include "../error_func.h"

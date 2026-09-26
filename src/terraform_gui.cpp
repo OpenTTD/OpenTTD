@@ -12,7 +12,6 @@
 #include "clear_map.h"
 #include "company_func.h"
 #include "company_base.h"
-#include "house.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "window_func.h"

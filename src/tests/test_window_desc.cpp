@@ -13,6 +13,7 @@
 
 #include "mock_environment.h"
 
+#include "../core/format.hpp"
 #include "../window_gui.h"
 
 #include "../safeguards.h"

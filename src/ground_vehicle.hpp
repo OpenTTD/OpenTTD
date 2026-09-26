@@ -11,7 +11,6 @@
 #define GROUND_VEHICLE_HPP
 
 #include "vehicle_base.h"
-#include "vehicle_gui.h"
 #include "landscape.h"
 #include "window_func.h"
 

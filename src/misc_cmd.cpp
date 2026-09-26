@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "command_func.h"
-#include "economy_func.h"
 #include "window_func.h"
 #include "textbuf_gui.h"
 #include "network/network.h"
@@ -21,7 +20,6 @@
 #include "company_base.h"
 #include "tile_map.h"
 #include "texteff.hpp"
-#include "core/backup_type.hpp"
 #include "misc_cmd.h"
 #include "video/video_driver.hpp"
 

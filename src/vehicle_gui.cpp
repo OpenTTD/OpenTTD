@@ -13,6 +13,7 @@
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
+#include "vehicle_gui.h"
 #include "vehicle_gui_base.h"
 #include "viewport_func.h"
 #include "newgrf_text.h"

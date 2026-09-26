@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/newgrf_sl_compat.h"
 
 #include "newgrf_sl.h"

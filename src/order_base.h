@@ -14,7 +14,6 @@
 #include "core/pool_type.hpp"
 #include "core/bitmath_func.hpp"
 #include "cargo_type.h"
-#include "depot_type.h"
 #include "station_type.h"
 #include "vehicle_type.h"
 #include "timer/timer_game_tick.h"

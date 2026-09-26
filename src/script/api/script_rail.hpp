@@ -10,7 +10,7 @@
 #ifndef SCRIPT_RAIL_HPP
 #define SCRIPT_RAIL_HPP
 
-#include "script_tile.hpp"
+#include "script_error.hpp"
 #include "../../industry_type.h"
 #include "../../signal_type.h"
 #include "../../station_type.h"

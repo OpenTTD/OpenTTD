@@ -12,7 +12,6 @@
 
 #include "os_abstraction.h"
 #include "tcp.h"
-#include "../network_type.h"
 
 /**
  * Enum with types of TCP packets specific to the admin network.

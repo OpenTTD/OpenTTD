@@ -13,6 +13,7 @@
 #include "train.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
+#include "vehicle_gui.h"
 #include "zoom_func.h"
 #include "train_cmd.h"
 

@@ -19,7 +19,6 @@
 #include "../../strings_func.h"
 #include "../../tile_map.h"
 #include "../../string_func.h"
-#include "../../settings_func.h"
 #include "../../company_cmd.h"
 #include "../../misc_cmd.h"
 #include "../../object_cmd.h"

@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "core/backup_type.hpp"
 #include "gfx_func.h"
-#include "openttd.h"
 #include "hotkeys.h"
 #include "ini_type.h"
 #include "string_func.h"

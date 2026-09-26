@@ -12,6 +12,7 @@
 
 
 #include "../../pbs.h"
+#include "../../waypoint_base.h"
 #include "../follow_track.hpp"
 #include "../pathfinder_type.h"
 #include "yapf_type.hpp"

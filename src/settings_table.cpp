@@ -20,7 +20,9 @@
 #include "train.h"
 #include "news_func.h"
 #include "window_func.h"
+#include "company_base.h"
 #include "company_func.h"
+#include "saveload/saveload_func.h"
 #include "timer/timer_game_calendar.h"
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 #define HAS_TRUETYPE_FONT
@@ -45,7 +47,9 @@
 #include "smallmap_gui.h"
 #include "roadveh.h"
 #include "roadveh_cmd.h"
+#include "spritecache.h"
 #include "vehicle_func.h"
+#include "vehicle_gui.h"
 #include "viewport_func.h"
 #include "void_map.h"
 #include "station_func.h"

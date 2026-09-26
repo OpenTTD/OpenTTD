@@ -8,10 +8,10 @@
 /** @file ai_instance.cpp Implementation of AIInstance. */
 
 #include "../stdafx.h"
-#include "../debug.h"
 #include "../error.h"
 #include "../company_base.h"
 #include "../company_func.h"
+#include "../strings_func.h"
 
 #include "../script/squirrel_class.hpp"
 

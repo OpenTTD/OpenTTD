@@ -11,6 +11,7 @@
 #define ENGINE_CMD_H
 
 #include "command_type.h"
+#include "engine_type.h"
 
 CommandCost CmdWantEnginePreview(DoCommandFlags flags, EngineID engine_id);
 CommandCost CmdEngineCtrl(DoCommandFlags flags, EngineID engine_id, CompanyID company_id, bool allow);

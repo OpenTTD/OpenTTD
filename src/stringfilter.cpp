@@ -9,11 +9,9 @@
 
 #include "stdafx.h"
 #include "string_func.h"
-#include "strings_func.h"
 #include "core/utf8.hpp"
 #include "core/string_builder.hpp"
 #include "stringfilter_type.h"
-#include "gfx_func.h"
 
 #include "safeguards.h"
 

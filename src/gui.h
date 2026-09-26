@@ -12,7 +12,6 @@
 
 #include "rail_type.h"
 #include "road_type.h"
-#include "strings_type.h"
 #include "vehicle_type.h"
 #include "economy_type.h"
 #include "tile_type.h"

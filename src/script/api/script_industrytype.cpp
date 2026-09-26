@@ -13,7 +13,6 @@
 #include "script_map.hpp"
 #include "script_error.hpp"
 #include "../../strings_func.h"
-#include "../../industry.h"
 #include "../../newgrf_industries.h"
 #include "../../industry_cmd.h"
 

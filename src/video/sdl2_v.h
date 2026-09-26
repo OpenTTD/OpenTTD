@@ -10,8 +10,6 @@
 #ifndef VIDEO_SDL_H
 #define VIDEO_SDL_H
 
-#include <condition_variable>
-
 #include "video_driver.hpp"
 
 /** The SDL video driver. */

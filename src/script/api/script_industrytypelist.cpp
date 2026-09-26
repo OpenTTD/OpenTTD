@@ -9,7 +9,8 @@
 
 #include "../../stdafx.h"
 #include "script_industrytypelist.hpp"
-#include "../../industry.h"
+#include "script_industrytype.hpp"
+#include "../../industry_type.h"
 
 #include "../../safeguards.h"
 

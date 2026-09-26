@@ -13,7 +13,6 @@
 #include "command_func.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "string_func.h"
 #include "timer/timer_game_calendar.h"
 #include "tile_map.h"
 #include "goal_type.h"
@@ -22,7 +21,6 @@
 #include "gui.h"
 #include "vehicle_base.h"
 #include "game/game.hpp"
-#include "script/api/script_story_page.hpp"
 #include "script/api/script_event_types.hpp"
 #include "story_cmd.h"
 

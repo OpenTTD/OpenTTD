@@ -31,6 +31,7 @@
 #include "../timer/timer.h"
 #include "../timer/timer_game_tick.h"
 #include "../timer/timer_game_calendar.h"
+#include "saveload_error.hpp"
 #include "saveload_internal.h"
 #include "oldloader.h"
 

@@ -10,12 +10,11 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../fileio_func.h"
-#include "../../rev.h"
 #include "../../thread.h"
-#include "../network_internal.h"
 
 #include "http.h"
 #include "http_shared.h"
+#include "network_game_info.h"
 
 #include <atomic>
 #include <condition_variable>

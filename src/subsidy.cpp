@@ -23,7 +23,6 @@
 #include "core/container_func.hpp"
 #include "game/game.hpp"
 #include "command_func.h"
-#include "string_func.h"
 #include "tile_cmd.h"
 #include "subsidy_cmd.h"
 #include "script/api/script_event_types.hpp"

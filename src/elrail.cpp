@@ -53,6 +53,7 @@
  */
 
 #include "stdafx.h"
+#include "bridge.h"
 #include "station_map.h"
 #include "viewport_func.h"
 #include "train.h"

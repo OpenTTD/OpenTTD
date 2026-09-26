@@ -7,10 +7,10 @@
 
 /** @file viewport_sprite_sorter.h Types related to sprite sorting. */
 
-#include "gfx_type.h"
-
 #ifndef VIEWPORT_SPRITE_SORTER_H
 #define VIEWPORT_SPRITE_SORTER_H
+
+#include "gfx_type.h"
 
 /** Parent sprite that should be drawn */
 struct ParentSpriteToDraw {

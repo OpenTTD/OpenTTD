@@ -10,8 +10,6 @@
 #ifndef YAPF_NODE_SHIP_HPP
 #define YAPF_NODE_SHIP_HPP
 
-#include "../../tile_type.h"
-#include "../../track_type.h"
 #include "nodelist.hpp"
 #include "yapf_node.hpp"
 

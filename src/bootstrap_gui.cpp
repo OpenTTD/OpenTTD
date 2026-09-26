@@ -16,7 +16,6 @@
 #if defined(WITH_FREETYPE) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
 
 #include "core/geometry_func.hpp"
-#include "error.h"
 #include "fontcache.h"
 #include "gfx_func.h"
 #include "network/network.h"
@@ -27,6 +26,7 @@
 #include "window_func.h"
 
 #include "widgets/bootstrap_widget.h"
+#include "widgets/network_content_widget.h"
 
 #include "table/strings.h"
 

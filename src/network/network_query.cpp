@@ -10,8 +10,9 @@
 #include "../stdafx.h"
 
 #include "core/network_game_info.h"
-#include "network_query.h"
 #include "network_gamelist.h"
+#include "network_query.h"
+#include "../debug.h"
 
 #include "../safeguards.h"
 

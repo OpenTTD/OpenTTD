@@ -10,7 +10,6 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "ini_type.h"
-#include "string_func.h"
 #include "fileio_func.h"
 #include <fstream>
 #ifdef __EMSCRIPTEN__

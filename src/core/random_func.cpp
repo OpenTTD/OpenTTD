@@ -16,8 +16,7 @@
 #include "../network/network_server.h"
 #include "../network/network_internal.h"
 #include "../company_func.h"
-#include "../fileio_func.h"
-#include "../timer/timer_game_calendar.h"
+#include "../timer/timer_game_economy.h"
 #endif /* RANDOM_DEBUG */
 
 #if defined(_WIN32)

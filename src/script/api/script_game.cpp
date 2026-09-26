@@ -9,7 +9,6 @@
 
 #include "../../stdafx.h"
 #include "script_game.hpp"
-#include "script_error.hpp"
 #include "../../command_type.h"
 #include "../../settings_type.h"
 #include "../../network/network.h"

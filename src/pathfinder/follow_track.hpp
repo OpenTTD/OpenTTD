@@ -10,6 +10,7 @@
 #ifndef  FOLLOW_TRACK_HPP
 #define  FOLLOW_TRACK_HPP
 
+#include "../bridge.h"
 #include "../pbs.h"
 #include "../roadveh.h"
 #include "../station_base.h"

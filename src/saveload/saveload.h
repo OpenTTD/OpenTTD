@@ -11,14 +11,13 @@
 #define SAVELOAD_H
 
 #include "saveload_type.h"
-#include "saveload_error.hpp"
-#include "saveload_func.h"
 #include "../core/label_type.hpp"
+#include "../autoreplace_base.h"
 #include "../cargopacket.h"
-#include "../fileio_type.h"
-#include "../fios.h"
 #include "../linkgraph/linkgraph.h"
 #include "../linkgraph/linkgraphjob.h"
+#include "../string_type.h"
+#include "../town.h"
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were

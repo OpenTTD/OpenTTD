@@ -8,11 +8,10 @@
 /** @file fileio.cpp Standard in/out file operations. */
 
 #include "stdafx.h"
+#include "core/math_func.hpp"
 #include "core/string_consumer.hpp"
 #include "fileio_func.h"
-#include "spriteloader/spriteloader.hpp"
 #include "debug.h"
-#include "fios.h"
 #include "string_func.h"
 #include "tar_type.h"
 #ifdef _WIN32

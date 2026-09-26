@@ -11,7 +11,6 @@
 #define LEAGUE_BASE_H
 
 #include "company_type.h"
-#include "goal_type.h"
 #include "league_type.h"
 #include "core/pool_type.hpp"
 #include "strings_type.h"

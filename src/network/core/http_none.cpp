@@ -8,9 +8,6 @@
 /** @file http_none.cpp Emscripten-based implementation for HTTP requests. */
 
 #include "../../stdafx.h"
-#include "../../debug.h"
-#include "../../rev.h"
-#include "../network_internal.h"
 
 #include "http.h"
 

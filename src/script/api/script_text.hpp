@@ -11,7 +11,6 @@
 #define SCRIPT_TEXT_HPP
 
 #include "script_object.hpp"
-#include "../../strings_func.h"
 #include "../../core/string_builder.hpp"
 
 #include <variant>

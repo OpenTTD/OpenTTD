@@ -10,6 +10,8 @@
 #ifndef SOUNDLOADER_FUNC_H
 #define SOUNDLOADER_FUNC_H
 
+#include "sound_type.h"
+
 bool LoadSound(SoundEntry &sound, SoundID sound_id);
 bool LoadSoundData(SoundEntry &sound, bool new_format, SoundID sound_id, const std::string &name);
 

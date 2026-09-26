@@ -10,11 +10,8 @@
 #ifndef LINKGRAPH_GUI_H
 #define LINKGRAPH_GUI_H
 
-#include "../company_func.h"
 #include "../station_base.h"
-#include "../widget_type.h"
 #include "../window_gui.h"
-#include "linkgraph_base.h"
 
 /**
  * Monthly statistics for a link between two stations.

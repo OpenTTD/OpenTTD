@@ -8,6 +8,7 @@
 /** @file road_cmd.cpp Commands related to road tiles. */
 
 #include "stdafx.h"
+#include "bridge.h"
 #include "road.h"
 #include "road_internal.h"
 #include "tilearea_type.h"
@@ -33,7 +34,6 @@
 #include "company_base.h"
 #include "core/random_func.hpp"
 #include "core/container_func.hpp"
-#include "newgrf_debug.h"
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"
 #include "timer/timer_game_calendar.h"

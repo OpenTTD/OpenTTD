@@ -11,7 +11,6 @@
 #define NETWORK_BASE_H
 
 #include "network_type.h"
-#include "core/address.h"
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
 #include "../timer/timer_game_economy.h"

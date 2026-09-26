@@ -10,7 +10,7 @@
 #include "stdafx.h"
 #include "core/math_func.hpp"
 #include "core/string_builder.hpp"
-#include "fileio_func.h"
+#include "fileio_type.h"
 #include "screenshot_type.h"
 
 #include "safeguards.h"

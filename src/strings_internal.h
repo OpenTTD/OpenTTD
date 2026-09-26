@@ -10,8 +10,7 @@
 #ifndef STRINGS_INTERNAL_H
 #define STRINGS_INTERNAL_H
 
-#include "strings_func.h"
-#include "string_func.h"
+#include "strings_type.h"
 #include "core/string_builder.hpp"
 #include "core/string_consumer.hpp"
 

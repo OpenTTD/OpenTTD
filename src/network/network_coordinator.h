@@ -10,6 +10,7 @@
 #ifndef NETWORK_COORDINATOR_H
 #define NETWORK_COORDINATOR_H
 
+#include "core/network_game_info.h"
 #include "core/tcp_coordinator.h"
 #include "network_stun.h"
 #include "network_turn.h"

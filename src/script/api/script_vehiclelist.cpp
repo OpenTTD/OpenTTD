@@ -11,7 +11,6 @@
 #include "script_vehiclelist.hpp"
 #include "script_group.hpp"
 #include "script_map.hpp"
-#include "script_station.hpp"
 #include "script_waypoint.hpp"
 #include "../../depot_map.h"
 #include "../../vehicle_base.h"

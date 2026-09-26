@@ -12,7 +12,6 @@
 
 #include "newgrf_townname.h"
 #include "town_type.h"
-#include "string_type.h"
 
 typedef std::set<std::string> TownNames;
 

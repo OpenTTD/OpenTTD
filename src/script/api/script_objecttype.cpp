@@ -13,6 +13,7 @@
 
 #include "script_error.hpp"
 #include "script_map.hpp"
+#include "../../newgrf_object.h"
 #include "../../object_cmd.h"
 #include "../../strings_func.h"
 

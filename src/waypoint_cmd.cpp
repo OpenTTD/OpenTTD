@@ -11,15 +11,14 @@
 
 #include "command_func.h"
 #include "landscape.h"
-#include "bridge_map.h"
 #include "town.h"
 #include "waypoint_base.h"
 #include "pathfinder/yapf/yapf_cache.h"
-#include "pathfinder/water_regions.h"
 #include "tilehighlight_func.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "viewport_kdtree.h"
+#include "station_func.h"
 #include "station_kdtree.h"
 #include "window_func.h"
 #include "timer/timer_game_calendar.h"
@@ -35,8 +34,6 @@
 #include "waypoint_cmd.h"
 #include "landscape_cmd.h"
 #include "station_layout_type.h"
-
-#include "widgets/misc_widget.h"
 
 #include "table/strings.h"
 

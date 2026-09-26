@@ -14,6 +14,7 @@
 #include "../../blitter/factory.hpp"
 #include "../../error_func.h"
 #include "../../fileio_func.h"
+#include "../../spritecache.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../zoom_func.h"

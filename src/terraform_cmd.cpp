@@ -20,6 +20,7 @@
 #include "core/backup_type.hpp"
 #include "core/random_func.hpp"
 #include "terraform_cmd.h"
+#include "tile_cmd.h"
 #include "landscape_cmd.h"
 
 #include "table/strings.h"

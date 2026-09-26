@@ -10,10 +10,10 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/industry_sl_compat.h"
 
 #include "../industry.h"
-#include "../town.h"
 #include "newgrf_sl.h"
 
 #include "../safeguards.h"

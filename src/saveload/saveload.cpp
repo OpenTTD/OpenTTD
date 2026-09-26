@@ -48,8 +48,10 @@
 #include "../newgrf_railtype.h"
 #include "../newgrf_roadtype.h"
 #include "../settings_internal.h"
-#include "saveload_internal.h"
+#include "saveload_error.hpp"
 #include "saveload_filter.h"
+#include "saveload_func.h"
+#include "saveload_internal.h"
 
 #include <atomic>
 #ifdef __EMSCRIPTEN__
@@ -68,6 +70,7 @@
 #include <lzma.h>
 #endif /* WITH_LIBLZMA */
 
+#include "../table/control_codes.h"
 #include "table/strings.h"
 
 #include "../safeguards.h"

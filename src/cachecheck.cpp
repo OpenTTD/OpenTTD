@@ -16,6 +16,7 @@
 #include "roadveh.h"
 #include "ship.h"
 #include "station_base.h"
+#include "station_func.h"
 #include "station_map.h"
 #include "subsidy_func.h"
 #include "town.h"

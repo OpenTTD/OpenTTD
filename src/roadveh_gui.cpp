@@ -13,7 +13,7 @@
 #include "window_gui.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
-#include "string_func.h"
+#include "vehicle_gui.h"
 #include "zoom_func.h"
 
 #include "table/strings.h"

@@ -15,7 +15,6 @@
 #include "viewport_func.h"
 #include "train.h"
 #include "company_base.h"
-#include "pbs.h"
 
 #include "table/signal_data.h"
 

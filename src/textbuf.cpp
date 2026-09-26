@@ -16,7 +16,6 @@
 #include "gfx_type.h"
 #include "gfx_func.h"
 #include "gfx_layout.h"
-#include "window_func.h"
 
 #include "safeguards.h"
 

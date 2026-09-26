@@ -33,6 +33,7 @@
 #include "../gfx_func.h"
 #include "../debug.h"
 #include "../blitter/factory.hpp"
+#include "../spritecache.h"
 #include "../zoom_func.h"
 #include "../core/string_consumer.hpp"
 

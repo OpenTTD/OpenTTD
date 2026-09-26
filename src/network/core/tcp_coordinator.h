@@ -13,7 +13,6 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
-#include "network_game_info.h"
 
 /**
  * Enum with all types of TCP Game Coordinator packets.

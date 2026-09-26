@@ -12,6 +12,7 @@
 #include "../string_func.h"
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
+#include "../newgrf_text.h"
 
 #include "table/strings.h"
 

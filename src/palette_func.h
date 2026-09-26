@@ -10,10 +10,7 @@
 #ifndef PALETTE_FUNC_H
 #define PALETTE_FUNC_H
 
-#include "core/enum_type.hpp"
 #include "gfx_type.h"
-#include "strings_type.h"
-#include "string_type.h"
 
 extern Palette _cur_palette; ///< Current palette
 

@@ -8,12 +8,10 @@
 /** @file script_controller.cpp Implementation of ScriptControler. */
 
 #include "../../stdafx.h"
-#include "../../string_func.h"
 #include "../../script/squirrel.hpp"
 #include "../../rev.h"
 
 #include "script_controller.hpp"
-#include "script_error.hpp"
 #include "script_execmode.hpp"
 #include "../script_fatalerror.hpp"
 #include "../script_info.hpp"

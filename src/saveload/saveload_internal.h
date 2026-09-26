@@ -10,7 +10,6 @@
 #ifndef SAVELOAD_INTERNAL_H
 #define SAVELOAD_INTERNAL_H
 
-#include "../company_manager_face.h"
 #include "../order_base.h"
 #include "../engine_type.h"
 #include "saveload.h"

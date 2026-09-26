@@ -13,8 +13,10 @@
 #include "os_abstraction.h"
 #include "tcp.h"
 #include "packet.h"
-#include "../../debug.h"
 #include "tcp_content_type.h"
+
+#include "../../fileio_type.h"
+
 
 /**
  * Enum with all types of TCP content packets.

@@ -10,9 +10,9 @@
 #ifndef BRIDGE_MAP_H
 #define BRIDGE_MAP_H
 
+#include "bridge_type.h"
 #include "rail_map.h"
 #include "road_map.h"
-#include "bridge.h"
 #include "water_map.h"
 
 /**

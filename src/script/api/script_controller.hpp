@@ -10,7 +10,6 @@
 #ifndef SCRIPT_CONTROLLER_HPP
 #define SCRIPT_CONTROLLER_HPP
 
-#include "script_types.hpp"
 #include "../../string_func.h"
 #include "../../company_type.h"
 

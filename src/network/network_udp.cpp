@@ -15,6 +15,7 @@
 #include "../stdafx.h"
 
 #include "../debug.h"
+#include "../settings_type.h"
 #include "network_internal.h"
 #include "network_udp.h"
 

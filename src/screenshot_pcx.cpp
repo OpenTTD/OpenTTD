@@ -11,7 +11,7 @@
 #include "core/endian_func.hpp"
 #include "core/math_func.hpp"
 #include "debug.h"
-#include "fileio_func.h"
+#include "fileio_type.h"
 #include "screenshot_type.h"
 
 #include "safeguards.h"

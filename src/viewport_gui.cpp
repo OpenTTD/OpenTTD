@@ -8,7 +8,6 @@
 /** @file viewport_gui.cpp Extra viewport window. */
 
 #include "stdafx.h"
-#include "landscape.h"
 #include "window_gui.h"
 #include "viewport_func.h"
 #include "strings_func.h"

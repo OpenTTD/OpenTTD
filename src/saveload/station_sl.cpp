@@ -13,6 +13,7 @@
 #include "compat/station_sl_compat.h"
 
 #include "../station_base.h"
+#include "../station_func.h"
 #include "../waypoint_base.h"
 #include "../roadstop_base.h"
 #include "../vehicle_base.h"

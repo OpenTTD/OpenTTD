@@ -10,7 +10,7 @@
 #ifndef VEHICLELIST_CMD_H
 #define VEHICLELIST_CMD_H
 
-#include "command_func.h"
+#include "misc/endian_buffer.hpp"
 #include "vehiclelist.h"
 
 template <typename Tcont, typename Titer>

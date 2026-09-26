@@ -10,7 +10,6 @@
 #include "../../stdafx.h"
 #include "script_marine.hpp"
 #include "script_station.hpp"
-#include "../../station_base.h"
 #include "../../dock_cmd.h"
 #include "../../landscape_cmd.h"
 #include "../../station_cmd.h"

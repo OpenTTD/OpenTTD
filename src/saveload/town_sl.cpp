@@ -10,15 +10,14 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_error.hpp"
 #include "compat/town_sl_compat.h"
 
 #include "newgrf_sl.h"
 #include "../newgrf_house.h"
 #include "../town.h"
 #include "../landscape.h"
-#include "../subsidy_func.h"
 #include "../strings_func.h"
-#include "../misc/history_func.hpp"
 
 #include "../safeguards.h"
 

@@ -32,7 +32,6 @@
 #	include <unicode/ustring.h>
 #	include <unicode/utext.h>
 #	include "language.h"
-#	include "gfx_func.h"
 #endif /* WITH_ICU_I18N */
 
 #if defined(WITH_COCOA)

@@ -10,8 +10,6 @@
 #ifndef SIGNAL_TYPE_H
 #define SIGNAL_TYPE_H
 
-#include "core/enum_type.hpp"
-
 /** Variant of the signal, i.e. how does the signal look? */
 enum class SignalVariant : uint8_t {
 	Electric = 0, ///< Light signal.

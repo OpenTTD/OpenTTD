@@ -11,7 +11,6 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "company_gui.h"
-#include "core/backup_type.hpp"
 #include "town.h"
 #include "news_func.h"
 #include "command_func.h"
