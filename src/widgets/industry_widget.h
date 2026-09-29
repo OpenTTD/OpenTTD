@@ -48,6 +48,8 @@ enum IndustryDirectoryWidgets : WidgetID {
 /** Widgets of the #IndustryCargoesWindow class */
 enum IndustryCargoesWidgets : WidgetID {
 	WID_IC_CAPTION,        ///< Caption of the window.
+	WID_IC_NAVBACK,        ///< Navigate back button.
+	WID_IC_NAVFORWARD,     ///< Navigate forward button.
 	WID_IC_NOTIFY,         ///< Row of buttons at the bottom.
 	WID_IC_PANEL,          ///< Panel that shows the chain.
 	WID_IC_SCROLLBAR,      ///< Scrollbar of the panel.
