@@ -13,6 +13,7 @@
 #include "newgrf_bytereader.h"
 #include "newgrf_internal.h"
 #include "newgrf_stringmapping.h"
+#include "../cargotype.h"
 
 #include "../safeguards.h"
 

@@ -16,7 +16,7 @@
 #include "town_map.h"
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
-#include "cargotype.h"
+#include "cargo_type.h"
 
 template <typename T>
 struct BuildingCounts {

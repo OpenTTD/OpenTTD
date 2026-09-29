@@ -10,7 +10,9 @@
 #ifndef NEWGRF_H
 #define NEWGRF_H
 
-#include "cargotype.h"
+#include "cargo_type.h"
+#include "economy_type.h"
+#include "strings_type.h"
 #include "debug_type.h"
 #include "livery.h"
 #include "rail_type.h"
