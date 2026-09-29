@@ -56,7 +56,7 @@ static std::array<CargoLabel, 32> _climate_independent_cargo_labels;
 
 /**
  * Set up the default cargo types for the given landscape type.
- * @param l Landscape
+ * @param l Landscape to set up the default cargoes for.
  */
 void SetupCargoForClimate(LandscapeType l)
 {
@@ -251,6 +251,11 @@ void InitializeSortedCargoSpecs()
 	_sorted_standard_cargo_specs = { _sorted_cargo_specs.data(), nb_standard_cargo };
 }
 
+/**
+ * Calculate the weight of \a n units of cargo inside a train wagon.
+ * @param n For how many units of cargo calculate the weight.
+ * @return The weight of \a n units of cargo inside a train wagon.
+ */
 uint64_t CargoSpec::WeightOfNUnitsInTrain(uint32_t n) const
 {
 	if (this->is_freight) n *= _settings_game.vehicle.freight_trains;
