@@ -23,48 +23,50 @@ enum CargoType : uint8_t {};
 DECLARE_INCREMENT_DECREMENT_OPERATORS(CargoType)
 
 /**
- * Available types of cargo
+ * @name Available types of cargo.
  * Labels may be re-used between different climates.
+ * @{
  */
 
 /* Temperate */
-static constexpr CargoLabel CT_PASSENGERS{"PASS"};
-static constexpr CargoLabel CT_COAL{"COAL"};
-static constexpr CargoLabel CT_MAIL{"MAIL"};
-static constexpr CargoLabel CT_OIL{"OIL_"};
-static constexpr CargoLabel CT_LIVESTOCK{"LVST"};
-static constexpr CargoLabel CT_GOODS{"GOOD"};
-static constexpr CargoLabel CT_GRAIN{"GRAI"};
-static constexpr CargoLabel CT_WOOD{"WOOD"};
-static constexpr CargoLabel CT_IRON_ORE{"IORE"};
-static constexpr CargoLabel CT_STEEL{"STEL"};
-static constexpr CargoLabel CT_VALUABLES{"VALU"};
+static constexpr CargoLabel CT_PASSENGERS{"PASS"}; ///< Cargo label for passengers.
+static constexpr CargoLabel CT_COAL{"COAL"}; ///< Cargo label for coal.
+static constexpr CargoLabel CT_MAIL{"MAIL"}; ///< Cargo label for mail.
+static constexpr CargoLabel CT_OIL{"OIL_"}; ///< Cargo label for oil.
+static constexpr CargoLabel CT_LIVESTOCK{"LVST"}; ///< Cargo label for livestock.
+static constexpr CargoLabel CT_GOODS{"GOOD"}; ///< Cargo label for goods.
+static constexpr CargoLabel CT_GRAIN{"GRAI"}; ///< Cargo label for grain.
+static constexpr CargoLabel CT_WOOD{"WOOD"}; ///< Cargo label for wood.
+static constexpr CargoLabel CT_IRON_ORE{"IORE"}; ///< Cargo label for iron ore.
+static constexpr CargoLabel CT_STEEL{"STEL"}; ///< Cargo label for steel.
+static constexpr CargoLabel CT_VALUABLES{"VALU"}; ///< Cargo label for valuables.
 
 /* Arctic */
-static constexpr CargoLabel CT_WHEAT{"WHEA"};
-static constexpr CargoLabel CT_PAPER{"PAPR"};
-static constexpr CargoLabel CT_GOLD{"GOLD"};
-static constexpr CargoLabel CT_FOOD{"FOOD"};
+static constexpr CargoLabel CT_WHEAT{"WHEA"}; ///< Cargo label for wheat.
+static constexpr CargoLabel CT_PAPER{"PAPR"}; ///< Cargo label for paper.
+static constexpr CargoLabel CT_GOLD{"GOLD"}; ///< Cargo label for gold.
+static constexpr CargoLabel CT_FOOD{"FOOD"}; ///< Cargo label for food.
 
 /* Tropic */
-static constexpr CargoLabel CT_RUBBER{"RUBR"};
-static constexpr CargoLabel CT_FRUIT{"FRUT"};
-static constexpr CargoLabel CT_MAIZE{"MAIZ"};
-static constexpr CargoLabel CT_COPPER_ORE{"CORE"};
-static constexpr CargoLabel CT_WATER{"WATR"};
-static constexpr CargoLabel CT_DIAMONDS{"DIAM"};
+static constexpr CargoLabel CT_RUBBER{"RUBR"}; ///< Cargo label for rubber.
+static constexpr CargoLabel CT_FRUIT{"FRUT"}; ///< Cargo label for fruits.
+static constexpr CargoLabel CT_MAIZE{"MAIZ"}; ///< Cargo label for maize.
+static constexpr CargoLabel CT_COPPER_ORE{"CORE"}; ///< Cargo label for copper ore.
+static constexpr CargoLabel CT_WATER{"WATR"}; ///< Cargo label for water.
+static constexpr CargoLabel CT_DIAMONDS{"DIAM"}; ///< Cargo label for diamonds.
 
 /* Toyland */
-static constexpr CargoLabel CT_SUGAR{"SUGR"};
-static constexpr CargoLabel CT_TOYS{"TOYS"};
-static constexpr CargoLabel CT_BATTERIES{"BATT"};
-static constexpr CargoLabel CT_CANDY{"SWET"};
-static constexpr CargoLabel CT_TOFFEE{"TOFF"};
-static constexpr CargoLabel CT_COLA{"COLA"};
-static constexpr CargoLabel CT_COTTON_CANDY{"CTCD"};
-static constexpr CargoLabel CT_BUBBLES{"BUBL"};
-static constexpr CargoLabel CT_PLASTIC{"PLST"};
-static constexpr CargoLabel CT_FIZZY_DRINKS{"FZDR"};
+static constexpr CargoLabel CT_SUGAR{"SUGR"}; ///< Cargo label for sugar.
+static constexpr CargoLabel CT_TOYS{"TOYS"}; ///< Cargo label for toys.
+static constexpr CargoLabel CT_BATTERIES{"BATT"}; ///< Cargo label for batteries.
+static constexpr CargoLabel CT_CANDY{"SWET"}; ///< Cargo label for candies/sweets.
+static constexpr CargoLabel CT_TOFFEE{"TOFF"}; ///< Cargo label for toffee.
+static constexpr CargoLabel CT_COLA{"COLA"}; ///< Cargo label for cola.
+static constexpr CargoLabel CT_COTTON_CANDY{"CTCD"}; ///< Cargo label for cotton candies.
+static constexpr CargoLabel CT_BUBBLES{"BUBL"}; ///< Cargo label for bubbles.
+static constexpr CargoLabel CT_PLASTIC{"PLST"}; ///< Cargo label for plastic.
+static constexpr CargoLabel CT_FIZZY_DRINKS{"FZDR"}; ///< Cargo label for fizzy drinks.
+/** @} */
 
 /** Dummy label for engines that carry no cargo; they actually carry 0 passengers. */
 static constexpr CargoLabel CT_NONE = CT_PASSENGERS;
@@ -78,7 +80,7 @@ static constexpr CargoType NUM_CARGO{64}; ///< Maximum number of cargo types in 
 static constexpr CargoType CARGO_AUTO_REFIT{0xFD}; ///< Automatically choose cargo type when doing auto refitting.
 static constexpr CargoType CARGO_NO_REFIT{0xFE}; ///< Do not refit cargo of a vehicle (used in vehicle orders and auto-replace/auto-renew).
 
-static constexpr CargoType INVALID_CARGO{UINT8_MAX};
+static constexpr CargoType INVALID_CARGO{UINT8_MAX}; ///< Invalid marker for cargoes.
 
 /** Mixed cargo types for definitions with cargo that can vary depending on climate. */
 enum MixedCargoType : uint8_t {

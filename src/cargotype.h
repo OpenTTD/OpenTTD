@@ -68,21 +68,21 @@ enum class CargoClass : uint8_t {
 /** Bitset of \c CargoClass elements. */
 using CargoClasses = EnumBitSet<CargoClass, uint16_t>;
 
-static const uint8_t INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo
+static const uint8_t INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo bit number.
 
-static const uint TOWN_PRODUCTION_DIVISOR = 256;
+static const uint TOWN_PRODUCTION_DIVISOR = 256; ///< By what factor divide town production.
 
 /** Specification of a cargo type. */
 struct CargoSpec {
 	CargoLabel label;                ///< Unique label of the cargo type.
 	uint8_t bitnum = INVALID_CARGO_BITNUM; ///< Cargo bit number, is #INVALID_CARGO_BITNUM for a non-used spec.
-	PixelColour legend_colour;
-	PixelColour rating_colour;
+	PixelColour legend_colour; ///< Colour in legends and graphs.
+	PixelColour rating_colour; ///< Colour used for box representing the amount of cargo waiting at the station in the station rating view.
 	uint8_t weight;                    ///< Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
 	uint16_t multiplier = 0x100; ///< Capacity multiplier for vehicles. (8 fractional bits)
 	CargoClasses classes; ///< Classes of this cargo type. @see CargoClass
 	int32_t initial_payment;           ///< Initial payment rate before inflation is applied.
-	uint8_t transit_periods[2];
+	uint8_t transit_periods[2]; ///< Values used to calculate timefactor for cargo payment alghoritm.
 
 	bool is_freight;                 ///< Cargo type is considered to be freight (affects train freight multiplier).
 	TownAcceptanceEffect town_acceptance_effect; ///< The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
@@ -99,9 +99,9 @@ struct CargoSpec {
 	SpriteID sprite;                 ///< Icon to display this cargo type, may be \c 0xFFF (which means to resolve an action123 chain).
 
 	const struct GRFFile *grffile;   ///< NewGRF where #group belongs to.
-	const struct SpriteGroup *group;
+	const struct SpriteGroup *group; ///< Group of sprites used for drawing the cargo.
 
-	Money current_payment;
+	Money current_payment; ///< Payment rate scaled by inflation.
 
 	/**
 	 * Determines index of this cargospec
@@ -145,6 +145,11 @@ struct CargoSpec {
 
 	SpriteID GetCargoIcon() const;
 
+	/**
+	 * Calculate the weight of \a n units of cargo.
+	 * @param n For how many units of cargo calculate the weight.
+	 * @return The weight of \a n units of cargo.
+	 */
 	inline uint64_t WeightOfNUnits(uint32_t n) const
 	{
 		return n * this->weight / 16u;
@@ -156,32 +161,73 @@ struct CargoSpec {
 	 * Iterator to iterate all valid CargoSpec
 	 */
 	struct Iterator {
-		typedef CargoSpec value_type;
-		typedef CargoSpec *pointer;
-		typedef CargoSpec &reference;
-		typedef size_t difference_type;
-		typedef std::forward_iterator_tag iterator_category;
+		using value_type = CargoSpec; ///< The type pointed by iterator.
+		using pointer = CargoSpec *; ///< The pointer type to #value_type.
+		using reference = CargoSpec &; ///< The reference type to #value_type.
+		using difference_type = size_t; ///< Type used to store difference between two iterators.
+		using iterator_category = std::forward_iterator_tag; ///< The category of the iterator.
 
+		/**
+		 * Constructs new iterator from an index.
+		 * @param index Index of the CargoSpec to iterate from.
+		 */
 		explicit Iterator(size_t index) : index(index)
 		{
 			this->ValidateIndex();
 		};
 
+		/**
+		 * Compare with other iterator.
+		 * @param other The other iterator to compare with.
+		 * @return \c true iff the other iterator matches this value e.i. they are equal.
+		 */
 		bool operator==(const Iterator &other) const { return this->index == other.index; }
+
+		/**
+		 * Dereference operator. Gets the pointed CargoSpec.
+		 * @return A pointer to the CargoSpec this iterator points to.
+		 */
 		CargoSpec * operator*() const { return CargoSpec::Get(this->index); }
+
+		/**
+		 * Increment the iterator and set it to the next position.
+		 * @return This iterator after incrementing.
+		 */
 		Iterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
 
 	private:
-		size_t index;
+		size_t index; ///< Index of the CargoSpec that this iterator points to.
+
+		/** Validate #index so it points to a valid cargo spec. */
 		void ValidateIndex() { while (this->index < CargoSpec::GetArraySize() && !(CargoSpec::Get(this->index)->IsValid())) this->index++; }
 	};
 
 	/** Iterable ensemble of all valid CargoSpec. */
 	struct IterateWrapper {
-		size_t from;
+		size_t from; ///< Index from which the iteration started.
+
+		/**
+		 * Constructs new iterator wrapper from an stating index.
+		 * @param from Index of the first CargoSpec to consider.
+		 */
 		IterateWrapper(size_t from = 0) : from(from) {}
+
+		/**
+		 * Get the begin iterator for this range of valid CargoSpec.
+		 * @return Begin iterator.
+		 */
 		Iterator begin() { return Iterator(this->from); }
+
+		/**
+		 * Get the end iterator for all valid CargoSpec.
+		 * @return End iterator.
+		 */
 		Iterator end() { return Iterator(CargoSpec::GetArraySize()); }
+
+		/**
+		 * Check whether this range of valid CargoSpec is empty.
+		 * @return \c true iff the range is empty.
+		 */
 		bool empty() { return this->begin() == this->end(); }
 	};
 
@@ -201,7 +247,7 @@ private:
 
 	friend void SetupCargoForClimate(LandscapeType l);
 	friend void BuildCargoLabelMap();
-	friend inline CargoType GetCargoTypeByLabel(CargoLabel ct);
+	friend inline CargoType GetCargoTypeByLabel(CargoLabel label);
 	friend void FinaliseCargoArray();
 };
 
@@ -214,6 +260,11 @@ void BuildCargoLabelMap();
 
 std::optional<std::string> BuildCargoAcceptanceString(const CargoArray &acceptance, StringID label);
 
+/**
+ * Get cargo assigned to a label.
+ * @param label The label to deduce cargo for.
+ * @return Cargo that corresponds to given label.
+ */
 inline CargoType GetCargoTypeByLabel(CargoLabel label)
 {
 	auto found = CargoSpec::label_map.find(label);
@@ -229,10 +280,10 @@ extern std::vector<const CargoSpec *> _sorted_cargo_specs;
 extern std::span<const CargoSpec *> _sorted_standard_cargo_specs;
 
 /**
- * Does cargo \a c have cargo class \a cc?
- * @param cargo Cargo type.
- * @param cc Cargo class.
- * @return The type fits in the class.
+ * Does a given cargo have any cargo class from \a cc.
+ * @param cargo The cargo type to test.
+ * @param cc The cargo classes to check for.
+ * @return \c true iff the cargo type fits in the classes.
  */
 inline bool IsCargoInClass(CargoType cargo, CargoClasses cc)
 {
@@ -241,6 +292,12 @@ inline bool IsCargoInClass(CargoType cargo, CargoClasses cc)
 
 /** Comparator to sort CargoType by according to desired order. */
 struct CargoTypeComparator {
+	/**
+	 * Call operator that performs the comparison.
+	 * @param lhs Cargo to compare that is in previous spot in the sorted container.
+	 * @param rhs Cargo to compare that is in later spot in the sorted container.
+	 * @return \c true iff the \a lhs and \a rhs should be swapped in order to sort the container.
+	 */
 	bool operator() (const CargoType &lhs, const CargoType &rhs) const { return _sorted_cargo_types[lhs] < _sorted_cargo_types[rhs]; }
 };
 
