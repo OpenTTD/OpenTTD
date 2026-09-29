@@ -63,7 +63,7 @@
 			return GetTrackTypes(this->tile, ro.grffile);
 	}
 
-	Debug(Facility::Grf, Severity::Error, "Unhandled rail type tile variable 0x{:X}", variable);
+	this->ro.UnhandledVariable(variable);
 
 	available = false;
 	return UINT_MAX;

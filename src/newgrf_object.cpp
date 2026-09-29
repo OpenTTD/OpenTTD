@@ -369,7 +369,7 @@ static uint32_t GetCountAndDistanceOfClosestInstance(const ResolverObject &objec
 	}
 
 unhandled:
-	Debug(Facility::Grf, Severity::Error, "Unhandled object variable 0x{:X}", variable);
+	this->ro.UnhandledVariable(variable);
 
 	available = false;
 	return UINT_MAX;

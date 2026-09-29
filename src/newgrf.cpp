@@ -502,6 +502,7 @@ void ResetNewGRFData()
 	InitializeSoundPool();
 	_spritegroup_pool.CleanPool();
 	ResetCallbacks(false);
+	ResetUnhandledVariableWarnings();
 }
 
 /**

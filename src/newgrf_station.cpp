@@ -478,13 +478,13 @@ uint32_t Station::GetNewGRFVariable(const ResolverObject &object, uint8_t variab
 		}
 	}
 
-	Debug(Facility::Grf, Severity::Error, "Unhandled station variable 0x{:X}", variable);
+	object.UnhandledVariable(variable);
 
 	available = false;
 	return UINT_MAX;
 }
 
-uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [[maybe_unused]] uint8_t parameter, bool &available) const
+uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &ro, uint8_t variable, [[maybe_unused]] uint8_t parameter, bool &available) const
 {
 	switch (variable) {
 		case 0x48: return 0; // Accepted cargo types
@@ -510,7 +510,7 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &, uint8_t variable, [
 		}
 	}
 
-	Debug(Facility::Grf, Severity::Error, "Unhandled station variable 0x{:X}", variable);
+	ro.UnhandledVariable(variable);
 
 	available = false;
 	return UINT_MAX;

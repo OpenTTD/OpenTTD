@@ -480,6 +480,8 @@ public:
 	 * @return The identifier.
 	 */
 	virtual uint32_t GetDebugID() const { return 0; }
+
+	void UnhandledVariable(uint8_t variable) const;
 };
 
 /**
