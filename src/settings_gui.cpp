@@ -1438,7 +1438,7 @@ struct GameOptionsWindow : Window {
 				ClearAllCachedNames();
 				UpdateAllVirtCoords();
 				CheckBlitter();
-				ReInitAllWindows(false);
+				ReInitAllWindows(true);
 				break;
 
 			case WID_GO_RESOLUTION_DROPDOWN: // Change resolution
