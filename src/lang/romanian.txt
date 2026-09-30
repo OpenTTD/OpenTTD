@@ -3065,11 +3065,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Sigur v
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Lanț industrial - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Lant de marfă - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrii producătoare
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrii acceptante
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Case
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click pe industrie pentru a vedea furnizorii și clienții săi
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click pe cargo pentru a vedea furnizorii și clienții săi
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Lanț industrial
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afișează industriile care furnizează și acceptă marfă
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link către harta mică

@@ -2609,11 +2609,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}คุ�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}สายการผลิตสำหรับอุตสาหกรรม{STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}สายการผลิตสำหรับสินค้า {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}อุตสาหกรรมการผลิต
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}อุตสาหกรรมที่รองรับ
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}บ้านเรือน
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}คลิกที่อุตสาหกรรมเพื่อแสดงผู้ผลิตสินค้าและลูกค้า
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}คลิกที่สินค้าเพื่อแสดงผู้ผลิตสินค้าและลูกค้า
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}แสดงห่วงโซ่
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}แสดงอุปทานและการรับเข้าของอุตสาหกรรม
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}เชื่อมโยงกับแผนที่ย่อ

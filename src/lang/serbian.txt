@@ -3173,11 +3173,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Da li z
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Lanac snabdevanja - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Lanac proizvodnje - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Snabdevači
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Potrošači
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domaćinstva
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikom na fabriku prikazuju se njegovi snabdevači i potrošači
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikom na teret prikazuju se njegovi snabdevači i potrošači
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Lanac
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikazuje lanac snabdevanja fabrika
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Obeleži na karti

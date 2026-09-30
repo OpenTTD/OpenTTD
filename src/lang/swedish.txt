@@ -3177,11 +3177,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Är du 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Godskedja - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerande industrier
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Mottagande industrier
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klicka på industrin för att se dess leverantörer och kunder
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klicka på godset för att se dess leverantörer och kunder
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industrikedja
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Visa industrier som levererar och tar emot gods
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Koppla till minikartan

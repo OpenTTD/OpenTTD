@@ -2846,11 +2846,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}הסר �
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}שרשרת תעשיות עבור תעשיה {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}שרשרת תעשיות עבור מטען {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}תעשיות מייצרות
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}תעשיות מקבלות
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}בתים
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}הקלק על התעשיה כדי לראות את הספקים והלקוחות שלה
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}הקלק על המטען כדי לראות את הספקים והלקוחות שלו
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}שרשרת תעשיות
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}הצג תעשיות המייצרות ומקבלות מטען
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}קישור למפה הקטנה

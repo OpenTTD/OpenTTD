@@ -3121,11 +3121,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}¿Segur
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena de industrias: {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de cargas: {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias productoras
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrias receptoras
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clic en la industria para ver sus proveedores y clientes
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clic en la carga para ver sus proveedores y clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadena industrial
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar las industrias que abastecen y aceptan la carga
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ver en minimapa

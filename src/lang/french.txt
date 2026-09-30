@@ -3178,11 +3178,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Êtes-v
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaîne industrielle - «{NBSP}{STRING}{NBSP}»
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chaîne de chargement - «{NBSP}{STRING}{NBSP}»
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industries fournisseuses
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industries clientes
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Maisons
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliquer sur l'industrie pour voir ses fournisseurs et ses clients
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliquer sur le type de marchandise pour voir ses fournisseurs et ses clients
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Chaîne d'industries
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher la chaîne des industries fournisseuses et clientes de ce type de marchandise
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Lier à la mini-carte

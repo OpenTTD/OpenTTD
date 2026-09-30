@@ -2490,11 +2490,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansie
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikjede for {STRING} industri
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikjede for {STRING} vare
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Vareproduserande industriar
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Vareaksepterande industriar
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikk på industrien for å sjå vareleverandørar og kundar
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikk på lasta for å sjå leverandørar og kundar
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{G=masculine}{BLACK}Forsyningskjede
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Syn vareleverande og varemottakande industriar
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Kople til oversiktskart

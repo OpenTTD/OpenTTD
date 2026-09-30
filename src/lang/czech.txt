@@ -3264,11 +3264,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Opravdu
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Průmyslový řetěz pro průmysl {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Průmyslový řetěz pro náklad {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produkující průmysl
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Zpracovávající průmysl
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikněte na průmysl, abyste vyděle jeho dodejce a odběratele
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikněte na náklad, abyste viděli jeho producenty a spotřebitele
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zobrazit řetězec
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobrazit průmysl produkující nebo příjmající surovinu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Odkaz na malou mapu

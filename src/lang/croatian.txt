@@ -2736,11 +2736,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Jeste l
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrijski slijed za {STRING} industriju
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrijski slijed za {STRING} teret
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Proizvodne industrije
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Primateljske industrije
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Kuće
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klinkni na industriju za prikaz njenih dobavljača i klijenata
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikni na teret za prikaz dobavljača i klijenata
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Prikaži slijed
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikaži industrije koje dobavljaju i primaju teret
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Poveznica na malu mapu

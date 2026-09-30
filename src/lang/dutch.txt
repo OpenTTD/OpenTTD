@@ -3122,11 +3122,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Weet je
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrieketen - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Vrachtketen - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerende industrieën
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepterende industrieën
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huizen
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik op de industrie om de leveranciers en klanten te zien
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik op de vracht om de leveranciers en klanten te zien
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industrieketen
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Industrieën weergeven die vracht leveren en accepteren
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Koppeling naar de kleine kaart

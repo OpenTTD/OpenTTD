@@ -2883,11 +2883,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}すべ�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}産業:{STRING}に関わる産業チェーン
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}貨物:{STRING}に関わる産業チェーン
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}産業(生産側)
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}産業(受入側)
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}街
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}産業をクリックすると、その産業に関わる産業チェーンを表示します
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}貨物をクリックすると、その貨物を供給または受入れする産業を表示します
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}チェーンを表示
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}貨物の供給元と受入れ産業を表示します
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}小マップとリンク

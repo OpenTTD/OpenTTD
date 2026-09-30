@@ -3164,11 +3164,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ar tikr
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Gamybos grandinė {STRING.kam}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Gamybos grandinė {STRING.kam}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tiekiančios įmonės
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Priimančios įmonės
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Namai
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Spragtelkite, jei norite pamatyti šios pramonės įmonės tiekėjus ir pirkėjus
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Spragtelkite, jei norite pamatyti šio krovinio tiekėjus ir pirkėjus
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Pramonės grandinė
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Parodyti krovinį tiekiančias ir priimančias pramonės įmones
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Nuoroda į žemėlapį

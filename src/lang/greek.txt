@@ -3270,11 +3270,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Σίγ�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Αλυσίδα Βιομηχανιών - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Αλυσίδα Εμπορεύματος - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Βιομηχανίες που παράγουν
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Βιομηχανίες που δέχονται
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Σπιτιά
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Πατήστε στη βιομηχανία για να δείτε τους προμηθευτές και τους πελάτες της
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Πατήστε στο εμπόρευμα για να δείτε τους προμηθευτές και τους πελάτες
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Αλυσίδα Βιομηχανιών
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Εμφάνιση βιομηχανιών που προμηθεύουν και αποδέχονται εμπορεύματα
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Σύνδεση στο μικρό χάρτη

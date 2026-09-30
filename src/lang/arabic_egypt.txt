@@ -2511,11 +2511,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}هل أ
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}سلسلة مصانع لـ {STRING} مصنع
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}سلسلة مصانع لـ {STRING} بضاعة
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}تكوين مصانع
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}قبول المصانع
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}مباني
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}اضغط على المصنع لتعرف من يزودة بالمؤن ومن يستهلك منتجاتة
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}اعرض على البضائع لتعرف المنتجين و المستهلكين لها
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}اعرض سلسلة
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}اعرض المصانع التي تمد و تقبل البضائع
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}اربط بالخريطة المصغرة

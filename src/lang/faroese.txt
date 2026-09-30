@@ -2312,11 +2312,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fíggja
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ídnaðar keta fyri {STRING} ídnað
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ídnaðar keta fyri {STRING} farm
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Framleiðandi ídnaðir
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Móttakandi ídnaðir
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hús
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Trýst á ídnaðin fyri at síggja veitarar og kundar
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Trýst á farmin fyri at síggja veitarar og kundar
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vís ketu
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vís farma veitandi og móttakandi ídnaðir
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Leinkja til lítlakort

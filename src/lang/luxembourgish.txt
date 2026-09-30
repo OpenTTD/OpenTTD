@@ -3163,11 +3163,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Bass du
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrieketten - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Wuereketten - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produzéirent Industrien
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Akzeptéirend Industrien
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Haiser
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klick op d'Industrie fir d'Liwweranten an Verbraucher ze gesinn
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klick op d'Wueren fir d'Liwweranten an Verbraucher ze gesinn
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industrieketten
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Weis Industrien un déi Wueren liwweren an akzeptéiren
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link op déi kleng Kaart

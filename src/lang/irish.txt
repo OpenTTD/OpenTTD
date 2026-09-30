@@ -2786,11 +2786,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :An bhfuil tú c
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Slabhra na dtionscal don tionscal {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Slabhra na dtionscal le haghaidh lastas {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tionscail á tháirgeadh
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Tionscail a ghlacann leis
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Tithe
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliceáil ar an tionscal chun a sholáthróirí agus a chustaiméirí a fheiceáil
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliceáil ar an lastas chun a soláthróirí agus a chustaiméirí a fheiceáil
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Taispeáin an slabhra
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Taispeáin na tionscadail a dhéanann lastas a sholáthar agus a ghlacann leis
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Nasc leis an léarscáil bheag

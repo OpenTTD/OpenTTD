@@ -3177,11 +3177,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}确定�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}产业链 - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}货物的产业链 - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}供应商
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}采购商
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}房屋
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}点击查看上下游产业链
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}点该货物可显示其上下游工业
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}产业链
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}显示货物的上下游工业
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}在缩略地图显示

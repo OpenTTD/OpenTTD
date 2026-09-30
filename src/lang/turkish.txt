@@ -539,6 +539,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Tüm mesajları
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_HELP                                             :Yardım & Kılavuzlar
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Ekran koruyucu modunu aç/kapa
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolu aç/kapa
 STR_ABOUT_MENU_AI_DEBUG                                         :YZ/Oyun betik hata ayıklama
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekran görüntüsü
@@ -3102,6 +3103,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Arazinin
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Arazi Yapımı
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Haritaya kayalık koy.{}Ctrl+Tıklayarak kayalıkları kaldırın
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Haritaya kayalık alanlar koy.{}Ctrl+Tıklayarak kayalık alanları kaldırın
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Çöl alanı tanımla.{}Kaldırmak için Ctrl + Sol Tık'a basın.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}yükseltme/alçaltma alanını arttır
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Yükseltme/alçaltma alanını arttır
@@ -3176,11 +3178,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Bütün
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Sanayi Zinciri - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cargo Zinciri - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Üreten fabrikalar
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Kabul eden fabrikalar
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Evler
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Sağlayanlarını ve müşterilerini görmek için fabrikayı tıklayın
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Sağlayanlarını ve müşterilerini görmek için kargoyu tıklayın
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Sanayi Zinciri
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Kargo sağlayan ve kabul eden fabrikaları göster
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Küçük haritaya bağla
@@ -3287,6 +3285,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Kilit
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Nehir
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Sahil veya göl kenarı
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Tersane
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Kayalar
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Kayalık sahil veya dere yatağı
 
 # Industries come directly from their industry names
 
@@ -3400,6 +3400,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Yükle
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Seçili oyunu yükle
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Seçili yükseklik haritasını yükle
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Seçili şehir verisini yükle
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Yeni Dizin
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Mevcut yerde yeni bir dizin oluştur
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Yeni dizin için bir isim girin
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Oyun Ayrıntıları
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Mevcut bilgi yok
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -4651,10 +4654,13 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Uçağı
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Tarih: {LTBLUE}{NUM}{BLACK} Değeri: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Değeri: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}Tren uzunluğu: {LTBLUE}{DECIMAL} kare
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Bu trenin toplam kapasitesi:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Bu trenin toplam kargosu:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}Boşalt ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{2:STATION} konumundan {0:CARGO_LONG} ({1:CARGO_SHORT}){3:STRING}
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Boş
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} - {STATION}
@@ -4663,6 +4669,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Kargo
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Taşınan kargonun ayrıntıları
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Bilgi
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Trenin ayrıntıları
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}Toplamlar
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}Trenin toplam kargo, kapasite ve uzunluğunu göster
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite: {LTBLUE}{STRING}
 
@@ -5061,6 +5069,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Otomatik kayıt
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Sürücü okunamıyor
 STR_ERROR_GAME_SAVE_FAILED                                      :Oyun kaydedilemedi...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Dosya silinemedi
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Dizin oluşturulamadı...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Bu isimde bir dizin veya dosya zaten var
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Dizin adında özel karakterler olamaz
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Dizin adı nokta ile başlayamaz
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Burada bir dizin oluşturmak için yetkiniz yok
 STR_ERROR_GAME_LOAD_FAILED                                      :Oyun yüklenemedi...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :İç hata: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bozuk kayıtlı oyun - {STRING}

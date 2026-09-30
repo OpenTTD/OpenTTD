@@ -1395,11 +1395,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Изгр
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Индустрија Верига за {STRING} индустрија
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Индустрија Верига за {STRING} товар
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Производство индустрии
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Прифаќањето индустрии
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Имотот
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Кликни на индустрија за да ја видите неговите добавувачи и клиенти
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Кликни на товар да се види неговите добавувачи и клиенти
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Прикажи синџир
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Прикажи карго снабдување и прифаќање на индустрии
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Линк кон мали сајтот

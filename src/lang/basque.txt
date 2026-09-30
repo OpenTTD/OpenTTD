@@ -2467,11 +2467,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Sortu
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industri katea {STRING} industriarentzako
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrien katea {STRING} kargarentzako
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Ekoizten duten industriak
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Onartzen duten industriak
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Etxeak
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Egin klik industrian haren hornitzaile eta bezeroak ikusteko
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Egin klik cargan haren hornitzaile eta bezeroak ikusteko
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industri katea
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Industrien zama hornidura eta onarpenak erakutsi
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link-a mapa txikira

@@ -3055,11 +3055,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Сиг�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Индустриална верига - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Товарна верига - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Произвеждащи индустрии
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Приемащи индустрии
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Къщи
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Кликнете на индустрията, за да видите нейните клиенти и доставчици
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Кликнете на товара, за да видите неговите купувачи и доставчици
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Индустриална верига
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Покажи индустриите, които приемат и доставят товар
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Линк към малката карта

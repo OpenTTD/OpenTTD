@@ -3156,11 +3156,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ydych c
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadwyn Diwydiant - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadwyn llwythi - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Diwydiannau'n creu
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Diwydiannau'n derbyn
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Tai
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliciwch ar ddiwydiant i weld ei gyflenwyr a chwsmeriaid
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliciwch ar math llwyth i weld ei gyflenwyr a'i chwsmeriaid
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadwyn Diwydiant
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Dangos diwydiannau sy'n cyflenwi a derbyn llwythi
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Cyfuno a'r map bychan

@@ -3351,11 +3351,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Пры�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Вытворчы ланцужок - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ланцужок грузаперавозак - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Вытворцы
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Спажыўцы
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Гарадзкія будынкі
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Пстрычка па прадпрыемстве пакажа ягоных пастаўшчыкоў і спажыўцоў
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Пстрычка па тыпе грузу пакажа ягоных пастаўшчыкоў і спажыўцоў
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Вытворчы ланцужок
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Паказаць вытворцаў сыравіны й спажыўцоў прадукцыі гэтага прадпрыемства
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Лiнк да мiнiмапы

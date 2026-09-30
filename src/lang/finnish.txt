@@ -3177,11 +3177,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Oletko 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Teollisuusketju – {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Rahtiketju – {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tuottavat teollisuudenhaarat
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Hyväksyvät teollisuudenhaarat
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Taloja
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Napsauta teollisuutta nähdäksesi sen tuottajat ja kuluttajat
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Napsauta rahtia nähdäksesi sen tuottajat ja kuluttajat
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Teollisuusketju
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näytä rahtia tuottavat ja hyväksyvät teollisuudenhaarat
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Yhdistä karttaan

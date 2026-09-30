@@ -2778,11 +2778,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Maoinich
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Sreath gnìomhachais airson gnìomhachas {STRING.gen}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Sreath gnìomhachais airson carago {STRING.gen}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Gnìomhachasan saothrachaidh
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Gnìomhachasan a ghabhas ris
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Taighean
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Briog air a' ghnìomhachas gus a luchd-solair is ceannachd a shealltainn
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}riog air a' charago gus a luchd-solair is ceannachd a shealltainn
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Seall sreath
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Seall gnìomhachasan a sholaireas is a ghabhas ri carago
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ceangail ris a' mheanbh-mhapa

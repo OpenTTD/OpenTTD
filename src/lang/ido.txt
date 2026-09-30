@@ -1027,8 +1027,6 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeso
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrio-kateno por {STRING} industrio
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produktanta industrii
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Aceptanta industrii
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domi
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Montras kateno
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ligilo ad mapeto

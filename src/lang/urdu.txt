@@ -2158,8 +2158,6 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{G=f}{BLACK}ک�
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}کارگو چین - {STRING}
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}قبول کرنے والی صنعتیں۔
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}اس کے فروخت کنندہ اور گاہک کو دیکھنے کے لیے سامان پر کلک کریں۔
 
 # Land area window
 

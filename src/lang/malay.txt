@@ -2315,11 +2315,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Biaya
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Rantaian industri untuk {STRING} industri
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Rantaian industri untuk kargo {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industri pengeluaran
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industri penerimaan
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Rumah
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik pada industri untuk melihat pembekal dan pelanggan-pelanggan
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik pada kargo untuk melihat pembekal dan pelanggan-pelanggan
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Paparkan rangkaian
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Paparkan kargo yang dibekalkan dan diterima oleh industri
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Pautan ke peta kecil

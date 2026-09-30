@@ -3178,11 +3178,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Esteu s
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de càrrega - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústries productores
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Indústries acceptades
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Cases
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clica a la indústria per veure els seus proveïdors i clients.
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clica a la càrrega per veure els proveïdors i clients
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadena d'indústries
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra les càrregues proveïdes i les indústries acceptades
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Mostra el minimapa

@@ -3241,11 +3241,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Biztosa
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ipari láncolat - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ipari láncolat - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Termelő gazdasági épületek
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Elfogadó gazdasági épületek
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Házak
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Kattints a gazdasági épületre az ellátók és a fogyasztók megjelenítéséhez
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Kattints a rakományra az ellátók és a fogyasztók megjelenítéséhez.
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Ipari láncolat
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Rakományellátó és fogyasztó gazdasági épületek megjelenítése
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Térképre kapcsolás

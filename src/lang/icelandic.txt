@@ -2418,11 +2418,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fjármag
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Iðnaðarkeðja fyrir {STRING} iðnað
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Iðnaðarkeðja fyrir {STRING} farm
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Framleiðandi iðnaðir
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Móttækilegir iðnaðir
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hús
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Smelltu á iðnað til að sjá byrgja og viðskiptavini
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Smelltu á farm til að sjá byrgja og viðskiptavini
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Sýna keðju
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Sýna framleiðanda farms og iðnaði sem taka á móti.
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Tengill á litla kort

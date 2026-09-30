@@ -3233,11 +3233,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Kas ole
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Tööstusahel - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Kaubaahel - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tootvad tööstused
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Vastuvõtvad tööstused
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Majad
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klõpsa tööstusel et näha selle pakkujaid ja kliente
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klõpsa kaubal et näha selle pakkujaid ja kliente
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Tööstuse ahel
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näita kaupa pakkuvaid ja vastuvõtvaid tööstuseid
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Seo pisikaardiga

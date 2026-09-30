@@ -3352,11 +3352,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Убр�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Производственная цепочка - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Цепочка грузоперевозок - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Производители
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Потребители
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Городские здания
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Щелчок по предприятию покажет его поставщиков и потребителей
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Щелчок по типу груза покажет его производителей и потребителей
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Показать связи
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показать производителей сырья и потребителей продукции этого предприятия
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Показать на карте

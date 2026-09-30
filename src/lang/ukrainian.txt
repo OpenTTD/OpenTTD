@@ -3275,11 +3275,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ви д
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ланцюг підприємств - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ланцюг вантажів - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Виробники
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Споживачі
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Будинки
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Натисніть на підприємство аби побачити його постачальників та покупців
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Натисніть на вантаж аби побачити його постачальників та покупців
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Ланцюг підпримств
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показати виробників та споживачів
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Приєднати до мінікарти

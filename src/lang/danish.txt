@@ -3157,11 +3157,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Er du s
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikæde for {STRING} industri
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikæde for {STRING} gods
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerer industrier
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepterer industrier
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huse
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik på industrien for at se dens leverandører og kunder
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik på godset for at se dens leverandører og kunder
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vis Industrikæde
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vis godsforsynende og -accepterende industrier
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link til lille kort

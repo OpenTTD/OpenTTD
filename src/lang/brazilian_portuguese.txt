@@ -3178,11 +3178,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Você q
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadeia Industrial - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadeia de Carga - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústrias produtoras
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Indústrias receptoras
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clique na indústria para ver seus fornecedores e clientes
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clique na carga para ver seus fornecedores e clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadeia Industrial
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar indústrias que fornecem e aceitam carga
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ligar ao minimapa

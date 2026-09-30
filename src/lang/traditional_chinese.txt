@@ -3177,11 +3177,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}你確�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}產業鍊 - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}貨物的產業鍊 - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}供應商
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}購買商
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}房屋
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}按該工業可顯示其上下游工業
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}按該貨物可顯示其上下游工業
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}產業鍊
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}顯示貨物的上下游工業
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}於小地圖顯示

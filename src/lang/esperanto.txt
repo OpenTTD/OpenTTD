@@ -3271,11 +3271,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ĉu vi 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industria ĉeno - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industria ĉeno por ŝarĝo - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Provizantoj
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Akceptantoj
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domoj
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Alklaku la industrion por vidi ĝia provizanoj kaj klientoj
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Alklaku la ŝarĝon por vidi ĝia provizantoj kaj klientoj
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industria ĉeno
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Montri ŝarĝo-provizantajn kaj akceptantajn industriojn
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Sinsekvigi al karteto

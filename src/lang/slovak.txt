@@ -3077,11 +3077,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ste si 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Reťazec pre priemysel - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Reťazec pre náklad - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produkujúci priemysel
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Podporovaný priemysel
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikni na priemysel pre zobrazenie dodávateľov a zákazníkov
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikni na náklad pre zobrazenie dodávateľov a zákazníkov
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Priemyselné reťaze
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobraziť náklad dodávaného a prijímaného priemyslu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Odkaz na malú mapu

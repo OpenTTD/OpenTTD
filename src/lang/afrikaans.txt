@@ -2593,11 +2593,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonds
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Nywerheid ketting vir {STRING} nywerheid
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Nywerheid ketting vir {STRING} vrag
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Vervaardiging van nywerhede
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Aanvaar nywerhede
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huise
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik op die nywerheid om sy verskaffers en kliënte te sien
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik op die vrag om verskaffers en kliënte te sien
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vertoon Ketting
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vertoon vrag voorsiening en aanvaar nywerhede
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Verbinding na kleinkaart

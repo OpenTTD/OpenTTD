@@ -2530,11 +2530,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}سرما
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}زنجیره ساخت برای صنعت {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}زنجیره ساخت برای بار {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}در حال ساخت صنایع
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}قبول کردن صنایع
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}خانه ها
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}روی صنایع کلیک کنید تا تولید کننده و مشتریان را ببینید
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}روی بار کلیک کنید تا تولیدکنندگان و مشتریان آنرا ببینید
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}نمایش زنجیره
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}نمایش صنایعی که بار را تولید و قبول می کنند
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}پیوند به نقشه کوچک

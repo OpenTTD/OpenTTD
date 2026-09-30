@@ -3168,11 +3168,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Bạn c
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chuỗi cung ứng - {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chuỗi cung ứng hàng hoá - {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Nhà máy sản xuất
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Nhà máy nhận
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Nhà kho
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click vào nhà máy để xem nhà cung cấp cho nó và khách hàng của nó
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click vào hàng hoá để xem nhà sản xuất và khách hàng
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Chuỗi cung ứng
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Hiển thị khả năng cung ứng và chấp nhận hàng hoá của nhà máy
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Liên kết với bản đồ nhỏ

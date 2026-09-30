@@ -2714,11 +2714,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ustanovi
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrijska veriga za industrijo {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrijska veriga za tovor {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Proizvajalne industrije
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Sprejemajoče industrije
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hiše
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikni na industrijo za ogled strank in dobaviteljev
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikni na tovor za ogled strank in dobaviteljev
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Prikaži verigo
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikaži oskrbo s tovorom in pripadajoče industrije
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Poveži z zemljevidom

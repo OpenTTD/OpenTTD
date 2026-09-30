@@ -2740,11 +2740,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}நீ�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} தொழிற்சாலையிற்கான தொழிற்சாலைத் தொடர்
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} சரக்கிற்கான தொழிற்சாலைத் தொடர்
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}தயாரிக்கும் தொழிற்சாலைகள்
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}ஏற்றுக்கொள்ளும் தொழிற்சாலைகள்
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}வீடுகள்
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}நிறுவனத்தினைச் சொடுக்கினால் அதனது விற்பனையாளர்கள் மற்றும் வாங்குவோர் விவரங்கள் காட்டப்படும்
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}சரக்கினைச் சொடுக்கினால் அதனது விற்பனையாளர்கள் மற்றும் வாங்குவோர் விவரங்கள் காட்டப்படும்
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}தொழிற்சாலையிற்கான இணைப்புகளைக் காட்டு
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}சரக்குகளை தரும் மற்றும் வாங்கும் நிறுவனங்களைக் காட்டு
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}சிறுபடத்திற்கான இணைப்பு

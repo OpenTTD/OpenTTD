@@ -2439,8 +2439,6 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Alle ynd
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Yndustrykeatlings foar {STRING} yndustry
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Yndustrykeatlings foar {STRING} fracht
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :produksje yndustry
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Yndustry aksepteare
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hûzen
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Lit produksjeketting sjen
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Lit it oanbod en akseptaasje fan yndustrie sjen

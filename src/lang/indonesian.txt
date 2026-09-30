@@ -3177,11 +3177,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Yakin i
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Hubungan industri untuk industri {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Hubungan industri untuk kargo {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industri pemasok
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industri penerima
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Rumah
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik pada industri untuk melihat pemasok dan pelanggannya
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik pada kargo untuk melihat pemasok dan pelanggannya
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Tampilkan hubungan
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Menampilkan industri yang menyediakan dan menerima kargo
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Tautkan ke peta
