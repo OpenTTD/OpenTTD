@@ -11,12 +11,12 @@
 
 #include "stdafx.h"
 
+#include "core/math_func.hpp"
 #include "core/random_func.hpp"
 #include "company_base.h"
 #include "timer/timer.h"
 #include "timer/timer_game_tick.h"
 #include "vehicle_base.h"
-#include "vehicle_func.h"
 #include "vehicle_type.h"
 #include "window_func.h"
 #include "window_gui.h"
@@ -24,7 +24,7 @@
 #include "safeguards.h"
 
 /**
- * Selects a random vehicle of any type.
+ * Selects a random vehicle, picking the type by the square root of its number of vehicles, then a vehicle uniformly within it.
  *
  * This function can return \c nullptr if it cannot find any valid vehicles to pick from.
  *
@@ -32,24 +32,43 @@
  */
 static const Vehicle *PickRandomVehicle()
 {
-	/* First pass, add up vehicles of all buildable types for all companies. */
-	uint n = 0;
+	/* First pass, add up vehicles of all buildable types for all companies, keeping the types apart. */
+	VehicleTypeIndexArray<uint> counts{};
 	for (const Company *c : Company::Iterate()) {
-		for (VehicleType v = VehicleType::Begin; v < VehicleType::CompanyEnd; ++v) {
-			n += c->group_all[v].num_vehicle;
+		for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
+			counts[type] += c->group_all[type].num_vehicle;
 		}
 	}
 
-	/* If we have no vehicles, we can't pick a vehicle so exit. */
-	if (n == 0) return nullptr;
+	/* Weight each type by the square root of its number of vehicles, to stop the most common type dominating. */
+	VehicleTypeIndexArray<uint> weights{};
+	uint total_weight = 0;
+	for (VehicleType type : EnumRange(VehicleType::CompanyEnd)) {
+		weights[type] = IntSqrt(counts[type]);
+		total_weight += weights[type];
+	}
 
-	/* Otherwise, pick a random vehicle index between 0 and n. */
-	n = InteractiveRandomRange(n);
+	/* If no type has any vehicles, we can't pick a vehicle so exit. */
+	if (total_weight == 0) return nullptr;
+
+	/* Pick the type to follow, using the weight as a probability. */
+	uint r = InteractiveRandomRange(total_weight);
+	VehicleType type = VehicleType::Begin;
+	while (r >= weights[type]) {
+		r -= weights[type];
+		++type;
+		assert(type < VehicleType::CompanyEnd);
+	}
+	assert(weights[type] > 0);
+
+	/* Then pick a random vehicle index between 0 and the number of vehicles of that type. */
+	uint n = InteractiveRandomRange(counts[type]);
 
 	/* Loop over all the vehicles until we get to that vehicle. */
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		/* Skip count anything companies can't build. */
-		if (!IsCompanyBuildableVehicleType(v)) continue;
+		/* Skip anything that isn't the type we picked; as we only ever pick a company-buildable type,
+		 * this also skips everything companies can't build. */
+		if (v->type != type) continue;
 
 		/* Skip vehicles if they're not "front vehicles" so we don't count train cars (or similar) as targets to follow. */
 		if (!v->IsPrimaryVehicle()) continue;
