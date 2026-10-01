@@ -1934,6 +1934,7 @@ static constexpr std::initializer_list<NWidgetPart> _nested_industry_cargoes_wid
 		NWidget(WWT_PUSHARROWBTN, Colours::Brown, WID_IC_NAVBACK), SetFill(0, 1), SetMinimalSize(15, 1), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease, STR_TEXTFILE_NAVBACK_TOOLTIP),
 		NWidget(WWT_PUSHARROWBTN, Colours::Brown, WID_IC_NAVFORWARD), SetFill(0, 1), SetMinimalSize(15, 1), SetArrowWidgetTypeTip(ArrowWidgetType::Increase, STR_TEXTFILE_NAVFORWARD_TOOLTIP),
 		NWidget(WWT_CAPTION, Colours::Brown, WID_IC_CAPTION),
+		NWidget(WWT_IMGBTN, Colours::Brown, WID_IC_TOGGLE_SIZE), SetSpriteTip(SPR_LARGE_SMALL_WINDOW, STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW), SetAspect(WidgetDimensions::ASPECT_TOGGLE_SIZE),
 		NWidget(WWT_SHADEBOX, Colours::Brown),
 		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
 		NWidget(WWT_STICKYBOX, Colours::Brown),
@@ -2692,7 +2693,8 @@ struct IndustryCargoesWindow : public Window {
 	ChainField::ClickedAtResult ind_cargo; ///< The displayed house, industry or cargo type.
 	Dimension cargo_textsize{}; ///< Size to hold any cargo text, as well as STR_INDUSTRY_CARGOES_SELECT_CARGO.
 	Dimension ind_textsize{}; ///< Size to hold any industry type text, as well as STR_INDUSTRY_CARGOES_SELECT_INDUSTRY.
-	Scrollbar *vscroll = nullptr;
+	Scrollbar *vscroll = nullptr; ///< Vertical scrollbar of window.
+	static inline bool small = false; ///< Set if industry chain display should be smaller.
 
 	IndustryCargoesWindow(int id) : Window(_industry_cargoes_desc)
 	{
@@ -2794,6 +2796,8 @@ struct IndustryCargoesWindow : public Window {
 
 	void OnInit() override
 	{
+		ChainField::fontsize = IndustryCargoesWindow::small ? FontSize::Small : FontSize::Normal;
+
 		/* Initialize static CargoesField size variables. */
 		Dimension d = GetStringBoundingBox(STR_INDUSTRY_CARGOES_SOURCES, ChainField::fontsize);
 		d = maxdim(d, GetStringBoundingBox(STR_INDUSTRY_CARGOES_DESTINATIONS, ChainField::fontsize));
@@ -2804,7 +2808,7 @@ struct IndustryCargoesWindow : public Window {
 		ChainField::legend.width = GetCharacterHeight(FontSize::Small) * 9 / 6;
 
 		/* Size of cargo lines. */
-		ChainField::cargo_line.width = ScaleGUITrad(6);
+		ChainField::cargo_line.width = ScaleGUITrad(IndustryCargoesWindow::small ? 4 : 6);
 		ChainField::cargo_line.height = ChainField::cargo_line.width;
 
 		/* Size of border between cargo lines and industry boxes. */
@@ -3266,6 +3270,11 @@ struct IndustryCargoesWindow : public Window {
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
+			case WID_IC_TOGGLE_SIZE:
+				this->small = !this->small;
+				this->ReInit();
+				break;
+
 			case WID_IC_PANEL:
 				this->ComputeDisplay(this->ClickedAt(pt));
 				break;
