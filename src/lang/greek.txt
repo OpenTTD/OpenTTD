@@ -3268,17 +3268,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Αφαί
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Σίγουρα θέλετε να αφαιρέσετε όλες τις βιομηχανίες;
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Αλυσίδα Βιομηχανιών - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Αλυσίδα Εμπορεύματος - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Σπιτιά
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Αλυσίδα Βιομηχανιών
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Εμφάνιση βιομηχανιών που προμηθεύουν και αποδέχονται εμπορεύματα
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Σύνδεση στο μικρό χάρτη
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Επιλογή των εμφανιζόμενων βιομηχανιών και στο μικρό χάρτη
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Επιλογή εμπορευμάτων
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Επιλέξτε το εμπόρευμα που θέλετε να εμφανίσετε
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Επιλογή βιομηχανίας
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Επιλέξτε τη βιομηχανία που θέλετε να εμφανίσετε
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Αλυσίδα Βιομηχανιών - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Αλυσίδα Εμπορεύματος - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Πηγές
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Προορισμοί
+STR_INDUSTRY_CARGOES_HOUSES                                     :Σπίτια
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Δέχεται: {CARGO_LIST}{}Παράγει: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Αλυσίδα Βιομηχανιών
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Εμφάνιση βιομηχανιών που προμηθεύουν και αποδέχονται εμπορεύματα
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :Σύνδεση στο μικρό χάρτη
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :Επιλογή των εμφανιζόμενων βιομηχανιών και στο μικρό χάρτη
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Επιλογή εμπορευμάτων
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Επιλέξτε το εμπόρευμα που θέλετε να εμφανίσετε
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Επιλογή βιομηχανίας
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Επιλέξτε τη βιομηχανία που θέλετε να εμφανίσετε
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Πληροφορίες Περιοχής Εδάφους

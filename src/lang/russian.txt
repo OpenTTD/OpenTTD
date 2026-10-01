@@ -3350,17 +3350,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Убра
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Убрать все предприятия с карты?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Производственная цепочка - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Цепочка грузоперевозок - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Городские здания
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Показать связи
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показать производителей сырья и потребителей продукции этого предприятия
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Показать на карте
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Показать на карте выбранные предприятия
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Выберите груз
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Выберите груз для отображения
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Выберите предприятие
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Выберите предприятие для отображения
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Производственная цепочка - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Цепочка грузоперевозок - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Пункты отправки
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Пункты назначения
+STR_INDUSTRY_CARGOES_HOUSES                                     :Городские здания
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Принимает: {CARGO_LIST}{}Производит: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Показать связи
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Показать производителей сырья и потребителей продукции этого предприятия
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :Показать на карте
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :Показать на карте выбранные предприятия
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Выберите груз
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Выберите груз для отображения
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Выберите предприятие
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Выберите предприятие для отображения
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация о территории

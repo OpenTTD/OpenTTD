@@ -955,8 +955,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}打開該運輸工具的群組
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION}不再接受：{CARGO_LIST}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION}現正接受︰{CARGO_LIST}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION}不再接收：{CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION}現正接收︰{CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}財務補助項目到期：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 將不再獲得財務補助
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}財務補助項目流標：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的項目將不再提供財務補助
@@ -1970,7 +1970,7 @@ STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :新車輛：{ST
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :當新車輛型號面世時顯示報紙訊息。
 
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :可接收貨物的變動：{STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :顯示有關車站、碼頭或機場改變所接受貨物種類的訊息。
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :顯示有關車站、碼頭或機場改變所接收貨物種類的訊息
 
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :補助資訊：{STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :顯示補助金相關事件的報紙訊息
@@ -2814,7 +2814,7 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}關
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}開
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}不顯示設置地點的運輸涵蓋範圍
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}顯示設置地點的運輸涵蓋範圍
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}{CARGO_LIST}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接收：{GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供應：{GOLD}{CARGO_LIST}
 STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}維護成本：{GOLD}{CURRENCY_SHORT}/年
 STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}維護成本：{GOLD}{CURRENCY_SHORT}/週期
@@ -2922,7 +2922,7 @@ STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}可用�
 STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}可用年份：{GOLD}自 {NUM} 年起可用
 STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}可用年份：{GOLD}至 {NUM} 年前可用
 STR_HOUSE_PICKER_SIZE                                           :{BLACK}大小：{GOLD}{NUM}x{NUM} 格
-STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}接受貨物：{GOLD}{STRING}
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}接收貨物：{GOLD}{STRING}
 STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}產出貨物：{GOLD}{CARGO_LIST}
 
 STR_HOUSE_PICKER_CLASS_ZONE1                                    :市鎮邊緣
@@ -3175,17 +3175,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}移除�
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}你確定要清除所有工業嗎？
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}產業鍊 - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}貨物的產業鍊 - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}房屋
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}產業鍊
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}顯示貨物的上下游工業
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}於小地圖顯示
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}將該產業鍊的工業顯示在小地圖上
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}選擇貨物種類
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}選擇您希望顯示的貨物種類
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}選擇工業種類
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}選擇您希望顯示的工業種類
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :產業鍊 - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :貨物的產業鍊 - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :來源
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :目的地
+STR_INDUSTRY_CARGOES_HOUSES                                     :房屋
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}接收：{CARGO_LIST}{}產出：{CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :產業鍊
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :顯示貨物的供需產業
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :於小地圖顯示
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :將該產業鍊的工業顯示在小地圖上
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :選擇貨物
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :選擇需要顯示的貨物
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :選擇工業
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :選擇需要顯示的工業
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}土地資訊
@@ -3209,7 +3212,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}機場�
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}機場名稱：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}機場區塊名稱：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接受貨物：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接收貨物：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}軌道類型：{LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}道路類型：{LTBLUE}{STRING}
@@ -3919,9 +3922,9 @@ STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_RESERVED                                       :{YELLOW}(已預留裝載{CARGO_SHORT})
 
-STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受貨物
-STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}顯示接受的貨物種類
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}接受：{WHITE}{CARGO_LIST}
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接收
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}顯示接收的貨物清單
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}接收：{WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}此車站享有所屬市鎮的專屬營運權
 STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} 已購買該市鎮的專屬營運權
@@ -4107,7 +4110,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}、{STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}、{STRING}……（尚有 {NUM} 個未顯示）
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面正中央。按住 <Ctrl> 點選可於工業位置開啟新檢視視窗
-STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接受貨物：{SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接收貨物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}產出貨物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :所有貨物種類
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :無
@@ -4127,7 +4130,7 @@ STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}需要�
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}產出：{YELLOW}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING}{STRING}
 
-STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}需要:
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}需要：
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}：庫存 {1:CARGO_SHORT} {3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
@@ -4727,8 +4730,8 @@ STR_ORDER_DROP_NO_LOADING                                       :不裝載
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}修改選取指令的裝載行為
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}強制全部卸載
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :可接受則卸客貨
-STR_ORDER_DROP_UNLOAD                                           :強制卸載即使不接受
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :若接收則卸客貨
+STR_ORDER_DROP_UNLOAD                                           :強制卸載即使不接收
 STR_ORDER_DROP_TRANSFER                                         :轉運
 STR_ORDER_DROP_NO_UNLOADING                                     :不卸載
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}修改選取指令的卸載行為
