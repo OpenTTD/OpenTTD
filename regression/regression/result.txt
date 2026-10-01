@@ -8974,6 +8974,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   HasTreeOnTile():      false
   IsFarmTile():         true
   IsRockTile():         true
+  IsRockTile():         true
   IsRoughTile():        true
   HasTreeOnTile():      true
   IsFarmTile():         false
@@ -10942,7 +10943,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2497]
+*FUNCTION [Start()] regression/main.nut line [2498]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE
