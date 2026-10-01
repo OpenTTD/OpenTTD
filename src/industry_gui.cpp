@@ -1931,6 +1931,8 @@ void ShowIndustryDirectory()
 static constexpr std::initializer_list<NWidgetPart> _nested_industry_cargoes_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::Brown),
+		NWidget(WWT_PUSHARROWBTN, Colours::Brown, WID_IC_NAVBACK), SetFill(0, 1), SetMinimalSize(15, 1), SetArrowWidgetTypeTip(ArrowWidgetType::Decrease, STR_TEXTFILE_NAVBACK_TOOLTIP),
+		NWidget(WWT_PUSHARROWBTN, Colours::Brown, WID_IC_NAVFORWARD), SetFill(0, 1), SetMinimalSize(15, 1), SetArrowWidgetTypeTip(ArrowWidgetType::Increase, STR_TEXTFILE_NAVFORWARD_TOOLTIP),
 		NWidget(WWT_CAPTION, Colours::Brown, WID_IC_CAPTION),
 		NWidget(WWT_SHADEBOX, Colours::Brown),
 		NWidget(WWT_DEFSIZEBOX, Colours::Brown),
@@ -2683,6 +2685,9 @@ static Dimension GetMaximalSizeIndustryString(FontSize fs = FontSize::Normal)
  * customer industries). The remaining two columns are empty and unused.
  */
 struct IndustryCargoesWindow : public Window {
+	std::vector<std::pair<ChainField::ClickedAtResult, int>> history; ///< Browsing history in this window.
+	size_t history_pos = 0; ///< Position in browsing history.
+
 	std::vector<ChainRow> rows{}; ///< Fields to display in the #WID_IC_PANEL.
 	ChainField::ClickedAtResult ind_cargo; ///< The displayed house, industry or cargo type.
 	Dimension cargo_textsize{}; ///< Size to hold any cargo text, as well as STR_INDUSTRY_CARGOES_SELECT_CARGO.
@@ -2696,6 +2701,53 @@ struct IndustryCargoesWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_IC_SCROLLBAR);
 		this->FinishInitNested(0);
 		this->OnInvalidateData(id);
+		this->UpdateNavigationButtons();
+	}
+
+	/**
+	 * Update state of navigation buttons.
+	 */
+	void UpdateNavigationButtons()
+	{
+		this->SetWidgetDisabledState(WID_IC_NAVBACK, this->history_pos == 0);
+		this->SetWidgetDisabledState(WID_IC_NAVFORWARD, this->history_pos + 1 >= this->history.size());
+		this->SetDirty();
+	}
+
+	/**
+	 * Place current house/industry/cargo choice in the navigation history.
+	 */
+	void AppendHistory()
+	{
+		if (!this->history.empty()) this->history.erase(this->history.begin() + this->history_pos + 1, this->history.end());
+		/* Limit history to 256 entries. */
+		if (this->history.size() >= 256) this->history.erase(this->history.begin());
+		this->history.emplace_back(this->ind_cargo, 0);
+		this->history_pos = this->history.size() - 1;
+		this->UpdateNavigationButtons();
+	}
+
+	/**
+	 * Update the current navigation history scroll position.
+	 */
+	void UpdateHistoryScrollpos()
+	{
+		if (!this->history.empty()) this->history[this->history_pos].second = this->GetScrollbar(WID_IC_SCROLLBAR)->GetPosition();
+	}
+
+	/**
+	 * Move within navigation history.
+	 * @param delta Steps to move within navigation history.
+	 */
+	void NavigateHistory(int delta)
+	{
+		if (delta == 0 || this->history.empty()) return;
+
+		this->history_pos = Clamp(static_cast<int>(this->history_pos) + delta, 0, static_cast<int>(this->history.size()) - 1);
+
+		this->ComputeDisplay(this->history[this->history_pos].first, false);
+		this->GetScrollbar(WID_IC_SCROLLBAR)->SetPosition(this->history[this->history_pos].second);
+		this->UpdateNavigationButtons();
 	}
 
 	/**
@@ -3191,10 +3243,13 @@ struct IndustryCargoesWindow : public Window {
 
 	/**
 	 * Compute the cargo chain display.
-	 * @param clickedAt The clicked at result.
+	 * @param clicked_at The clicked at result.
+	 * @param update_history \c true if navigation history should be updated.
 	 */
-	void ComputeDisplay(ChainField::ClickedAtResult clickedAt)
+	void ComputeDisplay(ChainField::ClickedAtResult clicked_at, bool update_history = true)
 	{
+		if (update_history) this->UpdateHistoryScrollpos();
+
 		struct visitor {
 			IndustryCargoesWindow *w;
 			bool operator()(std::monostate) { return false; }
@@ -3202,7 +3257,8 @@ struct IndustryCargoesWindow : public Window {
 			bool operator()(IndustryType industry_type) { return this->w->ComputeIndustryDisplay(industry_type); }
 			bool operator()(CargoType cargo_type) { return this->w->ComputeCargoDisplay(cargo_type); }
 		};
-		if (std::visit(visitor{this}, clickedAt)) {
+		if (std::visit(visitor{this}, clicked_at) && update_history) {
+			this->AppendHistory();
 			SndClickBeep();
 		}
 	}
@@ -3212,6 +3268,14 @@ struct IndustryCargoesWindow : public Window {
 		switch (widget) {
 			case WID_IC_PANEL:
 				this->ComputeDisplay(this->ClickedAt(pt));
+				break;
+
+			case WID_IC_NAVBACK:
+				this->NavigateHistory(-1);
+				break;
+
+			case WID_IC_NAVFORWARD:
+				this->NavigateHistory(+1);
 				break;
 
 			case WID_IC_NOTIFY:
