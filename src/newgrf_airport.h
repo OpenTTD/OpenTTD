@@ -18,13 +18,16 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
 
-/** Copy from station_map.h */
-typedef uint8_t StationGfx;
+/** Airport graphics tile. */
+using AirportGfx = uint16_t;
+
+/** Sentinel marker in airport layout to perform a clear tile check. */
+static constexpr AirportGfx AIRPORTGFX_CLEARTILE_SPECIALCHECK = UINT16_MAX;
 
 /** Tile-offset / AirportTileID pair. */
 struct AirportTileTable {
 	TileIndexDiffC ti; ///< Tile offset from  the top-most airport tile.
-	StationGfx gfx; ///< AirportTile to use for this tile.
+	AirportGfx gfx; ///< AirportTile to use for this tile.
 };
 
 /** Class IDs for airports. */
