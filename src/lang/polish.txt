@@ -3555,17 +3555,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Usuń ws
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Czy na pewno chcesz usunąć wszystkie istniejące przedsiębiorstwa?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Łańcuch Produkcji - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Łańcuch Przetwarzania - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Łańcuch Produkcji
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Wyświetl dostawców i odbiorców ładunku
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Pokaż na mapie
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pokaż aktualnie wyświetlone przedsiębiorstwa na mapie
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Wybierz ładunek
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Wybierz ładunek, który chcesz wyświetlić
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Wybierz przedsiębiorstwo
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Wybierz przedsiębiorstwo, które chcesz wyświetlić
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Łańcuch Produkcji - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Łańcuch Przetwarzania - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Źródła
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Odbiorcy
+STR_INDUSTRY_CARGOES_HOUSES                                     :Domy
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Akceptuje: {CARGO_LIST}{}Produkuje: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Łańcuch Produkcji
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Wyświetl dostawców i odbiorców ładunku
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :Pokaż na mapie
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pokaż aktualnie wyświetlone przedsiębiorstwa na minimapie
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Wybierz ładunek
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Wybierz ładunek, który chcesz wyświetlić
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Wybierz przedsiębiorstwo
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Wybierz przedsiębiorstwo, które chcesz wyświetlić
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacja o terenie
