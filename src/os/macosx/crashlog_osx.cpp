@@ -181,7 +181,7 @@ static void CDECL HandleInternalCrash(int)
 {
 	if (CrashLogOSX::current == nullptr || !CrashLogOSX::current->try_execute_active) {
 		fmt::print("Something went seriously wrong when creating the crash log. Aborting.\n");
-		_exit(1);
+		std::_Exit(1);
 	}
 
 	longjmp(CrashLogOSX::current->internal_fault_jmp_buf, 1);
@@ -196,7 +196,7 @@ static void CDECL HandleCrash(int signum)
 {
 	if (CrashLogOSX::current != nullptr) {
 		CrashLog::AfterCrashLogCleanup();
-		_exit(2);
+		std::_Exit(2);
 	}
 
 	/* Capture crashing during the handling of a crash. */
@@ -208,14 +208,14 @@ static void CDECL HandleCrash(int signum)
 		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
 				"As you loaded an emergency savegame no crash information will be generated.\n",
 				"Quit");
-		_exit(3);
+		std::_Exit(3);
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
 		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
 				"As you loaded an savegame for which you do not have the required NewGRFs no crash information will be generated.\n",
 				"Quit");
-		_exit(3);
+		std::_Exit(3);
 	}
 
 	CrashLogOSX *log = new CrashLogOSX(signum);
@@ -226,7 +226,7 @@ static void CDECL HandleCrash(int signum)
 	}
 
 	CrashLog::AfterCrashLogCleanup();
-	_exit(2);
+	std::_Exit(2);
 }
 
 /* static */ void CrashLog::InitialiseCrashLog()
