@@ -20,7 +20,10 @@
  * This version is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
- * \li AIRail.RemoveRailDepot
+ * \li AIRail::RemoveRailDepot
+ *
+ * Other changes:
+ * \li AITile::IsRockTile will return true for rocks on water or coast tiles
  *
  * \b 15.0
  *

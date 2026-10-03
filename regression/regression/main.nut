@@ -1676,6 +1676,7 @@ function Regression::Tile()
 	print("  HasTreeOnTile():      " + AITile.HasTreeOnTile(33148));
 	print("  IsFarmTile():         " + AITile.IsFarmTile(32892));
 	print("  IsRockTile():         " + AITile.IsRockTile(31606));
+	print("  IsRockTile():         " + AITile.IsRockTile(21058));
 	print("  IsRoughTile():        " + AITile.IsRoughTile(33674));
 	print("  HasTreeOnTile():      " + AITile.HasTreeOnTile(33404));
 	print("  IsFarmTile():         " + AITile.IsFarmTile(33404));
