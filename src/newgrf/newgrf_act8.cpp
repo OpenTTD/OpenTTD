@@ -14,7 +14,7 @@
 #include "newgrf_internal.h"
 #include "../newgrf_text.h"
 
-#include "table/strings.h"
+#include "table/strings_newgrf.h"
 
 #include "../safeguards.h"
 

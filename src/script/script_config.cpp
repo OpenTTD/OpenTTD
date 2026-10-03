@@ -16,6 +16,7 @@
 #include <charconv>
 
 #include "table/strings.h"
+#include "table/strings_scripts.h"
 
 #include "../safeguards.h"
 

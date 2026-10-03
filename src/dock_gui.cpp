@@ -37,6 +37,7 @@
 
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "table/strings_waterways.h"
 
 #include "safeguards.h"
 

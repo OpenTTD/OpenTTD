@@ -24,6 +24,7 @@
 #include "widgets/misc_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_textfiles.h"
 #include "table/control_codes.h"
 
 #if defined(WITH_ZLIB)

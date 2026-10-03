@@ -14,7 +14,7 @@
 #include "saveload_error.hpp"
 #include "saveload_internal.h"
 
-#include "table/strings.h"
+#include "table/strings_station_names.h"
 
 #include "../safeguards.h"
 

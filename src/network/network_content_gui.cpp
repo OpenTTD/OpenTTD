@@ -32,6 +32,7 @@
 #include "../widgets/misc_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_textfiles.h"
 #include "../table/sprites.h"
 
 #include "../safeguards.h"

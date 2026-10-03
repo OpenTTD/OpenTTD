@@ -77,6 +77,8 @@
 #include "widgets/station_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_industry_names.h"
+#include "table/strings_station_names.h"
 #include "table/station_land.h"
 
 #include <bitset>

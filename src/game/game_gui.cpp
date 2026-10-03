@@ -31,6 +31,8 @@
 #include "../widgets/game_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_scripts.h"
+#include "table/strings_textfiles.h"
 
 #include "../safeguards.h"
 

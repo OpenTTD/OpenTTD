@@ -18,6 +18,8 @@
 #include "train_cmd.h"
 
 #include "table/strings.h"
+#include "table/strings_cargo.h"
+#include "table/strings_vehicles.h"
 
 #include "safeguards.h"
 

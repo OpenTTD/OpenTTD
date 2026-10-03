@@ -25,6 +25,7 @@
 #include "ai_instance.hpp"
 
 #include "table/strings.h"
+#include "table/strings_scripts.h"
 
 /* Manually include the Text glue. */
 #include "../script/api/template/template_text.sq.hpp"

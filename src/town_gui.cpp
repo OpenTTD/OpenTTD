@@ -52,6 +52,9 @@
 #include "widgets/town_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_stations.h"
+#include "table/strings_towns.h"
+#include "table/strings_worldgen.h"
 
 #include "safeguards.h"
 
