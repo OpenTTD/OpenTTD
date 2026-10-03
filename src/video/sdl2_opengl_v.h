@@ -13,7 +13,7 @@
 class VideoDriver_SDL_OpenGL : public VideoDriver_SDL_Base {
 public:
 	/** Create the driver. */
-	VideoDriver_SDL_OpenGL() : VideoDriver_SDL_Base(true), gl_context(nullptr), anim_buffer(nullptr) {}
+	VideoDriver_SDL_OpenGL() : VideoDriver_SDL_Base(true, true) {}
 
 	std::optional<std::string_view> Start(const StringList &param) override;
 
@@ -27,9 +27,6 @@ public:
 
 	void PopulateSystemSprites() override;
 
-	bool HasAnimBuffer() override { return true; }
-	uint8_t *GetAnimBuffer() override { return this->anim_buffer; }
-
 	void ToggleVsync(bool vsync) override;
 
 	std::string_view GetName() const override { return "sdl-opengl"; }
@@ -42,8 +39,7 @@ protected:
 	bool CreateMainWindow(uint w, uint h, uint flags) override;
 
 private:
-	void  *gl_context;  ///< OpenGL context.
-	uint8_t *anim_buffer; ///< Animation buffer from OpenGL back-end.
+	void *gl_context = nullptr; ///< OpenGL context.
 
 	std::optional<std::string_view> AllocateContext();
 	void DestroyContext();
