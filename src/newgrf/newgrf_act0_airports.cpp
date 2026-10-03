@@ -73,7 +73,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 				if (subs_id == 0xFF) {
 					/* Instead of defining a new airport, an airport id
 					 * of 0xFF disables the old airport with the current id. */
-					AirportSpec::GetWithoutOverride(id)->enabled = false;
+					if (id < NEW_AIRPORT_OFFSET) AirportSpec::GetWithoutOverride(id)->enabled = false;
 					continue;
 				} else if (subs_id >= NEW_AIRPORT_OFFSET) {
 					/* The substitute id must be one of the original airports. */
