@@ -293,6 +293,9 @@ enum CallbackID : uint16_t {
 	 * for each defined cargo after all NewGRFs are loaded.
 	 */
 	CBID_VEHICLE_CUSTOM_REFIT            = 0x0163, // 15 bit callback
+
+	/** Called to determine if a consist can travel in reverse. */
+	CBID_VEHICLE_ALLOW_DENY_REVERSE = 0x164,
 };
 
 /**
