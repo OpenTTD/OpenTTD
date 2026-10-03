@@ -5,15 +5,16 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file tree_cmd.h Command definitions related to tree tiles. */
+/** @file newgrf_tree.h NewGRF handling of tree tiles. */
 
-#ifndef TREE_CMD_H
-#define TREE_CMD_H
+#ifndef NEWGRF_TREE_H
+#define NEWGRF_TREE_H
 
-#include "command_type.h"
+#include "gfx_type.h"
+#include "newgrf_callbacks.h"
+#include "tile_type.h"
 
-CommandCost CmdPlantTree(DoCommandFlags flags, TileIndex tile, TileIndex start_tile, uint8_t tree_to_plant, bool diagonal);
+uint16_t GetTreeTileCallback(CallbackID callback, uint32_t param1, uint32_t param2, uint16_t tree, TileIndex tile, std::span<int32_t> regs100 = {});
+SpriteID GetCustomTreeSprite(TileIndex tile, uint16_t tree, uint8_t slot);
 
-DEF_CMD_TRAIT(Commands::PlantTree, CmdPlantTree, CommandFlag::Auto, CommandType::LandscapeConstruction)
-
-#endif /* TREE_CMD_H */
+#endif /* NEWGRF_TREE_H */
