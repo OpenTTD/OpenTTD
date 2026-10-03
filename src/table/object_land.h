@@ -106,7 +106,26 @@ static const DrawTileSpriteSpan _object_hq[] = {
 #undef TILE_SPRITE_LINE
 #undef TILE_SPRITE_LINE_NOTHING
 
-#define M(name, size, build_cost_multiplier, clear_cost_multiplier, height, introduction_date, climate, gen_amount, flags) {{ObjectClassID::Invalid(), 0}, StandardGRFFileProps{}, AnimationInfo<ObjectAnimationTriggers>{}, name, climate, size, build_cost_multiplier, clear_cost_multiplier, introduction_date, CalendarTime::MAX_DATE + 1, flags, ObjectCallbackMasks{}, height, 1, gen_amount, {}}
+/**
+ * Define an object spec.
+ * @param name ///< The name for this object.
+ * @param size ///< The size of this objects; low nibble for X, high nibble for Y.
+ * @param build_cost_multiplier ///< Build cost multiplier per tile.
+ * @param clear_cost_multiplier ///< Clear cost multiplier per tile.
+ * @param height ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.
+ * @param diameter ///< Diameter to avoid objects of the same type.
+ * @param min_tile_height ///< Minimum tile height for the centre of this object.
+ * @param max_tile_height ///< Maximum tile height for the centre of this object.
+ * @param introduction_date ///< From when can this object be built.
+ * @param climate ///< In which climates is this object available?
+ * @param gen_amount ///< Number of objects which are attempted to be generated per 256^2 map during world generation.
+ * @param flags ///< Flags/settings related to the object.
+ * @return The object spec.
+ */
+constexpr ObjectSpec DefineObject(StringID name, uint8_t size, uint8_t build_cost_multiplier, uint8_t clear_cost_multiplier, uint8_t height, uint8_t diameter, uint8_t min_tile_height, uint8_t max_tile_height, TimerGameCalendar::Date introduction_date, LandscapeTypes climate, uint8_t gen_amount, ObjectFlags flags)
+{
+	return {{ObjectClassID::Invalid(), 0}, StandardGRFFileProps{}, AnimationInfo<ObjectAnimationTriggers>{}, name, climate, size, build_cost_multiplier, clear_cost_multiplier, introduction_date, CalendarTime::MAX_DATE + 1, flags, ObjectCallbackMasks{}, height, 1, gen_amount, diameter, min_tile_height, max_tile_height, {}};
+}
 
 /** Climate temperate. */
 #define T LandscapeType::Temperate
@@ -118,14 +137,13 @@ static const DrawTileSpriteSpan _object_hq[] = {
 #define Y LandscapeType::Toyland
 /** Specification of the original object structures. */
 extern const ObjectSpec _original_objects[] = {
-	M(STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER,          0x11,   0,   0, 10, TimerGameCalendar::DateAtStartOfYear(CalendarTime::ORIGINAL_BASE_YEAR), LandscapeTypes({T,A,S  }), 15, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit})), // Not available before original starting year.
-	M(STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE,           0x11,   0,   0,  8, TimerGameCalendar::Date{}, LandscapeTypes({T,A    }),  8, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit, ObjectFlag::ScaleByWater})),
-	M(STR_TOWN_BUILDING_NAME_STATUE_1,                 0x11,   0,   0,  5, TimerGameCalendar::Date{}, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame, ObjectFlag::OnlyInScenedit})), // Yes, we disallow building this everywhere. Happens in "special" case!
-	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND,   0x11,  10,  10,  0, TimerGameCalendar::Date{}, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::Autoremove, ObjectFlag::OnlyInGame, ObjectFlag::ClearIncome, ObjectFlag::HasNoFoundation})), // Only non-silly use case is to use it when you cannot build a station, so disallow bridges
-	M(STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS, 0x22,   0,   0,  7, TimerGameCalendar::Date{}, LandscapeTypes({T,S,A,Y}),  0, ObjectFlags({ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame})),
+	DefineObject(STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER,          0x11,   0,   0, 10,  9, 4, 255, TimerGameCalendar::DateAtStartOfYear(CalendarTime::ORIGINAL_BASE_YEAR), {T,A,S  }, 15, {ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit, ObjectFlag::FlatLand}), // Not available before original starting year.
+	DefineObject(STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE,           0x11,   0,   0,  8, 33, 0,   4, TimerGameCalendar::Date{}, {T,A    },  8, {ObjectFlag::CannotRemove, ObjectFlag::OnlyInScenedit, ObjectFlag::ScaleByWater, ObjectFlag::PlaceNearTowns, ObjectFlag::PlaceNearCoast, ObjectFlag::CreateRocks, ObjectFlag::FlatLand}),
+	DefineObject(STR_TOWN_BUILDING_NAME_STATUE_1,                 0x11,   0,   0,  5,  0, 0, 255, TimerGameCalendar::Date{}, {T,S,A,Y},  0, {ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame, ObjectFlag::OnlyInScenedit}), // Yes, we disallow building this everywhere. Happens in "special" case!
+	DefineObject(STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND,   0x11,  10,  10,  0,  0, 0, 255, TimerGameCalendar::Date{}, {T,S,A,Y},  0, {ObjectFlag::Autoremove, ObjectFlag::OnlyInGame, ObjectFlag::ClearIncome, ObjectFlag::HasNoFoundation}), // Only non-silly use case is to use it when you cannot build a station, so disallow bridges
+	DefineObject(STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS, 0x22,   0,   0,  7,  0, 0, 255, TimerGameCalendar::Date{}, {T,S,A,Y},  0, {ObjectFlag::CannotRemove, ObjectFlag::OnlyInGame}),
 };
 
-#undef M
 #undef Y
 #undef S
 #undef A
