@@ -731,3 +731,40 @@ void GRFFilePropsBase::SetGRFFile(const struct GRFFile *grffile)
 	this->grffile = grffile;
 	this->grfid = grffile == nullptr ? GrfID{} : grffile->grfid;
 }
+
+/**
+ * Get the first existing SpriteGroup from a list of options.
+ * @param indices Valid options with amounts.
+ * @param try_default_na If \c true the CargoGRFFileProps::SG_DEFAULT_NA is also tested.
+ * @return First existing with amount from \a indices, or nullptr if none exists.
+ */
+std::pair<const SpriteGroup *, uint> CargoGRFFileProps::GetFirstSpriteGroupOf(const std::vector<std::pair<CargoType, uint>> &indices, bool try_default_na) const
+{
+	/* Test cargo types. */
+	for (const auto &[cargo, amount] : indices) {
+		const SpriteGroup *result = this->GetSpriteGroup(cargo);
+		if (result != nullptr) return {result, amount};
+	}
+
+	/* Test cargo classes. */
+	for (const auto &[classes, spritegroup] : this->VariableGRFFileProps<CargoClasses, std::monostate>::spritegroups) {
+		uint return_amount = 0;
+		bool found = false;
+		for (const auto &[cargo, amount] : indices) {
+			if (cargo >= CargoSpec::GetArraySize()) continue;
+			if (CargoClasses{classes}.Reset(CargoSpec::Get(cargo)->classes).Any()) continue;
+			found = true;
+			return_amount += amount;
+		}
+		if (found) return {spritegroup, return_amount};
+	}
+
+	/* Test default sprite groups. */
+	if (try_default_na) {
+		const SpriteGroup *result = this->GetSpriteGroup(CargoGRFFileProps::SG_DEFAULT_NA);
+		if (result != nullptr) return {result, 0};
+	}
+
+	auto op = [](uint a, const std::pair<CargoType, uint> &i){ return a + i.second; };
+	return {this->GetSpriteGroup(CargoGRFFileProps::SG_DEFAULT), std::accumulate(indices.begin(), indices.end(), 0, op)};
+}

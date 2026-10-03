@@ -523,28 +523,8 @@ uint32_t Waypoint::GetNewGRFVariable(const ResolverObject &ro, uint8_t variable,
 		return nullptr;
 	}
 
-	uint cargo = 0;
+	uint cargo = this->station_scope.cargo;
 	const Station *st = Station::From(this->station_scope.st);
-
-	switch (this->station_scope.cargo_type) {
-		case INVALID_CARGO:
-		case CargoGRFFileProps::SG_DEFAULT_NA:
-		case CargoGRFFileProps::SG_PURCHASE:
-			cargo = 0;
-			break;
-
-		case CargoGRFFileProps::SG_DEFAULT:
-			for (const GoodsEntry &ge : st->goods) {
-				cargo += ge.TotalCount();
-			}
-			break;
-
-		default: {
-			const GoodsEntry &ge = st->goods[this->station_scope.cargo_type];
-			cargo = ge.TotalCount();
-			break;
-		}
-	}
 
 	if (this->station_scope.statspec->flags.Test(StationSpecFlag::DivByStationArea)) {
 		uint area = 0;
@@ -597,30 +577,20 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	: SpecializedResolverObject<StationRandomTriggers>(statspec->grf_prop.grffile, callback, callback_param1, callback_param2),
 	station_scope(*this, statspec, base_station, tile)
 {
-	CargoType ctype = CargoGRFFileProps::SG_DEFAULT_NA;
+	std::vector<std::pair<CargoType, uint>> cargos_at_station{};
 
 	if (this->station_scope.st == nullptr) {
 		/* No station, so we are in a purchase list */
-		ctype = CargoGRFFileProps::SG_PURCHASE;
+		cargos_at_station.push_back({CargoGRFFileProps::SG_PURCHASE, 0});
 	} else if (Station::IsExpected(this->station_scope.st)) {
-		const Station *st = Station::From(this->station_scope.st);
-		/* Pick the first cargo that we have waiting */
-		for (const auto &[cargo, spritegroup] : statspec->grf_prop.spritegroups) {
-			if (cargo < NUM_CARGO && st->goods[cargo].TotalCount() > 0) {
-				ctype = static_cast<CargoType>(cargo);
-				break;
-			}
+		const Station *station = Station::From(this->station_scope.st);
+
+		for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
+			if (uint amount = station->goods[cargo].TotalCount(); amount > 0) cargos_at_station.push_back({cargo, amount});
 		}
 	}
 
-	this->root_spritegroup = this->station_scope.statspec->grf_prop.GetSpriteGroup(ctype);
-	if (this->root_spritegroup == nullptr) {
-		ctype = CargoGRFFileProps::SG_DEFAULT;
-		this->root_spritegroup = this->station_scope.statspec->grf_prop.GetSpriteGroup(ctype);
-	}
-
-	/* Remember the cargo type we've picked */
-	this->station_scope.cargo_type = ctype;
+	std::tie(this->root_spritegroup, this->station_scope.cargo) = this->station_scope.statspec->grf_prop.GetFirstSpriteGroupOf(cargos_at_station, true);
 }
 
 /**

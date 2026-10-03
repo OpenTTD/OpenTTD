@@ -156,6 +156,12 @@ static void VehicleMapSpriteGroup(ByteReader &buf, GrfSpecFeature feature, uint8
 
 /** Handler interface for mapping sprite groups to their respective feature specific specifications. */
 struct MapSpriteGroupHandler {
+	/** Ranges in which types are mapped to spritegroups. Each range maps different type of IDs. */
+	enum class TypeRange {
+		First, ///< IDs are bytes, usually they represent cargo ids in translation table.
+		Second, ///< IDs are words, usually they represent bitmask of cargo classes.
+	};
+
 	/** Ensure the destructor of the sub classes are called as well. */
 	virtual ~MapSpriteGroupHandler() = default;
 
@@ -164,8 +170,9 @@ struct MapSpriteGroupHandler {
 	 * @param local_id The NewGRF-local id to map to.
 	 * @param cid The 'cargo type' to map for.
 	 * @param group The SpriteGroup to link to the specification.
+	 * @param range The range whitche contains the ID.
 	 */
-	virtual void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) = 0;
+	virtual void MapSpecific(uint16_t local_id, uint16_t cid, const SpriteGroup *group, MapSpriteGroupHandler::TypeRange range) = 0;
 
 	/**
 	 * Map default/fallback SpriteGroup to a specification.
@@ -186,9 +193,11 @@ template <typename T> static auto *GetSpec(GRFFile *grffile, uint16_t local_id);
 /** Common handler for mapping sprite groups for features which only support "Purchase" and "Default" sprites. */
 template <typename T>
 struct PurchaseDefaultMapSpriteGroupHandler : MapSpriteGroupHandler {
-	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
+	void MapSpecific(uint16_t local_id, uint16_t cid, const SpriteGroup *group, MapSpriteGroupHandler::TypeRange range) override
 	{
-		if (cid != 0xFF) {
+		if (range == MapSpriteGroupHandler::TypeRange::Second) {
+			GrfMsg(Severity::Error, "MapSpriteGroup: Cargo class range is not supported for this feature, skipping.");
+		} else if (cid != 0xFF) {
 			GrfMsg(Severity::Error, "MapSpriteGroup: Invalid cargo bitnum {}, skipping.", cid);
 		} else if (T *spec = GetSpec<T>(_cur_gps.grffile, local_id); spec == nullptr) {
 			GrfMsg(Severity::Error, "MapSpriteGroup: {} undefined, skipping.", local_id);
@@ -212,14 +221,21 @@ struct PurchaseDefaultMapSpriteGroupHandler : MapSpriteGroupHandler {
 /** Common handler for mapping sprite groups for features which support cargo-type specific sprites. */
 template <typename T, typename Tclass>
 struct CargoTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
-	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
+	void MapSpecific(uint16_t local_id, uint16_t cid, const SpriteGroup *group, MapSpriteGroupHandler::TypeRange range) override
 	{
-		CargoType cargo_type = TranslateCargo(GrfSpecFeature::Stations, cid);
-		if (!IsValidCargoType(cargo_type)) return;
+		CargoType cargo_type = INVALID_CARGO;
+		if (range == MapSpriteGroupHandler::TypeRange::First) {
+			cargo_type = TranslateCargo(GrfSpecFeature::Stations, static_cast<uint8_t>(cid));
+			if (!IsValidCargoType(cargo_type)) return;
+		}
 
 		if (T *spec = GetSpec<T>(_cur_gps.grffile, local_id); spec == nullptr) {
 			GrfMsg(Severity::Error, "MapSpriteGroup: {} undefined, skipping", local_id);
 		} else {
+			if (range == MapSpriteGroupHandler::TypeRange::Second) {
+				spec->grf_prop.SetSpriteGroup(static_cast<CargoClasses>(cid), group);
+				return;
+			}
 			spec->grf_prop.SetSpriteGroup(cargo_type, group);
 		}
 	}
@@ -240,7 +256,7 @@ struct CargoTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 };
 
 struct CanalMapSpriteGroupHandler : MapSpriteGroupHandler {
-	void MapSpecific(uint16_t, uint8_t, const SpriteGroup *) override {}
+	void MapSpecific(uint16_t, uint16_t, const SpriteGroup *, MapSpriteGroupHandler::TypeRange) override {}
 
 	void MapDefault(uint16_t local_id, const SpriteGroup *group) override
 	{
@@ -267,7 +283,7 @@ template <> auto *GetSpec<IndustryTileSpec>(GRFFile *grffile, uint16_t local_id)
 struct IndustryTileMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<IndustryTileSpec> {};
 
 struct CargoMapSpriteGroupHandler : MapSpriteGroupHandler {
-	void MapSpecific(uint16_t, uint8_t, const SpriteGroup *) override {}
+	void MapSpecific(uint16_t, uint16_t, const SpriteGroup *, MapSpriteGroupHandler::TypeRange) override {}
 
 	void MapDefault(uint16_t local_id, const SpriteGroup *group) override
 	{
@@ -285,9 +301,14 @@ template <> auto *GetSpec<ObjectSpec>(GRFFile *grffile, uint16_t local_id) { ret
 struct ObjectMapSpriteGroupHandler : PurchaseDefaultMapSpriteGroupHandler<ObjectSpec> {};
 
 struct RailTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
-	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
+	void MapSpecific(uint16_t local_id, uint16_t cid, const SpriteGroup *group, MapSpriteGroupHandler::TypeRange range) override
 	{
-		RailSpriteType rst{cid};
+		if (range == MapSpriteGroupHandler::TypeRange::Second) {
+			GrfMsg(Severity::Error, "MapSpriteGroup: Cargo class range is not supported for this feature, skipping.");
+			return;
+		}
+
+		RailSpriteType rst{static_cast<uint8_t>(cid)};
 		if (rst >= RailSpriteType::End) return;
 
 		const auto &type_map = _cur_gps.grffile->railtype_map;
@@ -305,9 +326,14 @@ struct RailTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
 
 template <RoadTramType TRoadTramType>
 struct RoadTypeMapSpriteGroupHandler : MapSpriteGroupHandler {
-	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
+	void MapSpecific(uint16_t local_id, uint16_t cid, const SpriteGroup *group, MapSpriteGroupHandler::TypeRange range) override
 	{
-		RoadSpriteType rst{cid};
+		if (range == MapSpriteGroupHandler::TypeRange::Second) {
+			GrfMsg(Severity::Error, "MapSpriteGroup: Cargo class range is not supported for this feature, skipping.");
+			return;
+		}
+
+		RoadSpriteType rst{static_cast<uint8_t>(cid)};
 		if (rst >= RoadSpriteType::End) return;
 
 		const auto &type_map = (TRoadTramType == RoadTramType::Tram) ? _cur_gps.grffile->tramtype_map : _cur_gps.grffile->roadtype_map;
@@ -333,8 +359,13 @@ template <> auto *GetSpec<RoadStopSpec>(GRFFile *grffile, uint16_t local_id) { r
 struct RoadStopMapSpriteGroupHandler : CargoTypeMapSpriteGroupHandler<RoadStopSpec, RoadStopClass> {};
 
 struct BadgeMapSpriteGroupHandler : MapSpriteGroupHandler {
-	void MapSpecific(uint16_t local_id, uint8_t cid, const SpriteGroup *group) override
+	void MapSpecific(uint16_t local_id, uint16_t cid, const SpriteGroup *group, MapSpriteGroupHandler::TypeRange range) override
 	{
+		if (range == MapSpriteGroupHandler::TypeRange::Second) {
+			GrfMsg(Severity::Error, "MapSpriteGroup: Cargo class range is not supported for this feature, skipping.");
+			return;
+		}
+
 		if (cid >= to_underlying(GrfSpecFeature::End)) return;
 
 		auto found = _cur_gps.grffile->badge_map.find(local_id);
@@ -369,14 +400,20 @@ static void MapSpriteGroup(ByteReader &buf, uint8_t idcount, MapSpriteGroupHandl
 	}
 	std::span<const uint16_t> local_ids{local_ids_buffer.begin(), idcount};
 
-	/* Handle specific mappings. */
-	uint8_t cidcount = buf.ReadByte();
-	for (uint c = 0; c != cidcount; ++c) {
-		uint8_t cid = buf.ReadByte();
+	/* Handle specific mappings. Due to integral promotion we store them as uint. */
+	uint cidcount = buf.ReadByte();
+	uint classs_id_count = 0;
+	if (cidcount == 0xFF) {
+		cidcount = buf.ReadByte();
+		classs_id_count = buf.ReadByte();
+	}
+
+	for (uint c = 0; c < cidcount + classs_id_count; ++c) {
+		uint16_t cid = c < cidcount ? buf.ReadByte() : buf.ReadWord();
 		uint16_t groupid = buf.ReadWord();
 		if (!IsValidGroupID(groupid, "MapSpriteGroup")) continue;
 		for (uint16_t local_id : local_ids) {
-			handler.MapSpecific(local_id, cid, _cur_gps.spritegroups[groupid]);
+			handler.MapSpecific(local_id, cid, _cur_gps.spritegroups[groupid], c < cidcount ? MapSpriteGroupHandler::TypeRange::First : MapSpriteGroupHandler::TypeRange::Second);
 		}
 	}
 
