@@ -59,8 +59,6 @@ bool _window_maximize;
 static Dimension _bck_resolution;
 DWORD _imm_props;
 
-static Palette _local_palette; ///< Current palette to use for drawing.
-
 void VideoDriver_Win32Base::ClaimMousePointer()
 {
 	MyShowCursor(false, true);
@@ -885,16 +883,27 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			bool active = (LOWORD(wParam) != WA_INACTIVE);
 			bool minimized = (HIWORD(wParam) != 0);
 			if (video_driver->fullscreen) {
+				VideoDriver_Win32Base* win32_driver = static_cast<VideoDriver_Win32Base*>(video_driver);
 				if (active && minimized) {
 					/* Restore the game window */
 					Dimension d = _bck_resolution; // Save current non-fullscreen window size as it will be overwritten by ShowWindow.
 					ShowWindow(hwnd, SW_RESTORE);
 					_bck_resolution = d;
-					video_driver->MakeWindow(true);
+
+					if (win32_driver->MinimiseRestoreWithToggleFullscreen()) {
+						video_driver->ToggleFullscreen(true);
+					}
+					else {
+						video_driver->MakeWindow(true);
+					}
 				} else if (!active && !minimized) {
 					/* Minimise the window and restore desktop */
+					if (win32_driver->MinimiseRestoreWithToggleFullscreen()) {
+						video_driver->ToggleFullscreen(false);
+						video_driver->fullscreen = true;
+					}
 					ShowWindow(hwnd, SW_MINIMIZE);
-					ChangeDisplaySettings(nullptr, 0);
+					if (!win32_driver->MinimiseRestoreWithToggleFullscreen()) ChangeDisplaySettings(nullptr, 0);
 				}
 			}
 			break;
@@ -983,7 +992,7 @@ void VideoDriver_Win32Base::Stop()
 {
 	DestroyWindow(this->main_wnd);
 
-	if (this->fullscreen) ChangeDisplaySettings(nullptr, 0);
+	if (this->fullscreen && !MinimiseRestoreWithToggleFullscreen()) ChangeDisplaySettings(nullptr, 0);
 	MyShowCursor(true);
 }
 void VideoDriver_Win32Base::MakeDirty(int left, int top, int width, int height)
@@ -994,7 +1003,7 @@ void VideoDriver_Win32Base::MakeDirty(int left, int top, int width, int height)
 
 void VideoDriver_Win32Base::CheckPaletteAnim()
 {
-	if (!CopyPalette(_local_palette)) return;
+	if (!CopyPalette(local_palette)) return;
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
@@ -1059,7 +1068,7 @@ void VideoDriver_Win32Base::ClientSizeChanged(int w, int h, bool force)
 {
 	/* Allocate backing store of the new size. */
 	if (this->AllocateBackingStore(w, h, force)) {
-		CopyPalette(_local_palette, true);
+		CopyPalette(local_palette, true);
 
 		BlitterFactory::GetCurrentBlitter()->PostResize();
 
@@ -1219,7 +1228,7 @@ bool VideoDriver_Win32GDI::AfterBlitterChange()
 
 void VideoDriver_Win32GDI::MakePalette()
 {
-	CopyPalette(_local_palette, true);
+	CopyPalette(local_palette, true);
 
 	LOGPALETTE *pal = (LOGPALETTE *)new char[sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY)]();
 
@@ -1227,9 +1236,9 @@ void VideoDriver_Win32GDI::MakePalette()
 	pal->palNumEntries = 256;
 
 	for (uint i = 0; i != 256; i++) {
-		pal->palPalEntry[i].peRed   = _local_palette.palette[i].r;
-		pal->palPalEntry[i].peGreen = _local_palette.palette[i].g;
-		pal->palPalEntry[i].peBlue  = _local_palette.palette[i].b;
+		pal->palPalEntry[i].peRed   = local_palette.palette[i].r;
+		pal->palPalEntry[i].peGreen = local_palette.palette[i].g;
+		pal->palPalEntry[i].peBlue  = local_palette.palette[i].b;
 		pal->palPalEntry[i].peFlags = 0;
 
 	}
@@ -1243,9 +1252,9 @@ void VideoDriver_Win32GDI::UpdatePalette(HDC dc, uint start, uint count)
 	RGBQUAD rgb[256];
 
 	for (uint i = 0; i != count; i++) {
-		rgb[i].rgbRed   = _local_palette.palette[start + i].r;
-		rgb[i].rgbGreen = _local_palette.palette[start + i].g;
-		rgb[i].rgbBlue  = _local_palette.palette[start + i].b;
+		rgb[i].rgbRed   = local_palette.palette[start + i].r;
+		rgb[i].rgbGreen = local_palette.palette[start + i].g;
+		rgb[i].rgbBlue  = local_palette.palette[start + i].b;
 		rgb[i].rgbReserved = 0;
 	}
 
@@ -1275,16 +1284,16 @@ void VideoDriver_Win32GDI::Paint()
 	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, this->dib_sect);
 	HPALETTE old_palette = SelectPalette(dc, this->gdi_palette, FALSE);
 
-	if (_local_palette.count_dirty != 0) {
+	if (local_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		switch (blitter->UsePaletteAnimation()) {
 			case Blitter::PaletteAnimation::VideoBackend:
-				this->UpdatePalette(dc2, _local_palette.first_dirty, _local_palette.count_dirty);
+				this->UpdatePalette(dc2, local_palette.first_dirty, local_palette.count_dirty);
 				break;
 
 			case Blitter::PaletteAnimation::Blitter: {
-				blitter->PaletteAnimate(_local_palette);
+				blitter->PaletteAnimate(local_palette);
 				break;
 			}
 
@@ -1294,7 +1303,7 @@ void VideoDriver_Win32GDI::Paint()
 			default:
 				NOT_REACHED();
 		}
-		_local_palette.count_dirty = 0;
+		local_palette.count_dirty = 0;
 	}
 
 	BitBlt(dc, 0, 0, this->width, this->height, dc2, 0, 0, SRCCOPY);
@@ -1622,16 +1631,16 @@ void VideoDriver_Win32OpenGL::Paint()
 {
 	PerformanceMeasurer framerate(PerformanceElement::Video);
 
-	if (_local_palette.count_dirty != 0) {
+	if (local_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		/* Always push a changed palette to OpenGL. */
-		OpenGLBackend::Get()->UpdatePalette(_local_palette.palette, _local_palette.first_dirty, _local_palette.count_dirty);
+		OpenGLBackend::Get()->UpdatePalette(local_palette.palette, local_palette.first_dirty, local_palette.count_dirty);
 		if (blitter->UsePaletteAnimation() == Blitter::PaletteAnimation::Blitter) {
-			blitter->PaletteAnimate(_local_palette);
+			blitter->PaletteAnimate(local_palette);
 		}
 
-		_local_palette.count_dirty = 0;
+		local_palette.count_dirty = 0;
 	}
 
 	OpenGLBackend::Get()->Paint();
