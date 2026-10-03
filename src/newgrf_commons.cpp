@@ -113,14 +113,13 @@ uint16_t OverrideManagerBase::AddEntityID(uint16_t grf_local_id, GrfID grfid, ui
 
 	/* This entity hasn't been defined before, so give it an ID now. */
 	for (id = this->max_offset; id < this->max_entities; id++) {
-		EntityIDMapping *map = &this->mappings[id];
+		EntityIDMapping &map = this->mappings[id];
+		if (map.entity_id != UINT16_MAX || !map.grfid.Empty()) continue;
 
-		if (map->entity_id == 0 && map->grfid.Empty()) {
-			map->entity_id     = grf_local_id;
-			map->grfid         = grfid;
-			map->substitute_id = substitute_id;
-			return id;
-		}
+		map.entity_id = grf_local_id;
+		map.grfid = grfid;
+		map.substitute_id = substitute_id;
+		return id;
 	}
 
 	return this->invalid_id;
@@ -218,15 +217,14 @@ uint16_t IndustryOverrideManager::AddEntityID(uint16_t grf_local_id, GrfID grfid
 		 * And it must not already be used by a grf (grffile == nullptr).
 		 * So reserve this slot here, as it is the chosen one */
 		if (!inds->enabled && !inds->grf_prop.HasGrfFile()) {
-			EntityIDMapping *map = &this->mappings[id];
+			EntityIDMapping &map = this->mappings[id];
+			if (map.entity_id != UINT16_MAX || !map.grfid.Empty()) continue;
 
-			if (map->entity_id == 0 && map->grfid.Empty()) {
-				/* winning slot, mark it as been used */
-				map->entity_id     = grf_local_id;
-				map->grfid         = grfid;
-				map->substitute_id = substitute_id;
-				return id;
-			}
+			/* Winning slot, mark it as used. */
+			map.entity_id = grf_local_id;
+			map.grfid = grfid;
+			map.substitute_id = substitute_id;
+			return id;
 		}
 	}
 
