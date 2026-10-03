@@ -147,20 +147,32 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 								tile.gfx = tempid;
 							}
 						} else if (tile.gfx == 0xFF) {
+							tile.gfx = AIRPORTGFX_CLEARTILE_SPECIALCHECK;
 							tile.ti.x = static_cast<int8_t>(GB(tile.ti.x, 0, 8));
 							tile.ti.y = static_cast<int8_t>(GB(tile.ti.y, 0, 8));
+
+							/* When there were only 256x256 maps, TileIndex was a uint16_t and
+							 * it.ti was just a TileIndexDiff that was added to it.
+							 * As such negative "x" values were shifted into the "y" position.
+							 *   x = -1, y = 1 -> x = 255, y = 0
+							 * Since GRF version 8 the position is interpreted as pair of independent int8.
+							 * For GRF version < 8 we need to emulate the old shifting behaviour.
+							 */
+							if (_cur_gps.grffile->grf_version < 8 && tile.ti.x < 0) tile.ti.y += 1;
 						} else if (tile.gfx >= NEW_AIRPORTTILE_OFFSET) {
 							GrfMsg(Severity::Warning, "AirportChangeInfo: Attempt to use invalid airport tile {} with airport id {}. Ignoring.", tile.gfx, id);
 							invalid_layout = true;
 						}
 
-						/* Determine largest size. */
-						if (layout.rotation == Direction::E || layout.rotation == Direction::W) {
-							size_x = std::max<uint8_t>(size_x, tile.ti.y + 1);
-							size_y = std::max<uint8_t>(size_y, tile.ti.x + 1);
-						} else {
-							size_x = std::max<uint8_t>(size_x, tile.ti.x + 1);
-							size_y = std::max<uint8_t>(size_y, tile.ti.y + 1);
+						if (tile.gfx != AIRPORTGFX_CLEARTILE_SPECIALCHECK) {
+							/* Determine largest size. */
+							if (layout.rotation == Direction::E || layout.rotation == Direction::W) {
+								size_x = std::max<uint8_t>(size_x, tile.ti.y + 1);
+								size_y = std::max<uint8_t>(size_y, tile.ti.x + 1);
+							} else {
+								size_x = std::max<uint8_t>(size_x, tile.ti.x + 1);
+								size_y = std::max<uint8_t>(size_y, tile.ti.y + 1);
+							}
 						}
 					}
 

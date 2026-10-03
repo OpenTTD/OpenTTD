@@ -19,6 +19,7 @@ private:
 	std::span<const AirportTileTable>::iterator iter; ///< Underlying tile area.
 	TileIndex base_tile; ///< The tile we base the offsets off.
 	TileIndex tile; ///< The current file.
+	bool include_special; ///< Include special tiles.
 
 public:
 	using value_type = TileIndex; ///< value_type iterator trait
@@ -31,8 +32,9 @@ public:
 	 * Construct the iterator.
 	 * @param att The TileTable we want to iterate over.
 	 * @param base_tile The basetile for all offsets.
+	 * @param include_special Include special clearance check tiles when iterating the layout.
 	 */
-	AirportTileTableIterator(std::span<const AirportTileTable> att, TileIndex base_tile) : att(att), iter(att.begin()), base_tile(base_tile), tile(base_tile + ToTileIndexDiff(att.front().ti)) {}
+	AirportTileTableIterator(std::span<const AirportTileTable> att, TileIndex base_tile, bool include_special) : att(att), iter(att.begin()), base_tile(base_tile), tile(base_tile + ToTileIndexDiff(att.front().ti)), include_special(include_special) {}
 
 	/**
 	 * Compare with other iterator.
@@ -68,20 +70,22 @@ public:
 	 */
 	inline AirportTileTableIterator &operator++()
 	{
-		++this->iter;
-		if (this->iter == std::end(att)) {
-			this->tile = INVALID_TILE;
-		} else {
-			this->tile = this->base_tile + ToTileIndexDiff(this->iter->ti);
-		}
+		do {
+			++this->iter;
+			if (this->iter == std::end(att)) {
+				this->tile = INVALID_TILE;
+			} else {
+				this->tile = this->base_tile + ToTileIndexDiff(this->iter->ti);
+			}
+		} while (this->tile != INVALID_TILE && this->include_special && this->GetAirportGfx() == AIRPORTGFX_CLEARTILE_SPECIALCHECK);
 		return *this;
 	}
 
 	/**
-	 * Get the StationGfx for the current tile.
+	 * Get the AirportGfx for the current tile.
 	 * @return The identifier of the graphics for this tile.
 	 */
-	StationGfx GetStationGfx() const
+	AirportGfx GetAirportGfx() const
 	{
 		return this->iter->gfx;
 	}
