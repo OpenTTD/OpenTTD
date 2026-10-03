@@ -3176,17 +3176,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}모든 �
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}정말 모든 산업시설을 제거하시겠습니까?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}화물 연계도 - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}화물 연계망 - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}도시 가구
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업시설 연계도
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}이 산업시설에서 생산/소비하는 화물을 보여줍니다
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}지도에 표시
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}위 산업망에 표시된 산업을 소형 지도에서 볼 수 있게 합니다
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}화물 선택
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}표시할 화물을 선택하세요
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}산업시설 선택
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}표시할 산업시설을 선택하세요
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :화물 연계도 - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :화물 연계망 - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :원재료
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :목적지
+STR_INDUSTRY_CARGOES_HOUSES                                     :도시 가구
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}받음: {CARGO_LIST}{}생산: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :산업시설 연계도
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :이 산업시설에서 생산/소비하는 화물을 보여줍니다
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :지도에 표시
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :위 산업망에 표시된 산업을 소형 지도에서 볼 수 있게 합니다
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :화물 선택
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :표시할 화물을 선택하세요
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :산업시설 선택
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :표시할 산업시설을 선택하세요
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
