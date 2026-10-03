@@ -21,13 +21,21 @@ class Badge {
 public:
 	std::string label; ///< Label of badge.
 	BadgeID index; ///< Index assigned to badge.
-	BadgeClassID class_index; ///< Index of class this badge belongs to.
+	BadgeClassID class_index; ///< Index of main class this badge belongs to.
+	BadgeID subclass_index; ///< Bagde index of last subclass this badge belongs to.
 	BadgeFlags flags = {}; ///< Display flags
 	StringID name{}; ///< Short name.
 	GrfSpecFeatures features{}; ///< Bitmask of which features use this badge.
 	VariableGRFFileProps<GrfSpecFeature> grf_prop; ///< Sprite information.
 
-	Badge(std::string_view label, BadgeID index, BadgeClassID class_index) : label(label), index(index), class_index(class_index) {}
+	/**
+	 * Constructs new Badge object.
+	 * @param label Label of badge.
+	 * @param index Index to assign to badge.
+	 * @param class_index Index of main class the badge should belong to.
+	 * @param subclass_index Bagde index of last subclass the badge should belong to.
+	 */
+	Badge(std::string_view label, BadgeID index, BadgeClassID class_index, BadgeID subclass_index) : label(label), index(index), class_index(class_index), subclass_index(subclass_index) {}
 };
 
 /** Utility class to create a list of badge classes used by a feature. */
