@@ -1200,7 +1200,7 @@ public:
 					/* Deselect clicked order */
 					this->selected_order = -1;
 				} else if (sel == this->selected_order && click_count > 1) {
-					if (this->vehicle->type == VehicleType::Train && sel < this->vehicle->GetNumOrders()) {
+					if (this->vehicle->type == VehicleType::Train && sel < this->vehicle->GetNumOrders() && this->vehicle->GetOrder(sel)->GetType() == OT_GOTO_STATION) {
 						Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER,
 								this->vehicle->tile, this->vehicle->index, sel,
 								MOF_STOP_LOCATION, (to_underlying(this->vehicle->GetOrder(sel)->GetStopLocation()) + 1) % to_underlying(OrderStopLocation::End));
