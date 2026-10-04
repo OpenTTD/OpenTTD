@@ -3264,6 +3264,8 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Opravdu
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Průmyslový řetěz pro průmysl {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Průmyslový řetěz pro náklad {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Zdroje
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Cílové destinace
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zobrazit řetězec
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobrazit průmysl produkující nebo příjmající surovinu
@@ -3275,10 +3277,10 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.acc                        :{BLACK}Odkaz na
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.loc                        :{BLACK}Odkazu na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.ins                        :{BLACK}Odkazem na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vyber zobrazený průmysl také na minimapě
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Vyber náklad
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Vyber náklad který chceš zobrazit
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Vyber průmysl
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vyber průmysl který chceš zobrazit
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Vyber náklad
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Vyber náklad který chceš zobrazit
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Vyber průmysl
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Vyber průmysl který chceš zobrazit
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informace o uzemí
@@ -3377,6 +3379,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Zdymadlo
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Řeka
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Pobřeží nebo břeh
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Lodní depo
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Kameny
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Pobřeží nebo břeh s kameny
 
 # Industries come directly from their industry names
 
@@ -4751,6 +4755,8 @@ STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Celková kapacita tohoto vlaku:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}Prázdný ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) z {STATION}{STRING}
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prázdný
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} z {STATION}
@@ -4759,6 +4765,7 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Náklad
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Ukázat detaily přepravovaného zboží
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informace
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Ukázat detaily jednotlivých vagonů
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}Zobrazit naložení vlaku a jeho kapacitu a délku
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacita: {LTBLUE}{STRING}
 
