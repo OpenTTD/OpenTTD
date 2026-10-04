@@ -22,6 +22,9 @@ class FlatSet {
 public:
 	using const_iterator = std::vector<Tkey>::const_iterator;
 
+	FlatSet() = default;
+	FlatSet(std::initializer_list<Tkey> values) : data(values) {}
+
 	/**
 	 * Insert a key into the set, if it does not already exist.
 	 * @param key Key to insert.
