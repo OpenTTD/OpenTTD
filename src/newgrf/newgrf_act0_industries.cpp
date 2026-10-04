@@ -363,7 +363,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 				if (subs_id == 0xFF) {
 					/* Instead of defining a new industry, a substitute industry id
 					 * of 0xFF disables the old industry with the current id. */
-					_industry_specs[id].enabled = false;
+					if (id < NEW_INDUSTRYOFFSET) _industry_specs[id].enabled = false;
 					continue;
 				} else if (subs_id >= NEW_INDUSTRYOFFSET) {
 					/* The substitute id must be one of the original industry. */
