@@ -12,8 +12,10 @@
 
 #include "core/flatset_type.hpp"
 #include "core/label_type.hpp"
+#include "core/pool_type.hpp"
 #include "gfx_type.h"
 #include "landscape_type.h"
+#include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "strings_type.h"
 #include "tile_type.h"
@@ -33,8 +35,10 @@ using TreeVarietyLabel = Label<struct TreeVarietyLabelTag>;
 /** Set of tree varieties. */
 using TreeVarieties = FlatSet<TreeVarietyLabel>;
 
+using TreeClassID = PoolID<uint16_t, struct TreeClassIDTag, UINT16_MAX, UINT16_MAX>;
+
 /** Information about an individual tree. */
-struct TreeSpec {
+struct TreeSpec : NewGRFSpecBase<TreeClassID> {
 	SpriteID normal{}; ///< Sprite for normal terrain.
 	SpriteID snowy{}; ///< Sprite for snowy terrain.
 	StringID name{}; ///< Name of tree.
@@ -50,7 +54,7 @@ struct TreeSpec {
 };
 
 /** Information about a tree tile. */
-struct TreeTileSpec {
+struct TreeTileSpec : NewGRFSpecBase<TreeClassID> {
 	static constexpr uint8_t NUM_TREES = 4; ///< Number of trees per tile.
 	static constexpr uint8_t NUM_TREE_VARIANTS = 16; ///< Number of variants per tile.
 
@@ -66,5 +70,8 @@ struct TreeTileSpec {
 	TreeVarieties varieties{}; ///< Combined varieties of this layout
 	SubstituteGRFFileProps grf_prop{}; ///< properties related the the grf file
 };
+
+/** Class containing information relating to tree classes. */
+using TreeClass = NewGRFClass<TreeTileSpec, TreeClassID>;
 
 #endif /* TREE_TYPE_H */

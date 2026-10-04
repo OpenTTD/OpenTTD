@@ -20,9 +20,12 @@ static constexpr TreeVarietyLabel TREE_VARIETY_ARC2{"ARC2"};
 static constexpr TreeVarietyLabel TREE_VARIETY_ARC3{"ARC3"};
 static constexpr TreeVarietyLabel TREE_VARIETY_TRO1{"TRO1"};
 static constexpr TreeVarietyLabel TREE_VARIETY_TRO2{"TRO2"};
-static constexpr TreeVarietyLabel TREE_VARIETY_TRO3{"TRO3"};
 static constexpr TreeVarietyLabel TREE_VARIETY_CACT{"CACT"};
 /* } */
+
+static constexpr TreeClassID TC_DFLT{0}; ///< id for default tree class.
+static constexpr TreeClassID TC_RAIN{1}; ///< id for rainforest tree class.
+static constexpr TreeClassID TC_DSRT{2}; ///< id for desert tree class.
 
 static const Coord2D<uint8_t> _tree_layout_xy[][4] = {
 	{ { 9, 3 }, { 1, 8 }, { 0, 0 }, { 8, 9 } },
@@ -46,70 +49,70 @@ static constexpr SpriteID MakeTree(uint8_t index)
 /** TreeSpec of default trees. Trees used to build layouts are listed in order that matches the original _tree_layout_sprite data. */
 static const std::array<TreeSpec, 54> _original_tree_specs = {{
 	/* Temperate. */
-	{MakeTree(6), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 0, 0}, {{{TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}}}}, // 6
-	{MakeTree(8), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 0, 32, 32}, {{{TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}}}}, // 8
-	{MakeTree(11), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 0, 32, 32}, {{{TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}}}}, // 11
-	{MakeTree(0), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 0, 0, 0}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 0
-	{MakeTree(4), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 0, 0, 0}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 4
-	{MakeTree(2), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 64, 96, 128}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 2
-	{MakeTree(5), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 0, 0}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 5
-	{MakeTree(1), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 32, 0}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 1
-	{MakeTree(12), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 64, 32}, {{{TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}}}}, // 12
-	{MakeTree(14), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 0, 96}, {{{TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}}}}, // 14
-	{MakeTree(16), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 96, 64, 32}, {{{TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}}}}, // 16
-	{MakeTree(18), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 64, 32}, {{{TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}}}}, // 18
+	{{TC_DFLT, 0}, MakeTree(6), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 0, 0}, {{{TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}}}}, // 6
+	{{TC_DFLT, 0}, MakeTree(8), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 0, 32, 32}, {{{TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}}}}, // 8
+	{{TC_DFLT, 0}, MakeTree(11), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 0, 32, 32}, {{{TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}, {TREE_VARIETY_TEM1}}}}, // 11
+	{{TC_DFLT, 0}, MakeTree(0), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 0, 0, 0}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 0
+	{{TC_DFLT, 0}, MakeTree(4), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 0, 0, 0}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 4
+	{{TC_DFLT, 0}, MakeTree(2), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 64, 96, 128}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 2
+	{{TC_DFLT, 0}, MakeTree(5), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 0, 0}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 5
+	{{TC_DFLT, 0}, MakeTree(1), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 32, 0}, {{{TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}, {TREE_VARIETY_TEM2}}}}, // 1
+	{{TC_DFLT, 0}, MakeTree(12), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 64, 32}, {{{TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}}}}, // 12
+	{{TC_DFLT, 0}, MakeTree(14), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 0, 96}, {{{TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}}}}, // 14
+	{{TC_DFLT, 0}, MakeTree(16), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 96, 64, 32}, {{{TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}}}}, // 16
+	{{TC_DFLT, 0}, MakeTree(18), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {255, 32, 64, 32}, {{{TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}, {TREE_VARIETY_TEM3}}}}, // 18
 
 	/* Temperate trees that only appear alongside other trees. */
-	{MakeTree(3), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM2}, {}, {}, {}}}}, // 3
-	{MakeTree(7), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM1}, {}, {}, {}}}}, // 7
-	{MakeTree(9), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM1}, {}, {}, {}}}}, // 9
-	{MakeTree(10), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM1}, {}, {}, {}}}}, // 10
-	{MakeTree(13), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM3}, {}, {}, {}}}}, // 13
-	{MakeTree(15), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM3}, {}, {}, {}}}}, // 15
-	{MakeTree(17), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM3}, {}, {}, {}}}}, // 17
+	{{TC_DFLT, 0}, MakeTree(3), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM2}, {}, {}, {}}}}, // 3
+	{{TC_DFLT, 0}, MakeTree(7), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM1}, {}, {}, {}}}}, // 7
+	{{TC_DFLT, 0}, MakeTree(9), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM1}, {}, {}, {}}}}, // 9
+	{{TC_DFLT, 0}, MakeTree(10), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM1}, {}, {}, {}}}}, // 10
+	{{TC_DFLT, 0}, MakeTree(13), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM3}, {}, {}, {}}}}, // 13
+	{{TC_DFLT, 0}, MakeTree(15), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM3}, {}, {}, {}}}}, // 15
+	{{TC_DFLT, 0}, MakeTree(17), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Temperate, {}, {}, {{{TREE_VARIETY_TEM3}, {}, {}, {}}}}, // 17
 
 	/* Arctic. */
-	{MakeTree(19), MakeTree(27), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 64, 64, 96}, {{{TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC1}}}}, // 0
-	{MakeTree(24), MakeTree(32), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 64, 96, 0}, {{{TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC2}}}}, // 5
-	{MakeTree(25), MakeTree(33), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 96, 64, 32}, {{{TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}}}}, // 6
-	{MakeTree(22), MakeTree(30), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 64, 96, 32}, {{{TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC1, TREE_VARIETY_ARC2}}}}, // 3
-	{MakeTree(23), MakeTree(31), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 0, 0, 0}, {{{TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}}}}, // 4
-	{MakeTree(20), MakeTree(28), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 32, 0, 32}, {{{TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}}}}, // 1
-	{MakeTree(21), MakeTree(29), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 0, 64, 0}, {{{TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC1, TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}}}}, // 2
-	{MakeTree(26), MakeTree(34), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 32, 64, 32}, {{{TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC1, TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}}}}, // 7
+	{{TC_DFLT, 0}, MakeTree(19), MakeTree(27), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 64, 64, 96}, {{{TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC1}}}}, // 0
+	{{TC_DFLT, 0}, MakeTree(24), MakeTree(32), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 64, 96, 0}, {{{TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC2}}}}, // 5
+	{{TC_DFLT, 0}, MakeTree(25), MakeTree(33), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 96, 64, 32}, {{{TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}}}}, // 6
+	{{TC_DFLT, 0}, MakeTree(22), MakeTree(30), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 64, 96, 32}, {{{TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC1, TREE_VARIETY_ARC2}}}}, // 3
+	{{TC_DFLT, 0}, MakeTree(23), MakeTree(31), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 0, 0, 0}, {{{TREE_VARIETY_ARC2}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}, {TREE_VARIETY_ARC1}}}}, // 4
+	{{TC_DFLT, 0}, MakeTree(20), MakeTree(28), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 32, 0, 32}, {{{TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}}}}, // 1
+	{{TC_DFLT, 0}, MakeTree(21), MakeTree(29), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 0, 64, 0}, {{{TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC1, TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}}}}, // 2
+	{{TC_DFLT, 0}, MakeTree(26), MakeTree(34), STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Arctic, {}, {255, 32, 64, 32}, {{{TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC3}, {TREE_VARIETY_ARC1, TREE_VARIETY_ARC2, TREE_VARIETY_ARC3}}}}, // 7
 
 	/* Sub-tropic. */
-	{MakeTree(37), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 32, 64, 64}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 2
-	{MakeTree(38), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 64, 64, 32}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 3
-	{MakeTree(41), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 32, 32, 64}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 6
-	{MakeTree(42), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 64, 0, 32}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 7
-	{MakeTree(46), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 32, 0, 64}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 11
-	{MakeTree(51), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 32, 32, 0}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 16
-	{MakeTree(50), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 96, 32, 32}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 15
-	{MakeTree(48), 0, STR_LAI_TREE_NAME_CACTUS_PLANTS, {}, 1, 4, 2, LandscapeType::Tropic, TropicZone::Desert, {12, 64, 64, 64}, {{{TREE_VARIETY_CACT}, {TREE_VARIETY_CACT}, {TREE_VARIETY_CACT}, {TREE_VARIETY_CACT}}}}, // 13
-	{MakeTree(44), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {255, 32, 96, 32}, {{{TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}}}}, // 9
-	{MakeTree(47), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {255, 64, 32, 32}, {{{TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}}}}, // 12
-	{MakeTree(35), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {255, 64, 0, 64}, {{{TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}}}}, // 0
-	{MakeTree(52), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {255, 64, 32, 32}, {{{TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}, {TREE_VARIETY_TRO3}}}}, // 17
+	{{TC_RAIN, 0}, MakeTree(37), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 32, 64, 64}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 2
+	{{TC_RAIN, 0}, MakeTree(38), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 64, 64, 32}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 3
+	{{TC_RAIN, 0}, MakeTree(41), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 32, 32, 64}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 6
+	{{TC_RAIN, 0}, MakeTree(42), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 64, 0, 32}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 7
+	{{TC_RAIN, 0}, MakeTree(46), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 32, 0, 64}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 11
+	{{TC_RAIN, 0}, MakeTree(51), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 32, 32, 0}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 16
+	{{TC_RAIN, 0}, MakeTree(50), 0, STR_LAI_TREE_NAME_RAINFOREST, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {255, 96, 32, 32}, {{{TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}, {TREE_VARIETY_TRO1}}}}, // 15
+	{{TC_DSRT, 0}, MakeTree(48), 0, STR_LAI_TREE_NAME_CACTUS_PLANTS, {}, 1, 4, 2, LandscapeType::Tropic, TropicZone::Desert, {12, 64, 64, 64}, {{{TREE_VARIETY_CACT}, {TREE_VARIETY_CACT}, {TREE_VARIETY_CACT}, {TREE_VARIETY_CACT}}}}, // 13
+	{{TC_DFLT, 0}, MakeTree(44), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {255, 32, 96, 32}, {{{TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}}}}, // 9
+	{{TC_DFLT, 0}, MakeTree(47), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {255, 64, 32, 32}, {{{TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}}}}, // 12
+	{{TC_DFLT, 0}, MakeTree(35), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {255, 64, 0, 64}, {{{TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}}}}, // 0
+	{{TC_DFLT, 0}, MakeTree(52), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {255, 64, 32, 32}, {{{TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}, {TREE_VARIETY_TRO2}}}}, // 17
 
 	/* Sub-tropic trees that only appear alongside other trees. */
-	{MakeTree(36), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {}, {{{TREE_VARIETY_TRO3}, {}, {}, {}}}}, // 1
-	{MakeTree(39), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {}, {{{TREE_VARIETY_TRO3}, {}, {}, {}}}}, // 4
-	{MakeTree(40), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {}, {{{TREE_VARIETY_TRO1}, {}, {}, {}}}}, // 5
-	{MakeTree(43), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {}, {{{TREE_VARIETY_TRO1}, {}, {}, {}}}}, // 8
-	{MakeTree(45), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {}, {{{TREE_VARIETY_TRO3}, {}, {}, {}}}}, // 10
-	{MakeTree(49), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 2, LandscapeType::Tropic, TropicZone::Desert, {}, {{{TREE_VARIETY_CACT}, {}, {}, {}}}}, // 14
+	{{TC_DFLT, 0}, MakeTree(36), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {}, {{{TREE_VARIETY_TRO2}, {}, {}, {}}}}, // 1
+	{{TC_RAIN, 0}, MakeTree(39), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {}, {{{TREE_VARIETY_TRO2}, {}, {}, {}}}}, // 4
+	{{TC_RAIN, 0}, MakeTree(40), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {}, {{{TREE_VARIETY_TRO1}, {}, {}, {}}}}, // 5
+	{{TC_RAIN, 0}, MakeTree(43), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Rainforest, {}, {{{TREE_VARIETY_TRO1}, {}, {}, {}}}}, // 8
+	{{TC_DFLT, 0}, MakeTree(45), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Tropic, TropicZone::Normal, {}, {{{TREE_VARIETY_TRO2}, {}, {}, {}}}}, // 10
+	{{TC_DSRT, 0}, MakeTree(49), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 2, LandscapeType::Tropic, TropicZone::Desert, {}, {{{TREE_VARIETY_CACT}, {}, {}, {}}}}, // 14
 
 	/* Toyland. */
-	{MakeTree(53), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 0
-	{MakeTree(54), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 1
-	{MakeTree(55), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 2
-	{MakeTree(56), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 3
-	{MakeTree(57), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 4
-	{MakeTree(58), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 5
-	{MakeTree(59), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 6
-	{MakeTree(60), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 7
-	{MakeTree(61), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 8
+	{{TC_DFLT, 0}, MakeTree(53), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 0
+	{{TC_DFLT, 0}, MakeTree(54), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 1
+	{{TC_DFLT, 0}, MakeTree(55), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 2
+	{{TC_DFLT, 0}, MakeTree(56), 0, STR_LAI_TREE_NAME_TREES, {}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 3
+	{{TC_DFLT, 0}, MakeTree(57), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 4
+	{{TC_DFLT, 0}, MakeTree(58), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 5
+	{{TC_DFLT, 0}, MakeTree(59), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 6
+	{{TC_DFLT, 0}, MakeTree(60), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 7
+	{{TC_DFLT, 0}, MakeTree(61), 0, STR_LAI_TREE_NAME_TREES, {TreeFlag::Colour}, 1, 4, 6, LandscapeType::Toyland, {}, {255}}, // 8
 }};
 
 #endif /* TREE_LAND_H */

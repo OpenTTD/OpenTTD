@@ -37,6 +37,8 @@
 #include "table/tree_land.h"
 #include "table/clear_land.h"
 
+#include "newgrf_class_func.h"
+
 #include "safeguards.h"
 
 /** Where to place trees while in-game? */
@@ -214,6 +216,23 @@ std::span<const TreeSpec> GetOriginalTreeSpecs()
 	return _original_tree_specs;
 }
 
+template <>
+/* static */ void TreeClass::InsertDefaults()
+{
+	TreeClass::Get(TreeClass::Allocate("DFLT"))->name = STR_TREE_CLASS_DFLT;
+	TreeClass::Get(TreeClass::Allocate("RAIN"))->name = STR_TREE_CLASS_RAIN;
+	TreeClass::Get(TreeClass::Allocate("DSRT"))->name = STR_TREE_CLASS_DSRT;
+}
+
+template <>
+bool TreeClass::IsUIAvailable(uint) const
+{
+	return true;
+}
+
+/* Instantiate ObjectClass. */
+template class NewGRFClass<TreeTileSpec, TreeClassID>;
+
 /**
  * Reset trees to their default state.
  */
@@ -263,6 +282,7 @@ static void GenerateTreeTileSpecs()
 		size_t tree = std::distance(_tree_specs.begin(), it);
 
 		TreeTileSpec tts{};
+		tts.class_index = it->class_index;
 		tts.name = it->name;
 		tts.landscapes = it->landscapes;
 		tts.tropiczones = it->tropiczones;
@@ -346,6 +366,8 @@ void FinaliseTrees()
 		for (TropicZone zone : it->tropiczones) {
 			_tropic_treetypes[zone].push_back(treetype);
 		}
+
+		TreeClass::Assign(&*it);
 	}
 }
 
@@ -374,7 +396,7 @@ const TreeSpec &GetTreeSpec(uint16_t tree)
  * @param treetype The tree type.
  * @return The TreeTileSpec.
  */
-static const TreeTileSpec &GetTreeTileSpec(TreeType treetype)
+const TreeTileSpec &GetTreeTileSpec(TreeType treetype)
 {
 	assert(treetype < std::size(_tree_tile_specs));
 	return _tree_tile_specs[treetype];
@@ -412,14 +434,22 @@ static bool IsTreeTypeValidForTile(TileIndex tile, TreeType treetype)
  * @param treetype The tree type.
  * @return Sprite and palette for tree type.
  */
-PalSpriteID GetTreeSprite(TreeType treetype)
+PalSpriteID GetTreeSprite(const TreeTileSpec &tts)
 {
-	const auto &tts = GetTreeTileSpec(treetype);
-
 	SpriteID base = GetCustomTreeSprite(INVALID_TILE, tts.trees[0][0], 0);
 	if (base == 0) base = GetTreeSpec(tts.trees[0][0]).normal;
 
 	return {base + to_underlying(TreeGrowthStage::Growing3), tts.palettes[0][0]};
+}
+
+/**
+ * Get sprite and palette to represent a tree tile in the place tree window.
+ * @param treetype The tree type.
+ * @return Sprite and palette for tree type.
+ */
+PalSpriteID GetTreeSprite(TreeType treetype)
+{
+	return GetTreeSprite(GetTreeTileSpec(treetype));
 }
 
 /**

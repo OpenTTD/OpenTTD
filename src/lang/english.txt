@@ -3102,6 +3102,10 @@ STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plant sm
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Forest
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant large forests by dragging over the landscape
 
+STR_TREE_CLASS_DFLT                                             :Default
+STR_TREE_CLASS_RAIN                                             :Rainforest
+STR_TREE_CLASS_DSRT                                             :Desert
+
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generation
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Place rocky areas on landscape.{}Ctrl+Click to remove rocky areas

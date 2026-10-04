@@ -122,6 +122,14 @@ static ChangeInfoResult TreesChangeInfo(uint first, uint last, int prop, ByteRea
 				AddStringForMapping(GRFStringID{buf.ReadWord()}, &treespec->name);
 				break;
 
+			case 0x16: // Class name
+				AddStringForMapping(GRFStringID{buf.ReadWord()}, [treespec = treespec.get()](StringID str) { TreeClass::Get(treespec->class_index)->name = str; });
+				break;
+
+			case 0x17:
+				treespec->class_index = TreeClass::Allocate(buf.ReadLabel<TreeClass::GlobalID>());
+				break;
+
 			default:
 				ret = ChangeInfoResult::Unknown;
 				break;

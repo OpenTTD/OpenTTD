@@ -459,6 +459,7 @@ void ResetNewGRFData()
 	ResetIndustries();
 
 	/* Reset trees */
+	TreeClass::Reset();
 	ResetTrees();
 
 	/* Reset the objects. */

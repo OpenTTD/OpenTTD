@@ -19,8 +19,10 @@ void FinaliseTrees();
 
 std::span<const TreeSpec> GetOriginalTreeSpecs();
 const TreeSpec &GetTreeSpec(uint16_t tree);
+const TreeTileSpec &GetTreeTileSpec(TreeType treetype);
 
 std::span<const TreeType> GetTreeTypes();
+PalSpriteID GetTreeSprite(const TreeTileSpec &tts);
 PalSpriteID GetTreeSprite(TreeType treetype);
 std::pair<uint, uint> GetTreeVariantAndPosition(TileIndex tile);
 
