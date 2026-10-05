@@ -52,7 +52,10 @@ bool TimerManager<TimerGameTick>::Elapsed(TimerGameTick::TElapsed delta)
 {
 	TimerGameTick::counter++;
 
-	for (auto timer : TimerManager<TimerGameTick>::GetTimers()) {
+	auto &timers = TimerManager<TimerGameTick>::GetTimers();
+	for (auto it = timers.begin(); it != timers.end(); /* nothing */) {
+		/* Increment iterator before calling the timer in case the timer wishes to erase itself. */
+		auto &timer = *it++;
 		timer->Elapsed(delta);
 	}
 

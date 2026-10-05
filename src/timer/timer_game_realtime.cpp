@@ -53,7 +53,10 @@ void TimeoutTimer<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 template <>
 bool TimerManager<TimerGameRealtime>::Elapsed(TimerGameRealtime::TElapsed delta)
 {
-	for (auto timer : TimerManager<TimerGameRealtime>::GetTimers()) {
+	auto &timers = TimerManager<TimerGameRealtime>::GetTimers();
+	for (auto it = timers.begin(); it != timers.end(); /* nothing */) {
+		/* Increment iterator before calling the timer in case the timer wishes to erase itself. */
+		auto &timer = *it++;
 		timer->Elapsed(delta);
 	}
 
