@@ -17,6 +17,7 @@ add_files(
     newgrf_act0_sounds.cpp
     newgrf_act0_stations.cpp
     newgrf_act0_trains.cpp
+    newgrf_act0_trees.cpp
     newgrf_act0.cpp
     newgrf_act1.cpp
     newgrf_act2.cpp
