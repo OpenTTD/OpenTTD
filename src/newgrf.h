@@ -115,12 +115,11 @@ enum class GrfSpecFeature : uint8_t {
 /** Bitset of \c GrfSpecFeature elements. */
 using GrfSpecFeatures = EnumBitSet<GrfSpecFeature, uint32_t, GrfSpecFeature::End>;
 
+/** Information about a NewGRF goto-label. */
 struct GRFLabel {
-	uint8_t label;
-	uint32_t nfo_line;
-	size_t pos;
-
-	GRFLabel(uint8_t label, uint32_t nfo_line, size_t pos) : label(label), nfo_line(nfo_line), pos(pos) {}
+	uint8_t label; ///< Non-unique label identifier.
+	uint32_t nfo_line; ///< Line within NewGRF of label.
+	size_t pos; ///< Position in file.
 };
 
 /** Dynamic data of a loaded NewGRF */
