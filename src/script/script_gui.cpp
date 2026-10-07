@@ -45,6 +45,7 @@
 #include "../widgets/misc_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_scripts.h"
 
 #include "../safeguards.h"
 

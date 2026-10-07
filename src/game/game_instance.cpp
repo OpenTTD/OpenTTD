@@ -23,6 +23,7 @@
 #include "game.hpp"
 
 #include "table/strings.h"
+#include "table/strings_scripts.h"
 
 /* Convert all Game related classes to Squirrel data. */
 #include "../script/api/game/game_includes.hpp"

@@ -44,6 +44,7 @@
 #include "widgets/build_vehicle_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_vehicles.h"
 
 #include "safeguards.h"
 

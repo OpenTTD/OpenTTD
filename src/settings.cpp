@@ -54,6 +54,7 @@
 #include "settings_cmd.h"
 
 #include "table/strings.h"
+#include "table/strings_newgrf.h"
 
 #include "safeguards.h"
 

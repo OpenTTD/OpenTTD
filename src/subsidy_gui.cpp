@@ -20,6 +20,7 @@
 #include "widgets/subsidy_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_subsidies.h"
 
 #include "safeguards.h"
 

@@ -18,7 +18,7 @@
 #include "newgrf_internal.h"
 #include "newgrf_stringmapping.h"
 
-#include "table/strings.h"
+#include "table/strings_newgrf.h"
 
 #include "../safeguards.h"
 
@@ -616,7 +616,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint first, uint last, int prop, By
 			case 0x24: { // name for nearby station
 				GRFStringID str{buf.ReadWord()};
 				if (str == 0) {
-					indsp->station_name = STR_NULL;
+					indsp->station_name = {};
 				} else {
 					AddStringForMapping(str, &indsp->station_name);
 				}

@@ -28,6 +28,7 @@
 #include "widgets/bridge_widget.h"
 
 #include "table/strings.h"
+#include "table/strings_bridges.h"
 
 #include "safeguards.h"
 
