@@ -154,10 +154,9 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, MissingGlyp
 	auto fc_instance = AutoRelease<FcConfig, FcConfigDestroy>(FcConfigReference(nullptr));
 	assert(fc_instance != nullptr);
 
-	/* Fontconfig doesn't handle full language isocodes, only the part
-	 * before the _ of e.g. en_GB is used, so "remove" everything after
-	 * the _. */
-	std::string lang = fmt::format(":lang={}", language_isocode.substr(0, language_isocode.find('_')));
+	std::string lang = fmt::format(":lang={}", language_isocode);
+	/* Fontconfig expects a hyphen not an underscore in the isocode. */
+	std::ranges::replace(lang, '_', '-');
 
 	/* First create a pattern to match the wanted language. */
 	auto pat = AutoRelease<FcPattern, FcPatternDestroy>(FcNameParse(ToFcString(lang)));
