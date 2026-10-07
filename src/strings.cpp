@@ -2304,6 +2304,7 @@ void BaseStringMissingGlyphSearcher::DetermineRequiredGlyphs(FontSizes fontsizes
 {
 	this->missing_fontsizes.Reset();
 	this->missing_glyphs.clear();
+	this->required_glyphs.clear();
 
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
@@ -2320,6 +2321,9 @@ void BaseStringMissingGlyphSearcher::DetermineRequiredGlyphs(FontSizes fontsizes
 			if (!IsPrintable(c) || IsTextDirectionChar(c)) continue;
 			if (c != ' ' && (IsWhitespace(c) || IsNonbreakingWhitespace(c))) continue;
 			if (IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END)) continue;
+
+			this->required_glyphs.insert(c);
+
 			if (fc->MapCharToGlyph(c, false) != 0) continue;
 
 			this->missing_fontsizes.Set(fs);
