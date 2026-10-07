@@ -77,7 +77,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	char font_name[MAX_PATH];
 	convert_from_fs(logfont->elfFullName, font_name);
 
-	if (!FontCache::TryFallback(info->callback->missing_fontsizes, info->callback->missing_glyphs, font_name, logfont->elfLogFont)) return 1;
+	if (!FontCache::TryFallback(info->callback->missing_fontsizes, info->callback->required_glyphs, font_name, logfont->elfLogFont)) return 1;
 
 	FontCache::AddFallback(info->callback->missing_fontsizes, font_name, logfont->elfLogFont);
 	Debug(Facility::Fontcache, Severity::Error, "Fallback font: {}", font_name);
