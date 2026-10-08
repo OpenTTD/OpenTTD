@@ -196,6 +196,12 @@ struct Train final : public GroundVehicle<Train, VehicleType::Train> {
 		return GetRailTypeInfo(GetRailType(this->tile))->acceleration_type;
 	}
 
+	/**
+	 * Check if this vehicle can lead a consist.
+	 * @return \c true iff this vehicle can lead a consist.
+	 */
+	bool CanLeadConsist() const;
+
 protected: // These functions should not be called outside acceleration code.
 
 	/**
