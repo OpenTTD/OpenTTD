@@ -23,11 +23,6 @@ enum RightMouseButtonEmulationState {
 
 extern NSString *OTTDMainLaunchGameEngine;
 
-/** Category of NSCursor to allow cursor showing/hiding */
-@interface NSCursor (OTTD_QuickdrawCursor)
-+ (NSCursor *) clearCocoaCursor;
-@end
-
 /** Subclass of NSWindow to cater our special needs */
 @interface OTTD_CocoaWindow : NSWindow
 	<NSTouchBarDelegate>
