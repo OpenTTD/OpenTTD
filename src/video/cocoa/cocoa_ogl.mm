@@ -293,6 +293,7 @@ void *VideoDriver_CocoaOpenGL::GetVideoPointer()
 	CGLSetCurrentContext(this->gl_context);
 	if (BlitterFactory::GetCurrentBlitter()->NeedsAnimationBuffer()) {
 		this->anim_buffer = OpenGLBackend::Get()->GetAnimBuffer();
+		this->anim_pitch = _screen.pitch;
 	}
 	return OpenGLBackend::Get()->GetVideoBuffer();
 }
@@ -306,6 +307,7 @@ void VideoDriver_CocoaOpenGL::ReleaseVideoPointer()
 	this->dirty_rect = {};
 	_screen.dst_ptr = nullptr;
 	this->anim_buffer = nullptr;
+	this->anim_pitch = 0;
 }
 
 void VideoDriver_CocoaOpenGL::Paint()
