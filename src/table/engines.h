@@ -354,7 +354,7 @@ static constexpr EngineInfo _orig_engine_info[] = {
 	MA( 21275,  20,  20,  99,                  LandscapeTypes({      Y})), // 251 Juggerplane M1
 	MA( 23832,  20,  20,  99,                  LandscapeTypes({      Y})), // 252 Flashbang Wizzer
 	MA( 13575,  20,  20,  40,                  LandscapeTypes({T,A,S  })), // 253 Tricario Helicopter
-	MA( 28215,  20,  20,  30,                  LandscapeTypes({T,A,S  })), // 254 Guru X2 Helicopter
+	MA( 28215,  20,  20,  50,                  LandscapeTypes({T,A,S  })), // 254 Guru X2 Helicopter
 	MA( 13575,  20,  20,  99,                  LandscapeTypes({      Y})), // 255 Powernaut Helicopter
 };
 #undef Y
