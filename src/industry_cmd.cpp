@@ -2448,13 +2448,34 @@ void IndustryBuildData::Reset()
 void IndustryBuildData::EconomyMonthlyLoop()
 {
 	static const int NEWINDS_PER_MONTH = 0x38000 / (10 * 12); // lower 16 bits is a float fraction, 3.5 industries per decade, divided by 10 * 12 months.
+	static const uint INDUSTRY_TOLERANCE_DIV = 5; // Divisor for tolerance band width (width % = 100 / DIV). Set to 20%.
+
 	if (_settings_game.difficulty.industry_density == IndustryDensity::FundedOnly) return; // 'no industries' setting.
 
-	/* To prevent running out of unused industries for the player to connect,
-	 * add a fraction of new industries each month, but only if the manager can keep up. */
+	/* Keep the desired industry count inside a small band around the desired target.
+	 * If the industry count is within the band we grow the target slowly. */
+	uint target = GetNumberOfIndustries(); // Use setting value as target.
+	uint band = std::max(2u, CeilDiv(target, INDUSTRY_TOLERANCE_DIV)); // Tolerance band is a fraction of target, but at least 2 industries.
+	uint32_t lower = target > band ? (target - band) << 16 : 0;
+	uint32_t upper = (target + band) << 16;
+	uint32_t current = GetCurrentTotalNumberOfIndustries() << 16;
+
+	if (current < lower) {
+		this->wanted_inds = std::max(this->wanted_inds, lower);
+		return;
+	} else if (current > upper) {
+		this->wanted_inds = std::min(this->wanted_inds, upper);
+		return;
+	}
+
 	uint max_behind = 1 + std::min(99u, Map::ScaleBySize(3)); // At most 2 industries for small maps, and 100 at the biggest map (about 6 months industry build attempts).
 	if (GetCurrentTotalNumberOfIndustries() + max_behind >= (this->wanted_inds >> 16)) {
-		this->wanted_inds += Map::ScaleBySize(NEWINDS_PER_MONTH);
+		if (this->wanted_inds < upper) {
+			this->wanted_inds += Map::ScaleBySize(NEWINDS_PER_MONTH);
+			if (this->wanted_inds > upper) {
+				this->wanted_inds = upper;
+			}
+		}
 	}
 }
 
