@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file sdl2_opengl_v.cpp Implementation of the OpenGL backend for SDL2 video driver. */
+/** @file sdl3_opengl_v.cpp Implementation of the OpenGL backend for SDL3 video driver. */
 
 /* XXX -- Temporary hack for Windows compile */
 #define WINGDIAPI
@@ -22,8 +22,8 @@
 #include "../fileio_func.h"
 #include "../framerate_type.h"
 #include "../window_func.h"
-#include "sdl2_opengl_v.h"
-#include <SDL.h>
+#include "sdl3_opengl_v.h"
+#include <SDL3/SDL_video.h>
 #include <mutex>
 #include <condition_variable>
 #include <GL/gl.h>
@@ -98,7 +98,7 @@ void VideoDriver_SDL_OpenGL::DestroyContext()
 	OpenGLBackend::Destroy();
 
 	if (this->gl_context != nullptr) {
-		SDL_GL_DeleteContext(this->gl_context);
+		SDL_GL_DestroyContext(this->gl_context);
 		this->gl_context = nullptr;
 	}
 }
@@ -126,7 +126,7 @@ std::optional<std::string_view> VideoDriver_SDL_OpenGL::AllocateContext()
 	}
 
 	this->gl_context = SDL_GL_CreateContext(this->sdl_window);
-	if (this->gl_context == nullptr) return "SDL2: Can't activate GL context";
+	if (this->gl_context == nullptr) return "SDL3: Can't activate GL context";
 
 	ToggleVsync(_video_vsync);
 
