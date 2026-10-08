@@ -166,6 +166,7 @@ void *VideoDriver_SDL_OpenGL::GetVideoPointer()
 {
 	if (BlitterFactory::GetCurrentBlitter()->NeedsAnimationBuffer()) {
 		this->anim_buffer = OpenGLBackend::Get()->GetAnimBuffer();
+		this->anim_pitch = _screen.pitch;
 	}
 	return OpenGLBackend::Get()->GetVideoBuffer();
 }
@@ -176,6 +177,7 @@ void VideoDriver_SDL_OpenGL::ReleaseVideoPointer()
 	OpenGLBackend::Get()->ReleaseVideoBuffer(this->dirty_rect);
 	this->dirty_rect = {};
 	this->anim_buffer = nullptr;
+	this->anim_pitch = 0;
 }
 
 void VideoDriver_SDL_OpenGL::Paint()
