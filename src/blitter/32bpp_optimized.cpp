@@ -191,12 +191,12 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 					if (src_px->a == 255) {
 						src_px += n;
 						do {
-							*dst = MakeTransparent(*dst, 3, 4);
+							*dst = MakeTransparentOnce(*dst, 3, 4);
 							dst++;
 						} while (--n != 0);
 					} else {
 						do {
-							*dst = MakeTransparent(*dst, (256 * 4 - src_px->a), 256 * 4);
+							*dst = MakeTransparentOnce(*dst, (256 * 4 - src_px->a), 256 * 4);
 							dst++;
 							src_px++;
 						} while (--n != 0);
