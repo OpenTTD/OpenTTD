@@ -95,16 +95,16 @@
 
 /* static */ bool ScriptTile::IsSteepSlope(Slope slope)
 {
-	if ((slope & ~(SLOPE_ELEVATED | SLOPE_STEEP | SLOPE_HALFTILE_MASK)) != 0) return false;
+	if ((slope & ~static_cast<Slope>(std::numeric_limits<::Slope::BaseType>::max())) != 0) return false;
 
-	return ::IsSteepSlope((::Slope)slope);
+	return ::IsSteepSlope(static_cast<::Slope>(slope));
 }
 
 /* static */ bool ScriptTile::IsHalftileSlope(Slope slope)
 {
-	if ((slope & ~(SLOPE_ELEVATED | SLOPE_STEEP | SLOPE_HALFTILE_MASK)) != 0) return false;
+	if ((slope & ~static_cast<Slope>(std::numeric_limits<::Slope::BaseType>::max())) != 0) return false;
 
-	return ::IsHalftileSlope((::Slope)slope);
+	return ::IsHalftileSlope(static_cast<::Slope>(slope));
 }
 
 /* static */ bool ScriptTile::HasTreeOnTile(TileIndex tile)
@@ -173,14 +173,14 @@
 {
 	if (!::IsValidTile(tile)) return SLOPE_INVALID;
 
-	return (Slope)::GetTileSlope(tile);
+	return static_cast<Slope>(::GetTileSlope(tile).base());
 }
 
 /* static */ ScriptTile::Slope ScriptTile::GetComplementSlope(Slope slope)
 {
 	if ((slope & ~SLOPE_ELEVATED) != 0) return SLOPE_INVALID;
 
-	return (Slope)::ComplementSlope((::Slope)slope);
+	return static_cast<Slope>(::ComplementSlope(static_cast<::Slope>(slope)).base());
 }
 
 /* static */ SQInteger ScriptTile::GetMinHeight(TileIndex tile)

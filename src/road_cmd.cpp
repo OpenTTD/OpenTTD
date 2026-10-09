@@ -197,16 +197,16 @@ static const std::array<NonSteepSlopeIndexArray<RoadBits>, 2> _invalid_tileh_slo
 	/* The inverse of the mixable RoadBits on a leveled slope */
 	{{{
 		{}, // SLOPE_FLAT
-		{RoadBit::NE, RoadBit::SE}, // SLOPE_W
-		{RoadBit::NE, RoadBit::NW}, // SLOPE_S
+		{RoadBit::NE, RoadBit::SE}, // Corner::W
+		{RoadBit::NE, RoadBit::NW}, // Corner::S
 
 		RoadBit::NE, // SLOPE_SW
-		{RoadBit::NW, RoadBit::SW}, // SLOPE_E
+		{RoadBit::NW, RoadBit::SW}, // Corner::E
 		{}, // SLOPE_EW
 
 		RoadBit::NW, // SLOPE_SE
 		{}, // SLOPE_WSE
-		{RoadBit::SE, RoadBit::SW}, // SLOPE_N
+		{RoadBit::SE, RoadBit::SW}, // Corner::N
 
 		RoadBit::SE, // SLOPE_NW
 		{}, // SLOPE_NS
@@ -220,16 +220,16 @@ static const std::array<NonSteepSlopeIndexArray<RoadBits>, 2> _invalid_tileh_slo
 	 * (with and without a foundation). */
 	{{{
 		{}, // SLOPE_FLAT
-		{}, // SLOPE_W (Foundation)
-		{}, // SLOPE_S (Foundation)
+		{}, // Corner::W (Foundation)
+		{}, // Corner::S (Foundation)
 
 		ROAD_Y, // SLOPE_SW
-		{}, // SLOPE_E (Foundation)
+		{}, // Corner::E (Foundation)
 		ROAD_ALL, // SLOPE_EW
 
 		ROAD_X, // SLOPE_SE
 		ROAD_ALL, // SLOPE_WSE
-		{}, // SLOPE_N (Foundation)
+		{}, // Corner::N (Foundation)
 
 		ROAD_X, // SLOPE_NW
 		ROAD_ALL, // SLOPE_NS
@@ -716,7 +716,7 @@ CommandCost CmdBuildRoad(DoCommandFlags flags, TileIndex tile, RoadBits pieces, 
 			}
 
 			/* Level crossings may only be built on these slopes */
-			if (!HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh)) {
+			if (!HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh.base())) {
 				return CommandCost(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
@@ -1329,11 +1329,11 @@ static constexpr NonSteepSlopeIndexArray<uint8_t> _road_sloped_sprites = {
 static uint GetRoadSpriteOffset(Slope slope, RoadBits bits)
 {
 	if (slope != SLOPE_FLAT) {
-		switch (slope) {
-			case SLOPE_NE: return 11;
-			case SLOPE_SE: return 12;
-			case SLOPE_SW: return 13;
-			case SLOPE_NW: return 14;
+		switch (slope.base()) {
+			case SLOPE_NE.base(): return 11;
+			case SLOPE_SE.base(): return 12;
+			case SLOPE_SW.base(): return 13;
+			case SLOPE_NW.base(): return 14;
 			default: NOT_REACHED();
 		}
 	} else {
@@ -2390,7 +2390,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, DoCommandFlags flags, int 
 	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
 		switch (GetRoadTileType(tile)) {
 			case RoadTileType::Crossing:
-				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
+				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new.base())) return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);
 				break;
 
 			case RoadTileType::Depot:
