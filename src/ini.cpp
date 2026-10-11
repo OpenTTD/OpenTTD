@@ -16,7 +16,7 @@
 #	include <emscripten.h>
 #endif
 
-#if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE >= 199309L) || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE >= 500)
+#if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE >= 199309L) || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE >= 500) || defined(__HAIKU__)
 # include <unistd.h>
 # include <fcntl.h>
 #endif
