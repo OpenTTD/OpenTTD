@@ -301,9 +301,6 @@ static void ShutdownGame()
 	LinkGraphSchedule::Clear();
 	PoolBase::Clean(PT_ALL);
 
-	/* No NewGRFs were loaded when it was still bootstrapping. */
-	if (_game_mode != GameMode::Bootstrap) ResetNewGRFData();
-
 	FontCache::UninitializeFontCaches();
 }
 
