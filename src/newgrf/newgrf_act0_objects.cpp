@@ -142,7 +142,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 
 			case 0x10: // Flags
 				spec->flags = (ObjectFlags)buf.ReadWord();
-				_loaded_newgrf_features.has_2CC |= spec->flags.Test(ObjectFlag::Uses2CC);
+				if (spec->flags.Test(ObjectFlag::Uses2CC)) _loaded_newgrf_features.num_company_colours = std::max<uint8_t>(_loaded_newgrf_features.num_company_colours, 2);
 				break;
 
 			case 0x11: // Animation info

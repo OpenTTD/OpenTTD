@@ -415,6 +415,8 @@ public:
 		SaveLoad::Variable<VarFileType::U8>("in_use", SLE_OBJECT_ADDRESS(Livery, in_use), SaveLoadVersion::Liveries),
 		SaveLoad::Variable<VarFileType::U8>("colour1", SLE_OBJECT_ADDRESS(Livery, colours[0]), SaveLoadVersion::Liveries),
 		SaveLoad::Variable<VarFileType::U8>("colour2", SLE_OBJECT_ADDRESS(Livery, colours[1]), SaveLoadVersion::Liveries),
+		SaveLoad::Variable<VarFileType::U8>("colour3", SLE_OBJECT_ADDRESS(Livery, colours[2]), SaveLoadVersion::Liveries),
+		SaveLoad::Variable<VarFileType::U8>("colour4", SLE_OBJECT_ADDRESS(Livery, colours[3]), SaveLoadVersion::Liveries),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_liveries_compat;
 

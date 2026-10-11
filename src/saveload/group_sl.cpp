@@ -25,6 +25,8 @@ static const SaveLoad _group_desc[] = {
 	SaveLoad::Variable<VarFileType::U8>("livery.in_use", SLE_OBJECT_ADDRESS(Group, livery.in_use), SaveLoadVersion::GroupLiveries),
 	SaveLoad::Variable<VarFileType::U8>("livery.colour1", SLE_OBJECT_ADDRESS(Group, livery.colours[0]), SaveLoadVersion::GroupLiveries),
 	SaveLoad::Variable<VarFileType::U8>("livery.colour2", SLE_OBJECT_ADDRESS(Group, livery.colours[1]), SaveLoadVersion::GroupLiveries),
+	SaveLoad::Variable<VarFileType::U8>("livery.colour3", SLE_OBJECT_ADDRESS(Group, livery.colours[2]), SaveLoadVersion::GroupLiveries),
+	SaveLoad::Variable<VarFileType::U8>("livery.colour4", SLE_OBJECT_ADDRESS(Group, livery.colours[3]), SaveLoadVersion::GroupLiveries),
 	SaveLoad::Variable<VarFileType::U16>("parent", SLE_OBJECT_ADDRESS(Group, parent), SaveLoadVersion::GroupHierarchy),
 	SaveLoad::Variable<VarFileType::U16>("number", SLE_OBJECT_ADDRESS(Group, number), SaveLoadVersion::GroupNumbers),
 };
