@@ -505,7 +505,7 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8_t view)
 		/* Get the colours of our company! */
 		if (spec->flags.Test(ObjectFlag::Uses2CC)) {
 			const Livery &l = Company::Get(_local_company)->livery[LiveryScheme::Default];
-			palette = SPR_2CCMAP_BASE + l.GetRecolourOffset();
+			palette = SPR_2CCMAP_BASE + l.GetRecolourOffset(0);
 		} else {
 			palette = GetCompanyPalette(_local_company);
 		}

@@ -87,7 +87,12 @@ void DrawAircraftImage(const Vehicle *v, const Rect &r, VehicleID selection, Eng
 
 	int heli_offs = 0;
 
-	PaletteID pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(v);
+	Livery::Palettes pal;
+	if (v->vehstatus.Test(VehState::Crashed)) {
+		pal.fill(PALETTE_CRASH);
+	} else {
+		pal = GetVehiclePalette(v);
+	}
 	seq.Draw(x, y, pal, v->vehstatus.Test(VehState::Crashed));
 
 	/* Aircraft can store cargo in their shadow, show this if present. */
@@ -106,7 +111,7 @@ void DrawAircraftImage(const Vehicle *v, const Rect &r, VehicleID selection, Eng
 		GetCustomRotorSprite(a, image_type, &rotor_seq);
 		if (!rotor_seq.IsValid()) rotor_seq.Set(SPR_ROTOR_STOPPED);
 		heli_offs = ScaleSpriteTrad(5);
-		rotor_seq.Draw(x, y - heli_offs, PAL_NONE, false);
+		rotor_seq.Draw(x, y - heli_offs, {PAL_NONE, PAL_NONE}, false);
 	}
 	if (v->index == selection) {
 		x += x_offs;
