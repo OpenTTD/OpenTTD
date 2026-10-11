@@ -79,6 +79,7 @@ static constexpr auto _action5_types = std::to_array<Action5Type>({
 	/* 0x19 */ { Action5BlockType::AllowOffset, SPR_ROAD_WAYPOINTS_BASE,      1, ROAD_WAYPOINTS_SPRITE_COUNT,                 "Road waypoints"           },
 	/* 0x1A */ { Action5BlockType::AllowOffset, SPR_OVERLAY_ROCKS_BASE,       1, OVERLAY_ROCKS_SPRITE_COUNT,                  "Overlay rocks"            },
 	/* 0x1B */ { Action5BlockType::AllowOffset, SPR_BRIDGE_DECKS_BASE,        1, BRIDGE_DECKS_SPRITE_COUNT,                   "Bridge decks"             },
+	/* 0x1C */ { Action5BlockType::AllowOffset, SPR_OVERLAY_SEA_SHIMMER_BASE, 1, SPR_OVERLAY_SEA_SHIMMER_SPRITE_COUNT,        "Overlay sea shimmer"      },
 });
 
 /**
