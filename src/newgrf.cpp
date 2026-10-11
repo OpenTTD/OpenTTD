@@ -491,7 +491,7 @@ void ResetNewGRFData()
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = {};
 
-	_loaded_newgrf_features.has_2CC = false;
+	_loaded_newgrf_features.num_company_colours = 1;
 	_loaded_newgrf_features.used_liveries = LiveryScheme::Default;
 	_loaded_newgrf_features.shore = ShoreReplacement::None;
 	_loaded_newgrf_features.tram = TramDepotReplacement::None;
@@ -855,6 +855,10 @@ static void FinaliseCanals()
 static void FinaliseEngineArray()
 {
 	for (Engine *e : Engine::Iterate()) {
+		if (e->info.misc_flags.Test(EngineMiscFlag::Uses2CC)) _loaded_newgrf_features.num_company_colours = std::max<uint8_t>(_loaded_newgrf_features.num_company_colours, 2);
+		if (e->info.extra_flags.Test(ExtraEngineFlag::Uses3CC)) _loaded_newgrf_features.num_company_colours = std::max<uint8_t>(_loaded_newgrf_features.num_company_colours, 3);
+		if (e->info.extra_flags.Test(ExtraEngineFlag::Uses4CC)) _loaded_newgrf_features.num_company_colours = std::max<uint8_t>(_loaded_newgrf_features.num_company_colours, 4);
+
 		if (e->GetGRF() == nullptr) {
 			auto found = std::ranges::find(_engine_mngr.mappings[e->type], e->index, &EngineIDMapping::engine);
 			if (found == std::end(_engine_mngr.mappings[e->type]) || found->grfid != INVALID_GRFID || found->internal_id != found->substitute_id) {

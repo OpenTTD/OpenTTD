@@ -215,7 +215,10 @@ static void GetAircraftIcon(EngineID engine, EngineImageType image_type, Vehicle
 	result->Set(to_underlying(Direction::W) + _aircraft_sprite[spritenum]);
 }
 
-void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
+/**
+ * Draw an aircraft engine. @copydoc DrawVehicleEngine
+ */
+void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type)
 {
 	VehicleSpriteSeq seq;
 	GetAircraftIcon(engine, image_type, &seq);
@@ -226,13 +229,13 @@ void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID en
 			left - UnScaleGUI(rect.left),
 			right - UnScaleGUI(rect.right));
 
-	seq.Draw(preferred_x, y, pal, pal == PALETTE_CRASH);
+	seq.Draw(preferred_x, y, pal, pal[0] == PALETTE_CRASH);
 
 	if (!(AircraftVehInfo(engine)->subtype & AIR_CTOL)) {
 		VehicleSpriteSeq rotor_seq;
 		GetCustomRotorIcon(engine, image_type, &rotor_seq);
 		if (!rotor_seq.IsValid()) rotor_seq.Set(SPR_ROTOR_STOPPED);
-		rotor_seq.Draw(preferred_x, y - ScaleSpriteTrad(5), PAL_NONE, false);
+		rotor_seq.Draw(preferred_x, y - ScaleSpriteTrad(5), {}, false);
 	}
 }
 
@@ -1323,7 +1326,7 @@ TileIndex Aircraft::GetOrderStationLocation(StationID)
 
 void Aircraft::MarkDirty()
 {
-	this->colourmap = PAL_NONE;
+	this->colourmap.fill(PAL_NONE);
 	this->UpdateViewport(true, false);
 	if (this->subtype == AIR_HELICOPTER) {
 		GetRotorImage(this, EngineImageType::OnMap, &this->Next()->Next()->sprite_cache.sprite_seq);

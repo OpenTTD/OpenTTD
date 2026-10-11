@@ -309,7 +309,7 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
 				for (Vehicle *u = v; u != nullptr; u = u->Next()) {
-					u->colourmap = PAL_NONE;
+					u->colourmap.fill(PAL_NONE);
 					u->InvalidateNewGRFCache();
 				}
 			}
@@ -541,7 +541,7 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
 			if (v->IsEngineCountable()) UpdateNumEngineGroup(v, v->group_id, new_g);
 			v->group_id = new_g;
 			for (Vehicle *u = v; u != nullptr; u = u->Next()) {
-				u->colourmap = PAL_NONE;
+				u->colourmap.fill(PAL_NONE);
 				u->InvalidateNewGRFCache();
 				u->UpdateViewport(true);
 			}
@@ -775,7 +775,7 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 
 		u->group_id = new_g;
-		u->colourmap = PAL_NONE;
+		u->colourmap.fill(PAL_NONE);
 		u->InvalidateNewGRFCache();
 		u->UpdateViewport(true);
 	}
@@ -802,7 +802,7 @@ void UpdateTrainGroupID(Train *v)
 		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 
 		u->group_id = new_g;
-		u->colourmap = PAL_NONE;
+		u->colourmap.fill(PAL_NONE);
 		u->InvalidateNewGRFCache();
 	}
 

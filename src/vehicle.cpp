@@ -150,10 +150,16 @@ void VehicleSpriteSeq::GetBounds(Rect *bounds) const
  * @param default_pal Vehicle palette
  * @param force_pal Whether to ignore individual palettes, and draw everything with \a default_pal.
  */
-void VehicleSpriteSeq::Draw(int x, int y, PaletteID default_pal, bool force_pal) const
+void VehicleSpriteSeq::Draw(int x, int y, const Livery::Palettes &default_pal, bool force_pal) const
 {
 	for (uint i = 0; i < this->count; ++i) {
-		PaletteID pal = force_pal || !this->seq[i].pal ? default_pal : this->seq[i].pal;
+		PaletteID pal;
+		if (force_pal || (this->seq[i].pal & PALETTE_MASK) == 0) {
+			uint layer = HasBit(this->seq[i].pal, PALETTE_MODIFIER_ALT_COLOUR) ? (this->seq[i].pal & PALETTE_MASK) % Livery::NUM_LAYERS : 0;
+			pal = default_pal[layer];
+		} else {
+			pal = this->seq[i].pal;
+		}
 		DrawSprite(this->seq[i].sprite, pal, x, y);
 	}
 }
@@ -387,7 +393,7 @@ Vehicle::Vehicle(VehicleID index, VehicleType type) : VehiclePool::PoolItem<&_ve
 	this->fill_percent_te_id = INVALID_TE_ID;
 	this->first              = this;
 	this->last               = this;
-	this->colourmap          = PAL_NONE;
+	this->colourmap.fill(PAL_NONE);
 	this->cargo_age_counter  = 1;
 	this->last_station_visited = StationID::Invalid();
 	this->last_loading_station = StationID::Invalid();
@@ -687,7 +693,7 @@ void ResetVehicleHash()
 
 void ResetVehicleColourMap()
 {
-	for (Vehicle *v : Vehicle::Iterate()) { v->colourmap = PAL_NONE; }
+	for (Vehicle *v : Vehicle::Iterate()) { v->colourmap.fill(PAL_NONE); }
 }
 
 /**
@@ -1120,9 +1126,15 @@ void CallVehicleTicks()
  */
 static void DoDrawVehicle(const Vehicle *v)
 {
-	PaletteID pal = PAL_NONE;
+	Livery::Palettes pal{};
 
-	if (v->vehstatus.Test(VehState::DefaultPalette)) pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(v);
+	if (v->vehstatus.Test(VehState::DefaultPalette)) {
+		if (v->vehstatus.Test(VehState::Crashed)) {
+			pal.fill(PALETTE_CRASH);
+		} else {
+			pal = GetVehiclePalette(v);
+		}
+	}
 
 	/* Check whether the vehicle shall be transparent due to the game state */
 	bool shadowed = v->vehstatus.Test(VehState::Shadow);
@@ -1137,7 +1149,7 @@ static void DoDrawVehicle(const Vehicle *v)
 	StartSpriteCombine();
 	for (uint i = 0; i < v->sprite_cache.sprite_seq.count; ++i) {
 		PaletteID pal2 = v->sprite_cache.sprite_seq.seq[i].pal;
-		if (!pal2 || v->vehstatus.Test(VehState::Crashed)) pal2 = pal;
+		if (!pal2 || v->vehstatus.Test(VehState::Crashed)) pal2 = pal[0];
 		AddSortableSpriteToDraw(v->sprite_cache.sprite_seq.seq[i].sprite, pal2, v->x_pos, v->y_pos, v->z_pos, v->bounds, shadowed);
 	}
 	EndSpriteCombine();
@@ -2117,13 +2129,21 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 	return &c->livery[scheme];
 }
 
-
-static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v)
+/**
+ * Get colour remaps for an engine.
+ * @param engine_type The engine type.
+ * @param company Owner of the engine.
+ * @param parent_engine_type The front engine type. VehicleID::Invalid() if vehicle is at front itself.
+ * @param v The vehicle. nullptr if in purchase list etc.
+ * @return Colour remap palettes for engine.
+ */
+static Livery::Palettes GetEngineColourMaps(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v)
 {
-	PaletteID map = (v != nullptr) ? v->colourmap : PAL_NONE;
+	Livery::Palettes map{};
+	if (v != nullptr) map = v->colourmap;
 
 	/* Return cached value if any */
-	if (map != PAL_NONE) return map;
+	if (std::ranges::find_if(map, [](PaletteID p) { return p != PAL_NONE; }) != map.end()) return map;
 
 	const Engine *e = Engine::Get(engine_type);
 
@@ -2133,7 +2153,7 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 		/* Failure means "use the default two-colour" */
 		if (callback != CALLBACK_FAILED) {
 			static_assert(PAL_NONE == 0); // Returning 0x4000 (resp. 0xC000) coincidences with default value (PAL_NONE)
-			map = GB(callback, 0, 14);
+			map[0] = GB(callback, 0, 14);
 			/* If bit 14 is set, then the company colours are applied to the
 			 * map else it's returned as-is. */
 			if (!HasBit(callback, 14)) {
@@ -2145,15 +2165,18 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 	}
 
 	bool twocc = e->info.misc_flags.Test(EngineMiscFlag::Uses2CC);
+	bool fourcc = e->info.extra_flags.Test(ExtraEngineFlag::Uses4CC);
 
-	if (map == PAL_NONE) map = twocc ? (PaletteID)SPR_2CCMAP_BASE : (PaletteID)PALETTE_RECOLOUR_START;
+	if (map[0] == PAL_NONE) map[0] = twocc ? (PaletteID)SPR_2CCMAP_BASE : (PaletteID)PALETTE_RECOLOUR_START;
+	if (map[1] == PAL_NONE) map[1] = fourcc ? (PaletteID)SPR_2CCMAP_BASE : (PaletteID)PALETTE_RECOLOUR_START;
 
 	/* Spectator has news shown too, but has invalid company ID - as well as dedicated server */
 	if (!Company::IsValidID(company)) return map;
 
 	const Livery *livery = GetEngineLivery(engine_type, company, parent_engine_type, v, _settings_client.gui.liveries);
 
-	map += livery->GetRecolourOffset(twocc);
+	map[0] += livery->GetRecolourOffset(0, twocc);
+	map[1] += livery->GetRecolourOffset(1, fourcc);
 
 	/* Update cache */
 	if (v != nullptr) const_cast<Vehicle *>(v)->colourmap = map;
@@ -2164,25 +2187,25 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
  * Get the colour map for an engine. This used for unbuilt engines in the user interface.
  * @param engine_type ID of engine
  * @param company ID of company
- * @return A ready-to-use palette modifier
+ * @return A list of palettes.
  */
-PaletteID GetEnginePalette(EngineID engine_type, CompanyID company)
+Livery::Palettes GetEnginePalette(EngineID engine_type, CompanyID company)
 {
-	return GetEngineColourMap(engine_type, company, EngineID::Invalid(), nullptr);
+	return GetEngineColourMaps(engine_type, company, EngineID::Invalid(), nullptr);
 }
 
 /**
  * Get the colour map for a vehicle.
  * @param v Vehicle to get colour map for
- * @return A ready-to-use palette modifier
+ * @return A list of palettes.
  */
-PaletteID GetVehiclePalette(const Vehicle *v)
+Livery::Palettes GetVehiclePalette(const Vehicle *v)
 {
 	if (v->IsGroundVehicle()) {
-		return GetEngineColourMap(v->engine_type, v->owner, v->GetGroundVehicleCache()->first_engine, v);
+		return GetEngineColourMaps(v->engine_type, v->owner, v->GetGroundVehicleCache()->first_engine, v);
 	}
 
-	return GetEngineColourMap(v->engine_type, v->owner, EngineID::Invalid(), v);
+	return GetEngineColourMaps(v->engine_type, v->owner, EngineID::Invalid(), v);
 }
 
 /**

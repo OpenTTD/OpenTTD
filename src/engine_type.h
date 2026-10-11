@@ -169,12 +169,14 @@ struct RoadVehicleInfo {
  * This is defined in the specification a 32 bit value, but most bits are not currently used.
  */
 enum class ExtraEngineFlag : uint8_t {
-	NoNews          = 0, ///< No 'new vehicle' news will be generated.
-	NoPreview       = 1, ///< No exclusive preview will be offered.
-	JoinPreview     = 2, ///< Engine will join exclusive preview with variant parent.
+	NoNews = 0, ///< No 'new vehicle' news will be generated.
+	NoPreview = 1, ///< No exclusive preview will be offered.
+	JoinPreview = 2, ///< Engine will join exclusive preview with variant parent.
 	SyncReliability = 3, ///< Engine reliability will be synced with variant parent.
-	HasCab          = 4, ///< Train wagon has a cab and can lead a train when backing up, without any speed reduction.
-	IsDoubleEnded   = 5, ///< Ship is double-ended, it can reverse direction without having to turn around.
+	HasCab = 4, ///< Train wagon has a cab and can lead a train when backing up, without any speed reduction.
+	IsDoubleEnded = 5, ///< Ship is double-ended, it can reverse direction without having to turn around.
+	Uses3CC = 6, ///< Vehicle uses 3rd company colour.
+	Uses4CC = 7, ///< Vehicle uses 4rd company colour.
 };
 
 /** Bitset of \c ExtraEngineFlag elements. */
@@ -184,18 +186,18 @@ using ExtraEngineFlags = EnumBitSet<ExtraEngineFlag, uint8_t>;
  * EngineInfo.misc_flags is a bitmask, with the following values
  */
 enum class EngineMiscFlag : uint8_t {
-	RailTilts  = 0, ///< Rail vehicle tilts in curves
+	RailTilts = 0, ///< Rail vehicle tilts in curves
 	RoadIsTram = 0, ///< Road vehicle is a tram/light rail vehicle
 
-	Uses2CC    = 1, ///< Vehicle uses two company colours
+	Uses2CC = 1, ///< Vehicle uses 2nd company colour.
 
-	RailIsMU   = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
-	RailFlips  = 3, ///< Rail vehicle has old depot-flip handling
+	RailIsMU = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
+	RailFlips = 3, ///< Rail vehicle has old depot-flip handling
 
-	AutoRefit                = 4, ///< Automatic refitting is allowed
+	AutoRefit = 4, ///< Automatic refitting is allowed
 	NoDefaultCargoMultiplier = 5, ///< Use the new capacity algorithm. The default cargotype of the vehicle does not affect capacity multipliers. CB 15 is also called in purchase list.
-	NoBreakdownSmoke         = 6, ///< Do not show black smoke during a breakdown.
-	SpriteStack              = 7, ///< Draw vehicle by stacking multiple sprites.
+	NoBreakdownSmoke = 6, ///< Do not show black smoke during a breakdown.
+	SpriteStack = 7, ///< Draw vehicle by stacking multiple sprites.
 };
 
 /** Bitset of \c EngineMiscFlag elements. */

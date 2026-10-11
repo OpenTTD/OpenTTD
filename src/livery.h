@@ -81,19 +81,25 @@ DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 /** Information about a particular livery. */
 struct Livery {
 	/** Maximum number of livery colours. */
-	static constexpr size_t NUM_COLOURS = 2;
+	static constexpr size_t NUM_COLOURS = 4;
+	/** Maximum number of livery layers. */
+	static constexpr size_t NUM_LAYERS = NUM_COLOURS / 2;
+	/** Container for livery palettes. */
+	using Palettes = std::array<PaletteID, NUM_LAYERS>;
 
 	uint8_t in_use = 0; ///< Mask of in-use livery colours.
 	std::array<Colours, NUM_COLOURS> colours; ///< The livery colours.
 
 	/**
 	 * Get offset for recolour palette.
+	 * @param layer The recolour layer.
 	 * @param use_secondary Specify whether to add secondary colour offset to the result.
 	 * @return The palette offset.
 	 */
-	inline uint8_t GetRecolourOffset(bool use_secondary = true) const
+	inline uint8_t GetRecolourOffset(uint layer, bool use_secondary = true) const
 	{
-		return use_secondary ? to_underlying(this->colours[0]) + to_underlying(this->colours[1]) * 16 : to_underlying(this->colours[0]);
+		assert(layer * 2 < NUM_COLOURS);
+		return use_secondary ? to_underlying(this->colours[layer * 2]) + to_underlying(this->colours[layer * 2 + 1]) * 16 : to_underlying(this->colours[layer * 2]);
 	}
 };
 
