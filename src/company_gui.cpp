@@ -711,6 +711,8 @@ public:
 	{
 		this->CreateNestedTree();
 		this->GetWidget<NWidgetStacked>(WID_SCL_SEC_COL_DROP_SEL)->SetDisplayedPlane(_loaded_newgrf_features.num_company_colours > 1 ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_SCL_COL3_DROP_SEL)->SetDisplayedPlane(_loaded_newgrf_features.num_company_colours > 2 ? 0 : SZSP_NONE);
+		this->GetWidget<NWidgetStacked>(WID_SCL_COL4_DROP_SEL)->SetDisplayedPlane(_loaded_newgrf_features.num_company_colours > 3 ? 0 : SZSP_NONE);
 		this->vscroll = this->GetScrollbar(WID_SCL_MATRIX_SCROLLBAR);
 
 		if (group == GroupID::Invalid()) {
@@ -781,6 +783,14 @@ public:
 				break;
 			}
 
+			case WID_SCL_COL4_DROPDOWN:
+				if (_loaded_newgrf_features.num_company_colours < 4) break;
+				[[fallthrough]];
+
+			case WID_SCL_COL3_DROPDOWN:
+				if (_loaded_newgrf_features.num_company_colours < 3) break;
+				[[fallthrough]];
+
 			case WID_SCL_SEC_COL_DROPDOWN:
 				if (_loaded_newgrf_features.num_company_colours < 2) break;
 				[[fallthrough]];
@@ -803,8 +813,7 @@ public:
 
 		/* Disable dropdown controls if no scheme is selected */
 		bool disabled = this->livery_class < LiveryClass::GroupRail ? this->sel.schemes.None() : (this->sel.group == GroupID::Invalid());
-		this->SetWidgetDisabledState(WID_SCL_PRI_COL_DROPDOWN, !local || disabled);
-		this->SetWidgetDisabledState(WID_SCL_SEC_COL_DROPDOWN, !local || disabled);
+		this->SetWidgetsDisabledState(!local || disabled, WID_SCL_PRI_COL_DROPDOWN, WID_SCL_SEC_COL_DROPDOWN, WID_SCL_COL3_DROPDOWN, WID_SCL_COL4_DROPDOWN);
 
 		this->BuildGroupList(this->window_number);
 
@@ -818,7 +827,9 @@ public:
 				return GetString(STR_LIVERY_CAPTION, this->window_number);
 
 			case WID_SCL_PRI_COL_DROPDOWN:
-			case WID_SCL_SEC_COL_DROPDOWN: {
+			case WID_SCL_SEC_COL_DROPDOWN:
+			case WID_SCL_COL3_DROPDOWN:
+			case WID_SCL_COL4_DROPDOWN: {
 				const Company *c = Company::Get(this->window_number);
 				uint colour_index = widget - WID_SCL_PRI_COL_DROPDOWN;
 				StringID colour = STR_COLOUR_DEFAULT;
@@ -857,18 +868,15 @@ public:
 		/* Coordinates of scheme name column. */
 		const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_SCL_SPACER_DROPDOWN);
 		Rect sch = nwi->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
-		/* Coordinates of first dropdown. */
-		nwi = this->GetWidget<NWidgetBase>(WID_SCL_PRI_COL_DROPDOWN);
-		Rect pri = nwi->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
-		/* Coordinates of second dropdown. */
-		nwi = this->GetWidget<NWidgetBase>(WID_SCL_SEC_COL_DROPDOWN);
-		Rect sec = nwi->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
-
-		Rect pri_squ = pri.WithWidth(this->square.width, rtl);
-		Rect sec_squ = sec.WithWidth(this->square.width, rtl);
-
-		pri = pri.Indent(this->square.width + WidgetDimensions::scaled.hsep_normal, rtl);
-		sec = sec.Indent(this->square.width + WidgetDimensions::scaled.hsep_normal, rtl);
+		/* Coordinates of all dropdowns. */
+		std::array<Rect, Livery::NUM_COLOURS> columns{};
+		std::array<Rect, Livery::NUM_COLOURS> squares{};
+		for (uint colour_index = 0; colour_index < Livery::NUM_COLOURS; ++colour_index) {
+			nwi = this->GetWidget<NWidgetBase>(WID_SCL_PRI_COL_DROPDOWN + colour_index);
+			Rect rect = nwi->GetCurrentRect().Shrink(WidgetDimensions::scaled.framerect);
+			squares[colour_index] = rect.WithWidth(this->square.width, rtl);
+			columns[colour_index] = rect.Indent(this->square.width + WidgetDimensions::scaled.hsep_normal, rtl);
+		}
 
 		Rect ir = r.WithHeight(this->resize.step_height).Shrink(WidgetDimensions::scaled.matrix);
 		int square_offs = (ir.Height() - this->square.height) / 2;
@@ -881,14 +889,11 @@ public:
 			/* Livery Label. */
 			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, is_selected ? TextColour::White : TextColour::Black);
 
-			/* Text below the first dropdown. */
-			DrawSprite(SPR_SQUARE, GetColourPalette(livery.colours[0]), pri_squ.left, y + square_offs);
-			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colours[0]) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
-
-			/* Text below the second dropdown. */
-			if (sec.right > sec.left) { // Second dropdown has non-zero size.
-				DrawSprite(SPR_SQUARE, GetColourPalette(livery.colours[1]), sec_squ.left, y + square_offs);
-				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colours[1]) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
+			for (uint colour_index = 0; colour_index < Livery::NUM_COLOURS; ++colour_index) {
+				if (columns[colour_index].right > columns[colour_index].left) {
+					DrawSprite(SPR_SQUARE, GetColourPalette(livery.colours[colour_index]), squares[colour_index].left, y + square_offs);
+					DrawString(columns[colour_index].left, columns[colour_index].right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, colour_index)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colours[colour_index]) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
+				}
 			}
 
 			y += this->line_height;
@@ -953,11 +958,10 @@ public:
 				break;
 
 			case WID_SCL_PRI_COL_DROPDOWN: // First colour dropdown
-				ShowColourDropDownMenu(WID_SCL_PRI_COL_DROPDOWN);
-				break;
-
 			case WID_SCL_SEC_COL_DROPDOWN: // Second colour dropdown
-				ShowColourDropDownMenu(WID_SCL_SEC_COL_DROPDOWN);
+			case WID_SCL_COL3_DROPDOWN: // Third colour dropdown
+			case WID_SCL_COL4_DROPDOWN: // Fourth colour dropdown
+				ShowColourDropDownMenu(widget);
 				break;
 
 			case WID_SCL_MATRIX: {
@@ -1085,6 +1089,12 @@ static constexpr std::initializer_list<NWidgetPart> _nested_select_company_liver
 		NWidget(WWT_DROPDOWN, Colours::Grey, WID_SCL_PRI_COL_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_PRIMARY_TOOLTIP),
 		NWidget(NWID_SELECTION, Colours::Invalid, WID_SCL_SEC_COL_DROP_SEL),
 			NWidget(WWT_DROPDOWN, Colours::Grey, WID_SCL_SEC_COL_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_SECONDARY_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_SCL_COL3_DROP_SEL),
+			NWidget(WWT_DROPDOWN, Colours::Grey, WID_SCL_COL3_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_SECONDARY_TOOLTIP),
+		EndContainer(),
+		NWidget(NWID_SELECTION, Colours::Invalid, WID_SCL_COL4_DROP_SEL),
+			NWidget(WWT_DROPDOWN, Colours::Grey, WID_SCL_COL4_DROPDOWN), SetFill(0, 1), SetToolTip(STR_LIVERY_SECONDARY_TOOLTIP),
 		EndContainer(),
 		NWidget(WWT_RESIZEBOX, Colours::Grey),
 	EndContainer(),
