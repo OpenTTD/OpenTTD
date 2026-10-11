@@ -602,16 +602,14 @@ static void GeneratePresidentName(Company *c)
 void ResetCompanyLivery(Company *c)
 {
 	for (LiveryScheme scheme : EnumRange(LiveryScheme::End)) {
-		c->livery[scheme].in_use.Reset();
-		c->livery[scheme].colour1 = c->colour;
-		c->livery[scheme].colour2 = c->colour;
+		c->livery[scheme].in_use = 0;
+		c->livery[scheme].colours.fill(c->colour);
 	}
 
 	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index) {
-			g->livery.in_use.Reset();
-			g->livery.colour1 = c->colour;
-			g->livery.colour2 = c->colour;
+			g->livery.in_use = 0;
+			g->livery.colours.fill(c->colour);
 		}
 	}
 }
@@ -1121,8 +1119,9 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t 
 void UpdateCompanyLiveries(Company *c)
 {
 	for (LiveryScheme i : EnumRange(LiveryScheme::Steam, LiveryScheme::End)) {
-		if (!c->livery[i].in_use.Test(Livery::Flag::Primary)) c->livery[i].colour1 = c->livery[LiveryScheme::Default].colour1;
-		if (!c->livery[i].in_use.Test(Livery::Flag::Secondary)) c->livery[i].colour2 = c->livery[LiveryScheme::Default].colour2;
+		for (uint colour_index = 0; colour_index < Livery::NUM_COLOURS; ++colour_index) {
+			if (!HasBit(c->livery[i].in_use, colour_index)) c->livery[i].colours[colour_index] = c->livery[LiveryScheme::Default].colours[colour_index];
+		}
 	}
 	UpdateCompanyGroupLiveries(c);
 }
@@ -1131,60 +1130,53 @@ void UpdateCompanyLiveries(Company *c)
  * Change the company's company-colour
  * @param flags operation to perform
  * @param scheme scheme to set
- * @param primary set first/second colour
+ * @param colour_index which colour to set
  * @param colour new colour for vehicles, property, etc.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, bool primary, Colours colour)
+CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiveryScheme scheme, uint8_t colour_index, Colours colour)
 {
 	if (scheme >= LiveryScheme::End || (colour >= Colours::End && colour != Colours::Invalid)) return CMD_ERROR;
 
 	/* Default scheme can't be reset to invalid. */
 	if (scheme == LiveryScheme::Default && colour == Colours::Invalid) return CMD_ERROR;
+	if (colour_index >= Livery::NUM_COLOURS) return CMD_ERROR;
 
 	Company *c = Company::Get(_current_company);
 
 	/* Ensure no two companies have the same primary colour */
-	if (scheme == LiveryScheme::Default && primary) {
+	if (scheme == LiveryScheme::Default && colour_index == 0) {
 		for (const Company *cc : Company::Iterate()) {
 			if (cc != c && cc->colour == colour) return CMD_ERROR;
 		}
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		if (primary) {
-			if (scheme != LiveryScheme::Default) c->livery[scheme].in_use.Set(Livery::Flag::Primary, colour != Colours::Invalid);
-			if (colour == Colours::Invalid) colour = c->livery[LiveryScheme::Default].colour1;
-			c->livery[scheme].colour1 = colour;
+		if (scheme != LiveryScheme::Default) AssignBit(c->livery[scheme].in_use, colour_index, colour != Colours::Invalid);
+		if (colour == Colours::Invalid) colour = c->livery[LiveryScheme::Default].colours[colour_index];
+		c->livery[scheme].colours[colour_index] = colour;
 
-			/* If setting the first colour of the default scheme, adjust the
-			 * original and cached company colours too. */
-			if (scheme == LiveryScheme::Default) {
-				UpdateCompanyLiveries(c);
+		if (scheme == LiveryScheme::Default) {
+			UpdateCompanyLiveries(c);
+			if (colour_index == 0) {
+				/* If setting the first colour of the default scheme, adjust the
+				 * original and cached company colours too. */
 				_company_colours[_current_company] = colour;
 				c->colour = colour;
 				CompanyAdminUpdate(c);
 			}
-		} else {
-			if (scheme != LiveryScheme::Default) c->livery[scheme].in_use.Set(Livery::Flag::Secondary, colour != Colours::Invalid);
-			if (colour == Colours::Invalid) colour = c->livery[LiveryScheme::Default].colour2;
-			c->livery[scheme].colour2 = colour;
-
-			if (scheme == LiveryScheme::Default) {
-				UpdateCompanyLiveries(c);
-			}
 		}
 
-		if (c->livery[scheme].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
+		if (c->livery[scheme].in_use != 0) {
 			/* If enabling a scheme, set the default scheme to be in use too */
-			c->livery[LiveryScheme::Default].in_use.Set(Livery::Flag::Primary);
+			c->livery[LiveryScheme::Default].in_use = 1;
 		} else {
 			/* Else loop through all schemes to see if any are left enabled.
 			 * If not, disable the default scheme too. */
-			c->livery[LiveryScheme::Default].in_use.Reset({Livery::Flag::Primary, Livery::Flag::Secondary});
+			c->livery[LiveryScheme::Default].in_use = 0;
 			for (LiveryScheme other_scheme : EnumRange(LiveryScheme::End)) {
-				if (c->livery[other_scheme].in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
-					c->livery[LiveryScheme::Default].in_use.Set(Livery::Flag::Primary);
+				if (c->livery[other_scheme].in_use != 0) {
+					c->livery[LiveryScheme::Default].in_use = 1;
 					break;
 				}
 			}

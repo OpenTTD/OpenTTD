@@ -80,18 +80,11 @@ DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 
 /** Information about a particular livery. */
 struct Livery {
-	/** Flags for bitmask to declare which of the colours are set. */
-	enum class Flag : uint8_t {
-		Primary = 0, ///< Primary colour is set.
-		Secondary = 1, ///< Secondary colour is set.
-	};
+	/** Maximum number of livery colours. */
+	static constexpr size_t NUM_COLOURS = 2;
 
-	/** Bitset of \c Flag elements. */
-	using Flags = EnumBitSet<Flag, uint8_t>;
-
-	Flags in_use{}; ///< Livery flags.
-	Colours colour1 = Colours::Begin; ///< First colour, for all vehicles.
-	Colours colour2 = Colours::Begin; ///< Second colour, for vehicles with 2CC support.
+	uint8_t in_use = 0; ///< Mask of in-use livery colours.
+	std::array<Colours, NUM_COLOURS> colours; ///< The livery colours.
 
 	/**
 	 * Get offset for recolour palette.
@@ -100,7 +93,7 @@ struct Livery {
 	 */
 	inline uint8_t GetRecolourOffset(bool use_secondary = true) const
 	{
-		return use_secondary ? to_underlying(this->colour1) + to_underlying(this->colour2) * 16 : to_underlying(this->colour1);
+		return use_secondary ? to_underlying(this->colours[0]) + to_underlying(this->colours[1]) * 16 : to_underlying(this->colours[0]);
 	}
 };
 
