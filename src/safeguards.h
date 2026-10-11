@@ -53,7 +53,10 @@
 #define memcmp SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define memcpy SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #define memmove SAFEGUARD_DO_NOT_USE_THIS_METHOD
-#define memset SAFEGUARD_DO_NOT_USE_THIS_METHOD
+/* Haiku uses memset for the FD_ZERO macro, meaning we cannot prevent it there. */
+#ifndef __HAIKU__
+#	define memset SAFEGUARD_DO_NOT_USE_THIS_METHOD
+#endif
 
 /* Use fgets instead. */
 #define gets      SAFEGUARD_DO_NOT_USE_THIS_METHOD
