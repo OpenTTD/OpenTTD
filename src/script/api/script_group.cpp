@@ -224,7 +224,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, true, (::Colours)colour);
+	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, 0, (::Colours)colour);
 }
 
 /* static */ bool ScriptGroup::SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour)
@@ -232,7 +232,7 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, false, (::Colours)colour);
+	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, 1, (::Colours)colour);
 }
 
 /* static */ ScriptCompany::Colours ScriptGroup::GetPrimaryColour(GroupID group_id)
@@ -240,8 +240,8 @@
 	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
 
 	const Group *g = ::Group::Get(group_id);
-	if (!g->livery.in_use.Test(Livery::Flag::Primary)) return ScriptCompany::Colours::COLOUR_INVALID;
-	return (ScriptCompany::Colours)g->livery.colour1;
+	if (!HasBit(g->livery.in_use, 0)) return ScriptCompany::Colours::COLOUR_INVALID;
+	return (ScriptCompany::Colours)g->livery.colours[0];
 }
 
 /* static */ ScriptCompany::Colours ScriptGroup::GetSecondaryColour(GroupID group_id)
@@ -249,6 +249,6 @@
 	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
 
 	const Group *g = ::Group::Get(group_id);
-	if (!g->livery.in_use.Test(Livery::Flag::Secondary)) return ScriptCompany::Colours::COLOUR_INVALID;
-	return (ScriptCompany::Colours)g->livery.colour2;
+	if (!HasBit(g->livery.in_use, 1)) return ScriptCompany::Colours::COLOUR_INVALID;
+	return (ScriptCompany::Colours)g->livery.colours[1];
 }

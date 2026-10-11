@@ -605,17 +605,6 @@ public:
 	}
 };
 
-/**
- * Get either the primary or secondary colour of the given Livery for offsets.
- * @param l The livery to get the offset for.
- * @param primary Whether to get the primary colour.
- * @return The requested colour (offset).
- */
-constexpr uint8_t GetColourOffset(const Livery &l, bool primary)
-{
-	return to_underlying(primary ? l.colour1 : l.colour2);
-}
-
 /** Company livery colour scheme window. */
 struct SelectCompanyLiveryWindow : public Window {
 private:
@@ -635,11 +624,11 @@ private:
 	{
 		EnumBitSet<Colours, uint16_t, Colours::End> used_colours{};
 		const Livery *livery, *default_livery = nullptr;
-		bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
+		uint colour_index = widget - WID_SCL_PRI_COL_DROPDOWN;
 		uint8_t default_col{};
 
 		/* Disallow other company colours for the primary colour */
-		if (this->livery_class < LiveryClass::GroupRail && this->sel.schemes.Test(LiveryScheme::Default) && primary) {
+		if (this->livery_class < LiveryClass::GroupRail && this->sel.schemes.Test(LiveryScheme::Default) && colour_index == 0) {
 			for (const Company *c : Company::Iterate()) {
 				if (c->index != _local_company) used_colours.Set(c->colour);
 			}
@@ -666,7 +655,7 @@ private:
 		DropDownList list;
 		if (default_livery != nullptr) {
 			/* Add Colours::End to put the colour out of range, but also allow us to show what the default is */
-			default_col = GetColourOffset(*default_livery, primary) + to_underlying(Colours::End);
+			default_col = to_underlying(default_livery->colours[colour_index]) + to_underlying(Colours::End);
 			list.push_back(std::make_unique<DropDownListColourItem<>>(default_col, false));
 		}
 		for (Colours colour : EnumRange(Colours::End)) {
@@ -674,8 +663,8 @@ private:
 		}
 
 		uint8_t sel;
-		if (default_livery == nullptr || livery->in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
-			sel = GetColourOffset(*livery, primary);
+		if (default_livery == nullptr || HasBit(livery->in_use, colour_index)) {
+			sel = to_underlying(livery->colours[colour_index]);
 		} else {
 			sel = default_col;
 		}
@@ -831,23 +820,23 @@ public:
 			case WID_SCL_PRI_COL_DROPDOWN:
 			case WID_SCL_SEC_COL_DROPDOWN: {
 				const Company *c = Company::Get(this->window_number);
-				bool primary = widget == WID_SCL_PRI_COL_DROPDOWN;
+				uint colour_index = widget - WID_SCL_PRI_COL_DROPDOWN;
 				StringID colour = STR_COLOUR_DEFAULT;
 
 				if (this->livery_class < LiveryClass::GroupRail) {
 					LiveryScheme scheme = this->sel.schemes.GetNthSetBit(0).value_or(LiveryScheme::End);
 					if (scheme != LiveryScheme::End) {
 						const Livery &livery = c->livery[scheme];
-						if (scheme == LiveryScheme::Default || livery.in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
-							colour = STR_COLOUR_DARK_BLUE + GetColourOffset(livery, primary);
+						if (scheme == LiveryScheme::Default || HasBit(livery.in_use, colour_index)) {
+							colour = STR_COLOUR_DARK_BLUE + livery.colours[colour_index];
 						}
 					}
 				} else {
 					if (this->sel.group != GroupID::Invalid()) {
 						const Group *g = Group::Get(this->sel.group);
 						const Livery &livery = g->livery;
-						if (livery.in_use.Test(primary ? Livery::Flag::Primary : Livery::Flag::Secondary)) {
-							colour = STR_COLOUR_DARK_BLUE + GetColourOffset(livery, primary);
+						if (HasBit(livery.in_use, colour_index)) {
+							colour = STR_COLOUR_DARK_BLUE + livery.colours[colour_index];
 						}
 					}
 				}
@@ -893,13 +882,13 @@ public:
 			DrawString(sch.left + (rtl ? 0 : indent), sch.right - (rtl ? indent : 0), y + text_offs, str, is_selected ? TextColour::White : TextColour::Black);
 
 			/* Text below the first dropdown. */
-			DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour1), pri_squ.left, y + square_offs);
-			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Primary)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colour1) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
+			DrawSprite(SPR_SQUARE, GetColourPalette(livery.colours[0]), pri_squ.left, y + square_offs);
+			DrawString(pri.left, pri.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 0)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colours[0]) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
 
 			/* Text below the second dropdown. */
 			if (sec.right > sec.left) { // Second dropdown has non-zero size.
-				DrawSprite(SPR_SQUARE, GetColourPalette(livery.colour2), sec_squ.left, y + square_offs);
-				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || livery.in_use.Test(Livery::Flag::Secondary)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colour2) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
+				DrawSprite(SPR_SQUARE, GetColourPalette(livery.colours[1]), sec_squ.left, y + square_offs);
+				DrawString(sec.left, sec.right, y + text_offs, (is_default_scheme || HasBit(livery.in_use, 1)) ? STR_COLOUR_DARK_BLUE + to_underlying(livery.colours[1]) : STR_COLOUR_DEFAULT, is_selected ? TextColour::White : TextColour::Gold);
 			}
 
 			y += this->line_height;
@@ -1013,12 +1002,12 @@ public:
 			for (LiveryScheme scheme : this->visible_schemes) {
 				/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
 				if (this->sel.schemes.Test(scheme) || _ctrl_pressed) {
-					Command<Commands::SetCompanyColour>::Post(scheme, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
+					Command<Commands::SetCompanyColour>::Post(scheme, widget - WID_SCL_PRI_COL_DROPDOWN, colour);
 				}
 			}
 		} else {
 			/* Setting group livery */
-			Command<Commands::SetGroupLivery>::Post(this->sel.group, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
+			Command<Commands::SetGroupLivery>::Post(this->sel.group, widget - WID_SCL_PRI_COL_DROPDOWN, colour);
 		}
 	}
 
