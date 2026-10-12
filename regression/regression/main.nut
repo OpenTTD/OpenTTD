@@ -239,6 +239,9 @@ function Regression::Airport()
 	print("  GetAirportType():     " + AIAirport.GetAirportType(32119));
 	print("  GetCosts():           " + accounting.GetCosts());
 
+	print("  Hangar");
+	print("    GetName():          " + AIDepot.GetName(AIAirport.GetHangarOfAirport(32116)));
+
 	accounting.ResetCosts();
 	print("  RemoveAirport():      " + AIAirport.RemoveAirport(32118));
 	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32119));
@@ -1197,6 +1200,21 @@ function Regression::Marine()
 	}
 	print("");
 
+	print("  Depot");
+	local list = AIDepotList(AITile.TRANSPORT_WATER);
+	print("    DepotList");
+	print("      Count():                     " + list.Count());
+	list.Valuate(AITile.GetDistanceManhattanToTile, 0);
+	print("      Depot distance from (0,0) ListDump:");
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
+		print("        " + i + " => " + list.GetValue(i));
+	}
+	print("    GetName():          " + AIDepot.GetName(28479));
+	print("    SetName():          " + AIDepot.SetName(28479, "Regression"));
+	print("    GetName():          " + AIDepot.GetName(28479));
+	print("    GetName():          " + AIDepot.GetName(28480));
+	print("    GetName():          " + AIDepot.GetName(28481));
+
 	accounting.ResetCosts();
 	print("  RemoveWaterDepot():   " + AIMarine.RemoveWaterDepot(28479));
 	print("  RemoveDock():         " + AIMarine.RemoveDock(29253));
@@ -1416,6 +1434,10 @@ function Regression::Rail()
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("        " + i + " => " + list.GetValue(i));
 	}
+	print("    GetName():                     " + AIDepot.GetName(33411));
+	print("    SetName():                     " + AIDepot.SetName(33411, "Regression"));
+	print("    GetName():                     " + AIDepot.GetName(33411));
+	print("    GetName():                     " + AIDepot.GetName(33410));
 	print("    RemoveDepot():                 " + AITile.DemolishTile(33411));
 	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(23596, 23597));
 
@@ -1520,6 +1542,10 @@ function Regression::Road()
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("        " + i + " => " + list.GetValue(i));
 	}
+	print("    GetName():                     " + AIDepot.GetName(33411));
+	print("    SetName():                     " + AIDepot.SetName(33411, "Regression"));
+	print("    GetName():                     " + AIDepot.GetName(33411));
+	print("    GetName():                     " + AIDepot.GetName(33410));
 	print("    RemoveRoadDepot():             " + AIRoad.RemoveRoadDepot(33411));
 	print("    RemoveRoadDepot():             " + AIRoad.RemoveRoadDepot(33411));
 
