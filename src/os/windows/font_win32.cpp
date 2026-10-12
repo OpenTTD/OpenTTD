@@ -305,7 +305,7 @@ public:
 	{
 		Debug(Facility::Fontcache, Severity::Error, "Trying fallback fonts");
 		EFCParam langInfo;
-		std::wstring lang = OTTD2FS(language_isocode.substr(0, language_isocode.find('_')));
+		std::wstring lang = OTTD2FS(language_isocode);
 		if (GetLocaleInfoEx(lang.c_str(), LOCALE_FONTSIGNATURE, reinterpret_cast<LPWSTR>(&langInfo.locale), sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
 			/* Invalid isocode or some other mysterious error, can't determine fallback font. */
 			Debug(Facility::Fontcache, Severity::Error, "Can't get locale info for fallback font (isocode={})", language_isocode);

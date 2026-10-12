@@ -2404,7 +2404,11 @@ void CheckForMissingGlyphs(FontSizes fontsizes, MissingGlyphSearcher *searcher)
 		bool any_font_configured = !_fcsettings.medium.font.empty();
 		FontCacheSettings backup = _fcsettings;
 
-		bad_font = !FontProviderManager::FindFallbackFont(_langpack.langpack->isocode, searcher);
+		/* All systems expect a hyphen not an underscore in the isocode. */
+		std::string isocode = _langpack.langpack->isocode;
+		std::ranges::replace(isocode, '_', '-');
+
+		bad_font = !FontProviderManager::FindFallbackFont(isocode, searcher);
 		if (!bad_font) {
 			FontCache::LoadFontCaches(searcher->missing_fontsizes);
 		}
