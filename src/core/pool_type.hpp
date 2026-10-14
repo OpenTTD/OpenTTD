@@ -62,7 +62,7 @@ struct EMPTY_BASES PoolID : PoolIDBase {
 	/* Only allow conversion to BaseType via method. */
 	constexpr TBaseType base() const noexcept { return this->value; }
 
-	static constexpr PoolID Begin() { return PoolID{}; }
+	static constexpr PoolID Begin() { return PoolID{static_cast<TBaseType>(0)}; }
 	static constexpr PoolID End() { return PoolID{static_cast<TBaseType>(TEnd)}; }
 	static constexpr PoolID Invalid() { return PoolID{static_cast<TBaseType>(TInvalid)}; }
 
@@ -77,8 +77,8 @@ struct EMPTY_BASES PoolID : PoolIDBase {
 	constexpr bool operator==(const size_t &rhs) const { return this->value == rhs; }
 	constexpr auto operator<=>(const size_t &rhs) const { return this->value <=> rhs; }
 private:
-	/** The bare storage. @warning Do not explicitly initialize. */
-	TBaseType value;
+	/** The bare storage. */
+	TBaseType value{TInvalid};
 };
 
 template <typename T> requires std::is_base_of_v<PoolIDBase, T>
