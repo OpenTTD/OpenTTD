@@ -161,6 +161,7 @@ add_files(
     script_companymode.hpp
     script_controller.hpp
     script_date.hpp
+    script_depot.hpp
     script_depotlist.hpp
     script_engine.hpp
     script_enginelist.hpp
@@ -235,6 +236,7 @@ add_files(
     script_companymode.cpp
     script_controller.cpp
     script_date.cpp
+    script_depot.cpp
     script_depotlist.cpp
     script_engine.cpp
     script_enginelist.cpp
