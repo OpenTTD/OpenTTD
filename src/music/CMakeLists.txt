@@ -48,4 +48,6 @@ add_files(
     music_driver.hpp
     null_m.cpp
     null_m.h
+    sampled_music.cpp
+    sampled_music.h
 )
