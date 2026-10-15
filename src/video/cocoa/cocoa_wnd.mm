@@ -197,10 +197,9 @@ static NSImage *NSImageFromSprite(SpriteID sprite_id, ZoomLevel zoom)
 {
 	auto *drv = static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance());
 
-	/* Setup cursor for the current _game_mode. */
-	NSEvent *e = [ [ NSEvent alloc ] init ];
-	[ drv->cocoaview cursorUpdate:e ];
-	[ e release ];
+	/* Hide the cursor to start with since the very first call to
+	 * mouseEntered: won't */
+	if (_game_mode != GameMode::Bootstrap && _cursor.in_window) [ NSCursor hide ];
 
 	/* Hand off to main application code. */
 	drv->MainLoopReal();
@@ -409,30 +408,6 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	_cocoa_video_dialog = false;
 }
 
-
-/**
- * Re-implement the system cursor in order to allow hiding and showing it nicely
- */
-@implementation NSCursor (OTTD_CocoaCursor)
-/**
- * Create clear cursor for cocoa driver.
- * @return The created cursor.
- */
-+ (NSCursor *) clearCocoaCursor
-{
-	/* RAW 16x16 transparent GIF */
-	unsigned char clearGIFBytes[] = {
-		0x47, 0x49, 0x46, 0x38, 0x37, 0x61, 0x10, 0x00, 0x10, 0x00, 0x80, 0x00,
-		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0xF9, 0x04, 0x01, 0x00,
-		0x00, 0x01, 0x00, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x10, 0x00,
-		0x00, 0x02, 0x0E, 0x8C, 0x8F, 0xA9, 0xCB, 0xED, 0x0F, 0xA3, 0x9C, 0xB4,
-		0xDA, 0x8B, 0xB3, 0x3E, 0x05, 0x00, 0x3B};
-	NSData *clearGIFData = [ NSData dataWithBytesNoCopy:&clearGIFBytes[0] length:55 freeWhenDone:NO ];
-	NSImage *clearImg = [ [ NSImage alloc ] initWithData:clearGIFData ];
-	return [ [ NSCursor alloc ] initWithImage:clearImg hotSpot:NSMakePoint(0.0,0.0) ];
-}
-@end
-
 @implementation OTTD_CocoaWindow {
 	VideoDriver_Cocoa *driver;
 	bool touchbar_created; ///< Whether the touchbar exists.
@@ -597,15 +572,6 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 	}
 }
 
-/**
- * Update mouse cursor to use for this view.
- * @param event Event from the operating system. Exists because the API requires it.
- */
-- (void)cursorUpdate:(NSEvent *)event
-{
-	[ (_game_mode == GameMode::Bootstrap ? [ NSCursor arrowCursor ] : [ NSCursor clearCocoaCursor ]) set ];
-}
-
 - (void)viewWillMoveToWindow:(NSWindow *)win
 {
 	for (NSTrackingArea *a in [ self trackingAreas ]) {
@@ -627,6 +593,9 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
  */
 - (void)mouseEntered:(NSEvent *)theEvent
 {
+	if (_game_mode != GameMode::Bootstrap && !_cursor.in_window) {
+		[ NSCursor hide ];
+	}
 	_cursor.in_window = true;
 }
 /**
@@ -636,6 +605,12 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 - (void)mouseExited:(NSEvent *)theEvent
 {
 	if ([ self window ] != nil) UndrawMouseCursor();
+
+	/* We can't unconditionally call unhide as the hide/unhide calls
+	 * should be balanced. */
+	if (_game_mode != GameMode::Bootstrap && _cursor.in_window) {
+		[ NSCursor unhide ];
+	}
 	_cursor.in_window = false;
 }
 
