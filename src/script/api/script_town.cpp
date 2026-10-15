@@ -177,7 +177,9 @@
 			break;
 
 		default:
-			EnforcePrecondition(false, (days_between_town_growth * ::Ticks::DAY_TICKS / ::Ticks::TOWN_GROWTH_TICKS) <= MAX_TOWN_GROWTH_TICKS);
+			static const SQInteger max_days_between_town_growth = ::CeilDiv(MAX_TOWN_GROWTH_TICKS * ::Ticks::TOWN_GROWTH_TICKS, ::Ticks::DAY_TICKS);
+			EnforcePrecondition(false, days_between_town_growth <= max_days_between_town_growth);
+			if (days_between_town_growth < 0) days_between_town_growth = 0;
 			/* Don't use growth_rate 0 as it means GROWTH_NORMAL */
 			growth_rate = std::max<SQInteger>(days_between_town_growth * ::Ticks::DAY_TICKS, 2u) - 1;
 			break;
