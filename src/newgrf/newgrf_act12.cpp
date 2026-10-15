@@ -45,6 +45,7 @@ static void LoadFontGlyph(ByteReader &buf)
 		for (uint c = 0; c < num_char; c++) {
 			if (size < FontSize::End) SetUnicodeGlyph(size, base_char + c, _cur_gps.spriteid);
 			_cur_gps.nfo_line++;
+			RemoveSpriteVariations(_cur_gps.spriteid);
 			LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, _cur_gps.nfo_line);
 		}
 	}
