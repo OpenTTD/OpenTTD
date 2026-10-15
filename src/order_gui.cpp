@@ -320,7 +320,11 @@ void DrawOrderString(const Vehicle *v, const Order *order, VehicleOrderID order_
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			line = GetString(order->GetNonStopType().Test(OrderNonStopFlag::NonStop) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT, order->GetDestination());
+			if (order->IsWaypointReverseOrder()) {
+				line = GetString(order->GetNonStopType().Test(OrderNonStopFlag::NonStop) ? STR_ORDER_GO_TO_WAYPOINT_REVERSE : STR_ORDER_GO_NON_STOP_TO_WAYPOINT_REVERSE, order->GetDestination());
+			} else {
+				line = GetString(order->GetNonStopType().Test(OrderNonStopFlag::NonStop) ? STR_ORDER_GO_NON_STOP_TO_WAYPOINT : STR_ORDER_GO_TO_WAYPOINT, order->GetDestination());
+			}
 			break;
 
 		case OT_CONDITIONAL:
@@ -387,7 +391,17 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			v->type == VehicleType::Train &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetStationIndex(tile));
-		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType({OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia});
+
+		/* Maybe stop and reverse at the waypoint. */
+		if (_ctrl_pressed) {
+			/* Go to the waypoint, stop, and reverse. */
+			order.SetNonStopType(OrderNonStopFlag::NonStop);
+			order.SetStopLocation(OrderStopLocation::NearEnd);
+		} else {
+			/* Go via the waypoint without stopping. */
+			order.SetNonStopType({OrderNonStopFlag::NonStop, OrderNonStopFlag::GoVia});
+			order.SetStopLocation(OrderStopLocation::FarEnd);
+		}
 		return order;
 	}
 
@@ -515,6 +529,7 @@ private:
 		/* WID_O_SEL_TOP_LEFT */
 		DP_LEFT_LOAD       = 0, ///< Display 'load' in the left button of the top row of the train/rv order window.
 		DP_LEFT_REFIT      = 1, ///< Display 'refit' in the left button of the top row of the train/rv order window.
+		DP_LEFT_REVERSE    = 2, ///< Display 'reverse' in the left button of the top row of the train/rv order window.
 
 		/* WID_O_SEL_TOP_MIDDLE */
 		DP_MIDDLE_UNLOAD   = 0, ///< Display 'unload' in the middle button of the top row of the train/rv order window.
@@ -711,6 +726,35 @@ private:
 			this->selected_order = selected >= this->vehicle->GetNumOrders() ? -1 : selected;
 			this->UpdateButtonState();
 		}
+	}
+
+	/**
+	 * Handle the click on the reverse button.
+	 */
+	void OrderClick_Reverse()
+	{
+		if (!this->vehicle->IsGroundVehicle()) return;
+
+		VehicleOrderID sel_ord = this->OrderGetSel();
+		const Order *order = this->vehicle->GetOrder(sel_ord);
+
+		if (order == nullptr) return;
+
+		OrderNonStopFlags nonstop = order->GetNonStopType();
+		OrderStopLocation stop_location;
+
+		if (order->IsWaypointReverseOrder()) {
+			/* Change to a regular go via order. */
+			nonstop = order->GetNonStopType().Set(OrderNonStopFlag::GoVia);
+			stop_location = OrderStopLocation::FarEnd;
+		} else {
+			/* Change to a reverse order. */
+			nonstop = order->GetNonStopType().Reset(OrderNonStopFlag::GoVia);
+			stop_location = OrderStopLocation::NearEnd;
+		}
+
+		Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_NON_STOP, nonstop.base());
+		Command<Commands::ModifyOrder>::Post(STR_ERROR_CAN_T_MODIFY_THIS_ORDER, this->vehicle->tile, this->vehicle->index, sel_ord, MOF_STOP_LOCATION, to_underlying(stop_location));
 	}
 
 	/**
@@ -999,11 +1043,13 @@ public:
 						row_sel->SetDisplayedPlane(DP_ROW_LOAD);
 					} else {
 						train_row_sel->SetDisplayedPlane(DP_GROUNDVEHICLE_ROW_NORMAL);
-						left_sel->SetDisplayedPlane(DP_LEFT_LOAD);
+						left_sel->SetDisplayedPlane(DP_LEFT_REVERSE);
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_UNLOAD);
 						right_sel->SetDisplayedPlane(DP_RIGHT_EMPTY);
 						this->EnableWidget(WID_O_NON_STOP);
 						this->SetWidgetLoweredState(WID_O_NON_STOP, order->GetNonStopType().Test(OrderNonStopFlag::NonStop));
+						this->EnableWidget(WID_O_REVERSE);
+						this->SetWidgetLoweredState(WID_O_REVERSE, order->IsWaypointReverseOrder());
 					}
 					this->DisableWidget(WID_O_FULL_LOAD);
 					this->DisableWidget(WID_O_UNLOAD);
@@ -1292,6 +1338,10 @@ public:
 				} else {
 					ShowDropDownMenu(this, _order_refit_action_dropdown, 0, WID_O_REFIT_DROPDOWN, 0, 0);
 				}
+				break;
+
+			case WID_O_REVERSE:
+				this->OrderClick_Reverse();
 				break;
 
 			case WID_O_TIMETABLE_VIEW:
@@ -1599,6 +1649,8 @@ static constexpr std::initializer_list<NWidgetPart> _nested_orders_train_widgets
 							SetStringTip(STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD), SetResize(1, 0),
 					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_O_REFIT), SetFill(1, 0),
 							SetStringTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP), SetResize(1, 0),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_O_REVERSE), SetFill(1, 0),
+							SetStringTip(STR_ORDER_REVERSE, STR_ORDER_REVERSE_TOOLTIP), SetResize(1, 0),
 				EndContainer(),
 				NWidget(NWID_SELECTION, Colours::Invalid, WID_O_SEL_TOP_MIDDLE),
 					NWidget(NWID_BUTTON_DROPDOWN, Colours::Grey, WID_O_UNLOAD), SetFill(1, 0),
