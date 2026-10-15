@@ -899,6 +899,8 @@ void GfxInitSpriteMem()
 
 	_sprite_files.clear();
 	_spritecache_bytes_used = 0;
+
+	ClearSpriteVariations();
 }
 
 /**
