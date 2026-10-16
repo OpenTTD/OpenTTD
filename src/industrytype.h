@@ -170,7 +170,6 @@ struct IndustryTileSpec {
 	IndustryTileCallbackMasks callback_mask{}; ///< Bitmask of industry tile callbacks that have to be called.
 	AnimationInfo<IndustryAnimationTriggers> animation{}; ///< Information about the animation (is it looping, how many loops etc).
 	IndustryTileSpecialFlags special_flags{}; ///< Bitmask of extra flags used by the tile.
-	bool enabled;                         ///< entity still available (by default true).newgrf can disable it, though
 	SubstituteGRFFileProps grf_prop{INVALID_INDUSTRYTILE}; ///< properties related to the grf file
 	std::vector<BadgeID> badges{}; ///< Badge list.
 
@@ -193,7 +192,7 @@ struct IndustryTileSpec {
 	 */
 	constexpr IndustryTileSpec(int8_t ca1, std::variant<CargoLabel, MixedCargoType> c1, int8_t ca2, std::variant<CargoLabel, MixedCargoType> c2, int8_t ca3, std::variant<CargoLabel, MixedCargoType> c3, Slope sl, IndustryGfx a1, IndustryGfx a2, bool a3) :
 		accepts_cargo{INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO, INVALID_CARGO},
-		acceptance{ca1, ca2, ca3}, slopes_refused(sl), anim_production(a1), anim_next(a2), anim_state(a3), enabled(true), accepts_cargo_label{c1, c2, c3}
+		acceptance{ca1, ca2, ca3}, slopes_refused(sl), anim_production(a1), anim_next(a2), anim_state(a3), accepts_cargo_label{c1, c2, c3}
 	{}
 
 	/**
