@@ -188,3 +188,9 @@
    -1 sprites/overlay_snowy_rocks_3.png 8bpp    1 1  64  31 -31    0 normal
    -1 sprites/overlay_snowy_rocks_4.png 8bpp    1 1  64  31 -31    0 normal
    -1 sprites/overlay_coastal_rocks.png 8bpp    1 1  64  31 -31    0 normal
+
+   -1 * 8    0A FF \wx8001 01 \w3981 04
+   -1 sprites/1r_3981_shuffled.png 8bpp 1 1 64 31 -31 0 normal
+   -1 sprites/1r_3981_shuffled.png 8bpp 67 1 64 31 -31 0 normal
+   -1 sprites/1r_3981_shuffled.png 8bpp 133 1 64 31 -31 0 normal
+   -1 sprites/1r_3981_shuffled.png 8bpp 199 1 64 31 -31 0 normal
