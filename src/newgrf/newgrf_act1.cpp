@@ -33,6 +33,7 @@ static void NewSpriteSet(ByteReader &buf)
 	 */
 
 	GrfSpecFeature feature{buf.ReadByte()};
+
 	uint16_t num_sets  = buf.ReadByte();
 	uint16_t first_set = 0;
 
@@ -43,9 +44,19 @@ static void NewSpriteSet(ByteReader &buf)
 		num_sets = buf.ReadExtendedByte();
 	}
 	uint16_t num_ents = buf.ReadExtendedByte();
+	uint32_t total_sprites = num_sets * num_ents;
+	bool has_variations = HasBit(num_sets, 15);
+	ClrBit(num_sets, 15);
+	const uint8_t *variations = has_variations ? buf.ReadBytes(total_sprites) : nullptr;
 
 	if (feature >= GrfSpecFeature::End) {
-		_cur_gps.skip_sprites = num_sets * num_ents;
+		if (has_variations) {
+			for (uint i = 0; i < total_sprites; ++i) {
+				_cur_gps.skip_sprites += variations[i];
+			}
+		} else {
+			_cur_gps.skip_sprites = total_sprites;
+		}
 		GrfMsg(Severity::Error, "NewSpriteSet: Unsupported feature 0x{:02X}, skipping {} sprites", feature, _cur_gps.skip_sprites);
 		return;
 	}
@@ -53,20 +64,30 @@ static void NewSpriteSet(ByteReader &buf)
 	_cur_gps.AddSpriteSets(feature, _cur_gps.spriteid, first_set, num_sets, num_ents);
 
 	GrfMsg(Severity::Trace1, "New sprite set at {} of feature 0x{:02X}, consisting of {} sets with {} views each (total {})",
-		_cur_gps.spriteid, feature, num_sets, num_ents, num_sets * num_ents
+		_cur_gps.spriteid, feature, num_sets, num_ents, total_sprites
 	);
 
-	for (int i = 0; i < num_sets * num_ents; i++) {
-		_cur_gps.nfo_line++;
-		LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, _cur_gps.nfo_line);
+	uint load_index = _cur_gps.spriteid + total_sprites;
+	for (uint i = 0; i < total_sprites; ++i) {
+		if (has_variations) {
+			uint8_t num_variations = variations[i];
+			AddSpriteVariations(_cur_gps.spriteid++, load_index, num_variations);
+			for (uint j = 0; j < num_variations; ++j) {
+				LoadNextSprite(load_index++, *_cur_gps.file, ++_cur_gps.nfo_line);
+			}
+		} else {
+			/* No need to remove sprite variations here. */
+			LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, ++_cur_gps.nfo_line);
+		}
 	}
+	_cur_gps.spriteid = load_index;
 }
 
 /* Action 0x01 (SKIP) */
 static void SkipAct1(ByteReader &buf)
 {
 	buf.ReadByte();
-	uint16_t num_sets  = buf.ReadByte();
+	uint16_t num_sets = buf.ReadByte();
 
 	if (num_sets == 0 && buf.HasData(3)) {
 		/* Extended Action1 format.
@@ -75,8 +96,18 @@ static void SkipAct1(ByteReader &buf)
 		num_sets = buf.ReadExtendedByte();
 	}
 	uint16_t num_ents = buf.ReadExtendedByte();
+	uint32_t total_sprites = num_sets * num_ents;
+	bool has_variations = HasBit(num_sets, 15);
+	ClrBit(num_sets, 15);
 
-	_cur_gps.skip_sprites = num_sets * num_ents;
+	if (has_variations) {
+		const uint8_t *variations = buf.ReadBytes(total_sprites);
+		for (uint i = 0; i < total_sprites; ++i) {
+			_cur_gps.skip_sprites += variations[i];
+		}
+	} else {
+		_cur_gps.skip_sprites = total_sprites;
+	}
 
 	GrfMsg(Severity::Notice, "SkipAct1: Skipping {} sprites", _cur_gps.skip_sprites);
 }

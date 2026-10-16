@@ -493,6 +493,68 @@ void HandleZoomMessage(Window *w, const Viewport &vp, WidgetID widget_zoom_in, W
 	w->SetWidgetDirty(widget_zoom_out);
 }
 
+/** Map of sprite id to variation sprites. */
+static std::unordered_map<SpriteID, std::pair<SpriteID, uint32_t>> _sprite_variations;
+
+/**
+ * Clear all sprite variations.
+ */
+void ClearSpriteVariations()
+{
+	_sprite_variations.clear();
+}
+
+/**
+ * Add sprite variations.
+ * @param base_image The sprite to have variations.
+ * @param variation_image The first variation sprite.
+ * @param num_variations The number of variation sprites.
+ */
+void AddSpriteVariations(SpriteID base_image, SpriteID variation_image, uint num_variations)
+{
+	_sprite_variations[base_image] = {variation_image, num_variations};
+}
+
+/**
+ * Remove sprite variations.
+ * @param base_image The sprite to remove variations.
+ */
+void RemoveSpriteVariations(SpriteID base_image)
+{
+	_sprite_variations.erase(base_image);
+}
+
+/**
+ * Get a hash value for a tile.
+ * @param tile The tile.
+ * @param seed Additional seed for hash.
+ * @return 16-bit Hashed value.
+ */
+uint16_t GetTileHash(TileIndex tile, uint32_t seed)
+{
+	uint32_t hash = tile.base() + seed;
+	hash = ((hash >> 16) ^ hash) * 0x45d9f3bu;
+	hash = ((hash >> 16) ^ hash) * 0x45d9f3bu;
+	hash = (hash >> 16) ^ hash;
+	return hash;
+}
+
+/**
+ * Get a sprite variation for a sprite.
+ * @param image The sprite.
+ * @param tile The tile being drawn.
+ * @return Variation sprite, or the original sprite if no variation is present.
+ */
+SpriteID GetSpriteVariation(SpriteID image, TileIndex tile)
+{
+	auto it = _sprite_variations.find(image & SPRITE_MASK);
+	if (it == _sprite_variations.end()) return image;
+
+	uint variation = GetTileHash(tile, 0) % (it->second.second + 1);
+	if (variation == it->second.second) return image;
+	return (image &~ SPRITE_MASK) | (it->second.first + variation);
+}
+
 /**
  * Schedules a tile sprite for drawing.
  *
@@ -510,7 +572,7 @@ static void AddTileSpriteToDraw(SpriteID image, PaletteID pal, int32_t x, int32_
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
 	TileSpriteToDraw &ts = _vd.tile_sprites_to_draw.emplace_back();
-	ts.image = image;
+	ts.image = GetSpriteVariation(image, _cur_ti.tile);
 	ts.pal = pal;
 	ts.sub = sub;
 	Point pt = RemapCoords(x, y, z);
@@ -726,7 +788,7 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int z,
 	ps.left = tmp_left;
 	ps.top  = tmp_top;
 
-	ps.image = image;
+	ps.image = GetSpriteVariation(image, _cur_ti.tile);
 	ps.pal = pal;
 	ps.sub = sub;
 	ps.xmin = x;
@@ -845,7 +907,7 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 	}
 
 	ChildScreenSpriteToDraw &cs = _vd.child_screen_sprites_to_draw.emplace_back();
-	cs.image = image;
+	cs.image = GetSpriteVariation(image, _cur_ti.tile);
 	cs.pal = pal;
 	cs.sub = sub;
 	cs.x = scale ? x * ZOOM_BASE : x;

@@ -95,14 +95,27 @@ static void GraphicsNew(ByteReader &buf)
 {
 	/* <05> <graphics-type> <num-sprites> <other data...>
 	 *
-	 * B graphics-type What set of graphics the sprites define.
+	 * E graphics-type What set of graphics the sprites define.
 	 * E num-sprites   How many sprites are in this set?
 	 * V other data    Graphics type specific data.  Currently unused. */
 
-	uint8_t type = buf.ReadByte();
+	bool has_offset = false;
+	bool has_variations = false;
+	/* Manually handle the extended-byte as the bit-flags change. */
+	uint16_t type = buf.ReadByte();
+	if (type == 0xFF) {
+		type = buf.ReadWord();
+		has_offset = HasBit(type, 14);
+		has_variations = HasBit(type, 15);
+		ClrBit(type, 14);
+		ClrBit(type, 15);
+	} else {
+		has_offset = HasBit(type, 7);
+		ClrBit(type, 7);
+	}
 	uint16_t num = buf.ReadExtendedByte();
-	uint16_t offset = HasBit(type, 7) ? buf.ReadExtendedByte() : 0;
-	ClrBit(type, 7); // Clear the high bit as that only indicates whether there is an offset.
+	uint16_t offset = has_offset ? buf.ReadExtendedByte() : 0;
+	const uint8_t *variations = has_variations ? buf.ReadBytes(num) : nullptr;
 
 	if ((type == 0x0D) && (num == 10) && _cur_gps.grfconfig->flags.Test(GRFConfigFlag::System)) {
 		/* Special not-TTDP-compatible case used in openttd.grf
@@ -167,16 +180,24 @@ static void GraphicsNew(ByteReader &buf)
 	bool dup_oneway_sprites = ((type == 0x09) && (offset + num <= ONEWAY_SLOPE_N_OFFSET));
 	bool dup_rock_sprites = ((type == 0x1A) && (offset + num <= SPR_OVERLAY_ROCKS_WATER_COAST - SPR_OVERLAY_ROCKS_BASE));
 
-	for (int i = 0; i < num; ++i) {
-		_cur_gps.nfo_line++;
-		SpriteID load_index = (replace == 0 ? _cur_gps.spriteid++ : replace++);
-		LoadNextSprite(load_index, *_cur_gps.file, _cur_gps.nfo_line);
-		if (dup_oneway_sprites) {
-			DupSprite(load_index, load_index + ONEWAY_SLOPE_N_OFFSET);
-			DupSprite(load_index, load_index + ONEWAY_SLOPE_S_OFFSET);
-		}
-		if (dup_rock_sprites && i < NUM_SLOPES) {
-			DupSprite(load_index, load_index + SPR_OVERLAY_ROCKS_WATER_COAST - SPR_OVERLAY_ROCKS_BASE);
+	for (uint i = 0; i < num; ++i) {
+		if (variations != nullptr) {
+			uint8_t num_variations = variations[i];
+			AddSpriteVariations(replace++, _cur_gps.spriteid, num_variations);
+			for (uint j = 0; j < num_variations; ++j) {
+				LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, ++_cur_gps.nfo_line);
+			}
+		} else {
+			SpriteID load_index = (replace == 0 ? _cur_gps.spriteid++ : replace++);
+			RemoveSpriteVariations(load_index);
+			LoadNextSprite(load_index, *_cur_gps.file, ++_cur_gps.nfo_line);
+			if (dup_oneway_sprites) {
+				DupSprite(load_index, load_index + ONEWAY_SLOPE_N_OFFSET);
+				DupSprite(load_index, load_index + ONEWAY_SLOPE_S_OFFSET);
+			}
+			if (dup_rock_sprites && i < NUM_SLOPES) {
+				DupSprite(load_index, load_index + SPR_OVERLAY_ROCKS_WATER_COAST - SPR_OVERLAY_ROCKS_BASE);
+			}
 		}
 	}
 
@@ -186,11 +207,23 @@ static void GraphicsNew(ByteReader &buf)
 /* Action 0x05 (SKIP) */
 static void SkipAct5(ByteReader &buf)
 {
-	/* Ignore type byte */
-	buf.ReadByte();
+	bool has_variations = false;
+	uint16_t type = buf.ReadByte();
+	if (type == 0xFF) {
+		type = buf.ReadWord();
+		if (HasBit(type, 15)) has_variations = true;
+	}
 
 	/* Skip the sprites of this action */
-	_cur_gps.skip_sprites = buf.ReadExtendedByte();
+	uint16_t num = buf.ReadExtendedByte();
+	if (has_variations) {
+		const uint8_t *variations = buf.ReadBytes(num);
+		for (uint i = 0; i < num; ++i) {
+			_cur_gps.skip_sprites += variations[i];
+		}
+	} else {
+		_cur_gps.skip_sprites = num;
+	}
 
 	GrfMsg(Severity::Notice, "SkipAct5: Skipping {} sprites", _cur_gps.skip_sprites);
 }

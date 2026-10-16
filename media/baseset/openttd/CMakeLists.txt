@@ -28,7 +28,8 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/tramtracks.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/tunnel_portals.nfo
                          ${CMAKE_CURRENT_SOURCE_DIR}/2ccmap.nfo
-        PNG_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/airports.png
+        PNG_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/1r_3981_shuffled.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/airports.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/airport_preview.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/aqueduct.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/autorail.png

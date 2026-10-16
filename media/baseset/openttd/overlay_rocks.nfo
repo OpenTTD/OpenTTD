@@ -179,3 +179,18 @@
    -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1281 1  64  15 -31    0 normal
    -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1361 1  64  31 -31   -8 normal
    -1 sprites/overlay_toyland_coastal_rocks.png 8bpp 1441 1  64  31 -31   -8 normal
+
+   -1 * 6	 05 FF \wx801A 01 06
+
+   -1 sprites/overlay_rocks.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_1.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_2.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_3.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_snowy_rocks_4.png 8bpp    1 1  64  31 -31    0 normal
+   -1 sprites/overlay_coastal_rocks.png 8bpp    1 1  64  31 -31    0 normal
+
+   -1 * 8    0A FF \wx8001 01 \w3981 04
+   -1 sprites/1r_3981_shuffled.png 8bpp 1 1 64 31 -31 0 normal
+   -1 sprites/1r_3981_shuffled.png 8bpp 67 1 64 31 -31 0 normal
+   -1 sprites/1r_3981_shuffled.png 8bpp 133 1 64 31 -31 0 normal
+   -1 sprites/1r_3981_shuffled.png 8bpp 199 1 64 31 -31 0 normal
