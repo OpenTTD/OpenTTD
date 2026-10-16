@@ -282,7 +282,6 @@ void IndustryTileOverrideManager::SetEntitySpec(IndustryTileSpec &&its)
 		if (this->entity_overrides[i] != _industry_tile_specs[indt_id].grf_prop.local_id || this->grfid_overrides[i] != _industry_tile_specs[indt_id].grf_prop.grfid) continue;
 
 		overridden_its->grf_prop.override_id = indt_id;
-		overridden_its->enabled = false;
 		this->entity_overrides[i] = this->invalid_id;
 		this->grfid_overrides[i] = {};
 	}

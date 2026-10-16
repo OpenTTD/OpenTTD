@@ -105,8 +105,6 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 				if (tsp == nullptr) {
 					tsp = std::make_unique<IndustryTileSpec>(_industry_tile_specs[subs_id]);
 
-					tsp->enabled = true;
-
 					/* A copied tile should not have the animation infos copied too.
 					 * The anim_state should be left untouched, though
 					 * It is up to the author to animate them */
