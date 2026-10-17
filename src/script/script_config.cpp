@@ -10,9 +10,7 @@
 #include "../stdafx.h"
 #include "../settings_type.h"
 #include "script_info.hpp"
-#include "api/script_object.hpp"
 #include "../textfile_gui.h"
-#include "../string_func.h"
 #include <charconv>
 
 #include "table/strings.h"
@@ -27,7 +25,7 @@ void ScriptConfig::Change(std::optional<std::string_view> name, int version, boo
 	} else {
 		this->info = nullptr;
 	}
-	this->version = (info == nullptr) ? -1 : info->GetVersion();
+	this->version = (this->info == nullptr) ? -1 : this->info->GetVersion();
 	this->config_list.reset();
 	this->to_load_data.reset();
 
@@ -44,12 +42,6 @@ ScriptConfig::ScriptConfig(const ScriptConfig &config)
 	for (const auto &item : config.settings) {
 		this->settings[item.first] = item.second;
 	}
-}
-
-ScriptConfig::~ScriptConfig()
-{
-	this->ResetSettings();
-	this->to_load_data.reset();
 }
 
 ScriptInfo *ScriptConfig::GetInfo() const
