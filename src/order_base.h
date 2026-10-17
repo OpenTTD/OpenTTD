@@ -427,9 +427,6 @@ public:
 		this->Initialize(v);
 	}
 
-	/** Destructor. Invalidates OrderList for re-usage by the pool. */
-	~OrderList() {}
-
 	void Initialize(Vehicle *v);
 
 	void RecalculateTimetableDuration();

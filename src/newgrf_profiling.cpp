@@ -34,13 +34,6 @@ NewGRFProfiler::NewGRFProfiler(const GRFFile *grffile) : grffile(grffile)
 }
 
 /**
- * Complete profiling session and write data to file
- */
-NewGRFProfiler::~NewGRFProfiler()
-{
-}
-
-/**
  * Capture the start of a sprite group resolution.
  * @param resolver  Data about sprite group being resolved
  */

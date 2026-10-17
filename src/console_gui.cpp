@@ -60,10 +60,6 @@ struct IConsoleLine {
 			time(0)
 	{
 	}
-
-	~IConsoleLine()
-	{
-	}
 };
 
 /** The console backlog buffer. Item index 0 is the newest line. */

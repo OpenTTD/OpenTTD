@@ -71,9 +71,6 @@ public:
 	CargoPacket(CargoPacketID index, uint16_t count, uint16_t periods_in_transit, StationID first_station, TileIndex source_xy, Money feeder_share);
 	CargoPacket(CargoPacketID index, uint16_t count, Money feeder_share, CargoPacket &original);
 
-	/** Destroy the packet. */
-	~CargoPacket() { }
-
 	CargoPacket *Split(uint new_size);
 	void Merge(CargoPacket *cp);
 	void Reduce(uint count);
