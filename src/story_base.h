@@ -151,11 +151,6 @@ struct StoryPageElement : StoryPageElementPool::PoolItem<&_story_page_element_po
 	StoryPageElement(StoryPageElementID index) : StoryPageElementPool::PoolItem<&_story_page_element_pool>(index) {}
 	StoryPageElement(StoryPageElementID index, uint32_t sort_value, StoryPageElementType type, StoryPageID page) :
 		StoryPageElementPool::PoolItem<&_story_page_element_pool>(index), sort_value(sort_value), page(page), type(type) {}
-
-	/**
-	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
-	 */
-	~StoryPageElement() { }
 };
 
 /** Struct about stories, current and completed */

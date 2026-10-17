@@ -38,11 +38,6 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	Goal(GoalID index, GoalType type = GoalType::None, GoalTypeID dst = 0, CompanyID company = CompanyID::Invalid(), const EncodedString &text = {}) :
 		GoalPool::PoolItem<&_goal_pool>(index), company(company), type(type), dst(dst), text(text) {}
 
-	/**
-	 * (Empty) destructor has to be defined else operator delete might be called with nullptr parameter
-	 */
-	~Goal() { }
-
 	static bool IsValidGoalDestination(CompanyID company, GoalType type, GoalTypeID dest);
 };
 

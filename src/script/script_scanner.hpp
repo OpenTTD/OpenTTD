@@ -19,7 +19,6 @@ using ScriptInfoList = std::map<std::string, class ScriptInfo *, CaseInsensitive
 class ScriptScanner : public FileScanner {
 public:
 	ScriptScanner();
-	~ScriptScanner() override;
 
 	/**
 	 * Initialize the scanner by scanning for scripts and creating dummies if needed.

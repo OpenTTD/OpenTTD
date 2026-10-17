@@ -103,7 +103,7 @@ class CargoCollector {
 public:
 	CargoCollector(ScriptStationList_Cargo *parent, StationID station_id, CargoType cargo,
 			StationID other);
-	~CargoCollector() ;
+	~CargoCollector();
 
 	template <ScriptStationList_Cargo::CargoSelector Tselector>
 	void Update(StationID from, StationID via, uint amount);

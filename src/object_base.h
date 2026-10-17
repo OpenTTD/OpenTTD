@@ -31,8 +31,6 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	Object(ObjectID index) : ObjectPool::PoolItem<&_object_pool>(index) {}
 	Object(ObjectID index, ObjectType type, Town *town, TileArea location, TimerGameCalendar::Date build_date, uint8_t view) :
 		ObjectPool::PoolItem<&_object_pool>(index), type(type), town(town), location(location), build_date(build_date), view(view) {}
-	/** Make sure the right destructor is called as well! */
-	~Object() {}
 
 	static Object *GetByTile(TileIndex tile);
 
