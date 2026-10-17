@@ -40,7 +40,6 @@ struct EngineRenew : EngineRenewPool::PoolItem<&_enginerenew_pool> {
 	EngineRenew(EngineRenewID index) : EngineRenewPool::PoolItem<&_enginerenew_pool>(index) {}
 	EngineRenew(EngineRenewID index, EngineID from, EngineID to, GroupID group_id, bool replace_when_old, EngineRenew *next) :
 		EngineRenewPool::PoolItem<&_enginerenew_pool>(index), from(from), to(to), next(next), group_id(group_id), replace_when_old(replace_when_old) {}
-	~EngineRenew() {}
 };
 
 #endif /* AUTOREPLACE_BASE_H */

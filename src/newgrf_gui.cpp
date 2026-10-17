@@ -2039,10 +2039,6 @@ struct SavePresetWindow : public Window {
 		this->presetname_editbox.text.Assign(initial_text);
 	}
 
-	~SavePresetWindow() override
-	{
-	}
-
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
 	{
 		switch (widget) {

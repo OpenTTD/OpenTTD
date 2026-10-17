@@ -119,9 +119,6 @@ public:
 	/** default constructor */
 	inline CYapfBaseT() : settings(&_settings_game.pf.yapf), max_search_nodes(PfGetSettings().max_search_nodes) {}
 
-	/** default destructor */
-	~CYapfBaseT() {}
-
 protected:
 	/**
 	 * Access the inherited path finder.
