@@ -58,11 +58,8 @@ protected:
 	typedef std::map<std::string, int> SettingValueList;
 
 public:
-	ScriptConfig() :
-		version(-1),
-		info(nullptr),
-		to_load_data(nullptr)
-	{}
+	/** Default constructor. */
+	ScriptConfig() = default;
 
 	/**
 	 * Create a new Script config that is a copy of an existing config.
@@ -70,8 +67,8 @@ public:
 	 */
 	ScriptConfig(const ScriptConfig &config);
 
-	/** Delete an Script configuration. */
-	virtual ~ScriptConfig();
+	/** Ensure the destructor of the sub classes are called as well. */
+	virtual ~ScriptConfig() = default;
 
 	/**
 	 * Set another Script to be loaded in this slot.
@@ -187,12 +184,12 @@ public:
 	ScriptInstance::ScriptData *GetToLoadData();
 
 protected:
-	std::string name;                                         ///< Name of the Script
-	int version;                                              ///< Version of the Script
-	class ScriptInfo *info;                                   ///< ScriptInfo object for related to this Script version
-	SettingValueList settings;                                ///< List with all setting=>value pairs that are configure for this Script
-	std::unique_ptr<ScriptConfigItemList> config_list;        ///< List with all settings defined by this Script
-	std::unique_ptr<ScriptInstance::ScriptData> to_load_data; ///< Data to load after the Script start.
+	std::string name{}; ///< Name of the Script
+	int version = -1; ///< Version of the Script
+	class ScriptInfo *info = nullptr; ///< ScriptInfo object for related to this Script version
+	SettingValueList settings{}; ///< List with all setting=>value pairs that are configure for this Script
+	std::unique_ptr<ScriptConfigItemList> config_list{}; ///< List with all settings defined by this Script
+	std::unique_ptr<ScriptInstance::ScriptData> to_load_data{}; ///< Data to load after the Script start.
 
 	/**
 	 * Routine that clears the config list.
