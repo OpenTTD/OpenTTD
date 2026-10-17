@@ -239,40 +239,24 @@ public:
 	static SQInteger GetCurrentUsage(GroupID group_id);
 
 	/**
-	 * Set primary colour for a group.
+	 * Set a colour for a group.
 	 * @param group_id The group id to set the colour of.
 	 * @param colour Colour to set.
+	 * @param colour_index The colour index to set.
 	 * @pre IsValidGroup(group_id).
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @return True iff the colour was set successfully.
 	 */
-	static bool SetPrimaryColour(GroupID group_id, ScriptCompany::Colours colour);
+	static bool SetColour(GroupID group_id, uint colour_index, ScriptCompany::Colours colour);
 
 	/**
-	 * Set secondary colour for a group.
-	 * @param group_id The group id to set the colour of.
-	 * @param colour Colour to set.
-	 * @pre IsValidGroup(group_id).
-	 * @game @pre ScriptCompanyMode::IsValid().
-	 * @return True iff the colour was set successfully.
-	 */
-	static bool SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour);
-
-	/**
-	 * Get primary colour of a group.
+	 * Get a colour of a group.
 	 * @param group_id The group id to get the colour of.
+	 * @param colour_index The colour index to get.
 	 * @pre IsValidGroup(group_id).
-	 * @return The primary colour of the group.
+	 * @return A colour of the group.
 	 */
-	static ScriptCompany::Colours GetPrimaryColour(GroupID group_id);
-
-	/**
-	 * Get secondary colour for a group.
-	 * @param group_id The group id to get the colour of.
-	 * @pre IsValidGroup(group_id).
-	 * @return The secondary colour of the group.
-	 */
-	static ScriptCompany::Colours GetSecondaryColour(GroupID group_id);
+	static ScriptCompany::Colours GetColour(GroupID group_id, uint colour_index);
 };
 
 #endif /* SCRIPT_GROUP_HPP */
