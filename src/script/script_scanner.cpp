@@ -62,11 +62,6 @@ void ScriptScanner::Initialize(std::string_view name)
 	this->ResetEngine();
 }
 
-ScriptScanner::~ScriptScanner()
-{
-	this->Reset();
-}
-
 void ScriptScanner::RescanDir()
 {
 	/* Forget about older scans */
