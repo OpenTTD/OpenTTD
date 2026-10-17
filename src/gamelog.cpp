@@ -37,9 +37,7 @@ Gamelog::Gamelog()
 }
 
 /** Needs to be manually defined due to incomplete definition of GamelogInternalData in the header. */
-Gamelog::~Gamelog()
-{
-}
+Gamelog::~Gamelog() = default;
 
 /**
  * Return the revision string for the current client version, for use in gamelog.
