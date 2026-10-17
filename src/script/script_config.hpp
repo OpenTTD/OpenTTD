@@ -125,11 +125,11 @@ public:
 	int GetSetting(const std::string &name) const;
 
 	/**
-	 * Set the value of a setting for this config.
+	 * Set or reset the value of a setting for this config.
 	 * @param name The name of the setting.
-	 * @param value The new value for the setting.
+	 * @param value The new value for the setting, or std::nullopt for default value.
 	 */
-	void SetSetting(std::string_view name, int value);
+	void SetSetting(std::string_view name, std::optional<int> value = std::nullopt);
 
 	/**
 	 * Reset all settings to their default value.
