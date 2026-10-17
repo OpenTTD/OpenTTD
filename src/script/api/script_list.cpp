@@ -402,9 +402,8 @@ ScriptList::ScriptList()
 	this->modifications  = 0;
 }
 
-ScriptList::~ScriptList()
-{
-}
+/** Needs to be manually defined due to incomplete definition of types in the header. */
+ScriptList::~ScriptList() = default;
 
 bool ScriptList::HasItem(SQInteger item) const
 {
