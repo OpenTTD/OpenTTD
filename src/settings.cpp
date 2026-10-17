@@ -2043,16 +2043,11 @@ void IConsoleListSettings(std::string_view prefilter)
 	IConsolePrint(CC_HELP, "Use 'setting' command to change a value.");
 }
 
-ScriptConfigSettings::ScriptConfigSettings()
-{
-	/* Instantiate here, because unique_ptr needs a complete type. */
-}
+/** Needs to be manually defined due to incomplete definition of types in the header. */
+ScriptConfigSettings::ScriptConfigSettings() = default;
 
 /** Needs to be manually defined due to incomplete definition of types in the header. */
-ScriptConfigSettings::~ScriptConfigSettings()
-{
-	/* Instantiate here, because unique_ptr needs a complete type. */
-}
+ScriptConfigSettings::~ScriptConfigSettings() = default;
 
 ScriptConfigSettings::ScriptConfigSettings(const ScriptConfigSettings &other)
 {
