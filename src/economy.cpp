@@ -378,11 +378,13 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 					t->ratings[new_owner] = t->ratings[old_owner];
 				}
 			}
+			t->unwanted[new_owner] = std::max(t->unwanted[old_owner], t->unwanted[new_owner]);
 		}
 
 		/* Reset the ratings for the old owner */
 		t->ratings[old_owner] = RATING_INITIAL;
 		t->have_ratings.Reset(old_owner);
+		t->unwanted[old_owner] = 0;
 
 		/* Transfer exclusive rights */
 		if (t->exclusive_counter > 0 && t->exclusivity == old_owner) {
