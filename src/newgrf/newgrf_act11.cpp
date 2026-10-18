@@ -43,9 +43,8 @@ static void ImportGRFSound(SoundEntry *sound)
 
 	*sound = *GetSound(file->sound_offset + sound_id);
 
-	/* Reset volume and priority, which TTDPatch doesn't copy */
+	/* Reset volume, which TTDPatch doesn't copy */
 	sound->volume = SOUND_EFFECT_MAX_VOLUME;
-	sound->priority = 0;
 }
 
 /**
@@ -55,9 +54,8 @@ static void ImportGRFSound(SoundEntry *sound)
  */
 static void LoadGRFSound(size_t offs, SoundEntry *sound)
 {
-	/* Set default volume and priority */
+	/* Set default volume */
 	sound->volume = SOUND_EFFECT_MAX_VOLUME;
-	sound->priority = 0;
 
 	if (offs != SIZE_MAX) {
 		/* Sound is present in the NewGRF. */

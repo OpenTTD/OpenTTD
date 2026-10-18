@@ -46,8 +46,8 @@ static ChangeInfoResult SoundEffectChangeInfo(uint first, uint last, int prop, B
 				sound->volume = Clamp(buf.ReadByte(), 0, SOUND_EFFECT_MAX_VOLUME);
 				break;
 
-			case 0x09: // Priority
-				sound->priority = buf.ReadByte();
+			case 0x09: // Priority, unused
+				buf.ReadByte();
 				break;
 
 			case 0x0A: { // Override old sound
