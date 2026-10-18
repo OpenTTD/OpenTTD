@@ -59,9 +59,8 @@ static void SpriteReplace(ByteReader &buf)
 				GrfMsg(Severity::Critical, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}, above limit of {} and not within reserved range, ignoring.",
 					i, num_sprites, first_sprite, SPR_OPENTTD_BASE);
 
-				/* Load the sprites at the current location so they will do nothing instead of appearing to work. */
-				first_sprite = _cur_gps.spriteid;
-				_cur_gps.spriteid += num_sprites;
+				_cur_gps.skip_sprites = num_sprites;
+				return;
 			}
 		}
 
