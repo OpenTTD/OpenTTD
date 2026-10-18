@@ -26,7 +26,6 @@ struct SoundEntry {
 	uint8_t bits_per_sample;
 	uint8_t channels;
 	uint8_t volume;
-	uint8_t priority;
 	SoundSource source;
 	uint8_t grf_container_ver; ///< NewGRF container version if the sound is from a NewGRF.
 };

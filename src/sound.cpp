@@ -157,7 +157,6 @@ void SndCopyToPool()
 	for (uint i = 0; i < ORIGINAL_SAMPLE_COUNT; i++) {
 		sound[i] = _original_sounds[_sound_idx[i]];
 		sound[i].volume = _sound_base_vol[i];
-		sound[i].priority = 0;
 	}
 }
 
@@ -185,7 +184,6 @@ void ChangeSoundSet(int index)
 
 		*sound = _original_sounds[_sound_idx[i]];
 		sound->volume = _sound_base_vol[i];
-		sound->priority = 0;
 	}
 
 	InvalidateWindowData(WindowClass::GameOptions, GameOptionsWindowNumber::GameOptions, 0, true);
