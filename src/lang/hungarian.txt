@@ -3239,17 +3239,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Összes 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Biztosan el akarod távolítani az összes gazdasági épületet?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ipari láncolat - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ipari láncolat - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Házak
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Ipari láncolat
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Rakományellátó és fogyasztó gazdasági épületek megjelenítése
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Térképre kapcsolás
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}A térképen megjelenített gazdasági épületek kiválasztása
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Szállítmánytípus kiválasztása
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Válaszd ki a szállítmány típust amit meg akarsz jeleníteni
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Iparág választás
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Válaszd ki az iparágat amit meg akarsz jeleníteni
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Ipari láncolat - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Ipari láncolat - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Források
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Célok
+STR_INDUSTRY_CARGOES_HOUSES                                     :Házak
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Elfogad: {CARGO_LIST}{}Előállít: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Ipari láncolat
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Rakományellátó és fogyasztó gazdasági épületek megjelenítése
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Kistérképhez kötés
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :A térképen megjelenített gazdasági épületek kiválasztása a kistérképen is
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Szállítmánytípus kiválasztása
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Válaszd ki a szállítmány típust amit meg akarsz jeleníteni
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Iparág választás
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Válaszd ki az iparágat amit meg akarsz jeleníteni
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Területinformáció

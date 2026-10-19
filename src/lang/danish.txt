@@ -538,6 +538,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Slet alle beske
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landområde information
 STR_ABOUT_MENU_HELP                                             :Hjælp & manualer
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Slå pauseskærm til/fra
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Tænd/Sluk konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :Computerspiller/spilscript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skærmbillede (Ctrl-S)
@@ -646,13 +647,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Fragt historik
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Produceret
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Vis graf over gods produceret af denne industri
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Transporteret
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Vis graf over gods transporteret fra denne branche
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Leveret
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Vis graf over fragt leveret til denne industri
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Venter
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Vis graf over ventende gods i denne branche
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Fragt historik
-STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Levere
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produceret
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Vis graf over gods produceret af denne by
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transporteret
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Vis graf over gods transporteret fra denne by
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Leveret
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Vis graf over fragt leveret til denne by
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljeret præstationsoversigt
 
@@ -1352,8 +1361,12 @@ STR_CONFIG_SETTING_RECESSIONS                                   :Kriser: {STRING
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Hvis aktiveret, kan lavkonjunktur forekomme hvert par år. Under en lavkonjunktur er al produktion væsentligt lavere (den vender tilbage til tidligere niveau, når recessionen er forbi)
 
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :Tillad tog at vende ved tilbage kørsel: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Vælg hvor tog må vende for at vende retningen. Med "Alle" kan tog vende hvor som helst. Med "Kun endestation" vil tog ikke vende på stationer, hvis en rute fremad er mulig. Med "Ingen" kan tog ikke vende og vil køre baglæns, hvis det er nødvendigt, men med reduceret hastighed, hvis det bageste køretøj mangler et førerhus.
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Alle
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Kun til slutningen af ​​linjen
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Ingen
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slå katastrofer, som lejlighedsvis kan blokere eller ødelægge køretøjer eller infrastruktur, til og fra
@@ -1799,7 +1812,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vis forventede 
 STR_CONFIG_SETTING_QUICKGOTO                                    :Hurtig oprettelse af køretøjsordrer: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Forvælg 'gå-til' når du åbner ordrer vinduet
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :Standard jernbane-, vej- og sporvognstype (efter nyt spil/spilindlæsning): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :Jernbane-, vej- og sporvognstype, der skal vælges efter start eller indlæsning af et spil. 'første tilgængelige' vælger den ældste type spor, 'sidst tilgængelige' vælger den nyeste type spor, og 'mest brugte' vælger den type, der i øjeblikket er mest i brug.
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :Første tilgængelige
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :Sidst tilgængelige
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :Mest brugte
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vis reserverede spor: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Giv reserverede spor en anden farve for at hjælpe med problemer med tog der nægter at indgå i sti-baserede blokke
@@ -2372,15 +2390,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simpel
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simpelt valg af ansigt.
 STR_FACE_LOAD                                                   :{BLACK}Hent
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Hent favoritansigt
-STR_FACE_LOAD_DONE                                              :{WHITE}Dit favoritansigt er indlæst fra OpenTTD konfigurationsfilen.
+STR_FACE_LOAD_DONE                                              :Dit favorit ansigt er indlæst fra OpenTTD konfigurationsfilen.
 STR_FACE_FACECODE                                               :{BLACK}Spiller ansigts nr.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller indstil spillers ansigtskode på firmaets direktør
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller indstil spillers ansigtsnummer
-STR_FACE_FACECODE_SET                                           :{WHITE}Nyt direktøransigt er valgt
-STR_FACE_FACECODE_ERR                                           :{WHITE}Direktørens ansigtskode kunne ikke angives - skal være en gyldig etiket og nummer
+STR_FACE_FACECODE_SET                                           :Nyt direktør ansigt er valgt
+STR_FACE_FACECODE_ERR                                           :Direktørens ansigtskode kunne ikke angives - skal være en gyldig etiket og nummer
 STR_FACE_SAVE                                                   :{BLACK}Gem
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Gem favoritansigt
-STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansigt bliver gemt som din favorit i OpenTTD konfigurationsfilen.
+STR_FACE_SAVE_DONE                                              :Dette ansigt bliver gemt som din favorit i OpenTTD konfigurationsfilen.
 STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
 STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :Ja
@@ -2617,8 +2635,8 @@ STR_NETWORK_ERROR_TIMEOUT_MAP                                   :Din computer to
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :Din computer var for længe om at forbinde til serveren
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Dit spillernavn er ikke gyldigt
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mulig forbindelses tab
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De{P 0 t ""} sidste {NUM} sekund{P "" er} er der ikke ankommet data fra serveren
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :Mulig forbindelses tab
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :De{P 0 t ""} sidste {NUM} sekund{P "" er} er der ikke ankommet data fra serveren
 
 ###length 23
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generel fejl
@@ -2745,8 +2763,8 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Download
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} af {BYTES} downloadet ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunne ikke tilslutte til indholdsserver...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Download mislykkedes...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :Kunne ikke oprette forbindelse til indholdsserveren...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :Download mislykkedes...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kan ikke skrive til fil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunne ikke udpakke den downloadede fil
 
@@ -3084,9 +3102,11 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant st
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land-generering
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placér klippeområder i landskabet
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Placer ujævne områder i landskabsformat.{}Ctrl+klik for at fjerne ujævne områder
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Hold Ctrl nede for at fjerne det.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Forstør landområdet der skal sænkes/hæves
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Formindsk landområdet der skal sænkes/hæves
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}Sænk et hjørne eller et område. Hvis størrelsen er 1x1, skal du klikke og trække for at sænke det første valgte hjørne og justere det valgte område til den nye hjørnehøjde. Ctrl+klik+træk for at vælge området diagonalt. Tryk også på Shift for kun at vise omkostningsestimatet.
 STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}Hæv et hjørne eller et område. Hvis størrelsen er 1x1, skal du klikke og trække for at hæve det første valgte hjørne og justere det valgte område til den nye hjørnehøjde. Ctrl+klik+træk for at vælge området diagonalt. Tryk også på Shift for kun at vise omkostningsestimatet.
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generer tilfældigt land
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Opret nyt scenarie
@@ -3156,16 +3176,19 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Er du s
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikæde for {STRING} industri
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikæde for {STRING} gods
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Lastkæde - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Ressourcer
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Destinationer
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huse
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Accepterer: {CARGO_LIST}{}Producerer: {CARGO_LIST}
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vis Industrikæde
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vis godsforsynende og -accepterende industrier
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link til lille kort
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vælg også de viste industrier på lille kort
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Vælg lasttype
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Vælg den lasttype du ønsker at få vist
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Vælg industri
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vælg industrien du ønsker at få vist
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Vælg lasttype
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Vælg den lasttype du ønsker at få vist
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Vælg industri
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Vælg den industri du ønsker at få vist
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landområde-information
@@ -3264,6 +3287,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Sluse
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Flod
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Kyst eller flodbred
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Skibsdok
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Klipper
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Kyst eller flodbred med klipper
 
 # Industries come directly from their industry names
 
@@ -3377,6 +3402,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Åbn
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Åbn det markerede spil
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Indlæs valgte højdemap
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Indlæs de valgte bydata
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Ny mappe
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Opret en ny mappe på den aktuelle placering
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Indtast et navn til den nye mappe
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spil Detaljer
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information til rådighed
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3693,7 +3721,7 @@ STR_NEWGRF_BROKEN                                               :NewGRF´s opfø
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :Den ændrer status for ''{1:ENGINE}' når den ikke er i depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot
 STR_NEWGRF_BROKEN_CAPACITY                                      :Det ændrede køretøj kapacitet til {1:ENGINE}' når det ikke er inde i et depot eller genmontering
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra selskabet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Risiko for at spillet mister synkronisering eller går ned.
+STR_BROKEN_VEHICLE_LENGTH                                       :Toget '{VEHICLE}' tilhørende '{COMPANY}' har en ugyldig længde. Det skyldes sandsynligvis problemer med NewGRF'er. Spillet kan muligvis desynkronisere eller gå ned.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}'  indeholder forkert information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/tilpasnings information for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
@@ -4628,10 +4656,13 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Navngiv 
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Værdi: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}Toglængde: {LTBLUE}{DECIMAL} fliser{P "" s}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Samlet last (lasteevne) på dette tog:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Samlet fragt på dette tog:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}Tom ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            ::{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) fra {STATION}{STRING}
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tom
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} fra {STATION}
@@ -4640,6 +4671,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Last
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Vis detaljer omkring den last der medbringes
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Information
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Vis detaljer omkring toget/vognene
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}Totaler
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}Vis samlet fragt, kapacitet og toglængde
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 
@@ -4735,6 +4768,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Kræver service
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altid
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Resterende levetid (år)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maksimal pålidelighed
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Baglæns kørsel med reduceret hastighed
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hvordan data sammenlignes med den givne værdi
@@ -5037,6 +5071,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Fejl und
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan ikke læse drevet
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Fejl under lagring af spil...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan ikke slette fil
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Kan ikke oprette mappe...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Der findes allerede en fil eller mappe med det navn
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Mappenavnet må ikke indeholde specialtegn
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Mappenavnet må ikke starte med et punktum
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Du har ikke tilladelse til at oprette en mappe her
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Fejl under indlæsning af spil...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern fejl: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ødelagt gemt spil - {STRING}
@@ -5083,7 +5122,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Besked 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Ude over kanten af kortet
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}For tæt på kanten af kortet
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ikke nok penge - kræver {CURRENCY_LONG}
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :ikke nok penge - kræver {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Landskabet skal være fladt
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landet hælder i den forkerte retning
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Det kan du ikke...
@@ -5119,7 +5158,7 @@ STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Bagefter
 STR_ERROR_MUST_DEMOLISH_RIVER_FIRST                             :{WHITE}Først skal floden fjernes ned
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikke ændre selskabets navn...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :Kan ikke ændre firmanavn...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan ikke ændre direktørens navn...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimale størrelse af lån er {CURRENCY_LONG}
@@ -5134,7 +5173,7 @@ STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke bygge nogen byer...
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikke omdøbe byen...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :Kan ikke omdøbe byen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikke bygge en by her...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan ikke udvide byen...
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for tæt på en anden by
@@ -5179,7 +5218,7 @@ STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan ikke bygge en havn her...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikke bygge en lufthavn her...
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grænser op til mere end en eksisterende station/fragtcentral
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :Grænser op til mere end en eksisterende station/fragtcentral
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen er for spredt
 STR_ERROR_STATION_DISALLOWED_NUMBER_TRACKS                      :{WHITE}... ikke-understøttet antal numre
 STR_ERROR_STATION_DISALLOWED_LENGTH                             :{WHITE}... ikke-understøttet længde
@@ -5189,7 +5228,7 @@ STR_ERROR_TOO_MANY_BUS_STOPS                                    :for mange buste
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :for mange fragtcentraler
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}For tæt på en anden havn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}For tæt på en anden lufthavn
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan ikke omdøbe stationen...
+STR_ERROR_CAN_T_RENAME_STATION                                  :Kan ikke omdøbe stationen...
 STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Kan ikke flytte stationsskiltet...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denne vej er ejet af en by
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vejen peger i den forkerte retning
@@ -5204,7 +5243,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan ikke fjerne passager-sporvognsstation
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan ikke fjerne fragt-sporvognsstation
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Det er nødvendigt at fjerne vejen først
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... der er ingen station her
+STR_ERROR_THERE_IS_NO_STATION                                   :der er ingen station her
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Det er nødvendigt at rive stationen ned først
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Det er nødvendigt at nedrive rutebilstationen først
@@ -5229,7 +5268,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_WAYPOINT                            :{WHITE}Kan ikke
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Jernbane-rutepunkt skal fjernes først
 STR_ERROR_MUST_REMOVE_ROADWAYPOINT_FIRST                        :{WHITE}Skal først fjerne vej rutepunkt
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... der er en bøje i vejen
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøjen er i brug af et andet firma!
+STR_ERROR_BUOY_IS_IN_USE                                        :bøjen er i brug af et andet firma!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan ikke bygge en remise her...
@@ -5237,7 +5276,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan ikke bygge sporvognsremise her...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikke bygge en skibsdok her...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan ikke omdøbe depot...
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :Kan ikke omdøbe depot...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... skal være stoppet inde i et depot
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... skal være stoppet inde i et værksted først
@@ -5252,8 +5291,9 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Skinnetyperne p
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan ikke flytte køretøjet...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Det bagerste lokomotiv vil altid følge dets forende
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kan ikke finde en route til et lokalt depot
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kan ikke finde lokalt værksted
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :Kan ikke finde ruten til det lokale depot
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :Kan ikke finde ruten til det lokale depot
+STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :Kan ikke finde den lokale hangar
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Forkert depottype
 
@@ -5284,7 +5324,7 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan ikke fjerne jernbane herfra...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan ikke fjerne signaler herfra...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikke ombygge signaler her...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... der er ikke noget spor
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :der er ikke noget spor
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... der er ingen signaler
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikke konvertere jernbanetype her...
@@ -5296,8 +5336,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kan ikke bygge sporvej her...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan ikke fjerne vej herfra...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan ikke fjerne sporvej her...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... der er ingen vej
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... der er ikke noget spor
+STR_ERROR_THERE_IS_NO_ROAD                                      :der er ingen vej
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :der er ikke noget spor
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan ikke konvertere vejtype her...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan ikke konvertere sporvejstype her...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen passende vej
@@ -5341,6 +5381,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :broen er {HEIGH
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :broen er {HEIGHT} for lav til tog depotet
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :broen er {HEIGHT} for lav til bil depotet
 STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :broen er {HEIGHT} for lav til skibs depotet
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :broen er {HEIGHT} for lav til objektet
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge en tunnel her...
@@ -5376,7 +5417,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :Kan ikke tilfø
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tog i vejen
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Køretøj i vejen
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Der er et skib i vejen
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Fly i vejen
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :fly i vejen
 
 ###length VEHICLE_TYPES
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Tog er ikke tilgængeligt
@@ -5391,10 +5432,10 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :Kan ikke tilpas
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :Kan ikke tilpasse fly...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan ikke give toget navn...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :Kan ikke sætte navn på toget...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :Kan ikke give køretøjet et navn...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan ikke give skibet et navn...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan ikke navngive flyet...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :Kan ikke give skibet et navn...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :Kan ikke navngive flyet...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan ikke stoppe/starte toget...
@@ -5415,28 +5456,28 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan ikke købe flyet...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :Kan ikke omdøbe togvognstype...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :Kan ikke omdøbe køretøjstypen...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan ikke omdøbe skibstypen...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan ikke omdøbe flytypen...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :Kan ikke omdøbe skibstypen...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :Kan ikke omdøbe flytypen...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan ikke sælge jernbanekøretøjet...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan ikke sælge køretøj...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikke sælge skibet...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikke sælge flyet...
+STR_ERROR_CAN_T_SELL_TRAIN                                      :Kan ikke sælge jernbanekøretøjet...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :Kan ikke sælge køretøj...
+STR_ERROR_CAN_T_SELL_SHIP                                       :Kan ikke sælge skibet...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :Kan ikke sælge flyet...
 
 ###length VEHICLE_TYPES
-STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :{WHITE}Kan ikke sælge alle jernbanevogne...
-STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :{WHITE}Kan ikke sælge alle vejkøretøjer...
-STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :{WHITE}Kan ikke sælge alle skibe...
+STR_ERROR_CAN_T_SELL_ALL_TRAIN                                  :Kan ikke sælge alle jernbanevogne...
+STR_ERROR_CAN_T_SELL_ALL_ROAD_VEHICLE                           :Kan ikke sælge alle vejkøretøjer...
+STR_ERROR_CAN_T_SELL_ALL_SHIP                                   :Kan ikke sælge alle skibe...
 STR_ERROR_CAN_T_SELL_ALL_AIRCRAFT                               :Kan ikke sælge alle fly...
 
 ###length VEHICLE_TYPES
 STR_ERROR_CAN_T_AUTOREPLACE_TRAIN                               :{WHITE}Kan ikke automatisk erstatte jernbanevogne...
-STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :{WHITE}Kan ikke automatisk erstatte vejkøretøjer...
+STR_ERROR_CAN_T_AUTOREPLACE_ROAD_VEHICLE                        :Kan ikke automatisk erstatte vejkøretøjer...
 STR_ERROR_CAN_T_AUTOREPLACE_SHIP                                :{WHITE}Kan ikke automatisk erstatte skibe...
-STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :{WHITE}Kan ikke automatisk erstatte fly...
+STR_ERROR_CAN_T_AUTOREPLACE_AIRCRAFT                            :Kan ikke automatisk erstatte fly...
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :for mange køretøjer i spillet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke ændre serviceinterval...

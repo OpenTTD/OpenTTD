@@ -3175,17 +3175,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Ta bort 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Är du säker på att du vill ta bort alla industrier?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Godskedja - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Industrikedja
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Visa industrier som levererar och tar emot gods
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Koppla till minikartan
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Markera visade industrier även på minikartan
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Välj last
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Välj den typ av last du vill visa
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Välj industri
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Välj den typ av industri du vill visa
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Industrikedja - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Godskedja - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Ursprung
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Destinationer
+STR_INDUSTRY_CARGOES_HOUSES                                     :Hus
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Accepterar: {CARGO_LIST}{}Producerar: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Industrikedja
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Visa industrier som levererar och tar emot gods
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :Koppla till minikartan
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :Markera visade industrier även på minikartan
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Välj last
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Välj den typ av last du vill visa
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Välj industri
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Välj den typ av industri du vill visa
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Markområdesinformation

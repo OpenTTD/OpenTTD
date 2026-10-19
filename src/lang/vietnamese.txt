@@ -538,6 +538,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Xoá tất cả
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùng đất
 STR_ABOUT_MENU_HELP                                             :Trợ Giúp & Hướng Dẫn
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :Bật/tắt trình bảo vệ màn hình
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
 STR_ABOUT_MENU_AI_DEBUG                                         :Gỡ rối AI / Game script
 STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp màn hình
@@ -646,14 +647,21 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - Lịch sử hàng hóa
 STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :Đã cung cấp
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :Bật/tắt đồ thị hàng hóa được sản xuất bởi ngành này
 STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :Đã vận chuyển
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :Bật/tắt đồ thị hàng hóa được vận chuyển từ ngành này
 STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Đã giao
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :Bật/tắt đồ thị hàng hóa được vận chuyển đến ngành này
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Đang chờ...
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :Bật/tắt đồ thị hàng hóa đang chờ xử lý ở ngành này
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Lịch sử hàng hoá
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Đã sản xuất
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :Bật/tắt đồ thị hàng hóa được sản xuất bởi thị trấn này
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Đã vận chuyển
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Bật/tắt đồ thị hàng hóa được vận chuyển từ thị trấn này
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Đã vận chuyển
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Bật/tắt đồ thị hàng hóa được vận chuyển tới thị trấn này
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá chỉ số năng suất
 
@@ -1659,12 +1667,12 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Không
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Nguyên bản
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Tối Ưu Hóa
 
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Xe cộ: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Chọn phía xe chạy
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Phía xe chạy: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Chọn phía xe chạy.{}Việc này có thể ảnh hưởng tới phía đèn tín hiệu và đồ họa cột tín hiệu.{}Có thể cần khởi động lại ván để sự thay đổi có hiệu lực
 
 ###length 2
-STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Lái bên trái
-STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Lái bên phải
+STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :Trái
+STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :Phải
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Xoay bản đồ địa hình: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :Chọn chiều xoay của ảnh địa hình để dùng trong thế giới của trò chơi
@@ -2887,22 +2895,22 @@ STR_PICKER_COLLECTION_DELETE_QUERY                              :Xóa nhóm
 STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}Bạn có chắc chắn muốn xóa nhóm này?
 STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}Bạn có chắc chắn muốn xóa nhóm này? Nhóm có chứa các mục từ các NewGRFs bị vô hiệu hóa!
 
-STR_PICKER_STATION_CLASS_TOOLTIP                                :Chọn loại ga bến cần hiển thị
+STR_PICKER_STATION_CLASS_TOOLTIP                                :Chọn loại ga bến cần hiển thị. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_STATION_TYPE_TOOLTIP                                 :Chọn loại ga bến để xây. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_STATION_COLLECTION_TOOLTIP                           :Chọn một nhóm trạm tàu hỏa để hiển thị
-STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Chọn loại điểm mốc cần hiển thị
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :Chọn loại điểm mốc cần hiển thị. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :Chọn loại điểm mốc để xây. Ctrl+Click để thêm hoặc xóa trong danh sách lưu
 STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :Chọn một nhóm điểm mốc để hiển thị
-STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Chọn loại bến xe để hiển thị
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :Chọn loại bến xe để hiển thị. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :Chọn loại bến xe khách để xây. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :Chọn một nhóm trạm xe buýt để hiển thị
-STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Chọn loại bến xe tải để hiển thị
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :Chọn loại bến xe tải để hiển thị. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :Chọn loại bến xe tải để xây. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :Chọn một nhóm xe tải để hiển thị
-STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Chọn loại đối tượng để hiển thị
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :Chọn loại đối tượng để hiển thị. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :Chọn kiểu đối tượng để xây. Ctrl+Click để thêm hoặc bớt vào danh sách lưu. Ctrl+Click+Drag để chọn khu vực theo đường chéo. Bấm Shift để xem ước tính chi phí
 STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :Chọn một nhóm vật thể để hiển thị
-STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Chọn vùng đô thị để xem
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :Chọn vùng đô thị để xem. Ctrl+Click để thêm hoặc bớt vào danh sách lưu
 STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :Chọn kiểu nhà để xây. Ctrl+Click để thêm hoặc xóa trong danh sách lưu
 STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :Chọn một nhóm nhà cửa để hiển thị
 
@@ -3094,6 +3102,7 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Trồng 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}San Lấp Đất
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Đặt các nền đá trong vùng.{}Ctrl+Click để phá bỏ nền đá
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}Đặt các nền gồ ghề trong vùng.{}Ctrl+Click để phá bỏ nền gồ ghề
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Đặt tên hoang mạc.{}Ctrl + Click để xoá bỏ tên
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Tăng diện tích vùng đất để nâng/hạ
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Giảm diện tích vùng đất để nâng/hạ
@@ -3166,17 +3175,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Loại b
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Bạn có chắc chắn muốn loại bỏ tất cả các nhà máy?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chuỗi cung ứng - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chuỗi cung ứng hàng hoá - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Nhà kho
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Chuỗi cung ứng
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Hiển thị khả năng cung ứng và chấp nhận hàng hoá của nhà máy
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Liên kết với bản đồ nhỏ
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Chọn các nhà máy hiển thị ở bản đồ nhỏ luôn thể
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Chọn hàng hóa
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Chọn loại hàng hóa mà bạn muốn hiển thị
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Chọn nhà máy
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Chọn loại nhà máy mà bạn muốn hiển thị
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Chuỗi cung ứng - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Chuỗi cung ứng hàng hoá - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Nguồn
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Điểm đến
+STR_INDUSTRY_CARGOES_HOUSES                                     :Nhà kho
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Chấp nhận: {CARGO_LIST}{}Sản phẩm: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Chuỗi cung ứng
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Hiển thị khả năng cung ứng và chấp nhận hàng hoá của nhà máy
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :Liên kết với bản đồ nhỏ
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :Chọn các nhà máy hiển thị ở bản đồ nhỏ luôn thể
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Chọn hàng hóa
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Chọn loại hàng hóa mà bạn muốn hiển thị
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Chọn nhà máy
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Chọn loại nhà máy mà bạn muốn hiển thị
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Thông Tin Địa Lý
@@ -3275,6 +3287,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Cửa kênh
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Sông
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Bờ biển hoặc bờ sông
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Xưởng tàu thuỷ
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Đá
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Bờ biển hoặc bờ sông với đá
 
 # Industries come directly from their industry names
 
@@ -3388,6 +3402,9 @@ STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Nạp
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Nạp ván chơi được chọn
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Nạp bản đồ địa hình đang chọn
 STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Nạp dữ liệu đô thị được chọn
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}Thư mục mới
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}Tạo thư mục mới ở đây
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}Nhập tên thư mục mới
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Chi Tiết Trò Chơi
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Không có thông tin gì cả.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -4639,10 +4656,13 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Đổi t
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Giá trị: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}Chiều dài tàu hỏa: {LTBLUE}{DECIMAL} ô
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tổng sức chứa hàng của đoàn tàu:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}Trống ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) từ {STATION}{STRING}
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Trống rỗng
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} từ {STATION}
@@ -4651,6 +4671,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Hàng ho
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Hiện chi tiết hàng hoá đang chở
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Thông tin
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Hiện thông tin chi tiết về tàu
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}Tổng
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}Hiển thị tổng sức chứa và chiều dài đoàn tàu
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Sức chứa: {LTBLUE}{STRING}
 
@@ -4707,9 +4729,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Chất đầy l
 STR_ORDER_DROP_NO_LOADING                                       :Không chất hàng
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Thay đổi cách thức chất hàng hoá tại ga/bến đang được chọn
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Chất xuống tất cả
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Buốc dỡ tất cả
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Chất xuống nếu được chấp nhận
-STR_ORDER_DROP_UNLOAD                                           :Chất xuống tất cả
+STR_ORDER_DROP_UNLOAD                                           :Buộc dỡ hàng kể cả khi không được chấp nhận
 STR_ORDER_DROP_TRANSFER                                         :Chuyển
 STR_ORDER_DROP_NO_UNLOADING                                     :Không chất hàng xuống
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Thay đổi cách thức chất hàng xuống tại ga/bến đang được chọn
@@ -4746,7 +4768,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Yêu cầu bả
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Luôn luôn
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Thời gian sử dụng còn lại (năm)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Mức độ tin cậy tối đa
-STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Chạy lùi
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :Chạy lùi với tốc độ thấp hơn
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cách so sánh dữ kiện của phương tiện với giá trị cho trước
@@ -4812,10 +4834,10 @@ STR_ORDER_IMPLICIT                                              :{SPACE}(Chạy 
 STR_ORDER_FULL_LOAD                                             :{SPACE}(Bốc đầy hàng)
 STR_ORDER_FULL_LOAD_ANY                                         :{SPACE}(Bốc đủ bất kỳ hàng nào)
 STR_ORDER_NO_LOAD                                               :{SPACE}(Không bốc xếp)
-STR_ORDER_UNLOAD                                                :{SPACE}(Dỡ và lấy hàng khác)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Dỡ tất hàng và chờ bốc đầy hàng)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Dỡ tất hàng và chờ bốc đủ bất kỳ hàng nào)
-STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Dỡ tất hàng và để trống)
+STR_ORDER_UNLOAD                                                :{SPACE}(Buộc dỡ và lấy hàng khác)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :{SPACE}(Buộc dỡ hàng và chờ bốc đầy hàng)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :{SPACE}(Buộc dỡ hàng và chờ bốc đủ bất kỳ hàng nào)
+STR_ORDER_UNLOAD_NO_LOAD                                        :{SPACE}(Buộc dỡ hàng và để trống)
 STR_ORDER_TRANSFER                                              :{SPACE}(Trung chuyển hàng và lấy hàng khác)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :{SPACE}(Trung chuyển và chờ bốc đầy hàng)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :{SPACE}(Trung chuyển và chờ bốc đủ hàng bất kỳ)
@@ -4828,9 +4850,9 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :{SPACE}(Không 
 STR_ORDER_AUTO_REFIT                                            :{SPACE}(Tự cải biến thành {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :{SPACE}(Tự cải biến và chất đầy {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :{SPACE}(Tự cải biến và chất đầy bất kỳ {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Dỡ hàng và tự cải biến để lấy {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Dỡ hàng và tự cải biến đề bốc đầy {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Dỡ hàng và tự cải biến để bốc đầy bất kỳ {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :{SPACE}(Buộc dỡ hàng và tự cải biến để lấy {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :{SPACE}(Buộc dỡ hàng và tự cải biến đề bốc đầy {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :{SPACE}(Buộc dỡ hàng và tự cải biến để bốc đầy bất kỳ {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :{SPACE}(Trung chuyển và tự cải biến để lấy {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :{SPACE}(Trung chuyển và tự cải biến đề bốc đầy {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :{SPACE}(Trung chuyển và tự cải biến để bốc đầy bất kỳ {STRING})
@@ -5049,6 +5071,11 @@ STR_ERROR_AUTOSAVE_FAILED                                       :Lưu tự độ
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Không đọc được đĩa
 STR_ERROR_GAME_SAVE_FAILED                                      :Lưu ván chơi thất bại...
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :Không thể xoá file
+STR_ERROR_CANNOT_CREATE_DIRECTORY                               :Không thể tạo thư mục...
+STR_ERROR_DIRECTORY_NAME_IN_USE                                 :Tên trùng với tệp hay thư mục sẵn có
+STR_ERROR_DIRECTORY_ILLEGAL_NAME                                :Tên thư mục không thể có kí tự đặc biệt
+STR_ERROR_DIRECTORY_LEADING_DOT                                 :Tên thư mục không thể bắt đầu bằng dấu chấm
+STR_ERROR_DIRECTORY_PERMISSION_DENIED                           :Bạn không có quyền tạo thư mục ở đây
 STR_ERROR_GAME_LOAD_FAILED                                      :Khởi động ván chơi thất bại...
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Lỗi kỹ thuật: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bản lưu ván chơi bị hỏng - {STRING}
@@ -5351,6 +5378,10 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_BUOY                               :cầu thiếu {
 STR_ERROR_BRIDGE_TOO_LOW_FOR_RAIL_WAYPOINT                      :cầu thiếu {HEIGHT} chiều cao để xây điểm mốc đường sắt
 STR_ERROR_BRIDGE_TOO_LOW_FOR_ROAD_WAYPOINT                      :cầu thấp hơn {HEIGHT} đơn vị cho điểm mốc đường
 STR_ERROR_BRIDGE_TOO_LOW_FOR_LOCK                               :cầu thiếu {HEIGHT} chiều cao để xây âu tàu
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TRAIN_DEPOT                        :chiều cao cầu {HEIGHT} quá thấp cho xưởng tàu hỏa
+STR_ERROR_BRIDGE_TOO_LOW_FOR_ROADVEH_DEPOT                      :chiều cao cầu {HEIGHT} quá thấp cho xưởng xe
+STR_ERROR_BRIDGE_TOO_LOW_FOR_SHIP_DEPOT                         :chiều cao cầu {HEIGHT} quá thấp cho xưởng tàu
+STR_ERROR_BRIDGE_TOO_LOW_FOR_OBJECT                             :chiều cao cầu {HEIGHT} quá thấp cho đối tượng
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :Không thể đào hầm ở đây...

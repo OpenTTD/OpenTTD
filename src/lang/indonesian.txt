@@ -3175,17 +3175,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Hapus se
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Yakin ingin menghapus semua industri?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Hubungan industri untuk industri {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Hubungan industri untuk kargo {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Rumah
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Tampilkan hubungan
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Menampilkan industri yang menyediakan dan menerima kargo
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Tautkan ke peta
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pilih agar industri ini diikutkan dalam peta mini
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Pilih kargo
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Pilih kargo yang akan ditampilkan
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Pilih industri
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Pilih industri yang akan ditampilkan
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Rantai Industri - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Rantai Kargo - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Sumber
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Tujuan
+STR_INDUSTRY_CARGOES_HOUSES                                     :Rumah
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Menerima: {CARGO_LIST}{}Memproduksi: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Rantai Industri
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Tampilkan industri yang menyediakan dan menerima kargo
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :Tautkan ke peta kecil
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :Pilih industri yang ditampilkan di peta kecil juga
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Pilih kargo
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Pilih kargo yang yang Anda ingin tampilkan
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Pilih industri
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Pilih industri yang Anda ingin tampilkan
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasi area daratan
@@ -3284,6 +3287,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :Kunci
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Sungai
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Pantai atau tepi sungai
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Galangan Kapal
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :Bebatuan
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :Pantai atau tepi sungai dengan bebatuan
 
 # Industries come directly from their industry names
 
@@ -4288,7 +4293,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Beli Kap
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Beli Pesawat
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Beli dan restorasi kendaraan
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Beli dan Renovasi Kereta
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Beli dan Renovasi Kendaraan Jalan Raya
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Beli dan Renovasi Kapal
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Beli dan Renovasi Pesawat
@@ -4651,10 +4656,13 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nama pes
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Buatan: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}Panjang kereta: {LTBLUE}{DECIMAL} ubin
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Total kapasitas kargo untuk kereta:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Total kargo kereta ini:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}Kosongkan ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) dari {STATION}{STRING}
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Kosong
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} dari {STATION}
@@ -4663,6 +4671,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Muatan
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Tampilkan detail kargo terangkut
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informasi
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Tampilkan detail kereta
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}Total
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}Tampilkan total kargo, kapasitas, dan panjang kereta
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasitas: {LTBLUE}{STRING}
 
