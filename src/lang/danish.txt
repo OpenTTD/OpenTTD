@@ -1365,7 +1365,7 @@ STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :Vælg hvor tog 
 
 ###length 3
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :Alle
-STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Kun til slutningen af ​​linjen
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :Kun til slutningen af linjen
 STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :Ingen
 
 STR_CONFIG_SETTING_DISASTERS                                    :Katastrofer: {STRING}
