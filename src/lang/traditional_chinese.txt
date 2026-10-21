@@ -881,7 +881,7 @@ STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLAC
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}空難！{}{COMMA} 名乘客與機組員不幸罹難於 {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}空難！{}飛機燃油耗盡，{COMMA} 名乘客與機組員不幸罹難！
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}{STATION} 發生飛船災難！
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}齊柏林飛船在{STATION}發生災難！
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}車輛被 UFO 擊毀！
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}{TOWN} 附近的煉油廠發生爆炸！
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}{TOWN} 附近的工廠發生事故被毀！
@@ -4455,8 +4455,8 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :電車車輛
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :飛機
 STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
-STR_ENGINE_PREVIEW_COST_WEIGHT                                  :費用：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :費用：{CURRENCY_LONG}  最高速度：{VELOCITY}
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :費用：{CURRENCY_LONG}　重量：{WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :費用：{CURRENCY_LONG}　最高速度：{VELOCITY}
 STR_ENGINE_PREVIEW_SPEED_POWER                                  :速度：{VELOCITY}　功率：{POWER}
 STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :速度：{VELOCITY}　功率：{POWER}　最大牽引力：{FORCE}
 STR_ENGINE_PREVIEW_TYPE                                         :飛機種類：{STRING}
@@ -4516,7 +4516,7 @@ STR_REPLACE_TRAM_VEHICLES                                       :電車車輛
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除車廂 ({STRING})：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除多餘的車廂 (從頭開始) 以便維持列車長度
-STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. 按住Ctrl並點擊以套用到所有子群組
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}。按住 <Ctrl> 點選可套用至所有子群組
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
