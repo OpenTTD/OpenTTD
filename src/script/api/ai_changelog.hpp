@@ -21,6 +21,7 @@
  *
  * API additions:
  * \li AIRail.RemoveRailDepot
+ * \li AIEventVehicleOld
  *
  * \b 15.0
  *
