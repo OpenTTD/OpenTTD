@@ -865,7 +865,8 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, SpriteAllocator *allocator,
 
 	if (sc->type != type) return HandleInvalidSpriteRequest(sprite, type, sc, allocator, encoder);
 
-	if (allocator == nullptr && encoder == nullptr) {
+	if (allocator == nullptr) {
+		assert(encoder == nullptr);
 		/* Load sprite into/from spritecache */
 
 		/* Update LRU */
@@ -886,6 +887,7 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, SpriteAllocator *allocator,
 
 		return static_cast<void *>(sc->ptr.get());
 	} else {
+		assert(encoder != nullptr);
 		/* Do not use the spritecache, but a different allocator. */
 		return ReadSprite(sc, sprite, type, *allocator, encoder);
 	}
