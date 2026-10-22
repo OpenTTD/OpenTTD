@@ -429,7 +429,6 @@ protected:
 					/* Width of floats leave too little for main content, push down */
 					main_y = std::max(main_y, left_y);
 					main_y = std::max(main_y, right_y);
-					left_width = right_width = 0;
 					left_offset = right_offset = 0;
 					/* Do not add element_dist here, to keep together elements which were supposed to float besides each other. */
 				}
@@ -701,7 +700,7 @@ public:
 		y_offset += line_height;
 
 		/* Title */
-		y_offset = DrawStringMultiLine(0, fr.right, y_offset, fr.bottom,
+		DrawStringMultiLine(0, fr.right, y_offset, fr.bottom,
 			GetString(STR_STORY_BOOK_TITLE, !page->title.empty() ? page->title.GetDecodedString() : this->selected_generic_title), TextColour::Black, {AlignmentH::Centre, AlignmentV::Top});
 
 		/* Page elements */
