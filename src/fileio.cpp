@@ -528,7 +528,6 @@ bool TarScanner::AddFile(const std::string &filename, size_t, [[maybe_unused]] c
 			auto value = ParseInteger<size_t>(size, 8);
 			if (!value.has_value()) {
 				Debug(Facility::Misc, Severity::Critical, "The file '{}' has an invalid size for '{}'", filename, name);
-				fclose(f);
 				return false;
 			}
 			skip = *value;
