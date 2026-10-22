@@ -645,8 +645,9 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 		char buffer[4096];
 		size_t read;
 		for (; to_copy != 0; to_copy -= read) {
-			read = fread(buffer, 1, std::min(to_copy, lengthof(buffer)), *in);
-			if (read <= 0 || fwrite(buffer, 1, read, *out) != read) break;
+			size_t to_read = std::min(to_copy, lengthof(buffer));
+			read = fread(buffer, 1, to_read, *in);
+			if (read != to_read || fwrite(buffer, 1, read, *out) != read) break;
 		}
 
 		if (to_copy != 0) {
