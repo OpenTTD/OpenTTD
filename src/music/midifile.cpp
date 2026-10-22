@@ -886,20 +886,20 @@ static void WriteVariableLen(FileHandle &f, uint32_t value)
 	} else if (value <= 0x3FFF) {
 		uint8_t tb[2];
 		tb[1] =  value & 0x7F;         value >>= 7;
-		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80;
 		fwrite(tb, 1, sizeof(tb), f);
 	} else if (value <= 0x1FFFFF) {
 		uint8_t tb[3];
 		tb[2] =  value & 0x7F;         value >>= 7;
 		tb[1] = (value & 0x7F) | 0x80; value >>= 7;
-		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80;
 		fwrite(tb, 1, sizeof(tb), f);
 	} else if (value <= 0x0FFFFFFF) {
 		uint8_t tb[4];
 		tb[3] =  value & 0x7F;         value >>= 7;
 		tb[2] = (value & 0x7F) | 0x80; value >>= 7;
 		tb[1] = (value & 0x7F) | 0x80; value >>= 7;
-		tb[0] = (value & 0x7F) | 0x80; value >>= 7;
+		tb[0] = (value & 0x7F) | 0x80;
 		fwrite(tb, 1, sizeof(tb), f);
 	}
 }
