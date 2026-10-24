@@ -801,7 +801,6 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 		/* No digit at the end, so start at number 2. */
 		buf = src->name;
 		buf += " ";
-		number_position = buf.length();
 		num = 2;
 	} else {
 		/* Found digits, parse them and start at the next number. */
