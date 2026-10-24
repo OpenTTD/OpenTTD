@@ -34,6 +34,7 @@ public:
 	 * Get the name of a depot.
 	 * @param tile The depot tile to get the name of.
 	 * @return The name of the depot.
+	 * @note Hangar names can't be retrieved.
 	 */
 	static std::optional<std::string> GetName(TileIndex tile);
 
@@ -46,6 +47,7 @@ public:
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
+	 * @note Hangar names can't be set.
 	 */
 	static bool SetName(TileIndex tile, Text *name);
 };
