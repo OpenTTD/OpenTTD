@@ -68,12 +68,6 @@ uint8_t GoodsEntry::ConvertState() const
 	return res;
 }
 
-enum TriggerArea : uint8_t {
-	TA_TILE,
-	TA_PLATFORM,
-	TA_WHOLE,
-};
-
 /**
  * Get the tile area of a rail station with trigger area type.
  * @param st The rail station or rail waypoint.
@@ -81,15 +75,15 @@ enum TriggerArea : uint8_t {
  * @param ta Trigger area type.
  * @return The tile area.
  */
-TileArea GetRailTileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
+static TileArea GetRailTileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
 {
 	switch (ta) {
 		default: NOT_REACHED();
 
-		case TA_TILE:
+		case TriggerArea::Tile:
 			return {tile, 1, 1};
 
-		case TA_PLATFORM: {
+		case TriggerArea::Platform: {
 			TileIndex start, end;
 			Axis axis = GetRailStationAxis(tile);
 			TileIndexDiff delta = TileOffsByAxis(axis);
@@ -100,7 +94,7 @@ TileArea GetRailTileArea(const BaseStation *st, TileIndex tile, TriggerArea ta)
 			return TileArea(start, TileX(end) - TileX(start) + 1, TileY(end) - TileY(start) + 1);
 		}
 
-		case TA_WHOLE:
+		case TriggerArea::Whole:
 			return st->GetTileArea(Station::IsExpected(st) ? StationType::Rail : StationType::RailWaypoint);
 	}
 }
@@ -781,7 +775,7 @@ void DeallocateSpecFromStation(BaseStation *st, uint8_t specindex)
 	if (specindex == 0) return;
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : GetRailTileArea(st, INVALID_TILE, TA_WHOLE)) {
+	for (TileIndex tile : GetRailTileArea(st, INVALID_TILE, TriggerArea::Whole)) {
 		if (st->TileBelongsToRailStation(tile) && GetCustomStationSpecIndex(tile) == specindex) {
 			return;
 		}
@@ -934,18 +928,17 @@ void AnimateStationTile(TileIndex tile)
 void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAnimationTrigger trigger, CargoType cargo_type)
 {
 	/* List of coverage areas for each animation trigger */
-	static const TriggerArea tas[] = {
-		TA_TILE, // Built
-		TA_WHOLE, // NewCargo
-		TA_WHOLE, // CargoTaken
-		TA_PLATFORM, // VehicleArrives
-		TA_PLATFORM, // VehicleDeparts
-		TA_PLATFORM, // VehicleLoads
-		TA_WHOLE, // AcceptanceTick
-		TA_TILE, // TileLoop
-		TA_PLATFORM, // PathReservation
+	static const EnumIndexArray<TriggerArea, StationAnimationTrigger, StationAnimationTrigger::End> tas{
+		TriggerArea::Tile, // Built
+		TriggerArea::Whole, // NewCargo
+		TriggerArea::Whole, // CargoTaken
+		TriggerArea::Platform, // VehicleArrives
+		TriggerArea::Platform, // VehicleDeparts
+		TriggerArea::Platform, // VehicleLoads
+		TriggerArea::Whole, // AcceptanceTick
+		TriggerArea::Tile, // TileLoop
+		TriggerArea::Platform, // PathReservation
 	};
-	static_assert(std::size(tas) == static_cast<size_t>(StationAnimationTrigger::End));
 
 	assert(st != nullptr);
 
@@ -956,7 +949,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 	uint16_t random_bits = Random();
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	for (TileIndex tile : GetRailTileArea(st, trigger_tile, tas[static_cast<size_t>(trigger)])) {
+	for (TileIndex tile : GetRailTileArea(st, trigger_tile, tas[trigger])) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss != nullptr && ss->animation.triggers.Test(trigger)) {
@@ -980,8 +973,8 @@ void TriggerStationAnimation(BaseStation *st, TileIndex trigger_tile, StationAni
 void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, StationRandomTrigger trigger, CargoType cargo_type)
 {
 	/* List of coverage areas for each animation trigger */
-	static constexpr TriggerArea tas[] = {
-		TA_WHOLE, TA_WHOLE, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM
+	static constexpr EnumIndexArray<TriggerArea, StationRandomTrigger, StationRandomTrigger::End> tas{
+		TriggerArea::Whole, TriggerArea::Whole, TriggerArea::Platform, TriggerArea::Platform, TriggerArea::Platform, TriggerArea::Platform
 	};
 
 	assert(st != nullptr);
@@ -1000,8 +993,8 @@ void TriggerStationRandomisation(BaseStation *st, TileIndex trigger_tile, Statio
 	}
 
 	/* Store triggers now for var 5F */
-	TriggerArea ta = tas[to_underlying(trigger)];
-	if (ta == TA_WHOLE) st->waiting_random_triggers.Set(trigger);
+	TriggerArea ta = tas[trigger];
+	if (ta == TriggerArea::Whole) st->waiting_random_triggers.Set(trigger);
 	StationRandomTriggers used_random_triggers;
 
 	/* Check all tiles over the station to check if the specindex is still in use */

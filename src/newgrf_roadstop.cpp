@@ -431,15 +431,9 @@ void TriggerRoadStopAnimation(BaseStation *st, TileIndex trigger_tile, StationAn
  */
 void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandomTrigger trigger, CargoType cargo_type)
 {
-	enum TriggerArea : uint8_t {
-		TA_TILE,
-		TA_PLATFORM,
-		TA_WHOLE,
-	};
-
 	/* List of coverage areas for each animation trigger */
-	static constexpr TriggerArea tas[] = {
-		TA_WHOLE, TA_WHOLE, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM
+	static constexpr EnumIndexArray<TriggerArea, StationRandomTrigger, StationRandomTrigger::End> tas{
+		TriggerArea::Whole, TriggerArea::Whole, TriggerArea::Platform, TriggerArea::Platform, TriggerArea::Platform, TriggerArea::Platform
 	};
 
 	assert(st != nullptr);
@@ -450,8 +444,8 @@ void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandom
 	if (st->cached_roadstop_cargo_triggers.None()) return;
 	if (IsValidCargoType(cargo_type) && !st->cached_roadstop_cargo_triggers.Test(cargo_type)) return;
 
-	TriggerArea ta = tas[to_underlying(trigger)];
-	if (ta == TA_WHOLE) st->waiting_random_triggers.Set(trigger);
+	TriggerArea ta = tas[trigger];
+	if (ta == TriggerArea::Whole) st->waiting_random_triggers.Set(trigger);
 	StationRandomTriggers used_random_triggers;
 
 	uint32_t whole_reseed = 0;
@@ -497,7 +491,7 @@ void TriggerRoadStopRandomisation(BaseStation *st, TileIndex tile, StationRandom
 			}
 		}
 	};
-	if (ta == TA_WHOLE) {
+	if (ta == TriggerArea::Whole) {
 		for (const RoadStopTileData &tile_data : st->custom_roadstop_tile_data) {
 			process_tile(tile_data.tile);
 		}
