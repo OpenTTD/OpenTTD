@@ -33,21 +33,23 @@ public:
 	/**
 	 * Get the name of a depot.
 	 * @param tile The depot tile to get the name of.
-	 * @return The name of the station.
+	 * @return The name of the depot.
+	 * @note Hangar names can't be retrieved.
 	 */
 	static std::optional<std::string> GetName(TileIndex tile);
 
 	/**
-	 * Set the name a depot.
+	 * Set the name of your own depot.
 	 * @param tile The depot tile to set the name of.
 	 * @param name The new name of the depot (can be either a raw string, or a ScriptText object).
+	 * @pre ScriptCompany::IsMine(ScriptTile::GetOwner(tile)).
 	 * @pre name != null && len(name) != 0.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
+	 * @note Hangar names can't be set.
 	 */
 	static bool SetName(TileIndex tile, Text *name);
-
 };
 
 #endif /* SCRIPT_DEPOT_HPP */

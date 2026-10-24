@@ -21,6 +21,8 @@
  *
  * API additions:
  * \li AIRail::RemoveRailDepot
+ * \li AIDepot
+ * \li AIError::ERR_CAT_DEPOT
  *
  * \b 15.0
  *
