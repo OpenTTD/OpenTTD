@@ -265,7 +265,6 @@ ChangeInfoResult RailVehicleChangeInfo(uint first, uint last, int prop, ByteRead
 
 			case 0x27: // Miscellaneous flags
 				ei->misc_flags = static_cast<EngineMiscFlags>(buf.ReadByte());
-				_loaded_newgrf_features.has_2CC |= ei->misc_flags.Test(EngineMiscFlag::Uses2CC);
 				break;
 
 			case 0x28: // Cargo classes allowed

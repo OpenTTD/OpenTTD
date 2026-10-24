@@ -80,27 +80,26 @@ DECLARE_ENUM_AS_ADDABLE(LiveryClass)
 
 /** Information about a particular livery. */
 struct Livery {
-	/** Flags for bitmask to declare which of the colours are set. */
-	enum class Flag : uint8_t {
-		Primary = 0, ///< Primary colour is set.
-		Secondary = 1, ///< Secondary colour is set.
-	};
+	/** Maximum number of livery colours. */
+	static constexpr size_t NUM_COLOURS = 4;
+	/** Maximum number of livery layers. */
+	static constexpr size_t NUM_LAYERS = NUM_COLOURS / 2;
+	/** Container for livery palettes. */
+	using Palettes = std::array<PaletteID, NUM_LAYERS>;
 
-	/** Bitset of \c Flag elements. */
-	using Flags = EnumBitSet<Flag, uint8_t>;
-
-	Flags in_use{}; ///< Livery flags.
-	Colours colour1 = Colours::Begin; ///< First colour, for all vehicles.
-	Colours colour2 = Colours::Begin; ///< Second colour, for vehicles with 2CC support.
+	uint8_t in_use = 0; ///< Mask of in-use livery colours.
+	std::array<Colours, NUM_COLOURS> colours; ///< The livery colours.
 
 	/**
 	 * Get offset for recolour palette.
+	 * @param layer The recolour layer.
 	 * @param use_secondary Specify whether to add secondary colour offset to the result.
 	 * @return The palette offset.
 	 */
-	inline uint8_t GetRecolourOffset(bool use_secondary = true) const
+	inline uint8_t GetRecolourOffset(uint layer, bool use_secondary = true) const
 	{
-		return use_secondary ? to_underlying(this->colour1) + to_underlying(this->colour2) * 16 : to_underlying(this->colour1);
+		assert(layer * 2 < NUM_COLOURS);
+		return use_secondary ? to_underlying(this->colours[layer * 2]) + to_underlying(this->colours[layer * 2 + 1]) * 16 : to_underlying(this->colours[layer * 2]);
 	}
 };
 

@@ -999,11 +999,16 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_company here. */
 		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, item.engine_id);
-		const PaletteID pal = (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(item.engine_id, _local_company);
+		Livery::Palettes pal;
+		if (show_count && num_engines == 0) {
+			pal.fill(PALETTE_CRASH);
+		 } else {
+			pal = GetEnginePalette(item.engine_id, _local_company);
+		 }
 
 		if (badge_column_widths.size() >= 1 && badge_column_widths[0] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[0], rtl);
-			DrawEngineBadgeColumn(br, 0, badge_classes, e, pal);
+			DrawEngineBadgeColumn(br, 0, badge_classes, e, pal[0]);
 			tr = tr.Indent(badge_column_widths[0], rtl);
 		}
 
@@ -1014,7 +1019,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (badge_column_widths.size() >= 2 && badge_column_widths[1] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[1], rtl);
-			DrawEngineBadgeColumn(br, 1, badge_classes, e, pal);
+			DrawEngineBadgeColumn(br, 1, badge_classes, e, pal[0]);
 			tr = tr.Indent(badge_column_widths[1], rtl);
 		}
 
@@ -1035,7 +1040,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 		if (badge_column_widths.size() >= 3 && badge_column_widths[2] > 0) {
 			Rect br = tr.WithWidth(badge_column_widths[2], !rtl).Indent(WidgetDimensions::scaled.hsep_wide, rtl);
-			DrawEngineBadgeColumn(br, 2, badge_classes, e, pal);
+			DrawEngineBadgeColumn(br, 2, badge_classes, e, pal[0]);
 			tr = tr.Indent(badge_column_widths[2], !rtl);
 		}
 

@@ -133,7 +133,12 @@ void DrawTrainImage(const Train *v, const Rect &r, VehicleID selection, EngineIm
 			int width = Train::From(v)->GetDisplayImageWidth(&offset);
 
 			if (rtl ? px + width > 0 : px - width < max_width) {
-				PaletteID pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(v);
+				Livery::Palettes pal;
+				if (v->vehstatus.Test(VehState::Crashed)) {
+					pal.fill(PALETTE_CRASH);
+				} else {
+					pal = GetVehiclePalette(v);
+				}
 				VehicleSpriteSeq seq;
 				v->GetImage(dir, image_type, &seq);
 				seq.Draw(px + (rtl ? -offset.x : offset.x), y + offset.y, pal, v->vehstatus.Test(VehState::Crashed));
@@ -360,7 +365,12 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 					if (e->GetGRF() != nullptr) {
 						pitch = ScaleSpriteTrad(e->GetGRF()->traininfo_vehicle_pitch);
 					}
-					PaletteID pal = v->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(u);
+					Livery::Palettes pal;
+					if (v->vehstatus.Test(VehState::Crashed)) {
+						pal.fill(PALETTE_CRASH);
+					} else {
+						pal = GetVehiclePalette(u);
+					}
 					VehicleSpriteSeq seq;
 					u->GetImage(dir, EngineImageType::InDetails, &seq);
 					seq.Draw(px + (rtl ? -offset.x : offset.x), r.top - line_height * vscroll_pos + sprite_y_offset + pitch, pal, v->vehstatus.Test(VehState::Crashed));
