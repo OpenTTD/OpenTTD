@@ -313,6 +313,21 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *movi
 	return stop - (consist->gcache.cached_veh_length + rounding) / 2;
 }
 
+/**
+ * Get the target speed for a train reversing at a waypoint.
+ * @param v The train which is reversing.
+ * @return The target speed for the train.
+ */
+uint16_t ReversingDistanceTargetSpeed(const Train *v)
+{
+	int target_speed;
+	if (_settings_game.vehicle.train_acceleration_model == AccelerationModel::Realistic) {
+		target_speed = ((v->reverse_distance - 1) * 5) / 2;
+	} else {
+		target_speed = (v->reverse_distance - 1) * 10 - 5;
+	}
+	return std::max(25, target_speed);
+}
 
 /**
  * Computes train speed limit caused by curves
@@ -439,6 +454,11 @@ int Train::GetCurrentMaxSpeed() const
 	}
 
 	max_speed = std::min<int>(max_speed, this->current_order.GetMaxSpeed());
+
+	/* We might be slowing to reverse at a waypoint. */
+	if (this->reverse_distance > 0) {
+		max_speed = std::min<int>(max_speed, ReversingDistanceTargetSpeed(this));
+	}
 
 	/* If the train is going backwards, without a leading cab, restrict its speed. */
 	if (!moving_front->CanLeadTrain()) {
@@ -698,6 +718,7 @@ static CommandCost CmdBuildRailWagon(DoCommandFlags flags, TileIndex tile, const
 		v->owner = _current_company;
 		v->track = Track::Depot;
 		v->vehstatus = {VehState::Hidden, VehState::DefaultPalette};
+		v->reverse_distance = 0;
 
 		v->SetWagon();
 
@@ -840,6 +861,7 @@ CommandCost CmdBuildRailVehicle(DoCommandFlags flags, TileIndex tile, const Engi
 		v->refit_cap = 0;
 		v->last_station_visited = StationID::Invalid();
 		v->last_loading_station = StationID::Invalid();
+		v->reverse_distance = 0;
 
 		v->engine_type = e->index;
 		v->gcache.first_engine = EngineID::Invalid(); // needs to be set before first callback
@@ -2038,6 +2060,8 @@ static void ReverseTrainDirection(Train *consist)
 		InvalidateWindowData(WindowClass::VehicleDepot, moving_front->tile);
 	}
 
+	consist->reverse_distance = 0;
+
 	/* Clear path reservation in front if train is not stuck. */
 	if (!consist->flags.Test(VehicleRailFlag::Stuck)) FreeTrainTrackReservation(consist);
 
@@ -2366,6 +2390,13 @@ static bool CheckTrainStayInDepot(Train *v)
 
 	/* Check if we should wait here for unbunching. */
 	if (v->IsWaitingForUnbunching()) return true;
+
+	/* We might be reversing at a waypoint, keep doing that. */
+	if (v->reverse_distance > 0) {
+		v->reverse_distance--;
+		if (v->reverse_distance == 0) SetWindowWidgetDirty(WindowClass::VehicleView, v->index, WID_VV_START_STOP);
+		return true;
+	}
 
 	SigSegState seg_state;
 
@@ -3375,6 +3406,11 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 	Train *prev;
 	bool direction_changed = false; // has direction of any part changed?
 
+	/* We might be ready to reverse at a waypoint. */
+	if (reverse && first->reverse_distance == 1) {
+		goto reverse_train_direction;
+	}
+
 	/* For every vehicle after and including the given vehicle */
 	for (prev = v->GetMovingPrev(); v != nomove; prev = v, v = v->GetMovingNext()) {
 		DiagDirection enterdir = DiagDirection::Begin;
@@ -3615,6 +3651,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				v->UpdatePosition();
+				if (v->reverse_distance > 1) v->reverse_distance--;
 				if (!v->vehstatus.Test(VehState::Hidden)) v->Vehicle::UpdateViewport(true);
 				continue;
 			}
@@ -3626,6 +3663,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
 		v->UpdatePosition();
+		if (v->reverse_distance > 1) v->reverse_distance--;
 
 		/* update the Z position of the vehicle */
 		int old_z = v->UpdateInclination(gp.new_tile != gp.old_tile, false);

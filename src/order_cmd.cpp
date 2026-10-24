@@ -764,6 +764,12 @@ CommandCost CmdInsertOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 				case VehicleType::Train: {
 					if (!wp->facilities.Test(StationFacility::Train)) return CommandCost(STR_ERROR_CAN_T_ADD_ORDER, STR_ERROR_NO_RAIL_WAYPOINT);
 
+					/* There are two valid combinations of flags for train waypoint orders:
+					 * 1. The train will go via the waypoint without stopping, and the station location is not set. */
+					if (new_order.GetNonStopType().Test(OrderNonStopFlag::GoVia) && new_order.GetStopLocation() != OrderStopLocation::FarEnd) return CMD_ERROR;
+					/* 2. The train will stop at the waypoint, then reverse. */
+					if (!new_order.GetNonStopType().Test(OrderNonStopFlag::GoVia) && new_order.GetStopLocation() != OrderStopLocation::NearEnd) return CMD_ERROR;
+
 					ret = CheckOwnership(wp->owner);
 					if (ret.Failed()) return ret;
 					break;
@@ -1199,7 +1205,7 @@ CommandCost CmdModifyOrder(DoCommandFlags flags, VehicleID veh, VehicleOrderID s
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			if (mof != MOF_NON_STOP) return CMD_ERROR;
+			if (mof != MOF_NON_STOP && mof != MOF_STOP_LOCATION) return CMD_ERROR;
 			break;
 
 		case OT_CONDITIONAL:
