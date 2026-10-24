@@ -4522,6 +4522,7 @@ std::tuple<CommandCost, StationID> CmdMoveStationName(DoCommandFlags flags, Stat
 		st->MoveSign(tile);
 
 		st->UpdateVirtCoord();
+		st->RecomputeCatchment();
 	}
 	return { CommandCost(), station_id };
 }
