@@ -387,6 +387,25 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 	return std::nullopt;
 }
 
+/**
+ * Translate a set of road bits into the neighbouring tile indices they correspond to.
+ * @param rb The set of road bits.
+ * @return A list of neighbouring tile indices matching the given road bits.
+ */
+static Array<TileIndex> MapRoadBitsToNeighbourTiles(const ::RoadBits rb)
+{
+	static constexpr EnumIndexArray<int, RoadBit, RoadBit::End> rb_x = {0, 1, 0, -1}; // Mapped tile x coordinates for RoadBit::NW, RoadBit::SW, RoadBit::SE, RoadBit::NE
+	static constexpr EnumIndexArray<int, RoadBit, RoadBit::End> rb_y = {-1, 0, 1, 0}; // Mapped tile y coordinates for RoadBit::NW, RoadBit::SW, RoadBit::SE, RoadBit::NE
+
+	Array<TileIndex> existing;
+	existing.reserve(rb.Count());
+	for (const RoadBit &roadbit : rb) {
+		existing.emplace_back(::TileXY(rb_x[roadbit], rb_y[roadbit]));
+	}
+
+	return existing;
+}
+
 /* static */ SQInteger ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::Slope slope_, Array<TileIndex> &&existing, TileIndex start, TileIndex end)
 {
 	::Slope slope = (::Slope)slope_;
@@ -418,13 +437,6 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 	if (!::IsValidTile(tile) || !::IsValidTile(start) || !::IsValidTile(end)) return -1;
 	if (::DistanceManhattan(tile, start) != 1 || ::DistanceManhattan(tile, end) != 1) return -1;
 
-	const TileIndex neighbours[] = {
-		ScriptMap::GetTileIndex(0, -1), // RoadBit::NW
-		ScriptMap::GetTileIndex(1, 0), // RoadBit::SW
-		ScriptMap::GetTileIndex(0, 1), // RoadBit::SE
-		ScriptMap::GetTileIndex(-1, 0), // RoadBit::NE
-	};
-
 	::RoadBits rb{};
 	if (::IsNormalRoadTile(tile)) {
 		rb = ::GetAllRoadBits(tile);
@@ -432,12 +444,7 @@ static std::optional<RoadPartOrientation> ToRoadPartOrientation(const TileIndex 
 		rb = ::GetAnyRoadBits(tile, RoadTramType::Road) | ::GetAnyRoadBits(tile, RoadTramType::Tram);
 	}
 
-	Array<TileIndex> existing;
-	for (RoadBit roadbit : rb) {
-		existing.emplace_back(neighbours[to_underlying(roadbit)]);
-	}
-
-	return ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::GetSlope(tile), std::move(existing), start - tile, end - tile);
+	return ScriptRoad::CanBuildConnectedRoadParts(ScriptTile::GetSlope(tile), MapRoadBitsToNeighbourTiles(rb), start - tile, end - tile);
 }
 
 /**
@@ -488,22 +495,10 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 {
 	if (!HasRoadType(tile, GetCurrentRoadType())) return {};
 
-	const TileIndex neighbours[] = {
-		ScriptMap::GetTileIndex(0, -1), // RoadBit::NW
-		ScriptMap::GetTileIndex(1, 0), // RoadBit::SW
-		ScriptMap::GetTileIndex(0, 1), // RoadBit::SE
-		ScriptMap::GetTileIndex(-1, 0), // RoadBit::NE
-	};
-
 	::RoadTramType rtt = ::GetRoadTramType(ScriptObject::GetRoadType());
 	::RoadBits rb = ::GetAnyRoadBits(tile, rtt);
 
-	Array<TileIndex> existing;
-	for (RoadBit roadbit : rb) {
-		existing.emplace_back(neighbours[to_underlying(roadbit)]);
-	}
-
-	return existing;
+	return MapRoadBitsToNeighbourTiles(rb);
 }
 
 /* static */ TileIndex ScriptRoad::GetRoadDepotFrontTile(TileIndex depot)
