@@ -19,6 +19,9 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li AIRoad::GetExistingRoadParts
+ *
  * \b 16.0
  *
  * API additions:
