@@ -3136,28 +3136,28 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 		case SPR_MONO_TRACK_X:
 		case SPR_MGLV_TRACK_X:
 			snow_desert = false;
-			*overlay_offset = RTO_X;
+			*overlay_offset = RailTrackOffset::X;
 			break;
 
 		case SPR_RAIL_TRACK_Y:
 		case SPR_MONO_TRACK_Y:
 		case SPR_MGLV_TRACK_Y:
 			snow_desert = false;
-			*overlay_offset = RTO_Y;
+			*overlay_offset = RailTrackOffset::Y;
 			break;
 
 		case SPR_RAIL_TRACK_X_SNOW:
 		case SPR_MONO_TRACK_X_SNOW:
 		case SPR_MGLV_TRACK_X_SNOW:
 			snow_desert = true;
-			*overlay_offset = RTO_X;
+			*overlay_offset = RailTrackOffset::X;
 			break;
 
 		case SPR_RAIL_TRACK_Y_SNOW:
 		case SPR_MONO_TRACK_Y_SNOW:
 		case SPR_MGLV_TRACK_Y_SNOW:
 			snow_desert = true;
-			*overlay_offset = RTO_Y;
+			*overlay_offset = RailTrackOffset::Y;
 			break;
 
 		default:
@@ -3420,11 +3420,11 @@ static void DrawTile_Station(TileInfo *ti)
 		if (rti != nullptr && rti->UsesOverlay() && SplitGroundSpriteForOverlay(ti, &image, &overlay_offset)) {
 			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Ground);
 			DrawGroundSprite(image, PAL_NONE);
-			DrawGroundSprite(ground + overlay_offset, PAL_NONE);
+			DrawGroundSprite(ground + to_underlying(overlay_offset), PAL_NONE);
 
 			if (_game_mode != GameMode::Menu && _settings_client.gui.show_track_reservation && HasStationReservation(ti->tile)) {
 				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RailSpriteType::Overlay);
-				DrawGroundSprite(overlay + overlay_offset, PALETTE_CRASH);
+				DrawGroundSprite(overlay + to_underlying(overlay_offset), PALETTE_CRASH);
 			}
 		} else {
 			image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
@@ -3528,7 +3528,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	if (railtype_info != nullptr && railtype_info->UsesOverlay() && SplitGroundSpriteForOverlay(nullptr, &img, &overlay_offset)) {
 		SpriteID ground = GetCustomRailSprite(railtype_info, INVALID_TILE, RailSpriteType::Ground);
 		DrawSprite(img, PAL_NONE, x, y);
-		DrawSprite(ground + overlay_offset, PAL_NONE, x, y);
+		DrawSprite(ground + to_underlying(overlay_offset), PAL_NONE, x, y);
 	} else {
 		DrawSprite(img + total_offset, HasBit(img, PALETTE_MODIFIER_COLOUR) ? pal : PAL_NONE, x, y);
 	}

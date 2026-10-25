@@ -877,7 +877,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	if (rti->UsesOverlay() && SplitGroundSpriteForOverlay(nullptr, &image, &overlay_offset)) {
 		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RailSpriteType::Ground);
 		DrawSprite(image, PAL_NONE, x, y);
-		DrawSprite(ground + overlay_offset, PAL_NONE, x, y);
+		DrawSprite(ground + to_underlying(overlay_offset), PAL_NONE, x, y);
 	} else {
 		image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
 		if (HasBit(pal, SPRITE_MODIFIER_CUSTOM_SPRITE)) pal += ground_relocation;
