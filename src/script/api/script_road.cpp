@@ -484,6 +484,28 @@ static bool NeighbourHasReachableRoad(::RoadType rt, TileIndex start_tile, DiagD
 	return neighbour;
 }
 
+/* static */ Array<TileIndex> ScriptRoad::GetExistingRoadParts(TileIndex tile)
+{
+	if (!HasRoadType(tile, GetCurrentRoadType())) return {};
+
+	const TileIndex neighbours[] = {
+		ScriptMap::GetTileIndex(0, -1), // RoadBit::NW
+		ScriptMap::GetTileIndex(1, 0), // RoadBit::SW
+		ScriptMap::GetTileIndex(0, 1), // RoadBit::SE
+		ScriptMap::GetTileIndex(-1, 0), // RoadBit::NE
+	};
+
+	::RoadTramType rtt = ::GetRoadTramType(ScriptObject::GetRoadType());
+	::RoadBits rb = ::GetAnyRoadBits(tile, rtt);
+
+	Array<TileIndex> existing;
+	for (RoadBit roadbit : rb) {
+		existing.emplace_back(neighbours[to_underlying(roadbit)]);
+	}
+
+	return existing;
+}
+
 /* static */ TileIndex ScriptRoad::GetRoadDepotFrontTile(TileIndex depot)
 {
 	if (!IsRoadDepotTile(depot)) return INVALID_TILE;
