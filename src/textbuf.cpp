@@ -476,9 +476,12 @@ HandleKeyPressResult Textbuf::HandleKeyPress(char32_t key, uint16_t keycode)
 	bool edited = false;
 
 	switch (keycode) {
-		case WKC_ESC: return HKPR_CANCEL;
+		case WKC_ESC:
+			return HandleKeyPressResult::Cancel;
 
-		case WKC_RETURN: case WKC_NUM_ENTER: return HKPR_CONFIRM;
+		case WKC_RETURN:
+		case WKC_NUM_ENTER:
+			return HandleKeyPressResult::Confirm;
 
 		case (WKC_CTRL | 'V'):
 		case (WKC_SHIFT | WKC_INSERT):
@@ -504,10 +507,10 @@ HandleKeyPressResult Textbuf::HandleKeyPress(char32_t key, uint16_t keycode)
 			if (IsValidChar(key, this->afilter)) {
 				edited = this->InsertChar(key);
 			} else {
-				return HKPR_NOT_HANDLED;
+				return HandleKeyPressResult::NotHandled;
 			}
 			break;
 	}
 
-	return edited ? HKPR_EDITING : HKPR_CURSOR;
+	return edited ? HandleKeyPressResult::Editing : HandleKeyPressResult::Cursor;
 }

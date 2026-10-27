@@ -16,13 +16,12 @@
 /**
  * Return values for Textbuf::HandleKeypress
  */
-enum HandleKeyPressResult
-{
-	HKPR_EDITING,     ///< Textbuf content changed.
-	HKPR_CURSOR,      ///< Non-text change, e.g. cursor position.
-	HKPR_CONFIRM,     ///< Return or enter key pressed.
-	HKPR_CANCEL,      ///< Escape key pressed.
-	HKPR_NOT_HANDLED, ///< Key does not affect editboxes.
+enum class HandleKeyPressResult : uint8_t {
+	Editing, ///< Textbuf content changed.
+	Cursor, ///< Non-text change, e.g. cursor position.
+	Confirm, ///< Return or enter key pressed.
+	Cancel, ///< Escape key pressed.
+	NotHandled, ///< Key does not affect editboxes.
 };
 
 /** Helper/buffer for input fields. */
