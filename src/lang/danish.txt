@@ -2233,7 +2233,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillad tog at v
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Skift indstillingsværdi
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Fejl i konfigurationsfilen...
+STR_CONFIG_ERROR                                                :Fejl i konfigurationsfilen...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fejl i array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ugyldig værdi '{STRING}' for '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... efterfølgende karakterer i slutningen af indstilling '{STRING}'
