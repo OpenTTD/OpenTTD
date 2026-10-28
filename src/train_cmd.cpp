@@ -4130,9 +4130,10 @@ static bool TrainLocoHandler(Train *consist, bool mode)
 	if (j < adv_spd) {
 		/* if the vehicle has speed 0, update the last_speed field. */
 		if (consist->cur_speed == 0) consist->SetLastSpeed();
+	} else if (!TrainCheckIfLineEnds(moving_front)) {
+		/* Train reversed, discard any further motion, to prevent uncommanded movement in the reverse direction. */
+		j = 0;
 	} else {
-		TrainCheckIfLineEnds(moving_front);
-		moving_front = moving_front->GetMovingFront();
 		/* Loop until the train has finished moving. */
 		for (;;) {
 			j -= adv_spd;
