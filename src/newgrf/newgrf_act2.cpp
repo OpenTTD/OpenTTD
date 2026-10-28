@@ -64,7 +64,7 @@ TileLayoutFlags ReadSpriteLayoutSprite(ByteReader &buf, bool read_flags, bool in
 {
 	grf_sprite->sprite = buf.ReadWord();
 	grf_sprite->pal = buf.ReadWord();
-	TileLayoutFlags flags = read_flags ? (TileLayoutFlags)buf.ReadWord() : TLF_NOTHING;
+	TileLayoutFlags flags = read_flags ? static_cast<TileLayoutFlags>(buf.ReadWord()) : TLF_NOTHING;
 
 	MapSpriteMappingRecolour(grf_sprite);
 
@@ -362,7 +362,7 @@ static const SpriteGroup *ReadDeterministicSpriteGroup(ByteReader &buf, uint8_t 
 		DeterministicSpriteGroupAdjust &adjust = group->adjusts.emplace_back();
 
 		/* The first var adjust doesn't have an operation specified, so we set it to add. */
-		adjust.operation = group->adjusts.size() == 1 ? DeterministicSpriteGroupAdjustOperation::Add : static_cast<DeterministicSpriteGroupAdjustOperation>(buf.ReadByte());
+		adjust.operation = group->adjusts.size() == 1 ? DeterministicSpriteGroupAdjustOperation::Add : DeterministicSpriteGroupAdjustOperation{buf.ReadByte()};
 		adjust.variable = buf.ReadByte();
 		if (adjust.variable == 0x7E) {
 			/* Link subroutine group */

@@ -32,7 +32,7 @@ static void LoadFontGlyph(ByteReader &buf)
 	uint8_t num_def = buf.ReadByte();
 
 	for (uint i = 0; i < num_def; i++) {
-		FontSize size    = (FontSize)buf.ReadByte();
+		FontSize size{buf.ReadByte()};
 		uint8_t  num_char  = buf.ReadByte();
 		uint16_t base_char = buf.ReadWord();
 

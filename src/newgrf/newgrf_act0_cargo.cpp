@@ -164,7 +164,7 @@ static ChangeInfoResult CargoReserveInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x1A: // Bitmask of callbacks to use
-				cs->callback_mask = static_cast<CargoCallbackMasks>(buf.ReadByte());
+				cs->callback_mask = CargoCallbackMasks{buf.ReadByte()};
 				break;
 
 			case 0x1D: // Vehicle capacity multiplier

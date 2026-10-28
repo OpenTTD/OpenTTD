@@ -143,16 +143,16 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 			}
 
 			case 0x0D: // Land shape flags
-				tsp->slopes_refused = (Slope)buf.ReadByte();
+				tsp->slopes_refused = Slope{buf.ReadByte()};
 				break;
 
 			case 0x0E: // Callback mask
-				tsp->callback_mask = static_cast<IndustryTileCallbackMasks>(buf.ReadByte());
+				tsp->callback_mask = IndustryTileCallbackMasks{buf.ReadByte()};
 				break;
 
 			case 0x0F: // Animation information
 				tsp->animation.frames = buf.ReadByte();
-				tsp->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
+				tsp->animation.status = AnimationStatus{buf.ReadByte()};
 				break;
 
 			case 0x10: // Animation speed
@@ -160,7 +160,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 				break;
 
 			case 0x11: // Triggers for callback 25
-				tsp->animation.triggers = static_cast<IndustryAnimationTriggers>(buf.ReadByte());
+				tsp->animation.triggers = IndustryAnimationTriggers{buf.ReadByte()};
 				break;
 
 			case 0x12: // Special flags
@@ -178,7 +178,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint first, uint last, int prop,
 					if (i < num_cargoes) {
 						tsp->accepts_cargo[i] = GetCargoTranslation(buf.ReadByte(), _cur_gps.grffile);
 						/* Tile acceptance can be negative to counteract the IndustryTileSpecialFlag::AcceptsAllCargo flag */
-						tsp->acceptance[i] = (int8_t)buf.ReadByte();
+						tsp->acceptance[i] = static_cast<int8_t>(buf.ReadByte());
 					} else {
 						tsp->accepts_cargo[i] = INVALID_CARGO;
 						tsp->acceptance[i] = 0;
