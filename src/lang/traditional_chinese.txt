@@ -94,36 +94,36 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :汽水
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}名乘客
-STR_QUANTITY_COAL                                               :{WEIGHT_LONG} 煤碳
+STR_QUANTITY_COAL                                               :{WEIGHT_LONG}煤碳
 STR_QUANTITY_MAIL                                               :{COMMA}{NBSP}包郵件
-STR_QUANTITY_OIL                                                :{VOLUME_LONG} 石油
+STR_QUANTITY_OIL                                                :{VOLUME_LONG}石油
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}{NBSP}頭牲畜
 STR_QUANTITY_GOODS                                              :{COMMA}{NBSP}箱商品
-STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} 穀物
-STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} 木材
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} 鐵礦
-STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} 鋼鐵
+STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG}穀物
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG}木材
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG}鐵礦
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG}鋼鐵
 STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}包貴重物品
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} 銅礦
-STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} 玉米
-STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} 水果
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG}銅礦
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG}玉米
+STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG}水果
 STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}包鑽石
-STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} 食物
-STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} 紙張
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG}食物
+STR_QUANTITY_PAPER                                              :{WEIGHT_LONG}紙張
 STR_QUANTITY_GOLD                                               :{COMMA}{NBSP}包黃金
-STR_QUANTITY_WATER                                              :{VOLUME_LONG} 淡水
-STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} 小麥
-STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} 橡膠
-STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} 砂糖
+STR_QUANTITY_WATER                                              :{VOLUME_LONG}淡水
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG}小麥
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG}橡膠
+STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG}砂糖
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}件玩具
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}包糖果
-STR_QUANTITY_COLA                                               :{VOLUME_LONG} 可樂
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} 棉花糖
-STR_QUANTITY_BUBBLES                                            :{COMMA} 個泡泡
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} 太妃糖
-STR_QUANTITY_BATTERIES                                          :{COMMA} 顆電池
-STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} 塑膠
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} 杯汽水
+STR_QUANTITY_COLA                                               :{VOLUME_LONG}可樂
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG}棉花糖
+STR_QUANTITY_BUBBLES                                            :{COMMA}個泡泡
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG}太妃糖
+STR_QUANTITY_BATTERIES                                          :{COMMA}顆電池
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG}塑膠
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA}杯汽水
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -1223,10 +1223,10 @@ STR_BREAKDOWNS_REDUCED                                          :減少
 STR_BREAKDOWNS_NORMAL                                           :普通
 
 ###length 4
-STR_SUBSIDY_X1_5                                                :x1.5
-STR_SUBSIDY_X2                                                  :x2
-STR_SUBSIDY_X3                                                  :x3
-STR_SUBSIDY_X4                                                  :x4
+STR_SUBSIDY_X1_5                                                :1.5 倍
+STR_SUBSIDY_X2                                                  :2 倍
+STR_SUBSIDY_X3                                                  :3 倍
+STR_SUBSIDY_X4                                                  :4 倍
 
 ###length 4
 STR_CLIMATE_TEMPERATE_LANDSCAPE                                 :溫帶
@@ -3277,7 +3277,7 @@ STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :機棚
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :機場
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :貨運站
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :公車站
-STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :船塢
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :碼頭
 STR_LAI_STATION_DESCRIPTION_BUOY                                :浮標
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :航點
 
@@ -5660,10 +5660,10 @@ STR_SV_AIRCRAFT_NAME                                            :飛機 #{COMMA}
 
 ###length 27
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING}北站
-STR_SV_STNAME_SOUTH                                             :{STRING}南站
-STR_SV_STNAME_EAST                                              :{STRING}東站
-STR_SV_STNAME_WEST                                              :{STRING}西站
+STR_SV_STNAME_NORTH                                             :{STRING}北
+STR_SV_STNAME_SOUTH                                             :{STRING}南
+STR_SV_STNAME_EAST                                              :{STRING}東
+STR_SV_STNAME_WEST                                              :{STRING}西
 STR_SV_STNAME_CENTRAL                                           :{STRING}中央
 STR_SV_STNAME_TRANSFER                                          :{STRING}交流站
 STR_SV_STNAME_HALT                                              :{STRING}停車處
