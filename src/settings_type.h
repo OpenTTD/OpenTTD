@@ -218,6 +218,9 @@ enum class GUIPosition: uint8_t {
 	HorizontalLeft, ///< Arrange element horizontally and position it at the left side of the window.
 	HorizontalCentre, ///< Arrange element horizontally and position it at the centre of the window.
 	HorizontalRight, ///< Arrange element horizontally and position it at the right side of the window.
+	VerticalTop, ///< Arrange element vertically and position it at the top of the window.
+	VerticalMiddle, ///< Arrange element vertically and position it at the middle of the window.
+	VerticalBottom, ///< Arrange element vertically and position it at the bottom of the window.
 };
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
