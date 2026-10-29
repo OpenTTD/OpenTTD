@@ -1306,10 +1306,14 @@ STR_CONFIG_SETTING_NONE                                         :None
 STR_CONFIG_SETTING_ORIGINAL                                     :Original
 STR_CONFIG_SETTING_REALISTIC                                    :Realistic
 
-###length 3
+###length 6
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Left
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
+STR_CONFIG_SETTING_VERTICAL_POS_TOP                             :Top (vertically)
+STR_CONFIG_SETTING_VERTICAL_POS_CENTER                          :Centre (vertically)
+STR_CONFIG_SETTING_VERTICAL_POS_BOTTOM                          :Bottom (vertically)
+###next-name-looks-similar
 
 STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}{NBSP}second{P 0 "" s}
 
@@ -2072,7 +2076,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Grow and spread
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Don't grow, don't spread {RED}(breaks lumber mill)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position of main toolbar: {STRING2}
-STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontal position of the main toolbar at the top of the screen
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Position of the main toolbar at the top of the screen. If a vertical option is selected, toolbar is divided into two parts that are placed on both sides of the screen.
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position of status bar: {STRING2}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horizontal position of the status bar at the bottom of the screen
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window snap radius: {STRING2}
