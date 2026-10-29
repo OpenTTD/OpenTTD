@@ -20,6 +20,7 @@
 #include "train.h"
 #include "news_func.h"
 #include "window_func.h"
+#include "toolbar_gui.h"
 #include "company_base.h"
 #include "company_func.h"
 #include "saveload/saveload_func.h"
@@ -144,9 +145,23 @@ static std::pair<StringParameter, StringParameter> ServiceIntervalSettingsValueT
 	return {str, value};
 }
 
+/**
+ * Preper the main toolbar for repositioning as the setting changed.
+ * @param new_value The new value of main toolbar position setting.
+ */
+static bool PrePositionMainToolbar(int32_t &new_value)
+{
+	if (_game_mode != GameMode::Normal || (new_value<=2) == IsMainToolbarHorizontal()) return true;
+	CloseWindowByClass(WindowClass::MainToolbar);
+	return true;
+}
+
 /** Reposition the main toolbar as the setting changed. */
 static void v_PositionMainToolbar(int32_t)
 {
+	if (_game_mode == GameMode::Normal && FindWindowById(WindowClass::MainToolbar, 0) == nullptr) {
+		AllocateToolbar();
+	}
 	if (_game_mode != GameMode::Menu) PositionMainToolbar(nullptr);
 }
 
