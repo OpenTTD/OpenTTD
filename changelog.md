@@ -1,5 +1,12 @@
 ## 16.x
 
+### 16.0-RC1 (2026-10-31)
+
+- Change: Update OpenTTD TTF fonts to v0.9 (#16106)
+- Fix #16114: Inconsistent rail station coverage area hightlight behaviour (#16117)
+- Fix: Uncommanded movement step after an end of line reverse could lead to path reservation problems or train crashes (#16112)
+- Fix: Make autoroad hotspot even
+
 ### 16.0-beta5 (2026-10-24)
 
 - Add: [Script] API for managing depots (#16080)
