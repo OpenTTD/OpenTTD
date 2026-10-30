@@ -865,7 +865,7 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, SpriteAllocator *allocator,
 
 	if (sc->type != type) return HandleInvalidSpriteRequest(sprite, type, sc, allocator, encoder);
 
-	if (allocator == nullptr && encoder == nullptr) {
+	if (allocator == nullptr || encoder == nullptr) {
 		/* Load sprite into/from spritecache */
 
 		/* Update LRU */
