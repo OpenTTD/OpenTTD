@@ -150,6 +150,15 @@ public:
 	}
 
 	/**
+	 * Get the animation buffer pitch in uint8_t elements per row.
+	 * @return The animation buffer pitch.
+	 */
+	constexpr int GetAnimBufferPitch() const
+	{
+		return anim_pitch;
+	}
+
+	/**
 	 * An edit box lost the input focus. Abort character compositing if necessary.
 	 */
 	virtual void EditBoxLostFocus() {}
@@ -365,6 +374,7 @@ protected:
 	std::mutex game_thread_wait_mutex;
 
 	uint8_t *anim_buffer = nullptr; ///< The animation buffer if supported/used.
+	int anim_pitch = 0; ///< Pitch of the animation buffer if supported/used.
 
 	const bool uses_hardware_acceleration; ///< Whether hardware acceleration is used or not.
 	const bool supports_animation_buffer; ///< Whether this driver supports hardware accelerated animation.

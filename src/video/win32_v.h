@@ -51,6 +51,7 @@ protected:
 	int height_org = 0;     ///< Original monitor resolution height, before we changed it.
 
 	bool buffer_locked = false; ///< Video buffer was locked by the main thread.
+	Palette local_palette; ///< Current palette to use for drawing.
 
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
@@ -89,6 +90,12 @@ protected:
 	 */
 	virtual void PaletteChanged(HWND hWnd) = 0;
 
+	/**
+	 * Whether minimising and restoring fullscreen windows uses ToggleFullscreen.
+	 * @return True if ToggleFullscreen should be used.
+	 */
+	virtual bool MinimiseRestoreWithToggleFullscreen() const { return false; }
+
 private:
 	friend LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 };
@@ -125,7 +132,7 @@ public:
 /** The factory for Windows' video driver. */
 class FVideoDriver_Win32GDI : public DriverFactoryBase {
 public:
-	FVideoDriver_Win32GDI() : DriverFactoryBase(Driver::Type::Video, 9, "win32", "Win32 GDI Video Driver") {}
+	FVideoDriver_Win32GDI() : DriverFactoryBase(Driver::Type::Video, 8, "win32", "Win32 GDI Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Win32GDI>(); }
 };
 
@@ -179,7 +186,7 @@ protected:
 /** The factory for Windows' OpenGL video driver. */
 class FVideoDriver_Win32OpenGL : public DriverFactoryBase {
 public:
-	FVideoDriver_Win32OpenGL() : DriverFactoryBase(Driver::Type::Video, 10, "win32-opengl", "Win32 OpenGL Video Driver") {}
+	FVideoDriver_Win32OpenGL() : DriverFactoryBase(Driver::Type::Video, 9, "win32-opengl", "Win32 OpenGL Video Driver") {}
 	std::unique_ptr<Driver> CreateInstance() const override { return std::make_unique<VideoDriver_Win32OpenGL>(); }
 
 protected:
