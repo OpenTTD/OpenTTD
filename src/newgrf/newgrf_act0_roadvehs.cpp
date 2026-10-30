@@ -147,7 +147,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 				break;
 
 			case 0x1C: // Miscellaneous flags
-				ei->misc_flags = static_cast<EngineMiscFlags>(buf.ReadByte());
+				ei->misc_flags = EngineMiscFlags{buf.ReadByte()};
 				_loaded_newgrf_features.has_2CC |= ei->misc_flags.Test(EngineMiscFlag::Uses2CC);
 				break;
 
@@ -203,7 +203,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint first, uint last, int prop, B
 			}
 
 			case 0x26: // Engine variant
-				ei->variant_id = static_cast<EngineID>(buf.ReadWord());
+				ei->variant_id = EngineID{buf.ReadWord()};
 				break;
 
 			case 0x27: // Extra miscellaneous flags
