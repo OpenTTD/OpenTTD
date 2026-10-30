@@ -3199,7 +3199,15 @@ public:
 
 		if (v->IsInDepot() && v->IsWaitingForUnbunching()) return GetString(STR_VEHICLE_STATUS_WAITING_UNBUNCHING);
 
-		if (v->type == VehicleType::Train && Train::From(v)->flags.Test(VehicleRailFlag::Stuck) && !v->current_order.IsType(OT_LOADING)) return GetString(STR_VEHICLE_STATUS_TRAIN_STUCK);
+		if (v->type == VehicleType::Train) {
+			const Train *t = Train::From(v);
+
+			/* Train is waiting for a path. */
+			if (t->flags.Test(VehicleRailFlag::Stuck) && !v->current_order.IsType(OT_LOADING)) return GetString(STR_VEHICLE_STATUS_TRAIN_STUCK);
+
+			/* Train is reversing at a waypoint. */
+			if (t->reverse_distance > 0) return GetString(STR_VEHICLE_STATUS_REVERSING, PackVelocity(v->GetDisplaySpeed(), v->type));
+		}
 
 		if (v->type == VehicleType::Aircraft && Aircraft::From(v)->flags.Test(VehicleAirFlag::DestinationTooFar) && !v->current_order.IsType(OT_LOADING)) return GetString(STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR);
 
