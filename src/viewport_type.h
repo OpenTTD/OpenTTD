@@ -136,6 +136,7 @@ enum ViewportDragDropSelectionProcess : uint8_t {
 	/* Rail specific actions */
 	DDSP_PLACE_RAIL,           ///< Rail placement
 	DDSP_BUILD_SIGNALS,        ///< Signal placement
+	DDSP_CONVERT_SIGNALS,      ///< Signal conversion
 	DDSP_BUILD_STATION,        ///< Station placement
 	DDSP_REMOVE_STATION,       ///< Station removal
 	DDSP_CONVERT_RAIL,         ///< Rail conversion

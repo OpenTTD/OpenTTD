@@ -379,6 +379,7 @@ enum class Commands : uint8_t {
 	UpdateLeagueTableElementData, ///< update the data fields of a league table element
 	UpdateLeagueTableElementScore, ///< update the score of a league table element
 	RemoveLeagueTableElement, ///< remove a league table element
+	ConvertSignals, ///< converts signals
 
 	End, ///< @important Must ALWAYS be on the end of this list!! (period)
 };
