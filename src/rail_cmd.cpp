@@ -1943,22 +1943,22 @@ struct FenceOffset : SpriteBounds {
 
 /** Offsets for drawing fences */
 static const FenceOffset _fence_offsets[] = {
-	{Corner::Invalid, 0, 1, 16, 1}, // RFO_FLAT_X_NW
-	{Corner::Invalid, 1, 0, 1, 16}, // RFO_FLAT_Y_NE
-	{Corner::W, 8, 8, 1, 1}, // RFO_FLAT_LEFT
-	{Corner::N, 8, 8, 1, 1}, // RFO_FLAT_UPPER
-	{Corner::Invalid, 0, 1, 16, 1}, // RFO_SLOPE_SW_NW
-	{Corner::Invalid, 1, 0, 1, 16}, // RFO_SLOPE_SE_NE
-	{Corner::Invalid, 0, 1, 16, 1}, // RFO_SLOPE_NE_NW
-	{Corner::Invalid, 1, 0, 1, 16}, // RFO_SLOPE_NW_NE
-	{Corner::Invalid, 0, 15, 16, 1}, // RFO_FLAT_X_SE
-	{Corner::Invalid, 15, 0, 1, 16}, // RFO_FLAT_Y_SW
-	{Corner::E, 8, 8, 1, 1}, // RFO_FLAT_RIGHT
-	{Corner::S, 8, 8, 1, 1}, // RFO_FLAT_LOWER
-	{Corner::Invalid, 0, 15, 16, 1}, // RFO_SLOPE_SW_SE
-	{Corner::Invalid, 15, 0, 1, 16}, // RFO_SLOPE_SE_SW
-	{Corner::Invalid, 0, 15, 16, 1}, // RFO_SLOPE_NE_SE
-	{Corner::Invalid, 15, 0, 1, 16}, // RFO_SLOPE_NW_SW
+	{Corner::Invalid, 0, 1, 16, 1}, // FLAT_X_NW
+	{Corner::Invalid, 1, 0, 1, 16}, // FLAT_Y_NE
+	{Corner::W, 8, 8, 1, 1}, // FLAT_LEFT
+	{Corner::N, 8, 8, 1, 1}, // FLAT_UPPER
+	{Corner::Invalid, 0, 1, 16, 1}, // SLOPE_SW_NW
+	{Corner::Invalid, 1, 0, 1, 16}, // SLOPE_SE_NE
+	{Corner::Invalid, 0, 1, 16, 1}, // SLOPE_NE_NW
+	{Corner::Invalid, 1, 0, 1, 16}, // SLOPE_NW_NE
+	{Corner::Invalid, 0, 15, 16, 1}, // FLAT_X_SE
+	{Corner::Invalid, 15, 0, 1, 16}, // FLAT_Y_SW
+	{Corner::E, 8, 8, 1, 1}, // FLAT_RIGHT
+	{Corner::S, 8, 8, 1, 1}, // FLAT_LOWER
+	{Corner::Invalid, 0, 15, 16, 1}, // SLOPE_SW_SE
+	{Corner::Invalid, 15, 0, 1, 16}, // SLOPE_SE_SW
+	{Corner::Invalid, 0, 15, 16, 1}, // SLOPE_NE_SE
+	{Corner::Invalid, 15, 0, 1, 16}, // SLOPE_NW_SW
 };
 
 /**
@@ -1971,10 +1971,10 @@ static const FenceOffset _fence_offsets[] = {
 static void DrawTrackFence(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites, RailFenceOffset rfo)
 {
 	int z = ti->z;
-	if (IsValidCorner(_fence_offsets[rfo].height_ref)) {
-		z += GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), _fence_offsets[rfo].height_ref);
+	if (IsValidCorner(_fence_offsets[to_underlying(rfo)].height_ref)) {
+		z += GetSlopePixelZInCorner(RemoveHalftileSlope(ti->tileh), _fence_offsets[to_underlying(rfo)].height_ref);
 	}
-	AddSortableSpriteToDraw(psid.sprite + (rfo % num_sprites), psid.pal, ti->x, ti->y, z, _fence_offsets[rfo]);
+	AddSortableSpriteToDraw(psid.sprite + (to_underlying(rfo) % num_sprites), psid.pal, ti->x, ti->y, z, _fence_offsets[to_underlying(rfo)]);
 }
 
 /**
@@ -1985,8 +1985,8 @@ static void DrawTrackFence(const TileInfo *ti, const PalSpriteID &psid, uint num
  */
 static void DrawTrackFence_NW(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
-	RailFenceOffset rfo = RFO_FLAT_X_NW;
-	if (ti->tileh & SLOPE_NW) rfo = (ti->tileh & SLOPE_W) ? RFO_SLOPE_SW_NW : RFO_SLOPE_NE_NW;
+	RailFenceOffset rfo = RailFenceOffset::FLAT_X_NW;
+	if (ti->tileh & SLOPE_NW) rfo = (ti->tileh & SLOPE_W) ? RailFenceOffset::SLOPE_SW_NW : RailFenceOffset::SLOPE_NE_NW;
 	DrawTrackFence(ti, psid, num_sprites, rfo);
 }
 
@@ -1998,8 +1998,8 @@ static void DrawTrackFence_NW(const TileInfo *ti, const PalSpriteID &psid, uint 
  */
 static void DrawTrackFence_SE(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
-	RailFenceOffset rfo = RFO_FLAT_X_SE;
-	if (ti->tileh & SLOPE_SE) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SW_SE : RFO_SLOPE_NE_SE;
+	RailFenceOffset rfo = RailFenceOffset::FLAT_X_SE;
+	if (ti->tileh & SLOPE_SE) rfo = (ti->tileh & SLOPE_S) ? RailFenceOffset::SLOPE_SW_SE : RailFenceOffset::SLOPE_NE_SE;
 	DrawTrackFence(ti, psid, num_sprites, rfo);
 }
 
@@ -2011,8 +2011,8 @@ static void DrawTrackFence_SE(const TileInfo *ti, const PalSpriteID &psid, uint 
  */
 static void DrawTrackFence_NE(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
-	RailFenceOffset rfo = RFO_FLAT_Y_NE;
-	if (ti->tileh & SLOPE_NE) rfo = (ti->tileh & SLOPE_E) ? RFO_SLOPE_SE_NE : RFO_SLOPE_NW_NE;
+	RailFenceOffset rfo = RailFenceOffset::FLAT_Y_NE;
+	if (ti->tileh & SLOPE_NE) rfo = (ti->tileh & SLOPE_E) ? RailFenceOffset::SLOPE_SE_NE : RailFenceOffset::SLOPE_NW_NE;
 	DrawTrackFence(ti, psid, num_sprites, rfo);
 }
 
@@ -2024,8 +2024,8 @@ static void DrawTrackFence_NE(const TileInfo *ti, const PalSpriteID &psid, uint 
  */
 static void DrawTrackFence_SW(const TileInfo *ti, const PalSpriteID &psid, uint num_sprites)
 {
-	RailFenceOffset rfo = RFO_FLAT_Y_SW;
-	if (ti->tileh & SLOPE_SW) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SE_SW : RFO_SLOPE_NW_SW;
+	RailFenceOffset rfo = RailFenceOffset::FLAT_Y_SW;
+	if (ti->tileh & SLOPE_SW) rfo = (ti->tileh & SLOPE_S) ? RailFenceOffset::SLOPE_SE_SW : RailFenceOffset::SLOPE_NW_SW;
 	DrawTrackFence(ti, psid, num_sprites, rfo);
 }
 
@@ -2060,10 +2060,10 @@ static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, Palett
 		case RailGroundType::FenceSW:     DrawTrackFence_SW(ti, psid, num_sprites); break;
 		case RailGroundType::FenceNESW:   DrawTrackFence_NE(ti, psid, num_sprites);
 		                                  DrawTrackFence_SW(ti, psid, num_sprites); break;
-		case RailGroundType::FenceVert1:  DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LEFT);  break;
-		case RailGroundType::FenceVert2:  DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_RIGHT); break;
-		case RailGroundType::FenceHoriz1: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_UPPER); break;
-		case RailGroundType::FenceHoriz2: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LOWER); break;
+		case RailGroundType::FenceVert1:  DrawTrackFence(ti, psid, num_sprites, RailFenceOffset::FLAT_LEFT);  break;
+		case RailGroundType::FenceVert2:  DrawTrackFence(ti, psid, num_sprites, RailFenceOffset::FLAT_RIGHT); break;
+		case RailGroundType::FenceHoriz1: DrawTrackFence(ti, psid, num_sprites, RailFenceOffset::FLAT_UPPER); break;
+		case RailGroundType::FenceHoriz2: DrawTrackFence(ti, psid, num_sprites, RailFenceOffset::FLAT_LOWER); break;
 		case RailGroundType::HalfTileWater: {
 			Corner track_corner;
 			if (IsHalftileSlope(ti->tileh)) {
@@ -2074,10 +2074,10 @@ static void DrawTrackDetails(const TileInfo *ti, const RailTypeInfo *rti, Palett
 				track_corner = OppositeCorner(GetHighestSlopeCorner(ComplementSlope(ti->tileh)));
 			}
 			switch (track_corner) {
-				case Corner::W: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LEFT); break;
-				case Corner::S: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_LOWER); break;
-				case Corner::E: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_RIGHT); break;
-				case Corner::N: DrawTrackFence(ti, psid, num_sprites, RFO_FLAT_UPPER); break;
+				case Corner::W: DrawTrackFence(ti, psid, num_sprites, RailFenceOffset::FLAT_LEFT); break;
+				case Corner::S: DrawTrackFence(ti, psid, num_sprites, RailFenceOffset::FLAT_LOWER); break;
+				case Corner::E: DrawTrackFence(ti, psid, num_sprites, RailFenceOffset::FLAT_RIGHT); break;
+				case Corner::N: DrawTrackFence(ti, psid, num_sprites, RailFenceOffset::FLAT_UPPER); break;
 				default: NOT_REACHED();
 			}
 			break;
@@ -2153,77 +2153,77 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 		DrawGroundSprite(ground + track.base() - 1, PAL_NONE);
 
 		/* Draw reserved track bits */
-		if (pbs.Test(Track::X))     DrawGroundSprite(overlay + RTO_X, PALETTE_CRASH);
-		if (pbs.Test(Track::Y))     DrawGroundSprite(overlay + RTO_Y, PALETTE_CRASH);
-		if (pbs.Test(Track::Upper)) DrawTrackSprite(overlay + RTO_N, PALETTE_CRASH, ti, SLOPE_N);
-		if (pbs.Test(Track::Lower)) DrawTrackSprite(overlay + RTO_S, PALETTE_CRASH, ti, SLOPE_S);
-		if (pbs.Test(Track::Right)) DrawTrackSprite(overlay + RTO_E, PALETTE_CRASH, ti, SLOPE_E);
-		if (pbs.Test(Track::Left))  DrawTrackSprite(overlay + RTO_W, PALETTE_CRASH, ti, SLOPE_W);
+		if (pbs.Test(Track::X))     DrawGroundSprite(overlay + to_underlying(RailTrackOffset::X), PALETTE_CRASH);
+		if (pbs.Test(Track::Y))     DrawGroundSprite(overlay + to_underlying(RailTrackOffset::Y), PALETTE_CRASH);
+		if (pbs.Test(Track::Upper)) DrawTrackSprite(overlay + to_underlying(RailTrackOffset::N), PALETTE_CRASH, ti, SLOPE_N);
+		if (pbs.Test(Track::Lower)) DrawTrackSprite(overlay + to_underlying(RailTrackOffset::S), PALETTE_CRASH, ti, SLOPE_S);
+		if (pbs.Test(Track::Right)) DrawTrackSprite(overlay + to_underlying(RailTrackOffset::E), PALETTE_CRASH, ti, SLOPE_E);
+		if (pbs.Test(Track::Left))  DrawTrackSprite(overlay + to_underlying(RailTrackOffset::W), PALETTE_CRASH, ti, SLOPE_W);
 	} else if (ti->tileh == SLOPE_NW && track == Track::Y) {
-		DrawGroundSprite(ground + RTO_SLOPE_NW, PAL_NONE);
-		if (pbs.Any()) DrawGroundSprite(overlay + RTO_SLOPE_NW, PALETTE_CRASH);
+		DrawGroundSprite(ground + to_underlying(RailTrackOffset::SLOPE_NW), PAL_NONE);
+		if (pbs.Any()) DrawGroundSprite(overlay + to_underlying(RailTrackOffset::SLOPE_NW), PALETTE_CRASH);
 	} else if (ti->tileh == SLOPE_NE && track == Track::X) {
-		DrawGroundSprite(ground + RTO_SLOPE_NE, PAL_NONE);
-		if (pbs.Any()) DrawGroundSprite(overlay + RTO_SLOPE_NE, PALETTE_CRASH);
+		DrawGroundSprite(ground + to_underlying(RailTrackOffset::SLOPE_NE), PAL_NONE);
+		if (pbs.Any()) DrawGroundSprite(overlay + to_underlying(RailTrackOffset::SLOPE_NE), PALETTE_CRASH);
 	} else if (ti->tileh == SLOPE_SE && track == Track::Y) {
-		DrawGroundSprite(ground + RTO_SLOPE_SE, PAL_NONE);
-		if (pbs.Any()) DrawGroundSprite(overlay + RTO_SLOPE_SE, PALETTE_CRASH);
+		DrawGroundSprite(ground + to_underlying(RailTrackOffset::SLOPE_SE), PAL_NONE);
+		if (pbs.Any()) DrawGroundSprite(overlay + to_underlying(RailTrackOffset::SLOPE_SE), PALETTE_CRASH);
 	} else if (ti->tileh == SLOPE_SW && track == Track::X) {
-		DrawGroundSprite(ground + RTO_SLOPE_SW, PAL_NONE);
-		if (pbs.Any()) DrawGroundSprite(overlay + RTO_SLOPE_SW, PALETTE_CRASH);
+		DrawGroundSprite(ground + to_underlying(RailTrackOffset::SLOPE_SW), PAL_NONE);
+		if (pbs.Any()) DrawGroundSprite(overlay + to_underlying(RailTrackOffset::SLOPE_SW), PALETTE_CRASH);
 	} else {
 		switch (track.base()) {
 			/* Draw single ground sprite when not overlapping. No track overlay
 			 * is necessary for these sprites. */
-			case TrackBits{Track::X}.base(): DrawGroundSprite(ground + RTO_X, PAL_NONE); break;
-			case TrackBits{Track::Y}.base(): DrawGroundSprite(ground + RTO_Y, PAL_NONE); break;
-			case TrackBits{Track::Upper}.base(): DrawTrackSprite(ground + RTO_N, PAL_NONE, ti, SLOPE_N); break;
-			case TrackBits{Track::Lower}.base(): DrawTrackSprite(ground + RTO_S, PAL_NONE, ti, SLOPE_S); break;
-			case TrackBits{Track::Right}.base(): DrawTrackSprite(ground + RTO_E, PAL_NONE, ti, SLOPE_E); break;
-			case TrackBits{Track::Left}.base(): DrawTrackSprite(ground + RTO_W, PAL_NONE, ti, SLOPE_W); break;
-			case TRACK_BIT_CROSS.base(): DrawGroundSprite(ground + RTO_CROSSING_XY, PAL_NONE); break;
+			case TrackBits{Track::X}.base(): DrawGroundSprite(ground + to_underlying(RailTrackOffset::X), PAL_NONE); break;
+			case TrackBits{Track::Y}.base(): DrawGroundSprite(ground + to_underlying(RailTrackOffset::Y), PAL_NONE); break;
+			case TrackBits{Track::Upper}.base(): DrawTrackSprite(ground + to_underlying(RailTrackOffset::N), PAL_NONE, ti, SLOPE_N); break;
+			case TrackBits{Track::Lower}.base(): DrawTrackSprite(ground + to_underlying(RailTrackOffset::S), PAL_NONE, ti, SLOPE_S); break;
+			case TrackBits{Track::Right}.base(): DrawTrackSprite(ground + to_underlying(RailTrackOffset::E), PAL_NONE, ti, SLOPE_E); break;
+			case TrackBits{Track::Left}.base(): DrawTrackSprite(ground + to_underlying(RailTrackOffset::W), PAL_NONE, ti, SLOPE_W); break;
+			case TRACK_BIT_CROSS.base(): DrawGroundSprite(ground + to_underlying(RailTrackOffset::CROSSING_XY), PAL_NONE); break;
 			case TRACK_BIT_HORZ.base():
-				DrawTrackSprite(ground + RTO_N, PAL_NONE, ti, SLOPE_N);
-			    DrawTrackSprite(ground + RTO_S, PAL_NONE, ti, SLOPE_S);
+				DrawTrackSprite(ground + to_underlying(RailTrackOffset::N), PAL_NONE, ti, SLOPE_N);
+			    DrawTrackSprite(ground + to_underlying(RailTrackOffset::S), PAL_NONE, ti, SLOPE_S);
 				break;
 			case TRACK_BIT_VERT.base():
-				DrawTrackSprite(ground + RTO_E, PAL_NONE, ti, SLOPE_E);
-			    DrawTrackSprite(ground + RTO_W, PAL_NONE, ti, SLOPE_W);
+				DrawTrackSprite(ground + to_underlying(RailTrackOffset::E), PAL_NONE, ti, SLOPE_E);
+			    DrawTrackSprite(ground + to_underlying(RailTrackOffset::W), PAL_NONE, ti, SLOPE_W);
 				break;
 
 			default:
 				/* We're drawing a junction tile */
 				if (!track.Any(TRACK_BIT_3WAY_NE)) {
-					DrawGroundSprite(ground + RTO_JUNCTION_SW, PAL_NONE);
+					DrawGroundSprite(ground + to_underlying(RailTrackOffset::JUNCTION_SW), PAL_NONE);
 				} else if (!track.Any(TRACK_BIT_3WAY_SW)) {
-					DrawGroundSprite(ground + RTO_JUNCTION_NE, PAL_NONE);
+					DrawGroundSprite(ground + to_underlying(RailTrackOffset::JUNCTION_NE), PAL_NONE);
 				} else if (!track.Any(TRACK_BIT_3WAY_NW)) {
-					DrawGroundSprite(ground + RTO_JUNCTION_SE, PAL_NONE);
+					DrawGroundSprite(ground + to_underlying(RailTrackOffset::JUNCTION_SE), PAL_NONE);
 				} else if (!track.Any(TRACK_BIT_3WAY_SE)) {
-					DrawGroundSprite(ground + RTO_JUNCTION_NW, PAL_NONE);
+					DrawGroundSprite(ground + to_underlying(RailTrackOffset::JUNCTION_NW), PAL_NONE);
 				} else {
-					DrawGroundSprite(ground + RTO_JUNCTION_NSEW, PAL_NONE);
+					DrawGroundSprite(ground + to_underlying(RailTrackOffset::JUNCTION_NSEW), PAL_NONE);
 				}
 
 				/* Mask out PBS bits as we shall draw them afterwards anyway. */
 				track.Reset(pbs);
 
 				/* Draw regular track bits */
-				if (track.Test(Track::X))     DrawGroundSprite(overlay + RTO_X, PAL_NONE);
-				if (track.Test(Track::Y))     DrawGroundSprite(overlay + RTO_Y, PAL_NONE);
-				if (track.Test(Track::Upper)) DrawGroundSprite(overlay + RTO_N, PAL_NONE);
-				if (track.Test(Track::Lower)) DrawGroundSprite(overlay + RTO_S, PAL_NONE);
-				if (track.Test(Track::Right)) DrawGroundSprite(overlay + RTO_E, PAL_NONE);
-				if (track.Test(Track::Left))  DrawGroundSprite(overlay + RTO_W, PAL_NONE);
+				if (track.Test(Track::X))     DrawGroundSprite(overlay + to_underlying(RailTrackOffset::X), PAL_NONE);
+				if (track.Test(Track::Y))     DrawGroundSprite(overlay + to_underlying(RailTrackOffset::Y), PAL_NONE);
+				if (track.Test(Track::Upper)) DrawGroundSprite(overlay + to_underlying(RailTrackOffset::N), PAL_NONE);
+				if (track.Test(Track::Lower)) DrawGroundSprite(overlay + to_underlying(RailTrackOffset::S), PAL_NONE);
+				if (track.Test(Track::Right)) DrawGroundSprite(overlay + to_underlying(RailTrackOffset::E), PAL_NONE);
+				if (track.Test(Track::Left))  DrawGroundSprite(overlay + to_underlying(RailTrackOffset::W), PAL_NONE);
 		}
 
 		/* Draw reserved track bits */
-		if (pbs.Test(Track::X))     DrawGroundSprite(overlay + RTO_X, PALETTE_CRASH);
-		if (pbs.Test(Track::Y))     DrawGroundSprite(overlay + RTO_Y, PALETTE_CRASH);
-		if (pbs.Test(Track::Upper)) DrawTrackSprite(overlay + RTO_N, PALETTE_CRASH, ti, SLOPE_N);
-		if (pbs.Test(Track::Lower)) DrawTrackSprite(overlay + RTO_S, PALETTE_CRASH, ti, SLOPE_S);
-		if (pbs.Test(Track::Right)) DrawTrackSprite(overlay + RTO_E, PALETTE_CRASH, ti, SLOPE_E);
-		if (pbs.Test(Track::Left))  DrawTrackSprite(overlay + RTO_W, PALETTE_CRASH, ti, SLOPE_W);
+		if (pbs.Test(Track::X))     DrawGroundSprite(overlay + to_underlying(RailTrackOffset::X), PALETTE_CRASH);
+		if (pbs.Test(Track::Y))     DrawGroundSprite(overlay + to_underlying(RailTrackOffset::Y), PALETTE_CRASH);
+		if (pbs.Test(Track::Upper)) DrawTrackSprite(overlay + to_underlying(RailTrackOffset::N), PALETTE_CRASH, ti, SLOPE_N);
+		if (pbs.Test(Track::Lower)) DrawTrackSprite(overlay + to_underlying(RailTrackOffset::S), PALETTE_CRASH, ti, SLOPE_S);
+		if (pbs.Test(Track::Right)) DrawTrackSprite(overlay + to_underlying(RailTrackOffset::E), PALETTE_CRASH, ti, SLOPE_E);
+		if (pbs.Test(Track::Left))  DrawTrackSprite(overlay + to_underlying(RailTrackOffset::W), PALETTE_CRASH, ti, SLOPE_W);
 	}
 
 	if (IsValidCorner(halftile_corner)) {
@@ -2251,10 +2251,10 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailTypeIn
 		int offset;
 		switch (FindFirstTrack(track)) {
 			default: NOT_REACHED();
-			case Track::Upper: offset = RTO_N; break;
-			case Track::Lower: offset = RTO_S; break;
-			case Track::Right: offset = RTO_E; break;
-			case Track::Left:  offset = RTO_W; break;
+			case Track::Upper: offset = to_underlying(RailTrackOffset::N); break;
+			case Track::Lower: offset = to_underlying(RailTrackOffset::S); break;
+			case Track::Right: offset = to_underlying(RailTrackOffset::E); break;
+			case Track::Left:  offset = to_underlying(RailTrackOffset::W); break;
 		}
 
 		DrawTrackSprite(ground + offset, PAL_NONE, ti, fake_slope);
@@ -2534,13 +2534,13 @@ static void DrawTile_Rail(TileInfo *ti)
 					if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 					[[fallthrough]];
 				case DiagDirection::SW:
-					DrawGroundSprite(ground + RTO_X, PAL_NONE);
+					DrawGroundSprite(ground + to_underlying(RailTrackOffset::X), PAL_NONE);
 					break;
 				case DiagDirection::NW:
 					if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 					[[fallthrough]];
 				case DiagDirection::SE:
-					DrawGroundSprite(ground + RTO_Y, PAL_NONE);
+					DrawGroundSprite(ground + to_underlying(RailTrackOffset::Y), PAL_NONE);
 					break;
 				default:
 					break;
@@ -2554,13 +2554,13 @@ static void DrawTile_Rail(TileInfo *ti)
 						if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 						[[fallthrough]];
 					case DiagDirection::SW:
-						DrawGroundSprite(overlay + RTO_X, PALETTE_CRASH);
+						DrawGroundSprite(overlay + to_underlying(RailTrackOffset::X), PALETTE_CRASH);
 						break;
 					case DiagDirection::NW:
 						if (!IsInvisibilitySet(TransparencyOption::Buildings)) break;
 						[[fallthrough]];
 					case DiagDirection::SE:
-						DrawGroundSprite(overlay + RTO_Y, PALETTE_CRASH);
+						DrawGroundSprite(overlay + to_underlying(RailTrackOffset::Y), PALETTE_CRASH);
 						break;
 					default:
 						break;
@@ -2621,8 +2621,8 @@ void DrawTrainDepotSprite(int x, int y, DiagDirection dir, RailType railtype)
 		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RailSpriteType::Ground);
 
 		switch (dir) {
-			case DiagDirection::SW: DrawSprite(ground + RTO_X, PAL_NONE, x, y); break;
-			case DiagDirection::SE: DrawSprite(ground + RTO_Y, PAL_NONE, x, y); break;
+			case DiagDirection::SW: DrawSprite(ground + to_underlying(RailTrackOffset::X), PAL_NONE, x, y); break;
+			case DiagDirection::SE: DrawSprite(ground + to_underlying(RailTrackOffset::Y), PAL_NONE, x, y); break;
 			default: break;
 		}
 	}

@@ -60,55 +60,55 @@ enum class RailSpriteType : uint8_t {
  * Offsets for sprites within an overlay/underlay set.
  * These are the same for overlay and underlay sprites.
  */
-enum RailTrackOffset : uint8_t {
-	RTO_X,            ///< Piece of rail in X direction
-	RTO_Y,            ///< Piece of rail in Y direction
-	RTO_N,            ///< Piece of rail in northern corner
-	RTO_S,            ///< Piece of rail in southern corner
-	RTO_E,            ///< Piece of rail in eastern corner
-	RTO_W,            ///< Piece of rail in western corner
-	RTO_SLOPE_NE,     ///< Piece of rail on slope with north-east raised
-	RTO_SLOPE_SE,     ///< Piece of rail on slope with south-east raised
-	RTO_SLOPE_SW,     ///< Piece of rail on slope with south-west raised
-	RTO_SLOPE_NW,     ///< Piece of rail on slope with north-west raised
-	RTO_CROSSING_XY,  ///< Crossing of X and Y rail, with ballast
-	RTO_JUNCTION_SW,  ///< Ballast for junction 'pointing' SW
-	RTO_JUNCTION_NE,  ///< Ballast for junction 'pointing' NE
-	RTO_JUNCTION_SE,  ///< Ballast for junction 'pointing' SE
-	RTO_JUNCTION_NW,  ///< Ballast for junction 'pointing' NW
-	RTO_JUNCTION_NSEW,///< Ballast for full junction
+enum class RailTrackOffset : uint8_t {
+	X,            ///< Piece of rail in X direction
+	Y,            ///< Piece of rail in Y direction
+	N,            ///< Piece of rail in northern corner
+	S,            ///< Piece of rail in southern corner
+	E,            ///< Piece of rail in eastern corner
+	W,            ///< Piece of rail in western corner
+	SLOPE_NE,     ///< Piece of rail on slope with north-east raised
+	SLOPE_SE,     ///< Piece of rail on slope with south-east raised
+	SLOPE_SW,     ///< Piece of rail on slope with south-west raised
+	SLOPE_NW,     ///< Piece of rail on slope with north-west raised
+	CROSSING_XY,  ///< Crossing of X and Y rail, with ballast
+	JUNCTION_SW,  ///< Ballast for junction 'pointing' SW
+	JUNCTION_NE,  ///< Ballast for junction 'pointing' NE
+	JUNCTION_SE,  ///< Ballast for junction 'pointing' SE
+	JUNCTION_NW,  ///< Ballast for junction 'pointing' NW
+	JUNCTION_NSEW,///< Ballast for full junction
 };
 
 /**
  * Offsets for sprites within a bridge surface overlay set.
  */
-enum RailTrackBridgeOffset : uint8_t {
-	RTBO_X,     ///< Piece of rail in X direction
-	RTBO_Y,     ///< Piece of rail in Y direction
-	RTBO_SLOPE, ///< Sloped rail pieces, in order NE, SE, SW, NW
+enum class RailTrackBridgeOffset : uint8_t {
+	X,     ///< Piece of rail in X direction
+	Y,     ///< Piece of rail in Y direction
+	SLOPE, ///< Sloped rail pieces, in order NE, SE, SW, NW
 };
 
 /**
  * Offsets from base sprite for fence sprites. These are in the order of
  *  the sprites in the original data files.
  */
-enum RailFenceOffset : uint8_t {
-	RFO_FLAT_X_NW,     //!< Slope FLAT, Track X,     Fence NW
-	RFO_FLAT_Y_NE,     //!< Slope FLAT, Track Y,     Fence NE
-	RFO_FLAT_LEFT,     //!< Slope FLAT, Track LEFT,  Fence E
-	RFO_FLAT_UPPER,    //!< Slope FLAT, Track UPPER, Fence S
-	RFO_SLOPE_SW_NW,   //!< Slope SW,   Track X,     Fence NW
-	RFO_SLOPE_SE_NE,   //!< Slope SE,   Track Y,     Fence NE
-	RFO_SLOPE_NE_NW,   //!< Slope NE,   Track X,     Fence NW
-	RFO_SLOPE_NW_NE,   //!< Slope NW,   Track Y,     Fence NE
-	RFO_FLAT_X_SE,     //!< Slope FLAT, Track X,     Fence SE
-	RFO_FLAT_Y_SW,     //!< Slope FLAT, Track Y,     Fence SW
-	RFO_FLAT_RIGHT,    //!< Slope FLAT, Track RIGHT, Fence W
-	RFO_FLAT_LOWER,    //!< Slope FLAT, Track LOWER, Fence N
-	RFO_SLOPE_SW_SE,   //!< Slope SW,   Track X,     Fence SE
-	RFO_SLOPE_SE_SW,   //!< Slope SE,   Track Y,     Fence SW
-	RFO_SLOPE_NE_SE,   //!< Slope NE,   Track X,     Fence SE
-	RFO_SLOPE_NW_SW,   //!< Slope NW,   Track Y,     Fence SW
+enum class RailFenceOffset : uint8_t {
+	FLAT_X_NW,     //!< Slope FLAT, Track X,     Fence NW
+	FLAT_Y_NE,     //!< Slope FLAT, Track Y,     Fence NE
+	FLAT_LEFT,     //!< Slope FLAT, Track LEFT,  Fence E
+	FLAT_UPPER,    //!< Slope FLAT, Track UPPER, Fence S
+	SLOPE_SW_NW,   //!< Slope SW,   Track X,     Fence NW
+	SLOPE_SE_NE,   //!< Slope SE,   Track Y,     Fence NE
+	SLOPE_NE_NW,   //!< Slope NE,   Track X,     Fence NW
+	SLOPE_NW_NE,   //!< Slope NW,   Track Y,     Fence NE
+	FLAT_X_SE,     //!< Slope FLAT, Track X,     Fence SE
+	FLAT_Y_SW,     //!< Slope FLAT, Track Y,     Fence SW
+	FLAT_RIGHT,    //!< Slope FLAT, Track RIGHT, Fence W
+	FLAT_LOWER,    //!< Slope FLAT, Track LOWER, Fence N
+	SLOPE_SW_SE,   //!< Slope SW,   Track X,     Fence SE
+	SLOPE_SE_SW,   //!< Slope SE,   Track Y,     Fence SW
+	SLOPE_NE_SE,   //!< Slope NE,   Track X,     Fence SE
+	SLOPE_NW_SW,   //!< Slope NW,   Track Y,     Fence SW
 };
 
 /**
