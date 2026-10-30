@@ -1700,10 +1700,12 @@ restart:
  */
 Point GetToolbarAlignedWindowPosition(int window_width)
 {
-	const Window *w = FindWindowById(WindowClass::MainToolbar, 0);
+	const Window *w = FindWindowById(WindowClass::MainToolbar, (IsMainToolbarHorizontal() || _current_text_dir == TD_RTL) ? 0 : 1);
 	assert(w != nullptr);
-	Point pt = { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
-	return pt;
+	if (IsMainToolbarHorizontal()) {
+		return { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
+	}
+	return { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, 0 };
 }
 
 /**
@@ -3440,7 +3442,7 @@ void CloseConstructionWindows()
 /** Close all always on-top windows to get an empty screen */
 void HideVitalWindows()
 {
-	CloseWindowById(WindowClass::MainToolbar, 0);
+	CloseWindowByClass(WindowClass::MainToolbar);
 	CloseWindowById(WindowClass::Statusbar, 0);
 }
 
@@ -3466,6 +3468,7 @@ void ReInitAllWindows(bool zoom_changed)
 	/* When _gui_zoom has changed, we need to resize toolbar and statusbar first,
 	 * so EnsureVisibleCaption uses the updated size information. */
 	ReInitWindow(FindWindowById(WindowClass::MainToolbar, 0), zoom_changed);
+	ReInitWindow(FindWindowById(WindowClass::MainToolbar, 1), zoom_changed);
 	ReInitWindow(FindWindowById(WindowClass::Statusbar, 0), zoom_changed);
 	for (Window *w : Window::Iterate()) {
 		if (w->window_class == WindowClass::MainToolbar || w->window_class == WindowClass::Statusbar) continue;
@@ -3492,6 +3495,8 @@ template <bool T_VERTICAL_MOVE_ALLOWED = false>
 static int PositionWindow(Window *w, WindowClass clss, int setting)
 {
 	if (w == nullptr || w->window_class != clss) {
+		w = FindWindowById(clss, 1);
+		if (w != nullptr) PositionWindow<T_VERTICAL_MOVE_ALLOWED>(w, clss, setting);
 		w = FindWindowById(clss, 0);
 	}
 	if (w == nullptr) return 0;
@@ -3501,10 +3506,13 @@ static int PositionWindow(Window *w, WindowClass clss, int setting)
 	switch (setting) {
 		case 0: w->left = 0; break;
 		case 1: w->left = (_screen.width - w->width) / 2; break;
-		case 2: w->left = _screen.width - w->width; break;
 		default:
-			if (w->window_number == 0) w->left = 0;
-			break;
+			if (w->window_number == 0) {
+				w->left = 0;
+				break;
+			}
+			[[fallthrough]];
+		case 2: w->left = _screen.width - w->width; break;
 	}
 	if (T_VERTICAL_MOVE_ALLOWED) {
 		int old_top = w->top;
@@ -3601,6 +3609,10 @@ void RelocateAllWindows(int neww, int newh)
 	/* Reposition toolbar then status bar before other all windows. */
 	if (Window *wt = FindWindowById(WindowClass::MainToolbar, 0); wt != nullptr) {
 		ResizeWindow(wt, std::min<uint>(neww, _toolbar_bigger_dimention) - wt->width, 0, false);
+		if (Window *wt2 = FindWindowById(WindowClass::MainToolbar, 1); wt2 != nullptr) {
+			ResizeWindow(wt2, std::min<uint>(neww, _toolbar_bigger_dimention) - wt2->width, 0, false);
+			wt2->left = PositionMainToolbar(wt2);
+		}
 		wt->left = PositionMainToolbar(wt);
 	}
 

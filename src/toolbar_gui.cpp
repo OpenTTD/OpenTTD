@@ -1380,6 +1380,7 @@ template <bool T_IS_HORIZONTAL>
 class NWidgetToolbarContainer : public NWidgetContainer {
 protected:
 	uint spacers = 0; ///< Number of spacer widgets in this toolbar
+	WindowNumber window_number; ///< The number of parent window.
 
 public:
 	NWidgetToolbarContainer() : NWidgetContainer(NWID_HORIZONTAL)
@@ -1405,6 +1406,7 @@ public:
 		this->resize_x = T_IS_HORIZONTAL;
 		this->resize_y = !T_IS_HORIZONTAL;
 		this->spacers = 0;
+		this->window_number = w->window_number;
 
 		uint nbuttons = 0;
 		/* First initialise some variables... */
@@ -1468,7 +1470,7 @@ public:
 		} else {
 			bigger_given_dimention = given_height;
 		}
-		const WidgetID *arrangement = GetButtonArrangement(bigger_given_dimention, arrangeable_count, button_count, spacer_count);
+		const WidgetID *arrangement = GetButtonArrangement(bigger_given_dimention, arrangeable_count, button_count, spacer_count, rtl);
 
 		/* Create us ourselves a quick lookup table from WidgetID to slot. */
 		std::map<WidgetID, uint> lookup;
@@ -1502,7 +1504,7 @@ public:
 			auto &child_wid = this->children[slot];
 			/* If we have space to give to the spacers, do that. */
 			if (spacer_space > 0 && slot > 0 && slot < this->children.size() - 1) {
-				const auto &possible_spacer = this->children[slot + (rtl ? 1 : -1)];
+				const auto &possible_spacer = this->children[slot + (T_IS_HORIZONTAL && rtl ? 1 : -1)];
 				if (possible_spacer != nullptr && possible_spacer->type == NWID_SPACER) {
 					uint add = spacer_space / (spacer_count - spacer_i);
 					position += add;
@@ -1557,9 +1559,10 @@ public:
 	 * @param arrangeable_count output of the number of visible items.
 	 * @param button_count output of the number of visible buttons.
 	 * @param spacer_count output of the number of spacers.
+	 * @param rtl Iff \c true adapts for right-to-left languages.
 	 * @return the button configuration.
 	 */
-	virtual const WidgetID *GetButtonArrangement(uint &bigger_dimention, uint &arrangeable_count, uint &button_count, uint &spacer_count) const = 0;
+	virtual const WidgetID *GetButtonArrangement(uint &bigger_dimention, uint &arrangeable_count, uint &button_count, uint &spacer_count, bool rtl) const = 0;
 };
 
 /**
@@ -1568,7 +1571,7 @@ public:
  */
 template <bool T_IS_HORIZONTAL>
 class NWidgetMainToolbarContainer : public NWidgetToolbarContainer<T_IS_HORIZONTAL> {
-	const WidgetID *GetButtonArrangement(uint &bigger_dimention, uint &arrangeable_count, uint &button_count, uint &spacer_count) const override
+	const WidgetID *GetButtonArrangement(uint &bigger_dimention, uint &arrangeable_count, uint &button_count, uint &spacer_count, [[maybe_unused]] bool rtl) const override
 	{
 		static const uint SMALLEST_ARRANGEMENT = 14;
 		static const uint BIGGEST_ARRANGEMENT  = 20;
@@ -1872,7 +1875,7 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer<T_IS_HORIZONT
 		};
 
 		/* If at least BIGGEST_ARRANGEMENT fit, just spread all the buttons nicely */
-		uint full_buttons = std::max(CeilDiv(bigger_dimention, T_IS_HORIZONTAL ? this->smallest_x : this->smallest_y), SMALLEST_ARRANGEMENT);
+		uint full_buttons = std::max(CeilDiv(bigger_dimention, this->smallest_x), SMALLEST_ARRANGEMENT);
 		if (full_buttons > BIGGEST_ARRANGEMENT) {
 			_toolbar_mode = ToolbarMode::Normal;
 			button_count = arrangeable_count = lengthof(arrange_all);
@@ -1888,6 +1891,53 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer<T_IS_HORIZONT
 		return arrangements[full_buttons - SMALLEST_ARRANGEMENT] + ((_toolbar_mode == ToolbarMode::Lower) ? full_buttons : 0);
 	}
 };
+
+template<>
+const WidgetID *NWidgetMainToolbarContainer<false>::GetButtonArrangement([[maybe_unused]] uint &bigger_dimention, uint &arrangeable_count, uint &button_count, uint &spacer_count, bool rtl) const
+{
+	static const WidgetID left[] = {
+		WID_TN_ZOOM_IN,
+		WID_TN_ZOOM_OUT,
+		WID_TN_PAUSE,
+		WID_TN_FAST_FORWARD,
+		WID_TN_SETTINGS,
+		WID_TN_SAVE,
+		WID_TN_SMALL_MAP,
+		WID_TN_TOWNS,
+		WID_TN_SUBSIDIES,
+		WID_TN_STATIONS,
+		WID_TN_FINANCES,
+		WID_TN_COMPANIES,
+		WID_TN_STORY,
+		WID_TN_GOAL,
+		WID_TN_LEAGUE,
+	};
+	static const WidgetID right[] = { // First button has to be before first spacer.
+		WID_TN_RAILS,
+		WID_TN_ROADS,
+		WID_TN_TRAMS,
+		WID_TN_WATER,
+		WID_TN_AIR,
+		WID_TN_LANDSCAPE,
+		WID_TN_TRAINS,
+		WID_TN_ROADVEHS,
+		WID_TN_SHIPS,
+		WID_TN_AIRCRAFT,
+		WID_TN_GRAPHS,
+		WID_TN_INDUSTRIES,
+		WID_TN_MUSIC_SOUND,
+		WID_TN_MESSAGES,
+		WID_TN_HELP
+	};
+	static_assert(lengthof(left) == lengthof(right));
+
+	_toolbar_mode = ToolbarMode::Normal;
+	button_count = arrangeable_count = lengthof(left);
+	spacer_count = this->spacers / 2;
+
+	if (this->window_number == (rtl ? 1 : 0)) return left;
+	return right;
+}
 
 /** Container for the scenario editor's toolbar */
 class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer<true> {
@@ -1909,7 +1959,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer<true> {
 		}
 	}
 
-	const WidgetID *GetButtonArrangement(uint &width, uint &arrangeable_count, uint &button_count, uint &spacer_count) const override
+	const WidgetID *GetButtonArrangement(uint &width, uint &arrangeable_count, uint &button_count, uint &spacer_count, [[maybe_unused]] bool rtl) const override
 	{
 		static const WidgetID arrange_all[] = {
 			WID_TE_PAUSE,
@@ -2052,9 +2102,14 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 
 /** Main toolbar. */
 struct MainToolbarWindow : Window {
-	MainToolbarWindow(WindowDesc &desc) : Window(desc)
+	/**
+	 * Constructs new MainToolbarWindow.
+	 * @param desc The window description.
+	 * @param number The window number, use 0 for top/left toolbar and 1 for bottom/right one.
+	 */
+	MainToolbarWindow(WindowDesc &desc, WindowNumber number) : Window(desc)
 	{
-		this->InitNested(0);
+		this->InitNested(number);
 
 		_last_started_action = CallBackFunction::None;
 		this->flags.Reset(WindowFlag::WhiteBorder);
@@ -2069,7 +2124,7 @@ struct MainToolbarWindow : Window {
 		if (IsMainToolbarHorizontal()) {
 			Window::FindWindowPlacementAndResize(_toolbar_bigger_dimention, def_height, allow_resize);
 		} else {
-			Window::FindWindowPlacementAndResize(def_width, _toolbar_bigger_dimention, allow_resize);
+			Window::FindWindowPlacementAndResize(def_width, _toolbar_bigger_dimention / 2, allow_resize); // We have two toolbars in this mode.
 		}
 	}
 
@@ -2296,16 +2351,20 @@ static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 {
 	auto hor = std::make_unique<NWidgetMainToolbarContainer<T_IS_HORIZONTAL>>();
 	for (const auto &[widget, tp, sprite] : _toolbar_button_sprites) {
+		constexpr WidgetID WIDGET_AFTER_ZOOM_SECTION_SPACER = T_IS_HORIZONTAL ? WID_TN_ZOOM_IN : WID_TN_PAUSE;
+		constexpr WidgetID WID_TN_BUILDING_TOOLS_START_OR_WID_TN_GRAPHS = T_IS_HORIZONTAL ? WID_TN_BUILDING_TOOLS_START : WID_TN_GRAPHS;
+
 		switch (widget) {
 			case WID_TN_SMALL_MAP:
 			case WID_TN_FINANCES:
 			case WID_TN_VEHICLE_START:
-			case WID_TN_ZOOM_IN:
-			case WID_TN_BUILDING_TOOLS_START:
+			case WIDGET_AFTER_ZOOM_SECTION_SPACER:
+			case WID_TN_BUILDING_TOOLS_START_OR_WID_TN_GRAPHS:
 			case WID_TN_MUSIC_SOUND:
 				hor->Add(std::make_unique<NWidgetSpacer>(0, 0));
 				break;
 		}
+
 		auto leaf = std::make_unique<NWidgetLeaf>(tp, Colours::Grey, widget, WidgetData{.sprite = sprite}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget);
 		leaf->SetToolbarMinimalSize(1);
 		hor->Add(std::move(leaf));
@@ -2690,6 +2749,7 @@ void AllocateToolbar()
 			new MainToolbarWindow(_toolb_normal_desc<true>, 0);
 		} else {
 			new MainToolbarWindow(_toolb_normal_desc<false>, 0);
+			new MainToolbarWindow(_toolb_normal_desc<false>, 1);
 		}
 	}
 }
