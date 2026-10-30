@@ -535,20 +535,16 @@ std::string NWidgetBadgeFilter::GetStringParameter(const BadgeFilterChoices &cho
  */
 DropDownList NWidgetBadgeFilter::GetDropDownList(PaletteID palette) const
 {
-	DropDownList list;
-
-	/* Add item for disabling filtering. */
-	list.push_back(MakeDropDownListStringItem(::GetString(STR_BADGE_FILTER_ANY_LABEL, GetClassBadge(this->badge_class)->name), -1));
-	list.push_back(MakeDropDownListDividerItem());
+	std::map<BadgeID, DropDownList> lists{};
 
 	/* Add badges */
 	Dimension d = GetBadgeMaximalDimension(this->badge_class, this->feature);
 	d.width = ScaleGUITrad(d.width);
 	d.height = ScaleGUITrad(d.height);
 
-	auto start = list.size();
-
 	const auto *bc = GetClassBadge(this->badge_class);
+
+	std::map<BadgeID, uint> subclass_indent{{bc->index, 0}};
 
 	for (const Badge &badge : GetBadges()) {
 		if (badge.class_index != this->badge_class) continue;
@@ -556,15 +552,33 @@ DropDownList NWidgetBadgeFilter::GetDropDownList(PaletteID palette) const
 		if (badge.name == STR_NULL) continue;
 		if (!badge.features.Test(this->feature)) continue;
 
+		if (!subclass_indent.contains(badge.subclass_index)) {
+			subclass_indent[badge.subclass_index] = subclass_indent[GetBadge(badge.subclass_index)->subclass_index] + BADGE_SUBCLASS_INDENT_STEP;
+		}
+
 		PalSpriteID ps = GetBadgeSprite(badge, this->feature, std::nullopt, palette);
 		if (ps.sprite == 0) {
-			list.push_back(MakeDropDownListStringItem(badge.name, badge.index.base()));
+			lists[badge.subclass_index].push_back(MakeDropDownListStringItem(badge.name, badge.index.base(), false, false, subclass_indent[badge.subclass_index]));
 		} else {
-			list.push_back(MakeDropDownListIconItem(d, ps.sprite, ps.pal, badge.name, badge.index.base()));
+			lists[badge.subclass_index].push_back(MakeDropDownListIconItem(d, ps.sprite, ps.pal, badge.name, badge.index.base(), false, false, subclass_indent[badge.subclass_index]));
 		}
 	}
 
-	std::sort(std::begin(list) + start, std::end(list), DropDownListStringItem::NatSortFunc);
+	for (auto &[_, list] : lists) {
+		std::sort(std::begin(list), std::end(list), DropDownListStringItem::NatSortFunc);
+	}
+
+	DropDownList list = std::move(lists[bc->index]);
+
+	for (auto &[subclass_index, sublist] : lists) {
+		int index = GetBadge(subclass_index)->index.base();
+		auto it = ++std::find_if(std::begin(list), std::end(list), [index](std::unique_ptr<const DropDownListItem> const &value){ return value->result == index; });
+		for (auto &item : sublist) it = ++list.insert(it, std::move(item));
+	}
+
+	/* Add item for disabling filtering. */
+	list.insert(std::begin(list), MakeDropDownListDividerItem());
+	list.insert(std::begin(list), MakeDropDownListStringItem(::GetString(STR_BADGE_FILTER_ANY_LABEL, GetClassBadge(this->badge_class)->name), -1));
 
 	return list;
 }
