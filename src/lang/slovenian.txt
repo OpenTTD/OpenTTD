@@ -1203,6 +1203,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavitve igre
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavitve igre (shranjeno v igrah; vpliva samo na tekočo igro)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavitve podjetja (shranjeno v igrah, vpliva samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavitve podjetja (shranjeno v igrah, vpliva samo na trenutno podjetje)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Pozor!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Nastavitve igre bodo ponastavljene.{}Ali res želiš nadaljevati?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :Kategorija:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :Tip:
@@ -1290,6 +1292,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Odnos mestnega 
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Nastavitev nivoja hrupa in posameznih posegov podjetja na oceno v mestu in nadaljnjo gradnjo
 
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(samodejno)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Ne moreš nastaviti najvišjega nivoja zemljevida na to vrednost. Vsaj ena gora na zemljevidu je višja.
 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {STRING}
@@ -2859,6 +2862,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Shrani s
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Naloži scenarij
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Naloži višinsko karto
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Shrani višinsko karto
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}Nalaganje podatkov o mestih
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}Klikni tukaj za skok v mapo shrani/naloži
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} prosto
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Seznam pogonov, map in shranjenih iger
@@ -2870,6 +2874,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Shrani t
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Naloži
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Naloži izbrano igro
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}Naloži višinsko karto
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}Naloži lastne podatke o mestih
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Podrobnosti igre
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ni informacij na voljo
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3808,6 +3813,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Pelje p
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Pelje proti {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis v {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - Ne najde postaje {0:STATION}
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - Ne najde kontrolne točke {0:WAYPOINT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - Ne najde {0:DEPOT}
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - Ne najde {0:DEPOT}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Ustavljeno

@@ -279,13 +279,13 @@ STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}選擇�
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}選擇排序 (逆序／順序)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}選擇排序項目
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}選擇過濾條件
-STR_BUTTON_SORT_BY                                              :{BLACK}排序依照
+STR_BUTTON_SORT_BY                                              :{BLACK}排序
 STR_BUTTON_CATCHMENT                                            :{BLACK}覆蓋範圍
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}顯示覆蓋範圍
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉視窗
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
-STR_TOOLTIP_SHADE                                               :{BLACK}收起視窗 - 只顯示標題列
+STR_TOOLTIP_SHADE                                               :{BLACK}最小化視窗 - 只顯示標題列
 STR_TOOLTIP_DEBUG                                               :{BLACK}顯示 NewGRF 除錯資訊
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}將視窗改回預設大小。按住 <Ctrl> 鍵單擊點選此按鈕可將視窗現時大小設為預設。按住 <Ctrl> 鍵雙擊點選則可重設預設大小
 STR_TOOLTIP_STICKY                                              :{BLACK}標記此視窗使其不受「關閉所有視窗」掣影響。按住 Ctrl 鍵點選此掣以將選項定為常態
@@ -352,7 +352,7 @@ STR_SORT_BY_WAITING_TOTAL                                       :等候中的貨
 STR_SORT_BY_WAITING_AVAILABLE                                   :等候中的可運載貨物總量
 STR_SORT_BY_RATING_MAX                                          :最高運輸評價
 STR_SORT_BY_RATING_MIN                                          :最低運輸評價
-STR_SORT_BY_ENGINE_ID                                           :引擎編號
+STR_SORT_BY_ENGINE_ID                                           :引擎編號（預設）
 STR_SORT_BY_COST                                                :價值
 STR_SORT_BY_POWER                                               :功率
 STR_SORT_BY_TRACTIVE_EFFORT                                     :牽引力
@@ -1104,13 +1104,13 @@ STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :啟用以使用
 
 STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :自動問卷調查
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :參與遊戲體驗自動問卷調查
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :啟用後，OpenTTD 將在離開遊戲時傳送問卷調查資訊
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :遊戲體驗自動調查
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :參與遊戲體驗自動調查
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :啟用後，OpenTTD 將在離開遊戲時傳送體驗調查資訊
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :關於問卷和隱私
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :開啟瀏覽器以顯示更多有關遊戲體驗自動問卷調查的資訊
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :開啟瀏覽器以顯示更多有關遊戲體驗自動調查的資訊
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :預覽調查結果
-STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :顯示現正執行的遊戲體驗問卷調查結果
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :顯示目前遊戲體驗的調查結果
 
 STR_GAME_OPTIONS_DISPLAY                                        :顯示
 
@@ -2091,19 +2091,19 @@ STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :畫面的最高
 STR_CONFIG_SETTING_ZOOM_MAX                                     :最遠縮小倍數：{STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :畫面的最高縮小倍數，過度的縮放等級會令遊戲速度變慢
 ###length 6
-STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
-STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4 倍
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2 倍
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :正常
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2 倍
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4 倍
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8 倍
 
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :貼圖的最高解析度：{STRING}
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :設定貼圖的最高解析度。即使有更高解析度的貼圖可用，系統仍會避免使用這些貼圖。這將有助於混用高低解析度貼圖的 NewGRF 檔案時，保持遊戲畫面的一致性
 ###length 3
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
-STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4 倍
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2 倍
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1 倍
 
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :市鎮成長速度：{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :市鎮成長的速度。
@@ -2235,7 +2235,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}修改�
 # Config errors
 STR_CONFIG_ERROR                                                :設定檔案錯誤……
 STR_CONFIG_ERROR_ARRAY                                          :函數錯誤「{STRING}」
-STR_CONFIG_ERROR_INVALID_VALUE                                  :「 {STRING} 」不是「 {STRING} 」的有效值
+STR_CONFIG_ERROR_INVALID_VALUE                                  :「{STRING}」不是「{STRING}」的有效值
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :在設定「{STRING}」的末尾有殘餘字句
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :正忽略 NewGRF「{STRING}」：重複的 NewGRF ID「{STRING}」
 STR_CONFIG_ERROR_INVALID_GRF                                    :正忽略無效的 NewGRF「{STRING}」：{STRING}
@@ -2457,7 +2457,7 @@ STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}邀請�
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}開始日期：{WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}目前日期：{WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}遊戲經過時間：{WHITE}{NUM} 小時 {NUM} 分鐘
-STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}遊戲腳本：{WHITE}{STRING} (v{NUM})
+STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}遊戲腳本：{WHITE}{STRING}（v{NUM}）
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}受密碼保護！
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}伺服器離線
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}伺服器已滿
@@ -2582,8 +2582,8 @@ STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}否
 STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}是，僅此一次
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}是，且不再詢問
 
-STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否參與遊戲體驗自動問卷調查？
-STR_NETWORK_ASK_SURVEY_TEXT                                     :您是否願意參加遊戲體驗自動問卷調查？{} OpenTTD 會在離開遊戲時傳送調查資訊。{}您可在任何時候於「遊戲選項」選單裡更改此項設定。
+STR_NETWORK_ASK_SURVEY_CAPTION                                  :是否參與遊戲體驗自動調查？
+STR_NETWORK_ASK_SURVEY_TEXT                                     :您是否願意參加遊戲體驗自動調查？{} OpenTTD 會在離開遊戲時傳送調查資訊。{}您可在任何時候於「遊戲選項」選單裡更改此項設定。
 STR_NETWORK_ASK_SURVEY_PREVIEW                                  :預覽調查結果
 STR_NETWORK_ASK_SURVEY_LINK                                     :關於問卷和隱私
 STR_NETWORK_ASK_SURVEY_NO                                       :否
@@ -2606,7 +2606,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[團隊] 給 {S
 STR_NETWORK_CHAT_CLIENT                                         :[私人] {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[私人] 給 {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[全員] {STRING}：{WHITE}{STRING}
-STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_EXTERNAL                                       :[{STRING}] {STRING}：{WHITE}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}輸入要聊天的文字
 
 # Network messages
@@ -3326,7 +3326,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}幀率
-STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE}（{DECIMAL}x）
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}模擬速度：{STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}每秒模擬的遊戲刻數
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}畫面幀數：{STRING}
@@ -3407,7 +3407,7 @@ STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}在目�
 STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}輸入新資料夾名稱
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}遊戲詳細資料
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}沒有可用的資訊
-STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}：{WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF：{WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}篩選：
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}覆蓋檔案
@@ -3423,7 +3423,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}為存�
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}產生世界
 STR_MAPGEN_MAPSIZE                                              :{BLACK}地圖大小：
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}選擇地圖大小（單位為方格）。實際可供使用的方格數量會比所設定的值略低
-STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮數量：
 STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}選擇市鎮密度，或輸入自訂數字
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}市鎮名稱:
@@ -3461,10 +3461,10 @@ STR_MAPGEN_GS_SETTINGS                                          :{BLACK}遊戲�
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}開啟遊戲腳本設定
 
 ###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :英國 (原版)
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :英國（原版）
 STR_MAPGEN_TOWN_NAME_FRENCH                                     :法國
 STR_MAPGEN_TOWN_NAME_GERMAN                                     :德國
-STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :英國 (增訂版)
+STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :英國（增訂版）
 STR_MAPGEN_TOWN_NAME_LATIN_AMERICAN                             :拉丁美洲
 STR_MAPGEN_TOWN_NAME_SILLY                                      :荒唐名稱
 STR_MAPGEN_TOWN_NAME_SWEDISH                                    :瑞典
@@ -3623,7 +3623,7 @@ STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 N
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重設
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}將所有參數設為預設值
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :參數 {NUM}
-STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}：{ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}參數數量：{ORANGE}{NUM}
 
 # NewGRF inspect window
@@ -3639,9 +3639,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :道路類型
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x 參數（16 進位）
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}對齊中的 Sprite︰({STRING}:{NUM})
-STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}對齊中的 Sprite︰Action 0xA，{COMMA} ({STRING}:{NUM})
-STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}對齊中的 Sprite︰Action 0x5，種類 {HEX}，{COMMA} ({STRING}:{NUM})
+STR_SPRITE_ALIGNER_CAPTION_NO_ACTION                            :{WHITE}對齊中的 Sprite：（{STRING}:{NUM}）
+STR_SPRITE_ALIGNER_CAPTION_ACTIONA                              :{WHITE}對齊中的 Sprite：Action 0xA，{COMMA}（{STRING}:{NUM}）
+STR_SPRITE_ALIGNER_CAPTION_ACTION5                              :{WHITE}對齊中的 Sprite：Action 0x5，種類 {HEX}，{COMMA}（{STRING}:{NUM}）
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}下一個子畫面
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}繼續處理下個正常的子畫面，略過任何虛位／重新著色／文字字型相關的子畫面，並在到達最後的子畫面後，返回第一個子畫面繼續進行處理。
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}前往子畫面
@@ -3761,7 +3761,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}輸入�
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}市鎮（{COMMA} 座，總共 {COMMA} 座）
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- 無 -
-STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK}（{COMMA}）
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK}（{COMMA}）{YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}市鎮名稱 - 點選名稱可將市鎮置於畫面正中央。按住 <Ctrl> 點選可於市鎮位置開啟新檢視視窗
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
@@ -3771,9 +3771,9 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN}（城市）
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口：{ORANGE}{COMMA}{BLACK}  房屋：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} 上月：{ORANGE}{COMMA}{BLACK} 最多：{ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}上分鐘出產的{WHITE}{CARGO_LIST}{BLACK}︰{ORANGE}{COMMA}{NBSP}{BLACK}最大產量︰{ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK}上分鐘產出的{CARGO_LIST}：{ORANGE}{COMMA}{BLACK}　最大產量：{ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}市鎮成長所需貨物：
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}需要 {ORANGE}{STRING}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED}需要：{ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 必須是冬天
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 已交付
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (仍然需要)
@@ -3801,7 +3801,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}完全�
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :重新命名市鎮
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 地方政府
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN}地方政府
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}地方政府轄區
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}顯示地方政府轄區
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}運輸公司評比：
@@ -3933,7 +3933,7 @@ STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評價
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}顯示車站評價
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}每月供應量和本地評價︰
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}每分鐘供應量和本地評價︰
-STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}：{YELLOW}{COMMA} / {STRING}（{COMMA}%）
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}群組方式
 STR_STATION_VIEW_WAITING_STATION                                :車站名：等候中
@@ -4037,7 +4037,7 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}基礎�
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(總經理)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}（總經理）
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}成立於：{WHITE}{NUM}
 STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}成立於：{WHITE}{NUM}（第 {NUM} 週期）
@@ -4105,10 +4105,10 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工業�
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- 無 -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} (運送了{COMMA}%)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}、{STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}、{STRING}……（尚有 {NUM} 個未顯示）
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY}{BLACK}{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY}{BLACK}{STRING}、{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY}{BLACK}{STRING}、{STRING}、{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY}{BLACK}{STRING}、{STRING}、{STRING}……（尚有 {NUM} 個未顯示）
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面正中央。按住 <Ctrl> 點選可於工業位置開啟新檢視視窗
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}接收貨物：{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}產出貨物：{SILVER}{STRING}
@@ -4514,7 +4514,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :磁浮列車
 STR_REPLACE_ROAD_VEHICLES                                       :車輛
 STR_REPLACE_TRAM_VEHICLES                                       :電車車輛
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除車廂 ({STRING})：{ORANGE}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除車廂（{STRING}）：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除多餘的車廂 (從頭開始) 以便維持列車長度
 STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}。按住 <Ctrl> 點選可套用至所有子群組
 
@@ -4654,7 +4654,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}命名�
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購於：{LTBLUE}{NUM}{BLACK}　價值：{LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   價值：{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　價值：{LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}列車長度：{LTBLUE}{DECIMAL}格
 
@@ -4873,10 +4873,10 @@ STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :跳到指令 {C
 STR_ORDER_CONDITIONAL_NUM                                       :跳到指令 {COMMA} 當符合 {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :跳到指令 {COMMA} 當符合 {STRING} {STRING}
 
-STR_INVALID_ORDER                                               :{RED} (指令無效)
+STR_INVALID_ORDER                                               :{RED}（指令無效）
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (時刻表)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE}（時刻表）
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}指令
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}切到指令列表
 
@@ -5617,7 +5617,7 @@ STR_INDUSTRY_NAME_OIL_REFINERY                                  :煉油廠
 STR_INDUSTRY_NAME_OIL_RIG                                       :鑽油平台
 STR_INDUSTRY_NAME_FACTORY                                       :工廠
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :印刷廠
-STR_INDUSTRY_NAME_STEEL_MILL                                    :煉鋼廠
+STR_INDUSTRY_NAME_STEEL_MILL                                    :鋼鐵廠
 STR_INDUSTRY_NAME_FARM                                          :農場
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :銅礦
 STR_INDUSTRY_NAME_OIL_WELLS                                     :油井
