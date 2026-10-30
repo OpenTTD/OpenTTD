@@ -232,6 +232,8 @@ struct GUISettings {
 	uint8_t linkgraph_colours; ///< linkgraph overlay colours
 	ViewportScrollMode scroll_mode; ///< viewport scroll mode
 	bool smooth_scroll; ///< smooth scroll viewports
+	bool pan_with_wasd; ///< use WASD keys for viewport panning instead of arrow keys
+	uint8_t pan_speed; ///< panning speed multiplier: 0=1x, 1=2x, 2=3x
 	bool measure_tooltip; ///< show a permanent tooltip when dragging tools
 	uint8_t liveries; ///< options for displaying company liveries, 0=none, 1=self, 2=all
 	bool prefer_teamchat; ///< choose the chat message target with \<ENTER\>, true=all clients, false=your team
