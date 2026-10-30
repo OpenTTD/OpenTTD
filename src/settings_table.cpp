@@ -148,6 +148,7 @@ static std::pair<StringParameter, StringParameter> ServiceIntervalSettingsValueT
 /**
  * Preper the main toolbar for repositioning as the setting changed.
  * @param new_value The new value of main toolbar position setting.
+ * @return Always \c true.
  */
 static bool PrePositionMainToolbar(int32_t &new_value)
 {
