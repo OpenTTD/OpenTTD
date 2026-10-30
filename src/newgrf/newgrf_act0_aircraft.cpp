@@ -121,7 +121,6 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint first, uint last, int pro
 
 			case 0x17: // Miscellaneous flags
 				ei->misc_flags = static_cast<EngineMiscFlags>(buf.ReadByte());
-				_loaded_newgrf_features.has_2CC |= ei->misc_flags.Test(EngineMiscFlag::Uses2CC);
 				break;
 
 			case 0x18: // Cargo classes allowed

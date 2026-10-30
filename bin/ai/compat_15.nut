@@ -6,3 +6,13 @@
  */
 
 /* This file contains code to downgrade the API from 16 to 15. */
+
+AICompany.SetPrimaryLiveryColour <- function(scheme, colour) { return AICompany.SetLiveryColour(scheme, 0, colour); }
+AICompany.SetSecondaryLiveryColour <- function(scheme, colour) { return AICompany.SetLiveryColour(scheme, 1, colour); }
+AICompany.GetPrimaryLiveryColour <- function(scheme) { return AICompany.GetLiveryColour(scheme, 0); }
+AICompany.GetSecondaryLiveryColour <- function(scheme) { return AICompany.GetLiveryColour(scheme, 1); }
+
+AIGroup.SetPrimaryColour <- function(group_id, colour) { return AIGroup.SetColour(group_id, 0, colour); }
+AIGroup.SetSecondaryColour <- function(group_id, colour) { return AIGroup.SetColour(group_id, 1, colour); }
+AIGroup.GetPrimaryColour <- function(group_id) { return AIGroup.GetColour(group_id, 0); }
+AIGroup.GetSecondaryColour <- function(group_id) { return AIGroup.GetColour(group_id, 1); }
