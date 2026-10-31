@@ -5,7 +5,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
  */
 
-/** @file sdl2_v.h Base of the SDL2 video driver. */
+/** @file sdl3_v.h Base of the SDL3 video driver. */
 
 #ifndef VIDEO_SDL_H
 #define VIDEO_SDL_H
