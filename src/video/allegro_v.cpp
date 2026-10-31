@@ -460,8 +460,8 @@ void VideoDriver_Allegro::InputLoop()
 {
 	bool old_ctrl_pressed = _ctrl_pressed;
 
-	_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
-	_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
+	_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG) ^ _invert_ctrl_state;
+	_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG) ^ _invert_shift_state;
 
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */

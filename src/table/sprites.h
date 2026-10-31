@@ -58,7 +58,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 /** @{
  * Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16_t OPENTTD_SPRITE_COUNT = 192;
+static const uint16_t OPENTTD_SPRITE_COUNT = 195;
 /** @} */
 
 /** @{
@@ -1276,6 +1276,9 @@ static const SpriteID SPR_IMG_QUERY           = 723;
 static const SpriteID SPR_IMG_SIGN            = 4082;
 static const SpriteID SPR_IMG_BUY_LAND        = 4791;
 static const SpriteID SPR_IMG_STORY_BOOK      = SPR_OPENTTD_BASE + 169;
+static const SpriteID SPR_IMG_DEL             = SPR_OPENTTD_BASE + 192;
+static const SpriteID SPR_IMG_CTRL            = SPR_OPENTTD_BASE + 193;
+static const SpriteID SPR_IMG_SHIFT           = SPR_OPENTTD_BASE + 194;
 /** @} */
 
 /** @{

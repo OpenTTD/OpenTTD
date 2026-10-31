@@ -312,6 +312,8 @@ static void LoadIntroGame(bool load_newgrfs = true)
 {
 	_game_mode = GameMode::Menu;
 
+	_invert_ctrl_state = _invert_shift_state = false; // We don't want ctrl and shift buttons to be inverted in main menu as user can't toggle it there.
+
 	if (load_newgrfs) ResetGRFConfig(false);
 
 	/* Setup main window */
