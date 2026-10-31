@@ -1495,12 +1495,19 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height, bool al
 		if (this->width != def_width || this->height != def_height) {
 			/* Think about the overlapping toolbars when determining the minimum window size */
 			int free_height = _screen.height;
+			int free_width = _screen.width;
 			const Window *wt = FindWindowById(WindowClass::Statusbar, 0);
 			if (wt != nullptr) free_height -= wt->height;
 			wt = FindWindowById(WindowClass::MainToolbar, 0);
-			if (wt != nullptr) free_height -= wt->height;
+			if (wt != nullptr) {
+				if (IsMainToolbarHorizontal()) {
+					free_height -= wt->height;
+				} else {
+					free_width -= wt->width;
+				}
+			}
 
-			int enlarge_x = std::max(std::min(def_width  - this->width,  _screen.width - this->width),  0);
+			int enlarge_x = std::max(std::min(def_width - this->width, free_width - this->width), 0);
 			int enlarge_y = std::max(std::min(def_height - this->height, free_height   - this->height), 0);
 
 			/* X and Y has to go by step.. calculate it.
@@ -1523,8 +1530,8 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height, bool al
 	if (nx + this->width > _screen.width) nx -= (nx + this->width - _screen.width);
 
 	const Window *wt = FindWindowById(WindowClass::MainToolbar, 0);
-	ny = std::max(ny, (wt == nullptr || this == wt || this->top == 0) ? 0 : wt->height);
-	nx = std::max(nx, 0);
+	ny = std::max(ny, (!IsMainToolbarHorizontal() || wt == nullptr || this == wt) ? 0 : wt->height);
+	nx = std::max(nx, (IsMainToolbarHorizontal() || wt == nullptr || this == wt || this->left == 0) ? 0 : wt->width);
 
 	if (this->viewport != nullptr) {
 		this->viewport->left += nx - this->left;
@@ -1630,7 +1637,7 @@ static Point GetAutoPlacePosition(int width, int height)
 	bool rtl = _current_text_dir == TD_RTL;
 
 	/* First attempt, try top-left of the screen */
-	const Window *main_toolbar = FindWindowByClass(WindowClass::MainToolbar);
+	const Window *main_toolbar = IsMainToolbarHorizontal() ? FindWindowByClass(WindowClass::MainToolbar) : nullptr;
 	const int toolbar_y =  main_toolbar != nullptr ? main_toolbar->height : 0;
 	if (IsGoodAutoPlace1(rtl ? _screen.width - width : 0, toolbar_y, width, height, toolbar_y, pt)) return pt;
 
@@ -1693,10 +1700,12 @@ restart:
  */
 Point GetToolbarAlignedWindowPosition(int window_width)
 {
-	const Window *w = FindWindowById(WindowClass::MainToolbar, 0);
+	const Window *w = FindWindowById(WindowClass::MainToolbar, (IsMainToolbarHorizontal() || _current_text_dir == TD_RTL) ? 0 : 1);
 	assert(w != nullptr);
-	Point pt = { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
-	return pt;
+	if (IsMainToolbarHorizontal()) {
+		return { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
+	}
+	return { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, 0 };
 }
 
 /**
@@ -2147,7 +2156,7 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen, boo
  */
 int GetMainViewTop()
 {
-	Window *w = FindWindowById(WindowClass::MainToolbar, 0);
+	Window *w = !IsMainToolbarHorizontal() ? nullptr : FindWindowById(WindowClass::MainToolbar, 0);
 	return (w == nullptr) ? 0 : w->top + w->height;
 }
 
@@ -3433,7 +3442,7 @@ void CloseConstructionWindows()
 /** Close all always on-top windows to get an empty screen */
 void HideVitalWindows()
 {
-	CloseWindowById(WindowClass::MainToolbar, 0);
+	CloseWindowByClass(WindowClass::MainToolbar);
 	CloseWindowById(WindowClass::Statusbar, 0);
 }
 
@@ -3459,6 +3468,7 @@ void ReInitAllWindows(bool zoom_changed)
 	/* When _gui_zoom has changed, we need to resize toolbar and statusbar first,
 	 * so EnsureVisibleCaption uses the updated size information. */
 	ReInitWindow(FindWindowById(WindowClass::MainToolbar, 0), zoom_changed);
+	ReInitWindow(FindWindowById(WindowClass::MainToolbar, 1), zoom_changed);
 	ReInitWindow(FindWindowById(WindowClass::Statusbar, 0), zoom_changed);
 	for (Window *w : Window::Iterate()) {
 		if (w->window_class == WindowClass::MainToolbar || w->window_class == WindowClass::Statusbar) continue;
@@ -3475,26 +3485,51 @@ void ReInitAllWindows(bool zoom_changed)
 
 /**
  * (Re)position a window at the screen.
+ * @tparam T_VERTICAL_MOVE_ALLOWED Iff \c false the window will only be moved horizontally.
  * @param w       Window structure of the window, may also be \c nullptr.
  * @param clss    The class of the window to position.
  * @param setting The actual setting used for the window's position.
  * @return X coordinate of left edge of the repositioned window.
  */
+template <bool T_VERTICAL_MOVE_ALLOWED = false>
 static int PositionWindow(Window *w, WindowClass clss, int setting)
 {
 	if (w == nullptr || w->window_class != clss) {
+		w = FindWindowById(clss, 1);
+		if (w != nullptr) PositionWindow<T_VERTICAL_MOVE_ALLOWED>(w, clss, setting);
 		w = FindWindowById(clss, 0);
 	}
 	if (w == nullptr) return 0;
+	if constexpr (!T_VERTICAL_MOVE_ALLOWED) if (setting > 2) NOT_REACHED();
 
 	int old_left = w->left;
 	switch (setting) {
-		case 1:  w->left = (_screen.width - w->width) / 2; break;
-		case 2:  w->left = _screen.width - w->width; break;
-		default: w->left = 0; break;
+		case 0: w->left = 0; break;
+		case 1: w->left = (_screen.width - w->width) / 2; break;
+		default:
+			if (w->window_number == 0) {
+				w->left = 0;
+				break;
+			}
+			[[fallthrough]];
+		case 2: w->left = _screen.width - w->width; break;
+	}
+	if (T_VERTICAL_MOVE_ALLOWED) {
+		int old_top = w->top;
+		switch (setting) {
+			case 3: w->top = 0; break;
+			case 4: w->top = (_screen.height - w->height) / 2; break;
+			case 5: w->top = _screen.height - w->height; break;
+			default:
+				if (w->window_number == 0) w->top = 0;
+				break;
+		}
+		AddDirtyBlock(std::min(old_left, w->left), std::min(old_top, w->top), std::max(old_left, w->left) + w->width, std::max(old_top, w->top) + w->height);
+		if (w->viewport != nullptr) w->viewport->top += w->top - old_top;
+	} else {
+		AddDirtyBlock(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
 	}
 	if (w->viewport != nullptr) w->viewport->left += w->left - old_left;
-	AddDirtyBlock(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
 	return w->left;
 }
 
@@ -3506,7 +3541,10 @@ static int PositionWindow(Window *w, WindowClass clss, int setting)
 int PositionMainToolbar(Window *w)
 {
 	Debug(Facility::Misc, Severity::Debug1, "Repositioning Main Toolbar...");
-	return PositionWindow(w, WindowClass::MainToolbar, _settings_client.gui.toolbar_pos);
+	int setting = _settings_client.gui.toolbar_pos;
+	if (_game_mode == GameMode::Normal) return PositionWindow<true>(w, WindowClass::MainToolbar, setting);
+	if (setting >= 3) setting -= 3;
+	return PositionWindow(w, WindowClass::MainToolbar, setting);
 }
 
 /**
@@ -3570,12 +3608,16 @@ void RelocateAllWindows(int neww, int newh)
 
 	/* Reposition toolbar then status bar before other all windows. */
 	if (Window *wt = FindWindowById(WindowClass::MainToolbar, 0); wt != nullptr) {
-		ResizeWindow(wt, std::min<uint>(neww, _toolbar_width) - wt->width, 0, false);
+		ResizeWindow(wt, std::min<uint>(neww, _toolbar_bigger_dimention) - wt->width, 0, false);
+		if (Window *wt2 = FindWindowById(WindowClass::MainToolbar, 1); wt2 != nullptr) {
+			ResizeWindow(wt2, std::min<uint>(neww, _toolbar_bigger_dimention) - wt2->width, 0, false);
+			wt2->left = PositionMainToolbar(wt2);
+		}
 		wt->left = PositionMainToolbar(wt);
 	}
 
 	if (Window *ws = FindWindowById(WindowClass::Statusbar, 0); ws != nullptr) {
-		ResizeWindow(ws, std::min<uint>(neww, _toolbar_width) - ws->width, 0, false);
+		ResizeWindow(ws, std::min<uint>(neww, _toolbar_bigger_dimention) - ws->width, 0, false);
 		ws->top = newh - ws->height;
 		ws->left = PositionStatusbar(ws);
 	}
@@ -3602,7 +3644,7 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WindowClass::NetworkChat:
-				ResizeWindow(w, std::min<uint>(neww, _toolbar_width) - w->width, 0, false);
+				ResizeWindow(w, std::min<uint>(neww, _toolbar_bigger_dimention) - w->width, 0, false);
 
 				top = newh - w->height - FindWindowById(WindowClass::Statusbar, 0)->height;
 				left = PositionNetworkChatWindow(w);
