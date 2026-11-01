@@ -834,8 +834,8 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 		return;
 	}
 
-	/* Wheeling a vertical scrollbar. */
-	if (nwid->type == NWID_VSCROLLBAR) {
+	/* Wheeling a scrollbar. */
+	if (nwid->type == NWID_VSCROLLBAR || nwid->type == NWID_HSCROLLBAR) {
 		NWidgetScrollbar *sb = static_cast<NWidgetScrollbar *>(nwid);
 		if (sb->GetCount() > sb->GetCapacity()) {
 			if (sb->UpdatePosition(wheel)) {
