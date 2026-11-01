@@ -1666,6 +1666,7 @@ public:
 	void OnInit() override
 	{
 		this->SetCargoFilterArray();
+		this->hscroll->SetStepSize(GetCharacterHeight(FontSize::Normal)); // Speed up horizontal scrollbar
 		this->hscroll->SetCount(0);
 	}
 
