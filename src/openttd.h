@@ -93,6 +93,7 @@ void StateGameLoop();
 void HandleExitGameRequest();
 
 void SwitchToMode(SwitchMode new_mode);
+void LoadIntroGame(bool load_newgrfs = true);
 
 bool RequestNewGRFScan(struct NewGRFScanCallback *callback = nullptr);
 void GenerateSavegameId();
