@@ -198,7 +198,7 @@ static ChangeInfoResult AirportChangeInfo(uint first, uint last, int prop, ByteR
 				break;
 
 			case 0x0D:
-				as->ttd_airport_type = (TTDPAirportType)buf.ReadByte();
+				as->ttd_airport_type = TTDPAirportType{buf.ReadByte()};
 				break;
 
 			case 0x0E:
@@ -289,12 +289,12 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 			}
 
 			case 0x0E: // Callback mask
-				tsp->callback_mask = static_cast<AirportTileCallbackMasks>(buf.ReadByte());
+				tsp->callback_mask = AirportTileCallbackMasks{buf.ReadByte()};
 				break;
 
 			case 0x0F: // Animation information
 				tsp->animation.frames = buf.ReadByte();
-				tsp->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
+				tsp->animation.status = AnimationStatus{buf.ReadByte()};
 				break;
 
 			case 0x10: // Animation speed
@@ -302,7 +302,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint first, uint last, int prop, 
 				break;
 
 			case 0x11: // Animation triggers
-				tsp->animation.triggers = static_cast<AirportAnimationTriggers>(buf.ReadByte());
+				tsp->animation.triggers = AirportAnimationTriggers{buf.ReadByte()};
 				break;
 
 			case 0x12: // Badge list

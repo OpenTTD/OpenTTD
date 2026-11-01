@@ -161,7 +161,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 			}
 
 			case 0x09: // Building flags
-				housespec->building_flags = (BuildingFlags)buf.ReadByte();
+				housespec->building_flags = BuildingFlags{buf.ReadByte()};
 				break;
 
 			case 0x0A: { // Availability years
@@ -214,7 +214,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				break;
 
 			case 0x13: // Building availability mask
-				housespec->building_availability = (HouseZones)buf.ReadWord();
+				housespec->building_availability = HouseZones{buf.ReadWord()};
 				break;
 
 			case 0x14: { // House callback mask
@@ -250,7 +250,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint first, uint last, int prop, Byt
 				break;
 
 			case 0x19: // Extra flags
-				housespec->extra_flags = static_cast<HouseExtraFlags>(buf.ReadByte());
+				housespec->extra_flags = HouseExtraFlags{buf.ReadByte()};
 				break;
 
 			case 0x1A: { // Animation frames

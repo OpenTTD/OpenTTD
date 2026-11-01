@@ -36,7 +36,7 @@ static ChangeInfoResult CanalChangeInfo(uint first, uint last, int prop, ByteRea
 
 		switch (prop) {
 			case 0x08:
-				cp->callback_mask = static_cast<CanalCallbackMasks>(buf.ReadByte());
+				cp->callback_mask = CanalCallbackMasks{buf.ReadByte()};
 				break;
 
 			case 0x09:

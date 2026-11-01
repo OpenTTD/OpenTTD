@@ -141,13 +141,13 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x10: // Flags
-				spec->flags = (ObjectFlags)buf.ReadWord();
+				spec->flags = ObjectFlags{buf.ReadWord()};
 				_loaded_newgrf_features.has_2CC |= spec->flags.Test(ObjectFlag::Uses2CC);
 				break;
 
 			case 0x11: // Animation info
 				spec->animation.frames = buf.ReadByte();
-				spec->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
+				spec->animation.status = AnimationStatus{buf.ReadByte()};
 				break;
 
 			case 0x12: // Animation speed
@@ -155,7 +155,7 @@ static ChangeInfoResult ObjectChangeInfo(uint first, uint last, int prop, ByteRe
 				break;
 
 			case 0x13: // Animation triggers
-				spec->animation.triggers = static_cast<ObjectAnimationTriggers>(buf.ReadWord());
+				spec->animation.triggers = ObjectAnimationTriggers{buf.ReadWord()};
 				break;
 
 			case 0x14: // Removal cost multiplier

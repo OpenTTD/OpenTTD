@@ -97,7 +97,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x09: // Road stop type
-				rs->stop_type = (RoadStopAvailabilityType)buf.ReadByte();
+				rs->stop_type = RoadStopAvailabilityType{buf.ReadByte()};
 				break;
 
 			case 0x0A: // Road Stop Name
@@ -109,7 +109,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x0C: // The draw modes
-				rs->draw_mode = static_cast<RoadStopDrawModes>(buf.ReadByte());
+				rs->draw_mode = RoadStopDrawModes{buf.ReadByte()};
 				break;
 
 			case 0x0D: // Cargo types for random triggers
@@ -118,7 +118,7 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 
 			case 0x0E: // Animation info
 				rs->animation.frames = buf.ReadByte();
-				rs->animation.status = static_cast<AnimationStatus>(buf.ReadByte());
+				rs->animation.status = AnimationStatus{buf.ReadByte()};
 				break;
 
 			case 0x0F: // Animation speed
@@ -126,15 +126,15 @@ static ChangeInfoResult RoadStopChangeInfo(uint first, uint last, int prop, Byte
 				break;
 
 			case 0x10: // Animation triggers
-				rs->animation.triggers = static_cast<StationAnimationTriggers>(buf.ReadWord());
+				rs->animation.triggers = StationAnimationTriggers{buf.ReadWord()};
 				break;
 
 			case 0x11: // Callback mask
-				rs->callback_mask = static_cast<RoadStopCallbackMasks>(buf.ReadByte());
+				rs->callback_mask = RoadStopCallbackMasks{buf.ReadByte()};
 				break;
 
 			case 0x12: // General flags
-				rs->flags = static_cast<RoadStopSpecFlags>(buf.ReadDWord()); // Future-proofing, size this as 4 bytes, but we only need two byte's worth of flags at present
+				rs->flags = static_cast<RoadStopSpecFlags>(buf.ReadDWord()); // Future-proofing, size this as 4 bytes, but we only need one byte's worth of flags at present
 				break;
 
 			case 0x13: { // Minimum bridge height for each of the roadstop's tile layouts.
