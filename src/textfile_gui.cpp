@@ -533,6 +533,16 @@ void TextfileWindow::AfterLoadMarkdown()
 	}
 }
 
+/* virtual */ void TextfileWindow::OnX1Click([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget)
+{
+	this->NavigateHistory(-1);
+}
+
+/* virtual */ void TextfileWindow::OnX2Click([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget)
+{
+	this->NavigateHistory(1);
+}
+
 /* virtual */ bool TextfileWindow::OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond)
 {
 	if (widget != WID_TF_BACKGROUND) return false;
