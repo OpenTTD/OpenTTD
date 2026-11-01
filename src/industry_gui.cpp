@@ -3337,6 +3337,16 @@ struct IndustryCargoesWindow : public Window {
 		}
 	}
 
+	void OnX1Click([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) override
+	{
+		this->NavigateHistory(-1);
+	}
+
+	void OnX2Click([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) override
+	{
+		this->NavigateHistory(1);
+	}
+
 	void OnDropdownSelect(WidgetID widget, int index, int) override
 	{
 		switch (widget) {
