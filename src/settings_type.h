@@ -631,6 +631,7 @@ struct EconomySettings {
 	bool give_money; ///< allow giving other companies money
 	bool mod_road_rebuild; ///< roadworks remove unnecessary RoadBits
 	bool multiple_industry_per_town; ///< allow many industries of the same type per town
+	bool spawn_primary_industry_only; ///< Should we only spawn primary industry during map generation and gameplay? (Player or Game Script must place other types)
 	uint8_t town_growth_rate; ///< town growth rate
 	uint8_t larger_towns; ///< the number of cities to build. These start off larger and grow twice as fast
 	uint8_t initial_city_size; ///< multiplier for the initial size of the cities compared to towns
