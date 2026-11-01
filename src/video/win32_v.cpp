@@ -595,6 +595,45 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			HandleMouseEvents();
 			return 0;
 
+		case WM_MBUTTONDOWN:
+			SetCapture(hwnd);
+			_input_pressed.Set(ControlInput::Middle);
+			_input_clicked.Set(ControlInput::Middle);
+			HandleMouseEvents();
+			return 0;
+
+		case WM_MBUTTONUP:
+			ReleaseCapture();
+			_input_pressed.Reset(ControlInput::Middle);
+			HandleMouseEvents();
+			return 0;
+
+		case WM_XBUTTONDOWN:
+			SetCapture(hwnd);
+			if ((wParam & MK_XBUTTON1) != 0) {
+				_input_pressed.Set(ControlInput::X1);
+				_input_clicked.Set(ControlInput::X1);
+				HandleMouseEvents();
+			}
+			if ((wParam & MK_XBUTTON2) != 0) {
+				_input_pressed.Set(ControlInput::X2);
+				_input_clicked.Set(ControlInput::X2);
+				HandleMouseEvents();
+			}
+			return TRUE;
+
+		case WM_XBUTTONUP:
+			ReleaseCapture();
+			if ((wParam & MK_XBUTTON1) == 0) {
+				_input_pressed.Reset(ControlInput::X1);
+				HandleMouseEvents();
+			}
+			if ((wParam & MK_XBUTTON2) == 0) {
+				_input_pressed.Reset(ControlInput::X2);
+				HandleMouseEvents();
+			}
+			return TRUE;
+
 		case WM_MOUSELEAVE:
 			UndrawMouseCursor();
 			_cursor.in_window = false;
