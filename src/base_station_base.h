@@ -233,7 +233,7 @@ struct SpecializedStation : public BaseStation {
 	 */
 	static inline T *Get(auto index)
 	{
-		return (T *)BaseStation::Get(index);
+		return static_cast<T *>(BaseStation::Get(index));
 	}
 
 	/**
@@ -287,7 +287,7 @@ struct SpecializedStation : public BaseStation {
 	static inline T *From(BaseStation *st)
 	{
 		assert(IsExpected(st));
-		return (T *)st;
+		return static_cast<T *>(st);
 	}
 
 	/**
@@ -298,7 +298,7 @@ struct SpecializedStation : public BaseStation {
 	static inline const T *From(const BaseStation *st)
 	{
 		assert(IsExpected(st));
-		return (const T *)st;
+		return static_cast<const T *>(st);
 	}
 
 	/**
