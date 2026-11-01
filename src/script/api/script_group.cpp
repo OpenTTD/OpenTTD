@@ -18,6 +18,7 @@
 #include "../../autoreplace_cmd.h"
 #include "../../group_cmd.h"
 #include "../../settings_cmd.h"
+#include "script_error.hpp"
 
 #include "table/strings.h"
 
@@ -219,36 +220,21 @@
 	return occupancy / vehicle_count;
 }
 
-/* static */ bool ScriptGroup::SetPrimaryColour(GroupID group_id, ScriptCompany::Colours colour)
+/* static */ bool ScriptGroup::SetColour(GroupID group_id, uint colour_index, ScriptCompany::Colours colour)
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
+	EnforcePrecondition(false, colour_index < Livery::NUM_COLOURS);
 
-	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, 0, (::Colours)colour);
+	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, colour_index, (::Colours)colour);
 }
 
-/* static */ bool ScriptGroup::SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour)
-{
-	EnforceCompanyModeValid(false);
-	EnforcePrecondition(false, IsValidGroup(group_id));
-
-	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, 1, (::Colours)colour);
-}
-
-/* static */ ScriptCompany::Colours ScriptGroup::GetPrimaryColour(GroupID group_id)
+/* static */ ScriptCompany::Colours ScriptGroup::GetColour(GroupID group_id, uint colour_index)
 {
 	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
+	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, colour_index < Livery::NUM_COLOURS);
 
 	const Group *g = ::Group::Get(group_id);
-	if (!HasBit(g->livery.in_use, 0)) return ScriptCompany::Colours::COLOUR_INVALID;
-	return (ScriptCompany::Colours)g->livery.colours[0];
-}
-
-/* static */ ScriptCompany::Colours ScriptGroup::GetSecondaryColour(GroupID group_id)
-{
-	EnforcePrecondition(ScriptCompany::Colours::COLOUR_INVALID, IsValidGroup(group_id));
-
-	const Group *g = ::Group::Get(group_id);
-	if (!HasBit(g->livery.in_use, 1)) return ScriptCompany::Colours::COLOUR_INVALID;
-	return (ScriptCompany::Colours)g->livery.colours[1];
+	if (!HasBit(g->livery.in_use, colour_index)) return ScriptCompany::Colours::COLOUR_INVALID;
+	return (ScriptCompany::Colours)g->livery.colours[colour_index];
 }

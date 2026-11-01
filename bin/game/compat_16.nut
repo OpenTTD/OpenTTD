@@ -6,3 +6,13 @@
  */
 
 /* This file contains code to downgrade the API from 17 to 16. */
+
+GSCompany.SetPrimaryLiveryColour <- function(scheme, colour) { return GSCompany.SetLiveryColour(scheme, 0, colour); }
+GSCompany.SetSecondaryLiveryColour <- function(scheme, colour) { return GSCompany.SetLiveryColour(scheme, 1, colour); }
+GSCompany.GetPrimaryLiveryColour <- function(scheme) { return GSCompany.GetLiveryColour(scheme, 0); }
+GSCompany.GetSecondaryLiveryColour <- function(scheme) { return GSCompany.GetLiveryColour(scheme, 1); }
+
+GSGroup.SetPrimaryColour <- function(group_id, colour) { return GSGroup.SetColour(group_id, 0, colour); }
+GSGroup.SetSecondaryColour <- function(group_id, colour) { return GSGroup.SetColour(group_id, 1, colour); }
+GSGroup.GetPrimaryColour <- function(group_id) { return GSGroup.GetColour(group_id, 0); }
+GSGroup.GetSecondaryColour <- function(group_id) { return GSGroup.GetColour(group_id, 1); }
