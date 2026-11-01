@@ -20,6 +20,7 @@
 #include "window_gui.h"
 #include "window_func.h"
 #include "zoom_func.h"
+#include "toolbar_gui.h"
 
 #include "widgets/dropdown_widget.h"
 
@@ -304,7 +305,15 @@ struct DropdownWindow : Window {
 			this->GetWidget<NWidgetCore>(WID_DM_FILTER_PANEL)->GetParentWidget<NWidgetVertical>()->bottom_up = false;
 		}
 
-		if (_current_text_dir == TD_RTL) {
+		if (!IsMainToolbarHorizontal() && this->parent->window_class == WindowClass::MainToolbar) {
+			/* For vertical toolbar show dropdown on the side of button instead of below/above it. */
+			this->position.y += button_rect.Height() * (this->above ? 1 : -1);
+			if (this->parent->window_number == 0) {
+				this->position.x = button_rect.right + 1;
+			} else {
+				this->position.x = button_rect.left - static_cast<int>(widget_dim.width + (list_dim.height > widget_dim.height ? NWidgetScrollbar::GetVerticalDimension().width : 0));
+			}
+		} else if (_current_text_dir == TD_RTL) {
 			/* In case the list is wider than the parent button, the list should be right aligned to the button and overflow to the left. */
 			this->position.x = button_rect.right + 1 - (int)(widget_dim.width + (list_dim.height > widget_dim.height ? NWidgetScrollbar::GetVerticalDimension().width : 0));
 		} else {
