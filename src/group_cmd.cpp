@@ -309,7 +309,7 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->group_id == g->index && (!v->IsGroundVehicle() || v->IsFrontEngine())) {
 				for (Vehicle *u = v; u != nullptr; u = u->Next()) {
-					u->colourmap = PAL_NONE;
+					u->colourmap.fill(PAL_NONE);
 					u->InvalidateNewGRFCache();
 				}
 			}
@@ -318,8 +318,9 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 
 	for (const GroupID &childgroup : g->children) {
 		Group *cg = Group::Get(childgroup);
-		if (!cg->livery.in_use.Test(Livery::Flag::Primary)) cg->livery.colour1 = g->livery.colour1;
-		if (!cg->livery.in_use.Test(Livery::Flag::Secondary)) cg->livery.colour2 = g->livery.colour2;
+		for (uint colour_index = 0; colour_index < Livery::NUM_COLOURS; ++colour_index) {
+			if (!HasBit(cg->livery.in_use, colour_index)) cg->livery.colours[colour_index] = g->livery.colours[colour_index];
+		}
 		PropagateChildLivery(cg, reset_cache);
 	}
 }
@@ -333,8 +334,9 @@ void UpdateCompanyGroupLiveries(const Company *c)
 {
 	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index && g->parent == GroupID::Invalid()) {
-			if (!g->livery.in_use.Test(Livery::Flag::Primary)) g->livery.colour1 = c->livery[LiveryScheme::Default].colour1;
-			if (!g->livery.in_use.Test(Livery::Flag::Secondary)) g->livery.colour2 = c->livery[LiveryScheme::Default].colour2;
+			for (uint colour_index = 0; colour_index < Livery::NUM_COLOURS; ++colour_index) {
+				if (!HasBit(g->livery.in_use, colour_index)) g->livery.colours[colour_index] = c->livery[LiveryScheme::Default].colours[colour_index];
+			}
 			PropagateChildLivery(g, false);
 		}
 	}
@@ -366,13 +368,11 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 		Company *c = Company::Get(g->owner);
 		g->number = c->freegroups.UseID(c->freegroups.NextID());
 		if (pg == nullptr) {
-			g->livery.colour1 = c->livery[LiveryScheme::Default].colour1;
-			g->livery.colour2 = c->livery[LiveryScheme::Default].colour2;
+			g->livery.colours = c->livery[LiveryScheme::Default].colours;
 			if (c->settings.renew_keep_length) g->flags.Set(GroupFlag::ReplaceWagonRemoval);
 		} else {
 			g->parent = pg->index;
-			g->livery.colour1 = pg->livery.colour1;
-			g->livery.colour2 = pg->livery.colour2;
+			g->livery.colours = pg->livery.colours;
 			g->flags = pg->flags;
 			pg->children.insert(g->index);
 		}
@@ -493,11 +493,12 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 
 			GroupStatistics::UpdateAutoreplace(g->owner);
 
-			if (!g->livery.in_use.All({Livery::Flag::Primary, Livery::Flag::Secondary})) {
+			if (g->livery.in_use != (1U << Livery::NUM_COLOURS) - 1) {
 				/* Update livery with new parent's colours if either colour is default. */
 				const Livery *livery = GetParentLivery(g);
-				if (!g->livery.in_use.Test(Livery::Flag::Primary)) g->livery.colour1 = livery->colour1;
-				if (!g->livery.in_use.Test(Livery::Flag::Secondary)) g->livery.colour2 = livery->colour2;
+				for (uint colour_index = 0; colour_index < Livery::NUM_COLOURS; ++colour_index) {
+					if (!HasBit(g->livery.in_use, colour_index)) g->livery.colours[colour_index] = livery->colours[colour_index];
+				}
 
 				PropagateChildLivery(g, true);
 				MarkWholeScreenDirty();
@@ -540,7 +541,7 @@ static void AddVehicleToGroup(Vehicle *v, GroupID new_g)
 			if (v->IsEngineCountable()) UpdateNumEngineGroup(v, v->group_id, new_g);
 			v->group_id = new_g;
 			for (Vehicle *u = v; u != nullptr; u = u->Next()) {
-				u->colourmap = PAL_NONE;
+				u->colourmap.fill(PAL_NONE);
 				u->InvalidateNewGRFCache();
 				u->UpdateViewport(true);
 			}
@@ -683,30 +684,25 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
 
 /**
  * Set the livery for a vehicle group.
- * @param flags     Command flags.
+ * @param flags Command flags.
  * @param group_id Group ID.
- * @param primary Set primary instead of secondary colour
+ * @param colour_index Which colour to set.
  * @param colour Colour.
  * @return The (zero) cost or error.
  */
-CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool primary, Colours colour)
+CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, uint8_t colour_index, Colours colour)
 {
 	Group *g = Group::GetIfValid(group_id);
 
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
+	if (colour_index >= Livery::NUM_COLOURS) return CMD_ERROR;
 
 	if (colour >= Colours::End && colour != Colours::Invalid) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		if (primary) {
-			g->livery.in_use.Set(Livery::Flag::Primary, colour != Colours::Invalid);
-			if (colour == Colours::Invalid) colour = GetParentLivery(g)->colour1;
-			g->livery.colour1 = colour;
-		} else {
-			g->livery.in_use.Set(Livery::Flag::Secondary, colour != Colours::Invalid);
-			if (colour == Colours::Invalid) colour = GetParentLivery(g)->colour2;
-			g->livery.colour2 = colour;
-		}
+		AssignBit(g->livery.in_use, colour_index, colour != Colours::Invalid);
+		if (colour == Colours::Invalid) colour = GetParentLivery(g)->colours[colour_index];
+		g->livery.colours[colour_index] = colour;
 
 		PropagateChildLivery(g, true);
 		MarkWholeScreenDirty();
@@ -779,7 +775,7 @@ void SetTrainGroupID(Train *v, GroupID new_g)
 		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 
 		u->group_id = new_g;
-		u->colourmap = PAL_NONE;
+		u->colourmap.fill(PAL_NONE);
 		u->InvalidateNewGRFCache();
 		u->UpdateViewport(true);
 	}
@@ -806,7 +802,7 @@ void UpdateTrainGroupID(Train *v)
 		if (u->IsEngineCountable()) UpdateNumEngineGroup(u, u->group_id, new_g);
 
 		u->group_id = new_g;
-		u->colourmap = PAL_NONE;
+		u->colourmap.fill(PAL_NONE);
 		u->InvalidateNewGRFCache();
 	}
 

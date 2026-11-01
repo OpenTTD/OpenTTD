@@ -413,8 +413,10 @@ class SlCompanyLiveries : public DefaultSaveLoadHandler<SlCompanyLiveries, Compa
 public:
 	static inline const SaveLoad description[] = {
 		SaveLoad::Variable<VarFileType::U8>("in_use", SLE_OBJECT_ADDRESS(Livery, in_use), SaveLoadVersion::Liveries),
-		SaveLoad::Variable<VarFileType::U8>("colour1", SLE_OBJECT_ADDRESS(Livery, colour1), SaveLoadVersion::Liveries),
-		SaveLoad::Variable<VarFileType::U8>("colour2", SLE_OBJECT_ADDRESS(Livery, colour2), SaveLoadVersion::Liveries),
+		SaveLoad::Variable<VarFileType::U8>("colour1", SLE_OBJECT_ADDRESS(Livery, colours[0]), SaveLoadVersion::Liveries),
+		SaveLoad::Variable<VarFileType::U8>("colour2", SLE_OBJECT_ADDRESS(Livery, colours[1]), SaveLoadVersion::Liveries),
+		SaveLoad::Variable<VarFileType::U8>("colour3", SLE_OBJECT_ADDRESS(Livery, colours[2]), SaveLoadVersion::Liveries),
+		SaveLoad::Variable<VarFileType::U8>("colour4", SLE_OBJECT_ADDRESS(Livery, colours[3]), SaveLoadVersion::Liveries),
 	};
 	static inline const SaveLoadCompatTable compat_description = _company_liveries_compat;
 
@@ -448,11 +450,10 @@ public:
 			Livery &livery = c->livery[static_cast<LiveryScheme>(i)];
 			SlObject(&livery, this->GetLoadDescription());
 			if (update_in_use && i != 0) {
-				if (!livery.in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
-					livery.colour1 = c->livery[LiveryScheme::Default].colour1;
-					livery.colour2 = c->livery[LiveryScheme::Default].colour2;
+				if (livery.in_use == 0) {
+					livery.colours = c->livery[LiveryScheme::Default].colours;
 				} else {
-					livery.in_use = {Livery::Flag::Primary, Livery::Flag::Secondary};
+					livery.in_use = 1U << 0 | 1U << 1;
 				}
 			}
 		}
