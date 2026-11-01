@@ -512,11 +512,11 @@ struct CompanyFinancesWindow : Window {
 				break;
 
 			case WID_CF_INCREASE_LOAN: // increase loan
-				Command<Commands::IncreaseLoan>::Post(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY, _ctrl_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
+				Command<Commands::IncreaseLoan>::Post(STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY, IsCtrlPressed() ? LoanCommand::Max : LoanCommand::Interval, 0);
 				break;
 
 			case WID_CF_REPAY_LOAN: // repay loan
-				Command<Commands::DecreaseLoan>::Post(STR_ERROR_CAN_T_REPAY_LOAN, _ctrl_pressed ? LoanCommand::Max : LoanCommand::Interval, 0);
+				Command<Commands::DecreaseLoan>::Post(STR_ERROR_CAN_T_REPAY_LOAN, IsCtrlPressed() ? LoanCommand::Max : LoanCommand::Interval, 0);
 				break;
 
 			case WID_CF_INFRASTRUCTURE: // show infrastructure details
@@ -978,7 +978,7 @@ public:
 
 					LiveryScheme scheme = this->visible_schemes.GetNthSetBit(row).value();
 
-					if (_ctrl_pressed) {
+					if (IsCtrlPressed()) {
 						this->sel.schemes.Flip(scheme);
 					} else {
 						this->sel.schemes = scheme;
@@ -1012,7 +1012,7 @@ public:
 			/* Set company colour livery */
 			for (LiveryScheme scheme : this->visible_schemes) {
 				/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
-				if (this->sel.schemes.Test(scheme) || _ctrl_pressed) {
+				if (this->sel.schemes.Test(scheme) || IsCtrlPressed()) {
 					Command<Commands::SetCompanyColour>::Post(scheme, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
 				}
 			}
@@ -2190,7 +2190,7 @@ struct CompanyWindow : Window
 
 			case WID_C_VIEW_HQ: {
 				TileIndex tile = Company::Get(this->window_number)->location_of_HQ;
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowExtraViewportWindow(tile);
 				} else {
 					ScrollMainWindowToTile(tile);
@@ -2258,7 +2258,7 @@ struct CompanyWindow : Window
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
 	{
-		if (Command<Commands::BuildObject>::Post(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS, tile, OBJECT_HQ, 0) && !_shift_pressed) {
+		if (Command<Commands::BuildObject>::Post(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS, tile, OBJECT_HQ, 0) && !IsShiftPressed()) {
 			ResetObjectToPlace();
 			this->RaiseButtons();
 		}

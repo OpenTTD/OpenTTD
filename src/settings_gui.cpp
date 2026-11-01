@@ -1062,7 +1062,7 @@ struct GameOptionsWindow : Window {
 					this->SetWidgetDirty(WID_GO_GUI_SCALE_AUTO_TEXT);
 				}
 
-				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, _ctrl_pressed ? 0 : SCALE_NMARKS, this->gui_scale)) {
+				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, IsCtrlPressed() ? 0 : SCALE_NMARKS, this->gui_scale)) {
 					this->gui_scale_changed = true;
 					this->SetWidgetDirty(widget);
 				}
@@ -1313,7 +1313,7 @@ struct GameOptionsWindow : Window {
 
 				/* don't allow too fast scrolling */
 				if (this->flags.Test(WindowFlag::Timeout) && this->timeout_timer > 1) {
-					_left_button_clicked = false;
+					_input_clicked.Reset(ControlInput::Left);
 					return;
 				}
 
@@ -1340,7 +1340,7 @@ struct GameOptionsWindow : Window {
 					this->clicked_entry = pe;
 					this->clicked_entry->SetButtons((x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? SettingEntryFlag::RightDepressed : SettingEntryFlag::LeftDepressed);
 					this->SetTimeout();
-					_left_button_clicked = false;
+					_input_clicked.Reset(ControlInput::Left);
 				}
 			}
 
@@ -1402,7 +1402,7 @@ struct GameOptionsWindow : Window {
 
 	void OnMouseLoop() override
 	{
-		if (_left_button_down || !this->gui_scale_changed) return;
+		if (IsLeftButtonDown() || !this->gui_scale_changed) return;
 
 		this->gui_scale_changed = false;
 		_gui_scale_cfg = this->gui_scale;

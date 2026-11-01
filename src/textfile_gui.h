@@ -26,6 +26,8 @@ struct TextfileWindow : public Window, BaseStringMissingGlyphSearcher {
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override;
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override;
+	void OnX1Click([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) override;
+	void OnX2Click([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) override;
 	bool OnTooltip([[maybe_unused]] Point pt, WidgetID widget, TooltipCloseCondition close_cond) override;
 	void DrawWidget(const Rect &r, WidgetID widget) const override;
 	void OnResize() override;

@@ -216,7 +216,7 @@ struct BuildDocksToolbarWindow : Window {
 				DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 				TileIndex tile_to = (dir != DiagDirection::Invalid ? TileAddByDiagDir(tile, ReverseDiagDir(dir)) : tile);
 
-				bool adjacent = _ctrl_pressed;
+				bool adjacent = IsCtrlPressed();
 				auto proc = [=](bool test, StationID to_join) -> bool {
 					if (test) {
 						return Command<Commands::BuildDock>::Do(CommandFlagsToDCFlags(GetCommandFlags<Commands::BuildDock>()), tile, StationID::Invalid(), adjacent).Succeeded();
@@ -264,13 +264,13 @@ struct BuildDocksToolbarWindow : Window {
 					break;
 				case DDSP_CREATE_WATER:
 					if (_game_mode == GameMode::Editor) {
-						Command<Commands::BuildCanal>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, _ctrl_pressed ? WaterClass::Sea : WaterClass::Canal, false);
+						Command<Commands::BuildCanal>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, IsCtrlPressed() ? WaterClass::Sea : WaterClass::Canal, false);
 					} else {
-						Command<Commands::BuildCanal>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WaterClass::Canal, _ctrl_pressed);
+						Command<Commands::BuildCanal>::Post(STR_ERROR_CAN_T_BUILD_CANALS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WaterClass::Canal, IsCtrlPressed());
 					}
 					break;
 				case DDSP_CREATE_RIVER:
-					Command<Commands::BuildCanal>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WaterClass::River, _ctrl_pressed);
+					Command<Commands::BuildCanal>::Post(STR_ERROR_CAN_T_PLACE_RIVERS, CcPlaySound_CONSTRUCTION_WATER, end_tile, start_tile, WaterClass::River, IsCtrlPressed());
 					break;
 
 				default: break;

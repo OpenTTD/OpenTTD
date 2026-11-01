@@ -1010,12 +1010,12 @@ struct ScriptDebugWindow : public Window {
 
 		/* Check which button is clicked */
 		if (IsInsideMM(widget, WID_SCRD_COMPANY_BUTTON_START, WID_SCRD_COMPANY_BUTTON_END + 1)) {
-			this->ChangeToScript(static_cast<CompanyID>(widget - WID_SCRD_COMPANY_BUTTON_START), _ctrl_pressed);
+			this->ChangeToScript(static_cast<CompanyID>(widget - WID_SCRD_COMPANY_BUTTON_START), IsCtrlPressed());
 		}
 
 		switch (widget) {
 			case WID_SCRD_SCRIPT_GAME:
-				this->ChangeToScript(OWNER_DEITY, _ctrl_pressed);
+				this->ChangeToScript(OWNER_DEITY, IsCtrlPressed());
 				break;
 
 			case WID_SCRD_RELOAD_TOGGLE:

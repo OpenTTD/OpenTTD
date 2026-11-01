@@ -338,7 +338,7 @@ static bool CargoFilter(const GUIVehicleGroup *vehgroup, const CargoType cargo_t
  */
 bool ShowCargoIconOverlay()
 {
-	return _shift_pressed && _ctrl_pressed;
+	return IsShiftPressed() && IsCtrlPressed();
 }
 
 /**
@@ -1226,7 +1226,7 @@ struct RefitWindow : public Window {
 
 				/* If the selection is not correct, clear it. */
 				if (this->num_vehicles != 0) {
-					if (_ctrl_pressed) this->num_vehicles = UINT8_MAX;
+					if (IsCtrlPressed()) this->num_vehicles = UINT8_MAX;
 					break;
 				}
 				[[fallthrough]];
@@ -1249,7 +1249,7 @@ struct RefitWindow : public Window {
 				this->click_x = GetClickPosition(pt.x - nwi->pos_x);
 				this->SetSelectedVehicles(pt.x - nwi->pos_x);
 				this->SetWidgetDirty(WID_VR_VEHICLE_PANEL_DISPLAY);
-				if (!_ctrl_pressed) {
+				if (!IsCtrlPressed()) {
 					SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 				} else {
 					/* The vehicle selection has changed. */
@@ -2154,7 +2154,7 @@ public:
 					case GB_NONE: {
 						const Vehicle *v = vehgroup.GetSingleVehicle();
 						if (!VehicleClicked(v)) {
-							if (_ctrl_pressed) {
+							if (IsCtrlPressed()) {
 								ShowCompanyGroupForVehicle(v);
 							} else {
 								ShowVehicleViewWindow(v);
@@ -2167,7 +2167,7 @@ public:
 						assert(vehgroup.NumVehicles() > 0);
 						if (!VehicleClicked(vehgroup)) {
 							const Vehicle *v = vehgroup.vehicles_begin[0];
-							if (_ctrl_pressed) {
+							if (IsCtrlPressed()) {
 								ShowOrdersWindow(v);
 							} else {
 								if (vehgroup.NumVehicles() == 1) {
@@ -2322,10 +2322,10 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 {
 	/* If _settings_client.gui.advanced_vehicle_list > 1, display the Advanced list
 	 * if _settings_client.gui.advanced_vehicle_list == 1, display Advanced list only for local company
-	 * if _ctrl_pressed, do the opposite action (Advanced list x Normal list)
+	 * if IsCtrlPressed(), do the opposite action (Advanced list x Normal list)
 	 */
 
-	if ((_settings_client.gui.advanced_vehicle_list > (uint)(company != _local_company)) != _ctrl_pressed) {
+	if ((_settings_client.gui.advanced_vehicle_list > (uint)(company != _local_company)) != IsCtrlPressed()) {
 		ShowCompanyGroup(company, vehicle_type);
 	} else {
 		ShowVehicleListWindowLocal(company, VehicleListType::Company, vehicle_type, company.base());
@@ -2751,9 +2751,9 @@ struct VehicleDetailsWindow : Window {
 				const Vehicle *v = Vehicle::Get(this->window_number);
 				int mod;
 				if (!v->ServiceIntervalIsPercent() && TimerGameEconomy::UsingWallclockUnits()) {
-					mod = _ctrl_pressed ? 1 : 5;
+					mod = IsCtrlPressed() ? 1 : 5;
 				} else {
-					mod = _ctrl_pressed ? 5 : 10;
+					mod = IsCtrlPressed() ? 5 : 10;
 				}
 
 				mod = (widget == WID_VD_DECREASE_SERVICING_INTERVAL) ? -mod : mod;
@@ -3301,7 +3301,7 @@ public:
 				TileIndex tile = v->current_order.GetLocation(v);
 				if (tile == INVALID_TILE) break;
 
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowExtraViewportWindow(tile);
 				} else {
 					ScrollMainWindowToTile(tile);
@@ -3310,7 +3310,7 @@ public:
 			}
 
 			case WID_VV_LOCATION: // center main view
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowExtraViewportWindow(TileVirtXY(v->x_pos, v->y_pos));
 				} else {
 					const Window *mainwindow = GetMainWindow();
@@ -3326,20 +3326,20 @@ public:
 				break;
 
 			case WID_VV_GOTO_DEPOT: // goto hangar
-				Command<Commands::SendVehicleToDepot>::Post(GetCmdSendToDepotMsg(v), v->index, _ctrl_pressed ? DepotCommandFlag::Service : DepotCommandFlags{}, {});
+				Command<Commands::SendVehicleToDepot>::Post(GetCmdSendToDepotMsg(v), v->index, IsCtrlPressed() ? DepotCommandFlag::Service : DepotCommandFlags{}, {});
 				break;
 			case WID_VV_REFIT: // refit
 				ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID, this);
 				break;
 			case WID_VV_SHOW_ORDERS: // show orders
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowTimetableWindow(v);
 				} else {
 					ShowOrdersWindow(v);
 				}
 				break;
 			case WID_VV_SHOW_DETAILS: // show details
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowCompanyGroupForVehicle(v);
 				} else {
 					ShowVehicleDetailsWindow(v);
@@ -3351,8 +3351,8 @@ public:
 				 * For starting the vehicle the player has to open the depot GUI, which is
 				 * most likely already open, but is also visible in the vehicle viewport. */
 				Command<Commands::CloneVehicle>::Post(_vehicle_msg_translation_table[VCT_CMD_CLONE_VEH][v->type],
-										_ctrl_pressed ? nullptr : CcCloneVehicle,
-										v->tile, v->index, _ctrl_pressed);
+										IsCtrlPressed() ? nullptr : CcCloneVehicle,
+										v->tile, v->index, IsCtrlPressed());
 				break;
 			case WID_VV_TURN_AROUND: // turn around
 				assert(v->IsGroundVehicle());

@@ -615,6 +615,18 @@ void Window::HandleButtonClick(WidgetID widget)
 static void StartWindowDrag(Window *w);
 static void StartWindowSizing(Window *w, bool to_left);
 
+/** Mouse states during the \c MouseLoop. */
+enum class MouseClick : uint8_t {
+	None = 0, ///< No action to process.
+	Left, ///< A click with the left mouse button.
+	Right, ///< A click with the right mouse button.
+	Middle, ///< A click with the middle mouse button.
+	X1, ///< A click with the 4th mouse button.
+	X2, ///< A click with the 5th mouse button.
+	DoubleLeft, ///< A double click with the left mouse button.
+	Hover, ///< The mouse started hovering.
+};
+
 /**
  * Dispatch left mouse-button (possibly double) click in window.
  * @param w Window to dispatch event in
@@ -703,7 +715,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			return;
 
 		case WWT_DEFSIZEBOX: {
-			if (_ctrl_pressed) {
+			if (IsCtrlPressed()) {
 				if (click_count > 1) {
 					w->window_desc.pref_width = 0;
 					w->window_desc.pref_height = 0;
@@ -742,7 +754,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		case WWT_STICKYBOX:
 			w->flags.Flip(WindowFlag::Sticky);
 			nw->SetDirty(w);
-			if (_ctrl_pressed) w->window_desc.pref_sticky = w->flags.Test(WindowFlag::Sticky);
+			if (IsCtrlPressed()) w->window_desc.pref_sticky = w->flags.Test(WindowFlag::Sticky);
 			return;
 
 		default:
@@ -787,6 +799,32 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 		w->Close();
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->GetIndex(), TooltipCloseCondition::RightClick) && wid->GetToolTip() != STR_NULL) {
 		GuiShowTooltips(w, GetEncodedString(wid->GetToolTip()), TooltipCloseCondition::RightClick);
+	}
+}
+
+/**
+ * Dispatch a middle, X1, or X2 mouse-button click in a window.
+ * @param w Window to dispatch event in.
+ * @param x X coordinate of the click.
+ * @param y Y coordinate of the click.
+ * @param click The MouseClick.
+ */
+static void DispatchOtherClickEvent(Window *w, int x, int y, MouseClick click)
+{
+	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
+	if (wid == nullptr) return;
+
+	Point pt = { x, y };
+
+	/* No widget to handle, or the window is not interested in it. */
+	if (wid->GetIndex() < 0) return;
+
+	if (click == MouseClick::Middle) {
+		w->OnMiddleClick(pt, wid->GetIndex());
+	} else if (click == MouseClick::X1) {
+		w->OnX1Click(pt, wid->GetIndex());
+	} else if (click == MouseClick::X2) {
+		w->OnX2Click(pt, wid->GetIndex());
 	}
 }
 
@@ -1969,7 +2007,7 @@ static EventState HandleMouseDragDrop()
 {
 	if (_special_mouse_mode != SpecialMouseMode::DragDrop) return EventState::NotHandled;
 
-	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled; // Dragging, but the mouse did not move.
+	if (IsLeftButtonDown() && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled; // Dragging, but the mouse did not move.
 
 	Window *w = _thd.GetCallbackWnd();
 	if (w != nullptr) {
@@ -1977,14 +2015,14 @@ static EventState HandleMouseDragDrop()
 		Point pt;
 		pt.x = _cursor.pos.x - w->left;
 		pt.y = _cursor.pos.y - w->top;
-		if (_left_button_down) {
+		if (IsLeftButtonDown()) {
 			w->OnMouseDrag(pt, GetWidgetFromPos(w, pt.x, pt.y));
 		} else {
 			w->OnDragDrop(pt, GetWidgetFromPos(w, pt.x, pt.y));
 		}
 	}
 
-	if (!_left_button_down) ResetObjectToPlace(); // Button released, finished dragging.
+	if (!IsLeftButtonDown()) ResetObjectToPlace(); // Button released, finished dragging.
 	return EventState::Handled;
 }
 
@@ -2174,13 +2212,13 @@ static EventState HandleWindowDragging()
 	if (!_dragging_window) return EventState::NotHandled;
 
 	/* If button still down, but cursor hasn't moved, there is nothing to do. */
-	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled;
+	if (IsLeftButtonDown() && _cursor.delta.x == 0 && _cursor.delta.y == 0) return EventState::Handled;
 
 	/* Otherwise find the window... */
 	for (Window *w : Window::Iterate()) {
 		if (w->flags.Test(WindowFlag::Dragging)) {
 			/* Stop the dragging if the left mouse button was released */
-			if (!_left_button_down) {
+			if (!IsLeftButtonDown()) {
 				w->flags.Reset(WindowFlag::Dragging);
 				break;
 			}
@@ -2272,7 +2310,7 @@ static EventState HandleWindowDragging()
 			return EventState::Handled;
 		} else if (w->flags.Test(WindowFlag::SizingLeft) || w->flags.Test(WindowFlag::SizingRight)) {
 			/* Stop the sizing if the left mouse button was released */
-			if (!_left_button_down) {
+			if (!IsLeftButtonDown()) {
 				w->flags.Reset(WindowFlag::SizingLeft);
 				w->flags.Reset(WindowFlag::SizingRight);
 				w->SetDirty();
@@ -2418,7 +2456,7 @@ static EventState HandleActiveWidget()
 	for (Window *w : Window::Iterate()) {
 		if (w->mouse_capture_widget >= 0) {
 			/* Abort if no button is clicked any more. */
-			if (!_left_button_down) {
+			if (!IsLeftButtonDown()) {
 				w->SetWidgetDirty(w->mouse_capture_widget);
 				w->mouse_capture_widget = INVALID_WIDGET;
 				return EventState::Handled;
@@ -2457,7 +2495,7 @@ static EventState HandleViewportScroll()
 	 * outside of the window and should not left-mouse scroll anymore. */
 	if (_last_scroll_window == nullptr) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && _right_button_down) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && _left_button_down))) {
+	if (_last_scroll_window == nullptr || !((_settings_client.gui.scroll_mode != ViewportScrollMode::MapLMB && IsRightButtonDown()) || scrollwheel_scrolling || (_settings_client.gui.scroll_mode == ViewportScrollMode::MapLMB && IsLeftButtonDown()))) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		_last_scroll_window = nullptr;
@@ -2648,8 +2686,7 @@ EventState Window::HandleEditBoxKey(WidgetID wid, char32_t key, uint16_t keycode
 static EventState HandleHotkey(Window *w, int hotkey)
 {
 	/* Clear global modifier keys so they do not interfere with modifiers assigned to hotkeys. */
-	AutoRestoreBackup _shift_backup{_shift_pressed, false};
-	AutoRestoreBackup _ctrl_backup{_ctrl_pressed, false};
+	AutoRestoreBackup pressed_backup{_input_pressed, {}};
 
 	return w->OnHotkey(hotkey);
 }
@@ -2815,15 +2852,6 @@ static void HandleAutoscroll()
 	}
 }
 
-/** Mouse states during the \c MouseLoop. */
-enum class MouseClick : uint8_t {
-	None = 0, ///< No action to process.
-	Left, ///< A click with the left mouse button.
-	Right, ///< A click with the right mouse button.
-	DoubleLeft, ///< A double click with the left mouse button.
-	Hover, ///< The mouse started hovering.
-};
-
 static constexpr int MAX_OFFSET_DOUBLE_CLICK = 5; ///< How much the mouse is allowed to move to call it a double click
 static constexpr int MAX_OFFSET_HOVER = 5; ///< Maximum mouse movement before stopping a hover event.
 
@@ -2875,7 +2903,7 @@ static void HandleKeyScrolling()
 	 * doesn't have an edit-box as focused widget.
 	 */
 	if (_dirkeys.Any() && !EditBoxInGlobalFocus()) {
-		int factor = _shift_pressed ? 50 : 10;
+		int factor = IsShiftPressed() ? 50 : 10;
 
 		if (_game_mode != GameMode::Menu && _game_mode != GameMode::Bootstrap) {
 			/* Key scrolling stops following a vehicle. */
@@ -2981,6 +3009,12 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			DispatchRightClickEvent(w, x - w->left, y - w->top);
 			return;
 
+		case MouseClick::Middle:
+		case MouseClick::X1:
+		case MouseClick::X2:
+			DispatchOtherClickEvent(w, x - w->left, y - w->top, click);
+			break;
+
 		case MouseClick::Hover:
 			DispatchHoverEvent(w, x - w->left, y - w->top);
 			break;
@@ -3006,7 +3040,7 @@ void HandleMouseEvents()
 
 	/* Mouse event? */
 	MouseClick click = MouseClick::None;
-	if (_left_button_down && !_left_button_clicked) {
+	if (IsLeftButtonDown() && !_input_clicked.Test(ControlInput::Left)) {
 		click = MouseClick::Left;
 		if (std::chrono::steady_clock::now() <= double_click_time + TIME_BETWEEN_DOUBLE_CLICK &&
 				double_click_pos.x != 0 && abs(_cursor.pos.x - double_click_pos.x) < MAX_OFFSET_DOUBLE_CLICK  &&
@@ -3015,10 +3049,19 @@ void HandleMouseEvents()
 		}
 		double_click_time = std::chrono::steady_clock::now();
 		double_click_pos = _cursor.pos;
-		_left_button_clicked = true;
-	} else if (_right_button_clicked) {
-		_right_button_clicked = false;
+		_input_clicked.Set(ControlInput::Left);
+	} else if (_input_clicked.Test(ControlInput::Right)) {
+		_input_clicked.Reset(ControlInput::Right);
 		click = MouseClick::Right;
+	} else if (_input_clicked.Test(ControlInput::Middle)) {
+		_input_clicked.Reset(ControlInput::Middle);
+		click = MouseClick::Middle;
+	} else if (_input_clicked.Test(ControlInput::X1)) {
+		_input_clicked.Reset(ControlInput::X1);
+		click = MouseClick::X1;
+	} else if (_input_clicked.Test(ControlInput::X2)) {
+		_input_clicked.Reset(ControlInput::X2);
+		click = MouseClick::X2;
 	}
 
 	int mousewheel = 0;
@@ -3031,7 +3074,7 @@ void HandleMouseEvents()
 	static Point hover_pos = {0, 0};
 
 	if (_settings_client.gui.hover_delay_ms > 0) {
-		if (!_cursor.in_window || click != MouseClick::None || mousewheel != 0 || _left_button_down || _right_button_down ||
+		if (!_cursor.in_window || click != MouseClick::None || mousewheel != 0 || IsLeftButtonDown() || IsRightButtonDown() ||
 				hover_pos.x == 0 || abs(_cursor.pos.x - hover_pos.x) >= MAX_OFFSET_HOVER  ||
 				hover_pos.y == 0 || abs(_cursor.pos.y - hover_pos.y) >= MAX_OFFSET_HOVER) {
 			hover_pos = _cursor.pos;

@@ -21,6 +21,7 @@
 #include "../window_func.h"
 #include "sdl2_v.h"
 #include <SDL.h>
+#include <SDL_mouse.h>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #	include <emscripten/html5.h>
@@ -468,12 +469,27 @@ bool VideoDriver_SDL_Base::PollEvent()
 
 			switch (ev.button.button) {
 				case SDL_BUTTON_LEFT:
-					_left_button_down = true;
+					_input_pressed.Set(ControlInput::Left);
 					break;
 
 				case SDL_BUTTON_RIGHT:
-					_right_button_down = true;
-					_right_button_clicked = true;
+					_input_pressed.Set(ControlInput::Right);
+					_input_clicked.Set(ControlInput::Right);
+					break;
+
+				case SDL_BUTTON_MIDDLE:
+					_input_pressed.Set(ControlInput::Middle);
+					_input_clicked.Set(ControlInput::Middle);
+					break;
+
+				case SDL_BUTTON_X1:
+					_input_pressed.Set(ControlInput::X1);
+					_input_clicked.Set(ControlInput::X1);
+					break;
+
+				case SDL_BUTTON_X2:
+					_input_pressed.Set(ControlInput::X2);
+					_input_clicked.Set(ControlInput::X2);
 					break;
 
 				default: break;
@@ -483,14 +499,19 @@ bool VideoDriver_SDL_Base::PollEvent()
 
 		case SDL_MOUSEBUTTONUP:
 			if (_rightclick_emulate) {
-				_right_button_down = false;
-				_left_button_down = false;
-				_left_button_clicked = false;
+				_input_pressed.Reset({ControlInput::Left, ControlInput::Right});
+				_input_clicked.Reset(ControlInput::Left);
 			} else if (ev.button.button == SDL_BUTTON_LEFT) {
-				_left_button_down = false;
-				_left_button_clicked = false;
+				_input_pressed.Reset(ControlInput::Left);
+				_input_clicked.Reset(ControlInput::Left);
 			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
-				_right_button_down = false;
+				_input_pressed.Reset(ControlInput::Right);
+			} else if (ev.button.button == SDL_BUTTON_MIDDLE) {
+				_input_pressed.Reset(ControlInput::Middle);
+			} else if (ev.button.button == SDL_BUTTON_X1) {
+				_input_pressed.Reset(ControlInput::X1);
+			} else if (ev.button.button == SDL_BUTTON_X2) {
+				_input_pressed.Reset(ControlInput::X2);
 			}
 			HandleMouseEvents();
 			break;
@@ -657,10 +678,10 @@ void VideoDriver_SDL_Base::InputLoop()
 	uint32_t mod = SDL_GetModState();
 	const Uint8 *keys = SDL_GetKeyboardState(nullptr);
 
-	bool old_ctrl_pressed = _ctrl_pressed;
+	bool old_ctrl_pressed = IsCtrlPressed();
 
-	_ctrl_pressed  = !!(mod & KMOD_CTRL);
-	_shift_pressed = !!(mod & KMOD_SHIFT);
+	_input_pressed.Set(ControlInput::Ctrl, (mod & KMOD_CTRL) != 0);
+	_input_pressed.Set(ControlInput::Shift, (mod & KMOD_SHIFT) != 0);
 
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
@@ -672,7 +693,7 @@ void VideoDriver_SDL_Base::InputLoop()
 	_dirkeys.Set(DirectionKey::Right, keys[SDL_SCANCODE_RIGHT]);
 	_dirkeys.Set(DirectionKey::Down, keys[SDL_SCANCODE_DOWN]);
 
-	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+	if (old_ctrl_pressed != IsCtrlPressed()) HandleCtrlChanged();
 }
 
 /** Run a single tick of the game/main loop. */

@@ -150,7 +150,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 	if (wagon == v) return;
 
-	Command<Commands::MoveRailVehicle>::Post(STR_ERROR_CAN_T_MOVE_VEHICLE, v->tile, v->index, wagon == nullptr ? VehicleID::Invalid() : wagon->index, _ctrl_pressed);
+	Command<Commands::MoveRailVehicle>::Post(STR_ERROR_CAN_T_MOVE_VEHICLE, v->tile, v->index, wagon == nullptr ? VehicleID::Invalid() : wagon->index, IsCtrlPressed());
 }
 
 static VehicleTypeIndexArray<VehicleCellSize> _base_block_sizes_depot; ///< Cell size for vehicle images in the depot view.
@@ -601,7 +601,7 @@ struct DepotWindow : Window {
 				} else if (v != nullptr) {
 					SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 					SetMouseCursorVehicle(v, EngineImageType::InDepot);
-					_cursor.vehchain = _ctrl_pressed;
+					_cursor.vehchain = IsCtrlPressed();
 
 					this->sel = v->index;
 					this->SetDirty();
@@ -831,7 +831,7 @@ struct DepotWindow : Window {
 				break;
 
 			case WID_D_LOCATION:
-				if (_ctrl_pressed) {
+				if (IsCtrlPressed()) {
 					ShowExtraViewportWindow(TileIndex(this->window_number));
 				} else {
 					ScrollMainWindowToTile(TileIndex(this->window_number));
@@ -892,7 +892,7 @@ struct DepotWindow : Window {
 		CargoArray capacity{}, loaded{};
 
 		/* Display info for single (articulated) vehicle, or for whole chain starting with selected vehicle */
-		bool whole_chain = (this->type == VehicleType::Train && _ctrl_pressed);
+		bool whole_chain = (this->type == VehicleType::Train && IsCtrlPressed());
 
 		/* loop through vehicle chain and collect cargoes */
 		uint num = 0;
@@ -937,7 +937,7 @@ struct DepotWindow : Window {
 	 */
 	bool OnVehicleSelect(const Vehicle *v) override
 	{
-		if (_ctrl_pressed) {
+		if (IsCtrlPressed()) {
 			/* Share-clone, do not open new viewport, and keep tool active */
 			Command<Commands::CloneVehicle>::Post(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying(v->type), TileIndex(this->window_number), v->index, true);
 		} else {
@@ -960,7 +960,7 @@ struct DepotWindow : Window {
 	 */
 	bool OnVehicleSelect(VehicleList::const_iterator begin, VehicleList::const_iterator end) override
 	{
-		if (!_ctrl_pressed) {
+		if (!IsCtrlPressed()) {
 			/* If CTRL is not pressed: If all the vehicles in this list have the same orders, then copy orders */
 			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
 				return VehiclesHaveSameEngineList(v1, v2);
@@ -1086,7 +1086,7 @@ struct DepotWindow : Window {
 
 				if (this->type == VehicleType::Train) {
 					if (result.action == DepotGUIAction::DragVehicle && sel != VehicleID::Invalid()) {
-						if (result.wagon != nullptr && result.wagon->index == sel && _ctrl_pressed) {
+						if (result.wagon != nullptr && result.wagon->index == sel && IsCtrlPressed()) {
 							Command<Commands::ReverseTrainDirection>::Post(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE, Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true);
 						} else if (result.wagon == nullptr || result.wagon->index != sel) {
 							this->vehicle_over = VehicleID::Invalid();
@@ -1111,7 +1111,7 @@ struct DepotWindow : Window {
 				this->sel = VehicleID::Invalid();
 				this->SetDirty();
 
-				bool sell_cmd = (v->type == VehicleType::Train && (widget == WID_D_SELL_CHAIN || _ctrl_pressed));
+				bool sell_cmd = (v->type == VehicleType::Train && (widget == WID_D_SELL_CHAIN || IsCtrlPressed()));
 				Command<Commands::SellVehicle>::Post(GetCmdSellVehMsg(v->type), v->tile, v->index, sell_cmd, true, ClientID::Invalid);
 				break;
 			}
@@ -1151,7 +1151,7 @@ struct DepotWindow : Window {
 	EventState OnCTRLStateChange() override
 	{
 		if (this->sel != VehicleID::Invalid()) {
-			_cursor.vehchain = _ctrl_pressed;
+			_cursor.vehchain = IsCtrlPressed();
 			this->SetWidgetDirty(WID_D_MATRIX);
 			return EventState::Handled;
 		}
