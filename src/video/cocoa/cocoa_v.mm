@@ -447,8 +447,8 @@ void VideoDriver_Cocoa::InputLoop()
 
 	bool old_ctrl_pressed = _ctrl_pressed;
 
-	_ctrl_pressed = (cur_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSEventModifierFlagControl : NSEventModifierFlagCommand)) != 0;
-	_shift_pressed = (cur_mods & NSEventModifierFlagShift) != 0;
+	_ctrl_pressed = ((cur_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSEventModifierFlagControl : NSEventModifierFlagCommand)) != 0) ^ _invert_ctrl_state;
+	_shift_pressed = ((cur_mods & NSEventModifierFlagShift) != 0) ^ _invert_shift_state;
 
 	this->fast_forward_key_pressed = _tab_is_down;
 

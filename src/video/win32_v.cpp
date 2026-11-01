@@ -1008,8 +1008,8 @@ void VideoDriver_Win32Base::InputLoop()
 {
 	bool old_ctrl_pressed = _ctrl_pressed;
 
-	_ctrl_pressed = this->has_focus && GetAsyncKeyState(VK_CONTROL) < 0;
-	_shift_pressed = this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
+	_ctrl_pressed = (this->has_focus && GetAsyncKeyState(VK_CONTROL) < 0) ^ _invert_ctrl_state;
+	_shift_pressed = (this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0) ^ _invert_shift_state;
 
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */

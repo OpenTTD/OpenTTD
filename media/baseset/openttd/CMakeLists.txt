@@ -61,5 +61,6 @@ if(GRFCODEC_FOUND)
                          ${CMAKE_CURRENT_SOURCE_DIR}/tramtracks.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/tramtracks_bare_depot.png
                          ${CMAKE_CURRENT_SOURCE_DIR}/tunnel_portals.png
+                         ${CMAKE_CURRENT_SOURCE_DIR}/android_special_buttons.png
     )
 endif()
