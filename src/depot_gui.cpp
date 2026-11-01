@@ -688,6 +688,7 @@ struct DepotWindow : Window {
 	{
 		this->cell_size = GetVehicleImageCellSize(this->type, EngineImageType::InDepot);
 		this->flag_size = maxdim(GetScaledSpriteSize(SPR_FLAG_VEH_STOPPED), GetScaledSpriteSize(SPR_FLAG_VEH_RUNNING));
+		this->hscroll->SetStepSize(GetCharacterHeight(FontSize::Normal)); // Speed up horizontal scrollbar
 	}
 
 	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
