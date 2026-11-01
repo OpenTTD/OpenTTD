@@ -404,7 +404,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 	}
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
-	return CommandCost(ExpensesType::Construction, f_new != f_old ? _price[Price::BuildFoundation] : (Money)0);
+	return CommandCost(ExpensesType::Construction, f_new != f_old ? _price[Price::BuildFoundation] : Money{});
 }
 
 /* Validate functions for rail building */
@@ -3174,7 +3174,7 @@ static CommandCost TerraformTile_Rail(TileIndex tile, DoCommandFlags flags, int 
 		if (flags.Test(DoCommandFlag::Execute)) SetRailGroundType(tile, RailGroundType::Barren);
 
 		/* allow terraforming */
-		return CommandCost(ExpensesType::Construction, was_water ? _price[Price::ClearWater] : (Money)0);
+		return CommandCost(ExpensesType::Construction, was_water ? _price[Price::ClearWater] : Money{});
 	} else if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() &&
 			AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) {
 		return CommandCost(ExpensesType::Construction, _price[Price::BuildFoundation]);

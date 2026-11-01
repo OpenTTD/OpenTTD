@@ -96,14 +96,14 @@ static bool _allowSoftware;
 	CGLPixelFormatAttribute attribs[] = {
 		kCGLPFAOpenGLProfile, (CGLPixelFormatAttribute)kCGLOGLPVersion_3_2_Core,
 		kCGLPFAColorSize, (CGLPixelFormatAttribute)24,
-		kCGLPFAAlphaSize, (CGLPixelFormatAttribute)0,
-		kCGLPFADepthSize, (CGLPixelFormatAttribute)0,
+		kCGLPFAAlphaSize, CGLPixelFormatAttribute{},
+		kCGLPFADepthSize, CGLPixelFormatAttribute{},
 		kCGLPFADoubleBuffer,
 		kCGLPFAAllowOfflineRenderers,
 		kCGLPFASupportsAutomaticGraphicsSwitching,
 		kCGLPFANoRecovery,
-		_allowSoftware ? (CGLPixelFormatAttribute)0 : kCGLPFAAccelerated,
-		(CGLPixelFormatAttribute)0
+		_allowSoftware ? CGLPixelFormatAttribute{} : kCGLPFAAccelerated,
+		CGLPixelFormatAttribute{}
 	};
 
 	CGLPixelFormatObj pxfmt = nullptr;

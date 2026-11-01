@@ -207,14 +207,14 @@ public:
 	 * @return \c true iff the command succeeded.
 	 */
 	template <typename Tcallback>
-	static inline bool Post(Tcallback *callback, Targs... args) { return Post((StringID)0, callback, std::forward<Targs>(args)...); }
+	static inline bool Post(Tcallback *callback, Targs... args) { return Post(StringID{}, callback, std::forward<Targs>(args)...); }
 
 	/**
 	 * Shortcut for the long Post when not using a callback or an error message.
 	 * @param args Parameters for the command
 	 * @return \c true iff the command succeeded.
 	 */
-	static inline bool Post(Targs... args) { return Post<CommandCallback>((StringID)0, nullptr, std::forward<Targs>(args)...); }
+	static inline bool Post(Targs... args) { return Post<CommandCallback>(StringID{}, nullptr, std::forward<Targs>(args)...); }
 
 	/**
 	 * Top-level network safe command execution for the current company.
@@ -499,7 +499,7 @@ struct CommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...), false> : CommandHe
 	 * @return \c true iff the command succeeded.
 	 */
 	template <typename Tcallback>
-	static inline bool Post(Tcallback *callback, TileIndex location, Targs... args) { return Post((StringID)0, callback, location, std::forward<Targs>(args)...); }
+	static inline bool Post(Tcallback *callback, TileIndex location, Targs... args) { return Post(StringID{}, callback, location, std::forward<Targs>(args)...); }
 
 	/**
 	 * Shortcut for Post when not using a callback or an error message.
@@ -507,7 +507,7 @@ struct CommandHelper<Tcmd, Tret(*)(DoCommandFlags, Targs...), false> : CommandHe
 	 * @param args Parameters for the command*
 	 * @return \c true iff the command succeeded.
 	 */
-	static inline bool Post(TileIndex location, Targs... args) { return Post<CommandCallback>((StringID)0, nullptr, location, std::forward<Targs>(args)...); }
+	static inline bool Post(TileIndex location, Targs... args) { return Post<CommandCallback>(StringID{}, nullptr, location, std::forward<Targs>(args)...); }
 
 	/**
 	 * Post variant that takes a TileIndex (for error window location and text effects) for

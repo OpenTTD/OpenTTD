@@ -467,7 +467,7 @@ inline Money RailConvertCost(RailType from, RailType to)
 	 * build costs, if the target type is more expensive (material upgrade costs).
 	 * Upgrade can never be more expensive than re-building. */
 	if (HasPowerOnRail(from, to) || HasPowerOnRail(to, from)) {
-		Money upgradecost = RailBuildCost(to) / 8 + std::max((Money)0, RailBuildCost(to) - RailBuildCost(from));
+		Money upgradecost = RailBuildCost(to) / 8 + std::max(Money{}, RailBuildCost(to) - RailBuildCost(from));
 		return std::min(upgradecost, rebuildcost);
 	}
 
