@@ -761,6 +761,11 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	w->OnClick(pt, widget_index, click_count);
 }
 
+StringID GetCtrlKeyString()
+{
+	return STR_CTRL_KEY;
+}
+
 /**
  * Dispatch right mouse-button click in window.
  * @param w Window to dispatch event in
@@ -786,7 +791,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 		/* Right-click close is enabled, but excluding sticky windows. */
 		w->Close();
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->GetIndex(), TooltipCloseCondition::RightClick) && wid->GetToolTip() != STR_NULL) {
-		GuiShowTooltips(w, GetEncodedString(wid->GetToolTip()), TooltipCloseCondition::RightClick);
+		GuiShowTooltips(w, GetEncodedString(wid->GetToolTip(), GetCtrlKeyString()), TooltipCloseCondition::RightClick);
 	}
 }
 
@@ -807,7 +812,7 @@ static void DispatchHoverEvent(Window *w, int x, int y)
 
 	/* Show the tooltip if there is any */
 	if (!w->OnTooltip(pt, wid->GetIndex(), TooltipCloseCondition::Hover) && wid->GetToolTip() != STR_NULL) {
-		GuiShowTooltips(w, GetEncodedString(wid->GetToolTip()), TooltipCloseCondition::Hover);
+		GuiShowTooltips(w, GetEncodedString(wid->GetToolTip(), GetCtrlKeyString()), TooltipCloseCondition::Hover);
 		return;
 	}
 

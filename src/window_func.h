@@ -80,4 +80,6 @@ Point GetCaretPosition();
  */
 constexpr StringID operator+(StringID string, WindowNumber window_number) noexcept { return string + static_cast<int32_t>(window_number); }
 
+StringID GetCtrlKeyString();
+
 #endif /* WINDOW_FUNC_H */

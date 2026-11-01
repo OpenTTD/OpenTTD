@@ -740,7 +740,7 @@ struct GameOptionsWindow : Window {
 					if (FillDrawPixelInfo(&tmp_dpi, r)) {
 						AutoRestoreBackup dpi_backup(_cur_dpi, &tmp_dpi);
 						int scrolls_pos = this->vscroll_description->GetPosition() * GetCharacterHeight(FontSize::Normal);
-						DrawStringMultiLine(0, r.Width() - 1, -scrolls_pos, r.Height() - 1, sd->GetHelp(), TextColour::White);
+						DrawStringMultiLine(0, r.Width() - 1, -scrolls_pos, r.Height() - 1, GetString(sd->GetHelp(), GetCtrlKeyString()), TextColour::White);
 					}
 				}
 				break;
