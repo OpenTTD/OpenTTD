@@ -138,4 +138,27 @@ struct CargoArray : std::array<uint, NUM_CARGO> {
 	}
 };
 
+/** Cargo classes. */
+enum class CargoClass : uint8_t {
+	Passengers =  0, ///< Passengers like cargos.
+	Mail = 1, ///< Mail.
+	Express = 2, ///< Express cargos (Goods, Food, Candy, but also possible for passengers).
+	Armoured = 3, ///< Armoured cargos (Valuables, Gold, Diamonds).
+	Bulk = 4, ///< Bulk cargos (Coal, Grain etc., Ores, Fruit).
+	PieceGoods = 5, ///< Piece goods (Livestock, Wood, Steel, Paper).
+	Liquid = 6, ///< Liquids (Oil, Water, Rubber).
+	Refrigerated = 7, ///< Refrigerated cargos (Food, Fruit).
+	Hazardous = 8, ///< Hazardous cargos (Nuclear Fuel, Explosives, etc.).
+	Covered = 9, ///< Covered/Sheltered freight (transported in box vans, silo wagons, etc.).
+	Oversized = 10, ///< Oversized freight (transported in stake/flatbed wagons).
+	Powderized = 11, ///< Powderized, moist protected freight (transported in powder/silo wagons).
+	NotPourable = 12, ///< Not Pourable cargos (transported in open wagons, but not hopper wagons).
+	Potable = 13, ///< Potable / food / clean cargos.
+	NonPotable = 14, ///< Non-potable / non-food / dirty cargos.
+	Special = 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
+};
+
+/** Bitset of \c CargoClass elements. */
+using CargoClasses = EnumBitSet<CargoClass, uint16_t>;
+
 #endif /* CARGO_TYPE_H */

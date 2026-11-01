@@ -83,7 +83,6 @@ struct RoadStopScopeResolver : public ScopeResolver {
 	TileIndex tile{}; ///< %Tile of the station.
 	struct BaseStation *st = nullptr; ///< Instance of the station.
 	const struct RoadStopSpec *roadstopspec = nullptr; ///< Station (type) specification.
-	CargoType cargo_type{}; ///< Type of cargo of the station.
 	StationType type{}; ///< Station type.
 	uint8_t view = 0; ///< Station axis.
 	RoadType roadtype{}; ///< Road type (used when no tile)
