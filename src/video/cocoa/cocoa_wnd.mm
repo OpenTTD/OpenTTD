@@ -750,6 +750,41 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 }
 
 /**
+ * Handler of otther mouse button pressing.
+ * @param event Information about occurred event.
+ */
+- (void)otherMouseDown:(NSEvent *)event
+{
+	ControlInput ci;
+	switch ([ event buttonNumber ]) {
+		case 2: ci = ControlInput::Middle; break;
+		case 3: ci = ControlInput::X1; break;
+		case 4: ci = ControlInput::X2; break;
+		default: return;
+	}
+	_input_pressed.Set(ci);
+	_input_clicked.Set(ci);
+	[ self internalMouseButtonEvent ];
+}
+
+/**
+ * Handler of other mouse button releasing.
+ * @param event Information about occurred event.
+ */
+- (void)otherMouseUp:(NSEvent *)event
+{
+	ControlInput ci;
+	switch ([ event buttonNumber ]) {
+		case 2: ci = ControlInput::Middle; break;
+		case 3: ci = ControlInput::X1; break;
+		case 4: ci = ControlInput::X2; break;
+		default: return;
+	}
+	_input_pressed.Reset(ci);
+	[ self internalMouseButtonEvent ];
+}
+
+/**
  * Handler of mouse wheel scrolling.
  * @param event Information about occurred event.
  */
