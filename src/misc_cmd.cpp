@@ -251,6 +251,6 @@ CommandCost CmdChangeBankBalance(DoCommandFlags flags, TileIndex tile, Money del
 	}
 
 	/* This command doesn't cost anything for deity. */
-	CommandCost zero_cost(expenses_type, (Money)0);
+	CommandCost zero_cost(expenses_type);
 	return zero_cost;
 }

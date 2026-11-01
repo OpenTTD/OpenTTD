@@ -117,8 +117,8 @@ inline uint32_t ReadUint32(LoadgameState &ls)
 /** To check if we are really at the place we expect to be.. because old savegames are too binary to be sure ;) */
 #define OCL_ASSERT(type, size)               { OC_ASSERT | type,     1, (void *)(size_t)size, nullptr, nullptr }
 /** Read 'amount' of bytes and send them to /dev/null or something. */
-#define OCL_NULL(amount)        OCL_CNULL((OldChunkType)0, amount)
+#define OCL_NULL(amount)        OCL_CNULL(OldChunkType{}, amount)
 /** Load another proc to load a part of the savegame, 'amount' times. */
-#define OCL_CHUNK(amount, proc) OCL_CCHUNK((OldChunkType)0, amount, proc)
+#define OCL_CHUNK(amount, proc) OCL_CCHUNK(OldChunkType{}, amount, proc)
 
 #endif /* OLDLOADER_H */

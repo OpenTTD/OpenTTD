@@ -271,7 +271,7 @@ inline Money RoadClearCost(RoadType roadtype)
 inline Money RoadConvertCost(RoadType from, RoadType to)
 {
 	/* Don't apply convert costs when converting to the same roadtype (ex. building a roadstop over existing road) */
-	if (from == to) return (Money)0;
+	if (from == to) return Money{};
 
 	/* Same cost as removing and then building. */
 	return RoadBuildCost(to) + RoadClearCost(from);

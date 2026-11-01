@@ -41,14 +41,14 @@ struct GUIVehicleGroup {
 
 	Money GetDisplayProfitThisYear() const
 	{
-		return std::accumulate(this->vehicles_begin, this->vehicles_end, (Money)0, [](Money acc, const Vehicle *v) {
+		return std::accumulate(this->vehicles_begin, this->vehicles_end, Money{}, [](Money acc, const Vehicle *v) {
 			return acc + v->GetDisplayProfitThisYear();
 		});
 	}
 
 	Money GetDisplayProfitLastYear() const
 	{
-		return std::accumulate(this->vehicles_begin, this->vehicles_end, (Money)0, [](Money acc, const Vehicle *v) {
+		return std::accumulate(this->vehicles_begin, this->vehicles_end, Money{}, [](Money acc, const Vehicle *v) {
 			return acc + v->GetDisplayProfitLastYear();
 		});
 	}
