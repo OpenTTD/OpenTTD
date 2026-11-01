@@ -76,6 +76,13 @@ enum class StationVehicleType : uint8_t {
 /** Bitset of \c StationVehicleType elements. */
 using StationVehicleTypes = EnumBitSet<StationVehicleType, uint8_t>;
 
+/** Scope of station/roadstop animation or randomisation trigger. */
+enum class TriggerArea : uint8_t {
+	Tile, ///< Trigger an individual tile.
+	Platform, ///< Trigger a single platform.
+	Whole, ///< Trigger the entire station.
+};
+
 /** Randomisation triggers for stations and roadstops */
 enum class StationRandomTrigger : uint8_t {
 	NewCargo, ///< Trigger station on new cargo arrival.
@@ -84,6 +91,7 @@ enum class StationRandomTrigger : uint8_t {
 	VehicleDeparts, ///< Trigger platform when train leaves.
 	VehicleLoads, ///< Trigger platform when train loads/unloads.
 	PathReservation, ///< Trigger platform when train reserves path.
+	End, ///< End marker.
 };
 
 /** Bitset of \c StationRandomTrigger elements. */
