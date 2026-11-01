@@ -389,7 +389,7 @@ static void ResetAllSettingsConfirmationCallback(Window *w, bool confirmed)
 }
 
 struct GameOptionsWindow : Window {
-	static inline GameSettings *settings_ptr; ///< Pointer to the game settings being displayed and modified.
+	GameSettings *settings_ptr; ///< Pointer to the game settings being displayed and modified.
 
 	SettingEntry *valuewindow_entry = nullptr; ///< If non-nullptr, pointer to setting for which a value-entering window has been opened.
 	SettingEntry *clicked_entry = nullptr; ///< If non-nullptr, pointer to a clicked numeric setting (with a depressed left or right button).
@@ -407,7 +407,6 @@ struct GameOptionsWindow : Window {
 	Scrollbar *vscroll_description;
 	static constexpr uint NUM_DESCRIPTION_LINES = 5;
 
-	GameSettings *opt = nullptr;
 	bool reload = false;
 	bool gui_scale_changed = false;
 	int gui_scale = 0;
@@ -416,8 +415,6 @@ struct GameOptionsWindow : Window {
 
 	GameOptionsWindow(WindowDesc &desc) : Window(desc), filter_editbox(50)
 	{
-		this->opt = &GetGameSettings();
-
 		AddCustomRefreshRates();
 
 		this->filter.mode = (RestrictionMode)_settings_client.gui.settings_restriction_mode;
@@ -470,7 +467,7 @@ struct GameOptionsWindow : Window {
 		DropDownList list;
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: { // Setup currencies dropdown
-				*selected_index = to_underlying(this->opt->locale.currency);
+				*selected_index = to_underlying(this->settings_ptr->locale.currency);
 				Currencies disabled = _game_mode == GameMode::Menu ? Currencies{} : GetMaskOfAllowedCurrencies().Flip();
 
 				/* Add non-custom currencies; sorted naturally */
@@ -567,7 +564,7 @@ struct GameOptionsWindow : Window {
 				for (RestrictionMode mode : EnumRange(RM_END)) {
 					/* If we are in adv. settings screen for the new game's settings,
 					 * we don't want to allow comparing with new game's settings. */
-					bool disabled = mode == RM_CHANGED_AGAINST_NEW && settings_ptr == &_settings_newgame;
+					bool disabled = mode == RM_CHANGED_AGAINST_NEW && this->settings_ptr == &_settings_newgame;
 
 					list.push_back(MakeDropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled));
 				}
@@ -593,7 +590,7 @@ struct GameOptionsWindow : Window {
 	{
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN: {
-				const CurrencySpec &currency = _currency_specs[this->opt->locale.currency];
+				const CurrencySpec &currency = _currency_specs[this->settings_ptr->locale.currency];
 				if (currency.code.empty()) return GetString(currency.name);
 				return GetString(STR_GAME_OPTIONS_CURRENCY_CODE, currency.name, currency.code);
 			}
@@ -706,7 +703,7 @@ struct GameOptionsWindow : Window {
 				Rect tr = r.Shrink(WidgetDimensions::scaled.frametext, WidgetDimensions::scaled.framerect);
 				tr.top += this->warn_lines * BaseSettingEntry::line_height;
 				uint last_row = this->vscroll->GetPosition() + this->vscroll->GetCapacity() - this->warn_lines;
-				int next_row = GetSettingsTree().Draw(settings_ptr, tr.left, tr.right, tr.top,
+				int next_row = GetSettingsTree().Draw(this->settings_ptr, tr.left, tr.right, tr.top,
 						this->vscroll->GetPosition(), last_row, this->last_clicked);
 				if (next_row == 0) DrawString(tr, STR_CONFIG_SETTINGS_NONE);
 				break;
@@ -1258,7 +1255,7 @@ struct GameOptionsWindow : Window {
 		}
 
 		auto [min_val, max_val] = sd->GetRange();
-		int32_t value = sd->Read(ResolveObject(settings_ptr, sd));
+		int32_t value = sd->Read(ResolveObject(this->settings_ptr, sd));
 
 		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
 		if (x < SETTING_BUTTON_WIDTH && sd->flags.Test(SettingFlag::GuiDropdown)) {
@@ -1420,7 +1417,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_CURRENCY_DROPDOWN: { // Currency
 				Currency currency = static_cast<Currency>(index);
 				if (currency == Currency::Custom) ShowCustCurrency();
-				this->opt->locale.currency = currency;
+				this->settings_ptr->locale.currency = currency;
 				ReInitAllWindows(false);
 				break;
 			}
