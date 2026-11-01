@@ -25,6 +25,7 @@
  * \li GSRail::RemoveRailDepot
  * \li GSDepot
  * \li GSError::ERR_CAT_DEPOT
+ * \li GSRoad::GetExistingRoadParts
  *
  * Other changes:
  * \li GSTown::ExpandTown Change to town expansion to match expected behaviour with the 'allow_town_roads' setting
