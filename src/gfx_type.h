@@ -443,6 +443,9 @@ using DirectionKeys = EnumBitSet<DirectionKey, uint8_t>; ///< Bitset of the dire
 enum class ControlInput : uint8_t {
 	Left, ///< Left mouse button is pressed.
 	Right, ///< Right mouse button is pressed.
+	Middle, ///< Middle mouse button is pressed.
+	X1, ///< X1 mouse button is pressed.
+	X2, ///< X2 mouse button is pressed.
 	Ctrl, ///< Ctrl modifier is pressed.
 	Shift, ///< Shift modifier is pressed.
 };

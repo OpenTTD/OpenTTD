@@ -21,6 +21,7 @@
 #include "../window_func.h"
 #include "sdl2_v.h"
 #include <SDL.h>
+#include <SDL_mouse.h>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #	include <emscripten/html5.h>
@@ -476,6 +477,21 @@ bool VideoDriver_SDL_Base::PollEvent()
 					_input_clicked.Set(ControlInput::Right);
 					break;
 
+				case SDL_BUTTON_MIDDLE:
+					_input_pressed.Set(ControlInput::Middle);
+					_input_clicked.Set(ControlInput::Middle);
+					break;
+
+				case SDL_BUTTON_X1:
+					_input_pressed.Set(ControlInput::X1);
+					_input_clicked.Set(ControlInput::X1);
+					break;
+
+				case SDL_BUTTON_X2:
+					_input_pressed.Set(ControlInput::X2);
+					_input_clicked.Set(ControlInput::X2);
+					break;
+
 				default: break;
 			}
 			HandleMouseEvents();
@@ -490,6 +506,12 @@ bool VideoDriver_SDL_Base::PollEvent()
 				_input_clicked.Reset(ControlInput::Left);
 			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
 				_input_pressed.Reset(ControlInput::Right);
+			} else if (ev.button.button == SDL_BUTTON_MIDDLE) {
+				_input_pressed.Reset(ControlInput::Middle);
+			} else if (ev.button.button == SDL_BUTTON_X1) {
+				_input_pressed.Reset(ControlInput::X1);
+			} else if (ev.button.button == SDL_BUTTON_X2) {
+				_input_pressed.Reset(ControlInput::X2);
 			}
 			HandleMouseEvents();
 			break;

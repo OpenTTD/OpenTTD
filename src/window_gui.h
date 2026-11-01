@@ -679,6 +679,27 @@ public:
 	virtual bool OnRightClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) { return false; }
 
 	/**
+	 * A click with the middle mouse button has been made on the window.
+	 * @param pt the point inside the window that has been clicked.
+	 * @param widget the clicked widget.
+	 */
+	virtual void OnMiddleClick([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) {}
+
+	/**
+	 * A click with the X1 mouse button has been made on the window.
+	 * @param pt the point inside the window that has been clicked.
+	 * @param widget the clicked widget.
+	 */
+	virtual void OnX1Click([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) {}
+
+	/**
+	 * A click with the X2 mouse button has been made on the window.
+	 * @param pt the point inside the window that has been clicked.
+	 * @param widget the clicked widget.
+	 */
+	virtual void OnX2Click([[maybe_unused]] Point pt, [[maybe_unused]] WidgetID widget) {}
+
+	/**
 	 * The mouse is hovering over a widget in the window, perform an action for it.
 	 * @param pt     The point where the mouse is hovering.
 	 * @param widget The widget where the mouse is hovering.

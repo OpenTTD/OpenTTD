@@ -615,6 +615,18 @@ void Window::HandleButtonClick(WidgetID widget)
 static void StartWindowDrag(Window *w);
 static void StartWindowSizing(Window *w, bool to_left);
 
+/** Mouse states during the \c MouseLoop. */
+enum class MouseClick : uint8_t {
+	None = 0, ///< No action to process.
+	Left, ///< A click with the left mouse button.
+	Right, ///< A click with the right mouse button.
+	Middle, ///< A click with the middle mouse button.
+	X1, ///< A click with the 4th mouse button.
+	X2, ///< A click with the 5th mouse button.
+	DoubleLeft, ///< A double click with the left mouse button.
+	Hover, ///< The mouse started hovering.
+};
+
 /**
  * Dispatch left mouse-button (possibly double) click in window.
  * @param w Window to dispatch event in
@@ -787,6 +799,32 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 		w->Close();
 	} else if (_settings_client.gui.hover_delay_ms == 0 && !w->OnTooltip(pt, wid->GetIndex(), TooltipCloseCondition::RightClick) && wid->GetToolTip() != STR_NULL) {
 		GuiShowTooltips(w, GetEncodedString(wid->GetToolTip()), TooltipCloseCondition::RightClick);
+	}
+}
+
+/**
+ * Dispatch a middle, X1, or X2 mouse-button click in a window.
+ * @param w Window to dispatch event in.
+ * @param x X coordinate of the click.
+ * @param y Y coordinate of the click.
+ * @param click The MouseClick.
+ */
+static void DispatchOtherClickEvent(Window *w, int x, int y, MouseClick click)
+{
+	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
+	if (wid == nullptr) return;
+
+	Point pt = { x, y };
+
+	/* No widget to handle, or the window is not interested in it. */
+	if (wid->GetIndex() < 0) return;
+
+	if (click == MouseClick::Middle) {
+		w->OnMiddleClick(pt, wid->GetIndex());
+	} else if (click == MouseClick::X1) {
+		w->OnX1Click(pt, wid->GetIndex());
+	} else if (click == MouseClick::X2) {
+		w->OnX2Click(pt, wid->GetIndex());
 	}
 }
 
@@ -2814,15 +2852,6 @@ static void HandleAutoscroll()
 	}
 }
 
-/** Mouse states during the \c MouseLoop. */
-enum class MouseClick : uint8_t {
-	None = 0, ///< No action to process.
-	Left, ///< A click with the left mouse button.
-	Right, ///< A click with the right mouse button.
-	DoubleLeft, ///< A double click with the left mouse button.
-	Hover, ///< The mouse started hovering.
-};
-
 static constexpr int MAX_OFFSET_DOUBLE_CLICK = 5; ///< How much the mouse is allowed to move to call it a double click
 static constexpr int MAX_OFFSET_HOVER = 5; ///< Maximum mouse movement before stopping a hover event.
 
@@ -2980,6 +3009,12 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			DispatchRightClickEvent(w, x - w->left, y - w->top);
 			return;
 
+		case MouseClick::Middle:
+		case MouseClick::X1:
+		case MouseClick::X2:
+			DispatchOtherClickEvent(w, x - w->left, y - w->top, click);
+			break;
+
 		case MouseClick::Hover:
 			DispatchHoverEvent(w, x - w->left, y - w->top);
 			break;
@@ -3018,6 +3053,15 @@ void HandleMouseEvents()
 	} else if (_input_clicked.Test(ControlInput::Right)) {
 		_input_clicked.Reset(ControlInput::Right);
 		click = MouseClick::Right;
+	} else if (_input_clicked.Test(ControlInput::Middle)) {
+		_input_clicked.Reset(ControlInput::Middle);
+		click = MouseClick::Middle;
+	} else if (_input_clicked.Test(ControlInput::X1)) {
+		_input_clicked.Reset(ControlInput::X1);
+		click = MouseClick::X1;
+	} else if (_input_clicked.Test(ControlInput::X2)) {
+		_input_clicked.Reset(ControlInput::X2);
+		click = MouseClick::X2;
 	}
 
 	int mousewheel = 0;

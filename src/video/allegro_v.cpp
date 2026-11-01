@@ -331,8 +331,9 @@ static uint32_t ConvertAllegroKeyIntoMy(char32_t *character)
 	return key;
 }
 
-static const uint LEFT_BUTTON  = 0;
+static const uint LEFT_BUTTON = 0;
 static const uint RIGHT_BUTTON = 1;
+static const uint MIDDLE_BUTTON = 2;
 
 bool VideoDriver_Allegro::PollEvent()
 {
@@ -363,6 +364,11 @@ bool VideoDriver_Allegro::PollEvent()
 						_input_clicked.Set(ControlInput::Right);
 						break;
 
+					case MIDDLE_BUTTON:
+						_input_pressed.Set(ControlInput::Middle);
+						_input_clicked.Set(ControlInput::Middle);
+						break;
+
 					default:
 						/* ignore rest */
 						break;
@@ -377,6 +383,8 @@ bool VideoDriver_Allegro::PollEvent()
 					_input_clicked.Reset(ControlInput::Left);
 				} else if (button == RIGHT_BUTTON) {
 					_input_pressed.Reset(ControlInput::Right);
+				} else if (button == MIDDLE_BUTTON) {
+					_input_pressed.Reset(ControlInput::Middle);
 				}
 			}
 		}
