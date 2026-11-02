@@ -3136,28 +3136,28 @@ bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrack
 		case SPR_MONO_TRACK_X:
 		case SPR_MGLV_TRACK_X:
 			snow_desert = false;
-			*overlay_offset = RTO_X;
+			*overlay_offset = RailTrackOffset::X;
 			break;
 
 		case SPR_RAIL_TRACK_Y:
 		case SPR_MONO_TRACK_Y:
 		case SPR_MGLV_TRACK_Y:
 			snow_desert = false;
-			*overlay_offset = RTO_Y;
+			*overlay_offset = RailTrackOffset::Y;
 			break;
 
 		case SPR_RAIL_TRACK_X_SNOW:
 		case SPR_MONO_TRACK_X_SNOW:
 		case SPR_MGLV_TRACK_X_SNOW:
 			snow_desert = true;
-			*overlay_offset = RTO_X;
+			*overlay_offset = RailTrackOffset::X;
 			break;
 
 		case SPR_RAIL_TRACK_Y_SNOW:
 		case SPR_MONO_TRACK_Y_SNOW:
 		case SPR_MGLV_TRACK_Y_SNOW:
 			snow_desert = true;
-			*overlay_offset = RTO_Y;
+			*overlay_offset = RailTrackOffset::Y;
 			break;
 
 		default:
