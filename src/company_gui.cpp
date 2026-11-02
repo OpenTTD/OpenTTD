@@ -2282,7 +2282,7 @@ struct CompanyWindow : Window
 			case WID_C_GIVE_MONEY: {
 				auto value = ParseInteger<uint64_t>(*str, 10, true);
 				if (!value.has_value()) return;
-				Money money = *value / GetCurrency().rate;
+				Money money = ClampTo<int64_t>(*value / GetCurrency().rate);
 				Command<Commands::GiveMoney>::Post(STR_ERROR_CAN_T_GIVE_MONEY, money, this->window_number);
 				break;
 			}
