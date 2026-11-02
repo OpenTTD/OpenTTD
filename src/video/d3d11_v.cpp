@@ -285,6 +285,7 @@ std::string_view VideoDriver_Win32D3D11::InitD3D()
 		.zoom = 0.0f,
 		.rgb = TRUE,
 		.crash = FALSE,
+		.pad = 0
 	};
 
 	D3D11_SUBRESOURCE_DATA data{
@@ -313,14 +314,13 @@ std::string_view VideoDriver_Win32D3D11::InitD3D()
 	result = device->CreateShaderResourceView(this->pal_texture.Get(), nullptr, &this->pal_texture_srv);
 	if (FAILED(result)) return "Failed to resource view";
 
-	D3D11_SAMPLER_DESC sampler_desc{
-		.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT,
-		.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP,
-		.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP,
-		.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP,
-		.ComparisonFunc = D3D11_COMPARISON_NEVER,
-		.MaxLOD = D3D11_FLOAT32_MAX
-	};
+	D3D11_SAMPLER_DESC sampler_desc{};
+	sampler_desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+	sampler_desc.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
+	sampler_desc.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
+	sampler_desc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
+	sampler_desc.ComparisonFunc = D3D11_COMPARISON_NEVER;
+	sampler_desc.MaxLOD = D3D11_FLOAT32_MAX;
 
 	result = device->CreateSamplerState(&sampler_desc, &texture_sampler);
 	if (FAILED(result)) return "Failed to create sampler state";
@@ -541,7 +541,7 @@ std::string_view VideoDriver_Win32D3D11::CreateSwapchain()
 
 	this->dxgi_fullscreen = false;
 
-	DXGI_SWAP_CHAIN_DESC swap_desc{ 0 };
+	DXGI_SWAP_CHAIN_DESC swap_desc{};
 
 	swap_desc.BufferDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
 	swap_desc.SampleDesc.Count = 1;
@@ -577,11 +577,10 @@ bool VideoDriver_Win32D3D11::ChangeResolution(int w, int h)
 {
 	if (_window_maximize) ShowWindow(this->main_wnd, SW_SHOWNORMAL);
 
-	DXGI_MODE_DESC mode{
-		.Width = static_cast<UINT>(w),
-		.Height = static_cast<UINT>(h),
-		.Format = DXGI_FORMAT_B8G8R8A8_UNORM
-	};
+	DXGI_MODE_DESC mode{};
+	mode.Width = static_cast<UINT>(w);
+	mode.Height = static_cast<UINT>(h);
+	mode.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
 
 	return SUCCEEDED(this->swap_chain->ResizeTarget(&mode));
 }
