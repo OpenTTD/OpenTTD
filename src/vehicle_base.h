@@ -1162,7 +1162,7 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	static inline T *Get(auto index)
 	{
-		return static_cast<T *>(Vehicle::Get(index));
+		return T::From(Vehicle::Get(index));
 	}
 
 	/**
