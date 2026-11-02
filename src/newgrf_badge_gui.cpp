@@ -64,11 +64,17 @@ static Dimension GetBadgeMaximalDimension(BadgeClassID class_index, GrfSpecFeatu
 	return d;
 }
 
-static bool operator<(const GUIBadgeClasses::Element &a, const GUIBadgeClasses::Element &b)
+/**
+ * Compare two GUIBadgeClasses::Elements.
+ * @param a The left hand side of the comparison.
+ * @param b The right hand side of the comparison.
+ * @return The std::strong_ordering of the comparison.
+ */
+static auto operator<=>(const GUIBadgeClasses::Element &a, const GUIBadgeClasses::Element &b) noexcept
 {
-	if (a.column_group != b.column_group) return a.column_group < b.column_group;
-	if (a.sort_order != b.sort_order) return a.sort_order < b.sort_order;
-	return a.label < b.label;
+	if (a.column_group != b.column_group) return a.column_group <=> b.column_group;
+	if (a.sort_order != b.sort_order) return a.sort_order <=> b.sort_order;
+	return a.label <=> b.label;
 }
 
 /**

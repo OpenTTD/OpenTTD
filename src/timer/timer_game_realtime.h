@@ -40,13 +40,23 @@ public:
 
 		TPeriod(std::chrono::milliseconds period, Trigger trigger) : period(period), trigger(trigger) {}
 
-		bool operator < (const TPeriod &other) const
+		/**
+		 * Compare with another instance of this class.
+		 * @param other The other instance.
+		 * @return The std::strong_ordering of the comparison.
+		 */
+		constexpr auto operator<=>(const TPeriod &other) const noexcept
 		{
-			if (this->trigger != other.trigger) return this->trigger < other.trigger;
-			return this->period < other.period;
+			if (this->trigger != other.trigger) return this->trigger <=> other.trigger;
+			return this->period <=> other.period;
 		}
 
-		bool operator == (const TPeriod &other) const
+		/**
+		 * Compare with another instance of this class.
+		 * @param other The other instance.
+		 * @return \c true iff the other instance matches this value.
+		 */
+		constexpr bool operator==(const TPeriod &other) const noexcept
 		{
 			return this->trigger == other.trigger && this->period == other.period;
 		}
