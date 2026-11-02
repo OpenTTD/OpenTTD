@@ -263,39 +263,39 @@ uint GetPartialPixelZ(int x, int y, Slope corners)
 		}
 	}
 
-	switch (RemoveHalftileSlope(corners)) {
-		case SLOPE_FLAT: return 0;
+	switch (RemoveHalftileSlope(corners).base()) {
+		case SLOPE_FLAT.base(): return 0;
 
 		/* One corner is up.*/
-		case SLOPE_N: return x + y <= (int)TILE_SIZE ? (TILE_SIZE - x - y)     >> 1 : 0;
-		case SLOPE_E: return y >= x                  ? (1 + y - x)             >> 1 : 0;
-		case SLOPE_S: return x + y >= (int)TILE_SIZE ? (1 + x + y - TILE_SIZE) >> 1 : 0;
-		case SLOPE_W: return x >= y                  ? (x - y)                 >> 1 : 0;
+		case Slope{Corner::N}.base(): return x + y <= static_cast<int>(TILE_SIZE) ? (TILE_SIZE - x - y) >> 1 : 0;
+		case Slope{Corner::E}.base(): return y >= x ? (1 + y - x) >> 1 : 0;
+		case Slope{Corner::S}.base(): return x + y >= static_cast<int>(TILE_SIZE) ? (1 + x + y - TILE_SIZE) >> 1 : 0;
+		case Slope{Corner::W}.base(): return x >= y ? (x - y) >> 1 : 0;
 
 		/* Two corners next to each other are up. */
-		case SLOPE_NE: return (TILE_SIZE - x) >> 1;
-		case SLOPE_SE: return (y + 1) >> 1;
-		case SLOPE_SW: return (x + 1) >> 1;
-		case SLOPE_NW: return (TILE_SIZE - y) >> 1;
+		case SLOPE_NE.base(): return (TILE_SIZE - x) >> 1;
+		case SLOPE_SE.base(): return (y + 1) >> 1;
+		case SLOPE_SW.base(): return (x + 1) >> 1;
+		case SLOPE_NW.base(): return (TILE_SIZE - y) >> 1;
 
 		/* Three corners are up on the same level. */
-		case SLOPE_ENW: return x + y >= (int)TILE_SIZE ? TILE_HEIGHT - ((1 + x + y - TILE_SIZE) >> 1) : TILE_HEIGHT;
-		case SLOPE_SEN: return y < x                   ? TILE_HEIGHT - ((x - y)                 >> 1) : TILE_HEIGHT;
-		case SLOPE_WSE: return x + y <= (int)TILE_SIZE ? TILE_HEIGHT - ((TILE_SIZE - x - y)     >> 1) : TILE_HEIGHT;
-		case SLOPE_NWS: return x < y                   ? TILE_HEIGHT - ((1 + y - x)             >> 1) : TILE_HEIGHT;
+		case SLOPE_ENW.base(): return x + y >= static_cast<int>(TILE_SIZE) ? TILE_HEIGHT - ((1 + x + y - TILE_SIZE) >> 1) : TILE_HEIGHT;
+		case SLOPE_SEN.base(): return y < x ? TILE_HEIGHT - ((x - y) >> 1) : TILE_HEIGHT;
+		case SLOPE_WSE.base(): return x + y <= static_cast<int>(TILE_SIZE) ? TILE_HEIGHT - ((TILE_SIZE - x - y) >> 1) : TILE_HEIGHT;
+		case SLOPE_NWS.base(): return x < y ? TILE_HEIGHT - ((1 + y - x) >> 1) : TILE_HEIGHT;
 
 		/* Two corners at opposite sides are up. */
-		case SLOPE_NS: return x + y < (int)TILE_SIZE ? (TILE_SIZE - x - y) >> 1 : (1 + x + y - TILE_SIZE) >> 1;
-		case SLOPE_EW: return x >= y ? (x - y) >> 1 : (1 + y - x) >> 1;
+		case SLOPE_NS.base(): return x + y < static_cast<int>(TILE_SIZE) ? (TILE_SIZE - x - y) >> 1 : (1 + x + y - TILE_SIZE) >> 1;
+		case SLOPE_EW.base(): return x >= y ? (x - y) >> 1 : (1 + y - x) >> 1;
 
 		/* Very special cases. */
-		case SLOPE_ELEVATED: return TILE_HEIGHT;
+		case SLOPE_ELEVATED.base(): return TILE_HEIGHT;
 
 		/* Steep slopes. The top is at 2 * TILE_HEIGHT. */
-		case SLOPE_STEEP_N: return (TILE_SIZE - x + TILE_SIZE - y) >> 1;
-		case SLOPE_STEEP_E: return (TILE_SIZE + 1 + y - x) >> 1;
-		case SLOPE_STEEP_S: return (1 + x + y) >> 1;
-		case SLOPE_STEEP_W: return (TILE_SIZE + x - y) >> 1;
+		case SLOPE_STEEP_N.base(): return (TILE_SIZE - x + TILE_SIZE - y) >> 1;
+		case SLOPE_STEEP_E.base(): return (TILE_SIZE + 1 + y - x) >> 1;
+		case SLOPE_STEEP_S.base(): return (1 + x + y) >> 1;
+		case SLOPE_STEEP_W.base(): return (TILE_SIZE + x - y) >> 1;
 
 		default: NOT_REACHED();
 	}
@@ -348,7 +348,7 @@ int GetSlopePixelZOutsideMap(int x, int y)
 int GetSlopeZInCorner(Slope tileh, Corner corner)
 {
 	assert(!IsHalftileSlope(tileh));
-	return ((tileh & SlopeWithOneCornerRaised(corner)) != 0 ? 1 : 0) + (tileh == SteepSlope(corner) ? 1 : 0);
+	return (tileh.Any(SlopeWithOneCornerRaised(corner)) ? 1 : 0) + (tileh == SteepSlope(corner) ? 1 : 0);
 }
 
 /**
@@ -368,10 +368,10 @@ std::tuple<int, int> GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int z
 	static const DiagDirectionIndexArray<std::array<Slope, 4>> corners{{{
 		/*    corner     |          steep slope
 		 *  z1      z2   |       z1             z2        */
-		{SLOPE_E, SLOPE_N, SLOPE_STEEP_E, SLOPE_STEEP_N}, // DiagDirection::NE, z1 = E, z2 = N
-		{SLOPE_S, SLOPE_E, SLOPE_STEEP_S, SLOPE_STEEP_E}, // DiagDirection::SE, z1 = S, z2 = E
-		{SLOPE_S, SLOPE_W, SLOPE_STEEP_S, SLOPE_STEEP_W}, // DiagDirection::SW, z1 = S, z2 = W
-		{SLOPE_W, SLOPE_N, SLOPE_STEEP_W, SLOPE_STEEP_N}, // DiagDirection::NW, z1 = W, z2 = N
+		{Corner::E, Corner::N, SLOPE_STEEP_E, SLOPE_STEEP_N}, // DiagDirection::NE, z1 = E, z2 = N
+		{Corner::S, Corner::E, SLOPE_STEEP_S, SLOPE_STEEP_E}, // DiagDirection::SE, z1 = S, z2 = E
+		{Corner::S, Corner::W, SLOPE_STEEP_S, SLOPE_STEEP_W}, // DiagDirection::SW, z1 = S, z2 = W
+		{Corner::W, Corner::N, SLOPE_STEEP_W, SLOPE_STEEP_N}, // DiagDirection::NW, z1 = W, z2 = N
 	}}};
 
 	int z1 = z;
@@ -381,8 +381,8 @@ std::tuple<int, int> GetSlopePixelZOnEdge(Slope tileh, DiagDirection edge, int z
 	if (halftile_test == corners[edge][0]) z2 += TILE_HEIGHT; // The slope is non-continuous in z2. z2 is on the upper side.
 	if (halftile_test == corners[edge][1]) z1 += TILE_HEIGHT; // The slope is non-continuous in z1. z1 is on the upper side.
 
-	if ((tileh & corners[edge][0]) != 0) z1 += TILE_HEIGHT; // z1 is raised
-	if ((tileh & corners[edge][1]) != 0) z2 += TILE_HEIGHT; // z2 is raised
+	if (tileh.Any(corners[edge][0])) z1 += TILE_HEIGHT; // z1 is raised
+	if (tileh.Any(corners[edge][1])) z2 += TILE_HEIGHT; // z2 is raised
 	if (RemoveHalftileSlope(tileh) == corners[edge][2]) z1 += TILE_HEIGHT; // z1 is highest corner of a steep slope
 	if (RemoveHalftileSlope(tileh) == corners[edge][3]) z2 += TILE_HEIGHT; // z2 is highest corner of a steep slope
 
@@ -463,7 +463,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 		if (!IsNonContinuousFoundation(f)) {
 			/* Lower part of foundation */
 			static constexpr SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {}};
-			AddSortableSpriteToDraw(leveled_base + RemoveSteepSlope(ti->tileh), PAL_NONE, *ti, bounds);
+			AddSortableSpriteToDraw(leveled_base + RemoveSteepSlope(ti->tileh).base(), PAL_NONE, *ti, bounds);
 		}
 
 		Corner highest_corner = GetHighestSlopeCorner(ti->tileh);
@@ -480,7 +480,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			OffsetGroundSprite(0, 0);
 		} else if (IsLeveledFoundation(f)) {
 			static constexpr SpriteBounds bounds{{0, 0, -(int)TILE_HEIGHT}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {}};
-			AddSortableSpriteToDraw(leveled_base + SlopeWithOneCornerRaised(highest_corner), PAL_NONE, *ti, bounds);
+			AddSortableSpriteToDraw(leveled_base + SlopeWithOneCornerRaised(highest_corner).base(), PAL_NONE, *ti, bounds);
 			OffsetGroundSprite(0, -(int)TILE_HEIGHT);
 		} else if (f == Foundation::SteepLower) {
 			/* one corner raised */
@@ -501,7 +501,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 		if (IsLeveledFoundation(f)) {
 			/* leveled foundation */
 			static constexpr SpriteBounds bounds{{}, {TILE_SIZE, TILE_SIZE, TILE_HEIGHT - 1}, {}};
-			AddSortableSpriteToDraw(leveled_base + ti->tileh, PAL_NONE, *ti, bounds);
+			AddSortableSpriteToDraw(leveled_base + ti->tileh.base(), PAL_NONE, *ti, bounds);
 			OffsetGroundSprite(0, -(int)TILE_HEIGHT);
 		} else if (IsNonContinuousFoundation(f)) {
 			/* halftile foundation */
@@ -520,7 +520,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			SpriteID spr;
 			if (ti->tileh == SLOPE_NS || ti->tileh == SLOPE_EW) {
 				/* half of leveled foundation under track corner */
-				spr = leveled_base + SlopeWithThreeCornersRaised(GetRailFoundationCorner(f));
+				spr = leveled_base + SlopeWithThreeCornersRaised(GetRailFoundationCorner(f)).base();
 			} else {
 				/* tile-slope = sloped along X/Y, foundation-slope = three corners raised */
 				spr = inclined_base + 2 * to_underlying(GetRailFoundationCorner(f)) + ((ti->tileh == SLOPE_SW || ti->tileh == SLOPE_NE) ? 1 : 0);
@@ -1259,7 +1259,8 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 			}
 
 			/* Get the corners which are different between the current and desired slope. */
-			Slope to_change = cur_slope ^ desired_slope;
+			Slope to_change = cur_slope;
+			to_change.Flip(desired_slope);
 
 			/* Lower unwanted corners first. If only one corner is raised, no corners need lowering. */
 			if (!IsSlopeWithOneCornerRaised(cur_slope)) {
@@ -1270,7 +1271,7 @@ void RiverMakeWider(TileIndex tile, TileIndex origin_tile)
 			/* Now check the match and raise any corners needed. */
 			cur_slope = GetTileSlope(tile);
 			if (cur_slope != desired_slope && IsSlopeWithOneCornerRaised(cur_slope)) {
-				to_change = cur_slope ^ desired_slope;
+				to_change = cur_slope.Flip(desired_slope);
 				Command<Commands::TerraformLand>::Do({DoCommandFlag::Execute, DoCommandFlag::Auto}, tile, to_change, true);
 			}
 		}

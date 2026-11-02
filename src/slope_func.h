@@ -35,7 +35,7 @@ static constexpr bool IsValidCorner(Corner corner)
  */
 static constexpr bool IsSteepSlope(Slope s)
 {
-	return (s & SLOPE_STEEP) != 0;
+	return s.Test(Corner::Steep);
 }
 
 /**
@@ -45,7 +45,7 @@ static constexpr bool IsSteepSlope(Slope s)
  */
 static constexpr Slope RemoveSteepSlope(Slope s)
 {
-	return s & ~SLOPE_STEEP;
+	return s.Reset(Corner::Steep);
 }
 
 /**
@@ -56,7 +56,7 @@ static constexpr Slope RemoveSteepSlope(Slope s)
  */
 static constexpr bool IsHalftileSlope(Slope s)
 {
-	return (s & SLOPE_HALFTILE) != 0;
+	return s.Test(Corner::HalfTile);
 }
 
 /**
@@ -69,7 +69,7 @@ static constexpr bool IsHalftileSlope(Slope s)
  */
 static constexpr Slope RemoveHalftileSlope(Slope s)
 {
-	return s & ~SLOPE_HALFTILE_MASK;
+	return s.Reset(SLOPE_HALFTILE_MASK);
 }
 
 /**
@@ -86,7 +86,7 @@ static constexpr Slope RemoveHalftileSlope(Slope s)
 inline Slope ComplementSlope(Slope s)
 {
 	assert(!IsSteepSlope(s) && !IsHalftileSlope(s));
-	return s ^ SLOPE_ELEVATED;
+	return s.Flip(SLOPE_ELEVATED);
 }
 
 /**
@@ -97,7 +97,7 @@ inline Slope ComplementSlope(Slope s)
  */
 inline bool IsSlopeWithOneCornerRaised(Slope s)
 {
-	return (s == SLOPE_W) || (s == SLOPE_S) || (s == SLOPE_E) || (s == SLOPE_N);
+	return (s == Corner::W) || (s == Corner::S) || (s == Corner::E) || (s == Corner::N);
 }
 
 /**
@@ -135,15 +135,15 @@ inline bool HasSlopeHighestCorner(Slope s)
  */
 inline Corner GetHighestSlopeCorner(Slope s)
 {
-	switch (RemoveHalftileSlope(s)) {
-		case SLOPE_W:
-		case SLOPE_STEEP_W: return Corner::W;
-		case SLOPE_S:
-		case SLOPE_STEEP_S: return Corner::S;
-		case SLOPE_E:
-		case SLOPE_STEEP_E: return Corner::E;
-		case SLOPE_N:
-		case SLOPE_STEEP_N: return Corner::N;
+	switch (RemoveHalftileSlope(s).base()) {
+		case Slope{Corner::W}.base():
+		case SLOPE_STEEP_W.base(): return Corner::W;
+		case Slope{Corner::S}.base():
+		case SLOPE_STEEP_S.base(): return Corner::S;
+		case Slope{Corner::E}.base():
+		case SLOPE_STEEP_E.base(): return Corner::E;
+		case Slope{Corner::N}.base():
+		case SLOPE_STEEP_N.base(): return Corner::N;
 		default: NOT_REACHED();
 	}
 }
@@ -158,7 +158,7 @@ inline Corner GetHighestSlopeCorner(Slope s)
 static constexpr Corner GetHalftileSlopeCorner(Slope s)
 {
 	assert(IsHalftileSlope(s));
-	return (Corner)((s >> 6) & 3);
+	return static_cast<Corner>((s.base() >> 6) & 3);
 }
 
 /**
@@ -226,7 +226,7 @@ inline Slope SlopeWithThreeCornersRaised(Corner corner)
  */
 inline Slope SteepSlope(Corner corner)
 {
-	return SLOPE_STEEP | SlopeWithThreeCornersRaised(OppositeCorner(corner));
+	return SlopeWithThreeCornersRaised(OppositeCorner(corner)).Set(Corner::Steep);
 }
 
 /**
@@ -248,11 +248,11 @@ inline bool IsInclinedSlope(Slope s)
  */
 inline DiagDirection GetInclinedSlopeDirection(Slope s)
 {
-	switch (s) {
-		case SLOPE_NE: return DiagDirection::NE;
-		case SLOPE_SE: return DiagDirection::SE;
-		case SLOPE_SW: return DiagDirection::SW;
-		case SLOPE_NW: return DiagDirection::NW;
+	switch (s.base()) {
+		case SLOPE_NE.base(): return DiagDirection::NE;
+		case SLOPE_SE.base(): return DiagDirection::SE;
+		case SLOPE_SW.base(): return DiagDirection::SW;
+		case SLOPE_NW.base(): return DiagDirection::NW;
 		default: return DiagDirection::Invalid;
 	}
 }
@@ -284,7 +284,7 @@ inline Slope InclinedSlope(DiagDirection dir)
 static constexpr Slope HalftileSlope(Slope s, Corner corner)
 {
 	assert(IsValidCorner(corner));
-	return static_cast<Slope>(s | SLOPE_HALFTILE | (to_underlying(corner) << 6));
+	return static_cast<Slope>(s.Set(Corner::HalfTile).Set(static_cast<Slope>(to_underlying(corner) << 6)));
 }
 
 

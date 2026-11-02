@@ -211,7 +211,7 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 {
 	if (IsTileType(tile, TileType::TunnelBridge)) {
 		if (IsTunnel(tile)) {
-			*tileh = SLOPE_STEEP; // XXX - Hack to make tunnel entrances to always have a pylon
+			*tileh = Slope(Corner::Steep); // XXX - Hack to make tunnel entrances to always have a pylon.
 		} else if (*tileh != SLOPE_FLAT) {
 			*tileh = SLOPE_FLAT;
 		} else {
@@ -312,7 +312,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 	SpriteID pylon_halftile = IsValidCorner(halftile_corner) ? GetPylonBase(ti->tile, TileContext::UpperHalftile) : pylon_normal;
 
 	for (DiagDirection i : EnumRange(DiagDirection::End)) {
-		SpriteID pylon_base = (IsValidCorner(halftile_corner) && HasBit(InclinedSlope(i), to_underlying(halftile_corner))) ? pylon_halftile : pylon_normal;
+		SpriteID pylon_base = (IsValidCorner(halftile_corner) && InclinedSlope(i).Test(halftile_corner)) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		int elevation = GetPCPElevation(ti->tile, i);
 
@@ -467,7 +467,7 @@ static void DrawRailCatenaryRailway(const TileInfo *ti)
 		SpriteID wire_base = (t == halftile_track) ? wire_halftile : wire_normal;
 		uint8_t pcp_config = pcp_status.Test(_pcp_positions[t][0]) +
 			(pcp_status.Test(_pcp_positions[t][1]) << 1);
-		int tileh_selector = !(tileh[TileSource::Home] % 3) * tileh[TileSource::Home] / 3; // tileh for the slopes, 0 otherwise
+		int tileh_selector = !(tileh[TileSource::Home].base() % 3) * tileh[TileSource::Home].base() / 3; // tileh for the slopes, 0 otherwise
 
 		assert(pcp_config != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
 		assert(!IsSteepSlope(tileh[TileSource::Home]));

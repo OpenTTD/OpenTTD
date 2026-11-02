@@ -1434,12 +1434,12 @@ static void ActivateOldShore()
 	if (_loaded_newgrf_features.shore == ShoreReplacement::None) _loaded_newgrf_features.shore = ShoreReplacement::ActionA;
 
 	if (_loaded_newgrf_features.shore != ShoreReplacement::Action5) {
-		DupSprite(SPR_ORIGINALSHORE_START +  1, SPR_SHORE_BASE +  1); // SLOPE_W
-		DupSprite(SPR_ORIGINALSHORE_START +  2, SPR_SHORE_BASE +  2); // SLOPE_S
+		DupSprite(SPR_ORIGINALSHORE_START +  1, SPR_SHORE_BASE +  1); // Corner::W
+		DupSprite(SPR_ORIGINALSHORE_START +  2, SPR_SHORE_BASE +  2); // Corner::S
 		DupSprite(SPR_ORIGINALSHORE_START +  6, SPR_SHORE_BASE +  3); // SLOPE_SW
-		DupSprite(SPR_ORIGINALSHORE_START +  0, SPR_SHORE_BASE +  4); // SLOPE_E
+		DupSprite(SPR_ORIGINALSHORE_START +  0, SPR_SHORE_BASE +  4); // Corner::E
 		DupSprite(SPR_ORIGINALSHORE_START +  4, SPR_SHORE_BASE +  6); // SLOPE_SE
-		DupSprite(SPR_ORIGINALSHORE_START +  3, SPR_SHORE_BASE +  8); // SLOPE_N
+		DupSprite(SPR_ORIGINALSHORE_START +  3, SPR_SHORE_BASE +  8); // Corner::N
 		DupSprite(SPR_ORIGINALSHORE_START +  7, SPR_SHORE_BASE +  9); // SLOPE_NW
 		DupSprite(SPR_ORIGINALSHORE_START +  5, SPR_SHORE_BASE + 12); // SLOPE_NE
 	}
