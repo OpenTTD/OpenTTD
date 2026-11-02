@@ -16,6 +16,8 @@ This guide is for OpenTTD developers/maintainers, to release a new version of Op
 
 * If this is a later RC or release build and the release branch already exists, you'll need to backport fixes and language from master to this branch, which were merged after the branch diverged from master. You can use these two helper scripts: https://github.com/OpenTTD/scripts/tree/main/backport
 
+* If this is the first proper release after RCs, check that asserts are disabled (`OPTION_USE_ASSERTS` in `‎cmake/Options.cmake`) or make a PR for the release branch to disable them.
+
 * If this is a maintenance release, update the version in `CMakeLists.txt` in the release branch, e.g. from 14.0 to 14.1.
 
 ## Step 1: Prepare changelog documentation
