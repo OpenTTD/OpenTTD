@@ -138,8 +138,9 @@ public:
 	};
 
 	/**
-	 * Check if this tile is buildable, i.e. no things on it that needs
-	 *  demolishing.
+	 * Check if this tile can be built on. A tile is considered buildable if it's clear,
+	 * has trees, is a coast tile or is a tile with a single road bit (half a road) owned either by a town or the current company.
+	 *
 	 * @param tile The tile to check on.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if it is buildable, false if not.
@@ -151,8 +152,9 @@ public:
 	static bool IsBuildable(TileIndex tile);
 
 	/**
-	 * Check if this tile is buildable in a rectangle around a tile, with the
-	 *  entry in the list as top-left.
+	 * Check if every tile is buildable in a rectangle around a specified tile, with the
+	 * specified tile as the top left corner. A tile in considered buildable if it's clear, has trees,
+	 * is a coast tile or is a tile with a single road bit (half a road) owned either by a town or the current company.
 	 * @param tile The tile to check on.
 	 * @param width The width of the rectangle.
 	 * @param height The height of the rectangle.
