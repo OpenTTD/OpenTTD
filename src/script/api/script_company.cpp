@@ -346,7 +346,7 @@
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, money >= 0);
-	EnforcePrecondition(false, (int64_t)money <= UINT32_MAX);
+	EnforcePrecondition(false, money <= UINT32_MAX);
 	return ScriptObject::Command<Commands::ChangeCompanySetting>::Do("company.engine_renew_money", money);
 }
 

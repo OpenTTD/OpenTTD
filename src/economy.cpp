@@ -351,7 +351,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	 * removing their property doesn't fail because of lack of money.
 	 * Not too drastically though, because it could overflow */
 	if (new_owner == INVALID_OWNER) {
-		Company::Get(old_owner)->money = UINT64_MAX >> 2; // jackpot ;p
+		Company::Get(old_owner)->money = INT64_MAX / 2; // jackpot ;p
 	}
 
 	for (Subsidy *s : Subsidy::Iterate()) {
@@ -738,7 +738,7 @@ bool AddInflation(bool check_year)
 void RecomputePrices()
 {
 	/* Setup maximum loan as a rounded down multiple of LOAN_INTERVAL. */
-	_economy.max_loan = ((uint64_t)_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL;
+	_economy.max_loan = ClampTo<int64_t>(((uint64_t)_settings_game.difficulty.max_loan * _economy.inflation_prices >> 16) / LOAN_INTERVAL * LOAN_INTERVAL);
 
 	/* Setup price bases */
 	for (Price i : EnumRange(Price::End)) {
@@ -765,7 +765,7 @@ void RecomputePrices()
 		}
 
 		/* Apply inflation */
-		price = (int64_t)price * _economy.inflation_prices;
+		price *= ClampTo<int64_t>(_economy.inflation_prices);
 
 		/* Apply newgrf modifiers, remove fractional part of inflation, and normalise on medium difficulty. */
 		int shift = _price_base_multiplier[i] - 16 - 3;

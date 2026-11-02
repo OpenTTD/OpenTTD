@@ -116,7 +116,7 @@ int32_t GetPickupAmount(CargoMonitorID monitor, bool keep_monitoring)
  * @param st station where the cargo is delivered to.
  * @param dest industry index where the cargo is delivered to.
  */
-void AddCargoDelivery(CargoType cargo_type, CompanyID company, uint32_t amount, Source src, const Station *st, IndustryID dest)
+void AddCargoDelivery(CargoType cargo_type, CompanyID company, int amount, Source src, const Station *st, IndustryID dest)
 {
 	if (amount == 0) return;
 
