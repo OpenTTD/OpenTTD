@@ -844,6 +844,7 @@ SettingsContainer &GetSettingsTree()
 				industries->Add(new SettingEntry("construction.raw_industry_construction"));
 				industries->Add(new SettingEntry("construction.industry_platform"));
 				industries->Add(new SettingEntry("economy.multiple_industry_per_town"));
+				industries->Add(new SettingEntry("economy.spawn_primary_industry_only"));
 				industries->Add(new SettingEntry("game_creation.oil_refinery_limit"));
 				industries->Add(new SettingEntry("economy.type"));
 				industries->Add(new SettingEntry("station.serve_neutral_industries"));

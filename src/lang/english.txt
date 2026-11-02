@@ -1624,6 +1624,9 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Choose the heig
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry density: {STRING2}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated and what level should be maintained during the game
 
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY                  :Only generate primary industries: {STRING2}
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY_HELPTEXT         :If enabled, only primary industries are generated during map generation and gameplay.
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil industries: {STRING2}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit for how far from the map border oil refineries and oil rigs can be constructed. On island maps this ensures they are near the coast. On maps larger than 256 tiles, this value is scaled up
 
