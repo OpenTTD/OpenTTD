@@ -115,13 +115,11 @@ struct DumpTarget {
 		 */
 		KnownStructKey(size_t type_id, const void *ptr) : type_id(type_id), ptr(ptr) {}
 
-		bool operator<(const KnownStructKey &other) const
-		{
-			if (reinterpret_cast<size_t>(this->ptr) < reinterpret_cast<size_t>(other.ptr)) return true;
-			if (reinterpret_cast<size_t>(this->ptr) > reinterpret_cast<size_t>(other.ptr)) return false;
-			if (this->type_id < other.type_id) return true;
-			return false;
-		}
+		/**
+		 * Compare with another instance of this class.
+		 * @return The std::strong_ordering of the comparison.
+		 */
+		constexpr auto operator<=>(const KnownStructKey &) const noexcept = default;
 	};
 
 	/** Mapping of the KnownStructKey to the name for that structure. */

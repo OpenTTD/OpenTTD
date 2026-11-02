@@ -707,9 +707,9 @@ static void DeleteEntriesFromSpriteCache(size_t to_remove)
 		SpriteID id;
 		size_t size;
 
-		bool operator<(const SpriteInfo &other) const
+		auto operator<=>(const SpriteInfo &other) const noexcept
 		{
-			return this->lru < other.lru;
+			return this->lru <=> other.lru;
 		}
 	};
 

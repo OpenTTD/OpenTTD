@@ -67,9 +67,15 @@ public:
 			this->flow -= flow;
 		}
 
-		friend inline bool operator <(NodeID dest, const EdgeAnnotation &rhs)
+		/**
+		 * Compare a NodeID with an EdgeAnnotation
+		 * @param dest The left hand side of the comparison.
+		 * @param rhs The right hand side of the comparison.
+		 * @return The std::strong_ordering of the comparison.
+		 */
+		friend inline auto operator<=>(NodeID dest, const EdgeAnnotation &rhs) noexcept
 		{
-			return dest < rhs.base.dest_node;
+			return dest <=> rhs.base.dest_node;
 		}
 	};
 

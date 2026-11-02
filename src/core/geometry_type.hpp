@@ -117,17 +117,11 @@ struct Dimension {
 	 */
 	constexpr Dimension(value_type w, value_type h) : width(w), height(h) {}
 
-	bool operator< (const Dimension &other) const
-	{
-		int x = this->width - other.width;
-		if (x != 0) return x < 0;
-		return this->height < other.height;
-	}
-
-	bool operator== (const Dimension &other) const
-	{
-		return this->width == other.width && this->height == other.height;
-	}
+	/**
+	 * Compare with another instance of this class.
+	 * @return The std::strong_ordering of the comparison.
+	 */
+	constexpr auto operator<=>(const Dimension &) const noexcept = default;
 };
 
 /** Padding dimensions to apply to each side of a Rect. */

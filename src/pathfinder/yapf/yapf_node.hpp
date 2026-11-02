@@ -119,9 +119,14 @@ struct CYapfNodeT {
 		return this->is_choice;
 	}
 
-	inline bool operator<(const Node &other) const
+	/**
+	 * Compare with another instance of this class.
+	 * @param other The other instance.
+	 * @return The std::strong_ordering of the comparison.
+	 */
+	inline auto operator<=>(const CYapfNodeT &other) const noexcept
 	{
-		return this->estimate < other.estimate;
+		return this->estimate <=> other.estimate;
 	}
 
 	void Dump(DumpTarget &dmp) const

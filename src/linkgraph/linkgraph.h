@@ -68,19 +68,30 @@ public:
 		 * @param rhs The right hand side of the comparison.
 		 * @return \c true iff our \c dest_node is smaller than the other's.
 		 */
-		bool operator <(const BaseEdge &rhs) const
+		auto operator<=>(const BaseEdge &rhs) const noexcept
 		{
-			return this->dest_node < rhs.dest_node;
+			return this->dest_node <=> rhs.dest_node;
 		}
 
-		bool operator <(NodeID rhs) const
+		/**
+		 * Compare with a NodeID.
+		 * @param rhs The right hand side of the comparison.
+		 * @return The std::strong_ordering of the comparison.
+		 */
+		auto operator<=>(NodeID rhs) const noexcept
 		{
-			return this->dest_node < rhs;
+			return this->dest_node <=> rhs;
 		}
 
-		friend inline bool operator <(NodeID lhs, const LinkGraph::BaseEdge &rhs)
+		/**
+		 * Compare a NodeID with a BaseEdge
+		 * @param lhs The left hand side of the comparison.
+		 * @param rhs The right hand side of the comparison.
+		 * @return The std::strong_ordering of the comparison.
+		 */
+		friend inline auto operator<=>(NodeID lhs, const LinkGraph::BaseEdge &rhs) noexcept
 		{
-			return lhs < rhs.dest_node;
+			return lhs <=> rhs.dest_node;
 		}
 	};
 
