@@ -1373,6 +1373,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(فقط ترا�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :تراکم مراکز تولید: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :چند کارخانه باید ایجاد شود و در چه درجه ای باید در بازی نگهداری شود
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :حداکثر فاصله از لبه برای صنایع نفتی: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :محدودیت برای میزان فاصله ای که نسبت به مرز نقشه سکو های نفتی و پالایشگاه نفت می‌توانند بنا شوند. در نقشه های جزیره ای این اطمینان حاصل میکند که کنار ساحل باشند. در نقشه های بزرگتر از ۲۵۶ کاشی، این مقدار افزایش می یابد
 

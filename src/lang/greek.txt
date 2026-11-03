@@ -1717,6 +1717,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Επιλέξτ�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Πυκνότητα βιομηχανιών: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Θέτει πόσες βιομηχανίες θα δημιουργηθούν και σε τι επίπεδο θα μέινουν κάτα τη διάρκεια το παιχνιδιού
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Μέγιστη απόσταση από την άκρη του χάρτη για τα Διυλιστήρια: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Όριο για το πόσο μακριά από τα σύνορα του χάρτη μπορούν να κατασκευαστούν διυλιστήρια και εξέδρες πετρελαίου. Στους χάρτες νησιών, αυτό διασφαλίζει ότι βρίσκονται κοντά στην ακτή. Σε χάρτες μεγαλύτερους από 256 πλακίδια, αυτή η τιμή κλιμακώνεται προς τα πάνω
 

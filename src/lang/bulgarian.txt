@@ -1579,6 +1579,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Избиран�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Гъстота на индустриите: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Задайте колко индустрии да се генерират и какво ниво да се поддържа по време на играта
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Максимално разстояние от ръба за нефтените рафинерии: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ограничение за това колко далеч от границата на картата могат да бъдат построени петролни рафинерии и нефтени платформи. На островните карти това гарантира, че са близо до брега. На карти, по-големи от 256 полета, тази стойност се увеличава
 

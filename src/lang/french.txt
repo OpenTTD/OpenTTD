@@ -1625,6 +1625,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Chosir la haute
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densité des industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Définit combien d'industries doivent être générée et quel niveau doit être maintenu pendant la partie
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distance maximum depuis les bords pour les industries pétrolières{NBSP}: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distance par rapport au bord de la carte où les raffineries et les plateformes pétrolières peuvent être construites. Sur les cartes d'îles cela assure qu'elles sont près de la côte. Sur les cartes plus large que 256 tuiles, cette valeur est mise à l'échelle
 

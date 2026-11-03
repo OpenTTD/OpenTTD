@@ -1624,6 +1624,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Izvēlieties ai
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriju blīvums: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Iestatiet, cik industrijas jāģenerē un kāds līmenis jāuztur spēles laikā
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Naftas industriju maksimālais attālums no kartes malas: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limits, cik tālu no kartes malām drīkst taisīt naftas pārstrādes rūpnīcas un un naftas ieguves platformas. Uz salu kartēm tas nodrošina, ka šīs konstrukcijas tiek būvētas piekrastēs. Uz kartēm, kas ir lielākas par 256 lauciņiem šī vērtība tiek palielināta
 

@@ -1195,6 +1195,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :تیل کے کارخانے صرف نقسے کی حدود کے قریب بنتے ہیں، جزیرہ والے نقشوں کیلئے یہ ساحل پر ہے
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :برف کی اونچائی: {STRING}

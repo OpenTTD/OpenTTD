@@ -1341,6 +1341,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :الكثافة 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :إختر مقدار الصناعات التي يجب تكوينها وعلى اي مستوى يجب ان تكون خلال اللعبة
 
 
+
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط الثلج: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :تحكم على اي ارتفاع يبدأ نزول الثلج في المناطق القطبية,تؤثر الثلوج على مستوى تطور القطاع الصناعي ونمو المدن. لا يمكن تعديله إلا عبر معدل السيناريو أو يتم حسابه بطريقة أخرى عبر "تغطية الجليد"
 

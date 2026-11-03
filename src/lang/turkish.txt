@@ -1625,6 +1625,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Oyun haritasın
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Endüstri yoğunluğu: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Oyun boyunca kaç tane fabrika oluşturulması gerektiğini ve hangi seviyede bakıma alınması gerektiğini ayarlayın
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petrol rafinerilerinin kenarlardan azami uzaklığı: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petrol rafinerilerinin ve platformlarının haritanın sınırlarına ne kadar uzaklıkla inşa edileceğini sınırla. Ada haritalarında sahile yakın olmalarını sağlar. 256 kareden büyük haritalarda bu değer yukarı ölçeklendirilir
 

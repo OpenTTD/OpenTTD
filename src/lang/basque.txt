@@ -1318,6 +1318,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis b
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industria dentsitatea: {STRING}
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Petroleo findegietatik maparen ertzera dagoen gehienezko distantzia: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Petroleo findegiak bakarrik maparen ertzatik hurbil eraiki daitezke, kostan irla mapetan
 

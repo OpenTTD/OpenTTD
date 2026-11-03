@@ -1325,6 +1325,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Berre TerraGen
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritetthet: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set kor månge industriar som skal lagast og på kva nivå dei skal haldas gjennom spelet
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimal avstand frå kartkanten for Oljeraffineri: {STRING}
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snøgrense: {STRING}

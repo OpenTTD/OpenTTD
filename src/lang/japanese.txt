@@ -193,6 +193,7 @@ STR_COLOUR_RANDOM                                               :ランダム
 STR_COLOUR_SECONDARY_DARK_BLUE                                  :紺
 STR_COLOUR_SECONDARY_PALE_GREEN                                 :薄緑
 STR_COLOUR_SECONDARY_SECONDARY_PINK                             :桃
+STR_COLOUR_SECONDARY_YELLOW                                     :黄
 STR_COLOUR_SECONDARY_RED                                        :赤
 STR_COLOUR_SECONDARY_LIGHT_BLUE                                 :薄青
 STR_COLOUR_SECONDARY_GREEN                                      :緑
@@ -204,6 +205,7 @@ STR_COLOUR_SECONDARY_PURPLE                                     :紫
 STR_COLOUR_SECONDARY_ORANGE                                     :橙
 STR_COLOUR_SECONDARY_BROWN                                      :茶
 STR_COLOUR_SECONDARY_GREY                                       :グレー
+STR_COLOUR_SECONDARY_WHITE                                      :白
 STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :プライマリカラーと同一
 
 
@@ -515,6 +517,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :メッセージ
 # About menu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :地域情報
 STR_ABOUT_MENU_HELP                                             :ヘルプとマニュアル
+STR_ABOUT_MENU_ENTER_SCREENSAVER_MODE                           :スクリーンセーバーモードに切替
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :コンソールの表示切替
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/ゲームスクリプトのデバッグ
 STR_ABOUT_MENU_SCREENSHOT                                       :スクリーンショット
@@ -1481,6 +1484,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis�
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :産業の密度: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :どの程度の産業が開始時に生成され、ゲーム中にそのレベルを維持するようにするのかを設定します
+
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油精製所のマップ端からの距離: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :石油精製所はマップの外周付近にのみ建設されます。つまり、外周が海のマップでは海岸沿いに建設されるということです

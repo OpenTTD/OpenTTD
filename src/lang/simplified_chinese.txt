@@ -1624,6 +1624,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :选择生成地
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工业密度：{STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :设置生成地图时工业设施的密度。游戏进行时地图的工业密度将保持在此水平。
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油工业距地图边缘的最大距离：{STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :限制炼油厂和油井到地图边缘或海岛海岸的最大距离。对于大于 256 格的地图，该值将按比例放大
 

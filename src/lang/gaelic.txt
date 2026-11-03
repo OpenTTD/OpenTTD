@@ -1549,6 +1549,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis a
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Dlùths nan gnìomhachasan: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Suidhich an t-uiread dhe ghnìomhachasan a thèid a ghintinn ’s an ìre air a thèid an cumail rè a’ gheama
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Astar as motha eadar an oir is fìneadairean-ola: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Cha tèid fìneadairean-ola a thogail ach faisg air crìochan a' mhapa, seo an oirthir le mapaichean eilein
 

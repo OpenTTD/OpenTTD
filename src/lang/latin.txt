@@ -1542,6 +1542,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(modo TerraGene
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Numerus industriarum: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Eligere quot industriae oportet esse constructae ac oportet sustineri intra ludum
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Spatium maximum a finibus tabulae ad ergasteria petrolearia struenda: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ergasteria petrolearia modo struuntur apud fines tabulae, i.e. in littore si mappa est insula
 

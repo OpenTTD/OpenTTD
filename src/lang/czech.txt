@@ -1711,6 +1711,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Zvol výšku ho
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Množství průmyslu: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Nastavuje množství průmyslu, které bude nyní vytvořeno a udržováno v průběhu hry
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximální vzdálenost ropného průmyslu od okraje mapy: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Omezení, jak daleko od okrajů mapy mohou být postaveny rafinerie a ropné vrty. Je-li při okraji mapy voda, toto omezení zajišťuje, že se rafinerie a ropné vrty vyskytují poblíž pobřeží. Na mapách větších než 256 polí je toto omezení úměrně přizpůsobeno.
 

@@ -1462,6 +1462,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :நிலவக
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :தொழிற்சாலை அடர்த்தி: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :விளையாட்டின் போது எத்தனை தொழில்கள் உருவாக்கப்பட வேண்டும் மற்றும் எந்த நிலை பராமரிக்கப்பட வேண்டும் என்பதை அமைக்கவும்
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :வரைபட எல்லையிலிருந்து எண்ணெய் தொழிற்சாலைகள் இருக்கக்கூடிய தூரம்: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :எண்ணெய் சுத்திகரிப்பு நிலையங்கள் வரைபடத்தின் எல்லைகளில் மட்டுமே கட்ட இயலும், அதாவது தீவு வரைபடங்களில் கடற்கரைகளில் கட்ட இயலும்
 

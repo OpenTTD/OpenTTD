@@ -1275,6 +1275,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Penapisan minyak hanya dibina berhampiran sempadan peta, yang di pantai peta
 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Ketinggian garis salji: {STRING}

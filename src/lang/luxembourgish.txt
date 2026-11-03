@@ -1616,6 +1616,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Wiel d'Héicht 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedicht: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Definéiert wéivill Industrien generéiert sollen ginn an wéivill der während dem Spill sollen behalen ginn.
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximal Distanz vum Kaarterand bis zu enger Uelegindustrie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limitéiert wéi wäit vum Bord Uelegraffinerien an Buerinsele dierfe gebaut ginn. Op Inselkaarten garantéiert dest dass se um Rand gebaut ginn. Op Kaarten mat méi wéi 256 Felder, gett dese Wert skaléiert
 

@@ -1430,6 +1430,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis a
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Dlús na dtionscal: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Socraigh líon na dtionscal is ceart a ghiniúint agus cén leibhéal is ceart a choinneáil i rith an chluiche
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Uasfhad ón taobh i gcás Scaglanna ola: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ní thógtar scaglanna ola ach in aice le teorainn na léarscáile, sé sin ag an gcósta i gcás léarscáileanna ar oileán iad
 

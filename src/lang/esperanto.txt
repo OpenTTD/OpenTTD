@@ -1715,6 +1715,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Elektu la altec
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Denseco de industriejoj: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Agordu, kiom da entreprenoj estu generitaj, kaj kiu nivelo estu tenata dum la ludo
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimuma distanco de la maprando por olea industrio: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limigi, kiom for de la eĝo de la mapo konstrueblas olerafinejoj kaj oleplatformoj. Ĉe insulaj mapoj, tio certigas, ke ili estos proksime de la bordo. Ĉe mapoj pli grandaj ol 256 landkvadratoj, tiu ĉi agordo estos laŭskale grandigita
 

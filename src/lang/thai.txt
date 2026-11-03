@@ -1351,6 +1351,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :ประเภ
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis เท่านั้น) เนินหรือภูเขาในพื้นที่
 
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :ระยะห่างที่สุดจากขอบแผนที่ของโรงกลั่นน้ำมัน: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :โรงกลั่นน้ำมันจะสามารถตั้งได้เฉพาะบริเวณใกล้ๆขอบแผนที่เท่านั้น การตั้งค่านี้จะสามารถตั้งให้สร้างโรงกลั่นน้ำมันได้ห่างสูงสุดเท่าใดจากของแผนที่
 

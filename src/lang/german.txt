@@ -1606,6 +1606,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Höhe der Hüge
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedichte: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Wähle wieviele Industrien generiert werden sollen und welche Anzahl während des Spiels angestrebt wird zu erhalten
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalabstand vom Kartenrand für Ölraffinerien: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begrenzen, für wie weit von der Kartengrenze Ölraffinerien und Ölbohrinseln gebaut werden können. Auf Inselkarten stellt dies sicher, dass sie sich nahe der Küste befinden. Auf Karten, die größer als 256 Kacheln sind, wird dieser Wert hochskaliert
 

@@ -1297,6 +1297,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Mesta fjarstøða frá eggini til olju reinsiverk: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olju reinsiverk verða bert bygd nær eggini á kortinum, tað er við strondina fyri oyggja kort
 

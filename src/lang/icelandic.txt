@@ -1296,6 +1296,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 
 
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Hámarksfjarlægð frá brún að olíuhreinsistöð: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olíuhreinsistöðvar eru aðeins byggðar nálægt jöðrum á kortinu, það er að segja á ströndum á kortum sem eru af eyjum
 

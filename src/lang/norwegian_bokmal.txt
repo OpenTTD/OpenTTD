@@ -1626,6 +1626,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Velg høyden ti
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritetthet: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angi hvor mange næringer som skal genereres og hvilket nivå som skal opprettholdes i løpet av spillet
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Største avstand fra kant for oljeraffinerier: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Grense for hvor langt fra kartkanten oljeraffinerier og oljerigger kan bygges. På øykart sørger dette for at de er nær kysten. På kart større enn 256 ruter, er denne verdien skalert opp
 

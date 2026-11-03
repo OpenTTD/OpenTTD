@@ -1624,6 +1624,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Pilih ketinggia
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Kepadatan industri: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Mengatur berapa banyak industri seharusnya diperbuat and tingkat yang harus dipertahankan selama permainan
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Jarak maksimal kilang minyak dari batas: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Batasi seberapa jauh kilang minyak dan anjungan minyak dapat dibangun dari tepi peta. Pada peta pulau, ini akan memastikan mereka berada di dekat pinggiran pantai. Pada peta dengan ukuran lebih besar dari 256 ubin, nilai ini akan dinaikkan
 

@@ -1472,6 +1472,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Samo TerraGene
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gustoća industrija: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Odredite koliko će industrija biti stvoreno i kolika će količina biti održavana tijekom igre.
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Najveća udaljenost rafinerija nafte od rubova karte: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerije nafte grade se samo uz rubove karte odnosno na obali za otočne karte
 

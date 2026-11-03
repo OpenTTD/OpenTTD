@@ -1625,6 +1625,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :지형의 언�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :산업시설 수: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :게임을 플레이하는 동안 얼마나 많은 산업시설이 생성되고 유지되어야 할 지를 설정합니다.
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 관련 산업시설의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장과 유전이 맵 가장자리에서 얼마나 멀리 떨어진 곳까지 건설될 수 있는지를 나타냅니다. 섬 맵에서는 이 설정을 이용해서 해당 산업시설이 해안에 가까이 있도록 조정할 수 있습니다. 256칸보다 큰 맵의 경우에는 이 값은 더 크게 조정됩니다
 

@@ -1688,6 +1688,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :A dombok és he
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gazdasági épületek száma: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Mennyi gazdasági épület legyen, és mennyire legyenek fenntartva a játék folyamán
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Olajfinomítók és olajfúró tornyok maximális távolsága a térkép szélétől: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Megadhatod, hogy a térkép szélétől milyen messze épülhetnek olajfinomítók és olajfúró tornyok. Sziget jellegű térképek esetén így a part közelében fognak épülni. 256 mezőnél szélesebb, ill. hosszabb térképek esetén ez az érték felszorzódik.
 

@@ -1605,6 +1605,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Kies de hoogte 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industriedichtheid: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Stelt in hoeveel industrieën worden gegenereerd en welk niveau tijdens het spel moet worden gehandhaafd
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximumafstand van de rand voor olieraffinaderijen: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limiet voor hoe ver van de kaartgrens olieraffinaderijen en booreilanden kunnen worden gebouwd. Op eilandkaarten zorgt dit ervoor dat ze dichtbij de kust liggen. Op kaarten groter dan 256 wordt deze waarde opgeschaald.
 

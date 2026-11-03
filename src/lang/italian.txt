@@ -1619,6 +1619,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Scegliere l'alt
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densità delle industrie: {STRING.fs}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Determina quante industrie sono generate e a quale livello di densità sulla mappa sono mantenute nel corso della partita.
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Massima distanza delle industrie petrolifere dal bordo della mappa: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita la distanza dal bordo della mappa entro cui possono essere costruite raffinerie e piattaforme petrolifere. Nelle mappe insulari sono comunque sempre vicino alla costa. Su mappe più grandi di 256 caselle il valore aumenta proporzionalmente
 

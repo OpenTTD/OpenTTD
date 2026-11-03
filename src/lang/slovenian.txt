@@ -1502,6 +1502,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(samo TerraGene
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gostota industrij: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Nastavi, koliko industrij naj bi bilo ustvarjenih in kolikšen nivo naj bi se vzdrževal skozi igro
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Največja oddaljenost rafinerij nafte od roba: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftne rafinerije se nahajajo le pri robu kater, to je ob obali na otoških kartah
 

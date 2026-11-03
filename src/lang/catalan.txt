@@ -1625,6 +1625,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolliu l'altu
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densitat d'indústries: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Fixa el nombre d'indústries que s'haurien de generar i mantenir durant la partida
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màxima des de la vora a les indústries de petroli: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita a quina distància del mapa es poden construir refineries de petroli i plataformes petrolíferes. En mapes amb illes, serveix per assegurar que estan prop de la costa. En mapes de més de 256 caselles, aquest valor s'escala automàticament.
 
@@ -3176,17 +3177,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Treu tot
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Esteu segur que voleu treure totes les indústries?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de càrrega - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Cases
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Cadena d'indústries
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra les càrregues proveïdes i les indústries acceptades
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Mostra el minimapa
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selecciona les indústries mostrades també al minimapa.
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Selecciona la càrrega
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Selecciona la càrrega que vols mostrar
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Selecciona indústria
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Selecciona la indústria que vols mostrar
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Cadena industrial - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Cadena de càrrega - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Orígens
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Destinacions
+STR_INDUSTRY_CARGOES_HOUSES                                     :Cases
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Accepta: {CARGO_LIST}{}Produeix: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Cadena d'indústries
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Mostra les càrregues proveïdes i les indústries acceptades.
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :Mostra el minimapa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :Selecciona les indústries mostrades també al minimapa.
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Selecciona la càrrega
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Seleccioneu les càrregues que voleu mostrar.
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Selecciona indústria
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Seleccioneu les indústries que voleu mostrar.
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Detalls de la casella

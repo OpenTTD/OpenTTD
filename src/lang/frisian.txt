@@ -1355,6 +1355,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Allinich Terra
 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Yndustry tichtens: {STRING}
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimale ôfstan fanôf de râne fan 'e kaart foar oaljeraffinaderijen: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oaljeraffinaderijen wurde allinnich tichtoan de râne fan 'e kaart bout
 

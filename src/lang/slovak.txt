@@ -1629,6 +1629,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Zvoľte výšku
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Hustota priemyslu: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Nastavte, koľko má byť vygenerovaného priemyslu a aká úroveň by mala byť zachovaná v priebehu hry
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximálna vzdialenosť od okrajov mapy pre rafinérie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinérie ropy sú vybudované len na okrajoch mapy, tzn na pobreží pri ostrovných mapách. Na mapách väčších ako 256 polí je táto hodnota proporcionálne zväčená
 

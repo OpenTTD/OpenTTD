@@ -1729,6 +1729,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(tik TerraGenes
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Pramonės įmonių tankis: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Pramonės įmonių kiekis sugeneruotame žemėlapyje
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Didžiausias naftos perdirbimo įmonės atstumas nuo žemėlapio kraštų: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftos perdirbimo gamyklos statomos tik žemėlapio pakraščiuose, netoli kranto
 

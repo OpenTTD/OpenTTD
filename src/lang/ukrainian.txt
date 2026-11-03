@@ -1742,6 +1742,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Оберіть 
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Густота підприємств: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Встановіть кількість підприємств, що будуть створені і кількість підприємств, що існуватимуть впродовж гри
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Макс. відстань від краю карти до нафтопереробних заводів: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Обмеження того, наскільки далеко від від меж мапи можливе зведення нафтопереробних заводів та нафтових установок. На острівних мапах це гарантує їх розташування біля узбережжя. На мапах понад 256 клітинок це значення збільшиться
 

@@ -1606,6 +1606,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Selecciona la a
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densidad industrial: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Permite fijar el número de industrias que deberían generarse, y el nivel que debería mantenerse durante la partida
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Máxima distancia de Refinerías de Petróleo con los bordes: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Límite para la distancia del borde del mapa en la que se pueden construir refinerías de petróleo y plataformas petrolíferas. En los mapas de islas, esto garantiza que estén cerca de la costa. En los mapas de más de 256 casillas, este valor se amplía
 

@@ -1624,6 +1624,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Kōwhiri i te t
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Apiapi ahumahi: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Tautuhi kia whia ngā ahumahi i te tīmata, i te toenga hoki o te kēmu
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Roa mōrahi ki te tapa mō ngā ahumahi Hinu: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Te tepe mō te mamao ki te tapa o te mahere me hangaia ai ngā whare whakapai hinu me ngā papahinu. I ngā mahere moutere, ka whakatūturu tēnei ka tata ngaua ahumahi ki te takutai. I ngā mahere rahi ake i te 256 papariki, ka whakarahia taua uara
 

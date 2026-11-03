@@ -1727,6 +1727,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(Samo TerraGene
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gustina fabrika: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Odaberi koliko fabrika treba da se generiše i koji će se nivo održati tokom igre
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Najveće rastojanje od ivice za Rafinerije Nafte: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerije nafte se grade samo u blizini ivice karte, to jest uz obalu za otočne karte
 

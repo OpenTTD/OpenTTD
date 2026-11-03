@@ -1624,6 +1624,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Chọn độ ca
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Mật độ nhà máy: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Thiết lập số nhà máy sẽ được tạo ra và mức độ dùy trì trong ván chơi
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Khoảng cách tối đa từ lề bản đồ tới nhà máy lọc dầu: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Giới hạn bao xa tính từ rìa bản đò tới nhà máy hóa dầu và dàn khoan dầu có thể xây. Trên các bản đồ đảo thì tương ứng là ven biển. Với bản đồ lớn 256 ô, thì giá trị này được nhân tỉ lệ lên
 

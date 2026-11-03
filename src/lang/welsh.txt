@@ -1611,6 +1611,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Dewis uchder br
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Dwysedd diwydiant: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Gosod faint o ddiwydiannau y dylid eu creu a pha lefel caiff eu cynnal drwy'r gêm
 
+
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Pellter uchafsymol o'r ochr ar gyfer Purfeydd olew: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Cyfyngiad pa mor bell o ymyl y map y gellid adeiladu purfeydd a rigiau olew. Ar mapiau ynys mae hyn yn sicrhau eu bod ger y môr. Ar mapiau sy'n fwy na 256 teil, bydd y gwerth yma'n cael ei helaethu i fyny
 
