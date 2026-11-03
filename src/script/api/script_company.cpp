@@ -166,9 +166,9 @@
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>();
+		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.delivered_cargo.GetSum<OverflowSafeInt64>();
 	}
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>();
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt64>();
 }
 
 /* static */ SQInteger ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, SQInteger quarter)
