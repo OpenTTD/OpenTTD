@@ -219,6 +219,10 @@ struct DropdownWindow : Window {
 	{
 		if (!closing) {
 			this->options.Reset(DropDownOption::InstantClose);
+
+			/* Focus was taken by a child window, so stay open. */
+			if (_focused_window != nullptr && _focused_window->parent == this) return;
+
 			this->Close();
 		}
 	}
