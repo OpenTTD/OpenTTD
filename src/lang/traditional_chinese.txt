@@ -1624,6 +1624,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :選擇產生版
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :工業設施密度：{STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :此設定控制工業設定出現的密度。遊戲進行時，系統仍會根據此設定來決定工業設施的數量。
 
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY                  :僅產生基礎工業：{STRING}
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY_HELPTEXT         :啟用後，地圖產生和遊戲過程中只會產生基礎工業。
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :煉油廠與地圖邊緣之最遠距離：{STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :僅於地圖邊緣建造煉油廠，在島嶼型地圖中它們將處於海邊。在大於256格的地圖上，此數值會按比例增加

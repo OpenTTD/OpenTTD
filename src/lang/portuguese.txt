@@ -1625,6 +1625,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Escolher a altu
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Nível de densidade industrial: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Define quantas indústrias devem ser geradas e que nível deve ser mantido durante o jogo
 
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY                  :Gerar apenas indústrias primárias: {STRING}
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY_HELPTEXT         :Se esta opção estiver ativada, apenas as indústrias primárias são geradas durante a criação do mapa e durante o jogo.
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distância máxima entre o limite do mapa e Refinarias de Petróleo: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distância entre o limite do mapa e o local de construção de refinarias e plataformas de petróleo. Em mapas de ilhas isto garante que elas fiquem perto da costa. Em mapas com mais de 256 mosaicos esse valor é aumentado

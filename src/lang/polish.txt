@@ -2004,6 +2004,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Wybierz wysoko�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Liczba przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Określa liczbę przedsiębiorstw na początku i w trakcie gry
 
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY                  :Generuj wyłącznie sektor pierwotny: {STRING}
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY_HELPTEXT         :Jeśli włączone, podczas tworzenia mapy i rozgrywki generowane są wyłącznie przedsiębiorstwa z sektora pierwotnego.
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odległość rafinerii i platform wiertniczych od krawędzi mapy: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit odległości rafinerii i platform wiertniczych od krawędzi mapy. Na mapach wyspiarskich wartość ta umożliwia budowanie ich w pobliżu wybrzeża. Na mapach większych niż 256 pól wartość ta jest odpowiednio zwiększana

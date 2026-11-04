@@ -210,15 +210,16 @@ STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :プライマリ
 
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}mph
-STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}km/h
-STR_UNITS_VELOCITY_SI                                           :{DECIMAL}m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{DECIMAL}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{DECIMAL}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{DECIMAL}{NBSP}m/s
 STR_UNITS_VELOCITY_GAMEUNITS_DAY                                :{DECIMAL}{NBSP}タイル/日
+STR_UNITS_VELOCITY_GAMEUNITS_SEC                                :{DECIMAL}{NBSP}タイル/秒
 STR_UNITS_VELOCITY_KNOTS                                        :{DECIMAL}{NBSP}ノット
 
-STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}英馬力
-STR_UNITS_POWER_METRIC                                          :{DECIMAL}仏馬力
-STR_UNITS_POWER_SI                                              :{DECIMAL}kW
+STR_UNITS_POWER_IMPERIAL                                        :{DECIMAL}{NBSP}HP
+STR_UNITS_POWER_METRIC                                          :{DECIMAL}{NBSP}PS
+STR_UNITS_POWER_SI                                              :{DECIMAL}{NBSP}kW
 
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_IMPERIAL                     :{DECIMAL}{NBSP}hp/t
 STR_UNITS_POWER_IMPERIAL_TO_WEIGHT_METRIC                       :{DECIMAL}{NBSP}hp/t
@@ -230,29 +231,30 @@ STR_UNITS_POWER_SI_TO_WEIGHT_IMPERIAL                           :{DECIMAL}{NBSP}
 STR_UNITS_POWER_SI_TO_WEIGHT_METRIC                             :{DECIMAL}{NBSP}kW/t
 STR_UNITS_POWER_SI_TO_WEIGHT_SI                                 :{DECIMAL}{NBSP}W/kg
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}t.
-STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}米トン
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}トン
-STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}米トン
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}トン
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}gal.
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}ℓ
-STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}m³
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}ℓ
+STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}ガロン
-STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}リットル
-STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}ガロン
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}リットル
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}重量ポンド
-STR_UNITS_FORCE_METRIC                                          :{DECIMAL}kgf
-STR_UNITS_FORCE_SI                                              :{DECIMAL}kN
+STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}lbf
+STR_UNITS_FORCE_METRIC                                          :{DECIMAL}{NBSP}kgf
+STR_UNITS_FORCE_SI                                              :{DECIMAL}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}フィート
-STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}m
-STR_UNITS_HEIGHT_SI                                             :{DECIMAL}m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{DECIMAL}{NBSP}ft
+STR_UNITS_HEIGHT_METRIC                                         :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_SI                                             :{DECIMAL}{NBSP}m
+STR_UNITS_HEIGHT_GAMEUNITS                                      :{DECIMAL}{NBSP}レベル
 
 # Time units used in string control characters
 STR_UNITS_DAYS                                                  :{COMMA}{NBSP}日
@@ -263,7 +265,10 @@ STR_UNITS_MONTHS                                                :{NUM}{NBSP}ヶ�
 STR_UNITS_MINUTES                                               :{NUM}{NBSP}分
 
 STR_UNITS_YEARS                                                 :{NUM}{NBSP}年
+STR_UNITS_PERIODS                                               :{NUM}{NBSP}期
 
+STR_LIST_SEPARATOR                                              :,{SPACE}
+STR_TRUNCATION_ELLIPSIS                                         :…
 
 # Common window strings
 STR_LIST_FILTER_TITLE                                           :{BLACK}フィルター:
@@ -307,6 +312,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}この�
 STR_BUTTON_DEFAULT                                              :{BLACK}デフォルト
 STR_BUTTON_CANCEL                                               :{BLACK}キャンセル
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_MOVE                                                 :{BLACK}移動
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :{NBSP}1234567890-^\qwertyuiop@[asdfghjkl;:] zxcvbnm,./\
@@ -328,8 +334,10 @@ STR_SORT_BY_PRODUCTION                                          :生産量
 STR_SORT_BY_TYPE                                                :種類
 STR_SORT_BY_TRANSPORTED                                         :搬送済量
 STR_SORT_BY_NUMBER                                              :番号
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :昨年の損益
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :昨年の利益
+STR_SORT_BY_PROFIT_LAST_PERIOD                                  :前期の利益
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年の利益
+STR_SORT_BY_PROFIT_THIS_PERIOD                                  :今期の利益
 STR_SORT_BY_AGE                                                 :使用年数
 STR_SORT_BY_RELIABILITY                                         :信頼性
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :貨物種類別の総容量
@@ -357,13 +365,17 @@ STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_RATING                                              :レーティング
 STR_SORT_BY_NUM_VEHICLES                                        :車両数
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :昨年の総利益
+STR_SORT_BY_TOTAL_PROFIT_LAST_PERIOD                            :前期の総利益
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :今年の総利益
-STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :前年の平均利益
+STR_SORT_BY_TOTAL_PROFIT_THIS_PERIOD                            :今期の総利益
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :昨年の平均利益
+STR_SORT_BY_AVERAGE_PROFIT_LAST_PERIOD                          :前期の平均利益
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :今年の平均利益
+STR_SORT_BY_AVERAGE_PROFIT_THIS_PERIOD                          :今期の平均利益
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :(なし)
-STR_GROUP_BY_SHARED_ORDERS                                      :共有注文
+STR_GROUP_BY_SHARED_ORDERS                                      :共有指令
 
 # Order button in shared orders vehicle list
 STR_GOTO_ORDER_VIEW                                             :{BLACK}指令
@@ -430,19 +442,27 @@ STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :タイトルに
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :―――――――――
 STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終了
 
+STR_SCENEDIT_TOWN_MENU_BUILD_TOWN                               :街の生成
+STR_SCENEDIT_TOWN_MENU_PACE_HOUSE                               :建物の配置
 
 # Settings menu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプション設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI設定
 STR_SETTINGS_MENU_GAMESCRIPT_SETTINGS                           :ゲームスクリプト設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
+STR_SETTINGS_MENU_SANDBOX_OPTIONS                               :サンドボックスの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透過表示設定
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :街名を表示
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :駅名を表示
+STR_SETTINGS_MENU_STATION_NAMES_TRAIN                           :鉄道駅
+STR_SETTINGS_MENU_STATION_NAMES_LORRY                           :荷役所
 STR_SETTINGS_MENU_STATION_NAMES_BUS                             :バス停
+STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :埠頭
+STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :空港
+STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :撤去された駅
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :中継駅名を表示
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :標識を表示
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :競争者の標識と名前を表示
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :他社の標識と駅名を表示
 STR_SETTINGS_MENU_FULL_ANIMATION                                :アニメーションをフル表示
 STR_SETTINGS_MENU_FULL_DETAIL                                   :ディテールのフル表示
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :建物を透過表示
@@ -481,8 +501,8 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :格付詳細情
 STR_GRAPH_MENU_HIGHSCORE                                        :ハイスコア
 
 # Industry menu
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :産業リスト
-STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :産業チェイン
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :産業一覧
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :産業チェーン
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :産業の新設に出資
 
 # URailway construction menu
@@ -505,6 +525,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :空港建設
 STR_LANDSCAPING_MENU_LANDSCAPING                                :地形ツール
 STR_LANDSCAPING_MENU_PLANT_TREES                                :植林
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :標識設置
+STR_LANDSCAPING_MENU_PLACE_OBJECT                               :オブジェクト配置
 
 # Music menu
 STR_TOOLBAR_SOUND_MUSIC                                         :効果音/音楽
@@ -603,11 +624,19 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}貨物�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}格付の推移(最大1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}総資産の推移
 
+STR_GRAPH_LAST_24_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}直近24分
 STR_GRAPH_LAST_72_MINUTES_TIME_LABEL                            :{TINY_FONT}{BLACK}直近72分
+STR_GRAPH_LAST_288_MINUTES_TIME_LABEL                           :{TINY_FONT}{BLACK}直近288分
 
+STR_GRAPH_LAST_24_MONTHS                                        :{TINY_FONT}{BLACK}2年 (月次)
+STR_GRAPH_LAST_24_QUARTERS                                      :{TINY_FONT}{BLACK}6年 (四半期次)
+STR_GRAPH_LAST_24_YEARS                                         :{TINY_FONT}{BLACK}24年 (年次)
 
+STR_GRAPH_SELECT_SCALE                                          :グラフの横軸のスケールを変更します
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}運送報酬の相場
+STR_GRAPH_CARGO_PAYMENT_RATES_DAYS                              :{TINY_FONT}{BLACK}運送日数
+STR_GRAPH_CARGO_PAYMENT_RATES_SECONDS                           :{TINY_FONT}{BLACK}運送秒数
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}貨物を10単位(又は10,000リットル)を20マス運送したときの報酬
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}すべて有効化
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}すべて無効化
@@ -616,7 +645,23 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}全貨�
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}この貨物の運送報酬相場の表示/非表示を切り替えます
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_INDUSTRY_CAPTION                                      :{WHITE}{INDUSTRY} - 貨物履歴
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED                               :生産
+STR_GRAPH_INDUSTRY_RANGE_PRODUCED_TOOLTIP                       :この産業が生産した貨物の表示/非表示を切り替えます
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED                            :搬送
+STR_GRAPH_INDUSTRY_RANGE_TRANSPORTED_TOOLTIP                    :この産業から搬送された貨物の表示/非表示を切り替えます
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :到着
+STR_GRAPH_INDUSTRY_RANGE_DELIVERED_TOOLTIP                      :この産業へ搬送された貨物の表示/非表示を切り替えます
+STR_GRAPH_INDUSTRY_RANGE_WAITING                                :待機
+STR_GRAPH_INDUSTRY_RANGE_WAITING_TOOLTIP                        :この産業の待機状態の貨物の表示/非表示を切り替えます
 
+STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - 貨物履歴
+STR_GRAPH_TOWN_RANGE_PRODUCED                                   :生産
+STR_GRAPH_TOWN_RANGE_PRODUCED_TOOLTIP                           :この街が生産した貨物の表示/非表示を切り替えます
+STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :搬送
+STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :この街から搬送された貨物の表示/非表示を切り替えます
+STR_GRAPH_TOWN_RANGE_DELIVERED                                  :到着
+STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :この街へ搬送された貨物の表示/非表示を切り替えます
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}格付の詳細情報を表示します
 
@@ -627,6 +672,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}この�
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}格付順位表
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_RANK                                 :{YELLOW}#{NUM}
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :技術者
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :輸送管理者
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :運送調整役
@@ -658,9 +704,13 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}借入:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}合計:
 ###next-name-looks-similar
 
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_YEARS                   :{BLACK}昨年黒字だった列車・車両・船舶・航空機の数です
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP_PERIODS                 :{BLACK}前期黒字だった列車・車両・船舶・航空機の数です
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最近業務に使われた停留施設の数です。2種類以上の交通機関で構成される場合は、それぞれ別々に数えます
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}過去12回の四半期で、収益が最小となった期の収益です
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}過去12回の四半期で、収益が最大となった期の収益です
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_YEARS                 :{BLACK}最も収益の低い輸送機器の利益を表します (購入から2年以上経過したもののみ)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP_PERIODS               :{BLACK}最も収益の低い輸送機器の利益を表します (購入から2期以上経過したもののみ)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}過去12回の四半期で、利益が最小だった期の営業利益です
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}過去12回の四半期で、利益が最大だった期の営業利益です
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}過去1年間に運送した貨物の量です
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}最前の四半期に運送した貨物の種類数です
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}この会社の預金残高です
