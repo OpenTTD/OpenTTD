@@ -318,7 +318,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 			estimated_height = 0;
 		}
 
-		_settings_game.construction.map_height_limit = std::max<uint8_t>(MAP_HEIGHT_LIMIT_AUTO_MINIMUM, std::min<uint8_t>(MAX_MAP_HEIGHT_LIMIT, estimated_height + MAP_HEIGHT_LIMIT_AUTO_CEILING_ROOM));
+		_settings_game.construction.map_height_limit = Clamp(estimated_height + MAP_HEIGHT_LIMIT_AUTO_CEILING_ROOM, MAP_HEIGHT_LIMIT_AUTO_MINIMUM, MAX_MAP_HEIGHT_LIMIT);
 	}
 
 	if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = InteractiveRandom();
