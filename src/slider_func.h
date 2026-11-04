@@ -14,7 +14,7 @@
 #include "gfx_type.h"
 
 using SliderMarkFunc = std::optional<std::string>(int nmarks, int mark, int value);
-void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextColour text_colour, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func);
+void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextColour text_colour, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func, int soft_min = INT_MIN, int soft_max = INT_MAX);
 bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int nmarks, int &value);
 
 inline bool ClickSliderWidget(Rect r, Point pt, int min_value, int max_value, int nmarks, uint8_t &value)

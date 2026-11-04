@@ -30,55 +30,84 @@ static const int SLIDER_WIDTH = 3;
  * @param nmarks Number of marks to display (when mark_func is provided.)
  * @param value Value to put the slider at
  * @param mark_func Callback function to get the StringID to draw on a mark.
+ * @param soft_min Soft minimum value.
+ * @param soft_max Soft maximum value.
  */
-void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextColour text_colour, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func)
+void DrawSliderWidget(Rect r, Colours wedge_colour, Colours handle_colour, TextColour text_colour, int min_value, int max_value, int nmarks, int value, SliderMarkFunc *mark_func, int soft_min, int soft_max)
 {
 	/* Allow space for labels. We assume they are in the small font. */
-	if (mark_func != nullptr) r.bottom -= GetCharacterHeight(FontSize::Small) + WidgetDimensions::scaled.hsep_normal;
+	Rect tr = r;
+	if (mark_func != nullptr) {
+		tr.top = tr.bottom - GetCharacterHeight(FontSize::Small) + 1;
+		r.bottom = tr.top - WidgetDimensions::scaled.hsep_normal - 1;
+	}
 
-	max_value -= min_value;
-
-	/* Draw a wedge indicating low to high value. */
-	const int ha = (r.bottom - r.top) / 5;
+	const int ha = r.Height() / 5;
 	const int sw = ScaleGUITrad(SLIDER_WIDTH);
 	const int t = WidgetDimensions::scaled.bevel.top; /* Thickness of lines */
-	int wx1 = r.left  + sw / 2;
-	int wx2 = r.right - sw / 2;
-	if (_current_text_dir == TD_RTL) std::swap(wx1, wx2);
+
+	/* Position the wedge so that slider can overlap the ends. */
+	r.left += sw / 2;
+	r.right -= sw / 2;
+
 	const PixelColour shadow = GetColourGradient(wedge_colour, Shade::Dark);
 	const PixelColour fill = GetColourGradient(wedge_colour, Shade::Lighter);
 	const PixelColour light = GetColourGradient(wedge_colour, Shade::Lightest);
+
+	/* Adjust the wedge direction for LTR/RTL languages. */
+	int wx1 = r.left;
+	int wx2 = r.right;
+	if (_current_text_dir == TD_RTL) std::swap(wx1, wx2);
+
+	/* Draw a wedge indicating low to high value. */
 	const std::array<Point, 3> wedge{ Point{wx1, r.bottom - ha}, Point{wx2, r.top + ha}, Point{wx2, r.bottom - ha} };
 	GfxFillPolygon(wedge, fill);
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[2].x, wedge[2].y, light, t);
 	GfxDrawLine(wedge[1].x, wedge[1].y, wedge[2].x, wedge[2].y, _current_text_dir == TD_RTL ? shadow : light, t);
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[1].x, wedge[1].y, shadow, t);
 
+	int range = max_value - min_value;
+	int width = r.right - r.left;
+
 	int x;
 	if (mark_func != nullptr) {
 		for (int mark = 0; mark < nmarks; ++mark) {
-			const int mark_value = (max_value * mark) / (nmarks - 1);
+			int mark_value = range * mark / (nmarks - 1);
 
 			auto str = mark_func(nmarks, mark, mark_value + min_value);
 			if (!str.has_value()) continue;
 
-			x = mark_value;
-			if (_current_text_dir == TD_RTL) x = max_value - mark_value;
-			x = r.left + (x * (r.right - r.left - sw) / max_value) + sw / 2;
+			if (_current_text_dir == TD_RTL) mark_value = range - mark_value;
+			x = r.left + (mark_value * width / range);
+
 			GfxDrawLine(x, r.bottom - ha + 1, x, r.bottom + (str->empty() ? 0 : WidgetDimensions::scaled.hsep_normal), shadow, t);
 			if (str->empty()) continue;
 
 			Dimension d = GetStringBoundingBox(*str, FontSize::Small);
 			x = Clamp(x - d.width / 2, r.left, r.right - d.width);
-			DrawString(x, x + d.width, r.bottom + 1 + WidgetDimensions::scaled.hsep_normal, *str, text_colour, {AlignmentH::Centre, AlignmentV::Middle}, false, FontSize::Small);
+			DrawString(tr.WithX(x, x + d.width), *str, text_colour, {AlignmentH::Centre, AlignmentV::Middle}, false, FontSize::Small);
+
+			if (soft_min > mark_value + min_value || soft_max < mark_value + min_value) {
+				GfxFillRect(tr.WithX(x, x + d.width), GetColourGradient(wedge_colour, Shade::Light), FillRectMode::Checker);
+			}
 		}
+	}
+
+	if (soft_min > min_value) {
+		x = (soft_min - min_value) * width / range - t;
+		GfxFillRect(r.WithWidth(x, _current_text_dir == TD_RTL), GetColourGradient(wedge_colour, Shade::Light), FillRectMode::Checker);
+	}
+
+	if (soft_max < max_value) {
+		x = (soft_max - min_value) * width / range + t;
+		GfxFillRect(r.Indent(x, _current_text_dir == TD_RTL), GetColourGradient(wedge_colour, Shade::Light), FillRectMode::Checker);
 	}
 
 	/* Draw a slider handle indicating current value. */
 	value -= min_value;
-	if (_current_text_dir == TD_RTL) value = max_value - value;
-	x = r.left + (value * (r.right - r.left - sw) / max_value);
-	DrawFrameRect(x, r.top, x + sw, r.bottom, handle_colour, {});
+	if (_current_text_dir == TD_RTL) value = range - value;
+	x = r.left + (value * width / range) - sw / 2;
+	DrawFrameRect(x, r.top, x + sw - 1, r.bottom, handle_colour, {});
 }
 
 /**
