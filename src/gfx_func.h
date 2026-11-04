@@ -83,6 +83,8 @@ void GameSizeChanged();
 void UpdateGUIZoom();
 bool AdjustGUIZoom(bool automatic);
 void UndrawMouseCursor();
+int GetAutomaticScale();
+int GetMaximumScale();
 
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);

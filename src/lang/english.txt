@@ -1090,7 +1090,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Current driver:
 STR_GAME_OPTIONS_INTERFACE                                      :Interface
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Interface size
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Drag slider to set interface size. Ctrl+Drag for continuous adjustment
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Drag slider to set interface size. Range is limited by window size. Ctrl+Drag for continuous adjustment
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Auto-detect size
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Turn on to detect interface size automatically
 
