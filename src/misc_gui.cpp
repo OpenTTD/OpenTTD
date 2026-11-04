@@ -355,6 +355,7 @@ static const std::initializer_list<const std::string_view> _credits = {
 	"  Niels Martin Hansen (nielsm) - Music system, general coding (since 1.9)",
 	"  Owen Rudge (orudge) - Forum host, OS/2 port (since 0.1)",
 	"  Peter Nelson (peter1138) - Spiritual descendant from NewGRF gods (since 0.4.5)",
+	"  Cyprian Klimaszewski (rito12) - General coding (since 16)",
 	"  Remko Bijker (Rubidium) - Coder and way more (since 0.4.5)",
 	"  Patric Stout (TrueBrain) - NoProgrammer (since 0.3), sys op",
 	"  Tyler Trahan (2TallTyler) - General / Time Lord (since 13)",
