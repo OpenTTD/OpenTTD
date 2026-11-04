@@ -1802,20 +1802,48 @@ void SortResolutions()
 }
 
 /**
+ * Calculate target interface scale for a given window size.
+ * @param width The window width.
+ * @param height The window height.
+ * @return The target interface scale.
+ */
+static int GetTargetScale(float width, float height)
+{
+	float xs = _screen.width / width;
+	float ys = _screen.height / height;
+	int scale = std::min(xs, ys) * 100;
+	/* Round down scaling to 25% increments and clamp to limits. */
+	return Clamp((scale / 25) * 25, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
+}
+
+/**
+ * Get the interface scale for automatic scaling.
+ * @return The automatic interface scale.
+ */
+int GetAutomaticScale()
+{
+	return GetTargetScale(640, 480);
+}
+
+/**
+ * Get the maximum interface scale.
+ * @return The maximum interface scale.
+ */
+int GetMaximumScale()
+{
+	return GetTargetScale(480, 360);
+}
+
+/**
  * Resolve GUI zoom level, if auto-suggestion is requested.
  */
 void UpdateGUIZoom()
 {
 	/* Determine real GUI zoom to use. */
 	if (_gui_scale_cfg == -1) {
-		/* Minimum design size of the game is 640x480. */
-		float xs = _screen.width / 640.f;
-		float ys = _screen.height / 480.f;
-		int scale = std::min(xs, ys) * 100;
-		/* Round down scaling to 25% increments and clamp to limits. */
-		_gui_scale = Clamp((scale / 25) * 25, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
+		_gui_scale = GetAutomaticScale();
 	} else {
-		_gui_scale = Clamp(_gui_scale_cfg, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
+		_gui_scale = Clamp(_gui_scale_cfg, MIN_INTERFACE_SCALE, GetMaximumScale());
 	}
 
 	ZoomLevel new_zoom = ScaleGUITrad(1) <= 1 ? ZoomLevel::Normal : ScaleGUITrad(1) >= 4 ? ZoomLevel::In4x : ZoomLevel::In2x;

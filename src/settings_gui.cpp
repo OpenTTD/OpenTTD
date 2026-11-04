@@ -687,7 +687,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case WID_GO_GUI_SCALE:
-				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TextColour::Black, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, SCALE_NMARKS, this->gui_scale, ScaleMarkFunc);
+				DrawSliderWidget(r, GAME_OPTIONS_BACKGROUND, GAME_OPTIONS_BUTTON, TextColour::Black, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, SCALE_NMARKS, this->gui_scale, ScaleMarkFunc, 0, GetMaximumScale());
 				break;
 
 			case WID_GO_VIDEO_DRIVER_INFO:
@@ -1063,6 +1063,8 @@ struct GameOptionsWindow : Window {
 				}
 
 				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, _ctrl_pressed ? 0 : SCALE_NMARKS, this->gui_scale)) {
+					int max_scale = GetMaximumScale();
+					if (this->gui_scale > max_scale) this->gui_scale = max_scale;
 					this->gui_scale_changed = true;
 					this->SetWidgetDirty(widget);
 				}
