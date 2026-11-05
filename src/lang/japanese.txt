@@ -235,17 +235,17 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{DECIMAL}{NBSP}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{DECIMAL}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}米トン
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}{NBSP}トン
-STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}{NBSP}kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{DECIMAL}米トン
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{DECIMAL}トン
+STR_UNITS_WEIGHT_LONG_SI                                        :{DECIMAL}kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{DECIMAL}{NBSP}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{DECIMAL}{NBSP}ℓ
 STR_UNITS_VOLUME_SHORT_SI                                       :{DECIMAL}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}{NBSP}ガロン
-STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}{NBSP}リットル
-STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}{NBSP}m³
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{DECIMAL}ガロン
+STR_UNITS_VOLUME_LONG_METRIC                                    :{DECIMAL}リットル
+STR_UNITS_VOLUME_LONG_SI                                        :{DECIMAL}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{DECIMAL}{NBSP}lbf
 STR_UNITS_FORCE_METRIC                                          :{DECIMAL}{NBSP}kgf
@@ -763,6 +763,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}クリ�
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}クリックすると、その曲を選択したプレイリストから削除します。(カスタム1/2 のみ)
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES                                     :{BIG_FONT}{BLACK}トップ企業
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :実務家
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :起業家
@@ -817,8 +818,8 @@ STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}埠頭
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}荒地
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}草地
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}露地
-STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT} {BLACK}熱帯雨林
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}裸地
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}熱帯雨林
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}耕作地
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}樹林
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}岩石
@@ -842,6 +843,7 @@ STR_SMALLMAP_SHOW_INDUSTRY_NAMES                                :{BLACK}産業�
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}全産業を非表示にします
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}全産業を表示します
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}標高別の色分けを切り替えます
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRY_NAMES                        :{BLACK}産業名の表示を切り替えます
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}全会社の所有施設を非表示にします
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}全会社の所有施設を表示します
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}全貨物種別を非表示にします
@@ -851,11 +853,12 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}全貨�
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最新のメッセージ/ニュースを表示します
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  ポーズ中  *  *
-STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  一時停止中 (リンクグラフの更新を待っています) *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  ポーズ中 (行先分配グラフの更新を待っています) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}オートセーブ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ゲームセーブ中  *  *
 
-STR_STATUSBAR_SPECTATOR                                         :{WHITE}(spectator)
+STR_STATUSBAR_SPECTATOR                                         :{WHITE}(観覧者)
+STR_STATUSBAR_INFINITE_MONEY                                    :{WHITE}(無限の資金)
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}メッセージ履歴
@@ -939,6 +942,8 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}はひどく老朽化しているため、早急に交換する必要があります
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}が目的地への経路を見つけられません
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}が迷っています
+STR_NEWS_VEHICLE_UNPROFITABLE_YEAR                              :{WHITE}昨年の{VEHICLE}の利益は{CURRENCY_LONG}で{RED}赤字{WHITE}です
+STR_NEWS_VEHICLE_UNPROFITABLE_PERIOD                            :{WHITE}前期の{VEHICLE}の利益は{CURRENCY_LONG}で{RED}赤字{WHITE}です
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}航続距離を超えるため、{VEHICLE}は次の目的地に到達できません
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE}は指令された改造に失敗したため、運用を停止しました
@@ -948,8 +953,10 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING}が新登場!　-　{ENGINE}
 
-STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}車両のグループに焦点を合わせたグループウィンドウを開きます
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}この輸送機器が属するグループを開きます
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_LIST                   :{WHITE}{STATION}は今後以下の貨物を受入れません: {CARGO_LIST}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_LIST                         :{WHITE}{STATION}は今後以下の貨物を受入れます: {CARGO_LIST}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}助成金交付案失効:{}{1:STRING}から{2:STRING}に{0:STRING}を運ぶ便の{}助成金交付案は失効しました
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}助成金支払満了:{}{1:STRING}から{2:STRING}に{0:STRING}を運ぶ便の{}助成金は終了しました
@@ -960,7 +967,11 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING}が助成金を獲得!{}{}{STRING}の{STRING}から{STRING}への輸送について次の{UNITS_YEARS_OR_MINUTES}間収入が3倍になります!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING}が助成金を獲得!{}{}{STRING}の{STRING}から{STRING}への輸送について次の{UNITS_YEARS_OR_MINUTES}間収入が4倍になります!
 
+STR_NEWS_ROAD_REBUILDING_MONTHS                                 :{BIG_FONT}{BLACK}混乱する道路交通!{}{}{1:STRING}が{0:TOWN}の街路補修に出資{}地元ドライバーには悪夢の半年に!
+STR_NEWS_ROAD_REBUILDING_MINUTES                                :{BIG_FONT}{BLACK}混乱する道路交通!{}{}{1:STRING}が{0:TOWN}の街路補修に出資{}地元ドライバーには悪夢の半期に!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}輸送独占!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MONTHS                    :{BIG_FONT}{BLACK}{TOWN}が{STRING}と1年間の排他輸送契約を締結!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION_MINUTES                   :{BIG_FONT}{BLACK}{TOWN}が{STRING}と1期間の排他輸送契約を締結!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}ビューア {COMMA}
@@ -978,16 +989,23 @@ STR_GAME_OPTIONS_TAB_GRAPHICS                                   :グラフィッ
 STR_GAME_OPTIONS_TAB_GRAPHICS_TOOLTIP                           :グラフィック設定を開きます
 STR_GAME_OPTIONS_TAB_SOUND                                      :サウンド
 STR_GAME_OPTIONS_TAB_SOUND_TOOLTIP                              :サウンドと音楽の設定を開きます
+STR_GAME_OPTIONS_TAB_SOCIAL                                     :ソーシャル
+STR_GAME_OPTIONS_TAB_SOCIAL_TOOLTIP                             :ソーシャル統合設定を開きます
+STR_GAME_OPTIONS_TAB_ADVANCED                                   :詳細設定
+STR_GAME_OPTIONS_TAB_ADVANCED_TOOLTIP                           :詳細設定を開きます
 
 STR_GAME_OPTIONS_VOLUME                                         :音量
 STR_GAME_OPTIONS_SFX_VOLUME                                     :効果音
 STR_GAME_OPTIONS_MUSIC_VOLUME                                   :音楽
 
+STR_GAME_OPTIONS_SETTING                                        :{STRING}: {ORANGE}{STRING}
 
+STR_GAME_OPTIONS_VOLUME_MARK                                    :{NUM}%
 
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :通貨単位
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :通貨単位の選択
 
+STR_GAME_OPTIONS_CURRENCY_CODE                                  :{STRING} ({STRING})
 
 ###length 46
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英ポンド
@@ -1032,6 +1050,10 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :香港ドル
 STR_GAME_OPTIONS_CURRENCY_INR                                   :インド・ルピー
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :インドネシア・ルピア
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :マレーシア・リンギット
+STR_GAME_OPTIONS_CURRENCY_LVL                                   :ラトビア・ラッツ
+STR_GAME_OPTIONS_CURRENCY_PTE                                   :ポルトガル・エスクード
+STR_GAME_OPTIONS_CURRENCY_UAH                                   :ウクライナ・フリヴニャ
+STR_GAME_OPTIONS_CURRENCY_VND                                   :ベトナム・ドン
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :オートセーブ
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :自動保存の間隔を選択します
@@ -1060,11 +1082,12 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :ハードウェ
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :ここをチェックしてOpenTTDがハードウェアアクセラレーションを利用するようにします。設定はゲームを再起動した後に適用されます。
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE} この設定は再起動後に適用されます。
 
-STR_GAME_OPTIONS_VIDEO_VSYNC                                    : 垂直同期
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :垂直同期
 STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :ここをチェックして垂直同期を有効にします。設定はゲームを再起動した後に適用されます。ハードウェアアクセラレーションが有効な環境でしか機能しません。
 
-STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :現在のドライバー：{STRING}
+STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :現在のドライバー: {STRING}
 
+STR_GAME_OPTIONS_INTERFACE                                      :インターフェイス
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :インターフェイスのサイズ
 STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :スライダーをドラッグでインターフェースの大きさを調整できます。Ctrl押しながらで微調整できます。
@@ -1074,8 +1097,20 @@ STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :ここをチェ
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS                               :ベベルのスケール
 STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :ここをチェックするとベベルはインタフェースのサイズに比例します
 
+STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :従来のスプライトフォントを使用する
+STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :従来の固定サイズのスプライトフォントを使用したい場合は有効にしてください
+STR_GAME_OPTIONS_GUI_FONT_AA                                    :フォントのアンチエイリアス
+STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :サイズ変更可能なフォントにアンチエイリアスを適用します
 
+STR_GAME_OPTIONS_GUI_SCALE_MARK                                 :{DECIMAL}x
 
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_FRAME                       :調査データの自動送信
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY                             :調査データを自動的に送信する
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_TOOLTIP                     :有効にすると、OpenTTDはゲームを終了する際に調査データを送信します
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK                        :調査とプライバシーについて
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :これをクリックすると、調査データの送信に関する詳細情報が記載されたページをブラウザで開きます
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :調査データをプレビューする
+STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :現在進行中のゲームの調査データを表示します
 
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :画面リフレッシュレート
@@ -1098,9 +1133,21 @@ STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :基本音楽セ
 STR_GAME_OPTIONS_ONLINE_CONTENT                                 :コンテンツを取得
 STR_GAME_OPTIONS_ONLINE_CONTENT_TOOLTIP                         :新しいコンテンツや更新をチェックする
 
+STR_GAME_OPTIONS_SOCIAL_PLUGINS_NONE                            :(ソーシャルプラットフォームと連携するためのプラグインはインストールされていません)
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_TITLE                            :{STRING} ({STRING})
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_PLATFORM                         :プラットフォーム:
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE                            :プラグインの状態:
 
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_RUNNING                    :{GREEN}実行中
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_FAILED                     :{RED}初期化に失敗しました
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_PLATFORM_NOT_RUNNING       :{ORANGE}{STRING} 停止中
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNLOADED                   :{RED}読み込まれていません
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_DUPLICATE                  :{RED}重複したプラグイン
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_UNSUPPORTED_API            :{RED}サポートされていないバージョン
+STR_GAME_OPTIONS_SOCIAL_PLUGIN_STATE_INVALID_SIGNATURE          :{RED}無効な署名
 
+STR_BASESET_STATUS                                              :{STRING} {RED}({NUM}ファイルが不足しているか破損しています)
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}サポートされている解像度リストの回復に失敗しました
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フルスクリーンモードでの実行に失敗しました
@@ -1108,11 +1155,13 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フル�
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}カスタム通貨
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替レート：{ORANGE}{CURRENCY_LONG} ＝ £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替レート: {ORANGE}{CURRENCY_LONG} ＝ £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}英ポンドに対するお使いの通貨の為替レートを減らします
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}英ポンドに対するお使いの通貨の為替レートを増やします
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}英ポンドに対するお使いの通貨の為替レートを設定します
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}桁区切り: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}通貨の桁区切り記号を設定します
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}接頭文字: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}通貨の接頭文字を入力します
@@ -1121,12 +1170,12 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}通貨�
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}ユーロ切替: {ORANGE}{NUM}年
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}ユーロ切替: {ORANGE}しない
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}}通貨がユーロに切り替わる年を設定します
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}通貨がユーロに切り替わる年を設定します
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}もっと早くにユーロに切り替え
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}もっと遅くにユーロに切り替え
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレビュー: {ORANGE}{CURRENCY_LONG}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}}£10,000(英ポンド)に対する為替レートを設定します
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}£10,000(英ポンド)に対する為替レートを設定します
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}カスタム通貨の設定を変更
 
 STR_NONE                                                        :なし
@@ -1207,6 +1256,7 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :すべて開く
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :すべて折りたたむ
 STR_CONFIG_SETTING_RESET_ALL                                    :すべての値をリセット
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（説明がありません）
+STR_CONFIG_SETTING_VALUE                                        :{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}デフォルト設定: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}設定の種類: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :クライアント設定(セーブされませんがすべてのゲームに影響します)
@@ -1260,6 +1310,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右
 
+STR_CONFIG_SETTING_SECONDS_VALUE                                :{COMMA}秒
 
 STR_CONFIG_SETTING_INFINITE_MONEY                               :無限の資金: {STRING}
 STR_CONFIG_SETTING_INFINITE_MONEY_HELPTEXT                      :無制限の支出を許容し、会社の破産も無効にします
@@ -1276,6 +1327,9 @@ STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :借入利率を
 STR_CONFIG_SETTING_RUNNING_COSTS                                :維持費: {STRING}
 STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :車両や施設のメンテナンスコストを設定します
 ###length 3
+STR_CONFIG_SETTING_RUNNING_COSTS_LOW                            :低い
+STR_CONFIG_SETTING_RUNNING_COSTS_MEDIUM                         :中位
+STR_CONFIG_SETTING_RUNNING_COSTS_HIGH                           :高い
 
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :建設速度: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :AIの建設速度を設定します
@@ -1289,6 +1343,7 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金対象
 STR_CONFIG_SETTING_SUBSIDY_DURATION                             :助成期間: {STRING}
 ###length 2
 STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :助成金が配布される年数を設定
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT_PERIODS            :助成金が配布される期間数を設定
 
 STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{UNITS_YEARS_OR_PERIODS}
 ###setting-zero-is-special
@@ -1297,12 +1352,20 @@ STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :補助金なし
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入費用のレベルを設定します
 ###length 3
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_LOW                       :低い
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_MEDIUM                    :中位
+STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HIGH                      :高い
 
 STR_CONFIG_SETTING_RECESSIONS                                   :景気後退: {STRING}
 STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :設定を有効にすると数年おきに短期間、景気の後退が起こる可能性が出ます。景気後退の間はすべての生産がかなりの落ち込みを見せます (景気後退が終わると元のレベルに戻ります)。
 
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE                           :折り返し時の列車反転: {STRING}
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_HELPTEXT                  :列車全体の向きを反転できる場所を設定します。「どこでも」に設定すると、列車は場所を問わず反転可能です。「終点のみ」に設定すると、前方に進めるルートがある場合列車が反転することはありません。「なし」に設定すると、列車は反転できなくなります。必要に応じて後退走行を行いますが、最後尾の車両に運転台がない場合は速度が低下します。
 
 ###length 3
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_ALL                       :どこでも
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_END_OF_LINE_ONLY          :終点のみ
+STR_CONFIG_SETTING_TRAIN_FLIP_REVERSE_NONE                      :なし
 
 STR_CONFIG_SETTING_DISASTERS                                    :災害: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :設定を有効にすると時折、乗り物や交通インフラを遮断・破壊する災害が起きるようになります
@@ -1333,7 +1396,7 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :列車の最大
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :列車の最大長を設定します
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}タイル
 
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :煙・火花の量{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :煙・火花の量: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :輸送機器が故障や事故の際に発する煙や火花の量を設定します
 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :列車の加減速モデル: {STRING}
@@ -1358,13 +1421,13 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :直接繋がっ
 STR_CONFIG_SETTING_INFLATION                                    :インフレ: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :インフレを有効にします。経費の方が収入よりわずかに早く上昇していきます。
 
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋梁の最大長:{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋梁の最大長: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :橋梁の最大長を設定できます
 
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :橋梁の高度: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :橋梁の最大高度を設定できます
 
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :トンネルの最大長：{STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :トンネルの最大長: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :トンネルの最大長を設定できます
 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :一次産業の開設法: {STRING}
@@ -1389,9 +1452,11 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :右
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES                                 :年末の財政ウインドウ表示: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_PERIOD                          :期末の財政ウインドウ表示: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :有効にすると、毎年末に財政ウインドウがポップアップするようになります。企業の財務状況を簡単にチェックするのに便利です。
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT_PERIOD                 :有効にすると、毎期末に財政ウインドウがポップアップするようになります。企業の財務状況を簡単にチェックするのに便利です。
 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :直行運転をデフォルト化: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :通常、輸送機器は目的地までの経路上に停留施設があれば必ずそこに止まります。この設定を有効にすると、経路上のすべての停留施設を飛ばし目的地まで直行するようになります。注意: この設定は新規の指令にのみ作用します。またこの設定が有効であっても、個別に解除することは可能です。
@@ -1444,6 +1509,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :なし
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :軽減
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :普通
 
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR                     :他社が所有する道路や線路との踏切を許可: {STRING}
+STR_CONFIG_SETTING_CROSSING_WITH_COMPETITOR_HELPTEXT            :他社が所有する道路や線路に踏切の設置を許可します
 
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :街有道路での路側型バス停/荷役所建設: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :路側型バス停/荷役所を街が所有する道路上に建設できるようにします
