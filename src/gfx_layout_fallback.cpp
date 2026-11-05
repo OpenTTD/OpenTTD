@@ -210,7 +210,6 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		assert(iter != this->runs.end());
 	}
 
-	FontSize fontsize = iter->second.fontsize;
 	const char32_t *next_run = this->buffer_begin + iter->first;
 
 	const char32_t *begin = this->buffer;
@@ -244,7 +243,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 		if (IsWhitespace(c)) last_space = this->buffer;
 
 		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
-			int char_width = GetCharacterWidth(fontsize, c);
+			int char_width = GetCharacterWidth(iter->second.fontsize, c);
 			width += char_width;
 			if (width > max_width) {
 				/* The string is longer than maximum width so we need to decide
