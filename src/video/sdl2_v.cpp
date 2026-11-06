@@ -667,10 +667,17 @@ void VideoDriver_SDL_Base::InputLoop()
 	this->fast_forward_key_pressed = keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0;
 
 	/* Determine which directional keys are down. */
-	_dirkeys.Set(DirectionKey::Left, keys[SDL_SCANCODE_LEFT]);
-	_dirkeys.Set(DirectionKey::Up, keys[SDL_SCANCODE_UP]);
-	_dirkeys.Set(DirectionKey::Right, keys[SDL_SCANCODE_RIGHT]);
-	_dirkeys.Set(DirectionKey::Down, keys[SDL_SCANCODE_DOWN]);
+	if (_settings_client.gui.pan_with_wasd) {
+		_dirkeys.Set(DirectionKey::Left, keys[SDL_SCANCODE_A]);
+		_dirkeys.Set(DirectionKey::Up, keys[SDL_SCANCODE_W]);
+		_dirkeys.Set(DirectionKey::Right, keys[SDL_SCANCODE_D]);
+		_dirkeys.Set(DirectionKey::Down, keys[SDL_SCANCODE_S]);
+	} else {
+		_dirkeys.Set(DirectionKey::Left, keys[SDL_SCANCODE_LEFT]);
+		_dirkeys.Set(DirectionKey::Up, keys[SDL_SCANCODE_UP]);
+		_dirkeys.Set(DirectionKey::Right, keys[SDL_SCANCODE_RIGHT]);
+		_dirkeys.Set(DirectionKey::Down, keys[SDL_SCANCODE_DOWN]);
+	}
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }
