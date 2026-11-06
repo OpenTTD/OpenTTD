@@ -7,6 +7,7 @@
 
 /** @file toolbar_gui.cpp Code related to the (main) toolbar. */
 
+#include "gfx_func.h"
 #include "stdafx.h"
 #include "core/geometry_func.hpp"
 #include "gui.h"
@@ -1206,6 +1207,39 @@ static CallBackFunction ToolbarSwitchClick(Window *w)
 	return CallBackFunction::None;
 }
 
+/**
+ * Close all unpinned windows.
+ * @return #CallBackFunction::None
+ */
+static CallBackFunction ToolbarDelClick(Window *)
+{
+	CloseNonVitalWindows();
+	SndClickBeep();
+	return CallBackFunction::None;
+}
+
+/**
+ * Toggle ctrl button pressed state.
+ * @return #CallBackFunction::None
+ */
+static CallBackFunction ToolbarCtrlClick(Window *)
+{
+	_invert_ctrl_state = !_invert_ctrl_state;
+	SndClickBeep();
+	return CallBackFunction::None;
+}
+
+/**
+ * Toggle shift button pressed state.
+ * @return #CallBackFunction::None
+ */
+static CallBackFunction ToolbarShiftClick(Window *)
+{
+	_invert_shift_state = !_invert_shift_state;
+	SndClickBeep();
+	return CallBackFunction::None;
+}
+
 /* --- Scenario editor specific handlers. */
 
 /**
@@ -1810,6 +1844,11 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_ROADVEHS,
 			WID_TN_SHIPS,
 			WID_TN_AIRCRAFT,
+#ifdef __ANDROID__
+			WID_TN_DEL,
+			WID_TN_CTRL,
+			WID_TN_SHIFT,
+#endif
 			WID_TN_ZOOM_IN,
 			WID_TN_ZOOM_OUT,
 			WID_TN_RAILS,
@@ -2000,6 +2039,9 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarNewspaperClick,
 	ToolbarHelpClick,
 	ToolbarSwitchClick,
+	ToolbarDelClick,
+	ToolbarCtrlClick,
+	ToolbarShiftClick,
 };
 
 /** Main toolbar. */
@@ -2128,6 +2170,18 @@ struct MainToolbarWindow : Window {
 			this->ToggleWidgetLoweredState(WID_TN_FAST_FORWARD);
 			this->SetWidgetDirty(WID_TN_FAST_FORWARD);
 		}
+
+#ifdef __ANDROID__
+		if (this->IsWidgetLowered(WID_TN_CTRL) != _ctrl_pressed) {
+			this->ToggleWidgetLoweredState(WID_TN_CTRL);
+			this->SetWidgetDirty(WID_TN_CTRL);
+		}
+
+		if (this->IsWidgetLowered(WID_TN_SHIFT) != _shift_pressed) {
+			this->ToggleWidgetLoweredState(WID_TN_SHIFT);
+			this->SetWidgetDirty(WID_TN_SHIFT);
+		}
+#endif
 	}};
 
 	/**
@@ -2218,6 +2272,11 @@ static constexpr std::tuple<WidgetID, WidgetType, SpriteID> _toolbar_button_spri
 	{WID_TN_MESSAGES,     WWT_IMGBTN,     SPR_IMG_MESSAGES},
 	{WID_TN_HELP,         WWT_IMGBTN,     SPR_IMG_QUERY},
 	{WID_TN_SWITCH_BAR,   WWT_IMGBTN,     SPR_IMG_SWITCH_TOOLBAR},
+#ifdef __ANDROID__
+	{WID_TN_DEL, WWT_PUSHIMGBTN, SPR_IMG_DEL},
+	{WID_TN_CTRL, WWT_IMGBTN, SPR_IMG_CTRL},
+	{WID_TN_SHIFT, WWT_IMGBTN, SPR_IMG_SHIFT},
+#endif
 };
 
 /**
@@ -2246,7 +2305,11 @@ static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 			case WID_TN_SMALL_MAP:
 			case WID_TN_FINANCES:
 			case WID_TN_VEHICLE_START:
+#ifdef __ANDROID__
+			case WID_TN_DEL:
+#else
 			case WID_TN_ZOOM_IN:
+#endif
 			case WID_TN_BUILDING_TOOLS_START:
 			case WID_TN_MUSIC_SOUND:
 				hor->Add(std::make_unique<NWidgetSpacer>(0, 0));

@@ -659,8 +659,8 @@ void VideoDriver_SDL_Base::InputLoop()
 
 	bool old_ctrl_pressed = _ctrl_pressed;
 
-	_ctrl_pressed  = !!(mod & KMOD_CTRL);
-	_shift_pressed = !!(mod & KMOD_SHIFT);
+	_ctrl_pressed  = !!(mod & KMOD_CTRL) ^ _invert_ctrl_state;
+	_shift_pressed = !!(mod & KMOD_SHIFT) ^ _invert_shift_state;
 
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */

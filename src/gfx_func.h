@@ -53,6 +53,8 @@ extern Support8bpp _support8bpp;
 extern CursorVars _cursor;
 extern bool _ctrl_pressed;   ///< Is Ctrl pressed?
 extern bool _shift_pressed;  ///< Is Shift pressed?
+extern bool _invert_ctrl_state;
+extern bool _invert_shift_state;
 extern uint16_t _game_speed;
 
 extern bool _left_button_down;

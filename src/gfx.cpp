@@ -37,6 +37,8 @@ Support8bpp _support8bpp; ///< State of the support for 8bpp graphics.
 CursorVars _cursor;
 bool _ctrl_pressed;   ///< Is Ctrl pressed?
 bool _shift_pressed;  ///< Is Shift pressed?
+bool _invert_ctrl_state = false; ///< Iff is \c true then the _ctrl_pressed represents the inverted state of Ctrl key.
+bool _invert_shift_state = false; ///< Iff is \c true then the _shift_pressed represents the inverted state of Shift key.
 uint16_t _game_speed = 100; ///< Current game-speed; 100 is 1x, 0 is infinite.
 bool _left_button_down;     ///< Is left mouse button pressed?
 bool _left_button_clicked;  ///< Is left mouse button clicked?
