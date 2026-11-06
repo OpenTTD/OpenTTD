@@ -79,7 +79,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 
 	if (!FontCache::TryFallback(info->callback->missing_fontsizes, info->callback->required_glyphs, font_name, logfont->elfLogFont)) return 1;
 
-	FontCache::AddFallback(info->callback->missing_fontsizes, font_name, logfont->elfLogFont);
+	if (!FontCache::AddFallback(info->callback->missing_fontsizes, info->callback->GetLoadReason(), font_name, logfont->elfLogFont)) return 1;
 	Debug(Facility::Fontcache, Severity::Error, "Fallback font: {}", font_name);
 	return 0; // stop enumerating
 }
@@ -160,7 +160,7 @@ void Win32FontCache::SetFontSize(int pixels)
 
 	this->fontname = FS2OTTD((LPWSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFaceName));
 
-	Debug(Facility::Fontcache, Severity::Warning, "Loaded font '{}' with size {}", this->fontname, pixels);
+	Debug(Facility::Fontcache, Severity::Warning, "Win32FontCache: Loaded font '{}' with size {}", this->fontname, pixels);
 	delete[] (BYTE*)otm;
 }
 
@@ -247,7 +247,7 @@ void Win32FontCache::ClearFontCache()
 	return this->SetGlyphPtr(key, std::move(new_glyph)).GetSprite();
 }
 
-/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
+/* virtual */ GlyphID Win32FontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -264,7 +264,7 @@ void Win32FontCache::ClearFontCache()
 	GetGlyphIndicesW(this->dc, chars, key >= 0x010000U ? 2 : 1, glyphs, GGI_MARK_NONEXISTING_GLYPHS);
 
 	if (glyphs[0] != 0xFFFF) return glyphs[0];
-	return allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END ? this->parent->MapCharToGlyph(key) : 0;
+	return 0;
 }
 
 class Win32FontCacheFactory : FontCacheFactory {

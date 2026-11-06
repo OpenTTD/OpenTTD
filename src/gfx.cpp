@@ -534,7 +534,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 		 * another size would be chosen it won't have truncated too little for
 		 * the truncation dots.
 		 */
-		truncation_layout.emplace(GetEllipsis(), INT32_MAX, line.GetVisualRun(0).GetFont().fontsize);
+		truncation_layout.emplace(GetEllipsis(), INT32_MAX, line.GetVisualRun(0).GetFont().GetFontCache().GetSize());
 		truncation_width = truncation_layout->GetBounds().width;
 
 		/* Is there enough space even for an ellipsis? */
@@ -613,13 +613,10 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 
 				/* Truncated away. */
 				if (truncation && (begin_x < min_x || end_x > max_x)) continue;
+				/* Outside the clipping area. */
+				if (begin_x > dpi_right || end_x < dpi_left) continue;
 
 				const Sprite *sprite = fc.GetGlyph(glyph);
-				/* Check clipping (the "+ 1" is for the shadow). */
-				if (begin_x + sprite->x_offs > dpi_right || begin_x + sprite->x_offs + sprite->width /* - 1 + 1 */ < dpi_left) continue;
-
-				if (do_shadow && (glyph & SPRITE_GLYPH) != 0) continue;
-
 				GfxMainBlitter(sprite, begin_x + (do_shadow ? shadow_offset : 0), top + (do_shadow ? shadow_offset : 0), BlitterMode::ColourRemap);
 			}
 		}
