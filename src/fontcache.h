@@ -29,6 +29,7 @@ enum class FontLoadReason : uint8_t {
 	Default, ///< A default built-in font.
 	Configured, ///< Font configured by the user.
 	LanguageFallback, ///< Font discovered for the current language.
+	MissingFallback, ///< Font discovered while rendering text.
 	End, ///< End marker.
 };
 
@@ -55,7 +56,7 @@ protected:
 	FontCache(FontSize fs) : fs(fs) {}
 	static void Register(std::unique_ptr<FontCache> &&fc, FontLoadReason load_reason);
 	static void LoadDefaultFonts(FontSize fs);
-	static void LoadFallbackFonts(FontSize fs);
+	static void LoadFallbackFonts(FontSize fs, FontLoadReason load_reason);
 
 public:
 	/** Ensure the destructor of the sub classes are called as well. */
