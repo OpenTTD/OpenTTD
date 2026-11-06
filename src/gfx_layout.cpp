@@ -8,11 +8,20 @@
 /** @file gfx_layout.cpp Handling of laying out text. */
 
 #include "stdafx.h"
+
+#include <unordered_set>
+
 #include "core/math_func.hpp"
+#include "debug.h"
 #include "gfx_layout.h"
+#include "gfx_func.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "core/utf8.hpp"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
+#include "viewport_func.h"
+#include "window_func.h"
 
 #include "table/control_codes.h"
 
@@ -35,6 +44,70 @@
 
 /** Cache of ParagraphLayout lines. */
 std::unique_ptr<Layouter::LineCache> Layouter::linecache;
+
+class RuntimeMissingGlyphSearcher : public MissingGlyphSearcher {
+	EnumIndexArray<std::set<char32_t>, FontSize, FontSize::End> fs_missing_glyphs{}; ///< List of glyphs to search for.
+	EnumIndexArray<std::unordered_set<char32_t>, FontSize, FontSize::End> fs_blocked_glyphs{}; ///< List of glyphs that were searched and not found.
+public:
+	FontLoadReason GetLoadReason() override { return FontLoadReason::MissingFallback; }
+
+	inline void Insert(FontSize fs, char32_t c)
+	{
+		if (this->fs_blocked_glyphs[fs].contains(c)) return;
+
+		this->fs_missing_glyphs[fs].insert(c);
+		this->search_timeout.Reset();
+	}
+
+	void DetermineRequiredGlyphs(FontSizes fontsizes) override
+	{
+		this->missing_fontsizes = fontsizes;
+		this->missing_glyphs.clear();
+
+		if (fontsizes.Count() == 1) {
+			this->missing_glyphs.swap(this->fs_missing_glyphs[fontsizes.GetNthSetBit(0).value()]);
+		} else {
+			for (FontSize fs : fontsizes) {
+				this->missing_glyphs.insert(this->fs_missing_glyphs[fs].begin(), this->fs_missing_glyphs[fs].end());
+			}
+		}
+
+		this->required_glyphs = this->missing_glyphs;
+	}
+
+	TimeoutTimer<TimerWindow> search_timeout{std::chrono::milliseconds(250), [this]()
+	{
+		/* Test if a dropdown window is being shown. If so we don't want to reinit windows yet. */
+		if (FindWindowByClass(WindowClass::DropdownMenu) != nullptr) {
+			this->search_timeout.Reset();
+			return;
+		}
+
+		FontSizes changed_fontsizes{};
+		for (FontSize fs : FONTSIZES_ALL) {
+			auto &missing = this->fs_missing_glyphs[fs];
+			if (missing.empty()) continue;
+
+			DetermineRequiredGlyphs(fs);
+			if (FontProviderManager::FindFallbackFont({}, this)) {
+				changed_fontsizes.Set(fs);
+			} else {
+				Debug(Facility::Fontcache, Severity::Error, "Unable to find font for {} missing glyphs", missing.size());
+				this->fs_blocked_glyphs[fs].insert(missing.begin(), missing.end());
+			}
+			missing.clear();
+		}
+
+		if (!changed_fontsizes.Any()) return;
+
+		FontCache::LoadFontCaches(changed_fontsizes);
+		LoadStringWidthTable(changed_fontsizes);
+		UpdateAllVirtCoords();
+		ReInitAllWindows(true);
+	}};
+};
+
+static RuntimeMissingGlyphSearcher _missing_glyphs;
 
 /**
  * Helper for getting a ParagraphLayouter of the given type.
@@ -97,6 +170,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 			FontIndex font_index = FontCache::GetFontIndexForCharacter(state.fontsize, c);
 
 			if (font_index == INVALID_FONT_INDEX) {
+				_missing_glyphs.Insert(state.fontsize, c);
 				font_index = FontCache::GetDefaultFontIndex(state.fontsize);
 			}
 
