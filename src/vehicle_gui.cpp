@@ -956,7 +956,9 @@ struct RefitWindow : public Window {
 
 	void OnInit() override
 	{
-		this->hscroll->SetStepSize(GetCharacterHeight(FontSize::Normal)); // Speed up horizontal scrollbar
+		if (this->hscroll != nullptr) {
+			this->hscroll->SetStepSize(GetCharacterHeight(FontSize::Normal)); // Speed up horizontal scrollbar
+		}
 
 		/* (Re)build the refit list */
 		this->OnInvalidateData(VIWD_CONSIST_CHANGED);
