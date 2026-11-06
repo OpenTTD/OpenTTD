@@ -430,42 +430,25 @@ public:
 	static Money GetAutoRenewMoney(ScriptCompany::CompanyID company);
 
 	/**
-	 * Set primary colour for your company.
+	 * Set a colour for your company.
 	 * @param scheme Livery scheme to set.
+	 * @param colour_index Colour index to set.
 	 * @param colour Colour to set.
 	 * @game @pre ScriptCompanyMode::IsValid().
-	 * @return False if unable to set primary colour of the livery scheme (e.g. colour in use).
+	 * @return False if unable to set a colour of the livery scheme (e.g. colour in use).
 	 */
-	static bool SetPrimaryLiveryColour(LiveryScheme scheme, Colours colour);
+	static bool SetLiveryColour(LiveryScheme scheme, uint colour_index, Colours colour);
 
 	/**
-	 * Set secondary colour for your company.
-	 * @param scheme Livery scheme to set.
-	 * @param colour Colour to set.
-	 * @game @pre ScriptCompanyMode::IsValid().
-	 * @return False if unable to set secondary colour of the livery scheme.
-	 */
-	static bool SetSecondaryLiveryColour(LiveryScheme scheme, Colours colour);
-
-	/**
-	 * Get primary colour of a livery for your company.
+	 * Get a colour of a livery for your company.
 	 * @param scheme Livery scheme to get.
+	 * @param colour_index Colour index to get.
 	 * @game @pre ScriptCompanyMode::IsValid().
 	 * @pre scheme >= LS_DEFAULT.
 	 * @pre scheme <= LS_FREIGHT_TRAM.
-	 * @return Primary colour of livery.
+	 * @return Colour of livery.
 	 */
-	static ScriptCompany::Colours GetPrimaryLiveryColour(LiveryScheme scheme);
-
-	/**
-	 * Get secondary colour of a livery for your company.
-	 * @param scheme Livery scheme to get.
-	 * @game @pre ScriptCompanyMode::IsValid().
-	 * @pre scheme >= LS_DEFAULT.
-	 * @pre scheme <= LS_FREIGHT_TRAM.
-	 * @return Secondary colour of livery.
-	 */
-	static ScriptCompany::Colours GetSecondaryLiveryColour(LiveryScheme scheme);
+	static ScriptCompany::Colours GetLiveryColour(LiveryScheme scheme, uint colour_index);
 };
 
 DECLARE_INCREMENT_DECREMENT_OPERATORS(ScriptCompany::CompanyID)

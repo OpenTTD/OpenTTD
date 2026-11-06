@@ -454,15 +454,15 @@ std::string GetEngineInfoString(EngineID engine)
 
 /**
  * Draw an engine.
- * @param left   Minimum horizontal position to use for drawing the engine
- * @param right  Maximum horizontal position to use for drawing the engine
+ * @param left Minimum horizontal position to use for drawing the engine
+ * @param right Maximum horizontal position to use for drawing the engine
  * @param preferred_x Horizontal position to use for drawing the engine.
- * @param y      Vertical position to use for drawing the engine.
+ * @param y Vertical position to use for drawing the engine.
  * @param engine Engine to draw.
- * @param pal    Palette to use for drawing.
+ * @param pal Palettes to use for drawing.
  * @param image_type Context where the image is being drawn.
  */
-void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
+void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type)
 {
 	const Engine *e = Engine::Get(engine);
 

@@ -1712,6 +1712,7 @@ static const CursorID ANIMCURSOR_BUILDSIGNALS = ANIMCURSOR_FLAG | 4; ///< 1292 -
 /* These bits are applied to sprite ID */
 static constexpr uint8_t TRANSPARENT_BIT = 31; ///< toggles transparency in the sprite
 static constexpr uint8_t RECOLOUR_BIT = 30; ///< toggles recolouring in the sprite
+static constexpr uint8_t ALT_RECOLOUR_BIT = 29; ///< toggles recolouring in the sprite
 static constexpr uint8_t CUSTOM_BIT = 29;
 static constexpr uint8_t OPAQUE_BIT = 28;
 
@@ -1733,6 +1734,7 @@ static constexpr uint8_t SPRITE_MODIFIER_CUSTOM_SPRITE = CUSTOM_BIT;      ///< S
 static constexpr uint8_t SPRITE_MODIFIER_OPAQUE        = OPAQUE_BIT;      ///< Set when a sprite must not ever be displayed transparently
 static constexpr uint8_t PALETTE_MODIFIER_TRANSPARENT  = TRANSPARENT_BIT; ///< when a sprite is to be displayed transparently, this bit needs to be set.
 static constexpr uint8_t PALETTE_MODIFIER_COLOUR       = RECOLOUR_BIT;    ///< this bit is set when a recolouring process is in action
+static constexpr uint8_t PALETTE_MODIFIER_ALT_COLOUR   = ALT_RECOLOUR_BIT; ///< this bit is set when a recolouring process is in action
 
 /**
  * Masks needed for sprite operations.
@@ -1750,6 +1752,7 @@ static_assert( (1U << RECOLOUR_BIT & SPRITE_MASK) == 0 );
 static_assert( TRANSPARENT_BIT != RECOLOUR_BIT );
 static_assert( (1U << TRANSPARENT_BIT & PALETTE_MASK) == 0 );
 static_assert( (1U << RECOLOUR_BIT & PALETTE_MASK) == 0 );
+static_assert( (1U << ALT_RECOLOUR_BIT & PALETTE_MASK) == 0 );
 
 
 static const PaletteID PAL_NONE                    = 0;

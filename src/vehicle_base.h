@@ -11,6 +11,7 @@
 #define VEHICLE_BASE_H
 
 #include "sprite.h"
+#include "livery.h"
 #include "track_type.h"
 #include "command_type.h"
 #include "order_base.h"
@@ -143,7 +144,7 @@ struct VehicleSpriteSeq {
 	}
 
 	void GetBounds(Rect *bounds) const;
-	void Draw(int x, int y, PaletteID default_pal, bool force_pal) const;
+	void Draw(int x, int y, const Livery::Palettes &default_pal, bool force_pal) const;
 };
 
 /**
@@ -240,7 +241,7 @@ public:
 	Vehicle **hash_tile_prev = nullptr; ///< NOSAVE: Previous vehicle in the tile location hash.
 	Vehicle **hash_tile_current = nullptr; ///< NOSAVE: Cache of the current hash chain.
 
-	SpriteID colourmap{}; ///< NOSAVE: cached colour mapping
+	Livery::Palettes colourmap{}; ///< NOSAVE: cached colour mapping
 
 	/* Related to age and service time */
 	TimerGameCalendar::Year build_year{}; ///< Year the vehicle has been built.

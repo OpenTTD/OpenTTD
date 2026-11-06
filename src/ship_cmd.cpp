@@ -94,7 +94,10 @@ static void GetShipIcon(EngineID engine, EngineImageType image_type, VehicleSpri
 	result->Set(to_underlying(Direction::W) + _ship_sprites[spritenum]);
 }
 
-void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
+/**
+ * Draw a ship engine. @copydoc DrawVehicleEngine
+ */
+void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type)
 {
 	VehicleSpriteSeq seq;
 	GetShipIcon(engine, image_type, &seq);
@@ -105,7 +108,7 @@ void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine
 			left - UnScaleGUI(rect.left),
 			right - UnScaleGUI(rect.right));
 
-	seq.Draw(preferred_x, y, pal, pal == PALETTE_CRASH);
+	seq.Draw(preferred_x, y, pal, pal[0] == PALETTE_CRASH);
 }
 
 /**
@@ -308,7 +311,7 @@ Trackdir Ship::GetVehicleTrackdir() const
 
 void Ship::MarkDirty()
 {
-	this->colourmap = PAL_NONE;
+	this->colourmap.fill(PAL_NONE);
 	this->UpdateViewport(true, false);
 	this->UpdateCache();
 }
