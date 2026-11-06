@@ -35,10 +35,10 @@ void NewGRFMappingChunkHandler::Save() const
 	SlTableHeader(_newgrf_mapping_desc);
 
 	for (uint i = 0; i < this->mapping.GetMaxMapping(); i++) {
-		if (this->mapping.mappings[i].grfid.Empty() &&
-			this->mapping.mappings[i].entity_id == 0) continue;
+		EntityIDMapping &map = this->mapping.mappings[i];
+		if (map.entity_id == UINT16_MAX && map.grfid.Empty()) continue;
 		SlSetArrayIndex(i);
-		SlObject(&this->mapping.mappings[i], _newgrf_mapping_desc);
+		SlObject(&map, _newgrf_mapping_desc);
 	}
 }
 

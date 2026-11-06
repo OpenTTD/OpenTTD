@@ -424,6 +424,7 @@ enum class SaveLoadVersion : uint16_t {
 	DepotsUnderBridges, ///< Saveload version: 366, GitHub pull request: 15836\n Allow depots under bridges.
 	LabelOrientationUnification, ///< Saveload version: 367, GitHub pull request: 15888\n Unify the orientation in which labels are written.
 	DoubleEndedShips, ///< Saveload version: 368, GitHub pull request: 16002\n Double-ended (NewGRF-only) ships can reverse without turning.
+	PerLandscapeTrees, ///< Saveload version: 369, GitHub pull request: 15923\n Trees are now defined per landscape
 
 	MaxVersion, ///< Highest possible saveload version.
 };

@@ -8,6 +8,7 @@
 /** @file tree_gui.cpp GUIs for building trees. */
 
 #include "stdafx.h"
+#include "picker_gui.h"
 #include "window_gui.h"
 #include "gfx_func.h"
 #include "tilehighlight_func.h"
@@ -18,66 +19,105 @@
 #include "sound_func.h"
 #include "zoom_func.h"
 #include "tree_map.h"
+#include "tree_func.h"
 #include "tree_cmd.h"
 
 #include "widgets/tree_widget.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "table/tree_land.h"
 
 #include "safeguards.h"
 
-void PlaceTreesRandomly();
-uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
-
-/** Tree Sprites with their palettes */
-const PalSpriteID tree_sprites[] = {
-	{ 1621, PAL_NONE }, { 1635, PAL_NONE }, { 1656, PAL_NONE }, { 1579, PAL_NONE },
-	{ 1607, PAL_NONE }, { 1593, PAL_NONE }, { 1614, PAL_NONE }, { 1586, PAL_NONE },
-	{ 1663, PAL_NONE }, { 1677, PAL_NONE }, { 1691, PAL_NONE }, { 1705, PAL_NONE },
-	{ 1711, PAL_NONE }, { 1746, PAL_NONE }, { 1753, PAL_NONE }, { 1732, PAL_NONE },
-	{ 1739, PAL_NONE }, { 1718, PAL_NONE }, { 1725, PAL_NONE }, { 1760, PAL_NONE },
-	{ 1838, PAL_NONE }, { 1844, PAL_NONE }, { 1866, PAL_NONE }, { 1871, PAL_NONE },
-	{ 1899, PAL_NONE }, { 1935, PAL_NONE }, { 1928, PAL_NONE }, { 1915, PAL_NONE },
-	{ 1887, PAL_NONE }, { 1908, PAL_NONE }, { 1824, PAL_NONE }, { 1943, PAL_NONE },
-	{ 1950, PAL_NONE }, { 1957, PALETTE_TO_GREEN }, { 1964, PALETTE_TO_RED },        { 1971, PAL_NONE },
-	{ 1978, PAL_NONE }, { 1985, PALETTE_TO_RED, },  { 1992, PALETTE_TO_PALE_GREEN }, { 1999, PALETTE_TO_YELLOW }, { 2006, PALETTE_TO_RED }
+struct TreePickerSelection {
+	TreeClassID sel_class;
+	uint16_t sel_type;
 };
+static TreePickerSelection _tree_gui;
 
-/**
- * Calculate the maximum size of all tree sprites
- * @return Dimension of the largest tree sprite
- */
-static Dimension GetMaxTreeSpriteSize()
-{
-	const uint16_t base = _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
-	const uint16_t count = _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
+class TreePickerCallbacks : public PickerCallbacksNewGRFClass<TreeClass> {
+public:
+	TreePickerCallbacks() : PickerCallbacksNewGRFClass<TreeClass>("fav_trees") {}
 
-	Dimension size, this_size;
-	Point offset;
-	/* Avoid to use it uninitialized */
-	size.width = ScaleGUITrad(32); // default width - WD_FRAMERECT_LEFT
-	size.height = ScaleGUITrad(39); // default height - BUTTON_BOTTOM_OFFSET
-	offset.x = 0;
-	offset.y = 0;
+	GrfSpecFeature GetFeature() const override { return GrfSpecFeature::Trees; }
 
-	for (int i = base; i < base + count; i++) {
-		if (i >= (int)lengthof(tree_sprites)) return size;
-		this_size = GetSpriteSize(tree_sprites[i].sprite, &offset);
-		size.width = std::max<int>(size.width, 2 * std::max<int>(this_size.width, -offset.x));
-		size.height = std::max<int>(size.height, std::max<int>(this_size.height, -offset.y));
+	StringID GetClassTooltip() const override { return STR_PICKER_STATION_CLASS_TOOLTIP; }
+	StringID GetTypeTooltip() const override { return STR_PICKER_STATION_TYPE_TOOLTIP; }
+	StringID GetCollectionTooltip() const override { return STR_PICKER_STATION_COLLECTION_TOOLTIP; }
+
+	bool IsActive() const override
+	{
+		for (const auto &cls : TreeClass::Classes()) {
+			for (const auto *spec : cls.Specs()) {
+				if (spec != nullptr) return true;
+			}
+		}
+		return false;
 	}
 
-	return size;
-}
+	bool HasClassChoice() const override
+	{
+		return TreeClass::Classes().size() > 1;
+	}
 
+	int GetSelectedClass() const override { return _tree_gui.sel_class.base(); }
+	void SetSelectedClass(int id) const override { _tree_gui.sel_class = this->GetClassIndex(id); }
+
+	StringID GetClassName(int id) const override
+	{
+		const auto *tc = GetClass(id);
+		if (tc->GetUISpecCount() == 0) return INVALID_STRING_ID;
+		return tc->name;
+	}
+
+	int GetSelectedType() const override { return _tree_gui.sel_type; }
+	void SetSelectedType(int id) const override { _tree_gui.sel_type = id; }
+
+	StringID GetTypeName(int cls_id, int id) const override
+	{
+		const auto *spec = this->GetSpec(cls_id, id);
+		return (spec == nullptr) ? STR_STATION_CLASS_DFLT_STATION : spec->name;
+	}
+
+	std::span<const BadgeID> GetTypeBadges(int cls_id, int id) const override
+	{
+		return {};
+		// const auto *spec = this->GetSpec(cls_id, id);
+		// if (spec == nullptr) return {};
+		// return spec->badges;
+	}
+
+	bool IsTypeAvailable(int cls_id, int id) const override
+	{
+		return this->GetSpec(cls_id, id) != nullptr;
+	}
+
+	void DrawType(int x, int y, int cls_id, int id) const override
+	{
+		const auto *spec = this->GetSpec(cls_id, id);
+		if (spec == nullptr) return;
+
+		auto ps = GetTreeSprite(*spec);
+		DrawSprite(ps.sprite, ps.pal, x, y + ScaleSpriteTrad(TILE_PIXELS * 3 / 4));
+	}
+
+	void FillUsedItems(std::set<PickerItem> &items) override
+	{
+		for (TileIndex tile : Map::Iterate()) {
+			if (!IsTileType(tile, TileType::Trees)) continue;
+			const TreeTileSpec &tts = GetTreeTileSpec(GetTreeType(tile));
+			items.insert({tts.grf_prop.grfid, tts.grf_prop.local_id, tts.class_index.base(), tts.index});
+		}
+	}
+
+	static TreePickerCallbacks instance;
+};
+/* static */ TreePickerCallbacks TreePickerCallbacks::instance;
 
 /**
  * The build trees window.
  */
-class BuildTreesWindow : public Window
-{
+class BuildTreesWindow : public PickerWindow {
 	/** Visual Y offset of tree root from the bottom of the tree type buttons */
 	static const int BUTTON_BOTTOM_OFFSET = 7;
 
@@ -87,7 +127,6 @@ class BuildTreesWindow : public Window
 		PM_FOREST_LG,
 	};
 
-	int tree_to_plant = -1; ///< Tree number to plant, \c TREE_INVALID for a random tree.
 	PlantingMode mode = PM_NORMAL; ///< Current mode for planting
 
 	/**
@@ -97,23 +136,23 @@ class BuildTreesWindow : public Window
 	{
 		this->RaiseButtons();
 
-		const int current_tree = this->tree_to_plant;
+		// if (this->index_to_plant >= 0) {
+		// 	/* SetObjectToPlace may call ResetObjectToPlace which would reset index_to_plant to -1. */
+		// 	AutoRestoreBackup backup(this->index_to_plant);
 
-		if (this->tree_to_plant >= 0) {
-			/* Activate placement */
-			SndConfirmBeep();
-			SetObjectToPlace(SPR_CURSOR_TREE, PAL_NONE, HT_RECT | HT_DIAGONAL, this->window_class, this->window_number);
-			this->tree_to_plant = current_tree; // SetObjectToPlace may call ResetObjectToPlace which may reset tree_to_plant to -1
-		} else {
-			/* Deactivate placement */
-			ResetObjectToPlace();
-		}
+		// 	/* Activate placement */
+		// 	SndConfirmBeep();
+		// 	SetObjectToPlace(SPR_CURSOR_TREE, PAL_NONE, HT_RECT | HT_DIAGONAL, this->window_class, this->window_number);
+		// } else {
+		// 	/* Deactivate placement */
+		// 	ResetObjectToPlace();
+		// }
 
-		if (this->tree_to_plant == TREE_INVALID) {
-			this->LowerWidget(WID_BT_TYPE_RANDOM);
-		} else if (this->tree_to_plant >= 0) {
-			this->LowerWidget(WID_BT_TYPE_BUTTON_FIRST + this->tree_to_plant);
-		}
+		// if (this->index_to_plant == TREE_INVALID) {
+		// 	this->LowerWidget(WID_BT_TYPE_RANDOM);
+		// } else if (this->index_to_plant >= 0) {
+		// 	this->LowerWidget(WID_BT_TYPE_BUTTON_FIRST + this->index_to_plant);
+		// }
 
 		switch (this->mode) {
 			case PM_NORMAL: this->LowerWidget(WID_BT_MODE_NORMAL); break;
@@ -125,56 +164,71 @@ class BuildTreesWindow : public Window
 		this->SetDirty();
 	}
 
+	// /**
+	//  * Get the tree type of the currently selected tree.
+	//  * @return the current tree type, or \c TREE_INVALID
+	//  */
+	// TreeType GetSelectedTreeType() const
+	// {
+	// 	if (this->index_to_plant < 0) return TREE_INVALID;
+
+	// 	const auto treetypes = GetTreeTypes();
+	// 	if (static_cast<size_t>(this->index_to_plant) < treetypes.size()) return treetypes[this->index_to_plant];
+
+	// 	return TREE_INVALID;
+	// }
+
 	void DoPlantForest(TileIndex tile)
 	{
-		TreeType treetype = (TreeType)this->tree_to_plant;
-		if (this->tree_to_plant == TREE_INVALID) {
-			treetype = (TreeType)(InteractiveRandomRange(_tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)]) + _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)]);
-		}
-		const uint radius = this->mode == PM_FOREST_LG ? 12 : 5;
-		const uint count = this->mode == PM_FOREST_LG ? 12 : 5;
-		/* Create tropic zones only when the tree type is selected by the user and not picked randomly. */
-		PlaceTreeGroupAroundTile(tile, treetype, radius, count, this->tree_to_plant != TREE_INVALID);
+		// this->callbacks.GetSelectedClass();
+		// this->callbacks.GetSelectedType();
+
+		// TreeType treetype = this->GetSelectedTreeType();
+		// if (treetype == TREE_INVALID) {
+		// 	const auto treetypes = GetTreeTypes();
+		// 	treetype = treetypes[InteractiveRandomRange(static_cast<uint32_t>(treetypes.size()))];
+		// }
+		// const uint radius = this->mode == PM_FOREST_LG ? 12 : 5;
+		// const uint count = this->mode == PM_FOREST_LG ? 12 : 5;
+		// /* Create tropic zones only when the tree type is selected by the user and not picked randomly. */
+		// PlaceTreeGroupAroundTile(tile, treetype, radius, count, this->index_to_plant != TREE_INVALID);
 	}
 
 public:
-	BuildTreesWindow(WindowDesc &desc, WindowNumber window_number) : Window(desc)
+	BuildTreesWindow(WindowDesc &desc, Window *parent) : PickerWindow(desc, parent, 0, TreePickerCallbacks::instance)
 	{
-		this->CreateNestedTree();
-		ResetObjectToPlace();
+		this->ConstructWindow();
+		// this->CreateNestedTree();
+		// ResetObjectToPlace();
 
-		this->LowerWidget(WID_BT_MODE_NORMAL);
+		// this->LowerWidget(WID_BT_MODE_NORMAL);
+		// /* Show scenario editor tools in editor */
+		// if (_game_mode != GameMode::Editor) {
+		// 	this->GetWidget<NWidgetStacked>(WID_BT_SE_PANE)->SetDisplayedPlane(SZSP_HORIZONTAL);
+		// }
+		// this->FinishInitNested(window_number);
+	}
+
+	void OnInit() override
+	{
+		this->PickerWindow::OnInit();
+
 		/* Show scenario editor tools in editor */
 		if (_game_mode != GameMode::Editor) {
 			this->GetWidget<NWidgetStacked>(WID_BT_SE_PANE)->SetDisplayedPlane(SZSP_HORIZONTAL);
 		}
-		this->FinishInitNested(window_number);
 	}
 
-	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
-	{
-		if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
-			/* Ensure tree type buttons are sized after the largest tree type */
-			Dimension d = GetMaxTreeSpriteSize();
-			size.width = d.width + padding.width;
-			size.height = d.height + padding.height + ScaleGUITrad(BUTTON_BOTTOM_OFFSET); // we need some more space
-		}
-	}
-
-	void DrawWidget(const Rect &r, WidgetID widget) const override
-	{
-		if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
-			const int index = widget - WID_BT_TYPE_BUTTON_FIRST;
-			/* Trees "grow" in the centre on the bottom line of the buttons */
-			DrawSprite(tree_sprites[index].sprite, tree_sprites[index].pal, CentreBounds(r.left, r.right, 0), r.bottom - ScaleGUITrad(BUTTON_BOTTOM_OFFSET));
-		}
-	}
+	// void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
+	// {
+	// 	this->UpdateWidgetSize(WidgetID widget, Dimension &size, const Dimension &padding, Dimension &fill, Dimension &resize)
+	// }
 
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		switch (widget) {
 			case WID_BT_TYPE_RANDOM: // tree of random type.
-				this->tree_to_plant = this->tree_to_plant == TREE_INVALID ? -1 : TREE_INVALID;
+				// this->index_to_plant = this->index_to_plant == TREE_INVALID ? -1 : TREE_INVALID;
 				this->UpdateMode();
 				break;
 
@@ -202,13 +256,15 @@ public:
 				break;
 
 			default:
-				if (widget >= WID_BT_TYPE_BUTTON_FIRST) {
-					const int index = widget - WID_BT_TYPE_BUTTON_FIRST;
-					this->tree_to_plant = this->tree_to_plant == index ? -1 : index;
-					this->UpdateMode();
-				}
+				this->PickerWindow::OnClick(pt, widget, click_count);
 				break;
 		}
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		this->PickerWindow::OnInvalidateData(data, gui_scope);
+		if (!gui_scope) return;
 	}
 
 	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
@@ -227,85 +283,54 @@ public:
 		} else {
 			TileIndex tile = TileVirtXY(pt.x, pt.y);
 
-			if (this->mode == PM_NORMAL) {
-				Command<Commands::PlantTree>::Post(tile, tile, this->tree_to_plant, false);
-			} else {
-				this->DoPlantForest(tile);
-			}
+			// if (this->mode == PM_NORMAL) {
+			// 	Command<Commands::PlantTree>::Post(tile, tile, this->GetSelectedTreeType(), false);
+			// } else {
+			// 	this->DoPlantForest(tile);
+			// }
 		}
 	}
 
 	void OnPlaceMouseUp([[maybe_unused]] ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt, TileIndex start_tile, TileIndex end_tile) override
 	{
-		if (_game_mode != GameMode::Editor && this->mode == PM_NORMAL && pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
-			Command<Commands::PlantTree>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->tree_to_plant, _ctrl_pressed);
-		}
+		// if (_game_mode != GameMode::Editor && this->mode == PM_NORMAL && pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
+		// 	Command<Commands::PlantTree>::Post(STR_ERROR_CAN_T_PLANT_TREE_HERE, end_tile, start_tile, this->GetSelectedTreeType(), _ctrl_pressed);
+		// }
 	}
 
 	void OnPlaceObjectAbort() override
 	{
-		this->tree_to_plant = -1;
+		// this->index_to_plant = -1;
 		this->UpdateMode();
 	}
 };
-
-/**
- * Make widgets for the current available tree types.
- * This does not use a NWID_MATRIX or WWT_MATRIX control as those are more difficult to
- * get producing the correct result than dynamically building the widgets is.
- * @copydoc NWidgetFunctionType
- */
-static std::unique_ptr<NWidgetBase> MakeTreeTypeButtons()
-{
-	const uint8_t type_base = _tree_base_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
-	const uint8_t type_count = _tree_count_by_landscape[to_underlying(_settings_game.game_creation.landscape)];
-
-	/* Toyland has 9 tree types, which look better in 3x3 than 4x3 */
-	const int num_columns = type_count == 9 ? 3 : 4;
-	const int num_rows = CeilDiv(type_count, num_columns);
-	uint8_t cur_type = type_base;
-
-	auto vstack = std::make_unique<NWidgetVertical>(NWidContainerFlag::EqualSize);
-	vstack->SetPIP(0, 1, 0);
-
-	for (int row = 0; row < num_rows; row++) {
-		auto hstack = std::make_unique<NWidgetHorizontal>(NWidContainerFlag::EqualSize);
-		hstack->SetPIP(0, 1, 0);
-		for (int col = 0; col < num_columns; col++) {
-			if (cur_type > type_base + type_count) break;
-			auto button = std::make_unique<NWidgetBackground>(WWT_PANEL, Colours::Grey, WID_BT_TYPE_BUTTON_FIRST + cur_type);
-			button->SetToolTip(STR_PLANT_TREE_TOOLTIP);
-			hstack->Add(std::move(button));
-			cur_type++;
-		}
-		vstack->Add(std::move(hstack));
-	}
-
-	return vstack;
-}
 
 static constexpr std::initializer_list<NWidgetPart> _nested_build_trees_widgets = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, Colours::DarkGreen),
 		NWidget(WWT_CAPTION, Colours::DarkGreen), SetStringTip(STR_PLANT_TREE_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_SHADEBOX, Colours::DarkGreen),
+		NWidget(WWT_DEFSIZEBOX, Colours::DarkGreen),
 		NWidget(WWT_STICKYBOX, Colours::DarkGreen),
 	EndContainer(),
-	NWidget(WWT_PANEL, Colours::DarkGreen),
-		NWidget(NWID_VERTICAL), SetPIP(0, 1, 0), SetPadding(2),
-			NWidgetFunction(MakeTreeTypeButtons),
-			NWidget(WWT_TEXTBTN, Colours::Grey, WID_BT_TYPE_RANDOM), SetStringTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
-			NWidget(NWID_SELECTION, Colours::Invalid, WID_BT_SE_PANE),
-				NWidget(NWID_VERTICAL), SetPIP(0, 1, 0),
-					NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize),
-						NWidget(WWT_TEXTBTN, Colours::Grey, WID_BT_MODE_NORMAL), SetFill(1, 0), SetStringTip(STR_TREES_MODE_NORMAL_BUTTON, STR_TREES_MODE_NORMAL_TOOLTIP),
-						NWidget(WWT_TEXTBTN, Colours::Grey, WID_BT_MODE_FOREST_SM), SetFill(1, 0), SetStringTip(STR_TREES_MODE_FOREST_SM_BUTTON, STR_TREES_MODE_FOREST_SM_TOOLTIP),
-						NWidget(WWT_TEXTBTN, Colours::Grey, WID_BT_MODE_FOREST_LG), SetFill(1, 0), SetStringTip(STR_TREES_MODE_FOREST_LG_BUTTON, STR_TREES_MODE_FOREST_LG_TOOLTIP),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_VERTICAL),
+			NWidgetFunction(MakePickerClassWidgets),
+			NWidget(WWT_PANEL, Colours::DarkGreen),
+				NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0), SetPadding(WidgetDimensions::unscaled.picker),
+					NWidget(WWT_TEXTBTN, Colours::Grey, WID_BT_TYPE_RANDOM), SetStringTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
+					NWidget(NWID_SELECTION, Colours::Invalid, WID_BT_SE_PANE),
+						NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_picker, 0),
+							NWidget(WWT_TEXTBTN, Colours::Grey, WID_BT_MODE_NORMAL), SetFill(1, 0), SetStringTip(STR_TREES_MODE_NORMAL_BUTTON, STR_TREES_MODE_NORMAL_TOOLTIP),
+							NWidget(WWT_TEXTBTN, Colours::Grey, WID_BT_MODE_FOREST_SM), SetFill(1, 0), SetStringTip(STR_TREES_MODE_FOREST_SM_BUTTON, STR_TREES_MODE_FOREST_SM_TOOLTIP),
+							NWidget(WWT_TEXTBTN, Colours::Grey, WID_BT_MODE_FOREST_LG), SetFill(1, 0), SetStringTip(STR_TREES_MODE_FOREST_LG_BUTTON, STR_TREES_MODE_FOREST_LG_TOOLTIP),
+							NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BT_MANY_RANDOM), SetStringTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
+						EndContainer(),
 					EndContainer(),
-					NWidget(WWT_PUSHTXTBTN, Colours::Grey, WID_BT_MANY_RANDOM), SetStringTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
+		NWidgetFunction(MakePickerTypeWidgets),
 	EndContainer(),
 };
 
@@ -320,5 +345,5 @@ static WindowDesc _build_trees_desc(
 void ShowBuildTreesToolbar()
 {
 	if (_game_mode != GameMode::Editor && !Company::IsValidID(_local_company)) return;
-	AllocateWindowDescFront<BuildTreesWindow>(_build_trees_desc, 0);
+	new BuildTreesWindow(_build_trees_desc, nullptr);
 }

@@ -736,6 +736,7 @@ static const SpriteGroup *ReadSpriteGroup(ByteReader &buf, GrfSpecFeature featur
 				case GrfSpecFeature::RoadTypes:
 				case GrfSpecFeature::TramTypes:
 				case GrfSpecFeature::Badges:
+				case GrfSpecFeature::Trees:
 					return ReadRealSpriteGroup(buf, feature, setid, type);
 
 				case GrfSpecFeature::Houses:

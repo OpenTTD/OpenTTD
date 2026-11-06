@@ -193,8 +193,8 @@ public:
  */
 struct EntityIDMapping {
 	GrfID grfid; ///< The GRF ID of the file the entity belongs to
-	uint16_t entity_id; ///< The entity ID within the GRF file
-	uint16_t substitute_id; ///< The (original) entity ID to use if this GRF is not available
+	uint16_t entity_id = UINT16_MAX; ///< The entity ID within the GRF file
+	uint16_t substitute_id = UINT16_MAX; ///< The (original) entity ID to use if this GRF is not available
 };
 
 class OverrideManagerBase {
@@ -287,12 +287,32 @@ public:
 	void SetEntitySpec(ObjectSpec &&spec);
 };
 
+struct TreeSpec;
+class TreeOverrideManager : public OverrideManagerBase {
+public:
+	TreeOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
+
+	void SetEntitySpec(TreeSpec &&spec);
+};
+
+struct TreeTileSpec;
+class TreeTileOverrideManager : public OverrideManagerBase {
+public:
+	TreeTileOverrideManager(uint16_t offset, uint16_t maximum, uint16_t invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
+
+	void SetEntitySpec(TreeTileSpec &&spec);
+};
+
 extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
 extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
 extern ObjectOverrideManager _object_mngr;
+extern TreeOverrideManager _tree_mngr;
+extern TreeTileOverrideManager _treetile_mngr;
 
 uint32_t GetTerrainType(TileIndex tile, TileContext context = TileContext::Normal);
 TileIndex GetNearbyTile(uint8_t parameter, TileIndex tile, bool signed_offsets = true, Axis axis = Axis::Invalid);
