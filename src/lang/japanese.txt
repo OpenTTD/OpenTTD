@@ -206,7 +206,7 @@ STR_COLOUR_SECONDARY_ORANGE                                     :橙
 STR_COLOUR_SECONDARY_BROWN                                      :茶
 STR_COLOUR_SECONDARY_GREY                                       :グレー
 STR_COLOUR_SECONDARY_WHITE                                      :白
-STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :プライマリカラーと同一
+STR_COLOUR_SECONDARY_SAME_AS_PRIMARY                            :コーポレートカラーと同一
 
 
 # Units used in OpenTTD
@@ -1424,7 +1424,7 @@ STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :インフレを
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋梁の最大長: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :橋梁の最大長を設定できます
 
-STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :橋梁の高度: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :橋梁の最大高度: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :橋梁の最大高度を設定できます
 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :トンネルの最大長: {STRING}
@@ -1516,23 +1516,25 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :街有道路で
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :路側型バス停/荷役所を街が所有する道路上に建設できるようにします
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :他社の道路上での路側型バス停/荷役所設置: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :路側型バス停/荷役所を他社が所有する道路上に建設できるようにします
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}この設定の変更は既に輸送車両が存在する時には不可能です
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :この設定の変更は既に輸送機器が存在する場合は不可能です
 
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :インフラ補修: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :有効にすると、インフラ設備にも維持費が発生するようになります。維持費はネットワークのサイズに非線形で比例する為、小さい会社よりも大きい会社の方が影響が大きくなります
 
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :始めの会社の色: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :開始する前に会社の色を選択してください
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :初期設定のコーポレートカラー: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :ゲーム開始時に使用する会社のコーポレートカラーを選択してください
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY            :初期設定のサブカラー: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_SECONDARY_HELPTEXT   :サブカラーをサポートするNewGRFを使用する場合、ゲーム開始時に使用する会社のサブカラーを選択してください
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :空港の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :有効にすると、いずれの種類の空港であっても、その開発後であれば永久に建設が可能になります
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :迷走車両の注意喚起: {STRING}
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :輸送車両が目的地への経路を見付けられない場合にメッセージを出します
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :輸送機器が目的地への経路を見付けられない場合にメッセージを出します
 
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :輸送車両の指令を監査: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :有効にすると、輸送車両の各指令は定期的にチェックされ、何か問題(指令の重複など)が見つかった場合にはメッセージで知らせてくるようになります
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :輸送機器の指令を監査: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :有効にすると、輸送機器の各指令は定期的にチェックされ、何か問題(指令の重複など)が見つかった場合にはメッセージで知らせてくるようになります
 ###length 3
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :無効
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :有効 (車庫で待機中の車両は除く)
@@ -1540,20 +1542,37 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :有効 (全車�
 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :赤字車両の警告表示: {STRING}
 ###length 2
-STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :有効にすると、輸送車両が一年(1/1～12/31)の間全く利益を上げていない場合、メッセージで知らせてくるようになります。
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :有効にすると、輸送機器が一年(1/1～12/31)の間全く利益を上げていない場合、メッセージで知らせてくるようになります
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :有効にすると、輸送機器が一期の間全く利益を上げていない場合、メッセージで知らせてくるようになります
 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :輸送機器の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :有効にすると、いずれの種類の輸送機器であっても、その開発後であれば永久に購入が可能になります
 
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS                            :時間単位: {STRING}
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_HELPTEXT                   :ゲーム内で使用する時間単位を選択してください。この設定は後から変更することはできません。「カレンダー」方式は、従来のOpenTTDの標準的な形式です。1年を12ヶ月とし、各月は28〜31日で構成されます。一方、「ウォールクロック」方式では、貨物の生産や財務データは1分単位で計算されます。この1分という時間は、カレンダー方式における30日間に相当します。また、12分間が1期としてまとめられており、これはカレンダー方式における1年に相当します。どちらの方式を選択した場合でも、従来通りのカレンダーは存在し、輸送機器や建物、その他のインフラが登場する時期(導入時期)の管理に使用されます。
 ###length 2
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_CALENDAR                   :カレンダー
+STR_CONFIG_SETTING_TIMEKEEPING_UNITS_WALLCLOCK                  :ウォールクロック
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR                             :1年の分数(ウォールクロック方式): {STRING}
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_HELPTEXT                    :カレンダー上の1年を何分にするか設定します。デフォルト値は12分です。0に設定すると、カレンダーの日付は進行しません。1年の長さを長くすると、輸送機器や建物、その他のインフラの導入ペースが遅くなります。なお、この設定は輸送機器の速度や経済シミュレーション(インフレを除く)には影響しません。この設定は、「ウォールクロック」方式を使用している場合にのみ有効です。
 
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_VALUE                       :{NUM}
 ###setting-zero-is-special
+STR_CONFIG_SETTING_MINUTES_PER_YEAR_FROZEN                      :0 (カレンダー日付の停止)
 
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE                             :街の貨物生産量: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGO_SCALE_HELPTEXT                    :街の貨物生産量を、この割合で調整します
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE                         :産業の貨物生産量: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_CARGO_SCALE_HELPTEXT                :産業の貨物生産量を、この割合で調整します
 STR_CONFIG_SETTING_CARGO_SCALE_VALUE                            :{NUM}%
 
+STR_CONFIG_SETTING_CARGO_AGING_RATE                             :貨物価値の減少速度の割合調整: {STRING}
+STR_CONFIG_SETTING_CARGO_AGING_RATE_HELPTEXT                    :輸送機器に積載された貨物の価値が、時間の経過とともにどれだけ減少するかを調整します
+STR_CONFIG_SETTING_CARGO_AGING_RATE_VALUE                       :{NUM}%
 ###setting-zero-is-special
+STR_CONFIG_SETTING_CARGO_AGING_RATE_ZERO                        :減少しない
 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :老朽車両の自動交換: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :有効にすると、耐用年数を越えた輸送機器は自動で更新されるようになります(交換には一度格納施設に戻る必要があります)。具体的な交換時期は下の設定で変更できます。
@@ -1572,7 +1591,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :赤地のエラ
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :ツールチップ表示: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :カーソルをインターフェイス要素に乗せた場合にツールチップが表示されるまでの時間を決定します。"0"に設定するとツールチップは右クリックで表示されるようになります
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :マウスオーバー {COMMA}秒後
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :マウスオーバー {COMMA}ミリ秒後
 ###setting-zero-is-special
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右クリック
 
@@ -1602,6 +1621,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis�
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :産業の密度: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :どの程度の産業が開始時に生成され、ゲーム中にそのレベルを維持するようにするのかを設定します
 
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY                  :一次産業のみを生成する: {STRING}
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY_HELPTEXT         :これを有効にすると、マップ生成時およびゲームプレイ中、一次産業のみが生成されるようになります
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油精製所のマップ端からの距離: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :石油精製所はマップの外周付近にのみ建設されます。つまり、外周が海のマップでは海岸沿いに建設されるということです
@@ -1625,7 +1646,13 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :なだらか
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :起伏
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :特に起伏
 
+STR_CONFIG_SETTING_AVERAGE_HEIGHT                               :平均標高: {STRING}
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_HELPTEXT                      :地形の平均的な高さを選択します。「自動」を選択すると、選んだ気候に基づいたデフォルト設定が適用されます。亜熱帯気候では「低地」、温帯気候およびおもちゃの国では「普通」、亜寒帯気候では「高原」となります。
 ###length 4
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_AUTO                          :自動
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_LOWLANDS                      :低地
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_NORMAL                        :普通
+STR_CONFIG_SETTING_AVERAGE_HEIGHT_PLATEAUS                      :高原
 
 STR_CONFIG_SETTING_VARIETY                                      :地形特徴の分布: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesisのみ) マップに山岳地と平地の両方が含まれるかを調整します。この設定を使ってもマップがより平坦になってしまう場合は、他の設定を「山岳」に切り替えください
@@ -1648,6 +1675,7 @@ STR_CONFIG_SETTING_ROAD_SIDE_LEFT                               :左側通行
 STR_CONFIG_SETTING_ROAD_SIDE_RIGHT                              :右側通行
 
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :ハイトマップの回転方向: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_TOOLTIP                   :ハイトマップ画像をゲームワールドに合わせる際、どの方向に回転させるかを選択してください
 ###length 2
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :反時計回り
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :時計回り
@@ -1663,7 +1691,7 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :単一駅がど
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :ヘリパッドでの修理許容: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :ヘリが着陸する毎に自動的に点検を行います。ヘリポートに格納庫があるかどうかには左右されません
 
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :インフラ建設ツールバーに地形ツールバーを追加: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :鉄道/道路/船舶/空港ツールバーと地形ツールバーをリンク: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :鉄道/道路/船舶/空港の建設ツールバーを開いた際に、土木工事用に地形ツールバーも開くようになります
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :ミニマップの陸地色: {STRING}
@@ -1673,7 +1701,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :緑
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :濃緑
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :青紫
 
-STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :貨物流通オーバーレイの配色：{STRING}
+STR_CONFIG_SETTING_LINKGRAPH_COLOURS                            :貨物流通オーバーレイの配色: {STRING}
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_HELPTEXT                   :貨物の流れのオーバーレイに使用される配色を設定します。
 ###length 4
 STR_CONFIG_SETTING_LINKGRAPH_COLOURS_GREEN_TO_RED               :緑から赤（オリジナル）
@@ -1692,6 +1720,8 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :左クリック
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :画面のスムーズスクロール: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :ミニマップでの移動や「現在位置に移動」などのコマンドを使用した際にメイン画面がどのように移動するかを設定します。有効にした場合はスムーズにスクロールして移動します。無効の場合は目的地に直接ジャンプします
 
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT                  :従来のツールバーメニュー選択動作: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_DROPDOWN_AUTOSELECT_HELPTEXT         :ツールバーメニューの選択動作を設定します。無効の場合はツールバーメニューは項目が選択されるまで開いたままになります。有効にした場合はマウスボタンを離した時点でツールバーメニューの項目が実行されます
 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :測定ツールチップ表示: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :タイルをまたぐような建設活動の際に、距離や面積、高低差などの情報を表示するようになります
@@ -1709,7 +1739,7 @@ STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :有効にする
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :地図のスクロール速度: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :マウスホイールによるスクロールの敏感さを設定します
 
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :マウスホイールの動作：{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :マウスホイールの動作: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :マウスホイールを使ったときのゲーム動作を決めます
 ###length 3
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :ズームイン・ズームアウト
@@ -1727,8 +1757,8 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :クリック(�
 STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :中継サービスを利用: {STRING}
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :サーバーへの接続に失敗した場合、その人は接続するためにリレーサービスを利用できます。「拒否」でこれを拒絶、「尋ねる」で都度確認、「許可」で確認なしに容認します。
 ###length 3
-STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :二度と
-STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :聞く
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :拒否
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :尋ねる
 STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :許可
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右クリックのエミュレーション: {STRING}
@@ -1743,6 +1773,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :ウィンドウ
 ###length 3
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_NO                     :いいえ
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :はい
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :はい (固定したウィンドウを除く)
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :セーブ時の日付フォーマット: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :セーブデータ名にデフォルトで付けられる日付の表記法を指定します。注: 日本の場合、「短」と「ISO標準」に違いはありません
@@ -1762,13 +1793,18 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :建設以外の
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :地形変更以外の全行動
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :全行動
 
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :詳細輸送機器リストを使用: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :輸送機器リストでグループ化を使用: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :有効にすると、リスト内で輸送機器をグループ化できるようになります
 
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :積み降ろし進行度を表示: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :積み降ろしを行っている輸送機関の上に、その進行度合いを示すインジケーターを表示するかどうかを設定します
 
+STR_CONFIG_SETTING_TIMETABLE_MODE                               :ダイヤ設定における時間単位: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_MODE_HELPTEXT                      :ダイヤ設定で使用する時間単位を選択してください
 ###length 3
+STR_CONFIG_SETTING_TIMETABLE_MODE_DAYS                          :日
+STR_CONFIG_SETTING_TIMETABLE_MODE_SECONDS                       :秒
+STR_CONFIG_SETTING_TIMETABLE_MODE_TICKS                         :ティック
 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :ダイヤに発着情報を表示: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :時刻表に出発・到着の予定時刻を表示します
@@ -1776,7 +1812,12 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :時刻表に出
 STR_CONFIG_SETTING_QUICKGOTO                                    :指令の作成を高速化: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :指令作成画面を開いたときに規定で「駅を選択」を選択するようにします
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE                       :デフォルトの線路・道路・路面軌道の種類 (新規ゲーム開始時/ゲームロード時): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_HELPTEXT              :ゲームの開始時またはロード時に選択される、鉄道・道路・路面軌道の種類です。「最古」は最も古い種類を、「最新」は最も新しい種類を、「最多」は現在最も多く使用されている種類が選択されます。
 ###length 3
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_FIRST                 :最古
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_LAST                  :最新
+STR_CONFIG_SETTING_DEFAULT_RAIL_ROAD_TYPE_MOST_USED             :最多
 
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :予約済み経路を表示: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :列車が移動のために予約した経路部分に色づけします。パス信号で作られた閉塞区間に他の列車が入れないといったトラブルの解決に役立ちます
@@ -1784,8 +1825,8 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :列車が移動
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :建設ツールバーの表示を維持: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :橋やトンネルなどを建設した後もツールバーを開いたままにします
 
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :線路の敷設中に自動的に信号を除去します: {STRING}
-STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :信号が経路上に存在する場合線路設置の際にすべて自動的に除去されます。鉄道車両の衝突につながる危険性があります
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :線路の敷設時に信号を自動的に撤去: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :線路の敷設時に邪魔になる信号がある場合、自動的に撤去されます。ただし、これにより列車の衝突事故が発生する可能性がある点に注意してください。
 
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :ゲーム進行速度の加速制限: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :早送りが有効になっている場合のゲーム進行速度を制限します。0 = 制限なし(コンピュータの許す限り高速にする)。100%より下げると進行速度が遅くなります。制限の上限はコンピュータの仕様によって異なり、ゲームの設定にも依存します。
@@ -1801,9 +1842,11 @@ STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :画面に新聞
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :年末: {STRING}
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD                             :期末: {STRING}
 
 ###length 2
 STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :年始に行われる過年度の営業総括が表示されたときに効果音を鳴らすかどうかを設定します
+STR_CONFIG_SETTING_SOUND_NEW_PERIOD_HELPTEXT                    :期間の始めに行われる前期の営業総括が表示されたときに効果音を鳴らすかどうかを設定します
 
 STR_CONFIG_SETTING_SOUND_CONFIRM                                :建設: {STRING}
 STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :建設などが成功した場合に効果音を鳴らすかどうかを設定します
@@ -1849,7 +1892,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :マルチプレ
 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :命令コード処理上限: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :AIやゲームスクリプトが一つの「詰め込み指令」を処理する際に、一度に演算できる命令コード数を設定します。一般に値を小さくした場合、ゲームへの負荷が軽減されます
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :スクリプトあたりの最大メモリ使用量：{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :スクリプトあたりの最大メモリ使用量: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :一つのスクリプトが強制終了する前に消費する可能性のあるメモリ量。大規模なマップではメモリ量を拡充したほうが良いかもしれません。
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
@@ -1865,6 +1908,9 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :個別に指定
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :船舶の点検周期: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :個別に指定されていない場合の、船舶の点検周期を設定します
 ###length 3
+STR_CONFIG_SETTING_SERVINT_VALUE_DAYS                           :{COMMA}日
+STR_CONFIG_SETTING_SERVINT_VALUE_MINUTES                        :{COMMA}分
+STR_CONFIG_SETTING_SERVINT_VALUE_PERCENTAGE                     :{COMMA}%
 
 ###setting-zero-is-special
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :点検なし
@@ -1872,19 +1918,23 @@ STR_CONFIG_SETTING_SERVINT_DISABLED                             :点検なし
 STR_CONFIG_SETTING_NOSERVICE                                    :故障切ならば点検無効化: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :有効にすると、故障が起こらない設定の時には点検も行わなくなります
 
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY               :駅の長さより長い列車に対する積載速度のペナルティ: {STRING}
+STR_CONFIG_SETTING_STATION_LENGTH_LOADING_PENALTY_HELPTEXT      :有効にすると、駅の長さを超える列車は駅の長さに収まる列車よりも積み込みが遅くなります。この設定は経路探索には影響しません
 
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :貨車の上限速度: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :有効にすると、上限速度が設定されている貨車を使用した場合、列車はその速度以上出せなくなります
 
+STR_CONFIG_SETTING_AIRCRAFT_RANGE                               :航空機の最大航続距離を使用: {STRING}
+STR_CONFIG_SETTING_AIRCRAFT_RANGE_HELPTEXT                      :有効にすると、NewGRFで航空機の最大航続距離を制限できるようになります
 
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :電気鉄道を無効化: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :この設定を有効にすると電気鉄道を敷設できなくなります。ただし電気機関車・電車は架線のない非電化の線路を走ることができるようになります
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :停留施設の開業(自社): {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :自社の新しい停留施設に最初の列車が到着したときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :自社の新しい停留施設に最初の輸送機器が到着したときにニュースを表示するかを設定します
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :停留施設の開業(他社): {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :他社の新しい停留施設に最初の列車が到着したときにニュースを表示するかを設定します
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :他社の新しい停留施設に最初の輸送機器が到着したときにニュースを表示するかを設定します
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :事故/災害: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :事故や災害が発生したときにニュースを表示するかを設定します
@@ -1942,9 +1992,10 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 ###setting-zero-is-special
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :(なし)
 
-STR_CONFIG_SETTING_ECONOMY_TYPE                                 :エコノミータイプ：{STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :経済タイプ: {STRING}
 ###length 2
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :なだらかな経済は生産量の変動をより頻繁に起こすようにします。固定経済は変動と閉鎖の両方を起こさないようにします。産業が NewGRF により提供される場合この設定は影響を及ぼさない場合があります。
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :「なだらかな経済」は生産量の変動をより頻繁に起こすようにします。「固定経済」は変動と閉鎖の両方を起こさないようにします。産業がNewGRFにより提供される場合この設定は影響を及ぼさない場合があります。{}{}経済が固定されている場合でも、月ごとの産業生産量は変動しているように見えることがあります。これは、生産が月と正確には一致しない固定間隔で行われるためです。
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT_PERIOD                 :「なだらかな経済」は生産量の変動をより頻繁に起こすようにします。「固定経済」は変動と閉鎖の両方を起こさないようにします。産業がNewGRFにより提供される場合この設定は影響を及ぼさない場合があります。{}{}経済が固定されている場合でも、分ごとの産業生産量は変動しているように見えることがあります。これは、生産が分と正確には一致しない固定間隔で行われるためです。
 
 ###length 3
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :オリジナル
@@ -1952,7 +2003,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :なだらか
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :固定
 
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :区間払いの割合: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :転送を行う輸送網(フィーダーシステム)を構築した場合、中継地点までの輸送で総輸送費の何%を受け取れるかを設定します(転送時に予想される最終輸送費から仮に部分払いし、最終的に貨物が目的地に到着した時点で清算します)。転送元の輸送機器が赤字になるのを防ぎます
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :転送を行う輸送網(フィーダーシステム)を構築した場合、中継地点までの輸送で収益の何%を受け取れるかを設定します(転送時に予想される最終収益から仮に部分払いし、最終的に貨物が目的地に到着した時点で清算します)。転送元の輸送機器が赤字になるのを防ぎます
 
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :信号間隔: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ctrl+ドラッグで信号を設置する際に、障害物(別の信号やポイント)が現れるまでどのくらいの間隔で信号を設置するかを設定します
@@ -1966,7 +2017,8 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :色灯式信号
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :信号種類のサイクル範囲: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Ctrl+クリックで信号種類を切り替える際に使う、サイクル種類を決定します
 ###length 2
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :すべて表示
+STR_CONFIG_SETTING_CYCLE_SIGNAL_GROUP                           :現在のグループのみ
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :表示されているすべて
 
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE                              :信号の種類: {STRING}
 STR_CONFIG_SETTING_SIGNAL_GUI_MODE_HELPTEXT                     :信号のツールバーに表示される信号の種類を選択します
@@ -1998,7 +2050,12 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :無効
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :有効
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :有効(道路配置も設定可)
 
+STR_CONFIG_SETTING_HOUSE_PLACER                                 :個々の建物の配置: {STRING}
+STR_CONFIG_SETTING_HOUSE_PLACER_HELPTEXT                        :許可すると、プレイヤーは街の建物を手動で配置できるようになります
 ###length 3
+STR_CONFIG_SETTING_HOUSE_PLACER_FORBIDDEN                       :禁止
+STR_CONFIG_SETTING_HOUSE_PLACER_ALLOWED                         :許可
+STR_CONFIG_SETTING_HOUSE_PLACER_FULLY_CONSTRUCTED               :許可、建設完了状態で配置
 
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :街の貨物生成: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :街の総人口に対する家屋によって生産される貨物の量。{}二次成長：2倍の大きさの街は4倍の乗客を生み出します。{}線形成長：2倍の大きさの街は2倍の量を生み出します
@@ -2031,17 +2088,17 @@ STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :無制限
 
 STR_CONFIG_SETTING_ZOOM_MIN                                     :最大ズームインレベル: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :ズームインの最大倍率を設定します。倍率を高くすればするほどメモリー使用量が増えます
-STR_CONFIG_SETTING_ZOOM_MAX                                     :最大ズームアウトレベル:{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :最大ズームアウトレベル: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :ズームアウトの最大倍率を設定します。ズームアウトの倍率が大きいと、処理遅延が発生する可能性があります
 ###length 6
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2倍
-STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :普通
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :等倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8倍
 
-STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :使用する最高解像度のスプライト：{STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :スプライトの最高解像度: {STRING}
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :スプライトに使用する最大解像度を制限します。 スプライトの解像度を制限すると使用可能な場合でも高解像度のグラフィックを使用できなくなります。 これにより、高解像度のグラフィックを使用する場合と使用しない場合のGRFファイルを組み合わせて使用する場合にゲームの外観を統一できます。
 ###length 3
 STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4倍
@@ -2064,10 +2121,12 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :{COMMA}分の1
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :変化なし
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初期の都市サイズ乗数: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ゲーム開始時に都市が普通の街に比べて平均して何倍の人口規模になるかを設定します
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE                            :街同士の最小距離: {STRING}
+STR_CONFIG_SETTING_TOWN_MIN_DISTANCE_HELPTEXT                   :マップ生成およびランダムな街の建設の際、街と街の間の最小距離をタイル単位で設定します
 
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :行先分配グラフを{STRING}秒毎に更新
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL                    :行先分配グラフを{STRING}毎に更新
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_INTERVAL_HELPTEXT           :行先分配グラフの再計算間隔。各計算タイミングでは一部のグラフのみが再計算されます。よって、ここ設定した X 秒ごとにグラフ全体が更新されるというわけではありません。再計算の間隔が短ければ短いほどCPU時間を消費します。長ければ長いほど貨物流通の新規ルートの行先分配に時間がかかります。
-STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :行先分配の更新に{STRING}秒を割り当て
+STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME                        :行先分配グラフの再計算に{STRING}を割り当て
 STR_CONFIG_SETTING_LINKGRAPH_RECALC_TIME_HELPTEXT               :行先分配グラフの再計算に割り当てられる時間。再計算が始まると、グラフの処理のために指定した生存秒数だけ実行可能なスレッドが作られます。生存秒数が短ければ短いほど再計算が間に合わない可能性が高まります。その際、ゲームは一時停止して計算完了を待ちます。生存秒数が長ければ長いほど、ルート変更の際に行先分配の更新に時間がかかります。
 
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :旅客の行先分配法: {STRING}
@@ -2100,13 +2159,15 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :ゲーム中の
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :ヤード・ポンド法 (マイル時(mph))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :メートル法 (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国際単位系 (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_DAYS   :ゲーム単位 (タイル/日)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS_SECS   :ゲーム単位 (タイル/秒)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_KNOTS            :ノット
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :動力単位: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :ゲーム中の動力(仕事率、主に輸送機器の出力表記)をいずれの単位系で表すか決定します
 ###length 3
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :ヤード・ポンド法 (英馬力)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :メートル法 (仏馬力)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :ヤード・ポンド法 (英馬力(HP))
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :メートル法 (仏馬力(PS))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :国際単位系 (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :質量単位: {STRING}
@@ -2136,6 +2197,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :ゲーム中の
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :ヤード・ポンド法 (フィート(ft))
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :メートル法 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :国際単位系 (m)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_GAMEUNITS          :ゲーム単位 (レベル)
 
 STR_CONFIG_SETTING_LOCALISATION                                 :多国籍対応
 STR_CONFIG_SETTING_GRAPHICS                                     :グラフィック
@@ -2150,14 +2212,17 @@ STR_CONFIG_SETTING_ACCOUNTING                                   :会計
 STR_CONFIG_SETTING_VEHICLES                                     :輸送機器
 STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :物理モデル
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :経路構築
+STR_CONFIG_SETTING_VEHICLES_ORDERS                              :指令
 STR_CONFIG_SETTING_LIMITATIONS                                  :制限
 STR_CONFIG_SETTING_ACCIDENTS                                    :災害/事故
 STR_CONFIG_SETTING_GENWORLD                                     :マップ生成
 STR_CONFIG_SETTING_ENVIRONMENT                                  :環境
+STR_CONFIG_SETTING_ENVIRONMENT_TIME                             :時間
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :地方自治体
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :街
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :産業
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :貨物配送先
+STR_CONFIG_SETTING_ENVIRONMENT_TREES                            :樹木
 STR_CONFIG_SETTING_AI                                           :競争会社
 STR_CONFIG_SETTING_AI_NPC                                       :コンピュータプレイヤー
 STR_CONFIG_SETTING_NETWORK                                      :ネットワーク
