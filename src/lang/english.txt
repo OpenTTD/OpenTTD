@@ -1099,6 +1099,8 @@ STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP                       :Turn on to scal
 
 STR_GAME_OPTIONS_GUI_FONT_SPRITE                                :Use traditional sprite font
 STR_GAME_OPTIONS_GUI_FONT_SPRITE_TOOLTIP                        :Turn on if you prefer to use the traditional fixed-size sprite font
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT                               :Prefer default font
+STR_GAME_OPTIONS_GUI_FONT_DEFAULT_TOOLTIP                       :Turn on if you prefer to use the default font over discovered fallback fonts
 STR_GAME_OPTIONS_GUI_FONT_AA                                    :Anti-alias fonts
 STR_GAME_OPTIONS_GUI_FONT_AA_TOOLTIP                            :Turn on to anti-alias resizable fonts
 
