@@ -235,6 +235,15 @@ public:
 	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { SB(this->flags, 3, 4, depot_service_type.base()); }
 
 	/**
+	 * Is this order for a train to stop and reverse at a waypoint?
+	 * @return \c true iff the train will stop and reverse at the waypoint of this order.
+	 */
+	inline bool IsWaypointReverseOrder() const
+	{
+		return this->IsType(OT_GOTO_WAYPOINT) && !this->GetNonStopType().Test(OrderNonStopFlag::GoVia) && this->GetStopLocation() == OrderStopLocation::NearEnd;
+	}
+
+	/**
 	 * Set variable we have to compare.
 	 * @param condition_variable The new variable to compare on.
 	 */

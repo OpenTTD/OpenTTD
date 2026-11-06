@@ -1579,6 +1579,7 @@ void VehicleEnterDepot(Vehicle *v)
 			t->force_proceed = TFP_NONE;
 			t->flags.Reset(VehicleRailFlag::Reversed);
 			t->ConsistChanged(CCF_ARRANGE);
+			t->reverse_distance = 0;
 			break;
 		}
 
@@ -2829,6 +2830,8 @@ enum class VisualEffectSpawnModel : uint8_t {
 	End, ///< End marker.
 };
 
+uint16_t ReversingDistanceTargetSpeed(const Train *v);
+
 /**
  * Draw visual effects (smoke and/or sparks) for a vehicle chain.
  * @pre this->IsPrimaryVehicle()
@@ -2858,12 +2861,11 @@ void Vehicle::ShowVisualEffect() const
 		/* For trains, do not show any smoke when:
 		 * - the train is reversing
 		 * - is entering a station with an order to stop there and its speed is equal to maximum station entering speed
+		 * - is approaching a reversing point and its speed is equal to maximum approach speed
 		 */
-		if (t->flags.Test(VehicleRailFlag::Reversing) ||
-				(IsRailStationTile(moving_front->tile) && t->IsFrontEngine() && t->current_order.ShouldStopAtStation(t, GetStationIndex(moving_front->tile)) &&
-				t->cur_speed >= max_speed)) {
-			return;
-		}
+		if (t->flags.Test(VehicleRailFlag::Reversing)) return;
+		if (IsRailStationTile(moving_front->tile) && t->IsFrontEngine() && t->current_order.ShouldStopAtStation(t, GetStationIndex(moving_front->tile)) && t->cur_speed >= max_speed) return;
+		if (t->reverse_distance >= 1 && t->cur_speed >= ReversingDistanceTargetSpeed(t)) return;
 	}
 
 	const Vehicle *v = this;

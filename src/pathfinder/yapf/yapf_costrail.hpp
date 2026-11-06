@@ -461,6 +461,11 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 							!IsWaitingPositionFree(v, t, td, _settings_game.pf.forbid_90_deg)) {
 						extra_cost += Yapf().PfGetSettings().rail_lastred_penalty;
 					}
+
+					/* We are trying to reverse at an occupied waypoint tile. */
+					if (v->current_order.IsWaypointReverseOrder() && HasStationReservation(cur.tile)) {
+						extra_cost += Yapf().PfGetSettings().rail_pbs_station_penalty * 4;
+					}
 				}
 				/* Waypoint is also a good reason to finish. */
 				end_segment_reason.Set(EndSegmentReason::Waypoint);

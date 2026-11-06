@@ -1854,6 +1854,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Order stop location is now used for waypoint reversing, ensure all existing waypoint orders use correct location to just go via. */
+	if (IsSavegameVersionBefore(SaveLoadVersion::ReverseAtWaypoints)) {
+		for (OrderList *orderlist : OrderList::Iterate()) {
+			for (Order &order : orderlist->GetOrders()) {
+				if (!order.IsType(OT_GOTO_WAYPOINT)) continue;
+				order.SetStopLocation(OrderStopLocation::FarEnd);
+			}
+		}
+	}
+
 	/* The water class was moved/unified. */
 	if (IsSavegameVersionBefore(SaveLoadVersion::UnifyWaterClass)) {
 		for (auto t : Map::Iterate()) {
