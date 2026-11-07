@@ -75,6 +75,33 @@ namespace SQConvert {
 	};
 
 	/**
+	 * Helper for returning an OpenTTD array as a Squirrel array.
+	 * @tparam Titem The type of each element in the source array.
+	 */
+	template <typename Titem>
+	struct Return<Array<Titem>> {
+		/**
+		 * Converts an OpenTTD array into a Squirrel array and pushes it onto the VM stack.
+		 * @param vm The Squirrel virtual machine receiving the converted value.
+		 * @param res The array to be converted into a Squirrel array.
+		 * @return The number of stack values pushed; always 1 for this conversion.
+		 * @throws sq_throwerror if the array is too large.
+		 */
+		static inline int Set(HSQUIRRELVM vm, const Array<Titem> &&res)
+		{
+			/* Sanity check of the size. */
+			if (res.size() > UINT16_MAX) throw sq_throwerror(vm, "an array used as return from a function is too large");
+
+			sq_newarray(vm, 0);
+			for (const Titem &item : res) {
+				Return<Titem>::Set(vm, item);
+				sq_arrayappend(vm, -2);
+			}
+			return 1;
+		}
+	};
+
+	/**
 	 * To get a param from squirrel, we use this helper class. It converts to the right format.
 	 * We use a class instead of a plain function to allow us to use partial template specializations.
 	 */

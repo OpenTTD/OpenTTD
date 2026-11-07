@@ -1482,6 +1482,16 @@ function Regression::Rail()
 	print("    DemolishTile():                " + AITile.DemolishTile(12650));
 }
 
+function Regression::PrintArray(arr)
+{
+	local text = "[";
+	foreach (item in arr) {
+		text += " " + item;
+	}
+	text += " ]";
+	return text;
+}
+
 function Regression::Road()
 {
 	print("");
@@ -1498,6 +1508,7 @@ function Regression::Road()
 	print("    HasRoadType(Road):             " + AIRoad.HasRoadType(33411, AIRoad.ROADTYPE_ROAD));
 	print("    HasRoadType(Tram):             " + AIRoad.HasRoadType(33411, AIRoad.ROADTYPE_TRAM));
 	print("    GetNeighbourRoadCount():       " + AIRoad.GetNeighbourRoadCount(33412));
+	print("    GetExistingRoadParts():        " + PrintArray(AIRoad.GetExistingRoadParts(33412)));
 	print("    RemoveRoad():                  " + AIRoad.RemoveRoad(33411, 33411));
 	print("    RemoveRoad():                  " + AIRoad.RemoveRoad(33411, 33412));
 	print("    RemoveRoad():                  " + AIRoad.RemoveRoad(19590, 19590));
@@ -1518,6 +1529,12 @@ function Regression::Road()
 	print("    SetCurrentRoadType(Tram):      " + AIRoad.SetCurrentRoadType(AIRoad.ROADTYPE_TRAM));
 	print("    GetCurrentRoadType():          " + AIRoad.GetCurrentRoadType());
 
+	print("    GetExistingRoadParts(4 parts): " + PrintArray(AIRoad.GetExistingRoadParts(6444)));
+	print("    GetExistingRoadParts(3 parts): " + PrintArray(AIRoad.GetExistingRoadParts(6959)));
+	print("    GetExistingRoadParts(2 parts): " + PrintArray(AIRoad.GetExistingRoadParts(5676)));
+	print("    GetExistingRoadParts(1 part):  " + PrintArray(AIRoad.GetExistingRoadParts(5677))); // also a bridge
+	print("    GetExistingRoadParts(0 parts): " + PrintArray(AIRoad.GetExistingRoadParts(6450)));
+
 	print("  Depot");
 	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33411));
 	print("    BuildRoadDepot():              " + AIRoad.BuildRoadDepot(0, 1));
@@ -1533,6 +1550,7 @@ function Regression::Road()
 	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33411));
 	print("    GetRoadDepotFrontTile():       " + AIRoad.GetRoadDepotFrontTile(33411));
 	print("    IsRoadDepotTile():             " + AIRoad.IsRoadDepotTile(33411));
+	print("    GetExistingRoadParts():        " + PrintArray(AIRoad.GetExistingRoadParts(33411)));
 	print("    IsBuildable():                 " + AITile.IsBuildable(33411));
 	local list = AIDepotList(AITile.TRANSPORT_ROAD);
 	print("    DepotList");
@@ -1564,6 +1582,7 @@ function Regression::Road()
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33411));
 	print("    IsRoadStationTile():           " + AIRoad.IsRoadStationTile(33411));
 	print("    IsDriveThroughRoadStationTile: " + AIRoad.IsDriveThroughRoadStationTile(33411));
+	print("    GetExistingRoadParts():        " + PrintArray(AIRoad.GetExistingRoadParts(33411)));
 	print("    RemoveRoadStation():           " + AIRoad.RemoveRoadStation(33411));
 	print("    RemoveRoadStation():           " + AIRoad.RemoveRoadStation(33411));
 
@@ -1585,6 +1604,7 @@ function Regression::Road()
 	print("    GetDriveThroughBackTile():     " + AIRoad.GetDriveThroughBackTile(33415));
 	print("    GetRoadStationFrontTile():     " + AIRoad.GetRoadStationFrontTile(33415));
 	print("    IsRoadTile():                  " + AIRoad.IsRoadTile(33415));
+	print("    GetExistingRoadParts():        " + PrintArray(AIRoad.GetExistingRoadParts(33415)));
 }
 
 function Regression::Sign()

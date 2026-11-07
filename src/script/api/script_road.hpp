@@ -281,6 +281,20 @@ public:
 	static SQInteger GetNeighbourRoadCount(TileIndex tile);
 
 	/**
+	 * Get an array of existing road parts on the given tile.
+	 * @note This includes normal roads, bridges, tunnels, depots, bay
+	 *       stations, drive through stations and level crossings.
+	 * @param tile The tile to check.
+	 * @pre HasRoadType(tile, GetCurrentRoadType()).
+	 * @return An array with the existing parts as relative neighbour tiles:
+	 *         ScriptMap.GetTileIndex(0, 1) contains South-East part,
+	 *         ScriptMap.GetTileIndex(0, -1) contains North-West part,
+	 *         ScriptMap.GetTileIndex(1, 0) contains South-West part and
+	 *         ScriptMap.GetTileIndex(-1, 0) contains North-East part.
+	 */
+	static Array<TileIndex> GetExistingRoadParts(TileIndex tile);
+
+	/**
 	 * Gets the tile in front of a road depot.
 	 * @param depot The road depot tile.
 	 * @pre IsRoadDepotTile(depot).
