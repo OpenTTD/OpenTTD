@@ -38,21 +38,26 @@ static void SpriteReplace(ByteReader &buf)
 	/* <0A> <num-sets> <set1> [<set2> ...]
 	 * <set>: <num-sprites> <first-sprite>
 	 *
-	 * B num-sets      How many sets of sprites to replace.
+	 * E num-sets      How many sets of sprites to replace.
 	 * Each set:
 	 * B num-sprites   How many sprites are in this set
-	 * W first-sprite  First sprite number to replace */
+	 * W first-sprite  First sprite number to replace
+	 * V num-variations Number of variations of each sprite if variations exist. */
 
-	uint8_t num_sets = buf.ReadByte();
+	uint16_t num_sets = buf.ReadExtendedByte();
+	bool has_variations = HasBit(num_sets, 15);
+	ClrBit(num_sets, 15);
 
 	for (uint i = 0; i < num_sets; i++) {
 		uint8_t num_sprites = buf.ReadByte();
 		uint16_t first_sprite = buf.ReadWord();
+		const uint8_t *variations = has_variations ? buf.ReadBytes(num_sprites) : nullptr;
 
 		GrfMsg(Severity::Warning, "SpriteReplace: [Set {}] Changing {} sprites, beginning with {}",
 			i, num_sprites, first_sprite
 		);
 
+		bool is_valid_range = true;
 		if (first_sprite + num_sprites >= SPR_OPENTTD_BASE) {
 			/* Outside allowed range, check for GRM sprite reservations. */
 			if (!IsGRMReservedSprite(first_sprite, num_sprites)) {
@@ -62,18 +67,31 @@ static void SpriteReplace(ByteReader &buf)
 				/* Load the sprites at the current location so they will do nothing instead of appearing to work. */
 				first_sprite = _cur_gps.spriteid;
 				_cur_gps.spriteid += num_sprites;
+				is_valid_range = false;
 			}
 		}
 
-		for (uint j = 0; j < num_sprites; j++) {
-			SpriteID load_index = first_sprite + j;
-			_cur_gps.nfo_line++;
-			LoadNextSprite(load_index, *_cur_gps.file, _cur_gps.nfo_line); // XXX
+		if (variations != nullptr) {
+			for (uint j = 0; j < num_sprites; j++) {
+				uint8_t num_variations = variations[j];
+				if (num_variations == 0) continue;
+				if (is_valid_range) AddSpriteVariations(first_sprite + j, _cur_gps.spriteid, num_variations);
+				while (num_variations-- > 0) {
+					LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, ++_cur_gps.nfo_line);
+				}
+			}
+		} else {
+			for (uint j = 0; j < num_sprites; j++) {
+				SpriteID load_index = first_sprite + j;
+				_cur_gps.nfo_line++;
+				RemoveSpriteVariations(load_index);
+				LoadNextSprite(load_index, *_cur_gps.file, _cur_gps.nfo_line); // XXX
 
-			/* Shore sprites now located at different addresses.
-			 * So detect when the old ones get replaced. */
-			if (IsInsideMM(load_index, SPR_ORIGINALSHORE_START, SPR_ORIGINALSHORE_END + 1)) {
-				if (_loaded_newgrf_features.shore != ShoreReplacement::Action5) _loaded_newgrf_features.shore = ShoreReplacement::ActionA;
+				/* Shore sprites now located at different addresses.
+				* So detect when the old ones get replaced. */
+				if (IsInsideMM(load_index, SPR_ORIGINALSHORE_START, SPR_ORIGINALSHORE_END + 1)) {
+					if (_loaded_newgrf_features.shore != ShoreReplacement::Action5) _loaded_newgrf_features.shore = ShoreReplacement::ActionA;
+				}
 			}
 		}
 	}
@@ -82,13 +100,21 @@ static void SpriteReplace(ByteReader &buf)
 /* Action 0x0A (SKIP) */
 static void SkipActA(ByteReader &buf)
 {
-	uint8_t num_sets = buf.ReadByte();
+	uint16_t num_sets = buf.ReadExtendedByte();
+	bool has_variations = HasBit(num_sets, 15);
+	ClrBit(num_sets, 15);
 
-	for (uint i = 0; i < num_sets; i++) {
+	for (uint i = 0; i < num_sets; ++i) {
 		/* Skip the sprites this replaces */
-		_cur_gps.skip_sprites += buf.ReadByte();
+		uint8_t num_sprites = buf.ReadByte();
 		/* But ignore where they go */
 		buf.ReadWord();
+		if (has_variations) {
+			const uint8_t *variations = buf.ReadBytes(num_sprites);
+			_cur_gps.skip_sprites += std::accumulate(variations, variations + num_sprites, 0);
+		} else {
+			_cur_gps.skip_sprites += num_sprites;
+		}
 	}
 
 	GrfMsg(Severity::Notice, "SkipActA: Skipping {} sprites", _cur_gps.skip_sprites);
