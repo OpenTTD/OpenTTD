@@ -26,9 +26,12 @@ enum HighLightStyle : uint16_t {
 	HT_RAIL      = 0x080, ///< autorail (one piece), lower bits: direction
 	HT_VEHICLE   = 0x100, ///< vehicle is accepted as target as well (bitmask)
 	HT_DIAGONAL  = 0x200, ///< Also allow 'diagonal rectangles'. Only usable in combination with #HT_RECT or #HT_POINT.
-	HT_DRAG_MASK = 0x0F8, ///< Mask for the tile drag-type modes.
+	HT_ROAD      = 0x400, ///< autoroad (one piece), lower bits: direction
+	HT_ROAD_LINE = 0x800, ///< autoroad line (longer stretches), lower bits: direction
+	HT_DRAG_MASK = 0x1CF8, ///< Mask for tile drag-type modes
 
-	/* lower bits (used with HT_LINE and HT_RAIL):
+	/* Lower bits (used with HT_LINE, HT_RAIL, and HT_ROAD):
+	 * Rail uses HT_DIR_* names; road uses HT_RD_DIR_* names for clarity.
 	 * (see ASCII art in table/autorail.h for a visual interpretation) */
 	HT_DIR_X  = 0,     ///< X direction
 	HT_DIR_Y  = 1,     ///< Y direction
@@ -38,6 +41,17 @@ enum HighLightStyle : uint16_t {
 	HT_DIR_VR = 5,     ///< vertical right
 	HT_DIR_END,        ///< end marker
 	HT_DIR_MASK = 0x7, ///< masks the drag-direction
+
+	/* Road-specific direction aliases:
+	 * (see ASCII art in table/autoroad.h for a visual interpretation) */
+	HT_RD_DIR_X    = 0,   ///< X full tile
+	HT_RD_DIR_Y    = 1,   ///< Y full tile
+	HT_RD_DIR_X_NE = 2,   ///< X_NE half tile
+	HT_RD_DIR_Y_NW = 3,   ///< Y_NW half tile
+	HT_RD_DIR_Y_SE = 4,   ///< Y_SE half tile
+	HT_RD_DIR_X_SW = 5,   ///< X_SW half tile
+	HT_RD_DIR_END  = 6,   ///< end marker
+	HT_RD_DIR_MASK = 0x7, ///< masks the road direction
 };
 DECLARE_ENUM_AS_BIT_SET(HighLightStyle)
 
@@ -59,6 +73,7 @@ struct TileHighlightData {
 
 	Point selstart;      ///< The location where the dragging started.
 	Point selend;        ///< The location where the drag currently ends.
+	Point place_start;   ///< Original click position (preserved during WSM_DRAGGING for same-tile checks).
 	uint8_t sizelimit;      ///< Whether the selection is limited in length, and what the maximum length is.
 
 	HighLightStyle drawstyle;      ///< Lower bits 0-3 are reserved for detailed highlight information.
