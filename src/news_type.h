@@ -34,7 +34,9 @@ enum class NewsType : uint8_t {
 	AccidentOther, ///< An accident or disaster has occurred
 	CompanyInfo, ///< Company info (new companies, bankruptcy messages)
 	IndustryOpen, ///< Opening of industries
-	IndustryClose, ///< Closing of industries
+	IndustryCloseCompany, ///< Closing of industries serviced by local company
+	IndustryCloseOther, ///< Closing of industries serviced by competitor(s)
+	IndustryCloseNobody, ///< Other industry closing
 	Economy, ///< Economic changes (recession, industry up/dowm)
 	IndustryCompany, ///< Production changes of industry serviced by local company
 	IndustryOther, ///< Production changes of industry serviced by competitor(s)

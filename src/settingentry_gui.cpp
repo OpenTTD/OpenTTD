@@ -685,7 +685,9 @@ SettingsContainer &GetSettingsTree()
 			advisors->Add(new SettingEntry("news_display.economy"));
 			advisors->Add(new SettingEntry("news_display.subsidies"));
 			advisors->Add(new SettingEntry("news_display.open"));
-			advisors->Add(new SettingEntry("news_display.close"));
+			advisors->Add(new SettingEntry("news_display.close_player"));
+			advisors->Add(new SettingEntry("news_display.close_other"));
+			advisors->Add(new SettingEntry("news_display.close_nobody"));
 			advisors->Add(new SettingEntry("news_display.production_player"));
 			advisors->Add(new SettingEntry("news_display.production_other"));
 			advisors->Add(new SettingEntry("news_display.production_nobody"));
