@@ -42,7 +42,7 @@ public:
 	FreeTypeFontCache(FontSize fs, FT_Face face, int pixels);
 	~FreeTypeFontCache() override;
 	void ClearFontCache() override;
-	GlyphID MapCharToGlyph(char32_t key, bool allow_fallback = true) override;
+	GlyphID MapCharToGlyph(char32_t key) override;
 	std::string GetFontName() override { return fmt::format("{}, {}", face->family_name, face->style_name); }
 	bool IsBuiltInFont() override { return false; }
 	const void *GetOSHandle() override { return &face; }
@@ -195,17 +195,11 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 }
 
 
-GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
+GlyphID FreeTypeFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
-	FT_UInt glyph = FT_Get_Char_Index(this->face, key);
-
-	if (glyph == 0 && allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->MapCharToGlyph(key);
-	}
-
-	return glyph;
+	return FT_Get_Char_Index(this->face, key);
 }
 
 FT_Library _ft_library = nullptr;
@@ -301,7 +295,7 @@ private:
 		if (error != FT_Err_Ok) {
 			FT_Done_Face(face);
 
-			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}, using sprite font instead", font_name, FontSizeToName(fs), error);
+			ShowInfo("Unable to use '{}' for {} font, FreeType reported error 0x{:X}", font_name, FontSizeToName(fs), error);
 			return nullptr;
 		}
 

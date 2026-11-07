@@ -95,7 +95,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	Debug(Facility::Fontcache, Severity::Warning, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
-GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
+GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key)
 {
 	assert(IsPrintable(key));
 
@@ -111,10 +111,6 @@ GlyphID CoreTextFontCache::MapCharToGlyph(char32_t key, bool allow_fallback)
 	CGGlyph glyph[2] = {0, 0};
 	if (CTFontGetGlyphsForCharacters(this->font.get(), chars, glyph, key >= 0x010000U ? 2 : 1)) {
 		return glyph[0];
-	}
-
-	if (allow_fallback && key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
-		return this->parent->MapCharToGlyph(key);
 	}
 
 	return 0;
@@ -301,9 +297,11 @@ public:
 				/* Save result. */
 				result = FontCache::TryFallback(callback->missing_fontsizes, callback->required_glyphs, std::string{name});
 				if (result) {
-					FontCache::AddFallback(callback->missing_fontsizes, name);
-					Debug(Facility::Fontcache, Severity::Warning, "CT-Font for {}: {}", language_isocode, name);
-					break;
+					result = FontCache::AddFallback(callback->missing_fontsizes, callback->GetLoadReason(), name);
+					if (result) {
+						Debug(Facility::Fontcache, Severity::Warning, "CT-Font for {}: {}", language_isocode, name);
+						break;
+					}
 				}
 			}
 		}
@@ -313,7 +311,7 @@ public:
 			 * supports. If we didn't find any other font, just try it, maybe we get lucky. */
 			result = FontCache::TryFallback(callback->missing_fontsizes, callback->required_glyphs, "Arial Unicode MS");
 			if (result) {
-				FontCache::AddFallback(callback->missing_fontsizes, "Arial Unicode MS");
+				result = FontCache::AddFallback(callback->missing_fontsizes, callback->GetLoadReason(), "Arial Unicode MS");
 			}
 		}
 
