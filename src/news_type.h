@@ -15,6 +15,7 @@
 #include "engine_type.h"
 #include "industry_type.h"
 #include "gfx_type.h"
+#include "settings_type.h"
 #include "sound_type.h"
 #include "station_type.h"
 #include "strings_type.h"
@@ -95,15 +96,6 @@ enum class NewsFlag : uint8_t {
 
 /** Bitset of \c NewsFlag elements. */
 using NewsFlags = EnumBitSet<NewsFlag, uint8_t>;
-
-/**
- * News display options
- */
-enum class NewsDisplay : uint8_t {
-	Off, ///< Only show a reminder in the status bar
-	Summary, ///< Show ticker
-	Full, ///< Show newspaper
-};
 
 /**
  * Per-NewsType data

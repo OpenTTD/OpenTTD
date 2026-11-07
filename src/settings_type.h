@@ -372,6 +372,13 @@ struct LocaleSettings {
 	std::string digit_decimal_separator; ///< decimal separator
 };
 
+/** News display style. */
+enum class NewsDisplay : uint8_t {
+	Off, ///< Only show a reminder in the status bar.
+	Summary, ///< Show a summary in the news ticker.
+	Full, ///< Show a full newspaper.
+};
+
 /** Settings related to news */
 struct NewsSettings {
 	uint8_t arrival_player; ///< NewsDisplay of vehicles arriving at new stations of current player
