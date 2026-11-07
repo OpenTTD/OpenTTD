@@ -17,6 +17,13 @@
 #include "tile_type.h"
 #include "widget_type.h"
 
+
+#include "string_type.h"
+#include "palette_func.h"
+
+#include <optional>
+
+
 /**
  * Flags to describe the look of the frame
  */
@@ -131,7 +138,11 @@ inline void DrawFrameRect(const Rect &r, Colours colour, FrameFlags flags)
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, flags);
 }
 
+
 void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, std::string_view str, Alignment align, FontSize fs);
+
+void DrawColourSwatch(Rect rect, Colours colour, int swatch_width, bool frame, FrameFlags flags, std::optional<Shade> shade_override = std::nullopt);
+
 
 /* window.cpp */
 using WindowList = std::list<Window *>;
