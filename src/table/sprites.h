@@ -377,8 +377,14 @@ static const SpriteID SPR_BRIDGE_DECKS_MGLV = SPR_BRIDGE_DECKS_BASE + 12;
 static const SpriteID SPR_BRIDGE_DECKS_ROAD = SPR_BRIDGE_DECKS_BASE + 18;
 /** @} */
 
+/** @{
+ * Overlay sea shimmer sprites. */
+static constexpr SpriteID SPR_OVERLAY_SEA_SHIMMER_BASE = SPR_BRIDGE_DECKS_BASE + BRIDGE_DECKS_SPRITE_COUNT;
+static constexpr uint16_t SPR_OVERLAY_SEA_SHIMMER_SPRITE_COUNT = 8;
+/** @} */
+
 /** From where can we start putting NewGRFs. */
-static const SpriteID SPR_NEWGRFS_BASE = SPR_BRIDGE_DECKS_BASE + BRIDGE_DECKS_SPRITE_COUNT;
+static const SpriteID SPR_NEWGRFS_BASE = SPR_OVERLAY_SEA_SHIMMER_BASE + SPR_OVERLAY_SEA_SHIMMER_SPRITE_COUNT;
 
 /** Manager face sprites.
  * @{ */
