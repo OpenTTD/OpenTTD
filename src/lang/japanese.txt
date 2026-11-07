@@ -460,7 +460,7 @@ STR_SETTINGS_MENU_STATION_NAMES_BUS                             :バス停
 STR_SETTINGS_MENU_STATION_NAMES_SHIP                            :埠頭
 STR_SETTINGS_MENU_STATION_NAMES_PLANE                           :空港
 STR_SETTINGS_MENU_STATION_NAMES_GHOST                           :撤去された駅
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :中継駅名を表示
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :中継点名を表示
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :標識を表示
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :他社の標識と駅名を表示
 STR_SETTINGS_MENU_FULL_ANIMATION                                :アニメーションをフル表示
@@ -1112,6 +1112,7 @@ STR_GAME_OPTIONS_PARTICIPATE_SURVEY_LINK_TOOLTIP                :これをクリ
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW                     :調査データをプレビューする
 STR_GAME_OPTIONS_PARTICIPATE_SURVEY_PREVIEW_TOOLTIP             :現在進行中のゲームの調査データを表示します
 
+STR_GAME_OPTIONS_DISPLAY                                        :画面
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :画面リフレッシュレート
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :使用する画面のリフレッシュレートを選択します
@@ -1545,6 +1546,8 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :赤字車両の
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :有効にすると、輸送機器が一年(1/1～12/31)の間全く利益を上げていない場合、メッセージで知らせてくるようになります
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT_PERIOD             :有効にすると、輸送機器が一期の間全く利益を上げていない場合、メッセージで知らせてくるようになります
 
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE                             :輸送機器の老朽化警告表示: {STRING}
+STR_CONFIG_SETTING_WARN_OLD_VEHICLE_HELPTEXT                    :有効にすると、輸送機器が老朽化している場合、メッセージで知らせてくるようになります
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :輸送機器の旧式化撤廃: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :有効にすると、いずれの種類の輸送機器であっても、その開発後であれば永久に購入が可能になります
@@ -2257,6 +2260,7 @@ STR_VIDEO_DRIVER_ERROR_HARDWARE_ACCELERATION_CRASH              :{WHITE}... GPU�
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD
+STR_INTRO_VERSION                                               :OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}新しいゲーム
 STR_INTRO_LOAD_GAME                                             :{BLACK}ロード
@@ -2285,6 +2289,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}地域�
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}ゲームの設定を表示します
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}ハイスコアを表示します
+STR_INTRO_TOOLTIP_HELP                                          :{BLACK}ドキュメントやオンラインリソースにアクセスできます
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}公式オンラインコンテンツのデータベースからデータの確認・追加・更新ができます
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD を終了します
 
@@ -2310,6 +2315,7 @@ STR_HELP_WINDOW_README                                          :{BLACK}Readme
 STR_HELP_WINDOW_CHANGELOG                                       :{BLACK}変更履歴
 STR_HELP_WINDOW_KNOWN_BUGS                                      :{BLACK}既知のバグ
 STR_HELP_WINDOW_LICENSE                                         :{BLACK}ライセンス
+STR_HELP_WINDOW_FONTS                                           :{BLACK}フォント
 STR_HELP_WINDOW_MAIN_WEBSITE                                    :{BLACK}OpenTTD
 STR_HELP_WINDOW_MANUAL_WIKI                                     :{BLACK}マニュアル / ウィキ
 STR_HELP_WINDOW_BUGTRACKER                                      :{BLACK}バグを報告する
@@ -2327,6 +2333,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}マッ�
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}日付を変更: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在日時を変更
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}産業の生産量の変更を有効化: {ORANGE}{STRING}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}駅の評価を100%に固定: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - 配色
@@ -2336,9 +2343,17 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}列車�
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}車両の塗装色を表示します
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}船舶用の塗装色を表示します
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}航空機用の塗装色を表示します
+STR_LIVERY_TRAIN_GROUP_TOOLTIP                                  :{BLACK}列車のグループごとの塗装色を表示します
+STR_LIVERY_ROAD_VEHICLE_GROUP_TOOLTIP                           :{BLACK}車両のグループごとの塗装色を表示します
+STR_LIVERY_SHIP_GROUP_TOOLTIP                                   :{BLACK}船舶のグループごとの塗装色を表示します
+STR_LIVERY_AIRCRAFT_GROUP_TOOLTIP                               :{BLACK}航空機のグループごとの塗装色を表示します
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}選択した輸送機器に使用する塗装のメインカラーを選択します。Ctrl+クリックで、このタブの輸送機器すべてのメインカラーをこの色にします
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}選択した輸送機器に使う、塗装のサブカラーを選択します。Ctrl+クリックで、このタブの輸送機器すべてのサブカラーをこの色にします
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}塗装を変更する輸送機器を選択します。Ctrl+クリックで複数の輸送機器を選択できます。適用状況を切り替えるにはチェックボックスをクリックします
+STR_LIVERY_TRAIN_GROUP_EMPTY                                    :列車グループは設定されていません
+STR_LIVERY_ROAD_VEHICLE_GROUP_EMPTY                             :車両グループは設定されていません
+STR_LIVERY_SHIP_GROUP_EMPTY                                     :船舶グループは設定されていません
+STR_LIVERY_AIRCRAFT_GROUP_EMPTY                                 :航空機グループは設定されていません
 
 ###length 23
 STR_LIVERY_DEFAULT                                              :通常の塗装色
@@ -2387,8 +2402,11 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}顔番�
 STR_FACE_SAVE                                                   :{BLACK}保存
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}お気に入りの顔として保存します
 STR_FACE_SAVE_DONE                                              :{WHITE}この顔をお気に入りの顔として、OpenTTDの設定ファイルに保存します
+STR_FACE_SETTING_TOGGLE                                         :{STRING} {ORANGE}{STRING}
+STR_FACE_SETTING_NUMERIC                                        :{STRING} {ORANGE}{NUM} / {NUM}
 STR_FACE_YES                                                    :あり
 STR_FACE_NO                                                     :なし
+STR_FACE_STYLE                                                  :スタイル:
 STR_FACE_HAIR                                                   :髪型:
 STR_FACE_EYEBROWS                                               :まゆ:
 STR_FACE_EYECOLOUR                                              :瞳の色:
@@ -2419,10 +2437,13 @@ STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}クライアント
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}オンラインのクライアント数/最大クライアント数{}オンラインの会社数/最大会社数
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}×{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}地図サイズ
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}ゲームの地図サイズです{}クリックすると地域順に並べ替えます
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}マップサイズ
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}ゲームのマップサイズです{}クリックするとサイズ順に並べ替えます
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}日付
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}ゲームの現在の日付を示します
+STR_NETWORK_SERVER_LIST_PLAY_TIME_SHORT                         :{BLACK}{NUM}時間 {NUM}分
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION                       :{BLACK}プレイ時間
+STR_NETWORK_SERVER_LIST_PLAY_TIME_CAPTION_TOOLTIP               :{BLACK}一時停止時間を除く{}ゲームプレイ時間
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}言語、サーバーバージョンなど
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}選択するにはリスト内のゲームをクリックします
@@ -2432,12 +2453,13 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST_TOOLTIP            :{BLACK}クリ�
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ゲーム情報
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}クライアント: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}地域: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地図サイズ: {WHITE}{COMMA}×{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}マップサイズ: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}サーバーバージョン: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}サーバーアドレス: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}招待コード：{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_INVITE_CODE                             :{SILVER}招待コード: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}開始日: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}現在の日付：{WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}現在の日付: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PLAY_TIME                               :{SILVER}プレイ時間: {WHITE}{NUM}時間 {NUM}分
 STR_NETWORK_SERVER_LIST_GAMESCRIPT                              :{SILVER}ゲームスクリプト: {WHITE}{STRING} (v{NUM})
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}パスワード保護有!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}サーバーがオフラインです
@@ -2493,7 +2515,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{1:BYTES
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 接続中
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 認証中
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 待機中
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 地図をダウンロード中
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) マップをダウンロード中
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) データ処理中
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 登録中
 
@@ -2526,6 +2548,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :あなたのプ
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}このクライアントに対して実行する管理アクション
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}この会社に対して実行する管理アクション
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}この会社に参画する
+STR_NETWORK_CLIENT_LIST_COMPANY_AUTHORIZE_TOOLTIP               :{BLACK}このクライアントが自社に参加することを許可する
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}このプレイヤーにメッセージを送信する
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}この会社のすべてのプレイヤーにメッセージを送信する
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}すべての観客にメッセージを送信する
@@ -2543,11 +2566,13 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}ロー�
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}リモートプレイヤーが接続できません
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}公開
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}NATの向こう側
-STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}中継サービスて
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}中継サービス利用
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :キック
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :BAN
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :削除
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_ANY                 :全てのクライアントを許可
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_ALLOW_LISTED              :リストに登録されているクライアントを許可
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}管理者アクション
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}'{STRING}'をキックしてもよろしいですか?
@@ -2561,6 +2586,11 @@ STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}一度�
 STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}はい、二度と聞かないでください
 
 STR_NETWORK_ASK_SURVEY_CAPTION                                  :自動的な調査に協力しますか?
+STR_NETWORK_ASK_SURVEY_TEXT                                     :自動的な調査に協力しますか？{}OpenTTDはゲームを終了する際に調査データを送信します。{}この設定は、「ゲームオプション」からいつでも変更できます。
+STR_NETWORK_ASK_SURVEY_PREVIEW                                  :調査データをプレビューする
+STR_NETWORK_ASK_SURVEY_LINK                                     :調査とプライバシーについて
+STR_NETWORK_ASK_SURVEY_NO                                       :いいえ
+STR_NETWORK_ASK_SURVEY_YES                                      :はい
 
 STR_NETWORK_SPECTATORS                                          :観覧者
 
@@ -2595,10 +2625,11 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}あな�
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}サーバー名が設定されていません。名前はマルチプレイヤーウィンドウの上部で設定できます
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}クライアントバージョンがサーバーバージョンと一致していません
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}不正なパスワードです
+STR_NETWORK_ERROR_NOT_ON_ALLOW_LIST                             :許可されたクライアントのリストに登録されていません
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}サーバが満員です
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}サーバー側であなたの参加が禁止されています
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}ゲームから追放されました
-STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}理由：{STRING}
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :理由: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}このサーバーではチート行為は許可されていません
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}サーバーに送ったコマンド数が過剰です
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}パスワード入力時間切れです
@@ -2622,6 +2653,8 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :不正・予期
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :不正なバージョン
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :プレイヤー名が重複
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :不正なパスワード
+STR_NETWORK_ERROR_CLIENT_NOT_ON_ALLOW_LIST                      :許可リストに登録されていません
+STR_NETWORK_ERROR_CLIENT_NO_AUTHENTICATION_METHOD_AVAILABLE     :要求された認証方式はいずれも使用できません
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand内に不正な会社
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :サーバーが追放
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :がチートを使用しようとしました
@@ -2745,7 +2778,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}いい�
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}ダウンロードに失敗しました
 STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}グラフィックのダウンロードに失敗しました。{}手動でダウンロードしてください。
-STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}OpenTTDをやめる
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}OpenTTDを終了
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透過表示設定
@@ -2757,6 +2790,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}社有�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}橋の透過表示を切り替えます。{}Ctrl+クリックでロックします
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}灯台、電波塔などの透過表示を切り替えます。{}Ctrl+クリックでロックします
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}架線の透過表示を切り替えます。{}Ctrl+クリックでロックします
+STR_TRANSPARENT_TEXT_TOOLTIP                                    :{BLACK}積載および収益に関するテキストの透過表示を切り替えます。{}Ctrl+クリックでロックします
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}透過表示でなく表示オフにする
 
 # Linkgraph legend window
@@ -2772,8 +2806,10 @@ STR_LINKGRAPH_LEGEND_SATURATED                                  :{TINY_FONT}{BLA
 STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLACK}供給過多
 
 # Linkgraph tooltip
-STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}復路の輸送需要 {CARGO_LONG}/月 (輸送力{COMMA}%)
-STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}平均移動時間: {UNITS_DAYS_OR_SECONDS}
+STR_LINKGRAPH_STATS_TOOLTIP_MONTH                               :{BLACK}1ヶ月に{CARGO_LONG}を{STATION}から{STATION}に輸送しています (収容量の{COMMA}%){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_MINUTE                              :{BLACK}1分間に{CARGO_LONG}を{STATION}から{STATION}に輸送しています (収容量の{COMMA}%){STRING}
+STR_LINKGRAPH_STATS_TOOLTIP_RETURN_EXTENSION                    :{}復路の輸送量は{CARGO_LONG} (収容量の{COMMA}%) です
+STR_LINKGRAPH_STATS_TOOLTIP_TIME_EXTENSION                      :{}平均輸送時間: {UNITS_DAYS_OR_SECONDS}
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}集荷範囲のハイライト
@@ -2783,12 +2819,14 @@ STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}停留�
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}停留施設の旅客・貨物集荷範囲をハイライトします
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}受入貨物: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給貨物: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_INFRASTRUCTURE_COST_YEAR                      :{BLACK}維持費: {GOLD}{CURRENCY_SHORT}/年
+STR_STATION_BUILD_INFRASTRUCTURE_COST_PERIOD                    :{BLACK}維持費: {GOLD}{CURRENCY_SHORT}/期
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}停留施設を統合
 STR_JOIN_STATION_CREATE_SPLIT_STATION                           :{YELLOW}統合せずに建設
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}通過点を統合
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}中継点を統合
 STR_JOIN_WAYPOINT_CREATE_SPLIT_WAYPOINT                         :{YELLOW}統合せずに建設
 
 # Generic toolbar
@@ -2800,16 +2838,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :電気鉄道の
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :モノレール敷設
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :リニア線路を敷設
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}線路を敷設します。Ctrlで敷設/撤去を切り替えられます。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}自動的に線路を敷設します。Ctrlで建設/撤去を切り替えられます。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}列車庫を建設します(列車の購入・整備施設になります)。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}線路に通過点を設置します。Ctrlを押しながら決定すると通過点同士を結合できます。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}駅を建設します。Ctrlを押しながら決定すると離れた駅等と結合できます。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}鉄道信号を建設します。Ctrlで腕木式と色灯式を切り替えられます。{}ドラックして決定するとその区間に一定間隔で信号が配置されます。このときCtrlを押しておくと、その先分岐か信号に行き着くまで連続配置します。{}Ctrl+クリックで信号種類を選ぶウィンドウが出ます(「信号のGUIを使用」設定オフ時のみ)。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}鉄道橋を建設します。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}鉄道トンネルを建設します。Shiftを押しながら決定すると費用の見積が出ます
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}線路・信号・駅・中継駅の建設/撤去を切り替えます。{}Ctrlを押したままにすると駅・通過点の撤去時に線路ごと撤去されます
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}既設の線路をこのレール種に変更します。Shiftを押しながら決定すると費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}線路を敷設します。Ctrl+クリックで線路を撤去できます。また、Shift+クリックで費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}自動的に線路を敷設します。Ctrl+クリックで線路を撤去できます。また、Shift+クリックで費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}列車庫を建設します(列車の購入・整備施設になります)。Shift+クリックで費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}線路に中継駅を設置します。Ctrl+クリックで中継駅同士を結合できます。また、Shift+クリックで費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}駅を建設します。Ctrl+クリックで離れた駅等と結合できます。また、Shift+クリックで費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}鉄道信号を建設します。Ctrl+クリックで別のスタイルの信号を設置できます。{}ドラックして決定するとその区間に一定間隔で信号が配置されます。このときCtrlを押しておくと、その先分岐・駅・信号に行き着くまで連続配置します。また、Shift+クリックで費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}鉄道橋を建設します。Shift+クリックで費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}鉄道トンネルを建設します。Shift+クリックで費用の見積が出ます
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}線路・信号・駅・中継駅の建設/撤去を切り替えます。{}Ctrl+クリックで駅・中継駅の撤去時に線路ごと撤去します
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}既設の線路をこのレール種に変更します。Shift+クリックで費用の見積が出ます
 
 STR_RAIL_NAME_RAILROAD                                          :鉄道 (非電化)
 STR_RAIL_NAME_ELRAIL                                            :電気鉄道
@@ -2835,17 +2873,78 @@ STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}任意�
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}ドラッグ&ドロップで任意のサイズの駅を建設します
 
 STR_PICKER_MODE_ALL                                             :すべて
+STR_PICKER_MODE_ALL_TOOLTIP                                     :すべての種類のオブジェクトを表示するように切り替えます
+STR_PICKER_MODE_USED                                            :使用
+STR_PICKER_MODE_USED_TOOLTIP                                    :存在するオブジェクトのみを表示するように切り替えます
+STR_PICKER_MODE_SAVED                                           :お気に入り
+STR_PICKER_MODE_SAVED_TOOLTIP                                   :お気に入りのオブジェクトのみを表示するように切り替えます
 
+STR_PICKER_PREVIEW_SHRINK                                       :-
+STR_PICKER_PREVIEW_SHRINK_TOOLTIP                               :プレビュー画像の高さを小さくします。Ctrlを押しながらクリックすると、最小サイズになります
+STR_PICKER_PREVIEW_EXPAND                                       :+
+STR_PICKER_PREVIEW_EXPAND_TOOLTIP                               :プレビュー画像の高さを大きくします。Ctrlを押しながらクリックすると、最大サイズになります
 
+STR_PICKER_DEFAULT_COLLECTION                                   :デフォルトコレクション
+STR_PICKER_SELECT_COLLECTION_TOOLTIP                            :コレクションを選択してください
+STR_PICKER_COLLECTION_ADD                                       :追加
+STR_PICKER_COLLECTION_ADD_TOOLTIP                               :コレクションを作成します
+STR_PICKER_COLLECTION_RENAME                                    :名前変更
+STR_PICKER_COLLECTION_RENAME_TOOLTIP                            :コレクションの名称を変更します
+STR_PICKER_COLLECTION_DELETE                                    :削除
+STR_PICKER_COLLECTION_DELETE_TOOLTIP                            :コレクションを削除します
 
+STR_PICKER_COLLECTION_RENAME_QUERY                              :コレクションの名前変更
+STR_PICKER_COLLECTION_DELETE_QUERY                              :コレクションを削除
+STR_PICKER_COLLECTION_DELETE_QUERY_TEXT                         :{YELLOW}このコレクションを削除してもよろしいですか?
+STR_PICKER_COLLECTION_DELETE_QUERY_DISABLED_TEXT                :{YELLOW}このコレクションを削除してもよろしいですか?無効化されたNewGRFのアイテムが含まれています!
 
+STR_PICKER_STATION_CLASS_TOOLTIP                                :表示する駅の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_STATION_TYPE_TOOLTIP                                 :配置する駅の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_STATION_COLLECTION_TOOLTIP                           :表示する駅のコレクションを選択してください
+STR_PICKER_WAYPOINT_CLASS_TOOLTIP                               :表示する中継点の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_WAYPOINT_TYPE_TOOLTIP                                :配置する中継点の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_WAYPOINT_COLLECTION_TOOLTIP                          :表示する中継点のコレクションを選択してください
+STR_PICKER_ROADSTOP_BUS_CLASS_TOOLTIP                           :表示するバス停の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_ROADSTOP_BUS_TYPE_TOOLTIP                            :配置するバス停の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_ROADSTOP_BUS_COLLECTION_TOOLTIP                      :表示するバス停のコレクションを選択してください
+STR_PICKER_ROADSTOP_TRUCK_CLASS_TOOLTIP                         :表示する荷役所の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_ROADSTOP_TRUCK_TYPE_TOOLTIP                          :配置する荷役所の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_ROADSTOP_TRUCK_COLLECTION_TOOLTIP                    :表示する荷役所のコレクションを選択してください
+STR_PICKER_OBJECT_CLASS_TOOLTIP                                 :表示するオブジェクトの種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_OBJECT_TYPE_TOOLTIP                                  :配置するオブジェクトの種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます。Ctrlを押しながらドラッグすると、斜めに配置できます。また、Shiftを押しながらクリックすると費用を見積もります
+STR_PICKER_OBJECT_COLLECTION_TOOLTIP                            :表示するオブジェクトのコレクションを選択してください
+STR_PICKER_HOUSE_CLASS_TOOLTIP                                  :表示する街エリアを選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_HOUSE_TYPE_TOOLTIP                                   :配置する建物の種類を選択してください。Ctrlを押しながらクリックすると、お気に入りへの追加または削除ができます
+STR_PICKER_HOUSE_COLLECTION_TOOLTIP                             :表示する建物のコレクションを選択してください
 
+STR_HOUSE_PICKER_CAPTION                                        :建物を選択
+STR_HOUSE_PICKER_NAME                                           :{BLACK}名称: {GOLD}{STRING}
+STR_HOUSE_PICKER_POPULATION                                     :{BLACK}人口: {GOLD}{NUM}
+STR_HOUSE_PICKER_YEARS                                          :{BLACK}建築年: {GOLD}{NUM} ～ {NUM}
+STR_HOUSE_PICKER_YEARS_ANY                                      :{BLACK}建築年: {GOLD}いつでも
+STR_HOUSE_PICKER_YEARS_FROM                                     :{BLACK}建築年: {GOLD}{NUM} ～
+STR_HOUSE_PICKER_YEARS_UNTIL                                    :{BLACK}建築年: {GOLD}～ {NUM}
+STR_HOUSE_PICKER_SIZE                                           :{BLACK}サイズ: {GOLD}{NUM}x{NUM} タイル
+STR_HOUSE_PICKER_CARGO_ACCEPTED                                 :{BLACK}受入れ貨物: {GOLD}{STRING}
+STR_HOUSE_PICKER_CARGO_PRODUCED                                 :{BLACK}供給貨物: {GOLD}{CARGO_LIST}
 
+STR_HOUSE_PICKER_CLASS_ZONE1                                    :外縁
+STR_HOUSE_PICKER_CLASS_ZONE2                                    :郊外
+STR_HOUSE_PICKER_CLASS_ZONE3                                    :市街外側
+STR_HOUSE_PICKER_CLASS_ZONE4                                    :市街内側
+STR_HOUSE_PICKER_CLASS_ZONE5                                    :都心
 
+STR_HOUSE_PICKER_PROTECT                                        :建て替えを防止
+STR_HOUSE_PICKER_PROTECT_TOOLTIP                                :街が発展する中で、この建物を建て替えから保護するかどうかを選択してください
 
+STR_HOUSE_PICKER_REPLACE                                        :既存建物を置き換え
+STR_HOUSE_PICKER_REPLACE_TOOLTIP                                :この建物を配置するタイル上に既存の建物がある場合、それを自動的に撤去するかどうかを選択してください
 
-STR_STATION_CLASS_DFLT                                          :標準駅
-STR_STATION_CLASS_WAYP                                          :中継駅
+STR_STATION_CLASS_DFLT                                          :デフォルト
+STR_STATION_CLASS_DFLT_STATION                                  :デフォルトの駅
+STR_STATION_CLASS_DFLT_ROADSTOP                                 :デフォルトのバス停
+STR_STATION_CLASS_WAYP                                          :中継点
+STR_STATION_CLASS_WAYP_WAYPOINT                                 :デフォルトの中継点
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号種類の選択
