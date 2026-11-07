@@ -346,9 +346,6 @@ void Layouter::ResetFontCache([[maybe_unused]] FontSize size)
 #if defined(WITH_UNISCRIBE)
 	UniscribeResetScriptCache(size);
 #endif
-#if defined(WITH_COCOA)
-	MacOSResetScriptCache(size);
-#endif
 }
 
 /**
