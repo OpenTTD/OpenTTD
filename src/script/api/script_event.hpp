@@ -59,6 +59,7 @@ public:
 		ET_STORYPAGE_VEHICLE_SELECT,
 		ET_COMPANY_RENAMED,
 		ET_PRESIDENT_RENAMED,
+		ET_VEHICLE_OLD, ///< Event type for indicating a vehicle getting old.
 	};
 
 #ifndef DOXYGEN_API
