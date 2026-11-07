@@ -398,10 +398,11 @@ struct StandardGRFFileProps : FixedGRFFileProps<StandardSpriteGroup, static_cast
 /**
  * Variable-length list of sprite groups for an entity.
  * @tparam Tkey Key for indexing spritegroups
+ * @tparam Tbase Base class to inherit from.
  */
-template <class Tkey>
-struct VariableGRFFileProps : GRFFilePropsBase {
-	using ValueType = std::pair<Tkey, const struct SpriteGroup *>;
+template <class Tkey, class Tbase = GRFFilePropsBase>
+struct VariableGRFFileProps : Tbase {
+	using ValueType = std::pair<Tkey, const struct SpriteGroup *>; ///< The type in which the different sprite groups are stored.
 	std::vector<ValueType> spritegroups; ///< pointers to the different sprite groups of the entity
 
 	/**
@@ -449,10 +450,15 @@ struct VariableGRFFileProps : GRFFilePropsBase {
 /**
  * Sprite groups indexed by CargoType.
  */
-struct CargoGRFFileProps : VariableGRFFileProps<CargoType> {
+struct CargoGRFFileProps : VariableGRFFileProps<CargoType>, VariableGRFFileProps<CargoClasses, std::monostate> {
+	using VariableGRFFileProps<CargoType>::SetSpriteGroup, VariableGRFFileProps<CargoClasses, std::monostate>::SetSpriteGroup;
+	using VariableGRFFileProps<CargoType>::GetSpriteGroup, VariableGRFFileProps<CargoClasses, std::monostate>::GetSpriteGroup;
+
 	static constexpr CargoType SG_DEFAULT{NUM_CARGO}; ///< Default type used when no more-specific cargo matches.
 	static constexpr CargoType SG_PURCHASE{NUM_CARGO + 1}; ///< Used in purchase lists before an item exists.
 	static constexpr CargoType SG_DEFAULT_NA{NUM_CARGO + 2}; ///< Used only by stations and roads when no more-specific cargo matches.
+
+	std::pair<const SpriteGroup *, uint> GetFirstSpriteGroupOf(const std::vector<std::pair<CargoType, uint>> &indices, bool try_default_na = false) const;
 };
 
 /**
