@@ -166,9 +166,9 @@
 	if (quarter < CURRENT_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>();
+		return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->cur_economy.delivered_cargo.GetSum<OverflowSafeInt64>();
 	}
-	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>();
+	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt64>();
 }
 
 /* static */ SQInteger ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, SQInteger quarter)
@@ -346,7 +346,7 @@
 {
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, money >= 0);
-	EnforcePrecondition(false, (int64_t)money <= UINT32_MAX);
+	EnforcePrecondition(false, money <= UINT32_MAX);
 	return ScriptObject::Command<Commands::ChangeCompanySetting>::Do("company.engine_renew_money", money);
 }
 
