@@ -1470,7 +1470,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Bieżący stero
 STR_GAME_OPTIONS_INTERFACE                                      :Interfejs
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Rozmiar interfejsu
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Przeciągnij suwak, aby ustawić rozmiar interfejsu. Przeciągnij z użyciem Ctrl, aby uzyskać płynną regulację
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Przeciągnij suwak, aby ustawić rozmiar interfejsu. Zakres jest ograniczony przez wymiary okna gry. Przeciągnij z użyciem Ctrl, aby uzyskać płynną regulację
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Wykryj rozmiar automatycznie
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Włącz, aby rozmiar interfejsu był wykrywany automatycznie
 
@@ -4741,10 +4741,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} po
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd lewym przyciskiem myszy, aby go dodać/usunąć ze składu pociągu; kliknij prawym, aby uzyskać o nim informacje. Użyj Ctrl, aby wykonać te funkcje dla tego pojazdu i kolejnych
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - kliknij prawym na pojazd, aby wyświetlić informacje
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - kliknij prawym na statek, aby wyświetlić informacje
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - kliknij prawym na samolot, aby wyświetlić informacje
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd lewym przyciskiem myszy, aby go dodać/usunąć ze składu pociągu; kliknij prawym, aby uzyskać o nim informacje. Użyj Ctrl, aby wykonać te funkcje dla tego pojazdu i kolejnych. Przytrzymaj jednocześnie Ctrl i Shift, aby wyświetlić typy ładunków
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - kliknij prawym na pojazd, aby wyświetlić informacje. Przytrzymaj jednocześnie Ctrl i Shift, aby wyświetlić typy ładunków
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - kliknij prawym na statek, aby wyświetlić informacje. Przytrzymaj jednocześnie Ctrl i Shift, aby wyświetlić typy ładunków
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - kliknij prawym na samolot, aby wyświetlić informacje. Przytrzymaj jednocześnie Ctrl i Shift, aby wyświetlić typy ładunków
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pojazd kolejowy, aby go sprzedać

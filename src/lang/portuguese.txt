@@ -1091,7 +1091,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Controlador atu
 STR_GAME_OPTIONS_INTERFACE                                      :Interface
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Tamanho da interface
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arrastar o controlo deslizante para definir o tamanho da interface. Ctrl+Arrastar para um ajuste contínuo
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Arraste o controlo deslizante para definir o tamanho da interface. O intervalo é limitado pelo tamanho da janela. Ctrl e arraste para um ajuste contínuo
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detetar automaticamente o tamanho
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Marque esta opção para detetar automaticamente o tamanho do interface
 
@@ -2961,7 +2961,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combinado (elétrico){}O sinal combinado funciona simultaneamente como um sinal de entrada e de saída. Isto permite construir ramificações complexas de pré-sinais.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto (elétrico){}Permite que vários comboios passem simultaneamente um bloco de linha, desde que consigam reservar um caminho seguro sem prejudicar o veículo seguinte. Os sinais de trajeto padrão podem ser cruzados no sentido contrário.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de sentido único (elétrico){}Um sinal de trajeto que permite que mais de um comboio passe simultaneamente uma divisão de linha, desde que consiga reservar um caminho para onde possa parar posteriormente sem prejudicar o seguinte. Os sinais de sentido único não podem ser cruzados no sentido contrário.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter Sinal{}Clique num sinal existente para convertê-lo no tipo e variante de sinal selecionado. Ctrl+Clique para mudar a variante existente. Pressione também Shift para apenas mostrar o custo estimado
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Clique num sinal existente para o converter para o tipo e variante selecionados. Ctrl+Clique para alternar entre as variantes existentes. Prima também a tecla Shift para mostrar apenas a estimativa de custo
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distância entre os sinais quando se arrasta
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reduzir a distância entre os sinais quando se arrasta
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a distância entre os sinais quando se arrasta
@@ -4362,10 +4362,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Comboios - arraste o veículo com o botão esquerdo do rato para acrescentar/retirar do comboio; clique com o botão direito para informações. Ctrl+Clique para aplicar ambas as funções à cadeia seguinte
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - clique com o botão direito num veículo para informações
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navios - clique com o botão direito num navio para informações
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Clique com o botão direito na aeronave para informações
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Comboios - arraste o veículo com clique esquerdo para adicionar/remover do comboio, clique direito para obter informações. Ctrl+Clique para aplicar qualquer uma das funções à cadeia seguinte. Mantenha pressionado Ctrl+Shift para sobrepor o tipo de carga
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - clique direito no veículo para obter informações. Mantenha pressionado Ctrl+Shift para ver o tipo de carga
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navios - use o clique direito num navio para obter informações. Pressione com Ctrl+Shift para ver o tipo de carga
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - use o clique direito na aeronave para obter informações. Pressione com Ctrl+Shift para visualizar o tipo de carga
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arraste para aqui o veículo ferroviário para vendê-lo

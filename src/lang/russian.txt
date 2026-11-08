@@ -1235,7 +1235,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Видеодр�
 STR_GAME_OPTIONS_INTERFACE                                      :Интерфейс
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Масштаб интерфейса
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Изменяйте масштаб интерфейса с помощью ползунка. Удерживайте Ctrl для плавной настройки.
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Изменяйте масштаб интерфейса с помощью ползунка. Он ограничен размерами окна. Удерживайте Ctrl для плавной настройки.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Автоопределение
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Установить масштаб интерфейса автоматически
 
@@ -3131,7 +3131,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Выхо
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комбинированный светофор{}Работает одновременно как входной и выходной светофор. Это позволяет построить большую разветвлённую сеть.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Допускает следование поездов в обе стороны.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Односторонний маршрутный светофор{}Позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый из них может зарезервировать безопасный путь. Не допускает следования поездов в обратную сторону.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Изменение типа сигнала{}Когда кнопка нажата, щелчок по существующему сигналу преобразует его в выбранный тип. Ctrl+щелчок - перебор существующих вариантов. Shift+щелчок - оценка стоимости преобразования.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Изменение типа сигнала.{}Щелчок по существующему сигналу преобразует его в выбранный тип. Ctrl+щелчок - перебор существующих вариантов. При нажатом Shift - оценка стоимости преобразования.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Расстояние между сигналами при протягивании
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Уменьшить расстояние между сигналами при протягивании
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Увеличить расстояние между сигналами при протягивании
@@ -4536,10 +4536,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} е
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда в депо. Формируйте составы с помощью перетаскивания локомотивов и вагонов. Нажмите ПКМ для получения информации. При нажатом Ctrl обе функции работают от выбранного вагона до конца состава.
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили в гараже. Нажмите ПКМ для получения информации.
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Суда в доке. Нажмите ПКМ для получения информации.
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Воздушный транспорт в ангаре. Нажмите ПКМ для получения информации.
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда в депо. Формируйте составы с помощью перетаскивания локомотивов и вагонов. Нажмите правую кнопку мыши для получения информации. При нажатом Ctrl обе функции работают от выбранного вагона до конца состава. Зажмите Ctrl+Shift для отображения типов грузов.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили в гараже. Нажмите правую кнопку мыши для получения информации. Зажмите Ctrl+Shift для отображения типов грузов.
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Суда в доке. Нажмите правую кнопку мыши для получения информации. Зажмите Ctrl+Shift для отображения типов грузов.
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Воздушный транспорт в ангаре. Нажмите правую кнопку мыши для получения информации. Зажмите Ctrl+Shift для отображения типов грузов.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перетащите сюда транспортное средство, чтобы продать его

@@ -1090,7 +1090,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :驅動程式：
 STR_GAME_OPTIONS_INTERFACE                                      :介面
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :介面大小
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖曳滑動以設定介面大小。按住 <Ctrl> 鍵以精細調整
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖曳滑動以設定介面大小。範圍受視窗大小限制。按住 <Ctrl> 鍵以精細調整
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :自動選取大小
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :啟用以自動選取介面大小
 
@@ -2960,7 +2960,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口�
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}組合號誌 (電氣){}組合號誌同時具有入口／出口號誌的特性，這可讓玩家設置一卡車的預告號誌。
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。標準路徑號誌可以從號誌後方穿過。
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}單向路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。單向路徑號誌無法從號誌後方穿過。
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}號誌轉換{}點選現有號誌將會轉換為工具所選取的號誌種類和風格。按住 <Ctrl> 則只會變更風格。按住 <Shift> 則可顯示預估成本
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}號誌轉換{}點選現有號誌將會轉換為工具所選取的號誌種類和風格。按住 <Ctrl> 則只會變更風格。另按住 <Shift> 鍵則僅顯示預估成本
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}修改等距號誌拖曳間隔
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}減少 (拉近)
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加 (拉遠)
@@ -4361,10 +4361,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}車輛 {
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG}（{CARGO_SHORT}）
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 拖放車廂可加掛或解聯，點選右鍵可顯示詳細資訊。按住 <Ctrl> 點選可一併選擇之後的車廂
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選右鍵可顯示詳細資訊
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶 - 點選右鍵可顯示詳細資訊
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛機 - 點選右鍵可顯示詳細資訊
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 拖放車廂可加掛或解聯，點選右鍵可顯示詳細資訊。按住 <Ctrl> 點選可一併選擇之後的車廂。同時按住 <Ctrl> 及 <Shift> 鍵可覆蓋貨物種類
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選右鍵可顯示詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可覆蓋貨物種類
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶 - 點選右鍵可顯示詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可覆蓋貨物種類
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛機 - 點選右鍵可顯示詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可覆蓋貨物種類
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}將列車拖到這裡即可出售

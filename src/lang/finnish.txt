@@ -1090,7 +1090,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nykyinen ajuri:
 STR_GAME_OPTIONS_INTERFACE                                      :Käyttöliittymä
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Käyttöliittymän koko
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Vedä liukusäädintä asettaaksesi käyttöliittymän koon. Pidä Ctrl-näppäintä painettuna säätääksesi portaattomasti
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Vedä liukusäädintä asettaaksesi käyttöliittymän koon. Valittavissa olevat arvot riippuvat ikkunan koosta. Pidä Ctrl-näppäintä painettuna säätääksesi portaattomasti
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Tunnista koko automaattisesti
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Valitse käyttöliittymän koon tunnistamiseksi automaattisesti
 
@@ -2960,7 +2960,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Poistumi
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Yhdistelmäopastin (valo-opastin){}Yhdistelmäopastin toimii yhtä aikaa tulo- ja poistumisopastimena. Tämän avulla on mahdollista luoda suuria ”opastinpuita”
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Tavalliset reittiopastimet voi ohittaa takakautta
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Yksisuuntainen reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Yksisuuntaisia opastimia ei voi ohittaa takakautta
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassa olevan opastimen napsauttaminen muuntaa sen valituntyyppiseksi ja -muotoiseksi. Ctrl+napsautus vaihtaa nykyistä opastimen muotoa. Vaihto+napsautus näyttää muuntamisen kustannusarvion
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassa olevan opastimen napsauttaminen muuntaa sen valituntyyppiseksi ja -muotoiseksi. Ctrl+napsautus vaihtaa nykyistä opastimen muotoa. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Opastimien väli vetämällä lisättäessä
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Pienennä opastimien väliä vetämällä lisättäessä
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Suurenna opastimien väliä vetämällä lisättäessä
@@ -4361,10 +4361,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ku
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Junat – vedä kulkuneuvoa vasemmalla hiiren painikkeella lisätäksesi/poistaaksesi junasta, oikealla painikkeella lisätietoja. Ctrl+napsautus toteuttaa toiminnon seuraavaan ketjuun
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot – napsauta ajoneuvoa oikealla hiiren painikkeella saadaksesi tietoja
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat – napsauta laivaa oikealla hiiren painikkeella saadaksesi tietoja.
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet – napsauta lentokonetta oikealla hiiren painikkeella saadaksesi tietoja
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Junat – vedä kulkuneuvoa vasemmalla hiiren painikkeella lisätäksesi tai poistaaksesi junasta; oikealla painikkeella lisätietoja. Ctrl+napsautus toteuttaa toiminnon seuraavaan ketjuun. Pidä Ctrl+Vaihto painettuna nähdäksesi rahtityypit
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot – napsauta ajoneuvoa oikealla hiiren painikkeella saadaksesi tietoja. Pidä Ctrl+Vaihto painettuna nähdäksesi rahtityypit
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat – napsauta alusta oikealla hiiren painikkeella saadaksesi tietoja. Pidä Ctrl+Vaihto painettuna nähdäksesi rahtityypit
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet – napsauta ilma-alusta oikealla hiiren painikkeella saadaksesi tietoja. Pidä Ctrl+Vaihto painettuna nähdäksesi rahtityypit
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Vedä yksikkö tähän myydäksesi sen
