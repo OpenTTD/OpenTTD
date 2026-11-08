@@ -288,7 +288,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
  * @param[out] bytes The number of bytes we are going to download.
  * @param fallback Whether to use the fallback or not.
  */
-void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uint &bytes, bool fallback)
+void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uint64_t &bytes, bool fallback)
 {
 	bytes = 0;
 
@@ -478,7 +478,7 @@ bool ClientNetworkContentSocketHandler::ReceiveServerContent(Packet &p)
 			return false;
 		}
 
-		this->OnDownloadProgress(*this->cur_info, (int)to_read);
+		this->OnDownloadProgress(*this->cur_info, to_read);
 
 		if (to_read == 0) this->AfterDownload();
 	}
@@ -569,7 +569,8 @@ void ClientNetworkContentSocketHandler::OnFailure()
 
 	/* If we fail, download the rest via the 'old' system. */
 	if (!this->is_cancelled) {
-		uint files, bytes;
+		uint files;
+		uint64_t bytes;
 
 		this->DownloadSelectedContent(files, bytes, true);
 	}
@@ -605,7 +606,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(std::unique_ptr<char[]> da
 			this->OnFailure();
 		} else {
 			/* Just received the data. */
-			this->OnDownloadProgress(*this->cur_info, (int)length);
+			this->OnDownloadProgress(*this->cur_info, length);
 		}
 
 		/* Nothing more to do now. */
@@ -1081,7 +1082,7 @@ void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo &
 	}
 }
 
-void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo &ci, int bytes)
+void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo &ci, int64_t bytes)
 {
 	for (size_t i = 0; i < this->callbacks.size(); /* nothing */) {
 		ContentCallback *cb = this->callbacks[i];

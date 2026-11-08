@@ -47,7 +47,7 @@ struct ContentCallback {
 	 * @param ci the content info of the file
 	 * @param bytes the number of bytes downloaded since the previous call
 	 */
-	virtual void OnDownloadProgress([[maybe_unused]] const ContentInfo &ci, [[maybe_unused]] int bytes) {}
+	virtual void OnDownloadProgress([[maybe_unused]] const ContentInfo &ci, [[maybe_unused]] int64_t bytes) {}
 
 	/**
 	 * We have finished downloading a file
@@ -90,7 +90,7 @@ protected:
 	void OnConnect(bool success) override;
 	void OnDisconnect() override;
 	void OnReceiveContentInfo(const ContentInfo &ci) override;
-	void OnDownloadProgress(const ContentInfo &ci, int bytes) override;
+	void OnDownloadProgress(const ContentInfo &ci, int64_t bytes) override;
 	void OnDownloadComplete(ContentID cid) override;
 
 	void OnFailure() override;
@@ -115,7 +115,7 @@ public:
 	void RequestContentList(std::span<const ContentID> content_ids);
 	void RequestContentList(ContentVector *cv, bool send_md5sum = true);
 
-	void DownloadSelectedContent(uint &files, uint &bytes, bool fallback = false);
+	void DownloadSelectedContent(uint &files, uint64_t &bytes, bool fallback = false);
 	void RequestQueuedContentInfo();
 
 	void Select(ContentID cid);

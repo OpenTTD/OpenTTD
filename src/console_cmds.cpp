@@ -2394,7 +2394,7 @@ static bool ConContent(std::span<std::string_view> argv)
 
 	if (StrEqualsIgnoreCase(argv[1], "download")) {
 		uint files;
-		uint bytes;
+		uint64_t bytes;
 		_network_content_client.DownloadSelectedContent(files, bytes);
 		IConsolePrint(CC_DEFAULT, "Downloading {} file(s) ({} bytes).", files, bytes);
 		return true;

@@ -294,8 +294,8 @@ public:
 class BootstrapEmscripten : public ContentCallback {
 	bool downloading = false;
 	uint total_files = 0;
-	uint total_bytes = 0;
-	uint downloaded_bytes = 0;
+	uint64_t total_bytes = 0;
+	uint64_t downloaded_bytes = 0;
 
 public:
 	BootstrapEmscripten()
@@ -333,7 +333,7 @@ public:
 		EM_ASM({ if (window["openttd_bootstrap"]) openttd_bootstrap($0, $1); }, this->downloaded_bytes, this->total_bytes);
 	}
 
-	void OnDownloadProgress(const ContentInfo &, int bytes) override
+	void OnDownloadProgress(const ContentInfo &, int64_t bytes) override
 	{
 		/* A negative value means we are resetting; for example, when retrying or using a fallback. */
 		if (bytes < 0) {
