@@ -17,7 +17,7 @@
 
 #include "safeguards.h"
 
-static const int SLIDER_WIDTH = 3;
+static const int SLIDER_WIDTH = 5; ///< Width of the slider handle.
 
 /**
  * Draw a slider widget with knob at given value
