@@ -1736,8 +1736,8 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :None
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Own company
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :All companies
 
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Prefer team chat with <ENTER>: {STRING2}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Switch the binding of company-internal and public chat to <ENTER> resp. <Ctrl+ENTER>
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :If available open team chat without modifier keys: {STRING2}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Switch whether the 'Chat' key opens the company wide chat, instead of the public chat if the company wide chat is available. The company wide chat is available if more than one player controls a company and is not available in spectator mode
 
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Map scrollwheel speed: {STRING2}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Control the sensitivity of mouse-wheel scrolling
