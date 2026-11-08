@@ -965,12 +965,8 @@ struct DepotWindow : Window {
 	{
 		if (!IsCtrlPressed()) {
 			/* If CTRL is not pressed: If all the vehicles in this list have the same orders, then copy orders */
-			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
-				return VehiclesHaveSameEngineList(v1, v2);
-			})) {
-				if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
-					return VehiclesHaveSameOrderList(v1, v2);
-				})) {
+			if (AllEqual(begin, end, VehiclesHaveSameEngineList)) {
+				if (AllEqual(begin, end, VehiclesHaveSameOrderList)) {
 					OnVehicleSelect(*begin);
 				} else {
 					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying((*begin)->type)),
@@ -982,12 +978,8 @@ struct DepotWindow : Window {
 			}
 		} else {
 			/* If CTRL is pressed: If all the vehicles in this list share orders, then copy orders */
-			if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
-				return VehiclesHaveSameEngineList(v1, v2);
-			})) {
-				if (AllEqual(begin, end, [](const Vehicle *v1, const Vehicle *v2) {
-					return v1->FirstShared() == v2->FirstShared();
-				})) {
+			if (AllEqual(begin, end, VehiclesHaveSameEngineList)) {
+				if (AllEqual(begin, end, VehiclesHaveSameSharedOrderList)) {
 					OnVehicleSelect(*begin);
 				} else {
 					ShowErrorMessage(GetEncodedString(STR_ERROR_CAN_T_BUY_TRAIN + to_underlying((*begin)->type)),
