@@ -361,13 +361,17 @@
 /* static */ bool ScriptCompany::SetPrimaryLiveryColour(LiveryScheme scheme, Colours colour)
 {
 	EnforceCompanyModeValid(false);
-	return ScriptObject::Command<Commands::SetCompanyColour>::Do((::LiveryScheme)scheme, true, (::Colours)colour);
+
+	Livery livery{Livery::Flag::Primary, static_cast<::Colours>(colour), ::Colours::Invalid};
+	return ScriptObject::Command<Commands::SetCompanyColour>::Do(static_cast<::LiveryScheme>(scheme), livery);
 }
 
 /* static */ bool ScriptCompany::SetSecondaryLiveryColour(LiveryScheme scheme, Colours colour)
 {
 	EnforceCompanyModeValid(false);
-	return ScriptObject::Command<Commands::SetCompanyColour>::Do((::LiveryScheme)scheme, false, (::Colours)colour);
+
+	Livery livery{Livery::Flag::Secondary, ::Colours::Invalid, static_cast<::Colours>(colour)};
+	return ScriptObject::Command<Commands::SetCompanyColour>::Do(static_cast<::LiveryScheme>(scheme), livery);
 }
 
 /* static */ ScriptCompany::Colours ScriptCompany::GetPrimaryLiveryColour(ScriptCompany::LiveryScheme scheme)

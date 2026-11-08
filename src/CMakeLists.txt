@@ -263,6 +263,7 @@ add_files(
     league_type.h
     library_loader.h
     livery.h
+    livery_cmd.h
     main_gui.cpp
     map.cpp
     map_func.h

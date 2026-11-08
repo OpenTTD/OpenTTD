@@ -1008,17 +1008,17 @@ public:
 		Colours colour = static_cast<Colours>(index);
 		if (colour >= Colours::End) colour = Colours::Invalid;
 
+		Livery livery{{}, colour, colour};
+		livery.in_use.Set(Livery::Flag::Primary, widget == WID_SCL_PRI_COL_DROPDOWN);
+		livery.in_use.Set(Livery::Flag::Secondary, widget == WID_SCL_SEC_COL_DROPDOWN);
+
 		if (this->livery_class < LiveryClass::GroupRail) {
-			/* Set company colour livery */
-			for (LiveryScheme scheme : this->visible_schemes) {
-				/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
-				if (this->sel.schemes.Test(scheme) || IsCtrlPressed()) {
-					Command<Commands::SetCompanyColour>::Post(scheme, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
-				}
-			}
+			/* Change livery for the selected schemes, or all visible schemes if CTRL is pressed. */
+			LiverySchemes schemes = IsCtrlPressed() ? this->visible_schemes : this->sel.schemes;
+			Command<Commands::SetCompanyColour>::Post(schemes, livery);
 		} else {
 			/* Setting group livery */
-			Command<Commands::SetGroupLivery>::Post(this->sel.group, widget == WID_SCL_PRI_COL_DROPDOWN, colour);
+			Command<Commands::SetGroupLivery>::Post(this->sel.group, livery);
 		}
 	}
 

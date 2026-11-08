@@ -862,13 +862,20 @@ static void MakeNewGameDone()
 
 	/* Overwrite colour from settings if needed
 	 * Colours::End corresponds to Random colour */
+	Livery livery{{}, Colours::Invalid, Colours::Invalid};
 
 	if (_settings_client.gui.starting_colour != Colours::End) {
-		Command<Commands::SetCompanyColour>::Post(LiveryScheme::Default, true, _settings_client.gui.starting_colour);
+		livery.in_use.Set(Livery::Flag::Primary);
+		livery.colour1 = _settings_client.gui.starting_colour;
 	}
 
 	if (_settings_client.gui.starting_colour_secondary != Colours::End && _loaded_newgrf_features.used_liveries.Test(LiveryScheme::Default)) {
-		Command<Commands::SetCompanyColour>::Post(LiveryScheme::Default, false, _settings_client.gui.starting_colour_secondary);
+		livery.in_use.Set(Livery::Flag::Secondary);
+		livery.colour2 = _settings_client.gui.starting_colour_secondary;
+	}
+
+	if (livery.in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary})) {
+		Command<Commands::SetCompanyColour>::Post(LiveryScheme::Default, livery);
 	}
 
 	OnStartGame(false);

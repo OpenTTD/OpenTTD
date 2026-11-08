@@ -683,29 +683,29 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
 
 /**
  * Set the livery for a vehicle group.
- * @param flags     Command flags.
+ * @param flags Command flags.
  * @param group_id Group ID.
- * @param primary Set primary instead of secondary colour
- * @param colour Colour.
+ * @param livery Livery to set. The in-use value indicates which parts to actually set.
  * @return The (zero) cost or error.
  */
-CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, bool primary, Colours colour)
+CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, Livery livery)
 {
 	Group *g = Group::GetIfValid(group_id);
 
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
-	if (colour >= Colours::End && colour != Colours::Invalid) return CMD_ERROR;
+	/* For each part to be set the colour must be within range or Colours::Invalid. */
+	if (livery.in_use.Test(Livery::Flag::Primary) && livery.colour1 >= Colours::End && livery.colour1 != Colours::Invalid) return CMD_ERROR;
+	if (livery.in_use.Test(Livery::Flag::Secondary) && livery.colour2 >= Colours::End && livery.colour2 != Colours::Invalid) return CMD_ERROR;
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		if (primary) {
-			g->livery.in_use.Set(Livery::Flag::Primary, colour != Colours::Invalid);
-			if (colour == Colours::Invalid) colour = GetParentLivery(g)->colour1;
-			g->livery.colour1 = colour;
-		} else {
-			g->livery.in_use.Set(Livery::Flag::Secondary, colour != Colours::Invalid);
-			if (colour == Colours::Invalid) colour = GetParentLivery(g)->colour2;
-			g->livery.colour2 = colour;
+		if (livery.in_use.Test(Livery::Flag::Primary)) {
+			g->livery.in_use.Set(Livery::Flag::Primary, livery.colour1 != Colours::Invalid);
+			g->livery.colour1 = livery.colour1 == Colours::Invalid ? GetParentLivery(g)->colour1 : livery.colour1;
+		}
+		if (livery.in_use.Test(Livery::Flag::Secondary)) {
+			g->livery.in_use.Set(Livery::Flag::Secondary, livery.colour2 != Colours::Invalid);
+			g->livery.colour2 = livery.colour2 == Colours::Invalid ? GetParentLivery(g)->colour2 : livery.colour2;
 		}
 
 		PropagateChildLivery(g, true);

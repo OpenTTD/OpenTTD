@@ -224,7 +224,8 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, true, (::Colours)colour);
+	Livery livery{Livery::Flag::Primary, static_cast<::Colours>(colour), ::Colours::Invalid};
+	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, livery);
 }
 
 /* static */ bool ScriptGroup::SetSecondaryColour(GroupID group_id, ScriptCompany::Colours colour)
@@ -232,7 +233,8 @@
 	EnforceCompanyModeValid(false);
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, false, (::Colours)colour);
+	Livery livery{Livery::Flag::Secondary, ::Colours::Invalid, static_cast<::Colours>(colour)};
+	return ScriptObject::Command<Commands::SetGroupLivery>::Do(group_id, livery);
 }
 
 /* static */ ScriptCompany::Colours ScriptGroup::GetPrimaryColour(GroupID group_id)
