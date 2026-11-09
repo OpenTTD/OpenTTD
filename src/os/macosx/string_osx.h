@@ -81,7 +81,6 @@ public:
 	}
 };
 
-void MacOSResetScriptCache(FontSize size);
 void MacOSSetCurrentLocaleName(std::string_view iso_code);
 int MacOSStringCompare(std::string_view s1, std::string_view s2);
 int MacOSStringContains(std::string_view str, std::string_view value, bool case_insensitive);

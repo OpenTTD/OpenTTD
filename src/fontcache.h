@@ -119,7 +119,7 @@ public:
 	 */
 	virtual const void *GetOSHandle()
 	{
-		return nullptr;
+		NOT_REACHED();
 	}
 
 	/**

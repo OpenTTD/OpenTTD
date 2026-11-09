@@ -23,8 +23,6 @@
 
 /** Cached current locale. */
 static CFAutoRelease<CFLocaleRef> _osx_locale;
-/** CoreText cache for font information, cleared when OTTD changes fonts. */
-static EnumIndexArray<CFAutoRelease<CTFontRef>, FontSize, FontSize::End> _font_cache;
 
 
 /**
@@ -154,15 +152,8 @@ static const CTRunDelegateCallbacks _sprite_font_callback = {
 		if (position - last == 0) continue;
 
 		FontCache &fc = font.GetFontCache();
+		assert(fc.GetOSHandle() != nullptr);
 		CTFontRef font_handle = static_cast<CTFontRef>(fc.GetOSHandle());
-		if (font_handle == nullptr) {
-			if (!_font_cache[fc.GetSize()]) {
-				/* Cache font information. */
-				CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, fc.GetFontName().c_str(), kCFStringEncodingUTF8));
-				_font_cache[fc.GetSize()].reset(CTFontCreateWithName(font_name.get(), fc.GetFontSize(), nullptr));
-			}
-			font_handle = _font_cache[fc.GetSize()].get();
-		}
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, position - last), kCTFontAttributeName, font_handle);
 
 		CGColorRef colour = CGColorCreateGenericGray(to_underlying(font.colour.colour) / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
@@ -274,16 +265,6 @@ int CoreTextParagraphLayout::CoreTextLine::GetWidth() const
 	}
 
 	return total_width;
-}
-
-
-/**
- * Delete CoreText font reference for a specific font size.
- * @param size The font size to delete.
- */
-void MacOSResetScriptCache(FontSize size)
-{
-	_font_cache[size].reset();
 }
 
 /**

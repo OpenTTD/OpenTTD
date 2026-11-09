@@ -150,15 +150,8 @@ void UniscribeResetScriptCache(FontSize size)
 static HFONT HFontFromFont(const Font &font)
 {
 	FontCache &fc = font.GetFontCache();
-	if (fc.GetOSHandle() != nullptr) return CreateFontIndirect(reinterpret_cast<PLOGFONT>(const_cast<void *>(fc.GetOSHandle())));
-
-	LOGFONT logfont{};
-	logfont.lfHeight = fc.GetHeight();
-	logfont.lfWeight = FW_NORMAL;
-	logfont.lfCharSet = DEFAULT_CHARSET;
-	convert_to_fs(fc.GetFontName(), logfont.lfFaceName);
-
-	return CreateFontIndirect(&logfont);
+	assert(fc.GetOSHandle() != nullptr);
+	return CreateFontIndirect(reinterpret_cast<PLOGFONT>(const_cast<void *>(fc.GetOSHandle())));
 }
 
 /**
