@@ -1091,7 +1091,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :현재 드라�
 STR_GAME_OPTIONS_INTERFACE                                      :인터페이스
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :인터페이스 크기
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :인터페이스 크기를 설정하려면 슬라이더를 드래그하세요. CTRL+드래그하면 미세 조정이 가능합니다
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :인터페이스 크기를 설정하려면 슬라이더를 드래그하세요. 창 크기를 넘을 수는 없습니다. CTRL+드래그하면 미세 조정이 가능합니다
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :크기 자동 탐지
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :인터페이스 크기를 자동으로 탐지하려면 이 설정을 켜세요
 
@@ -4362,10 +4362,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}차량 {
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차에 차량을 추가하거나 제거하려면 차량을 왼쪽 클릭으로 드래그하시고, 열차 정보를 보려면 오른쪽 클릭하세요. CTRL+클릭하면 두 기능 중 하나를 해당 차량 뒤에 딸려오는 차량에 적용할 수 있습니다
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량 - 차량의 정보를 보려면 오른쪽 클릭하세요
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 오른쪽 클릭하세요
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}항공기 - 항공기의 정보를 보려면 오른쪽 클릭하세요
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차 - 열차에 차량을 추가하거나 제거하려면 차량을 왼쪽 클릭으로 드래그하시고, 열차 정보를 보려면 오른쪽 클릭하세요. CTRL+클릭하면 두 기능 중 하나를 해당 차량 뒤에 딸려오는 차량에 적용할 수 있습니다.  CTRL+SHIFT를 누른 채로 사용하면 화물 종류를 위에 표시합니다
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량 - 차량의 정보를 보려면 오른쪽 클릭하세요. CTRL+SHIFT를 누른 채로 사용하면 화물 종류를 위에 표시합니다
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}선박 - 선박의 정보를 보려면 오른쪽 클릭하세요. CTRL+SHIFT를 누른 채로 사용하면 화물 종류를 위에 표시합니다
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}항공기 - 항공기의 정보를 보려면 오른쪽 클릭하세요. CTRL+SHIFT를 누른 채로 사용하면 화물 종류를 위에 표시합니다
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}기관차/객차/화차 한 량만 팔려면 여기로 드래그하세요
