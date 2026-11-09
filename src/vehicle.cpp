@@ -3348,6 +3348,17 @@ bool VehiclesHaveSameOrderList(const Vehicle *v1, const Vehicle *v2)
 	return std::ranges::equal(v1->Orders(), v2->Orders(), [](const Order &o1, const Order &o2) { return o1.Equals(o2); });
 }
 
+/**
+ * Checks if two vehicles have the same shared list of orders.
+ * @param v1 First vehicle.
+ * @param v2 Second vehicle.
+ * @return True if same, false if different.
+ */
+bool VehiclesHaveSameSharedOrderList(const Vehicle *v1, const Vehicle *v2)
+{
+	return v1->FirstShared() == v2->FirstShared();
+}
+
 /** Vehicle sub-coordinate data for moving into a new tile. */
 struct VehicleSubcoordData : Coord2D<uint8_t> {
 	Direction dir = Direction::Invalid; ///< new direction.
