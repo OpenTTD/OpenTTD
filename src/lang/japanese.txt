@@ -428,9 +428,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION_TOOLTIP                    :{BLACK}街を�
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION_TOOLTIP                :{BLACK}産業を生成します
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION_TOOLTIP                  :{BLACK}道路を敷設します
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION_TOOLTIP                  :{BLACK}軌道敷設
-STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}木を植えます。Ctrlで斜めに選択できます。Shiftキーを押しながら決定すると費用を見積もります
+STR_SCENEDIT_TOOLBAR_PLANT_TREES_TOOLTIP                        :{BLACK}木を植えます。Ctrl+ドラッグで斜めに植林できます。Shift+クリックで費用の見積が出ます
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN_TOOLTIP                         :{BLACK}標識を設置します
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}オブジェクトを設置します。Ctrlで斜めに選択できます。Shiftを押しながら決定すると費用を見積もります
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT_TOOLTIP                       :{BLACK}オブジェクトを配置します。Ctrl+ドラッグで斜めに配置できます。Shift+クリックで費用の見積が出ます
 
 # Scenario editor file menu
 ###length 7
@@ -2072,7 +2072,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :ゲーム中、
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :成長はするが広がらない {RED}(製材所の機能を止めます)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :成長するが、熱帯雨林にのみ広がる
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :成長し、どこにでも広がる
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :成長はするが広がらない {RED}(製材所の機能を止めます)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :成長せず広がらない {RED}(製材所の機能を止めます)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :メインツールバーの位置: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :画面上のメインツールバーの位置を決めます
@@ -2986,12 +2986,14 @@ STR_BRIDGE_TUBULAR_SILICON                                      :管状橋(シ�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}道路敷設
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}軌道敷設
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}道路を建設します。Ctrlで建設/撤去を切り替えられます。Shiftを押しながら決定すると費用の見積が出ます
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}路面電車の軌道を敷設します。Ctrlで敷設/撤去を切り替えられます。Shiftを押しながら決定すると費用の見積が出ます
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}自動的に道路を敷設します。Ctrlで建設/撤去を切り替えられます。Shiftを押しながら決定すると費用の見積が出ます
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}自動的に軌道を敷設します。Ctrlで建設/撤去を切り替えられます。Shiftを押しながら決定すると費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}道路を建設します。Ctrl+クリックで道路を撤去できます。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}路面電車の軌道を敷設します。Ctrl+クリックで軌道を撤去できます。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}自動的に道路を建設します。Ctrl+クリックで道路を撤去できます。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}自動的に路面電車の軌道を敷設します。Ctrl+クリックで軌道を撤去できます。Shift+クリックで費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}車庫を建設します(バス・トラックの購入・整備施設になります)。Shift+クリックで費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}路面電車庫を建設します(路面電車の購入・修理施設になります)。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD_TO_WAYPOINT               :{BLACK}道路上に中継点を建設します。Ctrl+クリックで中継点同士を結合できます。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM_TO_WAYPOINT               :{BLACK}軌道上に中継点を建設します。Ctrl+クリックで中継点同士を結合できます。Shift+クリックで費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}バス停を建設します。Ctrl+クリックで離れた停留施設と結合可能です。Shift+クリックで費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}旅客用電停を建設します。Ctrl+クリックで離れた停留施設と結合可能です。Shift+クリックで費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}荷役所を建設します。Ctrl+クリックで離れた停留施設と結合可能です。Shift+クリックで費用の見積が出ます
@@ -3003,16 +3005,16 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}道路�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}軌道用トンネルを建設します。Shiftを押しながら決定すると費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}道路の敷設/撤去を切り替えます
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}軌道の敷設/撤去を切り替えます
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}道路の種類を変更/アップグレードします。Shift を押しながら決定するとコスト見積もりの作成/表示を切り替えられます
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}軌道の種類を変更・アップグレードします。Shift を押しながら決定するとコスト見積もりの作成/表示を切り替えられます
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}道路の種類を変更・アップグレードします。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}軌道の種類を変更・アップグレードします。Shift+クリックで費用の見積が出ます
 
 STR_ROAD_NAME_ROAD                                              :道路
-STR_ROAD_NAME_TRAM                                              :トラムウェイ
+STR_ROAD_NAME_TRAM                                              :軌道
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}車庫建設
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}車庫の向きを選択します
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}トラム車庫建設
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}路面電車庫建設
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}路面電車庫の向きを選択します
 
 # Road vehicle station construction window
@@ -3028,14 +3030,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}貨物�
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}運河・港湾建設
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水域・港湾建設
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}運河を建設します。Shiftを押しながら決定すると費用を見積もります
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}水門を建設します。Shiftを押しながら決定すると費用を見積もります
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}運河を建設します。Ctrl+ドラッグで斜めに建設できます。Shift+クリックで費用の見積が出ます
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}水門を建設します。Shift+クリックで費用の見積が出ます
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}造船所を建設します(船舶の購入・修理施設になります)。Shift+クリックで費用の見積が出ます
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}埠頭を建設します。Ctrl+クリックで離れた停留施設との結合が可能です。Shift+クリックで費用の見積が出ます
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}通過点として使えるブイを設置します。Shift+クリックで費用の見積が出ます
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}水路橋を建設します。Shiftを押しながら決定すると費用の見積が出ます
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}水域を作成します。{}通常操作では運河を建設しますが、海水位にある地域でCtrl+クリックするとその地域を水域にします
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}川を造成します。Ctrlで斜めに選択できます。
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}水路橋を建設します。Shift+クリックで費用の見積が出ます
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}運河を建設します。海水位でCtrl+クリックすると、その地域を水域にします
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}川を造成します。Ctrl+クリックで斜めに造成できます
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}造船所建設
@@ -3073,10 +3075,10 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}騒音�
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}土地の角を下げます。ドラッグで範囲選択すると最初に選択した土地の高度より一段低い高さに土地をならします。Ctrlで斜めに選択できます。またShiftを押しながら決定すると工事費用を見積もります
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}土地の角を上げます。ドラッグで範囲選択すると最初に選択した土地の高度より一段高い高さに土地をならします。Ctrlで斜めに選択できます。またShiftを押しながら決定すると工事費用を見積もります
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}最初に選択した土地の高さに選択範囲をならします。Ctrlで斜めに選択できます。またShiftを押しながら決定すると工事費用を見積もります
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来用に土地を購入します。Ctrlで斜めに選択できます。Shiftを押しながら決定すると費用を見積もります
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}土地の角を下げます。ドラッグで範囲選択すると最初に選択した土地の高度より一段低い高さに土地をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}土地の角を上げます。ドラッグで範囲選択すると最初に選択した土地の高度より一段高い高さに土地をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}最初に選択した土地の高さに選択範囲をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来用に土地を購入します。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}オブジェクトを配置
@@ -3090,7 +3092,7 @@ STR_OBJECT_CLASS_TRNS                                           :電波塔
 STR_PLANT_TREE_CAPTION                                          :{WHITE}植林
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林する樹類を選択します。既に木がある場合は追加で植林されます
 STR_TREES_RANDOM_TYPE                                           :{BLACK}ランダムな樹類
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな樹類で植林します。Ctrlで斜めに選択できます。Shift+クリックで費用を見積もります
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな樹類で植林します。Ctrl+ドラッグで斜めに植林できます。Shift+クリックで費用の見積が出ます
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}ランダムに広域植林
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}地表全体にランダムに植林します
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}普通
@@ -3102,17 +3104,20 @@ STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}風景�
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}地形の作成
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}地表を岩石地帯にします
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}地表を岩石地帯にします{}Ctrl+クリックで消去します
+STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}地表を荒地にします{}Ctrl+クリックで消去します
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}砂漠を作成します。{}Ctrl+クリックで消去します
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}上げ下げするタイルサイズを拡大します
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}上げ下げするタイルサイズを縮小します
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}土地の角を下げます。タイルサイズが1x1の場合、ドラッグで範囲選択すると最初に選択した土地の高度より一段低い高さに土地をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}土地の角を上げます。タイルサイズが1x1の場合、ドラッグで範囲選択すると最初に選択した土地の高度より一段高い高さに土地をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}ランダムな地形を作成します
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}新規シナリオを作成
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}地形をリセット
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}地図上の全社有不動産を撤去します
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}マップ上の全社有不動産を撤去します
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}地形のリセット
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}地図上の全社有不動産を撤去してもよろしいですか?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}マップ上の全社有不動産を撤去してもよろしいですか?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}街の建設
@@ -3121,7 +3126,9 @@ STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}新し�
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}ランダムな街
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ランダムなところに街を建設します
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}多くのランダムな街
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}地図にたくさんの街を建設します
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}マップ上にたくさんの街を建設します
+STR_FOUND_TOWN_LOAD_FROM_FILE                                   :{BLACK}ファイルからロード
+STR_FOUND_TOWN_LOAD_FROM_FILE_TOOLTIP                           :{BLACK}JSON形式の街データをインポートします
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS                                 :{BLACK}すべての街を成長
 STR_FOUND_TOWN_EXPAND_ALL_TOWNS_TOOLTIP                         :{BLACK}すべての街を少し成長させます
 
@@ -3140,8 +3147,13 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}街の�
 STR_FOUND_TOWN_CITY                                             :{BLACK}都市
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}都市は街に比べてより早く成長します。{}初期設定によりますが、人口は設立の時点で街よりも多くなります
 
+STR_FOUND_TOWN_EXPAND_MODE                                      :{YELLOW}街の拡大:
+STR_FOUND_TOWN_EXPAND_BUILDINGS                                 :建物
+STR_FOUND_TOWN_EXPAND_BUILDINGS_TOOLTIP                         :街の建物を増やします
+STR_FOUND_TOWN_EXPAND_ROADS                                     :道路
+STR_FOUND_TOWN_EXPAND_ROADS_TOOLTIP                             :街の道路を増やします
 
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}街の道路配置
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}街の道路配置:
 STR_FOUND_TOWN_SELECT_LAYOUT_TOOLTIP                            :{BLACK}この街の道路配置(区画)を決定します
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}オリジナル
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}改善版
@@ -3168,7 +3180,10 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}すべ�
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}産業:{STRING}に関わる産業チェーン
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}貨物:{STRING}に関わる産業チェーン
+STR_INDUSTRY_CARGOES_SOURCES                                    :原材料
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :目的地
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}街
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}受入れ: {CARGO_LIST}{}供給: {CARGO_LIST}
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}チェーンを表示
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}貨物の供給元と受入れ産業を表示します
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}小マップとリンク
@@ -3192,6 +3207,7 @@ STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}線路�
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}所属街域: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :なし
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標: {LTBLUE}{NUM} x {NUM} x {NUM}
+STR_LAND_AREA_INFORMATION_LANDINFO_INDEX                        :{BLACK}タイル番号: {LTBLUE}{NUM} ({HEX})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建設年: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}駅の種類: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}駅の種類: {LTBLUE}{STRING}
@@ -3201,12 +3217,14 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}空港�
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}受入れ貨物: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_LANG_AREA_INFORMATION_RAIL_TYPE                             : {BLACK}線路の種類: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}線路の種類: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}道路の種類: {LTBLUE}{STRING}
-STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}路面軌道の種類: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}軌道の種類: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}線路の制限速度: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}道路の最高速度: {LTBLUE}{VELOCITY}
-STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}トラムの制限速度：{LTBLUE} {VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}軌道の制限速度: {LTBLUE}{VELOCITY}
+STR_LAND_AREA_INFORMATION_TOWN_CAN_UPGRADE                      :{BLACK}街による建て替え: {LTBLUE}はい
+STR_LAND_AREA_INFORMATION_TOWN_CANNOT_UPGRADE                   :{BLACK}街による建て替え: {LTBLUE}いいえ
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :岩石
@@ -3215,6 +3233,9 @@ STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :裸地
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :耕作地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :砂漠
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :岩石 (積雪)
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :荒地 (積雪)
+STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :草地 (積雪)
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :鉄道 (非電化) 線路
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :鉄道 (非電化) 信号付線路 (閉塞)
@@ -3261,7 +3282,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :荷役所
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :バス停
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :埠頭
 STR_LAI_STATION_DESCRIPTION_BUOY                                :ブイ
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :中継駅
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :中継点
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :水域
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :運河
@@ -3269,6 +3290,8 @@ STR_LAI_WATER_DESCRIPTION_LOCK                                  :水門
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :川
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :海岸/川岸
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :造船所
+STR_LAI_WATER_DESCRIPTION_WATER_ROCKS                           :岩石
+STR_LAI_WATER_DESCRIPTION_COAST_ROCKS                           :岩石 (海岸/川岸)
 
 # Industries come directly from their industry names
 
@@ -3309,36 +3332,36 @@ STR_FRAMERATE_CAPTION                                           :{WHITE}フレ�
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}シミュレーションレート: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}一秒あたりに計算されるゲームのティック数。
-STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}グラフィックフレームレート：{STRING}
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}グラフィックフレームレート: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}一秒あたりに描写されるフレームの数
-STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}現在のゲーム速度：{DECIMAL} x
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}現在のゲーム速度: {DECIMAL} x
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}通常の速度に比べたゲーム進行速度の加速率
 STR_FRAMERATE_CURRENT                                           :{WHITE}現在
 STR_FRAMERATE_AVERAGE                                           :{WHITE}平均
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}メモリ
-STR_FRAMERATE_DATA_POINTS                                       :{BLACK} {COMMA}測定に基づくデータ
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}{COMMA}の測定に基づくデータ
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
-STR_FRAMERATE_MS_WARN                                           :{YELLOW} {DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} フレーム/秒
-STR_FRAMERATE_FPS_WARN                                          :{YELLOW} {DECIMAL}フレーム/秒
-STR_FRAMERATE_FPS_BAD                                           :{RED} {DECIMAL}FPS
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} フレーム/秒
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} フレーム/秒
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 
 ###length 15
-STR_FRAMERATE_GAMELOOP                                          :{BLACK}ゲームループの合計：
-STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}貨物の取り扱い：
-STR_FRAMERATE_GL_TRAINS                                         :{BLACK} 鉄道車両のティック:
-STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} 自動車ティック:
-STR_FRAMERATE_GL_SHIPS                                          :{BLACK}船舶のティック数:
-STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}航空機ティック:
-STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}世界のティック：
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}ゲームループの合計:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} 貨物の取り扱い:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK} 列車のティック:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} 車両のティック:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} 船舶のティック:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} 航空機のティック:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} 世界のティック:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} リンクグラフの遅延:
-STR_FRAMERATE_DRAWING                                           :{BLACK}グラフィックレンダリング：
-STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}世界のビューポート:
-STR_FRAMERATE_VIDEO                                             :{BLACK}ビデオ出力：
+STR_FRAMERATE_DRAWING                                           :{BLACK}グラフィックレンダリング:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} 世界のビューポート:
+STR_FRAMERATE_VIDEO                                             :{BLACK}ビデオ出力:
 STR_FRAMERATE_SOUND                                             :{BLACK}サウンドミキサー:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK} ゲームスクリプト・AIの合計:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} ゲームスクリプト:
@@ -3347,16 +3370,16 @@ STR_FRAMERATE_AI                                                :{BLACK} AI {NUM
 ###length 15
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :ゲームループ
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :貨物の取り扱い
-STR_FRAMETIME_CAPTION_GL_TRAINS                                 :切符
-STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :車両のティック数
-STR_FRAMETIME_CAPTION_GL_SHIPS                                  :船舶のティック数
-STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :航空機ティック
-STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :ワールドティック
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :列車のティック
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :車両のティック
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :船舶のティック
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :航空機のティック
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :世界のティック
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :リンクグラフの遅延
 STR_FRAMETIME_CAPTION_DRAWING                                   :グラフィックレンダリング
-STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :ワールドビューポートレンダリング
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :世界のビューポートレンダリング
 STR_FRAMETIME_CAPTION_VIDEO                                     :ビデオ出力
-STR_FRAMETIME_CAPTION_SOUND                                     :サウンドミキシング
+STR_FRAMETIME_CAPTION_SOUND                                     :サウンドミキサー
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :ゲームスクリプト・AIの合計
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :ゲームスクリプト
 STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
@@ -3369,6 +3392,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}シナ�
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}シナリオを開く
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}ハイトマップを開く
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}ハイトマップを保存
+STR_SAVELOAD_LOAD_TOWN_DATA                                     :{WHITE}街データを開く
 STR_SAVELOAD_HOME_BUTTON_TOOLTIP                                :{BLACK}デフォルトの保存先フォルダへジャンプするにはここをクリックします
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 使用可能
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}ドライブ、フォルダ、ゲームファイルのリスト
@@ -3380,6 +3404,10 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}指定�
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}ロード
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}ロードするゲームを選びます
 STR_SAVELOAD_LOAD_HEIGHTMAP_TOOLTIP                             :{BLACK}選択されたハイトマップをロード
+STR_SAVELOAD_LOAD_TOWN_DATA_TOOLTIP                             :{BLACK}選択された街データをロード
+STR_SAVELOAD_NEW_DIRECTORY_BUTTON                               :{BLACK}新しいフォルダ
+STR_SAVELOAD_NEW_DIRECTORY_TOOLTIP                              :{BLACK}現在の場所に新しいフォルダを作成します
+STR_SAVELOAD_NEW_DIRECTORY_QUERY_CAPTION                        :{WHITE}新しいフォルダの名前を入力してください
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}ゲームの詳細
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}― 情報なし ―
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
@@ -3387,6 +3415,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}フィルター:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}ファイルを上書きする
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}既存のファイルを上書きしてもよろしいですか？
+STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}ファイルの削除
+STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}本当にこのファイルを削除してもよろしいですか?
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (ディレクトリ)
 STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (親ディレクトリ)
 
@@ -3394,31 +3424,38 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}保存�
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}地域設定
-STR_MAPGEN_MAPSIZE                                              :{BLACK}地図サイズ:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}生成する地図のサイズです。実際にはこのサイズより少し小さくなります
+STR_MAPGEN_MAPSIZE                                              :{BLACK}マップサイズ:
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}生成するマップのサイズです。実際にはこのサイズより少し小さくなります
 STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}街数:
+STR_MAPGEN_NUMBER_OF_TOWNS_TOOLTIP                              :{BLACK}街の密度を選択するか、任意の数値を入力してください
 STR_MAPGEN_TOWN_NAME_LABEL                                      :{BLACK}街の名前:
 STR_MAPGEN_TOWN_NAME_DROPDOWN_TOOLTIP                           :{BLACK}街名のスタイルを選択します
 STR_MAPGEN_DATE                                                 :{BLACK}日付:
+STR_MAPGEN_DATE_TOOLTIP                                         :{BLACK}開始日付を選択します
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}産業数:
-STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}最高峰:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES_TOOLTIP                         :{BLACK}産業の密度を選択するか、任意の数値を入力してください
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}最高高度:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_TOOLTIP                             :{BLACK}ゲームが生成する最高高度を、海水位基準で指定してください
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP_TOOLTIP                          :{BLACK}マップの最高峰の値を1増やします
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN_TOOLTIP                        :{BLACK}マップの最高峰の値を1減らします
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}降雪量:
 STR_MAPGEN_SNOW_COVERAGE_UP_TOOLTIP                             :{BLACK}積雪量を10%増やします
-STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}積雪量を10％減らします
-STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK} {NUM}％
+STR_MAPGEN_SNOW_COVERAGE_DOWN_TOOLTIP                           :{BLACK}積雪量を10%減らします
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}砂漠の範囲:
-STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}砂漠の範囲を10％増やします
-STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}砂漠の範囲を10％減らします
+STR_MAPGEN_DESERT_COVERAGE_UP_TOOLTIP                           :{BLACK}砂漠の範囲を10%増やします
+STR_MAPGEN_DESERT_COVERAGE_DOWN_TOOLTIP                         :{BLACK}砂漠の範囲を10%減らします
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類:
+STR_MAPGEN_AVERAGE_HEIGHT                                       :{BLACK}平均標高:
 STR_MAPGEN_SEA_LEVEL                                            :{BLACK}海水位:
-STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河川:
-STR_MAPGEN_SMOOTHNESS                                           :{BLACK}地形のなだらかさ:
-STR_MAPGEN_VARIETY                                              :{BLACK}地形の地域性:
+STR_MAPGEN_SEA_LEVEL_TOOLTIP                                    :{BLACK}海面の高さを選択します
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}川の数:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}地形の起伏:
+STR_MAPGEN_VARIETY                                              :{BLACK}地形特徴の分布:
 STR_MAPGEN_GENERATE                                             :{WHITE}作成
+STR_MAPGEN_GENERATE_TOOLTIP                                     :{BLACK}世界を創造してOpenTTDをプレイしよう!
 STR_MAPGEN_NEWGRF_SETTINGS                                      :{BLACK}NewGRF設定
 STR_MAPGEN_NEWGRF_SETTINGS_TOOLTIP                              :{BLACK}NewGRFの設定を表示
 STR_MAPGEN_AI_SETTINGS                                          :{BLACK}AI設定
@@ -3427,7 +3464,7 @@ STR_MAPGEN_GS_SETTINGS                                          :{BLACK}ゲー�
 STR_MAPGEN_GS_SETTINGS_TOOLTIP                                  :{BLACK}ゲームスクリプトの設定を表示
 
 ###length 21
-STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :イギリス
+STR_MAPGEN_TOWN_NAME_ORIGINAL_ENGLISH                           :イギリス(オリジナル)
 STR_MAPGEN_TOWN_NAME_FRENCH                                     :フランス
 STR_MAPGEN_TOWN_NAME_GERMAN                                     :ドイツ
 STR_MAPGEN_TOWN_NAME_ADDITIONAL_ENGLISH                         :イギリス(追加)
@@ -3447,25 +3484,33 @@ STR_MAPGEN_TOWN_NAME_SWISS                                      :スイス
 STR_MAPGEN_TOWN_NAME_DANISH                                     :デンマーク
 STR_MAPGEN_TOWN_NAME_TURKISH                                    :トルコ
 STR_MAPGEN_TOWN_NAME_ITALIAN                                    :イタリア
-STR_MAPGEN_TOWN_NAME_CATALAN                                    :カタラン
+STR_MAPGEN_TOWN_NAME_CATALAN                                    :カタルーニャ
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}地図端:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}マップ端:
+STR_MAPGEN_BORDER_TYPE_TOOLTIP                                  :{BLACK}ゲーム世界のマップの端を選択します
 STR_MAPGEN_NORTHWEST                                            :{BLACK}北西
 STR_MAPGEN_NORTHEAST                                            :{BLACK}北東
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}南東
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}南西
+STR_MAPGEN_NORTHWEST_TOOLTIP                                    :北西側のマップ端を水域または自由形成に切り替える
+STR_MAPGEN_NORTHEAST_TOOLTIP                                    :北東側のマップ端を水域または自由形成に切り替える
+STR_MAPGEN_SOUTHEAST_TOOLTIP                                    :南東側のマップ端を水域または自由形成に切り替える
+STR_MAPGEN_SOUTHWEST_TOOLTIP                                    :南西側のマップ端を水域または自由形成に切り替える
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}自由形成
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}水域
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}ランダム
 
 ###length 3
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}ランダム設定
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動設定
+STR_MAPGEN_BORDER_RANDOMIZE                                     :ランダム設定
+STR_MAPGEN_BORDER_MANUAL                                        :手動設定
+STR_MAPGEN_BORDER_INFINITE_WATER                                :無限に続く水域
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}ハイトマップの回転:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}ハイトマップ名:
+STR_MAPGEN_HEIGHTMAP_NAME_TOOLTIP                               :{BLACK}ハイトマップ画像のファイル名
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}サイズ:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL_TOOLTIP                         :{BLACK}ソースとなるハイトマップ画像のサイズ。最良の結果を得るには、各辺の長さをOpenTTDで利用可能なマップサイズ(256,512,1024など)と一致させる必要があります。
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}ターゲットの最高の高さ
@@ -3480,6 +3525,7 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}平地�
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}全域が平地のマップを作成します
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}ランダムマップ
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}平地マップの高度:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_TOOLTIP                         :{BLACK}平地の海抜高度を選択してください
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN_TOOLTIP                    :{BLACK}平地高度を下げる
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP_TOOLTIP                      :{BLACK}平地高度を上げる
 
@@ -3493,8 +3539,12 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}マッ�
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}%完了
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}マップ生成
+STR_GENERATION_LANDSCAPE_GENERATION                             :{BLACK}地形を生成中
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}河川を生成中
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}岩石/荒地を設定中
+STR_GENERATION_TOWN_GENERATION                                  :{BLACK}街を配置中
+STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}陸上の産業施設を配置中
+STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}海上の産業施設を配置中
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台/電波塔配置中
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}植林中
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ゲームを設定中
@@ -3502,7 +3552,12 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}タイ�
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}スクリプト実行中
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}ゲームを準備中
 
+STR_TOWN_DATA_ERROR_LOAD_FAILED                                 :街データの読み込みに失敗しました
+STR_TOWN_DATA_ERROR_JSON_FORMATTED_INCORRECTLY                  :JSONファイルのフォーマットが正しくありません
+STR_TOWN_DATA_ERROR_TOWN_FORMATTED_INCORRECTLY                  :{STRING} データの形式が正しくありません
+STR_TOWN_DATA_ERROR_BAD_COORDINATE                              :{STRING} 座標の形式が正しくありません。ハイトマップの全体サイズに対する割合として、0～1の範囲で指定する必要があります
 
+STR_TOWN_DATA_ERROR_FAILED_TO_FOUND_TOWN                        :{NUM}個の街を配置するのに適した場所が見つかりませんでした。代わりに予定地に標識を設置しました
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF設定
