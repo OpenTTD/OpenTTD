@@ -35,9 +35,7 @@ Both 'stable' and 'nightly' versions are available for download:
 - most people should choose the 'stable' version, as this has been more extensively tested
 - the 'nightly' version includes the latest changes and features, but may sometimes be less reliable
 
-OpenTTD is also available for free on [Microsoft Store](https://www.microsoft.com/p/openttd-official/9ncjg5rvrr1c) and, on some platforms, via your OS package manager or similar service.
-
-On [Steam](https://store.steampowered.com/app/1536610/OpenTTD/) and [GOG.com](https://www.gog.com/game/openttd) OpenTTD can be downloaded for free alongside a purchase of Transport Tycoon Deluxe. (More details [here](https://www.openttd.org/news/2026/03/14/steam-changes).)
+OpenTTD is also available on the [Microsoft Store], [Steam](https://store.steampowered.com/app/1536610/OpenTTD/), and [GOG.com](https://www.gog.com/game/openttd). On some platforms OpenTTD will be available via your OS package manager or a similar service.
 
 ## 1.2) OpenTTD gameplay manual
 
