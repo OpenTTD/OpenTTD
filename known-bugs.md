@@ -13,8 +13,8 @@ we WILL flame you!
 
 The current list of known bugs that we intend to fix can be found in our
 bug tracking system at [https://github.com/OpenTTD/OpenTTD/issues](https://github.com/OpenTTD/OpenTTD/issues)
-Also check the closed bugs when searching for your bug in this system as 
-we might have fixed the bug in the mean time.
+Also check the closed bugs when searching for your bug in this system as we
+might have fixed the bug in the mean time.
 
 ## 2.0) Known bugs
 
