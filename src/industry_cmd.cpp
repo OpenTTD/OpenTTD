@@ -3051,7 +3051,13 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		NewsType nt;
 		/* Compute news category */
 		if (closeit) {
-			nt = NewsType::IndustryClose;
+			switch (WhoCanServiceIndustry(i)) {
+				case 0: nt = NewsType::IndustryCloseNobody; break;
+				case 1: nt = NewsType::IndustryCloseOther; break;
+				case 2: nt = NewsType::IndustryCloseCompany; break;
+				default: NOT_REACHED();
+			}
+
 			AI::BroadcastNewEvent(new ScriptEventIndustryClose(i->index));
 			Game::NewEvent(new ScriptEventIndustryClose(i->index));
 		} else {

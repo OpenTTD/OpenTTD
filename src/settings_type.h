@@ -372,6 +372,13 @@ struct LocaleSettings {
 	std::string digit_decimal_separator; ///< decimal separator
 };
 
+/** News display style. */
+enum class NewsDisplay : uint8_t {
+	Off, ///< Only show a reminder in the status bar.
+	Summary, ///< Show a summary in the news ticker.
+	Full, ///< Show a full newspaper.
+};
+
 /** Settings related to news */
 struct NewsSettings {
 	uint8_t arrival_player; ///< NewsDisplay of vehicles arriving at new stations of current player
@@ -380,7 +387,9 @@ struct NewsSettings {
 	uint8_t accident_other; ///< NewsDisplay if a vehicle from another company is involved in an accident
 	uint8_t company_info; ///< NewsDisplay of general company information
 	uint8_t open; ///< NewsDisplay on new industry constructions
-	uint8_t close; ///< NewsDisplay about closing industries
+	uint8_t close_player; ///< NewsDisplay about closing industries affecting current player
+	uint8_t close_other; ///< NewsDisplay about closing industries affecting competitors
+	uint8_t close_nobody; ///< NewsDisplay about closing industries affecting no one
 	uint8_t economy; ///< NewsDisplay on economical changes
 	uint8_t production_player; ///< NewsDisplay of production changes of industries affecting current player
 	uint8_t production_other; ///< NewsDisplay of production changes of industries affecting competitors
