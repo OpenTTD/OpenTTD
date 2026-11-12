@@ -207,13 +207,10 @@ static CargoSummary _cargo_summary;
 
 /**
  * Draw the details cargo tab for the given vehicle at the given position
- *
- * @param item  Data to draw
- * @param left  The left most coordinate to draw
- * @param right The right most coordinate to draw
- * @param y     The y coordinate
+ * @param item Data to draw.
+ * @param r Rect to draw in.
  */
-static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int right, int y)
+static void TrainDetailsCargoTab(const CargoSummaryItem *item, const Rect &r)
 {
 	std::string str;
 	if (!IsValidCargoType(item->cargo)) {
@@ -223,18 +220,15 @@ static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int rig
 	} else {
 		str = GetString(STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM, item->cargo, item->amount, item->cargo, item->capacity, item->source, item->subtype);
 	}
-	DrawString(left, right, y, str, TextColour::LightBlue);
+	DrawString(r, str, TextColour::LightBlue);
 }
 
 /**
  * Draw the details info tab for the given vehicle at the given position
- *
- * @param v     current vehicle
- * @param left  The left most coordinate to draw
- * @param right The right most coordinate to draw
- * @param y     The y coordinate
+ * @param v Current vehicle.
+ * @param r Rect to draw in.
  */
-static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
+static void TrainDetailsInfoTab(const Vehicle *v, const Rect &r)
 {
 	std::string str;
 	if (RailVehInfo(v->engine_type)->railveh_type == RailVehicleType::Wagon) {
@@ -242,7 +236,7 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
 	} else {
 		str = GetString(STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE, PackEngineNameDParam(v->engine_type, EngineNameContext::VehicleDetails), v->build_year, v->value);
 	}
-	DrawString(left, right, y, str);
+	DrawString(r, str);
 }
 
 /**
@@ -310,7 +304,7 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
 		}
 
 		num = max_cargo.GetCount();
-		num += 2; // needs two more because the first line is the description string and the last is the feeder share
+		num += 3; // needs three more because the first line is the total length, then description string and the last is the feeder share
 	} else {
 		for (const Train *v = Train::Get(veh_id); v != nullptr; v = v->GetNextVehicle()) {
 			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);
@@ -335,15 +329,15 @@ int GetTrainDetailsWndVScroll(VehicleID veh_id, TrainDetailsWindowTabs det_tab)
  */
 void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t vscroll_cap, TrainDetailsWindowTabs det_tab)
 {
-	bool rtl = _current_text_dir == TD_RTL;
+	Rect text_r = r.Shrink(WidgetDimensions::scaled.matrix).CentreToHeight(GetCharacterHeight(FontSize::Normal));
 	int line_height = r.Height();
+	bool rtl = _current_text_dir == TD_RTL;
 	int sprite_y_offset = line_height / 2;
-	int text_y_offset = (line_height - GetCharacterHeight(FontSize::Normal)) / 2;
 
 	/* draw the first 3 details tabs */
 	if (det_tab != TDW_TAB_TOTALS) {
 		Direction dir = rtl ? Direction::E : Direction::W;
-		int x = rtl ? r.right : r.left;
+		int x = rtl ? text_r.right : text_r.left;
 		for (; v != nullptr && vscroll_pos > -vscroll_cap; v = v->GetNextVehicle()) {
 			GetCargoSummaryOfArticulatedVehicle(v, _cargo_summary);
 
@@ -372,41 +366,41 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 
 			bool separate_sprite_row = (dx > (uint)ScaleSpriteTrad(TRAIN_DETAILS_MAX_INDENT));
 			if (separate_sprite_row) {
-				vscroll_pos--;
+				--vscroll_pos;
 				dx = 0;
+				text_r = text_r.Translate(0, line_height);
 			}
 
 			int sprite_width = std::max<int>(dx, ScaleSpriteTrad(TRAIN_DETAILS_MIN_INDENT)) + WidgetDimensions::scaled.hsep_normal;
-			Rect dr = r.Indent(sprite_width, rtl);
 			uint num_lines = std::max(1u, (unsigned)_cargo_summary.size());
-			for (uint i = 0; i < num_lines; i++) {
+			for (uint i = 0; i < num_lines; ++i, --vscroll_pos) {
 				if (vscroll_pos <= 0 && vscroll_pos > -vscroll_cap) {
-					int py = r.top - line_height * vscroll_pos + text_y_offset;
-					if (i > 0 || separate_sprite_row) {
-						if (vscroll_pos != 0) GfxFillRect(r.WithY(py - WidgetDimensions::scaled.matrix.top - 1, py - WidgetDimensions::scaled.matrix.top), GetColourGradient(Colours::Grey, Shade::Light));
+					if (vscroll_pos != 0 && (i > 0 || separate_sprite_row)) {
+						/* Hide the matrix's inner bevel to appear like a larger cell. */
+						int py = r.top - line_height * vscroll_pos;
+						GfxFillRect(r.Shrink(WidgetDimensions::scaled.bevel).WithY(py - WidgetDimensions::scaled.bevel.top, py + WidgetDimensions::scaled.bevel.top - 1), GetColourGradient(Colours::Grey, Shade::Light));
 					}
 					switch (det_tab) {
 						case TDW_TAB_CARGO:
 							if (i < _cargo_summary.size()) {
-								TrainDetailsCargoTab(&_cargo_summary[i], dr.left, dr.right, py);
+								TrainDetailsCargoTab(&_cargo_summary[i], text_r.Indent(sprite_width, rtl));
 							} else {
-								DrawString(dr.left, dr.right, py, STR_QUANTITY_N_A, TextColour::LightBlue);
+								DrawString(text_r.Indent(sprite_width, rtl), STR_QUANTITY_N_A, TextColour::LightBlue);
 							}
 							break;
 
 						case TDW_TAB_INFO:
-							if (i == 0) TrainDetailsInfoTab(v, dr.left, dr.right, py);
+							if (i == 0) TrainDetailsInfoTab(v, text_r.Indent(sprite_width, rtl));
 							break;
 
 						default: NOT_REACHED();
 					}
+					text_r = text_r.Translate(0, line_height);
 				}
-				vscroll_pos--;
 			}
 		}
 	} else {
 		/* Draw Totals tab. */
-		int y = r.top;
 		CargoArray act_cargo{};
 		CargoArray max_cargo{};
 		Money feeder_share = 0;
@@ -417,27 +411,32 @@ void DrawTrainDetails(const Train *v, const Rect &r, int vscroll_pos, uint16_t v
 			feeder_share             += u->cargo.GetFeederShare();
 		}
 
-		/* Draw the total vehicle length. */
-		uint train_length = CeilDiv(v->gcache.cached_total_length * 10, TILE_SIZE);
-		std::string str = GetString(STR_VEHICLE_DETAILS_TRAIN_LENGTH, train_length, /* digits for DECIMAL */ 1);
-		DrawString(r.left, r.right, y + text_y_offset, str);
-		y += line_height;
+		if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
+			/* Draw the total vehicle length. */
+			uint train_length = CeilDiv(v->gcache.cached_total_length * 10, TILE_SIZE);
+			std::string str = GetString(STR_VEHICLE_DETAILS_TRAIN_LENGTH, train_length, /* digits for DECIMAL */ 1);
+			DrawString(text_r, str);
+			text_r = text_r.Translate(0, line_height);
+		}
 
-		/* Draw the header for the total capacity. */
-		DrawString(r.left, r.right, y + text_y_offset, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
-		y += line_height;
+		if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
+			/* Draw the header for the total capacity. */
+			DrawString(text_r, STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT);
+			text_r = text_r.Translate(0, line_height);
+		}
 
 		/* Indent the total cargo capacity details */
-		Rect ir = r.Indent(WidgetDimensions::scaled.hsep_indent, rtl);
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
 			CargoType cargo_type = cs->Index();
-			if (max_cargo[cargo_type] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
-				std::string str;
-				str = GetString(STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY, cargo_type, act_cargo[cargo_type], cargo_type, max_cargo[cargo_type]);
-				DrawString(ir.left, ir.right, y + text_y_offset, str);
-				y += line_height;
+			if (max_cargo[cargo_type] > 0 && --vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
+				std::string str = GetString(STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY, cargo_type, act_cargo[cargo_type], cargo_type, max_cargo[cargo_type]);
+				DrawString(text_r.Indent(WidgetDimensions::scaled.hsep_indent, rtl), str);
+				text_r = text_r.Translate(0, line_height);
 			}
 		}
-		DrawString(r.left, r.right, y + text_y_offset, GetString(STR_VEHICLE_INFO_FEEDER_CARGO_VALUE, feeder_share));
+
+		if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
+			DrawString(text_r, GetString(STR_VEHICLE_INFO_FEEDER_CARGO_VALUE, feeder_share));
+		}
 	}
 }
