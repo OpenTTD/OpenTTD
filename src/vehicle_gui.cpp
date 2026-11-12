@@ -2591,17 +2591,12 @@ struct VehicleDetailsWindow : Window {
 
 	/**
 	 * Draw the details for the given vehicle at the position of the Details windows
-	 *
-	 * @param v     current vehicle
-	 * @param r     the Rect to draw within
-	 * @param vscroll_pos Position of scrollbar (train only)
-	 * @param vscroll_cap Number of lines currently displayed (train only)
-	 * @param det_tab Selected details tab (train only)
+	 * @param v current vehicle.
+	 * @param r the Rect to draw within.
 	 */
-	static void DrawVehicleDetails(const Vehicle *v, const Rect &r, int vscroll_pos, uint vscroll_cap, TrainDetailsWindowTabs det_tab)
+	static void DrawVehicleDetails(const Vehicle *v, const Rect &r)
 	{
 		switch (v->type) {
-			case VehicleType::Train: DrawTrainDetails(Train::From(v), r, vscroll_pos, vscroll_cap, det_tab); break;
 			case VehicleType::Road: DrawRoadVehDetails(v, r); break;
 			case VehicleType::Ship: DrawShipDetails(v, r); break;
 			case VehicleType::Aircraft: DrawAircraftDetails(Aircraft::From(v), r); break;
@@ -2678,7 +2673,7 @@ struct VehicleDetailsWindow : Window {
 
 			case WID_VD_MATRIX: {
 				/* For trains only. */
-				DrawVehicleDetails(v, r.Shrink(WidgetDimensions::scaled.matrix, RectPadding::zero).WithHeight(this->resize.step_height), this->vscroll->GetPosition(), this->vscroll->GetCapacity(), this->tab);
+				DrawTrainDetails(Train::From(v), r.WithHeight(this->resize.step_height), this->vscroll->GetPosition(), this->vscroll->GetCapacity(), this->tab);
 				break;
 			}
 
@@ -2696,7 +2691,7 @@ struct VehicleDetailsWindow : Window {
 					DrawVehicleImage(v, sr.WithHeight(ScaleGUITrad(GetVehicleHeight(v->type)), false), VehicleID::Invalid(), EngineImageType::InDetails, 0);
 				}
 
-				DrawVehicleDetails(v, tr.Indent(sprite_width, rtl), 0, 0, this->tab);
+				DrawVehicleDetails(v, tr.Indent(sprite_width, rtl));
 				break;
 			}
 
