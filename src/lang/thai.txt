@@ -1618,8 +1618,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :แสดงข
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :อุตสาหกรรมเปิดตัวใหม่: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :แสดงข่าวเกี่ยวกับโรงงานเปิดใหม่
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :อุตสาหกรรมปิดตัวลง: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :แสดงข่าวเกี่ยวกับโรงงานที่ปิดตัว
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :การเปลี่ยนแปลงทางเศรษฐกิจ: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :แสดงข่าวเกี่ยวกับการเปลี่ยนแปลงทางเศรษฐศาสตร์ของโลก

@@ -1545,8 +1545,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Birta dagblöð
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opnun Iðnaðar: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Birta dagblöð þegar iðnaður opnar
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Lokun Iðnaðar: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Birta dagblöð þegar iðnaður lokar
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Efnahagsbreytingar: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Birta dagblöð um altækar breytingar á hagkerfinu

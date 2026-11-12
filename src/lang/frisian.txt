@@ -1611,8 +1611,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Lit in krantebe
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Iepenje fan yndustryen: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Lit in kranteberjocht sjen at der in nije yndustry iepend
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Slute fan yndustryen: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Lit in kranteberjocht sjen at der in yndustry slút
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Feroarings yn 'e ekonomie: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Lit in kranteberjocht sjen by feroarings yn de wrâldekonomy

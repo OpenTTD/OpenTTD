@@ -1889,8 +1889,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показва�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Откриване на индустрии: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показване на вестник, когато се отварят нови индустрии
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закриане на индустрии: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Показване на вестник, когато се затварят индустрии
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Промени в икономиката: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Показване на вестник при глобални икономически промени

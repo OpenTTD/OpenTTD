@@ -1058,7 +1058,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Информа�
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Отворање на индустрии: {STRING}
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Затворање на индустрии: {STRING}
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Промени во економијата: {STRING}
 

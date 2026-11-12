@@ -1952,8 +1952,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Yeni bir şirke
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Fabrikaların açılışı: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Yeni endüstriler kurulduğunda gazete haberi olarak göster
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fabrikaların kapanışı: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Endüstriler kapandığında gazete haberi olarak göster
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomideki değişimler: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Ekonomideki küresel değişiklikleri gazete haberi olarak göster

@@ -1632,8 +1632,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vertoon 'n koer
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening van industrieë: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Vertoon die koerant wanneer 'n nuwe nywerheid oopmaak
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Toemaak van industrieë: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Vertoon die koerant wanneer 'n nywerheid toemaak
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomie veranderings: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vertoon die koerant vir enige globale veranderinge aan die ekonomie

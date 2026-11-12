@@ -1374,7 +1374,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :کمپنی کی
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :صنعتوں کا افتتاح: {STRING}
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :صنعتوں کی بندش: {STRING}
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :معیشت بدل گئی: {STRING}
 

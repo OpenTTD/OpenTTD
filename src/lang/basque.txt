@@ -1558,7 +1558,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Konpainien info
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Industrien zabalerak: {STRING}
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrien itxierak: {STRING}
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomia aldaketak: {STRING}
 

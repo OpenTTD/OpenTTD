@@ -2042,8 +2042,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Montri gazetan 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Malfermiĝo de entreprenoj: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Montri gazetan anoncon kiam entrepreno malfermiĝas
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermiĝo de entreprenoj: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Montri gazetan anoncon kiam entrepreno fermiĝas
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiaj ŝanĝoj: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Montri gazetan anoncon pri tutmondaj ekonomiaj ŝanĝoj

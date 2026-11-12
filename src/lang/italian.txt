@@ -1932,8 +1932,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostra un giorn
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura di industrie: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostra un giornale quando aprono nuove industrie
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Chiusura di industrie: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Mostra un giornale quando le industrie chiudono
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambiamenti economici: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostra un giornale quando si verificano cambiamenti nell'economia globale

@@ -2028,8 +2028,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikazuje novin
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otvaranje nove fabrike: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Prikazuje novinske naslove kada se otvori nova fabrika
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zatvaranje fabrike: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Prikazuje novinske naslove o zatvaranju fabrika
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Promene u privredi: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Prikazuje novinske naslove o globalnim privrednim promenama

@@ -660,6 +660,8 @@ STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :दुर्घ
 
 
 
+
+
 ###length 3
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :रंगीन समाचार इसमें दिखाई देता है: {STRING}

@@ -2331,8 +2331,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Wyświetl wiado
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otwarcie przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Wyświetl wiadomość w gazecie kiedy powstają nowe przedsiębiorstwa
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zamknięcie przedsiębiorstw: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Wyświetl wiadomość w gazecie kiedy przedsiębiorstwa są likwidowane
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmiany ekonomiczne: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Wyświetl wiadomość w gazecie o globalnych zmianach w ekonomii

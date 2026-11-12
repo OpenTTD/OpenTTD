@@ -2102,8 +2102,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показыв�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Открытие предприятий: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показывать новости об открывающихся предприятиях
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закрытие предприятий: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Показывать новости о закрывающихся предприятиях
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Изменения в экономике: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Показывать новости о глобальных изменениях в экономике

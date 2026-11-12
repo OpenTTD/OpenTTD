@@ -2013,8 +2013,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Újság megjele
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Új gazdasági épületek megjelenése: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Újság megjelenítése amikor új ipartelep nyílik
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gazdasági épületek bezárása: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Újság megjelenítése, amikor egy ipartelep bezár
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Gazdasági változások: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Újság megjelenítése a globális gazdasági változásokkal kapcsolatban

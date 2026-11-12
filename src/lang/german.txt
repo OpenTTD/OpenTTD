@@ -1918,8 +1918,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Zeitung anzeige
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Eröffnung von Industrien: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Zeitung anzeigen, wenn Industrien eröffnen
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Schließung von Industrien: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Zeitung anzeigen, wenn Industrien schließen
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Änderungen der Wirtschaftslage: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Zeitung bei Änderungen der globalen Konjunktur anzeigen

@@ -2036,8 +2036,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Zobrazovat novi
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otevírání průmyslu: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Zobrazovat noviny o otevírání průmyslu
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zavírání průmyslu: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Zobrazovat noviny o uzavírání průmyslu
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Změny v ekonomice: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Zobrazovat noviny o globálních změnách v ekonomice

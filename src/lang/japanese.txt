@@ -1951,8 +1951,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :新会社の設
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :産業の開業: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :新しい産業が開設されたときにニュースを表示するかを設定します
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :産業の閉業: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :産業が閉鎖されるときにニュースを表示するかを設定します
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :景気変動: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :景気が変動したときにニュースを表示するかを設定します
@@ -2999,10 +2999,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}旅客�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}荷役所を建設します。Ctrl+クリックで離れた停留施設と結合可能です。Shift+クリックで費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}貨物用電停を建設します。Ctrl+クリックで離れた停留施設と結合可能です。Shift+クリックで費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}一方通行路にするかどうかを切り替えます
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}道路橋を建設します。Shiftを押しながら決定すると費用の見積が出ます
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}軌道用橋を建設します。Shiftを押しながら決定すると費用の見積が出ます
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}道路トンネルを建設します。Shiftを押しながら決定すると費用の見積が出ます
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}軌道用トンネルを建設します。Shiftを押しながら決定すると費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}道路橋を建設します。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}軌道用橋を建設します。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}道路トンネルを建設します。Shift+クリックで費用の見積が出ます
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}軌道用トンネルを建設します。Shift+クリックで費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}道路の敷設/撤去を切り替えます
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}軌道の敷設/撤去を切り替えます
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}道路の種類を変更・アップグレードします。Shift+クリックで費用の見積が出ます
@@ -3109,8 +3109,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROUGH_AREAS_ON_LANDSCAPE            :{BLACK}地表�
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}砂漠を作成します。{}Ctrl+クリックで消去します
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}上げ下げするタイルサイズを拡大します
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}上げ下げするタイルサイズを縮小します
-STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}土地の角を下げます。タイルサイズが1x1の場合、ドラッグで範囲選択すると最初に選択した土地の高度より一段低い高さに土地をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
-STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}土地の角を上げます。タイルサイズが1x1の場合、ドラッグで範囲選択すると最初に選択した土地の高度より一段高い高さに土地をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
+STR_TERRAFORM_TOOLTIP_LOWER_A_CORNER_OF_LAND                    :{BLACK}土地の角または範囲を下げます。タイルサイズが1x1の場合、ドラッグで範囲選択すると最初に選択した土地の高度より一段低い高さに土地をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
+STR_TERRAFORM_TOOLTIP_RAISE_A_CORNER_OF_LAND                    :{BLACK}土地の角または範囲を上げます。タイルサイズが1x1の場合、ドラッグで範囲選択すると最初に選択した土地の高度より一段高い高さに土地をならします。Ctrl+ドラッグで斜めに範囲選択できます。Shift+クリックで費用の見積が出ます
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}ランダムな地形を作成します
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}新規シナリオを作成
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}地形をリセット
@@ -3237,29 +3237,29 @@ STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROCKS                           :岩石 (積雪)
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_ROUGH_LAND                      :荒地 (積雪)
 STR_LAI_CLEAR_DESCRIPTION_SNOWY_GRASS                           :草地 (積雪)
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :鉄道 (非電化) 線路
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :鉄道 (非電化) 信号付線路 (閉塞)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :鉄道 (非電化) 信号付線路 (入口)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :鉄道 (非電化) 信号付線路 (出口)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :鉄道 (非電化) 信号付線路 (コンボ)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :鉄道 (非電化) 信号付線路 (パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :鉄道 (非電化) 信号付線路 (一方通行パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :鉄道 (非電化) 信号付線路 (閉塞+入口)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :鉄道 (非電化) 信号付線路 (閉塞+出口)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :鉄道 (非電化) 信号付線路 (閉塞+コンボ)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :鉄道 (非電化) 信号付線路 (閉塞+パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :鉄道 (非電化) 信号付線路 (閉塞+一方通行パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :鉄道 (非電化) 信号付線路 (入口+出口)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :鉄道 (非電化) 信号付線路 (入口+コンボ)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :鉄道 (非電化) 信号付線路 (入口+パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :鉄道 (非電化) 信号付線路 (入口+一方通行パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :鉄道 (非電化) 信号付線路 (出口+コンボ)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :鉄道 (非電化) 信号付線路 (出口+パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :鉄道 (非電化) 信号付線路 (出口+一方通行パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :鉄道 (非電化) 信号付線路 (コンボ+パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :鉄道 (非電化) 信号付線路 (コンボ+一方通行パス)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :鉄道 (非電化) 信号付線路 (パス+一方通行パス)
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :鉄道 (非電化) 列車庫
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :鉄道線路
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :鉄道信号付線路 (閉塞)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :鉄道信号付線路 (入口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :鉄道信号付線路 (出口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :鉄道信号付線路 (コンボ)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :鉄道信号付線路 (パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :鉄道信号付線路 (一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :鉄道信号付線路 (閉塞+入口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :鉄道信号付線路 (閉塞+出口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :鉄道信号付線路 (閉塞+コンボ)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :鉄道信号付線路 (閉塞+パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :鉄道信号付線路 (閉塞+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :鉄道信号付線路 (入口+出口)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :鉄道信号付線路 (入口+コンボ)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :鉄道信号付線路 (入口+パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :鉄道信号付線路 (入口+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :鉄道信号付線路 (出口+コンボ)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :鉄道信号付線路 (出口+パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :鉄道信号付線路 (出口+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :鉄道信号付線路 (コンボ+パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :鉄道信号付線路 (コンボ+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :鉄道信号付線路 (パス+一方通行パス)
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :鉄道列車庫
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :道路
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :街灯付道路
@@ -3621,6 +3621,7 @@ STR_SAVE_PRESET_SAVE                                            :{BLACK}セー�
 STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}現在選択している名前でプリセットを保存します
 
 # NewGRF parameters window
+STR_BASEGRF_PARAMETERS_CAPTION                                  :{WHITE}基本グラフィックパラメータの変更
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRFパラメータの変更
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}リセット
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}全パラメータを標準値に変更する
@@ -3636,6 +3637,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}派生�
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{1:HEX}の{0:STRING}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :オブジェクト
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :線路の種類
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_ROAD_TYPE                  :道路の種類
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRFの可変60+xパラメーター (16進)
 
@@ -3651,6 +3653,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}前の�
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。始端と終端は連続しているものとみなし、疑似/リカラー/フォントスプライトはスキップします
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在選択されているスプライトの代表絵を示します。この配列はスプライトを描画するときには無視されます
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X・Yオフセットを変更し、スプライトを移動します
+STR_SPRITE_ALIGNER_SPRITE                                       :{STRING}:{NUM}
 
 ###length 2
 STR_SPRITE_ALIGNER_CENTRE_OFFSET                                :{BLACK}オフセット中心
@@ -3658,10 +3661,10 @@ STR_SPRITE_ALIGNER_CENTRE_SPRITE                                :{BLACK}スプ�
 
 STR_SPRITE_ALIGNER_CROSSHAIR                                    :{BLACK}十字
 
-STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK} 相対値リセット
-STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK} 現在の相対オフセットをリセットします。
+STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}相対値リセット
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}現在の相対オフセットをリセットします。
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Xオフセット : {NUM},Yオフセット : {NUM} (絶対値)
-STR_SPRITE_ALIGNER_OFFSETS_REL                                  : {BLACK}X オフセット : {NUM}, Y オフセット : {NUM} (相対値)
+STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}Xオフセット : {NUM},Yオフセット : {NUM} (相対値)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}スプライトを選ぶ
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}画面内からスプライトを選びます
 
@@ -3751,16 +3754,18 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}標識�
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}標識を編集
-STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}メイン画面をこの標識の場所に移動します。Ctrl+クリックでこの標識の場所を新しなビューポートに表示します。
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}メイン画面をこの標識の場所に移動します。Ctrl+クリックでこの標識の場所を新しいビューポートに表示します
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}次の標識へ移動
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前の標識へ移動
+STR_EDIT_SIGN_TEXT_COLOUR_TOOLTIP                               :{BLACK}標識の文字色
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}標識の内容を入力
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}街一覧 ({COMMA} の {COMMA})
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}街一覧 ({COMMA} / {COMMA})
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- なし-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{BLACK} ({COMMA}) {YELLOW}{CITY_ICON}
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}街の名前 - メイン画面を街の場所に移動するには名前をクリックします。Ctrl+クリックで新しいビューポートに表示します
 STR_TOWN_POPULATION                                             :{BLACK}地域人口: {COMMA}人
 
@@ -3768,11 +3773,12 @@ STR_TOWN_POPULATION                                             :{BLACK}地域�
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (都市)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}人口: {ORANGE}{COMMA}人{BLACK}　建物: {ORANGE}{COMMA}戸
-STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK} {CARGO_LIST}先月：{ORANGE} {COMMA} {BLACK}最大：{ORANGE} {COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK} {CARGO_LIST}先月: {ORANGE}{COMMA}{BLACK}　最大: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MINUTE_MAX                             :{BLACK} {CARGO_LIST}直近1分: {ORANGE}{COMMA}{BLACK}　最大: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}街の成長に必要な物資:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}が{RED}必要です
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}が{BLACK}冬に必要です
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} は配送されています
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN}は配送されています
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {RED}(更なる配送が必要)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG} {GREEN}(需要充足)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}街は {ORANGE}{UNITS_DAYS_OR_SECONDS}毎に成長しています
@@ -3783,9 +3789,15 @@ STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイ�
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方自治体
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}地方自治体の情報を表示します
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}街名を変更します
+STR_TOWN_VIEW_CARGO_GRAPH                                       :貨物グラフ
+STR_TOWN_VIEW_CARGO_GRAPH_TOOLTIP                               :街の貨物履歴グラフを表示します
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}拡大
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}街のサイズを大きくします
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}街の規模を大きくします
+STR_TOWN_VIEW_EXPAND_BUILDINGS_BUTTON                           :{BLACK}建物を増やす
+STR_TOWN_VIEW_EXPAND_BUILDINGS_TOOLTIP                          :{BLACK}街の建物を増やします
+STR_TOWN_VIEW_EXPAND_ROADS_BUTTON                               :{BLACK}道路を増やす
+STR_TOWN_VIEW_EXPAND_ROADS_TOOLTIP                              :{BLACK}街の道路を増やします
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}撤去
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}この街を完全に撤去します
 
@@ -3793,7 +3805,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :街名を変更
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} 地方自治体
-STR_LOCAL_AUTHORITY_ZONE                                        :ゾーン
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}街域
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}地方自治体の境界を見る
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}社の評判:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
@@ -3816,8 +3828,12 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :地方自治体
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街で新聞広告を実施します。{}より多くの旅客と貨物が自社の交通網を利用するようになります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街でラジオCMを実施します{}街の中心部から中範囲にある駅の評価が一時的に高まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{PUSH_COLOUR}{YELLOW}旅客と貨物を確保する為に、街でTV-CMを開始します{}街の中心部の大範囲にある駅の評価が一時的に高まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MONTHS   :{PUSH_COLOUR}{YELLOW}街内の道路補修工事に出資します。{}最高6ヶ月間街中の道路交通が途絶します。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION_MINUTES  :{PUSH_COLOUR}{YELLOW}街内の道路補修工事に出資します。{}最高6分間街中の道路交通が途絶します。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{PUSH_COLOUR}{YELLOW}社を称える彫像を建設します{}この街の駅の評価を恒久的に高めます。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{PUSH_COLOUR}{YELLOW}市街地の開発に出資します{}街の成長速度が一時的に早まります。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MONTHS   :{PUSH_COLOUR}{YELLOW}街と12ヶ月間の独占運送契約を締結します。{}乗客や貨物はあなたの会社の運送経路のみを使用するようになります。競合他社による贈賄が成功した場合、この契約は解除されます。{}{POP_COLOUR}費用: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT_MINUTES  :{PUSH_COLOUR}{YELLOW}街と12分間の独占運送契約を締結します。{}乗客や貨物はあなたの会社の運送経路のみを使用するようになります。競合他社による贈賄が成功した場合、この契約は解除されます。{}{POP_COLOUR}費用: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{PUSH_COLOUR}{YELLOW}贈賄を通じて地方自治体内の評判を高めます。注意: 露見した場合は処罰されます{}{POP_COLOUR}費用: {CURRENCY_LONG}
 
 # Goal window
@@ -3889,13 +3905,20 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}次の�
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}無効な目標参照
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします.Ctrl+クリック で 新しいビューポートに表示します
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします。Ctrl+クリックで新しいビューポートに表示します
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE_TOOLTIP                :{BLACK}複数の施設を選択するにはCtrlを押しながら選択します
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}箇所の停留施設
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- なし -
 STR_STATION_LIST_SELECT_ALL_FACILITIES_TOOLTIP                  :{BLACK}全停留施設を選択
+STR_STATION_LIST_CARGO_FILTER_ALL_AND_NO_RATING                 :すべての貨物種類 (評価なしを含む)
+STR_STATION_LIST_CARGO_FILTER_MULTIPLE                          :複数の貨物種類
+STR_STATION_LIST_CARGO_FILTER_NO_CARGO_TYPES                    :貨物種類なし
+STR_STATION_LIST_CARGO_FILTER_ONLY_NO_RATING                    :貨物評価なしのみ
+STR_STATION_LIST_CARGO_FILTER_SELECT_ALL                        :すべて選択 (評価なしを含む)
+STR_STATION_LIST_CARGO_FILTER_NO_RATING                         :貨物評価なし
+STR_STATION_LIST_CARGO_FILTER_EXPAND                            :もっと見る
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3911,6 +3934,8 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評価
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}停留施設の評価を表示します
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}月間の貨物別供給と地元評価:
+STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}分間の貨物別供給と地元評価:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}グループ分け:
@@ -3918,15 +3943,15 @@ STR_STATION_VIEW_WAITING_STATION                                :積込待ち (�
 STR_STATION_VIEW_WAITING_AMOUNT                                 :積込待ち (貨物量別)
 STR_STATION_VIEW_PLANNED_STATION                                :到着予定 (停留施設別)
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :到着予定 (貨物量別)
-STR_STATION_VIEW_FROM                                           :{YELLOW}{1:STATION}発: {0:CARGO_SHORT}
-STR_STATION_VIEW_VIA                                            :{YELLOW}{1:STATION}経由: {0:CARGO_SHORT}
-STR_STATION_VIEW_TO                                             :{YELLOW}{1:STATION}着: {0:CARGO_SHORT}
+STR_STATION_VIEW_FROM                                           :{YELLOW}{1:STATION} 発: {0:CARGO_SHORT}
+STR_STATION_VIEW_VIA                                            :{YELLOW}{1:STATION} 経由: {0:CARGO_SHORT}
+STR_STATION_VIEW_TO                                             :{YELLOW}{1:STATION} 行: {0:CARGO_SHORT}
 STR_STATION_VIEW_FROM_ANY                                       :{RED}出発地不明: {CARGO_SHORT}
 STR_STATION_VIEW_TO_ANY                                         :{RED}目的地不明: {CARGO_SHORT}
 STR_STATION_VIEW_VIA_ANY                                        :{RED}経由地不明: {CARGO_SHORT}
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}当地発: {CARGO_SHORT}
 STR_STATION_VIEW_VIA_HERE                                       :{GREEN}当地経由: {CARGO_SHORT}
-STR_STATION_VIEW_TO_HERE                                        :{GREEN}当地着: {CARGO_SHORT}
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}当地行: {CARGO_SHORT}
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}直行: {CARGO_SHORT}
 
 STR_STATION_VIEW_GROUP_S_V_D                                    :出発地-経由地-目的地
@@ -3946,27 +3971,33 @@ STR_CARGO_RATING_VERY_GOOD                                      :とても良い
 STR_CARGO_RATING_EXCELLENT                                      :すばらしい
 STR_CARGO_RATING_OUTSTANDING                                    :最高
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}メイン画面をこの停留施設の場所に移動します。Ctrl+クリックではこの停留施設の場所を新たなビューポートに表示します
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}メイン画面をこの停留施設の場所に移動します。Ctrl+クリックでこの停留施設の場所を新たなビューポートに表示します
+STR_STATION_VIEW_EDIT_TOOLTIP                                   :{BLACK}停留施設名を変更、もしくは標識の位置を移動します
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}この駅が指令リストに入っている全列車を表示します
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}このバス停/荷役所が指令リストに入っている全車両を表示します
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}この空港が指令リストに入っている全航空機を表示します
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}この埠頭が指令リストに入っている全船舶を表示します
 
+STR_STATION_VIEW_EDIT_STATION_SIGN                              :{WHITE}停留施設名を変更
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}空港を閉鎖
 STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}航空機がこの空港に着陸できないようにします
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}メイン画面をこの中継駅の場所に移動します。Ctrl+クリックではこの通過点の場所を新たなビューポートに表示します
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}メイン画面をこの中継点の場所に移動します。Ctrl+クリックでこの中継点の場所を新たなビューポートに表示します
+STR_WAYPOINT_VIEW_EDIT_TOOLTIP                                  :{BLACK}中継点名を変更、もしくは標識の位置を移動します
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面をこのブイの場所に移動します。Ctrl+クリックでこのブイの場所を新たなビューポートに表示します
 STR_BUOY_VIEW_RENAME_TOOLTIP                                    :{BLACK}ブイの名称を変更
 
+STR_WAYPOINT_VIEW_EDIT_WAYPOINT_SIGN                            :{WHITE}中継点名を変更
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} 経営状況　{BLACK}{COMPANY_NUM}
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_YEAR_CAPTION                                       :{WHITE}年度
+STR_FINANCES_PERIOD_CAPTION                                     :{WHITE}期間
 
 ###length 3
 STR_FINANCES_REVENUE_TITLE                                      :{WHITE}収益
@@ -4012,10 +4043,11 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(社長)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}開業年: {WHITE}{NUM}
+STR_COMPANY_VIEW_INAUGURATED_TITLE_WALLCLOCK                    :{GOLD}開業年: {WHITE}{NUM} (第{NUM}期)
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}コーポレートカラー:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}輸送機器数:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}　列車 {COMMA}編成
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}　道路車両 {COMMA}両
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}　車両 {COMMA}両
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}　航空機 {COMMA}機
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}　船舶 {COMMA}隻
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}　なし
@@ -4038,6 +4070,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}詳細
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}インフラ設備の詳細な個数・タイル数を表示します
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}お金を渡す
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}この会社にお金を渡す
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_BUTTON                        :{BLACK}会社買収
+STR_COMPANY_VIEW_HOSTILE_TAKEOVER_TOOLTIP                       :{BLACK}この会社に対して敵対的買収を仕掛けます
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}顔の変更
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}社長の顔を変更します
@@ -4053,6 +4087,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :社長名
 STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :寄付したい金額を入力してください
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}現在、当{COMPANY}は業績悪化に伴い、債務の肩代わりを条件に社の全資産をお譲り致そうと考えております。{}{}債務{CURRENCY_LONG}を一括代済し、この会社を吸収合併しますか?
+STR_BUY_COMPANY_HOSTILE_TAKEOVER                                :{WHITE}{COMPANY}を敵対的買収するには、対象会社の全資産を購入し、すべての債務を返済した上で、2年分の利益に相当する金額を支払う必要があります。{}{}総額は{CURRENCY_LONG}と見積もられています。{}{}本当に買収を実行しますか?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} インフラ設備
@@ -4065,27 +4100,32 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}運河
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}停留施設数:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}停留施設(タイル数)
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}空港
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_YEAR                      :{WHITE}{CURRENCY_LONG}/年
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL_PERIOD                    :{WHITE}{CURRENCY_LONG}/期
 
 # Industry directory
-STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}産業 ({COMMA} の {COMMA})
+STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}産業 ({COMMA} / {COMMA})
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- なし -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% 輸送済み)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}、{STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING}
-STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} や、 {NUM} そしてもっと...
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {BLACK}{STRING}, {STRING}, {STRING} ほか{NUM}種類
 STR_INDUSTRY_DIRECTORY_LIST_TOOLTIP                             :{BLACK}産業の名前です - 名前をクリックするとこの産業拠点の場所にメイン画面を移動します。Ctrl+クリックでこの産業拠点の場所を新たなビューポートに表示します
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}受け取った貨物: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}生産された貨物：{SILVER} {STRING}
-STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :すべての貨物タイプ
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :すべての貨物種類
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :なし
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}生産量(前月):
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}生産量(先月):
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MINUTE_TITLE                  :{BLACK}生産量(直近1分):
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK}({COMMA}%搬送済)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}メイン画面をこの産業の場所に移動します。Ctrl+クリックでこの産業の場所を新たなビューポートに表示します
+STR_INDUSTRY_VIEW_CARGO_GRAPH                                   :{BLACK}貨物グラフ
+STR_INDUSTRY_VIEW_CARGO_GRAPH_TOOLTIP                           :{BLACK}産業の貨物履歴グラフを表示します
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生産量: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}この産業拠点は間もなく閉鎖されます!
 
@@ -4093,7 +4133,11 @@ STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}必要�
 STR_INDUSTRY_VIEW_PRODUCES_N_CARGO                              :{BLACK}生産：{YELLOW}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :{STRING}{STRING}
 
-STR_INDUSTRY_VIEW_REQUIRES                                      : {BLACK}必要物資:
+STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}必要物資:
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_SUFFIX                           :{YELLOW}{0:STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_SUFFIX                    :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} {3:STRING} 待機中
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_NOSUFFIX                         :{YELLOW}{0:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT_NOSUFFIX                  :{YELLOW}{0:STRING}{BLACK}: {1:CARGO_SHORT} 待機中
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更 (8の倍数、最大2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}生産量を変更 (%表記、最大800%)

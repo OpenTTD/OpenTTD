@@ -1949,8 +1949,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Tampilkan koran
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Pembukaan Industri Baru: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Tampilkan koran jika ada industri baru
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Penutupan Industri: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Tampilkan surat kabar jika industri ditutup
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Perubahan ekonomi: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Tampilkan koran/surat kabar tentang pergantian ekonomi dunia

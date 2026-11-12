@@ -2054,8 +2054,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показат�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Відкриття підприємств: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показати газету коли підприємство відкривається
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Закриття підприємств: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Показати газету коли виробництво припиняє роботу
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Зміни в економіці: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Показати газету про глобальні зміни в економіці

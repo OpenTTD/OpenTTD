@@ -1721,8 +1721,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :ஒரு ப�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :தொழிற்சாலைகளின் திறப்பு: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :தொழிற்சாலைகள் திறக்கப்படும்போது செய்தித்தாளினைக் காட்டு
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :தொழிற்சாலைகளின் மூடல்: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :தொழிற்சாலைகள் மூடப்படும்போது செய்தித்தாளினைக் காட்டு
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :பொருளாதார மாற்றங்கள்: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :உலக பொருளாதார மாற்றங்களைப் பற்றி செய்தித்தாளினைக் காட்டு

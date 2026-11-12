@@ -2027,8 +2027,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Rodyti naujienr
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Gamyklų atidarymas: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Rodyti naujienraštį įsikūrus naujai pramonės įmonei
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gamyklų uždarymas: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Rodyti naujienraštį, jei uždaroma pramonės įmonė
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikos pokyčiai: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Rodyti naujienraštį įvykus globaliniam ekonomikos pokyčiui

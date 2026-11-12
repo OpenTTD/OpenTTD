@@ -1951,8 +1951,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Näytä sanomal
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Uutta teollisuutta: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Näytä sanomalehti uusien teollisuuslaitosten avautuessa
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Teollisuuslaitosten lakkautukset: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Näytä sanomalehti teollisuuslaitosten sulkeutuessa
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Talouden muutokset: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Näytä sanomalehti taloustilanteen muuttuessa

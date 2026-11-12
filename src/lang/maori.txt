@@ -1949,8 +1949,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Whakaari i tēt
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Whakatuwheratanga o ngā ahumahi: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Whakaari i tētahi nūpepa ina whakatuwheratia ngā ahumahi hou
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Kati o ngā ahumahi: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Whakaari i tētahi nūpepa ina katia ngā ahumahi
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Panonitanga ōhanga: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Whakaari i ngā nūpepa mō ngā panoni i te ōhanga

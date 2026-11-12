@@ -2044,8 +2044,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Προβάλλ�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Εμφάνιση εφημερίδας όταν ανοίγουν νέες βιομηχανίες
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Κλείσιμο βιομηχανιών: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Εμφάνιση εφημερίδας όταν κλείνουν βιομηχανίες
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Οικονομικές αλλαγές: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Εμφάνιση εφημερίδας σε αλλαγές παγκόσμιων οικονομικών μεγεθών

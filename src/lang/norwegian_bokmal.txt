@@ -1951,8 +1951,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vise nyhetsoppd
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Åpning av industrier: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Vise nyhetsoppdatering når nye industrier åpner drift
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Stenging av industrier: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Vise nyhetsoppdatering når industrier avvikler driften
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiske endringer: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vis en nyhetsoppdatering om globale forandringer i økonomi

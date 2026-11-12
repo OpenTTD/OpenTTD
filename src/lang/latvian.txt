@@ -1944,8 +1944,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Rādīt avīzi 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ražotņu atklāšana: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Rādīt avīzi, kad tiek atklāti jauni uzņēmumi
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Ražotņu slēgšana: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Rādīt avīzi, kad uzņēmumi tiek slēgti
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomikas izmaiņas: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Rādīt avīzi par globālām izmaiņām ekonomikā

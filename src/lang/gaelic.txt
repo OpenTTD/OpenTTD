@@ -1810,8 +1810,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Seall pàipear-
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Gnìomhachas ùr air fhosgladh: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Seall pàipear-naidheachd nuair a dh'fhosglas gnìomhachas ùr
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Gnìomhachas air a dhùnadh: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Seall pàipear-naidheachd nuair a thèid gnìomhachas a dhùnadh
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Atharraichean an eaconamaidh: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Seall pàipear-naidheachd nuair a dh'atharraicheas eaconamaidh na cruinne

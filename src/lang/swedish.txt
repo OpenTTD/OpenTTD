@@ -1951,8 +1951,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Visa en dagstid
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Invigning av industrier: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Visa en dagstidning när nya industrier startas
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Nedläggning av Industrier: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Visa en dagstidning när industrier läggs ned
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiska förändringar: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Visa en dagstidning om förändringar i den globala ekonomin

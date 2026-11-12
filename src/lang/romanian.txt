@@ -1886,8 +1886,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afișează un z
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Inaugurare industrii: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Afișează un ziar când o nouă industrie este înființată
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Închidere industrii: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Afișează un ziar când o industrie este inchisă
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Schimbări economice: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Afișează un ziar când apar schimbări globale ale economiei

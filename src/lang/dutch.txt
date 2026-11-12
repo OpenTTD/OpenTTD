@@ -1917,8 +1917,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Nieuwsbericht w
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Openen van industrieën: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Nieuwsbericht weergeven als een nieuwe industrie worden opgericht
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Sluiten van industrieën: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Nieuwsbericht weergeven als een industrie sluit
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Veranderingen in de economie: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Nieuwsbericht weergeven over wereldwijde wijzigingen in de economie

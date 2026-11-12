@@ -1585,7 +1585,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :اطلاعات 
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :بازگشایی صنایع: {STRING}
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :بستن صنایع: {STRING}
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :تغییرات اقتصادی: {STRING}
 

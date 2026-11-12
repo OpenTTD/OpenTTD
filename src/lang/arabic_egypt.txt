@@ -1564,7 +1564,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :معلومات 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :تشغيل مصنع جديد: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :عرض صحيفة عند افتتاح الصنعات الجديدة
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :اغلاق مصنع: {STRING}
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :التغيرات الأقتصادية: {STRING}
 

@@ -1918,8 +1918,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Amosa un xornal
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Apertura de industrias: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Amosa no xornal cando abre unha industria nova
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Peche de industrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Amosa no xornal as industrias que pechan
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Cambios na economía: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Amosa no xornal os cambios globáis na economía

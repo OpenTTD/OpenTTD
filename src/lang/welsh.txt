@@ -1931,8 +1931,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Dangos papur ne
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Cychwyn diwydiannau: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Dangos papur newydd pan fo diwydiannau newydd yn agor
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Cau diwydiannau: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Dangos papur newydd pan fo diwydiannau'n cau i lawr
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Newidiadau yn yr economi: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Dangos papur newydd am newidiadau fyd-eang i'r economi

@@ -1936,8 +1936,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Weis d'Zeitung 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Grënnung vun enger Industrie: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Weis d'Zeitung wann eng nei Industrie opmécht
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Industrie gëtt zougemaach: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Weis d'Zeitung wann eng Industrie zoumécht
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Wiertschaftsännerungen: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Weis d'Zeitung iwwert d'global Wiertschaft

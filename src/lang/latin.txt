@@ -1808,8 +1808,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Ostendere ephem
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :De apertione industriae: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Ostendere ephemeridem cum industria nova condiatur
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :De industriis claudendis: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Ostendere ephemeridem cum industria mox claudatur
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :De mutationibus oeconomicis: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Ostendere ephemeridem cum magna eventa oeconomica fiant

@@ -1950,8 +1950,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Afficher un jou
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Ouvertures d'industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Afficher un journal quand une industrie ouvre
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Fermetures d'industries{NBSP}: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Afficher un journal quand une industrie ferme
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Changements économiques{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Afficher un journal au sujet des changements globaux de l'économie

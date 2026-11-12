@@ -1952,8 +1952,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :새로운 회�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :산업시설 건설: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :새로운 산업시설이 건설되면 메시지로 알려줍니다
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :산업시설 폐쇄: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :산업시설이 폐쇄될 때 메시지로 알려줍니다
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :경제 변화: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :경제에 거시적인 변화가 생기면 뉴스 메시지로 알려줍니다

@@ -1546,8 +1546,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vís eitt tíð
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Upplating av ídaðum : {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Vís eitt tíðindablað tá nýggjir ídnaðir lata upp
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Steingjing av ídnaðum: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Vís eitt tíðindablað tá ídnaðir steingja
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Búskapar broytingar: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vís tíðindablað um broytingar í heimsbúskapinum

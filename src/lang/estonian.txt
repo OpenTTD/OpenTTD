@@ -2005,8 +2005,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Kui uus ettevõ
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tööstuste avamine: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Uue tööstuste avamisel näidatakse seda ajalehes
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tööstuste sulgemine: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Tööstuste sulgemise korral näidatakse seda ajalehes
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Muutused majanduses: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Maailmamajanduse muutumisel näidatakse seda ajalehes

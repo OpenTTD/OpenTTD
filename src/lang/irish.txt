@@ -1713,8 +1713,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Taispeáin nuac
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Tionscail ag oscailt: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Taispeáin nuachtán nuair a osclaítear tionscal nua
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Tionscail ag dúnadh: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Taispeáin nuachtán nuair a dhúnann tionscal
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Athruithe sa gheilleagar: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Taispeáin nuachtán maidir le hathruithe domhanda ar an ngeilleagar

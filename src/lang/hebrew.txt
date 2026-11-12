@@ -1767,8 +1767,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :הצג עיתו
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :פתיחת תעשיות: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :הצג עיתון כאשר תעשיות נפתחות
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :סגירת תעשיות: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :הצג עיתון כאשר תעשיות נסגרות
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :שינויים בכלכלה: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :הצג עיתון אודות שינויים גלובליים בכלכלה

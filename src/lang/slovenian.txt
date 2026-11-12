@@ -1763,8 +1763,8 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Prikaz časopis
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Odpiranje industrij: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Prikaz časopisa ob odprtju industrij
 
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE                          :Zapiranje industrij: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_HELPTEXT                 :Prikaz časopisa ob zaprtju industrij
+
+
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomske spremembe: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Prikaz časopisa ob globalnih ekonomskih spremembah
