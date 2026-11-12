@@ -24,7 +24,11 @@
 template <typename Tcont, typename Titer>
 inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, Titer> &buffer, const Livery &livery)
 {
-	return buffer << livery.in_use << livery.colour1 << livery.colour2;
+	buffer << livery.in_use;
+	for (uint8_t bit : SetBitIterator(livery.in_use)) {
+		buffer << livery.colours[bit];
+	}
+	return buffer;
 }
 
 /**
@@ -35,7 +39,17 @@ inline EndianBufferWriter<Tcont, Titer> &operator <<(EndianBufferWriter<Tcont, T
  */
 inline EndianBufferReader &operator >>(EndianBufferReader &buffer, Livery &livery)
 {
-	return buffer >> livery.in_use >> livery.colour1 >> livery.colour2;
+	buffer >> livery.in_use;
+	for (uint8_t bit : SetBitIterator(livery.in_use)) {
+		if (bit >= std::size(livery.colours)) {
+			/* Bit is out of range, read it but throw away the value. */
+			Colours colours;
+			buffer >> colours;
+		} else {
+			buffer >> livery.colours[bit];
+		}
+	}
+	return buffer;
 }
 
 #endif /* LIVERY_CMD_H */

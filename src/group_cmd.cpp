@@ -318,8 +318,9 @@ static void PropagateChildLivery(const Group *g, bool reset_cache)
 
 	for (const GroupID &childgroup : g->children) {
 		Group *cg = Group::Get(childgroup);
-		if (!cg->livery.in_use.Test(Livery::Flag::Primary)) cg->livery.colour1 = g->livery.colour1;
-		if (!cg->livery.in_use.Test(Livery::Flag::Secondary)) cg->livery.colour2 = g->livery.colour2;
+		for (size_t colour_index = 0; colour_index < std::size(cg->livery.colours); ++colour_index) {
+			if (!HasBit(cg->livery.in_use, colour_index)) cg->livery.colours[colour_index] = g->livery.colours[colour_index];
+		}
 		PropagateChildLivery(cg, reset_cache);
 	}
 }
@@ -333,8 +334,9 @@ void UpdateCompanyGroupLiveries(const Company *c)
 {
 	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index && g->parent == GroupID::Invalid()) {
-			if (!g->livery.in_use.Test(Livery::Flag::Primary)) g->livery.colour1 = c->livery[LiveryScheme::Default].colour1;
-			if (!g->livery.in_use.Test(Livery::Flag::Secondary)) g->livery.colour2 = c->livery[LiveryScheme::Default].colour2;
+			for (size_t colour_index = 0; colour_index < std::size(g->livery.colours); ++colour_index) {
+				if (!HasBit(g->livery.in_use, colour_index)) g->livery.colours[colour_index] = c->livery[LiveryScheme::Default].colours[colour_index];
+			}
 			PropagateChildLivery(g, false);
 		}
 	}
@@ -366,13 +368,11 @@ std::tuple<CommandCost, GroupID> CmdCreateGroup(DoCommandFlags flags, VehicleTyp
 		Company *c = Company::Get(g->owner);
 		g->number = c->freegroups.UseID(c->freegroups.NextID());
 		if (pg == nullptr) {
-			g->livery.colour1 = c->livery[LiveryScheme::Default].colour1;
-			g->livery.colour2 = c->livery[LiveryScheme::Default].colour2;
+			g->livery.colours = c->livery[LiveryScheme::Default].colours;
 			if (c->settings.renew_keep_length) g->flags.Set(GroupFlag::ReplaceWagonRemoval);
 		} else {
 			g->parent = pg->index;
-			g->livery.colour1 = pg->livery.colour1;
-			g->livery.colour2 = pg->livery.colour2;
+			g->livery.colours = pg->livery.colours;
 			g->flags = pg->flags;
 			pg->children.insert(g->index);
 		}
@@ -493,11 +493,12 @@ CommandCost CmdAlterGroup(DoCommandFlags flags, AlterGroupMode mode, GroupID gro
 
 			GroupStatistics::UpdateAutoreplace(g->owner);
 
-			if (!g->livery.in_use.All({Livery::Flag::Primary, Livery::Flag::Secondary})) {
+			if (g->livery.in_use != (1U << Livery::NUM_COLOURS) - 1) {
 				/* Update livery with new parent's colours if either colour is default. */
 				const Livery *livery = GetParentLivery(g);
-				if (!g->livery.in_use.Test(Livery::Flag::Primary)) g->livery.colour1 = livery->colour1;
-				if (!g->livery.in_use.Test(Livery::Flag::Secondary)) g->livery.colour2 = livery->colour2;
+				for (size_t colour_index = 0; colour_index < std::size(g->livery.colours); ++colour_index) {
+					if (!HasBit(g->livery.in_use, colour_index)) g->livery.colours[colour_index] = livery->colours[colour_index];
+				}
 
 				PropagateChildLivery(g, true);
 				MarkWholeScreenDirty();
@@ -691,21 +692,20 @@ CommandCost CmdRemoveAllVehiclesGroup(DoCommandFlags flags, GroupID group_id)
 CommandCost CmdSetGroupLivery(DoCommandFlags flags, GroupID group_id, Livery livery)
 {
 	Group *g = Group::GetIfValid(group_id);
-
 	if (g == nullptr || g->owner != _current_company) return CMD_ERROR;
 
+	/* Parts to set must be within range. */
+	if (livery.in_use == 0 || livery.in_use >= 1U << std::size(livery.colours)) return CMD_ERROR;
+
 	/* For each part to be set the colour must be within range or Colours::Invalid. */
-	if (livery.in_use.Test(Livery::Flag::Primary) && livery.colour1 >= Colours::End && livery.colour1 != Colours::Invalid) return CMD_ERROR;
-	if (livery.in_use.Test(Livery::Flag::Secondary) && livery.colour2 >= Colours::End && livery.colour2 != Colours::Invalid) return CMD_ERROR;
+	for (uint i : SetBitIterator(livery.in_use)) {
+		if (livery.colours[i] >= Colours::End && livery.colours[i] != Colours::Invalid) return CMD_ERROR;
+	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
-		if (livery.in_use.Test(Livery::Flag::Primary)) {
-			g->livery.in_use.Set(Livery::Flag::Primary, livery.colour1 != Colours::Invalid);
-			g->livery.colour1 = livery.colour1 == Colours::Invalid ? GetParentLivery(g)->colour1 : livery.colour1;
-		}
-		if (livery.in_use.Test(Livery::Flag::Secondary)) {
-			g->livery.in_use.Set(Livery::Flag::Secondary, livery.colour2 != Colours::Invalid);
-			g->livery.colour2 = livery.colour2 == Colours::Invalid ? GetParentLivery(g)->colour2 : livery.colour2;
+		for (uint i : SetBitIterator(livery.in_use)) {
+			AssignBit(g->livery.in_use, i, livery.colours[i] != Colours::Invalid);
+			g->livery.colours[i] = livery.colours[i] == Colours::Invalid ? GetParentLivery(g)->colours[i] : livery.colours[i];
 		}
 
 		PropagateChildLivery(g, true);

@@ -358,38 +358,24 @@
 	return ::Company::Get(ScriptCompany::FromScriptCompanyID(company))->settings.engine_renew_money;
 }
 
-/* static */ bool ScriptCompany::SetPrimaryLiveryColour(LiveryScheme scheme, Colours colour)
+/* static */ bool ScriptCompany::SetLiveryColour(LiveryScheme scheme, uint colour_index, Colours colour)
 {
 	EnforceCompanyModeValid(false);
+	EnforcePrecondition(false, static_cast<::LiveryScheme>(scheme) >= ::LiveryScheme::Begin);
+	EnforcePrecondition(false, static_cast<::LiveryScheme>(scheme) < ::LiveryScheme::End);
+	EnforcePrecondition(false, colour_index < Livery::NUM_COLOURS);
 
-	Livery livery{Livery::Flag::Primary, static_cast<::Colours>(colour), ::Colours::Invalid};
+	Livery livery{colour_index, static_cast<::Colours>(colour)};
 	return ScriptObject::Command<Commands::SetCompanyColour>::Do(static_cast<::LiveryScheme>(scheme), livery);
 }
 
-/* static */ bool ScriptCompany::SetSecondaryLiveryColour(LiveryScheme scheme, Colours colour)
-{
-	EnforceCompanyModeValid(false);
-
-	Livery livery{Livery::Flag::Secondary, ::Colours::Invalid, static_cast<::Colours>(colour)};
-	return ScriptObject::Command<Commands::SetCompanyColour>::Do(static_cast<::LiveryScheme>(scheme), livery);
-}
-
-/* static */ ScriptCompany::Colours ScriptCompany::GetPrimaryLiveryColour(ScriptCompany::LiveryScheme scheme)
+/* static */ ScriptCompany::Colours ScriptCompany::GetLiveryColour(ScriptCompany::LiveryScheme scheme, uint colour_index)
 {
 	EnforceCompanyModeValid(COLOUR_INVALID);
 	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= ::LiveryScheme::Begin);
 	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < ::LiveryScheme::End);
+	EnforcePrecondition(COLOUR_INVALID, colour_index < Livery::NUM_COLOURS);
 
 	const Company *c = ::Company::Get(ScriptObject::GetCompany());
-	return (ScriptCompany::Colours)c->livery[static_cast<::LiveryScheme>(scheme)].colour1;
-}
-
-/* static */ ScriptCompany::Colours ScriptCompany::GetSecondaryLiveryColour(ScriptCompany::LiveryScheme scheme)
-{
-	EnforceCompanyModeValid(COLOUR_INVALID);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) >= ::LiveryScheme::Begin);
-	EnforcePrecondition(COLOUR_INVALID, static_cast<::LiveryScheme>(scheme) < ::LiveryScheme::End);
-
-	const Company *c = ::Company::Get(ScriptObject::GetCompany());
-	return (ScriptCompany::Colours)c->livery[static_cast<::LiveryScheme>(scheme)].colour2;
+	return (ScriptCompany::Colours)c->livery[static_cast<::LiveryScheme>(scheme)].colours[colour_index];
 }

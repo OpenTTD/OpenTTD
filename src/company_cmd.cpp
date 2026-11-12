@@ -602,16 +602,14 @@ static void GeneratePresidentName(Company *c)
 void ResetCompanyLivery(Company *c)
 {
 	for (LiveryScheme scheme : EnumRange(LiveryScheme::End)) {
-		c->livery[scheme].in_use.Reset();
-		c->livery[scheme].colour1 = c->colour;
-		c->livery[scheme].colour2 = c->colour;
+		c->livery[scheme].in_use = 0;
+		c->livery[scheme].colours.fill(c->colour);
 	}
 
 	for (Group *g : Group::Iterate()) {
 		if (g->owner == c->index) {
-			g->livery.in_use.Reset();
-			g->livery.colour1 = c->colour;
-			g->livery.colour2 = c->colour;
+			g->livery.in_use = 0;
+			g->livery.colours.fill(c->colour);
 		}
 	}
 }
@@ -1121,8 +1119,9 @@ CommandCost CmdSetCompanyManagerFace(DoCommandFlags flags, uint style, uint32_t 
 void UpdateCompanyLiveries(Company *c)
 {
 	for (LiveryScheme i : EnumRange(LiveryScheme::Steam, LiveryScheme::End)) {
-		if (!c->livery[i].in_use.Test(Livery::Flag::Primary)) c->livery[i].colour1 = c->livery[LiveryScheme::Default].colour1;
-		if (!c->livery[i].in_use.Test(Livery::Flag::Secondary)) c->livery[i].colour2 = c->livery[LiveryScheme::Default].colour2;
+		for (size_t colour_index = 0; colour_index < std::size(c->livery[i].colours); ++colour_index) {
+			if (!HasBit(c->livery[i].in_use, colour_index)) c->livery[i].colours[colour_index] = c->livery[LiveryScheme::Default].colours[colour_index];
+		}
 	}
 	UpdateCompanyGroupLiveries(c);
 }
@@ -1138,52 +1137,48 @@ CommandCost CmdSetCompanyColour(DoCommandFlags flags, LiverySchemes schemes, Liv
 {
 	if (!schemes.IsValid()) return CMD_ERROR;
 
-	/* For each part to be set the colour must be within range or Colours::Invalid. */
-	if (livery.in_use.Test(Livery::Flag::Primary) && livery.colour1 >= Colours::End && livery.colour1 != Colours::Invalid) return CMD_ERROR;
-	if (livery.in_use.Test(Livery::Flag::Secondary) && livery.colour2 >= Colours::End && livery.colour2 != Colours::Invalid) return CMD_ERROR;
+	/* Parts to set must be within range. */
+	if (livery.in_use == 0 || livery.in_use >= 1U << std::size(livery.colours)) return CMD_ERROR;
 
-	/* The default scheme additionally can't be reset to invalid. */
-	if (livery.in_use.Test(Livery::Flag::Primary) && schemes.Test(LiveryScheme::Default) && livery.colour1 == Colours::Invalid) return CMD_ERROR;
-	if (livery.in_use.Test(Livery::Flag::Secondary) && schemes.Test(LiveryScheme::Default) && livery.colour2 == Colours::Invalid) return CMD_ERROR;
+	/* For each part to be set the colour must be within range or Colours::Invalid. */
+	for (uint i : SetBitIterator(livery.in_use)) {
+		if (livery.colours[i] >= Colours::End && livery.colours[i] != Colours::Invalid) return CMD_ERROR;
+		/* The default scheme additionally can't be reset to invalid. */
+		if (schemes.Test(LiveryScheme::Default) && livery.colours[i] == Colours::Invalid) return CMD_ERROR;
+	}
 
 	Company *c = Company::Get(_current_company);
 
 	/* Ensure no two companies have the same primary colour */
-	if (schemes.Test(LiveryScheme::Default) && livery.in_use.Test(Livery::Flag::Primary)) {
+	if (schemes.Test(LiveryScheme::Default) && HasBit(livery.in_use, 0)) {
 		for (const Company *cc : Company::Iterate()) {
-			if (cc != c && cc->colour == livery.colour1) return CMD_ERROR;
+			if (cc != c && cc->colour == livery.colours[0]) return CMD_ERROR;
 		}
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
 		for (LiveryScheme scheme : schemes) {
-			if (livery.in_use.Test(Livery::Flag::Primary)) {
-				if (scheme != LiveryScheme::Default) c->livery[scheme].in_use.Set(Livery::Flag::Primary, livery.colour1 != Colours::Invalid);
-				c->livery[scheme].colour1 = livery.colour1 == Colours::Invalid ? c->livery[LiveryScheme::Default].colour1 : livery.colour1;
-
-				/* If setting the first colour of the default scheme, adjust the
-				 * original and cached company colours too. */
-				if (scheme == LiveryScheme::Default) {
-					UpdateCompanyLiveries(c);
-					_company_colours[_current_company] = c->livery[scheme].colour1;
-					c->colour = c->livery[scheme].colour1;
-					CompanyAdminUpdate(c);
-				}
+			for (uint i : SetBitIterator(livery.in_use)) {
+				if (scheme != LiveryScheme::Default) AssignBit(c->livery[scheme].in_use, i, livery.colours[i] != Colours::Invalid);
+				c->livery[scheme].colours[i] = livery.colours[i] == Colours::Invalid ? c->livery[LiveryScheme::Default].colours[i] : livery.colours[i];
 			}
-			if (livery.in_use.Test(Livery::Flag::Secondary)) {
-				if (scheme != LiveryScheme::Default) c->livery[scheme].in_use.Set(Livery::Flag::Secondary, livery.colour2 != Colours::Invalid);
-				c->livery[scheme].colour2 = livery.colour2 == Colours::Invalid ? c->livery[LiveryScheme::Default].colour2 : livery.colour2;
+		}
 
-				if (scheme == LiveryScheme::Default) {
-					UpdateCompanyLiveries(c);
-				}
+		/* If setting the first colour of the default scheme, adjust the
+		 * original and cached company colours too. */
+		if (schemes.Test(LiveryScheme::Default)) {
+			UpdateCompanyLiveries(c);
+			if (HasBit(livery.in_use, 0)) {
+				_company_colours[_current_company] = c->livery[LiveryScheme::Default].colours[0];
+				c->colour = c->livery[LiveryScheme::Default].colours[0];
+				CompanyAdminUpdate(c);
 			}
 		}
 
 		/* Test if any schemes are left enabled. If not, disable the default scheme too. */
-		c->livery[LiveryScheme::Default].in_use.Reset({Livery::Flag::Primary, Livery::Flag::Secondary});
-		if (std::ranges::any_of(c->livery, [](const Livery &l) { return l.in_use.Any({Livery::Flag::Primary, Livery::Flag::Secondary}); })) {
-			c->livery[LiveryScheme::Default].in_use.Set(Livery::Flag::Primary);
+		c->livery[LiveryScheme::Default].in_use = 0;
+		if (std::ranges::any_of(c->livery, [](const Livery &l) { return l.in_use != 0; })) {
+			SetBit(c->livery[LiveryScheme::Default].in_use, 0);
 		}
 
 		ResetVehicleColourMap();
