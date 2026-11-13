@@ -2102,20 +2102,26 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Показыв�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Открытие предприятий: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Показывать новости об открывающихся предприятиях
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Закрытие предприятий, обслуживаемых компанией: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Показывать газетный заголовок, если предприятие, обслуживаемое вашей компанией, закрывается.
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Закрытие предприятий, обслуживаемых конкурентами: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Показывать газетный заголовок, если предприятие, обслуживаемое конкурирующими компаниями, закрывается.
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Закрытие предприятий, никем не обслуживаемых: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Показывать газетный заголовок, если закрывается предприятие, не обслуживаемое ни одной компанией.
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Изменения в экономике: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Показывать новости о глобальных изменениях в экономике
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Изм. производительности предприятий, обслуж. компанией: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Показывать новости об изменении производительности предприятий, обслуживаемых компанией игрока
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Показывать новости об изменении производительности предприятий, обслуживаемых компанией игрока.
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Изм. производительности предприятий, обслуж. конкурентами: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Показывать новости об изменении производительности предприятий, обслуживаемых конкурентами
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Показывать новости об изменении производительности предприятий, обслуживаемых конкурентами.
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Изм. производительности предпр., никем не обслуживаемых: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Показывать новости об изменении производительности никем не обслуживаемых предприятий
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Показывать новости об изменении производительности никем не обслуживаемых предприятий.
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Советы и сведения, касающиеся транспорта компании: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Показывать сообщения о транспортных средствах, на которые следует обратить внимание

@@ -1952,20 +1952,26 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Mostrar um jorn
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Abertura de indústrias: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Mostrar um jornal quando se abre uma nova indústria
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Encerramento de indústrias servidas pela empresa: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Mostrar um jornal quando industrias servidas pela empresa encerrarem a sua atividade
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Encerramento de indústrias servidas pela concorrência: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Mostrar um jornal quando as indústrias servidas pela concorrência encerram a sua atividade
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Encerramento de indústrias que não são servidas por ninguém: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Mostrar um jornal quando as indústrias que não são atendidas por ninguém encerram a sua atividade
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Alterações económicas: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Mostrar um jornal quando ocorrem alterações globais na economia
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Alterações de produção nas indústrias servidas pelo jogador: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar um jornal na alteração da produção de indústrias servidas pelo jogador
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Mostrar um jornal quando o nível de produção das indústrias servidas pela empresa é alterado
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Mudanças na produção das industrias servidas por oponente(s): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostrar um jornal na alteração da produção de indústrias servidas por oponentes
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Mostrar um jornal quando o nível de produção das indústrias servidas pela concorrência é alterado
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Alterações na produção de outras indústrias: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar um jornal na alteração da produção de indústrias que não estão a ser servidas
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostrar um jornal quando o nível de produção das indústrias que não são servidas por ninguém é alterado
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Avisos / informações sobre os veículos da empresa: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensagens sobre veículos que requerem atenção

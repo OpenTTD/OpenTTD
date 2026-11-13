@@ -1688,6 +1688,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :A dombok és he
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Gazdasági épületek száma: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Mennyi gazdasági épület legyen, és mennyire legyenek fenntartva a játék folyamán
 
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY                  :Csak elsődleges iparágak generálása: {STRING}
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY_HELPTEXT         :Ha be van kapcsolva, csak az elsődleges iparágak kerülnek generálásra a térkép generálása során vagy a játék alatt.
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Olajfinomítók és olajfúró tornyok maximális távolsága a térkép szélétől: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Megadhatod, hogy a térkép szélétől milyen messze épülhetnek olajfinomítók és olajfúró tornyok. Sziget jellegű térképek esetén így a part közelében fognak épülni. 256 mezőnél szélesebb, ill. hosszabb térképek esetén ez az érték felszorzódik.
@@ -2013,17 +2015,23 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Újság megjele
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Új gazdasági épületek megjelenése: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Újság megjelenítése amikor új ipartelep nyílik
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :A vállalat által kiszolgált iparágak bezárása: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Újsághír megjelenítése, amikor a cég által kiszolgált iparágak bezárnak
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Versenytárs(ak) által kiszolgált iparágak bezárása: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Újsághír megjelenítése, amikor a versenytárs(ak) által kiszolgált  iparágak bezárnak
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Senki által nem kiszolgált iparágak bezárása: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Újsághír megjelenítése, amikor a senki által ki nem szolgált iparágak bezárnak
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Gazdasági változások: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Újság megjelenítése a globális gazdasági változásokkal kapcsolatban
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Termelésváltozások a vállalatod által kiszolgált gazdasági létesítményeknél: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Újsághír megjelenítése, amikor a cág által kiszolgált gazdasági épületben termelési változás áll be
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Újsághír megjelenítése, amikor a cég által kiszolgált gazdasági épületben termelési változás áll be
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Termelésváltozások a konkurenseid által kiszolgált gazdasági létesítményeknél: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Újsághír megjelenítése, amikor a versenytársak által kiszolgált gazdasági épületben termelési változás áll be
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Újsághír megjelenítése, amikor a versenytársak által kiszolgált iparágakban termelési változás áll be
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Más gazdasági termelési változások: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Üzenet megjelenítése, amikor egy olyan ipartelep teljesítménye változik, amely nem kötődik semelyik cég tevékenységéhez

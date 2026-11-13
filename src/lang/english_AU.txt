@@ -1951,20 +1951,26 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Display a newsp
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Opening of industries: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Display a newspaper when new industries open
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Closing of industries served by the company: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Display a newspaper when industries served by the company close down
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Closing of industries served by competitor(s): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Display a newspaper when industries served by competitors close down
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Closing of industries not served by anyone: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Display a newspaper when industries not served by anyone close down
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Economy changes: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Display a newspaper about global changes to economy
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Production changes of industries served by the company: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Display a newspaper when the production level of industries change, which are served by the company
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Display a newspaper when the production level of industries served by the company changes
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Production changes of industries served by competitor(s): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Display a newspaper when the production level of industries change, which are served by the competitors
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Display a newspaper when the production level of industries served by competitors changes
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Other industry production changes: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Display a newspaper when the production level of industries change, which are not served by the company or competitors
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Display a newspaper when the production level of industries not served by anyone changes
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Advice / information on company's vehicles: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Display messages about vehicles needing attention

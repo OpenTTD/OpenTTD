@@ -2044,8 +2044,14 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Προβάλλ�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Έναρξη των βιομηχανιών: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Εμφάνιση εφημερίδας όταν ανοίγουν νέες βιομηχανίες
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Κλείσιμο βιομηχανιών που εξυπηρετούνται από την εταιρεία: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Εμφάνιση εφημερίδας όταν βιομηχανίες που εξυπηρετούνται από την εταιρεία κλείνουν
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Κλείσιμο βιομηχανιών που εξυπηρετούνται από ανταγωνιστή/ές: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Εμφάνιση εφημερίδας όταν βιομηχανίες που εξυπηρετούνται από ανταγωνιστές κλείνουν
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Κλείσιμο βιομηχανιών που δεν εξυπηρετούνται από κάποιον: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Εμφάνιση εφημερίδας όταν βιομηχανίες που δεν εξυπηρετούνται από κάποιον κλείνουν
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Οικονομικές αλλαγές: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Εμφάνιση εφημερίδας σε αλλαγές παγκόσμιων οικονομικών μεγεθών
@@ -2057,7 +2063,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Διαφορο�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Εμφάνιση εφημερίδας όταν μεταβάλλεται η παραγωγικότητα μιας βιομηχανίας που εξυπηρετείται από ανταγωνιστές
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Άλλες διαφοροποιήσεις στην παραγωγή: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Εμφάνιση εφημερίδας όταν μεταβάλλεται η παραγωγικότητα μιας βιομηχανίας που δεν εξυπηρετείται από την εταιρεία σας ή ανταγωνιστές
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Εμφάνιση εφημερίδας όταν μεταβάλλεται η παραγωγικότητα μιας βιομηχανίας που δεν εξυπηρετείται από κάποιον
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Συμβουλές / πληροφορίες για τα εταιρικά οχήματα: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Εμφάνιση μηνημάτων όταν κάποιο όχημα χρήζει προσοχής

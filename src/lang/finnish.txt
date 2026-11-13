@@ -1951,20 +1951,26 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Näytä sanomal
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Uutta teollisuutta: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Näytä sanomalehti uusien teollisuuslaitosten avautuessa
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Yhtiön palvelemien laitosten sulkeminen: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Näytä sanomalehti, kun yhtiön palvelemia laitoksia suljetaan
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Kilpailijoiden palvelemien laitosten sulkeminen: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Näytä sanomalehti, kun kilpailijoiden palvelemia laitoksia suljetaan
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Sellaisten laitosten sulkeminen, joita yksikään yhtiö ei palvele: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Näytä sanomalehti sellaisten laitosten sulkeutuessa, joita yksikään yhtiö ei palvele
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Talouden muutokset: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Näytä sanomalehti taloustilanteen muuttuessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Tuotantomuutokset laitoksissa, joita yhtiö palvelee: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Näytä sanomalehti tuotantomäärän muuttuessa oman yhtiön palvelemassa teollisuuslaitoksessa
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Näytä sanomalehti tuotantotason muuttuessa oman yhtiön palvelemassa laitoksessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Tuotantomuutokset laitoksissa, joita kilpailija(t) palvelevat: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Näytä sanomalehti tuotantomäärän muuttuessa kilpailijoiden palvelemassa teollisuuslaitoksessa
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Näytä sanomalehti tuotantomäärän muuttuessa kilpailijoiden palvelemassa laitoksessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Muita muutoksia tuotannossa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota oma tai kilpaileva yhtiö ei palvele
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Näytä sanomalehti tuotannon muuttuessa laitoksessa, jota yksikään yhtiö ei palvele
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Neuvoja / tietoa yhtiön kulkuneuvoista: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Näytä viesti kulkuneuvon vaatiessa huomiota
