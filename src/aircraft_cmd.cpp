@@ -1447,7 +1447,10 @@ static void AircraftLandAirplane(Aircraft *v)
 
 	v->UpdateDeltaXY();
 
-	TriggerAirportTileAnimation(st, vt, AirportAnimationTrigger::AirplaneTouchdown);
+	/* NewGRF airport layouts may cause the aircraft to land outside the airport. */
+	if (st->TileBelongsToAirport(vt)) {
+		TriggerAirportTileAnimation(st, vt, AirportAnimationTrigger::AirplaneTouchdown);
+	}
 
 	if (!PlayVehicleSound(v, VehicleSoundEvent::Touchdown)) {
 		SndPlayVehicleFx(SND_17_SKID_PLANE, v);
