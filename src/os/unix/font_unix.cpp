@@ -120,6 +120,10 @@ FT_Error GetFontByFaceName(std::string_view font_name, FT_Face *face)
 		}
 	}
 
+	if (err != FT_Err_Ok) {
+		ShowInfo("Unable to find '{}' font", font_name);
+	}
+
 	return err;
 }
 
@@ -154,7 +158,7 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, MissingGlyp
 	auto fc_instance = AutoRelease<FcConfig, FcConfigDestroy>(FcConfigReference(nullptr));
 	assert(fc_instance != nullptr);
 
-	std::string lang = fmt::format(":lang={}", language_isocode);
+	std::string lang = language_isocode.empty() ? "" : fmt::format(":lang={}", language_isocode);
 
 	/* First create a pattern to match the wanted language. */
 	auto pat = AutoRelease<FcPattern, FcPatternDestroy>(FcNameParse(ToFcString(lang)));
@@ -166,7 +170,7 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, MissingGlyp
 	if (fs == nullptr) return ret;
 
 	int best_weight = -1;
-	const char *best_font = nullptr;
+	std::string best_font;
 	int best_index = 0;
 
 	for (FcPattern *font : std::span(fs->fonts, fs->nfont)) {
@@ -212,9 +216,9 @@ bool FontConfigFindFallbackFont(const std::string &language_isocode, MissingGlyp
 		best_index = index;
 	}
 
-	if (best_font == nullptr) return false;
+	if (best_font.empty()) return false;
 
-	FontCache::AddFallback(callback->missing_fontsizes, best_font, best_index);
+	if (!FontCache::AddFallback(callback->missing_fontsizes, callback->GetLoadReason(), best_font, best_index)) return false;
 
 	return true;
 }

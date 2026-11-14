@@ -2309,11 +2309,9 @@ void BaseStringMissingGlyphSearcher::DetermineRequiredGlyphs(FontSizes fontsizes
 	this->Reset();
 	for (auto text = this->NextString(); text.has_value(); text = this->NextString()) {
 		FontSize fs = this->DefaultSize();
-		FontCache *fc = FontCache::Get(fs);
 		for (char32_t c : Utf8View(*text)) {
 			if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 				fs = (FontSize)(c - SCC_FIRST_FONT);
-				fc = FontCache::Get(fs);
 				continue;
 			}
 
@@ -2322,12 +2320,11 @@ void BaseStringMissingGlyphSearcher::DetermineRequiredGlyphs(FontSizes fontsizes
 			if (c != ' ' && (IsWhitespace(c) || IsNonbreakingWhitespace(c))) continue;
 			if (IsInsideMM(c, SCC_SPRITE_START, SCC_SPRITE_END)) continue;
 
-			this->required_glyphs.insert(c);
-
-			if (fc->MapCharToGlyph(c, false) != 0) continue;
+			if (FontCache::GetFontIndexForCharacter(fs, c) != INVALID_FONT_INDEX) continue;
 
 			this->missing_fontsizes.Set(fs);
 			this->missing_glyphs.insert(c);
+			this->required_glyphs.insert(c);
 		}
 	}
 }
@@ -2383,6 +2380,9 @@ void CheckForMissingGlyphs(FontSizes fontsizes, MissingGlyphSearcher *searcher)
 	static LanguagePackGlyphSearcher pack_searcher;
 	if (searcher == nullptr) searcher = &pack_searcher;
 
+	for (FontSize size : fontsizes) {
+		GetFontCacheSubSetting(size)->fallback_fonts.clear();
+	}
 	FontCache::LoadFontCaches(fontsizes);
 
 	searcher->DetermineRequiredGlyphs(fontsizes);

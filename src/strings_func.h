@@ -10,6 +10,7 @@
 #ifndef STRINGS_FUNC_H
 #define STRINGS_FUNC_H
 
+#include "fontcache.h"
 #include "strings_type.h"
 #include "gfx_type.h"
 #include "vehicle_type.h"
@@ -164,6 +165,12 @@ public:
 	std::set<char32_t> required_glyphs{}; ///< Glyphs that are required.
 
 	/**
+	 * Get the reason for loading the font.
+	 * @return The FontLoadReason
+	 */
+	virtual FontLoadReason GetLoadReason() = 0;
+
+	/**
 	 * Determine set of glyphs required for the current language.
 	 * @param fontsizes Font sizes to test.
 	 **/
@@ -173,6 +180,8 @@ public:
 /** Base for missing glyph searchers that look for missing glyphs in strings. */
 class BaseStringMissingGlyphSearcher : public MissingGlyphSearcher {
 public:
+	FontLoadReason GetLoadReason() override { return FontLoadReason::LanguageFallback; }
+
 	void DetermineRequiredGlyphs(FontSizes fontsizes) override;
 
 	/**
