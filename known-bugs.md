@@ -392,7 +392,7 @@ have stopped if it's beyond its assigned stopping location. We can't
 let the train stop just anywhere in the station because then it would
 never leave the station if you have the same station in the order
 list multiple times in a row or if there is only one station
-in theorder list (see #5684).
+in the order list (see #5684).
 
 ### Some houses and industries are not affected by transparency [#5817]:
 
