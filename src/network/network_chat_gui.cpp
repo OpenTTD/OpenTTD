@@ -338,7 +338,7 @@ struct NetworkChatWindow : public Window {
 
 	void FindWindowPlacementAndResize(int, int def_height, bool allow_resize) override
 	{
-		Window::FindWindowPlacementAndResize(_toolbar_width, def_height, allow_resize);
+		Window::FindWindowPlacementAndResize(_toolbar_bigger_dimention, def_height, allow_resize);
 	}
 
 	/**
