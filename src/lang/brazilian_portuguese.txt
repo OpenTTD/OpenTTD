@@ -1956,7 +1956,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Encerramento de
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Mostrar um jornal quando indústrias atendidas pela empresa encerrarem as atividades
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Encerramento de indústrias atendidas por concorrente(s): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Mostrar um jornal quando empresas atendidas pelos concorrentes encerrarem as atividades
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Mostrar um jornal quando indústrias atendidas pelos concorrentes encerrarem as atividades
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Encerramento de indústrias que não são atendidas por ninguém: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Mostrar um jornal quando indústrias que não são atendidas por ninguém encerram as atividades

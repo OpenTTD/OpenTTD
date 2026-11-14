@@ -2314,37 +2314,43 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Tylko jeden rod
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Przy włączonym ustawieniu nie jest już wymagane elektryfikowanie torów, aby elektrowozy mogły po nich jeździć
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do stacji gracza
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Wyświetl wiadomość w gazecie, gdy pierwszy pojazd dojedzie do twojej nowej stacji
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Przybycie pierwszego pojazdu do stacji przeciwnika: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do nowej stacji konkurenta
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Wyświetl wiadomość w gazecie, gdy pierwszy pojazd dojedzie do nowej stacji konkurenta
 
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Wypadki / klęski: {STRING}
-STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy zdarzy się wypadek lub nastąpi katastrofa
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Wyświetl wiadomość w gazecie, gdy zdarzy się wypadek lub nastąpi katastrofa
 
 STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER                          :Wypadki pojazdów rywali: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENT_OTHER_HELPTEXT                 :Wyświetl wiadomość w gazecie o rozbitych pojazdach rywali
 
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacja firmy: {STRING}
-STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy powstaje nowa firma lub kiedy istniejącym firmom grozi bankructwo
+STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie, gdy powstaje nowa firma lub gdy istniejącej firmie grozi bankructwo
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Otwarcie przedsiębiorstw: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Wyświetl wiadomość w gazecie kiedy powstają nowe przedsiębiorstwa
+STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Wyświetl wiadomość w gazecie, gdy powstaje nowe przedsiębiorstwo
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Zamykanie przedsiębiorstw obsługiwanych przez twoją firmę: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Wyświetl wiadomość w gazecie, gdy zamykane jest przedsiębiorstwo obsługiwane przez twoją firmę
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Zamykanie przedsiębiorstw obsługiwanych przez przeciwników: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Wyświetl wiadomość w gazecie, gdy zamykane jest przedsiębiorstwo obsługiwane przez konkurencyjną firmę
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Zamykanie przedsiębiorstw nieobsługiwanych przez żadną firmę: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Wyświetl wiadomość w gazecie, gdy zamykane jest przedsiębiorstwo nieobsługiwane przez żadną firmę
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmiany ekonomiczne: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Wyświetl wiadomość w gazecie o globalnych zmianach w ekonomii
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmiany w produkcji przedsiębiorstw obsługiwanych przez firmę: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw obsługiwanych przez firmę
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Wyświetl wiadomość w gazecie, gdy zmieni się poziom produkcji przedsiębiorstwa obsługiwanego przez twoją firmę
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmiany w produkcji przedsiębiorstw obsługiwanych przez przeciwników: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw obsługiwanych przez konkurencyjne firmy
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Wyświetl wiadomość w gazecie, gdy zmieni się poziom produkcji przedsiębiorstwa obsługiwanego przez konkurencyjną firmę
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Zmiany w produkcji w pozostałych przedsiębiorstwach: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw nieobsługiwanych przez żadną z firm
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Wyświetl wiadomość w gazecie, gdy zmieni się poziom produkcji przedsiębiorstwa nieobsługiwanego przez żadną firmę
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rada / informacja o pojazdach firmy: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Wyświetl wiadomość o pojazdach wymagających uwagi
@@ -2359,7 +2365,7 @@ STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Dotacje: {STRIN
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Wyświetl wiadomość w gazecie o wydarzeniach związanych z dotacjami
 
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Ogólne informacje: {STRING}
-STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie o wydarzeniach takich jak zakup ekskluzywnych praw lub fundowanie przebudowy dróg
+STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION_HELPTEXT            :Wyświetl wiadomość w gazecie o ogólnych wydarzeniach, takich jak zakup praw wyłączności lub fundowanie remontów dróg
 ###length 3
 STR_CONFIG_SETTING_NEWS_MESSAGES_OFF                            :Wyłączone
 STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Sumaryczne
