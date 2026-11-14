@@ -227,31 +227,20 @@ RoadStopResolverObject::RoadStopResolverObject(const RoadStopSpec *roadstopspec,
 		CallbackID callback, uint32_t param1, uint32_t param2)
 	: SpecializedResolverObject<StationRandomTriggers>(roadstopspec->grf_prop.grffile, callback, param1, param2), roadstop_scope(*this, st, roadstopspec, tile, roadtype, type, view)
 {
-	CargoType ctype = CargoGRFFileProps::SG_DEFAULT_NA;
+	std::vector<std::pair<CargoType, uint>> cargos_at_station{};
 
 	if (st == nullptr) {
 		/* No station, so we are in a purchase list */
-		ctype = CargoGRFFileProps::SG_PURCHASE;
+		cargos_at_station.push_back({CargoGRFFileProps::SG_PURCHASE, 0});
 	} else if (Station::IsExpected(st)) {
 		const Station *station = Station::From(st);
-		/* Pick the first cargo that we have waiting */
-		for (const auto &[cargo, spritegroup] : roadstopspec->grf_prop.spritegroups) {
-			if (cargo < NUM_CARGO && station->goods[cargo].TotalCount() > 0) {
-				ctype = static_cast<CargoType>(cargo);
-				this->root_spritegroup = spritegroup;
-				break;
-			}
+
+		for (CargoType cargo{}; cargo < NUM_CARGO; ++cargo) {
+			if (uint amount = station->goods[cargo].TotalCount(); amount > 0) cargos_at_station.push_back({cargo, amount});
 		}
 	}
 
-	this->root_spritegroup = this->roadstop_scope.roadstopspec->grf_prop.GetSpriteGroup(ctype);
-	if (this->root_spritegroup == nullptr) {
-		ctype = CargoGRFFileProps::SG_DEFAULT;
-		this->root_spritegroup = this->roadstop_scope.roadstopspec->grf_prop.GetSpriteGroup(ctype);
-	}
-
-	/* Remember the cargo type we've picked */
-	this->roadstop_scope.cargo_type = ctype;
+	this->root_spritegroup = this->roadstop_scope.roadstopspec->grf_prop.GetFirstSpriteGroupOf(cargos_at_station, true).first;
 }
 
 TownScopeResolver *RoadStopResolverObject::GetTown()
