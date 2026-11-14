@@ -135,7 +135,12 @@ void DrawRoadVehImage(const Vehicle *v, const Rect &r, VehicleID selection, Engi
 		int width = u->GetDisplayImageWidth(&offset);
 
 		if (rtl ? px + width > 0 : px - width < max_width) {
-			PaletteID pal = u->vehstatus.Test(VehState::Crashed) ? PALETTE_CRASH : GetVehiclePalette(u);
+			Livery::Palettes pal;
+			if (v->vehstatus.Test(VehState::Crashed)) {
+				pal.fill(PALETTE_CRASH);
+			} else {
+				pal = GetVehiclePalette(v);
+			}
 			VehicleSpriteSeq seq;
 			u->GetImage(dir, image_type, &seq);
 			seq.Draw(px + (rtl ? -offset.x : offset.x), y + offset.y, pal, u->vehstatus.Test(VehState::Crashed));
