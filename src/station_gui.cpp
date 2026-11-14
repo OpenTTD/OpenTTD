@@ -1998,6 +1998,7 @@ struct StationViewWindow : public Window {
 
 			case WID_SV_CATCHMENT:
 				SetViewportCatchmentStation(Station::Get(this->window_number), !this->IsWidgetLowered(WID_SV_CATCHMENT));
+				SndClickBeep();
 
 				if (w != nullptr && this->IsWidgetLowered(WID_SV_CATCHMENT)) {
 					if (w->parent->window_class == WindowClass::StationView && w->IsWidgetLowered(WID_QS_MOVE)) SetViewportStationRect(Station::Get(w->parent->window_number), true);

@@ -1955,13 +1955,13 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :經濟變動：
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :顯示關於經濟總體變動的報紙訊息。
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :由自家公司提供服務的工業產量變動：{STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :當自家所服務的工業設施改變產量時顯示報紙訊息。
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :當自家所服務的工業設施改變產量時顯示報紙訊息
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :由競爭對手提供服務的工業產量變動：{STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :當對手所服務的工業改變產量時顯示報紙訊息。
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :當對手所服務的工業設施改變產量時顯示報紙訊息
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其他工業產量變更：{STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :當自家或對手皆沒有服務的工廠改變產量時顯示報紙訊息。
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :當無任何人服務的工業設施改變產量時顯示報紙訊息
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :有關自家公司車輛的建議或資訊：{STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :顯示需要注意的車輛的訊息。
@@ -2957,7 +2957,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口�
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}組合號誌 (電氣){}組合號誌同時具有入口／出口號誌的特性，這可讓玩家設置一卡車的預告號誌。
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。標準路徑號誌可以從號誌後方穿過。
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}單向路徑號誌 (電氣){}路徑號誌可在列車能找到前往下個安全停車點的路徑的前提下，容許多列列車進入同一個閉塞區間。單向路徑號誌無法從號誌後方穿過。
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}號誌轉換{}點選現有號誌將會轉換為工具所選取的號誌種類和風格。按住 <Ctrl> 則只會變更風格。按住 <Shift> 則可顯示預估成本
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}號誌轉換{}點選現有號誌將會轉換為工具所選取的號誌種類和風格。按住 <Ctrl> 則只會變更風格。另按住 <Shift> 鍵則僅顯示預估成本
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}修改等距號誌拖曳間隔
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}減少 (拉近)
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加 (拉遠)
@@ -4358,10 +4358,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}車輛 {
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG}（{CARGO_SHORT}）
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 拖放車廂可加掛或解聯，點選右鍵可顯示詳細資訊。按住 <Ctrl> 點選可一併選擇之後的車廂
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選右鍵可顯示詳細資訊
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶 - 點選右鍵可顯示詳細資訊
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛機 - 點選右鍵可顯示詳細資訊
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 拖放車廂可加掛或解聯，點選右鍵可顯示詳細資訊。按住 <Ctrl> 點選可一併選擇之後的車廂。同時按住 <Ctrl> 及 <Shift> 鍵可覆蓋貨物種類
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選右鍵可顯示詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可覆蓋貨物種類
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶 - 點選右鍵可顯示詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可覆蓋貨物種類
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛機 - 點選右鍵可顯示詳細資訊。同時按住 <Ctrl> 及 <Shift> 鍵可覆蓋貨物種類
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}將列車拖到這裡即可出售

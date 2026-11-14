@@ -182,7 +182,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, WidgetID 
 	}
 }
 
-void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInfo &ci, int bytes)
+void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInfo &ci, int64_t bytes)
 {
 	if (ci.id != this->cur_id) {
 		this->name = ci.filename;
@@ -315,7 +315,7 @@ public:
 		}
 	}
 
-	void OnDownloadProgress(const ContentInfo &ci, int bytes) override
+	void OnDownloadProgress(const ContentInfo &ci, int64_t bytes) override
 	{
 		BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(ci, bytes);
 		this->received_types.Set(ci.type);
@@ -358,7 +358,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 
 	const ContentInfo *selected = nullptr; ///< The selected content info
 	int list_pos = 0; ///< Our position in the list
-	uint filesize_sum = 0; ///< The sum of all selected file sizes
+	uint64_t filesize_sum = 0; ///< The sum of all selected file sizes
 	Scrollbar *vscroll = nullptr; ///< Cache of the vertical scrollbar
 
 	static EnumIndexArray<std::string, ContentType, ContentType::End> content_type_strs; ///< Cached strings for all content types.

@@ -492,6 +492,7 @@ public:
 
 			case WID_TV_CATCHMENT:
 				SetViewportCatchmentTown(Town::Get(this->window_number), !this->IsWidgetLowered(WID_TV_CATCHMENT));
+				SndClickBeep();
 				break;
 
 			case WID_TV_EXPAND: // expand town - only available on Scenario editor

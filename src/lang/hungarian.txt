@@ -2019,10 +2019,10 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Gazdasági vál
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Újság megjelenítése a globális gazdasági változásokkal kapcsolatban
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Termelésváltozások a vállalatod által kiszolgált gazdasági létesítményeknél: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Újsághír megjelenítése, amikor a cág által kiszolgált gazdasági épületben termelési változás áll be
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Újsághír megjelenítése, amikor a cég által kiszolgált gazdasági épületben termelési változás áll be
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Termelésváltozások a konkurenseid által kiszolgált gazdasági létesítményeknél: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Újsághír megjelenítése, amikor a versenytársak által kiszolgált gazdasági épületben termelési változás áll be
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Újsághír megjelenítése, amikor a versenytársak által kiszolgált iparágakban termelési változás áll be
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Más gazdasági termelési változások: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Üzenet megjelenítése, amikor egy olyan ipartelep teljesítménye változik, amely nem kötődik semelyik cég tevékenységéhez
