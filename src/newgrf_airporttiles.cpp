@@ -314,6 +314,9 @@ static bool DoTriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAn
 
 bool TriggerAirportTileAnimation(Station *st, TileIndex tile, AirportAnimationTrigger trigger)
 {
+	/* Invalid NewGRF airport layouts could trigger an animation on a non-airport tile. */
+	if (!st->TileBelongsToAirport(tile)) return false;
+
 	return DoTriggerAirportTileAnimation(st, tile, trigger, Random());
 }
 
