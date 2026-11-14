@@ -599,6 +599,15 @@ static uint32_t VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *objec
 				for (const Vehicle *u = v; u->IsArticulatedPart(); u = u->Previous()) artic_before++;
 				uint8_t artic_after = 0;
 				for (const Vehicle *u = v; u->HasArticulatedPart(); u = u->Next()) artic_after++;
+
+				/* articulated trains can be flipped and those need special treatment */
+				if (v->type == VehicleType::Train) {
+					const Train *t = Train::From(v);
+					if (t->flags.Test(VehicleRailFlag::Flipped)) {
+						std::swap(artic_after, artic_before);
+					}
+				}
+
 				v->grf_cache.position_in_vehicle = artic_before | artic_after << 8;
 				SetBit(v->grf_cache.cache_valid, NCVV_POSITION_IN_VEHICLE);
 			}
