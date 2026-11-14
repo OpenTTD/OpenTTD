@@ -7,6 +7,7 @@
  SetCommandDelay: (null : 0x00000000)
  IsValid(vehicle.plane_speed): true
  vehicle.plane_speed: 4
+ construction.tree_growth_calendar: 0
   Required this file
  TestEnum.value1: 1
  test_constant: 1

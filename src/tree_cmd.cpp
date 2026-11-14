@@ -17,6 +17,7 @@
 #include "command_func.h"
 #include "town.h"
 #include "genworld.h"
+#include "progress.h"
 #include "clear_func.h"
 #include "company_func.h"
 #include "sound_func.h"
@@ -25,6 +26,7 @@
 #include "core/geometry_type.hpp"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
+#include "timer/timer_game_calendar.h"
 #include "timer/timer_game_tick.h"
 #include "tree_cmd.h"
 #include "landscape_cmd.h"
@@ -846,6 +848,21 @@ static bool TreesOnTileCanSpread(TileIndex tile)
 	return (_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
+/**
+ * Apply calendar pacing to a natural tree update. Roll per opportunity to avoid synchronising updates with the tile loop.
+ * @param tile Tile where the update would occur. For spread, the destination tile determines whether the rainforest exemption applies.
+ * @return True if the update may proceed on this occasion.
+ */
+static bool AllowTreeUpdate(TileIndex tile)
+{
+	if (!_settings_game.construction.tree_growth_calendar || _game_mode != GameMode::Normal || HasModalProgress()) return true;
+
+	const uint16_t minutes = _settings_game.economy.minutes_per_calendar_year;
+	if (minutes == CalendarTime::DEF_MINUTES_PER_YEAR) return true;
+	if (_settings_game.game_creation.landscape == LandscapeType::Tropic && GetTropicZone(tile) == TropicZone::Rainforest) return true;
+	return minutes != CalendarTime::FROZEN_MINUTES_PER_YEAR && RandomRange(minutes) < CalendarTime::DEF_MINUTES_PER_YEAR;
+}
+
 /** @copydoc TileLoopProc */
 static void TileLoop_Trees(TileIndex tile)
 {
@@ -886,15 +903,18 @@ static void TileLoop_Trees(TileIndex tile)
 			if (_settings_game.game_creation.landscape == LandscapeType::Tropic &&
 					GetTreeType(tile) != TREE_CACTUS &&
 					GetTropicZone(tile) == TropicZone::Desert) {
+				if (!AllowTreeUpdate(tile)) return;
 				AddTreeGrowth(tile, 1);
 			} else {
 				switch (GB(Random(), 0, 3)) {
 					case 0: // start destructing
+						if (!AllowTreeUpdate(tile)) return;
 						AddTreeGrowth(tile, 1);
 						break;
 
 					case 1: // add a tree
 						if (GetTreeCount(tile) < 4 && TreesOnTileCanSpread(tile)) {
+							if (!AllowTreeUpdate(tile)) return;
 							AddTreeCount(tile, 1);
 							SetTreeGrowth(tile, TreeGrowthStage::Growing1);
 							break;
@@ -913,6 +933,7 @@ static void TileLoop_Trees(TileIndex tile)
 						/* Don't plant trees, if ground was freshly cleared */
 						if (IsTileType(tile, TileType::Clear) && GetClearGround(tile) == ClearGround::Grass && !IsSnowTile(tile) && GetClearDensity(tile) != 3) return;
 
+						if (!AllowTreeUpdate(tile)) return;
 						PlantTreesOnTile(tile, treetype, 0, TreeGrowthStage::Growing1);
 
 						break;
@@ -925,6 +946,7 @@ static void TileLoop_Trees(TileIndex tile)
 			break;
 
 		case TreeGrowthStage::Dead: // final stage of tree destruction
+			if (!AllowTreeUpdate(tile)) return;
 			if (!TreesOnTileCanSpread(tile)) {
 				/* if trees can't spread just plant a new one to prevent deforestation */
 				SetTreeGrowth(tile, TreeGrowthStage::Growing1);
@@ -958,6 +980,7 @@ static void TileLoop_Trees(TileIndex tile)
 			break;
 
 		default:
+			if (!AllowTreeUpdate(tile)) return;
 			AddTreeGrowth(tile, 1);
 			break;
 	}
@@ -997,6 +1020,7 @@ static void PlantRandomTree(bool rainforest)
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
 	if (tree == TREE_INVALID) return;
 
+	if (!AllowTreeUpdate(tile)) return;
 	PlantTreesOnTile(tile, tree, 0, TreeGrowthStage::Growing1);
 }
 

@@ -16,6 +16,8 @@ function Regression::TestInit()
 	print(" SetCommandDelay: " + GSController.SetCommandDelay(1));
 	print(" IsValid(vehicle.plane_speed): " + GSGameSettings.IsValid("vehicle.plane_speed"));
 	print(" vehicle.plane_speed: " + GSGameSettings.GetValue("vehicle.plane_speed"));
+	/* This save predates the tree growth setting. */
+	print(" construction.tree_growth_calendar: " + GSGameSettings.GetValue("construction.tree_growth_calendar"));
 	require("require.nut");
 	print(" TestEnum.value1: " + ::TestEnum.value1);
 	print(" test_constant: " + ::test_constant);

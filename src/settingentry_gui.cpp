@@ -870,6 +870,7 @@ SettingsContainer &GetSettingsTree()
 			{
 				trees->Add(new SettingEntry("game_creation.tree_placer"));
 				trees->Add(new SettingEntry("construction.extra_tree_placement"));
+				trees->Add(new SettingEntry("construction.tree_growth_calendar"));
 			}
 		}
 

@@ -2080,6 +2080,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Grow but only s
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Grow and spread everywhere
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Don't grow, don't spread {RED}(breaks lumber mill)
 
+STR_CONFIG_SETTING_TREE_GROWTH_CALENDAR                         :Scale tree growth with year length: {STRING2}
+STR_CONFIG_SETTING_TREE_GROWTH_CALENDAR_HELPTEXT                :In Wallclock mode, increasing ‘Minutes per year’ slows natural tree growth, spread, and die-off. Freezing the calendar pauses these changes. Rainforest trees keep their usual pace to supply lumber mills.
+
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position of main toolbar: {STRING2}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontal position of the main toolbar at the top of the screen
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position of status bar: {STRING2}

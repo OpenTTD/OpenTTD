@@ -506,6 +506,7 @@ struct ConstructionSettings {
 	uint8_t industry_platform; ///< the amount of flat land around an industry
 	bool freeform_edges; ///< allow terraforming the tiles at the map edges
 	uint8_t extra_tree_placement; ///< (dis)allow building extra trees in-game
+	bool tree_growth_calendar; ///< Pace natural tree growth and spread outside rainforests by calendar speed.
 	CommandPauseLevel command_pause_level; ///< level/amount of commands that can't be executed while paused
 
 	uint32_t terraform_per_64k_frames; ///< how many tile heights may, over a long period, be terraformed per 65536 frames?

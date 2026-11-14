@@ -2963,10 +2963,8 @@ static void ResetSettings()
 
 extern void ClearOldOrders();
 
-/**
- * Clear temporary data that is passed between various saveload phases.
- */
-static void ResetSaveloadData()
+/** Clear temporary saveload data and initialise the game before reading a save. */
+static void InitializeGameForLoad()
 {
 	ClearOldOrders();
 	ResetTempEngineData();
@@ -2974,6 +2972,12 @@ static void ResetSaveloadData()
 	ClearRoadTypeLabelList();
 	ResetOldWaypoints();
 	ResetSettings();
+
+	/* Older saves have a fixed map size and do not store it. */
+	InitializeGame(256, 256, true, true);
+
+	/* Saves without this setting use the original tree growth rate. */
+	_settings_game.construction.tree_growth_calendar = false;
 }
 
 /**
@@ -3229,12 +3233,7 @@ static SaveLoadResult DoLoad(std::shared_ptr<LoadFilter> reader, bool load_check
 	_next_offs = 0;
 
 	if (!load_check) {
-		ResetSaveloadData();
-
-		/* Old maps were hardcoded to 256x256 and thus did not contain
-		 * any mapsize information. Pre-initialize to 256x256 to not to
-		 * confuse old games */
-		InitializeGame(256, 256, true, true);
+		InitializeGameForLoad();
 
 		_gamelog.Reset();
 
@@ -3336,9 +3335,7 @@ SaveLoadResult SaveOrLoad(std::string_view filename, SaveLoadOperation fop, Deta
 	try {
 		/* Load a TTDLX or TTDPatch game */
 		if (fop == SaveLoadOperation::Load && dft == DetailedFileType::OldGameFile) {
-			ResetSaveloadData();
-
-			InitializeGame(256, 256, true, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
+			InitializeGameForLoad();
 
 			/* TTD/TTO savegames have no NewGRFs, TTDP savegame have them
 			 * and if so a new NewGRF list will be made in LoadOldSaveGame.
