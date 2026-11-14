@@ -28,14 +28,14 @@ See the section ["Licensing"](#30-licensing) below for details.
 
 ## 1.1) Downloading OpenTTD
 
-OpenTTD can be downloaded from the [official OpenTTD website](https://www.openttd.org/).
+OpenTTD can be downloaded for free from the [official OpenTTD website](https://www.openttd.org/).
 
 Both 'stable' and 'nightly' versions are available for download:
 
 - most people should choose the 'stable' version, as this has been more extensively tested
 - the 'nightly' version includes the latest changes and features, but may sometimes be less reliable
 
-OpenTTD is also available for free on [Steam](https://store.steampowered.com/app/1536610/OpenTTD/), [GOG.com](https://www.gog.com/game/openttd), and the [Microsoft Store](https://www.microsoft.com/p/openttd-official/9ncjg5rvrr1c). On some platforms OpenTTD will be available via your OS package manager or a similar service.
+OpenTTD is also available on the [Microsoft Store], [Steam](https://store.steampowered.com/app/1536610/OpenTTD/), and [GOG.com](https://www.gog.com/game/openttd). On some platforms OpenTTD will be available via your OS package manager or a similar service.
 
 ## 1.2) OpenTTD gameplay manual
 
