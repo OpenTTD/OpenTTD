@@ -3176,17 +3176,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Bütün 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Bütün endüstrileri kaldırmak istediğinize emin misiniz?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Sanayi Zinciri - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cargo Zinciri - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Evler
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Sanayi Zinciri
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Kargo sağlayan ve kabul eden fabrikaları göster
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Küçük haritaya bağla
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Gösterilen fabrikaları küçük haritada da seç
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Kargo seçin
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Göstermek istediğiniz kargoyu seçin
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Fabrika seçin
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Göstermek istediğiniz fabrikaları seçin
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :Sanayi Zinciri - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :Kargo Zinciri - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :Kaynaklar
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :Hedefler
+STR_INDUSTRY_CARGOES_HOUSES                                     :Evler
+STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}Kabul eder: {CARGO_LIST}{}Üretir: {CARGO_LIST}
+STR_INDUSTRY_DISPLAY_CHAIN                                      :Sanayi Zinciri
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :Kargo sağlayan ve kabul eden fabrikaları göster
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :Küçük haritaya bağla
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :Gösterilen fabrikaları küçük haritada da seç
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :Kargo seçin
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :Göstermek istediğiniz kargoyu seçin
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :Fabrika seçin
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :Göstermek istediğiniz fabrikaları seçin
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Arazi Bilgisi

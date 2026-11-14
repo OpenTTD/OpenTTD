@@ -1955,13 +1955,13 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Talouden muutok
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Näytä sanomalehti taloustilanteen muuttuessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Tuotantomuutokset laitoksissa, joita yhtiö palvelee: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Näytä sanomalehti tuotantomäärän muuttuessa oman yhtiön palvelemassa teollisuuslaitoksessa
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Näytä sanomalehti tuotantotason muuttuessa oman yhtiön palvelemassa laitoksessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Tuotantomuutokset laitoksissa, joita kilpailija(t) palvelevat: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Näytä sanomalehti tuotantomäärän muuttuessa kilpailijoiden palvelemassa teollisuuslaitoksessa
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Näytä sanomalehti tuotantomäärän muuttuessa kilpailijoiden palvelemassa laitoksessa
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Muita muutoksia tuotannossa: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Näytä sanomalehti tuotannon muuttuessa teollisuudessa, jota oma tai kilpaileva yhtiö ei palvele
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Näytä sanomalehti tuotannon muuttuessa laitoksessa, jota yksikään yhtiö ei palvele
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Neuvoja / tietoa yhtiön kulkuneuvoista: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Näytä viesti kulkuneuvon vaatiessa huomiota
@@ -2957,7 +2957,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Poistumi
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Yhdistelmäopastin (valo-opastin){}Yhdistelmäopastin toimii yhtä aikaa tulo- ja poistumisopastimena. Tämän avulla on mahdollista luoda suuria ”opastinpuita”
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Tavalliset reittiopastimet voi ohittaa takakautta
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Yksisuuntainen reittiopastin (valo-opastin){}Reittiopastin varmistaa junille turvallisen reitin ja siten mahdollistaa useampien junien yhtäaikaisen liikenteen moniraiteisissa risteyksissä. Yksisuuntaisia opastimia ei voi ohittaa takakautta
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassa olevan opastimen napsauttaminen muuntaa sen valituntyyppiseksi ja -muotoiseksi. Ctrl+napsautus vaihtaa nykyistä opastimen muotoa. Vaihto+napsautus näyttää muuntamisen kustannusarvion
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Opastinten muuntaminen{}Kun tämä on valittu, olemassa olevan opastimen napsauttaminen muuntaa sen valituntyyppiseksi ja -muotoiseksi. Ctrl+napsautus vaihtaa nykyistä opastimen muotoa. Paina lisäksi vaihtonäppäintä nähdäksesi vain kustannusarvion
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Opastimien väli vetämällä lisättäessä
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Pienennä opastimien väliä vetämällä lisättäessä
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Suurenna opastimien väliä vetämällä lisättäessä
@@ -4358,10 +4358,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ku
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Junat – vedä kulkuneuvoa vasemmalla hiiren painikkeella lisätäksesi/poistaaksesi junasta, oikealla painikkeella lisätietoja. Ctrl+napsautus toteuttaa toiminnon seuraavaan ketjuun
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot – napsauta ajoneuvoa oikealla hiiren painikkeella saadaksesi tietoja
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat – napsauta laivaa oikealla hiiren painikkeella saadaksesi tietoja.
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet – napsauta lentokonetta oikealla hiiren painikkeella saadaksesi tietoja
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Junat – vedä kulkuneuvoa vasemmalla hiiren painikkeella lisätäksesi tai poistaaksesi junasta; oikealla painikkeella lisätietoja. Ctrl+napsautus toteuttaa toiminnon seuraavaan ketjuun. Pidä Ctrl+Vaihto painettuna nähdäksesi rahtityypit
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot – napsauta ajoneuvoa oikealla hiiren painikkeella saadaksesi tietoja. Pidä Ctrl+Vaihto painettuna nähdäksesi rahtityypit
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat – napsauta alusta oikealla hiiren painikkeella saadaksesi tietoja. Pidä Ctrl+Vaihto painettuna nähdäksesi rahtityypit
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet – napsauta ilma-alusta oikealla hiiren painikkeella saadaksesi tietoja. Pidä Ctrl+Vaihto painettuna nähdäksesi rahtityypit
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Vedä yksikkö tähän myydäksesi sen
