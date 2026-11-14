@@ -23,6 +23,7 @@ struct TextEffect : public ViewportSign {
 	TextEffectMode mode; ///< Type of text effect.
 	uint8_t duration; ///< How long the text effect should stay, in ticks (applies only when mode == TextEffectMode::Rising)
 	EncodedString msg; ///< Encoded message for text effect.
+	Colours colour; ///< Colour of the text, or Colours::Invalid for the default colour.
 
 	/** Reset the text effect */
 	void Reset()
@@ -37,8 +38,17 @@ struct TextEffect : public ViewportSign {
 
 static std::vector<TextEffect> _text_effects; ///< Text effects are stored there
 
-/* Text Effects */
-TextEffectID AddTextEffect(EncodedString &&msg, int center, int y, uint8_t duration, TextEffectMode mode)
+/**
+ * Add a text effect.
+ * @param msg Encoded message to show.
+ * @param center Horizontal centre of the text effect, in viewport coordinates.
+ * @param y Top of the text effect, in viewport coordinates.
+ * @param duration How long a rising text effect stays, in ticks.
+ * @param mode Type of text effect.
+ * @param colour Colour of the text, or Colours::Invalid for the default colour.
+ * @return The ID of the new text effect, or INVALID_TE_ID if it could not be added.
+ */
+TextEffectID AddTextEffect(EncodedString &&msg, int center, int y, uint8_t duration, TextEffectMode mode, Colours colour)
 {
 	if (_game_mode == GameMode::Menu) return INVALID_TE_ID;
 
@@ -55,6 +65,7 @@ TextEffectID AddTextEffect(EncodedString &&msg, int center, int y, uint8_t durat
 	te.msg = std::move(msg);
 	te.duration = duration;
 	te.mode = mode;
+	te.colour = colour;
 
 	/* Make sure we only dirty the new area */
 	te.width_normal = 0;
@@ -126,7 +137,11 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 		if (!te.IsValid()) continue;
 
 		if (te.mode == TextEffectMode::Rising || _settings_client.gui.loading_indicators) {
-			std::string *str = ViewportAddString(dpi, &te, flags, Colours::Invalid);
+			Colours colour = te.colour == Colours::White ? Colours::Invalid : te.colour;
+			ViewportStringFlags te_flags = flags;
+			if (colour != Colours::Invalid) te_flags.Set(ViewportStringFlag::TextColour);
+
+			std::string *str = ViewportAddString(dpi, &te, te_flags, colour);
 			if (str == nullptr) continue;
 
 			*str = te.msg.GetDecodedString();
