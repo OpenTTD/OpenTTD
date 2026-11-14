@@ -2335,13 +2335,13 @@ STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Zmiany ekonomic
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Wyświetl wiadomość w gazecie o globalnych zmianach w ekonomii
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Zmiany w produkcji przedsiębiorstw obsługiwanych przez firmę: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw, które są obsługiwane przez firmę
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw obsługiwanych przez firmę
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Zmiany w produkcji przedsiębiorstw obsługiwanych przez przeciwników: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw, które są obsługiwane przez konkurencyjne firmy
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw obsługiwanych przez konkurencyjne firmy
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Zmiany w produkcji w pozostałych przedsiębiorstwach: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw, które nie są obsługiwane przez konkurencyjne firmy
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy zmieniają się poziomy produkcji przedsiębiorstw nieobsługiwanych przez żadną z firm
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Rada / informacja o pojazdach firmy: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Wyświetl wiadomość o pojazdach wymagających uwagi
@@ -4738,10 +4738,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} po
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd lewym przyciskiem myszy, aby go dodać/usunąć ze składu pociągu; kliknij prawym, aby uzyskać o nim informacje. Użyj Ctrl, aby wykonać te funkcje dla tego pojazdu i kolejnych
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - kliknij prawym na pojazd, aby wyświetlić informacje
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - kliknij prawym na statek, aby wyświetlić informacje
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - kliknij prawym na samolot, aby wyświetlić informacje
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd lewym przyciskiem myszy, aby go dodać/usunąć ze składu pociągu; kliknij prawym, aby uzyskać o nim informacje. Użyj Ctrl, aby wykonać te funkcje dla tego pojazdu i kolejnych. Przytrzymaj jednocześnie Ctrl i Shift, aby wyświetlić typy ładunków
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - kliknij prawym na pojazd, aby wyświetlić informacje. Przytrzymaj jednocześnie Ctrl i Shift, aby wyświetlić typy ładunków
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - kliknij prawym na statek, aby wyświetlić informacje. Przytrzymaj jednocześnie Ctrl i Shift, aby wyświetlić typy ładunków
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - kliknij prawym na samolot, aby wyświetlić informacje. Przytrzymaj jednocześnie Ctrl i Shift, aby wyświetlić typy ładunków
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pojazd kolejowy, aby go sprzedać
