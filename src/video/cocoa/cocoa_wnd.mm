@@ -698,7 +698,7 @@ void CocoaDialog(std::string_view title, std::string_view message, std::string_v
 		self->_emulated_down = true;
 		[ self rightMouseDown:event ];
 	} else {
-		_input_clicked.Set(ControlInput::Left);
+		_input_pressed.Set(ControlInput::Left);
 		[ self internalMouseButtonEvent ];
 	}
 }
