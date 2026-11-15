@@ -440,7 +440,7 @@ json HandleToolsCall(const json &id, const json &params)
 		pa.expiry_tick = now + APPROVAL_TTL_TICKS;
 		pa.state = ApprovalState::Pending;
 		_approvals.push_back(pa);
-		Debug(net, 1, "[prismatic-mcp] pending approval #{} for {} args={} (approve in console: prismatic_mcp approve {})",
+		Debug(Facility::Net, Severity::Error, "[prismatic-mcp] pending approval #{} for {} args={} (approve in console: prismatic_mcp approve {})",
 			pa.id, type, pa.args_summary, pa.id);
 		json out = {{"status", "pending_approval"}, {"approval_id", pa.id}, {"argument_digest", digest},
 			{"expires_at_tick", pa.expiry_tick},
@@ -727,7 +727,7 @@ bool Start(uint16_t port, std::string &error)
 	_mcp.running = true;
 	_mcp.requests_total = 0;
 	_mcp.requests_denied = 0;
-	Debug(net, 1, "[prismatic-mcp] RESEARCH-ONLY MCP server listening on {} (loopback only)", GetEndpoint());
+	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] RESEARCH-ONLY MCP server listening on {} (loopback only)", GetEndpoint());
 	return true;
 }
 
@@ -741,7 +741,7 @@ void Stop()
 	_mcp.token.fill(0);
 	_mcp.token_valid = false;
 	_mcp.running = false;
-	Debug(net, 1, "[prismatic-mcp] MCP server stopped");
+	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] MCP server stopped");
 }
 
 void Shutdown()
@@ -823,7 +823,7 @@ void RotateToken()
 	RandomBytesWithFallback(_mcp.token);
 	_mcp.token_valid = true;
 	/* No session table yet; rotation simply invalidates the old bearer value. */
-	Debug(net, 1, "[prismatic-mcp] bearer token rotated");
+	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] bearer token rotated");
 }
 
 std::string ListApprovals()
@@ -851,7 +851,7 @@ bool ApproveById(uint64_t id, std::string &message)
 	if (now > a->expiry_tick) { message = fmt::format("approval #{} expired", id); return false; }
 	a->state = ApprovalState::Approved;
 	message = fmt::format("approved #{} ({}) -- resubmit the tool call to execute", id, a->tool);
-	Debug(net, 1, "[prismatic-mcp] operator approved #{} ({})", id, a->tool);
+	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] operator approved #{} ({})", id, a->tool);
 	return true;
 }
 
