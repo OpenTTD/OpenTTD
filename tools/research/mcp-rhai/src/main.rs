@@ -17,6 +17,7 @@
 //!   auto_approve(on)                   -> map
 //!   events(since)  events(since, "game,company")  -> map  the panel's event feed after a sequence number
 //!   mcp_call(token_file, tool, args)  mcp_read(token_file, uri)  another process's own MCP server
+//!   world_graph()                      -> map   the road network as nodes, edges and components
 //!   env(name)
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
@@ -25,6 +26,8 @@
 //! tools/list (dots become underscores: `openttd_game_set_pause(#{pause: true})`, `openttd_decision_validate(#{...})`),
 //! and one per OpenTTD console command in `list_cmds` (`con_companies()`, `con_date()`, `con_start_ai("PrismaticAI")`).
 use std::time::Duration;
+
+mod graph;
 
 use rhai::{Dynamic, Engine, EvalAltResult, Map};
 use serde_json::{json, Value};
@@ -137,6 +140,15 @@ fn engine(panel: Panel) -> Engine {
             Some(text) => to_dyn(serde_json::from_str(text).unwrap_or(Value::Null)),
             None => to_dyn(v),
         }
+    });
+    let p = panel.clone();
+    // The road network as a graph (src/graph.rs), derived from openttd://map, towns and stations.
+    e.register_fn("world_graph", move || -> R<Dynamic> {
+        let get = |path: &str| -> R<Value> {
+            let v = from_dyn(p.get(path)?)?;
+            Ok(v.get("data").cloned().unwrap_or(v))
+        };
+        to_dyn(graph::derive(&get("/api/resources/map")?, &get("/api/resources/towns")?, &get("/api/resources/stations")?)?)
     });
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));
@@ -256,7 +268,7 @@ fn main() {
     engine.register_fn("commands", move || c.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
     engine.register_fn("help", move || -> String {
         format!(
-            "built-in: rpc read overview status console pause approve auto_approve events mcp_call mcp_read env sleep to_json tools commands help\n\
+            "built-in: rpc read overview status console pause approve auto_approve events mcp_call mcp_read world_graph env sleep to_json tools commands help\n\
              derived from tools/list and the panel OpenAPI ({}): {}\nderived from list_cmds ({}): {}",
             tools.len(), tools.join(" "), commands.len(), commands.join(" ")
         )

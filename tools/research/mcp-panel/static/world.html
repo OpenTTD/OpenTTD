@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenTTD World</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 antialiased">
+  <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="/" class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">OpenTTD MCP</a>
+        <span class="text-gray-500 dark:text-gray-400">/ World</span>
+        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <span id="w-stats"></span>
+        <a href="/docs" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">API</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-20 px-4 pb-8 max-w-screen-2xl mx-auto">
+    <div class="flex flex-wrap items-center gap-3 mb-4 p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+      <label class="text-sm text-gray-900 dark:text-white">Map layer
+        <select id="p-layer" class="ms-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <option value="types">Tile types</option><option value="heights">Heights</option><option value="owners">Owners</option>
+        </select>
+      </label>
+      <label class="text-sm text-gray-900 dark:text-white">Graph
+        <select id="p-component" class="ms-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <option value="all">All components</option>
+        </select>
+      </label>
+      <label class="inline-flex items-center gap-2 text-sm text-gray-900 dark:text-white"><input id="p-live" type="checkbox" checked class="w-4 h-4"> Live (5 s)</label>
+      <span class="text-xs text-gray-500 dark:text-gray-400">Parameters live in the address: a configured view is a link. Drag to move, Ctrl+wheel to zoom.</span>
+    </div>
+
+    <div class="grid gap-4 xl:grid-cols-2">
+      <section class="relative p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700" data-frame>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Map (openttd://map)</h3>
+          <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-xs px-2 py-1 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Maximize</button>
+        </div>
+        <canvas id="map" role="img" aria-label="The whole map, one pixel group per tile, coloured by the chosen layer, with towns and stations" class="w-full aspect-square rounded-sm bg-gray-900"></canvas>
+        <div id="map-legend" class="flex flex-wrap gap-3 mt-2 text-xs text-gray-600 dark:text-gray-300"></div>
+      </section>
+      <section class="relative p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700" data-frame>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Road network (/api/graph)</h3>
+          <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-xs px-2 py-1 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Maximize</button>
+        </div>
+        <div id="graph" role="img" aria-label="The road network as a graph on map coordinates: junctions, dead ends, stations and town anchors, edges by length" class="w-full aspect-square"></div>
+      </section>
+    </div>
+    <p id="w-msg" class="mt-3 text-sm text-gray-500 dark:text-gray-400"></p>
+  </main>
+
+  <script src="/vendor/echarts.min.js"></script>
+  <script src="/static/world.js"></script>
+</body>
+</html>

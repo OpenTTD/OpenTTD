@@ -27,6 +27,7 @@
 #include "prismatic_mcp.h"
 #include "prismatic_mcp_detail.h"
 #include "prismatic_mcp_view.h"
+#include "prismatic_mcp_world.h"
 
 #include "../3rdparty/nlohmann/json.hpp"
 #include "../core/random_func.hpp"
@@ -225,15 +226,33 @@ struct ResourceEntry {
 	json (*build)();
 };
 json ResourceTowns(); // defined below, next to the view tools that scroll to a town
+json ResourceMap();   // the whole map (prismatic_mcp_world.cpp)
+json ResourceStations();
 
-const std::array<ResourceEntry, 6> RESOURCES = {{
+const std::array<ResourceEntry, 8> RESOURCES = {{
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
 	{"openttd://companies", "Companies", "All companies with basic finances (server-visible)", &ResourceCompanies},
 	{"openttd://decisions", "Decisions", "Provenance trace: decision -> approval -> command -> observed verdict", &ResourceDecisions},
 	{"openttd://towns", "Towns", "Every town: id, name, tile, x/y, population (scroll_to a town by id)", &ResourceTowns},
+	{"openttd://map", "Map", "The whole map: tile types, heights and owners, one string per row, encoding included", &ResourceMap},
+	{"openttd://stations", "Stations", "Every station: id, name, tile, x/y, owner, facilities, town", &ResourceStations},
 }};
+
+json ResourceMap()
+{
+	json env = MakeEnvelope();
+	env["data"] = World::Map();
+	return env;
+}
+
+json ResourceStations()
+{
+	json env = MakeEnvelope();
+	env["data"] = World::Stations();
+	return env;
+}
 
 /** Every town, so a controller can find where a bot builds and scroll the view there. */
 json ResourceTowns()

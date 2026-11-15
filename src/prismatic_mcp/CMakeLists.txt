@@ -7,5 +7,7 @@ add_files(
     prismatic_mcp_server.cpp
     prismatic_mcp_view.h
     prismatic_mcp_view.cpp
+    prismatic_mcp_world.h
+    prismatic_mcp_world.cpp
     CONDITION OPTION_PRISMATIC_MCP_SERVER
 )

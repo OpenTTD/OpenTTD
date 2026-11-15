@@ -365,6 +365,16 @@ def make_routes(game):
         game.event("ai", f"start_ai {name} {settings}".strip())
         return 200, {"ok": True}
 
+    def graph():
+        exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-graph"
+        if not exe.exists():
+            return 503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"}
+        r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{game.args.panel_port}"],
+                           capture_output=True, text=True, timeout=60)
+        if r.returncode != 0:
+            return 502, {"error": r.stderr.strip()}
+        return 200, json.loads(r.stdout)
+
     def status(q):
         return 200, {
             "server_running": game.proc is not None and game.proc.poll() is None,
@@ -425,6 +435,8 @@ def make_routes(game):
         ("POST", "/api/bots/setting", "botSetting", "Change one setting of a running bot (openttd.ai.set_setting, approval-gated)", True,
          s({"company": {"type": "integer"}, "name": {"type": "string"}, "value": {"type": "integer"}}, ["company", "name", "value"]),
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
+        ("GET", "/api/graph", "graph", "The road network as a graph (nodes: junctions, ends, stations, town anchors; edges with length; components), derived from openttd://map, towns and stations by tools/research/mcp-rhai mcp-graph", True,
+         None, lambda q: graph()),
         ("POST", "/api/rhai", "rhai", "Run a Rhai script against this panel (tools/research/mcp-rhai)", False,
          s({"script": {"type": "string"}, "timeout": {"type": "number"}}, ["script"]), rhai),
     ]
@@ -492,6 +504,7 @@ SWAGGER_HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8"><ti
 
 VENDOR = {
     "/vendor/flowbite.min.js": ("flowbite/dist/flowbite.min.js", "text/javascript"),
+    "/vendor/echarts.min.js": ("echarts/dist/echarts.min.js", "text/javascript"),
     "/vendor/swagger-ui/swagger-ui.css": ("swagger-ui-dist/swagger-ui.css", "text/css"),
     "/vendor/swagger-ui/swagger-ui-bundle.js": ("swagger-ui-dist/swagger-ui-bundle.js", "text/javascript"),
 }
@@ -576,6 +589,8 @@ def make_handler(game):
             if method == "GET":
                 if path in ("/", "/index.html"):
                     return self._send(200, (STATIC / "index.html").read_bytes(), "text/html; charset=utf-8")
+                if path == "/world":
+                    return self._send(200, (STATIC / "world.html").read_bytes(), "text/html; charset=utf-8")
                 if path == "/docs":
                     return self._send(200, SWAGGER_HTML.encode(), "text/html; charset=utf-8")
                 if path == "/openapi.json":

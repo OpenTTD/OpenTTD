@@ -178,6 +178,19 @@ and that is the owner's call (knowledge `auto-approve-is-the-owners-switch`).
 - `rhai/demo.rhai` is the end-to-end demo: new world, PrismaticAI plays, watched through MCP,
   paused and resumed through the approval flow, final report.
 
+## The world as data: map, stations, road graph
+
+| Surface | What it is |
+|---|---|
+| `openttd://map` (`GET /api/resources/map`) | the whole map: one string per row for tile types (`C R r H T S W V I B O`), heights (two hex digits per tile) and owners (`0-9a-e` companies, `T` town, `N` none, `W` water, `D` deity, `.` not ownable); the encoding is part of the answer; 256x256 is about 266 KB |
+| `openttd://stations` | every station: id, name, tile, x/y, owner, facilities, town |
+| `openttd://towns` | every town: id, name, tile, x/y, population |
+| `GET /api/graph`, Rhai `world_graph()`, `mcp-graph` | the road network as a graph: nodes are junctions, dead ends, stations and each town's nearest road tile, edges are road corridors with their length in tiles, and components say which towns are connected; derived in Rust (`tools/research/mcp-rhai/src/graph.rs`) from the three resources |
+| `/world` | the World view: the map on a canvas (types, heights or owners, towns and stations) and the road graph in ECharts on map coordinates, with a component filter, live refresh, maximize and Escape, and every parameter in the address |
+
+A planner reads these and decides. A Rhai script, Prismatic over HTTP, or, next, an algoglyph
+kernel (I0041), for routes, profitability and expansion.
+
 ## How much of the public C++ API is exposed
 
 `tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . [--panel URL] [--json] [--report]`

@@ -3,6 +3,7 @@
   "private": true,
   "description": "RESEARCH-ONLY local control panel for the embedded MCP server",
   "devDependencies": {
+    "echarts": "^6.1.0",
     "flowbite": "^4.0.1",
     "swagger-ui-dist": "^5.35.0"
   }

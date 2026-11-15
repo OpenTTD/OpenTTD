@@ -1,0 +1,45 @@
+id: I0042
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The whole map, the stations and the road network as a graph on every surface, and the World view"
+slug: world-as-data-and-graph
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Expose everything a player sees on the map, and the road network in graph form, through MCP, OpenAPI and Rhai, and show it in the panel, so planners (Rhai, Prismatic, algoglyph) can decide routes and profitability."
+why: "The owner: the whole map, everything about it and every dynamic entity, in graph form, through the API, for planning algorithms, visible in the external console."
+scope:
+  - "src/prismatic_mcp/**"
+  - "tools/research/**"
+  - "research/mcp-control.md"
+non_scope:
+  - "openttd://vehicles and per-command catalogue (branch research/mcp-full-auto)"
+depends_on:
+  - I0038
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd://map returns every tile's type, height and owner, encoding included; openttd://stations lists every station"
+  - "GET /api/graph and Rhai world_graph() derive nodes, edges and components from the resources"
+  - "The new resources and the graph route appear in /openapi.json without a hand-written entry"
+  - "/world draws the map and the graph, live, with its parameters in the address"
+  - "tools/gate.sh research and mcp-panel-check pass"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-panel-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15T22:29:19Z
+started_at: 2026-11-15T22:28:38Z
+started_event: sha256:cf8eb1cbc00f9b7f26bdff3b2c36e9d73fddecef800e8f1d6b5ca19370d4ae73
+verified_at: 2026-11-15T22:29:12Z
+verified_event: sha256:b3559200bef9ddb7b668fabfc7dc651600a7e77384788bd4902504d747a562eb
+completed_at: 2026-11-15T22:29:19Z
+completed_event: sha256:f8130256102ec24520a9fae07a9507181243ab43ea45080f990fcdb56e86f10b
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-panel-check; curl /api/resources/map /api/resources/stations /api/graph /world; mcp-rhai world_graph()"
+    result: "gate research PASS (ctest 103/103, [prismatic_mcp] 25 assertions); panel check 11/11; live: openttd://map 256x256 in 266038 bytes (982 road tiles), /api/graph 412 nodes, 402 edges, 30 components in 82 ms, Rhai world_graph() the same; /api/graph, /api/resources/map, /stations, /towns appear in /openapi.json by derivation; /world and /vendor/echarts.min.js served (HTTP 200). Not yet checked in a browser beyond opening the page"
+    commit: 18fdf6e7e3eb4378a0c562d601a6f1d9bc49aad7
+    recorded_at: 2026-11-15T22:29:14Z
