@@ -1,0 +1,38 @@
+# The categories use cases are filed under: presentation metadata, nothing else. Which use
+# cases a category holds is each use case's own `category`; every count, index page and
+# facet is derived from that. Add a category here before filing a use case under it.
+version: 1
+
+categories:
+  - id: adoption
+    title: Getting started and adoption
+    summary: Bringing the tool into a repository, new or old, without losing what people already wrote.
+    order: 10
+  - id: continuity
+    title: Sessions and handover
+    summary: Stopping and resuming work across sessions and workers from durable state.
+    order: 20
+  - id: workers
+    title: Parallel workers
+    summary: "Several agents or people on one repository: claimed scopes, overlap, who touched what."
+    order: 30
+  - id: policy
+    title: Policy and enforcement
+    summary: Declaring rules, proving they are wired, reproducing a finding.
+    order: 40
+  - id: completion
+    title: Completion and quality gates
+    summary: Deciding whether work is finished, with a contract every line of which passes or fails.
+    order: 50
+  - id: drift
+    title: Drift and reconciliation
+    summary: Detecting that policy, projections, state and git disagree, and putting them back in step.
+    order: 60
+  - id: knowledge
+    title: Repository knowledge
+    summary: What the repository declares about itself, and the plan, searched and validated.
+    order: 70
+  - id: extension
+    title: Extension
+    summary: Adding a rule, a command or a use case as data, with the checks that follow from it.
+    order: 100

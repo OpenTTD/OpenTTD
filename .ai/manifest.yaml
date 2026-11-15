@@ -1,0 +1,37 @@
+# The section registry of this repository's AI layer. Discovery reads this file; nothing
+# walks the directory. Paths are relative to .ai/. Unknown keys are errors.
+schema: ai-repository/v1
+
+repo:
+  path: repo
+
+local:
+  path: local
+  tracked: false
+  implicit_context: false
+  lifecycle: runtime
+  excludes: [canonical]
+
+sections:
+  policy: repo/policy.yaml
+  scope: repo/scope.yaml
+  profiles: repo/profiles
+  rules: repo/rules
+  prompts: repo/prompts
+  skills: repo/skills
+  workflows: repo/workflows
+  knowledge: repo/knowledge
+  adrs: repo/adrs
+  sessions: repo/sessions
+  project: repo/project
+  use-cases: repo/use-cases
+  applications: repo/applications
+  why: repo/why
+  features: repo/features
+  deployments: repo/deployments
+
+# The scoped context documents: file names that must carry the context contract wherever
+# they appear in the tree. The contract itself (schema: context/v1) identifies a document;
+# a name listed here that carries no contract is an error, not a plain file.
+context:
+  documents: [README.md]

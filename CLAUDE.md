@@ -157,3 +157,34 @@ Game objects (`Vehicle`, `Station`, `Town`, `Company`, `Order`, ...) live in slo
 - **Ask before large changes.** Significant features, refactors, or ports should be discussed (Discord/IRC/forums) before investing implementation time — PRs without prior buy-in risk not being merged.
 - **AI-generated contributions are explicitly against project policy.** From `CONTRIBUTING.md`: issues/PRs that are LLM-generated will be closed, and repeat submitters may be blocked. A human must understand and be able to explain every line of a PR; AI may only be used to proofread text, not to write it. Keep this in mind if this repository's own contribution workflow is ever the subject of a task (vs. using Claude Code as a personal/local dev tool, which is a separate matter from what gets *submitted upstream*).
 - **Docs entry points**: `docs/savegame_format.md`, `docs/linkgraph.md`, `docs/game_coordinator.md`, `docs/admin_network.md`, `docs/logging_and_performance_metrics.md`, `docs/eints.md` (translation workflow — don't hand-edit language files, they're synced from the translator tool).
+
+<!-- majordomus:begin 63d5f7830571 f2d9a1017395dba3 -->
+# CLAUDE.md
+
+Claude Code bootstrap. The repository's provider-neutral AI context lives under
+[`.ai/`](.ai/); nothing specific to Claude is needed here.
+
+Read `README.md`, then [`.ai/README.md`](.ai/README.md), and follow its
+discovery protocol: the effective rules under `.ai/repo/rules/` with their
+dependencies, the workflows and knowledge the task needs, and never `.ai/local/`.
+
+Before working under a path, run `majordomus context resolve <path>` (or read the
+`README.md` chain from `.ai/` down to that directory): each document adds to its
+ancestors and the nearest one does not replace them. A provider's own nested-file
+loading is an optimisation; the Majordomus resolution is what applies.
+
+This repository is supervised by Majordomus. Run `majordomus context` before working;
+the task lifecycle is `.ai/repo/workflows/task-lifecycle.md`; the default profile is
+`implementation`. `AGENTS.md` carries the same bootstrap for every
+other worker, and a rule that exists in one of these files and not in `.ai/` is a bug.
+
+Linked git worktrees of this repository live at `<repository>-wt/<branch>` — the primary
+checkout's sibling named with `-wt`, then the branch name with its hierarchy kept — derived
+from git and never chosen or registered; the primary checkout hosts the trunk. Before
+implementing, run `majordomus worktree` to see which branch and worktree you are in and
+whether that is where the branch belongs; start new work with `majordomus worktree create
+<branch>` and continue in the path it prints; bring a misplaced worktree home with
+`majordomus worktree migrate` rather than continuing where you are. `majordomus worktree
+guard` refuses a feature branch committed elsewhere wherever the pre-commit hook asks it;
+the policy's `enforcement` says whether it does, and `majordomus doctor` proves the wiring.
+<!-- majordomus:end -->

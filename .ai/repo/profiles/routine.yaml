@@ -1,0 +1,22 @@
+name: routine
+description: small, well-understood changes; rename, bump, wording, one-line fixes
+capability: fast
+effort: low
+verbosity: terse
+presentation: machine
+context:
+  task: true
+  current_state: true
+  decisions: false
+  relevant_files: false
+  failing_output: false
+  recent_history_depth: 0
+  architecture_notes: false
+  knowledge: false
+  knowledge_max_items: 0
+verification:
+  verify_command_required: if_files_changed
+  regression_test_required: false
+  decision_record_required: false
+checkpoint_interval: 30m
+output_contract: [outcome, changes, verification]

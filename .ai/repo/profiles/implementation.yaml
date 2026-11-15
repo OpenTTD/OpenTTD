@@ -1,0 +1,22 @@
+name: implementation
+description: build a described feature or change within a known design
+capability: standard
+effort: medium
+verbosity: concise
+presentation: engineering
+context:
+  task: true
+  current_state: true
+  decisions: true
+  relevant_files: true
+  failing_output: false
+  recent_history_depth: 0
+  architecture_notes: false
+  knowledge: true
+  knowledge_max_items: 8
+verification:
+  verify_command_required: true
+  regression_test_required: false
+  decision_record_required: false
+checkpoint_interval: 15m
+output_contract: [outcome, changes, verification, blockers, next_action]

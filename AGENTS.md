@@ -104,3 +104,47 @@ These directories hold personal Claude Code tooling (commands, agents, skills, h
 - [CLAUDE.md](./CLAUDE.md) — Claude-specific workflow notes, plus OpenTTD's build/test/run commands, architecture, and code style (all still real technical reference).
 - [README.md](./README.md) — short public-facing explanation of what this repository is.
 - [research/README.md](./research/README.md) — the gating model and experiment-report taxonomy in full.
+
+<!-- majordomus:begin 63d5f7830571 294efe4fb028e737 -->
+# AGENTS.md
+
+This file is a bootstrap, not the rulebook. Read `README.md` for what this
+repository is. The provider-neutral AI context and governance layer lives under
+[`.ai/`](.ai/), and everything normative is there.
+
+Before substantive planning, implementation, review or repository mutation:
+
+1. read [`.ai/README.md`](.ai/README.md) and follow its discovery protocol,
+2. load the effective rules under `.ai/repo/rules/` and resolve their dependencies,
+3. load only the skills, workflows and knowledge the task is about,
+4. never load `.ai/local/` implicitly; it is this checkout's own state and not context.
+
+This repository is supervised by Majordomus. Run `majordomus context` before working,
+take the task lifecycle from `.ai/repo/workflows/task-lifecycle.md`, and expect `check`
+and `finish` to refuse work outside the task's scope. The default profile is
+`implementation`; the checkpoint interval it sets is `15m`.
+
+Before working under a path, run `majordomus context resolve <path>` (or read the
+`README.md` chain from `.ai/` down to that directory): each document adds to its
+ancestors and the nearest one does not replace them. A provider's own nested-file
+loading is an optimisation; the Majordomus resolution is what applies.
+
+A capability you add or change has use cases: run `majordomus usecase impact` and the
+scenarios it names, and close a coverage gap (`majordomus usecase coverage`) with a use
+case that executes, per `.ai/repo/workflows/use-cases.md`; `finish` refuses a required
+gap.
+
+Linked git worktrees of this repository live at `<repository>-wt/<branch>` — the primary
+checkout's sibling named with `-wt`, then the branch name with its hierarchy kept — derived
+from git and never chosen or registered; the primary checkout hosts the trunk. Before
+implementing, run `majordomus worktree` to see which branch and worktree you are in and
+whether that is where the branch belongs; start new work with `majordomus worktree create
+<branch>` and continue in the path it prints; bring a misplaced worktree home with
+`majordomus worktree migrate` rather than continuing where you are. `majordomus worktree
+guard` refuses a feature branch committed elsewhere wherever the pre-commit hook asks it;
+the policy's `enforcement` says whether it does, and `majordomus doctor` proves the wiring.
+
+A `.majordomus/` directory, if one exists, is an optional installation of the tool and not
+repository context. Do not duplicate shared rules into this file: it is generated, and a
+rule that exists here and nowhere else is a bug.
+<!-- majordomus:end -->

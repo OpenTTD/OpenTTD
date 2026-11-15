@@ -1,0 +1,235 @@
+# Majordomus canonical policy. Provider-neutral. Edit this file, then run
+# `majordomus update` to regenerate the provider instruction files.
+version: 1
+
+context:
+  always_loaded_budget_lines: 150        # hard cap on the always-loaded projection
+  builder_budget_lines: 300              # hard cap on what `majordomus context` prints
+  recent_decisions: 5                    # decisions offered to a worker, newest first
+  max_list_items: 20                     # cap on any list inside the assembled context
+  strategy: minimum-sufficient
+  transcript_is_state: false
+
+profiles:
+  default: implementation
+  checkpoint_interval_default: 15m
+
+verification:
+  required_for_changes: true
+  finish_requires:
+    - scope_respected
+    - verification_ran
+    - state_updated
+    - no_open_blockers
+    - note_present
+
+checkpoint:
+  max_body_lines: 40                     # a checkpoint is a progress note, not a report
+  retention_max_files: 500
+
+# Whether a task is bound to the intent it serves before it starts (ADR 0111). Absent or
+# `off`, `start` behaves as it always did and asks only when given --issue, --intent or
+# --exempt. `advisory` reports a refused binding; `required` refuses to start on one.
+# Declare the exemption classes a worker may give with a reason before choosing `required`.
+intent:
+  binding: off
+  exemptions:
+    - id: maintenance
+      description: Upkeep no issue covers
+
+handover:
+  required_sections: [Objective, Current State, Next Action]
+  retention_max_files: 200
+
+ledger:
+  retention_max_lines: 5000
+
+# The prompt archive under .ai/local/prompts/. Nothing used to bound it: the ledger, the
+# handovers and the checkpoints each rotate under a cap because each restates state that is
+# still available elsewhere, and a prompt restates nothing — so the archive grew without
+# limit, 20 MB of raw prompts in this repository before anyone measured it.
+#
+# What is bounded is the *body*, never the record. Pruning replaces the prompt text with a
+# tombstone and keeps every other field, including how the record came to be linked to its
+# episode: the archive stays a complete index of what was asked and when, and only the bytes
+# nobody can be held responsible for keeping go. A record is still never deleted.
+#
+# Two bounds, because they fail differently. `retention_max_days` is about exposure — raw
+# prompts carry credentials and customer names, and age is the only thing that reliably
+# reduces what they are worth to someone who should not have them. `retention_max_bytes` is
+# about the disk, and prunes oldest-first until the archive's bodies fit. Either alone is a
+# bound; both is the usual configuration. `majordomus capture prune` applies them, doctor
+# reports an archive over either, and nothing prunes behind a person's back.
+prompts:
+  retention_max_days: 90                 # a prompt body older than this is pruned
+  retention_max_bytes: 8388608           # 8 MiB of bodies; the oldest are pruned first
+
+# The provider's episode events do four things beyond drawing the boundary. The start event
+# hands the worker a briefing on standard output, which the provider adds to the context it
+# is about to build; the compaction event records a derived checkpoint, because a compaction
+# discards the conversation while the work continues; the end event writes a derived
+# continuation record; and both of the latter derive what the episode learned into candidate
+# knowledge records, because the ledger lines it stamped are about to outlive the
+# conversation that produced them (ADR 0091).
+session:
+  briefing_on_start: true
+  # The sections a closed episode's record carries in its body. The front matter is what a
+  # machine can prove; these are what the episode was for and how it turned out, composed
+  # from the worker's own checkpoints and decisions where it left any and from git and the
+  # ledger where it did not. A section named here with no writer in lib/derive.sh is a
+  # configuration error reported by name, never a silently empty heading.
+  record_sections: [What Happened, Progress Notes, Decisions, Open Questions, Outcome]
+  # The lifecycle commits the record it writes. A record nobody committed reaches no
+  # surface — not the site, not the Rust index, not `session list` in another clone — so
+  # leaving it in the working tree is the same as not writing it.
+  commit_record_on_end: true
+  push_record_on_end: true
+  # The cap on the closed records the sessions section holds, and whether the oldest beyond
+  # it may be moved aside. A record is history and is never deleted: `majordomus session
+  # archive` moves the oldest over the cap into the section's archive/ directory, only when
+  # it is run, and refuses to overwrite a record already there. Over the cap, `doctor` fails
+  # and `watch` drifts, the way they do for checkpoints and handovers.
+  retention_max_files: 500
+  archive: true
+  briefing_budget_lines: 60              # cap on what the start event injects, per episode
+  checkpoint_on_compact: true            # also the checkpoint the close records, for the
+                                         # same reason: both are moments at which what the
+                                         # episode knows stops being reachable
+  handover_on_end: true
+  handover_on_fill: true                 # ask the worker for a handover while the context
+                                         # window still has room to write one (ADR 0123)
+  brief_on_interval: true                # keep the session briefed on what surrounds it, as
+                                         # its status line and on an interval (ADR 0136)
+  brief_interval_minutes: 20             # how often a session reports on itself unasked
+  edits_require_claim: false             # refuse an edit no claim covers (I2735); needs an enabled mesh
+  knowledge_on_end: true                 # the evidence the episode produced is about to stop
+                                         # being reachable; derive what it says as the
+                                         # episode closes, on every close path
+  knowledge_on_compact: true             # a compaction discards the conversation while the
+                                         # work goes on; the ledger lines it produced are
+                                         # derived now, whether or not the episode ever
+                                         # closes cleanly, and independently of the checkpoint
+  ensure_server_on_start: true           # the start event converges on a ready shared server
+  stranded_after: 12h                    # an open episode silent this long may be recovered
+  # How old a continuation record may be before it stops being current. Divergence
+  # (exact/advanced/diverged/different_context) is a fact about git topology and says
+  # nothing about age; a record can be `advanced` and six days dead at the same time, and
+  # that combination is what carried a finished instruction into every new episode for a
+  # week (ADR 0052). Declared once and read by every surface.
+  freshness:
+    fresh_minutes: 720                   # 12h: within a working day either side, current
+    stale_minutes: 2880                  # 48h: beyond this it is history, never current
+
+# A candidate is a knowledge record the deriver wrote and nobody has judged. The queue is
+# measured, never emptied by a machine: more candidates than the cap, or one waiting longer
+# than the age, is a doctor finding that names them, because a review queue that grows
+# without bound is a queue nobody reviews. Declared once here and read by every surface.
+knowledge:
+  candidates_max_files: 40               # more candidates than this awaiting review is a WARN
+  candidate_max_age_minutes: 20160       # 14d: a candidate this old was not reviewed, it was
+                                         # ignored; doctor names it
+
+# Rebuildable caches under .ai/local/cache/, which no commit carries. Each parsed YAML file
+# is kept under cache/flat/ and served only to a file with exactly the bytes it was parsed
+# from, so a command on unchanged files reads them instead of parsing them again. Past the
+# cap the oldest written go first; 0 is no cache.
+cache:
+  flatten_max_entries: 2000
+
+# `majordomus bench` samples every public command this many times after the warm-up runs;
+# `bench --check` refuses a regression larger than these fractions of the baseline's
+# p50, p95 and p99; doctor and watch report their own wall time against these budgets
+# (WARN, never the exit code). Measured, not guessed: change a budget with a run.
+benchmark:
+  samples: 10
+  warmup: 2
+  regression:
+    p50: 0.5
+    p95: 0.5
+    p99: 0.6
+  budget:
+    # doctor and watch report their own wall time against these, INFO under and WARN over,
+    # never as the exit code. These are the values a repository starts with, so they judge
+    # the corpus it starts with: the vendored rule baseline and whatever `init` seeded, and
+    # nothing of your own yet. Re-derive them once your own catalogue has grown — with a
+    # run, and write the run beside the number, as .ai/repo/policy.yaml of the Majordomus
+    # repository itself does.
+    #
+    # THE MEASUREMENT (2026-09-12). `majordomus bench doctor watch`, which is the instrument
+    # that moves these two keys: it runs each command in a disposable repository prepared by
+    # that command's fixture, which is exactly a repository that has just adopted Majordomus.
+    # Run b-20260912T095542Z-7502 at 3407ca2d4, Darwin arm64, bash 5.3.15, 10 warm samples
+    # after 2 warm-ups plus one cold run:
+    #
+    #   command  mode    n    min    p50    p90    max
+    #   doctor   warm   10  10948  13683  15668  15879
+    #   doctor   cold    1  14032  14032  14032  14032
+    #   watch    warm   10  10441  13740  15376  16830
+    #   watch    cold    1  14035  14035  14035  14035
+    #
+    # Each is the warm p90 times 1.5, to the nearest 10 s, and above the slowest run of its
+    # own sample. They come out equal because on a fresh corpus the two commands cost the
+    # same (p50 13683 against 13740): watch skips little when there is little to skip. On a
+    # grown repository they diverge — measured as pairs on one host, watch runs about 0.57
+    # of doctor — which is why the pair is declared per repository and not once here.
+    #
+    # These were 3000 from 2026-09-05 until 2026-09-12, which was never measured on any
+    # corpus. The consequence was not subtle: the first `majordomus doctor` a new adopter
+    # ever ran printed a WARN it could do nothing about, and so did every one after it.
+    doctor_ms: 20000
+    watch_ms: 20000
+    enter_ms: 750                        # a `cd` into a checkout whose runtime is already up
+    enter_cold_ms: 1000                  # the one that starts a server — and returns, never waits
+
+# Use-case coverage: which gaps `doctor` reports and which it fails on. A fresh repository
+# has no use cases yet, so nothing is required until it says so.
+use_cases:
+  coverage:
+    commands: advisory
+    claims: advisory
+    mcp_tools: advisory
+
+# Every entry here is reconciled by `majordomus doctor`: the path must resolve (on PATH,
+# repo-relative, or absolute in the hook line), be executable, and be invoked by the
+# artifact named in wired_by without its exit code being swallowed.
+enforcement:
+  - name: doctor-on-commit
+    path: majordomus
+    args: [doctor]
+    wired_by: git-hook:pre-commit
+  - name: finish-on-push
+    path: majordomus
+    args: [finish, --check]
+    wired_by: git-hook:pre-push
+
+# mode: file (the default) generates the whole target; mode: region generates only the
+# text between the <!-- majordomus:begin --> and <!-- majordomus:end --> markers and
+# leaves the rest of the file alone, which is how a repository that already has a
+# hand-written CLAUDE.md adopts Majordomus without losing it.
+projections:
+  - provider: agents
+    target: AGENTS.md
+    mode: region
+    always_loaded: true
+  - provider: claude-code
+    target: CLAUDE.md
+    mode: region
+  - provider: gemini
+    target: GEMINI.md
+
+# The user interface and the design kit it is built on (I4336). `kit` names the kit the UI
+# declares ("" is none, and the licence gate is then skipped). `visibility` is declared,
+# never fetched: a public tree never carries a licensed file of the kit, and a public tree
+# that declares a kit and has a UI fails closed when nothing could judge it.
+# MAJORDOMUS_VISIBILITY=public tightens a private declaration; nothing loosens one.
+# `publish` names the directories a deploy publishes (the upload-pages-artifact path), whose
+# untracked files the gate also hashes. `evidence` names the owner's kit-evidence/v1 files,
+# `~/`-relative and never absolute; CI reads MAJORDOMUS_KIT_EVIDENCE_<KIT> instead.
+# `exempt` (declared in the schema, absent here until the first one) lists the surfaces the
+# kit-use judge does not hold to the kit, each `- {path: <glob>, because: <why>}` with both
+# keys; the never-publish gate exempts nothing.
+ui:
+  kit: ""
+  visibility: public
+  publish: []
+  evidence: []

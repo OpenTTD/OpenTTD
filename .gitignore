@@ -10,3 +10,5 @@ docs/source/*
 # Zola-generated GitHub Pages site output (source lives in /zola, built by
 # .github/workflows/gh-pages.yml -- never commit the generated site).
 /zola/public
+.ai/local/
+.ai/repo/**/.tmp.*

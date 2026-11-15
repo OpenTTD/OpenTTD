@@ -1,0 +1,21 @@
+# The mesh of this repository: its shared servers find each other, link, and share one
+# journal of sessions, claims, handovers and reviews. Seeded by `majordomus init`.
+#
+# Closed until enrolled: under `deny_unknown`, a machine whose public key is not listed in
+# trust.allow opens no socket at all. `majordomus mesh enrol` adds this machine's key;
+# commit the change, and every enrolled machine of the repository trusts it.
+#
+# Discovery: multicast on the local segment only (TTL 1). Add rendezvous endpoints for
+# segments multicast does not reach.
+schema: mesh/v1
+kind: mesh-declaration
+id: mesh
+enabled: true
+multicast:
+  enabled: true
+  ttl: 1
+broadcast:
+  mode: disabled
+trust:
+  policy: deny_unknown
+  allow: []

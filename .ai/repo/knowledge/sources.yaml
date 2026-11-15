@@ -1,0 +1,234 @@
+# The repository's knowledge sources: which tracked files are knowledge, in which class.
+#
+# Discovery goes through the version-control index with the pathspec given here, under the
+# `:(glob)` prefix so that `*` never crosses a directory separator and no two classes claim
+# one file. Operational records (the active task, checkpoints, handovers, sessions,
+# decisions, questions) are not declared here: they live under .ai/local/ and are
+# discovered by the tool from the state directory it owns.
+#
+# fields:
+#   id          the class, unique; also the order sources are reported in
+#   kind        the node kind every source in this class produces
+#   discovery   vcs — the tracked files matching the pathspec
+#   pathspec    one pathspec, relative to the repository root
+#   required    true when a repository with this layer must have it, so that a class
+#               discovering nothing is a finding rather than a silence
+version: 1
+
+sources:
+  # The directory contracts. `init` writes `.ai/README.md` and a README.md into every section,
+  # and a file is an object only when a class names its path: without this class the
+  # contracts sat on disk while the index had never heard of them, so `context resolve`, which
+  # reads the files, and every capability that reads the index disagreed about what applies to
+  # a path. Declared first, so the precedence is also the reading order.
+  - id: context
+    kind: context
+    discovery: vcs
+    pathspec: ':(glob).ai/**/README.md'
+    required: true
+
+  - id: policy
+    kind: policy
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/policy.yaml'
+    required: true
+
+  - id: scope
+    kind: scope
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/scope.yaml'
+    required: false
+
+  - id: profile
+    kind: profile
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/profiles/*.yaml'
+    required: true
+
+  - id: rule
+    kind: rule
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/rules/**/*.md'
+    required: true
+
+  - id: prompt
+    kind: prompt
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/prompts/*.md'
+    required: false
+
+  - id: skill
+    kind: skill
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/skills/*/SKILL.md'
+    required: false
+
+  - id: skill_example
+    kind: document
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/skills/*/examples/*.md'
+    required: false
+
+  - id: workflow
+    kind: document
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/workflows/*.md'
+    required: false
+
+  # The recorded planning analysis of an intent (ADR 0073): the gap a worker observed at one
+  # commit, and the critique of the plan that answers it. Validated against the intent and the
+  # plan by `intent validate`; neither stores a status.
+  - id: gap
+    kind: gap
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/project/gaps/*.yaml'
+    required: false
+
+  - id: critique
+    kind: critique
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/project/critiques/*.yaml'
+    required: false
+
+  - id: milestone
+    kind: milestone
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/project/milestones/*.yaml'
+    required: false
+
+  - id: issue
+    kind: issue
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/project/issues/*.yaml'
+    required: false
+
+  - id: intent
+    kind: intent
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/project/intents/*.yaml'
+    required: false
+
+  - id: adr
+    kind: adr
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/adrs/????-*.md'
+    required: false
+
+  - id: session
+    kind: session
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/sessions/*.md'
+    required: false
+
+  - id: curated
+    kind: knowledge
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/knowledge/curated/*.md'
+    required: false
+
+  # What the tool derived at an episode boundary and nobody has reviewed yet: the same kind
+  # as curated/, one status apart, tracked so that every checkout can review it. Promotion
+  # moves a record across; the deriver never writes into curated/.
+  - id: candidates
+    kind: knowledge
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/knowledge/candidates/*.md'
+    required: false
+
+  - id: use_case
+    kind: use-case
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/use-cases/*.md'
+    required: false
+
+  - id: taxonomy
+    kind: taxonomy
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/use-cases/taxonomy.yaml'
+    required: false
+
+  - id: moment
+    kind: moment
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/why/moments/*.md'
+    required: false
+
+  - id: audience
+    kind: audience
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/why/audiences/*.md'
+    required: false
+
+  - id: area
+    kind: area
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/why/areas/*.md'
+    required: false
+
+  - id: feature
+    kind: feature
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/features/*.md'
+    required: false
+
+  - id: domain
+    kind: domain
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/features/domains/*.md'
+    required: false
+
+  - id: application
+    kind: application
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/applications/*.md'
+    required: false
+
+  - id: deployment
+    kind: deployment
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/deployments/*.yaml'
+    required: false
+
+  # The mesh declaration (ADR 0050, ADR 0067): without this class a repository's committed
+  # `.ai/repo/mesh/*.yaml` is never read, and the mesh stays off however it is declared.
+  - id: mesh-declaration
+    kind: mesh-declaration
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/mesh/*.yaml'
+    required: false
+
+  # The derive offload (I2398, docs/OFFLOAD.md): the hosts `majordomus offload` may send a
+  # derive to and the limits each must meet. Without this class the declaration is never read.
+  - id: derive-offload
+    kind: derive-offload
+    discovery: vcs
+    pathspec: ':(glob).ai/repo/offload/*.yaml'
+    required: false
+
+  # Every Markdown file below docs/, at any depth. One level was the default once, and an
+  # adopter whose documents lived in docs/spec/, docs/wiki/ and docs/references/ had to
+  # declare a class for each before any of them was knowledge. `**` reaches them all, so no
+  # other class may discover a Markdown file under docs/ as a document: two classes of one
+  # kind over one path are a refusal, never a last-one-wins merge.
+  - id: document
+    kind: document
+    discovery: vcs
+    pathspec: ':(glob)docs/**/*.md'
+    required: false
+
+  - id: readme
+    kind: document
+    discovery: vcs
+    pathspec: ':(glob)*.md'
+    required: false
+
+  # The claims matrix and its detail pages: doctrines and milestones name claims by id, so
+  # a repository that keeps one has its claims as nodes the rest of the graph can reach.
+  - id: claims
+    kind: claim
+    discovery: vcs
+    pathspec: ':(glob)docs/CLAIMS.yaml'
+    required: false
+
+  # A claim's detail page, docs/claims/<id>.md, is a document the `document` class already
+  # discovers: a second class of the same kind over it would claim every page twice.

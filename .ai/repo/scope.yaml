@@ -1,0 +1,96 @@
+# The repository scope: what a worker reads of this repository, and what it never reads.
+#
+# `in` is the allow-list: pathspecs anchored at the repository root, in the layer's glob
+# subset (`*` and `?` stay inside one path segment, `**` spans any depth, a trailing `/`
+# names a directory and everything beneath it). A path that matches nothing here is out,
+# with the reason `undeclared`.
+#
+# `out` wins over `in`. `paths` are pathspecs as above; every `names` list is matched
+# against the file name alone; `binary` judges content (a file that is not UTF-8 text);
+# `max_bytes` judges size. The reason a path is out is the category that caught it, and
+# `majordomus scope <path>` names the rule.
+#
+# Read at start-up by the Rust executable, which then discovers, indexes and serves nothing
+# outside it; `majordomus doctor` refuses a key nothing reads. Edit this file, never the
+# tool: a repository that needs `garden/**` adds it here.
+#
+# `majordomus init` seeds the entries every repository shares, and a block between
+# `# stack: <name> (<marker>)` and `# end stack: <name>` only when the marker file is at
+# the repository's root: a repository without mix.exs gets no Elixir path. This file
+# unfiltered is also the distribution's default, read when a manifest names no scope.
+version: 1
+
+in:
+  - .ai/manifest.yaml
+  - .ai/README.md
+  - .ai/repo/**
+  - src/**
+  - lib/**
+  - apps/**/src/**
+  - test/**
+  - tests/**
+  - config/**
+  - docs/**
+  - README.md
+  - AGENTS.md
+  - Makefile
+  - justfile
+
+out:
+  # never read, by path: version control, the local half of the layer, dependencies,
+  # build outputs, coverage, vendored code, temporary files, logs
+  paths:
+    - .git/
+    - .ai/local/
+    - '**/node_modules/'
+    - '**/deps/'
+    - '**/_build/'
+    - '**/target/'
+    - '**/dist/'
+    - '**/build/'
+    - '**/coverage/'
+    - vendor/
+    - '**/tmp/'
+    - '**/logs/'
+
+  # content that is not UTF-8 text, whatever the name says
+  binary: true
+
+  # a text file over this many bytes is out, whatever it is
+  max_bytes: 1048576
+
+  archive:
+    names: ['*.zip', '*.tar', '*.tar.gz', '*.tgz', '*.tar.bz2', '*.tbz2', '*.tar.xz', '*.txz', '*.gz', '*.bz2', '*.xz', '*.zst', '*.7z', '*.rar', '*.jar', '*.war', '*.ear', '*.whl', '*.gem']
+
+  image:
+    names: ['*.png', '*.jpg', '*.jpeg', '*.gif', '*.bmp', '*.ico', '*.webp', '*.tif', '*.tiff', '*.heic', '*.psd', '*.svg']
+
+  video:
+    names: ['*.mp4', '*.m4v', '*.mov', '*.avi', '*.mkv', '*.webm', '*.wmv', '*.flv', '*.mpg', '*.mpeg']
+
+  pdf:
+    names: ['*.pdf']
+
+  database_dump:
+    names: ['*.dump', '*.dmp', '*.sql.gz', '*.sql.zst', '*.sqlite', '*.sqlite3', '*.db', '*.rdb', '*.bak', '*.pgdump']
+
+  # generated assets: a bundle, a minified file, a source map, a compiled protocol schema;
+  # a repository adds the directories its generators write under `paths`
+  generated:
+    paths: []
+    names: ['*.min.js', '*.min.css', '*.map', '*.bundle.js', '*.generated.*', '*_generated.*', '*.pb.go', '*.pb.rs', '*_pb2.py', '*.pb.cc', '*.pb.h']
+
+  # secrets: never read, never served, never quoted; a tracked one is reported
+  secret:
+    paths: []
+    names: ['.env', '.env.*', '*.pem', '*.key', '*.p12', '*.pfx', '*.jks', '*.keystore', 'id_rsa', 'id_rsa.*', 'id_dsa', 'id_dsa.*', 'id_ecdsa', 'id_ecdsa.*', 'id_ed25519', 'id_ed25519.*', '*.gpg', '*.asc', '*.kdbx', 'credentials', 'credentials.*', 'secrets.*', '*.secret', '*.secrets', '.netrc', '.npmrc', '.pypirc', '.htpasswd', 'htpasswd', '*.tfstate', '*.tfstate.*', 'service-account*.json']
+
+  # fixtures are read up to a size; over it they are data, not context
+  fixtures:
+    paths:
+      - '**/fixtures/'
+      - '**/__fixtures__/'
+      - '**/testdata/'
+      - '**/snapshots/'
+      - '**/__snapshots__/'
+    max_bytes: 65536

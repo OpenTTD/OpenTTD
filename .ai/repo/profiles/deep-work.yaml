@@ -1,0 +1,25 @@
+name: deep-work
+description: design, architecture, cross-cutting change, or a problem with no known shape
+capability: strongest
+effort: high
+effort_escalation:
+  after_blocked_attempts: 1
+  to: xhigh
+verbosity: detailed
+presentation: engineering
+context:
+  task: true
+  current_state: true
+  decisions: true
+  relevant_files: true
+  failing_output: false
+  recent_history_depth: 200
+  architecture_notes: true
+  knowledge: true
+  knowledge_max_items: 12
+verification:
+  verify_command_required: true
+  regression_test_required: false
+  decision_record_required: true
+checkpoint_interval: 30m
+output_contract: [outcome, changes, verification, blockers, next_action, decisions]
