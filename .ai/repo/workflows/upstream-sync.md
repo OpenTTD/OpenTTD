@@ -94,3 +94,9 @@ Then re-verify it with its own options ON (issue I0017).
 
 The rebase is an issue in the plan (I0021 for 2026-11-15). Its evidence is the range-diff
 count, the gate results and the experiment's `summary.md`.
+
+## After the rewrite
+
+A rewrite changes every hash the layer cites. Re-derive and re-prove the record with
+`majordomus://skill/derive-the-ai-layer-from-history`. A task that was open across the rewrite
+can no longer be finished: close it with `majordomus://skill/close-a-task-after-a-history-rewrite`.
