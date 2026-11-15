@@ -124,7 +124,11 @@ and `ttd::wait_event(kind, seconds)`.
   follows each bus the bot starts for a moment. Targets are derived from the bot's log lines
   (`... at tile N`) and the client's `openttd://towns`. `mcp-e2e` starts it with the narrator.
 - `PrismaticAI` logs the tile of every build step and waits 20 ticks between steps, so each one is
-  seen as it happens.
+  seen as it happens. With `intercity=1` (the default) it connects two towns with a road it builds
+  tile by tile (A*, round slopes and water), and the director follows the road as it grows.
+- `mcp-e2e` supervises the GUI client, the director and the narrator: whichever exits while the
+  panel runs is started again, and the director waits out a client that is away instead of
+  stopping.
 - View tools, GUI processes only, no approval (they change only the local viewport):
   `openttd.view.scroll_to {tile | x,y | town | vehicle, instant}`, `openttd.view.follow {vehicle | null}`,
   `openttd.view.zoom {level}`, `openttd.view.mark {tile | x,y | town | vehicle | clear}` (the bot's

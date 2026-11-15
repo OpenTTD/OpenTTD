@@ -59,8 +59,19 @@ if largest != () {
 let since = status().event_seq;
 loop {
     let feed = events(since, "ai.log,game.new_world");
+    since = feed.last_seq;
     for e in feed.events {
+      // A client that went away (closed, restarting) is waited for, not fatal.
+      try {
         if e.kind == "game.new_world" { w = map_width(view); continue; }
+        if e.data.text.contains("built road at tile ") {
+            // A road grows tile by tile: follow it with the cursor and a short pan, no zooming.
+            let tile = parse_int(e.data.text.sub_string(e.data.text.index_of(" at tile ") + 9).split(" ")[0]);
+            mcp_call(view, "openttd.view.mark", #{ tile: tile });
+            mcp_call(view, "openttd.view.scroll_to", #{ tile: tile });
+            at = [tile % w, tile / w];
+            continue;
+        }
         let t = e.data.text;
         if t.contains(" at tile ") {
             let tile = parse_int(t.sub_string(t.index_of(" at tile ") + 9).split(" ")[0]);
@@ -97,7 +108,10 @@ loop {
                 print(`camera -> ${town.name}: ${t}`);
             }
         }
+      } catch (err) {
+        print(`client view not reachable, waiting: ${err}`);
+        sleep(3000);
+      }
     }
-    since = feed.last_seq;
     sleep(400);
 }

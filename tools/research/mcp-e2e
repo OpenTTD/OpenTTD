@@ -54,8 +54,10 @@ fi
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-e2e.XXXXXX")"
 PANEL_PID="" GUI_PID="" HELPER_PIDS=()
 cleanup() {
-  for p in ${HELPER_PIDS[@]+"${HELPER_PIDS[@]}"}; do kill "$p" 2>/dev/null || true; done
-  [[ -n "$GUI_PID" ]] && kill "$GUI_PID" 2>/dev/null || true
+  for p in ${HELPER_PIDS[@]+"${HELPER_PIDS[@]}"} ${GUI_PID:+"$GUI_PID"}; do
+    pkill -P "$p" 2>/dev/null || true   # the supervised child first, then its supervisor loop
+    kill "$p" 2>/dev/null || true
+  done
   [[ -n "$PANEL_PID" ]] && kill -TERM "$PANEL_PID" 2>/dev/null || true
   wait 2>/dev/null || true
   rm -rf "$TMP"
@@ -96,16 +98,31 @@ if [[ "$GUI" == 1 ]]; then
   [[ -n "$VIEW_PORT" ]] || VIEW_PORT="$(python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])')"
   printf 'prismatic_mcp start %s %s\n' "$VIEW_PORT" "$VIEW_TOKEN" > "$CPD/scripts/autoexec.scr"
   echo "==> GUI client ($RES, fullscreen=$FULL, own MCP on 127.0.0.1:$VIEW_PORT) joining 127.0.0.1:$GAME_PORT as a spectator"
-  HOME="$CHOME" "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" > "$TMP/client.log" 2>&1 &
+  # Supervised: the client comes back whenever it exits (closed window, crash) while the panel runs;
+  # its autoexec.scr writes a fresh token file each time, which the director rereads on every call.
+  (
+    while kill -0 "$PANEL_PID" 2>/dev/null; do
+      HOME="$CHOME" "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" >> "$TMP/client.log" 2>&1
+      echo "client exited with $?; restarting in 3 s" >> "$TMP/client.log"
+      sleep 3
+    done
+  ) &
   GUI_PID=$!
   RHAI="$ROOT_DIR/tools/research/mcp-rhai/target/release/mcp-rhai"
   if [[ "$DIRECTOR" == 1 && -x "$RHAI" ]]; then
     for ((i = 0; i < 60; i++)); do [[ -s "$VIEW_TOKEN" ]] && break; sleep 1; done
     if [[ -s "$VIEW_TOKEN" ]]; then
       echo "==> director (camera) and narrator (in-game chat)"
-      MCP_VIEW_TOKEN="$VIEW_TOKEN" "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/director.rhai" > "$TMP/director.log" 2>&1 &
+      # Supervised the same way: a helper that stops is started again.
+      ( while kill -0 "$PANEL_PID" 2>/dev/null; do
+          MCP_VIEW_TOKEN="$VIEW_TOKEN" "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/director.rhai" >> "$TMP/director.log" 2>&1
+          sleep 3
+        done ) &
       HELPER_PIDS+=($!)
-      "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/narrator.rhai" > "$TMP/narrator.log" 2>&1 &
+      ( while kill -0 "$PANEL_PID" 2>/dev/null; do
+          "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/narrator.rhai" >> "$TMP/narrator.log" 2>&1
+          sleep 3
+        done ) &
       HELPER_PIDS+=($!)
       echo "    logs: $TMP/director.log $TMP/narrator.log"
     else
