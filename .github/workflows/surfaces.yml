@@ -29,16 +29,16 @@ jobs:
       publish: ${{ env.PUBLISH }}
     steps:
       - name: "Checkout (full history, no blobs: the charts read the commit log)"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           filter: blob:none
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "22"
           cache: npm
@@ -55,13 +55,13 @@ jobs:
 
       - name: Upload the site
         if: env.PUBLISH == 'true'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: target/web/site
 
       - name: Upload the wiki
         if: env.PUBLISH == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: wiki
           path: target/web/wiki
@@ -83,7 +83,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
   wiki:
     name: Publish the wiki
@@ -96,7 +96,7 @@ jobs:
       group: wiki
       cancel-in-progress: false
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: wiki
           path: wiki
