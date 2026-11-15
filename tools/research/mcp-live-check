@@ -1,0 +1,194 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY live check of the embedded MCP server (ADR 0008, issue I0017).
+#
+# Starts a headless dedicated server from an MCP-enabled build, starts the MCP server through
+# the console, and drives it over loopback HTTP the way an MCP client would. It checks the
+# security defaults (bearer auth, Origin rejection), live reads, and the approval state
+# machine of the one gated mutation (openttd.game.set_pause): pending -> operator approval in
+# the console -> execution through the command system with the effect observed -> replay and
+# changed arguments refused.
+#
+# The bearer token is read from the server's console output into a temporary directory that
+# is removed on exit; it is never printed or written anywhere else.
+#
+# Usage: tools/research/mcp-live-check [--bin <openttd>] [--port <port>]
+#   --bin   an openttd binary built with OPTION_PRISMATIC_MCP_SERVER=ON
+#           (default: build-gate-research/openttd, as tools/gate.sh research leaves it)
+#   --port  the loopback port for the MCP server (default 18731)
+# Exit status: 0 every check passed, 1 a check failed, 2 usage, 3 a prerequisite is missing.
+# Needs a base graphics set (see research/baseset-prerequisite-macos.md), curl and python3.
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+BIN="$ROOT_DIR/build-gate-research/openttd"
+PORT=18731
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --bin) BIN="${2:?--bin needs a path}"; shift 2 ;;
+    --port) PORT="${2:?--port needs a number}"; shift 2 ;;
+    -h|--help) sed -n '2,21p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "mcp-live-check: unknown option: $1" >&2; exit 2 ;;
+  esac
+done
+
+for tool in curl python3 strings; do
+  command -v "$tool" >/dev/null 2>&1 || { echo "mcp-live-check: $tool is required" >&2; exit 3; }
+done
+[[ -x "$BIN" ]] || { echo "mcp-live-check: no executable at $BIN (run tools/gate.sh research)" >&2; exit 3; }
+if [[ "$(strings "$BIN" | grep -c 'prismatic_mcp')" -eq 0 ]]; then
+  echo "mcp-live-check: $BIN was not built with OPTION_PRISMATIC_MCP_SERVER=ON" >&2
+  exit 3
+fi
+
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-live-check.XXXXXX")"
+FIFO="$TMP/console"
+LOG="$TMP/server.log"
+SERVER_PID=""
+cleanup() {
+  if [[ -n "$SERVER_PID" ]] && kill -0 "$SERVER_PID" 2>/dev/null; then
+    printf 'quit\n' >&3 2>/dev/null || true
+    sleep 1
+    kill "$SERVER_PID" 2>/dev/null || true
+  fi
+  exec 3>&- 2>/dev/null || true
+  rm -rf "$TMP"
+}
+trap cleanup EXIT
+
+PASS=0
+FAIL=0
+check() {
+  local desc="$1" ok="$2"
+  if [[ "$ok" == 1 ]]; then
+    PASS=$((PASS + 1)); printf 'PASS  %s\n' "$desc"
+  else
+    FAIL=$((FAIL + 1)); printf 'FAIL  %s\n' "$desc"
+  fi
+}
+
+# Wait up to $2 seconds for a fixed string in the server log.
+wait_for() {
+  local needle="$1" limit="$2" i
+  for ((i = 0; i < limit * 4; i++)); do
+    grep -qF -- "$needle" "$LOG" 2>/dev/null && return 0
+    sleep 0.25
+  done
+  return 1
+}
+
+console() { printf '%s\n' "$1" >&3; }
+
+ENDPOINT="http://127.0.0.1:$PORT/mcp"
+# rpc <token> <json> [extra curl args...]: prints "<http status> <body>"
+rpc() {
+  local token="$1" body="$2"; shift 2
+  local -a auth=()
+  [[ -n "$token" ]] && auth=(-H "Authorization: Bearer $token")
+  curl -s -o "$TMP/body" -w '%{http_code}' -X POST "$ENDPOINT" \
+    -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+    ${auth[@]+"${auth[@]}"} "$@" --data "$body" || true
+  printf ' '
+  cat "$TMP/body" 2>/dev/null || true
+}
+
+# json_get <json> <python expression over d>: prints the value, empty on any error
+json_get() {
+  python3 -I -c 'import json, sys
+try:
+    d = json.loads(sys.argv[1])
+    v = eval(sys.argv[2], {"d": d, "json": json})
+    print(v if not isinstance(v, (dict, list)) else json.dumps(v))
+except Exception:
+    pass' "$1" "$2"
+}
+
+# The text payload of a tools/call result, parsed: prints the value of <key> in it.
+tool_field() {
+  json_get "$1" "json.loads(d['result']['content'][0]['text']).get('$2')"
+}
+
+echo "==> starting $BIN headless (dedicated, new random map)"
+mkfifo "$FIFO"
+"$BIN" -D -x -g -G 1 -c "$TMP/openttd.cfg" -d net=1 < "$FIFO" > "$LOG" 2>&1 &
+SERVER_PID=$!
+exec 3>"$FIFO"
+
+# The console reads stdin only once the game loop runs, and a command sent before that can be
+# lost (knowledge dedicated-server-stdin-startup-race), so repeat the start until it answers.
+started=0
+for ((i = 0; i < 60; i++)); do
+  kill -0 "$SERVER_PID" 2>/dev/null || break
+  console "prismatic_mcp start $PORT"
+  if wait_for "MCP server started" 2 || wait_for "already running" 0; then started=1; break; fi
+  if grep -qF "MCP server failed to start" "$LOG"; then break; fi
+done
+if [[ "$started" -ne 1 ]]; then
+  echo "mcp-live-check: the MCP server did not start; last log lines:" >&2
+  tail -5 "$LOG" >&2
+  exit 1
+fi
+TOKEN="$(sed -nE 's/.*Bearer token \(local operator only, not logged\): ([0-9a-fA-F]{32,}).*/\1/p' "$LOG" | tail -1)"
+check "the console hands the operator a bearer token" "$([[ -n "$TOKEN" ]] && echo 1 || echo 0)"
+
+PING='{"jsonrpc":"2.0","id":1,"method":"ping"}'
+out="$(rpc "" "$PING")"
+check "a request without a token is refused with 401" "$([[ "${out%% *}" == 401 ]] && echo 1 || echo 0)"
+out="$(rpc "deadbeef" "$PING")"
+check "a request with a wrong token is refused with 401" "$([[ "${out%% *}" == 401 ]] && echo 1 || echo 0)"
+out="$(rpc "$TOKEN" "$PING" -H 'Origin: http://evil.example')"
+check "a request carrying an Origin header is refused with 403" "$([[ "${out%% *}" == 403 ]] && echo 1 || echo 0)"
+
+out="$(rpc "$TOKEN" '{"jsonrpc":"2.0","id":2,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"mcp-live-check","version":"1"}}}')"
+proto="$(json_get "${out#* }" "d['result']['protocolVersion']")"
+check "initialize negotiates protocol 2025-11-25 (got: ${proto:-none})" "$([[ "${out%% *}" == 200 && "$proto" == 2025-11-25 ]] && echo 1 || echo 0)"
+
+READ_STATE='{"jsonrpc":"2.0","id":3,"method":"resources/read","params":{"uri":"openttd://game/state"}}'
+state_field() { json_get "$1" "json.loads(d['result']['contents'][0]['text'])['data']['$2']"; }
+# The envelope every resource answer carries (game_tick, game_date, source_revision, ...).
+envelope_field() { json_get "$1" "json.loads(d['result']['contents'][0]['text'])['$2']"; }
+out1="$(rpc "$TOKEN" "$READ_STATE")"
+sleep 1
+out2="$(rpc "$TOKEN" "$READ_STATE")"
+t1="$(envelope_field "${out1#* }" game_tick)"; t2="$(envelope_field "${out2#* }" game_tick)"
+check "resources/read returns live state: game_tick advances (${t1:-?} -> ${t2:-?})" \
+  "$([[ -n "$t1" && -n "$t2" && "$t2" -gt "$t1" ]] && echo 1 || echo 0)"
+paused0="$(state_field "${out2#* }" paused)"
+check "the game starts unpaused (paused=${paused0:-?})" "$([[ "$paused0" == False ]] && echo 1 || echo 0)"
+
+PAUSE='{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"openttd.game.set_pause","arguments":{"pause":true}}}'
+out="$(rpc "$TOKEN" "$PAUSE")"
+status="$(tool_field "${out#* }" status)"; approval="$(tool_field "${out#* }" approval_id)"
+check "a mutation first returns pending_approval (status=${status:-?}, approval #${approval:-?})" \
+  "$([[ "$status" == pending_approval && -n "$approval" ]] && echo 1 || echo 0)"
+state_now="$(state_field "$(rpc "$TOKEN" "$READ_STATE" | cut -d' ' -f2-)" paused)"
+check "nothing changed before the approval (paused=${state_now:-?})" "$([[ "$state_now" == False ]] && echo 1 || echo 0)"
+
+console "prismatic_mcp approve $approval"
+sleep 2
+CHANGED='{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"openttd.game.set_pause","arguments":{"pause":false}}}'
+out="$(rpc "$TOKEN" "$CHANGED")"
+status="$(tool_field "${out#* }" status)"
+check "changed arguments do not ride on the approval (status=${status:-?})" \
+  "$([[ "$status" == pending_approval ]] && echo 1 || echo 0)"
+
+out="$(rpc "$TOKEN" "$PAUSE")"
+status="$(tool_field "${out#* }" status)"; result="$(tool_field "${out#* }" command_result)"
+check "the approved call executes through the command system (status=${status:-?}, command_result=${result:-?})" \
+  "$([[ "$status" == executed && "$result" == succeeded ]] && echo 1 || echo 0)"
+sleep 1
+paused1="$(state_field "$(rpc "$TOKEN" "$READ_STATE" | cut -d' ' -f2-)" paused)"
+check "the effect is observed in the game (paused=${paused1:-?})" "$([[ "$paused1" == True ]] && echo 1 || echo 0)"
+
+out="$(rpc "$TOKEN" "$PAUSE")"
+status="$(tool_field "${out#* }" status)"
+check "replaying the approved call needs a fresh approval (status=${status:-?})" \
+  "$([[ "$status" == pending_approval ]] && echo 1 || echo 0)"
+
+console "prismatic_mcp stop"
+sleep 1
+code="$(curl -s -o /dev/null -w '%{http_code}' -X POST "$ENDPOINT" --data "$PING" || true)"
+check "after prismatic_mcp stop the listener is closed (http=$code)" "$([[ "$code" == 000 ]] && echo 1 || echo 0)"
+
+printf '\nmcp-live-check: %d passed, %d failed\n' "$PASS" "$FAIL"
+[[ "$FAIL" -eq 0 ]]

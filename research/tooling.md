@@ -228,3 +228,12 @@ what an external orchestrator does with a completed `manifest.json` beyond readi
 path outside that root (including a `..`-shaped `--experiment-id`, rejected at argument-parsing
 time). It does not touch build directories (`build-research*`) — remove those manually if a truly
 fresh configure is needed, per the Troubleshooting note above.
+
+## Embedded MCP server checks (research-only)
+
+With `OPTION_PRISMATIC_MCP_SERVER=ON` (which requires `OPTION_RESEARCH_INSTRUMENTATION=ON`),
+`tools/gate.sh research` also runs the `[prismatic_mcp]` unit tests, and
+`tools/research/mcp-live-check [--bin <openttd>] [--port <port>]` drives a headless server over
+loopback MCP: auth and Origin defaults, live reads, and the approval state machine of the one
+gated mutation. See `research/prismatic-mcp/10-in-game-runbook.md`. It is not yet a build
+profile of this CLI and leaves no manifest (issue I0027).

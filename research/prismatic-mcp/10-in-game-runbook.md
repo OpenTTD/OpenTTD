@@ -3,7 +3,24 @@
 The read-only vertical, executed against a **real running OpenTTD** (MCP-enabled dedicated server,
 loaded from a fixture savegame) on 2026-07-24. Every line below is captured output, not illustration.
 
-## Setup
+## Scripted check (2026-11-15, after the rebase onto upstream)
+
+The steps below are now one script against the binary `tools/gate.sh research` builds (system
+compiler, both research options ON; Homebrew LLVM is no longer forced, see ADR 0006):
+
+```bash
+tools/gate.sh research          # build-gate-research/, ctest, [prismatic_mcp] unit tests
+tools/research/mcp-live-check   # headless server + MCP over loopback, 14 checks
+```
+
+It covers auth (401 without or with a wrong token, 403 with an `Origin` header), `initialize`
+(2025-11-25), live reads (`game_tick` advances between two reads), and the approval state
+machine of `openttd.game.set_pause`: pending, operator approval in the console, execution
+through the command system with `paused` observed true, a replay and changed arguments both
+sent back to `pending_approval`, and the listener closed after `prismatic_mcp stop`. It needs
+no fixture savegame (a new random map) and never prints the bearer token. Issue I0017.
+
+## Setup (original manual run, 2026-07-24)
 
 ```bash
 # Build (research instrumentation + MCP, Homebrew LLVM toolchain)
