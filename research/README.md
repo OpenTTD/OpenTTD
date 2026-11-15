@@ -11,9 +11,10 @@ Four layers, increasing in cost. Match the layer to the size of the change — d
 | Smoke | `tools/gate.sh smoke` | cheapest | fast iteration while actively editing |
 | Change | `tools/gate.sh change` | standard | before marking a task/experiment done |
 | Full | `tools/gate.sh full` | expensive | significant changes, or establishing an experimental baseline |
+| Research | `tools/gate.sh research` | standard+ | a change to code behind `OPTION_RESEARCH_INSTRUMENTATION` (or the MCP server option), which the other tiers never compile |
 | Research/evaluation | this directory | n/a | records what was actually done and validated for an experiment |
 
-`tools/gate.sh --help` documents the exact commands each layer runs. All three are thin wrappers around this repo's own existing CMake/CTest toolchain (see `CLAUDE.md`) — there is no separate lint/format gate because no such tool (e.g. a `.clang-format` config) currently exists in this codebase; don't fake one.
+`tools/gate.sh --help` documents the exact commands each layer runs. A tier that had to leave the `regression_*` cases out because no base graphics set is reachable says so, reports them as NOT RUN and exits 3 (PARTIAL), never PASS -- see [baseset-prerequisite-macos.md](./baseset-prerequisite-macos.md). All three are thin wrappers around this repo's own existing CMake/CTest toolchain (see `CLAUDE.md`) — there is no separate lint/format gate because no such tool (e.g. a `.clang-format` config) currently exists in this codebase; don't fake one.
 
 ## Internals, debugging, and instrumentation
 

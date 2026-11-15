@@ -21,4 +21,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-15T19:24:42Z
+started_at: 2026-11-15T19:24:33Z
+started_event: sha256:1c09b279a9fc957c82a38f72e79f031a1f7eb6891a7a51e966dc88bb93272abf
+verified_at: 2026-11-15T19:24:36Z
+verified_event: sha256:39fef576296d41a753eeb824044738820d9bb52052bf0fd048639a7a20174f9d
+completed_at: 2026-11-15T19:24:42Z
+completed_event: sha256:1c81f51679645267508736069b9b7137fab39105b8758937862b361f53cbaa90
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "HOME=<empty dir> tools/gate.sh change; tools/gate.sh change"
+    result: "without a base set: ctest 94/94 PASS with -E '^regression_', regression_* reported NOT RUN with a pointer to research/baseset-prerequisite-macos.md, change: PARTIAL (exit 3), no 120 s timeouts; with OpenGFX 8.0 in ~/Documents/OpenTTD/baseset: 98/98, change: PASS (exit 0); orig_*.obg metadata in build/baseset correctly not counted as a usable set"
+    commit: b35c920e26c094f7605cca8792bcb5e94742cfb6
+    recorded_at: 2026-11-15T19:24:38Z

@@ -26,7 +26,8 @@ baseline-release binary), and a runtime flag cannot.
 - A diagnostic interface binds to loopback only unless there is an explicit reason and
   protection for anything else.
 - Verify: a change to gated code is built with the gate ON, because a default build does not
-  compile it.
+  compile it: `tools/gate.sh research` (I0022). `tools/gate.sh change` names that tier when the
+  change touches a file carrying a research guard.
 
 # Failure behaviour
 

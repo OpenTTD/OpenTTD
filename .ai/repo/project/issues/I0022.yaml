@@ -23,4 +23,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-15T19:24:31Z
+started_at: 2026-11-15T19:10:20Z
+started_event: sha256:1007d39cf4029fd8140e28eb4d053da1565f4cd59d451224bfbff59c4085f9c8
+verified_at: 2026-11-15T19:24:23Z
+verified_event: sha256:c7860526356b74ed9a3ed5a280e350acc38c00a24b34362bb2f9f3213931dc4b
+completed_at: 2026-11-15T19:24:31Z
+completed_event: sha256:249022a7168e6038b601390d077a9381ca84c229ca8def894d8a9da093ddc75b
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research"
+    result: "build-gate-research/ configured with OPTION_RESEARCH_INSTRUMENTATION=ON (OPTION_PRISMATIC_MCP_SERVER not declared on master yet, so not added); research_status present in the binary (2 matches); ctest 98/98 PASS; research: PASS. The first run refused a good binary: grep -q under pipefail (status 141), fixed with grep -c (knowledge grep-q-under-pipefail-is-a-false-negative). tools/gate.sh change names the research tier only for src/, cmake/ or CMakeLists.txt files with a research guard (probe file verified, no false positive on docs)"
+    commit: b35c920e26c094f7605cca8792bcb5e94742cfb6
+    recorded_at: 2026-11-15T19:24:26Z

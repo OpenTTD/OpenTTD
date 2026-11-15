@@ -45,6 +45,7 @@ Upstream API drift breaks exactly that code, so verify both builds:
 
 ```bash
 tools/gate.sh change                                   # default build + full ctest
+tools/gate.sh research                                 # the same with the research options ON
 E=rebase-verify-$(date +%F)
 tools/research/research init --experiment-id "$E"
 tools/research/research configure --experiment-id "$E" --profile research-debug

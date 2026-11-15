@@ -60,3 +60,7 @@ Full build + both gate tiers PASS at 98/98 once a base graphics set is present. 
 ## Status
 
 `PASS` — build and both applicable gate tiers (`change`, `full`) ran to exit 0 at 98/98, and the stated hypothesis (missing base set, not a defect, caused the regression timeouts) was confirmed and resolved.
+
+## Gate preflight (added 2026-11-15)
+
+`tools/gate.sh` now checks for a usable base graphics set before running ctest (OpenGFX-style `.obg`, loose or in a `.tar`, or the original `trg1r.grf`, on the personal, shared and build search paths; the `orig_*.obg` metadata the build copies into `build/baseset/` does not count). Without one it runs every other case, reports `regression_*` as NOT RUN with a pointer here, and exits 3 (PARTIAL) instead of hanging for 120 s per case. Issue I0028.
