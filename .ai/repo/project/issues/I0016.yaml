@@ -1,0 +1,43 @@
+id: I0016
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Generate the MCP contributor docs from one catalogue and gate their freshness"
+slug: mcp-docs-freshness-gate
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Keep README, AGENTS.md, CLAUDE.md and the site in step with the MCP server."
+why: "The MCP work was mentioned nowhere and its status line was already stale."
+scope:
+- research/prismatic-mcp/contributor-catalog.json
+- tools/research/generate_prismatic_docs.py
+- tools/check-prismatic-docs.sh
+- tools/gate.sh
+- zola/**
+- README.md
+- AGENTS.md
+- CLAUDE.md
+depends_on: []
+serves:
+- "an-agent-plays-the-game-through-governed-channels#mcp-is-on-master"
+acceptance_criteria:
+- "tools/check-prismatic-docs.sh fails on a desynchronised catalogue"
+- tools/gate.sh change runs the check
+validation:
+- tools/check-prismatic-docs.sh
+- tools/gate.sh change
+evidence_required:
+- recorded_validation
+created_at: '2026-07-30'
+updated_at: '2026-11-15'
+started_at: '2026-07-30T12:15:04Z'
+verified_at: '2026-07-30T12:31:04Z'
+unsealed_stamps:
+- started_at 2026-07-30T12:15:04Z
+- verified_at 2026-07-30T12:31:04Z
+evidence:
+- covers: recorded_validation
+  type: test
+  command: tools/gate.sh change
+  result: "drift deliberately introduced and caught; smoke and change PASS 98/98; live re-verification against a rebuilt binary (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 5129fc214aa96c0732a51070e0bf731d66e82529
+  recorded_at: '2026-07-30T12:31:04Z'

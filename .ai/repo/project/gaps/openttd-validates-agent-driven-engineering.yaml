@@ -1,0 +1,57 @@
+intent: openttd-validates-agent-driven-engineering
+observed_at: 81b26a6497a
+recorded_by: "claude-code (Opus 5.5, session cd8d20a8, primary checkout master) from git, the gate runs and majordomus doctor on 2026-11-15"
+recorded_at: '2026-11-15'
+observations:
+- id: rules-in-agents-and-ai
+  statement: "The ground rules are in AGENTS.md and, since this session, as seven project rules under .ai/repo/rules/project/; CLAUDE.md and GEMINI.md carry the generated bootstrap pointing to .ai/"
+  source: file:AGENTS.md
+- id: change-gate-98
+  statement: "tools/gate.sh change on the rebased tree: 98/98 ctest PASS once OpenGFX was installed; 94/98 before it (four regression cases hung or failed)"
+  source: "file:.ai/repo/knowledge/curated/macos-missing-baseset-hangs-headless-runs.md"
+- id: rebased-not-pushed
+  statement: "master is 0 commits behind upstream/master locally; origin/master still holds the pre-rebase history until the force push"
+  source: "file:.ai/repo/knowledge/curated/upstream-rebase-2026-11-15.md"
+- id: doctor-clean
+  statement: "majordomus doctor reports 0 failures with the hooks wired; the doctor run exceeds its 20 s budget"
+  source: file:.ai/repo/policy.yaml
+- id: pages-off
+  statement: "GitHub Pages is not enabled for korczis/OpenTTD, so the site workflow has nowhere to deploy"
+  source: file:.github/workflows/gh-pages.yml
+- id: readme-section-0
+  statement: "README.md section 0.0 states purpose, goals, non-goals, the Prismatic relationship and the upstream-versus-fork tree"
+  source: file:README.md
+conditions:
+- criterion: ground-rules-are-one-source
+  state: satisfied
+  because: "AGENTS.md and the project rules state them; CLAUDE.md's hand-written research section still restates part of AGENTS.md"
+  observations:
+  - rules-in-agents-and-ai
+- criterion: a-change-has-a-tier
+  state: satisfied
+  because: "measured on 2026-11-15 on the rebased tree, with the base set present"
+  observations:
+  - change-gate-98
+- criterion: the-fork-tracks-upstream
+  state: missing
+  because: locally satisfied; not yet published to origin
+  observations:
+  - rebased-not-pushed
+- criterion: the-layer-is-supervised
+  state: missing
+  because: "doctor is clean, but intent validate still requires the critiques and the layer is uncommitted"
+  observations:
+  - doctor-clean
+- criterion: the-fork-states-its-purpose
+  state: satisfied
+  because: the section exists on master
+  observations:
+  - readme-section-0
+- criterion: the-fork-is-published
+  state: missing
+  because: Pages is not enabled
+  observations:
+  - pages-off
+risks:
+- "The base-set prerequisite is outside the repository; a fresh machine reproduces the hang"
+- "Every rebase rewrites the published master and strands branches cut from the old base"

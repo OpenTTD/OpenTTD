@@ -1,0 +1,44 @@
+id: an-agent-plays-the-game-through-governed-channels
+title: "An external agent observes and steers a company only through governed channels that keep the simulation deterministic"
+statement: "Prismatic, or any external agent, observes a running OpenTTD game and steers a company through channels that never bypass the command system: a standalone bridge that drives a Company AI over the admin network, and an embedded loopback MCP server whose every mutation is bound to an operator's approval of its exact arguments and is executed as a normal command."
+invariants:
+- "Game state changes only through registered commands (rule project.game-state-mutates-only-through-commands)"
+- "Agent channels bind to loopback or the admin network, never a public interface without protection"
+- No savegame field is added for an agent channel
+non_goals:
+- Autonomous mutation without an operator's approval
+- A new command added only for an agent's convenience
+milestones:
+- prismatic-steers-a-company-through-the-bridge
+- an-agent-reaches-the-game-over-mcp
+satisfaction:
+- id: the-bridge-steers-a-company
+  criterion: "A Company AI started over rcon by the bridge builds a route on a live server"
+  evidence: command
+  ref: "tools/research/bridge-live-check (written by I0025): polls /companies until vehicles > 0"
+- id: a-decision-contract-is-defined
+  criterion: "/decision/pull has a written request and response schema in this repository, with example fixtures that validate against it"
+  evidence: command
+  ref: "python3 -m jsonschema -i research/prismatic-bridge/decision-contract.example.json research/prismatic-bridge/decision-contract.schema.json"
+- id: the-bridge-client-placement-is-decided
+  criterion: "An accepted ADR records where the bridge's admin-protocol client lives and in what language"
+  evidence: command
+  ref: majordomus adr list --status accepted
+- id: mcp-reads-live-state
+  criterion: "An MCP client reads live pool state over loopback with bearer auth"
+  evidence: command
+  ref: "tools/research/mcp-live-check (written by I0017): initialize + resources/read with good, missing and wrong bearer and an Origin header"
+- id: mcp-mutation-is-approved-and-commanded
+  criterion: "The digest and auth helpers and the approval state machine (submit, approve, execute via Command<>::Post; replay and changed arguments refused) are covered by tests that run"
+  evidence: command
+  ref: "build-mcp/openttd_test '[prismatic_mcp]' && ctest --test-dir build-mcp --no-tests=error -R 'prismatic_mcp'"
+- id: mcp-is-on-master
+  criterion: "The MCP server series is on master on top of the current upstream and builds with both options ON"
+  evidence: command
+  ref: "git merge-base --is-ancestor research/prismatic-mcp-server master"
+- id: agent-reads-do-not-perturb-the-game
+  criterion: "A seeded run hammered with MCP reads ends in the same game state as an idle run of the same seed"
+  evidence: command
+  ref: "tools/research/research report --experiment-id <determinism-ab-id>"
+created_at: 2026-11-15
+updated_at: '2026-11-15'

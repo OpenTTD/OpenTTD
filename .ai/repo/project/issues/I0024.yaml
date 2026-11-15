@@ -1,0 +1,27 @@
+id: I0024
+milestone: internals-are-observable-with-recorded-provenance
+title: "Validate the experiment manifest against its JSON Schema in the research gate, and fix the status taxonomy"
+slug: manifest-schema-validation
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Make the research gate check what the milestone says it checks."
+why: "gate_research checks JSON syntax and a few fields; nothing reads experiment-manifest.schema.json, and VALID_STATUSES accepts INCONCLUSIVE, which the taxonomy does not define (critiques manifest-schema-validation-not-implemented, tooling-accepts-sixth-status)."
+scope:
+- tools/research/lib/manifest.sh
+- tools/research/test/research_test.sh
+- research/README.md
+- research/tooling.md
+depends_on: []
+serves:
+- "internal-state-is-observable-reproducibly#an-experiment-records-itself"
+acceptance_criteria:
+- "gate_research validates the manifest against the schema and fails closed when no validator exists"
+- "research_test.sh has a case with an invalid manifest that the gate rejects"
+- "INCONCLUSIVE is either removed or defined in research/README.md and the rule"
+validation:
+- bash tools/research/test/research_test.sh
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

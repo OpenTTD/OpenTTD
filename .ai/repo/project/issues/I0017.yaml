@@ -1,0 +1,35 @@
+id: I0017
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Rebase research/prismatic-mcp-server onto the rebased master, re-verify and merge"
+slug: mcp-lands-on-master
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Land the five MCP commits on master on top of the current upstream, re-verified there."
+why: "The branch carries 21 pre-rebase duplicates of the fork series under its 5 MCP commits, and upstream changed src/openttd.cpp, src/command_func.h and src/network/core/address.h since its base."
+scope:
+- src/prismatic_mcp/**
+- src/console_cmds.cpp
+- src/openttd.cpp
+- cmake/Options.cmake
+- research/prismatic-mcp/**
+depends_on:
+- I0021
+serves:
+- "an-agent-plays-the-game-through-governed-channels#mcp-is-on-master"
+acceptance_criteria:
+- "The branch's local head is backed up (backup/research-prismatic-mcp-server-pre-rebase-<date>) and pushed before the rewrite"
+- "git rebase --onto master 0822f6b762 research/prismatic-mcp-server replays exactly 5 patches; git range-diff over those 5 is reviewed"
+- "A build with OPTION_RESEARCH_INSTRUMENTATION=ON and OPTION_PRISMATIC_MCP_SERVER=ON passes with the system compiler"
+- "build-mcp/openttd_test '[prismatic_mcp]' passes, and ctest runs with --no-tests=error"
+- "tools/research/mcp-live-check passes against a dedicated server of the rebased binary"
+- "The acceptance criteria of I0013 to I0016 are re-checked on the rebased tree and recorded as evidence here"
+- master contains the series
+validation:
+- build-mcp/openttd_test '[prismatic_mcp]'
+- tools/research/mcp-live-check
+- tools/gate.sh change
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

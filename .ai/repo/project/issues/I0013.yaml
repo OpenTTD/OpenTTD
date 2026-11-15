@@ -1,0 +1,40 @@
+id: I0013
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Embed a compile-gated loopback MCP server with read-only live resources"
+slug: mcp-read-only-vertical
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A connectable MCP server inside OpenTTD with strong local-security defaults."
+why: Agents need typed live state without a sidecar (ADR 0008).
+scope:
+- cmake/Options.cmake
+- src/prismatic_mcp/**
+- src/openttd.cpp
+- src/console_cmds.cpp
+- research/prismatic-mcp/**
+depends_on: []
+serves:
+- "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+- OFF builds compile nothing of it
+- Loopback bind, bearer token, Origin rejection
+- "initialize, ping, resources/list and resources/read over four live resources"
+validation:
+- "cmake -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON"
+evidence_required:
+- recorded_validation
+created_at: '2026-07-24'
+updated_at: '2026-07-24T20:00:00Z'
+started_at: '2026-07-24T20:00:00Z'
+verified_at: '2026-07-24T20:00:00Z'
+unsealed_stamps:
+- started_at 2026-07-24T20:00:00Z
+- verified_at 2026-07-24T20:00:00Z
+evidence:
+- covers: recorded_validation
+  type: manual
+  command: git show -s 0a49a3dbb8
+  result: "a real MCP client read live state over HTTP; auth, Origin, token rotation and clean stop verified; MCP-OFF build still builds (no byte comparison was made) (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 0a49a3dbb85e7b87daf4cd16097040e433de623a
+  recorded_at: '2026-07-24T20:00:00Z'

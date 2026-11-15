@@ -1,0 +1,40 @@
+id: I0004
+milestone: internals-are-observable-with-recorded-provenance
+title: "Write the research-mode policy for internals, debug builds and instrumentation"
+slug: research-mode-policy
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Permit scoped access to internals and define how research code is labelled and contained."
+why: "Upstream norms were being read as a ban on looking inside the simulation (ADR 0004)."
+scope:
+- AGENTS.md
+- CLAUDE.md
+- research/README.md
+- research/experiment-template.md
+depends_on: []
+serves:
+- "internal-state-is-observable-reproducibly#instrumentation-is-contained"
+acceptance_criteria:
+- "AGENTS.md has Allowed, What this does not mean, Labeling and containment, Reporting"
+- "The experiment template asks for the build and runtime configuration"
+validation:
+- grep -n 'Research-mode access to internals' AGENTS.md
+evidence_required:
+- recorded_validation
+created_at: '2026-07-23'
+updated_at: '2026-07-23T22:24:38Z'
+started_at: '2026-07-23T22:24:38Z'
+verified_at: '2026-07-23T22:24:38Z'
+completed_at: '2026-07-23T22:24:38Z'
+unsealed_stamps:
+- started_at 2026-07-23T22:24:38Z
+- verified_at 2026-07-23T22:24:38Z
+- completed_at 2026-07-23T22:24:38Z
+evidence:
+- covers: recorded_validation
+  type: artifact
+  command: git show -s 00e4f6d53b
+  result: "policy added to AGENTS.md (43 lines) and CLAUDE.md (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 00e4f6d53ba020ccfbef3876fed71b511b4560b1
+  recorded_at: '2026-07-23T22:24:38Z'

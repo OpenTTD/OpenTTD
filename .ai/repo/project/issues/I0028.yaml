@@ -1,0 +1,24 @@
+id: I0028
+milestone: a-change-is-validated-in-cost-tiers
+title: "Fail fast in tools/gate.sh when no base graphics set is reachable"
+slug: gate-baseset-preflight
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Turn the macOS base-set hang into an immediate, explained result."
+why: "Without a base set the gate burns 120 s timeouts and reports 94/98 with no hint (critique gate-pass-depends-on-unchecked-baseset)."
+scope:
+- tools/gate.sh
+- research/baseset-prerequisite-macos.md
+depends_on: []
+serves:
+- "openttd-validates-agent-driven-engineering#a-change-has-a-tier"
+acceptance_criteria:
+- "With no base set on any search path, the gate reports the regression subset as NOT RUN and points to research/baseset-prerequisite-macos.md"
+- With OpenGFX present, behaviour is unchanged
+validation:
+- tools/gate.sh change
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

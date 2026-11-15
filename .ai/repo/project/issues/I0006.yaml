@@ -1,0 +1,43 @@
+id: I0006
+milestone: internals-are-observable-with-recorded-provenance
+title: "Build tools/research/research: profiles, headless capture, manifest and evidence bundle"
+slug: research-cli
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Drive an experiment from one CLI that records every command and generates the report."
+why: "An experiment's configuration must be recorded, not remembered (ADR 0005)."
+scope:
+- tools/research/**
+- research/tooling.md
+- AGENTS.md
+- CLAUDE.md
+- README.md
+depends_on: []
+serves:
+- "internal-state-is-observable-reproducibly#an-experiment-records-itself"
+acceptance_criteria:
+- "init, configure, build, run, validate, report and clean exist"
+- "A build records its profile facts even against a directory configured by another experiment"
+- The CLI's own suite passes
+- The stdin start-up race is documented
+validation:
+- bash tools/research/test/research_test.sh
+evidence_required:
+- recorded_validation
+created_at: '2026-07-23'
+updated_at: '2026-07-23T23:53:44Z'
+started_at: '2026-07-23T23:23:09Z'
+verified_at: '2026-07-23T23:53:44Z'
+completed_at: '2026-07-23T23:53:44Z'
+unsealed_stamps:
+- started_at 2026-07-23T23:23:09Z
+- verified_at 2026-07-23T23:53:44Z
+- completed_at 2026-07-23T23:53:44Z
+evidence:
+- covers: recorded_validation
+  type: test
+  command: bash tools/research/test/research_test.sh
+  result: "research_test.sh 28/28; init->run->report cycle PASS against a live headless server (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 84be696a48cbe847ce3a72a6fae28c26e387b861
+  recorded_at: '2026-07-23T23:53:44Z'

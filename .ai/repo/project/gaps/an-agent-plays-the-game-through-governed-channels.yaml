@@ -1,0 +1,58 @@
+intent: an-agent-plays-the-game-through-governed-channels
+observed_at: 81b26a6497a
+recorded_by: "claude-code (Opus 5.5, session cd8d20a8, primary checkout master) from git and research/prismatic-bridge/ARCHITECTURE.md"
+recorded_at: '2026-11-15'
+observations:
+- id: bridge-phase-2
+  statement: "ARCHITECTURE.md records Phase 2 done: buses 0 to 3 and company_value 1 to 11025 on a live server; the measurement was taken in ~/dev/openttd-prismatic-bridge, not here"
+  source: file:research/prismatic-bridge/ARCHITECTURE.md
+- id: contract-undefined
+  statement: "/decision/pull has no defined contract beyond {ai, company_id, settings}; Phase 3 is not started"
+  source: file:research/prismatic-bridge/ARCHITECTURE.md
+- id: mcp-on-branch
+  statement: "The MCP server (5 commits) is on research/prismatic-mcp-server, cut from the pre-rebase master; master holds none of it"
+  source: "file:.ai/repo/adrs/0008-an-agent-reaches-the-game-through-an-embedded-loopback-mcp-s.md"
+- id: no-placement-adr
+  statement: "ARCHITECTURE.md section 3.1 lays out the bridge client options (keep Python, PyO3, Rust rewrite, Elixir+Rustler) and picks none"
+  source: file:research/prismatic-bridge/ARCHITECTURE.md
+- id: ab-not-run
+  statement: "The MCP branch lists the read-path determinism A/B as NOT RUN/STAGED in research/prismatic-mcp/09-testing.md"
+  source: "file:.ai/repo/adrs/0008-an-agent-reaches-the-game-through-an-embedded-loopback-mcp-s.md"
+conditions:
+- criterion: the-bridge-steers-a-company
+  state: satisfied
+  because: "observed in the sibling repository and recorded in the design; not reproduced here"
+  observations:
+  - bridge-phase-2
+- criterion: a-decision-contract-is-defined
+  state: missing
+  because: Phase 3 not started
+  observations:
+  - contract-undefined
+- criterion: mcp-reads-live-state
+  state: unknown
+  because: "verified live on the branch on 2026-07-30; not rebuilt on the rebased base"
+  observations:
+  - mcp-on-branch
+- criterion: mcp-mutation-is-approved-and-commanded
+  state: unknown
+  because: "unit tests and the live pause passed on the branch; not rerun since"
+  observations:
+  - mcp-on-branch
+- criterion: mcp-is-on-master
+  state: missing
+  because: the branch is not rebased or merged
+  observations:
+  - mcp-on-branch
+- criterion: the-bridge-client-placement-is-decided
+  state: missing
+  because: no ADR picks an option
+  observations:
+  - no-placement-adr
+- criterion: agent-reads-do-not-perturb-the-game
+  state: missing
+  because: the experiment was never run
+  observations:
+  - ab-not-run
+risks:
+- "Upstream API drift may break the MCP module when it is rebased"

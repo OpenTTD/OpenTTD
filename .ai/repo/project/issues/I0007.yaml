@@ -1,0 +1,39 @@
+id: I0007
+milestone: internals-are-observable-with-recorded-provenance
+title: "Probe the system compiler for <source_location> before forcing Homebrew LLVM"
+slug: toolchain-probe
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Stop the research CLI from breaking builds on current Xcode installs."
+why: "Forcing Homebrew LLVM produced hundreds of size_t errors where the system compiler worked (ADR 0006)."
+scope:
+- tools/research/lib/common.sh
+- tools/research/research
+- research/tooling.md
+depends_on: []
+serves:
+- "internal-state-is-observable-reproducibly#an-experiment-records-itself"
+acceptance_criteria:
+- "configure without CC/CXX selects /usr/bin/c++ when it has <source_location>"
+- Explicit CC/CXX still wins
+validation:
+- bash tools/research/test/research_test.sh
+evidence_required:
+- recorded_validation
+created_at: '2026-07-24'
+updated_at: '2026-07-24T17:32:35Z'
+started_at: '2026-07-24T17:32:35Z'
+verified_at: '2026-07-24T17:32:35Z'
+completed_at: '2026-07-24T17:32:35Z'
+unsealed_stamps:
+- started_at 2026-07-24T17:32:35Z
+- verified_at 2026-07-24T17:32:35Z
+- completed_at 2026-07-24T17:32:35Z
+evidence:
+- covers: recorded_validation
+  type: test
+  command: bash tools/research/test/research_test.sh
+  result: "self-test 28/28; full init->report PASS with no manual override (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 6f36288ff9cd5cd8e9a857c85575c6e75f87e350
+  recorded_at: '2026-07-24T17:32:35Z'

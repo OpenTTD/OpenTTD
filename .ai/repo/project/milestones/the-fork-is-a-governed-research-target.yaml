@@ -1,0 +1,17 @@
+id: the-fork-is-a-governed-research-target
+title: "The fork states what it is, and one set of ground rules binds every agent"
+slug: the-fork-is-a-governed-research-target
+order: 10
+priority: p0
+problem: "An agent reading an upstream fork takes upstream's contribution process as its own, and may try to contribute; the fork's research purpose and its relationship to Prismatic were written nowhere. Proposed in ADR 0001, ADR 0003 (status: proposed; accepting them is the owner's act)."
+outcome: "README, AGENTS.md and the .ai/ rules say once what the fork is for, what it is not, how it relates to Prismatic, and which rules bind every agent."
+acceptance_criteria:
+- "AGENTS.md is the single vendor-neutral statement of the ground rules; CLAUDE.md points to it"
+- "README section 0.0 states purpose, goals, non-goals, the Prismatic relationship and the upstream-versus-fork tree"
+- "The ground rules exist as project rules under .ai/repo/rules/project/"
+validation:
+- majordomus rules
+- majordomus adr check
+evidence_required: []
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

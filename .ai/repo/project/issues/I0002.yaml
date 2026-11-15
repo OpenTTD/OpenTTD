@@ -1,0 +1,37 @@
+id: I0002
+milestone: the-fork-is-a-governed-research-target
+title: "Document the fork's purpose, goals, Prismatic relationship and limits in README"
+slug: readme-fork-overview
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Make README section 0.0 explain on first read what the fork is, why OpenTTD, how it relates to Prismatic, and what it is not."
+why: "The fork's role was otherwise reconstructible only from commit bodies (ADR 0003)."
+scope:
+- README.md
+depends_on: []
+serves:
+- "openttd-validates-agent-driven-engineering#the-fork-states-its-purpose"
+acceptance_criteria:
+- "0.1 goals, 0.2 Prismatic relationship with diagrams, 0.2.4 transferability table, 0.2.5 Prismatic applications, 0.3/0.4 non-goals and the upstream-versus-fork tree"
+- "Research questions, integration points, lifecycle and limitations are stated"
+validation:
+- grep -n '0.0) About this fork' README.md
+evidence_required:
+- recorded_validation
+created_at: '2026-07-23'
+updated_at: '2026-07-23T22:17:39Z'
+started_at: '2026-07-23T21:42:16Z'
+verified_at: '2026-07-23T22:17:39Z'
+completed_at: '2026-07-23T22:17:39Z'
+unsealed_stamps:
+- started_at 2026-07-23T21:42:16Z
+- verified_at 2026-07-23T22:17:39Z
+- completed_at 2026-07-23T22:17:39Z
+evidence:
+- covers: recorded_validation
+  type: artifact
+  command: git show -s 2e07cd7ac8
+  result: "ten Doc commits expanding README 0.0 with Mermaid and ASCII diagrams (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 2e07cd7ac8dfce766dc7f92bb626a25f556cdf1e
+  recorded_at: '2026-07-23T22:17:39Z'

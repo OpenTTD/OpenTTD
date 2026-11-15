@@ -1,0 +1,38 @@
+id: I0015
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Unit-test the MCP server's security-critical helpers through the production code path"
+slug: mcp-unit-tests
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Cover digest, parse and auth logic with Catch2 tests that exercise the real helpers."
+why: "A parallel reimplementation in a test proves nothing about the server."
+scope:
+- src/prismatic_mcp/prismatic_mcp_detail.h
+- src/tests/test_prismatic_mcp.cpp
+- src/tests/CMakeLists.txt
+depends_on: []
+serves:
+- "an-agent-plays-the-game-through-governed-channels#mcp-mutation-is-approved-and-commanded"
+acceptance_criteria:
+- ArgDigest determinism and argument binding
+- Content-Length parse bounds
+- Bearer extraction and constant-time compare
+validation:
+- ctest -R prismatic
+evidence_required:
+- recorded_validation
+created_at: '2026-07-24'
+updated_at: '2026-07-24T20:37:05Z'
+started_at: '2026-07-24T20:37:05Z'
+verified_at: '2026-07-24T20:37:05Z'
+unsealed_stamps:
+- started_at 2026-07-24T20:37:05Z
+- verified_at 2026-07-24T20:37:05Z
+evidence:
+- covers: recorded_validation
+  type: test
+  command: ctest -R prismatic
+  result: "25 assertions in 5 cases pass; openttd_test 2186 assertions in 99 cases green (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 64d95df5ae0b02c7e89ecf2bf60d4ddcdabe592f
+  recorded_at: '2026-07-24T20:37:05Z'

@@ -1,0 +1,67 @@
+intent: an-agent-plays-the-game-through-governed-channels
+reviewed_at: 81b26a6497a
+reviewed_by: "claude-code Plan subagent (read-only, fresh context, same model family as the author) dispatched by session cd8d20a8 over the staged .ai/ records, the fork history and the branch research/prismatic-mcp-server. Read only: nothing was built. Findings verified by the author before resolution (test names, branch commit count, VALID_STATUSES). Resolved by the plan author in the same session."
+findings:
+- id: ctest-regex-matches-no-mcp-tests
+  class: delivery_verification
+  subject: "an-agent-plays-the-game-through-governed-channels#mcp-mutation-is-approved-and-commanded"
+  finding: "ctest -R prismatic matches no test: catch_discover_tests registers bare Catch names and the five TEST_CASEs carry 'prismatic' only in their tag; ctest exits 0 with no tests. The approval state machine has no automated test."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0023
+    because: "Verified: the five names in src/tests/test_prismatic_mcp.cpp do not contain 'prismatic'. The ref now runs openttd_test '[prismatic_mcp]' and ctest with --no-tests=error; I0023 adds the state-machine test; I0017 requires both on the rebased tree."
+- id: mcp-read-criterion-ref-is-a-document
+  class: delivery_verification
+  subject: "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+  finding: "The ref was a runbook on an unmerged branch; I0013's validation is a configure line; I0016 does not read live state; 'byte-for-byte unaffected' was never measured."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0017
+    because: "The ref is now tools/research/mcp-live-check, written and run by I0017; I0016 serves mcp-is-on-master; I0013's evidence no longer claims a byte comparison."
+- id: decision-contract-criterion-is-circular-and-out-of-repo
+  class: delivery_verification
+  subject: "an-agent-plays-the-game-through-governed-channels#a-decision-contract-is-defined"
+  finding: "The ref was 'plan show I0011', and I0011's acceptance needed work in two other repositories."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0011
+    because: "I0011 is now the local part: a JSON Schema with fixtures, validated by python3 -m jsonschema; the cross-repository parts are named as non_scope for their own repositories."
+- id: language-decision-needlessly-gates-contract
+  class: unnecessary_work
+  subject: I0012
+  finding: "I0011 depended on I0012 although the HTTP contract does not depend on the client language."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0011
+    because: "I0011 no longer depends on I0012; I0012 serves its own criterion the-bridge-client-placement-is-decided."
+- id: bridge-route-evidence-not-reproduced-and-doc-stale
+  class: delivery_verification
+  subject: "an-agent-plays-the-game-through-governed-channels#the-bridge-steers-a-company"
+  finding: "The route evidence is a July measurement in the sibling repository; ARCHITECTURE.md lines 3, 81 and 138 contradict the phase table; I0009 cited the wrong commit for 8/8."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0025
+    because: "I0025 scripts the live check on the rebased binary and fixes the stale lines; I0009's evidence now cites 1e5ad23af9."
+- id: mcp-branch-rebase-hazards-unplanned
+  class: regression_risk
+  subject: I0017
+  finding: "The branch carries 21 pre-rebase duplicates; a plain rebase would replay them; upstream changed the hooked files; two branch commits exist only locally; I0017 depended on issues that only make sense after landing."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0017
+    because: "Verified: master..research/prismatic-mcp-server is 26 commits. I0017 now backs up and pushes the branch, rebases --onto master 0822f6b762 (exactly 5 patches), builds both options ON with the system compiler, and re-checks I0013-I0016 itself; it depends only on I0021."
+- id: determinism-and-digest-binding-unproven
+  class: unproven_assumption
+  subject: "an-agent-plays-the-game-through-governed-channels#mcp-mutation-is-approved-and-commanded"
+  finding: "The determinism A/B is NOT RUN on the branch; the 64-bit FNV-1a digest is not collision-resistant and the approved arguments are not stored."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0026
+    because: "New criterion agent-reads-do-not-perturb-the-game served by I0026; I0023 replaces the digest-only binding with stored canonical arguments or SHA-256."

@@ -1,0 +1,39 @@
+id: I0018
+milestone: the-fork-is-published-supervised-and-current
+title: "Scaffold the Zola site and its fork-only GitHub Pages workflow"
+slug: zola-site
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A landing page for the fork that links to README, AGENTS.md and research/."
+why: "The fork's role should be readable without cloning it (ADR 0009)."
+scope:
+- zola/**
+- .github/workflows/gh-pages.yml
+- .gitignore
+depends_on: []
+serves:
+- "openttd-validates-agent-driven-engineering#the-fork-is-published"
+acceptance_criteria:
+- zola build and zola check pass
+- the workflow deploys on pushes touching zola/**
+validation:
+- zola --root zola check
+evidence_required:
+- recorded_validation
+created_at: '2026-07-24'
+updated_at: '2026-07-24T01:08:42Z'
+started_at: '2026-07-24T01:08:42Z'
+verified_at: '2026-07-24T01:08:42Z'
+completed_at: '2026-07-24T01:08:42Z'
+unsealed_stamps:
+- started_at 2026-07-24T01:08:42Z
+- verified_at 2026-07-24T01:08:42Z
+- completed_at 2026-07-24T01:08:42Z
+evidence:
+- covers: recorded_validation
+  type: build
+  command: zola --root zola check
+  result: "zola build and zola check (external links included) pass (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 49057dddd64e50e03673beefe9b6fcaeebff0619
+  recorded_at: '2026-07-24T01:08:42Z'

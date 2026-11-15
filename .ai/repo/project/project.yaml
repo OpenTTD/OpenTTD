@@ -1,0 +1,8 @@
+# The canonical project model of the korczis/OpenTTD research fork. Milestones are
+# outcomes, issues are execution contracts, intents say what must become true above them.
+# Derived from the fork's commit history on 2026-11-15; every fork commit names the issue
+# it served in a `Refs:` trailer. No status is stored: `majordomus plan` derives it.
+schema_version: 1
+name: OpenTTD research fork
+repository: korczis/OpenTTD
+default_branch: master

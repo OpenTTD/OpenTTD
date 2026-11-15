@@ -1,0 +1,40 @@
+id: I0030
+milestone: internals-are-observable-with-recorded-provenance
+title: "Re-prove on the rebased tree that research_status is in research-debug and absent from baseline-release, and that the CLI suite passes"
+slug: containment-reverified-after-rebase
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Re-observe both halves of the containment criterion and the CLI suite on today's tree."
+why: "The absence half was last observed on 2026-07-24 on the old base, and the suite's 28/28 came from commit messages (critiques containment-ref-checks-only-presence, experiment-evidence-is-local-and-suite-not-rerun)."
+scope:
+- tools/research/**
+depends_on: []
+serves:
+- "internal-state-is-observable-reproducibly#instrumentation-is-contained"
+- "internal-state-is-observable-reproducibly#an-experiment-records-itself"
+acceptance_criteria:
+- research-debug binary contains research_status
+- baseline-release binary built on the rebased tree does not
+- "bash tools/research/test/research_test.sh passes on the rebased tree"
+validation:
+- "strings build-research/openttd | grep -q '^research_status' && ! strings build-research-baseline-release/openttd | grep -q '^research_status'"
+- bash tools/research/test/research_test.sh
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: 2026-11-15T18:15:02Z
+started_at: 2026-11-15T18:14:51Z
+started_event: sha256:c57c2151fab7004a16fefbd13d06189d8625907cfd4eaf4ea9639e7c3cd489e2
+verified_at: 2026-11-15T18:14:52Z
+verified_event: sha256:7240220c6ccf18a58bdc1d756f46894ebe27acbedbbb430f34be0e0b796b8fd9
+completed_at: 2026-11-15T18:15:02Z
+completed_event: sha256:e67898372c0d16c1af7963433141fd7daafbbb3e5edd04b8a37af1b3944d9e88
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "strings build-research/openttd | grep -c '^research_status'; strings build-research-baseline-release/openttd | grep -c '^research_status'; bash tools/research/test/research_test.sh"
+    result: "rebased tree 81b26a6497^{tree}: research-debug binary 2 matches, baseline-release binary (built PASS in experiment baseline-verify-2026-11-15, RelWithDebInfo, asserts and instrumentation OFF) 0 matches; research_test.sh 28 passed, 0 failed"
+    artifact: "build-research-runs/baseline-verify-2026-11-15/summary.md"
+    commit: 81b26a6497a8f547a5f4358fa74d4e667a06560b
+    recorded_at: 2026-11-15T18:14:54Z

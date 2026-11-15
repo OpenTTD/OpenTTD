@@ -1,0 +1,58 @@
+intent: openttd-validates-agent-driven-engineering
+reviewed_at: 81b26a6497a
+reviewed_by: "claude-code Plan subagent (read-only, fresh context, same model family as the author) dispatched by session cd8d20a8 over the staged .ai/ records, the fork history and the branch research/prismatic-mcp-server. Read only: nothing was built. Findings verified by the author before resolution (test names, branch commit count, VALID_STATUSES). Resolved by the plan author in the same session."
+findings:
+- id: tracks-upstream-ignores-published-master
+  class: delivery_verification
+  subject: "openttd-validates-agent-driven-engineering#the-fork-tracks-upstream"
+  finding: "The ref counted local refs only, while origin/master still holds the pre-rebase history."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0021
+    because: "The ref now fetches and requires origin/master == master and 0 behind upstream; the force-with-lease push is I0021's last acceptance criterion and awaits the owner's instruction."
+- id: change-tier-never-builds-gated-code
+  class: insufficient_work
+  subject: "openttd-validates-agent-driven-engineering#a-change-has-a-tier"
+  finding: tools/gate.sh never compiles the research-gated code.
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0022
+    because: I0022 adds a gated tier; the criterion now requires it.
+- id: gate-pass-depends-on-unchecked-baseset
+  class: unproven_assumption
+  subject: I0008
+  finding: "A missing base set turns the gate into 120 s timeouts with no hint."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0028
+    because: "I0028 adds a preflight that reports the regression subset as NOT RUN with a pointer."
+- id: ground-rules-ref-does-not-check-pointers
+  class: delivery_verification
+  subject: "openttd-validates-agent-driven-engineering#ground-rules-are-one-source"
+  finding: "majordomus rules does not check that provider files point to AGENTS.md; I0002 was counted as coverage for the rules."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0020
+    because: "The criterion and ref now check the provider links and the rule mapping; I0002 serves the new criterion the-fork-states-its-purpose."
+- id: site-issues-serve-wrong-criterion
+  class: unnecessary_work
+  subject: I0018
+  finding: The site issues served the-layer-is-supervised.
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0019
+    because: "New criterion the-fork-is-published, served by I0018 and I0019."
+- id: decisions-cited-as-decided-are-proposed
+  class: unproven_assumption
+  subject: "openttd-validates-agent-driven-engineering#the-layer-is-supervised"
+  finding: "Milestones said 'Decided in' ADRs that are all proposed; the layer is uncommitted."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0020
+    because: "Milestones now say 'Proposed in', with acceptance named as the owner's act; committing is I0020's, on instruction."

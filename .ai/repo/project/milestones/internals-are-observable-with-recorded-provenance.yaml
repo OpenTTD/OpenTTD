@@ -1,0 +1,18 @@
+id: internals-are-observable-with-recorded-provenance
+title: "Internal state is observable through gated instrumentation, and every experiment records how it ran"
+slug: internals-are-observable-with-recorded-provenance
+order: 30
+priority: p0
+problem: "Research questions need internal state, upstream norms discourage reading it, and an experiment whose flags live in a terminal cannot be reproduced. Proposed in ADR 0004, ADR 0005, ADR 0006 (status: proposed; accepting them is the owner's act)."
+outcome: "OPTION_RESEARCH_INSTRUMENTATION gates research_status, and tools/research/research drives build profiles, a headless capture, a versioned manifest and a generated report."
+acceptance_criteria:
+- "research_status is present in a research-debug binary and absent from a baseline-release one"
+- "The research gate validates the manifest against tools/research/schema/experiment-manifest.schema.json"
+- tools/research/test/research_test.sh passes
+- "configure keeps the system compiler when it supports <source_location>, and a test says so"
+validation:
+- bash tools/research/test/research_test.sh
+- "tools/research/research validate --experiment-id <id> --gate research"
+evidence_required: []
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

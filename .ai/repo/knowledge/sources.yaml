@@ -216,6 +216,16 @@ sources:
     pathspec: ':(glob)docs/**/*.md'
     required: false
 
+  # This fork's research layer (ADR 0002, ADR 0004, ADR 0005): the gating overview, the
+  # experiment template, the research CLI reference, the bridge design and the macOS base-set
+  # report. Without this class the features and knowledge that cite them name nothing the
+  # index knows. No other class discovers a Markdown file under research/.
+  - id: research_document
+    kind: document
+    discovery: vcs
+    pathspec: ':(glob)research/**/*.md'
+    required: false
+
   - id: readme
     kind: document
     discovery: vcs

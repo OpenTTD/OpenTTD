@@ -1,0 +1,39 @@
+id: I0009
+milestone: prismatic-steers-a-company-through-the-bridge
+title: "Design the Prismatic-OpenTTD bridge and correct the design to the built bridge"
+slug: bridge-architecture
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "One design document that describes the bridge as it exists, with its phases and open risks."
+why: "The first design assumed a Game Script relay and an Elixir NIF; the working Python bridge already existed (ADR 0007)."
+scope:
+- research/prismatic-bridge/ARCHITECTURE.md
+- README.md
+depends_on: []
+serves:
+- "an-agent-plays-the-game-through-governed-channels#the-bridge-steers-a-company"
+acceptance_criteria:
+- "The control path is rcon start_ai/reload_ai into ai/PrismaticAI"
+- "The Game Script relay is kept as the fine-grained upgrade path"
+- -g is the heightmap flag and -G the random seed
+validation:
+- "grep -n 'as actually built' research/prismatic-bridge/ARCHITECTURE.md"
+evidence_required:
+- recorded_validation
+created_at: '2026-07-23'
+updated_at: '2026-07-23T23:23:21Z'
+started_at: '2026-07-23T22:05:56Z'
+verified_at: '2026-07-23T23:23:21Z'
+completed_at: '2026-07-23T23:23:21Z'
+unsealed_stamps:
+- started_at 2026-07-23T22:05:56Z
+- verified_at 2026-07-23T23:23:21Z
+- completed_at 2026-07-23T23:23:21Z
+evidence:
+- covers: recorded_validation
+  type: artifact
+  command: git show -s 68d15d4ee3
+  result: "design corrected after reading ~/dev/openttd-prismatic-bridge, whose suite passed 8/8 (recorded in 1e5ad23af9); -g heightmap flag corrected in 68d15d4ee3 (as recorded in the commit messages; not re-run on 2026-11-15)"
+  commit: 68d15d4ee31b582821b4ab9abc927ea1c1da0fbb
+  recorded_at: '2026-07-23T23:23:21Z'

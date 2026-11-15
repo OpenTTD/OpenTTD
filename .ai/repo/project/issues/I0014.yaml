@@ -1,0 +1,39 @@
+id: I0014
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Add the typed DecisionEnvelope with digest-bound, one-time operator approval"
+slug: mcp-decision-envelope
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Let an agent change the game only through an approved, digest-bound command."
+why: "Mutation must not exist before its guarantees (ADR 0008, rule project.game-state-mutates-only-through-commands)."
+scope:
+- src/prismatic_mcp/**
+- src/console_cmds.cpp
+- research/prismatic-mcp/**
+depends_on: []
+serves:
+- "an-agent-plays-the-game-through-governed-channels#mcp-mutation-is-approved-and-commanded"
+acceptance_criteria:
+- "submit returns a pending approval bound to the argument digest"
+- "an approved set_pause runs Command<Commands::Pause>::Post on the main thread"
+- replay and changed arguments are refused
+- EXECUTED_UNVERIFIED is reported apart from VERIFIED_SUCCESS
+validation:
+- research/prismatic-mcp/19-continuation-runbook.md
+evidence_required:
+- recorded_validation
+created_at: '2026-07-24'
+updated_at: '2026-07-24T20:13:14Z'
+started_at: '2026-07-24T20:13:14Z'
+verified_at: '2026-07-24T20:13:14Z'
+unsealed_stamps:
+- started_at 2026-07-24T20:13:14Z
+- verified_at 2026-07-24T20:13:14Z
+evidence:
+- covers: recorded_validation
+  type: manual
+  command: git show -s 3bfd9a096c
+  result: "live: game paused false->true through the approved decision; replay and changed args denied (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 3bfd9a096ca7a8638b6cddc70909f8c3bef69f76
+  recorded_at: '2026-07-24T20:13:14Z'

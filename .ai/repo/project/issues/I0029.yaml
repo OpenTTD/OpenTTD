@@ -1,0 +1,25 @@
+id: I0029
+milestone: internals-are-observable-with-recorded-provenance
+title: "Test the toolchain probe: what configure picks with and without CC/CXX"
+slug: toolchain-probe-tests
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Give ADR 0006's behaviour a test instead of a commit message."
+why: "research_test.sh has no compiler cases, and the rebase run reused a configured directory (critique toolchain-probe-has-no-test)."
+scope:
+- tools/research/test/research_test.sh
+- tools/research/lib/common.sh
+depends_on: []
+serves:
+- "internal-state-is-observable-reproducibly#an-experiment-records-itself"
+acceptance_criteria:
+- a stubbed probe that succeeds keeps the system compiler
+- a stubbed probe that fails selects Homebrew LLVM
+- explicit CC/CXX wins in both cases
+validation:
+- bash tools/research/test/research_test.sh
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

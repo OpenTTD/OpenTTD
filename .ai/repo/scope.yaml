@@ -35,6 +35,21 @@ in:
   - AGENTS.md
   - Makefile
   - justfile
+  # This repository's own stack (CMake/C++, recorded by hand because init recognises none):
+  # the build system, the fork's research and gate tooling, the regression suite, the site,
+  # and the provider files beside AGENTS.md.
+  - CMakeLists.txt
+  - cmake/**
+  - CLAUDE.md
+  - GEMINI.md
+  - CODINGSTYLE.md
+  - COMPILING.md
+  - CONTRIBUTING.md
+  - research/**
+  - tools/**
+  - regression/**
+  - zola/**
+  - .github/workflows/**
 
 out:
   # never read, by path: version control, the local half of the layer, dependencies,
@@ -52,6 +67,10 @@ out:
     - vendor/
     - '**/tmp/'
     - '**/logs/'
+    # CMake build trees and research evidence bundles; src/3rdparty is vendored
+    - build-*/
+    - build-research-runs/
+    - src/3rdparty/
 
   # content that is not UTF-8 text, whatever the name says
   binary: true

@@ -1,0 +1,22 @@
+id: internal-state-is-observable-reproducibly
+title: "OpenTTD's internal state is observable through contained instrumentation, and every experiment records how it was built and run"
+statement: "A research question about the simulation can be answered by observing OpenTTD's internal state through compile-gated, labelled, read-only instrumentation that no default or release build contains, and every experiment that does so records its build profile, toolchain, runtime flags, commands and results in a versioned manifest from which its report is generated."
+invariants:
+- "Research code compiles only under a default-OFF option (rule project.research-code-is-gated-and-labelled)"
+- "Instrumentation reads state and never mutates it outside the command system"
+non_goals:
+- A stable public API over internals
+- Release-build claims from instrumented runs
+milestones:
+- internals-are-observable-with-recorded-provenance
+satisfaction:
+- id: instrumentation-is-contained
+  criterion: "research_status is present in the research-debug binary and absent from the baseline-release binary"
+  evidence: command
+  ref: "strings build-research/openttd | grep -q '^research_status' && ! strings build-research-baseline-release/openttd | grep -q '^research_status'"
+- id: an-experiment-records-itself
+  criterion: "The CLI's own suite passes, and a fresh init, build, run, validate and report cycle leaves a manifest that validates against the manifest schema"
+  evidence: command
+  ref: "bash tools/research/test/research_test.sh && tools/research/research validate --experiment-id <fresh-id> --gate research"
+created_at: 2026-11-15
+updated_at: '2026-11-15'

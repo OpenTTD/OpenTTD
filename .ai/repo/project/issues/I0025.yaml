@@ -1,0 +1,26 @@
+id: I0025
+milestone: prismatic-steers-a-company-through-the-bridge
+title: "Script a live bridge check on the rebased binary and bring ARCHITECTURE.md in line with Phase 2"
+slug: bridge-live-check
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Re-run the Phase 2 proof here, on today's tree, and remove the stale sentences."
+why: "The route evidence is a July measurement from the sibling repository, and ARCHITECTURE.md still says Phase 1 in its status line and that the AI idles (critique bridge-route-evidence-not-reproduced-and-doc-stale)."
+scope:
+- tools/research/bridge-live-check
+- research/prismatic-bridge/ARCHITECTURE.md
+depends_on:
+- I0021
+serves:
+- "an-agent-plays-the-game-through-governed-channels#the-bridge-steers-a-company"
+acceptance_criteria:
+- "tools/research/bridge-live-check starts a dedicated server, starts ai/PrismaticAI through the bridge and polls /companies until vehicles > 0"
+- Its output is recorded as evidence
+- "ARCHITECTURE.md status line, section 3 and section 4 agree with the phase table"
+validation:
+- tools/research/bridge-live-check
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

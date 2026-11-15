@@ -1,0 +1,25 @@
+intent: internal-state-is-observable-reproducibly
+observed_at: 81b26a6497a
+recorded_by: "claude-code (Opus 5.5, session cd8d20a8, primary checkout master) from the research-debug experiment rebase-verify-2026-11-15b"
+recorded_at: 2026-11-15
+observations:
+  - id: research-debug-runs
+    statement: "research-debug built on the rebased tree; the headless run printed research_status instrumentation=on tick=1392 date=1950-01-02 vehicles=3 companies=0; research gate PASS; report status=PASS"
+    source: file:research/tooling.md
+  - id: baseline-not-rebuilt
+    statement: "baseline-release was not configured or built on the rebased tree, so the absence of research_status from a release binary was last shown on 2026-07-24 (84be696a48), before the rebase"
+    source: file:.ai/repo/project/issues/I0005.yaml
+  - id: cli-suite-not-rerun
+    statement: "tools/research/test/research_test.sh was not rerun this session; its 28/28 is from the commit messages"
+    source: file:tools/research/test/research_test.sh
+conditions:
+  - criterion: instrumentation-is-contained
+    state: unknown
+    because: "present-in-debug is observed today; absent-from-release is not re-observed on the rebased tree"
+    observations: [research-debug-runs, baseline-not-rebuilt]
+  - criterion: an-experiment-records-itself
+    state: satisfied
+    because: "the experiment rebase-verify-2026-11-15b passed the research gate; the CLI suite itself was not rerun"
+    observations: [research-debug-runs, cli-suite-not-rerun]
+risks:
+  - "The stdin start-up race can lose the research_status line under load"

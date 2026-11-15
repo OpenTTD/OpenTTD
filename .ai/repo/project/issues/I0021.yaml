@@ -1,0 +1,40 @@
+id: I0021
+milestone: the-fork-is-published-supervised-and-current
+title: "Rebase the fork onto upstream master and verify the gated code builds and runs"
+slug: upstream-rebase-2026-11-15
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Bring master from 317 commits behind upstream to a linear series on top of it."
+why: "Upstream API drift grows with every week the base stays old (ADR 0011)."
+scope:
+- .ai/repo/workflows/upstream-sync.md
+depends_on: []
+serves:
+- "openttd-validates-agent-driven-engineering#the-fork-tracks-upstream"
+acceptance_criteria:
+- 24/24 fork patches unchanged in git range-diff
+- tools/gate.sh change passes on the rebased tree
+- The research CLI's own suite passes on the rebased tree
+- "The research-debug profile builds and its headless run captures research_status"
+- "The baseline-release profile builds and its binary carries no research_status"
+- origin/master is updated with --force-with-lease
+validation:
+- tools/gate.sh change
+- bash tools/research/test/research_test.sh
+- "tools/research/research report --experiment-id rebase-verify-2026-11-15b"
+- "tools/research/research report --experiment-id baseline-verify-2026-11-15"
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'
+started_at: 2026-11-15T18:01:18Z
+started_event: "sha256:78f5aae54ed6ab2dac5419cfce111f3d159fc2392021f8a8daf1de4d49189d5f"
+evidence:
+- covers: validation_run
+  type: test
+  command: "tools/gate.sh change && tools/research/research run|validate|report --experiment-id rebase-verify-2026-11-15b --profile research-debug"
+  result: "rebased tree 81b26a6497^{tree}: git range-diff 24/24 patches unchanged; tools/gate.sh change 98/98 ctest PASS (after installing OpenGFX 8.0 into ~/Documents/OpenTTD/baseset; the first run without it: 94/98, the 4 regression cases hung or failed); research-debug build PASS, headless run printed research_status instrumentation=on tick=1392 date=1950-01-02 vehicles=3 companies=0, research gate PASS, report status=PASS"
+  artifact: build-research-runs/rebase-verify-2026-11-15b/summary.md
+  commit: 81b26a6497a8f547a5f4358fa74d4e667a06560b
+  recorded_at: 2026-11-15T18:02:28Z

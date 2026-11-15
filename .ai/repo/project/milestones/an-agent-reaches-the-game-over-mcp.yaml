@@ -1,0 +1,19 @@
+id: an-agent-reaches-the-game-over-mcp
+title: "An agent reads and, with approval, changes the game over an embedded MCP server"
+slug: an-agent-reaches-the-game-over-mcp
+order: 50
+priority: p1
+problem: "The bridge's control is coarse: a directive needs an AI restart, and nothing exposes typed live state to an agent. Proposed in ADR 0008 (status: proposed; accepting them is the owner's act)."
+outcome: "A compile-gated loopback MCP server exposes live resources, a DecisionEnvelope binds each mutation to an operator's approval of its digest, and the work lands on master."
+acceptance_criteria:
+- "With OPTION_PRISMATIC_MCP_SERVER OFF nothing of the server is compiled"
+- "resources/read returns live pool state over loopback HTTP with bearer auth and Origin rejection"
+- "An approved openttd.game.set_pause executes through Command<Commands::Pause>::Post; replay and changed arguments are refused"
+- "The security helpers are covered by src/tests/test_prismatic_mcp.cpp"
+- The branch is rebased onto the current master and merged
+validation:
+- ctest -R prismatic
+- tools/check-prismatic-docs.sh
+evidence_required: []
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

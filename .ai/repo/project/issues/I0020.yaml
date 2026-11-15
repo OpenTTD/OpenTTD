@@ -1,0 +1,43 @@
+id: I0020
+milestone: the-fork-is-published-supervised-and-current
+title: "Integrate Majordomus and derive the .ai/ layer from the fork's history"
+slug: majordomus-layer
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Supervise the checkout and record its decisions, rules, plan, intents and knowledge."
+why: "Decisions lived in commit bodies and continuity in discarded conversations (ADR 0010)."
+scope:
+- .ai/**
+- AGENTS.md
+- CLAUDE.md
+- GEMINI.md
+- .gitignore
+depends_on: []
+serves:
+- "openttd-validates-agent-driven-engineering#the-layer-is-supervised"
+acceptance_criteria:
+- majordomus doctor reports 0 failures
+- "adr check, plan validate, intent validate, why validate, product validate and knowledge check report no error"
+- "Every fork commit on master carries a Refs trailer naming its issue"
+- "CLAUDE.md and GEMINI.md link AGENTS.md, and every AGENTS.md ground rule has a project rule"
+- "Each milestone says which ADRs it relies on and that they are proposed until the owner accepts them"
+validation:
+- majordomus doctor
+- majordomus plan validate
+- majordomus intent validate
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: 2026-11-15T18:15:17Z
+started_at: 2026-11-15T18:01:16Z
+started_event: "sha256:a5427478e72570484f8ba18bca0f002030bb890efad99d3c921c2ae69c5e7383"
+verified_at: 2026-11-15T18:15:16Z
+verified_event: sha256:1fe29bf59e64b50f0a86ecc7cfce05b670035f1e8a58795d92294f4428dbd3dc
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "majordomus doctor; majordomus adr check; majordomus plan validate; majordomus intent validate; majordomus why validate; majordomus product validate; majordomus knowledge check; majordomus knowledge validate; majordomus context validate"
+    result: "doctor 0 failures; adr check: 11 decisions, every reference resolves; plan validate: 6 milestones, 30 issues, 0 failures; intent validate: 3 intents, 0 failures (valid); why validate: 0 errors; product validate: 0 errors; knowledge check: 8 records, 0 failing; knowledge validate: 226 nodes, 217 edges, 0 failures; context validate: 0 problems in 23 documents; all 24 fork commits carry Refs trailers"
+    commit: 81b26a6497a8f547a5f4358fa74d4e667a06560b
+    recorded_at: 2026-11-15T18:15:17Z

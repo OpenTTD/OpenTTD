@@ -1,0 +1,39 @@
+id: I0001
+milestone: the-fork-is-a-governed-research-target
+title: "State the fork's private research role and its ground rules in AGENTS.md"
+slug: fork-ground-rules
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Mark the fork as a private research target and give every agent one vendor-neutral set of ground rules."
+why: "Upstream forbids LLM-generated contributions; an agent must know before its first edit that nothing here goes upstream (ADR 0001)."
+scope:
+- AGENTS.md
+- CLAUDE.md
+- README.md
+depends_on: []
+serves:
+- "openttd-validates-agent-driven-engineering#ground-rules-are-one-source"
+acceptance_criteria:
+- "AGENTS.md states the ground rules and the four kinds of change"
+- CLAUDE.md points to AGENTS.md instead of duplicating it
+validation:
+- git show 8d5f34027d --stat
+evidence_required:
+- recorded_validation
+created_at: '2026-07-23'
+updated_at: '2026-07-23T21:40:09Z'
+started_at: '2026-07-23T21:11:11Z'
+verified_at: '2026-07-23T21:40:09Z'
+completed_at: '2026-07-23T21:40:09Z'
+unsealed_stamps:
+- started_at 2026-07-23T21:11:11Z
+- verified_at 2026-07-23T21:40:09Z
+- completed_at 2026-07-23T21:40:09Z
+evidence:
+- covers: recorded_validation
+  type: artifact
+  command: git show -s ad96e57c4a
+  result: "AGENTS.md added (16 lines), then consolidated as the single source; CLAUDE.md points to it (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: ad96e57c4ad014a28667773bfbcecd55a6669a8a
+  recorded_at: '2026-07-23T21:40:09Z'

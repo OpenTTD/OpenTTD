@@ -1,0 +1,41 @@
+id: openttd-validates-agent-driven-engineering
+title: "OpenTTD is an independent, governed target on which agent-driven engineering is measured"
+statement: "korczis/OpenTTD serves as a private, independent validation target for the Prismatic platform and for agent-driven engineering: one set of ground rules binds every agent, every change is validated at a tier that matches its size and reported fail-closed, the fork stays current with upstream without ever contributing to it, and its decisions, plan and knowledge are tracked in a supervised layer rather than in conversations."
+invariants:
+- "Nothing from the fork reaches OpenTTD/OpenTTD (rule project.no-upstream-interaction)"
+- "A validation step that did not run is reported as NOT RUN (rule project.never-report-unrun-validation-as-pass)"
+- "Upstream's technical constraints bind changes to OpenTTD's own code"
+non_goals:
+- Preparing or submitting an upstream contribution
+- Following upstream's contribution process as local process
+milestones:
+- the-fork-is-a-governed-research-target
+- a-change-is-validated-in-cost-tiers
+- the-fork-is-published-supervised-and-current
+satisfaction:
+- id: ground-rules-are-one-source
+  criterion: "Every AGENTS.md ground rule maps to a project rule under .ai/repo/rules/project/, and every tracked provider file links AGENTS.md"
+  evidence: command
+  ref: grep -l 'AGENTS.md' CLAUDE.md GEMINI.md && majordomus rules
+- id: the-fork-states-its-purpose
+  criterion: "README section 0.0 states the fork's purpose, goals, non-goals and its relationship to Prismatic"
+  evidence: command
+  ref: grep -n '0.0) About this fork' README.md
+- id: a-change-has-a-tier
+  criterion: "tools/gate.sh change passes the full ctest suite on master, and a change to gated code is also built and tested with its research options ON"
+  evidence: command
+  ref: tools/gate.sh change
+- id: the-fork-tracks-upstream
+  criterion: "The published origin/master is a linear series of fork commits on top of a freshly fetched upstream/master: origin/master equals master and is 0 commits behind upstream"
+  evidence: command
+  ref: "git fetch upstream master --no-tags && git fetch origin && test \"$(git rev-parse origin/master)\" = \"$(git rev-parse master)\" && test \"$(git rev-list --count origin/master..upstream/master)\" -eq 0"
+- id: the-layer-is-supervised
+  criterion: "majordomus doctor reports 0 failures and the plan, intents and ADRs validate"
+  evidence: command
+  ref: majordomus doctor
+- id: the-fork-is-published
+  criterion: "The Zola site is built by gh-pages.yml and served by GitHub Pages"
+  evidence: command
+  ref: "gh run list --repo korczis/OpenTTD --workflow gh-pages.yml --limit 1"
+created_at: 2026-11-15
+updated_at: '2026-11-15'

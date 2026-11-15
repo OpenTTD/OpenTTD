@@ -1,0 +1,37 @@
+id: I0010
+milestone: prismatic-steers-a-company-through-the-bridge
+title: "Record Phase 2: ai/PrismaticAI builds a real single-town bus route"
+slug: bridge-phase-2-strategy
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: Reflect in the design that the AI no longer idles.
+why: "Phase 2 was done in the sibling bridge repository and the phase table here was stale."
+scope:
+- research/prismatic-bridge/ARCHITECTURE.md
+depends_on:
+- I0009
+serves:
+- "an-agent-plays-the-game-through-governed-channels#the-bridge-steers-a-company"
+acceptance_criteria:
+- The phase table marks Phase 2 done with the live measurement
+validation:
+- grep -n 'Phase 2' research/prismatic-bridge/ARCHITECTURE.md
+evidence_required:
+- recorded_validation
+created_at: '2026-07-23'
+updated_at: '2026-07-23T22:24:54Z'
+started_at: '2026-07-23T22:24:54Z'
+verified_at: '2026-07-23T22:24:54Z'
+completed_at: '2026-07-23T22:24:54Z'
+unsealed_stamps:
+- started_at 2026-07-23T22:24:54Z
+- verified_at 2026-07-23T22:24:54Z
+- completed_at 2026-07-23T22:24:54Z
+evidence:
+- covers: recorded_validation
+  type: manual
+  command: git show -s 868b5d9269
+  result: "live server: buses 0->3, company_value 1->11025 (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 868b5d9269b70f8570ecc7e2f18a12bf52568d7d
+  recorded_at: '2026-07-23T22:24:54Z'

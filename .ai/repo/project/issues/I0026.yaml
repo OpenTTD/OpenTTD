@@ -1,0 +1,26 @@
+id: I0026
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Run the determinism A/B: a seeded game hammered with MCP reads against an idle run of the same seed"
+slug: mcp-determinism-ab
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Demonstrate, not assert, that the MCP read path does not perturb the simulation."
+why: "research/prismatic-mcp/09-testing.md lists the experiment as NOT RUN/STAGED, and the intent promises determinism (critique determinism-and-digest-binding-unproven)."
+scope:
+- tools/research/**
+- research/prismatic-mcp/**
+depends_on:
+- I0017
+- I0027
+serves:
+- "an-agent-plays-the-game-through-governed-channels#agent-reads-do-not-perturb-the-game"
+acceptance_criteria:
+- "Two runs of one seed, one under a read load, end with identical game state or command log"
+- "The run goes through tools/research/research and leaves a manifest"
+validation:
+- "tools/research/research report --experiment-id <determinism-ab-id>"
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

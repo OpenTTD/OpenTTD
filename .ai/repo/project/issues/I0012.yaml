@@ -1,0 +1,24 @@
+id: I0012
+milestone: prismatic-steers-a-company-through-the-bridge
+title: "Decide where the bridge's admin-protocol client lives and in what language"
+slug: bridge-language-decision
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Choose between keeping Python, PyO3 acceleration, a Rust rewrite, or an Elixir+Rustler app."
+why: "ARCHITECTURE.md section 3.1 leaves the question open on purpose."
+scope:
+- .ai/repo/adrs/**
+- research/prismatic-bridge/ARCHITECTURE.md
+depends_on:
+- I0009
+serves:
+- "an-agent-plays-the-game-through-governed-channels#the-bridge-client-placement-is-decided"
+acceptance_criteria:
+- "An ADR records the choice, the rejected options and their costs"
+validation:
+- majordomus adr check
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

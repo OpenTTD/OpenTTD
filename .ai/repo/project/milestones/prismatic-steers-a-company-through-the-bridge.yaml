@@ -1,0 +1,17 @@
+id: prismatic-steers-a-company-through-the-bridge
+title: "Prismatic steers a company in a live game through the standalone bridge"
+slug: prismatic-steers-a-company-through-the-bridge
+order: 40
+priority: p1
+problem: "Prismatic's decision models have no way to act in, or observe, a running simulation. Proposed in ADR 0007 (status: proposed; accepting them is the owner's act)."
+outcome: "A standalone bridge drives a Company AI over the admin network, a real strategy builds routes, and a defined decision contract lets prismatic-platform answer /decision/pull."
+acceptance_criteria:
+- "research/prismatic-bridge/ARCHITECTURE.md describes the built system consistently in its status line, section 3 and the phase table"
+- "A scripted live check shows ai/PrismaticAI building vehicles on the rebased binary"
+- "The /decision/pull contract is written as a schema with fixtures (Phase 3, local part)"
+- "The bridge client's placement and language are decided in an ADR"
+validation:
+- "majordomus plan show prismatic-steers-a-company-through-the-bridge"
+evidence_required: []
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

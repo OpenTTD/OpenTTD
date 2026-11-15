@@ -1,0 +1,29 @@
+id: I0011
+milestone: prismatic-steers-a-company-through-the-bridge
+title: "Write the /decision/pull request and response schema with example fixtures (Phase 3, local part)"
+slug: bridge-decision-contract
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Give the bridge's decision endpoint a machine-checkable contract in this repository."
+why: "The endpoint exists and its contract is undefined. The language of the admin client does not change the HTTP contract (ARCHITECTURE.md section 3), so this does not wait on I0012."
+scope:
+- research/prismatic-bridge/ARCHITECTURE.md
+- research/prismatic-bridge/decision-contract.schema.json
+- research/prismatic-bridge/decision-contract.example.json
+non_scope:
+- "Answering the contract from prismatic-platform and consuming it in the bridge: each is an issue in its own repository, named here once it exists"
+depends_on:
+- I0010
+serves:
+- "an-agent-plays-the-game-through-governed-channels#a-decision-contract-is-defined"
+acceptance_criteria:
+- decision-contract.schema.json defines request and response
+- decision-contract.example.json validates against it
+- ARCHITECTURE.md section 7 points to the schema
+validation:
+- "python3 -m jsonschema -i research/prismatic-bridge/decision-contract.example.json research/prismatic-bridge/decision-contract.schema.json"
+evidence_required:
+- validation_run
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

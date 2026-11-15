@@ -1,0 +1,19 @@
+id: the-fork-is-published-supervised-and-current
+title: "The fork is published, supervised by Majordomus, and current with upstream"
+slug: the-fork-is-published-supervised-and-current
+order: 60
+priority: p1
+problem: "The fork's decisions, plan and knowledge lived in commit bodies and conversations, it had no public face, and its base fell 317 commits behind upstream. Proposed in ADR 0009, ADR 0010, ADR 0011 (status: proposed; accepting them is the owner's act)."
+outcome: "A Zola site deploys from a fork-only workflow, the .ai/ layer records decisions, rules, plan and knowledge, and master is a linear series on top of upstream/master."
+acceptance_criteria:
+- zola build and zola check pass; GitHub Pages serves the site
+- majordomus doctor reports 0 failures and the hooks are wired
+- "git rev-list --count master..upstream/master is 0 after a sync"
+- "The research-debug profile builds and runs on the rebased tree"
+validation:
+- majordomus doctor
+- majordomus plan validate
+- majordomus intent validate
+evidence_required: []
+created_at: '2026-11-15'
+updated_at: '2026-11-15'

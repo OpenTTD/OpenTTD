@@ -1,0 +1,40 @@
+id: I0005
+milestone: internals-are-observable-with-recorded-provenance
+title: "Add OPTION_RESEARCH_INSTRUMENTATION and the read-only research_status console command"
+slug: research-instrumentation
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A default-OFF compile gate and a first, read-only internal-state snapshot."
+why: "The smallest mechanism that makes tick, date and pool counts observable (ADR 0004)."
+scope:
+- cmake/Options.cmake
+- src/console_cmds.cpp
+depends_on: []
+serves:
+- "internal-state-is-observable-reproducibly#instrumentation-is-contained"
+acceptance_criteria:
+- "The option defaults OFF and defines OTTD_RESEARCH_INSTRUMENTATION when ON"
+- "research_status prints one machine-parseable line and mutates nothing"
+- The default build is unaffected
+validation:
+- tools/gate.sh change
+- strings build-research/openttd | grep research_status
+evidence_required:
+- recorded_validation
+created_at: '2026-07-23'
+updated_at: '2026-07-23T23:53:44Z'
+started_at: '2026-07-23T23:23:09Z'
+verified_at: '2026-07-23T23:53:44Z'
+completed_at: '2026-07-23T23:53:44Z'
+unsealed_stamps:
+- started_at 2026-07-23T23:23:09Z
+- verified_at 2026-07-23T23:53:44Z
+- completed_at 2026-07-23T23:53:44Z
+evidence:
+- covers: recorded_validation
+  type: build
+  command: tools/research/research build --profile baseline-release
+  result: "default build 98/98 PASS; strings finds research_status in research-debug and not in baseline-release (84be696a48) (as recorded in the commit message; not re-run on 2026-11-15)"
+  commit: 84be696a48cbe847ce3a72a6fae28c26e387b861
+  recorded_at: '2026-07-23T23:53:44Z'

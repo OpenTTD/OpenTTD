@@ -1,0 +1,58 @@
+intent: internal-state-is-observable-reproducibly
+reviewed_at: 81b26a6497a
+reviewed_by: "claude-code Plan subagent (read-only, fresh context, same model family as the author) dispatched by session cd8d20a8 over the staged .ai/ records, the fork history and the branch research/prismatic-mcp-server. Read only: nothing was built. Findings verified by the author before resolution (test names, branch commit count, VALID_STATUSES). Resolved by the plan author in the same session."
+findings:
+- id: containment-ref-checks-only-presence
+  class: delivery_verification
+  subject: "internal-state-is-observable-reproducibly#instrumentation-is-contained"
+  finding: "The ref proved presence in research-debug only; baseline-release was not built on the rebased tree."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0030
+    because: "The ref is now the paired presence/absence check; I0030 builds baseline-release on the rebased tree (experiment baseline-verify-2026-11-15)."
+- id: manifest-schema-validation-not-implemented
+  class: insufficient_work
+  subject: internals-are-observable-with-recorded-provenance
+  finding: "Nothing validates the manifest against experiment-manifest.schema.json, yet the milestone claimed it."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0024
+    because: "I0024 adds schema validation to gate_research with a failing test case."
+- id: toolchain-probe-has-no-test
+  class: delivery_verification
+  subject: I0007
+  finding: "research_test.sh has no compiler cases; the rebase run reused a configured directory."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0029
+    because: I0029 adds stubbed-probe cases.
+- id: experiment-evidence-is-local-and-suite-not-rerun
+  class: delivery_verification
+  subject: "internal-state-is-observable-reproducibly#an-experiment-records-itself"
+  finding: "The ref named an ignored local experiment and the suite was not rerun on the rebased tree."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0030
+    because: "The suite was rerun on the rebased tree (28 passed, 0 failed) and is part of I0030's validation; the ref now names the suite and a fresh experiment id."
+- id: mcp-experiments-bypass-the-provenance-cli
+  class: surface_missing
+  subject: "internal-state-is-observable-reproducibly#an-experiment-records-itself"
+  finding: "MCP experiments use a hand-configured build-mcp with no manifest."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0027
+    because: I0027 adds a research-mcp profile.
+- id: tooling-accepts-sixth-status
+  class: unproven_assumption
+  subject: I0006
+  finding: "manifest.sh accepts INCONCLUSIVE, which the five-state taxonomy does not define."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0024
+    because: "Verified at tools/research/lib/manifest.sh:140; I0024 resolves it."
