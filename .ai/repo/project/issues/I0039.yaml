@@ -24,4 +24,11 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-15
+updated_at: 2026-11-15T23:23:16Z
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-e2e --instances 3; tools/research/mcp-view-check; tools/research/mcp-panel-check"
+    result: "partial: registry + live probes + cross-instance calls + --instances N work: 3 dedicated servers with PrismaticAI plus the GUI client listed alive by panel 8800; mcp-view-check 14/14 (openttd://game/state read from all 3 panels through one, unknown instance 404); mcp-panel-check 13/13; a stopped stack's entry disappears; taken ports replaced by free ones. Not done: Majordomus discovering the instances"
+    commit: 5dd7ff196e502923015a31ae5449567f51c815f1
+    recorded_at: 2026-11-15T23:23:16Z

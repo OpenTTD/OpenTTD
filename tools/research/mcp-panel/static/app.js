@@ -313,3 +313,23 @@ if (window.EventSource) {
     next.src = '/api/view/screenshot?t=' + Date.now();
   }, 1200);
 })();
+
+/* ---- cluster: every registered instance, probed live ------------------------------------------ */
+(function cluster() {
+  const body = document.getElementById('cluster-body'); if (!body) return;
+  const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const badge = (ok) => ok
+    ? '<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">alive</span>'
+    : '<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">down</span>';
+  async function load() {
+    try {
+      const d = await (await fetch('/api/instances')).json();
+      document.getElementById('cluster-reg').textContent = `registry ${d.registry} · ${d.instances.length} instance(s)`;
+      body.innerHTML = d.instances.map((i) => {
+        const panel = i.url || i.panel;
+        return `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"><td class="px-4 py-2 font-medium text-gray-900 dark:text-white">${esc(i.name)}</td><td class="px-4 py-2">${esc(i.role)}</td><td class="px-4 py-2">${badge(i.alive)}${i.error ? ` <span class="text-xs">${esc(i.error)}</span>` : ''}</td><td class="px-4 py-2"><code>${esc(i.endpoint || i.mcp)}</code></td><td class="px-4 py-2">${panel ? `<a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="${esc(panel)}">${esc(panel)}</a>` : ''}</td></tr>`;
+      }).join('') || '<tr><td class="px-4 py-2" colspan="5">no instance registered</td></tr>';
+    } catch (e) { body.innerHTML = `<tr><td class="px-4 py-2" colspan="5">${esc(e.message)}</td></tr>`; }
+  }
+  load(); setInterval(load, 5000);
+})();

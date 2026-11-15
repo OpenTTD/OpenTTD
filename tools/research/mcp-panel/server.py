@@ -343,6 +343,79 @@ class Game:
 OBJ = {"type": "object"}
 
 
+# ---------------------------------------------------------------------- discovery (cluster)
+# Every panel and every GUI client it attaches registers here; any panel lists the whole cluster
+# and checks each entry with a live probe. One JSON file per instance, written atomically, 0600,
+# removed when its panel stops; an entry whose owning process is gone is dropped on discovery.
+REGISTRY = Path(os.environ.get("PRISMATIC_MCP_REGISTRY") or Path.home() / ".local/state/prismatic-mcp/instances")
+
+
+def registry_write(name, entry):
+    REGISTRY.mkdir(parents=True, exist_ok=True)
+    entry = {"name": name, "owner_pid": os.getpid(), "registered": time.time(), **entry}
+    tmp = REGISTRY / f".{name}.tmp"
+    tmp.write_text(json.dumps(entry))
+    os.chmod(tmp, 0o600)
+    os.replace(tmp, REGISTRY / f"{name}.json")
+
+
+def registry_remove(name):
+    try:
+        (REGISTRY / f"{name}.json").unlink()
+    except FileNotFoundError:
+        pass
+
+
+def mcp_post(endpoint, token, method, params=None, timeout=3):
+    body = {"jsonrpc": "2.0", "id": 1, "method": method, "params": params or {}}
+    req = urllib.request.Request(endpoint, data=json.dumps(body).encode(), method="POST", headers={
+        "Content-Type": "application/json", "Accept": "application/json, text/event-stream",
+        "Authorization": f"Bearer {token}"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read())
+
+
+def discover():
+    out = []
+    for f in sorted(REGISTRY.glob("*.json")) if REGISTRY.is_dir() else []:
+        try:
+            e = json.loads(f.read_text())
+        except (OSError, ValueError):
+            continue
+        try:
+            os.kill(int(e.get("owner_pid", 0)), 0)
+        except (OSError, ValueError):
+            f.unlink(missing_ok=True)  # its panel is gone
+            continue
+        e["alive"] = False
+        try:
+            if e.get("kind") == "panel":
+                with urllib.request.urlopen(e["url"] + "/api/status", timeout=2) as r:
+                    st = json.loads(r.read())
+                e.update(alive=True, mcp_up=st.get("mcp_up"), ai=st.get("ai"), game_port=st.get("game_port"))
+            else:
+                cfg = json.loads(Path(e["token_file"]).read_text())
+                e["endpoint"] = cfg["endpoint"]
+                e["alive"] = "result" in mcp_post(cfg["endpoint"], cfg["agent_token"], "ping", timeout=2)
+        except Exception as ex:  # noqa: BLE001 - a probe failure is the answer
+            e["error"] = str(ex)
+        out.append(e)
+    return out
+
+
+def instance_call(name, method, params):
+    e = next((x for x in discover() if x["name"] == name), None)
+    if e is None:
+        return 404, {"error": f"no instance {name}"}
+    if e.get("kind") == "panel":
+        req = urllib.request.Request(e["url"] + "/api/rpc", method="POST", headers={"Content-Type": "application/json"},
+                                     data=json.dumps({"method": method, "params": params or {}}).encode())
+        with urllib.request.urlopen(req, timeout=10) as r:
+            return 200, json.loads(r.read())
+    cfg = json.loads(Path(e["token_file"]).read_text())
+    return 200, mcp_post(cfg["endpoint"], cfg["agent_token"], method, params, timeout=10)
+
+
 APPROVAL_LINE = re.compile(r"^\s*(prismatic_mcp|mcp)\s+(approve|auto_approve|auto-approve)\b", re.I)
 
 
@@ -397,6 +470,8 @@ def make_routes(game):
         if not f.is_file():
             return 400, {"error": f"no token file at {f}"}
         game.view_token = str(f)
+        registry_write(f"client-{game.args.panel_port}", {"kind": "client", "role": "GUI client (owner view)",
+                                                          "token_file": str(f), "panel": f"http://127.0.0.1:{game.args.panel_port}"})
         game.event("view", f"GUI client attached ({f.name})")
         return 200, {"attached": True, "state": game.view_call("openttd.view.state")}
 
@@ -472,6 +547,11 @@ def make_routes(game):
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
         ("GET", "/api/graph", "graph", "The road network as a graph (nodes: junctions, ends, stations, town anchors; edges with length; components), derived from openttd://map, towns and stations by tools/research/mcp-rhai mcp-graph", True,
          None, lambda q: graph()),
+        ("GET", "/api/instances", "instances", "Every OpenTTD MCP instance in the cluster (panels and GUI clients) from the shared registry, each checked with a live probe", True,
+         None, lambda q: (200, {"registry": str(REGISTRY), "instances": discover()})),
+        ("POST", "/api/instances/call", "instancesCall", "One MCP JSON-RPC call on a named instance of the cluster (a panel's server or a GUI client)", True,
+         s({"name": {"type": "string"}, "method": {"type": "string"}, "params": OBJ}, ["name", "method"]),
+         lambda b: instance_call(b["name"], b["method"], b.get("params"))),
         ("POST", "/api/view/attach", "viewAttach", "Attach the GUI client the owner watches, by its MCP token file", False,
          s({"token_file": {"type": "string"}}, ["token_file"]), view_attach),
         ("POST", "/api/view/tool", "viewTool", "Call a tool on the attached GUI client's own MCP server (openttd.view.* and the rest)", False,
@@ -717,6 +797,10 @@ def main():
           f"MCP {game.endpoint()})", flush=True)
     # A process started in the background of a non-interactive shell inherits SIGINT as ignored;
     # take both signals explicitly so the dedicated server is always stopped with the panel.
+    me = f"panel-{args.panel_port}"
+    registry_write(me, {"kind": "panel", "role": "dedicated server + panel", "url": f"http://127.0.0.1:{args.panel_port}",
+                        "mcp": game.endpoint(), "game_port": args.game_port})
+
     def stop(signum, frame):
         raise KeyboardInterrupt
     signal.signal(signal.SIGINT, stop)
@@ -726,6 +810,8 @@ def main():
     except KeyboardInterrupt:
         pass
     finally:
+        registry_remove(me)
+        registry_remove(f"client-{args.panel_port}")
         game.stop()
 
 

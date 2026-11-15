@@ -2,7 +2,7 @@
 # RESEARCH-ONLY: end-to-end check of what the owner sees and drives, against a running
 # tools/research/mcp-e2e stack (panel plus a GUI client with its own MCP server).
 #
-# Checks the live view (screenshots of the owner's window, repeated, with the client still alive),
+# Checks discovery (every registered instance probed, calls across the cluster), the live view (screenshots of the owner's window, repeated, with the client still alive),
 # the view tools through the panel proxy (scroll_to, mark, an unknown tool refused), the world
 # resources and the derived graph, and that these routes are in OpenAPI without a hand entry.
 #
@@ -72,6 +72,24 @@ missing=()
 for p in "${want[@]}"; do [[ " $paths " == *" $p "* ]] || missing+=("$p"); done
 check "OpenAPI carries graph, map, stations and the view routes (missing: ${missing[*]:-none})" \
   "$([[ ${#missing[@]} -eq 0 ]] && echo 1 || echo 0)"
+
+inst="$(curl -s "$URL/api/instances")"
+self_port="${URL##*:}"
+check "discovery lists this panel and its GUI client, both alive" \
+  "$([[ "$(json "(lambda by: by.get('panel-$self_port', {}).get('alive') and by.get('client-$self_port', {}).get('alive'))({i['name']: i for i in d['instances']})" <<<"$inst")" == True ]] && echo 1 || echo 0)"
+panels="$(json "' '.join(i['name'] for i in d['instances'] if i['kind'] == 'panel' and i['alive'])" <<<"$inst")"
+reached=0 total=0
+for name in $panels; do
+  total=$((total + 1))
+  out="$(curl -s -X POST -H 'Content-Type: application/json' \
+    -d "{\"name\":\"$name\",\"method\":\"resources/read\",\"params\":{\"uri\":\"openttd://game/state\"}}" "$URL/api/instances/call")"
+  [[ "$(json "'result' in d" <<<"$out")" == True ]] && reached=$((reached + 1))
+done
+check "every live panel in the cluster answers openttd://game/state through this panel ($reached/$total)" \
+  "$([[ "$total" -gt 0 && "$reached" == "$total" ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' \
+  -d '{"name":"no-such-instance","method":"ping"}' "$URL/api/instances/call")"
+check "a call to an unknown instance answers 404 (http=$code)" "$([[ "$code" == 404 ]] && echo 1 || echo 0)"
 
 code="$(curl -s -o /dev/null -w '%{http_code}' "$URL/world")"
 check "the World page is served (http=$code)" "$([[ "$code" == 200 ]] && echo 1 || echo 0)"

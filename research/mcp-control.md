@@ -178,6 +178,23 @@ and that is the owner's call (knowledge `auto-approve-is-the-owners-switch`).
 - `rhai/demo.rhai` is the end-to-end demo: new world, PrismaticAI plays, watched through MCP,
   paused and resumed through the approval flow, final report.
 
+## A cluster of instances: discovery and calls across it
+
+Every panel registers itself, and the GUI client it attaches, in a shared registry
+(`$PRISMATIC_MCP_REGISTRY`, default `~/.local/state/prismatic-mcp/instances/`). It writes one
+JSON file per instance, atomically and with mode 0600, and removes it when the panel stops. An
+entry whose owning process is gone is dropped on the next discovery.
+
+| Surface | What it does |
+|---|---|
+| `GET /api/instances`, Rhai `api_instances()` | every registered instance with its role and endpoint, each checked with a live probe (a panel's `/api/status`, a client's MCP `ping`) |
+| `POST /api/instances/call {name, method, params}`, Rhai `api_instancesCall(...)` | one MCP JSON-RPC call on any instance: a panel's dedicated server, or a GUI client with its token |
+| main page, Cluster card | the same list, live, with a link to each instance's own panel |
+| `mcp-e2e --instances N` | N-1 more headless stacks with their own bots; a port that is taken (Majordomus holds 8741, another stack holds 8800) is replaced by a free one |
+
+`mcp-view-check` reads `openttd://game/state` from every live panel through this panel and
+expects a 404 for an unknown instance. Majordomus does not discover these instances yet.
+
 ## The owner's window in the panel, and clicks that drive it
 
 `mcp-e2e` attaches the GUI client to the panel (`POST /api/view/attach` with the client's token

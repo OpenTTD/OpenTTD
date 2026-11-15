@@ -14,13 +14,15 @@
 # Usage: tools/research/mcp-e2e [--bin <openttd>] [--no-gui] [--no-browser] [--auto-approve] [--window WxH]
 #                               [--no-director] [--view-port N (default: a free port)]
 #                               [--panel-port 8800] [--mcp-port 8731] [--game-port 3979] [--seed N]
+#                               [--instances N (default 1: N-1 more headless stacks with bots, free
+#                                ports, all in the discovery registry, listed by every panel)]
 # Stop with Ctrl-C: the panel stops the server, and the GUI client is closed.
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
-GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT=""
+GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=()
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -35,6 +37,7 @@ while [[ $# -gt 0 ]]; do
     --mcp-port) MCP_PORT="$2"; shift 2 ;;
     --game-port) GAME_PORT="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
+    --instances) INSTANCES="${2:?--instances needs a number}"; shift 2 ;;
     -h|--help) sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "mcp-e2e: unknown option: $1" >&2; exit 2 ;;
   esac
@@ -54,6 +57,7 @@ fi
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-e2e.XXXXXX")"
 PANEL_PID="" GUI_PID="" HELPER_PIDS=()
 cleanup() {
+  for p in ${EXTRA_PIDS[@]+"${EXTRA_PIDS[@]}"}; do kill -TERM "$p" 2>/dev/null || true; done
   for p in ${HELPER_PIDS[@]+"${HELPER_PIDS[@]}"} ${GUI_PID:+"$GUI_PID"}; do
     pkill -P "$p" 2>/dev/null || true   # the supervised child first, then its supervisor loop
     kill "$p" 2>/dev/null || true
@@ -63,6 +67,18 @@ cleanup() {
   rm -rf "$TMP"
 }
 trap cleanup EXIT INT TERM
+
+# A port another service already holds (majordomus mcp holds 8741, a second stack holds 8800) is
+# replaced by a free one, so several stacks run side by side as one cluster.
+port_free() { ! lsof -nP -iTCP:"$1" -sTCP:LISTEN >/dev/null 2>&1; }
+any_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
+for var in PANEL_PORT MCP_PORT GAME_PORT; do
+  if ! port_free "${!var}"; then
+    new="$(any_port)"
+    echo "    $var ${!var} is taken; using $new"
+    printf -v "$var" '%s' "$new"
+  fi
+done
 
 echo "==> panel + dedicated server (seed $SEED)"
 python3 -I "$PANEL_DIR/server.py" --bin "$BIN" --panel-port "$PANEL_PORT" --mcp-port "$MCP_PORT" \
@@ -77,6 +93,15 @@ for ((i = 0; i < 180; i++)); do
 done
 curl -s "$URL/api/status" | grep -q '"mcp_up": true' || { echo "mcp-e2e: MCP did not come up" >&2; exit 1; }
 echo "==> MCP up; control window: $URL"
+
+# More instances of the cluster: each is this launcher, headless, on free ports, with its own bot;
+# every panel lists them all (GET /api/instances) and can drive any of them.
+for ((n = 2; n <= INSTANCES; n++)); do
+  "${BASH_SOURCE[0]}" --bin "$BIN" --no-gui --no-browser --seed "$((SEED + n))" \
+    > "$TMP/instance-$n.log" 2>&1 &
+  EXTRA_PIDS+=($!)
+  echo "==> instance $n of $INSTANCES starting (log $TMP/instance-$n.log)"
+done
 [[ "$BROWSER" == 1 ]] && open "$URL"
 
 if [[ "$GUI" == 1 ]]; then

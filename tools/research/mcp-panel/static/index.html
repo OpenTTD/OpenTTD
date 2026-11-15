@@ -33,6 +33,7 @@
         <li><a href="#bot" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">My bot</a></li>
         <li><a href="#control" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Control and approvals</a></li>
         <li><a href="#decisions-card" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Decisions and events</a></li>
+        <li><a href="#cluster" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Cluster</a></li>
         <li><a href="/world" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">World: map and road graph</a></li>
         <li><a href="#catalogue" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">MCP catalogue</a></li>
         <li><button type="button" id="side-console" class="flex items-center w-full p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Developer console (~)</button></li>
@@ -60,6 +61,21 @@
       </div>
       <img id="live-img" alt="The owner's OpenTTD window, refreshed about once a second" class="w-full rounded-sm bg-gray-900">
       <p id="live-msg" class="mt-1 text-xs text-gray-500 dark:text-gray-400"></p>
+    </div>
+
+    <div id="cluster" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Cluster: every MCP instance</h3>
+        <span id="cluster-reg" class="text-xs text-gray-500 dark:text-gray-400"></span>
+      </div>
+      <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr><th class="px-4 py-2">Instance</th><th class="px-4 py-2">Role</th><th class="px-4 py-2">Probe</th><th class="px-4 py-2">Endpoint</th><th class="px-4 py-2">Panel</th></tr>
+          </thead>
+          <tbody id="cluster-body"></tbody>
+        </table>
+      </div>
     </div>
 
     <div id="overview" class="grid grid-cols-2 gap-4 mb-4 md:grid-cols-3 xl:grid-cols-6">
