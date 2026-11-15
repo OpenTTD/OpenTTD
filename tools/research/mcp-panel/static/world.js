@@ -42,7 +42,8 @@ async function get(path) {
   const j = await r.json();
   return j.data ?? j;
 }
-let map = null; let towns = []; let stations = []; let graph = null;
+let map = null; let towns = []; let stations = []; let graph = null; let plan = null;
+const MODE_COLOURS = { bus: PALETTE[2], rail: PALETTE[1], air: PALETTE[0] };
 
 function drawMap() {
   if (!map) return;
@@ -63,6 +64,16 @@ function drawMap() {
       } else col = TYPE_COLOURS[tr[x]] || '#000';
       g.fillStyle = col; g.fillRect(x * px, y * px, px, px);
     }
+  }
+  if (plan) {
+    /* The plan: the best pairs of each mode, a line per pair in the mode's colour. */
+    const seen = new Set();
+    for (const ps of Object.values(plan.by_mode || {})) for (const p of ps) {
+      const k = `${p.a.id}-${p.b.id}`; if (seen.has(k)) continue; seen.add(k);
+      g.strokeStyle = MODE_COLOURS[p.mode] || '#fff'; g.lineWidth = Math.max(2, px); g.setLineDash(p.mode === 'air' ? [px * 4, px * 3] : []);
+      g.beginPath(); g.moveTo(p.a.x * px, p.a.y * px); g.lineTo(p.b.x * px, p.b.y * px); g.stroke();
+    }
+    g.setLineDash([]);
   }
   g.font = `${Math.max(10, px * 4)}px Inter, sans-serif`; g.textAlign = 'center';
   for (const s of stations) { g.fillStyle = '#ffffff'; g.fillRect(s.x * px - px, s.y * px - px, px * 3, px * 3); }
@@ -105,11 +116,22 @@ function drawGraph() {
   $('w-stats').textContent = `${graph.stats.road_tiles} road tiles · ${graph.stats.nodes} nodes · ${graph.stats.edges} edges · ${graph.stats.components} components`;
 }
 
+function drawPlan() {
+  if (!plan) return;
+  const badge = (m) => `<span class="text-xs font-medium px-2.5 py-0.5 rounded-sm text-white" style="background:${MODE_COLOURS[m]}">${m}</span>`;
+  const rows = []; const seen = new Set();
+  for (const ps of Object.values(plan.by_mode || {})) for (const p of ps) { const k = `${p.a.id}-${p.b.id}`; if (!seen.has(k)) { seen.add(k); rows.push(p); } }
+  rows.sort((x, y) => y.score - x.score);
+  $('plan-body').innerHTML = rows.map((p, i) => `<tr data-i="${i}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer"><td class="px-3 py-2">${badge(p.mode)}</td><td class="px-3 py-2 font-medium text-gray-900 dark:text-white">${p.a.name}</td><td class="px-3 py-2">${p.b.name}</td><td class="px-3 py-2">${p.distance}</td><td class="px-3 py-2">${p.supply}</td><td class="px-3 py-2">${p.road_connected ? 'yes' : 'no'}</td><td class="px-3 py-2">${p.score}</td></tr>`).join('');
+  $('plan-body').querySelectorAll('tr').forEach((tr) => tr.addEventListener('click', () => { const p = rows[+tr.dataset.i]; goTo(p.a.x, p.a.y, `${p.mode}: ${p.a.name} - ${p.b.name}`); }));
+}
+
 async function refresh() {
   try {
     [map, { towns }, { stations }, graph] = await Promise.all([
       get('/api/resources/map'), get('/api/resources/towns'), get('/api/resources/stations'), fetch('/api/graph').then((r) => r.json())]);
-    drawMap(); drawGraph();
+    try { plan = await (await fetch('/api/plan?limit=10')).json(); } catch (e) { plan = null; }
+    drawMap(); drawGraph(); drawPlan();
     $('w-msg').textContent = `updated ${new Date().toLocaleTimeString()} from openttd://map, openttd://towns, openttd://stations and /api/graph`;
   } catch (e) { $('w-msg').textContent = `not reachable: ${e.message}`; }
 }

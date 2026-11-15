@@ -333,3 +333,36 @@ if (window.EventSource) {
   }
   load(); setInterval(load, 5000);
 })();
+
+/* ---- news in the owner's game window: read it, and post to it ------------------------------- */
+(function news() {
+  const list = document.getElementById('news-list'); if (!list) return;
+  const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const msg = (t) => { document.getElementById('news-msg').textContent = t; };
+  const post = async (path, body) => (await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) })).json();
+  async function load() {
+    try {
+      const d = await (await fetch('/api/news?limit=15')).json();
+      list.innerHTML = (d.news || []).map((n) => `<li class="mb-3 ms-4"><div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div><time class="mb-1 text-xs font-normal leading-none text-gray-400 dark:text-gray-500">${esc(n.date)} · ${esc(n.type)}</time><p class="text-sm text-gray-900 dark:text-white">${esc(n.text)}</p></li>`).join('') || '<li class="ms-4 text-sm">no news yet</li>';
+    } catch (e) { msg('no GUI client attached yet'); }
+  }
+  async function towns() {
+    try {
+      const d = await (await fetch('/api/resources/towns')).json();
+      const sel = document.getElementById('news-town');
+      sel.innerHTML = '<option value="">No viewport</option>' + d.data.towns.sort((a, b) => a.name.localeCompare(b.name)).map((t) => `<option value="${t.id}">${esc(t.name)}</option>`).join('');
+    } catch (e) { /* the game is still starting */ }
+  }
+  document.getElementById('news-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const body = { text: document.getElementById('news-text').value };
+    const town = document.getElementById('news-town').value; const style = document.getElementById('news-style').value;
+    if (town) body.town = +town;
+    if (style) body.style = style;
+    const r = await post('/api/news', body);
+    msg(r.ok ? `shown in your game: ${r.shown}` : `refused: ${r.error}`);
+    if (r.ok) { document.getElementById('news-text').value = ''; setTimeout(load, 800); }
+  });
+  document.getElementById('news-close').addEventListener('click', async () => { await post('/api/news/close'); msg('news window closed'); });
+  load(); towns(); setInterval(load, 4000); setInterval(towns, 60000);
+})();

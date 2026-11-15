@@ -178,6 +178,33 @@ and that is the owner's call (knowledge `auto-approve-is-the-owners-switch`).
 - `rhai/demo.rhai` is the end-to-end demo: new world, PrismaticAI plays, watched through MCP,
   paused and resumed through the approval flow, final report.
 
+## News in the owner's window, both ways
+
+The game's newspapers and information windows are wired to MCP. Anyone can read what the player
+was shown and show them something: the owner in the panel, the bot's narrator, a Rhai script,
+Prismatic or another AI.
+
+| Surface | What it does |
+|---|---|
+| `openttd.view.news.list`, `GET /api/news?limit=N`, Rhai `api_news(#{limit: 5})` | the news this client has shown, newest first: text, type (`company_info`, `arrival_company`, `subsidies`, ...), style, date |
+| `openttd.view.news.show`, `POST /api/news {text, style?, tile / x,y / town / vehicle}` | a news message in the owner's window. With a target it gets a viewport there (style `thin`); `normal` is a newspaper and `small` an information window. It is local to that client: GUI state, not game state, never sent to the server |
+| `openttd.view.news.close`, `POST /api/news/close` | close the news window |
+| event `news.shown` (`/api/events?kinds=news`, SSE) | every new item, from the game or from a caller |
+| main page, News card | the list, plus a form to send a message with an optional town viewport |
+| `narrator.rhai` | every route the bot opens appears as a newspaper with a viewport on its town |
+
+## A route planner with modes of transport, every assumption a parameter
+
+`GET /api/plan?limit=N&params=JSON`, Rhai `world_plan(n)`, `world_plan_with(n, #{...})` or
+`api_plan(#{limit, params})`, and `mcp-plan [--params JSON] [--defaults]`. The planner ranks town
+pairs and gives each one a mode (bus, rail or air), plus the five best pairs of each mode so that
+a plan can combine modes. Every assumption is a parameter with a default that the caller can
+override: distance bands, minimum populations, reach, costs, `cost_weight` and the enabled
+`modes`. The answer echoes the parameters it used. The heuristic is v1 and not yet calibrated
+against the game's payment formula (see `tools/research/mcp-rhai/src/plan.rs`). On `/world` the
+best pairs are drawn on the map in each mode's colour, and a click on a row moves your camera to
+the first town.
+
 ## A cluster of instances: discovery and calls across it
 
 Every panel registers itself, and the GUI client it attaches, in a shared registry

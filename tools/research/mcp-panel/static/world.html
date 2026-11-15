@@ -84,6 +84,20 @@
         <div id="graph" role="img" aria-label="The road network as a graph on map coordinates: junctions, dead ends, stations and town anchors, edges by length" class="w-full aspect-square"></div>
       </section>
     </div>
+    <section class="mt-4 p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Route plan (/api/plan)</h3>
+        <span class="text-xs text-gray-500 dark:text-gray-400">Heuristic v1, not calibrated. Lines on the map, colour by mode. Click a row: your camera goes to the first town.</span>
+      </div>
+      <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr><th class="px-3 py-2">Mode</th><th class="px-3 py-2">From</th><th class="px-3 py-2">To</th><th class="px-3 py-2">Tiles</th><th class="px-3 py-2">Supply</th><th class="px-3 py-2">Road</th><th class="px-3 py-2">Score</th></tr>
+          </thead>
+          <tbody id="plan-body"></tbody>
+        </table>
+      </div>
+    </section>
     <p id="w-msg" class="mt-3 text-sm text-gray-500 dark:text-gray-400"></p>
   </main>
 

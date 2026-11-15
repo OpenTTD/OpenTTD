@@ -82,6 +82,7 @@ class Game:
         threading.Thread(target=self._bring_up, daemon=True).start()
         threading.Thread(target=self._auto_loop, daemon=True).start()
         threading.Thread(target=self._watch, daemon=True).start()
+        threading.Thread(target=self._watch_news, daemon=True).start()
 
     def _read_log(self):
         for raw in self.proc.stdout:
@@ -285,6 +286,27 @@ class Game:
                    and (not kinds or any(e["kind"] == k or e["kind"].startswith(k + ".") for k in kinds))]
         return out[:limit]
 
+    def _watch_news(self):
+        """The news the owner's window shows, as events news.shown: what the game reports to the player
+        (new companies, first arrivals, subsidies, ...) and what any MCP caller posted to them."""
+        seen = None
+        while True:
+            time.sleep(2)
+            if not self.view_token:
+                continue
+            try:
+                news = self.view_call("openttd.view.news.list", {"limit": 30}).get("news", [])
+            except Exception:  # noqa: BLE001 - the client restarts; try again next round
+                continue
+            keys = [(n["date"], n["type"], n["text"]) for n in news]
+            if seen is None:
+                seen = set(keys)  # what was there before the panel attached is history, not news
+                continue
+            for n, k in zip(reversed(news), reversed(keys)):
+                if k not in seen:
+                    seen.add(k)
+                    self.publish("news.shown", n)
+
     def _watch(self):
         """Derive game events from what MCP reports, by difference between two reads."""
         prev = None
@@ -475,6 +497,17 @@ def make_routes(game):
         game.event("view", f"GUI client attached ({f.name})")
         return 200, {"attached": True, "state": game.view_call("openttd.view.state")}
 
+    def plan(limit, params=""):
+        exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-plan"
+        if not exe.exists():
+            return 503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"}
+        extra = ["--params", params] if params else []
+        r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{game.args.panel_port}", "--limit", str(max(1, min(limit, 500))), *extra],
+                           capture_output=True, text=True, timeout=60)
+        if r.returncode != 0:
+            return (400 if r.returncode == 2 else 502), {"error": r.stderr.strip()}
+        return 200, json.loads(r.stdout)
+
     def graph():
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-graph"
         if not exe.exists():
@@ -545,6 +578,8 @@ def make_routes(game):
         ("POST", "/api/bots/setting", "botSetting", "Change one setting of a running bot (openttd.ai.set_setting, approval-gated)", True,
          s({"company": {"type": "integer"}, "name": {"type": "string"}, "value": {"type": "integer"}}, ["company", "name", "value"]),
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
+        ("GET", "/api/plan", "plan", "A route plan: town pairs ranked by a stated heuristic (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params)", True,
+         None, lambda q: plan(int(q.get("limit", ["20"])[0]), q.get("params", [""])[0])),
         ("GET", "/api/graph", "graph", "The road network as a graph (nodes: junctions, ends, stations, town anchors; edges with length; components), derived from openttd://map, towns and stations by tools/research/mcp-rhai mcp-graph", True,
          None, lambda q: graph()),
         ("GET", "/api/instances", "instances", "Every OpenTTD MCP instance in the cluster (panels and GUI clients) from the shared registry, each checked with a live probe", True,
@@ -552,6 +587,14 @@ def make_routes(game):
         ("POST", "/api/instances/call", "instancesCall", "One MCP JSON-RPC call on a named instance of the cluster (a panel's server or a GUI client)", True,
          s({"name": {"type": "string"}, "method": {"type": "string"}, "params": OBJ}, ["name", "method"]),
          lambda b: instance_call(b["name"], b["method"], b.get("params"))),
+        ("GET", "/api/news", "news", "The news the owner's game window has shown, newest first (openttd.view.news.list on the GUI client); ?limit=N", True,
+         None, lambda q: (200, game.view_call("openttd.view.news.list", {"limit": int(q.get("limit", ["20"])[0])}))),
+        ("POST", "/api/news", "newsShow", "Show a news message in the owner's game window, from the bot, a script or another AI (openttd.view.news.show): text, optional style normal|thin|small and a tile, x/y, town or vehicle for its viewport", True,
+         s({"text": {"type": "string"}, "style": {"type": "string", "enum": ["normal", "thin", "small"]}, "tile": {"type": "integer"},
+            "x": {"type": "integer"}, "y": {"type": "integer"}, "town": {"type": "integer"}, "vehicle": {"type": "integer"}}, ["text"]),
+         lambda b: (200, game.view_call("openttd.view.news.show", b))),
+        ("POST", "/api/news/close", "newsClose", "Close the news window in the owner's game", True,
+         None, lambda b: (200, game.view_call("openttd.view.news.close"))),
         ("POST", "/api/view/attach", "viewAttach", "Attach the GUI client the owner watches, by its MCP token file", False,
          s({"token_file": {"type": "string"}}, ["token_file"]), view_attach),
         ("POST", "/api/view/tool", "viewTool", "Call a tool on the attached GUI client's own MCP server (openttd.view.* and the rest)", False,
@@ -586,9 +629,10 @@ def openapi(game, routes):
              "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": OBJ}}}}}
         if schema is not None:
             o["requestBody"] = {"required": True, "content": {"application/json": {"schema": schema}}}
-        if path in ("/api/events", "/api/resource"):
-            o["parameters"] = [{"name": n, "in": "query", "schema": {"type": "string"}} for n in
-                               (("since", "kinds", "limit") if path == "/api/events" else ("uri",))]
+        query = {"/api/events": ("since", "kinds", "limit"), "/api/resource": ("uri",), "/api/news": ("limit",),
+                 "/api/plan": ("limit", "params")}.get(path) if method == "GET" else None
+        if query:
+            o["parameters"] = [{"name": n, "in": "query", "schema": {"type": "string"}} for n in query]
         paths.setdefault(path, {})[method.lower()] = o
 
     for method, path, op_id, summary, _mcp, schema, _h in routes:

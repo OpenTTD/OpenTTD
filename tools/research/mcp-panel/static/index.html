@@ -33,6 +33,7 @@
         <li><a href="#bot" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">My bot</a></li>
         <li><a href="#control" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Control and approvals</a></li>
         <li><a href="#decisions-card" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Decisions and events</a></li>
+        <li><a href="#news" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">News</a></li>
         <li><a href="#cluster" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Cluster</a></li>
         <li><a href="/world" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">World: map and road graph</a></li>
         <li><a href="#catalogue" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">MCP catalogue</a></li>
@@ -61,6 +62,26 @@
       </div>
       <img id="live-img" alt="The owner's OpenTTD window, refreshed about once a second" class="w-full rounded-sm bg-gray-900">
       <p id="live-msg" class="mt-1 text-xs text-gray-500 dark:text-gray-400"></p>
+    </div>
+
+    <div id="news" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">News in your game window</h3>
+        <span class="text-xs text-gray-500 dark:text-gray-400">openttd.view.news.* on the GUI client; new items stream as events news.shown</span>
+      </div>
+      <form id="news-form" class="grid gap-3 mb-4 md:grid-cols-6">
+        <input id="news-text" type="text" required placeholder="A message for the player (from you, the bot or another AI)" class="md:col-span-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+        <select id="news-town" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"><option value="">No viewport</option></select>
+        <select id="news-style" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <option value="">Style: automatic</option><option value="normal">Newspaper</option><option value="thin">Headline + viewport</option><option value="small">Information window</option>
+        </select>
+        <div class="flex gap-2">
+          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Show</button>
+          <button type="button" id="news-close" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-3 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Close</button>
+        </div>
+      </form>
+      <p id="news-msg" class="mb-2 text-xs text-gray-500 dark:text-gray-400"></p>
+      <ol id="news-list" class="relative border-s border-gray-200 dark:border-gray-700 ms-2"></ol>
     </div>
 
     <div id="cluster" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">

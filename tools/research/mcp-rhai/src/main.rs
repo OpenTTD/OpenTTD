@@ -17,6 +17,8 @@
 //!   auto_approve(on)                   -> map
 //!   events(since)  events(since, "game,company")  -> map  the panel's event feed after a sequence number
 //!   mcp_call(token_file, tool, args)  mcp_read(token_file, uri)  another process's own MCP server
+//!   world_plan(limit)                  -> map   town pairs ranked, each with its mode (bus, rail, air)
+//!   world_plan_with(limit, params)     -> map   the same with any parameter overridden (see mcp-plan --defaults)
 //!   world_graph()                      -> map   the road network as nodes, edges and components
 //!   env(name)
 //!   sleep(ms)   to_json(value)
@@ -28,6 +30,7 @@
 use std::time::Duration;
 
 mod graph;
+mod plan;
 
 use rhai::{Dynamic, Engine, EvalAltResult, Map};
 use serde_json::{json, Value};
@@ -150,6 +153,28 @@ fn engine(panel: Panel) -> Engine {
         };
         to_dyn(graph::derive(&get("/api/resources/map")?, &get("/api/resources/towns")?, &get("/api/resources/stations")?)?)
     });
+    let p = panel.clone();
+    // A route plan (src/plan.rs): town pairs ranked by a stated heuristic, each with its mode.
+    e.register_fn("world_plan", move |limit: i64| -> R<Dynamic> {
+        let get = |path: &str| -> R<Value> {
+            let v = from_dyn(p.get(path)?)?;
+            Ok(v.get("data").cloned().unwrap_or(v))
+        };
+        let towns = get("/api/resources/towns")?;
+        let g = graph::derive(&get("/api/resources/map")?, &towns, &get("/api/resources/stations")?)?;
+        to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &Value::Null)?)
+    });
+    let p = panel.clone();
+    // The same with any parameter overridden, e.g. world_plan_with(10, #{cost_weight: 1.0, modes: ["bus", "rail"]}).
+    e.register_fn("world_plan_with", move |limit: i64, params: rhai::Map| -> R<Dynamic> {
+        let get = |path: &str| -> R<Value> {
+            let v = from_dyn(p.get(path)?)?;
+            Ok(v.get("data").cloned().unwrap_or(v))
+        };
+        let towns = get("/api/resources/towns")?;
+        let g = graph::derive(&get("/api/resources/map")?, &towns, &get("/api/resources/stations")?)?;
+        to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &from_dyn(Dynamic::from_map(params))?)?)
+    });
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));
     e.register_fn("to_json", |d: Dynamic| -> R<String> {
@@ -159,6 +184,19 @@ fn engine(panel: Panel) -> Engine {
 }
 
 /// Rhai identifier for an MCP tool or console command name: dots and dashes become underscores.
+/// A query string from a Rhai map: strings as they are, everything else as JSON, percent-encoded.
+fn query(q: &Map) -> R<String> {
+    let enc = |v: &str| -> String {
+        v.bytes().map(|b| if b.is_ascii_alphanumeric() || b"-_.~".contains(&b) { (b as char).to_string() } else { format!("%{b:02X}") }).collect()
+    };
+    let mut parts = Vec::new();
+    for (k, v) in q {
+        let text = if v.is_string() { v.clone().into_string().unwrap_or_default() } else { from_dyn(v.clone())?.to_string() };
+        parts.push(format!("{}={}", enc(k), enc(&text)));
+    }
+    Ok(parts.join("&"))
+}
+
 fn ident(name: &str) -> String {
     name.chars().map(|c| if c.is_ascii_alphanumeric() { c } else { '_' }).collect()
 }
@@ -202,6 +240,10 @@ fn derive(e: &mut Engine, panel: &Panel) -> (Vec<String>, Vec<String>) {
                     e.register_fn(fname.clone(), move || -> R<Dynamic> { p0.post(&r0, json!({})) });
                 } else {
                     e.register_fn(fname.clone(), move || -> R<Dynamic> { p.get(&route) });
+                    // With a map: its entries become the query (a map or list value is sent as JSON),
+                    // e.g. api_plan(#{limit: 5, params: #{modes: ["bus", "rail"]}}).
+                    let (pq, rq) = (panel.clone(), path.clone());
+                    e.register_fn(fname.clone(), move |q: Map| -> R<Dynamic> { pq.get(&format!("{rq}?{}", query(&q)?)) });
                 }
                 tools.push(fname);
             }
@@ -268,7 +310,7 @@ fn main() {
     engine.register_fn("commands", move || c.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
     engine.register_fn("help", move || -> String {
         format!(
-            "built-in: rpc read overview status console pause approve auto_approve events mcp_call mcp_read world_graph env sleep to_json tools commands help\n\
+            "built-in: rpc read overview status console pause approve auto_approve events mcp_call mcp_read world_graph world_plan world_plan_with env sleep to_json tools commands help\n\
              derived from tools/list and the panel OpenAPI ({}): {}\nderived from list_cmds ({}): {}",
             tools.len(), tools.join(" "), commands.len(), commands.join(" ")
         )

@@ -2,7 +2,7 @@
 # RESEARCH-ONLY: end-to-end check of what the owner sees and drives, against a running
 # tools/research/mcp-e2e stack (panel plus a GUI client with its own MCP server).
 #
-# Checks discovery (every registered instance probed, calls across the cluster), the live view (screenshots of the owner's window, repeated, with the client still alive),
+# Checks the news in the owner's window (show, list, event, close), plan parameters, discovery (every registered instance probed, calls across the cluster), the live view (screenshots of the owner's window, repeated, with the client still alive),
 # the view tools through the panel proxy (scroll_to, mark, an unknown tool refused), the world
 # resources and the derived graph, and that these routes are in OpenAPI without a hand entry.
 #
@@ -66,8 +66,41 @@ graph="$(curl -s "$URL/api/graph")"
 check "the road graph has nodes, edges that point at nodes, and components" \
   "$([[ "$(json "(lambda ids: len(ids) > 0 and all(e['source'] in ids and e['target'] in ids for e in d['edges']) and d['stats']['components'] > 0)({n['id'] for n in d['nodes']})" <<<"$graph")" == True ]] && echo 1 || echo 0)"
 
+plan="$(curl -s "$URL/api/plan?limit=5")"
+check "the route plan ranks pairs with a mode each (bus, rail or air), best first, and the best per mode" \
+  "$([[ "$(json "len(d['pairs']) > 0 and all(p['mode'] in ('bus','rail','air') for p in d['pairs']) and [p['score'] for p in d['pairs']] == sorted([p['score'] for p in d['pairs']], reverse=True) and set(d['by_mode']) == {'bus','rail','air'}" <<<"$plan")" == True ]] && echo 1 || echo 0)"
+
+plan="$(curl -s "$URL/api/plan?limit=5&params=%7B%22modes%22%3A%5B%22bus%22%5D%7D")"
+check "plan parameters from the caller are applied and echoed (modes=[bus] gives only bus pairs)" \
+  "$([[ "$(json "d['params']['modes'] == ['bus'] and all(p['mode'] == 'bus' for p in d['pairs'])" <<<"$plan")" == True ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' "$URL/api/plan?params=not-json")"
+check "a plan with parameters that are not JSON is refused with 400 (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
+
+since="$(curl -s "$URL/api/status" | json "d['event_seq']")"
+stamp="mcp-view-check $(date +%s)"
+out="$(curl -s -X POST -H 'Content-Type: application/json' -d "{\"text\":\"$stamp\",\"x\":64,\"y\":64}" "$URL/api/news")"
+check "POST /api/news shows a message in the owner's window (style thin with a viewport)" \
+  "$([[ "$(json "d.get('ok') is True and d.get('style') == 'thin'" <<<"$out")" == True ]] && echo 1 || echo 0)"
+listed=0
+for _ in 1 2 3 4 5; do
+  curl -s "$URL/api/news?limit=5" | grep -q "$stamp" && { listed=1; break; }
+  sleep 1
+done
+check "the message is in the client's news list (GET /api/news)" "$listed"
+streamed=0
+for _ in $(seq 1 8); do
+  curl -s "$URL/api/events?since=$since&kinds=news" | grep -q "$stamp" && { streamed=1; break; }
+  sleep 1
+done
+check "the message arrives as an event news.shown on the event feed" "$streamed"
+out="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"text":"x","style":"small"}' "$URL/api/news")"
+check "a small news without a viewport target is refused" \
+  "$([[ "$(json "d.get('ok') is False" <<<"$out")" == True ]] && echo 1 || echo 0)"
+out="$(curl -s -X POST "$URL/api/news/close")"
+check "POST /api/news/close closes the news window" "$([[ "$(json "d.get('ok')" <<<"$out")" == True ]] && echo 1 || echo 0)"
+
 paths="$(curl -s "$URL/openapi.json" | json "' '.join(sorted(d['paths']))")"
-want=(/api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
+want=(/api/news /api/news/close /api/plan /api/instances /api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
 missing=()
 for p in "${want[@]}"; do [[ " $paths " == *" $p "* ]] || missing+=("$p"); done
 check "OpenAPI carries graph, map, stations and the view routes (missing: ${missing[*]:-none})" \

@@ -26,6 +26,11 @@
 #include "../window_gui.h"
 #include "../zoom_func.h"
 #include "../screenshot.h"
+#include "../news_func.h"
+#include "../news_gui.h"
+#include "../strings_func.h"
+#include "../table/strings.h"
+#include "../timer/timer_game_calendar.h"
 #include "../fileio_func.h"
 
 #include "../safeguards.h"
@@ -106,6 +111,18 @@ json Tools()
 	arr.push_back({{"name", "openttd.view.screenshot"},
 		{"description", "GUI only, no approval: save what this window shows right now (the whole screen buffer, UI included) and answer the file path"},
 		{"inputSchema", obj}});
+	arr.push_back({{"name", "openttd.view.news.list"},
+		{"description", "GUI only, no approval: the news this client has shown (newest first): text, type, style, date"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"limit", {{"type", "integer"}}}}}}}});
+	arr.push_back({{"name", "openttd.view.news.show"},
+		{"description", "GUI only, no approval, local to this client: show a news message to the player (from the bot, a script or another AI). With a tile, town or vehicle it gets a viewport there (style thin); style: normal (newspaper), thin (headline + viewport), small (information window)"},
+		{"inputSchema", {{"type", "object"}, {"required", json::array({"text"})}, {"properties", {{"text", {{"type", "string"}}},
+			{"style", {{"type", "string"}, {"enum", json::array({"normal", "thin", "small"})}}},
+			{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}},
+			{"town", {{"type", "integer"}}}, {"vehicle", {{"type", "integer"}}}}}}}});
+	arr.push_back({{"name", "openttd.view.news.close"},
+		{"description", "GUI only, no approval: close the news window the player sees"},
+		{"inputSchema", obj}});
 	arr.push_back({{"name", "openttd.view.state"},
 		{"description", "GUI only: the main viewport's zoom, zoom limits and followed vehicle"},
 		{"inputSchema", obj}});
@@ -120,6 +137,52 @@ std::optional<json> Call(const std::string &name, const json &args)
 	if (w == nullptr || w->viewport == nullptr) return Error("no main viewport in this process (a dedicated server has none)");
 
 	if (name == "openttd.view.state") return State(w);
+
+	if (name == "openttd.view.news.list") {
+		static constexpr std::string_view TYPES[] = {"arrival_company", "arrival_other", "accident", "accident_other",
+			"company_info", "industry_open", "industry_close_company", "industry_close_other", "industry_close_nobody",
+			"economy", "industry_company", "industry_other", "industry_nobody", "advice", "new_vehicles",
+			"acceptance", "subsidies", "general"};
+		static constexpr std::string_view STYLES[] = {"thin", "small", "normal", "vehicle", "company"};
+		size_t limit = std::min<size_t>(args.value("limit", 20), 200);
+		json list = json::array();
+		for (const NewsItem &ni : GetNews()) {
+			if (list.size() >= limit) break;
+			auto ymd = TimerGameCalendar::ConvertDateToYMD(ni.date);
+			auto t = static_cast<size_t>(ni.type), st = static_cast<size_t>(ni.style);
+			list.push_back({{"text", ni.headline.GetDecodedString()},
+				{"type", t < std::size(TYPES) ? json(TYPES[t]) : json(t)},
+				{"style", st < std::size(STYLES) ? json(STYLES[st]) : json(st)},
+				{"date", fmt::format("{:04}-{:02}-{:02}", ymd.year.base(), ymd.month + 1, ymd.day)}});
+		}
+		return json{{"ok", true}, {"news", std::move(list)}};
+	}
+
+	if (name == "openttd.view.news.show") {
+		/* Local to this client: a news item is GUI state, not game state, and is never sent to the server. */
+		std::string text = args.value("text", "");
+		if (text.empty()) return Error("text is required");
+		std::string style = args.value("style", "");
+		std::string error;
+		NewsReference ref{};
+		bool has_target = args.contains("tile") || args.contains("x") || args.contains("town") || args.contains("vehicle");
+		if (has_target) {
+			auto tile = Target(args, error);
+			if (!tile.has_value()) return Error(error);
+			ref = *tile;
+		}
+		if (style.empty()) style = has_target ? "thin" : "normal";
+		NewsStyle ns = style == "thin" ? NewsStyle::Thin : (style == "small" ? NewsStyle::Small : NewsStyle::Normal);
+		NewsFlags flags = ns == NewsStyle::Normal ? NewsFlags{} : NewsFlags{NewsFlag::NoTransparency, NewsFlag::Shaded};
+		if (ns != NewsStyle::Normal && !has_target) return Error("styles thin and small need a tile, x/y, town or vehicle");
+		AddNewsItem(GetEncodedString(STR_JUST_RAW_STRING, text), NewsType::General, ns, flags, ref);
+		return json{{"ok", true}, {"shown", text}, {"style", style}};
+	}
+
+	if (name == "openttd.view.news.close") {
+		CloseWindowById(WindowClass::News, 0);
+		return json{{"ok", true}};
+	}
 
 	if (name == "openttd.view.screenshot") {
 		/* The screen buffer as the player sees it, captured on the drawing thread (never here, on

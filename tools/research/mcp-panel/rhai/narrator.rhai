@@ -3,6 +3,7 @@
 //
 //   tools/research/mcp-rhai/target/release/mcp-rhai tools/research/mcp-panel/rhai/narrator.rhai
 //
+// Routes it opens also appear as a newspaper in the owner's window, with a viewport on the town.
 // What is said is derived from the events (ai.log, company.*, decision.*, game.*), not scripted:
 // a route the bot opens, a town it fails in, its knobs, companies founded or renamed, every MCP
 // decision, a pause or resume, and a summary at every new month.
@@ -11,6 +12,24 @@ import "ttd" as ttd;
 fn say(text) {
     // The console takes one line; quotes inside the message would end it early.
     con_say(`"[owner-bot] ${text.replace("\"", "'")}"`);
+}
+
+// A newspaper in the owner's window for what matters most: a route the bot opened, with a
+// viewport on its town (openttd.view.news.show through POST /api/news). Chat carries the rest.
+fn headline(e) {
+    if e.kind == "ai.log" && e.data.text.contains("built a bus route in ") {
+        let t = e.data.text;
+        let rest = t.sub_string(t.index_of("built a bus route in ") + 21);
+        let town_name = rest.split(" with ")[0];
+        for town in read("openttd://towns").data.towns {
+            if town.name == town_name {
+                return #{text: "Your bot opened a route: " + t.replace("PrismaticAI: ", ""), town: town.id};
+            }
+        }
+        return #{text: "Your bot opened a route: " + t.replace("PrismaticAI: ", "")};
+    }
+    if e.kind == "game.new_world" { return #{text: `A new world for your bot: ${e.data.towns} towns, ${e.data.date}`}; }
+    ()
 }
 
 fn narrate(e) {
@@ -47,6 +66,10 @@ loop {
     for e in feed.events {
         let text = narrate(e);
         if text != () { say(text); print(`${e.kind}: ${text}`); }
+        let news = headline(e);
+        if news != () {
+            try { api_newsShow(news); print(`news: ${news.text}`); } catch (err) { print(`news not shown: ${err}`); }
+        }
     }
     since = feed.last_seq;
     sleep(2000);

@@ -1,0 +1,44 @@
+id: I0050
+milestone: an-agent-reaches-the-game-over-mcp
+title: "In-game news over MCP both ways, and a parametrised route planner that chooses the mode of transport"
+slug: news-both-ways-and-mode-planner
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Wire the game's news windows to MCP (read, stream, show, close) for the owner, the bot, scripts and other AIs; and rank town pairs with a mode of transport each, every assumption an external parameter."
+why: "The owner: wire this panel (the news window) to MCP, also for other AIs and interactions, make it interactive; choose the right combination of transport modes; everything externally steerable, configurable, monitored, parametrised."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_view.cpp"
+  - "tools/research/**"
+  - "research/mcp-control.md"
+non_scope:
+  - "The bot building rail or air routes (next); calibrating the planner against the payment formula (source analysis pending)"
+depends_on:
+  - I0043
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd.view.news.list/show/close work on the GUI client; new items appear as events news.shown"
+  - "GET/POST /api/news and /api/news/close are declared once and appear in OpenAPI and Rhai"
+  - "GET /api/plan ranks pairs with a mode each and the best per mode; params override any assumption and are echoed; bad params are refused"
+  - "tools/gate.sh research, mcp-view-check and mcp-panel-check pass"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-view-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-15T23:36:27Z
+started_at: 2026-11-15T23:36:04Z
+started_event: sha256:9770b076616d41d0f5695ed3f36298216b3ed4ad9e61ff2fb17194bcfd0bd416
+verified_at: 2026-11-15T23:36:23Z
+verified_event: sha256:db82f4ad29343aad1bf6ba4c067253944086c1eaf08b52618fda8eac4ae7a86c
+completed_at: 2026-11-15T23:36:27Z
+completed_event: sha256:3df3bc268aa4138586833091c9f953833cad0b2ba7961ab2c2b4b0ad0ffb59a7
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-view-check; tools/research/mcp-panel-check; mcp-rhai api_plan/api_news"
+    result: "gate research PASS (ctest 103/103, [prismatic_mcp] 25 assertions); mcp-view-check 22/22 on a 3-instance cluster with the GUI client (news show/list/event/close, small-without-target refused, plan params applied and echoed, bad params 400, discovery 3/3); mcp-panel-check 13/13; Rhai api_plan(#{limit, params}) and api_news(#{limit}) work; a news with a town viewport seen in the owner's window. Planner heuristic v1 not calibrated; the source-analysis agent stopped on an account rate limit before writing anything"
+    commit: 02b99aee680597bba64e51e3e98f70546e48f5a0
+    recorded_at: 2026-11-15T23:36:24Z
