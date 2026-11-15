@@ -113,9 +113,18 @@ and `ttd::wait_event(kind, seconds)`.
   game: `mcp-rhai tools/research/mcp-panel/rhai/narrator.rhai`.
 - The panel window shows the same events as toasts, live from `/api/events/stream`, and an
   approval that waits for you stays on screen.
-- Not yet: moving the GUI client's camera to what the bot does (scroll, follow a vehicle, open its
-  windows). The viewport belongs to the client, so this needs view tools in the MCP server of a GUI
-  process (C++ side).
+- The GUI client runs its own MCP server: `mcp-e2e` gives it a personal directory of its own
+  (OpenTTD reads it from `$HOME`), whose `scripts/autoexec.scr` runs
+  `prismatic_mcp start <free port> <token file>`; the token file is mode 0600,
+  `{"agent_token", "endpoint"}`.
+- `rhai/director.rhai` moves that client's camera over its MCP (`openttd.view.scroll_to`, `zoom`)
+  to every route the bot builds or fails to build, the town derived from the bot's log line and
+  located through the client's `openttd://towns`. `mcp-e2e` starts it with the narrator.
+- View tools, GUI processes only, no approval (they change only the local viewport):
+  `openttd.view.scroll_to {tile | x,y | town | vehicle, instant}`, `openttd.view.follow {vehicle | null}`,
+  `openttd.view.zoom {level}`, `openttd.view.state`. Resource `openttd://towns`.
+- Rhai reaches any OpenTTD process's own MCP server: `mcp_call(token_file, tool, args)`,
+  `mcp_read(token_file, uri)`.
 
 ## The owner's bot
 

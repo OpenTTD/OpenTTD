@@ -6,9 +6,13 @@
 #   2. the control window at http://127.0.0.1:<panel-port>/ (tools/research/mcp-panel): live state,
 #      companies, resources and tools, the approval-gated pause, auto-approve, and a developer
 #      console on ~ (OpenTTD console commands, raw MCP, Rhai scripts),
-#   3. an OpenTTD GUI client joined to the server as a spectator, so the game is visible.
+#   3. an OpenTTD GUI client joined to the server as a spectator, full screen, with its own MCP
+#      server (started by its own autoexec.scr; token in a 0600 file), so the game is visible and
+#      its camera is driven: rhai/director.rhai moves it to every route the bot builds, and
+#      rhai/narrator.rhai reports in the game's chat what the bot does.
 #
 # Usage: tools/research/mcp-e2e [--bin <openttd>] [--no-gui] [--no-browser] [--auto-approve] [--window WxH]
+#                               [--no-director] [--view-port N (default: a free port)]
 #                               [--panel-port 8800] [--mcp-port 8731] [--game-port 3979] [--seed N]
 # Stop with Ctrl-C: the panel stops the server, and the GUI client is closed.
 set -euo pipefail
@@ -16,7 +20,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
-GUI=1 BROWSER=1 AUTO=() WINDOW=""
+GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -25,6 +29,8 @@ while [[ $# -gt 0 ]]; do
     --no-browser) BROWSER=0; shift ;;
     --auto-approve) AUTO=(--auto-approve); shift ;;
     --window) WINDOW="${2:?--window needs WxH}"; shift 2 ;;
+    --no-director) DIRECTOR=0; shift ;;
+    --view-port) VIEW_PORT="${2:?--view-port needs a port}"; shift 2 ;;
     --panel-port) PANEL_PORT="$2"; shift 2 ;;
     --mcp-port) MCP_PORT="$2"; shift 2 ;;
     --game-port) GAME_PORT="$2"; shift 2 ;;
@@ -46,8 +52,9 @@ fi
 [[ -f "$PANEL_DIR/static/app.css" ]] || (cd "$PANEL_DIR" && tailwindcss -i input.css -o static/app.css --minify)
 
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-e2e.XXXXXX")"
-PANEL_PID="" GUI_PID=""
+PANEL_PID="" GUI_PID="" HELPER_PIDS=()
 cleanup() {
+  for p in ${HELPER_PIDS[@]+"${HELPER_PIDS[@]}"}; do kill "$p" 2>/dev/null || true; done
   [[ -n "$GUI_PID" ]] && kill "$GUI_PID" 2>/dev/null || true
   [[ -n "$PANEL_PID" ]] && kill -TERM "$PANEL_PID" 2>/dev/null || true
   wait 2>/dev/null || true
@@ -79,9 +86,32 @@ if [[ "$GUI" == 1 ]]; then
   fi
   printf '[network]\nclient_name = owner-view\n[misc]\nfullscreen = %s\nresolution = %s\n[gui]\nautosave = off\n' \
     "$FULL" "${RES/x/,}" > "$TMP/client.cfg"
-  echo "==> GUI client ($RES, fullscreen=$FULL) joining 127.0.0.1:$GAME_PORT as a spectator"
-  "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" > "$TMP/client.log" 2>&1 &
+  # The client gets a personal directory of its own (OpenTTD reads it from $HOME), so its
+  # autoexec.scr starts its own MCP server without touching the server's or the owner's.
+  CHOME="$TMP/client-home"; CPD="$CHOME/Documents/OpenTTD"
+  mkdir -p "$CPD/scripts"
+  ln -s "$HOME/Documents/OpenTTD/baseset" "$CPD/baseset"
+  VIEW_TOKEN="$TMP/view-token.json"
+  # A free loopback port unless one is given: fixed ports collide with other local services.
+  [[ -n "$VIEW_PORT" ]] || VIEW_PORT="$(python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])')"
+  printf 'prismatic_mcp start %s %s\n' "$VIEW_PORT" "$VIEW_TOKEN" > "$CPD/scripts/autoexec.scr"
+  echo "==> GUI client ($RES, fullscreen=$FULL, own MCP on 127.0.0.1:$VIEW_PORT) joining 127.0.0.1:$GAME_PORT as a spectator"
+  HOME="$CHOME" "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" > "$TMP/client.log" 2>&1 &
   GUI_PID=$!
+  RHAI="$ROOT_DIR/tools/research/mcp-rhai/target/release/mcp-rhai"
+  if [[ "$DIRECTOR" == 1 && -x "$RHAI" ]]; then
+    for ((i = 0; i < 60; i++)); do [[ -s "$VIEW_TOKEN" ]] && break; sleep 1; done
+    if [[ -s "$VIEW_TOKEN" ]]; then
+      echo "==> director (camera) and narrator (in-game chat)"
+      MCP_VIEW_TOKEN="$VIEW_TOKEN" "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/director.rhai" > "$TMP/director.log" 2>&1 &
+      HELPER_PIDS+=($!)
+      "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/narrator.rhai" > "$TMP/narrator.log" 2>&1 &
+      HELPER_PIDS+=($!)
+      echo "    logs: $TMP/director.log $TMP/narrator.log"
+    else
+      echo "mcp-e2e: the GUI client wrote no MCP token file; no director" >&2
+    fi
+  fi
 fi
 
 echo "==> running. Ctrl-C stops everything."

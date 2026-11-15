@@ -1,0 +1,27 @@
+id: I0039
+milestone: an-agent-reaches-the-game-over-mcp
+title: "A cluster of OpenTTD instances driven by AI: every server and client with its MCP, discovered, monitored and deployed often"
+slug: instance-cluster-discovery
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Run many servers and clients, each with its own MCP server, discover them without configuration, and drive them from one panel and from Rhai, for research runs of AI-driven games."
+why: "The owner wants every running server and client to have its own MCP interface, integrated into a cluster with discovery (Majordomus technology), rock solid, deployed often."
+scope:
+  - "tools/research/**"
+  - "research/mcp-control.md"
+depends_on:
+  - I0038
+  - I0035
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "Every instance announces itself (role, game port, MCP endpoint, token file, pid) where the panel and Majordomus discover it"
+  - "The panel lists the discovered instances and drives any of them; Rhai addresses an instance by id"
+  - "mcp-e2e --instances N starts N servers with bots and their clients, and the panel check passes for each"
+validation:
+  - "tools/research/mcp-panel-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15

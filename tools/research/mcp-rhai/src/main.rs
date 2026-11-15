@@ -16,6 +16,8 @@
 //!   approve(id)                        -> map   the operator's approval of a pending decision
 //!   auto_approve(on)                   -> map
 //!   events(since)  events(since, "game,company")  -> map  the panel's event feed after a sequence number
+//!   mcp_call(token_file, tool, args)  mcp_read(token_file, uri)  another process's own MCP server
+//!   env(name)
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
 //!
@@ -105,6 +107,38 @@ fn engine(panel: Panel) -> Engine {
     e.register_fn("events", move |since: i64, kinds: &str| -> R<Dynamic> {
         p.get(&format!("/api/events?since={since}&kinds={kinds}"))
     });
+    // Any OpenTTD process's own MCP server (a GUI client's, another instance of a cluster): the
+    // endpoint and token come from the token file `prismatic_mcp start <port> <file>` writes.
+    e.register_fn("mcp_call", |token_file: &str, tool: &str, args: Map| -> R<Dynamic> {
+        let cfg: Value = serde_json::from_str(&std::fs::read_to_string(token_file).map_err(|e| format!("{token_file}: {e}"))?)
+            .map_err(|e| format!("{token_file}: {e}"))?;
+        let endpoint = cfg.get("endpoint").and_then(Value::as_str).ok_or("token file has no endpoint")?;
+        let token = cfg.get("agent_token").and_then(Value::as_str).ok_or("token file has no agent_token")?;
+        let body = json!({"jsonrpc": "2.0", "id": 1, "method": "tools/call",
+                          "params": {"name": tool, "arguments": from_dyn(Dynamic::from_map(args))?}});
+        let v: Value = ureq::post(endpoint).timeout(Duration::from_secs(10))
+            .set("Authorization", &format!("Bearer {token}")).set("Accept", "application/json, text/event-stream")
+            .send_json(body).map_err(|e| format!("{endpoint}: {e}"))?.into_json().map_err(|e| format!("{endpoint}: {e}"))?;
+        match v.pointer("/result/content/0/text").and_then(Value::as_str) {
+            Some(text) => to_dyn(serde_json::from_str(text).unwrap_or(Value::String(text.to_string()))),
+            None => to_dyn(v),
+        }
+    });
+    e.register_fn("mcp_read", |token_file: &str, uri: &str| -> R<Dynamic> {
+        let cfg: Value = serde_json::from_str(&std::fs::read_to_string(token_file).map_err(|e| format!("{token_file}: {e}"))?)
+            .map_err(|e| format!("{token_file}: {e}"))?;
+        let endpoint = cfg.get("endpoint").and_then(Value::as_str).ok_or("token file has no endpoint")?;
+        let token = cfg.get("agent_token").and_then(Value::as_str).ok_or("token file has no agent_token")?;
+        let v: Value = ureq::post(endpoint).timeout(Duration::from_secs(10))
+            .set("Authorization", &format!("Bearer {token}")).set("Accept", "application/json, text/event-stream")
+            .send_json(json!({"jsonrpc": "2.0", "id": 1, "method": "resources/read", "params": {"uri": uri}}))
+            .map_err(|e| format!("{endpoint}: {e}"))?.into_json().map_err(|e| format!("{endpoint}: {e}"))?;
+        match v.pointer("/result/contents/0/text").and_then(Value::as_str) {
+            Some(text) => to_dyn(serde_json::from_str(text).unwrap_or(Value::Null)),
+            None => to_dyn(v),
+        }
+    });
+    e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));
     e.register_fn("to_json", |d: Dynamic| -> R<String> {
         serde_json::to_string_pretty(&from_dyn(d)?).map_err(|e| e.to_string().into())
@@ -222,7 +256,7 @@ fn main() {
     engine.register_fn("commands", move || c.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
     engine.register_fn("help", move || -> String {
         format!(
-            "built-in: rpc read overview status console pause approve auto_approve events sleep to_json tools commands help\n\
+            "built-in: rpc read overview status console pause approve auto_approve events mcp_call mcp_read env sleep to_json tools commands help\n\
              derived from tools/list and the panel OpenAPI ({}): {}\nderived from list_cmds ({}): {}",
             tools.len(), tools.join(" "), commands.len(), commands.join(" ")
         )

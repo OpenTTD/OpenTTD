@@ -26,6 +26,7 @@
 
 #include "prismatic_mcp.h"
 #include "prismatic_mcp_detail.h"
+#include "prismatic_mcp_view.h"
 
 #include "../3rdparty/nlohmann/json.hpp"
 #include "../core/random_func.hpp"
@@ -223,13 +224,29 @@ struct ResourceEntry {
 	const char *description;
 	json (*build)();
 };
-const std::array<ResourceEntry, 5> RESOURCES = {{
+json ResourceTowns(); // defined below, next to the view tools that scroll to a town
+
+const std::array<ResourceEntry, 6> RESOURCES = {{
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
 	{"openttd://companies", "Companies", "All companies with basic finances (server-visible)", &ResourceCompanies},
 	{"openttd://decisions", "Decisions", "Provenance trace: decision -> approval -> command -> observed verdict", &ResourceDecisions},
+	{"openttd://towns", "Towns", "Every town: id, name, tile, x/y, population (scroll_to a town by id)", &ResourceTowns},
 }};
+
+/** Every town, so a controller can find where a bot builds and scroll the view there. */
+json ResourceTowns()
+{
+	json env = MakeEnvelope();
+	json list = json::array();
+	for (const Town *t : Town::Iterate()) {
+		list.push_back({{"id", t->index.base()}, {"name", t->GetCachedName()}, {"tile", t->xy.base()},
+			{"x", TileX(t->xy)}, {"y", TileY(t->xy)}, {"population", t->cache.population}});
+	}
+	env["data"] = json{{"towns", std::move(list)}};
+	return env;
+}
 
 /* ---- decision / approval / provenance (main thread) ----------------------- *
  * The mission's core continuation vertical: a typed DecisionEnvelope is validated
@@ -369,6 +386,12 @@ json HandleToolsCall(const json &id, const json &params)
 	std::string name = params["name"].get<std::string>();
 	json args = params.contains("arguments") ? params["arguments"] : json::object();
 
+	/* View tools: local viewport only, no approval, no command (prismatic_mcp_view.cpp). */
+	if (auto view = View::Call(name, args); view.has_value()) {
+		bool ok = view->value("ok", false);
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", view->dump()}}})}, {"isError", !ok}});
+	}
+
 	/* Non-mutating validation tool. */
 	if (name == "openttd.decision.validate") {
 		std::string type = args.value("action_type", args.contains("action") ? args["action"].value("type", "") : "");
@@ -455,6 +478,8 @@ json HandleToolsCall(const json &id, const json &params)
 json ToolsList()
 {
 	json arr = json::array();
+	/* View tools first: they change only the local viewport and need no approval. */
+	for (auto &t : View::Tools()) arr.push_back(t);
 	arr.push_back({{"name", "openttd.decision.validate"}, {"description", "Validate a typed action/DecisionEnvelope without mutating game state"},
 		{"inputSchema", {{"type", "object"}}}});
 	arr.push_back({{"name", "openttd.decision.list_action_types"}, {"description", "List typed action types this build can execute"},
@@ -713,14 +738,15 @@ bool Start(uint16_t port, std::string &error)
 	_mcp.listeners.clear();
 	NetworkAddress v4("127.0.0.1", _mcp.port);
 	v4.Listen(SOCK_STREAM, &_mcp.listeners);
-	NetworkAddress v6("::1", _mcp.port);
-	v6.Listen(SOCK_STREAM, &_mcp.listeners);
-
+	/* The advertised endpoint is 127.0.0.1: without the IPv4 listener a client would reach
+	 * whatever else holds that port, so a failed IPv4 bind is a failed start. */
 	if (_mcp.listeners.empty()) {
-		error = "could not bind loopback listener on port " + fmt::format("{}", _mcp.port);
+		error = "could not bind 127.0.0.1:" + fmt::format("{}", _mcp.port) + " (in use by another process?)";
 		_mcp.last_error = error;
 		return false;
 	}
+	NetworkAddress v6("::1", _mcp.port);
+	v6.Listen(SOCK_STREAM, &_mcp.listeners);
 
 	RandomBytesWithFallback(_mcp.token);
 	_mcp.token_valid = true;

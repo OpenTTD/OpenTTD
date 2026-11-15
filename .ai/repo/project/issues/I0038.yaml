@@ -1,0 +1,44 @@
+id: I0038
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The owner sees the bot build: MCP in the GUI client, openttd.view.* tools and a director that moves the camera to every route"
+slug: camera-follows-the-bot
+priority: p0
+profile: implementation
+parallel_safe: false
+objective: "Make the running game window show what the bot does, by giving the GUI client its own MCP server and moving its camera from the event feed."
+why: "The owner did not see anything move in the game window: only the dedicated server had MCP, and the spectator view stood still."
+scope:
+  - "src/prismatic_mcp/**"
+  - "src/console_cmds.cpp"
+  - "tools/research/**"
+  - "research/mcp-control.md"
+depends_on:
+  - I0037
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#a-bot-plays-for-the-owner"
+acceptance_criteria:
+  - "prismatic_mcp start [port] [token-file] writes a 0600 token file; Start fails when the IPv4 listener cannot bind"
+  - "openttd.view.scroll_to/follow/zoom/state work in a GUI process and answer an error in a dedicated server; openttd://towns lists every town"
+  - "mcp-e2e starts the GUI client with its own MCP server and the director, which moves the camera to every route the bot builds"
+  - "tools/gate.sh research, mcp-live-check and mcp-panel-check pass"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-live-check"
+  - "tools/research/mcp-panel-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15T22:04:06Z
+started_at: 2026-11-15T22:03:01Z
+started_event: sha256:0621f9851f768e43a58c00490a03f6a9661a5b392560add1e45f21d957d15693
+verified_at: 2026-11-15T22:04:02Z
+verified_event: sha256:3803235b18eaab380b54ebc5e2ac47d3c19f5fc6fe8ad68d77f85077dff38e07
+completed_at: 2026-11-15T22:04:06Z
+completed_event: sha256:5879bedbab559667e1d749b865bbdba258343ec700f1ce8aa7009d57a44dc709
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-live-check; tools/research/mcp-panel-check; mcp-e2e (director)"
+    result: "gate research PASS (ctest 103/103, [prismatic_mcp] 25 assertions); mcp-live-check 14/14; mcp-panel-check 11/11; live on :8800: the GUI client started its own MCP on a free port (54204) from its own autoexec.scr, wrote a 0600 token file, and the director moved its camera Fedborough -> Tartbourne Bridge -> Planley Market -> Benningstone as the bot built each route. Found on the way: port 8741 belonged to majordomus mcp; the client bound IPv6 only and the token file pointed at Majordomus (HTTP 400 session_required); Start now fails without the IPv4 listener and mcp-e2e picks a free port"
+    commit: c913fc6267d01f680ad38fbffde25e41a192237b
+    recorded_at: 2026-11-15T22:04:03Z

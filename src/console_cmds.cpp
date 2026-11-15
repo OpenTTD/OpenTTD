@@ -53,6 +53,8 @@
 #endif
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 #include "prismatic_mcp/prismatic_mcp.h"
+#include <filesystem>
+#include <fstream>
 #endif
 
 #if defined(WITH_ZLIB)
@@ -1794,7 +1796,7 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 {
 	if (argv.size() < 2) {
 		IConsolePrint(CC_HELP, "RESEARCH-ONLY/UNSTABLE: control the embedded loopback MCP server.");
-		IConsolePrint(CC_HELP, "Usage: 'prismatic_mcp <status|start [port]|stop|endpoint|token|rotate|approvals|approve <id>|deny <id>|decisions [n]>'.");
+		IConsolePrint(CC_HELP, "Usage: 'prismatic_mcp <status|start [port] [token-file]|stop|endpoint|token|rotate|approvals|approve <id>|deny <id>|decisions [n]>'.");
 		return true;
 	}
 
@@ -1812,7 +1814,22 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 		std::string error;
 		if (PrismaticMCP::Start(port, error)) {
 			IConsolePrint(CC_INFO, "MCP server started: {}", PrismaticMCP::GetEndpoint());
-			IConsolePrint(CC_WARNING, "Bearer token (local operator only, not logged): {}", PrismaticMCP::GetToken());
+			if (argv.size() >= 4) {
+				/* A GUI process prints its console to no stdout, so a launcher reads the token from
+				 * this file instead: {"agent_token", "endpoint"}, owner read/write only. */
+				std::string path{argv[3]};
+				std::error_code ec;
+				std::filesystem::remove(path, ec);
+				{
+					std::ofstream f(path, std::ios::out | std::ios::trunc);
+					f << fmt::format("{{\"agent_token\":\"{}\",\"endpoint\":\"{}\"}}\n", PrismaticMCP::GetToken(), PrismaticMCP::GetEndpoint());
+				}
+				std::filesystem::permissions(path, std::filesystem::perms::owner_read | std::filesystem::perms::owner_write,
+					std::filesystem::perm_options::replace, ec);
+				IConsolePrint(ec ? CC_ERROR : CC_INFO, "Token written to {}{}", path, ec ? " (permissions not set)" : " (mode 0600)");
+			} else {
+				IConsolePrint(CC_WARNING, "Bearer token (local operator only, not logged): {}", PrismaticMCP::GetToken());
+			}
 		} else {
 			IConsolePrint(CC_ERROR, "MCP server failed to start: {}", error);
 		}
