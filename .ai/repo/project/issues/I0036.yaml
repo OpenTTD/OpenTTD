@@ -1,0 +1,30 @@
+id: I0036
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Expose the whole public C++ API through MCP and OpenAPI: every command, console command and Script API function, derived"
+slug: public-api-exposed
+priority: p1
+profile: implementation
+parallel_safe: false
+objective: "Bring tools/research/mcp-rhai mcp-api-coverage to 100% in every dimension, by derivation from the command table and the Script API bindings, without a hand-written list."
+why: "Rule project.public-api-is-exposed; the owner's requirement that everything with a public C++ API be exposed on MCP and Swagger, enforced."
+scope:
+  - "src/prismatic_mcp/**"
+  - "src/console_cmds.cpp"
+  - "tools/research/**"
+non_scope:
+  - "Commands that cannot be expressed as typed JSON yet (EncodedString, Order, variants): listed with the reason in openttd://commands"
+depends_on:
+  - I0017
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-mutation-is-approved-and-commanded"
+acceptance_criteria:
+  - "commands: every Commands entry is openttd.cmd.<Name> with a derived JSON Schema, or listed with its reason as not exposable"
+  - "script_api: every Script API static function is openttd.api.<Class>.<Function>, derived from the Squirrel binding declarations"
+  - "console: every registered console command is reachable through the derived console surface"
+  - "mcp-api-coverage exits 0 against a running panel"
+validation:
+  - "tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel http://127.0.0.1:8800"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15

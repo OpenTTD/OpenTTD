@@ -1,0 +1,28 @@
+id: I0035
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Port the MCP control panel's server from Python to the Rust host, keeping every derived surface"
+slug: panel-server-in-rust
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "Move tools/research/mcp-panel/server.py into the Rust crate that already hosts Rhai, so the panel, its routes, OpenAPI, events and Rhai run in one Rust process."
+why: "Rule project.tooling-language-preference: Rhai over Rust over C++ over C; the panel server is the one piece of new capability written in Python."
+scope:
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-panel/**"
+  - "tools/research/mcp-e2e"
+  - "research/mcp-control.md"
+depends_on:
+  - I0037
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "One Rust binary serves the panel, its declared and derived routes, /openapi.json, /docs, the event bus with SSE, and runs Rhai in process"
+  - "tools/research/mcp-panel-check passes unchanged against it"
+  - "mcp-e2e starts it instead of server.py, and server.py is removed"
+validation:
+  - "tools/research/mcp-panel-check --panel http://127.0.0.1:8800"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15

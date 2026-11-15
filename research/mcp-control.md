@@ -3,6 +3,22 @@
 RESEARCH-ONLY. The embedded MCP server (ADR 0008, `research/prismatic-mcp/`) is the channel;
 this is the tooling that drives a running game through it. Everything binds to loopback.
 
+## Use it now
+
+1. Once: `tools/gate.sh research` (the MCP-enabled binary) and
+   `cargo build --release` in `tools/research/mcp-rhai`. The base sets (OpenGFX, OpenSFX, OpenMSX)
+   go in `~/Documents/OpenTTD/baseset/`, `PrismaticAI` in `~/Documents/OpenTTD/ai/`.
+2. `tools/research/mcp-e2e`: the game, MCP, your bot, the window at http://127.0.0.1:8800/ and a
+   spectator client. Auto-approve is off: every change waits for your Approve.
+3. In the window: **My bot** sets the knobs of the AI that plays for you; **Control** pauses and
+   resumes; `~` opens the developer console; **API (OpenAPI)** opens Swagger UI.
+4. A whole game played for you: `tools/research/mcp-rhai/target/release/mcp-rhai
+   tools/research/mcp-panel/rhai/full_game.rhai`. It is a one-year game (2049), about 13 real
+   minutes, with quarterly reports, a mid-game pause that waits for your Approve, and the final
+   result.
+5. From anything else: REST at `/api/*` (documented in `/openapi.json`), events at
+   `/api/events/stream`, Rhai scripts with `import "ttd" as ttd;`.
+
 ## One command: the full end-to-end run
 
 ```bash
@@ -30,7 +46,7 @@ console log it shows, and serves the Flowbite Pro admin shell in `static/` (CSS 
 | Pause / Resume | `openttd.game.set_pause` through the approval flow; pending approvals get an Approve button |
 | Auto-approve (full auto) | the operator's switch: the panel approves its own pending decisions; off by default |
 | MCP catalogue | `resources/list` and `tools/list`; click a resource to read it |
-| Developer console (`~`) | OpenTTD console commands, `/mcp <method> [json]`, `/read <uri>`, `/pause`, `/resume`, `/approve <id>`, `/auto on/off`, `/rhai <script>` |
+| Developer console (`~`) | OpenTTD console commands, `/mcp <method> [json]`, `/read <uri>`, `/pause`, `/resume`, `/approve <id>`, `/auto on/off`, `/rhai <script>` (every line streamed as the script prints it), `/tail [kinds]` and `/untail` (the live event feed). Output is highlighted by content: errors, warnings, passes, events, debug lines, and JSON pretty-printed with coloured keys and values |
 
 Loopback HTTP API, for any external controller (scripts, agents, Prismatic):
 
@@ -46,6 +62,7 @@ Loopback HTTP API, for any external controller (scripts, agents, Prismatic):
 | `POST /api/approve` | `{"id"}` | the operator's approval, then the resubmission |
 | `POST /api/auto-approve` | `{"on": bool}` | |
 | `POST /api/rhai` | `{"script"}` | a Rhai script's output |
+| `POST /api/rhai/stream` | `{"script"}` | the same, streamed line by line (SSE `out`, `err`, `exit`) |
 
 A POST with a foreign `Origin` is refused.
 
@@ -85,6 +102,20 @@ Surfaces: `GET /api/events?since=<seq>&kinds=game,company` (REST; a kind matches
 `kind.` children) and `GET /api/events/stream?since=<seq>&kinds=...` (Server-Sent Events, `id:` is
 the sequence number, `event:` the kind). In Rhai: `events(since)`, `events(since, "game,company")`,
 and `ttd::wait_event(kind, seconds)`.
+
+## Watching it live, and notifications
+
+- `mcp-e2e` joins the GUI client full screen at the display's size (`--window WxH` for a window),
+  as a spectator named `owner-view`.
+- `rhai/narrator.rhai` follows the event feed and reports in the running game, as chat from the
+  server (`owner-bot`): every route the bot opens or fails to open, its knobs, companies founded or
+  renamed, every MCP decision, pause and resume, and a summary at every new month. Run it beside the
+  game: `mcp-rhai tools/research/mcp-panel/rhai/narrator.rhai`.
+- The panel window shows the same events as toasts, live from `/api/events/stream`, and an
+  approval that waits for you stays on screen.
+- Not yet: moving the GUI client's camera to what the bot does (scroll, follow a vehicle, open its
+  windows). The viewport belongs to the client, so this needs view tools in the MCP server of a GUI
+  process (C++ side).
 
 ## The owner's bot
 
@@ -127,6 +158,14 @@ and that is the owner's call (knowledge `auto-approve-is-the-owners-switch`).
   `set_pause` (waits for the operator's approval, never approves itself), `report`, `watch`.
 - `rhai/demo.rhai` is the end-to-end demo: new world, PrismaticAI plays, watched through MCP,
   paused and resumed through the approval flow, final report.
+
+## How much of the public C++ API is exposed
+
+`tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . [--panel URL] [--json] [--report]`
+derives OpenTTD's public API from the sources (the `Commands` enum, the registered console commands,
+the Script API static functions) and checks what the running game exposes through MCP and OpenAPI.
+Rule `project.public-api-is-exposed` requires 100% in every dimension. On 2026-11-15 it reported
+commands 0/146, console 83/86 and Script API 0/660: the rule is not met yet (issue I0036).
 
 ## Limits
 

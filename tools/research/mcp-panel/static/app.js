@@ -96,7 +96,35 @@ $('auto').onchange = async (e) => { await api('/api/auto-approve', { on: e.targe
 
 /* ---- developer console (~) ---------------------------------------------------------------- */
 const history = []; let hpos = 0;
-const out = (s) => { const o = $('console-out'); o.textContent += s + '\n'; o.scrollTop = o.scrollHeight; };
+/* Every console line is classified and highlighted: errors, warnings, passes, JSON (pretty, keys and
+   values coloured), and events by kind. Classification is by content, so a new kind needs no code. */
+const highlightJson = (v) => esc(JSON.stringify(v, null, 2))
+  .replace(/&quot;([^&]*?)&quot;(\s*:)/g, '<span class="text-sky-300">&quot;$1&quot;</span>$2')
+  .replace(/: &quot;(.*?)&quot;/g, ': <span class="text-amber-200">&quot;$1&quot;</span>')
+  .replace(/: (-?\d+(\.\d+)?)/g, ': <span class="text-purple-300">$1</span>')
+  .replace(/: (true|false|null)/g, ': <span class="text-pink-300">$1</span>');
+function lineClass(t) {
+  if (/^> /.test(t)) return 'text-white font-semibold';
+  if (/error|FAIL|mcp-rhai:|Runtime error|refused|denied/i.test(t)) return 'text-red-400';
+  if (/warn|NOT RUN|PARTIAL|pending/i.test(t)) return 'text-yellow-300';
+  if (/PASS|executed|succeeded|VERIFIED|started|built a bus route|route \d+\//.test(t)) return 'text-green-400';
+  if (/^\[(ai|game|company|decision|vehicles|panel|console)\./.test(t)) return 'text-sky-300';
+  if (/dbg: \[/.test(t)) return 'text-gray-500';
+  return 'text-green-200';
+}
+const out = (s) => {
+  const o = $('console-out');
+  const text = String(s);
+  let html;
+  const trimmed = text.trim();
+  if ((trimmed.startsWith('{') || trimmed.startsWith('[')) && trimmed.length > 1) {
+    try { html = `<span class="block">${highlightJson(JSON.parse(trimmed))}</span>`; } catch { html = null; }
+  }
+  if (!html) html = text.split('\n').map((l) => `<span class="block ${lineClass(l)}">${esc(l)}</span>`).join('');
+  o.insertAdjacentHTML('beforeend', html);
+  while (o.childElementCount > 2000) o.firstElementChild.remove();
+  o.scrollTop = o.scrollHeight;
+};
 const toggleConsole = (show) => {
   const c = $('console'); const on = show ?? c.classList.contains('hidden');
   c.classList.toggle('hidden', !on); if (on) $('console-in').focus();
@@ -119,8 +147,42 @@ const HELP = `OpenTTD console commands go straight to the server console (e.g. c
 /pause  /resume               set_pause through the approval flow
 /approve <id>                 operator approval of a pending decision
 /auto on|off                  auto-approve (full auto)
-/rhai <script>                run a Rhai script against this panel (tools/research/mcp-panel/rhai)
+/rhai <script>                run a Rhai script; every line it prints streams here as it is printed
+/tail [kinds]                 stream the live event feed here (default ai.log,company,decision,game)
+/untail                       stop it
 /clear                        clear this console`;
+
+/* /rhai: every line the script prints, as it prints it. */
+async function rhaiStream(script) {
+  const r = await fetch('/api/rhai/stream', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ script }) });
+  const reader = r.body.getReader(); const dec = new TextDecoder(); let buf = '';
+  for (;;) {
+    const { done, value } = await reader.read(); if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let i;
+    while ((i = buf.indexOf('\n\n')) >= 0) {
+      const block = buf.slice(0, i); buf = buf.slice(i + 2);
+      const ev = (block.match(/^event: (.*)$/m) || [])[1]; const data = (block.match(/^data: (.*)$/m) || [])[1];
+      if (ev === 'exit') { out(`rhai exit ${data}`); return; }
+      if (data !== undefined) out(JSON.parse(data));
+    }
+  }
+}
+/* /tail [kinds]: the live event feed streamed into the console. */
+let tailSource = null;
+function tail(kinds) {
+  if (tailSource) tailSource.close();
+  tailSource = new EventSource('/api/events/stream?kinds=' + encodeURIComponent(kinds));
+  tailSource.onmessage = null;
+  const show = (m) => { const e = JSON.parse(m.data); out(`[${e.kind}] ${e.data.text || e.data.line || JSON.stringify(e.data)}`); };
+  kinds.split(',').forEach((k) => tailSource.addEventListener(k, show));
+  // Children of a kind (company.founded under company) arrive under their own event names.
+  ['ai.log', 'console.line', 'company.founded', 'company.renamed', 'company.removed', 'company.observed', 'decision.recorded', 'decision.updated',
+    'game.month', 'game.paused', 'game.resumed', 'game.new_world', 'game.observed', 'vehicles.count', 'panel.mcp', 'panel.operator', 'panel.console', 'panel.rhai', 'panel.ai']
+    .filter((k) => kinds.split(',').some((x) => k === x || k.startsWith(x + '.')) && !kinds.split(',').includes(k))
+    .forEach((k) => tailSource.addEventListener(k, show));
+  out(`tailing ${kinds} (/untail to stop)`);
+}
 
 async function run(line) {
   out('> ' + line);
@@ -138,7 +200,9 @@ async function run(line) {
     if (head === '/pause' || head === '/resume') return out(JSON.stringify(await api('/api/pause', { pause: head === '/pause' })));
     if (head === '/approve') return out(JSON.stringify(await api('/api/approve', { id: Number(arg) })));
     if (head === '/auto') return out(JSON.stringify(await api('/api/auto-approve', { on: arg === 'on' })));
-    if (head === '/rhai') { const r = await api('/api/rhai', { script: arg }); return out(r.output ?? JSON.stringify(r)); }
+    if (head === '/rhai') return rhaiStream(arg);
+    if (head === '/tail') return tail(arg || 'ai.log,company,decision,game');
+    if (head === '/untail') { if (tailSource) tailSource.close(); tailSource = null; return out('tail stopped'); }
     const r = await api('/api/console', { command: line });
     out((r.output || []).join('\n') || JSON.stringify(r));
   } catch (e) { out('error: ' + e.message); }
@@ -198,3 +262,40 @@ document.addEventListener('click', async (ev) => {
 loadBots().catch(() => {});
 setInterval(() => loadBots().catch(() => {}), 10000);
 setInterval(() => { if (!$('resources').children.length) loadCatalogue().catch(() => {}); }, 3000);
+
+
+/* ---- live notifications (SSE) ------------------------------------------------------------ */
+// What the bot and the game do, as it happens: the same feed /api/events/stream serves to anyone.
+const NOTABLE = (e) => {
+  const d = e.data || {};
+  if (e.kind === 'ai.log') {
+    const t = d.text || '';
+    return /built a bus route|: route |behaviour:|no new route/.test(t) || /error/.test(d.level) ? t.replace(/^PrismaticAI:? /, '') : null;
+  }
+  if (e.kind === 'company.founded') return `Company #${d.id} founded`;
+  if (e.kind === 'company.renamed') return `Company #${d.id} is now ${d.to}`;
+  if (e.kind === 'decision.recorded') return `Decision #${d.decision_id}: ${d.action_type} ${d.command_result}`;
+  if (e.kind === 'game.paused') return `Paused at ${d.date}`;
+  if (e.kind === 'game.resumed') return `Resumed at ${d.date}`;
+  if (e.kind === 'game.month') return `${d.date}: ${d.vehicles} vehicles`;
+  if (e.kind === 'game.new_world') return `New world, ${d.towns} towns`;
+  if (e.kind === 'panel.mcp' && /pending approval/.test(d.text || '')) return `Approval needed: ${d.text}`;
+  return null;
+};
+function toast(kind, text) {
+  const el = document.createElement('div');
+  el.className = 'flex items-start w-full p-4 text-gray-500 bg-white rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800 border border-gray-200 dark:border-gray-700';
+  el.setAttribute('role', 'alert');
+  el.innerHTML = `<div class="ms-1 text-sm font-normal"><span class="mb-1 text-xs font-semibold text-gray-900 dark:text-white block">${esc(kind)}</span>${esc(text)}</div>
+    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" aria-label="Close">&times;</button>`;
+  el.querySelector('button').onclick = () => el.remove();
+  $('toasts').prepend(el);
+  setTimeout(() => el.remove(), kind.startsWith('panel') ? 30000 : 8000);
+  while ($('toasts').children.length > 5) $('toasts').lastChild.remove();
+}
+if (window.EventSource) {
+  const es = new EventSource('/api/events/stream?kinds=ai.log,company,decision,game,panel.mcp');
+  es.onmessage = null;
+  ['ai.log', 'company.founded', 'company.renamed', 'decision.recorded', 'game.paused', 'game.resumed', 'game.month', 'game.new_world', 'panel.mcp']
+    .forEach((k) => es.addEventListener(k, (m) => { const e = JSON.parse(m.data); const t = NOTABLE(e); if (t) toast(e.kind, t); }));
+}

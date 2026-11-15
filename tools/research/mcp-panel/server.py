@@ -462,6 +462,11 @@ def openapi(game, routes):
 
     for method, path, op_id, summary, _mcp, schema, _h in routes:
         op(method, path, op_id, summary, schema, "panel")
+    paths["/api/rhai/stream"] = {"post": {"operationId": "rhaiStream", "tags": ["panel"],
+                                          "summary": "Run a Rhai script and stream its output line by line (SSE: out, err, exit)",
+                                          "requestBody": {"required": True, "content": {"application/json": {"schema": {
+                                              "type": "object", "properties": {"script": {"type": "string"}}, "required": ["script"]}}}},
+                                          "responses": {"200": {"description": "text/event-stream"}}}}
     paths["/api/events/stream"] = {"get": {"operationId": "eventStream", "tags": ["events"],
                                            "summary": "Server-sent events: every event as it is published (?since=, ?kinds=)",
                                            "responses": {"200": {"description": "text/event-stream"}}}}
@@ -518,8 +523,10 @@ def make_handler(game):
         def _stream(self, q):
             since = int(q.get("since", [str(game.bus_seq)])[0])
             kinds = [k for k in q.get("kinds", [""])[0].split(",") if k]
+            self.close_connection = True
             self.send_response(200)
             self.send_header("Content-Type", "text/event-stream")
+            self.send_header("Connection", "close")
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
             try:
@@ -535,6 +542,33 @@ def make_handler(game):
                     self.wfile.flush()
             except (BrokenPipeError, ConnectionResetError):
                 return
+
+        def _rhai_stream(self, body):
+            """Run a Rhai script and stream every line it prints as it is printed (SSE: event "out",
+            "err", then "exit" with the status)."""
+            exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-rhai"
+            if not exe.exists():
+                return self._send(503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"})
+            script = str(body.get("script", ""))
+            self.close_connection = True  # the stream ends with the script; nothing follows on this connection
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream")
+            self.send_header("Connection", "close")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            proc = subprocess.Popen([str(exe), "--panel", f"http://127.0.0.1:{game.args.panel_port}", "-e", script],
+                                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
+            game.event("rhai", script[:80] + " (streamed)")
+            try:
+                for line in proc.stdout:
+                    kind = "err" if line.startswith("mcp-rhai:") else "out"
+                    self.wfile.write(f"event: {kind}\ndata: {json.dumps(line.rstrip())}\n\n".encode())
+                    self.wfile.flush()
+                rc = proc.wait()
+                self.wfile.write(f"event: exit\ndata: {rc}\n\n".encode())
+                self.wfile.flush()
+            except (BrokenPipeError, ConnectionResetError):
+                proc.kill()
 
         def _dispatch(self, method, body=None):
             url = urllib.parse.urlsplit(self.path)
@@ -587,6 +621,8 @@ def make_handler(game):
                 body = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
             except ValueError:
                 return self._send(400, {"error": "body is not JSON"})
+            if urllib.parse.urlsplit(self.path).path == "/api/rhai/stream":
+                return self._rhai_stream(body)
             self._dispatch("POST", body)
 
     return Handler

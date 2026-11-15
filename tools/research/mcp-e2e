@@ -8,7 +8,7 @@
 #      console on ~ (OpenTTD console commands, raw MCP, Rhai scripts),
 #   3. an OpenTTD GUI client joined to the server as a spectator, so the game is visible.
 #
-# Usage: tools/research/mcp-e2e [--bin <openttd>] [--no-gui] [--no-browser] [--auto-approve]
+# Usage: tools/research/mcp-e2e [--bin <openttd>] [--no-gui] [--no-browser] [--auto-approve] [--window WxH]
 #                               [--panel-port 8800] [--mcp-port 8731] [--game-port 3979] [--seed N]
 # Stop with Ctrl-C: the panel stops the server, and the GUI client is closed.
 set -euo pipefail
@@ -16,7 +16,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
-GUI=1 BROWSER=1 AUTO=()
+GUI=1 BROWSER=1 AUTO=() WINDOW=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -24,6 +24,7 @@ while [[ $# -gt 0 ]]; do
     --no-gui) GUI=0; shift ;;
     --no-browser) BROWSER=0; shift ;;
     --auto-approve) AUTO=(--auto-approve); shift ;;
+    --window) WINDOW="${2:?--window needs WxH}"; shift 2 ;;
     --panel-port) PANEL_PORT="$2"; shift 2 ;;
     --mcp-port) MCP_PORT="$2"; shift 2 ;;
     --game-port) GAME_PORT="$2"; shift 2 ;;
@@ -70,9 +71,16 @@ echo "==> MCP up; control window: $URL"
 [[ "$BROWSER" == 1 ]] && open "$URL"
 
 if [[ "$GUI" == 1 ]]; then
-  printf '[network]\nclient_name = mcp-observer\n[gui]\nautosave = off\n' > "$TMP/client.cfg"
-  echo "==> GUI client joining 127.0.0.1:$GAME_PORT as a spectator"
-  "$BIN" -c "$TMP/client.cfg" -n "127.0.0.1:$GAME_PORT#255" > "$TMP/client.log" 2>&1 &
+  # Full screen at the display's size unless --window WxH asks for a window.
+  if [[ -n "$WINDOW" ]]; then FULL=false RES="$WINDOW"; else
+    FULL=true
+    RES="$(system_profiler SPDisplaysDataType 2>/dev/null | sed -nE 's/.*UI Looks like: ([0-9]+) x ([0-9]+).*/\1x\2/p' | head -1)"
+    [[ -n "$RES" ]] || RES=1920x1080
+  fi
+  printf '[network]\nclient_name = owner-view\n[misc]\nfullscreen = %s\nresolution = %s\n[gui]\nautosave = off\n' \
+    "$FULL" "${RES/x/,}" > "$TMP/client.cfg"
+  echo "==> GUI client ($RES, fullscreen=$FULL) joining 127.0.0.1:$GAME_PORT as a spectator"
+  "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" > "$TMP/client.log" 2>&1 &
   GUI_PID=$!
 fi
 

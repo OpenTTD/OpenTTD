@@ -56,9 +56,14 @@ fn wait_running(seconds) {
 
 /// Start a new world (the server regenerates the map; joined clients rejoin).
 fn new_game(seed) {
+    let since = status().event_seq;
     con_newgame(`${seed}`);
-    // The server regenerates the map; reads fail or show the old world until it is back.
-    sleep(4000);
+    // The server regenerates the map; reads fail or show the old world until the panel's watcher
+    // sees the tick fall back (game.new_world).
+    for i in 0..120 {
+        if !events(since, "game.new_world").events.is_empty() { break; }
+        sleep(1000);
+    }
     wait_running(120)
 }
 
@@ -87,7 +92,9 @@ fn set_pause(on, seconds) {
             throw `approval #${id} was consumed but the game is not ${if on { "paused" } else { "running" }}`;
         }
     }
-    throw `approval #${id} did not arrive within ${seconds} s`;
+    // Withdraw the request, so a late Approve cannot pause the game with nobody left to resume it.
+    con_prismatic_mcp(`deny ${id}`);
+    throw `approval #${id} did not arrive within ${seconds} s (request withdrawn)`;
 }
 
 /// One line about the game and each company.
@@ -110,8 +117,11 @@ fn watch(times, every) {
 
 /// Wait up to `seconds` for the first event whose kind is or starts with `kind` (e.g.
 /// "company.founded", "game"), published after this call. Returns the event, or throws.
-fn wait_event(kind, seconds) {
-    let since = status().event_seq;
+fn wait_event(kind, seconds) { wait_event_since(status().event_seq, kind, seconds) }
+
+/// The same, counting events after sequence number `since`: take `status().event_seq` before the
+/// action whose event you wait for, so an event published at once is not missed.
+fn wait_event_since(since, kind, seconds) {
     for i in 0..seconds {
         let feed = events(since, kind);
         if !feed.events.is_empty() { return feed.events[0]; }

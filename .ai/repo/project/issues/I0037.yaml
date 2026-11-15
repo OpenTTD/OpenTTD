@@ -1,0 +1,41 @@
+id: I0037
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Play a whole game for the owner through MCP: new world to the game's end, the owner's bot as the owner's company"
+slug: whole-game-for-the-owner
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Show, end to end and repeatably, a game played from start to end by the bot that represents the owner, driven from outside through MCP and the console, with the owner able to intervene."
+why: "The owner asked to see a whole game played for them through MCP, steered from the external panel, and a quick start to begin using it."
+scope:
+  - "tools/research/mcp-panel/rhai/**"
+  - "research/mcp-control.md"
+non_scope:
+  - "In-game ~ console commands and live knob changes (C++ side, halted by the owner)"
+depends_on:
+  - I0033
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#a-bot-plays-for-the-owner"
+acceptance_criteria:
+  - "rhai/full_game.rhai sets a short game with setting_newgame, starts a new world, starts the owner's bot, reports every quarter and ends after the game's ending year"
+  - "The mid-game pause waits for the owner's approval and is reported as not approved when it does not arrive"
+  - "research/mcp-control.md opens with a quick start"
+validation:
+  - "tools/research/mcp-rhai/target/release/mcp-rhai tools/research/mcp-panel/rhai/full_game.rhai"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15T21:49:34Z
+started_at: 2026-11-15T21:49:29Z
+started_event: sha256:c74acefe5e8365f8d625f3584505d502d60c9306e95a8b0302d0d4fc7f812fc8
+verified_at: 2026-11-15T21:49:31Z
+verified_event: sha256:dc13b169afdc7e7fc5a3e31beaccaa7b0a83a374668139b6878cd7ee7582c2e6
+completed_at: 2026-11-15T21:49:34Z
+completed_event: sha256:c90bf151de8d3c4ee67dde52dc62cc4fbf20a6fef41f212e97b752e80b156d95
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "mcp-rhai tools/research/mcp-panel/rhai/full_game.rhai"
+    result: "exit 0: setting_newgame starting_year=ending_year=2049, new world 2049-01-01 (25 towns), PrismaticAI as the owner's company (aggressiveness=75, max_routes=8, cash_reserve=20000), quarterly reports through MCP, mid-game pause request #1 not approved within 60 s -> the game went on and the request was withdrawn (deny), game over at 2050-01-01: Genfingburg Transport, 4 routes, 12 buses, value 21258 (peak about 47000), money 1469. Played start to end; the bot's strategy loses value over the year (short intra-town bus routes), so this is not yet a win. A first run used 'setting' instead of 'setting_newgame' and started in 1950; fixed."
+    commit: 9176fdfcdbd45c487c8ceae86459cd6218c8e123
+    recorded_at: 2026-11-15T21:39:27Z

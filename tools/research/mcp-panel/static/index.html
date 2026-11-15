@@ -165,14 +165,16 @@
 
   <section id="console" class="fixed bottom-0 left-0 z-40 w-full h-64 bg-gray-900 border-t border-gray-700 hidden" aria-label="Developer console">
     <div class="flex items-center justify-between px-4 py-1 border-b border-gray-700">
-      <span class="text-xs font-semibold text-gray-300">Developer console: OpenTTD commands, <code>/mcp</code>, <code>/read</code>, <code>/pause</code>, <code>/resume</code>, <code>/approve</code>, <code>/auto</code>, <code>/rhai</code>, <code>/help</code></span>
+      <span class="text-xs font-semibold text-gray-300">Developer console: OpenTTD commands, <code>/mcp</code>, <code>/read</code>, <code>/pause</code>, <code>/resume</code>, <code>/approve</code>, <code>/auto</code>, <code>/rhai</code> (streamed), <code>/tail</code>, <code>/help</code></span>
       <button id="close-console" type="button" class="text-gray-400 hover:text-white text-sm">close (~)</button>
     </div>
-    <pre id="console-out" class="h-48 px-4 py-2 overflow-y-auto text-xs text-green-300 font-mono whitespace-pre-wrap"></pre>
+    <pre id="console-out" class="h-48 px-4 py-2 overflow-y-auto text-xs font-mono whitespace-pre-wrap"></pre>
     <form id="console-form" class="flex px-4"><span class="text-green-400 font-mono text-sm pt-1 pe-2">&gt;</span>
       <input id="console-in" autocomplete="off" spellcheck="false" class="flex-1 bg-gray-900 border-0 text-green-200 font-mono text-sm focus:ring-0 p-1" placeholder="e.g. companies   /read openttd://companies   /mcp tools/list">
     </form>
   </section>
+
+  <div id="toasts" class="fixed z-50 flex flex-col gap-2 top-20 right-4 w-96 max-w-[calc(100vw-2rem)]" aria-live="polite"></div>
 
   <script src="/vendor/flowbite.min.js"></script>
   <script src="/static/app.js"></script>
