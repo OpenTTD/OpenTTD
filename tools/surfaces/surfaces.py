@@ -162,7 +162,10 @@ def load_repo(root: Path) -> Repo:
             branch = branch.split("/", 1)[1]
         except subprocess.CalledProcessError:
             branch = git(root, "rev-parse", "--abbrev-ref", "HEAD").strip()
-    tracked = set(git(root, "ls-files", "-z").split("\0")) - {""}
+    # What git tracks, plus new files it would not ignore: exactly what the next commit can hold,
+    # so `sync` and `check` agree before and after a `git add`. CI checkouts have none of the second.
+    tracked = set(git(root, "ls-files", "-z", "--cached", "--others", "--exclude-standard").split("\0")) - {""}
+    tracked = {p for p in tracked if (root / p).exists()}
     dirs = {""}
     for p in tracked:
         parts = p.split("/")[:-1]
