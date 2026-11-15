@@ -72,7 +72,6 @@ add_files(
     autocompletion.cpp
     autocompletion.h
     autoreplace.cpp
-    autoreplace_base.h
     autoreplace_cmd.cpp
     autoreplace_cmd.h
     autoreplace_func.h

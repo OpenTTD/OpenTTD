@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include <ranges>
+#include "company_base.h"
 #include "company_func.h"
 #include "command_func.h"
 #include "industry.h"
@@ -396,7 +397,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 
 	/* In all cases clear replace engine rules.
 	 * Even if it was copied, it could interfere with new owner's rules */
-	RemoveAllEngineReplacementForCompany(Company::Get(old_owner));
+	RemoveAllEngineReplacementForCompany(old_owner);
 
 	if (new_owner == INVALID_OWNER) {
 		RemoveAllGroupsForCompany(old_owner);

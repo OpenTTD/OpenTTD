@@ -15,6 +15,7 @@
 #include "articulated_vehicles.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
+#include "company_base.h"
 #include "company_func.h"
 #include "vehicle_gui.h"
 #include "newgrf_badge.h"
@@ -1028,7 +1029,7 @@ void DrawEngineList(VehicleType type, const Rect &r, const GUIEngineList &eng_li
 
 			DrawString(cr.left, cr.right, textr.top + small_text_y_offset, GetString(STR_JUST_COMMA, num_engines), TextColour::Black, AlignmentH::ForceRight, false, FontSize::Small);
 
-			if (EngineHasReplacementForCompany(Company::Get(_local_company), item.engine_id, selected_group)) {
+			if (GetEngineRenew(_local_company, selected_group, item.engine_id, false) != nullptr) {
 				DrawSpriteIgnorePadding(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, rr, {AlignmentH::Centre, AlignmentV::Middle});
 			}
 		}
