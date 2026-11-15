@@ -49,7 +49,7 @@ impl Grid {
     }
 
     /// The cost of putting a road on a tile; None where a road cannot go.
-    fn cost(&self, x: usize, y: usize) -> Option<u32> {
+    pub fn cost(&self, x: usize, y: usize) -> Option<u32> {
         if x == 0 || y == 0 || x + 1 >= self.width || y + 1 >= self.height {
             return None;
         }
@@ -171,6 +171,94 @@ pub fn runs(path: &[(usize, usize)]) -> Vec<((usize, usize), (usize, usize))> {
     out
 }
 
+/// Are two tiles already joined by road (roads, stations and bridges, four-connected)?
+pub fn connected(g: &Grid, a: (usize, usize), b: (usize, usize)) -> bool {
+    let ok = |x: usize, y: usize| matches!(g.kind(x, y), b'r' | b'S' | b'B');
+    if !ok(a.0, a.1) || !ok(b.0, b.1) {
+        return false;
+    }
+    let mut seen = vec![false; g.width * g.height];
+    let mut stack = vec![a];
+    seen[a.1 * g.width + a.0] = true;
+    while let Some((x, y)) = stack.pop() {
+        if (x, y) == b {
+            return true;
+        }
+        let n = [(x.wrapping_sub(1), y), (x + 1, y), (x, y.wrapping_sub(1)), (x, y + 1)];
+        for (nx, ny) in n {
+            if nx >= g.width || ny >= g.height || seen[ny * g.width + nx] || !ok(nx, ny) {
+                continue;
+            }
+            seen[ny * g.width + nx] = true;
+            stack.push((nx, ny));
+        }
+    }
+    false
+}
+
+/// Which way a straight road runs on a tile: along x, along y, or neither (a bend, a junction).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Axis {
+    X,
+    Y,
+}
+
+fn road(g: &Grid, x: usize, y: usize) -> bool {
+    x < g.width && y < g.height && g.kind(x, y) == b'r'
+}
+
+/// Tiles around a centre, nearest first (rings of growing Manhattan radius).
+fn around(c: (usize, usize), r0: usize, r1: usize) -> Vec<(usize, usize)> {
+    let mut out = Vec::new();
+    for r in r0..=r1 {
+        for dx in -(r as i64)..=r as i64 {
+            let dy = r as i64 - dx.abs();
+            for sy in if dy == 0 { vec![0] } else { vec![dy, -dy] } {
+                let (x, y) = (c.0 as i64 + dx, c.1 as i64 + sy);
+                if x > 0 && y > 0 {
+                    out.push((x as usize, y as usize));
+                }
+            }
+        }
+    }
+    out
+}
+
+/// A straight piece of road near a town centre for a drive-through stop, and its axis.
+pub fn stop_site(g: &Grid, centre: (usize, usize), avoid: &[(usize, usize)]) -> Option<((usize, usize), Axis)> {
+    for (x, y) in around(centre, 1, 7) {
+        if x + 1 >= g.width || y + 1 >= g.height || !road(g, x, y) || avoid.contains(&(x, y)) {
+            continue;
+        }
+        let along_x = road(g, x - 1, y) && road(g, x + 1, y) && !road(g, x, y - 1) && !road(g, x, y + 1);
+        let along_y = road(g, x, y - 1) && road(g, x, y + 1) && !road(g, x - 1, y) && !road(g, x + 1, y);
+        if along_x {
+            return Some(((x, y), Axis::X));
+        }
+        if along_y {
+            return Some(((x, y), Axis::Y));
+        }
+    }
+    None
+}
+
+/// A buildable tile next to a road near a centre for a depot, and which side faces the road:
+/// 0 north-east (-x), 1 south-east (+y), 2 south-west (+x), 3 north-west (-y), the order of the
+/// depot picker's orientation buttons.
+pub fn depot_site(g: &Grid, centre: (usize, usize)) -> Option<((usize, usize), usize)> {
+    for (x, y) in around(centre, 2, 9) {
+        if x + 1 >= g.width || y + 1 >= g.height || g.kind(x, y) != b'C' || g.cost(x, y).is_none() {
+            continue;
+        }
+        for (side, (nx, ny)) in [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)].into_iter().enumerate() {
+            if road(g, nx, ny) {
+                return Some(((x, y), side));
+            }
+        }
+    }
+    None
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -196,6 +284,25 @@ mod tests {
         let path = vec![(1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3)];
         let r = runs(&path);
         assert_eq!(r, vec![((1, 1), (3, 1)), ((3, 1), (3, 3)), ((3, 3), (4, 3))]);
+    }
+
+    #[test]
+    fn connectivity_follows_roads_only() {
+        let g = grid(&["VVVVVVV", "VrrrCrV", "VCCrCrV", "VCCrrrV", "VVVVVVV"]);
+        assert!(connected(&g, (1, 1), (5, 1)));
+        assert!(!connected(&g, (1, 1), (4, 1)));
+    }
+
+    #[test]
+    fn a_stop_goes_on_a_straight_road_and_a_depot_faces_one() {
+        let g = grid(&["VVVVVVVVV", "VCCCCCCCV", "VrrrrrrrV", "VCCCCCCCV", "VCCCCCCCV", "VVVVVVVVV"]);
+        let (at, axis) = stop_site(&g, (4, 2), &[]).unwrap();
+        assert_eq!(axis, Axis::X);
+        assert_eq!(at.1, 2);
+        let ((dx, dy), side) = depot_site(&g, (4, 2)).unwrap();
+        assert_eq!(g.kind(dx, dy), b'C');
+        let road_at = [(dx - 1, dy), (dx, dy + 1), (dx + 1, dy), (dx, dy - 1)][side];
+        assert_eq!(g.kind(road_at.0, road_at.1), b'r');
     }
 
     #[test]

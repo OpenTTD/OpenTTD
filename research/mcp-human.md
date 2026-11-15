@@ -34,6 +34,12 @@ Playing through the interface makes the engine's own UI the API:
 | `openttd.input.wheel` | armed | Turn the wheel at the cursor. |
 | `openttd.input.key` | armed | Press a key as the keyboard driver does (an OpenTTD `WKC_*` keycode; letters are their upper-case code, `WKC_CTRL` is `0x4000`). |
 
+A list drawn in a matrix (for example the vehicles in the buy window) also reports
+`row_height`, so a person-like controller can point at a row. The resource
+`openttd://vehicles` lists every primary vehicle with its owner, type, engine, tile,
+stopped/in-depot/crashed state, cargo, profits and orders. The player uses it to confirm that what
+it did through the windows took effect.
+
 Input feeds the same entry points a video driver calls (`HandleMouseEvents()`,
 `HandleKeypress()`), as the local company, on the main thread. A dedicated server, which has no
 interface, refuses every UI tool. Like every MCP tool, these are reachable from Rhai (derived
@@ -60,14 +66,16 @@ A Rust program with no runtime dependencies beyond the client's token file
 | `motion.rs` | Human pointing, seeded. Duration from Fitts' law, `MT = a + b·log2(D/W + 1)`. A minimum-jerk profile along a bowed Bézier path. Overshoot plus correction on long moves. Tremor away from the end point. Steady, watched drags. Think and dwell pauses. |
 | `hand.rs` | The hand on the mouse: move, click, drag, find a widget by its text, pick a dropdown item, focus the camera on a tile and spot it on screen without scrolling. |
 | `plan.rs` | Road routes: A* over `openttd://map` (clear land, trees, existing roads; no houses, water or steep tiles), with a turn penalty so routes come out as long straight runs. The runs are then cut into drags. |
-| `play.rs` | Tasks: open the road menu and pick the road type, pick the autoroad tool, build a road between two tiles, connect two towns, look around. |
+| `play.rs` | Tasks. **Road:** open the road menu, pick the road type, pick autoroad, drag a route; a run that does not fit on screen is halved. **Stops and depot:** a drive-through bus stop on a straight town road, and a depot facing a road, each placed through its picker. **Bus:** buy one in the depot window (filter the list for "bus", pick the first row, Buy), give it orders with Go To on both stops, and start it. **Service:** all of the above for a pair of towns. **Look around.** |
+| Screen manners | Clicks are scoped to the window they belong to. A covered window is first brought to the front by its title bar. Placement starts from a clean hand (Escape). Windows are tidied after each job and after any failure. |
 
 ```bash
 mcp-human --token <client-token.json> check                  # tools present, input armed
 mcp-human --token <client-token.json> windows                # the interface as data
 mcp-human --token <client-token.json> click-widget "zoom in" # find by what it says, click
 mcp-human --token <client-token.json> road 125 52 90 60      # plan, then drag the runs
-mcp-human --token <client-token.json> --seed 7 play 3        # look around, connect towns
+mcp-human --token <client-token.json> serve 6 12             # road, two stops, a depot, a bus
+mcp-human --token <client-token.json> --seed 7 play 3        # look around, serve town pairs
 ```
 
 `--speed 2` plays twice as fast; the same `--seed` moves the same way.
@@ -80,18 +88,20 @@ tools/research/mcp-human-e2e           # server + client (own MCPs), the human p
 tools/research/mcp-human-e2e --test    # ...and asserts on the server's map, exit 0/1
 ```
 
-The test asserts, on the **server's** authoritative map, that the client's new company owns road
-tiles it did not own before. It also checks that the cursor moved, that the client offers every
-UI and input tool, and that the server refuses them.
+The test checks the outcome on the **server**, which is authoritative. The client's new company
+must own new road tiles, two bus stations and a running bus with two orders. The test also checks
+that the cursor moved, that the client offers every UI and input tool, and that the server
+refuses them.
 
 Verified 2026-11-16 (build of `feature/human-ui-play`, both research options ON, macOS): the
-client joined as company 0, connected Wranville and Pledingwell with 28 road tiles in 3 drags
-plus 2 runs that were road already, and made 368 pointer updates. All checks were PASS.
+client joined as company 0 and served Patborough and Cadston entirely through the interface. It
+laid 10 road tiles, built 2 drive-through stops and a depot, and bought an MPS Regal Bus. It gave
+the bus two Go To orders and started it, with 1314 pointer updates. All checks were PASS.
 
 ## Limits and next steps
 
-- **Roads only so far.** Stations, depots, buying vehicles and orders through their windows
-  are the next tasks; the UI model already exposes those windows and buttons.
+- **One service per pair, no economy loop yet.** Choosing profitable routes, adding buses
+  where demand is, replacing old ones and managing the loan are I0045's remaining part.
 - **No visible cursor in screenshots.** OpenTTD's screenshots exclude the cursor sprite, which
   is drawn only on screen.
 - **English text.** Widgets are found by English UI text (the default language). Another

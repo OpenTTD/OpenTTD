@@ -35,7 +35,8 @@ commands:
   look                       look around the interface like a person sitting down
   road <x1> <y1> <x2> <y2>   plan and drag a road between two tiles with the autoroad tool
   connect [<town> <town>]    connect two towns by road (default: the largest and a neighbour)
-  play [<rounds>]            look around, then connect towns round after round";
+  serve <town> <town>        a bus service: road if needed, two stops, a depot, a bus with orders
+  play [<rounds>]            look around, then serve town pairs round after round";
 
 fn arg_num<T: std::str::FromStr>(args: &[String], i: usize) -> Result<T, String> {
     args.get(i).ok_or_else(|| USAGE.to_string())?.parse::<T>().map_err(|_| format!("not a number: {}", args[i]))
@@ -89,18 +90,41 @@ fn run() -> Result<(), String> {
             let (a, b) = hand.connect_towns(pair)?;
             println!("ok: {a} and {b} connected");
         }
+        "serve" => {
+            let (ta, tb): (u64, u64) = (arg_num(&args, 1)?, arg_num(&args, 2)?);
+            let towns = hand.mcp.read("openttd://towns")?;
+            let list = towns.get("towns").and_then(serde_json::Value::as_array).cloned().unwrap_or_default();
+            let find = |id: u64| list.iter().find(|t| t.get("id").and_then(serde_json::Value::as_u64) == Some(id)).cloned().ok_or("no such town");
+            let stops = hand.serve_towns(&find(ta)?, &find(tb)?)?;
+            println!("ok: stops {stops:?}");
+        }
         "play" => {
             let rounds: usize = if args.len() > 1 { arg_num(&args, 1)? } else { 3 };
             hand.require_tools()?;
             hand.look_around()?;
-            for round in 1..=rounds {
-                hand.say(&format!("round {round}/{rounds}"));
-                match hand.connect_towns(None) {
-                    Ok((a, b)) => hand.say(&format!("{a} and {b} connected")),
-                    Err(e) => hand.say(&format!("round {round}: {e}")),
+            let pairs = hand.town_pairs()?;
+            let mut served = 0;
+            for (a, b) in pairs {
+                if served >= rounds {
+                    break;
+                }
+                let n = |t: &serde_json::Value| t.get("name").and_then(serde_json::Value::as_str).unwrap_or("?").to_string();
+                hand.say(&format!("round {}/{rounds}: {} and {}", served + 1, n(&a), n(&b)));
+                match hand.serve_towns(&a, &b) {
+                    Ok(_) => {
+                        served += 1;
+                        hand.say(&format!("a bus runs between {} and {}", n(&a), n(&b)));
+                    }
+                    Err(e) => {
+                        hand.say(&format!("skip {} and {}: {e}", n(&a), n(&b)));
+                        // Leave a clean screen for the next pair, whatever failed.
+                        let _ = hand.escape();
+                        let _ = hand.tidy();
+                    }
                 }
                 hand.think(800.0, 1600.0);
             }
+            println!("ok: {served} town pair(s) served");
         }
         other => return Err(format!("unknown command '{other}'\n{USAGE}")),
     }

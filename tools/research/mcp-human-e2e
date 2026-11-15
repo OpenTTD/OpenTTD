@@ -6,10 +6,12 @@
 #      (PRISMATIC_MCP_INPUT=1: the owner's switch for this one process),
 #   3. mcp-human playing through the client's interface: the visible cursor moves with human
 #      motion, opens the road menu, picks the autoroad tool, glides the camera and drags roads
-#      between towns, so every build step is something a person at that mouse would have done.
+#      between towns, builds drive-through stops and a depot with their pickers, buys a bus in
+#      the depot window and gives it orders with Go To, so every step is something a person at
+#      that mouse would have done.
 #
-# --test asserts the outcome on the SERVER's map (authoritative, not the client's view): the
-# client's company exists and owns road tiles it did not own before, and exits 0 / 1. Without
+# --test asserts the outcome on the SERVER (authoritative, not the client's view): the client's
+# company owns new road tiles, two bus stations and a running bus with orders; exits 0 / 1. Without
 # --test the stack stays up after the play so the owner can watch and take over the mouse.
 #
 # Usage: tools/research/mcp-human-e2e [--test] [--rounds N] [--seed N] [--speed F]
@@ -102,6 +104,10 @@ echo "==> company $COMPANY owns $AFTER road tiles on the server's map (before: $
 if [[ "$TEST" == 1 ]]; then
   fail=0
   [[ "$AFTER" -gt "$BEFORE" ]] && echo "PASS roads built through the interface appear on the server" || { echo "FAIL no new road tiles on the server"; fail=1; }
+  STOPS="$(read_res "$SERVER_TOKEN" openttd://stations | jq --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c and (.facilities | index("bus")))] | length')"
+  [[ "$STOPS" -ge 2 ]] && echo "PASS $STOPS bus stations of company $COMPANY on the server" || { echo "FAIL $STOPS bus stations (need 2)"; fail=1; }
+  BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "road" and (.orders | length) >= 2 and .stopped == false)] | length')"
+  [[ "$BUSES" -ge 1 ]] && echo "PASS $BUSES bus(es) running with orders between the stops" || { echo "FAIL no running bus with two orders"; fail=1; }
   INJ="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r '.injected.moves')"
   [[ "$INJ" -gt 100 ]] && echo "PASS the cursor moved ($INJ pointer updates)" || { echo "FAIL the cursor barely moved ($INJ)"; fail=1; }
   for t in openttd.ui.windows openttd.ui.at openttd.ui.locate openttd.input.state openttd.input.pointer openttd.input.button openttd.input.wheel openttd.input.key; do

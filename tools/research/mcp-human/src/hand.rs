@@ -46,7 +46,7 @@ impl Hand {
 
     pub fn say(&self, what: &str) {
         if self.log {
-            println!("[human] {what}");
+            eprintln!("[human] {what}");
         }
     }
 
@@ -239,5 +239,144 @@ impl Hand {
         }
         self.focus(x, y)?;
         self.spot(x, y)?.ok_or_else(|| format!("tile {x},{y} is not clickable even when centred"))
+    }
+
+    /// The front-most window whose caption contains `needle` (case-insensitive).
+    pub fn window(&self, needle: &str) -> Result<Option<Value>, String> {
+        let n = needle.to_lowercase();
+        Ok(self.windows()?.into_iter().find(|w| w.get("caption").and_then(Value::as_str).is_some_and(|c| c.to_lowercase().contains(&n))))
+    }
+
+    /// Wait until a window whose caption contains `needle` is open.
+    pub fn wait_window(&self, needle: &str) -> Result<Value, String> {
+        let started = Instant::now();
+        loop {
+            if let Some(w) = self.window(needle)? {
+                return Ok(w);
+            }
+            if started.elapsed() > Duration::from_secs(6) {
+                return Err(format!("no window says '{needle}'"));
+            }
+            sleep(Duration::from_millis(150));
+        }
+    }
+
+    /// A widget of a window by its index.
+    pub fn widget(w: &Value, index: i64) -> Option<Value> {
+        w.get("widgets").and_then(Value::as_array)?.iter().find(|x| x.get("index").and_then(Value::as_i64) == Some(index)).cloned()
+    }
+
+    /// Click a widget of a window by its index.
+    pub fn click_index(&mut self, w: &Value, index: i64) -> Result<(), String> {
+        let wd = Self::widget(w, index).ok_or_else(|| format!("window has no widget {index}"))?;
+        let t = wd.get("rect").and_then(Target::from_rect).ok_or("widget has no rectangle")?;
+        self.click(t)
+    }
+
+    /// The first widget of a type in a window (e.g. "edit_box", "matrix", "close_box").
+    pub fn widget_of_type(w: &Value, kind: &str) -> Option<Value> {
+        w.get("widgets").and_then(Value::as_array)?.iter().find(|x| x.get("type").and_then(Value::as_str) == Some(kind)).cloned()
+    }
+
+    /// Click a map tile: bring it into view if needed, then point and click.
+    pub fn click_tile(&mut self, x: usize, y: usize) -> Result<(), String> {
+        self.focus(x, y)?;
+        let t = self.spot(x, y)?.ok_or_else(|| format!("tile {x},{y} is not clickable"))?;
+        self.say(&format!("click tile {x},{y}"));
+        self.click(t)
+    }
+
+    /// Press a key the way the keyboard driver does (OpenTTD WKC_* keycode and the character).
+    pub fn key(&self, keycode: u32, ch: &str) -> Result<(), String> {
+        self.mcp.call("openttd.input.key", json!({"keycode": keycode, "char": ch})).map(|_| ())
+    }
+
+    /// Escape: drop the tool in hand, as a person does when done building.
+    pub fn escape(&mut self) -> Result<(), String> {
+        self.key(1, "")?;
+        self.think(120.0, 260.0);
+        Ok(())
+    }
+
+    /// Type text into the focused edit box, a key at a time at a typing pace.
+    pub fn type_text(&mut self, text: &str) -> Result<(), String> {
+        for c in text.chars() {
+            let code = if c.is_ascii_alphabetic() { c.to_ascii_uppercase() as u32 } else { c as u32 };
+            self.key(code, &c.to_string())?;
+            self.think(70.0, 190.0);
+        }
+        Ok(())
+    }
+
+    /// Close a window with its close box, as a person tidies up.
+    pub fn close(&mut self, w: &Value) -> Result<(), String> {
+        if let Some(t) = Self::widget_of_type(w, "close_box").and_then(|c| c.get("rect").and_then(Target::from_rect)) {
+            self.click(t)?;
+        }
+        Ok(())
+    }
+
+    /// The front-most window whose caption contains `needle` and none of `not`.
+    pub fn window_except(&self, needle: &str, not: &[&str]) -> Result<Option<Value>, String> {
+        let n = needle.to_lowercase();
+        Ok(self.windows()?.into_iter().find(|w| {
+            w.get("caption").and_then(Value::as_str).is_some_and(|c| {
+                let c = c.to_lowercase();
+                c.contains(&n) && !not.iter().any(|x| c.contains(&x.to_lowercase()))
+            })
+        }))
+    }
+
+    /// A widget of one window by what it says (tooltip or text).
+    pub fn widget_saying(w: &Value, needle: &str) -> Option<Value> {
+        let n = needle.to_lowercase();
+        w.get("widgets").and_then(Value::as_array)?.iter().find(|wd| {
+            format!("{} {}", wd.get("tooltip").and_then(Value::as_str).unwrap_or(""), wd.get("text").and_then(Value::as_str).unwrap_or(""))
+                .to_lowercase()
+                .contains(&n)
+        }).cloned()
+    }
+
+    /// Click a widget, found by what it says, inside one window (never in another one).
+    pub fn click_in(&mut self, w: &Value, needle: &str) -> Result<(), String> {
+        let wd = Self::widget_saying(w, needle).ok_or_else(|| format!("'{}' has nothing saying '{needle}'", w.get("caption").and_then(Value::as_str).unwrap_or("?")))?;
+        let t = wd.get("rect").and_then(Target::from_rect).ok_or("widget has no rectangle")?;
+        self.raise_if_covered(w, t)?;
+        self.say(&format!("click '{needle}' in '{}'", w.get("caption").and_then(Value::as_str).unwrap_or("?").trim()));
+        self.click(t)
+    }
+
+    /// Close every window that has a close box: a person tidying the screen after a job.
+    pub fn tidy(&mut self) -> Result<(), String> {
+        for _ in 0..12 {
+            let open: Vec<Value> = self.windows()?.into_iter().filter(|w| Self::widget_of_type(w, "close_box").is_some()).collect();
+            let Some(w) = open.first() else { return Ok(()) };
+            self.close(w)?;
+            self.think(120.0, 260.0);
+        }
+        Ok(())
+    }
+
+    /// Is the point inside this window rather than another one on top of it?
+    fn on_top(&self, w: &Value, t: Target) -> Result<bool, String> {
+        let at = self.mcp.call("openttd.ui.at", json!({"x": t.x, "y": t.y}))?;
+        Ok(at.pointer("/window/class") == w.get("class") && at.pointer("/window/number") == w.get("number"))
+    }
+
+    /// When another window covers the point, bring this one to the front by its title bar, as a
+    /// person does before pressing a button on it.
+    pub fn raise_if_covered(&mut self, w: &Value, t: Target) -> Result<(), String> {
+        if self.on_top(w, t)? {
+            return Ok(());
+        }
+        if let Some(cap) = Self::widget_of_type(w, "caption").and_then(|c| c.get("rect").and_then(Target::from_rect)) {
+            self.say(&format!("bring '{}' to the front", w.get("caption").and_then(Value::as_str).unwrap_or("?").trim()));
+            self.click(Target { w: cap.w / 3, ..cap })?;
+            self.think(150.0, 300.0);
+        }
+        if !self.on_top(w, t)? {
+            return Err(format!("'{}' stays covered", w.get("caption").and_then(Value::as_str).unwrap_or("?").trim()));
+        }
+        Ok(())
     }
 }

@@ -175,6 +175,8 @@ json Widget(const Window *w, WidgetID index, const NWidgetBase *nwb)
 			if (!text.empty()) out["text"] = std::move(text);
 		}
 		if (std::string tip = Text(nwc->GetToolTip()); !tip.empty()) out["tooltip"] = std::move(tip);
+		/* A matrix draws rows of its own; a person clicks a row, so say how tall one is. */
+		if ((nwb->type & WWT_MASK) == WWT_MATRIX && nwb->resize_y > 0) out["row_height"] = nwb->resize_y;
 		out["disabled"] = nwc->IsDisabled();
 		out["lowered"] = nwc->IsLowered();
 	}
