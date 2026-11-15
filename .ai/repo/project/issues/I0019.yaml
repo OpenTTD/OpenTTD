@@ -21,4 +21,18 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-15T22:01:28Z
+started_at: 2026-11-15T22:01:19Z
+started_event: sha256:4e6b324efdaee896dc4e5bad460d85488e1035e2ab455b442259d947428105ba
+verified_at: 2026-11-15T22:01:21Z
+verified_event: sha256:7718e69cff81fdf8fbb32892c0d626d14da7507dbd1890acad76ac275dcd5a13
+completed_at: 2026-11-15T22:01:28Z
+completed_event: sha256:d5fca8ee99f3088ca468eeed721387cdd01ea0fdadf5287f92a908e9e4c8fc07
+evidence:
+  - covers: "validation_run"
+    type: ci
+    command: "gh run view 43765117459 -R korczis/OpenTTD; curl -s -o /dev/null -w '%{http_code}' https://korczis.github.io/OpenTTD/"
+    result: "Pages enabled via gh api (build_type workflow) on 2026-11-15; surfaces.yml run 43765117459 at 476439be81: Check and build success, Publish the site success; https://korczis.github.io/OpenTTD/ and /docs.html, /ai.html, /data/site.json, /surface.json answer 200"
+    artifact: "https://korczis.github.io/OpenTTD/"
+    commit: 521952a06ed88cf4aa1036ff76c05962776fe628
+    recorded_at: 2026-11-15T22:01:24Z
