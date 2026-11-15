@@ -91,6 +91,16 @@ git rebase --onto master <last-old-fork-commit> <branch>   # e.g. 0822f6b762 for
 
 Then re-verify it with its own options ON (issue I0017).
 
+Once the rewritten branches are verified and pushed, keep each pre-rewrite head as an
+annotated tag on origin and drop the backup branch: the history stays reachable, and master
+stays linear.
+
+```bash
+git tag -a archive/<backup-name> backup/<backup-name> -m "Archive of <what it was>"
+git push origin archive/<backup-name>
+git branch -D backup/<backup-name>      # only after the tag is on origin
+```
+
 ## Record
 
 The rebase is an issue in the plan (I0021 for 2026-11-15). Its evidence is the range-diff

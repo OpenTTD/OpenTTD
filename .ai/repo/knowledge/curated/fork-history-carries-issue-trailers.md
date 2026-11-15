@@ -25,8 +25,8 @@ relations:
 A commit message ends with one `Refs: I00NN` trailer per issue it served, in the trailer block
 with the `Co-Authored-By` lines. On 2026-11-15 the 24 fork commits on top of `upstream/master`
 were rewritten with `git filter-branch --msg-filter` to add them. Every tree stayed
-byte-identical (`master^{tree}` unchanged), and the pre-rewrite head is
-`backup/master-pre-trailers-2026-11-15`.
+byte-identical (`master^{tree}` unchanged), and the pre-rewrite head is the tag
+`archive/master-pre-trailers-2026-11-15`.
 
-The branch `research/prismatic-mcp-server` was not rewritten. Its commits are named by
-I0013 to I0016 from the plan side.
+The MCP series was rebased onto master later the same day and its new commits carry `Refs:`
+trailers for the issues they served; its old heads are under `archive/`.
