@@ -141,6 +141,26 @@ fn derive(e: &mut Engine, panel: &Panel) -> (Vec<String>, Vec<String>) {
             tools.push(ident(name));
         }
     }
+    // One function per operation of the panel's own OpenAPI document (api_<operationId>): every
+    // route the panel declares, and every route it derives from the catalogue, is callable here.
+    if let Ok(spec) = panel.get("/openapi.json").and_then(from_dyn) {
+        for (path, ops) in spec.get("paths").and_then(Value::as_object).into_iter().flatten() {
+            for (method, op) in ops.as_object().into_iter().flatten() {
+                let Some(id) = op.get("operationId").and_then(Value::as_str) else { continue };
+                if path.contains("/stream") { continue }
+                let fname = format!("api_{}", ident(id));
+                let (p, route) = (panel.clone(), path.clone());
+                if method == "post" {
+                    e.register_fn(fname.clone(), move |body: Map| -> R<Dynamic> { p.post(&route, from_dyn(Dynamic::from_map(body))?) });
+                    let (p0, r0) = (panel.clone(), path.clone());
+                    e.register_fn(fname.clone(), move || -> R<Dynamic> { p0.post(&r0, json!({})) });
+                } else {
+                    e.register_fn(fname.clone(), move || -> R<Dynamic> { p.get(&route) });
+                }
+                tools.push(fname);
+            }
+        }
+    }
     let mut commands = Vec::new();
     if let Ok(out) = panel.post("/api/console", json!({"command": "list_cmds", "wait": 1.0})).and_then(from_dyn) {
         for line in out.get("output").and_then(Value::as_array).into_iter().flatten() {
@@ -203,7 +223,7 @@ fn main() {
     engine.register_fn("help", move || -> String {
         format!(
             "built-in: rpc read overview status console pause approve auto_approve events sleep to_json tools commands help\n\
-             derived from tools/list ({}): {}\nderived from list_cmds ({}): {}",
+             derived from tools/list and the panel OpenAPI ({}): {}\nderived from list_cmds ({}): {}",
             tools.len(), tools.join(" "), commands.len(), commands.join(" ")
         )
     });

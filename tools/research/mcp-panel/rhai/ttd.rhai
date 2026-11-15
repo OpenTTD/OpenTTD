@@ -119,3 +119,22 @@ fn wait_event(kind, seconds) {
     }
     throw `no ${kind} event within ${seconds} s`;
 }
+
+/// The AIs that can play for the owner and their settings (from openttd.ai.list when the game has
+/// it, else each AI's info.nut), and the AI companies running now.
+fn bots() { api_bots() }
+
+/// Start the owner's bot: an AI with a settings map, e.g.
+/// ttd::start_bot("PrismaticAI", #{ aggressiveness: 75, max_routes: 6, cash_reserve: 20000 }).
+fn start_bot(ai, settings) { api_botStart(#{ ai: ai, settings: settings }) }
+
+/// Change one live (CONFIG_INGAME) setting of a running bot; approval-gated, waits for the operator
+/// like every other change. Needs openttd.ai.set_setting in the game's tools/list.
+fn set_bot(company, name, value) { api_botSetting(#{ company: company, name: name, value: value }) }
+
+/// The bot's own log lines (ai.log events), newest last.
+fn bot_log(limit) {
+    let e = events(0, "ai.log").events;
+    let n = e.len();
+    if n > limit { e.extract(n - limit) } else { e }
+}

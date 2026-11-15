@@ -24,7 +24,7 @@ async function refreshStatus() {
   $('auto').checked = !!s.auto_approve;
   $('pending').innerHTML = s.pending.length ? s.pending.map((p) => `
     <li class="flex items-center justify-between p-2 border border-gray-200 rounded-lg dark:border-gray-700">
-      <span>#${p.id} set_pause(${p.pause})</span>
+      <span class="font-mono">#${p.id} ${esc(p.tool)}(${esc(JSON.stringify(p.args))})</span>
       <button data-approve="${p.id}" type="button" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700">Approve</button>
     </li>`).join('') : '<li>none</li>';
   $('events').innerHTML = s.events.map((e) => `
@@ -153,4 +153,48 @@ $('console-form').addEventListener('submit', async (e) => {
 out('OpenTTD MCP developer console. /help for commands. Press ~ to toggle.');
 tick(); loadCatalogue().catch(() => {});
 setInterval(tick, 1000);
+
+/* ---- my bot ----------------------------------------------------------------------------- */
+let bots = null;
+const input = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white';
+function renderBotSettings() {
+  const ai = (bots.ais || []).find((a) => a.ai === $('bot-ai').value);
+  $('bot-settings').innerHTML = ai ? ai.settings.map((st) => `
+    <div><label for="set-${esc(st.name)}" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">${esc(st.name)}${st.ingame ? ' <span class="bg-green-100 text-green-800 text-xs font-medium px-1.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">live</span>' : ''}</label>
+      <input id="set-${esc(st.name)}" data-setting="${esc(st.name)}" type="number" min="${st.min}" max="${st.max}" step="${st.step}" value="${st.default}" class="${input}">
+      <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">${esc(st.description || '')} [${st.min}..${st.max}]</p></div>`).join('') : '';
+}
+async function loadBots() {
+  bots = await api('/api/bots');
+  if (!bots || bots.error) return;
+  $('bot-source').textContent = bots.source;
+  const keep = $('bot-ai').value;
+  $('bot-ai').innerHTML = (bots.ais || []).map((a) => `<option>${esc(a.ai)}</option>`).join('');
+  if (keep) $('bot-ai').value = keep;
+  renderBotSettings();
+  const ingame = ((bots.ais || []).find((a) => a.ai === $('bot-ai').value) || { settings: [] }).settings.filter((x) => x.ingame);
+  $('bot-running').innerHTML = (bots.running || []).length ? bots.running.map((c) => `
+    <tr class="border-b dark:border-gray-700"><td class="px-4 py-2">${esc(c.id)}</td><td class="px-4 py-2 font-medium text-gray-900 dark:text-white">${esc(c.name || '')}</td>
+      <td class="px-4 py-2">${money(c.money)}</td>
+      <td class="px-4 py-2"><div class="flex flex-wrap gap-2">${ingame.map((st) => `
+        <button type="button" data-company="${c.id}" data-live="${esc(st.name)}" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-xs px-2 py-1 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">set ${esc(st.name)}</button>`).join('')}</div></td></tr>`).join('')
+    : '<tr><td class="px-4 py-2" colspan="4">none</td></tr>';
+}
+$('bot-ai').onchange = renderBotSettings;
+$('bot-start').onclick = async () => {
+  const settings = {};
+  document.querySelectorAll('[data-setting]').forEach((el) => { settings[el.dataset.setting] = Number(el.value); });
+  const r = await api('/api/bots/start', { ai: $('bot-ai').value, settings });
+  $('bot-msg').textContent = JSON.stringify(r);
+  setTimeout(loadBots, 3000);
+};
+document.addEventListener('click', async (ev) => {
+  const t = ev.target.closest('[data-live]'); if (!t) return;
+  const el = document.querySelector(`[data-setting="${t.dataset.live}"]`);
+  const r = await api('/api/bots/setting', { company: Number(t.dataset.company), name: t.dataset.live, value: Number(el ? el.value : 0) });
+  $('bot-msg').textContent = JSON.stringify(r);
+  tick();
+});
+loadBots().catch(() => {});
+setInterval(() => loadBots().catch(() => {}), 10000);
 setInterval(() => { if (!$('resources').children.length) loadCatalogue().catch(() => {}); }, 3000);

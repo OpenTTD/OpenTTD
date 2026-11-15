@@ -40,5 +40,9 @@ satisfaction:
   criterion: "A seeded run hammered with MCP reads ends in the same game state as an idle run of the same seed"
   evidence: command
   ref: "tools/research/research report --experiment-id <determinism-ab-id>"
-created_at: 2026-11-15
+- id: a-bot-plays-for-the-owner
+  criterion: "An AI company plays for the owner within knobs the owner sets and changes while it runs (routes, vehicles per route, cash reserve), from the panel, the REST/OpenAPI surface and Rhai, and its log reaches the event feed"
+  evidence: command
+  ref: "tools/research/mcp-rhai/target/release/mcp-rhai -e 'import \"ttd\" as ttd; ttd::bot_log(5)'"
+created_at: '2026-11-15'
 updated_at: '2026-11-15'

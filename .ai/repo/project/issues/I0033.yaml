@@ -1,0 +1,47 @@
+id: I0033
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The owner's bot: an AI that plays for the owner within knobs set and changed from the panel, REST/OpenAPI and Rhai"
+slug: owners-bot
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Let the owner run an AI as their representative and steer its behaviour from outside, with its settings derived from the game and its log on the event feed."
+why: "The owner clarified that the AI is to play for them, configured and reconfigured by them, as a test bed for their AI in local and network games."
+scope:
+  - "tools/research/mcp-panel/**"
+  - "tools/research/mcp-rhai/**"
+  - "research/mcp-control.md"
+non_scope:
+  - "openttd.ai.* tools, client mode and operator-token approval in src/prismatic_mcp (branch research/mcp-full-auto)"
+  - "PrismaticAI itself, in ~/dev/openttd-prismatic-bridge (branch feat/live-behaviour)"
+  - "Approval by policy: auto-approve is the owner's call"
+depends_on:
+  - I0032
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#a-bot-plays-for-the-owner"
+acceptance_criteria:
+  - "GET /api/bots lists the AIs with settings derived from openttd.ai.list when present, else info.nut, and the running AI companies"
+  - "POST /api/bots/start starts the bot with the owner's settings; POST /api/bots/setting goes through openttd.ai.set_setting once the game has it and says so until then"
+  - "The panel's My bot card renders the derived settings form, starts the bot and shows the running bots"
+  - "Rhai derives api_<operationId> from the panel's OpenAPI, and ttd::bots/start_bot/set_bot/bot_log wrap them"
+  - "Any tool answering pending_approval is tracked with an Approve button and resubmitted with the same arguments"
+validation:
+  - "tools/research/mcp-panel-check --panel http://127.0.0.1:8800"
+  - "curl http://127.0.0.1:8800/api/bots"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15T21:23:04Z
+started_at: 2026-11-15T21:21:37Z
+started_event: sha256:c88eaa3eed803a64a623c070ebce7e98b04ecae0064f0368520617b1ce3950cc
+verified_at: 2026-11-15T21:23:00Z
+verified_event: sha256:9352673f366f7bcaeca3a98ed83ac555a6c3799beb81c88498fdf14423104fe5
+completed_at: 2026-11-15T21:23:04Z
+completed_event: sha256:ad3e3b4a706371f59b96fded18224ea240a0a1c5f2169ad934a6cf8df137f4b1
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-panel-check --panel http://127.0.0.1:8800; curl /api/bots; POST /api/bots/start; mcp-rhai ttd::bots/bot_log/report"
+    result: "panel check 11/11 on :8800 and :8802; /api/bots derived 4 PrismaticAI settings from info.nut (all CONFIG_INGAME, ranges and defaults) and the running AI companies; /api/bots/start started a bot with aggressiveness=34,max_routes=2,cash_reserve=30000; /api/bots/setting answers that openttd.ai.set_setting is not in the game yet; Rhai derived 25 api_* functions from the panel OpenAPI; on :8800 the bot opened 4/4 routes in 22 game days (Lanford Transport, 8 buses, value 47861) and its ai.log lines reach the feed (-d script=4)"
+    commit: 012b8e465f50ced0d5eb60325d329a018d556d4f
+    recorded_at: 2026-11-15T21:23:01Z

@@ -31,6 +31,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+AI_DIR = Path.home() / "Documents" / "OpenTTD" / "ai"
 STATIC = HERE / "static"
 AI_LOG_RE = re.compile(r"\[script:\d+\] \[(\d+)\] \[([SEPWI])\] (.*)$")
 AI_LEVELS = {"S": "squirrel_error", "E": "error", "P": "squirrel_info", "W": "warning", "I": "info"}
@@ -71,7 +72,7 @@ class Game:
             "[difficulty]\nmax_no_competitors = 1\n"
         )
         cmd = [self.args.bin, "-D", f"127.0.0.1:{self.args.game_port}", "-x", "-g",
-               "-G", str(self.args.seed), "-c", str(cfg), "-d", "net=1,script=1"]
+               "-G", str(self.args.seed), "-c", str(cfg), "-d", "net=1,script=4"]
         self.event("server", "starting " + " ".join(cmd))
         self.proc = subprocess.Popen(cmd, stdin=open(self.fifo, "r+b", buffering=0),
                                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -167,17 +168,28 @@ class Game:
     def tool(self, name, arguments):
         r = self.rpc("tools/call", {"name": name, "arguments": arguments})
         try:
-            return json.loads(r["result"]["content"][0]["text"])
+            out = json.loads(r["result"]["content"][0]["text"])
         except (KeyError, IndexError, TypeError, ValueError):
             return {"error": r}
+        # Any tool that answers pending_approval is tracked, so the operator sees it with an Approve
+        # button and the panel can resubmit the same call once it is approved.
+        if isinstance(out, dict) and out.get("status") == "pending_approval" and out.get("approval_id") is not None:
+            aid = int(out["approval_id"])
+            if aid not in self.pending:
+                self.pending[aid] = {"tool": name, "args": arguments, "created": time.time()}
+                self.event("mcp", f"{name}({json.dumps(arguments)}) -> pending approval #{aid}")
+        return out
+
+    def tool_names(self):
+        try:
+            return {t["name"] for t in self.rpc("tools/list").get("result", {}).get("tools", [])}
+        except Exception:
+            return set()
 
     # ------------------------------------------------------------------ approvals
     def set_pause(self, pause):
         out = self.tool("openttd.game.set_pause", {"pause": bool(pause)})
-        if out.get("status") == "pending_approval":
-            self.pending[int(out["approval_id"])] = {"pause": bool(pause), "created": time.time()}
-            self.event("mcp", f"set_pause({pause}) -> pending approval #{out['approval_id']}")
-        else:
+        if out.get("status") != "pending_approval":
             self.event("mcp", f"set_pause({pause}) -> {out.get('status')} {out.get('command_result', '')}")
         return out
 
@@ -188,10 +200,47 @@ class Game:
         self.console(f"prismatic_mcp approve {approval_id}")
         self.event("operator", f"approved #{approval_id} in the OpenTTD console")
         time.sleep(0.5)
-        out = self.tool("openttd.game.set_pause", {"pause": info["pause"]})
-        self.event("mcp", f"#{approval_id} resubmitted -> {out.get('status')} "
+        out = self.tool(info["tool"], info["args"])
+        self.event("mcp", f"#{approval_id} {info['tool']} resubmitted -> {out.get('status')} "
                           f"{out.get('command_result', '')} verdict={out.get('verdict', '')}")
         return out
+
+    # ------------------------------------------------------------------ the owner's bot
+    def bots(self):
+        """The AIs the owner can run as their representative, with their settings. From MCP when
+        the game offers openttd.ai.list; until then derived from each AI's info.nut."""
+        if "openttd.ai.list" in self.tool_names():
+            return {"source": "mcp:openttd.ai.list", "data": self.tool("openttd.ai.list", {})}
+        ais = []
+        for info in sorted(AI_DIR.glob("*/info.nut")):
+            text = info.read_text(errors="replace")
+            m = re.search(r'GetName\(\)\s*\{\s*return\s*"([^"]+)"', text)
+            settings = []
+            for block in re.findall(r"AddSetting\(\{(.*?)\}\);", text, re.S):
+                def field(k, cast=str):
+                    v = re.search(rf"\b{k}\s*=\s*(\"[^\"]*\"|[^,\n]+)", block)
+                    return cast(v.group(1).strip().strip('"')) if v else None
+                settings.append({"name": field("name"), "description": field("description"),
+                                 "min": field("min_value", int), "max": field("max_value", int),
+                                 "step": field("step_size", int) or 1, "default": field("custom_value", int),
+                                 "ingame": "CONFIG_INGAME" in (field("flags") or "")})
+            ais.append({"ai": m.group(1) if m else info.parent.name, "dir": info.parent.name, "settings": settings})
+        running = [c for c in self.resource("openttd://companies").get("data", {}).get("companies", []) if c.get("is_ai")]
+        return {"source": "info.nut (openttd.ai.list not in tools/list yet)", "ais": ais, "running": running}
+
+    def start_bot(self, ai, settings):
+        flat = ",".join(f"{k}={int(v)}" for k, v in settings.items())
+        if "openttd.ai.start" in self.tool_names():
+            return self.tool("openttd.ai.start", {"name": ai, "settings": settings})
+        self.console(f"start_ai {ai} {flat}".strip())
+        self.ai_started = True
+        self.event("ai", f"bot started: start_ai {ai} {flat}")
+        return {"status": "started", "via": "console", "command": f"start_ai {ai} {flat}".strip()}
+
+    def set_bot_setting(self, company, name, value):
+        if "openttd.ai.set_setting" not in self.tool_names():
+            return {"error": "the running game has no openttd.ai.set_setting tool yet; start a bot with new settings instead"}
+        return self.tool("openttd.ai.set_setting", {"company": int(company), "name": name, "value": int(value)})
 
     def _auto_loop(self):
         while True:
@@ -369,6 +418,13 @@ def make_routes(game):
          s({"on": {"type": "boolean"}}, ["on"]), auto),
         ("POST", "/api/start-ai", "startAi", "Start a company AI with an optional settings string", False,
          s({"ai": {"type": "string"}, "settings": {"type": "string"}}), start_ai),
+        ("GET", "/api/bots", "bots", "The AIs the owner can run as their bot, their settings (from openttd.ai.list, else info.nut) and the running AI companies", True,
+         None, lambda q: (200, game.bots())),
+        ("POST", "/api/bots/start", "botStart", "Start the owner's bot: an AI with a settings map", False,
+         s({"ai": {"type": "string"}, "settings": OBJ}, ["ai"]), lambda b: (200, game.start_bot(b["ai"], b.get("settings", {})))),
+        ("POST", "/api/bots/setting", "botSetting", "Change one setting of a running bot (openttd.ai.set_setting, approval-gated)", True,
+         s({"company": {"type": "integer"}, "name": {"type": "string"}, "value": {"type": "integer"}}, ["company", "name", "value"]),
+         lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
         ("POST", "/api/rhai", "rhai", "Run a Rhai script against this panel (tools/research/mcp-rhai)", False,
          s({"script": {"type": "string"}, "timeout": {"type": "number"}}, ["script"]), rhai),
     ]

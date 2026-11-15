@@ -30,6 +30,7 @@
       <ul class="space-y-2 font-medium">
         <li><a href="#overview" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Overview</a></li>
         <li><a href="#companies-card" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Companies</a></li>
+        <li><a href="#bot" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">My bot</a></li>
         <li><a href="#control" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Control and approvals</a></li>
         <li><a href="#decisions-card" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Decisions and events</a></li>
         <li><a href="#catalogue" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">MCP catalogue</a></li>
@@ -107,6 +108,28 @@
         <h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Pending approvals</h4>
         <ul id="pending" class="space-y-2 text-sm text-gray-500 dark:text-gray-400"><li>none</li></ul>
       </div>
+    </div>
+
+    <div id="bot" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">My bot</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">The AI that plays for you. Its settings come from the game (<span id="bot-source" class="font-mono"></span>).</p>
+        </div>
+        <div class="flex gap-2">
+          <select id="bot-ai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
+          <button id="bot-start" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Start my bot</button>
+        </div>
+      </div>
+      <div id="bot-settings" class="grid gap-4 md:grid-cols-2 xl:grid-cols-4"></div>
+      <h4 class="mt-4 mb-2 text-sm font-semibold text-gray-900 dark:text-white">Running bots</h4>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"><tr><th class="px-4 py-2">Company</th><th class="px-4 py-2">Name</th><th class="px-4 py-2">Money</th><th class="px-4 py-2">Live settings</th></tr></thead>
+          <tbody id="bot-running"><tr><td class="px-4 py-2" colspan="4">none</td></tr></tbody>
+        </table>
+      </div>
+      <p id="bot-msg" class="mt-2 text-sm text-gray-500 dark:text-gray-400"></p>
     </div>
 
     <div class="grid gap-4 mb-4 xl:grid-cols-2">

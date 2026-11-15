@@ -86,6 +86,29 @@ Surfaces: `GET /api/events?since=<seq>&kinds=game,company` (REST; a kind matches
 the sequence number, `event:` the kind). In Rhai: `events(since)`, `events(since, "game,company")`,
 and `ttd::wait_event(kind, seconds)`.
 
+## The owner's bot
+
+The bot is an AI company that plays for the owner, within knobs the owner sets in the panel's
+**My bot** card, over `/api/bots*`, or from Rhai (`ttd::start_bot`, `ttd::set_bot`). The settings
+form is derived from the game. It comes from `openttd.ai.list` once the game offers it, and until
+then from each AI's `info.nut` (`AddSetting` blocks: name, description, range, default,
+`CONFIG_INGAME`).
+
+| Route | What it does |
+|---|---|
+| `GET /api/bots` | the AIs, their settings, and the AI companies running now |
+| `POST /api/bots/start` `{ai, settings}` | start the bot (`openttd.ai.start` when the game has it, else `start_ai`) |
+| `POST /api/bots/setting` `{company, name, value}` | change a live setting through `openttd.ai.set_setting`, approval-gated |
+
+`PrismaticAI` (`~/dev/openttd-prismatic-bridge/ai/PrismaticAI`) reads `aggressiveness` (buses per
+route), `max_routes` (towns served) and `cash_reserve` (money kept) again at every heartbeat. Its
+log lines reach the event feed as `ai.log`, because the panel runs the server with `-d script=4`.
+
+Planned, not yet in the game (C++ side, branch `research/mcp-full-auto`): `openttd.ai.*` tools,
+client mode (a network client's MCP server posts commands as that client's company, for network
+games), and operator-token approval over MCP. A policy that approves on its own is auto-approve,
+and that is the owner's call (knowledge `auto-approve-is-the-owners-switch`).
+
 ## Rhai (`tools/research/mcp-rhai`)
 
 `cargo build --release` in `tools/research/mcp-rhai`, then
@@ -95,8 +118,10 @@ and `ttd::wait_event(kind, seconds)`.
   `events`, `sleep`, `to_json`, `tools`, `commands`, `help`.
 - Derived at start-up, never listed by hand: one function per MCP tool in `tools/list` (dots
   become underscores: `openttd_game_set_pause(#{pause: true})`), and one per OpenTTD console
-  command in `list_cmds` (`con_companies()`, `con_newgame("42")`; 83 today). A tool or console
-  command added to the game is a Rhai function the next time a script starts.
+  command in `list_cmds` (`con_companies()`, `con_newgame("42")`; 83 today), and one per operation
+  of the panel's OpenAPI document (`api_<operationId>`: `api_bots()`, `api_botStart(#{...})`,
+  `api_tool_openttd_game_set_pause(#{pause: true})`). A tool, console command or panel route added
+  to the game is a Rhai function the next time a script starts.
 - `import "ttd" as ttd;` loads `tools/research/mcp-panel/rhai/ttd.rhai` (`MCP_RHAI_PATH` overrides),
   the high-level commands: `state`, `companies`, `wait_running`, `new_game`, `start_ai`,
   `set_pause` (waits for the operator's approval, never approves itself), `report`, `watch`.

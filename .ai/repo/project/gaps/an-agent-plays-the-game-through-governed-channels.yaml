@@ -18,6 +18,9 @@ observations:
 - id: ab-not-run
   statement: "The MCP branch lists the read-path determinism A/B as NOT RUN/STAGED in research/prismatic-mcp/09-testing.md"
   source: "file:.ai/repo/adrs/0008-an-agent-reaches-the-game-through-an-embedded-loopback-mcp-s.md"
+- id: bot-knobs-live
+  statement: "PrismaticAI started with aggressiveness=75,max_routes=3,cash_reserve=10000 opened routes in Kindston and Flonham (6 vehicles) and reads the knobs at every heartbeat; changing a knob of a running AI needs openttd.ai.set_setting, not yet in the game"
+  source: file:research/mcp-control.md
 conditions:
 - criterion: the-bridge-steers-a-company
   state: satisfied
@@ -54,5 +57,10 @@ conditions:
   because: the experiment was never run
   observations:
   - ab-not-run
+- criterion: a-bot-plays-for-the-owner
+  state: missing
+  because: "start-time knobs work end to end; live change waits for openttd.ai.set_setting (C++ side)"
+  observations:
+  - bot-knobs-live
 risks:
 - "Upstream API drift may break the MCP module when it is rebased"
