@@ -1,0 +1,48 @@
+id: I0032
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Derive REST routes, an OpenAPI 3.1 document with Swagger UI, and an SSE/REST event stream from the live MCP catalogue"
+slug: mcp-openapi-events
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Expose every MCP tool and resource, and every game event, on REST, OpenAPI, Swagger UI, SSE and Rhai from one declaration and the live catalogue, so an external program can drive the game data-first."
+why: "The owner asked for events over websocket/REST, documented, data-driven, with Swagger/OpenAPI and a single declaration feeding multiple surfaces, and for proof that the whole game can be driven through the derived API."
+scope:
+  - "tools/research/mcp-panel/**"
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-panel-check"
+  - "tools/research/mcp-e2e"
+  - "research/mcp-control.md"
+non_scope:
+  - "New MCP tools in src/prismatic_mcp (the command-table catalogue is carried on branch research/mcp-full-auto)"
+  - "A WebSocket transport: SSE carries the same feed one way over plain HTTP"
+depends_on:
+  - I0031
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "The panel's routes are declared once; /openapi.json documents them and adds one route per tools/list and resources/list entry"
+  - "POST /api/tools/<name> and GET /api/resources/<path> answer for every derived route"
+  - "Swagger UI is served at /docs"
+  - "Events from MCP state differences, decisions, AI log and the console reach GET /api/events and the SSE stream, filterable by kind"
+  - "Rhai reads the same feed (events, ttd::wait_event)"
+  - "tools/research/mcp-panel-check passes against a running panel"
+validation:
+  - "tools/research/mcp-panel-check --panel http://127.0.0.1:8800"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15T21:10:09Z
+started_at: 2026-11-15T21:09:26Z
+started_event: sha256:ebff99e5c28ac3213fb6a9102254be391a96a247289ee0f6c293f0f98ba66e53
+verified_at: 2026-11-15T21:10:05Z
+verified_event: sha256:991dce52f321616725f09e56d60330fe622ffec4fd353ca75b43e5454e36d539
+completed_at: 2026-11-15T21:10:09Z
+completed_event: sha256:d5e56b5046077bd727984f83e92df40fe85710b506d6220257806cd2e6ba077f
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-panel-check --panel http://127.0.0.1:8800 (and 8802)"
+    result: "11 passed, 0 failed on two fresh stacks: openapi.json is OpenAPI 3.1.0 with 23 paths; all 4 MCP tools and 5 resources have derived routes carrying their schemas; GET /api/resources/game/state and POST /api/tools/openttd.decision.validate answer; foreign Origin 403; Swagger UI at /docs; SSE stream and REST feed deliver panel.console; game.* derived from MCP reads; company.observed published; Rhai events() and ttd::wait_event('game.month') received 1950-04-01; a TERM to mcp-e2e left no process listening (SIGINT is ignored in background jobs, now handled explicitly)"
+    commit: 013140a5b1bc08949d144f15b68c707679a298dc
+    recorded_at: 2026-11-15T21:10:06Z

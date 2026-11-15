@@ -49,13 +49,50 @@ Loopback HTTP API, for any external controller (scripts, agents, Prismatic):
 
 A POST with a foreign `Origin` is refused.
 
+### One declaration, every surface: OpenAPI, Swagger UI and derived routes
+
+The routes above are declared once, in `make_routes()` of `server.py`. The router dispatches from
+that table, and `GET /openapi.json` (OpenAPI 3.1) documents it. Swagger UI, served from the local
+`swagger-ui-dist`, is at `GET /docs`. On every request for the document, the live MCP catalogue is
+read again and one route is derived per entry:
+
+| Derived route | From | Body / answer |
+|---|---|---|
+| `POST /api/tools/<tool name>` | each `tools/list` entry | the tool's `inputSchema`; the tool's JSON answer |
+| `GET /api/resources/<path>` | each `resources/list` entry (`openttd://<path>`) | the resource's payload |
+
+A tool the game adds, such as the command-table catalogue of the C++ side, becomes a documented
+REST route, a Swagger operation and a Rhai function without a change here.
+`tools/research/mcp-panel-check` proves it against a running panel: every tool and resource has its
+route, the schemas are carried, the routes answer, Swagger UI is served, and the event feed works.
+
+### Events: SSE and REST over one bus
+
+Every event has a sequence number, a time, a `kind` and `data`, and goes onto one bus:
+
+| Kind | Source |
+|---|---|
+| `game.observed`, `company.observed` | the first MCP read of a game |
+| `game.month`, `game.paused`, `game.resumed`, `game.new_world` | derived from the difference between two MCP reads of `openttd://game/state` |
+| `vehicles.count` | the vehicle count changed |
+| `company.founded`, `company.removed`, `company.renamed` | the difference between two reads of `openttd://companies` |
+| `decision.recorded`, `decision.updated` | the difference between two reads of `openttd://decisions` |
+| `ai.log` | AI script log lines (`company`, `level`, `text`), parsed from the server console |
+| `console.line` | every other server console line (token redacted) |
+| `panel.<kind>` | the panel's own events (operator approvals, console commands, Rhai runs) |
+
+Surfaces: `GET /api/events?since=<seq>&kinds=game,company` (REST; a kind matches itself and its
+`kind.` children) and `GET /api/events/stream?since=<seq>&kinds=...` (Server-Sent Events, `id:` is
+the sequence number, `event:` the kind). In Rhai: `events(since)`, `events(since, "game,company")`,
+and `ttd::wait_event(kind, seconds)`.
+
 ## Rhai (`tools/research/mcp-rhai`)
 
 `cargo build --release` in `tools/research/mcp-rhai`, then
 `mcp-rhai [--panel URL] (<file.rhai> | -e '<script>')`, or `/rhai ...` in the developer console.
 
 - Built-in: `rpc`, `read`, `overview`, `status`, `console`, `pause`, `approve`, `auto_approve`,
-  `sleep`, `to_json`, `tools`, `commands`, `help`.
+  `events`, `sleep`, `to_json`, `tools`, `commands`, `help`.
 - Derived at start-up, never listed by hand: one function per MCP tool in `tools/list` (dots
   become underscores: `openttd_game_set_pause(#{pause: true})`), and one per OpenTTD console
   command in `list_cmds` (`con_companies()`, `con_newgame("42")`; 83 today). A tool or console

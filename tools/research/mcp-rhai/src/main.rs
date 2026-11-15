@@ -15,6 +15,7 @@
 //!   pause(on)                          -> map   set_pause through the approval flow
 //!   approve(id)                        -> map   the operator's approval of a pending decision
 //!   auto_approve(on)                   -> map
+//!   events(since)  events(since, "game,company")  -> map  the panel's event feed after a sequence number
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
 //!
@@ -94,9 +95,15 @@ fn engine(panel: Panel) -> Engine {
     e.register_fn("pause", move |on: bool| -> R<Dynamic> { p.post("/api/pause", json!({"pause": on})) });
     let p = panel.clone();
     e.register_fn("approve", move |id: i64| -> R<Dynamic> { p.post("/api/approve", json!({"id": id})) });
-    let p = panel;
+    let p = panel.clone();
     e.register_fn("auto_approve", move |on: bool| -> R<Dynamic> {
         p.post("/api/auto-approve", json!({"on": on}))
+    });
+    let p = panel.clone();
+    e.register_fn("events", move |since: i64| -> R<Dynamic> { p.get(&format!("/api/events?since={since}")) });
+    let p = panel.clone();
+    e.register_fn("events", move |since: i64, kinds: &str| -> R<Dynamic> {
+        p.get(&format!("/api/events?since={since}&kinds={kinds}"))
     });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));
     e.register_fn("to_json", |d: Dynamic| -> R<String> {
@@ -195,7 +202,7 @@ fn main() {
     engine.register_fn("commands", move || c.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
     engine.register_fn("help", move || -> String {
         format!(
-            "built-in: rpc read overview status console pause approve auto_approve sleep to_json tools commands help\n\
+            "built-in: rpc read overview status console pause approve auto_approve events sleep to_json tools commands help\n\
              derived from tools/list ({}): {}\nderived from list_cmds ({}): {}",
             tools.len(), tools.join(" "), commands.len(), commands.join(" ")
         )

@@ -107,3 +107,15 @@ fn watch(times, every) {
         sleep(every * 1000);
     }
 }
+
+/// Wait up to `seconds` for the first event whose kind is or starts with `kind` (e.g.
+/// "company.founded", "game"), published after this call. Returns the event, or throws.
+fn wait_event(kind, seconds) {
+    let since = status().event_seq;
+    for i in 0..seconds {
+        let feed = events(since, kind);
+        if !feed.events.is_empty() { return feed.events[0]; }
+        sleep(1000);
+    }
+    throw `no ${kind} event within ${seconds} s`;
+}

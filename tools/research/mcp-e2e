@@ -48,7 +48,7 @@ TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-e2e.XXXXXX")"
 PANEL_PID="" GUI_PID=""
 cleanup() {
   [[ -n "$GUI_PID" ]] && kill "$GUI_PID" 2>/dev/null || true
-  [[ -n "$PANEL_PID" ]] && kill -INT "$PANEL_PID" 2>/dev/null || true
+  [[ -n "$PANEL_PID" ]] && kill -TERM "$PANEL_PID" 2>/dev/null || true
   wait 2>/dev/null || true
   rm -rf "$TMP"
 }

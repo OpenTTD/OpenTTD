@@ -18,18 +18,22 @@ import json
 import os
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
 import threading
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 STATIC = HERE / "static"
+AI_LOG_RE = re.compile(r"\[script:\d+\] \[(\d+)\] \[([SEPWI])\] (.*)$")
+AI_LEVELS = {"S": "squirrel_error", "E": "error", "P": "squirrel_info", "W": "warning", "I": "info"}
 TOKEN_RE = re.compile(r"Bearer token \(local operator only, not logged\): ([0-9a-fA-F]{32,})")
 
 
@@ -47,6 +51,10 @@ class Game:
         self.seq = 0
         self.lock = threading.Lock()
         self.events = collections.deque(maxlen=200)
+        # The event bus every surface reads: REST (/api/events), SSE (/api/events/stream), Rhai.
+        self.bus = collections.deque(maxlen=5000)
+        self.bus_seq = 0
+        self.bus_cv = threading.Condition()
         self.pending = {}  # approval id -> {"args": ..., "created": ts}
         self.auto_approve = args.auto_approve
         self.mcp_up = False
@@ -71,6 +79,7 @@ class Game:
         threading.Thread(target=self._read_log, daemon=True).start()
         threading.Thread(target=self._bring_up, daemon=True).start()
         threading.Thread(target=self._auto_loop, daemon=True).start()
+        threading.Thread(target=self._watch, daemon=True).start()
 
     def _read_log(self):
         for raw in self.proc.stdout:
@@ -84,6 +93,12 @@ class Game:
             with self.lock:
                 self.seq += 1
                 self.log.append((self.seq, line))
+            ai = AI_LOG_RE.search(line)
+            if ai:
+                self.publish("ai.log", {"company": int(ai.group(1)), "level": AI_LEVELS.get(ai.group(2), ai.group(2)),
+                                        "text": ai.group(3)})
+            else:
+                self.publish("console.line", {"line": line})
         self.event("server", f"server process exited with {self.proc.wait()}")
 
     def console(self, command):
@@ -187,10 +202,247 @@ class Game:
 
     def event(self, kind, text):
         self.events.appendleft({"t": time.strftime("%H:%M:%S"), "kind": kind, "text": text})
+        self.publish(f"panel.{kind}", {"text": text})
+
+    def publish(self, kind, data):
+        with self.bus_cv:
+            self.bus_seq += 1
+            self.bus.append({"seq": self.bus_seq, "time": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+                             "kind": kind, "data": data})
+            self.bus_cv.notify_all()
+
+    def events_since(self, since, kinds=None, limit=500):
+        with self.bus_cv:
+            out = [e for e in self.bus if e["seq"] > since
+                   and (not kinds or any(e["kind"] == k or e["kind"].startswith(k + ".") for k in kinds))]
+        return out[:limit]
+
+    def _watch(self):
+        """Derive game events from what MCP reports, by difference between two reads."""
+        prev = None
+        while True:
+            time.sleep(1)
+            if not self.mcp_up:
+                continue
+            try:
+                st = self.resource("openttd://game/state")
+                cs = self.resource("openttd://companies")
+                ds = self.resource("openttd://decisions")
+            except Exception:
+                continue
+            if "data" not in st:
+                continue
+            cur = {
+                "date": st.get("game_date"), "paused": st["data"].get("paused"),
+                "vehicles": st["data"].get("num_vehicles"), "towns": st["data"].get("num_towns"),
+                "companies": {c["id"]: c for c in cs.get("data", {}).get("companies", [])},
+                "decisions": {d["decision_id"]: d for d in ds.get("data", {}).get("decisions", [])},
+                "tick": st.get("game_tick"),
+            }
+            if prev is None:
+                self.publish("game.observed", {"date": cur["date"], "tick": cur["tick"], "vehicles": cur["vehicles"],
+                                               "companies": len(cur["companies"]), "towns": cur["towns"]})
+                for c in cur["companies"].values():
+                    self.publish("company.observed", c)
+            else:
+                if cur["tick"] is not None and prev["tick"] is not None and cur["tick"] < prev["tick"]:
+                    self.publish("game.new_world", {"date": cur["date"], "towns": cur["towns"]})
+                if (cur["date"] or "")[:7] != (prev["date"] or "")[:7]:
+                    self.publish("game.month", {"date": cur["date"], "vehicles": cur["vehicles"],
+                                                "companies": {i: {"money": c.get("money"), "value": c.get("company_value")}
+                                                              for i, c in cur["companies"].items()}})
+                if cur["paused"] != prev["paused"]:
+                    self.publish("game.paused" if cur["paused"] else "game.resumed",
+                                 {"date": cur["date"], "tick": cur["tick"]})
+                if cur["vehicles"] != prev["vehicles"]:
+                    self.publish("vehicles.count", {"from": prev["vehicles"], "to": cur["vehicles"], "date": cur["date"]})
+                for i in cur["companies"].keys() - prev["companies"].keys():
+                    self.publish("company.founded", cur["companies"][i])
+                for i in prev["companies"].keys() - cur["companies"].keys():
+                    self.publish("company.removed", prev["companies"][i])
+                for i in cur["companies"].keys() & prev["companies"].keys():
+                    a, b = prev["companies"][i], cur["companies"][i]
+                    if a.get("name") != b.get("name") and b.get("name"):
+                        self.publish("company.renamed", {"id": i, "from": a.get("name"), "to": b.get("name")})
+                for i in cur["decisions"].keys() - prev["decisions"].keys():
+                    self.publish("decision.recorded", cur["decisions"][i])
+                for i in cur["decisions"].keys() & prev["decisions"].keys():
+                    if cur["decisions"][i] != prev["decisions"][i]:
+                        self.publish("decision.updated", cur["decisions"][i])
+            prev = cur
+
+
+OBJ = {"type": "object"}
+
+
+def make_routes(game):
+    """The panel's own HTTP surface, declared once: the router dispatches from this table and
+    /openapi.json documents it. Routes derived from the live MCP catalogue are added at request
+    time (derived_routes), from the same tools/list and resources/list every other surface reads."""
+
+    def console(body):
+        cmd = str(body.get("command", "")).strip()
+        if not cmd or "\n" in cmd:
+            return 400, {"error": "one non-empty line"}
+        with game.lock:
+            mark = game.seq
+        game.console(cmd)
+        game.event("console", cmd)
+        time.sleep(float(body.get("wait", 0.6)))
+        with game.lock:
+            lines = [l for n, l in game.log if n > mark]
+        return 200, {"sent": cmd, "output": lines}
+
+    def rhai(body):
+        exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-rhai"
+        if not exe.exists():
+            return 503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"}
+        r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{game.args.panel_port}",
+                            "-e", str(body.get("script", ""))], capture_output=True, text=True,
+                           timeout=float(body.get("timeout", 120)))
+        game.event("rhai", (body.get("script", "")[:80]) + f" -> exit {r.returncode}")
+        return 200, {"exit": r.returncode, "output": (r.stdout + r.stderr).rstrip()}
+
+    def auto(body):
+        game.auto_approve = bool(body.get("on"))
+        game.event("operator", f"auto-approve {'ON' if game.auto_approve else 'OFF'}")
+        return 200, {"auto_approve": game.auto_approve}
+
+    def start_ai(body):
+        name = str(body.get("ai") or game.args.ai)
+        settings = str(body.get("settings", "")).strip()
+        game.console(f"start_ai {name} {settings}".strip())
+        game.ai_started = True
+        game.event("ai", f"start_ai {name} {settings}".strip())
+        return 200, {"ok": True}
+
+    def status(q):
+        return 200, {
+            "server_running": game.proc is not None and game.proc.poll() is None,
+            "mcp_up": game.mcp_up, "endpoint": game.endpoint(), "ai": game.args.ai,
+            "ai_started": game.ai_started, "auto_approve": game.auto_approve,
+            "pending": [{"id": k, **v} for k, v in game.pending.items()],
+            "game_port": game.args.game_port, "events": list(game.events), "event_seq": game.bus_seq}
+
+    def events(q):
+        since = int(q.get("since", ["0"])[0])
+        kinds = [k for k in q.get("kinds", [""])[0].split(",") if k]
+        return 200, {"events": game.events_since(since, kinds, int(q.get("limit", ["500"])[0])),
+                     "last_seq": game.bus_seq}
+
+    def resource_by_uri(q):
+        return 200, game.resource(q.get("uri", [""])[0])
+
+    def log(q):
+        with game.lock:
+            return 200, {"lines": [l for _, l in list(game.log)[-150:]]}
+
+    def overview(q):
+        return 200, {"state": game.resource("openttd://game/state"),
+                     "companies": game.resource("openttd://companies"),
+                     "decisions": game.resource("openttd://decisions")}
+
+    def catalogue(q):
+        return 200, {"resources": game.rpc("resources/list"), "tools": game.rpc("tools/list"),
+                     "initialize": game.rpc("initialize", {
+                         "protocolVersion": "2025-11-25", "capabilities": {},
+                         "clientInfo": {"name": "openttd-mcp-panel", "version": "1"}})}
+
+    s = lambda props, req=(): {"type": "object", "properties": props, "required": list(req)}
+    # (method, path, operationId, summary, needs MCP, request schema, handler)
+    return [
+        ("GET", "/api/status", "status", "Panel, server and MCP status; pending approvals; recent events", False, None, status),
+        ("GET", "/api/log", "log", "The server console log (token redacted)", False, None, log),
+        ("GET", "/api/events", "events", "Events after ?since=<seq>, optionally ?kinds=game,company,... ; SSE: /api/events/stream", False, None, events),
+        ("GET", "/api/overview", "overview", "Game state, companies and decisions in one read", True, None, overview),
+        ("GET", "/api/catalogue", "catalogue", "MCP initialize, resources/list and tools/list", True, None, catalogue),
+        ("GET", "/api/resource", "readResource", "Read one MCP resource by ?uri=", True, None, resource_by_uri),
+        ("POST", "/api/rpc", "rpc", "Raw MCP JSON-RPC with the panel's token", True,
+         s({"method": {"type": "string"}, "params": OBJ}, ["method"]), lambda b: (200, game.rpc(b["method"], b.get("params")))),
+        ("POST", "/api/console", "console", "One OpenTTD console line as the operator; returns its output", False,
+         s({"command": {"type": "string"}, "wait": {"type": "number"}}, ["command"]), console),
+        ("POST", "/api/pause", "pause", "Pause or resume through the approval-gated MCP tool", True,
+         s({"pause": {"type": "boolean"}}, ["pause"]), lambda b: (200, game.set_pause(b.get("pause", True)))),
+        ("POST", "/api/approve", "approve", "The operator's approval of a pending decision, then its resubmission", True,
+         s({"id": {"type": "integer"}}, ["id"]), lambda b: (200, game.approve(b["id"]))),
+        ("POST", "/api/auto-approve", "autoApprove", "The owner's full-auto switch", False,
+         s({"on": {"type": "boolean"}}, ["on"]), auto),
+        ("POST", "/api/start-ai", "startAi", "Start a company AI with an optional settings string", False,
+         s({"ai": {"type": "string"}, "settings": {"type": "string"}}), start_ai),
+        ("POST", "/api/rhai", "rhai", "Run a Rhai script against this panel (tools/research/mcp-rhai)", False,
+         s({"script": {"type": "string"}, "timeout": {"type": "number"}}, ["script"]), rhai),
+    ]
+
+
+def derived_routes(game):
+    """One REST route per MCP tool (POST /api/tools/<name>, the tool's inputSchema as the body) and per
+    MCP resource (GET /api/resources/<path of openttd://...>), from the live catalogue."""
+    tools = game.rpc("tools/list").get("result", {}).get("tools", [])
+    resources = game.rpc("resources/list").get("result", {}).get("resources", [])
+    out = []
+    for t in tools:
+        out.append(("POST", f"/api/tools/{t['name']}", "tool_" + re.sub(r"\W", "_", t["name"]),
+                    t.get("description", t["name"]), t.get("inputSchema") or OBJ, t))
+    for r in resources:
+        uri = r["uri"]
+        path = uri.split("://", 1)[1] if "://" in uri else uri
+        out.append(("GET", f"/api/resources/{path}", "resource_" + re.sub(r"\W", "_", path),
+                    r.get("description") or r.get("name") or uri, None, r))
+    return out
+
+
+def openapi(game, routes):
+    paths = {}
+
+    def op(method, path, op_id, summary, schema, tag):
+        o = {"operationId": op_id, "summary": summary, "tags": [tag],
+             "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": OBJ}}}}}
+        if schema is not None:
+            o["requestBody"] = {"required": True, "content": {"application/json": {"schema": schema}}}
+        if path in ("/api/events", "/api/resource"):
+            o["parameters"] = [{"name": n, "in": "query", "schema": {"type": "string"}} for n in
+                               (("since", "kinds", "limit") if path == "/api/events" else ("uri",))]
+        paths.setdefault(path, {})[method.lower()] = o
+
+    for method, path, op_id, summary, _mcp, schema, _h in routes:
+        op(method, path, op_id, summary, schema, "panel")
+    paths["/api/events/stream"] = {"get": {"operationId": "eventStream", "tags": ["events"],
+                                           "summary": "Server-sent events: every event as it is published (?since=, ?kinds=)",
+                                           "responses": {"200": {"description": "text/event-stream"}}}}
+    derived = []
+    if game.mcp_up:
+        try:
+            derived = derived_routes(game)
+        except Exception:
+            derived = []
+    for method, path, op_id, summary, schema, item in derived:
+        op(method, path, op_id, summary, schema, "mcp tools" if method == "POST" else "mcp resources")
+    return {"openapi": "3.1.0",
+            "info": {"title": "OpenTTD MCP panel (RESEARCH-ONLY)", "version": "1",
+                     "description": "Declared once in tools/research/mcp-panel/server.py and derived from the live "
+                                    "MCP catalogue: every MCP tool and resource of the running game is a route here."},
+            "servers": [{"url": f"http://127.0.0.1:{game.args.panel_port}"}], "paths": paths}
+
+
+SWAGGER_HTML = """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>OpenTTD MCP API</title>
+<link rel="stylesheet" href="/vendor/swagger-ui/swagger-ui.css"></head><body>
+<div id="swagger"></div><script src="/vendor/swagger-ui/swagger-ui-bundle.js"></script>
+<script>SwaggerUIBundle({url: '/openapi.json', dom_id: '#swagger', deepLinking: true});</script></body></html>"""
+
+VENDOR = {
+    "/vendor/flowbite.min.js": ("flowbite/dist/flowbite.min.js", "text/javascript"),
+    "/vendor/swagger-ui/swagger-ui.css": ("swagger-ui-dist/swagger-ui.css", "text/css"),
+    "/vendor/swagger-ui/swagger-ui-bundle.js": ("swagger-ui-dist/swagger-ui-bundle.js", "text/javascript"),
+}
 
 
 def make_handler(game):
+    routes = make_routes(game)
+    table = {(m, p): (needs, h) for m, p, _i, _s, needs, _sc, h in routes}
+
     class Handler(BaseHTTPRequestHandler):
+        protocol_version = "HTTP/1.1"
+
         def log_message(self, *a):
             pass
 
@@ -198,6 +450,7 @@ def make_handler(game):
             data = body if isinstance(body, bytes) else json.dumps(body).encode()
             self.send_response(code)
             self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(len(data)))
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(data)
@@ -206,99 +459,79 @@ def make_handler(game):
             origin = self.headers.get("Origin")
             return origin is None or origin == f"http://127.0.0.1:{game.args.panel_port}"
 
-        def do_GET(self):
-            if self.path in ("/", "/index.html"):
-                return self._send(200, (STATIC / "index.html").read_bytes(), "text/html; charset=utf-8")
-            if self.path == "/vendor/flowbite.min.js":
-                f = HERE / "node_modules" / "flowbite" / "dist" / "flowbite.min.js"
-                if f.is_file():
-                    return self._send(200, f.read_bytes(), "text/javascript")
-                return self._send(404, {"error": "run npm ci in tools/research/mcp-panel"})
-            if self.path.startswith("/static/"):
-                f = (STATIC / self.path[len("/static/"):]).resolve()
-                if STATIC in f.parents and f.is_file():
-                    ctype = {"css": "text/css", "js": "text/javascript"}.get(f.suffix[1:], "application/octet-stream")
-                    return self._send(200, f.read_bytes(), ctype)
-                return self._send(404, {"error": "not found"})
+        def _stream(self, q):
+            since = int(q.get("since", [str(game.bus_seq)])[0])
+            kinds = [k for k in q.get("kinds", [""])[0].split(",") if k]
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
             try:
-                if self.path == "/api/status":
-                    return self._send(200, {
-                        "server_running": game.proc is not None and game.proc.poll() is None,
-                        "mcp_up": game.mcp_up, "endpoint": game.endpoint(), "ai": game.args.ai,
-                        "ai_started": game.ai_started, "auto_approve": game.auto_approve,
-                        "pending": [{"id": k, **v} for k, v in game.pending.items()],
-                        "game_port": game.args.game_port, "events": list(game.events)})
-                if self.path == "/api/log":
-                    with game.lock:
-                        return self._send(200, {"lines": [l for _, l in list(game.log)[-150:]]})
+                while True:
+                    with game.bus_cv:
+                        game.bus_cv.wait_for(lambda: game.bus_seq > since, timeout=15)
+                    batch = game.events_since(since, kinds)
+                    since = max([since] + [e["seq"] for e in game.events_since(since)])
+                    if not batch:
+                        self.wfile.write(b": keep-alive\n\n")
+                    for e in batch:
+                        self.wfile.write(f"id: {e['seq']}\nevent: {e['kind']}\ndata: {json.dumps(e)}\n\n".encode())
+                    self.wfile.flush()
+            except (BrokenPipeError, ConnectionResetError):
+                return
+
+        def _dispatch(self, method, body=None):
+            url = urllib.parse.urlsplit(self.path)
+            path, q = url.path, urllib.parse.parse_qs(url.query)
+            if method == "GET":
+                if path in ("/", "/index.html"):
+                    return self._send(200, (STATIC / "index.html").read_bytes(), "text/html; charset=utf-8")
+                if path == "/docs":
+                    return self._send(200, SWAGGER_HTML.encode(), "text/html; charset=utf-8")
+                if path == "/openapi.json":
+                    return self._send(200, openapi(game, routes))
+                if path == "/api/events/stream":
+                    return self._stream(q)
+                if path in VENDOR:
+                    rel, ctype = VENDOR[path]
+                    f = HERE / "node_modules" / rel
+                    return self._send(200, f.read_bytes(), ctype) if f.is_file() else \
+                        self._send(404, {"error": "run npm ci in tools/research/mcp-panel"})
+                if path.startswith("/static/"):
+                    f = (STATIC / path[len("/static/"):]).resolve()
+                    if STATIC in f.parents and f.is_file():
+                        ctype = {"css": "text/css", "js": "text/javascript"}.get(f.suffix[1:], "application/octet-stream")
+                        return self._send(200, f.read_bytes(), ctype)
+                    return self._send(404, {"error": "not found"})
+            hit = table.get((method, path))
+            try:
+                if hit:
+                    needs, h = hit
+                    if needs and not game.mcp_up:
+                        return self._send(503, {"error": "MCP server not up yet"})
+                    code, out = h(body if method == "POST" else q)
+                    return self._send(code, out)
                 if not game.mcp_up:
                     return self._send(503, {"error": "MCP server not up yet"})
-                if self.path == "/api/overview":
-                    return self._send(200, {"state": game.resource("openttd://game/state"),
-                                            "companies": game.resource("openttd://companies"),
-                                            "decisions": game.resource("openttd://decisions")})
-                if self.path == "/api/catalogue":
-                    return self._send(200, {"resources": game.rpc("resources/list"),
-                                            "tools": game.rpc("tools/list"),
-                                            "initialize": game.rpc("initialize", {
-                                                "protocolVersion": "2025-11-25", "capabilities": {},
-                                                "clientInfo": {"name": "openttd-mcp-panel", "version": "1"}})})
-                if self.path.startswith("/api/resource?uri="):
-                    uri = urllib.request.unquote(self.path.split("=", 1)[1])
-                    return self._send(200, game.resource(uri))
+                if method == "POST" and path.startswith("/api/tools/"):
+                    return self._send(200, game.tool(path[len("/api/tools/"):], body or {}))
+                if method == "GET" and path.startswith("/api/resources/"):
+                    return self._send(200, game.resource("openttd://" + path[len("/api/resources/"):]))
             except Exception as e:  # surface, never hide, a failing call
                 return self._send(502, {"error": str(e)})
             return self._send(404, {"error": "not found"})
 
+        def do_GET(self):
+            self._dispatch("GET")
+
         def do_POST(self):
             if not self._origin_ok():
                 return self._send(403, {"error": "foreign origin"})
-            body = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
             try:
-                if self.path == "/api/pause":
-                    return self._send(200, game.set_pause(body.get("pause", True)))
-                if self.path == "/api/approve":
-                    return self._send(200, game.approve(body["id"]))
-                if self.path == "/api/auto-approve":
-                    game.auto_approve = bool(body.get("on"))
-                    game.event("operator", f"auto-approve {'ON' if game.auto_approve else 'OFF'}")
-                    return self._send(200, {"auto_approve": game.auto_approve})
-                if self.path == "/api/start-ai":
-                    game.console(f"start_ai {game.args.ai}")
-                    game.ai_started = True
-                    game.event("ai", f"start_ai {game.args.ai} sent")
-                    return self._send(200, {"ok": True})
-                if self.path == "/api/validate":
-                    return self._send(200, game.tool("openttd.decision.validate", body))
-                if self.path == "/api/console":
-                    # The developer console: one line into OpenTTD's own console, as the operator.
-                    cmd = str(body.get("command", "")).strip()
-                    if not cmd or "\n" in cmd:
-                        return self._send(400, {"error": "one non-empty line"})
-                    with game.lock:
-                        mark = game.seq
-                    game.console(cmd)
-                    game.event("console", cmd)
-                    time.sleep(float(body.get("wait", 0.6)))
-                    with game.lock:
-                        lines = [l for n, l in game.log if n > mark]
-                    return self._send(200, {"sent": cmd, "output": lines})
-                if self.path == "/api/rhai":
-                    # A Rhai script against this panel, run by tools/research/mcp-rhai.
-                    rhai = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-rhai"
-                    if not rhai.exists():
-                        return self._send(503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"})
-                    r = subprocess.run([str(rhai), "--panel", f"http://127.0.0.1:{game.args.panel_port}",
-                                        "-e", str(body.get("script", ""))], capture_output=True, text=True,
-                                       timeout=float(body.get("timeout", 120)))
-                    game.event("rhai", (body.get("script", "")[:80]) + f" -> exit {r.returncode}")
-                    return self._send(200, {"exit": r.returncode, "output": (r.stdout + r.stderr).rstrip()})
-                if self.path == "/api/rpc":
-                    # Raw MCP JSON-RPC with the panel's token: anything an MCP client can call.
-                    return self._send(200, game.rpc(body["method"], body.get("params")))
-            except Exception as e:
-                return self._send(502, {"error": str(e)})
-            return self._send(404, {"error": "not found"})
+                body = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
+            except ValueError:
+                return self._send(400, {"error": "body is not JSON"})
+            self._dispatch("POST", body)
 
     return Handler
 
@@ -319,6 +552,12 @@ def main():
     httpd = ThreadingHTTPServer(("127.0.0.1", args.panel_port), make_handler(game))
     print(f"mcp-panel: http://127.0.0.1:{args.panel_port}/  (game server 127.0.0.1:{args.game_port}, "
           f"MCP {game.endpoint()})", flush=True)
+    # A process started in the background of a non-interactive shell inherits SIGINT as ignored;
+    # take both signals explicitly so the dedicated server is always stopped with the panel.
+    def stop(signum, frame):
+        raise KeyboardInterrupt
+    signal.signal(signal.SIGINT, stop)
+    signal.signal(signal.SIGTERM, stop)
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

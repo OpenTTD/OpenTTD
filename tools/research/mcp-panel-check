@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY check of the panel's derived surfaces against a running panel (issue I0032):
+# the OpenAPI document derived from the live MCP catalogue, the generic REST routes it declares,
+# Swagger UI, the REST event feed and the SSE event stream.
+#
+# Usage: tools/research/mcp-panel-check [--panel http://127.0.0.1:8800]
+# Exit status: 0 every check passed, 1 a check failed, 3 the panel is not reachable.
+set -euo pipefail
+
+PANEL="http://127.0.0.1:8800"
+[[ "${1:-}" == "--panel" ]] && PANEL="${2:?--panel needs a URL}"
+for tool in python3 curl; do command -v "$tool" >/dev/null || { echo "mcp-panel-check: needs $tool" >&2; exit 3; }; done
+curl -fs "$PANEL/api/status" >/dev/null || { echo "mcp-panel-check: no panel at $PANEL" >&2; exit 3; }
+
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-panel-check.XXXXXX")"
+trap 'rm -rf "$TMP"' EXIT
+PASS=0 FAIL=0
+check() {
+  if [[ "$2" == 1 ]]; then PASS=$((PASS + 1)); printf 'PASS  %s\n' "$1"; else FAIL=$((FAIL + 1)); printf 'FAIL  %s\n' "$1"; fi
+}
+py() { python3 -I -c "$1" "${@:2}"; }
+
+curl -fs "$PANEL/openapi.json" > "$TMP/openapi.json"
+curl -fs "$PANEL/api/catalogue" > "$TMP/catalogue.json"
+out="$(py '
+import json, sys
+spec = json.load(open(sys.argv[1])); cat = json.load(open(sys.argv[2]))
+tools = [t["name"] for t in cat["tools"]["result"]["tools"]]
+res = [r["uri"].split("://", 1)[1] for r in cat["resources"]["result"]["resources"]]
+paths = spec["paths"]
+miss_t = [t for t in tools if f"/api/tools/{t}" not in paths]
+miss_r = [r for r in res if f"/api/resources/{r}" not in paths]
+schema_ok = all(paths[f"/api/tools/{t}"]["post"]["requestBody"]["content"]["application/json"]["schema"] for t in tools if f"/api/tools/{t}" in paths)
+print(spec["openapi"], len(tools), len(res), len(miss_t), len(miss_r), int(schema_ok), len(paths))
+' "$TMP/openapi.json" "$TMP/catalogue.json")"
+read -r version ntools nres miss_t miss_r schema_ok npaths <<< "$out"
+check "openapi.json is OpenAPI $version with $npaths paths" "$([[ "$version" == 3.1.0 ]] && echo 1 || echo 0)"
+check "every MCP tool ($ntools) has a derived POST route" "$([[ "$ntools" -gt 0 && "$miss_t" == 0 ]] && echo 1 || echo 0)"
+check "every MCP resource ($nres) has a derived GET route" "$([[ "$nres" -gt 0 && "$miss_r" == 0 ]] && echo 1 || echo 0)"
+check "each derived tool route carries the tool's inputSchema as its body" "$([[ "$schema_ok" == 1 ]] && echo 1 || echo 0)"
+
+state="$(curl -fs "$PANEL/api/resources/game/state")"
+tick="$(py 'import json,sys; print(json.loads(sys.argv[1]).get("game_tick",""))' "$state")"
+check "GET /api/resources/game/state answers live state (tick ${tick:-?})" "$([[ -n "$tick" ]] && echo 1 || echo 0)"
+v="$(curl -fs -X POST -H 'Content-Type: application/json' -d '{"action":{"type":"game.set_pause","arguments":{"pause":true}}}' \
+  "$PANEL/api/tools/openttd.decision.validate")"
+valid="$(py 'import json,sys; d=json.loads(sys.argv[1]); print(d.get("valid", d.get("result", {}).get("valid", "")))' "$v")"
+check "POST /api/tools/openttd.decision.validate validates without mutating (valid=$valid)" "$([[ "$valid" == True ]] && echo 1 || echo 0)"
+bad="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Origin: http://evil.example' -H 'Content-Type: application/json' -d '{}' "$PANEL/api/tools/openttd.decision.validate")"
+check "a POST from a foreign Origin is refused (http=$bad)" "$([[ "$bad" == 403 ]] && echo 1 || echo 0)"
+
+docs="$(curl -fs "$PANEL/docs")"; css="$(curl -s -o /dev/null -w '%{http_code}' "$PANEL/vendor/swagger-ui/swagger-ui-bundle.js")"
+check "Swagger UI is served at /docs (bundle http=$css)" "$([[ "$docs" == *SwaggerUIBundle* && "$css" == 200 ]] && echo 1 || echo 0)"
+
+seq0="$(curl -fs "$PANEL/api/status" | py 'import json,sys; print(json.load(sys.stdin)["event_seq"])')"
+curl -fs -N --max-time 8 "$PANEL/api/events/stream?since=$seq0" > "$TMP/sse.txt" 2>/dev/null &
+SSE=$!
+sleep 1
+curl -fs -X POST -H 'Content-Type: application/json' -d '{"command":"getdate"}' "$PANEL/api/console" >/dev/null
+wait "$SSE" 2>/dev/null || true
+nsse="$(grep -c '^event: ' "$TMP/sse.txt" || true)"
+check "the SSE stream delivers events as they happen ($nsse in 7 s, incl. panel.console)" \
+  "$([[ "$nsse" -gt 0 ]] && grep -q '^event: panel.console' "$TMP/sse.txt" && echo 1 || echo 0)"
+rest="$(curl -fs "$PANEL/api/events?since=$seq0&kinds=panel.console")"
+nrest="$(py 'import json,sys; d=json.loads(sys.argv[1]); print(sum(1 for e in d["events"] if e["kind"]=="panel.console"))' "$rest")"
+check "GET /api/events?since=&kinds= filters the same feed ($nrest panel.console)" "$([[ "$nrest" -ge 1 ]] && echo 1 || echo 0)"
+derived="$(curl -fs "$PANEL/api/events?since=0&kinds=game")"
+ngame="$(py 'import json,sys; print(len(json.loads(sys.argv[1])["events"]))' "$derived")"
+check "game events are derived from MCP reads (game.*: $ngame)" "$([[ "$ngame" -ge 1 ]] && echo 1 || echo 0)"
+
+printf '\nmcp-panel-check: %d passed, %d failed\n' "$PASS" "$FAIL"
+[[ "$FAIL" -eq 0 ]]
