@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@plugin "flowbite/plugin";
+@source "./static";
+@source "./node_modules/flowbite";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* The Flowbite Pro admin dashboard's primary palette and font (tailwind.config.js of the Pro set). */
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}

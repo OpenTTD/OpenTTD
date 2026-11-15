@@ -1,0 +1,8 @@
+{
+  "name": "openttd-mcp-panel",
+  "private": true,
+  "description": "RESEARCH-ONLY local control panel for the embedded MCP server",
+  "devDependencies": {
+    "flowbite": "^4.0.1"
+  }
+}

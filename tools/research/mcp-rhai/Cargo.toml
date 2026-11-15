@@ -1,0 +1,11 @@
+[package]
+name = "mcp-rhai"
+version = "0.1.0"
+edition = "2021"
+description = "RESEARCH-ONLY: run Rhai scripts against the OpenTTD MCP control panel"
+publish = false
+
+[dependencies]
+rhai = { version = "1.19", features = ["serde"] }
+ureq = { version = "2.10", features = ["json"] }
+serde_json = "1"

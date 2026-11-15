@@ -1,0 +1,47 @@
+id: I0031
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Drive a running game from outside: MCP control window, tilde developer console, Rhai derived from the live catalogue, one-command end-to-end run"
+slug: mcp-control-window-console-rhai
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Let the owner, a script or an agent start a game, watch it and steer it through the embedded MCP server from outside, interactively and fully automatically, with every MCP tool and console command reachable from Rhai without hand-written bindings."
+why: "The owner asked for an end-to-end, externally controlled MCP integration with a control window, an extended tilde console and Rhai extensibility; the server existed, nothing drove it beyond a curl runbook."
+scope:
+  - "tools/research/mcp-panel/**"
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-e2e"
+  - "research/mcp-control.md"
+  - ".gitignore"
+non_scope:
+  - "New MCP tools and resources in src/prismatic_mcp: carried on branch research/mcp-full-auto by the session that owns the C++ side"
+  - "An agent that approves its own decisions: approval stays the operator's act (panel button or the owner's auto-approve switch)"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "tools/research/mcp-e2e starts the server, MCP, PrismaticAI, the control window and a spectator GUI client in one command"
+  - "The control window shows live state, companies, decisions, resources and tools, and pauses and resumes through the approval flow"
+  - "The ~ console sends OpenTTD console commands, raw MCP calls, resource reads and Rhai scripts"
+  - "mcp-rhai derives one function per tools/list entry and per list_cmds command at start-up"
+  - "rhai/demo.rhai runs a new world to a final report through MCP and the console, with the pause approved by the operator"
+validation:
+  - "tools/research/mcp-e2e"
+  - "tools/research/mcp-rhai/target/release/mcp-rhai tools/research/mcp-panel/rhai/demo.rhai"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15T20:56:42Z
+started_at: 2026-11-15T20:52:59Z
+started_event: sha256:8659404631c2dd975affded06602d37bd0e6d5e2ae413dd09847d36061050adb
+verified_at: 2026-11-15T20:56:37Z
+verified_event: sha256:ba1e5931d4202613a8d8dc001bb8f626eecf6584176847046d8c8126ae39e997
+completed_at: 2026-11-15T20:56:42Z
+completed_event: sha256:84be56786f906b59dc8346cc3bd6227f1dc4dc896ad9bc1edd4af1d1e1072d4a
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-e2e; mcp-rhai tools/research/mcp-panel/rhai/demo.rhai"
+    result: "live on build-gate-research/openttd (master dc83e0b870 + this change, both research options ON): mcp-e2e brought up the dedicated server, MCP, PrismaticAI, the panel at 127.0.0.1:8800 and a spectator GUI client (clients: mcp-observer, company 255); panel API: live state and companies, set_pause pending #1 -> approved -> executed, paused true observed, decisions recorded; ~ console: companies, clients, list_cmds returned their output; mcp-rhai derived 4 tool functions and 83 con_* functions; demo.rhai exit 0: new world (27 towns), PrismaticAI company, 10 watched reports through MCP, pause #3 and resume #5 approved through the panel with the tick frozen 4171 -> 4171 over 3 s, final report, 5 decisions. Found and fixed on the way: PrismaticAI idled when the largest town had no second stop site (bridge repo cb443a1, then Lonningpool Transport with 3 buses, value 10951)"
+    commit: dc83e0b8708b91d52536722596dd0feabf8c9ec0
+    recorded_at: 2026-11-15T20:56:38Z

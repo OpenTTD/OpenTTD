@@ -12,3 +12,8 @@ docs/source/*
 /zola/public
 .ai/local/
 .ai/repo/**/.tmp.*
+
+# Research tooling build outputs (tools/research/mcp-panel, tools/research/mcp-rhai)
+/tools/research/mcp-panel/node_modules/
+/tools/research/mcp-rhai/target/
+/tools/research/mcp-panel/__pycache__/

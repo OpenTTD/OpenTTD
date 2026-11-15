@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY end-to-end run of the embedded MCP server (ADR 0008), fully automatic:
+#
+#   1. a headless dedicated server from an MCP-enabled build, with its MCP server started and a
+#      company AI (PrismaticAI) playing on its own,
+#   2. the control window at http://127.0.0.1:<panel-port>/ (tools/research/mcp-panel): live state,
+#      companies, resources and tools, the approval-gated pause, auto-approve, and a developer
+#      console on ~ (OpenTTD console commands, raw MCP, Rhai scripts),
+#   3. an OpenTTD GUI client joined to the server as a spectator, so the game is visible.
+#
+# Usage: tools/research/mcp-e2e [--bin <openttd>] [--no-gui] [--no-browser] [--auto-approve]
+#                               [--panel-port 8800] [--mcp-port 8731] [--game-port 3979] [--seed N]
+# Stop with Ctrl-C: the panel stops the server, and the GUI client is closed.
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+BIN="$ROOT_DIR/build-gate-research/openttd"
+PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
+GUI=1 BROWSER=1 AUTO=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --bin) BIN="$2"; shift 2 ;;
+    --no-gui) GUI=0; shift ;;
+    --no-browser) BROWSER=0; shift ;;
+    --auto-approve) AUTO=(--auto-approve); shift ;;
+    --panel-port) PANEL_PORT="$2"; shift 2 ;;
+    --mcp-port) MCP_PORT="$2"; shift 2 ;;
+    --game-port) GAME_PORT="$2"; shift 2 ;;
+    --seed) SEED="$2"; shift 2 ;;
+    -h|--help) sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "mcp-e2e: unknown option: $1" >&2; exit 2 ;;
+  esac
+done
+
+PANEL_DIR="$ROOT_DIR/tools/research/mcp-panel"
+[[ -x "$BIN" ]] || { echo "mcp-e2e: no binary at $BIN; run tools/gate.sh research first" >&2; exit 3; }
+if [[ "$(strings "$BIN" | grep -c 'prismatic_mcp')" -eq 0 ]]; then
+  echo "mcp-e2e: $BIN lacks the MCP server; build with -DOPTION_PRISMATIC_MCP_SERVER=ON" >&2; exit 3
+fi
+if ! ls "$HOME/Documents/OpenTTD/baseset/"opengfx* >/dev/null 2>&1; then
+  echo "mcp-e2e: no OpenGFX in ~/Documents/OpenTTD/baseset (see research/baseset-prerequisite-macos.md)" >&2; exit 3
+fi
+[[ -d "$PANEL_DIR/node_modules/flowbite" ]] || (cd "$PANEL_DIR" && npm ci --no-audit --no-fund --silent)
+[[ -f "$PANEL_DIR/static/app.css" ]] || (cd "$PANEL_DIR" && tailwindcss -i input.css -o static/app.css --minify)
+
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-e2e.XXXXXX")"
+PANEL_PID="" GUI_PID=""
+cleanup() {
+  [[ -n "$GUI_PID" ]] && kill "$GUI_PID" 2>/dev/null || true
+  [[ -n "$PANEL_PID" ]] && kill -INT "$PANEL_PID" 2>/dev/null || true
+  wait 2>/dev/null || true
+  rm -rf "$TMP"
+}
+trap cleanup EXIT INT TERM
+
+echo "==> panel + dedicated server (seed $SEED)"
+python3 -I "$PANEL_DIR/server.py" --bin "$BIN" --panel-port "$PANEL_PORT" --mcp-port "$MCP_PORT" \
+  --game-port "$GAME_PORT" --seed "$SEED" ${AUTO[@]+"${AUTO[@]}"} &
+PANEL_PID=$!
+
+URL="http://127.0.0.1:$PANEL_PORT"
+for ((i = 0; i < 180; i++)); do
+  if curl -s "$URL/api/status" | grep -q '"mcp_up": true'; then break; fi
+  kill -0 "$PANEL_PID" 2>/dev/null || { echo "mcp-e2e: the panel exited" >&2; exit 1; }
+  sleep 1
+done
+curl -s "$URL/api/status" | grep -q '"mcp_up": true' || { echo "mcp-e2e: MCP did not come up" >&2; exit 1; }
+echo "==> MCP up; control window: $URL"
+[[ "$BROWSER" == 1 ]] && open "$URL"
+
+if [[ "$GUI" == 1 ]]; then
+  printf '[network]\nclient_name = mcp-observer\n[gui]\nautosave = off\n' > "$TMP/client.cfg"
+  echo "==> GUI client joining 127.0.0.1:$GAME_PORT as a spectator"
+  "$BIN" -c "$TMP/client.cfg" -n "127.0.0.1:$GAME_PORT#255" > "$TMP/client.log" 2>&1 &
+  GUI_PID=$!
+fi
+
+echo "==> running. Ctrl-C stops everything."
+wait "$PANEL_PID"

@@ -1,0 +1,79 @@
+# Driving OpenTTD from outside: MCP panel, developer console and Rhai
+
+RESEARCH-ONLY. The embedded MCP server (ADR 0008, `research/prismatic-mcp/`) is the channel;
+this is the tooling that drives a running game through it. Everything binds to loopback.
+
+## One command: the full end-to-end run
+
+```bash
+tools/gate.sh research     # once: builds build-gate-research/ with both research options ON
+tools/research/mcp-e2e     # server + MCP + PrismaticAI + control window + GUI client
+```
+
+`mcp-e2e` starts a headless dedicated server from the MCP-enabled binary on 127.0.0.1:3979 (the
+panel owns its console), starts the MCP server and the company AI `PrismaticAI`, opens the control
+window at http://127.0.0.1:8800/ and joins an OpenTTD GUI client as a spectator so the game is
+visible. Ctrl-C stops all of it. Options: `--auto-approve`, `--no-gui`, `--no-browser`, ports,
+`--seed`. Prerequisites: a base graphics set (`research/baseset-prerequisite-macos.md`; OpenSFX
+and OpenMSX for sound and music), and `PrismaticAI` in `~/Documents/OpenTTD/ai/` (from
+`~/dev/openttd-prismatic-bridge/ai/`).
+
+## The control window (`tools/research/mcp-panel`)
+
+`server.py` (Python standard library) holds the bearer token in memory only, redacts it from the
+console log it shows, and serves the Flowbite Pro admin shell in `static/` (CSS built with
+`tailwindcss -i input.css -o static/app.css`, Flowbite 4 under `node_modules/`, not committed).
+
+| Surface | What it does |
+|---|---|
+| Stat cards, companies, decisions | `openttd://game/state`, `openttd://companies`, `openttd://decisions`, every second |
+| Pause / Resume | `openttd.game.set_pause` through the approval flow; pending approvals get an Approve button |
+| Auto-approve (full auto) | the operator's switch: the panel approves its own pending decisions; off by default |
+| MCP catalogue | `resources/list` and `tools/list`; click a resource to read it |
+| Developer console (`~`) | OpenTTD console commands, `/mcp <method> [json]`, `/read <uri>`, `/pause`, `/resume`, `/approve <id>`, `/auto on/off`, `/rhai <script>` |
+
+Loopback HTTP API, for any external controller (scripts, agents, Prismatic):
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET /api/status` | | server and MCP up, pending approvals, auto-approve, events |
+| `GET /api/overview` | | state, companies, decisions |
+| `GET /api/catalogue` | | `initialize`, `resources/list`, `tools/list` |
+| `GET /api/resource?uri=<uri>` | | one resource's payload |
+| `POST /api/rpc` | `{"method", "params"}` | raw MCP JSON-RPC with the panel's token |
+| `POST /api/console` | `{"command"}` | one OpenTTD console line and its output |
+| `POST /api/pause` | `{"pause": bool}` | the approval-gated pause |
+| `POST /api/approve` | `{"id"}` | the operator's approval, then the resubmission |
+| `POST /api/auto-approve` | `{"on": bool}` | |
+| `POST /api/rhai` | `{"script"}` | a Rhai script's output |
+
+A POST with a foreign `Origin` is refused.
+
+## Rhai (`tools/research/mcp-rhai`)
+
+`cargo build --release` in `tools/research/mcp-rhai`, then
+`mcp-rhai [--panel URL] (<file.rhai> | -e '<script>')`, or `/rhai ...` in the developer console.
+
+- Built-in: `rpc`, `read`, `overview`, `status`, `console`, `pause`, `approve`, `auto_approve`,
+  `sleep`, `to_json`, `tools`, `commands`, `help`.
+- Derived at start-up, never listed by hand: one function per MCP tool in `tools/list` (dots
+  become underscores: `openttd_game_set_pause(#{pause: true})`), and one per OpenTTD console
+  command in `list_cmds` (`con_companies()`, `con_newgame("42")`; 83 today). A tool or console
+  command added to the game is a Rhai function the next time a script starts.
+- `import "ttd" as ttd;` loads `tools/research/mcp-panel/rhai/ttd.rhai` (`MCP_RHAI_PATH` overrides),
+  the high-level commands: `state`, `companies`, `wait_running`, `new_game`, `start_ai`,
+  `set_pause` (waits for the operator's approval, never approves itself), `report`, `watch`.
+- `rhai/demo.rhai` is the end-to-end demo: new world, PrismaticAI plays, watched through MCP,
+  paused and resumed through the approval flow, final report.
+
+## Limits
+
+- The only game-state change MCP offers is `openttd.game.set_pause`. Everything else a script
+  does to the game goes through the server console (`newgame`, `start_ai`, ...), not MCP.
+  Typed actions derived from the command table are planned on the C++ side.
+- `openttd://companies` returns an empty `name` and no value; `ttd::companies()` fills them from
+  the console's `companies` output.
+- The verdict of an executed pause is taken on the same tick it was posted, so a network server
+  answers `EXECUTED_UNVERIFIED`; `ttd::set_pause` checks the effect itself.
+- The panel's console output is the server log since the command was sent, so concurrent
+  activity can interleave.
