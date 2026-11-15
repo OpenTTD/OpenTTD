@@ -8,6 +8,7 @@
 /** @file screenshot.cpp The creation of screenshots! */
 
 #include "stdafx.h"
+#include <filesystem>
 #include "core/backup_type.hpp"
 #include "fileio_func.h"
 #include "viewport_func.h"
@@ -175,6 +176,29 @@ static std::string_view MakeScreenshotName(std::string_view default_fn, std::str
 
 	return _full_screenshot_path;
 }
+
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+/**
+ * RESEARCH-ONLY (Prismatic MCP): write what the screen shows to a file, without the
+ * "screenshot saved" message and without touching the screenshot name globals.
+ * The capture is queued on the main (drawing) thread, which holds the video buffer; it is written
+ * to a temporary file and renamed, so a reader never sees half an image.
+ * @param path Full path of the PNG (or other provider format) to write.
+ */
+void QueueQuietScreenshot(const std::string &path)
+{
+	VideoDriver::GetInstance()->QueueOnMainThread([path] {
+		auto provider = GetScreenshotProvider();
+		if (provider == nullptr) return;
+		std::string tmp = path + ".tmp";
+		if (provider->MakeImage(tmp, CurrentScreenCallback, _screen.width, _screen.height,
+				BlitterFactory::GetCurrentBlitter()->GetScreenDepth(), _cur_palette.palette)) {
+			std::error_code ec;
+			std::filesystem::rename(tmp, path, ec);
+		}
+	});
+}
+#endif /* OTTD_PRISMATIC_MCP_SERVER */
 
 /**
  * Make a screenshot of the current screen.

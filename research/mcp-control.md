@@ -178,6 +178,29 @@ and that is the owner's call (knowledge `auto-approve-is-the-owners-switch`).
 - `rhai/demo.rhai` is the end-to-end demo: new world, PrismaticAI plays, watched through MCP,
   paused and resumed through the approval flow, final report.
 
+## The owner's window in the panel, and clicks that drive it
+
+`mcp-e2e` attaches the GUI client to the panel (`POST /api/view/attach` with the client's token
+file) and brings its window to the front. From then on:
+
+| Surface | What it does |
+|---|---|
+| `GET /api/view/screenshot` | what your game window shows right now, as PNG; the main page and `/world` show it as a live view, about once a second |
+| `POST /api/view/tool {name, arguments}` | any tool of the GUI client's own MCP server (`openttd.view.scroll_to`, `mark`, `follow`, `zoom`, `state`, `screenshot`), proxied by the panel |
+| `/world`, click a tile or a graph node | your camera goes there (`scroll_to`) and the cursor marks it (`mark`); the director takes the camera back on its next move |
+
+`openttd.view.screenshot` queues the capture on the drawing thread (`QueueQuietScreenshot` in
+`src/screenshot.cpp`, RESEARCH-ONLY), writes a temporary file and renames it, and shows no
+"screenshot saved" message. A capture taken directly from the game thread crashed the Cocoa client:
+the video buffer was unlocked under the drawing thread. `tools/research/mcp-view-check
+[panel-url]` checks all of this against a running stack: five screenshots in a row, with the client
+still alive afterwards, the proxied view tools, the map, stations and graph, and the OpenAPI entries.
+
+Approvals stay the owner's act: `POST /api/console` refuses `prismatic_mcp approve`, `mcp approve`
+and the auto-approve lines (HTTP 403) and records the refusal as an operator event. Approvals go
+through `POST /api/approve`, which is the panel's Approve button. Withdrawing your own request
+(`deny`) is still allowed. `mcp-panel-check` tests both cases.
+
 ## The world as data: map, stations, road graph
 
 | Surface | What it is |

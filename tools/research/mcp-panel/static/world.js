@@ -114,6 +114,34 @@ async function refresh() {
   } catch (e) { $('w-msg').textContent = `not reachable: ${e.message}`; }
 }
 
+/* ---- click to drive the owner's camera -------------------------------------------------------- */
+async function viewTool(name, args) {
+  const r = await fetch('/api/view/tool', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, arguments: args }) });
+  return r.json();
+}
+async function goTo(x, y, what) {
+  const t = map ? map.types[y][x] : '?';
+  const z = map ? parseInt(map.heights[y].substr(x * 2, 2), 16) : '?';
+  const o = map ? map.owners[y][x] : '?';
+  $('w-msg').textContent = `${what || 'tile'} (${x},${y}): ${TYPE_NAMES[t] || t}, height ${z}, owner ${o}; moving your camera there`;
+  try {
+    await viewTool('openttd.view.scroll_to', { x, y });
+    await viewTool('openttd.view.mark', { x, y });
+  } catch (e) { $('w-msg').textContent += ` (failed: ${e.message})`; }
+}
+$('map').addEventListener('click', (e) => {
+  if (!map) return;
+  const c = $('map'); const r = c.getBoundingClientRect();
+  const x = Math.floor((e.clientX - r.left) / r.width * map.width);
+  const y = Math.floor((e.clientY - r.top) / r.height * map.height);
+  if (x >= 0 && y >= 0 && x < map.width && y < map.height) goTo(x, y);
+});
+$('map').style.cursor = 'crosshair';
+setTimeout(() => {
+  const chart = ecInit('graph');
+  if (chart) chart.on('click', (p) => { if (p.dataType === 'node') goTo(p.data.x, p.data.y, p.data.name); });
+}, 60);
+
 /* ---- frame: maximize, Escape restores ---------------------------------------------------------- */
 document.querySelectorAll('[data-maximize]').forEach((b) => b.addEventListener('click', () => {
   const f = b.closest('[data-frame]');
@@ -136,3 +164,16 @@ saveState();
 setTimeout(refresh, 30);
 setInterval(() => { if (state.live) refresh(); }, 5000);
 window.addEventListener('resize', () => setTimeout(drawMap, 30));
+
+/* ---- live view of the owner's game window --------------------------------------------------- */
+(function liveView() {
+  const img = document.getElementById('live-img'); if (!img) return;
+  let busy = false;
+  setInterval(() => {
+    if (busy || document.hidden) return; busy = true;
+    const next = new Image();
+    next.onload = () => { img.src = next.src; busy = false; document.getElementById('live-msg').textContent = 'updated ' + new Date().toLocaleTimeString(); };
+    next.onerror = () => { busy = false; document.getElementById('live-msg').textContent = 'no GUI client attached yet'; };
+    next.src = '/api/view/screenshot?t=' + Date.now();
+  }, 1200);
+})();

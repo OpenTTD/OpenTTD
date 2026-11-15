@@ -1,0 +1,46 @@
+id: I0043
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The owner's live view in the panel, click-to-camera, and an end-to-end view check"
+slug: owner-live-view-and-click-to-camera
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Show what the owner's game window shows in the panel, let a click on the map or the graph drive that window's camera, and check it end to end."
+why: "The owner: I still do not see in the application how everything moves; the panel must have better maps, more interactive, clickable, and the whole game must be controllable from the external console."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_view.cpp"
+  - "src/screenshot.cpp"
+  - "src/screenshot.h"
+  - "tools/research/**"
+  - "research/mcp-control.md"
+non_scope:
+  - "prismatic_mcp_server.cpp and console_cmds.cpp (openttd-59's catalogue)"
+depends_on:
+  - I0042
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd.view.screenshot captures on the drawing thread and the client survives repeated captures"
+  - "The panel shows the owner's window live and proxies the GUI client's view tools"
+  - "A click on a map tile or a graph node in /world moves the owner's camera there and marks the tile"
+  - "tools/research/mcp-view-check passes against a running mcp-e2e stack; tools/gate.sh research passes"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-view-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15T22:58:59Z
+started_at: 2026-11-15T22:49:51Z
+started_event: sha256:48e36a0368c29242274cc2c89d540b6886d24ea4f56ec412e7e73440eb58d697
+verified_at: 2026-11-15T22:58:54Z
+verified_event: sha256:7692b8edbd7117513e418b4e8d5b12b71dd292bccf7a2ff58bb20da96c77d584
+completed_at: 2026-11-15T22:58:59Z
+completed_event: sha256:c272c10e308d2b562d3be85b8cd96fe47eec01d1662570acbbdae1af216d84d7
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-view-check; tools/research/mcp-panel-check; flowbite verify.mjs tools/research/mcp-panel"
+    result: "gate research PASS (ctest 103/103, [prismatic_mcp] 25 assertions); mcp-view-check 11/11 on a running mcp-e2e stack (5 screenshots in a row, client alive, proxied scroll_to/mark, unknown tool refused, map/stations/graph, OpenAPI entries); mcp-panel-check 13/13 incl. console approval refused 403; Flowbite verify PASS; the earlier direct capture crashed the Cocoa client (segfault in NetworkUndrawChatMessage), fixed by queueing on the drawing thread"
+    commit: 58cc7f8a845f79f526c8228442a1065b26d39c7d
+    recorded_at: 2026-11-15T22:58:56Z

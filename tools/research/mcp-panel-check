@@ -68,5 +68,13 @@ derived="$(curl -fs "$PANEL/api/events?since=0&kinds=game")"
 ngame="$(py 'import json,sys; print(len(json.loads(sys.argv[1])["events"]))' "$derived")"
 check "game events are derived from MCP reads (game.*: $ngame)" "$([[ "$ngame" -ge 1 ]] && echo 1 || echo 0)"
 
+code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' \
+  -d '{"command":"prismatic_mcp approve 999999","wait":0}' "$PANEL/api/console")"
+check "an approval sent as a console line is refused (http=$code; approvals go through /api/approve)" \
+  "$([[ "$code" == 403 ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' \
+  -d '{"command":"prismatic_mcp status","wait":0}' "$PANEL/api/console")"
+check "an ordinary console line still runs (http=$code)" "$([[ "$code" == 200 ]] && echo 1 || echo 0)"
+
 printf '\nmcp-panel-check: %d passed, %d failed\n' "$PASS" "$FAIL"
 [[ "$FAIL" -eq 0 ]]

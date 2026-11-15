@@ -61,6 +61,7 @@ class Game:
         self.mcp_up = False
         self.ai_started = False
         self.rpc_id = 0
+        self.view_token = None  # token file of the GUI client whose view the panel shows and drives
 
     # ------------------------------------------------------------------ process
     def start(self):
@@ -185,6 +186,24 @@ class Game:
             return {t["name"] for t in self.rpc("tools/list").get("result", {}).get("tools", [])}
         except Exception:
             return set()
+
+    # ------------------------------------------------------------------ the owner's view (GUI client)
+    def view_call(self, tool, arguments=None):
+        """A tool call on the GUI client's own MCP server, from its token file (reread each call, so
+        a restarted client is picked up)."""
+        if not self.view_token:
+            raise RuntimeError("no GUI client attached (POST /api/view/attach {token_file})")
+        cfg = json.loads(Path(self.view_token).read_text())
+        body = {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": tool, "arguments": arguments or {}}}
+        req = urllib.request.Request(cfg["endpoint"], data=json.dumps(body).encode(), method="POST", headers={
+            "Content-Type": "application/json", "Accept": "application/json, text/event-stream",
+            "Authorization": f"Bearer {cfg['agent_token']}"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            out = json.loads(r.read())
+        try:
+            return json.loads(out["result"]["content"][0]["text"])
+        except (KeyError, IndexError, TypeError, ValueError):
+            return out
 
     # ------------------------------------------------------------------ approvals
     def set_pause(self, pause):
@@ -324,6 +343,9 @@ class Game:
 OBJ = {"type": "object"}
 
 
+APPROVAL_LINE = re.compile(r"^\s*(prismatic_mcp|mcp)\s+(approve|auto_approve|auto-approve)\b", re.I)
+
+
 def make_routes(game):
     """The panel's own HTTP surface, declared once: the router dispatches from this table and
     /openapi.json documents it. Routes derived from the live MCP catalogue are added at request
@@ -333,6 +355,11 @@ def make_routes(game):
         cmd = str(body.get("command", "")).strip()
         if not cmd or "\n" in cmd:
             return 400, {"error": "one non-empty line"}
+        if APPROVAL_LINE.match(cmd):
+            # Approval is the owner's act: through /api/approve (the panel's Approve button), never a
+            # console line any caller (an agent included) could send. Withdrawing (deny) stays open.
+            game.event("operator", f"refused console line: {cmd}")
+            return 403, {"error": "approvals go through POST /api/approve (the owner's button), not the console"}
         with game.lock:
             mark = game.seq
         game.console(cmd)
@@ -364,6 +391,14 @@ def make_routes(game):
         game.ai_started = True
         game.event("ai", f"start_ai {name} {settings}".strip())
         return 200, {"ok": True}
+
+    def view_attach(body):
+        f = Path(str(body.get("token_file", "")))
+        if not f.is_file():
+            return 400, {"error": f"no token file at {f}"}
+        game.view_token = str(f)
+        game.event("view", f"GUI client attached ({f.name})")
+        return 200, {"attached": True, "state": game.view_call("openttd.view.state")}
 
     def graph():
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-graph"
@@ -437,6 +472,10 @@ def make_routes(game):
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
         ("GET", "/api/graph", "graph", "The road network as a graph (nodes: junctions, ends, stations, town anchors; edges with length; components), derived from openttd://map, towns and stations by tools/research/mcp-rhai mcp-graph", True,
          None, lambda q: graph()),
+        ("POST", "/api/view/attach", "viewAttach", "Attach the GUI client the owner watches, by its MCP token file", False,
+         s({"token_file": {"type": "string"}}, ["token_file"]), view_attach),
+        ("POST", "/api/view/tool", "viewTool", "Call a tool on the attached GUI client's own MCP server (openttd.view.* and the rest)", False,
+         s({"name": {"type": "string"}, "arguments": OBJ}, ["name"]), lambda b: (200, game.view_call(b["name"], b.get("arguments")))),
         ("POST", "/api/rhai", "rhai", "Run a Rhai script against this panel (tools/research/mcp-rhai)", False,
          s({"script": {"type": "string"}, "timeout": {"type": "number"}}, ["script"]), rhai),
     ]
@@ -479,6 +518,9 @@ def openapi(game, routes):
                                           "requestBody": {"required": True, "content": {"application/json": {"schema": {
                                               "type": "object", "properties": {"script": {"type": "string"}}, "required": ["script"]}}}},
                                           "responses": {"200": {"description": "text/event-stream"}}}}
+    paths["/api/view/screenshot"] = {"get": {"operationId": "viewScreenshot", "tags": ["view"],
+                                             "summary": "What the attached GUI client shows right now, as PNG",
+                                             "responses": {"200": {"description": "image/png"}}}}
     paths["/api/events/stream"] = {"get": {"operationId": "eventStream", "tags": ["events"],
                                            "summary": "Server-sent events: every event as it is published (?since=, ?kinds=)",
                                            "responses": {"200": {"description": "text/event-stream"}}}}
@@ -595,6 +637,20 @@ def make_handler(game):
                     return self._send(200, SWAGGER_HTML.encode(), "text/html; charset=utf-8")
                 if path == "/openapi.json":
                     return self._send(200, openapi(game, routes))
+                if path == "/api/view/screenshot":
+                    # What the owner's window shows right now, as PNG (openttd.view.screenshot).
+                    try:
+                        shot = game.view_call("openttd.view.screenshot")
+                        f = Path(shot["path"])
+                        before = f.stat().st_mtime if f.exists() else 0
+                        # The client captures on its drawing thread; the file appears within a frame.
+                        for _ in range(40):
+                            if f.exists() and f.stat().st_mtime > before:
+                                break
+                            time.sleep(0.05)
+                        return self._send(200, f.read_bytes(), "image/png")
+                    except Exception as e:
+                        return self._send(503, {"error": str(e)})
                 if path == "/api/events/stream":
                     return self._stream(q)
                 if path in VENDOR:

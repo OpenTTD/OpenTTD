@@ -31,4 +31,8 @@ bool MakeMinimapWorldScreenshot();
 extern std::string _screenshot_format_name;
 extern std::string _full_screenshot_path;
 
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+void QueueQuietScreenshot(const std::string &path); ///< RESEARCH-ONLY, see screenshot.cpp.
+#endif
+
 #endif /* SCREENSHOT_H */

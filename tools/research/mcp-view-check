@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: end-to-end check of what the owner sees and drives, against a running
+# tools/research/mcp-e2e stack (panel plus a GUI client with its own MCP server).
+#
+# Checks the live view (screenshots of the owner's window, repeated, with the client still alive),
+# the view tools through the panel proxy (scroll_to, mark, an unknown tool refused), the world
+# resources and the derived graph, and that these routes are in OpenAPI without a hand entry.
+#
+# Usage: tools/research/mcp-view-check [panel-url]   (default http://127.0.0.1:8800)
+# Exit: 0 all passed, 1 a check failed, 2 the panel is not reachable.
+set -euo pipefail
+
+URL="${1:-http://127.0.0.1:8800}"
+PASS=0
+FAIL=0
+check() {
+  local desc="$1" ok="$2"
+  if [[ "$ok" == 1 ]]; then
+    PASS=$((PASS + 1)); printf 'PASS  %s\n' "$desc"
+  else
+    FAIL=$((FAIL + 1)); printf 'FAIL  %s\n' "$desc"
+  fi
+}
+json() { python3 -I -c "import json,sys; d=json.load(sys.stdin); print(eval(sys.argv[1], {'d': d}))" "$1"; }
+tool() {
+  curl -s -X POST -H 'Content-Type: application/json' \
+    -d "{\"name\":\"$1\",\"arguments\":${2:-{\}}}" "$URL/api/view/tool"
+}
+
+curl -s -o /dev/null --max-time 5 "$URL/api/status" || { echo "mcp-view-check: no panel at $URL" >&2; exit 2; }
+TMP="$(mktemp -d)"
+trap 'rm -rf "$TMP"' EXIT
+
+attached="$(curl -s "$URL/api/status" | json "any(e['kind']=='view' for e in d['events'])")"
+check "a GUI client is attached to the panel" "$([[ "$attached" == True ]] && echo 1 || echo 0)"
+
+for n in 1 2 3 4 5; do
+  curl -s -o "$TMP/shot$n" "$URL/api/view/screenshot"
+done
+pngs=0
+for n in 1 2 3 4 5; do
+  [[ "$(head -c 8 "$TMP/shot$n" | od -An -tx1 | tr -d ' \n')" == 89504e470d0a1a0a ]] && pngs=$((pngs + 1))
+done
+check "five live screenshots in a row are PNG images ($pngs/5)" "$([[ "$pngs" == 5 ]] && echo 1 || echo 0)"
+state="$(tool openttd.view.state)"
+check "the GUI client survives the screenshots (view.state answers)" \
+  "$([[ "$(json "d.get('ok')" <<<"$state")" == True ]] && echo 1 || echo 0)"
+
+out="$(tool openttd.view.scroll_to '{"x":64,"y":64,"instant":true}')"
+check "view.scroll_to through the panel proxy centres the camera on (64,64)" \
+  "$([[ "$(json "(d.get('x'), d.get('y'))" <<<"$out")" == "(64, 64)" ]] && echo 1 || echo 0)"
+out="$(tool openttd.view.mark '{"x":64,"y":64}')"
+check "view.mark puts the cursor on (64,64)" \
+  "$([[ "$(json "d.get('marked') is not None and (d.get('x'), d.get('y')) == (64, 64)" <<<"$out")" == True ]] && echo 1 || echo 0)"
+out="$(tool openttd.view.no_such_tool)"
+check "an unknown view tool is refused with an error" \
+  "$([[ "$(json "d.get('ok') is False and 'error' in d" <<<"$out")" == True ]] && echo 1 || echo 0)"
+
+map="$(curl -s "$URL/api/resources/map")"
+check "openttd://map has one row of types, heights and owners per map row" \
+  "$([[ "$(json "(lambda m: len(m['types'])==len(m['heights'])==len(m['owners'])==m['height'] and len(m['types'][0])==m['width'] and len(m['heights'][0])==2*m['width'])(d['data'])" <<<"$map")" == True ]] && echo 1 || echo 0)"
+st="$(curl -s "$URL/api/resources/stations")"
+check "openttd://stations answers a list" \
+  "$([[ "$(json "isinstance(d['data']['stations'], list)" <<<"$st")" == True ]] && echo 1 || echo 0)"
+graph="$(curl -s "$URL/api/graph")"
+check "the road graph has nodes, edges that point at nodes, and components" \
+  "$([[ "$(json "(lambda ids: len(ids) > 0 and all(e['source'] in ids and e['target'] in ids for e in d['edges']) and d['stats']['components'] > 0)({n['id'] for n in d['nodes']})" <<<"$graph")" == True ]] && echo 1 || echo 0)"
+
+paths="$(curl -s "$URL/openapi.json" | json "' '.join(sorted(d['paths']))")"
+want=(/api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
+missing=()
+for p in "${want[@]}"; do [[ " $paths " == *" $p "* ]] || missing+=("$p"); done
+check "OpenAPI carries graph, map, stations and the view routes (missing: ${missing[*]:-none})" \
+  "$([[ ${#missing[@]} -eq 0 ]] && echo 1 || echo 0)"
+
+code="$(curl -s -o /dev/null -w '%{http_code}' "$URL/world")"
+check "the World page is served (http=$code)" "$([[ "$code" == 200 ]] && echo 1 || echo 0)"
+
+printf '\nmcp-view-check: %d passed, %d failed\n' "$PASS" "$FAIL"
+[[ "$FAIL" -eq 0 ]]

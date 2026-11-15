@@ -102,8 +102,16 @@ if [[ "$GUI" == 1 ]]; then
   # its autoexec.scr writes a fresh token file each time, which the director rereads on every call.
   (
     while kill -0 "$PANEL_PID" 2>/dev/null; do
-      HOME="$CHOME" "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" >> "$TMP/client.log" 2>&1
+      HOME="$CHOME" "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" >> "$TMP/client.log" 2>&1 &
+      CPID=$!
+      # Bring it to the front (a full-screen window opens on a Space of its own on macOS), and
+      # attach it to the panel, which shows and drives its view.
+      for ((j = 0; j < 30; j++)); do [[ -s "$VIEW_TOKEN" ]] && break; sleep 1; done
+      osascript -e "tell application \"System Events\" to set frontmost of (first process whose unix id is $CPID) to true" >/dev/null 2>&1 || true
+      curl -s -X POST -H 'Content-Type: application/json' -d "{\"token_file\":\"$VIEW_TOKEN\"}" "$URL/api/view/attach" >/dev/null || true
+      wait "$CPID"
       echo "client exited with $?; restarting in 3 s" >> "$TMP/client.log"
+      rm -f "$VIEW_TOKEN"
       sleep 3
     done
   ) &

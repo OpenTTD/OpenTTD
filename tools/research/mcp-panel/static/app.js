@@ -131,6 +131,7 @@ const toggleConsole = (show) => {
 };
 $('open-console').onclick = () => toggleConsole(true);
 $('side-console').onclick = () => toggleConsole(true);
+if (location.hash === '#console') toggleConsole(true); // a link from another page opens the console
 $('close-console').onclick = () => toggleConsole(false);
 document.addEventListener('keydown', (e) => {
   if ((e.key === '`' || e.key === '~') && document.activeElement !== $('console-in')) { e.preventDefault(); toggleConsole(); }
@@ -299,3 +300,16 @@ if (window.EventSource) {
   ['ai.log', 'company.founded', 'company.renamed', 'decision.recorded', 'game.paused', 'game.resumed', 'game.month', 'game.new_world', 'panel.mcp']
     .forEach((k) => es.addEventListener(k, (m) => { const e = JSON.parse(m.data); const t = NOTABLE(e); if (t) toast(e.kind, t); }));
 }
+
+/* ---- live view of the owner's game window --------------------------------------------------- */
+(function liveView() {
+  const img = document.getElementById('live-img'); if (!img) return;
+  let busy = false;
+  setInterval(() => {
+    if (busy || document.hidden) return; busy = true;
+    const next = new Image();
+    next.onload = () => { img.src = next.src; busy = false; document.getElementById('live-msg').textContent = 'updated ' + new Date().toLocaleTimeString(); };
+    next.onerror = () => { busy = false; document.getElementById('live-msg').textContent = 'no GUI client attached yet'; };
+    next.src = '/api/view/screenshot?t=' + Date.now();
+  }, 1200);
+})();

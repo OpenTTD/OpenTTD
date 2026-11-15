@@ -25,6 +25,8 @@
 #include "../window_func.h"
 #include "../window_gui.h"
 #include "../zoom_func.h"
+#include "../screenshot.h"
+#include "../fileio_func.h"
 
 #include "../safeguards.h"
 
@@ -101,6 +103,9 @@ json Tools()
 		{"description", "GUI only, no approval: the bot's cursor, a marked tile (the red tile square) at a tile, x/y, a town or a vehicle; clear removes it"},
 		{"inputSchema", {{"type", "object"}, {"properties", {{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}},
 			{"town", {{"type", "integer"}}}, {"vehicle", {{"type", "integer"}}}, {"clear", {{"type", "boolean"}}}}}}}});
+	arr.push_back({{"name", "openttd.view.screenshot"},
+		{"description", "GUI only, no approval: save what this window shows right now (the whole screen buffer, UI included) and answer the file path"},
+		{"inputSchema", obj}});
 	arr.push_back({{"name", "openttd.view.state"},
 		{"description", "GUI only: the main viewport's zoom, zoom limits and followed vehicle"},
 		{"inputSchema", obj}});
@@ -115,6 +120,17 @@ std::optional<json> Call(const std::string &name, const json &args)
 	if (w == nullptr || w->viewport == nullptr) return Error("no main viewport in this process (a dedicated server has none)");
 
 	if (name == "openttd.view.state") return State(w);
+
+	if (name == "openttd.view.screenshot") {
+		/* The screen buffer as the player sees it, captured on the drawing thread (never here, on
+		 * the game thread, where the video buffer may be unlocked). The file appears within a frame. */
+		std::string path = _personal_dir + "prismatic_mcp_view." + std::string(GetCurrentScreenshotExtension());
+		QueueQuietScreenshot(path);
+		json out = State(w);
+		out["path"] = path;
+		out["queued"] = true;
+		return out;
+	}
 
 	if (name == "openttd.view.scroll_to") {
 		std::string error;

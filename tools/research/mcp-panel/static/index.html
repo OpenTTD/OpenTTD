@@ -53,6 +53,15 @@
       </ol>
     </nav>
 
+    <div id="live" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800" data-frame>
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Live view: what your game window shows</h3>
+        <span class="text-xs text-gray-500 dark:text-gray-400">openttd.view.screenshot on the GUI client, about once a second</span>
+      </div>
+      <img id="live-img" alt="The owner's OpenTTD window, refreshed about once a second" class="w-full rounded-sm bg-gray-900">
+      <p id="live-msg" class="mt-1 text-xs text-gray-500 dark:text-gray-400"></p>
+    </div>
+
     <div id="overview" class="grid grid-cols-2 gap-4 mb-4 md:grid-cols-3 xl:grid-cols-6">
       <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Game date</p>
