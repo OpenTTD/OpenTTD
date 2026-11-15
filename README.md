@@ -1,6 +1,38 @@
-# OpenTTD
+# OpenTTD — Prismatic research fork
 
-> **Private fork notice:** `korczis/OpenTTD` is not the official OpenTTD project and is not staged for upstream contribution. See [0.0) About this fork](#00-about-this-fork) below for what it actually is.
+**A real, 20-year-old C++20 game engine used as a proving ground for coding agents.**
+Agents plan, change and validate work against conventions they cannot fake: deterministic
+lockstep multiplayer, savegames that must load forever, and a warning-heavy build.
+
+> **Private fork.** `korczis/OpenTTD` is not the official [OpenTTD](https://github.com/OpenTTD/OpenTTD)
+> project and sends nothing upstream. The original upstream README is preserved from
+> [1.0) About](#10-about) onward; license and credits are unchanged.
+
+| | |
+|---|---|
+| **Ground rules** | [`AGENTS.md`](./AGENTS.md) — read first, applies to every agent and contributor |
+| **Validation** | [`tools/gate.sh`](./tools/gate.sh) `smoke` · `change` · `full` · `research` — see [0.5](#05-validation--gating-model) |
+| **Research CLI** | [`tools/research/research`](./tools/research/research) — profiles, manifest, evidence bundle ([`research/tooling.md`](./research/tooling.md)) |
+| **Embedded MCP server** | [`src/prismatic_mcp/`](./src/prismatic_mcp/) — loopback, compile-gated, default OFF ([`research/prismatic-mcp/`](./research/prismatic-mcp/README.md)) |
+| **Drive a game from outside** | control window, `~` developer console and Rhai scripting ([`research/mcp-control.md`](./research/mcp-control.md)) |
+| **Status taxonomy** | `PASS` · `FAIL` · `PARTIAL` · `NOT RUN` · `NOT APPLICABLE` — never rounded up ([`research/README.md`](./research/README.md)) |
+
+### Quick start
+
+```bash
+# Plain build and the change-tier gate (configure, build, full ctest suite)
+tools/gate.sh change
+
+# Research build with the MCP server ON, then the whole loop in one command:
+# headless server + MCP + PrismaticAI + control window (127.0.0.1:8800) + spectator GUI client
+tools/gate.sh research
+tools/research/mcp-e2e
+```
+
+Prerequisites: a C++20 toolchain (on macOS with an older CLT, Homebrew LLVM — see
+[`CLAUDE.md`](./CLAUDE.md)), CMake 3.16+, and a base graphics set
+([`research/baseset-prerequisite-macos.md`](./research/baseset-prerequisite-macos.md)).
+Everything research-only binds to loopback and is labelled `RESEARCH-ONLY`.
 
 ## Table of contents
 
@@ -51,7 +83,7 @@ Sections 1.0 onward below are the **original upstream OpenTTD README**, kept int
 |  * Elixir/Phoenix umbrella    |                         |    test (src/, regression/)    |
 |  * OSINT / decision-support   |                         |  * tools/gate.sh --            |
 |  * just check/precommit/ci    |                         |    smoke / change / full       |
-|  * 546 AIAD agents, 233 cmds  |                         |  * AGENTS.md / CLAUDE.md /     |
+|  * agent defs and commands    |                         |  * AGENTS.md / CLAUDE.md /     |
 |  * git-worktree session OS    |                         |    research/                   |
 +-------------------------------+                         +--------------------------------+
               ^                                                          |
@@ -64,7 +96,7 @@ flowchart LR
     subgraph P["~/dev/prismatic-platform (private, untouched)"]
         P1["Elixir/Phoenix umbrella<br/>OSINT / decision-support"]
         P2["just check / precommit / ci"]
-        P3["546 AIAD agents, 233 commands"]
+        P3["agent definitions and commands"]
     end
 
     subgraph F["korczis/OpenTTD (this fork)"]
@@ -223,7 +255,7 @@ flowchart TB
     FUS --> PER
 ```
 
-This is where "napojení na reálný svět" — connecting automated inference to actual external reality (a real cadastral registry, a real power grid, real OSINT sources, real due-diligence subjects) — is most concrete, and where a wrong or overconfident automated conclusion has the highest real cost. It's the strongest concrete case for the closing point of 0.1: the fail-closed reporting discipline validated in this OpenTTD fork is meant to transfer back to exactly this kind of high-stakes, real-world-grounded work — not to a context where an optimistic-but-wrong status report would be harmless.
+This is where the connection to the real world — connecting automated inference to actual external reality (a real cadastral registry, a real power grid, real OSINT sources, real due-diligence subjects) — is most concrete, and where a wrong or overconfident automated conclusion has the highest real cost. It's the strongest concrete case for the closing point of 0.1: the fail-closed reporting discipline validated in this OpenTTD fork is meant to transfer back to exactly this kind of high-stakes, real-world-grounded work — not to a context where an optimistic-but-wrong status report would be harmless.
 
 **This is no longer just a design on paper.** [`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) documents an actual bridge — a standalone sibling repository, `~/dev/openttd-prismatic-bridge` (Python/FastAPI), that speaks OpenTTD's admin-network protocol directly, exposes a REST + WebSocket API, and can already start/steer a real, externally-controllable Company AI (`ai/PrismaticAI`) end to end (8/8 of its own tests passing). That AI no longer just idles either: it now builds a real single-town bus route (two stops, a depot, 1-3 buses scaled by its `aggressiveness` setting), verified against a live server (`busses` 0→3, `company_value` 1→11025). What's not built yet: a decision contract with `prismatic-platform` (so something other than a fixed settings string drives the AI), intercity routes (real road pathfinding across arbitrary terrain), and world seeding from real elevation data. Each remaining phase needs its own approval before being built — see the design doc for the full phase table and open questions (including an explicit, not-yet-resolved question about whether the bridge should move to Rust).
 
@@ -245,6 +277,9 @@ This is where "napojení na reálný svět" — connecting automated inference t
 | [`research/`](./research/) | The validation-layer writeup, the experiment-report template, and the detailed tooling reference. |
 | [`research/prismatic-mcp/`](./research/prismatic-mcp/) | Research trail for the embedded, research-only, compile-gated MCP server (see 0.4.1 below and `research/prismatic-mcp/README.md`). |
 | [`src/prismatic_mcp/`](./src/prismatic_mcp/) | The MCP server implementation itself, gated behind `OPTION_PRISMATIC_MCP_SERVER` (default OFF). |
+| [`tools/research/mcp-e2e`](./tools/research/mcp-e2e), [`mcp-panel/`](./tools/research/mcp-panel/), [`mcp-rhai/`](./tools/research/mcp-rhai/) | Drive a running game from outside: one-command end-to-end run, the loopback control window with its `~` developer console and HTTP API, and Rhai scripting against it — see [`research/mcp-control.md`](./research/mcp-control.md). |
+| [`tools/research/mcp-live-check`](./tools/research/mcp-live-check) | Scripted live check of the MCP server against a running build. |
+| [`tools/check-prismatic-docs.sh`](./tools/check-prismatic-docs.sh) | Freshness gate for the generated contributor docs (section 0.4.1). |
 | `.claude/`, `.aiad/` *(not committed)* | Personal Claude Code tooling imported from a sibling private project, kept strictly local via `.git/info/exclude`. |
 
 Laid out as a tree, to make the upstream/fork boundary explicit:
@@ -262,12 +297,15 @@ korczis/OpenTTD/
 │
 ├── tools/
 │   ├── gate.sh            * fork-added: smoke / change / full validation entry point
-│   └── research/          * fork-added: research-mode CLI (doctor/init/configure/build/run/validate/report/clean)
+│   ├── check-prismatic-docs.sh  * fork-added: generated-docs freshness gate
+│   └── research/          * fork-added: research-mode CLI (doctor/init/configure/build/run/validate/report/clean),
+│                            mcp-e2e / mcp-panel / mcp-rhai / mcp-live-check (driving a game over MCP)
 │
 ├── research/
 │   ├── README.md          * fork-added: gating model + PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy
 │   ├── experiment-template.md  * fork-added: experiment report template (manual/freeform)
 │   ├── tooling.md         * fork-added: tools/research/research reference (architecture, schema, profiles)
+│   ├── mcp-control.md     * fork-added: control window, developer console, Rhai, loopback HTTP API
 │   └── prismatic-mcp/     * fork-added: embedded MCP server research trail (00-baseline.md .. 19-continuation-runbook.md)
 │
 ├── src/prismatic_mcp/       * fork-added: MCP server implementation, gated by OPTION_PRISMATIC_MCP_SERVER (default OFF)
