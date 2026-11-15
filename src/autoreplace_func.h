@@ -10,89 +10,42 @@
 #ifndef AUTOREPLACE_FUNC_H
 #define AUTOREPLACE_FUNC_H
 
+#include "autoreplace_type.h"
 #include "command_type.h"
-#include "company_base.h"
 
-void RemoveAllEngineReplacement(EngineRenewList *erl);
-EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group, bool *replace_when_old = nullptr);
-CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, bool replace_when_old, DoCommandFlags flags);
-CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, DoCommandFlags flags);
+const EngineRenew *GetEngineRenew(const EngineRenewList &erl, EngineID engine);
+const EngineRenew *GetEngineRenew(CompanyID company, GroupID group, EngineID engine, bool search);
+CommandCost AddEngineReplacement(DoCommandFlags flags, CompanyID company, GroupID group, EngineID engine, EngineID new_engine, bool replace_when_old);
+CommandCost RemoveEngineReplacement(DoCommandFlags flags, CompanyID company, GroupID group, EngineID engine);
 
-/**
- * Remove all engine replacement settings for the given company.
- * @param c the company.
- */
-inline void RemoveAllEngineReplacementForCompany(Company *c)
-{
-	RemoveAllEngineReplacement(&c->engine_renew_list);
-}
-
-/**
- * Retrieve the engine replacement for the given company and original engine type.
- * @param c company.
- * @param engine Engine type.
- * @param group The group related to this replacement.
- * @param[out] replace_when_old Set to true if the replacement should be done when old.
- * @return The engine type to replace with, or EngineID::Invalid() if no
- * replacement is in the list.
- */
-inline EngineID EngineReplacementForCompany(const Company *c, EngineID engine, GroupID group, bool *replace_when_old = nullptr)
-{
-	return EngineReplacement(c->engine_renew_list, engine, group, replace_when_old);
-}
+void RemoveAllEngineReplacementForCompany(CompanyID company);
 
 /**
  * Check if a company has a replacement set up for the given engine.
- * @param c Company.
- * @param engine Engine type to be replaced.
+ * @param company The company.
  * @param group The group related to this replacement.
+ * @param engine Engine type to be replaced.
+ * @param search Whether to search groups and company for replacement.
  * @return true if a replacement was set up, false otherwise.
  */
-inline bool EngineHasReplacementForCompany(const Company *c, EngineID engine, GroupID group)
+inline bool EngineHasReplacement(CompanyID company, GroupID group, EngineID engine, bool search)
 {
-	return EngineReplacementForCompany(c, engine, group) != EngineID::Invalid();
+	const EngineRenew *er = GetEngineRenew(company, group, engine, search);
+	return er != nullptr && engine != er->to;
 }
 
 /**
  * Check if a company has a replacement set up for the given engine when it gets old.
- * @param c Company.
- * @param engine Engine type to be replaced.
+ * @param company The company.
  * @param group The group related to this replacement.
+ * @param engine Engine type to be replaced.
+ * @param search Whether to search groups and company for replacement.
  * @return True if a replacement when old was set up, false otherwise.
  */
-inline bool EngineHasReplacementWhenOldForCompany(const Company *c, EngineID engine, GroupID group)
+inline bool EngineHasReplacementWhenOld(CompanyID company, GroupID group, EngineID engine, bool search)
 {
-	bool replace_when_old;
-	EngineReplacement(c->engine_renew_list, engine, group, &replace_when_old);
-	return replace_when_old;
-}
-
-/**
- * Add an engine replacement for the company.
- * @param c Company.
- * @param old_engine The original engine type.
- * @param new_engine The replacement engine type.
- * @param group The group related to this replacement.
- * @param replace_when_old Replace when old or always?
- * @param flags The calling command flags.
- * @return 0 on success, CMD_ERROR on failure.
- */
-inline CommandCost AddEngineReplacementForCompany(Company *c, EngineID old_engine, EngineID new_engine, GroupID group, bool replace_when_old, DoCommandFlags flags)
-{
-	return AddEngineReplacement(&c->engine_renew_list, old_engine, new_engine, group, replace_when_old, flags);
-}
-
-/**
- * Remove an engine replacement for the company.
- * @param c Company.
- * @param engine The original engine type.
- * @param group The group related to this replacement.
- * @param flags The calling command flags.
- * @return 0 on success, CMD_ERROR on failure.
- */
-inline CommandCost RemoveEngineReplacementForCompany(Company *c, EngineID engine, GroupID group, DoCommandFlags flags)
-{
-	return RemoveEngineReplacement(&c->engine_renew_list, engine, group, flags);
+	const EngineRenew *er = GetEngineRenew(company, group, engine, search);
+	return er != nullptr && er->replace_when_old;
 }
 
 bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company);

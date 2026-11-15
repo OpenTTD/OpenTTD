@@ -16,6 +16,8 @@
 #include "../../autoreplace_func.h"
 #include "../../vehicle_base.h"
 #include "../../autoreplace_cmd.h"
+#include "../../company_base.h"
+#include "../../group.h"
 #include "../../group_cmd.h"
 #include "../../settings_cmd.h"
 
@@ -165,7 +167,8 @@
 	EnforceCompanyModeValid(::EngineID::Invalid());
 	if (!IsValidGroup(group_id) && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return ::EngineID::Invalid();
 
-	return ::EngineReplacementForCompany(Company::Get(ScriptObject::GetCompany()), engine_id, group_id);
+	const EngineRenew *er = GetEngineRenew(ScriptObject::GetCompany(), group_id, engine_id, false);
+	return er == nullptr ? EngineID::Invalid() : er->to;
 }
 
 /* static */ bool ScriptGroup::StopAutoReplace(GroupID group_id, EngineID engine_id)

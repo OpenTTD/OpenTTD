@@ -12,9 +12,25 @@
 #include "../company_base.h"
 
 #include "saveload.h"
+#include "saveload_internal.h"
 #include "compat/group_sl_compat.h"
 
 #include "../safeguards.h"
+
+/** Saveload handler for group engine renew entries. */
+class SlGroupEngineRenews : public VectorSaveLoadHandler<SlGroupEngineRenews, Group, EngineRenew> {
+public:
+	/** Saveload description for handler. Definition common with \c SlCompanyEngineRenews */
+	static inline const SaveLoad description[] = {
+		SaveLoad::Variable<VarFileType::U16>("old_engine", SLE_OBJECT_ADDRESS(EngineRenew, from)),
+		SaveLoad::Variable<VarFileType::U16>("new_engine", SLE_OBJECT_ADDRESS(EngineRenew, to)),
+		SaveLoad::Variable<VarFileType::Bool>("replace_when_old", SLE_OBJECT_ADDRESS(EngineRenew, replace_when_old)),
+	};
+	/** Compatibility saveload description for handler. */
+	static inline const SaveLoadCompatTable compat_description = {};
+
+	std::vector<EngineRenew> &GetVector(Group *g) const override { return g->engine_renew_list; }
+};
 
 static const SaveLoad _group_desc[] = {
 	SaveLoad::Variable<VarFileType::StringID>("name", SLE_OBJECT_ADDRESS(Group, name), SaveLoadVersion::MinVersion, SaveLoadVersion::ReplaceCustomNameArray),
@@ -27,6 +43,7 @@ static const SaveLoad _group_desc[] = {
 	SaveLoad::Variable<VarFileType::U8>("livery.colour2", SLE_OBJECT_ADDRESS(Group, livery.colour2), SaveLoadVersion::GroupLiveries),
 	SaveLoad::Variable<VarFileType::U16>("parent", SLE_OBJECT_ADDRESS(Group, parent), SaveLoadVersion::GroupHierarchy),
 	SaveLoad::Variable<VarFileType::U16>("number", SLE_OBJECT_ADDRESS(Group, number), SaveLoadVersion::GroupNumbers),
+	SaveLoad::StructList<SlGroupEngineRenews>("engine_renew_list", SaveLoadVersion::EngineRenewsOwnership),
 };
 
 struct GRPSChunkHandler : ChunkHandler {
@@ -54,6 +71,23 @@ struct GRPSChunkHandler : ChunkHandler {
 			SlObject(g, slt);
 
 			if (IsSavegameVersionBefore(SaveLoadVersion::GroupHierarchy)) g->parent = GroupID::Invalid();
+		}
+	}
+
+	void FixPointers() const override
+	{
+		for (Group *g : Group::Iterate()) {
+			SlObject(g, _group_desc);
+
+			if (IsSavegameVersionBefore(SaveLoadVersion::EngineRenewsOwnership)) {
+				Company *c = Company::Get(g->owner);
+				/* Migrate engine renews for this group. */
+				_old_engine_renew_saveload_pool.TransformItems(c->old_engine_renew_index, [g](const auto &item) {
+					if (item.group_id == g->index) g->engine_renew_list.emplace_back(item);
+				});
+				/* Sort by from-engine as lookups use binary-search. */
+				std::ranges::sort(g->engine_renew_list, std::less{}, &EngineRenew::from);
+			}
 		}
 	}
 };

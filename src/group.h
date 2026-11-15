@@ -10,6 +10,7 @@
 #ifndef GROUP_H
 #define GROUP_H
 
+#include "autoreplace_type.h"
 #include "group_type.h"
 #include "core/flatset_type.hpp"
 #include "core/pool_type.hpp"
@@ -80,6 +81,8 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 
 	GroupFlags flags{}; ///< Group flags
 	Livery livery{}; ///< Custom colour scheme for vehicles in this group
+	EngineRenewList engine_renew_list{}; ///< Engine renewals of this group.
+
 	GroupStatistics statistics{}; ///< NOSAVE: Statistics and caches on the vehicles in the group.
 
 	FlatSet<GroupID> children; ///< NOSAVE: child groups belonging to this group.
