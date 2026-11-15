@@ -24,12 +24,14 @@ validation:
 evidence_required:
 - recorded_validation
 created_at: '2026-07-24'
-updated_at: '2026-07-24T20:13:14Z'
+updated_at: 2026-11-15T20:04:36Z
 started_at: '2026-07-24T20:13:14Z'
 verified_at: '2026-07-24T20:13:14Z'
 unsealed_stamps:
 - started_at 2026-07-24T20:13:14Z
 - verified_at 2026-07-24T20:13:14Z
+completed_at: 2026-11-15T20:04:36Z
+completed_event: sha256:37702de109ffa55633ee4377bfbef11602ec869a8068abdc28fe9325c9ce5c05
 evidence:
   - covers: recorded_validation
     type: manual
@@ -37,3 +39,9 @@ evidence:
     result: "live: game paused false->true through the approved decision; replay and changed args denied (as recorded in the commit message; not re-run on 2026-11-15)"
     commit: 3bfd9a096ca7a8638b6cddc70909f8c3bef69f76
     recorded_at: '2026-07-24T20:13:14Z'
+  - covers: "recorded_validation"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-live-check; tools/gate.sh change"
+    result: "re-checked on the rebased tree (a99c952828): mcp-live-check -- set_pause returns pending_approval, changes nothing before approval, executes through the command system after prismatic_mcp approve with paused observed true, replay and changed arguments sent back to pending_approval"
+    commit: a99c95282838b1e9df215a8717facbbaeaf95a82
+    recorded_at: 2026-11-15T20:04:35Z

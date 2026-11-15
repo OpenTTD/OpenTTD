@@ -18,10 +18,11 @@ tags: [mcp, security, approval]
 
 ## What it does
 
-On the branch `research/prismatic-mcp-server`: live resources, bearer auth, Origin rejection,
+Live resources, bearer auth, Origin rejection,
 `openttd.decision.validate`, and an approval-gated `submit` that pauses the game via
 `Command<Commands::Pause>::Post`.
 
 ## What it does not do
 
-It has not landed on `master` (issue I0017), and it exposes no company-scoped tool yet.
+It exposes no company-scoped tool yet, its approval binds a 64-bit digest rather than the
+arguments themselves (issue I0023), and the read-path determinism A/B has not run (I0026).

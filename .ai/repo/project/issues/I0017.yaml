@@ -32,4 +32,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-15T20:04:47Z
+started_at: 2026-11-15T19:51:10Z
+started_event: sha256:bb5dd5266ed301ca390728dccab7d59913b437288fc533d80f5ed19cf0eb8678
+verified_at: 2026-11-15T20:04:44Z
+verified_event: sha256:2ef88fe1cd26d02a1550e58a8973936822d63ecc49590c3b0bf84e77a4cc42b5
+completed_at: 2026-11-15T20:04:47Z
+completed_event: sha256:c7483c7683e8b601b31f5169a1be391843c4b89c5fe5c9511ffeadd8d5a7375f
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "git rebase --onto master 0822f6b762 research/prismatic-mcp-server; tools/gate.sh research; tools/research/mcp-live-check; tools/gate.sh change"
+    result: "branch backed up (backup/research-prismatic-mcp-server-pre-rebase-2026-11-15) and pushed (5129fc214a) first; rebase replayed exactly the 5 MCP commits (range-diff: 3 unchanged, 1 context-only in src/openttd.cpp, 1 with the AGENTS.md/tools/gate.sh conflict resolved by keeping master and adding the docs-freshness step and the MCP README link); the gated code no longer compiled on the current upstream (Debug(net, 1, ...) vs the typed Facility/Severity API) and was ported in 969a7b2a9c; tools/gate.sh research with both options ON: build PASS, ctest 103/103, [prismatic_mcp] 25 assertions in 5 cases; tools/research/mcp-live-check 14/14 (a99c952828); tools/gate.sh change 98/98 with check-prismatic-docs PASS; system compiler, no Homebrew LLVM"
+    commit: a99c95282838b1e9df215a8717facbbaeaf95a82
+    recorded_at: 2026-11-15T20:04:45Z

@@ -28,12 +28,14 @@ validation:
 evidence_required:
 - recorded_validation
 created_at: '2026-07-30'
-updated_at: '2026-11-15'
+updated_at: 2026-11-15T20:04:43Z
 started_at: '2026-07-30T12:15:04Z'
 verified_at: '2026-07-30T12:31:04Z'
 unsealed_stamps:
 - started_at 2026-07-30T12:15:04Z
 - verified_at 2026-07-30T12:31:04Z
+completed_at: 2026-11-15T20:04:43Z
+completed_event: sha256:8174658d01bc09bfea9a0aaabf291b4e3f4ca2689e05976a8ca5ec32b9c8089e
 evidence:
   - covers: recorded_validation
     type: test
@@ -41,3 +43,9 @@ evidence:
     result: "drift deliberately introduced and caught; smoke and change PASS 98/98; live re-verification against a rebuilt binary (as recorded in the commit message; not re-run on 2026-11-15)"
     commit: 5129fc214aa96c0732a51070e0bf731d66e82529
     recorded_at: '2026-07-30T12:31:04Z'
+  - covers: "recorded_validation"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-live-check; tools/gate.sh change"
+    result: "re-checked on the rebased tree (a99c952828): tools/check-prismatic-docs.sh PASS, run by tools/gate.sh change (98/98 PASS)"
+    commit: a99c95282838b1e9df215a8717facbbaeaf95a82
+    recorded_at: 2026-11-15T20:04:41Z

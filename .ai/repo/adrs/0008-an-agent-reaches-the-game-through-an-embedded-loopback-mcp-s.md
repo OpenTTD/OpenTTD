@@ -68,8 +68,9 @@ branch `research/prismatic-mcp-server`:
   (`src/tests/test_prismatic_mcp.cpp`: 25 assertions in 5 cases).
 - A generated contributor catalogue keeps README, AGENTS.md and the site in step, and
   `tools/check-prismatic-docs.sh` is wired into `tools/gate.sh change`.
-- The branch has not landed on `master`. It was cut before the rebase onto upstream and must be
-  rebased and re-verified with both options ON (issue I0017).
+- The series landed on `master` on 2026-11-15 (issue I0017): rebased onto the current upstream,
+  with the five `Debug()` calls ported to the typed `Facility`/`Severity` API, and re-verified
+  with both options ON (`tools/gate.sh research`, `tools/research/mcp-live-check` 14/14).
 - The branch carries its own decision record,
   `research/prismatic-mcp/04-architecture-decision-record.md`. This ADR states the decision
   for the layer and points there for the 20-question design review.

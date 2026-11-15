@@ -31,3 +31,11 @@ relations:
 internal APIs (`StringID` became a strong type, among others), and the one file both sides
 touched was `src/console_cmds.cpp`, inside the gated block. A green `tools/gate.sh change`
 could not have shown a break there. The research-debug profile did, and it built and ran.
+
+# Observed again
+
+The same day, rebasing the MCP series (`research/prismatic-mcp-server`, issue I0017) onto that
+tree applied all five commits without a conflict in `src/`, and the result still did not compile
+with `OPTION_PRISMATIC_MCP_SERVER=ON`: upstream had replaced `Debug(net, 1, ...)` with
+`Debug(Facility::Net, Severity::..., ...)`. `tools/gate.sh change` built and passed 98/98 on it all
+along; `tools/gate.sh research` failed with 20 errors until the calls were ported.
