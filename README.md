@@ -167,7 +167,7 @@ flowchart TD
 
 A platform whose actual job is decision-support/OSINT analysis can't cleanly validate its own agentic tooling against its own codebase — an agent that's good at editing code that's already full of hooks and conventions *for* the very tooling being tested doesn't tell you much about how well that tooling generalizes. OpenTTD was picked deliberately because it shares essentially nothing with Prismatic:
 
-- it's a 20+ year old, large, real C++20 codebase (500+ subdirectories under `src/` alone) with its own strict, unrelated engineering conventions — a deterministic command-pattern architecture, backward-compatible savegame versioning going back decades, a heavy Doxygen documentation style;
+- it's a 20+ year old, large, real C++20 codebase (dozens of subsystem directories under `src/`) with its own strict, unrelated engineering conventions — a deterministic command-pattern architecture, backward-compatible savegame versioning going back decades, a heavy Doxygen documentation style;
 - it has nothing to do with Elixir, Phoenix, OSINT, or decision-support workflows, so no part of it was shaped to be agent-friendly or Prismatic-friendly;
 - it has an established, independently working build and test toolchain (CMake + CTest, 98 pre-existing tests) that this fork's own gating model can be checked against without having to trust the very tooling under evaluation to grade itself.
 
@@ -212,12 +212,12 @@ This wasn't a one-time import. If this fork's gating model changes in the future
 
 #### 0.2.5) Selected Prismatic capabilities of particular interest
 
-Within Prismatic's ~90 applications, the ones most relevant to *why* rigorous, honestly-reported agentic validation matters are the ones with the highest real-world stakes: OSINT collection, due-diligence synthesis, and quantitative modeling that's directly wired to real external systems. Read from each application's own README, not guessed from its name:
+Among Prismatic's applications, the ones most relevant to *why* rigorous, honestly-reported agentic validation matters are the ones with the highest real-world stakes: OSINT collection, due-diligence synthesis, and quantitative modeling that's directly wired to real external systems. Read from each application's own README, not guessed from its name:
 
 | Application | What it actually does |
 |---|---|
 | `prismatic_osint_core` | The core OSINT (open-source intelligence) framework — the foundation the other OSINT collectors build on. |
-| `prismatic_osint_sources`, `prismatic_osint_business_financial`, `prismatic_osint_czech_legal`, `prismatic_osint_eu_institutions`, `prismatic_osint_network`, `prismatic_osint_social_media`, `prismatic_osint_czech_courts` | 84+ source adapters and domain-specific collectors — business/financial records, the Czech legal system, EU institutions, network infrastructure, social media, Czech courts. |
+| `prismatic_osint_sources`, `prismatic_osint_business_financial`, `prismatic_osint_czech_legal`, `prismatic_osint_eu_institutions`, `prismatic_osint_network`, `prismatic_osint_social_media`, `prismatic_osint_czech_courts` | Source adapters and domain-specific collectors — business/financial records, the Czech legal system, EU institutions, network infrastructure, social media, Czech courts. |
 | `prismatic_dd` | The Due Diligence platform itself (production status). |
 | `prismatic_intelligence_fusion` | Cross-system fusion hub: links OSINT, DD, Academy, and Storage into one workflow through a shared knowledge graph, with Bayesian confidence aggregation across independent sources — its own README is explicit that "isolated signals have limited value; fusion across domains multiplies intelligence value through correlation, contradiction detection, and confidence aggregation." |
 | `prismatic_monte_carlo` | A probabilistic-simulation / uncertainty-quantification engine. |
