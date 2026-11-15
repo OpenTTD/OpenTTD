@@ -1,0 +1,70 @@
+/* The site's stylesheet: Flowbite on Tailwind 4, the Flowbite Pro admin palette and font.
+   source(none): only the generator and the client script are scanned, never the repository
+   the CLI happens to run in. */
+@import "tailwindcss" source(none);
+@plugin "flowbite/plugin";
+@plugin "flowbite-typography";
+@source "../surfaces.py";
+@source "./app.js";
+@source "../node_modules/flowbite";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+/* A maximized chart or diagram fills the viewport until Escape. */
+.is-maximized {
+  position: fixed !important;
+  inset: 0;
+  z-index: 60;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  overflow: auto;
+}
+.is-maximized .chart {
+  height: calc(100vh - 7rem) !important;
+}
+.is-maximized pre.mermaid svg {
+  max-width: none !important;
+  height: calc(100vh - 6rem);
+}
+
+pre.mermaid {
+  background: transparent !important;
+  color: inherit;
+  text-align: center;
+}
+
+article h1[id],
+article h2[id],
+article h3[id],
+article h4[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Sidebar entries repeat on every page; one class each keeps a page small. The class lists are
+   the Flowbite Pro admin sidebar's. */
+.nav-item {
+  @apply flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700;
+}
+.nav-doc {
+  @apply flex items-center rounded-lg p-1.5 ps-10 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700;
+}
+.nav-on {
+  @apply bg-gray-100 dark:bg-gray-700;
+}
+.nav-icon {
+  @apply h-5 w-5 text-gray-500 dark:text-gray-400;
+}

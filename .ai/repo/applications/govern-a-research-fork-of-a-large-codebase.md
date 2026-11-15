@@ -1,7 +1,7 @@
 ---
 id: govern-a-research-fork-of-a-large-codebase
 kind: application
-title: 'Governing a private research fork of a large upstream codebase'
+title: 'Governing a personal research fork of a large upstream codebase'
 summary: 'A fork that follows a large upstream by rebasing, adds a research layer on top, and is worked on by agents whose changes must stay scoped, provable and reversible.'
 weight: 10
 status: active

@@ -1,7 +1,7 @@
 # Prismatic × OpenTTD Embedded MCP Server (research-only)
 
 A **RESEARCH-ONLY**, compile-gated, loopback-only [Model Context Protocol](https://modelcontextprotocol.io)
-server embedded inside this private OpenTTD research fork. It exposes live OpenTTD internal state to
+server embedded inside this personal OpenTTD research fork. It exposes live OpenTTD internal state to
 MCP clients (Claude Code, MCP Inspector, the Prismatic platform) over HTTP+JSON-RPC, pinned to the
 stable **2025-11-25** spec. It is **not** part of upstream OpenTTD and is never network-exposed.
 

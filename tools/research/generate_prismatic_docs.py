@@ -6,8 +6,9 @@ Generated targets (marked blocks are replaced in place, never hand-edited):
 
   - README.md                                   (marker: prismatic-mcp-getting-started)
   - research/prismatic-mcp/README.md             (marker: prismatic-mcp-readme-cta)
-  - zola/templates/partials/prismatic_cta.html    (whole file)
-  - zola/templates/partials/prismatic_jsonld.html (whole file, schema.org JSON-LD)
+
+The published site and wiki render both documents as they are (tools/surfaces), so the
+catalog no longer generates any page template of its own.
 
 tools/check-prismatic-docs.sh runs this and fails the gate if the working tree
 disagrees with what the catalog would generate (see tools/gate.sh 'change').
@@ -86,56 +87,20 @@ the same content cross-linked from the top-level README, and `AGENTS.md` / `CLAU
 ground rules that apply before any of this."""
 
 
-def render_zola_cta(cat) -> str:
-    cta = cat["cta"]
-    return f"""<a class="cta-button" href="{cta['url']}">{cta['label']}</a>
-<p class="cta-subtext">{cta['subtext']}</p>
-"""
-
-
-def render_zola_jsonld(cat) -> str:
-    project = cat["project"]
-    doc = {
-        "@context": "https://schema.org",
-        "@type": "SoftwareSourceCode",
-        "name": project["name"],
-        "description": project["tagline"],
-        "codeRepository": project["repo_url"],
-        "programmingLanguage": "C++",
-        "isPartOf": {
-            "@type": "SoftwareSourceCode",
-            "name": "korczis/OpenTTD (private research fork)",
-            "codeRepository": project["repo_url"],
-        },
-        "potentialAction": {
-            "@type": "ViewAction",
-            "name": cat["cta"]["label"],
-            "target": cat["cta"]["url"],
-        },
-    }
-    rendered = json.dumps(doc, indent=2)
-    return f'<script type="application/ld+json">\n{rendered}\n</script>\n'
-
 
 def main():
     cat = load_catalog()
 
     readme_path = ROOT / "README.md"
     prismatic_readme_path = ROOT / "research/prismatic-mcp/README.md"
-    zola_cta_path = ROOT / "zola/templates/partials/prismatic_cta.html"
-    zola_jsonld_path = ROOT / "zola/templates/partials/prismatic_jsonld.html"
 
     replace_marked_block(readme_path, "prismatic-mcp-getting-started",
                           render_getting_started_block(cat, "./"))
     replace_marked_block(prismatic_readme_path, "prismatic-mcp-readme-cta",
                           render_prismatic_readme_cta_block(cat))
 
-    zola_cta_path.parent.mkdir(parents=True, exist_ok=True)
-    zola_cta_path.write_text(render_zola_cta(cat))
-    zola_jsonld_path.write_text(render_zola_jsonld(cat))
-
     print("Regenerated from", CATALOG_PATH.relative_to(ROOT), ":")
-    for p in (readme_path, prismatic_readme_path, zola_cta_path, zola_jsonld_path):
+    for p in (readme_path, prismatic_readme_path):
         print(f"  {p.relative_to(ROOT)}")
     return 0
 

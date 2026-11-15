@@ -3,10 +3,10 @@ title: "The fork is published, supervised by Majordomus, and current with upstre
 slug: the-fork-is-published-supervised-and-current
 order: 60
 priority: p1
-problem: "The fork's decisions, plan and knowledge lived in commit bodies and conversations, it had no public face, and its base fell 317 commits behind upstream. Proposed in ADR 0009, ADR 0010, ADR 0011 (status: proposed; accepting them is the owner's act)."
-outcome: "A Zola site deploys from a fork-only workflow, the .ai/ layer records decisions, rules, plan and knowledge, and master is a linear series on top of upstream/master."
+problem: "The fork's decisions, plan and knowledge lived in commit bodies and conversations, it had no public face, and its base fell 317 commits behind upstream. Proposed in ADR 0010, ADR 0011 and ADR 0012 (which superseded ADR 0009) (status: proposed; accepting them is the owner's act)."
+outcome: "A site and a wiki derived from the tracked Markdown and the .ai/ layer deploy from a fork-only workflow, the .ai/ layer records decisions, rules, plan and knowledge, and master is a linear series on top of upstream/master."
 acceptance_criteria:
-- zola build and zola check pass; GitHub Pages serves the site
+- tools/surfaces/surfaces check passes; GitHub Pages serves the site and the wiki carries the same documents
 - majordomus doctor reports 0 failures and the hooks are wired
 - "git rev-list --count master..upstream/master is 0 after a sync"
 - "The research-debug profile builds and runs on the rebased tree"

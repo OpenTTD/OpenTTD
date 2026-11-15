@@ -1,0 +1,14 @@
+#!/bin/sh
+# Published surfaces of a repository: the site, the wiki and the Markdown regions, all derived
+# from what git tracks and from the .ai/ layer. See README.md beside this file.
+#
+# Creates its own virtual environment on first use (SURFACES_VENV overrides where), so the
+# only prerequisite is python3 >= 3.11. Node is needed only by `site` (the asset build).
+set -eu
+here=$(cd "$(dirname "$0")" && pwd)
+venv=${SURFACES_VENV:-$here/.venv}
+if ! "$venv/bin/python" -c 'import markdown_it, yaml' 2>/dev/null; then
+  python3 -m venv "$venv" >&2
+  "$venv/bin/pip" install --quiet --disable-pip-version-check -r "$here/requirements.txt" >&2
+fi
+exec "$venv/bin/python" "$here/surfaces.py" "$@"

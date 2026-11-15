@@ -12,8 +12,6 @@ cd "$ROOT_DIR"
 GENERATED_PATHS=(
   README.md
   research/prismatic-mcp/README.md
-  zola/templates/partials/prismatic_cta.html
-  zola/templates/partials/prismatic_jsonld.html
 )
 
 # Snapshot the working tree as it is *before* regenerating (regardless of commit

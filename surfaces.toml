@@ -1,0 +1,11 @@
+# Published surfaces of this repository: tools/surfaces/README.md.
+# Only the choices data cannot make are declared here; every page, table and chart is derived.
+
+[sources]
+# Every tracked Markdown document is published, upstream's included; vendored third-party
+# trees are not this repository's documentation.
+exclude = ["src/3rdparty/**"]
+
+[check]
+# Upstream documents are carried unmodified (ADR 0011): their links are upstream's to keep.
+exclude = ["changelog.md"]

@@ -1,0 +1,45 @@
+id: I0034
+milestone: the-fork-is-published-supervised-and-current
+title: "Derive every published surface: a GitHub Pages site, the wiki and Markdown regions from tracked Markdown, git and the .ai/ layer, enforced on commit"
+slug: derived-published-surfaces
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Publish the repository's documentation and its .ai/ layer as a site and a wiki that cannot drift from the repository, keep summary tables inside the Markdown in step with their sources, and block any change that would leave a stale region or a dangling link."
+why: "The owner asked for GitHub Pages and the wiki as surfaces derived through gh workflows, kept in sync and enforced from .ai/, generic rather than specific to this fork; the Zola page restated the README, called a public repository private, and never deployed."
+scope:
+  - "tools/surfaces/**"
+  - "surfaces.toml"
+  - ".github/workflows/surfaces.yml"
+  - ".github/workflows/gh-pages.yml"
+  - "zola/**"
+  - "tools/research/generate_prismatic_docs.py"
+  - "tools/check-prismatic-docs.sh"
+  - "tools/gate.sh"
+  - ".ai/**"
+  - "README.md"
+  - "AGENTS.md"
+  - "CLAUDE.md"
+  - "research/**"
+  - ".gitignore"
+non_scope:
+  - "Upstream's own documents: published as they are, never edited here (ADR 0011)"
+depends_on:
+  - I0019
+serves:
+  - "openttd-validates-agent-driven-engineering#the-fork-is-published"
+acceptance_criteria:
+  - "tools/surfaces/surfaces check exits 0 on the tree and 10 on a stale region or a dangling relative link"
+  - "surfaces.yml checks every push and pull request and, from master, deploys the site to GitHub Pages and pushes the wiki"
+  - "The site carries every published document, the .ai/ layer page with a derived Mermaid dependency graph, and ECharts views whose parameters live in the URL"
+  - "The pre-commit hook runs the check and majordomus doctor reports the enforcement entry wired"
+  - "The generator names no repository; each output declares itself as web-surface/v1 under target/web/<id>/"
+validation:
+  - "tools/surfaces/surfaces check"
+  - "tools/surfaces/surfaces site"
+  - "gh run list --repo korczis/OpenTTD --workflow surfaces.yml --branch master --limit 1"
+  - "majordomus doctor"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15

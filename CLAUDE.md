@@ -2,9 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Private fork — see AGENTS.md first
+## Personal research fork — see AGENTS.md first
 
-`korczis/OpenTTD` is a private academic research fork used as a validation target for the Prismatic platform, not staged for upstream contribution. The full ground rules, the four-kinds-of-change distinction, and the layered validation model (`tools/gate.sh`, `research/`) live in [AGENTS.md](./AGENTS.md) and apply to Claude Code exactly as to any other agent — read that first. This file only adds Claude-specific workflow notes and OpenTTD's own technical reference (build/run/test, architecture, code style) on top.
+`korczis/OpenTTD` is a personal academic research fork (public on GitHub) used as a validation target for the Prismatic platform, not staged for upstream contribution. The full ground rules, the four-kinds-of-change distinction, and the layered validation model (`tools/gate.sh`, `research/`) live in [AGENTS.md](./AGENTS.md) and apply to Claude Code exactly as to any other agent — read that first. This file only adds Claude-specific workflow notes and OpenTTD's own technical reference (build/run/test, architecture, code style) on top.
 
 One concrete example of research-mode work living in this fork: [`src/prismatic_mcp/`](./src/prismatic_mcp/) is an embedded, research-only, compile-gated MCP server (default OFF, requires `OPTION_RESEARCH_INSTRUMENTATION=ON`) — see [`research/prismatic-mcp/README.md`](./research/prismatic-mcp/README.md) for what's actually implemented vs. staged before assuming either.
 
@@ -87,6 +87,8 @@ This runs both the C++ unit tests (`src/tests/`, Catch2-based, see `src/tests/CM
 
 For this fork's own layered validation (smoke/change/full — see [AGENTS.md](./AGENTS.md)), use `tools/gate.sh` instead of calling cmake/ctest by hand; it wraps exactly these commands with the right tier of cost for the situation.
 
+Documentation is published from the repository, never by hand: after editing Markdown or an `.ai/` record, run `tools/surfaces/surfaces sync` (regenerates the tables between `surfaces:begin`/`surfaces:end` markers) and `tools/surfaces/surfaces check` (the pre-commit hook runs it too). See [`tools/surfaces/README.md`](./tools/surfaces/README.md).
+
 There is no separate lint step beyond compiler warnings (build is warning-heavy: `-Wall -Wextra -Wcast-qual -Wundef ...`) and the coding-style/commit-message checks enforced by CI and the git hooks described below.
 
 ## Commit messages (enforced by CI)
@@ -160,7 +162,7 @@ Game objects (`Vehicle`, `Station`, `Town`, `Company`, `Order`, ...) live in slo
 - **AI-generated contributions are explicitly against project policy.** From `CONTRIBUTING.md`: issues/PRs that are LLM-generated will be closed, and repeat submitters may be blocked. A human must understand and be able to explain every line of a PR; AI may only be used to proofread text, not to write it. Keep this in mind if this repository's own contribution workflow is ever the subject of a task (vs. using Claude Code as a personal/local dev tool, which is a separate matter from what gets *submitted upstream*).
 - **Docs entry points**: `docs/savegame_format.md`, `docs/linkgraph.md`, `docs/game_coordinator.md`, `docs/admin_network.md`, `docs/logging_and_performance_metrics.md`, `docs/eints.md` (translation workflow — don't hand-edit language files, they're synced from the translator tool).
 
-<!-- majordomus:begin 63d5f7830571 f2d9a1017395dba3 -->
+<!-- majordomus:begin 44d502ffa9f8 f2d9a1017395dba3 -->
 # CLAUDE.md
 
 Claude Code bootstrap. The repository's provider-neutral AI context lives under

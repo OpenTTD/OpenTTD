@@ -31,8 +31,11 @@ Usage: $SELF <smoke|change|research|full> [options]
             diff hygiene, and a summary of untracked/modified files to
             review for accidental generated output, plus a check that the
             generated Prismatic MCP contributor docs are not stale
-            (tools/check-prismatic-docs.sh). Names the research tier when
-            the change touches research-gated code.
+            (tools/check-prismatic-docs.sh), and that every published surface
+            agrees with the repository: Markdown regions current, every
+            relative link and anchor resolving (tools/surfaces/surfaces check).
+            Names the research tier when the change touches research-gated
+            code.
 
   research  The change tier for research-gated code, which a default
             build never compiles. Configures $RESEARCH_BUILD_DIR/ with
@@ -209,6 +212,8 @@ cmd_change() {
 
   echo "==> tools/check-prismatic-docs.sh"
   tools/check-prismatic-docs.sh
+  echo "==> tools/surfaces/surfaces check"
+  tools/surfaces/surfaces check
 
   if [[ ! -f build/CMakeCache.txt ]]; then
     echo "==> cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo (initial configure)"

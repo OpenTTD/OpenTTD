@@ -4,7 +4,7 @@ Vendor-neutral instructions for any coding agent (Claude Code, or any other AI c
 
 ## What this repository actually is
 
-`korczis/OpenTTD` is **not** the official OpenTTD project and is **not** staged for upstream contribution. It is korczis's private academic research fork: a real, complex, long-lived C++ codebase used as a **test/validation target for the Prismatic platform** — a testbed for evaluating coding-agent workflows, gating design, change/refactor quality, and reproducibility of agent-driven engineering. The goal of work here is never "prepare an OpenTTD pull request."
+`korczis/OpenTTD` is **not** the official OpenTTD project and is **not** staged for upstream contribution. It is korczis's personal academic research fork, public on GitHub: a real, complex, long-lived C++ codebase used as a **test/validation target for the Prismatic platform** — a testbed for evaluating coding-agent workflows, gating design, change/refactor quality, and reproducibility of agent-driven engineering. The goal of work here is never "prepare an OpenTTD pull request."
 
 Two things live in this repository, and they play different roles:
 
@@ -21,12 +21,13 @@ Upstream's own contribution process — `CONTRIBUTING.md`, the PR template, the 
 - **Prefer minimal, scoped changes over broad refactors.** This is a research substrate, not a product to polish.
 - **Distinguish four kinds of change**, and be explicit about which one you're making:
   1. **Product change** — edits to OpenTTD's own game code/docs, under upstream's own conventions (`src/`, `docs/`, etc.).
-  2. **Experimental infrastructure change** — this fork's own validation tooling (`tools/gate.sh`, `research/`).
+  2. **Experimental infrastructure change** — this fork's own validation and publication tooling (`tools/gate.sh`, `tools/surfaces/`, `research/`).
   3. **Agentic tooling change** — the locally-excluded `.claude/`/`.aiad/` (see below).
   4. **Documentation change** — `README.md`, `AGENTS.md`, `CLAUDE.md`, or similar.
 - **Experimental changes are allowed**, provided they are explicitly scoped, their effect is measurable, they're reversible, and they're validated by the matching gate below — not shipped on vibes.
 - **Never report untested work as passing.** If a gate wasn't run, say "NOT RUN," not "should be fine." If a result is ambiguous, treat it as not-passing rather than rounding up — fail closed, not open.
 - **Never invent your own bypass for a failing gate.** No silent `--no-verify`, no "I'll fix it in a follow-up commit" (a failed gate means nothing was committed — there's nothing to patch after the fact), no quietly narrowing scope just to dodge a failure. If a gate can't be satisfied, say so plainly and let the human decide; only add an explicit override at the human's own request, with their stated reason attached.
+- **Never hand-edit a published surface.** The site, the wiki and every table between `surfaces:begin`/`surfaces:end` markers are generated from the repository (`tools/surfaces/README.md`, rule `project.published-surfaces-are-derived`). Edit the source document or record, run `tools/surfaces/surfaces sync`, and keep `tools/surfaces/surfaces check` passing — the pre-commit hook and `tools/gate.sh change` run it.
 - **State which validation layers actually ran**, with the exact commands and their exit status, whenever reporting a change as done — see the taxonomy in `research/README.md`.
 - **Don't blindly follow upstream's contribution workflow** (commit-message grammar, PR templates, "ask before large changes" discussion norms) unless it's actually relevant to a technical verification you're doing — it is not this fork's local process.
 
@@ -46,7 +47,7 @@ Run `tools/gate.sh --help` for the exact commands each tier runs, and see `resea
 
 ## Research-mode access to internals
 
-This is a private academic research fork (see "What this repository actually is" above), not a project bound by upstream's public-API-purity or backward-compatibility goals as a *local* process rule. Controlled access to internal implementation details, non-public APIs, debug configurations, and research-only instrumentation is an explicitly allowed, expected part of working here — an agent does not need to ask for separate permission to use it beyond whatever scope the current task already has.
+This is a personal academic research fork (see "What this repository actually is" above), not a project bound by upstream's public-API-purity or backward-compatibility goals as a *local* process rule. Controlled access to internal implementation details, non-public APIs, debug configurations, and research-only instrumentation is an explicitly allowed, expected part of working here — an agent does not need to ask for separate permission to use it beyond whatever scope the current task already has.
 
 **"Internal exposure" in this repository means controlled observability and access for authorized local research tooling and agents.** It does not mean unauthenticated public exposure, secret disclosure, or weakening systems outside the experiment boundary — see Containment below.
 
@@ -105,9 +106,10 @@ These directories hold personal Claude Code tooling (commands, agents, skills, h
 - [CLAUDE.md](./CLAUDE.md) — Claude-specific workflow notes, plus OpenTTD's build/test/run commands, architecture, and code style (all still real technical reference).
 - [README.md](./README.md) — short public-facing explanation of what this repository is.
 - [research/README.md](./research/README.md) — the gating model and experiment-report taxonomy in full.
+- [tools/surfaces/README.md](./tools/surfaces/README.md) — the published surfaces (site, wiki, generated Markdown tables): why they are derived, how to regenerate them, and the check that enforces it.
 - [research/prismatic-mcp/README.md](./research/prismatic-mcp/README.md) — the embedded, research-only, compile-gated MCP server: what's actually implemented vs. staged, build/run/connect, and the phase-ordered research trail. Read this fork's own ground rules above first; nothing here overrides them.
 
-<!-- majordomus:begin 63d5f7830571 294efe4fb028e737 -->
+<!-- majordomus:begin 44d502ffa9f8 294efe4fb028e737 -->
 # AGENTS.md
 
 This file is a bootstrap, not the rulebook. Read `README.md` for what this

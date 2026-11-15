@@ -17,3 +17,8 @@ docs/source/*
 /tools/research/mcp-panel/node_modules/
 /tools/research/mcp-rhai/target/
 /tools/research/mcp-panel/__pycache__/
+
+# Published surfaces (tools/surfaces): generated output, the Python environment, the asset tree
+/target/
+/tools/surfaces/.venv/
+/tools/surfaces/node_modules/

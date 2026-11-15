@@ -1,0 +1,124 @@
+name: Surfaces
+
+# Fork-owned workflow, not part of upstream's CI. Proves that every published surface agrees
+# with the repository (Markdown regions current, every relative link and anchor resolving),
+# then, from the default branch only, publishes the site to GitHub Pages and the same
+# documents to the wiki. Nothing it publishes is hand-written: tools/surfaces/README.md.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: surfaces-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  SURFACES_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+  PUBLISH: ${{ github.event_name != 'pull_request' && github.ref_name == github.event.repository.default_branch }}
+
+jobs:
+  check:
+    name: Check and build
+    runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ env.PUBLISH }}
+    steps:
+      - name: Checkout (full history, no blobs: the charts read the commit log)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: tools/surfaces/package-lock.json
+
+      - name: Check regions, links and anchors
+        run: tools/surfaces/surfaces check
+
+      - name: Build the site
+        run: tools/surfaces/surfaces site
+
+      - name: Build the wiki
+        run: tools/surfaces/surfaces wiki
+
+      - name: Upload the site
+        if: env.PUBLISH == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: target/web/site
+
+      - name: Upload the wiki
+        if: env.PUBLISH == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: wiki
+          path: target/web/wiki
+          retention-days: 1
+
+  pages:
+    name: Publish the site
+    needs: check
+    if: needs.check.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  wiki:
+    name: Publish the wiki
+    needs: check
+    if: needs.check.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: wiki
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: wiki
+          path: wiki
+
+      - name: Push the pages to the wiki repository
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          url="https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git"
+          if ! git clone --quiet --depth 1 "$url" wiki-repo; then
+            echo "::error::${GITHUB_REPOSITORY} has no wiki repository yet. GitHub creates it with the first page: open ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/wiki, save any page once, then re-run this workflow."
+            exit 1
+          fi
+          rsync -a --delete --exclude .git --exclude surface.json wiki/ wiki-repo/
+          cd wiki-repo
+          git add -A
+          if git diff --cached --quiet; then
+            echo "The wiki is current at ${GITHUB_SHA}."
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit --quiet -m "Sync from ${GITHUB_REPOSITORY}@${GITHUB_SHA}"
+          git push --quiet
+          echo "The wiki now matches ${GITHUB_SHA}."

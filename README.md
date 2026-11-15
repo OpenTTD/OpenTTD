@@ -4,8 +4,9 @@
 Agents plan, change and validate work against conventions they cannot fake: deterministic
 lockstep multiplayer, savegames that must load forever, and a warning-heavy build.
 
-> **Private fork.** `korczis/OpenTTD` is not the official [OpenTTD](https://github.com/OpenTTD/OpenTTD)
-> project and sends nothing upstream. The original upstream README is preserved from
+> **Personal research fork.** `korczis/OpenTTD` is public on GitHub so its documentation can be
+> published, but it is not the official [OpenTTD](https://github.com/OpenTTD/OpenTTD) project and
+> sends nothing upstream. The original upstream README is preserved from
 > [1.0) About](#10-about) onward; license and credits are unchanged.
 
 | | |
@@ -15,6 +16,7 @@ lockstep multiplayer, savegames that must load forever, and a warning-heavy buil
 | **Research CLI** | [`tools/research/research`](./tools/research/research) — profiles, manifest, evidence bundle ([`research/tooling.md`](./research/tooling.md)) |
 | **Embedded MCP server** | [`src/prismatic_mcp/`](./src/prismatic_mcp/) — loopback, compile-gated, default OFF ([`research/prismatic-mcp/`](./research/prismatic-mcp/README.md)) |
 | **Drive a game from outside** | control window, `~` developer console and Rhai scripting ([`research/mcp-control.md`](./research/mcp-control.md)) |
+| **Published surfaces** | site, wiki and Markdown index tables derived from this repository — see [0.4.2](#042-published-surfaces) |
 | **Status taxonomy** | `PASS` · `FAIL` · `PARTIAL` · `NOT RUN` · `NOT APPLICABLE` — never rounded up ([`research/README.md`](./research/README.md)) |
 
 ### Quick start
@@ -27,6 +29,11 @@ tools/gate.sh change
 # headless server + MCP + PrismaticAI + control window (127.0.0.1:8800) + spectator GUI client
 tools/gate.sh research
 tools/research/mcp-e2e
+
+# The published surfaces: check them, regenerate the Markdown tables, build the site locally
+tools/surfaces/surfaces check
+tools/surfaces/surfaces sync
+tools/surfaces/surfaces site      # -> target/web/site
 ```
 
 Prerequisites: a C++20 toolchain (on macOS with an older CLT, Homebrew LLVM — see
@@ -42,6 +49,7 @@ Everything research-only binds to loopback and is labelled `RESEARCH-ONLY`.
     - 0.3) [What this fork is not](#03-what-this-fork-is-not)
     - 0.4) [What this fork adds on top of upstream OpenTTD](#04-what-this-fork-adds-on-top-of-upstream-openttd)
         - 0.4.1) [Getting started — Prismatic MCP for contributors](#041-getting-started--prismatic-mcp-for-contributors)
+        - 0.4.2) [Published surfaces](#042-published-surfaces)
     - 0.5) [Validation / gating model](#05-validation--gating-model)
     - 0.6) [Ground rules (short version)](#06-ground-rules-short-version)
     - 0.7) [Relationship to upstream OpenTTD](#07-relationship-to-upstream-openttd)
@@ -68,7 +76,7 @@ Everything research-only binds to loopback and is labelled `RESEARCH-ONLY`.
 
 ## 0.0) About this fork
 
-`korczis/OpenTTD` is a **private research fork**, not the official OpenTTD project and not staged for upstream contribution. It is owned by korczis and used as a real, complex, long-lived C++ codebase to validate the **Prismatic platform** — a research effort evaluating coding-agent workflows: how agents plan and scope changes, how gating and reproducibility hold up in practice, and how agent-driven engineering behaves against a substrate too large and too convention-heavy to fake.
+`korczis/OpenTTD` is a **personal research fork**, public on GitHub, not the official OpenTTD project and not staged for upstream contribution. It is owned by korczis and used as a real, complex, long-lived C++ codebase to validate the **Prismatic platform** — a research effort evaluating coding-agent workflows: how agents plan and scope changes, how gating and reproducibility hold up in practice, and how agent-driven engineering behaves against a substrate too large and too convention-heavy to fake.
 
 Sections 1.0 onward below are the **original upstream OpenTTD README**, kept intact for its technical value and attribution. This section only documents what's specific to this fork.
 
@@ -77,7 +85,7 @@ Sections 1.0 onward below are the **original upstream OpenTTD README**, kept int
 ```
 +-------------------------------+   studied, adapted    +--------------------------------+
 |  ~/dev/prismatic-platform     |  ------------------->  |  korczis/OpenTTD (this fork)   |
-|  (private, NEVER modified     |  generic principles    |  (private, this repository)    |
+|  (private, NEVER modified     |  generic principles    |  (public, this repository)     |
 |   from this repository)       |  only — no code,       |                                 |
 |                                |  no domain content     |  * C++20 game -- system under  |
 |  * Elixir/Phoenix umbrella    |                         |    test (src/, regression/)    |
@@ -198,7 +206,7 @@ Concrete examples of what actually crossed that pipeline while this fork's tooli
 | `mix compile` / `mix test` / `credo` / `dialyzer` as the actual per-tier check commands | B — needs adaptation | `cmake --build` / `ctest` (OpenTTD has no lint tool, so no lint step was invented to match) |
 | Git Worktree Operating System (`just wt-new` / `wt-claim` / `wt-doctor`, mandatory per-session isolated worktrees so concurrent agents never share a dirty root) | C — inspiration only | Not built here; this fork instead follows the lighter-weight "check `git status`, protect the existing dirty tree" rule already in `AGENTS.md`, which addresses the same underlying concern for a solo fork with no concurrent sessions |
 | A build-failing check that greps for and *forbids* rollback logic in database migrations | D — rejected, not transferable | Explicitly not echoed: OpenTTD's real rule points the opposite way — savegames must stay loadable forever (`src/saveload/`), so "forbid going backward" is the wrong instinct here |
-| GitLab server-side pre-receive hook enforcing an `AIAD-Gate` commit trailer, with a multi-approver override protocol | D — not transferable | Not applicable — a solo private fork has no server-side git hooks and no second approver |
+| GitLab server-side pre-receive hook enforcing an `AIAD-Gate` commit trailer, with a multi-approver override protocol | D — not transferable | Not applicable — a solo personal fork has no server-side git hooks and no second approver |
 
 This wasn't a one-time import. If this fork's gating model changes in the future, new principles would be expected to cross the same pipeline — read the specific source, classify it, adapt (or reject) it explicitly, write it once.
 
@@ -280,6 +288,7 @@ This is where the connection to the real world — connecting automated inferenc
 | [`tools/research/mcp-e2e`](./tools/research/mcp-e2e), [`mcp-panel/`](./tools/research/mcp-panel/), [`mcp-rhai/`](./tools/research/mcp-rhai/) | Drive a running game from outside: one-command end-to-end run, the loopback control window with its `~` developer console and HTTP API, and Rhai scripting against it — see [`research/mcp-control.md`](./research/mcp-control.md). |
 | [`tools/research/mcp-live-check`](./tools/research/mcp-live-check) | Scripted live check of the MCP server against a running build. |
 | [`tools/check-prismatic-docs.sh`](./tools/check-prismatic-docs.sh) | Freshness gate for the generated contributor docs (section 0.4.1). |
+| [`tools/surfaces/`](./tools/surfaces/README.md), [`surfaces.toml`](./surfaces.toml), [`.github/workflows/surfaces.yml`](./.github/workflows/surfaces.yml) | The published surfaces: site, wiki and Markdown regions derived from the repository, and the check that keeps them current (section 0.4.2). |
 | `.claude/`, `.aiad/` *(not committed)* | Personal Claude Code tooling imported from a sibling private project, kept strictly local via `.git/info/exclude`. |
 
 Laid out as a tree, to make the upstream/fork boundary explicit:
@@ -298,6 +307,7 @@ korczis/OpenTTD/
 ├── tools/
 │   ├── gate.sh            * fork-added: smoke / change / full validation entry point
 │   ├── check-prismatic-docs.sh  * fork-added: generated-docs freshness gate
+│   ├── surfaces/          * fork-added: site / wiki / Markdown-region generator and its check (0.4.2)
 │   └── research/          * fork-added: research-mode CLI (doctor/init/configure/build/run/validate/report/clean),
 │                            mcp-e2e / mcp-panel / mcp-rhai / mcp-live-check (driving a game over MCP)
 │
@@ -309,6 +319,8 @@ korczis/OpenTTD/
 │   └── prismatic-mcp/     * fork-added: embedded MCP server research trail (00-baseline.md .. 19-continuation-runbook.md)
 │
 ├── src/prismatic_mcp/       * fork-added: MCP server implementation, gated by OPTION_PRISMATIC_MCP_SERVER (default OFF)
+├── surfaces.toml            * fork-added: what the published surfaces publish (0.4.2)
+├── .github/workflows/surfaces.yml  * fork-added: check, then publish the site and the wiki
 │
 ├── .claude/                 (fork-added, LOCAL ONLY — .git/info/exclude, never committed, never pushed)
 └── .aiad/                   (fork-added, LOCAL ONLY — .git/info/exclude, never committed, never pushed)
@@ -373,6 +385,37 @@ Known limitations (also generated from the same source):
 - This catalog itself has no automated freshness check against the actual doc_index file list beyond what tools/check-prismatic-docs.sh diffs -- new docs must be added here by hand.
 <!-- END GENERATED: prismatic-mcp-getting-started -->
 
+#### 0.4.2) Published surfaces
+
+Everything this fork publishes is derived from what git tracks: its Markdown, its history
+and its `.ai/` layer. `tools/surfaces/surfaces` renders every document to a GitHub Pages
+site and to the GitHub wiki, and keeps the tables marked as generated in these documents
+current. `surfaces check` fails the commit, `tools/gate.sh change` and CI on a stale
+table or a link to nothing. The motivation and the design are in
+[`tools/surfaces/README.md`](./tools/surfaces/README.md) and ADR 0012.
+
+<!-- surfaces:begin surfaces -->
+| Surface | Where | What it carries |
+|---|---|---|
+| Site | [https://korczis.github.io/OpenTTD/](https://korczis.github.io/OpenTTD/) | every published document, the .ai/ layer, charts, search |
+| Wiki | [https://github.com/korczis/OpenTTD/wiki](https://github.com/korczis/OpenTTD/wiki) | the same documents as wiki pages |
+| Markdown regions | this repository | tables like this one, regenerated by `tools/surfaces/surfaces sync` |
+<!-- surfaces:end surfaces -->
+
+What the fork delivers, from its `.ai/` feature records:
+
+<!-- surfaces:begin ai-features -->
+| Feature | Status | What it gives |
+|---|---|---|
+| [Validation gate](.ai/repo/features/layered-validation-gate.md) | stable | One script checks a change at the cost its size needs, and a report can only say what actually ran. |
+| [Instrumentation](.ai/repo/features/research-instrumentation.md) | stable | Internal state becomes observable in research builds and provably absent from every other build. |
+| [Research CLI](.ai/repo/features/research-experiment-cli.md) | stable | An experiment records its own build profile, toolchain, commands and results, and its report is generated from that record. |
+| [Bridge](.ai/repo/features/prismatic-bridge.md) | draft | Prismatic decides, a standalone bridge relays over the admin network, and a normal Company AI acts in the game. |
+| [MCP server](.ai/repo/features/embedded-mcp-server.md) | draft | An agent reads live game state over MCP and changes it only with an operator's approval of the exact arguments, through the command system. |
+| [Surfaces](.ai/repo/features/published-surfaces.md) | stable | The site, the wiki and the Markdown index tables, all generated from what git tracks and the .ai/ layer, and checked on every commit. |
+| [AI layer](.ai/repo/features/supervised-ai-layer.md) | stable | Decisions, rules, plan, intents and knowledge live in tracked records that every agent and provider reads the same way. |
+<!-- surfaces:end ai-features -->
+
 ### 0.5) Validation / gating model
 
 Local validation is layered by cost, with one entry point (`tools/gate.sh`) for the build/test tiers:
@@ -414,7 +457,24 @@ This is measured, not estimated: the last real run of `tools/gate.sh change` aga
 
 ### 0.6) Ground rules (short version)
 
-The full rules live in [`AGENTS.md`](./AGENTS.md); in short:
+The full rules live in [`AGENTS.md`](./AGENTS.md) and, as the rules Majordomus resolves, under
+[`.ai/repo/rules/project/`](./.ai/repo/rules/project/). The project rules in force, generated
+from those files:
+
+<!-- surfaces:begin ai-rules origin=project -->
+| Rule | Class | Statement |
+|---|---|---|
+| [project.game-state-mutates-only-through-commands](.ai/repo/rules/project/game-state-mutates-only-through-commands.v1.md) | blocking | Change vehicles, companies, map tiles or any other persistent game state only through a registered command issued with Command<>::Post, never by writing a pool from a research hook, the MCP server or any other side channel. |
+| [project.never-report-unrun-validation-as-pass](.ai/repo/rules/project/never-report-unrun-validation-as-pass.v1.md) | blocking | Report every validation layer with the command that ran and its exit status, mark a layer that did not run as NOT RUN, and never round PARTIAL or ambiguous up to PASS. |
+| [project.no-commit-without-current-instruction](.ai/repo/rules/project/no-commit-without-current-instruction.v1.md) | blocking | Commit, push, rewrite history or force-push only on an explicit, current instruction from the owner that covers this change. |
+| [project.no-upstream-interaction](.ai/repo/rules/project/no-upstream-interaction.v1.md) | blocking | Never push to, open an issue against, or open a pull request against OpenTTD/OpenTTD; keep every commit, branch and experiment in korczis/OpenTTD, and keep the upstream remote fetch-only. |
+| [project.personal-tooling-stays-uncommitted](.ai/repo/rules/project/personal-tooling-stays-uncommitted.v1.md) | blocking | Never commit .claude/, .aiad/, .agents/ or .codex/; exclude them through .git/info/exclude, and write any principle worth keeping from them once into AGENTS.md or .ai/. |
+| [project.published-surfaces-are-derived](.ai/repo/rules/project/published-surfaces-are-derived.v1.md) | blocking | Publish documentation only through tools/surfaces, edit the source document and never a generated region, page or wiki entry, and keep tools/surfaces/surfaces check passing (no stale region, no relative link or anchor to nothing). |
+| [project.research-code-is-gated-and-labelled](.ai/repo/rules/project/research-code-is-gated-and-labelled.v1.md) | blocking | Put research-only code behind a default-OFF CMake option, label it RESEARCH-ONLY, UNSTABLE or DEBUG-ONLY where it is written, keep it to what the experiment needs, and keep default and release builds free of it. |
+| [project.savegame-fields-are-version-gated](.ai/repo/rules/project/savegame-fields-are-version-gated.v1.md) | blocking | Never remove, reorder or renumber an existing saved field or chunk; give an obsolete field a version-gated load-and-discard path and add a new field behind a SaveLoadVersion check. |
+<!-- surfaces:end ai-rules -->
+
+In short:
 
 - **No pushes, issues, or PRs to upstream OpenTTD, ever.** This fork's git history and this fork's GitHub repository are the only places any of this work is visible.
 - **No commit or push without an explicit, current instruction** — prior approval doesn't carry forward to later, different changes. Every commit in this repository's history was made in direct response to an explicit instruction in the session that produced it, not inferred from "you approved something like this before."
@@ -492,6 +552,7 @@ The imported local tooling defines a very large number of specialized, individua
 | World seeding from real elevation/GIS data | Headless `-g <heightmap-file>` start (corrected from an earlier `-G` typo — `-G` is the map-generation random seed flag, unrelated) | A heightmap file | Experimental / partially confirmed — the headless start path itself works; the data-prep pipeline (Phase 4) has not been built |
 | Repository-level retrieval (RAG) feeding an agent's context in this fork | n/a | n/a | Conceptual (0.9) — referenced in Prismatic's own tooling, not confirmed as used in sessions here |
 | Shared coordination state (Blackboard-style) across agent sessions in this fork | n/a | n/a | Conceptual (0.9) — same caveat |
+| Published surfaces | `tools/surfaces` derives a GitHub Pages site, the GitHub wiki and the generated Markdown tables from the tracked documents, git and `.ai/`; `surfaces check` blocks drift | `target/web/{site,wiki,markdown}/` with `web-surface/v1` declarations; Pages and wiki deployments from `.github/workflows/surfaces.yml` | Implemented (0.4.2, ADR 0012) |
 | Human oversight / approval | Every commit, push, override, and large design change requires an explicit, current instruction (0.6) | This repository's own commit history; design docs such as `research/prismatic-bridge/ARCHITECTURE.md`, which is itself gated phase-by-phase on human approval | Implemented |
 
 ### 0.11) Experiment lifecycle, outputs, and evidence policy

@@ -201,6 +201,12 @@ enforcement:
     path: majordomus
     args: [finish, --check]
     wired_by: git-hook:pre-push
+  # The published surfaces gate (rule project.published-surfaces-are-derived, ADR 0012): a
+  # stale Markdown region or a relative link or anchor to nothing fails the commit.
+  - name: surfaces-on-commit
+    path: tools/surfaces/surfaces
+    args: [check]
+    wired_by: git-hook:pre-commit
 
 # mode: file (the default) generates the whole target; mode: region generates only the
 # text between the <!-- majordomus:begin --> and <!-- majordomus:end --> markers and

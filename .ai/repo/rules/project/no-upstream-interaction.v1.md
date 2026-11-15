@@ -3,7 +3,7 @@ id: project.no-upstream-interaction
 version: 1
 kind: rule
 title: Nothing from this fork reaches upstream OpenTTD
-description: korczis/OpenTTD is a private research fork; upstream's contribution policy closes LLM-generated work, and the research goal never needs a contribution. A push, issue or pull request against OpenTTD/OpenTTD is out of bounds, and the upstream remote is fetch-only.
+description: korczis/OpenTTD is a personal research fork, public on GitHub; upstream's contribution policy closes LLM-generated work, and the research goal never needs a contribution. A push, issue or pull request against OpenTTD/OpenTTD is out of bounds, and the upstream remote is fetch-only.
 statement: Never push to, open an issue against, or open a pull request against OpenTTD/OpenTTD; keep every commit, branch and experiment in korczis/OpenTTD, and keep the upstream remote fetch-only.
 status: active
 class: blocking

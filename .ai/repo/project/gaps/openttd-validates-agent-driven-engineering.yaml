@@ -16,8 +16,8 @@ observations:
   statement: "majordomus doctor reports 0 failures with the hooks wired; the doctor run exceeds its 20 s budget"
   source: file:.ai/repo/policy.yaml
 - id: pages-off
-  statement: "GitHub Pages is not enabled for korczis/OpenTTD, so the site workflow has nowhere to deploy"
-  source: file:.github/workflows/gh-pages.yml
+  statement: "GitHub Pages was not enabled for korczis/OpenTTD when this was observed; on 2026-11-15 it was enabled with GitHub Actions as its source, and .github/workflows/surfaces.yml replaced gh-pages.yml (ADR 0012)"
+  source: file:.github/workflows/surfaces.yml
 - id: readme-section-0
   statement: "README.md section 0.0 states purpose, goals, non-goals, the Prismatic relationship and the upstream-versus-fork tree"
   source: file:README.md

@@ -48,7 +48,7 @@ in:
   - research/**
   - tools/**
   - regression/**
-  - zola/**
+  - surfaces.toml
   - .github/workflows/**
 
 out:
