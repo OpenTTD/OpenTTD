@@ -11,6 +11,7 @@
 
 #include "saveload.h"
 #include "saveload_error.hpp"
+#include "saveload_internal.h"
 #include "compat/vehicle_sl_compat.h"
 
 #include "../debug.h"
@@ -291,11 +292,7 @@ void AfterLoadVehiclesPhase1(bool part_of_load)
 						 * allowed in these savegames matches the number of OrderLists. As
 						 * such each vehicle can get an OrderList and it will (still) fit. */
 						assert(OrderList::CanAllocateItem());
-						std::vector<Order> orders;
-						for (const OldOrderSaveLoadItem *old_order = GetOldOrder(v->old_orders); old_order != nullptr; old_order = GetOldOrder(old_order->next)) {
-							orders.push_back(std::move(old_order->order));
-						}
-						v->orders = mapping[v->old_orders] = OrderList::Create(std::move(orders), v);
+						v->orders = mapping[v->old_orders] = OrderList::Create(_old_order_saveload_pool.TransformToVector(v->old_orders), v);
 					} else {
 						v->orders = mapping[v->old_orders];
 						/* For old games (case a) we must create the shared vehicle chain */

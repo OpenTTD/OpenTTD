@@ -363,16 +363,6 @@ public:
 	void ConvertFromOldSavegame();
 };
 
-/** Compatibility struct to allow saveload of pool-based orders. */
-struct OldOrderSaveLoadItem {
-	uint32_t index = 0; ///< This order's index (1-based).
-	uint32_t next = 0; ///< The next order index (1-based).
-	Order order{}; ///< The order data.
-};
-
-OldOrderSaveLoadItem *GetOldOrder(size_t pool_index);
-OldOrderSaveLoadItem &AllocateOldOrder(size_t pool_index);
-
 void InsertOrder(Vehicle *v, Order &&new_o, VehicleOrderID sel_ord);
 void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord);
 

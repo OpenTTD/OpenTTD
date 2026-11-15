@@ -656,13 +656,13 @@ static bool LoadOldOrder(LoadgameState &ls, int num)
 {
 	if (!LoadChunk(ls, nullptr, order_chunk)) return false;
 
-	OldOrderSaveLoadItem &o = AllocateOldOrder(num);
-	o.order.AssignOrder(UnpackOldOrder(_old_order));
+	auto &o = _old_order_saveload_pool.Allocate(num);
+	o.value.AssignOrder(UnpackOldOrder(_old_order));
 
-	if (!o.order.IsType(OT_NOTHING) && num > 0) {
+	if (!o.value.IsType(OT_NOTHING) && num > 0) {
 		/* Relink the orders to each other (in the orders for one vehicle are behind each other,
 		 * with an invalid order (OT_NOTHING) as indication that it is the last order */
-		OldOrderSaveLoadItem *prev = GetOldOrder(num + 1 - 1);
+		auto *prev = _old_order_saveload_pool.Get(num + 1 - 1);
 		if (prev != nullptr) prev->next = num + 1; // next is 1-based.
 	}
 

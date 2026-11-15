@@ -2961,14 +2961,12 @@ static void ResetSettings()
 	}
 }
 
-extern void ClearOldOrders();
-
 /**
  * Clear temporary data that is passed between various saveload phases.
  */
 static void ResetSaveloadData()
 {
-	ClearOldOrders();
+	_old_order_saveload_pool.Clear();
 	ResetTempEngineData();
 	ClearRailTypeLabelList();
 	ClearRoadTypeLabelList();

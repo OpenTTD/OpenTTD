@@ -73,7 +73,6 @@
 #include "../safeguards.h"
 
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());
-extern void ClearOldOrders();
 
 /**
  * Makes a tile canal or water depending on the surroundings.
@@ -821,7 +820,7 @@ bool AfterLoadGame()
 	AfterLoadVehiclesPhase1(true);
 
 	/* Old orders are no longer needed. */
-	ClearOldOrders();
+	_old_order_saveload_pool.Clear();
 
 	/* make sure there is a town in the game */
 	if (_game_mode == GameMode::Normal && Town::GetNumItems() == 0) {
