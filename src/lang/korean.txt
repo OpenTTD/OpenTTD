@@ -1952,20 +1952,26 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :새로운 회�
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :산업시설 건설: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :새로운 산업시설이 건설되면 메시지로 알려줍니다
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :내 회사가 이용 중인 산업시설의 폐쇄: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :내 회사가 이용하는 산업시설이 폐쇄하면 메시지로 알려줍니다
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :경쟁사가 이용 중인 산업시설의 폐쇄: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :경쟁사가 이용하는 산업시설이 폐쇄하면 메시지로 알려줍니다
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :아무도 이용하지 않는 산업시설의 폐쇄: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :아무도 이용하지 않는 산업시설이 폐쇄하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :경제 변화: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :경제에 거시적인 변화가 생기면 뉴스 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :내 회사에 의한 산업시설의 생산량 변동: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :내 회사가 수송하는 산업시설의 생산량이 변하면 메시지로 알려줍니다
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :내 회사가 이용하는 산업시설의 생산량이 변하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :경쟁사에 의한 산업시설의 생산량 변동: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :경쟁사가 수송하고 있는 산업시설의 생산량이 변하면 메시지로 알려줍니다
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :경쟁사가 이용하고 있는 산업시설의 생산량이 변하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :기타 산업시설의 생산량 변동: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :아무도 수송하지 않는 산업시설의 생산량이 변하면 메시지로 알려줍니다
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :아무도 이용하지 않는 산업시설의 생산량이 변하면 메시지로 알려줍니다
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :내 회사의 차량에 관한 권고 / 정보: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :주의를 기울여야하는 차량을 메시지로 알려줍니다
