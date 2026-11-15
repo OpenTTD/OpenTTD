@@ -117,12 +117,18 @@ and `ttd::wait_event(kind, seconds)`.
   (OpenTTD reads it from `$HOME`), whose `scripts/autoexec.scr` runs
   `prismatic_mcp start <free port> <token file>`; the token file is mode 0600,
   `{"agent_token", "endpoint"}`.
-- `rhai/director.rhai` moves that client's camera over its MCP (`openttd.view.scroll_to`, `zoom`)
-  to every route the bot builds or fails to build, the town derived from the bot's log line and
-  located through the client's `openttd://towns`. `mcp-e2e` starts it with the narrator.
+- `rhai/director.rhai` moves that client like a person would, over its MCP: the camera glides to
+  where the bot works along a minimum-jerk path (10t^3 - 15t^4 + 6t^5) with a small deviation that
+  peaks mid-way, faster in the middle and slower at both ends; it zooms in at the site, points the
+  cursor (`openttd.view.mark`, the marked tile) at every tile the bot surveys or builds, and
+  follows each bus the bot starts for a moment. Targets are derived from the bot's log lines
+  (`... at tile N`) and the client's `openttd://towns`. `mcp-e2e` starts it with the narrator.
+- `PrismaticAI` logs the tile of every build step and waits 20 ticks between steps, so each one is
+  seen as it happens.
 - View tools, GUI processes only, no approval (they change only the local viewport):
   `openttd.view.scroll_to {tile | x,y | town | vehicle, instant}`, `openttd.view.follow {vehicle | null}`,
-  `openttd.view.zoom {level}`, `openttd.view.state`. Resource `openttd://towns`.
+  `openttd.view.zoom {level}`, `openttd.view.mark {tile | x,y | town | vehicle | clear}` (the bot's
+  cursor), `openttd.view.state`. Resource `openttd://towns`.
 - Rhai reaches any OpenTTD process's own MCP server: `mcp_call(token_file, tool, args)`,
   `mcp_read(token_file, uri)`.
 

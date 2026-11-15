@@ -97,6 +97,10 @@ json Tools()
 	arr.push_back({{"name", "openttd.view.zoom"},
 		{"description", "GUI only, no approval: set the main viewport's zoom level within the client's zoom limits"},
 		{"inputSchema", {{"type", "object"}, {"properties", {{"level", {{"type", "integer"}}}}}, {"required", json::array({"level"})}}}});
+	arr.push_back({{"name", "openttd.view.mark"},
+		{"description", "GUI only, no approval: the bot's cursor, a marked tile (the red tile square) at a tile, x/y, a town or a vehicle; clear removes it"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}},
+			{"town", {{"type", "integer"}}}, {"vehicle", {{"type", "integer"}}}, {"clear", {{"type", "boolean"}}}}}}}});
 	arr.push_back({{"name", "openttd.view.state"},
 		{"description", "GUI only: the main viewport's zoom, zoom limits and followed vehicle"},
 		{"inputSchema", obj}});
@@ -120,6 +124,22 @@ std::optional<json> Call(const std::string &name, const json &args)
 		ScrollMainWindowToTile(*tile, args.value("instant", false));
 		json out = State(w);
 		out["tile"] = tile->base();
+		out["x"] = TileX(*tile);
+		out["y"] = TileY(*tile);
+		return out;
+	}
+
+	if (name == "openttd.view.mark") {
+		if (args.value("clear", false)) {
+			SetRedErrorSquare(INVALID_TILE);
+			return State(w);
+		}
+		std::string error;
+		auto tile = Target(args, error);
+		if (!tile.has_value()) return Error(error);
+		SetRedErrorSquare(*tile);
+		json out = State(w);
+		out["marked"] = tile->base();
 		out["x"] = TileX(*tile);
 		out["y"] = TileY(*tile);
 		return out;

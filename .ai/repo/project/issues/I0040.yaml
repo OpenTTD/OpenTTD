@@ -1,0 +1,45 @@
+id: I0040
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Play like a person on screen: human camera motion, the bot's cursor on the tile it works on, every build step seen"
+slug: human-like-presentation
+priority: p0
+profile: implementation
+parallel_safe: false
+objective: "Make the owner's game window look like a person playing: the camera glides and zooms to where the bot works, a cursor marks the tile, and each build step is visible."
+why: "The owner wants to see the bot play as a human would when they grab the camera: moving view, cursor, tile selection, roads being built."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_view.cpp"
+  - "tools/research/mcp-panel/rhai/director.rhai"
+  - "research/mcp-control.md"
+non_scope:
+  - "Moving the owner's OS mouse pointer: it would take the mouse away from the owner"
+  - "Building roads between towns: the bot builds stops, depots and buses on existing town roads; road building is a strategy change (I0041 and the bot's next strategy)"
+depends_on:
+  - I0038
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#a-bot-plays-for-the-owner"
+acceptance_criteria:
+  - "openttd.view.mark marks a tile (or clears it) in a GUI process and answers an error in a dedicated server"
+  - "The director glides on a minimum-jerk path, zooms in at the site, marks every surveyed and built tile, and follows each started bus"
+  - "PrismaticAI logs the tile of every build step and paces the steps"
+  - "tools/gate.sh research and mcp-panel-check pass"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-panel-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-15
+updated_at: 2026-11-15T22:10:15Z
+started_at: 2026-11-15T22:09:45Z
+started_event: sha256:02314c20fdc8472e48cc9d12fbe3293154884e59a88e15681a84d445bbf1b932
+verified_at: 2026-11-15T22:10:12Z
+verified_event: sha256:23c48f14135fe3ede64713eeefe406dc3fe81b90ac43d343576ef6a0020d67cc
+completed_at: 2026-11-15T22:10:15Z
+completed_event: sha256:8b8c540da630fa42c9af2c3de588f4535fa9a28edb85f18d438ab909fffb4a34
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-panel-check; mcp-e2e with rhai/director.rhai"
+    result: "gate research PASS (ctest 103/103, [prismatic_mcp] 25 assertions); mcp-panel-check 11/11; live on :8800: the director glided to Kenford, then Tronfingbridge, marked with the cursor every surveyed and built tile (stop A 50240, stop B 52039, depot 50242), zoomed in on each build and followed buses 7-10 as the bot started them; PrismaticAI (bridge branch feat/live-behaviour, 2205364) logs each step's tile and paces 20 ticks between steps"
+    commit: 0cd5925bd2bc229e991f75c4cc876c250bdbc882
+    recorded_at: 2026-11-15T22:10:14Z
