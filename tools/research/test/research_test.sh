@@ -116,6 +116,32 @@ out=$(cd "$TEST_ROOT_DIR" && source tools/research/lib/manifest.sh && is_valid_s
 assert_eq "'NOT RUN' is a valid status" "0" "$out"
 out=$(cd "$TEST_ROOT_DIR" && source tools/research/lib/manifest.sh && is_valid_status "SORT-OF"; echo $?)
 assert_eq "'SORT-OF' is not a valid status" "1" "$out"
+out=$(cd "$TEST_ROOT_DIR" && source tools/research/lib/manifest.sh && is_valid_status "INCONCLUSIVE"; echo $?)
+assert_eq "'INCONCLUSIVE' is not a valid status (five-state taxonomy)" "1" "$out"
+
+# --- manifest schema validation (I0024) ---
+if command -v python3 >/dev/null 2>&1; then
+  VALIDATOR="$TEST_ROOT_DIR/tools/research/lib/validate_manifest.py"
+  SCHEMA="$TEST_ROOT_DIR/tools/research/schema/experiment-manifest.schema.json"
+  python3 -I "$VALIDATOR" "$SCHEMA" "$manifest" >/dev/null 2>&1
+  assert_true "a fresh init manifest satisfies its schema" "$?"
+
+  python3 -c "import json,sys; d=json.load(open(sys.argv[1])); d['status']='INCONCLUSIVE'; json.dump(d,open(sys.argv[2],'w'))" "$manifest" "$WORKDIR/bad-status.json"
+  out=$(python3 -I "$VALIDATOR" "$SCHEMA" "$WORKDIR/bad-status.json" 2>&1); rc=$?
+  assert_eq "a manifest with a non-taxonomy status is rejected" "1" "$rc"
+  assert_contains "the rejection names the field" "$out" "status"
+
+  python3 -c "import json,sys; d=json.load(open(sys.argv[1])); del d['experiment_id']; json.dump(d,open(sys.argv[2],'w'))" "$manifest" "$WORKDIR/missing-id.json"
+  python3 -I "$VALIDATOR" "$SCHEMA" "$WORKDIR/missing-id.json" >/dev/null 2>&1
+  assert_eq "a manifest missing a required field is rejected" "1" "$?"
+
+  printf '{"type":"object","patternProperties":{"x":{}}}' > "$WORKDIR/unknown-keyword.schema.json"
+  # Force the fallback even where the jsonschema package is installed.
+  out=$(python3 -I -c 'import runpy, sys; sys.modules["jsonschema"] = None; p = sys.argv[1]; sys.argv = [p] + sys.argv[2:]; runpy.run_path(p, run_name="__main__")' \
+    "$VALIDATOR" "$WORKDIR/unknown-keyword.schema.json" "$manifest" 2>&1); rc=$?
+  assert_eq "the fallback validator fails closed on a keyword it does not implement" "1" "$rc"
+  assert_contains "the fail-closed message names the keyword" "$out" "patternProperties"
+fi
 
 # --- profile discovery ---
 out=$("$RESEARCH" doctor 2>&1)

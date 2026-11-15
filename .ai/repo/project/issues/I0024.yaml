@@ -24,4 +24,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-15T19:44:44Z
+started_at: 2026-11-15T19:41:48Z
+started_event: sha256:053a1e0da8ad8c1dfcb9a7c4ee69eb27df5e3a3248482a6773657d54b251e4c4
+verified_at: 2026-11-15T19:44:37Z
+verified_event: sha256:93c4dc5cf24d554e0687404dd185cfdfd80f27b0c757e0b5ea66398044f461f8
+completed_at: 2026-11-15T19:44:44Z
+completed_event: sha256:a54bec7508de0610d058be7115bac4d1dc9760dd4a1555f47c115d5f8c31aa10
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "bash tools/research/test/research_test.sh; tools/research/research validate --experiment-id rebase-verify-2026-11-15b --gate research"
+    result: "research_test.sh 35 passed, 0 failed (7 new: INCONCLUSIVE rejected as a status; a fresh init manifest satisfies the schema; a non-taxonomy status and a missing required field are rejected with the field named; the fallback validator fails closed on an unimplemented keyword); the research gate invokes validate_manifest.py (traced with bash -x) and passes on rebase-verify-2026-11-15b; all three existing manifests on disk satisfy the schema; INCONCLUSIVE removed from VALID_STATUSES, both schema enums and research/tooling.md"
+    commit: 34cf4939acea61e34adbbe594c0e00d58e3b7e6d
+    recorded_at: 2026-11-15T19:44:39Z

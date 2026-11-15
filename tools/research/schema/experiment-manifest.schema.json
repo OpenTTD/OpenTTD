@@ -134,7 +134,7 @@
         "properties": {
           "gate": { "type": "string", "enum": ["smoke", "change", "full", "research"] },
           "command": { "type": "string" },
-          "status": { "type": "string", "enum": ["PASS", "FAIL", "PARTIAL", "NOT RUN", "NOT APPLICABLE", "INCONCLUSIVE"] },
+          "status": { "type": "string", "enum": ["PASS", "FAIL", "PARTIAL", "NOT RUN", "NOT APPLICABLE"] },
           "exit_code": { "type": ["integer", "null"] },
           "scope": { "type": "string" },
           "reason": { "type": "string" }
@@ -160,7 +160,7 @@
     "limitations": { "type": "array", "items": { "type": "string" } },
     "status": {
       "type": "string",
-      "enum": ["PASS", "FAIL", "PARTIAL", "NOT RUN", "NOT APPLICABLE", "INCONCLUSIVE"]
+      "enum": ["PASS", "FAIL", "PARTIAL", "NOT RUN", "NOT APPLICABLE"]
     }
   }
 }

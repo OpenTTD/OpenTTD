@@ -38,10 +38,11 @@ One entry point, three build/test tiers of increasing cost, plus a reporting lay
 |---|---|---|---|
 | Smoke | `tools/gate.sh smoke` | cheapest | fast feedback while actively iterating |
 | Change | `tools/gate.sh change` | standard | before calling a task done |
+| Research | `tools/gate.sh research` | standard+ | a change to code behind `OPTION_RESEARCH_INSTRUMENTATION` (or the MCP server option), which the other tiers never compile |
 | Full | `tools/gate.sh full` | expensive | significant changes, or an experimental baseline |
 | Research/evaluation | `research/experiment-template.md` | n/a | records what was actually done and validated for an experiment |
 
-Run `tools/gate.sh --help` for the exact commands each tier runs, and see `research/README.md` for the PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy. `full` is not required for small or documentation-only changes — match the tier to the size of the change.
+Run `tools/gate.sh --help` for the exact commands each tier runs, and see `research/README.md` for the PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy. `full` is not required for small or documentation-only changes — match the tier to the size of the change. A tier that could not run the `regression_*` cases because no base graphics set is reachable reports them as NOT RUN and exits 3 (PARTIAL), never PASS.
 
 ## Research-mode access to internals
 

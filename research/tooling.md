@@ -148,7 +148,7 @@ is generated and gitignored.
 ## Status semantics
 
 Same fail-closed taxonomy as [`research/README.md`](./README.md): `PASS` / `FAIL` / `PARTIAL` /
-`NOT RUN` / `NOT APPLICABLE` (`INCONCLUSIVE` also accepted by the schema). `report` aggregates the
+`NOT RUN` / `NOT APPLICABLE`, and nothing else: the research gate refuses any other status, and it validates `manifest.json` against `tools/research/schema/experiment-manifest.schema.json` (with the `jsonschema` package when installed, else a built-in validator for the subset the schema uses that fails closed on any keyword it does not implement; no `python3` means the gate fails). `report` aggregates the
 final `status` itself, mechanically: `FAIL` if any recorded command or validation failed, `PASS`
 only if at least one validation ran and none failed, `PARTIAL` if commands ran but no validation
 gate was ever invoked, `NOT RUN` if nothing was recorded at all. It never rounds up.

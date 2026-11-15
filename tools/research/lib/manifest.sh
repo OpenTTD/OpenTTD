@@ -137,7 +137,8 @@ manifest_syntax_check() {
   fi
 }
 
-VALID_STATUSES=("PASS" "FAIL" "PARTIAL" "NOT RUN" "NOT APPLICABLE" "INCONCLUSIVE")
+# The five-state taxonomy of research/README.md and rule project.never-report-unrun-validation-as-pass.
+VALID_STATUSES=("PASS" "FAIL" "PARTIAL" "NOT RUN" "NOT APPLICABLE")
 
 is_valid_status() {
   local s="$1"
@@ -168,6 +169,17 @@ gate_research() {
     ok=0
   fi
   rm -f /tmp/.research_gate_syntax.$$
+
+  # The manifest must satisfy its own schema. Fail closed: no python3 means no verdict, and no
+  # verdict is not a pass (rule project.never-report-unrun-validation-as-pass).
+  local schema="$LIB_DIR/../schema/experiment-manifest.schema.json" schema_out
+  if ! command -v python3 >/dev/null 2>&1; then
+    reasons+=("manifest.json not validated against its schema: python3 is not available")
+    ok=0
+  elif ! schema_out=$(python3 -I "$LIB_DIR/validate_manifest.py" "$schema" "$MANIFEST_JSON" 2>&1); then
+    reasons+=("manifest.json does not satisfy $schema: ${schema_out//$'\n'/; }")
+    ok=0
+  fi
 
   load_state
   [[ -n "${EXPERIMENT_ID:-}" ]] || { reasons+=("experiment_id missing"); ok=0; }
