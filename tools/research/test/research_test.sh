@@ -143,6 +143,46 @@ if command -v python3 >/dev/null 2>&1; then
   assert_contains "the fail-closed message names the keyword" "$out" "patternProperties"
 fi
 
+# --- toolchain selection (ADR 0006, I0029) ---
+# Each case runs in a subshell with uname, the <source_location> probe and brew stubbed, so it
+# measures the decision and not this machine's compiler.
+mkdir -p "$WORKDIR/fake-llvm/bin"
+printf '#!/bin/sh\n' > "$WORKDIR/fake-llvm/bin/clang++"
+chmod +x "$WORKDIR/fake-llvm/bin/clang++"
+toolchain_case() {
+  # $1 = os, $2 = probe result (0 ok / 1 missing), $3 = brew (yes|no), $4 = CC, $5 = CXX
+  (
+    cd "$TEST_ROOT_DIR" || exit 1
+    # shellcheck source=lib/common.sh
+    source tools/research/lib/common.sh
+    local os="$1" probe="$2" has_brew="$3"
+    uname() { printf '%s\n' "$os"; }
+    cxx_supports_source_location() { return "$probe"; }
+    if [[ "$has_brew" == yes ]]; then
+      brew() { printf '%s\n' "$WORKDIR/fake-llvm"; }
+    else
+      PATH="/nonexistent"
+    fi
+    CC="$4" CXX="$5"
+    select_research_toolchain
+    printf '%s|%s|%s\n' "$RESEARCH_TOOLCHAIN_CXX" "$RESEARCH_TOOLCHAIN_LEVEL" "$RESEARCH_TOOLCHAIN_NOTE"
+  )
+}
+out=$(toolchain_case Darwin 0 yes "" "")
+assert_eq "probe ok keeps the system compiler" "" "${out%%|*}"
+assert_contains "probe ok says so" "$out" "supports <source_location>"
+out=$(toolchain_case Darwin 1 yes "" "")
+assert_eq "probe failing selects Homebrew LLVM" "$WORKDIR/fake-llvm/bin/clang++" "${out%%|*}"
+out=$(toolchain_case Darwin 1 yes "" "/usr/bin/c++")
+assert_eq "explicit CXX wins over a failing probe" "" "${out%%|*}"
+assert_contains "explicit CXX is reported as used as given" "$out" "used as given"
+out=$(toolchain_case Darwin 0 yes "/usr/bin/cc" "")
+assert_eq "explicit CC wins over a passing probe" "" "${out%%|*}"
+out=$(toolchain_case Darwin 1 no "" "")
+assert_contains "no brew and a failing probe warns" "$out" "|warn|"
+out=$(toolchain_case Linux 1 yes "" "")
+assert_eq "off macOS nothing is chosen and nothing is said" "|info|" "$out"
+
 # --- profile discovery ---
 out=$("$RESEARCH" doctor 2>&1)
 assert_contains "doctor lists research-debug profile" "$out" "research-debug"

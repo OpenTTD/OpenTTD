@@ -22,4 +22,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-15T19:48:06Z
+started_at: 2026-11-15T19:46:28Z
+started_event: sha256:345cc6f7b4a8fe396813df321fc6277da045786625e3f306e2263a90a2c2c9bc
+verified_at: 2026-11-15T19:48:02Z
+verified_event: sha256:ebf90687cedd95777ff33a9e4957a35a95090b26256478d3611edf2c19e86ea4
+completed_at: 2026-11-15T19:48:06Z
+completed_event: sha256:3342b1b1e0b4d19c2ac692ca595c48d9e79c61058e5ee73b4d75a3233b9a0ae6
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "bash tools/research/test/research_test.sh"
+    result: "43 passed, 0 failed (8 new toolchain cases with uname, the <source_location> probe and brew stubbed: probe ok keeps the system compiler; probe failing selects Homebrew LLVM; explicit CXX wins over a failing probe; explicit CC wins over a passing probe; no brew warns; off macOS nothing is chosen). Mutation check: disabling the explicit CC/CXX rule fails 2 cases. On this machine the decision is unchanged: system c++ supports <source_location>, no override"
+    commit: 89e5b56c37c529e76925f346a5e657ea6b6785f1
+    recorded_at: 2026-11-15T19:48:04Z

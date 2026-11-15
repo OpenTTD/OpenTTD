@@ -105,6 +105,49 @@ cxx_supports_source_location() {
   return $rc
 }
 
+# Decide the toolchain a research configure uses (ADR 0006), without logging or changing
+# anything. Sets RESEARCH_TOOLCHAIN_CC / _CXX (empty: keep the default compiler),
+# RESEARCH_TOOLCHAIN_NOTE (what to tell the user, empty when nothing applies) and
+# RESEARCH_TOOLCHAIN_LEVEL (info or warn).
+#
+# macOS gotcha (see CLAUDE.md): an older Xcode CLT's libc++ may predate <source_location>
+# (used by src/stdafx.h), failing every build with "'source_location' file not found". Forcing
+# Homebrew's LLVM unconditionally breaks a modern Xcode whose system compiler already has the
+# header, when Homebrew LLVM's libc++ header paths do not match the current SDK (hundreds of
+# "unknown type name 'size_t'" errors). So: an explicit CC or CXX always wins and is never
+# overridden; otherwise the system compiler is probed first, and Homebrew LLVM is the fallback
+# only when the probe fails. Off macOS nothing is chosen.
+select_research_toolchain() {
+  RESEARCH_TOOLCHAIN_CC=""
+  RESEARCH_TOOLCHAIN_CXX=""
+  RESEARCH_TOOLCHAIN_NOTE=""
+  RESEARCH_TOOLCHAIN_LEVEL="info"
+  [[ "$(uname -s)" == "Darwin" ]] || return 0
+  if [[ -n "${CC:-}" || -n "${CXX:-}" ]]; then
+    RESEARCH_TOOLCHAIN_NOTE="macOS: CC/CXX set by the caller (CC=${CC:-} CXX=${CXX:-}) -- used as given, no probe"
+    return 0
+  fi
+  if cxx_supports_source_location "c++"; then
+    RESEARCH_TOOLCHAIN_NOTE="macOS: system compiler (c++) supports <source_location> -- using it, no toolchain override needed"
+    return 0
+  fi
+  if command -v brew >/dev/null 2>&1; then
+    local llvm_prefix
+    llvm_prefix=$(brew --prefix llvm 2>/dev/null || true)
+    if [[ -n "$llvm_prefix" && -x "$llvm_prefix/bin/clang++" ]]; then
+      RESEARCH_TOOLCHAIN_CC="$llvm_prefix/bin/clang"
+      RESEARCH_TOOLCHAIN_CXX="$llvm_prefix/bin/clang++"
+      RESEARCH_TOOLCHAIN_NOTE="macOS: system compiler lacks <source_location>; falling back to Homebrew LLVM ($RESEARCH_TOOLCHAIN_CXX) (see CLAUDE.md); export CC/CXX yourself to override"
+      return 0
+    fi
+    RESEARCH_TOOLCHAIN_LEVEL="warn"
+    RESEARCH_TOOLCHAIN_NOTE="macOS: system compiler lacks <source_location> and Homebrew LLVM not found -- build will likely fail (see CLAUDE.md); install with 'brew install llvm'"
+    return 0
+  fi
+  RESEARCH_TOOLCHAIN_LEVEL="warn"
+  RESEARCH_TOOLCHAIN_NOTE="macOS: system compiler lacks <source_location> and brew not available -- build will likely fail (see CLAUDE.md)"
+}
+
 # --- generic append-only JSON line files, embedded as arrays at report time ---
 
 # Append a fully-formed JSON object (already valid JSON text) as one line.

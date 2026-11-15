@@ -265,20 +265,14 @@ cmd_configure() {
   # <source_location>. An explicit caller CC/CXX always wins and is never
   # overridden.
   local research_cc="" research_cxx=""
-  if [[ "$(uname -s)" == "Darwin" && -z "${CC:-}" && -z "${CXX:-}" ]]; then
-    if cxx_supports_source_location "c++"; then
-      log_info "macOS: system compiler (c++) supports <source_location> -- using it, no toolchain override needed"
-    elif command -v brew >/dev/null 2>&1; then
-      local llvm_prefix; llvm_prefix=$(brew --prefix llvm 2>/dev/null || true)
-      if [[ -n "$llvm_prefix" && -x "$llvm_prefix/bin/clang++" ]]; then
-        research_cc="$llvm_prefix/bin/clang"
-        research_cxx="$llvm_prefix/bin/clang++"
-        log_info "macOS: system compiler lacks <source_location>; falling back to Homebrew LLVM ($research_cxx) (see CLAUDE.md); export CC/CXX yourself to override"
-      else
-        log_warn "macOS: system compiler lacks <source_location> and Homebrew LLVM not found -- build will likely fail (see CLAUDE.md); install with 'brew install llvm'"
-      fi
+  select_research_toolchain
+  research_cc="$RESEARCH_TOOLCHAIN_CC"
+  research_cxx="$RESEARCH_TOOLCHAIN_CXX"
+  if [[ -n "$RESEARCH_TOOLCHAIN_NOTE" ]]; then
+    if [[ "$RESEARCH_TOOLCHAIN_LEVEL" == "warn" ]]; then
+      log_warn "$RESEARCH_TOOLCHAIN_NOTE"
     else
-      log_warn "macOS: system compiler lacks <source_location> and brew not available -- build will likely fail (see CLAUDE.md)"
+      log_info "$RESEARCH_TOOLCHAIN_NOTE"
     fi
   fi
 
