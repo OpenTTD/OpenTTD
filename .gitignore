@@ -16,6 +16,7 @@ docs/source/*
 # Research tooling build outputs (tools/research/mcp-panel, tools/research/mcp-rhai)
 /tools/research/mcp-panel/node_modules/
 /tools/research/mcp-rhai/target/
+/tools/research/mcp-human/target/
 /tools/research/mcp-panel/__pycache__/
 
 # Published surfaces (tools/surfaces): generated output, the Python environment, the asset tree

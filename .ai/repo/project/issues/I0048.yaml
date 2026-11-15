@@ -1,0 +1,23 @@
+id: I0048
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The external console shows the world: D3 force graph, three.js terrain and ECharts over the derived endpoints, every view a driven model"
+slug: external-console-visualisations
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "Make the world graph and the map visible and explorable in the external console with the owner's visual layer (ECharts for charts and graphs, D3 for force layouts, three.js for terrain), deep-linkable and maximizable."
+why: "The owner: everything visible in the external console, simplified, with d3.js, three.js and charts. The owner's standing rule names ECharts and D3 and excludes Chart.js and Cytoscape."
+scope:
+  - "tools/research/mcp-panel/**"
+depends_on:
+  - I0047
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "A 3D terrain view from openttd://map, a force graph of the world graph, live charts; parameters in the URL, maximize and Escape"
+validation:
+  - "tools/research/mcp-panel-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16

@@ -26,6 +26,9 @@
 #include "table/strings.h"
 
 #include "dropdown_common_type.h"
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+#include "prismatic_mcp/prismatic_mcp_hooks.h"
+#endif
 
 #include "safeguards.h"
 
@@ -536,6 +539,34 @@ struct DropdownWindow : Window {
 		this->UpdateFilter();
 	}
 };
+
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+/* RESEARCH-ONLY (prismatic_mcp_hooks.h): the visible items of an open dropdown, laid out exactly as
+ * DrawWidget() and GetDropDownItem() above lay them out, so an external controller can point at one
+ * the way a person does. Reads the window, changes nothing. */
+std::vector<PrismaticMCP::Hooks::DropdownItem> PrismaticMCP::Hooks::DropdownItems(const Window *w)
+{
+	std::vector<DropdownItem> out;
+	const DropdownWindow *ddw = dynamic_cast<const DropdownWindow *>(w);
+	if (ddw == nullptr) return out;
+	const Rect r = ddw->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect().Shrink(WidgetDimensions::scaled.dropdownlist).Shrink(WidgetDimensions::scaled.dropdowntext, RectPadding::zero);
+	int y = -ddw->vscroll->GetPosition();
+	const int y_end = r.Height();
+	for (const auto &item : ddw->list) {
+		if (!ddw->FilterByText(*item)) continue;
+		const int item_height = item->Height();
+		if (y > y_end) break;
+		if (y > -item_height) {
+			int top = std::max(y, 0), bottom = std::min(y + item_height, y_end);
+			bool selectable = !item->masked && item->Selectable();
+			out.push_back({item->result, selectable, ddw->selected_result == item->result && selectable,
+				Rect{ddw->left + r.left, ddw->top + r.top + top, ddw->left + r.right, ddw->top + r.top + bottom - 1}});
+		}
+		y += item_height;
+	}
+	return out;
+}
+#endif /* OTTD_PRISMATIC_MCP_SERVER */
 
 void ReplaceDropDownList(Window *parent, DropDownList &&list, std::optional<int> selected_result)
 {

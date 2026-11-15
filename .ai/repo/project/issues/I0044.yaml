@@ -1,0 +1,53 @@
+id: I0044
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Play like a person through the client's own interface: the UI as data, armed mouse and key input, a human-motion player that builds roads on screen"
+slug: person-like-player-through-the-interface
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Let a bot play through a GUI client's ordinary interface so the owner sees a player: a visible cursor moving with human motion, buttons found by what they say, tools picked, tiles selected and roads dragged, the camera gliding to the work, every command reaching the server like any client's."
+why: "The owner: I still do not see the application move; the MCP should be the inferred API of the rest of the application; I want to watch it play for me, the cursor, the tile selection, how roads are built, as if a person played when I grab the camera."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_ui.cpp"
+  - "src/prismatic_mcp/prismatic_mcp_ui.h"
+  - "src/prismatic_mcp/prismatic_mcp_hooks.h"
+  - "src/prismatic_mcp/CMakeLists.txt"
+  - "src/prismatic_mcp/prismatic_mcp_server.cpp"
+  - "src/dropdown.cpp"
+  - "tools/research/mcp-human/**"
+  - "tools/research/mcp-human-e2e"
+  - "research/mcp-human.md"
+non_scope:
+  - "View tools, screenshots, the panel and mcp-e2e (I0043)"
+  - "Stations, depots, vehicles and orders through their windows (I0045)"
+depends_on:
+  - I0042
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd.ui.windows returns every window with its widgets' rectangles, resolved text and tooltips, and an open dropdown's items, derived from the window system"
+  - "openttd.input.* moves the visible cursor and presses buttons through the driver's input path, refuses unless PRISMATIC_MCP_INPUT=1, and pauses while the real mouse moves"
+  - "mcp-human connects two towns by road through the road menu, the autoroad tool and drags, with Fitts/minimum-jerk motion and camera glides"
+  - "tools/research/mcp-human-e2e --test passes: a dedicated server and a headful client each with its own MCP, the client's new company owns new road tiles on the server's map"
+  - "A dedicated server refuses every UI tool"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-human-e2e --test"
+  - "cargo test --manifest-path tools/research/mcp-human/Cargo.toml"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-15T23:12:30Z
+started_at: 2026-11-15T23:12:26Z
+started_event: sha256:b96267dda573fd51a74e6c8e6022227403fc41ea76e0ff2fafdb7670e21f6fc6
+verified_at: 2026-11-15T23:12:27Z
+verified_event: sha256:7ca951edbf86c1d2c6dbcaaa736f1a3c73263ab6c890f10b7d51b990dc9f2d8f
+completed_at: 2026-11-15T23:12:30Z
+completed_event: sha256:59904108dee6fb963c3aac1d603b007289a4003bbb3b7105653edd4bc89c7973
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-human-e2e --test --rounds 1 --speed 1.6; cargo test (mcp-human)"
+    result: "gate research PASS (ctest 103/103, [prismatic_mcp] 25 assertions); e2e: dedicated server + headful client each with its own MCP, client joined as company 0, mcp-human opened the road menu, chose the road type in the dropdown, picked autoroad and dragged 3 runs: company 0 owns 28 road tiles on the server's map (before 0), 368 pointer updates; client offers all 8 UI/input tools; server refuses UI tools; mcp-human unit tests 8/8"
+    commit: e2e8403ca084475d75a80607c74bbb3861e205f5
+    recorded_at: 2026-11-15T23:12:28Z

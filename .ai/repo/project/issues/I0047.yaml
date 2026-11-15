@@ -1,0 +1,25 @@
+id: I0047
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The whole world as one typed graph: towns, industries, stations, vehicles, orders, roads and cargo flows, over MCP, REST and Rhai, ready for algoglyph"
+slug: the-world-as-one-typed-graph
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Expose every static and dynamic entity and their relations as one typed node/edge graph with a stable schema, so planners (route planning, profitability) in Rhai or algoglyph can consume it directly."
+why: "The owner: through api/swagger/mcp the whole map, everything about it and every dynamic entity, all in graph form, so we can connect algoglyph via Rhai for the best planning and profitability algorithms."
+scope:
+  - "src/prismatic_mcp/**"
+  - "tools/research/**"
+depends_on:
+  - I0042
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "Resources for industries, vehicles with orders, companies and the cargo link graph"
+  - "One graph resource with typed nodes and edges and a published JSON schema; derived REST and Rhai functions follow from the catalogue"
+validation:
+  - "tools/research/mcp-live-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16

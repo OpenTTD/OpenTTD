@@ -26,6 +26,7 @@
 
 #include "prismatic_mcp.h"
 #include "prismatic_mcp_detail.h"
+#include "prismatic_mcp_ui.h"
 #include "prismatic_mcp_view.h"
 #include "prismatic_mcp_world.h"
 
@@ -405,6 +406,12 @@ json HandleToolsCall(const json &id, const json &params)
 	std::string name = params["name"].get<std::string>();
 	json args = params.contains("arguments") ? params["arguments"] : json::object();
 
+	/* UI tools: the interface as data, and armed input through the driver's path (prismatic_mcp_ui.cpp). */
+	if (auto ui = UI::Call(name, args); ui.has_value()) {
+		bool ok = ui->value("ok", false);
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", ui->dump()}}})}, {"isError", !ok}});
+	}
+
 	/* View tools: local viewport only, no approval, no command (prismatic_mcp_view.cpp). */
 	if (auto view = View::Call(name, args); view.has_value()) {
 		bool ok = view->value("ok", false);
@@ -499,6 +506,7 @@ json ToolsList()
 	json arr = json::array();
 	/* View tools first: they change only the local viewport and need no approval. */
 	for (auto &t : View::Tools()) arr.push_back(t);
+	for (auto &t : UI::Tools()) arr.push_back(t);
 	arr.push_back({{"name", "openttd.decision.validate"}, {"description", "Validate a typed action/DecisionEnvelope without mutating game state"},
 		{"inputSchema", {{"type", "object"}}}});
 	arr.push_back({{"name", "openttd.decision.list_action_types"}, {"description", "List typed action types this build can execute"},

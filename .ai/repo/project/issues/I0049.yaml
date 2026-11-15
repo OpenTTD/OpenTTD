@@ -1,0 +1,24 @@
+id: I0049
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Coverage is derived and enforced: every tool and resource the catalogue lists is exercised end to end"
+slug: derived-mcp-coverage-gate
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Derive the list of every MCP tool and resource from tools/list and resources/list of a live server and client, and fail the gate when one is not exercised by an end-to-end check."
+why: "The owner: everything exposed must be used, tested end to end, covered by tests and enforced."
+scope:
+  - "tools/research/**"
+  - "tools/gate.sh"
+depends_on:
+  - I0044
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "A coverage check lists every catalogue entry with the check that exercised it and fails on an unexercised one"
+validation:
+  - "tools/gate.sh research"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16

@@ -1,0 +1,10 @@
+[package]
+name = "mcp-human"
+version = "0.1.0"
+edition = "2021"
+description = "RESEARCH-ONLY: play OpenTTD through a GUI client's own MCP server the way a person does - a visible cursor, human motion, clicks and drags through the game's own interface"
+publish = false
+
+[dependencies]
+ureq = { version = "2.10", features = ["json"] }
+serde_json = "1"

@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY. A person-like player, end to end, on screen:
+#
+#   1. a dedicated server with its own MCP server (the authoritative game),
+#   2. a headful GUI client with its own MCP server, joined as a NEW company, input armed
+#      (PRISMATIC_MCP_INPUT=1: the owner's switch for this one process),
+#   3. mcp-human playing through the client's interface: the visible cursor moves with human
+#      motion, opens the road menu, picks the autoroad tool, glides the camera and drags roads
+#      between towns, so every build step is something a person at that mouse would have done.
+#
+# --test asserts the outcome on the SERVER's map (authoritative, not the client's view): the
+# client's company exists and owns road tiles it did not own before, and exits 0 / 1. Without
+# --test the stack stays up after the play so the owner can watch and take over the mouse.
+#
+# Usage: tools/research/mcp-human-e2e [--test] [--rounds N] [--seed N] [--speed F]
+#                                     [--window WxH] [--bin PATH]
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+BIN="$ROOT_DIR/build-gate-research/openttd"
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --test) TEST=1; shift ;;
+    --rounds) ROUNDS="$2"; shift 2 ;;
+    --seed) SEED="$2"; shift 2 ;;
+    --speed) SPEED="$2"; shift 2 ;;
+    --window) WINDOW="$2"; shift 2 ;;
+    --bin) BIN="$2"; shift 2 ;;
+    -h|--help) sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "mcp-human-e2e: unknown option $1" >&2; exit 2 ;;
+  esac
+done
+
+[[ -x "$BIN" ]] || { echo "mcp-human-e2e: no binary at $BIN; run tools/gate.sh research first" >&2; exit 3; }
+[[ "$(strings "$BIN" | grep -c 'openttd.input.pointer')" -gt 0 ]] || { echo "mcp-human-e2e: $BIN lacks the UI tools (rebuild with OPTION_PRISMATIC_MCP_SERVER=ON)" >&2; exit 3; }
+ls "$HOME/Documents/OpenTTD/baseset/"opengfx* >/dev/null 2>&1 || { echo "mcp-human-e2e: no OpenGFX in ~/Documents/OpenTTD/baseset (research/baseset-prerequisite-macos.md)" >&2; exit 3; }
+HUMAN_DIR="$ROOT_DIR/tools/research/mcp-human"
+HUMAN="$HUMAN_DIR/target/release/mcp-human"
+(cd "$HUMAN_DIR" && CARGO_TARGET_DIR="$HUMAN_DIR/target" cargo build --release --quiet)
+
+free_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-human-e2e.XXXXXX")"
+PIDS=()
+cleanup() { for p in ${PIDS[@]+"${PIDS[@]}"}; do kill "$p" 2>/dev/null || true; done; wait 2>/dev/null || true; rm -rf "$TMP"; }
+trap cleanup EXIT INT TERM
+
+home() { # $1 dir, $2 script name, $3 port, $4 token file
+  mkdir -p "$1/Documents/OpenTTD/scripts"
+  ln -s "$HOME/Documents/OpenTTD/baseset" "$1/Documents/OpenTTD/baseset"
+  printf 'prismatic_mcp start %s %s\n' "$3" "$4" > "$1/Documents/OpenTTD/scripts/$2"
+}
+rpc() { # $1 token file, $2 JSON-RPC body -> the parsed text of the first content item
+  local e k; e="$(jq -r .endpoint "$1")"; k="$(jq -r .agent_token "$1")"
+  curl -s -X POST -H "Authorization: Bearer $k" -H 'Content-Type: application/json' \
+    -H 'Accept: application/json, text/event-stream' -d "$2" "$e"
+}
+read_res() { rpc "$1" "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"resources/read\",\"params\":{\"uri\":\"$2\"}}" | jq -r '.result.contents[0].text'; }
+call() { rpc "$1" "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"$2\",\"arguments\":$3}}" | jq -r '.result.content[0].text'; }
+wait_file() { for ((i = 0; i < ${2:-120}; i++)); do [[ -s "$1" ]] && return 0; sleep 0.5; done; return 1; }
+
+GAME_PORT="$(free_port)" SERVER_MCP="$(free_port)" CLIENT_MCP="$(free_port)"
+SERVER_TOKEN="$TMP/server-token.json" CLIENT_TOKEN="$TMP/client-token.json"
+
+echo "==> dedicated server on 127.0.0.1:$GAME_PORT (seed $SEED), MCP on $SERVER_MCP"
+home "$TMP/server" on_dedicated.scr "$SERVER_MCP" "$SERVER_TOKEN"
+printf '[network]\nserver_name = mcp-human-e2e\n[gui]\nautosave = off\n' > "$TMP/server.cfg"
+HOME="$TMP/server" "$BIN" -D "127.0.0.1:$GAME_PORT" -x -g -G "$SEED" -c "$TMP/server.cfg" > "$TMP/server.log" 2>&1 &
+PIDS+=($!)
+wait_file "$SERVER_TOKEN" || { echo "mcp-human-e2e: the server's MCP did not start" >&2; tail -20 "$TMP/server.log" >&2; exit 1; }
+
+owned_roads() { # roads on the server's map owned by company $1 (0-based)
+  read_res "$SERVER_TOKEN" openttd://map | python3 -I -c '
+import json, sys
+c = int(sys.argv[1]); code = str(c) if c < 10 else chr(ord("a") + c - 10)
+m = json.load(sys.stdin); d = m.get("data", m)
+print(sum(1 for t, o in zip("".join(d["types"]), "".join(d["owners"])) if t == "r" and o == code))' "$1"
+}
+
+echo "==> headful client joining as a new company, input armed, MCP on $CLIENT_MCP"
+home "$TMP/client" autoexec.scr "$CLIENT_MCP" "$CLIENT_TOKEN"
+printf '[network]\nclient_name = owner\n[misc]\nfullscreen = false\nresolution = %s\n[gui]\nautosave = off\n' "${WINDOW/x/,}" > "$TMP/client.cfg"
+HOME="$TMP/client" PRISMATIC_MCP_INPUT=1 "$BIN" -c "$TMP/client.cfg" -r "$WINDOW" -n "127.0.0.1:$GAME_PORT#254" > "$TMP/client.log" 2>&1 &
+PIDS+=($!)
+wait_file "$CLIENT_TOKEN" || { echo "mcp-human-e2e: the client's MCP did not start" >&2; tail -20 "$TMP/client.log" >&2; exit 1; }
+COMPANY=255
+for ((i = 0; i < 120; i++)); do
+  COMPANY="$(call "$CLIENT_TOKEN" openttd.input.state '{}' 2>/dev/null | jq -r '.local_company // 255' 2>/dev/null || echo 255)"
+  [[ "$COMPANY" != 255 && "$COMPANY" != null ]] && break
+  sleep 1
+done
+[[ "$COMPANY" != 255 ]] || { echo "mcp-human-e2e: the client did not get a company" >&2; tail -20 "$TMP/client.log" >&2; exit 1; }
+echo "==> the client plays company $COMPANY"
+
+BEFORE="$(owned_roads "$COMPANY")"
+"$HUMAN" --token "$CLIENT_TOKEN" check
+"$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS"
+sleep 2
+AFTER="$(owned_roads "$COMPANY")"
+echo "==> company $COMPANY owns $AFTER road tiles on the server's map (before: $BEFORE)"
+
+if [[ "$TEST" == 1 ]]; then
+  fail=0
+  [[ "$AFTER" -gt "$BEFORE" ]] && echo "PASS roads built through the interface appear on the server" || { echo "FAIL no new road tiles on the server"; fail=1; }
+  INJ="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r '.injected.moves')"
+  [[ "$INJ" -gt 100 ]] && echo "PASS the cursor moved ($INJ pointer updates)" || { echo "FAIL the cursor barely moved ($INJ)"; fail=1; }
+  for t in openttd.ui.windows openttd.ui.at openttd.ui.locate openttd.input.state openttd.input.pointer openttd.input.button openttd.input.wheel openttd.input.key; do
+    rpc "$CLIENT_TOKEN" '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | jq -e --arg t "$t" '.result.tools[] | select(.name == $t)' >/dev/null \
+      && echo "PASS client offers $t" || { echo "FAIL client lacks $t"; fail=1; }
+  done
+  call "$SERVER_TOKEN" openttd.ui.windows '{}' | jq -e '.ok == false' >/dev/null \
+    && echo "PASS the server (no interface) refuses UI tools" || { echo "FAIL the server answered a UI tool"; fail=1; }
+  exit "$fail"
+fi
+
+echo "==> the game stays up: watch it, take the mouse any time. Ctrl-C stops it."
+wait

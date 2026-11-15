@@ -1,0 +1,26 @@
+id: I0046
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Every instance announces its MCP: discovery of servers and clients for a research cluster, Majordomus-friendly"
+slug: instance-discovery-for-a-cluster
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Each OpenTTD process with an MCP server declares itself (role, game, company, endpoint, tools) where controllers and Majordomus find it, so a cluster of AI-driven instances can be started, listed and driven without hand-wired ports."
+why: "The owner: both the running server and the running client must have their own MCP interface, Majordomus-integrated into a cluster for research; discovery is needed; rock solid."
+scope:
+  - "src/prismatic_mcp/**"
+  - "tools/research/**"
+depends_on:
+  - I0044
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "A started MCP server writes a discovery record (role, endpoint, game port, company) and removes it on stop; a stale record is detectable"
+  - "A discovery listing (CLI and panel) shows every live instance of a cluster of N servers and clients"
+  - "Records follow web-surface/v1 conventions so Majordomus can discover them"
+validation:
+  - "a cluster e2e check starting 2 servers and 2 clients"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16
