@@ -28,7 +28,7 @@ jobs:
     outputs:
       publish: ${{ env.PUBLISH }}
     steps:
-      - name: Checkout (full history, no blobs: the charts read the commit log)
+      - name: "Checkout (full history, no blobs: the charts read the commit log)"
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
