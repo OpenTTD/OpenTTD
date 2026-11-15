@@ -29,9 +29,9 @@ unsealed_stamps:
 - verified_at 2026-07-23T22:17:39Z
 - completed_at 2026-07-23T22:17:39Z
 evidence:
-- covers: recorded_validation
-  type: artifact
-  command: git show -s 2e07cd7ac8
-  result: "ten Doc commits expanding README 0.0 with Mermaid and ASCII diagrams (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 2e07cd7ac8dfce766dc7f92bb626a25f556cdf1e
-  recorded_at: '2026-07-23T22:17:39Z'
+  - covers: recorded_validation
+    type: artifact
+    command: git show -s 2e07cd7ac8
+    result: "ten Doc commits expanding README 0.0 with Mermaid and ASCII diagrams (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 2e07cd7ac8dfce766dc7f92bb626a25f556cdf1e
+    recorded_at: '2026-07-23T22:17:39Z'

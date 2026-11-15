@@ -31,9 +31,9 @@ unsealed_stamps:
 - verified_at 2026-07-23T23:23:21Z
 - completed_at 2026-07-23T23:23:21Z
 evidence:
-- covers: recorded_validation
-  type: artifact
-  command: git show -s 68d15d4ee3
-  result: "design corrected after reading ~/dev/openttd-prismatic-bridge, whose suite passed 8/8 (recorded in 1e5ad23af9); -g heightmap flag corrected in 68d15d4ee3 (as recorded in the commit messages; not re-run on 2026-11-15)"
-  commit: 68d15d4ee31b582821b4ab9abc927ea1c1da0fbb
-  recorded_at: '2026-07-23T23:23:21Z'
+  - covers: recorded_validation
+    type: artifact
+    command: git show -s 68d15d4ee3
+    result: "design corrected after reading ~/dev/openttd-prismatic-bridge, whose suite passed 8/8 (recorded in 1e5ad23af9); -g heightmap flag corrected in 68d15d4ee3 (as recorded in the commit messages; not re-run on 2026-11-15)"
+    commit: 68d15d4ee31b582821b4ab9abc927ea1c1da0fbb
+    recorded_at: '2026-07-23T23:23:21Z'

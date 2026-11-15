@@ -32,9 +32,9 @@ unsealed_stamps:
 - verified_at 2026-07-23T22:24:38Z
 - completed_at 2026-07-23T22:24:38Z
 evidence:
-- covers: recorded_validation
-  type: artifact
-  command: git show -s 00e4f6d53b
-  result: "policy added to AGENTS.md (43 lines) and CLAUDE.md (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 00e4f6d53ba020ccfbef3876fed71b511b4560b1
-  recorded_at: '2026-07-23T22:24:38Z'
+  - covers: recorded_validation
+    type: artifact
+    command: git show -s 00e4f6d53b
+    result: "policy added to AGENTS.md (43 lines) and CLAUDE.md (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 00e4f6d53ba020ccfbef3876fed71b511b4560b1
+    recorded_at: '2026-07-23T22:24:38Z'

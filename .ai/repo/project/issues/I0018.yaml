@@ -31,9 +31,9 @@ unsealed_stamps:
 - verified_at 2026-07-24T01:08:42Z
 - completed_at 2026-07-24T01:08:42Z
 evidence:
-- covers: recorded_validation
-  type: build
-  command: zola --root zola check
-  result: "zola build and zola check (external links included) pass (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 49057dddd64e50e03673beefe9b6fcaeebff0619
-  recorded_at: '2026-07-24T01:08:42Z'
+  - covers: recorded_validation
+    type: build
+    command: zola --root zola check
+    result: "zola build and zola check (external links included) pass (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 49057dddd64e50e03673beefe9b6fcaeebff0619
+    recorded_at: '2026-07-24T01:08:42Z'

@@ -30,9 +30,9 @@ unsealed_stamps:
 - started_at 2026-07-24T20:37:05Z
 - verified_at 2026-07-24T20:37:05Z
 evidence:
-- covers: recorded_validation
-  type: test
-  command: ctest -R prismatic
-  result: "25 assertions in 5 cases pass; openttd_test 2186 assertions in 99 cases green (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 64d95df5ae0b02c7e89ecf2bf60d4ddcdabe592f
-  recorded_at: '2026-07-24T20:37:05Z'
+  - covers: recorded_validation
+    type: test
+    command: ctest -R prismatic
+    result: "25 assertions in 5 cases pass; openttd_test 2186 assertions in 99 cases green (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 64d95df5ae0b02c7e89ecf2bf60d4ddcdabe592f
+    recorded_at: '2026-07-24T20:37:05Z'

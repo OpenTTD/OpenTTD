@@ -31,9 +31,9 @@ unsealed_stamps:
 - verified_at 2026-07-24T17:32:35Z
 - completed_at 2026-07-24T17:32:35Z
 evidence:
-- covers: recorded_validation
-  type: test
-  command: bash tools/research/test/research_test.sh
-  result: "self-test 28/28; full init->report PASS with no manual override (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 6f36288ff9cd5cd8e9a857c85575c6e75f87e350
-  recorded_at: '2026-07-24T17:32:35Z'
+  - covers: recorded_validation
+    type: test
+    command: bash tools/research/test/research_test.sh
+    result: "self-test 28/28; full init->report PASS with no manual override (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 6f36288ff9cd5cd8e9a857c85575c6e75f87e350
+    recorded_at: '2026-07-24T17:32:35Z'

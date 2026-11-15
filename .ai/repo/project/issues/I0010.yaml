@@ -29,9 +29,9 @@ unsealed_stamps:
 - verified_at 2026-07-23T22:24:54Z
 - completed_at 2026-07-23T22:24:54Z
 evidence:
-- covers: recorded_validation
-  type: manual
-  command: git show -s 868b5d9269
-  result: "live server: buses 0->3, company_value 1->11025 (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 868b5d9269b70f8570ecc7e2f18a12bf52568d7d
-  recorded_at: '2026-07-23T22:24:54Z'
+  - covers: recorded_validation
+    type: manual
+    command: git show -s 868b5d9269
+    result: "live server: buses 0->3, company_value 1->11025 (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 868b5d9269b70f8570ecc7e2f18a12bf52568d7d
+    recorded_at: '2026-07-23T22:24:54Z'

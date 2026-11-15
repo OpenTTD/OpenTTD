@@ -27,14 +27,24 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-15T18:42:59Z
 started_at: 2026-11-15T18:01:18Z
 started_event: "sha256:78f5aae54ed6ab2dac5419cfce111f3d159fc2392021f8a8daf1de4d49189d5f"
+verified_at: 2026-11-15T18:42:55Z
+verified_event: sha256:f2510cb2e62bb97d6ea2717b63bb77074535cc0197a0d72efd629e3998a94433
+completed_at: 2026-11-15T18:42:59Z
+completed_event: sha256:30950c8f0e688bbaee231edf25373fb975a098da961b60a5b952ea6563c9b04e
 evidence:
-- covers: validation_run
-  type: test
-  command: "tools/gate.sh change && tools/research/research run|validate|report --experiment-id rebase-verify-2026-11-15b --profile research-debug"
-  result: "rebased tree 81b26a6497^{tree}: git range-diff 24/24 patches unchanged; tools/gate.sh change 98/98 ctest PASS (after installing OpenGFX 8.0 into ~/Documents/OpenTTD/baseset; the first run without it: 94/98, the 4 regression cases hung or failed); research-debug build PASS, headless run printed research_status instrumentation=on tick=1392 date=1950-01-02 vehicles=3 companies=0, research gate PASS, report status=PASS"
-  artifact: build-research-runs/rebase-verify-2026-11-15b/summary.md
-  commit: 81b26a6497a8f547a5f4358fa74d4e667a06560b
-  recorded_at: 2026-11-15T18:02:28Z
+  - covers: validation_run
+    type: test
+    command: "tools/gate.sh change && tools/research/research run|validate|report --experiment-id rebase-verify-2026-11-15b --profile research-debug"
+    result: "rebased tree 81b26a6497^{tree}: git range-diff 24/24 patches unchanged; tools/gate.sh change 98/98 ctest PASS (after installing OpenGFX 8.0 into ~/Documents/OpenTTD/baseset; the first run without it: 94/98, the 4 regression cases hung or failed); research-debug build PASS, headless run printed research_status instrumentation=on tick=1392 date=1950-01-02 vehicles=3 companies=0, research gate PASS, report status=PASS"
+    artifact: build-research-runs/rebase-verify-2026-11-15b/summary.md
+    commit: 81b26a6497a8f547a5f4358fa74d4e667a06560b
+    recorded_at: 2026-11-15T18:02:28Z
+  - covers: "validation_run"
+    type: manual
+    command: "git push --force-with-lease origin master; git ls-remote origin refs/heads/master"
+    result: "origin/master = ee4777ea91 = master. Pushed at 18:30Z by session openttd-59 with --force-with-lease (83642775f5 -> ee4777ea91), pre-push hook running, after majordomus handover --derive --close closed the task stranded by the history rewrite (the owner's choice, recorded with majordomus decision add); the owner's later --no-verify push found nothing to push"
+    commit: ee4777ea91d213fa1cfafa707d5b60731e3e7140
+    recorded_at: 2026-11-15T18:42:31Z

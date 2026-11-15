@@ -35,9 +35,9 @@ unsealed_stamps:
 - started_at 2026-07-30T12:15:04Z
 - verified_at 2026-07-30T12:31:04Z
 evidence:
-- covers: recorded_validation
-  type: test
-  command: tools/gate.sh change
-  result: "drift deliberately introduced and caught; smoke and change PASS 98/98; live re-verification against a rebuilt binary (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 5129fc214aa96c0732a51070e0bf731d66e82529
-  recorded_at: '2026-07-30T12:31:04Z'
+  - covers: recorded_validation
+    type: test
+    command: tools/gate.sh change
+    result: "drift deliberately introduced and caught; smoke and change PASS 98/98; live re-verification against a rebuilt binary (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 5129fc214aa96c0732a51070e0bf731d66e82529
+    recorded_at: '2026-07-30T12:31:04Z'

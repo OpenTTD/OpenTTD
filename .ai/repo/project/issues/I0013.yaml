@@ -32,9 +32,9 @@ unsealed_stamps:
 - started_at 2026-07-24T20:00:00Z
 - verified_at 2026-07-24T20:00:00Z
 evidence:
-- covers: recorded_validation
-  type: manual
-  command: git show -s 0a49a3dbb8
-  result: "a real MCP client read live state over HTTP; auth, Origin, token rotation and clean stop verified; MCP-OFF build still builds (no byte comparison was made) (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 0a49a3dbb85e7b87daf4cd16097040e433de623a
-  recorded_at: '2026-07-24T20:00:00Z'
+  - covers: recorded_validation
+    type: manual
+    command: git show -s 0a49a3dbb8
+    result: "a real MCP client read live state over HTTP; auth, Origin, token rotation and clean stop verified; MCP-OFF build still builds (no byte comparison was made) (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 0a49a3dbb85e7b87daf4cd16097040e433de623a
+    recorded_at: '2026-07-24T20:00:00Z'

@@ -32,9 +32,9 @@ unsealed_stamps:
 - verified_at 2026-07-23T23:53:44Z
 - completed_at 2026-07-23T23:53:44Z
 evidence:
-- covers: recorded_validation
-  type: build
-  command: tools/research/research build --profile baseline-release
-  result: "default build 98/98 PASS; strings finds research_status in research-debug and not in baseline-release (84be696a48) (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: 84be696a48cbe847ce3a72a6fae28c26e387b861
-  recorded_at: '2026-07-23T23:53:44Z'
+  - covers: recorded_validation
+    type: build
+    command: tools/research/research build --profile baseline-release
+    result: "default build 98/98 PASS; strings finds research_status in research-debug and not in baseline-release (84be696a48) (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: 84be696a48cbe847ce3a72a6fae28c26e387b861
+    recorded_at: '2026-07-23T23:53:44Z'

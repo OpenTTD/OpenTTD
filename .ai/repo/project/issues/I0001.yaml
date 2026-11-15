@@ -31,9 +31,9 @@ unsealed_stamps:
 - verified_at 2026-07-23T21:40:09Z
 - completed_at 2026-07-23T21:40:09Z
 evidence:
-- covers: recorded_validation
-  type: artifact
-  command: git show -s ad96e57c4a
-  result: "AGENTS.md added (16 lines), then consolidated as the single source; CLAUDE.md points to it (as recorded in the commit message; not re-run on 2026-11-15)"
-  commit: ad96e57c4ad014a28667773bfbcecd55a6669a8a
-  recorded_at: '2026-07-23T21:40:09Z'
+  - covers: recorded_validation
+    type: artifact
+    command: git show -s ad96e57c4a
+    result: "AGENTS.md added (16 lines), then consolidated as the single source; CLAUDE.md points to it (as recorded in the commit message; not re-run on 2026-11-15)"
+    commit: ad96e57c4ad014a28667773bfbcecd55a6669a8a
+    recorded_at: '2026-07-23T21:40:09Z'
