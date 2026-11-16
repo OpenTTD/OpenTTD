@@ -51,8 +51,15 @@ try {
   };
   watch(page);
 
-  const hist = await (await fetch(`${base}/api/overview/history`)).json();
-  check('the panel keeps a history', hist.count > 0, `${hist.count} game day(s), last tick ${hist.last}`);
+  // A fresh game has no company until its AI founds one; the company charts are judged after that.
+  let hist = { count: 0, samples: [] };
+  for (let i = 0; i < 60; i++) {
+    hist = await (await fetch(`${base}/api/overview/history`)).json();
+    if (hist.samples.length && hist.samples.at(-1).companies.length) break;
+    await new Promise((r) => setTimeout(r, 2000));
+  }
+  check('the panel keeps a history with a company', hist.count > 0 && hist.samples.at(-1).companies.length > 0,
+    `${hist.count} game day(s), last tick ${hist.last}, ${hist.samples.at(-1)?.companies.length ?? 0} company(ies)`);
 
   await page.goto(`${base}/?ov_metric=value`);
   await page.waitForFunction(() => {
