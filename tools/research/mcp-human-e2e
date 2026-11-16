@@ -16,13 +16,18 @@
 #
 # Usage: tools/research/mcp-human-e2e [--test] [--rounds N | --minutes M] [--seed N] [--speed F]
 #                                     [--borrow-below N] [--repay-above N] [--rail "MAX [MIN]"]
-#                                     [--rail-above N]
+#                                     [--rail-above N] [--fleet] [--renew-age DAYS]
 #                                     [--window WxH] [--bin PATH]
+#
+# --fleet renews the company's first bus through the windows after the play (vehicle list, send to
+# depot, buy a copy, start it, drag the old one onto the sell button), then sells the copy; both
+# are checked on the server. --renew-age DAYS has the player in a game (--minutes) renew vehicles
+# from that age on by its own decision.
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
-TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL="" RAIL_ABOVE=""
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL="" RAIL_ABOVE="" FLEET="" RENEW_AGE=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --test) TEST=1; shift ;;
@@ -32,11 +37,13 @@ while [[ $# -gt 0 ]]; do
     --repay-above) REPAY_ABOVE="$2"; shift 2 ;;
     --rail) RAIL="$2"; shift 2 ;;
     --rail-above) RAIL_ABOVE="$2"; shift 2 ;;
+    --fleet) FLEET=1; shift ;;
+    --renew-age) RENEW_AGE="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
     --speed) SPEED="$2"; shift 2 ;;
     --window) WINDOW="$2"; shift 2 ;;
     --bin) BIN="$2"; shift 2 ;;
-    -h|--help) sed -n '2,18p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    -h|--help) sed -n '2,24p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "mcp-human-e2e: unknown option $1" >&2; exit 2 ;;
   esac
 done
@@ -152,7 +159,7 @@ call "$CLIENT_TOKEN" openttd.ui.menu.run "{\"index\":$(menu_row watch)}" >/dev/n
 # The player's own account of what it did goes to the screen and to the run's log (kept on failure).
 if [[ "$MINUTES" -gt 0 ]]; then
   # A whole game: expand, add buses where they earn, borrow, watch (economy.rs).
-  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} ${REPAY_ABOVE:+--repay-above "$REPAY_ABOVE"} ${RAIL_ABOVE:+--rail-above "$RAIL_ABOVE"} 2>&1 | tee "$TMP/human.log"
+  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} ${REPAY_ABOVE:+--repay-above "$REPAY_ABOVE"} ${RAIL_ABOVE:+--rail-above "$RAIL_ABOVE"} ${RENEW_AGE:+--renew-age "$RENEW_AGE"} 2>&1 | tee "$TMP/human.log"
 else
   "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS" 2>&1 | tee "$TMP/human.log"
 fi
@@ -164,6 +171,15 @@ if [[ -n "$RAIL" ]]; then
     "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" rail $RAIL 2>&1 | tee -a "$TMP/human.log" | grep -E '^ok: rail|rail line|skip' || true
   else
     echo "SKIP the rail line: MCP_ALGOGLYPH_DIR has no track-planning kernel (not counted as a pass)"; RAIL=""
+  fi
+fi
+
+# Fleet care (--fleet, fleet.rs): the company's first bus is renewed through the windows, as a
+# person renews an old vehicle: the vehicle list, send to depot, buy a copy, start it, sell the old.
+if [[ -n "$FLEET" ]]; then
+  OLD_BUS="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq -c --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "road")][0]')"
+  if [[ "$OLD_BUS" != null ]]; then
+    "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" renew "$(jq .id <<<"$OLD_BUS")" 2>&1 | tee -a "$TMP/human.log" | grep -E '^ok:|^\{|^mcp-human:|^\[human\] (open the list|click vehicle|send vehicle|buy a copy|start the copy|drag vehicle|vehicle [0-9]+ is on)' | tee "$TMP/renew.out" || true
   fi
 fi
 
@@ -391,6 +407,41 @@ PY
   fi
   if [[ -n "$RAIL_ABOVE" && "$(grep -c '^\[human\] rail line' "$TMP/human.log")" -eq 0 ]]; then
     echo "FAIL --rail-above $RAIL_ABOVE was given, but the player built no rail line in the game"; fail=1
+  fi
+  # Fleet care, on the server: the old bus is gone, its copy runs the same engine and orders; then
+  # the copy is sold from its depot and the company's money rises by what it was worth.
+  if [[ -n "$FLEET" ]]; then
+    if [[ "$OLD_BUS" == null ]]; then
+      echo "FAIL --fleet: company $COMPANY has no bus to renew"; fail=1
+    else
+      VEHS="$(read_res "$SERVER_TOKEN" openttd://vehicles)"
+      COPY="$(grep '^{' "$TMP/renew.out" | jq -r .copy 2>/dev/null || echo null)"
+      jq -e --argjson old "$OLD_BUS" --argjson copy "${COPY:-null}" '
+          ([.data.vehicles[] | select(.id == $old.id and .owner == $old.owner)] | length) == 0
+          and ([.data.vehicles[] | select(.id == $copy)][0] as $c | $c != null and $c.engine == $old.engine
+               and ($c.orders | length) == ($old.orders | length) and $c.stopped == false
+               and ($c | has("age") and has("max_age") and has("reliability") and has("value")))' <<<"$VEHS" >/dev/null \
+        && echo "PASS bus $(jq .id <<<"$OLD_BUS") was renewed through the windows: its copy $COPY runs the same engine and $(jq '.orders | length' <<<"$OLD_BUS") orders, the old one is sold" \
+        || { echo "FAIL the renewal of bus $(jq .id <<<"$OLD_BUS") (copy: $COPY)"; fail=1; }
+      if [[ "$COPY" =~ ^[0-9]+$ ]]; then
+        M0="$(read_res "$SERVER_TOKEN" openttd://companies | jq --argjson c "$COMPANY" '[.data.companies[] | select(.id == $c)][0].money')"
+        if "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" sell "$COPY" >>"$TMP/human.log" 2>&1; then
+          sleep 1
+          M1="$(read_res "$SERVER_TOKEN" openttd://companies | jq --argjson c "$COMPANY" '[.data.companies[] | select(.id == $c)][0].money')"
+          GONE="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq --argjson v "$COPY" '[.data.vehicles[] | select(.id == $v)] | length == 0')"
+          [[ "$GONE" == true && "$M1" -gt "$M0" ]] && echo "PASS bus $COPY was sold from its depot by drag and drop: money $M0 -> $M1" \
+            || { echo "FAIL selling bus $COPY: gone=$GONE, money $M0 -> $M1"; fail=1; }
+        else
+          echo "FAIL mcp-human sell $COPY: $(tail -2 "$TMP/human.log")"; fail=1
+        fi
+      fi
+    fi
+  fi
+  # In a game with --renew-age the player itself decided to renew a vehicle, and it worked.
+  if [[ -n "$RENEW_AGE" && "$MINUTES" -gt 0 ]]; then
+    RENEWED="$(grep -cE '^\[human\] vehicle [0-9]+ renewed: the copy' "$TMP/human.log" || true)"
+    [[ "$RENEWED" -gt 0 ]] && echo "PASS the player renewed $RENEWED vehicle(s) on its own once they were $RENEW_AGE days old: $(grep -E '^\[human\] vehicle [0-9]+ renewed' "$TMP/human.log" | head -1 | cut -c9-)" \
+      || { echo "FAIL --renew-age $RENEW_AGE: the player renewed no vehicle in the game"; fail=1; }
   fi
   # With an AlgoGlyph checkout named, every move came from its kernel and none fell back.
   if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]]; then

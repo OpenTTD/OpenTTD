@@ -14,7 +14,7 @@ use crate::hand::Hand;
 use serde_json::{json, Value};
 
 /// The kinds this player executes today; others are refused before anything runs.
-pub const EXECUTABLE: [&str; 6] = ["repay_loan", "borrow", "serve_towns", "add_bus", "watch", "build_rail_line"];
+pub const EXECUTABLE: [&str; 8] = ["repay_loan", "borrow", "serve_towns", "add_bus", "watch", "build_rail_line", "renew_vehicle", "sell_vehicle"];
 
 /// The kernel's input: the owner's actions and the company's books.
 pub fn plan_input(actions: &Value, books: &crate::economy::Books) -> Value {
@@ -76,6 +76,12 @@ impl Hand {
                     let list: Vec<Value> = self.rail_candidates(max)?.into_iter()
                         .filter(|c| c["distance"].as_f64().unwrap_or(0.0) >= min).take(3).collect();
                     self.first_rail_service(&list)?;
+                }
+                "renew_vehicle" | "sell_vehicle" => {
+                    // Through the depot, as fleet.rs does it: {vehicle} names the vehicle's id.
+                    let id = action.get("vehicle").and_then(Value::as_u64).ok_or_else(|| format!("step '{kind}' needs params.vehicle"))?;
+                    let fate = if kind == "renew_vehicle" { crate::fleet::Fate::Renew } else { crate::fleet::Fate::Sell };
+                    self.retire(id, fate)?;
                 }
                 "add_bus" => {
                     let s = services.last().cloned().ok_or("add_bus needs a serve_towns step before it in this plan")?;

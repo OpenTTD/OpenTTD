@@ -86,6 +86,10 @@ json Vehicles()
 			{"parts", parts}, {"consist_capacity", consist_capacity}, {"consist_count", consist_count},
 			{"profit_this_year", static_cast<int64_t>(v->GetDisplayProfitThisYear())},
 			{"profit_last_year", static_cast<int64_t>(v->GetDisplayProfitLastYear())},
+			/* Ages in calendar days, as the details window shows them; past max_age the vehicle is old. */
+			{"age", v->age.base()}, {"max_age", v->max_age.base()},
+			{"reliability", ToPercent16(v->reliability)}, {"breakdowns", v->breakdowns_since_last_service},
+			{"value", static_cast<int64_t>(v->value)},
 			{"current_order", v->cur_real_order_index}, {"orders", std::move(orders)},
 		});
 	}

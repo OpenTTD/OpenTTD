@@ -12,6 +12,7 @@
 
 #include "../core/geometry_type.hpp"
 
+#include <cstdint>
 #include <string_view>
 #include <vector>
 
@@ -37,6 +38,30 @@ struct DropdownItem {
  * @return The items, top to bottom, that are at least partly visible.
  */
 std::vector<DropdownItem> DropdownItems(const Window *w, std::string_view match = {});
+
+/** A place in a window where a vehicle is drawn, and what a press there does to it. */
+struct VehicleCell {
+	uint32_t vehicle;        ///< The vehicle (for a group of shared orders, its first vehicle).
+	std::string_view action; ///< "drag" (picks the whole vehicle up), "open" (its window), "start_stop", or "open_group".
+	Rect rect;               ///< Its rectangle in screen pixels.
+	uint count;              ///< How many vehicles the cell stands for (more than one for a group of shared orders).
+};
+
+/**
+ * The vehicles drawn in a depot window, found with the window's own hit test
+ * (DepotWindow::GetVehicleFromDepotWndPt): for each vehicle, where a press opens it, starts or stops
+ * it, or picks the whole vehicle up to drop on the sell button. Changes no game state.
+ * @param w A window; anything other than a depot window answers an empty list.
+ */
+std::vector<VehicleCell> DepotCells(const Window *w);
+
+/**
+ * The rows of a vehicle list window (the plain list or the groups window's vehicle list), found
+ * with its own hit test (the list's scrolled rows):
+ * a press on one opens that vehicle (or, grouped by shared orders, the group). Changes nothing.
+ * @param w A window; anything other than a vehicle list answers an empty list.
+ */
+std::vector<VehicleCell> VehicleListCells(const Window *w);
 
 } // namespace PrismaticMCP::Hooks
 

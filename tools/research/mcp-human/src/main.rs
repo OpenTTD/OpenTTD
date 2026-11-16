@@ -13,6 +13,7 @@
 mod actions;
 mod algoglyph;
 mod economy;
+mod fleet;
 mod hand;
 mod mcp;
 mod motion;
@@ -47,10 +48,15 @@ commands:
                              AlgoGlyph's track plan between them, laid with the rail tools, checked
   execute <actions.json|->   plan the actions with AlgoGlyph's action-plan kernel (DAG, cash per
                              step, refused when it would overdraw), show it, then do each step
-  game [<minutes>] [--borrow-below N] [--repay-above N] [--rail-above N]
+  renew <vehicle>             send the vehicle to its depot, buy a copy there (its orders copied),
+                             start the copy, sell the old one: all through the windows
+  sell <vehicle>             send the vehicle to its depot and sell it there
+  fleet                      the company's vehicles that are due (old, or losing money), as JSON
+  game [<minutes>] [--borrow-below N] [--repay-above N] [--rail-above N] [--renew-age DAYS]
                              run the company: expand, add buses where they earn, borrow (asking
                              the owner first) while money is under N, repay part of the loan
-                             while it is over N, watch";
+                             while it is over N, renew vehicles at DAYS (default: when the game
+                             calls them old) and sell ones losing money for two years, watch";
 
 fn arg_num<T: std::str::FromStr>(args: &[String], i: usize) -> Result<T, String> {
     args.get(i).ok_or_else(|| USAGE.to_string())?.parse::<T>().map_err(|_| format!("not a number: {}", args[i]))
@@ -139,6 +145,22 @@ fn run() -> Result<(), String> {
             hand.execute(actions.get("actions").unwrap_or(&actions))?;
             println!("ok: the plan was executed");
         }
+        "renew" | "sell" => {
+            let id: u64 = arg_num(&args, 1)?;
+            hand.require_tools()?;
+            let fate = if args[0] == "renew" { fleet::Fate::Renew } else { fleet::Fate::Sell };
+            let copy = hand.retire(id, fate)?;
+            println!("{}", fleet::report(id, fate, copy));
+            match copy {
+                Some(c) => println!("ok: vehicle {id} renewed by its copy {c}"),
+                None => println!("ok: vehicle {id} sold"),
+            }
+        }
+        "fleet" => {
+            let due = hand.due_vehicles(fleet::Rules::default())?;
+            let list: Vec<_> = due.iter().map(|(id, f, why)| json!({"vehicle": id, "fate": format!("{f:?}").to_lowercase(), "why": why})).collect();
+            println!("{}", serde_json::Value::Array(list));
+        }
         "game" => {
             let minutes: u64 = if args.len() > 1 { arg_num(&args, 1)? } else { 20 };
             let mut policy = economy::Policy::default();
@@ -153,6 +175,10 @@ fn run() -> Result<(), String> {
             // --repay-above N: pay part of the loan back whenever money is over N.
             if let Some(i) = args.iter().position(|a| a == "--repay-above") {
                 policy.repay_above = arg_num(&args, i + 1)?;
+            }
+            // --renew-age DAYS: renew vehicles from this age on, not only when the game calls them old.
+            if let Some(i) = args.iter().position(|a| a == "--renew-age") {
+                policy.fleet.renew_age = Some(arg_num(&args, i + 1)?);
             }
             let services = hand.play_game(minutes, policy)?;
             for s in &services {

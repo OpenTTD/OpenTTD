@@ -245,6 +245,17 @@ json WindowJson(const Window *w, bool widgets, std::string_view match = {})
 		}
 		out["items"] = std::move(dd);
 	}
+	/* Vehicles drawn in a depot or a vehicle list are not widgets either: say where each one is. */
+	auto cells = Hooks::DepotCells(w);
+	if (cells.empty()) cells = Hooks::VehicleListCells(w);
+	if (!cells.empty()) {
+		json vc = json::array();
+		for (const auto &c : cells) {
+			vc.push_back({{"vehicle", c.vehicle}, {"action", c.action}, {"count", c.count},
+				{"rect", Rect(c.rect.left, c.rect.top, c.rect.Width(), c.rect.Height())}});
+		}
+		out["vehicles"] = std::move(vc);
+	}
 	return out;
 }
 

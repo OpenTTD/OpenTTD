@@ -39,6 +39,10 @@
 
 #include "table/strings.h"
 
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+#include "prismatic_mcp/prismatic_mcp_hooks.h"
+#endif
+
 #include "safeguards.h"
 
 /*
@@ -1211,3 +1215,49 @@ void DeleteDepotHighlightOfVehicle(const Vehicle *v)
 		if (w->sel == v->index) ResetObjectToPlace();
 	}
 }
+
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+/* RESEARCH-ONLY (prismatic_mcp_hooks.h): where each vehicle of an open depot window is, probed with
+ * the window's own hit test so the cells are exactly where a press acts. The probe refreshes the
+ * window's vehicle list, as any click does; no game state changes. */
+std::vector<PrismaticMCP::Hooks::VehicleCell> PrismaticMCP::Hooks::DepotCells(const Window *cw)
+{
+	std::vector<VehicleCell> out;
+	DepotWindow *w = dynamic_cast<DepotWindow *>(const_cast<Window *>(cw));
+	if (w == nullptr) return out;
+	const NWidgetCore *matrix = w->GetWidget<NWidgetCore>(WID_D_MATRIX);
+	const int step = std::max<int>(1, w->resize.step_height);
+	for (int top = matrix->pos_y; top + step <= matrix->pos_y + static_cast<int>(matrix->current_y); top += step) {
+		const int y = top + step / 2;
+		VehicleCell run{};
+		bool open = false;
+		auto flush = [&](int right) {
+			if (!open) return;
+			run.rect.right = w->left + right;
+			out.push_back(run);
+			open = false;
+		};
+		for (int x = matrix->pos_x; x < matrix->pos_x + static_cast<int>(matrix->current_x); x++) {
+			auto r = w->GetVehicleFromDepotWndPt(x, y);
+			std::string_view action;
+			const Vehicle *v = r.vehicle;
+			switch (r.action) {
+				case DepotWindow::DepotGUIAction::StartStop: action = "start_stop"; break;
+				case DepotWindow::DepotGUIAction::ShowVehicle: action = "open"; break;
+				/* A train is picked up whole only by its front engine. */
+				case DepotWindow::DepotGUIAction::DragVehicle:
+					if (v != nullptr && (w->type != VehicleType::Train || r.wagon == v)) action = "drag";
+					break;
+				default: break;
+			}
+			if (open && (action.empty() || v == nullptr || v->index.base() != run.vehicle || action != run.action)) flush(x - 1);
+			if (!open && !action.empty() && v != nullptr) {
+				run = {v->index.base(), action, Rect{w->left + x, w->top + top, 0, w->top + top + step - 1}, 1};
+				open = true;
+			}
+		}
+		flush(matrix->pos_x + static_cast<int>(matrix->current_x) - 1);
+	}
+	return out;
+}
+#endif /* OTTD_PRISMATIC_MCP_SERVER */

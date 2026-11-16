@@ -38,11 +38,13 @@ pub struct Policy {
     pub rail_max_distance: f64,
     /// How many times the player borrows at most.
     pub max_borrows: usize,
+    /// When a vehicle is renewed or sold (crate::fleet).
+    pub fleet: crate::fleet::Rules,
 }
 
 impl Default for Policy {
     fn default() -> Self {
-        Policy { borrow_below: 20_000, expand_above: 35_000, max_buses: 5, waiting_per_bus: 25, repay_above: 150_000, rail_above: 120_000, max_rail_lines: 2, rail_max_distance: 90.0, max_borrows: 3 }
+        Policy { borrow_below: 20_000, expand_above: 35_000, max_buses: 5, waiting_per_bus: 25, repay_above: 150_000, rail_above: 120_000, max_rail_lines: 2, rail_max_distance: 90.0, max_borrows: 3, fleet: crate::fleet::Rules::default() }
     }
 }
 
@@ -125,6 +127,14 @@ impl Hand {
         Ok([at(s.stops[0]), at(s.stops[1])])
     }
 
+    /// Whether a vehicle (as openttd://vehicles lists it) runs between a service's two stops.
+    fn serves(&self, v: &Value, s: &Service) -> Result<bool, String> {
+        let ids = self.service_stations(s)?;
+        let dests: Vec<Option<u64>> = v.get("orders").and_then(Value::as_array).cloned().unwrap_or_default().iter()
+            .map(|o| o.get("destination").and_then(Value::as_u64)).collect();
+        Ok(ids.iter().all(|id| id.is_some() && dests.contains(id)))
+    }
+
     /// The earnings of the buses that serve a pair of stops (sum of this year's profits).
     fn service_profit(&self, s: &Service) -> Result<(usize, i64), String> {
         let ids = self.service_stations(s)?;
@@ -188,6 +198,8 @@ impl Hand {
         let rail_ready = std::env::var("MCP_PLAN").is_ok_and(|p| std::path::Path::new(&p).exists())
             && std::env::var("MCP_ALGOGLYPH_DIR").is_ok_and(|p| std::path::Path::new(&p).join("package.json").exists());
         let mut borrows = 0;
+        // Vehicles already sent for renewal or sale: one attempt each, whatever happened.
+        let mut retired: Vec<u64> = Vec::new();
         let mut may_borrow: Option<bool> = None;
         self.require_tools()?;
         self.look_around()?;
@@ -228,6 +240,35 @@ impl Hand {
                     self.say(&format!("could not borrow: {e}"));
                     let _ = self.escape();
                     let _ = self.tidy();
+                }
+                continue;
+            }
+            // Keep the fleet young and paying: one due vehicle per turn, renewed only with the money
+            // for a copy, sold either way when it loses money.
+            if let Some((id, fate, why)) = self.due_vehicles(policy.fleet)?.into_iter()
+                .find(|(id, f, _)| !retired.contains(id) && (*f == crate::fleet::Fate::Sell || money >= policy.expand_above / 2)) {
+                retired.push(id);
+                self.tell(&format!("vehicle {id} {why}: {}", if fate == crate::fleet::Fate::Renew { "renew it" } else { "sell it" }));
+                let served = self.vehicle(id).ok();
+                match self.retire(id, fate) {
+                    Ok(None) => {
+                        // A sold bus no longer counts for the service it ran.
+                        if let Some(v) = served {
+                            for s in services.iter_mut() {
+                                if self.serves(&v, s)? && s.buses > 0 {
+                                    s.buses -= 1;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    Ok(Some(_)) => {}
+                    Err(e) if game_closed(&e) => return Err(e),
+                    Err(e) => {
+                        self.say(&format!("could not retire vehicle {id}: {e}"));
+                        let _ = self.escape();
+                        let _ = self.tidy();
+                    }
                 }
                 continue;
             }

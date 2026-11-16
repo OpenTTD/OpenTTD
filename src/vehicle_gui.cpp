@@ -48,6 +48,11 @@
 
 #include "table/strings.h"
 
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+#include "prismatic_mcp/prismatic_mcp_hooks.h"
+#include "widgets/group_widget.h"
+#endif
+
 #include "safeguards.h"
 
 
@@ -3669,3 +3674,29 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 
 	UpdateCursorSize();
 }
+
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+/* RESEARCH-ONLY (prismatic_mcp_hooks.h): the rows of an open vehicle list (the plain list, or the
+ * vehicle part of the groups window the toolbar opens by default), resolved with the list's own
+ * scrolled-row hit test, so each row is where a press opens that vehicle. Reads only. */
+std::vector<PrismaticMCP::Hooks::VehicleCell> PrismaticMCP::Hooks::VehicleListCells(const Window *cw)
+{
+	std::vector<VehicleCell> out;
+	const BaseVehicleListWindow *w = dynamic_cast<const BaseVehicleListWindow *>(cw);
+	if (w == nullptr || w->vscroll == nullptr) return out;
+	const WidgetID id = dynamic_cast<const VehicleListWindow *>(cw) != nullptr ? WidgetID{WID_VL_LIST} : WidgetID{WID_GL_LIST_VEHICLE};
+	const NWidgetBase *list = w->GetWidget<NWidgetBase>(id);
+	if (list == nullptr) return out;
+	const int step = std::max<int>(1, list->resize_y);
+	for (int top = list->pos_y; top + step <= list->pos_y + static_cast<int>(list->current_y); top += step) {
+		auto it = w->vscroll->GetScrolledItemFromWidget(w->vehgroups, top + step / 2, w, id);
+		if (it == w->vehgroups.end()) break;
+		const GUIVehicleGroup &g = *it;
+		const bool single = w->grouping == BaseVehicleListWindow::GB_NONE;
+		out.push_back({(*g.vehicles_begin)->index.base(), single ? "open" : "open_group",
+			Rect{w->left + list->pos_x, w->top + top, w->left + list->pos_x + static_cast<int>(list->current_x) - 1, w->top + top + step - 1},
+			static_cast<uint>(g.NumVehicles())});
+	}
+	return out;
+}
+#endif /* OTTD_PRISMATIC_MCP_SERVER */
