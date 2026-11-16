@@ -51,10 +51,11 @@ check() {
 }
 
 echo "==> headless stack (panel $URL, seed $SEED)"
+# Up to 10 min: with MCP_PANEL=rust, mcp-e2e first builds the Rust panel.
 "$ROOT_DIR/tools/research/mcp-e2e" --bin "$BIN" --no-gui --no-browser --panel-port "$PANEL_PORT" \
   --mcp-port "$MCP_PORT" --game-port "$GAME_PORT" --seed "$SEED" > "$WORK/stack.log" 2>&1 &
 PIDS+=($!)
-for ((i = 0; i < 120; i++)); do curl -s "$URL/api/status" 2>/dev/null | grep -q '"mcp_up": true' && break; sleep 1; done
+for ((i = 0; i < 600; i++)); do curl -s "$URL/api/status" 2>/dev/null | grep -q '"mcp_up": true' && break; sleep 1; done
 check "the panel's game is up" "$(curl -s "$URL/api/status" 2>/dev/null | grep -q '"mcp_up": true' && echo 1 || echo 0)"
 
 echo "==> a client with its own MCP server types 'ask ...' in its console"
