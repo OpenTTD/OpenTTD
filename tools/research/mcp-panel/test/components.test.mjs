@@ -74,3 +74,57 @@ test('the audit summary counts audited, skipped and duplicate pairs', async () =
   assert.equal(scrollOp([{ id: 'x' }, { id: 'tool:openttd.view.scroll_to' }]).id, 'tool:openttd.view.scroll_to');
   assert.equal(scrollOp([{ id: 'x' }]), undefined);
 });
+
+import { degrees, worldGraphOption, waitingOption, moneyOption, KINDS, PALETTE } from '../static/components.js';
+
+const world = { schema: 'world-graph/v1',
+  nodes: [
+    { id: 'town:1', kind: 'town', name: 'A', x: 10, y: 10 }, { id: 'town:2', kind: 'town', name: 'B', x: 40, y: 12 },
+    { id: 'station:5', kind: 'station', name: 'A Stop', x: 11, y: 10, waiting: [{ cargo: 0, count: 30 }] },
+    { id: 'station:6', kind: 'station', name: 'B Stop', x: 39, y: 12, waiting: [] },
+    { id: 'vehicle:9', kind: 'vehicle', name: 'Bus', x: 20, y: 11 } ],
+  edges: [
+    { from: 'station:5', to: 'town:1', kind: 'serves_town' }, { from: 'station:6', to: 'town:2', kind: 'serves_town' },
+    { from: 'vehicle:9', to: 'station:5', kind: 'order', seq: 0 }, { from: 'vehicle:9', to: 'station:6', kind: 'order', seq: 1 },
+    { from: 'station:5', to: 'station:6', kind: 'cargo_link', usage: 7 } ] };
+
+test('the world graph becomes a map-placed ECharts graph with every node and edge kept', () => {
+  const o = worldGraphOption(world);
+  const s = o.series[0];
+  assert.equal(s.layout, 'none');
+  assert.equal(s.data.length, 5);
+  assert.equal(s.links.length, 5);
+  assert.deepEqual(s.data.find((n) => n.id === 'town:2').x, 40);
+  assert.equal(s.data.find((n) => n.id === 'vehicle:9').category, KINDS.indexOf('vehicle'));
+  assert.deepEqual(o.color, PALETTE.dark);
+});
+
+test('kinds filter nodes and drop edges to hidden nodes; labels go to the highest degree only', () => {
+  const s = worldGraphOption(world, { kinds: ['town', 'station'], labels: 1 }).series[0];
+  assert.ok(s.data.every((n) => n.id.startsWith('town') || n.id.startsWith('station')));
+  assert.ok(s.links.every((l) => !l.source.startsWith('vehicle') && !l.target.startsWith('vehicle')));
+  assert.equal(s.data.filter((n) => n.label.show).length, 1);
+});
+
+test('force mode uses the given positions', () => {
+  const s = worldGraphOption(world, { mode: 'force', positions: new Map([['town:1', [100, 200]]]) }).series[0];
+  const t = s.data.find((n) => n.id === 'town:1');
+  assert.deepEqual([t.x, t.y], [100, 200]);
+});
+
+test('degrees count both ends of every edge', () => {
+  assert.equal(degrees(world.edges).get('station:5'), 3);
+});
+
+test('waiting bars list only stations with cargo, most first', () => {
+  const o = waitingOption(world);
+  assert.deepEqual(o.yAxis.data, ['A Stop']);
+  assert.equal(o.series[0].data[0].value, 30);
+});
+
+test('money series has one line per company over the samples', () => {
+  const o = moneyOption([{ t: 1, companies: [{ id: 0, name: 'Co', money: 5 }] }, { t: 2, companies: [{ id: 0, name: 'Co', money: 7 }] }]);
+  assert.equal(o.series.length, 1);
+  assert.deepEqual(o.series[0].data, [[1, 5], [2, 7]]);
+  assert.equal(o.dataZoom[0].zoomOnMouseWheel, 'ctrl');
+});

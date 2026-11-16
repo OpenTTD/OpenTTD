@@ -20,4 +20,11 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16
+updated_at: 2026-11-16T02:06:11Z
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "node --test tools/research/mcp-panel/test/components.test.mjs; verify-ssr.mjs on live world graph; curl /viz, /vendor/npm/*"
+    result: "partial: node tests 13/13; ECharts SSR on a live world graph (72 nodes, 58 edges) drew the graph (197 paths, 28 labels) and the waiting bars; hub serves /viz, three, d3 and refuses traversal. NOT RUN: the page in a browser (WebGL terrain, clicks, maximize) - the browser extension was disconnected."
+    commit: 361d9f2134f3a89e8e7e5e13eced436ffe55668d
+    recorded_at: 2026-11-16T02:06:11Z

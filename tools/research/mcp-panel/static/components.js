@@ -281,3 +281,130 @@ export function auditView(container, results, { onStation } = {}) {
   container.replaceChildren(head, ...rows);
   return s;
 }
+
+/* ---- the visual layer: one door for every chart (I0048) ----------------------------------- */
+
+/** The validated categorical palette (8 slots), light and dark. */
+export const PALETTE = {
+  light: ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#6250d6', '#e34948'],
+  dark: ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'],
+};
+
+/** Node kinds of world-graph/v1, in legend order. */
+export const KINDS = ['town', 'industry', 'station', 'vehicle'];
+
+/** Degree of every node id in a graph's edge list. */
+export function degrees(edges) {
+  const d = new Map();
+  for (const e of edges) { d.set(e.from, (d.get(e.from) || 0) + 1); d.set(e.to, (d.get(e.to) || 0) + 1); }
+  return d;
+}
+
+/**
+ * An ECharts graph option from a world-graph/v1 document (openttd://world/graph). Pure.
+ * mode 'map' places every node at its tile (y grows downwards, as on the map); mode 'force' uses
+ * positions computed elsewhere (positions: Map id -> [x, y]). kinds limits which node kinds are
+ * shown; labels go to the `labels` nodes of highest degree only, so the view never opens on a
+ * wall of text. Every node keeps its id, so a click leads to its details.
+ */
+export function worldGraphOption(graph, { mode = 'map', positions = new Map(), kinds = KINDS, labels = 30, dark = true } = {}) {
+  const shown = new Set(graph.nodes.filter((n) => kinds.includes(n.kind)).map((n) => n.id));
+  const deg = degrees(graph.edges.filter((e) => shown.has(e.from) && shown.has(e.to)));
+  const labelled = new Set([...shown].sort((a, b) => (deg.get(b) || 0) - (deg.get(a) || 0)).slice(0, labels));
+  const nodes = graph.nodes.filter((n) => shown.has(n.id)).map((n) => {
+    const [x, y] = mode === 'force' && positions.has(n.id) ? positions.get(n.id) : [n.x, n.y];
+    return {
+      id: n.id, name: n.name || n.id, x, y, category: KINDS.indexOf(n.kind),
+      symbolSize: 4 + 3 * Math.sqrt(deg.get(n.id) || 0), value: deg.get(n.id) || 0,
+      label: { show: labelled.has(n.id) },
+    };
+  });
+  const links = graph.edges.filter((e) => shown.has(e.from) && shown.has(e.to))
+    .map((e) => ({ source: e.from, target: e.to, value: e.kind, lineStyle: e.kind === 'cargo_link' ? { width: 1 + Math.log2(1 + (e.usage || 0)) } : {} }));
+  const palette = dark ? PALETTE.dark : PALETTE.light;
+  return {
+    color: palette,
+    tooltip: { formatter: (p) => (p.dataType === 'edge' ? p.data.value : `${p.data.name} (${p.data.value} links)`) },
+    legend: { data: KINDS, textStyle: { color: dark ? '#d1d5db' : '#374151' } },
+    series: [{
+      type: 'graph', layout: 'none', roam: 'move', zoom: 1,
+      categories: KINDS.map((k) => ({ name: k })),
+      data: nodes, links, edgeSymbol: ['none', 'arrow'], edgeSymbolSize: 4,
+      labelLayout: { hideOverlap: true }, emphasis: { focus: 'adjacency' },
+      label: { position: 'right', color: dark ? '#e5e7eb' : '#111827', fontSize: 11 },
+      lineStyle: { opacity: 0.35, curveness: 0.1 },
+    }],
+  };
+}
+
+/** Bars of the stations with the most waiting cargo, from a world-graph/v1 document. Pure. */
+export function waitingOption(graph, { top = 12, dark = true } = {}) {
+  const rows = graph.nodes.filter((n) => n.kind === 'station')
+    .map((n) => ({ id: n.id, name: n.name, total: (n.waiting || []).reduce((s, w) => s + (w.count || 0), 0) }))
+    .filter((r) => r.total > 0).sort((a, b) => b.total - a.total).slice(0, top).reverse();
+  return {
+    color: dark ? PALETTE.dark : PALETTE.light,
+    grid: { left: 140, right: 24, top: 16, bottom: 24 },
+    tooltip: { trigger: 'axis' },
+    xAxis: { type: 'value', name: 'waiting' },
+    yAxis: { type: 'category', data: rows.map((r) => r.name), axisLabel: { width: 130, overflow: 'truncate', ellipsis: '…' } },
+    series: [{ type: 'bar', data: rows.map((r) => ({ value: r.total, id: r.id })) }],
+  };
+}
+
+/** A time series of each company's money, from samples [{t, companies:[{id, name, money}]}]. Pure. */
+export function moneyOption(samples, { dark = true } = {}) {
+  const ids = [...new Set(samples.flatMap((s) => s.companies.map((c) => c.id)))];
+  return {
+    color: dark ? PALETTE.dark : PALETTE.light,
+    tooltip: { trigger: 'axis' },
+    legend: { textStyle: { color: dark ? '#d1d5db' : '#374151' } },
+    grid: { left: 64, right: 24, top: 36, bottom: 56 },
+    xAxis: { type: 'time' },
+    yAxis: { type: 'value', name: 'money' },
+    dataZoom: [{ type: 'inside', zoomOnMouseWheel: 'ctrl', moveOnMouseWheel: false }, { type: 'slider' }],
+    series: ids.map((id) => ({
+      type: 'line', showSymbol: false,
+      name: samples.flatMap((s) => s.companies).find((c) => c.id === id)?.name || `company ${id}`,
+      data: samples.map((s) => [s.t, s.companies.find((c) => c.id === id)?.money ?? null]),
+    })),
+  };
+}
+
+/**
+ * The one door: every chart of the panel's pages starts here. Refuses a hidden or zero-width box
+ * (it would draw at zero size), names the chart for assistive technology from the box's
+ * aria-label, animates unless the reader asked for reduced motion, and follows the box's size.
+ */
+export function ecInit(box, echarts) {
+  if (!box || box.offsetWidth === 0 || box.offsetHeight === 0) return null;
+  const reduced = globalThis.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const chart = echarts.getInstanceByDom(box) || echarts.init(box, null, { renderer: 'canvas' });
+  const set = chart.setOption.bind(chart);
+  chart.setOption = (option, ...rest) => set({
+    animation: !reduced, animationDuration: 850, animationEasing: 'cubicOut', animationDurationUpdate: 380,
+    animationDelay: (i) => Math.min(i * 14, 420),
+    aria: { enabled: true, label: { description: box.getAttribute('aria-label') || '' } },
+    ...option,
+  }, ...rest);
+  if (globalThis.ResizeObserver && !box._resizer) { box._resizer = new ResizeObserver(() => chart.resize()); box._resizer.observe(box); }
+  return chart;
+}
+
+/**
+ * A card that maximizes to the viewport and back: the button, Escape and the address (key `max`)
+ * all agree, so a maximized view is a link. `onResize` redraws the content to its new box.
+ */
+export function maximizable(card, key, { getState, setState, onResize } = {}) {
+  const apply = (on) => {
+    card.classList.toggle('fixed', on); card.classList.toggle('inset-0', on); card.classList.toggle('z-50', on);
+    card.classList.toggle('m-0', on); card.classList.toggle('overflow-auto', on);
+    document.body.classList.toggle('overflow-hidden', on);
+    if (setState) setState({ max: on ? key : undefined });
+    if (onResize) setTimeout(onResize, 30);
+  };
+  const button = el('button', { type: 'button', class: CLS.secondary, onclick: () => apply(!card.classList.contains('fixed')) }, 'Maximize');
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && card.classList.contains('fixed')) { apply(false); button.focus(); } });
+  if (getState && getState().max === key) apply(true);
+  return button;
+}

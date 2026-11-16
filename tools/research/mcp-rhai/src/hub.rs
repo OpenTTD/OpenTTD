@@ -772,6 +772,26 @@ fn serve_http(state: Shared, mut stream: TcpStream, statics: &Path) {
             }
             Err(e) => respond(stream, 400, json_ct, json!({"error": e.to_string()}).to_string().as_bytes()),
         },
+        ("GET", p) if p.starts_with("/vendor/npm/") => {
+            // The panel's own front-end packages (npm ci in tools/research/mcp-panel), allow-listed, so
+            // a page can load a library without the hub shipping or the repository committing a copy.
+            const PACKAGES: [&str; 4] = ["echarts", "three", "d3", "flowbite"];
+            let rel = &p["/vendor/npm/".len()..];
+            let pkg = rel.split('/').next().unwrap_or("");
+            if rel.contains("..") || !PACKAGES.contains(&pkg) { return respond(stream, 404, json_ct, br#"{"error":"not found"}"#); }
+            let f = statics.join("../node_modules").join(rel);
+            let ctype = match f.extension().and_then(|e| e.to_str()) {
+                Some("js" | "mjs") => "text/javascript", Some("css") => "text/css", Some("map" | "json") => "application/json", _ => "application/octet-stream",
+            };
+            match std::fs::read(&f) {
+                Ok(b) => respond(stream, 200, ctype, &b),
+                Err(_) => respond(stream, 404, json_ct, br#"{"error":"not found (npm ci in tools/research/mcp-panel)"}"#),
+            }
+        }
+        ("GET", "/viz") => match std::fs::read(statics.join("viz.html")) {
+            Ok(b) => respond(stream, 200, "text/html; charset=utf-8", &b),
+            Err(_) => respond(stream, 404, json_ct, br#"{"error":"viz.html not found"}"#),
+        },
         ("GET", p) if p.starts_with("/static/") => {
             let rel = &p["/static/".len()..];
             if rel.contains("..") || rel.starts_with('/') { return respond(stream, 404, json_ct, b"{}"); }

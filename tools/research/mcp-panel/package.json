@@ -3,8 +3,10 @@
   "private": true,
   "description": "RESEARCH-ONLY local control panel for the embedded MCP server",
   "devDependencies": {
+    "d3": "^7.9.0",
     "echarts": "^6.1.0",
     "flowbite": "^4.0.1",
-    "swagger-ui-dist": "^5.35.0"
+    "swagger-ui-dist": "^5.35.0",
+    "three": "^0.187.0"
   }
 }

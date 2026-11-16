@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World View</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <script type="importmap">
+    { "imports": {
+      "three": "/vendor/npm/three/build/three.module.js",
+      "three/addons/": "/vendor/npm/three/examples/jsm/"
+    } }
+  </script>
+  <script src="/vendor/npm/echarts/dist/echarts.min.js"></script>
+  <script src="/vendor/npm/d3/dist/d3.min.js"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 antialiased">
+  <nav class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a href="/" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Hub</a>
+          <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">World View</span>
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
+          <span id="conn" class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">connecting</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <label for="instance" class="text-sm text-gray-500 dark:text-gray-400">Instance</label>
+          <select id="instance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="px-4 pt-20 max-w-screen-2xl">
+    <p class="text-xs text-gray-500 dark:text-gray-400">Everything here is read live through the hub from the instance's own MCP resources (openttd://world/graph, openttd://map, openttd://map/ways, openttd://companies). Parameters are in the address, so a view is a link; every card maximizes, Escape restores.</p>
+    <div id="graph-card" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div class="flex items-center justify-between mb-3 gap-2">
+        <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">World graph</h2>
+        <div id="graph-controls" class="flex items-center gap-2"></div>
+      </div>
+      <div class="grid gap-4 xl:grid-cols-3">
+        <div id="graph" class="xl:col-span-2 w-full h-[32rem]" role="img" aria-label="The world as a graph: towns, industries, stations and vehicles with their links"></div>
+        <div id="details" class="text-sm text-gray-700 dark:text-gray-300"></div>
+      </div>
+    </div>
+    <div class="grid gap-4 xl:grid-cols-2">
+      <div id="terrain-card" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div class="flex items-center justify-between mb-3 gap-2">
+          <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Terrain and roads</h2>
+          <div id="terrain-controls" class="flex items-center gap-2"></div>
+        </div>
+        <div id="terrain" class="w-full h-[28rem]" role="img" aria-label="The map in three dimensions from tile heights, coloured by tile type, with road ways drawn"></div>
+      </div>
+      <div id="economy-card" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div class="flex items-center justify-between mb-3 gap-2">
+          <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Economy</h2>
+          <div id="economy-controls" class="flex items-center gap-2"></div>
+        </div>
+        <div id="money" class="w-full h-64" role="img" aria-label="Each company's money over time while this page is open"></div>
+        <div id="waiting" class="w-full h-64" role="img" aria-label="Stations with the most cargo waiting"></div>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="/static/viz.js"></script>
+</body>
+</html>
