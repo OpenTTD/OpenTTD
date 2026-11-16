@@ -391,44 +391,91 @@ class Game:
         return out
 
     # ------------------------------------------------------------------ the owner's bot
+    @staticmethod
+    def _info_settings(text):
+        """Settings as an AI's info.nut declares them, in openttd.ai.list's shape (flags, labels,
+        value = the default, editable), so the panel draws one kind of control for either source."""
+        labels = {}
+        for name, body in re.findall(r'AddLabels\(\s*"([^"]+)"\s*,\s*\{(.*?)\}\s*\)', text, re.S):
+            labels[name] = {k: v for k, v in re.findall(r'_(-?\d+)\s*=\s*"([^"]*)"', body)}
+        out = []
+        for block in re.findall(r"AddSetting\(\{(.*?)\}\);", text, re.S):
+            def field(k, cast=str):
+                v = re.search(rf"\b{k}\s*=\s*(\"[^\"]*\"|[^,\n]+)", block)
+                return cast(v.group(1).strip().strip('"')) if v else None
+            flags_text = field("flags") or ""
+            flags = [f for f, token in (("boolean", "CONFIG_BOOLEAN"), ("in_game", "CONFIG_INGAME"), ("developer", "CONFIG_DEVELOPER")) if token in flags_text]
+            name = field("name")
+            default = field("custom_value", int)
+            mn, mx = field("min_value", int), field("max_value", int)
+            if "boolean" in flags:
+                mn, mx = 0, 1
+            out.append({"name": name, "description": field("description"), "min": mn, "max": mx,
+                        "step": field("step_size", int) or 1, "default": default, "flags": flags,
+                        "labels": labels.get(name, {}), "value": default, "editable": True,
+                        "ingame": "in_game" in flags})
+        return out
+
     def bots(self):
-        """The AIs the owner can run as their representative, with their settings. From MCP when
-        the game offers openttd.ai.list; until then derived from each AI's info.nut."""
-        if "openttd.ai.list" in self.tool_names():
-            # openttd.ai.list (openttd-59): {companies: [{company, running, ai, settings: [{name, min, max,
-            # default, flags, value, editable, description}]}], available: [{name, ...}], ...}; mapped to
-            # what the My bot card reads: ais (with each setting's in_game flag) and running companies.
-            data = self.tool("openttd.ai.list", {})
-            names = {c["id"]: c for c in self.resource("openttd://companies").get("data", {}).get("companies", [])}
-            ais, running = {}, []
-            for c in data.get("companies", []):
-                if not c.get("running"):
-                    continue
-                info = names.get(c.get("company"), {})
-                running.append({"id": c.get("company"), "name": info.get("name"), "money": info.get("money"), "ai": c.get("ai")})
-                ais[c.get("ai")] = {"ai": c.get("ai"), "settings": [
-                    {"name": st.get("name"), "description": st.get("description"), "min": st.get("min"), "max": st.get("max"),
-                     "default": st.get("default"), "value": st.get("value"), "ingame": "in_game" in (st.get("flags") or [])}
-                    for st in c.get("settings", [])]}
-            for a in data.get("available", []):
-                ais.setdefault(a.get("name"), {"ai": a.get("name"), "settings": []})
-            return {"source": "mcp:openttd.ai.list", "ais": list(ais.values()), "running": running, "data": data}
+        """The AIs the owner can run as their representative, with their settings, and the running AI
+        companies with the value each setting has now. One shape whatever the source: from
+        openttd.ai.list when the game offers it (values read from the running scripts), else from
+        each AI's info.nut (defaults only, and no live change possible)."""
+        tools = self.tool_names()
         ais = []
         for info in sorted(AI_DIR.glob("*/info.nut")):
             text = info.read_text(errors="replace")
             m = re.search(r'GetName\(\)\s*\{\s*return\s*"([^"]+)"', text)
-            settings = []
-            for block in re.findall(r"AddSetting\(\{(.*?)\}\);", text, re.S):
-                def field(k, cast=str):
-                    v = re.search(rf"\b{k}\s*=\s*(\"[^\"]*\"|[^,\n]+)", block)
-                    return cast(v.group(1).strip().strip('"')) if v else None
-                settings.append({"name": field("name"), "description": field("description"),
-                                 "min": field("min_value", int), "max": field("max_value", int),
-                                 "step": field("step_size", int) or 1, "default": field("custom_value", int),
-                                 "ingame": "CONFIG_INGAME" in (field("flags") or "")})
-            ais.append({"ai": m.group(1) if m else info.parent.name, "dir": info.parent.name, "settings": settings})
-        running = [c for c in self.resource("openttd://companies").get("data", {}).get("companies", []) if c.get("is_ai")]
-        return {"source": "info.nut (openttd.ai.list not in tools/list yet)", "ais": ais, "running": running}
+            ais.append({"ai": m.group(1) if m else info.parent.name, "dir": info.parent.name, "settings": self._info_settings(text)})
+        companies = {c.get("id"): c for c in self.resource("openttd://companies").get("data", {}).get("companies", []) if c.get("is_ai")}
+        running = []
+        source = "info.nut (openttd.ai.list not in tools/list yet)"
+        if "openttd.ai.list" in tools:
+            data = self.tool("openttd.ai.list", {})
+            data = data.get("data", data) if isinstance(data, dict) else {}
+            source = "mcp:openttd.ai.list"
+            # an AI installed but without an info.nut under AI_DIR still appears, with no settings to set
+            known = {a["ai"] for a in ais}
+            for a in data.get("available", []):
+                if a.get("name") not in known:
+                    ais.append({"ai": a.get("name"), "dir": None, "settings": []})
+            for c in data.get("companies", []):
+                base = companies.get(c.get("company"), {})
+                for st in c.get("settings", []):
+                    st["ingame"] = "in_game" in st.get("flags", [])
+                running.append({"id": c.get("company"), "name": base.get("name", ""), "money": base.get("money"),
+                                "ai": c.get("ai"), "running": c.get("running"), "settings": c.get("settings", [])})
+        else:
+            for cid, c in companies.items():
+                running.append({"id": cid, "name": c.get("name", ""), "money": c.get("money"), "ai": None, "running": True, "settings": []})
+        return {"source": source, "ais": ais, "running": running,
+                "live": {"list": "openttd.ai.list" in tools, "set_setting": "openttd.ai.set_setting" in tools}}
+
+    def bot_choices(self):
+        """What a town, industry or cargo setting may name: towns from openttd://towns (by
+        population), and from openttd://world/graph where the game serves it, industries with what
+        they produce and accept and every cargo they name. A kind the game cannot list is empty,
+        and the panel then shows a number box for it instead of a picker with nothing in it."""
+        towns, industries, cargos = [], [], {}
+        t = self.resource("openttd://towns")
+        for n in (t.get("data", t) if isinstance(t, dict) else {}).get("towns", []) or []:
+            towns.append({"id": n.get("id"), "name": n.get("name", f"town {n.get('id')}"), "population": n.get("population", 0)})
+        g = self.resource("openttd://world/graph")
+        g = g.get("data", g) if isinstance(g, dict) else {}
+        for n in g.get("nodes", []) or []:
+            kind, _, idx = str(n.get("id", "")).partition(":")
+            if kind == "town" and not towns:
+                towns.append({"id": int(idx), "name": n.get("name", f"town {idx}"), "population": n.get("population", 0)})
+            elif kind == "industry":
+                industries.append({"id": int(idx), "name": n.get("name", f"industry {idx}"),
+                                   "produces": [p.get("name") for p in n.get("produces", []) or []],
+                                   "accepts": [a.get("name") for a in n.get("accepts", []) or []]})
+                for c in (n.get("produces", []) or []) + (n.get("accepts", []) or []):
+                    if c.get("cargo") is not None:
+                        cargos[int(c["cargo"])] = c.get("name", f"cargo {c['cargo']}")
+        towns.sort(key=lambda x: -(x["population"] or 0))
+        industries.sort(key=lambda x: x["name"])
+        return {"town": towns, "industry": industries, "cargo": [{"id": k, "name": v} for k, v in sorted(cargos.items(), key=lambda kv: kv[1])]}
 
     def start_bot(self, ai, settings):
         flat = ",".join(f"{k}={int(v)}" for k, v in settings.items())
@@ -441,7 +488,8 @@ class Game:
 
     def set_bot_setting(self, company, name, value):
         if "openttd.ai.set_setting" not in self.tool_names():
-            return {"error": "the running game has no openttd.ai.set_setting tool yet; start a bot with new settings instead"}
+            return {"error": "this game binary has no openttd.ai.set_setting: a running bot's settings cannot change; start a bot with the new settings instead",
+                    "fallback": "start"}
         return self.tool("openttd.ai.set_setting", {"company": int(company), "name": name, "value": int(value)})
 
     def _auto_loop(self):
@@ -808,6 +856,8 @@ def make_routes(game):
          s({"ai": {"type": "string"}, "settings": {"type": "string"}}), start_ai),
         ("GET", "/api/bots", "bots", "The AIs the owner can run as their bot, their settings (from openttd.ai.list, else info.nut) and the running AI companies", True,
          None, lambda q: (200, game.bots())),
+        ("GET", "/api/bots/choices", "botChoices", "What a bot setting naming a town, industry or cargo may name, from openttd://world/graph (towns by population, industries with their cargos, every cargo)", True,
+         None, lambda q: (200, game.bot_choices())),
         ("POST", "/api/bots/start", "botStart", "Start the owner's bot: an AI with a settings map", False,
          s({"ai": {"type": "string"}, "settings": OBJ}, ["ai"]), lambda b: (200, game.start_bot(b["ai"], b.get("settings", {})))),
         ("POST", "/api/bots/setting", "botSetting", "Change one setting of a running bot (openttd.ai.set_setting, approval-gated)", True,

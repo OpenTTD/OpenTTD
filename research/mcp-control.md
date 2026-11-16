@@ -148,7 +148,21 @@ then from each AI's `info.nut` (`AddSetting` blocks: name, description, range, d
 |---|---|
 | `GET /api/bots` | the AIs, their settings, and the AI companies running now |
 | `POST /api/bots/start` `{ai, settings}` | start the bot (`openttd.ai.start` when the game has it, else `start_ai`) |
-| `POST /api/bots/setting` `{company, name, value}` | change a live setting through `openttd.ai.set_setting`, approval-gated |
+| `GET /api/bots/choices` | what a town, industry or cargo setting may name: towns from `openttd://towns`, industries and cargos from `openttd://world/graph` where the game serves it |
+| `POST /api/bots/setting` `{company, name, value}` | change a live setting through `openttd.ai.set_setting`, approval-gated; without that tool it answers `{error, fallback: "start"}` |
+
+`/api/bots` has one shape whatever the source: each setting carries `min`, `max`, `step`,
+`default`, `flags` (`boolean`, `in_game`, `developer`), `labels`, `value` and `editable`, and
+`running` lists each AI company with the values its script reads now (from `openttd.ai.list`;
+from `info.nut` only the defaults). `live` says whether the game can list and set them.
+
+The card draws one control per setting from what the setting declares, never from a list kept by
+hand: a `boolean` flag is a toggle, labels are a select, a description naming a `(town id`,
+`(industry id` or `(cargo id` is a searchable picker over the live world (a plain number box when
+the game cannot list that kind), and any other range is a slider paired with a number box. A
+running bot shows the same controls bound to its current values with an Apply each; a change reads
+*waiting for approval #N* until the operator approves it, *applied* only once `openttd.ai.list`
+reads the new value back, and then offers an undo, which is the reverse change asking again.
 
 `PrismaticAI` (`~/dev/openttd-prismatic-bridge/ai/PrismaticAI`) reads `aggressiveness` (buses per
 route), `max_routes` (towns served) and `cash_reserve` (money kept) again at every heartbeat. Its
