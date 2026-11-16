@@ -12,6 +12,7 @@
     <div class="px-3 py-3 lg:px-5">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
+          <button data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" type="button" class="p-2 text-gray-600 rounded-sm cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><span class="sr-only">Toggle sidebar</span><svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button>
           <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">MCP Hub</span>
           <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
           <span id="conn" class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">connecting</span>
@@ -25,7 +26,25 @@
     </div>
   </nav>
 
-  <main class="px-4 pt-20 max-w-screen-2xl">
+  <aside id="sidebar" class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 w-64 h-full pt-16 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+    <div class="flex-1 px-3 pt-5 pb-4 overflow-y-auto">
+      <ul class="space-y-2 font-medium">
+        <li><a href="/" aria-current="page" class="flex items-center p-2 text-base text-gray-900 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Hub: every instance</a></li>
+        <li><a href="#instances" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Instances</a></li>
+        <li><a href="#catalogue" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Every operation</a></li>
+        <li><a href="#audit" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Duplicate buildings and capacity</a></li>
+        <li><a href="#events" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Live events</a></li>
+        <li><a href="/viz" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">World view</a></li>
+        <li><a href="/docs" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">API (OpenAPI)</a></li>
+      </ul>
+      <div class="pt-4 mt-4 space-y-2 text-sm text-gray-500 border-t border-gray-200 dark:border-gray-700 dark:text-gray-400">
+        <p>Docs: <code>research/mcp-hub.md</code></p>
+        <p>GraphQL: <code>POST /graphql</code></p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="pt-20 px-4 pb-8 max-w-screen-2xl mx-auto lg:ml-64">
     <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
       <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Instances</h2>
       <p class="text-xs text-gray-500 dark:text-gray-400">From the instance registry and the hub's --panel list, refreshed as they come and go. Click one to narrow everything below to it.</p>
@@ -68,6 +87,7 @@
     </div>
   </main>
 
+  <script src="/vendor/npm/flowbite/dist/flowbite.min.js"></script>
   <script type="module">
     import { HubClient, parseHash, formatHash, catalogueView, instancesView, eventsView, jsonView, auditView, scrollOp } from '/static/components.js';
 

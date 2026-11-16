@@ -40,6 +40,12 @@ try {
   const rows = await page.locator('#instances tbody tr').count();
   check('every instance the hub lists is a row', rows === instances.length && rows > 0, `${rows} rows, ${instances.length} instances`);
 
+  const side = await page.evaluate(() => {
+    const a = document.querySelector('aside[aria-label="Sidebar"]');
+    return a ? [...a.querySelectorAll('a')].map((x) => x.getAttribute('href')) : null;
+  });
+  check('the Flowbite Pro sidebar is there and links the hub\'s pages', !!side && ['/viz', '/docs'].every((h) => side.includes(h)), side ? side.join(' ') : 'no aside');
+
   const counts = await page.locator('#counts').textContent();
   check('the header counts instances and operations', /instance\(s\), \d+ operation\(s\)/.test(counts || ''), counts);
 
