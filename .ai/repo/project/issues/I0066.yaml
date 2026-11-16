@@ -30,4 +30,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T17:25:28Z
+started_at: 2026-11-16T17:25:24Z
+started_event: sha256:ffc0069cf0deec48599193fa4a3542cefaba5909d4fd57d87f741af076e91caf
+verified_at: 2026-11-16T17:25:25Z
+verified_event: sha256:cb46c04d090db8b38a81f65c3026dff1f4e64c0a7b38ed816f983a7697ae19f0
+completed_at: 2026-11-16T17:25:28Z
+completed_event: sha256:d7b3bda94aec50c20215ac7438a16fdc96c3be729a010d5172608b0d48a6d9d9
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/knowledge/refs coverage src/; tools/knowledge/refs check; python3 -m unittest tools/knowledge/test_refs.py tools/knowledge/test_focused_context.py; majordomus context validate; majordomus adr check"
+    result: "refs coverage src/: 1575/1575 files attached, 0 uncovered. refs check: 2505 refs in 140 records, 0 failures. test_refs.py 13 OK; test_focused_context.py 3 OK (206s). 13 extracted upstream ADRs 0016-0028 (origin extracted, status proposed). context validate 0 problems/50 docs; adr check clean. New knowledge all status candidate."
+    commit: 3453e53e29dc2139ba7cd8f317754dbeb83b7c18
+    recorded_at: 2026-11-16T17:25:23Z
