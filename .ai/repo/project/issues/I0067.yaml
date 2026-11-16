@@ -29,4 +29,11 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T04:46:13Z
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "build-gate-research/openttd_test '[prismatic_mcp]'; tools/research/mcp-console-check"
+    result: "unit 148 assertions/12 cases pass (console parse/resolve/type/usage + merged menu + detail); mcp-console-check 11/11 against the merged binary: catalogue listed (4 tools, 14 resources), every tool answers help, every resource answers read with JSON, typed refusals hold, gated pause runs approve->execute through the command system"
+    commit: 012628311080322cfa9845f1a01389e7c8935a29
+    recorded_at: 2026-11-16T04:46:13Z
