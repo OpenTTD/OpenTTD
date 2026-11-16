@@ -94,6 +94,7 @@ state is part of the lockstep-simulated game state.
 
 ## Decisions, rules and knowledge
 
+- `Vehicle::fill_percent_te_id` is a client-local text effect id; game logic must never branch on it (knowledge candidate `text-effect-ids-are-client-local`).
 - Consists, groups, timetables, effect and disaster vehicles (which share the vehicle pool and the game random stream): [consists, groups and timetables](../consists-groups-and-timetables/README.md).
 - Signals and PBS reservations, including `CmdBuildSingleSignal` re-reserving a path inside the command: [rail, road and infrastructure](../rail-road-and-infrastructure/README.md).
 - YAPF's node list is built on `src/misc/binaryheap.hpp:CBinaryHeapT` and `src/misc/hashtable.hpp:HashTable`: [core utilities](../core-utilities/README.md).
