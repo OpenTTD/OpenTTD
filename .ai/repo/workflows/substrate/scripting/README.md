@@ -88,6 +88,7 @@ a regular command. `regression/` drives that API end to end under ctest. All ups
 
 ## Decisions, rules and knowledge
 
+- GS-driven deity commands and the goal-question and story-button events, raised only on the server: [goals, story, news and history](../goals-story-news-and-history/README.md).
 - Upstream architecture: [ADR 0021](../../../adrs/0021-ai-and-game-scripts-run-in-embedded-squirrel-against-a-gener.md) (script API and compat), [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep).
 - Neighbouring maps: [goals-story-news-and-history](../goals-story-news-and-history/README.md), [unit-tests](../unit-tests/README.md).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.public-api-is-exposed`, `project.mcp-surfaces-are-derived`, `project.never-report-unrun-validation-as-pass`.

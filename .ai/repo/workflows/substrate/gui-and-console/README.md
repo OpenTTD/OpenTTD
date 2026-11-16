@@ -94,6 +94,7 @@ changes game state only by posting commands.
 
 ## Decisions, rules and knowledge
 
+- The feature windows built on this framework (toolbar, main, smallmap, graphs, company, error, picker windows): [game windows](../game-windows/README.md).
 - Upstream architecture: [ADR 0020](../../../adrs/0020-player-facing-text-is-compiled-from-english-txt-by-strgen-an.md) (strings and translations), [ADR 0022](../../../adrs/0022-platform-backends-are-drivers-registered-in-factories-and-ch.md) (runtime-selected drivers).
 - Neighbouring maps: [game-windows](../game-windows/README.md), [graphics-and-sprites](../graphics-and-sprites/README.md), [strings-and-languages](../strings-and-languages/README.md).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.research-code-is-gated-and-labelled`, `project.mcp-surfaces-are-derived`, `project.never-report-unrun-validation-as-pass`.

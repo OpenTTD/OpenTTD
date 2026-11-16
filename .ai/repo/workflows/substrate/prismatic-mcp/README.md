@@ -90,6 +90,7 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 
 ## Decisions, rules and knowledge
 
+- What `openttd.ui.windows` reports depends on `WindowClass` order, widget-enum indices and hidden toolbar buttons: [game windows](../game-windows/README.md).
 - A dragged rail or road build reports success when any piece was built (knowledge candidate `a-dragged-build-succeeds-when-any-piece-was-built`): verify a dragged line through the map's ways, not the command result.
 - `ctest -R` cannot select the `[prismatic_mcp]` Catch2 tag; how to run those tests is in [unit tests](../unit-tests/README.md).
 - Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep), [ADR 0017](../../../adrs/0017-game-objects-live-in-typed-pools-addressed-by-strong-ids-nev.md) (typed pools and strong IDs), [ADR 0023](../../../adrs/0023-the-map-is-a-flat-array-of-tiles-whose-behaviour-is-dispatch.md) (tile array and tile procs).
