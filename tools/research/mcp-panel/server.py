@@ -36,7 +36,9 @@ AI_DIR = Path.home() / "Documents" / "OpenTTD" / "ai"
 STATIC = HERE / "static"
 AI_LOG_RE = re.compile(r"\[script:\d+\] \[(\d+)\] \[([SEPWI])\] (.*)$")
 AI_LEVELS = {"S": "squirrel_error", "E": "error", "P": "squirrel_info", "W": "warning", "I": "info"}
-TOKEN_RE = re.compile(r"Bearer token \(local operator only, not logged\): ([0-9a-fA-F]{32,})")
+# The console's token line; its wording changed upstream of the panel (5a26a6189e), so match any
+# "Bearer token (...): <hex>" line rather than one phrasing.
+TOKEN_RE = re.compile(r"Bearer token \([^)]*\): ([0-9a-fA-F]{32,})")
 
 
 class Game:
@@ -94,7 +96,7 @@ class Game:
             m = TOKEN_RE.search(line)
             if m:
                 self.token = m.group(1)
-                line = TOKEN_RE.sub("Bearer token (local operator only, not logged): <REDACTED>", line)
+                line = TOKEN_RE.sub("Bearer token (held by the panel): <REDACTED>", line)
             if self.token:
                 line = line.replace(self.token, "<REDACTED>")
             with self.lock:
