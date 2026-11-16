@@ -40,6 +40,7 @@ AI_LEVELS = {"S": "squirrel_error", "E": "error", "P": "squirrel_info", "W": "wa
 # "Bearer token (...): <hex>" line rather than one phrasing.
 # The ~ console's plan verb (openttd-59): "[prismatic-plan] <n> <text>"; answered with echo lines
 # carrying the same prefix, so each request is handled once by its number.
+DENIED_RE = re.compile(r"^denied #(\d+)\b")
 PLAN_RE = re.compile(r"\[prismatic-plan\] (\d+) (.+)$")
 TOKEN_RE = re.compile(r"Bearer token \([^)]*\): ([0-9a-fA-F]{32,})")
 
@@ -108,6 +109,11 @@ class Game:
             with self.lock:
                 self.seq += 1
                 self.log.append((self.seq, line))
+            denied = DENIED_RE.search(line)
+            if denied:
+                # Withdrawn or refused in the game: no longer pending here either.
+                with self.lock:
+                    self.pending.pop(int(denied.group(1)), None)
             plan = PLAN_RE.search(line)
             if plan and int(plan.group(1)) not in self.plans_seen:
                 self.plans_seen.add(int(plan.group(1)))
@@ -368,7 +374,24 @@ class Game:
         """The AIs the owner can run as their representative, with their settings. From MCP when
         the game offers openttd.ai.list; until then derived from each AI's info.nut."""
         if "openttd.ai.list" in self.tool_names():
-            return {"source": "mcp:openttd.ai.list", "data": self.tool("openttd.ai.list", {})}
+            # openttd.ai.list (openttd-59): {companies: [{company, running, ai, settings: [{name, min, max,
+            # default, flags, value, editable, description}]}], available: [{name, ...}], ...}; mapped to
+            # what the My bot card reads: ais (with each setting's in_game flag) and running companies.
+            data = self.tool("openttd.ai.list", {})
+            names = {c["id"]: c for c in self.resource("openttd://companies").get("data", {}).get("companies", [])}
+            ais, running = {}, []
+            for c in data.get("companies", []):
+                if not c.get("running"):
+                    continue
+                info = names.get(c.get("company"), {})
+                running.append({"id": c.get("company"), "name": info.get("name"), "money": info.get("money"), "ai": c.get("ai")})
+                ais[c.get("ai")] = {"ai": c.get("ai"), "settings": [
+                    {"name": st.get("name"), "description": st.get("description"), "min": st.get("min"), "max": st.get("max"),
+                     "default": st.get("default"), "value": st.get("value"), "ingame": "in_game" in (st.get("flags") or [])}
+                    for st in c.get("settings", [])]}
+            for a in data.get("available", []):
+                ais.setdefault(a.get("name"), {"ai": a.get("name"), "settings": []})
+            return {"source": "mcp:openttd.ai.list", "ais": list(ais.values()), "running": running, "data": data}
         ais = []
         for info in sorted(AI_DIR.glob("*/info.nut")):
             text = info.read_text(errors="replace")
