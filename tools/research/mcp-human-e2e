@@ -92,9 +92,16 @@ icall() { # $1 token, $2 tool, $3 args -> the answer
 wait_file() { for ((i = 0; i < ${2:-120}; i++)); do [[ -s "$1" ]] && return 0; sleep 0.5; done; return 1; }
 
 GAME_PORT="$(free_port)" SERVER_MCP="$(free_port)" CLIENT_MCP="$(free_port)"
-# Each instance announces itself in the registry; an isolated one here, so a test never mixes
-# with the owner's own instances.
-export PRISMATIC_MCP_REGISTRY="$TMP/registry"
+# Each instance announces itself in the registry. A test uses an isolated one, so it never mixes
+# with the owner's own instances; a watched game uses the owner's registry, so the hub and its
+# World View the owner already runs show it at once.
+# Spelled out either way: each game process runs with a HOME of its own, and the registry's
+# default follows HOME, so without this a watched game would announce itself inside $TMP.
+if [[ "$TEST" == 1 ]]; then
+  export PRISMATIC_MCP_REGISTRY="$TMP/registry"
+else
+  export PRISMATIC_MCP_REGISTRY="${PRISMATIC_MCP_REGISTRY:-$HOME/.local/state/prismatic-mcp/instances}"
+fi
 SERVER_TOKEN="$TMP/server-token.json" CLIENT_TOKEN="$TMP/client-token.json"
 
 echo "==> dedicated server on 127.0.0.1:$GAME_PORT (seed $SEED), MCP on $SERVER_MCP"
@@ -126,6 +133,8 @@ for ((i = 0; i < 120; i++)); do
 done
 [[ "$COMPANY" != 255 ]] || { echo "mcp-human-e2e: the client did not get a company" >&2; tail -20 "$TMP/client.log" >&2; exit 1; }
 echo "==> the client plays company $COMPANY"
+# The window is never pulled to the front: it would cover whatever the owner is doing (a game that
+# popped up over the owner's work was closed within seconds: "owner has left the game (leaving)").
 
 BEFORE="$(owned_roads "$COMPANY")"
 "$HUMAN" --token "$CLIENT_TOKEN" check
