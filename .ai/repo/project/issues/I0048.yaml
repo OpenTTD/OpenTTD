@@ -20,7 +20,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T02:06:11Z
+updated_at: 2026-11-16T02:16:13Z
 evidence:
   - covers: "validation_run"
     type: test
@@ -28,3 +28,9 @@ evidence:
     result: "partial: node tests 13/13; ECharts SSR on a live world graph (72 nodes, 58 edges) drew the graph (197 paths, 28 labels) and the waiting bars; hub serves /viz, three, d3 and refuses traversal. NOT RUN: the page in a browser (WebGL terrain, clicks, maximize) - the browser extension was disconnected."
     commit: 361d9f2134f3a89e8e7e5e13eced436ffe55668d
     recorded_at: 2026-11-16T02:06:11Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-viz-check http://127.0.0.1:<hub>; node --test tools/research/mcp-panel/test/components.test.mjs"
+    result: "real Chrome via playwright-core against a running game: all 8 checks PASS (graph 76 points, money, waiting bars, terrain canvas, maximize + Escape + address, parameter survives reload, no console errors); found and fixed: empty graph card at first paint, favicon 404; node tests 13/13"
+    commit: 6807938720aaef5dfb24492d0b7a4d7ffea3b458
+    recorded_at: 2026-11-16T02:16:13Z

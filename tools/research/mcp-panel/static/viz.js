@@ -63,11 +63,15 @@ function forcePositions(g, kinds) {
   return new Map(nodes.map((n) => [n.id, [n.x, n.y]]));
 }
 
-function renderGraph() {
+function renderGraph(attempt = 0) {
   if (!graph) return;
   const s = getState();
   graphChart = ecInit($('graph'), echarts);
-  if (!graphChart) return;
+  if (!graphChart) {
+    // The box has no size yet (layout not settled): try again shortly, a bounded number of times.
+    if (attempt < 25) setTimeout(() => renderGraph(attempt + 1), 200);
+    return;
+  }
   const positions = s.mode === 'force' ? forcePositions(graph, s.kinds) : new Map();
   graphChart.setOption(worldGraphOption(graph, { mode: s.mode, positions, kinds: s.kinds }), true);
   graphChart.off('click');
@@ -181,6 +185,7 @@ async function sampleEconomy(instance) {
   samples.push({ t: Date.now(), companies: (c.companies || []).map((x) => ({ id: x.id, name: x.name || `company ${x.id}`, money: x.money })) });
   if (samples.length > 720) samples.shift();
   moneyChart = moneyChart || ecInit($('money'), echarts);
+  if (!moneyChart) return;
   if (moneyChart) moneyChart.setOption(moneyOption(samples));
   if (graph) {
     waitingChart = waitingChart || ecInit($('waiting'), echarts);
@@ -205,7 +210,7 @@ async function start() {
   $('economy-controls').replaceChildren(maximizable($('economy-card'), 'economy', { getState, setState, onResize: () => { moneyChart && moneyChart.resize(); waitingChart && waitingChart.resize(); } }));
   graph = await read(instance, 'openttd://world/graph');
   // Charts are drawn once their boxes have a size: a short timeout, then a settle pass.
-  setTimeout(renderGraph, 30);
+  setTimeout(() => renderGraph(), 30);
   setTimeout(() => graphChart && graphChart.resize(), 300);
   renderTerrain(instance).catch((e) => { $('terrain').textContent = `terrain: ${e.message || e}`; });
   sampleEconomy(instance);

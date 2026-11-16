@@ -364,7 +364,7 @@ export function moneyOption(samples, { dark = true } = {}) {
     yAxis: { type: 'value', name: 'money' },
     dataZoom: [{ type: 'inside', zoomOnMouseWheel: 'ctrl', moveOnMouseWheel: false }, { type: 'slider' }],
     series: ids.map((id) => ({
-      type: 'line', showSymbol: false,
+      type: 'line', showSymbol: samples.length < 3, // a line needs two points; show the first ones
       name: samples.flatMap((s) => s.companies).find((c) => c.id === id)?.name || `company ${id}`,
       data: samples.map((s) => [s.t, s.companies.find((c) => c.id === id)?.money ?? null]),
     })),

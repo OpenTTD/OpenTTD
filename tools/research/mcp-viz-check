@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY. The World View checked in a real browser (I0048): every chart has an instance
+// with a non-zero width and its series carry data, the terrain has a canvas, maximize puts `max`
+// in the address and Escape restores it, a parameter survives a reload of the address, and the
+// console stays free of errors. Drives the installed Chrome through playwright-core (a dev
+// dependency of tools/research/mcp-panel: npm ci there), so nothing downloads a browser.
+//
+// Usage: tools/research/mcp-viz-check http://127.0.0.1:<hub-port>[/viz?...]   (exit 0 PASS, 1 FAIL)
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(path.join(here, 'mcp-panel', 'package.json'));
+const { chromium } = require('playwright-core');
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const base = process.argv[2];
+if (!base) { console.error('usage: mcp-viz-check <hub-url>'); process.exit(2); }
+const url = base.includes('/viz') ? base : base.replace(/\/$/, '') + '/viz';
+const checks = [];
+const check = (name, ok, detail = '') => { checks.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` (${detail})` : ''}`); };
+
+const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ['--enable-unsafe-swiftshader'] });
+try {
+  const page = await browser.newPage({ viewport: { width: 1600, height: 1500 } });
+  const errors = [];
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(url);
+  const ready = await page.waitForFunction(() => ['graph', 'money', 'waiting'].every((id) => {
+    const box = document.getElementById(id);
+    return box && box.offsetWidth > 0 && window.echarts && window.echarts.getInstanceByDom(box);
+  }) && document.querySelector('#terrain canvas'), null, { timeout: 45000 }).then(() => true).catch(() => false);
+  check('every chart and the terrain rendered within 45 s', ready);
+  const charts = await page.evaluate(() => ['graph', 'money', 'waiting'].map((id) => {
+    const c = window.echarts && window.echarts.getInstanceByDom(document.getElementById(id));
+    const o = c && c.getOption();
+    return { id, width: document.getElementById(id).offsetWidth, points: o ? o.series.reduce((n, s) => n + (s.data ? s.data.length : 0), 0) : 0 };
+  }));
+  for (const c of charts) check(`chart ${c.id} has a size and data`, c.width > 0 && c.points > 0, `${c.width}px, ${c.points} point(s)`);
+  await page.click('#graph-card button:has-text("Maximize")');
+  const maxed = await page.evaluate(() => [document.getElementById('graph-card').classList.contains('fixed'), location.hash]);
+  check('maximize fills the viewport and puts max in the address', maxed[0] && maxed[1].includes('max=graph'), maxed[1]);
+  await page.keyboard.press('Escape');
+  const restored = await page.evaluate(() => [document.getElementById('graph-card').classList.contains('fixed'), location.hash]);
+  check('Escape restores it and clears max', !restored[0] && !restored[1].includes('max='), restored[1]);
+  await page.selectOption('#graph-controls select', 'force');
+  await page.reload();
+  await page.waitForSelector('#graph-controls select');
+  const mode = await page.evaluate(() => document.querySelector('#graph-controls select').value);
+  check('a parameter survives a reload of the address', mode === 'force', mode);
+  check('the console has no errors', errors.length === 0, errors.slice(0, 3).join(' | '));
+} finally {
+  await browser.close();
+}
+process.exit(checks.every(Boolean) ? 0 : 1);

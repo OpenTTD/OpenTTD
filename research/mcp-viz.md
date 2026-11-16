@@ -41,13 +41,26 @@ cd tools/research/mcp-panel && npm ci && cd -
 tools/research/mcp-rhai/target/release/mcp-hub serve --port 8790   # then open http://127.0.0.1:8790/viz
 ```
 
-## Verified, and not
+## Verified, in a real browser
 
-- **Verified (2026-11-16):**
-  - The Node tests pass (13/13).
-  - ECharts server-side rendering on the live world graph of a running game (72 nodes, 58 edges)
-    drew the graph (197 paths, 28 labels) and the waiting bars.
-  - The hub served `/viz`, three.js and d3, and refused `/vendor/npm/../package.json`.
-  - `viz.js` parses.
-- **NOT RUN:** the page in a real browser, including the WebGL terrain, the clicks, maximize and
-  Escape. The browser extension was not connected in that session.
+`tools/research/mcp-viz-check <hub-url>` drives the installed Chrome through `playwright-core` (a
+dev dependency of the panel; nothing downloads a browser). It waits for a condition rather than a
+fixed time: a WebSocket page is not ready on a schedule, and a fixed-time screenshot showed an
+empty page once and a full one the next time. The check passes when:
+
+- every chart has an instance, a size and data;
+- the terrain has its canvas;
+- maximize puts `max` in the address, and Escape restores it and clears it;
+- a parameter survives a reload of the address;
+- the console has no errors.
+
+On 2026-11-16, against a running game (76 nodes), all 8 checks passed. They also caught two real
+defects, both fixed:
+
+- **The graph card stayed empty.** The chart's box had no size at the first paint, and nothing
+  retried. `renderGraph` now retries a bounded number of times.
+- **Console 404.** The browser's request for a favicon produced a console error; the page now
+  declares an inline icon.
+
+The pure option builders are tested with Node (13/13). ECharts server-side rendering of the live
+world graph drew the graph and its labels.
