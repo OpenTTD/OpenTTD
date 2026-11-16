@@ -432,6 +432,12 @@ line is not handed over blind, and `~` says why a chosen line was passed over. W
 duel's planned company built no train in 36 months. A station site is taken only when its exit
 leads on, the same rule in `sites.rs` and in the bot: ahead or to either side is land or a road.
 
+The bot gets up to four freight lines, `fr_*` and then `fr2_*` to `fr4_*`, in the planner's order and
+one per producer. It builds the first at once. Each next one is built when its bank balance plus
+loan headroom reach `line_budget` (default 80000). More trains on one single-track line without
+signals would deadlock, so idle money goes into more lines. On seed 20208 the bot built the second
+coal line (254 tiles) right after the first, at 47703 money and 190000 headroom.
+
 On the main stack (2026-11-16, low construction costs, so `rail_tile` 75 from the prices) the real
 lines cost 5-19% more than the straight-line estimate: a 172-tile coal line 15,341 against 12,900,
 with 2 bridges, 11 inclines and a level crossing. One passenger pair had no rail route at all and

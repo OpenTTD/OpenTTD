@@ -272,6 +272,7 @@ class Game:
         # unpriced line of its kind that it can, from the planner's lists (best score first).
         spare = sorted([c for c in (out.get("freight") or []) + ((out.get("by_mode") or {}).get("rail") or [])
                         if c not in chosen and (c.get("score") or 0) > 0], key=lambda c: -(c.get("score") or 0))
+        freight_lines, freight_producers = [], set()
         for c in chosen + spare:
             mode = c.get("mode")
             opt = next((o for o in c.get("options", []) if o.get("mode") == mode), {})
@@ -285,10 +286,19 @@ class Game:
                 continue
             if c not in chosen and mode not in ("rail", "freight_rail"):
                 continue
-            if c.get("kind") == "freight" and mode == "freight_rail" and "fr_from" not in settings:
-                settings.update(fr_from=num(c["producer"]["id"]), fr_to=num(c["acceptor"]["id"]), fr_cargo=int(c["cargo_id"]))
+            if c.get("kind") == "freight" and mode == "freight_rail" and len(freight_lines) < 4:
+                # Up to four freight lines in the planner's order, one per producer (a producer's
+                # cargo is counted once): fr_* is built at once, fr2_* to fr4_* when money allows.
+                producer = num(c["producer"]["id"])
+                if producer in freight_producers:
+                    continue
+                freight_producers.add(producer)
+                prefix = "fr_" if not freight_lines else f"fr{len(freight_lines) + 1}_"
+                freight_lines.append(prefix)
+                settings.update({prefix + "from": producer, prefix + "to": num(c["acceptor"]["id"]), prefix + "cargo": int(c["cargo_id"])})
                 self.event("ai", f"planner: {c['cargo']} by rail {c['producer']['name']} -> {c['acceptor']['name']}, "
-                                 f"{c['distance']} tiles, profit {opt.get('monthly_profit')}/month, score {c['score']}")
+                                 f"{c['distance']} tiles, profit {opt.get('monthly_profit')}/month, score {c['score']}"
+                                 + ("" if prefix == "fr_" else f" (line {len(freight_lines)}, built when the money allows)"))
             elif c.get("kind") != "freight" and mode == "rail" and "rail_a" not in settings:
                 settings.update(rail_a=c["a"]["id"], rail_b=c["b"]["id"])
                 self.event("ai", f"planner: passengers by rail {c['a']['name']} - {c['b']['name']}, score {c['score']}")
