@@ -41,7 +41,8 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
   method of the hub's OpenAPI document; none is named in mcp-rhai.
 - No duplicate buildings: `hub.audit` judges every instance by the game's own catchment
   (`catchment_radius`, `catchment_area` in `openttd://stations`); `tools/research/mcp-dup-check` fails on
-  a pair (I0060).
+  a pair (I0060). Depots are audited the same way, within the game's own service reach
+  (`service_reach_tiles` in `openttd://depots`) along the road network of `openttd://map/ways` (I0063).
 - Proof against a running panel: `tools/research/mcp-panel-check` (every tool and resource has its route and schema, the routes answer, the event feed works).
 - Proof that every derived route works: `tools/research/mcp-route-check` walks the panel's own
   OpenAPI document. Every GET answers 200, every POST with required fields answers 400 to an empty

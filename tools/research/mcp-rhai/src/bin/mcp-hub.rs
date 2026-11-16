@@ -133,8 +133,18 @@ fn audit_cmd(args: &[String]) -> i32 {
             println!("     owner {} {}: {} ({},{}) and {} ({},{}), {} tile(s) apart", d["owner"], d["facilities"], d["a"]["name"], d["a"]["x"], d["a"]["y"],
                      d["b"]["name"], d["b"]["x"], d["b"]["y"], d["distance"]);
         }
+        let dep = &inst["depots"];
+        if let Some(e) = dep.get("error") { println!("     depots: SKIP {e}"); continue; }
+        let ddups = dep["duplicates"].as_array().cloned().unwrap_or_default();
+        total += ddups.len();
+        println!("     depots: {} {} depot(s), {} duplicate pair(s), reach {} tile(s), {}", if ddups.is_empty() { "PASS" } else { "FAIL" },
+                 dep["depots"], ddups.len(), dep["reach"], if dep["network"] == json!(true) { "along the road network" } else { "straight distance only" });
+        for d in ddups {
+            println!("       owner {} {} depots {} ({},{}) and {} ({},{}), {} tile(s) by {}", d["owner"], d["type"], d["a"]["id"], d["a"]["x"], d["a"]["y"],
+                     d["b"]["id"], d["b"]["x"], d["b"]["y"], d["distance"], d["by"]);
+        }
     }
-    println!("audit: {} instance(s), {total} duplicate pair(s)", list.len());
+    println!("audit: {} instance(s), {total} duplicate pair(s) (stations and depots)", list.len());
     i32::from(total > 0)
 }
 
@@ -299,6 +309,39 @@ mod tests {
         assert_eq!(hub::stations_op(&mops).unwrap().id, "resource:openttd://stations");
     }
 
+    /// A ways payload: `rows` of hex digits, one per tile (NW=1, SW=2, SE=4, NE=8).
+    fn ways(rows: &[&str]) -> hub::Roads {
+        hub::Roads::from_ways(&json!({"data": {"width": rows[0].len(), "roads": rows}})).unwrap()
+    }
+
+    #[test]
+    fn road_distance_follows_only_joined_tiles() {
+        // A straight east-west road (SW=2 to x+1, NE=8 to x-1) of five tiles; the middle tile joins both.
+        let r = ways(&["2aaa8", "00000"]);
+        assert_eq!(r.distance((0, 0), (4, 0), 20), Some(4));
+        assert_eq!(r.distance((0, 0), (4, 0), 3), None, "beyond the limit");
+        // A piece that points east, beside one that does not point back, is not joined.
+        let r = ways(&["2280", "0000"]);
+        assert_eq!(r.distance((0, 0), (3, 0), 20), None);
+    }
+
+    #[test]
+    fn duplicate_depots_are_one_owner_one_type_within_the_service_reach() {
+        let d = |id: i64, x: i64, owner: i64, t: &str| json!({"id": id, "x": x, "y": 0, "tile": x, "owner": owner, "type": t, "town": 1});
+        let r = ways(&["2aaaaaaaa8"]); // ten joined road tiles
+        let depots = vec![d(1, 0, 0, "road"), d(2, 3, 0, "road"), d(3, 9, 1, "road"), d(4, 9, 0, "rail")];
+        let found = hub::duplicate_depots(&depots, 20, Some(&r));
+        assert_eq!(found.len(), 1, "depots 1 and 2 share a network 3 steps apart; another owner's and a rail depot do not count");
+        assert_eq!(found[0]["by"], json!("road network"));
+        assert_eq!(found[0]["distance"], json!(3));
+        // Two road depots close together but on different, unjoined roads serve different vehicles.
+        let split = ways(&["28028"]);
+        assert!(hub::duplicate_depots(&[d(1, 0, 0, "road"), d(2, 3, 0, "road")], 20, Some(&split)).is_empty());
+        // Without ways the straight distance is used, and the report says so.
+        let rail = hub::duplicate_depots(&[d(5, 0, 0, "rail"), d(6, 4, 0, "rail")], 20, None);
+        assert_eq!(rail[0]["by"], json!("straight distance"));
+        assert!(hub::duplicate_depots(&[d(5, 0, 0, "rail"), d(6, 40, 0, "rail")], 20, None).is_empty(), "beyond the reach");
+    }
     /// A panel with a status route, an echo route and an event bus whose events the test appends.
     fn fake_panel(events: Arc<Mutex<Vec<Value>>>) -> String {
         let l = TcpListener::bind("127.0.0.1:0").unwrap();

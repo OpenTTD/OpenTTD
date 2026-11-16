@@ -233,6 +233,7 @@ struct ResourceEntry {
 json ResourceTowns(); // defined below, next to the view tools that scroll to a town
 json ResourceMap();   // the whole map (prismatic_mcp_world.cpp)
 json ResourceStations();
+json ResourceDepots();
 json ResourceEngines();  // every engine on offer now (prismatic_mcp_world.cpp)
 json ResourceVehicles(); // every primary vehicle with its orders (prismatic_mcp_entities.cpp)
 json ResourceCoverage(); // what clients exercised, against the published catalogue (prismatic_mcp_coverage.cpp)
@@ -240,7 +241,7 @@ json ResourceCoverage(); // what clients exercised, against the published catalo
 json ResourceWays();  // road ways and rail tracks per tile (prismatic_mcp_graph.cpp)
 json ResourceWorldGraph(); // the world as one typed graph (prismatic_mcp_graph.cpp)
 
-const std::array<ResourceEntry, 13> RESOURCES = {{
+const std::array<ResourceEntry, 14> RESOURCES = {{
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
@@ -252,6 +253,7 @@ const std::array<ResourceEntry, 13> RESOURCES = {{
 	{"openttd://vehicles", "Vehicles", "Every primary vehicle: id, type, owner, engine, tile, state, cargo, profits, orders", &ResourceVehicles},
 	{"openttd://map/ways", "Map ways", "Per tile: where a road vehicle can leave it (road bits, stops, depots, crossings, bridges, tunnels) and its rail tracks, encoding included", &ResourceWays},
 	{"openttd://world/graph", "World graph", "The world as one typed graph (world-graph/v1): towns, industries, stations, vehicles; near_town, serves_town, order and cargo_link edges", &ResourceWorldGraph},
+	{"openttd://depots", "Depots", "Every depot: id, tile, x/y, owner, type, town, entrance tile; and the game's service reach in tiles", &ResourceDepots},
 	{"openttd://mcp/coverage", "MCP coverage", "Every published tool and resource with its call count since start, and those never called", &ResourceCoverage},
 	{"openttd://engines", "Engines", "Every engine some company can buy now: type, speed (also effective for aircraft), capacity, cargo, price, running cost, plane type, buyers", &ResourceEngines},
 }};
@@ -267,6 +269,13 @@ json ResourceStations()
 {
 	json env = MakeEnvelope();
 	env["data"] = World::Stations();
+	return env;
+}
+
+json ResourceDepots()
+{
+	json env = MakeEnvelope();
+	env["data"] = World::Depots();
 	return env;
 }
 

@@ -26,8 +26,15 @@
 #include "../timer/timer_game_calendar.h"
 #include "../map_func.h"
 #include "../station_base.h"
+#include "../depot_base.h"
+#include "../depot_map.h"
+#include "../road_map.h"
+#include "../rail_map.h"
+#include "../pathfinder/pathfinder_type.h"
 #include "../tile_map.h"
 #include "../town.h"
+
+#include <optional>
 
 #include "../safeguards.h"
 
@@ -119,6 +126,34 @@ json Stations()
 			{"catchment_radius", st->GetCatchmentRadius()}, {"catchment_area", std::move(area)}});
 	}
 	return json{{"stations", std::move(list)}};
+}
+
+json Depots()
+{
+	json list = json::array();
+	for (const Depot *d : Depot::Iterate()) {
+		const TileIndex t = d->xy;
+		json entry = {{"id", d->index.base()}, {"tile", t.base()}, {"x", TileX(t)}, {"y", TileY(t)},
+			{"owner", GetTileOwner(t).base()},
+			{"town", d->town != nullptr ? json(d->town->index.base()) : json(nullptr)}};
+		std::optional<DiagDirection> dir;
+		switch (GetDepotVehicleType(t)) {
+			case VehicleType::Road: entry["type"] = "road"; dir = GetRoadDepotDirection(t); break;
+			case VehicleType::Train: entry["type"] = "rail"; dir = GetRailDepotDirection(t); break;
+			case VehicleType::Ship: entry["type"] = "ship"; break;
+			default: entry["type"] = "other"; break;
+		}
+		/* The tile a vehicle enters from: where the depot joins its network. */
+		if (dir.has_value()) {
+			const TileIndex front = TileAddByDiagDir(t, *dir);
+			entry["entrance"] = {{"tile", front.base()}, {"x", TileX(front)}, {"y", TileY(front)}};
+		}
+		list.push_back(std::move(entry));
+	}
+	/* How far a vehicle looks for a depot to be serviced at, in tiles: the game's own setting, so a
+	 * reader judges which depots serve the same vehicles by the rule the pathfinder applies. */
+	const uint reach = _settings_game.pf.yapf.maximum_go_to_depot_penalty / YAPF_TILE_LENGTH;
+	return json{{"depots", std::move(list)}, {"service_reach_tiles", reach}};
 }
 
 json Engines()

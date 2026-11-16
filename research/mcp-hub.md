@@ -38,7 +38,7 @@ tools/research/mcp-rhai/target/release/mcp-hub --panel http://127.0.0.1:8800   #
 | `hub.call` | `instance`, `id`, `body?`, `query?` | the operation's answer; a panel's HTTP error comes back as `{http_error, body}` |
 | `hub.subscribe` | `instances?`, `kinds?` | then `hub.event` notifications `{instance, event}`; a kind matches by prefix (`game` takes `game.month`) |
 | `hub.unsubscribe` | | |
-| `hub.audit` | | per instance: its stations and the pairs that duplicate each other |
+| `hub.audit` | | per instance: duplicate station pairs, and its depots with the duplicate depot pairs |
 
 The hub describes itself in `GET /openapi.json`, derived from its method table, with Swagger UI over
 it at `GET /docs` (the panel's own `swagger-ui-dist`, so `npm ci` in `tools/research/mcp-panel` first), and serves the
@@ -89,6 +89,14 @@ The catchment is the game's own: `openttd://stations` publishes `catchment_radiu
 `catchment_tiles`. For an instance on an older binary that publishes neither, the radius of each
 facility comes from `src/station_type.h` (`CA_BUS`, `CA_TRUCK`, `CA_TRAIN`, `CA_DOCK`, and
 `CA_UNMODIFIED` for an airport), and the report says "catchment from the fallback radius".
+
+The same audit judges **depots**: two depots of one owner and one type duplicate each other when
+the second lies within the reach a vehicle searches for a depot to be serviced at. That reach is the
+game's own setting, `pf.yapf.maximum_go_to_depot_penalty` in tiles, which `openttd://depots`
+publishes as `service_reach_tiles` with every depot's tile, type and entrance. For road depots the
+distance is measured along the road network of `openttd://map/ways` (two tiles are joined when each
+points at the other), so two depots on separate roads are not duplicates. Without ways, or for rail
+and ship depots, the straight distance is used and the report says so.
 
 The check is generic: it does not know which bot built what, so it holds PrismaticAI, the planner's
 bot and the human-motion player to the same rule.

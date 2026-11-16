@@ -67,8 +67,9 @@ test('the hub client matches answers to requests, emits notifications and re-sub
 
 test('the audit summary counts audited, skipped and duplicate pairs', async () => {
   const { auditSummary, scrollOp } = await import('../static/components.js');
-  const r = [{ instance: 'a', stations: 8, duplicates: [{}, {}] }, { instance: 'b', error: 'no stations operation' }, { instance: 'c', stations: 2, duplicates: [] }];
-  assert.deepEqual(auditSummary(r), { instances: 3, audited: 2, skipped: 1, pairs: 2 });
+  const r = [{ instance: 'a', stations: 8, duplicates: [{}, {}], depots: { duplicates: [{}] } }, { instance: 'b', error: 'no stations operation' },
+             { instance: 'c', stations: 2, duplicates: [], depots: { error: 'no depots operation' } }];
+  assert.deepEqual(auditSummary(r), { instances: 3, audited: 2, skipped: 1, pairs: 2, depotPairs: 1 });
   assert.equal(scrollOp([{ id: 'status' }, { id: 'clientOpenttdViewScrollTo' }]).id, 'clientOpenttdViewScrollTo');
   assert.equal(scrollOp([{ id: 'x' }, { id: 'tool:openttd.view.scroll_to' }]).id, 'tool:openttd.view.scroll_to');
   assert.equal(scrollOp([{ id: 'x' }]), undefined);

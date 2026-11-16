@@ -463,13 +463,103 @@ pub fn stations_op(ops: &[Op]) -> Option<&Op> {
             .find(|o| o.path.ends_with("/stations") && o.path.contains("resource")))
 }
 
-/// Every instance's duplicate stations.
+/// The road network as openttd://map/ways publishes it: per tile the directions a road vehicle can
+/// leave it (NW=1 y-1, SW=2 x+1, SE=4 y+1, NE=8 x-1); two tiles are joined when each points at the other.
+pub struct Roads { pub width: i64, pub height: i64, rows: Vec<Vec<u8>> }
+
+impl Roads {
+    pub fn from_ways(v: &Value) -> Option<Roads> {
+        let d = unwrap_data(v);
+        let width = d.get("width")?.as_i64()?;
+        let rows: Vec<Vec<u8>> = d.get("roads")?.as_array()?.iter()
+            .map(|r| r.as_str().unwrap_or("").chars().map(|c| c.to_digit(16).unwrap_or(0) as u8).collect()).collect();
+        Some(Roads { width, height: rows.len() as i64, rows })
+    }
+
+    fn bits(&self, x: i64, y: i64) -> u8 {
+        if x < 0 || y < 0 || x >= self.width || y >= self.height { return 0; }
+        self.rows[y as usize].get(x as usize).copied().unwrap_or(0)
+    }
+
+    /// The number of road steps from one tile to another over joined tiles, if at most `limit`.
+    pub fn distance(&self, from: (i64, i64), to: (i64, i64), limit: i64) -> Option<i64> {
+        const STEPS: [(u8, i64, i64, u8); 4] = [(1, 0, -1, 4), (2, 1, 0, 8), (4, 0, 1, 1), (8, -1, 0, 2)];
+        let mut seen = std::collections::HashSet::from([from]);
+        let mut q = std::collections::VecDeque::from([(from, 0i64)]);
+        while let Some(((x, y), d)) = q.pop_front() {
+            if (x, y) == to { return Some(d); }
+            if d >= limit { continue; }
+            for (bit, dx, dy, back) in STEPS {
+                let n = (x + dx, y + dy);
+                if self.bits(x, y) & bit != 0 && self.bits(n.0, n.1) & back != 0 && seen.insert(n) {
+                    q.push_back((n, d + 1));
+                }
+            }
+        }
+        None
+    }
+}
+
+fn unwrap_data(v: &Value) -> Value {
+    let mut v = v.clone();
+    if let Some(text) = v.pointer("/contents/0/text").and_then(Value::as_str) {
+        v = serde_json::from_str(text).unwrap_or(Value::Null);
+    }
+    v.get("data").filter(|d| d.is_object()).cloned().unwrap_or(v)
+}
+
+/// Pairs of depots that duplicate each other: one owner, one type, and the second within the reach a
+/// vehicle searches for a depot to be serviced at (`service_reach_tiles`, the game's own setting),
+/// measured along the road network when its ways are known, else as a straight distance (and said so).
+pub fn duplicate_depots(depots: &[Value], reach: i64, roads: Option<&Roads>) -> Vec<Value> {
+    let mut out = Vec::new();
+    let xy = |d: &Value| (d["x"].as_i64().unwrap_or(0), d["y"].as_i64().unwrap_or(0));
+    for (i, a) in depots.iter().enumerate() {
+        for b in &depots[i + 1..] {
+            if a["owner"] != b["owner"] || a["owner"].is_null() || a["type"] != b["type"] { continue; }
+            let (pa, pb) = (xy(a), xy(b));
+            let straight = (pa.0 - pb.0).abs().max((pa.1 - pb.1).abs());
+            let (dist, by) = match (a["type"].as_str(), roads) {
+                (Some("road"), Some(r)) => match r.distance(pa, pb, reach) { Some(d) => (d, "road network"), None => continue },
+                _ => (straight, "straight distance"),
+            };
+            if dist > reach { continue; }
+            let pick = |d: &Value| json!({"id": d["id"], "x": d["x"], "y": d["y"], "tile": d["tile"], "town": d["town"]});
+            out.push(json!({"owner": a["owner"], "type": a["type"], "a": pick(a), "b": pick(b), "distance": dist, "by": by, "reach": reach}));
+        }
+    }
+    out
+}
+
+/// The read-only operation of an instance that serves a resource, found by its name, not configured.
+pub fn resource_op<'a>(ops: &'a [Op], resource: &str) -> Option<&'a Op> {
+    let uri = format!("resource:openttd://{resource}");
+    ops.iter().find(|o| o.id == uri).or_else(|| ops.iter()
+        .filter(|o| o.read_only && !o.stream && o.method == "GET" && o.query.iter().all(|q| !q.1))
+        .find(|o| o.path.contains("resource") && o.path.ends_with(&format!("/{resource}"))))
+}
+
+/// The depot findings of one instance: its depots, its ways when published, the duplicate pairs.
+fn audit_depots(i: &Instance, ops: &[Op]) -> Value {
+    let Some(op) = resource_op(ops, "depots") else { return json!({"error": "no depots operation"}) };
+    let v = match call(i, op, None, None) { Ok(v) => unwrap_data(&v), Err(e) => return json!({"error": e}) };
+    let depots = v.get("depots").and_then(Value::as_array).cloned().unwrap_or_default();
+    let reach = v.get("service_reach_tiles").and_then(Value::as_i64).unwrap_or(20);
+    let roads = resource_op(ops, "map/ways").and_then(|w| call(i, w, None, None).ok()).and_then(|w| Roads::from_ways(&w));
+    json!({"depots": depots.len(), "reach": reach, "network": roads.is_some(),
+           "duplicates": duplicate_depots(&depots, reach, roads.as_ref())})
+}
+
+/// Every instance's duplicate stations and duplicate depots.
 pub fn audit(state: &Shared) -> Value {
-    let targets: Vec<(Instance, Option<Op>)> = {
+    let targets: Vec<(Instance, Option<Op>, Vec<Op>)> = {
         let s = state.lock().unwrap();
-        s.instances.iter().map(|i| (i.clone(), s.ops.get(&i.name).and_then(|ops| stations_op(ops).cloned()))).collect()
+        s.instances.iter().map(|i| {
+            let ops = s.ops.get(&i.name).cloned().unwrap_or_default();
+            (i.clone(), stations_op(&ops).cloned(), ops)
+        }).collect()
     };
-    Value::Array(targets.into_iter().map(|(i, op)| match op {
+    Value::Array(targets.into_iter().map(|(i, op, ops)| match op {
         None => json!({"instance": i.name, "error": "no stations operation"}),
         Some(op) => match call(&i, &op, None, None) {
             Err(e) => json!({"instance": i.name, "error": e}),
@@ -477,7 +567,8 @@ pub fn audit(state: &Shared) -> Value {
                 let st = stations_in(&v);
                 json!({"instance": i.name, "via": op.id, "stations": st.len(),
                        "catchment": if st.iter().any(|s| s.get("catchment_area").is_some()) { "game" } else { "fallback radius" },
-                       "duplicates": duplicate_stations(&st)})
+                       "duplicates": duplicate_stations(&st),
+                       "depots": audit_depots(&i, &ops)})
             }
         },
     }).collect())
@@ -499,7 +590,7 @@ pub fn methods() -> Value {
         {"method": "hub.call", "params": {"instance": "required", "id": "operationId | tool:<name> | resource:<uri>", "body": "object", "query": "object"}},
         {"method": "hub.subscribe", "params": {"instances": "optional list", "kinds": "optional list of kind prefixes"}},
         {"method": "hub.unsubscribe", "params": {}},
-        {"method": "hub.audit", "params": {}, "result": "per instance: its stations and the pairs that duplicate each other (same owner, a shared facility, overlapping catchments)"},
+        {"method": "hub.audit", "params": {}, "result": "per instance: duplicate stations (same owner, a shared facility, overlapping catchments) and duplicate depots (same owner and type within the game's service reach, along the road network when known)"},
     ])
 }
 

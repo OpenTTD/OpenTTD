@@ -27,6 +27,14 @@ nlohmann::json Map();
  */
 nlohmann::json Stations();
 
+/**
+ * Every depot: id, tile, x/y, owner, type (road, rail, ship), town and, for road and rail, the
+ * entrance tile; plus `service_reach_tiles`, how far a vehicle looks for a depot to be serviced at
+ * (pf.yapf.maximum_go_to_depot_penalty in tiles). Read-only. Main thread only.
+ * @return The depots payload (the caller adds the resource envelope).
+ */
+nlohmann::json Depots();
+
 /** Every engine some company can buy now: speed, capacity, cargo, price, running cost, plane type, who may buy it. */
 nlohmann::json Engines();
 

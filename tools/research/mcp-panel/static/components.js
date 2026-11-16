@@ -247,7 +247,8 @@ export function eventsView(container, { limit = 200, onKind, onInstance } = {}) 
 export function auditSummary(results) {
   const audited = results.filter((r) => !r.error);
   return { instances: results.length, audited: audited.length, skipped: results.length - audited.length,
-           pairs: audited.reduce((n, r) => n + (r.duplicates || []).length, 0) };
+           pairs: audited.reduce((n, r) => n + (r.duplicates || []).length, 0),
+           depotPairs: audited.reduce((n, r) => n + ((r.depots && r.depots.duplicates) || []).length, 0) };
 }
 
 /** The operation that moves the owner's camera, wherever it is offered (a GUI client's MCP tool or
@@ -259,7 +260,7 @@ export function scrollOp(ops) {
 /** The audit as cards: every duplicate pair with both stations clickable to centre the camera. */
 export function auditView(container, results, { onStation } = {}) {
   const s = auditSummary(results);
-  const head = el('p', { class: CLS.muted }, `${s.audited} instance(s) audited, ${s.skipped} skipped, ${s.pairs} duplicate pair(s).`);
+  const head = el('p', { class: CLS.muted }, `${s.audited} instance(s) audited, ${s.skipped} skipped, ${s.pairs} duplicate station pair(s), ${s.depotPairs} duplicate depot pair(s).`);
   const rows = [];
   for (const r of results) {
     if (r.error) { rows.push(el('p', { class: CLS.muted }, `${r.instance}: ${r.error}`)); continue; }
@@ -268,6 +269,13 @@ export function auditView(container, results, { onStation } = {}) {
     for (const d of dups) {
       const link = (st) => el('a', { href: '#', class: 'font-medium text-primary-600 dark:text-primary-500 hover:underline', onclick: (e) => { e.preventDefault(); onStation && onStation(st); } }, `${st.name} (${st.x},${st.y})`);
       rows.push(el('div', { class: 'text-sm text-gray-700 dark:text-gray-300' }, `owner ${d.owner}, ${d.facilities.join('+')}: `, link(d.a), ' and ', link(d.b), `, ${d.distance} tile(s) apart`));
+    }
+    const dep = r.depots || {};
+    if (dep.error) { rows.push(el('p', { class: CLS.muted }, `depots: ${dep.error}`)); continue; }
+    rows.push(el('p', { class: CLS.muted }, `depots: ${dep.depots} (service reach ${dep.reach} tiles, ${dep.network ? 'along the road network' : 'straight distance only'})`));
+    for (const d of dep.duplicates || []) {
+      const link = (st) => el('a', { href: '#', class: 'font-medium text-primary-600 dark:text-primary-500 hover:underline', onclick: (e) => { e.preventDefault(); onStation && onStation(st); } }, `depot ${st.id} (${st.x},${st.y})`);
+      rows.push(el('div', { class: 'text-sm text-gray-700 dark:text-gray-300' }, `owner ${d.owner}, ${d.type} depots: `, link(d.a), ' and ', link(d.b), `, ${d.distance} tile(s) by ${d.by}`));
     }
   }
   container.replaceChildren(head, ...rows);

@@ -1,0 +1,37 @@
+id: I0063
+milestone: an-agent-reaches-the-game-over-mcp
+title: "No duplicate depots: every depot published with the game's service reach, audited along the road network on every surface"
+slug: depot-audit
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A depot that duplicates another (one owner, one type, within the game's own service reach, along the road network when known) is found by name through MCP, the hub, its OpenAPI, the page and mcp-dup-check, in any running game, whatever bot built it."
+why: "The owner: it builds depots repeatedly. Stations were already audited (I0060); depots were not visible at all."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_world.cpp"
+  - "src/prismatic_mcp/prismatic_mcp_world.h"
+  - "src/prismatic_mcp/prismatic_mcp_server.cpp"
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-panel/static/**"
+  - "tools/research/mcp-panel/test/**"
+  - "research/mcp-hub.md"
+  - "research/README.md"
+  - ".ai/**"
+depends_on:
+  - I0060
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd://depots publishes every depot (id, tile, owner, type, town, entrance) and service_reach_tiles from pf.yapf.maximum_go_to_depot_penalty"
+  - "hub.audit reports duplicate depot pairs per instance, by road network when map/ways is published, else by straight distance, and says which"
+  - "mcp-dup-check fails on a duplicate depot; the page shows depot pairs with clickable depots"
+  - "tools/gate.sh research passes; cargo test and node --test cover the road distance and the depot rule"
+validation:
+  - "tools/gate.sh research"
+  - "cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub"
+  - "node --test tools/research/mcp-panel/test/components.test.mjs"
+  - "tools/research/mcp-dup-check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
+updated_at: '2026-11-16'
