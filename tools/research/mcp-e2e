@@ -15,6 +15,8 @@
 # Usage: tools/research/mcp-e2e [--bin <openttd>] [--no-gui] [--no-browser] [--auto-approve] [--window WxH]
 #                               [--no-director] [--view-port N (default: a free port)]
 #                               [--panel-port 8800] [--mcp-port 8731] [--game-port 3979] [--seed N]
+#                               [--arm-input (the owner's switch: the GUI client accepts openttd.input.*,
+#                                so the panel's /ui page and scripts can press its widgets; off by default)]
 #                               [--instances N (default 1: N-1 more headless stacks with bots, free
 #                                ports, all in the discovery registry, listed by every panel)]
 # Stop with Ctrl-C: the panel stops the server, and the GUI client is closed.
@@ -23,7 +25,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
-GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=()
+GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=() ARM_INPUT=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -39,6 +41,7 @@ while [[ $# -gt 0 ]]; do
     --game-port) GAME_PORT="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
     --instances) INSTANCES="${2:?--instances needs a number}"; shift 2 ;;
+    --arm-input) ARM_INPUT=1; shift ;;
     -h|--help) sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "mcp-e2e: unknown option: $1" >&2; exit 2 ;;
   esac
@@ -128,7 +131,7 @@ if [[ "$GUI" == 1 ]]; then
   # its autoexec.scr writes a fresh token file each time, which the director rereads on every call.
   (
     while kill -0 "$PANEL_PID" 2>/dev/null; do
-      HOME="$CHOME" "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" >> "$TMP/client.log" 2>&1 &
+      HOME="$CHOME" PRISMATIC_MCP_INPUT="$ARM_INPUT" "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" >> "$TMP/client.log" 2>&1 &
       CPID=$!
       # Bring it to the front (a full-screen window opens on a Space of its own on macOS), and
       # attach it to the panel, which shows and drives its view.

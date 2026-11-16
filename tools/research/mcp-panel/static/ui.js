@@ -1,0 +1,95 @@
+'use strict';
+/* The interface view: every window and widget of the owner's game, generic, derived from
+   openttd.ui.windows (through the derived route /api/client/openttd.ui.windows); class names from
+   src/window_type.h (/api/ui/classes). A click on a widget presses it in the game through
+   openttd.input.* when the owner armed input; otherwise it says what is there (openttd.ui.at). */
+
+const $ = (id) => document.getElementById(id);
+const params = new URLSearchParams(location.search);
+const state = { widgets: params.get('widgets') !== '0', window: params.get('window') || 'all' };
+const save = () => history.replaceState(null, '', `${location.pathname}?${new URLSearchParams({ widgets: state.widgets ? '1' : '0', window: state.window })}`);
+const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const clean = (t) => String(t ?? '').replace(/[-]/g, '').trim(); // the game's private-use control codes
+const client = async (name, args) => (await fetch(`/api/client/${name}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args || {}) })).json();
+
+let classes = {}; let ui = null; let armed = false;
+
+function className(c) { return classes[String(c)]?.name || `class ${c}`; }
+
+function draw() {
+  if (!ui) return;
+  const img = $('screen-img'); const k = img.clientWidth / ui.screen.w;
+  const sel = $('p-window'); const keep = state.window;
+  sel.innerHTML = '<option value="all">All windows</option>' + ui.windows.map((w, i) => `<option value="${i}">${esc(className(w.class))}${w.number ? ' #' + w.number : ''}</option>`).join('');
+  sel.value = [...sel.options].some((o) => o.value === keep) ? keep : 'all';
+  const shown = ui.windows.map((w, i) => [w, i]).filter(([, i]) => state.window === 'all' || String(i) === state.window);
+  let html = '';
+  for (const [w, i] of shown) {
+    if (w.class === 0) continue; // the main viewport covers the screen; clicks on it go to openttd.ui.at
+    const r = w.rect;
+    html += `<div class="absolute border-2 border-blue-500/70 pointer-events-none" style="left:${r.x * k}px;top:${r.y * k}px;width:${r.w * k}px;height:${r.h * k}px"><span class="absolute -top-5 left-0 text-[10px] px-1 rounded-sm bg-blue-600 text-white">${esc(className(w.class))}</span></div>`;
+    if (!state.widgets) continue;
+    for (const g of w.widgets || []) {
+      const b = g.rect; if (!b || b.w <= 0 || b.h <= 0 || g.type === 'panel' || g.type === 'other') continue;
+      const label = clean(g.text) || clean(g.tooltip) || g.type;
+      html += `<button type="button" data-w="${i}" data-g="${g.index}" title="${esc(label)}${g.disabled ? ' (disabled)' : ''}" class="absolute rounded-sm ${g.disabled ? 'bg-gray-500/20 cursor-not-allowed' : 'bg-yellow-300/20 hover:bg-yellow-300/50 cursor-pointer'} border border-yellow-400/60" style="left:${b.x * k}px;top:${b.y * k}px;width:${b.w * k}px;height:${b.h * k}px"></button>`;
+    }
+  }
+  $('overlay').innerHTML = html;
+  $('windows').innerHTML = ui.windows.map((w, i) => {
+    const texts = (w.widgets || []).map((g) => clean(g.text)).filter(Boolean).slice(0, 6);
+    return `<li class="p-2 border border-gray-200 rounded-lg dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700" data-pick="${i}"><div class="font-medium text-gray-900 dark:text-white">${esc(className(w.class))}${w.number ? ' #' + w.number : ''}</div><div class="text-xs text-gray-500 dark:text-gray-400">${(w.widgets || []).length} widgets${w.caption ? ' · ' + esc(clean(w.caption)) : ''}</div>${texts.length ? `<div class="mt-1 text-xs text-gray-700 dark:text-gray-300">${texts.map(esc).join(' · ')}</div>` : ''}</li>`;
+  }).join('');
+  $('u-stats').textContent = `${ui.windows.length} windows · ${ui.windows.reduce((n, w) => n + (w.widgets || []).length, 0)} widgets · screen ${ui.screen.w}x${ui.screen.h}`;
+}
+
+async function refresh() {
+  try {
+    const next = new Image();
+    next.onload = () => { $('screen-img').src = next.src; draw(); };
+    next.src = `/api/view/screenshot?t=${Date.now()}`;
+    ui = await client('openttd.ui.windows', { widgets: true });
+    const st = await client('openttd.input.state');
+    armed = !!st.armed;
+    const a = $('u-armed');
+    a.textContent = armed ? 'input armed: clicks press widgets in the game' : 'input not armed: read only (the owner arms it: mcp-e2e --arm-input)';
+    a.className = `text-xs font-medium px-2.5 py-0.5 rounded-sm ${armed ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300'}`;
+  } catch (e) { $('u-msg').textContent = `no GUI client attached yet (${e.message})`; }
+}
+
+async function press(w, g) {
+  const widget = ui.windows[w].widgets.find((x) => x.index === g);
+  const label = clean(widget.text) || clean(widget.tooltip) || widget.type;
+  if (!armed) { $('u-msg').textContent = `${className(ui.windows[w].class)} / ${label}: input is not armed, so the panel only reads. The owner arms it with mcp-e2e --arm-input.`; return; }
+  const { cx, cy } = widget.rect;
+  await client('openttd.input.pointer', { x: cx, y: cy });
+  await client('openttd.input.button', { state: 'down', button: 'left' });
+  await client('openttd.input.button', { state: 'up', button: 'left' });
+  $('u-msg').textContent = `pressed ${className(ui.windows[w].class)} / ${label} at (${cx},${cy})`;
+  setTimeout(refresh, 400);
+}
+
+$('overlay').addEventListener('click', async (e) => {
+  const b = e.target.closest('button[data-w]');
+  if (b) { press(+b.dataset.w, +b.dataset.g); return; }
+  if (!ui) return;
+  const r = $('screen').getBoundingClientRect(); const k = ui.screen.w / r.width;
+  const x = Math.round((e.clientX - r.left) * k); const y = Math.round((e.clientY - r.top) * k);
+  const at = await client('openttd.ui.at', { x, y });
+  $('u-msg').textContent = `(${x},${y}): ${className(at.window?.class ?? at.class)}${at.widget ? ' / ' + (clean(at.widget.text) || clean(at.widget.tooltip) || at.widget.type) : ''}${at.tile !== undefined ? ` · tile ${at.tile}` : ''}`;
+});
+$('windows').addEventListener('click', (e) => { const li = e.target.closest('[data-pick]'); if (li) { state.window = li.dataset.pick; save(); draw(); } });
+$('p-window').onchange = (e) => { state.window = e.target.value; save(); draw(); };
+$('p-widgets').checked = state.widgets;
+$('p-widgets').onchange = (e) => { state.widgets = e.target.checked; save(); draw(); };
+document.querySelectorAll('[data-maximize]').forEach((b) => b.addEventListener('click', () => {
+  const f = b.closest('[data-frame]'); const on = !f.classList.contains('fixed');
+  ['fixed', 'inset-0', 'z-[60]', 'overflow-auto'].forEach((c) => f.classList.toggle(c, on));
+  b.textContent = on ? 'Restore (Esc)' : 'Maximize'; setTimeout(draw, 30);
+}));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.querySelectorAll('[data-frame].fixed [data-maximize]').forEach((b) => b.click()); });
+window.addEventListener('resize', () => setTimeout(draw, 30));
+save();
+fetch('/api/ui/classes').then((r) => r.json()).then((c) => { classes = c; draw(); });
+setTimeout(refresh, 30);
+setInterval(refresh, 1500);

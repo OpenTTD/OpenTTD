@@ -146,6 +146,33 @@ code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: applica
   -d '{"name":"no-such-instance","method":"ping"}' "$URL/api/instances/call")"
 check "a call to an unknown instance answers 404 (http=$code)" "$([[ "$code" == 404 ]] && echo 1 || echo 0)"
 
+# The GUI client's tools are derived into routes: every tool of its live tools/list has one.
+client_tools="$(curl -s -X POST -H 'Content-Type: application/json' -d "{\"name\":\"client-$self_port\",\"method\":\"tools/list\"}" "$URL/api/instances/call" | json "' '.join(t['name'] for t in d['result']['tools'])")"
+api_paths="$(curl -s "$URL/openapi.json" | json "' '.join(sorted(d['paths']))")"
+missing=()
+total=0
+for t in $client_tools; do
+  total=$((total + 1))
+  [[ " $api_paths " == *" /api/client/$t "* ]] || missing+=("$t")
+done
+check "every GUI client tool ($total) is a derived route /api/client/<tool> in OpenAPI (missing: ${missing[*]:-none})" \
+  "$([[ "$total" -gt 0 && ${#missing[@]} -eq 0 ]] && echo 1 || echo 0)"
+win="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"widgets":true}' "$URL/api/client/openttd.ui.windows")"
+check "the derived route answers openttd.ui.windows: windows with widgets" \
+  "$([[ "$(json "len(d['windows']) > 0 and any(w.get('widgets') for w in d['windows'])" <<<"$win")" == True ]] && echo 1 || echo 0)"
+cls="$(curl -s "$URL/api/ui/classes")"
+check "window class names are derived from src/window_type.h (1 MainToolbar, 2 Statusbar)" \
+  "$([[ "$(json "len(d) > 100 and d['1']['name'] == 'MainToolbar' and d['2']['name'] == 'Statusbar'" <<<"$cls")" == True ]] && echo 1 || echo 0)"
+armed="$(curl -s -X POST "$URL/api/client/openttd.input.state" | json "d.get('armed')")"
+out="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"x":10,"y":10}' "$URL/api/client/openttd.input.pointer")"
+if [[ "$armed" == True ]]; then
+  check "input is armed by the owner: openttd.input.pointer moves the cursor" "$([[ "$(json "d.get('ok') is True" <<<"$out")" == True ]] && echo 1 || echo 0)"
+else
+  check "input is not armed: openttd.input.pointer is refused (the owner's switch holds)" "$([[ "$(json "d.get('ok') is not True" <<<"$out")" == True ]] && echo 1 || echo 0)"
+fi
+code="$(curl -s -o /dev/null -w '%{http_code}' "$URL/ui")"
+check "the Interface page is served (http=$code)" "$([[ "$code" == 200 ]] && echo 1 || echo 0)"
+
 code="$(curl -s -o /dev/null -w '%{http_code}' "$URL/world")"
 check "the World page is served (http=$code)" "$([[ "$code" == 200 ]] && echo 1 || echo 0)"
 

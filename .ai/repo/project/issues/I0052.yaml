@@ -1,0 +1,45 @@
+id: I0052
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The GUI client as a derived surface: every client tool a route, every window and widget on a generic /ui page"
+slug: gui-client-derived-surface
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Reach every window of the owner's game generically: derive a REST/OpenAPI/Rhai route for every tool the GUI client offers, name window classes from the source, and draw every window and widget as a clickable mirror that presses it when the owner armed input."
+why: "The owner: wire this panel to MCP, for other AIs and interactions too; I need a generic connection, inferred, derived, dynamic, integrated with .ai and Majordomus, deployed, verified and validated."
+scope:
+  - "tools/research/**"
+  - "research/mcp-control.md"
+  - ".ai/repo/rules/project/mcp-surfaces-are-derived.v1.md"
+non_scope:
+  - "The UI and input tools themselves (I0044, prismatic_mcp_ui.cpp); arming input, which is the owner's switch"
+depends_on:
+  - I0044
+  - I0051
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "Every tool of the attached GUI client's live tools/list is a route POST /api/client/<tool> in OpenAPI and a Rhai api_client_* function, with no tool named by hand"
+  - "Window class names are derived from src/window_type.h (GET /api/ui/classes)"
+  - "/ui draws every window and widget from openttd.ui.windows; a widget click presses it only when input is armed (mcp-e2e --arm-input), else it reads"
+  - "Unarmed input is refused; mcp-view-check and mcp-panel-check pass; the rule project.mcp-surfaces-are-derived names the client surface and its proof"
+validation:
+  - "tools/research/mcp-view-check"
+  - "tools/research/mcp-panel-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16T00:06:52Z
+started_at: 2026-11-16T00:06:48Z
+started_event: sha256:8733daf3ee86f3cd74c606dd1752144970a7fb0bc6d3411248d08f51273fee2a
+verified_at: 2026-11-16T00:06:49Z
+verified_event: sha256:1003ae0eb1749f3bcfe70b61e74d509a85b5d69b112d5a3d24a4f266496c2668
+completed_at: 2026-11-16T00:06:52Z
+completed_event: sha256:3d5a57cb684290fb398c9ce7b622c9fac5849bfcc6815c2717f2c9279c03bfcd
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-view-check; tools/research/mcp-panel-check; mcp-rhai api_client_openttd_ui_windows + api_uiClasses"
+    result: "mcp-view-check 31/31 on a 3-instance cluster with the GUI client (all 23 client tools derived into /api/client/<tool> in OpenAPI, ui.windows answered through the derived route, 109 class names from window_type.h with 1 MainToolbar and 2 Statusbar, unarmed input.pointer refused, /ui served); mcp-panel-check 13/13; Rhai named the 5 open windows from the derived classes; Flowbite verify PASS. /ui opened in the browser but its rendering and an armed click were not checked by me (input stays unarmed: the owner's switch)"
+    commit: f069e8f0f52f6f55b7070dd9f9db1d89e95cadc2
+    recorded_at: 2026-11-16T00:06:50Z

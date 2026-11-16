@@ -61,6 +61,7 @@ class Game:
         self.mcp_up = False
         self.ai_started = False
         self.rpc_id = 0
+        self._client_tools, self._client_tools_at = [], 0.0
         self.asks_reported = set()  # ids of answered questions already published as ask.answered
         self.view_token = None  # token file of the GUI client whose view the panel shows and drives
 
@@ -206,6 +207,20 @@ class Game:
             return json.loads(out["result"]["content"][0]["text"])
         except (KeyError, IndexError, TypeError, ValueError):
             return out
+
+    def client_tools(self):
+        """The attached GUI client's tools/list, cached for a few seconds; [] without a client."""
+        if not self.view_token:
+            return []
+        now = time.time()
+        if now - self._client_tools_at > 5:
+            try:
+                cfg = json.loads(Path(self.view_token).read_text())
+                self._client_tools = mcp_post(cfg["endpoint"], cfg["agent_token"], "tools/list").get("result", {}).get("tools", [])
+                self._client_tools_at = now
+            except Exception:  # noqa: BLE001 - the client restarts; keep the last list
+                pass
+        return self._client_tools
 
     # ------------------------------------------------------------------ approvals
     def set_pause(self, pause):
@@ -446,6 +461,28 @@ def instance_call(name, method, params):
     return 200, mcp_post(cfg["endpoint"], cfg["agent_token"], method, params, timeout=10)
 
 
+def window_classes():
+    """WindowClass numbers to names, derived from src/window_type.h (aliases kept as extra names), so
+    the windows openttd.ui.windows reports by number get the names the source gives them."""
+    src = HERE.parents[2] / "src" / "window_type.h"
+    body = src.read_text().split("enum class WindowClass", 1)[1].split("\n};", 1)[0]
+    body = re.sub(r"/\*.*?\*/", "", body, flags=re.S)
+    body = re.sub(r"//[^\n]*", "", body)
+    names, value, out = {}, -1, {}
+    for m in re.finditer(r"\b([A-Z][A-Za-z0-9]*)\s*(?:=\s*([^,]+))?,", body):
+        name, expr = m.group(1), (m.group(2) or "").strip()
+        if expr.startswith("WindowClass::"):
+            v = names[expr.split("::", 1)[1]]
+        elif expr:
+            v = int(expr, 0)
+        else:
+            v = value + 1
+        value = v
+        names[name] = v
+        out.setdefault(v, []).append(name)
+    return {str(v): {"name": ns[-1] if len(ns) > 1 else ns[0], "aliases": ns} for v, ns in sorted(out.items())}
+
+
 APPROVAL_LINE = re.compile(r"^\s*(prismatic_mcp|mcp)\s+(approve|auto_approve|auto-approve)\b", re.I)
 
 
@@ -602,6 +639,8 @@ def make_routes(game):
             "title": {"type": "string", "enum": ["none", "launch", "trouble", "merger", "bankrupt"]}, "tile": {"type": "integer"},
             "x": {"type": "integer"}, "y": {"type": "integer"}, "town": {"type": "integer"}, "vehicle": {"type": "integer"}}, ["text"]),
          lambda b: (200, game.view_call("openttd.view.news.show", b))),
+        ("GET", "/api/ui/classes", "uiClasses", "Window class numbers to names, derived from src/window_type.h (for openttd.ui.windows)", False,
+         None, lambda q: (200, window_classes())),
         ("POST", "/api/ask", "ask", "Ask the player a yes/no question in the game window (openttd.view.ask); the answer arrives as event ask.answered and in GET /api/ask: yes, no (also a closed dialog), or replaced by a newer question", True,
          s({"question": {"type": "string"}, "caption": {"type": "string"}}, ["question"]), lambda b: (200, game.view_call("openttd.view.ask", b))),
         ("GET", "/api/ask", "askAnswers", "Every question asked in the game window, newest first, with its answer (yes, no, replaced, or null while open)", True,
@@ -626,6 +665,11 @@ def derived_routes(game):
     for t in tools:
         out.append(("POST", f"/api/tools/{t['name']}", "tool_" + re.sub(r"\W", "_", t["name"]),
                     t.get("description", t["name"]), t.get("inputSchema") or OBJ, t))
+    # The attached GUI client's own tools (openttd.ui.*, openttd.input.*, openttd.view.* and whatever it
+    # gains), one route each, from its live tools/list: the owner's window is a surface like the server.
+    for t in game.client_tools():
+        out.append(("POST", f"/api/client/{t['name']}", "client_" + re.sub(r"\W", "_", t["name"]),
+                    "GUI client: " + t.get("description", t["name"]), t.get("inputSchema") or OBJ, t))
     for r in resources:
         uri = r["uri"]
         path = uri.split("://", 1)[1] if "://" in uri else uri
@@ -668,11 +712,13 @@ def openapi(game, routes):
         except Exception:
             derived = []
     for method, path, op_id, summary, schema, item in derived:
-        op(method, path, op_id, summary, schema, "mcp tools" if method == "POST" else "mcp resources")
+        tag = "gui client tools" if path.startswith("/api/client/") else ("mcp tools" if method == "POST" else "mcp resources")
+        op(method, path, op_id, summary, schema, tag)
     return {"openapi": "3.1.0",
             "info": {"title": "OpenTTD MCP panel (RESEARCH-ONLY)", "version": "1",
                      "description": "Declared once in tools/research/mcp-panel/server.py and derived from the live "
-                                    "MCP catalogue: every MCP tool and resource of the running game is a route here."},
+                                    "MCP catalogues: every MCP tool and resource of the running game, and every tool "
+                                    "of the attached GUI client (/api/client/...), is a route here."},
             "servers": [{"url": f"http://127.0.0.1:{game.args.panel_port}"}], "paths": paths}
 
 
@@ -768,6 +814,8 @@ def make_handler(game):
             if method == "GET":
                 if path in ("/", "/index.html"):
                     return self._send(200, (STATIC / "index.html").read_bytes(), "text/html; charset=utf-8")
+                if path == "/ui":
+                    return self._send(200, (STATIC / "ui.html").read_bytes(), "text/html; charset=utf-8")
                 if path == "/world":
                     return self._send(200, (STATIC / "world.html").read_bytes(), "text/html; charset=utf-8")
                 if path == "/docs":
@@ -811,6 +859,11 @@ def make_handler(game):
                     return self._send(code, out)
                 if not game.mcp_up:
                     return self._send(503, {"error": "MCP server not up yet"})
+                if method == "POST" and path.startswith("/api/client/"):
+                    try:
+                        return self._send(200, game.view_call(path[len("/api/client/"):], body or {}))
+                    except Exception as e:
+                        return self._send(503, {"error": str(e)})
                 if method == "POST" and path.startswith("/api/tools/"):
                     return self._send(200, game.tool(path[len("/api/tools/"):], body or {}))
                 if method == "GET" and path.startswith("/api/resources/"):

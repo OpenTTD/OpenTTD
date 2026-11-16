@@ -193,6 +193,24 @@ Prismatic or another AI.
 | main page, News card | the list, plus a form to send a message with an optional town viewport |
 | `narrator.rhai` | every route the bot opens appears as a newspaper with a viewport on its town |
 
+### Every window and widget, generically: the GUI client as a derived surface
+
+The panel derives one route for every tool on the attached GUI client's live `tools/list`:
+`POST /api/client/<tool>`, with the tool's `inputSchema` as the body. The routes are in OpenAPI under
+"gui client tools" and in Rhai as `api_client_<tool>`. That covers `openttd.ui.windows` (every
+window front to back, with each widget's rectangle, text, tooltip and state), `openttd.ui.at`,
+`openttd.ui.locate`, `openttd.input.*`, `openttd.view.*`, and any tool the client gains later,
+without a line changed here. Window class names come from `src/window_type.h` through
+`GET /api/ui/classes`.
+
+`/ui` is a generic mirror of the owner's screen: the live picture, with every window outlined and
+named, and every widget a hotspot whose label is its text or tooltip. A click on a widget presses
+it in the game through `openttd.input.pointer` and `openttd.input.button`, but only when the owner
+armed input: `mcp-e2e --arm-input` sets `PRISMATIC_MCP_INPUT=1` for the GUI client, and it is off
+by default. Unarmed, the page only reads, and a click shows what is under it (`openttd.ui.at`).
+The news window, the yes/no dialog and every other panel are therefore reachable through the same
+generic path as the hand-made `news` and `ask` tools.
+
 ### Talking with the owner in the game: company newspapers and questions
 
 | Surface | What it does |
