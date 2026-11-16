@@ -12,7 +12,7 @@ any of them the same way. Nothing in it names an operation:
 | Instances | the instance registry (`$PRISMATIC_MCP_REGISTRY`, records `mcp-instance/v1`, dead owners dropped) and `--panel URL` |
 | Operations of a panel | its `/openapi.json`: every path and method, `operationId`, body schema, query parameters, `x-mcp-annotations.readOnlyHint`, streaming routes |
 | Operations of an MCP server | its `tools/list` (one `tool:<name>` each) and `resources/list` (one `resource:<uri>` each), read with the token file the record names |
-| Events | each panel's bus (`/api/events?since=`), fanned in and tagged with the instance |
+| Events | each panel's bus (`/api/events?since=`), fanned in and tagged with the instance; for a game's MCP server without a panel, derived from two reads of `openttd://game/state` every 5 s (`game.month`, `game.paused`, `game.resumed`, `game.new_world`, `vehicles.count`, `companies.count`, each marked `derived_from`) |
 
 The set refreshes every two seconds; a new or vanished instance is pushed to subscribers as a
 `hub.instances` notification.
@@ -144,6 +144,7 @@ bot and the human-motion player to the same rule.
 | `cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub` | operations derived from OpenAPI and MCP, registry records and dead owners, filters, verdicts; and end to end against a fake panel: list, call over WebSocket and HTTP, a stream refused as a call, only the subscribed kind streamed |
 | `node --test 'tools/research/mcp-panel/test/*.test.mjs'` | schema to fields, coercion, call parameters, URL state round trip, grouping, and the client's request matching, notifications and re-subscription |
 | `tools/research/mcp-hub-page-check <hub-url>` | the page in a real browser: the WebSocket goes live, every listed instance is a row, a click on an operation opens its form and the call answers, the filter is kept in the address and survives a reload, the audit card renders, a live event arrives, no console error |
+| `mcp-hub intent-check [--hub URL] ["<sentence>"]...` | the owner's requests in plain language through the hub: every instance with an `/intent` operation (openttd-80's `/api/intent`, I0069) answers each sentence (the owner's own examples by default, Czech with and without diacritics and English) with an action, its candidates, and a plan to build |
 | `tools/research/mcp-dup-check` | against whatever runs: no instance holds a duplicate pair; each pair named with both stations and the distance |
 | `tools/research/mcp-hub-check` | against whatever runs: every instance discovered, every read-only operation that needs no input called through the WebSocket, one event streamed; a 503 ("no GUI client attached") is counted as skipped |
 

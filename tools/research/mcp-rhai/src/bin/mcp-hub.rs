@@ -5,6 +5,7 @@
 //!   mcp-hub [serve] [--port 8790] [--registry DIR] [--panel URL]... [--static DIR] [--audit-every S]
 //!   mcp-hub check [--hub ws://127.0.0.1:8790/ws] [--event-wait SECONDS]
 //!   mcp-hub audit [--hub ws://127.0.0.1:8790/ws] [--json]
+//!   mcp-hub intent-check [--hub ws://127.0.0.1:8790/ws] ["<sentence>"]...
 //!
 //! serve: discovers instances from $PRISMATIC_MCP_REGISTRY (default
 //! ~/.local/state/prismatic-mcp/instances) and every --panel, serves ws://127.0.0.1:<port>/ws,
@@ -14,6 +15,9 @@
 //! that went away as audit.resolved.
 //! check: connects to a hub, calls every read-only operation of every instance that needs no
 //! required input, and waits for one streamed event; exits 1 on any failure.
+//! intent-check: sends each sentence (the owner's own examples by default, Czech with and without
+//! diacritics and English) to every instance whose catalogue has an operation on a path ending in
+//! /intent, and passes when each answer names an action and its candidates (and, to build, a plan).
 //! audit: asks the hub for every instance's duplicate stations (one owner, a shared facility,
 //! overlapping catchments); exits 1 when any instance has one.
 use serde_json::{json, Value};
@@ -160,6 +164,52 @@ fn audit_cmd(args: &[String]) -> i32 {
     i32::from(total > 0)
 }
 
+/// The owner's own example requests (2026-11-15), in Czech with and without diacritics and English.
+const OWNER_SENTENCES: [&str; 6] = [
+    "najdi nejproduktivnější les", "najdi nejbližší les + pilu", "vystav trať mezi nejproduktivnějším lesem a pilou",
+    "vybuduj nejlukrativnější trať", "najdi nejblizsi les + pilu", "find the nearest coal mine and power station",
+];
+
+/// Does an intent answer carry what the request asked for? An action, candidates, and to build, a plan.
+fn intent_verdict(answer: &Value) -> Result<String, String> {
+    let r = answer.get("result").ok_or_else(|| format!("error {}", answer.get("error").unwrap_or(&Value::Null)))?;
+    if let Some(code) = r.get("http_error") { return Err(format!("HTTP {code}: {}", r["body"])); }
+    let action = r.pointer("/intent/action").and_then(Value::as_str).ok_or("no intent.action")?;
+    let n = r.pointer("/answer/candidates").and_then(Value::as_array).map(Vec::len).unwrap_or(0);
+    if n == 0 { return Err(format!("{action}: no candidates")); }
+    if action == "build" && r.pointer("/answer/build").is_none() { return Err("build: no plan in the answer".into()); }
+    let subjects: Vec<String> = r.pointer("/intent/subjects").and_then(Value::as_array).into_iter().flatten()
+        .map(|s| s.get("name").and_then(Value::as_str).map(str::to_string).unwrap_or_else(|| s.to_string())).collect();
+    Ok(format!("{action} {} [{}] -> {n} candidate(s)", r.pointer("/intent/ordering").and_then(Value::as_str).unwrap_or("-"), subjects.join(", ")))
+}
+
+fn intent_check(args: &[String]) -> i32 {
+    let url = arg(args, "--hub").unwrap_or_else(|| "ws://127.0.0.1:8790/ws".into());
+    let given: Vec<String> = args.iter().enumerate().filter(|(i, a)| !a.starts_with("--") && (*i == 0 || args[i - 1] != "--hub")).map(|(_, a)| a.clone()).collect();
+    let sentences: Vec<String> = if given.is_empty() { OWNER_SENTENCES.iter().map(|s| s.to_string()).collect() } else { given };
+    let mut ws = match connect(&url) { Ok(w) => w, Err(e) => { eprintln!("FAIL connect {url}: {e}"); return 2; } };
+    let mut notes = Vec::new();
+    let ops = request(&mut ws, 1, "hub.catalogue", json!({}), &mut notes).unwrap_or_default();
+    let targets: Vec<(String, String)> = ops["result"].as_array().into_iter().flatten()
+        .filter(|o| o["path"].as_str().map_or(false, |p| p.ends_with("/intent")))
+        .map(|o| (o["instance"].as_str().unwrap_or("").to_string(), o["id"].as_str().unwrap_or("").to_string())).collect();
+    if targets.is_empty() { println!("FAIL no instance offers an /intent operation"); return 1; }
+    let (mut pass, mut fail) = (0, 0);
+    let mut id = 10;
+    for (inst, op) in &targets {
+        for s in &sentences {
+            id += 1;
+            let r = request(&mut ws, id, "hub.call", json!({"instance": inst, "id": op, "body": {"text": s}}), &mut notes).unwrap_or_else(|e| json!({"error": e}));
+            match intent_verdict(&r) {
+                Ok(v) => { pass += 1; println!("PASS {inst} {s:?}: {v}"); }
+                Err(e) => { fail += 1; println!("FAIL {inst} {s:?}: {e}"); }
+            }
+        }
+    }
+    println!("intent: {} instance(s), {pass} pass, {fail} fail", targets.len());
+    i32::from(fail > 0)
+}
+
 fn serve(args: &[String]) -> i32 {
     let port = arg(args, "--port").unwrap_or_else(|| "8790".into());
     let listener = match TcpListener::bind(format!("127.0.0.1:{port}")) {
@@ -190,6 +240,7 @@ fn main() {
     let code = match args.first().map(String::as_str) {
         Some("check") => check(&args[1..]),
         Some("audit") => audit_cmd(&args[1..]),
+        Some("intent-check") => intent_check(&args[1..]),
         Some("serve") => serve(&args[1..]),
         Some("-h" | "--help") => {
             let doc: Vec<&str> = include_str!("mcp-hub.rs").lines().take_while(|l| l.starts_with("//!"))
@@ -451,6 +502,30 @@ mod tests {
         assert_eq!((new.len(), gone.len()), (0, 1));
         assert_eq!(gone[0].1["kind"], json!("audit.resolved"));
         assert_eq!(gone[0].1["data"]["was"], json!("audit.duplicate_station"));
+    }
+    #[test]
+    fn a_game_without_a_panel_streams_events_derived_from_its_state() {
+        let st = |date: &str, tick: i64, paused: bool, vehicles: i64| json!({"game_date": date, "game_tick": tick,
+            "data": {"paused": paused, "num_vehicles": vehicles, "num_companies": 1}});
+        assert!(hub::derive_state_events(None, &st("1950-01-01", 10, false, 0)).is_empty(), "the first read is no event");
+        let kinds = |a: Value, b: Value| hub::derive_state_events(Some(&a), &b).iter().map(|e| e["kind"].as_str().unwrap().to_string()).collect::<Vec<_>>();
+        assert_eq!(kinds(st("1950-01-30", 100, false, 2), st("1950-02-01", 200, true, 3)), vec!["game.month", "game.paused", "vehicles.count"]);
+        assert_eq!(kinds(st("1950-02-01", 200, true, 3), st("1950-02-02", 300, false, 3)), vec!["game.resumed"]);
+        assert_eq!(kinds(st("1950-02-02", 300, false, 3), st("1950-02-02", 300, false, 3)), Vec::<String>::new());
+        assert_eq!(kinds(st("1955-06-01", 9000, false, 40), st("1950-01-01", 5, false, 0)), vec!["game.new_world"], "a tick counter that went back is a new world, and only that");
+        let e = &hub::derive_state_events(Some(&st("1950-01-30", 1, false, 0)), &st("1950-02-01", 2, false, 0))[0];
+        assert_eq!(e["derived_from"], json!("openttd://game/state"));
+    }
+    #[test]
+    fn an_intent_answer_passes_only_with_an_action_candidates_and_a_plan_to_build() {
+        let ok = json!({"result": {"intent": {"action": "find", "ordering": "nearest", "subjects": [{"name": "Forest"}, {"name": "Sawmill"}]},
+                                   "answer": {"candidates": [{}, {}]}}});
+        assert_eq!(intent_verdict(&ok).unwrap(), "find nearest [Forest, Sawmill] -> 2 candidate(s)");
+        let build_without_plan = json!({"result": {"intent": {"action": "build"}, "answer": {"candidates": [{}]}}});
+        assert!(intent_verdict(&build_without_plan).is_err());
+        assert!(intent_verdict(&json!({"result": {"intent": {"action": "find"}, "answer": {"candidates": []}}})).is_err());
+        assert!(intent_verdict(&json!({"result": {"http_error": 400, "body": {"error": "no text"}}})).is_err());
+        assert_eq!(OWNER_SENTENCES.len(), 6);
     }
     /// A panel with a status route, an echo route and an event bus whose events the test appends.
     fn fake_panel(events: Arc<Mutex<Vec<Value>>>) -> String {

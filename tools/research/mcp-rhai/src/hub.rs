@@ -324,6 +324,41 @@ pub struct State {
     catalogue_at: HashMap<String, u64>,
     /// The findings the last audit watch saw, by key, so only what changed is announced.
     audit_seen: BTreeMap<String, (String, Value)>,
+    /// The last openttd://game/state read of each MCP-only instance, and fan-in cycles run.
+    mcp_state: HashMap<String, Value>,
+    fan_cycles: u64,
+}
+
+/// How often (in fan-in cycles) an MCP-only instance's state is read for derived events.
+pub const MCP_STATE_EVERY: u64 = 10;
+
+/// Events derived from two reads of openttd://game/state (the resource envelope: game_date,
+/// game_tick, data.paused, data.num_vehicles, data.num_companies), with the kinds a panel's bus uses,
+/// for an instance that has no bus of its own (a game's MCP server without a panel). Nothing on the
+/// first read: an event is a change.
+pub fn derive_state_events(prev: Option<&Value>, now: &Value) -> Vec<Value> {
+    let Some(prev) = prev else { return vec![] };
+    let mut out = Vec::new();
+    let mut ev = |kind: &str, data: Value| out.push(json!({"kind": kind, "data": data, "derived_from": "openttd://game/state"}));
+    let tick = |v: &Value| v.get("game_tick").and_then(Value::as_i64).unwrap_or(0);
+    let date = |v: &Value| v.get("game_date").and_then(Value::as_str).unwrap_or("").to_string();
+    let field = |v: &Value, k: &str| v.pointer(&format!("/data/{k}")).cloned().unwrap_or(Value::Null);
+    if tick(now) < tick(prev) {
+        ev("game.new_world", json!({"date": date(now)}));
+        return out;
+    }
+    let (d0, d1) = (date(prev), date(now));
+    if d0.len() >= 7 && d1.len() >= 7 && d0[..7] != d1[..7] { ev("game.month", json!({"date": d1})); }
+    match (field(prev, "paused"), field(now, "paused")) {
+        (Value::Bool(false), Value::Bool(true)) => ev("game.paused", json!({"date": d1})),
+        (Value::Bool(true), Value::Bool(false)) => ev("game.resumed", json!({"date": d1})),
+        _ => {}
+    }
+    for (k, kind) in [("num_vehicles", "vehicles.count"), ("num_companies", "companies.count")] {
+        let (a, b) = (field(prev, k), field(now, k));
+        if a != b && !b.is_null() { ev(kind, json!({"from": a, "to": b})); }
+    }
+    out
 }
 
 /// How many refresh cycles a catalogue is trusted for before it is read again. A panel registers
@@ -402,9 +437,39 @@ pub fn refresh(state: &Shared, registry: &Path, panels: &[String]) {
     }
 }
 
+/// Every MCP_STATE_EVERY cycles, read the state of each MCP-only instance and push the events
+/// derive_state_events finds, so a game watched without a panel streams too.
+fn fan_in_mcp(state: &Shared) {
+    let targets: Vec<(Instance, Option<Op>, Option<Value>)> = {
+        let mut s = state.lock().unwrap();
+        s.fan_cycles += 1;
+        if s.fan_cycles % MCP_STATE_EVERY != 1 { return; }
+        s.instances.iter().filter(|i| matches!(i.access, Access::Mcp { .. })).map(|i| {
+            let op = s.ops.get(&i.name).and_then(|ops| ops.iter().find(|o| o.id == "resource:openttd://game/state").cloned());
+            (i.clone(), op, s.mcp_state.get(&i.name).cloned())
+        }).collect()
+    };
+    for (i, op, prev) in targets {
+        let Some(op) = op else { continue };
+        let Ok(raw) = call(&i, &op, None, None) else { continue };
+        let now = match raw.pointer("/contents/0/text").and_then(Value::as_str) {
+            Some(t) => serde_json::from_str::<Value>(t).unwrap_or(Value::Null),
+            None => raw,
+        };
+        let events = derive_state_events(prev.as_ref(), &now);
+        let mut s = state.lock().unwrap();
+        for e in events {
+            let msg = json!({"jsonrpc": "2.0", "method": "hub.event", "params": {"instance": i.name, "event": e}});
+            s.broadcast(Some(&i.name), msg, Some(&e));
+        }
+        s.mcp_state.insert(i.name.clone(), now);
+    }
+}
+
 /// Read every panel's events since the last one seen and push them to the subscribers that want
 /// them. The first read of a panel only takes its position, so a subscriber sees what happens next.
 pub fn fan_in(state: &Shared) {
+    fan_in_mcp(state);
     let panels: Vec<(String, String, Option<i64>)> = {
         let s = state.lock().unwrap();
         s.instances.iter().filter_map(|i| match &i.access {

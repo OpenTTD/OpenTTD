@@ -1,0 +1,35 @@
+---
+schema: knowledge/v1
+id: vehicles-resource-gives-the-front-vehicles-capacity-only
+kind: knowledge
+class: fact
+title: "openttd://vehicles reports the front vehicle's cargo capacity only, so a train led by an engine shows 0"
+description: "Before computing a fleet's or a route's capacity from openttd://vehicles."
+status: candidate
+epistemics: observed
+date: 2026-11-16
+tags: [prismatic-mcp, vehicles, planning]
+about: src/prismatic_mcp/prismatic_mcp_entities.cpp
+route: platform
+provenance:
+  origin: authored
+  derived_from:
+    - file:src/prismatic_mcp/prismatic_mcp_entities.cpp
+    - file:src/station_cmd.cpp
+relations:
+  - type: relates_to
+    target: file:.ai/repo/workflows/substrate/prismatic-mcp/README.md
+---
+
+# Statement
+
+`src/prismatic_mcp/prismatic_mcp_entities.cpp:Vehicles` publishes `cargo_capacity` as `v->cargo_cap`
+of the primary (front) vehicle. A road vehicle or a plane carries its whole capacity itself; a train's
+front is usually an engine with no cargo, so its `cargo_capacity` is 0 while its wagons carry the load.
+The game itself sums every vehicle of a consist (`src/station_cmd.cpp:IncreaseStats` walks
+`v->Next()`).
+
+# What to do
+
+For a train, sum the consist (an MCP field for the consist's total capacity would be the clean fix),
+or take the capacity from the link graph; never treat a train as empty.
