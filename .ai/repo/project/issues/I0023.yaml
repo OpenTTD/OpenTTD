@@ -25,4 +25,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-16T21:15:12Z
+started_at: 2026-11-16T21:15:00Z
+started_event: sha256:a1e77a4382ef3a0b77fac2d916df4f86c3faffee09c303419c7b339f5de84449
+verified_at: 2026-11-16T21:15:01Z
+verified_event: sha256:893b25fe1e1fb6fb718b220c2d3be7090bad0cf2fa68189709b1ef3260a8865c
+completed_at: 2026-11-16T21:15:12Z
+completed_event: sha256:3b00d1b43b721ebd4c9eba714cd671449015c76a6d74a9bd5e67a01e9e499ded
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "build-mcp/openttd_test '[prismatic_mcp]' ; tools/research/mcp-live-check --bin build-mcp/openttd"
+    result: "PASS. Unit: openttd_test '[prismatic_mcp]' 748 assertions / 25 cases, including the new 'approval state machine binds to canonical args' case driving detail::ClassifySubmit (submit->pending, reuse, approve->execute, changed-args refused, replay/consumed refused, expiry). Integration: mcp-live-check 26/26 for openttd.game.set_pause, openttd.cmd.Pause and openttd.decision.submit -- a mutation first returns pending_approval; changed arguments do not ride the approval; the approved call is posted via the command system (status=executed, command_result=queued->succeeded, verdict=VERIFIED_SUCCESS); replay needs a fresh approval. The approval now stores the exact canonical args (collision-free), not only the 64-bit FNV-1a digest. Landed e1f2ee7d3f."
+    commit: e1f2ee7d3f26eedd0a0394dd2d5edc84c6b630cb
+    recorded_at: 2026-11-16T21:15:03Z
