@@ -3,7 +3,7 @@ schema: knowledge/v1
 id: the-bots-rail-pathfinder-lays-plain-track-only
 kind: knowledge
 class: constraint
-title: "PrismaticAI lays rail over land and level crossings only: a line that needs a bridge or tunnel fails"
+title: "PrismaticAI lays rail over land, level crossings and bridges: a line that needs a tunnel fails"
 description: "When choosing which planned rail line the owner's bot builds, or reading why a bot company has no trains."
 status: verified
 epistemics: observed
@@ -42,17 +42,19 @@ wrong: the game refused the first piece with ERR_LAND_SLOPED_WRONG.
 
 Since bridge repository a0f2734 the bot crosses a straight road at right angles on flat land (a
 level crossing, never turning on it). It takes a station site only when the exit leads on: on the
-same seed, a station between houses had its exit facing a road junction. Bridges and tunnels are
-still out of reach. The passenger line Ganingbury–Sontburg on that seed needs a bridge over the
-river south of the town.
+same seed, a station between houses had its exit facing a road junction. Since bridge repository d3c39ba the bot also bridges what blocks a straight run two tiles ahead
+(water, a road it cannot cross, rail, a valley). The far head is the first land 3 to 11 tiles on
+whose bridge the game accepts in test mode (`AITestMode` plus `AIBridge.BuildBridge`). On seed
+20208 the passenger line Mefingpool–Sontburg was then built with two bridges. Tunnels are still out
+of reach.
 
 # How to apply
 
 - Price rail lines with track-planning (`mcp-plan --track N`) before the bot gets one. The panel's
-  bot start prices six of each list, passes over a line whose counts include a bridge or tunnel,
-  and does not hand over an unpriced line while others were priced.
+  bot start prices six of each list, passes over a line whose counts include a tunnel, and does
+  not hand over an unpriced line while others were priced.
 - A bot company with T0 in `companies` after a rail plan: look for "no rail path" in its log
   before blaming the planner's scores. To find which rule blocks the line, replay the search
   offline on `openttd://map` and `openttd://map/terrain`, with the bot's own stations put back.
-- Lines that need bridges stay out of reach until the bot learns to place them, or until an
-  executor (openttd-07's `mcp-human rail`) lays track-planning's pieces for the bot's company.
+- Lines that need tunnels stay out of reach until the bot learns to dig them, or until an executor
+  (openttd-07's `mcp-human rail`) lays track-planning's pieces for the bot's company.

@@ -425,9 +425,10 @@ money, the old estimate, counts (tiles, curves, bridges, inclines, cleared tiles
 the game publishes `openttd://economy/prices` the answer is in game money. Without it, the
 kernel's cost is in plain-track tile units and becomes money through `rail_tile`; `money_from`
 says which. When AlgoGlyph is present, the panel's bot start prices three lines of each list this
-way and reports them in the `~` console. PrismaticAI lays track over land and level crossings, with no bridge
-or tunnel (knowledge `the-bots-rail-pathfinder-lays-plain-track-only`). So the bot start prices six
-lines of each list and gives the bot only lines priced with a route that needs neither. An unpriced
+way and reports them in the `~` console. PrismaticAI lays track over land, level crossings and bridges, with no
+tunnel (knowledge `the-bots-rail-pathfinder-lays-plain-track-only`). Each bridge is accepted by the
+game itself in test mode before it enters the path. So the bot start prices six lines of each list
+and gives the bot only lines priced with a route that needs no tunnel. An unpriced
 line is not handed over blind, and `~` says why a chosen line was passed over. Without that, a
 duel's planned company built no train in 36 months. A station site is taken only when its exit
 leads on, the same rule in `sites.rs` and in the bot: ahead or to either side is land or a road.

@@ -257,8 +257,8 @@ class Game:
         priced_any = bool((out.get("line_costs") or {}).get("priced"))
 
         def bot_can_build(opt):
-            """PrismaticAI lays rail over buildable land and level crossings (rail.nut FindRailPath),
-            with no bridge or tunnel. A line track-planning priced with one is not for the bot. When
+            """PrismaticAI lays rail over buildable land, level crossings and bridges (rail.nut
+            FindRailPath), with no tunnel. A line track-planning priced with a tunnel is not for the bot. When
             lines were priced, an unpriced one is not handed over blind either: on seed 20208 an
             unpriced passenger line needed a bridge over a river and failed. Without AlgoGlyph
             (nothing priced) every line is tried as before."""
@@ -266,7 +266,7 @@ class Game:
             if not t:
                 return not priced_any
             n = t.get("counts") or {}
-            return t.get("status") == "found" and not (n.get("bridges") or n.get("tunnels"))
+            return t.get("status") == "found" and not n.get("tunnels")
 
         # The portfolio first; a rail line the bot cannot build is replaced by the next priced or
         # unpriced line of its kind that it can, from the planner's lists (best score first).
@@ -280,7 +280,7 @@ class Game:
                 n = (opt.get("track") or {}).get("counts") or {}
                 if c in chosen:
                     line = f"{c.get('producer', c.get('a', {})).get('name')} - {c.get('acceptor', c.get('b', {})).get('name')}"
-                    why = (f"needs {n.get('bridges', 0)} bridge(s) and {n.get('tunnels', 0)} tunnel(s); the bot builds neither"
+                    why = (f"needs {n.get('tunnels', 0)} tunnel(s); the bot builds no tunnel"
                            if opt.get("track") else "was not priced on the map, so it is not handed to the bot blind")
                     self.event("ai", f"planner: the {mode} line {line} {why}; the next line it can build goes instead")
                 continue
