@@ -25,4 +25,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T02:45:02Z
+started_at: 2026-11-16T02:44:58Z
+started_event: sha256:59935fc1403d5d4fe32e11ca30f31f52958e15a90e384df6305b41b79c911708
+verified_at: 2026-11-16T02:44:59Z
+verified_event: sha256:82a3b3904f524679f688bf86b6664a2b00e5a33add81175fffec1234db002f8b
+completed_at: 2026-11-16T02:45:02Z
+completed_event: sha256:e5ac4f53c7378a744bc2e557556096463293a5e8415ad434454d68d978c4c282
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --bin mcp-hub; mcp-hub audit --hub ws://127.0.0.1:8790/ws"
+    result: "13/13; live: Wuningpool Central - Frenfingburg 4 vehicles, capacity [155,124] usage [9,15], 3 too many; delivered 4a24cf81a8"
+    commit: 4a24cf81a8f056ad5a304e034401322405fe1266
+    recorded_at: 2026-11-16T02:45:01Z
