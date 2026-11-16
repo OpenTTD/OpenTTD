@@ -192,8 +192,14 @@ def symbol_word(symbol: str) -> str:
 
 
 def ignored(repo: Repo, path: str) -> bool:
-    return subprocess.run(["git", "-C", str(repo.root), "check-ignore", "-q", "--no-index", path],
-                          capture_output=True).returncode == 0
+    """Does git ignore this path? A directory pattern (`.ai/local/`) matches only a path that names a
+    directory, and the directory need not exist in this checkout, so the directory form is asked too:
+    the answer is the same on every checkout of one commit."""
+    for candidate in (path, path.rstrip("/") + "/"):
+        if subprocess.run(["git", "-C", str(repo.root), "check-ignore", "-q", "--no-index", candidate],
+                          capture_output=True).returncode == 0:
+            return True
+    return False
 
 
 def problem(repo: Repo, ref: Ref) -> str | None:

@@ -148,6 +148,13 @@ class RefsTest(unittest.TestCase):
         entry = json.loads(out)["records"][".ai/repo/map/README.md"]["src/net/server.cpp"]
         self.assertEqual(entry["status"], "D")
 
+    def test_an_ignored_directory_that_does_not_exist_here_is_still_ignored(self) -> None:
+        # `.ai/local/` is a directory pattern, and a fresh checkout has no `.ai/local` at all.
+        self.assertFalse((self.root / ".ai/local").exists())
+        self.write(".ai/repo/local/README.md", "`.ai/local` and `.ai/local/state` are this checkout's own\n")
+        code, out = self.run_cli("check")
+        self.assertEqual(code, 0, out)
+
     def test_line_citation_checks_the_file_only(self) -> None:
         self.write(".ai/repo/lines/README.md", "`src/net/server.cpp:999` and `src/net/gone.cpp:12-14`\n")
         code, out = self.run_cli("check")
