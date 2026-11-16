@@ -535,6 +535,25 @@ prefixed `[prismatic-plan] <n>`: the reading, the three best candidates, and for
 settings. The dedicated server runs one stdin line per `select()`, so the panel writes console
 lines one at a time, 0.25 s apart (knowledge `dedicated-console-reads-one-buffered-line-per-select`).
 `mcp-view-check` proves the round trip.
+`mcp-intent-check` proves the four sentences themselves, driven through `POST /api/console` the
+way the owner types them: that each one is *answered in the console* and not merely over HTTP, that
+the reading names the action, the ordering and the subjects it resolved, and two things nothing
+else checks. First, a build's settings keys must **exist in PrismaticAI's `info.nut`** — a plan
+naming a setting the bot does not have reads perfectly and does nothing, and no other tool in
+`tools/research` reads that file. Second, `vocabulary_from` must point inside `src/lang` with a
+vocabulary in the thousands (6487 on the 2026-11-16 stack), because "every noun is derived" is the
+requirement most easily broken in silence.
+
+**What it looks like when it does not understand you.** An empty sentence is HTTP 400, and a type
+that is not on this map (an oil rig on a temperate map) resolves its subject and returns no
+candidates. But a sentence that names nothing recognisable — "xyzzy blah" — **does not error**: it
+falls back to the planner's own candidates, and the only thing that says so is `how`
+("the planner's candidates ordered by score"). A console verb or a script that prints the
+candidates without `how` therefore makes a misread sentence look exactly like an understood one,
+which is why the watcher prints the reading line first and why `mcp-intent-check` fails when `how`
+is absent. If the resolver is not built or crashes, the console says `not understood: <stderr>`;
+money is not checked here, so a plan the company cannot afford is answered and then logged by the
+bot as "no freight route built".
 
 ## A cluster of instances: discovery and calls across it
 
