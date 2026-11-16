@@ -518,6 +518,17 @@ class Game:
                    and (not kinds or any(e["kind"] == k or e["kind"].startswith(k + ".") for k in kinds))]
         return out[:limit]
 
+    def ask_answers(self):
+        """The game window's questions and answers. Every answer not yet reported is published as
+        ask.answered here, so a reader of GET /api/ask and the watcher see the same events."""
+        out = self.view_call("openttd.view.ask.answers")
+        with self.lock:
+            fresh = [a for a in out.get("asks", []) if a.get("answer") is not None and a["id"] not in self.asks_reported]
+            self.asks_reported.update(a["id"] for a in fresh)
+        for a in fresh:
+            self.publish("ask.answered", a)
+        return out
+
     def _watch_news(self):
         """The news the owner's window shows, as events news.shown: what the game reports to the player
         (new companies, first arrivals, subsidies, ...) and what any MCP caller posted to them."""
@@ -531,10 +542,7 @@ class Game:
             except Exception:  # noqa: BLE001 - the client restarts; try again next round
                 continue
             try:
-                for a in self.view_call("openttd.view.ask.answers").get("asks", []):
-                    if a.get("answer") is not None and a["id"] not in self.asks_reported:
-                        self.asks_reported.add(a["id"])
-                        self.publish("ask.answered", a)
+                self.ask_answers()
             except Exception:  # noqa: BLE001
                 pass
             keys = [(n["date"], n["type"], n["text"]) for n in news]
@@ -925,7 +933,7 @@ def make_routes(game):
         ("POST", "/api/ask", "ask", "Ask the player a yes/no question in the game window (openttd.view.ask); the answer arrives as event ask.answered and in GET /api/ask: yes, no (also a closed dialog), or replaced by a newer question", True,
          s({"question": {"type": "string"}, "caption": {"type": "string"}}, ["question"]), lambda b: (200, game.view_call("openttd.view.ask", b))),
         ("GET", "/api/ask", "askAnswers", "Every question asked in the game window, newest first, with its answer (yes, no, replaced, or null while open)", True,
-         None, lambda q: (200, game.view_call("openttd.view.ask.answers"))),
+         None, lambda q: (200, game.ask_answers())),
         ("POST", "/api/news/close", "newsClose", "Close the news window in the owner's game", True,
          None, lambda b: (200, game.view_call("openttd.view.news.close"))),
         ("POST", "/api/view/attach", "viewAttach", "Attach the GUI client the owner watches, by its MCP token file", False,

@@ -98,8 +98,9 @@ done
 # AlgoGlyph's flow runner, when a checkout of it is here: the planner's portfolio then runs on its
 # knapsack-dp kernel (the answer names the solver). Override with MCP_ALGOGLYPH_DIR; unset: built-in.
 if [[ -z "${MCP_ALGOGLYPH_DIR:-}" ]]; then
-  # The newest stacked branch first: action-plan carries track-planning and flow-cli under it.
-  for d in "$HOME/dev/algoglyph-wt/feature/action-plan" "$HOME/dev/algoglyph-wt/feature/track-planning" \
+  # The newest stacked branch first: transport-investment carries action-plan, track-planning
+  # and flow-cli under it.
+  for d in "$HOME/dev/algoglyph-wt/feature/transport-investment" "$HOME/dev/algoglyph-wt/feature/action-plan" "$HOME/dev/algoglyph-wt/feature/track-planning" \
            "$HOME/dev/algoglyph-wt/feature/flow-cli" "$HOME/dev/algoglyph"; do
     if [[ -f "$d/package.json" ]] && grep -q '"flow"' "$d/package.json" && [[ -d "$d/node_modules" ]]; then
       export MCP_ALGOGLYPH_DIR="$d"
