@@ -84,6 +84,32 @@ the same content cross-linked from the top-level README, and `AGENTS.md` / `CLAU
 ground rules that apply before any of this.
 <!-- END GENERATED: prismatic-mcp-readme-cta -->
 
+## The toolbar menu (in the game)
+
+A research build adds one button to the main toolbar, after the help button: a prism drawn in the
+base set's palette (no sprite of its own). Its dropdown is one table,
+`src/prismatic_mcp/prismatic_mcp_menu.cpp` (`ITEMS`), and every row does one of:
+
+| Action | What a click does |
+|---|---|
+| `console` | runs a console command (`prismatic_mcp status`, `start`, `approvals`, `decisions`) and shows the console |
+| `browse` | opens a hub page: `/`, `/viz` (World view), `/docs` (Swagger), `/graphql/schema`; base `$PRISMATIC_HUB_URL`, else `http://127.0.0.1:8790` |
+| `ask` | "Ask the planner...": the typed sentence becomes a request of kind `ask` |
+| `request` | a request of a fixed kind (`serve_here`, `plan_rail`, `watch`) for the tile under the main view's centre |
+| `toggle` | calls an MCP tool with a boolean it flips (`openttd.input.yield {paused}`), shown checked |
+
+Over MCP the same table is `openttd://ui/menu` (every row, its action and target, the switches'
+state), `openttd.ui.menu.run {index, text?}` runs a row as a click does, and `openttd://ui/requests`
+lists every request `{id, kind, text, tile, x, y, date, answered, answer}`. Any client answers
+one with `openttd.ui.requests.answer {id, answer}`; the answer is recorded and shown in the game
+as a news item. `tools/research/mcp-panel/rhai/ask_relay.rhai` answers kind `ask` through the
+panel's `/api/intent`; `tools/research/mcp-human` answers the other kinds. Requests and switches
+are local to the process and never change the game. The button is absent from a build without
+`OPTION_PRISMATIC_MCP_SERVER`; on a split toolbar it is absent too (upstream's rows are kept).
+
+For playing on official public servers, use the unmodified client instead:
+[`../vanilla-client.md`](../vanilla-client.md).
+
 ## Documents
 
 `00-baseline.md` · `01-openttd-system-map.md` · `02-threat-model.md` · `03-architecture-options.md` ·

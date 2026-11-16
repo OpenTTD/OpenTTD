@@ -74,6 +74,11 @@
 #include "table/strings.h"
 
 #include "dropdown_common_type.h"
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+#	include "prismatic_mcp/prismatic_mcp_menu.h" // RESEARCH-ONLY: the fork's toolbar menu
+#	include "textbuf_gui.h"
+#	include "palette_func.h"
+#endif
 
 #include "safeguards.h"
 
@@ -1339,6 +1344,34 @@ static CallBackFunction ToolbarBtn_NULL(Window *)
 
 typedef CallBackFunction MenuClickedProc(int index);
 
+/** The switch button has no menu. */
+static CallBackFunction MenuClickNothing(int)
+{
+	return CallBackFunction::None;
+}
+
+/* RESEARCH-ONLY: the fork's own menu (prismatic_mcp_menu.cpp). Only ever reached in a build with
+ * OPTION_PRISMATIC_MCP_SERVER, the only one that has its button; the entries exist in every build
+ * because these tables are indexed by widget. */
+static CallBackFunction MenuClickPrismatic([[maybe_unused]] int index)
+{
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	if (PrismaticMCP::Menu::Run(index)) {
+		Window *w = FindWindowById(WindowClass::MainToolbar, 0);
+		if (w != nullptr) ShowQueryString({}, STR_PRISMATIC_MCP_ASK_CAPTION, 256, w, CS_ALPHANUMERAL, {});
+	}
+#endif
+	return CallBackFunction::None;
+}
+
+static CallBackFunction ToolbarPrismaticClick([[maybe_unused]] Window *w)
+{
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	ShowDropDownList(w, PrismaticMCP::Menu::DropDown(), -1, WID_TN_PRISMATIC, 140, GetToolbarDropDownOptions());
+#endif
+	return CallBackFunction::None;
+}
+
 static MenuClickedProc * const _menu_clicked_procs[] = {
 	nullptr,                 // 0
 	nullptr,                 // 1
@@ -1370,6 +1403,8 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 	MenuClickMusicWindow, // 27
 	MenuClickNewspaper,   // 28
 	MenuClickHelp,        // 29
+	MenuClickNothing,     // 30 (the switch button has no menu)
+	MenuClickPrismatic,   // 31 (RESEARCH-ONLY)
 };
 
 /** Full blown container to make it behave exactly as we want :) */
@@ -1820,6 +1855,9 @@ class NWidgetMainToolbarContainer : public NWidgetToolbarContainer {
 			WID_TN_LANDSCAPE,
 			WID_TN_MUSIC_SOUND,
 			WID_TN_MESSAGES,
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+			WID_TN_PRISMATIC, // RESEARCH-ONLY: in the full-width toolbar; a split toolbar keeps upstream's rows
+#endif
 			WID_TN_HELP
 		};
 
@@ -2000,6 +2038,7 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarNewspaperClick,
 	ToolbarHelpClick,
 	ToolbarSwitchClick,
+	ToolbarPrismaticClick,
 };
 
 /** Main toolbar. */
@@ -2015,6 +2054,40 @@ struct MainToolbarWindow : Window {
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
 	}
+
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	/* RESEARCH-ONLY: the fork's menu button draws its own icon in the base set's palette, a prism
+	 * splitting a white beam into the spectrum, so it needs no sprite of its own. */
+	void DrawWidget(const Rect &r, WidgetID widget) const override
+	{
+		if (widget != WID_TN_PRISMATIC) return;
+		const Rect ir = r.Shrink(WidgetDimensions::scaled.imgbtn);
+		const int s = std::min(ir.Width(), ir.Height()) - 1;
+		if (s < 6) return;
+		const int x = ir.left + (ir.Width() - s) / 2, y = ir.top + (ir.Height() - s) / 2;
+		const int lw = std::max(1, s / 12);
+		/* The prism: a triangle, apex up. */
+		const Point top{x + s / 2, y + s / 8}, left{x + s / 5, y + s - s / 8}, right{x + s - s / 5, y + s - s / 8};
+		GfxDrawLine(top.x, top.y, left.x, left.y, PC_WHITE, lw);
+		GfxDrawLine(left.x, left.y, right.x, right.y, PC_WHITE, lw);
+		GfxDrawLine(right.x, right.y, top.x, top.y, PC_WHITE, lw);
+		/* The beam comes in from the left and leaves split. */
+		const Point in{x, y + s / 2}, hit{x + s / 3, y + s / 2};
+		GfxDrawLine(in.x, in.y, hit.x, hit.y, PC_WHITE, lw);
+		static constexpr PixelColour SPECTRUM[] = {PC_RED, PC_ORANGE, PC_YELLOW, PC_GREEN, PC_LIGHT_BLUE, PC_DARK_BLUE};
+		const int out_x = x + s - 1, spread = s / 2;
+		for (int i = 0; i < 6; i++) {
+			const int out_y = y + s / 4 + (spread * i) / 5;
+			GfxDrawLine(x + s * 2 / 3, y + s / 2, out_x, out_y, SPECTRUM[i], lw);
+		}
+	}
+
+	/* RESEARCH-ONLY: the answer to the menu's "Ask the planner..." query. */
+	void OnQueryTextFinished(std::optional<std::string> str) override
+	{
+		if (str.has_value() && !str->empty()) PrismaticMCP::Menu::Ask(*str);
+	}
+#endif
 
 	void FindWindowPlacementAndResize(int, int def_height, bool allow_resize) override
 	{
@@ -2218,6 +2291,9 @@ static constexpr std::tuple<WidgetID, WidgetType, SpriteID> _toolbar_button_spri
 	{WID_TN_MESSAGES,     WWT_IMGBTN,     SPR_IMG_MESSAGES},
 	{WID_TN_HELP,         WWT_IMGBTN,     SPR_IMG_QUERY},
 	{WID_TN_SWITCH_BAR,   WWT_IMGBTN,     SPR_IMG_SWITCH_TOOLBAR},
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	{WID_TN_PRISMATIC,    WWT_IMGBTN,     SPR_EMPTY}, // RESEARCH-ONLY: its icon is drawn by MainToolbarWindow::DrawWidget
+#endif
 };
 
 /**
@@ -2252,7 +2328,11 @@ static std::unique_ptr<NWidgetBase> MakeMainToolbar()
 				hor->Add(std::make_unique<NWidgetSpacer>(0, 0));
 				break;
 		}
-		auto leaf = std::make_unique<NWidgetLeaf>(tp, Colours::Grey, widget, WidgetData{.sprite = sprite}, STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget);
+		StringID tip = STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget;
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+		if (widget == WID_TN_PRISMATIC) tip = STR_PRISMATIC_MCP_TOOLBAR_TOOLTIP; // RESEARCH-ONLY: not in upstream's run of tooltips
+#endif
+		auto leaf = std::make_unique<NWidgetLeaf>(tp, Colours::Grey, widget, WidgetData{.sprite = sprite}, tip);
 		leaf->SetToolbarMinimalSize(1);
 		hor->Add(std::move(leaf));
 	}

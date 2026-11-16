@@ -1,0 +1,26 @@
+id: I0071
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Official public servers are played with the unmodified release client, built, checked and run privately"
+slug: vanilla-client
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "The owner can always join an official public server: tools/research/vanilla-client builds an upstream release tag unmodified in its own worktree, proves from the tree and the generated revision that it is exactly that release, and runs it with a private home (a name that identifies nobody, the survey off, nothing of the fork)."
+why: "The owner: always be able to connect to real official vanilla servers, pass the check, no ban; hide me. A fork build can never match a tagged release's revision, and faking one is the one thing that gets a client banned (ADR 0030)."
+scope:
+  - "tools/research/vanilla-client"
+  - "research/**"
+  - ".ai/**"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "build <tag> makes a detached worktree at <repo>-wt/vanilla/<tag> and a Release build in it, with no fork commit"
+  - "check <tag> passes only for HEAD at the tag, no local change, no src/prismatic_mcp or .ai, revision exactly the tag, tagged 1, modified 0"
+  - "run refuses a build that fails check, and runs with HOME set to a private home whose private.cfg holds client_name Player and participate_survey no, kept across the game's first-start migration"
+  - "ADR 0030 records the owner's answer verbatim; no fork build ever reports an official revision"
+validation:
+  - "tools/research/vanilla-client check 15.3"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'

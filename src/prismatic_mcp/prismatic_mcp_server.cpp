@@ -29,6 +29,7 @@
 #include "prismatic_mcp_coverage.h"
 #include "prismatic_mcp_entities.h"
 #include "prismatic_mcp_graph.h"
+#include "prismatic_mcp_menu.h"
 #include "prismatic_mcp_registry.h"
 #include "prismatic_mcp_ui.h"
 #include "prismatic_mcp_view.h"
@@ -234,6 +235,8 @@ json ResourceTowns(); // defined below, next to the view tools that scroll to a 
 json ResourceMap();   // the whole map (prismatic_mcp_world.cpp)
 json ResourceStations();
 json ResourceDepots();
+json ResourceMenu();
+json ResourceRequests();
 json ResourceEngines();  // every engine on offer now (prismatic_mcp_world.cpp)
 json ResourceVehicles(); // every primary vehicle with its orders (prismatic_mcp_entities.cpp)
 json ResourceCoverage(); // what clients exercised, against the published catalogue (prismatic_mcp_coverage.cpp)
@@ -241,7 +244,7 @@ json ResourceCoverage(); // what clients exercised, against the published catalo
 json ResourceWays();  // road ways and rail tracks per tile (prismatic_mcp_graph.cpp)
 json ResourceWorldGraph(); // the world as one typed graph (prismatic_mcp_graph.cpp)
 
-const std::array<ResourceEntry, 14> RESOURCES = {{
+const std::array<ResourceEntry, 16> RESOURCES = {{
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
@@ -254,6 +257,8 @@ const std::array<ResourceEntry, 14> RESOURCES = {{
 	{"openttd://map/ways", "Map ways", "Per tile: where a road vehicle can leave it (road bits, stops, depots, crossings, bridges, tunnels) its rail tracks and foundation; every bridge and tunnel with both ends; vehicles per tile; encoding included", &ResourceWays},
 	{"openttd://world/graph", "World graph", "The world as one typed graph (world-graph/v1): towns, industries, stations, vehicles; near_town, serves_town, order and cargo_link edges", &ResourceWorldGraph},
 	{"openttd://depots", "Depots", "Every depot: id, tile, x/y, owner, type, town, entrance tile; and the game's service reach in tiles", &ResourceDepots},
+	{"openttd://ui/menu", "Toolbar menu", "The fork's own main-toolbar menu: every item with its action (console, browse, ask) and target, and the hub URL", &ResourceMenu},
+	{"openttd://ui/requests", "Requests", "Questions the player asked in the game through the toolbar menu, each with its answer once an MCP client gave one", &ResourceRequests},
 	{"openttd://mcp/coverage", "MCP coverage", "Every published tool and resource with its call count since start, and those never called", &ResourceCoverage},
 	{"openttd://engines", "Engines", "Every engine some company can buy now: type, speed (also effective for aircraft), capacity, cargo, price, running cost, plane type, buyers", &ResourceEngines},
 }};
@@ -276,6 +281,20 @@ json ResourceDepots()
 {
 	json env = MakeEnvelope();
 	env["data"] = World::Depots();
+	return env;
+}
+
+json ResourceMenu()
+{
+	json env = MakeEnvelope();
+	env["data"] = Menu::Describe();
+	return env;
+}
+
+json ResourceRequests()
+{
+	json env = MakeEnvelope();
+	env["data"] = Menu::Requests();
 	return env;
 }
 
@@ -468,6 +487,13 @@ json HandleToolsCall(const json &id, const json &params)
 	std::string name = params["name"].get<std::string>();
 	json args = params.contains("arguments") ? params["arguments"] : json::object();
 
+	/* The fork's toolbar menu and the questions asked through it (prismatic_mcp_menu.cpp); before the
+	 * UI tools, whose names share the openttd.ui. prefix. */
+	if (auto menu = Menu::Call(name, args); menu.has_value()) {
+		bool ok = menu->value("ok", false);
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", menu->dump()}}})}, {"isError", !ok}});
+	}
+
 	/* UI tools: the interface as data, and armed input through the driver's path (prismatic_mcp_ui.cpp). */
 	if (auto ui = UI::Call(name, args); ui.has_value()) {
 		bool ok = ui->value("ok", false);
@@ -569,6 +595,7 @@ json ToolsList()
 	/* View tools first: they change only the local viewport and need no approval. */
 	for (auto &t : View::Tools()) arr.push_back(t);
 	for (auto &t : UI::Tools()) arr.push_back(t);
+	for (auto &t : Menu::Tools()) arr.push_back(t);
 	arr.push_back({{"name", "openttd.decision.validate"}, {"description", "Validate a typed action/DecisionEnvelope without mutating game state"},
 		{"inputSchema", {{"type", "object"}}}});
 	arr.push_back({{"name", "openttd.decision.list_action_types"}, {"description", "List typed action types this build can execute"},
@@ -814,6 +841,14 @@ void ServiceConnection(Connection &c)
 }
 
 } // anonymous namespace
+
+json Menu::CallTool(std::string_view name, const json &args)
+{
+	/* The menu calls a tool the way a client's tools/call does, and gets the call's result. */
+	json resp = HandleToolsCall(nullptr, {{"name", name}, {"arguments", args}});
+	if (resp.contains("result")) return resp["result"];
+	return json{{"isError", true}, {"error", resp.value("error", json::object())}};
+}
 
 /* ---- public API ----------------------------------------------------------- */
 

@@ -11,10 +11,12 @@
 
 #include "../3rdparty/catch2/catch.hpp"
 #include "../prismatic_mcp/prismatic_mcp_detail.h"
+#include "../prismatic_mcp/prismatic_mcp_menu.h"
 
 #include "../safeguards.h"
 
 using namespace PrismaticMCP::detail;
+using json = nlohmann::json;
 
 TEST_CASE("ArgDigest is deterministic and argument-binding", "[prismatic_mcp]")
 {
@@ -70,9 +72,6 @@ TEST_CASE("ConstantTimeEquals matches semantics of ==", "[prismatic_mcp]")
 	CHECK(ConstantTimeEquals("", ""));
 }
 
-#endif /* OTTD_PRISMATIC_MCP_SERVER */
-
-
 TEST_CASE("Only a tick counter that went back means another world", "[prismatic_mcp]")
 {
 	using PrismaticMCP::detail::WorldChanged;
@@ -81,3 +80,38 @@ TEST_CASE("Only a tick counter that went back means another world", "[prismatic_
 	CHECK_FALSE(WorldChanged(100, 250));
 	CHECK(WorldChanged(250, 3));   // a new game or a load restarted the counter
 }
+
+TEST_CASE("The toolbar menu is one table, described item for item", "[prismatic_mcp]")
+{
+	namespace M = PrismaticMCP::Menu;
+	auto d = M::Describe();
+	REQUIRE(d["items"].size() == M::Items().size());
+	for (size_t i = 0; i < M::Items().size(); i++) {
+		CHECK(d["items"][i]["index"] == i);
+		CHECK(d["items"][i]["label"] == std::string{M::Items()[i].label});
+		CHECK(!M::Items()[i].label.empty());
+		if (M::Items()[i].action == M::Action::Toggle) CHECK(!M::Items()[i].key.empty());
+		if (M::Items()[i].action == M::Action::Request) CHECK(!M::Items()[i].arg.empty());
+	}
+	CHECK(d["hub"].get<std::string>().rfind("http", 0) == 0);
+}
+
+TEST_CASE("A request is queued, listed with its kind and answered once", "[prismatic_mcp]")
+{
+	namespace M = PrismaticMCP::Menu;
+	size_t before = M::Requests()["requests"].size();
+	uint64_t id = M::Queue("serve_here", "");
+	auto list = M::Requests()["requests"];
+	REQUIRE(list.size() == before + 1);
+	CHECK(list.back()["id"] == id);
+	CHECK(list.back()["kind"] == "serve_here");
+	CHECK(list.back()["answered"] == false);
+	CHECK(list.back()["tile"].is_null()); // no main window in a unit test
+	CHECK(M::Call("openttd.ui.requests.answer", {{"id", id}})->value("ok", true) == false); // no answer text
+	CHECK(M::Call("openttd.ui.requests.answer", {{"id", id + 1000}, {"answer", "x"}})->value("ok", true) == false);
+	CHECK(M::Call("openttd.ui.menu.run", {{"index", -1}})->value("ok", true) == false);
+	CHECK_FALSE(M::Call("openttd.ui.something.else", json::object()).has_value());
+	for (const auto &t : M::Tools()) CHECK(t["annotations"]["readOnlyHint"] == false); // a coverage probe must not run them
+}
+
+#endif /* OTTD_PRISMATIC_MCP_SERVER */

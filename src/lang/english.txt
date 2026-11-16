@@ -6080,3 +6080,7 @@ STR_BADGE_CONFIG_FILTERS                                        :{WHITE}Badge Fi
 STR_BADGE_CONFIG_PREVIEW                                        :Preview Image
 STR_BADGE_CONFIG_NAME                                           :Name
 STR_BADGE_FILTER_ANY_LABEL                                      :Any {STRING}
+
+# RESEARCH-ONLY: the fork's own toolbar menu (src/prismatic_mcp/prismatic_mcp_menu.cpp); used only in a build with OPTION_PRISMATIC_MCP_SERVER
+STR_PRISMATIC_MCP_TOOLBAR_TOOLTIP                               :{BLACK}Prismatic: the MCP server, the hub, the World view, the API, and asking the planner in plain language
+STR_PRISMATIC_MCP_ASK_CAPTION                                   :{WHITE}Ask the planner (for example: najdi nejbližší les + pilu)

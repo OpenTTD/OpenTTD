@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+# The official, unmodified OpenTTD client for public servers (ADR 0030). Builds it from an upstream
+# release tag in a detached worktree with no fork commit, checks that it is exactly that release, and
+# runs it with its own private configuration: a player name that identifies nobody, the anonymous
+# survey off, nothing of this fork. Its revision is the tag, so it passes an official server's version
+# check (IsNetworkCompatibleVersion requires an exact match for a tagged release) by being what the
+# server expects. Fork features (MCP, the toolbar menu, bots, the hub) never run in it.
+#
+# Usage: tools/research/vanilla-client build [<tag>]     (default: the newest stable release tag)
+#        tools/research/vanilla-client check [<tag>]     exit 0 when the binary is the unmodified release
+#        tools/research/vanilla-client run   [<tag>] [-- <openttd args>]
+#        tools/research/vanilla-client tags              the release tags, newest first
+#
+# Environment: VANILLA_HOME (default ~/.local/share/openttd-vanilla) holds the private home of each
+# tag (configuration, saves, content; only the official base sets are linked in); VANILLA_PLAYER
+# (default "Player") is the name shown to servers.
+set -euo pipefail
+
+ROOT="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
+COMMON="$(git -C "$ROOT" rev-parse --git-common-dir)"
+PRIMARY="$(cd "$COMMON/.." && pwd)"
+WT_ROOT="$(dirname "$PRIMARY")/$(basename "$PRIMARY")-wt/vanilla"
+VANILLA_HOME="${VANILLA_HOME:-$HOME/.local/share/openttd-vanilla}"
+PLAYER="${VANILLA_PLAYER:-Player}"
+
+die() { echo "vanilla-client: $*" >&2; exit 2; }
+
+# Release tags as upstream names them: 15.3, 16.0-beta5. A stable tag is digits and dots only.
+tags() { git -C "$ROOT" tag -l '[0-9]*' --sort=-v:refname; }
+latest_stable() { tags | grep -E '^[0-9]+(\.[0-9]+)+$' | head -1; }
+
+tag_arg() {
+  local tag="${1:-$(latest_stable)}"
+  [[ -n "$tag" ]] || die "no release tag; fetch upstream tags first (git fetch upstream --tags)"
+  git -C "$ROOT" rev-parse -q --verify "refs/tags/$tag" >/dev/null || die "no tag '$tag'"
+  echo "$tag"
+}
+
+cmd_build() {
+  local tag; tag="$(tag_arg "${1:-}")"
+  local dir="$WT_ROOT/$tag"
+  if [[ ! -d "$dir" ]]; then
+    git -C "$ROOT" worktree add --detach "$dir" "$tag" >/dev/null
+  fi
+  [[ "$(git -C "$dir" describe --tags --exact-match 2>/dev/null)" == "$tag" ]] || die "$dir is not exactly at $tag"
+  [[ -z "$(git -C "$dir" status --porcelain --untracked-files=no)" ]] || die "$dir has local changes"
+  cmake -S "$dir" -B "$dir/build-vanilla" -DCMAKE_BUILD_TYPE=Release >/dev/null
+  cmake --build "$dir/build-vanilla" -j"$(sysctl -n hw.ncpu 2>/dev/null || nproc)"
+  cmd_check "$tag"
+}
+
+binary_of() {
+  local dir="$WT_ROOT/$1/build-vanilla"
+  for b in "$dir/openttd" "$dir/OpenTTD.app/Contents/MacOS/openttd"; do [[ -x "$b" ]] && { echo "$b"; return; }; done
+  return 1
+}
+
+# The checks that make it the release: the tree is the tag with nothing on top, the build's own
+# revision record says tagged, unmodified and the tag's name, and no file of this fork is in it.
+cmd_check() {
+  local tag; tag="$(tag_arg "${1:-}")"
+  local dir="$WT_ROOT/$tag" fail=0
+  ok() { printf 'PASS  %s\n' "$1"; }
+  no() { printf 'FAIL  %s\n' "$1"; fail=1; }
+  [[ -d "$dir" ]] || die "not built: tools/research/vanilla-client build $tag"
+  [[ "$(git -C "$dir" rev-parse HEAD)" == "$(git -C "$ROOT" rev-parse "$tag^{commit}")" ]] && ok "the tree is the commit of tag $tag" || no "the tree is not the commit of $tag"
+  [[ -z "$(git -C "$dir" status --porcelain --untracked-files=no)" ]] && ok "no local change" || no "the tree has local changes"
+  [[ ! -e "$dir/src/prismatic_mcp" && ! -e "$dir/.ai" ]] && ok "no file of this fork (src/prismatic_mcp, .ai)" || no "fork files are present"
+  local rev; rev="$(find "$dir/build-vanilla" -name rev.cpp -path '*generated*' 2>/dev/null | head -1)"
+  if [[ -n "$rev" ]]; then
+    grep -q "_openttd_revision = \"$tag\"" "$rev" && ok "the build's revision is \"$tag\"" || no "the build's revision is not \"$tag\""
+    grep -q '_openttd_revision_tagged = 1' "$rev" && ok "the build is a tagged release" || no "the build is not tagged"
+    grep -q '_openttd_revision_modified = 0' "$rev" && ok "the build is unmodified" || no "the build is marked modified"
+  else
+    no "no generated rev.cpp in $dir/build-vanilla (build it first)"
+  fi
+  binary_of "$tag" >/dev/null && ok "the binary exists: $(binary_of "$tag")" || no "no binary in $dir/build-vanilla"
+  [[ "$fail" == 0 ]] && echo "vanilla $tag: the unmodified official release; its revision is the one an official $tag server requires" || echo "vanilla $tag: NOT the unmodified release"
+  return "$fail"
+}
+
+# The private home: the game derives its personal directory from $HOME (fileio.cpp GetHomeDir), so
+# the vanilla client gets a home of its own. Its configuration, saves and content stay apart from the
+# fork's: no fork AI (PrismaticAI and its API version) is scanned, nothing of the owner's other games
+# is read. Only the official base sets (graphics, sounds, music) are linked in from the owner's
+# personal directory. In private.cfg (where the game keeps network.client_name and
+# network.participate_survey) the name that identifies nobody and the survey off are set before every
+# run. A first run writes the configuration the game expects: on a home without openttd.cfg the game
+# migrates its settings and rewrites private.cfg with defaults, so values written before that are lost.
+private_home() {
+  local tag="$1" home="$VANILLA_HOME/$1/home" pd real
+  case "$(uname -s)" in
+    Darwin) pd="$home/Documents/OpenTTD"; real="$HOME/Documents/OpenTTD" ;;
+    *)      pd="$home/.local/share/openttd"; real="${XDG_DATA_HOME:-$HOME/.local/share}/openttd" ;;
+  esac
+  mkdir -p "$pd"
+  [[ -e "$pd/baseset" || ! -d "$real/baseset" ]] || ln -s "$real/baseset" "$pd/baseset"
+  if [[ ! -f "$pd/openttd.cfg" ]]; then
+    # One headless tick with the null drivers, only to let the game write its configuration.
+    HOME="$home" "$(binary_of "$tag")" -v null:ticks=1 -s null -m null -g >/dev/null 2>&1 || true
+  fi
+  [[ -f "$pd/private.cfg" ]] || printf '[network]\n' > "$pd/private.cfg"
+  python3 - "$pd/private.cfg" "$PLAYER" <<'PY'
+import re, sys
+path, player = sys.argv[1], sys.argv[2]
+text = open(path, encoding="utf-8").read()
+for key, value in (("client_name", player), ("participate_survey", "no")):
+    if re.search(rf"(?m)^{key} = ", text):
+        text = re.sub(rf"(?m)^{key} = .*$", f"{key} = {value}", text)
+    else:
+        text = re.sub(r"(?m)^\[network\]$", f"[network]\n{key} = {value}", text, count=1)
+open(path, "w", encoding="utf-8").write(text)
+PY
+  chmod 600 "$pd/private.cfg"
+  echo "$home"
+}
+
+cmd_run() {
+  local tag=""
+  if [[ $# -gt 0 && "$1" != "--" ]]; then tag="$1"; shift; fi
+  tag="$(tag_arg "$tag")"
+  [[ "${1:-}" == "--" ]] && shift
+  cmd_check "$tag" >/dev/null || die "$tag is not the unmodified release; run: tools/research/vanilla-client check $tag"
+  local bin home; bin="$(binary_of "$tag")"; home="$(private_home "$tag")"
+  echo "vanilla-client: HOME=$home $bin $*"
+  HOME="$home" exec "$bin" "$@"
+}
+
+case "${1:-}" in
+  build) shift; cmd_build "$@" ;;
+  check) shift; cmd_check "$@" ;;
+  run)   shift; cmd_run "$@" ;;
+  tags)  tags ;;
+  -h|--help|"") sed -n '2,19p' "$0" ;;
+  *) die "unknown command '$1' (build, check, run, tags)" ;;
+esac

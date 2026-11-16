@@ -1,0 +1,32 @@
+id: I0072
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The fork's own toolbar button and menu, one table drawn in the game and served over MCP"
+slug: toolbar-menu
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "A research build has its own main-toolbar button with a self-drawn icon in the base set's palette, whose dropdown is one table (console, browse, ask, request, toggle rows) that the game draws, openttd://ui/menu describes, openttd.ui.menu.run runs, and whose questions and requests any MCP client answers through openttd://ui/requests and openttd.ui.requests.answer, shown in the game as news."
+why: "The owner: add our own icon and submenu to the top bar in the same graphics, connect everything to MCP, Swagger and .ai, document and deploy it. openttd-07's planned toolbar entries are rows of the same table, so there is one button."
+scope:
+  - "src/toolbar_gui.cpp"
+  - "src/widgets/toolbar_widget.h"
+  - "src/lang/english.txt"
+  - "src/prismatic_mcp/**"
+  - "src/tests/test_prismatic_mcp.cpp"
+  - "tools/research/mcp-panel/rhai/ask_relay.rhai"
+  - "research/**"
+  - ".ai/**"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "WID_TN_PRISMATIC is appended after WID_TN_SWITCH_BAR and exists only in a build with OPTION_PRISMATIC_MCP_SERVER; no upstream widget value moves"
+  - "The dropdown, openttd://ui/menu and openttd.ui.menu.run all read the same ITEMS table; a unit test checks the description item for item"
+  - "A request carries {id, kind, text, tile, x, y, date, answered, answer}; answering records it and shows a news item; a unit test covers queue, list and refused answers"
+  - "A build without the option compiles and passes ctest (the MCP tests are inside the guard)"
+validation:
+  - "tools/gate.sh research"
+  - "tools/gate.sh change"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
