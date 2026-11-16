@@ -64,3 +64,12 @@ test('the hub client matches answers to requests, emits notifications and re-sub
   assert.equal(sent.at(-1).method, 'hub.subscribe', 'a reconnect re-subscribes with the same filter');
   assert.deepEqual(sent.at(-1).params, { kinds: ['game'] });
 });
+
+test('the audit summary counts audited, skipped and duplicate pairs', async () => {
+  const { auditSummary, scrollOp } = await import('../static/components.js');
+  const r = [{ instance: 'a', stations: 8, duplicates: [{}, {}] }, { instance: 'b', error: 'no stations operation' }, { instance: 'c', stations: 2, duplicates: [] }];
+  assert.deepEqual(auditSummary(r), { instances: 3, audited: 2, skipped: 1, pairs: 2 });
+  assert.equal(scrollOp([{ id: 'status' }, { id: 'clientOpenttdViewScrollTo' }]).id, 'clientOpenttdViewScrollTo');
+  assert.equal(scrollOp([{ id: 'x' }, { id: 'tool:openttd.view.scroll_to' }]).id, 'tool:openttd.view.scroll_to');
+  assert.equal(scrollOp([{ id: 'x' }]), undefined);
+});

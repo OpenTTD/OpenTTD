@@ -242,3 +242,34 @@ export function eventsView(container, { limit = 200, onKind, onInstance } = {}) 
     while (list.childElementCount > limit) list.lastChild.remove();
   };
 }
+
+/** Counts over a hub.audit answer: instances audited, skipped, and duplicate pairs. */
+export function auditSummary(results) {
+  const audited = results.filter((r) => !r.error);
+  return { instances: results.length, audited: audited.length, skipped: results.length - audited.length,
+           pairs: audited.reduce((n, r) => n + (r.duplicates || []).length, 0) };
+}
+
+/** The operation that moves the owner's camera, wherever it is offered (a GUI client's MCP tool or
+ * a panel's derived client route), found in the catalogue rather than named per instance. */
+export function scrollOp(ops) {
+  return ops.find((o) => o.id === 'tool:openttd.view.scroll_to') || ops.find((o) => /view[._]?scroll[._]?to$/i.test(o.id));
+}
+
+/** The audit as cards: every duplicate pair with both stations clickable to centre the camera. */
+export function auditView(container, results, { onStation } = {}) {
+  const s = auditSummary(results);
+  const head = el('p', { class: CLS.muted }, `${s.audited} instance(s) audited, ${s.skipped} skipped, ${s.pairs} duplicate pair(s).`);
+  const rows = [];
+  for (const r of results) {
+    if (r.error) { rows.push(el('p', { class: CLS.muted }, `${r.instance}: ${r.error}`)); continue; }
+    const dups = r.duplicates || [];
+    rows.push(el('p', { class: `${CLS.label} mt-3` }, `${r.instance}: ${dups.length ? `${dups.length} duplicate pair(s)` : 'no duplicate'} (${r.stations} stations, catchment from the ${r.catchment})`));
+    for (const d of dups) {
+      const link = (st) => el('a', { href: '#', class: 'font-medium text-primary-600 dark:text-primary-500 hover:underline', onclick: (e) => { e.preventDefault(); onStation && onStation(st); } }, `${st.name} (${st.x},${st.y})`);
+      rows.push(el('div', { class: 'text-sm text-gray-700 dark:text-gray-300' }, `owner ${d.owner}, ${d.facilities.join('+')}: `, link(d.a), ' and ', link(d.b), `, ${d.distance} tile(s) apart`));
+    }
+  }
+  container.replaceChildren(head, ...rows);
+  return s;
+}

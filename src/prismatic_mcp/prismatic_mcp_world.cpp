@@ -104,9 +104,19 @@ json Stations()
 		if (st->facilities.Test(StationFacility::BusStop)) facilities.push_back("bus");
 		if (st->facilities.Test(StationFacility::Airport)) facilities.push_back("airport");
 		if (st->facilities.Test(StationFacility::Dock)) facilities.push_back("dock");
+		/* The catchment the game itself uses (Station::GetCatchmentRadius, catchment_tiles), so a reader
+		 * judges coverage and duplicates from the game's rules rather than a copy of its constants. */
+		json area = nullptr;
+		uint min_x = UINT_MAX, min_y = UINT_MAX, max_x = 0, max_y = 0;
+		for (TileIndex t : st->catchment_tiles) {
+			min_x = std::min(min_x, TileX(t)); max_x = std::max(max_x, TileX(t));
+			min_y = std::min(min_y, TileY(t)); max_y = std::max(max_y, TileY(t));
+		}
+		if (min_x != UINT_MAX) area = {{"x", min_x}, {"y", min_y}, {"w", max_x - min_x + 1}, {"h", max_y - min_y + 1}};
 		list.push_back({{"id", st->index.base()}, {"name", st->GetCachedName()}, {"tile", st->xy.base()},
 			{"x", TileX(st->xy)}, {"y", TileY(st->xy)}, {"owner", st->owner.base()}, {"facilities", std::move(facilities)},
-			{"town", st->town != nullptr ? json(st->town->index.base()) : json(nullptr)}});
+			{"town", st->town != nullptr ? json(st->town->index.base()) : json(nullptr)},
+			{"catchment_radius", st->GetCatchmentRadius()}, {"catchment_area", std::move(area)}});
 	}
 	return json{{"stations", std::move(list)}};
 }

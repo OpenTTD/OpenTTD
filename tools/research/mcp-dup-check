@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: no duplicate buildings in any running game. Every instance the hub discovers is
+# audited: one owner may not hold two stations with a shared facility whose catchments overlap
+# (the game's own catchment when the instance publishes it). Exit 1 names each duplicate pair.
+# Same options as tools/research/mcp-hub-check; research/mcp-hub.md, issue I0060.
+exec "$(dirname "$0")/mcp-hub-check" --audit "$@"

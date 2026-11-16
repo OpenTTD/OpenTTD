@@ -3,7 +3,8 @@
 //! the registry (`mcp-instance/v1`) and `--panel`, the operations from each panel's `/openapi.json`
 //! and each MCP server's `tools/list` and `resources/list`, the events from each panel's bus.
 //!
-//! JSON-RPC 2.0 methods (over `ws://<host>/ws`, or one call per `POST /hub/rpc`):
+//! JSON-RPC 2.0 methods (over `ws://<host>/ws`, or one call per `POST /hub/rpc`; the routes are
+//! described by `GET /openapi.json`, derived from the method table):
 //!   rpc.discover                         the methods below, with their parameters
 //!   hub.instances                        every live instance: name, kind, base, operation count
 //!   hub.catalogue  {instance?}           every operation: instance, id, method, path, schema, read_only
@@ -11,6 +12,8 @@
 //!                                        "tool:<name>" or "resource:<uri>"
 //!   hub.subscribe  {instances?, kinds?}  stream events as `hub.event` notifications (WebSocket only)
 //!   hub.unsubscribe
+//!   hub.audit                            per instance: duplicate stations (same owner, a shared
+//!                                        facility, overlapping catchments)
 //! The hub also pushes `hub.instances` notifications to subscribers when the set of instances changes.
 
 use serde_json::{json, Map, Value};
@@ -395,6 +398,91 @@ pub fn fan_in(state: &Shared) {
     }
 }
 
+/// The catchment radius of each facility, used only for a station whose instance does not publish
+/// `catchment_radius` (an older binary). Taken from src/station_type.h (CA_BUS, CA_TRUCK, CA_TRAIN,
+/// CA_DOCK, and CA_UNMODIFIED for an airport, whose real radius comes from its spec).
+const FALLBACK_RADIUS: [(&str, i64); 5] = [("bus", 3), ("truck", 3), ("train", 4), ("dock", 5), ("airport", 4)];
+
+fn facilities(s: &Value) -> Vec<String> {
+    s.get("facilities").and_then(Value::as_array)
+        .map(|a| a.iter().filter_map(|f| f.as_str().map(str::to_string)).collect()).unwrap_or_default()
+}
+
+/// The station's catchment as (x0, y0, x1, y1), inclusive: the game's own area when published,
+/// else a square of its radius around its sign tile.
+pub fn catchment(s: &Value) -> Option<(i64, i64, i64, i64)> {
+    if let Some(a) = s.get("catchment_area").filter(|a| a.is_object()) {
+        let (x, y) = (a.get("x")?.as_i64()?, a.get("y")?.as_i64()?);
+        return Some((x, y, x + a.get("w")?.as_i64()? - 1, y + a.get("h")?.as_i64()? - 1));
+    }
+    let (x, y) = (s.get("x")?.as_i64()?, s.get("y")?.as_i64()?);
+    let r = s.get("catchment_radius").and_then(Value::as_i64).unwrap_or_else(|| {
+        facilities(s).iter().filter_map(|f| FALLBACK_RADIUS.iter().find(|(n, _)| n == f).map(|(_, r)| *r)).max().unwrap_or(0)
+    });
+    Some((x - r, y - r, x + r, y + r))
+}
+
+/// Pairs of stations that duplicate each other: one owner, at least one facility in common, and
+/// catchments that overlap, so both serve the same tiles with the same kind of transport. Two
+/// stations of one owner far apart, or a bus stop beside its own airport, are not duplicates.
+pub fn duplicate_stations(stations: &[Value]) -> Vec<Value> {
+    let mut out = Vec::new();
+    for (i, a) in stations.iter().enumerate() {
+        for b in &stations[i + 1..] {
+            let (Some(oa), Some(ob)) = (a.get("owner"), b.get("owner")) else { continue };
+            if oa != ob || oa.is_null() { continue; }
+            let fb = facilities(b);
+            let shared: Vec<String> = facilities(a).into_iter().filter(|f| fb.contains(f)).collect();
+            if shared.is_empty() { continue; }
+            let (Some(ca), Some(cb)) = (catchment(a), catchment(b)) else { continue };
+            if ca.0 > cb.2 || cb.0 > ca.2 || ca.1 > cb.3 || cb.1 > ca.3 { continue; }
+            let pick = |s: &Value| json!({"id": s["id"], "name": s["name"], "x": s["x"], "y": s["y"], "tile": s["tile"], "town": s["town"]});
+            let d = (a["x"].as_i64().unwrap_or(0) - b["x"].as_i64().unwrap_or(0)).abs()
+                .max((a["y"].as_i64().unwrap_or(0) - b["y"].as_i64().unwrap_or(0)).abs());
+            out.push(json!({"owner": oa, "facilities": shared, "a": pick(a), "b": pick(b), "distance": d}));
+        }
+    }
+    out
+}
+
+/// The station list inside whatever an instance answered: an MCP resources/read result, a panel's
+/// `{availability, data}` envelope, or a bare `{stations}`.
+pub fn stations_in(v: &Value) -> Vec<Value> {
+    let mut v = v.clone();
+    if let Some(text) = v.pointer("/contents/0/text").and_then(Value::as_str) {
+        v = serde_json::from_str(text).unwrap_or(Value::Null);
+    }
+    let data = v.get("data").filter(|d| d.is_object()).cloned().unwrap_or(v);
+    data.get("stations").and_then(Value::as_array).cloned().unwrap_or_default()
+}
+
+/// The read-only operation of an instance that lists its stations, found by name, not configured.
+pub fn stations_op(ops: &[Op]) -> Option<&Op> {
+    ops.iter().find(|o| o.id == "resource:openttd://stations")
+        .or_else(|| ops.iter().filter(|o| o.read_only && !o.stream && o.method == "GET" && o.query.iter().all(|q| !q.1))
+            .find(|o| o.path.ends_with("/stations") && o.path.contains("resource")))
+}
+
+/// Every instance's duplicate stations.
+pub fn audit(state: &Shared) -> Value {
+    let targets: Vec<(Instance, Option<Op>)> = {
+        let s = state.lock().unwrap();
+        s.instances.iter().map(|i| (i.clone(), s.ops.get(&i.name).and_then(|ops| stations_op(ops).cloned()))).collect()
+    };
+    Value::Array(targets.into_iter().map(|(i, op)| match op {
+        None => json!({"instance": i.name, "error": "no stations operation"}),
+        Some(op) => match call(&i, &op, None, None) {
+            Err(e) => json!({"instance": i.name, "error": e}),
+            Ok(v) => {
+                let st = stations_in(&v);
+                json!({"instance": i.name, "via": op.id, "stations": st.len(),
+                       "catchment": if st.iter().any(|s| s.get("catchment_area").is_some()) { "game" } else { "fallback radius" },
+                       "duplicates": duplicate_stations(&st)})
+            }
+        },
+    }).collect())
+}
+
 fn err(id: &Value, code: i64, message: impl Into<String>) -> Value {
     json!({"jsonrpc": "2.0", "id": id, "error": {"code": code, "message": message.into()}})
 }
@@ -411,7 +499,33 @@ pub fn methods() -> Value {
         {"method": "hub.call", "params": {"instance": "required", "id": "operationId | tool:<name> | resource:<uri>", "body": "object", "query": "object"}},
         {"method": "hub.subscribe", "params": {"instances": "optional list", "kinds": "optional list of kind prefixes"}},
         {"method": "hub.unsubscribe", "params": {}},
+        {"method": "hub.audit", "params": {}, "result": "per instance: its stations and the pairs that duplicate each other (same owner, a shared facility, overlapping catchments)"},
     ])
+}
+
+/// The hub's own OpenAPI document, derived from `methods()`: every JSON-RPC method is reachable as
+/// `POST /hub/rpc`, and the read-only ones also as a GET route, so what the hub offers is in
+/// OpenAPI and Swagger like every panel route.
+pub fn openapi() -> Value {
+    let methods = methods();
+    let names: Vec<Value> = methods.as_array().into_iter().flatten().filter_map(|m| m.get("method").cloned()).collect();
+    let get = |id: &str, summary: &str| json!({"get": {"operationId": id, "summary": summary, "tags": ["hub"],
+        "x-mcp-annotations": {"readOnlyHint": true}, "responses": {"200": {"description": "JSON"}}}});
+    json!({
+        "openapi": "3.1.0",
+        "info": {"title": "MCP hub (RESEARCH-ONLY)", "version": "1",
+                 "description": "One surface over every MCP instance: research/mcp-hub.md. WebSocket: GET /ws (JSON-RPC 2.0, the same methods, plus hub.subscribe)."},
+        "paths": {
+            "/hub/rpc": {"post": {"operationId": "hubRpc", "summary": "One JSON-RPC 2.0 request", "tags": ["hub"],
+                "requestBody": {"content": {"application/json": {"schema": {"type": "object", "required": ["jsonrpc", "method"],
+                    "properties": {"jsonrpc": {"const": "2.0"}, "id": {}, "method": {"enum": names}, "params": {"type": "object"}}}}}},
+                "responses": {"200": {"description": "JSON-RPC response"}}, "x-hub-methods": methods}},
+            "/hub/instances": get("hubInstances", "Every live instance"),
+            "/hub/catalogue": get("hubCatalogue", "Every operation of every instance"),
+            "/hub/audit": get("hubAudit", "Duplicate stations per instance (one owner, a shared facility, overlapping catchments)"),
+            "/openapi.json": get("hubOpenapi", "This document"),
+        }
+    })
 }
 
 /// Answer one JSON-RPC request. `subscriber` is the connection's subscriber id when it can stream.
@@ -423,6 +537,7 @@ pub fn handle(state: &Shared, req: &Value, subscriber: Option<u64>) -> Option<Va
     };
     let reply = match method {
         "rpc.discover" => ok(&id, methods()),
+        "hub.audit" => ok(&id, audit(state)),
         "hub.instances" => ok(&id, state.lock().unwrap().instances_json()),
         "hub.catalogue" => {
             let s = state.lock().unwrap();
@@ -533,6 +648,8 @@ fn serve_http(state: Shared, mut stream: TcpStream, statics: &Path) {
             Err(_) => respond(stream, 404, json_ct, br#"{"error":"hub.html not found"}"#),
         },
         ("GET", "/hub/instances") => respond(stream, 200, json_ct, state.lock().unwrap().instances_json().to_string().as_bytes()),
+        ("GET", "/hub/audit") => respond(stream, 200, json_ct, audit(&state).to_string().as_bytes()),
+        ("GET", "/openapi.json") => respond(stream, 200, json_ct, openapi().to_string().as_bytes()),
         ("GET", "/hub/catalogue") => {
             let r = handle(&state, &json!({"jsonrpc": "2.0", "id": 0, "method": "hub.catalogue"}), None).unwrap();
             respond(stream, 200, json_ct, r["result"].to_string().as_bytes())

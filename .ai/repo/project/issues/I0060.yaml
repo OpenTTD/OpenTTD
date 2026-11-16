@@ -1,0 +1,39 @@
+id: I0060
+milestone: an-agent-reaches-the-game-over-mcp
+title: "No duplicate buildings: every instance audited by the game's own catchment, on every surface, enforced by a check"
+slug: no-duplicate-stations
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A duplicate station (one owner, a shared facility, overlapping catchments) built by any bot in any running game is found by name, from the game's own catchment, through MCP, the hub, OpenAPI, the page and a check that fails on it."
+why: "The owner: prevent duplicate buildings, cover all with tests; what is not reachable through MCP and Swagger, derived, tested and documented, does not exist."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_world.cpp"
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-panel/static/**"
+  - "tools/research/mcp-panel/test/**"
+  - "tools/research/mcp-hub-check"
+  - "tools/research/mcp-dup-check"
+  - "research/mcp-hub.md"
+  - "research/README.md"
+  - ".ai/**"
+non_scope:
+  - "The bots' own reuse of stations and depots (PrismaticAI: openttd-80, in its bridge repository; mcp-human: openttd-07)"
+depends_on:
+  - I0058
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd://stations publishes catchment_radius and catchment_area from Station::GetCatchmentRadius and catchment_tiles"
+  - "hub.audit, GET /hub/audit, mcp-hub audit and the page's Duplicate buildings card report every duplicate pair per instance; the hub's OpenAPI lists every method"
+  - "tools/research/mcp-dup-check exits 1 on a duplicate and names it; the observed pairs of 2026-11-16 are unit-test fixtures"
+  - "tools/gate.sh research passes"
+validation:
+  - "cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub"
+  - "node --test tools/research/mcp-panel/test/components.test.mjs"
+  - "tools/gate.sh research"
+  - "tools/research/mcp-dup-check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
+updated_at: '2026-11-16'

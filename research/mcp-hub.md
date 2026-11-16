@@ -38,6 +38,10 @@ tools/research/mcp-rhai/target/release/mcp-hub --panel http://127.0.0.1:8800   #
 | `hub.call` | `instance`, `id`, `body?`, `query?` | the operation's answer; a panel's HTTP error comes back as `{http_error, body}` |
 | `hub.subscribe` | `instances?`, `kinds?` | then `hub.event` notifications `{instance, event}`; a kind matches by prefix (`game` takes `game.month`) |
 | `hub.unsubscribe` | | |
+| `hub.audit` | | per instance: its stations and the pairs that duplicate each other |
+
+The hub describes itself in `GET /openapi.json`, derived from its method table, and serves the
+read-only methods as GET routes too (`/hub/instances`, `/hub/catalogue`, `/hub/audit`).
 
 `id` is a panel's `operationId`, `tool:<name>` or `resource:<uri>`. A streaming route
 (`text/event-stream`) is not called: subscribe instead.
@@ -59,12 +63,30 @@ page of the panel can import:
 The state (instance, open operation, filter, followed kinds) is in the URL hash, so a view is a link.
 The page uses the panel's compiled Flowbite CSS and only classes it already contains.
 
+## No duplicate buildings
+
+`hub.audit` (also `GET /hub/audit`, `mcp-hub audit`, `tools/research/mcp-dup-check`, and the
+"Duplicate buildings" card of the page) judges every instance's stations by one rule: **two stations
+of one owner that share a facility and whose catchments overlap duplicate each other**, since both
+serve the same tiles with the same kind of transport. A bus stop beside its own airport, another
+owner's stop, or two stops of one owner whose catchments do not touch are not duplicates.
+
+The catchment is the game's own: `openttd://stations` publishes `catchment_radius`
+(`Station::GetCatchmentRadius`) and `catchment_area`, the bounding box of the station's
+`catchment_tiles`. For an instance on an older binary that publishes neither, the radius of each
+facility comes from `src/station_type.h` (`CA_BUS`, `CA_TRUCK`, `CA_TRAIN`, `CA_DOCK`, and
+`CA_UNMODIFIED` for an airport), and the report says "catchment from the fallback radius".
+
+The check is generic: it does not know which bot built what, so it holds PrismaticAI, the planner's
+bot and the human-motion player to the same rule.
+
 ## Proof
 
 | Check | What it proves |
 |---|---|
 | `cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub` | operations derived from OpenAPI and MCP, registry records and dead owners, filters, verdicts; and end to end against a fake panel: list, call over WebSocket and HTTP, a stream refused as a call, only the subscribed kind streamed |
 | `node --test 'tools/research/mcp-panel/test/*.test.mjs'` | schema to fields, coercion, call parameters, URL state round trip, grouping, and the client's request matching, notifications and re-subscription |
+| `tools/research/mcp-dup-check` | against whatever runs: no instance holds a duplicate pair; each pair named with both stations and the distance |
 | `tools/research/mcp-hub-check` | against whatever runs: every instance discovered, every read-only operation that needs no input called through the WebSocket, one event streamed; a 503 ("no GUI client attached") is counted as skipped |
 
 ## Limits

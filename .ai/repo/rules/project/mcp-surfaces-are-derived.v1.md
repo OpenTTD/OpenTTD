@@ -34,6 +34,12 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
   `static/components.js`; neither names an operation. Proof: `cargo test --bin mcp-hub` and
   `node --test 'tools/research/mcp-panel/test/*.test.mjs'` offline, `tools/research/mcp-hub-check`
   against what runs (every read-only operation of every instance called, one event streamed).
+- The hub describes itself: `GET /openapi.json` is derived from its method table, so every hub method,
+  `hub.audit` included, is in OpenAPI. A capability that no surface reaches (MCP, OpenAPI, the hub, Rhai,
+  the page) is not finished.
+- No duplicate buildings: `hub.audit` judges every instance by the game's own catchment
+  (`catchment_radius`, `catchment_area` in `openttd://stations`); `tools/research/mcp-dup-check` fails on
+  a pair (I0060).
 - Proof against a running panel: `tools/research/mcp-panel-check` (every tool and resource has its route and schema, the routes answer, the event feed works).
 - Proof that every derived route works: `tools/research/mcp-route-check` walks the panel's own
   OpenAPI document. Every GET answers 200, every POST with required fields answers 400 to an empty
