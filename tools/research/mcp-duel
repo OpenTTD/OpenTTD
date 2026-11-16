@@ -63,7 +63,12 @@ def companies():
     return {int(m[0]): {"name": m[1], "money": int(m[3]), "loan": int(m[4]), "value": int(m[5]),
                          "trains": int(m[6]), "road": int(m[7]), "planes": int(m[8])} for m in ROW.findall(text)}
 def months_seen():
-    return len(get("/api/events?since=0&kinds=game.month&limit=1000").get("events", []))
+    """The game month as a running count, from the game's own date (year * 12 + month). Counting
+    game.month events undercounted: the panel's event buffer is capped and drops the oldest, so a
+    120-month duel's month 72 was dated 29 months after its month 60 (2026-11-16)."""
+    date = str(get("/api/resources/game/state").get("game_date", ""))
+    m = re.match(r"(\d{4})-(\d{2})", date)
+    return int(m[1]) * 12 + int(m[2]) - 1 if m else 0
 plan = [e["text"] for e in get("/api/status")["events"] if e["kind"] == "ai" and e["text"].startswith("planner")]
 start = months_seen(); seen = start; series = []
 while seen - start < months:
