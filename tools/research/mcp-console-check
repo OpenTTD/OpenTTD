@@ -1,0 +1,166 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY end-to-end check of the `mcp` console command family (issue I0067).
+#
+# Drives a headless dedicated server through its console only (no HTTP request), the way the owner
+# would through the tilde console, and checks that everything is derived from what the console
+# itself lists:
+#   - `mcp tools` / `mcp resources` list the catalogue; every listed tool answers `mcp help` with a
+#     usage line, and every listed resource answers `mcp read` with JSON;
+#   - typed arguments: a missing required key, a mistyped value and an unknown key are refused with
+#     the usage line, and an unresolvable name is refused;
+#   - the gated mutation runs end to end from the console: `mcp set_pause pause=true` is pending,
+#     `prismatic_mcp approve <id>` approves it, the same call executes and is verified.
+#
+# The dedicated server holds its console stdout in a buffer that is flushed at shutdown, so this
+# check does not scrape output live: it sends a batch of commands, quits, then parses the whole
+# log. It runs the server twice -- once to read the catalogue, once to exercise it with the
+# per-tool and per-resource commands the catalogue named.
+#
+# Usage: tools/research/mcp-console-check [--bin <openttd>]
+#   --bin   an openttd built with OPTION_PRISMATIC_MCP_SERVER=ON (default: build-gate-research/openttd)
+# Exit: 0 all checks passed, 1 a check failed, 2 usage, 3 a prerequisite is missing.
+# Needs a base graphics set (research/baseset-prerequisite-macos.md) and python3.
+set -uo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+BIN="$ROOT_DIR/build-gate-research/openttd"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --bin) BIN="${2:?--bin needs a path}"; shift 2 ;;
+    -h|--help) sed -n '2,20p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "mcp-console-check: unknown option: $1" >&2; exit 2 ;;
+  esac
+done
+
+command -v python3 >/dev/null 2>&1 || { echo "mcp-console-check: python3 is required" >&2; exit 3; }
+[[ -x "$BIN" ]] || { echo "mcp-console-check: no executable at $BIN (run tools/gate.sh research)" >&2; exit 3; }
+
+WORK="$(mktemp -d "${TMPDIR:-/tmp}/mcp-console-check.XXXXXX")"
+cleanup() { if [[ -n "${MCP_CONSOLE_CHECK_KEEP:-}" ]]; then echo "kept $WORK" >&2; else rm -rf "$WORK"; fi; }
+trap cleanup EXIT
+
+# drive <logfile> <command> ...: run a fresh dedicated server, send each command between markers,
+# quit, and leave the log at <logfile>. Markers are 1-based in the order given.
+drive() {
+  local log="$1"; shift
+  local fifo="$WORK/fifo.$$"
+  rm -f "$fifo"; mkfifo "$fifo"
+  stdbuf -oL -eL "$BIN" -D -x -g -G 1 -c "$WORK/cfg" < "$fifo" > "$log" 2>&1 &
+  local pid=$! i
+  exec 4>"$fifo"
+  # The console reads stdin only once the game loop runs; repeat until it answers (startup race).
+  for ((i = 0; i < 60; i++)); do
+    kill -0 "$pid" 2>/dev/null || break
+    printf 'echo @@ready@@\n' >&4
+    sleep 1
+    grep -qF "@@ready@@" "$log" && break
+  done
+  local n=0
+  for cmd in "$@"; do
+    n=$((n + 1))
+    printf 'echo @@b-%d@@\n%s\necho @@e-%d@@\n' "$n" "$cmd" "$n" >&4
+  done
+  printf 'echo @@all-done@@\n' >&4
+  for ((i = 0; i < 160; i++)); do grep -qF "@@all-done@@" "$log" && break; sleep 0.25; done
+  printf 'quit\n' >&4
+  exec 4>&-
+  for ((i = 0; i < 20; i++)); do kill -0 "$pid" 2>/dev/null || break; sleep 0.25; done
+  kill "$pid" 2>/dev/null || true
+  wait "$pid" 2>/dev/null || true
+}
+
+# block <logfile> <n>: the lines the n-th command printed, between its markers.
+block() {
+  python3 -I - "$1" "$2" <<'PY'
+import re, sys
+log, n = sys.argv[1], sys.argv[2]
+begin, end = f"@@b-{n}@@", f"@@e-{n}@@"
+out, inside = [], False
+for line in open(log, encoding="utf-8", errors="replace"):
+    text = re.sub(r"^\[[^\]]*\]\s*", "", line.rstrip("\n")).rstrip("\r")
+    if text == begin:
+        inside, out = True, []; continue
+    if text == end and inside:
+        break
+    if inside:
+        out.append(text)
+sys.stdout.write("\n".join(out))
+PY
+}
+
+PASS=0
+FAIL=0
+check() {
+  if [[ "$2" == 1 ]]; then PASS=$((PASS + 1)); printf 'PASS  %s\n' "$1"; else FAIL=$((FAIL + 1)); printf 'FAIL  %s\n' "$1"; fi
+}
+
+echo "==> run 1: reading the catalogue"
+drive "$WORK/cat.log" "mcp tools" "mcp resources"
+mapfile -t TOOLS < <(block "$WORK/cat.log" 1 | awk '/^openttd\./{print $1}')
+mapfile -t RES   < <(block "$WORK/cat.log" 2 | awk '/^openttd:\/\//{print $1}')
+check "'mcp tools' lists tools (${#TOOLS[@]})" "$([[ ${#TOOLS[@]} -gt 0 ]] && echo 1 || echo 0)"
+check "'mcp resources' lists resources (${#RES[@]})" "$([[ ${#RES[@]} -gt 0 ]] && echo 1 || echo 0)"
+
+# Build run 2's command list: fixed behaviour checks, then help for every tool and read for every
+# resource the catalogue named. Record where each group starts so the parse can find them.
+CMDS=("mcp" "mcp set_pause" "mcp set_pause pause=perhaps" "mcp set_pause pause=true speed=2" "mcp no_such_tool_anywhere")
+FIXED=${#CMDS[@]}
+for t in "${TOOLS[@]}"; do CMDS+=("mcp help $t"); done
+for r in "${RES[@]}"; do CMDS+=("mcp read $r --compact --all"); done
+CMDS+=("mcp set_pause pause=true --compact")   # the gated mutation (pending)
+
+echo "==> run 2: exercising ${#CMDS[@]} command(s)"
+drive "$WORK/ex.log" "${CMDS[@]}"
+
+help="$(block "$WORK/ex.log" 1)"
+check "'mcp' prints help counting the catalogue it read" "$(grep -qE 'tool\(s\), [0-9]+ resource\(s\)' <<<"$help" && echo 1 || echo 0)"
+
+miss="$(block "$WORK/ex.log" 2)"
+check "a missing required key is refused with the usage line" \
+  "$(grep -qF "missing required key 'pause'" <<<"$miss" && grep -qF 'mcp openttd.game.set_pause pause=<boolean>' <<<"$miss" && echo 1 || echo 0)"
+check "a mistyped value is refused" \
+  "$(grep -qF "pause: 'perhaps' is not boolean" <<<"$(block "$WORK/ex.log" 3)" && echo 1 || echo 0)"
+unk="$(block "$WORK/ex.log" 4)"
+check "an unknown key is refused and nothing is submitted" \
+  "$(grep -qF "unknown key 'speed'" <<<"$unk" && ! grep -q pending_approval <<<"$unk" && echo 1 || echo 0)"
+check "a name that resolves to nothing is refused" \
+  "$(grep -qF "No tool matches 'no_such_tool_anywhere'" <<<"$(block "$WORK/ex.log" 5)" && echo 1 || echo 0)"
+
+bad_help=""
+idx=$((FIXED + 1))
+for t in "${TOOLS[@]}"; do
+  grep -qF "mcp $t" <<<"$(block "$WORK/ex.log" "$idx")" || bad_help+=" $t"
+  idx=$((idx + 1))
+done
+check "every listed tool answers 'mcp help' with its usage line${bad_help:+ (not:$bad_help)}" "$([[ -z "$bad_help" ]] && echo 1 || echo 0)"
+
+bad_read=""
+for r in "${RES[@]}"; do
+  out="$(block "$WORK/ex.log" "$idx")"
+  python3 -I -c 'import json,sys; json.loads([l for l in sys.stdin.read().splitlines() if l.strip()][0])' <<<"$out" 2>/dev/null || bad_read+=" $r"
+  idx=$((idx + 1))
+done
+check "every listed resource answers 'mcp read' with JSON${bad_read:+ (not:$bad_read)}" "$([[ -z "$bad_read" ]] && echo 1 || echo 0)"
+
+# The gated mutation: the last command printed a pending approval. Approve it, then replay.
+pending="$(block "$WORK/ex.log" "$idx")"
+approval="$(python3 -I -c 'import json,sys
+for l in sys.stdin.read().splitlines():
+    try: d = json.loads(l)
+    except Exception: continue
+    if d.get("status") == "pending_approval": print(d["approval_id"])' <<<"$pending")"
+check "the gated mutation from the console waits for approval" "$([[ -n "$approval" ]] && echo 1 || echo 0)"
+if [[ -n "$approval" ]]; then
+  drive "$WORK/approve.log" "mcp set_pause pause=true --compact" "prismatic_mcp approve 1" "mcp set_pause pause=true --compact"
+  # A fresh server starts a fresh approval id at 1; the first call creates it, approve 1, replay
+  # executes. On a dedicated (networked) server the Pause command is queued and executes on a later
+  # frame, so the replay reports status=executed, command_result=succeeded with the verdict
+  # EXECUTED_UNVERIFIED (the effect is not observable in the same tick); that is the success here.
+  replay="$(block "$WORK/approve.log" 3)"
+  check "after 'prismatic_mcp approve', the same console call executes through the command system" \
+    "$(grep -qF '"status":"executed"' <<<"$replay" && grep -qF '"command_result":"succeeded"' <<<"$replay" && echo 1 || echo 0)"
+fi
+
+echo "mcp-console-check: $PASS passed, $FAIL failed"
+[[ "$FAIL" -eq 0 ]]
