@@ -3,7 +3,7 @@ schema: knowledge/v1
 id: the-bots-rail-pathfinder-lays-plain-track-only
 kind: knowledge
 class: constraint
-title: "PrismaticAI lays rail over buildable land only: a line that needs a bridge, tunnel or level crossing fails"
+title: "PrismaticAI lays rail over land and level crossings only: a line that needs a bridge or tunnel fails"
 description: "When choosing which planned rail line the owner's bot builds, or reading why a bot company has no trains."
 status: verified
 epistemics: observed
@@ -40,11 +40,17 @@ piece on any slope that is not steep, and a corner piece only where
 on both exits are checked against their stations. Just allowing every slope that is not steep was
 wrong: the game refused the first piece with ERR_LAND_SLOPED_WRONG.
 
+Since bridge repository a0f2734 the bot crosses a straight road at right angles on flat land (a
+level crossing, never turning on it). It takes a station site only when the exit leads on: on the
+same seed, a station between houses had its exit facing a road junction. Bridges and tunnels are
+still out of reach. The passenger line Ganingbury–Sontburg on that seed needs a bridge over the
+river south of the town.
+
 # How to apply
 
 - Price rail lines with track-planning (`mcp-plan --track N`) before the bot gets one. The panel's
-  bot start passes over a priced line whose counts include a bridge, a tunnel or a crossing, and
-  takes the next line of its kind. An unpriced line is still tried blind.
+  bot start prices six of each list, passes over a line whose counts include a bridge or tunnel,
+  and does not hand over an unpriced line while others were priced.
 - A bot company with T0 in `companies` after a rail plan: look for "no rail path" in its log
   before blaming the planner's scores. To find which rule blocks the line, replay the search
   offline on `openttd://map` and `openttd://map/terrain`, with the bot's own stations put back.

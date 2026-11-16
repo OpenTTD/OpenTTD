@@ -62,6 +62,13 @@ pub fn site(map: &Value, ox: i64, oy: i64, tx: i64, ty: i64, len: usize) -> Opti
                 (false, false) => (end.0, end.1 - 1, "NW"),
             };
             if ex < 1 || ey < 1 || !m.free_flat(ex as usize, ey as usize) { continue; }
+            // The exit must lead on (as PrismaticAI's ExitLeadsOn): straight ahead or to either side
+            // is land (clear or trees) or a road the line may cross. A station between houses whose
+            // exit faces only a junction is a dead end (seed 20208, Ganingbury).
+            let (ox2, oy2) = (ex - end.0, ey - end.1);
+            let onward = [(ex + ox2, ey + oy2), (ex + oy2, ey + ox2), (ex - oy2, ey - ox2)];
+            if !onward.iter().any(|&(nx, ny)| nx >= 1 && ny >= 1 && (nx as usize) < m.w && (ny as usize) < m.h
+                && matches!(m.types[ny as usize].get(nx as usize), Some(b'C') | Some(b'T') | Some(b'r'))) { continue; }
             // The back end and the tile beyond it, on the side away from the exit.
             let back = if forward { tiles[0] } else { *tiles.last()? };
             let (bx, by) = match (along_x, forward) {
@@ -116,6 +123,17 @@ mod tests {
         let (sx, dx) = (s["x"].as_i64().unwrap(), s["depot"]["x"].as_i64().unwrap());
         assert_eq!(dx, sx - 1);
         assert_ne!(dx, 9);
+    }
+
+    #[test]
+    fn a_site_whose_exit_leads_nowhere_is_not_taken() {
+        // Houses fill everything except a pocket at x 10..14, y 10: a station there would exit into
+        // a house at x 14; the site must be elsewhere (the open field from x 20 on).
+        let rows_t: Vec<String> = (0..30).map(|y| (0..30).map(|x| if x >= 20 || (y == 10 && (10..14).contains(&x)) { 'C' } else { 'H' }).collect()).collect();
+        let row_h = "00".repeat(30);
+        let map = json!({"width": 30, "height": 30, "types": rows_t, "heights": vec![row_h; 30]});
+        let s = site(&map, 10, 10, 25, 10, 3).expect("a site in the field");
+        assert!(s["x"].as_i64().unwrap() >= 20);
     }
 
     #[test]

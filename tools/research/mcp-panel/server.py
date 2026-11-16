@@ -233,7 +233,8 @@ class Game:
             params = {"budget": budget} if budget else {}
             # With AlgoGlyph present the best rail lines are priced on the real map (track-planning)
             # before the portfolio is chosen, so the bot builds what pays on this terrain.
-            track = ["--track", "3"] if os.environ.get("MCP_ALGOGLYPH_DIR") else []
+            # Six lines of each list, so the bot has priced lines to fall back on.
+            track = ["--track", "6"] if os.environ.get("MCP_ALGOGLYPH_DIR") else []
             r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", "--limit", "10",
                                 "--params", json.dumps(params), *track], capture_output=True, text=True, timeout=240)
             out = json.loads(r.stdout) if r.returncode == 0 else {}
@@ -253,15 +254,19 @@ class Game:
         num = lambda v: int(str(v).split(":")[-1])  # world-graph ids are "industry:12"
         settings = {}
 
+        priced_any = bool((out.get("line_costs") or {}).get("priced"))
+
         def bot_can_build(opt):
-            """PrismaticAI lays rail over buildable land only (rail.nut FindRailPath: no bridge, tunnel
-            or level crossing). A line priced by track-planning that needs one is not for the bot;
-            an unpriced line is tried as before."""
+            """PrismaticAI lays rail over buildable land and level crossings (rail.nut FindRailPath),
+            with no bridge or tunnel. A line track-planning priced with one is not for the bot. When
+            lines were priced, an unpriced one is not handed over blind either: on seed 20208 an
+            unpriced passenger line needed a bridge over a river and failed. Without AlgoGlyph
+            (nothing priced) every line is tried as before."""
             t = opt.get("track")
             if not t:
-                return True
+                return not priced_any
             n = t.get("counts") or {}
-            return t.get("status") == "found" and not (n.get("bridges") or n.get("tunnels") or n.get("crossings"))
+            return t.get("status") == "found" and not (n.get("bridges") or n.get("tunnels"))
 
         # The portfolio first; a rail line the bot cannot build is replaced by the next priced or
         # unpriced line of its kind that it can, from the planner's lists (best score first).
@@ -273,9 +278,10 @@ class Game:
             if mode in ("rail", "freight_rail") and not bot_can_build(opt):
                 n = (opt.get("track") or {}).get("counts") or {}
                 if c in chosen:
-                    self.event("ai", f"planner: the {mode} line {c.get('producer', c.get('a', {})).get('name')} - "
-                                     f"{c.get('acceptor', c.get('b', {})).get('name')} needs {n.get('bridges', 0)} bridge(s), "
-                                     f"{n.get('tunnels', 0)} tunnel(s), {n.get('crossings', 0)} crossing(s); the bot lays plain track only, so the next line it can build goes instead")
+                    line = f"{c.get('producer', c.get('a', {})).get('name')} - {c.get('acceptor', c.get('b', {})).get('name')}"
+                    why = (f"needs {n.get('bridges', 0)} bridge(s) and {n.get('tunnels', 0)} tunnel(s); the bot builds neither"
+                           if opt.get("track") else "was not priced on the map, so it is not handed to the bot blind")
+                    self.event("ai", f"planner: the {mode} line {line} {why}; the next line it can build goes instead")
                 continue
             if c not in chosen and mode not in ("rail", "freight_rail"):
                 continue
