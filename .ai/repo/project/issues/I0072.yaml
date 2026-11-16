@@ -30,3 +30,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T04:18:36Z
+started_event: sha256:5204f067a586c188395a92266eff8e73a01cac728e521060c390f75aa44524de
+updated_at: 2026-11-16T04:18:46Z
+verified_at: 2026-11-16T04:18:38Z
+verified_event: sha256:5fa0bff0a475bd6388e340ffda4cd6a0c97f1d0c1c83907b6c665ce4de08947c
+completed_at: 2026-11-16T04:18:46Z
+completed_event: sha256:1d3080430f93601751635acc5cbd7717177aebb6c10b6bd29e3d55ba1cf22aa6
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/gate.sh change"
+    result: "research PASS 108/108 (MCP 8 cases, 85 assertions); change PASS 98/98 (no-MCP build, test guard fixed); rebased tree re-tested 85/85; delivered 8bebcd9803"
+    artifact: "8bebcd9803"
+    commit: 8bebcd9803adc46927b9437134d66aff5a4f3aba
+    recorded_at: 2026-11-16T04:18:42Z

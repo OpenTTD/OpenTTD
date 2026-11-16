@@ -24,3 +24,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T04:18:31Z
+started_event: sha256:8ca25f73d0062405a569e48469144e157924b6ed2624d47f02aba5d9ff7196ae
+updated_at: 2026-11-16T04:18:44Z
+verified_at: 2026-11-16T04:18:33Z
+verified_event: sha256:23347f16389fca184d0885d00ae8025d0df1b31d749bfc8ddacd94479d359c7d
+completed_at: 2026-11-16T04:18:44Z
+completed_event: sha256:318fea7d7a4e85ce0625a5d493ad1c19addda6cd25258143932f6a6c96eaf2aa
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/vanilla-client check 15.3; vanilla-client run 15.3 (fresh home)"
+    result: "7/7 PASS on tag 15.3 (14ec60f248): HEAD at tag, no change, no fork file, revision 15.3, tagged 1, modified 0; private.cfg client_name Player, participate_survey no, mode 600; delivered 8bebcd9803"
+    artifact: "8bebcd9803"
+    commit: 8bebcd9803adc46927b9437134d66aff5a4f3aba
+    recorded_at: 2026-11-16T04:18:41Z
