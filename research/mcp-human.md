@@ -47,14 +47,39 @@ Input feeds the same entry points a video driver calls (`HandleMouseEvents()`,
 interface, refuses every UI tool. Like every MCP tool, these are reachable from Rhai (derived
 from `tools/list`) and over the panel's derived REST/OpenAPI.
 
+## Coverage: measured by the server, not claimed by the scripts
+
+Every MCP server counts what its clients actually call: each `tools/call` by tool name and each
+`resources/read` by URI, in the dispatch itself (`prismatic_mcp_coverage.cpp`).
+`openttd://mcp/coverage` compares those counts with the catalogue the server publishes at that
+moment (`tools/list`, `resources/list`). It lists every entry with its call count, and the
+entries never called.
+
+`tools/research/mcp-coverage-check [--probe] [--report] <token-file>...` works on any instance:
+
+1. **Probe** (`--probe`). It reads every published resource. It also calls every tool annotated
+   with MCP's `readOnlyHint` (an annotation that tool owners derive from how each tool is
+   handled), using arguments derived from the tool's `inputSchema`.
+2. **Gate.** It then fails (exit 10) on any entry nothing exercised.
+
+Nothing in the check names a tool. A tool added tomorrow is uncovered until a scenario uses it.
+
+`mcp-human-e2e --test` runs the gate on both the server and the client after the player has
+played. Its governance scenario lists action types, validates a pause, and submits it. The pause
+stays pending because nobody approves it. The run then asserts that the game is still running.
+
 ## Safety: the owner's switch and the owner's hand
 
 - **Armed per process.** Input tools refuse unless the process was started with
   `PRISMATIC_MCP_INPUT=1`. Only the owner's own client gets it, from the launcher. The read
   tools are always available.
 - **The person wins.** When the real mouse moves, the cursor position no longer matches what
-  the bot left there. Input then pauses for three seconds after the last real movement and the
-  bot waits (`owner_has_mouse`). Grab the mouse and you are playing; let go and it carries on.
+  the bot left there. Input then pauses for three seconds after the last real movement. The bot
+  waits on every kind of input: pointer, buttons, keys and wheel. Grab the mouse and you are
+  playing; let go and it carries on.
+- **The owner is asked.** Before it starts, and before its first loan, the player asks a yes/no
+  question in the game's own dialog (`openttd.view.ask`). With no answer in time it closes the
+  dialog itself and records "no answer", not "no".
 - **Network rules unchanged.** A client acts only for its own company. The server validates
   every command as it would a person's.
 
@@ -69,6 +94,8 @@ A Rust program with no runtime dependencies beyond the client's token file
 | `hand.rs` | The hand on the mouse: move, click, drag, find a widget by its text, pick a dropdown item, focus the camera on a tile and spot it on screen without scrolling. |
 | `plan.rs` | Road routes: A* over `openttd://map` (clear land, trees, existing roads; no houses, water or steep tiles), with a turn penalty so routes come out as long straight runs. The runs are then cut into drags. |
 | `play.rs` | Tasks. **Road:** open the road menu, pick the road type, pick autoroad, drag a route; a run that does not fit on screen is halved. **Stops and depot:** a drive-through bus stop on a straight town road, and a depot facing a road, each placed through its picker. **Bus:** buy one in the depot window (filter the list for "bus", pick the first row, Buy), give it orders with Go To on both stops, and start it. **Service:** all of the above for a pair of towns. **Look around.** |
+| `economy.rs` | The company over a whole game (`game <minutes>`). Serve new town pairs while money allows. Add a bus to a service whose buses earn. Borrow through the finances window when cash runs short, asking the owner first. Between jobs, follow a bus with the camera and read the news. Town pairs come from the shared route planner (`mcp-plan --token`, the game's payment formula) when `MCP_PLAN` names it, and nearest neighbours otherwise. |
+| Telling the owner | A company newspaper in the game after each new service (`openttd.view.news.show`), then a screenshot. The tile about to be worked on is marked (`openttd.view.mark`). |
 | Screen manners | Clicks are scoped to the window they belong to. A covered window is first brought to the front by its title bar. A covered tile is revealed by shifting the view. Placement starts from a clean hand (Escape). Windows are closed by their close boxes after each job and after any failure. |
 
 ```bash

@@ -10,6 +10,7 @@
 //! The client must run with PRISMATIC_MCP_INPUT=1 (the owner's switch), and the hand yields
 //! whenever the owner moves the real mouse.
 
+mod economy;
 mod hand;
 mod mcp;
 mod motion;
@@ -36,7 +37,8 @@ commands:
   road <x1> <y1> <x2> <y2>   plan and drag a road between two tiles with the autoroad tool
   connect [<town> <town>]    connect two towns by road (default: the largest and a neighbour)
   serve <town> <town>        a bus service: road if needed, two stops, a depot, a bus with orders
-  play [<rounds>]            look around, then serve town pairs round after round";
+  play [<rounds>]            look around, then serve town pairs round after round
+  game [<minutes>]           run the company: expand, add buses where they earn, borrow, watch";
 
 fn arg_num<T: std::str::FromStr>(args: &[String], i: usize) -> Result<T, String> {
     args.get(i).ok_or_else(|| USAGE.to_string())?.parse::<T>().map_err(|_| format!("not a number: {}", args[i]))
@@ -98,10 +100,23 @@ fn run() -> Result<(), String> {
             let stops = hand.serve_towns(&find(ta)?, &find(tb)?)?;
             println!("ok: stops {stops:?}");
         }
+        "game" => {
+            let minutes: u64 = if args.len() > 1 { arg_num(&args, 1)? } else { 20 };
+            let services = hand.play_game(minutes, economy::Policy::default())?;
+            for s in &services {
+                println!("service {}: {} bus(es), stops {:?}, depot {:?}", s.name, s.buses, s.stops, s.depot);
+            }
+            println!("ok: {} service(s), {} bus(es)", services.len(), services.iter().map(|s| s.buses).sum::<usize>());
+        }
         "play" => {
             let rounds: usize = if args.len() > 1 { arg_num(&args, 1)? } else { 3 };
             hand.require_tools()?;
             hand.look_around()?;
+            // The owner decides; no answer in time is not a no, and the default is to play.
+            if hand.ask_owner("May I build bus services for your company now?", 8)? == Some(false) {
+                println!("ok: the owner said no");
+                return Ok(());
+            }
             let pairs = hand.town_pairs()?;
             let mut served = 0;
             for (a, b) in pairs {
@@ -123,6 +138,9 @@ fn run() -> Result<(), String> {
                     }
                 }
                 hand.think(800.0, 1600.0);
+            }
+            if served > 0 {
+                hand.watch(8)?;
             }
             println!("ok: {served} town pair(s) served");
         }

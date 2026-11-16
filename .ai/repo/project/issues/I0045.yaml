@@ -22,7 +22,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T00:02:59Z
+updated_at: 2026-11-16T00:27:51Z
 started_at: 2026-11-15T23:50:32Z
 started_event: sha256:e59f6c950b075567517ecb0edbcfdd465d91f970e6e97973b643b3e033df1a82
 evidence:
@@ -38,3 +38,9 @@ evidence:
     result: "partial: gate research PASS (103/103, 25 MCP assertions); unit 10/10; e2e all PASS on the server: Patborough-Cadston and Sunway-Quardstone served through the interface, 77 road tiles, 6 bus stations, 2 buses running with 2 orders each, 4521 pointer updates; 3 pairs skipped (depot window, unclickable run ends). Remaining: the economy loop."
     commit: ac3dc352d3d6218ffd23746efff1a8d5a1c05ca9
     recorded_at: 2026-11-16T00:02:59Z
+  - covers: "validation_run"
+    type: test
+    command: "mcp-human-e2e --test --rounds 1 --seed 11"
+    result: "partial: planner-ranked pairs (mcp-plan --token, 12 bus pairs), newspaper per service, owner question, wheel zoom, watching a bus; play path PASS on the server. The economy loop (mcp-human game: reinforce, borrow) is implemented but NOT RUN yet."
+    commit: 916a43d381296f54bdc18b170c87a0e3ba8660ff
+    recorded_at: 2026-11-16T00:27:51Z

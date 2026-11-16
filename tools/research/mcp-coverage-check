@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""RESEARCH-ONLY. Coverage of an MCP server's published surface, measured by the server itself.
+
+Usage: mcp-coverage-check [--probe] [--report] <token-file> [<token-file> ...]
+
+For each instance (a token file written by `prismatic_mcp start <port> <file>`):
+  --probe   first exercise what can be exercised generically: read every resource in
+            resources/list, and call every tool annotated readOnlyHint with arguments derived from
+            its inputSchema (a required integer 0, string "", boolean false). Each answer must be a
+            well-formed JSON-RPC result.
+then read openttd://mcp/coverage, which the server's dispatch keeps, and list every published tool
+and resource that no client has called since the server started.
+
+Exit 0 when every instance's catalogue is covered, 10 when an entry is not (unless --report, which
+only prints), 2 on usage, 1 when an instance cannot be reached or answers malformed JSON-RPC.
+Nothing here names a tool: the catalogue is whatever tools/list and resources/list answer.
+"""
+import json
+import sys
+import urllib.request
+
+
+def rpc(token_file, method, params):
+    with open(token_file) as fh:
+        cfg = json.load(fh)
+    body = json.dumps({"jsonrpc": "2.0", "id": 1, "method": method, "params": params}).encode()
+    req = urllib.request.Request(cfg["endpoint"], data=body, headers={
+        "Authorization": "Bearer " + cfg["agent_token"], "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream"})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        out = json.loads(resp.read())
+    if "result" not in out and "error" not in out:
+        raise RuntimeError(f"{method}: malformed answer {out}")
+    return out
+
+
+def derived_args(schema):
+    args = {}
+    props = (schema or {}).get("properties", {})
+    for name in (schema or {}).get("required", []):
+        kind = props.get(name, {}).get("type", "string")
+        kind = kind[0] if isinstance(kind, list) else kind
+        args[name] = {"integer": 0, "number": 0, "boolean": False, "array": [], "object": {}}.get(kind, "")
+    return args
+
+
+def main(argv):
+    probe = "--probe" in argv
+    report_only = "--report" in argv
+    files = [a for a in argv if not a.startswith("--")]
+    if not files:
+        print(__doc__)
+        return 2
+    uncovered_total = 0
+    for tf in files:
+        try:
+            if probe:
+                for r in rpc(tf, "resources/list", {})["result"]["resources"]:
+                    rpc(tf, "resources/read", {"uri": r["uri"]})
+                for t in rpc(tf, "tools/list", {})["result"]["tools"]:
+                    if t.get("annotations", {}).get("readOnlyHint") is True:
+                        rpc(tf, "tools/call", {"name": t["name"], "arguments": derived_args(t.get("inputSchema"))})
+            cov = rpc(tf, "resources/read", {"uri": "openttd://mcp/coverage"})
+            data = json.loads(cov["result"]["contents"][0]["text"])["data"]
+        except Exception as e:  # noqa: BLE001 - any failure to reach or parse is reported as such
+            print(f"FAIL {tf}: {e}")
+            return 1
+        un = data["uncovered"]["tools"] + data["uncovered"]["resources"]
+        uncovered_total += len(un)
+        print(f"{tf}: {data['covered']}/{data['total']} covered")
+        for name in un:
+            print(f"  UNCOVERED {name}")
+    if uncovered_total and not report_only:
+        return 10
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

@@ -40,6 +40,11 @@ ls "$HOME/Documents/OpenTTD/baseset/"opengfx* >/dev/null 2>&1 || { echo "mcp-hum
 HUMAN_DIR="$ROOT_DIR/tools/research/mcp-human"
 HUMAN="$HUMAN_DIR/target/release/mcp-human"
 (cd "$HUMAN_DIR" && CARGO_TARGET_DIR="$HUMAN_DIR/target" cargo build --release --quiet)
+# The shared route planner ranks the town pairs the player serves (optional; nearest towns otherwise).
+PLAN_DIR="$ROOT_DIR/tools/research/mcp-rhai"
+if (cd "$PLAN_DIR" && CARGO_TARGET_DIR="$PLAN_DIR/target" cargo build --release --quiet --bin mcp-plan 2>/dev/null); then
+  export MCP_PLAN="$PLAN_DIR/target/release/mcp-plan"
+fi
 
 free_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-human-e2e.XXXXXX")"
@@ -101,8 +106,29 @@ sleep 2
 AFTER="$(owned_roads "$COMPANY")"
 echo "==> company $COMPANY owns $AFTER road tiles on the server's map (before: $BEFORE)"
 
+COVERAGE="$ROOT_DIR/tools/research/mcp-coverage-check"
+
+# The governed path, on both instances: list what can be decided, validate a pause, and submit it.
+# Submitting only creates a pending approval: nobody approves it here, so nothing is executed.
+governance() { # $1 token file -> prints the pending approval's state
+  call "$1" openttd.decision.list_action_types '{}' >/dev/null
+  call "$1" openttd.decision.validate '{"action":{"type":"game.set_pause","arguments":{"pause":true}}}' >/dev/null
+  call "$1" openttd.decision.submit '{"action":{"type":"game.set_pause","arguments":{"pause":true}},"rationale":"mcp-human-e2e: exercise the approval path; never approved"}' | jq -c '{status, approval_id, error}' 2>/dev/null
+  call "$1" openttd.game.set_pause '{"pause":true}' | jq -c '{status, approval_id, error}' 2>/dev/null
+}
 if [[ "$TEST" == 1 ]]; then
   fail=0
+  echo "==> governance on the server: $(governance "$SERVER_TOKEN" | tr '\n' ' ')"
+  echo "==> governance on the client: $(governance "$CLIENT_TOKEN" | tr '\n' ' ')"
+  PAUSED="$(read_res "$SERVER_TOKEN" openttd://game/state | jq -r '.data.paused // .data.pause // false')"
+  [[ "$PAUSED" != true ]] && echo "PASS an unapproved pause executed nowhere (the game runs)" || { echo "FAIL the game paused without approval"; fail=1; }
+  # Coverage, measured by each server's own dispatch: probe what is read-only, then every
+  # published tool and resource must have been called by the probe or by the play above.
+  if "$COVERAGE" --probe "$SERVER_TOKEN" "$CLIENT_TOKEN"; then
+    echo "PASS every published tool and resource of the server and the client was exercised"
+  else
+    echo "FAIL some published tools or resources were never exercised (listed above)"; fail=1
+  fi
   [[ "$AFTER" -gt "$BEFORE" ]] && echo "PASS roads built through the interface appear on the server" || { echo "FAIL no new road tiles on the server"; fail=1; }
   STOPS="$(read_res "$SERVER_TOKEN" openttd://stations | jq --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c and (.facilities | index("bus")))] | length')"
   [[ "$STOPS" -ge 2 ]] && echo "PASS $STOPS bus stations of company $COMPANY on the server" || { echo "FAIL $STOPS bus stations (need 2)"; fail=1; }
@@ -116,6 +142,8 @@ if [[ "$TEST" == 1 ]]; then
   done
   call "$SERVER_TOKEN" openttd.ui.windows '{}' | jq -e '.ok == false' >/dev/null \
     && echo "PASS the server (no interface) refuses UI tools" || { echo "FAIL the server answered a UI tool"; fail=1; }
+  rpc "$SERVER_TOKEN" '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | jq -e '[.result.tools[].name | select(startswith("openttd.ui.") or startswith("openttd.input."))] | length == 0' >/dev/null \
+    && echo "PASS the server does not offer UI tools it cannot run" || { echo "FAIL the server lists UI tools"; fail=1; }
   exit "$fail"
 fi
 

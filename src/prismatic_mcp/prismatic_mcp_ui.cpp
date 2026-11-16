@@ -342,6 +342,8 @@ json Schema(json properties, json required = json::array())
 
 json Tools()
 {
+	/* A process without an interface offers none of these: its catalogue is what it can do. */
+	if (_network_dedicated) return json::array();
 	json xy = {{"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}}};
 	json tile = {{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}}};
 	json mods = {{"type", "array"}, {"items", {{"type", "string"}, {"enum", {"ctrl", "shift"}}}}};
@@ -371,6 +373,12 @@ json Tools()
 	arr.push_back({{"name", "openttd.input.key"},
 		{"description", "GUI only, armed: press a key as the keyboard driver does: keycode (OpenTTD WKC_* value, letters are their upper-case code) and the character it types"},
 		{"inputSchema", Schema({{"keycode", {{"type", "integer"}}}, {"char", {{"type", "string"}}}}, json::array({"keycode"}))}});
+	/* MCP tool annotations: readers are read-only; input changes local input state and, through the
+	 * game's own handling, may lead to a command, so it is neither read-only nor idempotent. */
+	for (auto &t : arr) {
+		bool reader = t["name"].get<std::string>().rfind("openttd.ui.", 0) == 0 || t["name"] == "openttd.input.state";
+		t["annotations"] = reader ? json{{"readOnlyHint", true}} : json{{"readOnlyHint", false}, {"idempotentHint", false}};
+	}
 	return arr;
 }
 

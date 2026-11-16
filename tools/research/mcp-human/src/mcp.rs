@@ -15,6 +15,10 @@ impl Mcp {
         Mcp { token_file: token_file.to_string() }
     }
 
+    pub fn token_file(&self) -> &str {
+        &self.token_file
+    }
+
     fn credentials(&self) -> Result<(String, String), String> {
         let text = std::fs::read_to_string(&self.token_file).map_err(|e| format!("{}: {e}", self.token_file))?;
         let v: Value = serde_json::from_str(&text).map_err(|e| format!("{}: {e}", self.token_file))?;

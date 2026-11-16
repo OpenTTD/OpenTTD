@@ -77,19 +77,25 @@ impl Hand {
         }
     }
 
-    fn pointer(&self, x: i32, y: i32) -> Result<(), String> {
-        match self.mcp.call("openttd.input.pointer", json!({"x": x, "y": y})) {
-            Ok(_) => Ok(()),
-            Err(e) if e.contains("owner holds the mouse") => {
-                self.say("the owner took the mouse; waiting");
-                self.yield_to_owner()
+    /// Any input tool: when the owner holds the mouse, wait until they let go, then do it.
+    pub fn input(&self, tool: &str, args: Value) -> Result<Value, String> {
+        loop {
+            match self.mcp.call(tool, args.clone()) {
+                Err(e) if e.contains("owner holds the mouse") => {
+                    self.say("the owner took the mouse; waiting");
+                    self.yield_to_owner()?;
+                }
+                other => return other,
             }
-            Err(e) => Err(e),
         }
     }
 
+    fn pointer(&self, x: i32, y: i32) -> Result<(), String> {
+        self.input("openttd.input.pointer", json!({"x": x, "y": y})).map(|_| ())
+    }
+
     fn button(&self, state: &str, button: &str, mods: &[&str]) -> Result<(), String> {
-        self.mcp.call("openttd.input.button", json!({"state": state, "button": button, "mods": mods})).map(|_| ())
+        self.input("openttd.input.button", json!({"state": state, "button": button, "mods": mods})).map(|_| ())
     }
 
     /// Move the cursor to a target with human motion.
@@ -309,7 +315,7 @@ impl Hand {
 
     /// Press a key the way the keyboard driver does (OpenTTD WKC_* keycode and the character).
     pub fn key(&self, keycode: u32, ch: &str) -> Result<(), String> {
-        self.mcp.call("openttd.input.key", json!({"keycode": keycode, "char": ch})).map(|_| ())
+        self.input("openttd.input.key", json!({"keycode": keycode, "char": ch})).map(|_| ())
     }
 
     /// Escape: drop the tool in hand, as a person does when done building.

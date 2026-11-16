@@ -26,6 +26,7 @@
 
 #include "prismatic_mcp.h"
 #include "prismatic_mcp_detail.h"
+#include "prismatic_mcp_coverage.h"
 #include "prismatic_mcp_entities.h"
 #include "prismatic_mcp_ui.h"
 #include "prismatic_mcp_view.h"
@@ -231,8 +232,9 @@ json ResourceTowns(); // defined below, next to the view tools that scroll to a 
 json ResourceMap();   // the whole map (prismatic_mcp_world.cpp)
 json ResourceStations();
 json ResourceVehicles(); // every primary vehicle with its orders (prismatic_mcp_entities.cpp)
+json ResourceCoverage(); // what clients exercised, against the published catalogue (prismatic_mcp_coverage.cpp)
 
-const std::array<ResourceEntry, 9> RESOURCES = {{
+const std::array<ResourceEntry, 10> RESOURCES = {{
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
@@ -242,6 +244,7 @@ const std::array<ResourceEntry, 9> RESOURCES = {{
 	{"openttd://map", "Map", "The whole map: tile types, heights and owners, one string per row, encoding included", &ResourceMap},
 	{"openttd://stations", "Stations", "Every station: id, name, tile, x/y, owner, facilities, town", &ResourceStations},
 	{"openttd://vehicles", "Vehicles", "Every primary vehicle: id, type, owner, engine, tile, state, cargo, profits, orders", &ResourceVehicles},
+	{"openttd://mcp/coverage", "MCP coverage", "Every published tool and resource with its call count since start, and those never called", &ResourceCoverage},
 }};
 
 json ResourceMap()
@@ -262,6 +265,16 @@ json ResourceVehicles()
 {
 	json env = MakeEnvelope();
 	env["data"] = Entities::Vehicles();
+	return env;
+}
+
+json ToolsList();
+json ResourcesList();
+
+json ResourceCoverage()
+{
+	json env = MakeEnvelope();
+	env["data"] = Coverage::Report(ToolsList(), ResourcesList());
 	return env;
 }
 
@@ -528,6 +541,16 @@ json ToolsList()
 	return json{{"tools", arr}};
 }
 
+/** The resources/list answer: every entry of RESOURCES. */
+json ResourcesList()
+{
+	json arr = json::array();
+	for (const auto &r : RESOURCES) {
+		arr.push_back({{"uri", r.uri}, {"name", r.name}, {"description", r.description}, {"mimeType", "application/json"}});
+	}
+	return json{{"resources", arr}};
+}
+
 /** Dispatch a single JSON-RPC request object. Returns std::nullopt for notifications. */
 std::optional<json> DispatchOne(const json &req)
 {
@@ -555,18 +578,13 @@ std::optional<json> DispatchOne(const json &req)
 	if (method == "notifications/initialized") return std::nullopt; // notification, no reply
 	if (method == "ping") return RpcResult(id, json::object());
 
-	if (method == "resources/list") {
-		json arr = json::array();
-		for (const auto &r : RESOURCES) {
-			arr.push_back({{"uri", r.uri}, {"name", r.name}, {"description", r.description}, {"mimeType", "application/json"}});
-		}
-		return RpcResult(id, json{{"resources", arr}});
-	}
+	if (method == "resources/list") return RpcResult(id, ResourcesList());
 	if (method == "resources/read") {
 		if (!req.contains("params") || !req["params"].contains("uri")) {
 			return RpcError(id, -32602, "Invalid params: missing uri");
 		}
 		std::string uri = req["params"]["uri"].get<std::string>();
+		Coverage::Count("resource", uri);
 		for (const auto &r : RESOURCES) {
 			if (uri == r.uri) {
 				json contents = json::array();
@@ -578,6 +596,7 @@ std::optional<json> DispatchOne(const json &req)
 	}
 	if (method == "tools/list") return RpcResult(id, ToolsList());
 	if (method == "tools/call") {
+		if (req.contains("params") && req["params"].contains("name") && req["params"]["name"].is_string()) Coverage::Count("tool", req["params"]["name"].get<std::string>());
 		if (!req.contains("params")) return RpcError(id, -32602, "Invalid params");
 		return HandleToolsCall(id, req["params"]);
 	}

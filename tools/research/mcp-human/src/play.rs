@@ -162,6 +162,7 @@ impl Hand {
         self.say(&format!("drive-through stop along {axis:?}"));
         self.click_index(&picker, if axis == Axis::X { STOP_X } else { STOP_Y })?;
         self.think(200.0, 400.0);
+        self.mark(at);
         self.click_tile(at.0, at.1)?;
         self.think(400.0, 700.0);
         self.escape()
@@ -176,6 +177,7 @@ impl Hand {
         let picker = self.wait_window("depot orientation")?;
         self.click_index(&picker, DEPOT_NE + side as i64)?;
         self.think(200.0, 400.0);
+        self.mark(at);
         self.click_tile(at.0, at.1)?;
         self.think(400.0, 700.0);
         self.escape()
@@ -293,6 +295,11 @@ impl Hand {
     /// A bus service between two towns: the road if they are not joined, a stop in each, a depot,
     /// and a bus running between the stops. Answers the stop tiles.
     pub fn serve_towns(&mut self, a: &Value, b: &Value) -> Result<[(usize, usize); 2], String> {
+        self.serve_towns_at(a, b).map(|(stops, _)| stops)
+    }
+
+    /// As serve_towns, also answering the depot tile, so more buses can be bought there later.
+    pub fn serve_towns_at(&mut self, a: &Value, b: &Value) -> Result<([(usize, usize); 2], (usize, usize)), String> {
         let pos = |t: &Value| (t.get("x").and_then(Value::as_u64).unwrap_or(0) as usize, t.get("y").and_then(Value::as_u64).unwrap_or(0) as usize);
         let name = |t: &Value| t.get("name").and_then(Value::as_str).unwrap_or("?").to_string();
         let (pa, pb) = (pos(a), pos(b));
@@ -313,11 +320,40 @@ impl Hand {
         self.say(&format!("depot near {} at {depot:?}", name(a)));
         self.build_depot(depot, side)?;
         self.buy_bus(depot, [sa, sb])?;
-        Ok([sa, sb])
+        let _ = self.mcp.call("openttd.view.mark", json!({"clear": true}));
+        self.announce(&format!("New bus service: {} - {}", name(a), name(b)), a.get("id").and_then(Value::as_u64));
+        Ok(([sa, sb], depot))
     }
 
     /// Town pairs worth serving, nearest neighbours of the largest towns first.
     pub fn town_pairs(&self) -> Result<Vec<(Value, Value)>, String> {
+        if let Some(pairs) = self.planned_pairs() {
+            return Ok(pairs);
+        }
+        self.nearest_pairs()
+    }
+
+    /// Bus pairs ranked by the shared route planner (mcp-plan --token, the game's own payment
+    /// formula), when MCP_PLAN names its binary; None when it is absent or fails.
+    fn planned_pairs(&self) -> Option<Vec<(Value, Value)>> {
+        let bin = std::env::var("MCP_PLAN").ok().filter(|b| std::path::Path::new(b).exists())?;
+        let out = std::process::Command::new(&bin)
+            .args(["--token", self.mcp.token_file(), "--params", r#"{"modes":["bus"]}"#, "--limit", "12"])
+            .output().ok()?;
+        if !out.status.success() {
+            self.say(&format!("planner failed: {}", String::from_utf8_lossy(&out.stderr).trim()));
+            return None;
+        }
+        let v: Value = serde_json::from_slice(&out.stdout).ok()?;
+        let pairs: Vec<(Value, Value)> = v.get("pairs").and_then(Value::as_array)?.iter()
+            .filter(|p| p.get("mode").and_then(Value::as_str) == Some("bus"))
+            .filter_map(|p| Some((p.get("a")?.clone(), p.get("b")?.clone())))
+            .collect();
+        self.say(&format!("planner ({}) ranks {} bus pair(s)", v.get("model").and_then(Value::as_str).unwrap_or("?"), pairs.len()));
+        (!pairs.is_empty()).then_some(pairs)
+    }
+
+    fn nearest_pairs(&self) -> Result<Vec<(Value, Value)>, String> {
         let towns = self.mcp.read("openttd://towns")?;
         let list: Vec<Value> = towns.get("towns").and_then(Value::as_array).cloned().unwrap_or_default();
         let pos = |t: &Value| (t.get("x").and_then(Value::as_u64).unwrap_or(0) as i64, t.get("y").and_then(Value::as_u64).unwrap_or(0) as i64);
@@ -341,9 +377,60 @@ impl Hand {
         Ok(pairs)
     }
 
+    /// Mark the tile about to be worked on (the game's red tile square), as a person points.
+    pub fn mark(&self, at: (usize, usize)) {
+        let _ = self.mcp.call("openttd.view.mark", json!({"x": at.0, "y": at.1}));
+    }
+
+    /// Tell the owner what was done: a company newspaper in the game, and a screenshot of it.
+    pub fn announce(&mut self, text: &str, town: Option<u64>) {
+        let mut args = json!({"text": text});
+        if let Some(t) = town {
+            args["town"] = json!(t);
+        }
+        if self.mcp.call("openttd.view.news.show", args).is_ok() {
+            self.say(&format!("newspaper: {text}"));
+            self.think(1500.0, 2500.0);
+            let _ = self.mcp.call("openttd.view.screenshot", json!({}));
+            self.think(400.0, 700.0);
+            let _ = self.mcp.call("openttd.view.news.close", json!({}));
+        }
+    }
+
+    /// Ask the owner a yes/no question in the game; None when nobody answered in time (the
+    /// dialog is then closed by the player and that is not taken as the owner's no).
+    pub fn ask_owner(&mut self, question: &str, seconds: u64) -> Result<Option<bool>, String> {
+        let asked = self.mcp.call("openttd.view.ask", json!({"question": question, "caption": "Your bot asks"}))?;
+        let id = asked.get("id").cloned().unwrap_or(Value::Null);
+        self.say(&format!("ask the owner: {question}"));
+        let started = std::time::Instant::now();
+        while started.elapsed() < std::time::Duration::from_secs(seconds) {
+            std::thread::sleep(std::time::Duration::from_millis(500));
+            let answers = self.mcp.call("openttd.view.ask.answers", json!({}))?;
+            let list = answers.get("answers").or_else(|| answers.get("questions")).and_then(Value::as_array).cloned().unwrap_or_default();
+            if let Some(a) = list.iter().find(|q| q.get("id") == Some(&id)) {
+                match a.get("answer").and_then(Value::as_str) {
+                    Some("yes") => return Ok(Some(true)),
+                    Some("no") | Some("replaced") => return Ok(Some(false)),
+                    _ => {}
+                }
+            }
+        }
+        self.say("no answer; close the question");
+        if let Some(w) = self.window("your bot asks")? {
+            self.close(&w)?;
+        }
+        Ok(None)
+    }
+
     /// Look around: glide over the toolbar and hover a few buttons, then over the map, the way a
     /// person orients themselves after sitting down.
     pub fn look_around(&mut self) -> Result<(), String> {
+        // Sit down at a comfortable zoom: the client's normal level, within its limits.
+        if let Ok(v) = self.mcp.call("openttd.view.state", json!({})) {
+            let (lo, hi) = (v.get("zoom_min").and_then(Value::as_i64).unwrap_or(0), v.get("zoom_max").and_then(Value::as_i64).unwrap_or(5));
+            let _ = self.mcp.call("openttd.view.zoom", json!({"level": 2i64.clamp(lo, hi)}));
+        }
         let windows = self.windows()?;
         let toolbar: Vec<Value> = windows
             .iter()
@@ -362,6 +449,12 @@ impl Hand {
         let st = self.state()?;
         let (w, h) = (st.pointer("/screen/w").and_then(Value::as_i64).unwrap_or(800) as i32, st.pointer("/screen/h").and_then(Value::as_i64).unwrap_or(600) as i32);
         self.move_to(Target { x: w / 2, y: h / 2, w: 200, h: 200 })?;
+        // Feel the map with the wheel: a notch in, a look, a notch back out.
+        self.say("wheel: zoom in, then out");
+        self.input("openttd.input.wheel", json!({"delta": -1}))?;
+        self.think(700.0, 1200.0);
+        self.input("openttd.input.wheel", json!({"delta": 1}))?;
+        self.think(300.0, 600.0);
         Ok(())
     }
 
