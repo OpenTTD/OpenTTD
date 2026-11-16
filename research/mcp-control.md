@@ -446,6 +446,13 @@ loan headroom reach `line_budget` (default 80000). More trains on one single-tra
 signals would deadlock, so idle money goes into more lines. On seed 20208 the bot built the second
 coal line (254 tiles) right after the first, at 47703 money and 190000 headroom.
 
+Every rail line keeps a train (bridge repository c9e692b). The bot records each line it builds,
+and every heartbeat it puts a new train on a line that has none: one lost at a level crossing, or
+sold. It does that at most twice per line, so a line that keeps losing money is not rebuilt
+forever. The company's autorenew is on, so the game renews ageing vehicles six months before
+their maximum age. In a 21-game-year duel without these the bot's trains fell from five to three
+(`research/results/duel-20261116-long-seed4242.md`).
+
 On the main stack (2026-11-16, low construction costs, so `rail_tile` 75 from the prices) the real
 lines cost 5-19% more than the straight-line estimate: a 172-tile coal line 15,341 against 12,900,
 with 2 bridges, 11 inclines and a level crossing. One passenger pair had no rail route at all and
