@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: a duel in one game. Two companies on the same map compete for the same towns and
+# industries: company A is the owner's bot started from the planner's portfolio (the panel does it),
+# company B the same bot started without a plan. Every game month both are read from the console's
+# `companies` command; after N months the one with the higher company value wins. The record goes to
+# research/results/duel-<time>-seed<N>.{json,md} with both bots' logs.
+#
+# Usage: tools/research/mcp-duel [--months 24] [--seed N] [--label text]
+# Exit: 0 the duel completed (whoever won), 1 the stack did not come up, 2 bad arguments.
+set -euo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+MONTHS=24 SEED="$RANDOM" LABEL=""
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --months) MONTHS="${2:?}"; shift 2 ;;
+    --seed) SEED="${2:?}"; shift 2 ;;
+    --label) LABEL="${2:?}"; shift 2 ;;
+    *) echo "usage: mcp-duel [--months N] [--seed N] [--label text]" >&2; exit 2 ;;
+  esac
+done
+free() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
+PANEL="$(free)"
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-duel.XXXXXX")"
+PID=""
+cleanup() { [[ -n "$PID" ]] && kill -TERM "$PID" 2>/dev/null; wait 2>/dev/null || true; }
+trap cleanup EXIT INT TERM
+
+echo "==> duel on :$PANEL, seed $SEED, $MONTHS months"
+"$ROOT_DIR/tools/research/mcp-e2e" --no-gui --no-browser --seed "$SEED" --panel-port "$PANEL" \
+  --mcp-port "$(free)" --game-port "$(free)" > "$TMP/stack.log" 2>&1 &
+PID=$!
+for ((i = 0; i < 240; i++)); do
+  curl -s "http://127.0.0.1:$PANEL/api/status" 2>/dev/null | grep -q '"ai_started": true' && break
+  sleep 2
+done
+curl -s "http://127.0.0.1:$PANEL/api/status" | grep -q '"ai_started": true' || { echo "mcp-duel: the stack did not come up ($TMP)" >&2; exit 1; }
+
+# Company B: the same bot, no plan (start_ai with no settings starts a new AI company).
+curl -s -X POST -H 'Content-Type: application/json' -d '{"command":"start_ai PrismaticAI","wait":1.0}' \
+  "http://127.0.0.1:$PANEL/api/console" > /dev/null
+
+python3 -I - "$PANEL" "$MONTHS" "$SEED" "$LABEL" "$ROOT_DIR" <<'PY'
+import json, os, re, sys, time, urllib.request
+port, months, seed, label, root = sys.argv[1], int(sys.argv[2]), sys.argv[3], sys.argv[4], sys.argv[5]
+ROW = re.compile(r"#:(\d+)\(.*?\)\s+Company Name: '([^']*)'\s+Year Founded: (\d+)\s+Money: (-?\d+)\s+Loan: (\d+)\s+Value: (-?\d+)\s+\(T:(\d+), R:(\d+), P:(\d+), S:(\d+)\)")
+def post(path, body):
+    req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", data=json.dumps(body).encode(), headers={"Content-Type": "application/json"}, method="POST")
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.loads(r.read())
+def get(path):
+    with urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=30) as r:
+        return json.loads(r.read())
+def companies():
+    out = post("/api/console", {"command": "companies", "wait": 1.0}).get("output", [])
+    text = " ".join(l if isinstance(l, str) else str(l) for l in out)
+    return {int(m[0]): {"name": m[1], "money": int(m[3]), "loan": int(m[4]), "value": int(m[5]),
+                         "trains": int(m[6]), "road": int(m[7]), "planes": int(m[8])} for m in ROW.findall(text)}
+def months_seen():
+    return len(get("/api/events?since=0&kinds=game.month&limit=1000").get("events", []))
+plan = [e["text"] for e in get("/api/status")["events"] if e["kind"] == "ai" and e["text"].startswith("planner")]
+start = months_seen(); seen = start; series = []
+while seen - start < months:
+    time.sleep(20)
+    n = months_seen()
+    if n > seen:
+        seen = n
+        snap = companies()
+        date = get("/api/resources/game/state").get("game_date")
+        series.append({"month": n - start, "date": date, "companies": snap})
+        print(f"month {n - start:>2} {date}: " + "; ".join(f"#{k} {v['name']} value {v['value']} (T{v['trains']} R{v['road']} P{v['planes']})" for k, v in sorted(snap.items())), flush=True)
+final = series[-1]["companies"] if series else {}
+# Company #1 is the planned bot (started by the panel first), #2 the unplanned one.
+a, b = final.get(1, {}), final.get(2, {})
+winner = "A (planned)" if a.get("value", 0) > b.get("value", 0) else ("B (unplanned)" if b.get("value", 0) > a.get("value", 0) else "tie")
+logs = {}
+for e in get("/api/events?since=0&kinds=ai.log&limit=5000").get("events", []):
+    logs.setdefault(str(e["data"]["company"]), []).append(e["data"]["text"])
+stamp = time.strftime("%Y%m%dT%H%M%S")
+os.makedirs(f"{root}/research/results", exist_ok=True)
+base = f"{root}/research/results/duel-{stamp}-seed{seed}"
+json.dump({"experiment": "duel in one game: planned bot (A, company 1) vs unplanned bot (B, company 2)", "label": label,
+           "seed": int(seed), "months": months, "plan": plan, "final": final, "winner": winner, "series": series, "bot_log": logs},
+          open(base + ".json", "w"), indent=2)
+rows = "\n".join(f"| {s['month']} | {s['date']} | {s['companies'].get(1, {}).get('value', '')} | {s['companies'].get(2, {}).get('value', '')} |" for s in series)
+open(base + ".md", "w").write(f"""# Duel in one game: planned vs unplanned bot (seed {seed}, {months} months)
+
+Generated by `tools/research/mcp-duel`{(' (' + label + ')') if label else ''}. One game, one map: company 1 is PrismaticAI started from
+the planner's portfolio (by the panel), company 2 the same AI started without a plan right after it.
+Both compete for the same towns and industries. Values come from the console's `companies` command.
+
+{chr(10).join('- ' + p for p in plan) or '- no planner line recorded'}
+
+**Winner: {winner}.** Final company value: A {a.get('value')} vs B {b.get('value')}.
+
+| Month | Date | A (planned) value | B (unplanned) value |
+|---|---|---|---|
+{rows}
+""")
+print(f"\nmcp-duel: winner {winner}: A {a.get('value')} vs B {b.get('value')}; {base}.md")
+PY

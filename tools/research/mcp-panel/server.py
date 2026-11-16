@@ -15,6 +15,7 @@ Usage: server.py --bin <openttd> [--panel-port 8800] [--mcp-port 8731] [--game-p
 import argparse
 import collections
 import json
+import queue
 import os
 import re
 import shutil
@@ -72,6 +73,7 @@ class Game:
         self.rpc_id = 0
         self._client_tools, self._client_tools_at = [], 0.0
         self._server_tools, self._server_tools_at = [], 0.0
+        self.owner_console_q = queue.Queue()
         self.plans_seen = set()  # ~ console plan request numbers already answered
         self.asks_reported = set()  # ids of answered questions already published as ask.answered
         self.view_token = None  # token file of the GUI client whose view the panel shows and drives
@@ -96,6 +98,7 @@ class Game:
         threading.Thread(target=self._auto_loop, daemon=True).start()
         threading.Thread(target=self._watch, daemon=True).start()
         threading.Thread(target=self._watch_news, daemon=True).start()
+        threading.Thread(target=self._owner_console_loop, daemon=True).start()
 
     def _read_log(self):
         for raw in self.proc.stdout:
@@ -138,10 +141,28 @@ class Game:
             os.write(self.console_fd, (command + "\n").encode())
             self.console_last = time.time()
 
+    def to_owner_console(self, text, level="plain"):
+        """Print a line in the owner's ~ console (the GUI client), coloured by level, through
+        openttd.view.console.print; queued so lines keep their order and a missing client costs nothing."""
+        if not self.view_token:
+            return
+        self.owner_console_q.put((text, level))
+
+    def _owner_console_loop(self):
+        while True:
+            text, level = self.owner_console_q.get()
+            try:
+                self.view_call("openttd.view.console.print", {"text": text, "level": level})
+            except Exception:  # noqa: BLE001 - no client, or an older one without the tool
+                pass
+
     def _answer_plan(self, n, text):
         """Answer a sentence typed into the ~ console (`plan <text>`) through the intent resolver, into
         the same console with echo: the reading, the first candidates, and for a build its settings."""
-        say = lambda msg: self.console('echo "[prismatic-plan] {} {}"'.format(n, msg.replace('"', "'")[:240]))
+        def say(msg):
+            line = "[prismatic-plan] {} {}".format(n, msg.replace('"', "'")[:240])
+            self.console('echo "{}"'.format(line))
+            self.to_owner_console(line, "plan")
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-intent"
         if not exe.exists():
             return say("the intent resolver is not built (cargo build --release in tools/research/mcp-rhai)")
@@ -662,6 +683,10 @@ def make_routes(game):
                             "-e", str(body.get("script", ""))], capture_output=True, text=True,
                            timeout=float(body.get("timeout", 120)))
         game.event("rhai", (body.get("script", "")[:80]) + f" -> exit {r.returncode}")
+        for line in r.stdout.splitlines():
+            game.to_owner_console(f"[rhai] {line}", "rhai")
+        for line in r.stderr.splitlines():
+            game.to_owner_console(f"[rhai] {line}", "error")
         return 200, {"exit": r.returncode, "output": (r.stdout + r.stderr).rstrip()}
 
     def auto(body):
@@ -994,6 +1019,7 @@ def make_handler(game):
             try:
                 for line in proc.stdout:
                     kind = "err" if line.startswith("mcp-rhai:") else "out"
+                    game.to_owner_console(f"[rhai] {line.rstrip()}", "error" if kind == "err" else "rhai")
                     self.wfile.write(f"event: {kind}\ndata: {json.dumps(line.rstrip())}\n\n".encode())
                     self.wfile.flush()
                 rc = proc.wait()

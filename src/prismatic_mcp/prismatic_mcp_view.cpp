@@ -28,6 +28,8 @@
 #include "../window_gui.h"
 #include "../zoom_func.h"
 #include "../screenshot.h"
+#include "../console_func.h"
+#include "../console_type.h"
 #include "../news_func.h"
 #include "../company_base.h"
 #include "../textbuf_gui.h"
@@ -155,6 +157,10 @@ json Tools()
 		{"description", "GUI only, no approval: every question asked through openttd.view.ask, newest first, with its answer (yes, no, replaced, or null while it is open)"},
 		{"inputSchema", obj},
 		{"annotations", {{"readOnlyHint", true}}}});
+	arr.push_back({{"name", "openttd.view.console.print"},
+		{"description", "GUI only, no approval: print a line in this client's ~ console, coloured by level: info (yellow), warning (light blue), error (red), debug (light brown), rhai (green), plan (gold), plain (silver). For streaming script output and answers to the player"},
+		{"inputSchema", {{"type", "object"}, {"required", json::array({"text"})}, {"properties", {{"text", {{"type", "string"}}},
+			{"level", {{"type", "string"}, {"enum", json::array({"info", "warning", "error", "debug", "rhai", "plan", "plain"})}}}}}}}});
 	arr.push_back({{"name", "openttd.view.news.close"},
 		{"description", "GUI only, no approval: close the news window the player sees"},
 		{"inputSchema", obj}});
@@ -246,6 +252,25 @@ std::optional<json> Call(const std::string &name, const json &args)
 			list.push_back({{"id", a.id}, {"question", a.question}, {"answer", a.answer.has_value() ? json(*a.answer) : json(nullptr)}});
 		}
 		return json{{"ok", true}, {"asks", std::move(list)}};
+	}
+
+	if (name == "openttd.view.console.print") {
+		std::string text = args.value("text", "");
+		if (text.empty()) return Error("text is required");
+		std::string level = args.value("level", "plain");
+		TextColour colour = level == "info" ? CC_INFO : level == "warning" ? CC_WARNING : level == "error" ? CC_ERROR :
+			level == "debug" ? CC_DEBUG : level == "rhai" ? TextColour::Green : level == "plan" ? CC_COMMAND : CC_DEFAULT;
+		/* One console line per text line; the console draws each on its own row. */
+		size_t start = 0;
+		int lines = 0;
+		while (start <= text.size()) {
+			size_t end = text.find('\n', start);
+			std::string line = text.substr(start, end == std::string::npos ? std::string::npos : end - start);
+			if (!line.empty()) { IConsolePrint(colour, line); lines++; }
+			if (end == std::string::npos) break;
+			start = end + 1;
+		}
+		return json{{"ok", true}, {"lines", lines}, {"level", level}};
 	}
 
 	if (name == "openttd.view.news.close") {

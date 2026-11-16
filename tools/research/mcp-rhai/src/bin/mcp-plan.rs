@@ -11,6 +11,8 @@ mod graph;
 mod plan;
 #[path = "../cargo.rs"]
 mod cargo;
+#[path = "../sites.rs"]
+mod sites;
 
 /// Where resources come from: a panel's derived routes, or an MCP server read directly through the
 /// token file `prismatic_mcp start` writes ({"agent_token","endpoint"}), for a stack without a panel.
@@ -98,6 +100,23 @@ fn main() {
         let portfolio = cargo::portfolio(&candidates, out["params"]["budget"].as_f64());
         out["freight"] = serde_json::Value::Array(freight);
         out["portfolio"] = portfolio;
+        // Station sites for every rail candidate (freight and passengers), by the bot's own rule
+        // (src/sites.rs), so an executor builds the plan without a rule of its own.
+        let map = src.resource("map")?;
+        let pos = |v: &serde_json::Value| (v["x"].as_i64().unwrap_or(0), v["y"].as_i64().unwrap_or(0));
+        let add_sites = |c: &mut serde_json::Value| {
+            let (a, b) = if c.get("producer").is_some() { (pos(&c["producer"]), pos(&c["acceptor"])) } else { (pos(&c["a"]), pos(&c["b"])) };
+            c["stations"] = serde_json::json!({
+                "from": sites::site(&map, a.0, a.1, b.0, b.1, 3), "to": sites::site(&map, b.0, b.1, a.0, a.1, 3),
+                "rule": "axis toward the other end, buildable flat rectangle and exit tile, nearest site (as PrismaticAI rail.nut)"});
+        };
+        if let Some(arr) = out["freight"].as_array_mut() {
+            for c in arr.iter_mut().filter(|c| c["mode"] == "freight_rail") { add_sites(c); }
+        }
+        if let Some(arr) = out["by_mode"]["rail"].as_array_mut() { for c in arr.iter_mut() { add_sites(c); } }
+        if let Some(arr) = out["portfolio"]["chosen"].as_array_mut() {
+            for c in arr.iter_mut().filter(|c| c["mode"] == "freight_rail" || c["mode"] == "rail") { add_sites(c); }
+        }
         out["model"] = serde_json::json!("v4: v3 for passengers, freight pairs from the world graph's industries priced with each cargo's own payment rate and transit periods, and a portfolio chosen by knapsack within the budget");
         Ok(out)
     })();

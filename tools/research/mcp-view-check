@@ -145,6 +145,13 @@ for _ in $(seq 1 40); do
 done
 check "a ~ console plan request ([prismatic-plan] $pn ...) is answered into the console with ranked candidates" "$answered"
 
+out="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"name":"openttd.view.console.print","arguments":{"text":"[mcp-view-check] one\ntwo","level":"rhai"}}' "$URL/api/view/tool")"
+check "openttd.view.console.print writes each line into the owner's ~ console (2 lines, coloured rhai)" \
+  "$([[ "$(json "d.get('ok') is True and d.get('lines') == 2" <<<"$out")" == True ]] && echo 1 || echo 0)"
+plan="$(curl -s "$URL/api/plan?limit=3&params=%7B%22budget%22%3A300000%7D")"
+check "rail candidates carry station sites (axis, flat rectangle, exit tile with its side) for an executor" \
+  "$([[ "$(json "(lambda rail: len(rail) == 0 or all((c['stations']['from'] is None or c['stations']['from']['exit']['dir'] in ('NE','SE','SW','NW')) for c in rail))([c for c in d['portfolio']['chosen'] if c['mode'] in ('rail','freight_rail')])" <<<"$plan")" == True ]] && echo 1 || echo 0)"
+
 paths="$(curl -s "$URL/openapi.json" | json "' '.join(sorted(d['paths']))")"
 want=(/api/intent /api/ask /api/news /api/news/close /api/plan /api/instances /api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
 missing=()

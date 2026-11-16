@@ -325,6 +325,28 @@ completed, not a claim.
   Mine to Tunfingbridge Power Station, 243 tiles. The portfolio was chosen by AlgoGlyph knapsack-dp
   (3 investments, 293k of 300k).
 
+### Every Rhai output and every plan answer in your ~ console
+
+`openttd.view.console.print {text, level}` (GUI client) prints into the owner's `~` console in a
+colour per level: info yellow, warning light blue, error red, debug light brown, rhai green, plan
+gold, plain silver. The panel sends every line a Rhai script prints there, through `/api/rhai`
+and `/api/rhai/stream` alike: `[rhai] …` in green, errors in red. Answers to `~` plan requests
+(`[prismatic-plan] <n> …`) go there in gold. A queue keeps the lines in order, and nothing is lost
+when no client is attached.
+
+### Station sites for an executor
+
+Every rail candidate in `/api/plan`, freight and passengers, in the portfolio too, carries
+`stations: {from, to}`. Each site is `{tile, x, y, axis, length, end, exit: {x, y, dir}}`, found by
+PrismaticAI's own rule (`src/sites.rs` mirrors `rail.nut` `BuildRailStationAt`): the axis points
+toward the other end, the rectangle is buildable and flat (all corner heights equal), and the free,
+flat exit tile beyond the end faces the other end. `dir` is the side the line leaves by, the input
+AlgoGlyph track-planning takes. openttd-07's person-like player lays the track pieces from there.
+
+`tools/research/mcp-duel [--months 24]` is a duel in one game: the planned bot and the same bot
+unplanned compete for the same towns and industries on one map, and the higher company value wins.
+It writes `research/results/duel-*.{json,md}`.
+
 ### Steering the plan from the panel
 
 `/world` has the planner's parameters as controls: the budget, the payback horizon in months, and
