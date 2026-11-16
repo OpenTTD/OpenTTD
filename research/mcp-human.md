@@ -68,6 +68,34 @@ Nothing in the check names a tool. A tool added tomorrow is uncovered until a sc
 played. Its governance scenario lists action types, validates a pause, and submits it. The pause
 stays pending because nobody approves it. The run then asserts that the game is still running.
 
+## The world as data a planner can trust
+
+Two read-only resources come from the engine's own map, pools and link graph
+(`prismatic_mcp_graph.cpp`).
+
+**`openttd://map/ways`** describes each tile as hex strings, one per row:
+
+- **Road:** where a road vehicle can leave the tile (NW=1, SW=2, SE=4, NE=8). This covers road
+  pieces, drive-through and bay stops, depot entrances, level crossings, and road bridge or
+  tunnel heads.
+- **Rail:** the tile's rail track bits.
+
+Two tiles are joined only when each points at the other. Tile types cannot tell you that, which
+is how a bus once got lost on a road that "looked connected". The player checks
+depot → stop → stop in both directions on these bits before it buys a bus. If the route is
+broken it lays the road again once, and refuses the service if it stays broken.
+
+**`openttd://world/graph`** (schema `world-graph/v1`, in
+`tools/research/schema/world-graph.v1.schema.json`) is one typed graph.
+
+- **Nodes:** towns (with population), industries (what they produce and accept), stations
+  (owner, plus waiting cargo and its rating) and vehicles (position and profit).
+- **Edges:** `near_town`, `serves_town`, `order` (in order sequence) and `cargo_link`. The cargo
+  links are the link graph's capacity and usage per cargo.
+
+Planners, the shared route planner, Rhai or algoglyph read this one contract instead of
+re-deriving it.
+
 ## Every instance announces itself
 
 When an MCP server starts, it writes a record of itself to the instance registry. The registry is
@@ -156,8 +184,10 @@ both research options ON, macOS), with `--rounds 2`:
 
 ## Limits and next steps
 
-- **One service per pair, no economy loop yet.** Choosing profitable routes, adding buses
-  where demand is, replacing old ones and managing the loan are I0045's remaining part.
+- **Economy loop, early.** The loop serves new pairs and adds buses to services that earn. It
+  borrows only after asking the owner, and reuses its own stops and depots instead of building
+  next to them. Replacing old vehicles, repaying the loan and using `waiting` cargo from the world
+  graph to place buses are next.
 - **No visible cursor in screenshots.** OpenTTD's screenshots exclude the cursor sprite, which
   is drawn only on screen.
 - **English text.** Widgets are found by English UI text (the default language). Another

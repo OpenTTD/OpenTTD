@@ -37,11 +37,13 @@ pub struct Hand {
     pub model: Model,
     pub rng: Rng,
     pub log: bool,
+    /// Depots this player built, so a later service near one reuses it instead of building twice.
+    pub depots: Vec<(usize, usize)>,
 }
 
 impl Hand {
     pub fn new(mcp: Mcp, model: Model, seed: u64) -> Self {
-        Hand { mcp, model, rng: Rng::new(seed), log: true }
+        Hand { mcp, model, rng: Rng::new(seed), log: true, depots: Vec::new() }
     }
 
     pub fn say(&self, what: &str) {

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "world-graph/v1",
+  "title": "The OpenTTD world as one typed graph",
+  "description": "The data of openttd://world/graph (src/prismatic_mcp/prismatic_mcp_graph.cpp), read from the engine's pools and link graph at the moment of the read. Node ids are '<kind>:<pool index>'. Road and rail adjacency per tile is in openttd://map/ways.",
+  "type": "object",
+  "required": ["schema", "nodes", "edges"],
+  "properties": {
+    "schema": {"const": "world-graph/v1"},
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "tile", "x", "y"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^(town|industry|station|vehicle):[0-9]+$"},
+          "kind": {"enum": ["town", "industry", "station", "vehicle"]},
+          "tile": {"type": "integer"}, "x": {"type": "integer"}, "y": {"type": "integer"},
+          "name": {"type": "string"},
+          "population": {"type": "integer", "description": "town"},
+          "produces": {"type": "array", "description": "industry: [{cargo, name, last_month}]"},
+          "accepts": {"type": "array", "description": "industry: [{cargo, name}]"},
+          "owner": {"type": "integer", "description": "station, vehicle"},
+          "waiting": {"type": "array", "description": "station: [{cargo, name, count, rating}]"},
+          "type": {"type": "integer", "description": "vehicle: 0 train, 1 road, 2 ship, 3 aircraft"},
+          "profit_this_year": {"type": "integer", "description": "vehicle"}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "kind"],
+        "properties": {
+          "from": {"type": "string"}, "to": {"type": "string"},
+          "kind": {"enum": ["near_town", "serves_town", "order", "cargo_link"], "description": "industry->town, station->town, vehicle->station (seq: order index), station->station (the link graph)"},
+          "seq": {"type": "integer"},
+          "cargo": {"type": "integer"}, "cargo_name": {"type": "string"},
+          "capacity": {"type": "integer"}, "usage": {"type": "integer"}
+        }
+      }
+    }
+  }
+}

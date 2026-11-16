@@ -22,7 +22,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T00:27:51Z
+updated_at: 2026-11-16T01:21:02Z
 started_at: 2026-11-15T23:50:32Z
 started_event: sha256:e59f6c950b075567517ecb0edbcfdd465d91f970e6e97973b643b3e033df1a82
 evidence:
@@ -44,3 +44,9 @@ evidence:
     result: "partial: planner-ranked pairs (mcp-plan --token, 12 bus pairs), newspaper per service, owner question, wheel zoom, watching a bus; play path PASS on the server. The economy loop (mcp-human game: reinforce, borrow) is implemented but NOT RUN yet."
     commit: 916a43d381296f54bdc18b170c87a0e3ba8660ff
     recorded_at: 2026-11-16T00:27:51Z
+  - covers: "validation_run"
+    type: test
+    command: "mcp-human-e2e --minutes 14 --seed 23; --test --rounds 2/3 --seed 23"
+    result: "economy loop ran 10+ min live: 4 services, reinforced the earning Invefingburg-Frenfingley line twice (6 buses), watched buses between jobs; no loan needed (cash stayed above the threshold, so borrowing NOT exercised); drivability check on real road bits refuses undrivable routes; own stops/depots reused (6 stations for 2 services)."
+    commit: 2768598f2b6fdfc002d84cd3c1def2a7d9191b43
+    recorded_at: 2026-11-16T01:21:02Z

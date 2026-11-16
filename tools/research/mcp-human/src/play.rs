@@ -3,7 +3,7 @@
 //! pointing, clicking and dragging; nothing here issues a command directly.
 
 use crate::hand::{Hand, Target};
-use crate::plan::{self, Axis, Grid};
+use crate::plan::{self, Axis, Grid, Ways};
 use serde_json::{json, Value};
 
 /// What the road toolbar's tools say, in the game's own words (tooltips of the open toolbar).
@@ -69,10 +69,8 @@ impl Hand {
         while let Some((s, e)) = queue.pop_front() {
             i += 1;
             let (s, e) = (&s, &e);
-            // Skip a run that is road already from end to end.
-            if line(*s, *e).iter().all(|&(x, y)| grid.kind(x, y) == b'r') {
-                continue;
-            }
+            // Never skip a run that looks like road already: tile types do not say whether the
+            // pieces join along it, and dragging over existing road only adds what is missing.
             // Centre the run, then find both ends without scrolling: the press must land where seen.
             self.focus((s.0 + e.0) / 2, (s.1 + e.1) / 2)?;
             let (mut from, mut to) = (self.spot(s.0, s.1)?, self.spot(e.0, e.1)?);
@@ -310,15 +308,61 @@ impl Hand {
             self.build_road(pa, pb)?;
         }
         let grid = Grid::from_resource(&self.mcp.read("openttd://map")?)?;
-        let (sa, ax) = plan::stop_site(&grid, pa, &[]).ok_or_else(|| format!("no straight road for a stop in {}", name(a)))?;
-        let (sb, bx) = plan::stop_site(&grid, pb, &[sa]).ok_or_else(|| format!("no straight road for a stop in {}", name(b)))?;
+        // Reuse the company's own bus stop in a town rather than building a second one beside it.
+        let own = self.own_bus_stops()?;
+        let near = |c: (usize, usize)| own.iter().copied().find(|s| s.0.abs_diff(c.0) + s.1.abs_diff(c.1) <= 6);
+        let sa = match near(pa) {
+            Some(s) => { self.say(&format!("reuse our stop in {} at {s:?}", name(a))); s }
+            None => {
+                let (s, ax) = plan::stop_site(&grid, pa, &[]).ok_or_else(|| format!("no straight road for a stop in {}", name(a)))?;
+                self.build_stop(s, ax)?;
+                s
+            }
+        };
+        let sb = match near(pb) {
+            Some(s) => { self.say(&format!("reuse our stop in {} at {s:?}", name(b))); s }
+            None => {
+                let (s, bx) = plan::stop_site(&grid, pb, &[sa]).ok_or_else(|| format!("no straight road for a stop in {}", name(b)))?;
+                self.build_stop(s, bx)?;
+                s
+            }
+        };
         self.say(&format!("stops: {} at {sa:?}, {} at {sb:?}", name(a), name(b)));
-        self.build_stop(sa, ax)?;
-        self.build_stop(sb, bx)?;
         let grid = Grid::from_resource(&self.mcp.read("openttd://map")?)?;
-        let (depot, side) = plan::depot_site(&grid, pa).ok_or_else(|| format!("no depot site near {}", name(a)))?;
-        self.say(&format!("depot near {} at {depot:?}", name(a)));
-        self.build_depot(depot, side)?;
+        // A depot the game refused (slope, cost, a house in the way) leaves no road way on its tile:
+        // look at the real ways after building, and try the next site, up to three.
+        let mut tried = Vec::new();
+        let reuse = self.depots.iter().copied().find(|d| d.0.abs_diff(pa.0) + d.1.abs_diff(pa.1) <= 12);
+        let depot = if let Some(d) = reuse {
+            self.say(&format!("reuse our depot at {d:?}"));
+            d
+        } else { loop {
+            let (site, side) = plan::depot_site_avoiding(&grid, pa, &tried).ok_or_else(|| format!("no depot site near {}", name(a)))?;
+            self.say(&format!("depot near {} at {site:?}", name(a)));
+            self.build_depot(site, side)?;
+            let ways = Ways::from_resource(&self.mcp.read("openttd://map/ways")?)?;
+            if ways.at(site.0, site.1) != 0 {
+                break site;
+            }
+            self.say(&format!("no depot appeared at {site:?}; try another site"));
+            tried.push(site);
+            if tried.len() >= 3 {
+                return Err(format!("no depot could be built near {}", name(a)));
+            }
+        } };
+        if !self.depots.contains(&depot) {
+            self.depots.push(depot);
+        }
+        // A bus must be able to drive the whole way: check it on the game's real road bits, from
+        // the depot to each stop and between the stops; lay the road again once if it cannot.
+        if !self.drivable(&[depot, sa, sb])? {
+            self.say("the route is not drivable; lay the road again");
+            self.build_road(sa, sb)?;
+            self.build_road(depot, sa)?;
+            if !self.drivable(&[depot, sa, sb])? {
+                return Err("the route stays undrivable on the game's road bits".into());
+            }
+        }
         self.buy_bus(depot, [sa, sb])?;
         let _ = self.mcp.call("openttd.view.mark", json!({"clear": true}));
         self.announce(&format!("New bus service: {} - {}", name(a), name(b)), a.get("id").and_then(Value::as_u64));
@@ -375,6 +419,23 @@ impl Hand {
             }
         }
         Ok(pairs)
+    }
+
+    /// The tiles of this company's bus stations (openttd://stations, as this client sees them).
+    pub fn own_bus_stops(&self) -> Result<Vec<(usize, usize)>, String> {
+        let me = self.state()?.get("local_company").and_then(Value::as_u64).unwrap_or(255);
+        let st = self.mcp.read("openttd://stations")?;
+        Ok(st.get("stations").and_then(Value::as_array).cloned().unwrap_or_default().iter()
+            .filter(|s| s.get("owner").and_then(Value::as_u64) == Some(me))
+            .filter(|s| s.get("facilities").and_then(Value::as_array).is_some_and(|f| f.iter().any(|x| x == "bus")))
+            .filter_map(|s| Some((s.get("x")?.as_u64()? as usize, s.get("y")?.as_u64()? as usize)))
+            .collect())
+    }
+
+    /// Are these tiles joined by road, in order, on the game's real road bits (openttd://map/ways)?
+    pub fn drivable(&self, tiles: &[(usize, usize)]) -> Result<bool, String> {
+        let ways = Ways::from_resource(&self.mcp.read("openttd://map/ways")?)?;
+        Ok(tiles.windows(2).all(|p| ways.drivable(p[0], p[1]) && ways.drivable(p[1], p[0])))
     }
 
     /// Mark the tile about to be worked on (the game's red tile square), as a person points.

@@ -70,7 +70,9 @@ json Vehicles()
 		list.push_back({
 			{"id", v->index.base()}, {"unit", v->unitnumber}, {"type", TypeName(v->type)}, {"owner", v->owner.base()},
 			{"engine", v->GetEngine() != nullptr ? GetString(STR_ENGINE_NAME, v->engine_type) : std::string{}},
-			{"tile", v->tile.base()}, {"x", TileX(v->tile)}, {"y", TileY(v->tile)},
+			/* Position from the vehicle's world coordinates: an aircraft in flight has no tile of its own. */
+			{"tile", v->tile.base()}, {"x", v->x_pos / static_cast<int>(TILE_SIZE)}, {"y", v->y_pos / static_cast<int>(TILE_SIZE)},
+			{"z", v->z_pos}, {"speed", v->cur_speed},
 			{"stopped", v->vehstatus.Test(VehState::Stopped)}, {"in_depot", v->IsStoppedInDepot()},
 			{"crashed", v->vehstatus.Test(VehState::Crashed)},
 			{"cargo_capacity", v->cargo_cap}, {"cargo_count", v->cargo.StoredCount()},

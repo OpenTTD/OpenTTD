@@ -22,4 +22,11 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16
+updated_at: 2026-11-16T01:21:01Z
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-human-e2e --test --rounds 2 --seed 23"
+    result: "partial: openttd://map/ways (road ways from road bits incl. stops, depots, crossings, bridges/tunnels; rail track bits) and openttd://world/graph (world-graph/v1 schema published: town/industry/station/vehicle nodes; near_town, serves_town, order, cargo_link edges) on master build; e2e asserts both; gate research PASS (103/103). Remaining: openttd-80 switches graph.rs/plan.rs to consume them; algoglyph adapter."
+    commit: 2768598f2b6fdfc002d84cd3c1def2a7d9191b43
+    recorded_at: 2026-11-16T01:21:01Z

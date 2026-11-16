@@ -9,6 +9,8 @@ add_files(
     prismatic_mcp_coverage.cpp
     prismatic_mcp_entities.h
     prismatic_mcp_entities.cpp
+    prismatic_mcp_graph.h
+    prismatic_mcp_graph.cpp
     prismatic_mcp_hooks.h
     prismatic_mcp_registry.h
     prismatic_mcp_registry.cpp

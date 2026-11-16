@@ -14,17 +14,18 @@
 # company owns new road tiles, two bus stations and a running bus with orders; exits 0 / 1. Without
 # --test the stack stays up after the play so the owner can watch and take over the mouse.
 #
-# Usage: tools/research/mcp-human-e2e [--test] [--rounds N] [--seed N] [--speed F]
+# Usage: tools/research/mcp-human-e2e [--test] [--rounds N | --minutes M] [--seed N] [--speed F]
 #                                     [--window WxH] [--bin PATH]
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
-TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000"
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --test) TEST=1; shift ;;
     --rounds) ROUNDS="$2"; shift 2 ;;
+    --minutes) MINUTES="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
     --speed) SPEED="$2"; shift 2 ;;
     --window) WINDOW="$2"; shift 2 ;;
@@ -49,7 +50,20 @@ fi
 free_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-human-e2e.XXXXXX")"
 PIDS=()
-cleanup() { for p in ${PIDS[@]+"${PIDS[@]}"}; do kill "$p" 2>/dev/null || true; done; wait 2>/dev/null || true; rm -rf "$TMP"; }
+KEEP="$ROOT_DIR/build-gate-research/mcp-human-e2e-last"
+cleanup() {
+  local rc=$?
+  for p in ${PIDS[@]+"${PIDS[@]}"}; do kill "$p" 2>/dev/null || true; done
+  wait 2>/dev/null || true
+  # A failed run keeps its logs (server, client, registry), so a crash can be told from a closed window.
+  if [[ "$rc" -ne 0 ]]; then
+    rm -rf "$KEEP"; mkdir -p "$KEEP"
+    cp "$TMP"/*.log "$KEEP"/ 2>/dev/null || true
+    cp -R "$TMP/registry" "$KEEP"/ 2>/dev/null || true
+    echo "mcp-human-e2e: failed (exit $rc); logs kept in $KEEP" >&2
+  fi
+  rm -rf "$TMP"
+}
 trap cleanup EXIT INT TERM
 
 home() { # $1 dir, $2 script name, $3 port, $4 token file
@@ -104,7 +118,12 @@ echo "==> the client plays company $COMPANY"
 
 BEFORE="$(owned_roads "$COMPANY")"
 "$HUMAN" --token "$CLIENT_TOKEN" check
-"$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS"
+if [[ "$MINUTES" -gt 0 ]]; then
+  # A whole game: expand, add buses where they earn, borrow, watch (economy.rs).
+  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES"
+else
+  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS"
+fi
 sleep 2
 AFTER="$(owned_roads "$COMPANY")"
 echo "==> company $COMPANY owns $AFTER road tiles on the server's map (before: $BEFORE)"
@@ -147,6 +166,13 @@ if [[ "$TEST" == 1 ]]; then
       echo "FAIL no valid registry record for the $kind"; fail=1
     fi
   done
+  read_res "$SERVER_TOKEN" openttd://world/graph | jq -e --argjson c "$COMPANY" '.data.schema == "world-graph/v1"
+      and ([.data.nodes[].kind] | unique | (index("town") != null and index("station") != null and index("vehicle") != null))
+      and ([.data.edges[] | select(.kind == "order")] | length >= 2)
+      and ([.data.edges[] | select(.kind == "serves_town")] | length >= 2)' >/dev/null \
+    && echo "PASS the world graph has towns, stations, vehicles, order and serves_town edges" || { echo "FAIL the world graph is incomplete"; fail=1; }
+  read_res "$SERVER_TOKEN" openttd://map/ways | jq -e '(.data.roads | length) == .data.height and ([.data.roads[] | test("^[0-9a-f]+$")] | all)' >/dev/null \
+    && echo "PASS the road ways cover the map" || { echo "FAIL the road ways are malformed"; fail=1; }
   INJ="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r '.injected.moves')"
   [[ "$INJ" -gt 100 ]] && echo "PASS the cursor moved ($INJ pointer updates)" || { echo "FAIL the cursor barely moved ($INJ)"; fail=1; }
   for t in openttd.ui.windows openttd.ui.at openttd.ui.locate openttd.input.state openttd.input.pointer openttd.input.button openttd.input.wheel openttd.input.key; do

@@ -245,9 +245,10 @@ pub fn stop_site(g: &Grid, centre: (usize, usize), avoid: &[(usize, usize)]) -> 
 /// A buildable tile next to a road near a centre for a depot, and which side faces the road:
 /// 0 north-east (-x), 1 south-east (+y), 2 south-west (+x), 3 north-west (-y), the order of the
 /// depot picker's orientation buttons.
-pub fn depot_site(g: &Grid, centre: (usize, usize)) -> Option<((usize, usize), usize)> {
+/// Tiles in `avoid` (sites already tried) are skipped.
+pub fn depot_site_avoiding(g: &Grid, centre: (usize, usize), avoid: &[(usize, usize)]) -> Option<((usize, usize), usize)> {
     for (x, y) in around(centre, 2, 9) {
-        if x + 1 >= g.width || y + 1 >= g.height || g.kind(x, y) != b'C' || g.cost(x, y).is_none() {
+        if avoid.contains(&(x, y)) || x + 1 >= g.width || y + 1 >= g.height || g.kind(x, y) != b'C' || g.cost(x, y).is_none() {
             continue;
         }
         for (side, (nx, ny)) in [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)].into_iter().enumerate() {
@@ -257,6 +258,61 @@ pub fn depot_site(g: &Grid, centre: (usize, usize)) -> Option<((usize, usize), u
         }
     }
     None
+}
+
+/// The road ways of the map as the game publishes them (openttd://map/ways): per tile, the
+/// directions a road vehicle can leave it, NW=1 (y-1), SW=2 (x+1), SE=4 (y+1), NE=8 (x-1).
+pub struct Ways {
+    pub width: usize,
+    pub height: usize,
+    bits: Vec<u8>,
+}
+
+impl Ways {
+    pub fn from_resource(v: &Value) -> Result<Self, String> {
+        let width = v.get("width").and_then(Value::as_u64).ok_or("ways have no width")? as usize;
+        let height = v.get("height").and_then(Value::as_u64).ok_or("ways have no height")? as usize;
+        let mut bits = Vec::with_capacity(width * height);
+        for row in v.get("roads").and_then(Value::as_array).ok_or("ways have no roads")? {
+            for c in row.as_str().unwrap_or("").chars() {
+                bits.push(c.to_digit(16).unwrap_or(0) as u8);
+            }
+        }
+        if bits.len() != width * height {
+            return Err("road rows do not match the map size".into());
+        }
+        Ok(Ways { width, height, bits })
+    }
+
+    /// The directions a road vehicle can leave a tile (0 when it has no road way at all).
+    pub fn at(&self, x: usize, y: usize) -> u8 {
+        if x < self.width && y < self.height { self.bits[y * self.width + x] } else { 0 }
+    }
+
+    /// Can a road vehicle drive from one tile to the other? Two tiles are joined only when each
+    /// points at the other, which is what the game's own pathfinder requires.
+    pub fn drivable(&self, a: (usize, usize), b: (usize, usize)) -> bool {
+        let mut seen = vec![false; self.width * self.height];
+        let mut stack = vec![a];
+        while let Some((x, y)) = stack.pop() {
+            if (x, y) == b {
+                return true;
+            }
+            if x >= self.width || y >= self.height || seen[y * self.width + x] {
+                continue;
+            }
+            seen[y * self.width + x] = true;
+            let here = self.at(x, y);
+            // (bit here, neighbour, bit the neighbour needs back)
+            let steps = [(1u8, (x, y.wrapping_sub(1)), 4u8), (2, (x + 1, y), 8), (4, (x, y + 1), 1), (8, (x.wrapping_sub(1), y), 2)];
+            for (bit, (nx, ny), back) in steps {
+                if here & bit != 0 && self.at(nx, ny) & back != 0 {
+                    stack.push((nx, ny));
+                }
+            }
+        }
+        false
+    }
 }
 
 #[cfg(test)]
@@ -299,10 +355,20 @@ mod tests {
         let (at, axis) = stop_site(&g, (4, 2), &[]).unwrap();
         assert_eq!(axis, Axis::X);
         assert_eq!(at.1, 2);
-        let ((dx, dy), side) = depot_site(&g, (4, 2)).unwrap();
+        let ((dx, dy), side) = depot_site_avoiding(&g, (4, 2), &[]).unwrap();
         assert_eq!(g.kind(dx, dy), b'C');
         let road_at = [(dx - 1, dy), (dx, dy + 1), (dx + 1, dy), (dx, dy - 1)][side];
         assert_eq!(g.kind(road_at.0, road_at.1), b'r');
+    }
+
+    #[test]
+    fn road_bits_must_point_at_each_other() {
+        // A straight x road from (0,0) to (2,0): ends SW, middle SW|NE, end NE.
+        let w = Ways::from_resource(&json!({"width": 3, "height": 2, "roads": ["2a8", "000"]})).unwrap();
+        assert!(w.drivable((0, 0), (2, 0)));
+        // The middle piece only points one way: the road is broken.
+        let broken = Ways::from_resource(&json!({"width": 3, "height": 2, "roads": ["228", "000"]})).unwrap();
+        assert!(!broken.drivable((0, 0), (2, 0)));
     }
 
     #[test]
