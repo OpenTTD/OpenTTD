@@ -406,6 +406,32 @@ Construction costs follow the game's prices when it offers `openttd://economy/pr
 base price, which covers inflation and the construction-cost setting together. A cost the caller
 set is kept, and `params.costs_from_prices` lists the costs that came from the game.
 
+### Line cost on the real map: AlgoGlyph track-planning
+
+`GET /api/plan?track=N` (`mcp-plan --track N`, `src/linecost.rs`) takes the N best rail lines of
+each list (freight, passenger rail) and prices each one with AlgoGlyph's `track-planning` on the
+game's own map, ways, terrain, prices and bridges, instead of distance × rail tile cost. The input is
+the one `hub_algoglyph.rs` `track_input` assembles, read once and shared by every line. The
+endpoints are the ones the rail executor lays from (`mcp-human` `plan_track`): each station site's
+end tile, leaving by its exit and arriving against the far one's.
+
+- **A line with a route:** its build cost becomes the track's money plus the stations, and its
+  investment and score follow.
+- **A line without a route:** it loses its rail option, and the candidate falls back to its next
+  best mode.
+
+The portfolio is then chosen on the priced lines. Each priced option carries `track` with status,
+money, the old estimate, counts (tiles, curves, bridges, inclines, cleared tiles) and pieces. When
+the game publishes `openttd://economy/prices` the answer is in game money. Without it, the
+kernel's cost is in plain-track tile units and becomes money through `rail_tile`; `money_from`
+says which. When AlgoGlyph is present, the panel's bot start prices three lines of each list this
+way and reports them in the `~` console.
+
+On the main stack (2026-11-16, low construction costs, so `rail_tile` 75 from the prices) the real
+lines cost 5-19% more than the straight-line estimate: a 172-tile coal line 15,341 against 12,900,
+with 2 bridges, 11 inclines and a level crossing. One passenger pair had no rail route at all and
+fell back to air.
+
 ### Plan before acting: a DAG, then the presses
 
 `POST /api/actionplan {actions, cash?, loan?, max_loan?, loan_step?, company?}` sends the actions

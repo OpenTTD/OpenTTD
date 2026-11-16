@@ -231,8 +231,11 @@ class Game:
         try:
             budget = self.max_loan()
             params = {"budget": budget} if budget else {}
+            # With AlgoGlyph present the best rail lines are priced on the real map (track-planning)
+            # before the portfolio is chosen, so the bot builds what pays on this terrain.
+            track = ["--track", "3"] if os.environ.get("MCP_ALGOGLYPH_DIR") else []
             r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", "--limit", "10",
-                                "--params", json.dumps(params)], capture_output=True, text=True, timeout=180)
+                                "--params", json.dumps(params), *track], capture_output=True, text=True, timeout=240)
             out = json.loads(r.stdout) if r.returncode == 0 else {}
         except Exception as e:  # noqa: BLE001 - the bot still starts
             self.event("ai", f"planner not reachable for the bot: {e}")
@@ -241,6 +244,12 @@ class Game:
         chosen = pf.get("chosen") or []
         self.event("ai", f"planner portfolio by {pf.get('solver', 'no solver')}: {len(chosen)} investment(s), "
                          f"total score {pf.get('total_score')}, {pf.get('investment_k')}k of {pf.get('budget_k')}k")
+        priced = (out.get("line_costs") or {}).get("priced") or []
+        if priced:
+            found = [p for p in priced if p.get("status") == "found"]
+            self.event("ai", f"planner: {len(priced)} rail line(s) priced on the map by track-planning, {len(found)} with a route: "
+                             + ", ".join(f"{p.get('pieces')} pieces {round(p.get('money') or 0)}" for p in found)
+                             + ("" if len(found) == len(priced) else f"; {len(priced) - len(found)} without a route dropped their rail option"))
         num = lambda v: int(str(v).split(":")[-1])  # world-graph ids are "industry:12"
         settings = {}
         for c in chosen:
@@ -830,13 +839,17 @@ def make_routes(game):
                              f"{[x['name'] for x in out['intent']['subjects']]}: {len(out['answer']['candidates'])} candidate(s)")
         return 200, out
 
-    def plan(limit, params=""):
+    def plan(limit, params="", track=0):
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-plan"
         if not exe.exists():
             return 503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"}
         extra = ["--params", params] if params else []
+        if track > 0:
+            if not os.environ.get("MCP_ALGOGLYPH_DIR"):
+                return 503, {"error": "track=N needs AlgoGlyph track-planning: MCP_ALGOGLYPH_DIR is not set"}
+            extra += ["--track", str(min(track, 10))]
         r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{game.args.panel_port}", "--limit", str(max(1, min(limit, 500))), *extra],
-                           capture_output=True, text=True, timeout=60)
+                           capture_output=True, text=True, timeout=60 + 60 * min(track, 10))
         if r.returncode != 0:
             return (400 if r.returncode == 2 else 502), {"error": r.stderr.strip()}
         return 200, json.loads(r.stdout)
@@ -940,8 +953,8 @@ def make_routes(game):
         ("POST", "/api/bots/setting", "botSetting", "Change one setting of a running bot (openttd.ai.set_setting, approval-gated)", True,
          s({"company": {"type": "integer"}, "name": {"type": "string"}, "value": {"type": "integer"}}, ["company", "name", "value"]),
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
-        ("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params)", True,
-         None, lambda q: plan(int(q.get("limit", ["20"])[0]), q.get("params", [""])[0])),
+        ("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params); &track=N prices the N best rail lines of each list on the real map with AlgoGlyph track-planning (line_costs) before the portfolio is chosen", True,
+         None, lambda q: plan(int(q.get("limit", ["20"])[0]), q.get("params", [""])[0], int(q.get("track", ["0"])[0] or 0))),
         ("GET", "/api/investment", "investment", "What to build, decided by AlgoGlyph's transport-investment kernel (routes of one or two legs through hubs, ranked by return on investment) over the planner's candidates from the live game, one run per cargo with that cargo's own vehicles, then one portfolio within the budget (default: the loan limit); ?params=JSON as /api/plan. The planner's own portfolio comes alongside for comparison", True,
          None, lambda q: investment(q.get("params", [""])[0])),
         ("POST", "/api/actionplan", "actionPlan", "Plan before acting: a set of actions with dependencies ({id, kind, label?, cost?, income?, amount?+step?, repeat?, after?}) turned by AlgoGlyph's action-plan kernel into a validated DAG and executable presses (repay 50k = 5 x repay 10k as one plan) with the cash and loan after each, refused if it would overdraw; cash, loan and loan limits default to the bot company's and the game's", True,
@@ -1022,7 +1035,7 @@ def openapi(game, routes):
         if schema is not None:
             o["requestBody"] = {"required": True, "content": {"application/json": {"schema": schema}}}
         query = {"/api/events": ("since", "kinds", "limit"), "/api/resource": ("uri",), "/api/news": ("limit",),
-                 "/api/plan": ("limit", "params"), "/api/investment": ("params",)}.get(path) if method == "GET" else None
+                 "/api/plan": ("limit", "params", "track"), "/api/investment": ("params",)}.get(path) if method == "GET" else None
         if query:
             o["parameters"] = [{"name": n, "in": "query", "schema": {"type": "string"}} for n in query]
         paths.setdefault(path, {})[method.lower()] = o

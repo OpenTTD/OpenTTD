@@ -164,6 +164,12 @@ if [[ -n "$(curl -s "$URL/api/status" | json "'x'")" ]]; then
   check "a plan that would overdraw is refused before anything runs (http=$code)" "$([[ "$code" == 422 ]] && echo 1 || echo 0)"
   code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d '{}' "$URL/api/actionplan")"
   check "an action plan without actions is refused with 400 (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
+  # Line cost on the real map: the best rail line of each list priced by track-planning.
+  out="$(curl -s --max-time 300 "$URL/api/plan?limit=3&track=1&params=%7B%22budget%22%3A300000%7D")"
+  check "track=1 prices rail lines on the real map: each found line has money > 0, build = track + stations" \
+    "$([[ "$(json "(lambda opts: len(opts) > 0 and all(o['track']['status'] != 'found' or (o['track']['money'] > 0 and abs(o['build_cost'] - round(o['track']['money'] + o['track']['stations'])) <= 1) for o in opts))([o for c in d['freight'] + d['by_mode'].get('rail', []) for o in c['options'] if 'track' in o])" <<<"$out")" == True ]] && echo 1 || echo 0)"
+  check "with openttd://economy/prices the line is in game money, and the planner's costs come from the prices" \
+    "$([[ "$(json "len(d['params'].get('costs_from_prices', [])) > 0 and all('economy/prices' in o['track']['money_from'] for c in d['freight'] + d['by_mode'].get('rail', []) for o in c['options'] if 'track' in o)" <<<"$out")" == True ]] && echo 1 || echo 0)"
   # What to build: AlgoGlyph transport-investment over the planner's candidates, within the budget.
   out="$(curl -s --max-time 240 "$URL/api/investment?params=%7B%22budget%22%3A300000%7D")"
   check "transport-investment ran for every cargo with candidates and chose a portfolio within the budget" \

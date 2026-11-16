@@ -4,6 +4,7 @@
 //! Usage: mcp-plan [--panel http://127.0.0.1:8800 | --token <prismatic_mcp token file>] [--limit 20] [--params '{"cost_weight":1}']
 //!        mcp-plan --invest ...  (also decide with AlgoGlyph's transport-investment, see src/invest.rs)
 //!        mcp-plan --invest-inputs ... (print only the kernel input, to reproduce a case)
+//!        mcp-plan --track N ...   (price the N best rail lines of each list on the real map, src/linecost.rs)
 //!        mcp-plan --defaults   (print the default parameters)
 use std::time::Duration;
 
@@ -17,6 +18,17 @@ mod cargo;
 mod sites;
 #[path = "../invest.rs"]
 mod invest;
+#[path = "../linecost.rs"]
+mod linecost;
+#[path = "../hub_algoglyph.rs"]
+#[allow(dead_code)]
+mod hub_algoglyph;
+
+/// The game's resources a track plan reads, as hub_algoglyph assembles them (from/to added later).
+fn linecost_input(read: &dyn Fn(&str) -> Result<Option<serde_json::Value>, String>) -> Result<serde_json::Value, String> {
+    let ends = serde_json::json!({"from": {}, "to": {}});
+    hub_algoglyph::track_input(&ends, read)
+}
 
 /// Where resources come from: a panel's derived routes, or an MCP server read directly through the
 /// token file `prismatic_mcp start` writes ({"agent_token","endpoint"}), for a stack without a panel.
@@ -64,12 +76,14 @@ fn main() {
     let mut token: Option<String> = None;
     let mut invest_too = false;
     let mut invest_inputs = false;
+    let mut track = 0usize;
     while let Some(a) = args.next() {
         match a.as_str() {
             "--panel" => panel = args.next().unwrap_or_default(),
             "--token" => token = args.next(),
             "--invest" => invest_too = true,
             "--invest-inputs" => invest_inputs = true,
+            "--track" => track = args.next().and_then(|v| v.parse().ok()).unwrap_or(3),
             "--limit" => limit = args.next().and_then(|v| v.parse().ok()).unwrap_or(20),
             "--defaults" => {
                 println!("{}", plan::defaults());
@@ -83,7 +97,7 @@ fn main() {
                 }
             },
             _ => {
-                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--defaults]");
+                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--track N] [--defaults]");
                 std::process::exit(2);
             }
         }
@@ -103,15 +117,7 @@ fn main() {
         // Freight from the world graph's industries, and the portfolio over passengers and freight.
         let world = src.resource("world/graph").unwrap_or(serde_json::Value::Null);
         let freight = cargo::freight_pairs(&world, &engines, &out["params"], limit.max(10));
-        let mut candidates: Vec<serde_json::Value> = Vec::new();
-        for (_, ps) in out["by_mode"].as_object().cloned().unwrap_or_default() {
-            for p in ps.as_array().cloned().unwrap_or_default() { candidates.push(p); }
-        }
-        candidates.extend(freight.iter().cloned());
-        candidates.sort_by(|a, b| b["score"].as_f64().unwrap_or(0.0).total_cmp(&a["score"].as_f64().unwrap_or(0.0)));
-        let portfolio = cargo::portfolio(&candidates, out["params"]["budget"].as_f64());
         out["freight"] = serde_json::Value::Array(freight);
-        out["portfolio"] = portfolio;
         // Station sites for every rail candidate (freight and passengers), by the bot's own rule
         // (src/sites.rs), so an executor builds the plan without a rule of its own.
         let map = src.resource("map")?;
@@ -126,9 +132,29 @@ fn main() {
             for c in arr.iter_mut().filter(|c| c["mode"] == "freight_rail") { add_sites(c); }
         }
         if let Some(arr) = out["by_mode"]["rail"].as_array_mut() { for c in arr.iter_mut() { add_sites(c); } }
-        if let Some(arr) = out["portfolio"]["chosen"].as_array_mut() {
-            for c in arr.iter_mut().filter(|c| c["mode"] == "freight_rail" || c["mode"] == "rail") { add_sites(c); }
+        // --track N: the N best rail lines of each list priced on the real map by AlgoGlyph's
+        // track-planning (src/linecost.rs) instead of distance x tile cost, before the portfolio.
+        if track > 0 {
+            let read = |r: &str| -> Result<Option<serde_json::Value>, String> { Ok(src.resource(r).ok()) };
+            let mut base = linecost_input(&read)?;
+            if let Some(o) = base.as_object_mut() { o.remove("from"); o.remove("to"); }
+            let stations = out["params"]["costs"]["rail_stations"].as_f64().unwrap_or(1480.0);
+            let rail_tile = out["params"]["costs"]["rail_tile"].as_f64().unwrap_or(100.0);
+            let mut log = Vec::new();
+            for list in ["freight", "rail"] {
+                let arr = if list == "freight" { out["freight"].as_array_mut() } else { out["by_mode"]["rail"].as_array_mut() };
+                if let Some(arr) = arr { log.extend(linecost::price(arr, &base, stations, rail_tile, track)); }
+            }
+            out["line_costs"] = serde_json::json!({"solver": "algoglyph track-planning on map, map/ways, map/terrain, economy/prices, bridges",
+                                                   "priced": log});
         }
+        let mut candidates: Vec<serde_json::Value> = Vec::new();
+        for (_, ps) in out["by_mode"].as_object().cloned().unwrap_or_default() {
+            for p in ps.as_array().cloned().unwrap_or_default() { candidates.push(p); }
+        }
+        candidates.extend(out["freight"].as_array().cloned().unwrap_or_default());
+        candidates.sort_by(|a, b| b["score"].as_f64().unwrap_or(0.0).total_cmp(&a["score"].as_f64().unwrap_or(0.0)));
+        out["portfolio"] = cargo::portfolio(&candidates, out["params"]["budget"].as_f64());
         if invest_inputs { return Ok(invest::input(&out, &engines, &towns).unwrap_or(serde_json::Value::Null)); }
         if invest_too { out["investment"] = invest::decide(&out, &engines, &towns); }
         out["model"] = serde_json::json!("v4: v3 for passengers, freight pairs from the world graph's industries priced with each cargo's own payment rate and transit periods, and a portfolio chosen by knapsack within the budget");
