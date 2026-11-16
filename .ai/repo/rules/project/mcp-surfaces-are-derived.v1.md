@@ -43,7 +43,7 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
 - Planning is AlgoGlyph's, reached through the hub: `algoglyph.kernels`, `algoglyph.kernel` and
   `algoglyph.track_plan` are rows of the hub's method table (`hub_algoglyph.rs`), so they are in
   OpenAPI, GraphQL and Rhai like every hub method. `track_plan` feeds the kernel a game's
-  `openttd://map`, `map/ways`, `map/terrain` and `economy/prices` verbatim; a planner prices a build
+  `openttd://map`, `map/ways`, `map/terrain`, `economy/prices` and `bridges` verbatim; a planner prices a build
   from `openttd://economy/prices` (what the game charges now), never from base prices typed into it (I0073).
 - Rhai reaches the hub the same way: `mcp-rhai --hub URL` registers one `hub_<method>` function per
   method of the hub's OpenAPI document; none is named in mcp-rhai.

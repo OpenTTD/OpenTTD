@@ -4,8 +4,8 @@
 //! through its flow CLI: `npm run --silent flow -- kernel <id> -` reads the input on stdin and
 //! prints the answer as JSON; `flow -- kernels` lists every kernel with the input shape it reads.
 //! Nothing here names a kernel except `track_plan`, which assembles the track-planning input from a
-//! game: the `data` of its openttd://map, map/ways, map/terrain and economy/prices, verbatim, read
-//! in that order (a resource the game does not publish is left out, and the kernel falls back to
+//! game: the `data` of its openttd://map, map/ways, map/terrain, economy/prices and bridges,
+//! verbatim, read in that order (a resource the game does not publish is left out, and the kernel falls back to
 //! its defaults). The planner checks slopes against heights, so the four are read back to back.
 //!
 //! Methods (added to the hub's table, so they are in rpc.discover, GraphQL and OpenAPI):
@@ -23,8 +23,8 @@ use std::time::{Duration, Instant};
 pub const KERNEL_TIMEOUT: Duration = Duration::from_secs(120);
 
 /// The resources a track plan reads, as the keys of the kernel's input.
-pub const TRACK_INPUTS: [(&str, &str); 4] =
-    [("map", "map"), ("ways", "map/ways"), ("terrain", "map/terrain"), ("prices", "economy/prices")];
+pub const TRACK_INPUTS: [(&str, &str); 5] = [("map", "map"), ("ways", "map/ways"), ("terrain", "map/terrain"),
+    ("prices", "economy/prices"), ("bridges", "bridges")];
 
 /// Where AlgoGlyph is checked out.
 pub fn dir() -> PathBuf {
@@ -41,7 +41,7 @@ pub fn methods() -> Vec<Value> {
                "result": "the kernel's answer (flow -- kernel <id> -)"}),
         json!({"method": "algoglyph.track_plan",
                "params": {"instance": "required: a game instance", "from": "{x, y, dir: NE|SE|SW|NW}", "to": "{x, y, dir?}", "costs": "optional", "rules": "optional"},
-               "result": "AlgoGlyph track-planning on the game's map, map/ways, map/terrain and economy/prices: status, cost, money, counts, pieces, runs"}),
+               "result": "AlgoGlyph track-planning on the game's map, map/ways, map/terrain, economy/prices and bridges: status, cost, money, counts, pieces, runs"}),
     ]
 }
 
@@ -126,7 +126,7 @@ mod tests {
         let input = track_input(&p, &read).unwrap();
         assert_eq!(input["map"], json!({"width": 64}));
         assert_eq!(input["ways"], json!({"roads": []}));
-        assert!(input.get("terrain").is_none() && input.get("prices").is_none() && input.get("costs").is_none());
+        assert!(input.get("terrain").is_none() && input.get("prices").is_none() && input.get("bridges").is_none() && input.get("costs").is_none());
         assert_eq!(input["rules"], json!({"forbid90": true}));
         assert!(track_input(&json!({"from": {"x": 1}}), &read).is_err());
         let nomap = |_: &str| -> Result<Option<Value>, String> { Ok(None) };
