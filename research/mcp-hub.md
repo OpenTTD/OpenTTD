@@ -129,6 +129,7 @@ bot and the human-motion player to the same rule.
 |---|---|
 | `cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub` | operations derived from OpenAPI and MCP, registry records and dead owners, filters, verdicts; and end to end against a fake panel: list, call over WebSocket and HTTP, a stream refused as a call, only the subscribed kind streamed |
 | `node --test 'tools/research/mcp-panel/test/*.test.mjs'` | schema to fields, coercion, call parameters, URL state round trip, grouping, and the client's request matching, notifications and re-subscription |
+| `tools/research/mcp-hub-page-check <hub-url>` | the page in a real browser: the WebSocket goes live, every listed instance is a row, a click on an operation opens its form and the call answers, the filter is kept in the address and survives a reload, the audit card renders, a live event arrives, no console error |
 | `tools/research/mcp-dup-check` | against whatever runs: no instance holds a duplicate pair; each pair named with both stations and the distance |
 | `tools/research/mcp-hub-check` | against whatever runs: every instance discovered, every read-only operation that needs no input called through the WebSocket, one event streamed; a 503 ("no GUI client attached") is counted as skipped |
 
@@ -139,5 +140,5 @@ bot and the human-motion player to the same rule.
 - It calls what a person asks for, including mutating operations; the approval flow of each panel
   (ADR 0008) and the arming switch of interface input (ADR 0014) still apply behind it.
 - Events come from panels only; a bare MCP server has no event bus to fan in.
-- The page has not been rendered in a browser by any check yet: its client was driven against the live
-  hub from node, and its pure functions are unit-tested; the DOM components are not.
+- The page is checked in a real browser by `tools/research/mcp-hub-page-check` (headless installed
+  Chrome through playwright-core); the World view by `tools/research/mcp-viz-check`.

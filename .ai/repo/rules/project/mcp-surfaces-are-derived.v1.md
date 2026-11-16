@@ -33,7 +33,8 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
   `hub.subscribe` over `ws://<host>/ws` reach every one of them, and `static/hub.html` renders them with
   `static/components.js`; neither names an operation. Proof: `cargo test --bin mcp-hub` and
   `node --test 'tools/research/mcp-panel/test/*.test.mjs'` offline, `tools/research/mcp-hub-check`
-  against what runs (every read-only operation of every instance called, one event streamed).
+  against what runs (every read-only operation of every instance called, one event streamed), and
+  `tools/research/mcp-hub-page-check` for the page in a real browser.
 - The hub describes itself: `GET /openapi.json` is derived from its method table, so every hub method,
   `hub.audit` included, is in OpenAPI. A capability that no surface reaches (MCP, OpenAPI, the hub, Rhai,
   the page) is not finished.

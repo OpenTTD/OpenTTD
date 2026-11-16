@@ -1,0 +1,87 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY. The hub page (static/hub.html, I0058) checked in a real browser against a running
+// hub: the WebSocket goes live, every instance the hub lists is a row, a click on an operation opens
+// its form and a call answers, the filter is kept in the address and survives a reload, the audit
+// card renders, a live event arrives, and the console stays free of errors. Drives the installed
+// Chrome through playwright-core (a dev dependency of tools/research/mcp-panel: npm ci there), as
+// tools/research/mcp-viz-check does, so nothing downloads a browser.
+//
+// Usage: tools/research/mcp-hub-page-check http://127.0.0.1:<hub-port> [--event-wait S]   (exit 0 PASS, 1 FAIL)
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(path.join(here, 'mcp-panel', 'package.json'));
+const { chromium } = require('playwright-core');
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const base = (process.argv[2] || '').replace(/\/$/, '');
+if (!base) { console.error('usage: mcp-hub-page-check <hub-url> [--event-wait S]'); process.exit(2); }
+const waitArg = process.argv.indexOf('--event-wait');
+const eventWait = (waitArg > 0 ? Number(process.argv[waitArg + 1]) : 120) * 1000;
+const results = [];
+const check = (name, ok, detail = '') => { results.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` (${detail})` : ''}`); };
+
+const instances = await (await fetch(`${base}/hub/instances`)).json();
+const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+try {
+  const page = await browser.newPage({ viewport: { width: 1600, height: 1200 } });
+  const errors = [];
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(`${base}/`);
+
+  const live = await page.waitForFunction(() => document.getElementById('conn')?.textContent === 'live', null, { timeout: 20000 })
+    .then(() => true).catch(() => false);
+  check('the WebSocket goes live', live);
+
+  await page.waitForFunction(() => document.querySelectorAll('#instances tbody tr').length > 0, null, { timeout: 20000 }).catch(() => {});
+  const rows = await page.locator('#instances tbody tr').count();
+  check('every instance the hub lists is a row', rows === instances.length && rows > 0, `${rows} rows, ${instances.length} instances`);
+
+  const counts = await page.locator('#counts').textContent();
+  check('the header counts instances and operations', /instance\(s\), \d+ operation\(s\)/.test(counts || ''), counts);
+
+  // Click a read-only GET operation with no required input, then call it from its form.
+  const opened = await page.evaluate(() => {
+    const links = [...document.querySelectorAll('#catalogue a')];
+    const link = links.find((a) => a.textContent.startsWith('GET') && /status/i.test(a.textContent)) || links.find((a) => a.textContent.startsWith('GET'));
+    if (!link) return null;
+    link.click();
+    return link.textContent;
+  });
+  const form = opened ? await page.waitForSelector('#catalogue form', { timeout: 5000 }).then(() => true).catch(() => false) : false;
+  check('a click on an operation opens its form', form, opened || 'no GET operation');
+  if (form) {
+    await page.locator('#catalogue form button[type=submit]').first().click();
+    const answered = await page.waitForFunction(() => {
+      const out = document.querySelector('#catalogue form')?.parentElement?.lastElementChild;
+      return out && out.querySelector('pre') && out.textContent.length > 2;
+    }, null, { timeout: 15000 }).then(() => true).catch(() => false);
+    check('the call answers with a result', answered);
+  }
+
+  await page.fill('#filter', 'status');
+  const hash = await page.evaluate(() => location.hash);
+  check('the filter is kept in the address', hash.includes('q=status'), hash);
+  await page.reload();
+  await page.waitForFunction(() => document.getElementById('conn')?.textContent === 'live', null, { timeout: 20000 }).catch(() => {});
+  const kept = await page.inputValue('#filter');
+  check('the filter survives a reload', kept === 'status', kept);
+
+  const audited = await page.waitForFunction(() => /instance\(s\) audited/.test(document.getElementById('audit')?.textContent || ''), null, { timeout: 60000 })
+    .then(() => true).catch(() => false);
+  check('the audit card renders', audited, (await page.locator('#audit p').first().textContent().catch(() => '')) || '');
+
+  const event = await page.waitForFunction(() => document.querySelectorAll('#events div div, #events > div > div').length > 0, null, { timeout: eventWait })
+    .then(() => true).catch(() => false);
+  check(`a live event arrives within ${eventWait / 1000} s`, event);
+
+  check('no console error', errors.length === 0, errors.slice(0, 3).join(' | '));
+} finally {
+  await browser.close();
+}
+const failed = results.filter((ok) => !ok).length;
+console.log(`hub page: ${results.length - failed} pass, ${failed} fail`);
+process.exit(failed ? 1 : 0);
