@@ -141,18 +141,22 @@ BEFORE="$(owned_roads "$COMPANY")"
 "$HUMAN" --token "$CLIENT_TOKEN" check
 company_loan() { read_res "$SERVER_TOKEN" openttd://companies | jq --argjson c "$COMPANY" '[.data.companies[] | select(.id == $c)][0].loan'; }
 START_LOAN="$(company_loan)"
+# The owner's toolbar menu (openttd://ui/menu): rows are found by what they do, never by position.
+menu_row() { read_res "$CLIENT_TOKEN" openttd://ui/menu | jq --arg t "$1" '[.data.items[] | select(.target == $t)][0].index'; }
+# The owner asks "Watch my buses" before the play starts: in a game the player answers it.
+call "$CLIENT_TOKEN" openttd.ui.menu.run "{\"index\":$(menu_row watch)}" >/dev/null
 # The player's own account of what it did goes to the screen and to the run's log (kept on failure).
 if [[ "$MINUTES" -gt 0 ]]; then
   # A whole game: expand, add buses where they earn, borrow, watch (economy.rs).
   "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} ${REPAY_ABOVE:+--repay-above "$REPAY_ABOVE"} 2>&1 | tee "$TMP/human.log"
-  # The owner closing the window ends a watched game; that is their call, not a failure, and the
-  # client's own checks below have nobody left to ask.
-  if [[ "$(grep -c 'the game was closed' "$TMP/human.log")" -gt 0 ]]; then
-    echo "==> the owner closed the game; company $COMPANY owns $(owned_roads "$COMPANY") road tiles"
-    exit 0
-  fi
 else
   "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS" 2>&1 | tee "$TMP/human.log"
+fi
+# The owner closing the window ends the run, in a game or in rounds: that is their call, and the
+# client's own checks below have nobody left to ask. It is reported, never counted as a pass.
+if [[ "$(grep -c 'the game was closed' "$TMP/human.log")" -gt 0 ]]; then
+  echo "==> the owner closed the game; company $COMPANY owns $(owned_roads "$COMPANY") road tiles; no checks ran"
+  exit 0
 fi
 sleep 2
 AFTER="$(owned_roads "$COMPANY")"
@@ -213,6 +217,20 @@ if [[ "$TEST" == 1 ]]; then
   sleep 1
   call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq -e --argjson id "$ASK" '[.. | objects | select(.id? == $id and .answer? == "no")] | length > 0' >/dev/null \
     && echo "PASS view.ask asked in the game; closing the dialog answered no" || { echo "FAIL view.ask: $(call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq -c .)"; fail=1; }
+  # The menu's "Human player: paused" row flips the same switch through openttd.input.yield.
+  YIELD_ROW="$(menu_row openttd.input.yield)"
+  call "$CLIENT_TOKEN" openttd.ui.menu.run "{\"index\":$YIELD_ROW}" >/dev/null
+  ON="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r .owner_paused)"
+  call "$CLIENT_TOKEN" openttd.ui.menu.run "{\"index\":$YIELD_ROW}" >/dev/null
+  OFF="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r .owner_paused)"
+  [[ "$ON" == true && "$OFF" == false ]] && echo "PASS the menu's Human player row pauses and resumes the bot" || { echo "FAIL the menu switch: on=$ON off=$OFF"; fail=1; }
+  # The owner's watch request: the player answered it in a game; after rounds the scenario answers.
+  WATCH="$(read_res "$CLIENT_TOKEN" openttd://ui/requests | jq -c '[.data.requests[] | select(.kind == "watch")][-1]')"
+  if [[ "$MINUTES" -eq 0 ]] && [[ "$(jq -r .answered <<<"$WATCH")" != true ]]; then
+    call "$CLIENT_TOKEN" openttd.ui.requests.answer "{\"id\":$(jq .id <<<"$WATCH"),\"answer\":\"mcp-human-e2e: seen\"}" >/dev/null
+  fi
+  read_res "$CLIENT_TOKEN" openttd://ui/requests | jq -e --argjson id "$(jq .id <<<"$WATCH")" '[.data.requests[] | select(.id == $id and .answered == true)] | length == 1' >/dev/null \
+    && echo "PASS the owner's menu request was queued at the view and answered ($(jq -c '{kind, x, y}' <<<"$WATCH"))" || { echo "FAIL the menu request: $WATCH"; fail=1; }
   # The owner's pause switch: while paused every input tool refuses, then input works again.
   call "$CLIENT_TOKEN" openttd.input.yield '{"paused":true}' >/dev/null
   PAUSED="$(call "$CLIENT_TOKEN" openttd.input.pointer '{"x":10,"y":10}' | jq -r '.error // "none"')"
@@ -262,6 +280,23 @@ if [[ "$TEST" == 1 ]]; then
   if [[ -n "$REPAY_ABOVE" ]]; then
     [[ "$LOAN" -lt "$START_LOAN" ]] && echo "PASS the loan shrank through the finances window ($START_LOAN -> $LOAN)" || { echo "FAIL the loan was not repaid ($START_LOAN -> $LOAN)"; fail=1; }
   fi
+  # A plan first, then its execution (I0045): repay what cash allows, up to 20000, as one plan of
+  # one-press steps from AlgoGlyph's action-plan kernel, then check the server's books moved by that.
+  if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]] && (cd "$MCP_ALGOGLYPH_DIR" && echo '{"actions":[{"id":"w","kind":"watch"}],"cash":0}' | npm run --silent flow -- kernel action-plan - 2>/dev/null | jq -e '.ok == true' >/dev/null); then
+    BOOKS="$(read_res "$SERVER_TOKEN" openttd://companies | jq -c --argjson c "$COMPANY" '[.data.companies[] | select(.id == $c)][0]')"
+    STEP="$(jq .loan_step <<<"$BOOKS")"; L0="$(jq .loan <<<"$BOOKS")"; CASH="$(jq .money <<<"$BOOKS")"
+    REPAY=$(( CASH / STEP * STEP )); (( REPAY > 20000 )) && REPAY=20000; (( REPAY > L0 )) && REPAY=$L0
+    echo "{\"actions\":[{\"id\":\"repay\",\"kind\":\"repay_loan\",\"amount\":$REPAY,\"label\":\"e2e repay\"},{\"id\":\"look\",\"kind\":\"watch\",\"params\":{\"seconds\":3},\"after\":[\"repay\"]}]}" > "$TMP/plan.json"
+    if "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" execute "$TMP/plan.json" > "$TMP/plan.out" 2>>"$TMP/human.log"; then
+      L1="$(company_loan)"
+      [[ $(( L0 - L1 )) -eq $REPAY ]] && echo "PASS a planned repay of $REPAY ran as $(( REPAY / STEP )) press(es) ($L0 -> $L1), the plan printed with its graph" || { echo "FAIL the planned repay: $L0 -> $L1, wanted -$REPAY"; fail=1; }
+    else
+      echo "FAIL mcp-human execute: $(tail -2 "$TMP/human.log")"; fail=1
+    fi
+  else
+    echo "SKIP the action plan: MCP_ALGOGLYPH_DIR has no action-plan kernel (not counted as a pass)"
+  fi
+
   # With an AlgoGlyph checkout named, every move came from its kernel and none fell back.
   if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]]; then
     [[ "$(grep -c "AlgoGlyph's human-pointing kernel" "$TMP/human.log")" -gt 0 && "$(grep -c 'human-pointing failed' "$TMP/human.log")" -eq 0 ]] \

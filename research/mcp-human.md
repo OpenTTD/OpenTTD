@@ -168,6 +168,7 @@ A Rust program with no runtime dependencies beyond the client's token file
 | `play.rs` | Tasks. **Road:** open the road menu, pick the road type, pick autoroad, drag a route; a run that does not fit on screen is halved. **Stops and depot:** a drive-through bus stop on a straight town road, and a depot facing a road, each placed through its picker. **Bus:** buy one in the depot window (filter the list for "bus", pick the first row, Buy), give it orders with Go To on both stops, and start it. **Service:** all of the above for a pair of towns. **Look around.** |
 | `economy.rs` | The company over a whole game (`game <minutes>`). Serve new town pairs while money allows. Add a bus to a service whose buses earn; past its second bus, only while passengers wait at its stops (`waiting_per_bus` per bus, from the world graph). Borrow through the finances window when cash runs short, asking the owner first and only while the bank still lends (`loan` < `max_loan` in `openttd://companies`, which also gives `loan_step`, the 10,000 one press of Borrow or Repay moves). Repay part of the loan through the same window once money is over `--repay-above` (default 150,000), with a margin over the borrowing threshold so it never borrows back what it repaid. Between jobs, follow a bus with the camera and read the news. Town pairs come from the shared route planner (`mcp-plan --token`, the game's payment formula) when `MCP_PLAN` names it, and nearest neighbours otherwise. |
 | `requests.rs` | What the owner asks from the toolbar's own menu (`openttd://ui/requests`, each with the tile under the view's centre). Every game turn first takes the open requests of its kinds, oldest first, and answers each through `openttd.ui.requests.answer`, which the game shows as news: `serve_here` builds a bus service between the two towns nearest that tile, `watch` follows a bus, and `plan_rail` is answered "not yet" until the rail executor lands. Typed questions (`ask`) belong to the relay. |
+| `actions.rs` | A plan first, then its execution (`execute <actions.json>`). The owner's actions (`repay_loan`, `borrow`, `serve_towns {a, b}`, `add_bus`, `watch {seconds}`, with `after` for order) go with the company's books (`cash`, `loan`, `max_loan`, `loan_step` from `openttd://companies`) to AlgoGlyph's `action-plan` kernel. The kernel validates the DAG and refuses a plan that would overdraw, borrow past the limit or repay a loan already repaid. It expands the plan into steps, one press each, with the cash after every step and a graph to draw. "Repay 50,000" becomes five presses of Repay. The player prints the plan as JSON (the Plan card draws its graph), shows its summary in the game, and does the steps in order through the interface. A plan with a kind the player cannot do yet is refused before anything runs, so a plan never half-runs. |
 | Telling the owner | A company newspaper in the game after each new service (`openttd.view.news.show`), then a screenshot. The tile about to be worked on is marked (`openttd.view.mark`). |
 | Screen manners | Clicks are scoped to the window they belong to. A covered window is first brought to the front by its title bar. A covered tile is revealed by shifting the view. Placement starts from a clean hand (Escape). Windows are closed by their close boxes after each job and after any failure. |
 
@@ -217,6 +218,11 @@ both research options ON, macOS), with `--rounds 2`:
 - 4521 pointer updates. All checks PASS.
 - Three pairs were skipped and logged: a depot window that did not open, and two road runs whose
   ends stayed unclickable.
+
+**The owner reads along.** Besides the log, the player prints its decisions in the game's own `~`
+console (`openttd.view.console.print`, level `plan`): each turn's money, loan and fleet, every
+borrow and repay, each finished service, plans and their outcome, and its answers to the menu's
+requests. Single clicks stay in the log.
 
 ## Limits and next steps
 

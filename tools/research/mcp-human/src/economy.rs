@@ -51,6 +51,8 @@ pub struct Books {
     pub money: i64,
     pub loan: i64,
     pub max_loan: i64,
+    /// What one press of Borrow or Repay moves (the engine's LOAN_INTERVAL).
+    pub loan_step: i64,
 }
 
 impl Hand {
@@ -62,7 +64,7 @@ impl Hand {
             .and_then(|a| a.iter().find(|x| x.get("id").and_then(Value::as_u64) == Some(me)).cloned())
             .ok_or_else(|| "this client's company is not listed".to_string())?;
         let n = |k: &str| mine.get(k).and_then(Value::as_i64);
-        Ok(Books { money: n("money").ok_or("no money field")?, loan: n("loan").unwrap_or(0), max_loan: n("max_loan").unwrap_or(i64::MAX) })
+        Ok(Books { money: n("money").ok_or("no money field")?, loan: n("loan").unwrap_or(0), max_loan: n("max_loan").unwrap_or(i64::MAX), loan_step: n("loan_step").unwrap_or(10_000) })
     }
 
     /// Borrow once through the finances window: open it, press Borrow, close it.
@@ -181,7 +183,7 @@ impl Hand {
         while Instant::now() < deadline {
             let books = self.books()?;
             let money = books.money;
-            self.say(&format!("money {money}, loan {}, {} service(s), {} bus(es)", books.loan, services.len(), services.iter().map(|s| s.buses).sum::<usize>()));
+            self.tell(&format!("money {money}, loan {}, {} service(s), {} bus(es)", books.loan, services.len(), services.iter().map(|s| s.buses).sum::<usize>()));
             // The owner's own requests from the toolbar menu come before the player's plans.
             if let Some(r) = self.owner_requests().into_iter().next() {
                 self.handle_request(&r, services)?;
@@ -190,7 +192,7 @@ impl Hand {
             // Rich with a debt: pay part of it back, as a careful owner does.
             // The margin over the borrowing threshold keeps it from borrowing back what it repaid.
             if books.loan > 0 && money > policy.repay_above.max(policy.borrow_below + 20_000) {
-                self.say("money to spare: repay part of the loan");
+                self.tell("money to spare: repay part of the loan");
                 if let Err(e) = self.repay() {
                     self.say(&format!("could not repay: {e}"));
                     let _ = self.escape();
@@ -208,7 +210,7 @@ impl Hand {
                     self.watch(25)?;
                     continue;
                 }
-                self.say("short of cash: borrow");
+                self.tell("short of cash: borrow");
                 // A failed attempt counts too: the player never retries without end.
                 borrows += 1;
                 if let Err(e) = self.borrow() {

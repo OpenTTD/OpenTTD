@@ -30,6 +30,7 @@
 #include "../dropdown_func.h"
 #include "../dropdown_common_type.h"
 #include "../map_func.h"
+#include "../network/network.h"
 #include "../openttd.h"
 #include "../timer/timer_game_calendar.h"
 #include "../viewport_func.h"
@@ -183,6 +184,8 @@ void Ask(std::string_view text)
 
 json Describe()
 {
+	/* A dedicated server has no toolbar: nothing of the menu exists there. */
+	if (_network_dedicated) return {{"items", json::array()}, {"hub", HubUrl()}, {"dedicated", true}};
 	json items = json::array();
 	for (size_t i = 0; i < ITEMS.size(); i++) {
 		json target = ITEMS[i].action == Action::Browse ? json(HubUrl() + std::string{ITEMS[i].arg}) : json(std::string{ITEMS[i].arg});
@@ -195,6 +198,7 @@ json Describe()
 
 json Requests()
 {
+	if (_network_dedicated) return {{"requests", json::array()}};
 	json list = json::array();
 	for (const Request &r : _requests) {
 		json tile = nullptr, x = nullptr, y = nullptr;
@@ -208,6 +212,8 @@ json Requests()
 json Tools()
 {
 	json arr = json::array();
+	/* Each instance's catalogue is what it can do: a dedicated server has no toolbar to run. */
+	if (_network_dedicated) return arr;
 	arr.push_back({{"name", "openttd.ui.menu.run"},
 		{"description", "Run an item of the fork's toolbar menu (openttd://ui/menu) as a click on it does: a console command, a hub page in the browser, or with text for the Ask item, a request. Local to this process"},
 		{"inputSchema", {{"type", "object"}, {"required", json::array({"index"})},
@@ -224,6 +230,9 @@ json Tools()
 
 std::optional<json> Call(std::string_view name, const json &args)
 {
+	if (_network_dedicated && (name == "openttd.ui.menu.run" || name == "openttd.ui.requests.answer")) {
+		return json{{"ok", false}, {"error", "no toolbar on a dedicated server"}};
+	}
 	if (name == "openttd.ui.menu.run") {
 		int index = args.value("index", -1);
 		if (index < 0 || static_cast<size_t>(index) >= ITEMS.size()) return json{{"ok", false}, {"error", "no such menu item; see openttd://ui/menu"}};

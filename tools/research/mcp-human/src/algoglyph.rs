@@ -30,7 +30,7 @@ impl Flow {
     }
 
     /// One kernel call: a line in, a line out.
-    fn kernel(&mut self, kernel: &str, input: Value) -> Result<Value, String> {
+    pub fn kernel(&mut self, kernel: &str, input: Value) -> Result<Value, String> {
         let line = json!({"cmd": "kernel", "kernel": kernel, "input": input}).to_string();
         writeln!(self.stdin, "{line}").and_then(|_| self.stdin.flush()).map_err(|e| format!("flow: {e}"))?;
         let mut out = String::new();

@@ -10,6 +10,7 @@
 //! The client must run with PRISMATIC_MCP_INPUT=1 (the owner's switch), and the hand yields
 //! whenever the owner moves the real mouse.
 
+mod actions;
 mod algoglyph;
 mod economy;
 mod hand;
@@ -41,6 +42,8 @@ commands:
   connect [<town> <town>]    connect two towns by road (default: the largest and a neighbour)
   serve <town> <town>        a bus service: road if needed, two stops, a depot, a bus with orders
   play [<rounds>]            look around, then serve town pairs round after round
+  execute <actions.json|->   plan the actions with AlgoGlyph's action-plan kernel (DAG, cash per
+                             step, refused when it would overdraw), show it, then do each step
   game [<minutes>] [--borrow-below N] [--repay-above N]
                              run the company: expand, add buses where they earn, borrow (asking
                              the owner first) while money is under N, repay part of the loan
@@ -111,6 +114,15 @@ fn run() -> Result<(), String> {
             let stops = hand.serve_towns(&find(ta)?, &find(tb)?)?;
             println!("ok: stops {stops:?}");
         }
+        "execute" => {
+            // A plan first, then its execution: the actions go to AlgoGlyph's action-plan kernel.
+            let src = args.get(1).ok_or("execute <actions.json | ->")?;
+            let text = if src == "-" { std::io::read_to_string(std::io::stdin()).map_err(|e| e.to_string())? } else { std::fs::read_to_string(src).map_err(|e| format!("{src}: {e}"))? };
+            let actions: serde_json::Value = serde_json::from_str(&text).map_err(|e| format!("{src}: {e}"))?;
+            hand.require_tools()?;
+            hand.execute(actions.get("actions").unwrap_or(&actions))?;
+            println!("ok: the plan was executed");
+        }
         "game" => {
             let minutes: u64 = if args.len() > 1 { arg_num(&args, 1)? } else { 20 };
             let mut policy = economy::Policy::default();
@@ -149,6 +161,10 @@ fn run() -> Result<(), String> {
                     Ok(_) => {
                         served += 1;
                         hand.say(&format!("a bus runs between {} and {}", n(&a), n(&b)));
+                    }
+                    Err(e) if economy::game_closed(&e) => {
+                        hand.say("the game was closed: stop playing");
+                        break;
                     }
                     Err(e) => {
                         hand.say(&format!("skip {} and {}: {e}", n(&a), n(&b)));

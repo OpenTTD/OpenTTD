@@ -75,6 +75,13 @@ impl Hand {
         }
     }
 
+    /// Say it, and print it in the owner's ~ console too (level plan): for the decisions a person
+    /// would want to read back, never for every click.
+    pub fn tell(&self, what: &str) {
+        self.say(what);
+        let _ = self.mcp.call("openttd.view.console.print", json!({"text": format!("[bot] {what}"), "level": "plan"}));
+    }
+
     pub fn state(&self) -> Result<Value, String> {
         self.mcp.call("openttd.input.state", json!({}))
     }

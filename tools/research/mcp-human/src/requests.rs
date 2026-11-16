@@ -47,7 +47,7 @@ impl Hand {
 
     /// Answer a request: the game records it and shows it to the owner.
     pub fn answer(&self, id: u64, text: &str) -> Result<(), String> {
-        self.say(&format!("answer the owner: {text}"));
+        self.tell(&format!("answer the owner: {text}"));
         self.mcp.call("openttd.ui.requests.answer", json!({"id": id, "answer": text})).map(|_| ())
     }
 

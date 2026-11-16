@@ -480,6 +480,7 @@ impl Hand {
         if let Some(t) = town {
             args["town"] = json!(t);
         }
+        self.tell(text);
         if self.mcp.call("openttd.view.news.show", args).is_ok() {
             self.say(&format!("newspaper: {text}"));
             self.think(1500.0, 2500.0);

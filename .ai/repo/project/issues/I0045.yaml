@@ -22,7 +22,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T02:44:57Z
+updated_at: 2026-11-16T04:54:41Z
 started_at: 2026-11-15T23:50:32Z
 started_event: sha256:e59f6c950b075567517ecb0edbcfdd465d91f970e6e97973b643b3e033df1a82
 evidence:
@@ -62,3 +62,10 @@ evidence:
     result: "all 26 checks PASS, coverage 18/18 + 42/42: the owner-asked loan path exercised (question asked, no answer, dialog closed, three loans through the finances window by drag-select, money 100000 -> 129808), then services built; earlier runs found and fixed: the finances menu closes on release (drag-select now generic: ui.press hold + ui.choose release; mcp-human menu_pick), failed loan attempts now count"
     commit: 2745cdda23a7d32b745f02cbd58c68bbcb7a8084
     recorded_at: 2026-11-16T02:44:57Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; mcp-human-e2e --test --minutes 2 --repay-above 0 --seed 23; --test --rounds 1 --seed 31 with MCP_ALGOGLYPH_DIR"
+    result: "partial: loan repay through the finances window (100000 -> 40000 on the server's books), borrowing only while the bank lends, buses past the second only where passengers wait; owner pause switch (openttd.input.yield) and the toolbar menu's requests answered by the player; every cursor move from AlgoGlyph's human-pointing kernel (39/39 golden cases live). gate PASS (106/106, 29 assertions); e2e 31/31 both modes. Remaining: vehicle replacement, rail executor."
+    artifact: "commit 9a9e7cd016"
+    commit: d753ab4559da954edab217c8c8352c2c874a0fa2
+    recorded_at: 2026-11-16T04:54:41Z

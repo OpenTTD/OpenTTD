@@ -13,6 +13,7 @@
 #include "../prismatic_mcp/prismatic_mcp_detail.h"
 #include "../prismatic_mcp/prismatic_mcp_menu.h"
 #include "../prismatic_mcp/prismatic_mcp_console.h"
+#include "../network/network.h"
 
 #include "../safeguards.h"
 
@@ -249,6 +250,21 @@ TEST_CASE("Console usage lines and result lines are derived, not written", "[pri
 	CHECK(mc::ResultLines(result, false).size() == 4);   // { "n": 1, "ok": true }
 	njson plain = {{"contents", njson::array({{{"text", "a\nb"}}})}};
 	CHECK(mc::ResultLines(plain, false) == std::vector<std::string>{"a", "b"});
+}
+
+TEST_CASE("A dedicated server has no toolbar, so nothing of the menu", "[prismatic_mcp]")
+{
+	namespace M = PrismaticMCP::Menu;
+	const bool was = _network_dedicated;
+	_network_dedicated = true;
+	CHECK(M::Tools().empty());
+	CHECK(M::Call("openttd.ui.menu.run", {{"index", 0}})->value("ok", true) == false);
+	CHECK(M::Call("openttd.ui.requests.answer", {{"id", 1}, {"answer", "x"}})->value("ok", true) == false);
+	CHECK(M::Describe()["items"].empty());
+	CHECK(M::Describe()["dedicated"] == true);
+	CHECK(M::Requests()["requests"].empty());
+	_network_dedicated = was;
+	CHECK_FALSE(M::Tools().empty());
 }
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */
