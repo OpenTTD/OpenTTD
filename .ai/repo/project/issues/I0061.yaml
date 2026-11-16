@@ -25,4 +25,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T02:27:00Z
+started_at: 2026-11-16T02:26:48Z
+started_event: sha256:51666ac4c1983adac1a90faaea289376a3ba13af9a6a8b4e1e771d1e72353fca
+verified_at: 2026-11-16T02:26:53Z
+verified_event: sha256:e6bdd64b61b377540c27ec5f2338b2bb05b903fcca830c306fe17549b21801b0
+completed_at: 2026-11-16T02:27:00Z
+completed_event: sha256:395dc8e0ee54d2d556de938cbc1ae29cf84c0266efb59a7bc113849d29544da2
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research"
+    result: "research PASS on the rebased tree, [prismatic_mcp] 29 assertions in 6 cases; delivered 5a26a6189e (token-line regression fixed by 812defb0ce)"
+    commit: e3b65b2d6beabe93f32f6b803841fc145591258b
+    recorded_at: 2026-11-16T02:26:58Z

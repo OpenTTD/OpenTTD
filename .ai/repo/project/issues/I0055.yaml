@@ -28,4 +28,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T02:26:29Z
+started_at: 2026-11-16T02:26:23Z
+started_event: sha256:1e6e22d6b957a04e6c47546a9bc3ea808f54f231c5e392d00044225774a528a9
+verified_at: 2026-11-16T02:26:25Z
+verified_event: sha256:9265d9259bac489c115ebb4793bf6f94541d0a23258ced7c404b95cc8de7aa4e
+completed_at: 2026-11-16T02:26:29Z
+completed_event: sha256:dfea244ddae9d876484a94c63bf5d4478fc268ba25308aa270869b02757580e0
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/knowledge/refs check && python3 -m unittest tools/knowledge/test_refs.py tools/knowledge/test_consult.py"
+    result: "refs check 1182 references 0 failures; 16 unit + 3 end-to-end tests pass; doctor 0 failures; delivered 13f4923865, ca4d90c405"
+    commit: e3b65b2d6beabe93f32f6b803841fc145591258b
+    recorded_at: 2026-11-16T02:26:27Z

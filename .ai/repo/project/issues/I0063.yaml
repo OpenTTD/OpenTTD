@@ -34,4 +34,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T02:27:14Z
+started_at: 2026-11-16T02:27:09Z
+started_event: sha256:75625acc3bd3a97ab75243955a8665c35e61b1d22c445cf533c490e6d6cbebad
+verified_at: 2026-11-16T02:27:10Z
+verified_event: sha256:a0269a71dfb443685c02ab691e81b0d258a0998893dd1b978bebd92cc931985f
+completed_at: 2026-11-16T02:27:14Z
+completed_event: sha256:6ab70f60c9589015eb23e9362ef9937da5b9c6f5a8eae29a4f7decd6b7808a25
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-dup-check"
+    result: "research PASS; live: depots PASS 2 depots, 0 duplicate pairs, reach 20 along the road network; delivered ef0a0a1010"
+    commit: e3b65b2d6beabe93f32f6b803841fc145591258b
+    recorded_at: 2026-11-16T02:27:12Z

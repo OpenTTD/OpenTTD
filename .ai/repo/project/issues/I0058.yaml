@@ -35,4 +35,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T02:26:38Z
+started_at: 2026-11-16T02:26:31Z
+started_event: sha256:6788c13d09998eff98da0a95d35802877649418b5b9954a576bca03e3394fd99
+verified_at: 2026-11-16T02:26:34Z
+verified_event: sha256:bc5a3dfc0909a9a01c5c6410334d62fd04ad39c6348fd5fb312932d513ca5f7b
+completed_at: 2026-11-16T02:26:38Z
+completed_event: sha256:376094f0f5641b6e408986a70beadd9eea673af3eccbf116d0401919d8403fb2
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --bin mcp-hub; node --test; tools/research/mcp-hub-check; tools/research/mcp-hub-page-check http://127.0.0.1:8790"
+    result: "cargo 12/12, node 13/13; live 110 read-only calls pass; hub page in a real browser 10/10; delivered 1968e905fd, 569a50294f, 2e55cd6a0d, 5ab8ae7f86, e3b65b2d6b"
+    commit: e3b65b2d6beabe93f32f6b803841fc145591258b
+    recorded_at: 2026-11-16T02:26:36Z

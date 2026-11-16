@@ -24,4 +24,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T02:27:07Z
+started_at: 2026-11-16T02:27:01Z
+started_event: sha256:824c81f0bfb211a4d964f413398fffa8a64f97981c186670960111bda15bc8b4
+verified_at: 2026-11-16T02:27:03Z
+verified_event: sha256:67a4936ac53040de5ca918b0363e2a0772043eb5c0112e462d739c7ee658c8c8
+completed_at: 2026-11-16T02:27:07Z
+completed_event: sha256:948b130078bc180a84b67b4ffdbcc8f13e11b3aea643a0a8da6ea9d3bb8218a2
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --bin mcp-rhai"
+    result: "3/3: 119 rail-tile lines and a station coalesce to two actions; the 8800 director restarted from the fixed code; delivered da2a3397d2"
+    commit: e3b65b2d6beabe93f32f6b803841fc145591258b
+    recorded_at: 2026-11-16T02:27:05Z

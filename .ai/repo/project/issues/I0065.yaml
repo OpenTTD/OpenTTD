@@ -25,4 +25,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T02:27:21Z
+started_at: 2026-11-16T02:27:15Z
+started_event: sha256:74e8f93322bbeb8c6ebbc7df26e60e9ff2d745f4ba0fd9f38173ddcea68b40f8
+verified_at: 2026-11-16T02:27:17Z
+verified_event: sha256:1a2272d9cdb9c30baac6546bc41d46be2091d44b82a05dd7e14b1bc761bc1211
+completed_at: 2026-11-16T02:27:21Z
+completed_event: sha256:83b67e73f156ea1bbbcb71acbe06237f56dccaefea92c27e1d4d4904e3f177b5
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --bin mcp-hub"
+    result: "12/12 incl. the GraphQL parser, execution and the end-to-end route; live query audited 7 instances; delivered cf1c143803"
+    commit: e3b65b2d6beabe93f32f6b803841fc145591258b
+    recorded_at: 2026-11-16T02:27:20Z

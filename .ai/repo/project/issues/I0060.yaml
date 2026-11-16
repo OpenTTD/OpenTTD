@@ -36,4 +36,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
-updated_at: '2026-11-16'
+updated_at: 2026-11-16T02:26:46Z
+started_at: 2026-11-16T02:26:40Z
+started_event: sha256:d00ccae4d36cf4f47f76be2810b0979b86839a1cd5b948d99de07f464bc8c695
+verified_at: 2026-11-16T02:26:42Z
+verified_event: sha256:8db88d53e3ecf87a07fbc517fbc8446b6312c7905f04ace09cdbed8220585d9c
+completed_at: 2026-11-16T02:26:46Z
+completed_event: sha256:bab1e01af14051c304ee35afd4756d596d57947b7d2119ec3e3429bf6728ea03
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-dup-check"
+    result: "research PASS; on a fresh stack with the fixed PrismaticAI: 0 duplicate station pairs, catchment from the game; delivered 0ce0401ef9"
+    commit: e3b65b2d6beabe93f32f6b803841fc145591258b
+    recorded_at: 2026-11-16T02:26:44Z
