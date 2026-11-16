@@ -30,8 +30,11 @@ undeclared tool would go untested; the approval-gated ones are exercised by
 Parameters are spelled positionally, each by its declared type: an integer, enum or id as a number,
 a bool, a string, and three structured types: a text (`EncodedString`) as a plain string (made valid,
 at most 1024 bytes, carried as the game's raw-string message), a vehicle list as
-`{type, vtype, company, index}`, a cargo source as `{id, type}`. A command with a parameter that
-has no JSON spelling yet (an `Order`, a variant) is not a tool: `openttd://commands` lists it with `exposable: false` and the types in the way
+`{type, vtype, company, index}`, a cargo source as `{id, type}`, an order as its wire fields
+`{type, flags, dest, refit_cargo?, wait_time?, travel_time?, max_speed?}` (checked by the command
+as from any client), and any choice of types (`std::variant`, e.g. a news reference) as `null`
+(its empty alternative) or `{index, value}`, derived from the alternatives. A command with a
+parameter that has no JSON spelling is not a tool: `openttd://commands` lists it with `exposable: false` and the types in the way
 (`unsupported_types`). The console spells the same calls: `bot` (the AIs) and `plan` (a request in
 your own words, handed to the panel's intent resolver).
 

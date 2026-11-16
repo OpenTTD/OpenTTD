@@ -25,7 +25,7 @@ language and stays inside `src/`.
 
 # Known exception
 
-None. `tools/research/mcp-panel/server.py` (Python) predated this rule; I0035 ported it to the
+None. The Python panel (server.py, removed in 60aef3caa5) predated this rule; I0035 ported it to the
 Rust host (`tools/research/mcp-rhai`, binary `mcp-panel`) and removed it.
 
 # Failure behaviour

@@ -24,7 +24,7 @@ relations:
 
 # Statement
 
-`tools/research/mcp-panel/server.py` writes its registry record (`registry_write`) as it starts, and
+The panel (then the Python server.py, removed in 60aef3caa5; now `tools/research/mcp-rhai/src/panel.rs`) writes its registry record (`registry_write`) as it starts, and
 derives its OpenAPI routes from the live MCP catalogue, which is empty of resources until the game's
 MCP server answers. The hub read each instance's catalogue once, on discovery, so a panel found early
 stayed without `/api/resources/*` for the life of the hub, and the audit answered "no stations

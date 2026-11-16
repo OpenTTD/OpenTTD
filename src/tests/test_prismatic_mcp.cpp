@@ -25,6 +25,8 @@
 
 #include <set>
 #include "../prismatic_mcp/prismatic_mcp_params.hpp"
+#include "../news_type.h"
+#include "../order_base.h"
 #include "../tile_type.h"
 
 #include "../safeguards.h"
@@ -108,6 +110,40 @@ TEST_CASE("Command parameters convert from JSON by their declared type", "[prism
 	CHECK_FALSE(IsSupported<NotConvertible>());
 	CHECK(IsSupported<TileIndex>());
 	CHECK(IsSupported<TestEnum>());
+}
+
+TEST_CASE("An order is its wire fields, and any choice of types is null or {index, value}", "[prismatic_mcp]")
+{
+	using namespace PrismaticMCP::params;
+	std::string err;
+
+	/* An order: type, flags and destination required; the timetable fields optional. */
+	CHECK(IsSupported<Order>());
+	CHECK(Schema<Order>()["required"] == json::array({"type", "flags", "dest"}));
+	Order order;
+	CHECK(FromJson(json{{"type", static_cast<int>(OT_GOTO_STATION)}, {"flags", 0}, {"dest", 5}, {"max_speed", 80}}, order, err));
+	CHECK(order.IsType(OT_GOTO_STATION));
+	CHECK(order.GetDestination().base() == 5);
+	CHECK(order.GetMaxSpeed() == 80);
+	CHECK_FALSE(FromJson(json{{"type", 1}, {"flags", 0}}, order, err));                       // no destination
+	CHECK_FALSE(FromJson(json{{"type", 1}, {"flags", 0}, {"dest", 70000}}, order, err));       // past uint16
+	CHECK_FALSE(FromJson(json{{"type", 1}, {"flags", 0}, {"dest", 1}, {"speed", 3}}, order, err)); // unknown field
+
+	/* A choice of types (here the news reference): null is the empty alternative, else {index, value}. */
+	CHECK(IsSupported<NewsReference>());
+	CHECK(Schema<NewsReference>()["oneOf"].size() == std::variant_size_v<NewsReference>);
+	NewsReference ref = TileIndex{3};
+	CHECK(FromJson(json(nullptr), ref, err));
+	CHECK(std::holds_alternative<std::monostate>(ref));
+	CHECK(FromJson(json{{"index", 1}, {"value", 1234}}, ref, err));
+	REQUIRE(std::holds_alternative<TileIndex>(ref));
+	CHECK(std::get<TileIndex>(ref).base() == 1234);
+	CHECK(FromJson(json{{"index", 5}, {"value", 7}}, ref, err));
+	CHECK(std::holds_alternative<TownID>(ref));
+	CHECK_FALSE(FromJson(json{{"index", 0}, {"value", 1}}, ref, err));  // the empty one is null
+	CHECK_FALSE(FromJson(json{{"index", 9}, {"value", 1}}, ref, err));  // no such alternative
+	CHECK_FALSE(FromJson(json{{"index", 1}, {"value", "x"}}, ref, err)); // the value must fit its type
+	CHECK_FALSE(FromJson(json(4), ref, err));
 }
 
 TEST_CASE("A text, a vehicle list and a cargo source convert from their JSON spelling", "[prismatic_mcp]")

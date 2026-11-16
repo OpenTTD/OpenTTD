@@ -25,7 +25,7 @@ relations:
 
 # Statement
 
-`tools/research/mcp-panel/server.py` reads the dedicated server's console and takes the MCP bearer
+The panel (then the Python server.py, removed in 60aef3caa5; now `tools/research/mcp-rhai/src/panel.rs`) reads the dedicated server's console and takes the MCP bearer
 token from the `Bearer token (...): <hex>` line (`TOKEN_RE`). Commit 5a26a6189e (I0061) reworded that
 line in `src/console_cmds.cpp:ConPrismaticMcp`. Its research gate passed, because the gate builds and
 unit-tests the server but never starts the panel. Every stack started from that master then reported

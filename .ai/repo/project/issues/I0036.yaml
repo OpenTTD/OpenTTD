@@ -39,3 +39,8 @@ evidence:
     command: "tools/gate.sh research; tools/research/mcp-live-check; tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel http://127.0.0.1:8802 --report"
     result: "partial: a text (EncodedString), a vehicle list and a cargo source convert from JSON; commands 144/146 (InsertOrder: Order; CreateCustomNewsItem: a variant), console 87/90, Script API 0/660. gate research PASS (123/123, 724 MCP assertions in 23 cases); mcp-live-check 26/26 including openttd.cmd.CreateGoal with a text parameter."
     recorded_at: 2026-11-16T20:50:00Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/gate.sh change; tools/research/mcp-live-check; tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel <panel on this build> --report"
+    result: "partial: commands 146/146 (an order and any std::variant of supported types now convert from JSON), console 87/90, Script API 0/660. gate research PASS (126/126, 770 MCP assertions in 26 cases), gate change PASS (98/98), mcp-live-check 28/28 including openttd.cmd.CustomNewsItem with a news reference. Remaining: the Script API."
+    recorded_at: 2026-11-16T22:20:00Z
