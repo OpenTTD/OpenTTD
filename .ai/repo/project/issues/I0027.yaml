@@ -24,4 +24,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-16T17:15:55Z
+started_at: 2026-11-16T17:14:36Z
+started_event: sha256:8614134fe87e58026b45b4d2354a211c25a3a049ca101b0b29ea3b4dfd4a967b
+verified_at: 2026-11-16T17:14:38Z
+verified_event: sha256:ee4dfdb9396e286b0e78611dbb93e0fda75d16fc6954319cf240ff7c6e94cd09
+completed_at: 2026-11-16T17:15:55Z
+completed_event: sha256:9cf66bd8e72fd493bc0b52065e3fbdb5fe04255144cac56c9800ad6780098b67
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "bash tools/research/test/research_test.sh"
+    result: "51 passed, 0 failed (exit 0, ~2s). research-mcp profile: known profile, OPTION_RESEARCH_INSTRUMENTATION=ON, extra args carry -DOPTION_PRISMATIC_MCP_SERVER=ON, buildable, own build dir, dry-run configure shows both -D flags. Landed f6d72f6ef1; surfaces 0 findings; doctor 0 failures."
+    commit: f6d72f6ef197c754a39aee52911c7b3410b69840
+    recorded_at: 2026-11-16T17:15:43Z
