@@ -35,7 +35,9 @@ Playing through the interface makes the engine's own UI the API:
 | `openttd.input.key` | armed | Press a key as the keyboard driver does (an OpenTTD `WKC_*` keycode; letters are their upper-case code, `WKC_CTRL` is `0x4000`). |
 
 A list drawn in a matrix (for example the vehicles in the buy window) also reports
-`row_height`, so a person-like controller can point at a row. The resource
+`row_height`, so a person-like controller can point at a row. The title-bar boxes (close,
+sticky, shade, default size) carry no widget index. They are found by hit-testing the caption's
+row and reported with `"index": null`. The resource
 `openttd://vehicles` lists every primary vehicle with its owner, type, engine, tile,
 stopped/in-depot/crashed state, cargo, profits and orders. The player uses it to confirm that what
 it did through the windows took effect.
@@ -67,7 +69,7 @@ A Rust program with no runtime dependencies beyond the client's token file
 | `hand.rs` | The hand on the mouse: move, click, drag, find a widget by its text, pick a dropdown item, focus the camera on a tile and spot it on screen without scrolling. |
 | `plan.rs` | Road routes: A* over `openttd://map` (clear land, trees, existing roads; no houses, water or steep tiles), with a turn penalty so routes come out as long straight runs. The runs are then cut into drags. |
 | `play.rs` | Tasks. **Road:** open the road menu, pick the road type, pick autoroad, drag a route; a run that does not fit on screen is halved. **Stops and depot:** a drive-through bus stop on a straight town road, and a depot facing a road, each placed through its picker. **Bus:** buy one in the depot window (filter the list for "bus", pick the first row, Buy), give it orders with Go To on both stops, and start it. **Service:** all of the above for a pair of towns. **Look around.** |
-| Screen manners | Clicks are scoped to the window they belong to. A covered window is first brought to the front by its title bar. Placement starts from a clean hand (Escape). Windows are tidied after each job and after any failure. |
+| Screen manners | Clicks are scoped to the window they belong to. A covered window is first brought to the front by its title bar. A covered tile is revealed by shifting the view. Placement starts from a clean hand (Escape). Windows are closed by their close boxes after each job and after any failure. |
 
 ```bash
 mcp-human --token <client-token.json> check                  # tools present, input armed
@@ -93,10 +95,15 @@ must own new road tiles, two bus stations and a running bus with two orders. The
 that the cursor moved, that the client offers every UI and input tool, and that the server
 refuses them.
 
-Verified 2026-11-16 (build of `feature/human-ui-play`, both research options ON, macOS): the
-client joined as company 0 and served Patborough and Cadston entirely through the interface. It
-laid 10 road tiles, built 2 drive-through stops and a depot, and bought an MPS Regal Bus. It gave
-the bus two Go To orders and started it, with 1314 pointer updates. All checks were PASS.
+Verified 2026-11-16 (build of `feature/human-ui-play` on top of the cluster and news commits,
+both research options ON, macOS), with `--rounds 2`:
+
+- The client joined as company 0 and served Patborough–Cadston and Sunway–Quardstone entirely
+  through the interface.
+- On the server: 77 road tiles, 6 bus stations, and 2 buses running with two orders each.
+- 4521 pointer updates. All checks PASS.
+- Three pairs were skipped and logged: a depot window that did not open, and two road runs whose
+  ends stayed unclickable.
 
 ## Limits and next steps
 

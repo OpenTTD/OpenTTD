@@ -22,7 +22,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-15T23:50:55Z
+updated_at: 2026-11-16T00:02:59Z
 started_at: 2026-11-15T23:50:32Z
 started_event: sha256:e59f6c950b075567517ecb0edbcfdd465d91f970e6e97973b643b3e033df1a82
 evidence:
@@ -32,3 +32,9 @@ evidence:
     result: "partial: gate research PASS (103/103, 25 MCP assertions); e2e all PASS on the server: company 0 served Patborough-Cadston through the interface: 10 road tiles, 2 drive-through bus stations, a depot, an MPS Regal Bus bought in the depot window, two Go To orders, started (1314 pointer updates). Remaining: economy loop (more buses, profitable routes, loan)."
     commit: f308b13c03b1778b7d4cf4a31f83749ffe35e024
     recorded_at: 2026-11-15T23:50:55Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; mcp-human-e2e --test --rounds 2 --seed 11; cargo test (mcp-human)"
+    result: "partial: gate research PASS (103/103, 25 MCP assertions); unit 10/10; e2e all PASS on the server: Patborough-Cadston and Sunway-Quardstone served through the interface, 77 road tiles, 6 bus stations, 2 buses running with 2 orders each, 4521 pointer updates; 3 pairs skipped (depot window, unclickable run ends). Remaining: the economy loop."
+    commit: ac3dc352d3d6218ffd23746efff1a8d5a1c05ca9
+    recorded_at: 2026-11-16T00:02:59Z

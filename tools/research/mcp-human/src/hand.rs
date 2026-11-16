@@ -232,6 +232,28 @@ impl Hand {
         }))
     }
 
+    /// Bring a tile where a click reaches it: centre it, and when a window covers the centre,
+    /// shift the view so the tile shows in a clear part of the screen instead.
+    pub fn reveal(&mut self, x: usize, y: usize) -> Result<Target, String> {
+        if let Some(t) = self.spot(x, y)? {
+            return Ok(t);
+        }
+        self.focus(x, y)?;
+        if let Some(t) = self.spot(x, y)? {
+            return Ok(t);
+        }
+        for (dx, dy) in [(6i64, 6i64), (-6, -6), (6, -6), (-6, 6), (10, 0), (0, 10)] {
+            let (cx, cy) = ((x as i64 + dx).max(1) as usize, (y as i64 + dy).max(1) as usize);
+            self.say(&format!("tile {x},{y} is covered; shift the view"));
+            self.mcp.call("openttd.view.scroll_to", json!({"x": cx, "y": cy}))?;
+            sleep(Duration::from_millis(900));
+            if let Some(t) = self.spot(x, y)? {
+                return Ok(t);
+            }
+        }
+        Err(format!("tile {x},{y} stays covered by windows"))
+    }
+
     /// A tile on screen, scrolling to it first when it is not clickable.
     pub fn tile(&mut self, x: usize, y: usize) -> Result<Target, String> {
         if let Some(t) = self.spot(x, y)? {
@@ -280,8 +302,7 @@ impl Hand {
 
     /// Click a map tile: bring it into view if needed, then point and click.
     pub fn click_tile(&mut self, x: usize, y: usize) -> Result<(), String> {
-        self.focus(x, y)?;
-        let t = self.spot(x, y)?.ok_or_else(|| format!("tile {x},{y} is not clickable"))?;
+        let t = self.reveal(x, y)?;
         self.say(&format!("click tile {x},{y}"));
         self.click(t)
     }
@@ -376,6 +397,20 @@ impl Hand {
         }
         if !self.on_top(w, t)? {
             return Err(format!("'{}' stays covered", w.get("caption").and_then(Value::as_str).unwrap_or("?").trim()));
+        }
+        Ok(())
+    }
+
+    /// Close every closable window except those whose caption contains one of `keep`.
+    pub fn tidy_except(&mut self, keep: &[&str]) -> Result<(), String> {
+        for _ in 0..12 {
+            let open: Vec<Value> = self.windows()?.into_iter().filter(|w| {
+                Self::widget_of_type(w, "close_box").is_some()
+                    && !w.get("caption").and_then(Value::as_str).is_some_and(|c| keep.iter().any(|k| c.to_lowercase().contains(k)))
+            }).collect();
+            let Some(w) = open.first() else { return Ok(()) };
+            self.close(w)?;
+            self.think(120.0, 260.0);
         }
         Ok(())
     }

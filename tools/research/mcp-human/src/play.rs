@@ -75,7 +75,14 @@ impl Hand {
             }
             // Centre the run, then find both ends without scrolling: the press must land where seen.
             self.focus((s.0 + e.0) / 2, (s.1 + e.1) / 2)?;
-            let (Some(from), Some(to)) = (self.spot(s.0, s.1)?, self.spot(e.0, e.1)?) else {
+            let (mut from, mut to) = (self.spot(s.0, s.1)?, self.spot(e.0, e.1)?);
+            if from.is_none() || to.is_none() {
+                // Something covers an end: clear the screen of what this job does not need.
+                self.tidy_except(&["road construction"])?;
+                from = self.spot(s.0, s.1)?;
+                to = self.spot(e.0, e.1)?;
+            }
+            let (Some(from), Some(to)) = (from, to) else {
                 let len = s.0.abs_diff(e.0).max(s.1.abs_diff(e.1));
                 if len < 2 {
                     return Err(format!("tile {s:?} or {e:?} cannot be clicked"));

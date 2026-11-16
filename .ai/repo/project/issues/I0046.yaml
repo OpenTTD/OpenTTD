@@ -6,7 +6,7 @@ priority: p1
 profile: implementation
 parallel_safe: true
 objective: "Each OpenTTD process with an MCP server declares itself (role, game, company, endpoint, tools) where controllers and Majordomus find it, so a cluster of AI-driven instances can be started, listed and driven without hand-wired ports."
-why: "The owner: both the running server and the running client must have their own MCP interface, Majordomus-integrated into a cluster for research; discovery is needed; rock solid."
+why: "Partly delivered by 02b99aee68 (I0039: cluster discovery, calls across it, mcp-e2e --instances N); what remains is checked against that before any new work. The owner: both the running server and the running client must have their own MCP interface, Majordomus-integrated into a cluster for research; discovery is needed; rock solid."
 scope:
   - "src/prismatic_mcp/**"
   - "tools/research/**"

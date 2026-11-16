@@ -39,6 +39,7 @@
 #include "../window_gui.h"
 #include "../zoom_func.h"
 
+#include <algorithm>
 #include <chrono>
 #include <cstdlib>
 
@@ -189,11 +190,33 @@ json WindowJson(const Window *w, bool widgets)
 		{"key", std::string(w->window_desc.ini_key)}, {"rect", Rect(w->left, w->top, w->width, w->height)},
 		{"viewport", w->viewport != nullptr}};
 	json list = json::array();
+	const NWidgetBase *caption = nullptr;
 	for (const auto &[index, nwb] : w->widget_lookup) {
 		if (index < 0 || nwb == nullptr) continue;
 		json wj = Widget(w, index, nwb);
-		if (wj["type"] == "caption" && wj.contains("text")) out["caption"] = wj["text"];
+		if (wj["type"] == "caption") {
+			caption = nwb;
+			if (wj.contains("text")) out["caption"] = wj["text"];
+		}
 		if (widgets) list.push_back(std::move(wj));
+	}
+	/* The title bar's boxes (close, sticky, shade, default size, debug) carry no index, so the
+	 * lookup above never sees them; find them as a person does, along the caption's row. */
+	if (widgets && caption != nullptr && w->nested_root != nullptr) {
+		const int y = caption->pos_y + static_cast<int>(caption->current_y) / 2;
+		std::vector<const NWidgetCore *> seen;
+		for (int x = 0; x < w->width; x += 2) {
+			const NWidgetCore *nwc = w->nested_root->GetWidgetFromPos(x, y);
+			if (nwc == nullptr || nwc->GetIndex() >= 0 || std::ranges::find(seen, nwc) != seen.end()) continue;
+			switch (nwc->type) {
+				case WWT_CLOSEBOX: case WWT_STICKYBOX: case WWT_SHADEBOX: case WWT_DEFSIZEBOX: case WWT_DEBUGBOX: break;
+				default: continue;
+			}
+			seen.push_back(nwc);
+			json wj = Widget(w, -1, nwc);
+			wj["index"] = nullptr;
+			list.push_back(std::move(wj));
+		}
 	}
 	if (widgets) out["widgets"] = std::move(list);
 	/* A dropdown's items are drawn, not widgets: report them as a person sees them. */
