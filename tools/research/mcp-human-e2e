@@ -15,12 +15,13 @@
 # --test the stack stays up after the play so the owner can watch and take over the mouse.
 #
 # Usage: tools/research/mcp-human-e2e [--test] [--rounds N | --minutes M] [--seed N] [--speed F]
-#                                     [--borrow-below N] [--repay-above N] [--window WxH] [--bin PATH]
+#                                     [--borrow-below N] [--repay-above N] [--rail MAXDIST]
+#                                     [--window WxH] [--bin PATH]
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
-TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE=""
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --test) TEST=1; shift ;;
@@ -28,6 +29,7 @@ while [[ $# -gt 0 ]]; do
     --minutes) MINUTES="$2"; shift 2 ;;
     --borrow-below) BORROW_BELOW="$2"; shift 2 ;;
     --repay-above) REPAY_ABOVE="$2"; shift 2 ;;
+    --rail) RAIL="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
     --speed) SPEED="$2"; shift 2 ;;
     --window) WINDOW="$2"; shift 2 ;;
@@ -152,6 +154,16 @@ if [[ "$MINUTES" -gt 0 ]]; then
 else
   "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS" 2>&1 | tee "$TMP/human.log"
 fi
+# A rail line (--rail): both stations at the planner's sites, AlgoGlyph's track between them, laid
+# through the rail tools (rail.rs). Needs an AlgoGlyph checkout with track-planning.
+if [[ -n "$RAIL" ]]; then
+  if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]] && (cd "$MCP_ALGOGLYPH_DIR" && npm run --silent flow -- kernels 2>/dev/null | grep -q track-planning); then
+    "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" rail "$RAIL" 2>&1 | tee -a "$TMP/human.log" | grep -E '^ok: rail|rail line|skip' || true
+  else
+    echo "SKIP the rail line: MCP_ALGOGLYPH_DIR has no track-planning kernel (not counted as a pass)"; RAIL=""
+  fi
+fi
+
 # The owner closing the window ends the run, in a game or in rounds: that is their call, and the
 # client's own checks below have nobody left to ask. It is reported, never counted as a pass.
 if [[ "$(grep -c 'the game was closed' "$TMP/human.log")" -gt 0 ]]; then
@@ -297,6 +309,35 @@ if [[ "$TEST" == 1 ]]; then
     echo "SKIP the action plan: MCP_ALGOGLYPH_DIR has no action-plan kernel (not counted as a pass)"
   fi
 
+  # The rail line, checked on the server and independently of the player: the company's train
+  # stations, and a walk over the server's own track bits from one station to the other.
+  if [[ -n "$RAIL" ]]; then
+    python3 -I - "$SERVER_TOKEN" "$COMPANY" <<'PY' && echo "PASS a rail line joins two train stations of company $COMPANY on the server's rails" || { echo "FAIL the rail line"; fail=1; }
+import json, sys, urllib.request
+tok = json.load(open(sys.argv[1])); company = int(sys.argv[2])
+def read(uri):
+    req = urllib.request.Request(tok["endpoint"], data=json.dumps({"jsonrpc": "2.0", "id": 1, "method": "resources/read", "params": {"uri": uri}}).encode(),
+                                 headers={"Authorization": "Bearer " + tok["agent_token"], "Content-Type": "application/json"})
+    t = json.loads(json.load(urllib.request.urlopen(req))["result"]["contents"][0]["text"]); return t.get("data", t)
+rails = read("openttd://map/ways")["rails"]
+bits = lambda x, y: int(rails[y][2 * x:2 * x + 2], 16)
+REACH = {1: "NE SW", 2: "NW SE", 4: "NW NE", 8: "SW SE", 16: "NW SW", 32: "NE SE"}
+STEP = {"NE": (-1, 0), "SW": (1, 0), "NW": (0, -1), "SE": (0, 1)}; OPP = {"NE": "SW", "SW": "NE", "NW": "SE", "SE": "NW"}
+sides = lambda x, y: {s for b, ss in REACH.items() if bits(x, y) & b for s in ss.split()}
+st = [s for s in read("openttd://stations")["stations"] if s.get("owner") == company and "train" in s.get("facilities", [])]
+assert len(st) >= 2, f"{len(st)} train station(s)"
+a, b = (st[0]["x"], st[0]["y"]), (st[1]["x"], st[1]["y"])
+seen, todo = {a}, [a]
+while todo:
+    x, y = todo.pop()
+    for d in sides(x, y):
+        n = (x + STEP[d][0], y + STEP[d][1])
+        if n not in seen and OPP[d] in sides(*n): seen.add(n); todo.append(n)
+near_b = any(abs(x - b[0]) + abs(y - b[1]) <= 3 for x, y in seen)
+assert near_b, f"the walk from {a} reached {len(seen)} tile(s), none at {b}"
+print(f"    {st[0]['name']} {a} -> {st[1]['name']} {b}: {len(seen)} rail tiles walked")
+PY
+  fi
   # With an AlgoGlyph checkout named, every move came from its kernel and none fell back.
   if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]]; then
     [[ "$(grep -c "AlgoGlyph's human-pointing kernel" "$TMP/human.log")" -gt 0 && "$(grep -c 'human-pointing failed' "$TMP/human.log")" -eq 0 ]] \

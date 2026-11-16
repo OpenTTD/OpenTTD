@@ -18,6 +18,7 @@ mod mcp;
 mod motion;
 mod play;
 mod plan;
+mod rail;
 mod requests;
 
 use hand::{Hand, Target};
@@ -42,6 +43,8 @@ commands:
   connect [<town> <town>]    connect two towns by road (default: the largest and a neighbour)
   serve <town> <town>        a bus service: road if needed, two stops, a depot, a bus with orders
   play [<rounds>]            look around, then serve town pairs round after round
+  rail [<max distance>]      a rail line: both stations at the shared planner's sites (MCP_PLAN),
+                             AlgoGlyph's track plan between them, laid with the rail tools, checked
   execute <actions.json|->   plan the actions with AlgoGlyph's action-plan kernel (DAG, cash per
                              step, refused when it would overdraw), show it, then do each step
   game [<minutes>] [--borrow-below N] [--repay-above N]
@@ -113,6 +116,30 @@ fn run() -> Result<(), String> {
             let find = |id: u64| list.iter().find(|t| t.get("id").and_then(serde_json::Value::as_u64) == Some(id)).cloned().ok_or("no such town");
             let stops = hand.serve_towns(&find(ta)?, &find(tb)?)?;
             println!("ok: stops {stops:?}");
+        }
+        "rail" => {
+            // A rail line: the shortest planner candidate (within the distance) that builds.
+            let max: f64 = if args.len() > 1 { arg_num(&args, 1)? } else { 60.0 };
+            hand.require_tools()?;
+            let candidates = hand.rail_candidates(max)?;
+            hand.say(&format!("{} rail candidate(s) within {max} tiles", candidates.len()));
+            let mut built = None;
+            for c in candidates.iter().take(4) {
+                let name = |k: &str| c.pointer(k).and_then(serde_json::Value::as_str).unwrap_or("?").to_string();
+                let label = format!("{} -> {}", name("/producer/name").replace('?', &name("/a/name")), name("/acceptor/name").replace('?', &name("/b/name")));
+                hand.say(&format!("rail: {label} ({} tiles)", c["distance"]));
+                match hand.build_rail_line(&c["stations"]) {
+                    Ok(line) => { built = Some((label, line)); break; }
+                    Err(e) if economy::game_closed(&e) => return Err("the game was closed: stop building".into()),
+                    Err(e) => {
+                        hand.say(&format!("skip {label}: {e}"));
+                        let _ = hand.escape();
+                        let _ = hand.tidy();
+                    }
+                }
+            }
+            let (label, line) = built.ok_or("no rail candidate could be built")?;
+            println!("ok: rail line {label}: stations at {},{} and {},{}, {} pieces of track", line.from.x, line.from.y, line.to.x, line.to.y, line.pieces.len());
         }
         "execute" => {
             // A plan first, then its execution: the actions go to AlgoGlyph's action-plan kernel.

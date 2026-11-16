@@ -2,7 +2,9 @@
 //! (src/prismatic_mcp/prismatic_mcp_menu.cpp) queue requests in openttd://ui/requests, each with
 //! the tile under the centre of the main view. The player takes the kinds it knows, does them
 //! through the interface like everything else, and answers through openttd.ui.requests.answer,
-//! which the game shows as a news item. Typed questions (kind "ask") belong to the relay, not here.
+//! which the game shows as a news item: serve_here builds a bus service between the two towns
+//! nearest the tile, plan_rail builds the shared planner's rail line nearest it (rail.rs), watch
+//! follows a bus. Typed questions (kind "ask") belong to the relay, not here.
 
 use crate::economy::Service;
 use crate::hand::Hand;
@@ -91,7 +93,33 @@ impl Hand {
                 self.answer(r.id, "watching one of our buses for a while")?;
                 self.watch(25)
             }
-            "plan_rail" => self.answer(r.id, "not yet: I build bus services so far; rail lines follow AlgoGlyph's track planner"),
+            "plan_rail" => {
+                let Some(at) = r.at else { return self.answer(r.id, "I need a place: centre the view where the line should go") };
+                let mut list = match self.rail_candidates(150.0) {
+                    Ok(l) if !l.is_empty() => l,
+                    Ok(_) => return self.answer(r.id, "the planner has no rail line with room for both stations"),
+                    Err(e) => return self.answer(r.id, &format!("I cannot plan rail here: {e}")),
+                };
+                // The candidate whose nearer station is closest to where the owner looks.
+                let d = |c: &Value| ["from", "to"].iter().filter_map(|k| {
+                    let x = c.pointer(&format!("/stations/{k}/x"))?.as_i64()?;
+                    let y = c.pointer(&format!("/stations/{k}/y"))?.as_i64()?;
+                    Some((x - at.0 as i64).abs() + (y - at.1 as i64).abs())
+                }).min().unwrap_or(i64::MAX);
+                list.sort_by_key(d);
+                for c in list.iter().take(3) {
+                    match self.build_rail_line(&c["stations"]) {
+                        Ok(line) => return self.answer(r.id, &format!("done: rail stations at {},{} and {},{}, {} pieces of track", line.from.x, line.from.y, line.to.x, line.to.y, line.pieces.len())),
+                        Err(e) if crate::economy::game_closed(&e) => return Err(e),
+                        Err(e) => {
+                            self.say(&format!("rail candidate skipped: {e}"));
+                            let _ = self.escape();
+                            let _ = self.tidy();
+                        }
+                    }
+                }
+                self.answer(r.id, "none of the nearest rail lines could be built")
+            }
             _ => Ok(()),
         }
     }

@@ -187,6 +187,9 @@ json Widget(const Window *w, WidgetID index, const NWidgetBase *nwb)
 	return out;
 }
 
+const NWidgetCore *CaptionWidget(const Window *w);
+std::string CaptionOf(const Window *w);
+
 json WindowJson(const Window *w, bool widgets)
 {
 	json out = {{"class", static_cast<int>(w->window_class)}, {"number", static_cast<int>(w->window_number)},
@@ -202,6 +205,10 @@ json WindowJson(const Window *w, bool widgets)
 			if (wj.contains("text")) out["caption"] = wj["text"];
 		}
 		if (widgets) list.push_back(std::move(wj));
+	}
+	if (caption == nullptr) {
+		caption = CaptionWidget(w);
+		if (caption != nullptr) out["caption"] = CaptionOf(w);
 	}
 	/* The title bar's boxes (close, sticky, shade, default size, debug) carry no index, so the
 	 * lookup above never sees them; find them as a person does, along the caption's row. */
@@ -350,13 +357,30 @@ std::string Lower(std::string s)
 }
 
 /** The caption text of a window, if it has one. */
-std::string CaptionOf(const Window *w)
+const NWidgetCore *CaptionWidget(const Window *w)
 {
 	for (const auto &[index, nwb] : w->widget_lookup) {
 		if (index < 0 || nwb == nullptr || (nwb->type & WWT_MASK) != WWT_CAPTION) continue;
-		if (auto nwc = dynamic_cast<const NWidgetCore *>(nwb); nwc != nullptr) return w->GetWidgetString(index, nwc->GetString());
+		if (auto nwc = dynamic_cast<const NWidgetCore *>(nwb); nwc != nullptr) return nwc;
 	}
-	return {};
+	/* Some windows (the station pickers, for one) give their caption no index, so the lookup never
+	 * sees it: find the title bar where a person sees it, along the window's top rows. */
+	if (w->nested_root != nullptr) {
+		for (int y = 1; y < std::min(w->height, 48); y += 3) {
+			for (int x = 0; x < w->width; x += 8) {
+				const NWidgetCore *nwc = w->nested_root->GetWidgetFromPos(x, y);
+				if (nwc != nullptr && (nwc->type & WWT_MASK) == WWT_CAPTION) return nwc;
+			}
+		}
+	}
+	return nullptr;
+}
+
+std::string CaptionOf(const Window *w)
+{
+	const NWidgetCore *c = CaptionWidget(w);
+	if (c == nullptr) return {};
+	return c->GetIndex() >= 0 ? w->GetWidgetString(c->GetIndex(), c->GetString()) : GetString(c->GetString());
 }
 
 /** The front-most window matching {class, number, caption} (any subset; caption is a case-insensitive substring). */
