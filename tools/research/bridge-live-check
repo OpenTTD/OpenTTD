@@ -1,0 +1,321 @@
+#!/usr/bin/env bash
+#
+# bridge-live-check -- re-run the bridge's Phase 2 proof here, on today's tree.
+#
+# Boots a dedicated OpenTTD server of THIS checkout, brings up the standalone
+# openttd-prismatic-bridge (Python/FastAPI) against it, starts the PrismaticAI
+# company AI through the bridge's /ai/start endpoint, and polls /companies until
+# a company owns at least one vehicle -- proving the full control path
+#   script -> bridge (HTTP) -> Admin Network (TCP) -> OpenTTD -> PrismaticAI
+# end to end, live, rather than trusting a July measurement from the sibling repo.
+#
+# It writes every artifact (server log, bridge log, the winning /companies JSON,
+# a summary) into an output directory it prints, and exits non-zero with
+# diagnostics if the vehicle never appears. Nothing here is committed state: an
+# ephemeral config with a throwaway admin password lives under the output dir, so
+# no secret is written into either repository.
+#
+# This is a research tool (AGENTS.md "Research mode"): it runs a real server and a
+# real AI; it does not modify OpenTTD's src/ or the bridge repo. Default graphics
+# are pinned to OpenGFX with -I so an also-installed set (e.g. NoirGFX) cannot be
+# picked up.
+#
+# Usage:
+#   tools/research/bridge-live-check [--keep] [--help]
+#
+# Environment overrides (all optional):
+#   BRIDGE_REPO     path to openttd-prismatic-bridge (default: ~/dev/openttd-prismatic-bridge)
+#   BINARY          openttd binary (default: first of build/, build-research/, build-gate-research/)
+#   GRAPHICS_SET    base graphics set name (default: OpenGFX)
+#   ADMIN_PORT      server admin network port   (default: 13977)
+#   SERVER_PORT     server game port            (default: 13979)
+#   BRIDGE_PORT     bridge HTTP port            (default: 18730)
+#   VEHICLE_TIMEOUT seconds to wait for vehicles>0 (default: 180)
+#   OUT_DIR         artifact directory (default: a timestamped dir under $TMPDIR)
+#
+set -euo pipefail
+
+# --- locate ourselves and the repo -----------------------------------------
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+KEEP=0
+for arg in "$@"; do
+	case "$arg" in
+		--keep) KEEP=1 ;;
+		-h|--help)
+			sed -n '2,36p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+			exit 0 ;;
+		*) echo "bridge-live-check: unknown argument: $arg" >&2; exit 2 ;;
+	esac
+done
+
+# --- configuration ----------------------------------------------------------
+BRIDGE_REPO="${BRIDGE_REPO:-$HOME/dev/openttd-prismatic-bridge}"
+GRAPHICS_SET="${GRAPHICS_SET:-OpenGFX}"
+ADMIN_PORT="${ADMIN_PORT:-13977}"
+SERVER_PORT="${SERVER_PORT:-13979}"
+BRIDGE_PORT="${BRIDGE_PORT:-18730}"
+VEHICLE_TIMEOUT="${VEHICLE_TIMEOUT:-180}"
+# A fixed map seed makes the run reproducible; AI_SETTINGS forces the reliable
+# single-town route (intercity=0 skips cross-terrain road pathfinding) and a
+# high aggressiveness so buses are bought quickly. Both are overridable.
+SEED="${SEED:-1}"
+AI_SETTINGS="${AI_SETTINGS:-intercity=0,aggressiveness=75}"
+ADMIN_PASSWORD="bridge-live-check-$$-${RANDOM}"
+TS="$(date +%Y%m%d-%H%M%S)"
+OUT_DIR="${OUT_DIR:-${TMPDIR:-/tmp}/bridge-live-check-$TS}"
+
+log()  { printf '[bridge-live-check] %s\n' "$*"; }
+fail() { printf '[bridge-live-check] FAIL: %s\n' "$*" >&2; }
+
+# --- pick a binary ----------------------------------------------------------
+pick_binary() {
+	if [ -n "${BINARY:-}" ]; then printf '%s' "$BINARY"; return; fi
+	local b
+	for b in build/openttd build-research/openttd build-gate-research/openttd \
+	         build-research-baseline-release/openttd build-research-mcp/openttd; do
+		if [ -x "$REPO_ROOT/$b" ]; then printf '%s' "$REPO_ROOT/$b"; return; fi
+	done
+	return 1
+}
+
+port_free() { ! nc -z 127.0.0.1 "$1" >/dev/null 2>&1; }
+
+wait_for() {  # wait_for <seconds> <cmd...>  -- succeed when cmd returns 0
+	local deadline=$(( $(date +%s) + $1 )); shift
+	while [ "$(date +%s)" -lt "$deadline" ]; do
+		if "$@" >/dev/null 2>&1; then return 0; fi
+		sleep 1
+	done
+	return 1
+}
+
+# --- preflight --------------------------------------------------------------
+BINARY="$(pick_binary)" || { fail "no openttd binary found; build one first (see CLAUDE.md)"; exit 1; }
+[ -d "$BRIDGE_REPO" ]            || { fail "bridge repo not found at $BRIDGE_REPO (set BRIDGE_REPO)"; exit 1; }
+[ -f "$BRIDGE_REPO/server/openttd.cfg" ] || { fail "$BRIDGE_REPO/server/openttd.cfg missing"; exit 1; }
+[ -d "$BRIDGE_REPO/ai/PrismaticAI" ]     || { fail "$BRIDGE_REPO/ai/PrismaticAI missing"; exit 1; }
+command -v curl >/dev/null || { fail "curl is required"; exit 1; }
+command -v nc   >/dev/null || { fail "nc is required"; exit 1; }
+command -v python3 >/dev/null || { fail "python3 is required"; exit 1; }
+
+for pr in "$ADMIN_PORT:admin" "$SERVER_PORT:server" "$BRIDGE_PORT:bridge"; do
+	p="${pr%%:*}"; n="${pr##*:}"
+	port_free "$p" || { fail "$n port $p is already in use (another server? override ${n^^}_PORT)"; exit 1; }
+done
+
+mkdir -p "$OUT_DIR"
+SERVER_LOG="$OUT_DIR/server.log"
+BRIDGE_LOG="$OUT_DIR/bridge.log"
+CFG_DIR="$OUT_DIR/cfg"
+CFG="$CFG_DIR/openttd.cfg"
+mkdir -p "$CFG_DIR"
+
+log "repo        $REPO_ROOT"
+log "binary      $BINARY"
+log "bridge repo $BRIDGE_REPO"
+log "graphics    $GRAPHICS_SET (pinned via -I)"
+log "ports       admin=$ADMIN_PORT server=$SERVER_PORT bridge=$BRIDGE_PORT"
+log "output      $OUT_DIR"
+
+# --- ephemeral server config (throwaway admin password, no repo secrets) ----
+# Start from the bridge's local test-rig config, then override the three network
+# fields and pin the graphics set. python3 does the edit so it is section-aware.
+BRIDGE_REPO="$BRIDGE_REPO" ADMIN_PORT="$ADMIN_PORT" SERVER_PORT="$SERVER_PORT" \
+ADMIN_PASSWORD="$ADMIN_PASSWORD" GRAPHICS_SET="$GRAPHICS_SET" CFG="$CFG" \
+python3 - <<'PY'
+import os, re
+src = open(os.path.join(os.environ["BRIDGE_REPO"], "server", "openttd.cfg"), encoding="utf-8").read()
+over = {
+    "network": {
+        "server_port": os.environ["SERVER_PORT"],
+        "server_admin_port": os.environ["ADMIN_PORT"],
+        "allow_insecure_admin_login": "true",
+        "server_advertise": "false",
+    },
+    "graphicsset": {"name": os.environ["GRAPHICS_SET"]},
+}
+lines = src.splitlines()
+section = None
+seen = {s: set() for s in over}
+out = []
+for line in lines:
+    m = re.match(r"\s*\[([^\]]+)\]\s*$", line)
+    if m:
+        # before leaving a section we were overriding, append any keys not yet seen
+        if section in over:
+            for k, v in over[section].items():
+                if k not in seen[section]:
+                    out.append(f"{k} = {v}"); seen[section].add(k)
+        section = m.group(1)
+        out.append(line); continue
+    if section in over:
+        km = re.match(r"\s*([A-Za-z0-9_.]+)\s*=", line)
+        if km and km.group(1) in over[section]:
+            k = km.group(1)
+            out.append(f"{k} = {over[section][k]}"); seen[section].add(k); continue
+    out.append(line)
+# flush the last section's unseen keys
+if section in over:
+    for k, v in over[section].items():
+        if k not in seen[section]:
+            out.append(f"{k} = {v}")
+# ensure any entirely-absent sections get appended
+for s, kv in over.items():
+    if not seen[s]:
+        out.append(f"[{s}]")
+        for k, v in kv.items():
+            out.append(f"{k} = {v}")
+open(os.environ["CFG"], "w", encoding="utf-8").write("\n".join(out) + "\n")
+print("wrote", os.environ["CFG"])
+PY
+
+# The admin password is a "secret" setting: modern OpenTTD reads it only from
+# secrets.cfg (next to the config file), never from the main cfg whose ini_version
+# is post-split. Without it the admin TCP listener never binds
+# (AdminAuthenticationConfigured() is false). Write a throwaway one here.
+cat >"$CFG_DIR/secrets.cfg" <<EOF
+[network]
+admin_password = $ADMIN_PASSWORD
+EOF
+log "wrote ephemeral secrets.cfg (throwaway admin password, not in either repo)"
+
+# --- make sure the server can find the current PrismaticAI -------------------
+# OpenTTD looks for AIs in its personal data dir; sync the current Phase-2 script
+# in (idempotent) so the live run exercises today's AI, not a stale copy.
+PERSONAL_DIR="${PERSONAL_DIR:-$HOME/Documents/OpenTTD}"
+if [ -d "$PERSONAL_DIR" ]; then
+	mkdir -p "$PERSONAL_DIR/ai/PrismaticAI"
+	cp "$BRIDGE_REPO"/ai/PrismaticAI/*.nut "$PERSONAL_DIR/ai/PrismaticAI/"
+	log "synced PrismaticAI -> $PERSONAL_DIR/ai/PrismaticAI"
+else
+	log "personal dir $PERSONAL_DIR not found; relying on an already-installed PrismaticAI"
+fi
+
+# --- bridge python environment ----------------------------------------------
+VENV="$BRIDGE_REPO/.venv"
+if [ ! -x "$VENV/bin/python" ]; then
+	log "creating bridge venv ($VENV) and installing requirements (first run)..."
+	python3 -m venv "$VENV"
+	"$VENV/bin/pip" install --quiet --upgrade pip >/dev/null 2>&1 || true
+	"$VENV/bin/pip" install --quiet -r "$BRIDGE_REPO/requirements.txt" >"$OUT_DIR/pip.log" 2>&1 \
+		|| { fail "pip install failed; see $OUT_DIR/pip.log"; exit 1; }
+fi
+"$VENV/bin/python" -c "import fastapi, uvicorn" 2>/dev/null \
+	|| { fail "bridge venv missing fastapi/uvicorn; delete $VENV and re-run"; exit 1; }
+
+# --- lifecycle --------------------------------------------------------------
+SERVER_PID=""; BRIDGE_PID=""
+cleanup() {
+	local st=$?
+	[ -n "$BRIDGE_PID" ] && kill "$BRIDGE_PID" >/dev/null 2>&1 || true
+	[ -n "$SERVER_PID" ] && kill "$SERVER_PID" >/dev/null 2>&1 || true
+	wait >/dev/null 2>&1 || true
+	if [ "$KEEP" -eq 0 ] && [ -d "$CFG_DIR" ]; then rm -rf "$CFG_DIR"; fi
+	exit "$st"
+}
+trap cleanup EXIT INT TERM
+
+# --- start the dedicated server ---------------------------------------------
+# -D dedicated, -g new game, -c our config, -I pins the base graphics set.
+# stdin from /dev/null: -D reads console from stdin and treats EOF as shutdown,
+# so a closed/inherited stdin would make it quit; /dev/null keeps it alive idle.
+log "starting dedicated server..."
+( cd "$REPO_ROOT" && exec "$BINARY" -D -g -x -c "$CFG" -I "$GRAPHICS_SET" ) \
+	</dev/null >"$SERVER_LOG" 2>&1 &
+SERVER_PID=$!
+
+if ! wait_for 60 nc -z 127.0.0.1 "$ADMIN_PORT"; then
+	fail "server admin port $ADMIN_PORT never opened in 60s"
+	echo "--- server.log (tail) ---" >&2; tail -n 40 "$SERVER_LOG" >&2 || true
+	exit 1
+fi
+kill -0 "$SERVER_PID" 2>/dev/null || { fail "server exited early"; tail -n 40 "$SERVER_LOG" >&2; exit 1; }
+log "server admin port $ADMIN_PORT is open (pid $SERVER_PID)"
+
+# --- start the bridge -------------------------------------------------------
+log "starting bridge..."
+(
+	cd "$BRIDGE_REPO"
+	OPENTTD_ADMIN_HOST=127.0.0.1 \
+	OPENTTD_ADMIN_PORT="$ADMIN_PORT" \
+	OPENTTD_ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+	exec "$VENV/bin/python" -m uvicorn bridge.main:app --host 127.0.0.1 --port "$BRIDGE_PORT" --log-level info
+) >"$BRIDGE_LOG" 2>&1 &
+BRIDGE_PID=$!
+
+B="http://127.0.0.1:$BRIDGE_PORT"
+bridge_connected() {
+	curl -fsS "$B/health" 2>/dev/null | python3 -c 'import sys,json; sys.exit(0 if json.load(sys.stdin).get("openttd_connected") else 1)'
+}
+if ! wait_for 40 bridge_connected; then
+	fail "bridge did not connect to the server admin port in 40s"
+	echo "--- bridge.log (tail) ---" >&2; tail -n 40 "$BRIDGE_LOG" >&2 || true
+	echo "--- /health ---" >&2; curl -fsS "$B/health" >&2 2>/dev/null || true
+	exit 1
+fi
+log "bridge is up and connected to OpenTTD ($B, pid $BRIDGE_PID)"
+
+# --- start the AI through the bridge ----------------------------------------
+log "starting PrismaticAI via POST /ai/start ..."
+curl -fsS -X POST "$B/ai/start" -H 'content-type: application/json' \
+	-d '{"ai":"PrismaticAI"}' | tee "$OUT_DIR/ai-start.json"; echo
+
+# --- poll /companies until a company owns a vehicle -------------------------
+log "polling /companies until vehicles > 0 (timeout ${VEHICLE_TIMEOUT}s)..."
+WINNER_JSON="$OUT_DIR/companies-winner.json"
+deadline=$(( $(date +%s) + VEHICLE_TIMEOUT ))
+found=1
+while [ "$(date +%s)" -lt "$deadline" ]; do
+	kill -0 "$SERVER_PID" 2>/dev/null || { fail "server died during the run"; break; }
+	kill -0 "$BRIDGE_PID" 2>/dev/null || { fail "bridge died during the run"; break; }
+	body="$(curl -fsS "$B/companies" 2>/dev/null || true)"
+	if [ -n "$body" ]; then
+		if printf '%s' "$body" | WINNER_JSON="$WINNER_JSON" python3 -c '
+import sys, json, os
+cs = json.load(sys.stdin)
+def veh(c):
+    return sum((c.get(k) or 0) for k in ("trains","lorries","busses","planes","ships"))
+win = next((c for c in cs if veh(c) > 0), None)
+if win is None:
+    best = max((veh(c) for c in cs), default=0)
+    print(f"  ... {len(cs)} company(ies), max vehicles so far = {best}", file=sys.stderr)
+    sys.exit(1)
+json.dump({"company": win, "vehicles": veh(win)}, open(os.environ["WINNER_JSON"], "w"), indent=2)
+print(f"  company {win[\"id\"]} ({win[\"name\"]}) owns {veh(win)} vehicle(s): "
+      f"busses={win.get(\"busses\")} lorries={win.get(\"lorries\")} trains={win.get(\"trains\")} "
+      f"planes={win.get(\"planes\")} ships={win.get(\"ships\")}; "
+      f"value={win.get(\"company_value\")} performance={win.get(\"performance\")}")
+'; then
+			found=0
+			break
+		fi
+	fi
+	sleep 3
+done
+
+# --- verdict ----------------------------------------------------------------
+{
+	echo "bridge-live-check $TS"
+	echo "binary:      $BINARY"
+	echo "graphics:    $GRAPHICS_SET"
+	echo "ports:       admin=$ADMIN_PORT server=$SERVER_PORT bridge=$BRIDGE_PORT"
+	echo "server_log:  $SERVER_LOG"
+	echo "bridge_log:  $BRIDGE_LOG"
+} >"$OUT_DIR/summary.txt"
+
+if [ "$found" -eq 0 ]; then
+	log "PASS -- the bridge drove PrismaticAI to own a vehicle, live, on this tree"
+	cat "$WINNER_JSON" | tee -a "$OUT_DIR/summary.txt"
+	echo "artifacts in: $OUT_DIR"
+	exit 0
+else
+	fail "no company owned a vehicle within ${VEHICLE_TIMEOUT}s"
+	echo "--- /companies (last) ---" >&2; curl -fsS "$B/companies" >&2 2>/dev/null || true; echo >&2
+	echo "--- /ai/list ---" >&2; curl -fsS "$B/ai/list" >&2 2>/dev/null || true; echo >&2
+	echo "--- server.log (tail) ---" >&2; tail -n 30 "$SERVER_LOG" >&2 || true
+	echo "--- bridge.log (tail) ---" >&2; tail -n 30 "$BRIDGE_LOG" >&2 || true
+	echo "artifacts in: $OUT_DIR" >&2
+	exit 1
+fi

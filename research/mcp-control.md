@@ -149,7 +149,7 @@ then from each AI's `info.nut` (`AddSetting` blocks: name, description, range, d
 | `GET /api/bots` | the AIs, their settings, and the AI companies running now |
 | `POST /api/bots/start` `{ai, settings}` | start the bot (`openttd.ai.start` when the game has it, else `start_ai`) |
 | `GET /api/bots/choices` | what a town, industry or cargo setting may name: towns from `openttd://towns`, industries and cargos from `openttd://world/graph` where the game serves it |
-| `POST /api/bots/setting` `{company, name, value}` | change a live setting through `openttd.ai.set_setting`, approval-gated; without that tool it answers `{error, fallback: "start"}` |
+| `POST /api/bots/setting` `{company, name, value}` | change a live setting through `openttd.ai.set_setting`, approval-gated: the answer is `pending_approval` with an approval id until you approve it in the game (`prismatic_mcp approve <id>`) or in the panel. Without that tool it answers `{error, fallback: "start"}`. Master has the tool since 3f6131af76, the command catalogue: 125 of 146 game commands as approval-gated MCP tools. On 2026-11-16 a change of `line_budget` reached `pending_approval` and was withdrawn with `prismatic_mcp deny`, since an agent never approves its own request |
 
 `/api/bots` has one shape whatever the source: each setting carries `min`, `max`, `step`,
 `default`, `flags` (`boolean`, `in_game`, `developer`), `labels`, `value` and `editable`, and

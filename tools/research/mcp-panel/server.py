@@ -77,7 +77,10 @@ class Game:
         self._server_tools, self._server_tools_at = [], 0.0
         self.owner_console_q = queue.Queue()
         self.plans_seen = set()  # ~ console plan request numbers already answered
-        self.asks_reported = set()  # ids of answered questions already published as ask.answered
+        # Answered questions already published as ask.answered, by (id, question): the game window
+        # numbers its questions from 1 again when the GUI client restarts, so an id alone matched a
+        # different, earlier question and the new answer was never published.
+        self.asks_reported = set()
         self.view_token = None  # token file of the GUI client whose view the panel shows and drives
 
     # ------------------------------------------------------------------ process
@@ -572,8 +575,9 @@ class Game:
         ask.answered here, so a reader of GET /api/ask and the watcher see the same events."""
         out = self.view_call("openttd.view.ask.answers")
         with self.lock:
-            fresh = [a for a in out.get("asks", []) if a.get("answer") is not None and a["id"] not in self.asks_reported]
-            self.asks_reported.update(a["id"] for a in fresh)
+            key = lambda a: (a["id"], a.get("question"))
+            fresh = [a for a in out.get("asks", []) if a.get("answer") is not None and key(a) not in self.asks_reported]
+            self.asks_reported.update(key(a) for a in fresh)
         for a in fresh:
             self.publish("ask.answered", a)
         return out
