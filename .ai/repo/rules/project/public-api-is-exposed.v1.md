@@ -4,7 +4,7 @@ version: 1
 kind: rule
 title: OpenTTD's public C++ API is exposed through MCP and OpenAPI, derived and measured
 description: Every game-state command (the Commands enum), every console command, and every static function of the Script API is reachable through MCP and documented in the panel's OpenAPI document, by derivation from the sources and the live catalogue, never by a hand-written list. Coverage is measured from the sources by tools/research/mcp-rhai's mcp-api-coverage.
-statement: Expose every Commands enum entry as openttd.cmd.<Name>, every Script API static function as openttd.api.<Class>.<Function>, and every console command through the derived console surface, each with its OpenAPI route; keep mcp-api-coverage at 100% in every dimension.
+statement: Expose every Commands enum entry as openttd.cmd.<Name> (<Name> its Cmd* function without the prefix, as its DEF_CMD_TRAIT declares), every Script API static function as openttd.api.<Class>.<Function>, and every console command through the derived console surface, each with its OpenAPI route; keep mcp-api-coverage at 100% in every dimension.
 status: active
 class: blocking
 depends_on: [project.mcp-surfaces-are-derived@1, project.game-state-mutates-only-through-commands@1]
@@ -26,12 +26,22 @@ Swagger at least, and this is enforced. A surface nobody measures is claimed, no
 - Script API functions that change state are commands underneath and follow the same path;
   read-only ones are tools or resources.
 
-# Current state (2026-11-15, master 9176fdfcdb)
+# Current state (2026-11-16, branch feature/command-catalogue)
 
-The rule is not met, and is recorded as not met: commands 0/146, console 83/86 (three commands
-are compiled only into some builds), Script API 0/660. The command-table catalogue
-(`openttd.cmd.*`, 125 of 146 exposable) is on branch `research/mcp-full-auto`, not merged. Issue
-I0036 carries the rest.
+The rule is not met, and is recorded as not met. Measured against a panel on this build (seed
+31337): commands 125/146, console 87/90, Script API 0/660.
+
+- Commands: every entry whose parameters convert from JSON is `openttd.cmd.<Name>`, derived from
+  the command table (`src/prismatic_mcp/prismatic_mcp_commands.cpp`), approval-gated, with its
+  OpenAPI route. The other 21 are listed in `openttd://commands` with `exposable: false` and the
+  types in the way: `EncodedString` (19), `VehicleListIdentifier` (3), `Source`, `Order` and a
+  variant (one each; a command can have more than one).
+- Console: the three missing commands (`newgrf_profile`, `reload_newgrfs`, `resettile`) are
+  compiled only into some builds.
+- Script API: not started. A Script API function runs only inside a running script's context
+  (an AI or game script instance), so it needs a design before any tool.
+- `tools/research/mcp-live-check` exercises one catalogue command end to end (refused when
+  malformed, pending, approved, posted, observed, verdict read). Issue I0036 carries the rest.
 
 # Failure behaviour
 

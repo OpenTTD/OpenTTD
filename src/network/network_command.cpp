@@ -52,6 +52,9 @@
 #include "../water_cmd.h"
 #include "../waypoint_cmd.h"
 #include "../script/script_cmd.h"
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+#include "../prismatic_mcp/prismatic_mcp_commands.h" /* RESEARCH-ONLY: CcPrismaticMcp */
+#endif
 
 #include "../safeguards.h"
 
@@ -85,6 +88,9 @@ static constexpr auto _callback_tuple = std::make_tuple(
 	&CcAddVehicleNewGroup,
 	&CcMoveStationName,
 	&CcMoveWaypointName
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	, &CcPrismaticMcp /* RESEARCH-ONLY: results of commands the embedded MCP server posts */
+#endif
 );
 
 #ifdef SILENCE_GCC_FUNCTION_POINTER_CAST

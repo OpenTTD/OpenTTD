@@ -5,9 +5,12 @@ server embedded inside this personal OpenTTD research fork. It exposes live Open
 MCP clients (Claude Code, MCP Inspector, the Prismatic platform) over HTTP+JSON-RPC, pinned to the
 stable **2025-11-25** spec. It is **not** part of upstream OpenTTD and is never network-exposed.
 
-> Status: a real, compiling, connectable **read-only** vertical, plus one gated mutation
-> (`game.set_pause`, via a two-phase, digest-bound approval: `openttd.decision.submit` →
-> console `prismatic_mcp approve <id>` → executed via `Command<Commands::Pause>::Post`).
+> Status: a real, compiling, connectable read-only vertical, plus approval-gated mutations: every
+> game command whose parameters convert from JSON is a tool `openttd.cmd.<Name>`, derived from the
+> command table (catalogue: `openttd://commands`), the company AIs are `openttd.ai.*`, and
+> `game.set_pause` stays. Each goes through a two-phase, digest-bound approval
+> (`openttd.decision.submit` or the tool → console `prismatic_mcp approve <id>` → posted through the
+> command system) — see `08-tool-catalog.md`.
 > The native GUI Control Center, a broader action catalogue, company scoping, an autonomous
 > multiplayer lab, SSE, and full conformance/determinism evidence are **staged** — see
 > `05-implementation-plan.md` for the honest per-phase status. Nothing here is a mock: the resources
@@ -120,5 +123,5 @@ For playing on official public servers, use the unmodified client instead:
 ## Boundaries
 
 Not an official OpenTTD feature. No upstream PR/issue. No public bind, no unauthenticated access, no
-token in logs/cfg/URL, no raw memory/pointer/filesystem exposure, no game-state mutation in this
-build. See `02-threat-model.md` and the ADR.
+token in logs/cfg/URL, no raw memory/pointer/filesystem exposure, no game-state mutation outside
+the approval-gated command path. See `02-threat-model.md` and the ADR.

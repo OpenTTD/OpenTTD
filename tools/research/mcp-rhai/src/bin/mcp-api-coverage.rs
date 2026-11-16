@@ -5,14 +5,15 @@
 //! src/command_type.h (every game-state change), the console commands registered in
 //! src/console_cmds.cpp, and the static functions of the Script API classes in
 //! src/script/api/script_*.hpp. Compares each with what a running panel exposes: MCP tools/list
-//! (`openttd.cmd.<Name>` for a command) and the panel's OpenAPI document (one route per tool, so
+//! (`openttd.cmd.<Name>` for a command, `<Name>` its Cmd* function without the prefix, mapped from
+//! the enum entry by the `DEF_CMD_TRAIT` declarations in src/*_cmd.h) and the panel's OpenAPI document (one route per tool, so
 //! Swagger shows it). Console commands count as exposed when the panel's Rhai derivation sees them
 //! (list_cmds through /api/console).
 //!
 //! Usage: mcp-api-coverage [--repo <path>] [--panel http://127.0.0.1:8800] [--json] [--report]
 //! Exit status: 0 every dimension is fully exposed, 10 a dimension is not (unless --report),
 //! 2 usage, 3 the sources or the panel cannot be read.
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use std::path::{Path, PathBuf};
 use std::time::Duration;
 
@@ -34,6 +35,38 @@ fn commands(repo: &Path) -> std::io::Result<BTreeSet<String>> {
                 .then_some(name)
         })
         .collect())
+}
+
+/// The `(enum entry, Cmd* function)` pairs a header declares with `DEF_CMD_TRAIT(Commands::X, CmdY, ...)`.
+fn trait_pairs(text: &str) -> Vec<(String, String)> {
+    text.split("DEF_CMD_TRAIT(Commands::").skip(1).filter_map(|rest| {
+        let mut parts = rest.splitn(3, ',');
+        let entry = parts.next()?.trim();
+        let function = parts.next()?.trim();
+        (!entry.is_empty() && function.starts_with("Cmd")).then(|| (entry.to_string(), function.to_string()))
+    }).collect()
+}
+
+/// Every command's tool name, `openttd.cmd.<function without Cmd>`, by its enum entry: the
+/// catalogue names a tool after the function the command runs, which the enum entry maps to in
+/// the `DEF_CMD_TRAIT` declarations (every header under src/).
+fn command_tools(repo: &Path) -> std::io::Result<BTreeMap<String, String>> {
+    let mut out = BTreeMap::new();
+    let mut dirs = vec![repo.join("src")];
+    while let Some(dir) = dirs.pop() {
+        for entry in std::fs::read_dir(&dir)? {
+            let path = entry?.path();
+            if path.is_dir() {
+                dirs.push(path);
+            } else if path.extension().is_some_and(|e| e == "h") {
+                let text = std::fs::read_to_string(&path).unwrap_or_default();
+                for (entry, function) in trait_pairs(&text) {
+                    out.insert(entry, format!("openttd.cmd.{}", &function[3..]));
+                }
+            }
+        }
+    }
+    Ok(out)
 }
 
 fn console_commands(repo: &Path) -> std::io::Result<BTreeSet<String>> {
@@ -110,11 +143,11 @@ fn main() {
             }
         }
     }
-    let (cmds, cons, api) = match (commands(&repo), console_commands(&repo), script_api(&repo)) {
-        (Ok(a), Ok(b), Ok(c)) => (a, b, c),
-        (a, b, c) => {
-            eprintln!("mcp-api-coverage: cannot read the sources under {}: {:?} {:?} {:?}", repo.display(),
-                      a.err(), b.err(), c.err());
+    let (cmds, cons, api, cmd_tools) = match (commands(&repo), console_commands(&repo), script_api(&repo), command_tools(&repo)) {
+        (Ok(a), Ok(b), Ok(c), Ok(d)) => (a, b, c, d),
+        (a, b, c, d) => {
+            eprintln!("mcp-api-coverage: cannot read the sources under {}: {:?} {:?} {:?} {:?}", repo.display(),
+                      a.err(), b.err(), c.err(), d.err());
             std::process::exit(3);
         }
     };
@@ -133,9 +166,10 @@ fn main() {
     let live_console: BTreeSet<String> = listed.get("output").and_then(Value::as_array).into_iter().flatten()
         .filter_map(|l| l.as_str().map(str::trim).map(str::to_string)).collect();
 
-    // A command is exposed when openttd.cmd.<Name> is an MCP tool and its derived route is in OpenAPI.
+    // A command is exposed when its tool (named after its Cmd* function) is an MCP tool and its
+    // derived route is in OpenAPI. An entry no DEF_CMD_TRAIT maps is looked up by its own name.
     let cmd_exposed = |c: &String| {
-        let tool = format!("openttd.cmd.{c}");
+        let tool = cmd_tools.get(c).cloned().unwrap_or_else(|| format!("openttd.cmd.{c}"));
         tool_names.contains(&tool) && routes.contains(&format!("/api/tools/{tool}"))
     };
     // A script API function is exposed when a tool names its class and function (openttd.api.<Class>.<Function>).
@@ -170,5 +204,30 @@ fn main() {
     }
     if !full && !report {
         std::process::exit(10);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn a_command_is_named_after_the_function_its_trait_declares() {
+        let header = "DEF_CMD_TRAIT(Commands::BuildRail, CmdBuildSingleRail, CommandFlags({CommandFlag::Auto}), CommandType::LandscapeConstruction)\n\
+                      DEF_CMD_TRAIT(Commands::MoveWaypointNAme, CmdMoveWaypointName, {}, CommandType::OtherManagement)\n\
+                      #define DEF_CMD_TRAIT(cmd_, proc_, flags_, type_)";
+        assert_eq!(trait_pairs(header), vec![
+            ("BuildRail".to_string(), "CmdBuildSingleRail".to_string()),
+            ("MoveWaypointNAme".to_string(), "CmdMoveWaypointName".to_string()),
+        ]);
+    }
+
+    #[test]
+    fn every_command_of_this_checkout_maps_to_a_tool() {
+        let repo = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../..");
+        let (cmds, tools) = (commands(&repo).unwrap(), command_tools(&repo).unwrap());
+        let unmapped: Vec<_> = cmds.iter().filter(|c| !tools.contains_key(*c)).collect();
+        assert!(unmapped.is_empty(), "no DEF_CMD_TRAIT for {unmapped:?}");
+        assert_eq!(tools["BuildRail"], "openttd.cmd.BuildSingleRail");
     }
 }

@@ -4,7 +4,8 @@
 # Starts a headless dedicated server from an MCP-enabled build, starts the MCP server through
 # the console, and drives it over loopback HTTP the way an MCP client would. It checks the
 # security defaults (bearer auth, Origin rejection), live reads, and the approval state
-# machine of the one gated mutation (openttd.game.set_pause): pending -> operator approval in
+# machine of the gated mutations (openttd.game.set_pause, and openttd.cmd.Pause from the derived
+# command catalogue): pending -> operator approval in
 # the console -> execution through the command system with the effect observed -> replay and
 # changed arguments refused; and the same through openttd.decision.submit with the operator
 # denying it: nothing changes, and the next submission asks again.
@@ -181,11 +182,19 @@ check "changed arguments do not ride on the approval (status=${status:-?})" \
 
 out="$(rpc "$TOKEN" "$PAUSE")"
 status="$(tool_field "${out#* }" status)"; result="$(tool_field "${out#* }" command_result)"
-check "the approved call executes through the command system (status=${status:-?}, command_result=${result:-?})" \
-  "$([[ "$status" == executed && "$result" == succeeded ]] && echo 1 || echo 0)"
+decision="$(tool_field "${out#* }" decision_id)"
+# Posting is asynchronous: the command runs on a later tick, so the call answers "queued" (or
+# already "succeeded") and the result is read back with openttd.decision.get once it has run.
+check "the approved call is posted through the command system (status=${status:-?}, command_result=${result:-?})" \
+  "$([[ "$status" == executed && ( "$result" == queued || "$result" == succeeded ) && -n "$decision" ]] && echo 1 || echo 0)"
 sleep 1
 paused1="$(state_field "$(rpc "$TOKEN" "$READ_STATE" | cut -d' ' -f2-)" paused)"
 check "the effect is observed in the game (paused=${paused1:-?})" "$([[ "$paused1" == True ]] && echo 1 || echo 0)"
+GET="{\"jsonrpc\":\"2.0\",\"id\":10,\"method\":\"tools/call\",\"params\":{\"name\":\"openttd.decision.get\",\"arguments\":{\"decision_id\":${decision:-0}}}}"
+out="$(rpc "$TOKEN" "$GET")"
+result="$(tool_field "${out#* }" command_result)"; verdict="$(tool_field "${out#* }" verdict)"
+check "openttd.decision.get reads the command's result once it ran (command_result=${result:-?}, verdict=${verdict:-?})" \
+  "$([[ "$result" == succeeded && -n "$verdict" && "$verdict" != PENDING_OBSERVATION ]] && echo 1 || echo 0)"
 
 out="$(rpc "$TOKEN" "$PAUSE")"
 status="$(tool_field "${out#* }" status)"
@@ -207,6 +216,34 @@ out="$(rpc "$TOKEN" "$SUBMIT")"
 status="$(tool_field "${out#* }" status)"; again="$(tool_field "${out#* }" approval_id)"
 check "after a denial the decision asks again (status=${status:-?}, approval #${again:-?})" \
   "$([[ "$status" == pending_approval && -n "$again" && "$again" != "$approval" ]] && echo 1 || echo 0)"
+
+# A game command from the derived catalogue (openttd.cmd.<Name>, the command table's CmdPause):
+# malformed parameters are refused before anything is asked; well-formed ones wait for the
+# operator, run through the command system once approved, and their verdict is readable.
+BAD='{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"openttd.cmd.Pause","arguments":{"company":"server","params":[0]}}}'
+out="$(rpc "$TOKEN" "$BAD")"
+status="$(tool_field "${out#* }" status)"; valid="$(tool_field "${out#* }" valid)"
+check "a catalogue command with the wrong parameters is refused, nothing asked (valid=${valid:-?}, status=${status:-none})" \
+  "$([[ "$valid" == False && ( -z "$status" || "$status" == None ) ]] && echo 1 || echo 0)"
+UNPAUSE='{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"openttd.cmd.Pause","arguments":{"company":"server","params":[0,false]}}}'
+out="$(rpc "$TOKEN" "$UNPAUSE")"
+status="$(tool_field "${out#* }" status)"; approval="$(tool_field "${out#* }" approval_id)"
+check "a catalogue command first returns pending_approval (status=${status:-?}, approval #${approval:-?})" \
+  "$([[ "$status" == pending_approval && -n "$approval" ]] && echo 1 || echo 0)"
+console "prismatic_mcp approve $approval"
+sleep 2
+out="$(rpc "$TOKEN" "$UNPAUSE")"
+status="$(tool_field "${out#* }" status)"; decision="$(tool_field "${out#* }" decision_id)"
+check "the approved catalogue command is posted (status=${status:-?}, decision #${decision:-?})" \
+  "$([[ "$status" == executed && -n "$decision" ]] && echo 1 || echo 0)"
+sleep 2
+paused3="$(state_field "$(rpc "$TOKEN" "$READ_STATE" | cut -d' ' -f2-)" paused)"
+check "its effect is observed in the game (paused=${paused3:-?})" "$([[ "$paused3" == False ]] && echo 1 || echo 0)"
+GET="{\"jsonrpc\":\"2.0\",\"id\":9,\"method\":\"tools/call\",\"params\":{\"name\":\"openttd.decision.get\",\"arguments\":{\"decision_id\":${decision:-0}}}}"
+out="$(rpc "$TOKEN" "$GET")"
+result="$(tool_field "${out#* }" command_result)"; verdict="$(tool_field "${out#* }" verdict)"
+check "openttd.decision.get reads its result and verdict (command_result=${result:-?}, verdict=${verdict:-?})" \
+  "$([[ "$result" == succeeded && -n "$verdict" && "$verdict" != PENDING_OBSERVATION ]] && echo 1 || echo 0)"
 
 console "prismatic_mcp stop"
 sleep 1

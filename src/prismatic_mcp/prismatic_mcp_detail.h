@@ -40,14 +40,65 @@ inline std::string ArgDigestHex(std::string_view tool, std::string_view canonica
 	return out;
 }
 
-/** The typed action types this build can execute, the one place they are named: the validator,
- * openttd.decision.list_action_types and the decision tools' input schemas all read this table. */
-inline constexpr std::array<std::string_view, 1> ACTION_TYPES = {"game.set_pause"};
+/** Why session- and world-bound decision state is being dropped. */
+enum class ResetReason : uint8_t {
+	ServerStopped,   ///< the MCP server stopped; the world goes on
+	TokenRotated,    ///< the bearer token changed; the world goes on
+	GameModeChanged, ///< the game mode changed (menu, editor, a game): the world is gone
+	WorldReplaced,   ///< a new or loaded world (the tick counter went back): the world is gone
+};
+
+/** What a reset drops. */
+struct ResetEffect {
+	bool clear_approvals;     ///< every approval, granted or pending
+	bool invalidate_awaiting; ///< decisions still waiting for their commands' results
+};
+
+/**
+ * The rule: an approval binds consent to one session of one world, so every reset drops it.
+ * A posted command still runs in the same world after a stop or a token rotation and its result
+ * still arrives; only when the world is gone will it never come, so only then are waiting
+ * decisions closed.
+ */
+constexpr ResetEffect EffectOf(ResetReason r)
+{
+	bool world_gone = r == ResetReason::GameModeChanged || r == ResetReason::WorldReplaced;
+	return ResetEffect{true, world_gone};
+}
+
+/** @return The words a reset is logged and recorded with. */
+constexpr std::string_view ReasonText(ResetReason r)
+{
+	switch (r) {
+		case ResetReason::ServerStopped: return "server stopped";
+		case ResetReason::TokenRotated: return "token rotated";
+		case ResetReason::GameModeChanged: return "game mode changed";
+		case ResetReason::WorldReplaced: return "a new or loaded world";
+	}
+	return "reset";
+}
+
+/** @return Whether a reset that invalidates waiting decisions closes a decision with this verdict. */
+inline bool ClosedByReset(std::string_view verdict)
+{
+	return verdict == "PENDING_OBSERVATION";
+}
+
+/** The fixed typed action types this build can execute, the one place they are named; the game
+ * commands add one "command.<Name>" type each, derived from the command table (prismatic_mcp_commands).
+ * The validator, openttd.decision.list_action_types and the decision tools' input schemas read both. */
+inline constexpr std::array<std::string_view, 5> ACTION_TYPES = {"game.set_pause", "ai.set_setting", "ai.start", "ai.stop", "ai.reload"};
 
 /** Whether this build can execute a typed action of this type. Anything else is rejected. */
 inline bool IsKnownActionType(std::string_view type)
 {
-	return std::find(ACTION_TYPES.begin(), ACTION_TYPES.end(), type) != ACTION_TYPES.end();
+	if (std::find(ACTION_TYPES.begin(), ACTION_TYPES.end(), type) != ACTION_TYPES.end()) return true;
+	/* "command.<Name>": a game command by its Cmd* name; whether it exists is the catalogue's call. */
+	if (!type.starts_with("command.") || type.size() == 8) return false;
+	for (char c : type.substr(8)) {
+		if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'))) return false;
+	}
+	return true;
 }
 
 /** Case-insensitive Content-Length parse from a raw header block. nullopt if absent/invalid. */

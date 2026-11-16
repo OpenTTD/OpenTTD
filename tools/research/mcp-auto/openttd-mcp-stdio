@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+# RESEARCH-ONLY: stdio MCP proxy for the embedded OpenTTD MCP server.
+#
+# An MCP client (Claude Code, MCP Inspector) speaks newline-delimited JSON-RPC on this
+# process's stdin/stdout. Every request is forwarded to the control panel's loopback
+# endpoint (POST <panel>/api/rpc), which holds the bearer token and talks to the game's
+# MCP server; this proxy never sees the token.
+#
+# Two translations, nothing else:
+#   - tool names: the game names tools with dots (openttd.game.set_pause), which some
+#     clients refuse; the client sees underscores (openttd_game_set_pause) and the call
+#     is mapped back to the real name.
+#   - protocol version: the client is answered in the version it asked for when the
+#     server's differs; tools and resources have the same shape in both.
+#
+# Usage: openttd-mcp-stdio [--panel http://127.0.0.1:8800]
+#        (or OPENTTD_MCP_PANEL=http://127.0.0.1:8801)
+import json
+import os
+import sys
+import urllib.error
+import urllib.request
+
+PANEL = os.environ.get("OPENTTD_MCP_PANEL", "http://127.0.0.1:8800")
+if len(sys.argv) >= 3 and sys.argv[1] == "--panel":
+    PANEL = sys.argv[2]
+PANEL = PANEL.rstrip("/")
+if not PANEL.startswith(("http://127.0.0.1:", "http://localhost:", "http://[::1]:")):
+    sys.exit("openttd-mcp-stdio: the panel must be on loopback, got " + PANEL)
+
+NAMES = {}  # client-facing name -> server name
+
+
+def log(msg):
+    print("openttd-mcp-stdio: " + msg, file=sys.stderr, flush=True)
+
+
+def client_name(name):
+    alias = name.replace(".", "_")
+    NAMES[alias] = name
+    return alias
+
+
+def server_name(name):
+    if name in NAMES:
+        return NAMES[name]
+    return name.replace("_", ".") if name.startswith("openttd_") else name
+
+
+def forward(method, params):
+    body = json.dumps({"method": method, "params": params or {}}).encode()
+    req = urllib.request.Request(PANEL + "/api/rpc", data=body,
+                                 headers={"Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        return {"error": {"code": -32603, "message": "panel HTTP %d: %s" % (e.code, e.read()[:300])}}
+    except (urllib.error.URLError, OSError, ValueError) as e:
+        return {"error": {"code": -32603, "message": "panel unreachable at %s: %s" % (PANEL, e)}}
+
+
+def handle(msg):
+    method = msg.get("method")
+    params = msg.get("params") or {}
+    if method == "ping":
+        return {"result": {}}
+    if method == "tools/call" and "name" in params:
+        params = dict(params, name=server_name(params["name"]))
+    reply = forward(method, params)
+    if "result" in reply and method == "tools/list":
+        for tool in reply["result"].get("tools", []):
+            tool["name"] = client_name(tool["name"])
+    if "result" in reply and method == "initialize":
+        asked = params.get("protocolVersion")
+        if asked and reply["result"].get("protocolVersion") != asked:
+            reply["result"]["protocolVersion"] = asked
+    return reply
+
+
+def main():
+    log("forwarding to %s/api/rpc" % PANEL)
+    for line in sys.stdin:
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            msg = json.loads(line)
+        except ValueError:
+            out = {"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}}
+            sys.stdout.write(json.dumps(out) + "\n")
+            sys.stdout.flush()
+            continue
+        if "id" not in msg:  # a notification: nothing to answer
+            continue
+        reply = handle(msg)
+        out = {"jsonrpc": "2.0", "id": msg["id"]}
+        if "error" in reply:
+            out["error"] = reply["error"]
+        else:
+            out["result"] = reply.get("result", {})
+        sys.stdout.write(json.dumps(out) + "\n")
+        sys.stdout.flush()
+
+
+if __name__ == "__main__":
+    main()

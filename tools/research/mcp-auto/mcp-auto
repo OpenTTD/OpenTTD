@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+# RESEARCH-ONLY: the full-auto loop. An autonomous agent that plays the OpenTTD game through
+# the embedded MCP server and nothing else: it observes through MCP resources, decides by a
+# policy, and acts only through the decision contract (validate -> submit -> approval ->
+# resubmit -> executed through the command system -> verified against observed state).
+#
+# It talks to the control panel's loopback API (tools/research/mcp-panel), which holds the
+# MCP bearer token; the loop never sees it. Approval is the operator's act and never the
+# loop's: a pending decision waits until a person approves it (the panel, or
+# `prismatic_mcp approve <id>` in the console), or until the operator has switched on the
+# panel's own auto-approve. The loop has no way to approve its own decisions, by design.
+#
+# Usage:
+#   mcp-auto [--panel URL] [--interval S] [--cycles N] [--approval-wait S] [--prove-cycle]
+#   --prove-cycle   run one full pause -> resume decision round trip and exit 0/1 on its verdict
+#   --cycles 0      run until interrupted (default)
+import argparse
+import json
+import sys
+import time
+import urllib.error
+import urllib.request
+
+
+class Panel:
+    def __init__(self, url):
+        self.url = url.rstrip("/")
+        if not self.url.startswith(("http://127.0.0.1:", "http://localhost:")):
+            sys.exit("mcp-auto: the panel must be on loopback")
+        self.rpc_id = 0
+
+    def _req(self, path, body=None):
+        data = None if body is None else json.dumps(body).encode()
+        req = urllib.request.Request(self.url + path, data=data,
+                                     headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read().decode())
+
+    def rpc(self, method, params):
+        reply = self._req("/api/rpc", {"method": method, "params": params})
+        if "error" in reply:
+            raise RuntimeError("%s: %s" % (method, reply["error"]))
+        return reply["result"]
+
+    def read(self, uri):
+        res = self.rpc("resources/read", {"uri": uri})
+        return json.loads(res["contents"][0]["text"])
+
+    def tool(self, name, args):
+        res = self.rpc("tools/call", {"name": name, "arguments": args})
+        text = res["content"][0]["text"]
+        return json.loads(text), bool(res.get("isError"))
+
+
+def log(kind, msg, **fields):
+    line = {"t": time.strftime("%H:%M:%S"), "kind": kind, "msg": msg}
+    line.update(fields)
+    print(json.dumps(line), flush=True)
+
+
+def decide(panel, action, wait_s):
+    """One decision through the whole contract. Returns the final tool reply."""
+    check, _ = panel.tool("openttd.decision.validate", {"action": action})
+    if not check.get("valid"):
+        log("decision", "refused by validation", action=action, errors=check.get("errors"))
+        return check
+    out, err = panel.tool("openttd.decision.submit", {"action": action})
+    if out.get("status") == "pending_approval":
+        aid = out["approval_id"]
+        log("decision", "waiting for operator approval", action=action, approval_id=aid,
+            hint="approve in the panel or: prismatic_mcp approve %d" % aid, wait_s=wait_s)
+        deadline = time.time() + wait_s
+        while time.time() < deadline:
+            out, err = panel.tool("openttd.decision.submit", {"action": action})
+            if out.get("status") == "executed":
+                break
+            time.sleep(1.0)
+    if out.get("status") == "executed":
+        # The verdict is taken when the command has actually run (a later tick on a server).
+        did = out.get("decision_id")
+        rec = out
+        deadline = time.time() + 15.0
+        while time.time() < deadline:
+            rec, _ = panel.tool("openttd.decision.get", {"decision_id": did})
+            if rec.get("verdict") != "PENDING_OBSERVATION":
+                break
+            time.sleep(0.5)
+        log("decision", "executed", action=action, decision_id=did, verdict=rec.get("verdict"),
+            command_result=rec.get("command_result"), verification=rec.get("verification"),
+            error=rec.get("error") or None, cost=rec.get("cost"))
+        return rec
+    log("decision", "not executed", action=action, reply=out)
+    return out
+
+
+def observe(panel):
+    state = panel.read("openttd://game/state")
+    companies = panel.read("openttd://companies")
+    d = state.get("data", {})
+    comps = companies.get("data", {}).get("companies", companies.get("data", []))
+    log("observe", "tick %s %s" % (state.get("game_tick"), state.get("game_date")),
+        paused=d.get("paused"), vehicles=d.get("num_vehicles"), towns=d.get("num_towns"),
+        companies=comps)
+    return state, companies
+
+
+def stalled_vehicles(panel):
+    """Vehicles a player stopped outside a depot: the company earns nothing from them."""
+    vehicles = panel.read("openttd://vehicles").get("data", {}).get("vehicles", [])
+    return [v for v in vehicles if v["stopped"] and not v["crashed"] and not v.get("in_depot")]
+
+
+def prove_cycle(panel, wait_s):
+    first = decide(panel, {"type": "game.set_pause", "arguments": {"pause": True}}, wait_s)
+    second = decide(panel, {"type": "game.set_pause", "arguments": {"pause": False}}, wait_s)
+    trace = panel.read("openttd://decisions").get("data", {}).get("decisions", [])
+    ok = (first.get("verdict") == "VERIFIED_SUCCESS" and second.get("verdict") == "VERIFIED_SUCCESS")
+    log("proof", "PASS" if ok else "FAIL", decisions_recorded=len(trace),
+        last=trace[-2:] if trace else [])
+    return ok
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--panel", default="http://127.0.0.1:8800")
+    ap.add_argument("--interval", type=float, default=5.0)
+    ap.add_argument("--cycles", type=int, default=0)
+    ap.add_argument("--approval-wait", type=float, default=120.0)
+    ap.add_argument("--prove-cycle", action="store_true")
+    a = ap.parse_args()
+    panel = Panel(a.panel)
+    init = panel.rpc("initialize", {"protocolVersion": "2025-11-25", "capabilities": {},
+                                    "clientInfo": {"name": "mcp-auto", "version": "1"}})
+    log("start", "connected", server=init.get("serverInfo"))
+    if a.prove_cycle:
+        sys.exit(0 if prove_cycle(panel, a.approval_wait) else 1)
+    n = 0
+    while a.cycles == 0 or n < a.cycles:
+        n += 1
+        state, _ = observe(panel)
+        # Policy: the game is meant to run. A pause nobody owns is lifted through the contract.
+        if state.get("data", {}).get("paused"):
+            decide(panel, {"type": "game.set_pause", "arguments": {"pause": False}}, a.approval_wait)
+        # Policy: a vehicle stopped outside a depot earns nothing; start it again, as its owner.
+        for v in stalled_vehicles(panel)[:3]:
+            decide(panel, {"type": "command.StartStopVehicle",
+                           "arguments": {"company": v["owner"], "params": [v["id"], False], "location": v["tile"]}},
+                   a.approval_wait)
+        time.sleep(a.interval)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass

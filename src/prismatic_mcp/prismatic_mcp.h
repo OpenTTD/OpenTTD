@@ -17,6 +17,7 @@
 #include <cstdint>
 #include <span>
 #include <string>
+#include <string_view>
 
 /**
  * Lifecycle + control surface of the embedded MCP server. Every function here

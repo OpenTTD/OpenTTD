@@ -11,6 +11,9 @@ it. Each instance lists only what it can do (a dedicated server has no window: n
 | `openttd.ui.menu.run`, `openttd.ui.requests.answer` | `prismatic_mcp_menu.cpp` | the fork's toolbar menu and the requests asked through it | none, local to the client |
 | `openttd.decision.validate`, `openttd.decision.list_action_types` | `prismatic_mcp_server.cpp` | check a typed action, list the action types | none, read-only |
 | `openttd.decision.submit`, `openttd.game.set_pause` | `prismatic_mcp_server.cpp` | a typed action through the command system | the operator approves or denies in the console (`prismatic_mcp approve|deny <id>`), digest-bound, one use |
+| `openttd.cmd.<Name>` | `prismatic_mcp_commands.cpp`, `prismatic_mcp_params.hpp` | one tool per game command (`Commands` enum) whose parameters convert from JSON, derived from the command table; validated by a side-effect-free test run, posted through the network-safe command path, the verdict read with `openttd.decision.get` | the same approval as `submit` |
+| `openttd.ai.list`, `openttd.ai.set_setting`, `openttd.ai.start`, `openttd.ai.stop`, `openttd.ai.reload` | `prismatic_mcp_ai.cpp` | the company AIs and their settings (`openttd://ai`); a live setting changes without a restart | `list` none; the rest the same approval as `submit` |
+| `openttd.decision.get` | `prismatic_mcp_server.cpp` | one decision's provenance: the command result and the verdict taken after it ran | none, read-only |
 
 Every tool declares `annotations.readOnlyHint`: true for one that changes nothing, false otherwise
 (with `destructiveHint` and `idempotentHint` where they apply). A view tool that declares nothing
@@ -19,9 +22,20 @@ unit test holds every client tool to the rule. `mcp-coverage-check --probe --exe
 others too, once, on a throwaway game. The coverage probe
 (`tools/research/mcp-coverage-check --probe`) calls only the read-only ones, so an
 undeclared tool would go untested; the approval-gated ones are exercised by
-`tools/research/mcp-live-check`, approve and deny both. The action types are named once,
-`detail::ACTION_TYPES` (`prismatic_mcp_detail.h`): the validator, `list_action_types` and the
-decision tools' input schemas (`action.type` enum) read that table.
+`tools/research/mcp-live-check`, approve and deny both. The fixed action types are named once,
+`detail::ACTION_TYPES` (`prismatic_mcp_detail.h`), and every exposable game command adds
+`command.<Name>`; `ActionTypes()` (`prismatic_mcp_server.cpp`) joins the two, and the validator,
+`list_action_types` and the decision tools' input schemas (`action.type` enum) read it.
+
+A command whose parameters do not convert from JSON yet (an `EncodedString`, an `Order`, a variant)
+is not a tool: `openttd://commands` lists it with `exposable: false` and the types in the way
+(`unsupported_types`). The console spells the same calls: `bot` (the AIs) and `plan` (a request in
+your own words, handed to the panel's intent resolver).
+
+A build with the MCP server registers one more network command callback (`CcPrismaticMcp`, last in
+`network_command.cpp`'s table). An official server does not know that index, so such a build must
+not post commands into a public game; play there with the unmodified client
+([`../vanilla-client.md`](../vanilla-client.md), ADR 0030).
 
 ## Planned tools (the original design; most of it exists under other names above)
 

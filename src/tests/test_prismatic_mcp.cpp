@@ -24,6 +24,8 @@
 #include "../tile_map.h"
 
 #include <set>
+#include "../prismatic_mcp/prismatic_mcp_params.hpp"
+#include "../tile_type.h"
 
 #include "../safeguards.h"
 
@@ -55,6 +57,94 @@ TEST_CASE("IsKnownActionType gates the typed catalogue", "[prismatic_mcp]")
 	CHECK_FALSE(IsKnownActionType(""));
 	CHECK_FALSE(IsKnownActionType("rcon"));
 	for (std::string_view t : ACTION_TYPES) CHECK(IsKnownActionType(t)); // the table is the catalogue
+	/* A game command by its Cmd* name; existence is checked against the command table later. */
+	CHECK(IsKnownActionType("command.StartStopVehicle"));
+	CHECK_FALSE(IsKnownActionType("command."));
+	CHECK_FALSE(IsKnownActionType("command.Start Stop"));
+	CHECK_FALSE(IsKnownActionType("command.../x"));
+}
+
+namespace {
+enum class TestEnum : uint8_t { A = 0, B = 7 };
+struct NotConvertible { int a; int b; NotConvertible() = delete; };
+}
+
+TEST_CASE("Command parameters convert from JSON by their declared type", "[prismatic_mcp]")
+{
+	using namespace PrismaticMCP::params;
+	std::string err;
+
+	bool b = false;
+	CHECK(FromJson(json(true), b, err));
+	CHECK(b);
+	CHECK_FALSE(FromJson(json(1), b, err));
+
+	uint8_t u8 = 0;
+	CHECK(FromJson(json(255), u8, err));
+	CHECK(u8 == 255);
+	CHECK_FALSE(FromJson(json(256), u8, err));
+	CHECK_FALSE(FromJson(json(-1), u8, err));
+	CHECK_FALSE(FromJson(json("3"), u8, err));
+
+	int16_t i16 = 0;
+	CHECK(FromJson(json(-32768), i16, err));
+	CHECK_FALSE(FromJson(json(40000), i16, err));
+
+	TestEnum e = TestEnum::A;
+	CHECK(FromJson(json(7), e, err));
+	CHECK(e == TestEnum::B);
+
+	std::string str;
+	CHECK(FromJson(json("depot"), str, err));
+	CHECK(str == "depot");
+
+	/* A strong type is carried as its base integer. */
+	TileIndex tile{};
+	CHECK(FromJson(json(1234), tile, err));
+	CHECK(tile.base() == 1234);
+	CHECK(Schema<TileIndex>()["type"] == "integer");
+
+	/* An unsupported type is reported, never guessed at. */
+	CHECK_FALSE(IsSupported<NotConvertible>());
+	CHECK(IsSupported<TileIndex>());
+	CHECK(IsSupported<TestEnum>());
+}
+
+TEST_CASE("A parameter tuple is converted positionally and checked for arity", "[prismatic_mcp]")
+{
+	using namespace PrismaticMCP::params;
+	std::string err;
+	std::tuple<TileIndex, bool, uint8_t> t{};
+	CHECK(TupleFromJson(json::array({10, true, 3}), t, err));
+	CHECK(std::get<0>(t).base() == 10);
+	CHECK(std::get<1>(t));
+	CHECK(std::get<2>(t) == 3);
+	CHECK_FALSE(TupleFromJson(json::array({10, true}), t, err));
+	CHECK(err.find("expected 3 params") != std::string::npos);
+	CHECK_FALSE(TupleFromJson(json::array({10, 1, 3}), t, err));
+	CHECK(err.find("params[1]") != std::string::npos);
+	CHECK(TupleSchemas<decltype(t)>().size() == 3);
+	CHECK((TupleSupported<std::tuple<TileIndex, bool>>()));
+}
+
+TEST_CASE("A reset drops approvals always and waiting decisions only with the world", "[prismatic_mcp]")
+{
+	/* Every reset drops every approval: consent binds one session of one world. */
+	for (auto r : {ResetReason::ServerStopped, ResetReason::TokenRotated, ResetReason::GameModeChanged, ResetReason::WorldReplaced}) {
+		CHECK(EffectOf(r).clear_approvals);
+		CHECK_FALSE(ReasonText(r).empty());
+	}
+	/* Posted commands still run in the same world after a stop or a token rotation: keep waiting. */
+	CHECK_FALSE(EffectOf(ResetReason::ServerStopped).invalidate_awaiting);
+	CHECK_FALSE(EffectOf(ResetReason::TokenRotated).invalidate_awaiting);
+	/* The world is gone: their results will never come. */
+	CHECK(EffectOf(ResetReason::GameModeChanged).invalidate_awaiting);
+	CHECK(EffectOf(ResetReason::WorldReplaced).invalidate_awaiting);
+	/* Only a decision still waiting is closed; a verdict already taken stands. */
+	CHECK(ClosedByReset("PENDING_OBSERVATION"));
+	CHECK_FALSE(ClosedByReset("VERIFIED_SUCCESS"));
+	CHECK_FALSE(ClosedByReset("VERIFIED_FAILURE"));
+	CHECK_FALSE(ClosedByReset("INVALIDATED"));
 }
 
 TEST_CASE("ParseContentLength is case-insensitive and bounded", "[prismatic_mcp]")

@@ -35,6 +35,8 @@
 #include "prismatic_mcp_ui.h"
 #include "prismatic_mcp_view.h"
 #include "prismatic_mcp_world.h"
+#include "prismatic_mcp_commands.h"
+#include "prismatic_mcp_ai.h"
 
 #include "../3rdparty/nlohmann/json.hpp"
 #include "../core/random_func.hpp"
@@ -42,6 +44,8 @@
 #include "../rev.h"
 #include "../openttd.h"
 #include "../company_base.h"
+#include "../strings_func.h"
+#include "../table/strings.h"
 #include "../vehicle_base.h"
 #include "../town.h"
 #include "../map_func.h"
@@ -51,9 +55,12 @@
 #include "../network/core/address.h"
 #include "../command_func.h"
 #include "../command_type.h"
+#include "../network/network.h"
 #include "../misc_cmd.h"
 
 #include <array>
+#include <deque>
+#include <functional>
 #include <charconv>
 #include <map>
 #include <optional>
@@ -212,17 +219,35 @@ json ResourceCompanies()
 	for (const Company *c : Company::Iterate()) {
 		json jc;
 		jc["id"] = c->index.base();
-		jc["name"] = c->name;              // empty if the player never renamed it
+		jc["name"] = GetString(STR_COMPANY_NAME, c->index); // the displayed name, generated or renamed
+		jc["custom_name"] = c->name;       // empty if the player never renamed it
 		jc["is_ai"] = c->is_ai;
 		jc["money"] = (int64_t)c->money;
 		jc["loan"] = (int64_t)c->current_loan;
 		jc["max_loan"] = (int64_t)c->GetMaxLoan();
 		jc["loan_step"] = LOAN_INTERVAL; // one press of Borrow or Repay (misc_cmd.cpp); Repay takes min(loan, step)
+		jc["company_value"] = (int64_t)CalculateCompanyValue(c);
 		jc["money_unit"] = "internal_currency";
 		jc["inaugurated_year"] = (int)c->inaugurated_year_calendar.base();
 		list.push_back(std::move(jc));
 	}
 	env["data"] = json{{"companies", std::move(list)}};
+	return env;
+}
+
+/** openttd://commands -- the command catalogue, derived from the command table. */
+json ResourceCommands()
+{
+	json env = MakeEnvelope();
+	json list = json::array();
+	size_t exposable = 0;
+	for (size_t i = 0; i < cmds::Count(); i++) {
+		Commands c = static_cast<Commands>(i);
+		if (cmds::IsExposable(c)) exposable++;
+		list.push_back(cmds::Describe(c));
+	}
+	env["data"] = json{{"count", cmds::Count()}, {"exposable", exposable}, {"commands", std::move(list)},
+		{"usage", "tools/call openttd.cmd.<name> {company, params[, location]}; every call is approval-gated"}};
 	return env;
 }
 
@@ -252,11 +277,30 @@ json ResourceCoverage(); // what clients exercised, against the published catalo
 json ResourceWays();  // road ways and rail tracks per tile (prismatic_mcp_graph.cpp)
 json ResourceWorldGraph(); // the world as one typed graph (prismatic_mcp_graph.cpp)
 
-const std::array<ResourceEntry, 20> RESOURCES = {{
+json ResourceAi() { json env = MakeEnvelope(); env["data"] = ai::Resource(); return env; }
+
+/** Every typed action type this build can execute: the fixed table, then one "command.<Name>" per
+ * game command the catalogue exposes. openttd.decision.list_action_types and the decision tools'
+ * input schemas read this, so a type is offered exactly when the validator accepts it. */
+json ActionTypes()
+{
+	json types = json::array();
+	for (std::string_view t : detail::ACTION_TYPES) types.push_back(t);
+	for (size_t i = 0; i < cmds::Count(); i++) {
+		Commands c = static_cast<Commands>(i);
+		if (cmds::IsExposable(c)) types.push_back("command." + std::string(cmds::ShortName(c)));
+	}
+	return types;
+}
+
+/* The size is counted by the compiler, so adding a resource is one row. */
+const auto RESOURCES = std::to_array<ResourceEntry>({
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
 	{"openttd://companies", "Companies", "All companies with basic finances (server-visible)", &ResourceCompanies},
+	{"openttd://commands", "Commands", "Every game command, derived from the command table: category, flags, parameter schemas", &ResourceCommands},
+	{"openttd://ai", "AIs", "Every company's AI with its settings as declared by its info.nut and their live values; the AIs that can be started", &ResourceAi},
 	{"openttd://decisions", "Decisions", "Provenance trace: decision -> approval -> command -> observed verdict", &ResourceDecisions},
 	{"openttd://towns", "Towns", "Every town: id, name, tile, x/y, population (scroll_to a town by id)", &ResourceTowns},
 	{"openttd://map", "Map", "The whole map: tile types, heights and owners, one string per row, encoding included", &ResourceMap},
@@ -273,7 +317,7 @@ const std::array<ResourceEntry, 20> RESOURCES = {{
 	{"openttd://ui/requests", "Requests", "Questions the player asked in the game through the toolbar menu, each with its answer once an MCP client gave one", &ResourceRequests},
 	{"openttd://mcp/coverage", "MCP coverage", "Every published tool and resource with its call count since start, and those never called", &ResourceCoverage},
 	{"openttd://engines", "Engines", "Every engine some company can buy now: type, speed (also effective for aircraft), capacity, cargo, price, running cost, plane type, buyers", &ResourceEngines},
-}};
+});
 
 json ResourceMap()
 {
@@ -417,14 +461,23 @@ struct ProvenanceRecord {
 	uint64_t approval_id = 0;
 	std::string action_type;
 	std::string arg_digest;
-	std::string command_result;   ///< "succeeded"/"failed"/"not_executed"
-	std::string verdict;          ///< distinguishes EXECUTED from VERIFIED_SUCCESS (observed effect)
+	std::string command_result;   ///< "queued", then "succeeded"/"failed"; "rejected" when never queued
+	std::string verdict;          ///< PENDING_OBSERVATION until the command has run, then VERIFIED_* / EXECUTED_UNVERIFIED
+	std::string verification;     ///< what the verdict rests on: "observed_state" or "command_result"
+	std::string error;            ///< the command's error text, when it failed
+	int64_t cost = 0;             ///< the executed command's cost (internal currency)
+	std::string actor;            ///< "server", "deity" or the company id
+	Commands cmd = Commands::End; ///< the command posted, matched against its executed result
+	int callbacks_left = 0;       ///< executed results still to arrive
+	bool failed = false;          ///< one of its commands failed
+	std::function<bool()> observe; ///< asked after the last result: is the intended effect there?
 	uint64_t requested_tick = 0;
 	uint64_t observed_tick = 0;
 };
 
 std::vector<PendingApproval> _approvals;
 std::vector<ProvenanceRecord> _provenance;
+std::deque<uint64_t> _awaiting;   ///< decision ids posted and not yet executed, in posting order
 uint64_t _next_approval_id = 1;
 uint64_t _next_decision_id = 1;
 constexpr size_t MAX_APPROVALS = 64;
@@ -435,6 +488,12 @@ constexpr uint64_t APPROVAL_TTL_TICKS = 100000; ///< generous; the operator appr
 std::string ArgDigest(std::string_view tool, const json &args)
 {
 	return detail::ArgDigestHex(tool, args.dump());
+}
+
+ProvenanceRecord *FindDecision(uint64_t id)
+{
+	for (auto &p : _provenance) if (p.decision_id == id) return &p;
+	return nullptr;
 }
 
 PendingApproval *FindApproval(uint64_t id)
@@ -469,11 +528,91 @@ json ResourceDecisions()
 			{"decision_id", p.decision_id}, {"approval_id", p.approval_id},
 			{"action_type", p.action_type}, {"arg_digest", p.arg_digest},
 			{"command_result", p.command_result}, {"verdict", p.verdict},
+			{"verification", p.verification}, {"error", p.error}, {"cost", p.cost}, {"actor", p.actor},
 			{"requested_tick", p.requested_tick}, {"observed_tick", p.observed_tick},
 		});
 	}
 	env["data"] = json{{"decisions", std::move(arr)}};
 	return env;
+}
+
+/** The command a "command.<Name>" action type names, if any. */
+std::optional<Commands> CommandOf(std::string_view type)
+{
+	if (!type.starts_with("command.")) return std::nullopt;
+	return cmds::Find(type.substr(8));
+}
+
+/** Who a command action is posted as: "server" (default), "deity" or a company id. */
+bool ParseActor(const json &args, cmds::Actor &actor, std::string &label, std::string &err)
+{
+	if (_networking && !_network_server) {
+		/* Client mode: this process is a player's client; it can only act as its own company,
+		 * and its commands go to the server like the player's clicks. */
+		if (args.contains("company") && !(args["company"].is_string() && args["company"] == "server")
+				&& !(args["company"].is_number_integer() && args["company"].get<int64_t>() == _local_company.base())) {
+			err = fmt::format("this process is a network client; it acts only as its own company {}", _local_company.base());
+			return false;
+		}
+		actor.keep_current = true;
+		label = fmt::format("client:{}", _local_company.base());
+		return true;
+	}
+	if (!args.contains("company") || (args["company"].is_string() && args["company"] == "server")) {
+		actor.keep_current = true;
+		label = "server";
+		return true;
+	}
+	const json &c = args["company"];
+	if (c.is_string() && c == "deity") {
+		actor.keep_current = false;
+		actor.company = OWNER_DEITY;
+		label = "deity";
+		return true;
+	}
+	if (c.is_number_integer()) {
+		int64_t v = c.get<int64_t>();
+		if (v < 0 || v >= MAX_COMPANIES || !Company::IsValidID(CompanyID(static_cast<uint8_t>(v)))) {
+			err = fmt::format("no company {}", v);
+			return false;
+		}
+		actor.keep_current = false;
+		actor.company = CompanyID(static_cast<uint8_t>(v));
+		label = fmt::format("{}", v);
+		return true;
+	}
+	err = "company must be a company id, \"deity\" or \"server\"";
+	return false;
+}
+
+/** The location of a command action, required when the command takes one implicitly. */
+bool ParseLocation(Commands cmd, const json &args, TileIndex &tile, std::string &err)
+{
+	tile = TileIndex{};
+	if (!args.contains("location")) {
+		if (cmds::NeedsLocation(cmd)) { err = "this command requires 'location' (a tile index)"; return false; }
+		return true;
+	}
+	if (!args["location"].is_number_unsigned() || args["location"].get<uint64_t>() >= Map::Size()) {
+		err = "location must be a tile index below " + fmt::format("{}", Map::Size());
+		return false;
+	}
+	tile = TileIndex{static_cast<uint32_t>(args["location"].get<uint64_t>())};
+	return true;
+}
+
+/**
+ * Whether this process may post the command at all. A network client that posts a
+ * CommandFlag::Server command (Pause, CompanyControl, ...) is kicked by the server, so a
+ * client refuses it here, before anything is sent.
+ */
+bool ClientMayPost(Commands cmd, std::string &err)
+{
+	if (_networking && !_network_server && GetCommandFlags(cmd).Test(CommandFlag::Server)) {
+		err = "this is a server-only command and this process is a network client (the server would kick it)";
+		return false;
+	}
+	return true;
 }
 
 /** Non-mutating validation of a typed action + args (mission §10/§11). */
@@ -487,35 +626,158 @@ json ValidateAction(std::string_view type, const json &args, json &errors)
 			errors.push_back("game.set_pause requires boolean 'pause'");
 			valid = false;
 		}
+		if (std::string err; !ClientMayPost(Commands::Pause, err)) { errors.push_back(err); valid = false; }
+		result["required_scope"] = "SERVER_ADMIN";
+	} else if (ai::IsAiAction(type)) {
+		json details = ai::Validate(type, args, errors);
+		if (!errors.empty()) valid = false;
+		result["details"] = details;
+		result["required_scope"] = "AI_CONTROL";
+	} else if (auto cmd = CommandOf(type)) {
+		cmds::Actor actor;
+		std::string label, err;
+		TileIndex tile;
+		if (!cmds::IsExposable(*cmd)) { errors.push_back("this command has parameters that cannot be expressed in JSON"); valid = false; }
+		if (valid && !ClientMayPost(*cmd, err)) { errors.push_back(err); valid = false; }
+		if (valid && !ParseActor(args, actor, label, err)) { errors.push_back(err); valid = false; }
+		if (valid && !ParseLocation(*cmd, args, tile, err)) { errors.push_back(err); valid = false; }
+		if (valid) {
+			cmds::TestResult t = cmds::Test(*cmd, actor, args.value("params", json::array()));
+			if (!t.params_ok) { errors.push_back(t.error); valid = false; }
+			result["would_succeed"] = t.would_succeed;
+			result["estimated_cost"] = t.cost;
+			if (!t.would_succeed && !t.error.empty()) result["test_error"] = t.error;
+			result["actor"] = label;
+		}
+		result["command"] = cmds::Describe(*cmd);
+		result["required_scope"] = "GAME_MUTATION";
+	} else if (valid) {
+		errors.push_back("unknown command");
+		valid = false;
 	}
 	result["valid"] = valid;
 	result["errors"] = errors;
 	result["current_snapshot_id"] = fmt::format("tick-{}", (uint64_t)TimerGameTick::counter);
-	result["required_scope"] = (type == "game.set_pause") ? "SERVER_ADMIN" : "GAME_MUTATION";
 	result["approval_required"] = true;   // no mutation is ever auto-approved in this build
 	result["mutating"] = true;
 	return result;
 }
 
-/** Execute an approved, digest-bound action via the normal command path. Main thread. */
-json ExecuteAction(std::string_view type, const json &args, std::string &command_result, std::string &verdict)
+/** Take the verdict of a decision whose commands have all run (or that ran none). */
+void Conclude(ProvenanceRecord &p)
 {
-	json observed;
+	p.observed_tick = (uint64_t)TimerGameTick::counter;
+	p.command_result = p.failed ? "failed" : "succeeded";
+	if (p.observe) {
+		/* The effect, not the report: asked of the game after the last command ran. */
+		p.verification = "observed_state";
+		p.verdict = p.failed ? "VERIFIED_FAILURE" : (p.observe() ? "VERIFIED_SUCCESS" : "EXECUTED_UNVERIFIED");
+	} else {
+		p.verification = "command_result";
+		p.verdict = p.failed ? "VERIFIED_FAILURE" : "VERIFIED_SUCCESS";
+	}
+	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] decision #{} {} {} verdict={}", p.decision_id, p.action_type, p.command_result, p.verdict);
+}
+
+/** Register one executed result to come for a decision; called before each post. */
+void Expect(ProvenanceRecord &pr)
+{
+	pr.callbacks_left++;
+	_awaiting.push_back(pr.decision_id);
+}
+
+/** Withdraw the expectations of a decision whose post was refused before it was queued. */
+void Unexpect(uint64_t decision_id)
+{
+	ProvenanceRecord *pr = FindDecision(decision_id);
+	for (auto it = _awaiting.begin(); it != _awaiting.end();) {
+		if (*it == decision_id) {
+			it = _awaiting.erase(it);
+			if (pr != nullptr && pr->callbacks_left > 0) pr->callbacks_left--;
+		} else {
+			++it;
+		}
+	}
+}
+
+/** Record a decision refused before anything was posted. @return false */
+bool ExecuteRefused(uint64_t decision_id, const std::string &err)
+{
+	if (ProvenanceRecord *r = FindDecision(decision_id)) {
+		r->failed = true;
+		r->error = err;
+		Conclude(*r);
+		r->command_result = "rejected";
+	}
+	return false;
+}
+
+/**
+ * Carry out an approved, digest-bound action. Main thread.
+ * Commands go through the normal command path; on a network server they run on a later tick,
+ * so the verdict is taken by OnCommandResult when the last of them has actually executed.
+ * @return false when the action was refused before anything was queued; the record says why.
+ */
+bool ExecuteAction(std::string_view type, const json &args, ProvenanceRecord &pr)
+{
+	std::string err;
+	bool ok = false;
+	uint64_t did = pr.decision_id;
 	if (type == "game.set_pause") {
 		bool want = args["pause"].get<bool>();
+		pr.cmd = Commands::Pause;
+		pr.actor = "server";
+		pr.observe = [want]() { return _pause_mode.Any() == want; };
+		if (!ClientMayPost(Commands::Pause, err)) return ExecuteRefused(did, err);
+		Expect(pr);
 		/* SERVER_ADMIN synchronized command -- the deterministic path, not a raw write. */
-		bool ok = Command<Commands::Pause>::Post(PauseMode::Normal, want);
-		command_result = ok ? "succeeded" : "failed";
-		bool now_paused = _pause_mode.Any();      // observed post-command state
-		observed["paused"] = now_paused;
-		/* Verdict distinguishes EXECUTED from VERIFIED_SUCCESS: only claim success
-		 * if the observed effect matches the intent. */
-		verdict = (ok && now_paused == want) ? "VERIFIED_SUCCESS" : (ok ? "EXECUTED_UNVERIFIED" : "VERIFIED_FAILURE");
+		ok = Command<Commands::Pause>::Post(StringID{}, &CcPrismaticMcp, PauseMode::Normal, want);
+		if (!ok) err = "the pause command was refused";
+	} else if (ai::IsAiAction(type)) {
+		pr.cmd = Commands::CompanyControl;
+		pr.actor = "server";
+		ai::Posted posted = ai::Execute(type, args, [did]() { if (ProvenanceRecord *r = FindDecision(did)) Expect(*r); });
+		ok = posted.ok;
+		err = posted.error;
+		if (ProvenanceRecord *r = FindDecision(did)) {
+			r->observe = posted.observe;
+			/* A partly posted action keeps the expectations of what was posted. */
+			while (r->callbacks_left > posted.callbacks) {
+				auto it = std::find(_awaiting.rbegin(), _awaiting.rend(), did);
+				if (it == _awaiting.rend()) break;
+				_awaiting.erase(std::next(it).base());
+				r->callbacks_left--;
+			}
+			if (ok && posted.callbacks == 0 && r->verdict == "PENDING_OBSERVATION") Conclude(*r);
+		}
+	} else if (auto cmd = CommandOf(type)) {
+		cmds::Actor actor;
+		TileIndex tile;
+		pr.cmd = *cmd;
+		if (ClientMayPost(*cmd, err) && ParseActor(args, actor, pr.actor, err) && ParseLocation(*cmd, args, tile, err)) {
+			Expect(pr);
+			ok = cmds::Post(*cmd, actor, args.value("params", json::array()), tile, err);
+			if (!ok && err.empty()) {
+				cmds::TestResult t = cmds::Test(*cmd, actor, args.value("params", json::array()));
+				err = t.error.empty() ? "the command was refused before it was queued" : t.error;
+			}
+		}
 	} else {
-		command_result = "not_executed";
-		verdict = "INVALID";
+		err = "unknown action type";
 	}
-	return observed;
+	ProvenanceRecord *r = FindDecision(did);
+	if (!ok && r != nullptr) {
+		/* Refused before it was queued: no result will come. A single-player post that failed
+		 * has already been answered by its result, which keeps that verdict. */
+		Unexpect(did);
+		if (r->verdict == "PENDING_OBSERVATION") {
+			r->failed = true;
+			r->error = err;
+			Conclude(*r);
+			r->command_result = "rejected";
+		}
+	}
+	return ok;
 }
 
 /** tools/call for the typed decision + mutation tools. */
@@ -556,16 +818,37 @@ json HandleToolsCall(const json &id, const json &params)
 	}
 
 	if (name == "openttd.decision.list_action_types") {
-		json types = json::array();
-		for (std::string_view t : detail::ACTION_TYPES) types.push_back(t);
-		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", json{{"action_types", std::move(types)}}.dump()}}})}, {"isError", false}});
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", json{{"action_types", ActionTypes()}}.dump()}}})}, {"isError", false}});
 	}
 
-	/* The gated mutation tool. Two-phase: pending_approval -> (operator approves) -> executed. */
-	if (name == "openttd.game.set_pause" || name == "openttd.decision.submit") {
+	if (name == "openttd.ai.list") {
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", ai::Resource().dump()}}})}});
+	}
+
+	if (name == "openttd.decision.get") {
+		if (!args.contains("decision_id") || !args["decision_id"].is_number_unsigned()) {
+			return RpcError(id, -32602, "Invalid params: decision_id (integer) required");
+		}
+		const ProvenanceRecord *p = FindDecision(args["decision_id"].get<uint64_t>());
+		if (p == nullptr) return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", "{\"error\":\"no such decision\"}"}}})}, {"isError", true}});
+		json d = {{"decision_id", p->decision_id}, {"approval_id", p->approval_id}, {"action_type", p->action_type},
+			{"command_result", p->command_result}, {"verdict", p->verdict}, {"verification", p->verification},
+			{"error", p->error}, {"cost", p->cost}, {"actor", p->actor},
+			{"requested_tick", p->requested_tick}, {"observed_tick", p->observed_tick}};
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", d.dump()}}})}});
+	}
+
+	/* The gated mutation tools. Two-phase: pending_approval -> (operator approves) -> executed. */
+	bool is_cmd_tool = name.starts_with("openttd.cmd.");
+	bool is_ai_tool = name.starts_with("openttd.ai.") && ai::IsAiAction(name.substr(8));
+	if (name == "openttd.game.set_pause" || name == "openttd.decision.submit" || is_cmd_tool || is_ai_tool) {
 		std::string type = "game.set_pause";
 		json aargs = args;
-		if (name == "openttd.decision.submit") {
+		if (is_ai_tool) {
+			type = name.substr(8);
+		} else if (is_cmd_tool) {
+			type = "command." + name.substr(12);
+		} else if (name == "openttd.decision.submit") {
 			type = args.value("action", json::object()).value("type", "");
 			aargs = args.value("action", json::object()).value("arguments", json::object());
 		}
@@ -581,23 +864,24 @@ json HandleToolsCall(const json &id, const json &params)
 		/* Is there an APPROVED, non-expired, non-consumed approval bound to this exact digest? */
 		for (auto &a : _approvals) {
 			if (a.state == ApprovalState::Approved && a.arg_digest == digest && now <= a.expiry_tick) {
-				std::string cmd_result, verdict;
-				json observed = ExecuteAction(type, aargs, cmd_result, verdict);
 				a.state = ApprovalState::Consumed;   // one-time: replay needs a fresh approval
-				ProvenanceRecord pr;
+				if (_provenance.size() >= MAX_PROVENANCE) _provenance.erase(_provenance.begin());
+				ProvenanceRecord &pr = _provenance.emplace_back();
 				pr.decision_id = _next_decision_id++;
 				pr.approval_id = a.id;
 				pr.action_type = type;
 				pr.arg_digest = digest;
-				pr.command_result = cmd_result;
-				pr.verdict = verdict;
+				pr.command_result = "queued";
+				pr.verdict = "PENDING_OBSERVATION";
 				pr.requested_tick = now;
-				pr.observed_tick = (uint64_t)TimerGameTick::counter;
-				if (_provenance.size() >= MAX_PROVENANCE) _provenance.erase(_provenance.begin());
-				_provenance.push_back(pr);
-				json out = {{"status", "executed"}, {"approval_id", a.id}, {"decision_id", pr.decision_id},
-					{"command_result", cmd_result}, {"verdict", verdict}, {"observed", observed}};
-				return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}, {"isError", cmd_result != "succeeded"}});
+				uint64_t decision_id = pr.decision_id;
+				bool queued = ExecuteAction(type, aargs, pr);
+				const ProvenanceRecord *rec = FindDecision(decision_id);
+				json out = {{"status", queued ? "executed" : "rejected"}, {"approval_id", a.id}, {"decision_id", decision_id},
+					{"command_result", rec->command_result}, {"verdict", rec->verdict},
+					{"note", "the verdict is taken when the command has run; read it with openttd.decision.get"}};
+				if (!rec->error.empty()) out["error"] = rec->error;
+				return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}, {"isError", !queued}});
 			}
 		}
 
@@ -638,10 +922,9 @@ json ToolsList()
 	for (auto &t : View::Tools()) arr.push_back(t);
 	for (auto &t : UI::Tools()) arr.push_back(t);
 	for (auto &t : Menu::Tools()) arr.push_back(t);
-	/* The decision tools. Their action types come from detail::ACTION_TYPES; their annotations say
+	/* The decision tools. Their action types come from ActionTypes(); their annotations say
 	 * what a client (and the coverage probe, which calls only readOnlyHint tools) may assume. */
-	json types = json::array();
-	for (std::string_view t : detail::ACTION_TYPES) types.push_back(t);
+	const json types = ActionTypes();
 	const json action = {{"type", "object"}, {"required", json::array({"type"})},
 		{"properties", {{"type", {{"type", "string"}, {"enum", types}}}, {"arguments", {{"type", "object"}}}}}};
 	const json reads = {{"readOnlyHint", true}, {"idempotentHint", true}, {"openWorldHint", false}};
@@ -657,6 +940,32 @@ json ToolsList()
 	arr.push_back({{"name", "openttd.game.set_pause"}, {"description", "Approval-gated: pause/unpause via Commands::Pause. Requires operator approval (two-phase, digest-bound)"},
 		{"inputSchema", {{"type", "object"}, {"properties", {{"pause", {{"type", "boolean"}}}}}, {"required", json::array({"pause"})}}},
 		{"annotations", gated}});
+	arr.push_back({{"name", "openttd.decision.get"}, {"description", "Read one decision's provenance: command result and the verdict taken after the command ran"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"decision_id", {{"type", "integer"}, {"minimum", 1}}}}}, {"required", json::array({"decision_id"})}}}});
+	for (auto &t : ai::Tools()) arr.push_back(t);
+	/* One tool per game command whose parameters convert from JSON, derived from the command table. */
+	for (size_t i = 0; i < cmds::Count(); i++) {
+		Commands c = static_cast<Commands>(i);
+		if (!cmds::IsExposable(c)) continue;
+		json d = cmds::Describe(c);
+		std::string desc = fmt::format("Approval-gated game command {} ({}; flags: {}). Validates by a side-effect-free test run, "
+			"executes through the network-safe command path; verdict via openttd.decision.get.",
+			d["function"].get<std::string>(), d["category"].get<std::string>(), d["flags"].dump());
+		arr.push_back({{"name", "openttd.cmd." + std::string(cmds::ShortName(c))}, {"description", desc},
+			{"inputSchema", cmds::ToolInputSchema(c)}});
+	}
+	/* MCP annotations for the decision, AI and derived command tools, from how each is handled:
+	 * a tool that goes through the approval path mutates the game; the rest only read. */
+	for (auto &t : arr) {
+		std::string n = t["name"].get<std::string>();
+		bool mine = n.starts_with("openttd.decision.") || n == "openttd.game.set_pause" || n.starts_with("openttd.cmd.") || n.starts_with("openttd.ai.");
+		if (!mine || t.contains("annotations")) continue;
+		bool gated = n == "openttd.decision.submit" || n == "openttd.game.set_pause" || n.starts_with("openttd.cmd.")
+			|| (n.starts_with("openttd.ai.") && ai::IsAiAction(n.substr(8)));
+		t["annotations"] = gated
+			? json{{"readOnlyHint", false}, {"destructiveHint", true}, {"idempotentHint", false}, {"openWorldHint", false}}
+			: json{{"readOnlyHint", true}, {"openWorldHint", false}};
+	}
 	return json{{"tools", arr}};
 }
 
@@ -688,9 +997,11 @@ std::optional<json> DispatchOne(const json &req)
 			{"capabilities", caps},
 			{"serverInfo", {{"name", "openttd-prismatic-mcp"}, {"version", _openttd_revision}}},
 			{"instructions", "RESEARCH-ONLY embedded OpenTTD MCP server. Read-only resources are live. "
-			 "One gated mutation is exposed: openttd.game.set_pause via openttd.decision.validate/submit, "
-			 "requiring operator approval in the OpenTTD console ('prismatic_mcp approve <id>') before a "
-			 "resubmitted, argument-identical call executes it. No other action types exist yet."},
+			 "Every game command whose parameters convert from JSON is a tool openttd.cmd.<name> (catalogue: "
+			 "openttd://commands), plus openttd.game.set_pause. Each mutation is validated by a side-effect-free "
+			 "test run (openttd.decision.validate), then requires operator approval ('prismatic_mcp approve <id>' "
+			 "in the OpenTTD console) before a resubmitted, argument-identical call posts it through the normal "
+			 "command path. The verdict is taken after the command has run: read it with openttd.decision.get."},
 		};
 		return RpcResult(id, result);
 	}
@@ -973,11 +1284,32 @@ bool Start(uint16_t port, std::string &error)
  * This is the one point where session- and world-bound decision state is dropped: anything else that
  * waits on the old session or world (results still to be observed) is cleared here too.
  */
-static void ClearApprovals(std::string_view why)
+static void ClearApprovals(detail::ResetReason reason)
 {
-	if (_approvals.empty()) return;
-	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] {} approval(s) cleared: {}", _approvals.size(), why);
-	_approvals.clear();
+	const detail::ResetEffect effect = detail::EffectOf(reason);
+	const std::string_view why = detail::ReasonText(reason);
+	if (effect.clear_approvals && !_approvals.empty()) {
+		Debug(Facility::Net, Severity::Error, "[prismatic-mcp] {} approval(s) cleared: {}", _approvals.size(), why);
+		_approvals.clear();
+	}
+	/* Commands already posted still run in the same world after a stop or a token rotation, and
+	 * their results still arrive. Only when the world itself is gone will they never come: the
+	 * decisions that wait for them are closed as INVALIDATED, so none waits forever. */
+	if (!effect.invalidate_awaiting || _awaiting.empty()) return;
+	size_t n = 0;
+	for (uint64_t id : _awaiting) {
+		ProvenanceRecord *p = FindDecision(id);
+		if (p == nullptr || !detail::ClosedByReset(p->verdict)) continue;
+		p->verdict = "INVALIDATED";
+		p->command_result = "unobserved";
+		p->verification = "none";
+		p->error = std::string(why);
+		p->callbacks_left = 0;
+		p->observed_tick = (uint64_t)TimerGameTick::counter;
+		n++;
+	}
+	_awaiting.clear();
+	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] {} decision(s) invalidated: {}", n, why);
 }
 
 void Stop()
@@ -991,7 +1323,7 @@ void Stop()
 	_mcp.token.fill(0);
 	_mcp.token_valid = false;
 	_mcp.running = false;
-	ClearApprovals("server stopped");
+	ClearApprovals(detail::ResetReason::ServerStopped);
 	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] MCP server stopped");
 }
 
@@ -1002,7 +1334,7 @@ void Shutdown()
 
 void OnGameModeChanged()
 {
-	ClearApprovals("game mode changed");
+	ClearApprovals(detail::ResetReason::GameModeChanged);
 }
 
 /** The tick the last poll saw; a smaller one means another world (detail::WorldChanged). */
@@ -1012,7 +1344,7 @@ void Poll()
 {
 	if (!_mcp.running || _mcp.listeners.empty()) return;
 	const uint64_t now_tick = TimerGameTick::counter;
-	if (detail::WorldChanged(_last_poll_tick, now_tick)) ClearApprovals("a new or loaded world");
+	if (detail::WorldChanged(_last_poll_tick, now_tick)) ClearApprovals(detail::ResetReason::WorldReplaced);
 	_last_poll_tick = now_tick;
 
 	fd_set read_fds;
@@ -1079,9 +1411,29 @@ void RotateToken()
 	RandomBytesWithFallback(_mcp.token);
 	_mcp.token_valid = true;
 	/* No session table yet; rotation invalidates the old bearer value and what was approved under it. */
-	ClearApprovals("token rotated");
+	ClearApprovals(detail::ResetReason::TokenRotated);
 	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] bearer token rotated");
 }
+
+void OnCommandResult(Commands cmd, const CommandCost &result)
+{
+	for (auto it = _awaiting.begin(); it != _awaiting.end(); ++it) {
+		ProvenanceRecord *p = FindDecision(*it);
+		if (p == nullptr || p->cmd != cmd) continue;
+		_awaiting.erase(it);
+		p->cost += static_cast<int64_t>(result.GetCost());
+		if (result.Failed()) {
+			p->failed = true;
+			std::string e = cmds::ErrorText(result);
+			p->error = p->error.empty() ? e : p->error + "; " + e;
+		}
+		if (p->callbacks_left > 0) p->callbacks_left--;
+		if (p->callbacks_left == 0) Conclude(*p);
+		return;
+	}
+	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] executed result for command {} that no decision awaits", to_underlying(cmd));
+}
+
 
 std::string ListApprovals()
 {

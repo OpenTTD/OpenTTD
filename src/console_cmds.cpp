@@ -54,6 +54,8 @@
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 #include "prismatic_mcp/prismatic_mcp.h"
 #include "prismatic_mcp/prismatic_mcp_registry.h"
+#include "prismatic_mcp/prismatic_mcp_console.h"
+#include "3rdparty/nlohmann/json.hpp"
 #include <filesystem>
 #include <fstream>
 #endif
@@ -1949,6 +1951,163 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 	IConsolePrint(CC_ERROR, "Unknown subcommand '{}'. Try 'prismatic_mcp' for usage.", sub);
 	return true;
 }
+
+/*
+ * RESEARCH-ONLY / UNSTABLE: the MCP catalogue from inside the game. Every listing comes from
+ * the registry tools/list and resources/list read, and every call goes through the same
+ * tools/call path (and so the same validation and approval) as a client over HTTP; the
+ * console only spells requests and prints replies. The player at the console is the operator.
+ */
+namespace {
+
+using ConsoleJson = nlohmann::json;
+
+/** Dispatch one MCP request in-process and parse the reply. */
+ConsoleJson McpCall(std::string_view method, const ConsoleJson &params)
+{
+	ConsoleJson reply = PrismaticMCP::Dispatch(ConsoleJson{{"jsonrpc", "2.0"}, {"id", "bot"}, {"method", std::string(method)}, {"params", params}});
+	return reply.is_null() ? ConsoleJson{{"error", {{"message", "no reply"}}}} : reply;
+}
+
+/** Print JSON one line per console line, bounded. */
+void McpPrint(const ConsoleJson &j, TextColour colour = CC_DEFAULT, size_t max_lines = 300)
+{
+	std::string text = j.is_string() ? j.get<std::string>() : j.dump(2);
+	size_t lines = 0, start = 0;
+	while (start <= text.size()) {
+		size_t end = text.find('\n', start);
+		if (end == std::string::npos) end = text.size();
+		if (lines++ == max_lines) { IConsolePrint(CC_WARNING, "... (truncated; read the resource over MCP for the rest)"); return; }
+		IConsolePrint(colour, "{}", std::string_view(text).substr(start, end - start));
+		start = end + 1;
+	}
+}
+
+/** The text content of a tools/call reply, as JSON when it is JSON. */
+ConsoleJson McpToolText(const ConsoleJson &reply)
+{
+	if (reply.contains("error")) return reply["error"];
+	const auto &content = reply["result"]["content"];
+	if (!content.is_array() || content.empty()) return reply["result"];
+	std::string text = content[0].value("text", "");
+	ConsoleJson parsed = ConsoleJson::parse(text, nullptr, false);
+	return parsed.is_discarded() ? ConsoleJson(text) : parsed;
+}
+
+/** Call a tool and print the outcome, with the approval hint when it waits for the operator. */
+void McpCallTool(const std::string &tool, const ConsoleJson &args)
+{
+	ConsoleJson out = McpToolText(McpCall("tools/call", {{"name", tool}, {"arguments", args}}));
+	if (out.is_object() && out.value("status", "") == "pending_approval") {
+		IConsolePrint(CC_WARNING, "{} waits for approval #{}: approve it with 'mcp approve {}' (or deny with 'mcp deny {}').",
+			tool, out["approval_id"].get<uint64_t>(), out["approval_id"].get<uint64_t>(), out["approval_id"].get<uint64_t>());
+		IConsolePrint(CC_WARNING, "After approving, repeat the same command to execute it.");
+		return;
+	}
+	McpPrint(out, out.is_object() && out.contains("error") ? CC_ERROR : CC_INFO);
+}
+
+} // namespace
+
+/**
+ * RESEARCH-ONLY: hand a request in the player's own words to the intent resolver.
+ * C++ makes no outbound call: the request is printed as one structured line,
+ * "[prismatic-plan] <n> <text>", which a watcher of this console (the panel) resolves and
+ * answers into the same console. A build the answer proposes goes through openttd.ai.set_setting,
+ * approval-gated like every other change. @copydoc IConsoleCmdProc
+ */
+static bool ConPlan(std::span<std::string_view> argv)
+{
+	if (argv.size() < 2 || argv[1] == "help") {
+		IConsolePrint(CC_HELP, "RESEARCH-ONLY: 'plan <request in your own words>', e.g. 'plan build the most lucrative line'.");
+		IConsolePrint(CC_HELP, "The panel's intent resolver answers here; a proposed build is applied with 'bot set' (approval-gated).");
+		return true;
+	}
+	static uint64_t next_request = 1;
+	std::string text;
+	for (size_t i = 1; i < argv.size(); i++) {
+		if (i > 1) text += ' ';
+		for (char c : argv[i]) text += (c == '\n' || c == '\r') ? ' ' : c;
+	}
+	uint64_t n = next_request++;
+	IConsolePrint(CC_INFO, "[prismatic-plan] {} {}", n, text);
+	Debug(Facility::Misc, Severity::Error, "[prismatic-plan] {} {}", n, text);
+	IConsolePrint(CC_DEFAULT, "Request #{} handed to the intent resolver; its answer appears here.", n);
+	return true;
+}
+
+/** RESEARCH-ONLY: the company AIs (the bot) over the openttd.ai.* tools. @copydoc IConsoleCmdProc */
+static bool ConBot(std::span<std::string_view> argv)
+{
+	if (argv.size() >= 2 && argv[1] == "help") {
+		IConsolePrint(CC_HELP, "RESEARCH-ONLY: the company AIs over the openttd.ai.* MCP tools (approval-gated changes).");
+		IConsolePrint(CC_HELP, "  bot [status]                       every AI, its settings (range, live value)");
+		IConsolePrint(CC_HELP, "  bot set [<company>] <name> <value> change a setting; the company may be left out when one AI runs");
+		IConsolePrint(CC_HELP, "  bot start [<ai>] [k=v,k=v]         start an AI in the next free slot with initial settings");
+		IConsolePrint(CC_HELP, "  bot stop <company> | bot reload <company>");
+		return true;
+	}
+	ConsoleJson list = McpToolText(McpCall("tools/call", {{"name", "openttd.ai.list"}, {"arguments", ConsoleJson::object()}}));
+	std::string_view sub = argv.size() >= 2 ? argv[1] : "status";
+	if (sub == "status") {
+		if (list["companies"].empty()) IConsolePrint(CC_INFO, "No company is run by an AI. Start one with 'bot start <ai>'.");
+		for (const auto &c : list["companies"]) {
+			IConsolePrint(CC_INFO, "company {}: {} v{} {}", c["company"].get<int>(), c["ai"].is_string() ? c["ai"].get<std::string>() : "(random)",
+				c["version"].is_number() ? c["version"].get<int>() : -1, c["running"].get<bool>() ? "running" : "not running");
+			for (const auto &st : c["settings"]) {
+				IConsolePrint(CC_DEFAULT, "  {} = {}  ({}..{}{})  {}", st["name"].get<std::string>(), st["value"].get<int>(),
+					st["min"].get<int>(), st["max"].get<int>(), st["editable"].get<bool>() ? ", live" : ", fixed while running",
+					st["description"].get<std::string>());
+			}
+		}
+		return true;
+	}
+	if (sub == "set" && (argv.size() == 4 || argv.size() == 5)) {
+		ConsoleJson args;
+		if (argv.size() == 5) {
+			auto c = ParseInteger(argv[2]);
+			if (!c.has_value()) { IConsolePrint(CC_ERROR, "Invalid company id."); return true; }
+			args["company"] = *c;
+		} else {
+			if (list["companies"].size() != 1) { IConsolePrint(CC_ERROR, "{} AIs run; name the company: 'bot set <company> <name> <value>'.", list["companies"].size()); return true; }
+			args["company"] = list["companies"][0]["company"];
+		}
+		args["name"] = std::string(argv[argv.size() - 2]);
+		auto v = ParseInteger(argv[argv.size() - 1]);
+		if (!v.has_value()) { IConsolePrint(CC_ERROR, "The value is not a number."); return true; }
+		args["value"] = *v;
+		McpCallTool("openttd.ai.set_setting", args);
+		return true;
+	}
+	if (sub == "start") {
+		ConsoleJson args = ConsoleJson::object();
+		if (argv.size() >= 3) args["name"] = std::string(argv[2]);
+		if (argv.size() >= 4) {
+			ConsoleJson settings = ConsoleJson::object();
+			std::string_view rest = argv[3];
+			while (!rest.empty()) {
+				size_t comma = rest.find(',');
+				std::string_view kv = rest.substr(0, comma);
+				size_t eq = kv.find('=');
+				auto v = eq == std::string_view::npos ? std::nullopt : ParseInteger(kv.substr(eq + 1));
+				if (!v.has_value()) { IConsolePrint(CC_ERROR, "Settings are k=v,k=v with integer values."); return true; }
+				settings[std::string(kv.substr(0, eq))] = *v;
+				rest = comma == std::string_view::npos ? std::string_view{} : rest.substr(comma + 1);
+			}
+			args["settings"] = settings;
+		}
+		McpCallTool("openttd.ai.start", args);
+		return true;
+	}
+	if ((sub == "stop" || sub == "reload") && argv.size() == 3) {
+		auto c = ParseInteger(argv[2]);
+		if (!c.has_value()) { IConsolePrint(CC_ERROR, "Invalid company id."); return true; }
+		McpCallTool("openttd.ai." + std::string(sub), {{"company", *c}});
+		return true;
+	}
+	IConsolePrint(CC_ERROR, "Unknown or incomplete 'bot {}'. Try 'bot help'.", sub);
+	return true;
+}
 #endif /* OTTD_PRISMATIC_MCP_SERVER */
 
 /** Create an alias for a command. @copydoc IConsoleCmdProc */
@@ -3190,6 +3349,8 @@ void IConsoleStdLibRegister()
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 	IConsole::CmdRegister("prismatic_mcp",           ConPrismaticMcp);
 	IConsole::CmdRegister("mcp",                     PrismaticMCP::ConMcp);
+	IConsole::CmdRegister("bot",                     ConBot);
+	IConsole::CmdRegister("plan",                    ConPlan);
 #endif
 	IConsole::CmdRegister("quit",                    ConExit);
 	IConsole::CmdRegister("resetengines",            ConResetEngines,     ConHookNoNetwork);
