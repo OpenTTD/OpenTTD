@@ -224,7 +224,10 @@ generic path as the hand-made `news` and `ask` tools.
 ## A route planner with modes of transport, every assumption a parameter
 
 `GET /api/plan?limit=N&params=JSON`, Rhai `world_plan(n)`, `world_plan_with(n, #{...})` or
-`api_plan(#{limit, params})`, and `mcp-plan [--params JSON] [--defaults]`. The planner ranks town
+`api_plan(#{limit, params})`, and `mcp-plan [--params JSON] [--defaults]`. `mcp-plan` and `mcp-graph`
+take `--panel URL` (the default) or `--token <file>`, the `{agent_token, endpoint}` file that
+`prismatic_mcp start` writes. With a token they read the resources straight from that MCP server,
+for a stack without a panel such as `mcp-human-e2e`, and give the same output. The planner ranks town
 pairs and gives each one a mode (bus, rail or air), plus the five best pairs of each mode so that
 a plan can combine modes. Every assumption is a parameter with a default that the caller can
 override: distance bands, minimum populations, `speed_kmh`, `overhead_periods`, `supply_factor`,
