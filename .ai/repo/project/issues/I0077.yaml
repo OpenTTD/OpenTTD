@@ -27,3 +27,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T06:48:17Z
+started_event: sha256:07c946e8c3106a7ef6e145e6ab5cc789a691577aa519cba1ec25feaa8efe661b
+updated_at: 2026-11-16T06:48:24Z
+verified_at: 2026-11-16T06:48:20Z
+verified_event: sha256:f5453619dc4b547c661432a8c6bad778f2c7f7d3069debc4fc402cc4b6a4baa9
+completed_at: 2026-11-16T06:48:24Z
+completed_event: sha256:77ec090cd157fc78371c2627cde85e41e1488acd3a4131ac4085e4f3a29763e1
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/gate.sh change; tools/research/mcp-coverage-check --probe --exercise on a headless client (openttd -v null:ticks=2147483647 -s null -m null -g)"
+    result: "research PASS 119/119 (MCP 19 cases, 646 assertions); change PASS 98/98; client probe 53/53 covered (was 29/53), no finding, the game still running; delivered 102046c6ec"
+    artifact: "102046c6ec"
+    commit: 102046c6ec3c483fdba60e49747fa3d48c7b9c97
+    recorded_at: 2026-11-16T06:48:22Z
