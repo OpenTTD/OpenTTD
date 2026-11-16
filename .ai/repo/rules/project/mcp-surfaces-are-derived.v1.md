@@ -27,6 +27,13 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
   (`GET /api/ui/classes`), and the `/ui` page draws every window and widget from `openttd.ui.windows`.
   No window, widget or class is listed by hand.
 - Instances come from the discovery registry (`GET /api/instances`), never from a list of ports.
+- The hub is the surface over all of them (`tools/research/mcp-rhai/src/hub.rs`, I0058): its instances come
+  from the registry and `--panel`, its operations from each panel's `/openapi.json` and each MCP server's
+  `tools/list`/`resources/list`, its events from each panel's bus. `hub.catalogue`, `hub.call` and
+  `hub.subscribe` over `ws://<host>/ws` reach every one of them, and `static/hub.html` renders them with
+  `static/components.js`; neither names an operation. Proof: `cargo test --bin mcp-hub` and
+  `node --test 'tools/research/mcp-panel/test/*.test.mjs'` offline, `tools/research/mcp-hub-check`
+  against what runs (every read-only operation of every instance called, one event streamed).
 - Proof against a running panel: `tools/research/mcp-panel-check` (every tool and resource has its route and schema, the routes answer, the event feed works).
 - Proof that every derived route works: `tools/research/mcp-route-check` walks the panel's own
   OpenAPI document. Every GET answers 200, every POST with required fields answers 400 to an empty

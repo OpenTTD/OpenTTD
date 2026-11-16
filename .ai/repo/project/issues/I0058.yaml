@@ -1,0 +1,38 @@
+id: I0058
+milestone: an-agent-reaches-the-game-over-mcp
+title: "One WebSocket hub over every instance: every operation callable, every event streamed, every one clickable on a page built from reused components"
+slug: mcp-hub
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A person, a page, a Rhai script or another AI reaches every operation of every running instance and its live events over one WebSocket JSON-RPC surface derived from the registry and each panel's OpenAPI, with nothing named by hand."
+why: "The owner: extend the generic UI bot, everything clickable and interactive, reused components, streamed, all callable, WebSocket interconnected, derived, inferred, dynamic, generic, tested, covered with tests and enforced through .ai."
+scope:
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-panel/static/components.js"
+  - "tools/research/mcp-panel/static/hub.html"
+  - "tools/research/mcp-panel/test/**"
+  - "tools/research/mcp-hub-check"
+  - "research/mcp-hub.md"
+  - ".ai/repo/rules/project/mcp-surfaces-are-derived.v1.md"
+  - ".ai/repo/workflows/substrate/prismatic-mcp/README.md"
+non_scope:
+  - "The panel's own server and pages (server.py, app.js, ui.js, world.js; I0052, I0035)"
+  - "Arming input, which stays the owner's switch (ADR 0014)"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "mcp-hub discovers instances from the registry (PRISMATIC_MCP_REGISTRY) and from --panel, drops dead owners, and refreshes without a restart"
+  - "Over ws://127.0.0.1:<port>/ws, hub.catalogue lists every operation of every panel's /openapi.json and hub.call invokes any of them; hub.subscribe streams every panel's events tagged by instance"
+  - "hub.html renders every instance, every operation as a clickable form derived from its schema, and the live event stream, from components.js; state is in the URL"
+  - "Rust unit and integration tests (cargo test --bin mcp-hub) and JS component tests (node --test) pass; tools/research/mcp-hub-check against live panels calls every read-only operation of every instance and sees an event"
+  - "Rule project.mcp-surfaces-are-derived names the hub surface and its proof"
+validation:
+  - "cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub"
+  - "node --test 'tools/research/mcp-panel/test/*.test.mjs'"
+  - "tools/research/mcp-hub-check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
+updated_at: '2026-11-16'

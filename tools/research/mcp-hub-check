@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: end-to-end check of the MCP hub (research/mcp-hub.md) against whatever is running.
+#
+# Builds mcp-hub (offline, release), starts it on a free loopback port over the instance registry
+# (and any --panel given), then runs `mcp-hub check`: every instance discovered, every read-only
+# operation of every instance that needs no required input called through the WebSocket, and one
+# event streamed. With --hub URL it checks an already running hub instead of starting one.
+#
+# Usage: tools/research/mcp-hub-check [--hub ws://127.0.0.1:8790/ws] [--panel URL]... [--event-wait S]
+# Exit: 0 all passed, 1 a check failed, 2 no hub could be started.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+CRATE="$ROOT/tools/research/mcp-rhai"
+HUB="" WAIT=150 PANELS=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --hub) HUB="$2"; shift 2 ;;
+    --panel) PANELS+=(--panel "$2"); shift 2 ;;
+    --event-wait) WAIT="$2"; shift 2 ;;
+    -h|--help) sed -n '2,12p' "$0"; exit 0 ;;
+    *) echo "unknown argument: $1" >&2; exit 2 ;;
+  esac
+done
+
+cargo build --offline --release --quiet --manifest-path "$CRATE/Cargo.toml" --bin mcp-hub
+BIN="$CRATE/target/release/mcp-hub"
+
+if [[ -z "$HUB" ]]; then
+  PORT="$(python3 -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1",0)); print(s.getsockname()[1])')"
+  LOG="$(mktemp -t mcp-hub-check.XXXXXX)"
+  "$BIN" serve --port "$PORT" ${PANELS[@]+"${PANELS[@]}"} >"$LOG" 2>&1 &
+  PID=$!
+  trap 'kill "$PID" 2>/dev/null || true; rm -f "$LOG"' EXIT
+  for _ in $(seq 1 50); do
+    grep -q 'mcp-hub:' "$LOG" 2>/dev/null && break
+    sleep 0.2
+  done
+  grep -q 'mcp-hub:' "$LOG" || { echo "FAIL the hub did not start:"; cat "$LOG"; exit 2; }
+  head -1 "$LOG"
+  HUB="ws://127.0.0.1:$PORT/ws"
+fi
+
+"$BIN" check --hub "$HUB" --event-wait "$WAIT"

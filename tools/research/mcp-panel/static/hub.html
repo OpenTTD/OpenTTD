@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCP Hub</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 antialiased">
+  <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">MCP Hub</span>
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
+          <span id="conn" class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">connecting</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="counts" class="text-sm text-gray-500 dark:text-gray-400"></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="px-4 pt-20 max-w-screen-2xl">
+    <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Instances</h2>
+      <p class="text-xs text-gray-500 dark:text-gray-400">From the instance registry and the hub's --panel list, refreshed as they come and go. Click one to narrow everything below to it.</p>
+      <div id="instances" class="mt-3"></div>
+    </div>
+
+    <div class="grid gap-4 xl:grid-cols-3">
+      <div class="xl:col-span-2">
+        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Every operation</h2>
+            <span id="scope" class="text-xs text-gray-500 dark:text-gray-400"></span>
+          </div>
+          <input id="filter" type="search" placeholder="Filter by id, path, tag or summary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        </div>
+        <div id="catalogue"></div>
+      </div>
+      <div>
+        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Live events</h2>
+            <button id="clear-kinds" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">All kinds</button>
+          </div>
+          <p id="kinds" class="text-xs text-gray-500 dark:text-gray-400">Streamed over the hub's WebSocket from every panel's bus. Click a kind to follow only it.</p>
+          <div id="events" class="mt-3"></div>
+        </div>
+        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Resource</h2>
+          <div id="resource" class="text-xs text-gray-500 dark:text-gray-400">Click any openttd:// link in a result to read it here.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { HubClient, parseHash, formatHash, catalogueView, instancesView, eventsView, jsonView } from '/static/components.js';
+
+    const $ = (id) => document.getElementById(id);
+    let state = parseHash(location.hash);
+    let instances = [];
+    let ops = [];
+    const client = new HubClient(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`);
+
+    const save = () => { const h = formatHash(state); if (h !== location.hash) history.replaceState(null, '', h || location.pathname); };
+    const readUri = async (uri) => {
+      const host = ops.find((o) => o.id === `resource:${uri}` && (!state.instance || o.instance === state.instance)) || ops.find((o) => o.id === `resource:${uri}`);
+      if (!host) { $('resource').replaceChildren(`No instance publishes ${uri}.`); return; }
+      try { $('resource').replaceChildren(jsonView(await client.call('hub.call', { instance: host.instance, id: host.id }), readUri)); }
+      catch (err) { $('resource').replaceChildren(err.message); }
+    };
+    const renderCatalogue = () => {
+      catalogueView($('catalogue'), ops, client, state, {
+        onSelect: (op) => { state.op = `${op.instance}/${op.id}`; save(); },
+        onUri: readUri,
+      });
+      $('scope').textContent = state.instance ? `instance ${state.instance}` : 'all instances';
+    };
+    const renderInstances = () => instancesView($('instances'), instances, state, (name) => { state.instance = name; save(); renderCatalogue(); subscribe(); });
+    const subscribe = () => client.subscribe({ kinds: state.kinds, instances: state.instance ? [state.instance] : [] });
+    const pushEvent = eventsView($('events'), {
+      onKind: (k) => { state.kinds = [k.split('.')[0]]; save(); $('kinds').textContent = `Following ${state.kinds.join(', ')}.`; subscribe(); },
+      onInstance: (i) => { state.instance = i; save(); renderInstances(); renderCatalogue(); subscribe(); },
+    });
+
+    async function load() {
+      [instances, ops] = await Promise.all([client.call('hub.instances'), client.call('hub.catalogue')]);
+      $('counts').textContent = `${instances.length} instance(s), ${ops.length} operation(s)`;
+      renderInstances();
+      renderCatalogue();
+    }
+
+    client.on('open', async () => { $('conn').textContent = 'live'; await load(); subscribe(); })
+      .on('close', () => { $('conn').textContent = 'reconnecting'; })
+      .on('hub.event', pushEvent)
+      .on('hub.instances', () => load())
+      .connect();
+    $('filter').value = state.q;
+    $('filter').addEventListener('input', (e) => { state.q = e.target.value; save(); renderCatalogue(); });
+    $('clear-kinds').addEventListener('click', () => { state.kinds = []; save(); $('kinds').textContent = 'Following every kind.'; subscribe(); });
+    window.addEventListener('hashchange', () => { state = parseHash(location.hash); renderInstances(); renderCatalogue(); subscribe(); });
+  </script>
+</body>
+</html>
