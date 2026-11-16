@@ -37,6 +37,8 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
 - The hub describes itself: `GET /openapi.json` is derived from its method table, so every hub method,
   `hub.audit` included, is in OpenAPI. A capability that no surface reaches (MCP, OpenAPI, the hub, Rhai,
   the page) is not finished.
+- GraphQL reaches the hub the same way: `POST /graphql` and its SDL (`GET /graphql/schema`) are derived
+  from the method table, one root field per method (I0065); none is named by hand.
 - Rhai reaches the hub the same way: `mcp-rhai --hub URL` registers one `hub_<method>` function per
   method of the hub's OpenAPI document; none is named in mcp-rhai.
 - No duplicate buildings: `hub.audit` judges every instance by the game's own catchment

@@ -3,6 +3,9 @@
 //! the registry (`mcp-instance/v1`) and `--panel`, the operations from each panel's `/openapi.json`
 //! and each MCP server's `tools/list` and `resources/list`, the events from each panel's bus.
 //!
+//! The same methods are a GraphQL schema at `POST /graphql` (SDL at `GET /graphql/schema`), see
+//! hub_graphql.rs.
+//!
 //! JSON-RPC 2.0 methods (over `ws://<host>/ws`, or one call per `POST /hub/rpc`; the routes are
 //! described by `GET /openapi.json`, derived from the method table):
 //!   rpc.discover                         the methods below, with their parameters
@@ -17,6 +20,9 @@
 //! The hub also pushes `hub.instances` notifications to subscribers when the set of instances changes.
 
 use serde_json::{json, Map, Value};
+
+#[path = "hub_graphql.rs"]
+pub mod graphql;
 use std::collections::{BTreeMap, HashMap};
 use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
@@ -617,6 +623,11 @@ pub fn openapi() -> Value {
             "/openapi.json": get("hubOpenapi", "This document"),
             "/docs": get("hubDocs", "Swagger UI over this document"),
             "/": get("hubPage", "The hub page: every instance, operation, event and audit, from static/components.js"),
+            "/graphql/schema": get("hubGraphqlSchema", "The GraphQL schema (SDL), derived from the method table"),
+            "/graphql": {"post": {"operationId": "hubGraphql", "summary": "One GraphQL query or mutation over the hub's methods (a subset: no fragments, directives, introspection or subscriptions)", "tags": ["hub"],
+                "requestBody": {"content": {"application/json": {"schema": {"type": "object", "required": ["query"],
+                    "properties": {"query": {"type": "string"}, "variables": {"type": "object"}, "operationName": {"type": "string"}}}}}},
+                "responses": {"200": {"description": "{data, errors?}"}}}},
             "/viz": get("hubWorldView", "The World view: the world graph, the terrain in 3D and the economy (static/viz.html)"),
         }
     })
@@ -761,6 +772,18 @@ fn serve_http(state: Shared, mut stream: TcpStream, statics: &Path) {
                 Err(_) => respond(stream, 404, json_ct, br#"{"error":"run npm ci in tools/research/mcp-panel"}"#),
             }
         }
+        ("POST", "/graphql") => match serde_json::from_slice::<Value>(body) {
+            Ok(req) => {
+                let rpc = |method: &str, params: Value| -> Result<Value, String> {
+                    let r = handle(&state, &json!({"jsonrpc": "2.0", "id": 0, "method": method, "params": params}), None)
+                        .unwrap_or(Value::Null);
+                    match r.get("error") { Some(e) => Err(e["message"].as_str().unwrap_or("error").to_string()), None => Ok(r["result"].clone()) }
+                };
+                respond(stream, 200, json_ct, graphql::execute(&req, &methods(), &rpc).to_string().as_bytes())
+            }
+            Err(e) => respond(stream, 400, json_ct, json!({"errors": [{"message": e.to_string()}]}).to_string().as_bytes()),
+        },
+        ("GET", "/graphql/schema") => respond(stream, 200, "text/plain; charset=utf-8", graphql::sdl(&methods()).as_bytes()),
         ("GET", "/hub/audit") => respond(stream, 200, json_ct, audit(&state).to_string().as_bytes()),
         ("GET", "/openapi.json") => respond(stream, 200, json_ct, openapi().to_string().as_bytes()),
         ("GET", "/hub/catalogue") => {

@@ -47,6 +47,28 @@ read-only methods as GET routes too (`/hub/instances`, `/hub/catalogue`, `/hub/a
 `id` is a panel's `operationId`, `tool:<name>` or `resource:<uri>`. A streaming route
 (`text/event-stream`) is not called: subscribe instead.
 
+## GraphQL
+
+`POST /graphql` takes `{query, variables}` and answers `{data, errors?}`; `GET /graphql/schema` is the
+SDL. The schema is derived from the method table: every method that answers per request is a root
+field named by its last segment (`instances`, `catalogue`, `audit`, `discover`), `hub.call` is the
+one Mutation field (`call`), and the method's params are the field's arguments, as JSON. A selection
+set keeps only the named keys of each result, so a client asks for exactly what it reads:
+
+```graphql
+query ($i: String) {
+  instances { name operations }
+  catalogue(instance: $i) { id read_only }
+  audit { instance stations depots { depots reach network error } }
+}
+mutation { call(instance: "panel-8800", id: "status") }
+```
+
+It is a subset implemented in the hub (`tools/research/mcp-rhai/src/hub_graphql.rs`), so the hub needs
+no new dependency: one operation per document, aliases, arguments, variables and literals. Fragments,
+directives, introspection and subscriptions are refused by name; events stream over the WebSocket's
+`hub.subscribe`.
+
 ## From Rhai
 
 `mcp-rhai --hub http://127.0.0.1:8790` (or `MCP_HUB=...`) reads the hub's `/openapi.json` and

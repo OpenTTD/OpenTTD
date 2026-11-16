@@ -342,6 +342,35 @@ mod tests {
         assert_eq!(rail[0]["by"], json!("straight distance"));
         assert!(hub::duplicate_depots(&[d(5, 0, 0, "rail"), d(6, 40, 0, "rail")], 20, None).is_empty(), "beyond the reach");
     }
+    #[test]
+    fn graphql_parses_aliases_arguments_variables_and_projects_selections() {
+        use hub::graphql::{parse, project, execute, sdl};
+        let vars = serde_json::Map::from_iter([("who".to_string(), json!("panel-1"))]);
+        let op = parse(r#"query Q($who: String) { first: catalogue(instance: $who) { id method } audit }"#, &vars).unwrap();
+        assert_eq!(op.kind, "query");
+        assert_eq!(op.selection[0].key, "first");
+        assert_eq!(op.selection[0].name, "catalogue");
+        assert_eq!(op.selection[0].args["instance"], json!("panel-1"));
+        let v = json!([{"id": "a", "method": "GET", "path": "/x"}, {"id": "b", "method": "POST", "path": "/y"}]);
+        assert_eq!(project(&v, &op.selection[0].selection), json!([{"id": "a", "method": "GET"}, {"id": "b", "method": "POST"}]));
+        let lit = parse(r#"mutation { call(instance: "p", id: "pause", body: {pause: true, n: [1, -2.5]}) }"#, &serde_json::Map::new()).unwrap();
+        assert_eq!(lit.selection[0].args["body"], json!({"pause": true, "n": [1, -2.5]}));
+        for bad in ["{ ...F }", "{ __schema { types { name } } }", "subscription { events }", "{ a @skip(if: true) }"] {
+            assert!(parse(bad, &serde_json::Map::new()).is_err(), "{bad} must be refused by name");
+        }
+        // Execution goes through the hub's own dispatch; a Query field cannot run a mutation.
+        let methods = hub::methods();
+        let rpc = |m: &str, p: Value| -> Result<Value, String> { Ok(json!({"method": m, "params": p, "list": [{"x": 1, "y": 2}]})) };
+        let out = execute(&json!({"query": "{ instances { method list { x } } }"}), &methods, &rpc);
+        assert_eq!(out, json!({"data": {"instances": {"method": "hub.instances", "list": [{"x": 1}]}}}));
+        let out = execute(&json!({"query": "{ call(instance: \"p\", id: \"x\") }"}), &methods, &rpc);
+        assert!(out["errors"][0]["message"].as_str().unwrap().contains("Mutation"));
+        let out = execute(&json!({"query": "{ nope }"}), &methods, &rpc);
+        assert_eq!(out["data"]["nope"], Value::Null);
+        let schema = sdl(&methods);
+        assert!(schema.contains("audit: JSON") && schema.contains("type Mutation") && schema.contains("call("), "{schema}");
+        assert!(!schema.contains("subscribe"), "streams stay on the WebSocket");
+    }
     /// A panel with a status route, an echo route and an event bus whose events the test appends.
     fn fake_panel(events: Arc<Mutex<Vec<Value>>>) -> String {
         let l = TcpListener::bind("127.0.0.1:0").unwrap();
@@ -441,6 +470,18 @@ mod tests {
         for page in ["~1", "~1viz"] {
             assert!(spec.pointer(&format!("/paths/{page}/get")).is_some(), "page {page} missing from OpenAPI");
         }
+        // The same surface as GraphQL, through the same dispatch.
+        let gql: Value = ureq::post(&format!("http://{addr}/graphql"))
+            .send_json(json!({"query": "query($i: String) { catalogue(instance: $i) { id read_only } instances { name operations } }", "variables": {"i": name}})).unwrap().into_json().unwrap();
+        assert!(gql.get("errors").is_none(), "{gql}");
+        assert_eq!(gql["data"]["instances"][0]["operations"], json!(6));
+        assert!(gql["data"]["catalogue"].as_array().unwrap().iter().any(|o| o == &json!({"id": "status", "read_only": true})));
+        let called: Value = ureq::post(&format!("http://{addr}/graphql"))
+            .send_json(json!({"query": format!("mutation {{ call(instance: \"{name}\", id: \"status\") }}")})).unwrap().into_json().unwrap();
+        assert_eq!(called["data"]["call"], json!({"ok": true}));
+        let sdl = ureq::get(&format!("http://{addr}/graphql/schema")).call().unwrap().into_string().unwrap();
+        assert!(sdl.contains("type Query"));
+        assert!(spec.pointer("/paths/~1graphql/post").is_some(), "GraphQL is in the OpenAPI document too");
         let audit: Value = ureq::get(&format!("http://{addr}/hub/audit")).call().unwrap().into_json().unwrap();
         assert_eq!(audit[0]["duplicates"].as_array().unwrap().len(), 1);
     }
