@@ -567,4 +567,45 @@ TEST_CASE("Every client tool says whether it changes anything", "[prismatic_mcp]
 	}
 }
 
+TEST_CASE("The approval state machine binds to canonical args, executes once, refuses replay and changed args", "[prismatic_mcp]")
+{
+	/* ClassifySubmit is exactly what the submit handler runs to decide pending/reuse/execute. An
+	 * approval binds to the submission's EXACT canonical arguments, not the 64-bit FNV-1a digest
+	 * (which could collide). States mirror ApprovalState: 0 Pending, 1 Approved, 3 Consumed. */
+	const std::string pause5 = R"({"ticks":5})";
+	const std::string pause6 = R"({"ticks":6})";
+	size_t idx = 999;
+
+	SECTION("submit with nothing live asks for approval; that pending approval is then reused") {
+		std::vector<ApprovalView> a;
+		CHECK(ClassifySubmit(a, pause5, 10, idx) == SubmitDecision::CreatePending);
+		a.push_back({0, pause5, 100});
+		idx = 999;
+		CHECK(ClassifySubmit(a, pause5, 10, idx) == SubmitDecision::ReusePending);
+		CHECK(idx == 0);
+	}
+	SECTION("an approved, unexpired approval executes once for the exact args") {
+		std::vector<ApprovalView> a{{1, pause5, 100}};
+		CHECK(ClassifySubmit(a, pause5, 10, idx) == SubmitDecision::Execute);
+		CHECK(idx == 0);
+	}
+	SECTION("changed arguments after approval are refused -- a fresh approval is required") {
+		std::vector<ApprovalView> a{{1, pause5, 100}};
+		CHECK(ClassifySubmit(a, pause6, 10, idx) == SubmitDecision::CreatePending);
+	}
+	SECTION("a replay of an already-consumed approval is refused") {
+		std::vector<ApprovalView> a{{3, pause5, 100}};
+		CHECK(ClassifySubmit(a, pause5, 10, idx) == SubmitDecision::CreatePending);
+	}
+	SECTION("an expired approval does not execute") {
+		std::vector<ApprovalView> a{{1, pause5, 5}};
+		CHECK(ClassifySubmit(a, pause5, 10, idx) == SubmitDecision::CreatePending);
+	}
+	SECTION("the binding is the exact args, so two different argument sets never share one approval") {
+		std::vector<ApprovalView> a{{1, pause5, 100}};
+		CHECK(ClassifySubmit(a, pause5, 10, idx) == SubmitDecision::Execute);
+		CHECK(ClassifySubmit(a, pause6, 10, idx) == SubmitDecision::CreatePending);
+	}
+}
+
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

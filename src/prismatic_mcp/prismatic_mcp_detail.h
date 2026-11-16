@@ -16,6 +16,7 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <vector>
 
 /**
  * Pure helpers with no OpenTTD or game-state dependency, factored out of the
@@ -148,6 +149,51 @@ inline bool ConstantTimeEquals(std::string_view a, std::string_view b)
 inline bool WorldChanged(uint64_t last_tick, uint64_t now_tick)
 {
 	return now_tick < last_tick;
+}
+
+/** The approval state machine's decision, factored out of the server so it is unit-testable
+ * without a game. An approval binds to the submission's CANONICAL ARGUMENTS -- the exact
+ * serialized arguments -- not to a 64-bit digest that could collide: a changed argument never
+ * matches an approval granted for the original, and no two different argument sets can ever share
+ * one approval. */
+enum class SubmitDecision : uint8_t {
+	CreatePending, ///< no live approval for these exact args: ask the operator
+	ReusePending,  ///< a pending approval for these exact args already exists: wait on it
+	Execute,       ///< an approved, unexpired, unconsumed approval for these exact args: run once
+};
+
+/** One approval as the pure classifier sees it: its state, the canonical args it was granted for,
+ * and when it expires. `state` mirrors ApprovalState (0 Pending, 1 Approved, 2 Denied, 3 Consumed). */
+struct ApprovalView {
+	uint8_t state = 0;
+	std::string canonical_args;
+	uint64_t expiry_tick = 0;
+};
+
+/** Classify a submission whose canonical arguments are `canonical_args`, at tick `now`, against the
+ * live `approvals` (scanned in order). Returns the decision; for ReusePending/Execute it sets
+ * `matched_index` to the matched approval's index. Pure: no globals, no game state, no side effects
+ * -- the caller consumes the approval and runs the command. */
+inline SubmitDecision ClassifySubmit(const std::vector<ApprovalView> &approvals,
+	std::string_view canonical_args, uint64_t now, size_t &matched_index)
+{
+	/* An approved, unexpired, unconsumed approval bound to these exact args executes once. */
+	for (size_t i = 0; i < approvals.size(); i++) {
+		const ApprovalView &a = approvals[i];
+		if (a.state == 1 && a.canonical_args == canonical_args && now <= a.expiry_tick) {
+			matched_index = i;
+			return SubmitDecision::Execute;
+		}
+	}
+	/* Otherwise reuse a still-pending approval for these exact args. */
+	for (size_t i = 0; i < approvals.size(); i++) {
+		const ApprovalView &a = approvals[i];
+		if (a.state == 0 && a.canonical_args == canonical_args && now <= a.expiry_tick) {
+			matched_index = i;
+			return SubmitDecision::ReusePending;
+		}
+	}
+	return SubmitDecision::CreatePending;
 }
 
 } // namespace PrismaticMCP::detail

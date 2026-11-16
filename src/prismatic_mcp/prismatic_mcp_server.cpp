@@ -448,7 +448,8 @@ enum class ApprovalState : uint8_t { Pending, Approved, Denied, Consumed };
 struct PendingApproval {
 	uint64_t id = 0;
 	std::string tool;
-	std::string arg_digest;      ///< FNV-1a of tool + canonical args; binds approval to exact args.
+	std::string arg_digest;      ///< FNV-1a of tool + canonical args; shown/recorded, not the binding.
+	std::string canonical_args;  ///< the exact serialized args this approval binds to (collision-free, unlike the 64-bit digest).
 	std::string args_summary;    ///< Human-readable, shown in the console approval prompt.
 	uint64_t created_tick = 0;
 	uint64_t expiry_tick = 0;
@@ -859,45 +860,53 @@ json HandleToolsCall(const json &id, const json &params)
 		}
 
 		std::string digest = ArgDigest(type, aargs);
+		std::string canonical = aargs.dump();
 		uint64_t now = (uint64_t)TimerGameTick::counter;
 
-		/* Is there an APPROVED, non-expired, non-consumed approval bound to this exact digest? */
-		for (auto &a : _approvals) {
-			if (a.state == ApprovalState::Approved && a.arg_digest == digest && now <= a.expiry_tick) {
-				a.state = ApprovalState::Consumed;   // one-time: replay needs a fresh approval
-				if (_provenance.size() >= MAX_PROVENANCE) _provenance.erase(_provenance.begin());
-				ProvenanceRecord &pr = _provenance.emplace_back();
-				pr.decision_id = _next_decision_id++;
-				pr.approval_id = a.id;
-				pr.action_type = type;
-				pr.arg_digest = digest;
-				pr.command_result = "queued";
-				pr.verdict = "PENDING_OBSERVATION";
-				pr.requested_tick = now;
-				uint64_t decision_id = pr.decision_id;
-				bool queued = ExecuteAction(type, aargs, pr);
-				const ProvenanceRecord *rec = FindDecision(decision_id);
-				json out = {{"status", queued ? "executed" : "rejected"}, {"approval_id", a.id}, {"decision_id", decision_id},
-					{"command_result", rec->command_result}, {"verdict", rec->verdict},
-					{"note", "the verdict is taken when the command has run; read it with openttd.decision.get"}};
-				if (!rec->error.empty()) out["error"] = rec->error;
-				return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}, {"isError", !queued}});
-			}
+		/* The approval binds to the EXACT canonical arguments, not the 64-bit digest (which could
+		 * collide). The decision -- execute an approved one, reuse a pending one, or ask the operator
+		 * -- is the pure, unit-tested detail::ClassifySubmit. */
+		std::vector<detail::ApprovalView> views;
+		views.reserve(_approvals.size());
+		for (const auto &a : _approvals) views.push_back({(uint8_t)a.state, a.canonical_args, a.expiry_tick});
+		size_t matched = 0;
+		detail::SubmitDecision decision = detail::ClassifySubmit(views, canonical, now, matched);
+
+		if (decision == detail::SubmitDecision::Execute) {
+			PendingApproval &a = _approvals[matched];
+			a.state = ApprovalState::Consumed;   // one-time: replay needs a fresh approval
+			if (_provenance.size() >= MAX_PROVENANCE) _provenance.erase(_provenance.begin());
+			ProvenanceRecord &pr = _provenance.emplace_back();
+			pr.decision_id = _next_decision_id++;
+			pr.approval_id = a.id;
+			pr.action_type = type;
+			pr.arg_digest = digest;
+			pr.command_result = "queued";
+			pr.verdict = "PENDING_OBSERVATION";
+			pr.requested_tick = now;
+			uint64_t decision_id = pr.decision_id;
+			bool queued = ExecuteAction(type, aargs, pr);
+			const ProvenanceRecord *rec = FindDecision(decision_id);
+			json out = {{"status", queued ? "executed" : "rejected"}, {"approval_id", a.id}, {"decision_id", decision_id},
+				{"command_result", rec->command_result}, {"verdict", rec->verdict},
+				{"note", "the verdict is taken when the command has run; read it with openttd.decision.get"}};
+			if (!rec->error.empty()) out["error"] = rec->error;
+			return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}, {"isError", !queued}});
 		}
 
-		/* Otherwise: reuse an existing pending approval for this digest, or create one. */
-		for (auto &a : _approvals) {
-			if (a.state == ApprovalState::Pending && a.arg_digest == digest && now <= a.expiry_tick) {
-				json out = {{"status", "pending_approval"}, {"approval_id", a.id}, {"argument_digest", digest},
-					{"message", "Approval required in OpenTTD: prismatic_mcp approve " + fmt::format("{}", a.id)}};
-				return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}});
-			}
+		if (decision == detail::SubmitDecision::ReusePending) {
+			PendingApproval &a = _approvals[matched];
+			json out = {{"status", "pending_approval"}, {"approval_id", a.id}, {"argument_digest", digest},
+				{"message", "Approval required in OpenTTD: prismatic_mcp approve " + fmt::format("{}", a.id)}};
+			return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}});
 		}
+
 		if (_approvals.size() >= MAX_APPROVALS) _approvals.erase(_approvals.begin());
 		PendingApproval pa;
 		pa.id = _next_approval_id++;
 		pa.tool = type;
 		pa.arg_digest = digest;
+		pa.canonical_args = canonical;
 		pa.args_summary = aargs.dump();
 		pa.created_tick = now;
 		pa.expiry_tick = now + APPROVAL_TTL_TICKS;
