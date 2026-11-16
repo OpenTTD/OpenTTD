@@ -1417,6 +1417,58 @@ impl Query {
     }
 }
 
+/// When the content list was last fetched from the content server (`content update`).
+static CONTENT_UPDATED: std::sync::Mutex<Option<std::time::Instant>> = std::sync::Mutex::new(None);
+
+/// One `content state` line, "10884238, AI, Not selected, AdmiralAI, 4C4D4441, <md5>", as JSON; the
+/// name may hold commas, so it is everything between the state and the two trailing ids.
+fn content_line(line: &str) -> Option<Value> {
+    let text = line.rsplit("] ").next().unwrap_or(line).trim();
+    let f: Vec<&str> = text.split(", ").collect();
+    if f.len() < 6 { return None; }
+    let id: u64 = f[0].trim().parse().ok()?;
+    Some(json!({"id": id, "type": f[1], "state": f[2], "name": f[3..f.len() - 2].join(", ")}))
+}
+
+/// GET /api/content?q=<text>: what the content server (BaNaNaS) offers whose name matches, from the
+/// game's own `content state` (the list is fetched with `content update` at most every 10 minutes).
+fn h_content(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let q = i.query.get("q").unwrap_or("").to_string();
+    if q.trim().is_empty() || q.contains('\n') || q.contains('"') {
+        return Ok((400, json!({"error": "?q= names what to look for, one line, e.g. AdmiralAI or AI"})));
+    }
+    let stale = CONTENT_UPDATED.lock().unwrap().map_or(true, |t| t.elapsed() > Duration::from_secs(600));
+    if stale {
+        g.console("content update")?;
+        thread::sleep(Duration::from_secs(6));
+        *CONTENT_UPDATED.lock().unwrap() = Some(std::time::Instant::now());
+    }
+    let mark = g.log_seq();
+    g.console(&format!("content state {}", q.trim()))?;
+    thread::sleep(Duration::from_secs(2));
+    let items: Vec<Value> = g.log_after(mark).iter().filter_map(|l| content_line(l)).collect();
+    ok(json!({"query": q.trim(), "items": items, "count": items.len()}))
+}
+
+/// POST /api/content/download {ids}: the owner's download of those content items (and the libraries
+/// they need, which the game selects itself): `content select <id>` for each, then `content
+/// download`. Answers the console's output and the AIs the game offers afterwards.
+fn h_content_download(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let ids: Vec<u64> = i.body.get("ids").and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_u64).collect();
+    if ids.is_empty() {
+        return Ok((400, json!({"error": "ids: the content ids to download, from GET /api/content"})));
+    }
+    let mark = g.log_seq();
+    for id in &ids { g.console(&format!("content select {id}"))?; }
+    g.console("content download")?;
+    g.event("operator", &format!("content download of {} item(s): {:?}", ids.len(), ids));
+    thread::sleep(Duration::from_secs_f64(py_float(i.body.get("wait"), 20.0)?.clamp(1.0, 300.0)));
+    let output = g.log_after(mark);
+    // What the game offers now: the AI list rescans its folders on start_ai, so the names come from
+    // the downloaded tars (content_download/ai) as the console reports them.
+    ok(json!({"ids": ids, "output": output}))
+}
+
 fn h_console(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let cmd = py_str(i.body.get("command").or(Some(&json!("")))).trim().to_string();
     if cmd.is_empty() || cmd.contains('\n') {
@@ -1757,6 +1809,10 @@ pub fn routes() -> Vec<Route> {
           s(json!({"method": st(), "params": obj()}), &["method"]), h_rpc),
         r("POST", "/api/console", "console", "One OpenTTD console line as the operator; returns its output", false,
           s(json!({"command": st(), "wait": {"type": "number"}}), &["command"]), h_console),
+        r("GET", "/api/content", "content", "What the content server (BaNaNaS) offers whose name matches ?q= (AIs, libraries, NewGRFs ...): id, type, state, name, from the game's own content state", false,
+          None, h_content),
+        r("POST", "/api/content/download", "contentDownload", "The owner's download of content items by id (an AI and the libraries it needs), through the game's content select and content download", false,
+          s(json!({"ids": {"type": "array", "items": {"type": "integer"}}, "wait": {"type": "number"}}), &["ids"]), h_content_download),
         r("POST", "/api/pause", "pause", "Pause or resume through the approval-gated MCP tool", true,
           s(json!({"pause": {"type": "boolean"}}), &["pause"]), h_pause),
         r("POST", "/api/approve", "approve", "The operator's approval of a pending decision, then its resubmission", true,
@@ -1866,6 +1922,7 @@ fn query_params(path: &str) -> &'static [&'static str] {
         "/api/news" => &["limit"],
         "/api/plan" => &["limit", "params", "track"],
         "/api/investment" => &["params"],
+        "/api/content" => &["q"],
         _ => &[],
     }
 }
@@ -2279,6 +2336,15 @@ mod tests {
     use super::*;
 
     #[test]
+    fn a_content_state_line_is_parsed_with_names_that_hold_commas() {
+        let a = content_line("10884238, AI, Not selected, AdmiralAI, 4C4D4441, 4CCD92FB8F8F01045145BE99A28E14A6").unwrap();
+        assert_eq!(a, json!({"id": 10884238, "type": "AI", "state": "Not selected", "name": "AdmiralAI"}));
+        let b = content_line("[2026-11-16 23:00:00] 11431842, AI, Selected, NoCAB, Bleeding Edge, 42414342, 7B5D").unwrap();
+        assert_eq!(b["name"], "NoCAB, Bleeding Edge");
+        assert!(content_line("id, type, state, name").is_none());
+    }
+
+    #[test]
     fn a_server_without_a_token_file_is_reached_through_the_panel_that_owns_it() {
         let recs = vec![
             json!({"kind": "panel", "name": "panel-1", "url": "http://127.0.0.1:1/", "mcp": "http://127.0.0.1:2/mcp"}),
@@ -2308,14 +2374,17 @@ mod tests {
         }
         let ids: HashSet<&str> = rs.iter().map(|r| r.op_id).collect();
         assert_eq!(ids.len(), rs.len(), "operationIds are unique");
-        // server.py's table, route for route.
-        assert_eq!(rs.len(), 32);
+        // server.py's table, route for route, plus the content routes (GET /api/content, POST
+        // /api/content/download) added after the Python panel was retired.
+        assert_eq!(rs.len(), 34);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
+                       ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes")] {
             assert!(rs.iter().any(|r| r.method == m && r.path == p), "{m} {p}");
         }
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",
-            "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai"].contains(&r.path)));
+            "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai",
+            "/api/content", "/api/content/download"].contains(&r.path)));
     }
 
     #[test]

@@ -85,6 +85,27 @@
       </div>
     </div>
 
+    <div id="content" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Content (BaNaNaS): AIs to play against</h3>
+        <span class="text-xs text-gray-500 dark:text-gray-400">GET /api/content?q= and POST /api/content/download: the game's own content state, select and download</span>
+      </div>
+      <form id="content-form" class="flex gap-2 mb-3">
+        <input id="content-q" type="text" value="AdmiralAI" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" aria-label="What to look for on the content server">
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700">Search</button>
+      </form>
+      <div class="relative overflow-x-auto max-h-64">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr><th class="px-3 py-2"></th><th class="px-3 py-2">Name</th><th class="px-3 py-2">Type</th><th class="px-3 py-2">State</th><th class="px-3 py-2">Id</th></tr>
+          </thead>
+          <tbody id="content-rows"></tbody>
+        </table>
+      </div>
+      <button type="button" id="content-download" disabled class="mt-3 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700 disabled:opacity-50">Download selected</button>
+      <p id="content-msg" class="mt-2 text-xs text-gray-500 dark:text-gray-400">Search, tick, download: the game fetches the items and the libraries they need. Afterwards a duel can run against them: tools/research/mcp-duel --opponent &lt;name&gt;.</p>
+    </div>
+
     <div id="news" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
       <div class="flex items-center justify-between mb-3">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">News in your game window</h3>

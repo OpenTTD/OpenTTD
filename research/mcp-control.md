@@ -385,8 +385,12 @@ a plan had one.
 `tools/research/mcp-duel [--months 24] [--seed N] [--opponent AI]` is a duel in one game: the
 planned bot and an opponent compete for the same towns and industries on one map, and the higher
 company value wins. The opponent defaults to the same bot without a plan, which builds buses only.
-`--opponent` names any installed AI, such as AdmiralAI or SimpleAI from BaNaNaS (fetched with the
-console's `content update`, `content select <id>`, `content download`). An AI the game does not
+`--opponent` names any installed AI, such as AdmiralAI or SimpleAI from BaNaNaS. The panel's
+**Content (BaNaNaS)** card fetches them: search, tick, Download selected. It runs on
+`GET /api/content?q=` (the game's `content update`, then `content state <q>` as data:
+id, type, state, name) and `POST /api/content/download {ids}` (`content select` for each, then
+`content download`; the game adds the libraries an AI needs). Both routes are in OpenAPI, so Swagger,
+MCP and Rhai have them too. The download is the owner's click. An AI the game does not
 have is refused before the first month. It writes `research/results/duel-*.{json,md}`.
 
 Results so far against the default opponent, 36 months each: seed 20208 A 242657 vs B 8567;

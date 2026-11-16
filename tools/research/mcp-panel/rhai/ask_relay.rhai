@@ -32,7 +32,15 @@ fn summarise(r) {
     let n = 0;
     for c in a.candidates {
         if n >= 3 { break; }
-        let name = if "name" in c { c.name } else if "a" in c && "b" in c { `${c.a.name} - ${c.b.name}` } else { to_json(c) };
+        // The shapes /api/intent returns: one industry type {name}; two types {from,to,cargo,
+        // distance}; the planner's own freight {producer,acceptor,cargo,distance} or passengers
+        // {a,b}. Without the middle two a freight candidate fell through to to_json and dumped the
+        // whole object, which is what pushed the approval ids past a news item's length.
+        let name = if "name" in c { c.name }
+            else if "from" in c && "to" in c { `${c.from.name} -> ${c.to.name}, ${c.cargo ?? "?"}, ${c.distance ?? "?"} tiles` }
+            else if "producer" in c && "acceptor" in c { `${c.producer.name} -> ${c.acceptor.name}, ${c.cargo ?? "?"}, ${c.distance ?? "?"} tiles` }
+            else if "a" in c && "b" in c { `${c.a.name} - ${c.b.name}` }
+            else { to_json(c) };
         lines.push(`${n + 1}. ${name}`);
         n += 1;
     }
@@ -55,11 +63,16 @@ loop {
             if !("http_error" in r) && (r.intent.action ?? "find") == "build" {
                 let done = build_plan::apply(r.answer);
                 if !done.pending.is_empty() {
-                    answer += `\n${done.pending.len()} change(s) sent to ${done.bot}, waiting for your approval: `;
-                    for id in done.pending { answer += `#${id} `; }
-                    answer += "(approve in the panel, or: prismatic_mcp approve <id>)";
+                    let ids = "";
+                    for id in done.pending { ids += `#${id} `; }
+                    // First, not last: a news item that is truncated must still carry the ids,
+                    // because they are the only part the owner has to act on. And "\n" is a
+                    // normal string -- a backtick string does not process escapes, which put a
+                    // literal backslash and n into the answer.
+                    answer = `${done.pending.len()} change(s) sent to ${done.bot}, waiting for your approval: ${ids}`
+                        + "(approve in the panel, or: prismatic_mcp approve <id>)" + "\n" + answer;
                 } else if !done.lines.is_empty() {
-                    answer += `\n${done.lines[0]}`;
+                    answer = done.lines[0] + "\n" + answer;
                 }
                 for line in done.lines { print(`  apply: ${line}`); }
             }

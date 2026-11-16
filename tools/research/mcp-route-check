@@ -21,7 +21,7 @@ import json, sys, urllib.error, urllib.request
 
 URL = sys.argv[1]
 # Query values a GET needs to be meaningful; every other GET is called bare.
-QUERY = {"/api/resource": "uri=openttd%3A%2F%2Fgame%2Fstate", "/api/plan": "limit=2", "/api/news": "limit=2",
+QUERY = {"/api/resource": "uri=openttd%3A%2F%2Fgame%2Fstate", "/api/plan": "limit=2", "/api/news": "limit=2", "/api/content": "q=AdmiralAI",
          "/api/events": "since=0&limit=5"}
 
 

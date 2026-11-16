@@ -518,3 +518,32 @@ if (window.EventSource) {
       data: nodes, links: res.graph.edges.map((e) => ({ source: e.from, target: e.to })), itemStyle: { color: '#3987e5' }, lineStyle: { color: '#9ca3af', width: 1.5 } }] }, true);
   };
 })();
+
+// Content (BaNaNaS): search the content server through the game, tick, download (the owner's click).
+(() => {
+  const form = $('content-form'); if (!form) return;
+  const rows = $('content-rows'), dl = $('content-download'), msg = $('content-msg');
+  const ticked = () => [...rows.querySelectorAll('input[type=checkbox]:checked')].map((b) => Number(b.value));
+  const sync = () => { dl.disabled = ticked().length === 0; };
+  form.onsubmit = async (ev) => {
+    ev.preventDefault();
+    msg.textContent = 'Asking the content server through the game...';
+    const r = await api('/api/content?q=' + encodeURIComponent($('content-q').value));
+    if (!r.items) { msg.textContent = 'Not available: ' + (r.error || r.text || r.status); return; }
+    rows.innerHTML = r.items.map((it) => `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+      <td class="px-3 py-2"><input type="checkbox" value="${it.id}" ${/downloaded|installed/i.test(it.state) ? 'disabled' : ''} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm" aria-label="Select ${esc(it.name)}"></td>
+      <td class="px-3 py-2 font-medium text-gray-900 dark:text-white">${esc(it.name)}</td>
+      <td class="px-3 py-2">${esc(it.type)}</td><td class="px-3 py-2">${esc(it.state)}</td><td class="px-3 py-2 font-mono">${it.id}</td></tr>`).join('');
+    rows.querySelectorAll('input[type=checkbox]').forEach((b) => { b.onchange = sync; });
+    sync();
+    msg.textContent = `${r.count} item(s) for "${r.query}".`;
+  };
+  dl.onclick = async () => {
+    const ids = ticked(); if (!ids.length) return;
+    dl.disabled = true;
+    msg.textContent = `Downloading ${ids.length} item(s) and the libraries they need...`;
+    const r = await api('/api/content/download', { ids });
+    const lines = (r.output || []).filter((l) => !/heartbeat/.test(l)).slice(-6);
+    msg.innerHTML = r.ids ? `Done: ${esc(lines.join(' | ') || 'downloaded')}. Search again to see the new state.` : 'Refused: ' + esc(r.error || r.text || r.status);
+  };
+})();
