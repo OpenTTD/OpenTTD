@@ -128,7 +128,11 @@ The page uses the panel's compiled Flowbite CSS and only classes it already cont
 "Duplicate buildings" card of the page) judges every instance's stations by one rule: **two stations
 of one owner that share a facility and whose catchments overlap duplicate each other**, since both
 serve the same tiles with the same kind of transport. A bus stop beside its own airport, another
-owner's stop, or two stops of one owner whose catchments do not touch are not duplicates.
+owner's stop, or two stops of one owner whose catchments do not touch are not duplicates. Only a
+company builds a duplicate: an owner of 15 or more (`MAX_COMPANIES`, `src/company_type.h`) is the
+game's own, a town (15), nobody (16) or water (17). Two oil rigs a few tiles apart, each with its own
+unowned heliport and dock, are the map and not a build; on seeds 24455 and 2468 they had been
+reported as duplicates of owner 16. Depots are judged the same way.
 
 The catchment is the game's own: `openttd://stations` publishes `catchment_radius`
 (`Station::GetCatchmentRadius`) and `catchment_area`, the bounding box of the station's

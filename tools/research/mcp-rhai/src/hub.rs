@@ -521,15 +521,27 @@ pub fn catchment(s: &Value) -> Option<(i64, i64, i64, i64)> {
     Some((x - r, y - r, x + r, y + r))
 }
 
-/// Pairs of stations that duplicate each other: one owner, at least one facility in common, and
-/// catchments that overlap, so both serve the same tiles with the same kind of transport. Two
-/// stations of one owner far apart, or a bus stop beside its own airport, are not duplicates.
+/// The game's company slots (MAX_COMPANIES, src/company_type.h). An owner at or above it is the
+/// game's own: 15 a town, 16 nobody (an oil rig's heliport and dock), 17 water.
+pub const MAX_COMPANIES: i64 = 15;
+
+/// The company that built a station or depot, None when the game itself owns it. Only a company
+/// can build a duplicate: two oil rigs 7 tiles apart, each with its own unowned airport and dock,
+/// are the map, not a build (seeds 24455 and 2468, 2026-11-16).
+pub fn company_owner(v: &Value) -> Option<i64> {
+    v.get("owner").and_then(Value::as_i64).filter(|o| (0..MAX_COMPANIES).contains(o))
+}
+
+/// Pairs of stations that duplicate each other: one company owner, at least one facility in common,
+/// and catchments that overlap, so both serve the same tiles with the same kind of transport. Two
+/// stations of one owner far apart, a bus stop beside its own airport, or stations the game owns
+/// (company_owner) are not duplicates.
 pub fn duplicate_stations(stations: &[Value]) -> Vec<Value> {
     let mut out = Vec::new();
     for (i, a) in stations.iter().enumerate() {
         for b in &stations[i + 1..] {
-            let (Some(oa), Some(ob)) = (a.get("owner"), b.get("owner")) else { continue };
-            if oa != ob || oa.is_null() { continue; }
+            let (Some(oa), Some(ob)) = (company_owner(a), company_owner(b)) else { continue };
+            if oa != ob { continue; }
             let fb = facilities(b);
             let shared: Vec<String> = facilities(a).into_iter().filter(|f| fb.contains(f)).collect();
             if shared.is_empty() { continue; }
@@ -615,7 +627,8 @@ pub fn duplicate_depots(depots: &[Value], reach: i64, roads: Option<&Roads>) -> 
     let xy = |d: &Value| (d["x"].as_i64().unwrap_or(0), d["y"].as_i64().unwrap_or(0));
     for (i, a) in depots.iter().enumerate() {
         for b in &depots[i + 1..] {
-            if a["owner"] != b["owner"] || a["owner"].is_null() || a["type"] != b["type"] { continue; }
+            let (Some(oa), Some(ob)) = (company_owner(a), company_owner(b)) else { continue };
+            if oa != ob || a["type"] != b["type"] { continue; }
             let (pa, pb) = (xy(a), xy(b));
             let straight = (pa.0 - pb.0).abs().max((pa.1 - pb.1).abs());
             let (dist, by) = match (a["type"].as_str(), roads) {

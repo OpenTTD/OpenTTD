@@ -370,11 +370,15 @@ mod tests {
             st(0, "Rindingbury", 107, 200, 0, &["bus"]), st(1, "Rindingbury West", 117, 199, 0, &["bus"]),
             st(2, "Pardham", 66, 238, 0, &["bus"]), st(9, "Pardham Central", 61, 236, 0, &["airport"]),
             st(10, "Rival", 75, 225, 1, &["bus"]),
+            // Two oil rigs' own stations, owner 16 (nobody), seed 24455: the map, not a build.
+            st(20, "Gardston Oilfield", 12, 228, 16, &["airport", "dock"]), st(21, "Nontown Oilfield", 14, 235, 16, &["airport", "dock"]),
         ];
         let d = hub::duplicate_stations(&s);
         let names: Vec<(String, String)> = d.iter().map(|x| (x["a"]["name"].as_str().unwrap().into(), x["b"]["name"].as_str().unwrap().into())).collect();
         assert_eq!(names, vec![("Chindingtown".to_string(), "Chindingtown Central".to_string()), ("Carnford".to_string(), "Carnford Central".to_string())],
-                   "2 apart and 6 apart overlap (3+3); 10 apart does not; bus beside an airport and another owner's stop are not duplicates");
+                   "2 apart and 6 apart overlap (3+3); 10 apart does not; bus beside an airport, another owner's stop and the game's own oil rigs are not duplicates");
+        assert_eq!(hub::company_owner(&st(1, "Town", 0, 0, 15, &["bus"])), None, "15 is a town");
+        assert_eq!(hub::company_owner(&st(1, "A", 0, 0, 14, &["bus"])), Some(14));
         assert_eq!(d[0]["facilities"], json!(["bus"]));
         assert_eq!(d[1]["distance"], json!(6));
     }
