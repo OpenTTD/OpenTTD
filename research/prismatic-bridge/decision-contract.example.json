@@ -1,0 +1,16 @@
+{
+  "request": {
+    "ai": "PrismaticAI",
+    "settings": "intercity=0,aggressiveness=75"
+  },
+  "response": {
+    "called_url": "http://127.0.0.1:8000/openttd/decision",
+    "raw_response": {
+      "ai": "PrismaticAI",
+      "settings": "intercity=0,aggressiveness=75"
+    },
+    "applied_rcon": {
+      "lines": []
+    }
+  }
+}

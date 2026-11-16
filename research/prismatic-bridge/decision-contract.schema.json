@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/korczis/OpenTTD/research/prismatic-bridge/decision-contract.schema.json",
+  "title": "openttd-prismatic-bridge /decision/pull contract",
+  "description": "The machine-checkable contract for the bridge's POST /decision/pull endpoint (ARCHITECTURE.md §4, §7). The endpoint GETs a decision directive from PRISMATIC_DECISION_URL (a prismatic-platform route this repository does not assume), applies it to a running OpenTTD company via the Admin Network (reload_ai when company_id is present, else start_ai when ai is present), and returns a DecisionPullResult. 'request' is the directive prismatic-platform must produce; 'response' is what the bridge returns. The bridge reads only the three documented directive fields; the admin-client language (I0012 / ADR 0032) does not change this HTTP contract.",
+  "type": "object",
+  "required": ["request", "response"],
+  "additionalProperties": false,
+  "properties": {
+    "request": {
+      "$ref": "#/$defs/decisionDirective",
+      "description": "The decision directive prismatic-platform returns from PRISMATIC_DECISION_URL."
+    },
+    "response": {
+      "$ref": "#/$defs/decisionPullResult",
+      "description": "The DecisionPullResult the bridge returns from POST /decision/pull."
+    }
+  },
+  "$defs": {
+    "decisionDirective": {
+      "type": "object",
+      "description": "What PRISMATIC_DECISION_URL returns. At least one of 'ai' or 'company_id' must be present, or the bridge applies nothing. When 'company_id' is present the bridge issues 'reload_ai <company_id>' (the company keeps its configured settings); otherwise, when 'ai' is present, it issues 'start_ai <ai> [settings]'. Unknown fields are not permitted by this contract, though the running bridge would ignore them.",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "anyOf": [
+        { "required": ["company_id"] },
+        { "required": ["ai"] }
+      ],
+      "properties": {
+        "ai": {
+          "type": "string",
+          "minLength": 1,
+          "description": "AI short name as registered with OpenTTD, e.g. 'PrismaticAI'. Used by start_ai when company_id is absent.",
+          "examples": ["PrismaticAI"]
+        },
+        "company_id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14,
+          "description": "Zero-based OpenTTD company id (0..14; OpenTTD allows at most 15 companies). When present, the bridge reloads that company's AI with reload_ai.",
+          "examples": [0]
+        },
+        "settings": {
+          "type": "string",
+          "description": "AI settings string as accepted by the console's start_ai command: a comma-separated list of key=value pairs, no spaces. Applied on start_ai; on reload_ai the company's stored settings are used instead.",
+          "examples": ["aggressiveness=75", "intercity=0,aggressiveness=75,max_routes=4"]
+        }
+      }
+    },
+    "decisionPullResult": {
+      "type": "object",
+      "description": "The bridge's response: the URL it called, the raw directive it received, and the rcon result of applying it (null when nothing was applied).",
+      "additionalProperties": false,
+      "required": ["called_url", "raw_response"],
+      "properties": {
+        "called_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The PRISMATIC_DECISION_URL the bridge GET-ed.",
+          "examples": ["http://127.0.0.1:8000/openttd/decision"]
+        },
+        "raw_response": {
+          "$ref": "#/$defs/decisionDirective",
+          "description": "The decision directive the bridge received from called_url, echoed verbatim."
+        },
+        "applied_rcon": {
+          "description": "The console (rcon) output of the reload_ai/start_ai command the directive triggered, or null when neither field was present so nothing was applied.",
+          "anyOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/rconResponse" }
+          ]
+        }
+      }
+    },
+    "rconResponse": {
+      "type": "object",
+      "description": "An OpenTTD console command's output lines (start_ai/reload_ai usually return an empty list on success).",
+      "additionalProperties": false,
+      "required": ["lines"],
+      "properties": {
+        "lines": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "One entry per console output line."
+        }
+      }
+    }
+  }
+}

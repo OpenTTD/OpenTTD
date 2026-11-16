@@ -26,4 +26,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-16T19:55:57Z
+started_at: 2026-11-16T19:55:29Z
+started_event: sha256:0bbb3064eabc2d770672483c15ad9460abe926c503134fabefac3a5f9b3f44c6
+verified_at: 2026-11-16T19:55:46Z
+verified_event: sha256:aa46a8be9cf6c8c5c2ee401f96c2db5e4af7e548bb7bbeb91293ae6f8baa1c12
+completed_at: 2026-11-16T19:55:57Z
+completed_event: sha256:501956b466a0bc8ae4c87e18349c0e085b167d2c615c08ad87adb424128c0750
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "python3 -m jsonschema -i research/prismatic-bridge/decision-contract.example.json research/prismatic-bridge/decision-contract.schema.json"
+    result: "PASS, exit 0 (jsonschema 4.26.0 in a venv; system python3 has no jsonschema module). decision-contract.schema.json (draft 2020-12) defines request (decision directive {ai?,company_id?(0-14),settings?}, at least one of ai/company_id) and response (DecisionPullResult {called_url, raw_response=directive, applied_rcon {lines[]}|null}); decision-contract.example.json validates against it. Negative control: a directive with neither ai nor company_id fails (exit 1). Cross-checked with check-jsonschema ('ok -- validation done'). ARCHITECTURE.md §7 now points to both files. Matches the bridge's actual POST /decision/pull (bridge/main.py: GET PRISMATIC_DECISION_URL -> reload_ai/start_ai)."
+    commit: 5900a9d314b730a22b1297e2a3bfd79f38406042
+    recorded_at: 2026-11-16T19:55:48Z
