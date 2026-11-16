@@ -64,9 +64,9 @@ export function callParams(op, values) {
   return params;
 }
 
-/** The page state kept in the URL hash: instance, operation, filter text and event kinds. */
+/** The page state kept in the URL hash: instance, operation, filter text, event kinds and the track plan's inputs. */
 export function parseHash(hash) {
-  const out = { instance: '', op: '', q: '', kinds: [] };
+  const out = { instance: '', op: '', q: '', kinds: [], plan: '' };
   for (const part of String(hash || '').replace(/^#/, '').split('&')) {
     const [k, v = ''] = part.split('=');
     if (!k) continue;
@@ -79,7 +79,7 @@ export function parseHash(hash) {
 
 export function formatHash(state) {
   const parts = [];
-  for (const k of ['instance', 'op', 'q']) if (state[k]) parts.push(`${k}=${encodeURIComponent(state[k])}`);
+  for (const k of ['instance', 'op', 'q', 'plan']) if (state[k]) parts.push(`${k}=${encodeURIComponent(state[k])}`);
   if (state.kinds && state.kinds.length) parts.push(`kinds=${encodeURIComponent(state.kinds.join(','))}`);
   return parts.length ? `#${parts.join('&')}` : '';
 }
@@ -280,6 +280,110 @@ export function auditView(container, results, { onStation } = {}) {
   }
   container.replaceChildren(head, ...rows);
   return s;
+}
+
+/* ---- the track planner: AlgoGlyph through the hub (algoglyph.track_plan, I0073) ------------- */
+
+export const HEADINGS = ['NE', 'SE', 'SW', 'NW'];
+
+/** A plan's inputs as one hash value: "x,y,DIR;x,y[,DIR];railtype". */
+export function formatPlan(p) {
+  if (!p || !p.from || !p.to) return '';
+  const end = (e) => [e.x, e.y, e.dir].filter((v) => v !== undefined && v !== '').join(',');
+  return [end(p.from), end(p.to), p.railtype || ''].join(';').replace(/;$/, '');
+}
+
+/** The inverse of formatPlan; null when the value is not a plan. */
+export function parsePlan(s) {
+  const [a, b, railtype = ''] = String(s || '').split(';');
+  const end = (v) => {
+    const [x, y, dir] = String(v || '').split(',');
+    if (!/^\d+$/.test(x || '') || !/^\d+$/.test(y || '')) return null;
+    return { x: Number(x), y: Number(y), ...(HEADINGS.includes(dir) ? { dir } : {}) };
+  };
+  const from = end(a), to = end(b);
+  if (!from || !to || !from.dir) return null;
+  return { from, to, railtype };
+}
+
+/** The params of algoglyph.track_plan for an instance and a plan. */
+export function trackPlanParams(instance, p) {
+  return { instance, from: p.from, to: p.to, ...(p.railtype ? { railtype: p.railtype } : {}) };
+}
+
+/** What the answer says, whether it came wrapped ({ok, result}) or bare: status, money, counts. */
+export function planSummary(answer) {
+  const r = (answer && answer.result && typeof answer.result === 'object' && !Array.isArray(answer.result)) ? answer.result : (answer || {});
+  const counts = Object.entries(r.counts || {}).filter(([, v]) => typeof v === 'number');
+  return { status: r.status || 'unknown', money: typeof r.money === 'number' ? Math.round(r.money) : null,
+           exact: !!(r.priced && r.priced.exact), counts, pieces: Array.isArray(r.pieces) ? r.pieces.length : 0 };
+}
+
+/** The instances that publish what a plan reads (openttd://map), found in the catalogue. */
+export function planInstances(ops) {
+  return [...new Set(ops.filter((o) => o.id === 'resource:openttd://map').map((o) => o.instance))];
+}
+
+/** The rail types a game offers, from its openttd://railtypes answer (MCP or panel envelope). */
+export function railtypeOptions(answer) {
+  let v = answer;
+  const text = v && v.contents && v.contents[0] && v.contents[0].text;
+  if (text) { try { v = JSON.parse(text); } catch { v = {}; } }
+  const data = (v && v.data && typeof v.data === 'object') ? v.data : (v || {});
+  return (data.types || []).map((t) => ({ label: t.label, name: t.name, cost: t.build_cost }));
+}
+
+/** The planner card: pick a game, two ends and a rail type; AlgoGlyph answers with the route. */
+export function trackPlanView(container, client, { ops = [], plan = '', instance = '', onPlan, onStart } = {}) {
+  const games = planInstances(ops);
+  const p = parsePlan(plan) || { from: { x: '', y: '', dir: 'NE' }, to: { x: '', y: '' }, railtype: '' };
+  const num = (v) => el('input', { class: CLS.input, type: 'number', min: '0', value: v === '' ? undefined : v });
+  const select = (options, value) => {
+    const s = el('select', { class: CLS.input }, ...options.map(([v, label]) => el('option', { value: v }, label)));
+    s.value = value;
+    return s;
+  };
+  const game = select(games.map((g) => [g, g]), games.includes(instance) ? instance : (games[0] || ''));
+  const fx = num(p.from.x), fy = num(p.from.y), fd = select(HEADINGS.map((h) => [h, h]), p.from.dir || 'NE');
+  const tx = num(p.to.x), ty = num(p.to.y);
+  const rail = select([['', 'plain rail']], p.railtype || '');
+  const out = el('div', { class: 'mt-3' });
+  const loadRail = async () => {
+    if (!game.value) return;
+    try {
+      const options = railtypeOptions(await client.call('hub.call', { instance: game.value, id: 'resource:openttd://railtypes' }));
+      const keep = rail.value || p.railtype;
+      rail.replaceChildren(el('option', { value: '' }, 'plain rail'), ...options.map((o) => el('option', { value: o.label }, `${o.name} (${o.label}, ${o.cost} a tile)`)));
+      rail.value = options.some((o) => o.label === keep) ? keep : '';
+    } catch { /* a game without openttd://railtypes plans on plain rail */ }
+  };
+  game.addEventListener('change', loadRail);
+  const field = (label, ...inputs) => el('label', { class: 'block mb-2' }, el('span', { class: CLS.label }, label), el('div', { class: 'flex gap-2' }, ...inputs));
+  const form = el('form', { onsubmit: async (e) => {
+    e.preventDefault();
+    const plan = { from: { x: Number(fx.value), y: Number(fy.value), dir: fd.value }, to: { x: Number(tx.value), y: Number(ty.value) }, railtype: rail.value };
+    if (onPlan) onPlan(formatPlan(plan), game.value);
+    out.replaceChildren(el('p', { class: CLS.muted }, 'planning…'));
+    try {
+      const s = planSummary(await client.call('algoglyph.track_plan', trackPlanParams(game.value, plan)));
+      const badge = s.status === 'found' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
+      out.replaceChildren(
+        el('div', { class: 'flex items-center gap-2 mb-2' },
+          el('span', { class: `${badge} text-xs font-medium px-2.5 py-0.5 rounded-sm` }, s.status),
+          s.money === null ? null : el('span', { class: 'text-sm font-semibold text-gray-900 dark:text-white' }, `${s.money.toLocaleString()} (game money${s.exact ? ', exact' : ''})`),
+          el('span', { class: CLS.muted }, `${s.pieces} piece(s)`)),
+        el('table', { class: CLS.table }, el('tbody', {}, ...s.counts.map(([k, v]) => el('tr', { class: 'border-b dark:border-gray-700' },
+          el('th', { class: `${CLS.cell} font-medium text-gray-900 dark:text-white` }, k), el('td', { class: CLS.cell }, Number.isInteger(v) ? v : v.toFixed(1)))))),
+        onStart ? el('button', { type: 'button', class: `${CLS.secondary} mt-3`, onclick: () => onStart(plan.from) }, 'Centre the camera on the start') : null);
+    } catch (err) { out.replaceChildren(el('p', { class: 'text-sm text-red-800 dark:text-red-300' }, err.message)); }
+  } },
+  el('label', { class: 'block mb-2' }, el('span', { class: CLS.label }, 'Game'), game),
+  field('From (x, y, heading)', fx, fy, fd),
+  field('To (x, y)', tx, ty),
+  el('label', { class: 'block mb-2' }, el('span', { class: CLS.label }, 'Rail type'), rail),
+  el('button', { type: 'submit', class: CLS.primary }, 'Plan'));
+  container.replaceChildren(games.length ? form : el('p', { class: CLS.muted }, 'No instance publishes openttd://map.'), out);
+  loadRail();
 }
 
 /* ---- the visual layer: one door for every chart (I0048) ----------------------------------- */

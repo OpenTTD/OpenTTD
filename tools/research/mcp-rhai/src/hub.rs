@@ -849,7 +849,7 @@ pub fn handle(state: &Shared, req: &Value, subscriber: Option<u64>) -> Option<Va
             let read = |resource: &str| -> Result<Option<Value>, String> {
                 match resource_op(&ops, resource) {
                     None => Ok(None),
-                    Some(op) => call(&instance, op, None, None).map(|v| Some(unwrap_data(&v))),
+                    Some(op) => call(&instance, op, None, None).and_then(algoglyph::published).map(|v| v.map(|v| unwrap_data(&v))),
                 }
             };
             match algoglyph::track_input(&p, &read).and_then(|input| algoglyph::flow(&["kernel", "track-planning", "-"], Some(&input))) {

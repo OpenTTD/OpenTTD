@@ -1,0 +1,30 @@
+id: I0075
+milestone: an-agent-reaches-the-game-over-mcp
+title: "A rail line planned from the hub page, and a resource the build lacks left out of the plan instead of passed as an error"
+slug: hub-plan-card
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "The hub page has a Plan a rail line card (game, both ends, rail type read from the game) that calls algoglyph.track_plan and shows status, money and counts, with the inputs kept in the address; track_plan reads a panel's 404 as a resource not published."
+why: "The owner: everything clickable, interactive and callable, state in the URL, better UI controls in Flowbite. openttd-80: a panel answers 404 for a resource its build lacks, which track_plan used to pass to the kernel as data."
+scope:
+  - "tools/research/mcp-panel/static/**"
+  - "tools/research/mcp-panel/test/**"
+  - "tools/research/mcp-rhai/**"
+  - "research/**"
+  - ".ai/**"
+depends_on:
+  - I0074
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "The card lists the games that publish openttd://map and their rail types, plans through algoglyph.track_plan and shows status, money and counts"
+  - "The plan round-trips through the address and survives a reload; node --test covers the pure helpers"
+  - "A panel's 404 is read as not published and any other HTTP error fails; a cargo test covers it"
+  - "In a real browser against a live game: the card plans and no console error appears; mcp-hub-page-check matches master's result"
+validation:
+  - "node --test tools/research/mcp-panel/test/components.test.mjs"
+  - "cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'

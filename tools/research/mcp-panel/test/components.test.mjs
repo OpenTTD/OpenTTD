@@ -1,7 +1,7 @@
 // node --test tools/research/mcp-panel/test/ : the pure parts of static/components.js.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { schemaFields, coerce, callParams, parseHash, formatHash, groupOps, HubClient } from '../static/components.js';
+import { schemaFields, coerce, callParams, parseHash, formatHash, groupOps, HubClient, formatPlan, parsePlan, trackPlanParams, planSummary, planInstances, railtypeOptions } from '../static/components.js';
 
 const schema = { type: 'object', required: ['pause'], properties: {
   pause: { type: 'boolean' }, tile: { type: 'integer' }, mode: { enum: ['a', 'b'] }, name: { type: 'string' }, extra: { type: 'object' } } };
@@ -31,9 +31,9 @@ test('call params carry the body and query an operation declares', () => {
 });
 
 test('the page state round-trips through the URL hash', () => {
-  const s = { instance: 'panel-8800', op: 'panel-8800/status', q: 'view zoom', kinds: ['game', 'company'] };
+  const s = { instance: 'panel-8800', op: 'panel-8800/status', q: 'view zoom', kinds: ['game', 'company'], plan: '68,9,NE;45,9;ELRL' };
   assert.deepEqual(parseHash(formatHash(s)), s);
-  assert.deepEqual(parseHash(''), { instance: '', op: '', q: '', kinds: [] });
+  assert.deepEqual(parseHash(''), { instance: '', op: '', q: '', kinds: [], plan: '' });
   assert.equal(formatHash({ kinds: [] }), '');
 });
 
@@ -127,4 +127,26 @@ test('money series has one line per company over the samples', () => {
   assert.equal(o.series.length, 1);
   assert.deepEqual(o.series[0].data, [[1, 5], [2, 7]]);
   assert.equal(o.dataZoom[0].zoomOnMouseWheel, 'ctrl');
+});
+
+test('a track plan round-trips through the hash, and a broken one is not a plan', () => {
+  const p = { from: { x: 68, y: 9, dir: 'NE' }, to: { x: 45, y: 9 }, railtype: 'ELRL' };
+  assert.equal(formatPlan(p), '68,9,NE;45,9;ELRL');
+  assert.deepEqual(parsePlan(formatPlan(p)), p);
+  assert.deepEqual(parsePlan('1,2,SW;3,4'), { from: { x: 1, y: 2, dir: 'SW' }, to: { x: 3, y: 4 }, railtype: '' });
+  assert.equal(parsePlan('1,2;3,4'), null);          // the start needs a heading
+  assert.equal(parsePlan('a,2,NE;3,4'), null);
+  assert.equal(parseHash(formatHash({ plan: formatPlan(p) })).plan, '68,9,NE;45,9;ELRL');
+});
+
+test('the planner call, its answer and the games and rail types come from what the hub returns', () => {
+  assert.deepEqual(trackPlanParams('g', { from: { x: 1, y: 2, dir: 'NE' }, to: { x: 3, y: 4 }, railtype: '' }),
+    { instance: 'g', from: { x: 1, y: 2, dir: 'NE' }, to: { x: 3, y: 4 } });
+  const s = planSummary({ ok: true, result: { status: 'found', money: 1650.4, priced: { exact: true }, counts: { tiles: 22, curves: 0, length: 22.5 }, pieces: [1, 2] } });
+  assert.deepEqual(s, { status: 'found', money: 1650, exact: true, counts: [['tiles', 22], ['curves', 0], ['length', 22.5]], pieces: 2 });
+  assert.equal(planSummary({ status: 'unreachable' }).status, 'unreachable');
+  assert.deepEqual(planInstances([{ instance: 'a', id: 'resource:openttd://map' }, { instance: 'b', id: 'tool:x' }, { instance: 'a', id: 'resource:openttd://map' }]), ['a']);
+  const mcp = { contents: [{ text: JSON.stringify({ data: { types: [{ label: 'RAIL', name: 'Railway', build_cost: 75 }] } }) }] };
+  assert.deepEqual(railtypeOptions(mcp), [{ label: 'RAIL', name: 'Railway', cost: 75 }]);
+  assert.deepEqual(railtypeOptions({ data: { types: [] } }), []);
 });

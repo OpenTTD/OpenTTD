@@ -182,6 +182,13 @@ bot and the human-motion player to the same rule.
 - The page is checked in a real browser by `tools/research/mcp-hub-page-check` (headless installed
   Chrome through playwright-core); the World view by `tools/research/mcp-viz-check`.
 
+The hub page has a card for it, **Plan a rail line** (`trackPlanView` in `static/components.js`):
+pick a game (every instance that publishes `openttd://map`), the two ends and a rail type (read from
+the game's `openttd://railtypes`, with each type's cost a tile), and AlgoGlyph's answer is shown as
+status, money and counts. The inputs are kept in the address (`#plan=x,y,DIR;x,y;RAILTYPE`) and
+survive a reload. A panel's 404 for a resource the build lacks is read as not published, so the
+kernel uses its defaults; any other HTTP error fails the call.
+
 Rail types, measured on the same 256x256 game (construction cost low, build_rail 75): one route
 of the same tiles priced on `RAIL` 6487, `ELRL` 9350 and `MGLV` 18051 (track at the type's
 `build_cost` 75, 112 and 225; clearing and foundations are the same for every type); an unknown

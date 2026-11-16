@@ -80,6 +80,11 @@
           <div id="audit" class="mt-3"></div>
         </div>
         <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Plan a rail line</h2>
+          <p class="text-xs text-gray-500 dark:text-gray-400">algoglyph.track_plan: AlgoGlyph's track-planning on the game's map, ways, terrain, prices and bridges, with bridges, tunnels, diagonal track and inclines, priced in the game's money. The inputs stay in the address.</p>
+          <div id="plan" class="mt-3"></div>
+        </div>
+        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
           <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Resource</h2>
           <div id="resource" class="text-xs text-gray-500 dark:text-gray-400">Click any openttd:// link in a result to read it here.</div>
         </div>
@@ -89,7 +94,7 @@
 
   <script src="/vendor/npm/flowbite/dist/flowbite.min.js"></script>
   <script type="module">
-    import { HubClient, parseHash, formatHash, catalogueView, instancesView, eventsView, jsonView, auditView, scrollOp } from '/static/components.js';
+    import { HubClient, parseHash, formatHash, catalogueView, instancesView, eventsView, jsonView, auditView, scrollOp, trackPlanView } from '/static/components.js';
 
     const $ = (id) => document.getElementById(id);
     let state = parseHash(location.hash);
@@ -134,8 +139,19 @@
       $('counts').textContent = `${instances.length} instance(s), ${ops.length} operation(s)`;
       renderInstances();
       renderCatalogue();
+      renderPlan();
       runAudit();
     }
+
+    const renderPlan = () => trackPlanView($('plan'), client, {
+      ops, plan: state.plan, instance: state.instance,
+      onPlan: (plan) => { state.plan = plan; save(); },
+      onStart: async (at) => {
+        const op = scrollOp(ops);
+        if (!op) { $('resource').replaceChildren('No instance offers openttd.view.scroll_to.'); return; }
+        $('resource').replaceChildren(jsonView(await client.call('hub.call', { instance: op.instance, id: op.id, body: { x: at.x, y: at.y } }), readUri));
+      },
+    });
 
     client.on('open', async () => { $('conn').textContent = 'live'; await load(); subscribe(); })
       .on('close', () => { $('conn').textContent = 'reconnecting'; })

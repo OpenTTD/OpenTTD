@@ -88,6 +88,17 @@ pub fn parse_answer(text: &str) -> Option<Value> {
         .or_else(|| text.lines().rev().find_map(|l| serde_json::from_str::<Value>(l.trim()).ok().filter(|v| v.is_object() || v.is_array())))
 }
 
+/// What a read of one resource answered, as `track_input` takes it: a panel's 404 (the build has
+/// no such resource) is not published, None; any other HTTP error is an error; anything else is
+/// the resource.
+pub fn published(v: Value) -> Result<Option<Value>, String> {
+    match v.get("http_error").and_then(Value::as_u64) {
+        Some(404) => Ok(None),
+        Some(code) => Err(format!("HTTP {code}: {}", v.get("body").map(Value::to_string).unwrap_or_default())),
+        None => Ok(Some(v)),
+    }
+}
+
 /// The track-planning input: `{map, ways, terrain, prices}` from `read` (resource -> its `data`,
 /// None when the game does not publish it), plus the caller's from, to, costs and rules.
 pub fn track_input(params: &Value, read: &dyn Fn(&str) -> Result<Option<Value>, String>) -> Result<Value, String> {
@@ -164,6 +175,13 @@ mod tests {
         assert_eq!(track_input(&p, &read).unwrap()["railtype"]["label"], "ELRL");
         let plain = json!({"from": {"x": 1, "y": 1, "dir": "NE"}, "to": {"x": 5, "y": 1}});
         assert!(track_input(&plain, &read).unwrap().get("railtype").is_none());
+    }
+
+    #[test]
+    fn a_panels_404_is_a_resource_not_published_and_any_other_error_fails() {
+        assert_eq!(published(json!({"http_error": 404, "body": {"error": "no such resource"}})).unwrap(), None);
+        assert!(published(json!({"http_error": 503, "body": "down"})).unwrap_err().contains("503"));
+        assert_eq!(published(json!({"data": {"width": 8}})).unwrap(), Some(json!({"data": {"width": 8}})));
     }
 
     #[test]

@@ -26,3 +26,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T05:19:14Z
+started_event: sha256:5e757bdbb8906ba183441f6301a00caf1e3de68ff54417616bfef2d4ce76897e
+updated_at: 2026-11-16T05:19:22Z
+verified_at: 2026-11-16T05:19:17Z
+verified_event: sha256:2ffe4d16a1753d78fa2d1b83a886a9a74d8a42addb727bf8e6909af94b5dc5dd
+completed_at: 2026-11-16T05:19:22Z
+completed_event: sha256:d3348b63283afa5244053fd15b1e5396981ce7a872fe0ffca30ccb7ffc009fe5
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; cargo test --bin mcp-hub; rebased tree: openttd_test [prismatic_mcp]; live dedicated game + hub + AlgoGlyph feature/exact-prices"
+    result: "research PASS 115/115; mcp-hub 21/21; rebased 16 cases 531 assertions; live: RAIL/ELRL/MONO/MGLV with build_cost 75/112/150/225 = build_rail x multiplier >> 3; one route 6487 RAIL, 9350 ELRL, 18051 MGLV; unknown label refused; change tier not re-run (only MCP-gated sources and the hub changed); delivered ebb28d4c57"
+    artifact: "ebb28d4c57"
+    commit: ebb28d4c57c40d9cac4e3556b78ea2c8dd3f6358
+    recorded_at: 2026-11-16T05:19:20Z
