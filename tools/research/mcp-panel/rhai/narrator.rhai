@@ -9,24 +9,39 @@
 // decision, a pause or resume, and a summary at every new month.
 import "ttd" as ttd;
 
-fn say(text) {
-    // The console takes one line; quotes inside the message would end it early.
-    con_say(`"[owner-bot] ${text.replace("\"", "'")}"`);
+// Rhai's String.replace changes the string in place and returns (), so it never chains: each
+// helper replaces on its own copy (arguments are passed by value) and returns that copy.
+fn without_bot_name(t) {
+    t.replace("PrismaticAI: ", "");
+    t.replace("PrismaticAI ", "");
+    t
 }
 
+fn say(text) {
+    // The console takes one line; quotes inside the message would end it early.
+    text.replace("\"", "'");
+    con_say(`"[owner-bot] ${text}"`);
+}
+
+// A route the bot opened, whatever its mode: "built a bus route in <town> ...", "built a rail
+// route <cargo> <a> - <b> ...", "built an air route ...".
+fn opened_route(t) { (t.contains("built a ") || t.contains("built an ")) && t.contains(" route") }
+
 // A newspaper in the owner's window for what matters most: a route the bot opened, with a
-// viewport on its town (openttd.view.news.show through POST /api/news). Chat carries the rest.
+// viewport on its town when it has one (openttd.view.news.show through POST /api/news). Chat
+// carries the rest.
 fn headline(e) {
-    if e.kind == "ai.log" && e.data.text.contains("built a bus route in ") {
+    if e.kind == "ai.log" && opened_route(e.data.text) {
         let t = e.data.text;
-        let rest = t.sub_string(t.index_of("built a bus route in ") + 21);
-        let town_name = rest.split(" with ")[0];
-        for town in read("openttd://towns").data.towns {
-            if town.name == town_name {
-                return #{text: "Your bot opened a route: " + t.replace("PrismaticAI: ", ""), town: town.id};
+        let text = "Your bot opened a route: " + without_bot_name(t);
+        if t.contains("built a bus route in ") {
+            let rest = t.sub_string(t.index_of("built a bus route in ") + 21);
+            let town_name = rest.split(" with ")[0];
+            for town in read("openttd://towns").data.towns {
+                if town.name == town_name { return #{text: text, town: town.id}; }
             }
         }
-        return #{text: "Your bot opened a route: " + t.replace("PrismaticAI: ", "")};
+        return #{text: text};
     }
     if e.kind == "game.new_world" { return #{text: `A new world for your bot: ${e.data.towns} towns, ${e.data.date}`}; }
     ()
@@ -37,9 +52,9 @@ fn narrate(e) {
     let d = e.data;
     if k == "ai.log" {
         let t = d.text;
-        if t.contains("built a bus route") || t.contains(": route ") || t.contains("behaviour:")
+        if opened_route(t) || t.contains(": route ") || t.contains("behaviour:")
             || t.contains("no new route") || d.level == "error" || d.level == "squirrel_error" {
-            return t.replace("PrismaticAI: ", "").replace("PrismaticAI ", "");
+            return without_bot_name(t);
         }
         return ();
     }
@@ -59,7 +74,10 @@ fn narrate(e) {
 }
 
 con_setting("network.client_name owner-bot");
-say("narrator online: I report what your bot does. Steer it at http://127.0.0.1:8800/");
+// The panel's address comes from whoever started this script (tools/research/mcp-e2e sets it).
+let panel = env("MCP_PANEL_URL");
+say(if panel == "" { "narrator online: I report what your bot does. Steer it in the control panel." }
+    else { `narrator online: I report what your bot does. Steer it at ${panel}/` });
 let since = status().event_seq;
 loop {
     let feed = events(since, "ai.log,company,decision,game");

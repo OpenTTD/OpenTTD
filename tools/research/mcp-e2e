@@ -227,7 +227,7 @@ if [[ "$GUI" == 1 ]]; then
         done ) &
       HELPER_PIDS+=($!)
       ( while kill -0 "$PANEL_PID" 2>/dev/null; do
-          "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/narrator.rhai" >> "$TMP/narrator.log" 2>&1
+          MCP_PANEL_URL="$URL" "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/narrator.rhai" >> "$TMP/narrator.log" 2>&1
           sleep 3
         done ) &
       HELPER_PIDS+=($!)
