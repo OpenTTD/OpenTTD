@@ -63,6 +63,13 @@ fi
 
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-e2e.XXXXXX")"
 PANEL_PID="" GUI_PID="" HELPER_PIDS=()
+# The whole stack runs one snapshot of the binary. A rebuild of the shared build directory (a gate
+# run, a commit changing the revision) otherwise reaches a client that the supervisor restarts, and
+# the server, still on the old revision, refuses it ("wrong revision", seen 2026-11-16). The copy
+# sits next to the original so the game still finds its lang/ files.
+SNAP="$(dirname "$BIN")/openttd-e2e-$$"
+cp "$BIN" "$SNAP"
+BIN="$SNAP"
 cleanup() {
   for p in ${EXTRA_PIDS[@]+"${EXTRA_PIDS[@]}"}; do kill -TERM "$p" 2>/dev/null || true; done
   for p in ${HELPER_PIDS[@]+"${HELPER_PIDS[@]}"} ${GUI_PID:+"$GUI_PID"}; do
@@ -72,6 +79,7 @@ cleanup() {
   [[ -n "$PANEL_PID" ]] && kill -TERM "$PANEL_PID" 2>/dev/null || true
   wait 2>/dev/null || true
   rm -rf "$TMP"
+  rm -f "$SNAP"
 }
 trap cleanup EXIT INT TERM
 

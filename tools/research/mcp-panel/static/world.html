@@ -56,6 +56,19 @@
         </select>
       </label>
       <label class="inline-flex items-center gap-2 text-sm text-gray-900 dark:text-white"><input id="p-live" type="checkbox" checked class="w-4 h-4"> Live (5 s)</label>
+      <label class="text-sm text-gray-900 dark:text-white">Budget
+        <input id="p-budget" type="number" step="10000" min="0" class="ms-2 w-28 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      </label>
+      <label class="text-sm text-gray-900 dark:text-white">Payback (months)
+        <input id="p-payback" type="number" step="1" min="1" class="ms-2 w-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      </label>
+      <span class="inline-flex items-center gap-3 text-sm text-gray-900 dark:text-white">Modes
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="bus" class="w-4 h-4"> bus</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="rail" class="w-4 h-4"> rail</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="air" class="w-4 h-4"> air</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="truck" class="w-4 h-4"> truck</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="freight_rail" class="w-4 h-4"> freight rail</label>
+      </span>
       <span class="text-xs text-gray-500 dark:text-gray-400">Parameters live in the address: a configured view is a link. Click a tile or a node: your game camera goes there and marks it. Drag to move the graph.</span>
     </div>
 

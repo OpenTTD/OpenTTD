@@ -13,9 +13,15 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---- URL state ----------------------------------------------------------------------------- */
 const params = new URLSearchParams(location.search);
-const state = { layer: params.get('layer') || 'types', component: params.get('component') || 'all', live: params.get('live') !== '0' };
+const state = {
+  layer: params.get('layer') || 'types', component: params.get('component') || 'all', live: params.get('live') !== '0',
+  // The planner's parameters, steerable here and kept in the address (a configured plan is a link).
+  budget: +(params.get('budget') || 300000), payback: +(params.get('payback') || 24),
+  modes: (params.get('modes') || 'bus,rail,air,truck,freight_rail').split(',').filter(Boolean),
+};
 function saveState() {
-  const p = new URLSearchParams({ layer: state.layer, component: state.component, live: state.live ? '1' : '0' });
+  const p = new URLSearchParams({ layer: state.layer, component: state.component, live: state.live ? '1' : '0',
+    budget: state.budget, payback: state.payback, modes: state.modes.join(',') });
   history.replaceState(null, '', `${location.pathname}?${p}`);
 }
 
@@ -143,7 +149,7 @@ async function refresh() {
   try {
     [map, { towns }, { stations }, graph] = await Promise.all([
       get('/api/resources/map'), get('/api/resources/towns'), get('/api/resources/stations'), fetch('/api/graph').then((r) => r.json())]);
-    try { plan = await (await fetch('/api/plan?limit=10&params=' + encodeURIComponent(JSON.stringify({ budget: 300000 })))).json(); } catch (e) { plan = null; }
+    try { plan = await (await fetch('/api/plan?limit=10&params=' + encodeURIComponent(JSON.stringify({ budget: state.budget, payback_months: state.payback, modes: state.modes })))).json(); } catch (e) { plan = null; }
     drawMap(); drawGraph(); drawPlan();
     $('w-msg').textContent = `updated ${new Date().toLocaleTimeString()} from openttd://map, openttd://towns, openttd://stations and /api/graph`;
   } catch (e) { $('w-msg').textContent = `not reachable: ${e.message}`; }
@@ -192,6 +198,14 @@ document.addEventListener('keydown', (e) => {
 
 $('p-layer').value = state.layer;
 $('p-live').checked = state.live;
+$('p-budget').value = state.budget;
+$('p-payback').value = state.payback;
+document.querySelectorAll('[data-mode]').forEach((c) => {
+  c.checked = state.modes.includes(c.dataset.mode);
+  c.onchange = () => { state.modes = [...document.querySelectorAll('[data-mode]:checked')].map((x) => x.dataset.mode); saveState(); refresh(); };
+});
+$('p-budget').onchange = (e) => { state.budget = Math.max(0, +e.target.value || 0); saveState(); refresh(); };
+$('p-payback').onchange = (e) => { state.payback = Math.max(1, +e.target.value || 24); saveState(); refresh(); };
 $('p-layer').onchange = (e) => { state.layer = e.target.value; saveState(); drawMap(); };
 $('p-component').onchange = (e) => { state.component = e.target.value; saveState(); drawGraph(); };
 $('p-live').onchange = (e) => { state.live = e.target.checked; saveState(); };

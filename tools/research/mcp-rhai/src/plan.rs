@@ -32,6 +32,8 @@
 use serde_json::{json, Value};
 
 const MODE_NAMES: [&str; 3] = ["bus", "rail", "air"];
+/// Freight modes, planned in cargo.rs; listed here so `modes` can enable or disable them too.
+const FREIGHT_MODES: [&str; 2] = ["truck", "freight_rail"];
 
 /// The default parameters; any key can be overridden by the caller.
 pub fn defaults() -> Value {
@@ -49,7 +51,7 @@ pub fn defaults() -> Value {
         "max_vehicles": {"bus": 10, "rail": 4, "air": 6},
         "small_airports": true,
         "budget": null,
-        "modes": ["bus", "rail", "air"],
+        "modes": ["bus", "rail", "air", "truck", "freight_rail"],
     })
 }
 
@@ -148,8 +150,12 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value, engin
     let enabled: Vec<String> = p["modes"].as_array().ok_or("parameter /modes must be a list")?
         .iter().filter_map(|m| m.as_str().map(str::to_string)).collect();
     for m in &enabled {
-        if !MODE_NAMES.contains(&m.as_str()) { return Err(format!("unknown mode {m} (bus, rail, air)")); }
+        if !MODE_NAMES.contains(&m.as_str()) && !FREIGHT_MODES.contains(&m.as_str()) {
+            return Err(format!("unknown mode {m} (bus, rail, air, truck, freight_rail)"));
+        }
     }
+    // Passenger planning below covers its own modes; freight modes are cargo.rs's.
+    let enabled: Vec<String> = enabled.into_iter().filter(|m| MODE_NAMES.contains(&m.as_str())).collect();
     let (payback, supply_factor, payment, overhead) =
         (f("/payback_months")?, f("/supply_factor")?, f("/payment")?, f("/overhead_periods")?);
     let (road_tile, rail_tile, rail_stations, airports) =

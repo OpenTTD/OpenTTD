@@ -325,6 +325,13 @@ completed, not a claim.
   Mine to Tunfingbridge Power Station, 243 tiles. The portfolio was chosen by AlgoGlyph knapsack-dp
   (3 investments, 293k of 300k).
 
+### Steering the plan from the panel
+
+`/world` has the planner's parameters as controls: the budget, the payback horizon in months, and
+the enabled modes (bus, rail, air, truck, freight rail). Every change replans at once through
+`/api/plan`, and the parameters stay in the address, so a configured plan is a link. Freight modes
+take part in the same `modes` filter as the passenger ones.
+
 ## A cluster of instances: discovery and calls across it
 
 Every panel registers itself, and the GUI client it attaches, in a shared registry
@@ -337,6 +344,7 @@ entry whose owning process is gone is dropped on the next discovery.
 | `GET /api/instances`, Rhai `api_instances()` | every registered instance with its role and endpoint, each checked with a live probe (a panel's `/api/status`, a client's MCP `ping`) |
 | `POST /api/instances/call {name, method, params}`, Rhai `api_instancesCall(...)` | one MCP JSON-RPC call on any instance: a panel's dedicated server, or a GUI client with its token |
 | main page, Cluster card | the same list, live, with a link to each instance's own panel |
+| one binary snapshot per stack | `mcp-e2e` copies the binary next to the original (`openttd-e2e-<pid>`) and runs the server and the client from it. A rebuild of the shared build directory then cannot reach a client the supervisor restarts. Before this, the server, still on the old revision, refused every restarted client with "wrong revision" |
 | `mcp-e2e --instances N` | N-1 more headless stacks with their own bots; a port that is taken (Majordomus holds 8741, another stack holds 8800) is replaced by a free one |
 
 `mcp-view-check` reads `openttd://game/state` from every live panel through this panel and

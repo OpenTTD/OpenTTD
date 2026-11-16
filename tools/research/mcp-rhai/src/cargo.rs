@@ -46,6 +46,8 @@ pub fn freight_pairs(world: &Value, engines: &Value, p: &Value, limit: usize) ->
     let truck_stops = f("/freight/truck_stops", 400.0);
     let wagons = f("/rail_wagons", 4.0);
     let budget = p["budget"].as_f64();
+    let enabled: Vec<String> = p["modes"].as_array().map(|a| a.iter().filter_map(|m| m.as_str().map(str::to_string)).collect())
+        .unwrap_or_else(|| vec!["truck".into(), "freight_rail".into()]);
     let cargos: Vec<Value> = engines.get("cargos").and_then(Value::as_array).cloned().unwrap_or_default();
     let industries: Vec<&Value> = world.get("nodes").and_then(Value::as_array).map(|n| n.iter().filter(|x| x["kind"] == "industry").collect()).unwrap_or_default();
     let mut out = Vec::new();
@@ -65,6 +67,7 @@ pub fn freight_pairs(world: &Value, engines: &Value, p: &Value, limit: usize) ->
                 let mut best: Option<Value> = None;
                 let mut options = Vec::new();
                 for (mode, rail) in [("truck", false), ("freight_rail", true)] {
+                    if !enabled.iter().any(|m| m == mode) { continue; }
                     let Some((vname, cap, speed, price, running)) = freight_vehicle(engines, cname, rail, wagons) else { continue };
                     let periods = d / (speed.max(1.0) * 0.0903) + overhead;
                     let per_unit = d * time_factor_for(periods, td1, td2) * payment / 2097152.0;
