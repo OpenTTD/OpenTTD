@@ -62,6 +62,7 @@ class Game:
         self.ai_started = False
         self.rpc_id = 0
         self._client_tools, self._client_tools_at = [], 0.0
+        self._server_tools, self._server_tools_at = [], 0.0
         self.asks_reported = set()  # ids of answered questions already published as ask.answered
         self.view_token = None  # token file of the GUI client whose view the panel shows and drives
 
@@ -207,6 +208,17 @@ class Game:
             return json.loads(out["result"]["content"][0]["text"])
         except (KeyError, IndexError, TypeError, ValueError):
             return out
+
+    def server_tools(self):
+        """The game server's tools/list, cached for a few seconds."""
+        now = time.time()
+        if now - self._server_tools_at > 5 and self.mcp_up:
+            try:
+                self._server_tools = self.rpc("tools/list").get("result", {}).get("tools", [])
+                self._server_tools_at = now
+            except Exception:  # noqa: BLE001
+                pass
+        return self._server_tools
 
     def client_tools(self):
         """The attached GUI client's tools/list, cached for a few seconds; [] without a client."""
@@ -714,6 +726,8 @@ def openapi(game, routes):
     for method, path, op_id, summary, schema, item in derived:
         tag = "gui client tools" if path.startswith("/api/client/") else ("mcp tools" if method == "POST" else "mcp resources")
         op(method, path, op_id, summary, schema, tag)
+        if isinstance(item, dict) and item.get("annotations"):
+            paths[path][method.lower()]["x-mcp-annotations"] = item["annotations"]
     return {"openapi": "3.1.0",
             "info": {"title": "OpenTTD MCP panel (RESEARCH-ONLY)", "version": "1",
                      "description": "Declared once in tools/research/mcp-panel/server.py and derived from the live "
@@ -735,9 +749,34 @@ VENDOR = {
 }
 
 
+JSON_TYPES = {"string": str, "integer": int, "number": (int, float), "boolean": bool, "object": dict, "array": list}
+
+
+def body_errors(schema, body):
+    """What is wrong with a request body against its declared JSON schema: not an object, a required
+    field missing, a field of the wrong type, a value outside its enum. [] when it fits. One check for
+    every POST route, declared or derived, so a bad call answers 400 and never reaches a handler."""
+    if not schema:
+        return []
+    if not isinstance(body, dict):
+        return ["the body must be a JSON object"]
+    errs = [f"missing {k}" for k in schema.get("required", []) if k not in body]
+    for k, spec in (schema.get("properties") or {}).items():
+        if k not in body or not isinstance(spec, dict):
+            continue
+        want = JSON_TYPES.get(spec.get("type"))
+        v = body[k]
+        if want and (not isinstance(v, want) or (spec.get("type") in ("integer", "number") and isinstance(v, bool))):
+            errs.append(f"{k} must be {spec['type']}")
+        elif "enum" in spec and v not in spec["enum"]:
+            errs.append(f"{k} must be one of {spec['enum']}")
+    return errs
+
+
 def make_handler(game):
     routes = make_routes(game)
     table = {(m, p): (needs, h) for m, p, _i, _s, needs, _sc, h in routes}
+    schemas = {(m, p): sc for m, p, _i, _s, _n, sc, _h in routes}
 
     class Handler(BaseHTTPRequestHandler):
         protocol_version = "HTTP/1.1"
@@ -850,6 +889,15 @@ def make_handler(game):
                         return self._send(200, f.read_bytes(), ctype)
                     return self._send(404, {"error": "not found"})
             hit = table.get((method, path))
+            if method == "POST":
+                schema = schemas.get((method, path))
+                if schema is None and path.startswith(("/api/tools/", "/api/client/")):
+                    name = path.split("/", 3)[3]
+                    cat = game.client_tools() if path.startswith("/api/client/") else game.server_tools()
+                    schema = next((t.get("inputSchema") for t in cat if t["name"] == name), None)
+                errs = body_errors(schema, body if body is not None else {})
+                if errs:
+                    return self._send(400, {"error": "invalid body: " + "; ".join(errs)})
             try:
                 if hit:
                     needs, h = hit

@@ -117,6 +117,9 @@ json Tools()
 {
 	json obj = {{"type", "object"}};
 	json arr = json::array();
+	/* A dedicated server has no window to view: it lists no view tool, so each instance's catalogue is
+	 * what it can actually do. */
+	if (_network_dedicated) return arr;
 	arr.push_back({{"name", "openttd.view.scroll_to"},
 		{"description", "GUI only, no approval: centre the main viewport on a tile, x/y, a town or a vehicle"},
 		{"inputSchema", {{"type", "object"}, {"properties", {{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}},
@@ -136,7 +139,8 @@ json Tools()
 		{"inputSchema", obj}});
 	arr.push_back({{"name", "openttd.view.news.list"},
 		{"description", "GUI only, no approval: the news this client has shown (newest first): text, type, style, date"},
-		{"inputSchema", {{"type", "object"}, {"properties", {{"limit", {{"type", "integer"}}}}}}}});
+		{"inputSchema", {{"type", "object"}, {"properties", {{"limit", {{"type", "integer"}}}}}}},
+		{"annotations", {{"readOnlyHint", true}}}});
 	arr.push_back({{"name", "openttd.view.news.show"},
 		{"description", "GUI only, no approval, local to this client: show a news message to the player (from the bot, a script or another AI). With a tile, town or vehicle it gets a viewport there (style thin); style: normal (newspaper), thin (headline + viewport), small (information window), company (the newspaper with a company's manager face: company id, optional title launch|trouble|merger|bankrupt)"},
 		{"inputSchema", {{"type", "object"}, {"required", json::array({"text"})}, {"properties", {{"text", {{"type", "string"}}},
@@ -149,13 +153,15 @@ json Tools()
 		{"inputSchema", {{"type", "object"}, {"required", json::array({"question"})}, {"properties", {{"question", {{"type", "string"}}}, {"caption", {{"type", "string"}}}}}}}});
 	arr.push_back({{"name", "openttd.view.ask.answers"},
 		{"description", "GUI only, no approval: every question asked through openttd.view.ask, newest first, with its answer (yes, no, replaced, or null while it is open)"},
-		{"inputSchema", obj}});
+		{"inputSchema", obj},
+		{"annotations", {{"readOnlyHint", true}}}});
 	arr.push_back({{"name", "openttd.view.news.close"},
 		{"description", "GUI only, no approval: close the news window the player sees"},
 		{"inputSchema", obj}});
 	arr.push_back({{"name", "openttd.view.state"},
 		{"description", "GUI only: the main viewport's zoom, zoom limits and followed vehicle"},
-		{"inputSchema", obj}});
+		{"inputSchema", obj},
+		{"annotations", {{"readOnlyHint", true}}}});
 	return arr;
 }
 

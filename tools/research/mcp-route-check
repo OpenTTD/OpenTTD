@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: every route of a running panel, from its own OpenAPI document; nothing is listed by
+# hand, so a new route, MCP tool or GUI client tool is checked the moment it appears.
+#
+# - every GET operation answers 200 (JSON, or PNG for the screenshot), never 4xx/5xx;
+# - every POST operation whose schema has required fields answers 400 to an empty body, never 5xx:
+#   the panel validates bodies against the declared schema before any handler runs;
+# - every MCP tool annotated readOnlyHint (x-mcp-annotations in OpenAPI) is called with {} and must
+#   succeed;
+# - the rest (POST operations that change something and need nothing) are not called blindly: they
+#   are counted and named, so the report says what was not exercised.
+#
+# Usage: tools/research/mcp-route-check [panel-url]   (default http://127.0.0.1:8800)
+# Exit: 0 every exercised route passed, 1 a route failed, 2 the panel is not reachable.
+set -euo pipefail
+URL="${1:-http://127.0.0.1:8800}"
+curl -fs --max-time 5 "$URL/api/status" >/dev/null || { echo "mcp-route-check: no panel at $URL" >&2; exit 2; }
+exec python3 -I - "$URL" <<'PY'
+import json, sys, urllib.error, urllib.request
+
+URL = sys.argv[1]
+# Query values a GET needs to be meaningful; every other GET is called bare.
+QUERY = {"/api/resource": "uri=openttd%3A%2F%2Fgame%2Fstate", "/api/plan": "limit=2", "/api/news": "limit=2",
+         "/api/events": "since=0&limit=5"}
+
+
+def call(method, path, body=None):
+    q = QUERY.get(path)
+    req = urllib.request.Request(URL + path + (f"?{q}" if q and method == "GET" else ""), method=method,
+                                 data=None if body is None else json.dumps(body).encode(),
+                                 headers={"Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return r.status, r.headers.get("Content-Type", ""), r.read()
+    except urllib.error.HTTPError as e:
+        return e.code, e.headers.get("Content-Type", ""), e.read()
+
+
+spec = json.loads(urllib.request.urlopen(URL + "/openapi.json", timeout=30).read())
+passed, failed, skipped = [], [], []
+for path, ops in sorted(spec["paths"].items()):
+    for method, op in ops.items():
+        method = method.upper()
+        name = f"{method} {path}"
+        if "stream" in path:
+            skipped.append(f"{name} (stream)")
+            continue
+        if method == "GET":
+            code, ctype, data = call("GET", path)
+            ok = code == 200 and (ctype.startswith("image/") or ctype.startswith("application/json"))
+            (passed if ok else failed).append(f"{name} -> {code} {ctype.split(';')[0]}" + ("" if ok else f" {data[:120]!r}"))
+            continue
+        schema = (((op.get("requestBody") or {}).get("content") or {}).get("application/json") or {}).get("schema") or {}
+        if schema.get("required"):
+            code, _, data = call("POST", path, {})
+            ok = code == 400
+            (passed if ok else failed).append(f"{name} empty body -> {code}" + ("" if ok else f" {data[:120]!r}"))
+            continue
+        if (op.get("x-mcp-annotations") or {}).get("readOnlyHint"):
+            code, _, data = call("POST", path, {})
+            try:
+                out = json.loads(data)
+            except ValueError:
+                out = {}
+            ok = code == 200 and out.get("ok") is not False and not out.get("isError") and "error" not in out
+            (passed if ok else failed).append(f"{name} read-only call -> {code}" + ("" if ok else f" {data[:120]!r}"))
+            continue
+        skipped.append(f"{name} (changes something and needs no input: not called blindly)")
+
+for line in passed:
+    print("PASS ", line)
+for line in failed:
+    print("FAIL ", line)
+for line in skipped:
+    print("SKIP ", line)
+print(f"\nmcp-route-check: {len(passed)} passed, {len(failed)} failed, {len(skipped)} not exercised "
+      f"({sum(len(o) for o in spec['paths'].values())} operations in OpenAPI)")
+sys.exit(1 if failed else 0)
+PY

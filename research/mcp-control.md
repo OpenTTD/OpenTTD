@@ -178,6 +178,25 @@ and that is the owner's call (knowledge `auto-approve-is-the-owners-switch`).
 - `rhai/demo.rhai` is the end-to-end demo: new world, PrismaticAI plays, watched through MCP,
   paused and resumed through the approval flow, final report.
 
+## Every route works: the generic route check
+
+`tools/research/mcp-route-check [panel-url]` reads the panel's own `/openapi.json` and checks every
+operation in it, so a new route, server tool or GUI-client tool is covered the moment it exists.
+Nothing is listed by hand.
+
+- Every GET answers 200 with JSON, or PNG for the screenshot.
+- Every POST whose schema has required fields answers 400 to an empty body. The panel validates
+  each body against the declared schema (required fields, types, enums) before any handler runs,
+  for its own routes and for the derived `/api/tools/...` and `/api/client/...` ones, so a bad call
+  can never reach the game.
+- Every MCP tool annotated `readOnlyHint` (carried into OpenAPI as `x-mcp-annotations`) is called
+  and has to succeed.
+- Operations that change something and need no input are not called blindly. The report lists them
+  by name, so it is clear what was not exercised.
+
+On a dedicated server the `openttd.view.*` tools are not in the catalogue, because it has no window.
+`openttd.view.state`, `news.list` and `ask.answers` carry `readOnlyHint`.
+
 ## News in the owner's window, both ways
 
 The game's newspapers and information windows are wired to MCP. Anyone can read what the player

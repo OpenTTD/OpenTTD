@@ -1,0 +1,46 @@
+id: I0056
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Every route works: bodies validated against their schema, read-only tools annotated, and a generic route check over the whole OpenAPI"
+slug: every-route-works
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Prove every route of the panel works, on the server, the GUI client, Swagger and MCP, by walking the panel's own OpenAPI document; validate every POST body against its declared schema; keep each instance's catalogue to what it can do."
+why: "The owner: every route fully functional, server, GUI, Swagger, MCP integration, everything end-to-end tested and enforced. Also openttd-07's coverage gate: readOnlyHint on read tools, and no view tools on a dedicated server."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_view.cpp"
+  - "tools/research/**"
+  - "research/mcp-control.md"
+  - ".ai/repo/rules/project/mcp-surfaces-are-derived.v1.md"
+non_scope:
+  - "Annotations on tools in prismatic_mcp_server.cpp and prismatic_mcp_ui.cpp (openttd-59 and openttd-07 lanes)"
+depends_on:
+  - I0052
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "Every POST body, declared or derived, is validated against its schema before a handler runs; a bad body answers 400"
+  - "openttd.view.state, news.list and ask.answers carry readOnlyHint; a dedicated server lists no view tool; annotations reach OpenAPI as x-mcp-annotations"
+  - "mcp-route-check walks every OpenAPI operation: GETs 200, required-field POSTs 400 on an empty body, read-only tools succeed, the rest named as not exercised"
+  - "tools/gate.sh research, mcp-route-check, mcp-view-check and mcp-panel-check pass"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-route-check"
+  - "tools/research/mcp-view-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16T00:24:42Z
+started_at: 2026-11-16T00:24:38Z
+started_event: sha256:b3381af1e5bfd545ff1b4a2ce520b72512fdf9ad5cb7ceea536b218fd21b6146
+verified_at: 2026-11-16T00:24:39Z
+verified_event: sha256:d90f2f9e97ae0b03dd6fc45feccf5b4e44d55745606df6ad6f45ead70167d111
+completed_at: 2026-11-16T00:24:42Z
+completed_event: sha256:ac1c116b54587ac629cd0940a1bc5282f5c356ee37d4944d1c3ec3bd3e2327d8
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-route-check; tools/research/mcp-view-check; tools/research/mcp-panel-check"
+    result: "gate research PASS (ctest 103/103, [prismatic_mcp] 25 assertions); mcp-route-check 57 passed, 0 failed, 18 not exercised of 75 OpenAPI operations (all GETs 200, every required-field POST 400 on an empty body, read-only tools succeed; the 18 are tools without readOnlyHint in other lanes, GUI mutations, start-ai, news close and the two streams, each named); mcp-view-check 31/31; mcp-panel-check 13/13; the dedicated server's catalogue has no openttd.view.* tool"
+    commit: 916a43d381296f54bdc18b170c87a0e3ba8660ff
+    recorded_at: 2026-11-16T00:24:40Z

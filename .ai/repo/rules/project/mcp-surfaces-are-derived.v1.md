@@ -28,6 +28,10 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
   No window, widget or class is listed by hand.
 - Instances come from the discovery registry (`GET /api/instances`), never from a list of ports.
 - Proof against a running panel: `tools/research/mcp-panel-check` (every tool and resource has its route and schema, the routes answer, the event feed works).
+- Proof that every derived route works: `tools/research/mcp-route-check` walks the panel's own
+  OpenAPI document. Every GET answers 200, every POST with required fields answers 400 to an empty
+  body (bodies are validated against the declared schema), and every `readOnlyHint` tool succeeds.
+  What it does not call is named in its report.
 - Proof against a running `mcp-e2e` stack with a GUI client: `tools/research/mcp-view-check`. It checks
   that every client tool has its derived route, that class names are derived, that unarmed input is
   refused, and covers the news, questions, plan, discovery and live view.
