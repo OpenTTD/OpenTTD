@@ -22,7 +22,7 @@ provenance:
     - file:bin/ai/compat_0.7.nut
     - file:cmake/scripts/SquirrelExport.cmake
     - file:src/script/squirrel.cpp
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 21. AI and Game Scripts run in embedded Squirrel against a generated API, and old API versions are kept through compatibility scripts

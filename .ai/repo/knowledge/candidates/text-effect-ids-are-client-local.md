@@ -36,5 +36,5 @@ field only to update or hide the effect; any game decision that read it would de
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote text-effect-ids-are-client-local` with evidence, or `majordomus knowledge reject text-effect-ids-are-client-local --reason ...`.

@@ -21,7 +21,7 @@ provenance:
     - file:docs/eints.md
     - file:src/lang/CMakeLists.txt
     - file:src/strgen/strgen.cpp
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 20. Player-facing text is compiled from english.txt by strgen, and translations arrive from eints and are never edited by hand

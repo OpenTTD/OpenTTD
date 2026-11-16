@@ -37,5 +37,5 @@ strings outside that region; inside it, never insert, delete or reorder a line.
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote the-savegame-string-range-never-gets-new-ids` with evidence, or `majordomus knowledge reject the-savegame-string-range-never-gets-new-ids --reason ...`.

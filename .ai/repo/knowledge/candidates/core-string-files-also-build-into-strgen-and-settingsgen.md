@@ -35,5 +35,5 @@ symbol added to those files breaks the build of the tools, not of `openttd`. Gua
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote core-string-files-also-build-into-strgen-and-settingsgen` with evidence, or `majordomus knowledge reject core-string-files-also-build-into-strgen-and-settingsgen --reason ...`.

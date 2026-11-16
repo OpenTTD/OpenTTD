@@ -37,5 +37,5 @@ The regression suite prints English town names, so such an edit fails `regressio
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote town-names-are-regenerated-from-the-name-tables` with evidence, or `majordomus knowledge reject town-names-are-regenerated-from-the-name-tables --reason ...`.

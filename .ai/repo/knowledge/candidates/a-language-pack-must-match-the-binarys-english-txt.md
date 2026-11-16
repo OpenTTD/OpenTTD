@@ -36,5 +36,5 @@ Ship or point a binary at the `lang/` directory built with it.
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote a-language-pack-must-match-the-binarys-english-txt` with evidence, or `majordomus knowledge reject a-language-pack-must-match-the-binarys-english-txt --reason ...`.

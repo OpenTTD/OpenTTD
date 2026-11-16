@@ -35,5 +35,5 @@ ambient sound may depend on client state. They are never put in the tile hash
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote effect-vehicles-are-game-state` with evidence, or `majordomus knowledge reject effect-vehicles-are-game-state --reason ...`.

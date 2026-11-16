@@ -45,5 +45,5 @@ Also: the Doxygen of `src/rail_cmd.cpp:CmdBuildRailroadTrack` swaps the descript
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote a-dragged-build-succeeds-when-any-piece-was-built` with evidence, or `majordomus knowledge reject a-dragged-build-succeeds-when-any-piece-was-built --reason ...`.

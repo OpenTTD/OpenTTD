@@ -33,5 +33,5 @@ same way.
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote toolbar-dispatch-tables-are-indexed-by-widget-id` with evidence, or `majordomus knowledge reject toolbar-dispatch-tables-are-indexed-by-widget-id --reason ...`.

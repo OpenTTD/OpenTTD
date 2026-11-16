@@ -21,7 +21,7 @@ provenance:
   derived_from:
     - file:src/base_media_base.h
     - file:docs/directory_structure.md
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 28. Graphics, sounds and music come from replaceable base sets and NewGRFs, and the engine ships no proprietary data

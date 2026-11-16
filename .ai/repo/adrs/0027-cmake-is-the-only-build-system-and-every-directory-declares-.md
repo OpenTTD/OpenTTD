@@ -19,7 +19,7 @@ provenance:
     - file:cmake/SourceList.cmake
     - file:CMakeLists.txt
     - file:cmake/Options.cmake
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 27. CMake is the only build system, and every directory declares its sources with add_files under explicit conditions

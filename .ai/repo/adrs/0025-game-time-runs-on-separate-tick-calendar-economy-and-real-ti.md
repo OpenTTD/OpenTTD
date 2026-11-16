@@ -22,7 +22,7 @@ provenance:
     - file:src/timer/timer_game_calendar.h
     - file:src/timer/timer_game_realtime.h
     - file:src/timer/timer_game_tick.h
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 25. Game time runs on separate tick, calendar, economy and real-time timers, and periodic work subscribes to the one that matches its meaning

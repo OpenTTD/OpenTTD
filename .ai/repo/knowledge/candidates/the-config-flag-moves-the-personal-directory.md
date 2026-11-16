@@ -35,5 +35,5 @@ isolates a run's whole file footprint; `tools/research/research run` relies on i
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote the-config-flag-moves-the-personal-directory` with evidence, or `majordomus knowledge reject the-config-flag-moves-the-personal-directory --reason ...`.

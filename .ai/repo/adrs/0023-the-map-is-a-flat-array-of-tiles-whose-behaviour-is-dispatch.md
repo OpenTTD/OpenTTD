@@ -21,7 +21,7 @@ provenance:
     - file:src/tile_cmd.h
     - file:src/landscape.cpp
     - file:src/map_func.h
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 23. The map is a flat array of tiles whose behaviour is dispatched by tile type through a table of tile procedures

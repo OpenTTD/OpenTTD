@@ -37,5 +37,5 @@ into one client's state.
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote the-purchase-window-cost-query-builds-a-real-vehicle` with evidence, or `majordomus knowledge reject the-purchase-window-cost-query-builds-a-real-vehicle --reason ...`.

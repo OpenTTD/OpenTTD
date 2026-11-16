@@ -19,7 +19,7 @@ provenance:
   derived_from:
     - file:src/pathfinder/yapf/yapf_base.hpp
     - file:src/pathfinder/yapf/yapf_rail.cpp
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 26. Pathfinding is YAPF, an A* framework composed at compile time from policy templates and specialised per vehicle type

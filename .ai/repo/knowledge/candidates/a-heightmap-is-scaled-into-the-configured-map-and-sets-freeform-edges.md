@@ -34,5 +34,5 @@ needs `map_x`/`map_y` (and `heightmap_height`) in its config to get the intended
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote a-heightmap-is-scaled-into-the-configured-map-and-sets-freeform-edges` with evidence, or `majordomus knowledge reject a-heightmap-is-scaled-into-the-configured-map-and-sets-freeform-edges --reason ...`.

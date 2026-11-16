@@ -38,5 +38,5 @@ full pool a refused command rather than a crash. `CreateAtIndex` (savegame loadi
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote a-pool-create-needs-can-allocate-item-first` with evidence, or `majordomus knowledge reject a-pool-create-needs-can-allocate-item-first --reason ...`.

@@ -34,5 +34,5 @@ are still decoded from the sound set.
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote the-null-sound-driver-never-frees-a-mixer-channel` with evidence, or `majordomus knowledge reject the-null-sound-driver-never-frees-a-mixer-channel --reason ...`.

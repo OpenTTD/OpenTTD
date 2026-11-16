@@ -25,7 +25,7 @@ provenance:
     - file:src/network/network.cpp
     - file:src/network/network_command.cpp
     - file:src/core/random_func.hpp
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 16. Multiplayer is deterministic lockstep: every peer runs the same command stream and only commands cross the wire

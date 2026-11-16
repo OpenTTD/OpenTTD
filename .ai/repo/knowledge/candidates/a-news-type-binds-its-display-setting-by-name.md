@@ -34,5 +34,5 @@ Add or rename the row and the ini entry together and show one such item before c
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote a-news-type-binds-its-display-setting-by-name` with evidence, or `majordomus knowledge reject a-news-type-binds-its-display-setting-by-name --reason ...`.

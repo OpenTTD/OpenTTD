@@ -33,5 +33,5 @@ invariant check) gets a meaningless or out-of-map tile for these states. Check `
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote a-disaster-dest-tile-can-hold-an-industry-or-vehicle-id` with evidence, or `majordomus knowledge reject a-disaster-dest-tile-can-hold-an-industry-or-vehicle-id --reason ...`.

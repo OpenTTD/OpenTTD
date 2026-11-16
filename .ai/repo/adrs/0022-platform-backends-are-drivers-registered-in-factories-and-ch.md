@@ -23,7 +23,7 @@ provenance:
     - file:src/driver.h
     - file:src/driver.cpp
     - file:src/video/CMakeLists.txt
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 22. Platform backends are drivers registered in factories and chosen at runtime, so one binary can run with a window, headless or silent

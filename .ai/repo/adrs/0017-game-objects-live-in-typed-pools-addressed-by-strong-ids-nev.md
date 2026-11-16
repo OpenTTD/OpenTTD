@@ -21,7 +21,7 @@ provenance:
   derived_from:
     - file:src/core/pool_type.hpp
     - file:src/core/pool_func.hpp
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 17. Game objects live in typed pools addressed by strong IDs, never by persistent pointers

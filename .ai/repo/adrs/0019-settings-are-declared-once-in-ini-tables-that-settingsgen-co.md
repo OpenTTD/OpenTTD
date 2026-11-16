@@ -21,7 +21,7 @@ provenance:
   derived_from:
     - file:src/settingsgen/settingsgen.cpp
     - file:src/table/settings/CMakeLists.txt
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 19. Settings are declared once in ini tables that settingsgen compiles into the tables used by the config file, the savegame, the GUI and network sync

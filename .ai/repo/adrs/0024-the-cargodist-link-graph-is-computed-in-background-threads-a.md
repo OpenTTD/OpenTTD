@@ -21,7 +21,7 @@ provenance:
     - file:src/linkgraph/linkgraphschedule.cpp
     - file:src/linkgraph/linkgraphjob.cpp
     - file:docs/linkgraph.md
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 24. The cargodist link graph is computed in background threads and joined at a fixed economy date, pausing the game rather than joining late

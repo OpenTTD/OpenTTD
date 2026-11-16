@@ -23,7 +23,7 @@ provenance:
     - file:src/saveload/saveload.h
     - file:src/saveload/afterload.cpp
     - file:docs/savegame_format.md
-    - issue:I0063
+    - issue:I0066
 ---
 
 # 18. Every savegame ever written stays loadable: saved fields are gated by SaveLoadVersion and old layouts are converted after load

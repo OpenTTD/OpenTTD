@@ -36,5 +36,5 @@ changes the game's content, not just its pictures.
 
 # Review
 
-Authored from a read of the source at f8b1d52e80 (issue I0063); awaiting the owner's review.
+Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote gfxloadsprites-loads-every-newgrf` with evidence, or `majordomus knowledge reject gfxloadsprites-loads-every-newgrf --reason ...`.
