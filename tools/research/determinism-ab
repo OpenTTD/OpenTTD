@@ -1,0 +1,198 @@
+#!/usr/bin/env bash
+#
+# determinism-ab (I0026) -- demonstrate that the read-only MCP path does not perturb the
+# deterministic simulation.
+#
+# A dedicated server (-D -d desync=2) logs, once per game day, the engine's own sync fingerprint
+#   sync: <economy-date>; <date-fract>; <_random.state[0]>; <_random.state[1]>
+# (src/network/network.cpp, NetworkGameLoop) plus every cmd: line, into
+# <home>/save/autosave/commands-out.log. We run ONE map seed three times, headless:
+#   - idle   : the MCP server is available but never queried
+#   - idle2  : an identical control, to prove the comparison is sound (idle must equal idle2)
+#   - load   : the MCP server is hammered with read-only `mcp read openttd://...` for the whole run
+#             (in process, through I0067's console seam -- the same resource-read path a client uses)
+# and compare the sync + cmd streams (the [timestamp] prefix stripped):
+#   - idle vs idle2  MUST be identical, or the harness aborts (the method is unsound here)
+#   - idle vs load   is the result: identical => the reads change neither _random.state at any day
+#                    boundary nor the command stream => they do not perturb the simulation.
+#
+# This is a per-day-boundary comparison of the engine's own _random.state, not tick-exact; a
+# divergence is bounded to a game day. Isolation: each arm has its OWN personal dir (the config
+# dir, via -c), so each writes its own commands-out.log -- no cross-arm or cross-session clash.
+#
+# Research tool (AGENTS.md "Research mode"): runs real headless servers + the research-only MCP
+# server; no src/ or bridge changes. Graphics pinned to OpenGFX (-I) so another installed set
+# (e.g. NoirGFX) cannot be picked up.
+#
+# Usage: tools/research/determinism-ab [--keep] [--help]
+# Env overrides: BINARY SEED DAYS RUN_TIMEOUT GRAPHICS_SET BASESET_SRC OUT_DIR EXPERIMENT_ID
+#
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+for arg in "$@"; do
+	case "$arg" in
+		--keep) ;;  # accepted for symmetry; OUT_DIR artifacts are always kept
+		-h|--help) sed -n '2,30p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 0 ;;
+		*) echo "determinism-ab: unknown argument: $arg" >&2; exit 2 ;;
+	esac
+done
+
+BINARY="${BINARY:-$REPO_ROOT/build-research-mcp/openttd}"
+SEED="${SEED:-53744}"
+DAYS="${DAYS:-16}"                 # sync lines (= game days) to require per arm
+RUN_TIMEOUT="${RUN_TIMEOUT:-120}"  # per-arm wall-clock cap
+GRAPHICS_SET="${GRAPHICS_SET:-OpenGFX}"
+BASESET_SRC="${BASESET_SRC:-$HOME/Documents/OpenTTD/baseset}"
+EXPERIMENT_ID="${EXPERIMENT_ID:-determinism-ab-20261116}"
+TS="$(date +%Y%m%d-%H%M%S)"
+OUT_DIR="${OUT_DIR:-${TMPDIR:-/tmp}/determinism-ab-$TS}"
+
+log()  { printf '[determinism-ab] %s\n' "$*"; }
+fail() { printf '[determinism-ab] FAIL: %s\n' "$*" >&2; }
+
+command -v curl >/dev/null 2>&1 || true
+command -v nc >/dev/null || { fail "nc required"; exit 1; }
+command -v python3 >/dev/null || { fail "python3 required"; exit 1; }
+[ -x "$BINARY" ] || { fail "research-mcp binary not at $BINARY (build: tools/research/research build --profile research-mcp --experiment-id $EXPERIMENT_ID)"; exit 3; }
+[ -d "$BASESET_SRC" ] || { fail "baseset not found at $BASESET_SRC (set BASESET_SRC)"; exit 3; }
+
+mkdir -p "$OUT_DIR"
+SEED_HEX="$(printf '%08x' "$SEED")"
+log "binary   $BINARY"
+log "seed     $SEED (0x$SEED_HEX)  graphics $GRAPHICS_SET"
+log "require  $DAYS sync lines (game days) per arm; timeout ${RUN_TIMEOUT}s/arm"
+log "output   $OUT_DIR"
+
+# Resources to hammer in the load arm (a broad read-only spread).
+READ_URIS=(
+	openttd://game/state openttd://companies openttd://towns openttd://map openttd://map/terrain
+	openttd://map/ways openttd://world/graph openttd://vehicles openttd://stations openttd://depots
+	openttd://economy/prices openttd://engines openttd://railtypes openttd://bridges
+)
+
+SERVER_PID=""; READER_PID=""; FIFO=""
+cleanup_arm() {
+	[ -n "$READER_PID" ] && kill "$READER_PID" >/dev/null 2>&1 || true
+	[ -n "$SERVER_PID" ] && kill "$SERVER_PID" >/dev/null 2>&1 || true
+	wait >/dev/null 2>&1 || true
+	[ -n "$FIFO" ] && exec 9>&- 2>/dev/null || true
+	READER_PID=""; SERVER_PID=""; FIFO=""
+}
+trap cleanup_arm EXIT INT TERM
+
+# run_arm <name> <load:0|1> -> writes $OUT_DIR/<name>.stream.txt (sync+cmd, prefix stripped)
+run_arm() {
+	local name="$1" load="$2"
+	local home="$OUT_DIR/$name"; mkdir -p "$home"
+	ln -sfn "$BASESET_SRC" "$home/baseset"
+	local cfg="$home/openttd.cfg" slog="$OUT_DIR/$name.server.log"
+	cat >"$cfg" <<EOF
+[network]
+min_active_clients = 0
+server_advertise = false
+[gui]
+autosave = off
+pause_on_newgame = false
+[graphicsset]
+name = $GRAPHICS_SET
+EOF
+	FIFO="$home/console.fifo"; rm -f "$FIFO"; mkfifo "$FIFO"
+	exec 9<>"$FIFO"
+	( cd "$REPO_ROOT" && exec "$BINARY" -D -g -x -c "$cfg" -G "$SEED" -I "$GRAPHICS_SET" -d desync=2 ) \
+		<"$FIFO" >"$slog" 2>&1 &
+	SERVER_PID=$!
+
+	local _n
+	for _n in $(seq 1 40); do grep -q 'starting game' "$slog" 2>/dev/null && break; sleep 1; done
+	grep -q 'starting game' "$slog" 2>/dev/null || { fail "arm '$name': server never started"; tail -n 20 "$slog" >&2; cleanup_arm; return 1; }
+	log "arm '$name' (load=$load): server up (pid $SERVER_PID)"
+
+	if [ "$load" = "1" ]; then
+		( while :; do for u in "${READ_URIS[@]}"; do printf 'mcp read %s\n' "$u"; done; done >&9 ) &
+		READER_PID=$!
+		log "arm '$name': MCP read load running (pid $READER_PID)"
+	fi
+
+	local co="$home/save/autosave/commands-out.log"
+	local deadline=$(( $(date +%s) + RUN_TIMEOUT )) count=0
+	while [ "$(date +%s)" -lt "$deadline" ]; do
+		kill -0 "$SERVER_PID" 2>/dev/null || { fail "arm '$name': server died"; tail -n 20 "$slog" >&2; cleanup_arm; return 1; }
+		count=$(grep -c 'sync:' "$co" 2>/dev/null || echo 0)
+		[ "$count" -ge "$DAYS" ] && break
+		sleep 2
+	done
+	log "arm '$name': $count sync line(s) logged"
+	# Extract sync + cmd lines, strip the leading [timestamp]... prefix up to the keyword.
+	grep -E 'sync:|cmd:' "$co" 2>/dev/null | sed -E 's/^.*(sync:|cmd:)/\1/' >"$OUT_DIR/$name.stream.txt" || true
+	cleanup_arm
+	[ "$count" -ge "$DAYS" ] || { fail "arm '$name': only $count/$DAYS sync lines before ${RUN_TIMEOUT}s"; return 1; }
+	return 0
+}
+
+# compare_streams <a> <b> -> 0 iff every shared game-day sync state matches and cmd streams agree
+compare_streams() {
+	A="$OUT_DIR/$1.stream.txt" B="$OUT_DIR/$2.stream.txt" LABEL="$1 vs $2" \
+	python3 - <<'PY'
+import os, sys
+def load(p):
+    sync, cmd = {}, []
+    for ln in open(p, encoding="utf-8", errors="replace"):
+        ln = ln.strip()
+        if ln.startswith("sync:"):
+            f = [x.strip() for x in ln[5:].split(";")]
+            if len(f) >= 4: sync[f[0]] = (f[2], f[3])   # date -> (state0, state1)
+        elif ln.startswith("cmd:"):
+            cmd.append(ln)
+    return sync, cmd
+sa, ca = load(os.environ["A"]); sb, cb = load(os.environ["B"])
+shared = sorted(set(sa) & set(sb))
+mism = [d for d in shared if sa[d] != sb[d]]
+label = os.environ["LABEL"]
+print("  %s: %d shared day(s), %d matching, %d differing; cmd lines %d/%d%s"
+      % (label, len(shared), len(shared) - len(mism), len(mism), len(ca), len(cb),
+         "" if ca == cb else " (cmd streams DIFFER)"))
+for d in mism[:5]:
+    print("    MISMATCH date %s: %s vs %s" % (d, sa[d], sb[d]))
+ok = len(shared) > 0 and not mism and ca == cb
+sys.exit(0 if ok else 1)
+PY
+}
+
+run_arm idle  0 || exit 7
+run_arm idle2 0 || exit 7
+run_arm load  1 || exit 7
+
+echo
+log "comparing per-day _random.state fingerprints (and cmd streams):"
+CONTROL_OK=1; RESULT_OK=1
+compare_streams idle idle2 || CONTROL_OK=0
+compare_streams idle load  || RESULT_OK=0
+
+{
+	echo "determinism-ab $TS"
+	echo "binary: $BINARY"
+	echo "seed:   $SEED (0x$SEED_HEX)"
+	echo "days:   $DAYS sync lines per arm"
+	compare_streams idle idle2 2>/dev/null | tail -1 || true
+	compare_streams idle load  2>/dev/null | tail -1 || true
+} >"$OUT_DIR/summary.txt"
+
+# Record into the research experiment bundle, if present (acceptance: run leaves a manifest).
+BUNDLE="$REPO_ROOT/build-research-runs/$EXPERIMENT_ID"
+[ -d "$BUNDLE" ] && cp "$OUT_DIR/summary.txt" "$BUNDLE/determinism-ab-summary.txt" 2>/dev/null || true
+
+echo
+if [ "$CONTROL_OK" -ne 1 ]; then
+	fail "control (idle vs idle2) differs -- the comparison is unsound here; no conclusion. See $OUT_DIR"
+	cat "$OUT_DIR/summary.txt"; exit 1
+fi
+if [ "$RESULT_OK" -eq 1 ]; then
+	log "PASS -- control identical AND idle vs load identical: the read-only MCP path does not perturb the simulation."
+	cat "$OUT_DIR/summary.txt"; echo "artifacts in: $OUT_DIR"; exit 0
+else
+	fail "control identical but idle vs load DIFFERS -- MCP reads perturb the simulation. See $OUT_DIR"
+	cat "$OUT_DIR/summary.txt"; echo "artifacts in: $OUT_DIR"; exit 1
+fi

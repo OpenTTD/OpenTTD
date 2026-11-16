@@ -23,6 +23,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: 2026-11-16T20:03:43Z
+updated_at: 2026-11-16T20:49:47Z
 started_at: 2026-11-16T20:03:43Z
 started_event: sha256:7704b5ffb0fc2783fdec13c2f4ca41e2e047a07ea74b0a01f3f5bd5b7e902865
+verified_at: 2026-11-16T20:49:34Z
+verified_event: sha256:1070329c04fa3b3bbb41357f395ac9bf2d48183f38f4dc4443c283d728ae2d46
+completed_at: 2026-11-16T20:49:47Z
+completed_event: sha256:af40ce9938cad55c3dfda59e0336c8dec3d27cc10f86fbd90f36976c4dfcf67b
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/determinism-ab && tools/research/research report --experiment-id determinism-ab-20261116"
+    result: "PASS. One seed (53744) run three times headless on build-research-mcp/openttd with -d desync=2; each arm's dedicated server logs sync: <date>;<fract>;<_random.state[0]>;<_random.state[1]> per game day into its own commands-out.log. Control idle-vs-idle2: 16 shared days, 16 matching, 0 differing. Result idle-vs-load (MCP reads across 14 openttd:// resources hammered the whole run via the I0067 console seam): 16 shared days, 16/16 _random.state identical, 0 cmd lines in either -> the read path perturbs neither the random state at any day boundary nor the command stream. research report left manifest.json + summary.md at build-research-runs/determinism-ab-20261116. Method (commands-out.log sync diff, -G seed, cfg-dir personal home) from mesh coordination with peers openttd-cd/openttd-a0."
+    commit: 95e9ddbc0a0d963f57d660fff93858996e067ea7
+    recorded_at: 2026-11-16T20:49:36Z
