@@ -28,6 +28,9 @@ const DEPOT_TOOL: &str = "build train depot";
 const DEPOT_ORIENTATION: &str = "select railway depot orientation";
 const NEW_TRAIN: &str = "buy new train vehicle";
 const TRAIN_SHOP: &str = "rail vehicles";
+const BRIDGE_TOOL: &str = "build railway bridge";
+const TUNNEL_TOOL: &str = "build railway tunnel";
+const BRIDGE_LIST: &str = "bridge selection";
 
 /// The resources the track planner reads, as the keys of its input (hub_algoglyph.rs TRACK_INPUTS).
 pub const TRACK_INPUTS: [(&str, &str); 5] = [("map", "openttd://map"), ("ways", "openttd://map/ways"),
@@ -110,24 +113,55 @@ impl Site {
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Piece { pub x: usize, pub y: usize, pub track: u32 }
 
-/// The pieces of a found plan; a plan with bridges or tunnels is refused until the player builds them.
-pub fn pieces(plan: &Value) -> Result<Vec<Piece>, String> {
+/// A bridge or tunnel of a plan: its two head tiles.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Span { pub tunnel: bool, pub from: (usize, usize), pub to: (usize, usize) }
+
+/// The track pieces and the bridges and tunnels of a found plan (AlgoGlyph's contract: track
+/// {kind, x, y, track, ...}; bridge or tunnel {kind, from, to, heading, axis, length, z}).
+pub fn plan_parts(plan: &Value) -> Result<(Vec<Piece>, Vec<Span>), String> {
     let r = plan.get("result").unwrap_or(plan);
     if r.get("status").and_then(Value::as_str) != Some("found") {
         return Err(format!("the track planner found no route ({})", r.get("status").and_then(Value::as_str).unwrap_or("no status")));
     }
     let list = r.get("pieces").and_then(Value::as_array).ok_or("the plan has no pieces")?;
-    list.iter().map(|p| {
-        let kind = p.get("kind").and_then(Value::as_str).unwrap_or("");
-        if kind != "track" {
-            return Err(format!("the plan has a {kind}; this player lays plain track only so far"));
+    // A head is [x, y] (the kernel's form) or {x, y}.
+    let xy = |v: Option<&Value>| -> Result<(usize, usize), String> {
+        let v = v.ok_or("span without an end")?;
+        let (x, y) = match v.as_array() {
+            Some(a) if a.len() == 2 => (a[0].as_u64(), a[1].as_u64()),
+            _ => (v.get("x").and_then(Value::as_u64), v.get("y").and_then(Value::as_u64)),
+        };
+        Ok((x.ok_or("end without x")? as usize, y.ok_or("end without y")? as usize))
+    };
+    let (mut track, mut spans) = (Vec::new(), Vec::new());
+    for p in list {
+        match p.get("kind").and_then(Value::as_str).unwrap_or("") {
+            "track" => track.push(Piece {
+                x: p.get("x").and_then(Value::as_u64).ok_or("piece without x")? as usize,
+                y: p.get("y").and_then(Value::as_u64).ok_or("piece without y")? as usize,
+                track: p.get("track").and_then(Value::as_u64).ok_or("piece without track")? as u32,
+            }),
+            k @ ("bridge" | "tunnel") => spans.push(Span { tunnel: k == "tunnel", from: xy(p.get("from"))?, to: xy(p.get("to"))? }),
+            k => return Err(format!("the plan has a piece of kind '{k}' this player does not know")),
         }
-        Ok(Piece {
-            x: p.get("x").and_then(Value::as_u64).ok_or("piece without x")? as usize,
-            y: p.get("y").and_then(Value::as_u64).ok_or("piece without y")? as usize,
-            track: p.get("track").and_then(Value::as_u64).ok_or("piece without track")? as u32,
-        })
-    }).collect()
+    }
+    Ok((track, spans))
+}
+
+/// The track pieces of a found plan (its bridges and tunnels left out).
+#[cfg(test)]
+pub fn pieces(plan: &Value) -> Result<Vec<Piece>, String> {
+    plan_parts(plan).map(|(t, _)| t)
+}
+
+/// Whether the game has a rail bridge or tunnel between two head tiles (openttd://map/ways crossings).
+pub fn has_span(ways: &Value, s: &Span) -> bool {
+    ways.get("crossings").and_then(Value::as_array).is_some_and(|c| c.iter().any(|x| {
+        let end = |k: &str| (x.pointer(&format!("/{k}/x")).and_then(Value::as_u64).unwrap_or(u64::MAX) as usize, x.pointer(&format!("/{k}/y")).and_then(Value::as_u64).unwrap_or(u64::MAX) as usize);
+        x.get("transport").and_then(Value::as_str) == Some("rail")
+            && ((end("from") == s.from && end("to") == s.to) || (end("from") == s.to && end("to") == s.from))
+    }))
 }
 
 /// What a person does for a group of pieces: drag a straight X or Y run, or click one piece.
@@ -195,11 +229,28 @@ fn sides(bits: u32) -> [bool; 4] {
 /// stepping to a neighbour only when both tiles' tracks reach their shared side.
 pub fn rail_connected(ways: &Value, from: &[(usize, usize)], to: &[(usize, usize)]) -> bool {
     const STEP: [(i64, i64); 4] = [(-1, 0), (0, 1), (1, 0), (0, -1)]; // NE, SE, SW, NW
+    // A rail bridge or tunnel joins its two heads; the tiles between carry no rail bits.
+    let mut far: std::collections::HashMap<(usize, usize), (usize, usize)> = std::collections::HashMap::new();
+    for c in ways.get("crossings").and_then(Value::as_array).cloned().unwrap_or_default() {
+        if c.get("transport").and_then(Value::as_str) != Some("rail") {
+            continue;
+        }
+        let end = |k: &str| Some((c.pointer(&format!("/{k}/x"))?.as_u64()? as usize, c.pointer(&format!("/{k}/y"))?.as_u64()? as usize));
+        if let (Some(a), Some(b)) = (end("from"), end("to")) {
+            far.insert(a, b);
+            far.insert(b, a);
+        }
+    }
     let mut seen: std::collections::HashSet<(usize, usize)> = from.iter().copied().collect();
     let mut queue: Vec<(usize, usize)> = from.to_vec();
     while let Some((x, y)) = queue.pop() {
         if to.contains(&(x, y)) {
             return true;
+        }
+        if let Some(&other) = far.get(&(x, y)) {
+            if seen.insert(other) {
+                queue.push(other);
+            }
         }
         let here = sides(rail_bits(ways, x, y));
         for d in 0..4 {
@@ -361,7 +412,7 @@ impl Hand {
     }
 
     /// Ask AlgoGlyph's track planner for the route between two station sites.
-    pub fn plan_track(&mut self, a: &Site, b: &Site) -> Result<(Value, Vec<Piece>), String> {
+    pub fn plan_track(&mut self, a: &Site, b: &Site) -> Result<(Value, Vec<Piece>, Vec<Span>), String> {
         let mut input = json!({
             "from": {"x": a.end.0, "y": a.end.1, "dir": a.exit.name()},
             "to": {"x": b.end.0, "y": b.end.1, "dir": b.exit.reverse().name()},
@@ -373,8 +424,8 @@ impl Hand {
         }
         let mut flow = Flow::from_env().ok_or("set MCP_ALGOGLYPH_DIR to an AlgoGlyph checkout with the track-planning kernel")?;
         let plan = flow.kernel("track-planning", input)?;
-        let p = pieces(&plan)?;
-        Ok((plan, p))
+        let (p, spans) = plan_parts(&plan)?;
+        Ok((plan, p, spans))
     }
 
     /// Lay planned pieces with the game's tools, then lay again once what the game does not have.
@@ -401,6 +452,57 @@ impl Hand {
         let left = missing(pieces, &self.mcp.read("openttd://map/ways")?);
         if !left.is_empty() {
             return Err(format!("{} of {} piece(s) are not on the map, first at {},{}", left.len(), pieces.len(), left[0].x, left[0].y));
+        }
+        Ok(())
+    }
+
+    /// A bridge (drag from head to head, then pick a bridge in the list) or a tunnel (click its
+    /// entrance; the game digs to the far side), checked in the game's crossings.
+    pub fn build_span(&mut self, s: &Span) -> Result<(), String> {
+        if has_span(&self.mcp.read("openttd://map/ways")?, s) {
+            return Ok(());
+        }
+        let rail = self.open_rail_toolbar()?;
+        let tool = Self::buttons(&rail, if s.tunnel { TUNNEL_TOOL } else { BRIDGE_TOOL }).first().cloned().ok_or("no bridge or tunnel button")?;
+        if tool.get("lowered") != Some(&Value::Bool(true)) {
+            self.click(tool.get("rect").and_then(Target::from_rect).ok_or("tool has no rectangle")?)?;
+        }
+        if s.tunnel {
+            self.say(&format!("tunnel from {},{} to {},{}", s.from.0, s.from.1, s.to.0, s.to.1));
+            self.click_tile(s.from.0, s.from.1)?;
+        } else {
+            self.say(&format!("bridge from {},{} to {},{}", s.from.0, s.from.1, s.to.0, s.to.1));
+            self.focus((s.from.0 + s.to.0) / 2, (s.from.1 + s.to.1) / 2)?;
+            let a = self.spot(s.from.0, s.from.1)?.ok_or("the bridge's first head is covered")?;
+            let b = self.spot(s.to.0, s.to.1)?.ok_or("the bridge's far head is covered")?;
+            self.drag(a, b)?;
+            // The game asks which bridge: the list's first row (it builds on the click).
+            let started = std::time::Instant::now();
+            while started.elapsed() < std::time::Duration::from_secs(3) {
+                if let Some(w) = self.windows()?.into_iter().find(|w| !Self::buttons(w, BRIDGE_LIST).is_empty()) {
+                    let list = Self::buttons(&w, BRIDGE_LIST).first().cloned().ok_or("no bridge list")?;
+                    let r = list.get("rect").cloned().unwrap_or_default();
+                    let row = list.get("row_height").and_then(Value::as_i64).unwrap_or(20) as i32;
+                    let first = Target {
+                        x: r.get("cx").and_then(Value::as_i64).unwrap_or(0) as i32,
+                        y: r.get("y").and_then(Value::as_i64).unwrap_or(0) as i32 + row / 2,
+                        w: r.get("w").and_then(Value::as_i64).unwrap_or(100) as i32 / 2,
+                        h: (row - 4).max(4),
+                    };
+                    self.say("pick the first bridge in the list");
+                    self.raise_if_covered(&w, first)?;
+                    self.click(first)?;
+                    break;
+                }
+                std::thread::sleep(std::time::Duration::from_millis(150));
+            }
+        }
+        self.think(500.0, 900.0);
+        if !has_span(&self.mcp.read("openttd://map/ways")?, s) {
+            return Err(match self.game_error()? {
+                Some(why) => format!("the {} from {},{} was refused: {why}", if s.tunnel { "tunnel" } else { "bridge" }, s.from.0, s.from.1),
+                None => format!("the {} from {},{} to {},{} is not on the map", if s.tunnel { "tunnel" } else { "bridge" }, s.from.0, s.from.1, s.to.0, s.to.1),
+            });
         }
         Ok(())
     }
@@ -433,10 +535,13 @@ impl Hand {
     pub fn build_rail_line(&mut self, stations: &Value) -> Result<Line, String> {
         let a = stations.get("from").and_then(Site::from_value).ok_or("the candidate has no from site")?;
         let b = stations.get("to").and_then(Site::from_value).ok_or("the candidate has no to site")?;
-        let (_, track) = self.plan_track(&a, &b)?;
-        self.tell(&format!("rail line {},{} -> {},{}: {} pieces of track", a.x, a.y, b.x, b.y, track.len()));
+        let (_, track, spans) = self.plan_track(&a, &b)?;
+        self.tell(&format!("rail line {},{} -> {},{}: {} pieces of track, {} bridge(s) or tunnel(s)", a.x, a.y, b.x, b.y, track.len(), spans.len()));
         self.build_rail_station(&a)?;
         self.build_rail_station(&b)?;
+        for s in &spans {
+            self.build_span(s)?;
+        }
         self.lay_track(&track)?;
         let _ = self.escape();
         // The line is only a line when the game's own rails join the two stations.
@@ -697,11 +802,25 @@ mod tests {
     }
 
     #[test]
-    fn only_plain_track_is_laid_so_far() {
-        let found = json!({"result": {"status": "found", "pieces": [{"kind": "track", "x": 1, "y": 2, "track": 1}]}});
-        assert_eq!(pieces(&found).unwrap(), vec![p(1, 2, 1)]);
-        let bridge = json!({"result": {"status": "found", "pieces": [{"kind": "bridge", "x": 1, "y": 2}]}});
-        assert!(pieces(&bridge).unwrap_err().contains("bridge"));
+    fn a_plan_splits_into_track_and_spans() {
+        let found = json!({"result": {"status": "found", "pieces": [
+            {"kind": "track", "x": 1, "y": 2, "track": 1},
+            {"kind": "bridge", "from": [2, 2], "to": {"x": 6, "y": 2}, "heading": "SW", "axis": "x", "length": 3, "z": 1},
+            {"kind": "track", "x": 7, "y": 2, "track": 1}]}});
+        let (t, s) = plan_parts(&found).unwrap();
+        assert_eq!(t, vec![p(1, 2, 1), p(7, 2, 1)]);
+        assert_eq!(s, vec![Span { tunnel: false, from: (2, 2), to: (6, 2) }]);
+        assert!(plan_parts(&json!({"result": {"status": "found", "pieces": [{"kind": "warp"}]}})).is_err());
         assert!(pieces(&json!({"result": {"status": "unreachable"}})).is_err());
+    }
+
+    #[test]
+    fn a_bridge_joins_its_heads_in_the_walk() {
+        // X track at 0 and 1, a bridge from 1 to 5 (no rail bits between), X track at 5 and 6.
+        let ways = json!({"rails": ["01010000000101"], "crossings": [{"kind": "bridge", "transport": "rail", "from": {"x": 1, "y": 0}, "to": {"x": 5, "y": 0}}]});
+        assert!(rail_connected(&ways, &[(0, 0)], &[(6, 0)]));
+        assert!(has_span(&ways, &Span { tunnel: false, from: (5, 0), to: (1, 0) }));
+        let none = json!({"rails": ["01010000000101"], "crossings": []});
+        assert!(!rail_connected(&none, &[(0, 0)], &[(6, 0)]));
     }
 }
