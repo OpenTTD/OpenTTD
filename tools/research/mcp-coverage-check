@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 """RESEARCH-ONLY. Coverage of an MCP server's published surface, measured by the server itself.
 
-Usage: mcp-coverage-check [--probe] [--report] <token-file> [<token-file> ...]
+Usage: mcp-coverage-check [--probe [--exercise]] [--report] <token-file> [<token-file> ...]
 
 For each instance (a token file written by `prismatic_mcp start <port> <file>`):
   --probe   first exercise what can be exercised generically: read every resource in
             resources/list, and call every tool annotated readOnlyHint with arguments derived from
             its inputSchema (a required integer 0, string "", boolean false). Each answer must be a
             well-formed JSON-RPC result.
+  --exercise  with --probe, also call every tool that is not read-only, once, with the same
+            derived arguments, and require a well-formed answer: a result (isError allowed, it must
+            say why) or a JSON-RPC error with a message. ONLY for a throwaway game: it opens dialogs,
+            shows news, writes a screenshot, queues requests and submits a decision (which waits for
+            an approval nobody gives). A tool without readOnlyHint is a finding either way.
 then read openttd://mcp/coverage, which the server's dispatch keeps, and list every published tool
 and resource that no client has called since the server started.
 
@@ -46,7 +51,9 @@ def derived_args(schema):
 
 def main(argv):
     probe = "--probe" in argv
+    exercise = probe and "--exercise" in argv
     report_only = "--report" in argv
+    findings = []
     files = [a for a in argv if not a.startswith("--")]
     if not files:
         print(__doc__)
@@ -58,8 +65,15 @@ def main(argv):
                 for r in rpc(tf, "resources/list", {})["result"]["resources"]:
                     rpc(tf, "resources/read", {"uri": r["uri"]})
                 for t in rpc(tf, "tools/list", {})["result"]["tools"]:
-                    if t.get("annotations", {}).get("readOnlyHint") is True:
-                        rpc(tf, "tools/call", {"name": t["name"], "arguments": derived_args(t.get("inputSchema"))})
+                    hint = t.get("annotations", {}).get("readOnlyHint")
+                    if not isinstance(hint, bool):
+                        findings.append(f"{t['name']}: no annotations.readOnlyHint (the probe cannot tell whether it may call it)")
+                    if hint is True or exercise:
+                        out = rpc(tf, "tools/call", {"name": t["name"], "arguments": derived_args(t.get("inputSchema"))})
+                        if "error" in out and not out["error"].get("message"):
+                            findings.append(f"{t['name']}: a JSON-RPC error without a message")
+                        elif "result" in out and out["result"].get("isError") and not (out["result"].get("content") or [{}])[0].get("text"):
+                            findings.append(f"{t['name']}: isError without saying why")
             cov = rpc(tf, "resources/read", {"uri": "openttd://mcp/coverage"})
             data = json.loads(cov["result"]["contents"][0]["text"])["data"]
         except Exception as e:  # noqa: BLE001 - any failure to reach or parse is reported as such
@@ -70,7 +84,9 @@ def main(argv):
         print(f"{tf}: {data['covered']}/{data['total']} covered")
         for name in un:
             print(f"  UNCOVERED {name}")
-    if uncovered_total and not report_only:
+    for f in findings:
+        print(f"  FINDING {f}")
+    if (uncovered_total or findings) and not report_only:
         return 10
     return 0
 

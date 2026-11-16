@@ -13,7 +13,10 @@ it. Each instance lists only what it can do (a dedicated server has no window: n
 | `openttd.decision.submit`, `openttd.game.set_pause` | `prismatic_mcp_server.cpp` | a typed action through the command system | the operator approves or denies in the console (`prismatic_mcp approve|deny <id>`), digest-bound, one use |
 
 Every tool declares `annotations.readOnlyHint`: true for one that changes nothing, false otherwise
-(with `destructiveHint` and `idempotentHint` where they apply). The coverage probe
+(with `destructiveHint` and `idempotentHint` where they apply). A view tool that declares nothing
+gets the local-GUI default (not read-only, not destructive, idempotent when it sets a state), and a
+unit test holds every client tool to the rule. `mcp-coverage-check --probe --exercise` calls the
+others too, once, on a throwaway game. The coverage probe
 (`tools/research/mcp-coverage-check --probe`) calls only the read-only ones, so an
 undeclared tool would go untested; the approval-gated ones are exercised by
 `tools/research/mcp-live-check`, approve and deny both. The action types are named once,

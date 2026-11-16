@@ -11,6 +11,7 @@
 /** @file prismatic_mcp_view.cpp View tools of the embedded MCP server (research-only). */
 
 #include "../stdafx.h"
+#include <algorithm>
 #include <deque>
 #include <optional>
 
@@ -172,6 +173,19 @@ json Tools()
 		{"description", "GUI only: the main viewport's zoom, zoom limits and followed vehicle"},
 		{"inputSchema", obj},
 		{"annotations", {{"readOnlyHint", true}}}});
+
+	/* A tool that does not declare its annotations changes this client's own view or dialogs, never
+	 * the game: not read-only, not destructive, local. It is idempotent when it sets a state rather
+	 * than adding something (a screenshot, a news item, a question, a console line). Clients and the
+	 * coverage probe decide by readOnlyHint, so every view tool carries one. */
+	static constexpr std::string_view SETS_A_STATE[] = {"openttd.view.scroll_to", "openttd.view.follow", "openttd.view.zoom",
+		"openttd.view.mark", "openttd.view.ask.auto", "openttd.view.news.close"};
+	for (json &t : arr) {
+		if (t.contains("annotations")) continue;
+		const std::string name = t["name"].get<std::string>();
+		const bool sets = std::find(std::begin(SETS_A_STATE), std::end(SETS_A_STATE), name) != std::end(SETS_A_STATE);
+		t["annotations"] = {{"readOnlyHint", false}, {"destructiveHint", false}, {"idempotentHint", sets}, {"openWorldHint", false}};
+	}
 	return arr;
 }
 

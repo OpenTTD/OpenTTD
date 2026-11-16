@@ -12,6 +12,7 @@
 #include "../3rdparty/catch2/catch.hpp"
 #include "../prismatic_mcp/prismatic_mcp_detail.h"
 #include "../prismatic_mcp/prismatic_mcp_menu.h"
+#include "../prismatic_mcp/prismatic_mcp_ui.h"
 #include "../prismatic_mcp/prismatic_mcp_console.h"
 #include "../prismatic_mcp/prismatic_mcp_view.h"
 #include "../network/network.h"
@@ -388,6 +389,22 @@ TEST_CASE("The building and vehicle lists are empty when nothing is built", "[pr
 	CHECK(d["depots"].empty());
 	CHECK(d["service_reach_tiles"].is_number());
 	CHECK(PrismaticMCP::Entities::Vehicles()["vehicles"].empty());
+}
+
+TEST_CASE("Every client tool says whether it changes anything", "[prismatic_mcp]")
+{
+	/* Clients and the coverage probe decide by readOnlyHint: a tool without it is never probed. */
+	std::vector<nlohmann::json> tools;
+	for (const auto &t : PrismaticMCP::View::Tools()) tools.push_back(t);
+	for (const auto &t : PrismaticMCP::UI::Tools()) tools.push_back(t);
+	for (const auto &t : PrismaticMCP::Menu::Tools()) tools.push_back(t);
+	REQUIRE_FALSE(tools.empty());
+	for (const auto &t : tools) {
+		INFO(t["name"].get<std::string>());
+		REQUIRE(t.contains("annotations"));
+		CHECK(t["annotations"].contains("readOnlyHint"));
+		CHECK(t["annotations"]["readOnlyHint"].is_boolean());
+	}
 }
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

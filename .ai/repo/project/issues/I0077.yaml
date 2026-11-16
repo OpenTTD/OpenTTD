@@ -1,0 +1,29 @@
+id: I0077
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Every client tool annotated and every one exercised once on a headless client"
+slug: mcp-client-coverage
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "Every view tool declares readOnlyHint (a local-GUI default when it declares nothing), a unit test holds every View, UI and Menu tool to it, and mcp-coverage-check --probe --exercise calls every tool once on a throwaway headless client, requiring a well-formed answer and naming any tool without readOnlyHint."
+why: "The owner: tune the MCP, cover it with tests. On a headless client (null video driver) ten view tools carried no annotations and the probe covered 29 of 53."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_view.cpp"
+  - "src/tests/test_prismatic_mcp.cpp"
+  - "tools/research/mcp-coverage-check"
+  - "research/**"
+  - ".ai/**"
+depends_on:
+  - I0076
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "tools/list on a headless client: every tool has annotations.readOnlyHint"
+  - "A unit test checks every View, UI and Menu tool for readOnlyHint"
+  - "mcp-coverage-check --probe --exercise on a headless client covers every entry with no finding, and the game keeps running"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-coverage-check --probe --exercise <headless client token file>"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'

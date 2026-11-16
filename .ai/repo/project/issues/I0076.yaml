@@ -29,3 +29,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T06:09:36Z
+started_event: sha256:bb6410342b9340c8d60ae203aac94e9050a193f68610320085a5df967834f09f
+updated_at: 2026-11-16T06:09:42Z
+verified_at: 2026-11-16T06:09:37Z
+verified_event: sha256:a596697ea101048a5a8365978595ada1144289df8218eb259d596f662a95ef21
+completed_at: 2026-11-16T06:09:42Z
+completed_event: sha256:96a790369546fc2ddeab322f3a1f0ff81ace9b8e767cb2a50b94a5eee7e4dc97
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/gate.sh change; tools/research/mcp-live-check; tools/research/mcp-coverage-check --probe <dedicated game token file>"
+    result: "research PASS 118/118 (MCP 18 cases, 558 assertions); change PASS 98/98; live check 18/18 (was 4/14); coverage probe 22/24 (was 20/24; the 2 left are the approval-gated tools the live check runs); every tool declares readOnlyHint; delivered 86856c440a"
+    artifact: "86856c440a"
+    commit: 86856c440a589578dfd40e21c41206dcb7042d04
+    recorded_at: 2026-11-16T06:09:39Z
