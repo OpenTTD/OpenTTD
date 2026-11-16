@@ -5,7 +5,7 @@ kind: knowledge
 class: fact
 title: "MCP approvals outlive a server stop, a token rotation and a new world; only their tick TTL and use retire them"
 description: "Before treating a token rotation or a restart of the MCP server as revoking what was approved."
-status: candidate
+status: superseded
 epistemics: observed
 date: 2026-11-16
 tags: [prismatic-mcp]
@@ -33,3 +33,7 @@ from an earlier world can become current again in a new one (the last point is i
 
 Authored from a read of the source at f069e8f0f5 (issue I0055); awaiting the owner's review.
 `majordomus knowledge promote mcp-approvals-survive-stop-rotation-and-a-new-world` with evidence, or `majordomus knowledge reject mcp-approvals-survive-stop-rotation-and-a-new-world --reason ...`.
+
+# Rejected
+
+Fixed by I0061: Stop, RotateToken and a world whose tick counter restarted (detail::WorldChanged) now clear every approval; the statement held at f069e8f0f5 and no longer does.

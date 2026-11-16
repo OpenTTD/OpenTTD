@@ -69,3 +69,5 @@ No other alternative is recorded in the history; none is invented here.
   server is therefore expected to get that client kicked, not to pause the game (traced in the source,
   confirmed by an independent model review, not run; knowledge candidate
   `a-server-only-command-from-a-network-client-kicks-it`).
+- Amended by I0061: approvals are cleared when the server stops, the token rotates or the world changes.
+  The refusal of a server-only action in a network client is in flight on `research/mcp-full-auto`.

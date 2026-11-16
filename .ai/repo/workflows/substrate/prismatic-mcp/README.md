@@ -53,7 +53,7 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 ## Lifecycle
 
 - **[verified]** One thread: the game-loop thread accepts, reads, parses, dispatches and answers; there is no worker thread and no hand-off queue (`src/prismatic_mcp/prismatic_mcp_server.cpp:Poll`, `ServiceConnection`). It runs under the video driver's game-state mutex (`src/video/video_driver.cpp:VideoDriver::GameLoop`).
-- **[verified]** Start binds `127.0.0.1` (required) then `::1` (best effort); default port `src/prismatic_mcp/prismatic_mcp.h:DEFAULT_PORT`. Stop closes sockets and zeroes the token; approvals, provenance and input tracking survive it.
+- **[verified]** Start binds `127.0.0.1` (required) then `::1` (best effort); default port `src/prismatic_mcp/prismatic_mcp.h:DEFAULT_PORT`. Stop closes sockets, zeroes the token and clears every approval (so do `RotateToken` and a world whose tick counter restarted, `src/prismatic_mcp/prismatic_mcp_detail.h:WorldChanged`); provenance and input tracking survive it.
 - **[verified]** `src/prismatic_mcp/prismatic_mcp_server.cpp:OnGameModeChanged` is empty and nothing calls it: a new world does not reset MCP state.
 - Screenshots leave the game thread through `src/video/video_driver.hpp:VideoDriver::QueueOnMainThread`.
 
@@ -74,10 +74,10 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 
 ## Traps and forbidden operations
 
-- **[inferred, not run]** A server-only command (`CommandFlag::Server`, e.g. `src/misc_cmd.h:CmdPause`) posted from a network client's MCP server gets that client kicked (`src/network/network_server.cpp:ServerNetworkGameSocketHandler::ReceiveClientCommand`); `ExecuteAction` has no guard. Knowledge candidate `a-server-only-command-from-a-network-client-kicks-it`.
+- **[verified]** A server-only command (`CommandFlag::Server`, e.g. `src/misc_cmd.h:CmdPause`) posted from a network client gets that client kicked (`src/network/network_server.cpp:ServerNetworkGameSocketHandler::ReceiveClientCommand`). On master `ExecuteAction` still posts `game.set_pause` without a role check; the guard (`ClientMayPost`, refusing a `CommandFlag::Server` action in a network client) is in flight on `research/mcp-full-auto`. Any new action must pass it. Knowledge candidate `a-server-only-command-from-a-network-client-kicks-it`.
 - **[inferred]** `Post` in a network game only sends: reading the effect right after it (`ExecuteAction` observes `_pause_mode` at once) can report EXECUTED_UNVERIFIED for a command that later succeeds, or VERIFIED_SUCCESS because the state already matched.
 - **[inferred, not run]** Armed key input reaches the console window (`src/console_gui.cpp`, `IConsoleCmdExec`), which accepts `prismatic_mcp approve <id>`: an armed controller can approve its own decisions. ADR 0014 records the arming switch as the boundary.
-- **[verified]** `src/console_cmds.cpp:ConPrismaticMcp` prints the bearer token with `IConsolePrint`, which `src/console.cpp:IConsolePrint` redirects to an rcon client when one issued the command, despite the "not logged" wording.
+- **[verified]** `src/console.cpp:IConsolePrint` redirects to an rcon client when one issued the command, so `src/console_cmds.cpp:ConPrismaticMcp` refuses to print the bearer token while the console is redirected (`token`, and `start` without a token file).
 - **[inferred]** The listener is serviced on the game thread with an immediate retry on a blocked send and no idle timeout (`src/prismatic_mcp/prismatic_mcp_server.cpp:ServiceConnection`): a slow reader can stall the game loop.
 - A default build compiles none of this: a green `tools/gate.sh change` says nothing about it (knowledge `gated-code-is-invisible-to-a-default-build`).
 
@@ -97,6 +97,6 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 ## Typical tasks
 
 - To add a read-only resource for vehicles: start at `src/prismatic_mcp/prismatic_mcp_server.cpp:RESOURCES`, read pools on this thread with no locking, regenerate the catalogue, validate with `tools/gate.sh research` and `tools/research/mcp-live-check`.
-- To add a vehicle action (e.g. send to depot): add the action type in `IsKnownActionType`, validate its arguments in `ValidateAction`, post the existing command in `ExecuteAction`; check its `CommandFlag`s against the process role (the kick trap above); read the vehicles map (`.ai/repo/workflows/substrate/vehicles-and-pathfinding/README.md`) for which command owns the state.
+- To add a vehicle action (e.g. send to depot): add the action type in `IsKnownActionType`, validate its arguments in `ValidateAction`, post the existing command in `ExecuteAction`; gate it on its `CommandFlag`s against the process role (the kick trap above); read the vehicles map (`.ai/repo/workflows/substrate/vehicles-and-pathfinding/README.md`) for which command owns the state.
 - To add a GUI-only tool: `src/prismatic_mcp/prismatic_mcp_view.cpp:Tools`, refuse without `MainWindow`, issue no command.
 - To rebase onto upstream: `tools/knowledge/refs impact "$MB"..upstream/master` names this map when a hooked upstream file moved; `src/dropdown.cpp` reproduces `DropdownWindow` layout internals and is the most fragile hook.

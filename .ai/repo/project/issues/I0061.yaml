@@ -1,0 +1,28 @@
+id: I0061
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Harden the MCP approval boundary: no approval outliving its session or world, no token to a remote console"
+slug: mcp-approval-hardening
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Close two of the three verified gaps an independent review found in the embedded MCP server's approval boundary; the third, a server-only action from a network client, is ClientMayPost on research/mcp-full-auto."
+why: "An approved pause from a GUI client's MCP got that client kicked; approvals survived a stop, a token rotation and a new world; the bearer token reached an rcon caller despite the console saying it was not logged."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_server.cpp"
+  - "src/prismatic_mcp/prismatic_mcp_detail.h"
+  - "src/console_cmds.cpp"
+  - "src/tests/test_prismatic_mcp.cpp"
+  - ".ai/**"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "Approvals are cleared on Stop, RotateToken and a world whose tick counter restarted (detail::WorldChanged), unit-tested"
+  - "prismatic_mcp token and start refuse to print the bearer token to a redirected (rcon/admin) console"
+  - "tools/gate.sh research passes"
+validation:
+  - "tools/gate.sh research"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
+updated_at: '2026-11-16'

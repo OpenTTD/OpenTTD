@@ -49,6 +49,6 @@ watch the server console for "Kicking client ... due to calling a server only co
 
 # What to do
 
-A tool that posts a command from a process that may be a network client checks
-`GetCommandFlags(cmd).Test(CommandFlag::Server)` against `_network_server` (or `!_networking`)
-before posting, and refuses with an explanation instead.
+A tool that posts a command from a process that may be a network client checks the command's
+`CommandFlag::Server` against `_networking` and `_network_server` before posting, and refuses with an
+explanation instead (`ClientMayPost` on `research/mcp-full-auto` does this for the MCP actions).

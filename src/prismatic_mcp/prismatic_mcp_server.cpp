@@ -870,6 +870,19 @@ bool Start(uint16_t port, std::string &error)
 	return true;
 }
 
+/**
+ * Forget every approval, granted or pending. An approval binds an action to the operator's consent in
+ * one session of one world: it must not outlive the server, its token, or the game it was given in.
+ * This is the one point where session- and world-bound decision state is dropped: anything else that
+ * waits on the old session or world (results still to be observed) is cleared here too.
+ */
+static void ClearApprovals(std::string_view why)
+{
+	if (_approvals.empty()) return;
+	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] {} approval(s) cleared: {}", _approvals.size(), why);
+	_approvals.clear();
+}
+
 void Stop()
 {
 	if (!_mcp.running && _mcp.listeners.empty()) return;
@@ -881,6 +894,7 @@ void Stop()
 	_mcp.token.fill(0);
 	_mcp.token_valid = false;
 	_mcp.running = false;
+	ClearApprovals("server stopped");
 	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] MCP server stopped");
 }
 
@@ -891,13 +905,18 @@ void Shutdown()
 
 void OnGameModeChanged()
 {
-	/* Snapshots are built fresh per request in this vertical, so nothing to
-	 * invalidate yet; hook kept so lifecycle wiring is in place. */
+	ClearApprovals("game mode changed");
 }
+
+/** The tick the last poll saw; a smaller one means another world (detail::WorldChanged). */
+static uint64_t _last_poll_tick = 0;
 
 void Poll()
 {
 	if (!_mcp.running || _mcp.listeners.empty()) return;
+	const uint64_t now_tick = TimerGameTick::counter;
+	if (detail::WorldChanged(_last_poll_tick, now_tick)) ClearApprovals("a new or loaded world");
+	_last_poll_tick = now_tick;
 
 	fd_set read_fds;
 	FD_ZERO(&read_fds);
@@ -962,7 +981,8 @@ void RotateToken()
 	if (!_mcp.running) return;
 	RandomBytesWithFallback(_mcp.token);
 	_mcp.token_valid = true;
-	/* No session table yet; rotation simply invalidates the old bearer value. */
+	/* No session table yet; rotation invalidates the old bearer value and what was approved under it. */
+	ClearApprovals("token rotated");
 	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] bearer token rotated");
 }
 

@@ -28,9 +28,9 @@ relations:
 
 `src/network/network_server.cpp:ServerNetworkGameSocketHandler::ReceiveClientRemoteConsoleCommand`
 and the admin equivalent execute the line in the server process, where hooks such as
-`src/console_cmds.cpp:ConHookServerOnly` test only `_network_server`. `prismatic_mcp token` is
-therefore readable by an authenticated rcon or admin caller, with the output redirected to them
-(`src/console.cpp:IConsolePrint`).
+`src/console_cmds.cpp:ConHookServerOnly` test only `_network_server`, and the output is redirected to
+the remote caller (`src/console.cpp:IConsolePrint`). A command that prints a secret checks
+`_redirect_console_to_client` itself, as `prismatic_mcp token` does since I0061.
 
 # Review
 

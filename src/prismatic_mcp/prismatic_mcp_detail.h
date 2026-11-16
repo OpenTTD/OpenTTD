@@ -83,6 +83,16 @@ inline bool ConstantTimeEquals(std::string_view a, std::string_view b)
 	return diff == 0;
 }
 
+/**
+ * Has the world changed under the server since the last poll? The tick counter only moves forward
+ * within one game; a new game or a load restarts it, so a smaller value means another world, whose
+ * approvals must not carry over (their expiry is counted in those ticks).
+ */
+inline bool WorldChanged(uint64_t last_tick, uint64_t now_tick)
+{
+	return now_tick < last_tick;
+}
+
 } // namespace PrismaticMCP::detail
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

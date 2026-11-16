@@ -1830,7 +1830,11 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 				IConsolePrint(ec ? CC_ERROR : CC_INFO, "Token written to {}{}", path, ec ? " (permissions not set)" : " (mode 0600)");
 				PrismaticMCP::Registry::AnnounceTokenFile(path); // the registry record names the file, never the token
 			} else {
-				IConsolePrint(CC_WARNING, "Bearer token (local operator only, not logged): {}", PrismaticMCP::GetToken());
+				if (_redirect_console_to_client != ClientID::Invalid) {
+				IConsolePrint(CC_ERROR, "Refused: the bearer token is not sent to a remote console; read it on the server or pass a token file.");
+			} else {
+				IConsolePrint(CC_WARNING, "Bearer token (this console, and the console log if one is open): {}", PrismaticMCP::GetToken());
+			}
 			}
 		} else {
 			IConsolePrint(CC_ERROR, "MCP server failed to start: {}", error);
@@ -1848,6 +1852,11 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 		return true;
 	}
 	if (sub == "token") {
+		/* An rcon or admin caller would receive the bearer over the network: the token stays local. */
+		if (_redirect_console_to_client != ClientID::Invalid) {
+			IConsolePrint(CC_ERROR, "Refused: the bearer token is not sent to a remote console.");
+			return true;
+		}
 		std::string t = PrismaticMCP::GetToken();
 		IConsolePrint(CC_WARNING, "{}", t.empty() ? "(server not running)" : t);
 		return true;
