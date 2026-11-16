@@ -19,6 +19,63 @@ lockstep multiplayer, savegames that must load forever, and a warning-heavy buil
 | **Published surfaces** | site, wiki and Markdown index tables derived from this repository — see [0.4.2](#042-published-surfaces) |
 | **Status taxonomy** | `PASS` · `FAIL` · `PARTIAL` · `NOT RUN` · `NOT APPLICABLE` — never rounded up ([`research/README.md`](./research/README.md)) |
 
+### How it fits together
+
+One loopback machine runs the game and the agent; every arrow below is a governed, derived
+channel, and nothing an agent does bypasses the game's own command system.
+
+```mermaid
+flowchart LR
+    owner([Owner]):::owner
+
+    subgraph game["OpenTTD (deterministic lockstep)"]
+        gui["GUI client<br/>~ console + toolbar menu"]
+        srv["Dedicated server<br/>command system"]
+    end
+
+    subgraph mcp["Embedded MCP server (loopback, compile-gated, default OFF)"]
+        tools["Tools &amp; resources<br/>read state · gated mutations"]
+    end
+
+    subgraph surfaces["One catalogue, three derived surfaces"]
+        console["~ console: mcp &lt;tool&gt;"]
+        swagger["Swagger / OpenAPI"]
+        ailayer[".ai catalogue"]
+    end
+
+    subgraph brain["Plan, then play"]
+        planner["AlgoGlyph planner<br/>DAG · live prices · bridges &amp; tunnels"]
+        bot["PrismaticAI / mcp-human<br/>plays through the UI"]
+    end
+
+    hub["Control panel &amp; hub<br/>WebSocket · every instance"]
+
+    owner -->|watches, approves,<br/>auto-answers| gui
+    gui <--> srv
+    gui --- mcp
+    srv --- mcp
+    mcp --> tools
+    tools --> console & swagger & ailayer
+    console --- gui
+    planner --> bot
+    bot -->|commands| srv
+    tools --> hub
+    hub --> planner
+
+    classDef owner fill:#f5a623,stroke:#b8770f,color:#1a1a1a;
+```
+
+### The fork in action
+
+| The research loop, live | The bot asks; the owner can auto-answer |
+|---|---|
+| [![A loopback MCP research game: finances, spectator owner-view and the owner-bot](docs/screenshots/game-finances.png)](docs/screenshots/game-finances.png) | [![The bot's yes/no question as the game's own dialog — turned off with `mcp view.ask.auto answer=yes`](docs/screenshots/your-bot-asks.png)](docs/screenshots/your-bot-asks.png) |
+| **Online players — owner-view (spectator) and owner-bot on one loopback server** | **The world the planner reasons over** |
+| [![Two clients on the OpenTTD MCP research server: owner-view and owner-bot](docs/screenshots/online-players.png)](docs/screenshots/online-players.png) | [![The map the planner reads per tile — terrain, foundations, bridges and tunnels](docs/screenshots/world-view.png)](docs/screenshots/world-view.png) |
+
+> Screenshots are from a single-machine R&D game on `127.0.0.1`; the fork joins public servers only
+> with the unmodified release client ([ADR 0029](.ai/repo/adrs/0029-a-research-gated-local-only-override-accepts-a-mismatched-pee.md)).
+
 ### Quick start
 
 ```bash
