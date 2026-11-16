@@ -366,9 +366,15 @@ station connects at both ends of its axis, so a train leaves the depot straight 
 preferred, and `depot` is null only when no site nearby has one. On the main stack all 30 sites of
 a plan had one.
 
-`tools/research/mcp-duel [--months 24]` is a duel in one game: the planned bot and the same bot
-unplanned compete for the same towns and industries on one map, and the higher company value wins.
-It writes `research/results/duel-*.{json,md}`.
+`tools/research/mcp-duel [--months 24] [--seed N] [--opponent AI]` is a duel in one game: the
+planned bot and an opponent compete for the same towns and industries on one map, and the higher
+company value wins. The opponent defaults to the same bot without a plan, which builds buses only.
+`--opponent` names any installed AI, such as AdmiralAI or SimpleAI from BaNaNaS (fetched with the
+console's `content update`, `content select <id>`, `content download`). An AI the game does not
+have is refused before the first month. It writes `research/results/duel-*.{json,md}`.
+
+Results so far against the default opponent, 36 months each: seed 20208 A 242657 vs B 8567;
+seed 31337 A 204356 vs B 28129; seed 4242 A 228703 vs B 21110. Each result file has its reading.
 
 ### What to build: AlgoGlyph transport-investment over the live game
 
