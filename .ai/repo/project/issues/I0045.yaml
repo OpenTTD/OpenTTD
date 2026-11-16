@@ -94,6 +94,6 @@ evidence:
     type: test
     command: "tools/gate.sh research; mcp-human-e2e --test --rounds 1 --fleet; mcp-human-e2e --test --minutes 6 --renew-age 45"
     result: "pass: vehicle replacement through the interface: vehicle list from the toolbar, send to depot, buy a copy (orders copied), start it, drag the old one onto the depot's sell button; bus 5 renewed by copy 6 (same engine, 2 orders), copy sold (money 86858 -> 91161 on the server); in a 6-minute game the player renewed bus 5 at 89 days on its own (copy 7); gate PASS 119/119 (646 assertions); e2e 36/36 and 35 PASS. Every I0045 item is now verified."
-    artifact: "commit ca8acc23a0"
-    commit: ca8acc23a0b4e5099abf9a4c739cd4329304bb00
+    artifact: "commit d50216c61f"
+    commit: d50216c61fc7bae71ff3145142cf9f606427380c
     recorded_at: 2026-11-16T12:06:02Z
