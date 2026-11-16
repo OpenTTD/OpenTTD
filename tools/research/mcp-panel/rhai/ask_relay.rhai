@@ -8,6 +8,14 @@
 // panel's /api/intent (the planner, api_intent here), and answers it with openttd.ui.requests.answer,
 // which records the answer and shows it in the game as a news message. Nothing is named here: the
 // answer is built from what the planner returns.
+//
+// A BUILD sentence is also CARRIED OUT, which is what makes one sentence in the ~ console enough:
+// build_plan::apply sends the settings the planner proposed to the running bot through
+// openttd.ai.set_setting, and the answer shown in the game names the approvals now waiting. It
+// approves nothing -- the gate is the owner's setting, and the bot builds after the owner approves.
+// A find sentence is answered and nothing is applied.
+
+import "build_plan" as build_plan;
 
 let view = env("MCP_VIEW_TOKEN");
 if view == "" { throw "set MCP_VIEW_TOKEN to the GUI client's token file"; }
@@ -42,6 +50,19 @@ loop {
             print(`question ${q.id}: ${q.text}`);
             let r = api_intent(#{ text: q.text });
             let answer = if "http_error" in r { `The planner could not answer: ${r.body}` } else { summarise(r) };
+            // A build sentence is carried out here, not merely reported: the settings go to the
+            // running bot and the answer tells the owner what is waiting for their approval.
+            if !("http_error" in r) && (r.intent.action ?? "find") == "build" {
+                let done = build_plan::apply(r.answer);
+                if !done.pending.is_empty() {
+                    answer += `\n${done.pending.len()} change(s) sent to ${done.bot}, waiting for your approval: `;
+                    for id in done.pending { answer += `#${id} `; }
+                    answer += "(approve in the panel, or: prismatic_mcp approve <id>)";
+                } else if !done.lines.is_empty() {
+                    answer += `\n${done.lines[0]}`;
+                }
+                for line in done.lines { print(`  apply: ${line}`); }
+            }
             mcp_call(view, "openttd.ui.requests.answer", #{ id: q.id, answer: answer });
             print(`answered ${q.id}`);
         }

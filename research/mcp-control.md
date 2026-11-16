@@ -535,6 +535,28 @@ prefixed `[prismatic-plan] <n>`: the reading, the three best candidates, and for
 settings. The dedicated server runs one stdin line per `select()`, so the panel writes console
 lines one at a time, 0.25 s apart (knowledge `dedicated-console-reads-one-buffered-line-per-select`).
 `mcp-view-check` proves the round trip.
+**One sentence in the `~` console, carried out.** In the owner's own client `plan <text>` queues
+the sentence in `openttd://ui/requests` as an `ask`, and `ask_relay.rhai` answers it in the game.
+That relay now also **carries out a build**: it calls `build_plan::apply`, which sends the
+proposed settings to the running bot through `openttd.ai.set_setting`, and the answer shown in the
+game names the approvals waiting ("3 change(s) sent to <bot>, waiting for your approval: #1 #2 #3").
+So one sentence is enough, and the only thing left to the owner is the approval itself — the step
+the gate exists for. A find sentence is answered and nothing is applied. On a dedicated server the
+console line is answered by the log watcher as before.
+
+**Carrying a sentence out.** `plan <text>` answers; it does not build. The settings it prints have
+to reach the bot, and `tools/research/mcp-panel/rhai/build_plan.rhai` is that last step and nothing
+more: `api_intent` for the reading and the settings, the company from the running bot
+(`/api/bots` → `running[0]`), then one `api_botSetting` per setting. Each comes back
+`pending_approval` with an `approval_id`, because `openttd.ai.set_setting` is gated; the script
+prints the `prismatic_mcp approve <id>` lines and stops there. **It approves nothing** — the gate is
+the owner's setting, and a script that approved its own changes would make that setting a
+decoration. A setting the running bot does not declare is refused rather than applied into silence,
+and the reading is printed first for the same reason the console verb prints it: a sentence that
+named nothing would otherwise look understood. Run on the owner's own example it reads
+`build most_productive`, proposes `fr_from 3, fr_to 18, fr_cargo 7` and leaves three approvals
+waiting.
+
 `mcp-intent-check` proves the four sentences themselves, driven through `POST /api/console` the
 way the owner types them: that each one is *answered in the console* and not merely over HTTP, that
 the reading names the action, the ordering and the subjects it resolved, and two things nothing

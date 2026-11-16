@@ -6,7 +6,8 @@
 #
 #   ~ console:  plan <text>
 #     -> ConPlan (src/console_cmds.cpp) prints "[prismatic-plan] <n> <text>" to console and log
-#     -> the panel's log watcher (tools/research/mcp-panel/server.py, _answer_plan)
+#     -> the panel's log watcher (tools/research/mcp-rhai/src/panel.rs; it replaced the Python
+#        server.py of the same name and routes)
 #     -> POST /api/intent {text}  (the resolver, tools/research/mcp-rhai)
 #     -> echo lines "[prismatic-plan] <n> ..." back into the same console
 #     -> for a build sentence, settings the bot takes through openttd.ai.set_setting,
