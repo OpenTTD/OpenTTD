@@ -16,12 +16,13 @@
 #
 # Usage: tools/research/mcp-human-e2e [--test] [--rounds N | --minutes M] [--seed N] [--speed F]
 #                                     [--borrow-below N] [--repay-above N] [--rail "MAX [MIN]"]
+#                                     [--rail-above N]
 #                                     [--window WxH] [--bin PATH]
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
-TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL=""
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL="" RAIL_ABOVE=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --test) TEST=1; shift ;;
@@ -30,6 +31,7 @@ while [[ $# -gt 0 ]]; do
     --borrow-below) BORROW_BELOW="$2"; shift 2 ;;
     --repay-above) REPAY_ABOVE="$2"; shift 2 ;;
     --rail) RAIL="$2"; shift 2 ;;
+    --rail-above) RAIL_ABOVE="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
     --speed) SPEED="$2"; shift 2 ;;
     --window) WINDOW="$2"; shift 2 ;;
@@ -150,7 +152,7 @@ call "$CLIENT_TOKEN" openttd.ui.menu.run "{\"index\":$(menu_row watch)}" >/dev/n
 # The player's own account of what it did goes to the screen and to the run's log (kept on failure).
 if [[ "$MINUTES" -gt 0 ]]; then
   # A whole game: expand, add buses where they earn, borrow, watch (economy.rs).
-  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} ${REPAY_ABOVE:+--repay-above "$REPAY_ABOVE"} 2>&1 | tee "$TMP/human.log"
+  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} ${REPAY_ABOVE:+--repay-above "$REPAY_ABOVE"} ${RAIL_ABOVE:+--rail-above "$RAIL_ABOVE"} 2>&1 | tee "$TMP/human.log"
 else
   "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS" 2>&1 | tee "$TMP/human.log"
 fi
@@ -195,7 +197,16 @@ if [[ "$TEST" == 1 ]]; then
   # published tool and resource must have been called by the probe or by the play above.
   # Probe what is read-only now; the gate itself runs after the last scenario below.
   "$COVERAGE" --probe --report "$SERVER_TOKEN" "$CLIENT_TOKEN" >/dev/null || { echo "FAIL the coverage probe could not reach an instance"; fail=1; }
-  [[ "$AFTER" -gt "$BEFORE" ]] && echo "PASS roads built through the interface appear on the server" || { echo "FAIL no new road tiles on the server"; fail=1; }
+  # In a game the player chooses its transport: when it chose rail and built no bus service, the
+  # bus checks are reported as not run (never as passes), and the rail checks below stand.
+  CHOSE_RAIL_ONLY=0
+  if [[ -n "$RAIL_ABOVE" && "$(grep -c '^\[human\] rail line' "$TMP/human.log")" -gt 0 && "$(grep -c '^\[human\] expand:' "$TMP/human.log")" -eq 0 ]]; then
+    CHOSE_RAIL_ONLY=1
+    echo "SKIP the road and bus checks: in this game the player chose rail and served no town pair by bus (not counted as passes)"
+  fi
+  if [[ "$CHOSE_RAIL_ONLY" -eq 0 ]]; then
+    [[ "$AFTER" -gt "$BEFORE" ]] && echo "PASS roads built through the interface appear on the server" || { echo "FAIL no new road tiles on the server"; fail=1; }
+  fi
   # Programmatic control of any window (openttd.ui.press/choose/type/close/click_tile), verified by what changed.
   P="$(icall "$CLIENT_TOKEN" openttd.ui.press '{"window":{"class":1},"widget":{"text":"build road infrastructure"}}')"
   C="$(icall "$CLIENT_TOKEN" openttd.ui.choose '{"index":0}')"
@@ -230,6 +241,15 @@ if [[ "$TEST" == 1 ]]; then
   sleep 1
   call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq -e --argjson id "$ASK" '[.. | objects | select(.id? == $id and .answer? == "no")] | length > 0' >/dev/null \
     && echo "PASS view.ask asked in the game; closing the dialog answered no" || { echo "FAIL view.ask: $(call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq -c .)"; fail=1; }
+  # The view tools the play uses only on some paths (a bus service's mark, newspaper, screenshot),
+  # exercised here so coverage never depends on which way the game went.
+  MARK="$(call "$CLIENT_TOKEN" openttd.view.mark "$ST" | jq -r '.ok')"
+  call "$CLIENT_TOKEN" openttd.view.mark '{"clear":true}' >/dev/null
+  NEWS="$(call "$CLIENT_TOKEN" openttd.view.news.show '{"text":"mcp-human-e2e: a newspaper from the scenario"}' | jq -r '.ok')"
+  sleep 1
+  SHOT="$(call "$CLIENT_TOKEN" openttd.view.screenshot '{}' | jq -r '.path // empty')"
+  call "$CLIENT_TOKEN" openttd.view.news.close '{}' >/dev/null
+  [[ "$MARK" == true && "$NEWS" == true && -n "$SHOT" ]] && echo "PASS view.mark, view.news.show and view.screenshot answer in the client" || { echo "FAIL view tools: mark=$MARK news=$NEWS shot=$SHOT"; fail=1; }
   # The owner's auto-answer switch: with it on, a question is answered at once and shows no dialog.
   call "$CLIENT_TOKEN" openttd.view.ask.auto '{"answer":"yes"}' >/dev/null
   AUTO="$(call "$CLIENT_TOKEN" openttd.view.ask '{"question":"mcp-human-e2e: auto-answered?","caption":"e2e auto"}' | jq -r '.id')"
@@ -258,10 +278,12 @@ if [[ "$TEST" == 1 ]]; then
   call "$CLIENT_TOKEN" openttd.input.yield '{"paused":false}' >/dev/null
   [[ "$PAUSED" == *"paused the bot"* ]] && [[ "$(icall "$CLIENT_TOKEN" openttd.input.pointer '{"x":12,"y":12}' | jq -r .ok)" == "true" ]] \
     && echo "PASS input.yield pauses the bot's input and resumes it" || { echo "FAIL input.yield: $PAUSED"; fail=1; }
-  STOPS="$(read_res "$SERVER_TOKEN" openttd://stations | jq --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c and (.facilities | index("bus")))] | length')"
-  [[ "$STOPS" -ge 2 ]] && echo "PASS $STOPS bus stations of company $COMPANY on the server" || { echo "FAIL $STOPS bus stations (need 2)"; fail=1; }
-  BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "road" and (.orders | length) >= 2 and .stopped == false)] | length')"
-  [[ "$BUSES" -ge 1 ]] && echo "PASS $BUSES bus(es) running with orders between the stops" || { echo "FAIL no running bus with two orders"; fail=1; }
+  if [[ "$CHOSE_RAIL_ONLY" -eq 0 ]]; then
+    STOPS="$(read_res "$SERVER_TOKEN" openttd://stations | jq --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c and (.facilities | index("bus")))] | length')"
+    [[ "$STOPS" -ge 2 ]] && echo "PASS $STOPS bus stations of company $COMPANY on the server" || { echo "FAIL $STOPS bus stations (need 2)"; fail=1; }
+    BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "road" and (.orders | length) >= 2 and .stopped == false)] | length')"
+    [[ "$BUSES" -ge 1 ]] && echo "PASS $BUSES bus(es) running with orders between the stops" || { echo "FAIL no running bus with two orders"; fail=1; }
+  fi
   for kind in server gui; do
     REC="$(ls "$PRISMATIC_MCP_REGISTRY"/openttd-"$kind"-*.json 2>/dev/null | head -1 || true)"
     if [[ -n "$REC" ]] && jq -e --arg k "$kind" '.schema == "mcp-instance/v1" and .kind == $k and (.endpoint | startswith("http://127.0.0.1:")) and (.token_file | length > 0) and (has("agent_token") | not) and (has("token") | not)' "$REC" >/dev/null \
@@ -319,8 +341,9 @@ if [[ "$TEST" == 1 ]]; then
   fi
 
   # The rail line, checked on the server and independently of the player: the company's train
-  # stations, and a walk over the server's own track bits from one station to the other.
-  if [[ -n "$RAIL" ]]; then
+  # stations, and a walk over the server's own track bits from one station to the other. In a
+  # game (--rail-above) the player decides itself when the money is there for a line.
+  if [[ -n "$RAIL" || ( -n "$RAIL_ABOVE" && "$(grep -c '^\[human\] rail line' "$TMP/human.log")" -gt 0 ) ]]; then
     python3 -I - "$SERVER_TOKEN" "$COMPANY" <<'PY' && echo "PASS a rail line joins two train stations of company $COMPANY on the server's rails" || { echo "FAIL the rail line"; fail=1; }
 import json, sys, urllib.request
 tok = json.load(open(sys.argv[1])); company = int(sys.argv[2])
@@ -365,6 +388,9 @@ PY
     jq -e '. != null and .parts >= 2 and (.orders | length) >= 2 and .stopped == false and .in_depot == false and .consist_capacity > 0' <<<"$TRAIN" >/dev/null \
       && echo "PASS a train runs on the line: $(jq -c '{id, engine, parts, consist_capacity, orders: (.orders | length), x, y}' <<<"$TRAIN")" \
       || { echo "FAIL no running train with wagons and two orders: $TRAIN"; fail=1; }
+  fi
+  if [[ -n "$RAIL_ABOVE" && "$(grep -c '^\[human\] rail line' "$TMP/human.log")" -eq 0 ]]; then
+    echo "FAIL --rail-above $RAIL_ABOVE was given, but the player built no rail line in the game"; fail=1
   fi
   # With an AlgoGlyph checkout named, every move came from its kernel and none fell back.
   if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]]; then

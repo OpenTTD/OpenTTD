@@ -299,6 +299,10 @@ pub fn half_target(t: Target, track: u32) -> Target {
     Target { x: t.x + dx, y: t.y + dy, w: (t.w / 4).max(4), h: (t.h / 4).max(4) }
 }
 
+/// A rail service as built: its line, depot and train.
+#[derive(Debug, Clone)]
+pub struct Service { pub label: String, pub line: Line, pub depot: (usize, usize), pub train: u64, pub consist: String }
+
 /// A line as built: its stations and every piece of track between them.
 #[derive(Debug, Clone)]
 pub struct Line { pub from: Site, pub to: Site, pub pieces: Vec<Piece> }
@@ -707,6 +711,39 @@ impl Hand {
         }
         self.tidy()?;
         Ok(train)
+    }
+
+    /// A whole rail service from one planner candidate: the line, then a depot behind its first
+    /// station and the train the planner priced it with, running between both stations.
+    pub fn rail_service(&mut self, c: &Value) -> Result<Service, String> {
+        let name = |k: &str| c.pointer(k).and_then(Value::as_str).map(str::to_string);
+        let label = format!("{} -> {}", name("/producer/name").or(name("/a/name")).unwrap_or_else(|| "?".into()),
+            name("/acceptor/name").or(name("/b/name")).unwrap_or_else(|| "?".into()));
+        self.say(&format!("rail: {label} ({} tiles)", c["distance"]));
+        let line = self.build_rail_line(&c["stations"])?;
+        let vehicle = c.pointer("/options/0/vehicles/name").and_then(Value::as_str).unwrap_or("");
+        let (engine, wagon, wagons) = consist(vehicle).ok_or_else(|| format!("the planner names no train for this line ('{vehicle}')"))?;
+        let depot = self.build_rail_depot(&line.from)?;
+        let train = self.buy_train(depot, [(line.from.x, line.from.y), (line.to.x, line.to.y)], &engine, &wagon, wagons)?;
+        self.tell(&format!("train {train} runs {label}: {engine} with {wagons} x {wagon}"));
+        Ok(Service { label, line, depot, train, consist: format!("{engine} + {wagons} x {wagon}") })
+    }
+
+    /// The first of these candidates that builds into a running service; the others are skipped
+    /// with the reason, and a closed game ends the attempt at once.
+    pub fn first_rail_service(&mut self, candidates: &[Value]) -> Result<Service, String> {
+        for c in candidates {
+            match self.rail_service(c) {
+                Ok(s) => return Ok(s),
+                Err(e) if crate::economy::game_closed(&e) => return Err(e),
+                Err(e) => {
+                    self.say(&format!("rail candidate skipped: {e}"));
+                    let _ = self.escape();
+                    let _ = self.tidy();
+                }
+            }
+        }
+        Err("no rail candidate could be built".into())
     }
 
     /// Rail candidates from the shared planner (MCP_PLAN), shortest first, each with both sites.

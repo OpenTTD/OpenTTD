@@ -31,13 +31,18 @@ pub struct Policy {
     pub waiting_per_bus: u64,
     /// Above this, with a loan outstanding, pay part of it back.
     pub repay_above: i64,
+    /// A rail line (stations, track, depot, train) is started only with at least this much.
+    pub rail_above: i64,
+    /// How many rail lines the company builds at most, and how long one may be.
+    pub max_rail_lines: usize,
+    pub rail_max_distance: f64,
     /// How many times the player borrows at most.
     pub max_borrows: usize,
 }
 
 impl Default for Policy {
     fn default() -> Self {
-        Policy { borrow_below: 20_000, expand_above: 35_000, max_buses: 5, waiting_per_bus: 25, repay_above: 150_000, max_borrows: 3 }
+        Policy { borrow_below: 20_000, expand_above: 35_000, max_buses: 5, waiting_per_bus: 25, repay_above: 150_000, rail_above: 120_000, max_rail_lines: 2, rail_max_distance: 90.0, max_borrows: 3 }
     }
 }
 
@@ -176,6 +181,12 @@ impl Hand {
 
     fn play_until(&mut self, deadline: Instant, policy: Policy, services: &mut Vec<Service>) -> Result<(), String> {
         let mut tried: Vec<(u64, u64)> = Vec::new();
+        let mut rail_lines: Vec<crate::rail::Service> = Vec::new();
+        let mut rail_tried: Vec<(u64, u64)> = Vec::new();
+        // Rail needs the shared planner (station sites) and AlgoGlyph (the track); without them the
+        // company stays with buses.
+        let rail_ready = std::env::var("MCP_PLAN").is_ok_and(|p| std::path::Path::new(&p).exists())
+            && std::env::var("MCP_ALGOGLYPH_DIR").is_ok_and(|p| std::path::Path::new(&p).join("package.json").exists());
         let mut borrows = 0;
         let mut may_borrow: Option<bool> = None;
         self.require_tools()?;
@@ -248,6 +259,21 @@ impl Hand {
             }
             if reinforced {
                 continue;
+            }
+            // A rail line when the money is there for a whole service, from the planner's candidates.
+            if rail_ready && money >= policy.rail_above && rail_lines.len() < policy.max_rail_lines {
+                let key = |c: &Value| (c.pointer("/stations/from/tile").and_then(Value::as_u64).unwrap_or(0), c.pointer("/stations/to/tile").and_then(Value::as_u64).unwrap_or(0));
+                let fresh: Vec<Value> = self.rail_candidates(policy.rail_max_distance)?.into_iter().filter(|c| !rail_tried.contains(&key(c))).take(3).collect();
+                if !fresh.is_empty() {
+                    rail_tried.extend(fresh.iter().map(key));
+                    self.tell(&format!("money {money}: time for a rail line ({} candidate(s))", fresh.len()));
+                    match self.first_rail_service(&fresh) {
+                        Ok(s) => rail_lines.push(s),
+                        Err(e) if game_closed(&e) => return Err(e),
+                        Err(e) => self.say(&format!("no rail line this time: {e}")),
+                    }
+                    continue;
+                }
             }
             // Expand: a new town pair, while money allows.
             if money >= policy.expand_above {

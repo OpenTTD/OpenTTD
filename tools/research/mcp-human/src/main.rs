@@ -47,7 +47,7 @@ commands:
                              AlgoGlyph's track plan between them, laid with the rail tools, checked
   execute <actions.json|->   plan the actions with AlgoGlyph's action-plan kernel (DAG, cash per
                              step, refused when it would overdraw), show it, then do each step
-  game [<minutes>] [--borrow-below N] [--repay-above N]
+  game [<minutes>] [--borrow-below N] [--repay-above N] [--rail-above N]
                              run the company: expand, add buses where they earn, borrow (asking
                              the owner first) while money is under N, repay part of the loan
                              while it is over N, watch";
@@ -126,31 +126,9 @@ fn run() -> Result<(), String> {
             let candidates: Vec<serde_json::Value> = hand.rail_candidates(max)?.into_iter()
                 .filter(|c| c["distance"].as_f64().unwrap_or(0.0) >= min).collect();
             hand.say(&format!("{} rail candidate(s) within {max} tiles", candidates.len()));
-            let mut built = None;
-            for c in candidates.iter().take(4) {
-                let name = |k: &str| c.pointer(k).and_then(serde_json::Value::as_str).unwrap_or("?").to_string();
-                let label = format!("{} -> {}", name("/producer/name").replace('?', &name("/a/name")), name("/acceptor/name").replace('?', &name("/b/name")));
-                hand.say(&format!("rail: {label} ({} tiles)", c["distance"]));
-                match hand.build_rail_line(&c["stations"]) {
-                    Ok(line) => { built = Some((label, line, c.clone())); break; }
-                    Err(e) if economy::game_closed(&e) => return Err("the game was closed: stop building".into()),
-                    Err(e) => {
-                        hand.say(&format!("skip {label}: {e}"));
-                        let _ = hand.escape();
-                        let _ = hand.tidy();
-                    }
-                }
-            }
-            let (label, line, candidate) = built.ok_or("no rail candidate could be built")?;
-            println!("ok: rail line {label}: stations at {},{} and {},{}, {} pieces of track", line.from.x, line.from.y, line.to.x, line.to.y, line.pieces.len());
-            // A train on it: the depot behind the first station, the engine and wagons the planner
-            // priced the line with (its option's vehicle), orders to both stations.
-            let vehicle = candidate.pointer("/options/0/vehicles/name").and_then(serde_json::Value::as_str).unwrap_or("");
-            let (engine, wagon, wagons) = rail::consist(vehicle).ok_or_else(|| format!("the planner names no train for this line ('{vehicle}')"))?;
-            let depot = hand.build_rail_depot(&line.from)?;
-            let train = hand.buy_train(depot, [(line.from.x, line.from.y), (line.to.x, line.to.y)], &engine, &wagon, wagons)?;
-            hand.tell(&format!("train {train} runs {label}: {engine} with {wagons} x {wagon}"));
-            println!("ok: train {train} ({engine} + {wagons} x {wagon}) runs between the stations, depot at {},{}", depot.0, depot.1);
+            let s = hand.first_rail_service(&candidates.into_iter().take(4).collect::<Vec<_>>())?;
+            println!("ok: rail line {}: stations at {},{} and {},{}, {} pieces of track", s.label, s.line.from.x, s.line.from.y, s.line.to.x, s.line.to.y, s.line.pieces.len());
+            println!("ok: train {} ({}) runs between the stations, depot at {},{}", s.train, s.consist, s.depot.0, s.depot.1);
         }
         "execute" => {
             // A plan first, then its execution: the actions go to AlgoGlyph's action-plan kernel.
@@ -167,6 +145,10 @@ fn run() -> Result<(), String> {
             // --borrow-below N: borrow (asking the owner first) whenever money is under N.
             if let Some(i) = args.iter().position(|a| a == "--borrow-below") {
                 policy.borrow_below = arg_num(&args, i + 1)?;
+            }
+            // --rail-above N: start a rail line (planner sites, AlgoGlyph track, a train) once money is over N.
+            if let Some(i) = args.iter().position(|a| a == "--rail-above") {
+                policy.rail_above = arg_num(&args, i + 1)?;
             }
             // --repay-above N: pay part of the loan back whenever money is over N.
             if let Some(i) = args.iter().position(|a| a == "--repay-above") {

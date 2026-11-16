@@ -4,7 +4,8 @@
 //! plan that would overdraw or repay a loan already repaid, and expands it into steps in dependency
 //! order, one press each, with the cash after every step and a graph to draw. The player shows the
 //! plan in the game, then does the steps in order through the interface, as it does everything.
-//! Each step's parameters ({a, b} town ids for serve_towns, {seconds} for watch) come from the
+//! Each step's parameters ({a, b} town ids for serve_towns, {seconds} for watch, {max_distance,
+//! min_distance} for build_rail_line) come from the
 //! step's own `params`, which the kernel copies from its action.
 
 use crate::algoglyph::Flow;
@@ -13,7 +14,7 @@ use crate::hand::Hand;
 use serde_json::{json, Value};
 
 /// The kinds this player executes today; others are refused before anything runs.
-pub const EXECUTABLE: [&str; 5] = ["repay_loan", "borrow", "serve_towns", "add_bus", "watch"];
+pub const EXECUTABLE: [&str; 6] = ["repay_loan", "borrow", "serve_towns", "add_bus", "watch", "build_rail_line"];
 
 /// The kernel's input: the owner's actions and the company's books.
 pub fn plan_input(actions: &Value, books: &crate::economy::Books) -> Value {
@@ -66,6 +67,15 @@ impl Hand {
                     let (a, b) = self.towns_by_id(&action)?;
                     let (stops, depot) = self.serve_towns_at(&a, &b)?;
                     services.push(Service { name: format!("{}-{}", a["name"].as_str().unwrap_or("?"), b["name"].as_str().unwrap_or("?")), depot, stops, buses: 1 });
+                }
+                "build_rail_line" => {
+                    // A whole rail service (stations, AlgoGlyph track, depot, train) from the
+                    // planner's candidates within {max_distance, min_distance}.
+                    let max = action.get("max_distance").and_then(Value::as_f64).unwrap_or(90.0);
+                    let min = action.get("min_distance").and_then(Value::as_f64).unwrap_or(0.0);
+                    let list: Vec<Value> = self.rail_candidates(max)?.into_iter()
+                        .filter(|c| c["distance"].as_f64().unwrap_or(0.0) >= min).take(3).collect();
+                    self.first_rail_service(&list)?;
                 }
                 "add_bus" => {
                     let s = services.last().cloned().ok_or("add_bus needs a serve_towns step before it in this plan")?;

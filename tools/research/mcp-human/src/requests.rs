@@ -107,16 +107,11 @@ impl Hand {
                     Some((x - at.0 as i64).abs() + (y - at.1 as i64).abs())
                 }).min().unwrap_or(i64::MAX);
                 list.sort_by_key(d);
-                for c in list.iter().take(3) {
-                    match self.build_rail_line(&c["stations"]) {
-                        Ok(line) => return self.answer(r.id, &format!("done: rail stations at {},{} and {},{}, {} pieces of track", line.from.x, line.from.y, line.to.x, line.to.y, line.pieces.len())),
-                        Err(e) if crate::economy::game_closed(&e) => return Err(e),
-                        Err(e) => {
-                            self.say(&format!("rail candidate skipped: {e}"));
-                            let _ = self.escape();
-                            let _ = self.tidy();
-                        }
-                    }
+                match self.first_rail_service(&list.into_iter().take(3).collect::<Vec<_>>()) {
+                    Ok(s) => return self.answer(r.id, &format!("done: {} with train {} ({}), stations at {},{} and {},{}",
+                        s.label, s.train, s.consist, s.line.from.x, s.line.from.y, s.line.to.x, s.line.to.y)),
+                    Err(e) if crate::economy::game_closed(&e) => return Err(e),
+                    Err(_) => {}
                 }
                 self.answer(r.id, "none of the nearest rail lines could be built")
             }
