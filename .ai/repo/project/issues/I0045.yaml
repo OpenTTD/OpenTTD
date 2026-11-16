@@ -22,7 +22,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T06:55:47Z
+updated_at: 2026-11-16T07:52:56Z
 started_at: 2026-11-15T23:50:32Z
 started_event: sha256:e59f6c950b075567517ecb0edbcfdd465d91f970e6e97973b643b3e033df1a82
 evidence:
@@ -83,3 +83,10 @@ evidence:
     artifact: "commit f7d13d3c71"
     commit: f7d13d3c71bb7397f1888f6119422e2d2ba66092
     recorded_at: 2026-11-16T06:55:47Z
+  - covers: "validation_run"
+    type: test
+    command: "MCP_ALGOGLYPH_DIR=algoglyph feature/exact-prices mcp-human-e2e --test --minutes 8 --rail-above 60000 --seed 31; --test --rounds 1 --rail \"77 70\" --seed 31"
+    result: "partial: in an 8-minute game the player decided on its own to build a rail service when money allowed (64-piece line, train with two orders running), 35 PASS with the bus checks reported as not run; a line with a rail bridge built through the bridge tool and list (38/38). Remaining: vehicle replacement."
+    artifact: "commits b230e00eab, 2b30aa1fa6"
+    commit: 2b30aa1fa6cfdbf9cea40da3ff254874f3b64558
+    recorded_at: 2026-11-16T07:52:56Z
