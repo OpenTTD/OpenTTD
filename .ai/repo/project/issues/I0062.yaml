@@ -1,0 +1,27 @@
+id: I0062
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The camera director acts once per run of one kind of build line, so it never replays finished construction or pulses the zoom per tile"
+slug: director-coalesce
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "What the owner sees follows what the bot does now: a rail or road line is followed at its newest tile, a single structure gets one zoom pulse, and nothing already built is shown as if built again."
+why: "The owner: it keeps rebuilding the same route on the same tiles, the zoom stutters. The bot's logs show every tile built once; the director acted on each of the 119 'built rail at tile N' lines with a glide and a zoom pulse, fell minutes behind and replayed finished track."
+scope:
+  - "tools/research/mcp-panel/rhai/director.rhai"
+  - "tools/research/mcp-panel/rhai/director_lib.rhai"
+  - "tools/research/mcp-rhai/src/main.rs"
+  - ".ai/**"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "A batch of 119 'built rail at tile N' lines and a station line is acted on twice: once at the newest rail tile (linear, no zoom) and once at the station (one pulse)"
+  - "Retried surveys of one kind collapse to the last"
+  - "cargo test --bin mcp-rhai covers director_lib.rhai in the engine the director runs in"
+validation:
+  - "cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-rhai"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
+updated_at: '2026-11-16'

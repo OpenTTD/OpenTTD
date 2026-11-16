@@ -7,7 +7,14 @@
 //
 // tools/research/mcp-e2e starts it with the client it launches. Every target is derived: a tile
 // from the bot's log line ("... at tile N"), a town from the client's openttd://towns.
+//
+// Each batch of events is coalesced first (director_lib.rhai): a run of one kind of line, such as
+// the 119 "built rail at tile N" of one rail line, is acted on once, at its last tile. Acting on each
+// line put the camera minutes behind the bot, replaying construction long finished as if it were
+// being built again, with a zoom pulse per tile. A piece of a linear structure is followed with a pan
+// and the cursor; only a single structure (a station, a depot, a stop) gets the zoom pulse.
 import "ttd" as ttd;
+import "director_lib" as d;
 
 let view = env("MCP_VIEW_TOKEN");
 if view == "" { throw "set MCP_VIEW_TOKEN to the GUI client's token file"; }
@@ -57,22 +64,26 @@ if largest != () {
 }
 
 let since = status().event_seq;
+let last_kind = "";
 loop {
     let feed = events(since, "ai.log,game.new_world");
     since = feed.last_seq;
-    for e in feed.events {
+    for e in d::coalesce(feed.events) {
       // A client that went away (closed, restarting) is waited for, not fatal.
       try {
         if e.kind == "game.new_world" { w = map_width(view); continue; }
-        if e.data.text.contains("built road at tile ") {
-            // A road grows tile by tile: follow it with the cursor and a short pan, no zooming.
-            let tile = parse_int(e.data.text.sub_string(e.data.text.index_of(" at tile ") + 9).split(" ")[0]);
+        if d::is_linear(e, last_kind) {
+            // A road or a rail line grows tile by tile: follow its newest tile with the cursor and a
+            // short pan, no zooming, and never replay the tiles before it.
+            let tile = d::tile_of(e.data.text);
             mcp_call(view, "openttd.view.mark", #{ tile: tile });
             mcp_call(view, "openttd.view.scroll_to", #{ tile: tile });
             at = [tile % w, tile / w];
+            last_kind = d::kind(e.data.text);
             continue;
         }
         let t = e.data.text;
+        last_kind = d::kind(t);
         if t.contains(" at tile ") {
             let tile = parse_int(t.sub_string(t.index_of(" at tile ") + 9).split(" ")[0]);
             let x = tile % w; let y = tile / w;
