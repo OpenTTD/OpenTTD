@@ -25,9 +25,13 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-16T20:54:12Z
+updated_at: 2026-11-16T21:06:37Z
 started_at: 2026-11-16T20:54:09Z
 started_event: sha256:2c91d4c4f7c3be14ad721554ba1b24c878f6c371af9f3c51399d553fcb76060c
+verified_at: 2026-11-16T21:06:33Z
+verified_event: sha256:83fc4e1b76e1af4b32921d0d5bdddaedf019ecbda11bb92b8f0c9fbfa4c55e75
+completed_at: 2026-11-16T21:06:37Z
+completed_event: sha256:ee68d4ef139a8fba825076593fed177e790cb3d8c9420800f6d3d45c7a067e78
 evidence:
   - covers: "validation_run"
     type: test
@@ -36,3 +40,10 @@ evidence:
     artifact: "tools/research/mcp-rhai/src/panel.rs"
     commit: b554229630691385983e8a8ec81488025681ff6f
     recorded_at: 2026-11-16T20:54:12Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-e2e --no-gui --no-browser (default); tools/research/mcp-panel-check --panel <it>"
+    result: "pass: server.py removed; mcp-e2e always starts the Rust mcp-panel (one cargo build with mcp-rhai); mcp-panel-check 14/14 unchanged against the default stack; MCP_PANEL=python refused with the reason. Peers: openttd-a0's mcp-ask-check 5/5 on the Rust panel; openttd-cd's ask-countdown rebases over this. Rule tooling-language-preference has no known exception left."
+    artifact: "tools/research/mcp-e2e"
+    commit: 60aef3caa5529bbe769e8c5c423615aefb7d196a
+    recorded_at: 2026-11-16T21:06:31Z
