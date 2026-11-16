@@ -835,6 +835,33 @@ def make_routes(game):
             return (400 if r.returncode == 2 else 502), {"error": r.stderr.strip()}
         return 200, json.loads(r.stdout)
 
+    def investment(params=""):
+        """What to build, decided by AlgoGlyph's transport-investment kernel over the planner's own
+        candidates (one kernel run per cargo, then the portfolio knapsack): mcp-plan --invest."""
+        exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-plan"
+        if not exe.exists():
+            return 503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"}
+        if not os.environ.get("MCP_ALGOGLYPH_DIR"):
+            return 503, {"error": "MCP_ALGOGLYPH_DIR is not set (mcp-e2e sets it when it finds an AlgoGlyph checkout)"}
+        try:
+            p = json.loads(params) if params else {}
+        except ValueError as e:
+            return 400, {"error": f"params is not JSON: {e}"}
+        if not isinstance(p, dict):
+            return 400, {"error": "params must be a JSON object"}
+        if "budget" not in p and game.max_loan():
+            p["budget"] = game.max_loan()
+        r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{game.args.panel_port}", "--invest", "--params", json.dumps(p)],
+                           capture_output=True, text=True, timeout=240)
+        if r.returncode != 0:
+            return (400 if r.returncode == 2 else 502), {"error": r.stderr.strip()}
+        out = json.loads(r.stdout)
+        inv = out.get("investment", {})
+        chosen = inv.get("portfolio", {}).get("chosen", [])
+        game.event("plan", f"investment: {len(chosen)} chosen of {inv.get('candidates')} by {inv.get('portfolio', {}).get('solver')}: "
+                           + ", ".join(f"{c.get('cargo')} {c.get('mode')} roi {c.get('roi') or 0:.2f}" for c in chosen))
+        return 200, {"investment": inv, "planner_portfolio": out.get("portfolio"), "params": out.get("params")}
+
     def graph():
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-graph"
         if not exe.exists():
@@ -909,6 +936,8 @@ def make_routes(game):
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
         ("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params)", True,
          None, lambda q: plan(int(q.get("limit", ["20"])[0]), q.get("params", [""])[0])),
+        ("GET", "/api/investment", "investment", "What to build, decided by AlgoGlyph's transport-investment kernel (routes of one or two legs through hubs, ranked by return on investment) over the planner's candidates from the live game, one run per cargo with that cargo's own vehicles, then one portfolio within the budget (default: the loan limit); ?params=JSON as /api/plan. The planner's own portfolio comes alongside for comparison", True,
+         None, lambda q: investment(q.get("params", [""])[0])),
         ("POST", "/api/actionplan", "actionPlan", "Plan before acting: a set of actions with dependencies ({id, kind, label?, cost?, income?, amount?+step?, repeat?, after?}) turned by AlgoGlyph's action-plan kernel into a validated DAG and executable presses (repay 50k = 5 x repay 10k as one plan) with the cash and loan after each, refused if it would overdraw; cash, loan and loan limits default to the bot company's and the game's", True,
          s({"actions": {"type": "array"}, "cash": {"type": "number"}, "loan": {"type": "number"}, "max_loan": {"type": "number"},
             "loan_step": {"type": "number"}, "company": {"type": "integer"}}, ["actions"]), lambda b: action_plan(b)),
@@ -976,7 +1005,7 @@ def openapi(game, routes):
         if schema is not None:
             o["requestBody"] = {"required": True, "content": {"application/json": {"schema": schema}}}
         query = {"/api/events": ("since", "kinds", "limit"), "/api/resource": ("uri",), "/api/news": ("limit",),
-                 "/api/plan": ("limit", "params")}.get(path) if method == "GET" else None
+                 "/api/plan": ("limit", "params"), "/api/investment": ("params",)}.get(path) if method == "GET" else None
         if query:
             o["parameters"] = [{"name": n, "in": "query", "schema": {"type": "string"}} for n in query]
         paths.setdefault(path, {})[method.lower()] = o

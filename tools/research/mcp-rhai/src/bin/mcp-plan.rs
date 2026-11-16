@@ -2,6 +2,7 @@
 //! ranked by model v2 (the game's payment formula, speeds and base prices), each with its suggested mode of transport.
 //!
 //! Usage: mcp-plan [--panel http://127.0.0.1:8800 | --token <prismatic_mcp token file>] [--limit 20] [--params '{"cost_weight":1}']
+//!        mcp-plan --invest ...  (also decide with AlgoGlyph's transport-investment, see src/invest.rs)
 //!        mcp-plan --defaults   (print the default parameters)
 use std::time::Duration;
 
@@ -13,6 +14,8 @@ mod plan;
 mod cargo;
 #[path = "../sites.rs"]
 mod sites;
+#[path = "../invest.rs"]
+mod invest;
 
 /// Where resources come from: a panel's derived routes, or an MCP server read directly through the
 /// token file `prismatic_mcp start` writes ({"agent_token","endpoint"}), for a stack without a panel.
@@ -58,10 +61,12 @@ fn main() {
     let (mut panel, mut limit) = ("http://127.0.0.1:8800".to_string(), 20usize);
     let mut params = serde_json::Value::Null;
     let mut token: Option<String> = None;
+    let mut invest_too = false;
     while let Some(a) = args.next() {
         match a.as_str() {
             "--panel" => panel = args.next().unwrap_or_default(),
             "--token" => token = args.next(),
+            "--invest" => invest_too = true,
             "--limit" => limit = args.next().and_then(|v| v.parse().ok()).unwrap_or(20),
             "--defaults" => {
                 println!("{}", plan::defaults());
@@ -75,7 +80,7 @@ fn main() {
                 }
             },
             _ => {
-                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--defaults]");
+                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest] [--defaults]");
                 std::process::exit(2);
             }
         }
@@ -87,6 +92,10 @@ fn main() {
         let g = graph::derive_with_ways(&src.resource("map")?, &towns, &src.resource("stations")?, &src.resource("map/ways").unwrap_or(serde_json::Value::Null))?;
         // Live vehicles when the game offers openttd://engines; the plan says so when it does not.
         let engines = src.resource("engines").unwrap_or(serde_json::Value::Null);
+        // Construction costs follow the game's prices now (openttd://economy/prices) where it offers
+        // them; a parameter the caller set wins.
+        let prices = src.resource("economy/prices").unwrap_or(serde_json::Value::Null);
+        let params = plan::with_prices(&params, &prices);
         let mut out = plan::plan(&towns, &g, limit, &params, &engines)?;
         // Freight from the world graph's industries, and the portfolio over passengers and freight.
         let world = src.resource("world/graph").unwrap_or(serde_json::Value::Null);
@@ -117,6 +126,7 @@ fn main() {
         if let Some(arr) = out["portfolio"]["chosen"].as_array_mut() {
             for c in arr.iter_mut().filter(|c| c["mode"] == "freight_rail" || c["mode"] == "rail") { add_sites(c); }
         }
+        if invest_too { out["investment"] = invest::decide(&out, &engines, &towns); }
         out["model"] = serde_json::json!("v4: v3 for passengers, freight pairs from the world graph's industries priced with each cargo's own payment rate and transit periods, and a portfolio chosen by knapsack within the budget");
         Ok(out)
     })();

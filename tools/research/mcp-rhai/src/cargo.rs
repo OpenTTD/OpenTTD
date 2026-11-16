@@ -18,7 +18,7 @@ fn num(v: &Value, k: &str) -> f64 { v.get(k).and_then(Value::as_f64).unwrap_or(0
 
 /// A freight vehicle for `cargo` (by name): the road vehicle with the best capacity x speed, or the
 /// fastest locomotive with `wagons` of the biggest wagon for that cargo.
-fn freight_vehicle(engines: &Value, cargo: &str, rail: bool, wagons: f64) -> Option<(String, f64, f64, f64, f64)> {
+pub fn freight_vehicle(engines: &Value, cargo: &str, rail: bool, wagons: f64) -> Option<(String, f64, f64, f64, f64)> {
     let list = engines.get("engines")?.as_array()?;
     let carries = |e: &Value| e.get("cargo").and_then(Value::as_str) == Some(cargo);
     if !rail {
@@ -127,19 +127,22 @@ fn knapsack_builtin(weights: &[usize], values: &[f64], capacity: usize) -> (f64,
     (dp[n][capacity], items)
 }
 
-/// AlgoGlyph's knapsack-dp through its flow CLI, when MCP_ALGOGLYPH_DIR names a checkout of it.
-fn knapsack_algoglyph(input: &Value) -> Option<Value> {
-    let dir = std::env::var("MCP_ALGOGLYPH_DIR").ok()?;
+/// An AlgoGlyph kernel through its flow CLI (`npm run flow -- kernel <id> -`), when MCP_ALGOGLYPH_DIR
+/// names a checkout of it. Err says why there is no answer: no runner, a failed run, or a refusal.
+pub fn algoglyph(kernel: &str, input: &Value) -> Result<Value, String> {
+    let dir = std::env::var("MCP_ALGOGLYPH_DIR").map_err(|_| "MCP_ALGOGLYPH_DIR is not set".to_string())?;
     let mut child = std::process::Command::new("npm")
-        .args(["run", "--silent", "flow", "--", "kernel", "knapsack-dp", "-"])
-        .current_dir(dir).stdin(std::process::Stdio::piped()).stdout(std::process::Stdio::piped())
-        .stderr(std::process::Stdio::null()).spawn().ok()?;
+        .args(["run", "--silent", "flow", "--", "kernel", kernel, "-"])
+        .current_dir(&dir).stdin(std::process::Stdio::piped()).stdout(std::process::Stdio::piped())
+        .stderr(std::process::Stdio::null()).spawn().map_err(|e| format!("{kernel}: {e}"))?;
     use std::io::Write;
-    child.stdin.take()?.write_all(input.to_string().as_bytes()).ok()?;
-    let out = child.wait_with_output().ok()?;
-    let v: Value = serde_json::from_slice(&out.stdout).ok()?;
-    if v["ok"] == true { Some(v) } else { None }
+    child.stdin.take().ok_or("no stdin")?.write_all(input.to_string().as_bytes()).map_err(|e| format!("{kernel}: {e}"))?;
+    let out = child.wait_with_output().map_err(|e| format!("{kernel}: {e}"))?;
+    let v: Value = serde_json::from_slice(&out.stdout).map_err(|e| format!("{kernel}: not JSON ({e})"))?;
+    if v["ok"] == true { Ok(v) } else { Err(format!("{kernel} refused: {}", v.get("errors").cloned().unwrap_or(v.clone()))) }
 }
+
+fn knapsack_algoglyph(input: &Value) -> Option<Value> { algoglyph("knapsack-dp", input).ok() }
 
 /// The portfolio: from the candidates (each with its best option's investment and score), the set
 /// with the highest total score within the budget. Money is counted in thousands for the solver.

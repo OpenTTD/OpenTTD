@@ -36,6 +36,32 @@ const MODE_NAMES: [&str; 3] = ["bus", "rail", "air"];
 const FREIGHT_MODES: [&str; 2] = ["truck", "freight_rail"];
 
 /// The default parameters; any key can be overridden by the caller.
+/// The cost parameters scaled by the game's prices now: each default cost assumes the base price of
+/// its enum Price entry, so it is multiplied by that entry's price now / base (inflation and the
+/// construction cost setting together). `prices` is openttd://economy/prices (null: unchanged); a
+/// cost the caller set in `overrides` is kept. The answer says which costs came from the game.
+pub fn with_prices(overrides: &Value, prices: &Value) -> Value {
+    let mut o = if overrides.is_object() { overrides.clone() } else { json!({}) };
+    let (Some(now), Some(base)) = (prices.get("prices"), prices.get("base")) else { return o };
+    let d = defaults();
+    let mut derived = Vec::new();
+    for (path, name) in [("/costs/road_tile", "build_road"), ("/costs/rail_tile", "build_rail"),
+                         ("/costs/rail_stations", "build_station_rail"), ("/costs/airports", "build_station_airport"),
+                         ("/freight/truck_stops", "build_station_truck")] {
+        if o.pointer(path).is_some() { continue; }
+        let (Some(n), Some(b)) = (now.get(name).and_then(Value::as_f64), base.get(name).and_then(Value::as_f64)) else { continue };
+        let Some(def) = d.pointer(path).and_then(Value::as_f64).or(if path == "/freight/truck_stops" { Some(400.0) } else { None }) else { continue };
+        if b <= 0.0 { continue; }
+        let mut parts = path.trim_start_matches('/').split('/');
+        let (group, key) = (parts.next().unwrap_or(""), parts.next().unwrap_or(""));
+        if !o[group].is_object() { o[group] = json!({}); }
+        o[group][key] = json!((def * n / b).round());
+        derived.push(json!({"param": path, "price": name, "now": n, "base": b}));
+    }
+    o["costs_from_prices"] = Value::Array(derived);
+    o
+}
+
 pub fn defaults() -> Value {
     json!({
         "bands": {"bus": [12, 70], "rail": [40, 250], "air": [120, 100000]},
@@ -77,6 +103,16 @@ fn time_factor(t: f64) -> f64 { time_factor_for(t, 0.0, 24.0) }
 mod tests {
     use super::time_factor;
     #[test]
+    fn costs_follow_the_games_prices_unless_the_caller_set_them() {
+        let prices = serde_json::json!({"prices": {"build_rail": 75, "build_road": 71}, "base": {"build_rail": 100, "build_road": 95}});
+        let o = super::with_prices(&serde_json::json!({"costs": {"road_tile": 500}}), &prices);
+        assert_eq!(o["costs"]["rail_tile"], 75.0);
+        assert_eq!(o["costs"]["road_tile"], 500);
+        assert_eq!(o["costs_from_prices"].as_array().unwrap().len(), 1);
+        assert_eq!(super::with_prices(&serde_json::Value::Null, &serde_json::Value::Null), serde_json::json!({}));
+    }
+
+    #[test]
     fn time_factor_follows_the_game() {
         assert_eq!(time_factor(0.0), 255.0);
         assert_eq!(time_factor(24.0), 231.0);
@@ -109,9 +145,9 @@ fn merge(base: &mut Value, over: &Value) {
 /// road vehicle or plane with the best capacity x effective speed (no big plane for small
 /// airports), or the fastest locomotive with `wagons` of the biggest passenger wagon. None when the
 /// resource is missing or offers nothing for the mode.
-struct Vehicle { name: String, capacity: f64, speed: f64, price: f64, running_per_year: f64 }
+pub struct Vehicle { pub name: String, pub capacity: f64, pub speed: f64, pub price: f64, pub running_per_year: f64 }
 
-fn pick_vehicle(engines: &Value, mode: &str, wagons: f64, small_airports: bool) -> Option<Vehicle> {
+pub fn pick_vehicle(engines: &Value, mode: &str, wagons: f64, small_airports: bool) -> Option<Vehicle> {
     let list = engines.get("engines")?.as_array()?;
     let num = |e: &Value, k: &str| e.get(k).and_then(Value::as_f64).unwrap_or(0.0);
     let pax = |e: &Value| e.get("cargo").and_then(Value::as_str).is_some_and(|c| c.to_lowercase().contains("passenger"));

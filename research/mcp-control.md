@@ -361,6 +361,27 @@ AlgoGlyph track-planning takes. openttd-07's person-like player lays the track p
 unplanned compete for the same towns and industries on one map, and the higher company value wins.
 It writes `research/results/duel-*.{json,md}`.
 
+### What to build: AlgoGlyph transport-investment over the live game
+
+`GET /api/investment?params=JSON` (and `mcp-plan --invest`, `src/invest.rs`) hands the planner's
+own candidates to AlgoGlyph's `transport-investment` kernel. Towns and industries become places,
+planned pairs become demands (passenger supply × `supply_factor` two-way, freight production one
+way, each with its cargo's payment rate and transit periods), and the game's vehicles become modes,
+with per-tile and per-end costs and distance bands from the planner's parameters. The kernel can
+also route a demand over two legs through a hub, and ranks every route by return on investment
+(`roi = 12 × profit / investment`). A kernel mode has one vehicle, so the kernel runs once per
+cargo, each run with that cargo's trucks and wagons. Every run's chosen routes then go through the
+planner's knapsack, so one portfolio covers every cargo within the budget (default: the loan
+limit). The answer carries the planner's own portfolio alongside. On the main stack (2026-11-16)
+the kernel and the planner chose the same three investments, a coal freight line and two
+passenger rail lines, with totals 702,686 and 703,227. No two-leg route won there. `mcp-view-check`
+requires the two to stay within 5% of each other.
+
+Construction costs follow the game's prices when it offers `openttd://economy/prices`
+(`plan::with_prices`). Each default cost is scaled by its `Price` entry's price now divided by its
+base price, which covers inflation and the construction-cost setting together. A cost the caller
+set is kept, and `params.costs_from_prices` lists the costs that came from the game.
+
 ### Plan before acting: a DAG, then the presses
 
 `POST /api/actionplan {actions, cash?, loan?, max_loan?, loan_step?, company?}` sends the actions
