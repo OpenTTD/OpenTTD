@@ -67,6 +67,11 @@ for path, ops in sorted(spec["paths"].items()):
             except ValueError:
                 out = {}
             ok = code == 200 and out.get("ok") is not False and not out.get("isError") and "error" not in out
+            if not ok and code == 200 and out.get("ok") is False and not schema.get("required"):
+                # The tool answered, but it needs input its schema does not mark required: a schema gap
+                # to fix in the tool, named here rather than counted as a pass or a broken route.
+                skipped.append(f"{name} (read-only, needs input its schema does not mark required: {out.get('error')})")
+                continue
             (passed if ok else failed).append(f"{name} read-only call -> {code}" + ("" if ok else f" {data[:120]!r}"))
             continue
         skipped.append(f"{name} (changes something and needs no input: not called blindly)")

@@ -19,6 +19,7 @@ import os
 import re
 import shutil
 import signal
+import socket
 import subprocess
 import sys
 import tempfile
@@ -48,7 +49,7 @@ class Game:
         self.proc = None
         self.console_fd = None
         self.token = None
-        self.log = collections.deque(maxlen=600)  # (seq, line)
+        self.log = collections.deque(maxlen=5000)  # (seq, line); the whole story of a game session
         self.seq = 0
         self.lock = threading.Lock()
         self.events = collections.deque(maxlen=200)
@@ -138,7 +139,8 @@ class Game:
             self.event("ai", f"start_ai {self.args.ai} {flat} sent: the company plays on its own".replace("  ", " "))
 
     def planned_air(self):
-        """air_a/air_b for the bot from the planner's best air pair; {} when there is none or no planner."""
+        """The bot's planned routes from planner v3 (budget: difficulty.max_loan): the best air pair and
+        the best rail pair, each only when it scores above zero; {} when there is none or no planner."""
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-plan"
         if not self.args.plan_bot or not exe.exists():
             return {}
@@ -147,19 +149,25 @@ class Game:
             params = {"budget": budget} if budget else {}
             r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", "--limit", "1",
                                 "--params", json.dumps(params)], capture_output=True, text=True, timeout=60)
-            best = (json.loads(r.stdout).get("by_mode", {}).get("air") or [None])[0] if r.returncode == 0 else None
+            by_mode = json.loads(r.stdout).get("by_mode", {}) if r.returncode == 0 else {}
         except Exception as e:  # noqa: BLE001 - the bot still starts
             self.event("ai", f"planner not reachable for the bot: {e}")
             return {}
-        if not best or best["score"] <= 0:
-            why = "no air pair" if not best else f"the best air pair scores {best['score']} (it would lose money)"
-            self.event("ai", f"planner: {why}; the bot starts without an air route")
-            return {}
-        opt = next((o for o in best["options"] if o["mode"] == "air"), {})
-        planes = int(((opt.get("vehicles") or {}).get("count")) or 2)
-        self.event("ai", f"planner: air {best['a']['name']} - {best['b']['name']}, {best['distance']} tiles, "
-                         f"{planes} plane(s), profit {opt.get('monthly_profit')}/month, score {best['score']}")
-        return {"air_a": best["a"]["id"], "air_b": best["b"]["id"], "air_planes": max(1, min(8, planes))}
+        settings = {}
+        for mode in ("air", "rail"):
+            best = (by_mode.get(mode) or [None])[0]
+            if not best or best["score"] <= 0:
+                why = f"no {mode} pair" if not best else f"the best {mode} pair scores {best['score']} (it would lose money)"
+                self.event("ai", f"planner: {why}; the bot builds no {mode} route")
+                continue
+            opt = next((o for o in best["options"] if o["mode"] == mode), {})
+            count = int(((opt.get("vehicles") or {}).get("count")) or 1)
+            self.event("ai", f"planner: {mode} {best['a']['name']} - {best['b']['name']}, {best['distance']} tiles, "
+                             f"{count} vehicle(s), profit {opt.get('monthly_profit')}/month, score {best['score']}")
+            settings[f"{mode}_a"], settings[f"{mode}_b"] = best["a"]["id"], best["b"]["id"]
+            if mode == "air":
+                settings["air_planes"] = max(1, min(8, count))
+        return settings
 
     def max_loan(self):
         """The most a new company can borrow (difficulty.max_loan), read from the console; None if unknown."""
@@ -993,6 +1001,17 @@ def main():
     p.add_argument("--no-plan-bot", dest="plan_bot", action="store_false",
                    help="start the bot without the planner's air pair")
     args = p.parse_args()
+    # A port another process already listens on is replaced by a free one: on macOS a second listener
+    # can bind the same loopback port, and calls then reach either server at random (seen 2026-11-16).
+    for attr in ("mcp_port", "game_port"):
+        port = getattr(args, attr)
+        with socket.socket() as probe:
+            busy = probe.connect_ex(("127.0.0.1", port)) == 0
+        if busy:
+            with socket.socket() as free:
+                free.bind(("127.0.0.1", 0))
+                setattr(args, attr, free.getsockname()[1])
+            print(f"mcp-panel: port {port} is in use; --{attr.replace('_', '-')} {getattr(args, attr)} instead", flush=True)
 
     game = Game(args)
     game.start()

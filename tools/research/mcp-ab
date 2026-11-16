@@ -93,9 +93,17 @@ while min(seen[p] - start[p] for p in (a_port, b_port)) < months:
             print(f"{name} month {n - start[port]:>2} {date}: {snap}", flush=True)
 
 last = {k: (v[-1] if v else {}) for k, v in series.items()}
+# The bot's own account of each game (every ai.log line the panel recorded), so a result can be
+# explained afterwards: what it built, what failed and why.
+bot_log = {}
+for name, port in (("A", a_port), ("B", b_port)):
+    try:
+        bot_log[name] = [e["data"]["text"] for e in get(port, "/api/events?since=0&kinds=ai.log&limit=5000").get("events", [])]
+    except Exception as e:  # noqa: BLE001
+        bot_log[name] = [f"not read: {e}"]
 result = {"experiment": "planner air pair (A) vs no planner (B)", "label": label, "seed": int(seed), "months": months,
           "plan": plan, "final": last, "series": series,
-          "value_delta": (last["A"].get("value", 0) - last["B"].get("value", 0))}
+          "value_delta": (last["A"].get("value", 0) - last["B"].get("value", 0)), "bot_log": bot_log}
 stamp = time.strftime("%Y%m%dT%H%M%S")
 outdir = f"{root}/research/results"
 import os

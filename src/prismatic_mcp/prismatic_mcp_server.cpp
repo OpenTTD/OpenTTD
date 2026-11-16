@@ -794,10 +794,36 @@ void Init()
 	_mcp.running = false;
 }
 
+/**
+ * Does something already accept TCP connections on loopback `port`? Listen() sets SO_REUSEPORT
+ * (os_abstraction.cpp), so on macOS and Linux a second process can listen on the same port and the
+ * kernel then spreads connections between the two: a client would reach either server at random
+ * (seen 2026-11-16, two OpenTTD MCP servers on 8731). A connect probe before Listen catches the
+ * real case; two processes starting in the same instant can still race.
+ */
+static bool PortHasListener(uint16_t port)
+{
+	for (const char *host : {"127.0.0.1", "::1"}) {
+		NetworkAddress addr(host, port);
+		const sockaddr_storage *ss = addr.GetAddress();
+		SOCKET s = socket(ss->ss_family, SOCK_STREAM, 0);
+		if (s == INVALID_SOCKET) continue;
+		bool accepted = connect(s, reinterpret_cast<const sockaddr *>(ss), addr.GetAddressLength()) == 0;
+		closesocket(s);
+		if (accepted) return true;
+	}
+	return false;
+}
+
 bool Start(uint16_t port, std::string &error)
 {
 	if (_mcp.running) { error = "already running"; return false; }
 	_mcp.port = (port == 0) ? DEFAULT_PORT : port;
+	if (PortHasListener(_mcp.port)) {
+		error = fmt::format("port {} already has a listener (another OpenTTD with MCP?); pick a free port", _mcp.port);
+		_mcp.last_error = error;
+		return false;
+	}
 
 	/* Bind loopback only: construct explicit v4 + v6 loopback addresses rather
 	 * than using the all-interfaces default in GetBindAddresses(). */

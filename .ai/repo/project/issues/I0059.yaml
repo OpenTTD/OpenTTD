@@ -1,0 +1,42 @@
+id: I0059
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The bot builds the planner's rail pair, the panel passes every profitable mode, and an A/B with planner v3"
+slug: bot-builds-rail-from-the-plan
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Carry out the mode planner v3 ranks best on most maps, rail, end to end: the panel passes the best rail and air pairs that score above zero, the bot builds oriented stations, the line, the depot and a train, and a same-seed A/B measures the result."
+why: "The owner: always pick the best strategy and routes, look for advanced routes, build the profitable things correctly, we want to win, we need results."
+scope:
+  - "tools/research/**"
+  - "research/**"
+non_scope:
+  - "Signals and more than one train per line; the in-game ~ console commands (openttd-59 lane)"
+depends_on:
+  - I0057
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "The panel passes rail_a/rail_b and air_a/air_b (with the plane count) only for pairs planner v3 scores above zero, and records each choice as an event"
+  - "PrismaticAI builds both stations with their axis toward the other town, a connected line, a depot joined both ways and a running train (bridge repository, rail.nut)"
+  - "A same-seed A/B run with planner v3 is committed as evidence, whatever its outcome"
+validation:
+  - "tools/research/mcp-ab --months 12"
+  - "tools/research/mcp-route-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16T01:25:06Z
+started_at: 2026-11-16T01:04:43Z
+started_event: sha256:64d04b1c3445da6ae02fca7f0be9001ea4ad61ea4542f1e31309e1353a438b55
+verified_at: 2026-11-16T01:25:01Z
+verified_event: sha256:6eba8b07171a3913cffeadb3f3368770af1566465ba6ddeeba86742f5899dd3b
+completed_at: 2026-11-16T01:25:06Z
+completed_event: sha256:3360039e48ff01f5e44072f0d3298be692a3b79c0748b221d811b6e024bf36a2
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "live stack :8800; tools/research/mcp-ab --months 12 (seed 27377); tools/gate.sh research; mcp-route-check; mcp-view-check; mcp-panel-check"
+    result: "live: the bot built the planner's rail pair Rindingbury-Senford (stations oriented, 309-tile line on foundations, depot, a Ginzu 'A4' with 4 carriages, companies T:1) and on a fresh map Drundtown-Fletbridge; A/B seed 27377 with planner v3: A 57138 vs B 35657 (+60%), but A built no train that run and kept the loan idle (bot now repays it; results file annotated; later runs store bot logs). gate research PASS (103/103); route-check 56/0/13; view-check 31/31; panel-check 13/13. MCP Start() now refuses a port that already has a listener (proved: refused on the client's port)"
+    commit: 2768598f2b6fdfc002d84cd3c1def2a7d9191b43
+    recorded_at: 2026-11-16T01:25:03Z

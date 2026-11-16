@@ -266,8 +266,8 @@ the first town.
 
 ## The bot plays the plan, and the A/B result
 
-When the panel starts the bot, it asks the planner for the best air pair (`mcp-plan --params
-'{"modes":["air"]}'`). It passes the pair to the bot as the settings `air_a` and `air_b` (town ids)
+When the panel starts the bot, it asks planner v3 for the best air pair and the best rail pair
+(budget `difficulty.max_loan`). It passes the pair to the bot as the settings `air_a` and `air_b` (town ids)
 and records the choice as an `ai` event ("planner: air A - B, N tiles, score S"). PrismaticAI
 (`ai/PrismaticAI/air.nut` in the bridge repository) flies that pair first:
 
@@ -277,7 +277,22 @@ and records the choice as an `ai` event ("planner: air A - B, N tiles, score S")
 - the planes are the best capacity times speed that fit, and a big plane never goes to a small
   airport.
 
-The bot then goes on with its bus routes. There is one profitability model, the planner, and the
+Rail works the same way. The panel passes the best rail pair as `rail_a` and `rail_b`, only when
+planner v3 scores it above zero. `ai/PrismaticAI/rail.nut` then builds it:
+
+- each station's axis points at the other town, on the site that accepts the most passengers, with
+  a free exit tile;
+- the line is found by A* over buildable tiles: slopes stand on foundations, steep ones are avoided,
+  turns happen only on flat land, and a turn costs extra;
+- each piece is laid with `BuildRail(prev, tile, next)` into the stations' end tiles;
+- the depot stands beside the line and joins it in both directions;
+- one train runs on the single track, the fastest locomotive with `rail_wagons` passenger
+  carriages, so nothing can deadlock without signals;
+- the bot borrows up to the loan limit before it builds, as the planner's budget assumes, and
+  removes the stations again when no line can be found.
+
+The first live line, Rindingbury to Senford, is 309 tiles with a Ginzu 'A4'. The bot then goes on
+with its bus routes. There is one profitability model, the planner, and the
 bot carries it out. `mcp-e2e --no-plan-bot` starts the bot without the pair.
 
 `tools/research/mcp-ab [--months 12] [--seed N] [--label text]` measures the effect. It runs two
