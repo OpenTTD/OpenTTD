@@ -3,7 +3,7 @@
 //!
 //! Usage: mcp-plan [--panel http://127.0.0.1:8800 | --token <prismatic_mcp token file>] [--limit 20] [--params '{"cost_weight":1}']
 //!        mcp-plan --invest ...  (also decide with AlgoGlyph's transport-investment, see src/invest.rs)
-//!        mcp-plan --invest-inputs ... (print only the kernel inputs, one per cargo, to reproduce a case)
+//!        mcp-plan --invest-inputs ... (print only the kernel input, to reproduce a case)
 //!        mcp-plan --defaults   (print the default parameters)
 use std::time::Duration;
 
@@ -129,10 +129,7 @@ fn main() {
         if let Some(arr) = out["portfolio"]["chosen"].as_array_mut() {
             for c in arr.iter_mut().filter(|c| c["mode"] == "freight_rail" || c["mode"] == "rail") { add_sites(c); }
         }
-        if invest_inputs {
-            return Ok(serde_json::json!(invest::inputs(&out, &engines, &towns).into_iter()
-                .map(|(c, i)| serde_json::json!({"cargo": c, "input": i})).collect::<Vec<_>>()));
-        }
+        if invest_inputs { return Ok(invest::input(&out, &engines, &towns).unwrap_or(serde_json::Value::Null)); }
         if invest_too { out["investment"] = invest::decide(&out, &engines, &towns); }
         out["model"] = serde_json::json!("v4: v3 for passengers, freight pairs from the world graph's industries priced with each cargo's own payment rate and transit periods, and a portfolio chosen by knapsack within the budget");
         Ok(out)

@@ -69,6 +69,8 @@ fn main() {
         let parsed = intent::parse(&text, &vocab, &towns, &present);
         let g = graph::derive_with_ways(&get(&panel, &token, "map")?, &towns, &get(&panel, &token, "stations")?,
                                         &get(&panel, &token, "map/ways").unwrap_or(serde_json::Value::Null))?;
+        // The same costs as mcp-plan: the game's prices where it offers them.
+        let params = plan::with_prices(&params, &get(&panel, &token, "economy/prices").unwrap_or(serde_json::Value::Null));
         let mut p = plan::plan(&towns, &g, 10, &params, &engines)?;
         let freight = cargo::freight_pairs(&world, &engines, &p["params"], 20);
         let mut candidates: Vec<serde_json::Value> = freight.clone();

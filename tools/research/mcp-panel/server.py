@@ -792,12 +792,18 @@ def make_routes(game):
         inp.setdefault("max_loan", game.max_loan() or 300000)
         inp.setdefault("loan_step", 10000)
         inp.pop("company", None)
-        r = subprocess.run(["npm", "run", "--silent", "flow", "--", "kernel", "action-plan", "-"], cwd=d,
-                           input=json.dumps(inp), capture_output=True, text=True, timeout=120)
+        # The answer goes to a file, not a pipe: the flow CLI ends with process.exit(), which drops
+        # what a pipe has not taken yet (an answer above 64 KiB arrived cut off, 2026-11-16).
+        import tempfile
+        with tempfile.TemporaryFile() as answer:
+            r = subprocess.run(["npm", "run", "--silent", "flow", "--", "kernel", "action-plan", "-"], cwd=d,
+                               input=json.dumps(inp).encode(), stdout=answer, stderr=subprocess.PIPE, timeout=120)
+            answer.seek(0)
+            text = answer.read().decode()
         try:
-            out = json.loads(r.stdout)
+            out = json.loads(text)
         except ValueError:
-            return 502, {"error": (r.stderr or r.stdout).strip()[:400]}
+            return 502, {"error": (r.stderr.decode() or text).strip()[:400]}
         out["input"] = inp
         out["runner"] = d
         game.event("plan", f"action plan: {len(inp.get('actions', []))} action(s) -> "

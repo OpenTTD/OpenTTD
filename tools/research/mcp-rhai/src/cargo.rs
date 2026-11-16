@@ -131,14 +131,21 @@ fn knapsack_builtin(weights: &[usize], values: &[f64], capacity: usize) -> (f64,
 /// names a checkout of it. Err says why there is no answer: no runner, a failed run, or a refusal.
 pub fn algoglyph(kernel: &str, input: &Value) -> Result<Value, String> {
     let dir = std::env::var("MCP_ALGOGLYPH_DIR").map_err(|_| "MCP_ALGOGLYPH_DIR is not set".to_string())?;
+    // The answer goes to a file, not a pipe: the flow CLI ends with process.exit(), which drops what
+    // a pipe has not taken yet, so an answer above 64 KiB arrived cut off (2026-11-16).
+    let nanos = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |d| d.as_nanos());
+    let path = std::env::temp_dir().join(format!("mcp-algoglyph-{}-{nanos}.json", std::process::id()));
+    let file = std::fs::File::create(&path).map_err(|e| format!("{kernel}: {e}"))?;
     let mut child = std::process::Command::new("npm")
         .args(["run", "--silent", "flow", "--", "kernel", kernel, "-"])
-        .current_dir(&dir).stdin(std::process::Stdio::piped()).stdout(std::process::Stdio::piped())
+        .current_dir(&dir).stdin(std::process::Stdio::piped()).stdout(file)
         .stderr(std::process::Stdio::null()).spawn().map_err(|e| format!("{kernel}: {e}"))?;
     use std::io::Write;
     child.stdin.take().ok_or("no stdin")?.write_all(input.to_string().as_bytes()).map_err(|e| format!("{kernel}: {e}"))?;
-    let out = child.wait_with_output().map_err(|e| format!("{kernel}: {e}"))?;
-    let v: Value = serde_json::from_slice(&out.stdout).map_err(|e| format!("{kernel}: not JSON ({e})"))?;
+    child.wait().map_err(|e| format!("{kernel}: {e}"))?;
+    let text = std::fs::read(&path).map_err(|e| format!("{kernel}: {e}"));
+    let _ = std::fs::remove_file(&path);
+    let v: Value = serde_json::from_slice(&text?).map_err(|e| format!("{kernel}: not JSON ({e})"))?;
     if v["ok"] == true { Ok(v) } else { Err(format!("{kernel} refused: {}", v.get("errors").cloned().unwrap_or(v.clone()))) }
 }
 
@@ -147,13 +154,30 @@ fn knapsack_algoglyph(input: &Value) -> Option<Value> { algoglyph("knapsack-dp",
 /// The portfolio: from the candidates (each with its best option's investment and score), the set
 /// with the highest total score within the budget. Money is counted in thousands for the solver.
 pub fn portfolio(candidates: &[Value], budget: Option<f64>) -> Value {
-    let items: Vec<&Value> = candidates.iter().filter(|c| num(c, "score") > 0.0).take(40).collect();
+    // A producer's cargo is counted once: each freight candidate assumes it carries the producer's
+    // whole production, so two lines from one mine would each count all of it. Only the best-scoring
+    // candidate of each (cargo, producer) enters the knapsack; the others are reported as shadowed.
+    let source = |c: &Value| -> Option<String> {
+        let from = c.pointer("/producer/id").or_else(|| c.get("from").filter(|_| c["passengers"] != true))?;
+        Some(format!("{}@{}", c["cargo"].as_str().unwrap_or(""), from.as_str().map_or_else(|| from.to_string(), str::to_string)))
+    };
+    let mut best_of: std::collections::HashMap<String, f64> = Default::default();
+    for c in candidates.iter().filter(|c| num(c, "score") > 0.0) {
+        if let Some(k) = source(c) { let e = best_of.entry(k).or_insert(f64::MIN); *e = e.max(num(c, "score")); }
+    }
+    let mut shadowed = Vec::new();
+    let mut taken = std::collections::HashSet::new();
+    let items: Vec<&Value> = candidates.iter().filter(|c| num(c, "score") > 0.0).filter(|c| match source(c) {
+        Some(k) if num(c, "score") < best_of[&k] || !taken.insert(k.clone()) => { shadowed.push(k); false }
+        _ => true,
+    }).take(40).collect();
     let invest = |c: &Value| -> f64 {
         let mode = c["mode"].as_str().unwrap_or("");
         c["options"].as_array().into_iter().flatten().find(|o| o["mode"] == mode).map_or(0.0, |o| num(o, "investment"))
     };
     let Some(budget) = budget else {
-        return json!({"solver": "none", "note": "no budget given: every positive candidate is affordable", "chosen": items});
+        return json!({"solver": "none", "note": "no budget given: every positive candidate is affordable", "chosen": items,
+                      "shadowed": shadowed});
     };
     let weights: Vec<usize> = items.iter().map(|c| (invest(c) / 1000.0).ceil() as usize).collect();
     let values: Vec<f64> = items.iter().map(|c| num(c, "score").round()).collect();
@@ -169,7 +193,7 @@ pub fn portfolio(candidates: &[Value], budget: Option<f64>) -> Value {
             ("builtin knapsack (MCP_ALGOGLYPH_DIR not set or the runner refused)", b, idx, Value::Null)
         }
     };
-    json!({"solver": solver, "kernel": kernel, "input": input, "total_score": best,
+    json!({"solver": solver, "kernel": kernel, "input": input, "total_score": best, "shadowed": shadowed,
            "investment_k": chosen.iter().map(|&i| weights[i]).sum::<usize>(), "budget_k": capacity,
            "chosen": chosen.iter().map(|&i| items[i].clone()).collect::<Vec<_>>()})
 }
@@ -177,6 +201,19 @@ pub fn portfolio(candidates: &[Value], budget: Option<f64>) -> Value {
 #[cfg(test)]
 mod tests {
     use super::knapsack_builtin;
+    #[test]
+    fn a_producer_enters_the_portfolio_once_with_its_best_line() {
+        let c = |acc: u32, score: f64| serde_json::json!({"cargo": "Coal", "producer": {"id": 13}, "acceptor": {"id": acc}, "mode": "freight_rail",
+            "score": score, "options": [{"mode": "freight_rail", "investment": 1000.0}]});
+        let other = serde_json::json!({"cargo": "Coal", "producer": {"id": 44}, "mode": "freight_rail", "score": 5.0, "options": [{"mode": "freight_rail", "investment": 1000.0}]});
+        let pax = serde_json::json!({"kind": "investment", "cargo": "Passengers", "passengers": true, "from": "t1", "mode": "rail", "score": 4.0, "options": [{"mode": "rail", "investment": 1000.0}]});
+        let p = super::portfolio(&[c(20, 10.0), c(38, 9.0), other, pax], Some(100000.0));
+        let chosen = p["chosen"].as_array().unwrap();
+        assert_eq!(chosen.len(), 3);
+        assert_eq!(chosen.iter().filter(|x| x.pointer("/producer/id") == Some(&serde_json::json!(13))).count(), 1);
+        assert_eq!(p["shadowed"], serde_json::json!(["Coal@13"]));
+    }
+
     #[test]
     fn knapsack_matches_the_algoglyph_case() {
         // The case checked against AlgoGlyph's kernel: items 0 and 3, best 197159.

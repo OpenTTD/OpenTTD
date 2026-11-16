@@ -367,22 +367,30 @@ It writes `research/results/duel-*.{json,md}`.
 own candidates to AlgoGlyph's `transport-investment` kernel. Towns and industries become places,
 planned pairs become demands (passenger supply × `supply_factor` two-way, freight production one
 way, each with its cargo's payment rate and transit periods), and the game's vehicles become modes,
-with per-tile and per-end costs and distance bands from the planner's parameters. The kernel can
-also route a demand over two legs through a hub, and ranks every route by return on investment
-(`roi = 12 × profit / investment`). A kernel mode has one vehicle, so the kernel runs once per
-cargo, each run with that cargo's trucks and wagons. Every run's chosen routes then go through the
-planner's knapsack, so one portfolio covers every cargo within the budget (default: the loan
-limit). The answer carries the planner's own portfolio alongside. On the main stack (2026-11-16)
-the kernel and the planner chose the same three investments, a coal freight line and two
-passenger rail lines, with totals 702,686 and 703,227. No two-leg route won there. On identical
-demands the two agree within 0.2% per route. Their portfolios can still differ: the kernel sizes a
-fleet to carry the whole volume, while the planner tries every fleet size and keeps the best score.
-On a second map that made the kernel's portfolio 0.88 of the planner's: on one town pair the kernel
-bought 3 trains for 104k (score 210k) where the planner bought 2 for 76k (score 235k). The case went
-to AlgoGlyph. Each demand enters the portfolio with its highest-score route among the kernel's
-options, and the kernel's ROI pick stays in `why`. `mcp-view-check` prints the ratio and fails
-below 0.8, which would point to a broken mapping. `mcp-plan --invest-inputs` prints the kernel's
-inputs, one per cargo, so a case can be reproduced.
+with per-tile and per-end costs and distance bands from the planner's parameters. A mode gives its
+vehicles keyed by cargo (`vehicles: {cargo: vehicle}`). One run therefore covers every cargo, and a
+two-leg route through a hub is open to freight too. The kernel ranks each demand's routes by return
+on investment (`roi = 12 × profit / investment`), and each route's fleet is the count that scores
+best, the same rule the planner uses. Each demand enters the planner's knapsack with its
+highest-score route, and the kernel's ROI pick stays in `why`. The answer carries the planner's own
+portfolio alongside.
+
+The two models agree. On the main stack (2026-11-16, AlgoGlyph `feature/exact-prices`) the
+kernel's portfolio was 1.001 of the planner's: the same three coal lines, two of them equal to the
+unit. Earlier the kernel sized a fleet to the whole volume, and a map came out at 0.88. That case
+went to AlgoGlyph, which adopted the best-score rule and keyed vehicles by cargo. `mcp-view-check`
+requires the kernel's portfolio to be at least 95% of the planner's. It may be more, through a
+two-leg route the planner does not consider. `mcp-plan --invest-inputs` prints the kernel input, so
+a case can be reproduced.
+
+A producer's cargo is counted once. Each freight candidate assumes it carries the producer's whole
+production, so the portfolio used to take two lines from one coal mine and count its coal twice.
+Now only the best line of each (cargo, producer) enters the knapsack, and the others are listed
+under `shadowed`. Passenger pairs are not split that way.
+
+The flow CLI ends with `process.exit()`, which drops whatever a pipe has not yet taken, so a kernel
+answer above 64 KiB arrived cut off. Both runners (`cargo::algoglyph` and the panel's action plan)
+read the answer from a file instead.
 
 Construction costs follow the game's prices when it offers `openttd://economy/prices`
 (`plan::with_prices`). Each default cost is scaled by its `Price` entry's price now divided by its

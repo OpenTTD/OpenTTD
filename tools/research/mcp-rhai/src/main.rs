@@ -163,7 +163,8 @@ fn engine(panel: Panel) -> Engine {
         let towns = get("/api/resources/towns")?;
         let g = graph::derive_with_ways(&get("/api/resources/map")?, &towns, &get("/api/resources/stations")?, &get("/api/resources/map/ways").unwrap_or(Value::Null))?;
         let engines = get("/api/resources/engines").unwrap_or(Value::Null);
-        to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &Value::Null, &engines)?)
+        let params = plan::with_prices(&Value::Null, &get("/api/resources/economy/prices").unwrap_or(Value::Null));
+        to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &params, &engines)?)
     });
     let p = panel.clone();
     // The same with any parameter overridden, e.g. world_plan_with(10, #{cost_weight: 1.0, modes: ["bus", "rail"]}).
@@ -175,7 +176,8 @@ fn engine(panel: Panel) -> Engine {
         let towns = get("/api/resources/towns")?;
         let g = graph::derive_with_ways(&get("/api/resources/map")?, &towns, &get("/api/resources/stations")?, &get("/api/resources/map/ways").unwrap_or(Value::Null))?;
         let engines = get("/api/resources/engines").unwrap_or(Value::Null);
-        to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &from_dyn(Dynamic::from_map(params))?, &engines)?)
+        let params = plan::with_prices(&from_dyn(Dynamic::from_map(params))?, &get("/api/resources/economy/prices").unwrap_or(Value::Null));
+        to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &params, &engines)?)
     });
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));

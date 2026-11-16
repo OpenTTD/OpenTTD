@@ -165,13 +165,15 @@ if [[ -n "$(curl -s "$URL/api/status" | json "'x'")" ]]; then
   out="$(curl -s --max-time 240 "$URL/api/investment?params=%7B%22budget%22%3A300000%7D")"
   check "transport-investment ran for every cargo with candidates and chose a portfolio within the budget" \
     "$([[ "$(json "(lambda i: len(i['runs']) > 0 and all(r['ok'] for r in i['runs']) and len(i['portfolio']['chosen']) > 0 and i['portfolio']['investment_k'] <= i['portfolio']['budget_k'] and all(c['roi'] > 0 for c in i['portfolio']['chosen']))(d['investment'])" <<<"$out")" == True ]] && echo 1 || echo 0)"
-  # The two models agree on identical demands (within 0.2% per route); their portfolios differ where
-  # the kernel sizes a fleet to the whole volume and the planner to the best score, so the guard is
-  # against a broken mapping (ids, volumes, vehicles), not for equality. The ratio is printed.
+  # The two models size fleets by the same rule (the best score) and price routes by the same
+  # formula, so on the same game the kernel's portfolio is at least the planner's, less rounding;
+  # it may be more, by a two-leg route the planner does not consider. The ratio is printed.
   ratio="$(json "round(d['investment']['portfolio']['total_score'] / max(1, d['planner_portfolio']['total_score']), 3)" <<<"$out")"
   echo "INFO  kernel portfolio / planner portfolio = $ratio"
-  check "the kernel's portfolio is at least 80% of the planner's own on the same game (ratio $ratio)" \
-    "$([[ "$(json "d['investment']['portfolio']['total_score'] >= 0.8 * d['planner_portfolio']['total_score']" <<<"$out")" == True ]] && echo 1 || echo 0)"
+  check "the kernel's portfolio is at least 95% of the planner's own on the same game (ratio $ratio)" \
+    "$([[ "$(json "d['investment']['portfolio']['total_score'] >= 0.95 * d['planner_portfolio']['total_score']" <<<"$out")" == True ]] && echo 1 || echo 0)"
+  check "no producer's cargo is counted twice in either portfolio (one line per cargo and producer)" \
+    "$([[ "$(json "all(len(k) == len(set(k)) for k in ([f\"{c.get('cargo')}@{c['producer']['id']}\" for c in d['planner_portfolio']['chosen'] if 'producer' in c], [f\"{c.get('cargo')}@{c['from']}\" for c in d['investment']['portfolio']['chosen'] if not c.get('passengers')]))" <<<"$out")" == True ]] && echo 1 || echo 0)"
   code="$(curl -s -o /dev/null -w '%{http_code}' "$URL/api/investment?params=%5B1%5D")"
   check "investment params that are not an object are refused with 400 (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
 fi
