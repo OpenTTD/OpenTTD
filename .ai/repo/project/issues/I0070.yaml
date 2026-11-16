@@ -1,0 +1,39 @@
+id: I0070
+milestone: an-agent-reaches-the-game-over-mcp
+title: "A research-gated, local-only override lets this fork join its own loopback game across a revision mismatch"
+slug: research-net-compat
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "An agent R&D game of this fork on 127.0.0.1, where the server and the client are the same behaviourally-identical build but their revision strings differ (a dirty working tree's -m<hash> against a clean -g<hash>), connects without the owner rebuilding both ends clean each iteration, through an override that is off by default, research-gated, local-only and does not change the revision this build reports."
+why: "The owner runs the bot and the game together on loopback for agentic testing; the deterministic-lockstep revision check (ADR 0016) refuses a client whose revision string differs from the server's, even when the code is identical. The owner is the author of this fork, the endpoints are their own, and the traffic never leaves the machine. The override must stay honest: it must not spoof another build's revision and must not be able to make a non-consenting remote server accept this client."
+scope:
+  - "src/network/core/network_game_info.cpp"
+  - "src/network/core/network_game_info.h"
+  - "src/console_cmds.cpp"
+  - "src/tests/test_network_research_compat.cpp"
+  - "src/tests/CMakeLists.txt"
+  - "research/**"
+  - ".ai/**"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "The override compiles only under OPTION_RESEARCH_INSTRUMENTATION and is off by default; a default build is byte-for-byte unaffected"
+  - "It is set from the tilde console (research_net_compat on|off) and from the env var OTTD_RESEARCH_IGNORE_NETWORK_REVISION, and only widens IsNetworkCompatibleVersion to accept any peer; it never changes GetNetworkRevisionString"
+  - "With the override off, the revision check behaves exactly as before (a clearly different revision is still refused); covered by a unit test [research]"
+  - "It is documented as local-only, non-spoofing and unable to defeat a non-consenting remote server's own check, in research/net-compat.md and ADR 0029, with the scientific motivation; a rule and knowledge candidate record the honesty boundary"
+validation:
+  - "build-gate-research/openttd_test '[research]'"
+  - "tools/gate.sh research"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
+updated_at: 2026-11-16T03:31:38Z
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; build-gate-research/openttd_test '[research]'"
+    result: "research gate PASS: 106/106 ctest (unit + regression_*); [research] 17 assertions / 2 cases; live dedicated-server check: env policy init + console strict/whitelist/blocklist/open/allow/block transitions, reported revision unchanged (20261116-research-ne-mb229514291) throughout"
+    commit: b70d15da85a60d76e200a9ec514cc98b653d02c1
+    recorded_at: 2026-11-16T03:31:38Z

@@ -138,6 +138,36 @@ std::string_view GetNetworkRevisionString();
 bool IsNetworkCompatibleVersion(std::string_view other);
 void CheckGameCompatibility(NetworkGameInfo &ngi);
 
+#ifdef OTTD_RESEARCH_INSTRUMENTATION
+/*
+ * RESEARCH-ONLY / UNSTABLE (fork): a policy that only *widens* which peer revisions
+ * IsNetworkCompatibleVersion() accepts, for a single-machine loopback R&D game of this fork. It
+ * never changes the revision this build reports (GetNetworkRevisionString()), so it cannot
+ * impersonate another build or make a non-consenting remote server accept this client. Default
+ * Strict (upstream behaviour). Configurable from the console ('research_net_compat ...'), from the
+ * environment (read once at startup) and from scripts/autoexec.scr. See research/net-compat.md.
+ */
+enum class ResearchRevisionPolicy : uint8_t {
+	Strict,     ///< Upstream behaviour: only an exact/compatible revision is accepted.
+	Whitelist,  ///< Semi-bypass: a genuine match, plus any revision in the allow list.
+	Blocklist,  ///< Semi allow-pass: any revision except those in the block list.
+	Open,       ///< Full through: accept any peer revision.
+};
+
+/** The research revision-acceptance policy and its data-driven allow/block lists. */
+struct ResearchNetCompat {
+	ResearchRevisionPolicy policy = ResearchRevisionPolicy::Strict;
+	std::vector<std::string> allow;   ///< Whitelist mode: extra peer revisions to accept.
+	std::vector<std::string> block;   ///< Blocklist mode: peer revisions to reject.
+};
+
+extern ResearchNetCompat _research_net_compat;
+
+std::string_view ResearchNetRevisionPolicyName(ResearchRevisionPolicy policy);
+std::optional<ResearchRevisionPolicy> ParseResearchNetRevisionPolicy(std::string_view name);
+void ResearchNetCompatInitFromEnv();
+#endif /* OTTD_RESEARCH_INSTRUMENTATION */
+
 void FillStaticNetworkServerGameInfo();
 const NetworkServerGameInfo &GetCurrentNetworkServerGameInfo();
 

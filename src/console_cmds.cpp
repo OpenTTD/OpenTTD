@@ -1783,6 +1783,65 @@ static bool ConResearchStatus(std::span<std::string_view> argv)
 		Company::GetNumItems());
 	return true;
 }
+
+/**
+ * RESEARCH-ONLY / UNSTABLE: accept a mismatched peer revision for a single-machine loopback
+ * R&D game of this fork (agent testing on 127.0.0.1), where the client and the server are the
+ * same behaviourally-identical fork but their revision strings differ (a dirty working tree's
+ * "-m<hash>" against a clean "-g<hash>"). It does NOT change the revision this build reports to
+ * a peer and cannot make a non-consenting remote server accept this client -- accepting a
+ * mismatched peer is the local operator's own choice on a game they run. Default off; also
+ * settable with OTTD_RESEARCH_IGNORE_NETWORK_REVISION=1. See research/net-compat.md.
+ *
+ * Only compiled in when OPTION_RESEARCH_INSTRUMENTATION is ON. @copydoc IConsoleCmdProc
+ */
+static void PrintResearchNetCompatState()
+{
+	std::string allow;
+	for (const auto &r : _research_net_compat.allow) allow += (allow.empty() ? "" : ",") + r;
+	std::string block;
+	for (const auto &r : _research_net_compat.block) block += (block.empty() ? "" : ",") + r;
+	IConsolePrint(CC_DEFAULT, "research_net_compat policy={} allow=[{}] block=[{}] (this build reports revision {})",
+		ResearchNetRevisionPolicyName(_research_net_compat.policy), allow, block, GetNetworkRevisionString());
+}
+
+static bool ConResearchNetCompat(std::span<std::string_view> argv)
+{
+	/* argv[0] is the command name; the first real argument is argv[1]. */
+	if (argv.size() < 2) {
+		IConsolePrint(CC_HELP, "RESEARCH-ONLY/UNSTABLE: which peer revisions a game you run accepts, for a loopback R&D game of this fork.");
+		IConsolePrint(CC_HELP, "Usage: 'research_net_compat [strict|whitelist|blocklist|open]' | 'allow <rev>' | 'block <rev>' | 'clear'.");
+		IConsolePrint(CC_HELP, "  strict    upstream behaviour (default)      open      accept any peer revision");
+		IConsolePrint(CC_HELP, "  whitelist a genuine match plus 'allow' revs  blocklist any revision except 'block' revs");
+		IConsolePrint(CC_HELP, "It never changes the revision this build reports; a stock remote server still rejects a mismatched client.");
+		PrintResearchNetCompatState();
+		return true;
+	}
+
+	std::string_view verb = argv[1];
+	if ((verb == "allow" || verb == "block") && argv.size() == 3) {
+		auto &list = (verb == "allow") ? _research_net_compat.allow : _research_net_compat.block;
+		std::string rev{argv[2]};
+		if (std::ranges::find(list, rev) == list.end()) list.push_back(rev);
+		PrintResearchNetCompatState();
+		return true;
+	}
+	if (verb == "clear" && argv.size() == 2) {
+		_research_net_compat.allow.clear();
+		_research_net_compat.block.clear();
+		PrintResearchNetCompatState();
+		return true;
+	}
+	if (argv.size() == 2) {
+		if (auto policy = ParseResearchNetRevisionPolicy(verb); policy.has_value()) {
+			_research_net_compat.policy = *policy;
+			PrintResearchNetCompatState();
+			return true;
+		}
+	}
+	IConsolePrint(CC_ERROR, "research_net_compat: expected a policy (strict|whitelist|blocklist|open), 'allow <rev>', 'block <rev>' or 'clear'.");
+	return true;
+}
 #endif /* OTTD_RESEARCH_INSTRUMENTATION */
 
 #ifdef OTTD_PRISMATIC_MCP_SERVER
@@ -3126,6 +3185,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("getsysdate",              ConGetSysDate);
 #ifdef OTTD_RESEARCH_INSTRUMENTATION
 	IConsole::CmdRegister("research_status",         ConResearchStatus);
+	IConsole::CmdRegister("research_net_compat",     ConResearchNetCompat);
 #endif
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 	IConsole::CmdRegister("prismatic_mcp",           ConPrismaticMcp);

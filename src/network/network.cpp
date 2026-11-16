@@ -23,6 +23,7 @@
 #include "network_gamelist.h"
 #include "network_base.h"
 #include "network_coordinator.h"
+#include "core/network_game_info.h"
 #include "core/host.h"
 #include "network_gui.h"
 #include "../console_func.h"
@@ -1325,6 +1326,11 @@ void NetworkStartUp()
 	_network_dedicated = false;
 
 	_network_game_info = {};
+
+#ifdef OTTD_RESEARCH_INSTRUMENTATION
+	/* RESEARCH-ONLY: read the revision-acceptance policy from the environment once (ADR 0029). */
+	ResearchNetCompatInitFromEnv();
+#endif
 
 	NetworkInitialize();
 	NetworkUDPInitialize();

@@ -89,6 +89,7 @@ command procs (`src/command.cpp`, `*_cmd.cpp`); it only queues, ships and replay
 - Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep), [ADR 0019](../../../adrs/0019-settings-are-declared-once-in-ini-tables-that-settingsgen-co.md) (settings tables).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.research-code-is-gated-and-labelled`, `project.never-report-unrun-validation-as-pass`, `project.no-upstream-interaction`.
 - ADR 0007 (the bridge drives a Company AI over admin-port rcon), ADR 0008 (embedded loopback MCP server; mutations pass the command system).
+- **[fork]** [ADR 0029](../../../adrs/0029-a-research-gated-local-only-override-accepts-a-mismatched-pee.md): a research-gated, local-only policy (`src/network/core/network_game_info.cpp:IsNetworkCompatibleVersion`, console `research_net_compat`, env `OTTD_RESEARCH_NET_REVISION_POLICY`) widens which peer revisions a loopback R&D game accepts (strict/whitelist/blocklist/open) without changing the revision this build reports; rule `project.research-net-compat-is-local-and-non-spoofing`, knowledge candidate `the-revision-check-is-one-function-both-roles-run`.
 - Knowledge: `bridge-control-is-coarse-ai-restart`, `dedicated-server-stdin-startup-race`, `fixed-loopback-ports-collide`.
 - Upstream docs: `docs/desync.md`, `docs/debugging_desyncs.md`, `docs/admin_network.md`, `docs/game_coordinator.md`, `docs/multiplayer.md`.
 

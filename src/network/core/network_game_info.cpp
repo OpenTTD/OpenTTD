@@ -20,6 +20,9 @@
 #include "../../game/game_info.hpp"
 #include "../../settings_type.h"
 #include "../../strings_func.h"
+#include "../../string_func.h"
+#include <algorithm>
+#include <optional>
 #include "../../rev.h"
 #include "../network_func.h"
 #include "../network.h"
@@ -103,8 +106,101 @@ static std::string_view ExtractNetworkRevisionHash(std::string_view revision_str
  * @param other the version string to compare to
  * @return \c true if the other version is deemed compatible.
  */
+#ifdef OTTD_RESEARCH_INSTRUMENTATION
+/*
+ * RESEARCH-ONLY / UNSTABLE (korczis's fork, not upstream). A policy that only ever *widens* which
+ * peer revisions IsNetworkCompatibleVersion() accepts, so a modified research build of this fork
+ * can act as both the loopback server and the client of a single-machine R&D game (agent testing
+ * on 127.0.0.1 / 0.0.0.0), where client and server are behaviourally identical but their revision
+ * strings differ -- typically a dirty working tree's "-m<hash>" against a clean "-g<hash>".
+ *
+ * It does NOT alter the revision this build reports to a peer: GetNetworkRevisionString() is
+ * untouched, so this build never impersonates another build, and a stock, non-consenting server
+ * still runs its own check and rejects this client. Accepting a mismatched peer is only ever the
+ * local operator's own choice on a game they run. Default policy is Strict (upstream behaviour)
+ * even in a research build. Configure it with the console command 'research_net_compat ...', with
+ * the environment variables below (read once at startup), or from scripts/autoexec.scr.
+ * See research/net-compat.md and ADR 0029.
+ */
+ResearchNetCompat _research_net_compat;
+
+/** Split a comma-separated list into non-empty trimmed revisions. */
+static std::vector<std::string> SplitRevisions(std::string_view list)
+{
+	std::vector<std::string> out;
+	size_t start = 0;
+	while (start <= list.size()) {
+		size_t comma = list.find(',', start);
+		std::string_view item = list.substr(start, comma == std::string_view::npos ? std::string_view::npos : comma - start);
+		while (!item.empty() && (item.front() == ' ' || item.front() == '\t')) item.remove_prefix(1);
+		while (!item.empty() && (item.back() == ' ' || item.back() == '\t')) item.remove_suffix(1);
+		if (!item.empty()) out.emplace_back(item);
+		if (comma == std::string_view::npos) break;
+		start = comma + 1;
+	}
+	return out;
+}
+
+std::string_view ResearchNetRevisionPolicyName(ResearchRevisionPolicy policy)
+{
+	switch (policy) {
+		case ResearchRevisionPolicy::Strict:    return "strict";
+		case ResearchRevisionPolicy::Whitelist: return "whitelist";
+		case ResearchRevisionPolicy::Blocklist: return "blocklist";
+		case ResearchRevisionPolicy::Open:      return "open";
+		default:                                return "strict";
+	}
+}
+
+std::optional<ResearchRevisionPolicy> ParseResearchNetRevisionPolicy(std::string_view name)
+{
+	if (name == "strict")    return ResearchRevisionPolicy::Strict;
+	if (name == "whitelist") return ResearchRevisionPolicy::Whitelist;
+	if (name == "blocklist") return ResearchRevisionPolicy::Blocklist;
+	if (name == "open" || name == "full") return ResearchRevisionPolicy::Open;
+	/* Back-compatible aliases of the first boolean form. */
+	if (name == "on"  || name == "1" || name == "true")  return ResearchRevisionPolicy::Open;
+	if (name == "off" || name == "0" || name == "false") return ResearchRevisionPolicy::Strict;
+	return std::nullopt;
+}
+
+void ResearchNetCompatInitFromEnv()
+{
+	_research_net_compat = {};
+	/* Back-compatible boolean switch: OTTD_RESEARCH_IGNORE_NETWORK_REVISION=1 means Open. */
+	if (GetEnv("OTTD_RESEARCH_IGNORE_NETWORK_REVISION").has_value()) {
+		_research_net_compat.policy = ResearchRevisionPolicy::Open;
+	}
+	if (auto p = GetEnv("OTTD_RESEARCH_NET_REVISION_POLICY"); p.has_value()) {
+		if (auto parsed = ParseResearchNetRevisionPolicy(*p); parsed.has_value()) _research_net_compat.policy = *parsed;
+	}
+	if (auto a = GetEnv("OTTD_RESEARCH_NET_REVISION_ALLOW"); a.has_value()) _research_net_compat.allow = SplitRevisions(*a);
+	if (auto b = GetEnv("OTTD_RESEARCH_NET_REVISION_BLOCK"); b.has_value()) _research_net_compat.block = SplitRevisions(*b);
+}
+
+/** The research policy's verdict for a peer revision, or std::nullopt to fall through to the normal
+ * strict comparison (so a genuine self-match is always accepted). Never looks at our own revision. */
+static std::optional<bool> ResearchNetRevisionVerdict(std::string_view other)
+{
+	const ResearchNetCompat &rc = _research_net_compat;
+	bool in_allow = std::ranges::find(rc.allow, other) != rc.allow.end();
+	bool in_block = std::ranges::find(rc.block, other) != rc.block.end();
+	switch (rc.policy) {
+		case ResearchRevisionPolicy::Open:      return true;                 // full: accept any peer
+		case ResearchRevisionPolicy::Blocklist: return !in_block;            // accept all but blocked
+		case ResearchRevisionPolicy::Whitelist: return in_allow ? std::optional<bool>(true) : std::nullopt; // allowed pass; rest stay strict
+		case ResearchRevisionPolicy::Strict:    return std::nullopt;         // unchanged
+		default:                                return std::nullopt;
+	}
+}
+#endif /* OTTD_RESEARCH_INSTRUMENTATION */
+
 bool IsNetworkCompatibleVersion(std::string_view other)
 {
+#ifdef OTTD_RESEARCH_INSTRUMENTATION
+	/* RESEARCH-ONLY: a game the local operator runs may widen which peers it accepts (see above). */
+	if (auto verdict = ResearchNetRevisionVerdict(other); verdict.has_value()) return *verdict;
+#endif
 	std::string_view our_revision = GetNetworkRevisionString();
 	if (our_revision == other) return true;
 
