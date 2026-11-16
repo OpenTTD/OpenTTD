@@ -1,0 +1,6 @@
+# Kenney models stay local: GitHub refuses Git LFS objects on a public fork, so the owner chose
+# not to commit them (answer 8, research/noirgfx/owner-answers.md). `noirgfx curate <zips>`
+# extracts the bundles into kenney/, copies the used packs into kenney-curated/ and verifies them
+# against kenney-curated.sha256, which is committed.
+kenney/
+kenney-curated/

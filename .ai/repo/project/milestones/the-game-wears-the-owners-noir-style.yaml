@@ -1,0 +1,15 @@
+id: the-game-wears-the-owners-noir-style
+title: "NoirGFX: the game in the owner's SIG NIHL noir, from OpenGFX and Kenney models"
+slug: the-game-wears-the-owners-noir-style
+order: 70
+priority: p2
+problem: "The owner wants every tile in their sharp black / cream / red linocut style, high resolution and seamless, with their licensed Kenney assets replacing most originals, put into the project cleanly and automatically."
+outcome: "tools/research/noirgfx builds a selectable NoirGFX base set from OpenGFX 8.0 and the curated Kenney models, and checks it."
+acceptance_criteria:
+- "noirgfx build produces the set and noirgfx check passes"
+- "OpenTTD loads the set and an in-game screenshot is recorded under research/noirgfx/"
+validation:
+- tools/research/noirgfx/noirgfx check
+evidence_required: []
+created_at: '2026-11-16'
+updated_at: '2026-11-16'

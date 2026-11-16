@@ -1,0 +1,18 @@
+id: the-game-wears-the-owners-style
+title: "The game can wear the owner's own visual style through a pluggable base set built reproducibly"
+statement: "Every sprite the game draws can be replaced, without an engine change, by a base graphics set in the owner's style, built from upstream-licensed sources and the owner's licensed assets by a reproducible pipeline whose invariants (sprite identity, checksums, seamless ground) are checked by a command."
+invariants:
+- "No engine change: the style reaches the game only as a base set (ADR 0028) the player selects"
+- "Every OpenGFX sprite keeps its number, size and offsets, so game logic and NewGRFs see no difference"
+non_goals:
+- Restyling window chrome, which the engine draws from palette colours
+- Shipping assets whose licence forbids redistribution
+milestones:
+- the-game-wears-the-owners-noir-style
+satisfaction:
+- id: the-noir-set-builds-and-checks
+  criterion: "tools/research/noirgfx builds NoirGFX and its check passes: checksums, sprite identity, one 32bpp alternative per zoom, seamless ground"
+  evidence: command
+  ref: "tools/research/noirgfx/noirgfx build && tools/research/noirgfx/noirgfx check"
+created_at: 2026-11-16
+updated_at: 2026-11-16

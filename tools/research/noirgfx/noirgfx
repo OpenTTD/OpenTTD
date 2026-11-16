@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: build, preview, install and check the NoirGFX base graphics set.
+#
+#   noirgfx bootstrap        build the pinned grfcodec and fetch OpenGFX 8.0 into the cache
+#   noirgfx build [args]     restyle every OpenGFX sprite and pack dist/noirgfx-<v>.tar
+#   noirgfx preview --out D  iso scene + contact sheet straight from the stylizer
+#   noirgfx install [DIR]    copy the tar into an OpenTTD baseset dir (default: personal dir)
+#   noirgfx check            invariants of the last build (see README.md)
+#   noirgfx curate [ZIP..]   extract the Kenney bundles (optional), copy the used packs into
+#                            assets/kenney-curated and verify them against kenney-curated.sha256
+#   noirgfx shot BIN DIR     screenshot the title game with NoirGFX at 4x and 1x into DIR
+#
+# Everything generated lives under $NOIRGFX_CACHE (default ~/.cache/noirgfx), never in the tree.
+set -euo pipefail
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cache="${NOIRGFX_CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/noirgfx}"
+GRFCODEC_REPO="https://github.com/OpenTTD/grfcodec.git"
+GRFCODEC_REV="4c71c0a"
+OPENGFX_URL="https://cdn.openttd.org/opengfx-releases/8.0/opengfx-8.0-all.zip"
+OPENGFX_BASE_MD5="5d83f4f22307448b1083461ce15deac4"  # ogfx1_base.grf, from opengfx.obg
+
+export NOIRGFX_ROOT="$here"
+export NOIRGFX_WORK="$cache/work"
+export NOIRGFX_DIST="$cache/dist"
+export NOIRGFX_GRFCODEC="$cache/grfcodec/build/grfcodec"
+export NOIRGFX_SOURCE="$cache/opengfx-8.0"
+
+die() { echo "noirgfx: $*" >&2; exit 1; }
+
+bootstrap() {
+  mkdir -p "$cache"
+  if [ ! -x "$NOIRGFX_GRFCODEC" ]; then
+    [ -d "$cache/grfcodec/.git" ] || git clone -q "$GRFCODEC_REPO" "$cache/grfcodec"
+    git -C "$cache/grfcodec" checkout -q "$GRFCODEC_REV"
+    cmake -S "$cache/grfcodec" -B "$cache/grfcodec/build" -DCMAKE_BUILD_TYPE=Release >/dev/null
+    cmake --build "$cache/grfcodec/build" --target grfcodec -j "$(sysctl -n hw.ncpu 2>/dev/null || nproc)" >/dev/null
+  fi
+  if [ ! -f "$NOIRGFX_SOURCE/ogfx1_base.grf" ]; then
+    local tar="$HOME/Documents/OpenTTD/baseset/opengfx-8.0.tar"
+    if [ -f "$tar" ]; then
+      tar -xf "$tar" -C "$cache"
+    else
+      curl -fsSL "$OPENGFX_URL" -o "$cache/opengfx.zip"
+      unzip -q -o "$cache/opengfx.zip" -d "$cache" && tar -xf "$cache/opengfx-8.0.tar" -C "$cache"
+    fi
+  fi
+  local got  # OpenTTD's checksum: the container v2 data section only (see build.py:grf_md5)
+  got="$(python3 -c 'import hashlib,sys;d=open(sys.argv[1],"rb").read();print(hashlib.md5(d[:14+int.from_bytes(d[10:14],"little")]).hexdigest())' "$NOIRGFX_SOURCE/ogfx1_base.grf")"
+  [ "$got" = "$OPENGFX_BASE_MD5" ] || die "OpenGFX base md5 $got != $OPENGFX_BASE_MD5"
+  echo "grfcodec $GRFCODEC_REV, OpenGFX 8.0 ready in $cache"
+}
+
+py() { uv run --quiet --project "$here" python -m noirgfx "$@"; }
+
+# shot OPENTTD_BINARY OUT_DIR: start OpenTTD with NoirGFX in an isolated HOME (the owner's own
+# config and saves are never touched), screenshot the title game at 4x and 1x zoom, stop it.
+#
+# The title game is a real scene (town, rails, trains) and scripts/game_start.scr runs when it loads.
+# OpenTTD queues screenshots to the main thread, so a script that ends with `exit` races them, and
+# a schedule issued from a scheduled script fires in the same pass, and a second screenshot
+# request replaces a pending first one; so 4x is taken at load and 1x a game month later. Observed on
+# macOS / master: without a `zoomto` first no screenshot is written. This function waits until both
+# files exist and stop growing, then ends the process.
+shot() {
+  local bin="${1:?usage: noirgfx shot <openttd-binary> <out-dir>}" out="${2:?out dir}"
+  local home="$cache/game-home" tar
+  tar="$(ls "$NOIRGFX_DIST"/noirgfx-*.tar 2>/dev/null | tail -1)"
+  [ -n "$tar" ] || die "no build in $NOIRGFX_DIST; run: noirgfx build"
+  rm -rf "$home/screenshot" && mkdir -p "$home/baseset" "$home/scripts" "$home/screenshot" "$out"
+  rm -f "$home"/baseset/noirgfx-*.tar && cp "$tar" "$home/baseset/"
+  # One screenshot per request slot: the second would replace the first, so 1x waits a month.
+  printf '%s\n' 'zoomto 0' 'screenshot big noir_big' 'schedule on-next-calendar-month scripts/normal.scr' \
+    > "$home/scripts/game_start.scr"
+  printf '%s\n' 'screenshot normal noir_normal' > "$home/scripts/normal.scr"
+  printf '%s\n' '[misc]' 'graphicsset = NoirGFX' '[gui]' 'zoom_min = 0' > "$home/openttd.cfg"
+  # With -c, the personal directory is the config file's directory.
+  HOME="$home" "$bin" -c "$home/openttd.cfg" -x -I NoirGFX -s null -m null -r 1600x1000 -G 4242 -g \
+    > "$out/openttd.log" 2>&1 &
+  local pid=$! waited=0 last="" now
+  while kill -0 "$pid" 2>/dev/null && [ "$waited" -lt 180 ]; do
+    sleep 2; waited=$((waited + 2))
+    now="$(ls -l "$home"/screenshot/noir_big.png "$home"/screenshot/noir_normal.png 2>/dev/null \
+      | awk '{s += $5} END {print NR ":" s}')"
+    if [ "${now%%:*}" = 2 ] && [ "$now" = "$last" ]; then break; fi
+    last="$now"
+  done
+  kill "$pid" 2>/dev/null || true
+  wait "$pid" 2>/dev/null || true
+  cp "$home"/screenshot/noir_*.png "$out/" 2>/dev/null || die "no screenshots after ${waited}s; see $out/openttd.log"
+  ls "$out"
+}
+
+# curate: copy the glTF models, licence and preview of every pack the mapping draws from out of
+# the full Kenney extraction (assets/kenney, local only) into assets/kenney-curated (Git LFS).
+curate() {
+  # The models are not in git (GitHub refuses LFS objects on a public fork; owner answer 8 in
+  # research/noirgfx/owner-answers.md): they come from the two Kenney Game Assets bundles.
+  local src="$here/assets/kenney" dst="$here/assets/kenney-curated" slug pack g zip n
+  for zip in "$@"; do
+    n="$(basename "$zip" | sed -n 's/.*Game Assets \([0-9]\).*/\1/p')"
+    [ -n "$n" ] || die "not a Kenney Game Assets bundle: $zip"
+    echo "extracting $(basename "$zip") into assets/kenney/game-assets-$n"
+    mkdir -p "$src/game-assets-$n" && unzip -q -o "$zip" -d "$src/game-assets-$n"
+  done
+  [ -d "$src" ] || die "no Kenney extraction in $src; run: noirgfx curate <Kenney Game Assets 2 zip> <Kenney Game Assets 3 zip>"
+  while IFS='|' read -r slug pack; do
+    [ -n "$slug" ] || continue
+    g="$(find "$src/$pack/Models" -maxdepth 1 -iname '*gltf*' -type d | head -1)"
+    [ -n "$g" ] || die "no glTF models in $src/$pack"
+    rm -rf "${dst:?}/$slug" && mkdir -p "$dst/$slug"
+    cp "$g"/* "$dst/$slug/" && cp "$src/$pack/License.txt" "$dst/$slug/"
+    [ ! -f "$src/$pack/Preview.png" ] || cp "$src/$pack/Preview.png" "$dst/$slug/"
+    echo "$slug: $(ls "$dst/$slug" | wc -l | tr -d ' ') files"
+  done <<'PACKS'
+city-commercial|game-assets-3/3D assets/City Kit - Commercial
+city-roads|game-assets-3/3D assets/City Kit - Roads
+city-suburban|game-assets-3/3D assets/City Kit - Suburban
+car-kit|game-assets-3/3D assets/Car Kit
+nature-kit|game-assets-3/3D assets/Nature Kit
+retro-urban|game-assets-3/3D assets/Retro Urban Kit
+modular-buildings|game-assets-2/3D assets/Modular Buildings (100 assets)
+watercraft|game-assets-2/3D assets/Watercraft pack (30 assets)
+PACKS
+  (cd "$dst" && find . -type f ! -name '.*' | LC_ALL=C sort | xargs -I{} shasum -a 256 {}) \
+    | diff -q - "$here/assets/kenney-curated.sha256" >/dev/null \
+    || die "assets/kenney-curated differs from assets/kenney-curated.sha256 (other bundle versions?)"
+  echo "verified $(wc -l < "$here/assets/kenney-curated.sha256" | tr -d ' ') files against kenney-curated.sha256"
+}
+
+cmd="${1:-}"; shift || true
+case "$cmd" in
+  bootstrap) bootstrap ;;
+  build) bootstrap >/dev/null; py build "$@" ;;
+  preview) bootstrap >/dev/null; py preview "$@" ;;
+  install)
+    dest="${1:-$HOME/Documents/OpenTTD/baseset}"
+    tar="$(ls "$NOIRGFX_DIST"/noirgfx-*.tar 2>/dev/null | tail -1)"
+    [ -n "$tar" ] || die "no build in $NOIRGFX_DIST; run: noirgfx build"
+    mkdir -p "$dest" && cp "$tar" "$dest/" && echo "installed $(basename "$tar") into $dest"
+    ;;
+  check) bootstrap >/dev/null; uv run --quiet --project "$here" python -m noirgfx.check "$@" ;;
+  shot) shot "$@" ;;
+  curate) curate "$@" ;;
+  *) sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//'; [ -z "$cmd" ] || exit 2 ;;
+esac

@@ -1,0 +1,40 @@
+intent: the-game-wears-the-owners-style
+reviewed_at: 920848ada36
+reviewed_by: "claude-code session 1d6b0065 (the implementing session, NOT an independent reviewer) over the staged I0079 records and tools/research/noirgfx after the first full build and check. An independent read-only review is still owed and should replace or extend this record."
+findings:
+- id: ai-refinement-claimed-not-built
+  class: insufficient_work
+  subject: I0079
+  finding: "I0079's objective and an acceptance criterion promised an AI refinement step (opt-in, hash-cached, silhouette-locked); none of it is implemented, only described in tools/research/noirgfx/README.md."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0079
+    because: "The criterion is removed from I0079 and the objective names AI refinement as follow-up work; a later issue will carry it with its own acceptance."
+- id: byte-identical-rebuild-unmeasured
+  class: unproven_assumption
+  subject: I0079
+  finding: "The first acceptance criterion says the same input gives byte-identical output; only one build was made, so determinism (grfcodec, Pillow, Blender renders through the cache) is asserted, not measured."
+  blocking: true
+  resolution:
+    state: planned
+    issue: I0079
+    because: "noirgfx check --rebuild builds from scratch into a temporary cache and compares the tar's md5; I0079 is finished only with that run recorded in research/noirgfx/README.md."
+- id: criterion-ref-needs-blender-and-kenney-bundles
+  class: delivery_verification
+  subject: "the-game-wears-the-owners-style#the-noir-set-builds-and-checks"
+  finding: "The ref builds the set, which needs Blender, the two Kenney bundles (the models are not in git; noirgfx curate extracts and verifies them) and the OpenGFX release (local tar or download); on a machine without them it fails for environmental reasons, not because the set is wrong."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0079
+    because: "The prerequisites are listed in tools/research/noirgfx/README.md and bootstrap verifies OpenGFX by checksum; a failure names the missing tool."
+- id: sprite-classification-is-heuristic
+  class: unproven_assumption
+  subject: I0079
+  finding: "Ground / GUI / object is decided from sprite geometry (tile-shaped at the tile origin, top-left anchored, otherwise); no test shows how many sprites are misclassified."
+  blocking: false
+  resolution:
+    state: planned
+    issue: I0079
+    because: "Recorded as a limit in both READMEs; the visible effect of a misclassification is a missing paper rim or a seam on that one sprite, never a broken game."

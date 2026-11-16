@@ -1,0 +1,114 @@
+# SIG NIHL noir: the single source of the NoirGFX look.
+# Every stage of the pipeline (deterministic stylizer, AI refinement, hero art) reads this file;
+# nothing else in tools/research/noirgfx carries a colour or a threshold of its own.
+
+[identity]
+name = "NoirGFX"
+shortname = "NOIR"
+version = 1
+description = "NoirGFX: OpenGFX recut as a red-black linocut in the SIG NIHL style. 32bpp, 4x zoom, seamless hatching. GPL-2, derived from OpenGFX 8.0."
+
+[palette]
+# Strict three-colour print: ink, paper, signal. signal_dark only shades red areas.
+ink = "#0b0b0b"
+paper = "#ece4d6"
+signal = "#d11f1a"
+signal_dark = "#5e0b08"
+
+[screen]
+# Seed of every noise field (wobble, grain, speckle).
+seed = 1
+# Hatch line period in screen pixels at 1x zoom; scaled by the zoom factor.
+# Must divide 32 (tile width / 2) and 8 (one height level) so the pattern is a function of screen
+# position modulo the tile lattice and neighbouring tiles join without seams at any height.
+line_period = 4
+# The line period at 4x may be coarser for a bolder cut (it must divide 16 * 4 = 64).
+line_period_zi4 = 32
+# Objects are small: a finer cut at 4x keeps hatching as lines instead of blobs.
+line_period_object_zi4 = 16
+# Low-frequency wobble of the cut lines and broad grain that swells and thins them, both
+# tileable on the lattice.
+wobble = 0.14
+grain = 0.07
+grain_sigma = 1.6
+speckle = 0.002
+
+[tone]
+# Ink density d = 1 - tone. Single hatch starts at d > single, cross hatch at d > cross, solid
+# ink at d > solid.
+single = 0.20
+solid = 0.93
+# Thin bright details (rails, markings, windows) are kept as paper, deep ones as ink,
+# judged before any smoothing.
+keep_paper = 0.50
+keep_ink = 0.06
+# Objects (buildings, vehicles, trees) are lifted against the ground so figures read as
+# paper-on-ink, like the posters.
+object_lift = 0.16
+# Detail kept from the source: tone += local_contrast * (L - blur(L)).
+local_contrast = 1.6
+local_radius = 2.0
+
+[material]
+# Source palette colours are sorted into materials by hue and saturation, because OpenGFX's
+# luminance alone does not tell grass from asphalt. tone = base + slope * (L - pivot).
+vegetation = { base = 0.10, slope = 1.6, pivot = 0.31 }
+earth = { base = 0.14, slope = 1.6, pivot = 0.18 }
+neutral = { base = 0.10, slope = 1.9, pivot = 0.30 }
+other = { base = 0.30, slope = 1.4, pivot = 0.30 }
+water = 0.24
+
+[hatch]
+# Cut directions per material: a = along one tile axis (u - 2v), b = along the other (u + 2v),
+# v = vertical, h = horizontal; the second direction is the cross hatch, entered at d > cross.
+vegetation = { dirs = ["a"], cross = 0.88 }
+earth = { dirs = ["a", "b"], cross = 0.45 }
+neutral = { dirs = ["b"], cross = 0.80 }
+other = { dirs = ["a", "b"], cross = 0.60 }
+water = { dirs = ["h"], cross = 1.0 }
+object = { dirs = ["a", "v"], cross = 0.58 }
+# Rendered models: by face. Roof lines run along one tile axis, walls carry vertical and coursed
+# cuts, so the three visible faces of a box separate by direction alone.
+top = { dirs = ["a"], cross = 0.70 }
+left = { dirs = ["v"], cross = 0.62 }
+right = { dirs = ["b", "v"], cross = 0.66 }
+
+[render]
+# Tone of rendered models (Kenney glTF through blender_render.py): base per material plus the lit
+# render's shading, tone = base + shade * (L - pivot) + local_contrast * (L - blur(L)).
+vegetation = 0.30
+earth = 0.34
+neutral = 0.52
+other = 0.46
+shade = 2.2
+local_contrast = 0.8
+red_hue = 12
+red_saturation = 0.55
+# Cosine between neighbouring normals below which a crease is carved in ink.
+crease = 0.82
+
+[edges]
+# Outline width in pixels at 1x for objects (scaled by zoom, rounded); ground sprites get none so
+# tile borders never draw a grid.
+outline = 1
+# ink: a black contour; paper: a cream rim that frees the figure from the dark ground.
+outline_colour = "paper"
+# Internal edges: threshold on the gradient of the source luminance.
+internal = 0.20
+
+[signal]
+# Red areas are cleaned to contiguous shapes: share of red pixels nearby needed to stay red.
+region = 0.45
+# Source pixels that become signal red: red/orange hues with this much saturation and value.
+hue_min = 340
+hue_max = 28
+saturation = 0.42
+value = 0.30
+
+[ai]
+# Opt-in refinement of selected categories by an image model; see README.md.
+model = "gpt-image-1"
+prompt = """Linocut / woodcut print, strict three-colour palette: deep black ink, off-white cream paper, \
+signal red only for emphasis. Hard carved hatching that follows the form, scratchboard texture, \
+distressed screen-print grain, no gradients, no halftones, no new objects. Keep every silhouette, \
+outline and position exactly as in the input; restyle the surface only. Constructivist noir mood."""

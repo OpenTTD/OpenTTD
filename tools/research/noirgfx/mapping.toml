@@ -1,0 +1,167 @@
+# Which Kenney model replaces which OpenGFX sprite. Models are "<pack>/<name>" under
+# assets/kenney-curated/. Each replaced sprite keeps its number; its 32bpp alternatives come from the
+# render (stylized by stylize.py:run_rgb) instead of from the OpenGFX pixels, and the OpenGFX 8bpp
+# original stays as the 8bpp fallback. Sprites not listed here are restyled from OpenGFX.
+
+# --- trees -------------------------------------------------------------------------------------
+# OpenGFX base sprites 0x628..0x7d9: 62 tree types x 7 growth stages (src/table/tree_land.h; stage 3
+# is grown). Every stage is fitted to the height of the OpenGFX sprite it replaces, so growth and
+# the game's placement stay exactly as designed; dying stages darken the crown, dead is near black.
+[kinds.tree]
+first = 0x628
+stride = 7
+stages = [
+    { dark = 0.0 }, { dark = 0.0 }, { dark = 0.0 }, { dark = 0.0 },
+    { dark = 0.35 }, { dark = 0.65 }, { dark = 0.9 },
+]
+
+# index = tree type (0..61), in the order of the contact sheet in research/noirgfx/README.md.
+[[tree]]
+index = [0, 20]
+model = "nature-kit/tree_default"
+[[tree]]
+index = [1, 41]
+model = "nature-kit/tree_oak"
+[[tree]]
+index = [2]
+model = "nature-kit/tree_plateau"
+[[tree]]
+index = [3]
+model = "nature-kit/tree_pineDefaultA"
+[[tree]]
+index = [4, 43]
+model = "nature-kit/tree_fat"
+[[tree]]
+index = [5]
+model = "nature-kit/tree_blocks"
+[[tree]]
+index = [6, 37]
+model = "nature-kit/tree_detailed"
+[[tree]]
+index = [7]
+model = "nature-kit/tree_default_dark"
+[[tree]]
+index = [8]
+model = "nature-kit/tree_default_fall"
+[[tree]]
+index = [9]
+model = "nature-kit/tree_pineTallA"
+[[tree]]
+index = [10]
+model = "nature-kit/tree_fat_fall"
+[[tree]]
+index = [11, 52]
+model = "nature-kit/tree_oak_fall"
+[[tree]]
+index = [12]
+model = "nature-kit/tree_cone"
+[[tree]]
+index = [13]
+model = "nature-kit/tree_pineTallB"
+[[tree]]
+index = [14]
+model = "nature-kit/tree_detailed_dark"
+[[tree]]
+index = [15]
+model = "nature-kit/tree_oak_dark"
+[[tree]]
+index = [16]
+model = "nature-kit/tree_small"
+[[tree]]
+index = [17, 38]
+model = "nature-kit/tree_tall"
+[[tree]]
+index = [18]
+model = "nature-kit/tree_plateau_dark"
+[[tree]]
+index = [19]
+model = "nature-kit/tree_pineDefaultB"
+[[tree]]
+index = [21]
+model = "nature-kit/tree_simple_fall"
+[[tree]]
+index = [22]
+model = "nature-kit/tree_blocks_dark"
+[[tree]]
+index = [23]
+model = "nature-kit/tree_pineTallC"
+[[tree]]
+index = [24]
+model = "nature-kit/tree_pineTallD"
+[[tree]]
+index = [25]
+model = "nature-kit/tree_cone_dark"
+[[tree]]
+index = [26]
+model = "nature-kit/tree_pineTallA_detailed"
+# Snowy sub-arctic trees: the same models with snow on every upward face.
+[[tree]]
+index = [27]
+model = "nature-kit/tree_pineDefaultA"
+snow = true
+[[tree]]
+index = [28]
+model = "nature-kit/tree_fat"
+snow = true
+[[tree]]
+index = [29]
+model = "nature-kit/tree_simple"
+snow = true
+[[tree]]
+index = [30]
+model = "nature-kit/tree_plateau"
+snow = true
+[[tree]]
+index = [31]
+model = "nature-kit/tree_pineTallB"
+snow = true
+[[tree]]
+index = [32]
+model = "nature-kit/tree_pineTallC"
+snow = true
+[[tree]]
+index = [33]
+model = "nature-kit/tree_cone"
+snow = true
+[[tree]]
+index = [34]
+model = "nature-kit/tree_pineTallD"
+snow = true
+# Sub-tropical.
+[[tree]]
+index = [35]
+model = "nature-kit/tree_palmTall"
+[[tree]]
+index = [36]
+model = "nature-kit/tree_palm"
+[[tree]]
+index = [39]
+model = "nature-kit/plant_bushLarge"
+[[tree]]
+index = [40]
+model = "nature-kit/plant_bush"
+[[tree]]
+index = [42]
+model = "nature-kit/tree_thin"
+[[tree]]
+index = [44, 46]
+model = "nature-kit/tree_palmDetailedTall"
+[[tree]]
+index = [45]
+model = "nature-kit/tree_palmShort"
+[[tree]]
+index = [47]
+model = "nature-kit/tree_palmDetailedShort"
+[[tree]]
+index = [48]
+model = "nature-kit/cactus_tall"
+[[tree]]
+index = [49]
+model = "nature-kit/cactus_short"
+[[tree]]
+index = [50]
+model = "nature-kit/tree_palmBend"
+[[tree]]
+index = [51]
+model = "nature-kit/tree_simple_dark"
+# 53..61 are toyland's sweets and balloons: no Kenney counterpart, restyled from OpenGFX.

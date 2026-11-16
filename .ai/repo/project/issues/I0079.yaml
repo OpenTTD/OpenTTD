@@ -1,0 +1,33 @@
+id: I0079
+milestone: the-game-wears-the-owners-noir-style
+title: "NoirGFX: a SIG NIHL red-black linocut base graphics set, generated from OpenGFX by a reproducible pipeline"
+slug: noirgfx
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "A pluggable base graphics set (.obg + .grf, selectable in Game Options like any other) that restyles every OpenGFX sprite into the owner's SIG NIHL style: strict black / cream paper / signal red, carved linocut hatching, high resolution (32bpp, 4x extra zoom) and seamless across neighbouring tiles. Produced by tools/research/noirgfx from the upstream OpenGFX release, deterministic, with Kenney CC0 models rendered in OpenTTD's projection replacing original assets. AI refinement of selected categories (the owner's choice) is follow-up work, not part of this issue."
+why: "The owner asked for a whole graphics pack in their sharp dark-noir style, made with AI/LLM help, put into the project cleanly, automated, pluggable, every tile redone in high resolution, seamless and continuous. OpenGFX is GPL-2, so a derived set is distributable with its source; the base set mechanism (ADR 0028) is the clean plug point and needs no engine change. The owner's answers, verbatim: research/noirgfx/owner-answers.md."
+scope:
+  - "tools/research/noirgfx/**"
+  - "research/noirgfx/**"
+  - ".ai/repo/project/issues/I0074.yaml"
+  - ".ai/repo/project/intents/the-game-wears-the-owners-style.yaml"
+  - ".ai/repo/project/milestones/the-game-wears-the-owners-noir-style.yaml"
+  - ".ai/repo/project/critiques/the-game-wears-the-owners-style.yaml"
+  - "research/README.md"
+  - ".ai/repo/project/README.md"
+depends_on: []
+serves:
+  - "the-game-wears-the-owners-style#the-noir-set-builds-and-checks"
+acceptance_criteria:
+  - "tools/research/noirgfx/noirgfx build produces NoirGFX (.obg + six .grf) from the pinned OpenGFX 8.0 release; the same input gives byte-identical output"
+  - "Every 8bpp sprite of OpenGFX keeps its number, size and offsets, and gains a 32bpp alternative at normal, 2x and 4x zoom drawn from one 4x master"
+  - "Ground sprites carry a hatch pattern that is a function of screen position modulo the tile lattice (128 x 32 px at 4x), so neighbouring tiles join without seams at any height"
+  - "Company colour pixels keep their palette mask, so players' colours still apply"
+  - "The set loads in the fork's build and an in-game screenshot is recorded under research/noirgfx/"
+  - "Mapped sprites (every non-toyland tree, all growth stages) come from Kenney renders cached by content hash; noirgfx check passes on the set that contains them"
+validation:
+  - "tools/research/noirgfx/noirgfx check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
