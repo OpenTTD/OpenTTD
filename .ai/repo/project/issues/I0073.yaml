@@ -29,3 +29,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T05:02:49Z
+started_event: sha256:c61cb0f8ace26567e5b2505cb5ecf9ab69e162f2b2c0587f859c6189b5526de1
+updated_at: 2026-11-16T05:02:57Z
+verified_at: 2026-11-16T05:02:52Z
+verified_event: sha256:c2815523905b5b64e12e339783cbbbfb3b66d08bcb58353bb3179c26f5c835bc
+completed_at: 2026-11-16T05:02:57Z
+completed_event: sha256:9ae82ec031519d9dd0433a0d5e87fdc99ce3d261fd658fbdb9e33dc8a855eb89
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/gate.sh change; cargo test --bin mcp-hub; live: dedicated 256x256 game + mcp-hub + algoglyph.track_plan"
+    result: "research PASS 115/115 (MCP 15 cases, 519 assertions), change PASS 98/98, mcp-hub 20/20; live: map/terrain 6 layers + 256 row digests, prices 71 names (build_rail 75 vs base 100 at construction cost low), bridges 13 types; track_plan found a 22-tile straight at money 1650 and a 92-tile route (6 curves, 4 inclines, 9 cleared) in ~3 s; delivered eebdc7713a"
+    artifact: "eebdc7713a"
+    commit: eebdc7713a31c0cab9963925f87796d6f7644c46
+    recorded_at: 2026-11-16T05:02:55Z

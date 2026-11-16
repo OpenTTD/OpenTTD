@@ -41,7 +41,7 @@ tools/research/mcp-rhai/target/release/mcp-hub --panel http://127.0.0.1:8800   #
 | `hub.audit` | | per instance: duplicate station pairs, and its depots with the duplicate depot pairs |
 | `algoglyph.kernels` | | every AlgoGlyph kernel with the input it reads (`flow -- kernels`) |
 | `algoglyph.kernel` | `kernel`, `input` | that kernel's answer on that input (`flow -- kernel <id> -`) |
-| `algoglyph.track_plan` | `instance`, `from {x, y, dir}`, `to {x, y, dir?}`, `costs?`, `rules?` | AlgoGlyph track-planning on that game's `openttd://map`, `map/ways`, `map/terrain`, `economy/prices` and `bridges`, passed verbatim: status, cost, `money` in the game's money, counts (curves, inclines, foundations, bridges, tunnels, cleared, crossings), pieces, runs |
+| `algoglyph.track_plan` | `instance`, `from {x, y, dir}`, `to {x, y, dir?}`, `costs?`, `rules?`, `railtype?` (a label of `openttd://railtypes`, e.g. `ELRL`, or its index; its entry is passed as `railtype`) | AlgoGlyph track-planning on that game's `openttd://map`, `map/ways`, `map/terrain`, `economy/prices` and `bridges`, passed verbatim: status, cost, `money` in the game's money, counts (curves, inclines, foundations, bridges, tunnels, cleared, crossings), pieces, runs |
 
 The hub describes itself in `GET /openapi.json`, derived from its method table, with Swagger UI over
 it at `GET /docs` (the panel's own `swagger-ui-dist`, so `npm ci` in `tools/research/mcp-panel` first), and serves the
@@ -181,3 +181,8 @@ bot and the human-motion player to the same rule.
 - Events come from panels only; a bare MCP server has no event bus to fan in.
 - The page is checked in a real browser by `tools/research/mcp-hub-page-check` (headless installed
   Chrome through playwright-core); the World view by `tools/research/mcp-viz-check`.
+
+Rail types, measured on the same 256x256 game (construction cost low, build_rail 75): one route
+of the same tiles priced on `RAIL` 6487, `ELRL` 9350 and `MGLV` 18051 (track at the type's
+`build_cost` 75, 112 and 225; clearing and foundations are the same for every type); an unknown
+label is refused with the game's list.

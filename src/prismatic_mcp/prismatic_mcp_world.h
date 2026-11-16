@@ -33,6 +33,9 @@ nlohmann::json Prices();
 /** openttd://bridges: every bridge type with its price multiplier, speed, lengths and whether it can be built now; the length limits of the game. */
 nlohmann::json Bridges();
 
+/** openttd://railtypes: every rail type in use, with its build cost now, cost multiplier, speeds, compatibility and the companies that may build it. */
+nlohmann::json RailTypes();
+
 /**
  * Every station: id, name, tile, owner and facilities. Read-only, main thread.
  * @return The stations payload (the caller adds the resource envelope).

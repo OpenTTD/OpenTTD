@@ -40,7 +40,8 @@ pub fn methods() -> Vec<Value> {
         json!({"method": "algoglyph.kernel", "params": {"kernel": "required: a kernel id from algoglyph.kernels", "input": "object: that kernel's input"},
                "result": "the kernel's answer (flow -- kernel <id> -)"}),
         json!({"method": "algoglyph.track_plan",
-               "params": {"instance": "required: a game instance", "from": "{x, y, dir: NE|SE|SW|NW}", "to": "{x, y, dir?}", "costs": "optional", "rules": "optional"},
+               "params": {"instance": "required: a game instance", "from": "{x, y, dir: NE|SE|SW|NW}", "to": "{x, y, dir?}", "costs": "optional", "rules": "optional",
+                          "railtype": "optional: a label (RAIL, ELRL, MONO, MGLV) or index of openttd://railtypes; plain rail when left out"},
                "result": "AlgoGlyph track-planning on the game's map, map/ways, map/terrain, economy/prices and bridges: status, cost, money, counts, pieces, runs"}),
     ]
 }
@@ -103,7 +104,24 @@ pub fn track_input(params: &Value, read: &dyn Fn(&str) -> Result<Option<Value>, 
     for key in ["costs", "rules"] {
         if let Some(v) = params.get(key).filter(|v| !v.is_null()) { input[key] = v.clone(); }
     }
+    if let Some(want) = params.get("railtype").filter(|v| !v.is_null()) {
+        let types = read("railtypes")?.ok_or("the instance publishes no openttd://railtypes")?;
+        input["railtype"] = pick_railtype(&types, want)?;
+    }
     Ok(input)
+}
+
+/// The entry of openttd://railtypes the caller asked for, by label ("RAIL", "ELRL") or index.
+pub fn pick_railtype(types: &Value, want: &Value) -> Result<Value, String> {
+    let list = types.get("types").and_then(Value::as_array).ok_or("openttd://railtypes has no types")?;
+    list.iter().find(|t| match want {
+        Value::String(label) => t.get("label").and_then(Value::as_str) == Some(label.as_str()),
+        Value::Number(n) => t.get("railtype").and_then(Value::as_u64) == n.as_u64(),
+        _ => false,
+    }).cloned().ok_or_else(|| {
+        let known: Vec<&str> = list.iter().filter_map(|t| t.get("label").and_then(Value::as_str)).collect();
+        format!("no rail type {want}; the game has {}", known.join(", "))
+    })
 }
 
 #[cfg(test)]
@@ -131,6 +149,21 @@ mod tests {
         assert!(track_input(&json!({"from": {"x": 1}}), &read).is_err());
         let nomap = |_: &str| -> Result<Option<Value>, String> { Ok(None) };
         assert!(track_input(&p, &nomap).unwrap_err().contains("openttd://map"));
+    }
+
+    #[test]
+    fn a_railtype_is_picked_by_label_or_index_and_an_unknown_one_names_the_choices() {
+        let types = json!({"types": [{"railtype": 0, "label": "RAIL", "cost_multiplier": 8}, {"railtype": 1, "label": "ELRL", "cost_multiplier": 12}]});
+        assert_eq!(pick_railtype(&types, &json!("ELRL")).unwrap()["cost_multiplier"], 12);
+        assert_eq!(pick_railtype(&types, &json!(0)).unwrap()["label"], "RAIL");
+        assert!(pick_railtype(&types, &json!("MGLV")).unwrap_err().contains("RAIL, ELRL"));
+        let read = |r: &str| -> Result<Option<Value>, String> {
+            Ok(match r { "map" => Some(json!({})), "railtypes" => Some(types.clone()), _ => None })
+        };
+        let p = json!({"from": {"x": 1, "y": 1, "dir": "NE"}, "to": {"x": 5, "y": 1}, "railtype": "ELRL"});
+        assert_eq!(track_input(&p, &read).unwrap()["railtype"]["label"], "ELRL");
+        let plain = json!({"from": {"x": 1, "y": 1, "dir": "NE"}, "to": {"x": 5, "y": 1}});
+        assert!(track_input(&plain, &read).unwrap().get("railtype").is_none());
     }
 
     #[test]

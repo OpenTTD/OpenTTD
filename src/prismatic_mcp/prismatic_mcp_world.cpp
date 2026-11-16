@@ -41,6 +41,7 @@
 #include "../settings_type.h"
 #include "../table/pricebase.h"
 #include "../bridge.h"
+#include "../rail.h"
 #include "../strings_func.h"
 #include "../timer/timer_game_calendar.h"
 #include "../town.h"
@@ -280,6 +281,38 @@ json Bridges()
 		{"lengths", "min_length and max_length count the tiles between the two heads; max_length is the type's limit capped by the game's max_bridge_length"},
 		{"cost", "CmdBuildBridge, for a company: L = tiles between the heads + 2; L x the track's build cost + CalcBridgeLenCostFactor(L) x build_bridge (openttd://economy/prices) x price >> 8; heads on a slope may add build_foundation"},
 		{"speed_unit", "1 unit = 1/1.6 mph, about 1 km/h"},
+	};
+}
+
+json RailTypes()
+{
+	json types = json::array();
+	for (int i = RAILTYPE_BEGIN; i < RAILTYPE_END; i++) {
+		const RailType rt = static_cast<RailType>(i);
+		const RailTypeInfo *rti = GetRailTypeInfo(rt);
+		if (rti->label.Empty()) continue; // a slot no base set or NewGRF defines
+		json powered = json::array(), compatible = json::array(), companies = json::array();
+		for (int j = RAILTYPE_BEGIN; j < RAILTYPE_END; j++) {
+			const RailType o = static_cast<RailType>(j);
+			if (GetRailTypeInfo(o)->label.Empty()) continue;
+			if (rti->powered_railtypes.Test(o)) powered.push_back(GetRailTypeInfo(o)->label.AsString());
+			if (rti->compatible_railtypes.Test(o)) compatible.push_back(GetRailTypeInfo(o)->label.AsString());
+		}
+		for (const Company *c : Company::Iterate()) {
+			if (c->avail_railtypes.Test(rt)) companies.push_back(c->index.base());
+		}
+		types.push_back({{"railtype", i}, {"label", rti->label.AsString()}, {"name", GetString(rti->strings.name)},
+			{"build_cost", static_cast<int64_t>(RailBuildCost(rt))}, {"cost_multiplier", rti->cost_multiplier},
+			{"maintenance_multiplier", rti->maintenance_multiplier},
+			{"max_speed", rti->max_speed == 0 ? json(nullptr) : json(rti->max_speed)}, {"curve_speed", rti->curve_speed},
+			{"introduction_date", rti->introduction_date.base() < 0 ? json(nullptr) : json(rti->introduction_date.base())},
+			{"powered", std::move(powered)}, {"compatible", std::move(compatible)}, {"available_to", std::move(companies)}});
+	}
+	return json{
+		{"types", std::move(types)},
+		{"build_cost", "RailBuildCost: build_rail (openttd://economy/prices) x cost_multiplier >> 3, in the game's money now; plain rail's multiplier is 8"},
+		{"max_speed", "km-ish/h (1 unit = 1/1.6 mph); null: no limit of its own"},
+		{"available_to", "the company ids that may build it now"},
 	};
 }
 
