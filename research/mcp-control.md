@@ -99,6 +99,25 @@ REST route, a Swagger operation and a Rhai function without a change here.
 `tools/research/mcp-panel-check` proves it against a running panel: every tool and resource has its
 route, the schemas are carried, the routes answer, Swagger UI is served, and the event feed works.
 
+### A page per tool and resource
+
+Every item of the live MCP catalogue has its own page with a stable address: `/tool/<name>`
+(server tools), `/client/<name>` (GUI client tools) and `/resource/<path>` (`openttd://<path>`),
+plus `/tools`, the searchable catalogue of them all. The panel serves one template
+(`static/tool.html`), and puts each item's name and description from the catalogue into its
+`<title>` and description, so a link shows what it is before any script runs. An item that is not in
+the catalogue answers 404.
+
+`static/tool.js` builds the rest from `/openapi.json`. A tool's form comes from its input schema
+(numbers with their bounds, enums as selects, booleans, objects as JSON). The call goes to the tool's
+derived route. A `pending_approval` answer names the approval, says where to approve it, and asks
+for the same call again. Each page shows the same call as REST, MCP JSON-RPC, the in-game console
+(`mcp <tool> key=value`, `mcp read <uri>`) and its OpenAPI operation. A resource page reads on demand
+or live, every 2 s. The form's values, the live switch and the catalogue's search stay in the
+address, so a configured call is a link. `mcp-panel-check` requires every catalogue item to answer
+its own page titled by the catalogue (157 on a game without a GUI client), and an unknown one to be
+a 404.
+
 ### Events: SSE and REST over one bus
 
 Every event has a sequence number, a time, a `kind` and `data`, and goes onto one bus:

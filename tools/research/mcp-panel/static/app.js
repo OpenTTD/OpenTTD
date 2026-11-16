@@ -63,9 +63,11 @@ async function refreshOverview() {
 async function loadCatalogue() {
   const c = await api('/api/catalogue');
   const res = (c.resources && c.resources.result && c.resources.result.resources) || [];
-  $('resources').innerHTML = res.map((r) => `<li><a href="#" data-read="${esc(r.uri)}" class="text-primary-600 hover:underline dark:text-primary-500">${esc(r.uri)}</a></li>`).join('');
+  // Each tool and resource leads to its own page (/tool/<name>, /resource/<path>): its form, a call,
+  // the answer and the same call over REST, MCP and the console.
+  $('resources').innerHTML = res.map((r) => `<li><a href="/resource/${esc(r.uri.replace(/^openttd:\/\//, ''))}" class="text-primary-600 hover:underline dark:text-primary-500">${esc(r.uri)}</a></li>`).join('');
   const tools = (c.tools && c.tools.result && c.tools.result.tools) || [];
-  $('tools').innerHTML = tools.map((t) => `<li title="${esc(t.description || '')}">${esc(t.name)}</li>`).join('');
+  $('tools').innerHTML = tools.map((t) => `<li><a href="/tool/${encodeURIComponent(t.name)}" title="${esc(t.description || '')}" class="text-primary-600 hover:underline dark:text-primary-500">${esc(t.name)}</a></li>`).join('');
 }
 
 async function tick() {

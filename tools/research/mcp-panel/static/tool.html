@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>__TITLE__ · OpenTTD MCP</title>
+  <meta name="description" content="__DESCRIPTION__">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 antialiased">
+  <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a href="/" class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">OpenTTD MCP</a>
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="/tools" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Catalogue</a>
+          <a href="/docs" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">API (OpenAPI)</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-20 px-4 pb-16 max-w-screen-xl mx-auto">
+    <nav class="flex mb-4" aria-label="Breadcrumb">
+      <ol id="crumbs" class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
+        <li><a href="/" class="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white">Panel</a></li>
+        <li class="text-gray-400">/</li>
+        <li><a href="/tools" class="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white">Catalogue</a></li>
+      </ol>
+    </nav>
+    <header class="mb-4">
+      <h1 id="title" class="text-2xl font-bold text-gray-900 dark:text-white break-all">__TITLE__</h1>
+      <p id="description" class="mt-1 text-sm text-gray-600 dark:text-gray-400">__DESCRIPTION__</p>
+      <div id="badges" class="flex flex-wrap gap-2 mt-2"></div>
+    </header>
+    <div id="page"></div>
+  </main>
+
+  <script src="/vendor/flowbite.min.js"></script>
+  <script src="/static/tool.js"></script>
+</body>
+</html>

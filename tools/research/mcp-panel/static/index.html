@@ -38,7 +38,7 @@
         <li><a href="#cluster" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Cluster</a></li>
         <li><a href="/world" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">World: map and road graph</a></li>
         <li><a href="/ui" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Interface: every window</a></li>
-        <li><a href="#catalogue" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">MCP catalogue</a></li>
+        <li><a href="/tools" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">MCP catalogue: a page per tool</a></li>
         <li><button type="button" id="side-console" class="flex items-center w-full p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Developer console (~)</button></li>
       </ul>
       <div class="pt-4 mt-4 space-y-2 text-sm text-gray-500 border-t border-gray-200 dark:border-gray-700 dark:text-gray-400">
@@ -250,12 +250,12 @@
 
     <div id="catalogue" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
       <div class="flex items-center justify-between mb-3">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">MCP catalogue</h3>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">MCP catalogue <a href="/tools" class="ms-2 text-sm font-normal text-primary-600 hover:underline dark:text-primary-500">every tool and resource, with its own page</a></h3>
         <button id="btn-catalogue" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Reload</button>
       </div>
       <div class="grid gap-4 md:grid-cols-2">
-        <div><h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Resources (click to read)</h4><ul id="resources" class="space-y-1 text-sm font-mono"></ul></div>
-        <div><h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Tools</h4><ul id="tools" class="space-y-1 text-sm font-mono text-gray-700 dark:text-gray-300"></ul></div>
+        <div><h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Resources (each opens its page)</h4><ul id="resources" class="space-y-1 text-sm font-mono"></ul></div>
+        <div><h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Tools (each opens its page, with a form)</h4><ul id="tools" class="space-y-1 text-sm font-mono text-gray-700 dark:text-gray-300"></ul></div>
       </div>
       <pre id="resource-view" class="mt-4 p-3 max-h-80 overflow-auto text-xs bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200 hidden"></pre>
     </div>

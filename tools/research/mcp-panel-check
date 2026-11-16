@@ -78,5 +78,27 @@ code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: applica
   -d '{"command":"prismatic_mcp status","wait":0}' "$PANEL/api/console")"
 check "an ordinary console line still runs (http=$code)" "$([[ "$code" == 200 ]] && echo 1 || echo 0)"
 
+# A page per tool and resource: every item of the live catalogue answers its own page, titled by
+# the catalogue (the server puts the name into <title>), and an unknown one is a 404.
+curl -fs "$PANEL/api/catalogue" > "$TMP/catalogue.json"
+py '
+import json, sys, urllib.parse
+c = json.load(open(sys.argv[1]))
+for t in c["tools"]["result"]["tools"]: print("/tool/" + urllib.parse.quote(t["name"], safe="") + " " + t["name"])
+for r in c["resources"]["result"]["resources"]: print("/resource/" + r["uri"].split("://", 1)[1] + " " + r["uri"])' "$TMP/catalogue.json" > "$TMP/pages.txt"
+total=0; bad=""
+while read -r path name; do
+  [[ -n "$path" ]] || continue
+  total=$((total + 1))
+  code="$(curl -s -o "$TMP/page.html" -w '%{http_code}' "$PANEL$path")"
+  grep -qF "<title>$name ·" "$TMP/page.html" && [[ "$code" == 200 ]] || bad="$bad $path($code)"
+done < "$TMP/pages.txt"
+check "every catalogue item has its own page titled by the catalogue ($total pages; failing:${bad:- none})" \
+  "$([[ "$total" -gt 0 && -z "$bad" ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' "$PANEL/tool/no.such.tool")"
+check "a tool the catalogue lacks is a 404 page (http=$code)" "$([[ "$code" == 404 ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' "$PANEL/tools")"
+check "the catalogue page /tools is served (http=$code)" "$([[ "$code" == 200 ]] && echo 1 || echo 0)"
+
 printf '\nmcp-panel-check: %d passed, %d failed\n' "$PASS" "$FAIL"
 [[ "$FAIL" -eq 0 ]]

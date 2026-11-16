@@ -2193,6 +2193,50 @@ pub struct Panel {
     pub routes: Vec<Route>,
 }
 
+/// `&`, `<`, `>` and `"` as entities, for text put into a page.
+fn html_escape(s: &str) -> String {
+    s.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;").replace('"', "&quot;")
+}
+
+/// The decoded path segment after a page prefix (`%2F` and friends), as the catalogue names it.
+fn url_decode(s: &str) -> String {
+    let b = s.as_bytes();
+    let mut out = Vec::with_capacity(b.len());
+    let mut i = 0;
+    while i < b.len() {
+        if b[i] == b'%' && i + 2 < b.len() {
+            if let Ok(v) = u8::from_str_radix(&s[i + 1..i + 3], 16) { out.push(v); i += 3; continue; }
+        }
+        out.push(b[i]);
+        i += 1;
+    }
+    String::from_utf8_lossy(&out).into_owned()
+}
+
+/// A page's title and description from the live catalogue, and whether the item exists:
+/// /tools the catalogue itself, /tool/<name> a server tool, /client/<name> a GUI client tool,
+/// /resource/<path> the resource openttd://<path>.
+fn page_meta(g: &Arc<Game>, path: &str) -> (String, String, bool) {
+    let find = |list: Vec<Value>, key: &str, want: &str| list.into_iter().find(|t| t[key] == json!(want))
+        .map(|t| t["description"].as_str().unwrap_or("").to_string());
+    if path == "/tools" {
+        return ("MCP catalogue".into(), "Every tool, GUI client tool and resource of the game's MCP server, each with its own page".into(), true);
+    }
+    if let Some(name) = path.strip_prefix("/tool/") {
+        let name = url_decode(name);
+        return match find(g.server_tools(), "name", &name) { Some(d) => (name, d, true), None => (format!("{name}: not in the catalogue"), String::new(), false) };
+    }
+    if let Some(name) = path.strip_prefix("/client/") {
+        let name = url_decode(name);
+        return match find(g.client_tools(), "name", &name) { Some(d) => (name, d, true), None => (format!("{name}: no GUI client offers it"), String::new(), false) };
+    }
+    let rest = url_decode(path.strip_prefix("/resource/").unwrap_or(""));
+    let uri = format!("openttd://{rest}");
+    let resources = g.rpc("resources/list", None).ok()
+        .and_then(|r| r.pointer("/result/resources").and_then(Value::as_array).cloned()).unwrap_or_default();
+    match find(resources, "uri", &uri) { Some(d) => (uri, d, true), None => (format!("{uri}: not in the catalogue"), String::new(), false) }
+}
+
 impl Panel {
     fn origin_ok(&self, req: &Request) -> bool {
         req.header("Origin").map_or(true, |o| o == self.game.panel_url())
@@ -2237,6 +2281,19 @@ impl Panel {
                 },
                 "/api/events/stream" => return stream_events(g, stream, &req.query),
                 _ => {}
+            }
+            // One page per tool, GUI client tool and resource, and the catalogue of them: stable
+            // addresses (/tool/<name>, /client/<name>, /resource/<path>, /tools) whose title and
+            // description come from the live catalogue, so a link opens to its own page.
+            if path == "/tools" || path.starts_with("/tool/") || path.starts_with("/client/") || path.starts_with("/resource/") {
+                let (title, description, found) = page_meta(g, path);
+                return match std::fs::read_to_string(statics().join("tool.html")) {
+                    Ok(t) => {
+                        let html = t.replace("__TITLE__", &html_escape(&title)).replace("__DESCRIPTION__", &html_escape(&description));
+                        hub::respond(stream, if found { 200 } else { 404 }, "text/html; charset=utf-8", html.as_bytes())
+                    }
+                    Err(_) => send_json(stream, 404, &json!({"error": "static/tool.html is missing"})),
+                };
             }
             if let Some((rel, ctype)) = vendor(path) {
                 return match std::fs::read(here().join("node_modules").join(rel)) {
@@ -2334,6 +2391,14 @@ pub fn free_port() -> Option<u16> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn page_paths_decode_and_page_text_is_escaped() {
+        assert_eq!(url_decode("openttd.ai.set_setting"), "openttd.ai.set_setting");
+        assert_eq!(url_decode("map%2Fways"), "map/ways");
+        assert_eq!(url_decode("trailing%2"), "trailing%2");
+        assert_eq!(html_escape("<a href=\"x\">&</a>"), "&lt;a href=&quot;x&quot;&gt;&amp;&lt;/a&gt;");
+    }
 
     #[test]
     fn a_content_state_line_is_parsed_with_names_that_hold_commas() {
