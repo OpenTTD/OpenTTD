@@ -33,6 +33,7 @@
 #include "../tilehighlight_func.h"
 #include "../table/strings.h"
 #include "prismatic_mcp_hooks.h"
+#include "../vehicle_type.h"
 #include "../viewport_func.h"
 #include "../widget_type.h"
 #include "../window_func.h"
@@ -40,6 +41,7 @@
 #include "../zoom_func.h"
 
 #include <algorithm>
+#include <cctype>
 #include <chrono>
 #include <cstdlib>
 
@@ -338,6 +340,105 @@ json Schema(json properties, json required = json::array())
 	return s;
 }
 
+/** Lower-case copy, for matching what a widget or window says. */
+std::string Lower(std::string s)
+{
+	for (auto &c : s) c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+	return s;
+}
+
+/** The caption text of a window, if it has one. */
+std::string CaptionOf(const Window *w)
+{
+	for (const auto &[index, nwb] : w->widget_lookup) {
+		if (index < 0 || nwb == nullptr || (nwb->type & WWT_MASK) != WWT_CAPTION) continue;
+		if (auto nwc = dynamic_cast<const NWidgetCore *>(nwb); nwc != nullptr) return w->GetWidgetString(index, nwc->GetString());
+	}
+	return {};
+}
+
+/** The front-most window matching {class, number, caption} (any subset; caption is a case-insensitive substring). */
+Window *FindWindowBy(const json &sel)
+{
+	if (!sel.is_object()) return nullptr;
+	for (Window *w : Window::IterateFromFront()) {
+		if (sel.contains("class") && sel["class"].is_number_integer() && static_cast<int>(w->window_class) != sel["class"].get<int>()) continue;
+		if (sel.contains("number") && sel["number"].is_number_integer() && static_cast<int>(w->window_number) != sel["number"].get<int>()) continue;
+		if (sel.contains("caption") && sel["caption"].is_string() && Lower(CaptionOf(w)).find(Lower(sel["caption"].get<std::string>())) == std::string::npos) continue;
+		return w;
+	}
+	return nullptr;
+}
+
+/** A screen rectangle (this file's Rect() builds JSON, so a plain struct of its own). */
+struct Box {
+	int left, top, right, bottom;
+};
+
+/** A widget's screen rectangle: by index, by what it says (text or tooltip), or a title-bar box by type. */
+std::optional<Box> FindWidgetBy(Window *w, const json &sel, json &found)
+{
+	if (sel.contains("index") && sel["index"].is_number_integer()) {
+		const NWidgetBase *nwb = w->GetWidget<NWidgetBase>(sel["index"].get<int>());
+		if (nwb == nullptr) return std::nullopt;
+		found = Widget(w, sel["index"].get<int>(), nwb);
+	} else if (sel.contains("text") && sel["text"].is_string()) {
+		const std::string needle = Lower(sel["text"].get<std::string>());
+		for (const auto &[index, nwb] : w->widget_lookup) {
+			if (index < 0 || nwb == nullptr) continue;
+			json wj = Widget(w, index, nwb);
+			if (Lower(wj.value("text", "") + " " + wj.value("tooltip", "")).find(needle) != std::string::npos) { found = std::move(wj); break; }
+		}
+	} else if (sel.contains("type") && sel["type"].is_string()) {
+		json all = WindowJson(w, true);
+		for (auto &wj : all["widgets"]) if (wj["type"] == sel["type"]) { found = wj; break; }
+	}
+	if (found.is_null()) return std::nullopt;
+	const json &r = found["rect"];
+	int x = r["x"].get<int>(), y = r["y"].get<int>();
+	return Box{x, y, x + r["w"].get<int>() - 1, y + r["h"].get<int>() - 1};
+}
+
+/** Every window as {class, number, caption}, front first: what a press changed is the difference. */
+json WindowList()
+{
+	json list = json::array();
+	for (const Window *w : Window::IterateFromFront()) {
+		list.push_back({{"class", static_cast<int>(w->window_class)}, {"number", static_cast<int>(w->window_number)}, {"caption", CaptionOf(w)}});
+	}
+	return list;
+}
+
+/** Windows in `after` not in `before`. */
+json Difference(const json &after, const json &before)
+{
+	json out = json::array();
+	for (const auto &w : after) {
+		bool seen = false;
+		for (const auto &b : before) if (b["class"] == w["class"] && b["number"] == w["number"]) { seen = true; break; }
+		if (!seen) out.push_back(w);
+	}
+	return out;
+}
+
+/** Press and release a button at a screen point through the driver's path (the cursor moves there first). */
+void Click(int x, int y, ControlInput button, const json &mods)
+{
+	MovePointer(x, y);
+	AsDriver([&] {
+		SetModifiers(json{{"mods", mods}});
+		_input_pressed.Set(button);
+		if (button != ControlInput::Left) _input_clicked.Set(button);
+		HandleMouseEvents();
+		_input_pressed.Reset(button);
+		if (button == ControlInput::Left) _input_clicked.Reset(ControlInput::Left);
+		HandleMouseEvents();
+		ClearModifiers();
+	});
+	_state.last = _cursor.pos;
+	_state.presses++;
+}
+
 } // namespace
 
 json Tools()
@@ -346,6 +447,8 @@ json Tools()
 	if (_network_dedicated) return json::array();
 	json xy = {{"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}}};
 	json tile = {{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}}};
+	json tile_props_click = tile;
+	tile_props_click["button"] = {{"type", "string"}, {"enum", {"left", "right"}}};
 	json mods = {{"type", "array"}, {"items", {{"type", "string"}, {"enum", {"ctrl", "shift"}}}}};
 	json arr = json::array();
 	arr.push_back({{"name", "openttd.ui.windows"},
@@ -356,7 +459,8 @@ json Tools()
 		{"inputSchema", Schema(xy, json::array({"x", "y"}))}});
 	arr.push_back({{"name", "openttd.ui.locate"},
 		{"description", "GUI only, read: the screen pixel of a tile's centre in the main viewport (tile, or x/y in tiles) and whether it is on screen"},
-		{"inputSchema", Schema(tile)}});
+		{"inputSchema", {{"type", "object"}, {"properties", tile},
+			{"anyOf", json::array({json{{"required", json::array({"tile"})}}, json{{"required", json::array({"x", "y"})}}})}}}});
 	arr.push_back({{"name", "openttd.input.state"},
 		{"description", "GUI only, read: the cursor, buttons, armed switch, whether the owner holds the mouse, the active placement tool and the tile selection"},
 		{"inputSchema", Schema(json::object())}});
@@ -373,6 +477,28 @@ json Tools()
 	arr.push_back({{"name", "openttd.input.key"},
 		{"description", "GUI only, armed: press a key as the keyboard driver does: keycode (OpenTTD WKC_* value, letters are their upper-case code) and the character it types"},
 		{"inputSchema", Schema({{"keycode", {{"type", "integer"}}}, {"char", {{"type", "string"}}}}, json::array({"keycode"}))}});
+	json window = {{"type", "object"}, {"description", "the front-most window matching any of: class, number, caption (case-insensitive substring)"},
+		{"properties", {{"class", {{"type", "integer"}}}, {"number", {{"type", "integer"}}}, {"caption", {{"type", "string"}}}}}};
+	json widget = {{"type", "object"}, {"description", "one of: index, text (matches the widget's text or tooltip, case-insensitive), type (e.g. close_box)"},
+		{"properties", {{"index", {{"type", "integer"}}}, {"text", {{"type", "string"}}}, {"type", {{"type", "string"}}}}}};
+	arr.push_back({{"name", "openttd.ui.press"},
+		{"description", "GUI only, armed: press a widget of a window, found by what it is or says; raises the window when covered, clicks through the driver's input path, and answers what changed (the widget's state, windows opened and closed, the active tool)"},
+		{"inputSchema", Schema({{"window", window}, {"widget", widget}, {"button", {{"type", "string"}, {"enum", {"left", "right"}}}}, {"mods", mods}}, json::array({"window", "widget"}))}});
+	arr.push_back({{"name", "openttd.ui.choose"},
+		{"description", "GUI only, armed: choose an item of the open dropdown, by its position among the selectable items (index) or by the value it returns (result)"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"index", {{"type", "integer"}}}, {"result", {{"type", "integer"}}}}},
+			{"anyOf", json::array({json{{"required", json::array({"index"})}}, json{{"required", json::array({"result"})}}})}}}});
+	arr.push_back({{"name", "openttd.ui.type"},
+		{"description", "GUI only, armed: type text into the focused edit box, a key at a time (press the box first with openttd.ui.press)"},
+		{"inputSchema", Schema({{"text", {{"type", "string"}}}}, json::array({"text"}))}});
+	arr.push_back({{"name", "openttd.ui.close"},
+		{"description", "GUI only, armed: close a window with its close box, as a person does"},
+		{"inputSchema", Schema({{"window", window}}, json::array({"window"}))}});
+	arr.push_back({{"name", "openttd.ui.click_tile"},
+		{"description", "GUI only, armed: click a map tile (the active tool acts on it, or the tile's window opens) and answer what changed; a tile off screen makes the view jump there and answers scrolled: true, so call again"},
+		{"inputSchema", {{"type", "object"}, {"properties", tile_props_click},
+			{"anyOf", json::array({json{{"required", json::array({"tile"})}}, json{{"required", json::array({"x", "y"})}}})}}}});
+
 	/* MCP tool annotations: readers are read-only; input changes local input state and, through the
 	 * game's own handling, may lead to a command, so it is neither read-only nor idempotent. */
 	for (auto &t : arr) {
@@ -492,6 +618,103 @@ std::optional<json> Call(const std::string &name, const json &args)
 		AsDriver([&] { HandleKeypress(keycode, ch); });
 		_state.keys++;
 		return InputState();
+	}
+
+	if (name == "openttd.ui.press") {
+		Window *w = FindWindowBy(args.value("window", json::object()));
+		if (w == nullptr) return Error("no window matches");
+		json found;
+		auto r = FindWidgetBy(w, args.value("widget", json::object()), found);
+		if (!r.has_value()) return Error("the window has no such widget");
+		const int x = (r->left + r->right) / 2, y = (r->top + r->bottom) / 2;
+		if (FindWindowFromPt(x, y) != w) w = BringWindowToFrontById(w->window_class, w->window_number);
+		if (w == nullptr || FindWindowFromPt(x, y) != w) return Error("the widget stays covered by another window");
+		json before = WindowList();
+		Click(x, y, args.value("button", "left") == "right" ? ControlInput::Right : ControlInput::Left, args.value("mods", json::array()));
+		json after = WindowList();
+		json out = InputState();
+		out["pressed"] = found;
+		out["opened"] = Difference(after, before);
+		out["closed"] = Difference(before, after);
+		return out;
+	}
+
+	if (name == "openttd.ui.choose") {
+		for (Window *w : Window::IterateFromFront()) {
+			auto items = Hooks::DropdownItems(w);
+			if (items.empty()) continue;
+			const Hooks::DropdownItem *pick = nullptr;
+			int k = 0;
+			for (const auto &it : items) {
+				if (!it.selectable) continue;
+				if ((args.contains("index") && args["index"].is_number_integer() && args["index"].get<int>() == k) ||
+						(args.contains("result") && args["result"].is_number_integer() && args["result"].get<int>() == it.result)) {
+					pick = &it;
+					break;
+				}
+				k++;
+			}
+			if (pick == nullptr) return Error("the open dropdown has no such item");
+			json before = WindowList();
+			Click((pick->rect.left + pick->rect.right) / 2, (pick->rect.top + pick->rect.bottom) / 2, ControlInput::Left, json::array());
+			json out = InputState();
+			out["chosen"] = pick->result;
+			out["opened"] = Difference(WindowList(), before);
+			return out;
+		}
+		return Error("no dropdown is open");
+	}
+
+	if (name == "openttd.ui.type") {
+		const std::string text = args.value("text", "");
+		AsDriver([&] {
+			for (unsigned char c : text) {
+				uint keycode = std::isalpha(c) ? static_cast<uint>(std::toupper(c)) : static_cast<uint>(c);
+				HandleKeypress(keycode, static_cast<char32_t>(c));
+			}
+		});
+		_state.keys += text.size();
+		return InputState();
+	}
+
+	if (name == "openttd.ui.close") {
+		Window *w = FindWindowBy(args.value("window", json::object()));
+		if (w == nullptr) return Error("no window matches");
+		json found;
+		auto r = FindWidgetBy(w, json{{"type", "close_box"}}, found);
+		if (!r.has_value()) return Error("the window has no close box");
+		const int x = (r->left + r->right) / 2, y = (r->top + r->bottom) / 2;
+		if (FindWindowFromPt(x, y) != w) BringWindowToFrontById(w->window_class, w->window_number);
+		json before = WindowList();
+		Click(x, y, ControlInput::Left, json::array());
+		json out = InputState();
+		out["closed"] = Difference(before, WindowList());
+		return out;
+	}
+
+	if (name == "openttd.ui.click_tile") {
+		std::string error;
+		auto t = TileArg(args, error);
+		if (!t.has_value()) return Error(error);
+		const Viewport &vp = *main->viewport;
+		Point p = TileToScreen(vp, *t);
+		const bool on_screen = p.x >= vp.left && p.x < vp.left + vp.width && p.y >= vp.top && p.y < vp.top + vp.height;
+		if (!on_screen) {
+			/* Jump there; the viewport takes the new position on its next frame. Applying it here would
+			 * redraw on the game thread, where drawing is not allowed, so the caller clicks again. */
+			main->viewport->follow_vehicle = VehicleID::Invalid();
+			ScrollMainWindowToTile(*t, true);
+			json out = Error("the tile was off screen: the view jumped there; call again to click it");
+			out["scrolled"] = true;
+			return out;
+		}
+		if (FindWindowFromPt(p.x, p.y) != main) return Error("a window covers that tile");
+		json before = WindowList();
+		Click(p.x, p.y, args.value("button", "left") == "right" ? ControlInput::Right : ControlInput::Left, json::array());
+		json out = InputState();
+		out["tile"] = TileJson(*t);
+		out["opened"] = Difference(WindowList(), before);
+		return out;
 	}
 
 	return Error("unknown UI tool");

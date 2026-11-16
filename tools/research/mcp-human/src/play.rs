@@ -62,6 +62,7 @@ impl Hand {
             runs.extend(split(s, e, 14));
         }
         self.say(&format!("road {a:?} -> {b:?}: {} tiles, {} drags", path.len(), runs.len()));
+        let ways = Ways::from_resource(&self.mcp.read("openttd://map/ways")?)?;
         self.pick_autoroad()?;
         // A run whose two ends cannot both be clicked from one camera position is halved.
         let mut queue: std::collections::VecDeque<((usize, usize), (usize, usize))> = runs.into_iter().collect();
@@ -69,8 +70,11 @@ impl Hand {
         while let Some((s, e)) = queue.pop_front() {
             i += 1;
             let (s, e) = (&s, &e);
-            // Never skip a run that looks like road already: tile types do not say whether the
-            // pieces join along it, and dragging over existing road only adds what is missing.
+            // Skip a run only when the game's real road ways already join along all of it: tile
+            // types cannot tell, and dragging a joined road again looks like rebuilding it.
+            if ways.joined_line(*s, *e) {
+                continue;
+            }
             // Centre the run, then find both ends without scrolling: the press must land where seen.
             self.focus((s.0 + e.0) / 2, (s.1 + e.1) / 2)?;
             let (mut from, mut to) = (self.spot(s.0, s.1)?, self.spot(e.0, e.1)?);

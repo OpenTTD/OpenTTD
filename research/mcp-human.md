@@ -34,6 +34,20 @@ Playing through the interface makes the engine's own UI the API:
 | `openttd.input.wheel` | armed | Turn the wheel at the cursor. |
 | `openttd.input.key` | armed | Press a key as the keyboard driver does (an OpenTTD `WKC_*` keycode; letters are their upper-case code, `WKC_CTRL` is `0x4000`). |
 
+**Programmatic control of any window.** These tools are instant, unlike `mcp-human`'s human
+motion. They use the same armed driver path and each answers what changed:
+
+| Tool | What it does |
+|---|---|
+| `openttd.ui.press` | Find a window by class, number or caption, and a widget in it by index, text or tooltip, or `type` (e.g. `close_box`). Raise the window if it is covered, click, and answer the windows opened and closed and the active tool. |
+| `openttd.ui.choose` | Pick an item of the open dropdown by position or by result. The game applies a dropdown choice a few frames later, so wait for its effect. |
+| `openttd.ui.type` | Type text into the focused edit box. |
+| `openttd.ui.close` | Close a window by its close box. |
+| `openttd.ui.click_tile` | Click a map tile when it is on screen. An off-screen tile makes the view jump there and answers `scrolled: true`; call again. Applying the jump at once would redraw on the game thread, which crashed the client when tried. |
+
+Every client surface derives these from `tools/list` without a hand-written entry: Rhai, the
+panel's REST/OpenAPI and the WebSocket hub.
+
 A list drawn in a matrix (for example the vehicles in the buy window) also reports
 `row_height`, so a person-like controller can point at a row. The title-bar boxes (close,
 sticky, shade, default size) carry no widget index. They are found by hit-testing the caption's

@@ -289,6 +289,20 @@ impl Ways {
         if x < self.width && y < self.height { self.bits[y * self.width + x] } else { 0 }
     }
 
+    /// Is every step of a straight run already joined both ways (so dragging it would rebuild
+    /// nothing a person could see)?
+    pub fn joined_line(&self, s: (usize, usize), e: (usize, usize)) -> bool {
+        let (dx, dy) = ((e.0 as i64 - s.0 as i64).signum(), (e.1 as i64 - s.1 as i64).signum());
+        let n = (e.0 as i64 - s.0 as i64).abs().max((e.1 as i64 - s.1 as i64).abs());
+        // (bit leaving a tile in the run's direction, bit the next tile needs back)
+        let (out, back) = match (dx, dy) { (1, 0) => (2u8, 8u8), (-1, 0) => (8, 2), (0, 1) => (4, 1), (0, -1) => (1, 4), _ => return false };
+        (0..n).all(|i| {
+            let (x, y) = ((s.0 as i64 + dx * i) as usize, (s.1 as i64 + dy * i) as usize);
+            let (nx, ny) = ((x as i64 + dx) as usize, (y as i64 + dy) as usize);
+            self.at(x, y) & out != 0 && self.at(nx, ny) & back != 0
+        })
+    }
+
     /// Can a road vehicle drive from one tile to the other? Two tiles are joined only when each
     /// points at the other, which is what the game's own pathfinder requires.
     pub fn drivable(&self, a: (usize, usize), b: (usize, usize)) -> bool {
@@ -369,6 +383,7 @@ mod tests {
         // The middle piece only points one way: the road is broken.
         let broken = Ways::from_resource(&json!({"width": 3, "height": 2, "roads": ["228", "000"]})).unwrap();
         assert!(!broken.drivable((0, 0), (2, 0)));
+        assert!(w.joined_line((0, 0), (2, 0)) && !broken.joined_line((0, 0), (2, 0)));
     }
 
     #[test]

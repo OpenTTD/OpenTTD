@@ -146,12 +146,27 @@ if [[ "$TEST" == 1 ]]; then
   [[ "$PAUSED" != true ]] && echo "PASS an unapproved pause executed nowhere (the game runs)" || { echo "FAIL the game paused without approval"; fail=1; }
   # Coverage, measured by each server's own dispatch: probe what is read-only, then every
   # published tool and resource must have been called by the probe or by the play above.
-  if "$COVERAGE" --probe "$SERVER_TOKEN" "$CLIENT_TOKEN"; then
-    echo "PASS every published tool and resource of the server and the client was exercised"
-  else
-    echo "FAIL some published tools or resources were never exercised (listed above)"; fail=1
-  fi
+  # Probe what is read-only now; the gate itself runs after the last scenario below.
+  "$COVERAGE" --probe --report "$SERVER_TOKEN" "$CLIENT_TOKEN" >/dev/null || { echo "FAIL the coverage probe could not reach an instance"; fail=1; }
   [[ "$AFTER" -gt "$BEFORE" ]] && echo "PASS roads built through the interface appear on the server" || { echo "FAIL no new road tiles on the server"; fail=1; }
+  # Programmatic control of any window (openttd.ui.press/choose/type/close/click_tile), verified by what changed.
+  P="$(call "$CLIENT_TOKEN" openttd.ui.press '{"window":{"class":1},"widget":{"text":"build road infrastructure"}}')"
+  C="$(call "$CLIENT_TOKEN" openttd.ui.choose '{"index":0}')"
+  # A dropdown applies its choice a few frames after the click (by design): wait for the window.
+  for _ in 1 2 3 4 5 6 7 8 9 10; do
+    call "$CLIENT_TOKEN" openttd.ui.windows '{}' | jq -e '[.windows[].caption // ""] | any(test("Road Construction"; "i"))' >/dev/null && break
+    sleep 0.3
+  done
+  call "$CLIENT_TOKEN" openttd.ui.windows '{}' | jq -e '[.windows[].caption // ""] | any(test("Road Construction"; "i"))' >/dev/null \
+    && echo "PASS ui.press opened the road menu and ui.choose opened Road Construction" || { echo "FAIL press/choose: $P $C"; fail=1; }
+  call "$CLIENT_TOKEN" openttd.ui.close '{"window":{"caption":"road construction"}}' | jq -e '[.closed[].caption] | any(test("Road Construction"; "i"))' >/dev/null \
+    && echo "PASS ui.close closed it by its close box" || { echo "FAIL ui.close"; fail=1; }
+  ST="$(read_res "$CLIENT_TOKEN" openttd://stations | jq -c --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c)][0] | {x, y}')"
+  call "$CLIENT_TOKEN" openttd.ui.click_tile "$ST" | jq -e '.scrolled == true' >/dev/null && sleep 0.5   # off screen: the view jumped
+  call "$CLIENT_TOKEN" openttd.ui.click_tile "$ST" | jq -e '.opened | length >= 1' >/dev/null \
+    && echo "PASS ui.click_tile on our station opened its window" || { echo "FAIL ui.click_tile $ST"; fail=1; }
+  call "$CLIENT_TOKEN" openttd.ui.type '{"text":"a"}' | jq -e '.ok == true' >/dev/null \
+    && echo "PASS ui.type typed through the keyboard path" || { echo "FAIL ui.type"; fail=1; }
   STOPS="$(read_res "$SERVER_TOKEN" openttd://stations | jq --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c and (.facilities | index("bus")))] | length')"
   [[ "$STOPS" -ge 2 ]] && echo "PASS $STOPS bus stations of company $COMPANY on the server" || { echo "FAIL $STOPS bus stations (need 2)"; fail=1; }
   BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "road" and (.orders | length) >= 2 and .stopped == false)] | length')"
@@ -173,6 +188,11 @@ if [[ "$TEST" == 1 ]]; then
     && echo "PASS the world graph has towns, stations, vehicles, order and serves_town edges" || { echo "FAIL the world graph is incomplete"; fail=1; }
   read_res "$SERVER_TOKEN" openttd://map/ways | jq -e '(.data.roads | length) == .data.height and ([.data.roads[] | test("^[0-9a-f]+$")] | all)' >/dev/null \
     && echo "PASS the road ways cover the map" || { echo "FAIL the road ways are malformed"; fail=1; }
+  if "$COVERAGE" "$SERVER_TOKEN" "$CLIENT_TOKEN"; then
+    echo "PASS every published tool and resource of the server and the client was exercised"
+  else
+    "$COVERAGE" --report "$SERVER_TOKEN" "$CLIENT_TOKEN" | grep UNCOVERED; echo "FAIL coverage after the scenario"; fail=1
+  fi
   INJ="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r '.injected.moves')"
   [[ "$INJ" -gt 100 ]] && echo "PASS the cursor moved ($INJ pointer updates)" || { echo "FAIL the cursor barely moved ($INJ)"; fail=1; }
   for t in openttd.ui.windows openttd.ui.at openttd.ui.locate openttd.input.state openttd.input.pointer openttd.input.button openttd.input.wheel openttd.input.key; do
