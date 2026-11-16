@@ -37,8 +37,14 @@ PANEL_PORT="$(free_port)"; MCP_PORT="$(free_port)"; GAME_PORT="$(free_port)"; VI
 URL="http://127.0.0.1:$PANEL_PORT"
 WORK="$(mktemp -d "${TMPDIR:-/tmp}/mcp-ask-check.XXXXXX")"
 PIDS=()
+# Stop a process and everything it started (mcp-e2e -> panel -> dedicated server), deepest first.
+killtree() {
+  local child
+  for child in $(pgrep -P "$1" 2>/dev/null); do killtree "$child"; done
+  kill "$1" 2>/dev/null || true
+}
 cleanup() {
-  for p in "${PIDS[@]}"; do pkill -P "$p" 2>/dev/null || true; kill "$p" 2>/dev/null || true; done
+  for p in "${PIDS[@]}"; do killtree "$p"; done
   wait 2>/dev/null || true
   [[ -n "${MCP_ASK_CHECK_KEEP:-}" ]] && echo "kept $WORK" >&2 || rm -rf "$WORK"
 }
