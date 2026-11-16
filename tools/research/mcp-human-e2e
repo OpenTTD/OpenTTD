@@ -67,6 +67,9 @@ call() { rpc "$1" "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"par
 wait_file() { for ((i = 0; i < ${2:-120}; i++)); do [[ -s "$1" ]] && return 0; sleep 0.5; done; return 1; }
 
 GAME_PORT="$(free_port)" SERVER_MCP="$(free_port)" CLIENT_MCP="$(free_port)"
+# Each instance announces itself in the registry; an isolated one here, so a test never mixes
+# with the owner's own instances.
+export PRISMATIC_MCP_REGISTRY="$TMP/registry"
 SERVER_TOKEN="$TMP/server-token.json" CLIENT_TOKEN="$TMP/client-token.json"
 
 echo "==> dedicated server on 127.0.0.1:$GAME_PORT (seed $SEED), MCP on $SERVER_MCP"
@@ -134,6 +137,16 @@ if [[ "$TEST" == 1 ]]; then
   [[ "$STOPS" -ge 2 ]] && echo "PASS $STOPS bus stations of company $COMPANY on the server" || { echo "FAIL $STOPS bus stations (need 2)"; fail=1; }
   BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "road" and (.orders | length) >= 2 and .stopped == false)] | length')"
   [[ "$BUSES" -ge 1 ]] && echo "PASS $BUSES bus(es) running with orders between the stops" || { echo "FAIL no running bus with two orders"; fail=1; }
+  for kind in server gui; do
+    REC="$(ls "$PRISMATIC_MCP_REGISTRY"/openttd-"$kind"-*.json 2>/dev/null | head -1 || true)"
+    if [[ -n "$REC" ]] && jq -e --arg k "$kind" '.schema == "mcp-instance/v1" and .kind == $k and (.endpoint | startswith("http://127.0.0.1:")) and (.token_file | length > 0) and (has("agent_token") | not) and (has("token") | not)' "$REC" >/dev/null \
+        && kill -0 "$(jq -r .owner_pid "$REC")" 2>/dev/null \
+        && [[ "$(stat -f %Lp "$REC" 2>/dev/null || stat -c %a "$REC")" == 600 ]]; then
+      echo "PASS the $kind announced itself in the registry (endpoint, token file path, no token, 0600)"
+    else
+      echo "FAIL no valid registry record for the $kind"; fail=1
+    fi
+  done
   INJ="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r '.injected.moves')"
   [[ "$INJ" -gt 100 ]] && echo "PASS the cursor moved ($INJ pointer updates)" || { echo "FAIL the cursor barely moved ($INJ)"; fail=1; }
   for t in openttd.ui.windows openttd.ui.at openttd.ui.locate openttd.input.state openttd.input.pointer openttd.input.button openttd.input.wheel openttd.input.key; do

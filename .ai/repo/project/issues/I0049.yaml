@@ -21,9 +21,11 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T00:27:50Z
+updated_at: 2026-11-16T00:37:42Z
 started_at: 2026-11-16T00:27:49Z
 started_event: sha256:f80f6ce0d3ff5033ed13219c9ccb35e3baa7454fd1d324ed1c47b0db6e93d615
+completed_at: 2026-11-16T00:37:42Z
+completed_event: sha256:767ad78efe74f16508b56f8d83a36a48e4d6fde2aca4977e152df63745c54766
 evidence:
   - covers: "validation_run"
     type: test
@@ -31,3 +33,9 @@ evidence:
     result: "partial: gate research PASS (103/103); coverage measured by the dispatch: client 33/33 published tools and resources exercised (probe + play + governance); server 14/25: its 11 openttd.view.* tools are listed on a dedicated server that can only refuse them (owner openttd-80 asked to drop them from View::Tools() there, as UI::Tools() now does); governance: unapproved pause pending on both instances, game kept running"
     commit: 916a43d381296f54bdc18b170c87a0e3ba8660ff
     recorded_at: 2026-11-16T00:27:50Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-human-e2e --test --rounds 1 --seed 11"
+    result: "gate research PASS (103/103, 25 MCP assertions); e2e all PASS: coverage measured by each server's dispatch 14/14 (dedicated server) and 33/33 (GUI client) after probe + play + governance; nothing uncovered"
+    commit: ca73fa798a910e09f3d099f8367161d98b19ea73
+    recorded_at: 2026-11-16T00:37:40Z

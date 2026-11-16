@@ -28,6 +28,7 @@
 #include "prismatic_mcp_detail.h"
 #include "prismatic_mcp_coverage.h"
 #include "prismatic_mcp_entities.h"
+#include "prismatic_mcp_registry.h"
 #include "prismatic_mcp_ui.h"
 #include "prismatic_mcp_view.h"
 #include "prismatic_mcp_world.h"
@@ -810,12 +811,14 @@ bool Start(uint16_t port, std::string &error)
 	_mcp.requests_total = 0;
 	_mcp.requests_denied = 0;
 	Debug(Facility::Net, Severity::Error, "[prismatic-mcp] RESEARCH-ONLY MCP server listening on {} (loopback only)", GetEndpoint());
+	Registry::Announce(GetEndpoint(), _mcp.port); // discoverable by any reader of the instance registry
 	return true;
 }
 
 void Stop()
 {
 	if (!_mcp.running && _mcp.listeners.empty()) return;
+	Registry::Withdraw();
 	for (auto &c : _mcp.conns) CloseConnection(c);
 	_mcp.conns.clear();
 	for (auto &pair : _mcp.listeners) closesocket(pair.first);

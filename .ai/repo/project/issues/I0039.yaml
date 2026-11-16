@@ -24,7 +24,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-15T23:23:16Z
+updated_at: 2026-11-16T00:37:43Z
 evidence:
   - covers: "validation_run"
     type: test
@@ -32,3 +32,9 @@ evidence:
     result: "partial: registry + live probes + cross-instance calls + --instances N work: 3 dedicated servers with PrismaticAI plus the GUI client listed alive by panel 8800; mcp-view-check 14/14 (openttd://game/state read from all 3 panels through one, unknown instance 404); mcp-panel-check 13/13; a stopped stack's entry disappears; taken ports replaced by free ones. Not done: Majordomus discovering the instances"
     commit: 5dd7ff196e502923015a31ae5449567f51c815f1
     recorded_at: 2026-11-15T23:23:16Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-human-e2e --test"
+    result: "every MCP server self-registers (prismatic_mcp_registry.cpp, schema mcp-instance/v1): a dedicated server and a GUI client started without any panel both announced endpoint, token-file path (no token), 0600, live owner; the panel's discover() reads the same directory. Majordomus itself does not read the registry yet."
+    commit: ca73fa798a910e09f3d099f8367161d98b19ea73
+    recorded_at: 2026-11-16T00:37:43Z

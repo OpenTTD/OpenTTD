@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mcp-instance/v1",
+  "title": "An MCP instance in the shared registry",
+  "description": "One owner-only JSON file per running instance in $PRISMATIC_MCP_REGISTRY (default ~/.local/state/prismatic-mcp/instances). Written by the instance itself when its MCP server starts (src/prismatic_mcp/prismatic_mcp_registry.cpp) or by a control panel for itself; removed on stop. A reader drops a record whose owner_pid is no longer alive. The token is never in the record, only the path of its 0600 file.",
+  "type": "object",
+  "required": ["name", "kind", "owner_pid", "registered"],
+  "properties": {
+    "schema": {"const": "mcp-instance/v1"},
+    "name": {"type": "string", "description": "Unique in the registry; also the file name without .json"},
+    "kind": {"enum": ["server", "gui", "client", "panel"], "description": "server: a headless dedicated server; gui: a process with an interface, written by the process itself (its live role, network client, host or single player, is in its own openttd://game/state); client: a GUI client as recorded by the panel that attached it; panel: a control panel"},
+    "role": {"type": "string"},
+    "owner_pid": {"type": "integer", "description": "The process that owns the record; the record is stale when it is gone"},
+    "registered": {"type": "number", "description": "Unix time, seconds"},
+    "endpoint": {"type": "string", "format": "uri", "description": "The MCP endpoint (JSON-RPC over HTTP, bearer token)"},
+    "token_file": {"type": "string", "description": "Path of the 0600 file {agent_token, endpoint}; absent when none was written"},
+    "url": {"type": "string", "format": "uri", "description": "A panel's base URL (kind panel)"},
+    "producer": {"type": "string"},
+    "game_port": {"type": ["integer", "null"], "description": "A dedicated server's game port; null for a GUI process"}
+  },
+  "not": {"anyOf": [{"required": ["agent_token"]}, {"required": ["token"]}]}
+}

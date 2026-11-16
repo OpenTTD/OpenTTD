@@ -68,6 +68,28 @@ Nothing in the check names a tool. A tool added tomorrow is uncovered until a sc
 played. Its governance scenario lists action types, validates a pause, and submits it. The pause
 stays pending because nobody approves it. The run then asserts that the game is still running.
 
+## Every instance announces itself
+
+When an MCP server starts, it writes a record of itself to the instance registry. The registry is
+`$PRISMATIC_MCP_REGISTRY`, by default `~/.local/state/prismatic-mcp/instances`; the code is
+`prismatic_mcp_registry.cpp`. This happens whoever started the process: the control panel,
+`mcp-human-e2e`, or a person at a terminal.
+
+- **What a record holds.** Schema `mcp-instance/v1`
+  (`tools/research/schema/mcp-instance.v1.schema.json`): one owner-only JSON file with the
+  endpoint, the process kind (`server` or `gui`), the owner's pid and the path of the token
+  file. It never holds the token itself.
+- **When it goes away.** It is removed when the server stops. A reader drops any record whose
+  owner process is gone.
+- **Who reads it.** The panel's `GET /api/instances` reads the same directory, so a cluster of
+  instances is discoverable without the launcher knowing about discovery.
+- **What it does not hold.** A GUI process's live role (network client, host, single player)
+  changes as it plays, so it is not in the record; ask the instance itself
+  (`openttd://game/state`).
+
+`mcp-human-e2e --test` runs against an isolated registry. It checks both instances' records:
+schema, kind, endpoint, token-file path, no token, 0600 permissions, and an alive owner.
+
 ## Safety: the owner's switch and the owner's hand
 
 - **Armed per process.** Input tools refuse unless the process was started with

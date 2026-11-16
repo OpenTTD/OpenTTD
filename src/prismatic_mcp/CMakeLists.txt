@@ -10,6 +10,8 @@ add_files(
     prismatic_mcp_entities.h
     prismatic_mcp_entities.cpp
     prismatic_mcp_hooks.h
+    prismatic_mcp_registry.h
+    prismatic_mcp_registry.cpp
     prismatic_mcp_ui.h
     prismatic_mcp_ui.cpp
     prismatic_mcp_view.h

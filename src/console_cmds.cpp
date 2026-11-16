@@ -53,6 +53,7 @@
 #endif
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 #include "prismatic_mcp/prismatic_mcp.h"
+#include "prismatic_mcp/prismatic_mcp_registry.h"
 #include <filesystem>
 #include <fstream>
 #endif
@@ -1827,6 +1828,7 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 				std::filesystem::permissions(path, std::filesystem::perms::owner_read | std::filesystem::perms::owner_write,
 					std::filesystem::perm_options::replace, ec);
 				IConsolePrint(ec ? CC_ERROR : CC_INFO, "Token written to {}{}", path, ec ? " (permissions not set)" : " (mode 0600)");
+				PrismaticMCP::Registry::AnnounceTokenFile(path); // the registry record names the file, never the token
 			} else {
 				IConsolePrint(CC_WARNING, "Bearer token (local operator only, not logged): {}", PrismaticMCP::GetToken());
 			}
