@@ -1,0 +1,115 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY. The panel's overview checked in a real browser: every registered chart
+// (static/overview.js CHARTS) has an instance with a non-zero width whose series carry data, the
+// history comes from the panel (GET /api/overview/history), maximize puts `max` in the address and
+// Escape restores it, the metric survives a reload of the address, a click on a company focuses it
+// (ov_focus), a phone-width page does not scroll sideways, the World page's charts still come
+// through the one door, a tool page builds its form from the schema, and the console stays free
+// of errors. Drives the installed Chrome through playwright-core (npm ci in tools/research/mcp-panel).
+//
+// Usage: tools/research/mcp-overview-check http://127.0.0.1:<panel-port>   (exit 0 PASS, 1 FAIL)
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(path.join(here, 'mcp-panel', 'package.json'));
+const { chromium } = require('playwright-core');
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const base = (process.argv[2] || '').replace(/\/$/, '');
+if (!base) { console.error('usage: mcp-overview-check <panel-url>'); process.exit(2); }
+const checks = [];
+const check = (name, ok, detail = '') => { checks.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` (${detail})` : ''}`); };
+
+const charts = (page) => page.evaluate(async () => {
+  const { CHARTS } = await import('/static/overview.js');
+  return CHARTS.map((c) => {
+    const box = document.getElementById(c.id);
+    const inst = box && globalThis.echarts.getInstanceByDom(box);
+    const series = inst ? inst.getOption().series || [] : [];
+    return { id: c.id, width: box ? box.offsetWidth : 0, points: series.reduce((n, s) => n + (s.data || []).length, 0), series: series.length };
+  });
+});
+
+const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ['--enable-unsafe-swiftshader'] });
+try {
+  const page = await browser.newPage({ viewport: { width: 1600, height: 1400 } });
+  // Without a GUI client the client's own routes answer 503 by design; every other failed request
+  // and every script error counts, by URL.
+  const noClient = (await fetch(`${base}/api/view/screenshot`)).status === 503;
+  const guiOnly = /\/api\/(news|ask|view\/screenshot)(\?|$)/;
+  const errors = [];
+  const watch = (pg) => {
+    pg.on('pageerror', (e) => errors.push(e.message));
+    pg.on('response', (r) => {
+      if (r.status() < 400) return;
+      if (noClient && r.status() === 503 && guiOnly.test(r.url())) return;
+      errors.push(`HTTP ${r.status()} ${r.url()}`);
+    });
+    pg.on('console', (m) => { if (m.type() === 'error' && !/^Failed to load resource/.test(m.text())) errors.push(m.text()); });
+  };
+  watch(page);
+
+  const hist = await (await fetch(`${base}/api/overview/history`)).json();
+  check('the panel keeps a history', hist.count > 0, `${hist.count} game day(s), last tick ${hist.last}`);
+
+  await page.goto(`${base}/?ov_metric=value`);
+  await page.waitForFunction(() => {
+    const b = document.getElementById('ov-companies');
+    const i = b && globalThis.echarts && globalThis.echarts.getInstanceByDom(b);
+    return i && (i.getOption().series || []).some((s) => (s.data || []).length > 0);
+  }, null, { timeout: 30000 }).catch(() => {});
+  for (const c of await charts(page)) check(`${c.id} is drawn with data`, c.width > 0 && c.points > 0, `width ${c.width}, ${c.series} series, ${c.points} points`);
+  check('the metric comes from the address', (await page.inputValue('#ov-metric')) === 'value');
+
+  await page.selectOption('#ov-range', '90');
+  await page.reload();
+  await page.waitForTimeout(800);
+  check('the range survives a reload', (await page.inputValue('#ov-range')) === '90', page.url());
+
+  const max = page.locator('#ov-companies-card [data-toolbar] button', { hasText: 'Maximize' });
+  await max.click();
+  await page.waitForTimeout(300);
+  const maxed = new URL(page.url()).searchParams.get('max');
+  const w = await page.evaluate(() => document.getElementById('ov-companies').offsetWidth);
+  check('maximize puts max in the address and fills the viewport', maxed === 'ov-companies' && w > 1400, `max=${maxed}, width ${w}`);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(300);
+  check('Escape restores', !new URL(page.url()).searchParams.get('max'));
+
+  const focused = await page.evaluate(() => {
+    const inst = globalThis.echarts.getInstanceByDom(document.getElementById('ov-standing'));
+    const bar = inst.getOption().series[0].data.at(-1);
+    inst.trigger('click', { data: bar, componentType: 'series' });
+    return bar && bar.id;
+  });
+  await page.waitForTimeout(300);
+  check('a click on a company focuses it', new URL(page.url()).searchParams.get('ov_focus') === String(focused), `ov_focus=${new URL(page.url()).searchParams.get('ov_focus')}`);
+
+  const phone = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  watch(phone);
+  await phone.goto(`${base}/`);
+  await phone.waitForTimeout(1500);
+  const sideways = await phone.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  check('a phone-width page does not scroll sideways', sideways <= 0, `${sideways}px over`);
+  const phoneCharts = await charts(phone);
+  check('the charts are drawn at phone width', phoneCharts.every((c) => c.width > 0 && c.width <= 390), phoneCharts.map((c) => `${c.id} ${c.width}`).join(', '));
+
+  await page.goto(`${base}/world`);
+  await page.waitForTimeout(2500);
+  const world = await page.evaluate(() => [...document.querySelectorAll('[role="img"]')].filter((b) => globalThis.echarts.getInstanceByDom(b)).length);
+  check('the World page draws its charts through the one door', world > 0, `${world} chart(s)`);
+
+  await page.goto(`${base}/tool/openttd.ai.set_setting`);
+  await page.waitForSelector('#call [data-key]', { timeout: 15000 }).catch(() => {});
+  const fields = await page.$$eval('#call [data-key]', (els) => els.map((e) => e.dataset.key));
+  check('a tool page builds its form from the schema', fields.join(',') === 'company,name,value', fields.join(','));
+
+  check('the console stays free of errors', errors.length === 0, errors.slice(0, 3).join(' | '));
+} finally {
+  await browser.close();
+}
+const failed = checks.filter((c) => !c).length;
+console.log(`\nmcp-overview-check: ${checks.length - failed} passed, ${failed} failed`);
+process.exit(failed ? 1 : 0);

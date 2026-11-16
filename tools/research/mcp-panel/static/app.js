@@ -97,7 +97,7 @@ $('btn-catalogue').onclick = loadCatalogue;
 $('auto').onchange = async (e) => { await api('/api/auto-approve', { on: e.target.checked }); tick(); };
 
 /* ---- developer console (~) ---------------------------------------------------------------- */
-const history = []; let hpos = 0;
+const typed = []; let hpos = 0; // the console lines typed, for ArrowUp/ArrowDown (not window.history)
 /* Every console line is classified and highlighted: errors, warnings, passes, JSON (pretty, keys and
    values coloured), and events by kind. Classification is by content, so a new kind needs no code. */
 const highlightJson = (v) => esc(JSON.stringify(v, null, 2))
@@ -140,8 +140,8 @@ document.addEventListener('keydown', (e) => {
   else if ((e.key === '`' || e.key === '~') && document.activeElement === $('console-in') && $('console-in').value === '') { e.preventDefault(); toggleConsole(false); }
 });
 $('console-in').addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowUp' && hpos > 0) { hpos -= 1; e.target.value = history[hpos]; e.preventDefault(); }
-  if (e.key === 'ArrowDown') { hpos = Math.min(history.length, hpos + 1); e.target.value = history[hpos] ?? ''; e.preventDefault(); }
+  if (e.key === 'ArrowUp' && hpos > 0) { hpos -= 1; e.target.value = typed[hpos]; e.preventDefault(); }
+  if (e.key === 'ArrowDown') { hpos = Math.min(typed.length, hpos + 1); e.target.value = typed[hpos] ?? ''; e.preventDefault(); }
 });
 
 const HELP = `OpenTTD console commands go straight to the server console (e.g. companies, list_ai, date, start_ai PrismaticAI).
@@ -213,7 +213,7 @@ async function run(line) {
 $('console-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const line = $('console-in').value.trim(); if (!line) return;
-  history.push(line); hpos = history.length; $('console-in').value = '';
+  typed.push(line); hpos = typed.length; $('console-in').value = '';
   await run(line); tick();
 });
 
@@ -502,7 +502,8 @@ if (window.EventSource) {
 (function actionPlan() {
   const box = document.getElementById('plan-graph'); if (!box || !window.echarts) return;
   let chart = null;
-  const ec = () => { if (!chart && box.offsetWidth > 0) { chart = echarts.init(box, 'dark', { renderer: 'canvas' }); new ResizeObserver(() => chart.resize()).observe(box); } return chart; };
+  // Through the one door (components.js ecInit, published by overview.js).
+  const ec = () => { if (!chart && globalThis.ecInit) chart = globalThis.ecInit(box, echarts); return chart; };
   const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   document.getElementById('plan-run').onclick = async () => {
     let actions;

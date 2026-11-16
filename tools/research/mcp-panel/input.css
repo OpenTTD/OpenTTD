@@ -18,3 +18,9 @@
   --color-primary-900: #1e3a8a;
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
+/* A grid item may shrink below its content: a wide table scrolls inside its card (overflow-x-auto)
+   instead of widening the page on a phone (mcp-overview-check measures it at 390 px). */
+@layer base {
+  .grid > * { min-width: 0; }
+}

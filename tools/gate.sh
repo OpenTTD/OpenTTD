@@ -184,6 +184,22 @@ gated_files_changed() {
   return 0
 }
 
+# Whether this change, staged or not, touches the panel's pages, charts or stylesheet.
+panel_changed() {
+  { git diff --name-only HEAD 2>/dev/null; git ls-files --others --exclude-standard; } \
+    | grep -qE '^tools/research/mcp-panel/(static|test)/|^tools/research/mcp-panel/input\.css$'
+}
+
+# The panel's own tests (rule project.panel-charts-go-through-one-layer): chart options rendered by
+# ECharts, the one-door scan, the chart registry, and app.css against a fresh build of its sources.
+panel_tests() {
+  local dir=tools/research/mcp-panel css=""
+  [[ -d "$dir/node_modules/echarts" ]] || (cd "$dir" && npm ci --no-audit --no-fund --silent)
+  command -v tailwindcss >/dev/null && css=1
+  echo "==> node --test $dir/test/*.test.mjs${css:+ (with the app.css freshness check)}"
+  PANEL_CSS_CHECK="$css" node --test "$dir"/test/*.test.mjs
+}
+
 cmd_smoke() {
   local ctest_regex=""
   while [[ $# -gt 0 ]]; do
@@ -225,6 +241,7 @@ cmd_change() {
   tools/knowledge/refs impact HEAD
   echo "==> tools/knowledge/refs coverage src/ (tracked files no subsystem map attaches to; informational)"
   tools/knowledge/refs coverage src/ | tail -n 1
+  if panel_changed; then panel_tests; fi
 
   if [[ ! -f build/CMakeCache.txt ]]; then
     echo "==> cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo (initial configure)"

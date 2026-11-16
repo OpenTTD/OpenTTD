@@ -1,4 +1,5 @@
 'use strict';
+import { ecInit as panelEcInit } from './components.js';
 /* The world view: the whole map (bespoke canvas) and the road network (ECharts, map coordinates),
    both derived from MCP resources through the panel. Parameters live in the URL. */
 
@@ -9,7 +10,6 @@ const TYPE_COLOURS = {
   W: '#2a6fb0', V: '#111111', I: '#9085e9', B: '#b0a070', O: '#6b6b6b',
 };
 const TYPE_NAMES = { C: 'clear', R: 'rail', r: 'road', H: 'house', T: 'trees', S: 'station', W: 'water', I: 'industry', B: 'bridge/tunnel', O: 'object' };
-const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---- URL state ----------------------------------------------------------------------------- */
 const params = new URLSearchParams(location.search);
@@ -25,19 +25,15 @@ function saveState() {
   history.replaceState(null, '', `${location.pathname}?${p}`);
 }
 
-/* ---- the one door to ECharts ---------------------------------------------------------------- */
+/* ---- charts: through the one door (components.js ecInit), in the dark theme ------------------ */
 const charts = {};
+const darkEcharts = { init: (box, _theme, opts) => echarts.init(box, 'dark', opts), getInstanceByDom: (box) => echarts.getInstanceByDom(box) };
 function ecInit(id) {
-  const el = $(id);
-  if (!el || el.offsetWidth === 0) return null;
   if (charts[id]) return charts[id];
-  const chart = echarts.init(el, 'dark', { renderer: 'canvas' });
-  const set = chart.setOption.bind(chart);
-  chart.setOption = (opt, ...rest) => set({
-    animationDuration: reduced ? 0 : 850, animationEasing: 'cubicOut', animationDurationUpdate: reduced ? 0 : 380,
-    aria: { enabled: true, label: { description: el.getAttribute('aria-label') } }, backgroundColor: 'transparent', ...opt,
-  }, ...rest);
-  new ResizeObserver(() => chart.resize()).observe(el);
+  const chart = panelEcInit($(id), darkEcharts);
+  if (!chart) return null;
+  const set = chart.setOption;
+  chart.setOption = (opt, ...rest) => set({ backgroundColor: 'transparent', ...opt }, ...rest);
   charts[id] = chart;
   return chart;
 }

@@ -99,6 +99,38 @@ REST route, a Swagger operation and a Rhai function without a change here.
 `tools/research/mcp-panel-check` proves it against a running panel: every tool and resource has its
 route, the schemas are carried, the routes answer, Swagger UI is served, and the event feed works.
 
+### The overview: history kept by the panel, charts through one layer
+
+The top of the panel is the game at a glance. Six stat cards each lead to their resource page
+(`/resource/game/state`, `/resource/vehicles`, `/resource/companies`, `/resource/towns`). Three charts
+follow, each on a card that maximizes (Escape restores):
+
+- **Companies over time**: every company's net worth (money − loan), value, money or loan by game date.
+- **Standing today**: the companies ranked by the same metric on the last game day.
+- **Fleet**: vehicles in the game by date.
+
+The panel keeps the history itself, so a reload keeps it. `GET /api/overview/history` holds one sample
+per game day, read from `openttd://game/state` and `openttd://companies` by the watcher that derives
+the game events. It is bounded, a new world starts it again, and `?since=<tick>` returns only the
+newer samples. The page asks for those on every event of the stream (`/api/events/stream`), and every
+3 s in case the stream drops.
+
+The metric, the range, the focused company and the maximized card live in the address (`ov_metric`,
+`ov_range`, `ov_focus`, `max`), so a configured view is a link. A click on a company focuses it in
+both company charts; a click on the fleet opens every vehicle. Ctrl+wheel zooms, and the slider sets
+the range. Every chart is created by `components.js` `ecInit`, the only `echarts.init` in the panel;
+the plan DAG and the World page go through it too. Each chart is a row of `CHARTS` in
+`static/overview.js`. At 390 px the page does not scroll sideways.
+
+Rule `project.panel-charts-go-through-one-layer` makes this blocking. Proof:
+
+- `node --test tools/research/mcp-panel/test/*.test.mjs` renders the options server-side with ECharts,
+  scans every script for a second door, checks the registry, and with `PANEL_CSS_CHECK=1` compares
+  `app.css` with a fresh build. `tools/gate.sh change` runs it whenever the panel changes.
+- `tools/research/mcp-overview-check <panel-url>` checks in a real browser: the charts are drawn with
+  data, the address survives a reload, maximize and Escape work, a click focuses, the phone width does
+  not overflow, the World page draws, a tool page builds its form, and the console has no errors.
+
 ### A page per tool and resource
 
 Every item of the live MCP catalogue has its own page with a stable address: `/tool/<name>`

@@ -588,6 +588,8 @@ pub struct Game {
     // different, earlier question and the new answer was never published.
     asks_reported: Mutex<HashSet<String>>,
     view_token: Mutex<Option<String>>,
+    /// The overview's history: one sample per game day, newest last (see `sample_of`).
+    history: Mutex<VecDeque<Value>>,
 }
 
 pub const NO_CLIENT: &str = "no GUI client attached (POST /api/view/attach {token_file})";
@@ -604,7 +606,7 @@ impl Game {
             bus: Bus::new(), pending: Mutex::new(BTreeMap::new()),
             mcp_up: AtomicBool::new(false), ai_started: AtomicBool::new(false), rpc_id: AtomicU64::new(0),
             server_tools: Mutex::new((vec![], None)), client_tools: Mutex::new((vec![], None)),
-            owner_q: Mutex::new(None), plans_seen: Mutex::new(HashSet::new()),
+            owner_q: Mutex::new(None), plans_seen: Mutex::new(HashSet::new()), history: Mutex::new(VecDeque::new()),
             asks_reported: Mutex::new(HashSet::new()), view_token: Mutex::new(None),
         })
     }
@@ -1071,9 +1073,58 @@ impl Game {
             for (kind, data) in derive_game_events(prev.as_ref(), &cur) {
                 self.bus.publish(kind, data);
             }
+            if let Some(sample) = sample_of(&st, &cs) { self.record_sample(sample); }
             prev = Some(cur);
         }
     }
+}
+
+impl Game {
+    /// Keeps one sample per game day (a later read of the same day replaces it), at most
+    /// `HISTORY_MAX`; a tick lower than the last one is a new world, and the history starts again.
+    fn record_sample(&self, sample: Value) {
+        let mut h = self.history.lock().unwrap();
+        push_sample(&mut h, sample);
+    }
+
+    /// The samples with a tick above `since`.
+    pub fn history_since(&self, since: f64) -> Vec<Value> {
+        self.history.lock().unwrap().iter().filter(|s| s["t"].as_f64().unwrap_or(0.0) > since).cloned().collect()
+    }
+}
+
+pub const HISTORY_MAX: usize = 8000;
+
+pub fn push_sample(h: &mut VecDeque<Value>, sample: Value) {
+    let tick = sample["t"].as_f64().unwrap_or(0.0);
+    if let Some(last) = h.back() {
+        if last["t"].as_f64().unwrap_or(0.0) > tick { h.clear(); }
+        else if last["date"] == sample["date"] { h.pop_back(); }
+    }
+    h.push_back(sample);
+    while h.len() > HISTORY_MAX { h.pop_front(); }
+}
+
+/// One overview sample from openttd://game/state and openttd://companies: tick, date, counts, and
+/// per company money, value, loan and net (money − loan); None without state data.
+pub fn sample_of(st: &Value, cs: &Value) -> Option<Value> {
+    let d = st.get("data")?;
+    let companies: Vec<Value> = cs.pointer("/data/companies").and_then(Value::as_array).cloned().unwrap_or_default()
+        .into_iter().map(|c| {
+            let n = |k: &str| c.get(k).and_then(Value::as_f64).unwrap_or(0.0);
+            json!({"id": c.get("id"), "name": c.get("name"), "is_ai": c.get("is_ai"), "money": n("money"),
+                   "value": n("company_value"), "loan": n("loan"), "net": n("money") - n("loan")})
+        }).collect();
+    Some(json!({"t": st.get("game_tick"), "date": st.get("game_date"), "vehicles": d.get("num_vehicles"),
+                "towns": d.get("num_towns"), "paused": d.get("paused"), "companies": companies}))
+}
+
+fn h_history(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let since = i.query.get("since").and_then(|v| v.parse::<f64>().ok()).unwrap_or(-1.0);
+    let samples = g.history_since(since);
+    // The newest tick kept: a client whose cursor is past it saw an older world, and starts again.
+    let last = g.history.lock().unwrap().back().map(|s| s["t"].clone()).unwrap_or(Value::Null);
+    Ok((200, json!({"since": since, "last": last, "count": samples.len(), "samples": samples})))
 }
 
 /// What the watcher compares between two reads.
@@ -1803,6 +1854,7 @@ pub fn routes() -> Vec<Route> {
         r("GET", "/api/log", "log", "The server console log (token redacted)", false, None, h_log),
         r("GET", "/api/events", "events", "Events after ?since=<seq>, optionally ?kinds=game,company,... ; SSE: /api/events/stream", false, None, h_events),
         r("GET", "/api/overview", "overview", "Game state, companies and decisions in one read", true, None, h_overview),
+        r("GET", "/api/overview/history", "overviewHistory", "The overview's history kept by the panel: one sample per game day (tick, date, vehicles, towns, per company money, value, loan, net); ?since=<tick> for the newer ones", false, None, h_history),
         r("GET", "/api/catalogue", "catalogue", "MCP initialize, resources/list and tools/list", true, None, h_catalogue),
         r("GET", "/api/resource", "readResource", "Read one MCP resource by ?uri=", true, None, h_resource),
         r("POST", "/api/rpc", "rpc", "Raw MCP JSON-RPC with the panel's token", true,
@@ -2198,21 +2250,6 @@ fn html_escape(s: &str) -> String {
     s.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;").replace('"', "&quot;")
 }
 
-/// The decoded path segment after a page prefix (`%2F` and friends), as the catalogue names it.
-fn url_decode(s: &str) -> String {
-    let b = s.as_bytes();
-    let mut out = Vec::with_capacity(b.len());
-    let mut i = 0;
-    while i < b.len() {
-        if b[i] == b'%' && i + 2 < b.len() {
-            if let Ok(v) = u8::from_str_radix(&s[i + 1..i + 3], 16) { out.push(v); i += 3; continue; }
-        }
-        out.push(b[i]);
-        i += 1;
-    }
-    String::from_utf8_lossy(&out).into_owned()
-}
-
 /// A page's title and description from the live catalogue, and whether the item exists:
 /// /tools the catalogue itself, /tool/<name> a server tool, /client/<name> a GUI client tool,
 /// /resource/<path> the resource openttd://<path>.
@@ -2223,14 +2260,14 @@ fn page_meta(g: &Arc<Game>, path: &str) -> (String, String, bool) {
         return ("MCP catalogue".into(), "Every tool, GUI client tool and resource of the game's MCP server, each with its own page".into(), true);
     }
     if let Some(name) = path.strip_prefix("/tool/") {
-        let name = url_decode(name);
+        let name = percent_decode(name);
         return match find(g.server_tools(), "name", &name) { Some(d) => (name, d, true), None => (format!("{name}: not in the catalogue"), String::new(), false) };
     }
     if let Some(name) = path.strip_prefix("/client/") {
-        let name = url_decode(name);
+        let name = percent_decode(name);
         return match find(g.client_tools(), "name", &name) { Some(d) => (name, d, true), None => (format!("{name}: no GUI client offers it"), String::new(), false) };
     }
-    let rest = url_decode(path.strip_prefix("/resource/").unwrap_or(""));
+    let rest = percent_decode(path.strip_prefix("/resource/").unwrap_or(""));
     let uri = format!("openttd://{rest}");
     let resources = g.rpc("resources/list", None).ok()
         .and_then(|r| r.pointer("/result/resources").and_then(Value::as_array).cloned()).unwrap_or_default();
@@ -2393,10 +2430,32 @@ mod tests {
     use super::*;
 
     #[test]
+    fn the_history_keeps_one_sample_a_day_and_restarts_with_a_new_world() {
+        let st = |t: i64, date: &str| json!({"game_tick": t, "game_date": date, "data": {"num_vehicles": 3, "num_towns": 9, "paused": false}});
+        let cs = json!({"data": {"companies": [{"id": 0, "name": "A", "money": 500, "company_value": 900, "loan": 300}]}});
+        let s0 = sample_of(&st(10, "1950-01-01"), &cs).unwrap();
+        assert_eq!(s0["companies"][0]["net"], json!(200.0));
+        assert_eq!(s0["vehicles"], json!(3));
+        assert!(sample_of(&json!({}), &cs).is_none());
+        let mut h = VecDeque::new();
+        push_sample(&mut h, s0);
+        push_sample(&mut h, sample_of(&st(40, "1950-01-01"), &cs).unwrap());
+        assert_eq!(h.len(), 1, "a second read of the same day replaces the first");
+        assert_eq!(h[0]["t"], json!(40));
+        push_sample(&mut h, sample_of(&st(80, "1950-01-02"), &cs).unwrap());
+        assert_eq!(h.len(), 2);
+        push_sample(&mut h, sample_of(&st(5, "1950-01-01"), &cs).unwrap());
+        assert_eq!(h.len(), 1, "a lower tick is a new world");
+        for d in 0..(HISTORY_MAX + 5) { push_sample(&mut h, sample_of(&st(100 + d as i64, &format!("d{d}")), &cs).unwrap()); }
+        assert_eq!(h.len(), HISTORY_MAX);
+    }
+
+    #[test]
     fn page_paths_decode_and_page_text_is_escaped() {
-        assert_eq!(url_decode("openttd.ai.set_setting"), "openttd.ai.set_setting");
-        assert_eq!(url_decode("map%2Fways"), "map/ways");
-        assert_eq!(url_decode("trailing%2"), "trailing%2");
+        assert_eq!(percent_decode("openttd.ai.set_setting"), "openttd.ai.set_setting");
+        assert_eq!(percent_decode("map%2Fways"), "map/ways");
+        assert_eq!(percent_decode("trailing%2"), "trailing%2");
+        assert_eq!(percent_decode("%C3%A9%2"), "é%2");
         assert_eq!(html_escape("<a href=\"x\">&</a>"), "&lt;a href=&quot;x&quot;&gt;&amp;&lt;/a&gt;");
     }
 
@@ -2439,9 +2498,9 @@ mod tests {
         }
         let ids: HashSet<&str> = rs.iter().map(|r| r.op_id).collect();
         assert_eq!(ids.len(), rs.len(), "operationIds are unique");
-        // server.py's table, route for route, plus the content routes (GET /api/content, POST
-        // /api/content/download) added after the Python panel was retired.
-        assert_eq!(rs.len(), 34);
+        // server.py's table, route for route, plus the routes added after the Python panel was
+        // retired: GET /api/content, POST /api/content/download, GET /api/overview/history.
+        assert_eq!(rs.len(), 35);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes")] {
@@ -2449,7 +2508,7 @@ mod tests {
         }
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",
             "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai",
-            "/api/content", "/api/content/download"].contains(&r.path)));
+            "/api/content", "/api/content/download", "/api/overview/history"].contains(&r.path)));
     }
 
     #[test]
