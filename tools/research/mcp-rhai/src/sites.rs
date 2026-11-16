@@ -6,7 +6,13 @@
 //! whole rectangle is buildable (clear land or trees) and flat (all four corner heights equal, from
 //! openttd://map heights, which are each tile's north corner); the tile beyond the end that faces the
 //! other end (the exit, where the line starts) is free and flat too. Among such sites, the one
-//! nearest the industry or town wins.
+//! nearest the industry or town wins, preferring one whose depot tile is free as well.
+//!
+//! Depot: the tile beyond the station's back end (opposite the exit), free and flat, with the depot's
+//! entrance facing the station. A rail station connects at both ends of its axis, so the depot joins
+//! the station track directly and a train leaves it straight onto the platform. Its `dir` is the side
+//! the depot opens to, which is the same as the exit's (both point from the back toward the far end).
+//! `depot` is null when no site near the industry or town has that tile free.
 use serde_json::{json, Value};
 
 struct MapView<'a> { w: usize, h: usize, types: Vec<&'a [u8]>, heights: Vec<&'a [u8]> }
@@ -34,8 +40,9 @@ impl<'a> MapView<'a> {
     }
 }
 
-/// A station site near (ox, oy) whose axis points at (tx, ty): {tile, x, y, axis, length, end, exit}
-/// with exit {x, y, dir}, dir being the side the line leaves by (NE x-1, SE y+1, SW x+1, NW y-1).
+/// A station site near (ox, oy) whose axis points at (tx, ty): {tile, x, y, axis, length, end, exit,
+/// depot} with exit {x, y, dir}, dir being the side the line leaves by (NE x-1, SE y+1, SW x+1,
+/// NW y-1), and depot {x, y, tile, dir} or null.
 pub fn site(map: &Value, ox: i64, oy: i64, tx: i64, ty: i64, len: usize) -> Option<Value> {
     let m = MapView::new(map)?;
     let (dx, dy) = (tx - ox, ty - oy);
@@ -55,12 +62,24 @@ pub fn site(map: &Value, ox: i64, oy: i64, tx: i64, ty: i64, len: usize) -> Opti
                 (false, false) => (end.0, end.1 - 1, "NW"),
             };
             if ex < 1 || ey < 1 || !m.free_flat(ex as usize, ey as usize) { continue; }
-            let d = (sx - ox).abs() + (sy - oy).abs();
+            // The back end and the tile beyond it, on the side away from the exit.
+            let back = if forward { tiles[0] } else { *tiles.last()? };
+            let (bx, by) = match (along_x, forward) {
+                (true, true) => (back.0 - 1, back.1),
+                (true, false) => (back.0 + 1, back.1),
+                (false, true) => (back.0, back.1 - 1),
+                (false, false) => (back.0, back.1 + 1),
+            };
+            let depot = (bx >= 1 && by >= 1 && m.free_flat(bx as usize, by as usize))
+                .then(|| json!({"x": bx, "y": by, "tile": by * m.w as i64 + bx, "dir": dir}));
+            // Nearest first; a site without a depot tile counts as farther than any site with one.
+            let d = (sx - ox).abs() + (sy - oy).abs() + if depot.is_some() { 0 } else { 1000 };
             if best.as_ref().map_or(true, |(bd, _)| d < *bd) {
                 best = Some((d, json!({
                     "tile": sy * m.w as i64 + sx, "x": sx, "y": sy, "length": len,
                     "axis": if along_x { "NE_SW" } else { "NW_SE" },
                     "end": {"x": end.0, "y": end.1}, "exit": {"x": ex, "y": ey, "dir": dir},
+                    "depot": depot,
                 })));
             }
         }
@@ -81,5 +100,32 @@ mod tests {
         assert_eq!(s["axis"], "NE_SW");
         assert_eq!(s["exit"]["dir"], "SW");
         assert_eq!(s["exit"]["x"].as_i64().unwrap(), s["end"]["x"].as_i64().unwrap() + 1);
+        // The depot is behind the back end (x - 1 of the first tile), opening toward the station.
+        assert_eq!(s["depot"]["x"].as_i64().unwrap(), s["x"].as_i64().unwrap() - 1);
+        assert_eq!(s["depot"]["y"], s["y"]);
+        assert_eq!(s["depot"]["dir"], "SW");
+    }
+
+    #[test]
+    fn a_site_whose_back_tile_is_free_wins_over_a_nearer_one_without() {
+        // A water column at x = 9 blocks the depot tile of every site starting at x = 10.
+        let rows_t: Vec<String> = (0..30).map(|_| (0..30).map(|x| if x == 9 { 'W' } else { 'C' }).collect()).collect();
+        let row_h = "00".repeat(30);
+        let map = json!({"width": 30, "height": 30, "types": rows_t, "heights": vec![row_h; 30]});
+        let s = site(&map, 10, 10, 25, 10, 3).expect("a site");
+        let (sx, dx) = (s["x"].as_i64().unwrap(), s["depot"]["x"].as_i64().unwrap());
+        assert_eq!(dx, sx - 1);
+        assert_ne!(dx, 9);
+    }
+
+    #[test]
+    fn a_reversed_station_has_its_depot_beyond_the_far_side() {
+        let row_t = "C".repeat(30);
+        let row_h = "00".repeat(30);
+        let map = json!({"width": 30, "height": 30, "types": vec![row_t; 30], "heights": vec![row_h; 30]});
+        let s = site(&map, 20, 10, 5, 10, 3).expect("a site");
+        assert_eq!(s["exit"]["dir"], "NE");
+        assert_eq!(s["depot"]["x"].as_i64().unwrap(), s["x"].as_i64().unwrap() + 3);
+        assert_eq!(s["depot"]["dir"], "NE");
     }
 }

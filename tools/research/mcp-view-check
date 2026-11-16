@@ -152,6 +152,9 @@ plan="$(curl -s "$URL/api/plan?limit=3&params=%7B%22budget%22%3A300000%7D")"
 check "rail candidates carry station sites (axis, flat rectangle, exit tile with its side) for an executor" \
   "$([[ "$(json "(lambda rail: len(rail) == 0 or all((c['stations']['from'] is None or c['stations']['from']['exit']['dir'] in ('NE','SE','SW','NW')) for c in rail))([c for c in d['portfolio']['chosen'] if c['mode'] in ('rail','freight_rail')])" <<<"$plan")" == True ]] && echo 1 || echo 0)"
 
+check "a rail site's depot is beyond its back end, opening toward the platform like the exit" \
+  "$([[ "$(json "(lambda ss: all(s['depot'] is None or (s['depot']['dir'] == s['exit']['dir'] and abs(s['depot']['x'] - s['exit']['x']) + abs(s['depot']['y'] - s['exit']['y']) == s['length'] + 1) for s in ss))([c['stations'][e] for c in d['portfolio']['chosen'] if c['mode'] in ('rail','freight_rail') for e in ('from','to') if c['stations'][e]])" <<<"$plan")" == True ]] && echo 1 || echo 0)"
+
 # Plan before acting: AlgoGlyph action-plan turns actions into a DAG and cash-checked presses.
 if [[ -n "$(curl -s "$URL/api/status" | json "'x'")" ]]; then
   out="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"actions":[{"id":"borrow","kind":"borrow","amount":30000,"step":10000},{"id":"build","kind":"build","cost":1000,"after":["borrow"]}],"cash":10000,"loan":0,"max_loan":300000}' "$URL/api/actionplan")"

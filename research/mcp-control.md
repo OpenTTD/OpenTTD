@@ -355,7 +355,16 @@ Every rail candidate in `/api/plan`, freight and passengers, in the portfolio to
 PrismaticAI's own rule (`src/sites.rs` mirrors `rail.nut` `BuildRailStationAt`): the axis points
 toward the other end, the rectangle is buildable and flat (all corner heights equal), and the free,
 flat exit tile beyond the end faces the other end. `dir` is the side the line leaves by, the input
-AlgoGlyph track-planning takes. openttd-07's person-like player lays the track pieces from there.
+AlgoGlyph track-planning takes. openttd-07's person-like player lays the track pieces from there:
+`mcp-human rail` builds both stations at these sites, plans and lays the line, and walks it
+(a 64-piece coal line on seed 31, both sites right first time).
+
+Each site also carries `depot: {x, y, tile, dir}`. That is the free, flat tile beyond the
+station's back end, opposite the exit, with the depot's entrance facing the platform. A rail
+station connects at both ends of its axis, so a train leaves the depot straight onto the platform.
+`dir` is the side the depot opens to, the same as the exit's. Sites with a free depot tile are
+preferred, and `depot` is null only when no site nearby has one. On the main stack all 30 sites of
+a plan had one.
 
 `tools/research/mcp-duel [--months 24]` is a duel in one game: the planned bot and the same bot
 unplanned compete for the same towns and industries on one map, and the higher company value wins.
