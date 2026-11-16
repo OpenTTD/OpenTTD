@@ -99,13 +99,21 @@ done
 # knapsack-dp kernel (the answer names the solver). Override with MCP_ALGOGLYPH_DIR; unset: built-in.
 if [[ -z "${MCP_ALGOGLYPH_DIR:-}" ]]; then
   # The newest stacked branch first: exact-prices carries transport-investment, action-plan,
-  # track-planning and flow-cli under it.
+  # track-planning and flow-cli under it. A checkout is taken only when its flow CLI lists every
+  # kernel the stack uses: the primary checkout can be far behind origin/main (585 commits on
+  # 2026-11-16) and would otherwise be taken without today's kernels, silently.
+  NEED_KERNELS="knapsack-dp track-planning transport-investment action-plan"
   for d in "$HOME/dev/algoglyph-wt/feature/exact-prices" "$HOME/dev/algoglyph-wt/feature/transport-investment" "$HOME/dev/algoglyph-wt/feature/action-plan" "$HOME/dev/algoglyph-wt/feature/track-planning" \
            "$HOME/dev/algoglyph-wt/feature/flow-cli" "$HOME/dev/algoglyph"; do
-    if [[ -f "$d/package.json" ]] && grep -q '"flow"' "$d/package.json" && [[ -d "$d/node_modules" ]]; then
+    [[ -f "$d/package.json" ]] && grep -q '"flow"' "$d/package.json" && [[ -d "$d/node_modules" ]] || continue
+    kernels="$(cd "$d" && npm run --silent flow -- kernels 2>/dev/null || true)"
+    missing=""
+    for k in $NEED_KERNELS; do grep -q "\"$k\"" <<<"$kernels" || missing="$missing $k"; done
+    if [[ -z "$missing" ]]; then
       export MCP_ALGOGLYPH_DIR="$d"
       break
     fi
+    echo "    AlgoGlyph at $d lacks:$missing (a stale checkout?); trying the next" >&2
   done
 fi
 [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]] && echo "    AlgoGlyph runner: $MCP_ALGOGLYPH_DIR"
