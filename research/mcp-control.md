@@ -301,6 +301,30 @@ month it records each company's value, money, loan and vehicles from the console
 command, and it writes `research/results/ab-<time>-seed<N>.{json,md}`. A result is a run that
 completed, not a claim.
 
+## Planner v4: freight, and a portfolio chosen by AlgoGlyph
+
+- **Freight pairs.** Every producing industry in `openttd://world/graph` (with last month's
+  production) is paired with every industry that accepts its cargo within the freight band. Each
+  pair is priced with that cargo's own payment rate and transit periods: `openttd://engines` now
+  carries a `cargos` table, the inputs of `GetTransportedGoodsIncome`, and `time_factor_for(t, td1,
+  td2)` follows the source for any cargo. Two options are priced, trucks and a freight train,
+  using vehicles on offer for that cargo now. Freight travels loaded one way and empty back, so a
+  vehicle carries one load per round trip.
+- **Portfolio.** From the best option of every passenger and freight candidate, the planner picks
+  the set of investments with the highest total score that fits the budget, a 0/1 knapsack with
+  money in thousands. When `MCP_ALGOGLYPH_DIR` names a checkout of AlgoGlyph's flow runner,
+  AlgoGlyph's `knapsack-dp` kernel solves it. `mcp-e2e` finds one at
+  `~/dev/algoglyph-wt/feature/flow-cli` or `~/dev/algoglyph`. Otherwise the same dynamic programme
+  runs built in, and a unit test pins it to AlgoGlyph's answer on a known case. The answer names
+  the solver, the kernel (id, plate, work) and its input. `/world` shows the portfolio and its
+  solver, and a click on an entry moves your camera there.
+- **The bot plays the portfolio.** The panel passes the first chosen freight rail pair (`fr_from`,
+  `fr_to`, `fr_cargo`), passenger rail pair and air pair. The bot places the freight station where
+  the industry produces into it at the mine, and where the cargo is accepted at the power station.
+  Its train waits for a full load at the mine. Live: coal by rail from Little Trenhill City Coal
+  Mine to Tunfingbridge Power Station, 243 tiles. The portfolio was chosen by AlgoGlyph knapsack-dp
+  (3 investments, 293k of 300k).
+
 ## A cluster of instances: discovery and calls across it
 
 Every panel registers itself, and the GUI client it attaches, in a shared registry

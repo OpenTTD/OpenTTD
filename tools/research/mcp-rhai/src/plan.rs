@@ -53,18 +53,23 @@ pub fn defaults() -> Value {
     })
 }
 
-/// The game's time factor for passengers (transit periods [0, 24]), src/economy.cpp
-/// GetTransportedGoodsIncome: 255 - t, then 279 - 2t from 24 periods, floor 31 at 124 periods,
-/// then 2*31*16*16 / (2t - 248 + 32) in 1/16 fixed point (continuous at 31).
-fn time_factor(t: f64) -> f64 {
+/// The game's time factor for any cargo, exactly as src/economy.cpp GetTransportedGoodsIncome
+/// computes it from the cargo's transit periods (td1, td2): constant, then -1 a period after td1,
+/// -2 after td1 + td2, never below 31 until the asymptotic tail (1/16 fixed point, continuous).
+pub fn time_factor_for(t: f64, td1: f64, td2: f64) -> f64 {
     let t = t.max(0.0);
-    let over_max = 2.0 * t - 248.0;
+    let over1 = (t - td1).max(0.0);
+    let over2 = (over1 - td2).max(0.0);
+    let over_max = if td2 > 224.0 { -224.0 + (t - td1) } else { -224.0 + 2.0 * (t - td1) - td2 };
     if over_max > 0.0 {
         (15872.0 / (over_max + 32.0)).max(1.0) / 16.0
     } else {
-        (255.0 - t - (t - 24.0).max(0.0)).max(31.0)
+        (255.0 - over1 - over2).max(31.0)
     }
 }
+
+/// Passengers: transit periods [0, 24].
+fn time_factor(t: f64) -> f64 { time_factor_for(t, 0.0, 24.0) }
 
 #[cfg(test)]
 mod tests {
@@ -77,6 +82,12 @@ mod tests {
         assert_eq!(time_factor(124.0), 31.0);
         assert!((time_factor(124.5) - 30.06).abs() < 0.01);
         assert!(time_factor(1000.0) < 3.0);
+    }
+    #[test]
+    fn coal_keeps_paying_far_longer() {
+        // Coal: transit periods [7, 255]: full rate to 7 periods, then -1 a period.
+        assert_eq!(super::time_factor_for(7.0, 7.0, 255.0), 255.0);
+        assert_eq!(super::time_factor_for(57.0, 7.0, 255.0), 205.0);
     }
 }
 

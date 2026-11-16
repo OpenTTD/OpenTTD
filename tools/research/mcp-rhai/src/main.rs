@@ -151,7 +151,7 @@ fn engine(panel: Panel) -> Engine {
             let v = from_dyn(p.get(path)?)?;
             Ok(v.get("data").cloned().unwrap_or(v))
         };
-        to_dyn(graph::derive(&get("/api/resources/map")?, &get("/api/resources/towns")?, &get("/api/resources/stations")?)?)
+        to_dyn(graph::derive_with_ways(&get("/api/resources/map")?, &get("/api/resources/towns")?, &get("/api/resources/stations")?, &get("/api/resources/map/ways").unwrap_or(Value::Null))?)
     });
     let p = panel.clone();
     // A route plan (src/plan.rs): town pairs ranked by model v2 (the game's payment formula), each with its mode.
@@ -161,7 +161,7 @@ fn engine(panel: Panel) -> Engine {
             Ok(v.get("data").cloned().unwrap_or(v))
         };
         let towns = get("/api/resources/towns")?;
-        let g = graph::derive(&get("/api/resources/map")?, &towns, &get("/api/resources/stations")?)?;
+        let g = graph::derive_with_ways(&get("/api/resources/map")?, &towns, &get("/api/resources/stations")?, &get("/api/resources/map/ways").unwrap_or(Value::Null))?;
         let engines = get("/api/resources/engines").unwrap_or(Value::Null);
         to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &Value::Null, &engines)?)
     });
@@ -173,7 +173,7 @@ fn engine(panel: Panel) -> Engine {
             Ok(v.get("data").cloned().unwrap_or(v))
         };
         let towns = get("/api/resources/towns")?;
-        let g = graph::derive(&get("/api/resources/map")?, &towns, &get("/api/resources/stations")?)?;
+        let g = graph::derive_with_ways(&get("/api/resources/map")?, &towns, &get("/api/resources/stations")?, &get("/api/resources/map/ways").unwrap_or(Value::Null))?;
         let engines = get("/api/resources/engines").unwrap_or(Value::Null);
         to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &from_dyn(Dynamic::from_map(params))?, &engines)?)
     });

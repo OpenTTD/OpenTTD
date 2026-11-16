@@ -1,0 +1,46 @@
+id: I0064
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Planner v4: freight routes from the world graph priced per cargo, an investment portfolio chosen by AlgoGlyph's knapsack-dp, and the bot builds freight rail"
+slug: planner-v4-freight-and-portfolio
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Analyse producer, consumer and carrier links properly: price every producer to acceptor pair with its cargo's own payment rate and transit periods, choose the investments that fit the budget with a real solver (AlgoGlyph knapsack-dp), and have the bot build what the portfolio chose."
+why: "The owner: it never builds cargo, which is often more profitable; it does not analyse producer, consumer and carrier links; ROI is computed wrongly; algoglyph has everything for simulation, calculation and modelling."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_world.cpp"
+  - "tools/research/**"
+  - "research/**"
+non_scope:
+  - "Trucks for freight; signals and several trains per line; AlgoGlyph traces in the UI (kernel id, input and work are shown)"
+depends_on:
+  - I0059
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd://engines carries every cargo's payment rate and transit periods"
+  - "mcp-plan lists freight pairs from openttd://world/graph industries, each with truck and freight rail options priced by the game's time factor for that cargo (one load per round trip)"
+  - "The portfolio is chosen by AlgoGlyph knapsack-dp when MCP_ALGOGLYPH_DIR names its runner, by the same built-in DP otherwise, and the answer names the solver, kernel and input; a unit test pins the built-in to AlgoGlyph's answer"
+  - "The panel starts the bot from the portfolio (fr_from, fr_to, fr_cargo; rail; air) and /world shows the portfolio with its solver"
+  - "The bot builds a freight line with a full-load train; an A/B run with planner v4 is committed as evidence"
+validation:
+  - "cargo test --release --bin mcp-plan (tools/research/mcp-rhai)"
+  - "tools/gate.sh research"
+  - "tools/research/mcp-ab --months 12"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16T02:30:41Z
+started_at: 2026-11-16T02:12:39Z
+started_event: sha256:d058ad7aa02a0430aa603a68eb54f12b35cada4ca0374c4cfed576346a3969d7
+verified_at: 2026-11-16T02:30:36Z
+verified_event: sha256:ef39a0f04c08478feba75be41d202be99e0504fb09cf315b88cf90e61b7069e2
+completed_at: 2026-11-16T02:30:41Z
+completed_event: sha256:fad2258589fe614546224516b03be9366f9fb0b886d4dc9f99e51e617ec7a176
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release --bin mcp-plan; tools/gate.sh research; mcp-route-check; mcp-view-check; mcp-panel-check; tools/research/mcp-ab --months 12 (seed 12189)"
+    result: "cargo tests 3/3 (passenger and coal time factor, knapsack pinned to AlgoGlyph's answer); gate research PASS (104/104); route-check 58/0; view-check 31/31; panel-check 13/13. Live: portfolio by AlgoGlyph knapsack-dp (3 investments, 293k of 300k), the bot built a 243-tile coal line with a full-load train. A/B seed 12189: A (planner v4) value 85220, built coal 215 tiles + passenger rail 190 tiles + air by month 4; B (baseline) built nothing all year due to a bot bug (silent stop failures), so the comparison is invalid and marked so in the results file; bug fixed (bridge ff417f0), rerun follows. graph.rs now uses openttd://map/ways (791 real network tiles vs 797 inferred)"
+    commit: 812defb0ce76d1af188bbc5a2a052a82c94f90a8
+    recorded_at: 2026-11-16T02:30:38Z

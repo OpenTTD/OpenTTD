@@ -87,6 +87,18 @@ for var in PANEL_PORT MCP_PORT GAME_PORT; do
   fi
 done
 
+# AlgoGlyph's flow runner, when a checkout of it is here: the planner's portfolio then runs on its
+# knapsack-dp kernel (the answer names the solver). Override with MCP_ALGOGLYPH_DIR; unset: built-in.
+if [[ -z "${MCP_ALGOGLYPH_DIR:-}" ]]; then
+  for d in "$HOME/dev/algoglyph-wt/feature/flow-cli" "$HOME/dev/algoglyph"; do
+    if [[ -f "$d/package.json" ]] && grep -q '"flow"' "$d/package.json" && [[ -d "$d/node_modules" ]]; then
+      export MCP_ALGOGLYPH_DIR="$d"
+      break
+    fi
+  done
+fi
+[[ -n "${MCP_ALGOGLYPH_DIR:-}" ]] && echo "    AlgoGlyph runner: $MCP_ALGOGLYPH_DIR"
+
 echo "==> panel + dedicated server (seed $SEED)"
 python3 -I "$PANEL_DIR/server.py" --bin "$BIN" --panel-port "$PANEL_PORT" --mcp-port "$MCP_PORT" \
   --game-port "$GAME_PORT" --seed "$SEED" ${AUTO[@]+"${AUTO[@]}"} ${PLAN[@]+"${PLAN[@]}"} &

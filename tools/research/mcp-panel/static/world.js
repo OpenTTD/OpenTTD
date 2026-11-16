@@ -43,7 +43,7 @@ async function get(path) {
   return j.data ?? j;
 }
 let map = null; let towns = []; let stations = []; let graph = null; let plan = null;
-const MODE_COLOURS = { bus: PALETTE[2], rail: PALETTE[1], air: PALETTE[0] };
+const MODE_COLOURS = { bus: PALETTE[2], rail: PALETTE[1], air: PALETTE[0], truck: PALETTE[3], freight_rail: PALETTE[4] };
 
 function drawMap() {
   if (!map) return;
@@ -116,8 +116,21 @@ function drawGraph() {
   $('w-stats').textContent = `${graph.stats.road_tiles} road tiles · ${graph.stats.nodes} nodes · ${graph.stats.edges} edges · ${graph.stats.components} components`;
 }
 
+function drawPortfolio() {
+  const pf = plan && plan.portfolio; if (!pf) return;
+  const k = pf.kernel ? ` · kernel ${pf.kernel.id} (work ${pf.kernel.work}, plate ${pf.kernel.plate})` : '';
+  $('portfolio-solver').textContent = `solver: ${pf.solver}${k} · total score ${pf.total_score ?? ''} · invest ${pf.investment_k ?? ''}k of ${pf.budget_k ?? ''}k`;
+  $('portfolio-body').innerHTML = (pf.chosen || []).map((c) => {
+    const from = (c.a || c.producer || {}); const to = (c.b || c.acceptor || {});
+    const what = c.kind === 'freight' ? `${c.cargo} by ${c.mode}` : `passengers by ${c.mode}`;
+    return `<li class="cursor-pointer hover:underline" data-x="${from.x}" data-y="${from.y}"><span class="text-xs font-medium px-2 py-0.5 rounded-sm text-white" style="background:${MODE_COLOURS[c.mode] || '#888'}">${c.mode}</span> ${what}: ${from.name} → ${to.name}, score ${c.score}</li>`;
+  }).join('') || '<li>no investment fits</li>';
+  $('portfolio-body').querySelectorAll('li[data-x]').forEach((li) => li.addEventListener('click', () => goTo(+li.dataset.x, +li.dataset.y, li.textContent)));
+}
+
 function drawPlan() {
   if (!plan) return;
+  drawPortfolio();
   const badge = (m) => `<span class="text-xs font-medium px-2.5 py-0.5 rounded-sm text-white" style="background:${MODE_COLOURS[m]}">${m}</span>`;
   const rows = []; const seen = new Set();
   for (const ps of Object.values(plan.by_mode || {})) for (const p of ps) { const k = `${p.a.id}-${p.b.id}`; if (!seen.has(k)) { seen.add(k); rows.push(p); } }
@@ -130,7 +143,7 @@ async function refresh() {
   try {
     [map, { towns }, { stations }, graph] = await Promise.all([
       get('/api/resources/map'), get('/api/resources/towns'), get('/api/resources/stations'), fetch('/api/graph').then((r) => r.json())]);
-    try { plan = await (await fetch('/api/plan?limit=10')).json(); } catch (e) { plan = null; }
+    try { plan = await (await fetch('/api/plan?limit=10&params=' + encodeURIComponent(JSON.stringify({ budget: 300000 })))).json(); } catch (e) { plan = null; }
     drawMap(); drawGraph(); drawPlan();
     $('w-msg').textContent = `updated ${new Date().toLocaleTimeString()} from openttd://map, openttd://towns, openttd://stations and /api/graph`;
   } catch (e) { $('w-msg').textContent = `not reachable: ${e.message}`; }

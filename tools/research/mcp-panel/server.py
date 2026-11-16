@@ -131,9 +131,13 @@ class Game:
             return
         self.mcp_up = True
         self.event("mcp", f"MCP server up at {self.endpoint()} (token held by the panel)")
+        # The bot plans paths in Squirrel; at the default budget (10000 opcodes a tick) a 240-tile rail
+        # search ate months of game time. 250000 is the game's own maximum for this server setting;
+        # scripts run on the server only, so it changes nothing in what clients compute.
+        self.console("setting script.script_max_opcode_till_suspend 250000")
         if self.args.ai:
-            # The bot starts with the planner's best air pair (mcp-plan by_mode.air), so its first and
-            # most profitable route comes from the one profitability model; without one it plays as before.
+            # The bot starts with what the planner's portfolio chose (freight rail, passenger rail, air),
+            # so its routes come from the one profitability model; without a plan it plays as before.
             settings = self.planned_air()
             flat = ",".join(f"{k}={v}" for k, v in settings.items())
             self.console(f"start_ai {self.args.ai} {flat}".strip())
@@ -141,34 +145,42 @@ class Game:
             self.event("ai", f"start_ai {self.args.ai} {flat} sent: the company plays on its own".replace("  ", " "))
 
     def planned_air(self):
-        """The bot's planned routes from planner v3 (budget: difficulty.max_loan): the best air pair and
-        the best rail pair, each only when it scores above zero; {} when there is none or no planner."""
+        """The bot's routes from planner v4's portfolio within the budget (difficulty.max_loan): the
+        first chosen freight rail pair (fr_from, fr_to, fr_cargo), passenger rail pair (rail_a,
+        rail_b) and air pair (air_a, air_b, air_planes). Buses the bot plans itself. {} without a
+        planner or a portfolio."""
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-plan"
         if not self.args.plan_bot or not exe.exists():
             return {}
         try:
             budget = self.max_loan()
             params = {"budget": budget} if budget else {}
-            r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", "--limit", "1",
-                                "--params", json.dumps(params)], capture_output=True, text=True, timeout=60)
-            by_mode = json.loads(r.stdout).get("by_mode", {}) if r.returncode == 0 else {}
+            r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", "--limit", "10",
+                                "--params", json.dumps(params)], capture_output=True, text=True, timeout=180)
+            out = json.loads(r.stdout) if r.returncode == 0 else {}
         except Exception as e:  # noqa: BLE001 - the bot still starts
             self.event("ai", f"planner not reachable for the bot: {e}")
             return {}
+        pf = out.get("portfolio") or {}
+        chosen = pf.get("chosen") or []
+        self.event("ai", f"planner portfolio by {pf.get('solver', 'no solver')}: {len(chosen)} investment(s), "
+                         f"total score {pf.get('total_score')}, {pf.get('investment_k')}k of {pf.get('budget_k')}k")
+        num = lambda v: int(str(v).split(":")[-1])  # world-graph ids are "industry:12"
         settings = {}
-        for mode in ("air", "rail"):
-            best = (by_mode.get(mode) or [None])[0]
-            if not best or best["score"] <= 0:
-                why = f"no {mode} pair" if not best else f"the best {mode} pair scores {best['score']} (it would lose money)"
-                self.event("ai", f"planner: {why}; the bot builds no {mode} route")
-                continue
-            opt = next((o for o in best["options"] if o["mode"] == mode), {})
-            count = int(((opt.get("vehicles") or {}).get("count")) or 1)
-            self.event("ai", f"planner: {mode} {best['a']['name']} - {best['b']['name']}, {best['distance']} tiles, "
-                             f"{count} vehicle(s), profit {opt.get('monthly_profit')}/month, score {best['score']}")
-            settings[f"{mode}_a"], settings[f"{mode}_b"] = best["a"]["id"], best["b"]["id"]
-            if mode == "air":
-                settings["air_planes"] = max(1, min(8, count))
+        for c in chosen:
+            mode = c.get("mode")
+            opt = next((o for o in c.get("options", []) if o.get("mode") == mode), {})
+            if c.get("kind") == "freight" and mode == "freight_rail" and "fr_from" not in settings:
+                settings.update(fr_from=num(c["producer"]["id"]), fr_to=num(c["acceptor"]["id"]), fr_cargo=int(c["cargo_id"]))
+                self.event("ai", f"planner: {c['cargo']} by rail {c['producer']['name']} -> {c['acceptor']['name']}, "
+                                 f"{c['distance']} tiles, profit {opt.get('monthly_profit')}/month, score {c['score']}")
+            elif c.get("kind") != "freight" and mode == "rail" and "rail_a" not in settings:
+                settings.update(rail_a=c["a"]["id"], rail_b=c["b"]["id"])
+                self.event("ai", f"planner: passengers by rail {c['a']['name']} - {c['b']['name']}, score {c['score']}")
+            elif c.get("kind") != "freight" and mode == "air" and "air_a" not in settings:
+                count = int(((opt.get("vehicles") or {}).get("count")) or 2)
+                settings.update(air_a=c["a"]["id"], air_b=c["b"]["id"], air_planes=max(1, min(8, count)))
+                self.event("ai", f"planner: air {c['a']['name']} - {c['b']['name']}, {count} plane(s), score {c['score']}")
         return settings
 
     def max_loan(self):

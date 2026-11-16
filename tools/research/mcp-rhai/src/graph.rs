@@ -10,7 +10,10 @@ use std::collections::{BTreeMap, BTreeSet, HashMap};
 
 use serde_json::{json, Value};
 
-pub fn derive(map: &Value, towns: &Value, stations: &Value) -> Result<Value, String> {
+/// The road network as a graph, from real road ways when `ways` (openttd://map/ways) is given: a tile is on the network
+/// when a road vehicle can leave it, and two tiles are joined only when each points at the other
+/// (NW=1 y-1, SW=2 x+1, SE=4 y+1, NE=8 x-1). Without it, adjacency is inferred from tile types.
+pub fn derive_with_ways(map: &Value, towns: &Value, stations: &Value, ways: &Value) -> Result<Value, String> {
     let w = map.get("width").and_then(Value::as_u64).ok_or("map has no width")? as usize;
     let h = map.get("height").and_then(Value::as_u64).ok_or("map has no height")? as usize;
     let rows = map.get("types").and_then(Value::as_array).ok_or("map has no types")?;
@@ -23,9 +26,30 @@ pub fn derive(map: &Value, towns: &Value, stations: &Value) -> Result<Value, Str
             net[y * w + x] = matches!(c, b'r' | b'B' | b'S');
         }
     }
+    // Real road directions per tile, when the game publishes them.
+    let road_rows = ways.get("roads").and_then(Value::as_array);
+    let mut dirs = vec![0u8; w * h];
+    let real = road_rows.is_some();
+    if let Some(rows) = road_rows {
+        for (y, row) in rows.iter().enumerate().take(h) {
+            for (x, c) in row.as_str().unwrap_or("").chars().enumerate().take(w) {
+                let d = c.to_digit(16).unwrap_or(0) as u8;
+                dirs[y * w + x] = d;
+                net[y * w + x] = d != 0;
+            }
+        }
+    }
     let neighbours = |t: usize| -> Vec<usize> {
         let (x, y) = (t % w, t / w);
         let mut n = Vec::with_capacity(4);
+        if real {
+            let d = dirs[t];
+            if d & 1 != 0 && y > 0 && dirs[t - w] & 4 != 0 { n.push(t - w); }
+            if d & 2 != 0 && x + 1 < w && dirs[t + 1] & 8 != 0 { n.push(t + 1); }
+            if d & 4 != 0 && y + 1 < h && dirs[t + w] & 1 != 0 { n.push(t + w); }
+            if d & 8 != 0 && x > 0 && dirs[t - 1] & 2 != 0 { n.push(t - 1); }
+            return n;
+        }
         if x > 0 && net[t - 1] { n.push(t - 1); }
         if x + 1 < w && net[t + 1] { n.push(t + 1); }
         if y > 0 && net[t - w] { n.push(t - w); }
@@ -131,7 +155,8 @@ pub fn derive(map: &Value, towns: &Value, stations: &Value) -> Result<Value, Str
         "town": town.get("id"), "name": town.get("name"), "anchor": t, "component": comp_of_node.get(t)
     })).collect();
     Ok(json!({
-        "derived_from": ["openttd://map", "openttd://towns", "openttd://stations"],
+        "derived_from": if real { vec!["openttd://map/ways", "openttd://towns", "openttd://stations"] } else { vec!["openttd://map", "openttd://towns", "openttd://stations"] },
+        "adjacency": if real { "real road ways: joined when each tile points at the other" } else { "inferred from tile types (road, bridge, station)" },
         "width": w, "height": h,
         "stats": {"road_tiles": road_tiles, "nodes": node_list.len(), "edges": edge_list.len(),
                   "components": all_components.len()},

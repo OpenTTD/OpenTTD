@@ -9,6 +9,8 @@ use std::time::Duration;
 mod graph;
 #[path = "../plan.rs"]
 mod plan;
+#[path = "../cargo.rs"]
+mod cargo;
 
 /// Where resources come from: a panel's derived routes, or an MCP server read directly through the
 /// token file `prismatic_mcp start` writes ({"agent_token","endpoint"}), for a stack without a panel.
@@ -80,10 +82,24 @@ fn main() {
     let out = (|| -> Result<serde_json::Value, String> {
         let src = match &token { Some(t) => Source::from_token_file(t)?, None => Source::Panel(panel.clone()) };
         let towns = src.resource("towns")?;
-        let g = graph::derive(&src.resource("map")?, &towns, &src.resource("stations")?)?;
+        let g = graph::derive_with_ways(&src.resource("map")?, &towns, &src.resource("stations")?, &src.resource("map/ways").unwrap_or(serde_json::Value::Null))?;
         // Live vehicles when the game offers openttd://engines; the plan says so when it does not.
         let engines = src.resource("engines").unwrap_or(serde_json::Value::Null);
-        plan::plan(&towns, &g, limit, &params, &engines)
+        let mut out = plan::plan(&towns, &g, limit, &params, &engines)?;
+        // Freight from the world graph's industries, and the portfolio over passengers and freight.
+        let world = src.resource("world/graph").unwrap_or(serde_json::Value::Null);
+        let freight = cargo::freight_pairs(&world, &engines, &out["params"], limit.max(10));
+        let mut candidates: Vec<serde_json::Value> = Vec::new();
+        for (_, ps) in out["by_mode"].as_object().cloned().unwrap_or_default() {
+            for p in ps.as_array().cloned().unwrap_or_default() { candidates.push(p); }
+        }
+        candidates.extend(freight.iter().cloned());
+        candidates.sort_by(|a, b| b["score"].as_f64().unwrap_or(0.0).total_cmp(&a["score"].as_f64().unwrap_or(0.0)));
+        let portfolio = cargo::portfolio(&candidates, out["params"]["budget"].as_f64());
+        out["freight"] = serde_json::Value::Array(freight);
+        out["portfolio"] = portfolio;
+        out["model"] = serde_json::json!("v4: v3 for passengers, freight pairs from the world graph's industries priced with each cargo's own payment rate and transit periods, and a portfolio chosen by knapsack within the budget");
+        Ok(out)
     })();
     match out {
         Ok(v) => println!("{v}"),

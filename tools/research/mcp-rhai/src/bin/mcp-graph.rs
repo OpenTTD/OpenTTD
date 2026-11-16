@@ -59,7 +59,7 @@ fn main() {
     let panel = panel.trim_end_matches('/').to_string();
     let out = (|| -> Result<serde_json::Value, String> {
         let src = match &token { Some(t) => Source::from_token_file(t)?, None => Source::Panel(panel.clone()) };
-        graph::derive(&src.resource("map")?, &src.resource("towns")?, &src.resource("stations")?)
+        graph::derive_with_ways(&src.resource("map")?, &src.resource("towns")?, &src.resource("stations")?, &src.resource("map/ways").unwrap_or(serde_json::Value::Null))
     })();
     match out {
         Ok(v) => println!("{v}"),

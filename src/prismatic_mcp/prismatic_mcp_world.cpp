@@ -195,8 +195,19 @@ json Engines()
 		}
 		list.push_back(std::move(item));
 	}
-	return json{{"engines", std::move(list)},
-		{"note", "every engine some company can buy now; effective_speed_kmh divides aircraft by the plane_speed setting; price and running cost in the game's base currency, after inflation"}};
+	/* The cargos those engines carry, with what the game pays for them (GetTransportedGoodsIncome:
+	 * distance x time factor x current_payment / 2^21, the factor from transit_periods), so a planner
+	 * prices passengers, mail and freight with the game's own numbers. */
+	json cargos = json::array();
+	for (const CargoSpec *cs : CargoSpec::Iterate()) {
+		cargos.push_back({{"id", cs->Index()}, {"name", GetString(cs->name)},
+			{"payment", static_cast<int64_t>(cs->current_payment)},
+			{"transit_periods", json::array({cs->transit_periods[0], cs->transit_periods[1]})},
+			{"freight", cs->is_freight}, {"passengers", cs->classes.Test(CargoClass::Passengers)},
+			{"mail", cs->classes.Test(CargoClass::Mail)}});
+	}
+	return json{{"engines", std::move(list)}, {"cargos", std::move(cargos)},
+		{"note", "every engine some company can buy now; effective_speed_kmh divides aircraft by the plane_speed setting; price and running cost in the game's base currency, after inflation; cargos: payment rate (after inflation) and transit periods of every cargo, the inputs of the game's payment formula"}};
 }
 
 } // namespace PrismaticMCP::World
