@@ -260,7 +260,11 @@ std::optional<json> Call(std::string_view name, const json &args)
 			if (r.id != id) continue;
 			r.answer = answer;
 			/* Shown the way every message from the fork reaches the player: an in-game news item. */
-			auto shown = View::Call("openttd.view.news.show", {{"text", fmt::format("{}\n{}", r.text, answer)}, {"style", "small"}});
+			/* A small news item needs a place: the tile the main view was centred on when the request was
+			 * made. Without one (no main window then) it is a newspaper, which needs none. */
+			json news = {{"text", fmt::format("{}\n{}", r.text, answer)}, {"style", r.tile.has_value() ? "small" : "normal"}};
+			if (r.tile.has_value()) news["tile"] = r.tile->base();
+			auto shown = View::Call("openttd.view.news.show", news);
 			/* And in the console, where a request typed there (plan, ask, do) expects it. */
 			IConsolePrint(CC_INFO, "Answer to request {} ({}):", r.id, r.text);
 			for (size_t start = 0; start <= answer.size();) {

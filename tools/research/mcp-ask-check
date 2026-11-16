@@ -113,5 +113,11 @@ check "the relay answered the request (answer: ${answer:0:80})" "$([[ -n "$answe
 check "the answer is the planner's, not an error" \
   "$([[ -n "$answer" && "$answer" != *"could not answer"* ]] && echo 1 || echo 0)"
 
+# The answer is also shown in the game as news (openttd.ui.requests.answer reports "shown").
+ANSWER="$WORK/answer.rhai"
+printf 'let t = env("MCP_VIEW_TOKEN"); let q = mcp_read(t, "openttd://ui/requests").data.requests[0];\nprint(to_json(mcp_call(t, "openttd.ui.requests.answer", #{ id: q.id, answer: "shown again by mcp-ask-check" })));\n' > "$ANSWER"
+shown="$(MCP_VIEW_TOKEN="$TOKEN" "$RHAI" --panel "$URL" "$ANSWER" 2>/dev/null | tr -d '\n ' || true)"
+check "the answer is shown in the game as news (${shown:0:120})" "$([[ "$shown" == *'"shown":true'* ]] && echo 1 || echo 0)"
+
 echo "mcp-ask-check: $PASS passed, $FAIL failed"
 [[ "$FAIL" -eq 0 ]]
