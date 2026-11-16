@@ -16,7 +16,7 @@ depends_on:
 serves:
   - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
 acceptance_criteria:
-  - "Every instance announces itself (role, game port, MCP endpoint, token file, pid) where the panel and Majordomus discover it"
+  - "Every instance announces itself (role, game port, MCP endpoint, token file, pid) where the panel and the hub discover it; a Majordomus reader for this external runtime registry is held as a Majordomus candidate (re-scoped as I0046, on the prismatic-majordomus landing seat's recommendation; the owner may overrule)"
   - "The panel lists the discovered instances and drives any of them; Rhai addresses an instance by id"
   - "mcp-e2e --instances N starts N servers with bots and their clients, and the panel check passes for each"
 validation:
@@ -24,7 +24,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-16T00:37:43Z
+updated_at: 2026-11-16T21:15:51Z
 evidence:
   - covers: "validation_run"
     type: test
@@ -38,3 +38,10 @@ evidence:
     result: "every MCP server self-registers (prismatic_mcp_registry.cpp, schema mcp-instance/v1): a dedicated server and a GUI client started without any panel both announced endpoint, token-file path (no token), 0600, live owner; the panel's discover() reads the same directory. Majordomus itself does not read the registry yet."
     commit: ca73fa798a910e09f3d099f8367161d98b19ea73
     recorded_at: 2026-11-16T00:37:43Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-cluster-panels-check (mcp-e2e --instances 2 --no-gui --no-browser --null-client); tools/research/mcp-panel-check per panel"
+    result: "pass: mcp-cluster-panels-check 9/9: the registry holds 2 panels, 2 servers and 2 windowless clients, every owner alive; mcp-panel-check 14/14 against each panel; each panel has its client attached and lists all 8 instances reachable; one panel reads the other stack's server by name through /api/instances/call (Rhai api_instancesCall), routed via the owning panel; stopping the launcher withdraws every record. Discovery itself: mcp-cluster-check 10/10 (I0046)."
+    artifact: "tools/research/mcp-cluster-panels-check"
+    commit: 116b719afe40b693929a2eb7b96314ff16960680
+    recorded_at: 2026-11-16T21:15:51Z
