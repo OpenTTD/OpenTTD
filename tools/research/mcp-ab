@@ -26,6 +26,8 @@ cleanup() {
   for p in ${PIDS[@]+"${PIDS[@]}"}; do kill -TERM "$p" 2>/dev/null || true; done
   wait 2>/dev/null || true
 }
+# No exec below: the record is written by a child python, so this trap still runs and both stacks
+# stop when the run ends (an exec here once left every finished run's stacks running).
 trap cleanup EXIT INT TERM
 
 echo "==> A (planner's air pair) on :$A_PANEL, B (no planner) on :$B_PANEL, seed $SEED, $MONTHS months"
@@ -43,7 +45,7 @@ for port in "$A_PANEL" "$B_PANEL"; do
   curl -s "http://127.0.0.1:$port/api/status" | grep -q '"ai_started": true' || { echo "mcp-ab: the stack on :$port did not come up (logs in $TMP)" >&2; exit 1; }
 done
 
-exec python3 -I - "$A_PANEL" "$B_PANEL" "$MONTHS" "$SEED" "$LABEL" "$ROOT_DIR" <<'PY'
+python3 -I - "$A_PANEL" "$B_PANEL" "$MONTHS" "$SEED" "$LABEL" "$ROOT_DIR" <<'PY'
 import json, re, sys, time, urllib.request
 a_port, b_port, months, seed, label, root = sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4], sys.argv[5], sys.argv[6]
 ROW = re.compile(r"#:(\d+)\(.*?\)\s+Company Name: '([^']*)'\s+Year Founded: (\d+)\s+Money: (-?\d+)\s+Loan: (\d+)\s+Value: (-?\d+)\s+\(T:(\d+), R:(\d+), P:(\d+), S:(\d+)\)")
