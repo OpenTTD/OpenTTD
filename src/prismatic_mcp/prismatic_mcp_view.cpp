@@ -56,6 +56,7 @@ struct Ask {
 std::deque<Ask> _asks; ///< Newest first; GUI state of this client only.
 uint32_t _ask_next = 0; ///< Last id handed out.
 uint32_t _ask_open = 0; ///< The question the dialog shows now, 0 if none.
+std::optional<std::string> _ask_auto; ///< Owner switch: when set, openttd.view.ask answers with this and shows no dialog.
 
 /** The query dialog's callback: yes, no, or closed (no). */
 void AskAnswered(Window *, bool confirmed)
@@ -157,6 +158,9 @@ json Tools()
 		{"description", "GUI only, no approval: every question asked through openttd.view.ask, newest first, with its answer (yes, no, replaced, or null while it is open)"},
 		{"inputSchema", obj},
 		{"annotations", {{"readOnlyHint", true}}}});
+	arr.push_back({{"name", "openttd.view.ask.auto"},
+		{"description", "Owner switch: auto-answer the bot's questions. With an answer (yes, no, or any text), openttd.view.ask records it and shows no dialog; omit answer, or pass null, to turn it off and show the dialog again. Answers {auto, answer}. Set it from the tilde console with 'mcp view.ask.auto answer=yes'"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"answer", {{"type", json::array({"string", "null"})}}}}}}}});
 	arr.push_back({{"name", "openttd.view.console.print"},
 		{"description", "GUI only, no approval: print a line in this client's ~ console, coloured by level: info (yellow), warning (light blue), error (red), debug (light brown), rhai (green), plan (gold), plain (silver). For streaming script output and answers to the player"},
 		{"inputSchema", {{"type", "object"}, {"required", json::array({"text"})}, {"properties", {{"text", {{"type", "string"}}},
@@ -174,6 +178,28 @@ json Tools()
 std::optional<json> Call(const std::string &name, const json &args)
 {
 	if (name.rfind("openttd.view.", 0) != 0) return std::nullopt;
+
+	/* These need no viewport, so they work on a dedicated server too: the owner's auto-answer
+	 * switch, and an already-auto-answered question (no dialog is shown). */
+	if (name == "openttd.view.ask.auto") {
+		if (args.contains("answer") && !args["answer"].is_null()) {
+			std::string a = args["answer"].get<std::string>();
+			if (a == "true" || a == "1" || a == "on") a = "yes";
+			else if (a == "false" || a == "0" || a == "off") a = "no";
+			_ask_auto = a;
+		} else {
+			_ask_auto.reset();
+		}
+		return json{{"ok", true}, {"auto", _ask_auto.has_value()}, {"answer", _ask_auto.has_value() ? json(*_ask_auto) : json(nullptr)}};
+	}
+	if (name == "openttd.view.ask" && _ask_auto.has_value()) {
+		std::string question = args.value("question", "");
+		if (question.empty()) return Error("question is required");
+		uint32_t id = ++_ask_next;
+		_asks.push_front({id, question, *_ask_auto});
+		if (_asks.size() > 100) _asks.pop_back();
+		return json{{"ok", true}, {"id", id}, {"auto_answered", true}, {"answer", *_ask_auto}};
+	}
 
 	Window *w = MainWindow();
 	if (w == nullptr || w->viewport == nullptr) return Error("no main viewport in this process (a dedicated server has none)");

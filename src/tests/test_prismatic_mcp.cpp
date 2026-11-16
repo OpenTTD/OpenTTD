@@ -13,6 +13,7 @@
 #include "../prismatic_mcp/prismatic_mcp_detail.h"
 #include "../prismatic_mcp/prismatic_mcp_menu.h"
 #include "../prismatic_mcp/prismatic_mcp_console.h"
+#include "../prismatic_mcp/prismatic_mcp_view.h"
 #include "../network/network.h"
 #include "../prismatic_mcp/prismatic_mcp_world.h"
 #include "../economy_type.h"
@@ -314,6 +315,39 @@ TEST_CASE("The terrain shows a raised corner in the two rows it touches, and now
 	CHECK(raised["gradients"][10].get<std::string>()[11] == '1');
 	CHECK(raised["gradients"][10].get<std::string>()[12] == '0');
 	CHECK(raised["gradients"][9].get<std::string>()[10] == '1');
+}
+
+
+TEST_CASE("The owner switch auto-answers the bot's question with no dialog", "[prismatic_mcp]")
+{
+	namespace V = PrismaticMCP::View;
+	// Off by default: turning it on with "yes" reports the state.
+	auto on = V::Call("openttd.view.ask.auto", {{"answer", "yes"}});
+	REQUIRE(on.has_value());
+	CHECK((*on)["auto"] == true);
+	CHECK((*on)["answer"] == "yes");
+
+	// With it on, a question is answered at once and shows no dialog (no ShowQuery, so safe in a test).
+	auto asked = V::Call("openttd.view.ask", {{"question", "build here?"}});
+	REQUIRE(asked.has_value());
+	CHECK((*asked)["ok"] == true);
+	CHECK((*asked)["auto_answered"] == true);
+	CHECK((*asked)["answer"] == "yes");
+
+	// Spellings normalise: "off" means the answer "no".
+	V::Call("openttd.view.ask.auto", {{"answer", "off"}});
+	CHECK((*V::Call("openttd.view.ask", {{"question", "again?"}}))["answer"] == "no");
+
+	// Turning it off clears the switch (a later openttd.view.ask would show the dialog again).
+	auto off = V::Call("openttd.view.ask.auto", json::object());
+	REQUIRE(off.has_value());
+	CHECK((*off)["auto"] == false);
+	CHECK((*off)["answer"].is_null());
+
+	// The tool is listed, so it reaches the `mcp` console, Swagger and .ai by derivation.
+	bool listed = false;
+	for (const auto &t : V::Tools()) if (t["name"] == "openttd.view.ask.auto") listed = true;
+	CHECK(listed);
 }
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */
