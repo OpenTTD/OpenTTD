@@ -17,8 +17,8 @@ tracks:
 
 # PrismaticMCP (fork only)
 
-Evidence: read at f069e8f0f5; the coverage, entities and registry modules added by 05ed8001bc
-were mapped from their headers. Fork code, not upstream OpenTTD: it exists only in this fork,
+Evidence: read at f069e8f0f5; refreshed at cb3e08ea4d after `tools/knowledge/refs impact` named this map stale
+(graph, depots, engines, window control, ClearApprovals). Fork code, not upstream OpenTTD: it exists only in this fork,
 compiles only with `OPTION_PRISMATIC_MCP_SERVER=ON` (which requires
 `OPTION_RESEARCH_INSTRUMENTATION=ON`, `cmake/Options.cmake`), and is labelled RESEARCH-ONLY. The
 section on findings came from an independent read-only review by an external model, checked
@@ -41,13 +41,15 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 - Console `prismatic_mcp start|stop|token|rotate|approvals|approve|deny|decisions`: `src/console_cmds.cpp:ConPrismaticMcp` → `src/prismatic_mcp/prismatic_mcp_server.cpp:Start`, `ApproveById`, `RotateToken` **[fork]**.
 - Request path: `src/prismatic_mcp/prismatic_mcp_server.cpp:ServiceConnection` → `HandleHttpRequest` (bearer, Origin) → `DispatchOne` → `HandleToolsCall` / resource readers.
 - Catalogue: `src/prismatic_mcp/prismatic_mcp_server.cpp:ToolsList` (plus `src/prismatic_mcp/prismatic_mcp_view.cpp:Tools` and `src/prismatic_mcp/prismatic_mcp_ui.cpp:Tools`) and `src/prismatic_mcp/prismatic_mcp_server.cpp:RESOURCES`. Measure the counts from a live server (`tools/list`, `resources/list`); do not copy them.
-- Mutation: `src/prismatic_mcp/prismatic_mcp_server.cpp:ValidateAction` → approval → `ExecuteAction` → `Command<Commands::Pause>::Post`.
-- World serialisers: `src/prismatic_mcp/prismatic_mcp_world.cpp:Map`, `Stations`.
-- Vehicles as data: `src/prismatic_mcp/prismatic_mcp_entities.cpp:Vehicles` (read-only).
-- Coverage counted by the dispatch itself: `src/prismatic_mcp/prismatic_mcp_coverage.h:Count`, `Report`
+- Mutation: `src/prismatic_mcp/prismatic_mcp_server.cpp:ValidateAction` → approval → `ExecuteAction` → `Command<Commands::Pause>::Post`. `src/prismatic_mcp/prismatic_mcp_server.cpp:ClearApprovals` is the one point where approvals (and anything else bound to a session or a world) are dropped: on Stop, RotateToken, a game-mode change, and a tick counter that went back.
+- Interface (GUI processes): `src/prismatic_mcp/prismatic_mcp_ui.cpp:Tools` and `Call` (declared in `src/prismatic_mcp/prismatic_mcp_ui.h`): the windows as data (`openttd.ui.windows`, `ui.at`, `ui.locate`), generic window control (`ui.press` a widget by window class/number/caption and widget index/text/type, `ui.choose` a dropdown item, `ui.type`, `ui.close`, `ui.click_tile`), and armed raw input (`openttd.input.*`). View, news and questions: `src/prismatic_mcp/prismatic_mcp_view.cpp:Tools` (`src/prismatic_mcp/prismatic_mcp_view.h`).
+- World serialisers: `src/prismatic_mcp/prismatic_mcp_world.cpp:Map`, `Stations` (with the game's catchment), `Depots` (with the service reach), `Engines`; declared in `src/prismatic_mcp/prismatic_mcp_world.h`.
+- Topology: `src/prismatic_mcp/prismatic_mcp_graph.cpp:Ways` (`openttd://map/ways`: where a road vehicle can leave each tile, and rail tracks) and `World` (`openttd://world/graph`, world-graph/v1: towns, industries, stations, vehicles; order and cargo_link edges with the game's link-graph capacity and usage); declared in `src/prismatic_mcp/prismatic_mcp_graph.h`.
+- Vehicles as data: `src/prismatic_mcp/prismatic_mcp_entities.cpp:Vehicles` (read-only; `src/prismatic_mcp/prismatic_mcp_entities.h`).
+- Coverage counted by the dispatch itself: `src/prismatic_mcp/prismatic_mcp_coverage.h:Count`, `src/prismatic_mcp/prismatic_mcp_coverage.cpp:Report`
   (what clients exercised against what the server publishes; issue I0049).
-- Instance registry: `src/prismatic_mcp/prismatic_mcp_registry.h:Announce`, `Withdraw` write and remove an
-  owner-only `mcp-instance/v1` record per server (never the token itself; issue I0039).
+- Instance registry: `src/prismatic_mcp/prismatic_mcp_registry.cpp:Announce`, `Withdraw` write and remove an
+  owner-only `mcp-instance/v1` record per server (never the token itself; issue I0039); declared in `src/prismatic_mcp/prismatic_mcp_registry.h`.
 - Upstream files with gated hooks: `src/dropdown.cpp` (`src/prismatic_mcp/prismatic_mcp_hooks.h:DropdownItems`), `src/screenshot.cpp:QueueQuietScreenshot`, `src/console_cmds.cpp`, `src/openttd.cpp`, `src/CMakeLists.txt`, `src/tests/CMakeLists.txt`, `cmake/Options.cmake`.
 
 ## Lifecycle
