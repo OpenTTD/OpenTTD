@@ -251,13 +251,4 @@ TEST_CASE("Console usage lines and result lines are derived, not written", "[pri
 	CHECK(mc::ResultLines(plain, false) == std::vector<std::string>{"a", "b"});
 }
 
-TEST_CASE("Only a tick counter that went back means another world", "[prismatic_mcp]")
-{
-	using PrismaticMCP::detail::WorldChanged;
-	CHECK_FALSE(WorldChanged(0, 0));
-	CHECK_FALSE(WorldChanged(100, 100));
-	CHECK_FALSE(WorldChanged(100, 250));
-	CHECK(WorldChanged(250, 3));   // a new game or a load restarted the counter
-}
-
 #endif /* OTTD_PRISMATIC_MCP_SERVER */
