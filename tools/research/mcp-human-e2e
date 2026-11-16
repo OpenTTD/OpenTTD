@@ -15,18 +15,19 @@
 # --test the stack stays up after the play so the owner can watch and take over the mouse.
 #
 # Usage: tools/research/mcp-human-e2e [--test] [--rounds N | --minutes M] [--seed N] [--speed F]
-#                                     [--window WxH] [--bin PATH]
+#                                     [--borrow-below N] [--repay-above N] [--window WxH] [--bin PATH]
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
-TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW=""
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --test) TEST=1; shift ;;
     --rounds) ROUNDS="$2"; shift 2 ;;
     --minutes) MINUTES="$2"; shift 2 ;;
     --borrow-below) BORROW_BELOW="$2"; shift 2 ;;
+    --repay-above) REPAY_ABOVE="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
     --speed) SPEED="$2"; shift 2 ;;
     --window) WINDOW="$2"; shift 2 ;;
@@ -138,10 +139,12 @@ echo "==> the client plays company $COMPANY"
 
 BEFORE="$(owned_roads "$COMPANY")"
 "$HUMAN" --token "$CLIENT_TOKEN" check
+company_loan() { read_res "$SERVER_TOKEN" openttd://companies | jq --argjson c "$COMPANY" '[.data.companies[] | select(.id == $c)][0].loan'; }
+START_LOAN="$(company_loan)"
 # The player's own account of what it did goes to the screen and to the run's log (kept on failure).
 if [[ "$MINUTES" -gt 0 ]]; then
   # A whole game: expand, add buses where they earn, borrow, watch (economy.rs).
-  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} 2>&1 | tee "$TMP/human.log"
+  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} ${REPAY_ABOVE:+--repay-above "$REPAY_ABOVE"} 2>&1 | tee "$TMP/human.log"
   # The owner closing the window ends a watched game; that is their call, not a failure, and the
   # client's own checks below have nobody left to ask.
   if [[ "$(grep -c 'the game was closed' "$TMP/human.log")" -gt 0 ]]; then
@@ -189,8 +192,9 @@ if [[ "$TEST" == 1 ]]; then
   icall "$CLIENT_TOKEN" openttd.ui.close '{"window":{"caption":"road construction"}}' | jq -e '[.closed[].caption] | any(test("Road Construction"; "i"))' >/dev/null \
     && echo "PASS ui.close closed it by its close box" || { echo "FAIL ui.close"; fail=1; }
   ST="$(read_res "$CLIENT_TOKEN" openttd://stations | jq -c --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c)][0] | {x, y}')"
-  icall "$CLIENT_TOKEN" openttd.ui.click_tile "$ST" | jq -e '.scrolled == true' >/dev/null && sleep 0.5   # off screen: the view jumped
+  # Off screen the first call only makes the view jump (scrolled: true); click again then, and only then.
   CT="$(icall "$CLIENT_TOKEN" openttd.ui.click_tile "$ST")"
+  if echo "$CT" | jq -e '.scrolled == true' >/dev/null; then sleep 0.5; CT="$(icall "$CLIENT_TOKEN" openttd.ui.click_tile "$ST")"; fi
   echo "$CT" | jq -e '.opened | length >= 1' >/dev/null \
     && echo "PASS ui.click_tile on our station opened its window" || { echo "FAIL ui.click_tile $ST: $(echo "$CT" | jq -c '{ok, error, opened}')"; fail=1; }
   BUS="$(read_res "$CLIENT_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c)][0].id // empty')"
@@ -202,6 +206,19 @@ if [[ "$TEST" == 1 ]]; then
   TY="$(icall "$CLIENT_TOKEN" openttd.ui.type '{"text":"a"}')"
   echo "$TY" | jq -e '.ok == true' >/dev/null \
     && echo "PASS ui.type typed through the keyboard path" || { echo "FAIL ui.type: $(echo "$TY" | jq -c '{ok, error}')"; fail=1; }
+  # Asking the owner: the game's own query dialog, closed by its close box, answers "no".
+  ASK="$(call "$CLIENT_TOKEN" openttd.view.ask '{"question":"mcp-human-e2e: may I test the question dialog?","caption":"e2e asks"}' | jq -r '.id')"
+  sleep 1
+  icall "$CLIENT_TOKEN" openttd.ui.close '{"window":{"caption":"e2e asks"}}' >/dev/null
+  sleep 1
+  call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq -e --argjson id "$ASK" '[.. | objects | select(.id? == $id and .answer? == "no")] | length > 0' >/dev/null \
+    && echo "PASS view.ask asked in the game; closing the dialog answered no" || { echo "FAIL view.ask: $(call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq -c .)"; fail=1; }
+  # The owner's pause switch: while paused every input tool refuses, then input works again.
+  call "$CLIENT_TOKEN" openttd.input.yield '{"paused":true}' >/dev/null
+  PAUSED="$(call "$CLIENT_TOKEN" openttd.input.pointer '{"x":10,"y":10}' | jq -r '.error // "none"')"
+  call "$CLIENT_TOKEN" openttd.input.yield '{"paused":false}' >/dev/null
+  [[ "$PAUSED" == *"paused the bot"* ]] && [[ "$(icall "$CLIENT_TOKEN" openttd.input.pointer '{"x":12,"y":12}' | jq -r .ok)" == "true" ]] \
+    && echo "PASS input.yield pauses the bot's input and resumes it" || { echo "FAIL input.yield: $PAUSED"; fail=1; }
   STOPS="$(read_res "$SERVER_TOKEN" openttd://stations | jq --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c and (.facilities | index("bus")))] | length')"
   [[ "$STOPS" -ge 2 ]] && echo "PASS $STOPS bus stations of company $COMPANY on the server" || { echo "FAIL $STOPS bus stations (need 2)"; fail=1; }
   BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "road" and (.orders | length) >= 2 and .stopped == false)] | length')"
@@ -237,18 +254,22 @@ if [[ "$TEST" == 1 ]]; then
   else
     "$COVERAGE" --report "$SERVER_TOKEN" "$CLIENT_TOKEN" | grep UNCOVERED; echo "FAIL coverage after the scenario"; fail=1
   fi
+  # The loan, read from the server's books: it grows when the player borrows, shrinks when it repays.
+  LOAN="$(company_loan)"
   if [[ -n "$BORROW_BELOW" ]]; then
-    LOAN="$(read_res "$SERVER_TOKEN" openttd://companies | jq --argjson c "$COMPANY" '[.data.companies[] | select(.id == $c)][0].loan // empty')"
-    if [[ -n "$LOAN" ]]; then
-      [[ "$LOAN" -gt "${START_LOAN:-0}" ]] && echo "PASS the loan grew through the finances window ($START_LOAN -> $LOAN)" || { echo "FAIL the loan did not grow ($START_LOAN -> $LOAN)"; fail=1; }
-    else
-      grep -q 'short of cash: borrow' "$TMP/human.log" && ! grep -q 'could not borrow' "$TMP/human.log" \
-        && echo "PASS the player borrowed through the finances window (log; openttd://companies has no loan field)" || { echo "FAIL no borrowing seen"; fail=1; }
-    fi
+    [[ "$LOAN" -gt "$START_LOAN" ]] && echo "PASS the loan grew through the finances window ($START_LOAN -> $LOAN)" || { echo "FAIL the loan did not grow ($START_LOAN -> $LOAN)"; fail=1; }
+  fi
+  if [[ -n "$REPAY_ABOVE" ]]; then
+    [[ "$LOAN" -lt "$START_LOAN" ]] && echo "PASS the loan shrank through the finances window ($START_LOAN -> $LOAN)" || { echo "FAIL the loan was not repaid ($START_LOAN -> $LOAN)"; fail=1; }
+  fi
+  # With an AlgoGlyph checkout named, every move came from its kernel and none fell back.
+  if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]]; then
+    [[ "$(grep -c "AlgoGlyph's human-pointing kernel" "$TMP/human.log")" -gt 0 && "$(grep -c 'human-pointing failed' "$TMP/human.log")" -eq 0 ]] \
+      && echo "PASS every move came from AlgoGlyph's human-pointing kernel" || { echo "FAIL the AlgoGlyph kernel did not drive the cursor"; fail=1; }
   fi
   INJ="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r '.injected.moves')"
   [[ "$INJ" -gt 100 ]] && echo "PASS the cursor moved ($INJ pointer updates)" || { echo "FAIL the cursor barely moved ($INJ)"; fail=1; }
-  for t in openttd.ui.windows openttd.ui.at openttd.ui.locate openttd.input.state openttd.input.pointer openttd.input.button openttd.input.wheel openttd.input.key; do
+  for t in openttd.ui.windows openttd.ui.at openttd.ui.locate openttd.input.state openttd.input.yield openttd.input.pointer openttd.input.button openttd.input.wheel openttd.input.key; do
     rpc "$CLIENT_TOKEN" '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | jq -e --arg t "$t" '.result.tools[] | select(.name == $t)' >/dev/null \
       && echo "PASS client offers $t" || { echo "FAIL client lacks $t"; fail=1; }
   done

@@ -1,6 +1,7 @@
 //! Running the company the way a person does over a whole game: serve new town pairs while
-//! money allows, add buses to services whose buses earn, borrow through the finances window when
-//! cash runs short, and between jobs watch a bus with the camera. Every decision reads published
+//! money allows, add buses to services whose buses earn and whose stops have passengers waiting,
+//! borrow through the finances window when cash runs short and pay the loan back once rich, and
+//! between jobs watch a bus with the camera. Every decision reads published
 //! state (openttd://companies, openttd://vehicles); every action goes through the interface.
 
 use crate::hand::Hand;
@@ -25,32 +26,57 @@ pub struct Policy {
     pub expand_above: i64,
     /// A service gets another bus only while it has fewer than this many.
     pub max_buses: usize,
+    /// Past its second bus, a service gets another only with this many passengers waiting at its
+    /// stops per bus it already has.
+    pub waiting_per_bus: u64,
+    /// Above this, with a loan outstanding, pay part of it back.
+    pub repay_above: i64,
     /// How many times the player borrows at most.
     pub max_borrows: usize,
 }
 
 impl Default for Policy {
     fn default() -> Self {
-        Policy { borrow_below: 20_000, expand_above: 35_000, max_buses: 3, max_borrows: 3 }
+        Policy { borrow_below: 20_000, expand_above: 35_000, max_buses: 5, waiting_per_bus: 25, repay_above: 150_000, max_borrows: 3 }
     }
 }
 
 const FINANCES: &str = "open company finances information";
 const BORROW: &str = "increase size of loan";
+const REPAY: &str = "repay part of loan";
+
+/// What the company has and owes, from openttd://companies.
+#[derive(Debug, Clone, Copy)]
+pub struct Books {
+    pub money: i64,
+    pub loan: i64,
+    pub max_loan: i64,
+}
 
 impl Hand {
-    /// The money of this client's company.
-    pub fn money(&self) -> Result<i64, String> {
+    /// The money and loan of this client's company.
+    pub fn books(&self) -> Result<Books, String> {
         let me = self.state()?.get("local_company").and_then(Value::as_u64).unwrap_or(255);
         let c = self.mcp.read("openttd://companies")?;
-        c.get("companies").and_then(Value::as_array)
+        let mine = c.get("companies").and_then(Value::as_array)
             .and_then(|a| a.iter().find(|x| x.get("id").and_then(Value::as_u64) == Some(me)).cloned())
-            .and_then(|x| x.get("money").and_then(Value::as_i64))
-            .ok_or_else(|| "this client's company is not listed".to_string())
+            .ok_or_else(|| "this client's company is not listed".to_string())?;
+        let n = |k: &str| mine.get(k).and_then(Value::as_i64);
+        Ok(Books { money: n("money").ok_or("no money field")?, loan: n("loan").unwrap_or(0), max_loan: n("max_loan").unwrap_or(i64::MAX) })
     }
 
     /// Borrow once through the finances window: open it, press Borrow, close it.
     pub fn borrow(&mut self) -> Result<(), String> {
+        self.finance(BORROW)
+    }
+
+    /// Pay part of the loan back through the same window.
+    pub fn repay(&mut self) -> Result<(), String> {
+        self.finance(REPAY)
+    }
+
+    /// Open the finances window, press one of its buttons, close it.
+    fn finance(&mut self, button: &str) -> Result<(), String> {
         self.escape()?;
         // The finances button opens a menu of companies that closes on release: hold, glide to
         // this company's entry (its value is the company id), let go.
@@ -60,7 +86,7 @@ impl Hand {
         })?;
         self.think(500.0, 900.0);
         let w = self.wait_window("finances")?;
-        self.click_in(&w, BORROW)?;
+        self.click_in(&w, button)?;
         self.think(400.0, 700.0);
         if let Some(w) = self.window("finances")? {
             self.close(&w)?;
@@ -68,13 +94,33 @@ impl Hand {
         Ok(())
     }
 
-    /// The earnings of the buses that serve a pair of stops (sum of this year's profits).
-    fn service_profit(&self, s: &Service) -> Result<(usize, i64), String> {
+    /// Passengers (all cargo) waiting at a service's two stops, from the world graph.
+    fn service_waiting(&self, s: &Service) -> Result<u64, String> {
+        let ids = self.service_stations(s)?;
+        let g = self.mcp.read("openttd://world/graph")?;
+        let mut n = 0;
+        for node in g.get("nodes").and_then(Value::as_array).cloned().unwrap_or_default() {
+            let id = node.get("id").and_then(Value::as_str).unwrap_or("");
+            if ids.iter().flatten().any(|i| id == format!("station:{i}")) {
+                n += node.get("waiting").and_then(Value::as_array).cloned().unwrap_or_default().iter()
+                    .filter_map(|w| w.get("count").and_then(Value::as_u64)).sum::<u64>();
+            }
+        }
+        Ok(n)
+    }
+
+    /// The station ids of a service's two stops.
+    fn service_stations(&self, s: &Service) -> Result<[Option<u64>; 2], String> {
         let stations = self.mcp.read("openttd://stations")?;
         let at = |t: (usize, usize)| stations.get("stations").and_then(Value::as_array)
             .and_then(|a| a.iter().find(|x| x.get("x").and_then(Value::as_u64) == Some(t.0 as u64) && x.get("y").and_then(Value::as_u64) == Some(t.1 as u64)).cloned())
             .and_then(|x| x.get("id").and_then(Value::as_u64));
-        let ids = [at(s.stops[0]), at(s.stops[1])];
+        Ok([at(s.stops[0]), at(s.stops[1])])
+    }
+
+    /// The earnings of the buses that serve a pair of stops (sum of this year's profits).
+    fn service_profit(&self, s: &Service) -> Result<(usize, i64), String> {
+        let ids = self.service_stations(s)?;
         let v = self.mcp.read("openttd://vehicles")?;
         let mut n = 0;
         let mut profit = 0;
@@ -133,9 +179,26 @@ impl Hand {
         self.require_tools()?;
         self.look_around()?;
         while Instant::now() < deadline {
-            let money = self.money()?;
-            self.say(&format!("money {money}, {} service(s), {} bus(es)", services.len(), services.iter().map(|s| s.buses).sum::<usize>()));
-            if money < policy.borrow_below && borrows < policy.max_borrows {
+            let books = self.books()?;
+            let money = books.money;
+            self.say(&format!("money {money}, loan {}, {} service(s), {} bus(es)", books.loan, services.len(), services.iter().map(|s| s.buses).sum::<usize>()));
+            // The owner's own requests from the toolbar menu come before the player's plans.
+            if let Some(r) = self.owner_requests().into_iter().next() {
+                self.handle_request(&r, services)?;
+                continue;
+            }
+            // Rich with a debt: pay part of it back, as a careful owner does.
+            // The margin over the borrowing threshold keeps it from borrowing back what it repaid.
+            if books.loan > 0 && money > policy.repay_above.max(policy.borrow_below + 20_000) {
+                self.say("money to spare: repay part of the loan");
+                if let Err(e) = self.repay() {
+                    self.say(&format!("could not repay: {e}"));
+                    let _ = self.escape();
+                    let _ = self.tidy();
+                }
+                continue;
+            }
+            if money < policy.borrow_below && borrows < policy.max_borrows && books.loan < books.max_loan {
                 if may_borrow.is_none() {
                     // Ask once; no answer is not a no, the default policy then applies.
                     may_borrow = Some(self.ask_owner("Cash is short. May I take a bank loan to keep building?", 30)?.unwrap_or(true));
@@ -162,8 +225,10 @@ impl Hand {
                     continue;
                 }
                 let (n, profit) = self.service_profit(&services[i])?;
-                if n > 0 && profit > 0 {
-                    self.say(&format!("{} earns {profit} with {n} bus(es): add one", services[i].name));
+                // Two buses earn their keep anywhere they earn; more only where people wait.
+                let waiting = if n >= 2 { self.service_waiting(&services[i])? } else { 0 };
+                if n > 0 && profit > 0 && (n < 2 || waiting >= policy.waiting_per_bus * n as u64) {
+                    self.say(&format!("{} earns {profit} with {n} bus(es), {waiting} waiting: add one", services[i].name));
                     let (depot, stops) = (services[i].depot, services[i].stops);
                     match self.buy_bus(depot, stops) {
                         Ok(()) => {

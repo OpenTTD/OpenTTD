@@ -215,6 +215,9 @@ json ResourceCompanies()
 		jc["name"] = c->name;              // empty if the player never renamed it
 		jc["is_ai"] = c->is_ai;
 		jc["money"] = (int64_t)c->money;
+		jc["loan"] = (int64_t)c->current_loan;
+		jc["max_loan"] = (int64_t)c->GetMaxLoan();
+		jc["loan_step"] = LOAN_INTERVAL; // one press of Borrow or Repay (misc_cmd.cpp); Repay takes min(loan, step)
 		jc["money_unit"] = "internal_currency";
 		jc["inaugurated_year"] = (int)c->inaugurated_year_calendar.base();
 		list.push_back(std::move(jc));

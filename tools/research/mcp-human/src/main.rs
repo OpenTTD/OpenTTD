@@ -10,12 +10,14 @@
 //! The client must run with PRISMATIC_MCP_INPUT=1 (the owner's switch), and the hand yields
 //! whenever the owner moves the real mouse.
 
+mod algoglyph;
 mod economy;
 mod hand;
 mod mcp;
 mod motion;
 mod play;
 mod plan;
+mod requests;
 
 use hand::{Hand, Target};
 use mcp::Mcp;
@@ -39,9 +41,10 @@ commands:
   connect [<town> <town>]    connect two towns by road (default: the largest and a neighbour)
   serve <town> <town>        a bus service: road if needed, two stops, a depot, a bus with orders
   play [<rounds>]            look around, then serve town pairs round after round
-  game [<minutes>] [--borrow-below N]
+  game [<minutes>] [--borrow-below N] [--repay-above N]
                              run the company: expand, add buses where they earn, borrow (asking
-                             the owner first) while money is under N, watch";
+                             the owner first) while money is under N, repay part of the loan
+                             while it is over N, watch";
 
 fn arg_num<T: std::str::FromStr>(args: &[String], i: usize) -> Result<T, String> {
     args.get(i).ok_or_else(|| USAGE.to_string())?.parse::<T>().map_err(|_| format!("not a number: {}", args[i]))
@@ -114,6 +117,10 @@ fn run() -> Result<(), String> {
             // --borrow-below N: borrow (asking the owner first) whenever money is under N.
             if let Some(i) = args.iter().position(|a| a == "--borrow-below") {
                 policy.borrow_below = arg_num(&args, i + 1)?;
+            }
+            // --repay-above N: pay part of the loan back whenever money is over N.
+            if let Some(i) = args.iter().position(|a| a == "--repay-above") {
+                policy.repay_above = arg_num(&args, i + 1)?;
             }
             let services = hand.play_game(minutes, policy)?;
             for s in &services {

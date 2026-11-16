@@ -64,6 +64,7 @@ struct InputState {
 	uint64_t moves = 0;           ///< Pointer moves injected so far.
 	uint64_t presses = 0;         ///< Button presses injected so far.
 	uint64_t keys = 0;            ///< Key presses injected so far.
+	bool owner_paused = false;    ///< The owner told the bot to wait (openttd.input.yield).
 };
 
 InputState _state;
@@ -272,7 +273,7 @@ json TileJson(TileIndex t)
 
 json InputState()
 {
-	json out = {{"ok", true}, {"armed", Armed()}, {"owner_has_mouse", OwnerHasMouse()},
+	json out = {{"ok", true}, {"armed", Armed()}, {"owner_has_mouse", OwnerHasMouse()}, {"owner_paused", _state.owner_paused},
 		{"cursor", {{"x", _cursor.pos.x}, {"y", _cursor.pos.y}, {"in_window", _cursor.in_window}, {"sprite", _cursor.sprites.empty() ? 0u : _cursor.sprites[0].image.sprite}}},
 		{"buttons", {{"left", IsLeftButtonDown()}, {"right", IsRightButtonDown()}, {"ctrl", IsCtrlPressed()}, {"shift", IsShiftPressed()}}},
 		{"screen", {{"w", _screen.width}, {"h", _screen.height}}},
@@ -292,6 +293,7 @@ std::optional<json> InputRefused()
 {
 	if (!Armed()) return Error("input is not armed in this process: start it with PRISMATIC_MCP_INPUT=1 (the owner's switch)");
 	if (OwnerHasMouse()) return Error("the owner holds the mouse: input pauses until the real mouse rests for a few seconds");
+	if (_state.owner_paused) return Error("the owner paused the bot: input waits until they resume it (openttd.input.yield with paused false)");
 	return std::nullopt;
 }
 
@@ -482,6 +484,9 @@ json Tools()
 	arr.push_back({{"name", "openttd.input.state"},
 		{"description", "GUI only, read: the cursor, buttons, armed switch, whether the owner holds the mouse, the active placement tool and the tile selection"},
 		{"inputSchema", Schema(json::object())}});
+	arr.push_back({{"name", "openttd.input.yield"},
+		{"description", "GUI only, the owner's switch, armed or not: paused true makes every input tool refuse until paused false, so the bot waits; the toolbar menu flips it too"},
+		{"inputSchema", Schema({{"paused", {{"type", "boolean"}}}}, json::array({"paused"}))}});
 	arr.push_back({{"name", "openttd.input.pointer"},
 		{"description", "GUI only, armed: move the visible cursor to a screen pixel through the driver's input path (hover, drag and tile highlight follow)"},
 		{"inputSchema", Schema(xy, json::array({"x", "y"}))}});
@@ -519,10 +524,13 @@ json Tools()
 			{"anyOf", json::array({json{{"required", json::array({"tile"})}}, json{{"required", json::array({"x", "y"})}}})}}}});
 
 	/* MCP tool annotations: readers are read-only; input changes local input state and, through the
-	 * game's own handling, may lead to a command, so it is neither read-only nor idempotent. */
+	 * game's own handling, may lead to a command, so it is neither read-only nor idempotent. The
+	 * ui.* tools that press, choose, type, close or click act through input like the rest. */
+	static constexpr std::string_view READERS[] = {"openttd.ui.windows", "openttd.ui.at", "openttd.ui.locate", "openttd.input.state"};
 	for (auto &t : arr) {
-		bool reader = t["name"].get<std::string>().rfind("openttd.ui.", 0) == 0 || t["name"] == "openttd.input.state";
-		t["annotations"] = reader ? json{{"readOnlyHint", true}} : json{{"readOnlyHint", false}, {"idempotentHint", false}};
+		const std::string n = t["name"].get<std::string>();
+		bool reader = std::ranges::find(READERS, std::string_view{n}) != std::end(READERS);
+		t["annotations"] = reader ? json{{"readOnlyHint", true}} : json{{"readOnlyHint", false}, {"idempotentHint", n == "openttd.input.yield"}};
 	}
 	return arr;
 }
@@ -585,6 +593,12 @@ std::optional<json> Call(const std::string &name, const json &args)
 	}
 
 	if (name == "openttd.input.state") return InputState();
+
+	if (name == "openttd.input.yield") {
+		if (!args.contains("paused") || !args["paused"].is_boolean()) return Error("give paused: true or false");
+		_state.owner_paused = args["paused"].get<bool>();
+		return json{{"ok", true}, {"owner_paused", _state.owner_paused}};
+	}
 
 	if (auto refused = InputRefused(); refused.has_value()) return refused;
 

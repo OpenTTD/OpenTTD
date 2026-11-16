@@ -28,7 +28,8 @@ Playing through the interface makes the engine's own UI the API:
 | `openttd.ui.windows` | read | Every window front to back: class, number, key, caption, rectangle. `widgets: true` adds each widget's type, screen rectangle, resolved text and tooltip, and disabled/lowered state. An open dropdown also lists its items (`items`), which are drawn rather than being widgets. |
 | `openttd.ui.at` | read | What is under a screen pixel: the window, the widget and, over a viewport, the map tile. |
 | `openttd.ui.locate` | read | The screen pixel of a tile's centre in the main viewport, and whether a click there reaches the map (`clickable`). |
-| `openttd.input.state` | read | Cursor, buttons, the armed switch, whether the owner holds the mouse, the active placement tool and the tile selection, plus injected-event counters. |
+| `openttd.input.state` | read | Cursor, buttons, the armed switch, whether the owner holds the mouse or has paused the bot (`owner_paused`), the active placement tool and the tile selection, plus injected-event counters. |
+| `openttd.input.yield` | owner | The owner's switch, armed or not: `paused: true` makes every input tool refuse until `paused: false`, and the player waits meanwhile. The toolbar's own menu ("Human player: paused") flips it. |
 | `openttd.input.pointer` | armed | Move the visible cursor to a pixel through the driver's input path (hover, drag and tile highlight follow). |
 | `openttd.input.button` | armed | Press or release left/right/middle at the cursor, with optional ctrl/shift. |
 | `openttd.input.wheel` | armed | Turn the wheel at the cursor. |
@@ -165,7 +166,8 @@ A Rust program with no runtime dependencies beyond the client's token file
 | `hand.rs` | The hand on the mouse: move, click, drag, find a widget by its text, pick a dropdown item, focus the camera on a tile and spot it on screen without scrolling. |
 | `plan.rs` | Road routes: A* over `openttd://map` (clear land, trees, existing roads; no houses, water or steep tiles), with a turn penalty so routes come out as long straight runs. The runs are then cut into drags. |
 | `play.rs` | Tasks. **Road:** open the road menu, pick the road type, pick autoroad, drag a route; a run that does not fit on screen is halved. **Stops and depot:** a drive-through bus stop on a straight town road, and a depot facing a road, each placed through its picker. **Bus:** buy one in the depot window (filter the list for "bus", pick the first row, Buy), give it orders with Go To on both stops, and start it. **Service:** all of the above for a pair of towns. **Look around.** |
-| `economy.rs` | The company over a whole game (`game <minutes>`). Serve new town pairs while money allows. Add a bus to a service whose buses earn. Borrow through the finances window when cash runs short, asking the owner first. Between jobs, follow a bus with the camera and read the news. Town pairs come from the shared route planner (`mcp-plan --token`, the game's payment formula) when `MCP_PLAN` names it, and nearest neighbours otherwise. |
+| `economy.rs` | The company over a whole game (`game <minutes>`). Serve new town pairs while money allows. Add a bus to a service whose buses earn; past its second bus, only while passengers wait at its stops (`waiting_per_bus` per bus, from the world graph). Borrow through the finances window when cash runs short, asking the owner first and only while the bank still lends (`loan` < `max_loan` in `openttd://companies`, which also gives `loan_step`, the 10,000 one press of Borrow or Repay moves). Repay part of the loan through the same window once money is over `--repay-above` (default 150,000), with a margin over the borrowing threshold so it never borrows back what it repaid. Between jobs, follow a bus with the camera and read the news. Town pairs come from the shared route planner (`mcp-plan --token`, the game's payment formula) when `MCP_PLAN` names it, and nearest neighbours otherwise. |
+| `requests.rs` | What the owner asks from the toolbar's own menu (`openttd://ui/requests`, each with the tile under the view's centre). Every game turn first takes the open requests of its kinds, oldest first, and answers each through `openttd.ui.requests.answer`, which the game shows as news: `serve_here` builds a bus service between the two towns nearest that tile, `watch` follows a bus, and `plan_rail` is answered "not yet" until the rail executor lands. Typed questions (`ask`) belong to the relay. |
 | Telling the owner | A company newspaper in the game after each new service (`openttd.view.news.show`), then a screenshot. The tile about to be worked on is marked (`openttd.view.mark`). |
 | Screen manners | Clicks are scoped to the window they belong to. A covered window is first brought to the front by its title bar. A covered tile is revealed by shifting the view. Placement starts from a clean hand (Escape). Windows are closed by their close boxes after each job and after any failure. |
 
@@ -185,8 +187,13 @@ vectors, committed as `tools/research/mcp-human/golden/human-pointing.v1.json`: 
 distances 0–2000 px, target widths 4–80, both overshoot branches and drags, with every sample.
 A unit test fails when the model drifts from the file. AlgoGlyph ports the model as its
 `human-pointing` kernel, with the same xorshift64* draws and the same rounding, and checks it
-against the same file. The player can then call that kernel (`MCP_ALGOGLYPH_DIR`) and fall back to
-its own implementation, bit for bit the same.
+against the same file. With `MCP_ALGOGLYPH_DIR` naming an AlgoGlyph checkout that has the flow CLI,
+the player (`algoglyph.rs`) runs `npm run --silent flow -- serve` once and takes every pointer
+movement from the kernel, one JSON line per move. Each move draws a fresh seed from the player's own
+stream, so the run stays reproducible. Without the checkout, with non-default model constants
+(`--speed`), or after any kernel failure (said once in the log), the builtin model moves instead,
+bit for bit the same. `cargo test` checks the live kernel against every golden case when
+`MCP_ALGOGLYPH_DIR` is set, and skips that check otherwise.
 
 ## End to end
 
@@ -217,8 +224,9 @@ both research options ON, macOS), with `--rounds 2`:
   only after asking the owner, and reuses its own stops and depots instead of building next to
   them. Verified with `--borrow-below 150000`: the player asked, got no answer, closed the
   question, then borrowed three times through the finances window (100,000 → 129,808). A 30-minute
-  game ran short of cash on its own. Replacing old vehicles, repaying the loan and placing buses by
-  `waiting` cargo are next.
+  game ran short of cash on its own. Repaying is verified with `--repay-above 0`: the loan fell
+  from 100,000 to 40,000 one press at a time, and the e2e reads that from the server's
+  `openttd://companies`, not from the player's log. Replacing old vehicles is next.
 - **No visible cursor in screenshots.** OpenTTD's screenshots exclude the cursor sprite, which
   is drawn only on screen.
 - **English text.** Widgets are found by English UI text (the default language). Another

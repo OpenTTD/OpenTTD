@@ -3,7 +3,8 @@
 //! the windows and widgets on screen (openttd.ui.windows) rather than by knowing their ids.
 
 use crate::mcp::Mcp;
-use crate::motion::{Model, Rng};
+use crate::algoglyph::Flow;
+use crate::motion::{Model, Rng, Sample};
 use serde_json::{json, Value};
 use std::thread::sleep;
 use std::time::{Duration, Instant};
@@ -39,11 +40,33 @@ pub struct Hand {
     pub log: bool,
     /// Depots this player built, so a later service near one reuses it instead of building twice.
     pub depots: Vec<(usize, usize)>,
+    /// AlgoGlyph's human-pointing kernel, when MCP_ALGOGLYPH_DIR names a checkout.
+    pub flow: Option<Flow>,
 }
 
 impl Hand {
     pub fn new(mcp: Mcp, model: Model, seed: u64) -> Self {
-        Hand { mcp, model, rng: Rng::new(seed), log: true, depots: Vec::new() }
+        let flow = if model == Model::default() { Flow::from_env() } else { None };
+        let hand = Hand { mcp, model, rng: Rng::new(seed), log: true, depots: Vec::new(), flow };
+        hand.say(if hand.flow.is_some() { "moves come from AlgoGlyph's human-pointing kernel" } else { "moves come from the builtin motion model" });
+        hand
+    }
+
+    /// One movement, drawn with a fresh seed from the player's own stream: from AlgoGlyph's kernel
+    /// when it runs, from the builtin model otherwise; the golden vectors make both the same.
+    fn motion(&mut self, from: (i32, i32), to: (i32, i32), width: f64, drag: bool) -> Vec<Sample> {
+        let seed = self.rng.next_u64() & 0xFFFF_FFFF;
+        if let Some(flow) = self.flow.as_mut() {
+            match flow.pointing(from, to, width, seed, drag) {
+                Ok(s) => return s,
+                Err(e) => {
+                    self.say(&format!("AlgoGlyph's human-pointing failed ({e}); the builtin model moves from now on"));
+                    self.flow = None;
+                }
+            }
+        }
+        let mut rng = Rng::new(seed);
+        if drag { self.model.drag(from, to, &mut rng) } else { self.model.path(from, to, width, &mut rng) }
     }
 
     pub fn say(&self, what: &str) {
@@ -64,15 +87,23 @@ impl Hand {
         ))
     }
 
-    /// Wait while the owner holds the mouse: the person always wins.
+    /// Wait while the owner holds the mouse or has paused the bot: the person always wins. A
+    /// pause (openttd.input.yield, the toolbar menu) lasts as long as the owner wants; holding the
+    /// mouse gives up after ten minutes.
     fn yield_to_owner(&self) -> Result<(), String> {
         let started = Instant::now();
+        let mut told = false;
         loop {
             let s = self.state()?;
-            if s.get("owner_has_mouse") != Some(&Value::Bool(true)) {
+            let paused = s.get("owner_paused") == Some(&Value::Bool(true));
+            if s.get("owner_has_mouse") != Some(&Value::Bool(true)) && !paused {
                 return Ok(());
             }
-            if started.elapsed() > Duration::from_secs(600) {
+            if paused && !told {
+                self.say("the owner paused me; waiting until they resume");
+                told = true;
+            }
+            if !paused && started.elapsed() > Duration::from_secs(600) {
                 return Err("the owner has held the mouse for ten minutes".into());
             }
             sleep(Duration::from_millis(500));
@@ -87,6 +118,7 @@ impl Hand {
                     self.say("the owner took the mouse; waiting");
                     self.yield_to_owner()?;
                 }
+                Err(e) if e.contains("owner paused the bot") => self.yield_to_owner()?,
                 other => return other,
             }
         }
@@ -106,7 +138,7 @@ impl Hand {
         // Aim a little off-centre, as people do, but well inside the target.
         let jx = self.rng.normal(t.w as f64 * 0.12).clamp(-(t.w as f64) * 0.3, t.w as f64 * 0.3) as i32;
         let jy = self.rng.normal(t.h as f64 * 0.12).clamp(-(t.h as f64) * 0.3, t.h as f64 * 0.3) as i32;
-        let path = self.model.path(from, (t.x + jx, t.y + jy), t.width(), &mut self.rng);
+        let path = self.motion(from, (t.x + jx, t.y + jy), t.width(), false);
         for s in path {
             self.pointer(s.x, s.y)?;
             sleep(Duration::from_millis(s.wait_ms));
@@ -136,7 +168,7 @@ impl Hand {
         self.button("down", "left", &[])?;
         sleep(Duration::from_millis(self.model.think_ms(&mut self.rng, 80.0, 160.0)));
         let start = self.cursor()?;
-        for s in self.model.drag(start, (to.x, to.y), &mut self.rng) {
+        for s in self.motion(start, (to.x, to.y), 0.0, true) {
             self.pointer(s.x, s.y)?;
             sleep(Duration::from_millis(s.wait_ms));
         }
@@ -436,7 +468,7 @@ impl Hand {
         let k = pick(&selectable).ok_or_else(|| { let _ = self.button("up", "left", &[]); format!("the menu '{needle}' has no such entry") })?;
         let target = selectable[k].get("rect").and_then(Target::from_rect).ok_or("menu entry has no rectangle")?;
         let from = self.cursor()?;
-        for smp in self.model.drag(from, (target.x, target.y), &mut self.rng) {
+        for smp in self.motion(from, (target.x, target.y), 0.0, true) {
             self.pointer(smp.x, smp.y)?;
             sleep(Duration::from_millis(smp.wait_ms));
         }

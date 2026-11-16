@@ -54,7 +54,7 @@ pub struct Sample {
 }
 
 /// The constants of the motion model; defaults are in the range reported for adults with a mouse.
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Model {
     /// Fitts' intercept, seconds.
     pub fitts_a: f64,
