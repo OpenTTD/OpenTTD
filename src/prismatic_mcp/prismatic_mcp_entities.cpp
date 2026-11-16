@@ -67,6 +67,13 @@ json Vehicles()
 			}
 			orders.push_back(std::move(jo));
 		}
+		/* The whole consist: a train's engine carries nothing itself, its wagons do. */
+		uint parts = 0, consist_capacity = 0, consist_count = 0;
+		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
+			parts++;
+			consist_capacity += u->cargo_cap;
+			consist_count += u->cargo.StoredCount();
+		}
 		list.push_back({
 			{"id", v->index.base()}, {"unit", v->unitnumber}, {"type", TypeName(v->type)}, {"owner", v->owner.base()},
 			{"engine", v->GetEngine() != nullptr ? GetString(STR_ENGINE_NAME, v->engine_type) : std::string{}},
@@ -76,6 +83,7 @@ json Vehicles()
 			{"stopped", v->vehstatus.Test(VehState::Stopped)}, {"in_depot", v->IsStoppedInDepot()},
 			{"crashed", v->vehstatus.Test(VehState::Crashed)},
 			{"cargo_capacity", v->cargo_cap}, {"cargo_count", v->cargo.StoredCount()},
+			{"parts", parts}, {"consist_capacity", consist_capacity}, {"consist_count", consist_count},
 			{"profit_this_year", static_cast<int64_t>(v->GetDisplayProfitThisYear())},
 			{"profit_last_year", static_cast<int64_t>(v->GetDisplayProfitLastYear())},
 			{"current_order", v->cur_real_order_index}, {"orders", std::move(orders)},

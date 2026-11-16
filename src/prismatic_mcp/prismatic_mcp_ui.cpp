@@ -28,6 +28,7 @@
 #include "../landscape.h"
 #include "../map_func.h"
 #include "../network/network.h"
+#include "../querystring_gui.h"
 #include "../strings_func.h"
 #include "../tile_map.h"
 #include "../tilehighlight_func.h"
@@ -179,6 +180,10 @@ json Widget(const Window *w, WidgetID index, const NWidgetBase *nwb)
 			if (!text.empty()) out["text"] = std::move(text);
 		}
 		if (std::string tip = Text(nwc->GetToolTip()); !tip.empty()) out["tooltip"] = std::move(tip);
+		/* An edit box shows what was typed, not a string of its own: read its query string. */
+		if ((nwb->type & WWT_MASK) == WWT_EDITBOX && index >= 0) {
+			if (const QueryString *qs = w->GetQueryString(index); qs != nullptr) out["text"] = std::string{qs->text.GetText()};
+		}
 		/* A matrix draws rows of its own; a person clicks a row, so say how tall one is. */
 		if ((nwb->type & WWT_MASK) == WWT_MATRIX && nwb->resize_y > 0) out["row_height"] = nwb->resize_y;
 		out["disabled"] = nwc->IsDisabled();
@@ -190,7 +195,7 @@ json Widget(const Window *w, WidgetID index, const NWidgetBase *nwb)
 const NWidgetCore *CaptionWidget(const Window *w);
 std::string CaptionOf(const Window *w);
 
-json WindowJson(const Window *w, bool widgets)
+json WindowJson(const Window *w, bool widgets, std::string_view match = {})
 {
 	json out = {{"class", static_cast<int>(w->window_class)}, {"number", static_cast<int>(w->window_number)},
 		{"key", std::string(w->window_desc.ini_key)}, {"rect", Rect(w->left, w->top, w->width, w->height)},
@@ -230,11 +235,13 @@ json WindowJson(const Window *w, bool widgets)
 	}
 	if (widgets) out["widgets"] = std::move(list);
 	/* A dropdown's items are drawn, not widgets: report them as a person sees them. */
-	if (auto items = Hooks::DropdownItems(w); !items.empty()) {
+	if (auto items = Hooks::DropdownItems(w, match); !items.empty()) {
 		json dd = json::array();
 		for (const auto &it : items) {
-			dd.push_back({{"result", it.result}, {"selectable", it.selectable}, {"selected", it.selected},
-				{"rect", Rect(it.rect.left, it.rect.top, it.rect.Width(), it.rect.Height())}});
+			json item = {{"result", it.result}, {"selectable", it.selectable}, {"selected", it.selected},
+				{"rect", Rect(it.rect.left, it.rect.top, it.rect.Width(), it.rect.Height())}};
+			if (!match.empty()) item["matches"] = it.matches;
+			dd.push_back(std::move(item));
 		}
 		out["items"] = std::move(dd);
 	}
@@ -496,8 +503,8 @@ json Tools()
 	json mods = {{"type", "array"}, {"items", {{"type", "string"}, {"enum", {"ctrl", "shift"}}}}};
 	json arr = json::array();
 	arr.push_back({{"name", "openttd.ui.windows"},
-		{"description", "GUI only, read: every open window front to back with its class, number, key, caption and rectangle; widgets: true adds every widget with its type, screen rectangle, resolved text and tooltip, disabled and lowered state; class/number filter"},
-		{"inputSchema", Schema({{"widgets", {{"type", "boolean"}}}, {"class", {{"type", "integer"}}}, {"number", {{"type", "integer"}}}})}});
+		{"description", "GUI only, read: every open window front to back with its class, number, key, caption and rectangle; widgets: true adds every widget with its type, screen rectangle, resolved text and tooltip, disabled and lowered state; class/number filter; an open dropdown lists its items, and match: \"words\" marks each item whose text has them (matches), by the dropdown's own text filter"},
+		{"inputSchema", Schema({{"widgets", {{"type", "boolean"}}}, {"class", {{"type", "integer"}}}, {"number", {{"type", "integer"}}}, {"match", {{"type", "string"}}}})}});
 	arr.push_back({{"name", "openttd.ui.at"},
 		{"description", "GUI only, read: what is under a screen pixel: the window, the widget and, over a viewport, the map tile"},
 		{"inputSchema", Schema(xy, json::array({"x", "y"}))}});
@@ -533,9 +540,9 @@ json Tools()
 		{"inputSchema", Schema({{"window", window}, {"widget", widget}, {"button", {{"type", "string"}, {"enum", {"left", "right"}}}}, {"mods", mods},
 			{"hold", {{"type", "boolean"}, {"description", "keep the button down (a menu that closes on release); ui.choose then lets go over the item"}}}}, json::array({"window", "widget"}))}});
 	arr.push_back({{"name", "openttd.ui.choose"},
-		{"description", "GUI only, armed: choose an item of the open dropdown, by its position among the selectable items (index) or by the value it returns (result); with the button held (ui.press hold) it lets go over the item"},
-		{"inputSchema", {{"type", "object"}, {"properties", {{"index", {{"type", "integer"}}}, {"result", {{"type", "integer"}}}}},
-			{"anyOf", json::array({json{{"required", json::array({"index"})}}, json{{"required", json::array({"result"})}}})}}}});
+		{"description", "GUI only, armed: choose an item of the open dropdown, by its position among the selectable items (index), by the value it returns (result) or by what it says (text: the first item whose text has those words); with the button held (ui.press hold) it lets go over the item"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"index", {{"type", "integer"}}}, {"result", {{"type", "integer"}}}, {"text", {{"type", "string"}}}}},
+			{"anyOf", json::array({json{{"required", json::array({"index"})}}, json{{"required", json::array({"result"})}}, json{{"required", json::array({"text"})}}})}}}});
 	arr.push_back({{"name", "openttd.ui.type"},
 		{"description", "GUI only, armed: type text into the focused edit box, a key at a time (press the box first with openttd.ui.press)"},
 		{"inputSchema", Schema({{"text", {{"type", "string"}}}}, json::array({"text"}))}});
@@ -574,7 +581,7 @@ std::optional<json> Call(const std::string &name, const json &args)
 		for (const Window *w : Window::IterateFromFront()) {
 			if (args.contains("class") && args["class"].is_number_integer() && static_cast<int>(w->window_class) != args["class"].get<int>()) continue;
 			if (args.contains("number") && args["number"].is_number_integer() && static_cast<int>(w->window_number) != args["number"].get<int>()) continue;
-			list.push_back(WindowJson(w, widgets));
+			list.push_back(WindowJson(w, widgets, args.contains("match") && args["match"].is_string() ? std::string_view{args["match"].get_ref<const std::string &>()} : std::string_view{}));
 		}
 		return json{{"ok", true}, {"screen", {{"w", _screen.width}, {"h", _screen.height}}}, {"windows", std::move(list)}};
 	}
@@ -698,14 +705,16 @@ std::optional<json> Call(const std::string &name, const json &args)
 
 	if (name == "openttd.ui.choose") {
 		for (Window *w : Window::IterateFromFront()) {
-			auto items = Hooks::DropdownItems(w);
+			const std::string text = args.contains("text") && args["text"].is_string() ? args["text"].get<std::string>() : std::string{};
+			auto items = Hooks::DropdownItems(w, text);
 			if (items.empty()) continue;
 			const Hooks::DropdownItem *pick = nullptr;
 			int k = 0;
 			for (const auto &it : items) {
 				if (!it.selectable) continue;
 				if ((args.contains("index") && args["index"].is_number_integer() && args["index"].get<int>() == k) ||
-						(args.contains("result") && args["result"].is_number_integer() && args["result"].get<int>() == it.result)) {
+						(args.contains("result") && args["result"].is_number_integer() && args["result"].get<int>() == it.result) ||
+						(!text.empty() && it.matches)) {
 					pick = &it;
 					break;
 				}

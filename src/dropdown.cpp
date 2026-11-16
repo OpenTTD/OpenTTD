@@ -544,8 +544,10 @@ struct DropdownWindow : Window {
 /* RESEARCH-ONLY (prismatic_mcp_hooks.h): the visible items of an open dropdown, laid out exactly as
  * DrawWidget() and GetDropDownItem() above lay them out, so an external controller can point at one
  * the way a person does. Reads the window, changes nothing. */
-std::vector<PrismaticMCP::Hooks::DropdownItem> PrismaticMCP::Hooks::DropdownItems(const Window *w)
+std::vector<PrismaticMCP::Hooks::DropdownItem> PrismaticMCP::Hooks::DropdownItems(const Window *w, std::string_view match)
 {
+	StringFilter filter;
+	filter.SetFilterTerm(match);
 	std::vector<DropdownItem> out;
 	const DropdownWindow *ddw = dynamic_cast<const DropdownWindow *>(w);
 	if (ddw == nullptr) return out;
@@ -559,8 +561,14 @@ std::vector<PrismaticMCP::Hooks::DropdownItem> PrismaticMCP::Hooks::DropdownItem
 		if (y > -item_height) {
 			int top = std::max(y, 0), bottom = std::min(y + item_height, y_end);
 			bool selectable = !item->masked && item->Selectable();
+			bool matches = false;
+			if (!filter.IsEmpty()) {
+				filter.ResetState();
+				item->FilterText(filter);
+				matches = filter.GetState();
+			}
 			out.push_back({item->result, selectable, ddw->selected_result == item->result && selectable,
-				Rect{ddw->left + r.left, ddw->top + r.top + top, ddw->left + r.right, ddw->top + r.top + bottom - 1}});
+				Rect{ddw->left + r.left, ddw->top + r.top + top, ddw->left + r.right, ddw->top + r.top + bottom - 1}, matches});
 		}
 		y += item_height;
 	}

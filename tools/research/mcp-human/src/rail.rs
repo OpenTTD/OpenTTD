@@ -24,6 +24,10 @@ const STATION_TOOL: &str = "build railway station";
 const ORIENTATION: &str = "select railway station orientation";
 const PLATFORMS: &str = "select number of platforms";
 const LENGTH: &str = "select length of railway station";
+const DEPOT_TOOL: &str = "build train depot";
+const DEPOT_ORIENTATION: &str = "select railway depot orientation";
+const NEW_TRAIN: &str = "buy new train vehicle";
+const TRAIN_SHOP: &str = "rail vehicles";
 
 /// The resources the track planner reads, as the keys of its input (hub_algoglyph.rs TRACK_INPUTS).
 pub const TRACK_INPUTS: [(&str, &str); 5] = [("map", "openttd://map"), ("ways", "openttd://map/ways"),
@@ -39,6 +43,15 @@ impl Heading {
     }
     pub fn name(self) -> &'static str {
         match self { Heading::NE => "NE", Heading::SE => "SE", Heading::SW => "SW", Heading::NW => "NW" }
+    }
+    /// The tile one step that way (NE is x-1, SE y+1, SW x+1, NW y-1).
+    pub fn step(self, (x, y): (usize, usize)) -> Option<(usize, usize)> {
+        let (dx, dy) = match self { Heading::NE => (-1, 0), Heading::SE => (0, 1), Heading::SW => (1, 0), Heading::NW => (0, -1) };
+        Some((usize::try_from(x as i64 + dx).ok()?, usize::try_from(y as i64 + dy).ok()?))
+    }
+    /// Its position among the game's four orientation buttons (NE, SE, SW, NW).
+    pub fn index(self) -> usize {
+        match self { Heading::NE => 0, Heading::SE => 1, Heading::SW => 2, Heading::NW => 3 }
     }
     pub fn reverse(self) -> Heading {
         match self { Heading::NE => Heading::SW, Heading::SW => Heading::NE, Heading::SE => Heading::NW, Heading::NW => Heading::SE }
@@ -58,6 +71,8 @@ pub struct Site {
     pub end: (usize, usize),
     /// The side the line leaves the station by.
     pub exit: Heading,
+    /// The planner's depot site, when it gave one ({x, y, dir}).
+    pub planned_depot: Option<((usize, usize), Heading)>,
 }
 
 impl Site {
@@ -69,7 +84,20 @@ impl Site {
             length: u("/length").unwrap_or(3),
             end: (u("/end/x")?, u("/end/y")?),
             exit: Heading::parse(v.pointer("/exit/dir")?.as_str()?)?,
+            planned_depot: (|| Some(((u("/depot/x")?, u("/depot/y")?), Heading::parse(v.pointer("/depot/dir")?.as_str()?)?)))(),
         })
+    }
+
+    /// Where its depot goes: the tile beyond the back end (the end away from the exit), with the
+    /// entrance facing the platform, so a train leaves the depot straight onto it.
+    pub fn depot(&self) -> Option<((usize, usize), Heading)> {
+        // The planner's site wins (it chose the station for a free depot tile); the rule is the same.
+        if self.planned_depot.is_some() {
+            return self.planned_depot;
+        }
+        let tiles = self.tiles();
+        let back = if tiles.first() == Some(&self.end) { *tiles.last()? } else { *tiles.first()? };
+        Some((self.exit.reverse().step(back)?, self.exit))
     }
 
     /// Every tile of the station.
@@ -192,6 +220,21 @@ pub fn rail_connected(ways: &Value, from: &[(usize, usize)], to: &[(usize, usize
     false
 }
 
+/// Whether a tile is clear (or trees) and flat on openttd://map: its four corner heights equal.
+pub fn free_flat(map: &Value, x: usize, y: usize) -> bool {
+    let row = |k: &str, y: usize| map.get(k).and_then(Value::as_array).and_then(|r| r.get(y)).and_then(Value::as_str).map(str::to_string);
+    let z = |x: usize, y: usize| row("heights", y).and_then(|r| r.get(2 * x..2 * x + 2).and_then(|h| u32::from_str_radix(h, 16).ok()));
+    let kind = row("types", y).and_then(|r| r.as_bytes().get(x).copied());
+    matches!(kind, Some(b'C') | Some(b'T')) && z(x, y).is_some() && z(x, y) == z(x + 1, y) && z(x, y) == z(x, y + 1) && z(x, y) == z(x + 1, y + 1)
+}
+
+/// The engine and wagon of a planner option's vehicle name, "Engine + 4 x Wagon".
+pub fn consist(name: &str) -> Option<(String, String, usize)> {
+    let (engine, rest) = name.split_once(" + ")?;
+    let (n, wagon) = rest.split_once(" x ")?;
+    Some((engine.trim().to_string(), wagon.trim().to_string(), n.trim().parse().ok()?))
+}
+
 /// The pieces the game does not have yet.
 pub fn missing(pieces: &[Piece], ways: &Value) -> Vec<Piece> {
     pieces.iter().copied().filter(|p| rail_bits(ways, p.x, p.y) & p.track == 0).collect()
@@ -285,13 +328,36 @@ impl Hand {
         let w = self.wait_holding(ORIENTATION)?;
         self.choose_button(&w, LENGTH, site.length.clamp(1, 7) - 1)?;
         self.say(&format!("rail station at {},{} ({}, {} tiles)", site.x, site.y, if site.along_x { "along x" } else { "along y" }, site.length));
-        self.click_tile(site.x, site.y)?;
-        self.think(500.0, 900.0);
-        let ways = self.mcp.read("openttd://map/ways")?;
-        if site.tiles().iter().any(|&(x, y)| rail_bits(&ways, x, y) & axis_bit == 0) {
-            return Err(format!("the station at {},{} was not built", site.x, site.y));
+        for attempt in 0..2 {
+            self.click_tile(site.x, site.y)?;
+            self.think(500.0, 900.0);
+            let ways = self.mcp.read("openttd://map/ways")?;
+            if site.tiles().iter().all(|&(x, y)| rail_bits(&ways, x, y) & axis_bit != 0) {
+                return Ok(());
+            }
+            // The game says why it refused (an error message window); with no word from it the click
+            // never reached the map, so clear the screen and click once more.
+            if let Some(why) = self.game_error()? {
+                return Err(format!("the station at {},{} was refused: {why}", site.x, site.y));
+            }
+            if attempt == 0 {
+                self.say("the station did not appear and the game said nothing: clear the screen, click again");
+                self.tidy_except(&["railway construction", "rail station"])?;
+            }
         }
-        Ok(())
+        Err(format!("the station at {},{} was not built", site.x, site.y))
+    }
+
+    /// The text of an error message the game shows right now ("Can't build ... here"), if any.
+    pub fn game_error(&self) -> Result<Option<String>, String> {
+        for w in self.windows()? {
+            let texts: Vec<String> = w.get("widgets").and_then(Value::as_array).cloned().unwrap_or_default().iter()
+                .filter_map(|x| x.get("text").and_then(Value::as_str).map(str::to_string)).collect();
+            if texts.iter().any(|t| t.to_lowercase().contains("can't")) {
+                return Ok(Some(texts.join(" ").chars().filter(|c| !('\u{e000}'..='\u{f8ff}').contains(c)).collect::<String>().trim().to_string()));
+            }
+        }
+        Ok(None)
     }
 
     /// Ask AlgoGlyph's track planner for the route between two station sites.
@@ -313,7 +379,9 @@ impl Hand {
 
     /// Lay planned pieces with the game's tools, then lay again once what the game does not have.
     pub fn lay_track(&mut self, pieces: &[Piece]) -> Result<(), String> {
-        let strokes = strokes(pieces, 10);
+        // Only what the game does not have yet: laying a piece twice looks like rebuilding it.
+        let todo = missing(pieces, &self.mcp.read("openttd://map/ways")?);
+        let strokes = strokes(&todo, 10);
         self.say(&format!("track: {} pieces in {} strokes", pieces.len(), strokes.len()));
         for s in &strokes {
             if let Err(e) = self.stroke(s) {
@@ -378,6 +446,164 @@ impl Hand {
         Ok(Line { from: a, to: b, pieces: track })
     }
 
+    /// A depot behind a station, built with the depot tool facing the platform.
+    pub fn build_rail_depot(&mut self, site: &Site) -> Result<(usize, usize), String> {
+        let (tile, facing) = site.depot().ok_or("the station has no tile behind it")?;
+        // A depot of this company already there (openttd://depots) is the one to use.
+        let me = self.state()?.get("local_company").and_then(Value::as_u64);
+        let have = self.mcp.read("openttd://depots").ok().and_then(|d| d.get("depots").and_then(Value::as_array).cloned()).unwrap_or_default().iter().any(|d| {
+            d.get("x").and_then(Value::as_u64) == Some(tile.0 as u64) && d.get("y").and_then(Value::as_u64) == Some(tile.1 as u64)
+                && d.get("type").and_then(Value::as_str) == Some("rail") && d.get("owner").and_then(Value::as_u64) == me
+        });
+        if have {
+            self.say(&format!("our train depot already stands at {},{}", tile.0, tile.1));
+            return Ok(tile);
+        }
+        if !free_flat(&self.mcp.read("openttd://map")?, tile.0, tile.1) {
+            return Err(format!("the tile behind the station, {},{}, is not free and flat", tile.0, tile.1));
+        }
+        let rail = self.open_rail_toolbar()?;
+        let b = Self::buttons(&rail, DEPOT_TOOL).first().cloned().ok_or("no depot button")?;
+        if b.get("lowered") != Some(&Value::Bool(true)) {
+            self.click(b.get("rect").and_then(Target::from_rect).ok_or("depot button has no rectangle")?)?;
+        }
+        let w = self.wait_holding(DEPOT_ORIENTATION)?;
+        self.choose_button(&w, DEPOT_ORIENTATION, facing.index())?;
+        self.say(&format!("train depot at {},{} facing {}", tile.0, tile.1, facing.name()));
+        self.click_tile(tile.0, tile.1)?;
+        self.think(500.0, 900.0);
+        let ways = self.mcp.read("openttd://map/ways")?;
+        if rail_bits(&ways, tile.0, tile.1) == 0 || !rail_connected(&ways, &[tile], &site.tiles()) {
+            return Err(format!("the depot at {},{} was not built onto the platform", tile.0, tile.1));
+        }
+        let _ = self.escape();
+        Ok(tile)
+    }
+
+    /// In the open train shop: filter by a name's first word, pick the first row, buy `times`.
+    fn buy_in_shop(&mut self, name: &str, times: usize) -> Result<(), String> {
+        let word = name.split_whitespace().next().unwrap_or(name).to_string();
+        self.say(&format!("filter the list: {word}"));
+        self.fill_edit(TRAIN_SHOP, &word)?;
+        let shop = self.wait_window(TRAIN_SHOP)?;
+        let list = Self::widget_of_type(&shop, "matrix").ok_or("the shop has no list")?;
+        let r = list.get("rect").cloned().unwrap_or_default();
+        let row = list.get("row_height").and_then(Value::as_i64).unwrap_or(20) as i32;
+        let first = Target {
+            x: r.get("cx").and_then(Value::as_i64).unwrap_or(0) as i32,
+            y: r.get("y").and_then(Value::as_i64).unwrap_or(0) as i32 + row / 2,
+            w: r.get("w").and_then(Value::as_i64).unwrap_or(100) as i32 / 2,
+            h: (row - 4).max(4),
+        };
+        self.say(&format!("pick {name}"));
+        self.raise_if_covered(&shop, first)?;
+        self.click(first)?;
+        self.think(300.0, 600.0);
+        let shop = self.wait_window(TRAIN_SHOP)?;
+        if Self::widget_saying(&shop, crate::play::BUY).and_then(|b| b.get("disabled").cloned()) == Some(Value::Bool(true)) {
+            return Err(format!("nothing is selected in the shop after picking {name}"));
+        }
+        for _ in 0..times {
+            self.click_in(&shop, crate::play::BUY)?;
+            self.think(500.0, 900.0);
+        }
+        Ok(())
+    }
+
+    /// Buy a train in a depot (the engine, then its wagons, which the game couples to it), give it
+    /// orders to the two stations, start it, and check each step on the game's own vehicle list.
+    pub fn buy_train(&mut self, depot: (usize, usize), stations: [(usize, usize); 2], engine: &str, wagon: &str, wagons: usize) -> Result<u64, String> {
+        self.escape()?;
+        let depot_window = self.open_depot(depot)?;
+        self.think(300.0, 600.0);
+        self.click_in(&depot_window, NEW_TRAIN)?;
+        self.think(400.0, 800.0);
+        // An engine already standing alone in this depot (an earlier attempt that stopped half way)
+        // gets the wagons: a second one would also keep the game from coupling them to either.
+        let waiting = self.mcp.read("openttd://vehicles")?.get("vehicles").and_then(Value::as_array).cloned().unwrap_or_default().into_iter()
+            .find(|v| v.get("type").and_then(Value::as_str) == Some("train") && v.get("in_depot") == Some(&Value::Bool(true))
+                && v.get("x").and_then(Value::as_u64) == Some(depot.0 as u64) && v.get("y").and_then(Value::as_u64) == Some(depot.1 as u64)
+                && self.own_vehicles().is_ok_and(|own| v.get("id").and_then(Value::as_u64).is_some_and(|id| own.contains(&id))))
+            .and_then(|v| v.get("id").and_then(Value::as_u64));
+        let train = match waiting {
+            Some(id) => {
+                self.say(&format!("train {id} already waits in the depot: give it the wagons"));
+                id
+            }
+            None => {
+                let before = self.own_vehicles()?;
+                self.buy_in_shop(engine, 1)?;
+                self.own_vehicles()?.into_iter().find(|v| !before.contains(v)).ok_or("the engine was not bought (money? the list?)")?
+            }
+        };
+        self.buy_in_shop(wagon, wagons)?;
+        let parts = self.vehicle(train)?.get("parts").and_then(Value::as_u64).unwrap_or(0);
+        if parts < 1 + wagons as u64 {
+            return Err(format!("the train has {parts} part(s), not an engine and {wagons} wagon(s)"));
+        }
+        for needle in [TRAIN_SHOP, "depot"] {
+            if let Some(w) = self.window(needle)? {
+                self.close(&w)?;
+                self.think(150.0, 300.0);
+            }
+        }
+        let started = std::time::Instant::now();
+        let view = loop {
+            if let Some(w) = self.window_except("train #", &["orders"])? {
+                break w;
+            }
+            if started.elapsed() > std::time::Duration::from_secs(5) {
+                return Err("the new train's window did not open".into());
+            }
+            std::thread::sleep(std::time::Duration::from_millis(150));
+        };
+        self.click_in(&view, crate::play::ORDERS)?;
+        self.think(400.0, 700.0);
+        for (i, s) in stations.iter().enumerate() {
+            // Go To must be down before the station is clicked (a click elsewhere releases it), and
+            // each order must show up on the train before the next.
+            for attempt in 0..3 {
+                let orders = self.wait_window("(orders)")?;
+                let down = Self::widget_saying(&orders, crate::play::GO_TO).and_then(|w| w.get("lowered").cloned()) == Some(Value::Bool(true));
+                if !down {
+                    self.click_in(&orders, crate::play::GO_TO)?;
+                    self.think(300.0, 500.0);
+                }
+                self.say(&format!("order {}: the station at {},{}", i + 1, s.0, s.1));
+                self.click_tile(s.0, s.1)?;
+                self.think(400.0, 700.0);
+                let n = self.vehicle(train)?.get("orders").and_then(Value::as_array).map(Vec::len).unwrap_or(0);
+                if n > i {
+                    break;
+                }
+                // The click opened the station's window instead: close it and arm Go To again.
+                let _ = self.tidy_except(&["(orders)", "train #", "railway construction"]);
+                if attempt == 2 {
+                    return Err(format!("order {} to the station at {},{} was not added", i + 1, s.0, s.1));
+                }
+            }
+        }
+        self.escape()?;
+        let n = self.vehicle(train)?.get("orders").and_then(Value::as_array).map(Vec::len).unwrap_or(0);
+        if n < 2 {
+            return Err(format!("the train has {n} order(s), not 2"));
+        }
+        for _ in 0..2 {
+            let view = self.window_except("train #", &["orders"])?.ok_or("the train's window closed")?;
+            self.say("start the train");
+            self.click_in(&view, crate::play::START_STOP)?;
+            self.think(600.0, 1000.0);
+            if self.vehicle(train)?.get("stopped") == Some(&Value::Bool(false)) {
+                break;
+            }
+        }
+        if self.vehicle(train)?.get("stopped") != Some(&Value::Bool(false)) {
+            return Err("the train did not start".into());
+        }
+        self.tidy()?;
+        Ok(train)
+    }
+
     /// Rail candidates from the shared planner (MCP_PLAN), shortest first, each with both sites.
     pub fn rail_candidates(&self, max_distance: f64) -> Result<Vec<Value>, String> {
         let bin = std::env::var("MCP_PLAN").ok().filter(|b| std::path::Path::new(b).exists()).ok_or("set MCP_PLAN to the mcp-plan binary")?;
@@ -425,6 +651,10 @@ mod tests {
         assert_eq!(s.tiles(), vec![(126, 50), (126, 51), (126, 52)]);
         assert_eq!(s.exit, Heading::SE);
         assert_eq!(s.exit.reverse(), Heading::NW);
+        // The planner's depot, when given, is used as it is.
+        let mut v = v.clone();
+        v["depot"] = json!({"x": 126, "y": 49, "tile": 2, "dir": "SE"});
+        assert_eq!(Site::from_value(&v).unwrap().depot(), Some(((126, 49), Heading::SE)));
     }
 
     #[test]
@@ -444,6 +674,17 @@ mod tests {
         assert!(!rail_connected(&ways, &[(0, 0)], &[(2, 1)]));
         let joined = json!({"rails": ["010120", "000002"]}); // (2,0) right: NE and SE
         assert!(rail_connected(&joined, &[(0, 0)], &[(2, 1)]));
+    }
+
+    #[test]
+    fn a_depot_goes_behind_the_station_facing_it() {
+        // Along y, north tile (126, 50), end (126, 52) facing SE: the back end is (126, 50), so the
+        // depot is at (126, 49) with its entrance facing SE, onto the platform.
+        let s = Site { x: 126, y: 50, along_x: false, length: 3, end: (126, 52), exit: Heading::SE, planned_depot: None };
+        assert_eq!(s.depot(), Some(((126, 49), Heading::SE)));
+        let t = Site { x: 95, y: 167, along_x: true, length: 3, end: (97, 167), exit: Heading::SW, planned_depot: None };
+        assert_eq!(t.depot(), Some(((94, 167), Heading::SW)));
+        assert_eq!(consist("Ginzu 'A4' (Steam) + 4 x Coal Truck"), Some(("Ginzu 'A4' (Steam)".into(), "Coal Truck".into(), 4)));
     }
 
     #[test]

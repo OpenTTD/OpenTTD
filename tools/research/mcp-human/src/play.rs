@@ -13,11 +13,15 @@ const ROAD_MENU: &str = "build road infrastructure";
 const AUTOROAD: &str = "autoroad mode";
 const BUS_STATION: &str = "build bus station";
 const DEPOT: &str = "build road vehicle depot";
+const OPTIONS_MENU: &str = "options and settings";
+const STATION_NAMES: &str = "station names displayed";
 const NEW_VEHICLES: &str = "buy new road vehicle";
-const BUY: &str = "buy vehicle";
-const ORDERS: &str = "show vehicle's orders";
-const GO_TO: &str = "go to";
-const START_STOP: &str = "click to stop/start vehicle";
+pub(crate) const BUY: &str = "buy vehicle";
+/// The orders button, as every vehicle type words it ("Show train's orders", "Show vehicle's orders").
+pub(crate) const ORDERS: &str = "'s orders. ctrl+click";
+pub(crate) const GO_TO: &str = "go to";
+/// The start/stop button, worded per vehicle type ("click to stop/start train").
+pub(crate) const START_STOP: &str = "click to stop/start";
 /// Widget indices of the pickers, in the order the game declares them (src/widgets/road_widget.h):
 /// the bus stop picker's drive-through orientations, and the depot picker's first orientation.
 const STOP_X: i64 = 5;
@@ -193,12 +197,9 @@ impl Hand {
         self.click_in(&depot_window, NEW_VEHICLES)?;
         self.think(400.0, 800.0);
         let buy = self.wait_window("new road vehicles")?;
-        if let Some(edit) = Self::widget_of_type(&buy, "edit_box") {
-            let t = edit.get("rect").and_then(Target::from_rect).ok_or("edit box has no rectangle")?;
+        if Self::widget_of_type(&buy, "edit_box").is_some() {
             self.say("filter the list: bus");
-            self.click(t)?;
-            self.type_text("bus")?;
-            self.think(300.0, 600.0);
+            self.fill_edit("new road vehicles", "bus")?;
         }
         let buy = self.wait_window("new road vehicles")?;
         let list = Self::widget_of_type(&buy, "matrix").ok_or("the buy window has no list")?;
@@ -281,8 +282,28 @@ impl Hand {
     /// (its own window opens instead), so try a few points of the tile, as a person clicks again a
     /// little higher, closing whatever wrong window opened.
     pub fn open_depot(&mut self, depot: (usize, usize)) -> Result<Value, String> {
+        if let Some(w) = self.try_open_depot(depot)? {
+            return Ok(w);
+        }
+        // A station's name sign can cover the whole depot (the game hits signs before the ground,
+        // at any zoom): hide station names from the options menu, as a person does, click the
+        // depot, and show the names again whatever happened.
+        self.say(&format!("a station's name covers the depot at {},{}: hide station names", depot.0, depot.1));
+        self.menu_pick_saying(OPTIONS_MENU, STATION_NAMES)?;
+        self.think(300.0, 600.0);
+        let found = self.try_open_depot(depot);
+        self.say("show station names again");
+        let _ = self.menu_pick_saying(OPTIONS_MENU, STATION_NAMES);
+        found?.ok_or_else(|| format!("the depot at {},{} did not open", depot.0, depot.1))
+    }
+
+    /// Click a depot's tile at a few points; the depot window, or None when no point opened it.
+    fn try_open_depot(&mut self, depot: (usize, usize)) -> Result<Option<Value>, String> {
         let base = self.reveal(depot.0, depot.1)?;
-        let offsets = [(0, 0), (0, -base.h / 3), (-base.w / 6, -base.h / 4), (base.w / 6, -base.h / 4)];
+        // The tile's centre first, then its lower part: a station's name sign is drawn above the
+        // station and can lie over a depot next to it, and the game hits signs before the ground.
+        // Higher points last (a bus on the depot's road can sit on its lower part instead).
+        let offsets = [(0, 0), (0, base.h / 4), (-base.w / 5, base.h / 6), (base.w / 5, base.h / 6), (0, -base.h / 3), (-base.w / 6, -base.h / 4), (base.w / 6, -base.h / 4)];
         for (k, (dx, dy)) in offsets.iter().enumerate() {
             let before: Vec<String> = self.windows()?.iter().filter_map(|w| w.get("caption").and_then(Value::as_str).map(str::to_string)).collect();
             let t = Target { x: base.x + dx, y: base.y + dy, w: (base.w / 4).max(4), h: (base.h / 4).max(4) };
@@ -291,7 +312,7 @@ impl Hand {
             let started = Instant::now();
             while started.elapsed() < Duration::from_millis(1500) {
                 if let Some(w) = self.window("depot")? {
-                    return Ok(w);
+                    return Ok(Some(w));
                 }
                 sleep(Duration::from_millis(120));
             }
@@ -303,7 +324,7 @@ impl Hand {
                 }
             }
         }
-        Err(format!("the depot at {},{} did not open", depot.0, depot.1))
+        Ok(None)
     }
 
     /// Ids of this client's company's vehicles (openttd://vehicles, as the client sees the game).

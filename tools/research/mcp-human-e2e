@@ -229,6 +229,14 @@ if [[ "$TEST" == 1 ]]; then
   sleep 1
   call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq -e --argjson id "$ASK" '[.. | objects | select(.id? == $id and .answer? == "no")] | length > 0' >/dev/null \
     && echo "PASS view.ask asked in the game; closing the dialog answered no" || { echo "FAIL view.ask: $(call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq -c .)"; fail=1; }
+  # The owner's auto-answer switch: with it on, a question is answered at once and shows no dialog.
+  call "$CLIENT_TOKEN" openttd.view.ask.auto '{"answer":"yes"}' >/dev/null
+  AUTO="$(call "$CLIENT_TOKEN" openttd.view.ask '{"question":"mcp-human-e2e: auto-answered?","caption":"e2e auto"}' | jq -r '.id')"
+  sleep 0.5
+  AUTO_OK="$(call "$CLIENT_TOKEN" openttd.view.ask.answers '{}' | jq --argjson id "$AUTO" '[.. | objects | select(.id? == $id and .answer? == "yes")] | length')"
+  NO_DIALOG="$(call "$CLIENT_TOKEN" openttd.ui.windows '{}' | jq '[.windows[] | select((.caption // "") | test("e2e auto"))] | length')"
+  call "$CLIENT_TOKEN" openttd.view.ask.auto '{"answer":null}' >/dev/null
+  [[ "$AUTO_OK" -ge 1 && "$NO_DIALOG" -eq 0 ]] && echo "PASS the owner's auto-answer switch answers yes and shows no dialog" || { echo "FAIL ask.auto: answered=$AUTO_OK dialogs=$NO_DIALOG"; fail=1; }
   # The menu's "Human player: paused" row flips the same switch through openttd.input.yield.
   YIELD_ROW="$(menu_row openttd.input.yield)"
   call "$CLIENT_TOKEN" openttd.ui.menu.run "{\"index\":$YIELD_ROW}" >/dev/null
@@ -337,6 +345,12 @@ near_b = any(abs(x - b[0]) + abs(y - b[1]) <= 3 for x, y in seen)
 assert near_b, f"the walk from {a} reached {len(seen)} tile(s), none at {b}"
 print(f"    {st[0]['name']} {a} -> {st[1]['name']} {b}: {len(seen)} rail tiles walked")
 PY
+    # A train on the line: an engine with wagons, two orders, started; give it time to leave the depot.
+    sleep 20
+    TRAIN="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq -c --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "train")][0]')"
+    jq -e '. != null and .parts >= 2 and (.orders | length) >= 2 and .stopped == false and .in_depot == false and .consist_capacity > 0' <<<"$TRAIN" >/dev/null \
+      && echo "PASS a train runs on the line: $(jq -c '{id, engine, parts, consist_capacity, orders: (.orders | length), x, y}' <<<"$TRAIN")" \
+      || { echo "FAIL no running train with wagons and two orders: $TRAIN"; fail=1; }
   fi
   # With an AlgoGlyph checkout named, every move came from its kernel and none fell back.
   if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]]; then

@@ -42,12 +42,14 @@ pub struct Hand {
     pub depots: Vec<(usize, usize)>,
     /// AlgoGlyph's human-pointing kernel, when MCP_ALGOGLYPH_DIR names a checkout.
     pub flow: Option<Flow>,
+    /// While picking a menu entry by its words: those words.
+    menu_match: Option<String>,
 }
 
 impl Hand {
     pub fn new(mcp: Mcp, model: Model, seed: u64) -> Self {
         let flow = if model == Model::default() { Flow::from_env() } else { None };
-        let hand = Hand { mcp, model, rng: Rng::new(seed), log: true, depots: Vec::new(), flow };
+        let hand = Hand { mcp, model, rng: Rng::new(seed), log: true, depots: Vec::new(), flow, menu_match: None };
         hand.say(if hand.flow.is_some() { "moves come from AlgoGlyph's human-pointing kernel" } else { "moves come from the builtin motion model" });
         hand
     }
@@ -431,8 +433,56 @@ impl Hand {
             self.click(Target { w: cap.w / 3, ..cap })?;
             self.think(150.0, 300.0);
         }
+        // Still covered: something stays in front (a window that keeps itself on top). Close what
+        // lies over the point, as a person would, unless it is the window itself, then look again.
+        for _ in 0..3 {
+            if self.on_top(w, t)? {
+                return Ok(());
+            }
+            let at = self.mcp.call("openttd.ui.at", json!({"x": t.x, "y": t.y}))?;
+            let (class, number) = (at.pointer("/window/class").cloned(), at.pointer("/window/number").cloned());
+            let cover = self.windows()?.into_iter().find(|x| Some(x.get("class").cloned().unwrap_or_default()) == class && Some(x.get("number").cloned().unwrap_or_default()) == number);
+            match cover {
+                Some(c) if Self::widget_of_type(&c, "close_box").is_some() => {
+                    self.say(&format!("'{}' lies over '{}': close it", c.get("caption").and_then(Value::as_str).unwrap_or("a window").trim(),
+                        w.get("caption").and_then(Value::as_str).unwrap_or("?").trim()));
+                    self.close(&c)?;
+                    self.think(150.0, 300.0);
+                }
+                Some(c) => return Err(format!("'{}' stays covered by '{}' (class {}), which has no close box",
+                    w.get("caption").and_then(Value::as_str).unwrap_or("?").trim(), c.get("caption").and_then(Value::as_str).unwrap_or("?"), c["class"])),
+                None => break,
+            }
+        }
         if !self.on_top(w, t)? {
             return Err(format!("'{}' stays covered", w.get("caption").and_then(Value::as_str).unwrap_or("?").trim()));
+        }
+        Ok(())
+    }
+
+    /// Put exactly `text` into an edit box of a window: clear it with the box's own clear button
+    /// (its right end), click in, type, and read the box back. Typing alone lands at the caret,
+    /// which may sit before what is already there.
+    pub fn fill_edit(&mut self, caption: &str, text: &str) -> Result<(), String> {
+        for attempt in 0..2 {
+            let w = self.wait_window(caption)?;
+            let edit = Self::widget_of_type(&w, "edit_box").ok_or_else(|| format!("'{caption}' has no edit box"))?;
+            let r = edit.get("rect").and_then(Target::from_rect).ok_or("edit box has no rectangle")?;
+            self.raise_if_covered(&w, r)?;
+            let clear = Target { x: r.x + r.w / 2 - r.h / 2, y: r.y, w: (r.h / 2).max(4), h: (r.h / 2).max(4) };
+            self.click(clear)?;
+            self.think(150.0, 300.0);
+            self.click(Target { x: r.x - r.w / 4, w: r.w / 4, ..r })?;
+            self.type_text(text)?;
+            self.think(250.0, 500.0);
+            let w = self.wait_window(caption)?;
+            let now = Self::widget_of_type(&w, "edit_box").and_then(|e| e.get("text").and_then(Value::as_str).map(str::to_string));
+            match now.as_deref() {
+                Some(t) if t == text => return Ok(()),
+                None => return Ok(()), // a build that does not report edit box text: trust the typing
+                Some(t) if attempt == 1 => return Err(format!("the edit box of '{caption}' holds '{t}', not '{text}'")),
+                Some(t) => self.say(&format!("the edit box holds '{t}'; clear it and type again")),
+            }
         }
         Ok(())
     }
@@ -453,6 +503,14 @@ impl Hand {
 
     /// Open a toolbar menu and pick an entry the way a person does with a menu that closes on
     /// release: press on the button and hold, glide down to the entry, let go over it.
+    /// Pick the entry of a toolbar menu whose text has these words (the game's own text filter).
+    pub fn menu_pick_saying(&mut self, needle: &str, words: &str) -> Result<(), String> {
+        self.menu_match = Some(words.to_string());
+        let r = self.menu_pick(needle, |items| items.iter().position(|i| i.get("matches") == Some(&Value::Bool(true))));
+        self.menu_match = None;
+        r
+    }
+
     pub fn menu_pick(&mut self, needle: &str, pick: impl Fn(&[Value]) -> Option<usize>) -> Result<(), String> {
         let (_, wd) = self.find_widget(needle)?.ok_or_else(|| format!("nothing on screen says '{needle}'"))?;
         let t = wd.get("rect").and_then(Target::from_rect).ok_or("widget has no rectangle")?;
@@ -462,7 +520,11 @@ impl Hand {
         self.button("down", "left", &[])?;
         let started = Instant::now();
         let items = loop {
-            if let Some(items) = self.windows()?.iter().find_map(|w| w.get("items").and_then(Value::as_array).cloned()) {
+            let listed = match &self.menu_match {
+                Some(m) => self.mcp.call("openttd.ui.windows", json!({"match": m}))?.get("windows").and_then(Value::as_array).cloned().unwrap_or_default(),
+                None => self.windows()?,
+            };
+            if let Some(items) = listed.iter().find_map(|w| w.get("items").and_then(Value::as_array).cloned()) {
                 break items;
             }
             if started.elapsed() > Duration::from_secs(3) {

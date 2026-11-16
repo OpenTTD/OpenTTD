@@ -43,7 +43,7 @@ commands:
   connect [<town> <town>]    connect two towns by road (default: the largest and a neighbour)
   serve <town> <town>        a bus service: road if needed, two stops, a depot, a bus with orders
   play [<rounds>]            look around, then serve town pairs round after round
-  rail [<max distance>]      a rail line: both stations at the shared planner's sites (MCP_PLAN),
+  rail [<max> [<min>]]       a rail line within [min, max] tiles: both stations at the shared planner's sites (MCP_PLAN),
                              AlgoGlyph's track plan between them, laid with the rail tools, checked
   execute <actions.json|->   plan the actions with AlgoGlyph's action-plan kernel (DAG, cash per
                              step, refused when it would overdraw), show it, then do each step
@@ -120,8 +120,11 @@ fn run() -> Result<(), String> {
         "rail" => {
             // A rail line: the shortest planner candidate (within the distance) that builds.
             let max: f64 = if args.len() > 1 { arg_num(&args, 1)? } else { 60.0 };
+            // An optional minimum distance builds a further line once the nearer ones exist.
+            let min: f64 = if args.len() > 2 { arg_num(&args, 2)? } else { 0.0 };
             hand.require_tools()?;
-            let candidates = hand.rail_candidates(max)?;
+            let candidates: Vec<serde_json::Value> = hand.rail_candidates(max)?.into_iter()
+                .filter(|c| c["distance"].as_f64().unwrap_or(0.0) >= min).collect();
             hand.say(&format!("{} rail candidate(s) within {max} tiles", candidates.len()));
             let mut built = None;
             for c in candidates.iter().take(4) {
@@ -129,7 +132,7 @@ fn run() -> Result<(), String> {
                 let label = format!("{} -> {}", name("/producer/name").replace('?', &name("/a/name")), name("/acceptor/name").replace('?', &name("/b/name")));
                 hand.say(&format!("rail: {label} ({} tiles)", c["distance"]));
                 match hand.build_rail_line(&c["stations"]) {
-                    Ok(line) => { built = Some((label, line)); break; }
+                    Ok(line) => { built = Some((label, line, c.clone())); break; }
                     Err(e) if economy::game_closed(&e) => return Err("the game was closed: stop building".into()),
                     Err(e) => {
                         hand.say(&format!("skip {label}: {e}"));
@@ -138,8 +141,16 @@ fn run() -> Result<(), String> {
                     }
                 }
             }
-            let (label, line) = built.ok_or("no rail candidate could be built")?;
+            let (label, line, candidate) = built.ok_or("no rail candidate could be built")?;
             println!("ok: rail line {label}: stations at {},{} and {},{}, {} pieces of track", line.from.x, line.from.y, line.to.x, line.to.y, line.pieces.len());
+            // A train on it: the depot behind the first station, the engine and wagons the planner
+            // priced the line with (its option's vehicle), orders to both stations.
+            let vehicle = candidate.pointer("/options/0/vehicles/name").and_then(serde_json::Value::as_str).unwrap_or("");
+            let (engine, wagon, wagons) = rail::consist(vehicle).ok_or_else(|| format!("the planner names no train for this line ('{vehicle}')"))?;
+            let depot = hand.build_rail_depot(&line.from)?;
+            let train = hand.buy_train(depot, [(line.from.x, line.from.y), (line.to.x, line.to.y)], &engine, &wagon, wagons)?;
+            hand.tell(&format!("train {train} runs {label}: {engine} with {wagons} x {wagon}"));
+            println!("ok: train {train} ({engine} + {wagons} x {wagon}) runs between the stations, depot at {},{}", depot.0, depot.1);
         }
         "execute" => {
             // A plan first, then its execution: the actions go to AlgoGlyph's action-plan kernel.

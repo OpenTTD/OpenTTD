@@ -12,6 +12,7 @@
 
 #include "../core/geometry_type.hpp"
 
+#include <string_view>
 #include <vector>
 
 struct Window;
@@ -24,15 +25,18 @@ struct DropdownItem {
 	bool selectable; ///< Whether a click on it chooses it (masked and separator items do not).
 	bool selected;  ///< Whether it is the highlighted item.
 	Rect rect;      ///< Its rectangle in screen pixels (the visible part only).
+	bool matches;   ///< Whether its text matches the words asked for (the dropdown's own text filter); false when none were asked.
 };
 
 /**
  * The visible items of an open dropdown window, in screen pixels, laid out exactly as the
  * window draws and hit-tests them (dropdown.cpp). Read-only.
  * @param w A window; anything other than a dropdown menu answers an empty list.
+ * @param match Words to test each item's text against, with the filter a dropdown uses when the
+ *              player types into it (StringFilter, every word must occur); empty tests nothing.
  * @return The items, top to bottom, that are at least partly visible.
  */
-std::vector<DropdownItem> DropdownItems(const Window *w);
+std::vector<DropdownItem> DropdownItems(const Window *w, std::string_view match = {});
 
 } // namespace PrismaticMCP::Hooks
 
