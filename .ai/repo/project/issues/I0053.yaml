@@ -1,0 +1,45 @@
+id: I0053
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The route planner calibrated to the game's payment formula, vehicle speeds, passenger generation and base prices"
+slug: planner-calibrated-to-the-game
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Replace the planner's guessed value curve with the game's own formulas, read from the sources and recorded in .ai knowledge, so mode choice and profitability are grounded and every constant stays an external parameter."
+why: "The owner: have you analysed all sources and algorithms, documented them in .ai? choose the right combination of transport modes; best algorithms for planning and profitability."
+scope:
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-panel/**"
+  - "research/mcp-control.md"
+  - ".ai/repo/knowledge/curated/cargo-payment-and-vehicle-speed.md"
+non_scope:
+  - "Vehicle purchase and running costs (next: live engine data); the bot building rail or air"
+depends_on:
+  - I0050
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "plan.rs computes income per passenger from GetTransportedGoodsIncome's time factor, transit periods from the vehicle movement code, and costs from pricebase.h; a unit test pins the time factor to the source"
+  - "Every constant is a parameter echoed in the answer; what is not modelled is listed in every answer"
+  - "The knowledge record cites each formula with file and line"
+  - "mcp-view-check passes against a running stack"
+validation:
+  - "cargo test --release --bin mcp-plan (tools/research/mcp-rhai)"
+  - "tools/research/mcp-view-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16T00:14:29Z
+started_at: 2026-11-16T00:14:24Z
+started_event: sha256:6bb06b326fb87baec84744e7141840cd7d05462811de9a5b095d1f30602bee79
+verified_at: 2026-11-16T00:14:25Z
+verified_event: sha256:9f9613bbdac889813235213819d9841257b419f7f94622b06f4fd160cc4caaa3
+completed_at: 2026-11-16T00:14:29Z
+completed_event: sha256:19f35c0ecce47e07569cb966bc2b6ff3910fefabaa09da10c4fbed796ab0130e
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release --bin mcp-plan; tools/research/mcp-view-check; curl /api/plan"
+    result: "time_factor unit test passes (255, 231 at 24, 179 at 50, 31 at 124, continuous after); mcp-view-check 31/31 against the running 3-instance cluster; /api/plan answers model v2 with transit_periods, income_per_passenger, monthly_income, cost and score per option and 4 not_modelled items; e.g. rail Nanington-Abernville 81 tiles, 13.2 periods, 29.74 per passenger. Vehicle costs not modelled"
+    commit: 1d74cfeab0219737102424aecf21b8d30046b6b2
+    recorded_at: 2026-11-16T00:14:27Z

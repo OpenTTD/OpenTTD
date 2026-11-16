@@ -1,5 +1,5 @@
 //! RESEARCH-ONLY: print a route plan for a running game as JSON (see src/plan.rs): town pairs
-//! ranked by a stated heuristic, each with its suggested mode of transport.
+//! ranked by model v2 (the game's payment formula, speeds and base prices), each with its suggested mode of transport.
 //!
 //! Usage: mcp-plan [--panel http://127.0.0.1:8800] [--limit 20] [--params '{"cost_weight":1}']
 //!        mcp-plan --defaults   (print the default parameters)

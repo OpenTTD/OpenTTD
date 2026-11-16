@@ -623,7 +623,7 @@ def make_routes(game):
         ("POST", "/api/bots/setting", "botSetting", "Change one setting of a running bot (openttd.ai.set_setting, approval-gated)", True,
          s({"company": {"type": "integer"}, "name": {"type": "string"}, "value": {"type": "integer"}}, ["company", "name", "value"]),
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
-        ("GET", "/api/plan", "plan", "A route plan: town pairs ranked by a stated heuristic (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params)", True,
+        ("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params)", True,
          None, lambda q: plan(int(q.get("limit", ["20"])[0]), q.get("params", [""])[0])),
         ("GET", "/api/graph", "graph", "The road network as a graph (nodes: junctions, ends, stations, town anchors; edges with length; components), derived from openttd://map, towns and stations by tools/research/mcp-rhai mcp-graph", True,
          None, lambda q: graph()),

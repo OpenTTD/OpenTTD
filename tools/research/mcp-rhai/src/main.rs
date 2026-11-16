@@ -154,7 +154,7 @@ fn engine(panel: Panel) -> Engine {
         to_dyn(graph::derive(&get("/api/resources/map")?, &get("/api/resources/towns")?, &get("/api/resources/stations")?)?)
     });
     let p = panel.clone();
-    // A route plan (src/plan.rs): town pairs ranked by a stated heuristic, each with its mode.
+    // A route plan (src/plan.rs): town pairs ranked by model v2 (the game's payment formula), each with its mode.
     e.register_fn("world_plan", move |limit: i64| -> R<Dynamic> {
         let get = |path: &str| -> R<Value> {
             let v = from_dyn(p.get(path)?)?;

@@ -227,9 +227,13 @@ generic path as the hand-made `news` and `ask` tools.
 `api_plan(#{limit, params})`, and `mcp-plan [--params JSON] [--defaults]`. The planner ranks town
 pairs and gives each one a mode (bus, rail or air), plus the five best pairs of each mode so that
 a plan can combine modes. Every assumption is a parameter with a default that the caller can
-override: distance bands, minimum populations, reach, costs, `cost_weight` and the enabled
-`modes`. The answer echoes the parameters it used. The heuristic is v1 and not yet calibrated
-against the game's payment formula (see `tools/research/mcp-rhai/src/plan.rs`). On `/world` the
+override: distance bands, minimum populations, `speed_kmh`, `overhead_periods`, `supply_factor`,
+`payment`, costs, `payback_months` and the enabled `modes`. The answer echoes the parameters it
+used. Model v2 takes the game's own formulas: the payment curve, vehicle movement in tiles,
+passenger generation and base prices. They are documented with their sources in the knowledge
+record `cargo-payment-and-vehicle-speed`. Each option reports its transit periods, income per
+passenger, monthly income, cost and score. Vehicle purchase and running costs are not modelled
+yet, and every answer lists that under `not_modelled`. On `/world` the
 best pairs are drawn on the map in each mode's colour, and a click on a row moves your camera to
 the first town.
 
