@@ -206,6 +206,7 @@ bit for bit the same. `cargo test` checks the live kernel against every golden c
 tools/gate.sh research                 # builds build-gate-research/ with both options ON
 tools/research/mcp-human-e2e           # server + client (own MCPs), the human plays, stays up
 tools/research/mcp-human-e2e --test    # ...and asserts on the server's map, exit 0/1
+tools/research/mcp-human-e2e --minutes 30 --front   # a long game, its window raised to watch
 ```
 
 The test checks the outcome on the **server**, which is authoritative. The client's new company
