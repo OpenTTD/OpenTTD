@@ -193,6 +193,16 @@ Prismatic or another AI.
 | main page, News card | the list, plus a form to send a message with an optional town viewport |
 | `narrator.rhai` | every route the bot opens appears as a newspaper with a viewport on its town |
 
+### Talking with the owner in the game: company newspapers and questions
+
+| Surface | What it does |
+|---|---|
+| `POST /api/news {text, style: "company", company, title?}` | the company newspaper with that company's manager face, as in "New transport company launched!". `title` is `launch`, `trouble`, `merger`, `bankrupt` or `none`, taken from the game's own strings. An unknown company is refused |
+| `openttd.view.ask`, `POST /api/ask {question, caption?}`, Rhai `ttd::ask_owner(question, seconds)` | a yes/no question in the game's own query dialog. It opens without keyboard focus, so only a deliberate click answers it |
+| `openttd.view.ask.answers`, `GET /api/ask`, event `ask.answered` | every question with its answer: `yes`, `no` (also a closed dialog), `replaced` (a newer question took its place), or `null` while it is open |
+| News card, right column | the questions and their answers, live |
+| `steward.rhai` (supervised by `mcp-e2e`) | every three minutes it offers the planner's best pair you have not answered yet ("Show it to you?"). On yes your camera visits both towns and a newspaper sums it up. Only a real yes or no retires a pair. It asks about allowing more routes only when the game has `openttd.ai.set_setting`, and even then the change waits for your approval in the panel |
+
 ## A route planner with modes of transport, every assumption a parameter
 
 `GET /api/plan?limit=N&params=JSON`, Rhai `world_plan(n)`, `world_plan_with(n, #{...})` or

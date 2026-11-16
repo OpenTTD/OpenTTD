@@ -364,5 +364,15 @@ if (window.EventSource) {
     if (r.ok) { document.getElementById('news-text').value = ''; setTimeout(load, 800); }
   });
   document.getElementById('news-close').addEventListener('click', async () => { await post('/api/news/close'); msg('news window closed'); });
-  load(); towns(); setInterval(load, 4000); setInterval(towns, 60000);
+  async function asks() {
+    try {
+      const d = await (await fetch('/api/ask')).json();
+      const tag = (a) => a === 'yes' ? '<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">yes</span>'
+        : a === 'replaced' ? '<span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">replaced</span>'
+          : a === 'no' ? '<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">no</span>'
+          : '<span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">waiting for you</span>';
+      document.getElementById('ask-list').innerHTML = (d.asks || []).slice(0, 10).map((a) => `<li class="flex items-start gap-2"><span>${tag(a.answer)}</span><span class="text-gray-900 dark:text-white">#${a.id} ${esc(a.question)}</span></li>`).join('') || '<li>no question asked yet</li>';
+    } catch (e) { /* no GUI client yet */ }
+  }
+  load(); towns(); asks(); setInterval(load, 4000); setInterval(asks, 3000); setInterval(towns, 60000);
 })();

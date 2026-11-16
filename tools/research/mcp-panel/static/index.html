@@ -81,7 +81,16 @@
         </div>
       </form>
       <p id="news-msg" class="mb-2 text-xs text-gray-500 dark:text-gray-400"></p>
-      <ol id="news-list" class="relative border-s border-gray-200 dark:border-gray-700 ms-2"></ol>
+      <div class="grid gap-4 lg:grid-cols-2">
+        <div>
+          <h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">What the game showed you</h4>
+          <ol id="news-list" class="relative border-s border-gray-200 dark:border-gray-700 ms-2"></ol>
+        </div>
+        <div>
+          <h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Questions asked in your game window (POST /api/ask)</h4>
+          <ul id="ask-list" class="space-y-2 text-sm"></ul>
+        </div>
+      </div>
     </div>
 
     <div id="cluster" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">

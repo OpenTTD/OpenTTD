@@ -1,0 +1,44 @@
+id: I0051
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Interactive news: company newspapers and yes/no questions in the game window, and a steward that acts on the owner's answers"
+slug: interactive-news-and-steward
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Let the bot, a script or another AI talk to the owner inside the game: the company newspaper with a manager's face, and yes/no questions in the game's own dialog whose answers come back over MCP and steer what happens next."
+why: "The owner, with a screenshot of the 'New transport company launched!' newspaper: wire this panel to MCP, also for other AIs and interactions, reuse it, make it interactive; top-notch human-AI interaction."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_view.cpp"
+  - "tools/research/**"
+  - "research/mcp-control.md"
+non_scope:
+  - "Live bot settings (openttd.ai.set_setting is in openttd-59's uncommitted catalogue); the steward asks about expansion only once that tool exists"
+depends_on:
+  - I0050
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd.view.news.show style company shows the newspaper with a company's manager face; an unknown company is refused"
+  - "openttd.view.ask opens the game's yes/no dialog without focus; answers are yes, no (also a closed dialog) or replaced; they appear in GET /api/ask and as event ask.answered"
+  - "steward.rhai offers planner pairs as questions, shows a pair on yes, retires a pair only on a real answer, and is supervised by mcp-e2e"
+  - "tools/gate.sh research, mcp-view-check and mcp-panel-check pass"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-view-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16T00:00:14Z
+started_at: 2026-11-15T23:58:47Z
+started_event: sha256:6b7de0d0d9e3f8072b0db6143b2bc31e9fc68ddd1b1482de308d6d3babfb825f
+verified_at: 2026-11-16T00:00:11Z
+verified_event: sha256:830f1d704fb797ce3899474f5cd911cc286aaeb98dc6dd39937d6d772d6b2b9d
+completed_at: 2026-11-16T00:00:14Z
+completed_event: sha256:a97af65ba6508302c127d0dd14244e51193ff005f9a4188dc3af4909584979a6
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-view-check; tools/research/mcp-panel-check"
+    result: "gate research PASS (ctest 103/103, [prismatic_mcp] 25 assertions) on the no-focus build; mcp-view-check 26/26 on a 3-instance cluster with the GUI client (company newspaper for company 0, unknown company refused, ask opens the dialog, a newer question marks the older replaced, event ask.answered streamed); mcp-panel-check 13/13; the dialog 'Your bot asks' with No/Yes seen in the owner's window and left open until clicked. On the earlier focused build one question was answered yes 2 s after it opened (an owner click or a stray Enter); the dialog now opens without focus"
+    commit: 61c853a786508ce276d000458442aa17cfa83a4b
+    recorded_at: 2026-11-16T00:00:12Z

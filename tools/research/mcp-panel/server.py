@@ -61,6 +61,7 @@ class Game:
         self.mcp_up = False
         self.ai_started = False
         self.rpc_id = 0
+        self.asks_reported = set()  # ids of answered questions already published as ask.answered
         self.view_token = None  # token file of the GUI client whose view the panel shows and drives
 
     # ------------------------------------------------------------------ process
@@ -298,6 +299,13 @@ class Game:
                 news = self.view_call("openttd.view.news.list", {"limit": 30}).get("news", [])
             except Exception:  # noqa: BLE001 - the client restarts; try again next round
                 continue
+            try:
+                for a in self.view_call("openttd.view.ask.answers").get("asks", []):
+                    if a.get("answer") is not None and a["id"] not in self.asks_reported:
+                        self.asks_reported.add(a["id"])
+                        self.publish("ask.answered", a)
+            except Exception:  # noqa: BLE001
+                pass
             keys = [(n["date"], n["type"], n["text"]) for n in news]
             if seen is None:
                 seen = set(keys)  # what was there before the panel attached is history, not news
@@ -589,10 +597,15 @@ def make_routes(game):
          lambda b: instance_call(b["name"], b["method"], b.get("params"))),
         ("GET", "/api/news", "news", "The news the owner's game window has shown, newest first (openttd.view.news.list on the GUI client); ?limit=N", True,
          None, lambda q: (200, game.view_call("openttd.view.news.list", {"limit": int(q.get("limit", ["20"])[0])}))),
-        ("POST", "/api/news", "newsShow", "Show a news message in the owner's game window, from the bot, a script or another AI (openttd.view.news.show): text, optional style normal|thin|small and a tile, x/y, town or vehicle for its viewport", True,
-         s({"text": {"type": "string"}, "style": {"type": "string", "enum": ["normal", "thin", "small"]}, "tile": {"type": "integer"},
+        ("POST", "/api/news", "newsShow", "Show a news message in the owner's game window, from the bot, a script or another AI (openttd.view.news.show): text, optional style normal|thin|small|company, a tile, x/y, town or vehicle for its viewport, or a company (and title) for the manager's face", True,
+         s({"text": {"type": "string"}, "style": {"type": "string", "enum": ["normal", "thin", "small", "company"]}, "company": {"type": "integer"},
+            "title": {"type": "string", "enum": ["none", "launch", "trouble", "merger", "bankrupt"]}, "tile": {"type": "integer"},
             "x": {"type": "integer"}, "y": {"type": "integer"}, "town": {"type": "integer"}, "vehicle": {"type": "integer"}}, ["text"]),
          lambda b: (200, game.view_call("openttd.view.news.show", b))),
+        ("POST", "/api/ask", "ask", "Ask the player a yes/no question in the game window (openttd.view.ask); the answer arrives as event ask.answered and in GET /api/ask: yes, no (also a closed dialog), or replaced by a newer question", True,
+         s({"question": {"type": "string"}, "caption": {"type": "string"}}, ["question"]), lambda b: (200, game.view_call("openttd.view.ask", b))),
+        ("GET", "/api/ask", "askAnswers", "Every question asked in the game window, newest first, with its answer (yes, no, replaced, or null while open)", True,
+         None, lambda q: (200, game.view_call("openttd.view.ask.answers"))),
         ("POST", "/api/news/close", "newsClose", "Close the news window in the owner's game", True,
          None, lambda b: (200, game.view_call("openttd.view.news.close"))),
         ("POST", "/api/view/attach", "viewAttach", "Attach the GUI client the owner watches, by its MCP token file", False,

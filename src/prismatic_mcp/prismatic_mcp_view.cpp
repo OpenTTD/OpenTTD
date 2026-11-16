@@ -11,6 +11,8 @@
 /** @file prismatic_mcp_view.cpp View tools of the embedded MCP server (research-only). */
 
 #include "../stdafx.h"
+#include <deque>
+#include <optional>
 
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 
@@ -27,6 +29,8 @@
 #include "../zoom_func.h"
 #include "../screenshot.h"
 #include "../news_func.h"
+#include "../company_base.h"
+#include "../textbuf_gui.h"
 #include "../news_gui.h"
 #include "../strings_func.h"
 #include "../table/strings.h"
@@ -40,6 +44,25 @@ namespace PrismaticMCP::View {
 using json = nlohmann::json;
 
 namespace {
+
+/** A question asked through openttd.view.ask, and the player's answer once given. */
+struct Ask {
+	uint32_t id;
+	std::string question;
+	std::optional<std::string> answer; ///< "yes", "no" (also a closed dialog), or "replaced" by a newer question.
+};
+std::deque<Ask> _asks; ///< Newest first; GUI state of this client only.
+uint32_t _ask_next = 0; ///< Last id handed out.
+uint32_t _ask_open = 0; ///< The question the dialog shows now, 0 if none.
+
+/** The query dialog's callback: yes, no, or closed (no). */
+void AskAnswered(Window *, bool confirmed)
+{
+	for (Ask &a : _asks) {
+		if (a.id == _ask_open && !a.answer.has_value()) a.answer = confirmed ? "yes" : "no";
+	}
+	_ask_open = 0;
+}
 
 json Error(std::string message)
 {
@@ -115,11 +138,18 @@ json Tools()
 		{"description", "GUI only, no approval: the news this client has shown (newest first): text, type, style, date"},
 		{"inputSchema", {{"type", "object"}, {"properties", {{"limit", {{"type", "integer"}}}}}}}});
 	arr.push_back({{"name", "openttd.view.news.show"},
-		{"description", "GUI only, no approval, local to this client: show a news message to the player (from the bot, a script or another AI). With a tile, town or vehicle it gets a viewport there (style thin); style: normal (newspaper), thin (headline + viewport), small (information window)"},
+		{"description", "GUI only, no approval, local to this client: show a news message to the player (from the bot, a script or another AI). With a tile, town or vehicle it gets a viewport there (style thin); style: normal (newspaper), thin (headline + viewport), small (information window), company (the newspaper with a company's manager face: company id, optional title launch|trouble|merger|bankrupt)"},
 		{"inputSchema", {{"type", "object"}, {"required", json::array({"text"})}, {"properties", {{"text", {{"type", "string"}}},
-			{"style", {{"type", "string"}, {"enum", json::array({"normal", "thin", "small"})}}},
+			{"style", {{"type", "string"}, {"enum", json::array({"normal", "thin", "small", "company"})}}},
+			{"company", {{"type", "integer"}}}, {"title", {{"type", "string"}, {"enum", json::array({"none", "launch", "trouble", "merger", "bankrupt"})}}},
 			{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}},
 			{"town", {{"type", "integer"}}}, {"vehicle", {{"type", "integer"}}}}}}}});
+	arr.push_back({{"name", "openttd.view.ask"},
+		{"description", "GUI only, no approval: ask the player a yes/no question in the game window (the game's own query dialog). Answers {id}; the answer arrives in openttd.view.ask.answers: yes, no (also when the player closes the dialog), or replaced when a newer question takes its place"},
+		{"inputSchema", {{"type", "object"}, {"required", json::array({"question"})}, {"properties", {{"question", {{"type", "string"}}}, {"caption", {{"type", "string"}}}}}}}});
+	arr.push_back({{"name", "openttd.view.ask.answers"},
+		{"description", "GUI only, no approval: every question asked through openttd.view.ask, newest first, with its answer (yes, no, replaced, or null while it is open)"},
+		{"inputSchema", obj}});
 	arr.push_back({{"name", "openttd.view.news.close"},
 		{"description", "GUI only, no approval: close the news window the player sees"},
 		{"inputSchema", obj}});
@@ -171,12 +201,45 @@ std::optional<json> Call(const std::string &name, const json &args)
 			if (!tile.has_value()) return Error(error);
 			ref = *tile;
 		}
+		if (style == "company") {
+			const Company *c = Company::GetIfValid(CompanyID(static_cast<uint8_t>(args.value("company", -1))));
+			if (c == nullptr) return Error("style company needs the id of an existing company");
+			std::string title = args.value("title", "none");
+			StringID tid = title == "launch" ? STR_NEWS_COMPANY_LAUNCH_TITLE : title == "trouble" ? STR_NEWS_COMPANY_IN_TROUBLE_TITLE :
+				title == "merger" ? STR_NEWS_COMPANY_MERGER_TITLE : title == "bankrupt" ? STR_NEWS_COMPANY_BANKRUPT_TITLE : STR_EMPTY;
+			AddCompanyNewsItem(GetEncodedString(STR_JUST_BIG_RAW_STRING, text), std::make_unique<CompanyNewsInformation>(tid, c));
+			return json{{"ok", true}, {"shown", text}, {"style", style}, {"company", c->index.base()}};
+		}
 		if (style.empty()) style = has_target ? "thin" : "normal";
 		NewsStyle ns = style == "thin" ? NewsStyle::Thin : (style == "small" ? NewsStyle::Small : NewsStyle::Normal);
 		NewsFlags flags = ns == NewsStyle::Normal ? NewsFlags{} : NewsFlags{NewsFlag::NoTransparency, NewsFlag::Shaded};
 		if (ns != NewsStyle::Normal && !has_target) return Error("styles thin and small need a tile, x/y, town or vehicle");
 		AddNewsItem(GetEncodedString(STR_JUST_RAW_STRING, text), NewsType::General, ns, flags, ref);
 		return json{{"ok", true}, {"shown", text}, {"style", style}};
+	}
+
+	if (name == "openttd.view.ask") {
+		std::string question = args.value("question", "");
+		if (question.empty()) return Error("question is required");
+		std::string caption = args.value("caption", "Your bot asks");
+		uint32_t id = ++_ask_next;
+		/* A question still open is replaced, not answered: mark it before the dialog closes it. */
+		for (Ask &a : _asks) {
+			if (a.id == _ask_open && !a.answer.has_value()) a.answer = "replaced";
+		}
+		ShowQuery(GetEncodedString(STR_JUST_RAW_STRING, caption), GetEncodedString(STR_JUST_RAW_STRING, question), nullptr, AskAnswered, false); // no focus: a stray Enter must not answer for the player
+		_ask_open = id;
+		_asks.push_front({id, question, std::nullopt});
+		if (_asks.size() > 100) _asks.pop_back();
+		return json{{"ok", true}, {"id", id}};
+	}
+
+	if (name == "openttd.view.ask.answers") {
+		json list = json::array();
+		for (const Ask &a : _asks) {
+			list.push_back({{"id", a.id}, {"question", a.question}, {"answer", a.answer.has_value() ? json(*a.answer) : json(nullptr)}});
+		}
+		return json{{"ok", true}, {"asks", std::move(list)}};
 	}
 
 	if (name == "openttd.view.news.close") {

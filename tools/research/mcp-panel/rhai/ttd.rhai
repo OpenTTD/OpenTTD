@@ -148,3 +148,22 @@ fn bot_log(limit) {
     let n = e.len();
     if n > limit { e.extract(n - limit) } else { e }
 }
+
+/// Ask the owner a yes/no question in their game window and wait for the answer: "yes", "no"
+/// (also when they close the dialog), "replaced" when another question took its place, or ()
+/// when nobody answers within `seconds`.
+fn ask_owner(question, seconds) {
+    let id = api_ask(#{ question: question }).id;
+    for i in 0..seconds {
+        for a in api_askAnswers().asks {
+            if a.id == id && a.answer != () { return a.answer; }
+        }
+        sleep(1000);
+    }
+    ()
+}
+
+/// A newspaper in the owner's window: news(text) or news with a map of options
+/// (style, town, tile, x, y, vehicle, company, title), see POST /api/news.
+fn news(text) { api_newsShow(#{ text: text }) }
+fn news(text, options) { options.text = text; api_newsShow(options) }

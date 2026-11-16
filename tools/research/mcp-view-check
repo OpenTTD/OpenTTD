@@ -99,8 +99,30 @@ check "a small news without a viewport target is refused" \
 out="$(curl -s -X POST "$URL/api/news/close")"
 check "POST /api/news/close closes the news window" "$([[ "$(json "d.get('ok')" <<<"$out")" == True ]] && echo 1 || echo 0)"
 
+company="$(curl -s "$URL/api/resources/companies" | json "d['data']['companies'][0]['id'] if d['data']['companies'] else -1")"
+out="$(curl -s -X POST -H 'Content-Type: application/json' -d "{\"text\":\"mcp-view-check company news\",\"style\":\"company\",\"company\":$company,\"title\":\"launch\"}" "$URL/api/news")"
+check "a company newspaper with the manager's face is shown for company $company" \
+  "$([[ "$(json "d.get('ok') is True and d.get('style') == 'company'" <<<"$out")" == True ]] && echo 1 || echo 0)"
+out="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"text":"x","style":"company","company":99}' "$URL/api/news")"
+check "a company newspaper for a company that does not exist is refused" \
+  "$([[ "$(json "d.get('ok') is False" <<<"$out")" == True ]] && echo 1 || echo 0)"
+curl -s -X POST "$URL/api/news/close" >/dev/null
+
+since="$(curl -s "$URL/api/status" | json "d['event_seq']")"
+q1="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"question":"mcp-view-check: first question (replaced at once)"}' "$URL/api/ask" | json "d.get('id')")"
+q2="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"question":"mcp-view-check: a test question in your game window; any answer is fine"}' "$URL/api/ask" | json "d.get('id')")"
+answers="$(curl -s "$URL/api/ask")"
+check "POST /api/ask opens the game's query dialog; a newer question replaces the older one (#$q1 replaced, #$q2 open)" \
+  "$([[ "$(json "(lambda by: by.get($q1) == 'replaced' and $q2 in by and by[$q2] is None)({a['id']: a['answer'] for a in d['asks']})" <<<"$answers")" == True ]] && echo 1 || echo 0)"
+streamed=0
+for _ in $(seq 1 8); do
+  curl -s "$URL/api/events?since=$since&kinds=ask" | grep -q 'first question (replaced' && { streamed=1; break; }
+  sleep 1
+done
+check "the answer arrives as an event ask.answered on the event feed" "$streamed"
+
 paths="$(curl -s "$URL/openapi.json" | json "' '.join(sorted(d['paths']))")"
-want=(/api/news /api/news/close /api/plan /api/instances /api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
+want=(/api/ask /api/news /api/news/close /api/plan /api/instances /api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
 missing=()
 for p in "${want[@]}"; do [[ " $paths " == *" $p "* ]] || missing+=("$p"); done
 check "OpenAPI carries graph, map, stations and the view routes (missing: ${missing[*]:-none})" \
