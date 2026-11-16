@@ -28,3 +28,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T05:35:41Z
+started_event: sha256:c53a1848addf707f546782ea391ca04111dbebc7a096cfc82ef23272867fc387
+updated_at: 2026-11-16T05:35:49Z
+verified_at: 2026-11-16T05:35:44Z
+verified_event: sha256:5e196ca1c2d238c9632cc1f846781dafc1b124f85c83b81a723bb54f32b2dbf4
+completed_at: 2026-11-16T05:35:49Z
+completed_event: sha256:60da7b40c10ab1f2e002dead44df0f2158cbf60ba285e175f2f157a398e35ea3
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "node --test test/components.test.mjs; cargo test --bin mcp-hub; plan-card browser check (playwright, live game + hub + AlgoGlyph exact-prices); tools/research/mcp-hub-page-check"
+    result: "components 15/15; mcp-hub 22/22; browser 8/8 (rail types from the game, plan from the address, found 2464 = 22 x 112 on ELRL, exact, kept across a reload, no console error); hub-page-check 9/10 same as master's page in the same setup (no GET operation on an MCP-only instance); flowbite verify: 0 findings in mcp-panel; delivered 0bb0059f5b"
+    artifact: "0bb0059f5b"
+    commit: 0bb0059f5b1ab3294b4c9a859d753f1f9466a334
+    recorded_at: 2026-11-16T05:35:47Z

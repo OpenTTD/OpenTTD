@@ -1,0 +1,31 @@
+id: I0076
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The MCP tuned and covered: every tool annotated, action types in one table, the live check reading the token file and proving denial too"
+slug: mcp-tune
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Every MCP tool declares readOnlyHint (and destructive/idempotent where they apply), so the coverage probe exercises every read-only one; the typed action types are named once and every surface reads them; mcp-live-check reads the bearer from the token file and proves the operator's denial as well as the approval; the base map, ways and empty lists have unit tests; the tool catalogue and testing documents say what runs."
+why: "The owner: tune the MCP, cover it with tests, publish. Measured before: mcp-live-check 4/14 (it parsed a console line whose wording changed), the coverage probe 20/24 (the read-only decision tools carried no annotation), 08-tool-catalog.md said no tool exists."
+scope:
+  - "src/prismatic_mcp/**"
+  - "src/tests/test_prismatic_mcp.cpp"
+  - "tools/research/mcp-live-check"
+  - "research/**"
+  - ".ai/**"
+depends_on:
+  - I0075
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "tools/list on a dedicated game: every tool has annotations.readOnlyHint; the coverage probe covers every resource and read-only tool"
+  - "detail::ACTION_TYPES is the only list of action types; IsKnownActionType, list_action_types and the decision schemas read it; a unit test checks the table against the gate"
+  - "mcp-live-check passes in full, including submit, deny, nothing changed and asked again"
+  - "Unit tests cover World::Map, Graph::Ways, Terrain sizes, and Stations, Depots and Vehicles on an empty world"
+validation:
+  - "tools/gate.sh research"
+  - "tools/research/mcp-live-check"
+  - "tools/research/mcp-coverage-check --probe <token-file>"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'

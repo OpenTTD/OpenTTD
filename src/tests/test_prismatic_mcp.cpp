@@ -16,6 +16,8 @@
 #include "../prismatic_mcp/prismatic_mcp_view.h"
 #include "../network/network.h"
 #include "../prismatic_mcp/prismatic_mcp_world.h"
+#include "../prismatic_mcp/prismatic_mcp_entities.h"
+#include "../prismatic_mcp/prismatic_mcp_graph.h"
 #include "../economy_type.h"
 #include "../map_func.h"
 #include "../tile_map.h"
@@ -51,6 +53,7 @@ TEST_CASE("IsKnownActionType gates the typed catalogue", "[prismatic_mcp]")
 	CHECK_FALSE(IsKnownActionType("game.delete_everything"));
 	CHECK_FALSE(IsKnownActionType(""));
 	CHECK_FALSE(IsKnownActionType("rcon"));
+	for (std::string_view t : ACTION_TYPES) CHECK(IsKnownActionType(t)); // the table is the catalogue
 }
 
 TEST_CASE("ParseContentLength is case-insensitive and bounded", "[prismatic_mcp]")
@@ -348,6 +351,43 @@ TEST_CASE("The owner switch auto-answers the bot's question with no dialog", "[p
 	bool listed = false;
 	for (const auto &t : V::Tools()) if (t["name"] == "openttd.view.ask.auto") listed = true;
 	CHECK(listed);
+}
+
+TEST_CASE("Every map resource is one row per map row, sized to the map", "[prismatic_mcp]")
+{
+	Map::Allocate(64, 128); // the smallest width, a taller height: rows follow y
+	auto m = PrismaticMCP::World::Map();
+	CHECK(m["width"] == 64);
+	CHECK(m["height"] == 128);
+	REQUIRE(m["types"].size() == 128);
+	CHECK(m["types"][5].get<std::string>() == std::string(64, 'C')); // a zeroed tile is clear land
+	CHECK(m["heights"][5].get<std::string>() == std::string(128, '0')); // two hex digits per tile
+	CHECK(m["owners"][5].get<std::string>().size() == 64);
+	for (const char *layer : {"types", "heights", "owners"}) CHECK(m["encoding"].contains(layer));
+
+	auto w = PrismaticMCP::Graph::Ways();
+	CHECK(w["schema"] == "map-ways/v1");
+	REQUIRE(w["roads"].size() == 128);
+	CHECK(w["roads"][0].get<std::string>() == std::string(64, '0'));     // no road anywhere
+	CHECK(w["rails"][0].get<std::string>() == std::string(128, '0'));    // no track anywhere
+	CHECK(w["foundations"][0].get<std::string>().size() == 64);
+	CHECK(w["crossings"].empty());
+	CHECK(w["occupancy"].empty());
+
+	auto t = PrismaticMCP::World::Terrain();
+	for (const char *layer : {"ground", "gradients", "buildable", "vehicles"}) CHECK(t[layer][127].get<std::string>().size() == 64);
+	CHECK(t["slopes"][127].get<std::string>().size() == 128);
+	CHECK(t["row_digests"].size() == 128);
+}
+
+TEST_CASE("The building and vehicle lists are empty when nothing is built", "[prismatic_mcp]")
+{
+	Map::Allocate(64, 64);
+	CHECK(PrismaticMCP::World::Stations()["stations"].empty());
+	auto d = PrismaticMCP::World::Depots();
+	CHECK(d["depots"].empty());
+	CHECK(d["service_reach_tiles"].is_number());
+	CHECK(PrismaticMCP::Entities::Vehicles()["vehicles"].empty());
 }
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

@@ -556,7 +556,9 @@ json HandleToolsCall(const json &id, const json &params)
 	}
 
 	if (name == "openttd.decision.list_action_types") {
-		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", json{{"action_types", json::array({"game.set_pause"})}}.dump()}}})}});
+		json types = json::array();
+		for (std::string_view t : detail::ACTION_TYPES) types.push_back(t);
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", json{{"action_types", std::move(types)}}.dump()}}})}, {"isError", false}});
 	}
 
 	/* The gated mutation tool. Two-phase: pending_approval -> (operator approves) -> executed. */
@@ -636,14 +638,25 @@ json ToolsList()
 	for (auto &t : View::Tools()) arr.push_back(t);
 	for (auto &t : UI::Tools()) arr.push_back(t);
 	for (auto &t : Menu::Tools()) arr.push_back(t);
-	arr.push_back({{"name", "openttd.decision.validate"}, {"description", "Validate a typed action/DecisionEnvelope without mutating game state"},
-		{"inputSchema", {{"type", "object"}}}});
+	/* The decision tools. Their action types come from detail::ACTION_TYPES; their annotations say
+	 * what a client (and the coverage probe, which calls only readOnlyHint tools) may assume. */
+	json types = json::array();
+	for (std::string_view t : detail::ACTION_TYPES) types.push_back(t);
+	const json action = {{"type", "object"}, {"required", json::array({"type"})},
+		{"properties", {{"type", {{"type", "string"}, {"enum", types}}}, {"arguments", {{"type", "object"}}}}}};
+	const json reads = {{"readOnlyHint", true}, {"idempotentHint", true}, {"openWorldHint", false}};
+	const json gated = {{"readOnlyHint", false}, {"destructiveHint", false}, {"idempotentHint", false}, {"openWorldHint", false}};
+	arr.push_back({{"name", "openttd.decision.validate"}, {"description", "Validate a typed action/DecisionEnvelope without mutating game state: {action: {type, arguments}} or {action_type, arguments}"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"action", action}, {"action_type", {{"type", "string"}, {"enum", types}}}, {"arguments", {{"type", "object"}}}}}}},
+		{"annotations", reads}});
 	arr.push_back({{"name", "openttd.decision.list_action_types"}, {"description", "List typed action types this build can execute"},
-		{"inputSchema", {{"type", "object"}}}});
+		{"inputSchema", {{"type", "object"}}}, {"annotations", reads}});
 	arr.push_back({{"name", "openttd.decision.submit"}, {"description", "Submit a DecisionEnvelope; returns a pending approval until an operator approves, then executes via the normal command path"},
-		{"inputSchema", {{"type", "object"}, {"required", json::array({"action"})}}}});
+		{"inputSchema", {{"type", "object"}, {"required", json::array({"action"})}, {"properties", {{"action", action}}}}},
+		{"annotations", gated}});
 	arr.push_back({{"name", "openttd.game.set_pause"}, {"description", "Approval-gated: pause/unpause via Commands::Pause. Requires operator approval (two-phase, digest-bound)"},
-		{"inputSchema", {{"type", "object"}, {"properties", {{"pause", {{"type", "boolean"}}}}}, {"required", json::array({"pause"})}}}});
+		{"inputSchema", {{"type", "object"}, {"properties", {{"pause", {{"type", "boolean"}}}}}, {"required", json::array({"pause"})}}},
+		{"annotations", gated}});
 	return json{{"tools", arr}};
 }
 

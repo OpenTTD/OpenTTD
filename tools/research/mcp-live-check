@@ -6,9 +6,10 @@
 # security defaults (bearer auth, Origin rejection), live reads, and the approval state
 # machine of the one gated mutation (openttd.game.set_pause): pending -> operator approval in
 # the console -> execution through the command system with the effect observed -> replay and
-# changed arguments refused.
+# changed arguments refused; and the same through openttd.decision.submit with the operator
+# denying it: nothing changes, and the next submission asks again.
 #
-# The bearer token is read from the server's console output into a temporary directory that
+# The bearer token is read from the token file the server writes into a temporary directory that
 # is removed on exit; it is never printed or written anywhere else.
 #
 # Usage: tools/research/mcp-live-check [--bin <openttd>] [--port <port>]
@@ -119,7 +120,7 @@ exec 3>"$FIFO"
 started=0
 for ((i = 0; i < 60; i++)); do
   kill -0 "$SERVER_PID" 2>/dev/null || break
-  console "prismatic_mcp start $PORT"
+  console "prismatic_mcp start $PORT $TMP/token.json"
   if wait_for "MCP server started" 2 || wait_for "already running" 0; then started=1; break; fi
   if grep -qF "MCP server failed to start" "$LOG"; then break; fi
 done
@@ -128,8 +129,14 @@ if [[ "$started" -ne 1 ]]; then
   tail -5 "$LOG" >&2
   exit 1
 fi
-TOKEN="$(sed -nE 's/.*Bearer token \(local operator only, not logged\): ([0-9a-fA-F]{32,}).*/\1/p' "$LOG" | tail -1)"
-check "the console hands the operator a bearer token" "$([[ -n "$TOKEN" ]] && echo 1 || echo 0)"
+# The token comes from the token file `prismatic_mcp start <port> <file>` writes (the path the
+# panel and the hub use), not from console text: a console line is worded for a person and may
+# change (knowledge console-lines-the-panel-parses-are-an-interface).
+for ((i = 0; i < 20; i++)); do [[ -s "$TMP/token.json" ]] && break; sleep 0.5; done
+TOKEN="$(python3 -I -c 'import json, sys; print(json.load(open(sys.argv[1]))["agent_token"])' "$TMP/token.json" 2>/dev/null || true)"
+check "the server writes the operator a bearer token file" "$([[ "$TOKEN" =~ ^[0-9a-fA-F]{32,}$ ]] && echo 1 || echo 0)"
+mode="$(stat -f %Lp "$TMP/token.json" 2>/dev/null || stat -c %a "$TMP/token.json" 2>/dev/null || true)"
+check "the token file is readable by its owner only (mode $mode)" "$([[ "$mode" == 600 ]] && echo 1 || echo 0)"
 
 PING='{"jsonrpc":"2.0","id":1,"method":"ping"}'
 out="$(rpc "" "$PING")"
@@ -184,6 +191,22 @@ out="$(rpc "$TOKEN" "$PAUSE")"
 status="$(tool_field "${out#* }" status)"
 check "replaying the approved call needs a fresh approval (status=${status:-?})" \
   "$([[ "$status" == pending_approval ]] && echo 1 || echo 0)"
+
+# The same gate through a typed DecisionEnvelope, and the operator's other answer: denied, it
+# changes nothing, and the next submission asks again instead of riding on the refusal.
+SUBMIT='{"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"openttd.decision.submit","arguments":{"action":{"type":"game.set_pause","arguments":{"pause":false}}}}}'
+out="$(rpc "$TOKEN" "$SUBMIT")"
+status="$(tool_field "${out#* }" status)"; approval="$(tool_field "${out#* }" approval_id)"
+check "a submitted decision returns pending_approval (status=${status:-?}, approval #${approval:-?})" \
+  "$([[ "$status" == pending_approval && -n "$approval" ]] && echo 1 || echo 0)"
+console "prismatic_mcp deny $approval"
+sleep 2
+paused2="$(state_field "$(rpc "$TOKEN" "$READ_STATE" | cut -d' ' -f2-)" paused)"
+check "a denied decision changes nothing (paused=${paused2:-?})" "$([[ "$paused2" == True ]] && echo 1 || echo 0)"
+out="$(rpc "$TOKEN" "$SUBMIT")"
+status="$(tool_field "${out#* }" status)"; again="$(tool_field "${out#* }" approval_id)"
+check "after a denial the decision asks again (status=${status:-?}, approval #${again:-?})" \
+  "$([[ "$status" == pending_approval && -n "$again" && "$again" != "$approval" ]] && echo 1 || echo 0)"
 
 console "prismatic_mcp stop"
 sleep 1

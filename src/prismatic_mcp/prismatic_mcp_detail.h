@@ -11,6 +11,8 @@
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 
 #include <cstdint>
+#include <algorithm>
+#include <array>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -38,10 +40,14 @@ inline std::string ArgDigestHex(std::string_view tool, std::string_view canonica
 	return out;
 }
 
-/** The typed action types this build can execute. Anything else is rejected. */
+/** The typed action types this build can execute, the one place they are named: the validator,
+ * openttd.decision.list_action_types and the decision tools' input schemas all read this table. */
+inline constexpr std::array<std::string_view, 1> ACTION_TYPES = {"game.set_pause"};
+
+/** Whether this build can execute a typed action of this type. Anything else is rejected. */
 inline bool IsKnownActionType(std::string_view type)
 {
-	return type == "game.set_pause";
+	return std::find(ACTION_TYPES.begin(), ACTION_TYPES.end(), type) != ACTION_TYPES.end();
 }
 
 /** Case-insensitive Content-Length parse from a raw header block. nullopt if absent/invalid. */
