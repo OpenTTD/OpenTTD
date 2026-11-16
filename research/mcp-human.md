@@ -131,8 +131,11 @@ When an MCP server starts, it writes a record of itself to the instance registry
   (`tools/research/schema/mcp-instance.v1.schema.json`): one owner-only JSON file with the
   endpoint, the process kind (`server` or `gui`), the owner's pid and the path of the token
   file. It never holds the token itself.
-- **When it goes away.** It is removed when the server stops. A reader drops any record whose
-  owner process is gone.
+- **When it goes away.** It is removed when the server stops, and on SIGTERM, SIGINT or SIGHUP
+  in a process that sets no handler of its own (a GUI or null-driver client): the handler unlinks
+  the record and dies of the signal as before. The dedicated driver keeps its own handler, which
+  shuts down through the normal path. A record left by a hard kill is stale, and a reader drops
+  any record whose owner process is gone.
 - **Who reads it.** The panel's `GET /api/instances` reads the same directory, so a cluster of
   instances is discoverable without the launcher knowing about discovery.
 - **What it does not hold.** A GUI process's live role (network client, host, single player)
@@ -141,6 +144,18 @@ When an MCP server starts, it writes a record of itself to the instance registry
 
 `mcp-human-e2e --test` runs against an isolated registry. It checks both instances' records:
 schema, kind, endpoint, token-file path, no token, 0600 permissions, and an alive owner.
+
+`tools/research/mcp-cluster-check [--servers N]` checks discovery for a cluster (I0046). It starts
+N dedicated servers and one null-driver client per server (no window), each with its own MCP
+server, against an isolated registry, and checks:
+
+- the registry holds N server records, each with its game port, and N client records, all
+  `mcp-instance/v1` with a token file, no token and a live owner;
+- every announced endpoint answers with its token, and each client plays a company;
+- `mcp-hub` over that registry lists exactly the 2N instances, all reachable;
+- a client stopped with SIGTERM withdraws its record;
+- a client killed with SIGKILL leaves a stale record, which the hub drops within its 2-second
+  refresh.
 
 ## Safety: the owner's switch and the owner's hand
 

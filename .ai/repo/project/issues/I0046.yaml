@@ -17,10 +17,12 @@ serves:
 acceptance_criteria:
   - "A started MCP server writes a discovery record (role, endpoint, game port, company) and removes it on stop; a stale record is detectable"
   - "A discovery listing (CLI and panel) shows every live instance of a cluster of N servers and clients"
-  - "Records follow web-surface/v1 conventions so Majordomus can discover them"
+  - "Records keep a generalisable shape (kind, owner_pid liveness, endpoint, token_file and never the token) and the OpenTTD hub discovers every live instance from them; web-surface/v1 does not apply (it describes directories majordomus serve serves itself), and a Majordomus reader for an external runtime registry is held as a Majordomus candidate (prismatic-majordomus landing seat, 2026-11-16, a recommendation the owner may overrule)"
 validation:
   - "a cluster e2e check starting 2 servers and 2 clients"
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16
+updated_at: 2026-11-16T19:42:03Z
+started_at: 2026-11-16T19:42:03Z
+started_event: sha256:23ac9d81bdbed5def4896f59dab9b279ea25e81f80ee89e7cb886428900864d4

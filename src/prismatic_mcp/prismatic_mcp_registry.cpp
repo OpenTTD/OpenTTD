@@ -21,11 +21,14 @@
 #include "../network/network.h"
 #include "../settings_type.h"
 
+#include <algorithm>
 #include <chrono>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #ifndef _WIN32
+#	include <csignal>
+#	include <signal.h>
 #	include <unistd.h>
 #endif
 
@@ -39,6 +42,36 @@ namespace {
 std::filesystem::path _record;
 std::string _endpoint;
 uint16_t _port = 0;
+
+#ifndef _WIN32
+/** The record's path as a C string for the signal handler, which may only unlink (async-signal-safe). */
+char _record_c[1024] = {};
+
+/**
+ * Remove the record on a terminating signal, then die of that signal as before. A process the
+ * dedicated driver does not cover (a GUI client, a null-driver client) otherwise ends on SIGTERM
+ * without Withdraw(), and leaves a record only a reader's owner_pid check can tell is stale.
+ * @param sig The signal received.
+ */
+extern "C" void WithdrawOnSignal(int sig)
+{
+	if (_record_c[0] != '\0') unlink(_record_c);
+	std::signal(sig, SIG_DFL);
+	std::raise(sig);
+}
+
+/** Hook SIGTERM, SIGINT and SIGHUP once, only where no handler is set (the dedicated driver sets its own). */
+void HookSignals()
+{
+	static bool hooked = false;
+	if (hooked) return;
+	hooked = true;
+	for (int sig : {SIGTERM, SIGINT, SIGHUP}) {
+		struct sigaction old {};
+		if (sigaction(sig, nullptr, &old) == 0 && old.sa_handler == SIG_DFL) std::signal(sig, WithdrawOnSignal);
+	}
+}
+#endif
 
 std::filesystem::path Directory()
 {
@@ -104,6 +137,14 @@ void Announce(const std::string &endpoint, uint16_t port, const std::string &tok
 		_record = path;
 		_endpoint = endpoint;
 		_port = port;
+#ifndef _WIN32
+		const std::string native = path.string();
+		if (native.size() < sizeof(_record_c)) {
+			std::fill(std::begin(_record_c), std::end(_record_c), '\0');
+			std::copy(native.begin(), native.end(), _record_c);
+			HookSignals();
+		}
+#endif
 	}
 }
 
@@ -116,6 +157,9 @@ void AnnounceTokenFile(const std::string &token_file)
 void Withdraw()
 {
 	if (_record.empty()) return;
+#ifndef _WIN32
+	_record_c[0] = '\0';
+#endif
 	std::error_code ec;
 	std::filesystem::remove(_record, ec);
 	_record.clear();

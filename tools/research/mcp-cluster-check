@@ -1,0 +1,171 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY. Discovery of a research cluster, end to end (issue I0046).
+#
+# Starts N dedicated servers, each with its own MCP server, and one client per server that joins
+# it with an MCP server of its own (null video driver, so no window opens over the owner's work).
+# Every process announces itself in an isolated instance registry (mcp-instance/v1). The check:
+#
+#   1. the registry holds one live record per process: N servers with their game port, N clients;
+#      every record has the required fields, an endpoint, a token file and never the token;
+#   2. every announced endpoint answers over MCP with its bearer token, and each client plays the
+#      company it joined as (openttd.input.state, local_company);
+#   3. the hub (mcp-hub over that registry) lists exactly those 2N instances, all reachable;
+#   4. a client stopped cleanly withdraws its record;
+#   5. a client killed hard leaves a stale record, which the hub drops (its owner_pid is gone).
+#
+# Usage: tools/research/mcp-cluster-check [--servers N] [--bin PATH]     exit 0 PASS, 1 FAIL, 3 setup
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+BIN="$ROOT_DIR/build-gate-research/openttd"
+N=2
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --servers) N="$2"; shift 2 ;;
+    --bin) BIN="$2"; shift 2 ;;
+    -h|--help) sed -n '2,16p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "mcp-cluster-check: unknown option $1" >&2; exit 2 ;;
+  esac
+done
+[[ -x "$BIN" ]] || { echo "mcp-cluster-check: no binary at $BIN; run tools/gate.sh research first" >&2; exit 3; }
+ls "$HOME/Documents/OpenTTD/baseset/"opengfx* >/dev/null 2>&1 || { echo "mcp-cluster-check: no OpenGFX in ~/Documents/OpenTTD/baseset" >&2; exit 3; }
+HUB_DIR="$ROOT_DIR/tools/research/mcp-rhai"
+(cd "$HUB_DIR" && CARGO_TARGET_DIR="$HUB_DIR/target" cargo build --release --quiet --bin mcp-hub) \
+  || { echo "mcp-cluster-check: mcp-hub did not build" >&2; exit 3; }
+HUB="$HUB_DIR/target/release/mcp-hub"
+
+free_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-cluster-check.XXXXXX")"
+PIDS=()
+cleanup() {
+  for p in ${PIDS[@]+"${PIDS[@]}"}; do kill "$p" 2>/dev/null || true; done
+  wait 2>/dev/null || true
+  rm -rf "$TMP"
+}
+trap cleanup EXIT INT TERM
+export PRISMATIC_MCP_REGISTRY="$TMP/registry"
+
+FAILS=0
+pass() { echo "PASS $*"; }
+fail() { echo "FAIL $*"; FAILS=$((FAILS + 1)); }
+home() { # $1 dir, $2 script name, $3 port, $4 token file
+  mkdir -p "$1/Documents/OpenTTD/scripts"
+  ln -s "$HOME/Documents/OpenTTD/baseset" "$1/Documents/OpenTTD/baseset"
+  printf 'prismatic_mcp start %s %s\n' "$3" "$4" > "$1/Documents/OpenTTD/scripts/$2"
+}
+rpc() { # $1 token file, $2 JSON-RPC body
+  local e k; e="$(jq -r .endpoint "$1")"; k="$(jq -r .agent_token "$1")"
+  curl -s -m 10 -X POST -H "Authorization: Bearer $k" -H 'Content-Type: application/json' \
+    -H 'Accept: application/json, text/event-stream' -d "$2" "$e"
+}
+call() { rpc "$1" "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"$2\",\"arguments\":$3}}" | jq -r '.result.content[0].text'; }
+wait_file() { for ((i = 0; i < ${2:-120}; i++)); do [[ -s "$1" ]] && return 0; sleep 0.5; done; return 1; }
+records() { cat "$PRISMATIC_MCP_REGISTRY"/*.json 2>/dev/null | jq -s '.'; }
+
+declare -a GAME_PORTS SERVER_TOKENS CLIENT_TOKENS CLIENT_PIDS
+for ((s = 0; s < N; s++)); do
+  GAME_PORTS[s]="$(free_port)"; mcp="$(free_port)"; SERVER_TOKENS[s]="$TMP/server$s-token.json"
+  home "$TMP/server$s" on_dedicated.scr "$mcp" "${SERVER_TOKENS[s]}"
+  printf '[network]\nserver_name = cluster-%s\n[gui]\nautosave = off\n' "$s" > "$TMP/server$s.cfg"
+  HOME="$TMP/server$s" "$BIN" -D "127.0.0.1:${GAME_PORTS[s]}" -x -g -G "$((4242 + s))" -c "$TMP/server$s.cfg" \
+    > "$TMP/server$s.log" 2>&1 &
+  PIDS+=($!)
+done
+for ((s = 0; s < N; s++)); do
+  wait_file "${SERVER_TOKENS[s]}" || { echo "mcp-cluster-check: server $s's MCP did not start" >&2; tail -20 "$TMP/server$s.log" >&2; exit 1; }
+done
+echo "==> $N dedicated servers up"
+for ((s = 0; s < N; s++)); do
+  mcp="$(free_port)"; CLIENT_TOKENS[s]="$TMP/client$s-token.json"
+  home "$TMP/client$s" autoexec.scr "$mcp" "${CLIENT_TOKENS[s]}"
+  printf '[network]\nclient_name = cluster-client-%s\n[gui]\nautosave = off\n' "$s" > "$TMP/client$s.cfg"
+  # The null driver runs the game loop without a window; the tick budget outlasts the check.
+  HOME="$TMP/client$s" "$BIN" -v null:ticks=2000000000 -s null -m null -c "$TMP/client$s.cfg" \
+    -n "127.0.0.1:${GAME_PORTS[s]}#254" > "$TMP/client$s.log" 2>&1 &
+  CLIENT_PIDS[s]=$!
+  PIDS+=($!)
+done
+for ((s = 0; s < N; s++)); do
+  wait_file "${CLIENT_TOKENS[s]}" || { echo "mcp-cluster-check: client $s's MCP did not start" >&2; tail -20 "$TMP/client$s.log" >&2; exit 1; }
+done
+echo "==> $N clients up"
+
+# 1. One live, well-formed record per process.
+REC="$(records)"
+servers="$(echo "$REC" | jq '[.[] | select(.kind == "server")] | length')"
+guis="$(echo "$REC" | jq '[.[] | select(.kind == "gui")] | length')"
+[[ "$servers" == "$N" && "$guis" == "$N" ]] && pass "the registry holds $N server and $N client records" \
+  || fail "the registry holds $servers server and $guis client records (want $N each)"
+bad="$(echo "$REC" | jq '[.[] | select((.schema != "mcp-instance/v1") or (.name == null) or (.owner_pid == null)
+  or (.registered == null) or (.endpoint == null) or (.token_file == null) or has("agent_token") or has("token"))] | length')"
+[[ "$bad" == 0 ]] && pass "every record is mcp-instance/v1 with name, owner_pid, registered, endpoint and token file, and no token" \
+  || fail "$bad record(s) break mcp-instance/v1: $(echo "$REC" | jq -c '.')"
+ports_ok=1
+for ((s = 0; s < N; s++)); do
+  echo "$REC" | jq -e --argjson p "${GAME_PORTS[s]}" 'any(.[]; .kind == "server" and .game_port == $p)' >/dev/null || ports_ok=0
+done
+[[ "$ports_ok" == 1 ]] && pass "each server's record names its game port" || fail "a server record lacks its game port: $(echo "$REC" | jq -c '[.[] | {name, game_port}]')"
+dead=0
+for pid in $(echo "$REC" | jq -r '.[].owner_pid'); do kill -0 "$pid" 2>/dev/null || dead=$((dead + 1)); done
+[[ "$dead" == 0 ]] && pass "every record's owner_pid is a live process" || fail "$dead record(s) name a dead owner"
+
+# 2. Every announced endpoint answers with its token; each client plays the company it joined as.
+answered=0
+for tf in $(echo "$REC" | jq -r '.[].token_file'); do
+  rev="$(rpc "$tf" '{"jsonrpc":"2.0","id":1,"method":"resources/read","params":{"uri":"openttd://game/state"}}' \
+    | jq -r '.result.contents[0].text' | jq -r '.source_revision // empty' 2>/dev/null || true)"
+  [[ -n "$rev" ]] && answered=$((answered + 1))
+done
+[[ "$answered" == "$((2 * N))" ]] && pass "all $((2 * N)) announced endpoints answer openttd://game/state with their token" \
+  || fail "$answered of $((2 * N)) announced endpoints answered"
+joined=0
+for ((s = 0; s < N; s++)); do
+  for ((i = 0; i < 60; i++)); do
+    c="$(call "${CLIENT_TOKENS[s]}" openttd.input.state '{}' 2>/dev/null | jq -r '.local_company // 255' 2>/dev/null || echo 255)"
+    [[ "$c" != 255 && "$c" != null ]] && break
+    sleep 1
+  done
+  [[ "$c" != 255 && "$c" != null ]] && { joined=$((joined + 1)); echo "    client $s plays company $c on server $s"; }
+done
+[[ "$joined" == "$N" ]] && pass "each client joined its server and plays a company of its own" || fail "$joined of $N clients got a company"
+
+# 3. The hub over the same registry lists exactly those instances, all reachable.
+HUB_PORT="$(free_port)"
+"$HUB" serve --port "$HUB_PORT" --registry "$PRISMATIC_MCP_REGISTRY" > "$TMP/hub.log" 2>&1 &
+HUB_PID=$!; PIDS+=($HUB_PID)
+for ((i = 0; i < 60; i++)); do curl -s -m 2 "http://127.0.0.1:$HUB_PORT/hub/instances" >/dev/null 2>&1 && break; sleep 0.5; done
+listed() { curl -s -m 20 "http://127.0.0.1:$HUB_PORT/hub/instances"; }
+L="$(listed)"
+n="$(echo "$L" | jq '[.[] | select(.error == null and .operations > 0)] | length')"
+[[ "$n" == "$((2 * N))" && "$(echo "$L" | jq length)" == "$((2 * N))" ]] \
+  && pass "the hub lists all $((2 * N)) instances, each reachable with its operations" \
+  || fail "the hub lists $(echo "$L" | jq -c '[.[] | {name, kind, error, operations}]')"
+
+# 4. A clean stop withdraws the record.
+before="$(ls "$PRISMATIC_MCP_REGISTRY" | wc -l | tr -d ' ')"
+kill -TERM "${CLIENT_PIDS[0]}"
+for ((i = 0; i < 40; i++)); do kill -0 "${CLIENT_PIDS[0]}" 2>/dev/null || break; sleep 0.25; done
+after="$(ls "$PRISMATIC_MCP_REGISTRY" | wc -l | tr -d ' ')"
+gone="$(records | jq --argjson p "${CLIENT_PIDS[0]}" '[.[] | select(.owner_pid == $p)] | length')"
+[[ "$gone" == 0 ]] && pass "client 0 stopped cleanly withdrew its record ($before -> $after records)" \
+  || fail "client 0 stopped cleanly but its record stays ($before -> $after records)"
+
+# 5. A hard kill leaves a stale record; the hub drops it.
+if [[ "$N" -ge 2 ]]; then
+  kill -KILL "${CLIENT_PIDS[1]}"; wait "${CLIENT_PIDS[1]}" 2>/dev/null || true
+  stale="$(records | jq --argjson p "${CLIENT_PIDS[1]}" '[.[] | select(.owner_pid == $p)] | length')"
+  # The hub re-reads the registry every 2 s.
+  for ((i = 0; i < 30; i++)); do
+    L="$(listed)"; shown="$(echo "$L" | jq '[.[] | select(.kind == "gui")] | length')"
+    [[ "$shown" == "$((N - 2))" ]] && break
+    sleep 0.5
+  done
+  [[ "$stale" == 1 ]] && pass "client 1 killed hard left its record behind (stale: its owner_pid is gone)" \
+    || fail "client 1 killed hard: $stale record(s) with its pid"
+  [[ "$shown" == "$((N - 2))" && "$(echo "$L" | jq length)" == "$N" ]] \
+    && pass "the hub drops the stale record: it lists the $N servers and no dead client" \
+    || fail "after the kills the hub lists $(echo "$L" | jq -c '[.[] | {name, kind, error}]')"
+fi
+
+echo "==> $FAILS failure(s)"
+[[ "$FAILS" == 0 ]]
