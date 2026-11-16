@@ -22,3 +22,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T08:03:15Z
+started_event: sha256:ae250a80b2deffb96c9370af34191e05942ef2eb4a88b894215a1cd547dc1855
+updated_at: 2026-11-16T08:03:21Z
+verified_at: 2026-11-16T08:03:17Z
+verified_event: sha256:a0f2c4289f0a06c6b03516e96097df9d621c343d39bc52392b7edaaf2856b5e8
+completed_at: 2026-11-16T08:03:21Z
+completed_event: sha256:e31515b98df40ef101383ab4340a5ff451b6d5935d381dfc787624eb9ac00ac8
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --bin mcp-hub; mcp-hub intent-check --hub ws://127.0.0.1:8790/ws"
+    result: "mcp-hub 23/23; live: 4 instances, 24 pass, 0 fail, 5 fallbacks (advisory), all on panel-8810 (industry sentences resolved no subject while panel-64385 resolved Forest and Sawmill); the most-lucrative sentence not flagged; delivered 7b3a2b8f17"
+    artifact: "7b3a2b8f17"
+    commit: 7b3a2b8f173248a29c4ceef78a6f36cca2277c7f
+    recorded_at: 2026-11-16T08:03:19Z

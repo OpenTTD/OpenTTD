@@ -180,7 +180,13 @@ fn intent_verdict(answer: &Value) -> Result<String, String> {
     if action == "build" && r.pointer("/answer/build").is_none() { return Err("build: no plan in the answer".into()); }
     let subjects: Vec<String> = r.pointer("/intent/subjects").and_then(Value::as_array).into_iter().flatten()
         .map(|s| s.get("name").and_then(Value::as_str).map(str::to_string).unwrap_or_else(|| s.to_string())).collect();
-    Ok(format!("{action} {} [{}] -> {n} candidate(s)", r.pointer("/intent/ordering").and_then(Value::as_str).unwrap_or("-"), subjects.join(", ")))
+    // Which language the sentence was read in, and why (openttd-80's language_from), when the answer says.
+    let lang = match (r.pointer("/intent/language").and_then(Value::as_str), r.pointer("/intent/language_from").and_then(Value::as_str)) {
+        (Some(l), Some(from)) => format!(", read as {l} ({from})"),
+        (Some(l), None) => format!(", read as {l}"),
+        _ => String::new(),
+    };
+    Ok(format!("{action} {} [{}] -> {n} candidate(s){lang}", r.pointer("/intent/ordering").and_then(Value::as_str).unwrap_or("-"), subjects.join(", ")))
 }
 
 /// How many subjects an intent answer resolved (0 when it carries none).
@@ -551,6 +557,9 @@ mod tests {
         assert!(intent_verdict(&json!({"result": {"intent": {"action": "find"}, "answer": {"candidates": []}}})).is_err());
         assert!(intent_verdict(&json!({"result": {"http_error": 400, "body": {"error": "no text"}}})).is_err());
         assert_eq!(subjects_resolved(&ok), 2);
+        let with_lang = json!({"result": {"intent": {"action": "find", "ordering": "nearest", "subjects": [{"name": "Forest"}],
+                                          "language": "czech", "language_from": "names in this game, the tie by spelling"}, "answer": {"candidates": [{}]}}});
+        assert_eq!(intent_verdict(&with_lang).unwrap(), "find nearest [Forest] -> 1 candidate(s), read as czech (names in this game, the tie by spelling)");
         assert_eq!(OWNER_SENTENCES.len(), 6);
     }
     #[test]
