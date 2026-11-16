@@ -1090,7 +1090,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Nuvarande drivr
 STR_GAME_OPTIONS_INTERFACE                                      :Gränssnitt
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Gränssnittets storlek
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra i reglaget för att ställa in gränssnittets storlek. Ctrl+Drag för steglös justering
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra i reglaget för att ställa in gränssnittets storlek. Skalan begränsas av fönstrets storlek. Ctrl+drag för steglös justering
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Känn av storleken automatiskt
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Aktivera för automatisk inställning av gränssnittets storlek
 
@@ -1951,8 +1951,14 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Visa en dagstid
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Invigning av industrier: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Visa en dagstidning när nya industrier startas
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Nedläggning av industrier som betjänas av företaget: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Visa en dagstidning när industrier som betjänas av företaget avvecklas
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Nedläggning av industrier som betjänas av motståndare: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Visa en dagstidning när industrier som betjänas av motståndare avvecklas
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Nedläggning av industrier som inte betjänas av någon: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Visa en dagstidning när industrier som inte betjänas av någon avvecklas
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Ekonomiska förändringar: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Visa en dagstidning om förändringar i den globala ekonomin
@@ -1964,7 +1970,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produktionsför
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Visa en dagstidning när produktionsnivån för industrier som betjänas av motståndare förändras
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andra produktionsförändringar vid industrier: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Visa en dagstidning när produktionsnivån för industrier som varken betjänas av det egna företaget eller av motståndare förändras
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Visa en dagstidning när produktionsnivån för industrier som inte betjänas av någon förändras
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / information om företagets fordon: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Visa meddelanden om fordon som behöver åtgärdas
@@ -2960,7 +2966,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utfartss
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar som både en infarts- och utfartssignal. Detta gör det möjligt att bygga stora "träd" av för-signaler
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Avancerad envägssignal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägssignaler kan inte passeras bakifrån
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konvertera signal{}Klicka på en existerande signal för att konvertera den till vald signaltyp och -variant. Ctrl-Klick för att ändra den existerande varianten. Shift-Klick visar beräknad konverteringskostnad
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Omvandla signal{}Klicka på en existerande signal för att omvandla den till vald signaltyp och -variant. Ctrl-klicka för att växla den existerande varianten. Tryck även på Shift för att enbart visa beräknad kostnad
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Avstånd mellan signaler
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minska avstånd mellan signaler
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Öka avstånd mellan signaler
