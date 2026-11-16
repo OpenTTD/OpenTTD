@@ -14,5 +14,6 @@ satisfaction:
   criterion: "tools/research/noirgfx builds NoirGFX and its check passes: checksums, sprite identity, one 32bpp alternative per zoom, seamless ground"
   evidence: command
   ref: "tools/research/noirgfx/noirgfx build && tools/research/noirgfx/noirgfx check"
+cancelled: true
 created_at: 2026-11-16
 updated_at: 2026-11-16

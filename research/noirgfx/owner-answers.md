@@ -40,3 +40,17 @@ Options offered: "Normálně v gitu (Recommended)", "Necommitovat modely", "Poč
 This replaces answer 6: the models stay local, produced by `noirgfx curate` from the two bundles
 and verified against `tools/research/noirgfx/assets/kenney-curated.sha256`.
 
+
+## 9. (follow-up message, 2026-11-16, session 1d6b0065-98f8-4f31-a625-0352185ff311)
+
+> zamitni  the-game-wears-the-owners-style
+
+Recorded as `cancelled: true` on `.ai/repo/project/intents/the-game-wears-the-owners-style.yaml`
+(the intent schema stores no status; cancellation is the fact it records). NoirGFX itself stays.
+
+## 10. (follow-up message, 2026-11-16, same session)
+
+> by defatult musi byt defafaultni grafika
+
+Already so: `noirgfx.obg` carries `fallback = 1`, so OpenTTD's automatic choice is OpenGFX, and the
+owner's `openttd.cfg` names OpenGFX.
