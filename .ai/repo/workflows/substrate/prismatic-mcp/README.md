@@ -17,7 +17,8 @@ tracks:
 
 # PrismaticMCP (fork only)
 
-Evidence: read at f069e8f0f5. Fork code, not upstream OpenTTD: it exists only in this fork,
+Evidence: read at f069e8f0f5; the coverage, entities and registry modules added by 05ed8001bc
+were mapped from their headers. Fork code, not upstream OpenTTD: it exists only in this fork,
 compiles only with `OPTION_PRISMATIC_MCP_SERVER=ON` (which requires
 `OPTION_RESEARCH_INSTRUMENTATION=ON`, `cmake/Options.cmake`), and is labelled RESEARCH-ONLY. The
 section on findings came from an independent read-only review by an external model, checked
@@ -42,6 +43,11 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 - Catalogue: `src/prismatic_mcp/prismatic_mcp_server.cpp:ToolsList` (plus `src/prismatic_mcp/prismatic_mcp_view.cpp:Tools` and `src/prismatic_mcp/prismatic_mcp_ui.cpp:Tools`) and `src/prismatic_mcp/prismatic_mcp_server.cpp:RESOURCES`. Measure the counts from a live server (`tools/list`, `resources/list`); do not copy them.
 - Mutation: `src/prismatic_mcp/prismatic_mcp_server.cpp:ValidateAction` → approval → `ExecuteAction` → `Command<Commands::Pause>::Post`.
 - World serialisers: `src/prismatic_mcp/prismatic_mcp_world.cpp:Map`, `Stations`.
+- Vehicles as data: `src/prismatic_mcp/prismatic_mcp_entities.cpp:Vehicles` (read-only).
+- Coverage counted by the dispatch itself: `src/prismatic_mcp/prismatic_mcp_coverage.h:Count`, `Report`
+  (what clients exercised against what the server publishes; issue I0049).
+- Instance registry: `src/prismatic_mcp/prismatic_mcp_registry.h:Announce`, `Withdraw` write and remove an
+  owner-only `mcp-instance/v1` record per server (never the token itself; issue I0039).
 - Upstream files with gated hooks: `src/dropdown.cpp` (`src/prismatic_mcp/prismatic_mcp_hooks.h:DropdownItems`), `src/screenshot.cpp:QueueQuietScreenshot`, `src/console_cmds.cpp`, `src/openttd.cpp`, `src/CMakeLists.txt`, `src/tests/CMakeLists.txt`, `cmake/Options.cmake`.
 
 ## Lifecycle
