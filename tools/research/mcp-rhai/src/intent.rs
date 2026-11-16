@@ -319,7 +319,13 @@ pub fn answer(intent: &Value, world: &Value, plan: &Value) -> Value {
         let first = out["candidates"].get(0).cloned().unwrap_or(Value::Null);
         let num_id = |v: &Value| v.as_str().and_then(|s| s.rsplit(':').next()).and_then(|n| n.parse::<i64>().ok()).or_else(|| v.as_i64());
         let settings = if first.get("from").is_some() {
-            let cargo_id = plan["freight"].as_array().into_iter().flatten().find(|f| f["cargo"] == first["cargo"]).map(|f| f["cargo_id"].clone());
+            // The cargo's id from the producer's own produces entry in the world graph (where the
+            // planner's freight pairs take it too); the planner's list may hold no pair of that
+            // cargo, which left fr_cargo null for "vystav trať mezi nejproduktivnějším lesem a pilou".
+            let cargo_id = industries.iter().find(|i| i["id"] == first["from"]["id"])
+                .and_then(|i| i["produces"].as_array()?.iter().find(|p| p["name"] == first["cargo"]).map(|p| p["cargo"].clone()))
+                .filter(|v| !v.is_null())
+                .or_else(|| plan["freight"].as_array().into_iter().flatten().find(|f| f["cargo"] == first["cargo"]).map(|f| f["cargo_id"].clone()));
             json!({"fr_from": num_id(&first["from"]["id"]), "fr_to": num_id(&first["to"]["id"]), "fr_cargo": cargo_id})
         } else if first.get("producer").is_some() {
             json!({"fr_from": num_id(&first["producer"]["id"]), "fr_to": num_id(&first["acceptor"]["id"]), "fr_cargo": first["cargo_id"]})
@@ -371,6 +377,17 @@ mod tests {
         let present = ["Forest".to_string()];
         let p = parse("find a forest", &vocab(), &json!({"towns": []}), &present);
         assert_eq!(p["language"], "english");
+    }
+
+    #[test]
+    fn a_built_pair_carries_its_cargo_id_from_the_world_graph_when_the_planner_has_no_such_pair() {
+        let world = json!({"nodes": [
+            {"kind": "industry", "id": "industry:3", "name": "Forest", "x": 1, "y": 1, "produces": [{"name": "Wood", "cargo": 7, "last_month": 80}]},
+            {"kind": "industry", "id": "industry:18", "name": "Sawmill", "x": 20, "y": 1, "accepts": [{"name": "Wood"}]}]});
+        let intent = json!({"action": "build", "ordering": "most_productive",
+            "subjects": [{"kind": "industry_type", "name": "Forest"}, {"kind": "industry_type", "name": "Sawmill"}]});
+        let a = answer(&intent, &world, &json!({"freight": []}));
+        assert_eq!(a["build"]["settings"], json!({"fr_from": 3, "fr_to": 18, "fr_cargo": 7}));
     }
 
     #[test]
