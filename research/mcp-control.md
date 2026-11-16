@@ -374,8 +374,15 @@ cargo, each run with that cargo's trucks and wagons. Every run's chosen routes t
 planner's knapsack, so one portfolio covers every cargo within the budget (default: the loan
 limit). The answer carries the planner's own portfolio alongside. On the main stack (2026-11-16)
 the kernel and the planner chose the same three investments, a coal freight line and two
-passenger rail lines, with totals 702,686 and 703,227. No two-leg route won there. `mcp-view-check`
-requires the two to stay within 5% of each other.
+passenger rail lines, with totals 702,686 and 703,227. No two-leg route won there. On identical
+demands the two agree within 0.2% per route. Their portfolios can still differ: the kernel sizes a
+fleet to carry the whole volume, while the planner tries every fleet size and keeps the best score.
+On a second map that made the kernel's portfolio 0.88 of the planner's: on one town pair the kernel
+bought 3 trains for 104k (score 210k) where the planner bought 2 for 76k (score 235k). The case went
+to AlgoGlyph. Each demand enters the portfolio with its highest-score route among the kernel's
+options, and the kernel's ROI pick stays in `why`. `mcp-view-check` prints the ratio and fails
+below 0.8, which would point to a broken mapping. `mcp-plan --invest-inputs` prints the kernel's
+inputs, one per cargo, so a case can be reproduced.
 
 Construction costs follow the game's prices when it offers `openttd://economy/prices`
 (`plan::with_prices`). Each default cost is scaled by its `Price` entry's price now divided by its

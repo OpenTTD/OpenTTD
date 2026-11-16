@@ -3,6 +3,7 @@
 //!
 //! Usage: mcp-plan [--panel http://127.0.0.1:8800 | --token <prismatic_mcp token file>] [--limit 20] [--params '{"cost_weight":1}']
 //!        mcp-plan --invest ...  (also decide with AlgoGlyph's transport-investment, see src/invest.rs)
+//!        mcp-plan --invest-inputs ... (print only the kernel inputs, one per cargo, to reproduce a case)
 //!        mcp-plan --defaults   (print the default parameters)
 use std::time::Duration;
 
@@ -62,11 +63,13 @@ fn main() {
     let mut params = serde_json::Value::Null;
     let mut token: Option<String> = None;
     let mut invest_too = false;
+    let mut invest_inputs = false;
     while let Some(a) = args.next() {
         match a.as_str() {
             "--panel" => panel = args.next().unwrap_or_default(),
             "--token" => token = args.next(),
             "--invest" => invest_too = true,
+            "--invest-inputs" => invest_inputs = true,
             "--limit" => limit = args.next().and_then(|v| v.parse().ok()).unwrap_or(20),
             "--defaults" => {
                 println!("{}", plan::defaults());
@@ -80,7 +83,7 @@ fn main() {
                 }
             },
             _ => {
-                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest] [--defaults]");
+                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--defaults]");
                 std::process::exit(2);
             }
         }
@@ -125,6 +128,10 @@ fn main() {
         if let Some(arr) = out["by_mode"]["rail"].as_array_mut() { for c in arr.iter_mut() { add_sites(c); } }
         if let Some(arr) = out["portfolio"]["chosen"].as_array_mut() {
             for c in arr.iter_mut().filter(|c| c["mode"] == "freight_rail" || c["mode"] == "rail") { add_sites(c); }
+        }
+        if invest_inputs {
+            return Ok(serde_json::json!(invest::inputs(&out, &engines, &towns).into_iter()
+                .map(|(c, i)| serde_json::json!({"cargo": c, "input": i})).collect::<Vec<_>>()));
         }
         if invest_too { out["investment"] = invest::decide(&out, &engines, &towns); }
         out["model"] = serde_json::json!("v4: v3 for passengers, freight pairs from the world graph's industries priced with each cargo's own payment rate and transit periods, and a portfolio chosen by knapsack within the budget");

@@ -132,11 +132,18 @@ pub fn decide(plan: &Value, engines: &Value, towns: &Value) -> Value {
         match algoglyph("transport-investment", &input) {
             Ok(v) => {
                 let r = &v["result"];
+                // The kernel ranks each demand's routes by ROI; the portfolio maximises score (profit
+                // over the payback period less investment). So each demand enters the portfolio with
+                // its highest-score route among all the kernel's options, and the kernel's ROI pick
+                // stays in `why`.
                 for c in r["chosen"].as_array().into_iter().flatten() {
-                    let route = &c["option"];
+                    let all: Vec<&Value> = r["options"].as_array().into_iter().flatten()
+                        .flat_map(|o| o.as_array().into_iter().flatten()).filter(|o| o["demand"] == c["demand"]).collect();
+                    let route = all.iter().copied().max_by(|a, b| num(a, "score").total_cmp(&num(b, "score"))).unwrap_or(&c["option"]);
                     if num(route, "score") <= 0.0 { continue; }
                     let label = route_mode(route);
-                    let why = r["why"].as_array().into_iter().flatten().find(|w| w["demand"] == c["demand"]).cloned();
+                    let mut why = r["why"].as_array().into_iter().flatten().find(|w| w["demand"] == c["demand"]).cloned().unwrap_or(Value::Null);
+                    if why.is_object() { why["by_score"] = json!({"mode": label, "roi": route["roi"], "score": num(route, "score").round()}); }
                     candidates.push(json!({"kind": "investment", "cargo": cargo, "demand": c["demand"], "mode": label,
                         "score": num(route, "score").round(), "roi": route["roi"], "why": why,
                         "options": [{"mode": label, "investment": num(route, "investment").round(), "score": num(route, "score").round(),
