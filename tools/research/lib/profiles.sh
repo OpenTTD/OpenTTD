@@ -4,7 +4,7 @@
 # arrays require bash 4+ (macOS's /bin/bash is still 3.2).
 
 profile_list() {
-  printf '%s\n' "research-debug" "baseline-release" "research-asan"
+  printf '%s\n' "research-debug" "baseline-release" "research-asan" "research-mcp"
 }
 
 profile_build_dir() {
@@ -12,6 +12,7 @@ profile_build_dir() {
     research-debug) printf '%s' "$ROOT_DIR/build-research" ;;
     baseline-release) printf '%s' "$ROOT_DIR/build-research-baseline-release" ;;
     research-asan) printf '%s' "$ROOT_DIR/build-research-asan" ;;
+    research-mcp) printf '%s' "$ROOT_DIR/build-research-mcp" ;;
     *) return 1 ;;
   esac
 }
@@ -21,6 +22,7 @@ profile_cmake_build_type() {
     research-debug) printf 'Debug' ;;
     baseline-release) printf 'RelWithDebInfo' ;;
     research-asan) printf 'Debug' ;;
+    research-mcp) printf 'Debug' ;;
     *) return 1 ;;
   esac
 }
@@ -30,6 +32,7 @@ profile_research_instrumentation() {
     research-debug) printf 'ON' ;;
     baseline-release) printf 'OFF' ;;
     research-asan) printf 'ON' ;;
+    research-mcp) printf 'ON' ;;
     *) return 1 ;;
   esac
 }
@@ -41,6 +44,7 @@ profile_extra_cmake_args() {
     research-debug) printf '' ;;
     baseline-release) printf -- '-DOPTION_USE_ASSERTS=OFF' ;;
     research-asan) printf -- '-DCMAKE_CXX_FLAGS=-fsanitize=address,undefined -DCMAKE_EXE_LINKER_FLAGS=-fsanitize=address,undefined' ;;
+    research-mcp) printf -- '-DOPTION_PRISMATIC_MCP_SERVER=ON' ;;
     *) return 1 ;;
   esac
 }
@@ -53,6 +57,8 @@ profile_description() {
       printf 'RelWithDebInfo, asserts off, research instrumentation OFF. Comparison baseline -- closest to a real release build this fork'"'"'s CLI manages.' ;;
     research-asan)
       printf 'Debug + AddressSanitizer/UndefinedBehaviorSanitizer, research instrumentation ON. Configure-flags only in this fork so far -- not built or run (see research/tooling.md limitations).' ;;
+    research-mcp)
+      printf 'Debug build, research instrumentation ON plus OPTION_PRISMATIC_MCP_SERVER=ON (the embedded loopback MCP server, RESEARCH-ONLY, default OFF). Use this instead of a hand-configured build-mcp so MCP experiments record their provenance through the CLI.' ;;
     *) return 1 ;;
   esac
 }

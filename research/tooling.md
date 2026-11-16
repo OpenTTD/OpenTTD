@@ -71,10 +71,11 @@ still only *conceptual* integration points from this fork's side.
 | `research-debug` | `build-research/` | Debug | ON | Asserts on. The experimental configuration; compiles in `research_status` and any future research-only hooks. Built and run end-to-end; confirmed via `strings` that `research_status` is present in the binary. |
 | `baseline-release` | `build-research-baseline-release/` | RelWithDebInfo | OFF | `OPTION_USE_ASSERTS=OFF` explicitly, for a clean comparison baseline distinct from `tools/gate.sh`'s own `build/` (which keeps asserts on for its dev-loop purpose). Built end-to-end (clean, only benign linker warnings); confirmed via `strings` that `research_status` is absent from the binary, completing the ON/OFF comparison pair. |
 | `research-asan` | `build-research-asan/` | Debug | ON | `-fsanitize=address,undefined` passed directly (no dedicated CMake option exists in this codebase — see `AGENTS.md`). **Configure-only in this fork so far** — `build`/`run` refuse this profile outright rather than silently taking a very expensive third full build; see Limitations. |
+| `research-mcp` | `build-research-mcp/` | Debug | ON | Adds `-DOPTION_PRISMATIC_MCP_SERVER=ON` on top of research instrumentation, so the embedded loopback MCP server (RESEARCH-ONLY, default OFF, and itself requiring `OPTION_RESEARCH_INSTRUMENTATION=ON`) is compiled in. Built and run end-to-end like `research-debug`. Use this instead of a hand-configured `build-mcp` so an MCP experiment records its provenance through the CLI's manifest (I0027). |
 
 `configure` refuses to silently reconfigure a build directory whose existing `CMakeCache.txt`
 doesn't match the requested profile — it fails with a clear message rather than picking a side.
-All three build directories match the existing `.gitignore` rule `/build*`, so no new ignore rule
+All four build directories match the existing `.gitignore` rule `/build*`, so no new ignore rule
 was needed.
 
 ## Instrumentation demonstrator
@@ -235,5 +236,19 @@ With `OPTION_PRISMATIC_MCP_SERVER=ON` (which requires `OPTION_RESEARCH_INSTRUMEN
 `tools/gate.sh research` also runs the `[prismatic_mcp]` unit tests, and
 `tools/research/mcp-live-check [--bin <openttd>] [--port <port>]` drives a headless server over
 loopback MCP: auth and Origin defaults, live reads, and the approval state machine of the one
-gated mutation. See `research/prismatic-mcp/10-in-game-runbook.md`. It is not yet a build
-profile of this CLI and leaves no manifest (issue I0027).
+gated mutation. See `research/prismatic-mcp/10-in-game-runbook.md`.
+
+Build the server through the CLI's `research-mcp` profile rather than a hand-configured
+`build-mcp`, so the experiment is recorded like any other (I0027):
+
+```sh
+tools/research/research init --experiment-id mcp-<topic> --output-dir build-research-runs
+tools/research/research configure --profile research-mcp --experiment-id mcp-<topic>
+tools/research/research build     --profile research-mcp --experiment-id mcp-<topic>
+# then point the checks at build-research-mcp/openttd:
+tools/research/mcp-live-check --bin build-research-mcp/openttd
+```
+
+The profile turns on both gates (`OPTION_RESEARCH_INSTRUMENTATION=ON` and
+`OPTION_PRISMATIC_MCP_SERVER=ON`) with the probed compiler, and the manifest under the experiment
+dir captures the exact CMake options, compiler and flags used.

@@ -188,6 +188,31 @@ out=$("$RESEARCH" doctor 2>&1)
 assert_contains "doctor lists research-debug profile" "$out" "research-debug"
 assert_contains "doctor lists baseline-release profile" "$out" "baseline-release"
 assert_contains "doctor lists research-asan profile" "$out" "research-asan"
+assert_contains "doctor lists research-mcp profile" "$out" "research-mcp"
+
+# --- research-mcp profile mapping (I0027): both gates ON, buildable ---
+# Unit-level checks on the profile table, independent of this machine's build
+# dirs, assert the acceptance criterion directly ("both options ON").
+out=$(cd "$TEST_ROOT_DIR" && ROOT_DIR="$TEST_ROOT_DIR"; source tools/research/lib/profiles.sh && profile_list | grep -cx research-mcp)
+assert_eq "research-mcp is a known profile" "1" "$out"
+out=$(cd "$TEST_ROOT_DIR" && ROOT_DIR="$TEST_ROOT_DIR"; source tools/research/lib/profiles.sh && profile_research_instrumentation research-mcp)
+assert_eq "research-mcp turns research instrumentation ON" "ON" "$out"
+out=$(cd "$TEST_ROOT_DIR" && ROOT_DIR="$TEST_ROOT_DIR"; source tools/research/lib/profiles.sh && profile_extra_cmake_args research-mcp)
+assert_contains "research-mcp enables the MCP server option" "$out" "-DOPTION_PRISMATIC_MCP_SERVER=ON"
+out=$(cd "$TEST_ROOT_DIR" && ROOT_DIR="$TEST_ROOT_DIR"; source tools/research/lib/profiles.sh && profile_is_buildable research-mcp; echo $?)
+assert_eq "research-mcp is buildable (not configure-only)" "0" "$out"
+out=$(cd "$TEST_ROOT_DIR" && ROOT_DIR="$TEST_ROOT_DIR"; source tools/research/lib/profiles.sh && profile_build_dir research-mcp)
+assert_eq "research-mcp has its own build dir" "$TEST_ROOT_DIR/build-research-mcp" "$out"
+
+# End-to-end: the CLI composes both gates into the configure command. The
+# dry-run configure line is checked only when the build dir is unconfigured
+# (a pre-existing build-research-mcp cache makes configure reuse it instead,
+# in which case this assertion is NOT APPLICABLE rather than faked).
+if [[ ! -f "$TEST_ROOT_DIR/build-research-mcp/CMakeCache.txt" ]]; then
+  out=$("$RESEARCH" configure --profile research-mcp --dry-run 2>&1)
+  assert_contains "research-mcp configure enables research instrumentation" "$out" "-DOPTION_RESEARCH_INSTRUMENTATION=ON"
+  assert_contains "research-mcp configure enables the MCP server" "$out" "-DOPTION_PRISMATIC_MCP_SERVER=ON"
+fi
 
 # --- unbuildable profile refused cleanly ---
 "$RESEARCH" init --experiment-id "asan-$$" --output-dir "$WORKDIR" >/dev/null 2>&1
