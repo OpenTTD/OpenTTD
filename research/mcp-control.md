@@ -361,6 +361,19 @@ AlgoGlyph track-planning takes. openttd-07's person-like player lays the track p
 unplanned compete for the same towns and industries on one map, and the higher company value wins.
 It writes `research/results/duel-*.{json,md}`.
 
+### Plan before acting: a DAG, then the presses
+
+`POST /api/actionplan {actions, cash?, loan?, max_loan?, loan_step?, company?}` sends the actions
+a plan needs (`{id, kind, label?, cost?, income?, amount?+step?, repeat?, after?:[ids]}`) to
+AlgoGlyph's `action-plan` kernel. The kernel orders them as a DAG and expands each one into
+executable presses, so "repay 50k" becomes 5 × "repay 10k" as one plan. It tracks cash and loan
+after every press and refuses the whole plan (HTTP 422) if it would overdraw or exceed the loan
+limit. Cash and loan default to the bot company's, read from the console's `companies` line, and
+the loan limit to `difficulty.max_loan`. The main page's Plan card draws the DAG with ECharts
+(waves as columns, dependencies as arrows) and lists the presses before anything runs. `mcp-e2e`
+looks for the AlgoGlyph runner in the newest stacked branch first (`feature/action-plan`, then
+`track-planning`, `flow-cli`, main).
+
 ### Steering the plan from the panel
 
 `/world` has the planner's parameters as controls: the budget, the payback horizon in months, and

@@ -495,3 +495,26 @@ if (window.EventSource) {
   }
   load(); towns(); asks(); setInterval(load, 4000); setInterval(asks, 3000); setInterval(towns, 60000);
 })();
+
+/* ---- plan before acting: AlgoGlyph action-plan, drawn as a DAG ------------------------------ */
+(function actionPlan() {
+  const box = document.getElementById('plan-graph'); if (!box || !window.echarts) return;
+  let chart = null;
+  const ec = () => { if (!chart && box.offsetWidth > 0) { chart = echarts.init(box, 'dark', { renderer: 'canvas' }); new ResizeObserver(() => chart.resize()).observe(box); } return chart; };
+  const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  document.getElementById('plan-run').onclick = async () => {
+    let actions;
+    try { actions = JSON.parse(document.getElementById('plan-actions').value); } catch (e) { document.getElementById('plan-msg').textContent = 'actions are not JSON: ' + e.message; return; }
+    const r = await fetch('/api/actionplan', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ actions }) });
+    const d = await r.json();
+    if (!d.ok) { document.getElementById('plan-msg').textContent = 'refused: ' + JSON.stringify(d.errors || d.error); document.getElementById('plan-steps').innerHTML = ''; return; }
+    const res = d.result;
+    document.getElementById('plan-msg').textContent = `${res.steps.length} press(es) in ${res.waves} wave(s); final cash ${res.final.cash}, loan ${res.final.loan}; lowest cash ${res.lowest?.cash ?? res.lowest}`;
+    document.getElementById('plan-steps').innerHTML = res.steps.map((s) => `<li>${s.n}. <b>${esc(s.action)}</b> ${s.presses > 1 ? `(${s.press}/${s.presses})` : ''} &rarr; cash ${s.cash}, loan ${s.loan}</li>`).join('');
+    const byWave = {};
+    const nodes = res.graph.nodes.map((n) => { const i = (byWave[n.wave] = (byWave[n.wave] || 0) + 1) - 1; return { id: n.id, name: `${n.label || n.id}${n.presses > 1 ? ' x' + n.presses : ''}`, x: n.wave * 160, y: i * 70, symbolSize: 38, label: { show: true, color: '#e5e7eb' } }; });
+    const c = ec(); if (!c) return;
+    c.setOption({ backgroundColor: 'transparent', tooltip: {}, series: [{ type: 'graph', layout: 'none', roam: 'move', edgeSymbol: ['none', 'arrow'], edgeSymbolSize: 10,
+      data: nodes, links: res.graph.edges.map((e) => ({ source: e.from, target: e.to })), itemStyle: { color: '#3987e5' }, lineStyle: { color: '#9ca3af', width: 1.5 } }] }, true);
+  };
+})();

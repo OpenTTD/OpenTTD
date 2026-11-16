@@ -33,6 +33,7 @@
         <li><a href="#bot" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">My bot</a></li>
         <li><a href="#control" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Control and approvals</a></li>
         <li><a href="#decisions-card" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Decisions and events</a></li>
+        <li><a href="#plan" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Plan (DAG)</a></li>
         <li><a href="#news" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">News</a></li>
         <li><a href="#cluster" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Cluster</a></li>
         <li><a href="/world" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">World: map and road graph</a></li>
@@ -63,6 +64,25 @@
       </div>
       <img id="live-img" alt="The owner's OpenTTD window, refreshed about once a second" class="w-full rounded-sm bg-gray-900">
       <p id="live-msg" class="mt-1 text-xs text-gray-500 dark:text-gray-400"></p>
+    </div>
+
+    <div id="plan" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Plan before acting (AlgoGlyph action-plan)</h3>
+        <span id="plan-msg" class="text-xs text-gray-500 dark:text-gray-400">POST /api/actionplan: a DAG of actions, expanded into presses and cash-checked before anything runs</span>
+      </div>
+      <div class="grid gap-4 lg:grid-cols-2">
+        <div>
+          <textarea id="plan-actions" rows="9" class="block w-full p-2.5 text-xs font-mono text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white">[
+  {"id": "borrow", "kind": "borrow", "amount": 100000, "step": 10000},
+  {"id": "line", "kind": "build", "label": "coal line", "cost": 134592, "after": ["borrow"]},
+  {"id": "repay", "kind": "repay", "amount": 50000, "step": 10000, "after": ["line"]}
+]</textarea>
+          <button type="button" id="plan-run" class="mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700">Make the plan</button>
+          <ol id="plan-steps" class="mt-3 space-y-1 text-xs text-gray-700 dark:text-gray-300 max-h-48 overflow-auto"></ol>
+        </div>
+        <div id="plan-graph" role="img" aria-label="The plan's DAG: actions by wave, dependencies as arrows" class="w-full h-72"></div>
+      </div>
     </div>
 
     <div id="news" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
@@ -234,6 +254,7 @@
   <div id="toasts" class="fixed z-50 flex flex-col gap-2 top-20 right-4 w-96 max-w-[calc(100vw-2rem)]" aria-live="polite"></div>
 
   <script src="/vendor/flowbite.min.js"></script>
+  <script src="/vendor/echarts.min.js"></script>
   <script src="/static/app.js"></script>
 </body>
 </html>

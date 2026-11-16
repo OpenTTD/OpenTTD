@@ -41,6 +41,8 @@ AI_LEVELS = {"S": "squirrel_error", "E": "error", "P": "squirrel_info", "W": "wa
 # "Bearer token (...): <hex>" line rather than one phrasing.
 # The ~ console's plan verb (openttd-59): "[prismatic-plan] <n> <text>"; answered with echo lines
 # carrying the same prefix, so each request is handled once by its number.
+# The console's `companies` line: "#:1(Blue) Company Name: '...'  Year Founded: 1950  Money: 5694  Loan: 100000  ..."
+COMPANY_ROW = re.compile(r"#:(\d+)\(.*?\)\s+Company Name: '[^']*'\s+Year Founded: \d+\s+Money: (-?\d+)\s+Loan: (\d+)")
 DENIED_RE = re.compile(r"^denied #(\d+)\b")
 PLAN_RE = re.compile(r"\[prismatic-plan\] (\d+) (.+)$")
 TOKEN_RE = re.compile(r"Bearer token \([^)]*\): ([0-9a-fA-F]{32,})")
@@ -760,6 +762,40 @@ def make_routes(game):
         game.event("view", f"GUI client attached ({f.name})")
         return 200, {"attached": True, "state": game.view_call("openttd.view.state")}
 
+    def action_plan(body):
+        d = os.environ.get("MCP_ALGOGLYPH_DIR")
+        if not d:
+            return 503, {"error": "no AlgoGlyph runner: set MCP_ALGOGLYPH_DIR (mcp-e2e finds one)"}
+        inp = dict(body)
+        if "cash" not in inp or "loan" not in inp:
+            # Money and loan from the console's `companies` line (openttd://companies has no loan on
+            # every build): the requested company, else the first AI company.
+            mark = game.seq
+            game.console("companies")
+            time.sleep(0.8)
+            with game.lock:
+                lines = [ln for sq, ln in game.log if sq > mark]
+            rows = [m for ln in lines for m in COMPANY_ROW.findall(ln)]
+            want = inp.get("company")
+            row = next((m for m in rows if want is not None and int(m[0]) - 1 == want), None) or (rows[0] if rows else None)
+            if row:
+                inp.setdefault("cash", int(row[1]))
+                inp.setdefault("loan", int(row[2]))
+        inp.setdefault("max_loan", game.max_loan() or 300000)
+        inp.setdefault("loan_step", 10000)
+        inp.pop("company", None)
+        r = subprocess.run(["npm", "run", "--silent", "flow", "--", "kernel", "action-plan", "-"], cwd=d,
+                           input=json.dumps(inp), capture_output=True, text=True, timeout=120)
+        try:
+            out = json.loads(r.stdout)
+        except ValueError:
+            return 502, {"error": (r.stderr or r.stdout).strip()[:400]}
+        out["input"] = inp
+        out["runner"] = d
+        game.event("plan", f"action plan: {len(inp.get('actions', []))} action(s) -> "
+                           + (f"{len(out.get('result', {}).get('steps', []))} step(s)" if out.get("ok") else f"refused: {out.get('errors')}"))
+        return (200 if out.get("ok") else 422), out
+
     def intent(text, params=None):
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-intent"
         if not exe.exists():
@@ -865,6 +901,9 @@ def make_routes(game):
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
         ("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params)", True,
          None, lambda q: plan(int(q.get("limit", ["20"])[0]), q.get("params", [""])[0])),
+        ("POST", "/api/actionplan", "actionPlan", "Plan before acting: a set of actions with dependencies ({id, kind, label?, cost?, income?, amount?+step?, repeat?, after?}) turned by AlgoGlyph's action-plan kernel into a validated DAG and executable presses (repay 50k = 5 x repay 10k as one plan) with the cash and loan after each, refused if it would overdraw; cash, loan and loan limits default to the bot company's and the game's", True,
+         s({"actions": {"type": "array"}, "cash": {"type": "number"}, "loan": {"type": "number"}, "max_loan": {"type": "number"},
+            "loan_step": {"type": "number"}, "company": {"type": "integer"}}, ["actions"]), lambda b: action_plan(b)),
         ("POST", "/api/intent", "intent", "A sentence from the owner (\"najdi nejbližší les + pilu\", \"vybuduj nejlukrativnější trať\", \"find the most productive coal mine\") answered over the live game: nouns from the game's own language files and world graph, orderings nearest / most productive / most profitable, candidates in order, and for build the bot settings that carry out the first (tools/research/mcp-rhai src/intent.rs)", True,
          s({"text": {"type": "string"}, "params": OBJ}, ["text"]), lambda b: intent(b["text"], b.get("params"))),
         ("GET", "/api/graph", "graph", "The road network as a graph (nodes: junctions, ends, stations, town anchors; edges with length; components), derived from openttd://map, towns and stations by tools/research/mcp-rhai mcp-graph", True,
