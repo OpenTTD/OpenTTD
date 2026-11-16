@@ -275,6 +275,61 @@ std::vector<std::string> ResultLines(const json &result, bool compact)
 	return out;
 }
 
+std::vector<std::string> Complete(const json &tools, const json &resources, std::span<const std::string_view> words, std::string_view query)
+{
+	std::vector<std::string> out;
+	if (words.empty()) return out;
+	std::string_view command = words[0];
+	if (command.starts_with('/')) command.remove_prefix(1);
+	auto offer = [&](std::string_view candidate) {
+		if (candidate.starts_with(query)) out.emplace_back(candidate);
+	};
+	auto names = [](const json &entries, std::string_view key) {
+		std::vector<std::string> v;
+		for (const auto &e : entries) if (e.contains(key) && e[key].is_string()) v.push_back(e[key].get<std::string>());
+		return v;
+	};
+	auto short_name = [](const std::string &n) { return n.starts_with("openttd.") ? n.substr(8) : n; };
+
+	if (command == "bot" || command == "ai") {
+		if (words.size() == 1) for (std::string_view s : BOT_SUBCOMMANDS) offer(s);
+		return out;
+	}
+	if (command != "mcp") return out;
+
+	std::vector<std::string> tool_names = names(tools, "name");
+	if (words.size() == 1) {
+		for (std::string_view s : MCP_SUBCOMMANDS) offer(s);
+		for (const auto &n : tool_names) offer(short_name(n));
+		return out;
+	}
+	std::string_view sub = words[1];
+	if (sub == "read") {
+		if (words.size() == 2) for (const auto &u : names(resources, "uri")) offer(u);
+		return out;
+	}
+	if (sub == "help") {
+		if (words.size() == 2) for (const auto &n : tool_names) offer(short_name(n));
+		return out;
+	}
+	if (sub == "tools" || sub == "resources" || sub == "rpc") return out;
+
+	/* `mcp <tool> ...`: the tool's parameters not given yet, as key=. */
+	std::vector<std::string> found = Resolve(tool_names, sub);
+	if (found.size() != 1) return out;
+	for (const auto &t : tools) {
+		if (t.value("name", "") != found[0]) continue;
+		const json &props = t.value("inputSchema", json::object()).value("properties", json::object());
+		for (const auto &[key, _] : props.items()) {
+			std::string given = key + "=";
+			bool used = false;
+			for (size_t i = 2; i < words.size(); i++) used |= words[i].starts_with(given);
+			if (!used) offer(given);
+		}
+	}
+	return out;
+}
+
 } // namespace Console::detail
 
 using namespace Console::detail;
@@ -453,6 +508,22 @@ bool ConMcp(std::span<std::string_view> argv)
 	bool is_error = r["result"].value("isError", false);
 	PrintLines(ResultLines(r["result"], compact), max_lines, is_error ? CC_ERROR : CC_INFO);
 	return true;
+}
+
+std::vector<std::string> ConsoleCompletions(std::string_view prefix, std::string_view query)
+{
+	std::vector<std::string_view> words;
+	size_t start = 0;
+	while (start < prefix.size()) {
+		size_t end = prefix.find(' ', start);
+		if (end == std::string_view::npos) end = prefix.size();
+		if (end > start) words.push_back(prefix.substr(start, end - start));
+		start = end + 1;
+	}
+	if (words.empty()) return {};
+	std::string_view command = words[0].starts_with('/') ? words[0].substr(1) : words[0];
+	if (command != "mcp" && command != "bot" && command != "ai") return {};
+	return Complete(Catalogue("tools/list", "tools"), Catalogue("resources/list", "resources"), words, query);
 }
 
 } // namespace PrismaticMCP

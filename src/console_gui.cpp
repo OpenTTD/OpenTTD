@@ -14,6 +14,9 @@
 #include "autocompletion.h"
 #include "console_gui.h"
 #include "console_internal.h"
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+#include "prismatic_mcp/prismatic_mcp_console.h"
+#endif
 #include "window_func.h"
 #include "string_func.h"
 #include "strings_func.h"
@@ -77,6 +80,15 @@ private:
 		prefix = StrTrimView(prefix, StringConsumer::WHITESPACE_NO_NEWLINE);
 		std::vector<std::string> suggestions;
 
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+		/* RESEARCH-ONLY: the fork's commands complete their arguments from the live MCP catalogue. */
+		if (!prefix.empty() && prefix != "help") return PrismaticMCP::ConsoleCompletions(prefix, query);
+		/* A chat-style leading '/' completes to the same names, keeping the slash. */
+		std::string_view slash = (prefix.empty() && query.starts_with('/')) ? "/" : "";
+		if (!slash.empty()) query.remove_prefix(1);
+#else
+		const std::string_view slash = "";
+#endif
 		/* We only suggest commands or aliases, so we only do it for the first token or an argument to help command. */
 		if (!prefix.empty() && prefix != "help") {
 			return suggestions;
@@ -84,12 +96,12 @@ private:
 
 		for (const auto &[_, command] : IConsole::Commands()) {
 			if (command.name.starts_with(query)) {
-				suggestions.push_back(command.name);
+				suggestions.push_back(fmt::format("{}{}", slash, command.name));
 			}
 		}
 		for (const auto &[_, alias] : IConsole::Aliases()) {
 			if (alias.name.starts_with(query)) {
-				suggestions.push_back(alias.name);
+				suggestions.push_back(fmt::format("{}{}", slash, alias.name));
 			}
 		}
 
@@ -98,7 +110,8 @@ private:
 
 	void ApplySuggestion(std::string_view prefix, std::string_view suggestion) override
 	{
-		this->textbuf->Assign(fmt::format("{}{} ", prefix, suggestion));
+		/* A parameter offered as "key=" takes its value right after the '='. */
+		this->textbuf->Assign(fmt::format("{}{}{}", prefix, suggestion, suggestion.ends_with('=') ? "" : " "));
 	}
 };
 

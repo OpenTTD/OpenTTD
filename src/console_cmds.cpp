@@ -3351,6 +3351,10 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("mcp",                     PrismaticMCP::ConMcp);
 	IConsole::CmdRegister("bot",                     ConBot);
 	IConsole::CmdRegister("plan",                    ConPlan);
+	/* RESEARCH-ONLY: the words a player reaches for first. */
+	IConsole::AliasRegister("ask",                   "plan %+");
+	IConsole::AliasRegister("do",                    "plan %+");
+	IConsole::AliasRegister("ai",                    "bot %+");
 #endif
 	IConsole::CmdRegister("quit",                    ConExit);
 	IConsole::CmdRegister("resetengines",            ConResetEngines,     ConHookNoNetwork);

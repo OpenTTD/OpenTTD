@@ -336,6 +336,13 @@ void IConsoleCmdExec(std::string_view command_string, const uint recurse_count)
 	}
 
 	if (tokens.empty() || tokens[0].empty()) return; // don't execute empty commands
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	/* RESEARCH-ONLY: a chat-style leading '/' names the same command ("/mcp" is "mcp"). */
+	if (tokens[0].size() > 1 && tokens[0][0] == '/') {
+		std::string bare = tokens[0].substr(1);
+		if (IConsole::CmdGet(bare) != nullptr || IConsole::AliasGet(bare) != nullptr) tokens[0] = std::move(bare);
+	}
+#endif
 	/* 2. Determine type of command (cmd or alias) and execute
 	 * First try commands, then aliases. Execute
 	 * the found action taking into account its hooking code
@@ -365,4 +372,9 @@ void IConsoleCmdExec(std::string_view command_string, const uint recurse_count)
 	}
 
 	IConsolePrint(CC_ERROR, "Command '{}' not found.", tokens[0]);
+#ifdef OTTD_PRISMATIC_MCP_SERVER
+	/* RESEARCH-ONLY: say what the fork's console offers instead of leaving a guess unanswered. */
+	IConsolePrint(CC_HELP, "Prismatic: 'mcp' (every MCP tool and resource), 'bot' or 'ai' (the company AIs), "
+		"'plan', 'ask' or 'do' <a request in your own words>; 'help' lists every command. A leading '/' is optional.");
+#endif
 }

@@ -37,6 +37,33 @@ fills the next required key that has no value yet. A `{...}` token is merged int
 arguments as JSON. Output is pretty-printed JSON, cut at 200 lines unless `--all` is given;
 `--compact` prints each value on one line.
 
+## The short words, a leading slash, and Tab
+
+The words a player reaches for first are the same commands, so `~` works the way a chat or a
+shell does:
+
+```text
+/mcp ...  = mcp ...         a leading '/' is optional on every console command
+ask <request>, do <request> = plan <request>   a request in your own words, for the planner
+ai ...    = bot ...         the company AIs (status, set, start, stop, reload)
+```
+
+`ask`, `do` and `ai` are console aliases (`alias` lists them); the slash is stripped only when
+the bare name is a command or an alias. An unknown command answers with what the console offers
+(`mcp`, `bot`/`ai`, `plan`/`ask`/`do`, `help`). Everything a player can do in the console is
+also an MCP tool (`openttd.cmd.*`, `openttd.ai.*`) and a route in the panel's OpenAPI document.
+
+Tab completes from the live catalogue, never from a list in the code:
+
+| Typed | Tab offers |
+|---|---|
+| a command, with or without `/` | every console command and alias |
+| `mcp ` | `tools`, `resources`, `help`, `read`, `rpc` and every tool without `openttd.` |
+| `mcp read ` | every resource URI |
+| `mcp help ` | every tool |
+| `mcp <tool> ` | the tool's parameters not given yet, as `key=` (the value goes right after `=`) |
+| `bot ` or `ai ` | `status`, `set`, `start`, `stop`, `reload`, `help` |
+
 ## What does not change
 
 - **Approvals.** A console call goes through the same dispatch, approvals and input arming as
@@ -52,11 +79,13 @@ arguments as JSON. Output is pretty-printed JSON, cut at 200 lines unless `--all
 ## Validation
 
 - `build-gate-research/openttd_test '[prismatic_mcp]'` covers name resolution, value typing,
-  `key=value`, bare values, unknown and missing keys, `anyOf`, usage lines and result lines.
+  `key=value`, bare values, unknown and missing keys, `anyOf`, usage lines, result lines and Tab
+  completion (with and without a leading slash).
 - `tools/research/mcp-console-check` uses only the console of a dedicated server, with no HTTP
   request. Every tool the console lists must answer `mcp help`, and every resource it lists must
   answer `mcp read` with JSON. Refusals and the gated pause are checked end to end, and the
-  coverage resource must count every resource the console read.
+  coverage resource must count every resource the console read. `/mcp`, `ask`, `/do` and `/ai`
+  reach `mcp`, `plan` and `bot`, and an unknown `/nosuch` says what the console offers.
 
 Observer effect: one catalogue build per command (two list calls), and the coverage increments
 for the calls themselves.

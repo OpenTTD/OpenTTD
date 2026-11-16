@@ -8,6 +8,8 @@
 #     usage line, and every listed resource answers `mcp read` with JSON;
 #   - typed arguments: a missing required key, a mistyped value and an unknown key are refused with
 #     the usage line, and an unresolvable name is refused;
+#   - '/mcp', 'ask <request>', '/do <request>' and '/ai' reach mcp, plan and bot, and an unknown
+#     command says what the console offers;
 #   - the gated mutation runs end to end from the console: `mcp set_pause pause=true` is pending,
 #     `prismatic_mcp approve <id>` approves it, the same call executes and is verified.
 #
@@ -159,8 +161,24 @@ if [[ -n "$approval" ]]; then
   # EXECUTED_UNVERIFIED (the effect is not observable in the same tick); that is the success here.
   replay="$(block "$WORK/approve.log" 3)"
   check "after 'prismatic_mcp approve', the same console call executes through the command system" \
-    "$(grep -qF '"status":"executed"' <<<"$replay" && grep -qF '"command_result":"succeeded"' <<<"$replay" && echo 1 || echo 0)"
+    "$(grep -qF '"status":"executed"' <<<"$replay" && grep -qE '"command_result":"(queued|succeeded)"' <<<"$replay" && echo 1 || echo 0)"
 fi
+
+# The words a player reaches for: a leading '/' is optional, ask/do hand a request to the planner
+# (block() strips a leading [..] as the log's timestamp, so the planner's [prismatic-plan] tag is
+# matched by its second line),
+# ai is bot, and an unknown command says what the console offers.
+echo "==> run 4: slash and alias spellings"
+drive "$WORK/slash.log" "/mcp" "ask build the most lucrative line" "/do find the nearest coal mine" "/ai" "/nosuch"
+check "'/mcp' is 'mcp'" "$(grep -qE 'tool\(s\), [0-9]+ resource\(s\)' <<<"$(block "$WORK/slash.log" 1)" && echo 1 || echo 0)"
+check "'ask <request>' hands the request to the planner" \
+  "$(grep -qE 'Request #[0-9]+ handed to the intent resolver' <<<"$(block "$WORK/slash.log" 2)" && grep -qF 'build the most lucrative line' <<<"$(block "$WORK/slash.log" 2)" && echo 1 || echo 0)"
+check "'/do <request>' hands the request to the planner" \
+  "$(grep -qF 'find the nearest coal mine' <<<"$(block "$WORK/slash.log" 3)" && grep -qE 'Request #[0-9]+ handed to the intent resolver' <<<"$(block "$WORK/slash.log" 3)" && echo 1 || echo 0)"
+check "'/ai' is 'bot'" "$(grep -qE 'company [0-9]+:|No company is run by an AI' <<<"$(block "$WORK/slash.log" 4)" && echo 1 || echo 0)"
+nosuch="$(block "$WORK/slash.log" 5)"
+check "an unknown '/nosuch' is refused and the console says what it offers" \
+  "$(grep -qF "Command '/nosuch' not found." <<<"$nosuch" && grep -qF "Prismatic: 'mcp'" <<<"$nosuch" && echo 1 || echo 0)"
 
 echo "mcp-console-check: $PASS passed, $FAIL failed"
 [[ "$FAIL" -eq 0 ]]

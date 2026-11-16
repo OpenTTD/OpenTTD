@@ -79,7 +79,35 @@ std::string Usage(std::string_view name, const nlohmann::json &schema);
  */
 std::vector<std::string> ResultLines(const nlohmann::json &result, bool compact);
 
+/** The subcommands of `mcp` other than a tool name. */
+inline constexpr std::string_view MCP_SUBCOMMANDS[] = {"tools", "resources", "help", "read", "rpc"};
+/** The subcommands of `bot` (and its alias `ai`). */
+inline constexpr std::string_view BOT_SUBCOMMANDS[] = {"status", "set", "start", "stop", "reload", "help"};
+
+/**
+ * Tab completion for the fork's console commands, derived from the catalogue: after `mcp`, its
+ * subcommands and every tool (without the `openttd.` prefix); after `mcp read` the resource URIs,
+ * after `mcp help` the tools; after `mcp <tool>` the tool's parameters as `key=` (those not given
+ * yet); after `bot` or `ai`, its subcommands. A leading '/' on the command is ignored.
+ * @param tools The tools/list entries.
+ * @param resources The resources/list entries.
+ * @param words The words typed before the one being completed (the command first).
+ * @param query The word being completed.
+ * @return The candidates that start with the query, in catalogue order; empty when the command
+ *         is not one of the fork's.
+ */
+std::vector<std::string> Complete(const nlohmann::json &tools, const nlohmann::json &resources,
+	std::span<const std::string_view> words, std::string_view query);
+
 } // namespace Console::detail
+
+/**
+ * Tab completion for the console line, read from this server's live catalogue (main thread).
+ * @param prefix The text before the word being completed.
+ * @param query The word being completed.
+ * @return The candidates; empty when the line is not one of the fork's commands.
+ */
+std::vector<std::string> ConsoleCompletions(std::string_view prefix, std::string_view query);
 
 } // namespace PrismaticMCP
 

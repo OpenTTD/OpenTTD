@@ -392,6 +392,37 @@ TEST_CASE("Console usage lines and result lines are derived, not written", "[pri
 	CHECK(mc::ResultLines(plain, false) == std::vector<std::string>{"a", "b"});
 }
 
+TEST_CASE("Console completion is derived from the catalogue, with or without a leading slash", "[prismatic_mcp]")
+{
+	const json tools = json::array({
+		{{"name", "openttd.view.zoom"}, {"inputSchema", {{"type", "object"}, {"properties", {{"level", {{"type", "integer"}}}}}}}},
+		{{"name", "openttd.cmd.Pause"}, {"inputSchema", {{"type", "object"}, {"properties", {{"company", json::object()}, {"params", json::object()}}}}}},
+	});
+	const json resources = json::array({{{"uri", "openttd://game/state"}}, {{"uri", "openttd://commands"}}});
+	auto complete = [&](std::vector<std::string_view> words, std::string_view query) { return mc::Complete(tools, resources, words, query); };
+
+	/* After mcp: its subcommands, then every tool without the openttd. prefix. */
+	auto all = complete({"mcp"}, "");
+	CHECK(std::find(all.begin(), all.end(), "read") != all.end());
+	CHECK(std::find(all.begin(), all.end(), "cmd.Pause") != all.end());
+	CHECK(complete({"mcp"}, "vi") == std::vector<std::string>{"view.zoom"});
+	CHECK(complete({"/mcp"}, "vi") == std::vector<std::string>{"view.zoom"}); // the slash changes nothing
+	/* After mcp read, the resources; after mcp help, the tools. */
+	CHECK(complete({"mcp", "read"}, "openttd://c") == std::vector<std::string>{"openttd://commands"});
+	CHECK(complete({"mcp", "help"}, "cmd") == std::vector<std::string>{"cmd.Pause"});
+	/* After a tool, its parameters not given yet, as key=. */
+	CHECK(complete({"mcp", "cmd.Pause"}, "") == std::vector<std::string>{"company=", "params="});
+	CHECK(complete({"mcp", "cmd.Pause", "company=server"}, "") == std::vector<std::string>{"params="});
+	CHECK(complete({"mcp", "zoom"}, "l") == std::vector<std::string>{"level="});
+	CHECK(complete({"mcp", "no_such_tool"}, "").empty());
+	/* bot and its alias ai: the subcommands. */
+	CHECK(complete({"bot"}, "s") == std::vector<std::string>{"status", "set", "start", "stop"});
+	CHECK(complete({"/ai"}, "re") == std::vector<std::string>{"reload"});
+	/* Anything else is not the fork's to complete. */
+	CHECK(complete({"echo"}, "").empty());
+	CHECK(complete({}, "mc").empty());
+}
+
 TEST_CASE("A dedicated server has no toolbar, so nothing of the menu", "[prismatic_mcp]")
 {
 	namespace M = PrismaticMCP::Menu;
