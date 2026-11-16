@@ -8,7 +8,8 @@
 # - every MCP tool annotated readOnlyHint (x-mcp-annotations in OpenAPI) is called with {} and must
 #   succeed;
 # - the rest (POST operations that change something and need nothing) are not called blindly: they
-#   are counted and named, so the report says what was not exercised.
+#   are counted and named, so the report says what was not exercised; so are routes that need the
+#   owner's GUI client on a stack that has none (503 "no GUI client attached").
 #
 # Usage: tools/research/mcp-route-check [panel-url]   (default http://127.0.0.1:8800)
 # Exit: 0 every exercised route passed, 1 a route failed, 2 the panel is not reachable.
@@ -47,6 +48,9 @@ for path, ops in sorted(spec["paths"].items()):
             continue
         if method == "GET":
             code, ctype, data = call("GET", path)
+            if code == 503 and b"no GUI client attached" in data:
+                skipped.append(f"{name} (needs a GUI client; this stack has none)")
+                continue
             ok = code == 200 and (ctype.startswith("image/") or ctype.startswith("application/json"))
             (passed if ok else failed).append(f"{name} -> {code} {ctype.split(';')[0]}" + ("" if ok else f" {data[:120]!r}"))
             continue

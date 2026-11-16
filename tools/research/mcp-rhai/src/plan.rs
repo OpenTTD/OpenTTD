@@ -1,8 +1,8 @@
 //! RESEARCH-ONLY: a first route planner over a running game: which town pairs to connect and
 //! with which mode of transport, derived from openttd://towns and the road graph (src/graph.rs).
 //!
-//! Model v2, calibrated to the game's own formulas (cited; .ai knowledge
-//! cargo-payment-and-vehicle-speed). Every number is a parameter with a default (DEFAULTS below);
+//! Model v3, calibrated to the game's own formulas (cited; .ai knowledge
+//! cargo-payment-and-vehicle-speed) and to the vehicles on offer now (openttd://engines). Every number is a parameter with a default (DEFAULTS below);
 //! a caller overrides any of them (mcp-plan --params JSON, GET /api/plan?params=JSON, Rhai
 //! world_plan_with) and the answer echoes the effective parameters:
 //!
@@ -20,8 +20,15 @@
 //! - cost in base price units (src/table/pricebase.h): road 95 a piece, 190 a tile, but nothing when
 //!   the towns are already joined by road; rail 100 a tile plus two 3-tile stations
 //!   (200 + 180 * 3 each); two small airports of 12 tiles at 600;
-//! - score = monthly income * payback_months - cost. The best mode of each pair is kept, pairs are
-//!   sorted by score, and the best five pairs of each mode are listed separately.
+//! - vehicles (when openttd://engines answers): per mode the passenger vehicle with the best
+//!   capacity x effective speed (no big plane for small airports; rail: the fastest locomotive with
+//!   rail_wagons of the biggest passenger carriage); its effective speed replaces speed_kmh; a
+//!   vehicle carries capacity * load_factor * 12 / transit_periods passengers a month (a round trip
+//!   is two loads); the fleet size is the one that maximises the score, up to max_vehicles, the
+//!   demand, and the budget;
+//! - score = (income - running costs) * payback_months - (track or airports + vehicles). The best
+//!   mode of each pair is kept, pairs are sorted by score, and the best five pairs of each mode are
+//!   listed separately.
 use serde_json::{json, Value};
 
 const MODE_NAMES: [&str; 3] = ["bus", "rail", "air"];
@@ -37,6 +44,11 @@ pub fn defaults() -> Value {
         "payment": 3185.0,
         "costs": {"road_tile": 190, "rail_tile": 100, "rail_stations": 1480, "airports": 14400},
         "payback_months": 24.0,
+        "load_factor": 0.8,
+        "rail_wagons": 4,
+        "max_vehicles": {"bus": 10, "rail": 4, "air": 6},
+        "small_airports": true,
+        "budget": null,
         "modes": ["bus", "rail", "air"],
     })
 }
@@ -80,7 +92,40 @@ fn merge(base: &mut Value, over: &Value) {
     }
 }
 
-pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value) -> Result<Value, String> {
+/// The vehicle a mode would run, from openttd://engines (what can be bought now): the passenger
+/// road vehicle or plane with the best capacity x effective speed (no big plane for small
+/// airports), or the fastest locomotive with `wagons` of the biggest passenger wagon. None when the
+/// resource is missing or offers nothing for the mode.
+struct Vehicle { name: String, capacity: f64, speed: f64, price: f64, running_per_year: f64 }
+
+fn pick_vehicle(engines: &Value, mode: &str, wagons: f64, small_airports: bool) -> Option<Vehicle> {
+    let list = engines.get("engines")?.as_array()?;
+    let num = |e: &Value, k: &str| e.get(k).and_then(Value::as_f64).unwrap_or(0.0);
+    let pax = |e: &Value| e.get("cargo").and_then(Value::as_str).is_some_and(|c| c.to_lowercase().contains("passenger"));
+    let make = |e: &Value| Vehicle { name: e["name"].as_str().unwrap_or("").to_string(), capacity: num(e, "capacity"),
+        speed: num(e, "effective_speed_kmh"), price: num(e, "price"), running_per_year: num(e, "running_cost_per_year") };
+    match mode {
+        "bus" | "air" => {
+            let t = if mode == "bus" { "road" } else { "air" };
+            list.iter().filter(|e| e["type"] == t && pax(e) && num(e, "capacity") > 0.0)
+                .filter(|e| !(mode == "air" && small_airports && e["plane_type"] == "big"))
+                .max_by(|a, b| (num(a, "capacity") * num(a, "effective_speed_kmh")).total_cmp(&(num(b, "capacity") * num(b, "effective_speed_kmh"))))
+                .map(make)
+        }
+        _ => {
+            let loco = list.iter().filter(|e| e["type"] == "rail" && num(e, "capacity") == 0.0 && num(e, "effective_speed_kmh") > 0.0)
+                .max_by(|a, b| num(a, "effective_speed_kmh").total_cmp(&num(b, "effective_speed_kmh")))?;
+            let wagon = list.iter().filter(|e| e["type"] == "rail" && pax(e) && num(e, "capacity") > 0.0)
+                .max_by(|a, b| num(a, "capacity").total_cmp(&num(b, "capacity")))?;
+            Some(Vehicle { name: format!("{} + {} x {}", loco["name"].as_str().unwrap_or(""), wagons, wagon["name"].as_str().unwrap_or("")),
+                capacity: wagons * num(wagon, "capacity"), speed: num(loco, "effective_speed_kmh"),
+                price: num(loco, "price") + wagons * num(wagon, "price"),
+                running_per_year: num(loco, "running_cost_per_year") + wagons * num(wagon, "running_cost_per_year") })
+        }
+    }
+}
+
+pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value, engines: &Value) -> Result<Value, String> {
     let mut p = defaults();
     if !overrides.is_null() {
         if !overrides.is_object() { return Err("params must be a JSON object".into()); }
@@ -98,10 +143,17 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value) -> Re
         (f("/payback_months")?, f("/supply_factor")?, f("/payment")?, f("/overhead_periods")?);
     let (road_tile, rail_tile, rail_stations, airports) =
         (f("/costs/road_tile")?, f("/costs/rail_tile")?, f("/costs/rail_stations")?, f("/costs/airports")?);
+    let (load_factor, wagons) = (f("/load_factor")?, f("/rail_wagons")?);
+    let small_airports = p["small_airports"].as_bool().unwrap_or(true);
+    // What the player can spend (money plus loan headroom); null: no limit. A fleet is cut down to it,
+    // and an option whose track or airports alone exceed it is not offered.
+    let budget = p["budget"].as_f64();
     let mut modes = Vec::new();
+    let mut vehicles = std::collections::HashMap::new();
     for m in &enabled {
         modes.push((m.clone(), f(&format!("/bands/{m}/0"))?, f(&format!("/bands/{m}/1"))?,
                     f(&format!("/speed_kmh/{m}"))?, f(&format!("/min_population/{m}"))?));
+        vehicles.insert(m.clone(), (pick_vehicle(engines, m, wagons, small_airports), f(&format!("/max_vehicles/{m}"))?));
     }
 
     let towns_list = towns.pointer("/towns").and_then(Value::as_array).ok_or("towns has no list")?;
@@ -123,18 +175,60 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value) -> Re
             let mut options = Vec::new();
             for (name, min, max, speed, min_pop) in &modes {
                 if d < *min || d > *max || supply < *min_pop { continue; }
+                let (vehicle, max_n) = &vehicles[name];
+                // The vehicle's own effective speed when the game offers one, else the parameter.
+                let speed = vehicle.as_ref().map_or(*speed, |v| v.speed.max(1.0));
                 let periods = d / (speed * 0.0903) + overhead;
                 let per_passenger = d * time_factor(periods) * payment / 2097152.0;
-                let monthly = supply * supply_factor * per_passenger;
-                let cost = match name.as_str() {
+                let demand = supply * supply_factor;
+                let build = match name.as_str() {
                     "bus" => if connected { 0.0 } else { d * road_tile },
                     "rail" => d * rail_tile + rail_stations,
                     _ => airports,
                 };
-                let score = monthly * payback - cost;
+                // With a vehicle: as many as the demand fills (capped), what they carry, what they cost.
+                if budget.is_some_and(|b| build > b) { continue; }
+                // With a vehicle: the fleet size that maximises the score, from one vehicle up to what
+                // the demand fills (capped, and within the budget); each extra vehicle carries only the
+                // passengers the others leave, and costs its price and running cost.
+                let (carried, running, purchase, fleet) = match vehicle {
+                    Some(v) => {
+                        // A round trip takes 2 x periods and carries a load each way: 12 / periods loads a month.
+                        let per_vehicle = v.capacity * load_factor * 12.0 / periods;
+                        let mut top = (demand / per_vehicle.max(0.1)).ceil().clamp(1.0, *max_n);
+                        if let Some(b) = budget {
+                            top = top.min(((b - build) / v.price.max(1.0)).floor());
+                            if top < 1.0 { continue; }
+                        }
+                        let eval = |n: f64| {
+                            let carried = demand.min(n * per_vehicle);
+                            let running = n * v.running_per_year / 12.0;
+                            ((carried * per_passenger - running) * payback - build - n * v.price, carried, running)
+                        };
+                        let mut best_n = 1.0;
+                        let mut best_s = f64::MIN;
+                        let mut n = 1.0;
+                        while n <= top {
+                            let (sc, _, _) = eval(n);
+                            if sc > best_s { best_s = sc; best_n = n; }
+                            n += 1.0;
+                        }
+                        let (_, carried, running) = eval(best_n);
+                        (carried, running, best_n * v.price,
+                         json!({"name": v.name, "count": best_n, "capacity": v.capacity, "effective_speed_kmh": v.speed,
+                                "price_each": v.price.round(), "running_per_month": running.round(),
+                                "fills_demand_at": (demand / per_vehicle.max(0.1)).ceil()}))
+                    }
+                    None => (demand, 0.0, 0.0, Value::Null),
+                };
+                let income = carried * per_passenger;
+                let profit = income - running;
+                let invest = build + purchase;
+                let score = profit * payback - invest;
                 options.push(json!({"mode": name, "transit_periods": (periods * 10.0).round() / 10.0,
-                    "income_per_passenger": (per_passenger * 100.0).round() / 100.0, "monthly_income": monthly.round(),
-                    "cost": cost.round(), "score": score.round()}));
+                    "income_per_passenger": (per_passenger * 100.0).round() / 100.0, "monthly_income": income.round(),
+                    "monthly_profit": profit.round(), "build_cost": build.round(), "investment": invest.round(),
+                    "vehicles": fleet, "score": score.round()}));
                 if score > best_score {
                     best_score = score;
                     best = Some(name.clone());
@@ -160,10 +254,10 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value) -> Re
     out.truncate(limit);
     Ok(json!({
         "derived_from": ["openttd://towns", "/api/graph"],
-        "model": "v2, from the game's payment formula, vehicle movement and base prices: see tools/research/mcp-rhai/src/plan.rs",
+        "model": "v3: the game's payment formula, vehicle movement, base prices, and live vehicles (openttd://engines): see tools/research/mcp-rhai/src/plan.rs",
         "params": p,
-        "not_modelled": ["vehicle purchase and running costs (query ScriptEngine::GetPrice and GetRunningCost live)",
-                         "station rating and catchment beyond supply_factor", "terraforming and bridges along a route",
+        "vehicles_from": if engines.get("engines").is_some() { "openttd://engines (live prices, running costs, speeds, capacities)" } else { "not available: vehicle purchase and running costs are left out" },
+        "not_modelled": ["station rating and catchment beyond supply_factor", "terraforming and bridges along a route",
                          "inflation and the construction cost setting (all costs scale together)"],
         "pairs_considered": total, "pairs": out, "by_mode": by_mode,
     }))

@@ -27,6 +27,9 @@ nlohmann::json Map();
  */
 nlohmann::json Stations();
 
+/** Every engine some company can buy now: speed, capacity, cargo, price, running cost, plane type, who may buy it. */
+nlohmann::json Engines();
+
 } // namespace PrismaticMCP::World
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

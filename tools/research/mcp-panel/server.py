@@ -129,9 +129,50 @@ class Game:
         self.mcp_up = True
         self.event("mcp", f"MCP server up at {self.endpoint()} (token held by the panel)")
         if self.args.ai:
-            self.console(f"start_ai {self.args.ai}")
+            # The bot starts with the planner's best air pair (mcp-plan by_mode.air), so its first and
+            # most profitable route comes from the one profitability model; without one it plays as before.
+            settings = self.planned_air()
+            flat = ",".join(f"{k}={v}" for k, v in settings.items())
+            self.console(f"start_ai {self.args.ai} {flat}".strip())
             self.ai_started = True
-            self.event("ai", f"start_ai {self.args.ai} sent: the company plays on its own")
+            self.event("ai", f"start_ai {self.args.ai} {flat} sent: the company plays on its own".replace("  ", " "))
+
+    def planned_air(self):
+        """air_a/air_b for the bot from the planner's best air pair; {} when there is none or no planner."""
+        exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-plan"
+        if not self.args.plan_bot or not exe.exists():
+            return {}
+        try:
+            budget = self.max_loan()
+            params = {"budget": budget} if budget else {}
+            r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", "--limit", "1",
+                                "--params", json.dumps(params)], capture_output=True, text=True, timeout=60)
+            best = (json.loads(r.stdout).get("by_mode", {}).get("air") or [None])[0] if r.returncode == 0 else None
+        except Exception as e:  # noqa: BLE001 - the bot still starts
+            self.event("ai", f"planner not reachable for the bot: {e}")
+            return {}
+        if not best or best["score"] <= 0:
+            why = "no air pair" if not best else f"the best air pair scores {best['score']} (it would lose money)"
+            self.event("ai", f"planner: {why}; the bot starts without an air route")
+            return {}
+        opt = next((o for o in best["options"] if o["mode"] == "air"), {})
+        planes = int(((opt.get("vehicles") or {}).get("count")) or 2)
+        self.event("ai", f"planner: air {best['a']['name']} - {best['b']['name']}, {best['distance']} tiles, "
+                         f"{planes} plane(s), profit {opt.get('monthly_profit')}/month, score {best['score']}")
+        return {"air_a": best["a"]["id"], "air_b": best["b"]["id"], "air_planes": max(1, min(8, planes))}
+
+    def max_loan(self):
+        """The most a new company can borrow (difficulty.max_loan), read from the console; None if unknown."""
+        mark = self.seq
+        self.console("setting difficulty.max_loan")
+        time.sleep(0.6)
+        with self.lock:
+            lines = [line for seq, line in self.log if seq > mark]
+        for line in lines:
+            m = re.search(r"max_loan'? is:? '?(\d+)", line)
+            if m:
+                return int(m.group(1))
+        return None
 
     def stop(self):
         try:
@@ -917,7 +958,10 @@ def make_handler(game):
                 if method == "GET" and path.startswith("/api/resources/"):
                     return self._send(200, game.resource("openttd://" + path[len("/api/resources/"):]))
             except Exception as e:  # surface, never hide, a failing call
-                return self._send(502, {"error": str(e)})
+                # A route that needs the owner's window answers 503 on a stack without one (headless,
+                # or the client restarting): the state is temporary, not a broken route.
+                code = 503 if "no GUI client attached" in str(e) else 502
+                return self._send(code, {"error": str(e)})
             return self._send(404, {"error": "not found"})
 
         def do_GET(self):
@@ -946,6 +990,8 @@ def main():
     p.add_argument("--seed", type=int, default=1)
     p.add_argument("--ai", default="PrismaticAI")
     p.add_argument("--auto-approve", action="store_true")
+    p.add_argument("--no-plan-bot", dest="plan_bot", action="store_false",
+                   help="start the bot without the planner's air pair")
     args = p.parse_args()
 
     game = Game(args)

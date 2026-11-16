@@ -15,6 +15,8 @@
 # Usage: tools/research/mcp-e2e [--bin <openttd>] [--no-gui] [--no-browser] [--auto-approve] [--window WxH]
 #                               [--no-director] [--view-port N (default: a free port)]
 #                               [--panel-port 8800] [--mcp-port 8731] [--game-port 3979] [--seed N]
+#                               [--no-plan-bot (start the bot without the planner's air pair, e.g. as the
+#                                baseline of an A/B run)]
 #                               [--arm-input (the owner's switch: the GUI client accepts openttd.input.*,
 #                                so the panel's /ui page and scripts can press its widgets; off by default)]
 #                               [--instances N (default 1: N-1 more headless stacks with bots, free
@@ -25,7 +27,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
-GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=() ARM_INPUT=0
+GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=() ARM_INPUT=0 PLAN=()
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -42,6 +44,7 @@ while [[ $# -gt 0 ]]; do
     --seed) SEED="$2"; shift 2 ;;
     --instances) INSTANCES="${2:?--instances needs a number}"; shift 2 ;;
     --arm-input) ARM_INPUT=1; shift ;;
+    --no-plan-bot) PLAN=(--no-plan-bot); shift ;;
     -h|--help) sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "mcp-e2e: unknown option: $1" >&2; exit 2 ;;
   esac
@@ -86,7 +89,7 @@ done
 
 echo "==> panel + dedicated server (seed $SEED)"
 python3 -I "$PANEL_DIR/server.py" --bin "$BIN" --panel-port "$PANEL_PORT" --mcp-port "$MCP_PORT" \
-  --game-port "$GAME_PORT" --seed "$SEED" ${AUTO[@]+"${AUTO[@]}"} &
+  --game-port "$GAME_PORT" --seed "$SEED" ${AUTO[@]+"${AUTO[@]}"} ${PLAN[@]+"${PLAN[@]}"} &
 PANEL_PID=$!
 
 URL="http://127.0.0.1:$PANEL_PORT"

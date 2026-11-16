@@ -251,13 +251,40 @@ pairs and gives each one a mode (bus, rail or air), plus the five best pairs of 
 a plan can combine modes. Every assumption is a parameter with a default that the caller can
 override: distance bands, minimum populations, `speed_kmh`, `overhead_periods`, `supply_factor`,
 `payment`, costs, `payback_months` and the enabled `modes`. The answer echoes the parameters it
-used. Model v2 takes the game's own formulas: the payment curve, vehicle movement in tiles,
+used. Model v3 takes the game's own formulas: the payment curve, vehicle movement in tiles,
 passenger generation and base prices. They are documented with their sources in the knowledge
-record `cargo-payment-and-vehicle-speed`. Each option reports its transit periods, income per
-passenger, monthly income, cost and score. Vehicle purchase and running costs are not modelled
-yet, and every answer lists that under `not_modelled`. On `/world` the
+record `cargo-payment-and-vehicle-speed`. It also uses the vehicles on offer right now from the
+resource `openttd://engines`: price, running cost, effective speed, capacity, plane type and who may
+buy them. For each mode it takes the best passenger vehicle and picks the fleet size that maximises
+the score, within `max_vehicles`, the demand and a `budget` parameter. Each option reports its
+transit periods, income per passenger, monthly income and profit, build cost, investment, fleet
+and score; `vehicles_from` says whether live vehicles were used. When the panel starts the bot, it
+passes the best air pair, budgeted to `difficulty.max_loan`, only if that pair scores above zero,
+together with the plane count. On `/world` the
 best pairs are drawn on the map in each mode's colour, and a click on a row moves your camera to
 the first town.
+
+## The bot plays the plan, and the A/B result
+
+When the panel starts the bot, it asks the planner for the best air pair (`mcp-plan --params
+'{"modes":["air"]}'`). It passes the pair to the bot as the settings `air_a` and `air_b` (town ids)
+and records the choice as an `ai` event ("planner: air A - B, N tiles, score S"). PrismaticAI
+(`ai/PrismaticAI/air.nut` in the bridge repository) flies that pair first:
+
+- each airport goes where it accepts the most passengers over its catchment;
+- if the town authority or the land refuses a site, the next one is tried;
+- the airport is the biggest type the game offers;
+- the planes are the best capacity times speed that fit, and a big plane never goes to a small
+  airport.
+
+The bot then goes on with its bus routes. There is one profitability model, the planner, and the
+bot carries it out. `mcp-e2e --no-plan-bot` starts the bot without the pair.
+
+`tools/research/mcp-ab [--months 12] [--seed N] [--label text]` measures the effect. It runs two
+headless games from the same seed side by side: A with the planner's pair, B without. Every game
+month it records each company's value, money, loan and vehicles from the console's `companies`
+command, and it writes `research/results/ab-<time>-seed<N>.{json,md}`. A result is a run that
+completed, not a claim.
 
 ## A cluster of instances: discovery and calls across it
 
@@ -305,6 +332,7 @@ through `POST /api/approve`, which is the panel's Approve button. Withdrawing yo
 |---|---|
 | `openttd://map` (`GET /api/resources/map`) | the whole map: one string per row for tile types (`C R r H T S W V I B O`), heights (two hex digits per tile) and owners (`0-9a-e` companies, `T` town, `N` none, `W` water, `D` deity, `.` not ownable); the encoding is part of the answer; 256x256 is about 266 KB |
 | `openttd://stations` | every station: id, name, tile, x/y, owner, facilities, town |
+| `openttd://engines` | every engine some company can buy now: type, name, intro year, max and effective speed (aircraft divided by `plane_speed`), capacity, cargo, price, running cost a year, reliability, plane type, the companies that may buy it |
 | `openttd://towns` | every town: id, name, tile, x/y, population |
 | `GET /api/graph`, Rhai `world_graph()`, `mcp-graph` | the road network as a graph: nodes are junctions, dead ends, stations and each town's nearest road tile, edges are road corridors with their length in tiles, and components say which towns are connected; derived in Rust (`tools/research/mcp-rhai/src/graph.rs`) from the three resources |
 | `/world` | the World view: the map on a canvas (types, heights or owners, towns and stations) and the road graph in ECharts on map coordinates, with a component filter, live refresh, maximize and Escape, and every parameter in the address |

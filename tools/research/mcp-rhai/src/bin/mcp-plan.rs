@@ -81,7 +81,9 @@ fn main() {
         let src = match &token { Some(t) => Source::from_token_file(t)?, None => Source::Panel(panel.clone()) };
         let towns = src.resource("towns")?;
         let g = graph::derive(&src.resource("map")?, &towns, &src.resource("stations")?)?;
-        plan::plan(&towns, &g, limit, &params)
+        // Live vehicles when the game offers openttd://engines; the plan says so when it does not.
+        let engines = src.resource("engines").unwrap_or(serde_json::Value::Null);
+        plan::plan(&towns, &g, limit, &params, &engines)
     })();
     match out {
         Ok(v) => println!("{v}"),

@@ -1,0 +1,49 @@
+id: I0057
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The bot plays the planner's air pair, live vehicle economics (openttd://engines, planner v3), and an A/B harness that measures what the planner earns"
+slug: bot-plays-the-plan-and-ab-results
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Close the loop from model to money: the panel starts the bot with the planner's best air pair, the bot flies it, and a same-seed A/B run records company value month by month with and without the planner."
+why: "The owner: until a whole game is finished and won, rinse and repeat; we need results; everything must work; choose the right combination of transport modes."
+scope:
+  - "src/prismatic_mcp/prismatic_mcp_world.cpp"
+  - "src/prismatic_mcp/prismatic_mcp_world.h"
+  - "src/prismatic_mcp/prismatic_mcp_server.cpp"
+  - "tools/research/**"
+  - "research/**"
+  - ".ai/repo/knowledge/curated/a-task-scope-must-cover-every-path-its-commit-touches.md"
+non_scope:
+  - "Winning a network game as a client (client mode is openttd-59's lane); rail routes"
+depends_on:
+  - I0053
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "The panel passes the planner's best air pair to the bot (air_a, air_b) and records it as an event; --no-plan-bot starts without it"
+  - "PrismaticAI builds both airports at accepted-passenger sites and flies planes that fit (bridge repository, air.nut)"
+  - "mcp-ab runs two same-seed games and writes research/results/ab-*.{json,md} with value, money, loan and vehicles per month"
+  - "A completed A/B run is committed as evidence, whatever its outcome"
+  - "openttd://engines lists the vehicles on offer with price, running cost, effective speed and capacity; planner v3 uses them, picks the fleet size that maximises the score, and respects a budget"
+  - "The panel passes an air pair only when planner v3 scores it above zero"
+validation:
+  - "tools/research/mcp-ab --months 12"
+  - "tools/research/mcp-route-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16T00:44:06Z
+started_at: 2026-11-16T00:30:35Z
+started_event: sha256:e462dcb8f6e600ef4576a68d27683bce98f3a20a3d2a62b5fb77a0374aa2be30
+verified_at: 2026-11-16T00:44:01Z
+verified_event: sha256:559c5016a25af34e5ba90b8cb53e88f3ebc1f3e46a236186a259f8c5924ed723
+completed_at: 2026-11-16T00:44:06Z
+completed_event: sha256:e04ddfb035f2ba05bc8496b6276ee7f0f4f8764576f24dce1006eb22e4d9d4a8
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-ab --months 12 (seed 22311); tools/gate.sh research; mcp-route-check; mcp-view-check; mcp-panel-check"
+    result: "A/B 12 months, same seed: A (planner air pair Neningpool-Frinborough, 2 planes, then buses) company value 62277 vs B (buses only) 38514, +62%; research/results/ab-20261116T014214-seed22311.{json,md}. gate research PASS (103/103); route-check 58/0/18; view-check 31/31; panel-check 13/13. openttd://engines live (53 engines); planner v3 picks fleet size by score, respects budget; a v3 bug (one direction per round trip) was found because the A/B contradicted it and fixed. On the new main map the planner finds no air pair and the bot starts without one"
+    commit: 0332a8f7ca5cb74de4ea335097a446371b17c794
+    recorded_at: 2026-11-16T00:44:03Z

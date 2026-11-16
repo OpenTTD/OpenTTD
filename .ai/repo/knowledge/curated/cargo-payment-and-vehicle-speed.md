@@ -15,6 +15,8 @@ provenance:
   origin: authored
   derived_from:
     - issue:I0053
+    - issue:I0057
+    - file:src/aircraft_cmd.cpp
     - file:src/economy.cpp
     - file:src/table/cargo_const.h
     - file:src/ground_vehicle.hpp
@@ -49,7 +51,16 @@ km/h and run their handler twice a tick (`src/train_cmd.cpp:4213-4215`). Both th
 `kmh * 2 * 0.75 / 3072` tiles a tick: about **0.036 tiles a day, or 0.0903 tiles a cargo period,
 per km/h** (100 km/h is about 3.6 tiles a day). Aircraft are slowed by the `plane_speed` setting
 (`src/aircraft_cmd.cpp:659`, default 1/4), so their effective speed is a quarter of the displayed
-one.
+one. Their handler also runs twice a tick (`Aircraft::Tick`), and each step is 1/16 of a tile
+(`UpdateAircraftSpeed` returns `spd >> 8` steps after `GetOldAdvanceSpeed`). A plane flying along
+an axis therefore covers the same 0.0903 tiles a period per effective km/h as a ground vehicle, and
+3/4 of that on a diagonal.
+
+**Loads a month**: a round trip takes twice the transit time and carries a load each way, so a
+vehicle moves `capacity * load_factor * 12 / transit_periods` passengers a month (12 cargo periods
+in a month). Counting only one direction halves every route's value. Planner v3 made exactly that
+mistake until a same-seed A/B run contradicted it: planes it scored negative were earning money in
+the game.
 
 **Passengers generated**: `src/town_cmd.cpp` `TownGenerateCargoBinomial` gives each house, on each
 of its tile loops (256 ticks), up to `(population + 7) / 8` potential passengers at 50% each. That
@@ -72,6 +83,7 @@ scaled by its engine's cost factor. The construction cost setting and inflation 
 - Before building, query live prices and vehicle data instead of trusting base prices:
   `ScriptCargo::GetCargoIncome(cargo, distance, days_in_transit)`, `ScriptEngine::GetPrice`,
   `GetMaxSpeed`, `GetCapacity`, `GetRunningCost`, `ScriptRoad::GetBuildCost`, `ScriptAirport::GetPrice`.
-- Not modelled yet: vehicle purchase and running costs, station rating and catchment beyond the
+- Vehicle prices, running costs, speeds and capacities are live in the resource `openttd://engines`,
+  which planner v3 reads. Still not modelled: station rating and catchment beyond the
   `supply_factor` parameter, terraforming and bridges. The planner says so in every answer
   (`not_modelled`).

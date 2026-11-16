@@ -15,6 +15,15 @@
 #include "prismatic_mcp_world.h"
 
 #include "../company_type.h"
+#include "../company_base.h"
+#include "../engine_base.h"
+#include "../engine_func.h"
+#include "../articulated_vehicles.h"
+#include "../cargotype.h"
+#include "../settings_type.h"
+#include "../strings_func.h"
+#include "../table/strings.h"
+#include "../timer/timer_game_calendar.h"
 #include "../map_func.h"
 #include "../station_base.h"
 #include "../tile_map.h"
@@ -100,6 +109,49 @@ json Stations()
 			{"town", st->town != nullptr ? json(st->town->index.base()) : json(nullptr)}});
 	}
 	return json{{"stations", std::move(list)}};
+}
+
+json Engines()
+{
+	static constexpr std::string_view TYPES[] = {"rail", "road", "ship", "air"};
+	json list = json::array();
+	for (const Engine *e : Engine::Iterate()) {
+		if (!e->IsEnabled() || e->company_avail.None()) continue;
+		auto t = static_cast<size_t>(e->type);
+		if (t >= std::size(TYPES)) continue;
+
+		/* The cargo it carries most of, as the Script API's GetCargoType does. */
+		CargoArray cap = GetCapacityOfArticulatedParts(e->index);
+		auto it = std::max_element(std::cbegin(cap), std::cend(cap));
+		json cargo = nullptr;
+		uint capacity = 0;
+		if (*it != 0) {
+			capacity = *it;
+			cargo = GetString(CargoSpec::Get(CargoType(std::distance(std::cbegin(cap), it)))->name);
+		}
+
+		uint speed = e->GetDisplayMaxSpeed(); // km-ish/h as the player reads it
+		uint effective = (e->type == VehicleType::Aircraft) ? speed / _settings_game.vehicle.plane_speed : speed;
+		json buildable_by = json::array();
+		for (const Company *c : Company::Iterate()) {
+			if (IsEngineBuildable(e->index, e->type, c->index)) buildable_by.push_back(c->index.base());
+		}
+		json item = {
+			{"id", e->index.base()}, {"type", TYPES[t]}, {"name", GetString(STR_ENGINE_NAME, e->index)},
+			{"intro_year", TimerGameCalendar::ConvertDateToYMD(e->intro_date).year.base()},
+			{"max_speed_kmh", speed}, {"effective_speed_kmh", effective},
+			{"capacity", capacity}, {"cargo", cargo},
+			{"price", static_cast<int64_t>(e->GetCost())}, {"running_cost_per_year", static_cast<int64_t>(e->GetRunningCost())},
+			{"reliability_pct", ToPercent16(e->reliability)}, {"buildable_by", std::move(buildable_by)},
+		};
+		if (e->type == VehicleType::Aircraft) {
+			uint8_t sub = AircraftVehInfo(e->index)->subtype;
+			item["plane_type"] = sub == 0 ? "helicopter" : ((sub & AIR_FAST) ? "big" : "small");
+		}
+		list.push_back(std::move(item));
+	}
+	return json{{"engines", std::move(list)},
+		{"note", "every engine some company can buy now; effective_speed_kmh divides aircraft by the plane_speed setting; price and running cost in the game's base currency, after inflation"}};
 }
 
 } // namespace PrismaticMCP::World

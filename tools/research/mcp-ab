@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: an A/B result for the owner's bot. Two headless games from the same seed and map,
+# side by side: A starts the bot with the planner's air pair (mcp-plan by_mode.air), B without it
+# (--no-plan-bot). Every game month both companies are read from the console's `companies` command
+# (value, money, loan, vehicles by type), and the run ends after N months with a table and a JSON
+# record under research/results/, so the result is evidence, not an impression.
+#
+# Usage: tools/research/mcp-ab [--months 12] [--seed N] [--label text]
+# Exit: 0 the run completed (whatever its outcome), 1 a stack did not come up, 2 bad arguments.
+set -euo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+MONTHS=12 SEED="$RANDOM" LABEL=""
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --months) MONTHS="${2:?}"; shift 2 ;;
+    --seed) SEED="${2:?}"; shift 2 ;;
+    --label) LABEL="${2:?}"; shift 2 ;;
+    *) echo "usage: mcp-ab [--months N] [--seed N] [--label text]" >&2; exit 2 ;;
+  esac
+done
+free() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
+A_PANEL="$(free)" B_PANEL="$(free)"
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-ab.XXXXXX")"
+PIDS=()
+cleanup() {
+  for p in ${PIDS[@]+"${PIDS[@]}"}; do kill -TERM "$p" 2>/dev/null || true; done
+  wait 2>/dev/null || true
+}
+trap cleanup EXIT INT TERM
+
+echo "==> A (planner's air pair) on :$A_PANEL, B (no planner) on :$B_PANEL, seed $SEED, $MONTHS months"
+"$ROOT_DIR/tools/research/mcp-e2e" --no-gui --no-browser --seed "$SEED" --panel-port "$A_PANEL" \
+  --mcp-port "$(free)" --game-port "$(free)" > "$TMP/a.log" 2>&1 &
+PIDS+=($!)
+"$ROOT_DIR/tools/research/mcp-e2e" --no-gui --no-browser --seed "$SEED" --no-plan-bot --panel-port "$B_PANEL" \
+  --mcp-port "$(free)" --game-port "$(free)" > "$TMP/b.log" 2>&1 &
+PIDS+=($!)
+for port in "$A_PANEL" "$B_PANEL"; do
+  for ((i = 0; i < 180; i++)); do
+    curl -s "http://127.0.0.1:$port/api/status" 2>/dev/null | grep -q '"ai_started": true' && break
+    sleep 2
+  done
+  curl -s "http://127.0.0.1:$port/api/status" | grep -q '"ai_started": true' || { echo "mcp-ab: the stack on :$port did not come up (logs in $TMP)" >&2; exit 1; }
+done
+
+exec python3 -I - "$A_PANEL" "$B_PANEL" "$MONTHS" "$SEED" "$LABEL" "$ROOT_DIR" <<'PY'
+import json, re, sys, time, urllib.request
+a_port, b_port, months, seed, label, root = sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4], sys.argv[5], sys.argv[6]
+ROW = re.compile(r"#:(\d+)\(.*?\)\s+Company Name: '([^']*)'\s+Year Founded: (\d+)\s+Money: (-?\d+)\s+Loan: (\d+)\s+Value: (-?\d+)\s+\(T:(\d+), R:(\d+), P:(\d+), S:(\d+)\)")
+
+
+def post(port, path, body):
+    req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", data=json.dumps(body).encode(),
+                                 headers={"Content-Type": "application/json"}, method="POST")
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.loads(r.read())
+
+
+def get(port, path):
+    with urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=30) as r:
+        return json.loads(r.read())
+
+
+def snapshot(port):
+    out = post(port, "/api/console", {"command": "companies", "wait": 1.0}).get("output", [])
+    text = " ".join(l if isinstance(l, str) else str(l) for l in out)
+    rows = [dict(zip(("id", "name", "founded", "money", "loan", "value", "trains", "road", "planes", "ships"),
+                     (int(m[0]), m[1], int(m[2]), int(m[3]), int(m[4]), int(m[5]), int(m[6]), int(m[7]), int(m[8]), int(m[9]))))
+            for m in ROW.findall(text)]
+    return rows[0] if rows else None
+
+
+def month_count(port):
+    return len(get(port, "/api/events?since=0&kinds=game.month&limit=1000").get("events", []))
+
+
+plan = {}
+for e in get(a_port, "/api/status")["events"]:
+    if e["kind"] == "ai" and e["text"].startswith("planner:"):
+        plan = {"note": e["text"]}
+series = {"A": [], "B": []}
+start = {p: month_count(p) for p in (a_port, b_port)}
+seen = dict(start)
+while min(seen[p] - start[p] for p in (a_port, b_port)) < months:
+    time.sleep(20)
+    for name, port in (("A", a_port), ("B", b_port)):
+        n = month_count(port)
+        if n > seen[port]:
+            seen[port] = n
+            snap = snapshot(port)
+            date = get(port, "/api/resources/game/state").get("game_date")
+            series[name].append({"month": n - start[port], "date": date, **(snap or {})})
+            print(f"{name} month {n - start[port]:>2} {date}: {snap}", flush=True)
+
+last = {k: (v[-1] if v else {}) for k, v in series.items()}
+result = {"experiment": "planner air pair (A) vs no planner (B)", "label": label, "seed": int(seed), "months": months,
+          "plan": plan, "final": last, "series": series,
+          "value_delta": (last["A"].get("value", 0) - last["B"].get("value", 0))}
+stamp = time.strftime("%Y%m%dT%H%M%S")
+outdir = f"{root}/research/results"
+import os
+os.makedirs(outdir, exist_ok=True)
+base = f"{outdir}/ab-{stamp}-seed{seed}"
+with open(base + ".json", "w") as f:
+    json.dump(result, f, indent=2)
+rows = "\n".join(f"| {r['month']} | {r.get('date','')} | {r.get('value','')} | {r.get('money','')} | {r.get('loan','')} | {r.get('road','')} | {r.get('planes','')} |"
+                 for r in series["A"])
+rows_b = "\n".join(f"| {r['month']} | {r.get('date','')} | {r.get('value','')} | {r.get('money','')} | {r.get('loan','')} | {r.get('road','')} | {r.get('planes','')} |"
+                   for r in series["B"])
+with open(base + ".md", "w") as f:
+    f.write(f"""# A/B: the planner's air pair vs no planner (seed {seed}, {months} months)
+
+Generated by `tools/research/mcp-ab`{(' (' + label + ')') if label else ''}. Both games use the same seed and map and start the same
+bot (PrismaticAI). A starts it with the planner's best air pair (`mcp-plan` by_mode.air); B starts it
+without one. Figures come from the console's `companies` command, once per game month.
+
+{plan.get('note', 'no planner note recorded')}
+
+**Final company value: A {last['A'].get('value')} vs B {last['B'].get('value')} (difference {result['value_delta']}).**
+
+## A: with the planner's air pair
+
+| Month | Date | Value | Money | Loan | Road vehicles | Aircraft |
+|---|---|---|---|---|---|---|
+{rows}
+
+## B: without the planner
+
+| Month | Date | Value | Money | Loan | Road vehicles | Aircraft |
+|---|---|---|---|---|---|---|
+{rows_b}
+""")
+print(f"\nmcp-ab: A value {last['A'].get('value')} vs B {last['B'].get('value')} (delta {result['value_delta']}); {base}.md")
+PY

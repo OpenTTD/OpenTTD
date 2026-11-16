@@ -232,10 +232,11 @@ struct ResourceEntry {
 json ResourceTowns(); // defined below, next to the view tools that scroll to a town
 json ResourceMap();   // the whole map (prismatic_mcp_world.cpp)
 json ResourceStations();
+json ResourceEngines();  // every engine on offer now (prismatic_mcp_world.cpp)
 json ResourceVehicles(); // every primary vehicle with its orders (prismatic_mcp_entities.cpp)
 json ResourceCoverage(); // what clients exercised, against the published catalogue (prismatic_mcp_coverage.cpp)
 
-const std::array<ResourceEntry, 10> RESOURCES = {{
+const std::array<ResourceEntry, 11> RESOURCES = {{
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
@@ -246,6 +247,7 @@ const std::array<ResourceEntry, 10> RESOURCES = {{
 	{"openttd://stations", "Stations", "Every station: id, name, tile, x/y, owner, facilities, town", &ResourceStations},
 	{"openttd://vehicles", "Vehicles", "Every primary vehicle: id, type, owner, engine, tile, state, cargo, profits, orders", &ResourceVehicles},
 	{"openttd://mcp/coverage", "MCP coverage", "Every published tool and resource with its call count since start, and those never called", &ResourceCoverage},
+	{"openttd://engines", "Engines", "Every engine some company can buy now: type, speed (also effective for aircraft), capacity, cargo, price, running cost, plane type, buyers", &ResourceEngines},
 }};
 
 json ResourceMap()
@@ -259,6 +261,13 @@ json ResourceStations()
 {
 	json env = MakeEnvelope();
 	env["data"] = World::Stations();
+	return env;
+}
+
+json ResourceEngines()
+{
+	json env = MakeEnvelope();
+	env["data"] = World::Engines();
 	return env;
 }
 
