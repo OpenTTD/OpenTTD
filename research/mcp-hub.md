@@ -40,7 +40,8 @@ tools/research/mcp-rhai/target/release/mcp-hub --panel http://127.0.0.1:8800   #
 | `hub.unsubscribe` | | |
 | `hub.audit` | | per instance: its stations and the pairs that duplicate each other |
 
-The hub describes itself in `GET /openapi.json`, derived from its method table, and serves the
+The hub describes itself in `GET /openapi.json`, derived from its method table, with Swagger UI over
+it at `GET /docs` (the panel's own `swagger-ui-dist`, so `npm ci` in `tools/research/mcp-panel` first), and serves the
 read-only methods as GET routes too (`/hub/instances`, `/hub/catalogue`, `/hub/audit`).
 
 `id` is a panel's `operationId`, `tool:<name>` or `resource:<uri>`. A streaming route

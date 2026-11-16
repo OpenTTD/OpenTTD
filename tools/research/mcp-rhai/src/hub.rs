@@ -524,6 +524,7 @@ pub fn openapi() -> Value {
             "/hub/catalogue": get("hubCatalogue", "Every operation of every instance"),
             "/hub/audit": get("hubAudit", "Duplicate stations per instance (one owner, a shared facility, overlapping catchments)"),
             "/openapi.json": get("hubOpenapi", "This document"),
+            "/docs": get("hubDocs", "Swagger UI over this document"),
         }
     })
 }
@@ -610,6 +611,12 @@ fn serve_ws(state: Shared, stream: TcpStream) {
     state.lock().unwrap().subscribers.retain(|s| s.id != sid);
 }
 
+/// Swagger UI over the hub's own OpenAPI document, the same page the panels serve at /docs.
+const SWAGGER_PAGE: &str = r#"<!doctype html><html><head><meta charset="utf-8"><title>MCP hub API</title>
+<link rel="stylesheet" href="/vendor/swagger-ui/swagger-ui.css"></head><body>
+<div id="swagger"></div><script src="/vendor/swagger-ui/swagger-ui-bundle.js"></script>
+<script>SwaggerUIBundle({url: '/openapi.json', dom_id: '#swagger', deepLinking: true});</script></body></html>"#;
+
 fn respond(mut stream: TcpStream, code: u16, ctype: &str, body: &[u8]) {
     let reason = match code { 200 => "OK", 400 => "Bad Request", 404 => "Not Found", _ => "Error" };
     let head = format!("HTTP/1.1 {code} {reason}\r\nContent-Type: {ctype}\r\nContent-Length: {}\r\nCache-Control: no-store\r\nConnection: close\r\n\r\n", body.len());
@@ -648,6 +655,19 @@ fn serve_http(state: Shared, mut stream: TcpStream, statics: &Path) {
             Err(_) => respond(stream, 404, json_ct, br#"{"error":"hub.html not found"}"#),
         },
         ("GET", "/hub/instances") => respond(stream, 200, json_ct, state.lock().unwrap().instances_json().to_string().as_bytes()),
+        ("GET", "/docs") => respond(stream, 200, "text/html; charset=utf-8", SWAGGER_PAGE.as_bytes()),
+        ("GET", p) if p.starts_with("/vendor/swagger-ui/") => {
+            // The panel's own copy (npm ci in tools/research/mcp-panel), so the hub ships no asset.
+            let (rel, ctype) = match &p["/vendor/swagger-ui/".len()..] {
+                "swagger-ui.css" => ("swagger-ui.css", "text/css"),
+                "swagger-ui-bundle.js" => ("swagger-ui-bundle.js", "text/javascript"),
+                _ => return respond(stream, 404, json_ct, br#"{"error":"not found"}"#),
+            };
+            match std::fs::read(statics.join("../node_modules/swagger-ui-dist").join(rel)) {
+                Ok(b) => respond(stream, 200, ctype, &b),
+                Err(_) => respond(stream, 404, json_ct, br#"{"error":"run npm ci in tools/research/mcp-panel"}"#),
+            }
+        }
         ("GET", "/hub/audit") => respond(stream, 200, json_ct, audit(&state).to_string().as_bytes()),
         ("GET", "/openapi.json") => respond(stream, 200, json_ct, openapi().to_string().as_bytes()),
         ("GET", "/hub/catalogue") => {

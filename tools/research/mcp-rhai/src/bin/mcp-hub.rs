@@ -391,6 +391,9 @@ mod tests {
         for m in ["hub.instances", "hub.catalogue", "hub.call", "hub.subscribe", "hub.audit"] {
             assert!(methods.as_array().unwrap().contains(&json!(m)), "{m} missing from OpenAPI");
         }
+        let docs = ureq::get(&format!("http://{addr}/docs")).call().unwrap().into_string().unwrap();
+        assert!(docs.contains("'/openapi.json'"), "Swagger UI reads the hub's own document");
+        assert!(spec.pointer("/paths/~1docs/get").is_some(), "and /docs is itself in it");
         let audit: Value = ureq::get(&format!("http://{addr}/hub/audit")).call().unwrap().into_json().unwrap();
         assert_eq!(audit[0]["duplicates"].as_array().unwrap().len(), 1);
     }
