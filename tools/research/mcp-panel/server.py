@@ -252,9 +252,33 @@ class Game:
                              + ("" if len(found) == len(priced) else f"; {len(priced) - len(found)} without a route dropped their rail option"))
         num = lambda v: int(str(v).split(":")[-1])  # world-graph ids are "industry:12"
         settings = {}
-        for c in chosen:
+
+        def bot_can_build(opt):
+            """PrismaticAI lays rail over buildable land only (rail.nut FindRailPath: no bridge, tunnel
+            or level crossing). A line priced by track-planning that needs one is not for the bot;
+            an unpriced line is tried as before."""
+            t = opt.get("track")
+            if not t:
+                return True
+            n = t.get("counts") or {}
+            return t.get("status") == "found" and not (n.get("bridges") or n.get("tunnels") or n.get("crossings"))
+
+        # The portfolio first; a rail line the bot cannot build is replaced by the next priced or
+        # unpriced line of its kind that it can, from the planner's lists (best score first).
+        spare = sorted([c for c in (out.get("freight") or []) + ((out.get("by_mode") or {}).get("rail") or [])
+                        if c not in chosen and (c.get("score") or 0) > 0], key=lambda c: -(c.get("score") or 0))
+        for c in chosen + spare:
             mode = c.get("mode")
             opt = next((o for o in c.get("options", []) if o.get("mode") == mode), {})
+            if mode in ("rail", "freight_rail") and not bot_can_build(opt):
+                n = (opt.get("track") or {}).get("counts") or {}
+                if c in chosen:
+                    self.event("ai", f"planner: the {mode} line {c.get('producer', c.get('a', {})).get('name')} - "
+                                     f"{c.get('acceptor', c.get('b', {})).get('name')} needs {n.get('bridges', 0)} bridge(s), "
+                                     f"{n.get('tunnels', 0)} tunnel(s), {n.get('crossings', 0)} crossing(s); the bot lays plain track only, so the next line it can build goes instead")
+                continue
+            if c not in chosen and mode not in ("rail", "freight_rail"):
+                continue
             if c.get("kind") == "freight" and mode == "freight_rail" and "fr_from" not in settings:
                 settings.update(fr_from=num(c["producer"]["id"]), fr_to=num(c["acceptor"]["id"]), fr_cargo=int(c["cargo_id"]))
                 self.event("ai", f"planner: {c['cargo']} by rail {c['producer']['name']} -> {c['acceptor']['name']}, "

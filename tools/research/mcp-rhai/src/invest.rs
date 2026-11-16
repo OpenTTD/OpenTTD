@@ -68,8 +68,10 @@ fn enabled(p: &Value, name: &str) -> bool {
 /// place (a hub for a two-leg route), and so is every industry of a freight pair.
 pub fn input(plan: &Value, engines: &Value, towns: &Value) -> Option<Value> {
     let p = &plan["params"];
+    // one_per_source off: the portfolio counts a producer's cargo once (cargo.rs `portfolio`), for
+    // freight only; the kernel's own rule would also drop passenger pairs that share a town.
     let params = json!({"payback_months": f(p, "/payback_months", 24.0), "load_factor": f(p, "/load_factor", 0.8),
-                        "max_legs": 2, "k": 8});
+                        "max_legs": 2, "k": 8, "one_per_source": false});
     let cargos: Vec<Value> = engines["cargos"].as_array().cloned().unwrap_or_default();
     let mut places: Vec<Value> = towns["towns"].as_array().into_iter().flatten()
         .map(|t| json!({"id": format!("t{}", id(&t["id"])), "x": t["x"], "y": t["y"]})).collect();
