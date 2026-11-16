@@ -49,5 +49,5 @@ issues, the same derivation `majordomus plan` makes.
 | [Internal state is observable through gated instrumentation, and every experiment records how it ran](milestones/internals-are-observable-with-recorded-provenance.yaml) | 7/8 | I0027 |
 | [Prismatic steers a company in a live game through the standalone bridge](milestones/prismatic-steers-a-company-through-the-bridge.yaml) | 2/5 | I0011, I0012, I0025 |
 | [An agent reads and, with approval, changes the game over an embedded MCP server](milestones/an-agent-reaches-the-game-over-mcp.yaml) | 31/39 | I0023, I0026, I0035, I0036, I0039, I0041, I0045, I0046 |
-| [The fork is published, supervised by Majordomus, and current with upstream](milestones/the-fork-is-published-supervised-and-current.yaml) | 5/6 | I0034 |
+| [The fork is published, supervised by Majordomus, and current with upstream](milestones/the-fork-is-published-supervised-and-current.yaml) | 5/7 | I0034, I0066 |
 <!-- surfaces:end ai-plan -->

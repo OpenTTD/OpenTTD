@@ -155,6 +155,19 @@ class RefsTest(unittest.TestCase):
         self.assertIn("src/net/gone.cpp is not a tracked file", out)
         self.assertNotIn("server.cpp", out)
 
+    def test_coverage_names_files_no_record_tracks_and_ignores_umbrellas(self) -> None:
+        self.write(".ai/repo/umbrella/README.md", "---\nid: u\ntracks:\n  - 'src/**'\n---\n")
+        code, out = self.run_cli("coverage", "src/", "--json")
+        self.assertEqual(code, 0)
+        data = json.loads(out)
+        self.assertEqual(data["files"], 2)
+        self.assertEqual(data["uncovered"], ["src/core/pool.hpp"])
+        self.assertEqual(data["records"]["src/net/server.cpp"], [".ai/repo/map/README.md"])
+        code, out = self.run_cli("coverage", "src", "--strict")
+        self.assertEqual(code, 1)
+        self.assertIn("UNCOVERED src/core/ 1: pool.hpp", out)
+        self.assertIn("1/2 file(s)", out)
+
     def test_glob_subset(self) -> None:
         rx = refs.glob_regex(":(glob)src/*_cmd.cpp")
         self.assertTrue(rx.match("src/road_cmd.cpp"))

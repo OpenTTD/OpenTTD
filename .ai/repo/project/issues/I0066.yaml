@@ -1,0 +1,33 @@
+id: I0066
+milestone: the-fork-is-published-supervised-and-current
+title: "Every tracked src/ file resolves to a subsystem map, and upstream's load-bearing architecture is recorded as extracted ADRs"
+slug: substrate-coverage
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A worker editing any tracked file under src/ (not only the thirteen subsystems I0055 mapped) resolves by path a map with its entry points, invariants, traps, tests and decisions, and the upstream design choices those maps lean on (lockstep, pools, savegame versioning, drivers, strings, settings, scripting API compatibility, timers, link graph threads) are ADRs a map can link to."
+why: "The owner: use Majordomus (.ai/), go through all the sources and generate a detailed knowledge base / ADRs, interlink everything, front matter, so that everything can improve the Majordomus integration; commit and push as you go, iteratively. After I0055, 616 tracked files under src/ (core/, blitter/, os/, lang/, table/, tests/, sound/, music/, 3rdparty/ and about 270 root files) matched no map's tracks, and no ADR recorded an upstream architecture decision."
+scope:
+  - ".ai/**"
+  - "tools/knowledge/**"
+  - "tools/gate.sh"
+depends_on:
+  - I0055
+serves:
+  - "openttd-validates-agent-driven-engineering#the-layer-is-supervised"
+acceptance_criteria:
+  - "Every tracked file under src/ matches the tracks of at least one fork.substrate.<name> map (the umbrella fork.substrate excluded); measured by tools/knowledge/refs coverage"
+  - "Every new map cites only files and symbols that exist (tools/knowledge/refs check exits 0) and attaches to the files it tracks (tools/knowledge/test_focused_context.py passes)"
+  - "Upstream architecture decisions are ADRs with provenance origin extracted and status proposed, each linked from the maps that depend on it and linking back to them"
+  - "New knowledge is status candidate; nothing is promoted or accepted"
+  - "majordomus context validate, knowledge check, adr check and plan validate report no failure"
+validation:
+  - "tools/knowledge/refs check"
+  - "tools/knowledge/refs coverage src/"
+  - "python3 -m unittest tools/knowledge/test_refs.py tools/knowledge/test_focused_context.py"
+  - "majordomus context validate"
+  - "majordomus adr check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
+updated_at: '2026-11-16'

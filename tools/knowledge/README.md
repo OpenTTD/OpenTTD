@@ -10,6 +10,7 @@ renamed file or a removed function left a record that still sent the next worker
 | `tools/knowledge/refs check` | does every file, directory, symbol and `tracks` pathspec cited by a record still exist? | 1 naming each one that does not |
 | `tools/knowledge/refs impact <rev-range>` | which records cite or track a file this range changes, and which symbols to re-read? | 0 |
 | `tools/knowledge/refs index [--out <file>]` | the reverse index: cited file → records → symbols, as JSON | 0 |
+| `tools/knowledge/refs coverage <dir>... [--strict]` | which tracked files under the directories no record's `tracks` attaches to? A `<dir>/**` umbrella is not counted | 0 (1 with `--strict` and a gap) |
 
 `impact` is the incremental half: a diff is mapped to the records it can make stale, instead of
 re-reading the repository. Typical ranges:

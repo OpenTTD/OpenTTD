@@ -319,11 +319,47 @@ def cmd_impact(repo: Repo, rev_range: str, pathspecs: list[str], as_json: bool) 
     return 0
 
 
+def cmd_coverage(repo: Repo, prefixes: list[str], pathspecs: list[str], as_json: bool,
+                 strict: bool) -> int:
+    """Which tracked files under the prefixes no record's `tracks` attaches to.
+
+    A pattern that is the prefix itself followed by `**` is an umbrella: it attaches to every
+    file under the prefix and therefore says nothing about any one of them, so it is not counted.
+    """
+    prefixes = [p.rstrip("/") + "/" for p in prefixes]
+    umbrella = {p + "**" for p in prefixes}
+    rxs = [(r.record, glob_regex(r.path)) for r in all_refs(repo, pathspecs)
+           if r.kind == "tracks" and r.path.removeprefix(":(glob)") not in umbrella]
+    files = sorted(f for f in repo.files if any(f.startswith(p) for p in prefixes))
+    covered: dict[str, list[str]] = {}
+    for f in files:
+        recs = sorted({rec for rec, rx in rxs if rx.match(f)})
+        covered[f] = recs
+    missing = [f for f, recs in covered.items() if not recs]
+    if as_json:
+        print(json.dumps({"schema": "knowledge-refs-coverage/v1", "prefixes": prefixes,
+                          "files": len(files), "uncovered": missing,
+                          "records": {f: r for f, r in covered.items() if r}},
+                         indent=1, sort_keys=True))
+    else:
+        groups: dict[str, list[str]] = {}
+        for f in missing:
+            groups.setdefault(f.rsplit("/", 1)[0] if "/" in f else ".", []).append(f)
+        for d, fs in sorted(groups.items(), key=lambda kv: (-len(kv[1]), kv[0])):
+            names = " ".join(f.rsplit("/", 1)[-1] for f in fs[:12])
+            more = f" (+{len(fs) - 12})" if len(fs) > 12 else ""
+            print(f"UNCOVERED {d}/ {len(fs)}: {names}{more}")
+        pct = 100.0 * (len(files) - len(missing)) / len(files) if files else 100.0
+        print(f"refs coverage {' '.join(prefixes)}: {len(files) - len(missing)}/{len(files)} "
+              f"file(s) attached to a record ({pct:.1f}%), {len(missing)} uncovered")
+    return 1 if strict and missing else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="refs", description=__doc__.split("\n\n")[0])
     ap.add_argument("--repo", default=None, help="repository root (default: git toplevel of cwd)")
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("check", "index", "impact"):
+    for name in ("check", "index", "impact", "coverage"):
         p = sub.add_parser(name)
         p.add_argument("--pathspec", action="append", help="records to scan (repeatable)")
         if name == "check":
@@ -334,6 +370,10 @@ def main(argv: list[str] | None = None) -> int:
         if name == "impact":
             p.add_argument("range")
             p.add_argument("--json", action="store_true")
+        if name == "coverage":
+            p.add_argument("prefix", nargs="+", help="directories whose tracked files to measure")
+            p.add_argument("--json", action="store_true")
+            p.add_argument("--strict", action="store_true", help="exit 1 when a file is uncovered")
     args = ap.parse_args(argv)
     root = Path(args.repo) if args.repo else Path(
         subprocess.run(["git", "rev-parse", "--show-toplevel"], check=True, capture_output=True,
@@ -344,6 +384,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_check(repo, specs, args.file)
     if args.cmd == "index":
         return cmd_index(repo, specs, args.out)
+    if args.cmd == "coverage":
+        return cmd_coverage(repo, args.prefix, specs, args.json, args.strict)
     return cmd_impact(repo, args.range, specs, args.json)
 
 
