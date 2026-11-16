@@ -23,6 +23,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T19:42:03Z
+updated_at: 2026-11-16T19:51:14Z
 started_at: 2026-11-16T19:42:03Z
 started_event: sha256:23ac9d81bdbed5def4896f59dab9b279ea25e81f80ee89e7cb886428900864d4
+verified_at: 2026-11-16T19:51:11Z
+verified_event: sha256:1396548a8c3bdb74ce6bbf26db561882a5f50b3b3d8d982dd948e9619131c2ee
+completed_at: 2026-11-16T19:51:14Z
+completed_event: sha256:ef2c8c9fbc9d7495098bd4a27146aec9e239a7948d80d46a3bda86d03da9c9e2
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-cluster-check; tools/gate.sh research"
+    result: "pass: mcp-cluster-check 10/10 (2 servers + 2 null-driver clients announce mcp-instance/v1 records with game ports and token files, never the token; all 4 endpoints answer with their tokens; each client plays a company; mcp-hub lists all 4; SIGTERM withdraws a client's record (4 -> 3); SIGKILL leaves a stale record the hub drops within its refresh). First run found the SIGTERM leak, fixed in prismatic_mcp_registry.cpp. Gate research 122/122, 700 assertions."
+    artifact: "tools/research/mcp-cluster-check"
+    commit: 1789acd1d4b60a09277efeff77924b452764abf6
+    recorded_at: 2026-11-16T19:51:10Z
