@@ -15,6 +15,7 @@ provenance:
   origin: authored
   derived_from:
     - file:src/prismatic_mcp/prismatic_mcp_view.cpp
+    - file:tools/research/mcp-e2e
 relations:
   - type: relates_to
     target: file:.ai/repo/workflows/substrate/prismatic-mcp/README.md
@@ -36,6 +37,22 @@ Swagger/OpenAPI, and the `.ai` tool catalogue. It is a GUI-client tool: `View::T
 nothing on a dedicated server (`_network_dedicated`), which is also where no dialog is ever shown.
 The switch sets a per-client preference only; it issues no command and changes no game state, so it
 is read before the viewport guard and works even where there is no viewport.
+
+## Auto-confirm with a countdown
+
+The owner asked (2026-11-16, session d1269870-428a-4061-aef8-d8ad33da2674, verbatim): "i want
+automode so "your bot asks" is auto confirmed in 10, 9, 8 (there should be progress bar; when user
+does nothing it is accepted and game continues". So the switch also takes `countdown` (seconds,
+1-600; `countdown` alone means `answer=yes`): the question is shown in the fork's own window
+(`WindowClass::PrismaticAsk`, laid out like the query dialog) with a bar that empties in real time,
+so it also runs while the game is paused. When the bar runs out the switch's answer is recorded and
+the window closes; a click on No or Yes answers instead, a click on the bar stops the countdown and
+the window waits, and the close box answers no. A process with no main window (a dedicated server,
+`openttd_test`) answers at once, as without a countdown.
+
+`tools/research/mcp-e2e` turns this on in the GUI client's `autoexec.scr` on every start
+(`mcp view.ask.auto answer=yes countdown=10`); `--ask-countdown N` changes the time and
+`--ask-countdown 0` makes every question wait for the owner again.
 
 # Review
 

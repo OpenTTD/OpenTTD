@@ -38,7 +38,12 @@
 #include "../strings_func.h"
 #include "../table/strings.h"
 #include "../timer/timer_game_calendar.h"
+#include "../timer/timer.h"
+#include "../timer/timer_window.h"
 #include "../fileio_func.h"
+#include "../gfx_func.h"
+#include "../palette_func.h"
+#include "../widget_type.h"
 
 #include "../safeguards.h"
 
@@ -57,16 +62,166 @@ struct Ask {
 std::deque<Ask> _asks; ///< Newest first; GUI state of this client only.
 uint32_t _ask_next = 0; ///< Last id handed out.
 uint32_t _ask_open = 0; ///< The question the dialog shows now, 0 if none.
-std::optional<std::string> _ask_auto; ///< Owner switch: when set, openttd.view.ask answers with this and shows no dialog.
+std::optional<std::string> _ask_auto; ///< Owner switch: the answer given for the player (instantly, or when the countdown ends).
+uint _ask_countdown = 0; ///< Owner switch: seconds the dialog shows its countdown before giving #_ask_auto; 0 answers at once with no dialog.
+static constexpr uint ASK_COUNTDOWN_MAX = 600; ///< The longest countdown the switch accepts, in seconds.
 
-/** The query dialog's callback: yes, no, or closed (no). */
-void AskAnswered(Window *, bool confirmed)
+/** Record an answer to question @p id unless it already has one. */
+void RecordAnswer(uint32_t id, std::string_view answer)
 {
 	for (Ask &a : _asks) {
-		if (a.id == _ask_open && !a.answer.has_value()) a.answer = confirmed ? "yes" : "no";
+		if (a.id == id && !a.answer.has_value()) a.answer = std::string(answer);
 	}
-	_ask_open = 0;
+	if (_ask_open == id) _ask_open = 0;
 }
+
+/** Widgets of the bot's question window. */
+enum BotAskWidgets : WidgetID {
+	WID_BA_CAPTION, ///< The caption ("Your bot asks").
+	WID_BA_TEXT, ///< The question.
+	WID_BA_COUNTDOWN_SEL, ///< Shows the countdown bar, or nothing when the dialog waits for the player.
+	WID_BA_COUNTDOWN, ///< The countdown: what will be answered, in how long, and a bar that empties.
+	WID_BA_NO, ///< The No button.
+	WID_BA_YES, ///< The Yes button.
+};
+
+/**
+ * The bot's yes/no question, laid out like the game's own query dialog. With the owner's
+ * auto-confirm switch on it shows a countdown bar under the question; when the bar runs out the
+ * switch's answer is given for the player and the game goes on. Clicking the bar stops the
+ * countdown, and the dialog then waits for a click on No or Yes. Closing it answers no.
+ * Real time, not game time: the countdown runs while the game is paused, too.
+ */
+struct BotAskWindow : public Window {
+	static constexpr auto TICK = std::chrono::milliseconds(100); ///< How often the countdown advances and redraws.
+
+	uint32_t id; ///< The question's id in #_asks.
+	std::string caption; ///< Window caption.
+	std::string question; ///< The question.
+	std::string on_timeout; ///< The answer given when the countdown runs out.
+	std::chrono::milliseconds total{0}; ///< The whole countdown; 0 when there is none.
+	std::chrono::milliseconds left{0}; ///< What is left of it.
+	bool counting = false; ///< The countdown runs (not stopped by the player, not off).
+
+	BotAskWindow(WindowDesc &desc, uint32_t id, std::string caption, std::string question, std::optional<std::string> on_timeout, uint seconds)
+		: Window(desc), id(id), caption(std::move(caption)), question(std::move(question)), on_timeout(on_timeout.value_or("yes")),
+		total(std::chrono::seconds(seconds)), left(std::chrono::seconds(seconds)), counting(on_timeout.has_value() && seconds > 0)
+	{
+		this->CreateNestedTree();
+		this->GetWidget<NWidgetStacked>(WID_BA_COUNTDOWN_SEL)->SetDisplayedPlane(this->counting ? 0 : SZSP_HORIZONTAL);
+		this->FinishInitNested(0);
+	}
+
+	/** The line over the countdown bar, with @p left of it to go. */
+	std::string CountdownText(std::chrono::milliseconds left) const
+	{
+		return fmt::format("Answering '{}' in {} s - click here to wait", this->on_timeout, (left.count() + 999) / 1000);
+	}
+
+	/** Give @p answer and close: the one way a click or the countdown answers. */
+	void Answer(std::string_view answer)
+	{
+		RecordAnswer(this->id, answer);
+		this->Close();
+	}
+
+	void Close([[maybe_unused]] int data = 0) override
+	{
+		RecordAnswer(this->id, "no"); // closed without an answer (close box): no, as with the game's query dialog
+		this->Window::Close();
+	}
+
+	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+	{
+		if (widget == WID_BA_CAPTION) return this->caption;
+		return this->Window::GetWidgetString(widget, stringid);
+	}
+
+	void UpdateWidgetSize(WidgetID widget, Dimension &size, [[maybe_unused]] const Dimension &padding, [[maybe_unused]] Dimension &fill, [[maybe_unused]] Dimension &resize) override
+	{
+		switch (widget) {
+			case WID_BA_TEXT:
+				size = GetStringMultiLineBoundingBox(this->question, size);
+				break;
+			case WID_BA_COUNTDOWN:
+				/* As wide as its longest line (the whole countdown to go), so it is never cut off. */
+				size.width = std::max(size.width, GetStringBoundingBox(this->CountdownText(this->total)).width);
+				size.height = GetCharacterHeight(FontSize::Normal) + WidgetDimensions::scaled.vsep_normal + ScaleGUITrad(6);
+				break;
+		}
+	}
+
+	void DrawWidget(const Rect &r, WidgetID widget) const override
+	{
+		switch (widget) {
+			case WID_BA_TEXT:
+				DrawStringMultiLine(r, this->question, TextColour::FromString, {AlignmentH::Centre, AlignmentV::Middle});
+				break;
+
+			case WID_BA_COUNTDOWN: {
+				DrawString(r.left, r.right, r.top, this->CountdownText(this->left), TextColour::White, AlignmentH::Centre);
+				Rect bar = r.WithHeight(ScaleGUITrad(6), true);
+				GfxFillRect(bar, PC_BLACK);
+				const Rect inner = bar.Shrink(WidgetDimensions::scaled.bevel);
+				const int width = static_cast<int>(inner.Width() * this->left.count() / std::max<int64_t>(this->total.count(), 1));
+				if (width > 0) GfxFillRect(inner.WithWidth(width, _current_text_dir == TD_RTL), PC_YELLOW);
+				break;
+			}
+		}
+	}
+
+	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
+	{
+		switch (widget) {
+			case WID_BA_YES: this->Answer("yes"); break;
+			case WID_BA_NO: this->Answer("no"); break;
+			case WID_BA_COUNTDOWN:
+				/* The player is here: stop the countdown and wait for their answer. */
+				this->counting = false;
+				this->GetWidget<NWidgetStacked>(WID_BA_COUNTDOWN_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
+				this->ReInit();
+				break;
+		}
+	}
+
+	const IntervalTimer<TimerWindow> countdown_tick = {TICK, [this](uint count) {
+		if (!this->counting) return;
+		const auto step = TICK * count;
+		if (this->left <= step) {
+			this->Answer(this->on_timeout);
+			return;
+		}
+		this->left -= step;
+		this->SetWidgetDirty(WID_BA_COUNTDOWN);
+	}};
+};
+
+static constexpr std::initializer_list<NWidgetPart> _nested_bot_ask_widgets = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, Colours::Red),
+		NWidget(WWT_CAPTION, Colours::Red, WID_BA_CAPTION),
+	EndContainer(),
+	NWidget(WWT_PANEL, Colours::Red),
+		NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_wide, 0), SetPadding(WidgetDimensions::unscaled.modalpopup),
+			NWidget(WWT_TEXT, Colours::Invalid, WID_BA_TEXT), SetMinimalSize(200, 12),
+			NWidget(NWID_SELECTION, Colours::Invalid, WID_BA_COUNTDOWN_SEL),
+				NWidget(WWT_EMPTY, Colours::Invalid, WID_BA_COUNTDOWN), SetMinimalSize(200, 12), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NWidContainerFlag::EqualSize), SetPIP(WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.hsep_indent, WidgetDimensions::unscaled.hsep_indent),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_BA_NO), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_QUIT_NO),
+				NWidget(WWT_PUSHTXTBTN, Colours::Yellow, WID_BA_YES), SetMinimalSize(71, 12), SetFill(1, 1), SetStringTip(STR_QUIT_YES),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+/** The bot's question window: centred, modal like the game's query dialog, never focused (a stray Enter must not answer). */
+static WindowDesc _bot_ask_desc(
+	WindowPosition::Center, {}, 0, 0,
+	WindowClass::PrismaticAsk, WindowClass::None,
+	WindowDefaultFlag::Modal,
+	_nested_bot_ask_widgets
+);
 
 json Error(std::string message)
 {
@@ -153,15 +308,16 @@ json Tools()
 			{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}},
 			{"town", {{"type", "integer"}}}, {"vehicle", {{"type", "integer"}}}}}}}});
 	arr.push_back({{"name", "openttd.view.ask"},
-		{"description", "GUI only, no approval: ask the player a yes/no question in the game window (the game's own query dialog). Answers {id}; the answer arrives in openttd.view.ask.answers: yes, no (also when the player closes the dialog), or replaced when a newer question takes its place"},
+		{"description", "GUI only, no approval: ask the player a yes/no question in the game window (a dialog laid out like the game's own query). Answers {id}; the answer arrives in openttd.view.ask.answers: yes, no (also when the player closes the dialog), the auto-confirm answer when its countdown runs out (openttd.view.ask.auto), or replaced when a newer question takes its place"},
 		{"inputSchema", {{"type", "object"}, {"required", json::array({"question"})}, {"properties", {{"question", {{"type", "string"}}}, {"caption", {{"type", "string"}}}}}}}});
 	arr.push_back({{"name", "openttd.view.ask.answers"},
 		{"description", "GUI only, no approval: every question asked through openttd.view.ask, newest first, with its answer (yes, no, replaced, or null while it is open)"},
 		{"inputSchema", obj},
 		{"annotations", {{"readOnlyHint", true}}}});
 	arr.push_back({{"name", "openttd.view.ask.auto"},
-		{"description", "Owner switch: auto-answer the bot's questions. With an answer (yes, no, or any text), openttd.view.ask records it and shows no dialog; omit answer, or pass null, to turn it off and show the dialog again. Answers {auto, answer}. Set it from the tilde console with 'mcp view.ask.auto answer=yes'"},
-		{"inputSchema", {{"type", "object"}, {"properties", {{"answer", {{"type", json::array({"string", "null"})}}}}}}}});
+		{"description", "Owner switch: auto-answer the bot's questions. With an answer (yes, no, or any text) and no countdown, openttd.view.ask records it at once and shows no dialog. With countdown N (seconds, 1-600) the dialog is shown with a bar that empties over N seconds; if the player does nothing the answer is given for them and the game goes on, a click on No or Yes answers instead, and a click on the bar stops the countdown. countdown alone means answer yes. Pass neither, or answer null, to turn it off. Answers {auto, answer, countdown}. From the tilde console: 'mcp view.ask.auto answer=yes countdown=10'"},
+		{"inputSchema", {{"type", "object"}, {"properties", {{"answer", {{"type", json::array({"string", "null"})}}},
+			{"countdown", {{"type", "integer"}, {"minimum", 0}, {"maximum", ASK_COUNTDOWN_MAX}}}}}}}});
 	arr.push_back({{"name", "openttd.view.console.print"},
 		{"description", "GUI only, no approval: print a line in this client's ~ console, coloured by level: info (yellow), warning (light blue), error (red), debug (light brown), rhai (green), plan (gold), plain (silver). For streaming script output and answers to the player"},
 		{"inputSchema", {{"type", "object"}, {"required", json::array({"text"})}, {"properties", {{"text", {{"type", "string"}}},
@@ -196,17 +352,33 @@ std::optional<json> Call(const std::string &name, const json &args)
 	/* These need no viewport, so they work on a dedicated server too: the owner's auto-answer
 	 * switch, and an already-auto-answered question (no dialog is shown). */
 	if (name == "openttd.view.ask.auto") {
-		if (args.contains("answer") && !args["answer"].is_null()) {
+		uint countdown = 0;
+		if (args.contains("countdown") && !args["countdown"].is_null()) {
+			if (!args["countdown"].is_number_integer() || args["countdown"].get<int64_t>() < 0 || args["countdown"].get<int64_t>() > ASK_COUNTDOWN_MAX) {
+				return Error(fmt::format("countdown is a whole number of seconds from 0 to {}", ASK_COUNTDOWN_MAX));
+			}
+			countdown = args["countdown"].get<uint>();
+		}
+		if (args.contains("answer") && args["answer"].is_null()) {
+			_ask_auto.reset();
+		} else if (args.contains("answer")) {
+			if (!args["answer"].is_string()) return Error("answer is yes, no, any text, or null");
 			std::string a = args["answer"].get<std::string>();
 			if (a == "true" || a == "1" || a == "on") a = "yes";
 			else if (a == "false" || a == "0" || a == "off") a = "no";
 			_ask_auto = a;
+		} else if (countdown > 0) {
+			_ask_auto = "yes"; // a countdown alone confirms
 		} else {
 			_ask_auto.reset();
 		}
-		return json{{"ok", true}, {"auto", _ask_auto.has_value()}, {"answer", _ask_auto.has_value() ? json(*_ask_auto) : json(nullptr)}};
+		_ask_countdown = _ask_auto.has_value() ? countdown : 0;
+		return json{{"ok", true}, {"auto", _ask_auto.has_value()}, {"answer", _ask_auto.has_value() ? json(*_ask_auto) : json(nullptr)},
+			{"countdown", _ask_countdown}};
 	}
-	if (name == "openttd.view.ask" && _ask_auto.has_value()) {
+	/* Answered at once, with no dialog: the switch without a countdown, or a countdown in a process
+	 * that has no window to count down in (a dedicated server, a test). */
+	if (name == "openttd.view.ask" && _ask_auto.has_value() && (_ask_countdown == 0 || MainWindow() == nullptr)) {
 		std::string question = args.value("question", "");
 		if (question.empty()) return Error("question is required");
 		uint32_t id = ++_ask_next;
@@ -275,15 +447,15 @@ std::optional<json> Call(const std::string &name, const json &args)
 		if (question.empty()) return Error("question is required");
 		std::string caption = args.value("caption", "Your bot asks");
 		uint32_t id = ++_ask_next;
-		/* A question still open is replaced, not answered: mark it before the dialog closes it. */
-		for (Ask &a : _asks) {
-			if (a.id == _ask_open && !a.answer.has_value()) a.answer = "replaced";
-		}
-		ShowQuery(GetEncodedString(STR_JUST_RAW_STRING, caption), GetEncodedString(STR_JUST_RAW_STRING, question), nullptr, AskAnswered, false); // no focus: a stray Enter must not answer for the player
-		_ask_open = id;
+		/* A question still open is replaced, not answered: mark it before its dialog closes. */
+		if (_ask_open != 0) RecordAnswer(_ask_open, "replaced");
+		CloseWindowById(WindowClass::PrismaticAsk, 0);
 		_asks.push_front({id, question, std::nullopt});
 		if (_asks.size() > 100) _asks.pop_back();
-		return json{{"ok", true}, {"id", id}};
+		_ask_open = id;
+		const uint countdown = _ask_auto.has_value() ? _ask_countdown : 0;
+		new BotAskWindow(_bot_ask_desc, id, caption, question, _ask_auto, countdown); // never focused: a stray Enter must not answer for the player
+		return json{{"ok", true}, {"id", id}, {"countdown", countdown}};
 	}
 
 	if (name == "openttd.view.ask.answers") {

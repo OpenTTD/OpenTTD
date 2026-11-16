@@ -550,6 +550,48 @@ TEST_CASE("The owner switch auto-answers the bot's question with no dialog", "[p
 	CHECK(listed);
 }
 
+TEST_CASE("The owner switch with a countdown confirms after the countdown, and its input is checked", "[prismatic_mcp]")
+{
+	namespace V = PrismaticMCP::View;
+	// A countdown alone means "yes after N seconds".
+	auto on = V::Call("openttd.view.ask.auto", {{"countdown", 10}});
+	REQUIRE(on.has_value());
+	CHECK((*on)["ok"] == true);
+	CHECK((*on)["auto"] == true);
+	CHECK((*on)["answer"] == "yes");
+	CHECK((*on)["countdown"] == 10);
+
+	// With an answer it counts down to that answer.
+	auto no = V::Call("openttd.view.ask.auto", {{"answer", "no"}, {"countdown", 5}});
+	CHECK((*no)["answer"] == "no");
+	CHECK((*no)["countdown"] == 5);
+
+	// A process with no window to count down in (this test, a dedicated server) answers at once.
+	auto asked = V::Call("openttd.view.ask", {{"question", "build here?"}});
+	REQUIRE(asked.has_value());
+	CHECK((*asked)["auto_answered"] == true);
+	CHECK((*asked)["answer"] == "no");
+
+	// Out of range or mistyped countdowns are refused, and leave the switch as it was.
+	CHECK((*V::Call("openttd.view.ask.auto", {{"countdown", 601}}))["ok"] == false);
+	CHECK((*V::Call("openttd.view.ask.auto", {{"countdown", -1}}))["ok"] == false);
+	CHECK((*V::Call("openttd.view.ask.auto", {{"countdown", "ten"}}))["ok"] == false);
+	CHECK((*V::Call("openttd.view.ask.auto", {{"answer", 3}}))["ok"] == false);
+	CHECK((*V::Call("openttd.view.ask", {{"question", "still no?"}}))["answer"] == "no");
+
+	// The schema declares the countdown, so the console and Swagger offer it.
+	for (const auto &t : V::Tools()) {
+		if (t["name"] != "openttd.view.ask.auto") continue;
+		CHECK(t["inputSchema"]["properties"]["countdown"]["type"] == "integer");
+		CHECK(t["inputSchema"]["properties"]["countdown"]["maximum"] == 600);
+	}
+
+	// Off: no answer and no countdown.
+	auto off = V::Call("openttd.view.ask.auto", json::object());
+	CHECK((*off)["auto"] == false);
+	CHECK((*off)["countdown"] == 0);
+}
+
 TEST_CASE("Every map resource is one row per map row, sized to the map", "[prismatic_mcp]")
 {
 	Map::Allocate(64, 128); // the smallest width, a taller height: rows follow y

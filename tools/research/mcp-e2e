@@ -28,6 +28,11 @@
 #                                of --instances gets one)]
 #                               [--rust-panel (accepted and ignored: the panel is always mcp-panel from
 #                                tools/research/mcp-rhai since server.py was removed, I0035)]
+#                               [--ask-countdown N (default 10: the bot's "Your bot asks" questions
+#                                confirm themselves with yes after N seconds, a bar shows the time
+#                                left; a click answers or stops it; 0 makes every question wait)]
+#                               [--gfx NAME (default OpenGFX: the GUI client's base graphics set,
+#                                forced on every start, so no saved choice changes it; e.g. NoirGFX)]
 # Stop with Ctrl-C: the panel stops the server, and the GUI client is closed.
 set -euo pipefail
 
@@ -36,6 +41,7 @@ BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
 GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=() ARM_INPUT=0 PLAN=() NULL_CLIENT=0
 PANEL_IMPL="${MCP_PANEL:-rust}"
+ASK_COUNTDOWN=10 GFX=OpenGFX
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -55,10 +61,13 @@ while [[ $# -gt 0 ]]; do
     --no-plan-bot) PLAN=(--no-plan-bot); shift ;;
     --rust-panel) PANEL_IMPL=rust; shift ;;
     --null-client) NULL_CLIENT=1; shift ;;
-    -h|--help) sed -n '2,31p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    --ask-countdown) ASK_COUNTDOWN="${2:?--ask-countdown needs seconds (0 = off)}"; shift 2 ;;
+    --gfx) GFX="${2:?--gfx needs a base graphics set name}"; shift 2 ;;
+    -h|--help) sed -n '2,/^# Stop with/p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "mcp-e2e: unknown option: $1" >&2; exit 2 ;;
   esac
 done
+[[ "$ASK_COUNTDOWN" =~ ^[0-9]+$ && "$ASK_COUNTDOWN" -le 600 ]] || { echo "mcp-e2e: --ask-countdown takes 0 to 600 seconds" >&2; exit 2; }
 
 PANEL_DIR="$ROOT_DIR/tools/research/mcp-panel"
 [[ -x "$BIN" ]] || { echo "mcp-e2e: no binary at $BIN; run tools/gate.sh research first" >&2; exit 3; }
@@ -196,12 +205,22 @@ if [[ "$GUI" == 1 ]]; then
   # A free loopback port unless one is given: fixed ports collide with other local services.
   [[ -n "$VIEW_PORT" ]] || VIEW_PORT="$(python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])')"
   printf 'prismatic_mcp start %s %s\n' "$VIEW_PORT" "$VIEW_TOKEN" > "$CPD/scripts/autoexec.scr"
-  echo "==> GUI client ($RES, fullscreen=$FULL, own MCP on 127.0.0.1:$VIEW_PORT) joining 127.0.0.1:$GAME_PORT as a spectator"
+  # The owner's auto-confirm: the bot's questions answer themselves with yes after the countdown
+  # (openttd.view.ask.auto through the client's `mcp` console command), on every client start.
+  if [[ "$ASK_COUNTDOWN" -gt 0 ]]; then
+    printf 'mcp view.ask.auto answer=yes countdown=%s\n' "$ASK_COUNTDOWN" >> "$CPD/scripts/autoexec.scr"
+  fi
+  echo "==> GUI client ($RES, fullscreen=$FULL, graphics $GFX, own MCP on 127.0.0.1:$VIEW_PORT) joining 127.0.0.1:$GAME_PORT as a spectator"
+  if [[ "$ASK_COUNTDOWN" -gt 0 ]]; then
+    echo "    the bot's questions confirm themselves with yes after ${ASK_COUNTDOWN} s (--ask-countdown 0 makes them wait)"
+  fi
   # Supervised: the client comes back whenever it exits (closed window, crash) while the panel runs;
   # its autoexec.scr writes a fresh token file each time, which the director rereads on every call.
   (
     while kill -0 "$PANEL_PID" 2>/dev/null; do
-      HOME="$CHOME" PRISMATIC_MCP_INPUT="$ARM_INPUT" "$BIN" -c "$TMP/client.cfg" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" >> "$TMP/client.log" 2>&1 &
+      # -I on every start: the client saves its config on exit, so a set picked once in Game
+      # Options would otherwise stick to every later start of this run.
+      HOME="$CHOME" PRISMATIC_MCP_INPUT="$ARM_INPUT" "$BIN" -c "$TMP/client.cfg" -I "$GFX" -r "$RES" -n "127.0.0.1:$GAME_PORT#255" >> "$TMP/client.log" 2>&1 &
       CPID=$!
       # Bring it to the front (a full-screen window opens on a Space of its own on macOS), and
       # attach it to the panel, which shows and drives its view.

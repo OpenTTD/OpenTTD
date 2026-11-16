@@ -743,6 +743,14 @@ enum class WindowClass : uint16_t {
 	 */
 	Help,
 
+	/**
+	 * RESEARCH-ONLY: the bot's yes/no question with an optional auto-confirm countdown
+	 * (prismatic_mcp_view.cpp); opened only with OPTION_PRISMATIC_MCP_SERVER, appended last so no
+	 * upstream value moves. %Window numbers:
+	 *   - 0 = the question, its countdown bar and its No/Yes buttons
+	 */
+	PrismaticAsk,
+
 	Invalid = 0xFFFF, ///< Invalid window.
 };
 
