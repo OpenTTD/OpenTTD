@@ -110,6 +110,45 @@ TEST_CASE("Command parameters convert from JSON by their declared type", "[prism
 	CHECK(IsSupported<TestEnum>());
 }
 
+TEST_CASE("A text, a vehicle list and a cargo source convert from their JSON spelling", "[prismatic_mcp]")
+{
+	using namespace PrismaticMCP::params;
+	std::string err;
+
+	/* A text is a plain string, carried as the game's raw-string message, bounded. */
+	CHECK(IsSupported<EncodedString>());
+	CHECK(Schema<EncodedString>()["type"] == "string");
+	EncodedString text;
+	CHECK(FromJson(json("Deliver 500 t of coal"), text, err));
+	CHECK_FALSE(text.empty());
+	CHECK_FALSE(FromJson(json(5), text, err));
+	CHECK_FALSE(FromJson(json(std::string(MAX_TEXT_BYTES + 1, 'x')), text, err));
+
+	/* A vehicle list: every field, each in its range, nothing else. */
+	CHECK(IsSupported<VehicleListIdentifier>());
+	CHECK(Schema<VehicleListIdentifier>()["required"].size() == 4);
+	VehicleListIdentifier vli;
+	CHECK(FromJson(json{{"type", 4}, {"vtype", 1}, {"company", 0}, {"index", 7}}, vli, err));
+	CHECK(vli.type == VehicleListType::Group);
+	CHECK(vli.vtype == VehicleType::Road);
+	CHECK(vli.index == 7);
+	CHECK_FALSE(FromJson(json{{"type", 5}, {"vtype", 1}, {"company", 0}, {"index", 7}}, vli, err)); // past End
+	CHECK_FALSE(FromJson(json{{"type", 0}, {"vtype", 4}, {"company", 0}, {"index", 0}}, vli, err)); // an effect vehicle
+	CHECK_FALSE(FromJson(json{{"type", 0}, {"vtype", 0}, {"company", 0}}, vli, err));             // no index
+	CHECK_FALSE(FromJson(json{{"type", 0}, {"vtype", 0}, {"company", 0}, {"index", 0}, {"x", 1}}, vli, err));
+	CHECK_FALSE(FromJson(json(3), vli, err));
+
+	/* A cargo source: an id and its kind. */
+	CHECK(IsSupported<Source>());
+	Source src;
+	CHECK(FromJson(json{{"id", 12}, {"type", 1}}, src, err));
+	CHECK(src.id == 12);
+	CHECK(src.type == SourceType::Town);
+	CHECK_FALSE(FromJson(json{{"id", 12}, {"type", 3}}, src, err));
+	CHECK_FALSE(FromJson(json{{"id", 70000}, {"type", 0}}, src, err));
+	CHECK_FALSE(FromJson(json{{"id", 1}}, src, err));
+}
+
 TEST_CASE("A parameter tuple is converted positionally and checked for arity", "[prismatic_mcp]")
 {
 	using namespace PrismaticMCP::params;

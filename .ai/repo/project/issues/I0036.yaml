@@ -34,3 +34,8 @@ evidence:
     command: "tools/gate.sh change; tools/gate.sh research; tools/research/mcp-live-check; tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel http://127.0.0.1:8802 --report"
     result: "partial: gate change PASS (98/98), gate research PASS (122/122, 700 MCP assertions in 22 cases), mcp-live-check 24/24 including openttd.cmd.Pause end to end (malformed refused, pending, approved, posted, observed, VERIFIED_SUCCESS). Coverage against a panel on this build: commands 125/146 (21 not exposable, reasons in openttd://commands), console 87/90 (3 build-dependent), Script API 0/660 (not started). Remaining: the 21 commands' parameter types, the Script API."
     recorded_at: 2026-11-16T20:00:00Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-live-check; tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel http://127.0.0.1:8802 --report"
+    result: "partial: a text (EncodedString), a vehicle list and a cargo source convert from JSON; commands 144/146 (InsertOrder: Order; CreateCustomNewsItem: a variant), console 87/90, Script API 0/660. gate research PASS (123/123, 724 MCP assertions in 23 cases); mcp-live-check 26/26 including openttd.cmd.CreateGoal with a text parameter."
+    recorded_at: 2026-11-16T20:50:00Z

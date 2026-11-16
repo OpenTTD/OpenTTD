@@ -11,6 +11,10 @@
  * for each parameter and a checked conversion from a JSON value, so no command needs a
  * hand-written MCP binding. A parameter type the conversion cannot represent is reported as
  * unsupported (with its C++ type name), never guessed at. Pure: no game state is read.
+ *
+ * Three structured types have a JSON spelling of their own: a text (EncodedString) is a plain
+ * string, made valid and carried as the game's raw-string message; a vehicle list
+ * (VehicleListIdentifier) is {type, vtype, company, index}; a cargo source (Source) is {id, type}.
  */
 
 #ifndef PRISMATIC_MCP_PARAMS_HPP
@@ -20,6 +24,11 @@
 
 #include "../3rdparty/nlohmann/json.hpp"
 #include "../core/convertible_through_base.hpp"
+#include "../strings_func.h"
+#include "../string_func.h"
+#include "../table/strings.h"
+#include "../vehiclelist.h"
+#include "../source_type.h"
 
 #include <cstdint>
 #include <limits>
@@ -73,11 +82,23 @@ constexpr bool IsStrongInteger()
  * @tparam T The parameter type, as the command function declares it.
  * @return true for bool, std::string, integers, enums, strong integer types and int64-like values.
  */
+/** The longest text a command parameter takes from JSON, in bytes. */
+inline constexpr size_t MAX_TEXT_BYTES = 1024;
+
+/** Whether a type is one of the structured types with a JSON spelling of its own. */
+template <typename U>
+constexpr bool IsStructured()
+{
+	return std::is_same_v<U, EncodedString> || std::is_same_v<U, VehicleListIdentifier> || std::is_same_v<U, Source>;
+}
+
 template <typename T>
 constexpr bool IsSupported()
 {
 	using U = std::remove_cvref_t<T>;
-	if constexpr (!std::is_default_constructible_v<U>) {
+	if constexpr (IsStructured<U>()) {
+		return true;
+	} else if constexpr (!std::is_default_constructible_v<U>) {
 		return false;
 	} else if constexpr (std::is_same_v<U, bool> || std::is_same_v<U, std::string>) {
 		return true;
@@ -158,6 +179,26 @@ json Schema()
 	json s;
 	if constexpr (!IsSupported<U>()) {
 		s = json::object();
+	} else if constexpr (std::is_same_v<U, EncodedString>) {
+		s = {{"type", "string"}, {"maxLength", MAX_TEXT_BYTES}, {"x-kind", "text"},
+			{"description", "plain text, shown as written (invalid characters become '?')"}};
+	} else if constexpr (std::is_same_v<U, VehicleListIdentifier>) {
+		s = {{"type", "object"}, {"x-kind", "vehicle_list"}, {"required", json::array({"type", "vtype", "company", "index"})},
+			{"properties", {
+				{"type", {{"type", "integer"}, {"minimum", 0}, {"maximum", to_underlying(VehicleListType::End) - 1},
+					{"description", "0 company, 1 shared orders, 2 station, 3 depot, 4 group"}}},
+				{"vtype", {{"type", "integer"}, {"minimum", 0}, {"maximum", to_underlying(VehicleType::CompanyEnd) - 1},
+					{"description", "0 train, 1 road, 2 ship, 3 aircraft"}}},
+				{"company", IntSchema<uint8_t>()},
+				{"index", IntSchema<uint32_t>()}}},
+			{"additionalProperties", false}};
+	} else if constexpr (std::is_same_v<U, Source>) {
+		s = {{"type", "object"}, {"x-kind", "source"}, {"required", json::array({"id", "type"})},
+			{"properties", {
+				{"id", IntSchema<SourceID>()},
+				{"type", {{"type", "integer"}, {"minimum", 0}, {"maximum", to_underlying(SourceType::Headquarters)},
+					{"description", "0 industry, 1 town, 2 headquarters"}}}}},
+			{"additionalProperties", false}};
 	} else if constexpr (std::is_same_v<U, bool>) {
 		s = {{"type", "boolean"}};
 	} else if constexpr (std::is_same_v<U, std::string>) {
@@ -195,6 +236,41 @@ bool FromJson(const json &j, T &out, std::string &err)
 	if constexpr (!IsSupported<U>()) {
 		err = "unsupported parameter type " + std::string(TypeName<U>());
 		return false;
+	} else if constexpr (std::is_same_v<U, EncodedString>) {
+		if (!j.is_string()) { err = "expected a string"; return false; }
+		const std::string &raw = j.get_ref<const std::string &>();
+		if (raw.size() > MAX_TEXT_BYTES) { err = "text longer than " + std::to_string(MAX_TEXT_BYTES) + " bytes"; return false; }
+		out = GetEncodedString(STR_JUST_RAW_STRING, StrMakeValid(raw));
+		return true;
+	} else if constexpr (std::is_same_v<U, VehicleListIdentifier>) {
+		if (!j.is_object()) { err = "expected {type, vtype, company, index}"; return false; }
+		for (const auto &[key, value] : j.items()) {
+			if (key != "type" && key != "vtype" && key != "company" && key != "index") { err = "unknown field '" + key + "'"; return false; }
+		}
+		uint8_t type = 0, vtype = 0, company = 0;
+		uint32_t index = 0;
+		for (auto [key, target] : {std::pair<const char *, uint8_t *>{"type", &type}, {"vtype", &vtype}, {"company", &company}}) {
+			if (!j.contains(key)) { err = std::string("missing ") + key; return false; }
+			if (!IntFromJson(j[key], *target, err)) { err = std::string(key) + ": " + err; return false; }
+		}
+		if (!j.contains("index")) { err = "missing index"; return false; }
+		if (!IntFromJson(j["index"], index, err)) { err = "index: " + err; return false; }
+		if (type >= to_underlying(VehicleListType::End)) { err = "type: not a vehicle list type"; return false; }
+		if (vtype >= to_underlying(VehicleType::CompanyEnd)) { err = "vtype: not a company vehicle type"; return false; }
+		out = VehicleListIdentifier(static_cast<VehicleListType>(type), static_cast<VehicleType>(vtype), CompanyID(company), index);
+		return true;
+	} else if constexpr (std::is_same_v<U, Source>) {
+		if (!j.is_object()) { err = "expected {id, type}"; return false; }
+		for (const auto &[key, value] : j.items()) {
+			if (key != "id" && key != "type") { err = "unknown field '" + key + "'"; return false; }
+		}
+		SourceID id = 0;
+		uint8_t type = 0;
+		if (!j.contains("id") || !IntFromJson(j["id"], id, err)) { err = "id: " + (err.empty() ? std::string("missing") : err); return false; }
+		if (!j.contains("type") || !IntFromJson(j["type"], type, err)) { err = "type: " + (err.empty() ? std::string("missing") : err); return false; }
+		if (type > to_underlying(SourceType::Headquarters)) { err = "type: not a source type"; return false; }
+		out = Source(id, static_cast<SourceType>(type));
+		return true;
 	} else if constexpr (std::is_same_v<U, bool>) {
 		if (!j.is_boolean()) { err = "expected a boolean"; return false; }
 		out = j.get<bool>();

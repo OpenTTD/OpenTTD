@@ -245,6 +245,24 @@ result="$(tool_field "${out#* }" command_result)"; verdict="$(tool_field "${out#
 check "openttd.decision.get reads its result and verdict (command_result=${result:-?}, verdict=${verdict:-?})" \
   "$([[ "$result" == succeeded && -n "$verdict" && "$verdict" != PENDING_OBSERVATION ]] && echo 1 || echo 0)"
 
+# A command with a text parameter (CmdCreateGoal's EncodedString, spelled as a plain string),
+# posted with game-script authority: approved, run, and its result read back.
+GOAL='{"jsonrpc":"2.0","id":11,"method":"tools/call","params":{"name":"openttd.cmd.CreateGoal","arguments":{"company":"deity","params":[255,0,0,"Carry 500 t of coal"]}}}'
+out="$(rpc "$TOKEN" "$GOAL")"
+status="$(tool_field "${out#* }" status)"; approval="$(tool_field "${out#* }" approval_id)"
+check "a command with a text parameter returns pending_approval (status=${status:-?}, approval #${approval:-?})" \
+  "$([[ "$status" == pending_approval && -n "$approval" ]] && echo 1 || echo 0)"
+console "prismatic_mcp approve $approval"
+sleep 2
+out="$(rpc "$TOKEN" "$GOAL")"
+decision="$(tool_field "${out#* }" decision_id)"
+sleep 2
+GET="{\"jsonrpc\":\"2.0\",\"id\":12,\"method\":\"tools/call\",\"params\":{\"name\":\"openttd.decision.get\",\"arguments\":{\"decision_id\":${decision:-0}}}}"
+out="$(rpc "$TOKEN" "$GET")"
+result="$(tool_field "${out#* }" command_result)"
+check "the text command runs once approved (decision #${decision:-?}, command_result=${result:-?})" \
+  "$([[ -n "$decision" && "$result" == succeeded ]] && echo 1 || echo 0)"
+
 console "prismatic_mcp stop"
 sleep 1
 code="$(curl -s -o /dev/null -w '%{http_code}' -X POST "$ENDPOINT" --data "$PING" || true)"

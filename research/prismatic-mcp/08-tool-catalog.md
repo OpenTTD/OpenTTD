@@ -27,8 +27,11 @@ undeclared tool would go untested; the approval-gated ones are exercised by
 `command.<Name>`; `ActionTypes()` (`prismatic_mcp_server.cpp`) joins the two, and the validator,
 `list_action_types` and the decision tools' input schemas (`action.type` enum) read it.
 
-A command whose parameters do not convert from JSON yet (an `EncodedString`, an `Order`, a variant)
-is not a tool: `openttd://commands` lists it with `exposable: false` and the types in the way
+Parameters are spelled positionally, each by its declared type: an integer, enum or id as a number,
+a bool, a string, and three structured types: a text (`EncodedString`) as a plain string (made valid,
+at most 1024 bytes, carried as the game's raw-string message), a vehicle list as
+`{type, vtype, company, index}`, a cargo source as `{id, type}`. A command with a parameter that
+has no JSON spelling yet (an `Order`, a variant) is not a tool: `openttd://commands` lists it with `exposable: false` and the types in the way
 (`unsupported_types`). The console spells the same calls: `bot` (the AIs) and `plan` (a request in
 your own words, handed to the panel's intent resolver).
 

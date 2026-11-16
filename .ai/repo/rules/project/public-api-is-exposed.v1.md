@@ -26,22 +26,24 @@ Swagger at least, and this is enforced. A surface nobody measures is claimed, no
 - Script API functions that change state are commands underneath and follow the same path;
   read-only ones are tools or resources.
 
-# Current state (2026-11-16, branch feature/command-catalogue)
+# Current state (2026-11-16, branch feature/command-params)
 
 The rule is not met, and is recorded as not met. Measured against a panel on this build (seed
-31337): commands 125/146, console 87/90, Script API 0/660.
+31337): commands 144/146, console 87/90, Script API 0/660.
 
 - Commands: every entry whose parameters convert from JSON is `openttd.cmd.<Name>`, derived from
   the command table (`src/prismatic_mcp/prismatic_mcp_commands.cpp`), approval-gated, with its
-  OpenAPI route. The other 21 are listed in `openttd://commands` with `exposable: false` and the
-  types in the way: `EncodedString` (19), `VehicleListIdentifier` (3), `Source`, `Order` and a
-  variant (one each; a command can have more than one).
+  OpenAPI route. A text, a vehicle list and a cargo source have a JSON spelling
+  (`prismatic_mcp_params.hpp`). The two left are listed in `openttd://commands` with
+  `exposable: false` and the type in the way: `InsertOrder` (an `Order`) and `CustomNewsItem`
+  (a variant reference).
 - Console: the three missing commands (`newgrf_profile`, `reload_newgrfs`, `resettile`) are
   compiled only into some builds.
 - Script API: not started. A Script API function runs only inside a running script's context
   (an AI or game script instance), so it needs a design before any tool.
-- `tools/research/mcp-live-check` exercises one catalogue command end to end (refused when
-  malformed, pending, approved, posted, observed, verdict read). Issue I0036 carries the rest.
+- `tools/research/mcp-live-check` exercises catalogue commands end to end: `Pause` (refused when
+  malformed, pending, approved, posted, observed, verdict read) and `CreateGoal` with a text
+  parameter. Issue I0036 carries the rest.
 
 # Failure behaviour
 
