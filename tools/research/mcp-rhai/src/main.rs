@@ -274,6 +274,43 @@ fn console_lines(panel: &Panel, command: &str) -> R<Dynamic> {
     to_dyn(out.get("output").cloned().unwrap_or(Value::Array(vec![])))
 }
 
+/// The Rhai name of a hub method: `hub.audit` is `hub_audit`, `rpc.discover` is `hub_rpc_discover`.
+fn hub_ident(method: &str) -> String {
+    let flat = method.replace('.', "_");
+    if flat.starts_with("hub_") { flat } else { format!("hub_{flat}") }
+}
+
+/// One Rhai function per method the hub's own OpenAPI document lists (`x-hub-methods` of
+/// POST /hub/rpc), each called as one JSON-RPC request: `hub_audit()`, `hub_call(#{instance, id})`.
+/// Streaming methods need a WebSocket and are left out. Nothing here names a method.
+fn derive_hub(e: &mut Engine, hub: &str) -> Vec<String> {
+    let spec: Value = match ureq::get(&format!("{hub}/openapi.json")).timeout(Duration::from_secs(15)).call()
+        .map_err(|e| e.to_string()).and_then(|r| r.into_json::<Value>().map_err(|e| e.to_string())) {
+        Ok(v) => v,
+        Err(err) => { eprintln!("mcp-rhai: hub {hub}: {err}"); return vec![]; }
+    };
+    let methods = spec.pointer("/paths/~1hub~1rpc/post/x-hub-methods").and_then(Value::as_array).cloned().unwrap_or_default();
+    let mut names = Vec::new();
+    for m in methods {
+        let Some(method) = m.get("method").and_then(Value::as_str).map(str::to_string) else { continue };
+        if method.ends_with("subscribe") { continue; }
+        let name = hub_ident(&method);
+        let rpc = move |hub: &str, method: &str, params: Value| -> R<Dynamic> {
+            let v: Value = ureq::post(&format!("{hub}/hub/rpc")).timeout(Duration::from_secs(60))
+                .send_json(json!({"jsonrpc": "2.0", "id": 1, "method": method, "params": params}))
+                .map_err(|e| format!("{method}: {e}"))?.into_json().map_err(|e| format!("{method}: {e}"))?;
+            if let Some(err) = v.get("error") { return Err(format!("{method}: {err}").into()); }
+            to_dyn(v.get("result").cloned().unwrap_or(Value::Null))
+        };
+        let (h, m1) = (hub.to_string(), method.clone());
+        e.register_fn(name.as_str(), move || -> R<Dynamic> { rpc(&h, &m1, json!({})) });
+        let (h, m2) = (hub.to_string(), method.clone());
+        e.register_fn(name.as_str(), move |params: Map| -> R<Dynamic> { rpc(&h, &m2, from_dyn(Dynamic::from(params))?) });
+        names.push(name);
+    }
+    names
+}
+
 fn main() {
     let mut args = std::env::args().skip(1).collect::<Vec<_>>();
     let mut base = "http://127.0.0.1:8800".to_string();
@@ -283,6 +320,15 @@ fn main() {
             std::process::exit(2);
         }
         base = args.remove(i + 1);
+        args.remove(i);
+    }
+    let mut hub = std::env::var("MCP_HUB").ok();
+    if let Some(i) = args.iter().position(|a| a == "--hub") {
+        if i + 1 >= args.len() {
+            eprintln!("mcp-rhai: --hub needs a URL");
+            std::process::exit(2);
+        }
+        hub = Some(args.remove(i + 1));
         args.remove(i);
     }
     let script = match args.as_slice() {
@@ -295,7 +341,7 @@ fn main() {
             }
         },
         _ => {
-            eprintln!("usage: mcp-rhai [--panel URL] (<script.rhai> | -e '<script>')");
+            eprintln!("usage: mcp-rhai [--panel URL] [--hub URL] (<script.rhai> | -e '<script>')");
             std::process::exit(2);
         }
     };
@@ -306,7 +352,9 @@ fn main() {
         concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel/rhai").to_string()
     });
     engine.set_module_resolver(rhai::module_resolvers::FileModuleResolver::new_with_path(lib));
-    let (tools, commands) = derive(&mut engine, &panel);
+    let (mut tools, commands) = derive(&mut engine, &panel);
+    // The hub (research/mcp-hub.md): every instance of the cluster through one surface.
+    if let Some(h) = hub.as_deref() { tools.extend(derive_hub(&mut engine, h.trim_end_matches('/'))); }
     let (t, c) = (tools.clone(), commands.clone());
     engine.register_fn("tools", move || t.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
     engine.register_fn("commands", move || c.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
@@ -324,5 +372,56 @@ fn main() {
             eprintln!("mcp-rhai: {e}");
             std::process::exit(1);
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::{Read, Write};
+
+    /// A hub that publishes two methods, one of them streaming, and answers every request.
+    fn fake_hub() -> String {
+        let l = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+        let base = format!("http://{}", l.local_addr().unwrap());
+        std::thread::spawn(move || for mut c in l.incoming().flatten() {
+            // Read the head, then as much body as Content-Length says: a POST body may arrive later.
+            let mut data = Vec::new();
+            let mut chunk = [0u8; 4096];
+            loop {
+                let n = c.read(&mut chunk).unwrap_or(0);
+                if n == 0 { break; }
+                data.extend_from_slice(&chunk[..n]);
+                let text = String::from_utf8_lossy(&data).to_string();
+                if let Some(end) = text.find("\r\n\r\n") {
+                    let len = text.lines().find_map(|l| l.to_ascii_lowercase().strip_prefix("content-length:").map(|v| v.trim().parse::<usize>().unwrap_or(0))).unwrap_or(0);
+                    if data.len() >= end + 4 + len { break; }
+                }
+            }
+            let req = String::from_utf8_lossy(&data).to_string();
+            let body = if req.starts_with("GET /openapi.json") {
+                json!({"paths": {"/hub/rpc": {"post": {"x-hub-methods": [{"method": "hub.audit"}, {"method": "hub.subscribe"}, {"method": "rpc.discover"}]}}}})
+            } else {
+                let sent: Value = serde_json::from_str(req.split("\r\n\r\n").nth(1).unwrap_or("{}")).unwrap_or(Value::Null);
+                json!({"jsonrpc": "2.0", "id": 1, "result": {"method": sent["method"], "params": sent["params"]}})
+            }.to_string();
+            let _ = write!(c, "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{body}", body.len());
+        });
+        base
+    }
+
+    #[test]
+    fn every_hub_method_but_streams_is_a_rhai_function() {
+        assert_eq!(hub_ident("hub.audit"), "hub_audit");
+        assert_eq!(hub_ident("rpc.discover"), "hub_rpc_discover");
+        let mut e = Engine::new();
+        let names = derive_hub(&mut e, &fake_hub());
+        assert_eq!(names, vec!["hub_audit".to_string(), "hub_rpc_discover".to_string()]);
+        let out: Map = e.eval("hub_audit()").unwrap();
+        assert_eq!(out["method"].clone().into_string().unwrap(), "hub.audit");
+        let out: Map = e.eval(r#"hub_audit(#{instance: "panel-1"})"#).unwrap();
+        let params = out["params"].clone().cast::<Map>();
+        assert_eq!(params["instance"].clone().into_string().unwrap(), "panel-1");
+        assert!(e.eval::<Dynamic>("hub_subscribe()").is_err(), "a stream needs the WebSocket, not Rhai");
     }
 }

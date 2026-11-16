@@ -46,6 +46,18 @@ read-only methods as GET routes too (`/hub/instances`, `/hub/catalogue`, `/hub/a
 `id` is a panel's `operationId`, `tool:<name>` or `resource:<uri>`. A streaming route
 (`text/event-stream`) is not called: subscribe instead.
 
+## From Rhai
+
+`mcp-rhai --hub http://127.0.0.1:8790` (or `MCP_HUB=...`) reads the hub's `/openapi.json` and
+registers one function per method it lists, named `hub_<method>`: `hub_instances()`,
+`hub_catalogue(#{instance: ...})`, `hub_call(#{instance, id, body})`, `hub_audit()`,
+`hub_rpc_discover()`. Streaming methods need the WebSocket and are left out. A method the hub gains
+is a Rhai function with no change to mcp-rhai.
+
+```bash
+mcp-rhai --hub http://127.0.0.1:8790 -e 'hub_audit().len()'
+```
+
 ## The page and its components
 
 `tools/research/mcp-panel/static/hub.html` is built only from `static/components.js`, which any

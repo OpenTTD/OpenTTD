@@ -304,9 +304,20 @@ mod tests {
         let l = TcpListener::bind("127.0.0.1:0").unwrap();
         let base = format!("http://{}", l.local_addr().unwrap());
         std::thread::spawn(move || for mut c in l.incoming().flatten() {
-            let mut buf = vec![0u8; 65536];
-            let n = c.read(&mut buf).unwrap_or(0);
-            let req = String::from_utf8_lossy(&buf[..n]).to_string();
+            // Read the head, then as much body as Content-Length says: a POST body may arrive later.
+            let mut data = Vec::new();
+            let mut chunk = [0u8; 4096];
+            loop {
+                let n = c.read(&mut chunk).unwrap_or(0);
+                if n == 0 { break; }
+                data.extend_from_slice(&chunk[..n]);
+                let text = String::from_utf8_lossy(&data).to_string();
+                if let Some(end) = text.find("\r\n\r\n") {
+                    let len = text.lines().find_map(|l| l.to_ascii_lowercase().strip_prefix("content-length:").map(|v| v.trim().parse::<usize>().unwrap_or(0))).unwrap_or(0);
+                    if data.len() >= end + 4 + len { break; }
+                }
+            }
+            let req = String::from_utf8_lossy(&data).to_string();
             let line = req.lines().next().unwrap_or("").to_string();
             let body = if line.starts_with("GET /openapi.json") { spec() }
                 else if line.starts_with("GET /api/status") { json!({"ok": true}) }
