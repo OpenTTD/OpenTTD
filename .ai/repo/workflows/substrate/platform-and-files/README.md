@@ -114,8 +114,7 @@ is empty.
   turns an escaped exception into `FatalError`.
 - **[verified]** A plugin library loads only with a valid `<file>.sig` unless the build sets
   `OPTION_ALLOW_INVALID_SIGNATURE` (`src/signature.cpp:ValidateSignatureFile`).
-- **[supported]** File lookup, ini parsing and the OS layer run outside the game state; nothing
-  here may be consulted by a command handler (ADR 0016; `docs/desync.md`).
+- **[supported]** Nothing here (files, ini, OS) may be read by a command handler (ADR 0016).
 
 ## Extension points
 
@@ -179,5 +178,4 @@ is empty.
   `baseset/` next to it or rely on the binary dir; collect `crash*` files from that dir.
 - To add a driver option: read it with `GetDriverParam`/`GetDriverParamInt` in the driver's
   `Start`, document it in the factory description, validate with `tools/gate.sh change`.
-- To change how a crash is reported: edit `src/crashlog.cpp` (shared) and each
-  `src/os/*/crashlog_*.cpp`; trigger with an `assert` in a debug build and read the `.json.log`.
+- To change crash reporting: `src/crashlog.cpp` plus each `src/os/*/crashlog_*.cpp`.

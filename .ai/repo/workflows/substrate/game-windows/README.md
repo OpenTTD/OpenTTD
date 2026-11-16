@@ -42,26 +42,26 @@ tracks:
 
 # Game windows
 
-Read at f8b1d52e80. No fork hunk in the tracked files (`git log upstream/master..HEAD` over them
-is empty); the fork reads them from `src/prismatic_mcp/prismatic_mcp_ui.cpp`.
+Read at f8b1d52e80. No fork hunk in the tracked files (`git log upstream/master..HEAD` over them is
+empty); the fork reads them from `src/prismatic_mcp/prismatic_mcp_ui.cpp`.
 
 ## Purpose and ownership
 
-The feature windows on top of the window framework, which is the
-[GUI and console map](../gui-and-console/README.md) (read it first; not repeated here): main
-window, toolbars, status bar, title screen, dialogs, pickers, smallmap, graphs, company windows,
-framerate, help, plus `FatalError`/`UserError`. Goal, story, league, news, sign, cheat and highscore
-windows: [goals, story, news and history](../goals-story-news-and-history/README.md).
+The feature windows on top of the window framework, which is the [GUI and console
+map](../gui-and-console/README.md) (read it first; not repeated here): main window, toolbars, status
+bar, title screen, dialogs, pickers, smallmap, graphs, company windows, framerate, help, plus
+`FatalError`/`UserError`. Goal, story, league, news, sign, cheat and highscore windows: [goals,
+story, news and history](../goals-story-news-and-history/README.md).
 
 ## Entry points
 
-- `src/main_gui.cpp:SetupColoursAndInitialWindow` creates `MainWindow`, then
-  `ShowSelectGameWindow` or `src/main_gui.cpp:ShowVitalWindows` (`AllocateToolbar`, plus
-  `ShowStatusBar` outside the editor). `src/main_gui.cpp:MainWindow` owns the `"global"`
-  `HotkeyList` (quit, console, center, transparency, chat, Ctrl+B/I/O overlays).
-- `src/toolbar_gui.cpp:AllocateToolbar`: `MainToolbarWindow` or `ScenarioEditorToolbarWindow`
-  (class `MainToolbar`, number 0), buttons built in code by `src/toolbar_gui.cpp:MakeMainToolbar`
-  via `NWidgetFunction`. Ids in `src/widgets/toolbar_widget.h:ToolbarNormalWidgets`, hotkeys in
+- `src/main_gui.cpp:SetupColoursAndInitialWindow` creates `MainWindow`, then `ShowSelectGameWindow`
+  or `src/main_gui.cpp:ShowVitalWindows` (`AllocateToolbar`, plus `ShowStatusBar` outside the
+  editor). `src/main_gui.cpp:MainWindow` owns the `"global"` `HotkeyList` (quit, console, center,
+  transparency, chat, Ctrl+B/I/O overlays).
+- `src/toolbar_gui.cpp:AllocateToolbar`: `MainToolbarWindow` or `ScenarioEditorToolbarWindow` (class
+  `MainToolbar`, number 0), buttons built in code by `src/toolbar_gui.cpp:MakeMainToolbar` via
+  `NWidgetFunction`. Ids in `src/widgets/toolbar_widget.h:ToolbarNormalWidgets`, hotkeys in
   `src/toolbar_gui.h:MainToolbarHotkeys` (group `"maintoolbar"`). Dispatch:
   `src/toolbar_gui.cpp:_toolbar_button_procs` (click), `src/toolbar_gui.cpp:_menu_clicked_procs`
   (dropdown), `src/toolbar_gui.cpp:MainToolbarWindow::OnHotkey`, `OnPlaceObject` for menu tools.
@@ -75,8 +75,8 @@ windows: [goals, story, news and history](../goals-story-news-and-history/README
 - Errors: `src/error_gui.cpp:ShowErrorMessage` (its `CommandCost` overload is how a failed `Post`
   reaches the player), `src/error.h:WarningLevel`; fatal paths `src/error_func.h:FatalError`,
   `src/error_func.h:UserError`, `src/error.cpp:AssertFailedError`.
-- `src/bootstrap_gui.cpp:HandleBootstrap`, from `src/openttd.cpp:openttd_main` when no base
-  graphics set exists: offers a download or fails.
+- `src/bootstrap_gui.cpp:HandleBootstrap`, from `src/openttd.cpp:openttd_main` when no base graphics
+  set exists: offers a download or fails.
 - Pickers: `src/picker_gui.h:PickerCallbacks` (rail stations, road stops, objects, houses),
   `src/picker_gui.h:PickerWindow`; favourites via `src/picker_gui.cpp:PickerLoadConfig`.
 - `src/smallmap_gui.cpp:SmallMapWindow`, `src/smallmap_gui.cpp:ScrollMainWindowTo` (every "go to"
@@ -158,8 +158,8 @@ windows: [goals, story, news and history](../goals-story-news-and-history/README
   `src/window_type.h` (`tools/research/mcp-panel/server.py:window_classes`, implicit order,
   aliases). So renumbering renames what agents see, a window without `ini_key` has an empty key, a
   hidden toolbar button has zero width, and dropdown items come from
-  `src/prismatic_mcp/prismatic_mcp_hooks.h:DropdownItems`. Input is injected only when armed
-  (ADR 0014); see the [PrismaticMCP map](../prismatic-mcp/README.md).
+  `src/prismatic_mcp/prismatic_mcp_hooks.h:DropdownItems`. Input is injected only when armed (ADR
+  0014); see the [PrismaticMCP map](../prismatic-mcp/README.md).
 
 ## Tests and validation
 
@@ -178,8 +178,8 @@ windows: [goals, story, news and history](../goals-story-news-and-history/README
   `project.never-report-unrun-validation-as-pass`.
 - Knowledge: `widget-enums-are-part-of-the-script-api`, `post-in-a-network-game-only-sends`,
   `armed-input-can-approve-its-own-decisions`, `toolbar-dispatch-tables-are-indexed-by-widget-id`.
-- Siblings: [commands](../commands/README.md), [core loop](../core-loop/README.md),
-  [economy and companies](../economy-and-companies/README.md).
+- Siblings: [commands](../commands/README.md), [core loop](../core-loop/README.md), [economy and
+  companies](../economy-and-companies/README.md).
 
 ## Typical tasks
 

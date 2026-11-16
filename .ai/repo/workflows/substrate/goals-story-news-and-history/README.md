@@ -35,13 +35,11 @@ empty).
 
 ## Purpose and ownership
 
-Three kinds of state that sit beside the simulation. Saved and synced game objects a Game Script
-(or, for signs, a player) creates through commands: goals, story pages and elements, league tables
-and elements, signs. Per-process presentation state: the news queue and its display settings, the
-highscore file. And the savegame's own history: the cheat flags and the gamelog. Their windows are
-here too; the window framework is the [GUI and console map](../gui-and-console/README.md), the
-toolbar entries the [game windows map](../game-windows/README.md), the script classes the
-[scripting map](../scripting/README.md).
+State beside the simulation, with its windows. Saved, synced objects created through commands by a
+Game Script (signs also by players): goals, story pages, league tables, signs. Per-process state:
+the news queue, its display settings, the highscore file. The savegame's own history: cheat flags
+and the gamelog. Framework: [GUI and console](../gui-and-console/README.md); toolbar entries: [game
+windows](../game-windows/README.md); script classes: [scripting](../scripting/README.md).
 
 ## Entry points
 
@@ -60,9 +58,9 @@ toolbar entries the [game windows map](../game-windows/README.md), the script cl
 - Windows: `src/goal_gui.cpp:GoalListWindow`, `src/goal_gui.cpp:ShowGoalQuestion`,
   `src/story_gui.cpp:StoryBookWindow`, `src/league_gui.cpp:PerformanceLeagueWindow` (built-in
   company ranking), `src/league_gui.cpp:ScriptLeagueWindow`, `src/signs_gui.cpp:SignListWindow`,
-  `src/signs_gui.cpp:SignWindow`, `src/cheat_gui.cpp:CheatWindow`, `src/highscore_gui.cpp:EndGameWindow`,
-  `src/highscore_gui.cpp:HighScoreWindow`, `src/news_gui.cpp:NewsWindow`,
-  `src/news_gui.cpp:MessageHistoryWindow`.
+  `src/signs_gui.cpp:SignWindow`, `src/cheat_gui.cpp:CheatWindow`,
+  `src/highscore_gui.cpp:EndGameWindow`, `src/highscore_gui.cpp:HighScoreWindow`,
+  `src/news_gui.cpp:NewsWindow`, `src/news_gui.cpp:MessageHistoryWindow`.
 - News: `src/news_func.h:AddNewsItem` and its wrappers (`AddVehicleNewsItem`, `AddTileNewsItem`,
   `AddIndustryNewsItem`, `AddCompanyNewsItem`), `src/news_gui.cpp:NewsLoop`,
   `src/news_func.h:DeleteVehicleNews` / `DeleteStationNews` / `DeleteIndustryNews`,
@@ -73,8 +71,8 @@ toolbar entries the [game windows map](../game-windows/README.md), the script cl
   `src/gamelog.h:GamelogChangeType`, internals in `src/gamelog_internal.h:LoggedAction`.
 - Highscore: `src/highscore.h:HighScore`, `src/highscore.cpp:SaveHighScoreValue`,
   `src/highscore.cpp:SaveToHighScore` (file `hs.dat` in the config dir, set in `src/fileio.cpp`).
-- Saved in chunks `GOAL`, `STPA`/`STPE`, `LEAT`/`LEAE`, `SIGN`, `CHTS`, `GLOG`
-  (`src/saveload/goal_sl.cpp` ... `src/saveload/gamelog_sl.cpp`).
+- Chunks `GOAL`, `STPA`/`STPE`, `LEAT`/`LEAE`, `SIGN`, `CHTS`, `GLOG` in the tracked `*_sl.cpp`
+  files.
 
 ## Lifecycle
 
@@ -82,8 +80,8 @@ toolbar entries the [game windows map](../game-windows/README.md), the script cl
   server the handler checks `OWNER_DEITY`, creates the pool item in the execute pass and invalidates
   `WindowClass::GoalList` (and the toolbar when the first goal appears) on every peer.
 - Question: `CmdGoalQuestion` executes everywhere, but only the targeted client or company opens
-  `GoalQuestionWindow`; the answer button posts `Commands::GoalQuestionAnswer` from that company; its
-  execute closes the window for that company and, on the server only, queues
+  `GoalQuestionWindow`; the answer button posts `Commands::GoalQuestionAnswer` from that company;
+  its execute closes the window for that company and, on the server only, queues
   `ScriptEventGoalQuestionAnswer` for the GS. Story buttons follow the same path
   (`CmdStoryPageButton` → `ScriptEventStoryPageButtonClick`).
 - News: game code calls `AddNewsItem` during the tick on every peer; the item is pushed on the local
@@ -104,18 +102,19 @@ toolbar entries the [game windows map](../game-windows/README.md), the script cl
 
 - **[verified]** `CommandFlag::Deity` means "deity may run it", not "only deity": every goal, story
   and league handler except the two button/answer commands, plus `CmdCustomNewsItem`, returns
-  `CMD_ERROR` unless `_current_company == OWNER_DEITY`. Signs accept any company; `CompanyCanEditSign`
-  protects deity signs outside the editor.
+  `CMD_ERROR` unless `_current_company == OWNER_DEITY`. Signs accept any company;
+  `CompanyCanEditSign` protects deity signs outside the editor.
 - **[verified]** Presentation side effects inside an execute pass are keyed on the local process
   (`_local_company`, `_network_own_client_id`): `CmdGoalQuestion`, `CmdShowStoryPage` and
   `CmdCustomNewsItem` (which returns early for another company) open windows or add news only where
   they apply. Game state they touch is identical everywhere (ADR 0016).
 - **[verified]** The news queue is not saved and not synced (no news chunk in `src/saveload/`;
   `news_display.*` are `NotInSave`, `NoNetworkSync`); simulation code must never read it.
-- **[verified]** `CmdRenameSign` with empty text deletes the sign; the intro screen deletes title-game
-  signs directly (`src/intro_gui.cpp`), the only direct pool write in a window.
+- **[verified]** `CmdRenameSign` with empty text deletes the sign; the intro screen deletes
+  title-game signs directly (`src/intro_gui.cpp`), the only direct pool write in a window.
 - **[verified]** Story sort counters are not saved; `src/saveload/story_sl.cpp` rebuilds them as max
-  plus one on load. Pre-`SaveLoadVersion::Storybooks` story pools are discarded in `AfterLoadStoryBook`.
+  plus one on load. Pre-`SaveLoadVersion::Storybooks` story pools are discarded in
+  `AfterLoadStoryBook`.
 - **[verified]** Classic cheats write globals directly from the window (`_cheats.*.value`, the date
   via `TimerGameCalendar::SetDate`, `map_height_limit`); they are reachable only offline (toolbar
   entry and `MTHK_CHEATS` require `!_networking`; `MoneyCheat` is `CommandFlag::Offline`).
@@ -132,11 +131,11 @@ toolbar entries the [game windows map](../game-windows/README.md), the script cl
 
 ## Extension points
 
-- New GS-owned object kind: pool in a `*_base.h`, commands with `CommandFlag::Deity` plus an explicit
-  `OWNER_DEITY` check, a chunk with version gating, an `@api game` class.
+- New GS-owned object kind: pool in a `*_base.h`, commands with `CommandFlag::Deity` plus an
+  explicit `OWNER_DEITY` check, a chunk with version gating, an `@api game` class.
 - New news type: a value before `End` in `src/news_type.h:NewsType`, a row in `_news_type_data`
-  (`src/news_gui.cpp`), an `[SDTC_OMANY]` entry in `src/table/settings/news_display_settings.ini` whose
-  `var` equals the row's name, its strings.
+  (`src/news_gui.cpp`), an `[SDTC_OMANY]` entry in `src/table/settings/news_display_settings.ini`
+  whose `var` equals the row's name, its strings.
 - New cheat: append a `Cheat` to `src/cheat_type.h:Cheats` (never reorder), a version-gated field in
   `src/saveload/cheat_sl.cpp`, a row in `_cheats_ui`. Prefer a command if it must work online.
 - New gamelog change: a `GamelogChangeType` value, a `LoggedChange` subclass in
@@ -147,35 +146,32 @@ toolbar entries the [game windows map](../game-windows/README.md), the script cl
 - A `_news_type_data` name that no setting matches fails only when the item is shown:
   `NewsTypeData::GetDisplay` asserts the lookup (knowledge candidate
   `a-news-type-binds-its-display-setting-by-name`).
-- `AddNewsItem` returns at once in `GameMode::Menu` and news shows only with a status bar: a headless
-  or title run produces no news to observe.
-- Do not post a deity command from player code expecting success; scripts reach them only through the
-  GS, which runs only on the server (knowledge
-  `scripts-run-only-on-the-server-and-the-game-script-runs-while-paused`).
-- League tables have no remove command (only elements are removed) and `LeagueTableID` is a `uint8_t`
-  (`src/league_type.h`): a GS that creates a table per event exhausts the pool.
+- `AddNewsItem` returns at once in `GameMode::Menu` and news shows only with a status bar: a
+  headless or title run produces no news to observe.
+- League tables have no remove command (only elements are removed) and `LeagueTableID` is a
+  `uint8_t` (`src/league_type.h`): a GS that creates a table per event exhausts the pool.
 - Never remove or reorder `Cheats` members or gamelog enum values: both are saved by position or
   value (comment in `src/cheat_type.h`; rule `project.savegame-fields-are-version-gated`).
 
 ## Tests and validation
 
-- No Catch2 test covers this area. `regression_ai` exercises `AISign` (`regression/regression/main.nut`);
-  no regression case covers goals, story, league or news.
-- Tier: `tools/gate.sh change`; any chunk change also needs an old-save load (see the
-  [saveload map](../saveload/README.md)).
+- No Catch2 test covers this area. `regression_ai` exercises `AISign`
+  (`regression/regression/main.nut`); no regression case covers goals, story, league or news.
+- Tier: `tools/gate.sh change`; a chunk change also needs an old-save load
+  ([saveload](../saveload/README.md)).
 - Debug: `-d gamelog=N` prints the log on every closed action (Debug1) and after each load (Error
   level); console `gamelog` prints it; `openttd -q <save>` prints revision, modified flag and GRFs
-  without loading the game; crash logs embed it.
+  from a check-mode load; crash logs embed it.
 
 ## Decisions, rules and knowledge
 
-- ADR 0016 (lockstep), ADR 0017 (pools), ADR 0018 (savegame compatibility), ADR 0019 (news display
-  settings), ADR 0021 (GS API), ADR 0025 (calendar vs economy dates in news ageing and the end-game timer).
-- Rules: `project.game-state-mutates-only-through-commands`, `project.savegame-fields-are-version-gated`,
-  `project.never-report-unrun-validation-as-pass`.
-- Knowledge: `scripts-run-only-on-the-server-and-the-game-script-runs-while-paused`,
-  `a-server-only-command-from-a-network-client-kicks-it`, candidates
-  `cheats-are-not-recorded-in-the-gamelog`, `a-news-type-binds-its-display-setting-by-name`.
+- ADR 0016 (lockstep), ADR 0017 (pools), ADR 0018 (savegames), ADR 0019 (news display settings), ADR
+  0021 (GS API), ADR 0025 (economy dates age news, the calendar ends the game).
+- Rules: `project.game-state-mutates-only-through-commands`,
+  `project.savegame-fields-are-version-gated`, `project.never-report-unrun-validation-as-pass`.
+- Knowledge: `scripts-run-only-on-the-server-and-the-game-script-runs-while-paused` (deity commands
+  reach the game only from the server's GS), candidates `cheats-are-not-recorded-in-the-gamelog`,
+  `a-news-type-binds-its-display-setting-by-name`.
 - Research provenance: the gamelog travels inside every savegame a run writes; cite it with the
   research manifest (`research/tooling.md`) rather than inferring a save's history.
 
@@ -183,9 +179,9 @@ toolbar entries the [game windows map](../game-windows/README.md), the script cl
 
 - To add a GS goal feature: start at `src/goal.cpp:CmdCreateGoal`, keep the `OWNER_DEITY` check,
   expose it in `src/script/api/script_goal.cpp`; validate with `tools/gate.sh change`.
-- To change how news is shown: start at `src/news_gui.cpp:NewsLoop` and `_news_type_data`; validate in
-  a GUI run (the MCP `openttd.view.news.list` tool reads this process' queue only).
+- To change how news is shown: start at `src/news_gui.cpp:NewsLoop` and `_news_type_data`; validate
+  in a GUI run (the MCP `openttd.view.news.list` tool reads this process' queue only).
 - To check where a save came from: `openttd -q <save>`, then `gamelog` in its console; record both
   in the experiment manifest.
-- To touch a cheat: start at `src/cheat_gui.cpp:CheatWindow`, keep it offline-only, keep the `been_used`
-  flag set; validate by saving and reloading.
+- To touch a cheat: start at `src/cheat_gui.cpp:CheatWindow`, keep it offline-only, keep the
+  `been_used` flag set; validate by saving and reloading.

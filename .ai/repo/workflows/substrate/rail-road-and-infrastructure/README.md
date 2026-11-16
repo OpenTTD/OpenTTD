@@ -84,21 +84,18 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
 
 ## Entry points
 
-- Types: `src/rail_type.h:RailType` (64 slots, `RAILTYPE_END`), `src/road_type.h:RoadType` (63 slots,
-  `ROADTYPE_END` equals `INVALID_ROADTYPE`), `src/road_type.h:RoadTramType`, `src/road_type.h:RoadBits`,
-  `src/track_type.h:Track`, `src/track_type.h:Trackdir`, `src/track_type.h:TrackStatus`,
-  `src/direction_type.h:DiagDirection`, `src/slope_type.h:Slope`, `src/slope_type.h:Foundation`,
-  `src/transport_type.h:TransportType`, `src/signal_type.h:SignalType`.
+- Types: `src/rail_type.h:RailType` (64 slots), `src/road_type.h:RoadType` (63; `ROADTYPE_END`
+  equals `INVALID_ROADTYPE`), `src/road_type.h:RoadBits`, `src/track_type.h:Trackdir`,
+  `src/track_type.h:TrackStatus`, `src/slope_type.h:Foundation`, `src/signal_type.h:SignalType`.
 - Type tables: `src/rail.h:RailTypeInfo` via `src/rail.h:GetRailTypeInfo` over
   `src/rail_cmd.cpp:_railtypes`, seeded from `src/table/railtypes.h:_original_railtypes`;
   `src/road.h:RoadTypeInfo` via `src/road.h:GetRoadTypeInfo`, seeded from
   `src/table/roadtypes.h:_original_roadtypes`. Lookup by label: `src/rail.cpp:GetRailTypeByLabel`,
   `src/road.cpp:GetRoadTypeByLabel`.
 - Rail commands (`src/rail_cmd.h`): `src/rail_cmd.cpp:CmdBuildSingleRail`,
-  `src/rail_cmd.cpp:CmdBuildRailroadTrack` (`BuildRailLong`, a loop over `BuildRail` in
-  `src/rail_cmd.cpp:CmdRailTrackHelper`), `src/rail_cmd.cpp:CmdRemoveSingleRail`,
-  `src/rail_cmd.cpp:CmdBuildTrainDepot`, `src/rail_cmd.cpp:CmdBuildSingleSignal`,
-  `src/rail_cmd.cpp:CmdBuildSignalTrack`, `src/rail_cmd.cpp:CmdConvertRail`.
+  `src/rail_cmd.cpp:CmdBuildRailroadTrack` (`BuildRailLong`, a `BuildRail` loop in
+  `src/rail_cmd.cpp:CmdRailTrackHelper`), `src/rail_cmd.cpp:CmdBuildSingleSignal`,
+  `src/rail_cmd.cpp:CmdConvertRail`; depots, removal and signal drags beside them.
 - Road commands (`src/road_cmd.h`): `src/road_cmd.cpp:CmdBuildRoad`,
   `src/road_cmd.cpp:CmdBuildLongRoad`, `src/road_cmd.cpp:CmdRemoveLongRoad`,
   `src/road_cmd.cpp:CmdBuildRoadDepot`, `src/road_cmd.cpp:CmdConvertRoad`; town-road removal policy in
@@ -112,18 +109,15 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
 - Objects: `src/object_cmd.cpp:CmdBuildObject`, `src/object_cmd.cpp:BuildObject`,
   `src/object_cmd.cpp:GenerateObjects`, `src/object_cmd.cpp:UpdateCompanyHQ`; pool
   `src/object_base.h:Object`; statues only via `src/town_cmd.cpp:TownActionBuildStatue`.
-- Signals and PBS: `src/signal.cpp:AddTrackToSignalBuffer`, `src/signal.cpp:UpdateSignalsInBuffer`;
-  `src/pbs.cpp:TryReserveRailTrack`, `src/pbs.cpp:UnreserveRailTrack`,
-  `src/pbs.cpp:GetReservedTrackbits`, `src/pbs.cpp:FollowTrainReservation`,
-  `src/pbs.cpp:IsSafeWaitingPosition`. Train-side: `src/train_cmd.cpp:TryPathReserve`,
-  `src/train_cmd.cpp:FreeTrainTrackReservation`.
+- Signals and PBS: `src/signal.cpp:AddTrackToSignalBuffer`, `src/signal.cpp:UpdateSignalsInBuffer`,
+  `src/pbs.cpp:TryReserveRailTrack`, `src/pbs.cpp:FollowTrainReservation`,
+  `src/pbs.cpp:IsSafeWaitingPosition`; train side `src/train_cmd.cpp:TryPathReserve`.
 - Tile areas: `src/tilearea_orthogonal.h:OrthogonalTileArea` (alias `TileArea`),
-  `src/tilearea_diagonal.h:DiagonalTileArea`, `src/tilearea_type.h:OrthoDiagonalTileArea`,
-  `src/tilearea_spiral.h:SpiralTileSequence`, `src/tilearea_bitmap.h:BitmapTileArea`,
-  `src/tilearea_airport.h:AirportTileIterator`.
-- GUIs that post the commands: `src/rail_gui.cpp:DoRailroadTrack`,
-  `src/road_gui.cpp:BuildRoadToolbarWindow`, `src/airport_gui.cpp`, `src/dock_gui.cpp`,
-  `src/terraform_gui.cpp`, `src/tree_gui.cpp`, `src/object_gui.cpp`, `src/bridge_gui.cpp`.
+  `src/tilearea_diagonal.h:DiagonalTileArea`, `src/tilearea_spiral.h:SpiralTileSequence`,
+  `src/tilearea_bitmap.h:BitmapTileArea`, `src/tilearea_airport.h:AirportTileIterator`.
+- GUIs posting the commands: `src/rail_gui.cpp:DoRailroadTrack`,
+  `src/road_gui.cpp:BuildRoadToolbarWindow`, plus the airport, dock, terraform, tree, object and
+  bridge windows (`git grep -n '::Post' -- src/*_gui.cpp` lists them).
 - **[fork]** Callers: the PrismaticAI bot (a Squirrel AI in the external bridge repository, see
   `research/mcp-control.md`) lays track with `src/script/api/script_rail.cpp:ScriptRail::BuildRail`
   (`BuildRailLong`, `fail_on_obstacle` true) plus `BuildRailStation`/`BuildRailDepot`, and roads
@@ -151,12 +145,11 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
   `src/command.cpp:CommandHelperBase::InternalExecuteProcessResult`, by train movement and when it
   reaches `SIG_GLOB_UPDATE` items; `src/signal.cpp:ExploreSegment` walks each block and sets
   signal states.
-- **Reservations**: trains reserve ahead via YAPF and `TryReserveRailTrack`; building or
-  removing a signal on reserved track frees the owning train's path and calls `TryPathReserve`
+- **Reservations**: trains reserve ahead via YAPF and `TryReserveRailTrack`; building a
+  signal on reserved track frees the owning train's path and calls `TryPathReserve`
   again inside the command (`src/rail_cmd.cpp:CmdBuildSingleSignal`).
-- **Animated tiles**: `src/animated_tile.cpp:AddAnimatedTile` appends to `_animated_tiles` and marks
-  the tile state in the map; `src/animated_tile.cpp:AnimateAnimatedTiles` runs per tick from the
-  game loop and lazily drops tiles marked `Deleted`.
+- **Animated tiles**: `src/animated_tile.cpp:AddAnimatedTile` appends to `_animated_tiles` (saved list,
+  state bit in the map); `src/animated_tile.cpp:AnimateAnimatedTiles` ticks them, dropping `Deleted`.
 
 ## Invariants
 
@@ -164,9 +157,7 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
   track or two non-overlapping parallel ones in m2 (`src/rail_map.h:GetRailReservationTrackBits`,
   `src/rail_map.h:SetTrackReservation` asserts `!TracksOverlap`); depots, crossings, station
   tiles and tunnel/bridge heads have a single bit each (`src/pbs.cpp:GetReservedTrackbits`). They
-  are saved with the map planes and must change only in the game loop or a command.
-- **[verified]** `TryReserveRailTrack` consults `_settings_client.gui.show_track_reservation` only
-  to mark tiles dirty; the reservation result does not depend on client settings.
+  are saved with the map planes; `TryReserveRailTrack` reads a client setting only to mark tiles dirty.
 - **[verified]** One signal-update run serves one owner: `AddTrackToSignalBuffer` asserts
   `_globset.IsEmpty() || owner == _last_owner`; a command touching two companies' track must
   flush between them.
@@ -175,9 +166,8 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
   `src/cachecheck.cpp:CheckCaches` recomputes them via
   `src/saveload/company_sl.cpp:AfterLoadCompanyStats` and logs a mismatch under `-d desync=2`.
 - **[verified]** A saved type label that no loaded NewGRF provides loads as `RAILTYPE_RAIL`, and a
-  road/tram label as `ROADTYPE_ROAD`/`ROADTYPE_TRAM` (`ConvertRailTypes`, `ConvertRoadTypes`).
-- **[verified]** A NewGRF type allocated with `AllocateRailType` starts as a copy of
-  `RAILTYPE_RAIL`, compatible and powered only with itself.
+  road/tram label as `ROADTYPE_ROAD`/`ROADTYPE_TRAM` (`ConvertRailTypes`, `ConvertRoadTypes`); a new
+  NewGRF type from `AllocateRailType` copies `RAILTYPE_RAIL`, compatible and powered only with itself.
 - **[verified]** Disabling electric rail rewrites engine and train rail types, not tiles
   (`src/elrail.cpp:UpdateDisableElrailSettingState`); `src/openttd.cpp:MakeNewGameDone` applies it on
   every new game.
@@ -191,8 +181,7 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
   saved bitset.
 - **[verified]** `CmdBuildObject` refuses statues (`OBJECT_STATUE`), refuses everything before the
   first town exists, and moves an existing HQ by clearing the old one as `OWNER_WATER`.
-- **[supported]** `TransportType` values are tied to the tunnel/bridge map bits and must not change
-  (comment in `src/transport_type.h`).
+- **[supported]** `TransportType` values are tied to tunnel/bridge map bits (`src/transport_type.h`).
 
 ## Extension points
 
@@ -205,7 +194,6 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
   `src/table/airport_defaults.h`, a line in `src/airport.cpp`, a new value in `src/airport.h:AirportTypes`.
 - New object type: usually a NewGRF object (`NEW_OBJECT_OFFSET` and up); base types live in
   `src/object_type.h` and `src/table/object_land.h:_objects`.
-- New area iterator: follow the iterator pattern in `src/tilearea_wrapper.h` (no virtuals).
 
 ## Traps and forbidden operations
 
@@ -215,30 +203,22 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
   (knowledge `a-dragged-build-succeeds-when-any-piece-was-built`).
 - The Doxygen of `CmdBuildRailroadTrack` swaps the descriptions of `auto_remove_signals` and
   `fail_on_obstacle`; trust the code in `CmdRailTrackHelper`. `end_tile` comes before `start_tile`.
-- The GUI passes `_settings_client.gui.auto_remove_signals` as a command argument; it is
-  synchronised because it travels in the command, never read inside a handler.
 - `CmdBuildSingleSignal` and track changes run YAPF (`TryPathReserve`) inside the execute pass;
   anything they read must be deterministic game state (`project.game-state-mutates-only-through-commands`).
 - `ROADTYPE_LABEL_TRAM` is `"ELRL"`, the same four bytes as the electric rail label; labels are
   per kind, never compare across rail and road.
 - `AirportBlock` reuses bits: `RunwayIn`, `RunwayInOut` and `AirportBusy` are one bit and
   `RunwayOut2` equals `TaxiwayBusy`; their meaning depends on the airport type.
-- `src/table/bridge_land.h` holds bridge sprites only; bridge building and drawing logic is in
-  `src/tunnelbridge_cmd.cpp` (map-and-tiles).
-- **[inferred]** `GenerateObjects` calls `CmdBuildObject` directly (not `Command<>::Do`) and
-  lighthouses/transmitters through `BuildObject`; that is safe only because every peer receives the
-  generated map, not the generation. The same direct call during play would bypass the command
-  protocol (ADR 0016).
+- **[inferred]** `GenerateObjects` calls `CmdBuildObject` and `BuildObject` directly; that is safe
+  only because peers receive the generated map. During play it would bypass commands (ADR 0016).
 
 ## Tests and validation
 
-- Unit: `src/tests/tilearea.cpp` (spiral and area iteration). No Catch2 test for rail, road,
-  signals or airports.
+- Unit: `src/tests/tilearea.cpp` (area iteration) only; no Catch2 test for rail, road, signals.
 - Regression: `regression/regression/main.nut` sections `Rail`, `RailTypeList`, `Road`, `Airport`,
   `Bridge`, `Tunnel`, `Marine`, `Station` (ctest `regression_regression`, needs a base set).
 - Tier: `tools/gate.sh change`; `tools/gate.sh smoke -R regression_` while iterating.
-- Debug: `-d desync=2` checks infrastructure and other caches every tick; `-d yapf=N` for
-  reservation paths; `-d grf=N` for NewGRF type allocation.
+- Debug: `-d desync=2` checks infrastructure and other caches every tick; `-d yapf=N` for paths.
 
 ## Decisions, rules and knowledge
 
@@ -260,7 +240,5 @@ object callbacks are [NewGRF](../newgrf/README.md); the command protocol is
   `src/road_cmd.cpp:CheckAllowRemoveRoad`; validate with the `Road` regression section.
 - To change signal or PBS behaviour: start at `src/signal.cpp:ExploreSegment` and
   `src/pbs.cpp:TryReserveRailTrack`; run a saved network of trains under `-d desync=2`.
-- To add an airport layout: start at `src/airport.cpp`, the FTA in
-  `src/table/airport_movement.h`; validate with the `Airport` regression section.
 - To let research code build infrastructure: post `BuildRailLong`/`BuildRoadLong` as a company
   through `Command<>::Post` or a script; never write tiles directly (ADR 0008).
