@@ -1,0 +1,24 @@
+id: I0078
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The intent check tells a fallback answer from a real one"
+slug: intent-fallback
+priority: p3
+profile: implementation
+parallel_safe: true
+objective: "mcp-hub intent-check flags, as an advisory WARN, every answer that resolved no subject for a sentence another instance resolved subjects for: its candidates answer something other than what was named."
+why: "Live: on panel-8810 every sentence naming industries resolved no subject and fell back to the planner's candidates, and the check passed it like a real answer; panel-64385 resolved Forest and Sawmill for the same text."
+scope:
+  - "tools/research/mcp-rhai/src/bin/mcp-hub.rs"
+  - "research/mcp-hub.md"
+  - ".ai/**"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "A sentence resolved on one instance and not on another is a WARN on the second only; a sentence that names nothing is never flagged; a cargo test covers both"
+  - "Live: the check names the fallback answers and still passes the real ones"
+validation:
+  - "cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'

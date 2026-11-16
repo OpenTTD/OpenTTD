@@ -183,6 +183,26 @@ fn intent_verdict(answer: &Value) -> Result<String, String> {
     Ok(format!("{action} {} [{}] -> {n} candidate(s)", r.pointer("/intent/ordering").and_then(Value::as_str).unwrap_or("-"), subjects.join(", ")))
 }
 
+/// How many subjects an intent answer resolved (0 when it carries none).
+fn subjects_resolved(answer: &Value) -> usize {
+    answer.pointer("/result/intent/subjects").and_then(Value::as_array).map(Vec::len).unwrap_or(0)
+}
+
+/// The answers that resolved no subject for a sentence another instance did resolve subjects for:
+/// (instance, sentence, the instance that resolved it). Derived across the instances, nothing named
+/// here: a sentence that names nothing ("the most lucrative line") resolves nothing anywhere and is
+/// never flagged. Advisory, since a game may lack the industry, but its answer is a fallback.
+fn unresolved_elsewhere_resolved(results: &[(String, String, usize)]) -> Vec<(String, String, String)> {
+    let mut out = Vec::new();
+    for (inst, s, n) in results {
+        if *n > 0 { continue; }
+        if let Some((other, _, _)) = results.iter().find(|(o, s2, n2)| s2 == s && *n2 > 0 && o != inst) {
+            out.push((inst.clone(), s.clone(), other.clone()));
+        }
+    }
+    out
+}
+
 fn intent_check(args: &[String]) -> i32 {
     let url = arg(args, "--hub").unwrap_or_else(|| "ws://127.0.0.1:8790/ws".into());
     let given: Vec<String> = args.iter().enumerate().filter(|(i, a)| !a.starts_with("--") && (*i == 0 || args[i - 1] != "--hub")).map(|(_, a)| a.clone()).collect();
@@ -195,18 +215,23 @@ fn intent_check(args: &[String]) -> i32 {
         .map(|o| (o["instance"].as_str().unwrap_or("").to_string(), o["id"].as_str().unwrap_or("").to_string())).collect();
     if targets.is_empty() { println!("FAIL no instance offers an /intent operation"); return 1; }
     let (mut pass, mut fail) = (0, 0);
+    let mut resolved: Vec<(String, String, usize)> = Vec::new();
     let mut id = 10;
     for (inst, op) in &targets {
         for s in &sentences {
             id += 1;
             let r = request(&mut ws, id, "hub.call", json!({"instance": inst, "id": op, "body": {"text": s}}), &mut notes).unwrap_or_else(|e| json!({"error": e}));
             match intent_verdict(&r) {
-                Ok(v) => { pass += 1; println!("PASS {inst} {s:?}: {v}"); }
+                Ok(v) => { pass += 1; resolved.push((inst.clone(), s.clone(), subjects_resolved(&r))); println!("PASS {inst} {s:?}: {v}"); }
                 Err(e) => { fail += 1; println!("FAIL {inst} {s:?}: {e}"); }
             }
         }
     }
-    println!("intent: {} instance(s), {pass} pass, {fail} fail", targets.len());
+    let fallbacks = unresolved_elsewhere_resolved(&resolved);
+    for (inst, s, other) in &fallbacks {
+        println!("WARN {inst} {s:?}: no subject resolved, while {other} resolved them: a fallback answer (advisory)");
+    }
+    println!("intent: {} instance(s), {pass} pass, {fail} fail, {} fallback(s) (advisory)", targets.len(), fallbacks.len());
     i32::from(fail > 0)
 }
 
@@ -525,7 +550,15 @@ mod tests {
         assert!(intent_verdict(&build_without_plan).is_err());
         assert!(intent_verdict(&json!({"result": {"intent": {"action": "find"}, "answer": {"candidates": []}}})).is_err());
         assert!(intent_verdict(&json!({"result": {"http_error": 400, "body": {"error": "no text"}}})).is_err());
+        assert_eq!(subjects_resolved(&ok), 2);
         assert_eq!(OWNER_SENTENCES.len(), 6);
+    }
+    #[test]
+    fn a_sentence_resolved_on_one_instance_and_not_on_another_is_a_fallback_there_only() {
+        let r = |i: &str, s: &str, n: usize| (i.to_string(), s.to_string(), n);
+        let results = vec![r("a", "forest + sawmill", 2), r("b", "forest + sawmill", 0), r("a", "most lucrative", 0), r("b", "most lucrative", 0)];
+        assert_eq!(unresolved_elsewhere_resolved(&results), vec![("b".to_string(), "forest + sawmill".to_string(), "a".to_string())]);
+        assert!(unresolved_elsewhere_resolved(&[r("a", "x", 0)]).is_empty());
     }
     /// A panel with a status route, an echo route and an event bus whose events the test appends.
     fn fake_panel(events: Arc<Mutex<Vec<Value>>>) -> String {
