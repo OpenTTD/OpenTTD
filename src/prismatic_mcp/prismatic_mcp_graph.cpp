@@ -6,7 +6,9 @@
  *  - openttd://map/ways: per tile, where a road vehicle can leave it (road bits, including drive-
  *    through and bay stops, depots, level crossings, road bridges and tunnels) and which rail
  *    tracks it has. Adjacency from these bits is real: two road tiles are joined only when each
- *    has the bit pointing at the other, which tile types alone cannot tell.
+ *    has the bit pointing at the other, which tile types alone cannot tell. Three more layers a
+ *    planner needs: the foundation each tile stands on, both ends of every bridge and tunnel with
+ *    its length, and which vehicles occupy which tile right now.
  *  - openttd://world/graph: one typed graph of towns, industries, stations and vehicles, with
  *    edges for stations serving towns, industries near towns, vehicle orders and the cargo links
  *    of the link graph (capacity and usage), schema world-graph/v1.
@@ -33,8 +35,11 @@
 #include "../station_base.h"
 #include "../station_map.h"
 #include "../strings_func.h"
+#include "../tile_cmd.h"
 #include "../town.h"
 #include "../track_func.h"
+#include "../tunnel_map.h"
+#include "../tunnelbridge.h"
 #include "../tunnelbridge_map.h"
 #include "../vehicle_base.h"
 
@@ -98,6 +103,33 @@ std::string CargoName(CargoType c)
 	return cs != nullptr && cs->IsValid() ? GetString(cs->name) : std::string{};
 }
 
+/** The foundation the tile's content stands on, as the engine's Foundation value (0 none). */
+uint FoundationOf(TileIndex t)
+{
+	return static_cast<uint>(_tile_type_procs[GetTileType(t)]->get_foundation_proc(t, GetTileSlope(t)));
+}
+
+std::string_view TransportName(TransportType tt)
+{
+	switch (tt) {
+		case TransportType::Rail: return "rail";
+		case TransportType::Road: return "road";
+		case TransportType::Water: return "water";
+		default: return "other";
+	}
+}
+
+std::string_view VehicleTypeName(VehicleType vt)
+{
+	switch (vt) {
+		case VehicleType::Train: return "train";
+		case VehicleType::Road: return "road";
+		case VehicleType::Ship: return "ship";
+		case VehicleType::Aircraft: return "aircraft";
+		default: return "other";
+	}
+}
+
 json Node(std::string id, std::string kind, TileIndex tile)
 {
 	return json{{"id", std::move(id)}, {"kind", std::move(kind)}, {"tile", tile.base()}, {"x", TileX(tile)}, {"y", TileY(tile)}};
@@ -109,27 +141,60 @@ json Ways()
 {
 	const uint w = Map::SizeX(), h = Map::SizeY();
 	json roads = json::array(), rails = json::array();
-	std::string rrow, trow;
+	json foundations = json::array(), crossings = json::array();
+	std::string rrow, trow, frow;
 	for (uint y = 0; y < h; y++) {
 		rrow.clear();
 		trow.clear();
+		frow.clear();
 		for (uint x = 0; x < w; x++) {
 			TileIndex t = TileXY(x, y);
 			uint r = RoadWays(t), k = RailWays(t);
 			rrow += HEX[r & 0xF];
 			trow += HEX[(k >> 4) & 0xF];
 			trow += HEX[k & 0xF];
+			frow += HEX[FoundationOf(t) & 0xF];
+			/* Each bridge or tunnel once, from the head nearer the map origin. */
+			if (IsTileType(t, TileType::TunnelBridge)) {
+				TileIndex other = GetOtherTunnelBridgeEnd(t);
+				if (t < other) {
+					crossings.push_back({
+						{"kind", IsTunnel(t) ? "tunnel" : "bridge"}, {"transport", TransportName(GetTunnelBridgeTransportType(t))},
+						{"from", {{"x", x}, {"y", y}}}, {"to", {{"x", TileX(other)}, {"y", TileY(other)}}},
+						{"length", GetTunnelBridgeLength(t, other)}, {"direction", static_cast<int>(GetTunnelBridgeDirection(t))},
+						{"owner", GetTileOwner(t).base()},
+					});
+				}
+			}
 		}
 		roads.push_back(rrow);
 		rails.push_back(trow);
+		foundations.push_back(frow);
+	}
+	/* Occupancy: every tile with a ground vehicle on it now, naming the vehicles (their front part). */
+	std::map<uint, std::pair<std::set<uint>, std::set<std::string_view>>> occupied;
+	for (const Vehicle *v : Vehicle::Iterate()) {
+		if (v->type != VehicleType::Train && v->type != VehicleType::Road && v->type != VehicleType::Ship) continue;
+		if (v->tile >= Map::Size()) continue;
+		auto &o = occupied[v->tile.base()];
+		o.first.insert(v->First()->index.base());
+		o.second.insert(VehicleTypeName(v->type));
+	}
+	json occupancy = json::array();
+	for (const auto &[tile, o] : occupied) {
+		occupancy.push_back({{"x", TileX(TileIndex{tile})}, {"y", TileY(TileIndex{tile})}, {"vehicles", o.first}, {"types", o.second}});
 	}
 	return json{
-		{"width", w}, {"height", h}, {"tile_index", "y * width + x"},
+		{"schema", "map-ways/v1"}, {"width", w}, {"height", h}, {"tile_index", "y * width + x"},
 		{"encoding", {
 			{"roads", "one string per row (y), one hex digit per tile (x): the directions a road vehicle can leave the tile, a sum of NW=1 (y-1), SW=2 (x+1), SE=4 (y+1), NE=8 (x-1). Covers road pieces, drive-through and bay stops, depots (their entrance), level crossings and road bridge or tunnel heads. Two tiles are joined when each points at the other."},
 			{"rails", "one string per row, two hex digits per tile: the TrackBits (X=1, Y=2, upper=4, lower=8, left=16, right=32) of plain rail, rail stations, depots, crossings and rail bridge or tunnel heads"},
+			{"foundations", "one string per row, one hex digit per tile: the foundation the tile's content stands on (0 none, 1 leveled, 2 inclined along x, 3 inclined along y, 4 steep lower, 5 steep both, 6-9 half tile W/S/E/N, a-d rail anti-zig-zag W/S/E/N)"},
+			{"crossings", "every bridge and tunnel once: both heads, length in middle tiles, transport, the direction from the first head (0 NE, 1 SE, 2 SW, 3 NW) and the owner"},
+			{"occupancy", "every tile with a train, road vehicle or ship on it now, with the vehicles' ids (the front part) and types"},
 		}},
-		{"roads", std::move(roads)}, {"rails", std::move(rails)},
+		{"roads", std::move(roads)}, {"rails", std::move(rails)}, {"foundations", std::move(foundations)},
+		{"crossings", std::move(crossings)}, {"occupancy", std::move(occupancy)},
 	};
 }
 

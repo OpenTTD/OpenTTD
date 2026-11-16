@@ -251,7 +251,7 @@ const std::array<ResourceEntry, 14> RESOURCES = {{
 	{"openttd://map", "Map", "The whole map: tile types, heights and owners, one string per row, encoding included", &ResourceMap},
 	{"openttd://stations", "Stations", "Every station: id, name, tile, x/y, owner, facilities, town", &ResourceStations},
 	{"openttd://vehicles", "Vehicles", "Every primary vehicle: id, type, owner, engine, tile, state, cargo, profits, orders", &ResourceVehicles},
-	{"openttd://map/ways", "Map ways", "Per tile: where a road vehicle can leave it (road bits, stops, depots, crossings, bridges, tunnels) and its rail tracks, encoding included", &ResourceWays},
+	{"openttd://map/ways", "Map ways", "Per tile: where a road vehicle can leave it (road bits, stops, depots, crossings, bridges, tunnels) its rail tracks and foundation; every bridge and tunnel with both ends; vehicles per tile; encoding included", &ResourceWays},
 	{"openttd://world/graph", "World graph", "The world as one typed graph (world-graph/v1): towns, industries, stations, vehicles; near_town, serves_town, order and cargo_link edges", &ResourceWorldGraph},
 	{"openttd://depots", "Depots", "Every depot: id, tile, x/y, owner, type, town, entrance tile; and the game's service reach in tiles", &ResourceDepots},
 	{"openttd://mcp/coverage", "MCP coverage", "Every published tool and resource with its call count since start, and those never called", &ResourceCoverage},

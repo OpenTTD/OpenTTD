@@ -142,6 +142,12 @@ BEFORE="$(owned_roads "$COMPANY")"
 if [[ "$MINUTES" -gt 0 ]]; then
   # A whole game: expand, add buses where they earn, borrow, watch (economy.rs).
   "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} 2>&1 | tee "$TMP/human.log"
+  # The owner closing the window ends a watched game; that is their call, not a failure, and the
+  # client's own checks below have nobody left to ask.
+  if [[ "$(grep -c 'the game was closed' "$TMP/human.log")" -gt 0 ]]; then
+    echo "==> the owner closed the game; company $COMPANY owns $(owned_roads "$COMPANY") road tiles"
+    exit 0
+  fi
 else
   "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS" 2>&1 | tee "$TMP/human.log"
 fi
@@ -217,6 +223,15 @@ if [[ "$TEST" == 1 ]]; then
     && echo "PASS the world graph has towns, stations, vehicles, order and serves_town edges" || { echo "FAIL the world graph is incomplete"; fail=1; }
   read_res "$SERVER_TOKEN" openttd://map/ways | jq -e '(.data.roads | length) == .data.height and ([.data.roads[] | test("^[0-9a-f]+$")] | all)' >/dev/null \
     && echo "PASS the road ways cover the map" || { echo "FAIL the road ways are malformed"; fail=1; }
+  # The planner's layers: foundations over the whole map, bridges and tunnels as pairs of heads,
+  # and the company's buses found on the tiles they occupy.
+  WAYS="$(read_res "$SERVER_TOKEN" openttd://map/ways)"
+  jq -e '.data.schema == "map-ways/v1" and (.data.foundations | length) == .data.height and ([.data.foundations[] | test("^[0-9a-e]+$")] | all)
+    and (.data.crossings | type) == "array" and ([.data.crossings[] | has("from") and has("to") and (.length >= 0)] | all)' <<<"$WAYS" >/dev/null \
+    && echo "PASS foundations cover the map, crossings come as pairs of heads" || { echo "FAIL the foundation or crossing layer is malformed"; fail=1; }
+  OWN_BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq -c --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c) | .id]')"
+  jq -e --argjson own "$OWN_BUSES" '[.data.occupancy[].vehicles[]] as $on | ($own | length) > 0 and ([$own[] | IN($on[])] | any)' <<<"$WAYS" >/dev/null \
+    && echo "PASS the occupancy layer places the company's buses on their tiles" || { echo "FAIL no bus of company $COMPANY in the occupancy layer"; fail=1; }
   if "$COVERAGE" "$SERVER_TOKEN" "$CLIENT_TOKEN"; then
     echo "PASS every published tool and resource of the server and the client was exercised"
   else

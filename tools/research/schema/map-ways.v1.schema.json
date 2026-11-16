@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "map-ways/v1",
+  "title": "Where vehicles can go on the OpenTTD map, and what stands where",
+  "description": "The data of openttd://map/ways (src/prismatic_mcp/prismatic_mcp_graph.cpp), read from the engine's map and vehicle pool at the moment of the read. Row strings are indexed by y, characters by x; the encoding object of every read spells each layer out.",
+  "type": "object",
+  "required": ["schema", "width", "height", "roads", "rails", "foundations", "crossings", "occupancy"],
+  "properties": {
+    "schema": {"const": "map-ways/v1"},
+    "width": {"type": "integer"},
+    "height": {"type": "integer"},
+    "tile_index": {"type": "string"},
+    "encoding": {"type": "object", "additionalProperties": {"type": "string"}},
+    "roads": {"type": "array", "items": {"type": "string", "pattern": "^[0-9a-f]*$"}, "description": "one hex digit per tile: RoadBits NW=1 SW=2 SE=4 NE=8"},
+    "rails": {"type": "array", "items": {"type": "string", "pattern": "^[0-9a-f]*$"}, "description": "two hex digits per tile: TrackBits"},
+    "foundations": {"type": "array", "items": {"type": "string", "pattern": "^[0-9a-e]*$"}, "description": "one hex digit per tile: the engine's Foundation value, 0 none"},
+    "crossings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "transport", "from", "to", "length", "direction", "owner"],
+        "properties": {
+          "kind": {"enum": ["bridge", "tunnel"]},
+          "transport": {"enum": ["rail", "road", "water", "other"]},
+          "from": {"$ref": "#/$defs/xy"},
+          "to": {"$ref": "#/$defs/xy"},
+          "length": {"type": "integer", "minimum": 0, "description": "middle tiles, heads excluded"},
+          "direction": {"type": "integer", "minimum": 0, "maximum": 3, "description": "from the first head: 0 NE, 1 SE, 2 SW, 3 NW"},
+          "owner": {"type": "integer"}
+        }
+      }
+    },
+    "occupancy": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["x", "y", "vehicles", "types"],
+        "properties": {
+          "x": {"type": "integer"}, "y": {"type": "integer"},
+          "vehicles": {"type": "array", "items": {"type": "integer"}, "description": "ids of the front parts on the tile"},
+          "types": {"type": "array", "items": {"enum": ["train", "road", "ship"]}}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "xy": {"type": "object", "required": ["x", "y"], "properties": {"x": {"type": "integer"}, "y": {"type": "integer"}}}
+  }
+}

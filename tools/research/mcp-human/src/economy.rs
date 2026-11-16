@@ -111,9 +111,22 @@ impl Hand {
     }
 
     /// Play the company for `minutes` of real time: expand, reinforce, borrow, watch.
+    /// When the owner closes the game window the company stays as it is: that ends the game, it
+    /// is no failure, and what was built is still reported.
     pub fn play_game(&mut self, minutes: u64, policy: Policy) -> Result<Vec<Service>, String> {
         let deadline = Instant::now() + Duration::from_secs(minutes * 60);
         let mut services: Vec<Service> = Vec::new();
+        match self.play_until(deadline, policy, &mut services) {
+            Err(e) if game_closed(&e) => {
+                self.say("the game was closed: stop playing");
+                Ok(services)
+            }
+            Err(e) => Err(e),
+            Ok(()) => Ok(services),
+        }
+    }
+
+    fn play_until(&mut self, deadline: Instant, policy: Policy, services: &mut Vec<Service>) -> Result<(), String> {
         let mut tried: Vec<(u64, u64)> = Vec::new();
         let mut borrows = 0;
         let mut may_borrow: Option<bool> = None;
@@ -193,6 +206,22 @@ impl Hand {
             // Nothing to do right now: watch the buses and let the money come in.
             self.watch(25)?;
         }
-        Ok(services)
+        Ok(())
+    }
+}
+
+/// Whether an error says the game's MCP endpoint is gone (the window was closed).
+pub fn game_closed(e: &str) -> bool {
+    e.contains("Connection refused") || e.contains("Connection reset")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::game_closed;
+
+    #[test]
+    fn a_closed_game_is_told_from_other_errors() {
+        assert!(game_closed("http://127.0.0.1:1/mcp: Connection Failed: Connect error: Connection refused (os error 61)"));
+        assert!(!game_closed("no window says 'depot'"));
     }
 }

@@ -87,12 +87,19 @@ stays pending because nobody approves it. The run then asserts that the game is 
 Two read-only resources come from the engine's own map, pools and link graph
 (`prismatic_mcp_graph.cpp`).
 
-**`openttd://map/ways`** describes each tile as hex strings, one per row:
+**`openttd://map/ways`** (schema `map-ways/v1`, in `tools/research/schema/map-ways.v1.schema.json`)
+describes each tile as hex strings, one per row, plus two lists:
 
 - **Road:** where a road vehicle can leave the tile (NW=1, SW=2, SE=4, NE=8). This covers road
   pieces, drive-through and bay stops, depot entrances, level crossings, and road bridge or
   tunnel heads.
 - **Rail:** the tile's rail track bits.
+- **Foundations:** the foundation the tile's content stands on (the engine's own value, 0 none),
+  so a planner knows where track or road already sits on raised ground.
+- **Crossings:** every bridge and tunnel once, with both heads, its length in middle tiles, what
+  it carries, its direction and its owner.
+- **Occupancy:** each tile with a train, road vehicle or ship on it at the moment of the read, with
+  the vehicles' ids. A planner sees which pieces are in use before it rebuilds them.
 
 Two tiles are joined only when each points at the other. Tile types cannot tell you that, which
 is how a bus once got lost on a road that "looked connected". The player checks
