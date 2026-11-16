@@ -127,6 +127,13 @@ vehicle carries. A link needs max(1, ceil(usage / vehicle capacity)) vehicles, a
 mature (its measured capacity covers every assigned vehicle, so a new route's rising usage says
 nothing). A route whose both directions need fewer vehicles than it runs has that many too many.
 
+The hub also **watches** the audit: every `--audit-every` seconds (default 60, 0 off) it runs it and
+announces what changed on the event stream, once per finding: `audit.duplicate_station`,
+`audit.duplicate_depot` and `audit.over_capacity` when one appears, `audit.resolved` (naming what it
+was) when it goes away. A finding is keyed by what it is, not by its numbers, so a pair that stays is
+not announced again. Any subscriber sees them (`hub.subscribe {kinds: ["audit"]}`): the page's live
+events, a Rhai script, a bot that wants to repair what it built twice.
+
 The check is generic: it does not know which bot built what, so it holds PrismaticAI, the planner's
 bot and the human-motion player to the same rule.
 

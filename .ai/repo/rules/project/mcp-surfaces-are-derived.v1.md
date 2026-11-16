@@ -47,6 +47,8 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
   a pair (I0060). Depots are audited the same way, within the game's own service reach
   (`service_reach_tiles` in `openttd://depots`) along the road network of `openttd://map/ways` (I0063).
   Routes over capacity are reported (advisory) from the game's link graph, mature links only (I0068).
+  The hub watches the audit and announces each finding once as an `audit.*` event, and its repair as
+  `audit.resolved`.
 - Proof against a running panel: `tools/research/mcp-panel-check` (every tool and resource has its route and schema, the routes answer, the event feed works).
 - Proof that every derived route works: `tools/research/mcp-route-check` walks the panel's own
   OpenAPI document. Every GET answers 200, every POST with required fields answers 400 to an empty

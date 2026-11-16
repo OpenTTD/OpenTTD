@@ -2,13 +2,16 @@
 //! server of a running cluster (see src/hub.rs and research/mcp-hub.md).
 //!
 //! Usage:
-//!   mcp-hub [serve] [--port 8790] [--registry DIR] [--panel URL]... [--static DIR]
+//!   mcp-hub [serve] [--port 8790] [--registry DIR] [--panel URL]... [--static DIR] [--audit-every S]
 //!   mcp-hub check [--hub ws://127.0.0.1:8790/ws] [--event-wait SECONDS]
 //!   mcp-hub audit [--hub ws://127.0.0.1:8790/ws] [--json]
 //!
 //! serve: discovers instances from $PRISMATIC_MCP_REGISTRY (default
 //! ~/.local/state/prismatic-mcp/instances) and every --panel, serves ws://127.0.0.1:<port>/ws,
-//! POST /hub/rpc, GET /hub/instances, /hub/catalogue, and the page / (static/hub.html).
+//! POST /hub/rpc, GET /hub/instances, /hub/catalogue, and the page / (static/hub.html). Every
+//! --audit-every seconds (default 60, 0 off) it runs hub.audit and announces each new finding as a
+//! hub.event (audit.duplicate_station, audit.duplicate_depot, audit.over_capacity) and each one
+//! that went away as audit.resolved.
 //! check: connects to a hub, calls every read-only operation of every instance that needs no
 //! required input, and waits for one streamed event; exits 1 on any failure.
 //! audit: asks the hub for every instance's duplicate stations (one owner, a shared facility,
@@ -170,6 +173,7 @@ fn serve(args: &[String]) -> i32 {
         statics: arg(args, "--static").map(PathBuf::from).unwrap_or_else(default_static),
         refresh: Duration::from_secs(2),
         poll: Duration::from_millis(500),
+        audit: Some(Duration::from_secs(arg(args, "--audit-every").and_then(|v| v.parse().ok()).unwrap_or(60))).filter(|d| !d.is_zero()),
     };
     let addr = listener.local_addr().map(|a| a.to_string()).unwrap_or_default();
     let state = hub::run(listener, cfg);
@@ -422,13 +426,31 @@ mod tests {
         std::fs::create_dir_all(&empty).unwrap();
         let listener = TcpListener::bind("127.0.0.1:0").unwrap();
         let state = hub::run(listener, hub::Config { registry: empty, panels: vec![base], statics: default_static(),
-                                                  refresh: Duration::from_millis(40), poll: Duration::from_secs(60) });
+                                                  refresh: Duration::from_millis(40), poll: Duration::from_secs(60), audit: None });
         let count = |s: &hub::Shared| s.lock().unwrap().ops.values().map(Vec::len).sum::<usize>();
         assert_eq!(count(&state), 1, "before the game is up: only the status route");
         up.store(true, Ordering::SeqCst);
         let deadline = Instant::now() + Duration::from_secs(5);
         while count(&state) < 2 && Instant::now() < deadline { std::thread::sleep(Duration::from_millis(50)); }
         assert_eq!(count(&state), 2, "the catalogue is read again within its time to live");
+    }
+    #[test]
+    fn the_audit_watch_announces_findings_once_and_their_resolution() {
+        let r = |pairs: &[(i64, i64)]| json!([{"instance": "p", "duplicates": pairs.iter().map(|(a, b)| json!({"a": {"id": a}, "b": {"id": b}, "distance": 2})).collect::<Vec<_>>(),
+            "depots": {"duplicates": []}, "capacity": {"over": [{"a": {"id": 1}, "b": {"id": 2}, "cargo": 0, "too_many": 1}]}}]);
+        let first = hub::audit_findings(&r(&[(3, 7)]));
+        assert_eq!(first.iter().map(|f| f.2["kind"].as_str().unwrap()).collect::<Vec<_>>(), vec!["audit.duplicate_station", "audit.over_capacity"]);
+        let (new, gone) = hub::audit_changes(&Default::default(), &first);
+        assert_eq!((new.len(), gone.len()), (2, 0));
+        let seen: std::collections::BTreeMap<_, _> = first.iter().cloned().map(|(k, i, e)| (k, (i, e))).collect();
+        // The same findings with other numbers are not news.
+        let (new, gone) = hub::audit_changes(&seen, &hub::audit_findings(&r(&[(3, 7)])));
+        assert_eq!((new.len(), gone.len()), (0, 0));
+        // The duplicate repaired: one resolution naming what it was.
+        let (new, gone) = hub::audit_changes(&seen, &hub::audit_findings(&r(&[])));
+        assert_eq!((new.len(), gone.len()), (0, 1));
+        assert_eq!(gone[0].1["kind"], json!("audit.resolved"));
+        assert_eq!(gone[0].1["data"]["was"], json!("audit.duplicate_station"));
     }
     /// A panel with a status route, an echo route and an event bus whose events the test appends.
     fn fake_panel(events: Arc<Mutex<Vec<Value>>>) -> String {
@@ -479,7 +501,7 @@ mod tests {
         let empty = std::env::temp_dir().join(format!("hubreg-{}", std::process::id()));
         std::fs::create_dir_all(&empty).unwrap();
         let cfg = hub::Config { registry: empty, panels: vec![base], statics: default_static(),
-                                refresh: Duration::from_millis(200), poll: Duration::from_millis(50) };
+                                refresh: Duration::from_millis(200), poll: Duration::from_millis(50), audit: Some(Duration::from_millis(150)) };
         hub::run(listener, cfg);
         let mut ws = connect(&format!("ws://{addr}/ws")).unwrap();
         let mut notes = Vec::new();
@@ -496,6 +518,17 @@ mod tests {
         assert!(r.get("error").is_some(), "a stream is subscribed to, not called");
         let r = request(&mut ws, 5, "nope", json!({}), &mut notes).unwrap();
         assert_eq!(r["error"]["code"], json!(-32601));
+        // The audit watch announces the fake panel's duplicate pair on the event stream.
+        request(&mut ws, 30, "hub.subscribe", json!({"kinds": ["audit"]}), &mut notes).unwrap();
+        let deadline = Instant::now() + Duration::from_secs(5);
+        let mut audit_event = notes.iter().find(|n| n["params"]["event"]["kind"] == "audit.duplicate_station").cloned();
+        while audit_event.is_none() && Instant::now() < deadline {
+            if let Ok(tungstenite::Message::Text(t)) = ws.read() {
+                let v: Value = serde_json::from_str(t.as_str()).unwrap();
+                if v["params"]["event"]["kind"] == "audit.duplicate_station" { audit_event = Some(v); }
+            }
+        }
+        assert_eq!(audit_event.expect("an audit event")["params"]["event"]["data"]["b"]["name"], json!("Here Central"));
         request(&mut ws, 6, "hub.subscribe", json!({"kinds": ["game"]}), &mut notes).unwrap();
         std::thread::sleep(Duration::from_millis(300));
         events.lock().unwrap().push(json!({"seq": 1, "kind": "panel.note"}));

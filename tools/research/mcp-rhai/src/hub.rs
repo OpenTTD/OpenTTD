@@ -322,6 +322,8 @@ pub struct State {
     /// Refresh cycles run, and the cycle each instance's catalogue was last read in.
     cycles: u64,
     catalogue_at: HashMap<String, u64>,
+    /// The findings the last audit watch saw, by key, so only what changed is announced.
+    audit_seen: BTreeMap<String, (String, Value)>,
 }
 
 /// How many refresh cycles a catalogue is trusted for before it is read again. A panel registers
@@ -936,6 +938,55 @@ pub struct Config {
     pub statics: PathBuf,
     pub refresh: Duration,
     pub poll: Duration,
+    /// How often the audit watch runs hub.audit and announces what changed; None: no watch.
+    pub audit: Option<Duration>,
+}
+
+/// Every finding of a hub.audit answer as (key, instance, event). The key names the finding, not
+/// its numbers, so a pair that stays is not announced again while its distance or usage moves.
+pub fn audit_findings(results: &Value) -> Vec<(String, String, Value)> {
+    let mut out = Vec::new();
+    for r in results.as_array().into_iter().flatten() {
+        let inst = r["instance"].as_str().unwrap_or("").to_string();
+        for d in r["duplicates"].as_array().into_iter().flatten() {
+            let key = format!("station:{inst}:{}:{}", d["a"]["id"], d["b"]["id"]);
+            out.push((key, inst.clone(), json!({"kind": "audit.duplicate_station", "data": d})));
+        }
+        for d in r["depots"]["duplicates"].as_array().into_iter().flatten() {
+            let key = format!("depot:{inst}:{}:{}", d["a"]["id"], d["b"]["id"]);
+            out.push((key, inst.clone(), json!({"kind": "audit.duplicate_depot", "data": d})));
+        }
+        for o in r["capacity"]["over"].as_array().into_iter().flatten() {
+            let key = format!("capacity:{inst}:{}:{}:{}", o["a"]["id"], o["b"]["id"], o["cargo"]);
+            out.push((key, inst.clone(), json!({"kind": "audit.over_capacity", "data": o})));
+        }
+    }
+    out
+}
+
+/// What changed between two audits: the findings that appeared, and those that went away (each as
+/// an `audit.resolved` event naming what it was).
+pub fn audit_changes(seen: &BTreeMap<String, (String, Value)>, now: &[(String, String, Value)]) -> (Vec<(String, Value)>, Vec<(String, Value)>) {
+    let keys: std::collections::HashSet<&String> = now.iter().map(|(k, _, _)| k).collect();
+    let new = now.iter().filter(|(k, _, _)| !seen.contains_key(k)).map(|(_, i, e)| (i.clone(), e.clone())).collect();
+    let gone = seen.iter().filter(|(k, _)| !keys.contains(k))
+        .map(|(k, (i, e))| (i.clone(), json!({"kind": "audit.resolved", "data": {"was": e["kind"], "key": k, "finding": e["data"]}}))).collect();
+    (new, gone)
+}
+
+/// Run one audit, announce its changes as hub.event notifications, remember what it saw.
+pub fn audit_watch_once(state: &Shared) -> usize {
+    let results = audit(state);
+    let now = audit_findings(&results);
+    let mut s = state.lock().unwrap();
+    let (new, gone) = audit_changes(&s.audit_seen, &now);
+    let n = new.len() + gone.len();
+    for (inst, ev) in new.into_iter().chain(gone) {
+        let msg = json!({"jsonrpc": "2.0", "method": "hub.event", "params": {"instance": inst, "event": ev}});
+        s.broadcast(Some(&inst), msg, Some(&ev));
+    }
+    s.audit_seen = now.into_iter().map(|(k, i, e)| (k, (i, e))).collect();
+    n
 }
 
 /// Start the discovery and fan-in threads and serve connections on `listener` until the process ends.
@@ -949,6 +1000,10 @@ pub fn run(listener: TcpListener, cfg: Config) -> Shared {
     {
         let (state, every) = (state.clone(), cfg.poll);
         thread::spawn(move || loop { fan_in(&state); thread::sleep(every); });
+    }
+    if let Some(every) = cfg.audit {
+        let state = state.clone();
+        thread::spawn(move || loop { thread::sleep(every); audit_watch_once(&state); });
     }
     let accept_state = state.clone();
     let statics = cfg.statics.clone();
