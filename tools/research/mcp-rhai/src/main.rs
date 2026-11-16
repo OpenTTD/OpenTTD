@@ -424,17 +424,19 @@ mod tests {
             ev.push(#{ kind: "ai.log", data: #{ text: "PrismaticAI: survey stop A in X at tile 5 (drive-through)" } });
             ev.push(#{ kind: "ai.log", data: #{ text: "PrismaticAI: survey stop A in X at tile 6 (drive-through)" } });
             ev.push(#{ kind: "game.new_world", data: () });
+            ev.push(#{ kind: "ai.log", data: #{ text: "PrismaticAI: survey rail station at Mine at tile 58165" } });
+            ev.push(#{ kind: "ai.log", data: #{ text: "PrismaticAI: built rail station at Mine at tile 58165" } });
             let c = d::coalesce(ev);
             [c.len(), c[0].repeats, d::tile_of(c[0].data.text), c[1].repeats, c[2].repeats, d::tile_of(c[2].data.text),
              d::is_linear(c[0], ""), d::is_linear(c[1], ""), d::is_linear(c[1], d::kind(c[1].data.text)),
              d::kind("PrismaticAI: built rail at tile 1234") == d::kind("PrismaticAI: built rail at tile 99"),
              d::kind("PrismaticAI: built rail at tile 1") != d::kind("PrismaticAI: built rail station in A at tile 1"),
-             c[3].kind]
+             c[3].kind, c.len() == 5, c[4].data.text.contains("built"), c[4].repeats]
         "#;
         let out: rhai::Array = e.eval(script).unwrap();
         let v: Vec<String> = out.iter().map(|x| x.to_string()).collect();
-        assert_eq!(v, vec!["4", "119", "1118", "1", "2", "6", "true", "false", "true", "true", "true", "game.new_world"],
-                   "119 rail tiles -> one action at the newest tile; a station is a single structure; retried surveys -> the last");
+        assert_eq!(v, vec!["5", "119", "1118", "1", "2", "6", "true", "false", "true", "true", "true", "game.new_world", "true", "true", "2"],
+                   "119 rail tiles -> one action at the newest tile; a station is a single structure; retried surveys -> the last; a survey and its outcome on one tile -> one action, the outcome");
     }
 
     #[test]

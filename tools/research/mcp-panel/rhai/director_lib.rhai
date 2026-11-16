@@ -28,10 +28,23 @@ fn text_of(e) {
     e.data.text
 }
 
+// Do two consecutive events belong to one run: one kind in a row (119 rail tiles), or one site in a
+// row (a survey, then its built or refused line)? The camera acts on the last, which has the outcome.
+fn same_run(e, next) {
+    if next.kind != e.kind { return false; }
+    let text = text_of(e);
+    let next_text = text_of(next);
+    if text == "" || next_text == "" { return false; }
+    if kind(next_text) == kind(text) { return true; }
+    let tile = tile_of(text);
+    tile >= 0 && tile == tile_of(next_text)
+}
+
 // Coalesce one batch of events: a run of consecutive lines of one kind becomes its last line, with
 // `repeats` set to the length of the run. A camera that acts on each line of a 119-tile rail line
 // falls minutes behind and replays construction that is long finished; acting on the last keeps it
-// where the bot is now.
+// where the bot is now. Consecutive lines about one tile (a survey, then its outcome) are one run
+// too, so the camera goes to a site once.
 fn coalesce(events) {
     let out = [];
     let n = events.len();
@@ -39,16 +52,7 @@ fn coalesce(events) {
     for i in 0..n {
         let e = events[i];
         run += 1;
-        let same_next = false;
-        if i + 1 < n {
-            let next = events[i + 1];
-            let text = text_of(e);
-            let next_text = text_of(next);
-            if next.kind == e.kind && text != "" && next_text != "" {
-                same_next = kind(next_text) == kind(text);
-            }
-        }
-        if same_next { continue; }
+        if i + 1 < n && same_run(e, events[i + 1]) { continue; }
         e.repeats = run;
         out.push(e);
         run = 0;
