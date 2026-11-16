@@ -556,6 +556,72 @@ fn audit_depots(i: &Instance, ops: &[Op]) -> Value {
            "duplicates": duplicate_depots(&depots, reach, roads.as_ref())})
 }
 
+/// Routes that run more vehicles than their traffic needs, from the game's own link graph
+/// (`cargo_link` edges of openttd://world/graph: capacity and usage per link and cargo over the
+/// game's measuring period) and the order lists and capacities of openttd://vehicles.
+///
+/// For a link served by n vehicles of capacity c each (a vehicle's own cargo_capacity; the link's
+/// capacity / n when the resource shows none, as for a train's engine), the traffic needs
+/// max(1, ceil(usage / c)) of them. A link is judged only once it is mature: its measured capacity
+/// is at least n * c, so every vehicle has run it in the period; before that its usage is still
+/// rising and nothing is said. A route is over capacity when both directions are mature and need
+/// fewer than n; the smaller excess of the two is the number of vehicles too many. Advisory.
+pub fn over_capacity(graph: &Value, vehicles: &[Value]) -> Vec<Value> {
+    use std::collections::HashMap;
+    let edges = graph.get("edges").and_then(Value::as_array).cloned().unwrap_or_default();
+    let names: HashMap<String, Value> = graph.get("nodes").and_then(Value::as_array).into_iter().flatten()
+        .filter_map(|n| Some((n.get("id")?.as_str()?.to_string(), n.get("name").cloned().unwrap_or(Value::Null)))).collect();
+    // Which vehicles run from station a to station b (consecutive stations of their orders, cyclic).
+    let mut serving: HashMap<(i64, i64), Vec<i64>> = HashMap::new();
+    for v in vehicles {
+        let stops: Vec<i64> = v.get("orders").and_then(Value::as_array).into_iter().flatten()
+            .filter(|o| o.get("type").and_then(Value::as_str) == Some("goto_station"))
+            .filter_map(|o| o.get("destination").and_then(Value::as_i64)).collect();
+        let cap = v.get("cargo_capacity").and_then(Value::as_i64).unwrap_or(0);
+        for k in 0..stops.len() {
+            let (a, b) = (stops[k], stops[(k + 1) % stops.len()]);
+            if a != b { serving.entry((a, b)).or_default().push(cap); }
+        }
+    }
+    let station = |id: &str| id.strip_prefix("station:").and_then(|x| x.parse::<i64>().ok());
+    // (a, b, cargo) -> (capacity, usage, n, vehicles needed), mature links only.
+    let mut judged: HashMap<(i64, i64, i64), (i64, i64, i64, i64)> = HashMap::new();
+    for e in edges.iter().filter(|e| e.get("kind").and_then(Value::as_str) == Some("cargo_link")) {
+        let (Some(a), Some(b)) = (station(e["from"].as_str().unwrap_or("")), station(e["to"].as_str().unwrap_or(""))) else { continue };
+        let (cap, used, cargo) = (e["capacity"].as_i64().unwrap_or(0), e["usage"].as_i64().unwrap_or(0), e["cargo"].as_i64().unwrap_or(-1));
+        let Some(caps) = serving.get(&(a, b)) else { continue };
+        let n = caps.len() as i64;
+        let own = caps.iter().copied().max().unwrap_or(0);
+        let per = if own > 0 { own } else if n > 0 { cap / n } else { 0 };
+        if n < 2 || per <= 0 || cap < n * per { continue; } // not mature: some vehicle has not run it yet
+        let needed = ((used + per - 1) / per).max(1);
+        judged.insert((a, b, cargo), (cap, used, n, needed));
+    }
+    let mut out = Vec::new();
+    for (&(a, b, cargo), &(cap, used, n, need)) in &judged {
+        if a > b { continue; }
+        let Some(&(rcap, rused, rn, rneed)) = judged.get(&(b, a, cargo)) else { continue };
+        let too_many = (n - need).min(rn - rneed);
+        if too_many < 1 { continue; }
+        let name = |id: i64| names.get(&format!("station:{id}")).cloned().unwrap_or(Value::Null);
+        out.push(json!({"a": {"id": a, "name": name(a)}, "b": {"id": b, "name": name(b)}, "cargo": cargo,
+            "vehicles": n.max(rn), "capacity": [cap, rcap], "usage": [used, rused], "needed": need.max(rneed), "too_many": too_many}));
+    }
+    out.sort_by_key(|f| std::cmp::Reverse(f["too_many"].as_i64().unwrap_or(0)));
+    out
+}
+
+fn audit_capacity(i: &Instance, ops: &[Op]) -> Value {
+    let (Some(g), Some(v)) = (resource_op(ops, "world/graph"), resource_op(ops, "vehicles")) else {
+        return json!({"error": "no world/graph or vehicles operation"});
+    };
+    let graph = match call(i, g, None, None) { Ok(x) => unwrap_data(&x), Err(e) => return json!({"error": e}) };
+    let vehicles = match call(i, v, None, None) { Ok(x) => unwrap_data(&x), Err(e) => return json!({"error": e}) };
+    let list = vehicles.get("vehicles").and_then(Value::as_array).cloned().unwrap_or_default();
+    json!({"links": graph.get("edges").and_then(Value::as_array).map(|e| e.iter().filter(|x| x["kind"] == "cargo_link").count()).unwrap_or(0),
+           "vehicles": list.len(), "over": over_capacity(&graph, &list)})
+}
+
 /// Every instance's duplicate stations and duplicate depots.
 pub fn audit(state: &Shared) -> Value {
     let targets: Vec<(Instance, Option<Op>, Vec<Op>)> = {
@@ -574,7 +640,8 @@ pub fn audit(state: &Shared) -> Value {
                 json!({"instance": i.name, "via": op.id, "stations": st.len(),
                        "catchment": if st.iter().any(|s| s.get("catchment_area").is_some()) { "game" } else { "fallback radius" },
                        "duplicates": duplicate_stations(&st),
-                       "depots": audit_depots(&i, &ops)})
+                       "depots": audit_depots(&i, &ops),
+                       "capacity": audit_capacity(&i, &ops)})
             }
         },
     }).collect())
@@ -596,7 +663,7 @@ pub fn methods() -> Value {
         {"method": "hub.call", "params": {"instance": "required", "id": "operationId | tool:<name> | resource:<uri>", "body": "object", "query": "object"}},
         {"method": "hub.subscribe", "params": {"instances": "optional list", "kinds": "optional list of kind prefixes"}},
         {"method": "hub.unsubscribe", "params": {}},
-        {"method": "hub.audit", "params": {}, "result": "per instance: duplicate stations (same owner, a shared facility, overlapping catchments) and duplicate depots (same owner and type within the game's service reach, along the road network when known)"},
+        {"method": "hub.audit", "params": {}, "result": "per instance: duplicate stations (same owner, a shared facility, overlapping catchments) duplicate depots (same owner and type within the game's service reach, along the road network when known), and routes over capacity by whole vehicles from the game's link graph (advisory)"},
     ])
 }
 

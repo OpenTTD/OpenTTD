@@ -133,6 +133,15 @@ fn audit_cmd(args: &[String]) -> i32 {
             println!("     owner {} {}: {} ({},{}) and {} ({},{}), {} tile(s) apart", d["owner"], d["facilities"], d["a"]["name"], d["a"]["x"], d["a"]["y"],
                      d["b"]["name"], d["b"]["x"], d["b"]["y"], d["distance"]);
         }
+        let cap = &inst["capacity"];
+        if let Some(over) = cap["over"].as_array() {
+            println!("     capacity: {} {} link(s), {} vehicle(s), {} route(s) over capacity (advisory)", if over.is_empty() { "PASS" } else { "WARN" },
+                     cap["links"], cap["vehicles"], over.len());
+            for o in over {
+                println!("       {} - {} cargo {}: {} vehicles, capacity {} usage {} -> {} too many", o["a"]["name"], o["b"]["name"], o["cargo"],
+                         o["vehicles"], o["capacity"], o["usage"], o["too_many"]);
+            }
+        }
         let dep = &inst["depots"];
         if let Some(e) = dep.get("error") { println!("     depots: SKIP {e}"); continue; }
         let ddups = dep["duplicates"].as_array().cloned().unwrap_or_default();
@@ -371,6 +380,29 @@ mod tests {
         assert!(schema.contains("audit: JSON") && schema.contains("type Mutation") && schema.contains("call("), "{schema}");
         assert!(!schema.contains("subscribe"), "streams stay on the WebSocket");
     }
+    #[test]
+    fn over_capacity_counts_vehicles_beyond_what_mature_traffic_needs() {
+        let v = |id: i64, cap: i64, stops: &[i64]| json!({"id": id, "cargo_capacity": cap, "orders": stops.iter().map(|s| json!({"type": "goto_station", "destination": s})).collect::<Vec<_>>()});
+        let link = |a: i64, b: i64, cap: i64, used: i64| json!({"kind": "cargo_link", "from": format!("station:{a}"), "to": format!("station:{b}"), "cargo": 0, "capacity": cap, "usage": used});
+        let four = vec![v(1, 31, &[1, 2]), v(2, 31, &[1, 2]), v(3, 31, &[1, 2]), v(4, 31, &[1, 2])];
+        let graph = |c1: i64, u1: i64, c2: i64, u2: i64| json!({"nodes": [{"id": "station:1", "name": "A"}, {"id": "station:2", "name": "B"}],
+            "edges": [link(1, 2, c1, u1), link(2, 1, c2, u2)]});
+        // Mature (all four ran it: 124 each way), carrying 20 and 40: one and two buses needed -> 2 too many.
+        let over = hub::over_capacity(&graph(124, 20, 124, 40), &four);
+        assert_eq!(over.len(), 1);
+        assert_eq!((over[0]["needed"].clone(), over[0]["too_many"].clone()), (json!(2), json!(2)));
+        // Not mature (only one bus has run it, the live case of 2026-11-16): nothing is said.
+        assert!(hub::over_capacity(&graph(31, 0, 31, 0), &four).is_empty());
+        // Full: all four needed.
+        assert!(hub::over_capacity(&graph(124, 120, 124, 110), &four).is_empty());
+        // A single vehicle is the route, never too many.
+        assert!(hub::over_capacity(&graph(31, 0, 31, 0), &[v(1, 31, &[1, 2])]).is_empty());
+        // A train's engine shows no capacity: the link's capacity / n is used.
+        let trains = vec![v(1, 0, &[1, 2]), v(2, 0, &[1, 2])];
+        let t = hub::over_capacity(&graph(200, 10, 200, 10), &trains);
+        assert_eq!(t[0]["too_many"], json!(1));
+    }
+
     /// A panel with a status route, an echo route and an event bus whose events the test appends.
     fn fake_panel(events: Arc<Mutex<Vec<Value>>>) -> String {
         let l = TcpListener::bind("127.0.0.1:0").unwrap();

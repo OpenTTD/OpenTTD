@@ -120,6 +120,13 @@ distance is measured along the road network of `openttd://map/ways` (two tiles a
 points at the other), so two depots on separate roads are not duplicates. Without ways, or for rail
 and ship depots, the straight distance is used and the report says so.
 
+It also reports **routes over capacity**, as an advisory warning that does not fail the check. The
+game's own link graph (`cargo_link` edges of `openttd://world/graph`) carries each link's measured
+capacity and usage; the vehicles' order lists say which vehicles run it, and their capacities what one
+vehicle carries. A link needs max(1, ceil(usage / vehicle capacity)) vehicles, and is judged only once
+mature (its measured capacity covers every assigned vehicle, so a new route's rising usage says
+nothing). A route whose both directions need fewer vehicles than it runs has that many too many.
+
 The check is generic: it does not know which bot built what, so it holds PrismaticAI, the planner's
 bot and the human-motion player to the same rule.
 
