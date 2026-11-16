@@ -60,7 +60,7 @@ rpc() { # $1 token file, $2 JSON-RPC body
 }
 call() { rpc "$1" "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"$2\",\"arguments\":$3}}" | jq -r '.result.content[0].text'; }
 wait_file() { for ((i = 0; i < ${2:-120}; i++)); do [[ -s "$1" ]] && return 0; sleep 0.5; done; return 1; }
-records() { cat "$PRISMATIC_MCP_REGISTRY"/*.json 2>/dev/null | jq -s '.'; }
+records() { { cat "$PRISMATIC_MCP_REGISTRY"/*.json 2>/dev/null || true; } | jq -s '.'; }
 
 declare -a GAME_PORTS SERVER_TOKENS CLIENT_TOKENS CLIENT_PIDS
 for ((s = 0; s < N; s++)); do

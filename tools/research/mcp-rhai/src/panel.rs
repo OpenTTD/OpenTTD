@@ -1206,27 +1206,49 @@ fn pid_alive(pid: i64) -> bool {
     pid > 0 && pid <= i64::from(i32::MAX) && unsafe { libc::kill(pid as libc::pid_t, 0) } == 0
 }
 
+/// The panel that holds a server's token: a server a panel started announces no token file (the
+/// panel keeps the token in memory), and the panel's record names that server's endpoint as `mcp`.
+pub fn owning_panel(records: &[Value], server: &Value) -> Option<String> {
+    let endpoint = server.get("endpoint")?.as_str()?;
+    records.iter()
+        .find(|r| r.get("kind").and_then(Value::as_str) == Some("panel") && r.get("mcp").and_then(Value::as_str) == Some(endpoint))
+        .and_then(|r| r.get("url")?.as_str().map(|u| u.trim_end_matches('/').to_string()))
+}
+
 /// Every instance in the registry, each checked with a live probe; records of dead owners removed.
+/// A server without a token file is reached through the panel that owns it (`via`).
 pub fn discover() -> Vec<Value> {
     let mut files: Vec<PathBuf> = std::fs::read_dir(registry()).map(|d| {
         d.filter_map(|e| e.ok().map(|e| e.path())).filter(|p| p.extension().and_then(|x| x.to_str()) == Some("json")).collect()
     }).unwrap_or_default();
     files.sort();
-    let mut out = Vec::new();
+    let mut live = Vec::new();
     for f in files {
-        let Ok(mut e) = std::fs::read_to_string(&f).map_err(|_| ()).and_then(|t| serde_json::from_str::<Value>(&t).map_err(|_| ())) else { continue };
+        let Ok(e) = std::fs::read_to_string(&f).map_err(|_| ()).and_then(|t| serde_json::from_str::<Value>(&t).map_err(|_| ())) else { continue };
         if !e.is_object() { continue; }
         if !e.get("owner_pid").and_then(|p| py_int(p).ok()).map_or(false, pid_alive) {
             let _ = std::fs::remove_file(&f); // its panel is gone
             continue;
         }
+        live.push(e);
+    }
+    let all = live.clone();
+    let mut out = Vec::new();
+    for mut e in live {
         e["alive"] = json!(false);
+        let via = if e.get("token_file").is_none() && e.get("kind").and_then(Value::as_str) != Some("panel") {
+            owning_panel(&all, &e)
+        } else { None };
         let probe = || -> Result<Value, String> {
             if e.get("kind").and_then(Value::as_str) == Some("panel") {
                 let url = e["url"].as_str().ok_or("no url in the record")?;
                 let st: Value = ureq::get(&format!("{url}/api/status")).timeout(Duration::from_secs(2)).call()
                     .map_err(|e| e.to_string())?.into_json().map_err(|e| e.to_string())?;
                 Ok(json!({"alive": true, "mcp_up": st.get("mcp_up"), "ai": st.get("ai"), "game_port": st.get("game_port")}))
+            } else if let Some(url) = &via {
+                let st: Value = ureq::get(&format!("{url}/api/status")).timeout(Duration::from_secs(2)).call()
+                    .map_err(|e| e.to_string())?.into_json().map_err(|e| e.to_string())?;
+                Ok(json!({"alive": st.get("mcp_up") == Some(&json!(true)), "via": url}))
             } else {
                 let file = e["token_file"].as_str().ok_or("no token_file in the record")?;
                 let (endpoint, token) = token_file(file)?;
@@ -1244,14 +1266,18 @@ pub fn discover() -> Vec<Value> {
     out
 }
 
-/// One MCP JSON-RPC call on a named instance: a panel through its /api/rpc, a client directly.
+/// One MCP JSON-RPC call on a named instance: a panel through its /api/rpc, a server a panel owns
+/// through that panel, a client (or a server with its own token file) directly.
 pub fn instance_call(name: &str, method: &str, params: &Value) -> Result<(u16, Value), String> {
     let Some(e) = discover().into_iter().find(|x| x["name"] == json!(name)) else {
         return Ok((404, json!({"error": format!("no instance {name}")})));
     };
     let params = or_empty(params);
-    if e.get("kind").and_then(Value::as_str) == Some("panel") {
-        let url = e["url"].as_str().ok_or("no url in the record")?;
+    let panel = match e.get("kind").and_then(Value::as_str) {
+        Some("panel") => Some(e["url"].as_str().ok_or("no url in the record")?.to_string()),
+        _ => e.get("via").and_then(Value::as_str).map(str::to_string),
+    };
+    if let Some(url) = panel {
         let v = ureq::post(&format!("{url}/api/rpc")).timeout(Duration::from_secs(10))
             .set("Content-Type", "application/json")
             .send_string(&json!({"method": method, "params": params}).to_string())
@@ -2251,6 +2277,19 @@ pub fn free_port() -> Option<u16> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_server_without_a_token_file_is_reached_through_the_panel_that_owns_it() {
+        let recs = vec![
+            json!({"kind": "panel", "name": "panel-1", "url": "http://127.0.0.1:1/", "mcp": "http://127.0.0.1:2/mcp"}),
+            json!({"kind": "panel", "name": "panel-3", "url": "http://127.0.0.1:3", "mcp": "http://127.0.0.1:4/mcp"}),
+        ];
+        let owned = json!({"kind": "server", "endpoint": "http://127.0.0.1:2/mcp"});
+        let stray = json!({"kind": "server", "endpoint": "http://127.0.0.1:9/mcp"});
+        assert_eq!(owning_panel(&recs, &owned).as_deref(), Some("http://127.0.0.1:1"));
+        assert_eq!(owning_panel(&recs, &stray), None);
+        assert_eq!(owning_panel(&recs, &json!({"kind": "server"})), None);
+    }
 
     fn no_op(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> { Ok((200, json!({}))) }
 

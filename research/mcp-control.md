@@ -546,13 +546,28 @@ entry whose owning process is gone is dropped on the next discovery.
 | Surface | What it does |
 |---|---|
 | `GET /api/instances`, Rhai `api_instances()` | every registered instance with its role and endpoint, each checked with a live probe (a panel's `/api/status`, a client's MCP `ping`) |
-| `POST /api/instances/call {name, method, params}`, Rhai `api_instancesCall(...)` | one MCP JSON-RPC call on any instance: a panel's dedicated server, or a GUI client with its token |
+| `POST /api/instances/call {name, method, params}`, Rhai `api_instancesCall(...)` | one MCP JSON-RPC call on any instance by name: a panel's dedicated server, a client with its token. A server a panel started announces no token file (the panel holds it); it is listed with `via` (the owning panel, matched by its `mcp` endpoint) and called through that panel |
 | main page, Cluster card | the same list, live, with a link to each instance's own panel |
 | one binary snapshot per stack | `mcp-e2e` copies the binary next to the original (`openttd-e2e-<pid>`) and runs the server and the client from it. A rebuild of the shared build directory then cannot reach a client the supervisor restarts. Before this, the server, still on the old revision, refused every restarted client with "wrong revision" |
-| `mcp-e2e --instances N` | N-1 more headless stacks with their own bots; a port that is taken (Majordomus holds 8741, another stack holds 8800) is replaced by a free one |
+| `mcp-e2e --instances N` | N-1 more headless stacks, each with its own bot and a windowless client; a port that is taken (Majordomus holds 8741, another stack holds 8800) is replaced by a free one |
+| `mcp-e2e --no-gui --null-client` | a client without a window (null video driver) with its own MCP server joins as a spectator and is attached to the panel, supervised like the GUI client |
 
 `mcp-view-check` reads `openttd://game/state` from every live panel through this panel and
-expects a 404 for an unknown instance. Majordomus does not discover these instances yet.
+expects a 404 for an unknown instance.
+
+`tools/research/mcp-cluster-panels-check [--instances N]` checks a whole cluster from `mcp-e2e`
+(I0039). It runs `mcp-e2e --instances N --no-gui --no-browser --null-client` against an isolated
+registry, with no window, and checks:
+
+- the registry holds N panels, N servers and N clients, every owner alive;
+- `mcp-panel-check` passes against every panel;
+- each panel has its client attached and lists the whole cluster, every instance reachable;
+- one panel reads another stack's server by name through `/api/instances/call`;
+- stopping the launcher withdraws every record.
+
+`tools/research/mcp-cluster-check` (`research/mcp-human.md`) checks discovery itself: records,
+signals and the hub. Majordomus reads none of this: a reader for an external runtime registry is
+held as a Majordomus candidate (I0046).
 
 ## The owner's window in the panel, and clicks that drive it
 

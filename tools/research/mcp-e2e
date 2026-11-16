@@ -23,6 +23,9 @@
 #                                so the panel's /ui page and scripts can press its widgets; off by default)]
 #                               [--instances N (default 1: N-1 more headless stacks with bots, free
 #                                ports, all in the discovery registry, listed by every panel)]
+#                               [--null-client (with --no-gui: a client without a window, null video
+#                                driver, with its own MCP, attached to the panel; every extra instance
+#                                of --instances gets one)]
 #                               [--rust-panel (accepted and ignored: the panel is always mcp-panel from
 #                                tools/research/mcp-rhai since server.py was removed, I0035)]
 # Stop with Ctrl-C: the panel stops the server, and the GUI client is closed.
@@ -31,7 +34,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
-GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=() ARM_INPUT=0 PLAN=()
+GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=() ARM_INPUT=0 PLAN=() NULL_CLIENT=0
 PANEL_IMPL="${MCP_PANEL:-rust}"
 
 while [[ $# -gt 0 ]]; do
@@ -51,7 +54,8 @@ while [[ $# -gt 0 ]]; do
     --arm-input) ARM_INPUT=1; shift ;;
     --no-plan-bot) PLAN=(--no-plan-bot); shift ;;
     --rust-panel) PANEL_IMPL=rust; shift ;;
-    -h|--help) sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    --null-client) NULL_CLIENT=1; shift ;;
+    -h|--help) sed -n '2,31p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "mcp-e2e: unknown option: $1" >&2; exit 2 ;;
   esac
 done
@@ -146,10 +150,11 @@ done
 curl -s "$URL/api/status" | grep -q '"mcp_up": true' || { echo "mcp-e2e: MCP did not come up" >&2; exit 1; }
 echo "==> MCP up; control window: $URL"
 
-# More instances of the cluster: each is this launcher, headless, on free ports, with its own bot;
+# More instances of the cluster: each is this launcher, headless, on free ports, with its own bot
+# and a windowless client;
 # every panel lists them all (GET /api/instances) and can drive any of them.
 for ((n = 2; n <= INSTANCES; n++)); do
-  "${BASH_SOURCE[0]}" --bin "$BIN" --no-gui --no-browser --seed "$((SEED + n))" \
+  "${BASH_SOURCE[0]}" --bin "$BIN" --no-gui --no-browser --null-client --seed "$((SEED + n))" \
     > "$TMP/instance-$n.log" 2>&1 &
   EXTRA_PIDS+=($!)
   echo "==> instance $n of $INSTANCES starting (log $TMP/instance-$n.log)"
@@ -226,6 +231,33 @@ if [[ "$GUI" == 1 ]]; then
       echo "mcp-e2e: the GUI client wrote no MCP token file; no director" >&2
     fi
   fi
+fi
+
+# A client without a window: the null video driver runs the game loop, the client joins the
+# server as a spectator, its own MCP server announces it, and the panel attaches it, so a headless
+# instance of a cluster has its client too. Supervised like the GUI client.
+if [[ "$GUI" == 0 && "$NULL_CLIENT" == 1 ]]; then
+  NHOME="$TMP/null-client-home"; NPD="$NHOME/Documents/OpenTTD"
+  mkdir -p "$NPD/scripts"
+  ln -s "$HOME/Documents/OpenTTD/baseset" "$NPD/baseset"
+  NULL_TOKEN="$TMP/null-client-token.json"
+  printf 'prismatic_mcp start %s %s\n' "$(any_port)" "$NULL_TOKEN" > "$NPD/scripts/autoexec.scr"
+  printf '[network]\nclient_name = cluster-client\n[gui]\nautosave = off\n' > "$TMP/null-client.cfg"
+  echo "==> windowless client (null video driver, own MCP) joining 127.0.0.1:$GAME_PORT as a spectator"
+  (
+    while kill -0 "$PANEL_PID" 2>/dev/null; do
+      HOME="$NHOME" "$BIN" -v null:ticks=2000000000 -s null -m null -c "$TMP/null-client.cfg" \
+        -n "127.0.0.1:$GAME_PORT#255" >> "$TMP/null-client.log" 2>&1 &
+      CPID=$!
+      for ((j = 0; j < 60; j++)); do [[ -s "$NULL_TOKEN" ]] && break; sleep 1; done
+      curl -s -X POST -H 'Content-Type: application/json' -d "{\"token_file\":\"$NULL_TOKEN\"}" "$URL/api/view/attach" >/dev/null || true
+      wait "$CPID"
+      echo "client exited with $?; restarting in 3 s" >> "$TMP/null-client.log"
+      rm -f "$NULL_TOKEN"
+      sleep 3
+    done
+  ) &
+  GUI_PID=$!
 fi
 
 echo "==> running. Ctrl-C stops everything."

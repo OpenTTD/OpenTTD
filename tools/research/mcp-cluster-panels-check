@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY. A cluster of AI-driven instances from mcp-e2e, end to end (issue I0039).
+#
+# Runs `mcp-e2e --instances N --no-gui --no-browser --null-client` against an isolated instance
+# registry: N stacks, each a dedicated server with its bot, a Rust panel and a windowless client
+# with its own MCP server. No window opens. The check:
+#
+#   1. the registry holds N panels, N servers and N clients, every owner alive;
+#   2. tools/research/mcp-panel-check passes against every panel;
+#   3. each panel has its client attached (POST /api/client/openttd.input.state answers) and lists
+#      the whole cluster (GET /api/instances: every panel, server and client, all reachable);
+#   4. one panel drives another instance's server (POST /api/instances/call, by name);
+#   5. stopping the launcher withdraws every record.
+#
+# Usage: tools/research/mcp-cluster-panels-check [--instances N] [--bin PATH]   exit 0 PASS, 1 FAIL
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+BIN="$ROOT_DIR/build-gate-research/openttd"
+N=2
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --instances) N="$2"; shift 2 ;;
+    --bin) BIN="$2"; shift 2 ;;
+    -h|--help) sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "mcp-cluster-panels-check: unknown option $1" >&2; exit 2 ;;
+  esac
+done
+
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-cluster-panels-check.XXXXXX")"
+export PRISMATIC_MCP_REGISTRY="$TMP/registry"
+mkdir -p "$PRISMATIC_MCP_REGISTRY"
+free_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
+E2E_PID=""
+cleanup() {
+  [[ -n "$E2E_PID" ]] && kill -TERM "$E2E_PID" 2>/dev/null || true
+  wait 2>/dev/null || true
+  rm -rf "$TMP"
+}
+trap cleanup EXIT INT TERM
+
+FAILS=0
+pass() { echo "PASS $*"; }
+fail() { echo "FAIL $*"; FAILS=$((FAILS + 1)); }
+records() { { cat "$PRISMATIC_MCP_REGISTRY"/*.json 2>/dev/null || true; } | jq -s '.'; }
+count() { records | jq --arg k "$1" '[.[] | select(.kind == $k)] | length'; }
+
+PANEL_PORT="$(free_port)"
+"$ROOT_DIR/tools/research/mcp-e2e" --bin "$BIN" --no-gui --no-browser --null-client \
+  --instances "$N" --panel-port "$PANEL_PORT" --seed 4242 > "$TMP/e2e.log" 2>&1 &
+E2E_PID=$!
+echo "==> mcp-e2e --instances $N (log $TMP/e2e.log)"
+
+# Every stack is up when the registry holds N of each kind and every panel reports MCP up.
+ok=0
+for ((i = 0; i < 300; i++)); do
+  kill -0 "$E2E_PID" 2>/dev/null || { echo "mcp-cluster-panels-check: mcp-e2e exited" >&2; tail -30 "$TMP/e2e.log" >&2; exit 1; }
+  if [[ "$(count panel)" -ge "$N" && "$(count server)" -ge "$N" && "$(count gui)" -ge "$N" ]]; then
+    up=0
+    for u in $(records | jq -r '.[] | select(.kind == "panel") | .url'); do
+      curl -s -m 3 "$u/api/status" | grep -q '"mcp_up": true' && up=$((up + 1))
+    done
+    [[ "$up" -ge "$N" ]] && { ok=1; break; }
+  fi
+  sleep 2
+done
+[[ "$ok" == 1 ]] || { echo "mcp-cluster-panels-check: the cluster did not come up"; records | jq -c '[.[] | {name, kind}]'; tail -30 "$TMP/e2e.log"; exit 1; }
+echo "==> $N stacks up"
+
+# 1. One live record per process.
+REC="$(records)"
+dead=0
+for pid in $(echo "$REC" | jq -r '.[].owner_pid'); do kill -0 "$pid" 2>/dev/null || dead=$((dead + 1)); done
+[[ "$(count panel)" == "$N" && "$(count server)" == "$N" && "$(count gui)" == "$N" && "$dead" == 0 ]] \
+  && pass "the registry holds $N panels, $N servers and $N clients, every owner alive" \
+  || fail "the registry holds $(echo "$REC" | jq -c '[.[] | {name, kind}]'), $dead dead owner(s)"
+
+PANELS=($(echo "$REC" | jq -r '.[] | select(.kind == "panel") | .url' | sort))
+SERVERS=($(echo "$REC" | jq -r '.[] | select(.kind == "server") | .name' | sort))
+for u in "${PANELS[@]}"; do
+  # 2. The panel check, unchanged, against every panel.
+  out="$("$ROOT_DIR/tools/research/mcp-panel-check" --panel "$u" 2>&1 | tail -1)"
+  echo "$out" | grep -q ' 0 failed' && pass "mcp-panel-check against $u: $out" || fail "mcp-panel-check against $u: $out"
+  # 3. Its client is attached: a client resource read through the panel.
+  for ((i = 0; i < 60; i++)); do
+    st="$(curl -s -m 5 -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d '{}' "$u/api/client/openttd.input.state")"
+    [[ "$st" == 200 ]] && break
+    sleep 1
+  done
+  [[ "$st" == 200 ]] && pass "$u has its windowless client attached (the client's openttd.input.state through the panel)" \
+    || fail "$u answers $st for its client's game state"
+  L="$(curl -s -m 20 "$u/api/instances" | jq '.instances')"
+  reach="$(echo "$L" | jq '[.[] | select(.alive == true)] | length' 2>/dev/null || echo 0)"
+  total="$(echo "$L" | jq 'length' 2>/dev/null || echo 0)"
+  [[ "$total" -ge "$((3 * N))" && "$reach" -ge "$((3 * N))" ]] && pass "$u lists the whole cluster ($total instances, $reach reachable)" \
+    || fail "$u lists $(echo "$L" | jq -c '[.[] | {name, kind}]' 2>/dev/null || echo "$L")"
+done
+
+# 4. One panel drives another stack's server by name.
+other="${SERVERS[${#SERVERS[@]}-1]}"
+ans="$(curl -s -m 20 -X POST -H 'Content-Type: application/json' \
+  -d "{\"name\":\"$other\",\"method\":\"resources/read\",\"params\":{\"uri\":\"openttd://game/state\"}}" \
+  "${PANELS[0]}/api/instances/call")"
+echo "$ans" | grep -q 'game_tick\|source_revision' && pass "${PANELS[0]} reads $other's game state through /api/instances/call" \
+  || fail "${PANELS[0]} -> $other: $(echo "$ans" | head -c 300)"
+
+# 5. Stopping the launcher withdraws every record.
+kill -TERM "$E2E_PID"; wait "$E2E_PID" 2>/dev/null || true; E2E_PID=""
+for ((i = 0; i < 40; i++)); do [[ "$(records | jq length)" == 0 ]] && break; sleep 0.5; done
+left="$(records | jq -c '[.[] | {name, kind, alive: true}]')"
+[[ "$(records | jq length)" == 0 ]] && pass "stopping the launcher withdrew every record" || fail "records left after the stop: $left"
+
+echo "==> $FAILS failure(s)"
+[[ "$FAILS" == 0 ]]
