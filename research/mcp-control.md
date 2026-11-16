@@ -66,9 +66,27 @@ Loopback HTTP API, for any external controller (scripts, agents, Prismatic):
 
 A POST with a foreign `Origin` is refused.
 
+### The same panel in Rust (`mcp-panel`, issue I0035)
+
+`tools/research/mcp-rhai` builds `mcp-panel` (`src/bin/mcp-panel.rs`, `src/panel.rs`,
+`src/panel_bot.rs`), a port of `server.py` with the same command line, routes, OpenAPI document,
+event bus and registry record (`mcp-instance/v1`, kind `panel`). Rhai scripts sent to
+`/api/rhai` and `/api/rhai/stream` run inside the panel's process, in the engine `mcp-rhai` uses
+(`src/main.rs` `host`), instead of a `mcp-rhai` child process. `mcp-plan`, `mcp-intent`,
+`mcp-graph` and AlgoGlyph's `npm run flow` are still child processes, as in `server.py`.
+
+```bash
+tools/research/mcp-e2e --rust-panel     # or MCP_PANEL=rust tools/research/mcp-e2e
+tools/research/mcp-panel-check --panel http://127.0.0.1:8800
+```
+
+`server.py` is still the default. Both answer in the same JSON text (`", "` and `": "`, non-ASCII
+escaped), because launchers match `"mcp_up": true` in `/api/status`.
+
 ### One declaration, every surface: OpenAPI, Swagger UI and derived routes
 
-The routes above are declared once, in `make_routes()` of `server.py`. The router dispatches from
+The routes above are declared once, in `make_routes()` of `server.py` (`routes()` of
+`src/panel.rs` in the Rust panel). The router dispatches from
 that table, and `GET /openapi.json` (OpenAPI 3.1) documents it. Swagger UI, served from the local
 `swagger-ui-dist`, is at `GET /docs`. On every request for the document, the live MCP catalogue is
 read again and one route is derived per entry:
