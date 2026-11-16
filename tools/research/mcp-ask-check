@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY end-to-end check: what the owner asks in the ~ console of a game with a window is
+# answered by the planner, the way mcp-e2e wires it.
+#
+#   1. a headless stack (tools/research/mcp-e2e --no-gui): dedicated server, panel, bot;
+#   2. a client process that is not a dedicated server (null video, sound and music drivers, in a
+#      private home), whose autoexec.scr starts its own MCP server and then types a request in its
+#      console with the `ask` alias (ask -> plan);
+#   3. rhai/ask_relay.rhai, reading that client's openttd://ui/requests and answering through the
+#      panel's planner with openttd.ui.requests.answer.
+#
+# It checks that the console request was queued as kind "ask" with the typed text, and that the
+# relay answered it with what the planner returned (not with an error).
+#
+# Usage: tools/research/mcp-ask-check [--bin <openttd>] [--seed N]
+#   --bin   an openttd built with OPTION_PRISMATIC_MCP_SERVER=ON (default: build-gate-research/openttd)
+# Exit: 0 all checks passed, 1 a check failed, 2 usage, 3 a prerequisite is missing.
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+BIN="$ROOT_DIR/build-gate-research/openttd"
+SEED=31337
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --bin) BIN="$2"; shift 2 ;;
+    --seed) SEED="$2"; shift 2 ;;
+    *) echo "usage: mcp-ask-check [--bin <openttd>] [--seed N]" >&2; exit 2 ;;
+  esac
+done
+RHAI="$ROOT_DIR/tools/research/mcp-rhai/target/release/mcp-rhai"
+INTENT="$ROOT_DIR/tools/research/mcp-rhai/target/release/mcp-intent"
+[[ -x "$BIN" ]] || { echo "mcp-ask-check: no openttd at $BIN" >&2; exit 3; }
+[[ -x "$RHAI" && -x "$INTENT" ]] || { echo "mcp-ask-check: build tools/research/mcp-rhai (cargo build --release)" >&2; exit 3; }
+
+free_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
+PANEL_PORT="$(free_port)"; MCP_PORT="$(free_port)"; GAME_PORT="$(free_port)"; VIEW_PORT="$(free_port)"
+URL="http://127.0.0.1:$PANEL_PORT"
+WORK="$(mktemp -d "${TMPDIR:-/tmp}/mcp-ask-check.XXXXXX")"
+PIDS=()
+cleanup() {
+  for p in "${PIDS[@]}"; do pkill -P "$p" 2>/dev/null || true; kill "$p" 2>/dev/null || true; done
+  wait 2>/dev/null || true
+  [[ -n "${MCP_ASK_CHECK_KEEP:-}" ]] && echo "kept $WORK" >&2 || rm -rf "$WORK"
+}
+trap cleanup EXIT
+
+PASS=0
+FAIL=0
+check() {
+  if [[ "$2" == 1 ]]; then PASS=$((PASS + 1)); printf 'PASS  %s\n' "$1"; else FAIL=$((FAIL + 1)); printf 'FAIL  %s\n' "$1"; fi
+}
+
+echo "==> headless stack (panel $URL, seed $SEED)"
+"$ROOT_DIR/tools/research/mcp-e2e" --bin "$BIN" --no-gui --no-browser --panel-port "$PANEL_PORT" \
+  --mcp-port "$MCP_PORT" --game-port "$GAME_PORT" --seed "$SEED" > "$WORK/stack.log" 2>&1 &
+PIDS+=($!)
+for ((i = 0; i < 120; i++)); do curl -s "$URL/api/status" 2>/dev/null | grep -q '"mcp_up": true' && break; sleep 1; done
+check "the panel's game is up" "$(curl -s "$URL/api/status" 2>/dev/null | grep -q '"mcp_up": true' && echo 1 || echo 0)"
+
+echo "==> a client with its own MCP server types 'ask ...' in its console"
+REQUEST="find the nearest coal mine and power station"
+CHOME="$WORK/client-home"; CPD="$CHOME/Documents/OpenTTD"
+mkdir -p "$CPD/scripts"
+ln -s "$HOME/Documents/OpenTTD/baseset" "$CPD/baseset"
+TOKEN="$WORK/view-token.json"
+printf 'prismatic_mcp start %s %s\nask %s\n' "$VIEW_PORT" "$TOKEN" "$REQUEST" > "$CPD/scripts/autoexec.scr"
+printf '[gui]\nautosave = off\n' > "$WORK/client.cfg"
+HOME="$CHOME" "$BIN" -c "$WORK/client.cfg" -v null:ticks=2000000000 -s null -m null > "$WORK/client.log" 2>&1 &
+PIDS+=($!)
+for ((i = 0; i < 60; i++)); do [[ -s "$TOKEN" ]] && break; sleep 1; done
+check "the client wrote its MCP token file" "$([[ -s "$TOKEN" ]] && echo 1 || echo 0)"
+
+READ="$WORK/read.rhai"
+printf 'print(to_json(mcp_read(env("MCP_VIEW_TOKEN"), "openttd://ui/requests").data.requests));\n' > "$READ"
+requests() { MCP_VIEW_TOKEN="$TOKEN" "$RHAI" --panel "$URL" "$READ" 2>/dev/null | tail -1; }
+field() { python3 -I -c 'import json, sys
+try:
+    r = [q for q in json.loads(sys.argv[1]) if q.get("text") == sys.argv[2]]
+    v = r[0].get(sys.argv[3]) if r else None
+    print("" if v is None else v)
+except Exception:
+    print("")' "$1" "$REQUEST" "$2"; }
+
+reqs="$(requests)"
+check "the console request is queued as kind 'ask' with the typed text (kind=$(field "$reqs" kind))" \
+  "$([[ "$(field "$reqs" kind)" == ask ]] && echo 1 || echo 0)"
+
+echo "==> the ask relay answers through the planner"
+MCP_VIEW_TOKEN="$TOKEN" "$RHAI" --panel "$URL" "$ROOT_DIR/tools/research/mcp-panel/rhai/ask_relay.rhai" > "$WORK/relay.log" 2>&1 &
+PIDS+=($!)
+answer=""
+for ((i = 0; i < 90; i++)); do
+  reqs="$(requests)"
+  answer="$(field "$reqs" answer)"
+  [[ -n "$answer" ]] && break
+  sleep 2
+done
+check "the relay answered the request (answer: ${answer:0:80})" "$([[ -n "$answer" ]] && echo 1 || echo 0)"
+check "the answer is the planner's, not an error" \
+  "$([[ -n "$answer" && "$answer" != *"could not answer"* ]] && echo 1 || echo 0)"
+
+echo "mcp-ask-check: $PASS passed, $FAIL failed"
+[[ "$FAIL" -eq 0 ]]

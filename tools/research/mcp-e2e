@@ -10,7 +10,9 @@
 #      server (started by its own autoexec.scr; token in a 0600 file), so the game is visible and
 #      its camera is driven: rhai/director.rhai moves it to every route the bot builds, and
 #      rhai/narrator.rhai reports in the game's chat what the bot does, and rhai/steward.rhai asks
-#      the owner yes/no questions in the game window and acts on the answers.
+#      the owner yes/no questions in the game window and acts on the answers, and
+#      rhai/ask_relay.rhai answers what the owner asks in the game (the toolbar's Ask item, or
+#      plan/ask/do in the ~ console) through the planner, as news and in the console.
 #
 # Usage: tools/research/mcp-e2e [--bin <openttd>] [--no-gui] [--no-browser] [--auto-approve] [--window WxH]
 #                               [--no-director] [--view-port N (default: a free port)]
@@ -194,7 +196,7 @@ if [[ "$GUI" == 1 ]]; then
   if [[ "$DIRECTOR" == 1 && -x "$RHAI" ]]; then
     for ((i = 0; i < 60; i++)); do [[ -s "$VIEW_TOKEN" ]] && break; sleep 1; done
     if [[ -s "$VIEW_TOKEN" ]]; then
-      echo "==> director (camera), narrator (chat and news) and steward (asks you in the game)"
+      echo "==> director (camera), narrator (chat and news), steward (asks you in the game) and ask relay (answers you)"
       # Supervised the same way: a helper that stops is started again.
       ( while kill -0 "$PANEL_PID" 2>/dev/null; do
           MCP_VIEW_TOKEN="$VIEW_TOKEN" "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/director.rhai" >> "$TMP/director.log" 2>&1
@@ -211,7 +213,14 @@ if [[ "$GUI" == 1 ]]; then
           sleep 3
         done ) &
       HELPER_PIDS+=($!)
-      echo "    logs: $TMP/director.log $TMP/narrator.log $TMP/steward.log"
+      # What the owner asks in the game (the toolbar's Ask item, or plan/ask/do in the ~ console)
+      # is queued in the client's openttd://ui/requests; the relay answers it through the planner.
+      ( while kill -0 "$PANEL_PID" 2>/dev/null; do
+          MCP_VIEW_TOKEN="$VIEW_TOKEN" "$RHAI" --panel "$URL" "$PANEL_DIR/rhai/ask_relay.rhai" >> "$TMP/ask_relay.log" 2>&1
+          sleep 3
+        done ) &
+      HELPER_PIDS+=($!)
+      echo "    logs: $TMP/director.log $TMP/narrator.log $TMP/steward.log $TMP/ask_relay.log"
     else
       echo "mcp-e2e: the GUI client wrote no MCP token file; no director" >&2
     fi

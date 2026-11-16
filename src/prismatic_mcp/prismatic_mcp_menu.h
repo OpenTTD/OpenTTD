@@ -58,7 +58,7 @@ DropDownList DropDown();
 bool Run(int index);
 
 /** A question typed in the game: queued as a request until an MCP client answers it. */
-void Ask(std::string_view text);
+uint64_t Ask(std::string_view text);
 
 /**
  * Queue a request: {id, kind, text, date, tile, x, y}; the tile is the one under the main view's

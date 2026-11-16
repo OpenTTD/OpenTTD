@@ -177,9 +177,9 @@ uint64_t Queue(std::string_view kind, std::string_view text)
 	return r.id;
 }
 
-void Ask(std::string_view text)
+uint64_t Ask(std::string_view text)
 {
-	if (!text.empty()) Queue("ask", text);
+	return text.empty() ? 0 : Queue("ask", text);
 }
 
 json Describe()
@@ -261,6 +261,13 @@ std::optional<json> Call(std::string_view name, const json &args)
 			r.answer = answer;
 			/* Shown the way every message from the fork reaches the player: an in-game news item. */
 			auto shown = View::Call("openttd.view.news.show", {{"text", fmt::format("{}\n{}", r.text, answer)}, {"style", "small"}});
+			/* And in the console, where a request typed there (plan, ask, do) expects it. */
+			IConsolePrint(CC_INFO, "Answer to request {} ({}):", r.id, r.text);
+			for (size_t start = 0; start <= answer.size();) {
+				size_t end = std::min(answer.find('\n', start), answer.size());
+				IConsolePrint(CC_INFO, "  {}", std::string_view(answer).substr(start, end - start));
+				start = end + 1;
+			}
 			return json{{"ok", true}, {"id", id}, {"shown", shown.has_value() && shown->value("ok", false)}};
 		}
 		return json{{"ok", false}, {"error", "no such request; see openttd://ui/requests"}};

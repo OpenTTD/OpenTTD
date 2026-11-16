@@ -48,6 +48,13 @@ ask <request>, do <request> = plan <request>   a request in your own words, for 
 ai ...    = bot ...         the company AIs (status, set, start, stop, reload)
 ```
 
+Where a request goes depends on the process. In a game with a window (the owner's client) it is
+queued in that client's `openttd://ui/requests` as kind `ask`, the same queue as the toolbar's
+"Ask the planner..." item. `rhai/ask_relay.rhai` (started by `mcp-e2e`) reads it over the client's
+MCP server, asks the panel's planner, and answers with `openttd.ui.requests.answer`: the answer
+shows as news and in the console. A dedicated server prints a `[prismatic-plan]` line instead,
+which the panel reading its output answers into the same console.
+
 `ask`, `do` and `ai` are console aliases (`alias` lists them); the slash is stripped only when
 the bare name is a command or an alias. An unknown command answers with what the console offers
 (`mcp`, `bot`/`ai`, `plan`/`ask`/`do`, `help`). Everything a player can do in the console is
@@ -86,6 +93,9 @@ Tab completes from the live catalogue, never from a list in the code:
   answer `mcp read` with JSON. Refusals and the gated pause are checked end to end, and the
   coverage resource must count every resource the console read. `/mcp`, `ask`, `/do` and `/ai`
   reach `mcp`, `plan` and `bot`, and an unknown `/nosuch` says what the console offers.
+- `tools/research/mcp-ask-check` types `ask <request>` in the console of a client with its own MCP
+  server (null drivers, no window) next to a headless stack, runs the ask relay, and checks that
+  the request was queued as kind `ask` and answered with the planner's answer.
 
 Observer effect: one catalogue build per command (two list calls), and the coverage increments
 for the calls themselves.

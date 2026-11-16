@@ -55,6 +55,7 @@
 #include "prismatic_mcp/prismatic_mcp.h"
 #include "prismatic_mcp/prismatic_mcp_registry.h"
 #include "prismatic_mcp/prismatic_mcp_console.h"
+#include "prismatic_mcp/prismatic_mcp_menu.h"
 #include "3rdparty/nlohmann/json.hpp"
 #include <filesystem>
 #include <fstream>
@@ -2030,6 +2031,15 @@ static bool ConPlan(std::span<std::string_view> argv)
 		for (char c : argv[i]) text += (c == '\n' || c == '\r') ? ' ' : c;
 	}
 	uint64_t n = next_request++;
+	/* A game with a window (the owner's client): the request joins openttd://ui/requests as kind
+	 * "ask", where the panel's ask relay reads it over this client's MCP server and answers it with
+	 * openttd.ui.requests.answer (shown as news and in this console). A dedicated server has no
+	 * such reader: its console line below is what the panel watching its output answers. */
+	if (!_network_dedicated) {
+		uint64_t id = PrismaticMCP::Menu::Ask(text);
+		IConsolePrint(CC_DEFAULT, "Request {} queued for the planner; its answer appears here and as news.", id);
+		return true;
+	}
 	IConsolePrint(CC_INFO, "[prismatic-plan] {} {}", n, text);
 	Debug(Facility::Misc, Severity::Error, "[prismatic-plan] {} {}", n, text);
 	IConsolePrint(CC_DEFAULT, "Request #{} handed to the intent resolver; its answer appears here.", n);
