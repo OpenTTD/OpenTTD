@@ -66,7 +66,8 @@ fn main() {
             .filter_map(|n| n["name"].as_str().map(str::to_string)).collect();
         present.extend(engines["cargos"].as_array().into_iter().flatten().filter_map(|c| c["name"].as_str().map(str::to_string)));
         present.sort(); present.dedup();
-        let parsed = intent::parse(&text, &vocab, &towns, &present);
+        let profiles = intent::profiles(&lang_dir);
+        let parsed = intent::parse_with(&text, &vocab, &towns, &present, Some(&profiles));
         let g = graph::derive_with_ways(&get(&panel, &token, "map")?, &towns, &get(&panel, &token, "stations")?,
                                         &get(&panel, &token, "map/ways").unwrap_or(serde_json::Value::Null))?;
         // The same costs as mcp-plan: the game's prices where it offers them.

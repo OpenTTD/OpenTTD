@@ -128,6 +128,11 @@ check "a Czech sentence is understood from the game's own words (les -> Forest, 
 out="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"text":"vybuduj nejlukrativnější trať"}' "$URL/api/intent")"
 check "a build sentence returns candidates by score and the bot settings that carry out the first" \
   "$([[ "$(json "d['intent']['action'] == 'build' and d['answer']['ordering'] == 'most_profitable' and bool(d['answer']['build']['settings'])" <<<"$out")" == True ]] && echo 1 || echo 0)"
+# The sentence's language, from the names present and, on a tie or with none, its spelling.
+lang_cs="$(json "d['intent']['language']" <<<"$out")"
+lang_en="$(curl -s --max-time 180 -X POST -H 'Content-Type: application/json' -d '{"text":"build the most lucrative line"}' "$URL/api/intent" | json "d['intent']['language']")"
+check "a sentence that names nothing keeps its language by spelling (cs: $lang_cs, en: $lang_en)" \
+  "$([[ "$lang_cs" == czech && "$lang_en" == english ]] && echo 1 || echo 0)"
 code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d '{}' "$URL/api/intent")"
 check "an intent without text is refused with 400 (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
 

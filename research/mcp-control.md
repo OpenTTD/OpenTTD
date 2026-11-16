@@ -471,8 +471,15 @@ answers a sentence over the live game:
 None of the nouns is typed by hand. Every industry type and cargo name in every language file of
 the game (`src/lang/*.txt`, all case forms such as Czech `.gen` and `.loc`) is joined to the English
 name the world graph uses, through its string id. The sentence's language is the file whose names
-match the most words. Matching uses that language and English, only names present in this game
-(industry types on the map, cargos on offer), with stemming for declension and diacritics folded.
+present in this game match the most distinct words of the sentence. A tie between languages that
+share a name ("les" is Czech, Slovak and Slovenian), or a sentence that names nothing ("vybuduj
+nejlukrativnější trať"), is decided by the sentence's spelling: character trigram profiles of every
+language file's strings, smoothed toward the frequency over all languages. English variants count
+as English. The answer says how it decided (`language_from`) and which words each of the three
+best languages matched (`language_scores`). Matching uses that language and English, only names
+present in this game (industry types on the map, cargos on offer), with stemming for declension and
+diacritics folded. A word that sets the action or the ordering is never also a name ("postav", build,
+is not "pošta", mail).
 The only hand vocabulary is three orderings (nearest, most productive, most profitable) and two
 actions (find, build). A build is carried out once its settings reach the bot, through
 `openttd.ai.set_setting` (approval-gated) or the next `start_ai`. Without a budget in the request, the

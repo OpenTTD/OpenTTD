@@ -37,6 +37,60 @@ fn same_word(a: &str, b: &str) -> bool {
     common >= 3 && common + 2 >= shorter
 }
 
+/// Character trigram counts of each language file's strings (control codes dropped, lower case,
+/// diacritics kept, each word padded with spaces): the game's own texts as a language identifier.
+/// It breaks a tie between languages whose names match the same words ("les" is Czech, Slovak and
+/// Slovenian), from how the rest of the sentence is spelled ("nej-" is Czech, "naj-" Slovak).
+pub type Profiles = BTreeMap<String, (std::collections::HashMap<String, u32>, u32)>;
+
+fn trigrams(text: &str) -> Vec<String> {
+    let mut out = Vec::new();
+    for w in text.to_lowercase().split(|c: char| !c.is_alphanumeric()).filter(|w| !w.is_empty()) {
+        let padded: Vec<char> = format!(" {w} ").chars().collect();
+        for g in padded.windows(3) { out.push(g.iter().collect()); }
+    }
+    out
+}
+
+pub fn profiles(lang_dir: &str) -> Profiles {
+    let mut out = Profiles::new();
+    let Ok(dir) = std::fs::read_dir(lang_dir) else { return out };
+    for e in dir.filter_map(|e| e.ok()) {
+        let name = e.file_name().to_string_lossy().to_string();
+        let Some(lang) = name.strip_suffix(".txt") else { continue };
+        let Ok(text) = std::fs::read_to_string(e.path()) else { continue };
+        // A language file starts with its ##name header (CMakeLists.txt lives there too).
+        if !text.starts_with("##name") { continue; }
+        let mut counts = std::collections::HashMap::new();
+        let mut total = 0u32;
+        for line in text.lines() {
+            if line.starts_with('#') { continue; }
+            let Some((_, value)) = line.split_once(':') else { continue };
+            let mut v = String::new();
+            let mut depth = 0;
+            for c in value.chars() {
+                match c { '{' => depth += 1, '}' => depth -= 1, _ if depth == 0 => v.push(c), _ => {} }
+            }
+            for g in trigrams(&v) { *counts.entry(g).or_insert(0) += 1; total += 1; }
+        }
+        if total > 0 { out.insert(lang.to_string(), (counts, total)); }
+    }
+    out
+}
+
+/// The log-likelihood of `text` under a language's trigram profile, smoothed toward the trigram's
+/// frequency over every language (Dirichlet, weight 1000). Add-one smoothing favoured the smallest
+/// files, whose few trigrams leave much probability to the unseen; this way a language wins only by
+/// trigrams that are typical of it ("nej", "ějš" for Czech).
+fn likelihood(text: &str, profile: &(std::collections::HashMap<String, u32>, u32), all: &Profiles) -> f64 {
+    let (counts, total) = profile;
+    let grand: f64 = all.values().map(|(_, n)| *n as f64).sum::<f64>().max(1.0);
+    trigrams(text).iter().map(|g| {
+        let bg = (all.values().map(|(c, _)| *c.get(g).unwrap_or(&0) as f64).sum::<f64>() + 0.5) / grand;
+        ((*counts.get(g).unwrap_or(&0) as f64 + 1000.0 * bg) / (*total as f64 + 1000.0)).ln()
+    }).sum()
+}
+
 /// The game's own vocabulary: (form words, English name, kind) for every industry type and cargo, in
 /// every language file under `lang_dir`, with every case form.
 pub fn vocabulary(lang_dir: &str) -> Vec<(Vec<String>, String, &'static str, String)> {
@@ -86,27 +140,90 @@ const ORDERINGS: [(&str, &[&str]); 3] = [
 const BUILD: [&str; 8] = ["vybuduj", "postav", "vystav", "build", "construct", "vybudovat", "postavit", "zaloz"];
 
 /// Parse a sentence against the game's vocabulary and the live towns.
+#[allow(dead_code)]
 pub fn parse(text: &str, vocab: &[(Vec<String>, String, &'static str, String)], towns: &Value, present: &[String]) -> Value {
+    parse_with(text, vocab, towns, present, None)
+}
+
+/// `parse`, with the languages' trigram profiles (`profiles`) to break a tie between languages that
+/// match the same names.
+pub fn parse_with(text: &str, vocab: &[(Vec<String>, String, &'static str, String)], towns: &Value, present: &[String],
+                  profiles: Option<&Profiles>) -> Value {
     let t = norm(text);
     let toks = words(text);
     let action = if BUILD.iter().any(|b| toks.iter().any(|w| w.starts_with(b))) { "build" } else { "find" };
     let ordering = ORDERINGS.iter().find(|(_, keys)| keys.iter().any(|k| t.contains(k))).map(|(o, _)| *o);
+    // A word that says what to do or how to order is not also a name: "postav" (build) would
+    // otherwise match "pošta" (mail) as a case form.
+    let command_word: Vec<bool> = toks.iter().map(|w| BUILD.iter().any(|b| w.starts_with(b))
+        || ORDERINGS.iter().any(|(_, keys)| keys.iter().any(|k| !k.contains(' ') && w.starts_with(k)))).collect();
     // The sentence's language: the language file whose names match the most words (exactly, or as a
     // case form of 4+ letters)
     // (English on a tie). Names are then matched in that language and English only, and only names
     // that exist in this game (industry types on the map, cargos on offer).
-    let mut score: BTreeMap<String, usize> = BTreeMap::new();
-    for (form, en, _, lang) in vocab {
-        if !present.iter().any(|p| p == en) { continue; }
-        for w in form {
-            // An exact word counts at any length ("les"); a case form only from 4 letters ("lesem").
-            if toks.iter().any(|t| t == w || (w.chars().count() >= 4 && t.chars().count() >= 4 && same_word(t, w))) {
-                *score.entry(lang.clone()).or_default() += 1;
+    // Names that exist in this game decide first, so a short English word ("a", "the") that is some
+    // other language's industry name does not switch the language. When no such name matches (a
+    // game whose industries differ, or none published yet), every name decides: the language is a
+    // property of the sentence, and "najdi nejbližší les + pilu" stays Czech on any game.
+    // Each language scores the distinct words of the sentence its names match, so a language whose
+    // names repeat a word over many case forms does not outvote one that matches more of the text.
+    let score_by = |only_present: bool| -> BTreeMap<String, std::collections::BTreeSet<usize>> {
+        let mut score: BTreeMap<String, std::collections::BTreeSet<usize>> = BTreeMap::new();
+        for (form, en, _, lang) in vocab {
+            if only_present && !present.iter().any(|p| p == en) { continue; }
+            for w in form {
+                // An exact word counts at any length ("les"); a case form only from 4 letters ("lesem").
+                for (i, t) in toks.iter().enumerate() {
+                    if command_word[i] { continue; }
+                    if t == w || (w.chars().count() >= 4 && t.chars().count() >= 4 && same_word(t, w)) {
+                        score.entry(lang.clone()).or_default().insert(i);
+                    }
+                }
             }
         }
+        score
+    };
+    let (mut score, mut language_from) = (score_by(true), "names in this game");
+    // No name of this game matched: with the profiles the sentence's spelling decides below (names
+    // of absent industries in 60 languages match short words by chance); without them, every name.
+    if score.is_empty() && profiles.is_none() {
+        score = score_by(false);
+        language_from = "every name of every language (none in this game matched)";
     }
-    let lang = score.iter().max_by(|a, b| a.1.cmp(b.1).then((b.0 == "english").cmp(&(a.0 == "english")))).map(|(l, _)| l.clone()).unwrap_or_else(|| "english".into());
-    let mut used = vec![false; toks.len()];
+    // A tie between languages matching as many words is broken by how the whole sentence is spelled
+    // (trigram profiles of the game's language files), then English wins (english_AU and english_US
+    // share its words and spelling).
+    let best = score.values().map(|s| s.len()).max().unwrap_or(0);
+    let tied: Vec<&String> = score.iter().filter(|(_, s)| s.len() == best).map(|(l, _)| l).collect();
+    let spelled = |l: &String| profiles.and_then(|all| all.get(l).map(|p| likelihood(text, p, all)));
+    let mut lang = tied.iter().copied().max_by(|a, b| {
+        let (sa, sb) = (spelled(a), spelled(b));
+        let by_spelling = match (sa, sb) { (Some(x), Some(y)) => x.total_cmp(&y), _ => std::cmp::Ordering::Equal };
+        // English variants spell alike: compare English last so "english" wins among them.
+        let english = |l: &str| l.starts_with("english");
+        if english(a) && english(b) { return (*a == "english").cmp(&(*b == "english")); }
+        by_spelling.then((*a == "english").cmp(&(*b == "english")))
+    }).cloned().unwrap_or_else(|| "english".into());
+    if tied.len() > 1 && profiles.is_some() { language_from = if language_from == "names in this game" { "names in this game, the tie by spelling" } else { "every name, the tie by spelling" }; }
+    if score.is_empty() {
+        // No name at all: the spelling alone decides, when the profiles are at hand.
+        if let Some(p) = profiles {
+            if let Some((l, _)) = p.iter().map(|(l, pr)| (l, likelihood(text, pr, p))).max_by(|a, b| a.1.total_cmp(&b.1)) {
+                lang = l.clone();
+            }
+            // English variants share the words and spelling of English.
+            if lang.starts_with("english") { lang = "english".into(); }
+            language_from = "no name matched: the sentence's spelling";
+        } else {
+            language_from = "no name matched: English by default";
+        }
+    }
+    // Why: the three best languages with the words each matched.
+    let mut ranked: Vec<(&String, &std::collections::BTreeSet<usize>)> = score.iter().collect();
+    ranked.sort_by(|a, b| b.1.len().cmp(&a.1.len()));
+    let language_scores: Vec<Value> = ranked.into_iter().take(3)
+        .map(|(l, ix)| json!({"language": l, "words": ix.iter().map(|&i| toks[i].clone()).collect::<Vec<_>>()})).collect();
+    let mut used = command_word.clone();
     let mut subjects: Vec<(usize, Value)> = Vec::new();
     for (form, en, kind, l) in vocab {
         if (*l != lang && l != "english") || !present.iter().any(|p| p == en) { continue; }
@@ -133,7 +250,8 @@ pub fn parse(text: &str, vocab: &[(Vec<String>, String, &'static str, String)], 
         }
     }
     subjects.sort_by_key(|(i, _)| *i);
-    json!({"text": text, "language": lang, "action": action, "ordering": ordering,
+    json!({"text": text, "language": lang, "language_from": language_from, "language_scores": language_scores,
+           "action": action, "ordering": ordering,
            "subjects": subjects.into_iter().map(|(_, s)| s).collect::<Vec<_>>()})
 }
 
@@ -227,4 +345,81 @@ mod tests {
     }
     #[test]
     fn diacritics_fold() { assert_eq!(norm("Nejbližší Pilu!"), "nejblizsi pilu "); }
+
+    fn vocab() -> Vec<(Vec<String>, String, &'static str, String)> {
+        let v = |w: &str, en: &str, lang: &str| (words(w), en.to_string(), "industry_type", lang.to_string());
+        vec![v("les", "Forest", "czech"), v("pila", "Sawmill", "czech"), v("forest", "Forest", "english"),
+             v("sawmill", "Sawmill", "english"), v("a", "Water Tower", "slovak")]
+    }
+
+    #[test]
+    fn a_czech_sentence_stays_czech_on_a_game_without_those_industries() {
+        let towns = json!({"towns": []});
+        let on_none = parse("najdi nejbližší les + pilu", &vocab(), &towns, &[]);
+        assert_eq!(on_none["language"], "czech");
+        assert_eq!(on_none["subjects"], json!([]));
+        assert!(on_none["language_from"].as_str().unwrap().starts_with("every name"));
+        let present = ["Forest".to_string(), "Sawmill".to_string()];
+        let on_temperate = parse("najdi nejbližší les + pilu", &vocab(), &towns, &present);
+        assert_eq!(on_temperate["language"], "czech");
+        assert_eq!(on_temperate["subjects"].as_array().unwrap().len(), 2);
+        assert_eq!(on_temperate["language_from"], "names in this game");
+    }
+
+    #[test]
+    fn a_short_english_word_does_not_switch_the_language_when_present_names_match() {
+        let present = ["Forest".to_string()];
+        let p = parse("find a forest", &vocab(), &json!({"towns": []}), &present);
+        assert_eq!(p["language"], "english");
+    }
+
+    #[test]
+    fn a_command_word_is_not_also_a_name() {
+        let v = |w: &str, en: &str, lang: &str| (words(w), en.to_string(), "cargo", lang.to_string());
+        let vocab = vec![v("pošta", "Mail", "czech"), v("les", "Forest", "czech")];
+        let present = ["Mail".to_string(), "Forest".to_string()];
+        let p = parse("postav nejvýnosnější linku", &vocab, &json!({"towns": []}), &present);
+        assert_eq!(p["action"], "build");
+        assert_eq!(p["subjects"], json!([]));
+        // The other words still name things.
+        let q = parse("postav trať, les", &vocab, &json!({"towns": []}), &present);
+        assert_eq!(q["subjects"][0]["name"], "Forest");
+    }
+
+    fn profile(text: &str) -> (std::collections::HashMap<String, u32>, u32) {
+        let mut c = std::collections::HashMap::new();
+        let mut n = 0;
+        for g in trigrams(text) { *c.entry(g).or_insert(0) += 1; n += 1; }
+        (c, n)
+    }
+
+    #[test]
+    fn the_spelling_breaks_a_tie_and_decides_when_no_name_of_this_game_matched() {
+        let mut p = Profiles::new();
+        p.insert("czech".into(), profile("nejlepší nejbližší nejvyšší vybuduj trať lesem pila najít"));
+        p.insert("slovak".into(), profile("najlepší najbližší najvyšší postav trať lesom píla nájsť"));
+        p.insert("english".into(), profile("the best nearest highest build line forest sawmill find"));
+        let v = |w: &str, en: &str, lang: &str| (words(w), en.to_string(), "industry_type", lang.to_string());
+        let vocab = vec![v("les", "Forest", "czech"), v("les", "Forest", "slovak"), v("forest", "Forest", "english")];
+        let towns = json!({"towns": []});
+        let tie = parse_with("najdi nejbližší les", &vocab, &towns, &["Forest".to_string()], Some(&p));
+        assert_eq!(tie["language"], "czech");
+        assert_eq!(tie["subjects"][0]["name"], "Forest");
+        let none = parse_with("vybuduj nejlukrativnější trať", &vocab, &towns, &[], Some(&p));
+        assert_eq!(none["language"], "czech");
+        let english = parse_with("build the most lucrative line", &vocab, &towns, &[], Some(&p));
+        assert_eq!(english["language"], "english");
+    }
+
+    #[test]
+    fn english_wins_a_tie_with_its_variants_and_many_case_forms_do_not_outvote() {
+        let v = |w: &str, en: &str, lang: &str| (words(w), en.to_string(), "industry_type", lang.to_string());
+        // english_AU sorts after english and shares its words; polish repeats "kopalni" in many forms.
+        let vocab = vec![v("coal mine", "Coal Mine", "english"), v("coal mine", "Coal Mine", "english_AU"),
+                         v("kopalni", "Coal Mine", "polish"), v("kopalnia", "Coal Mine", "polish"), v("kopalniach", "Coal Mine", "polish")];
+        let present = ["Coal Mine".to_string()];
+        let p = parse("find the nearest coal mine", &vocab, &json!({"towns": []}), &present);
+        assert_eq!(p["language"], "english");
+        assert_eq!(p["subjects"][0]["name"], "Coal Mine");
+    }
 }
