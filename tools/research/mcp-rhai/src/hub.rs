@@ -919,7 +919,7 @@ const SWAGGER_PAGE: &str = r#"<!doctype html><html><head><meta charset="utf-8"><
 <div id="swagger"></div><script src="/vendor/swagger-ui/swagger-ui-bundle.js"></script>
 <script>SwaggerUIBundle({url: '/openapi.json', dom_id: '#swagger', deepLinking: true});</script></body></html>"#;
 
-fn respond(mut stream: TcpStream, code: u16, ctype: &str, body: &[u8]) {
+pub fn respond(mut stream: TcpStream, code: u16, ctype: &str, body: &[u8]) {
     let reason = match code { 200 => "OK", 400 => "Bad Request", 404 => "Not Found", _ => "Error" };
     let head = format!("HTTP/1.1 {code} {reason}\r\nContent-Type: {ctype}\r\nContent-Length: {}\r\nCache-Control: no-store\r\nConnection: close\r\n\r\n", body.len());
     let _ = stream.write_all(head.as_bytes());

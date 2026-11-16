@@ -9,4 +9,7 @@ publish = false
 rhai = { version = "1.19", features = ["serde"] }
 ureq = { version = "2.10", features = ["json"] }
 serde_json = "1"
+serde = "1"
 tungstenite = { version = "0.28", default-features = false, features = ["handshake"] }
+# mcp-panel: signals (SIGINT/SIGTERM stop the game with the panel), kill(pid, 0), local time.
+libc = "0.2"

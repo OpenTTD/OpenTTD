@@ -313,6 +313,32 @@ fn derive_hub(e: &mut Engine, hub: &str) -> Vec<String> {
     names
 }
 
+/// The engine a script runs in: the built-ins, every function derived from the live panel at `base`
+/// (and from the hub, when given), and `import` resolved against MCP_RHAI_PATH, else the panel's
+/// rhai/ library. mcp-rhai runs one script in it; mcp-panel runs /api/rhai scripts in it in process.
+pub(crate) fn host(base: &str, hub: Option<&str>) -> Engine {
+    let panel = Panel { base: base.trim_end_matches('/').to_string() };
+    let mut engine = engine(panel.clone());
+    let lib = std::env::var("MCP_RHAI_PATH").unwrap_or_else(|_| {
+        concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel/rhai").to_string()
+    });
+    engine.set_module_resolver(rhai::module_resolvers::FileModuleResolver::new_with_path(lib));
+    let (mut tools, commands) = derive(&mut engine, &panel);
+    // The hub (research/mcp-hub.md): every instance of the cluster through one surface.
+    if let Some(h) = hub { tools.extend(derive_hub(&mut engine, h.trim_end_matches('/'))); }
+    let (t, c) = (tools.clone(), commands.clone());
+    engine.register_fn("tools", move || t.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
+    engine.register_fn("commands", move || c.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
+    engine.register_fn("help", move || -> String {
+        format!(
+            "built-in: rpc read overview status console pause approve auto_approve events mcp_call mcp_read world_graph world_plan world_plan_with env sleep to_json tools commands help\n\
+             derived from tools/list and the panel OpenAPI ({}): {}\nderived from list_cmds ({}): {}",
+            tools.len(), tools.join(" "), commands.len(), commands.join(" ")
+        )
+    });
+    engine
+}
+
 fn main() {
     let mut args = std::env::args().skip(1).collect::<Vec<_>>();
     let mut base = "http://127.0.0.1:8800".to_string();
@@ -347,26 +373,7 @@ fn main() {
             std::process::exit(2);
         }
     };
-    let panel = Panel { base: base.trim_end_matches('/').to_string() };
-    let mut engine = engine(panel.clone());
-    // `import "ttd" as ttd;` resolves against MCP_RHAI_PATH, else the panel's rhai/ library.
-    let lib = std::env::var("MCP_RHAI_PATH").unwrap_or_else(|_| {
-        concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel/rhai").to_string()
-    });
-    engine.set_module_resolver(rhai::module_resolvers::FileModuleResolver::new_with_path(lib));
-    let (mut tools, commands) = derive(&mut engine, &panel);
-    // The hub (research/mcp-hub.md): every instance of the cluster through one surface.
-    if let Some(h) = hub.as_deref() { tools.extend(derive_hub(&mut engine, h.trim_end_matches('/'))); }
-    let (t, c) = (tools.clone(), commands.clone());
-    engine.register_fn("tools", move || t.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
-    engine.register_fn("commands", move || c.iter().cloned().map(Dynamic::from).collect::<rhai::Array>());
-    engine.register_fn("help", move || -> String {
-        format!(
-            "built-in: rpc read overview status console pause approve auto_approve events mcp_call mcp_read world_graph world_plan world_plan_with env sleep to_json tools commands help\n\
-             derived from tools/list and the panel OpenAPI ({}): {}\nderived from list_cmds ({}): {}",
-            tools.len(), tools.join(" "), commands.len(), commands.join(" ")
-        )
-    });
+    let engine = host(&base, hub.as_deref());
     match engine.eval::<Dynamic>(&script) {
         Ok(v) if !v.is_unit() => println!("{v}"),
         Ok(_) => {}
