@@ -17,12 +17,17 @@
 //!   hub.unsubscribe
 //!   hub.audit                            per instance: duplicate stations (same owner, a shared
 //!                                        facility, overlapping catchments)
+//!   algoglyph.kernels / algoglyph.kernel {kernel, input} / algoglyph.track_plan {instance, from, to, ...}
+//!                                        AlgoGlyph's kernels (hub_algoglyph.rs); track_plan feeds one
+//!                                        game's map, ways, terrain and prices to track-planning
 //! The hub also pushes `hub.instances` notifications to subscribers when the set of instances changes.
 
 use serde_json::{json, Map, Value};
 
 #[path = "hub_graphql.rs"]
 pub mod graphql;
+#[path = "hub_algoglyph.rs"]
+pub mod algoglyph;
 use std::collections::{BTreeMap, HashMap};
 use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
@@ -744,7 +749,7 @@ fn ok(id: &Value, result: Value) -> Value {
 }
 
 pub fn methods() -> Value {
-    json!([
+    let mut table = json!([
         {"method": "rpc.discover", "params": {}},
         {"method": "hub.instances", "params": {}},
         {"method": "hub.catalogue", "params": {"instance": "optional: one instance"}},
@@ -752,7 +757,9 @@ pub fn methods() -> Value {
         {"method": "hub.subscribe", "params": {"instances": "optional list", "kinds": "optional list of kind prefixes"}},
         {"method": "hub.unsubscribe", "params": {}},
         {"method": "hub.audit", "params": {}, "result": "per instance: duplicate stations (same owner, a shared facility, overlapping catchments) duplicate depots (same owner and type within the game's service reach, along the road network when known), and routes over capacity by whole vehicles from the game's link graph (advisory)"},
-    ])
+    ]);
+    if let Value::Array(list) = &mut table { list.extend(algoglyph::methods()); }
+    table
 }
 
 /// The hub's own OpenAPI document, derived from `methods()`: every JSON-RPC method is reachable as
@@ -826,6 +833,29 @@ pub fn handle(state: &Shared, req: &Value, subscriber: Option<u64>) -> Option<Va
             let filter = (method == "hub.subscribe").then(|| Filter::from_params(&p));
             if let Some(sub) = s.subscribers.iter_mut().find(|x| x.id == sid) { sub.filter = filter; }
             ok(&id, json!({"subscribed": method == "hub.subscribe"}))
+        }
+        "algoglyph.kernels" => match algoglyph::flow(&["kernels"], None) { Ok(v) => ok(&id, v), Err(e) => err(&id, -32000, e) },
+        "algoglyph.kernel" => {
+            let Some(kernel) = p.get("kernel").and_then(Value::as_str) else { return Some(err(&id, -32602, "algoglyph.kernel needs kernel")) };
+            match algoglyph::flow(&["kernel", kernel, "-"], Some(p.get("input").unwrap_or(&json!({})))) { Ok(v) => ok(&id, v), Err(e) => err(&id, -32000, e) }
+        }
+        "algoglyph.track_plan" => {
+            let Some(inst) = p.get("instance").and_then(Value::as_str) else { return Some(err(&id, -32602, "algoglyph.track_plan needs instance")) };
+            let (instance, ops) = {
+                let s = state.lock().unwrap();
+                (s.instances.iter().find(|i| i.name == inst).cloned(), s.ops.get(inst).cloned().unwrap_or_default())
+            };
+            let Some(instance) = instance else { return Some(err(&id, -32602, format!("no instance {inst}"))) };
+            let read = |resource: &str| -> Result<Option<Value>, String> {
+                match resource_op(&ops, resource) {
+                    None => Ok(None),
+                    Some(op) => call(&instance, op, None, None).map(|v| Some(unwrap_data(&v))),
+                }
+            };
+            match algoglyph::track_input(&p, &read).and_then(|input| algoglyph::flow(&["kernel", "track-planning", "-"], Some(&input))) {
+                Ok(v) => ok(&id, v),
+                Err(e) => err(&id, -32000, e),
+            }
         }
         m => err(&id, -32601, format!("unknown method {m}")),
     };

@@ -40,6 +40,11 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
   the page) is not finished.
 - GraphQL reaches the hub the same way: `POST /graphql` and its SDL (`GET /graphql/schema`) are derived
   from the method table, one root field per method (I0065); none is named by hand.
+- Planning is AlgoGlyph's, reached through the hub: `algoglyph.kernels`, `algoglyph.kernel` and
+  `algoglyph.track_plan` are rows of the hub's method table (`hub_algoglyph.rs`), so they are in
+  OpenAPI, GraphQL and Rhai like every hub method. `track_plan` feeds the kernel a game's
+  `openttd://map`, `map/ways`, `map/terrain` and `economy/prices` verbatim; a planner prices a build
+  from `openttd://economy/prices` (what the game charges now), never from base prices typed into it (I0073).
 - Rhai reaches the hub the same way: `mcp-rhai --hub URL` registers one `hub_<method>` function per
   method of the hub's OpenAPI document; none is named in mcp-rhai.
 - No duplicate buildings: `hub.audit` judges every instance by the game's own catchment

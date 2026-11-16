@@ -22,6 +22,18 @@ namespace PrismaticMCP::World {
 nlohmann::json Map();
 
 /**
+ * openttd://map/terrain: per tile, as rows like Map(): slope bits, ground, the largest height step to a
+ * neighbour, what building there needs, the vehicles standing there, and one digest per row.
+ */
+nlohmann::json Terrain();
+
+/** openttd://economy/prices: every base price of the game, as it is now (inflated, scaled by the construction cost setting). */
+nlohmann::json Prices();
+
+/** openttd://bridges: every bridge type with its price multiplier, speed, lengths and whether it can be built now; the length limits of the game. */
+nlohmann::json Bridges();
+
+/**
  * Every station: id, name, tile, owner and facilities. Read-only, main thread.
  * @return The stations payload (the caller adds the resource envelope).
  */

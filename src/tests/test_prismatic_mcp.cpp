@@ -14,6 +14,12 @@
 #include "../prismatic_mcp/prismatic_mcp_menu.h"
 #include "../prismatic_mcp/prismatic_mcp_console.h"
 #include "../network/network.h"
+#include "../prismatic_mcp/prismatic_mcp_world.h"
+#include "../economy_type.h"
+#include "../map_func.h"
+#include "../tile_map.h"
+
+#include <set>
 
 #include "../safeguards.h"
 
@@ -265,6 +271,49 @@ TEST_CASE("A dedicated server has no toolbar, so nothing of the menu", "[prismat
 	CHECK(M::Requests()["requests"].empty());
 	_network_dedicated = was;
 	CHECK_FALSE(M::Tools().empty());
+}
+
+TEST_CASE("Every price is named once, in the game's order", "[prismatic_mcp]")
+{
+	auto p = PrismaticMCP::World::Prices();
+	REQUIRE(p["order"].size() == to_underlying(Price::End));
+	std::set<std::string> seen;
+	for (const auto &n : p["order"]) {
+		std::string name = n.get<std::string>();
+		CHECK(seen.insert(name).second);
+		CHECK(name.find_first_not_of("abcdefghijklmnopqrstuvwxyz_") == std::string::npos);
+		CHECK(p["prices"].contains(name));
+		CHECK(p["base"].contains(name));
+	}
+	CHECK(p["order"][to_underlying(Price::BuildRail)] == "build_rail");
+	CHECK(p["order"][to_underlying(Price::BuildBridge)] == "build_bridge");
+	CHECK(p["order"][to_underlying(Price::BuildTunnel)] == "build_tunnel");
+	CHECK(p["order"][to_underlying(Price::ClearTrees)] == "clear_trees");
+}
+
+TEST_CASE("The terrain shows a raised corner in the two rows it touches, and nowhere else", "[prismatic_mcp]")
+{
+	Map::Allocate(64, 64);
+	auto flat = PrismaticMCP::World::Terrain();
+	REQUIRE(flat["slopes"].size() == 64);
+	CHECK(flat["slopes"][10].get<std::string>() == std::string(128, '0'));
+	CHECK(flat["ground"][10].get<std::string>() == std::string(64, 'b')); // a zeroed clear tile: grass of density 0
+	CHECK(flat["buildable"][10].get<std::string>() == std::string(64, '.'));
+	CHECK(flat["vehicles"][10].get<std::string>() == std::string(64, '.'));
+	CHECK(flat["gradients"][10].get<std::string>() == std::string(64, '0'));
+
+	SetTileHeight(TileXY(10, 10), 1);
+	auto raised = PrismaticMCP::World::Terrain();
+	/* The height of tile (10,10) is the north corner of (10,10), the west of (9,10)... : rows 9 and 10 change. */
+	for (uint y = 0; y < 64; y++) {
+		bool changed = raised["row_digests"][y] != flat["row_digests"][y];
+		CHECK(changed == (y == 9 || y == 10));
+	}
+	CHECK(raised["slopes"][10].get<std::string>().substr(20, 2) != "00");
+	CHECK(raised["gradients"][10].get<std::string>()[10] == '1');
+	CHECK(raised["gradients"][10].get<std::string>()[11] == '1');
+	CHECK(raised["gradients"][10].get<std::string>()[12] == '0');
+	CHECK(raised["gradients"][9].get<std::string>()[10] == '1');
 }
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

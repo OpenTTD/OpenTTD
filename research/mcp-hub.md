@@ -39,6 +39,9 @@ tools/research/mcp-rhai/target/release/mcp-hub --panel http://127.0.0.1:8800   #
 | `hub.subscribe` | `instances?`, `kinds?` | then `hub.event` notifications `{instance, event}`; a kind matches by prefix (`game` takes `game.month`) |
 | `hub.unsubscribe` | | |
 | `hub.audit` | | per instance: duplicate station pairs, and its depots with the duplicate depot pairs |
+| `algoglyph.kernels` | | every AlgoGlyph kernel with the input it reads (`flow -- kernels`) |
+| `algoglyph.kernel` | `kernel`, `input` | that kernel's answer on that input (`flow -- kernel <id> -`) |
+| `algoglyph.track_plan` | `instance`, `from {x, y, dir}`, `to {x, y, dir?}`, `costs?`, `rules?` | AlgoGlyph track-planning on that game's `openttd://map`, `map/ways`, `map/terrain` and `economy/prices`, passed verbatim: status, cost, `money` in the game's money, counts (curves, inclines, foundations, bridges, tunnels, cleared, crossings), pieces, runs |
 
 The hub describes itself in `GET /openapi.json`, derived from its method table, with Swagger UI over
 it at `GET /docs` (the panel's own `swagger-ui-dist`, so `npm ci` in `tools/research/mcp-panel` first), and serves the
@@ -46,6 +49,27 @@ read-only methods as GET routes too (`/hub/instances`, `/hub/catalogue`, `/hub/a
 
 `id` is a panel's `operationId`, `tool:<name>` or `resource:<uri>`. A streaming route
 (`text/event-stream`) is not called: subscribe instead.
+
+## AlgoGlyph: the planning engine
+
+AlgoGlyph (`$MCP_ALGOGLYPH_DIR`, default `~/dev/algoglyph`) is the planning engine; the hub only
+forwards (`tools/research/mcp-rhai/src/hub_algoglyph.rs`). `algoglyph.track_plan` reads the four
+resources of the named game back to back (track-planning checks the terrain's slopes against the
+map's heights, so they must be one moment) and pipes them with `from` and `to` to the kernel; a
+resource the game does not publish is left out and the kernel uses its defaults. A kernel runs at
+most 120 s. Bridges, tunnels, diagonal (half-tile) track, inclines, foundations and level crossings
+are the kernel's, and so is the price model: with `prices` the unit is the game's `build_rail`, and
+bridges and tunnels follow `CmdBuildBridge` / `CmdBuildTunnel`.
+
+```bash
+curl -s http://127.0.0.1:8790/hub/rpc -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","id":1,
+  "method":"algoglyph.track_plan","params":{"instance":"<name from hub.instances>",
+  "from":{"x":68,"y":9,"dir":"NE"},"to":{"x":45,"y":9}}}'
+```
+
+Measured on a live 256x256 game (seed 7, construction cost low): a 22-tile straight was found in
+3.5 s, cost 22, money 1650 (22 x the game's build_rail of 75); a 92-tile route across rough ground
+in 2.8 s, with 6 curves, 4 inclines and 9 cleared tiles.
 
 ## GraphQL
 

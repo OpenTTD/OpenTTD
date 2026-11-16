@@ -1,0 +1,31 @@
+id: I0073
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The map per tile for planning, the game's live prices and bridges, and AlgoGlyph's track planner through the hub"
+slug: map-terrain
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A planner reads, per tile, what building there costs and needs (slope, ground, gradient, buildable, vehicles, with a digest per row to re-read only what changed), what the game charges now for every build (openttd://economy/prices), every bridge type (openttd://bridges), and gets a priced rail route with bridges, tunnels and diagonal track from AlgoGlyph's track-planning through hub method algoglyph.track_plan."
+why: "The owner: the map must be interpreted in detail for our fork, per tile slope, height, material, surroundings, gradients, connections, occupancy, updated continuously, all for planning; a planning engine of its own with bridges, tunnels and diagonal curves, externalised via AlgoGlyph; plan with the cost of construction and equipment. plan.rs typed base prices that leave out inflation and the construction cost setting."
+scope:
+  - "src/prismatic_mcp/**"
+  - "src/tests/test_prismatic_mcp.cpp"
+  - "tools/research/mcp-rhai/**"
+  - "research/**"
+  - ".ai/**"
+depends_on:
+  - I0072
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "openttd://map/terrain gives slopes, ground, gradients, buildable, vehicles and row_digests per row, with its encoding; a unit test raises one corner and only the two rows it touches change digest"
+  - "openttd://economy/prices names every Price (generated from the enum, static_assert on its count) with the game's current price and its base; a unit test checks the names"
+  - "openttd://bridges lists every bridge type with price, speed, lengths and availability"
+  - "algoglyph.track_plan, algoglyph.kernel and algoglyph.kernels are hub methods (OpenAPI, GraphQL, Rhai); cargo tests cover the input assembly and answer parsing"
+  - "Live: a game's four resources go through the hub to track-planning and come back found and priced in the game's money"
+validation:
+  - "tools/gate.sh research"
+  - "cargo test --offline --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'

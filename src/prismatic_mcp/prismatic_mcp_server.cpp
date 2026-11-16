@@ -239,6 +239,9 @@ json ResourceTowns(); // defined below, next to the view tools that scroll to a 
 json ResourceMap();   // the whole map (prismatic_mcp_world.cpp)
 json ResourceStations();
 json ResourceDepots();
+json ResourceTerrain();
+json ResourcePrices();
+json ResourceBridges();
 json ResourceMenu();
 json ResourceRequests();
 json ResourceEngines();  // every engine on offer now (prismatic_mcp_world.cpp)
@@ -248,7 +251,7 @@ json ResourceCoverage(); // what clients exercised, against the published catalo
 json ResourceWays();  // road ways and rail tracks per tile (prismatic_mcp_graph.cpp)
 json ResourceWorldGraph(); // the world as one typed graph (prismatic_mcp_graph.cpp)
 
-const std::array<ResourceEntry, 16> RESOURCES = {{
+const std::array<ResourceEntry, 19> RESOURCES = {{
 	{"openttd://mcp/status", "MCP server status", "Embedded MCP server runtime status", &ResourceMcpStatus},
 	{"openttd://meta/build", "Build metadata", "OpenTTD version, revision and feature gates", &ResourceMetaBuild},
 	{"openttd://game/state", "Game state", "Mode, pause, map size and object counts", &ResourceGameState},
@@ -258,6 +261,9 @@ const std::array<ResourceEntry, 16> RESOURCES = {{
 	{"openttd://map", "Map", "The whole map: tile types, heights and owners, one string per row, encoding included", &ResourceMap},
 	{"openttd://stations", "Stations", "Every station: id, name, tile, x/y, owner, facilities, town", &ResourceStations},
 	{"openttd://vehicles", "Vehicles", "Every primary vehicle: id, type, owner, engine, tile, state, cargo, profits, orders", &ResourceVehicles},
+	{"openttd://map/terrain", "Map terrain", "Per tile, as rows: slope bits, ground (grass, rough, rocks, fields, snow, desert, trees, sea, canal, river, coast), the largest height step to a neighbour, what building there needs, the vehicles standing there, and a digest per row so a planner re-reads only what changed; encoding included", &ResourceTerrain},
+	{"openttd://economy/prices", "Prices", "Every base price of the game by name (build_rail, build_road, build_bridge, build_tunnel, build_foundation, terraform, clear_*, build_station_*, build_depot_*, infrastructure_* ...) as it is now: inflated, scaled by the construction cost setting and NewGRF multipliers; with each start value", &ResourcePrices},
+	{"openttd://bridges", "Bridges", "Every bridge type: name, price multiplier, speed, min and max length, whether it can be built now; the game's bridge and tunnel length limits and the cost formula", &ResourceBridges},
 	{"openttd://map/ways", "Map ways", "Per tile: where a road vehicle can leave it (road bits, stops, depots, crossings, bridges, tunnels) its rail tracks and foundation; every bridge and tunnel with both ends; vehicles per tile; encoding included", &ResourceWays},
 	{"openttd://world/graph", "World graph", "The world as one typed graph (world-graph/v1): towns, industries, stations, vehicles; near_town, serves_town, order and cargo_link edges", &ResourceWorldGraph},
 	{"openttd://depots", "Depots", "Every depot: id, tile, x/y, owner, type, town, entrance tile; and the game's service reach in tiles", &ResourceDepots},
@@ -278,6 +284,27 @@ json ResourceStations()
 {
 	json env = MakeEnvelope();
 	env["data"] = World::Stations();
+	return env;
+}
+
+json ResourceTerrain()
+{
+	json env = MakeEnvelope();
+	env["data"] = World::Terrain();
+	return env;
+}
+
+json ResourcePrices()
+{
+	json env = MakeEnvelope();
+	env["data"] = World::Prices();
+	return env;
+}
+
+json ResourceBridges()
+{
+	json env = MakeEnvelope();
+	env["data"] = World::Bridges();
 	return env;
 }
 
