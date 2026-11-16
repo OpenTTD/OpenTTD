@@ -616,6 +616,8 @@ pub fn openapi() -> Value {
             "/hub/audit": get("hubAudit", "Duplicate stations per instance (one owner, a shared facility, overlapping catchments)"),
             "/openapi.json": get("hubOpenapi", "This document"),
             "/docs": get("hubDocs", "Swagger UI over this document"),
+            "/": get("hubPage", "The hub page: every instance, operation, event and audit, from static/components.js"),
+            "/viz": get("hubWorldView", "The World view: the world graph, the terrain in 3D and the economy (static/viz.html)"),
         }
     })
 }

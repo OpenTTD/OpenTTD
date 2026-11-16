@@ -437,6 +437,10 @@ mod tests {
         let docs = ureq::get(&format!("http://{addr}/docs")).call().unwrap().into_string().unwrap();
         assert!(docs.contains("'/openapi.json'"), "Swagger UI reads the hub's own document");
         assert!(spec.pointer("/paths/~1docs/get").is_some(), "and /docs is itself in it");
+        // Every page the hub serves is an operation of its own document.
+        for page in ["~1", "~1viz"] {
+            assert!(spec.pointer(&format!("/paths/{page}/get")).is_some(), "page {page} missing from OpenAPI");
+        }
         let audit: Value = ureq::get(&format!("http://{addr}/hub/audit")).call().unwrap().into_json().unwrap();
         assert_eq!(audit[0]["duplicates"].as_array().unwrap().len(), 1);
     }
