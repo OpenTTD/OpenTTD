@@ -23,4 +23,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-16T19:46:20Z
+started_at: 2026-11-16T19:45:50Z
+started_event: sha256:835fdf851924ad3bdc617726885f7a680773dcad9963612dd5c36ed5da0d515b
+verified_at: 2026-11-16T19:46:07Z
+verified_event: sha256:16ffc6d402f096238becc86adeefcc49158be75b2ef81e54004e7645abc447f2
+completed_at: 2026-11-16T19:46:20Z
+completed_event: sha256:36e69444335bd54326281507ec5b7de62df2f9df5793d1845c28c629de09ce18
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/bridge-live-check"
+    result: "PASS, exit 0. Boots a dedicated server of this tree (build-research-baseline-release/openttd, -D -g -x, fixed seed=1, -I OpenGFX), brings up the standalone openttd-prismatic-bridge (Python/FastAPI) against admin port 13977 with a throwaway secrets.cfg password, POSTs /ai/start {PrismaticAI, intercity=0,aggressiveness=75}, and polls /companies until the AI company owns a vehicle. Live result: company 0 'Slunton Transport' (is_ai) busses=1 within ~20-40s; full stack script->bridge(HTTP)->Admin Network(TCP)->OpenTTD->PrismaticAI exercised on today's binary. ARCHITECTURE.md status line + §3 + §4 brought in line with the phase table (Phase 2 Done), Phase 2 row now cites this on-this-tree reproduction instead of only the July sibling-repo figure. shellcheck clean; surfaces 340 docs 0 findings."
+    commit: 65c041fe2b11e272e5559def0b10858941837273
+    recorded_at: 2026-11-16T19:46:09Z

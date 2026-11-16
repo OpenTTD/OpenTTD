@@ -56,7 +56,7 @@ GRAPHICS_SET="${GRAPHICS_SET:-OpenGFX}"
 ADMIN_PORT="${ADMIN_PORT:-13977}"
 SERVER_PORT="${SERVER_PORT:-13979}"
 BRIDGE_PORT="${BRIDGE_PORT:-18730}"
-VEHICLE_TIMEOUT="${VEHICLE_TIMEOUT:-180}"
+VEHICLE_TIMEOUT="${VEHICLE_TIMEOUT:-240}"
 # A fixed map seed makes the run reproducible; AI_SETTINGS forces the reliable
 # single-town route (intercity=0 skips cross-terrain road pathfinding) and a
 # high aggressiveness so buses are bought quickly. Both are overridable.
@@ -73,8 +73,12 @@ fail() { printf '[bridge-live-check] FAIL: %s\n' "$*" >&2; }
 pick_binary() {
 	if [ -n "${BINARY:-}" ]; then printf '%s' "$BINARY"; return; fi
 	local b
-	for b in build/openttd build-research/openttd build-gate-research/openttd \
-	         build-research-baseline-release/openttd build-research-mcp/openttd; do
+	# Prefer an optimized build: a Debug build runs the game loop slowly and can
+	# fall behind real time under machine load, so the AI reaches "buses bought"
+	# in fewer game ticks per wall-clock second and the check turns flaky. A
+	# release/RelWithDebInfo build keeps up, so the timing is reliable.
+	for b in build-research-baseline-release/openttd build/openttd \
+	         build-research/openttd build-gate-research/openttd build-research-mcp/openttd; do
 		if [ -x "$REPO_ROOT/$b" ]; then printf '%s' "$REPO_ROOT/$b"; return; fi
 	done
 	return 1
@@ -116,6 +120,7 @@ log "repo        $REPO_ROOT"
 log "binary      $BINARY"
 log "bridge repo $BRIDGE_REPO"
 log "graphics    $GRAPHICS_SET (pinned via -I)"
+log "seed        $SEED (fixed for reproducibility); ai settings: $AI_SETTINGS"
 log "ports       admin=$ADMIN_PORT server=$SERVER_PORT bridge=$BRIDGE_PORT"
 log "output      $OUT_DIR"
 
@@ -123,7 +128,7 @@ log "output      $OUT_DIR"
 # Start from the bridge's local test-rig config, then override the three network
 # fields and pin the graphics set. python3 does the edit so it is section-aware.
 BRIDGE_REPO="$BRIDGE_REPO" ADMIN_PORT="$ADMIN_PORT" SERVER_PORT="$SERVER_PORT" \
-ADMIN_PASSWORD="$ADMIN_PASSWORD" GRAPHICS_SET="$GRAPHICS_SET" CFG="$CFG" \
+ADMIN_PASSWORD="$ADMIN_PASSWORD" GRAPHICS_SET="$GRAPHICS_SET" SEED="$SEED" CFG="$CFG" \
 python3 - <<'PY'
 import os, re
 src = open(os.path.join(os.environ["BRIDGE_REPO"], "server", "openttd.cfg"), encoding="utf-8").read()
@@ -135,6 +140,7 @@ over = {
         "server_advertise": "false",
     },
     "graphicsset": {"name": os.environ["GRAPHICS_SET"]},
+    "game_creation": {"generation_seed": os.environ["SEED"]},
 }
 lines = src.splitlines()
 section = None
@@ -222,7 +228,13 @@ trap cleanup EXIT INT TERM
 # stdin from /dev/null: -D reads console from stdin and treats EOF as shutdown,
 # so a closed/inherited stdin would make it quit; /dev/null keeps it alive idle.
 log "starting dedicated server..."
-( cd "$REPO_ROOT" && exec "$BINARY" -D -g -x -c "$CFG" -I "$GRAPHICS_SET" ) \
+# SERVER_DEBUG adds -d facilities (e.g. SERVER_DEBUG="script=3 net=2") for diagnosis.
+DBG_ARGS=()
+if [ -n "${SERVER_DEBUG:-}" ]; then
+	# shellcheck disable=SC2206
+	for f in $SERVER_DEBUG; do DBG_ARGS+=(-d "$f"); done
+fi
+( cd "$REPO_ROOT" && exec "$BINARY" -D -g -x -c "$CFG" -I "$GRAPHICS_SET" "${DBG_ARGS[@]}" ) \
 	</dev/null >"$SERVER_LOG" 2>&1 &
 SERVER_PID=$!
 
@@ -258,13 +270,37 @@ fi
 log "bridge is up and connected to OpenTTD ($B, pid $BRIDGE_PID)"
 
 # --- start the AI through the bridge ----------------------------------------
-log "starting PrismaticAI via POST /ai/start ..."
+log "starting PrismaticAI via POST /ai/start (settings: $AI_SETTINGS) ..."
 curl -fsS -X POST "$B/ai/start" -H 'content-type: application/json' \
-	-d '{"ai":"PrismaticAI"}' | tee "$OUT_DIR/ai-start.json"; echo
+	-d "{\"ai\":\"PrismaticAI\",\"settings\":\"$AI_SETTINGS\"}" | tee "$OUT_DIR/ai-start.json"; echo
 
 # --- poll /companies until a company owns a vehicle -------------------------
-log "polling /companies until vehicles > 0 (timeout ${VEHICLE_TIMEOUT}s)..."
+# Detection lives in its own file so no shell quoting mangles the Python: it
+# reads the /companies JSON on stdin, writes the winning company to WINNER_JSON
+# and exits 0 the moment any company owns a vehicle, else reports progress and
+# exits 1.
 WINNER_JSON="$OUT_DIR/companies-winner.json"
+DETECT_PY="$OUT_DIR/_detect.py"
+cat >"$DETECT_PY" <<'PY'
+import sys, json, os
+cs = json.load(sys.stdin)
+def veh(c):
+    return sum((c.get(k) or 0) for k in ("trains", "lorries", "busses", "planes", "ships"))
+win = next((c for c in cs if veh(c) > 0), None)
+if win is None:
+    best = max((veh(c) for c in cs), default=0)
+    print("  ... %d company(ies), max vehicles so far = %d" % (len(cs), best), file=sys.stderr)
+    sys.exit(1)
+json.dump({"company": win, "vehicles": veh(win)}, open(os.environ["WINNER_JSON"], "w"), indent=2)
+print("  company %s (%s) owns %d vehicle(s): busses=%s lorries=%s trains=%s planes=%s ships=%s; "
+      "value=%s performance=%s" % (
+          win["id"], win["name"], veh(win),
+          win.get("busses"), win.get("lorries"), win.get("trains"),
+          win.get("planes"), win.get("ships"),
+          win.get("company_value"), win.get("performance")))
+PY
+
+log "polling /companies until vehicles > 0 (timeout ${VEHICLE_TIMEOUT}s)..."
 deadline=$(( $(date +%s) + VEHICLE_TIMEOUT ))
 found=1
 while [ "$(date +%s)" -lt "$deadline" ]; do
@@ -272,22 +308,7 @@ while [ "$(date +%s)" -lt "$deadline" ]; do
 	kill -0 "$BRIDGE_PID" 2>/dev/null || { fail "bridge died during the run"; break; }
 	body="$(curl -fsS "$B/companies" 2>/dev/null || true)"
 	if [ -n "$body" ]; then
-		if printf '%s' "$body" | WINNER_JSON="$WINNER_JSON" python3 -c '
-import sys, json, os
-cs = json.load(sys.stdin)
-def veh(c):
-    return sum((c.get(k) or 0) for k in ("trains","lorries","busses","planes","ships"))
-win = next((c for c in cs if veh(c) > 0), None)
-if win is None:
-    best = max((veh(c) for c in cs), default=0)
-    print(f"  ... {len(cs)} company(ies), max vehicles so far = {best}", file=sys.stderr)
-    sys.exit(1)
-json.dump({"company": win, "vehicles": veh(win)}, open(os.environ["WINNER_JSON"], "w"), indent=2)
-print(f"  company {win[\"id\"]} ({win[\"name\"]}) owns {veh(win)} vehicle(s): "
-      f"busses={win.get(\"busses\")} lorries={win.get(\"lorries\")} trains={win.get(\"trains\")} "
-      f"planes={win.get(\"planes\")} ships={win.get(\"ships\")}; "
-      f"value={win.get(\"company_value\")} performance={win.get(\"performance\")}")
-'; then
+		if printf '%s' "$body" | WINNER_JSON="$WINNER_JSON" python3 "$DETECT_PY"; then
 			found=0
 			break
 		fi
@@ -300,6 +321,8 @@ done
 	echo "bridge-live-check $TS"
 	echo "binary:      $BINARY"
 	echo "graphics:    $GRAPHICS_SET"
+	echo "seed:        $SEED"
+	echo "ai_settings: $AI_SETTINGS"
 	echo "ports:       admin=$ADMIN_PORT server=$SERVER_PORT bridge=$BRIDGE_PORT"
 	echo "server_log:  $SERVER_LOG"
 	echo "bridge_log:  $BRIDGE_LOG"
