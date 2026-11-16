@@ -58,10 +58,39 @@ curl -fsS --max-time 5 "$PANEL/api/log" >/dev/null 2>&1 || \
   curl -fsS --max-time 5 "$PANEL/" >/dev/null 2>&1 || {
     echo "mcp-intent-check: no panel at $PANEL (start one, or pass --panel)" >&2; exit 3; }
 
-# The settings the bot actually has. Derived from info.nut, never listed here, so a renamed
-# setting fails this check instead of silently producing a plan the bot cannot take.
-mapfile -t BOT_SETTINGS < <(grep -oE 'name = "[a-z_]+"' "$INFO_NUT" | sed 's/.*"\(.*\)"/\1/' | sort -u)
-[[ ${#BOT_SETTINGS[@]} -gt 0 ]] || { echo "mcp-intent-check: info.nut named no settings" >&2; exit 3; }
+# The settings the bot actually has, never listed here, so a renamed setting fails this check
+# instead of silently producing a plan the bot cannot take.
+#
+# Preferred source is the RUNNING GAME: GET /api/bots -> companies[].settings[].name comes from
+# openttd.ai.list, so it carries every declared setting including the ones info.nut builds in a
+# loop (`name = "fr" + i + "_from"` declares fr2_* through fr8_*, which appear nowhere literally).
+# The info.nut regex is only a fallback, and it CANNOT see those, so under the fallback an unknown
+# key is a warning rather than a failure -- a check that fails on a setting the bot really has
+# would be worse than one that misses a typo. openttd-80 caught this; the first version failed
+# falsely the moment a build proposed a second line.
+SETTINGS_SOURCE="info.nut (literal names only)"
+mapfile -t BOT_SETTINGS < <(
+  curl -fsS --max-time 10 "$PANEL/api/bots" 2>/dev/null |
+  python3 -I -c '
+import json, sys
+try:
+    d = json.load(sys.stdin)
+except Exception:
+    sys.exit(0)
+for c in d.get("companies") or []:
+    for s in c.get("settings") or []:
+        if s.get("name"):
+            print(s["name"])
+' | sort -u
+)
+if [[ ${#BOT_SETTINGS[@]} -gt 0 ]]; then
+  SETTINGS_SOURCE="the running game (/api/bots, openttd.ai.list)"
+  STRICT_SETTINGS=1
+else
+  mapfile -t BOT_SETTINGS < <(grep -oE 'name = "[a-z_0-9]+"' "$INFO_NUT" | sed 's/.*"\(.*\)"/\1/' | sort -u)
+  STRICT_SETTINGS=0
+fi
+[[ ${#BOT_SETTINGS[@]} -gt 0 ]] || { echo "mcp-intent-check: no settings from the game or $INFO_NUT" >&2; exit 3; }
 
 fails=0
 note() { printf '%s\n' "$*"; }
@@ -89,7 +118,7 @@ intent() {
 }
 
 note "panel      $PANEL"
-note "bot settings from info.nut: ${BOT_SETTINGS[*]}"
+note "bot settings from $SETTINGS_SOURCE: ${BOT_SETTINGS[*]}"
 
 # --- 4. the vocabulary is derived --------------------------------------------------------------
 vocab="$(intent "najdi nejproduktivnejsi les" 2>/dev/null)"
@@ -128,10 +157,11 @@ for case in "${CASES[@]}"; do
   note "    reading: ${reading#*] }"
 
   json="$(intent "$text" 2>/dev/null)"
-  python3 -I - "$json" "$want_action" "$want_order" "$want_subjects" "${BOT_SETTINGS[*]}" <<'PY' || fails=$((fails + 1))
+  python3 -I - "$json" "$want_action" "$want_order" "$want_subjects" "${BOT_SETTINGS[*]}" "$STRICT_SETTINGS" <<'PY' || fails=$((fails + 1))
 import json, sys
 d = json.loads(sys.argv[1] or "{}")
-want_action, want_order, want_subjects, settings = sys.argv[2], sys.argv[3], sys.argv[4], set(sys.argv[5].split())
+want_action, want_order, want_subjects = sys.argv[2], sys.argv[3], sys.argv[4]
+settings, strict = set(sys.argv[5].split()), sys.argv[6] == "1"
 i, a = d.get("intent") or {}, d.get("answer") or {}
 bad = []
 if i.get("action") != want_action:
@@ -151,8 +181,11 @@ if want_action == "build":
     if not keys:
         bad.append("a build sentence returned no settings")
     unknown = keys - settings
-    if unknown:
+    if unknown and strict:
         bad.append(f"settings the bot does not have: {sorted(unknown)}")
+    elif unknown:
+        print(f"    note: {sorted(unknown)} not seen in info.nut's literal names; it declares "
+              f"some in a loop, so this is not failed while no bot is running")
     if any(v is None for v in ((a.get("build") or {}).get("settings") or {}).values()):
         bad.append("a setting is null — the bot would take a plan that names nothing")
     print(f"    build: {json.dumps((a.get('build') or {}).get('settings'), sort_keys=True)}")
