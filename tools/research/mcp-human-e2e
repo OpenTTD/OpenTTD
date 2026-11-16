@@ -20,12 +20,13 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
-TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --test) TEST=1; shift ;;
     --rounds) ROUNDS="$2"; shift 2 ;;
     --minutes) MINUTES="$2"; shift 2 ;;
+    --borrow-below) BORROW_BELOW="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
     --speed) SPEED="$2"; shift 2 ;;
     --window) WINDOW="$2"; shift 2 ;;
@@ -118,11 +119,12 @@ echo "==> the client plays company $COMPANY"
 
 BEFORE="$(owned_roads "$COMPANY")"
 "$HUMAN" --token "$CLIENT_TOKEN" check
+# The player's own account of what it did goes to the screen and to the run's log (kept on failure).
 if [[ "$MINUTES" -gt 0 ]]; then
   # A whole game: expand, add buses where they earn, borrow, watch (economy.rs).
-  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES"
+  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" game "$MINUTES" ${BORROW_BELOW:+--borrow-below "$BORROW_BELOW"} 2>&1 | tee "$TMP/human.log"
 else
-  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS"
+  "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" play "$ROUNDS" 2>&1 | tee "$TMP/human.log"
 fi
 sleep 2
 AFTER="$(owned_roads "$COMPANY")"
@@ -165,6 +167,12 @@ if [[ "$TEST" == 1 ]]; then
   call "$CLIENT_TOKEN" openttd.ui.click_tile "$ST" | jq -e '.scrolled == true' >/dev/null && sleep 0.5   # off screen: the view jumped
   call "$CLIENT_TOKEN" openttd.ui.click_tile "$ST" | jq -e '.opened | length >= 1' >/dev/null \
     && echo "PASS ui.click_tile on our station opened its window" || { echo "FAIL ui.click_tile $ST"; fail=1; }
+  BUS="$(read_res "$CLIENT_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c)][0].id // empty')"
+  if [[ -n "$BUS" ]]; then
+    call "$CLIENT_TOKEN" openttd.view.follow "{\"vehicle\":$BUS}" | jq -e --argjson v "$BUS" '.following_vehicle == $v' >/dev/null \
+      && echo "PASS the camera follows our bus $BUS" || { echo "FAIL view.follow"; fail=1; }
+    call "$CLIENT_TOKEN" openttd.view.follow '{"vehicle":null}' >/dev/null
+  fi
   call "$CLIENT_TOKEN" openttd.ui.type '{"text":"a"}' | jq -e '.ok == true' >/dev/null \
     && echo "PASS ui.type typed through the keyboard path" || { echo "FAIL ui.type"; fail=1; }
   STOPS="$(read_res "$SERVER_TOKEN" openttd://stations | jq --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c and (.facilities | index("bus")))] | length')"
@@ -192,6 +200,15 @@ if [[ "$TEST" == 1 ]]; then
     echo "PASS every published tool and resource of the server and the client was exercised"
   else
     "$COVERAGE" --report "$SERVER_TOKEN" "$CLIENT_TOKEN" | grep UNCOVERED; echo "FAIL coverage after the scenario"; fail=1
+  fi
+  if [[ -n "$BORROW_BELOW" ]]; then
+    LOAN="$(read_res "$SERVER_TOKEN" openttd://companies | jq --argjson c "$COMPANY" '[.data.companies[] | select(.id == $c)][0].loan // empty')"
+    if [[ -n "$LOAN" ]]; then
+      [[ "$LOAN" -gt "${START_LOAN:-0}" ]] && echo "PASS the loan grew through the finances window ($START_LOAN -> $LOAN)" || { echo "FAIL the loan did not grow ($START_LOAN -> $LOAN)"; fail=1; }
+    else
+      grep -q 'short of cash: borrow' "$TMP/human.log" && ! grep -q 'could not borrow' "$TMP/human.log" \
+        && echo "PASS the player borrowed through the finances window (log; openttd://companies has no loan field)" || { echo "FAIL no borrowing seen"; fail=1; }
+    fi
   fi
   INJ="$(call "$CLIENT_TOKEN" openttd.input.state '{}' | jq -r '.injected.moves')"
   [[ "$INJ" -gt 100 ]] && echo "PASS the cursor moved ($INJ pointer updates)" || { echo "FAIL the cursor barely moved ($INJ)"; fail=1; }

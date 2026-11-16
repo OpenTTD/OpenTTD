@@ -38,7 +38,9 @@ commands:
   connect [<town> <town>]    connect two towns by road (default: the largest and a neighbour)
   serve <town> <town>        a bus service: road if needed, two stops, a depot, a bus with orders
   play [<rounds>]            look around, then serve town pairs round after round
-  game [<minutes>]           run the company: expand, add buses where they earn, borrow, watch";
+  game [<minutes>] [--borrow-below N]
+                             run the company: expand, add buses where they earn, borrow (asking
+                             the owner first) while money is under N, watch";
 
 fn arg_num<T: std::str::FromStr>(args: &[String], i: usize) -> Result<T, String> {
     args.get(i).ok_or_else(|| USAGE.to_string())?.parse::<T>().map_err(|_| format!("not a number: {}", args[i]))
@@ -102,7 +104,12 @@ fn run() -> Result<(), String> {
         }
         "game" => {
             let minutes: u64 = if args.len() > 1 { arg_num(&args, 1)? } else { 20 };
-            let services = hand.play_game(minutes, economy::Policy::default())?;
+            let mut policy = economy::Policy::default();
+            // --borrow-below N: borrow (asking the owner first) whenever money is under N.
+            if let Some(i) = args.iter().position(|a| a == "--borrow-below") {
+                policy.borrow_below = arg_num(&args, i + 1)?;
+            }
+            let services = hand.play_game(minutes, policy)?;
             for s in &services {
                 println!("service {}: {} bus(es), stops {:?}, depot {:?}", s.name, s.buses, s.stops, s.depot);
             }

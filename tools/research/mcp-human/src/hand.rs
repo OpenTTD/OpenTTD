@@ -182,17 +182,6 @@ impl Hand {
         Ok(wd)
     }
 
-    /// The first open dropdown's first selectable item, if a dropdown is open.
-    pub fn dropdown_item(&self, index: usize) -> Result<Option<Target>, String> {
-        for w in self.windows()? {
-            if let Some(items) = w.get("items").and_then(Value::as_array) {
-                let selectable: Vec<&Value> = items.iter().filter(|i| i.get("selectable") == Some(&Value::Bool(true))).collect();
-                return Ok(selectable.get(index).and_then(|i| i.get("rect")).and_then(Target::from_rect));
-            }
-        }
-        Ok(None)
-    }
-
     /// Glide the camera so a tile is centred, and wait until the view settles.
     pub fn focus(&mut self, x: usize, y: usize) -> Result<(), String> {
         let at = self.mcp.call("openttd.ui.locate", json!({"x": x, "y": y}))?;
@@ -421,5 +410,37 @@ impl Hand {
             self.think(120.0, 260.0);
         }
         Ok(())
+    }
+
+    /// Open a toolbar menu and pick an entry the way a person does with a menu that closes on
+    /// release: press on the button and hold, glide down to the entry, let go over it.
+    pub fn menu_pick(&mut self, needle: &str, pick: impl Fn(&[Value]) -> Option<usize>) -> Result<(), String> {
+        let (_, wd) = self.find_widget(needle)?.ok_or_else(|| format!("nothing on screen says '{needle}'"))?;
+        let t = wd.get("rect").and_then(Target::from_rect).ok_or("widget has no rectangle")?;
+        self.say(&format!("open the menu '{needle}'"));
+        self.move_to(t)?;
+        self.think(80.0, 160.0);
+        self.button("down", "left", &[])?;
+        let started = Instant::now();
+        let items = loop {
+            if let Some(items) = self.windows()?.iter().find_map(|w| w.get("items").and_then(Value::as_array).cloned()) {
+                break items;
+            }
+            if started.elapsed() > Duration::from_secs(3) {
+                self.button("up", "left", &[])?;
+                return Err(format!("the menu '{needle}' did not open"));
+            }
+            sleep(Duration::from_millis(80));
+        };
+        let selectable: Vec<Value> = items.into_iter().filter(|i| i.get("selectable") == Some(&Value::Bool(true))).collect();
+        let k = pick(&selectable).ok_or_else(|| { let _ = self.button("up", "left", &[]); format!("the menu '{needle}' has no such entry") })?;
+        let target = selectable[k].get("rect").and_then(Target::from_rect).ok_or("menu entry has no rectangle")?;
+        let from = self.cursor()?;
+        for smp in self.model.drag(from, (target.x, target.y), &mut self.rng) {
+            self.pointer(smp.x, smp.y)?;
+            sleep(Duration::from_millis(smp.wait_ms));
+        }
+        self.think(80.0, 160.0);
+        self.button("up", "left", &[])
     }
 }

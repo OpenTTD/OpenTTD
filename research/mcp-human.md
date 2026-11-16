@@ -40,7 +40,7 @@ motion. They use the same armed driver path and each answers what changed:
 | Tool | What it does |
 |---|---|
 | `openttd.ui.press` | Find a window by class, number or caption, and a widget in it by index, text or tooltip, or `type` (e.g. `close_box`). Raise the window if it is covered, click, and answer the windows opened and closed and the active tool. |
-| `openttd.ui.choose` | Pick an item of the open dropdown by position or by result. The game applies a dropdown choice a few frames later, so wait for its effect. |
+| `openttd.ui.choose` | Pick an item of the open dropdown by position or by result. The game applies a dropdown choice a few frames later, so wait for its effect. A toolbar menu that closes on release (finances, companies) needs drag-select: `openttd.ui.press` with `hold: true`, then `ui.choose`, which lets go over the item, as a person drags down a menu. |
 | `openttd.ui.type` | Type text into the focused edit box. |
 | `openttd.ui.close` | Close a window by its close box. |
 | `openttd.ui.click_tile` | Click a map tile when it is on screen. An off-screen tile makes the view jump there and answers `scrolled: true`; call again. Applying the jump at once would redraw on the game thread, which crashed the client when tried. |
@@ -198,10 +198,12 @@ both research options ON, macOS), with `--rounds 2`:
 
 ## Limits and next steps
 
-- **Economy loop, early.** The loop serves new pairs and adds buses to services that earn. It
-  borrows only after asking the owner, and reuses its own stops and depots instead of building
-  next to them. Replacing old vehicles, repaying the loan and using `waiting` cargo from the world
-  graph to place buses are next.
+- **Economy loop.** The loop serves new pairs and adds buses to services that earn. It borrows
+  only after asking the owner, and reuses its own stops and depots instead of building next to
+  them. Verified with `--borrow-below 150000`: the player asked, got no answer, closed the
+  question, then borrowed three times through the finances window (100,000 → 129,808). A 30-minute
+  game ran short of cash on its own. Replacing old vehicles, repaying the loan and placing buses by
+  `waiting` cargo are next.
 - **No visible cursor in screenshots.** OpenTTD's screenshots exclude the cursor sprite, which
   is drawn only on screen.
 - **English text.** Widgets are found by English UI text (the default language). Another

@@ -52,7 +52,12 @@ impl Hand {
     /// Borrow once through the finances window: open it, press Borrow, close it.
     pub fn borrow(&mut self) -> Result<(), String> {
         self.escape()?;
-        self.click_widget(FINANCES)?;
+        // The finances button opens a menu of companies that closes on release: hold, glide to
+        // this company's entry (its value is the company id), let go.
+        let me = self.state()?.get("local_company").and_then(Value::as_i64).unwrap_or(0);
+        self.menu_pick(FINANCES, |items| {
+            items.iter().position(|i| i.get("result").and_then(Value::as_i64) == Some(me)).or(if items.is_empty() { None } else { Some(0) })
+        })?;
         self.think(500.0, 900.0);
         let w = self.wait_window("finances")?;
         self.click_in(&w, BORROW)?;
@@ -128,9 +133,12 @@ impl Hand {
                     continue;
                 }
                 self.say("short of cash: borrow");
-                match self.borrow() {
-                    Ok(()) => borrows += 1,
-                    Err(e) => self.say(&format!("could not borrow: {e}")),
+                // A failed attempt counts too: the player never retries without end.
+                borrows += 1;
+                if let Err(e) = self.borrow() {
+                    self.say(&format!("could not borrow: {e}"));
+                    let _ = self.escape();
+                    let _ = self.tidy();
                 }
                 continue;
             }

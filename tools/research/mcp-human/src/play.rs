@@ -28,11 +28,8 @@ impl Hand {
         if self.find_widget(AUTOROAD)?.is_some() {
             return Ok(());
         }
-        self.click_widget(ROAD_MENU)?;
-        self.think(250.0, 500.0);
-        let item = self.dropdown_item(0)?.ok_or("the road menu did not open")?;
-        self.say("choose the road type");
-        self.click(item)?;
+        // Hold on the road button, glide to the first road type, let go (works for every menu kind).
+        self.menu_pick(ROAD_MENU, |items| if items.is_empty() { None } else { Some(0) })?;
         self.think(300.0, 600.0);
         if self.find_widget(AUTOROAD)?.is_none() {
             return Err("the road toolbar did not open".into());

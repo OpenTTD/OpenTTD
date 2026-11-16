@@ -421,8 +421,12 @@ json Difference(const json &after, const json &before)
 	return out;
 }
 
-/** Press and release a button at a screen point through the driver's path (the cursor moves there first). */
-void Click(int x, int y, ControlInput button, const json &mods)
+/**
+ * Press (and unless `hold`, release) a button at a screen point through the driver's path; the
+ * cursor moves there first. Held, the button stays down until a later release: how a person opens
+ * a menu that closes on release and picks its entry by letting go over it.
+ */
+void Click(int x, int y, ControlInput button, const json &mods, bool hold = false)
 {
 	MovePointer(x, y);
 	AsDriver([&] {
@@ -430,13 +434,27 @@ void Click(int x, int y, ControlInput button, const json &mods)
 		_input_pressed.Set(button);
 		if (button != ControlInput::Left) _input_clicked.Set(button);
 		HandleMouseEvents();
-		_input_pressed.Reset(button);
-		if (button == ControlInput::Left) _input_clicked.Reset(ControlInput::Left);
-		HandleMouseEvents();
+		if (!hold) {
+			_input_pressed.Reset(button);
+			if (button == ControlInput::Left) _input_clicked.Reset(ControlInput::Left);
+			HandleMouseEvents();
+		}
 		ClearModifiers();
 	});
 	_state.last = _cursor.pos;
 	_state.presses++;
+}
+
+/** Let go of a held left button where the cursor is now moved to. */
+void Release(int x, int y)
+{
+	MovePointer(x, y);
+	AsDriver([&] {
+		_input_pressed.Reset(ControlInput::Left);
+		_input_clicked.Reset(ControlInput::Left);
+		HandleMouseEvents();
+	});
+	_state.last = _cursor.pos;
 }
 
 } // namespace
@@ -483,9 +501,10 @@ json Tools()
 		{"properties", {{"index", {{"type", "integer"}}}, {"text", {{"type", "string"}}}, {"type", {{"type", "string"}}}}}};
 	arr.push_back({{"name", "openttd.ui.press"},
 		{"description", "GUI only, armed: press a widget of a window, found by what it is or says; raises the window when covered, clicks through the driver's input path, and answers what changed (the widget's state, windows opened and closed, the active tool)"},
-		{"inputSchema", Schema({{"window", window}, {"widget", widget}, {"button", {{"type", "string"}, {"enum", {"left", "right"}}}}, {"mods", mods}}, json::array({"window", "widget"}))}});
+		{"inputSchema", Schema({{"window", window}, {"widget", widget}, {"button", {{"type", "string"}, {"enum", {"left", "right"}}}}, {"mods", mods},
+			{"hold", {{"type", "boolean"}, {"description", "keep the button down (a menu that closes on release); ui.choose then lets go over the item"}}}}, json::array({"window", "widget"}))}});
 	arr.push_back({{"name", "openttd.ui.choose"},
-		{"description", "GUI only, armed: choose an item of the open dropdown, by its position among the selectable items (index) or by the value it returns (result)"},
+		{"description", "GUI only, armed: choose an item of the open dropdown, by its position among the selectable items (index) or by the value it returns (result); with the button held (ui.press hold) it lets go over the item"},
 		{"inputSchema", {{"type", "object"}, {"properties", {{"index", {{"type", "integer"}}}, {"result", {{"type", "integer"}}}}},
 			{"anyOf", json::array({json{{"required", json::array({"index"})}}, json{{"required", json::array({"result"})}}})}}}});
 	arr.push_back({{"name", "openttd.ui.type"},
@@ -630,7 +649,7 @@ std::optional<json> Call(const std::string &name, const json &args)
 		if (FindWindowFromPt(x, y) != w) w = BringWindowToFrontById(w->window_class, w->window_number);
 		if (w == nullptr || FindWindowFromPt(x, y) != w) return Error("the widget stays covered by another window");
 		json before = WindowList();
-		Click(x, y, args.value("button", "left") == "right" ? ControlInput::Right : ControlInput::Left, args.value("mods", json::array()));
+		Click(x, y, args.value("button", "left") == "right" ? ControlInput::Right : ControlInput::Left, args.value("mods", json::array()), args.value("hold", false));
 		json after = WindowList();
 		json out = InputState();
 		out["pressed"] = found;
@@ -656,7 +675,10 @@ std::optional<json> Call(const std::string &name, const json &args)
 			}
 			if (pick == nullptr) return Error("the open dropdown has no such item");
 			json before = WindowList();
-			Click((pick->rect.left + pick->rect.right) / 2, (pick->rect.top + pick->rect.bottom) / 2, ControlInput::Left, json::array());
+			const int px = (pick->rect.left + pick->rect.right) / 2, py = (pick->rect.top + pick->rect.bottom) / 2;
+			/* A held button (ui.press with hold) is let go over the item, as a person drags down a
+			 * menu that closes on release; otherwise the item is clicked. */
+			if (IsLeftButtonDown()) Release(px, py); else Click(px, py, ControlInput::Left, json::array());
 			json out = InputState();
 			out["chosen"] = pick->result;
 			out["opened"] = Difference(WindowList(), before);
