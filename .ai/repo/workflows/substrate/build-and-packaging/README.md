@@ -12,8 +12,10 @@ composition: extend
 order: 210
 tracks:
   - 'CMakeLists.txt'
+  - 'src/CMakeLists.txt'
   - 'src/**/CMakeLists.txt'
   - 'cmake/**'
+  - 'media/CMakeLists.txt'
   - 'media/**/CMakeLists.txt'
   - 'bin/CMakeLists.txt'
   - 'src/rev.*'

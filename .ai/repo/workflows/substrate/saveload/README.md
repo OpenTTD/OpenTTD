@@ -110,6 +110,7 @@ savegames, pointer fix-up and `AfterLoadGame` conversion. Also the TTD/TTO old l
 
 ## Decisions, rules and knowledge
 
+- Saved `StringID`s must not shift (knowledge candidate `the-savegame-string-range-never-gets-new-ids`): [strings and languages](../strings-and-languages/README.md).
 - The `GLOG` and `CHTS` chunks, and cheats leaving no gamelog entry (knowledge candidate `cheats-are-not-recorded-in-the-gamelog`): [goals, story, news and history](../goals-story-news-and-history/README.md).
 - `Group::children`, group statistics and `RoadVehicle::disaster_vehicle` are not saved; they are rebuilt after load: [consists, groups and timetables](../consists-groups-and-timetables/README.md).
 - `src/core/pool_type.hpp:PoolItem::CreateAtIndex` (via `src/core/pool_func.hpp`) raises a corrupt-savegame error for an out-of-range or reused saved index: [core utilities](../core-utilities/README.md).

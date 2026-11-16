@@ -88,6 +88,7 @@ a regular command. `regression/` drives that API end to end under ctest. All ups
 
 ## Decisions, rules and knowledge
 
+- `src/game/game_text.cpp` reuses strgen's reader and writer at runtime for Game Script `lang/*.txt`: [strings and languages](../strings-and-languages/README.md).
 - GS-driven deity commands and the goal-question and story-button events, raised only on the server: [goals, story, news and history](../goals-story-news-and-history/README.md).
 - Upstream architecture: [ADR 0021](../../../adrs/0021-ai-and-game-scripts-run-in-embedded-squirrel-against-a-gener.md) (script API and compat), [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep).
 - Neighbouring maps: [goals-story-news-and-history](../goals-story-news-and-history/README.md), [unit-tests](../unit-tests/README.md).

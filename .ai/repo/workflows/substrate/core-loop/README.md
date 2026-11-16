@@ -114,6 +114,7 @@ inside a tick (vehicles, tiles, economy) or the network frame logic, only their 
 
 ## Decisions, rules and knowledge
 
+- Search paths, ini files, crash logs and the driver registry: [platform and files](../platform-and-files/README.md).
 - In `GameLoop`: sound and music driver loops ([sound and music](../sound-and-music/README.md)); sprite LRU and palette animation, skipped while paused ([graphics and sprites](../graphics-and-sprites/README.md)). `src/driver.cpp:DriverFactoryBase::SelectDriverImpl` autoprobes priorities from high to 1, so null sound and music are fallbacks while null video (priority 0) is never probed.
 - Timer consumers mapped elsewhere: the disaster timer and the timetable's tick/economy split in [consists, groups and timetables](../consists-groups-and-timetables/README.md); `InitializeGame` reset order in [original data and game init](../original-data-and-game-init/README.md).
 - `GenerateWorld` phases, seeds and heightmaps in detail: [world generation](../world-generation/README.md).

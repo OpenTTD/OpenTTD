@@ -84,6 +84,7 @@ command procs (`src/command.cpp`, `*_cmd.cpp`); it only queues, ships and replay
 
 ## Decisions, rules and knowledge
 
+- Version stamping and network compatibility of dirty-tree builds (knowledge candidate `a-build-from-a-modified-tree-cannot-join-a-clean-build`): [build and packaging](../build-and-packaging/README.md).
 - Authentication and encryption use vendored monocypher ([third-party](../third-party/README.md)); `src/tests/test_network_crypto.cpp` is their only automated test ([unit tests](../unit-tests/README.md)).
 - Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep), [ADR 0019](../../../adrs/0019-settings-are-declared-once-in-ini-tables-that-settingsgen-co.md) (settings tables).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.research-code-is-gated-and-labelled`, `project.never-report-unrun-validation-as-pass`, `project.no-upstream-interaction`.
