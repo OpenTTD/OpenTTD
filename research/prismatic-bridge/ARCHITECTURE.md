@@ -93,7 +93,7 @@ This document doesn't resolve that discrepancy by picking one and silently rewri
 | **Rewrite the whole bridge natively in Rust** (e.g. `axum`) | Retire FastAPI/uvicorn entirely. | Large — a full rewrite of a repo that already works and is tested. |
 | **Move the admin-network client into `prismatic-platform` as an Elixir app with a Rustler NIF** | The original proposal in this document's first draft — `native/openttd_admin_protocol/` following the `prismatic_audio`/`prismatic_quantum_security` convention (confirmed to already exist in that codebase), Elixir owning the socket, Rust NIF doing pure encode/decode only (to avoid blocking a BEAM scheduler thread — see the original design rationale preserved below). Would mean retiring the standalone bridge repo, or keeping it only for non-Elixir consumers. | Large — duplicates working functionality inside a different repo/language, only justified if `prismatic-platform` itself needs to own the connection rather than call an HTTP API. |
 
-**No option has been chosen.** Given a working, tested implementation already exists, the default going forward is "don't rewrite it without a concrete reason" — but this table exists so the choice is explicit next time it comes up, not re-litigated from scratch.
+**Decided (2026-11-16, I0012): rewrite the whole bridge natively in Rust (`axum` + `tokio`).** The owner chose the native-Rust option over keeping Python, the PyO3 codec accelerator, and the Elixir+Rustler-in-platform option — a standalone service has no BEAM to bind a Rustler NIF to, so a single native Rust service is what "Rust" means for this component. The HTTP contract and localhost behaviour are preserved; FastAPI/uvicorn and the hand-written `bridge/protocol.py` codec are retired. The decision, its rationale and the three rejected options with their costs are recorded in [ADR 0032](../../.ai/repo/adrs/0032-the-bridge-s-admin-protocol-client-is-a-native-rust-service-.md); the rewrite itself is follow-up implementation work in the `openttd-prismatic-bridge` repo, with the existing Python implementation and its 8/8 tests as the conformance oracle. Until that lands, the Python bridge remains the running implementation.
 
 <details>
 <summary>Original Rustler/NIF design rationale (preserved for reference, not currently applied)</summary>
@@ -158,7 +158,7 @@ Each remaining phase should be approved before starting — this table tracks re
 - Relying on `CmdLogging` as a load-bearing mechanism — confirmed unstable-by-design (§2).
 - The secure `AdminJoinSecure` (X25519) auth handshake — the bridge repo currently implements only the plain/insecure `AdminJoin` path, fine for localhost dev, explicitly flagged in its own README as not done for anything beyond that.
 - Headless town-data JSON import — unconfirmed, deferred to its own research spike before Phase 4 commits to it.
-- Rewriting the working Python bridge in Rust — not decided either way, see §3.1.
+- Rewriting the working Python bridge in Rust — **decided** (native `axum`+`tokio`, I0012 / [ADR 0032](../../.ai/repo/adrs/0032-the-bridge-s-admin-protocol-client-is-a-native-rust-service-.md)); the rewrite is follow-up implementation in the bridge repo, not this session, and preserves the HTTP contract (§3.1).
 - Building Phases 2–5 in this session — that's real feature/integration work in (at least) two repositories and needs its own explicit go-ahead per phase.
 
 ## 7. Open questions / risks

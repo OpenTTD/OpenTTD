@@ -21,4 +21,17 @@ validation:
 evidence_required:
 - validation_run
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: 2026-11-16T18:59:38Z
+started_at: 2026-11-16T18:57:11Z
+started_event: sha256:80f7c2cb295e17fc0760ecf8c2e626d1f04f0e8c14303af486e09a023aa9aadd
+verified_at: 2026-11-16T18:59:27Z
+verified_event: sha256:4f0e37324b6c0f1fbaa2ea3e6c6859ad81de2e0abb0cfcb831aaa7a0f9b4bd83
+completed_at: 2026-11-16T18:59:38Z
+completed_event: sha256:303551cc363a4bfaaee1baa5cfadeb2ba60085ad4cd564091f09ecc9d1a34f69
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "majordomus adr check"
+    result: "ADR 0032 (the bridge's admin-protocol client is a native Rust axum+tokio service, not Python/FastAPI) records the owner's I0012 choice, the three rejected options and their costs. adr check: 31 decisions examined, every identity unique, every status known, every reference resolves, exit 0. ARCHITECTURE.md §3.1 and §6 updated from 'no option chosen' to the decision, pointing to ADR 0032. surfaces check: 339 documents, 0 findings."
+    commit: 80c0750d431319d438e03e32ece4927063629f2f
+    recorded_at: 2026-11-16T18:59:29Z
