@@ -22,7 +22,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T07:52:56Z
+updated_at: 2026-11-16T12:06:02Z
 started_at: 2026-11-15T23:50:32Z
 started_event: sha256:e59f6c950b075567517ecb0edbcfdd465d91f970e6e97973b643b3e033df1a82
 evidence:
@@ -90,3 +90,10 @@ evidence:
     artifact: "commits b230e00eab, 2b30aa1fa6"
     commit: 2b30aa1fa6cfdbf9cea40da3ff254874f3b64558
     recorded_at: 2026-11-16T07:52:56Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; mcp-human-e2e --test --rounds 1 --fleet; mcp-human-e2e --test --minutes 6 --renew-age 45"
+    result: "pass: vehicle replacement through the interface: vehicle list from the toolbar, send to depot, buy a copy (orders copied), start it, drag the old one onto the depot's sell button; bus 5 renewed by copy 6 (same engine, 2 orders), copy sold (money 86858 -> 91161 on the server); in a 6-minute game the player renewed bus 5 at 89 days on its own (copy 7); gate PASS 119/119 (646 assertions); e2e 36/36 and 35 PASS. Every I0045 item is now verified."
+    artifact: "commit ca8acc23a0"
+    commit: ca8acc23a0b4e5099abf9a4c739cd4329304bb00
+    recorded_at: 2026-11-16T12:06:02Z
