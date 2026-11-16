@@ -5,6 +5,8 @@
 use crate::hand::{Hand, Target};
 use crate::plan::{self, Axis, Grid, Ways};
 use serde_json::{json, Value};
+use std::thread::sleep;
+use std::time::{Duration, Instant};
 
 /// What the road toolbar's tools say, in the game's own words (tooltips of the open toolbar).
 const ROAD_MENU: &str = "build road infrastructure";
@@ -186,8 +188,7 @@ impl Hand {
     /// buses, pick the first, buy it, give it its orders with Go To, start it, tidy up.
     pub fn buy_bus(&mut self, depot: (usize, usize), stops: [(usize, usize); 2]) -> Result<(), String> {
         self.escape()?;
-        self.click_tile(depot.0, depot.1)?;
-        let depot_window = self.wait_window("depot")?;
+        let depot_window = self.open_depot(depot)?;
         self.think(300.0, 600.0);
         self.click_in(&depot_window, NEW_VEHICLES)?;
         self.think(400.0, 800.0);
@@ -274,6 +275,35 @@ impl Hand {
         self.tidy()?;
         let _ = depot_window;
         Ok(())
+    }
+
+    /// Open a depot's window by clicking it. A bus standing on the depot tile can catch the click
+    /// (its own window opens instead), so try a few points of the tile, as a person clicks again a
+    /// little higher, closing whatever wrong window opened.
+    pub fn open_depot(&mut self, depot: (usize, usize)) -> Result<Value, String> {
+        let base = self.reveal(depot.0, depot.1)?;
+        let offsets = [(0, 0), (0, -base.h / 3), (-base.w / 6, -base.h / 4), (base.w / 6, -base.h / 4)];
+        for (k, (dx, dy)) in offsets.iter().enumerate() {
+            let before: Vec<String> = self.windows()?.iter().filter_map(|w| w.get("caption").and_then(Value::as_str).map(str::to_string)).collect();
+            let t = Target { x: base.x + dx, y: base.y + dy, w: (base.w / 4).max(4), h: (base.h / 4).max(4) };
+            self.say(&format!("click the depot at {},{}{}", depot.0, depot.1, if k > 0 { " again, a little elsewhere" } else { "" }));
+            self.click(t)?;
+            let started = Instant::now();
+            while started.elapsed() < Duration::from_millis(1500) {
+                if let Some(w) = self.window("depot")? {
+                    return Ok(w);
+                }
+                sleep(Duration::from_millis(120));
+            }
+            // Close what this click opened instead (a vehicle's window, a station's).
+            for w in self.windows()? {
+                let cap = w.get("caption").and_then(Value::as_str).unwrap_or("").to_string();
+                if !cap.is_empty() && !before.contains(&cap) {
+                    self.close(&w)?;
+                }
+            }
+        }
+        Err(format!("the depot at {},{} did not open", depot.0, depot.1))
     }
 
     /// Ids of this client's company's vehicles (openttd://vehicles, as the client sees the game).

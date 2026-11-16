@@ -173,6 +173,14 @@ mcp-human --token <client-token.json> --seed 7 play 3        # look around, serv
 
 `--speed 2` plays twice as fast; the same `--seed` moves the same way.
 
+**One motion model, two implementations.** `mcp-human golden` prints the motion model's golden
+vectors, committed as `tools/research/mcp-human/golden/human-pointing.v1.json`: 39 cases across
+distances 0–2000 px, target widths 4–80, both overshoot branches and drags, with every sample.
+A unit test fails when the model drifts from the file. AlgoGlyph ports the model as its
+`human-pointing` kernel, with the same xorshift64* draws and the same rounding, and checks it
+against the same file. The player can then call that kernel (`MCP_ALGOGLYPH_DIR`) and fall back to
+its own implementation, bit for bit the same.
+
 ## End to end
 
 ```bash

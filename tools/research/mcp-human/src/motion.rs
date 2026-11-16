@@ -165,6 +165,47 @@ impl Model {
     }
 }
 
+/// The golden vectors: inputs across distances, widths, seeds and both overshoot branches, plus
+/// drags, with the samples this model gives for each. The shared parity reference for any other
+/// implementation of the model (AlgoGlyph's human-pointing kernel) and for this one's own
+/// regressions: `mcp-human golden` prints it, and tests/golden.rs keeps the committed file honest.
+pub fn golden() -> serde_json::Value {
+    use serde_json::json;
+    let model = Model::default();
+    let mut cases: Vec<serde_json::Value> = Vec::new();
+    let mut push = |from: (i32, i32), to: (i32, i32), width: f64, seed: u64, drag: bool| {
+        let mut rng = Rng::new(seed);
+        let samples = if drag { model.drag(from, to, &mut rng) } else { model.path(from, to, width, &mut rng) };
+        cases.push(json!({
+            "from": [from.0, from.1], "to": [to.0, to.1], "width": width, "seed": seed, "drag": drag,
+            "samples": samples.iter().map(|s| json!([s.x, s.y, s.wait_ms])).collect::<Vec<_>>(),
+        }));
+    };
+    // The unit tests' own inputs.
+    push((0, 0), (900, 400), 40.0, 7, false);
+    push((500, 500), (520, 505), 40.0, 7, false);
+    push((10, 10), (10, 10), 40.0, 7, false);
+    push((0, 0), (1000, 0), 40.0, 3, false);
+    push((0, 0), (1000, 0), 40.0, 11, false);
+    push((0, 0), (700, 300), 30.0, 42, false);
+    // Distances 0..2000 (both sides of the overshoot threshold), widths 4..80, several seeds.
+    for (i, d) in [0, 1, 5, 40, 150, 279, 281, 600, 1200, 2000].iter().enumerate() {
+        for (j, w) in [4.0, 20.0, 80.0].iter().enumerate() {
+            push((100, 100), (100 + d, 100 + d / 3), *w, 1000 + (i * 10 + j) as u64, false);
+        }
+    }
+    // Drags.
+    push((200, 200), (200, 200), 0.0, 5, true);
+    push((200, 200), (260, 230), 0.0, 6, true);
+    push((200, 200), (1400, 800), 0.0, 9, true);
+    json!({
+        "schema": "human-pointing-golden/v1",
+        "model": {"fitts_a": model.fitts_a, "fitts_b": model.fitts_b, "rate_hz": model.rate_hz, "curvature": model.curvature,
+                  "overshoot_from": model.overshoot_from, "tremor": model.tremor, "speed": model.speed},
+        "cases": cases,
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -207,6 +248,12 @@ mod tests {
         let p = m.path((0, 0), (1000, 0), 40.0, &mut rng);
         assert!(p.iter().any(|s| s.x > 1000), "no overshoot past the target");
         assert_eq!(p.last().map(|s| s.x), Some(1000));
+    }
+
+    #[test]
+    fn the_committed_golden_vectors_are_what_this_model_gives() {
+        let committed: serde_json::Value = serde_json::from_str(include_str!("../golden/human-pointing.v1.json")).unwrap();
+        assert_eq!(committed, golden(), "the model changed: regenerate with `mcp-human golden > golden/human-pointing.v1.json` and tell AlgoGlyph");
     }
 
     #[test]

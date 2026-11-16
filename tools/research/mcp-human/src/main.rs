@@ -25,6 +25,7 @@ use serde_json::json;
 const USAGE: &str = "usage: mcp-human --token <client-token.json> [--seed N] [--speed F] <command>
 
 commands:
+  golden                     print the motion model's golden vectors (no token needed)
   check                      the client offers the UI and input tools, and input is armed
   state                      cursor, buttons, active tool and tile selection (JSON)
   windows                    every window on screen with its widgets (JSON)
@@ -59,6 +60,11 @@ fn run() -> Result<(), String> {
             "-h" | "--help" => { println!("{USAGE}"); return Ok(()); }
             _ => break,
         }
+    }
+    if args.first().map(String::as_str) == Some("golden") {
+        // The motion model's golden vectors (no game needed): the parity reference for AlgoGlyph.
+        println!("{}", serde_json::to_string_pretty(&motion::golden()).unwrap_or_default());
+        return Ok(());
     }
     if token.is_empty() || args.is_empty() {
         return Err(USAGE.to_string());
