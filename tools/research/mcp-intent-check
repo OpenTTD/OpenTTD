@@ -77,8 +77,11 @@ try:
     d = json.load(sys.stdin)
 except Exception:
     sys.exit(0)
-for c in d.get("companies") or []:
-    for s in c.get("settings") or []:
+# /api/bots keys: source, ais, running, live. A running bot is running[] = {id, name, money,
+# ai, running, settings[]}; `companies` does not exist. Verified against the live endpoint:
+# 24 settings including fr2_from..fr4_to, the loop-declared ones no regex over info.nut sees.
+for b in d.get("running") or []:
+    for s in b.get("settings") or []:
         if s.get("name"):
             print(s["name"])
 ' | sort -u
@@ -87,7 +90,10 @@ if [[ ${#BOT_SETTINGS[@]} -gt 0 ]]; then
   SETTINGS_SOURCE="the running game (/api/bots, openttd.ai.list)"
   STRICT_SETTINGS=1
 else
-  mapfile -t BOT_SETTINGS < <(grep -oE 'name = "[a-z_0-9]+"' "$INFO_NUT" | sed 's/.*"\(.*\)"/\1/' | sort -u)
+  # `name = "fr_from",` is a declaration; `name = "fr" + i + "_from",` is a concatenation whose
+  # first fragment is not a setting. Anchoring on the comma that closes the field drops the
+  # invented `fr` that the unanchored pattern produced.
+  mapfile -t BOT_SETTINGS < <(grep -oE 'name = "[a-z_0-9]+",' "$INFO_NUT" | sed 's/.*"\(.*\)",/\1/' | sort -u)
   STRICT_SETTINGS=0
 fi
 [[ ${#BOT_SETTINGS[@]} -gt 0 ]] || { echo "mcp-intent-check: no settings from the game or $INFO_NUT" >&2; exit 3; }
