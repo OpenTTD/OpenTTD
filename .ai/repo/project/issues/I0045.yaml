@@ -22,7 +22,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T04:54:41Z
+updated_at: 2026-11-16T05:27:30Z
 started_at: 2026-11-15T23:50:32Z
 started_event: sha256:e59f6c950b075567517ecb0edbcfdd465d91f970e6e97973b643b3e033df1a82
 evidence:
@@ -69,3 +69,10 @@ evidence:
     artifact: "commit 9a9e7cd016"
     commit: d753ab4559da954edab217c8c8352c2c874a0fa2
     recorded_at: 2026-11-16T04:54:41Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; MCP_ALGOGLYPH_DIR=algoglyph feature/exact-prices mcp-human-e2e --test --rounds 1 --rail 80 --seed 31"
+    result: "partial: a rail line through the interface: two 3-tile stations at the planner's sites, 64 pieces of AlgoGlyph-planned track laid with the rail tools, every piece in the game's rail bits, a walk over the server's rails joins the stations (70 tiles); plan-then-execute repay via action-plan; gate PASS 115/115 (519 assertions); e2e 35/35. Remaining: depot and train on the line, bridges/tunnels, vehicle replacement."
+    artifact: "commit f7da2ef260"
+    commit: f7da2ef26053757dec6757599da2eeb64b9158c1
+    recorded_at: 2026-11-16T05:27:30Z
