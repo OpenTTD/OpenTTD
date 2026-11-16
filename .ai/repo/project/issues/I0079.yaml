@@ -31,3 +31,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-16'
+started_at: 2026-11-16T18:49:43Z
+started_event: sha256:796a4f0a0f41628a9229abd1f7236164b7266c919375e8b1686f27e7bfd56d22
+updated_at: 2026-11-16T18:49:55Z
+verified_at: 2026-11-16T18:49:47Z
+verified_event: sha256:f443b8bb1a81138347daafb6f06c4a49689355e44d8ccd863d203469eaad8a31
+completed_at: 2026-11-16T18:49:55Z
+completed_event: sha256:201af1ab2fde70001c6dfcc3d68897682c0dc5fcde9f3166a183f0231860b6ad
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/noirgfx/noirgfx check --rebuild"
+    result: "all checks passed (41): obg checksums equal OpenTTD's data-section md5 for six GRFs; obg fallback = 1 (selectable, never the automatic default); every OpenGFX sprite kept with number, size, offsets; one 32bpp alternative per zoom per restyled sprite; ground sprites 3981/1011/1333 invariant under tile-lattice shifts at 1x/2x/4x; rebuild from scratch byte-identical, tar md5 f50545e170c9381873c82dfff1c6f84a, Blender re-rendering 1113 Kenney sprites from models verified by noirgfx curate against kenney-curated.sha256. In game: fresh config gives OpenGFX, -I NoirGFX and [graphicsset] name = NoirGFX give NoirGFX; noirgfx check (40 PASS) re-run at f1d5361e0e"
+    artifact: "research/noirgfx/README.md"
+    commit: f1d5361e0e18dd101619068a75dfbaeced4ae220
+    recorded_at: 2026-11-16T18:49:46Z
