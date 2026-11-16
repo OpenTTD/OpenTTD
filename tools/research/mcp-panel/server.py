@@ -236,10 +236,12 @@ class Game:
             params = {"budget": budget} if budget else {}
             # With AlgoGlyph present the best rail lines are priced on the real map (track-planning)
             # before the portfolio is chosen, so the bot builds what pays on this terrain.
-            # Six lines of each list, so the bot has priced lines to fall back on.
-            track = ["--track", "6"] if os.environ.get("MCP_ALGOGLYPH_DIR") else []
-            r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", "--limit", "10",
-                                "--params", json.dumps(params), *track], capture_output=True, text=True, timeout=240)
+            # Eight lines of each list, as many as the bot's freight lines (fr_* to fr8_*), so every
+            # line it may get is priced on the map.
+            track = ["--track", "8"] if os.environ.get("MCP_ALGOGLYPH_DIR") else []
+            # Thirty candidates, so up to eight freight lines with distinct producers can be found.
+            r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", "--limit", "30",
+                                "--params", json.dumps(params), *track], capture_output=True, text=True, timeout=300)
             out = json.loads(r.stdout) if r.returncode == 0 else {}
         except Exception as e:  # noqa: BLE001 - the bot still starts
             self.event("ai", f"planner not reachable for the bot: {e}")
@@ -289,9 +291,11 @@ class Game:
                 continue
             if c not in chosen and mode not in ("rail", "freight_rail"):
                 continue
-            if c.get("kind") == "freight" and mode == "freight_rail" and len(freight_lines) < 4:
-                # Up to four freight lines in the planner's order, one per producer (a producer's
-                # cargo is counted once): fr_* is built at once, fr2_* to fr4_* when money allows.
+            if c.get("kind") == "freight" and mode == "freight_rail" and len(freight_lines) < 8:
+                # Up to eight freight lines in the planner's order, one per producer (a producer's
+                # cargo is counted once): fr_* is built at once, fr2_* to fr8_* when money allows.
+                # The game ignores a setting the AI does not declare (ScriptConfig::SetSetting), so
+                # a bot that declares fewer simply uses the first ones.
                 producer = num(c["producer"]["id"])
                 if producer in freight_producers:
                     continue

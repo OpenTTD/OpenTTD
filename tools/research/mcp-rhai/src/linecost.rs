@@ -40,6 +40,16 @@ pub fn price(candidates: &mut [Value], base: &Value, station_cost: f64, rail_til
         .filter(|&i| candidates[i]["stations"]["from"].is_object() && candidates[i]["stations"]["to"].is_object())
         .collect();
     order.sort_by(|&a, &b| num(&candidates[b], "score").total_cmp(&num(&candidates[a], "score")));
+    // At most two lines per producer: the portfolio admits one line per producer, so pricing the
+    // same mine's lines over and over left the bot with three priced lines out of eight.
+    let mut per_source: std::collections::HashMap<String, usize> = Default::default();
+    order.retain(|&i| {
+        let key = candidates[i].pointer("/producer/id").map(|v| v.to_string())
+            .unwrap_or_else(|| format!("{}-{}", candidates[i]["a"]["id"], candidates[i]["b"]["id"]));
+        let n = per_source.entry(key).or_insert(0);
+        *n += 1;
+        *n <= 2
+    });
     let mut log = Vec::new();
     for i in order.into_iter().take(limit) {
         let c = &mut candidates[i];

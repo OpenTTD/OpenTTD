@@ -433,15 +433,19 @@ kernel's cost is in plain-track tile units and becomes money through `rail_tile`
 says which. When AlgoGlyph is present, the panel's bot start prices three lines of each list this
 way and reports them in the `~` console. PrismaticAI lays track over land, level crossings, bridges and tunnels
 (knowledge `the-bots-rail-pathfinder-lays-plain-track-only`). Each bridge or tunnel is accepted by
-the game itself in test mode before it enters the path. So the bot start prices six lines of each
+the game itself in test mode before it enters the path. So the bot start prices eight lines of each
 list and gives the bot any line that track-planning found a route for. A built tunnel has not been
 seen yet: no map so far needed one. An unpriced
 line is not handed over blind, and `~` says why a chosen line was passed over. Without that, a
 duel's planned company built no train in 36 months. A station site is taken only when its exit
 leads on, the same rule in `sites.rs` and in the bot: ahead or to either side is land or a road.
 
-The bot gets up to four freight lines, `fr_*` and then `fr2_*` to `fr4_*`, in the planner's order and
-one per producer. It builds the first at once. Each next one is built when its bank balance plus
+The bot gets up to eight freight lines, `fr_*` and then `fr2_*` to `fr8_*`, in the planner's order
+and one per producer (it had four; after them a 21-year duel left its money idle). The bot start
+asks the planner for 30 candidates and prices eight lines of each list, at most two per producer, so
+the priced lines cover as many producers as possible. On seed 20208 that gave five freight lines,
+two of them for other cargos than coal. The game ignores a setting an AI does not declare, so a
+panel may pass more lines than a bot version takes. It builds the first at once. Each next one is built when its bank balance plus
 loan headroom reach `line_budget` (default 80000). More trains on one single-track line without
 signals would deadlock, so idle money goes into more lines. On seed 20208 the bot built the second
 coal line (254 tiles) right after the first, at 47703 money and 190000 headroom.
