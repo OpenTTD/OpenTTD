@@ -49,6 +49,6 @@ issues, the same derivation `majordomus plan` makes.
 | [Internal state is observable through gated instrumentation, and every experiment records how it ran](milestones/internals-are-observable-with-recorded-provenance.yaml) | 8/8 | — |
 | [Prismatic steers a company in a live game through the standalone bridge](milestones/prismatic-steers-a-company-through-the-bridge.yaml) | 5/5 | — |
 | [An agent reads and, with approval, changes the game over an embedded MCP server](milestones/an-agent-reaches-the-game-over-mcp.yaml) | 49/51 | I0036, I0041 |
-| [The fork is published, supervised by Majordomus, and current with upstream](milestones/the-fork-is-published-supervised-and-current.yaml) | 6/7 | I0034 |
+| [The fork is published, supervised by Majordomus, and current with upstream](milestones/the-fork-is-published-supervised-and-current.yaml) | 7/7 | — |
 | [NoirGFX: the game in the owner's SIG NIHL noir, from OpenGFX and Kenney models](milestones/the-game-wears-the-owners-noir-style.yaml) | 1/1 | — |
 <!-- surfaces:end ai-plan -->

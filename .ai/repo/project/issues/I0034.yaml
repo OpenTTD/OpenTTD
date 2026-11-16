@@ -42,6 +42,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-15T22:01:30Z
+updated_at: 2026-11-16T23:39:51Z
 started_at: 2026-11-15T22:01:30Z
 started_event: sha256:59958a1ff654468bbc1df20b64eb38eda2c1d3516c11403ed858b647bd8c76a7
+verified_at: 2026-11-16T23:39:48Z
+verified_event: sha256:bf92ea37a45c124df22c2768b9f2b5fc10992be6446a19a31988507a8fb4a2be
+completed_at: 2026-11-16T23:39:51Z
+completed_event: sha256:fb3b7b9f59a0dac91e60e047c2d37edc53ee9573230e01655020e859b0c26595
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/surfaces/surfaces check (clean tree, a stale ai-plan region, a dangling link); tools/surfaces/surfaces site; gh run list --repo korczis/OpenTTD --workflow surfaces.yml --branch master; majordomus doctor"
+    result: "pass: surfaces check exits 0 on the tree, 10 on a stale region (.ai/repo/project/README.md ai-plan) and 10 on a dangling link; surfaces.yml runs on push and pull_request and publishes from the default branch: run for 5178ffc8d succeeded in Check and build, Publish the site and Publish the wiki ('The wiki now matches 5178ffc8d'); https://korczis.github.io/OpenTTD/ and ai.html answer 200, the .ai page carries a derived Mermaid flowchart and ECharts views (data-chart) whose state lives in the URL (URLSearchParams, history.replaceState); pre-commit runs the check and majordomus doctor reports surfaces-on-commit wired; the generator names no repository and surfaces site writes target/web/site/surface.json as web-surface/v1."
+    artifact: "tools/surfaces/surfaces.py"
+    commit: 5178ffc8d25ad0c048ed4eb152c27ec1e19114a3
+    recorded_at: 2026-11-16T23:39:47Z
