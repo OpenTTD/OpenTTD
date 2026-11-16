@@ -72,7 +72,7 @@ check "the client wrote its MCP token file" "$([[ -s "$TOKEN" ]] && echo 1 || ec
 
 READ="$WORK/read.rhai"
 printf 'print(to_json(mcp_read(env("MCP_VIEW_TOKEN"), "openttd://ui/requests").data.requests));\n' > "$READ"
-requests() { MCP_VIEW_TOKEN="$TOKEN" "$RHAI" --panel "$URL" "$READ" 2>/dev/null | tail -1; }
+requests() { MCP_VIEW_TOKEN="$TOKEN" "$RHAI" --panel "$URL" "$READ" 2>/dev/null || true; }   # to_json may span lines
 field() { python3 -I -c 'import json, sys
 try:
     r = [q for q in json.loads(sys.argv[1]) if q.get("text") == sys.argv[2]]
@@ -81,7 +81,13 @@ try:
 except Exception:
     print("")' "$1" "$REQUEST" "$2"; }
 
-reqs="$(requests)"
+reqs=""
+for ((i = 0; i < 30; i++)); do   # the client runs autoexec.scr once its intro game is up
+  reqs="$(requests)"
+  [[ -n "$(field "$reqs" kind)" ]] && break
+  sleep 1
+done
+echo "$reqs" > "$WORK/requests.json"
 check "the console request is queued as kind 'ask' with the typed text (kind=$(field "$reqs" kind))" \
   "$([[ "$(field "$reqs" kind)" == ask ]] && echo 1 || echo 0)"
 
@@ -92,6 +98,7 @@ answer=""
 for ((i = 0; i < 90; i++)); do
   reqs="$(requests)"
   answer="$(field "$reqs" answer)"
+  echo "$reqs" > "$WORK/requests.json"
   [[ -n "$answer" ]] && break
   sleep 2
 done
