@@ -996,6 +996,17 @@ def derived_routes(game):
     return out
 
 
+def rpc_status(out):
+    """The HTTP status of an MCP answer the panel passes on: 200 for content, 404 when the server does
+    not know the resource or tool (JSON-RPC -32602, e.g. a resource this build does not have), 502 for
+    any other JSON-RPC error. A tool's own refusal inside its content stays 200 with its body."""
+    err = out.get("error") if isinstance(out, dict) else None
+    rpc = err.get("error") if isinstance(err, dict) and "jsonrpc" in err else None
+    if not isinstance(rpc, dict):
+        return 200
+    return 404 if rpc.get("code") == -32602 else 502
+
+
 def openapi(game, routes):
     paths = {}
 
@@ -1220,9 +1231,11 @@ def make_handler(game):
                     except Exception as e:
                         return self._send(503, {"error": str(e)})
                 if method == "POST" and path.startswith("/api/tools/"):
-                    return self._send(200, game.tool(path[len("/api/tools/"):], body or {}))
+                    out = game.tool(path[len("/api/tools/"):], body or {})
+                    return self._send(rpc_status(out), out)
                 if method == "GET" and path.startswith("/api/resources/"):
-                    return self._send(200, game.resource("openttd://" + path[len("/api/resources/"):]))
+                    out = game.resource("openttd://" + path[len("/api/resources/"):])
+                    return self._send(rpc_status(out), out)
             except Exception as e:  # surface, never hide, a failing call
                 # A route that needs the owner's window answers 503 on a stack without one (headless,
                 # or the client restarting): the state is temporary, not a broken route.

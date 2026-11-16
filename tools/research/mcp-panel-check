@@ -42,6 +42,8 @@ check "each derived tool route carries the tool's inputSchema as its body" "$([[
 state="$(curl -fs "$PANEL/api/resources/game/state")"
 tick="$(py 'import json,sys; print(json.loads(sys.argv[1]).get("game_tick",""))' "$state")"
 check "GET /api/resources/game/state answers live state (tick ${tick:-?})" "$([[ -n "$tick" ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' "$PANEL/api/resources/no/such/resource")"
+check "a resource this build does not have answers 404, not 200 with an error body (http=$code)" "$([[ "$code" == 404 ]] && echo 1 || echo 0)"
 v="$(curl -fs -X POST -H 'Content-Type: application/json' -d '{"action":{"type":"game.set_pause","arguments":{"pause":true}}}' \
   "$PANEL/api/tools/openttd.decision.validate")"
 valid="$(py 'import json,sys; d=json.loads(sys.argv[1]); print(d.get("valid", d.get("result", {}).get("valid", "")))' "$v")"
