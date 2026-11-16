@@ -121,8 +121,18 @@ for _ in $(seq 1 8); do
 done
 check "the answer arrives as an event ask.answered on the event feed" "$streamed"
 
+# The owner's sentences: nouns from the game's own language files, answered over the live world.
+out="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"text":"najdi nejbližší les + pilu"}' "$URL/api/intent")"
+check "a Czech sentence is understood from the game's own words (les -> Forest, pilu -> Sawmill), pairs nearest first" \
+  "$([[ "$(json "(lambda i, a: i['language'] == 'czech' and [x['name'] for x in i['subjects']] == ['Forest', 'Sawmill'] and i['ordering'] == 'nearest' and [c['distance'] for c in a['candidates']] == sorted(c['distance'] for c in a['candidates']))(d['intent'], d['answer'])" <<<"$out")" == True ]] && echo 1 || echo 0)"
+out="$(curl -s -X POST -H 'Content-Type: application/json' -d '{"text":"vybuduj nejlukrativnější trať"}' "$URL/api/intent")"
+check "a build sentence returns candidates by score and the bot settings that carry out the first" \
+  "$([[ "$(json "d['intent']['action'] == 'build' and d['answer']['ordering'] == 'most_profitable' and bool(d['answer']['build']['settings'])" <<<"$out")" == True ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d '{}' "$URL/api/intent")"
+check "an intent without text is refused with 400 (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
+
 paths="$(curl -s "$URL/openapi.json" | json "' '.join(sorted(d['paths']))")"
-want=(/api/ask /api/news /api/news/close /api/plan /api/instances /api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
+want=(/api/intent /api/ask /api/news /api/news/close /api/plan /api/instances /api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
 missing=()
 for p in "${want[@]}"; do [[ " $paths " == *" $p "* ]] || missing+=("$p"); done
 check "OpenAPI carries graph, map, stations and the view routes (missing: ${missing[*]:-none})" \

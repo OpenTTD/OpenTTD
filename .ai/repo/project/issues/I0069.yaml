@@ -1,0 +1,45 @@
+id: I0069
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The owner's sentences answered over the live game: an intent resolver whose words come from the game itself"
+slug: owner-sentences-intent-resolver
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "Let the owner type a plan in plain language (Czech or English): 'najdi nejproduktivnější les', 'najdi nejbližší les + pilu', 'vystav trať mezi nejproduktivnějším lesem a pilou', 'vybuduj nejlukrativnější trať'. Resolve it over the live world into ordered candidates and, for build, the bot settings that carry out the first, with no hand-written list of nouns."
+why: "The owner (2026-11-15, Kompendium session, handed over by kompendium-epistemicke-anihilace-2e and openttd-a0): type in the ~ console 'vybuduj nejlukrativnější trať' and have MCP and the whole AI layer carry out the plan; everything generic, derived, inferred, documented."
+scope:
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-panel/server.py"
+  - "tools/research/mcp-view-check"
+  - "research/mcp-control.md"
+non_scope:
+  - "The ~ console verb (openttd-59's console commands); executing a build in a running company (needs openttd.ai.set_setting); the hub surface (openttd-a0)"
+depends_on:
+  - I0064
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "Nouns are matched from the game's language files (every case form, joined to English by string id), restricted to names present in this game, in the sentence's detected language plus English"
+  - "Orderings nearest / most productive / most profitable answer over openttd://world/graph and planner v4; build returns the bot settings for the first candidate"
+  - "POST /api/intent is declared once (OpenAPI, Rhai api_intent); mcp-intent works with --panel or --token"
+  - "mcp-view-check proves a Czech pair query, a build query and a refusal; unit tests cover case forms and diacritics"
+validation:
+  - "cargo test --release --bin mcp-intent (tools/research/mcp-rhai)"
+  - "tools/research/mcp-view-check"
+evidence_required:
+  - validation_run
+created_at: 2026-11-16
+updated_at: 2026-11-16T03:28:35Z
+started_at: 2026-11-16T03:28:26Z
+started_event: sha256:c124c8c7302f7fc85d9807a1db4574b59a3d255a3af2b7a86cb224bcf4d48026
+verified_at: 2026-11-16T03:28:28Z
+verified_event: sha256:8dfa0307b46a2cb891507da5a7ead1751233d1dece091b30d8bb240dd95f8a0c
+completed_at: 2026-11-16T03:28:35Z
+completed_event: sha256:922ce137ccb4c53ed2817c46b99a0d7b6eb36a03641c4201f2eafa0ea5e8faeb
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release --bin mcp-intent; tools/research/mcp-view-check; mcp-route-check; mcp-panel-check; mcp-rhai api_intent"
+    result: "unit tests 5/5 (case forms, diacritics); mcp-view-check 34/34 incl. a Czech pair query (les -> Forest, pilu -> Sawmill, czech detected, nearest first), a build query with settings, and a 400 refusal; route-check 59/0; panel-check 13/13; live: 'najdi nejproduktivnější les' -> Forest industry:3 (135/month); 'vystav trať mezi nejproduktivnějším lesem a pilou' -> Forest 3 -> Sawmill 2, Wood, 132 tiles, settings fr_from=3 fr_to=2 fr_cargo=7; 'najdi nejblizsi uhelny dul a elektrarnu' (no diacritics) -> Coal Mine 0 -> Power Station 1; Rhai api_intent works"
+    commit: 80b79619dc38c165fa6600560d88491f9f69faf0
+    recorded_at: 2026-11-16T03:28:30Z

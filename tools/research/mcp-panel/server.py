@@ -617,6 +617,20 @@ def make_routes(game):
         game.event("view", f"GUI client attached ({f.name})")
         return 200, {"attached": True, "state": game.view_call("openttd.view.state")}
 
+    def intent(text, params=None):
+        exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-intent"
+        if not exe.exists():
+            return 503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"}
+        extra = ["--params", json.dumps(params)] if params else []
+        r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{game.args.panel_port}", *extra, text],
+                           capture_output=True, text=True, timeout=180)
+        if r.returncode != 0:
+            return (400 if r.returncode == 2 else 502), {"error": r.stderr.strip()}
+        out = json.loads(r.stdout)
+        game.event("intent", f"{text!r} -> {out['intent']['action']} {out['intent'].get('ordering')} "
+                             f"{[x['name'] for x in out['intent']['subjects']]}: {len(out['answer']['candidates'])} candidate(s)")
+        return 200, out
+
     def plan(limit, params=""):
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-plan"
         if not exe.exists():
@@ -700,6 +714,8 @@ def make_routes(game):
          lambda b: (200, game.set_bot_setting(b["company"], b["name"], b["value"]))),
         ("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params)", True,
          None, lambda q: plan(int(q.get("limit", ["20"])[0]), q.get("params", [""])[0])),
+        ("POST", "/api/intent", "intent", "A sentence from the owner (\"najdi nejbližší les + pilu\", \"vybuduj nejlukrativnější trať\", \"find the most productive coal mine\") answered over the live game: nouns from the game's own language files and world graph, orderings nearest / most productive / most profitable, candidates in order, and for build the bot settings that carry out the first (tools/research/mcp-rhai src/intent.rs)", True,
+         s({"text": {"type": "string"}, "params": OBJ}, ["text"]), lambda b: intent(b["text"], b.get("params"))),
         ("GET", "/api/graph", "graph", "The road network as a graph (nodes: junctions, ends, stations, town anchors; edges with length; components), derived from openttd://map, towns and stations by tools/research/mcp-rhai mcp-graph", True,
          None, lambda q: graph()),
         ("GET", "/api/instances", "instances", "Every OpenTTD MCP instance in the cluster (panels and GUI clients) from the shared registry, each checked with a live probe", True,

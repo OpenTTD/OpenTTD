@@ -332,6 +332,29 @@ the enabled modes (bus, rail, air, truck, freight rail). Every change replans at
 `/api/plan`, and the parameters stay in the address, so a configured plan is a link. Freight modes
 take part in the same `modes` filter as the passenger ones.
 
+## The owner's sentences: plans in plain language
+
+`POST /api/intent {text}` (Rhai `api_intent`, `mcp-intent [--panel | --token] "<sentence>"`)
+answers a sentence over the live game:
+
+| Sentence | Answer |
+|---|---|
+| najdi nejproduktivnější les | the forests ordered by last month's production |
+| najdi nejbližší les + pilu | forest and sawmill pairs that trade wood, nearest first |
+| vystav trať mezi nejproduktivnějším lesem a pilou | the pair from the most productive forest, and the bot settings `fr_from`, `fr_to`, `fr_cargo` that build it |
+| vybuduj nejlukrativnější trať | planner v4's candidates by score (freight and passengers), and the settings for the first |
+| find the nearest coal mine and power station | the same in English |
+
+None of the nouns is typed by hand. Every industry type and cargo name in every language file of
+the game (`src/lang/*.txt`, all case forms such as Czech `.gen` and `.loc`) is joined to the English
+name the world graph uses, through its string id. The sentence's language is the file whose names
+match the most words. Matching uses that language and English, only names present in this game
+(industry types on the map, cargos on offer), with stemming for declension and diacritics folded.
+The only hand vocabulary is three orderings (nearest, most productive, most profitable) and two
+actions (find, build). A build is carried out once its settings reach the bot, through
+`openttd.ai.set_setting` (approval-gated) or the next `start_ai`. The in-game `~` console verb that
+sends a sentence here belongs to openttd-59's console commands.
+
 ## A cluster of instances: discovery and calls across it
 
 Every panel registers itself, and the GUI client it attaches, in a shared registry
