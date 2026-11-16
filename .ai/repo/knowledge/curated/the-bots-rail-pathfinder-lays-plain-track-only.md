@@ -17,6 +17,8 @@ provenance:
     - file:research/results/duel-20261116T074419-seed20208.md
     - file:tools/research/mcp-panel/server.py
     - file:tools/research/mcp-rhai/src/linecost.rs
+    - file:src/rail_cmd.cpp
+    - file:research/results/duel-20261116T082722-seed20208.md
 ---
 
 # Constraint
@@ -29,12 +31,22 @@ stations, logs "no rail path between the stations; removing them", and falls bac
 In the 36-month duel on seed 20208 (2026-11-16) this left the planned company without a train.
 AlgoGlyph track-planning had found routes for the same line, but they used bridges and a crossing.
 
+Turns had a second limit, now fixed. A turn was allowed on flat land only, so a station whose exit
+and neighbours were all sloped was unreachable even over plain land: a 180-tile coal line on the
+same seed failed that way twice. Since bridge repository 2e3f116, `PieceFits` takes the game's own
+rule (`GetRailFoundation` with build_on_slopes, `rail_cmd.cpp`): any piece on flat land, a straight
+piece on any slope that is not steep, and a corner piece only where
+`_valid_tracks_without_foundation` or `_valid_tracks_on_leveled_foundation` allow it. The pieces
+on both exits are checked against their stations. Just allowing every slope that is not steep was
+wrong: the game refused the first piece with ERR_LAND_SLOPED_WRONG.
+
 # How to apply
 
 - Price rail lines with track-planning (`mcp-plan --track N`) before the bot gets one. The panel's
   bot start passes over a priced line whose counts include a bridge, a tunnel or a crossing, and
   takes the next line of its kind. An unpriced line is still tried blind.
 - A bot company with T0 in `companies` after a rail plan: look for "no rail path" in its log
-  before blaming the planner's scores.
+  before blaming the planner's scores. To find which rule blocks the line, replay the search
+  offline on `openttd://map` and `openttd://map/terrain`, with the bot's own stations put back.
 - Lines that need bridges stay out of reach until the bot learns to place them, or until an
   executor (openttd-07's `mcp-human rail`) lays track-planning's pieces for the bot's company.
