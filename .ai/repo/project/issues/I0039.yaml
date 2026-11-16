@@ -24,7 +24,13 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-16T21:15:51Z
+updated_at: 2026-11-16T21:16:39Z
+started_at: 2026-11-16T21:16:37Z
+started_event: sha256:4a5714d8f8fbb2e91de483dcf3880b8a2cc65be153472068ac3490e94374dad5
+verified_at: 2026-11-16T21:16:38Z
+verified_event: sha256:f26e68014d19d5fcf3f95f998fb3db48a17522f64800dba4ecea3a62591943a2
+completed_at: 2026-11-16T21:16:39Z
+completed_event: sha256:0a5fff08c0cd154f18e398dd9d7345ab34ff4589beb27678c562618b53e93ea6
 evidence:
   - covers: "validation_run"
     type: test
