@@ -155,7 +155,7 @@ story, news and history](../goals-story-news-and-history/README.md).
   `window_number`, `ini_key`, caption, and each widget of `widget_lookup` by enum index with
   `src/prismatic_mcp/prismatic_mcp_ui.cpp:TypeName`, rectangle, `GetWidgetString` text, tooltip and
   disabled/lowered state; title-bar boxes have no index. The panel names classes by parsing
-  `src/window_type.h` (`tools/research/mcp-panel/server.py:window_classes`, implicit order,
+  `src/window_type.h` (`tools/research/mcp-rhai/src/panel.rs:window_classes`, implicit order,
   aliases). So renumbering renames what agents see, a window without `ini_key` has an empty key, a
   hidden toolbar button has zero width, and dropdown items come from
   `src/prismatic_mcp/prismatic_mcp_hooks.h:DropdownItems`. Input is injected only when armed (ADR

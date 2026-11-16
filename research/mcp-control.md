@@ -36,8 +36,8 @@ and OpenMSX for sound and music), and `PrismaticAI` in `~/Documents/OpenTTD/ai/`
 
 ## The control window (`tools/research/mcp-panel`)
 
-`server.py` (Python standard library) holds the bearer token in memory only, redacts it from the
-console log it shows, and serves the Flowbite Pro admin shell in `static/` (CSS built with
+`mcp-panel` (Rust, built from `tools/research/mcp-rhai`: `src/bin/mcp-panel.rs`, `src/panel.rs`,
+`src/panel_bot.rs`) holds the bearer token in memory only, redacts it from the console log it shows, and serves the Flowbite Pro admin shell in `static/` (CSS built with
 `tailwindcss -i input.css -o static/app.css`, Flowbite 4 under `node_modules/`, not committed).
 
 | Surface | What it does |
@@ -66,27 +66,25 @@ Loopback HTTP API, for any external controller (scripts, agents, Prismatic):
 
 A POST with a foreign `Origin` is refused.
 
-### The same panel in Rust (`mcp-panel`, issue I0035)
+### The panel is one Rust binary (issue I0035)
 
-`tools/research/mcp-rhai` builds `mcp-panel` (`src/bin/mcp-panel.rs`, `src/panel.rs`,
-`src/panel_bot.rs`), a port of `server.py` with the same command line, routes, OpenAPI document,
-event bus and registry record (`mcp-instance/v1`, kind `panel`). Rhai scripts sent to
-`/api/rhai` and `/api/rhai/stream` run inside the panel's process, in the engine `mcp-rhai` uses
-(`src/main.rs` `host`), instead of a `mcp-rhai` child process. `mcp-plan`, `mcp-intent`,
-`mcp-graph` and AlgoGlyph's `npm run flow` are still child processes, as in `server.py`.
+`mcp-panel` replaced `server.py`, its Python predecessor, with the same command line, routes,
+OpenAPI document, event bus and registry record (`mcp-instance/v1`, kind `panel`). Rhai scripts
+sent to `/api/rhai` and `/api/rhai/stream` run inside the panel's process, in the engine
+`mcp-rhai` uses (`src/main.rs` `host`). `mcp-plan`, `mcp-intent`, `mcp-graph` and AlgoGlyph's
+`npm run flow` are still child processes. `mcp-e2e` builds the crate (minutes in a fresh
+worktree, seconds after) and starts it; `--rust-panel` and `MCP_PANEL=rust` are still accepted.
+The panel answers in Python's JSON text (`", "` and `": "`, non-ASCII escaped), because
+launchers match `"mcp_up": true` in `/api/status`.
 
 ```bash
-tools/research/mcp-e2e --rust-panel     # or MCP_PANEL=rust tools/research/mcp-e2e
+tools/research/mcp-e2e
 tools/research/mcp-panel-check --panel http://127.0.0.1:8800
 ```
 
-`server.py` is still the default. Both answer in the same JSON text (`", "` and `": "`, non-ASCII
-escaped), because launchers match `"mcp_up": true` in `/api/status`.
-
 ### One declaration, every surface: OpenAPI, Swagger UI and derived routes
 
-The routes above are declared once, in `make_routes()` of `server.py` (`routes()` of
-`src/panel.rs` in the Rust panel). The router dispatches from
+The routes above are declared once, in `routes()` of `src/panel.rs`. The router dispatches from
 that table, and `GET /openapi.json` (OpenAPI 3.1) documents it. Swagger UI, served from the local
 `swagger-ui-dist`, is at `GET /docs`. On every request for the document, the live MCP catalogue is
 read again and one route is derived per entry:

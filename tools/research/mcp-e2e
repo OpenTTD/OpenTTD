@@ -23,8 +23,8 @@
 #                                so the panel's /ui page and scripts can press its widgets; off by default)]
 #                               [--instances N (default 1: N-1 more headless stacks with bots, free
 #                                ports, all in the discovery registry, listed by every panel)]
-#                               [--rust-panel (the panel from tools/research/mcp-rhai mcp-panel instead
-#                                of mcp-panel/server.py; also MCP_PANEL=rust)]
+#                               [--rust-panel (accepted and ignored: the panel is always mcp-panel from
+#                                tools/research/mcp-rhai since server.py was removed, I0035)]
 # Stop with Ctrl-C: the panel stops the server, and the GUI client is closed.
 set -euo pipefail
 
@@ -32,7 +32,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=8800 MCP_PORT=8731 GAME_PORT=3979 SEED="$RANDOM"
 GUI=1 BROWSER=1 AUTO=() WINDOW="" DIRECTOR=1 VIEW_PORT="" INSTANCES=1 EXTRA_PIDS=() ARM_INPUT=0 PLAN=()
-PANEL_IMPL="${MCP_PANEL:-python}"
+PANEL_IMPL="${MCP_PANEL:-rust}"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -124,13 +124,14 @@ if [[ -z "${MCP_ALGOGLYPH_DIR:-}" ]]; then
 fi
 [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]] && echo "    AlgoGlyph runner: $MCP_ALGOGLYPH_DIR"
 
-# The panel: server.py, or its Rust port (I0035) with the same command line; more instances follow.
+# The panel: mcp-panel from tools/research/mcp-rhai (I0035; server.py, its Python predecessor, is
+# gone). One cargo build makes it and mcp-rhai, which runs the director and the other helpers; in a
+# fresh worktree that build takes minutes, later ones seconds. More instances follow.
+[[ "$PANEL_IMPL" == rust ]] || { echo "mcp-e2e: MCP_PANEL=$PANEL_IMPL: the only panel is the Rust one (server.py was removed, I0035)" >&2; exit 2; }
 export MCP_PANEL="$PANEL_IMPL"
-PANEL_CMD=(python3 -I "$PANEL_DIR/server.py")
-if [[ "$PANEL_IMPL" == rust ]]; then
-  cargo build --offline --release --quiet --manifest-path "$ROOT_DIR/tools/research/mcp-rhai/Cargo.toml"
-  PANEL_CMD=("$ROOT_DIR/tools/research/mcp-rhai/target/release/mcp-panel")
-fi
+[[ -x "$ROOT_DIR/tools/research/mcp-rhai/target/release/mcp-panel" ]] || echo "==> building the panel (tools/research/mcp-rhai, first build takes minutes)"
+cargo build --offline --release --quiet --manifest-path "$ROOT_DIR/tools/research/mcp-rhai/Cargo.toml"
+PANEL_CMD=("$ROOT_DIR/tools/research/mcp-rhai/target/release/mcp-panel")
 echo "==> panel ($PANEL_IMPL) + dedicated server (seed $SEED)"
 "${PANEL_CMD[@]}" --bin "$BIN" --panel-port "$PANEL_PORT" --mcp-port "$MCP_PORT" \
   --game-port "$GAME_PORT" --seed "$SEED" ${AUTO[@]+"${AUTO[@]}"} ${PLAN[@]+"${PLAN[@]}"} &

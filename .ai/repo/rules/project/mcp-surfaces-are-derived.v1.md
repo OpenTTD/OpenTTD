@@ -18,7 +18,7 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
 
 # Required behaviour
 
-- Panel routes: `make_routes()` in `tools/research/mcp-panel/server.py`, plus `derived_routes()` from the catalogue.
+- Panel routes: `routes()` in `tools/research/mcp-rhai/src/panel.rs`, plus the routes derived from the catalogue.
 - Rhai: one function per tools/list entry, per `list_cmds` command and per panel OpenAPI operation, registered at start-up.
 - Bot settings: `openttd.ai.list`, else the AI's `info.nut`.
 - The GUI client is a surface too: every tool of the attached client's live tools/list (`openttd.ui.*`,

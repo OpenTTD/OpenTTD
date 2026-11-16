@@ -146,7 +146,7 @@ plumbing in `src/openttd.cpp` ([core loop](../core-loop/README.md), which also t
 - No Catch2 test covers generation, and every regression case loads its `test.sav` with
   `-g` (`cmake/scripts/Regression.cmake`), so `ctest` never runs TGP or heightmap import.
 - Validate by generating: `openttd -D -x -g -G <seed> -c <empty.cfg>` (the shape used by
-  `tools/research/research` and `tools/research/mcp-panel/server.py`, which
+  `tools/research/research` and `tools/research/mcp-rhai/src/panel.rs`, which
   `tools/research/mcp-ab` starts twice with one `--seed`); compare two runs with the same seed and
   config by saving and diffing the map, or by the MCP `openttd://map` resource.
 - Tier: `tools/gate.sh change` builds and runs the suite; a generator change needs an explicit
