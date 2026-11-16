@@ -90,6 +90,8 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 
 ## Decisions, rules and knowledge
 
+- A dragged rail or road build reports success when any piece was built (knowledge candidate `a-dragged-build-succeeds-when-any-piece-was-built`): verify a dragged line through the map's ways, not the command result.
+- `ctest -R` cannot select the `[prismatic_mcp]` Catch2 tag; how to run those tests is in [unit tests](../unit-tests/README.md).
 - Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep), [ADR 0017](../../../adrs/0017-game-objects-live-in-typed-pools-addressed-by-strong-ids-nev.md) (typed pools and strong IDs), [ADR 0023](../../../adrs/0023-the-map-is-a-flat-array-of-tiles-whose-behaviour-is-dispatch.md) (tile array and tile procs).
 - Neighbouring maps: [game-windows](../game-windows/README.md), [rail-road-and-infrastructure](../rail-road-and-infrastructure/README.md).
 - ADR 0004, ADR 0008, ADR 0013, ADR 0014 (all proposed); rules `project.research-code-is-gated-and-labelled`, `project.game-state-mutates-only-through-commands`, `project.mcp-surfaces-are-derived`, `project.public-api-is-exposed`.

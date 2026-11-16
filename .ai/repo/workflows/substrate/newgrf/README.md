@@ -80,6 +80,7 @@ groups and resolvers. Owns the GRF configuration lists (`_grfconfig`, `_grfconfi
 
 ## Decisions, rules and knowledge
 
+- Rail/road type slots and label remapping after load: [rail, road and infrastructure](../rail-road-and-infrastructure/README.md); knowledge candidate `a-missing-type-label-loads-as-the-base-type`.
 - Upstream architecture: [ADR 0028](../../../adrs/0028-graphics-sounds-and-music-come-from-replaceable-base-sets-an.md) (base sets and NewGRF content), [ADR 0018](../../../adrs/0018-every-savegame-ever-written-stays-loadable-saved-fields-are-.md) (savegame versioning).
 - Neighbouring maps: [graphics-and-sprites](../graphics-and-sprites/README.md), [sound-and-music](../sound-and-music/README.md).
 - Rules: `project.savegame-fields-are-version-gated`, `project.game-state-mutates-only-through-commands`, `project.never-report-unrun-validation-as-pass`.

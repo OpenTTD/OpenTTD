@@ -94,6 +94,9 @@ state is part of the lockstep-simulated game state.
 
 ## Decisions, rules and knowledge
 
+- Consists, groups, timetables, effect and disaster vehicles (which share the vehicle pool and the game random stream): [consists, groups and timetables](../consists-groups-and-timetables/README.md).
+- Signals and PBS reservations, including `CmdBuildSingleSignal` re-reserving a path inside the command: [rail, road and infrastructure](../rail-road-and-infrastructure/README.md).
+- YAPF's node list is built on `src/misc/binaryheap.hpp:CBinaryHeapT` and `src/misc/hashtable.hpp:HashTable`: [core utilities](../core-utilities/README.md).
 - Upstream architecture: [ADR 0026](../../../adrs/0026-pathfinding-is-yapf-an-a-framework-composed-at-compile-time-.md) (YAPF), [ADR 0017](../../../adrs/0017-game-objects-live-in-typed-pools-addressed-by-strong-ids-nev.md) (typed pools and strong IDs).
 - Neighbouring maps: [consists-groups-and-timetables](../consists-groups-and-timetables/README.md), [rail-road-and-infrastructure](../rail-road-and-infrastructure/README.md).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.savegame-fields-are-version-gated`, `project.never-report-unrun-validation-as-pass`, `project.research-code-is-gated-and-labelled`.

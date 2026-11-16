@@ -129,6 +129,8 @@ they must honour. The wire protocol and script wrappers are owned elsewhere.
 
 ## Decisions, rules and knowledge
 
+- `Command<>::Do` is also called from the GUI with `DoCommandFlag::QueryCost` (the purchase window's cost query; knowledge candidate `the-purchase-window-cost-query-builds-a-real-vehicle`).
+- Knowledge candidate `a-pool-create-needs-can-allocate-item-first`: check `CanAllocateItem` in the test pass so a full pool is a refused command, not an assert.
 - Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep).
 - Rules: `project.game-state-mutates-only-through-commands`,
   `project.research-code-is-gated-and-labelled`, `project.never-report-unrun-validation-as-pass`.
