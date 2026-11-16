@@ -964,7 +964,7 @@ static void RegisterWndClass()
 		hinst,
 		LoadIcon(hinst, MAKEINTRESOURCE(100)),
 		LoadCursor(nullptr, IDC_ARROW),
-		0,
+		static_cast<HBRUSH>(GetStockObject(BLACK_BRUSH)),
 		0,
 		L"OTTD"
 	};
