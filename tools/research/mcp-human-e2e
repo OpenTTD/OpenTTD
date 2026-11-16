@@ -79,6 +79,16 @@ rpc() { # $1 token file, $2 JSON-RPC body -> the parsed text of the first conten
 }
 read_res() { rpc "$1" "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"resources/read\",\"params\":{\"uri\":\"$2\"}}" | jq -r '.result.contents[0].text'; }
 call() { rpc "$1" "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"$2\",\"arguments\":$3}}" | jq -r '.result.content[0].text'; }
+# An input call that waits while the owner holds the mouse, as the player does: the person wins.
+icall() { # $1 token, $2 tool, $3 args -> the answer
+  local out
+  for _ in $(seq 1 60); do
+    out="$(call "$1" "$2" "$3")"
+    if echo "$out" | grep -q 'owner holds the mouse'; then sleep 1; continue; fi
+    echo "$out"; return 0
+  done
+  echo "$out"
+}
 wait_file() { for ((i = 0; i < ${2:-120}; i++)); do [[ -s "$1" ]] && return 0; sleep 0.5; done; return 1; }
 
 GAME_PORT="$(free_port)" SERVER_MCP="$(free_port)" CLIENT_MCP="$(free_port)"
@@ -152,8 +162,8 @@ if [[ "$TEST" == 1 ]]; then
   "$COVERAGE" --probe --report "$SERVER_TOKEN" "$CLIENT_TOKEN" >/dev/null || { echo "FAIL the coverage probe could not reach an instance"; fail=1; }
   [[ "$AFTER" -gt "$BEFORE" ]] && echo "PASS roads built through the interface appear on the server" || { echo "FAIL no new road tiles on the server"; fail=1; }
   # Programmatic control of any window (openttd.ui.press/choose/type/close/click_tile), verified by what changed.
-  P="$(call "$CLIENT_TOKEN" openttd.ui.press '{"window":{"class":1},"widget":{"text":"build road infrastructure"}}')"
-  C="$(call "$CLIENT_TOKEN" openttd.ui.choose '{"index":0}')"
+  P="$(icall "$CLIENT_TOKEN" openttd.ui.press '{"window":{"class":1},"widget":{"text":"build road infrastructure"}}')"
+  C="$(icall "$CLIENT_TOKEN" openttd.ui.choose '{"index":0}')"
   # A dropdown applies its choice a few frames after the click (by design): wait for the window.
   for _ in 1 2 3 4 5 6 7 8 9 10; do
     call "$CLIENT_TOKEN" openttd.ui.windows '{}' | jq -e '[.windows[].caption // ""] | any(test("Road Construction"; "i"))' >/dev/null && break
@@ -161,20 +171,22 @@ if [[ "$TEST" == 1 ]]; then
   done
   call "$CLIENT_TOKEN" openttd.ui.windows '{}' | jq -e '[.windows[].caption // ""] | any(test("Road Construction"; "i"))' >/dev/null \
     && echo "PASS ui.press opened the road menu and ui.choose opened Road Construction" || { echo "FAIL press/choose: $P $C"; fail=1; }
-  call "$CLIENT_TOKEN" openttd.ui.close '{"window":{"caption":"road construction"}}' | jq -e '[.closed[].caption] | any(test("Road Construction"; "i"))' >/dev/null \
+  icall "$CLIENT_TOKEN" openttd.ui.close '{"window":{"caption":"road construction"}}' | jq -e '[.closed[].caption] | any(test("Road Construction"; "i"))' >/dev/null \
     && echo "PASS ui.close closed it by its close box" || { echo "FAIL ui.close"; fail=1; }
   ST="$(read_res "$CLIENT_TOKEN" openttd://stations | jq -c --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c)][0] | {x, y}')"
-  call "$CLIENT_TOKEN" openttd.ui.click_tile "$ST" | jq -e '.scrolled == true' >/dev/null && sleep 0.5   # off screen: the view jumped
-  call "$CLIENT_TOKEN" openttd.ui.click_tile "$ST" | jq -e '.opened | length >= 1' >/dev/null \
-    && echo "PASS ui.click_tile on our station opened its window" || { echo "FAIL ui.click_tile $ST"; fail=1; }
+  icall "$CLIENT_TOKEN" openttd.ui.click_tile "$ST" | jq -e '.scrolled == true' >/dev/null && sleep 0.5   # off screen: the view jumped
+  CT="$(icall "$CLIENT_TOKEN" openttd.ui.click_tile "$ST")"
+  echo "$CT" | jq -e '.opened | length >= 1' >/dev/null \
+    && echo "PASS ui.click_tile on our station opened its window" || { echo "FAIL ui.click_tile $ST: $(echo "$CT" | jq -c '{ok, error, opened}')"; fail=1; }
   BUS="$(read_res "$CLIENT_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c)][0].id // empty')"
   if [[ -n "$BUS" ]]; then
     call "$CLIENT_TOKEN" openttd.view.follow "{\"vehicle\":$BUS}" | jq -e --argjson v "$BUS" '.following_vehicle == $v' >/dev/null \
       && echo "PASS the camera follows our bus $BUS" || { echo "FAIL view.follow"; fail=1; }
     call "$CLIENT_TOKEN" openttd.view.follow '{"vehicle":null}' >/dev/null
   fi
-  call "$CLIENT_TOKEN" openttd.ui.type '{"text":"a"}' | jq -e '.ok == true' >/dev/null \
-    && echo "PASS ui.type typed through the keyboard path" || { echo "FAIL ui.type"; fail=1; }
+  TY="$(icall "$CLIENT_TOKEN" openttd.ui.type '{"text":"a"}')"
+  echo "$TY" | jq -e '.ok == true' >/dev/null \
+    && echo "PASS ui.type typed through the keyboard path" || { echo "FAIL ui.type: $(echo "$TY" | jq -c '{ok, error}')"; fail=1; }
   STOPS="$(read_res "$SERVER_TOKEN" openttd://stations | jq --argjson c "$COMPANY" '[.data.stations[] | select(.owner == $c and (.facilities | index("bus")))] | length')"
   [[ "$STOPS" -ge 2 ]] && echo "PASS $STOPS bus stations of company $COMPANY on the server" || { echo "FAIL $STOPS bus stations (need 2)"; fail=1; }
   BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "road" and (.orders | length) >= 2 and .stopped == false)] | length')"
