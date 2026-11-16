@@ -22,7 +22,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-16
-updated_at: 2026-11-16T01:21:01Z
+updated_at: 2026-11-16T02:21:35Z
 evidence:
   - covers: "validation_run"
     type: test
@@ -30,3 +30,9 @@ evidence:
     result: "partial: openttd://map/ways (road ways from road bits incl. stops, depots, crossings, bridges/tunnels; rail track bits) and openttd://world/graph (world-graph/v1 schema published: town/industry/station/vehicle nodes; near_town, serves_town, order, cargo_link edges) on master build; e2e asserts both; gate research PASS (103/103). Remaining: openttd-80 switches graph.rs/plan.rs to consume them; algoglyph adapter."
     commit: 2768598f2b6fdfc002d84cd3c1def2a7d9191b43
     recorded_at: 2026-11-16T01:21:01Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-human-e2e --test (asserts openttd://world/graph and openttd://map/ways); mcp-viz-check; mcp-coverage-check"
+    result: "criteria met on master: industries (world graph nodes with produces/accepts), vehicles with orders (openttd://vehicles + order edges), companies (openttd://companies), the cargo link graph (cargo_link edges with capacity/usage per cargo); one typed graph openttd://world/graph with schema world-graph/v1 published in tools/research/schema; real road/rail adjacency in openttd://map/ways; derived REST/Rhai/hub follow from resources/list (coverage 17/17 server, 41/41 client); consumed live by the World View (mcp-viz-check 8/8) and by openttd-80's graph.rs/planner v4 (791 real network tiles vs 797 inferred; landing in their next commit)"
+    commit: cf1c1438035dc5be2b838e0baa9281b77f8c655f
+    recorded_at: 2026-11-16T02:21:35Z
