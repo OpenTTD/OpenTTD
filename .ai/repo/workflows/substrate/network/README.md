@@ -84,6 +84,7 @@ command procs (`src/command.cpp`, `*_cmd.cpp`); it only queues, ships and replay
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep), [ADR 0019](../../../adrs/0019-settings-are-declared-once-in-ini-tables-that-settingsgen-co.md) (settings tables).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.research-code-is-gated-and-labelled`, `project.never-report-unrun-validation-as-pass`, `project.no-upstream-interaction`.
 - ADR 0007 (the bridge drives a Company AI over admin-port rcon), ADR 0008 (embedded loopback MCP server; mutations pass the command system).
 - Knowledge: `bridge-control-is-coarse-ai-restart`, `dedicated-server-stdin-startup-race`, `fixed-loopback-ports-collide`.

@@ -115,6 +115,8 @@ synchronized in network games. Setting semantics belong to the subsystem that re
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0019](../../../adrs/0019-settings-are-declared-once-in-ini-tables-that-settingsgen-co.md) (settings tables), [ADR 0018](../../../adrs/0018-every-savegame-ever-written-stays-loadable-saved-fields-are-.md) (savegame versioning).
+- Neighbouring maps: [platform-and-files](../platform-and-files/README.md).
 - Rules: `project.savegame-fields-are-version-gated`,
   `project.game-state-mutates-only-through-commands`.
 - ADR 0007 (the bridge steers through console commands and AI settings); knowledge

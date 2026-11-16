@@ -114,6 +114,8 @@ inside a tick (vehicles, tiles, economy) or the network frame logic, only their 
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep), [ADR 0022](../../../adrs/0022-platform-backends-are-drivers-registered-in-factories-and-ch.md) (runtime-selected drivers), [ADR 0025](../../../adrs/0025-game-time-runs-on-separate-tick-calendar-economy-and-real-ti.md) (game timers).
+- Neighbouring maps: [platform-and-files](../platform-and-files/README.md), [world-generation](../world-generation/README.md).
 - Rules: `project.game-state-mutates-only-through-commands`,
   `project.research-code-is-gated-and-labelled`, `project.never-report-unrun-validation-as-pass`.
 - ADR 0008 (MCP serviced from `GameLoop()`), ADR 0004.

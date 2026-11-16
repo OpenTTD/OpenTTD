@@ -95,6 +95,8 @@ infrastructure maintenance, bankruptcy and takeover, and cargodist: per-cargo `L
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0024](../../../adrs/0024-the-cargodist-link-graph-is-computed-in-background-threads-a.md) (link graph threads), [ADR 0025](../../../adrs/0025-game-time-runs-on-separate-tick-calendar-economy-and-real-ti.md) (game timers).
+- Neighbouring maps: [goals-story-news-and-history](../goals-story-news-and-history/README.md).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.savegame-fields-are-version-gated`, `project.public-api-is-exposed`.
 - ADR 0007 (the bridge steers a company through its AI), ADR 0008 (embedded MCP server).
 - Knowledge: `bridge-control-is-coarse-ai-restart`, `auto-approve-is-the-owners-switch`.

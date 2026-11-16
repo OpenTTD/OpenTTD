@@ -94,6 +94,8 @@ state is part of the lockstep-simulated game state.
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0026](../../../adrs/0026-pathfinding-is-yapf-an-a-framework-composed-at-compile-time-.md) (YAPF), [ADR 0017](../../../adrs/0017-game-objects-live-in-typed-pools-addressed-by-strong-ids-nev.md) (typed pools and strong IDs).
+- Neighbouring maps: [consists-groups-and-timetables](../consists-groups-and-timetables/README.md), [rail-road-and-infrastructure](../rail-road-and-infrastructure/README.md).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.savegame-fields-are-version-gated`, `project.never-report-unrun-validation-as-pass`, `project.research-code-is-gated-and-labelled`.
 - ADR 0004 (research access to internals), ADR 0008 (MCP reaches the game on the main thread).
 - Knowledge: `road-stops-and-depots-need-their-entrance-road`, `macos-missing-baseset-hangs-headless-runs`.

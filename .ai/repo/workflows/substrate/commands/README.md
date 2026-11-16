@@ -129,6 +129,7 @@ they must honour. The wire protocol and script wrappers are owned elsewhere.
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep).
 - Rules: `project.game-state-mutates-only-through-commands`,
   `project.research-code-is-gated-and-labelled`, `project.never-report-unrun-validation-as-pass`.
 - ADR 0008 (all mutation through `Command<>::Post`, no new command for MCP convenience), ADR 0007.

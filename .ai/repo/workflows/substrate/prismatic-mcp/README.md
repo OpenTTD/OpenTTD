@@ -90,6 +90,8 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0016](../../../adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) (deterministic lockstep), [ADR 0017](../../../adrs/0017-game-objects-live-in-typed-pools-addressed-by-strong-ids-nev.md) (typed pools and strong IDs), [ADR 0023](../../../adrs/0023-the-map-is-a-flat-array-of-tiles-whose-behaviour-is-dispatch.md) (tile array and tile procs).
+- Neighbouring maps: [game-windows](../game-windows/README.md), [rail-road-and-infrastructure](../rail-road-and-infrastructure/README.md).
 - ADR 0004, ADR 0008, ADR 0013, ADR 0014 (all proposed); rules `project.research-code-is-gated-and-labelled`, `project.game-state-mutates-only-through-commands`, `project.mcp-surfaces-are-derived`, `project.public-api-is-exposed`.
 - Knowledge `auto-approve-is-the-owners-switch`, `fixed-loopback-ports-collide`, `gated-code-is-invisible-to-a-default-build`, `dedicated-server-stdin-startup-race`.
 - Research trail: `research/prismatic-mcp/README.md`, `research/prismatic-mcp/02-threat-model.md`, `research/prismatic-mcp/16-decision-contract.md`, `research/mcp-control.md`, `research/mcp-human.md`.

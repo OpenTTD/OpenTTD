@@ -110,6 +110,7 @@ savegames, pointer fix-up and `AfterLoadGame` conversion. Also the TTD/TTO old l
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0018](../../../adrs/0018-every-savegame-ever-written-stays-loadable-saved-fields-are-.md) (savegame versioning), [ADR 0017](../../../adrs/0017-game-objects-live-in-typed-pools-addressed-by-strong-ids-nev.md) (typed pools and strong IDs).
 - Rules: `project.savegame-fields-are-version-gated`,
   `project.game-state-mutates-only-through-commands`.
 - ADR 0003 (migration-rollback ban rejected), ADR 0008 (no savegame change for MCP), ADR 0011

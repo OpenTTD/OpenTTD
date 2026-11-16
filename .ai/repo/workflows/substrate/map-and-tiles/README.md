@@ -103,6 +103,8 @@ reshape land: terraform, clear, trees, canals/rivers/locks, bridges and tunnels.
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0023](../../../adrs/0023-the-map-is-a-flat-array-of-tiles-whose-behaviour-is-dispatch.md) (tile array and tile procs), [ADR 0018](../../../adrs/0018-every-savegame-ever-written-stays-loadable-saved-fields-are-.md) (savegame versioning).
+- Neighbouring maps: [rail-road-and-infrastructure](../rail-road-and-infrastructure/README.md), [world-generation](../world-generation/README.md).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.savegame-fields-are-version-gated`, `project.research-code-is-gated-and-labelled` (the fork reader above).
 - ADR 0004 (research access to internals), ADR 0008 (embedded MCP server reads the map).
 - Knowledge: `road-stops-and-depots-need-their-entrance-road`, `heightmap-flag-is-lowercase-g`.

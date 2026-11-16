@@ -96,6 +96,8 @@ vehicles load and unload it in `src/economy.cpp` (payment itself is the economy 
 
 ## Decisions, rules and knowledge
 
+- Upstream architecture: [ADR 0017](../../../adrs/0017-game-objects-live-in-typed-pools-addressed-by-strong-ids-nev.md) (typed pools and strong IDs), [ADR 0023](../../../adrs/0023-the-map-is-a-flat-array-of-tiles-whose-behaviour-is-dispatch.md) (tile array and tile procs).
+- Neighbouring maps: [rail-road-and-infrastructure](../rail-road-and-infrastructure/README.md).
 - Rules: `project.game-state-mutates-only-through-commands`, `project.savegame-fields-are-version-gated`, `project.public-api-is-exposed` (script API in `src/script/api/`).
 - ADR 0008 (embedded MCP server reads stations and towns).
 - Knowledge: `road-stops-and-depots-need-their-entrance-road`.
