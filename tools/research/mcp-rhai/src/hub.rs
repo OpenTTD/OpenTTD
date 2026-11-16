@@ -319,7 +319,15 @@ pub struct State {
     seq: HashMap<String, i64>,
     subscribers: Vec<Subscriber>,
     next_subscriber: u64,
+    /// Refresh cycles run, and the cycle each instance's catalogue was last read in.
+    cycles: u64,
+    catalogue_at: HashMap<String, u64>,
 }
+
+/// How many refresh cycles a catalogue is trusted for before it is read again. A panel registers
+/// before its game's MCP server is up and its OpenAPI then lacks every resource route; a catalogue
+/// read once at discovery would stay that way for the life of the hub.
+pub const CATALOGUE_TTL_CYCLES: u64 = 15;
 
 pub type Shared = Arc<Mutex<State>>;
 
@@ -354,25 +362,38 @@ impl State {
 /// Re-read the registry and every new instance's catalogue; tell subscribers when the set changed.
 pub fn refresh(state: &Shared, registry: &Path, panels: &[String]) {
     let found = discover(registry, panels);
-    let known: Vec<Instance> = state.lock().unwrap().instances.clone();
+    let (known, cycle, read_at) = {
+        let mut s = state.lock().unwrap();
+        s.cycles += 1;
+        (s.instances.clone(), s.cycles, s.catalogue_at.clone())
+    };
     let mut fresh = BTreeMap::new();
     for i in &found {
-        if !known.contains(i) || !state.lock().unwrap().ops.contains_key(&i.name) {
+        let stale = read_at.get(&i.name).map_or(true, |at| cycle - at >= CATALOGUE_TTL_CYCLES);
+        if !known.contains(i) || stale || !state.lock().unwrap().ops.contains_key(&i.name) {
             fresh.insert(i.name.clone(), catalogue_of(i));
         }
     }
     let mut s = state.lock().unwrap();
-    let changed = s.instances != found;
+    let mut changed = s.instances != found;
     s.instances = found;
     let names: Vec<String> = s.instances.iter().map(|i| i.name.clone()).collect();
     s.ops.retain(|k, _| names.contains(k));
     s.errors.retain(|k, _| names.contains(k));
     for (name, res) in fresh {
+        s.catalogue_at.insert(name.clone(), cycle);
         match res {
-            Ok(ops) => { s.ops.insert(name.clone(), ops); s.errors.remove(&name); }
+            Ok(ops) => {
+                // A catalogue that gained or lost operations is news for every page and client.
+                if s.ops.get(&name).map(Vec::len) != Some(ops.len()) { changed = true; }
+                s.ops.insert(name.clone(), ops);
+                s.errors.remove(&name);
+            }
             Err(e) => { s.errors.insert(name, e); }
         }
     }
+    let names_now: Vec<String> = s.instances.iter().map(|i| i.name.clone()).collect();
+    s.catalogue_at.retain(|k, _| names_now.contains(k));
     if changed {
         let msg = json!({"jsonrpc": "2.0", "method": "hub.instances", "params": s.instances_json()});
         s.broadcast(None, msg, None);

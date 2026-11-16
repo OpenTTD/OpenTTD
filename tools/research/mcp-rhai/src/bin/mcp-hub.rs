@@ -403,6 +403,33 @@ mod tests {
         assert_eq!(t[0]["too_many"], json!(1));
     }
 
+    #[test]
+    fn a_catalogue_read_before_the_game_was_up_is_read_again() {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        let up = Arc::new(AtomicBool::new(false));
+        let l = TcpListener::bind("127.0.0.1:0").unwrap();
+        let base = format!("http://{}", l.local_addr().unwrap());
+        let flag = up.clone();
+        std::thread::spawn(move || for mut c in l.incoming().flatten() {
+            let mut buf = [0u8; 4096];
+            let _ = c.read(&mut buf);
+            let mut paths = json!({"/api/status": {"get": {"operationId": "status"}}});
+            if flag.load(Ordering::SeqCst) { paths["/api/resources/stations"] = json!({"get": {"operationId": "resource_stations"}}); }
+            let b = json!({"paths": paths}).to_string();
+            let _ = write!(c, "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{b}", b.len());
+        });
+        let empty = std::env::temp_dir().join(format!("hubreg-ttl-{}", std::process::id()));
+        std::fs::create_dir_all(&empty).unwrap();
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let state = hub::run(listener, hub::Config { registry: empty, panels: vec![base], statics: default_static(),
+                                                  refresh: Duration::from_millis(40), poll: Duration::from_secs(60) });
+        let count = |s: &hub::Shared| s.lock().unwrap().ops.values().map(Vec::len).sum::<usize>();
+        assert_eq!(count(&state), 1, "before the game is up: only the status route");
+        up.store(true, Ordering::SeqCst);
+        let deadline = Instant::now() + Duration::from_secs(5);
+        while count(&state) < 2 && Instant::now() < deadline { std::thread::sleep(Duration::from_millis(50)); }
+        assert_eq!(count(&state), 2, "the catalogue is read again within its time to live");
+    }
     /// A panel with a status route, an echo route and an event bus whose events the test appends.
     fn fake_panel(events: Arc<Mutex<Vec<Value>>>) -> String {
         let l = TcpListener::bind("127.0.0.1:0").unwrap();
