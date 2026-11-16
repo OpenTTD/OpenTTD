@@ -352,8 +352,16 @@ match the most words. Matching uses that language and English, only names presen
 (industry types on the map, cargos on offer), with stemming for declension and diacritics folded.
 The only hand vocabulary is three orderings (nearest, most productive, most profitable) and two
 actions (find, build). A build is carried out once its settings reach the bot, through
-`openttd.ai.set_setting` (approval-gated) or the next `start_ai`. The in-game `~` console verb that
-sends a sentence here belongs to openttd-59's console commands.
+`openttd.ai.set_setting` (approval-gated) or the next `start_ai`. Without a budget in the request, the
+panel adds `difficulty.max_loan`, so the portfolio is solved and its solver is named
+(AlgoGlyph knapsack-dp when available).
+
+From the `~` console: openttd-59's verb `plan <text>` prints `[prismatic-plan] <n> <text>`. The
+panel's log watcher answers each request number once, into the same console with `echo` lines
+prefixed `[prismatic-plan] <n>`: the reading, the three best candidates, and for a build the
+settings. The dedicated server runs one stdin line per `select()`, so the panel writes console
+lines one at a time, 0.25 s apart (knowledge `dedicated-console-reads-one-buffered-line-per-select`).
+`mcp-view-check` proves the round trip.
 
 ## A cluster of instances: discovery and calls across it
 

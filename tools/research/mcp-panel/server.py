@@ -38,6 +38,9 @@ AI_LOG_RE = re.compile(r"\[script:\d+\] \[(\d+)\] \[([SEPWI])\] (.*)$")
 AI_LEVELS = {"S": "squirrel_error", "E": "error", "P": "squirrel_info", "W": "warning", "I": "info"}
 # The console's token line; its wording changed upstream of the panel (5a26a6189e), so match any
 # "Bearer token (...): <hex>" line rather than one phrasing.
+# The ~ console's plan verb (openttd-59): "[prismatic-plan] <n> <text>"; answered with echo lines
+# carrying the same prefix, so each request is handled once by its number.
+PLAN_RE = re.compile(r"\[prismatic-plan\] (\d+) (.+)$")
 TOKEN_RE = re.compile(r"Bearer token \([^)]*\): ([0-9a-fA-F]{32,})")
 
 
@@ -50,6 +53,8 @@ class Game:
         self.fifo = self.tmp / "console"
         self.proc = None
         self.console_fd = None
+        self.console_lock = threading.Lock()
+        self.console_last = 0.0
         self.token = None
         self.log = collections.deque(maxlen=5000)  # (seq, line); the whole story of a game session
         self.seq = 0
@@ -66,6 +71,7 @@ class Game:
         self.rpc_id = 0
         self._client_tools, self._client_tools_at = [], 0.0
         self._server_tools, self._server_tools_at = [], 0.0
+        self.plans_seen = set()  # ~ console plan request numbers already answered
         self.asks_reported = set()  # ids of answered questions already published as ask.answered
         self.view_token = None  # token file of the GUI client whose view the panel shows and drives
 
@@ -102,6 +108,10 @@ class Game:
             with self.lock:
                 self.seq += 1
                 self.log.append((self.seq, line))
+            plan = PLAN_RE.search(line)
+            if plan and int(plan.group(1)) not in self.plans_seen:
+                self.plans_seen.add(int(plan.group(1)))
+                threading.Thread(target=self._answer_plan, args=(int(plan.group(1)), plan.group(2)), daemon=True).start()
             ai = AI_LOG_RE.search(line)
             if ai:
                 self.publish("ai.log", {"company": int(ai.group(1)), "level": AI_LEVELS.get(ai.group(2), ai.group(2)),
@@ -111,7 +121,44 @@ class Game:
         self.event("server", f"server process exited with {self.proc.wait()}")
 
     def console(self, command):
-        os.write(self.console_fd, (command + "\n").encode())
+        # One line at a time, 0.25 s apart: the dedicated server tests stdin with select() and reads it
+        # with std::getline (src/video/dedicated_v.cpp), so lines that arrive together sit in the
+        # stream buffer, invisible to select(), until the next write (seen: a plan answer's lines
+        # appeared minutes late). A gap longer than one game-loop pass gives each line its own read.
+        with self.console_lock:
+            wait = self.console_last + 0.25 - time.time()
+            if wait > 0:
+                time.sleep(wait)
+            os.write(self.console_fd, (command + "\n").encode())
+            self.console_last = time.time()
+
+    def _answer_plan(self, n, text):
+        """Answer a sentence typed into the ~ console (`plan <text>`) through the intent resolver, into
+        the same console with echo: the reading, the first candidates, and for a build its settings."""
+        say = lambda msg: self.console('echo "[prismatic-plan] {} {}"'.format(n, msg.replace('"', "'")[:240]))
+        exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-intent"
+        if not exe.exists():
+            return say("the intent resolver is not built (cargo build --release in tools/research/mcp-rhai)")
+        ml = self.max_loan()
+        extra = ["--params", json.dumps({"budget": ml})] if ml else []
+        r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{self.args.panel_port}", *extra, text],
+                           capture_output=True, text=True, timeout=180)
+        if r.returncode != 0:
+            return say(f"not understood: {r.stderr.strip()[:200]}")
+        out = json.loads(r.stdout)
+        i, a = out["intent"], out["answer"]
+        say(f"{i['action']} {i.get('ordering') or ''} {', '.join(x['name'] for x in i['subjects']) or 'anything'} ({i['language']}): {a['how']}")
+        for k, c in enumerate(a["candidates"][:3], 1):
+            if "from" in c:
+                say(f"{k}. {c['from']['name']} ({c['from']['production']:.0f}/month) -> {c['to']['name']}, {c['cargo']}, {c['distance']:.0f} tiles")
+            elif "production" in c:
+                say(f"{k}. {c['name']} at ({c['x']},{c['y']}), {c['production']:.0f}/month")
+            else:
+                f, t = (c.get("a") or c.get("producer") or {}), (c.get("b") or c.get("acceptor") or {})
+                say(f"{k}. {c.get('cargo') or 'passengers'} by {c.get('mode')}: {f.get('name')} -> {t.get('name')}, score {c.get('score')}")
+        if a.get("build"):
+            say(f"build: settings {json.dumps(a['build']['settings'])}; {a['build']['execution']}")
+        self.event("intent", f"~ plan #{n} {text!r}: {len(a['candidates'])} candidate(s)")
 
     def _log_has(self, needle):
         with self.lock:
@@ -621,6 +668,12 @@ def make_routes(game):
         exe = HERE.parent / "mcp-rhai" / "target" / "release" / "mcp-intent"
         if not exe.exists():
             return 503, {"error": "build it: cargo build --release in tools/research/mcp-rhai"}
+        # The planner's portfolio needs a budget to solve: the caller's, else what a company may borrow.
+        params = dict(params or {})
+        if "budget" not in params:
+            ml = game.max_loan()
+            if ml:
+                params["budget"] = ml
         extra = ["--params", json.dumps(params)] if params else []
         r = subprocess.run([str(exe), "--panel", f"http://127.0.0.1:{game.args.panel_port}", *extra, text],
                            capture_output=True, text=True, timeout=180)

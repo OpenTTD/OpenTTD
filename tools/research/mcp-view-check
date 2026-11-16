@@ -131,6 +131,20 @@ check "a build sentence returns candidates by score and the bot settings that ca
 code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d '{}' "$URL/api/intent")"
 check "an intent without text is refused with 400 (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
 
+# The ~ console's plan verb, as openttd-59's `plan <text>` prints it: the panel answers into the console.
+pn="$(( $(date +%s) % 100000 + 1000 ))"
+since="$(curl -s "$URL/api/status" | json "d['event_seq']")"
+curl -s -X POST -H 'Content-Type: application/json' \
+  -d "{\"command\":\"echo \\\"[prismatic-plan] $pn najdi nejproduktivnejsi les\\\"\",\"wait\":0.3}" "$URL/api/console" >/dev/null
+answered=0
+for _ in $(seq 1 40); do
+  # The event feed keeps every console line (the log tail is only the last 150, and a building bot
+  # scrolls an answer out of it within seconds).
+  curl -s "$URL/api/events?since=$since&kinds=console.line&limit=5000" | grep -q "prismatic-plan\] $pn 1\. " && { answered=1; break; }
+  sleep 1
+done
+check "a ~ console plan request ([prismatic-plan] $pn ...) is answered into the console with ranked candidates" "$answered"
+
 paths="$(curl -s "$URL/openapi.json" | json "' '.join(sorted(d['paths']))")"
 want=(/api/intent /api/ask /api/news /api/news/close /api/plan /api/instances /api/graph /api/resources/map /api/resources/stations /api/view/tool /api/view/screenshot)
 missing=()
