@@ -15,6 +15,7 @@
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 
 #include <cstdint>
+#include <span>
 #include <string>
 
 /**
@@ -64,6 +65,11 @@ bool ApproveById(uint64_t id, std::string &message);
 bool DenyById(uint64_t id, std::string &message);
 /** Machine-readable summary of the decision/provenance trace for the console. */
 std::string DecisionTrace(int max_rows);
+
+/* --- the catalogue as console commands (prismatic_mcp_console.cpp) ------- */
+
+/** `mcp`: every tool and resource of the server as a console command, derived from its lists. */
+bool ConMcp(std::span<std::string_view> argv);
 
 } // namespace PrismaticMCP
 

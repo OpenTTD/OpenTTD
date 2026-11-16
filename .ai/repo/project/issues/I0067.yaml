@@ -1,0 +1,32 @@
+id: I0067
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Every MCP tool and resource is a parameterized command in the in-game console, derived from the catalogue"
+slug: console-commands
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "The owner drives everything the MCP server offers from the tilde console: `mcp tools`, `mcp resources`, `mcp help <tool>`, `mcp read <uri>` and `mcp <tool> key=value ...`, with names, descriptions, parameter names, types, required keys and enums taken from tools/list and resources/list, so a tool added to the server is a console command with no console code written for it."
+why: "The owner (2026-11-16, verbatim): \"rhai scriptable / data and script driven / rock solid / tested / nejvynosnejsi / teorie her / rozsir vse / chceme vyhrat / musi vse fungovat v in game console tilde menu / vse musi byt infered/derived/generic/paramterized command\". Before this, the console had one hand-written `prismatic_mcp` command with fixed subcommands, and every tool and resource was reachable only over HTTP."
+scope:
+  - "src/prismatic_mcp/**"
+  - "src/console_cmds.cpp"
+  - "src/tests/test_prismatic_mcp.cpp"
+  - "tools/research/mcp-console-check"
+  - "research/**"
+  - ".ai/**"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#mcp-reads-live-state"
+acceptance_criteria:
+  - "No tool, resource, parameter or type is named in the console code: the command list, help and argument typing come from the same ToolsList/ResourcesList the HTTP server answers"
+  - "key=value arguments are typed by the tool's inputSchema (boolean, integer, number, string, array, object, nullable unions); an unknown key, a missing required key or a value of the wrong type is refused with the tool's usage and changes nothing"
+  - "A tool or resource is named in full, without the openttd. prefix, or by a unique suffix; an ambiguous name lists the candidates"
+  - "Calls go through the same in-process dispatch as the HTTP server (coverage counters, approvals, arming unchanged); from a remote (rcon) console only resources and tools annotated readOnlyHint run"
+  - "The parser and resolver are unit-tested in openttd_test [prismatic_mcp]; tools/research/mcp-console-check runs the command family in a dedicated server and checks every tool and resource it lists"
+validation:
+  - "build-gate-research/openttd_test '[prismatic_mcp]'"
+  - "tools/research/mcp-console-check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-16'
+updated_at: '2026-11-16'

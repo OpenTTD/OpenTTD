@@ -44,6 +44,7 @@ Generated from each document's title and first paragraph (`tools/surfaces/surfac
 |---|---|
 | [Experiment report: baseset-prerequisite-macos](baseset-prerequisite-macos.md) | The four regression ctest cases (regression_regression, regression_stationlist, regression_gs, regression_gs_compat) require a base graphics set to be installed, even though they run headless (-vnull -snull -mnull).... |
 | [Experiment report:](experiment-template.md) | List the exact commands run and their outcome. Don't summarize away detail — "ran the tests" is not enough, "tools/gate.sh change -> exit 0, 98/98 tests" is. |
+| [The MCP catalogue in the in-game console](mcp-console.md) | RESEARCH-ONLY, UNSTABLE. Issue I0067; rule project.mcp-surfaces-are-derived. |
 | [Driving OpenTTD from outside: MCP panel, developer console and Rhai](mcp-control.md) | RESEARCH-ONLY. The embedded MCP server (ADR 0008, research/prismatic-mcp/) is the channel; this is the tooling that drives a running game through it. Everything binds to loopback. |
 | [The MCP hub: every instance, every operation, every event over one WebSocket](mcp-hub.md) | RESEARCH-ONLY, UNSTABLE. Issue I0058; rule project.mcp-surfaces-are-derived. |
 | [A person-like player: the interface as data, the mouse as input](mcp-human.md) | RESEARCH-ONLY. The embedded MCP server (ADR 0008, research/prismatic-mcp/) runs in every OpenTTD process: a dedicated server and each GUI client have their own. This document covers the part that lets a bot play the... |

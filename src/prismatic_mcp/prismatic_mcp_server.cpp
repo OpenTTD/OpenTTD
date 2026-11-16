@@ -26,6 +26,7 @@
 
 #include "prismatic_mcp.h"
 #include "prismatic_mcp_detail.h"
+#include "prismatic_mcp_console.h"
 #include "prismatic_mcp_coverage.h"
 #include "prismatic_mcp_entities.h"
 #include "prismatic_mcp_graph.h"
@@ -1095,6 +1096,12 @@ std::string GetStatusLine()
 		s += " conns=" + fmt::format("{}", _mcp.conns.size());
 	}
 	return s;
+}
+
+json Dispatch(const json &request)
+{
+	auto reply = DispatchOne(request);
+	return reply.has_value() ? *reply : json(nullptr);
 }
 
 } // namespace PrismaticMCP

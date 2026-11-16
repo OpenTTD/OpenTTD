@@ -12,6 +12,7 @@
 #include "../3rdparty/catch2/catch.hpp"
 #include "../prismatic_mcp/prismatic_mcp_detail.h"
 #include "../prismatic_mcp/prismatic_mcp_menu.h"
+#include "../prismatic_mcp/prismatic_mcp_console.h"
 
 #include "../safeguards.h"
 
@@ -112,6 +113,151 @@ TEST_CASE("A request is queued, listed with its kind and answered once", "[prism
 	CHECK(M::Call("openttd.ui.menu.run", {{"index", -1}})->value("ok", true) == false);
 	CHECK_FALSE(M::Call("openttd.ui.something.else", json::object()).has_value());
 	for (const auto &t : M::Tools()) CHECK(t["annotations"]["readOnlyHint"] == false); // a coverage probe must not run them
+}
+
+/* ---- the catalogue as console commands (prismatic_mcp_console.cpp) ---------------------------- */
+
+namespace {
+using njson = nlohmann::json;
+namespace mc = PrismaticMCP::Console::detail;
+
+const std::vector<std::string> NAMES = {"openttd.view.zoom", "openttd.view.state", "openttd.ui.windows",
+	"openttd.input.pointer", "openttd.decision.submit", "openttd.game.set_pause"};
+
+njson ZoomSchema()
+{
+	return {{"type", "object"}, {"properties", {{"level", {{"type", "integer"}}}}}, {"required", {"level"}}};
+}
+
+njson Args(const njson &schema, std::vector<std::string_view> tokens, std::vector<std::string> &errors)
+{
+	return mc::ParseArgs(schema, tokens, errors);
+}
+} // namespace
+
+TEST_CASE("Console names resolve exactly, without the prefix or by a unique suffix", "[prismatic_mcp]")
+{
+	CHECK(mc::Resolve(NAMES, "openttd.view.zoom") == std::vector<std::string>{"openttd.view.zoom"});
+	CHECK(mc::Resolve(NAMES, "view.zoom") == std::vector<std::string>{"openttd.view.zoom"});
+	CHECK(mc::Resolve(NAMES, "zoom") == std::vector<std::string>{"openttd.view.zoom"});
+	CHECK(mc::Resolve(NAMES, "set_pause") == std::vector<std::string>{"openttd.game.set_pause"});
+	CHECK(mc::Resolve({"openttd://company/finances", "openttd://map"}, "map") == std::vector<std::string>{"openttd://map"});
+	/* Two suffix matches: candidates, never a guess. */
+	CHECK(mc::Resolve({"openttd.a.state", "openttd.b.state"}, "state").size() == 2);
+	/* A lone substring match is offered, not run: the second entry is the empty marker. */
+	auto sub = mc::Resolve(NAMES, "windo");
+	REQUIRE(sub.size() == 2);
+	CHECK(sub[0] == "openttd.ui.windows");
+	CHECK(sub[1].empty());
+	CHECK(mc::Resolve(NAMES, "nothing").empty());
+	CHECK(mc::Resolve(NAMES, "").empty());
+}
+
+TEST_CASE("Console values are typed by the schema property", "[prismatic_mcp]")
+{
+	std::string e;
+	njson b = {{"type", "boolean"}};
+	for (auto t : {"true", "1", "yes", "on"}) { CHECK(mc::ParseValue(b, t, e) == true); CHECK(e.empty()); }
+	for (auto f : {"false", "0", "no", "off"}) CHECK(mc::ParseValue(b, f, e) == false);
+	mc::ParseValue(b, "maybe", e);
+	CHECK_FALSE(e.empty());
+
+	njson i = {{"type", "integer"}};
+	CHECK(mc::ParseValue(i, "-42", e) == -42);
+	mc::ParseValue(i, "1.5", e);
+	CHECK_FALSE(e.empty());
+	mc::ParseValue(i, "12abc", e);
+	CHECK_FALSE(e.empty());
+
+	njson nullable = {{"type", {"integer", "null"}}};
+	CHECK(mc::ParseValue(nullable, "null", e).is_null());
+	CHECK(e.empty());
+	CHECK(mc::ParseValue(nullable, "7", e) == 7);
+
+	CHECK(mc::ParseValue({{"type", "number"}}, "2.5", e) == 2.5);
+	CHECK(mc::ParseValue({{"type", "string"}}, "a b", e) == "a b");
+	CHECK(mc::ParseValue({{"type", "array"}, {"items", {{"type", "integer"}}}}, "1,2,3", e) == njson::array({1, 2, 3}));
+	mc::ParseValue({{"type", "array"}, {"items", {{"type", "integer"}}}}, "1,x", e);
+	CHECK_FALSE(e.empty());
+	CHECK(mc::ParseValue({{"type", "array"}}, "[1,\"a\"]", e) == njson::array({1, "a"}));
+	CHECK(mc::ParseValue({{"type", "object"}}, "{\"k\":1}", e) == njson{{"k", 1}});
+
+	njson en = {{"type", "string"}, {"enum", {"rail", "road"}}};
+	CHECK(mc::ParseValue(en, "rail", e) == "rail");
+	mc::ParseValue(en, "air", e);
+	CHECK_FALSE(e.empty());
+
+	/* No type: JSON when it parses, else the text. */
+	CHECK(mc::ParseValue(njson::object(), "3", e) == 3);
+	CHECK(mc::ParseValue(njson::object(), "hello", e) == "hello");
+}
+
+TEST_CASE("Console arguments: key=value, bare values for required keys, refusals", "[prismatic_mcp]")
+{
+	std::vector<std::string> errors;
+	CHECK(Args(ZoomSchema(), {"level=2"}, errors) == njson{{"level", 2}});
+	CHECK(errors.empty());
+	CHECK(Args(ZoomSchema(), {"3"}, errors) == njson{{"level", 3}});
+	CHECK(errors.empty());
+
+	Args(ZoomSchema(), {}, errors);
+	REQUIRE(errors.size() == 1);
+	CHECK(errors[0].find("missing required key 'level'") != std::string::npos);
+
+	errors.clear();
+	Args(ZoomSchema(), {"level=2", "speed=9"}, errors);
+	REQUIRE(errors.size() == 1);
+	CHECK(errors[0].find("unknown key 'speed'") != std::string::npos);
+
+	errors.clear();
+	Args(ZoomSchema(), {"level=high"}, errors);
+	REQUIRE(errors.size() == 2);   // mistyped, and therefore still missing
+	CHECK(errors[0].find("level:") == 0);
+
+	errors.clear();
+	Args(ZoomSchema(), {"2", "3"}, errors);
+	CHECK(errors.size() == 1);   // no required key left for the second bare value
+
+	/* A JSON object token is merged; an open schema accepts any key, typed by JSON. */
+	errors.clear();
+	njson open = {{"type", "object"}};
+	CHECK(Args(open, {"{\"action\":{\"type\":\"game.set_pause\"}}", "note=x"}, errors) ==
+		njson{{"action", {{"type", "game.set_pause"}}}, {"note", "x"}});
+	CHECK(errors.empty());
+
+	/* anyOf: one complete set of required keys is enough. */
+	njson either = {{"type", "object"}, {"properties", {{"tile", {{"type", "integer"}}}, {"x", {{"type", "integer"}}}, {"y", {{"type", "integer"}}}}},
+		{"anyOf", njson::array({njson{{"required", {"tile"}}}, njson{{"required", {"x", "y"}}}})}};
+	Args(either, {"x=1", "y=2"}, errors);
+	CHECK(errors.empty());
+	Args(either, {"tile=5"}, errors);
+	CHECK(errors.empty());
+	Args(either, {"x=1"}, errors);
+	REQUIRE(errors.size() == 1);
+	CHECK(errors[0] == "needs tile or x+y");
+}
+
+TEST_CASE("Console usage lines and result lines are derived, not written", "[prismatic_mcp]")
+{
+	CHECK(mc::Usage("openttd.view.zoom", ZoomSchema()) == "mcp openttd.view.zoom level=<integer>");
+	njson s = {{"type", "object"}, {"properties", {{"mode", {{"type", "string"}, {"enum", {"a", "b"}}}}, {"pause", {{"type", "boolean"}}}}}, {"required", {"pause"}}};
+	CHECK(mc::Usage("t", s) == "mcp t pause=<boolean> [mode=a|b]");
+	CHECK(mc::Usage("t", njson{{"type", "object"}}) == "mcp t [{json}]");
+
+	njson result = {{"content", njson::array({{{"type", "text"}, {"text", "{\"ok\":true,\"n\":1}"}}})}};
+	CHECK(mc::ResultLines(result, true) == std::vector<std::string>{"{\"n\":1,\"ok\":true}"});
+	CHECK(mc::ResultLines(result, false).size() == 4);   // { "n": 1, "ok": true }
+	njson plain = {{"contents", njson::array({{{"text", "a\nb"}}})}};
+	CHECK(mc::ResultLines(plain, false) == std::vector<std::string>{"a", "b"});
+}
+
+TEST_CASE("Only a tick counter that went back means another world", "[prismatic_mcp]")
+{
+	using PrismaticMCP::detail::WorldChanged;
+	CHECK_FALSE(WorldChanged(0, 0));
+	CHECK_FALSE(WorldChanged(100, 100));
+	CHECK_FALSE(WorldChanged(100, 250));
+	CHECK(WorldChanged(250, 3));   // a new game or a load restarted the counter
 }
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

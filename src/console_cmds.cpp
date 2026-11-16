@@ -3189,6 +3189,7 @@ void IConsoleStdLibRegister()
 #endif
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 	IConsole::CmdRegister("prismatic_mcp",           ConPrismaticMcp);
+	IConsole::CmdRegister("mcp",                     PrismaticMCP::ConMcp);
 #endif
 	IConsole::CmdRegister("quit",                    ConExit);
 	IConsole::CmdRegister("resetengines",            ConResetEngines,     ConHookNoNetwork);
