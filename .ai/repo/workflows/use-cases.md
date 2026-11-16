@@ -2,7 +2,7 @@
 
 A use case is an executable object of this repository, not documentation about it:
 one file under `.ai/repo/use-cases/`, the commands, rules, claims, responsibilities and
-applications it names, and a scenario the tool runs against itself. `docs/USE_CASES.md`
+applications it names, and a scenario the tool runs against itself. Majordomus's `USE_CASES.md`
 is the contract; this is what a worker does with it.
 
 ## When you change a capability

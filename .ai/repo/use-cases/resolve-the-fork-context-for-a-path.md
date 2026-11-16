@@ -7,8 +7,8 @@ category: policy
 status: active
 target: advisory
 weight: 10
-actors: [agent, human]
-difficulty: beginner
+actors: [agent, maintainer]
+difficulty: basic
 commands: [context]
 applications: [govern-a-research-fork-of-a-large-codebase]
 ---

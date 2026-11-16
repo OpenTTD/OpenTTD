@@ -33,7 +33,10 @@ Usage: $SELF <smoke|change|research|full> [options]
             generated Prismatic MCP contributor docs are not stale
             (tools/check-prismatic-docs.sh), and that every published surface
             agrees with the repository: Markdown regions current, every
-            relative link and anchor resolving (tools/surfaces/surfaces check).
+            relative link and anchor resolving (tools/surfaces/surfaces check),
+            and every file and symbol the .ai/ records cite still exists
+            (tools/knowledge/refs check); then lists the records that cite a
+            file this change touches (tools/knowledge/refs impact HEAD).
             Names the research tier when the change touches research-gated
             code.
 
@@ -214,6 +217,10 @@ cmd_change() {
   tools/check-prismatic-docs.sh
   echo "==> tools/surfaces/surfaces check"
   tools/surfaces/surfaces check
+  echo "==> tools/knowledge/refs check"
+  tools/knowledge/refs check
+  echo "==> tools/knowledge/refs impact HEAD (records citing what this change touches: re-read them)"
+  tools/knowledge/refs impact HEAD
 
   if [[ ! -f build/CMakeCache.txt ]]; then
     echo "==> cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo (initial configure)"

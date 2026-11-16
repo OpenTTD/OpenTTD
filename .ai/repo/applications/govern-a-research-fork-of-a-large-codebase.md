@@ -12,7 +12,7 @@ fits_when:
 does_not_fit_when:
   - 'The work is meant for upstream contribution; upstream has its own process, and this layer is not it'
   - 'The fork never follows upstream and has no research layer; plain upstream tooling is enough'
-use_cases: [resolve-the-fork-context-for-a-path, validate-the-derived-fork-record]
+use_cases: [resolve-the-fork-context-for-a-path, validate-the-derived-fork-record, load-the-subsystem-map-for-a-change]
 ---
 
 # Context

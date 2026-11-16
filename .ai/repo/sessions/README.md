@@ -71,7 +71,7 @@ and under its own name, once: a record whose `session_id` this directory already
 retired from the outbox, not written twice. A file in the outbox that is not a `session/v1`
 record is named on standard error and left where it is. Until a branch carries them,
 `context` and `doctor` name how many records wait. ADR 0091, amendment of 2026-10-15, and
-`docs/KNOWLEDGE.md` have the whole of it.
+Majordomus's own `KNOWLEDGE.md` (in the tool's repository, not this one) have the whole of it.
 
 ## What is derived from this directory
 

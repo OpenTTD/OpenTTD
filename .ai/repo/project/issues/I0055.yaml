@@ -1,0 +1,31 @@
+id: I0055
+milestone: the-fork-is-published-supervised-and-current
+title: "Map the substrate and the fork's extensions into path-resolved context, evidenced knowledge candidates and skills"
+slug: substrate-knowledge
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "A worker editing any major src/ subsystem or fork extension resolves, by path, its entry points, invariants, tests, decisions and traps without re-reading the subsystem."
+why: "Every session re-derived OpenTTD's architecture from CLAUDE.md prose and grep; the layer had no subsystem navigation, no check that a cited file or symbol still exists, and no way to tell which records a diff makes stale."
+scope:
+- .ai/**
+- tools/knowledge/**
+- tools/gate.sh
+depends_on: []
+serves:
+- "openttd-validates-agent-driven-engineering#the-layer-is-supervised"
+acceptance_criteria:
+- "majordomus context resolve <a file under each mapped subsystem> includes that subsystem's context document"
+- "Every source reference in the subsystem documents resolves to a tracked file and, where a symbol is named, to a line that contains it (tools/knowledge/refs check exits 0)"
+- "tools/knowledge/refs impact <rev-range> names the records a diff touches, and its tests pass"
+- "New knowledge is status candidate and new ADRs are status proposed; nothing is promoted or accepted"
+- "majordomus doctor, context validate, knowledge check, knowledge validate, adr check, plan validate and skills check report no failure"
+validation:
+- majordomus context validate
+- majordomus knowledge check
+- majordomus skills check
+- tools/knowledge/refs check
+evidence_required:
+- validation_run
+created_at: '2026-11-16'
+updated_at: '2026-11-16'

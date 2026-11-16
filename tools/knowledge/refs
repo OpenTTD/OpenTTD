@@ -1,0 +1,3 @@
+#!/bin/sh
+# Source references in tracked Markdown records: check, index, impact. See README.md beside this file.
+exec python3 "$(dirname "$0")/refs.py" "$@"

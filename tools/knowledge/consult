@@ -1,0 +1,3 @@
+#!/bin/sh
+# Ask an external model with the context the AI layer resolves, and judge its citations. See README.md beside this file.
+exec python3 "$(dirname "$0")/consult.py" "$@"

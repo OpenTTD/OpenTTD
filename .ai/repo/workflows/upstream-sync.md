@@ -27,6 +27,15 @@ comm -12 <(git diff --name-only "$MB" master | sort) \
 A file touched on both sides is where a conflict or a silent semantic break can hide. Read
 the upstream change to each one before continuing.
 
+Then name the records the upstream side makes stale: every subsystem map under
+`.ai/repo/workflows/substrate/` and every record that cites a file upstream changed, with the
+symbols to re-read. After the rebase, `tools/knowledge/refs check` must still pass (a renamed
+upstream file or function fails it by name):
+
+```bash
+tools/knowledge/refs impact "$MB"..upstream/master    # records to re-read, and which symbols
+```
+
 ## 3. Keep the old head, then rebase
 
 ```bash
