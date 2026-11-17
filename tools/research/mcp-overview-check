@@ -130,6 +130,34 @@ try {
   check('a game without a company says so instead of an empty frame', empty.every(Boolean), `visible ${empty.join(', ')}`);
   await anchored.close();
 
+  // My bot, the owner's second complaint of 2026-11-17 (4073px of controls, an Apply under every
+  // field): a fictional running bot served to the page, whose fr_/fr2_/fr3_ settings must become one
+  // table of lines with the unused one folded, and whose edits are counted by one Apply per bot.
+  const botPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  watch(botPage);
+  const st = (name, value, description = 'a number') => ({ name, value, default: value, min: -1, max: 100, step: 1, flags: ['in_game'], ingame: true, editable: true, labels: {}, description });
+  const line = (p, f, t, c) => [st(`${p}_from`, f, 'Producing industry (industry id; -1: none)'), st(`${p}_to`, t, 'Accepting industry (industry id; -1: none)'), st(`${p}_cargo`, c, 'Cargo (cargo id; -1: none)')];
+  const fixture = { source: 'fixture', live: { list: true, set_setting: true }, ais: [{ ai: 'FictionalAI', settings: [] }],
+    running: [{ id: 7, name: 'Fictional Freight', ai: 'FictionalAI', money: 1000, settings: [st('max_routes', 4), st('air_a', 1), st('air_b', 2), ...line('fr', 1, 2, 1), ...line('fr2', 2, 1, 1), ...line('fr3', -1, -1, -1)] }] };
+  const posts = [];
+  botPage.on('request', (r) => { if (r.method() === 'POST' && r.url().includes('/api/bots')) posts.push(r.url()); });
+  await botPage.route('**/api/bots', (r) => r.fulfill({ contentType: 'application/json', body: JSON.stringify(fixture) }));
+  await botPage.route('**/api/bots/choices', (r) => r.fulfill({ contentType: 'application/json', body: JSON.stringify({ town: [], cargo: [{ id: 1, name: 'Ore' }], industry: [{ id: 1, name: 'Mine', produces: ['Ore'] }, { id: 2, name: 'Mill', produces: [] }] }) }));
+  await botPage.goto(`${base}/#bot`);
+  await botPage.waitForSelector('#bot-running [data-bot="7"] select[data-picker]', { timeout: 8000 }).catch(() => {});
+  const bot = await botPage.evaluate(() => ({
+    applies: document.querySelectorAll('#bot-running [data-apply-bot]').length,
+    perField: document.querySelectorAll('#bot-running [data-apply]').length,
+    lines: document.querySelectorAll('#bot-running [data-lines="fr"] [data-line]').length,
+    folded: document.querySelectorAll('#bot-running [data-unused] [data-line]').length,
+  }));
+  check('a running bot has one Apply, none per field', bot.applies === 1 && bot.perField === 0, `${bot.applies} per bot, ${bot.perField} per field`);
+  check('numbered settings form one table of lines, the unused one folded', bot.lines === 3 && bot.folded === 1, `${bot.lines} lines, ${bot.folded} folded`);
+  await botPage.fill('#set-c7-max_routes', '6').catch(() => {});
+  const pending = await botPage.evaluate(() => document.querySelector('#bot-running [data-pending]')?.textContent);
+  check('an edit is counted with the approvals Apply will ask, and sends nothing', pending === '1 change, 1 approval' && posts.length === 0, `"${pending}", ${posts.length} post(s)`);
+  await botPage.close();
+
   const phone = await browser.newPage({ viewport: { width: 390, height: 844 } });
   watch(phone);
   await phone.goto(`${base}/`);

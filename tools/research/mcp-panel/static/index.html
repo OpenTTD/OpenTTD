@@ -239,25 +239,23 @@
     </div>
 
     <div id="bot" data-nav="My bot" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">My bot</h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400">The AI that plays for you. Its settings come from the game (<span id="bot-source" class="font-mono"></span>).</p>
-        </div>
-        <div class="flex gap-2">
-          <select id="bot-ai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
-          <button id="bot-start" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Start my bot</button>
-        </div>
+      <div class="mb-3">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">My bot</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">The AI that plays for you. Its settings come from the game (<span id="bot-source" class="font-mono"></span>); a change to a running bot asks one approval per setting.</p>
       </div>
-      <div id="bot-settings" class="grid gap-4 md:grid-cols-2 xl:grid-cols-4"></div>
-      <h4 class="mt-4 mb-2 text-sm font-semibold text-gray-900 dark:text-white">Running bots</h4>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"><tr><th class="px-4 py-2">Company</th><th class="px-4 py-2">Name</th><th class="px-4 py-2">Money</th><th class="px-4 py-2">Live settings</th></tr></thead>
-          <tbody id="bot-running"><tr><td class="px-4 py-2" colspan="4">none</td></tr></tbody>
-        </table>
-      </div>
-      <p id="bot-msg" class="mt-2 text-sm text-gray-500 dark:text-gray-400"></p>
+      <div id="bot-running" class="space-y-4"><p class="text-sm text-gray-500 dark:text-gray-400">Loading the bots…</p></div>
+      <details id="bot-new" class="mt-4 border border-gray-200 rounded-lg dark:border-gray-700">
+        <summary class="px-4 py-3 text-sm font-semibold text-gray-900 cursor-pointer dark:text-white">Start another bot</summary>
+        <div class="px-4 pb-4">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <label for="bot-ai" class="text-sm font-medium text-gray-900 dark:text-white">AI</label>
+            <select id="bot-ai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block py-2 ps-3 pe-9 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
+            <button id="bot-start" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Start this bot</button>
+          </div>
+          <div id="bot-new-form"></div>
+        </div>
+      </details>
+      <p id="bot-msg" class="mt-2 text-sm text-gray-500 dark:text-gray-400" aria-live="polite"></p>
     </div>
 
     <div class="grid gap-4 mb-4 xl:grid-cols-2">
@@ -308,5 +306,6 @@
   <script src="/vendor/echarts.min.js"></script>
   <script src="/static/app.js"></script>
   <script type="module" src="/static/overview.js"></script>
+  <script type="module" src="/static/bots.js"></script>
 </body>
 </html>
