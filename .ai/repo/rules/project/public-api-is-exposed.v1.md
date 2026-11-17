@@ -19,27 +19,39 @@ Swagger at least, and this is enforced. A surface nobody measures is claimed, no
 # Required behaviour
 
 - Measure: `tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel <panel>`. It
-  derives the three dimensions from `src/command_type.h`, `src/console_cmds.cpp` and
-  `src/script/api/script_*.hpp`, and checks `tools/list` and `/openapi.json`. Exit 10 below 100%.
+  derives the three dimensions from `src/command_type.h`, `src/console_cmds.cpp` and the Script
+  API the build publishes to scripts (the `DefSQStaticMethod`/`DefSQAdvancedStaticMethod` of
+  `build*/generated/script/api/{ai,game}/*.sq.hpp`, generated from `src/script/api/script_*.hpp`,
+  plus the controllers' `*_controller.sq.hpp`), and checks `tools/list` and `/openapi.json`. Exit
+  10 below 100%.
 - Commands go through the decision path (validate, submit, approval, `Command<>::Post`), never a
   direct pool write.
 - Script API functions that change state are commands underneath and follow the same path;
   read-only ones are tools or resources.
 
-# Current state (2026-11-16, branch feature/order-and-variant-params)
+# Current state (2026-11-17, master 11aa8f41db)
 
-The rule is not met, and is recorded as not met. Measured against a panel on this build (seed
-31337): commands 146/146, console 87/90, Script API 0/660.
+Measured against a panel on this build (seed 31337): commands 146/146, Script API 630/630,
+console 87/90. The rule is met for commands and the Script API; console is short by three
+commands that only some builds or settings have (below).
 
 - Commands: met. Every entry is `openttd.cmd.<Name>`, derived from the command table
   (`src/prismatic_mcp/prismatic_mcp_commands.cpp`), approval-gated, with its OpenAPI route. Every
   parameter type has a JSON spelling derived from it (`prismatic_mcp_params.hpp`): integers, enums,
   ids, bools, strings, a text, a vehicle list, a cargo source, an order (its wire fields), and any
   `std::variant` of those (`null` or `{index, value}`).
-- Console: the three missing commands (`newgrf_profile`, `reload_newgrfs`, `resettile`) are
-  compiled only into some builds.
-- Script API: not started. A Script API function runs only inside a running script's context
-  (an AI or game script instance), so it needs a design before any tool.
+- Script API: met. Every published static function is `openttd.api.Script<Class>.<Function>`
+  (`src/prismatic_mcp/prismatic_mcp_api.cpp`), answered by private GS and AI script engines that
+  register the API as GameInstance and AIInstance do; the catalogue and parameter types are read
+  back from them. A call runs in test mode and changes nothing; `execute` is approval-gated and
+  posts in async mode. See `research/mcp-api.md`.
+- The Script API's denominator changed from 660 to 630 on 2026-11-17, and no coverage was lost.
+  660 counted every `static` line of `src/script/api/script_*.hpp`, which includes what scripts
+  never see: `ScriptObject`'s protected statics, mode callbacks, internal helpers such as
+  `_BuildRoadInternal`. 630 is what the build's squirrel export publishes to AI and game scripts.
+- Console: the three missing commands are gated by design: `resettile` is compiled only into
+  `_DEBUG` builds, and `reload_newgrfs` and `newgrf_profile` are hidden by their hook until
+  `newgrf_developer_tools` is on.
 - `tools/research/mcp-live-check` exercises catalogue commands end to end: `Pause`, `CreateGoal`
   (a text) and `CustomNewsItem` (a variant). Issue I0036 carries the rest.
 

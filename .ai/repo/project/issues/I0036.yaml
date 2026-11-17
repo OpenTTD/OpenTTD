@@ -27,7 +27,7 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-16
+updated_at: 2026-11-17T03:59:47Z
 evidence:
   - covers: "validation_run"
     type: test
@@ -44,3 +44,10 @@ evidence:
     command: "tools/gate.sh research; tools/gate.sh change; tools/research/mcp-live-check; tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel <panel on this build> --report"
     result: "partial: commands 146/146 (an order and any std::variant of supported types now convert from JSON), console 87/90, Script API 0/660. gate research PASS (126/126, 770 MCP assertions in 26 cases), gate change PASS (98/98), mcp-live-check 28/28 including openttd.cmd.CustomNewsItem with a news reference. Remaining: the Script API."
     recorded_at: 2026-11-16T22:20:00Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh change; tools/gate.sh research; tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel <panel on this build> --report"
+    result: "partial: Script API 630/630 at 11aa8f41db (openttd.api.Script<Class>.<Function>, private GS and AI script engines registering the API as GameInstance/AIInstance do; catalogue and parameter types read back from them; test mode by default, execute approval-gated and posted in async mode; live: ScriptTown.SetName executed after approval and read back). The denominator changed from 660 to 630 with no coverage lost: 660 counted every header static (ScriptObject protected statics, mode callbacks, internal helpers); 630 is what the build's squirrel export publishes. commands 146/146, console 87/90 (resettile _DEBUG-only; reload_newgrfs and newgrf_profile hidden by their hook until newgrf_developer_tools is on). gate change PASS (98/98), gate research PASS (126/126, 770 assertions)."
+    artifact: "11aa8f41db"
+    commit: 11aa8f41dbf584fa7a98d9b7f4506fae7cc10c2d
+    recorded_at: 2026-11-17T03:59:47Z
