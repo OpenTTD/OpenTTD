@@ -523,6 +523,16 @@ pub fn mcp_post(endpoint: &str, token: &str, method: &str, params: Value, timeou
     }
 }
 
+/// Whether a failed MCP call is tried once more. The game's MCP server answers one request at a time,
+/// and the main page fires many reads at once: now and then one connection is refused or dropped and
+/// the page saw a 502 (/api/catalogue, /api/bots/choices, 2026-11-17). A read is tried again after any
+/// transport error; any other method only when the connection never opened, so a command the server
+/// may have received is never sent twice.
+pub fn rpc_retryable(method: &str, kind: ureq::ErrorKind, attempt: u32) -> bool {
+    let read = matches!(method, "initialize" | "tools/list" | "resources/list" | "resources/read" | "prompts/list" | "ping");
+    attempt == 0 && (read || kind == ureq::ErrorKind::ConnectionFailed)
+}
+
 /// A token file `{agent_token, endpoint}` as `prismatic_mcp start <port> <file>` writes it.
 fn token_file(path: &str) -> Result<(String, String), String> {
     let cfg: Value = serde_json::from_str(&std::fs::read_to_string(path).map_err(|e| format!("{path}: {e}"))?)
@@ -871,17 +881,24 @@ impl Game {
         if let Some(p) = params {
             body["params"] = p;
         }
-        let r = ureq::post(&self.endpoint()).timeout(Duration::from_secs(5))
-            .set("Content-Type", "application/json").set("Accept", "application/json, text/event-stream")
-            .set("Authorization", &format!("Bearer {token}"))
-            .send_string(&body.to_string());
-        match r {
-            Ok(resp) => {
-                let text = resp.into_string().map_err(|e| e.to_string())?;
-                serde_json::from_str(if text.is_empty() { "{}" } else { &text }).map_err(|e| e.to_string())
+        let mut attempt = 0;
+        loop {
+            let r = ureq::post(&self.endpoint()).timeout(Duration::from_secs(5))
+                .set("Content-Type", "application/json").set("Accept", "application/json, text/event-stream")
+                .set("Authorization", &format!("Bearer {token}"))
+                .send_string(&body.to_string());
+            match r {
+                Ok(resp) => {
+                    let text = resp.into_string().map_err(|e| e.to_string())?;
+                    return serde_json::from_str(if text.is_empty() { "{}" } else { &text }).map_err(|e| e.to_string());
+                }
+                Err(ureq::Error::Status(code, resp)) => return Ok(json!({"http_error": code, "body": resp.into_string().unwrap_or_default()})),
+                Err(e) if rpc_retryable(method, e.kind(), attempt) => {
+                    attempt += 1;
+                    thread::sleep(Duration::from_millis(150));
+                }
+                Err(e) => return Err(e.to_string()),
             }
-            Err(ureq::Error::Status(code, resp)) => Ok(json!({"http_error": code, "body": resp.into_string().unwrap_or_default()})),
-            Err(e) => Err(e.to_string()),
         }
     }
 
@@ -2474,6 +2491,16 @@ pub fn free_port() -> Option<u16> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_failed_read_is_retried_once_and_a_command_only_when_it_never_left() {
+        use ureq::ErrorKind::{ConnectionFailed, Io};
+        assert!(rpc_retryable("resources/read", Io, 0));
+        assert!(rpc_retryable("tools/list", Io, 0));
+        assert!(!rpc_retryable("resources/read", Io, 1), "once");
+        assert!(rpc_retryable("tools/call", ConnectionFailed, 0));
+        assert!(!rpc_retryable("tools/call", Io, 0), "a command the server may have received is not sent twice");
+    }
 
     #[test]
     fn the_history_keeps_one_sample_a_day_and_restarts_with_a_new_world() {
