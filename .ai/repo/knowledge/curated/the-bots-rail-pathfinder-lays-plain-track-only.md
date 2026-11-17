@@ -104,7 +104,7 @@ Three later findings on seed 31337 (bridge repository, branch feat/live-behaviou
 
 - **More lines when money waits** (panel MAX_FREIGHT_LINES 16; bridge 2c01584). With eight lines the
   loan was repaid by month 30 and 308074 sat idle at month 36. Thirteen lines handed over, eleven
-  built in 36 months: 597075, +6.9% over eight lines (spread between two runs of one bot is about 1%).
+  built in 36 months: 597075, +6.9% over eight lines (spread between two runs of one bot is about 1% one duel at a time; under load it is 10% or more, knowledge duels-run-side-by-side-are-noisy).
   After that, laying track takes the game time, not the plan or the money.
 
 - **Its own lines once the plan is built** (bridge 31fdb68, `own_lines`; the panel passes 8). They cost

@@ -54,5 +54,9 @@ is for its own fleet size, divided per vehicle.
   minus running cost (`plan.rs`, `cargo.rs`; test `calibration_scales_net_profit_never_income_alone`).
   The 2.5% therefore says nothing yet about a correct calibration; the next A/B needs several seeds
   and paired runs, not one pair.
+- With the fix, paired on two seeds (2026-11-17, four duels at once): seed 31337 calibrated 794737 vs
+  950946 (−16.4%), seed 20208 796631 vs 555180 (+43.5%). The same rival differed by 52% between the
+  arms of one seed, so this is noise-bound (knowledge `duels-run-side-by-side-are-noisy`); calibration
+  stays off by default.
 - Re-measure after a change to the payment or load model, and with more vehicles per line; record
   the new reading here rather than a second record.

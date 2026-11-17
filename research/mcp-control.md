@@ -657,7 +657,9 @@ the model alone) and says so in the plan's log, so a duel result records which c
 with. The duel form's **Calibrated plan** sets it for that duel only (`POST /api/duel` `calibrated`),
 and *Run this again* keeps it. It stays off by default: its first A/B (seed 31337, 36 months, run side
 by side) ended 1023810 calibrated against 1050432 uncalibrated, 2.5% lower after leading by 4.6% at
-month 31.
+month 31. That run had a defect (the factor scaled income alone). With it fixed, paired on two seeds:
+seed 31337 −16.4% (794737 vs 950946), seed 20208 +43.5% (796631 vs 555180), with the same rival 52%
+apart between the arms of one seed: inconclusive (knowledge `duels-run-side-by-side-are-noisy`).
 
 First reading, 2026-11-17, the :8800 game (one AI company, 17 years): freight rail 0.5 (three lines:
 0.97, 0.5, 0.2), passenger rail 0.2 (one line), bus 0.11 (two lines); four train lines matched no
