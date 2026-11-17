@@ -41,8 +41,16 @@ pub fn field(block: &str, key: &str) -> Option<String> {
         }
         let Some(rest) = block[at + key.len()..].trim_start().strip_prefix('=') else { continue };
         let rest = rest.trim_start();
-        if let Some((inside, _)) = quoted(rest) {
-            return Some(inside.to_string());
+        if let Some((inside, mut tail)) = quoted(rest) {
+            // `"fr" + "2" + "_from"` (a loop unrolled by `unroll_loops`) is one string; a term that
+            // is not a literal cannot be resolved here, so the value is unknown.
+            let mut value = inside.to_string();
+            while let Some(next) = tail.trim_start().strip_prefix('+') {
+                let (part, after) = quoted(next.trim_start())?;
+                value.push_str(part);
+                tail = after;
+            }
+            return Some(value);
         }
         let end = rest.find([',', '\n']).unwrap_or(rest.len());
         if end == 0 {
@@ -84,9 +92,87 @@ fn labels(text: &str) -> BTreeMap<String, Map<String, Value>> {
     out
 }
 
+/// `text` with every `for (local i = a; i <= b; i++) { ... }` (or `<`) written out once per `i`,
+/// the loop variable outside string literals replaced by its value as a literal, so settings an
+/// info.nut declares in a loop (PrismaticAI's fr2_* to fr16_*) are read by name. A loop of another
+/// shape is left as it is.
+pub fn unroll_loops(text: &str) -> String {
+    let mut out = String::new();
+    let mut rest = text;
+    while let Some(p) = rest.find("for (local ") {
+        out.push_str(&rest[..p]);
+        let after = &rest[p..];
+        match unroll_one(after) {
+            Some((written, used)) => { out.push_str(&written); rest = &after[used..]; }
+            None => { out.push_str("for (local "); rest = &after["for (local ".len()..]; }
+        }
+    }
+    out.push_str(rest);
+    out
+}
+
+/// One `for (local ...)` loop at the start of `s`, unrolled, and how many bytes of `s` it took.
+fn unroll_one(s: &str) -> Option<(String, usize)> {
+    let head_end = s.find(')')?;
+    let head = &s["for (local ".len()..head_end];
+    let parts: Vec<&str> = head.split(';').map(str::trim).collect();
+    let [init, cond, step] = parts[..] else { return None };
+    let (var, start) = init.split_once('=')?;
+    let var = var.trim();
+    if var.is_empty() || !var.chars().all(is_word) { return None; }
+    let start: i64 = start.trim().parse().ok()?;
+    let (end, inclusive) = if let Some(e) = cond.strip_prefix(var).map(str::trim_start).and_then(|c| c.strip_prefix("<=")) {
+        (e.trim().parse::<i64>().ok()?, true)
+    } else {
+        (cond.strip_prefix(var)?.trim_start().strip_prefix('<')?.trim().parse::<i64>().ok()?, false)
+    };
+    if step != format!("{var}++") { return None; }
+    let open = head_end + 1 + s[head_end + 1..].find('{')?;
+    if !s[head_end + 1..open].trim().is_empty() { return None; }
+    // The body's closing brace, braces inside string literals not counted.
+    let (mut depth, mut in_str, mut close) = (0usize, false, None);
+    for (i, c) in s[open..].char_indices() {
+        match c {
+            '"' => in_str = !in_str,
+            '{' if !in_str => depth += 1,
+            '}' if !in_str => { depth -= 1; if depth == 0 { close = Some(open + i); break; } }
+            _ => {}
+        }
+    }
+    let close = close?;
+    let body = &s[open + 1..close];
+    let last = if inclusive { end } else { end - 1 };
+    if last < start || last - start > 1000 { return None; }
+    let mut written = String::new();
+    for i in start..=last {
+        written.push_str(&substitute(body, var, &format!("\"{i}\"")));
+    }
+    Some((written, close + 1))
+}
+
+/// `body` with the identifier `var` outside string literals replaced by `with`.
+fn substitute(body: &str, var: &str, with: &str) -> String {
+    let (mut out, mut in_str, mut i) = (String::new(), false, 0);
+    while i < body.len() {
+        let c = body[i..].chars().next().unwrap();
+        if c == '"' { in_str = !in_str; }
+        if !in_str && body[i..].starts_with(var)
+            && (i == 0 || !is_word(body[..i].chars().next_back().unwrap()))
+            && !body[i + var.len()..].chars().next().map_or(false, is_word) {
+            out.push_str(with);
+            i += var.len();
+            continue;
+        }
+        out.push(c);
+        i += c.len_utf8();
+    }
+    out
+}
+
 /// Settings as an AI's info.nut declares them, in openttd.ai.list's shape (flags, labels, value =
 /// the default, editable), so the panel draws one kind of control for either source.
 pub fn info_settings(text: &str) -> Vec<Value> {
+    let text = &unroll_loops(text);
     let labels = labels(text);
     let mut out = Vec::new();
     let mut from = 0;
@@ -98,7 +184,9 @@ pub fn info_settings(text: &str) -> Vec<Value> {
         let flags_text = field(block, "flags").unwrap_or_default();
         let flags: Vec<&str> = [("boolean", "CONFIG_BOOLEAN"), ("in_game", "CONFIG_INGAME"), ("developer", "CONFIG_DEVELOPER")]
             .iter().filter(|(_, t)| flags_text.contains(t)).map(|(f, _)| *f).collect();
-        let name = field(block, "name");
+        // A name that is not a literal (or a loop unrolled into one) is skipped, not shown bare.
+        let Some(name) = field(block, "name") else { continue };
+        let name = Some(name);
         let default = field_int(block, "custom_value");
         let (mut mn, mut mx) = (field_int(block, "min_value"), field_int(block, "max_value"));
         if flags.contains(&"boolean") {
@@ -520,8 +608,33 @@ mod tests {
         assert_eq!((s[2]["step"].clone(), s[2]["flags"].clone(), s[2]["ingame"].clone()), (json!(5000), json!([]), json!(false)));
         let real = ai_dir().join("PrismaticAI/info.nut");
         if let Ok(text) = std::fs::read_to_string(real) {
-            assert!(info_settings(&text).iter().all(|s| s["name"].is_string() && s["default"].is_i64()));
+            let s = info_settings(&text);
+            assert!(s.iter().all(|s| s["name"].is_string() && s["default"].is_i64()));
+            let names: Vec<&str> = s.iter().filter_map(|s| s["name"].as_str()).collect();
+            assert_eq!(names.iter().collect::<HashSet<_>>().len(), names.len(), "every name once");
+            assert!(!names.contains(&"fr"), "no bare name from a loop");
         }
+    }
+
+    #[test]
+    fn settings_declared_in_a_loop_are_read_by_name() {
+        let text = r#"
+		AddSetting({name = "fr1_from", description = "line 1", min_value = -1, max_value = 9, custom_value = -1, flags = 0});
+		for (local i = 2; i <= 3; i++) {
+			AddSetting({
+				name = "fr" + i + "_from",
+				description = "Producing industry of line " + i + " (id; -1: none).",
+				min_value = -1, max_value = 65535, custom_value = -1, flags = CONFIG_INGAME,
+			});
+		}
+		for (local n = 0; n < 2; n++) { AddSetting({name = "x" + n, custom_value = 0, flags = 0}); }
+		AddSetting({name = "y" + unknown, custom_value = 0, flags = 0});"#;
+        let s = info_settings(text);
+        let names: Vec<&str> = s.iter().filter_map(|s| s["name"].as_str()).collect();
+        assert_eq!(names, vec!["fr1_from", "fr2_from", "fr3_from", "x0", "x1"], "unrolled; an unresolvable name is skipped");
+        assert_eq!(s[2]["description"], json!("Producing industry of line 3 (id; -1: none)."));
+        assert_eq!((s[1]["min"].clone(), s[1]["max"].clone(), s[1]["ingame"].clone()), (json!(-1), json!(65535), json!(true)));
+        assert_eq!(unroll_loops("for (local i = 0; i < n; i++) { f(i); }"), "for (local i = 0; i < n; i++) { f(i); }", "another shape stays");
     }
 
     #[test]
