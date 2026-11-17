@@ -122,7 +122,6 @@ test('runs side by side: each run a solid planned line and a dashed rival, one c
   assert.equal(o.series[0].id, 'duel-20261117T041705-seed31337-1', 'a line carries its run for the click');
   assert.ok(render(o).paths >= 4);
 });
-||||||| parent of 67064eb483 (Change: [PrismaticMCP] The overview's controls are one size in one header row, #overview lands below the navbar, and a game without a company says so)
 
 test('the overview cards share one header row and say when no company exists yet', async () => {
   const html = fs.readFileSync(path.join(STATIC, 'index.html'), 'utf8');
