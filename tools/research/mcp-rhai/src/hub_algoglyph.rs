@@ -1,6 +1,6 @@
 //! RESEARCH-ONLY / UNSTABLE: AlgoGlyph's kernels as hub methods.
 //!
-//! AlgoGlyph (`$MCP_ALGOGLYPH_DIR`, default `~/dev/algoglyph`) answers one kernel on caller data
+//! AlgoGlyph (`$MCP_ALGOGLYPH_DIR`, else `~/dev/algoglyph-wt/main`, else `~/dev/algoglyph`) answers one kernel on caller data
 //! through its flow CLI: `npm run --silent flow -- kernel <id> -` reads the input on stdin and
 //! prints the answer as JSON; `flow -- kernels` lists every kernel with the input shape it reads.
 //! Nothing here names a kernel except `track_plan`, which assembles the track-planning input from a
@@ -26,11 +26,19 @@ pub const KERNEL_TIMEOUT: Duration = Duration::from_secs(120);
 pub const TRACK_INPUTS: [(&str, &str); 5] = [("map", "map"), ("ways", "map/ways"), ("terrain", "map/terrain"),
     ("prices", "economy/prices"), ("bridges", "bridges")];
 
-/// Where AlgoGlyph is checked out.
+/// Where AlgoGlyph is checked out: `$MCP_ALGOGLYPH_DIR`, else a checkout of origin/main at
+/// `~/dev/algoglyph-wt/main` when there is one (the primary checkout can be far behind main and
+/// lack the planner's kernels), else `~/dev/algoglyph`.
 pub fn dir() -> PathBuf {
     std::env::var_os("MCP_ALGOGLYPH_DIR").map(PathBuf::from).unwrap_or_else(|| {
-        PathBuf::from(std::env::var_os("HOME").unwrap_or_default()).join("dev/algoglyph")
+        default_dir(&PathBuf::from(std::env::var_os("HOME").unwrap_or_default()))
     })
+}
+
+/// The checkout used when `$MCP_ALGOGLYPH_DIR` is not set, under the home directory `home`.
+pub fn default_dir(home: &std::path::Path) -> PathBuf {
+    let main = home.join("dev/algoglyph-wt/main");
+    if main.join("package.json").is_file() { main } else { home.join("dev/algoglyph") }
 }
 
 /// The method table entries, appended to the hub's own.
@@ -182,6 +190,18 @@ mod tests {
         assert_eq!(published(json!({"http_error": 404, "body": {"error": "no such resource"}})).unwrap(), None);
         assert!(published(json!({"http_error": 503, "body": "down"})).unwrap_err().contains("503"));
         assert_eq!(published(json!({"data": {"width": 8}})).unwrap(), Some(json!({"data": {"width": 8}})));
+    }
+
+    #[test]
+    fn without_the_variable_a_main_checkout_is_preferred_to_the_primary_one() {
+        let home = std::env::temp_dir().join(format!("hub-algoglyph-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&home);
+        std::fs::create_dir_all(home.join("dev/algoglyph")).unwrap();
+        assert_eq!(default_dir(&home), home.join("dev/algoglyph"));
+        std::fs::create_dir_all(home.join("dev/algoglyph-wt/main")).unwrap();
+        std::fs::write(home.join("dev/algoglyph-wt/main/package.json"), "{}").unwrap();
+        assert_eq!(default_dir(&home), home.join("dev/algoglyph-wt/main"));
+        let _ = std::fs::remove_dir_all(&home);
     }
 
     #[test]

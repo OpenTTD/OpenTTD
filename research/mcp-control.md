@@ -394,8 +394,8 @@ completed, not a claim.
 - **Portfolio.** From the best option of every passenger and freight candidate, the planner picks
   the set of investments with the highest total score that fits the budget, a 0/1 knapsack with
   money in thousands. When `MCP_ALGOGLYPH_DIR` names a checkout of AlgoGlyph's flow runner,
-  AlgoGlyph's `knapsack-dp` kernel solves it. `mcp-e2e` takes `~/dev/algoglyph` (AlgoGlyph's main
-  carries every planner kernel since 1b8e009), else the newest stacked worktree under
+  AlgoGlyph's `knapsack-dp` kernel solves it. `mcp-e2e` takes `~/dev/algoglyph-wt/main` (a checkout of
+  origin/main) or `~/dev/algoglyph` (AlgoGlyph's main carries every planner kernel since 1b8e009), else the newest stacked worktree under
   `~/dev/algoglyph-wt/feature/`. Either way it takes a checkout only when its flow CLI lists
   `knapsack-dp`, `track-planning`, `transport-investment` and `action-plan`. On 2026-11-17 main and
   `exact-prices` gave identical answers on all four kernels. Otherwise the same dynamic programme
