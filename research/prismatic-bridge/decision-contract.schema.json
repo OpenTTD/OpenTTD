@@ -19,7 +19,7 @@
   "$defs": {
     "decisionDirective": {
       "type": "object",
-      "description": "What PRISMATIC_DECISION_URL returns. At least one of 'ai' or 'company_id' must be present, or the bridge applies nothing. When 'company_id' is present the bridge issues 'reload_ai <company_id>' (the company keeps its configured settings); otherwise, when 'ai' is present, it issues 'start_ai <ai> [settings]'. Only these three fields are read. A directive may carry its own working beside them (prismatic_api answers 'engine', 'chosen_aggressiveness', 'candidates', 'expected_value', 'iterations_per_candidate', 'company_input'); consumers do not read it, and the MCP panel names it in its answer.",
+      "description": "What PRISMATIC_DECISION_URL returns. At least one of 'ai' or 'company_id' must be present, or the bridge applies nothing. When 'company_id' is present the bridge sets 'settings' on that company's running AI with the research fork's 'bot set' (approval-gated, approved by the bridge), and issues 'reload_ai <company_id>' when the server has no such command or no settings are given; otherwise, when 'ai' is present, it issues 'start_ai <ai> [settings]'. Only these three fields are read. A directive may carry its own working beside them (prismatic_api answers 'engine', 'chosen_aggressiveness', 'candidates', 'expected_value', 'iterations_per_candidate', 'company_input'); consumers do not read it, and the MCP panel names it in its answer.",
       "additionalProperties": true,
       "minProperties": 1,
       "anyOf": [
@@ -42,7 +42,7 @@
         },
         "settings": {
           "type": "string",
-          "description": "AI settings string as accepted by the console's start_ai command: a comma-separated list of key=value pairs, no spaces. Applied on start_ai; on reload_ai the company's stored settings are used instead.",
+          "description": "AI settings string as accepted by the console's start_ai command: a comma-separated list of key=value pairs, no spaces. Applied on start_ai; with a company_id, set on the running AI through the research fork's 'bot set' where the server has it (else reload_ai keeps the company's stored settings).",
           "examples": ["aggressiveness=75", "intercity=0,aggressiveness=75,max_routes=4"]
         }
       }

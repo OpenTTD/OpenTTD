@@ -22,9 +22,15 @@ fn is_word(c: char) -> bool {
 }
 
 /// The text between `open` and the first `close` after it, for every occurrence: (inside, rest).
+/// A string literal at the start of `s`, `\"` escapes kept as written: (inside, rest).
 fn quoted(s: &str) -> Option<(&str, &str)> {
     let s = s.strip_prefix('"')?;
-    let end = s.find('"')?;
+    let mut escaped = false;
+    let end = s.char_indices().find(|&(_, c)| {
+        let close = c == '"' && !escaped;
+        escaped = c == '\\' && !escaped;
+        close
+    })?.0;
     Some((&s[..end], &s[end + 1..]))
 }
 
@@ -92,10 +98,56 @@ fn labels(text: &str) -> BTreeMap<String, Map<String, Value>> {
     out
 }
 
+/// Walk `s` as Squirrel source: `f(byte index, char, outside a literal)` for every char, a string
+/// or char literal (with `\` escapes) counted as inside. `f` returning false stops the walk.
+fn walk_code(s: &str, mut f: impl FnMut(usize, char, bool) -> bool) {
+    let (mut quote, mut escaped) = (None::<char>, false);
+    for (i, c) in s.char_indices() {
+        let outside = quote.is_none();
+        match quote {
+            Some(_) if escaped => escaped = false,
+            Some(_) if c == '\\' => escaped = true,
+            Some(q) if c == q => quote = None,
+            None if c == '"' || c == '\'' => quote = Some(c),
+            _ => {}
+        }
+        if !f(i, c, outside) { return; }
+    }
+}
+
+/// `text` without `//` and `/* */` comments (each replaced by one blank), literals left as they are,
+/// so a brace or quote in a comment cannot end a loop body or open a string.
+pub fn strip_comments(text: &str) -> String {
+    let mut out = String::with_capacity(text.len());
+    let mut chars = text.char_indices().peekable();
+    let (mut quote, mut escaped) = (None::<char>, false);
+    while let Some((i, c)) = chars.next() {
+        if let Some(q) = quote {
+            out.push(c);
+            if escaped { escaped = false; } else if c == '\\' { escaped = true; } else if c == q { quote = None; }
+            continue;
+        }
+        let rest = &text[i..];
+        if rest.starts_with("//") || rest.starts_with("/*") {
+            let end = if rest.starts_with("//") { rest.find('\n').unwrap_or(rest.len()) } else { rest[2..].find("*/").map_or(rest.len(), |e| e + 4) };
+            out.push(' ');
+            while chars.peek().map_or(false, |&(k, _)| k < i + end) { chars.next(); }
+            continue;
+        }
+        if c == '"' || c == '\'' { quote = Some(c); }
+        out.push(c);
+    }
+    out
+}
+
+/// The most text unrolling may write, so nested loops cannot blow the panel's memory.
+const UNROLL_LIMIT: usize = 4 << 20;
+
 /// `text` with every `for (local i = a; i <= b; i++) { ... }` (or `<`) written out once per `i`,
-/// the loop variable outside string literals replaced by its value as a literal, so settings an
-/// info.nut declares in a loop (PrismaticAI's fr2_* to fr16_*) are read by name. A loop of another
-/// shape is left as it is.
+/// the loop variable outside literals replaced by its value as a string literal, so settings an
+/// info.nut declares in a loop (PrismaticAI's fr2_* to fr16_*) are read by name. Nested loops are
+/// unrolled too. A loop of another shape is left as it is. Comments must be stripped first
+/// (`strip_comments`).
 pub fn unroll_loops(text: &str) -> String {
     let mut out = String::new();
     let mut rest = text;
@@ -129,50 +181,54 @@ fn unroll_one(s: &str) -> Option<(String, usize)> {
     if step != format!("{var}++") { return None; }
     let open = head_end + 1 + s[head_end + 1..].find('{')?;
     if !s[head_end + 1..open].trim().is_empty() { return None; }
-    // The body's closing brace, braces inside string literals not counted.
-    let (mut depth, mut in_str, mut close) = (0usize, false, None);
-    for (i, c) in s[open..].char_indices() {
-        match c {
-            '"' => in_str = !in_str,
-            '{' if !in_str => depth += 1,
-            '}' if !in_str => { depth -= 1; if depth == 0 { close = Some(open + i); break; } }
-            _ => {}
+    // The body's closing brace, braces inside literals not counted.
+    let (mut depth, mut close) = (0usize, None);
+    walk_code(&s[open..], |i, c, outside| {
+        if outside && c == '{' { depth += 1; }
+        if outside && c == '}' {
+            depth -= 1;
+            if depth == 0 { close = Some(open + i); return false; }
         }
-    }
+        true
+    });
     let close = close?;
     let body = &s[open + 1..close];
-    let last = if inclusive { end } else { end - 1 };
-    if last < start || last - start > 1000 { return None; }
+    let last = if inclusive { end } else { end.checked_sub(1)? };
+    let count = last.checked_sub(start)?;
+    if !(0..=1000).contains(&count) { return None; }
     let mut written = String::new();
     for i in start..=last {
         written.push_str(&substitute(body, var, &format!("\"{i}\"")));
+        if written.len() > UNROLL_LIMIT { return None; }
     }
+    let written = unroll_loops(&written);
+    if written.len() > UNROLL_LIMIT { return None; }
     Some((written, close + 1))
 }
 
-/// `body` with the identifier `var` outside string literals replaced by `with`.
+/// `body` with the identifier `var` outside literals replaced by `with`.
 fn substitute(body: &str, var: &str, with: &str) -> String {
-    let (mut out, mut in_str, mut i) = (String::new(), false, 0);
-    while i < body.len() {
-        let c = body[i..].chars().next().unwrap();
-        if c == '"' { in_str = !in_str; }
-        if !in_str && body[i..].starts_with(var)
+    let mut out = String::with_capacity(body.len());
+    let mut skip_to = 0usize;
+    walk_code(body, |i, c, outside| {
+        if i < skip_to { return true; }
+        if outside && body[i..].starts_with(var)
             && (i == 0 || !is_word(body[..i].chars().next_back().unwrap()))
             && !body[i + var.len()..].chars().next().map_or(false, is_word) {
             out.push_str(with);
-            i += var.len();
-            continue;
+            skip_to = i + var.len();
+            return true;
         }
         out.push(c);
-        i += c.len_utf8();
-    }
+        true
+    });
     out
 }
 
 /// Settings as an AI's info.nut declares them, in openttd.ai.list's shape (flags, labels, value =
 /// the default, editable), so the panel draws one kind of control for either source.
 pub fn info_settings(text: &str) -> Vec<Value> {
-    let text = &unroll_loops(text);
+    let text = &unroll_loops(&strip_comments(text));
     let labels = labels(text);
     let mut out = Vec::new();
     let mut from = 0;
@@ -635,6 +691,23 @@ mod tests {
         assert_eq!(s[2]["description"], json!("Producing industry of line 3 (id; -1: none)."));
         assert_eq!((s[1]["min"].clone(), s[1]["max"].clone(), s[1]["ingame"].clone()), (json!(-1), json!(65535), json!(true)));
         assert_eq!(unroll_loops("for (local i = 0; i < n; i++) { f(i); }"), "for (local i = 0; i < n; i++) { f(i); }", "another shape stays");
+    }
+
+    #[test]
+    fn a_loop_survives_comments_escapes_nesting_and_huge_bounds() {
+        let text = r#"
+		for (local i = 1; i <= 2; i++) { // a comment with a } and a " in it
+			/* and { another " } */
+			AddSetting({name = "a" + i, description = "say \"hi\" {" + i + "}", custom_value = 0, flags = 0});
+			for (local j = 0; j < 2; j++) { AddSetting({name = "b" + i + "_" + j, custom_value = 0, flags = 0}); }
+		}
+		for (local k = -2; k <= 9223372036854775807; k++) { AddSetting({name = "huge" + k, custom_value = 0, flags = 0}); }
+		for (local k = -9223372036854775808; k < -9223372036854775808; k++) { AddSetting({name = "min" + k, custom_value = 0, flags = 0}); }"#;
+        let s = info_settings(text);
+        let names: Vec<&str> = s.iter().filter_map(|s| s["name"].as_str()).collect();
+        assert_eq!(names, vec!["a1", "b1_0", "b1_1", "a2", "b2_0", "b2_1"], "comments ignored, nested unrolled, huge loops left alone");
+        assert_eq!(s[0]["description"], json!(r#"say \"hi\" {1}"#), "escapes kept as written");
+        assert_eq!(strip_comments("x = \"// not a comment\"; // gone\ny"), "x = \"// not a comment\";  \ny");
     }
 
     #[test]
