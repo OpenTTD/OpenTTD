@@ -109,3 +109,16 @@ test('duel pages: options from results, every registered chart has its card', as
   const src = fs.readFileSync(path.join(STATIC, 'results.js'), 'utf8');
   for (const c of CHARTS) assert.ok(src.includes(`chartCard('${c.id}'`), `${c.id} has a maximizable card with role=img and aria-label`);
 });
+
+test('runs side by side: each run a solid planned line and a dashed rival, one colour per run', async () => {
+  const { compareOption } = await import('../static/results.js');
+  const run = (name, a) => ({ name, series: [1, 2].map((m) => ({ month: m, companies: { 1: { value: a * m }, 2: { value: 10 * m } } })) });
+  const o = compareOption([run('duel-20261117T041705-seed31337', 100), run('duel-20261117T053732-seed31337', 50)], { metric: 'value' });
+  assert.equal(o.series.length, 4);
+  assert.deepEqual(o.series.map((s) => s.lineStyle.type), ['solid', 'dashed', 'solid', 'dashed']);
+  assert.equal(o.series[0].color, o.series[1].color, 'a run keeps one colour');
+  assert.notEqual(o.series[0].color, o.series[2].color);
+  assert.deepEqual(o.series[2].data, [[1, 50], [2, 100]]);
+  assert.equal(o.series[0].id, 'duel-20261117T041705-seed31337-1', 'a line carries its run for the click');
+  assert.ok(render(o).paths >= 4);
+});

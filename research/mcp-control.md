@@ -150,6 +150,12 @@ OpenAPI, Swagger UI and Rhai:
 - `POST /api/duel` (body checked: months 1 to 240, opponent an AI name)
 - `GET /api/duel`
 
+**Runs side by side.** Tick runs in the table and they are drawn month by month over each other: each
+planned company solid, its rival dashed, one colour per run. The choice is kept in the address
+(`?compare=`), and so is the measure. A line leads to its run. A run's page has **Run this again**:
+the same map, months and opponent, labelled "again: ...". It also links to the comparison. Repeating a
+run is how the spread between two runs of one bot was measured (1.1% on seed 31337).
+
 `mcp-route-check` never posts `/api/duel`, because it starts something and needs no input.
 `mcp-overview-check` checks the pages in a browser: every run is charted, a bar leads to its run, and
 the run's chart follows the measure in the address.

@@ -132,6 +132,22 @@ try {
     return i ? { series: i.getOption().series.length, points: i.getOption().series[0].data.length, metric: document.getElementById('metric').value } : null; });
   check('a run page draws both companies by the measure in the address', duel && duel.series === 2 && duel.points > 0 && duel.metric === 'trains', JSON.stringify(duel));
 
+  // Runs side by side: ticking two runs puts them in the address and draws four lines (A and B each).
+  await page.goto(`${base}/results`);
+  await page.waitForSelector('#duels-rows input[data-cmp]', { timeout: 15000 }).catch(() => {});
+  const boxes = await page.$$('#duels-rows input[data-cmp]');
+  for (const b of boxes.slice(0, 2)) await b.check();
+  await page.waitForTimeout(1500);
+  const picked = (new URL(page.url()).searchParams.get('compare') || '').split(',').filter(Boolean);
+  const lines = await page.evaluate(() => { const i = globalThis.echarts.getInstanceByDom(document.getElementById('compare-chart'));
+    return i ? (i.getOption().series || []).length : -1; });
+  check('ticked runs are compared, and kept in the address', picked.length === 2 && lines === 4, `compare=${picked.join(',')}, ${lines} lines`);
+  await page.reload();
+  await page.waitForTimeout(1500);
+  const again = await page.evaluate(() => { const i = globalThis.echarts.getInstanceByDom(document.getElementById('compare-chart'));
+    return [i ? (i.getOption().series || []).length : -1, document.querySelectorAll('#duels-rows input[data-cmp]:checked').length]; });
+  check('a comparison survives a reload of its address', again[0] === 4 && again[1] === 2, `${again[0]} lines, ${again[1]} ticked`);
+
   check('the console stays free of errors', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
   await browser.close();
