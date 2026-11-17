@@ -1930,7 +1930,16 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 		return true;
 	}
 	if (sub == "approvals") {
-		IConsolePrint(CC_INFO, "{}", PrismaticMCP::ListApprovals());
+		/* One row per decision: ListApprovals() ends every row with a newline, and IConsolePrint
+		 * does not split on one, so the rows are printed line by line here. Splitting in the
+		 * console leaves what ListApprovals() returns -- and so its other callers -- untouched. */
+		std::string list = PrismaticMCP::ListApprovals();
+		for (size_t start = 0; start < list.size();) {
+			size_t end = list.find('\n', start);
+			if (end == std::string::npos) end = list.size();
+			if (end > start) IConsolePrint(CC_INFO, "{}", std::string_view(list).substr(start, end - start));
+			start = end + 1;
+		}
 		return true;
 	}
 	/*

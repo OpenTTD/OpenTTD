@@ -1525,8 +1525,8 @@ std::string ListApprovals()
 			a.state == ApprovalState::Approved ? "APPROVED" :
 			a.state == ApprovalState::Denied ? "DENIED" : "CONSUMED";
 		bool expired = now > a.expiry_tick && a.state == ApprovalState::Pending;
-		s += fmt::format("#{} {} {}{} tool={} args={}\n", a.id, st, expired ? "(EXPIRED) " : "",
-			"", a.tool, a.args_summary);
+		s += fmt::format("#{} {} {}tool={} args={}\n", a.id, st, expired ? "(EXPIRED) " : "",
+			a.tool, a.args_summary);
 	}
 	return s;
 }
