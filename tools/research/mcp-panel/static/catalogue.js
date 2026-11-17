@@ -11,7 +11,7 @@
    breadcrumb clears the deeper ones, the cards follow); a leaf opens the item's own page.
    Pure functions are exported for the Node tests (test/catalogue.test.mjs). */
 
-import { ecInit, maximizable, PALETTE } from './components.js';
+import { ecInit, maximizable, PALETTE, CLS, esc, badge, patchAddress } from './components.js';
 
 export const KIND_LABEL = { tool: 'Server tools', client: 'GUI client tools', resource: 'Resources' };
 export const SAFETY_LABEL = { gated: 'Approval-gated', read: 'Read-only', other: 'Acts directly' };
@@ -127,9 +127,7 @@ export function readState(prefix = '', search = globalThis.location?.search || '
   return Object.fromEntries(KEYS.map((k) => [k, p.get(prefix + k) || '']));
 }
 function writeState(prefix, state) {
-  const u = new URL(location.href);
-  for (const k of KEYS) { if (state[k]) u.searchParams.set(prefix + k, state[k]); else u.searchParams.delete(prefix + k); }
-  history.replaceState(null, '', u);
+  patchAddress(Object.fromEntries(KEYS.map((k) => [k, state[k]])), (k) => prefix + k);
 }
 /** The drill path the facets spell: kind, then namespace, then a category that is not the namespace. */
 export function rootOf(state) {
@@ -156,16 +154,6 @@ export function toolsHref(state) {
 
 /* ---- the component ------------------------------------------------------------------------- */
 
-const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const card = 'p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800';
-const input = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white';
-const TONE = {
-  green: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-  yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-  blue: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-  gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-};
-const badge = (text, tone = 'gray') => `<span class="whitespace-nowrap text-xs font-medium px-2 py-0.5 rounded-sm ${TONE[tone]}">${esc(text)}</span>`;
 const pill = (facet, value, label, count, active) => `<button type="button" data-facet="${facet}" data-value="${esc(value)}" aria-pressed="${active}"
   class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg border ${active
     ? 'text-white bg-primary-700 border-primary-700 dark:bg-primary-600 dark:border-primary-600'
@@ -193,19 +181,19 @@ export function mountCatalogue(box, all, { compact = false, prefix = '', echarts
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
         <div class="relative grow"><label for="${prefix}cq" class="sr-only">Search the catalogue</label>
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"><svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="none" viewBox="0 0 20 20"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/></svg></div>
-          <input id="${prefix}cq" type="search" value="${esc(state.q)}" placeholder="Search ${all.length} tools and resources: name or what it does" class="${input} ps-10"></div>
+          <input id="${prefix}cq" type="search" value="${esc(state.q)}" placeholder="Search ${all.length} tools and resources: name or what it does" class="${CLS.field} ps-10"></div>
         <span data-count class="text-sm text-gray-500 whitespace-nowrap dark:text-gray-400"></span>
         <button data-reset type="button" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500 whitespace-nowrap">Clear filters</button>
       </div>
       <div data-pills="kind" class="flex flex-wrap gap-2" role="group" aria-label="Kind"></div>
       <div data-pills="safety" class="flex flex-wrap gap-2" role="group" aria-label="Safety"></div>
       <div class="grid gap-3 sm:grid-cols-2">
-        <div><label for="${prefix}cns" class="block mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">Namespace</label><select id="${prefix}cns" data-select="ns" class="${input}"></select></div>
-        <div><label for="${prefix}ccat" class="block mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">Category</label><select id="${prefix}ccat" data-select="cat" class="${input}"></select></div>
+        <div><label for="${prefix}cns" class="block mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">Namespace</label><select id="${prefix}cns" data-select="ns" class="${CLS.field}"></select></div>
+        <div><label for="${prefix}ccat" class="block mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">Category</label><select id="${prefix}ccat" data-select="cat" class="${CLS.field}"></select></div>
       </div>
     </div>
     <div class="grid gap-4 lg:grid-cols-3">
-      <div id="${chartId}-card" class="${card} lg:col-span-1 !mb-0 self-start lg:sticky lg:top-20">
+      <div id="${chartId}-card" class="${CLS.card} lg:col-span-1 !mb-0 self-start lg:sticky lg:top-20">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
           <div><h3 class="text-base font-semibold text-gray-900 dark:text-white">Map of the catalogue</h3>
           <p class="text-xs text-gray-500 dark:text-gray-400">A ring zooms in, a leaf opens its page</p></div>

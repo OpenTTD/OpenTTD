@@ -4,17 +4,9 @@
    the written reading and both bots' logs. Charts go through the one door (components.js ecInit),
    are rows of CHARTS, keep their parameters in the address and maximize (Escape restores). */
 
-import { ecInit, maximizable, PALETTE } from './components.js';
+import { ecInit, maximizable, PALETTE, CLS, $, esc, whole, compact, INK, AXIS as axis, patchAddress } from './components.js';
 
 const echarts = globalThis.echarts;
-const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const INK = { text: '#d1d5db', muted: '#9ca3af', grid: '#374151' };
-const compact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
-const whole = new Intl.NumberFormat('en');
-const card = 'p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800';
-const input = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white';
-const axis = { axisLabel: { color: INK.muted, hideOverlap: true }, axisLine: { lineStyle: { color: INK.grid } }, splitLine: { lineStyle: { color: INK.grid, type: 'dashed' } } };
 
 export const METRICS = { value: 'Company value', money: 'Money', loan: 'Loan', trains: 'Trains' };
 
@@ -32,13 +24,7 @@ export function getState() {
   const compare = (p.get('compare') || '').split(',').filter((n) => /^duel-[A-Za-z0-9-]+$/.test(n));
   return { seed: p.get('seed') || '', compare, metric: METRICS[p.get('metric')] ? p.get('metric') : 'value', max: p.get('max') || undefined };
 }
-export function setState(patch) {
-  const u = new URL(location.href);
-  for (const [k, v] of Object.entries(patch)) {
-    if (v === undefined || v === '' || v === null) u.searchParams.delete(k); else u.searchParams.set(k, v);
-  }
-  globalThis.history.replaceState(null, '', u);
-}
+export function setState(patch) { patchAddress(patch); }
 
 /* ---- options (pure: data in, option out) --------------------------------------------------- */
 export const shortName = (name) => {
@@ -104,7 +90,7 @@ export function duelOption(series, { metric = 'value' } = {}) {
 
 /* ---- the pages ------------------------------------------------------------------------------- */
 function chartCard(id, title, note, label, height = 'h-72 sm:h-80 lg:h-96') {
-  return `<div id="${id}-card" data-maximize="${id}" data-chart="${id}" class="${card} flex flex-col">
+  return `<div id="${id}-card" data-maximize="${id}" data-chart="${id}" class="${CLS.card} flex flex-col">
     <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
       <div><h2 class="text-lg font-semibold text-gray-900 dark:text-white">${esc(title)}</h2><p class="text-xs text-gray-500 dark:text-gray-400">${esc(note)}</p></div>
       <div data-toolbar class="flex flex-wrap items-center gap-2"></div>
@@ -122,15 +108,15 @@ async function listPage() {
   const all = (await (await fetch('/api/results')).json()).results || [];
   const seeds = [...new Set(all.map((r) => r.seed))].sort((a, b) => a - b);
   $('page').innerHTML = `
-    <div id="scoreboard" class="${card}" aria-live="polite"></div>
-    <div class="${card}">
+    <div id="scoreboard" class="${CLS.card}" aria-live="polite"></div>
+    <div class="${CLS.card}">
       <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Start a duel</h2>
       <form id="duel-form" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        <div><label for="d-months" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Months</label><input id="d-months" type="number" min="1" max="240" value="36" class="${input}"></div>
-        <div><label for="d-seed" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Seed (map)</label><input id="d-seed" type="number" placeholder="random" class="${input}"></div>
-        <div><label for="d-opponent" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Opponent AI</label><input id="d-opponent" placeholder="PrismaticAI unplanned" class="${input}"></div>
-        <div class="lg:col-span-2"><label for="d-label" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Label</label><input id="d-label" placeholder="what this run tests" class="${input}"></div>
-        <div class="sm:col-span-2 lg:col-span-5"><label for="d-bot" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Bot settings for the planned bot</label><input id="d-bot" placeholder="e.g. own_lines=8 (name=value, comma separated; empty: what the plan gives)" class="${input}"></div>
+        <div><label for="d-months" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Months</label><input id="d-months" type="number" min="1" max="240" value="36" class="${CLS.field}"></div>
+        <div><label for="d-seed" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Seed (map)</label><input id="d-seed" type="number" placeholder="random" class="${CLS.field}"></div>
+        <div><label for="d-opponent" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Opponent AI</label><input id="d-opponent" placeholder="PrismaticAI unplanned" class="${CLS.field}"></div>
+        <div class="lg:col-span-2"><label for="d-label" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Label</label><input id="d-label" placeholder="what this run tests" class="${CLS.field}"></div>
+        <div class="sm:col-span-2 lg:col-span-5"><label for="d-bot" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Bot settings for the planned bot</label><input id="d-bot" placeholder="e.g. own_lines=8 (name=value, comma separated; empty: what the plan gives)" class="${CLS.field}"></div>
         <div class="sm:col-span-2 lg:col-span-5 flex items-center gap-2"><input id="d-cal" type="checkbox" class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm dark:bg-gray-700 dark:border-gray-600"><label for="d-cal" class="text-sm font-medium text-gray-900 dark:text-white">Calibrated plan: start the planned bot from what earlier games earned per mode (<a class="text-primary-600 hover:underline dark:text-primary-500" href="/api/calibration">research/calibration.json</a>)</label></div>
         <div class="sm:col-span-2 lg:col-span-5 flex flex-wrap items-center gap-3">
           <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700">Start the duel</button>
@@ -144,10 +130,10 @@ async function listPage() {
     </div>
     ${chartCard('duels-chart', 'Final company value by duel', 'Planned bot against its rival at the end of each run; click a run for its page', 'Final company value of the planned bot and its rival, one pair of bars per duel')}
     ${chartCard('compare-chart', 'Runs side by side', 'Tick runs in the table: each planned company solid, its rival dashed, month by month', 'The ticked runs month by month, planned companies solid and rivals dashed')}
-    <div class="${card}">
+    <div class="${CLS.card}">
       <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">All duels <span id="duels-n" class="text-sm font-normal text-gray-500"></span></h2>
-        <label class="flex items-center gap-2 text-sm text-gray-900 dark:text-white">Seed <select id="seed" class="${input} w-auto"><option value="">all</option>${seeds.map((s) => `<option${String(s) === state.seed ? ' selected' : ''}>${esc(s)}</option>`).join('')}</select></label>
+        <label class="flex items-center gap-2 text-sm text-gray-900 dark:text-white">Seed <select id="seed" class="${CLS.field} w-auto"><option value="">all</option>${seeds.map((s) => `<option${String(s) === state.seed ? ' selected' : ''}>${esc(s)}</option>`).join('')}</select></label>
       </div>
       <div class="relative overflow-x-auto"><table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"><tr><th class="px-3 py-2"><span class="sr-only">Compare</span></th><th class="px-3 py-2">Run</th><th class="px-3 py-2">Seed</th><th class="px-3 py-2">Months</th><th class="px-3 py-2 text-right">A</th><th class="px-3 py-2 text-right">B</th><th class="px-3 py-2 text-right">A : B</th><th class="px-3 py-2">What it tests</th></tr></thead>
@@ -181,7 +167,7 @@ async function listPage() {
   const cache = {};
   let cmp = null;
   const tb = $('compare-chart-card').querySelector('[data-toolbar]');
-  tb.insertAdjacentHTML('afterbegin', `<label for="metric" class="sr-only">Measure</label><select id="metric" class="${input} w-auto">${Object.entries(METRICS).map(([k, v]) => `<option value="${k}"${k === state.metric ? ' selected' : ''}>${v}</option>`).join('')}</select>`);
+  tb.insertAdjacentHTML('afterbegin', `<label for="metric" class="sr-only">Measure</label><select id="metric" class="${CLS.field} w-auto">${Object.entries(METRICS).map(([k, v]) => `<option value="${k}"${k === state.metric ? ' selected' : ''}>${v}</option>`).join('')}</select>`);
   const drawCompare = async () => {
     const runs = [];
     for (const n of state.compare) {
@@ -269,11 +255,11 @@ async function scoreboardCard() {
 async function resultPage(name) {
   const state = getState();
   const r = await fetch('/api/result?name=' + encodeURIComponent(name));
-  if (!r.ok) { $('page').innerHTML = `<div class="${card}">No such duel. <a class="underline" href="/results">All duels</a>.</div>`; return; }
+  if (!r.ok) { $('page').innerHTML = `<div class="${CLS.card}">No such duel. <a class="underline" href="/results">All duels</a>.</div>`; return; }
   const d = await r.json();
   const s = d.summary;
   $('crumbs').insertAdjacentHTML('beforeend', `<li class="text-gray-400">/</li><li class="text-gray-500 dark:text-gray-400">${esc(shortName(name))}</li>`);
-  const stat = (label, v, sub) => `<div class="${card} mb-0"><p class="text-sm text-gray-500 dark:text-gray-400">${esc(label)}</p><p class="mt-1 text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">${esc(v)}</p><p class="text-xs text-gray-500 dark:text-gray-400">${esc(sub)}</p></div>`;
+  const stat = (label, v, sub) => `<div class="${CLS.card} mb-0"><p class="text-sm text-gray-500 dark:text-gray-400">${esc(label)}</p><p class="mt-1 text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">${esc(v)}</p><p class="text-xs text-gray-500 dark:text-gray-400">${esc(sub)}</p></div>`;
   const log = Object.entries(d.bot_log || {}).flatMap(([k, lines]) => (lines || []).map((l) => [k, l]));
   $('page').innerHTML = `
     <div class="grid grid-cols-2 gap-3 mb-4 md:grid-cols-4">
@@ -289,20 +275,20 @@ async function resultPage(name) {
     </div>
     ${chartCard('duel-chart', 'The two companies, month by month', 'Pick what to compare; Ctrl+wheel zooms', 'The planned bot and its rival month by month, by the chosen measure')}
     <div class="grid gap-4 xl:grid-cols-2">
-      <div class="${card}"><h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">The plan</h2>
+      <div class="${CLS.card}"><h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">The plan</h2>
         <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-300">${(d.plan || []).map((p) => `<li>${esc(p)}</li>`).join('') || '<li>no plan recorded</li>'}</ul></div>
-      <div class="${card}"><h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">The reading</h2>
+      <div class="${CLS.card}"><h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">The reading</h2>
         <pre class="p-3 max-h-[32rem] overflow-auto text-xs whitespace-pre-wrap bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200">${esc(d.markdown || 'no reading written')}</pre></div>
     </div>
-    <div class="${card}">
+    <div class="${CLS.card}">
       <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">The bots' logs <span class="text-sm font-normal text-gray-500">(${log.length} lines)</span></h2>
-        <input id="log-q" type="search" placeholder="filter, e.g. line laid" class="${input} w-full sm:w-72">
+        <input id="log-q" type="search" placeholder="filter, e.g. line laid" class="${CLS.field} w-full sm:w-72">
       </div>
       <pre id="log" class="p-3 max-h-[32rem] overflow-auto text-xs whitespace-pre-wrap bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200"></pre>
     </div>`;
   const tb = $('duel-chart-card').querySelector('[data-toolbar]');
-  tb.insertAdjacentHTML('afterbegin', `<label for="metric" class="sr-only">Measure</label><select id="metric" class="${input} w-auto">${Object.entries(METRICS).map(([k, v]) => `<option value="${k}"${k === state.metric ? ' selected' : ''}>${v}</option>`).join('')}</select>`);
+  tb.insertAdjacentHTML('afterbegin', `<label for="metric" class="sr-only">Measure</label><select id="metric" class="${CLS.field} w-auto">${Object.entries(METRICS).map(([k, v]) => `<option value="${k}"${k === state.metric ? ' selected' : ''}>${v}</option>`).join('')}</select>`);
   let chart = null;
   const draw = () => { chart = chart || ecInit($('duel-chart'), echarts); if (chart) { chart.setOption(duelOption(d.series || [], state), true); chart.resize(); } };
   $('metric').onchange = (e) => { state.metric = e.target.value; setState({ metric: state.metric }); draw(); };

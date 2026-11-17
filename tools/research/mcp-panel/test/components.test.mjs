@@ -150,3 +150,36 @@ test('the planner call, its answer and the games and rail types come from what t
   assert.deepEqual(railtypeOptions(mcp), [{ label: 'RAIL', name: 'Railway', cost: 75 }]);
   assert.deepEqual(railtypeOptions({ data: { types: [] } }), []);
 });
+
+import { CLS, $, esc, whole, compact, TONE, badge, INK, AXIS, patchAddress } from '../static/components.js';
+
+test('the shared kit: esc, number formats and the element of an id', () => {
+  assert.equal(esc('<a href="x">&</a>'), '&lt;a href=&quot;x&quot;&gt;&amp;&lt;/a&gt;');
+  assert.equal(esc(null), '');
+  assert.equal(esc(undefined), '');
+  assert.equal(esc(0), '0');
+  assert.equal(whole.format(1234567), '1,234,567');
+  assert.equal(compact.format(1234567), '1.2M');
+  const doc = globalThis.document;
+  globalThis.document = { getElementById: (id) => ({ id }) };
+  try { assert.deepEqual($('x'), { id: 'x' }); } finally { globalThis.document = doc; }
+});
+
+test('the shared kit: Flowbite classes, badges and chart ink keep their exact strings', () => {
+  assert.equal(CLS.field, 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white');
+  assert.equal(badge('<b>'), `<span class="whitespace-nowrap text-xs font-medium px-2 py-0.5 rounded-sm ${TONE.gray}">&lt;b&gt;</span>`);
+  assert.equal(badge('ok', 'green'), '<span class="whitespace-nowrap text-xs font-medium px-2 py-0.5 rounded-sm bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">ok</span>');
+  assert.deepEqual(Object.keys(TONE), ['green', 'yellow', 'blue', 'gray']);
+  assert.equal(AXIS.axisLabel.color, INK.muted);
+  assert.equal(AXIS.splitLine.lineStyle.type, 'dashed');
+});
+
+test('patchAddress sets a value, removes an empty one, maps its keys and adds no history entry', () => {
+  const calls = [];
+  const win = { location: { href: 'http://p/results?seed=1&metric=money&keep=1' }, history: { replaceState: (...a) => calls.push(a) } };
+  patchAddress({ seed: '', metric: 'loan', max: undefined, compare: null, page: 0 }, undefined, win);
+  assert.equal(calls.length, 1);
+  assert.equal(String(calls[0][2]), 'http://p/results?metric=loan&keep=1&page=0');
+  patchAddress({ metric: 'net', focus: 'x' }, (k) => `ov_${k}`, win);
+  assert.equal(String(calls[1][2]), 'http://p/results?seed=1&metric=money&keep=1&ov_metric=net&ov_focus=x');
+});

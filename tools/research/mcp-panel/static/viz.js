@@ -3,9 +3,8 @@
 // live in the address (#instance=..&mode=..&kinds=..&exaggeration=..&max=..), so a view is a link.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { HubClient, jsonView, scrollOp, CLS, KINDS, ecInit, maximizable, worldGraphOption, waitingOption, moneyOption } from './components.js';
+import { HubClient, jsonView, scrollOp, CLS, KINDS, ecInit, maximizable, worldGraphOption, waitingOption, moneyOption, $ } from './components.js';
 
-const $ = (id) => document.getElementById(id);
 const echarts = globalThis.echarts;
 const d3 = globalThis.d3;
 

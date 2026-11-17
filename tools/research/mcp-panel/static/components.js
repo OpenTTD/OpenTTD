@@ -16,7 +16,43 @@ export const CLS = {
   cell: 'px-4 py-2',
   link: 'flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700',
   pre: 'w-full rounded-sm bg-gray-900',
+  /** A form control of the panel's pages (the input above plus Flowbite's primary focus ring). */
+  field: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white',
 };
+
+/* ---- the kit every page module shares (classic scripts cannot import it, see app.js) -------- */
+
+/** The element of an id. */
+export const $ = (id) => document.getElementById(id);
+/** HTML-escape a value for markup; null and undefined become ''. */
+export const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+/** Numbers as the panel writes them: 1,234,567 and 1.2M. */
+export const whole = new Intl.NumberFormat('en');
+export const compact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
+/** Flowbite badge tones. */
+export const TONE = {
+  green: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+  yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+  blue: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+  gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+};
+/** A Flowbite badge of one of TONE's tones, its text escaped. */
+export const badge = (text, tone = 'gray') => `<span class="whitespace-nowrap text-xs font-medium px-2 py-0.5 rounded-sm ${TONE[tone]}">${esc(text)}</span>`;
+/** Chart ink on the dark theme, and the value/category axis style drawn with it. */
+export const INK = { text: '#d1d5db', muted: '#9ca3af', grid: '#374151' };
+export const AXIS = { axisLabel: { color: INK.muted, hideOverlap: true }, axisLine: { lineStyle: { color: INK.grid } }, splitLine: { lineStyle: { color: INK.grid, type: 'dashed' } } };
+
+/**
+ * Write a patch into the address's query (replaceState, no history entry): a key whose value is
+ * undefined, null or '' is removed, any other is set. `keyOf` maps a patch key to its query key.
+ */
+export function patchAddress(patch, keyOf = (k) => k, win = globalThis) {
+  const u = new URL(win.location.href);
+  for (const [k, v] of Object.entries(patch)) {
+    if (v === undefined || v === '' || v === null) u.searchParams.delete(keyOf(k)); else u.searchParams.set(keyOf(k), v);
+  }
+  win.history.replaceState(null, '', u);
+}
 
 /** The input fields a JSON Schema object asks for, in property order. */
 export function schemaFields(schema) {
@@ -366,10 +402,10 @@ export function trackPlanView(container, client, { ops = [], plan = '', instance
     out.replaceChildren(el('p', { class: CLS.muted }, 'planning…'));
     try {
       const s = planSummary(await client.call('algoglyph.track_plan', trackPlanParams(game.value, plan)));
-      const badge = s.status === 'found' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
+      const tone = TONE[s.status === 'found' ? 'green' : 'yellow'];
       out.replaceChildren(
         el('div', { class: 'flex items-center gap-2 mb-2' },
-          el('span', { class: `${badge} text-xs font-medium px-2.5 py-0.5 rounded-sm` }, s.status),
+          el('span', { class: `${tone} text-xs font-medium px-2.5 py-0.5 rounded-sm` }, s.status),
           s.money === null ? null : el('span', { class: 'text-sm font-semibold text-gray-900 dark:text-white' }, `${s.money.toLocaleString()} (game money${s.exact ? ', exact' : ''})`),
           el('span', { class: CLS.muted }, `${s.pieces} piece(s)`)),
         el('table', { class: CLS.table }, el('tbody', {}, ...s.counts.map(([k, v]) => el('tr', { class: 'border-b dark:border-gray-700' },

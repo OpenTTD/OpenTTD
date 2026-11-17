@@ -5,14 +5,10 @@
    maximized (Escape restores). A mark leads somewhere: a company focuses it in every chart, the
    fleet leads to the vehicles resource page. */
 
-import { ecInit, maximizable, PALETTE } from './components.js';
+import { ecInit, maximizable, PALETTE, $, whole, compact, INK, AXIS as axis, patchAddress } from './components.js';
 
 const echarts = globalThis.echarts;
-const $ = (id) => document.getElementById(id);
 const DAY = 86400000;
-const INK = { text: '#d1d5db', muted: '#9ca3af', grid: '#374151' };
-const compact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
-const whole = new Intl.NumberFormat('en');
 
 export const METRICS = { net: 'Net worth (money − loan)', value: 'Company value', money: 'Money', loan: 'Loan' };
 export const RANGES = { 90: 'Last 3 months', 365: 'Last year', 1825: 'Last 5 years', all: 'All' };
@@ -34,14 +30,8 @@ export function getState() {
   const range = RANGES[p.get('ov_range')] ? p.get('ov_range') : 'all';
   return { metric, range, focus: p.get('ov_focus') || '', max: p.get('max') || undefined };
 }
-export function setState(patch) {
-  const u = new URL(location.href);
-  const keys = { metric: 'ov_metric', range: 'ov_range', focus: 'ov_focus', max: 'max' };
-  for (const [k, v] of Object.entries(patch)) {
-    if (v === undefined || v === '' || v === null) u.searchParams.delete(keys[k]); else u.searchParams.set(keys[k], v);
-  }
-  globalThis.history.replaceState(null, '', u);
-}
+const ADDRESS_KEYS = { metric: 'ov_metric', range: 'ov_range', focus: 'ov_focus', max: 'max' };
+export function setState(patch) { patchAddress(patch, (k) => ADDRESS_KEYS[k]); }
 
 /* ---- options (pure: samples in, option out; testable in Node) ------------------------------ */
 const when = (s) => Date.parse(s.date) || 0;
@@ -56,7 +46,6 @@ const nameOf = (samples, id) => {
 };
 const colour = (ids, id) => PALETTE.dark[ids.indexOf(id) % PALETTE.dark.length];
 const zoomFrom = (samples, range) => (range === 'all' || !samples.length ? undefined : when(samples[samples.length - 1]) - Number(range) * DAY);
-const axis = { axisLabel: { color: INK.muted, hideOverlap: true }, axisLine: { lineStyle: { color: INK.grid } }, splitLine: { lineStyle: { color: INK.grid, type: 'dashed' } } };
 const zoom = (start) => [
   { type: 'inside', zoomOnMouseWheel: 'ctrl', moveOnMouseWheel: false, startValue: start },
   { type: 'slider', startValue: start, height: 22, bottom: 8, textStyle: { color: INK.muted }, borderColor: INK.grid },

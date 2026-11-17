@@ -1,10 +1,9 @@
 'use strict';
-import { ecInit as panelEcInit } from './components.js';
+import { ecInit as panelEcInit, PALETTE as THEME_PALETTE, $, esc as escHtml } from './components.js';
 /* The world view: the whole map (bespoke canvas) and the road network (ECharts, map coordinates),
    both derived from MCP resources through the panel. Parameters live in the URL. */
 
-const $ = (id) => document.getElementById(id);
-const PALETTE = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'];
+const PALETTE = THEME_PALETTE.dark;
 const TYPE_COLOURS = {
   C: '#4c6b3a', R: '#8a8a8a', r: '#d9d2b8', H: '#c98500', T: '#2e5d2a', S: '#e66767',
   W: '#2a6fb0', V: '#111111', I: '#9085e9', B: '#b0a070', O: '#6b6b6b',
@@ -208,7 +207,6 @@ $('p-live').onchange = (e) => { state.live = e.target.checked; saveState(); };
 saveState();
 setTimeout(refresh, 30);
 /* ---- transfer yards, proven offline before a bot builds one (GET /api/plan?track&yards) -------- */
-const escHtml = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 function yardRow(y) {
   const money = (v) => (v == null ? '-' : Math.round(v).toLocaleString('en'));
   const verdict = y.proven

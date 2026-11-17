@@ -9,14 +9,12 @@
    A running bot is changed through one Apply that asks for exactly the keys that differ; each key
    is its own approval (openttd.ai.set_setting), so the button says how many it will ask. */
 
-const $ = (id) => document.getElementById(id);
-const h = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const whole = new Intl.NumberFormat('en');
+import { CLS, $, esc as h, whole } from './components.js';
 
 const LINE = /^([a-z]+?)(\d*)_([a-z]+)$/;
 const INPUT = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block dark:bg-gray-700 dark:border-gray-600 dark:text-white data-[dirty=true]:border-yellow-400 data-[dirty=true]:ring-1 data-[dirty=true]:ring-yellow-400 disabled:opacity-60';
-const BTN = 'text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 disabled:opacity-50 disabled:cursor-not-allowed';
-const BTN_ALT = 'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 disabled:opacity-50 disabled:cursor-not-allowed';
+const BTN = `${CLS.primary} disabled:opacity-50 disabled:cursor-not-allowed`;
+const BTN_ALT = `${CLS.secondary} disabled:opacity-50 disabled:cursor-not-allowed`;
 const badge = (tone, text) => `<span class="bg-${tone}-100 text-${tone}-800 text-xs font-medium px-1.5 py-0.5 rounded-sm dark:bg-${tone}-900 dark:text-${tone}-300">${h(text)}</span>`;
 
 /* ---- layout, derived from the names --------------------------------------------------------- */
