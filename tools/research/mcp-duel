@@ -50,13 +50,25 @@ python3 -I - "$PANEL" "$MONTHS" "$SEED" "$LABEL" "$ROOT_DIR" "$OPPONENT" <<'PY'
 import json, os, re, sys, time, urllib.request
 port, months, seed, label, root, opponent = sys.argv[1], int(sys.argv[2]), sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6]
 ROW = re.compile(r"#:(\d+)\(.*?\)\s+Company Name: '([^']*)'\s+Year Founded: (\d+)\s+Money: (-?\d+)\s+Loan: (\d+)\s+Value: (-?\d+)\s+\(T:(\d+), R:(\d+), P:(\d+), S:(\d+)\)")
+import urllib.error
+def patient(open_):
+    # A busy game can make one read fail (a 502 from the panel, a timeout). Every call here only reads
+    # (state, events, the console's `companies`), so it is tried again; one failed read lost a whole
+    # 36-month run at month 15 (2026-11-17).
+    for attempt in range(6):
+        try:
+            with open_() as r:
+                return json.loads(r.read())
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
+            if isinstance(e, urllib.error.HTTPError) and e.code < 500 or attempt == 5:
+                raise
+            print(f"mcp-duel: a read failed ({e}); trying again", file=sys.stderr)
+            time.sleep(3)
 def post(path, body):
     req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", data=json.dumps(body).encode(), headers={"Content-Type": "application/json"}, method="POST")
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read())
+    return patient(lambda: urllib.request.urlopen(req, timeout=30))
 def get(path):
-    with urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=30) as r:
-        return json.loads(r.read())
+    return patient(lambda: urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=30))
 def companies():
     out = post("/api/console", {"command": "companies", "wait": 1.0}).get("output", [])
     text = " ".join(l if isinstance(l, str) else str(l) for l in out)
