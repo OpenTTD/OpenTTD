@@ -17,10 +17,13 @@
 # Usage: tools/research/mcp-human-e2e [--test] [--rounds N | --minutes M] [--seed N] [--speed F]
 #                                     [--borrow-below N] [--repay-above N] [--rail "MAX [MIN]"]
 #                                     [--rail-above N] [--fleet] [--renew-age DAYS]
-#                                     [--window WxH] [--front] [--bin PATH]
+#                                     [--window WxH] [--front] [--gfx NAME] [--bin PATH]
 #
 # --front raises the game window once the client has its company, so the owner sees the play
 # without looking for the window (macOS; the default leaves it where it opened, behind the work).
+#
+# --gfx NAME picks the client's base graphics set (default OpenGFX), passed as -I on every start,
+# so neither a saved choice nor which installed set the game prefers (e.g. NoirGFX) changes it.
 #
 # --fleet renews the company's first bus through the windows after the play (vehicle list, send to
 # depot, buy a copy, start it, drag the old one onto the sell button), then sells the copy; both
@@ -30,7 +33,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
-TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL="" RAIL_ABOVE="" FLEET="" RENEW_AGE="" FRONT=0
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL="" RAIL_ABOVE="" FLEET="" RENEW_AGE="" FRONT=0 GFX=OpenGFX
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --test) TEST=1; shift ;;
@@ -42,12 +45,13 @@ while [[ $# -gt 0 ]]; do
     --rail-above) RAIL_ABOVE="$2"; shift 2 ;;
     --fleet) FLEET=1; shift ;;
     --front) FRONT=1; shift ;;
+    --gfx) GFX="${2:?--gfx needs a base graphics set name}"; shift 2 ;;
     --renew-age) RENEW_AGE="$2"; shift 2 ;;
     --seed) SEED="$2"; shift 2 ;;
     --speed) SPEED="$2"; shift 2 ;;
     --window) WINDOW="$2"; shift 2 ;;
     --bin) BIN="$2"; shift 2 ;;
-    -h|--help) sed -n '2,28p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    -h|--help) sed -n '2,/^set -euo/p' "$0" | sed '$d' | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "mcp-human-e2e: unknown option $1" >&2; exit 2 ;;
   esac
 done
@@ -135,10 +139,10 @@ m = json.load(sys.stdin); d = m.get("data", m)
 print(sum(1 for t, o in zip("".join(d["types"]), "".join(d["owners"])) if t == "r" and o == code))' "$1"
 }
 
-echo "==> headful client joining as a new company, input armed, MCP on $CLIENT_MCP"
+echo "==> headful client joining as a new company, input armed, graphics $GFX, MCP on $CLIENT_MCP"
 home "$TMP/client" autoexec.scr "$CLIENT_MCP" "$CLIENT_TOKEN"
 printf '[network]\nclient_name = owner\n[misc]\nfullscreen = false\nresolution = %s\n[gui]\nautosave = off\n' "${WINDOW/x/,}" > "$TMP/client.cfg"
-HOME="$TMP/client" PRISMATIC_MCP_INPUT=1 "$BIN" -c "$TMP/client.cfg" -r "$WINDOW" -n "127.0.0.1:$GAME_PORT#254" > "$TMP/client.log" 2>&1 &
+HOME="$TMP/client" PRISMATIC_MCP_INPUT=1 "$BIN" -c "$TMP/client.cfg" -I "$GFX" -r "$WINDOW" -n "127.0.0.1:$GAME_PORT#254" > "$TMP/client.log" 2>&1 &
 CLIENT_PID=$!
 PIDS+=($CLIENT_PID)
 wait_file "$CLIENT_TOKEN" || { echo "mcp-human-e2e: the client's MCP did not start" >&2; tail -20 "$TMP/client.log" >&2; exit 1; }
