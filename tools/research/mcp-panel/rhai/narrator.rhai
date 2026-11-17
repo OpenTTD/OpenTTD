@@ -47,6 +47,23 @@ fn headline(e) {
     ()
 }
 
+// A company's vehicles by type, as the console counts them (ttd::companies): every type it runs,
+// "3 trains, 5 road vehicles, 1 aircraft", or "no vehicles"; trucks are road vehicles, not buses.
+fn fleet(c) {
+    let text = "";
+    let known = false;
+    for k in [["trains", "train", "trains"], ["road", "road vehicle", "road vehicles"],
+              ["air", "aircraft", "aircraft"], ["ships", "ship", "ships"]] {
+        let n = c[k[0]];
+        if type_of(n) != "i64" { continue; }
+        known = true;
+        if n == 0 { continue; }
+        if text != "" { text += ", "; }
+        text += `${n} ${if n == 1 { k[1] } else { k[2] }}`;
+    }
+    if !known { "vehicles not reported" } else if text == "" { "no vehicles" } else { text }
+}
+
 fn narrate(e) {
     let k = e.kind;
     let d = e.data;
@@ -67,7 +84,7 @@ fn narrate(e) {
     if k == "game.new_world" { return `a new world: ${d.towns} towns, ${d.date}`; }
     if k == "game.month" {
         let parts = [];
-        for c in ttd::companies() { parts.push(`${c.name}: ${c.road} buses, value ${c.value}, money ${c.money}`); }
+        for c in ttd::companies() { parts.push(`${c.name}: ${fleet(c)}, value ${c.value}, money ${c.money}`); }
         return `${d.date}: ${d.vehicles} vehicles. ${parts.reduce(|a, b| if a == "" { b } else { a + "; " + b }, "")}`;
     }
     ()
