@@ -29,11 +29,10 @@ Swagger at least, and this is enforced. A surface nobody measures is claimed, no
 - Script API functions that change state are commands underneath and follow the same path;
   read-only ones are tools or resources.
 
-# Current state (2026-11-17, master 11aa8f41db)
+# Current state (2026-11-17, branch feature/coverage-gated-console)
 
 Measured against a panel on this build (seed 31337): commands 146/146, Script API 630/630,
-console 87/90. The rule is met for commands and the Script API; console is short by three
-commands that only some builds or settings have (below).
+console 87/87 reachable (3 gated). The rule is met in every dimension.
 
 - Commands: met. Every entry is `openttd.cmd.<Name>`, derived from the command table
   (`src/prismatic_mcp/prismatic_mcp_commands.cpp`), approval-gated, with its OpenAPI route. Every
@@ -49,9 +48,12 @@ commands that only some builds or settings have (below).
   660 counted every `static` line of `src/script/api/script_*.hpp`, which includes what scripts
   never see: `ScriptObject`'s protected statics, mode callbacks, internal helpers such as
   `_BuildRoadInternal`. 630 is what the build's squirrel export publishes to AI and game scripts.
-- Console: the three missing commands are gated by design: `resettile` is compiled only into
-  `_DEBUG` builds, and `reload_newgrfs` and `newgrf_profile` are hidden by their hook until
-  `newgrf_developer_tools` is on.
+- Console: met for what the build can reach. mcp-api-coverage derives from `src/console_cmds.cpp`
+  which commands a build may lack by design, and reports them as gated instead of missing (owner's
+  choice, 2026-11-17): a registration inside a preprocessor conditional (`resettile`, compiled only
+  with `_DEBUG`; `bot` and `plan`, only with `OTTD_PRISMATIC_MCP_SERVER`) and one whose hook can
+  return `ConsoleHookResult::Hide` (`reload_newgrfs` and `newgrf_profile`, until
+  `newgrf_developer_tools` is on). A command absent for any other reason still counts as missing.
 - `tools/research/mcp-live-check` exercises catalogue commands end to end: `Pause`, `CreateGoal`
   (a text) and `CustomNewsItem` (a variant). Issue I0036 carries the rest.
 

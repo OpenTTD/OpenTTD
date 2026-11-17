@@ -78,6 +78,43 @@ fn console_commands(repo: &Path) -> std::io::Result<BTreeSet<String>> {
         .collect())
 }
 
+/// Why a console command may be absent from a build's console without being missing, derived from
+/// src/console_cmds.cpp: a registration inside a preprocessor conditional is compiled only when
+/// that condition holds, and one whose hook can return `ConsoleHookResult::Hide` is listed only
+/// while the hook allows it. Name -> reason; a command with neither is not gated.
+fn console_gates(src: &str) -> BTreeMap<String, String> {
+    // Hooks that can hide: `static ConsoleHookResult Name(...)` whose body mentions ::Hide.
+    let mut hiding = BTreeSet::new();
+    for part in src.split("static ConsoleHookResult ").skip(1) {
+        let name: String = part.chars().take_while(|c| c.is_ascii_alphanumeric() || *c == '_').collect();
+        let body = part.split("\n}\n").next().unwrap_or("");
+        if !name.is_empty() && body.contains("ConsoleHookResult::Hide") {
+            hiding.insert(name);
+        }
+    }
+    let mut gates = BTreeMap::new();
+    let mut conds: Vec<String> = Vec::new();
+    for line in src.lines() {
+        let t = line.trim_start();
+        if let Some(c) = t.strip_prefix("#ifdef ").or_else(|| t.strip_prefix("#if ")) {
+            conds.push(c.trim().to_string());
+        } else if t.starts_with("#ifndef ") {
+            conds.push(format!("!{}", t["#ifndef ".len()..].trim()));
+        } else if t.starts_with("#endif") {
+            conds.pop();
+        }
+        let Some(rest) = t.strip_prefix("IConsole::CmdRegister(\"") else { continue };
+        let Some(name) = rest.split('"').next() else { continue };
+        let args: Vec<&str> = rest.split(')').next().unwrap_or("").split(',').map(str::trim).collect();
+        if let Some(hook) = args.get(2).filter(|h| hiding.contains(**h)) {
+            gates.insert(name.to_string(), format!("hidden while its hook {hook} says so"));
+        } else if !conds.is_empty() {
+            gates.insert(name.to_string(), format!("compiled only when {}", conds.join(" && ")));
+        }
+    }
+    gates
+}
+
 /// Where the build put the Script API's registration: `$MCP_SCRIPT_API_GENERATED`, else the
 /// `generated/script/api` of the newest `build*` directory of the checkout.
 fn generated_api(repo: &Path) -> Option<PathBuf> {
@@ -196,11 +233,16 @@ fn main() {
         let tool = format!("openttd.api.{}", f.replace("::", "."));
         tool_names.contains(&tool) && routes.contains(&format!("/api/tools/{tool}"))
     };
+    // A console command absent from this build's console and gated by its source (a preprocessor
+    // condition, or a hook that hides it) is not counted: the build cannot reach it.
+    let gates = std::fs::read_to_string(repo.join("src/console_cmds.cpp")).map(|t| console_gates(&t)).unwrap_or_default();
+    let console_gated: Vec<(String, String)> = cons.iter().filter(|c| !live_console.contains(*c))
+        .filter_map(|c| gates.get(c).map(|why| (c.clone(), why.clone()))).collect();
     let dims = vec![
         ("commands", "Commands enum (src/command_type.h)", cmds.iter().filter(|c| cmd_exposed(c)).count(), cmds.len(),
          cmds.iter().filter(|c| !cmd_exposed(c)).cloned().collect::<Vec<_>>()),
-        ("console", "console commands (src/console_cmds.cpp)", cons.iter().filter(|c| live_console.contains(*c)).count(), cons.len(),
-         cons.iter().filter(|c| !live_console.contains(*c)).cloned().collect()),
+        ("console", "console commands this build can reach (src/console_cmds.cpp)", cons.iter().filter(|c| live_console.contains(*c)).count(),
+         cons.len() - console_gated.len(), cons.iter().filter(|c| !live_console.contains(*c) && !gates.contains_key(*c)).cloned().collect()),
         ("script_api", "Script API static functions the build publishes (generated/script/api/{ai,game}/*.sq.hpp)", api.iter().filter(|f| api_exposed(f)).count(), api.len(),
          api.iter().filter(|f| !api_exposed(f)).cloned().collect()),
     ];
@@ -208,7 +250,8 @@ fn main() {
     if as_json {
         let v: Vec<Value> = dims.iter().map(|(id, what, n, total, missing)| json!({
             "dimension": id, "source": what, "exposed": n, "total": total, "missing": missing})).collect();
-        println!("{}", serde_json::to_string_pretty(&json!({"full": full, "dimensions": v,
+        let gated: Vec<Value> = console_gated.iter().map(|(n, why)| json!({"name": n, "why": why})).collect();
+        println!("{}", serde_json::to_string_pretty(&json!({"full": full, "dimensions": v, "console_gated": gated,
             "mcp_tools": tool_names.len(), "openapi_paths": routes.len()})).unwrap());
     } else {
         println!("public C++ API exposed through MCP and OpenAPI ({} MCP tools, {} OpenAPI paths):", tool_names.len(), routes.len());
@@ -218,6 +261,9 @@ fn main() {
             if !missing.is_empty() {
                 let shown: Vec<_> = missing.iter().take(6).cloned().collect();
                 println!("                missing e.g. {}{}", shown.join(", "), if missing.len() > 6 { ", ..." } else { "" });
+            }
+            if *id == "console" {
+                for (n, why) in &console_gated { println!("                gated: {n} ({why})"); }
             }
         }
     }
@@ -229,6 +275,30 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_console_command_is_gated_by_its_preprocessor_condition_or_a_hook_that_hides_it() {
+        let src = "static ConsoleHookResult ConHookDev(bool echo)\n{\n\tif (x) return ConsoleHookResult::Allow;\n\treturn ConsoleHookResult::Hide;\n}\n\
+                   static ConsoleHookResult ConHookServer(bool echo)\n{\n\treturn ConsoleHookResult::Disallow;\n}\n\
+                   #ifdef _DEBUG\n\tIConsole::CmdRegister(\"resettile\", ConResetTile);\n#endif\n\
+                   \tIConsole::CmdRegister(\"reload_newgrfs\", ConNewGRFReload, ConHookDev);\n\
+                   \tIConsole::CmdRegister(\"kick\", ConKick, ConHookServer);\n\
+                   \tIConsole::CmdRegister(\"echo\", ConEcho);\n";
+        let g = console_gates(src);
+        assert_eq!(g.get("resettile").map(String::as_str), Some("compiled only when _DEBUG"));
+        assert!(g["reload_newgrfs"].contains("ConHookDev"));
+        assert!(!g.contains_key("kick"), "a hook that only disallows still lists the command");
+        assert!(!g.contains_key("echo"));
+    }
+
+    #[test]
+    fn this_checkouts_three_gated_console_commands_are_found() {
+        let repo = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../..");
+        let g = console_gates(&std::fs::read_to_string(repo.join("src/console_cmds.cpp")).unwrap());
+        for name in ["resettile", "reload_newgrfs", "newgrf_profile"] {
+            assert!(g.contains_key(name), "{name} is not gated: {g:?}");
+        }
+    }
 
     #[test]
     fn a_command_is_named_after_the_function_its_trait_declares() {

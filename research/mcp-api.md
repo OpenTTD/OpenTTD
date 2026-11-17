@@ -9,8 +9,14 @@ Script API's static functions.
 
 Rule `project.public-api-is-exposed` requires 100% in every dimension. On 2026-11-15 it reported
 commands 0/146, console 83/86 and Script API 0/660. On 2026-11-17, against a panel on this build:
-commands 146/146, Script API 630/630, console 87/90 (`resettile` exists only in `_DEBUG` builds;
-`reload_newgrfs` and `newgrf_profile` are hidden by their hook until `newgrf_developer_tools` is on).
+commands 146/146, Script API 630/630, console 87/87 reachable with 3 gated.
+
+The console is counted as the build can reach it. A command the build lacks by design is reported
+as gated, with its reason, not as missing: a registration inside a preprocessor conditional of
+`src/console_cmds.cpp` (`resettile`, only with `_DEBUG`; `bot` and `plan`, only with
+`OTTD_PRISMATIC_MCP_SERVER`) and one whose hook can return `ConsoleHookResult::Hide`
+(`reload_newgrfs` and `newgrf_profile`, until `newgrf_developer_tools` is on). Both are derived
+from the source, so a new gated command needs no edit here; anything else absent is missing.
 
 The Script API is counted as the build publishes it to scripts: every `DefSQStaticMethod` and
 `DefSQAdvancedStaticMethod` of the AI and Game Script registrations the build generates from
