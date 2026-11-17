@@ -4367,10 +4367,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} fo
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tåg - dra vagn/lok med vänsterklick för att lägga till/ta bort från tåg, eller högerklick för information. Ctrl+klicka för att utföra respektive funktion på efterföljande kedja
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Fordon - högerklicka på fordon för information
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepp - högerklicka på skepp för information
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flygplan - högerklicka på flygplan för information
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tåg - dra vagn/lok med vänsterklick för att lägga till/ta bort från tåg, eller högerklick för information. Ctrl-klicka för att utföra respektive funktion på efterföljande kedja. Håll nere Ctrl+Shift för att överlägga godstyp
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Fordon - högerklicka på fordon för information. Håll nere Ctrl+Shift för att överlägga godstyp
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepp - högerklicka på skepp för information. Håll nere Ctrl+Shift för att överlägga godstyp
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flygplan - högerklicka på flygplan för information. Håll nere Ctrl+Shift för att överlägga godstyp
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dra tågvagn hit för att sälja den
