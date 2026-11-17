@@ -8,7 +8,7 @@ sources are its tracked Markdown, its git history and its `.ai/` layer. The outp
 | Site | `surfaces site` | Every Markdown document as a page, plus an overview with interactive charts, the `.ai/` layer (features, decisions, rules, plan, dependency graph) and search | GitHub Pages |
 | Wiki | `surfaces wiki` | The same documents as wiki pages: `Home`, a sidebar, links rewritten to pages | The repository's GitHub wiki |
 | Markdown regions | `surfaces sync` | Tables inside the documents themselves (document indexes, features, decisions, rules, plan, surfaces), between markers | The repository |
-| Gate | `surfaces check` | Fails while a region is stale, or a relative link or anchor leads nowhere | Pre-commit, `tools/gate.sh`, CI |
+| Gate | `surfaces check` | Fails while a region is stale, a relative link or anchor leads nowhere, or a tool's flags and its usage disagree | Pre-commit, `tools/gate.sh`, CI |
 
 Nothing in the generator names a repository. Every fact comes from git (`origin`, `HEAD`,
 the tracked files, the log), from the `.ai/manifest.yaml` sections, and from each
@@ -62,6 +62,25 @@ directory the first time. Exit codes follow Majordomus: 0 ok, 2 usage, 10 findin
 
 To preview the site, serve `target/web/site` with any static server, for example
 `python3 -m http.server -d target/web/site`.
+
+## Tool flags
+
+A document that shows `tool --flag` restates the tool's parser, so `check` treats it like a link:
+the flag has to lead somewhere. The tools are the tracked executable scripts. Shell scripts are
+read through their `case` arms (and `[[ "$1" == --x ]]` tests), Python scripts through argparse
+(and `"--x" in argv`). Each finding names the file and line:
+
+| Finding | When |
+|---|---|
+| `usage` | the script accepts a flag that its own usage header never names |
+| `help` | `--help` is missing from a script with a usage header, exits non-zero, or prints a fixed line range that stops before the header ends |
+| `flag` | a document's code shows `tool --flag` and the tool's parser does not accept it |
+
+A shell script whose catch-all `*)` arm does not `exit`, or that only tests flags with `[[ ]]`,
+passes unknown flags on, so it cannot refuse one and the `flag` check skips it. The usage header
+is the comment block after the shebang. `-h|--help) sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0"; exit 0 ;;`
+prints all of it, however long it grows. `[flags] exclude` in `surfaces.toml` takes path globs
+for scripts the check must not read.
 
 ## Markdown regions
 

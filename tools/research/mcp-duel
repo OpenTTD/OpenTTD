@@ -7,6 +7,7 @@
 # research/results/duel-<time>-seed<N>.{json,md} with both bots' logs.
 #
 # Usage: tools/research/mcp-duel [--months 24] [--seed N] [--label text] [--opponent AI]
+#                               [--bot-settings k=v,...]
 # Exit: 0 the duel completed (whoever won), 1 the stack did not come up, 2 bad arguments.
 set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -18,6 +19,7 @@ while [[ $# -gt 0 ]]; do
     --label) LABEL="${2:?}"; shift 2 ;;
     --opponent) OPPONENT="${2:?}"; shift 2 ;;
     --bot-settings) BOT_SETTINGS="${2:?}"; shift 2 ;;
+    -h|--help) sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0"; exit 0 ;;
     *) echo "usage: mcp-duel [--months N] [--seed N] [--label text] [--opponent AI] [--bot-settings k=v,...]" >&2; exit 2 ;;
   esac
 done

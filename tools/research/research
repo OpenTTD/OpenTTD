@@ -35,7 +35,7 @@ Commands:
 
 Common options:
   --experiment-id ID   Required by all commands except doctor/--help.
-  --profile P          research-debug | baseline-release | research-asan
+  --profile P          research-debug | baseline-release | research-asan | research-mcp
   --output-dir DIR     Evidence-bundle root (default: build-research-runs/)
   --dry-run            Print planned commands; execute nothing.
   -h, --help           Show this help and exit.

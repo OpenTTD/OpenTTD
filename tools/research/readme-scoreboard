@@ -5,6 +5,9 @@ Writes the region between `<!-- scoreboard:begin -->` and `<!-- scoreboard:end -
 `--check` writes nothing and exits 11 when the region would change (Majordomus exit codes).
 `--json` writes nothing and prints the scoreboard and whether README.md is current (the panel's
 GET /api/scoreboard reads it, so the panel, Swagger and MCP clients see the same numbers).
+
+Usage: tools/research/readme-scoreboard [--check | --json]
+With no argument it rewrites the region; any other argument is refused (exit 2) and writes nothing.
 """
 
 import json
@@ -103,16 +106,25 @@ def summary(runs, current):
 
 
 def main():
+    args = sys.argv[1:]
+    if any(a in ("-h", "--help") for a in args):
+        print(__doc__.strip())
+        return
+    unknown = [a for a in args if a not in ("--check", "--json")]
+    if unknown or len(args) > 1:
+        sys.stderr.write(f"readme-scoreboard: unknown or extra argument {' '.join(unknown or args[1:])}; "
+                         "usage: readme-scoreboard [--check | --json]\n")
+        sys.exit(2)
     text = README.read_text()
     if BEGIN not in text or END not in text:
         sys.exit(f"readme-scoreboard: markers missing in {README}")
     head, rest = text.split(BEGIN, 1)
     _, tail = rest.split(END, 1)
     new = head + render(load()) + tail
-    if "--json" in sys.argv[1:]:
+    if "--json" in args:
         print(json.dumps(summary(load(), new == text)))
         return
-    if "--check" in sys.argv[1:]:
+    if "--check" in args:
         sys.exit(0 if new == text else 11)
     README.write_text(new)
 

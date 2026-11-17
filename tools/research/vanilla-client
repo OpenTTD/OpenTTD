@@ -131,6 +131,6 @@ case "${1:-}" in
   check) shift; cmd_check "$@" ;;
   run)   shift; cmd_run "$@" ;;
   tags)  tags ;;
-  -h|--help|"") sed -n '2,19p' "$0" ;;
+  -h|--help|"") sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0" ;;
   *) die "unknown command '$1' (build, check, run, tags)" ;;
 esac

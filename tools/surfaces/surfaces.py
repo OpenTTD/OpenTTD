@@ -50,6 +50,7 @@ GENERATED_ROOT = "target/web"  # the root Majordomus discovers surface.json decl
 DEFAULTS = {
     "sources": {"include": ["**/*.md"], "exclude": []},
     "check": {"exclude": []},
+    "flags": {"exclude": []},
     "site": {"out": f"{GENERATED_ROOT}/site", "mount": "/site"},
     "wiki": {"out": f"{GENERATED_ROOT}/wiki", "mount": "/wiki"},
     "regions": {"report": f"{GENERATED_ROOT}/markdown"},
@@ -1364,8 +1365,180 @@ def build_wiki(repo: Repo, cfg: dict, docs: dict[str, Doc], out: Path) -> None:
 # --------------------------------------------------------------------------- commands
 
 
+# --------------------------------------------------------------------------- tool flags
+#
+# A document that shows a tool with a flag restates the tool's parser, so it is checked against
+# it like a link against its target. Tools are the tracked executable scripts: shell scripts
+# parse with `case` arms, Python scripts with argparse. Three findings:
+#   usage  a flag the parser accepts is missing from the script's own usage header
+#   help   --help is missing, exits non-zero, or prints a fixed line range that stops before the
+#          end of that header or runs past it into the code
+#   flag   a document shows `tool --flag` and the tool's parser does not accept --flag
+# A shell script whose catch-all arm does not refuse (no `exit`) passes unknown flags on, so no
+# document can show a flag it would refuse: the third check skips it.
+
+SHEBANG_SHELL = re.compile(r"^#!.*\b(?:ba|z|da)?sh\b")
+SHEBANG_PYTHON = re.compile(r"^#!.*\bpython")
+CASE_ARM_RE = re.compile(
+    r"^[ \t]*\(?((?:-{1,2}[A-Za-z0-9][\w-]*(?:=\*)?)(?:[ \t]*\|[ \t]*-{1,2}[A-Za-z0-9][\w-]*(?:=\*)?)*)[ \t]*\)",
+    re.M)
+CATCH_ALL_RE = re.compile(r"^[ \t]*\*\)(.*)$", re.M)
+TEST_FLAG_RE = re.compile(r"==\s*[\"']?(--[A-Za-z][\w-]*)[\"']?\s*\]\]")
+ARGV_FLAG_RE = re.compile(r"[\"'](--[A-Za-z][\w-]*)[\"']\s+in\s+(?:sys\.)?argv\b")
+ARGPARSE_RE = re.compile(r"add_argument\(\s*((?:[\"']-{1,2}[\w-]+[\"']\s*,?\s*)+)")
+HELP_ARM_RE = re.compile(r"^[ \t]*\(?[^\n]*--help[^\n]*\)(.*)$", re.M)
+HELP_SED_RE = re.compile(r"sed -n ['\"]?(\d+),(\d+)p")
+LONG_FLAG_RE = re.compile(r"(?<![\w-])--[A-Za-z][\w-]*")
+SEGMENT_SPLIT_RE = re.compile(r"\|\||&&|[|;\n]")
+INLINE_CODE_RE = re.compile(r"(`+)(.+?)\1", re.S)
+ENV_ASSIGN_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*=")
+
+
+@dataclass
+class Tool:
+    path: str
+    name: str
+    flags: set[str]
+    strict: bool
+    header: list[str]
+    help_range: tuple[int, int] | None
+    help_line: int
+    help_exit: str = ""
+
+
+def load_tools(repo: Repo, cfg: dict) -> dict[str, list[Tool]]:
+    """Every tracked executable script with a parser, by file name."""
+    tools: dict[str, list[Tool]] = {}
+    for line in git(repo.root, "ls-files", "-s").splitlines():
+        meta, _, path = line.partition("\t")
+        if not meta.startswith("100755") or matches(path, cfg["flags"]["exclude"]):
+            continue
+        try:
+            text = (repo.root / path).read_text(errors="replace")
+        except OSError:
+            continue
+        first = text.split("\n", 1)[0]
+        flags: set[str] = set()
+        strict, help_range, help_line, help_exit = True, None, 0, ""
+        if SHEBANG_SHELL.match(first):
+            for m in CASE_ARM_RE.finditer(text):
+                for alt in m.group(1).split("|"):
+                    flags.add(alt.strip().removesuffix("=*"))
+            catch = [m.group(1) for m in CATCH_ALL_RE.finditer(text)]
+            strict = bool(catch) and all("exit" in c for c in catch)
+            tested = set(TEST_FLAG_RE.findall(text)) - flags
+            if tested:  # `[[ "$1" == --x ]]` refuses nothing it does not test
+                flags |= tested
+                strict = False
+            for m in HELP_ARM_RE.finditer(text):
+                help_line = text.count("\n", 0, m.start()) + 1
+                s = HELP_SED_RE.search(m.group(1))
+                if s:
+                    help_range = (int(s.group(1)), int(s.group(2)))
+                e = re.search(r"\bexit ([1-9]\d*)", m.group(1))
+                if e:
+                    help_exit = e.group(1)
+        elif SHEBANG_PYTHON.match(first):
+            parsed = list(ARGPARSE_RE.finditer(text))
+            for m in parsed:
+                flags.update(re.findall(r"-{1,2}[\w-]+", m.group(1)))
+            strict = bool(parsed) and "parse_known_args" not in text
+            if parsed and "add_help=False" not in text:
+                flags.add("--help")  # argparse adds it
+            argv = set(ARGV_FLAG_RE.findall(text))
+            if argv:  # `"--x" in argv` refuses nothing
+                flags |= argv
+                strict = False
+        else:
+            continue
+        if not flags:
+            continue
+        header = []
+        for h in text.split("\n")[1:]:
+            if not h.startswith("#"):
+                break
+            header.append(h)
+        name = posixpath.basename(path)
+        tools.setdefault(name, []).append(Tool(path, name, flags, strict, header, help_range, help_line, help_exit))
+    return tools
+
+
+def check_tool_headers(tools: dict[str, list[Tool]]) -> list[Finding]:
+    found = []
+    for tool in (t for ts in tools.values() for t in ts):
+        head = "\n".join(tool.header)
+        if re.search(r"\busage\b", head, re.I):
+            for flag in sorted(f for f in tool.flags if f.startswith("--") and f != "--help"):
+                if not re.search(rf"(?<![\w-]){re.escape(flag)}(?![\w-])", head):
+                    found.append(Finding("usage", tool.path, 1, f"accepts {flag}, which its usage header never names"))
+        if tool.help_exit:
+            found.append(Finding("help", tool.path, tool.help_line,
+                                 f"--help exits {tool.help_exit}: asking for help is not an error, exit 0"))
+        if tool.strict and tool.header and "--help" not in tool.flags and re.search(r"\busage\b", head, re.I):
+            found.append(Finding("help", tool.path, 1, "has a usage header but no -h|--help arm that prints it"))
+        if tool.help_range and tool.header:
+            last = 1 + max(i + 1 for i, h in enumerate(tool.header) if h.strip("# \t"))
+            if tool.help_range[1] < last:
+                found.append(Finding("help", tool.path, tool.help_line,
+                                     f"--help prints lines {tool.help_range[0]}-{tool.help_range[1]}, "
+                                     f"but the usage header runs to line {last}"))
+            elif tool.help_range[1] > last + 1:
+                found.append(Finding("help", tool.path, tool.help_line,
+                                     f"--help prints lines {tool.help_range[0]}-{tool.help_range[1]}, "
+                                     f"past the usage header's end at line {last}, so it prints code"))
+    return found
+
+
+def code_spans(doc: Doc) -> list[tuple[int, str]]:
+    """(offset, text) of every fenced block and inline code span in a document."""
+    spans, fenced = [], fenced_ranges(doc.text)
+    for a, b in fenced:
+        spans.append((a, doc.text[a:b]))
+    rest, pos = [], 0
+    for a, b in fenced:
+        rest.append((pos, doc.text[pos:a]))
+        pos = b
+    rest.append((pos, doc.text[pos:]))
+    for base, chunk in rest:
+        for m in INLINE_CODE_RE.finditer(chunk):
+            spans.append((base + m.start(2), m.group(2)))
+    return spans
+
+
+def check_doc_flags(tools: dict[str, list[Tool]], doc: Doc) -> list[Finding]:
+    found = []
+    for offset, code in code_spans(doc):
+        pos = 0
+        for segment in SEGMENT_SPLIT_RE.split(code):
+            start = code.find(segment, pos)
+            pos = start + len(segment)
+            words = segment.split()
+            while words and (ENV_ASSIGN_RE.match(words[0]) or words[0] in ("$", "!", "time", "exec")):
+                words.pop(0)
+            if not words:
+                continue
+            candidates = tools.get(posixpath.basename(words[0].strip("`'\"")), [])
+            if not candidates or not all(t.strict for t in candidates):
+                continue
+            accepted = set().union(*(t.flags for t in candidates))
+            for word in words[1:]:
+                if word == "--":
+                    break
+                for flag in LONG_FLAG_RE.findall(word.split("=", 1)[0]):
+                    if flag not in accepted:
+                        line = doc.text.count("\n", 0, offset + start) + 1
+                        found.append(Finding("flag", doc.path, line,
+                                             f"shows `{candidates[0].name} {flag}`, which {candidates[0].path} does not accept"))
+    return sorted(found, key=lambda f: f.line)
+
+
 def run_check(repo: Repo, cfg: dict, docs: dict[str, Doc], layer: Layer) -> list[Finding]:
     findings, _ = sync_regions(repo, docs, layer, write=False)
+    tools = load_tools(repo, cfg)
+    findings += check_tool_headers(tools)
+    for path, doc in docs.items():
+        if not matches(path, cfg["check"]["exclude"]):
+            findings += check_doc_flags(tools, doc)
     md = markdown()
     links = Links(repo, docs)
     parsed = {p: collect_slugs(md, d) for p, d in docs.items()}

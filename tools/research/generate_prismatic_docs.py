@@ -12,6 +12,9 @@ catalog no longer generates any page template of its own.
 
 tools/check-prismatic-docs.sh runs this and fails the gate if the working tree
 disagrees with what the catalog would generate (see tools/gate.sh 'change').
+
+Usage: tools/research/generate_prismatic_docs.py    (no arguments: it rewrites both blocks;
+-h/--help prints this and writes nothing, any other argument is refused with exit 2)
 """
 import json
 import re
@@ -89,6 +92,13 @@ ground rules that apply before any of this."""
 
 
 def main():
+    args = sys.argv[1:]
+    if any(x in ("-h", "--help") for x in args):
+        print(__doc__.strip())
+        return 0
+    if args:
+        sys.stderr.write(f"generate_prismatic_docs.py: takes no arguments, got {' '.join(args)}\n")
+        return 2
     cat = load_catalog()
 
     readme_path = ROOT / "README.md"
