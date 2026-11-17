@@ -291,10 +291,11 @@ fn get_or<'a>(v: &'a Value, k: &str, default: &'a Value) -> &'a Value {
 pub const MAX_FREIGHT_LINES: usize = 16;
 
 /// Freight lines the planned bot may plan itself once the handed ones are built (bridge own_lines; it
-/// defaults to 0 there, so a bot started without a plan, a duel's baseline, stays unplanned). Off: on
-/// seed 31337 eight own lines built from month 24 cost a fifth of the company's value by month 36
-/// (research/results duel-20261117T131347: 794015 against 995647 without them); a longer run decides.
-pub const OWN_LINES: usize = 0;
+/// defaults to 0 there, so a bot started without a plan, a duel's baseline, stays unplanned). On: over
+/// ten years on seed 31337 eight own lines gave +10.4% (research/results duel-20261117T155736, 4811581,
+/// against duel-20261117T180225, 4356412, without them). They cost value until about month 50, so a
+/// 36-month duel shows their cost and not their return (duel-20261117T131347: -20%).
+pub const OWN_LINES: usize = 8;
 
 /// The bot's routes from the planner's portfolio within the budget, chosen from mcp-plan's answer:
 /// up to eight freight rail lines (fr_*, fr2_* .. fr8_*), one passenger rail pair (rail_a, rail_b)
@@ -552,7 +553,7 @@ mod tests {
         // Freight lines are set after the loop, in order of score; the passenger pair (score 2) waits
         // for both freight lines (8 and 5), so rail_after is 2.
         assert_eq!(flat, ["air_a=4", "air_b=5", "air_planes=8", "rail_a=10", "rail_b=11", "fr_from=7", "fr_to=99", "fr_cargo=1",
-                          "fr2_from=8", "fr2_to=99", "fr2_cargo=1", "rail_after=2"]);
+                          "fr2_from=8", "fr2_to=99", "fr2_cargo=1", "own_lines=8", "rail_after=2"]);
         assert!(events.iter().any(|e| e == "planner: the passenger rail pair (score 2) is built after 2 freight line(s) that score more"));
         // A spare that scores above a portfolio line is built first.
         let order = json!({"portfolio": {"chosen": [fr(7, 3.0), rail(10, 4.0, "found")]}, "freight": [fr(7, 3.0), fr(8, 6.0)]});
