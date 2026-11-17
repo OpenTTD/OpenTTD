@@ -85,11 +85,19 @@ try {
   await page.waitForTimeout(300);
   check('Escape restores', !new URL(page.url()).searchParams.get('max'));
 
+  // With several companies a bar of the standing chart is a company; with one, that chart is the
+  // company's balance sheet (8a57a453ab) and the company is a line of the companies chart.
   const focused = await page.evaluate(() => {
     const inst = globalThis.echarts.getInstanceByDom(document.getElementById('ov-standing'));
     const bar = inst.getOption().series[0].data.at(-1);
-    inst.trigger('click', { data: bar, componentType: 'series' });
-    return bar && bar.id;
+    if (bar && bar.id) {
+      inst.trigger('click', { data: bar, componentType: 'series' });
+      return bar.id;
+    }
+    const co = globalThis.echarts.getInstanceByDom(document.getElementById('ov-companies'));
+    const line = co.getOption().series[0];
+    co.trigger('click', { seriesId: line.id, componentType: 'series' });
+    return line.id;
   });
   await page.waitForTimeout(300);
   check('a click on a company focuses it', new URL(page.url()).searchParams.get('ov_focus') === String(focused), `ov_focus=${new URL(page.url()).searchParams.get('ov_focus')}`);
