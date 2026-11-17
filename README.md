@@ -1,23 +1,180 @@
-# OpenTTD — Prismatic research fork
+<p align="center">
+  <a href="research/noirgfx/README.md">
+    <img src="research/noirgfx/ingame-title-4x.png" alt="OpenTTD running NoirGFX, this fork's red-black linocut base graphics, at 4x zoom" width="100%">
+  </a>
+</p>
 
-**A real, 20-year-old C++20 game engine used as a proving ground for coding agents.**
-Agents plan, change and validate work against conventions they cannot fake: deterministic
-lockstep multiplayer, savegames that must load forever, and a warning-heavy build.
+<h1 align="center">OpenTTD &middot; Prismatic research fork</h1>
 
-> **Personal research fork.** `korczis/OpenTTD` is public on GitHub so its documentation can be
-> published, but it is not the official [OpenTTD](https://github.com/OpenTTD/OpenTTD) project and
-> sends nothing upstream. The original upstream README is preserved from
-> [1.0) About](#10-about) onward; license and credits are unchanged.
+<p align="center">
+  <strong>A 20-year-old C++20 game engine as a proving ground for coding agents.</strong><br>
+  Agents plan, build and play against rules they cannot fake: deterministic lockstep
+  multiplayer, savegames that must load forever, and a warning-heavy build.
+</p>
 
-| | |
-|---|---|
-| **Ground rules** | [`AGENTS.md`](./AGENTS.md) — read first, applies to every agent and contributor |
-| **Validation** | [`tools/gate.sh`](./tools/gate.sh) `smoke` · `change` · `full` · `research` — see [0.5](#05-validation--gating-model) |
-| **Research CLI** | [`tools/research/research`](./tools/research/research) — profiles, manifest, evidence bundle ([`research/tooling.md`](./research/tooling.md)) |
-| **Embedded MCP server** | [`src/prismatic_mcp/`](./src/prismatic_mcp/) — loopback, compile-gated, default OFF ([`research/prismatic-mcp/`](./research/prismatic-mcp/README.md)) |
-| **Drive a game from outside** | control window, `~` developer console and Rhai scripting ([`research/mcp-control.md`](./research/mcp-control.md)) |
-| **Published surfaces** | site, wiki and Markdown index tables derived from this repository — see [0.4.2](#042-published-surfaces) |
-| **Status taxonomy** | `PASS` · `FAIL` · `PARTIAL` · `NOT RUN` · `NOT APPLICABLE` — never rounded up ([`research/README.md`](./research/README.md)) |
+<p align="center">
+  <a href="https://korczis.github.io/OpenTTD/"><img alt="Site" src="https://img.shields.io/badge/site-korczis.github.io%2FOpenTTD-d11f1a?style=for-the-badge&labelColor=0b0b0b"></a>
+  <a href="https://github.com/korczis/OpenTTD/actions/workflows/surfaces.yml"><img alt="Surfaces" src="https://img.shields.io/github/actions/workflow/status/korczis/OpenTTD/surfaces.yml?branch=master&label=surfaces&style=for-the-badge&labelColor=0b0b0b"></a>
+  <a href="https://github.com/korczis/OpenTTD/wiki"><img alt="Wiki" src="https://img.shields.io/badge/wiki-same%20docs-ece4d6?style=for-the-badge&labelColor=0b0b0b"></a>
+  <a href="COPYING.md"><img alt="License GPL-2.0" src="https://img.shields.io/badge/license-GPL--2.0-ece4d6?style=for-the-badge&labelColor=0b0b0b"></a>
+</p>
+
+<p align="center">
+  <img alt="C++20" src="https://img.shields.io/badge/C%2B%2B-20-00599C?logo=cplusplus&logoColor=white">
+  <img alt="CMake" src="https://img.shields.io/badge/CMake-3.16%2B-064F8C?logo=cmake&logoColor=white">
+  <img alt="Rust" src="https://img.shields.io/badge/Rust-agent%20tooling-000000?logo=rust&logoColor=white">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white">
+  <img alt="MCP" src="https://img.shields.io/badge/MCP-embedded%20server-d11f1a">
+  <img alt="Rhai" src="https://img.shields.io/badge/Rhai-scripting-8a5a2b">
+  <img alt="Apache ECharts" src="https://img.shields.io/badge/Apache%20ECharts-6-AA344D?logo=apacheecharts&logoColor=white">
+  <img alt="Flowbite" src="https://img.shields.io/badge/Flowbite-Tailwind%204-1C64F2?logo=tailwindcss&logoColor=white">
+  <img alt="Mermaid" src="https://img.shields.io/badge/Mermaid-diagrams-FF3670?logo=mermaid&logoColor=white">
+  <img alt="Supervised by Majordomus" src="https://img.shields.io/badge/supervised%20by-Majordomus-0b0b0b">
+</p>
+
+<p align="center">
+  <a href="AGENTS.md"><b>Ground rules</b></a> &nbsp;&middot;&nbsp;
+  <a href="#quick-start"><b>Quick start</b></a> &nbsp;&middot;&nbsp;
+  <a href="#the-planner-against-itself"><b>Results</b></a> &nbsp;&middot;&nbsp;
+  <a href="#whats-inside"><b>What's inside</b></a> &nbsp;&middot;&nbsp;
+  <a href="#built-with"><b>Built with</b></a> &nbsp;&middot;&nbsp;
+  <a href="research/prismatic-mcp/README.md"><b>MCP server</b></a> &nbsp;&middot;&nbsp;
+  <a href="#00-about-this-fork"><b>Full story</b></a>
+</p>
+
+> [!NOTE]
+> **Personal research fork.** `korczis/OpenTTD` is public so its documentation can be published,
+> but it is not the official [OpenTTD](https://github.com/OpenTTD/OpenTTD) project and sends
+> nothing upstream. The original upstream README is preserved from [1.0) About](#10-about)
+> onward; license and credits are unchanged.
+
+## The planner against itself
+
+One game, one map, two companies running the **same** Company AI. Company A starts from the
+AlgoGlyph planner's portfolio (track priced tile by tile on the live map, lines picked by a
+knapsack over the company's money); company B starts without a plan. Every number below is
+generated from the recorded runs in [`research/results/`](research/results/) by
+[`tools/research/readme-scoreboard`](tools/research/readme-scoreboard) — nothing is typed by hand.
+
+<!-- scoreboard:begin -->
+<!-- generated by tools/research/readme-scoreboard; edit the results, not this block -->
+
+> **Best run: 995,647 vs 27,870** company value, planned bot vs the same bot unplanned, one game, one map (seed 31337, 36 months) — [evidence](research/results/duel-20261117T112500-seed31337.md). The planned bot won **21 of 22** recorded duels.
+
+```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 360
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#d11f1a, #8a8a8a"
+---
+xychart-beta
+    title "Seed 31337, 36 months: final company value per bot revision"
+    x-axis ["r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "r13"]
+    y-axis "Company value" 0 --> 1000000
+    bar [68229, 204356, 206995, 250716, 454403, 518138, 505369, 558331, 468228, 290634, 552182, 597075, 995647]
+    line [28293, 28129, 27716, 27768, 27228, 27849, 27943, 27408, 28331, 27853, 27247, 29139, 27870]
+```
+
+<details><summary>Every revision in the chart (red bar: planned, grey line: unplanned)</summary>
+
+| Rev | Planned | Unplanned | What changed | Evidence |
+|---|---:|---:|---|---|
+| r1 | 68,229 | 28,293 | generalisation: a second seed with the same bot (bridge f598ede) | [duel-20261116T120701-seed31337](research/results/duel-20261116T120701-seed31337.md) |
+| r2 | 204,356 | 28,129 | bot with bridges (bridge d3c39ba) | [duel-20261116T130634-seed31337](research/results/duel-20261116T130634-seed31337.md) |
+| r3 | 206,995 | 27,716 | current bot: eight freight lines, line upkeep, bridges, tunnels (bridge 4cf4a62) | [duel-20261116T235622-seed31337](research/results/duel-20261116T235622-seed31337.md) |
+| r4 | 250,716 | 27,768 | panel bot start with eight freight lines, 30 candidates, 8 priced per list (4d51c44497)... | [duel-20261117T003624-seed31337](research/results/duel-20261117T003624-seed31337.md) |
+| r5 | 454,403 | 27,228 | diagonal track (a corner piece on a diagonal costs 2/3 of a straight one, heuristic 7/9... | [duel-20261117T012840-seed31337](research/results/duel-20261117T012840-seed31337.md) |
+| r6 | 518,138 | 27,849 | re-plan around a refused rail piece (bridge f5f29d5) on top of diagonal track | [duel-20261117T024703-seed31337](research/results/duel-20261117T024703-seed31337.md) |
+| r7 | 505,369 | 27,943 | station exits checked by the pathfinder's slope rule (bridge exit fix) on top of diagon... | [duel-20261117T032759-seed31337](research/results/duel-20261117T032759-seed31337.md) |
+| r8 | 558,331 | 27,408 | rail lines in order of score, the passenger pair after better freight lines (rail_after... | [duel-20261117T041705-seed31337](research/results/duel-20261117T041705-seed31337.md) |
+| r9 | 468,228 | 28,331 | two platforms side by side where two planned lines meet (transfer yard), on top of line... | [duel-20261117T045857-seed31337](research/results/duel-20261117T045857-seed31337.md) |
+| r10 | 290,634 | 27,853 | transfer yards with a four-tile corridor and a fallback station (bridge 6f78532) | [duel-20261117T053732-seed31337](research/results/duel-20261117T053732-seed31337.md) |
+| r11 | 552,182 | 27,247 | control: transfer yards reverted, cleanup fix (bridge aea2cd5); should match 558331 | [duel-20261117T061717-seed31337](research/results/duel-20261117T061717-seed31337.md) |
+| r12 | 597,075 | 29,139 | up to sixteen freight lines (panel MAX_FREIGHT_LINES 5c04a120ac, bridge 2c01584), rerun... | [duel-20261117T100202-seed31337](research/results/duel-20261117T100202-seed31337.md) |
+| r13 | 995,647 | 27,870 | script budget really 250000 opcodes (panel 1d8c45fa77; was 10000 in every earlier run),... | [duel-20261117T112500-seed31337](research/results/duel-20261117T112500-seed31337.md) |
+
+</details>
+
+<!-- scoreboard:end -->
+
+## What's inside
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+**Embedded MCP server** &mdash; [`src/prismatic_mcp/`](src/prismatic_mcp/)<br>
+Live game state as MCP tools and resources, inside the engine. Loopback only, compile-gated
+(`OPTION_RESEARCH_INSTRUMENTATION=ON`, default OFF). Mutations go through the game's own command
+system after an operator approves the exact arguments; every Script API function is also a tool.
+&rarr; [design](research/prismatic-mcp/README.md) &middot; [API](research/mcp-api.md)
+
+</td>
+<td width="50%" valign="top">
+
+**Plan, then play** &mdash; [`research/mcp-hub.md`](research/mcp-hub.md)<br>
+The AlgoGlyph planner reads the map, terrain, prices and bridges, prices every candidate rail line,
+and hands a portfolio to PrismaticAI, which re-plans around a refused piece of track. A human-style
+bot ([`mcp-human`](research/mcp-human.md)) plays through the UI instead.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**Drive a game from outside** &mdash; [`research/mcp-control.md`](research/mcp-control.md)<br>
+A control panel and hub over WebSocket for every running instance, the `~` developer console
+(`mcp <tool>`), Rhai scripts with AlgoGlyph's kernels, duels started on a click with their own
+page and chart.
+
+</td>
+<td valign="top">
+
+**Validation you cannot round up** &mdash; [`tools/gate.sh`](tools/gate.sh)<br>
+`smoke` &middot; `change` &middot; `full` &middot; `research`, each at the cost the change needs.
+Status is `PASS` &middot; `FAIL` &middot; `PARTIAL` &middot; `NOT RUN` &middot; `NOT APPLICABLE`,
+and a report may only claim what actually ran ([`research/README.md`](research/README.md)).
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**Reproducible experiments** &mdash; [`tools/research/research`](tools/research/research)<br>
+Build profiles, toolchain, commands and results recorded into `manifest.json`; the summary is
+generated from the record, never written after the fact ([`research/tooling.md`](research/tooling.md)).
+
+</td>
+<td valign="top">
+
+**NoirGFX** &mdash; [`research/noirgfx/`](research/noirgfx/README.md)<br>
+A full base graphics set: every OpenGFX sprite recut as a red-black linocut at 1x/2x/4x, seamless
+across tiles, with Kenney's CC0 models for the trees. The banner above is the game running it.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**Derived surfaces** &mdash; [`tools/surfaces/`](tools/surfaces/README.md)<br>
+The [site](https://korczis.github.io/OpenTTD/), the [wiki](https://github.com/korczis/OpenTTD/wiki)
+and the index tables in these documents are generated from git and the `.ai/` layer, and a stale
+table or a dead link fails the commit.
+
+</td>
+<td valign="top">
+
+**A supervised AI layer** &mdash; [`.ai/`](.ai/README.md)<br>
+Decisions (ADRs), rules, plan, intents and knowledge in tracked records that every agent reads the
+same way, run under [Majordomus](https://majordomus.dev) task lifecycle and peer board.
+
+</td>
+</tr>
+</table>
 
 ### How it fits together
 
@@ -62,7 +219,9 @@ flowchart LR
     tools --> hub
     hub --> planner
 
-    classDef owner fill:#f5a623,stroke:#b8770f,color:#1a1a1a;
+    classDef owner fill:#d11f1a,stroke:#0b0b0b,color:#ece4d6;
+    classDef core fill:#0b0b0b,stroke:#d11f1a,color:#ece4d6;
+    class gui,srv,tools core;
 ```
 
 ### The fork in action
@@ -76,7 +235,32 @@ flowchart LR
 > Screenshots are from a single-machine R&D game on `127.0.0.1`; the fork joins public servers only
 > with the unmodified release client ([ADR 0029](.ai/repo/adrs/0029-a-research-gated-local-only-override-accepts-a-mismatched-pee.md)).
 
-### Quick start
+## Built with
+
+Every layer stands on a well-known library rather than a home-grown one. Versions live in the
+manifests linked per row, not here.
+
+| Layer | Libraries | Where |
+|---|---|---|
+| **Engine** | C++20 &middot; CMake &middot; [nlohmann/json](https://github.com/nlohmann/json) (MCP wire format) &middot; [Squirrel](http://squirrel-lang.org/) (AI / Game Scripts) &middot; [{fmt}](https://fmt.dev/) &middot; [Catch2](https://github.com/catchorg/Catch2) &middot; [Monocypher](https://monocypher.org/) &middot; [ICU](https://icu.unicode.org/) | [`src/3rdparty/`](src/3rdparty/) |
+| **Agent tooling (Rust)** | [Rhai](https://rhai.rs/) (scripting a live game) &middot; [ureq](https://github.com/algesten/ureq) &middot; [tungstenite](https://github.com/snapview/tungstenite-rs) (hub WebSocket) &middot; [serde](https://serde.rs/) / serde_json &middot; libc | [`mcp-rhai`](tools/research/mcp-rhai/Cargo.toml) &middot; [`mcp-human`](tools/research/mcp-human/Cargo.toml) |
+| **Control panel** | [Apache ECharts](https://echarts.apache.org/) (duel and economy charts) &middot; [D3](https://d3js.org/) (graphs) &middot; [three.js](https://threejs.org/) (3D map) &middot; [Flowbite](https://flowbite.com/) &middot; [Swagger UI](https://swagger.io/tools/swagger-ui/) (OpenAPI of the tool catalogue) &middot; [Playwright](https://playwright.dev/) (page checks) | [`mcp-panel`](tools/research/mcp-panel/package.json) |
+| **Published surfaces** | [Tailwind CSS 4](https://tailwindcss.com/) + [Flowbite](https://flowbite.com/) / flowbite-typography &middot; [Mermaid](https://mermaid.js.org/) &middot; [Apache ECharts](https://echarts.apache.org/) &middot; [markdown-it-py](https://github.com/executablebooks/markdown-it-py) &middot; [PyYAML](https://pyyaml.org/) | [`package.json`](tools/surfaces/package.json) &middot; [`requirements.txt`](tools/surfaces/requirements.txt) |
+| **Supervision** | [Majordomus](https://majordomus.dev) (task lifecycle, rules, decisions, peer board, MCP projection of `.ai/`) | [`.ai/`](.ai/README.md) |
+| **Content** | [OpenGFX](https://github.com/OpenTTD/OpenGFX) &middot; [Kenney](https://kenney.nl/) CC0 models (NoirGFX) | [`tools/research/noirgfx/`](tools/research/noirgfx/README.md) |
+
+## The rules it plays by
+
+- **The command system is the only door.** An agent changes the world exactly like a player
+  does, so every client stays bit-identical in lockstep.
+- **Research code is gated, labelled and removable.** `RESEARCH-ONLY`, loopback-bound, compiled
+  out of every build that does not ask for it ([`AGENTS.md`](AGENTS.md)).
+- **Never claim what did not run.** `NOT RUN` is a valid answer; a rounded-up `PASS` is a defect.
+- **Derive, never restate.** Tables, charts, the site and the wiki are generated from the
+  repository; the scoreboard above is too.
+- **Savegames load forever.** No saved field is removed, reordered or renumbered.
+
+## Quick start
 
 ```bash
 # Plain build and the change-tier gate (configure, build, full ctest suite)
@@ -86,6 +270,9 @@ tools/gate.sh change
 # headless server + MCP + PrismaticAI + control window (127.0.0.1:8800) + spectator GUI client
 tools/gate.sh research
 tools/research/mcp-e2e
+
+# Regenerate the scoreboard after a new duel lands in research/results/
+tools/research/readme-scoreboard
 
 # The published surfaces: check them, regenerate the Markdown tables, build the site locally
 tools/surfaces/surfaces check
