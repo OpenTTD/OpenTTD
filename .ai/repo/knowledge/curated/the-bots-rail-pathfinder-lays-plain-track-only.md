@@ -21,6 +21,10 @@ provenance:
     - file:research/results/duel-20261116T082722-seed20208.md
     - file:research/results/duel-20261117T012840-seed31337.md
     - file:src/vehicle_base.h
+    - file:research/results/duel-20261117T032759-seed31337.md
+    - file:research/results/duel-20261117T041705-seed31337.md
+    - file:research/results/duel-20261117T045857-seed31337.md
+    - file:research/results/duel-20261117T053732-seed31337.md
 ---
 
 # Constraint
@@ -63,6 +67,22 @@ rectangle between the stations, and lines that the old search found failed. On s
 (duel-20261117T012840). A failed search logs whether the node budget ran out or the reachable tiles
 did. "every reachable tile tried, 1 nodes" means the station exit has no usable neighbour. A failed
 piece (ERR_AREA_NOT_CLEAR) still drops the whole line; re-planning from that piece is the next fix.
+
+Three later findings on seed 31337 (bridge repository, branch feat/live-behaviour, pushed to aea2cd5):
+
+- **A station exit is checked by the search's own first-step rules** (7984f1c). A turn off the exit
+  must fit the exit's slope (PieceFits). Without that check a town station passed the site check, and
+  the search then stopped after one node. The passenger line was then built, which had failed on every
+  earlier run.
+- **Lines are built in order of score** (panel `fr_*` sorted, `rail_after`; bridge 75d114e). The bot
+  borrows for each line in the order it is given. A passenger pair scoring 113003 had been built
+  second, ahead of freight lines scoring up to 240547. Built best first, the same seven lines ended at
+  558331 against 505369 (+10.5%).
+- **Two platforms side by side where two planned lines meet did not pay** (3840fc6, 6f78532, both
+  reverted). One yard worked (Lentburg); the other was walled in by the first line even with a
+  four-tile corridor kept. With a fallback station, the line there lost its train twice. Results were
+  −16% and −48% against no yards. Before another try, prove the corridor offline on
+  `openttd://map` with the first line's path.
 
 # How to apply
 
