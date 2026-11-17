@@ -25,6 +25,7 @@ provenance:
     - file:research/results/duel-20261117T041705-seed31337.md
     - file:research/results/duel-20261117T045857-seed31337.md
     - file:research/results/duel-20261117T053732-seed31337.md
+    - file:research/results/duel-20261117T100202-seed31337.md
 ---
 
 # Constraint
@@ -66,7 +67,9 @@ rectangle between the stations, and lines that the old search found failed. On s
 48–76% corner pieces, and company value went from 250716 to 454403 on the same plan
 (duel-20261117T012840). A failed search logs whether the node budget ran out or the reachable tiles
 did. "every reachable tile tried, 1 nodes" means the station exit has no usable neighbour. A failed
-piece (ERR_AREA_NOT_CLEAR) still drops the whole line; re-planning from that piece is the next fix.
+piece (ERR_AREA_NOT_CLEAR) is re-planned around since bridge f5f29d5: from the last laid tile, with
+the refused tile avoided. It first ran on seed 31337, where a coal line was finished 42 tiles around an
+occupied tile instead of being dropped (duel-20261117T100202).
 
 Three later findings on seed 31337 (bridge repository, branch feat/live-behaviour, pushed to aea2cd5):
 
@@ -83,6 +86,11 @@ Three later findings on seed 31337 (bridge repository, branch feat/live-behaviou
   four-tile corridor kept. With a fallback station, the line there lost its train twice. Results were
   −16% and −48% against no yards. Before another try, prove the corridor offline on
   `openttd://map` with the first line's path.
+
+- **More lines when money waits** (panel MAX_FREIGHT_LINES 16; bridge 2c01584). With eight lines the
+  loan was repaid by month 30 and 308074 sat idle at month 36. Thirteen lines handed over, eleven
+  built in 36 months: 597075, +6.9% over eight lines (spread between two runs of one bot is about 1%).
+  After that, laying track takes the game time, not the plan or the money.
 
 # How to apply
 
