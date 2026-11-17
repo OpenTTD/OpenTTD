@@ -1,0 +1,34 @@
+id: I0080
+milestone: an-agent-reaches-the-game-over-mcp
+title: "Every panel event on a ZeroMQ PUB socket and in a DuckDB store per instance, queryable from the API, Rhai and a /data page"
+slug: event-bus-store
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "One tap on the panel's event bus forwards every event to a ZeroMQ PUB socket (topic = kind, envelope prismatic-bus/v1) and to a DuckDB file per instance (runs, events, samples), committed at least twice a second. GET /api/bus, GET /api/db/tables and GET|POST /api/db/query (read-only) are rows of the route table, so they reach OpenAPI, Swagger UI and Rhai. A /data page runs and charts queries. Decisions (bot start, calibration, duel readings) can read the store."
+why: "The owner asked (2026-11-18) for the event stream to reach Rust tools, the blackboard and agents over ZeroMQ, and for a per-session, per-instance, per-game DuckDB store that every event updates and every decision can use: Rhai-friendly, exposed in the UI, API and app, and governed through .ai/ and Majordomus. ADR 0033 records the design."
+scope:
+  - "tools/research/mcp-rhai/**"
+  - "tools/research/mcp-panel/static/**"
+  - "tools/research/mcp-panel/test/**"
+  - "tools/research/mcp-panel-check"
+  - "tools/research/mcp-overview-check"
+  - "research/mcp-control.md"
+  - ".ai/repo/adrs/0033-every-panel-event-goes-out-on-zeromq-and-into-a-duckdb-store.md"
+  - ".ai/repo/project/issues/I0080.yaml"
+  - ".ai/repo/knowledge/curated/**"
+depends_on: []
+acceptance_criteria:
+  - "A ZeroMQ SUB client on the endpoint from GET /api/bus receives every bus event in order, topic = kind, envelope schema prismatic-bus/v1 with instance, session, seed, game_tick and game_date"
+  - "The instance's registry record names the bus endpoint and the store file"
+  - "The DuckDB file has runs, events and samples; an event published on the bus is in events within a second"
+  - "GET /api/db/query refuses anything but read-only statements (400) and returns {columns, rows, count} for SELECT"
+  - "The routes appear in OpenAPI and as Rhai api_* functions; a Rhai script can query the store"
+  - "/data runs a query from the address and charts a numeric column through components.js ecInit"
+  - "cargo test --bin mcp-panel, node --test, mcp-panel-check, mcp-route-check and mcp-overview-check pass"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel"
+  - "tools/research/mcp-panel-check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-18'
