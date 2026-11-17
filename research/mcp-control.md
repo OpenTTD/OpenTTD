@@ -810,8 +810,9 @@ game run by `mcp-e2e` takes Prismatic's decisions without the Python bridge
   approval-gated) and reloads only when the directive carries none; without a `company_id` it
   starts `ai` with them, as the bridge does. Fields beyond the contract's three are not read and
   are named in the answer: `prismatic_api` answers its working alongside (`engine`,
-  `chosen_aggressiveness`, `candidates`), which the contract's `additionalProperties: false`
-  does not allow.
+  `chosen_aggressiveness`, `candidates`), which the contract admits as the directive's own working
+  (its `additionalProperties` is true since 2026-11-17; it was false, and Prismatic's real answer
+  broke it).
 
 `tools/research/mcp-decision-check` proves it on seed 31337: the bot's company in `CompanyOut`,
 both refusals, and a directive in the shape `OpenttdController#decision` answers applied, the

@@ -33,7 +33,8 @@ pub struct Directive {
 }
 
 /// The directive in `v`, or every reason the contract refuses it. Fields beyond the contract's
-/// three are not read (the bridge ignores them too); `ignored` names them.
+/// three are the directive's own working, which the contract admits and no consumer reads (the
+/// bridge ignores them too); `ignored` names them.
 pub fn directive(v: &Value) -> Result<(Directive, Vec<String>), Vec<String>> {
     let mut errors = Vec::new();
     let Some(o) = v.as_object() else { return Err(vec!["a directive is a JSON object".into()]) };
@@ -145,7 +146,7 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
         let settings: serde_json::Map<String, Value> = d.settings.iter().map(|(k, v)| (k.clone(), json!(v))).collect();
         lines.push(line(&format!("start {ai}"), &panel_bot::start_bot(g, ai, Value::Object(settings))?));
     }
-    if !ignored.is_empty() { lines.push(format!("not read (outside the contract): {}", ignored.join(", "))); }
+    if !ignored.is_empty() { lines.push(format!("not read (the directive's own working): {}", ignored.join(", "))); }
     g.event("ai", &format!("Prismatic decided ({url}): {}", lines.join("; ")));
     Ok((200, json!({"called_url": url, "raw_response": raw, "applied_rcon": {"lines": lines}})))
 }

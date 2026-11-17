@@ -19,8 +19,8 @@
   "$defs": {
     "decisionDirective": {
       "type": "object",
-      "description": "What PRISMATIC_DECISION_URL returns. At least one of 'ai' or 'company_id' must be present, or the bridge applies nothing. When 'company_id' is present the bridge issues 'reload_ai <company_id>' (the company keeps its configured settings); otherwise, when 'ai' is present, it issues 'start_ai <ai> [settings]'. Unknown fields are not permitted by this contract, though the running bridge would ignore them.",
-      "additionalProperties": false,
+      "description": "What PRISMATIC_DECISION_URL returns. At least one of 'ai' or 'company_id' must be present, or the bridge applies nothing. When 'company_id' is present the bridge issues 'reload_ai <company_id>' (the company keeps its configured settings); otherwise, when 'ai' is present, it issues 'start_ai <ai> [settings]'. Only these three fields are read. A directive may carry its own working beside them (prismatic_api answers 'engine', 'chosen_aggressiveness', 'candidates', 'expected_value', 'iterations_per_candidate', 'company_input'); consumers do not read it, and the MCP panel names it in its answer.",
+      "additionalProperties": true,
       "minProperties": 1,
       "anyOf": [
         { "required": ["company_id"] },
