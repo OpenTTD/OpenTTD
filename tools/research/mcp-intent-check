@@ -133,7 +133,10 @@ python3 -I - "$vocab" <<'PY' || fails=$((fails + 1))
 import json, sys
 d = json.loads(sys.argv[1] or "{}")
 src, size = str(d.get("vocabulary_from", "")), int(d.get("vocabulary_size") or 0)
-ok = "/src/lang" in src.replace("\\", "/") and size >= 100
+# >= 1000, not >= 100: the document claims "a vocabulary in the thousands" (6487 on this
+# stack), and a threshold of 100 would have passed a vocabulary cut to 150 while the
+# document still claimed thousands. The assertion now matches the claim.
+ok = "/src/lang" in src.replace("\\", "/") and size >= 1000
 print(f"{'ok  ' if ok else 'FAIL'} vocabulary derived: {size} words from {src or '(nothing)'}")
 sys.exit(0 if ok else 1)
 PY

@@ -817,12 +817,52 @@ the live value makes that assertion trivially true, so the gated-call assertion 
 gate in that case; and when the panel's full-auto approve switch is on, the gated-call assertion
 fails truthfully but the message has to name the switch, or an owner setting reads as a bridge fault.
 
-`mcp-intent-check` proves the four sentences themselves, driven through `POST /api/console` the
-way the owner types them: that each one is *answered in the console* and not merely over HTTP, that
+**Two approval layers, and which of them is a guarantee.** The game's own gate is not a policy that
+can be configured away. `src/prismatic_mcp/prismatic_mcp_server.cpp:700` sets
+`result["approval_required"] = true` with the comment "no mutation is ever auto-approved in this
+build", and the mutation tools are two-phase and digest-bound (`prismatic_mcp_server.cpp:473`: an
+already approved call needs a fresh approval, and the digest binds the approval to the arguments).
+So no sentence, script, Rhai program or agent can make the game execute a mutation that an operator
+did not approve. The panel's `auto_approve` is a different thing living outside the game: operator
+automation that answers the queue on the operator's behalf. It is set by `POST /api/auto-approve
+{on}` (`panel.rs` `h_auto`), by the panel's own toggle "Auto-approve (full auto)", by
+`--auto-approve` at startup, or from Rhai as `auto_approve(on)`.
+
+Two properties of that switch are easy to get wrong, and both were measured on 2026-11-17.
+**It is not "approve what comes next": `auto_loop` (`panel.rs:1043`) walks the entire pending queue
+once a second** and approves everything in it. A queue holding ten decisions from four different
+route proposals therefore applies all four, and the last write of `fr_from`/`fr_to` wins in whatever
+order the map iterates -- a line nobody chose. Before turning it on, clear the queue: `deny` enacts
+nothing, so denying the stale decisions and leaving only the ones belonging to the sentence you
+actually want is the way to make the switch do one predictable thing. **And it is the one control in
+this stack that the `~` console cannot reach**: `prismatic_mcp` offers
+`status|start|stop|endpoint|token|rotate|approvals|approve <id>|deny <id>|decisions`, and nothing for
+auto-approval. That asymmetry is deliberate rather than an oversight -- the console can approve a
+named decision, and only the operator's own panel can remove the operator from the loop.
+
+That reasoning also settles what the console verb for several decisions may and may not do. One
+operator line approving three NAMED ids -- `prismatic_mcp approve 1 2 3` -- is what the owner's
+request needs, and it keeps consent per decision: the ids typed are the decisions approved, and each
+one's tool and arguments are printed as it is approved, so the console log records what was consented
+to. An `approve all` was considered and dropped, because it is the hazard above with a shorter
+spelling: it walks the queue exactly as `auto_loop` does, and the queue is not guaranteed to hold
+only the decisions of the sentence you just typed. `deny all` is kept for the opposite reason -- a
+denial cannot execute anything, it only clears the queue, and a cleared queue is what makes the next
+named approval predictable. Approval is named; denial may be wholesale.
+
+`mcp-intent-check` proves the four sentences themselves, driven through `POST /api/console`
+against a **dedicated server** — the `_network_dedicated` branch of `ConPlan`, not the branch the
+owner's own windowed client takes, which is covered separately by `mcp-ask-check`: that each one
+is *answered in the console* and not merely over HTTP, that
 the reading names the action, the ordering and the subjects it resolved, and two things nothing
-else checks. First, a build's settings keys must **exist in PrismaticAI's `info.nut`** — a plan
-naming a setting the bot does not have reads perfectly and does nothing, and no other tool in
-`tools/research` reads that file. Second, `vocabulary_from` must point inside `src/lang` with a
+else checks. First, a build's settings keys must exist among the settings the
+**running bot declares** (`/api/bots` -> `running[].settings[].name`, i.e. `openttd.ai.list`),
+because a plan naming a setting the bot does not have reads perfectly and does nothing. With no
+bot running it falls back to the literal names in PrismaticAI's `info.nut`, and there an unknown
+key is a **warning, not a failure**: `info.nut` declares `fr2_*`..`fr16_*` in a loop, so no regex
+over it can see them, and failing on a setting the bot really has would be worse than missing a
+typo. The check's own comment has always said this; this document used to claim the stricter
+thing. Second, `vocabulary_from` must point inside `src/lang` with a
 vocabulary in the thousands (6487 on the 2026-11-16 stack), because "every noun is derived" is the
 requirement most easily broken in silence.
 
