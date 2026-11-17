@@ -3,8 +3,8 @@
 //!
 //! Derives the public API from the sources, never from a list: the `Commands` enum in
 //! src/command_type.h (every game-state change), the console commands registered in
-//! src/console_cmds.cpp, and the static functions of the Script API classes in
-//! src/script/api/script_*.hpp. Compares each with what a running panel exposes: MCP tools/list
+//! src/console_cmds.cpp, and the static functions of the Script API as the build publishes them
+//! to scripts (its generated AI and Game Script registrations). Compares each with what a running panel exposes: MCP tools/list
 //! (`openttd.cmd.<Name>` for a command, `<Name>` its Cmd* function without the prefix, mapped from
 //! the enum entry by the `DEF_CMD_TRAIT` declarations in src/*_cmd.h) and the panel's OpenAPI document (one route per tool, so
 //! Swagger shows it). Console commands count as exposed when the panel's Rhai derivation sees them
@@ -78,31 +78,50 @@ fn console_commands(repo: &Path) -> std::io::Result<BTreeSet<String>> {
         .collect())
 }
 
-fn script_api(repo: &Path) -> std::io::Result<BTreeSet<String>> {
-    let mut out = BTreeSet::new();
-    for entry in std::fs::read_dir(repo.join("src/script/api"))? {
-        let path: PathBuf = entry?.path();
-        let name = path.file_name().and_then(|n| n.to_str()).unwrap_or("");
-        if !(name.starts_with("script_") && name.ends_with(".hpp")) {
-            continue;
+/// Where the build put the Script API's registration: `$MCP_SCRIPT_API_GENERATED`, else the
+/// `generated/script/api` of the newest `build*` directory of the checkout.
+fn generated_api(repo: &Path) -> Option<PathBuf> {
+    if let Some(d) = std::env::var_os("MCP_SCRIPT_API_GENERATED").map(PathBuf::from) {
+        return Some(d);
+    }
+    let mut found: Vec<(std::time::SystemTime, PathBuf)> = std::fs::read_dir(repo).ok()?
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| p.file_name().and_then(|n| n.to_str()).is_some_and(|n| n.starts_with("build")))
+        .map(|p| p.join("generated/script/api"))
+        .filter(|g| g.join("game").is_dir())
+        .filter_map(|g| Some((std::fs::metadata(g.join("game")).ok()?.modified().ok()?, g)))
+        .collect();
+    found.sort();
+    found.pop().map(|(_, g)| g)
+}
+
+/// The `&Script<Class>::<Function>` of every static function a registration file registers.
+fn registered(text: &str) -> Vec<String> {
+    let mut out = Vec::new();
+    for marker in ["DefSQStaticMethod(engine, &", "DefSQAdvancedStaticMethod(engine, &"] {
+        for rest in text.split(marker).skip(1) {
+            let f: String = rest.chars().take_while(|c| c.is_ascii_alphanumeric() || *c == '_' || *c == ':').collect();
+            if f.starts_with("Script") && f.contains("::") { out.push(f); }
         }
-        let text = std::fs::read_to_string(&path).unwrap_or_default();
-        let mut class = String::new();
-        for line in text.lines() {
-            let t = line.trim();
-            if let Some(rest) = t.strip_prefix("class Script") {
-                class = format!("Script{}", rest.split([' ', ':', '{']).next().unwrap_or(""));
-            }
-            if let Some(rest) = t.strip_prefix("static ") {
-                if t.ends_with(';') && t.contains('(') && !t.contains('=') {
-                    let before = &rest[..rest.find('(').unwrap()];
-                    if let Some(f) = before.split_whitespace().last() {
-                        let f = f.trim_start_matches(['*', '&']);
-                        if !f.is_empty() && !class.is_empty() {
-                            out.insert(format!("{class}::{f}"));
-                        }
-                    }
-                }
+    }
+    out
+}
+
+/// The Script API's static functions as the build publishes them to scripts: every
+/// DefSQStaticMethod and DefSQAdvancedStaticMethod of the AI and Game Script registrations the
+/// build generated from src/script/api/script_*.hpp (generated/script/api/{ai,game}/*.sq.hpp), plus
+/// the controllers' hand-written src/script/api/{ai,game}/*_controller.sq.hpp. A function the
+/// export leaves out (protected, private, `@api -all`, internal helpers) is not published, so it is
+/// not counted; the build is the one source that knows.
+fn script_api(repo: &Path) -> std::io::Result<BTreeSet<String>> {
+    let generated = generated_api(repo).ok_or_else(|| std::io::Error::other(
+        "no generated Script API registration (build*/generated/script/api): build the game, or set MCP_SCRIPT_API_GENERATED"))?;
+    let mut out = BTreeSet::new();
+    for dir in [generated.join("ai"), generated.join("game"), repo.join("src/script/api/ai"), repo.join("src/script/api/game")] {
+        for entry in std::fs::read_dir(&dir)? {
+            let path = entry?.path();
+            if path.to_str().is_some_and(|p| p.ends_with(".sq.hpp")) {
+                out.extend(registered(&std::fs::read_to_string(&path).unwrap_or_default()));
             }
         }
     }
@@ -182,7 +201,7 @@ fn main() {
          cmds.iter().filter(|c| !cmd_exposed(c)).cloned().collect::<Vec<_>>()),
         ("console", "console commands (src/console_cmds.cpp)", cons.iter().filter(|c| live_console.contains(*c)).count(), cons.len(),
          cons.iter().filter(|c| !live_console.contains(*c)).cloned().collect()),
-        ("script_api", "Script API static functions (src/script/api/script_*.hpp)", api.iter().filter(|f| api_exposed(f)).count(), api.len(),
+        ("script_api", "Script API static functions the build publishes (generated/script/api/{ai,game}/*.sq.hpp)", api.iter().filter(|f| api_exposed(f)).count(), api.len(),
          api.iter().filter(|f| !api_exposed(f)).cloned().collect()),
     ];
     let full = dims.iter().all(|d| d.2 == d.3);
@@ -229,5 +248,13 @@ mod tests {
         let unmapped: Vec<_> = cmds.iter().filter(|c| !tools.contains_key(*c)).collect();
         assert!(unmapped.is_empty(), "no DEF_CMD_TRAIT for {unmapped:?}");
         assert_eq!(tools["BuildRail"], "openttd.cmd.BuildSingleRail");
+    }
+
+    #[test]
+    fn the_published_script_api_is_what_the_registration_registers() {
+        let text = "SQGSTown.DefSQStaticMethod(engine, &ScriptTown::GetPopulation, \"GetPopulation\", \".i\");\n\
+                    SQGSAdmin.DefSQAdvancedStaticMethod(engine, &ScriptAdmin::Send, \"Send\");\n\
+                    SQGSList.DefSQMethod(engine, &ScriptList::AddItem, \"AddItem\", \"xii\");";
+        assert_eq!(registered(text), vec!["ScriptTown::GetPopulation", "ScriptAdmin::Send"]);
     }
 }

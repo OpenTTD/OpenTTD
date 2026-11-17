@@ -753,8 +753,10 @@ kernel (I0041), for routes, profitability and expansion.
 `tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . [--panel URL] [--json] [--report]`
 derives OpenTTD's public API from the sources (the `Commands` enum, the registered console commands,
 the Script API static functions) and checks what the running game exposes through MCP and OpenAPI.
-Rule `project.public-api-is-exposed` requires 100% in every dimension. On 2026-11-15 it reported
-commands 0/146, console 83/86 and Script API 0/660: the rule is not met yet (issue I0036).
+Rule `project.public-api-is-exposed` requires 100% in every dimension. On 2026-11-17: commands
+146/146, Script API 630/630 (`openttd.api.Script<Class>.<Function>`, derived from the build's own
+registration), console 87/90. The surface, how the Script API is counted and the live run are in
+[`mcp-api.md`](mcp-api.md) (issue I0036).
 
 ## Limits
 

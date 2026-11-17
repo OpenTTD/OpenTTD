@@ -37,6 +37,7 @@
 #include "prismatic_mcp_world.h"
 #include "prismatic_mcp_commands.h"
 #include "prismatic_mcp_ai.h"
+#include "prismatic_mcp_api.h"
 
 #include "../3rdparty/nlohmann/json.hpp"
 #include "../core/random_func.hpp"
@@ -621,6 +622,14 @@ json ValidateAction(std::string_view type, const json &args, json &errors)
 {
 	json result;
 	bool valid = true;
+	if (type.starts_with("api.")) {
+		/* A Script API function (prismatic_mcp_api.cpp): valid when it exists and its estimate succeeds. */
+		result = Api::Validate(std::string{type}, args, errors);
+		result["valid"] = errors.empty();
+		result["errors"] = errors;
+		result["required_scope"] = "SCRIPT_API";
+		return result;
+	}
 	if (!IsKnownActionType(type)) { errors.push_back("unknown action type"); valid = false; }
 	if (type == "game.set_pause") {
 		if (!args.contains("pause") || !args["pause"].is_boolean()) {
@@ -763,6 +772,27 @@ bool ExecuteAction(std::string_view type, const json &args, ProvenanceRecord &pr
 				err = t.error.empty() ? "the command was refused before it was queued" : t.error;
 			}
 		}
+	} else if (type.starts_with("api.")) {
+		/* Posted in GSAsyncMode without a callback: the answer is the function's own (its result and
+		 * the script's last error), taken as the command result. */
+		pr.actor = "script_api";
+		json out = Api::Execute(std::string{type}, args);
+		ok = out.value("ok", false) && out["last_error"].is_null();
+		if (!ok) err = out.contains("error") ? out["error"].dump() : out["last_error"].dump();
+		if (ok) {
+			if (ProvenanceRecord *r = FindDecision(did)) {
+				if (_networking) {
+					/* Posted to the network queue without a callback: it runs on a later tick, so
+					 * nothing is verified here; read the effect back with the API's own getters. */
+					r->observed_tick = (uint64_t)TimerGameTick::counter;
+					r->command_result = "posted";
+					r->verification = "none";
+					r->verdict = "EXECUTED_UNVERIFIED";
+				} else {
+					Conclude(*r);
+				}
+			}
+		}
 	} else {
 		err = "unknown action type";
 	}
@@ -839,13 +869,23 @@ json HandleToolsCall(const json &id, const json &params)
 		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", d.dump()}}})}});
 	}
 
+	/* The Script API (prismatic_mcp_api.cpp): without execute a call runs in GSTestMode and changes
+	 * nothing, so it needs no approval; with execute it joins the gated tools below. */
+	if (name.starts_with("openttd.api.") && !Api::WantsExecution(name, args)) {
+		json out = Api::Call(name, args).value_or(json{{"ok", false}});
+		return RpcResult(id, json{{"content", json::array({{{"type", "text"}, {"text", out.dump()}}})}, {"isError", !out.value("ok", false)}});
+	}
+
 	/* The gated mutation tools. Two-phase: pending_approval -> (operator approves) -> executed. */
 	bool is_cmd_tool = name.starts_with("openttd.cmd.");
+	bool is_api_tool = Api::WantsExecution(name, args);
 	bool is_ai_tool = name.starts_with("openttd.ai.") && ai::IsAiAction(name.substr(8));
-	if (name == "openttd.game.set_pause" || name == "openttd.decision.submit" || is_cmd_tool || is_ai_tool) {
+	if (name == "openttd.game.set_pause" || name == "openttd.decision.submit" || is_cmd_tool || is_ai_tool || is_api_tool) {
 		std::string type = "game.set_pause";
 		json aargs = args;
-		if (is_ai_tool) {
+		if (is_api_tool) {
+			type = name.substr(8); // api.Script<Class>.<Function>
+		} else if (is_ai_tool) {
 			type = name.substr(8);
 		} else if (is_cmd_tool) {
 			type = "command." + name.substr(12);
@@ -952,6 +992,8 @@ json ToolsList()
 	arr.push_back({{"name", "openttd.decision.get"}, {"description", "Read one decision's provenance: command result and the verdict taken after the command ran"},
 		{"inputSchema", {{"type", "object"}, {"properties", {{"decision_id", {{"type", "integer"}, {"minimum", 1}}}}}, {"required", json::array({"decision_id"})}}}});
 	for (auto &t : ai::Tools()) arr.push_back(t);
+	/* Every static function of the Game Script API, derived from its registration (prismatic_mcp_api.cpp). */
+	for (auto &t : Api::Tools()) arr.push_back(t);
 	/* One tool per game command whose parameters convert from JSON, derived from the command table. */
 	for (size_t i = 0; i < cmds::Count(); i++) {
 		Commands c = static_cast<Commands>(i);
