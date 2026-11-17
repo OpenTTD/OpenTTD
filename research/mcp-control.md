@@ -839,6 +839,17 @@ through approval, and the running bot read 100 (was 50). The answer named the si
 contract as not read (`candidates`, `chosen_aggressiveness`, `company_input`, `engine`,
 `expected_value`, `iterations_per_candidate`).
 
+The shared dev database was then brought up to date, as the owner chose (AskUserQuestion, same
+session, 2026-11-17T19:54Z). Question: "Should I migrate the shared dev database prismatic_dev?"
+(it reported about 106 migrations missing against origin/main). Answer: **"Záloha, pak migrace
+(Recommended)"**, i.e. pg_dump of every dev database first, then `mix ecto.migrate` from a clean
+worktree of origin/main. Backup: `~/dev/backup/prismatic-dev-db-20261117T205517/` (`prismatic_dev`
+12 MB, 217 tables; `prismatic_ir_pvm_dev`). Migrated from b6df70205d: 6 migrations of
+`Prismatic.Repo` (20260223120000 to 20261021120000), `PrismaticIrPvm.Repo` already up; afterwards
+`mix ecto.migrations` lists 136 up and none down. The 106 counted from the file tree included
+directories no configured repo migrates (`ecto_repos` is `[Prismatic.Repo]` and the IR repo), so
+the real gap was those 6. `DISABLE_DEV_RELOADERS=1` is no longer needed for the decision.
+
 ## A cluster of instances: discovery and calls across it
 
 Every panel registers itself, and the GUI client it attaches, in a shared registry
