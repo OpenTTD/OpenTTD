@@ -246,6 +246,12 @@ if [[ "$TEST" == 1 ]]; then
     CHOSE_RAIL_ONLY=1
     echo "SKIP the road and bus checks: in this game the player chose rail and served no town pair by bus (not counted as passes)"
   fi
+  # --rounds 0 without --minutes plays no bus round at all (a rail or yard run): the road and bus
+  # checks did not run, which is neither a pass nor a failure.
+  if [[ "$ROUNDS" == 0 && "$MINUTES" == 0 && "$CHOSE_RAIL_ONLY" -eq 0 ]]; then
+    CHOSE_RAIL_ONLY=1
+    echo "NOT RUN the road and bus checks: --rounds 0 plays no bus round (not counted as passes)"
+  fi
   if [[ "$CHOSE_RAIL_ONLY" -eq 0 ]]; then
     [[ "$AFTER" -gt "$BEFORE" ]] && echo "PASS roads built through the interface appear on the server" || { echo "FAIL no new road tiles on the server"; fail=1; }
   fi
@@ -352,7 +358,9 @@ if [[ "$TEST" == 1 ]]; then
   OWN_BUSES="$(read_res "$SERVER_TOKEN" openttd://vehicles | jq -c --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c) | .id]')"
   jq -e --argjson own "$OWN_BUSES" '[.data.occupancy[].vehicles[]] as $on | ($own | length) > 0 and ([$own[] | IN($on[])] | any)' <<<"$WAYS" >/dev/null \
     && echo "PASS the occupancy layer places the company's buses on their tiles" || { echo "FAIL no bus of company $COMPANY in the occupancy layer"; fail=1; }
-  if "$COVERAGE" "$SERVER_TOKEN" "$CLIENT_TOKEN"; then
+  if [[ "$ROUNDS" == 0 && "$MINUTES" == 0 ]]; then
+    echo "NOT RUN coverage after the scenario: it needs the whole scenario, and --rounds 0 skips the bus play (not counted as a pass)"
+  elif "$COVERAGE" "$SERVER_TOKEN" "$CLIENT_TOKEN"; then
     echo "PASS every published tool and resource of the server and the client was exercised"
   else
     "$COVERAGE" --report "$SERVER_TOKEN" "$CLIENT_TOKEN" | grep UNCOVERED; echo "FAIL coverage after the scenario"; fail=1
@@ -371,12 +379,16 @@ if [[ "$TEST" == 1 ]]; then
     BOOKS="$(read_res "$SERVER_TOKEN" openttd://companies | jq -c --argjson c "$COMPANY" '[.data.companies[] | select(.id == $c)][0]')"
     STEP="$(jq .loan_step <<<"$BOOKS")"; L0="$(jq .loan <<<"$BOOKS")"; CASH="$(jq .money <<<"$BOOKS")"
     REPAY=$(( CASH / STEP * STEP )); (( REPAY > 20000 )) && REPAY=20000; (( REPAY > L0 )) && REPAY=$L0
+    if (( REPAY < STEP )); then
+      echo "NOT RUN the planned repay: cash $CASH or loan $L0 is below one step of $STEP, so there is nothing to repay (not counted as a pass)"
+    else
     echo "{\"actions\":[{\"id\":\"repay\",\"kind\":\"repay_loan\",\"amount\":$REPAY,\"label\":\"e2e repay\"},{\"id\":\"look\",\"kind\":\"watch\",\"params\":{\"seconds\":3},\"after\":[\"repay\"]}]}" > "$TMP/plan.json"
     if "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" execute "$TMP/plan.json" > "$TMP/plan.out" 2>>"$TMP/human.log"; then
       L1="$(company_loan)"
       [[ $(( L0 - L1 )) -eq $REPAY ]] && echo "PASS a planned repay of $REPAY ran as $(( REPAY / STEP )) press(es) ($L0 -> $L1), the plan printed with its graph" || { echo "FAIL the planned repay: $L0 -> $L1, wanted -$REPAY"; fail=1; }
     else
       echo "FAIL mcp-human execute: $(tail -2 "$TMP/human.log")"; fail=1
+    fi
     fi
   else
     echo "SKIP the action plan: MCP_ALGOGLYPH_DIR has no action-plan kernel (not counted as a pass)"
@@ -436,13 +448,29 @@ PY
   fi
   # Fleet care, on the server: the old bus is gone, its copy runs the same engine and orders; then
   # the copy is sold from its depot and the company's money rises by what it was worth.
-  # The yard, checked on the server: both "ok: yard line" lines printed and the company runs at
-  # least two trains. That the two platforms form one station is not checked here yet.
+  # The yard, checked on the server: both "ok: yard line" lines printed, the company runs at least
+  # two trains, and the two platforms at the shared end belong to one station.
   if [[ -n "$YARD" ]]; then
     if [[ "$(grep -c '^ok: yard line' "$TMP/human.log")" -eq 2 ]]; then
       read_res "$SERVER_TOKEN" openttd://vehicles | jq -e --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "train")] | length >= 2' >/dev/null \
         && echo "PASS the yard: lines A and B built, two trains of company $COMPANY run" \
         || { echo "FAIL the yard: fewer than two trains of company $COMPANY"; fail=1; }
+      # One station at the shared end: the two platforms side by side joined, not two stations.
+      read_res "$SERVER_TOKEN" openttd://stations > "$TMP/stations.json"
+      grep '^ok: yard line' "$TMP/human.log" > "$TMP/yard-lines.txt"
+      python3 -I - "$TMP/stations.json" "$COMPANY" "$TMP/yard-lines.txt" <<'PY' && echo "PASS the yard: both platforms at the shared end belong to one station" || { echo "FAIL the yard: the platforms at the shared end are separate stations"; fail=1; }
+import json, re, sys
+# The heredoc is this script's stdin, so the player's "ok: yard line" lines come in a file.
+ends = [tuple(map(int, m)) for line in open(sys.argv[3]) for m in re.findall(r"(\d+),(\d+)", line.split("stations at", 1)[1])]
+shared = next(((a, b) for i, a in enumerate(ends) for b in ends[i + 1:] if abs(a[0] - b[0]) + abs(a[1] - b[1]) <= 2), None)
+if shared is None: sys.exit("no two station ends of lines A and B lie side by side")
+st = json.load(open(sys.argv[1]))["data"]["stations"]
+company = int(sys.argv[2])
+near = [s for s in st if s.get("owner") == company and "train" in s.get("facilities", [])
+        and abs(s["x"] - shared[0][0]) + abs(s["y"] - shared[0][1]) <= 6]
+print(f"    train stations of company {company} by the shared end {shared}: {[s['name'] for s in near]}")
+sys.exit(0 if len(near) == 1 else 1)
+PY
     else
       echo "FAIL the yard: the player did not finish both lines; the player's last words:"; fail=1
       tail -n 12 "$TMP/human.log" | sed 's/^/    /'

@@ -233,10 +233,10 @@ service with its shared end on the yard platform. B's track is planned again at 
 map as it is with A built, so the route B takes is checked against the tiles A really took rather
 than replayed from the proof. A platform built right beside one of the company's stations joins it,
 as a player's would. `mcp-human-e2e --yard` runs it and checks on the server that both lines were
-finished and the company runs at least two trains; that the two platforms form one station is not
-checked yet.
+finished, the company runs at least two trains, and the two platforms at the shared end belong to
+one station (one train station of the company there, not two).
 
-Verified 2026-11-17 on seed 4242 (`mcp-human-e2e --test --rounds 0 --yard`): the planner proved four
+Verified 2026-11-17 on seed 4242 (`mcp-human-e2e --test --rounds 0 --yard`, exit 0: 34 PASS, road/bus and coverage NOT RUN, both platforms in one station, Drundstone): the planner proved four
 yards; the player built Wranville → Drundstone (train 5) and then Prahattan Springs → Drundstone from
 the platform beside it at 73,217 (train 19); `PASS the yard`. Three runs before that taught the
 player three things, each now in `rail.rs`:
@@ -251,7 +251,9 @@ player three things, each now in `rail.rs`:
   the sign of A's station lies over that tile. On a third try the player hides station names, sets
   the picker again, clicks, and shows the names again, as it already did for depots.
 
-(The bus, road and coverage checks of that run fail because `--rounds 0` plays no bus round.)
+`--rounds 0` plays no bus round, so the e2e reports the road and bus checks and the coverage gate
+as NOT RUN (they failed in those runs before), and a planned repay with less than one loan step of
+cash as NOT RUN too, instead of handing the planner a repay of 0.
 
 The yards PrismaticAI tried were reverted twice (knowledge
 `the-bots-rail-pathfinder-lays-plain-track-only`): this executor lays exactly the planned track, so the
