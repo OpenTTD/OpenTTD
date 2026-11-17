@@ -20,6 +20,8 @@ provenance:
     - file:research/calibration.json
     - file:research/results/duel-20261117T183356-seed31337.md
     - file:research/results/duel-20261117T183400-seed31337.md
+    - file:research/results/duel-20261117T231417-seed20208.md
+    - file:research/results/duel-20261117T231419-seed20208.md
 relations:
   - type: relates_to
     target: file:.ai/repo/knowledge/curated/cargo-payment-and-vehicle-speed.md
@@ -58,5 +60,10 @@ is for its own fleet size, divided per vehicle.
   950946 (−16.4%), seed 20208 796631 vs 555180 (+43.5%). The same rival differed by 52% between the
   arms of one seed, so this is noise-bound (knowledge `duels-run-side-by-side-are-noisy`); calibration
   stays off by default.
+- Again with the held start (`PRISMATIC_START_PAUSED=2`), a pair at a time, 2026-11-17: seed 4242
+  554434 vs 569771 (−2.7%, rival 1.2% apart), seed 31337 905692 vs 941478 (−3.8%, rival 17% apart),
+  seed 20208 654630 vs 612900 (+6.8%, rival bankrupt in both arms). Averaging about zero over three
+  seeds: no case for calibration by default. The next step is more readings (games with several
+  vehicles per line), not another A/B on one reading.
 - Re-measure after a change to the payment or load model, and with more vehicles per line; record
   the new reading here rather than a second record.
