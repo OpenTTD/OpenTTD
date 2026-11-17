@@ -1,0 +1,90 @@
+{
+  "modes": {
+    "bus": {
+      "factor": 0.16,
+      "lines": 2
+    },
+    "freight_rail": {
+      "factor": 0.59,
+      "lines": 3
+    },
+    "rail": {
+      "factor": 0.15,
+      "lines": 1
+    }
+  },
+  "params": {
+    "calibration": {
+      "bus": 0.16,
+      "default": 0.37,
+      "freight_rail": 0.59,
+      "rail": 0.15
+    }
+  },
+  "readings": [
+    {
+      "at": "2026-11-17T16:55Z",
+      "lines": [
+        {
+          "candidate": "Coal Mine - Power Station",
+          "mode": "freight_rail",
+          "predicted_per_vehicle_month": 5161.0,
+          "ratio": 0.59,
+          "real_per_vehicle_month": 3037.0
+        },
+        {
+          "candidate": "Farningbury - Nedingworth",
+          "mode": "bus",
+          "predicted_per_vehicle_month": 643.0,
+          "ratio": 0.24,
+          "real_per_vehicle_month": 153.0
+        },
+        {
+          "candidate": "Coal Mine - Power Station",
+          "mode": "freight_rail",
+          "predicted_per_vehicle_month": 4556.0,
+          "ratio": 0.78,
+          "real_per_vehicle_month": 3532.0
+        },
+        {
+          "candidate": "Parninghead Cross - Sunfingley Market",
+          "mode": "bus",
+          "predicted_per_vehicle_month": 631.0,
+          "ratio": 0.08,
+          "real_per_vehicle_month": 53.0
+        },
+        {
+          "candidate": "Iron Ore Mine - Steel Mill",
+          "mode": "freight_rail",
+          "predicted_per_vehicle_month": 4408.0,
+          "ratio": 0.49,
+          "real_per_vehicle_month": 2144.0
+        },
+        {
+          "candidate": "Parninghead Cross - Nedingworth",
+          "mode": "rail",
+          "predicted_per_vehicle_month": 9085.0,
+          "ratio": 0.15,
+          "real_per_vehicle_month": 1384.0
+        }
+      ],
+      "modes": {
+        "bus": {
+          "factor": 0.16,
+          "lines": 2
+        },
+        "freight_rail": {
+          "factor": 0.59,
+          "lines": 3
+        },
+        "rail": {
+          "factor": 0.15,
+          "lines": 1
+        }
+      },
+      "source": "http://127.0.0.1:8800, 1 companies, fleet 107"
+    }
+  ],
+  "rule": "per mode, the median of real / predicted profit per vehicle per month over every recorded line (tools/research/mcp-rhai src/calibrate.rs); written by mcp-plan --calibrate --record, never by hand",
+  "schema": "openttd-research/calibration/v1"
+}

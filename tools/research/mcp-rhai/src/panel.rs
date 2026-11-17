@@ -1724,6 +1724,37 @@ fn h_intent(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     ok(out)
 }
 
+/// The calibration store, research/calibration.json (src/calibrate.rs `record`).
+fn calibration_file() -> std::path::PathBuf {
+    crate::panel_results::repo().join("research/calibration.json")
+}
+
+fn h_calibration(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
+    Ok(match std::fs::read_to_string(calibration_file()) {
+        Ok(t) => (200, serde_json::from_str(&t).map_err(|e| e.to_string())?),
+        Err(_) => (200, json!({"readings": [], "params": {"calibration": {}}, "note": "no reading recorded yet: POST /api/calibration"})),
+    })
+}
+
+/// Measure the running game's lines against the plan and add the reading to the store.
+fn h_calibration_record(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
+    let exe = sibling("mcp-plan");
+    if !exe.exists() {
+        return Ok((503, json!({"error": BUILD_IT})));
+    }
+    let file = calibration_file();
+    let mut cmd = Command::new(&exe);
+    cmd.arg("--panel").arg(g.panel_url()).arg("--limit").arg("500").arg("--calibrate").arg("--record").arg(&file);
+    let r = run(&mut cmd, None, Duration::from_secs(180), None)?;
+    if r.code != 0 {
+        return Ok((502, json!({"error": r.stderr.trim()})));
+    }
+    let out: Value = serde_json::from_str(&r.stdout).map_err(|e| e.to_string())?;
+    let rec = out.pointer("/calibration/recorded").cloned().unwrap_or(Value::Null);
+    g.event("ai", &format!("calibration recorded in research/calibration.json: {} reading(s), {}", rec["readings"], rec["params"]));
+    Ok((200, json!({"reading": out["calibration"], "recorded": rec})))
+}
+
 fn h_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let exe = sibling("mcp-plan");
     if !exe.exists() {
@@ -1929,7 +1960,10 @@ pub fn routes() -> Vec<Route> {
         r("GET", "/api/results", "results", "Every duel result (research/results, written by mcp-duel), newest first: seed, months, label, opponent, winner and both companies' final value", false, None, panel_results::h_results),
         r("GET", "/api/result", "result", "One duel result by name (?name=duel-...): summary, month-by-month series, the plan, both bots' logs and the written reading", false, None, panel_results::h_result),
         r("POST", "/api/duel", "duelStart", "Start a duel in the background (tools/research/mcp-duel): the planned bot against an unplanned one or an opponent AI, on its own ports; one at a time", false,
-          s(json!({"months": {"type": "integer", "minimum": 1, "maximum": 240}, "seed": {"type": "integer"}, "label": {"type": "string"}, "opponent": {"type": "string"}, "bot_settings": {"type": "string", "description": "extra settings for the planned bot, e.g. own_lines=8"}}), &[]), panel_results::h_duel_start),
+          s(json!({"months": {"type": "integer", "minimum": 1, "maximum": 240}, "seed": {"type": "integer"}, "label": {"type": "string"}, "opponent": {"type": "string"}, "bot_settings": {"type": "string", "description": "extra settings for the planned bot, e.g. own_lines=8"}, "calibrated": {"type": "boolean", "description": "start the planned bot's plan from research/calibration.json (GET /api/calibration)"}}), &[]), panel_results::h_duel_start),
+        r("GET", "/api/calibration", "calibration", "The calibration store (research/calibration.json): every recorded reading of real against predicted profit per vehicle, and params.calibration derived from all of them (per mode, the median over every line)", false, None, h_calibration),
+        r("POST", "/api/calibration", "calibrationRecord", "Measure this game's running lines against the plan (mcp-plan --calibrate) and add the reading to research/calibration.json; the bot start uses the store when PRISMATIC_PLAN_CALIBRATION names it (a duel with calibrated: true). Commit stays the owner's", true,
+          s(json!({}), &[]), h_calibration_record),
         r("GET", "/api/scoreboard", "scoreboard", "The README duel scoreboard as tools/research/readme-scoreboard derives it from research/results: best run, wins of all duels, the seed-31337 series, and whether README.md is current or stale", false, None, panel_results::h_scoreboard),
         r("POST", "/api/scoreboard", "scoreboardWrite", "Regenerate the scoreboard region of README.md from research/results (tools/research/readme-scoreboard); answers the new scoreboard. Commit and push stay the owner's", false,
           s(json!({}), &[]), panel_results::h_scoreboard_write),
@@ -2612,8 +2646,8 @@ mod tests {
         // retired: GET /api/content, POST /api/content/download, GET /api/overview/history, and the
         // decision contract's GET /api/bridge/companies and POST /api/decision/pull, and the duels
         // (GET /api/results, GET /api/result, POST and GET /api/duel), and the README scoreboard
-        // (GET and POST /api/scoreboard).
-        assert_eq!(rs.len(), 43);
+        // (GET and POST /api/scoreboard), and the calibration store (GET and POST /api/calibration).
+        assert_eq!(rs.len(), 45);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -2623,7 +2657,7 @@ mod tests {
         }
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",
             "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai",
-            "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard"].contains(&r.path)));
+            "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration"].contains(&r.path)));
     }
 
     #[test]

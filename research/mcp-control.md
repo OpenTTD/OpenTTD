@@ -644,6 +644,17 @@ back as `params` and the next plan multiplies each mode's predicted income by it
 `cargo.rs`: `calibration.<mode>`, 1 when unmeasured). A line nothing explains is listed with the
 reason. The World page's **Calibrate** shows it, and a row moves the owner's camera to the line.
 
+**A measurement outlives its game.** `mcp-plan --calibrate --record research/calibration.json`, or
+`POST /api/calibration`, adds the reading (when, from where, every measured line) to the tracked store;
+`GET /api/calibration` reads it. Its `params.calibration` is derived from every reading, never typed:
+per mode the median over all recorded lines, plus `default`, the median over every line, for a mode
+nobody measured. Without `default` an unmeasured mode kept factor 1 and won every comparison: on the
+:8800 map the calibrated portfolio swapped two freight lines for three air routes. The bot start
+reads the store when `PRISMATIC_PLAN_CALIBRATION` names it (`research/calibration.json`; `off` or unset:
+the model alone) and says so in the plan's log, so a duel result records which calibration it ran
+with. The duel form's **Calibrated plan** sets it for that duel only (`POST /api/duel` `calibrated`),
+and *Run this again* keeps it. It stays off by default until a duel shows it pays.
+
 First reading, 2026-11-17, the :8800 game (one AI company, 17 years): freight rail 0.5 (three lines:
 0.97, 0.5, 0.2), passenger rail 0.2 (one line), bus 0.11 (two lines); four train lines matched no
 candidate. One vehicle per line, so a small sample; knowledge

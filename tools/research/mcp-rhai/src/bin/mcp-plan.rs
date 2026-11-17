@@ -83,6 +83,7 @@ fn main() {
     let mut track = 0usize;
     let mut yards_n = 0usize;
     let mut calibrate_too = false;
+    let mut record_to: Option<String> = None;
     while let Some(a) = args.next() {
         match a.as_str() {
             "--panel" => panel = args.next().unwrap_or_default(),
@@ -92,6 +93,7 @@ fn main() {
             "--track" => track = args.next().and_then(|v| v.parse().ok()).unwrap_or(3),
             "--yards" => yards_n = args.next().and_then(|v| v.parse().ok()).unwrap_or(2),
             "--calibrate" => calibrate_too = true,
+            "--record" => record_to = args.next(),
             "--limit" => limit = args.next().and_then(|v| v.parse().ok()).unwrap_or(20),
             "--defaults" => {
                 println!("{}", plan::defaults());
@@ -105,7 +107,7 @@ fn main() {
                 }
             },
             _ => {
-                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--track N [--yards N]] [--calibrate] [--defaults]");
+                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--track N [--yards N]] [--calibrate [--record FILE]] [--defaults]");
                 std::process::exit(2);
             }
         }
@@ -147,6 +149,19 @@ fn main() {
             let mut cands: Vec<serde_json::Value> = out["pairs"].as_array().cloned().unwrap_or_default();
             cands.extend(out["freight"].as_array().cloned().unwrap_or_default());
             out["calibration"] = calibrate::calibrate(&src.resource("vehicles")?, &src.resource("stations")?, &cands, 12.0);
+            // --record FILE: the reading joins the store (research/calibration.json), which the bot
+            // start reads back (PRISMATIC_PLAN_CALIBRATION), so a measurement outlives its game.
+            if let Some(path) = &record_to {
+                let store = std::fs::read_to_string(path).ok().and_then(|t| serde_json::from_str(&t).ok()).unwrap_or(serde_json::Value::Null);
+                let state = src.resource("game/state").unwrap_or(serde_json::Value::Null);
+                let at = std::process::Command::new("date").args(["-u", "+%Y-%m-%dT%H:%MZ"]).output().ok()
+                    .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_string()).unwrap_or_default();
+                let source = format!("{}, {} companies, fleet {}", if token.is_some() { "an MCP server (token file)".to_string() } else { panel.clone() },
+                                     state["num_companies"], state.pointer("/fleet/total").cloned().unwrap_or(state["num_vehicles"].clone()));
+                let next = calibrate::record(&store, &out["calibration"], &at, &source);
+                std::fs::write(path, serde_json::to_string_pretty(&next).map_err(|e| e.to_string())? + "\n").map_err(|e| format!("{path}: {e}"))?;
+                out["calibration"]["recorded"] = serde_json::json!({"file": path, "readings": next["readings"].as_array().map_or(0, Vec::len), "params": next["params"]});
+            }
         }
         // --track N: the N best rail lines of each list priced on the real map by AlgoGlyph's
         // track-planning (src/linecost.rs) instead of distance x tile cost, before the portfolio.

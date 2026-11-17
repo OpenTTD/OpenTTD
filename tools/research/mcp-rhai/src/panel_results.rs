@@ -126,10 +126,14 @@ pub fn h_duel_start(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let log = std::env::temp_dir().join(format!("mcp-duel-panel-{}.log", std::process::id()));
     let out = std::fs::File::create(&log).map_err(|e| format!("{}: {e}", log.display()))?;
     let err = out.try_clone().map_err(|e| e.to_string())?;
+    // calibrated: true starts the planned bot from the calibration store (PRISMATIC_PLAN_CALIBRATION,
+    // read by panel_bot planned_air); the plan's log, and with it the result, says so.
+    let calibrated = i.body.get("calibrated").and_then(Value::as_bool).unwrap_or(false);
     let child = Command::new("bash").arg(repo().join("tools/research/mcp-duel")).args(&args).current_dir(repo())
+        .env("PRISMATIC_PLAN_CALIBRATION", if calibrated { "research/calibration.json" } else { "off" })
         .stdin(Stdio::null()).stdout(out).stderr(err).spawn().map_err(|e| format!("mcp-duel: {e}"))?;
     let pid = child.id();
-    g.event("duel", &format!("duel started from the panel: mcp-duel {}", args.join(" ")));
+    g.event("duel", &format!("duel started from the panel: mcp-duel {}{}", args.join(" "), if calibrated { " (calibrated plan)" } else { "" }));
     *slot = Some(Running { child, log: log.clone(), args: args.clone(), started: Instant::now() });
     Ok((202, json!({"status": "started", "pid": pid, "args": args, "log": log})))
 }

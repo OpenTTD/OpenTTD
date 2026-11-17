@@ -120,9 +120,43 @@ pub fn calibrate(vehicles: &Value, stations: &Value, candidates: &[Value], reach
     let factors: serde_json::Map<String, Value> = ratios.into_iter()
         .filter_map(|(m, v)| median(v.clone()).map(|r| (m, json!({"factor": (r * 100.0).round() / 100.0, "lines": v.len()}))))
         .collect();
-    let params: serde_json::Map<String, Value> = factors.iter().map(|(m, f)| (m.clone(), f["factor"].clone())).collect();
+    let mut params: serde_json::Map<String, Value> = factors.iter().map(|(m, f)| (m.clone(), f["factor"].clone())).collect();
+    let all: Vec<f64> = out.iter().filter_map(|l| l["ratio"].as_f64()).collect();
+    if let Some(d) = median(all) { params.insert("default".into(), json!((d * 100.0).round() / 100.0)); }
     json!({"lines": out, "modes": factors, "params": {"calibration": params},
            "rule": "median of real / predicted profit per vehicle per month, over lines whose vehicles have a whole last year (age >= 730 days); apply with params"})
+}
+
+/// The calibration store (research/calibration.json) with one more reading: the reading's modes and
+/// lines, when and from where it was taken. `params.calibration` is derived again from every reading:
+/// per mode, the median over all readings' line ratios, so a reading of one line counts as one line.
+pub fn record(store: &Value, reading: &Value, at: &str, source: &str) -> Value {
+    let mut readings: Vec<Value> = store["readings"].as_array().cloned().unwrap_or_default();
+    let lines: Vec<Value> = reading["lines"].as_array().into_iter().flatten()
+        .filter(|l| l["ratio"].is_number())
+        .map(|l| json!({"mode": l["mode"], "candidate": l["candidate"], "ratio": l["ratio"],
+                        "real_per_vehicle_month": l["real_per_vehicle_month"], "predicted_per_vehicle_month": l["predicted_per_vehicle_month"]}))
+        .collect();
+    readings.push(json!({"at": at, "source": source, "modes": reading["modes"], "lines": lines}));
+    let mut by_mode: std::collections::BTreeMap<String, Vec<f64>> = Default::default();
+    for r in &readings {
+        for l in r["lines"].as_array().into_iter().flatten() {
+            if let (Some(m), Some(x)) = (l["mode"].as_str(), l["ratio"].as_f64()) { by_mode.entry(m.to_string()).or_default().push(x); }
+        }
+    }
+    let modes: serde_json::Map<String, Value> = by_mode.into_iter()
+        .filter_map(|(m, v)| median(v.clone()).map(|r| (m, json!({"factor": (r * 100.0).round() / 100.0, "lines": v.len()}))))
+        .collect();
+    let mut params: serde_json::Map<String, Value> = modes.iter().map(|(m, f)| (m.clone(), f["factor"].clone())).collect();
+    // A mode nobody measured is not trusted more than the measured ones: it gets the median over every
+    // line (`default`). Without it, an unmeasured mode kept factor 1 and won every comparison: on the
+    // :8800 map the calibrated portfolio swapped two freight lines for three air routes (2026-11-17).
+    let all: Vec<f64> = readings.iter().flat_map(|r| r["lines"].as_array().cloned().unwrap_or_default())
+        .filter_map(|l| l["ratio"].as_f64()).collect();
+    if let Some(d) = median(all) { params.insert("default".into(), json!((d * 100.0).round() / 100.0)); }
+    json!({"schema": "openttd-research/calibration/v1",
+           "rule": "per mode, the median of real / predicted profit per vehicle per month over every recorded line (tools/research/mcp-rhai src/calibrate.rs); written by mcp-plan --calibrate --record, never by hand",
+           "modes": modes, "params": {"calibration": params}, "readings": readings})
 }
 
 #[cfg(test)]
@@ -159,6 +193,20 @@ mod tests {
         assert_eq!(l[0]["ratio"], json!(2.0), "2000 a month against 1000 predicted");
         assert!(l[1]["why"].as_str().unwrap().contains("no planner candidate"));
         assert_eq!(c["params"]["calibration"]["freight_rail"], json!(2.0));
+        assert_eq!(c["params"]["calibration"]["default"], json!(2.0));
+    }
+
+    #[test]
+    fn readings_accumulate_and_the_factor_is_the_median_over_every_line() {
+        let r1 = json!({"modes": {}, "lines": [{"mode": "bus", "ratio": 0.1}, {"mode": "bus", "ratio": 0.3}, {"mode": "rail", "why": "x"}]});
+        let s1 = record(&json!({}), &r1, "2026-11-17T16:00Z", "panel :8800");
+        assert_eq!(s1["params"]["calibration"]["bus"], json!(0.2));
+        assert_eq!(s1["readings"][0]["lines"].as_array().unwrap().len(), 2, "unmeasured lines are not kept");
+        let r2 = json!({"modes": {}, "lines": [{"mode": "bus", "ratio": 0.9}]});
+        let s2 = record(&s1, &r2, "2026-11-18T10:00Z", "panel :8801");
+        assert_eq!(s2["readings"].as_array().unwrap().len(), 2);
+        assert_eq!(s2["modes"]["bus"], json!({"factor": 0.3, "lines": 3}), "median of 0.1, 0.3, 0.9");
+        assert_eq!(s2["params"]["calibration"]["default"], json!(0.3), "an unmeasured mode gets the median over every line");
     }
 
     #[test]

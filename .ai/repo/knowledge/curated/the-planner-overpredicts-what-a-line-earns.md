@@ -37,5 +37,8 @@ is for its own fleet size, divided per vehicle.
   `calibration.params` back as `params` before comparing modes or handing a plan to a bot.
 - Treat bus and passenger-rail scores as optimistic until a calibration says otherwise; freight rail
   was the closest.
+- Never calibrate only the measured modes: an unmeasured mode keeps factor 1 and wins every
+  comparison (the :8800 portfolio turned into three air routes). The store's `default` (median over
+  every line) covers them (`research/calibration.json`, written by `mcp-plan --calibrate --record`).
 - Re-measure after a change to the payment or load model, and with more vehicles per line; record
   the new reading here rather than a second record.

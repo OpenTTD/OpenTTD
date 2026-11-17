@@ -131,6 +131,7 @@ async function listPage() {
         <div><label for="d-opponent" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Opponent AI</label><input id="d-opponent" placeholder="PrismaticAI unplanned" class="${input}"></div>
         <div class="lg:col-span-2"><label for="d-label" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Label</label><input id="d-label" placeholder="what this run tests" class="${input}"></div>
         <div class="sm:col-span-2 lg:col-span-5"><label for="d-bot" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Bot settings for the planned bot</label><input id="d-bot" placeholder="e.g. own_lines=8 (name=value, comma separated; empty: what the plan gives)" class="${input}"></div>
+        <div class="sm:col-span-2 lg:col-span-5 flex items-center gap-2"><input id="d-cal" type="checkbox" class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm dark:bg-gray-700 dark:border-gray-600"><label for="d-cal" class="text-sm font-medium text-gray-900 dark:text-white">Calibrated plan: start the planned bot from what earlier games earned per mode (<a class="text-primary-600 hover:underline dark:text-primary-500" href="/api/calibration">research/calibration.json</a>)</label></div>
         <div class="sm:col-span-2 lg:col-span-5 flex flex-wrap items-center gap-3">
           <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700">Start the duel</button>
           <span id="duel-msg" class="text-sm text-gray-500 dark:text-gray-400"></span>
@@ -219,7 +220,7 @@ async function listPage() {
   };
   $('duel-form').onsubmit = async (ev) => {
     ev.preventDefault();
-    const body = { months: Number($('d-months').value) || 36, label: $('d-label').value, opponent: $('d-opponent').value, bot_settings: $('d-bot').value };
+    const body = { months: Number($('d-months').value) || 36, label: $('d-label').value, opponent: $('d-opponent').value, bot_settings: $('d-bot').value, calibrated: $('d-cal').checked };
     if ($('d-seed').value !== '') body.seed = Number($('d-seed').value);
     const r = await fetch('/api/duel', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     const d = await r.json();
@@ -315,6 +316,8 @@ async function resultPage(name) {
     const body = { months: Number(s.months) || 36, seed: Number(s.seed), label: `again: ${s.label || name}`.slice(0, 200) };
     if (s.opponent && s.opponent !== 'PrismaticAI') body.opponent = s.opponent;
     if (s.bot_settings) body.bot_settings = s.bot_settings;
+    // A calibrated run is run again calibrated: its plan's log names the calibration it started from.
+    if ((d.plan || []).some((l) => /planner: calibration from/.test(l))) body.calibrated = true;
     const r2 = await fetch('/api/duel', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     const d2 = await r2.json();
     $('again-msg').innerHTML = r2.ok ? `started; <a class="underline" href="/results?compare=${encodeURIComponent(name)}">follow it on the duels page</a>` : esc(d2.error || `HTTP ${r2.status}`);

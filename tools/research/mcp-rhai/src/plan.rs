@@ -235,7 +235,7 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value, engin
                 // `calibration.<mode>`: what this mode really earned against what the model said, read
                 // back from the running game (src/calibrate.rs); 1 when nothing was measured.
                 let per_passenger = d * time_factor(periods) * payment / 2097152.0
-                    * p.pointer(&format!("/calibration/{name}")).and_then(Value::as_f64).unwrap_or(1.0);
+                    * p.pointer(&format!("/calibration/{name}")).or_else(|| p.pointer("/calibration/default")).and_then(Value::as_f64).unwrap_or(1.0);
                 let demand = supply * supply_factor;
                 let build = match name.as_str() {
                     "bus" => if connected { 0.0 } else { d * road_tile },

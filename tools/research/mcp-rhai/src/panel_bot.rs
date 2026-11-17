@@ -420,7 +420,22 @@ pub fn planned_air(g: &Arc<Game>) -> Settings {
     if !g.args.plan_bot || !exe.exists() {
         return Settings::default();
     }
-    let params = match g.max_loan().filter(|b| *b != 0) { Some(b) => json!({"budget": b}), None => json!({}) };
+    let mut params = match g.max_loan().filter(|b| *b != 0) { Some(b) => json!({"budget": b}), None => json!({}) };
+    // Back-propagation: with PRISMATIC_PLAN_CALIBRATION naming a calibration store (research/
+    // calibration.json, relative to the repository), the plan starts from what earlier games earned
+    // per mode instead of the model alone (src/calibrate.rs). Off unless a run asks for it: a duel's
+    // calibrated: true, so its A/B decides whether it pays.
+    if let Some(name) = std::env::var("PRISMATIC_PLAN_CALIBRATION").ok().filter(|v| !v.is_empty() && v != "off") {
+        let path = crate::panel_results::repo().join(&name);
+        match std::fs::read_to_string(&path).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok()) {
+            Some(store) if store.pointer("/params/calibration").is_some_and(|c| c.as_object().is_some_and(|m| !m.is_empty())) => {
+                let cal = store["params"]["calibration"].clone();
+                g.event("ai", &format!("planner: calibration from {name} ({} reading(s)): {cal}", store["readings"].as_array().map_or(0, Vec::len)));
+                params["calibration"] = cal;
+            }
+            _ => g.event("ai", &format!("planner: calibration {name} asked for, but it holds no factor; the plan runs uncalibrated")),
+        }
+    }
     let mut cmd = Command::new(&exe);
     // Forty candidates, so up to sixteen freight lines with distinct producers can be found (ten gave
     // three on seed 20208, thirty six on seed 31337).
