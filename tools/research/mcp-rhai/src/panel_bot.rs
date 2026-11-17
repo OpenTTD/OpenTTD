@@ -287,6 +287,9 @@ fn get_or<'a>(v: &'a Value, k: &str, default: &'a Value) -> &'a Value {
     v.get(k).unwrap_or(default)
 }
 
+/// Freight lines handed to the bot at most (fr_*, fr2_* .. fr16_*); bridge 2026-11-17 declares as many.
+pub const MAX_FREIGHT_LINES: usize = 16;
+
 /// The bot's routes from the planner's portfolio within the budget, chosen from mcp-plan's answer:
 /// up to eight freight rail lines (fr_*, fr2_* .. fr8_*), one passenger rail pair (rail_a, rail_b)
 /// and one air pair (air_a, air_b, air_planes), with the events that explain each choice.
@@ -349,11 +352,13 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
             continue;
         }
         let freight = c["kind"] == json!("freight");
-        if freight && mode == "freight_rail" && freight_lines < 8 {
-            // Up to eight freight lines in the planner's order, one per producer (a producer's cargo is
-            // counted once): fr_* is built at once, fr2_* to fr8_* when money allows (bridge 4cf4a62;
-            // after four lines a 21-year duel left the bot's money idle). The game ignores a setting
-            // the AI does not declare (ScriptConfig::SetSetting), so an older bot uses the first ones.
+        if freight && mode == "freight_rail" && freight_lines < MAX_FREIGHT_LINES {
+            // Up to MAX_FREIGHT_LINES freight lines, one per producer (a producer's cargo is counted
+            // once): fr_* is built at once, the rest when money allows. After eight lines the best run
+            // on seed 31337 held 308074 idle at month 36 with its loan repaid (research/results
+            // duel-20261117T041705), so a longer list is handed over and built as money comes in. The
+            // game ignores a setting the AI does not declare (ScriptConfig::SetSetting), so an older bot
+            // uses the first ones.
             let (Some(producer), Some(acceptor), Ok(cargo)) = (num(&c["producer"]["id"]), num(&c["acceptor"]["id"]), py_int(&c["cargo_id"])) else { continue };
             if !producers.insert(producer) {
                 continue;
@@ -407,16 +412,16 @@ pub fn planned_air(g: &Arc<Game>) -> Settings {
     }
     let params = match g.max_loan().filter(|b| *b != 0) { Some(b) => json!({"budget": b}), None => json!({}) };
     let mut cmd = Command::new(&exe);
-    // Thirty candidates, so up to eight freight lines with distinct producers can be found (ten gave
-    // three on seed 20208).
-    cmd.arg("--panel").arg(g.panel_url()).arg("--limit").arg("30").arg("--params").arg(py_json(&params));
+    // Forty candidates, so up to sixteen freight lines with distinct producers can be found (ten gave
+    // three on seed 20208, thirty six on seed 31337).
+    cmd.arg("--panel").arg(g.panel_url()).arg("--limit").arg("40").arg("--params").arg(py_json(&params));
     // With AlgoGlyph present the best rail lines are priced on the real map (track-planning) before
-    // the portfolio is chosen, so the bot builds what pays on this terrain; eight lines of each list
-    // (at most two per producer, linecost.rs), as many as the bot's freight lines.
+    // the portfolio is chosen, so the bot builds what pays on this terrain; as many lines of each list
+    // as the bot takes freight lines (at most two per producer, linecost.rs).
     if std::env::var("MCP_ALGOGLYPH_DIR").map_or(false, |d| !d.is_empty()) {
-        cmd.arg("--track").arg("8");
+        cmd.arg("--track").arg(MAX_FREIGHT_LINES.to_string());
     }
-    let out = match run(&mut cmd, None, Duration::from_secs(300), None) {
+    let out = match run(&mut cmd, None, Duration::from_secs(600), None) {
         Ok(r) if r.code == 0 => match serde_json::from_str::<Value>(&r.stdout) {
             Ok(v) => v,
             Err(e) => { g.event("ai", &format!("planner not reachable for the bot: {e}")); return Settings::default(); }
