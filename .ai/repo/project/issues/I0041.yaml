@@ -25,6 +25,18 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-17T01:23:36Z
+updated_at: 2026-11-17T02:27:12Z
 started_at: 2026-11-17T01:23:36Z
 started_event: sha256:8b6271e361c30c23503300380138d3228177d87271a78cfa7b455d605e4b05b0
+verified_at: 2026-11-17T02:27:09Z
+verified_event: sha256:7a353de50e6532f2b923f004396fd80c1b1674f58dd6a1513ff55525e41ff5d7
+completed_at: 2026-11-17T02:27:12Z
+completed_event: sha256:b20135c80e388eb0243a9922e37141442236310abfe7ac31606f5ff9594a7c95
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-panel-check; tools/research/mcp-decision-check; tools/research/mcp-cluster-check; cd tools/research/mcp-rhai && cargo test --release"
+    result: "At 90cbb65b25 on master. (1) Camera trajectories from AlgoGlyph's human-pointing kernel, exposed to Rhai as kernel()/kernels() (53e99d962e); a unit test pins a script's answer to mcp-human's golden vectors; live glide (128,128)->(40,200): 53 samples, 901 ms, overshoot (35,204). Re-scoped: the kernel is reached through AlgoGlyph's flow CLI, not a Rust crate dependency, because human-pointing lives in AlgoGlyph's TypeScript plates, not in crates/algoglyph-kernels. (2) The bot's settings decided over the bridge decision contract: POST /api/decision/pull + GET /api/bridge/companies (54460f40fc); mcp-decision-check 6/6, the running bot reading aggressiveness 100 after the decision (50 before), with a loopback stand-in answering OpenttdController#decision's shape: prismatic_api itself was not running on this machine. (3) Every instance's record names its Majordomus task (supervisor), listed by /api/instances and /hub/instances (90cbb65b25); mcp-cluster-check all PASS incl. supervisor; gate change PASS; mcp-panel-check 17/17."
+    artifact: "90cbb65b25"
+    commit: 90cbb65b2567c97b242b7c6b7c721a9191f1bcd1
+    recorded_at: 2026-11-17T02:27:08Z
