@@ -150,6 +150,12 @@ OpenAPI, Swagger UI and Rhai:
 - `POST /api/duel` (body checked: months 1 to 240, opponent an AI name)
 - `GET /api/duel`
 
+**Bot settings per run.** The duel form, `POST /api/duel` (`bot_settings`) and `mcp-duel --bot-settings`
+take extra settings for the planned bot, e.g. `own_lines=8`: name=value pairs separated by commas, with
+whole values. They go on top of what the panel derives from the plan, so a bot feature gets its A/B
+without a code change. They are checked, logged ("bot setting from the run: ..."), recorded in the
+result (`bot_settings`) and carried by "Run this again". The unplanned rival never gets them.
+
 **Runs side by side.** Tick runs in the table and they are drawn month by month over each other: each
 planned company solid, its rival dashed, one colour per run. The choice is kept in the address
 (`?compare=`), and so is the measure. A line leads to its run. A run's page has **Run this again**:

@@ -439,7 +439,29 @@ pub fn planned_air(g: &Arc<Game>) -> Settings {
         Ok(_) => json!({}),
         Err(e) => { g.event("ai", &format!("planner not reachable for the bot: {e}")); return Settings::default(); }
     };
-    settings_from_plan(&out, &mut |text| g.event("ai", &text))
+    let mut settings = settings_from_plan(&out, &mut |text| g.event("ai", &text));
+    // Extra settings for this bot from the run that started the stack (mcp-duel --bot-settings, the
+    // duel form): an A/B of a bot feature without a code change. A malformed list is refused whole.
+    match extra_settings(&std::env::var("PRISMATIC_BOT_SETTINGS").unwrap_or_default()) {
+        Ok(extra) => for (k, v) in extra {
+            g.event("ai", &format!("bot setting from the run: {k}={v}"));
+            settings.set(&k, json!(v));
+        },
+        Err(e) => g.event("ai", &format!("bot settings from the run refused: {e}")),
+    }
+    settings
+}
+
+/// "name=value,name=value" with setting names of lower-case letters, digits and _ and whole values.
+pub fn extra_settings(text: &str) -> Result<Vec<(String, i64)>, String> {
+    text.split(',').map(str::trim).filter(|p| !p.is_empty()).map(|p| {
+        let (k, v) = p.split_once('=').ok_or_else(|| format!("{p}: name=value"))?;
+        let (k, v) = (k.trim(), v.trim());
+        if k.is_empty() || !k.chars().all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '_') {
+            return Err(format!("{k}: a setting name (a-z, 0-9, _)"));
+        }
+        Ok((k.to_string(), v.parse::<i64>().map_err(|_| format!("{k}: a whole number, not {v}"))?))
+    }).collect()
 }
 
 #[cfg(test)]
@@ -484,6 +506,15 @@ mod tests {
         if let Ok(text) = std::fs::read_to_string(real) {
             assert!(info_settings(&text).iter().all(|s| s["name"].is_string() && s["default"].is_i64()));
         }
+    }
+
+    #[test]
+    fn extra_bot_settings_are_parsed_or_refused_whole() {
+        assert_eq!(extra_settings("own_lines=8, line_budget=50000").unwrap(), vec![("own_lines".to_string(), 8), ("line_budget".to_string(), 50000)]);
+        assert!(extra_settings("").unwrap().is_empty());
+        assert!(extra_settings("own_lines").is_err());
+        assert!(extra_settings("Own=1").is_err());
+        assert!(extra_settings("own_lines=eight").is_err());
     }
 
     #[test]

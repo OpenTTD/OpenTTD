@@ -38,7 +38,7 @@ pub fn summary(name: &str, d: &Value) -> Value {
         (Some(x), Some(y)) if y > 0.0 => json!((x / y * 10.0).round() / 10.0),
         _ => Value::Null,
     };
-    json!({"name": name, "seed": d["seed"], "months": d["months"], "label": d["label"], "opponent": d["opponent"],
+    json!({"name": name, "seed": d["seed"], "months": d["months"], "label": d["label"], "opponent": d["opponent"], "bot_settings": d["bot_settings"],
            "winner": d["winner"], "a": a, "b": b, "ratio": ratio})
 }
 
@@ -98,6 +98,10 @@ pub fn duel_args(body: &Value) -> Result<Vec<String>, String> {
     }
     if let Some(label) = body.get("label").and_then(Value::as_str).filter(|s| !s.is_empty()) {
         args.extend(["--label".to_string(), label.chars().take(200).collect()]);
+    }
+    if let Some(bs) = body.get("bot_settings").and_then(Value::as_str).filter(|s| !s.trim().is_empty()) {
+        crate::panel_bot::extra_settings(bs).map_err(|e| format!("bot_settings: {e}"))?;
+        args.extend(["--bot-settings".to_string(), bs.trim().to_string()]);
     }
     if let Some(op) = body.get("opponent").and_then(Value::as_str).filter(|s| !s.is_empty()) {
         if !op.chars().all(|c| c.is_ascii_alphanumeric() || c == '_') {
@@ -176,6 +180,8 @@ mod tests {
         assert!(duel_args(&json!({"months": 0})).is_err());
         assert!(duel_args(&json!({"opponent": "a; rm"})).is_err());
         assert!(duel_args(&json!({"seed": "1"})).is_err());
+        assert_eq!(duel_args(&json!({"bot_settings": "own_lines=8"})).unwrap(), ["--months", "36", "--bot-settings", "own_lines=8"]);
+        assert!(duel_args(&json!({"bot_settings": "own_lines; rm"})).is_err());
     }
 
     #[test]
