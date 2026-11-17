@@ -371,6 +371,50 @@ impl Hand {
             self.say(&format!("a station already stands at {},{}", site.x, site.y));
             return Ok(());
         }
+        self.arm_station_picker(site)?;
+        self.say(&format!("rail station at {},{} ({}, {} tiles)", site.x, site.y, if site.along_x { "along x" } else { "along y" }, site.length));
+        let mut names_hidden = false;
+        let mut result = Err(format!("the station at {},{} was not built", site.x, site.y));
+        for attempt in 0..3 {
+            if attempt == 2 {
+                // A station's name sign can cover the tile beside it (the game hits signs before
+                // the ground): a yard platform right beside the first station never got its click
+                // on seed 4242, while the game validated the same build (2026-11-17). Hide the
+                // names as a person does, set the picker again, click, show the names again.
+                self.say("a station's name may cover the tile: hide station names");
+                self.menu_pick_saying(crate::play::OPTIONS_MENU, crate::play::STATION_NAMES)?;
+                names_hidden = true;
+                self.think(300.0, 600.0);
+                self.arm_station_picker(site)?;
+            }
+            self.click_tile(site.x, site.y)?;
+            self.think(500.0, 900.0);
+            let ways = self.mcp.read("openttd://map/ways")?;
+            if site.tiles().iter().all(|&(x, y)| rail_bits(&ways, x, y) & axis_bit != 0) {
+                result = Ok(());
+                break;
+            }
+            // The game says why it refused (an error message window); with no word from it the click
+            // never reached the map, so clear the screen and click once more.
+            if let Some(why) = self.game_error()? {
+                result = Err(format!("the station at {},{} was refused: {why}", site.x, site.y));
+                break;
+            }
+            if attempt == 0 {
+                self.say("the station did not appear and the game said nothing: clear the screen, click again");
+                self.tidy_except(&["railway construction", "rail station"])?;
+            }
+        }
+        if names_hidden {
+            self.say("show station names again");
+            let _ = self.menu_pick_saying(crate::play::OPTIONS_MENU, crate::play::STATION_NAMES);
+        }
+        result
+    }
+
+    /// The rail toolbar open, its station tool on, and the picker set to the site's orientation,
+    /// one platform and its length.
+    fn arm_station_picker(&mut self, site: &Site) -> Result<(), String> {
         let rail = self.open_rail_toolbar()?;
         let b = Self::buttons(&rail, STATION_TOOL).first().cloned().ok_or("no station button")?;
         if b.get("lowered") != Some(&Value::Bool(true)) {
@@ -382,25 +426,7 @@ impl Hand {
         self.choose_button(&w, PLATFORMS, 0)?;
         let w = self.wait_holding(ORIENTATION)?;
         self.choose_button(&w, LENGTH, site.length.clamp(1, 7) - 1)?;
-        self.say(&format!("rail station at {},{} ({}, {} tiles)", site.x, site.y, if site.along_x { "along x" } else { "along y" }, site.length));
-        for attempt in 0..2 {
-            self.click_tile(site.x, site.y)?;
-            self.think(500.0, 900.0);
-            let ways = self.mcp.read("openttd://map/ways")?;
-            if site.tiles().iter().all(|&(x, y)| rail_bits(&ways, x, y) & axis_bit != 0) {
-                return Ok(());
-            }
-            // The game says why it refused (an error message window); with no word from it the click
-            // never reached the map, so clear the screen and click once more.
-            if let Some(why) = self.game_error()? {
-                return Err(format!("the station at {},{} was refused: {why}", site.x, site.y));
-            }
-            if attempt == 0 {
-                self.say("the station did not appear and the game said nothing: clear the screen, click again");
-                self.tidy_except(&["railway construction", "rail station"])?;
-            }
-        }
-        Err(format!("the station at {},{} was not built", site.x, site.y))
+        Ok(())
     }
 
     /// The text of an error message the game shows right now ("Can't build ... here"), if any.
@@ -746,6 +772,78 @@ impl Hand {
         Err("no rail candidate could be built".into())
     }
 
+    /// Transfer yards the shared planner proved on this map (MCP_PLAN `--track 6 --yards N`,
+    /// tools/research/mcp-rhai src/yards.rs), proven ones only, in the planner's order.
+    pub fn proven_yards(&self, pairs: usize) -> Result<Vec<Value>, String> {
+        let bin = std::env::var("MCP_PLAN").ok().filter(|b| std::path::Path::new(b).exists()).ok_or("set MCP_PLAN to the mcp-plan binary")?;
+        let out = std::process::Command::new(&bin)
+            .args(["--token", self.mcp.token_file(), "--limit", "10", "--track", "6", "--yards", &pairs.to_string()])
+            .output().map_err(|e| format!("mcp-plan: {e}"))?;
+        if !out.status.success() {
+            return Err(format!("mcp-plan: {}", String::from_utf8_lossy(&out.stderr).trim()));
+        }
+        let v: Value = serde_json::from_slice(&out.stdout).map_err(|e| format!("mcp-plan: {e}"))?;
+        Ok(proven(&v))
+    }
+
+    /// A transfer yard as proven: line A's whole service, then line B's from a platform beside A's
+    /// station. B's track is planned again on the map as it is now, with A built, so a route the
+    /// proof found around A's planned tiles is re-checked against the tiles A really took (a
+    /// re-plan after the step, not a replay of the proof).
+    pub fn yard_service(&mut self, proof: &Value) -> Result<(Service, Service), String> {
+        self.say(&format!("yard: {} and {} share a station; proven on side {}", proof["a"], proof["b"], proof["side"]));
+        self.fund(need(&proof["a_candidate"]))?;
+        let a = self.rail_service(&proof["a_candidate"])?;
+        self.tell(&format!("yard: line A runs ({}); now the second platform beside it, and line B planned on the map as it is now", a.label));
+        // Re-plan after the step: the proof saw the map before A was built, and a town grows in
+        // the meantime. The yard platform and its exit are checked on the map as it is now; when
+        // a tile was taken, the platform on the other side of A's station is tried.
+        let shared = proof.pointer("/shared/b").and_then(Value::as_str).unwrap_or("from");
+        let mut b_candidate = proof["b_candidate"].clone();
+        let site = b_candidate["stations"][shared].clone();
+        let map = self.mcp.read("openttd://map")?;
+        let taken = |v: &Value| -> Vec<String> {
+            let Some(s) = Site::from_value(v) else { return vec!["no site".into()] };
+            let exit = s.exit.step(s.end);
+            s.tiles().into_iter().chain(exit).filter(|&(x, y)| !free_flat(&map, x, y))
+                .map(|(x, y)| format!("{x},{y} ({})", tile_kind(&map, x, y))).collect()
+        };
+        let now = taken(&site);
+        if !now.is_empty() {
+            let side = proof["side"].as_i64().unwrap_or(1);
+            let other = mirror(&site, side);
+            let then = taken(&other);
+            self.tell(&format!("yard: the proven platform is no longer free on the map as it is now: {}; the other side of A's station: {}",
+                               now.join(", "), if then.is_empty() { "free".to_string() } else { then.join(", ") }));
+            if !then.is_empty() {
+                return Err(format!("the yard beside A's station was built over since the proof ({}; other side {})", now.join(", "), then.join(", ")));
+            }
+            b_candidate["stations"][shared] = other;
+        }
+        self.fund(need(&b_candidate))?;
+        let b = self.rail_service(&b_candidate)?;
+        Ok((a, b))
+    }
+
+    /// Borrow, one press at a time through the finances window, until the company holds `need` or
+    /// the loan is at its limit. A line laid without the money stops part way: on seed 4242 the
+    /// yard's second line (220 pieces) ended 25 pieces short of its station (2026-11-17).
+    pub fn fund(&mut self, need: i64) -> Result<(), String> {
+        for _ in 0..64 {
+            let b = self.books()?;
+            if b.money >= need {
+                return Ok(());
+            }
+            if b.loan + b.loan_step > b.max_loan {
+                self.tell(&format!("money {} is short of the {} this line needs, and the loan is at its limit", b.money, need));
+                return Ok(());
+            }
+            self.tell(&format!("borrow: money {} for a line that needs {}", b.money, need));
+            self.borrow()?;
+        }
+        Ok(())
+    }
+
     /// Rail candidates from the shared planner (MCP_PLAN), shortest first, each with both sites.
     pub fn rail_candidates(&self, max_distance: f64) -> Result<Vec<Value>, String> {
         let bin = std::env::var("MCP_PLAN").ok().filter(|b| std::path::Path::new(b).exists()).ok_or("set MCP_PLAN to the mcp-plan binary")?;
@@ -766,9 +864,89 @@ impl Hand {
     }
 }
 
+/// What the map says a tile is (openttd://map `types`, one letter a tile).
+pub fn tile_kind(map: &Value, x: usize, y: usize) -> String {
+    map.get("types").and_then(Value::as_array).and_then(|r| r.get(y)).and_then(Value::as_str)
+        .and_then(|r| r.chars().nth(x)).map(|c| match c {
+            // The legend openttd://map publishes with `types` (src/prismatic_mcp/prismatic_mcp_world.cpp).
+            'C' => "clear".to_string(), 'R' => "railway".to_string(), 'r' => "road".to_string(), 'H' => "house".to_string(),
+            'T' => "trees".to_string(), 'S' => "station".to_string(), 'W' => "water".to_string(), 'V' => "void".to_string(),
+            'I' => "industry".to_string(), 'B' => "bridge or tunnel".to_string(), 'O' => "object".to_string(),
+            other => format!("type {other}"),
+        }).unwrap_or_else(|| "off the map".into())
+}
+
+/// The yard platform on the other side of the first station: the site moved two tiles back across
+/// its axis (from `side` to `-side` of the first platform), exit and end alike.
+pub fn mirror(site: &Value, side: i64) -> Value {
+    let along_x = site["axis"] == "NE_SW";
+    let (dx, dy) = if along_x { (0, -2 * side) } else { (-2 * side, 0) };
+    let mut m = site.clone();
+    let shift = |v: &Value, d: i64| json!(v.as_i64().unwrap_or(0) + d);
+    m["x"] = shift(&site["x"], dx);
+    m["y"] = shift(&site["y"], dy);
+    for part in ["end", "exit"] {
+        m[part]["x"] = shift(&site[part]["x"], dx);
+        m[part]["y"] = shift(&site[part]["y"], dy);
+    }
+    m["depot"] = Value::Null;
+    m
+}
+
+/// What a line needs in hand before it is built: its rail option's build cost (track as priced on
+/// the map, and the stations) plus one train, the share of the investment one of its
+/// `vehicles.count` trains takes (the player buys one), and a fifth for what the plan does not see
+/// (a refused piece laid again, a station clicked twice).
+pub fn need(candidate: &Value) -> i64 {
+    let Some(o) = candidate["options"].as_array().into_iter().flatten()
+        .find(|o| o["mode"] == "rail" || o["mode"] == "freight_rail") else { return 0 };
+    let build = o["build_cost"].as_f64().unwrap_or(0.0);
+    let trains = o.pointer("/vehicles/count").and_then(Value::as_f64).filter(|n| *n >= 1.0).unwrap_or(1.0);
+    let train = (o["investment"].as_f64().unwrap_or(build) - build).max(0.0) / trains;
+    ((build + train) * 1.2).round() as i64
+}
+
+/// The proven yards of an mcp-plan answer that carry both candidates, in its order.
+pub fn proven(plan: &Value) -> Vec<Value> {
+    plan.pointer("/yards/pairs").and_then(Value::as_array).into_iter().flatten()
+        .filter(|y| y["proven"] == Value::Bool(true) && y["a_candidate"].is_object() && y["b_candidate"].is_object())
+        .cloned().collect()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn the_other_side_of_the_first_station_mirrors_the_yard() {
+        let yard = json!({"x": 73, "y": 217, "length": 3, "axis": "NW_SE", "end": {"x": 73, "y": 217}, "exit": {"x": 73, "y": 216, "dir": "NW"}});
+        let m = mirror(&yard, 1);
+        assert_eq!((m["x"].clone(), m["end"]["x"].clone(), m["exit"]["x"].clone(), m["y"].clone()), (json!(71), json!(71), json!(71), json!(217)));
+        let map = json!({"types": ["CCH"]});
+        assert_eq!(tile_kind(&map, 2, 0), "house");
+        assert_eq!(tile_kind(&map, 5, 0), "off the map");
+    }
+
+    #[test]
+    fn a_line_needs_its_track_stations_one_train_and_a_fifth() {
+        let c = json!({"options": [{"mode": "bus", "investment": 9}, {"mode": "rail", "investment": 50000, "build_cost": 30000, "vehicles": {"count": 2}}]});
+        assert_eq!(need(&c), 48000, "track and stations 30000, one of two trains 10000, and a fifth");
+        assert_eq!(need(&json!({"options": [{"mode": "freight_rail", "build_cost": 1000}]})), 1200);
+        assert_eq!(need(&json!({})), 0);
+    }
+
+    #[test]
+    fn only_proven_yards_with_both_lines_are_built() {
+        let plan = json!({"yards": {"pairs": [
+            {"proven": false, "a": "x"},
+            {"proven": true, "a": "y"},
+            {"proven": true, "a": "z", "a_candidate": {}, "b_candidate": {}},
+        ]}});
+        let got = proven(&plan);
+        assert_eq!(got.len(), 1);
+        assert_eq!(got[0]["a"], "z");
+        assert!(proven(&json!({})).is_empty());
+    }
 
     fn p(x: usize, y: usize, track: u32) -> Piece { Piece { x, y, track } }
 

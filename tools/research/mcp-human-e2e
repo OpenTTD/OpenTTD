@@ -16,7 +16,7 @@
 #
 # Usage: tools/research/mcp-human-e2e [--test] [--rounds N | --minutes M] [--seed N] [--speed F]
 #                                     [--borrow-below N] [--repay-above N] [--rail "MAX [MIN]"]
-#                                     [--rail-above N] [--fleet] [--renew-age DAYS]
+#                                     [--rail-above N] [--fleet] [--renew-age DAYS] [--yard]
 #                                     [--window WxH] [--front] [--gfx NAME] [--bin PATH]
 #
 # --front raises the game window once the client has its company, so the owner sees the play
@@ -33,7 +33,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
-TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL="" RAIL_ABOVE="" FLEET="" RENEW_AGE="" FRONT=0 GFX=OpenGFX
+TEST=0 ROUNDS=2 SEED=4242 SPEED=1.0 WINDOW="1600x1000" MINUTES=0 BORROW_BELOW="" REPAY_ABOVE="" RAIL="" RAIL_ABOVE="" YARD="" FLEET="" RENEW_AGE="" FRONT=0 GFX=OpenGFX
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --test) TEST=1; shift ;;
@@ -43,6 +43,7 @@ while [[ $# -gt 0 ]]; do
     --repay-above) REPAY_ABOVE="$2"; shift 2 ;;
     --rail) RAIL="$2"; shift 2 ;;
     --rail-above) RAIL_ABOVE="$2"; shift 2 ;;
+    --yard) YARD=1; shift ;;
     --fleet) FLEET=1; shift ;;
     --front) FRONT=1; shift ;;
     --gfx) GFX="${2:?--gfx needs a base graphics set name}"; shift 2 ;;
@@ -185,6 +186,17 @@ if [[ -n "$RAIL" ]]; then
     "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" rail $RAIL 2>&1 | tee -a "$TMP/human.log" | grep -E '^ok: rail|rail line|skip' || true
   else
     echo "SKIP the rail line: MCP_ALGOGLYPH_DIR has no track-planning kernel (not counted as a pass)"; RAIL=""
+  fi
+fi
+
+# A transfer yard (--yard): the planner proves where two lines can share a station (mcp-plan
+# --yards), and the player builds line A, then line B from a platform beside A's, B planned again
+# with A built (rail.rs yard_service). Checked below: two platforms of one station, two trains.
+if [[ -n "$YARD" ]]; then
+  if [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]] && (cd "$MCP_ALGOGLYPH_DIR" && npm run --silent flow -- kernels 2>/dev/null | grep -q track-planning); then
+    "$HUMAN" --token "$CLIENT_TOKEN" --seed "$SEED" --speed "$SPEED" yard 2>&1 | tee -a "$TMP/human.log" | grep -E '^ok: yard|yard:|skip|proven|error|^mcp-human|failed|refused' || true
+  else
+    echo "SKIP the yard: MCP_ALGOGLYPH_DIR has no track-planning kernel (not counted as a pass)"; YARD=""
   fi
 fi
 
@@ -424,6 +436,19 @@ PY
   fi
   # Fleet care, on the server: the old bus is gone, its copy runs the same engine and orders; then
   # the copy is sold from its depot and the company's money rises by what it was worth.
+  # The yard, checked on the server: both "ok: yard line" lines printed and the company runs at
+  # least two trains. That the two platforms form one station is not checked here yet.
+  if [[ -n "$YARD" ]]; then
+    if [[ "$(grep -c '^ok: yard line' "$TMP/human.log")" -eq 2 ]]; then
+      read_res "$SERVER_TOKEN" openttd://vehicles | jq -e --argjson c "$COMPANY" '[.data.vehicles[] | select(.owner == $c and .type == "train")] | length >= 2' >/dev/null \
+        && echo "PASS the yard: lines A and B built, two trains of company $COMPANY run" \
+        || { echo "FAIL the yard: fewer than two trains of company $COMPANY"; fail=1; }
+    else
+      echo "FAIL the yard: the player did not finish both lines; the player's last words:"; fail=1
+      tail -n 12 "$TMP/human.log" | sed 's/^/    /'
+    fi
+  fi
+
   if [[ -n "$FLEET" ]]; then
     if [[ "$OLD_BUS" == null ]]; then
       echo "FAIL --fleet: company $COMPANY has no bus to renew"; fail=1

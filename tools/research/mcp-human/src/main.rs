@@ -46,6 +46,8 @@ commands:
   play [<rounds>]            look around, then serve town pairs round after round
   rail [<max> [<min>]]       a rail line within [min, max] tiles: both stations at the shared planner's sites (MCP_PLAN),
                              AlgoGlyph's track plan between them, laid with the rail tools, checked
+  yard [<pairs>]             a transfer yard the planner proved (mcp-plan --yards): line A, then line B
+                             from a platform beside A's, B's track planned again with A built
   execute <actions.json|->   plan the actions with AlgoGlyph's action-plan kernel (DAG, cash per
                              step, refused when it would overdraw), show it, then do each step
   renew <vehicle>             send the vehicle to its depot, buy a copy there (its orders copied),
@@ -135,6 +137,18 @@ fn run() -> Result<(), String> {
             let s = hand.first_rail_service(&candidates.into_iter().take(4).collect::<Vec<_>>())?;
             println!("ok: rail line {}: stations at {},{} and {},{}, {} pieces of track", s.label, s.line.from.x, s.line.from.y, s.line.to.x, s.line.to.y, s.line.pieces.len());
             println!("ok: train {} ({}) runs between the stations, depot at {},{}", s.train, s.consist, s.depot.0, s.depot.1);
+        }
+        "yard" => {
+            // A transfer yard (src/yards.rs in mcp-rhai proves it): line A, then line B from a
+            // platform beside A's, B re-planned on the map with A built.
+            let pairs: usize = if args.len() > 1 { arg_num(&args, 1)? } else { 4 };
+            hand.require_tools()?;
+            let yards = hand.proven_yards(pairs)?;
+            hand.say(&format!("{} proven yard(s) on this map", yards.len()));
+            let first = yards.first().ok_or("no proven transfer yard on this map (see GET /api/plan?track=6&yards=4)")?;
+            let (a, b) = hand.yard_service(first)?;
+            println!("ok: yard line A {}: stations at {},{} and {},{}, train {}", a.label, a.line.from.x, a.line.from.y, a.line.to.x, a.line.to.y, a.train);
+            println!("ok: yard line B {}: stations at {},{} and {},{}, train {}", b.label, b.line.from.x, b.line.from.y, b.line.to.x, b.line.to.y, b.train);
         }
         "execute" => {
             // A plan first, then its execution: the actions go to AlgoGlyph's action-plan kernel.

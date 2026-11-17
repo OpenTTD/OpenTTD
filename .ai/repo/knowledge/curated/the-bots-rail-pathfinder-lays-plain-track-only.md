@@ -95,6 +95,10 @@ Three later findings on seed 31337 (bridge repository, branch feat/live-behaviou
   shared a station site, one was proven (a coal mine's yard, side −1, the second line's track 45
   cheaper than alone) and two were refuted because no flat buildable platform fits beside the first.
   A retry of yards in the bot hands over only proven pairs, with the side the proof found.
+  The first proven yard was built on 2026-11-17 by the person-like executor, not the bot
+  (`mcp-human yard`, seed 4242: two lines into Drundstone from side-by-side platforms, both trains
+  running). The executor lays the planned track itself, so the proof holds for it; the bot's own
+  pathfinder can still wall a yard in.
 
 - **More lines when money waits** (panel MAX_FREIGHT_LINES 16; bridge 2c01584). With eight lines the
   loan was repaid by month 30 and 308074 sat idle at month 36. Thirteen lines handed over, eleven

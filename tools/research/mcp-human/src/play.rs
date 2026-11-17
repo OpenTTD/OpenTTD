@@ -13,8 +13,8 @@ const ROAD_MENU: &str = "build road infrastructure";
 const AUTOROAD: &str = "autoroad mode";
 const BUS_STATION: &str = "build bus station";
 const DEPOT: &str = "build road vehicle depot";
-const OPTIONS_MENU: &str = "options and settings";
-const STATION_NAMES: &str = "station names displayed";
+pub(crate) const OPTIONS_MENU: &str = "options and settings";
+pub(crate) const STATION_NAMES: &str = "station names displayed";
 const NEW_VEHICLES: &str = "buy new road vehicle";
 pub(crate) const BUY: &str = "buy vehicle";
 /// The orders button, as every vehicle type words it ("Show train's orders", "Show vehicle's orders").

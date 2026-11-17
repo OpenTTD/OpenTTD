@@ -14,7 +14,8 @@
 //!    there with A's tiles blocked.
 //!
 //! A yard is proven when B still has a route; the answer says on which side, and what B's track costs
-//! with the yard against B on its own. Nothing here builds anything: the bot gets a yard only for a
+//! with the yard against B on its own, and carries both lines as candidates an executor builds
+//! (`a_candidate`, and `b_candidate` with its shared end on the yard platform). Nothing here builds anything: the bot gets a yard only for a
 //! proven pair, in a later step, and the duel decides whether it pays.
 use serde_json::{json, Value};
 
@@ -156,6 +157,12 @@ pub fn prove(candidates: &[Value], base: &Value, limit: usize) -> Vec<Value> {
                 entry["yard"] = yard.clone();
                 entry["b_with_yard"] = json!(m.round());
                 entry["extra"] = alone.map_or(Value::Null, |x| json!((m - x).round()));
+                // Both lines as an executor builds them (mcp-human `yard`): A as planned, B with its
+                // shared end moved onto the yard platform beside A's.
+                let mut b_yard = lb.clone();
+                b_yard["stations"][eb] = yard.clone();
+                entry["a_candidate"] = la.clone();
+                entry["b_candidate"] = b_yard;
                 break;
             }
         }

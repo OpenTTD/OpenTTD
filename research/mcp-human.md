@@ -222,6 +222,41 @@ stream, so the run stays reproducible. Without the checkout, with non-default mo
 bit for bit the same. `cargo test` checks the live kernel against every golden case when
 `MCP_ALGOGLYPH_DIR` is set, and skips that check otherwise.
 
+### A transfer yard, proven first and re-planned after each line (`yard`)
+
+`mcp-human yard [pairs]` builds a transfer yard only where the shared planner proved one
+(`mcp-plan --track 6 --yards N`, `tools/research/mcp-rhai/src/yards.rs`, also `GET /api/plan?track=6&yards=4`
+and the panel's World page). The proof lays line A with AlgoGlyph `track-planning`, blocks every tile
+it takes, and lays line B from a platform beside A's station. The player then builds A's whole
+service (both stations, the planned track, a depot and the planner's train), and after that B's
+service with its shared end on the yard platform. B's track is planned again at that point, on the
+map as it is with A built, so the route B takes is checked against the tiles A really took rather
+than replayed from the proof. A platform built right beside one of the company's stations joins it,
+as a player's would. `mcp-human-e2e --yard` runs it and checks on the server that both lines were
+finished and the company runs at least two trains; that the two platforms form one station is not
+checked yet.
+
+Verified 2026-11-17 on seed 4242 (`mcp-human-e2e --test --rounds 0 --yard`): the planner proved four
+yards; the player built Wranville → Drundstone (train 5) and then Prahattan Springs → Drundstone from
+the platform beside it at 73,217 (train 19); `PASS the yard`. Three runs before that taught the
+player three things, each now in `rail.rs`:
+
+- **Money first.** A line laid without the money stops part way (25 of 220 pieces missing). The
+  player borrows through the finances window until it holds the line's build cost, one train and a
+  fifth (`fund`, `need`).
+- **The map changes between the proof and the build.** The yard site and its exit are checked again
+  on the map as it is after line A, and the other side of A's station is tried when a tile was taken.
+- **A station's name sign takes the click beside it.** The game validated the yard platform
+  (`openttd.decision.validate`: would succeed, 2070), yet two clicks on 73,217 never reached the map:
+  the sign of A's station lies over that tile. On a third try the player hides station names, sets
+  the picker again, clicks, and shows the names again, as it already did for depots.
+
+(The bus, road and coverage checks of that run fail because `--rounds 0` plays no bus round.)
+
+The yards PrismaticAI tried were reverted twice (knowledge
+`the-bots-rail-pathfinder-lays-plain-track-only`): this executor lays exactly the planned track, so the
+proof holds for it, which the bot's own pathfinder does not guarantee.
+
 ## End to end
 
 ```bash
