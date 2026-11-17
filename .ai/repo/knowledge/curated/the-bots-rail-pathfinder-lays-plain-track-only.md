@@ -27,6 +27,8 @@ provenance:
     - file:research/results/duel-20261117T053732-seed31337.md
     - file:research/results/duel-20261117T100202-seed31337.md
     - file:tools/research/mcp-rhai/src/yards.rs
+    - file:research/results/duel-20261117T155736-seed31337.md
+    - file:research/results/duel-20261117T180225-seed31337.md
 ---
 
 # Constraint
@@ -104,6 +106,12 @@ Three later findings on seed 31337 (bridge repository, branch feat/live-behaviou
   loan was repaid by month 30 and 308074 sat idle at month 36. Thirteen lines handed over, eleven
   built in 36 months: 597075, +6.9% over eight lines (spread between two runs of one bot is about 1%).
   After that, laying track takes the game time, not the plan or the money.
+
+- **Its own lines once the plan is built** (bridge 31fdb68, `own_lines`; the panel passes 8). They cost
+  value until about month 50, because company value does not count track. Over ten years they paid +10.4%
+  (4811581 against 4356412 on seed 31337). **Judge any late investment on a ten-year duel:** a 36-month
+  duel showed the same lines at −20% and −5%. A duel's `bot_settings` (e.g. own_lines=8) gives such an A/B
+  without a code change.
 
 # How to apply
 
