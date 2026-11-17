@@ -30,6 +30,19 @@ event journal + snapshots/deltas + topology graphs (`15`); full company-scope bi
 the autonomous multiplayer lab/arena (`17`); MCP SSE notifications/subscriptions; Catch2 tests,
 Inspector/conformance, determinism experiment. See `continuation-gap-matrix.json`.
 
+Status update (2026-11-17): the design documents `14` (native operator UI), `15` (event and
+snapshot model) and `17` (autonomous multiplayer lab) were never written; no commit ever added a
+`research/prismatic-mcp/1[457]-*` file. What was built instead:
+
+- toolbar entry: the fork's own toolbar button and menu, I0072 (`src/prismatic_mcp/prismatic_mcp_menu.cpp`,
+  `05-implementation-plan.md` Phase D); the Control Center window is still not built;
+- events and topology: the hub's event stream ([`../mcp-hub.md`](../mcp-hub.md)) and the world graph
+  resource `openttd://world/graph` (`07-resource-catalog.md`); snapshots/deltas are still not built;
+- lab/arena: the duel harness `tools/research/mcp-duel` with its scoreboard in the top-level
+  README (`tools/research/readme-scoreboard`);
+- Catch2 tests (`18-continuation-testing.md`) and the determinism experiment, PASS
+  ([`determinism-ab.md`](determinism-ab.md), I0026).
+
 ## Adversarial review (mission §4, 20 questions)
 
 | # | Challenge | This build |
@@ -54,6 +67,13 @@ Inspector/conformance, determinism experiment. See `continuation-gap-matrix.json
 | 18 | Unbounded event/approval history? | `MAX_APPROVALS=64`, `MAX_PROVENANCE=128` ring-trim. |
 | 19 | Client infers hidden MP data? | Only server-visible company data exposed; network-client resource withheld. |
 | 20 | Experiment claims causality from correlation? | Arena not implemented; verdict model already refuses unobserved success. |
+
+Status update (2026-11-17): the "This build" column describes the build of this session. Since
+then the toolbar has a button of its own (rows 1, 16, 17: I0072; a dedicated server draws no
+toolbar), company-scoped mutations exist as `openttd.cmd.<Name>` with a `company` actor behind the
+same approval gate (rows 7, 12, 13: `16-decision-contract.md`; scope is reported, not enforced per
+client), and a duel harness compares two bots (row 20: `tools/research/mcp-duel`). `17` (row 9) was
+never written.
 
 ## Rollback
 

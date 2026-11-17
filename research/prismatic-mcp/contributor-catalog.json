@@ -5,7 +5,7 @@
   "project": {
     "name": "Prismatic MCP Server",
     "tagline": "Research-only, loopback-only, compile-gated Model Context Protocol server embedded in this OpenTTD fork",
-    "status_summary": "A real, compiling, connectable read-only vertical, plus one gated mutation (game.set_pause via a two-phase digest-bound approval). See 05-implementation-plan.md for the honest per-phase status. Native GUI, a broader action catalogue, company scoping, autonomous multiplayer lab, and full conformance evidence are staged, not implemented.",
+    "status_summary": "A real, compiling, connectable read-only vertical, plus approval-gated mutations: openttd.game.set_pause, one openttd.cmd.<Name> tool per game command whose parameters convert from JSON, the company AIs (openttd.ai.*) and Script API calls with execute (openttd.api.*), each through a two-phase approval bound to its exact arguments. The fork's own toolbar button and menu are in the game. See 05-implementation-plan.md for the honest per-phase status. The Control Center window, per-client company scoping, SSE and full conformance evidence are staged, not implemented.",
     "repo_url": "https://github.com/korczis/OpenTTD",
     "docs_index_path": "research/prismatic-mcp/README.md"
   },
@@ -32,8 +32,8 @@
     },
     {
       "title": "Configure with the feature gate ON",
-      "detail": "OPTION_PRISMATIC_MCP_SERVER defaults OFF and requires OPTION_RESEARCH_INSTRUMENTATION=ON.",
-      "command": "cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON -DCMAKE_C_COMPILER=\"$(brew --prefix llvm)/bin/clang\" -DCMAKE_CXX_COMPILER=\"$(brew --prefix llvm)/bin/clang++\""
+      "detail": "OPTION_PRISMATIC_MCP_SERVER defaults OFF and requires OPTION_RESEARCH_INSTRUMENTATION=ON. The system compiler is used; only a macOS Command Line Tools install older than Xcode 15 needs Homebrew LLVM through CC/CXX (ADR 0006, research/tooling.md).",
+      "command": "cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON"
     },
     {
       "title": "Build",
@@ -41,12 +41,12 @@
     },
     {
       "title": "Run the unit tests",
-      "detail": "Catch2 tests for the security-critical helpers (digest binding, auth parsing, constant-time compare) are ctest-discoverable.",
+      "detail": "Catch2 tests tagged [prismatic_mcp] (security helpers, the approval state machine, command parameter conversion, the toolbar menu, the console family) are ctest-discoverable.",
       "command": "cmake --build build-mcp --target openttd_test -j$(sysctl -n hw.ncpu) && ctest --test-dir build-mcp -R prismatic --output-on-failure"
     },
     {
       "title": "Start the server and connect",
-      "detail": "In the in-game console: prismatic_mcp start, then prismatic_mcp token to get the bearer token. Never share the token; it is never logged.",
+      "detail": "In the in-game console: prismatic_mcp start, then prismatic_mcp token to get the bearer token, and prismatic_mcp approve <id> or deny <id> for a pending mutation. Never share the token; it is never logged.",
       "paths": [
         "research/prismatic-mcp/10-in-game-runbook.md"
       ]
@@ -138,6 +138,11 @@
       "kind": "runbook"
     },
     {
+      "path": "research/prismatic-mcp/determinism-ab.md",
+      "title": "Determinism A/B (I0026): the read-only MCP path does not perturb the simulation",
+      "kind": "reference"
+    },
+    {
       "path": "research/prismatic-mcp/exposure-coverage-matrix.md",
       "title": "Exposure coverage matrix (honest per-domain status)",
       "kind": "matrix"
@@ -159,9 +164,10 @@
     }
   ],
   "known_limitations": [
-    "Native GUI (toolbar entry, Control Center window) is not implemented -- console command parity only.",
-    "No autonomous multiplayer arena/lab exists.",
-    "Exactly one mutating action type is implemented: game.set_pause, via a two-phase digest-bound approval (openttd.decision.submit -> console 'prismatic_mcp approve <id>' -> execute). No company-scoped authorization, no action budget, no other action types exist yet.",
+    "The native Control Center window is not implemented; the toolbar button and its menu are (I0072).",
+    "No autonomous multiplayer arena/lab exists; tools/research/mcp-duel runs a duel of two bots in one game.",
+    "Every mutation needs an operator approval in the console ('prismatic_mcp approve <id>'). A command tool takes a company actor, but there is no per-client company-scoped authorization and no action budget.",
+    "Saving a game is not an action type: it is not a game command, so it is not in the catalogue.",
     "This catalog itself has no automated freshness check against the actual doc_index file list beyond what tools/check-prismatic-docs.sh diffs -- new docs must be added here by hand."
   ]
 }

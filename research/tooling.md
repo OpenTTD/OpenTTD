@@ -235,8 +235,10 @@ fresh configure is needed, per the Troubleshooting note above.
 With `OPTION_PRISMATIC_MCP_SERVER=ON` (which requires `OPTION_RESEARCH_INSTRUMENTATION=ON`),
 `tools/gate.sh research` also runs the `[prismatic_mcp]` unit tests, and
 `tools/research/mcp-live-check [--bin <openttd>] [--port <port>]` drives a headless server over
-loopback MCP: auth and Origin defaults, live reads, and the approval state machine of the one
-gated mutation. See `research/prismatic-mcp/10-in-game-runbook.md`.
+loopback MCP: auth and Origin defaults, live reads, and the approval state machine of the gated
+mutations it drives (`openttd.game.set_pause`, `openttd.decision.submit` with a denial,
+`openttd.cmd.Pause`, a command with a text parameter and a news command), each verdict read with
+`openttd.decision.get`. See `research/prismatic-mcp/10-in-game-runbook.md`.
 
 Build the server through the CLI's `research-mcp` profile rather than a hand-configured
 `build-mcp`, so the experiment is recorded like any other (I0027):

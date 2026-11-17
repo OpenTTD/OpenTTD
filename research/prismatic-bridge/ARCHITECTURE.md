@@ -120,17 +120,20 @@ Two distinct data flows, on different timescales — conflating them was the mai
 flowchart TD
     subgraph Slow["World seeding -- offline, once per scenario -- NOT STARTED"]
         Geo["Real elevation / GIS data"] --> HM["Heightmap export<br/>(grayscale PNG/BMP)"]
-        HM --> Start["openttd -D -G heightmap.png<br/>(headless new-game start)"]
+        HM --> Start["openttd -D -g heightmap.png<br/>(headless new-game start)"]
     end
 
     subgraph Fast["Decision-making -- live, continuous -- PARTIALLY BUILT"]
         OSINT["prismatic_osint_* / prismatic_dd<br/>(not integrated yet)"] --> Fusion2["prismatic_intelligence_fusion<br/>(not integrated yet)"]
-        Fusion2 --> MC["prismatic_monte_carlo<br/>(not integrated yet)"]
-        MC --> Ded["prismatic_deduction<br/>(not integrated yet)"]
-        Ded --> Directive["POST /decision/pull result<br/>{ai, company_id, settings}<br/>-- endpoint exists, contract undefined"]
+        Fusion2 -.-> MC["prismatic_monte_carlo via prismatic_api<br/>GET /api/openttd/decision: chooses<br/>aggressiveness -- BUILT"]
+        Ded["prismatic_deduction<br/>(not integrated yet)"] -.-> Directive
+        MC --> Directive["decision directive<br/>{ai, company_id, settings}<br/>-- contract defined (I0011)"]
         Directive --> Bridge2["openttd-prismatic-bridge<br/>-- BUILT"]
-        Bridge2 -- "start_ai / reload_ai<br/>-- BUILT" --> GameLive["PrismaticAI in OpenTTD<br/>-- builds a real single-town<br/>bus route, verified live"]
+        Directive --> Panel["MCP panel<br/>POST /api/decision/pull -- BUILT"]
+        Bridge2 -- "start_ai / reload_ai<br/>-- BUILT" --> GameLive["PrismaticAI in OpenTTD<br/>-- bus, intercity, rail, air and<br/>freight routes behind its settings"]
+        Panel -- "openttd.ai.set_setting<br/>(approval-gated)" --> GameLive
         GameLive -- "/state, /companies,<br/>/ws/events -- BUILT" --> Fusion2
+        GameLive -- "/companies<br/>(bridge, or panel /api/bridge)" --> MC
     end
 ```
 
@@ -147,7 +150,7 @@ Each remaining phase should be approved before starting — this table tracks re
 | 0 | This document | Done (this revision) | No (read-only research) | Human review |
 | 1 | Control-path round trip: standalone bridge speaking the Admin Network protocol; `start_ai`/`reload_ai` reachable over HTTP; a real, externally-steerable (if idling) Company AI | **Done** — `~/dev/openttd-prismatic-bridge` (Python/FastAPI, `bridge/`, `ai/PrismaticAI/*.nut`, 8/8 unit tests passing) | No — bridge is standalone | Bridge repo's own `pytest tests/`; manually confirmed end-to-end per its README's `curl` examples |
 | 2 | Real company strategy: `ai/PrismaticAI/main.nut` actually builds/buys/routes, driven by its settings string, instead of idling | **Done** — single-town bus route (two stops on the town's own already-connected road network, a depot, 1-3 buses scaled by `aggressiveness`); intercity road, rail, air and freight routes are also implemented behind their settings | No | Bridge repo's `pytest tests/` (unaffected — this is a `.nut` change) + **reproduced on this tree** by `tools/research/bridge-live-check`: it boots a dedicated server of this fork (fixed seed, OpenGFX), starts `PrismaticAI` through the bridge and polls `/companies` until the AI company owns a vehicle (observed `busses > 0` within ~20-40s on a release build). The original July figure from the sibling repo (`busses: 0 → 3, company_value → 11025, performance → 30`) is a one-off historical measurement, not re-run here |
-| 3 | Decision contract: define what `/decision/pull` actually returns and where `PRISMATIC_DECISION_URL` points; wire something on the `prismatic-platform` side to answer it | Not started | **Yes** — first real touch of `prismatic-platform` | Both sides' gates |
+| 3 | Decision contract: define what `/decision/pull` actually returns and where `PRISMATIC_DECISION_URL` points; wire something on the `prismatic-platform` side to answer it | **Partial** — the contract is defined here (I0011, [`decision-contract.schema.json`](decision-contract.schema.json)); `prismatic-platform` answers it at `GET /api/openttd/decision`; this fork's MCP panel consumes it at `POST /api/decision/pull`, checked by `tools/research/mcp-decision-check` (I0041). The bridge's own consumer is still open (§7) | **Yes** — first real touch of `prismatic-platform` | Both sides' gates |
 | 4 | World seeding from real elevation/GIS data via `-g <heightmap-file>`; town-data JSON path researched and either used headlessly or explicitly deferred | Not started | No (data-prep pipeline, could live in either repo) | `tools/gate.sh` + a manual headless-start check |
 | 5 | Live decision-making wired to `prismatic_monte_carlo`/`prismatic_deduction`/`prismatic_dd`/`prismatic_intelligence_fusion` instead of a placeholder — this is where "využití maxima features" actually lands | Not started | Yes | Both sides' gates + a `research/experiment-template.md` report per experiment run |
 
@@ -163,7 +166,7 @@ Each remaining phase should be approved before starting — this table tracks re
 
 ## 7. Open questions / risks
 
-- **The Rust/Rustler question (§3.1)** is the most concrete open item carried over from this session specifically — it wasn't resolved, just laid out with real options and costs instead of silently applied to code that already works.
+- **The Rust/Rustler question (§3.1)** was laid out here with real options and costs instead of silently applied to code that already works. Status update (2026-11-17): it is decided — a native Rust service (I0012, [ADR 0032](../../.ai/repo/adrs/0032-the-bridge-s-admin-protocol-client-is-a-native-rust-service-.md)); the rewrite itself is open, in the bridge repository.
 - **`/decision/pull` contract — the local part is now defined (I0011).** The request (the decision directive `PRISMATIC_DECISION_URL` returns) and the response (`DecisionPullResult`) have a machine-checkable JSON Schema in this repository: [`decision-contract.schema.json`](decision-contract.schema.json), with a validating [`decision-contract.example.json`](decision-contract.example.json) (`python3 -m jsonschema -i research/prismatic-bridge/decision-contract.example.json research/prismatic-bridge/decision-contract.schema.json`). The directive is `{ai?: str, company_id?: int (0-14), settings?: str}` with at least one of `ai`/`company_id` — `company_id` reloads a company (`reload_ai`), else `ai` starts one (`start_ai`). What still remains for Phase 3 is each endpoint's *own-repository* half: `prismatic-platform` answering the contract at that URL, and the bridge consuming it — named as separate issues in their own repositories (this issue's `non_scope`). Since then `prismatic-platform` answers it at `GET /api/openttd/decision` (`OpenttdController#decision`, a Monte Carlo choice of `aggressiveness` over the company the bridge reports), and this fork's MCP panel consumes it without the Python bridge: `POST /api/decision/pull` and `GET /api/bridge/companies` ([`research/mcp-control.md`](../mcp-control.md), `tools/research/mcp-decision-check`). Two gaps surfaced there. Prismatic's answer carried fields the schema's `additionalProperties: false` refused; the directive now admits its own working beside the three fields, which no consumer reads (2026-11-17, after the live run against `prismatic_api` passed). The bridge's `reload_ai` dropped the settings a directive with a `company_id` decides; the panel sets them on the running AI instead, and the bridge does the same since its main 1580b4b: through this fork's `bot set`, approving its own request (owner's answers "ano, vse dotahni" and "vse sluc, integruj, deployni", 2026-11-17), with `reload_ai` left for a vanilla server. Proven live by the bridge's `tests/live_decision_settings.sh` (ffcc538) against this fork's research build: approval, `VERIFIED_SUCCESS`, and the running PrismaticAI reading `aggressiveness = 100` (was 50).
 - **Command latency / game-tick alignment**, for a future upgrade to the finer-grained `ScriptCompanyMode`/Game-Script channel (§2): those commands still go through the normal two-phase (test + execute) pipeline and, in a networked game, the deterministic-lockstep queue — a directive wouldn't execute instantly, and whatever issues it needs a defined way to report success/failure back. Mirroring this fork's own PASS/FAIL/PARTIAL/NOT RUN taxonomy from `research/README.md` would be a natural fit, and would apply equally well to reporting on `start_ai`/`reload_ai` calls today.
 - **Versioning.** `docs/admin_network.md` explicitly warns formats can change between OpenTTD versions; `bridge/protocol.py` is written against this fork's current revision and would need updating if this fork's OpenTTD base is ever updated.

@@ -12,10 +12,17 @@ no game-state dependency) so the exact production code paths are unit-tested. `t
 
 - **`ArgDigestHex`** — deterministic; different args → different digest (this is what defeats the
   "change arguments after approval" abuse case); different tool → different digest; 16 lowercase hex.
-- **`IsKnownActionType`** — only `game.set_pause` is executable; unknown/empty/`rcon` rejected.
+- **`IsKnownActionType`** — every entry of `ACTION_TYPES` and a well-formed `command.<Name>` is
+  accepted; unknown/empty/`rcon` and malformed `command.` names are rejected.
 - **`ParseContentLength`** — case-insensitive; spaces; absent → nullopt; empty value → nullopt; zero.
 - **`ExtractBearer`** — accepts `Bearer`/`bearer`, trims OWS; rejects `Basic`/no-scheme/empty.
 - **`ConstantTimeEquals`** — matches `==` semantics incl. length mismatch and empty.
+- **`ClassifySubmit`** — the approval state machine: an approval binds to the exact canonical
+  arguments, executes once, and refuses replay, changed arguments and an expired approval
+  (commit `e1f2ee7d3f`).
+
+The file has since grown beyond these helpers (command parameter conversion, the toolbar menu, the
+console family, map resources); `grep '^TEST_CASE' src/tests/test_prismatic_mcp.cpp` lists every case.
 
 These are the exact functions the running server uses (the server now calls the shared helpers), so a
 green test run is evidence about production behavior, not a parallel reimplementation.
@@ -29,7 +36,12 @@ cd build-mcp && ctest -R prismatic_mcp --output-on-failure
 
 ## Still NOT RUN (honest)
 
-Catch2 tests for the stateful approval state machine and HTTP framing (partial reads) need a small
-seam to drive the connection buffer without a socket — the free-function `HandleHttpRequest` is written
-for that but not yet wired to a test harness. Fuzzing, determinism A/B, Inspector, conformance, and
-native-UI tests remain staged (`continuation-gap-matrix.json`).
+Catch2 tests for HTTP framing (partial reads) need a small seam to drive the connection buffer
+without a socket — the free-function `HandleHttpRequest` is written for that but not yet wired to a
+test harness. Fuzzing, Inspector and conformance remain staged (`continuation-gap-matrix.json`).
+
+Status update (2026-11-17): the approval state machine is unit-tested (`ClassifySubmit`, commit
+`e1f2ee7d3f`, the test case "The approval state machine binds to canonical args ..." in
+`src/tests/test_prismatic_mcp.cpp`) and driven live by `tools/research/mcp-live-check`. The
+determinism A/B ran and passed (`determinism-ab.md`, I0026). The toolbar menu has unit tests of its
+own; a native-UI resolution matrix is still not run.

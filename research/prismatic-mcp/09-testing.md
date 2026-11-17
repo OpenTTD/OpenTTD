@@ -2,14 +2,19 @@
 
 Honest status. Per AGENTS.md, a layer not run is reported NOT RUN, never "should pass."
 
-## Current status (I0076, 2026-11-16, measured)
+## Current layers
 
-| Layer | Command | Result |
-|---|---|---|
-| Unit tests | `tools/gate.sh research` (Catch2, `src/tests/test_prismatic_mcp.cpp`, tag `[prismatic_mcp]`) | 18 cases, 558 assertions pass: security helpers, the action-type table, the reset rules, the toolbar menu and requests, the console command family, prices, terrain, the base map, ways, and empty building and vehicle lists |
-| Live security and approval | `tools/research/mcp-live-check` | 18/18 on a headless dedicated game: token file (mode 600), 401 without or with a wrong token, 403 with an Origin, protocol 2025-11-25, live reads, pending approval, changed arguments refused, approved call executed with its effect observed, replay refused, a submitted decision denied changes nothing and asks again, the listener closed on stop |
-| Coverage | `tools/research/mcp-coverage-check --probe` | 22/24 on a dedicated game: every resource read and every read-only tool called; the two approval-gated tools are the live check's |
-| Client coverage | `tools/research/mcp-coverage-check --probe --exercise` on a headless client (`openttd -v null:ticks=2147483647 -s null -m null -g`, I0077) | 53/53: every view, UI, input, toolbar-menu and decision tool called once with schema-derived arguments, every answer well-formed, the game still running after it; no tool without readOnlyHint |
+Counts are not written here, because they change with every test added; each row names the
+command that measures them. Counted from the source on 2026-11-17 (commit `fce2a08d53`):
+27 `TEST_CASE`s in `src/tests/test_prismatic_mcp.cpp` and 28 `check` calls in
+`tools/research/mcp-live-check`.
+
+| Layer | Command | What it checks | Count it with |
+|---|---|---|---|
+| Unit tests | `tools/gate.sh research` (Catch2, `src/tests/test_prismatic_mcp.cpp`, tag `[prismatic_mcp]`) | security helpers, the action-type table, command parameter conversion, the reset rules, the approval state machine, the toolbar menu and requests, the console command family, prices, terrain, the base map, ways, empty building and vehicle lists, tool annotations | `grep -c '^TEST_CASE' src/tests/test_prismatic_mcp.cpp`; assertions: the Catch2 summary line of the run |
+| Live security and approval | `tools/research/mcp-live-check` | on a headless dedicated game: token file (mode 600), 401 without or with a wrong token, 403 with an Origin, protocol 2025-11-25, live reads, pending approval, changed arguments refused, approved call executed with its effect observed and its verdict read with `openttd.decision.get`, replay refused, a submitted decision denied changes nothing and asks again, `openttd.cmd.Pause` with wrong and right parameters, a command with a text parameter and a news command run once approved, the listener closed on stop | `grep -c '^check ' tools/research/mcp-live-check`; the run prints one line per check |
+| Coverage | `tools/research/mcp-coverage-check --probe <token-file>` | on a dedicated game: every resource read and every read-only tool called; the approval-gated tools are the live check's | the script's own report: published entries against those called (`openttd://mcp/coverage`) |
+| Client coverage | `tools/research/mcp-coverage-check --probe --exercise <token-file>` on a headless client (`openttd -v null:ticks=2147483647 -s null -m null -g`, I0077) | every view, UI, input, toolbar-menu and decision tool called once with schema-derived arguments, every answer well-formed, the game still running after it; no tool without readOnlyHint | the script's own report |
 
 The token comes from the token file `prismatic_mcp start <port> <file>` writes, not from console
 text (knowledge `console-lines-the-panel-parses-are-an-interface`): the live check read the console

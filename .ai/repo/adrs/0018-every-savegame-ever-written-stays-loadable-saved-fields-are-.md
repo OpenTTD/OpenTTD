@@ -2,7 +2,7 @@
 schema: adr/v1
 id: adr-0018
 kind: adr
-title: Every savegame ever written stays loadable: saved fields are gated by SaveLoadVersion and old layouts are converted after load
+title: "Every savegame ever written stays loadable: saved fields are gated by SaveLoadVersion and old layouts are converted after load"
 status: proposed
 date: 2026-11-16
 tags:

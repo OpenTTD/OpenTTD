@@ -1,6 +1,7 @@
 # 16 — Decision Contract & Approval Workflow
 
-Implemented in `src/prismatic_mcp/prismatic_mcp_server.cpp`. Verified live (Vertical B).
+Implemented in `src/prismatic_mcp/prismatic_mcp_server.cpp`. Verified live (Vertical B), and on every
+run of `tools/research/mcp-live-check`.
 
 ## Flow
 
@@ -21,12 +22,19 @@ grant privilege.
 ## Validation (`openttd.decision.validate`, never mutates)
 
 Returns `valid`, `errors`, `current_snapshot_id` (`tick-<n>`), `required_scope`, `approval_required`
-(always true for mutations in this build), `mutating`. Checks: known action type, argument shape/types.
-Company/snapshot-staleness checks are the extension point for company-scoped actions (staged).
+and `mutating` (`ValidateAction()` in `prismatic_mcp_server.cpp`). Checks: known action type,
+argument shape/types; for `command.<Name>` also the actor (`company`), the `location` and a
+side-effect-free test run of the command (`would_succeed`, `estimated_cost`). `approval_required` is
+true for every action type the gate executes. An `api.Script<Class>.<Function>` action is validated
+by `Api::Validate()` instead, and an `openttd.api.*` tool call without `execute: true` runs in
+`GSTestMode`, changes nothing and needs no approval (`research/mcp-api.md`, "The Script API as MCP
+tools"). Snapshot-staleness checks are staged.
 
 ## Approval (two-phase, digest-bound, one-time)
 
-- **Digest**: FNV-1a of `type + "|" + canonical(args)`. The approval is bound to this digest.
+- **Digest**: FNV-1a of `type + "|" + canonical(args)`, reported as `argument_digest`. The approval
+  itself is matched on the exact canonical arguments, not on the 64-bit digest, which could collide
+  (`detail::ClassifySubmit`, unit-tested in `src/tests/test_prismatic_mcp.cpp`).
 - **Two-phase**: a mutation never executes on first submit; it returns `pending_approval` until an
   operator approves in the OpenTTD console.
 - **Argument binding**: an approval for `pause:true` does NOT authorize `pause:false` (different digest)
@@ -37,15 +45,21 @@ Company/snapshot-staleness checks are the extension point for company-scoped act
 
 ## Execution & honest verdict
 
-Execution is `Command<Commands::Pause>::Post(PauseMode::Normal, pause)` — the normal deterministic
-command path, on the main thread (handlers run inside `Poll()`), never a raw pool write. The tool then
-reads `_pause_mode` and reports:
+Execution goes through the normal deterministic command path (`Command<...>::Post`), on the main
+thread (handlers run inside `Poll()`), never a raw pool write (`ExecuteAction()` in
+`prismatic_mcp_server.cpp`). `game.set_pause` posts `Commands::Pause`; `command.<Name>` posts that
+command as the given actor; the `ai.*` actions post `Commands::CompanyControl`; an `api.*` action
+runs the Script API function in `GSAsyncMode`.
 
-- `VERIFIED_SUCCESS` — command ok AND observed effect matches intent.
-- `EXECUTED_UNVERIFIED` — command ok but effect not yet observable. **This is the normal dedicated/MP
-  case**: `Post` queues the command for a later frame, so the pause isn't visible at the instant of the
-  call. The real delta appears in the next `resources/read openttd://game/state` (verified: `paused`
-  went `false → true`). The tool deliberately does not claim success it cannot yet observe.
+The submit answer carries `verdict: PENDING_OBSERVATION` while the command is queued. The verdict is
+taken when the command has run, from its result callback (`Conclude()`); read it with
+`openttd.decision.get {decision_id}`:
+
+- `VERIFIED_SUCCESS` — command ok AND, where the action declares an observable effect (pause state,
+  AI state), the effect observed after the command ran matches intent.
+- `EXECUTED_UNVERIFIED` — command ok but the effect does not match or cannot be observed. An
+  `api.*` action on a network server is posted with no callback and always reports this, with
+  `command_result: posted`; read its effect back with the API's own getters.
 - `VERIFIED_FAILURE` — command failed.
 
 `isError` in the MCP `tools/call` result reflects `command_result`, never mere HTTP acceptance.
@@ -58,6 +72,11 @@ observed outcome per the mission's provenance requirement.
 
 ## Action catalogue (this build)
 
-`game.set_pause` (SERVER_ADMIN) only — the smallest cleanly-observable typed mutation. `company.rename`,
-`vehicle.start_stop`, `vehicle.send_to_depot` are the mapped next adapters (each needs `_current_company`
-setup + company-scope binding); staged with tests per `08-tool-catalog.md`.
+The fixed types are named once, in `detail::ACTION_TYPES` (`src/prismatic_mcp/prismatic_mcp_detail.h`):
+`game.set_pause` (SERVER_ADMIN), `ai.set_setting`, `ai.start`, `ai.stop`, `ai.reload` (AI_CONTROL).
+`ActionTypes()` adds one `command.<Name>` (GAME_MUTATION) per game command whose parameters convert
+from JSON, derived from the command table, and `openttd.decision.list_action_types` lists all of
+them. `api.Script<Class>.<Function>` (SCRIPT_API) is the action of an `openttd.api.*` call with
+`execute: true`. Company renames, vehicle start/stop and send-to-depot are no separate adapters:
+they are the commands `command.RenameCompany`, `command.StartStopVehicle` and
+`command.SendVehicleToDepot`, offered while `openttd://commands` marks them `exposable`.

@@ -5,10 +5,16 @@ Exact commands for the verified Decision-Contract vertical (Vertical B). Every l
 ## Configure & build
 
 ```bash
-cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON \
-  -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++
+cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON
 cmake --build build-mcp --target openttd -j$(sysctl -n hw.ncpu)
 ```
+
+Status update (2026-11-17): the original run forced Homebrew LLVM
+(`-DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang`, likewise for C++). That is no longer done: the
+system compiler is kept when it supports `<source_location>`, and Homebrew LLVM is only the
+fallback for an older one (ADR 0006, [`../tooling.md`](../tooling.md) "Troubleshooting"). For a
+recorded experiment, build through the research CLI's `research-mcp` profile instead
+([`../tooling.md`](../tooling.md), "Embedded MCP server checks").
 
 ## Run dedicated server + start MCP (console over a FIFO)
 

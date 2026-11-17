@@ -67,6 +67,28 @@ vendored JSON library and a CSPRNG already exist.
 
 Every "staged/N/A" answer is tracked in `05-implementation-plan.md` with the phase that closes it.
 
+Status update (2026-11-17): this record describes the first vertical and is kept as written.
+Since then:
+
+- **Decision 6 (read-only first)** has been followed through, not reversed: mutations were
+  registered only after the approval workflow existed. `openttd.game.set_pause`,
+  `openttd.cmd.<Name>` (every game command whose parameters convert from JSON), `openttd.ai.*` and
+  `openttd.api.*` with `execute: true` all go through the two-phase approval bound to the exact
+  canonical arguments, with replay refused, and post through `Command<>::Post`
+  (`16-decision-contract.md`).
+- **Q2, Q18, Q19, Q20:** every mutation goes through `Command<>::Post`; one approval executes once
+  (`detail::ClassifySubmit`, unit-tested); the verdict is taken after the command has run and read
+  with `openttd.decision.get`.
+- **Q6:** high-cardinality resources (`openttd://vehicles`, `openttd://map`, ...) are exposed whole,
+  without pagination (`05-implementation-plan.md` Phase E).
+- **Q8:** interface input from an agent is armed per process by the owner
+  ([ADR 0014](../../.ai/repo/adrs/0014-interface-input-from-an-agent-is-armed-per-process-by-the-ow.md),
+  proposed); token rotation still invalidates the bearer.
+- **Q11:** a command tool takes a `company` actor; company-scoped authorization per client is
+  still staged.
+- **Q13:** the fork has its own toolbar button and menu (I0072, `prismatic_mcp_menu.cpp`); a
+  dedicated server draws no toolbar.
+
 ## Consequences
 
 - A genuinely connectable MCP server exists in-process with strong local-security defaults and zero

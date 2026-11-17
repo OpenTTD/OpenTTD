@@ -7,28 +7,30 @@ stable **2025-11-25** spec. It is **not** part of upstream OpenTTD and is never 
 
 > Status: a real, compiling, connectable read-only vertical, plus approval-gated mutations: every
 > game command whose parameters convert from JSON is a tool `openttd.cmd.<Name>`, derived from the
-> command table (catalogue: `openttd://commands`), the company AIs are `openttd.ai.*`, and
-> `game.set_pause` stays. Each goes through a two-phase, digest-bound approval
-> (`openttd.decision.submit` or the tool → console `prismatic_mcp approve <id>` → posted through the
-> command system) — see `08-tool-catalog.md`.
-> The native GUI Control Center, a broader action catalogue, company scoping, an autonomous
-> multiplayer lab, SSE, and full conformance/determinism evidence are **staged** — see
-> `05-implementation-plan.md` for the honest per-phase status. Nothing here is a mock: the resources
-> return live pool state over real HTTP, and the mutation is a real, replay-safe command execution.
+> command table (catalogue: `openttd://commands`), the company AIs are `openttd.ai.*`, every Script
+> API function is `openttd.api.Script<Class>.<Function>`, and `game.set_pause` stays. Each mutation
+> goes through a two-phase approval bound to its exact arguments (`openttd.decision.submit` or the
+> tool → console `prismatic_mcp approve <id>` → posted through the command system) — see
+> `08-tool-catalog.md`. The determinism A/B passed (`determinism-ab.md`).
+> The native GUI Control Center window, per-client company scoping, SSE and full conformance
+> evidence are **staged** — see `05-implementation-plan.md` for the honest per-phase status.
+> Nothing here is a mock: the resources return live pool state over real HTTP, and a mutation is a
+> real, replay-safe command execution.
 
 ## Build
 
 ```bash
 cmake -S . -B build-mcp \
   -DOPTION_RESEARCH_INSTRUMENTATION=ON \
-  -DOPTION_PRISMATIC_MCP_SERVER=ON \
-  -DCMAKE_C_COMPILER="$(brew --prefix llvm)/bin/clang" \
-  -DCMAKE_CXX_COMPILER="$(brew --prefix llvm)/bin/clang++"
+  -DOPTION_PRISMATIC_MCP_SERVER=ON
 cmake --build build-mcp --target openttd -j$(sysctl -n hw.ncpu)
 ```
 
 `OPTION_PRISMATIC_MCP_SERVER` defaults OFF and **requires** `OPTION_RESEARCH_INSTRUMENTATION=ON`
 (configure fails loudly otherwise). When OFF, none of the module is compiled — zero footprint.
+The system compiler is used; only a macOS Command Line Tools install older than Xcode 15 needs
+Homebrew LLVM (`CC`/`CXX`), see ADR 0006 and [`../tooling.md`](../tooling.md) "Troubleshooting".
+`tools/gate.sh research` and the research CLI's `research-mcp` profile build the same thing.
 
 ## Run
 
@@ -39,6 +41,8 @@ prismatic_mcp start          # binds 127.0.0.1:8731, prints the bearer token
 prismatic_mcp status         # running/endpoint/counters (never prints the token)
 prismatic_mcp token          # prints the bearer token (local operator only)
 prismatic_mcp rotate         # new token, invalidates the old one
+prismatic_mcp approvals      # pending approvals; then approve <id> or deny <id>
+prismatic_mcp decisions      # the provenance trace (decisions [n])
 prismatic_mcp stop
 ```
 
@@ -64,19 +68,19 @@ Bearer token via a header only — never in the URL. The endpoint refuses any re
 
 1. **Read the ground rules first** — AGENTS.md (vendor-neutral ground rules for any agent/contributor working in this fork), then CLAUDE.md.
 2. **Read the MCP research trail** — research/prismatic-mcp/README.md is the entry point; 00-baseline.md through 19-continuation-runbook.md are phase-ordered.
-3. **Configure with the feature gate ON** — OPTION_PRISMATIC_MCP_SERVER defaults OFF and requires OPTION_RESEARCH_INSTRUMENTATION=ON.
+3. **Configure with the feature gate ON** — OPTION_PRISMATIC_MCP_SERVER defaults OFF and requires OPTION_RESEARCH_INSTRUMENTATION=ON. The system compiler is used; only a macOS Command Line Tools install older than Xcode 15 needs Homebrew LLVM through CC/CXX (ADR 0006, research/tooling.md).
    ```bash
-   cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON -DCMAKE_C_COMPILER="$(brew --prefix llvm)/bin/clang" -DCMAKE_CXX_COMPILER="$(brew --prefix llvm)/bin/clang++"
+   cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON
    ```
 4. **Build**
    ```bash
    cmake --build build-mcp --target openttd -j$(sysctl -n hw.ncpu)
    ```
-5. **Run the unit tests** — Catch2 tests for the security-critical helpers (digest binding, auth parsing, constant-time compare) are ctest-discoverable.
+5. **Run the unit tests** — Catch2 tests tagged [prismatic_mcp] (security helpers, the approval state machine, command parameter conversion, the toolbar menu, the console family) are ctest-discoverable.
    ```bash
    cmake --build build-mcp --target openttd_test -j$(sysctl -n hw.ncpu) && ctest --test-dir build-mcp -R prismatic --output-on-failure
    ```
-6. **Start the server and connect** — In the in-game console: prismatic_mcp start, then prismatic_mcp token to get the bearer token. Never share the token; it is never logged.
+6. **Start the server and connect** — In the in-game console: prismatic_mcp start, then prismatic_mcp token to get the bearer token, and prismatic_mcp approve <id> or deny <id> for a pending mutation. Never share the token; it is never logged.
 7. **Run the local validation gate before proposing a change**
    ```bash
    tools/gate.sh change
@@ -115,10 +119,32 @@ For playing on official public servers, use the unmodified client instead:
 
 ## Documents
 
-`00-baseline.md` · `01-openttd-system-map.md` · `02-threat-model.md` · `03-architecture-options.md` ·
-`04-architecture-decision-record.md` · `05-implementation-plan.md` · `07-resource-catalog.md` ·
-`08-tool-catalog.md` · `09-testing.md` · `10-in-game-runbook.md` · `spec-compliance-matrix.md` ·
-`exposure-coverage-matrix.md`.
+Generated from each document's title and first paragraph (`tools/surfaces/surfaces sync`). Two
+machine-readable files sit beside them: `internal-surface-inventory.json` and
+`continuation-gap-matrix.json` (a Phase 2 snapshot); `evidence/` holds redacted transcripts.
+
+<!-- surfaces:begin docs-index dir=research/prismatic-mcp -->
+| Document | What it is |
+|---|---|
+| [00 — Baseline (Phase 0)](00-baseline.md) | Evidence-backed snapshot of the repository before any MCP implementation, per the mission's Phase 0. Everything here is recovered from the live repo, not assumed. |
+| [01 — OpenTTD System Map (Phase 1)](01-openttd-system-map.md) | Actual call paths, ownership and thread context, recovered by reading the source (not inferred from filenames). Every claim is anchored file:line. This is the foundation the architecture is built on. |
+| [02 — Threat Model (Phase 2)](02-threat-model.md) | Scope: a RESEARCH-ONLY, compile-gated, loopback-only MCP server embedded in an OpenTTD research fork. The endpoint is never bound to a public interface. The threat model is nonetheless taken seriously because a local... |
+| [03 — Architecture Options (Phase 3)](03-architecture-options.md) | A loopback HTTP/1.1 + JSON-RPC server living inside the OpenTTD process, serviced on the main game thread from GameLoop(). Reuses NetworkAddress::Listen for the socket, nlohmann/json for encoding,... |
+| [04 — Architecture Decision Record (Phase 4)](04-architecture-decision-record.md) | Status: Accepted (foundational vertical implemented; broader phases staged). Decision: Embed a compile-gated, loopback-only Streamable-HTTP MCP server in the OpenTTD research fork, serviced entirely on the main game... |
+| [05 — Implementation Plan & Phase Status (Phase 4)](05-implementation-plan.md) | Honest status of every phase. DONE = implemented and compiled (and, where noted, run). PARTIAL = foundation in place, explicit gaps. STAGED = designed, not yet implemented. Per AGENTS.md, nothing is marked done that... |
+| [07 — Resource Catalog](07-resource-catalog.md) | Resources implemented in this build. All are read-only, wrapped in the common envelope (schema_version, source, source_revision, protocol_version, game_tick, game_date, game_mode, availability, redactions, truncated,... |
+| [08 — Tool Catalog](08-tool-catalog.md) | The catalogue is what a running server answers to tools/list; nothing here is a second copy of it. Each instance lists only what it can do (a dedicated server has no window: no openttd.view., openttd.ui. or... |
+| [09 — Testing](09-testing.md) | Honest status. Per AGENTS.md, a layer not run is reported NOT RUN, never "should pass." |
+| [10 — In-Game Runbook & Verified Vertical](10-in-game-runbook.md) | The read-only vertical, executed against a real running OpenTTD (MCP-enabled dedicated server, loaded from a fixture savegame) on 2026-07-24. Every line below is captured output, not illustration. |
+| [11 — Continuation Baseline (Phase 2 Recovery)](11-continuation-baseline.md) | Recovered actual state before writing continuation code, per the continuation mission §2-3. Source: direct inspection of the working tree this session (the Phase-1 implementation is this session's own prior work,... |
+| [12 — Continuation Plan & Adversarial Review (Phase 2)](12-continuation-plan.md) | One canonical MCP stack in src/prismatic_mcp/ (transport + JSON-RPC + resources), serviced on the main thread from GameLoop()->Poll(). Continuation adds — in the same module, no second stack — a typed... |
+| [16 — Decision Contract & Approval Workflow](16-decision-contract.md) | Implemented in src/prismatic_mcp/prismatic_mcp_server.cpp. Verified live (Vertical B), and on every run of tools/research/mcp-live-check. |
+| [18 — Continuation Testing](18-continuation-testing.md) | Uses the repository's existing Catch2 framework (no second framework), registered via add_test_files(... test_prismatic_mcp.cpp) in src/tests/CMakeLists.txt and auto-discovered by catch_discover_tests(openttd_test).... |
+| [19 — Continuation Runbook](19-continuation-runbook.md) | Exact commands for the verified Decision-Contract vertical (Vertical B). Every line was run. |
+| [Determinism A/B (I0026) — the read-only MCP path does not perturb the simulation](determinism-ab.md) | Status: PASS. One map seed run three times, headless, through tools/research/determinism-ab: an idle run, an idle control, and a run hammered with read-only MCP reads for its whole length. At every shared game-day... |
+| [Exposure Coverage Matrix](exposure-coverage-matrix.md) | Honest coverage of internal domains using the mission's status vocabulary. What is not adapted is catalogued as designed-but-not-yet-adapted, not pretended-covered. |
+| [MCP Spec Compliance Matrix (stable 2025-11-25)](spec-compliance-matrix.md) | Pinned version: 2025-11-25 (PrismaticMCP::PROTOCOL_VERSION). Draft/RC behavior is not implemented. Status: DONE / PARTIAL / STAGED. |
+<!-- surfaces:end docs-index -->
 
 ## Boundaries
 

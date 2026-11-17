@@ -117,7 +117,7 @@ xychart-beta
 
 **Embedded MCP server** &mdash; [`src/prismatic_mcp/`](src/prismatic_mcp/)<br>
 Live game state as MCP tools and resources, inside the engine. Loopback only, compile-gated
-(`OPTION_RESEARCH_INSTRUMENTATION=ON`, default OFF). Mutations go through the game's own command
+(`OPTION_PRISMATIC_MCP_SERVER=ON`, default OFF, which requires `OPTION_RESEARCH_INSTRUMENTATION=ON`). Mutations go through the game's own command
 system after an operator approves the exact arguments; every Script API function is also a tool.
 &rarr; [design](research/prismatic-mcp/README.md) &middot; [API](research/mcp-api.md)
 
@@ -342,7 +342,7 @@ Sections 1.0 onward below are the **original upstream OpenTTD README**, kept int
 |                                |  no domain content     |  * C++20 game -- system under  |
 |  * Elixir/Phoenix umbrella    |                         |    test (src/, regression/)    |
 |  * OSINT / decision-support   |                         |  * tools/gate.sh --            |
-|  * just check/precommit/ci    |                         |    smoke / change / full       |
+|  * just check/precommit/ci    |                         |    smoke/change/research/full  |
 |  * agent defs and commands    |                         |  * AGENTS.md / CLAUDE.md /     |
 |  * git-worktree session OS    |                         |    research/                   |
 +-------------------------------+                         +--------------------------------+
@@ -361,7 +361,7 @@ flowchart LR
 
     subgraph F["korczis/OpenTTD (this fork)"]
         F1["System under test: C++20, CMake/CTest"]
-        F2["tools/gate.sh: smoke / change / full"]
+        F2["tools/gate.sh: smoke / change / research / full"]
         F3["AGENTS.md, CLAUDE.md, research/"]
     end
 
@@ -517,7 +517,7 @@ flowchart TB
 
 This is where the connection to the real world — connecting automated inference to actual external reality (a real cadastral registry, a real power grid, real OSINT sources, real due-diligence subjects) — is most concrete, and where a wrong or overconfident automated conclusion has the highest real cost. It's the strongest concrete case for the closing point of 0.1: the fail-closed reporting discipline validated in this OpenTTD fork is meant to transfer back to exactly this kind of high-stakes, real-world-grounded work — not to a context where an optimistic-but-wrong status report would be harmless.
 
-**This is no longer just a design on paper.** [`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) documents an actual bridge — a standalone sibling repository, `~/dev/openttd-prismatic-bridge` (Python/FastAPI), that speaks OpenTTD's admin-network protocol directly, exposes a REST + WebSocket API, and can already start/steer a real, externally-controllable Company AI (`ai/PrismaticAI`) end to end (8/8 of its own tests passing). That AI no longer just idles either: it now builds a real single-town bus route (two stops, a depot, 1-3 buses scaled by its `aggressiveness` setting), verified against a live server (`busses` 0→3, `company_value` 1→11025). What's not built yet: a decision contract with `prismatic-platform` (so something other than a fixed settings string drives the AI), intercity routes (real road pathfinding across arbitrary terrain), and world seeding from real elevation data. Each remaining phase needs its own approval before being built — see the design doc for the full phase table and open questions (including an explicit, not-yet-resolved question about whether the bridge should move to Rust).
+**This is no longer just a design on paper.** [`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) documents an actual bridge — a standalone sibling repository, `~/dev/openttd-prismatic-bridge` (Python/FastAPI), that speaks OpenTTD's admin-network protocol directly, exposes a REST + WebSocket API, and can already start/steer a real, externally-controllable Company AI (`ai/PrismaticAI`) end to end (8/8 of its own tests passing). That AI no longer just idles either: it builds a single-town bus route (two stops, a depot, 1-3 buses scaled by its `aggressiveness` setting), verified against a live server (`busses` 0→3, `company_value` 1→11025), and intercity road, rail, air and freight routes behind its settings. The decision contract with `prismatic-platform` has a machine-checkable schema in this repository (I0011, `research/prismatic-bridge/decision-contract.schema.json`); `prismatic-platform` answers it, and this fork's MCP panel consumes it at `POST /api/decision/pull` (checked end to end by `tools/research/mcp-decision-check`). The bridge's language is decided: a native Rust service (I0012, ADR 0032), still to be written in the bridge repository, so the Python bridge is the running implementation. What's not built yet: world seeding from real elevation data, and live decision-making that uses more of Prismatic than one Monte Carlo choice. Each remaining phase needs its own approval before being built — see the design doc for the full phase table and open questions.
 
 ### 0.3) What this fork is not
 
@@ -557,7 +557,7 @@ korczis/OpenTTD/
 ├── CLAUDE.md              * fork-added pointer + preserved upstream-technical reference content
 │
 ├── tools/
-│   ├── gate.sh            * fork-added: smoke / change / full validation entry point
+│   ├── gate.sh            * fork-added: smoke / change / research / full validation entry point
 │   ├── check-prismatic-docs.sh  * fork-added: generated-docs freshness gate
 │   ├── surfaces/          * fork-added: site / wiki / Markdown-region generator and its check (0.4.2)
 │   └── research/          * fork-added: research-mode CLI (doctor/init/configure/build/run/validate/report/clean),
@@ -567,7 +567,8 @@ korczis/OpenTTD/
 │   ├── README.md          * fork-added: gating model + PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy
 │   ├── experiment-template.md  * fork-added: experiment report template (manual/freeform)
 │   ├── tooling.md         * fork-added: tools/research/research reference (architecture, schema, profiles)
-│   ├── mcp-control.md     * fork-added: control window, developer console, Rhai, loopback HTTP API
+│   ├── mcp-*.md, ...      * fork-added: driving a game over MCP, the hub, the console, the bridge, results
+│   │                        (every document is listed in research/README.md's generated index)
 │   └── prismatic-mcp/     * fork-added: embedded MCP server research trail (00-baseline.md .. 19-continuation-runbook.md)
 │
 ├── src/prismatic_mcp/       * fork-added: MCP server implementation, gated by OPTION_PRISMATIC_MCP_SERVER (default OFF)
@@ -583,23 +584,23 @@ korczis/OpenTTD/
 
 [**Get started: Prismatic MCP for contributors**](https://github.com/korczis/OpenTTD/blob/master/research/prismatic-mcp/README.md) — Research-only · loopback-only · compile-gated. Read AGENTS.md before touching anything.
 
-A real, compiling, connectable read-only vertical, plus one gated mutation (game.set_pause via a two-phase digest-bound approval). See 05-implementation-plan.md for the honest per-phase status. Native GUI, a broader action catalogue, company scoping, autonomous multiplayer lab, and full conformance evidence are staged, not implemented.
+A real, compiling, connectable read-only vertical, plus approval-gated mutations: openttd.game.set_pause, one openttd.cmd.<Name> tool per game command whose parameters convert from JSON, the company AIs (openttd.ai.*) and Script API calls with execute (openttd.api.*), each through a two-phase approval bound to its exact arguments. The fork's own toolbar button and menu are in the game. See 05-implementation-plan.md for the honest per-phase status. The Control Center window, per-client company scoping, SSE and full conformance evidence are staged, not implemented.
 
 1. **Read the ground rules first** — AGENTS.md (vendor-neutral ground rules for any agent/contributor working in this fork), then CLAUDE.md.
 2. **Read the MCP research trail** — research/prismatic-mcp/README.md is the entry point; 00-baseline.md through 19-continuation-runbook.md are phase-ordered.
-3. **Configure with the feature gate ON** — OPTION_PRISMATIC_MCP_SERVER defaults OFF and requires OPTION_RESEARCH_INSTRUMENTATION=ON.
+3. **Configure with the feature gate ON** — OPTION_PRISMATIC_MCP_SERVER defaults OFF and requires OPTION_RESEARCH_INSTRUMENTATION=ON. The system compiler is used; only a macOS Command Line Tools install older than Xcode 15 needs Homebrew LLVM through CC/CXX (ADR 0006, research/tooling.md).
    ```bash
-   cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON -DCMAKE_C_COMPILER="$(brew --prefix llvm)/bin/clang" -DCMAKE_CXX_COMPILER="$(brew --prefix llvm)/bin/clang++"
+   cmake -S . -B build-mcp -DOPTION_RESEARCH_INSTRUMENTATION=ON -DOPTION_PRISMATIC_MCP_SERVER=ON
    ```
 4. **Build**
    ```bash
    cmake --build build-mcp --target openttd -j$(sysctl -n hw.ncpu)
    ```
-5. **Run the unit tests** — Catch2 tests for the security-critical helpers (digest binding, auth parsing, constant-time compare) are ctest-discoverable.
+5. **Run the unit tests** — Catch2 tests tagged [prismatic_mcp] (security helpers, the approval state machine, command parameter conversion, the toolbar menu, the console family) are ctest-discoverable.
    ```bash
    cmake --build build-mcp --target openttd_test -j$(sysctl -n hw.ncpu) && ctest --test-dir build-mcp -R prismatic --output-on-failure
    ```
-6. **Start the server and connect** — In the in-game console: prismatic_mcp start, then prismatic_mcp token to get the bearer token. Never share the token; it is never logged.
+6. **Start the server and connect** — In the in-game console: prismatic_mcp start, then prismatic_mcp token to get the bearer token, and prismatic_mcp approve <id> or deny <id> for a pending mutation. Never share the token; it is never logged.
 7. **Run the local validation gate before proposing a change**
    ```bash
    tools/gate.sh change
@@ -625,15 +626,17 @@ A real, compiling, connectable read-only vertical, plus one gated mutation (game
 | [`research/prismatic-mcp/16-decision-contract.md`](./research/prismatic-mcp/16-decision-contract.md) — Decision contract and approval workflow | reference |
 | [`research/prismatic-mcp/18-continuation-testing.md`](./research/prismatic-mcp/18-continuation-testing.md) — Continuation testing | reference |
 | [`research/prismatic-mcp/19-continuation-runbook.md`](./research/prismatic-mcp/19-continuation-runbook.md) — Continuation runbook | runbook |
+| [`research/prismatic-mcp/determinism-ab.md`](./research/prismatic-mcp/determinism-ab.md) — Determinism A/B (I0026): the read-only MCP path does not perturb the simulation | reference |
 | [`research/prismatic-mcp/exposure-coverage-matrix.md`](./research/prismatic-mcp/exposure-coverage-matrix.md) — Exposure coverage matrix (honest per-domain status) | matrix |
 | [`research/prismatic-mcp/spec-compliance-matrix.md`](./research/prismatic-mcp/spec-compliance-matrix.md) — MCP spec compliance matrix (stable 2025-11-25) | matrix |
 | [`research/prismatic-mcp/internal-surface-inventory.json`](./research/prismatic-mcp/internal-surface-inventory.json) — Machine-readable internal surface inventory | data |
 | [`research/prismatic-mcp/continuation-gap-matrix.json`](./research/prismatic-mcp/continuation-gap-matrix.json) — Machine-readable continuation gap matrix | data |
 
 Known limitations (also generated from the same source):
-- Native GUI (toolbar entry, Control Center window) is not implemented -- console command parity only.
-- No autonomous multiplayer arena/lab exists.
-- Exactly one mutating action type is implemented: game.set_pause, via a two-phase digest-bound approval (openttd.decision.submit -> console 'prismatic_mcp approve <id>' -> execute). No company-scoped authorization, no action budget, no other action types exist yet.
+- The native Control Center window is not implemented; the toolbar button and its menu are (I0072).
+- No autonomous multiplayer arena/lab exists; tools/research/mcp-duel runs a duel of two bots in one game.
+- Every mutation needs an operator approval in the console ('prismatic_mcp approve <id>'). A command tool takes a company actor, but there is no per-client company-scoped authorization and no action budget.
+- Saving a game is not an action type: it is not a game command, so it is not in the catalogue.
 - This catalog itself has no automated freshness check against the actual doc_index file list beyond what tools/check-prismatic-docs.sh diffs -- new docs must be added here by hand.
 <!-- END GENERATED: prismatic-mcp-getting-started -->
 
@@ -676,10 +679,11 @@ Local validation is layered by cost, with one entry point (`tools/gate.sh`) for 
 |---|---|---|---|
 | Smoke | `tools/gate.sh smoke` | cheapest | fast feedback while actively iterating |
 | Change | `tools/gate.sh change` | standard | before calling a task/change done |
+| Research | `tools/gate.sh research` | standard+ | a change to code behind `OPTION_RESEARCH_INSTRUMENTATION` (or the MCP server option), which the other tiers never compile |
 | Full | `tools/gate.sh full` | expensive | significant changes, or an experimental baseline |
 | Research/evaluation | `tools/research/research validate --gate research` | n/a | lints a generated `manifest.json` for completeness/honesty (see `research/tooling.md`); [`research/experiment-template.md`](./research/experiment-template.md) remains available for a freeform, manually-written report |
 
-All three build/test tiers are thin wrappers around OpenTTD's own existing CMake/CTest toolchain (see `CLAUDE.md` §Test) — there is no separate lint/format gate, because no such tool currently exists in this codebase, and this fork doesn't fake one. Full details and the experiment-report taxonomy are in [`research/README.md`](./research/README.md); the research-mode CLI itself (build profiles, the instrumentation demonstrator, the manifest schema, the evidence-bundle layout) is in [`research/tooling.md`](./research/tooling.md).
+All four build/test tiers are thin wrappers around OpenTTD's own existing CMake/CTest toolchain (see `CLAUDE.md` §Test) — there is no separate lint/format gate, because no such tool currently exists in this codebase, and this fork doesn't fake one. Full details and the experiment-report taxonomy are in [`research/README.md`](./research/README.md); the research-mode CLI itself (build profiles, the instrumentation demonstrator, the manifest schema, the evidence-bundle layout) is in [`research/tooling.md`](./research/tooling.md).
 
 What each tier actually runs, and why the cost differs:
 
@@ -692,12 +696,19 @@ flowchart TD
     S3 --> SOpt["optional: ctest -R &lt;regex&gt;<br/>(targeted tests only)"]
 
     C(["tools/gate.sh change"]) --> C1["git diff --check"]
-    C1 --> C2{"build/ configured?"}
+    C1 --> C1a["generated-docs, surfaces,<br/>scoreboard and knowledge checks"]
+    C1a --> C2{"build/ configured?"}
     C2 -- no --> C2a["cmake -S . -B build<br/>(initial configure)"]
     C2 -- yes --> C3
     C2a --> C3["cmake --build build<br/>(incremental)"]
-    C3 --> C4["ctest --test-dir build<br/>(FULL suite, all 98 tests)"]
+    C3 --> C4["ctest --test-dir build<br/>(the full suite)"]
     C4 --> C5["git status --porcelain<br/>(review for stray generated files)"]
+
+    R(["tools/gate.sh research"]) --> R1["git diff --check"]
+    R1 --> R2["cmake -S . -B build-gate-research<br/>(research option ON, MCP option ON when present)"]
+    R2 --> R3["cmake --build build-gate-research"]
+    R3 --> R4["research_status compiled in?<br/>(else fail)"]
+    R4 --> R5["ctest, then openttd_test<br/>'[prismatic_mcp]'"]
 
     F(["tools/gate.sh full"]) --> F1["rm -rf build-fullgate<br/>(clean room, build/ untouched)"]
     F1 --> F2["cmake -S . -B build-fullgate<br/>(fresh configure)"]
@@ -802,11 +813,11 @@ The imported local tooling defines a very large number of specialized, individua
 |---|---|---|---|
 | Repository access | A coding agent reads and edits this fork's working tree under `AGENTS.md` ground rules | Git history, diffs, working-tree state | Implemented |
 | Task specification | A session's stated goal, classified into one of the four kinds of change (0.1) | Task prompt, base revision | Implemented |
-| Build/test validation gates | `tools/gate.sh` smoke / change / full tiers wrapping this repo's own CMake/CTest toolchain | Exit codes, build/test output | Implemented (0.5) |
+| Build/test validation gates | `tools/gate.sh` smoke / change / research / full tiers wrapping this repo's own CMake/CTest toolchain | Exit codes, build/test output | Implemented (0.5) |
 | Experiment reporting | `tools/research/research report` generates `manifest.json` + `summary.md`; `research/experiment-template.md` remains for a manual, freeform note | A generated evidence bundle under `build-research-runs/<id>/` (not committed or gated by default), or a filled-in template copy | Implemented (automated CLI path + manual template, both valid) |
 | Research-mode build/instrumentation capture | `tools/research/research configure/build/run` against `research-debug`/`baseline-release`/`research-asan` profiles, capturing the `research_status` demonstrator headless | `manifest.json`'s `build`/`runtime`/`instrumentation` fields, `diagnostics/research_status.txt` | Implemented (`research-debug`/`baseline-release`); `research-asan` is configure-only so far |
-| Admin-network control/observation bridge | Standalone `openttd-prismatic-bridge` service drives a Company AI via OpenTTD's admin network (`start_ai`/`reload_ai`), which now runs a real single-town bus-route strategy, and exposes a REST/WebSocket observation API | HTTP/WebSocket traffic, admin-network TCP traffic | Implemented — Phases 1–2 (see `research/prismatic-bridge/ARCHITECTURE.md` §5); lives in a separate, standalone repository, not this one |
-| Prismatic decision-making wired to the bridge (`prismatic_monte_carlo` / `prismatic_deduction` / `prismatic_intelligence_fusion`) | Would compute the settings string the bridge sends to the in-game AI | A settings string via `/decision/pull` | Planned, not started (Phase 3/5 of the same document) |
+| Admin-network control/observation bridge | Standalone `openttd-prismatic-bridge` service drives a Company AI via OpenTTD's admin network (`start_ai`/`reload_ai`), which runs a single-town bus route and, behind its settings, intercity road, rail, air and freight routes, and exposes a REST/WebSocket observation API | HTTP/WebSocket traffic, admin-network TCP traffic | Implemented — Phases 1–2 (see `research/prismatic-bridge/ARCHITECTURE.md` §5); lives in a separate, standalone repository, not this one |
+| Prismatic decision-making wired to the bridge (`prismatic_monte_carlo` / `prismatic_deduction` / `prismatic_intelligence_fusion`) | Computes the settings string the in-game AI runs with | A decision directive via `/decision/pull`, checked against `research/prismatic-bridge/decision-contract.schema.json` | Partial — Phase 3: the contract is defined (I0011); `prismatic-platform` answers it with a Monte Carlo choice of `aggressiveness`, and this fork's MCP panel applies it at `POST /api/decision/pull` (`tools/research/mcp-decision-check`, I0041). Phase 5, deduction and intelligence fusion, is not started (`research/prismatic-bridge/ARCHITECTURE.md` §5, §7) |
 | World seeding from real elevation/GIS data | Headless `-g <heightmap-file>` start (corrected from an earlier `-G` typo — `-G` is the map-generation random seed flag, unrelated) | A heightmap file | Experimental / partially confirmed — the headless start path itself works; the data-prep pipeline (Phase 4) has not been built |
 | Repository-level retrieval (RAG) feeding an agent's context in this fork | n/a | n/a | Conceptual (0.9) — referenced in Prismatic's own tooling, not confirmed as used in sessions here |
 | Shared coordination state (Blackboard-style) across agent sessions in this fork | n/a | n/a | Conceptual (0.9) — same caveat |
@@ -844,7 +855,7 @@ Claims and evidence discipline:
 - Agent behavior depends on the specific model, tools, and context available in a given session; results from one configuration don't automatically transfer to another.
 - Passing this fork's existing tests demonstrates only the behavior those tests actually cover (0.11).
 - This fork's own gating and reporting model (0.5, 0.6) is itself one of the things being evaluated here, not a proven-correct baseline — see 0.2.4's "D — rejected, not transferable" row for a concrete example of a Prismatic-side pattern this fork deliberately did not adopt.
-- The admin-network bridge to a running OpenTTD server (`research/prismatic-bridge/ARCHITECTURE.md`) is, as of this document, a standalone service whose AI now runs a real (if single-town, settings-driven) bus-route strategy but still has an undefined decision contract with `prismatic-platform` (its own Phase 3); findings about "an agent controlling a game" are currently limited to the control/observation transport and a fixed, hand-written strategy working, not to any decision quality driven by external modeling.
+- The admin-network bridge to a running OpenTTD server (`research/prismatic-bridge/ARCHITECTURE.md`) is a standalone service whose AI runs settings-driven, hand-written route strategies. The decision contract with `prismatic-platform` is defined and answered (Phase 3), but the decision it carries is one setting (`aggressiveness`) chosen by one Monte Carlo model; findings about "an agent controlling a game" are limited to the control/observation transport, hand-written strategies and that one decision, not to decision quality driven by broader external modeling.
 - This revision of this section was written in a session with no live read access to `~/dev/prismatic-platform` (the active permission mode denied filesystem access outside this repository for most of the session). Its Prismatic-sourced claims rely on content already verified and written into this README in an earlier session that did have access (0.2), plus this fork's own locally cached, git-excluded agent tooling imported from Prismatic, filtered for sober, checkable claims. `AIG` in particular could not be verified either way and is therefore omitted rather than guessed at (0.9).
 
 ## 1.0) About

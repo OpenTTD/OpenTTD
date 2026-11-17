@@ -33,7 +33,7 @@ Upstream's own contribution process — `CONTRIBUTING.md`, the PR template, the 
 
 ## Validation layers
 
-One entry point, three build/test tiers of increasing cost, plus a reporting layer:
+One entry point, four build/test tiers of increasing cost, plus a reporting layer:
 
 | Tier | Entry point | Cost | Purpose |
 |---|---|---|---|
