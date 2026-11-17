@@ -48,5 +48,11 @@ is for its own fleet size, divided per vehicle.
   investments, three freight lines) against 1050432 uncalibrated (duel-20261117T183400, five
   investments): 2.5% lower, about twice the spread of two runs of one bot. It led by 4.6% at month
   31. Calibration stays off by default; one reading of one game is too little to steer the plan.
+- That A/B ran with a defect, found by an independent review (codex, 2026-11-17): the factor is a
+  ratio of net profit, but the planner multiplied income by it and then subtracted the running cost,
+  so a factor r charged an extra (1 − r) × running cost. Since the fix the factor scales income
+  minus running cost (`plan.rs`, `cargo.rs`; test `calibration_scales_net_profit_never_income_alone`).
+  The 2.5% therefore says nothing yet about a correct calibration; the next A/B needs several seeds
+  and paired runs, not one pair.
 - Re-measure after a change to the payment or load model, and with more vehicles per line; record
   the new reading here rather than a second record.

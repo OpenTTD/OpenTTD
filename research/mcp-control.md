@@ -641,7 +641,9 @@ month, counted only for vehicles at least two years old. It is matched to the pl
 whose ends lie within 12 tiles of both stations, in a mode its vehicles serve, and the prediction is
 that option's `monthly_profit` per vehicle. The median ratio per mode is `calibration.params`; pass it
 back as `params` and the next plan multiplies each mode's predicted income by it (`plan.rs`,
-`cargo.rs`: `calibration.<mode>`, 1 when unmeasured). A line nothing explains is listed with the
+`cargo.rs`: `calibration.<mode>`, 1 when unmeasured). The factor is a ratio of net profit, so it
+scales income minus running cost; until 2026-11-17 it scaled income alone, which charged the running
+cost a second time (found by an independent review, codex). A line nothing explains is listed with the
 reason. The World page's **Calibrate** shows it, and a row moves the owner's camera to the line.
 
 **A measurement outlives its game.** `mcp-plan --calibrate --record research/calibration.json`, or

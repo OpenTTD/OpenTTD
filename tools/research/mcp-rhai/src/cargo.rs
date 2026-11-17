@@ -71,8 +71,9 @@ pub fn freight_pairs(world: &Value, engines: &Value, p: &Value, limit: usize) ->
                     let Some((vname, cap, speed, price, running)) = freight_vehicle(engines, cname, rail, wagons) else { continue };
                     let periods = d / (speed.max(1.0) * 0.0903) + overhead;
                     // `calibration.<mode>`, read back from the running game (src/calibrate.rs); 1 unmeasured.
-                    let per_unit = d * time_factor_for(periods, td1, td2) * payment / 2097152.0
-                        * p.pointer(&format!("/calibration/{mode}")).or_else(|| p.pointer("/calibration/default")).and_then(Value::as_f64).unwrap_or(1.0);
+                    // A ratio of net profit, so it scales income minus running cost (plan.rs says why).
+                    let cal = p.pointer(&format!("/calibration/{mode}")).or_else(|| p.pointer("/calibration/default")).and_then(Value::as_f64).unwrap_or(1.0);
+                    let per_unit = d * time_factor_for(periods, td1, td2) * payment / 2097152.0;
                     let per_vehicle = cap * load * 12.0 / (2.0 * periods); // loaded one way, empty back
                     let build = if rail { d * rail_tile + rail_stations } else { d * road_tile * 0.5 + truck_stops };
                     if budget.is_some_and(|b| build > b) { continue; }
@@ -82,7 +83,7 @@ pub fn freight_pairs(world: &Value, engines: &Value, p: &Value, limit: usize) ->
                     while n <= top {
                         if budget.is_some_and(|b| build + n * price > b) { break; }
                         let carried = monthly.min(n * per_vehicle);
-                        let profit = carried * per_unit - n * running / 12.0;
+                        let profit = (carried * per_unit - n * running / 12.0) * cal;
                         let score = profit * payback - build - n * price;
                         if score > chosen.0 { chosen = (score, n, carried, profit); }
                         n += 1.0;
@@ -214,6 +215,27 @@ mod tests {
         assert_eq!(chosen.len(), 3);
         assert_eq!(chosen.iter().filter(|x| x.pointer("/producer/id") == Some(&serde_json::json!(13))).count(), 1);
         assert_eq!(p["shadowed"], serde_json::json!(["Coal@13"]));
+    }
+
+    #[test]
+    fn calibration_scales_net_profit_never_income_alone() {
+        // One truck line, 100 tiles: a factor of 0.5 must halve the monthly profit exactly. Scaling the
+        // income and then subtracting the running cost charged the cost twice (codex review, 2026-11-17).
+        let world = serde_json::json!({"nodes": [
+            {"kind": "industry", "id": 1, "x": 10, "y": 10, "produces": [{"name": "Coal", "last_month": 200}]},
+            {"kind": "industry", "id": 2, "x": 110, "y": 10, "accepts": [{"name": "Coal"}]}]});
+        let engines = serde_json::json!({
+            "cargos": [{"name": "Coal", "payment": 5916, "transit_periods": [7, 255]}],
+            "engines": [{"type": "road", "name": "Truck", "cargo": "Coal", "capacity": 20, "effective_speed_kmh": 48, "price": 4000, "running_cost_per_year": 2400}]});
+        let p = |cal: Option<f64>| {
+            let mut v = serde_json::json!({"modes": ["truck"], "freight": {"bands": [20, 250]}});
+            if let Some(c) = cal { v["calibration"] = serde_json::json!({"truck": c}); }
+            v
+        };
+        let profit = |cal| super::freight_pairs(&world, &engines, &p(cal), 5)[0]["options"][0]["monthly_profit"].as_f64().unwrap();
+        let (plain, half) = (profit(None), profit(Some(0.5)));
+        assert!(plain > 0.0);
+        assert!((half - plain / 2.0).abs() <= 1.0, "{half} is not half of {plain}");
     }
 
     #[test]

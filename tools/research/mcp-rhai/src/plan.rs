@@ -233,9 +233,12 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value, engin
                 let speed = vehicle.as_ref().map_or(*speed, |v| v.speed.max(1.0));
                 let periods = d / (speed * 0.0903) + overhead;
                 // `calibration.<mode>`: what this mode really earned against what the model said, read
-                // back from the running game (src/calibrate.rs); 1 when nothing was measured.
-                let per_passenger = d * time_factor(periods) * payment / 2097152.0
-                    * p.pointer(&format!("/calibration/{name}")).or_else(|| p.pointer("/calibration/default")).and_then(Value::as_f64).unwrap_or(1.0);
+                // back from the running game (src/calibrate.rs); 1 when nothing was measured. It is a
+                // ratio of NET profit, so it scales income minus running cost, never income alone:
+                // r × income − cost charged the running cost a second time ((1 − r) × cost), which an
+                // independent review found (codex, 2026-11-17) after the calibrated A/B lost 2.5%.
+                let cal = p.pointer(&format!("/calibration/{name}")).or_else(|| p.pointer("/calibration/default")).and_then(Value::as_f64).unwrap_or(1.0);
+                let per_passenger = d * time_factor(periods) * payment / 2097152.0;
                 let demand = supply * supply_factor;
                 let build = match name.as_str() {
                     "bus" => if connected { 0.0 } else { d * road_tile },
@@ -259,7 +262,7 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value, engin
                         let eval = |n: f64| {
                             let carried = demand.min(n * per_vehicle);
                             let running = n * v.running_per_year / 12.0;
-                            ((carried * per_passenger - running) * payback - build - n * v.price, carried, running)
+                            ((carried * per_passenger - running) * cal * payback - build - n * v.price, carried, running)
                         };
                         let mut best_n = 1.0;
                         let mut best_s = f64::MIN;
@@ -278,7 +281,7 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value, engin
                     None => (demand, 0.0, 0.0, Value::Null),
                 };
                 let income = carried * per_passenger;
-                let profit = income - running;
+                let profit = (income - running) * cal;
                 let invest = build + purchase;
                 let score = profit * payback - invest;
                 options.push(json!({"mode": name, "transit_periods": (periods * 10.0).round() / 10.0,
