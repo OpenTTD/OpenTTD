@@ -41,6 +41,19 @@ The owner was asked (AskUserQuestion, session ff4a0d12-f79a-47bb-932b-ffd3aa94e3
 Answer: **"Push all (Recommended)"**. The option text: "Push master as it is: my shell refactor and
 results plus the peer's reviewed carry-out check." Master was pushed to `32c810aa32`.
 
+Asked again (AskUserQuestion, same session, 2026-11-17T23:2xZ, master merged with origin and checks passing):
+
+> Local master is ready to push (merged with origin, checks pass). Besides my commits (page header
+> 57c84939b3, DRY kit 1cc9475141, knowledge 8e8ccaf84b and 70236d5704, seed 20208 results 16d39dbb4b) it
+> carries five commits by other sessions made in the shared checkout, mostly
+> kompendium-epistemicke-anihilace-2e, whose own session blocks master pushes: a83cb95ad5, be24e6bcb7,
+> 06f4f746fd, e5e7386d87, e35f71717b. Push master with them?
+
+Answer: **"Push all (Recommended)"** ("Push master as it is, my work plus the five peer commits made in
+this checkout."). Master was pushed to `a118d1c513`. That session's two uncommitted files
+(`research/mcp-control.md`, `tools/research/mcp-rhai/src/bin/mcp-intent.rs`) stayed in the work tree,
+unstaged: a push carries commits only.
+
 # How to apply it
 
 - Before a push, list `git log origin/master..HEAD --format='%h %s'` and name every commit that is not
