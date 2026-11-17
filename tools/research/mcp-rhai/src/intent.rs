@@ -257,6 +257,159 @@ pub fn parse_with(text: &str, vocab: &[(Vec<String>, String, &'static str, Strin
 
 fn num(v: &Value, k: &str) -> f64 { v.get(k).and_then(Value::as_f64).unwrap_or(0.0) }
 
+/// The role suffixes that name the two endpoints of one route slot of the bot. The bot's own
+/// vocabulary has two namings, and both are read from what it declares, never from a list of slot
+/// names or a slot count here: `_from`/`_to` (with `_cargo`) for a freight line, which the bot
+/// numbers ("fr", "fr2", ... today), and `_a`/`_b` for the planner's passenger pair, which the bot
+/// names per mode ("rail_a", "air_a", ...). A bot that declares one slot has one, a bot that
+/// declares sixteen has sixteen, and a bot that adds a mode or a slot needs no change here.
+const SLOT_ROLES: [(&str, &str); 2] = [("_from", "_to"), ("_a", "_b")];
+/// The third role of a freight slot, written when the bot declares it.
+const SLOT_CARGO: &str = "_cargo";
+/// The slot the answer names when the bot's settings could not be read at all (no panel, no
+/// company running): the pre-existing unsuffixed triple, so an offline answer keeps its old shape.
+/// It is never used when the bot does declare slots — those are derived.
+const SLOT_WHEN_NO_BOT: &str = "fr";
+/// The value an endpoint setting carries when its slot holds no line.
+const SLOT_EMPTY: i64 = -1;
+
+/// The bot's declared settings with their live values, as the game publishes them (openttd://ai,
+/// which the panel serves at /api/resources/ai and, per company, at /api/bots): the running
+/// company's `settings[] = {name, value}`. An empty map means "the bot is unknown here".
+pub fn bot_settings(bot: &Value) -> BTreeMap<String, i64> {
+    // openttd://ai lists `companies`, the panel's /api/bots lists `running`; a caller may also hand
+    // over one company object directly.
+    let company = ["/companies", "/running"].iter().filter_map(|p| bot.pointer(p))
+        .filter_map(Value::as_array).flatten()
+        .find(|c| c.get("settings").is_some() && c["running"].as_bool().unwrap_or(true))
+        .cloned().unwrap_or_else(|| bot.clone());
+    company.get("settings").and_then(Value::as_array).into_iter().flatten()
+        .filter_map(|s| Some((s["name"].as_str()?.to_string(), s["value"].as_i64()?))).collect()
+}
+
+/// One route slot the bot declares: the name in front of the role suffixes (`stem`), which pair of
+/// suffixes names its endpoints (`roles`), the slot's place in the bot's own order, and the live
+/// values of its two endpoints.
+#[derive(Clone, Debug)]
+pub struct Slot { pub stem: String, pub roles: (&'static str, &'static str), pub order: u64, pub from: i64, pub to: i64 }
+
+impl Slot {
+    /// A slot holds no line when both its endpoints read empty.
+    pub fn free(&self) -> bool { self.from == SLOT_EMPTY && self.to == SLOT_EMPTY }
+    pub fn from_key(&self) -> String { format!("{}{}", self.stem, self.roles.0) }
+    pub fn to_key(&self) -> String { format!("{}{}", self.stem, self.roles.1) }
+}
+
+/// Every route slot the bot declares, in the bot's own order. A slot exists when the bot declares
+/// both endpoint settings of one role pair; its order is the trailing number of the stem, and a
+/// stem with no number is the first slot (the unsuffixed `fr_from`/`fr_to`/`fr_cargo` triple).
+pub fn slots(settings: &BTreeMap<String, i64>) -> Vec<Slot> {
+    let mut out: Vec<Slot> = Vec::new();
+    for roles in SLOT_ROLES {
+        for (k, from) in settings {
+            let Some(stem) = k.strip_suffix(roles.0) else { continue };
+            let Some(to) = settings.get(&format!("{stem}{}", roles.1)) else { continue };
+            let digits: String = stem.chars().rev().take_while(char::is_ascii_digit).collect();
+            let order = digits.chars().rev().collect::<String>().parse::<u64>().unwrap_or(1);
+            out.push(Slot { stem: stem.to_string(), roles, order, from: *from, to: *to });
+        }
+    }
+    out.sort_by(|a, b| a.order.cmp(&b.order).then_with(|| a.stem.cmp(&b.stem)));
+    out
+}
+
+/// The line a candidate stands for: its two endpoint ids, its cargo id when it has one, and which
+/// role pair names its endpoints in the bot's settings. The mode is the stem a passenger pair needs.
+fn line_of(cand: &Value, industries: &[&Value], plan: &Value) -> Option<(i64, i64, Option<Value>, (&'static str, &'static str), Option<String>)> {
+    let id = |v: &Value| v.as_str().and_then(|s| s.rsplit(':').next()).and_then(|n| n.parse::<i64>().ok()).or_else(|| v.as_i64());
+    if cand.get("from").is_some() {
+        // The cargo's id from the producer's own produces entry in the world graph (where the
+        // planner's freight pairs take it too); the planner's list may hold no pair of that cargo,
+        // which left fr_cargo null for "vystav trať mezi nejproduktivnějším lesem a pilou".
+        let cargo = industries.iter().find(|i| i["id"] == cand["from"]["id"])
+            .and_then(|i| i["produces"].as_array()?.iter().find(|p| p["name"] == cand["cargo"]).map(|p| p["cargo"].clone()))
+            .filter(|v| !v.is_null())
+            .or_else(|| plan["freight"].as_array().into_iter().flatten().find(|f| f["cargo"] == cand["cargo"]).map(|f| f["cargo_id"].clone()))
+            .unwrap_or(Value::Null);
+        Some((id(&cand["from"]["id"])?, id(&cand["to"]["id"])?, Some(cargo), SLOT_ROLES[0], None))
+    } else if cand.get("producer").is_some() {
+        Some((id(&cand["producer"]["id"])?, id(&cand["acceptor"]["id"])?, Some(cand["cargo_id"].clone()), SLOT_ROLES[0], None))
+    } else if cand.get("a").is_some() {
+        // A passenger pair lives in the slot named after its mode, so the mode is the stem.
+        Some((id(&cand["a"]["id"])?, id(&cand["b"]["id"])?, None, SLOT_ROLES[1], cand["mode"].as_str().map(str::to_string)))
+    } else {
+        None
+    }
+}
+
+/// The settings that carry out the best candidate the bot can actually build: a free slot of the
+/// kind the candidate needs (the lowest one), in a mode the bot declares, holding values that are
+/// not already live. Every rejection is named, because a plan whose settings equal the live values
+/// is a no-op dressed up as a build — which is how this defect hid.
+fn build(candidates: &[Value], industries: &[&Value], plan: &Value, bot: &Value) -> Value {
+    let declared = bot_settings(bot);
+    let slots = slots(&declared);
+    let mut notes: Vec<String> = Vec::new();
+    if declared.is_empty() {
+        notes.push(format!("the bot's settings could not be read: slot {SLOT_WHEN_NO_BOT} assumed"));
+    }
+    for (i, cand) in candidates.iter().enumerate() {
+        let what = |msg: String| format!("candidate {} skipped: {msg}", i + 1);
+        let Some((from, to, cargo, roles, stem)) = line_of(cand, industries, plan) else {
+            notes.push(what("it names no line the bot could build".into()));
+            continue;
+        };
+        // A slot of this kind that already holds exactly this line: proposing it would write the
+        // values the bot already runs on.
+        if let Some(s) = slots.iter().find(|s| s.roles == roles && s.from == from && s.to == to) {
+            notes.push(what(format!("the bot already runs {from} -> {to} as {}", s.stem)));
+            continue;
+        }
+        // The slot to write: the lowest free slot of this kind, and for a passenger pair the slot
+        // named after the candidate's mode — a mode the bot does not declare has no slot at all,
+        // which is how an undeclared mode is filtered without naming any mode here.
+        let of_kind: Vec<&Slot> = slots.iter()
+            .filter(|s| s.roles == roles && stem.as_ref().map_or(true, |m| s.stem == *m)).collect();
+        let target = match of_kind.iter().find(|s| s.free()) {
+            Some(s) => (*s).clone(),
+            None if declared.is_empty() => Slot { stem: SLOT_WHEN_NO_BOT.into(), roles, order: 1, from: SLOT_EMPTY, to: SLOT_EMPTY },
+            None if of_kind.is_empty() => {
+                notes.push(what(match &stem {
+                    Some(m) => format!("the bot declares no {m}{} slot (mode {m})", roles.0),
+                    None => format!("the bot declares no {} slot", roles.0),
+                }));
+                continue;
+            }
+            None => {
+                notes.push(what(match &stem {
+                    Some(m) => format!("every {m} pair slot the bot declares holds a line ({n} of {n}); free one or give the bot another",
+                        n = of_kind.len()),
+                    None => format!("every declared route slot holds a line ({n} of {n}); free one or raise the bot's slots",
+                        n = of_kind.len()),
+                }));
+                continue;
+            }
+        };
+        let mut settings = serde_json::Map::new();
+        settings.insert(target.from_key(), json!(from));
+        settings.insert(target.to_key(), json!(to));
+        if let Some(c) = cargo {
+            let key = format!("{}{SLOT_CARGO}", target.stem);
+            if declared.is_empty() || declared.contains_key(&key) { settings.insert(key, c); }
+        }
+        // Last guard: every value already live is a no-op, not a build.
+        if !declared.is_empty() && settings.iter().all(|(k, v)| declared.get(k) == v.as_i64().as_ref()) {
+            notes.push(what("its settings already hold these values".into()));
+            continue;
+        }
+        return json!({"settings": Value::Object(settings), "slot": target.stem, "candidate": i + 1, "how": notes,
+            "execution": "the bot builds it once these settings reach it: openttd.ai.set_setting (approval-gated) or the next start_ai"});
+    }
+    let refused = if candidates.is_empty() { "the planner offered no candidate".to_string() }
+        else { format!("none of the {} candidates is buildable by this bot, for the reasons above", candidates.len()) };
+    json!({"settings": Value::Null, "refused": refused, "how": notes})
+}
+
 fn production(ind: &Value) -> f64 {
     ind.get("produces").and_then(Value::as_array).into_iter().flatten().map(|p| num(p, "last_month")).sum()
 }
@@ -264,8 +417,10 @@ fn production(ind: &Value) -> f64 {
 fn dist(a: &Value, b: &Value) -> f64 { (num(a, "x") - num(b, "x")).abs() + (num(a, "y") - num(b, "y")).abs() }
 
 /// Answer a parsed intent over the world graph and the plan (the output of mcp-plan): candidates in
-/// the asked order, and for "build" the bot settings that would carry out the first one.
-pub fn answer(intent: &Value, world: &Value, plan: &Value) -> Value {
+/// the asked order, and for "build" the bot settings that would carry out the best candidate the
+/// bot can build. `bot` is openttd://ai (or the panel's /api/bots): the declared settings with
+/// their live values, so the answer targets a free route slot instead of overwriting line 1.
+pub fn answer(intent: &Value, world: &Value, plan: &Value, bot: &Value) -> Value {
     let industries: Vec<&Value> = world.get("nodes").and_then(Value::as_array).map(|n| n.iter().filter(|x| x["kind"] == "industry").collect()).unwrap_or_default();
     let types: Vec<String> = intent["subjects"].as_array().into_iter().flatten().filter(|s| s["kind"] == "industry_type").filter_map(|s| s["name"].as_str().map(str::to_string)).collect();
     let cargos: Vec<String> = intent["subjects"].as_array().into_iter().flatten().filter(|s| s["kind"] == "cargo").filter_map(|s| s["name"].as_str().map(str::to_string)).collect();
@@ -316,24 +471,16 @@ pub fn answer(intent: &Value, world: &Value, plan: &Value) -> Value {
     candidates.truncate(10);
     let mut out = json!({"how": how, "ordering": ordering, "candidates": candidates, "solver": plan["portfolio"]["solver"], "kernel": plan["portfolio"]["kernel"]});
     if intent["action"] == "build" {
-        let first = out["candidates"].get(0).cloned().unwrap_or(Value::Null);
-        let num_id = |v: &Value| v.as_str().and_then(|s| s.rsplit(':').next()).and_then(|n| n.parse::<i64>().ok()).or_else(|| v.as_i64());
-        let settings = if first.get("from").is_some() {
-            // The cargo's id from the producer's own produces entry in the world graph (where the
-            // planner's freight pairs take it too); the planner's list may hold no pair of that
-            // cargo, which left fr_cargo null for "vystav trať mezi nejproduktivnějším lesem a pilou".
-            let cargo_id = industries.iter().find(|i| i["id"] == first["from"]["id"])
-                .and_then(|i| i["produces"].as_array()?.iter().find(|p| p["name"] == first["cargo"]).map(|p| p["cargo"].clone()))
-                .filter(|v| !v.is_null())
-                .or_else(|| plan["freight"].as_array().into_iter().flatten().find(|f| f["cargo"] == first["cargo"]).map(|f| f["cargo_id"].clone()));
-            json!({"fr_from": num_id(&first["from"]["id"]), "fr_to": num_id(&first["to"]["id"]), "fr_cargo": cargo_id})
-        } else if first.get("producer").is_some() {
-            json!({"fr_from": num_id(&first["producer"]["id"]), "fr_to": num_id(&first["acceptor"]["id"]), "fr_cargo": first["cargo_id"]})
-        } else if first.get("a").is_some() {
-            let m = first["mode"].as_str().unwrap_or("rail");
-            json!({format!("{m}_a"): first["a"]["id"], format!("{m}_b"): first["b"]["id"]})
-        } else { Value::Null };
-        out["build"] = json!({"settings": settings, "execution": "the bot builds it once these settings reach it: openttd.ai.set_setting (approval-gated) or the next start_ai"});
+        let cands = out["candidates"].as_array().cloned().unwrap_or_default();
+        let b = build(&cands, &industries, plan, bot);
+        // Why this candidate and this slot, or why none: in the answer's own `how`.
+        for n in b["how"].as_array().into_iter().flatten().filter_map(Value::as_str) {
+            out["how"] = json!(format!("{}; {n}", out["how"].as_str().unwrap_or("")));
+        }
+        if let Some(r) = b["refused"].as_str() {
+            out["how"] = json!(format!("{}; nothing to build: {r}", out["how"].as_str().unwrap_or("")));
+        }
+        out["build"] = b;
     }
     out
 }
@@ -386,8 +533,120 @@ mod tests {
             {"kind": "industry", "id": "industry:18", "name": "Sawmill", "x": 20, "y": 1, "accepts": [{"name": "Wood"}]}]});
         let intent = json!({"action": "build", "ordering": "most_productive",
             "subjects": [{"kind": "industry_type", "name": "Forest"}, {"kind": "industry_type", "name": "Sawmill"}]});
-        let a = answer(&intent, &world, &json!({"freight": []}));
+        let a = answer(&intent, &world, &json!({"freight": []}), &Value::Null);
         assert_eq!(a["build"]["settings"], json!({"fr_from": 3, "fr_to": 18, "fr_cargo": 7}));
+    }
+
+    /// A bot's declared settings with their live values, as openttd://ai publishes them.
+    fn bot(pairs: &[(&str, i64)]) -> Value {
+        json!({"companies": [{"company": 0, "running": true,
+            "settings": pairs.iter().map(|(n, v)| json!({"name": n, "value": v})).collect::<Vec<_>>()}]})
+    }
+
+    /// Slot 1 is the unsuffixed triple; the rest are ordered by the number in their name, and the
+    /// count comes from what the bot declares (here three slots, not sixteen).
+    #[test]
+    fn the_slots_come_from_what_the_bot_declares() {
+        let s = bot_settings(&bot(&[("fr_from", 19), ("fr_to", 22), ("fr_cargo", 1),
+                                    ("fr10_from", -1), ("fr10_to", -1), ("fr10_cargo", -1),
+                                    ("fr2_from", 35), ("fr2_to", 22), ("fr2_cargo", 1),
+                                    ("rail_a", 6), ("rail_b", 18), ("air_a", -1), ("air_b", -1),
+                                    ("rail_after", 0), ("own_lines", 8)]));
+        let sl = slots(&s);
+        // Three freight slots, numbered by the bot itself, and one pair slot per mode it declares.
+        let freight: Vec<(&str, bool)> = sl.iter().filter(|x| x.roles == SLOT_ROLES[0]).map(|x| (x.stem.as_str(), x.free())).collect();
+        assert_eq!(freight, [("fr", false), ("fr2", false), ("fr10", true)]);
+        let pairs: Vec<(&str, bool)> = sl.iter().filter(|x| x.roles == SLOT_ROLES[1]).map(|x| (x.stem.as_str(), x.free())).collect();
+        assert_eq!(pairs, [("air", true), ("rail", false)]);
+        // "rail_after" and "own_lines" are settings, not slots: they name no endpoint pair.
+        assert_eq!(sl.len(), 5);
+    }
+
+    fn freight_plan() -> Value {
+        json!({"freight": [
+            {"kind": "freight", "producer": {"id": 19}, "acceptor": {"id": 22}, "cargo": "Coal", "cargo_id": 1, "score": 900},
+            {"kind": "freight", "producer": {"id": 31}, "acceptor": {"id": 7}, "cargo": "Coal", "cargo_id": 1, "score": 800}],
+            "by_mode": {}})
+    }
+    fn build_intent() -> Value { json!({"action": "build", "ordering": "most_profitable", "subjects": []}) }
+
+    #[test]
+    fn a_build_takes_the_lowest_free_slot_and_never_slot_one_when_it_holds_a_line() {
+        // The bot runs 19 -> 22 in slot 1 and 35 -> 22 in slot 2; slot 10 is free.
+        let b = bot(&[("fr_from", 19), ("fr_to", 22), ("fr_cargo", 1),
+                      ("fr2_from", 35), ("fr2_to", 22), ("fr2_cargo", 1),
+                      ("fr10_from", -1), ("fr10_to", -1), ("fr10_cargo", -1)]);
+        let a = answer(&build_intent(), &json!({"nodes": []}), &freight_plan(), &b);
+        // The best candidate is the line the bot already runs: it is skipped, the next one allocated.
+        assert_eq!(a["build"]["settings"], json!({"fr10_from": 31, "fr10_to": 7, "fr10_cargo": 1}));
+        assert_eq!(a["build"]["slot"], "fr10");
+        assert_eq!(a["build"]["candidate"], 2);
+        assert!(a["how"].as_str().unwrap().contains("already runs 19 -> 22 as fr"), "{}", a["how"]);
+    }
+
+    #[test]
+    fn a_bot_with_only_slot_one_free_gets_the_unsuffixed_triple() {
+        let b = bot(&[("fr_from", -1), ("fr_to", -1), ("fr_cargo", -1)]);
+        let a = answer(&build_intent(), &json!({"nodes": []}), &freight_plan(), &b);
+        assert_eq!(a["build"]["settings"], json!({"fr_from": 19, "fr_to": 22, "fr_cargo": 1}));
+        assert_eq!(a["build"]["slot"], "fr");
+    }
+
+    #[test]
+    fn every_slot_full_refuses_with_its_reason_instead_of_overwriting_slot_one() {
+        let b = bot(&[("fr_from", 19), ("fr_to", 22), ("fr_cargo", 1),
+                      ("fr2_from", 35), ("fr2_to", 22), ("fr2_cargo", 1)]);
+        let a = answer(&build_intent(), &json!({"nodes": []}), &freight_plan(), &b);
+        assert_eq!(a["build"]["settings"], Value::Null);
+        assert!(a["build"]["refused"].is_string());
+        let how = a["how"].as_str().unwrap().to_string();
+        assert!(how.contains("every declared route slot holds a line (2 of 2)"), "{how}");
+    }
+
+    #[test]
+    fn a_candidate_whose_values_are_already_live_is_not_proposed_again() {
+        // Only one candidate, and it is the line slot 1 already runs: nothing is proposed.
+        let plan = json!({"freight": [{"kind": "freight", "producer": {"id": 19}, "acceptor": {"id": 22}, "cargo": "Coal", "cargo_id": 1, "score": 900}], "by_mode": {}});
+        let b = bot(&[("fr_from", 19), ("fr_to", 22), ("fr_cargo", 1),
+                      ("fr2_from", -1), ("fr2_to", -1), ("fr2_cargo", -1)]);
+        let a = answer(&build_intent(), &json!({"nodes": []}), &plan, &b);
+        assert_eq!(a["build"]["settings"], Value::Null);
+        assert!(a["how"].as_str().unwrap().contains("already runs 19 -> 22 as fr"), "{}", a["how"]);
+    }
+
+    #[test]
+    fn a_mode_the_bot_does_not_declare_is_skipped_and_named() {
+        // The best candidate is a bus pair; the bot declares rail only.
+        let plan = json!({"freight": [], "by_mode": {"bus": [
+                {"mode": "bus", "a": {"id": 4}, "b": {"id": 9}, "score": 5000}],
+            "rail": [{"mode": "rail", "a": {"id": 11}, "b": {"id": 12}, "score": 100}]}});
+        let b = bot(&[("rail_a", -1), ("rail_b", -1), ("fr_from", -1), ("fr_to", -1), ("fr_cargo", -1)]);
+        let a = answer(&build_intent(), &json!({"nodes": []}), &plan, &b);
+        assert_eq!(a["build"]["settings"], json!({"rail_a": 11, "rail_b": 12}));
+        let how = a["how"].as_str().unwrap().to_string();
+        assert!(how.contains("the bot declares no bus_a slot (mode bus)"), "{how}");
+    }
+
+    #[test]
+    fn a_pair_slot_that_already_holds_a_line_is_not_overwritten_either() {
+        // The bot's one rail pair slot runs 6 -> 18; the planner's best rail pair is another one.
+        // Writing it would replace the line, exactly the defect this change is about, so the
+        // freight candidate below it is taken instead.
+        let plan = json!({"freight": [{"kind": "freight", "producer": {"id": 31}, "acceptor": {"id": 7}, "cargo": "Coal", "cargo_id": 1, "score": 10}],
+            "by_mode": {"rail": [{"mode": "rail", "a": {"id": 2}, "b": {"id": 18}, "score": 5000}]}});
+        let b = bot(&[("rail_a", 6), ("rail_b", 18), ("fr_from", -1), ("fr_to", -1), ("fr_cargo", -1)]);
+        let a = answer(&build_intent(), &json!({"nodes": []}), &plan, &b);
+        assert_eq!(a["build"]["settings"], json!({"fr_from": 31, "fr_to": 7, "fr_cargo": 1}));
+        assert!(a["how"].as_str().unwrap().contains("every rail pair slot the bot declares holds a line (1 of 1)"), "{}", a["how"]);
+    }
+
+    #[test]
+    fn a_pair_already_set_on_the_bot_is_a_no_op_and_is_skipped() {
+        let plan = json!({"freight": [], "by_mode": {"rail": [{"mode": "rail", "a": {"id": 6}, "b": {"id": 18}, "score": 100}]}});
+        let b = bot(&[("rail_a", 6), ("rail_b", 18)]);
+        let a = answer(&build_intent(), &json!({"nodes": []}), &plan, &b);
+        assert_eq!(a["build"]["settings"], Value::Null);
+        assert!(a["how"].as_str().unwrap().contains("already runs 6 -> 18 as rail"), "{}", a["how"]);
     }
 
     #[test]

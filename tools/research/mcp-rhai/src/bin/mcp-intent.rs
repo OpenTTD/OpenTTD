@@ -79,7 +79,10 @@ fn main() {
         candidates.sort_by(|a, b| b["score"].as_f64().unwrap_or(0.0).total_cmp(&a["score"].as_f64().unwrap_or(0.0)));
         p["portfolio"] = cargo::portfolio(&candidates, p["params"]["budget"].as_f64());
         p["freight"] = serde_json::Value::Array(freight);
-        let ans = intent::answer(&parsed, &world, &p);
+        // The bot's declared settings with their live values: which route slots exist, which are
+        // free, and which modes it has. Without it the answer falls back to slot 1 and says so.
+        let bot = get(&panel, &token, "ai").unwrap_or(serde_json::Value::Null);
+        let ans = intent::answer(&parsed, &world, &p, &bot);
         Ok(serde_json::json!({"intent": parsed, "answer": ans, "vocabulary_size": vocab.len(), "vocabulary_from": lang_dir}))
     })();
     match out {
