@@ -21,8 +21,10 @@ export const RANGES = { 90: 'Last 3 months', 365: 'Last year', 1825: 'Last 5 yea
 export const CHARTS = [
   { id: 'ov-companies', kind: 'line', params: ['ov_metric', 'ov_range', 'ov_focus'], drill: 'a company focuses it' },
   { id: 'ov-standing', kind: 'bar', params: ['ov_metric', 'ov_focus'], drill: 'a company focuses it' },
+  { id: 'ov-monthly', kind: 'bar', params: ['ov_metric', 'ov_range', 'ov_focus'], drill: 'a company focuses it' },
   { id: 'ov-fleet', kind: 'line', params: ['ov_range'], drill: '/resource/vehicles' },
 ];
+export const FLEET_TYPES = [['train', 'Trains'], ['road', 'Road vehicles'], ['ship', 'Ships'], ['aircraft', 'Aircraft']];
 
 /* ---- address state ------------------------------------------------------------------------- */
 const params = () => new URL(location.href).searchParams;
@@ -66,9 +68,10 @@ export function companiesOption(samples, { metric = 'net', range = 'all', focus 
     backgroundColor: 'transparent',
     tooltip: { trigger: 'axis', valueFormatter: (v) => (v == null ? '-' : whole.format(Math.round(v))) },
     legend: { type: 'scroll', top: 0, textStyle: { color: INK.text }, pageTextStyle: { color: INK.muted } },
-    grid: { left: 8, right: 56, top: 36, bottom: 48, containLabel: true },
+    grid: { left: 28, right: 56, top: 36, bottom: 48, containLabel: true },
     xAxis: { type: 'time', ...axis, splitLine: { show: false } },
-    yAxis: { type: 'value', name: METRICS[metric], nameTextStyle: { color: INK.muted, align: 'left' }, ...axis, axisLabel: { color: INK.muted, formatter: (v) => compact.format(v) } },
+    // The axis name runs along the axis: at its top it collided with the legend on a phone.
+    yAxis: { type: 'value', name: METRICS[metric], nameLocation: 'middle', nameGap: 44, nameTextStyle: { color: INK.muted }, ...axis, axisLabel: { color: INK.muted, formatter: (v) => compact.format(v) } },
     dataZoom: zoom(zoomFrom(samples, range)),
     series: ids.map((id) => ({
       id, name: nameOf(samples, id), type: 'line', showSymbol: samples.length < 3, symbolSize: 6,
@@ -83,8 +86,28 @@ export function companiesOption(samples, { metric = 'net', range = 'all', focus 
   };
 }
 
+/** With one company there is nobody to rank: its balance sheet instead (money, loan, value, net). */
+export function balanceOption(samples) {
+  const last = samples[samples.length - 1];
+  const c = last && last.companies[0];
+  const rows = c ? Object.entries(METRICS).map(([k, label]) => ({ k, label, v: c[k] ?? 0 })) : [];
+  return {
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'item', valueFormatter: (v) => whole.format(Math.round(v)) },
+    grid: { left: 8, right: 64, top: 8, bottom: 8, containLabel: true },
+    xAxis: { type: 'value', splitNumber: 3, ...axis, axisLabel: { color: INK.muted, hideOverlap: true, formatter: (v) => compact.format(v) } },
+    yAxis: { type: 'category', inverse: true, data: rows.map((r) => r.label), axisLabel: { color: INK.text, width: 130, overflow: 'truncate', ellipsis: '…' }, axisLine: { lineStyle: { color: INK.grid } } },
+    series: [{
+      id: 'standing', type: 'bar', barMaxWidth: 28,
+      label: { show: true, position: 'right', color: INK.text, formatter: (p) => compact.format(p.value) },
+      data: rows.map((r, i) => ({ value: r.v, metric: r.k, itemStyle: { color: PALETTE.dark[[2, 3, 0, 4][i] ?? 0], borderRadius: [0, 4, 4, 0] } })),
+    }],
+  };
+}
+
 export function standingOption(samples, { metric = 'net', focus = '' } = {}) {
   const ids = companyIds(samples);
+  if (ids.length === 1) return balanceOption(samples);
   const last = samples[samples.length - 1];
   const rows = last ? last.companies.map((c) => ({ id: String(c.id), name: c.name || `company ${c.id}`, v: c[metric] })) : [];
   rows.sort((a, b) => a.v - b.v);
@@ -103,18 +126,73 @@ export function standingOption(samples, { metric = 'net', focus = '' } = {}) {
   };
 }
 
+/** The fleet by type, stacked; days from a server without `fleet` show the pool count, dashed. */
 export function fleetOption(samples, { range = 'all' } = {}) {
+  const typed = samples.filter((x) => x.fleet);
+  const legacy = samples.filter((x) => !x.fleet);
+  const series = FLEET_TYPES.filter(([k]) => typed.some((x) => x.fleet[k])).map(([k, name], i) => ({
+    id: 'fleet-' + k, name, type: 'line', stack: 'fleet', step: 'end', showSymbol: false, cursor: 'pointer',
+    color: PALETTE.dark[[0, 2, 1, 3][i] ?? i], lineStyle: { width: 1.5 }, areaStyle: { opacity: 0.35 },
+    emphasis: { focus: 'series' }, data: typed.map((x) => [when(x), x.fleet[k]]),
+  }));
+  if (legacy.length) {
+    series.push({ id: 'fleet-pool', name: 'Pool count (older server: wagons, effects included)', type: 'line', showSymbol: false,
+      color: INK.muted, lineStyle: { type: 'dashed', width: 1 }, data: legacy.map((x) => [when(x), x.vehicles]) });
+  }
   return {
     backgroundColor: 'transparent',
     tooltip: { trigger: 'axis' },
-    grid: { left: 8, right: 24, top: 16, bottom: 48, containLabel: true },
+    legend: { type: 'scroll', top: 0, textStyle: { color: INK.text }, pageTextStyle: { color: INK.muted } },
+    grid: { left: 8, right: 24, top: 32, bottom: 48, containLabel: true },
     xAxis: { type: 'time', ...axis, splitLine: { show: false } },
     yAxis: { type: 'value', minInterval: 1, ...axis },
     dataZoom: zoom(zoomFrom(samples, range)),
-    series: [{
-      id: 'vehicles', name: 'Vehicles', type: 'line', step: 'end', showSymbol: false, cursor: 'pointer', color: PALETTE.dark[2],
-      areaStyle: { opacity: 0.18 }, data: samples.map((s) => [when(s), s.vehicles]),
-    }],
+    series,
+  };
+}
+
+/** Per company and game month: the chosen metric at the month's last sample minus the previous
+    month's last ({month: 'YYYY-MM', id, name, change}). The first month of a company counts from
+    its first sample. */
+export function monthlyChanges(samples, metric = 'net') {
+  const ends = new Map(); // 'YYYY-MM' -> last sample of that month
+  for (const x of samples) ends.set(String(x.date).slice(0, 7), x);
+  const months = [...ends.keys()].sort();
+  const out = [];
+  const prev = new Map();
+  for (const x of samples) for (const c of x.companies) if (!prev.has(String(c.id))) prev.set(String(c.id), c[metric]);
+  for (const m of months) {
+    for (const c of ends.get(m).companies) {
+      const id = String(c.id);
+      out.push({ month: m, id, name: c.name || `company ${id}`, change: (c[metric] ?? 0) - (prev.get(id) ?? 0) });
+      prev.set(id, c[metric] ?? 0);
+    }
+  }
+  return out;
+}
+
+export function monthlyOption(samples, { metric = 'net', range = 'all', focus = '' } = {}) {
+  const ids = companyIds(samples);
+  let rows = monthlyChanges(samples, metric);
+  if (range !== 'all' && samples.length) {
+    const from = new Date(zoomFrom(samples, range)).toISOString().slice(0, 7);
+    rows = rows.filter((r) => r.month >= from);
+  }
+  const months = [...new Set(rows.map((r) => r.month))];
+  return {
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: (v) => (v == null ? '-' : (v > 0 ? '+' : '') + whole.format(Math.round(v))) },
+    legend: { type: 'scroll', top: 0, textStyle: { color: INK.text }, pageTextStyle: { color: INK.muted } },
+    grid: { left: 8, right: 16, top: 32, bottom: 48, containLabel: true },
+    xAxis: { type: 'category', data: months, ...axis, splitLine: { show: false } },
+    yAxis: { type: 'value', ...axis, axisLabel: { color: INK.muted, formatter: (v) => compact.format(v) } },
+    dataZoom: [{ type: 'inside', zoomOnMouseWheel: 'ctrl', moveOnMouseWheel: false, startValue: Math.max(0, months.length - 36) },
+      { type: 'slider', height: 22, bottom: 8, textStyle: { color: INK.muted }, borderColor: INK.grid, startValue: Math.max(0, months.length - 36) }],
+    series: ids.map((id) => ({
+      id, name: nameOf(samples, id), type: 'bar', cursor: 'pointer', barMaxWidth: 18, color: colour(ids, id),
+      itemStyle: { opacity: focus && focus !== id ? 0.25 : 1 },
+      data: months.map((m) => { const r = rows.find((x) => x.month === m && x.id === id); return r ? r.change : null; }),
+    })),
   };
 }
 
@@ -126,6 +204,20 @@ export function delta(samples, pick, days = 30) {
   const start = samples.find((s) => when(s) >= from) || samples[0];
   const d = pick(end) - pick(start);
   return `${d > 0 ? '+' : ''}${whole.format(Math.round(d))} in ${Math.round((when(end) - when(start)) / DAY)} days`;
+}
+
+/** The derived tiles: the leader by the chosen metric, and the last complete month's change. */
+export function summaryTiles(samples, metric = 'net') {
+  const last = samples[samples.length - 1];
+  if (!last || !last.companies.length) return { leader: '', month: '-', monthSub: 'no company yet' };
+  const top = last.companies.slice().sort((a, b) => (b[metric] ?? 0) - (a[metric] ?? 0))[0];
+  const leader = `${last.companies.length > 1 ? 'leader: ' : ''}${top.name || 'company ' + top.id}`;
+  const rows = monthlyChanges(samples, metric);
+  const months = [...new Set(rows.map((r) => r.month))];
+  const m = months.length > 1 ? months[months.length - 2] : months[0]; // the last complete month
+  const sum = rows.filter((r) => r.month === m).reduce((a, r) => a + r.change, 0);
+  const short = { net: 'net worth', value: 'value', money: 'money', loan: 'loan' }[metric] || metric;
+  return { leader, month: (sum > 0 ? '+' : '') + compact.format(sum), monthSub: `${short}, ${m}, all companies` };
 }
 
 /* ---- the page ------------------------------------------------------------------------------- */
@@ -151,7 +243,7 @@ function mount() {
   const charts = {};
 
   const draw = () => {
-    for (const [id, option] of [['ov-companies', companiesOption], ['ov-standing', standingOption], ['ov-fleet', fleetOption]]) {
+    for (const [id, option] of [['ov-companies', companiesOption], ['ov-standing', standingOption], ['ov-monthly', monthlyOption], ['ov-fleet', fleetOption]]) {
       charts[id] = charts[id] || ecInit($(id), echarts);
       if (charts[id]) charts[id].setOption(option(samples, state), { replaceMerge: ['series'] });
     }
@@ -163,12 +255,24 @@ function mount() {
       charts['ov-companies']._wired = true;
       charts['ov-companies'].on('click', (p) => focus(p.seriesId));
     }
+    if (charts['ov-monthly'] && !charts['ov-monthly']._wired) {
+      charts['ov-monthly']._wired = true;
+      charts['ov-monthly'].on('click', (p) => focus(p.seriesId));
+    }
     if (charts['ov-fleet'] && !charts['ov-fleet']._wired) {
       charts['ov-fleet']._wired = true;
       charts['ov-fleet'].on('click', () => { location.href = '/resource/vehicles'; });
     }
     const vehicles = delta(samples, (s) => s.vehicles);
     $('ov-vehicles-delta').textContent = vehicles;
+    const single = companyIds(samples).length === 1;
+    $('ov-standing-title').textContent = single ? 'Balance sheet today' : 'Standing today';
+    $('ov-standing-note').textContent = single ? `${nameOf(samples, companyIds(samples)[0])}: money, loan, value and net worth on the last game day` : 'The same metric, the last game day; click a company to focus it';
+    const tiles = summaryTiles(samples, state.metric);
+    $('ov-leader').textContent = tiles.leader;
+    $('ov-month-net').textContent = tiles.month;
+    $('ov-month-sub').textContent = tiles.monthSub;
+    $('ov-monthly-note').textContent = `How much each company's ${METRICS[state.metric].toLowerCase()} moved in each game month (the metric above): above zero it gained, below it lost; click a bar to focus the company`;
     $('ov-samples').textContent = samples.length ? `${samples.length} game days kept · ${samples[0].date} to ${samples[samples.length - 1].date}` : 'waiting for the first game day';
     $('ov-focus-clear').classList.toggle('hidden', !state.focus);
     // Before the first company there is nothing to draw: say so instead of an empty frame.

@@ -15,7 +15,7 @@
           <button data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" type="button" class="p-2 text-gray-600 rounded-sm cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><span class="sr-only">Toggle sidebar</span><svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button>
           <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">OpenTTD MCP</span>
           <span class="hidden sm:inline bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
-          <span id="conn" class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">connecting</span>
+          <span id="conn" class="shrink-0 whitespace-nowrap bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">connecting</span>
         </div>
         <div class="flex items-center gap-2">
           <span id="endpoint" class="hidden md:inline text-sm text-gray-500 dark:text-gray-400 font-mono"></span>
@@ -158,28 +158,34 @@
     <div class="grid grid-cols-2 gap-3 mb-4 sm:gap-4 md:grid-cols-3 xl:grid-cols-6">
       <a href="/resource/game/state" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Game date</p>
-        <p id="s-date" class="mt-1 text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">-</p>
-      </a>
-      <a href="/resource/game/state" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
-        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Tick</p>
-        <p id="s-tick" class="mt-1 text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">-</p>
-      </a>
-      <a href="/resource/vehicles" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
-        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Vehicles</p>
-        <p id="s-vehicles" class="mt-1 text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">-</p>
-        <p id="ov-vehicles-delta" class="mt-1 text-xs text-gray-500 dark:text-gray-400"></p>
-      </a>
-      <a href="/resource/companies" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
-        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Companies</p>
-        <p id="s-companies" class="mt-1 text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">-</p>
-      </a>
-      <a href="/resource/towns" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
-        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Towns / map</p>
-        <p id="s-map" class="mt-1 text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">-</p>
+        <p id="s-date" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
+        <p id="s-tick" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
       </a>
       <a href="/resource/game/state" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Simulation</p>
-        <p id="s-paused" class="mt-1 text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">-</p>
+        <p id="s-paused" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
+        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate">pause and resume under Control</p>
+      </a>
+      <a href="/resource/vehicles" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Fleet</p>
+        <p id="s-vehicles" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
+        <p id="s-fleet-types" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
+        <p id="ov-vehicles-delta" class="text-xs text-gray-500 dark:text-gray-400 truncate"></p>
+      </a>
+      <a href="/resource/companies" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Companies</p>
+        <p id="s-companies" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
+        <p id="ov-leader" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
+      </a>
+      <a href="/resource/towns" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Towns</p>
+        <p id="s-map" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
+        <p id="s-map-size" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
+      </a>
+      <a href="#ov-monthly-card" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Last month</p>
+        <p id="ov-month-net" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
+        <p id="ov-month-sub" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
       </a>
     </div>
 
@@ -207,8 +213,8 @@
       <div id="ov-standing-card" data-maximize="ov-standing" data-chart="ov-standing" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 flex flex-col">
         <div class="flex items-start justify-between gap-3 mb-3">
           <div class="min-w-0">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Standing today</h3>
-            <p class="text-xs text-gray-500 dark:text-gray-400">The same metric, the last game day; click a company to focus it</p>
+            <h3 id="ov-standing-title" class="text-lg font-semibold text-gray-900 dark:text-white">Standing today</h3>
+            <p id="ov-standing-note" class="text-xs text-gray-500 dark:text-gray-400">The same metric, the last game day; click a company to focus it</p>
           </div>
           <div data-toolbar class="flex shrink-0 items-center gap-2"></div>
         </div>
@@ -217,15 +223,25 @@
           <div id="ov-standing-empty" data-empty class="hidden absolute inset-0 flex items-center justify-center p-6 text-center"><p class="max-w-sm text-sm text-gray-500 dark:text-gray-400">No company to rank yet.</p></div>
         </div>
       </div>
-      <div id="ov-fleet-card" data-maximize="ov-fleet" data-chart="ov-fleet" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 xl:col-span-3 flex flex-col">
+      <div id="ov-monthly-card" data-maximize="ov-monthly" data-chart="ov-monthly" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 flex flex-col xl:col-span-2 scroll-mt-20">
         <div class="flex items-start justify-between gap-3 mb-3">
           <div class="min-w-0">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Fleet</h3>
-            <p class="text-xs text-gray-500 dark:text-gray-400">Vehicles in the game by date; click for every vehicle</p>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Result per month</h3>
+            <p id="ov-monthly-note" class="text-xs text-gray-500 dark:text-gray-400">How much each company's chosen metric moved in each game month: above zero it gained, below it lost; click a bar to focus the company</p>
           </div>
           <div data-toolbar class="flex shrink-0 items-center gap-2"></div>
         </div>
-        <div id="ov-fleet" role="img" aria-label="Number of vehicles in the game by game date" class="w-full h-56 sm:h-64 grow"></div>
+        <div id="ov-monthly" role="img" aria-label="Change of the chosen metric per company per game month" class="w-full h-64 sm:h-72"></div>
+      </div>
+      <div id="ov-fleet-card" data-maximize="ov-fleet" data-chart="ov-fleet" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 flex flex-col">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Fleet by type</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Trains, road vehicles, ships and aircraft (wagons and effects not counted); click for every vehicle</p>
+          </div>
+          <div data-toolbar class="flex shrink-0 items-center gap-2"></div>
+        </div>
+        <div id="ov-fleet" role="img" aria-label="Number of trains, road vehicles, ships and aircraft by game date, stacked" class="w-full h-64 sm:h-72"></div>
       </div>
     </div>
     </section>

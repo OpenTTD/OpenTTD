@@ -198,6 +198,30 @@ json ResourceMetaBuild()
 	return env;
 }
 
+/**
+ * Primary vehicles per owner and type: what a player counts as a vehicle (a train, a road vehicle,
+ * a ship, an aircraft), not the pool's items. Vehicle::GetNumItems() also counts every wagon,
+ * articulated part, shadow, rotor, effect (smoke, sparks) and disaster vehicle, so it swings by
+ * dozens from one day to the next while the fleet stays the same (the panel's fleet chart, 2026-11-17).
+ * Index [owner][type]; an owner that is no company (OWNER_NONE ...) lands in the last row.
+ */
+using FleetCounts = std::array<std::array<uint32_t, 4>, MAX_COMPANIES + 1>;
+static FleetCounts PrimaryFleet()
+{
+	FleetCounts fleet{};
+	for (const Vehicle *v : Vehicle::Iterate()) {
+		if (v->type >= VehicleType::CompanyEnd || !v->IsPrimaryVehicle()) continue;
+		size_t row = v->owner.base() < MAX_COMPANIES ? v->owner.base() : MAX_COMPANIES;
+		fleet[row][to_underlying(v->type)]++;
+	}
+	return fleet;
+}
+
+static json FleetJson(const std::array<uint32_t, 4> &n)
+{
+	return json{{"train", n[0]}, {"road", n[1]}, {"ship", n[2]}, {"aircraft", n[3]}, {"total", n[0] + n[1] + n[2] + n[3]}};
+}
+
 json ResourceGameState()
 {
 	json env = MakeEnvelope();
@@ -206,7 +230,10 @@ json ResourceGameState()
 	d["map_width"] = Map::SizeX();
 	d["map_height"] = Map::SizeY();
 	d["num_companies"] = (uint64_t)Company::GetNumItems();
-	d["num_vehicles"] = (uint64_t)Vehicle::GetNumItems();
+	d["num_vehicles"] = (uint64_t)Vehicle::GetNumItems(); // pool items: wagons, parts and effects included
+	std::array<uint32_t, 4> all{};
+	for (const auto &row : PrimaryFleet()) for (size_t t = 0; t < all.size(); t++) all[t] += row[t];
+	d["fleet"] = FleetJson(all); // primary vehicles by type: what the player calls the fleet
 	d["num_towns"] = (uint64_t)Town::GetNumItems();
 	env["data"] = d;
 	return env;
@@ -216,6 +243,7 @@ json ResourceCompanies()
 {
 	json env = MakeEnvelope();
 	json list = json::array();
+	const FleetCounts fleet = PrimaryFleet();
 	/* Deterministic order: pools iterate by ascending index. */
 	for (const Company *c : Company::Iterate()) {
 		json jc;
@@ -230,6 +258,7 @@ json ResourceCompanies()
 		jc["company_value"] = (int64_t)CalculateCompanyValue(c);
 		jc["money_unit"] = "internal_currency";
 		jc["inaugurated_year"] = (int)c->inaugurated_year_calendar.base();
+		jc["fleet"] = FleetJson(fleet[c->index.base()]);
 		list.push_back(std::move(jc));
 	}
 	env["data"] = json{{"companies", std::move(list)}};

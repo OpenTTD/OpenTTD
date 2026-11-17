@@ -1138,17 +1138,27 @@ pub fn push_sample(h: &mut VecDeque<Value>, sample: Value) {
     while h.len() > HISTORY_MAX { h.pop_front(); }
 }
 
-/// One overview sample from openttd://game/state and openttd://companies: tick, date, counts, and
-/// per company money, value, loan and net (money − loan); None without state data.
+/// The fleet as a player counts it: openttd://game/state's `fleet.total` (primary vehicles), and
+/// only from a server older than that field the pool count `num_vehicles`, which also counts every
+/// wagon, articulated part and effect (smoke, sparks) and so swings by dozens a day.
+pub fn fleet_total(data: &Value) -> Value {
+    data.pointer("/fleet/total").cloned().unwrap_or_else(|| data.get("num_vehicles").cloned().unwrap_or(Value::Null))
+}
+
+/// One overview sample from openttd://game/state and openttd://companies: tick, date, counts, the
+/// fleet by type, and per company money, value, loan, net (money − loan) and fleet; None without
+/// state data.
 pub fn sample_of(st: &Value, cs: &Value) -> Option<Value> {
     let d = st.get("data")?;
     let companies: Vec<Value> = cs.pointer("/data/companies").and_then(Value::as_array).cloned().unwrap_or_default()
         .into_iter().map(|c| {
             let n = |k: &str| c.get(k).and_then(Value::as_f64).unwrap_or(0.0);
             json!({"id": c.get("id"), "name": c.get("name"), "is_ai": c.get("is_ai"), "money": n("money"),
-                   "value": n("company_value"), "loan": n("loan"), "net": n("money") - n("loan")})
+                   "value": n("company_value"), "loan": n("loan"), "net": n("money") - n("loan"),
+                   "fleet": c.pointer("/fleet/total").cloned().unwrap_or(Value::Null)})
         }).collect();
-    Some(json!({"t": st.get("game_tick"), "date": st.get("game_date"), "vehicles": d.get("num_vehicles"),
+    Some(json!({"t": st.get("game_tick"), "date": st.get("game_date"), "vehicles": fleet_total(d),
+                "fleet": d.get("fleet").cloned().unwrap_or(Value::Null),
                 "towns": d.get("num_towns"), "paused": d.get("paused"), "companies": companies}))
 }
 
@@ -1191,7 +1201,7 @@ impl Snapshot {
             if let Some(id) = d.get("decision_id") { decisions.insert(id_key(id), d.clone()); }
         }
         let g = |v: &Value, k: &str| v.get(k).cloned().unwrap_or(Value::Null);
-        Some(Snapshot { date: g(st, "game_date"), paused: g(data, "paused"), vehicles: g(data, "num_vehicles"),
+        Some(Snapshot { date: g(st, "game_date"), paused: g(data, "paused"), vehicles: fleet_total(data),
                         towns: g(data, "num_towns"), tick: g(st, "game_tick"), companies, decisions })
     }
 }
@@ -1915,7 +1925,8 @@ pub fn routes() -> Vec<Route> {
         r("POST", "/api/duel", "duelStart", "Start a duel in the background (tools/research/mcp-duel): the planned bot against an unplanned one or an opponent AI, on its own ports; one at a time", false,
           s(json!({"months": {"type": "integer", "minimum": 1, "maximum": 240}, "seed": {"type": "integer"}, "label": {"type": "string"}, "opponent": {"type": "string"}, "bot_settings": {"type": "string", "description": "extra settings for the planned bot, e.g. own_lines=8"}}), &[]), panel_results::h_duel_start),
         r("GET", "/api/scoreboard", "scoreboard", "The README duel scoreboard as tools/research/readme-scoreboard derives it from research/results: best run, wins of all duels, the seed-31337 series, and whether README.md is current or stale", false, None, panel_results::h_scoreboard),
-        r("POST", "/api/scoreboard", "scoreboardWrite", "Regenerate the scoreboard region of README.md from research/results (tools/research/readme-scoreboard); answers the new scoreboard. Commit and push stay the owner's", false, None, panel_results::h_scoreboard_write),
+        r("POST", "/api/scoreboard", "scoreboardWrite", "Regenerate the scoreboard region of README.md from research/results (tools/research/readme-scoreboard); answers the new scoreboard. Commit and push stay the owner's", false,
+          s(json!({}), &[]), panel_results::h_scoreboard_write),
         r("GET", "/api/duel", "duelStatus", "The duel started from the panel: running or finished, the last month line, the winner line and the result's name", false, None, panel_results::h_duel_status),
         r("GET", "/api/overview/history", "overviewHistory", "The overview's history kept by the panel: one sample per game day (tick, date, vehicles, towns, per company money, value, loan, net); ?since=<tick> for the newer ones", false, None, h_history),
         r("GET", "/api/catalogue", "catalogue", "MCP initialize, resources/list and tools/list", true, None, h_catalogue),
@@ -2524,7 +2535,11 @@ mod tests {
         let cs = json!({"data": {"companies": [{"id": 0, "name": "A", "money": 500, "company_value": 900, "loan": 300}]}});
         let s0 = sample_of(&st(10, "1950-01-01"), &cs).unwrap();
         assert_eq!(s0["companies"][0]["net"], json!(200.0));
-        assert_eq!(s0["vehicles"], json!(3));
+        assert_eq!(s0["vehicles"], json!(3), "an older server: the pool count");
+        let newer = json!({"game_tick": 1, "game_date": "1950-01-01", "data": {"num_vehicles": 40, "fleet": {"train": 2, "road": 3, "ship": 0, "aircraft": 0, "total": 5}}});
+        let s1 = sample_of(&newer, &cs).unwrap();
+        assert_eq!(s1["vehicles"], json!(5), "the fleet, not the pool's wagons, parts and effects");
+        assert_eq!(s1["fleet"]["road"], json!(3));
         assert!(sample_of(&json!({}), &cs).is_none());
         let mut h = VecDeque::new();
         push_sample(&mut h, s0);
@@ -2590,17 +2605,19 @@ mod tests {
         // server.py's table, route for route, plus the routes added after the Python panel was
         // retired: GET /api/content, POST /api/content/download, GET /api/overview/history, and the
         // decision contract's GET /api/bridge/companies and POST /api/decision/pull, and the duels
-        // (GET /api/results, GET /api/result, POST and GET /api/duel).
-        assert_eq!(rs.len(), 41);
+        // (GET /api/results, GET /api/result, POST and GET /api/duel), and the README scoreboard
+        // (GET and POST /api/scoreboard).
+        assert_eq!(rs.len(), 43);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
-                       ("GET", "/api/bridge/companies"), ("POST", "/api/decision/pull")] {
+                       ("GET", "/api/bridge/companies"), ("POST", "/api/decision/pull"),
+                       ("GET", "/api/scoreboard"), ("POST", "/api/scoreboard")] {
             assert!(rs.iter().any(|r| r.method == m && r.path == p), "{m} {p}");
         }
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",
             "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai",
-            "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel"].contains(&r.path)));
+            "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard"].contains(&r.path)));
     }
 
     #[test]

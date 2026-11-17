@@ -153,3 +153,33 @@ test('every overview series has a stable id, so a new game day updates it in pla
     for (const s of option.series) assert.ok(s.id !== undefined && s.id !== '', `${s.name}: replaceMerge needs an id or the series replays its entrance on every redraw`);
   }
 });
+
+import { monthlyChanges, monthlyOption, balanceOption, summaryTiles } from '../static/overview.js';
+
+const mday = (date, net, fleet, extra = []) => ({ date, t: Date.parse(date) / 1000, vehicles: 99, fleet,
+  companies: [{ id: 0, name: 'A', net, money: net, loan: 0, value: net * 2 }, ...extra] });
+
+test('monthly changes: month end minus the previous month end, the first month from the first sample', () => {
+  const s = [mday('1950-01-01', 100), mday('1950-01-31', 150), mday('1950-02-10', 120), mday('1950-02-28', 90), mday('1950-03-05', 200)];
+  assert.deepEqual(monthlyChanges(s).map((r) => [r.month, r.change]), [['1950-01', 50], ['1950-02', -60], ['1950-03', 110]]);
+  const opt = monthlyOption(s);
+  assert.deepEqual(opt.xAxis.data, ['1950-01', '1950-02', '1950-03']);
+  assert.deepEqual(opt.series[0].data, [50, -60, 110]);
+});
+
+test('the fleet is stacked by type; days from an older server show the pool count, dashed and named', () => {
+  const s = [mday('1950-01-01', 0), mday('1950-01-02', 0, { train: 2, road: 3, ship: 0, aircraft: 0, total: 5 })];
+  const opt = fleetOption(s);
+  assert.deepEqual(opt.series.map((x) => x.id), ['fleet-train', 'fleet-road', 'fleet-pool']);
+  assert.equal(opt.series[0].stack, 'fleet');
+  assert.match(opt.series[2].name, /older server/);
+});
+
+test('one company gets its balance sheet; two get ranked', () => {
+  const one = [mday('1950-01-01', 100)];
+  assert.equal(standingOption(one).yAxis.data.length, 4);
+  assert.deepEqual(balanceOption(one).series[0].data.map((d) => d.metric), ['net', 'value', 'money', 'loan']);
+  const two = [mday('1950-01-01', 100, null, [{ id: 1, name: 'B', net: 300, money: 300, loan: 0, value: 1 }])];
+  assert.deepEqual(standingOption(two).yAxis.data, ['A', 'B']);
+  assert.equal(summaryTiles(two).leader, 'leader: B');
+});

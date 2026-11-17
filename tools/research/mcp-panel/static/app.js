@@ -39,10 +39,17 @@ async function refreshOverview() {
   if (!o.state || !o.state.data) return;
   const d = o.state.data;
   $('s-date').textContent = o.state.game_date ?? '-';
-  $('s-tick').textContent = money(o.state.game_tick);
-  $('s-vehicles').textContent = d.num_vehicles;
+  $('s-tick').textContent = 'tick ' + money(o.state.game_tick);
+  // The fleet as a player counts it (primary vehicles by type); an older server only has the
+  // pool count, which also counts wagons, parts and effects, and says so.
+  const f = d.fleet;
+  $('s-vehicles').textContent = f ? f.total : d.num_vehicles;
+  $('s-fleet-types').textContent = f
+    ? [['train', 'trains'], ['road', 'road'], ['ship', 'ships'], ['aircraft', 'aircraft']].filter(([k]) => f[k]).map(([k, w]) => `${f[k]} ${w}`).join(' · ') || 'none yet'
+    : 'pool items (wagons, effects included)';
   $('s-companies').textContent = d.num_companies;
-  $('s-map').textContent = `${d.num_towns} · ${d.map_width}x${d.map_height}`;
+  $('s-map').textContent = d.num_towns;
+  $('s-map-size').textContent = `map ${d.map_width}×${d.map_height}`;
   $('s-paused').textContent = d.paused ? 'paused' : 'running';
   const cs = (o.companies.data && o.companies.data.companies) || [];
   $('companies').innerHTML = cs.length ? cs.map((c) => `

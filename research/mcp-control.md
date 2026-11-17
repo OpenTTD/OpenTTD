@@ -102,12 +102,22 @@ route, the schemas are carried, the routes answer, Swagger UI is served, and the
 ### The overview: history kept by the panel, charts through one layer
 
 The top of the panel is the game at a glance. Six stat cards each lead to their resource page
-(`/resource/game/state`, `/resource/vehicles`, `/resource/companies`, `/resource/towns`). Three charts
-follow, each on a card that maximizes (Escape restores):
+(`/resource/game/state`, `/resource/vehicles`, `/resource/companies`, `/resource/towns`): the date
+and tick, the simulation, the fleet with its types and its change in 30 days, the companies and the
+leader by the chosen metric, the towns and the map size, and the last complete month's change of the
+chosen metric. Four charts follow, each on a card that maximizes (Escape restores):
 
 - **Companies over time**: every company's net worth (money − loan), value, money or loan by game date.
-- **Standing today**: the companies ranked by the same metric on the last game day.
-- **Fleet**: vehicles in the game by date.
+- **Standing today**: the companies ranked by the same metric on the last game day. With one company
+  there is nobody to rank, so it shows that company's balance sheet (net worth, value, money, loan).
+- **Result per month**: how much each company's chosen metric moved in each game month (month end
+  minus the previous month end), above or below zero.
+- **Fleet by type**: trains, road vehicles, ships and aircraft, stacked.
+
+The fleet is what a player counts: the server's `fleet` field (primary vehicles by type, in
+`openttd://game/state` and per company in `openttd://companies`). The pool count `num_vehicles` also
+counts every wagon, articulated part and effect (smoke, sparks) and swung by dozens a day; it is
+still served, and the chart shows it dashed and named only for days recorded from an older server.
 
 The panel keeps the history itself, so a reload keeps it. `GET /api/overview/history` holds one sample
 per game day, read from `openttd://game/state` and `openttd://companies` by the watcher that derives
@@ -117,7 +127,7 @@ newer samples. The page asks for those on every event of the stream (`/api/event
 
 The metric, the range, the focused company and the maximized card live in the address (`ov_metric`,
 `ov_range`, `ov_focus`, `max`), so a configured view is a link. A click on a company focuses it in
-both company charts; a click on the fleet opens every vehicle. Ctrl+wheel zooms, and the slider sets
+every company chart; a click on the fleet opens every vehicle. Ctrl+wheel zooms, and the slider sets
 the range. Every chart is created by `components.js` `ecInit`, the only `echarts.init` in the panel;
 the plan DAG and the World page go through it too. Each chart is a row of `CHARTS` in
 `static/overview.js`. At 390 px the page does not scroll sideways.
