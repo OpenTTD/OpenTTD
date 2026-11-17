@@ -127,3 +127,13 @@ Both compete for the same towns and industries. Values come from the console's `
 """)
 print(f"\nmcp-duel: winner {winner}: A {a.get('value')} vs B {b.get('value')}; {base}.md")
 PY
+
+# The README scoreboard is derived from research/results: regenerate it after every result, so the
+# landing page never lags a duel (tools/research/readme-scoreboard; commit and push stay the owner's).
+# Appended after the heredoc on purpose: bash reads a running script by offset, so a duel already
+# running picks this up instead of being shifted.
+if python3 "$ROOT_DIR/tools/research/readme-scoreboard"; then
+  echo "mcp-duel: README scoreboard regenerated"
+else
+  echo "mcp-duel: README scoreboard NOT regenerated" >&2
+fi

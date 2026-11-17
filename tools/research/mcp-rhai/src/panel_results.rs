@@ -149,6 +149,39 @@ pub fn h_duel_status(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
                     "tail": lines.iter().rev().take(12).rev().collect::<Vec<_>>()})))
 }
 
+/// The README scoreboard (tools/research/readme-scoreboard, the one generator): `--json` reads it,
+/// a bare run rewrites the region in README.md. The panel never computes the numbers itself, so
+/// README, panel, Swagger and MCP clients cannot disagree.
+fn scoreboard(write: bool) -> Result<Value, String> {
+    let script = repo().join("tools/research/readme-scoreboard");
+    if write {
+        let out = Command::new("python3").arg(&script).current_dir(repo()).output().map_err(|e| format!("readme-scoreboard: {e}"))?;
+        if !out.status.success() {
+            return Err(format!("readme-scoreboard: {}", String::from_utf8_lossy(&out.stderr).trim()));
+        }
+    }
+    let out = Command::new("python3").arg(&script).arg("--json").current_dir(repo()).output().map_err(|e| format!("readme-scoreboard: {e}"))?;
+    if !out.status.success() {
+        return Err(format!("readme-scoreboard --json: {}", String::from_utf8_lossy(&out.stderr).trim()));
+    }
+    serde_json::from_slice(&out.stdout).map_err(|e| format!("readme-scoreboard --json: {e}"))
+}
+
+pub fn h_scoreboard(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
+    Ok(match scoreboard(false) { Ok(v) => (200, v), Err(e) => (500, json!({"error": e})) })
+}
+
+pub fn h_scoreboard_write(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
+    Ok(match scoreboard(true) {
+        Ok(v) => {
+            g.event("duel", &format!("README scoreboard regenerated: best {} vs {}, {} of {} duels won",
+                                     v["best"]["planned"], v["best"]["unplanned"], v["wins"], v["duels"]));
+            (200, v)
+        }
+        Err(e) => (500, json!({"error": e})),
+    })
+}
+
 /// The page title and description of /results and /result/<name>, and whether it exists.
 pub fn page_meta(path: &str) -> (String, String, bool) {
     if path == "/results" {

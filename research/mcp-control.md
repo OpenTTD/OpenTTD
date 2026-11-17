@@ -150,6 +150,16 @@ OpenAPI, Swagger UI and Rhai:
 - `POST /api/duel` (body checked: months 1 to 240, opponent an AI name)
 - `GET /api/duel`
 
+**The landing page scoreboard.** README.md opens with a scoreboard of the duels (best run, wins,
+the seed-31337 series as a chart) generated between `scoreboard` markers by
+`tools/research/readme-scoreboard` from `research/results`. Every duel regenerates it at its end
+(`mcp-duel`), and the card at the top of `/results` shows it with a *README current* / *README
+stale* badge and a **Regenerate README** button. The panel runs the one generator and computes no
+number itself, so README, panel, Swagger and Rhai cannot disagree. Commit and push stay the owner's.
+
+- `GET /api/scoreboard` (`readme-scoreboard --json`)
+- `POST /api/scoreboard` (rewrites the region, answers the new scoreboard)
+
 **Bot settings per run.** The duel form, `POST /api/duel` (`bot_settings`) and `mcp-duel --bot-settings`
 take extra settings for the planned bot, e.g. `own_lines=8`: name=value pairs separated by commas, with
 whole values. They go on top of what the panel derives from the plan, so a bot feature gets its A/B

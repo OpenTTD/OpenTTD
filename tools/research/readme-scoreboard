@@ -3,6 +3,8 @@
 
 Writes the region between `<!-- scoreboard:begin -->` and `<!-- scoreboard:end -->`.
 `--check` writes nothing and exits 11 when the region would change (Majordomus exit codes).
+`--json` writes nothing and prints the scoreboard and whether README.md is current (the panel's
+GET /api/scoreboard reads it, so the panel, Swagger and MCP clients see the same numbers).
 """
 
 import json
@@ -89,6 +91,17 @@ def render(runs):
     return "\n".join(lines)
 
 
+def summary(runs, current):
+    rel = lambda p: p.relative_to(ROOT).as_posix()
+    best = max(runs, key=lambda r: r["a"])
+    series = [r for r in runs if r["seed"] == SEED and r["months"] == MONTHS]
+    row = lambda r: {"name": r["path"].stem, "seed": r["seed"], "months": r["months"], "label": r["label"],
+                     "planned": r["a"], "unplanned": r["b"], "won": r["won"], "evidence": rel(r["path"].with_suffix(".md"))}
+    return {"readme": "current" if current else "stale", "seed": SEED, "months": MONTHS,
+            "duels": len(runs), "wins": sum(r["won"] for r in runs),
+            "best": row(best), "series": [row(r) for r in series]}
+
+
 def main():
     text = README.read_text()
     if BEGIN not in text or END not in text:
@@ -96,6 +109,9 @@ def main():
     head, rest = text.split(BEGIN, 1)
     _, tail = rest.split(END, 1)
     new = head + render(load()) + tail
+    if "--json" in sys.argv[1:]:
+        print(json.dumps(summary(load(), new == text)))
+        return
     if "--check" in sys.argv[1:]:
         sys.exit(0 if new == text else 11)
     README.write_text(new)

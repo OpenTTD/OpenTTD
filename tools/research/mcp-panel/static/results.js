@@ -122,6 +122,7 @@ async function listPage() {
   const all = (await (await fetch('/api/results')).json()).results || [];
   const seeds = [...new Set(all.map((r) => r.seed))].sort((a, b) => a - b);
   $('page').innerHTML = `
+    <div id="scoreboard" class="${card}" aria-live="polite"></div>
     <div class="${card}">
       <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Start a duel</h2>
       <form id="duel-form" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -151,6 +152,7 @@ async function listPage() {
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"><tr><th class="px-3 py-2"><span class="sr-only">Compare</span></th><th class="px-3 py-2">Run</th><th class="px-3 py-2">Seed</th><th class="px-3 py-2">Months</th><th class="px-3 py-2 text-right">A</th><th class="px-3 py-2 text-right">B</th><th class="px-3 py-2 text-right">A : B</th><th class="px-3 py-2">What it tests</th></tr></thead>
         <tbody id="duels-rows"></tbody></table></div>
     </div>`;
+  scoreboardCard();
   let chart = null;
   const shown = () => all.filter((r) => !state.seed || String(r.seed) === state.seed);
   const draw = () => {
@@ -225,6 +227,42 @@ async function listPage() {
     poll();
   };
   poll();
+}
+
+/* The README scoreboard (GET/POST /api/scoreboard, derived by tools/research/readme-scoreboard):
+   the same numbers the landing page shows, whether README.md is current, and its regeneration. */
+async function scoreboardCard() {
+  const box = $('scoreboard');
+  const render = (d, note = '') => {
+    if (d.error) { box.innerHTML = `<p class="text-sm text-red-600 dark:text-red-400">README scoreboard: ${esc(d.error)}</p>`; return; }
+    const stale = d.readme !== 'current';
+    const badge = stale
+      ? '<span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">README stale</span>'
+      : '<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">README current</span>';
+    const stat = (label, value, sub = '', href = '') => `<div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50">
+      <dt class="text-xs text-gray-500 dark:text-gray-400">${esc(label)}</dt>
+      <dd class="mt-1 text-xl font-bold text-gray-900 dark:text-white">${href ? `<a class="hover:underline" href="${esc(href)}">${esc(value)}</a>` : esc(value)}</dd>
+      ${sub ? `<dd class="text-xs text-gray-500 dark:text-gray-400">${esc(sub)}</dd>` : ''}</div>`;
+    const b = d.best;
+    box.innerHTML = `<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div><h2 class="text-lg font-semibold text-gray-900 dark:text-white">Landing page scoreboard ${badge}</h2>
+        <p class="text-xs text-gray-500 dark:text-gray-400">README.md's scoreboard, derived from research/results by tools/research/readme-scoreboard; every duel regenerates it, commit and push stay yours</p></div>
+        <div class="flex items-center gap-2"><a href="/docs#/default/scoreboardWrite" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
+        <button id="sb-write" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 disabled:opacity-50"${stale ? '' : ' disabled'}>Regenerate README</button></div></div>
+      <dl class="grid gap-3 grid-cols-2 lg:grid-cols-4">
+        ${stat('Best run (planned)', whole.format(b.planned), `vs ${whole.format(b.unplanned)} unplanned`, '/result/' + b.name)}
+        ${stat('Planned bot won', `${d.wins} of ${d.duels}`, 'every recorded duel')}
+        ${stat('Best ratio', b.unplanned ? `${Math.round(b.planned / b.unplanned)}×` : '-', `seed ${b.seed}, ${b.months} months`)}
+        ${stat(`Seed ${d.seed} revisions`, String(d.series.length), `${d.months}-month runs in the README chart`)}
+      </dl>${note ? `<p class="mt-2 text-sm text-gray-500 dark:text-gray-400">${esc(note)}</p>` : ''}`;
+    const btn = $('sb-write');
+    btn.onclick = async () => {
+      btn.disabled = true; btn.textContent = 'Regenerating…';
+      const r = await fetch('/api/scoreboard', { method: 'POST' });
+      render(await r.json(), r.ok ? 'README.md regenerated; review the diff, then commit and push.' : '');
+    };
+  };
+  try { render(await (await fetch('/api/scoreboard')).json()); } catch (e) { render({ error: String(e) }); }
 }
 
 async function resultPage(name) {
