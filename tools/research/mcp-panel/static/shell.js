@@ -1,7 +1,12 @@
 'use strict';
 /* The one shell of every panel page (rule project.panel-items-are-routable-pages): the Flowbite Pro admin
-   navbar and sidebar, declared once here and never copied into a page. A page is only its <main>:
+   navbar, sidebar and page header, declared once here and never copied into a page. A page is only its <main>:
    - <body data-page="KEY"> names it (a key of PAGES); its sidebar entry is marked current;
+   - the page header (breadcrumb from the registry, H1, description, #badges) opens <main>: the H1 is
+     <body data-title> or the page's label, the description <body data-description> (both may be filled
+     server-side, __TITLE__ / __DESCRIPTION__); a crumb a page script appends to #crumbs is redrawn as
+     the shell's own (the bare "/" separators dropped);
+   - UI holds the Pro class sets (card, card title, buttons, select, table, badge) every page uses;
    - elements in <main> carrying data-nav="Label" become its "On this page" entries (derived, not listed);
    - elements carrying data-nav-extra move into the navbar's right side (page stats, endpoints);
    - the connection badge (#conn) and the console buttons (#open-console, #side-console) exist on every
@@ -50,6 +55,73 @@
   const CONN = 'shrink-0 whitespace-nowrap text-xs font-medium px-2.5 py-0.5 rounded-sm';
   const BTN = 'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700';
 
+  /** The Pro class sets of the admin dashboard (reference.md sections 1, 6, 9, 13), one per role. A page's
+      markup carries every class of its role's set (test/shell.test.mjs enforces it), plus layout only. */
+  const FIELD = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500';
+  const UI = Object.freeze({
+    card: 'p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800',
+    cardTitle: 'text-xl font-bold leading-none text-gray-900 dark:text-white',
+    cardSub: 'text-sm font-normal text-gray-500 dark:text-gray-400',
+    h1: 'text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white',
+    primary: 'text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800',
+    secondary: 'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
+    // A field is an input or a select, as tall as a button (38 px, mcp-overview-check); the select keeps
+    // room on its right for the arrow (pe-9).
+    input: `${FIELD} px-3 py-2`,
+    select: `${FIELD} py-2 ps-3 pe-9`,
+    check: 'w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800',
+    tableWrap: 'relative overflow-x-auto rounded-lg',
+    table: 'w-full text-sm text-left text-gray-500 dark:text-gray-400',
+    thead: 'text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400',
+    badge: 'text-xs font-medium px-2.5 py-0.5 rounded-sm',
+  });
+
+  const CHEVRON = '<svg class="w-6 h-6 text-gray-400 rtl:rotate-180" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>';
+  const HOME = '<svg class="w-5 h-5 me-2.5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>';
+  const CRUMB_LINK = 'ms-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ms-2 dark:text-gray-300 dark:hover:text-white';
+  const CRUMB_HERE = 'ms-1 text-sm font-medium text-gray-400 md:ms-2 dark:text-gray-500';
+
+  /** One breadcrumb after the home one: a link, or the current page (no href). */
+  function crumbHtml(label, href) {
+    const inner = href ? `<a href="${esc(href)}" class="${CRUMB_LINK}">${esc(label)}</a>`
+      : `<span class="${CRUMB_HERE}" aria-current="page">${esc(label)}</span>`;
+    return `<li data-crumb><div class="flex items-center">${CHEVRON}${inner}</div></li>`;
+  }
+
+  /** The breadcrumb, derived from the app's registry: its home page, then the current page (a link
+      while the path is below it, as /tool/<name> is below /tools). */
+  function crumbsHtml(current, path = '/', app = APPS.panel) {
+    const home = app.pages[0];
+    const page = app.pages.find((p) => p.key === current);
+    const out = [`<li data-crumb class="inline-flex items-center"><a href="${home.href}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">${HOME}${esc(home.title)}</a></li>`];
+    if (page && page !== home) out.push(crumbHtml(page.title, path === page.href ? null : page.href));
+    return out.join('');
+  }
+
+  /** The Pro page header (users/settings.html variant B): breadcrumb, H1, optional description, badges.
+      #crumbs, #title, #description and #badges are what tool.js and results.js write to. */
+  function headerHtml({ current, path = '/', app = APPS.panel, title = '', description = '' } = {}) {
+    const page = app.pages.find((p) => p.key === current);
+    return `<div id="page-header" class="mb-4">
+      <nav class="flex mb-5" aria-label="Breadcrumb"><ol id="crumbs" class="inline-flex flex-wrap items-center gap-y-1 space-x-1 md:space-x-2 rtl:space-x-reverse">${crumbsHtml(current, path, app)}</ol></nav>
+      <h1 id="title" class="${UI.h1} break-words">${esc(title || page?.label || '')}</h1>
+      <p id="description" class="mt-1 ${UI.cardSub} empty:hidden">${esc(description)}</p>
+      <div id="badges" class="flex flex-wrap gap-2 mt-2 empty:hidden"></div>
+    </div>`;
+  }
+
+  /** A crumb a page script appended (<li>/</li><li>Name</li>, or a link) becomes the shell's own. */
+  function adoptCrumbs(ol) {
+    for (const li of [...ol.children]) {
+      if (li.hasAttribute('data-crumb')) continue;
+      const text = li.textContent.trim();
+      if (text === '/' || !text) { li.remove(); continue; }
+      const a = li.querySelector('a[href]');
+      li.insertAdjacentHTML('beforebegin', crumbHtml(text, a ? a.getAttribute('href') : null));
+      li.remove();
+    }
+  }
+
   /** The sidebar's page list, the current one marked. */
   function sidebarHtml(current, pages = PAGES) {
     return pages.map((p) => `<li><a href="${p.href}"${p.key === current ? ' aria-current="page"' : ''} class="${LINK}${p.key === current ? ' bg-gray-100 dark:bg-gray-700' : ''}">${esc(p.label)}</a></li>`).join('');
@@ -96,6 +168,22 @@
     const app = APPS[document.body.dataset.app] || APPS.panel;
     const current = document.body.dataset.page || pageOf(location.pathname, document.body.dataset.app);
     document.body.insertAdjacentHTML('afterbegin', navbarHtml(app) + asideHtml(current, app));
+    // The page header opens <main> as soon as the parser has created it, before any page script runs.
+    const header = () => {
+      const main = document.querySelector('body > main');
+      if (!main || document.getElementById('page-header')) return !!main;
+      const { title, description } = document.body.dataset;
+      main.insertAdjacentHTML('afterbegin', headerHtml({ current, path: location.pathname, app, title, description }));
+      const ol = document.getElementById('crumbs');
+      new MutationObserver(() => adoptCrumbs(ol)).observe(ol, { childList: true });
+      return true;
+    };
+    if (!header()) {
+      const watch = new MutationObserver(() => { if (header()) watch.disconnect(); });
+      watch.observe(document.body, { childList: true });
+      document.addEventListener('DOMContentLoaded', () => { watch.disconnect(); header(); });
+    }
+    globalThis.PanelUI = UI;
     if (app.console) {
       const toConsole = () => { location.href = app.console; };
       document.getElementById('open-console').onclick = toConsole;
@@ -128,5 +216,7 @@
     });
   }
 
-    if (typeof module !== 'undefined') module.exports = { PAGES, APPS, FRAME, pageOf, sidebarHtml, sectionsHtml, navbarHtml, asideHtml };
+  if (typeof module !== 'undefined') {
+    module.exports = { PAGES, APPS, FRAME, UI, pageOf, sidebarHtml, sectionsHtml, navbarHtml, asideHtml, crumbsHtml, headerHtml };
+  }
 })();

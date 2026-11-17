@@ -84,3 +84,58 @@ test('the hub has its own pages, brand and no console, through the same shell', 
   assert.match(asideHtml('viz', APPS.hub), /href="\/viz" aria-current="page"/);
   assert.equal(pageOf('/viz', 'hub'), 'viz');
 });
+
+/* ---- the page header and the Pro class sets, centralised in the shell ------------------------- */
+const { UI, crumbsHtml, headerHtml } = createRequire(import.meta.url)('../static/shell.js');
+
+test('the page header is the shell\'s: breadcrumb from the registry, H1, description, badges', () => {
+  const html = headerHtml({ current: 'world', path: '/world', title: 'World <map>' });
+  for (const id of ['page-header', 'crumbs', 'title', 'description', 'badges']) assert.match(html, new RegExp(`id="${id}"`), id);
+  assert.match(html, /<nav class="flex mb-5" aria-label="Breadcrumb">/);
+  assert.match(html, /World &lt;map&gt;<\/h1>/, 'the title is escaped');
+  for (const cls of UI.h1.split(' ')) assert.match(html, new RegExp(`<h1 id="title" class="[^"]*(?<=["\\s])${cls.replace(/[:]/g, '\\$&')}(?=[\\s"])`), cls);
+  // Home first, then the page: the current page is a span, a page above the path a link.
+  const here = crumbsHtml('world', '/world');
+  assert.match(here, /^<li data-crumb class="inline-flex items-center"><a href="\/" [^>]*>.*Panel<\/a><\/li>/);
+  assert.match(here, /<span [^>]*aria-current="page">World<\/span>/);
+  assert.match(crumbsHtml('tools', '/tool/openttd.ai.list'), /<a href="\/tools" [^>]*>Catalogue<\/a>/, 'a tool page links back to the catalogue');
+  assert.equal(crumbsHtml('home', '/').split('data-crumb').length - 1, 1, 'the home page is only its home crumb');
+  assert.match(crumbsHtml('viz', '/viz', APPS.hub), />Hub<\/a>.*>World view<\/span>/s, 'the hub derives its own');
+  assert.match(headerHtml({ current: 'ui', path: '/ui' }), /<h1 [^>]*>Interface: every window<\/h1>/, 'without a title, the page label');
+});
+
+/** Every tag of a page with its class list: [{tag, attrs, cls: Set}]. */
+const tags = (html) => [...html.matchAll(/<([a-z][a-z0-9]*)\b([^>]*)>/g)].map(([, tag, attrs]) => (
+  { tag, attrs, cls: new Set((/\sclass="([^"]*)"/.exec(attrs)?.[1] || '').split(/\s+/).filter(Boolean)) }));
+const lacks = (el, set) => set.split(' ').filter((c) => !el.cls.has(c));
+
+for (const name of PANEL_PAGES) {
+  test(`${name}: no page header of its own, and every card, title, button, field and table in the Pro set`, () => {
+    const html = fs.readFileSync(path.join(STATIC, name), 'utf8');
+    assert.doesNotMatch(html, /aria-label="Breadcrumb"/, 'a breadcrumb of its own: the shell draws it');
+    assert.doesNotMatch(html, /<h1\b/, 'an H1 of its own: the shell draws it from data-title or the page label');
+    assert.doesNotMatch(html, /\sid="(page-header|crumbs|title|description|badges)"/, 'an id the shell header owns');
+    if (/<title>__TITLE__/.test(html)) {
+      assert.match(html, /<body[^>]*\sdata-title="__TITLE__"/, 'a server-side title reaches the header');
+      assert.match(html, /<body[^>]*\sdata-description="__DESCRIPTION__"/, 'and its description');
+    }
+    const roles = [
+      ['card', (e) => e.cls.has('bg-white') && e.cls.has('rounded-lg') && e.cls.has('border-gray-200')],
+      ['cardTitle', (e) => e.tag === 'h2' && !e.cls.has('sr-only')],
+      ['primary', (e) => /^(button|a)$/.test(e.tag) && [...e.cls].some((c) => /^bg-(primary|blue|green)-[67]00$/.test(c))],
+      ['secondary', (e) => /^(button|a)$/.test(e.tag) && e.cls.has('border-gray-300')],
+      ['select', (e) => e.tag === 'select'],
+      ['input', (e) => e.tag === 'textarea' || (e.tag === 'input' && /type="(text|number|search)"/.test(e.attrs))],
+      ['check', (e) => e.tag === 'input' && /type="checkbox"/.test(e.attrs) && !e.cls.has('sr-only')],
+      ['tableWrap', (e) => e.tag === 'div' && e.cls.has('overflow-x-auto')],
+      ['table', (e) => e.tag === 'table'],
+      ['thead', (e) => e.tag === 'thead'],
+    ];
+    for (const el of tags(html.replace(/<section id="console"[\s\S]*?<\/section>/, ''))) {
+      for (const [role, is] of roles) {
+        if (!is(el)) continue;
+        assert.deepEqual(lacks(el, UI[role]), [], `<${el.tag}${el.attrs.slice(0, 60)}…> is a ${role} without the shell's UI.${role}`);
+      }
+    }
+  });
+}

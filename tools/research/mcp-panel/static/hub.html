@@ -7,52 +7,52 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/static/app.css">
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-app="hub" data-page="hub">
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-description="Every MCP instance in one place: their operations, live events, a duplicate-building audit and rail plans, read through the hub." data-app="hub" data-page="hub">
   <script src="/static/shell.js"></script>
 
   <main class="pb-8">
     <span data-nav-extra id="counts" class="text-sm text-gray-500 dark:text-gray-400"></span>
-    <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Instances</h2>
-      <p class="text-xs text-gray-500 dark:text-gray-400">From the instance registry and the hub's --panel list, refreshed as they come and go. Click one to narrow everything below to it.</p>
+    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+      <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Instances</h2>
+          <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">From the instance registry and the hub's --panel list, refreshed as they come and go. Click one to narrow everything below to it.</p>
       <div id="instances" data-nav="Instances" class="mt-3"></div>
     </div>
 
     <div class="grid gap-4 xl:grid-cols-3">
       <div class="xl:col-span-2">
-        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <div class="flex items-center justify-between mb-3">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Every operation</h2>
-            <span id="scope" class="text-xs text-gray-500 dark:text-gray-400"></span>
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+            <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Every operation</h2>
+          <p id="scope" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400"></p></div>
           </div>
-          <input id="filter" type="search" placeholder="Filter by id, path, tag or summary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <input id="filter" type="search" placeholder="Filter by id, path, tag or summary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 px-3 py-2 block w-full">
         </div>
         <div id="catalogue" data-nav="Every operation"></div>
       </div>
       <div>
-        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <div class="flex items-center justify-between mb-3">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Live events</h2>
-            <button id="clear-kinds" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">All kinds</button>
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+            <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Live events</h2>
+              <p id="kinds" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Streamed over the hub's WebSocket from every panel's bus. Click a kind to follow only it.</p></div>
+            <button id="clear-kinds" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">All kinds</button>
           </div>
-          <p id="kinds" class="text-xs text-gray-500 dark:text-gray-400">Streamed over the hub's WebSocket from every panel's bus. Click a kind to follow only it.</p>
-          <div id="events" data-nav="Live events" class="mt-3"></div>
+          <div id="events" data-nav="Live events"></div>
         </div>
-        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <div class="flex items-center justify-between mb-3">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Duplicate buildings</h2>
-            <button id="run-audit" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Audit</button>
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+            <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Duplicate buildings</h2>
+              <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">hub.audit over every instance: one owner, a shared facility, overlapping catchments. Click a station to centre the owner's camera on it.</p></div>
+            <button id="run-audit" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Audit</button>
           </div>
-          <p class="text-xs text-gray-500 dark:text-gray-400">hub.audit over every instance: one owner, a shared facility, overlapping catchments. Click a station to centre the owner's camera on it.</p>
-          <div id="audit" data-nav="Duplicate buildings" class="mt-3"></div>
+          <div id="audit" data-nav="Duplicate buildings"></div>
         </div>
-        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Plan a rail line</h2>
-          <p class="text-xs text-gray-500 dark:text-gray-400">algoglyph.track_plan: AlgoGlyph's track-planning on the game's map, ways, terrain, prices and bridges, with bridges, tunnels, diagonal track and inclines, priced in the game's money. The inputs stay in the address.</p>
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+          <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Plan a rail line</h2>
+          <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">algoglyph.track_plan: AlgoGlyph's track-planning on the game's map, ways, terrain, prices and bridges, with bridges, tunnels, diagonal track and inclines, priced in the game's money. The inputs stay in the address.</p>
           <div id="plan" class="mt-3"></div>
         </div>
-        <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Resource</h2>
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+          <h2 class="mb-4 text-xl font-bold leading-none text-gray-900 dark:text-white">Resource</h2>
           <div id="resource" class="text-xs text-gray-500 dark:text-gray-400">Click any openttd:// link in a result to read it here.</div>
         </div>
       </div>

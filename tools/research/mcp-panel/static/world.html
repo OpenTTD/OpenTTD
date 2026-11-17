@@ -7,72 +7,70 @@
   <title>OpenTTD World</title>
   <link rel="stylesheet" href="/static/app.css">
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-page="world">
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-description="Your map, road network, route plan, transfer yards and calibration, live from the game. Parameters live in the address: a configured view is a link. Click a tile or a node: your game camera goes there and marks it. Drag to move the graph." data-page="world">
   <script src="/static/shell.js"></script>
-
 
   <main class="pb-8">
     <span id="w-stats" data-nav-extra class="hidden md:inline"></span>
-    <div class="flex flex-wrap items-center gap-3 mb-4 p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-      <label class="text-sm text-gray-900 dark:text-white">Map layer
-        <select id="p-layer" class="ms-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-wrap items-center gap-3 mb-4">
+      <label class="text-sm font-medium text-gray-900 dark:text-white">Map layer
+        <select id="p-layer" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 ms-2">
           <option value="types">Tile types</option><option value="heights">Heights</option><option value="owners">Owners</option>
         </select>
       </label>
-      <label class="text-sm text-gray-900 dark:text-white">Graph
-        <select id="p-component" class="ms-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <label class="text-sm font-medium text-gray-900 dark:text-white">Graph
+        <select id="p-component" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 ms-2">
           <option value="all">All components</option>
         </select>
       </label>
-      <label class="inline-flex items-center gap-2 text-sm text-gray-900 dark:text-white"><input id="p-live" type="checkbox" checked class="w-4 h-4"> Live (5 s)</label>
-      <label class="text-sm text-gray-900 dark:text-white">Budget
-        <input id="p-budget" type="number" step="10000" min="0" class="ms-2 w-28 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <label class="inline-flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white"><input id="p-live" type="checkbox" checked class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"> Live (5 s)</label>
+      <label class="text-sm font-medium text-gray-900 dark:text-white">Budget
+        <input id="p-budget" type="number" step="10000" min="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 px-3 py-2 ms-2 w-28">
       </label>
-      <label class="text-sm text-gray-900 dark:text-white">Payback (months)
-        <input id="p-payback" type="number" step="1" min="1" class="ms-2 w-20 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <label class="text-sm font-medium text-gray-900 dark:text-white">Payback (months)
+        <input id="p-payback" type="number" step="1" min="1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 px-3 py-2 ms-2 w-20">
       </label>
       <span class="inline-flex items-center gap-3 text-sm text-gray-900 dark:text-white">Modes
-        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="bus" class="w-4 h-4"> bus</label>
-        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="rail" class="w-4 h-4"> rail</label>
-        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="air" class="w-4 h-4"> air</label>
-        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="truck" class="w-4 h-4"> truck</label>
-        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="freight_rail" class="w-4 h-4"> freight rail</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="bus" class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"> bus</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="rail" class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"> rail</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="air" class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"> air</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="truck" class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"> truck</label>
+        <label class="inline-flex items-center gap-1"><input type="checkbox" data-mode="freight_rail" class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"> freight rail</label>
       </span>
-      <span class="text-xs text-gray-500 dark:text-gray-400">Parameters live in the address: a configured view is a link. Click a tile or a node: your game camera goes there and marks it. Drag to move the graph.</span>
     </div>
 
-    <div id="live" data-nav="Live view" class="p-3 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800" data-frame>
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Live view: what your game window shows</h3>
-        <span class="text-xs text-gray-500 dark:text-gray-400">openttd.view.screenshot on the GUI client, about once a second</span>
+    <div id="live" data-nav="Live view" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4" data-frame>
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Live view: what your game window shows</h2>
+          <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">openttd.view.screenshot on the GUI client, about once a second</p></div>
       </div>
       <img id="live-img" alt="The owner's OpenTTD window, refreshed about once a second" class="w-full rounded-sm bg-gray-900">
       <p id="live-msg" class="mt-1 text-xs text-gray-500 dark:text-gray-400"></p>
     </div>
 
     <div class="grid gap-4 xl:grid-cols-2">
-      <section class="relative p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700" data-frame>
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Map (openttd://map)</h3>
-          <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-xs px-2 py-1 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Maximize</button>
+      <section class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 relative" data-frame>
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+          <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Map (openttd://map)</h2>
+          <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Maximize</button>
         </div>
         <canvas id="map" role="img" aria-label="The whole map, one pixel group per tile, coloured by the chosen layer, with towns and stations" class="w-full aspect-square rounded-sm bg-gray-900"></canvas>
         <div id="map-legend" class="flex flex-wrap gap-3 mt-2 text-xs text-gray-600 dark:text-gray-300"></div>
       </section>
-      <section class="relative p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700" data-frame>
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Road network (/api/graph)</h3>
-          <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-xs px-2 py-1 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Maximize</button>
+      <section class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 relative" data-frame>
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+          <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Road network (/api/graph)</h2>
+          <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Maximize</button>
         </div>
         <div id="graph" role="img" aria-label="The road network as a graph on map coordinates: junctions, dead ends, stations and town anchors, edges by length" class="w-full aspect-square"></div>
       </section>
     </div>
-    <section class="mt-4 p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Route plan (/api/plan)</h3>
-        <span class="text-xs text-gray-500 dark:text-gray-400">Model v2 from the game's payment formula and speeds; vehicle costs not modelled. Lines on the map, colour by mode. Click a row: your camera goes to the first town.</span>
+    <section class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mt-4">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Route plan (/api/plan)</h2>
+          <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Model v2 from the game's payment formula and speeds; vehicle costs not modelled. Lines on the map, colour by mode. Click a row: your camera goes to the first town.</p></div>
       </div>
-      <div class="relative overflow-x-auto">
+      <div class="relative overflow-x-auto rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr><th class="px-3 py-2">Mode</th><th class="px-3 py-2">From</th><th class="px-3 py-2">To</th><th class="px-3 py-2">Tiles</th><th class="px-3 py-2">Supply</th><th class="px-3 py-2">Road</th><th class="px-3 py-2">Score</th></tr>
@@ -80,20 +78,20 @@
           <tbody id="plan-body"></tbody>
         </table>
       </div>
-      <h4 class="mt-4 mb-2 text-base font-semibold text-gray-900 dark:text-white">Portfolio within the budget</h4>
+      <h3 class="mt-4 mb-2 text-base font-semibold text-gray-900 dark:text-white">Portfolio within the budget</h3>
       <p id="portfolio-solver" class="mb-2 text-xs text-gray-500 dark:text-gray-400"></p>
       <ul id="portfolio-body" class="space-y-1 text-sm text-gray-700 dark:text-gray-300"></ul>
     </section>
-    <section id="yards" data-nav="Transfer yards" class="mt-4 p-3 bg-white border border-gray-200 rounded-lg scroll-mt-20 dark:bg-gray-800 dark:border-gray-700">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-        <div><h3 class="text-lg font-semibold text-gray-900 dark:text-white">Transfer yards, proven before they are built</h3>
-        <p class="text-xs text-gray-500 dark:text-gray-400">Where two planned rail lines meet: the better line's route is laid by AlgoGlyph track-planning and its tiles blocked, then the other line must still leave from a platform beside it (GET /api/plan?track=N&amp;yards=N, src/yards.rs). Click a row: your camera goes to the shared end.</p></div>
+    <section id="yards" data-nav="Transfer yards" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mt-4 scroll-mt-20">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Transfer yards, proven before they are built</h2>
+        <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Where two planned rail lines meet: the better line's route is laid by AlgoGlyph track-planning and its tiles blocked, then the other line must still leave from a platform beside it (GET /api/plan?track=N&amp;yards=N, src/yards.rs). Click a row: your camera goes to the shared end.</p></div>
         <div class="flex items-center gap-2">
           <a href="/docs#/default/plan" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
-          <button id="yards-run" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap dark:bg-primary-600 dark:hover:bg-primary-700 disabled:opacity-50">Prove yards</button>
+          <button id="yards-run" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Prove yards</button>
         </div>
       </div>
-      <div class="relative overflow-x-auto">
+      <div class="relative overflow-x-auto rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr><th class="px-3 py-2">Verdict</th><th class="px-3 py-2">Better line (A)</th><th class="px-3 py-2">Other line (B)</th><th class="px-3 py-2">Shared end</th><th class="px-3 py-2 text-right">B alone</th><th class="px-3 py-2 text-right">B from the yard</th><th class="px-3 py-2">Why</th></tr>
@@ -102,17 +100,17 @@
         </table>
       </div>
     </section>
-    <section id="calibration" data-nav="Calibration" class="mt-4 p-3 bg-white border border-gray-200 rounded-lg scroll-mt-20 dark:bg-gray-800 dark:border-gray-700">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-        <div><h3 class="text-lg font-semibold text-gray-900 dark:text-white">What the lines really earn, fed back into the plan</h3>
-        <p class="text-xs text-gray-500 dark:text-gray-400">Every running line's profit per vehicle last year (openttd://vehicles) against the planner's prediction for the same towns or industries; the median ratio per mode becomes <code>params.calibration</code> for the next plan (GET /api/plan?calibrate=1, src/calibrate.rs). Click a row: your camera goes to the line's first station.</p></div>
+    <section id="calibration" data-nav="Calibration" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mt-4 scroll-mt-20">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">What the lines really earn, fed back into the plan</h2>
+        <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Every running line's profit per vehicle last year (openttd://vehicles) against the planner's prediction for the same towns or industries; the median ratio per mode becomes <code>params.calibration</code> for the next plan (GET /api/plan?calibrate=1, src/calibrate.rs). Click a row: your camera goes to the line's first station.</p></div>
         <div class="flex items-center gap-2">
           <a href="/docs#/default/plan" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
-          <button id="cal-run" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap dark:bg-primary-600 dark:hover:bg-primary-700 disabled:opacity-50">Calibrate</button>
+          <button id="cal-run" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Calibrate</button>
         </div>
       </div>
       <div id="cal-modes" class="flex flex-wrap gap-2 mb-2"></div>
-      <div class="relative overflow-x-auto">
+      <div class="relative overflow-x-auto rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr><th class="px-3 py-2">Line (stations)</th><th class="px-3 py-2">Mode</th><th class="px-3 py-2">Planner's candidate</th><th class="px-3 py-2 text-right">Real / vehicle / month</th><th class="px-3 py-2 text-right">Predicted</th><th class="px-3 py-2 text-right">Ratio</th><th class="px-3 py-2">Why not measured</th></tr>

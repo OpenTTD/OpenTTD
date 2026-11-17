@@ -7,25 +7,23 @@
   <title>OpenTTD Interface</title>
   <link rel="stylesheet" href="/static/app.css">
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-page="ui">
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-description="Every window and widget of your game, derived from openttd.ui.windows; class names from src/window_type.h. Click a widget to press it in the game (when input is armed); click elsewhere to see what is there." data-page="ui">
   <script src="/static/shell.js"></script>
-
 
   <main class="pb-8">
     <span id="u-stats" data-nav-extra class="hidden md:inline"></span>
-    <div class="flex flex-wrap items-center gap-3 mb-4 p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-      <label class="inline-flex items-center gap-2 text-sm text-gray-900 dark:text-white"><input id="p-widgets" type="checkbox" checked class="w-4 h-4"> Show widgets</label>
-      <label class="text-sm text-gray-900 dark:text-white">Window
-        <select id="p-window" class="ms-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"><option value="all">All windows</option></select>
+    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-wrap items-center gap-3 mb-4">
+      <label class="inline-flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white"><input id="p-widgets" type="checkbox" checked class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"> Show widgets</label>
+      <label class="text-sm font-medium text-gray-900 dark:text-white">Window
+        <select id="p-window" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 ms-2"><option value="all">All windows</option></select>
       </label>
       <span id="u-armed" class="text-xs font-medium px-2.5 py-0.5 rounded-sm"></span>
-      <span class="text-xs text-gray-500 dark:text-gray-400">Every window and widget of your game, derived from openttd.ui.windows; class names from src/window_type.h. Click a widget to press it in the game (when input is armed); click elsewhere to see what is there.</span>
     </div>
     <div class="grid gap-4 xl:grid-cols-4">
-      <section class="xl:col-span-3 p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700" data-frame>
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Your screen, live</h3>
-          <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-xs px-2 py-1 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Maximize</button>
+      <section class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 xl:col-span-3" data-frame>
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+          <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Your screen, live</h2>
+          <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Maximize</button>
         </div>
         <div id="screen" class="relative w-full select-none" role="img" aria-label="The owner's game window with every window and widget as a clickable area">
           <img id="screen-img" alt="" class="w-full rounded-sm bg-gray-900">
@@ -33,8 +31,8 @@
         </div>
         <p id="u-msg" class="mt-2 text-sm text-gray-500 dark:text-gray-400"></p>
       </section>
-      <section class="p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-        <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Open windows</h3>
+      <section class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
+        <h2 class="mb-4 text-xl font-bold leading-none text-gray-900 dark:text-white">Open windows</h2>
         <ul id="windows" class="space-y-2 text-sm"></ul>
       </section>
     </div>

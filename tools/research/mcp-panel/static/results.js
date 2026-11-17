@@ -124,7 +124,7 @@ async function listPage() {
         </div>
       </form>
       <div id="duel-run" class="hidden mt-4">
-        <div class="flex justify-between mb-1 text-sm text-gray-700 dark:text-gray-300"><span id="duel-month">starting</span><span id="duel-pct"></span></div>
+        <div class="flex justify-between gap-2 mb-1 text-sm text-gray-700 dark:text-gray-300"><span id="duel-month" class="min-w-0 break-words">starting</span><span id="duel-pct" class="shrink-0"></span></div>
         <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"><div id="duel-bar" class="bg-primary-600 h-2.5 rounded-full" style="width: 0%"></div></div>
       </div>
     </div>

@@ -238,7 +238,8 @@ export function catalogueView(container, ops, client, state, { onSelect, onUri }
       for (const op of list) {
         const key = `${op.instance}/${op.id}`;
         const body = el('div', {});
-        const head = el('a', { href: '#', class: CLS.link, onclick: (e) => {
+        // break-all: an operation id and its summary wrap on a phone instead of widening the page.
+        const head = el('a', { href: '#', class: `${CLS.link} break-all`, onclick: (e) => {
           e.preventDefault();
           if (body.childElementCount) { body.replaceChildren(); return; }
           body.replaceChildren(operationForm(op, client, { onUri }));

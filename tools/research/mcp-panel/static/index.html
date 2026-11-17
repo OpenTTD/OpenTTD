@@ -7,23 +7,16 @@
   <title>OpenTTD MCP Panel</title>
   <link rel="stylesheet" href="/static/app.css">
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-page="home">
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-page="home" data-description="Your live game through its embedded MCP server: what the window shows, the companies, a plan before acting, your bot, every decision and the whole catalogue.">
   <script src="/static/shell.js"></script>
 
   <main class="pb-72">
     <span id="endpoint" data-nav-extra class="hidden md:inline font-mono"></span>
-    <nav class="flex mb-4" aria-label="Breadcrumb">
-      <ol class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
-        <li class="text-gray-700 dark:text-gray-300">Research</li>
-        <li class="text-gray-400">/</li>
-        <li class="text-gray-500 dark:text-gray-400">Embedded MCP server</li>
-      </ol>
-    </nav>
 
-    <div id="live" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800" data-frame>
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Live view: what your game window shows</h3>
-        <span class="text-xs text-gray-500 dark:text-gray-400">openttd.view.screenshot on the GUI client, about once a second</span>
+    <div id="live" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4" data-frame>
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Live view: what your game window shows</h2>
+          <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">openttd.view.screenshot on the GUI client, about once a second</p></div>
       </div>
       <img id="live-img" alt="The owner's OpenTTD window, refreshed about once a second" class="w-full rounded-sm bg-gray-900">
       <p id="live-msg" class="mt-1 text-xs text-gray-500 dark:text-gray-400"></p>
@@ -32,33 +25,33 @@
     <section id="overview" data-nav="Overview" class="mb-4" aria-labelledby="overview-title">
     <h2 id="overview-title" class="sr-only">Overview</h2>
     <div class="grid grid-cols-2 gap-3 mb-4 sm:gap-4 md:grid-cols-3 xl:grid-cols-6">
-      <a href="/resource/game/state" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+      <a href="/resource/game/state" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 block hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:focus:ring-primary-800">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Game date</p>
         <p id="s-date" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
         <p id="s-tick" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
       </a>
-      <a href="/resource/game/state" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+      <a href="/resource/game/state" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 block hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:focus:ring-primary-800">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Simulation</p>
         <p id="s-paused" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
         <p class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate">pause and resume under Control</p>
       </a>
-      <a href="/resource/vehicles" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+      <a href="/resource/vehicles" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 block hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:focus:ring-primary-800">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Fleet</p>
         <p id="s-vehicles" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
         <p id="s-fleet-types" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
         <p id="ov-vehicles-delta" class="text-xs text-gray-500 dark:text-gray-400 truncate"></p>
       </a>
-      <a href="/resource/companies" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+      <a href="/resource/companies" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 block hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:focus:ring-primary-800">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Companies</p>
         <p id="s-companies" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
         <p id="ov-leader" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
       </a>
-      <a href="/resource/towns" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+      <a href="/resource/towns" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 block hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:focus:ring-primary-800">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Towns</p>
         <p id="s-map" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
         <p id="s-map-size" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
       </a>
-      <a href="#ov-monthly-card" class="block p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none">
+      <a href="#ov-monthly-card" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 block hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:focus:ring-primary-800">
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Last month</p>
         <p id="ov-month-net" class="mt-1 text-lg font-bold leading-none text-gray-900 whitespace-nowrap sm:text-xl 2xl:text-2xl dark:text-white tabular-nums">-</p>
         <p id="ov-month-sub" class="mt-1 text-xs text-gray-500 dark:text-gray-400 truncate"></p>
@@ -66,31 +59,31 @@
     </div>
 
     <div class="grid gap-4 mb-4 xl:grid-cols-3">
-      <div id="ov-companies-card" data-maximize="ov-companies" data-chart="ov-companies" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 xl:col-span-2 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
+      <div id="ov-companies-card" data-maximize="ov-companies" data-chart="ov-companies" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 xl:col-span-2 flex flex-col">
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div class="min-w-0">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Companies over time</h3>
-            <p id="ov-samples" class="text-xs text-gray-500 dark:text-gray-400">waiting for the first game day</p>
+            <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Companies over time</h2>
+        <p id="ov-samples" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">waiting for the first game day</p>
           </div>
           <div data-toolbar class="flex shrink-0 items-center gap-2">
             <span id="ov-live" data-state="off" class="group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 data-[state=live]:bg-green-100 data-[state=live]:text-green-800 dark:data-[state=live]:bg-green-900 dark:data-[state=live]:text-green-300"><span aria-hidden="true" class="size-2 rounded-full bg-gray-400 group-data-[state=live]:bg-green-500"></span><span data-live-text>connecting</span></span>
           </div>
         </div>
         <div data-controls class="flex flex-wrap items-center gap-2 mb-3">
-          <label for="ov-metric" class="sr-only">Metric</label><select id="ov-metric" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block py-2 ps-3 pe-9 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
-          <label for="ov-range" class="sr-only">Range</label><select id="ov-range" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block py-2 ps-3 pe-9 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
-          <button id="ov-focus-clear" type="button" class="hidden text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Show all companies</button>
+          <label for="ov-metric" class="sr-only">Metric</label><select id="ov-metric" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 block"></select>
+          <label for="ov-range" class="sr-only">Range</label><select id="ov-range" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 block"></select>
+          <button id="ov-focus-clear" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 hidden">Show all companies</button>
         </div>
         <div class="relative grow flex flex-col">
           <div id="ov-companies" role="img" aria-label="Each company's chosen metric by game date; click a line to focus that company" class="w-full h-72 sm:h-80 lg:h-96 grow"></div>
           <div id="ov-companies-empty" data-empty class="hidden absolute inset-0 flex items-center justify-center p-6 text-center"><p class="max-w-sm text-sm text-gray-500 dark:text-gray-400">No company in this game yet. The lines start on the day the first company is founded.</p></div>
         </div>
       </div>
-      <div id="ov-standing-card" data-maximize="ov-standing" data-chart="ov-standing" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
+      <div id="ov-standing-card" data-maximize="ov-standing" data-chart="ov-standing" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-col">
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div class="min-w-0">
-            <h3 id="ov-standing-title" class="text-lg font-semibold text-gray-900 dark:text-white">Standing today</h3>
-            <p id="ov-standing-note" class="text-xs text-gray-500 dark:text-gray-400">The same metric, the last game day; click a company to focus it</p>
+            <h2 id="ov-standing-title" class="text-xl font-bold leading-none text-gray-900 dark:text-white">Standing today</h2>
+        <p id="ov-standing-note" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">The same metric, the last game day; click a company to focus it</p>
           </div>
           <div data-toolbar class="flex shrink-0 items-center gap-2"></div>
         </div>
@@ -99,21 +92,21 @@
           <div id="ov-standing-empty" data-empty class="hidden absolute inset-0 flex items-center justify-center p-6 text-center"><p class="max-w-sm text-sm text-gray-500 dark:text-gray-400">No company to rank yet.</p></div>
         </div>
       </div>
-      <div id="ov-monthly-card" data-maximize="ov-monthly" data-chart="ov-monthly" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 flex flex-col xl:col-span-2 scroll-mt-20">
-        <div class="flex items-start justify-between gap-3 mb-3">
+      <div id="ov-monthly-card" data-maximize="ov-monthly" data-chart="ov-monthly" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-col xl:col-span-2 scroll-mt-20">
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div class="min-w-0">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Result per month</h3>
-            <p id="ov-monthly-note" class="text-xs text-gray-500 dark:text-gray-400">How much each company's chosen metric moved in each game month: above zero it gained, below it lost; click a bar to focus the company</p>
+            <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Result per month</h2>
+        <p id="ov-monthly-note" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">How much each company's chosen metric moved in each game month: above zero it gained, below it lost; click a bar to focus the company</p>
           </div>
           <div data-toolbar class="flex shrink-0 items-center gap-2"></div>
         </div>
         <div id="ov-monthly" role="img" aria-label="Change of the chosen metric per company per game month" class="w-full h-64 sm:h-72"></div>
       </div>
-      <div id="ov-fleet-card" data-maximize="ov-fleet" data-chart="ov-fleet" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 flex flex-col">
-        <div class="flex items-start justify-between gap-3 mb-3">
+      <div id="ov-fleet-card" data-maximize="ov-fleet" data-chart="ov-fleet" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-col">
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div class="min-w-0">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Fleet by type</h3>
-            <p class="text-xs text-gray-500 dark:text-gray-400">Trains, road vehicles, ships and aircraft (wagons and effects not counted); click for every vehicle</p>
+            <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Fleet by type</h2>
+        <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Trains, road vehicles, ships and aircraft (wagons and effects not counted); click for every vehicle</p>
           </div>
           <div data-toolbar class="flex shrink-0 items-center gap-2"></div>
         </div>
@@ -122,35 +115,35 @@
     </div>
     </section>
 
-    <div id="plan" data-nav="Plan (DAG)" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Plan before acting (AlgoGlyph action-plan)</h3>
-        <span id="plan-msg" class="text-xs text-gray-500 dark:text-gray-400">POST /api/actionplan: a DAG of actions, expanded into presses and cash-checked before anything runs</span>
+    <div id="plan" data-nav="Plan (DAG)" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Plan before acting (AlgoGlyph action-plan)</h2>
+          <p id="plan-msg" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">POST /api/actionplan: a DAG of actions, expanded into presses and cash-checked before anything runs</p></div>
       </div>
       <div class="grid gap-4 lg:grid-cols-2">
         <div>
-          <textarea id="plan-actions" rows="9" class="block w-full p-2.5 text-xs font-mono text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white">[
+          <textarea id="plan-actions" rows="9" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 px-3 py-2 block w-full font-mono">[
   {"id": "borrow", "kind": "borrow", "amount": 100000, "step": 10000},
   {"id": "line", "kind": "build", "label": "coal line", "cost": 134592, "after": ["borrow"]},
   {"id": "repay", "kind": "repay", "amount": 50000, "step": 10000, "after": ["line"]}
 ]</textarea>
-          <button type="button" id="plan-run" class="mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700">Make the plan</button>
+          <button type="button" id="plan-run" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-2">Make the plan</button>
           <ol id="plan-steps" class="mt-3 space-y-1 text-xs text-gray-700 dark:text-gray-300 max-h-48 overflow-auto"></ol>
         </div>
         <div id="plan-graph" role="img" aria-label="The plan's DAG: actions by wave, dependencies as arrows" class="w-full h-72"></div>
       </div>
     </div>
 
-    <div id="content" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Content (BaNaNaS): AIs to play against</h3>
-        <span class="text-xs text-gray-500 dark:text-gray-400">GET /api/content?q= and POST /api/content/download: the game's own content state, select and download</span>
+    <div id="content" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Content (BaNaNaS): AIs to play against</h2>
+          <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">GET /api/content?q= and POST /api/content/download: the game's own content state, select and download</p></div>
       </div>
       <form id="content-form" class="flex gap-2 mb-3">
-        <input id="content-q" type="text" value="AdmiralAI" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" aria-label="What to look for on the content server">
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700">Search</button>
+        <input id="content-q" type="text" value="AdmiralAI" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 px-3 py-2 block w-full" aria-label="What to look for on the content server">
+        <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Search</button>
       </form>
-      <div class="relative overflow-x-auto max-h-64">
+      <div class="relative overflow-x-auto rounded-lg max-h-64">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr><th class="px-3 py-2"></th><th class="px-3 py-2">Name</th><th class="px-3 py-2">Type</th><th class="px-3 py-2">State</th><th class="px-3 py-2">Id</th></tr>
@@ -158,45 +151,45 @@
           <tbody id="content-rows"></tbody>
         </table>
       </div>
-      <button type="button" id="content-download" disabled class="mt-3 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700 disabled:opacity-50">Download selected</button>
+      <button type="button" id="content-download" disabled class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-3">Download selected</button>
       <p id="content-msg" class="mt-2 text-xs text-gray-500 dark:text-gray-400">Search, tick, download: the game fetches the items and the libraries they need. Afterwards a duel can run against them: tools/research/mcp-duel --opponent &lt;name&gt;.</p>
     </div>
 
-    <div id="news" data-nav="News" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <div class="flex items-center justify-between mb-3">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">News in your game window</h3>
-        <span class="text-xs text-gray-500 dark:text-gray-400">openttd.view.news.* on the GUI client; new items stream as events news.shown</span>
+    <div id="news" data-nav="News" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">News in your game window</h2>
+          <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">openttd.view.news.* on the GUI client; new items stream as events news.shown</p></div>
       </div>
       <form id="news-form" class="grid gap-3 mb-4 md:grid-cols-6">
-        <input id="news-text" type="text" required placeholder="A message for the player (from you, the bot or another AI)" class="md:col-span-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
-        <select id="news-town" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"><option value="">No viewport</option></select>
-        <select id="news-style" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        <input id="news-text" type="text" required placeholder="A message for the player (from you, the bot or another AI)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 px-3 py-2 md:col-span-3 block w-full">
+        <select id="news-town" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 block w-full"><option value="">No viewport</option></select>
+        <select id="news-style" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 block w-full">
           <option value="">Style: automatic</option><option value="normal">Newspaper</option><option value="thin">Headline + viewport</option><option value="small">Information window</option>
         </select>
         <div class="flex gap-2">
-          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Show</button>
-          <button type="button" id="news-close" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-3 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Close</button>
+          <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Show</button>
+          <button type="button" id="news-close" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Close</button>
         </div>
       </form>
       <p id="news-msg" class="mb-2 text-xs text-gray-500 dark:text-gray-400"></p>
       <div class="grid gap-4 lg:grid-cols-2">
         <div>
-          <h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">What the game showed you</h4>
+          <h3 class="mb-2 text-base font-semibold text-gray-900 dark:text-white">What the game showed you</h3>
           <ol id="news-list" class="relative border-s border-gray-200 dark:border-gray-700 ms-2"></ol>
         </div>
         <div>
-          <h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Questions asked in your game window (POST /api/ask)</h4>
+          <h3 class="mb-2 text-base font-semibold text-gray-900 dark:text-white">Questions asked in your game window (POST /api/ask)</h3>
           <ul id="ask-list" class="space-y-2 text-sm"></ul>
         </div>
       </div>
     </div>
 
-    <div id="cluster" data-nav="Cluster" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Cluster: every MCP instance</h3>
-        <span id="cluster-reg" class="text-xs text-gray-500 dark:text-gray-400"></span>
+    <div id="cluster" data-nav="Cluster" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Cluster: every MCP instance</h2>
+          <p id="cluster-reg" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400"></p></div>
       </div>
-      <div class="relative overflow-x-auto">
+      <div class="relative overflow-x-auto rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr><th class="px-4 py-2">Instance</th><th class="px-4 py-2">Role</th><th class="px-4 py-2">Probe</th><th class="px-4 py-2">Endpoint</th><th class="px-4 py-2">Panel</th></tr>
@@ -208,9 +201,9 @@
 
 
     <div class="grid gap-4 mb-4 xl:grid-cols-3">
-      <div id="companies-card" data-nav="Companies" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm xl:col-span-2 dark:border-gray-700 dark:bg-gray-800">
-        <h3 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Companies</h3>
-        <div class="overflow-x-auto">
+      <div id="companies-card" data-nav="Companies" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 xl:col-span-2">
+        <h2 class="mb-4 text-xl font-bold leading-none text-gray-900 dark:text-white">Companies</h2>
+        <div class="relative overflow-x-auto rounded-lg">
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr><th class="px-4 py-3">ID</th><th class="px-4 py-3">Name</th><th class="px-4 py-3">Type</th><th class="px-4 py-3">Money</th><th class="px-4 py-3">Value</th><th class="px-4 py-3">Founded</th></tr>
@@ -220,28 +213,28 @@
         </div>
       </div>
 
-      <div id="control" data-nav="Control and approvals" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <h3 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Control through MCP</h3>
+      <div id="control" data-nav="Control and approvals" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
+        <h2 class="mb-4 text-xl font-bold leading-none text-gray-900 dark:text-white">Control through MCP</h2>
         <p class="mb-3 text-sm text-gray-500 dark:text-gray-400">Every change is a <code>tools/call</code> that waits for the operator's approval of its exact arguments, then runs as a normal command.</p>
         <div class="flex flex-wrap gap-2 mb-4">
-          <button id="btn-pause" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Pause</button>
-          <button id="btn-resume" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Resume</button>
-          <button id="btn-ai" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Start AI</button>
+          <button id="btn-pause" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Pause</button>
+          <button id="btn-resume" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Resume</button>
+          <button id="btn-ai" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Start AI</button>
         </div>
         <label class="inline-flex items-center mb-4 cursor-pointer">
           <input id="auto" type="checkbox" class="sr-only peer">
           <div class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
           <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Auto-approve (full auto)</span>
         </label>
-        <h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Pending approvals</h4>
+        <h3 class="mb-2 text-base font-semibold text-gray-900 dark:text-white">Pending approvals</h3>
         <ul id="pending" class="space-y-2 text-sm text-gray-500 dark:text-gray-400"><li>none</li></ul>
       </div>
     </div>
 
-    <div id="bot" data-nav="My bot" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <div class="mb-3">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">My bot</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400">The AI that plays for you. Its settings come from the game (<span id="bot-source" class="font-mono"></span>); a change to a running bot asks one approval per setting.</p>
+    <div id="bot" data-nav="My bot" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+      <div class="mb-4">
+        <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">My bot</h2>
+        <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">The AI that plays for you. Its settings come from the game (<span id="bot-source" class="font-mono"></span>); a change to a running bot asks one approval per setting.</p>
       </div>
       <div id="bot-running" class="space-y-4"><p class="text-sm text-gray-500 dark:text-gray-400">Loading the bots…</p></div>
       <details id="bot-new" class="mt-4 border border-gray-200 rounded-lg dark:border-gray-700">
@@ -249,8 +242,8 @@
         <div class="px-4 pb-4">
           <div class="flex flex-wrap items-center gap-2 mb-3">
             <label for="bot-ai" class="text-sm font-medium text-gray-900 dark:text-white">AI</label>
-            <select id="bot-ai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block py-2 ps-3 pe-9 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
-            <button id="bot-start" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Start this bot</button>
+            <select id="bot-ai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 block"></select>
+            <button id="bot-start" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Start this bot</button>
           </div>
           <div id="bot-new-form"></div>
         </div>
@@ -259,9 +252,9 @@
     </div>
 
     <div class="grid gap-4 mb-4 xl:grid-cols-2">
-      <div id="decisions-card" data-nav="Decisions and events" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <h3 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Decisions (openttd://decisions)</h3>
-        <div class="overflow-x-auto">
+      <div id="decisions-card" data-nav="Decisions and events" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
+        <h2 class="mb-4 text-xl font-bold leading-none text-gray-900 dark:text-white">Decisions (openttd://decisions)</h2>
+        <div class="relative overflow-x-auto rounded-lg">
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr><th class="px-4 py-3">#</th><th class="px-4 py-3">Action</th><th class="px-4 py-3">Approval</th><th class="px-4 py-3">Result</th><th class="px-4 py-3">Verdict</th><th class="px-4 py-3">Tick</th></tr>
@@ -270,19 +263,19 @@
           </table>
         </div>
       </div>
-      <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <h3 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Events</h3>
+      <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
+        <h2 class="mb-4 text-xl font-bold leading-none text-gray-900 dark:text-white">Events</h2>
         <ol id="events" class="relative border-s border-gray-200 dark:border-gray-700 max-h-72 overflow-y-auto"></ol>
       </div>
     </div>
 
-    <div id="catalogue" data-nav="MCP catalogue" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm scroll-mt-20 dark:border-gray-700 dark:bg-gray-800">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-        <div><h3 class="text-lg font-semibold text-gray-900 dark:text-white">MCP catalogue</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Every tool and resource of the live game, each with its own page: a form, a call, the answer, and the same call over REST, MCP and the console</p></div>
+    <div id="catalogue" data-nav="MCP catalogue" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4 scroll-mt-20">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">MCP catalogue</h2>
+        <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Every tool and resource of the live game, each with its own page: a form, a call, the answer, and the same call over REST, MCP and the console</p></div>
         <div class="flex items-center gap-2">
-          <a href="/tools" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700">Full catalogue</a>
-          <button id="btn-catalogue" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Reload</button>
+          <a href="/tools" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Full catalogue</a>
+          <button id="btn-catalogue" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Reload</button>
         </div>
       </div>
       <div id="catalogue-mount"><p class="text-sm text-gray-500 dark:text-gray-400">Loading the catalogue…</p></div>

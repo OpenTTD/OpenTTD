@@ -15,15 +15,14 @@
   <script src="/vendor/npm/echarts/dist/echarts.min.js"></script>
   <script src="/vendor/npm/d3/dist/d3.min.js"></script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-app="hub" data-page="viz">
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-description="Everything here is read live through the hub from the instance's own MCP resources (openttd://world/graph, openttd://map, openttd://map/ways, openttd://companies). Parameters are in the address, so a view is a link; every card maximizes, Escape restores." data-app="hub" data-page="viz">
   <script src="/static/shell.js"></script>
   <main class="pb-8">
-    <span data-nav-extra class="flex items-center gap-2"><label for="instance" class="text-sm text-gray-500 dark:text-gray-400">Instance</label><select id="instance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select></span>
-    <p class="text-xs text-gray-500 dark:text-gray-400">Everything here is read live through the hub from the instance's own MCP resources (openttd://world/graph, openttd://map, openttd://map/ways, openttd://companies). Parameters are in the address, so a view is a link; every card maximizes, Escape restores.</p>
-    <div id="graph-card" data-nav="World graph" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <div class="flex items-center justify-between mb-3 gap-2">
-        <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">World graph</h2>
-        <div id="graph-controls" class="flex items-center gap-2"></div>
+    <span data-nav-extra class="flex items-center gap-2"><label for="instance" class="text-sm text-gray-500 dark:text-gray-400">Instance</label><select id="instance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9"></select></span>
+    <div id="graph-card" data-nav="World graph" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+        <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">World graph</h2>
+        <div id="graph-controls" class="flex flex-wrap items-center gap-2"></div>
       </div>
       <div class="grid gap-4 xl:grid-cols-3">
         <div id="graph" class="xl:col-span-2 w-full h-[32rem]" role="img" aria-label="The world as a graph: towns, industries, stations and vehicles with their links"></div>
@@ -31,17 +30,17 @@
       </div>
     </div>
     <div class="grid gap-4 xl:grid-cols-2">
-      <div id="terrain-card" data-nav="Terrain in 3D" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <div class="flex items-center justify-between mb-3 gap-2">
-          <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Terrain and roads</h2>
-          <div id="terrain-controls" class="flex items-center gap-2"></div>
+      <div id="terrain-card" data-nav="Terrain in 3D" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+          <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Terrain and roads</h2>
+          <div id="terrain-controls" class="flex flex-wrap items-center gap-2"></div>
         </div>
         <div id="terrain" class="w-full h-[28rem]" role="img" aria-label="The map in three dimensions from tile heights, coloured by tile type, with road ways drawn"></div>
       </div>
-      <div id="economy-card" data-nav="Economy" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <div class="flex items-center justify-between mb-3 gap-2">
-          <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Economy</h2>
-          <div id="economy-controls" class="flex items-center gap-2"></div>
+      <div id="economy-card" data-nav="Economy" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+          <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Economy</h2>
+          <div id="economy-controls" class="flex flex-wrap items-center gap-2"></div>
         </div>
         <div id="money" class="w-full h-64" role="img" aria-label="Each company's money over time while this page is open"></div>
         <div id="waiting" class="w-full h-64" role="img" aria-label="Stations with the most cargo waiting"></div>
