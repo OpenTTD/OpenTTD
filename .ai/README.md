@@ -3,7 +3,7 @@ schema: context/v1
 id: ai.layer
 kind: context
 title: Repository AI context
-description: The protocol of the layer: what it holds, who owns which half, how it is discovered, and what outranks what.
+description: "The protocol of the layer: what it holds, who owns which half, how it is discovered, and what outranks what."
 status: active
 scope: subtree
 providers: ["*"]

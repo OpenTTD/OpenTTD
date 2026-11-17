@@ -113,7 +113,7 @@ jobs:
             echo "::error::${GITHUB_REPOSITORY} has no wiki repository yet. GitHub creates it with the first page: open ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/wiki, save any page once, then re-run this workflow."
             exit 1
           fi
-          rsync -a --delete --exclude .git --exclude surface.json wiki/ wiki-repo/
+          rsync -a --checksum --delete --exclude .git --exclude surface.json wiki/ wiki-repo/
           cd wiki-repo
           git add -A
           if git diff --cached --quiet; then

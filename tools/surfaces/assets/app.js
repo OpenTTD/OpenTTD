@@ -55,7 +55,7 @@
     }
     const hits = index
       .map((d) => {
-        const hay = [d.t, d.p, d.s, (d.h || []).join(' ')].join(' ').toLowerCase();
+        const hay = [d.t, d.p, d.s, (d.h || []).join(' '), d.b || ''].join(' ').toLowerCase();
         if (!terms.every((t) => hay.includes(t))) return null;
         const score = terms.reduce((n, t) => n + (d.t.toLowerCase().includes(t) ? 3 : 0)
           + (d.p.toLowerCase().includes(t) ? 2 : 0), 0);

@@ -176,7 +176,8 @@ fn run() -> Result<(), String> {
             println!("{}", serde_json::Value::Array(list));
         }
         "game" => {
-            let minutes: u64 = if args.len() > 1 { arg_num(&args, 1)? } else { 20 };
+            // The minutes are optional, so `game --borrow-below 5` plays the default 20.
+            let minutes: u64 = if args.len() > 1 && !args[1].starts_with("--") { arg_num(&args, 1)? } else { 20 };
             let mut policy = economy::Policy::default();
             // --borrow-below N: borrow (asking the owner first) whenever money is under N.
             if let Some(i) = args.iter().position(|a| a == "--borrow-below") {
@@ -248,6 +249,8 @@ fn run() -> Result<(), String> {
 fn main() {
     if let Err(e) = run() {
         eprintln!("mcp-human: {e}");
-        std::process::exit(1);
+        // A wrong command line is a usage error (2), like every other research tool; anything else is 1.
+        let usage = e.contains("usage: mcp-human") || e.starts_with("not a number");
+        std::process::exit(if usage { 2 } else { 1 });
     }
 }

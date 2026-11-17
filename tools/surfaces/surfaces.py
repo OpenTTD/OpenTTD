@@ -49,7 +49,7 @@ GENERATED_ROOT = "target/web"  # the root Majordomus discovers surface.json decl
 
 DEFAULTS = {
     "sources": {"include": ["**/*.md"], "exclude": []},
-    "check": {"exclude": []},
+    "check": {"exclude": [], "front_matter_exclude": []},
     "flags": {"exclude": []},
     "site": {"out": f"{GENERATED_ROOT}/site", "mount": "/site"},
     "wiki": {"out": f"{GENERATED_ROOT}/wiki", "mount": "/wiki"},
@@ -203,7 +203,10 @@ def load_config(root: Path) -> dict:
 # --------------------------------------------------------------------------- documents
 
 
-def split_front_matter(text: str) -> tuple[dict | None, str, int]:
+FRONT_ERRORS: dict[str, str] = {}  # path -> why its front matter did not parse (a check finding)
+
+
+def split_front_matter(text: str, path: str = "") -> tuple[dict | None, str, int]:
     """Return (front matter, body, number of lines the front matter took)."""
     for fence, loader in (("---", yaml.safe_load), ("+++", tomllib.loads)):
         if text.startswith(fence + "\n"):
@@ -212,7 +215,9 @@ def split_front_matter(text: str) -> tuple[dict | None, str, int]:
                 raw = text[len(fence) + 1 : len(fence) + end.start()]
                 try:
                     data = loader(raw)
-                except Exception:  # noqa: BLE001 - malformed front matter is just text
+                except Exception as err:  # noqa: BLE001 - malformed front matter is text, and a finding
+                    if path:
+                        FRONT_ERRORS[path] = " ".join(str(err).split())[:160]
                     return None, text, 0
                 body = text[len(fence) + end.end() :]
                 if isinstance(data, dict):
@@ -262,9 +267,13 @@ class Doc:
         return self.text.count("\n") + 1
 
 
+H1_HTML_RE = re.compile(r"<h1\b[^>]*>(.*?)</h1>", re.I | re.S)
+
+
 def first_heading_and_paragraph(body: str) -> tuple[str, str]:
     title, para, in_fence, buf = "", "", False, []
-    for line in body.splitlines():
+    lines = body.splitlines()
+    for n, line in enumerate(lines):
         s = line.strip()
         if s.startswith(("```", "~~~")):
             in_fence = not in_fence
@@ -275,6 +284,14 @@ def first_heading_and_paragraph(body: str) -> tuple[str, str]:
             continue
         if not title and s.startswith("# "):
             title = plain(s[2:])
+            continue
+        if not title and (m := H1_HTML_RE.search(s)):
+            title = plain(html.unescape(re.sub(r"<[^>]+>", "", m.group(1))))
+            continue
+        if not title and not buf and n + 1 < len(lines) and re.fullmatch(r"=+\s*", lines[n + 1]) and s:
+            title = plain(s)
+            continue
+        if re.fullmatch(r"=+", s):
             continue
         if s.startswith("#"):
             if buf:
@@ -317,11 +334,11 @@ def load_docs(repo: Repo, cfg: dict) -> dict[str, Doc]:
         if not file.is_file():
             continue
         text = file.read_text(encoding="utf-8", errors="replace")
-        fm, body, offset = split_front_matter(text)
+        fm, body, offset = split_front_matter(text, path)
         doc = Doc(path=path, text=text, fm=fm, body=body, offset=offset)
         heading, para = first_heading_and_paragraph(body)
         fm = fm or {}
-        doc.title = str(fm.get("title") or heading or posixpath.basename(path)[:-3])
+        doc.title = plain(str(fm.get("title") or "")) or heading or posixpath.basename(path)[:-3]
         doc.summary = plain(
             str(fm.get("headline") or fm.get("description") or fm.get("statement") or para)
         )
@@ -402,8 +419,11 @@ def load_layer(repo: Repo) -> Layer:
         )
 
     def front(path: str) -> dict:
-        fm, _, _ = split_front_matter((repo.root / path).read_text(encoding="utf-8"))
-        return {**(fm or {}), "path": path}
+        fm, body, _ = split_front_matter((repo.root / path).read_text(encoding="utf-8"), path)
+        rec = {**(fm or {}), "path": path}
+        rec.setdefault("id", posixpath.basename(path)[:-3])
+        rec.setdefault("title", first_heading_and_paragraph(body)[0] or rec["id"])
+        return rec
 
     layer.features = sorted(
         (front(p) for p in files("features", ".md")), key=lambda f: (f.get("weight", 999), f["path"])
@@ -927,19 +947,22 @@ class Site:
             )
             for d in groups[g]:
                 cls = "nav-doc" + (on if active is d else "")
-                label = d.path[len(g) + 1 :] if g else d.path
                 parts.append(
-                    f'<li><a href="{self.link(here, d.page)}" class="{cls}" title="{esc(d.title)}">'
-                    f'<span class="truncate">{esc(label)}</span></a></li>'
+                    f'<li><a href="{self.link(here, d.page)}" class="{cls}" title="{esc(d.path)}">'
+                    f'<span class="truncate">{esc(d.title)}</span></a></li>'
                 )
             parts.append("</ul></li>")
         parts.append("</ul>")
         return "".join(parts)
 
     def shell(self, here: str, title: str, content: str, active: Doc | None = None,
-              crumbs: list[tuple[str, str]] = (), actions: str = "", charts: bool = False) -> str:
+              crumbs: list[tuple[str, str]] = (), actions: str = "", charts: bool = False,
+              description: str = "", absolute: bool = False) -> str:
         root = posixpath.relpath(".", posixpath.dirname(here) or ".")
         root = "" if root == "." else root + "/"
+        # A page served at any URL (404.html) resolves its links from the site's base path.
+        base = (f'<base href="{esc(urllib.parse.urlparse(self.repo.pages_url).path or "/")}">\n'
+                if absolute else "")
         crumb = "".join(
             f'<li><div class="flex items-center"><span class="mx-1 text-gray-400">/</span>'
             + (f'<a href="{self.link(here, t)}" class="ms-1 text-sm font-medium text-gray-700 '
@@ -955,8 +978,8 @@ class Site:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)} · {esc(self.repo.name)}</title>
-<meta name="description" content="{esc(self.summary)}">
+{base}<title>{esc(title)} · {esc(self.repo.name)}</title>
+<meta name="description" content="{esc(description or self.summary)}">
 <meta name="generator" content="tools/surfaces/surfaces site @ {esc(sha)}">
 <script>(function(){{try{{var t=localStorage.getItem('color-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}}catch(e){{}}}})()</script>
 <link rel="stylesheet" href="{root}css/app.css">
@@ -966,10 +989,10 @@ class Site:
   <div class="px-3 py-3 lg:px-5 lg:ps-3"><div class="flex items-center justify-between">
     <div class="flex items-center justify-start">
       <button data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" type="button" class="me-2 rounded-lg p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 lg:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><span class="sr-only">Open sidebar</span>{icon("menu", "h-6 w-6")}</button>
-      <a href="{root}index.html" class="me-8 flex items-center"><span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{esc(self.repo.name)}</span></a>
-      <form class="hidden lg:block" role="search" onsubmit="return false">
+      <a href="{root}index.html" class="me-3 flex items-center sm:me-8"><span class="self-center whitespace-nowrap text-lg font-semibold sm:text-xl dark:text-white">{esc(self.repo.name)}</span></a>
+      <form class="block" role="search" onsubmit="return false">
         <label for="search" class="sr-only">Search</label>
-        <div class="relative w-96">
+        <div class="relative w-40 sm:w-64 lg:w-96">
           <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-gray-500 dark:text-gray-400">{icon("search")}</div>
           <input type="search" id="search" autocomplete="off" placeholder="Search {len(self.docs)} documents  ( / )" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400">
           <div id="search-results" class="absolute z-50 mt-1 hidden max-h-96 w-full overflow-y-auto rounded-lg bg-white shadow-lg dark:bg-gray-700"></div>
@@ -977,9 +1000,9 @@ class Site:
       </form>
     </div>
     <div class="flex items-center gap-1">
-      <a href="{esc(self.repo.wiki_url)}" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" title="Wiki">{icon("book")}</a>
-      <a href="{esc(self.repo.web)}" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" title="Repository">{icon("code")}</a>
-      <button id="theme-toggle" type="button" class="rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700" title="Toggle dark mode"><span class="dark:hidden">{icon("moon")}</span><span class="hidden dark:inline">{icon("sun")}</span></button>
+      <a href="{esc(self.repo.wiki_url)}" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" title="Wiki" aria-label="Wiki">{icon("book")}</a>
+      <a href="{esc(self.repo.web)}" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" title="Repository" aria-label="Repository">{icon("code")}</a>
+      <button id="theme-toggle" type="button" class="rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700" title="Toggle dark mode" aria-label="Toggle dark mode"><span class="dark:hidden">{icon("moon")}</span><span class="hidden dark:inline">{icon("sun")}</span></button>
     </div>
   </div></div>
 </nav>
@@ -989,7 +1012,7 @@ class Site:
 <div id="main-content" class="relative h-full w-full overflow-y-auto bg-gray-50 pt-16 lg:ms-72 lg:w-[calc(100%-18rem)] dark:bg-gray-900">
 <main class="px-4 pt-6">
   <div class="mb-4">
-    <nav class="mb-3 flex" aria-label="Breadcrumb"><ol class="inline-flex items-center">
+    <nav class="mb-3 flex" aria-label="Breadcrumb"><ol class="inline-flex flex-wrap items-center">
       <li class="inline-flex items-center"><a href="{root}index.html" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white">{icon("home", "me-2 h-4 w-4")}Home</a></li>{crumb}
     </ol></nav>
     <div class="flex flex-wrap items-center justify-between gap-3">
@@ -1033,6 +1056,9 @@ class Site:
     def article(self, md: MarkdownIt, doc: Doc) -> str:
         tokens = collect_slugs(md, doc)
         body = render_html(md, self.links, doc, tokens)
+        first = re.match(r"\s*<h1\b[^>]*>(.*?)</h1>\s*", body, re.S)
+        if first and plain(html.unescape(re.sub(r"<[^>]+>", "", first.group(1)))) == doc.title:
+            body = body[first.end():]
         return (
             f'<article class="{CARD} format format-blue max-w-none lg:format-lg dark:format-invert">'
             f"{body}</article>"
@@ -1048,14 +1074,14 @@ class Site:
     def doc_page(self, md: MarkdownIt, doc: Doc) -> str:
         meta = (
             f'<div class="mb-4 flex flex-wrap items-center gap-y-2 text-sm text-gray-500 dark:text-gray-400">'
-            f'{badge(doc.group or "/")}<code class="me-3">{esc(doc.path)}</code>'
+            f'{badge(doc.group or "/")}<code class="me-3 break-all">{esc(doc.path)}</code>'
             f'<span class="me-3">{doc.lines} lines</span><span>changed {fmt_date(doc.changed)}</span></div>'
         )
         crumbs = [(part, "") for part in doc.path.split("/")[:-1]] + [(posixpath.basename(doc.path), "")]
         return self.shell(
             doc.page, doc.title,
             meta + self.front_matter_card(doc) + self.article(md, doc),
-            active=doc, crumbs=crumbs, actions=self.doc_actions(doc),
+            active=doc, crumbs=crumbs, actions=self.doc_actions(doc), description=doc.summary,
         )
 
     def kpis(self) -> str:
@@ -1189,9 +1215,9 @@ class Site:
             parts.append(f'<div class="{CARD} mb-4">' + html_table(["Milestone", "Done", "Progress"], rows) + "</div>")
             graph = ["flowchart LR"]
             for i in lay.issues:
-                label = (i.get("title") or i["id"]).replace('"', "'")
+                label = re.sub(r"[<>\"#]", "", plain(str(i.get("title") or i["id"])))
                 if len(label) > 48:
-                    label = label[:45] + "..."
+                    label = label[:45].rstrip() + "..."
                 graph.append(f'  {i["id"]}["{i["id"]}: {label}"]:::{i["status"]}')
                 for dep in i.get("depends_on") or []:
                     graph.append(f"  {dep} --> {i['id']}")
@@ -1267,7 +1293,8 @@ class Site:
 
     def search_index(self) -> list[dict]:
         return [
-            {"t": d.title, "p": d.path, "u": d.page, "s": d.summary, "h": d.headings[:30]}
+            {"t": d.title, "p": d.path, "u": d.page, "s": d.summary, "h": d.headings[:30],
+             "b": plain(re.sub(r"```.*?```", " ", d.body, flags=re.S))[:1500]}
             for d in self.docs.values()
         ]
 
@@ -1295,7 +1322,8 @@ class Site:
             self.write("ai.html", self.ai_page())
         self.write("404.html", self.shell("404.html", "Not found",
                    f'<div class="{CARD}"><p class="text-gray-500 dark:text-gray-400">No page here. '
-                   f'Search above, or start from the <a class="text-primary-600 hover:underline" href="index.html">overview</a>.</p></div>'))
+                   f'Search above, or start from the <a class="font-medium text-primary-700 underline '
+                   f'dark:text-primary-400" href="index.html">overview</a>.</p></div>', absolute=True))
         self.write("data/site.json", json.dumps(self.data(), ensure_ascii=False))
         self.write("data/search.json", json.dumps(self.search_index(), ensure_ascii=False))
         self.write(".nojekyll", "")
@@ -1340,7 +1368,14 @@ def build_wiki(repo: Repo, cfg: dict, docs: dict[str, Doc], out: Path) -> None:
     out.mkdir(parents=True)
     links = Links(repo, docs)
     for d in docs.values():
-        body = rewrite_source_links(d.text, lambda href, image, d=d: links.wiki(d, href, image))
+        text = d.body if d.fm else d.text
+        if d.fm:
+            if not re.search(r"^# ", text, re.M):
+                text = f"# {d.title}\n\n{text.lstrip()}"
+            meta = yaml.safe_dump(d.fm, sort_keys=False, allow_unicode=True, default_flow_style=False).rstrip()
+            text += (f"\n\n<details><summary>Record metadata ({len(d.fm)} fields)</summary>\n\n"
+                     f"```yaml\n{meta}\n```\n\n</details>\n")
+        body = rewrite_source_links(text, lambda href, image, d=d: links.wiki(d, href, image))
         (out / f"{d.wiki}.md").write_text(body, encoding="utf-8")
     if "README.md" not in docs:
         (out / "Home.md").write_text(f"# {repo.name}\n\nSee the sidebar.\n")
@@ -1348,11 +1383,17 @@ def build_wiki(repo: Repo, cfg: dict, docs: dict[str, Doc], out: Path) -> None:
     for d in docs.values():
         groups.setdefault(d.group, []).append(d)
     side = [f"**[{repo.name}]({repo.web})** · [site]({repo.pages_url})", ""]
+    seen: dict[str, int] = {}
+    for d in docs.values():
+        seen[d.title] = seen.get(d.title, 0) + 1
     for g in sorted(groups, key=lambda g: (g != "", g.startswith("."), g.lower())):
-        side.append(f"**{g or '/'}**")
+        side.append(f"<details{' open' if g == '' else ''}><summary><b>{html.escape(g or '/')}</b> "
+                    f"({len(groups[g])})</summary>")
         side.append("")
-        side += [f"- [{d.title}]({d.wiki})" for d in groups[g]]
-        side.append("")
+        for d in groups[g]:
+            label = d.title if seen[d.title] == 1 else f"{d.title} ({posixpath.basename(d.path)[:-3]})"
+            side.append(f"- [{label.replace('[', '(').replace(']', ')')}]({d.wiki})")
+        side += ["", "</details>", ""]
     (out / "_Sidebar.md").write_text("\n".join(side))
     (out / "_Footer.md").write_text(
         f"Generated from [{repo.sha[:10]}]({repo.web}/commit/{repo.sha}) by `tools/surfaces/surfaces wiki`. "
@@ -1534,6 +1575,9 @@ def check_doc_flags(tools: dict[str, list[Tool]], doc: Doc) -> list[Finding]:
 
 def run_check(repo: Repo, cfg: dict, docs: dict[str, Doc], layer: Layer) -> list[Finding]:
     findings, _ = sync_regions(repo, docs, layer, write=False)
+    for path, why in sorted(FRONT_ERRORS.items()):
+        if not matches(path, cfg["check"]["front_matter_exclude"]):
+            findings.append(Finding("front", path, 1, f"front matter does not parse, so the page shows it as text: {why}"))
     tools = load_tools(repo, cfg)
     findings += check_tool_headers(tools)
     for path, doc in docs.items():

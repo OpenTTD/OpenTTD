@@ -8,7 +8,7 @@ sources are its tracked Markdown, its git history and its `.ai/` layer. The outp
 | Site | `surfaces site` | Every Markdown document as a page, plus an overview with interactive charts, the `.ai/` layer (features, decisions, rules, plan, dependency graph) and search | GitHub Pages |
 | Wiki | `surfaces wiki` | The same documents as wiki pages: `Home`, a sidebar, links rewritten to pages | The repository's GitHub wiki |
 | Markdown regions | `surfaces sync` | Tables inside the documents themselves (document indexes, features, decisions, rules, plan, surfaces), between markers | The repository |
-| Gate | `surfaces check` | Fails while a region is stale, a relative link or anchor leads nowhere, or a tool's flags and its usage disagree | Pre-commit, `tools/gate.sh`, CI |
+| Gate | `surfaces check` | Fails while a region is stale, a relative link or anchor leads nowhere, a document's front matter does not parse, or a tool's flags and its usage disagree | Pre-commit, `tools/gate.sh`, CI |
 
 Nothing in the generator names a repository. Every fact comes from git (`origin`, `HEAD`,
 the tracked files, the log), from the `.ai/manifest.yaml` sections, and from each
@@ -104,10 +104,17 @@ A region is a pair of HTML comments whose contents the generator owns:
 Edit the text around a region, never inside it. `surfaces sync` rewrites the inside, and
 `surfaces check` fails while it would.
 
-A document's title comes from its front matter `title`, or else its first `# ` heading.
+A document's title comes from its front matter `title`, or else its first `# `, `<h1>` or
+setext (`====`) heading, or else its file name.
 Its summary comes from front matter `headline`, `description` or `statement`, or else its
 first paragraph. A better first paragraph therefore improves every index that lists the
 document.
+
+Front matter that does not parse as YAML would otherwise be published as text: the page opens
+with its raw fields and every table that reads its `id` or `title` gets an empty cell. `check`
+fails on it (finding `front`), naming the parser's error. The usual cause is an unquoted value
+containing `: `. `[check] front_matter_exclude` takes path globs for documents vendored from
+elsewhere, which are fixed where they come from.
 
 ## Site
 
@@ -124,12 +131,23 @@ document.
   per-document age at `HEAD` and plan progress. `data/search.json` holds the search index.
   Both are computed at build time from git, so the same commit always builds the same site.
 
+The shell shows the document's title as the page heading, so an article's first `# ` heading
+is dropped when it is that same title. The sidebar lists documents by title, with the path as
+the tooltip. Search reads the title, path, summary, headings and the first part of the body,
+and is shown at every width. `404.html` carries a `<base href>` set to the Pages path, because
+GitHub serves it at whatever URL was missed.
+
 ## Wiki
 
 GitHub keeps a wiki in a separate repository, `<repo>.wiki.git`, which exists only after
 its first page has been saved once in the web interface. Until then the workflow's wiki
 job fails and says so. Page names are derived from document paths, `README.md` becomes
-`Home`, and `_Sidebar.md` and `_Footer.md` are generated. Each sync replaces the whole
+`Home`, and `_Sidebar.md` and `_Footer.md` are generated. A page is the document's body: its front matter,
+when it has one, is folded into a "Record metadata" block at the end, and a document whose
+title only exists in its front matter gets it as a `# ` heading. The sidebar holds one collapsed
+group per top-level directory, and titles that two documents share carry the file name. The
+workflow copies the pages with `rsync --checksum`, so a page whose size and time happen to match
+the old one is still replaced. Each sync replaces the whole
 wiki: any edit made in the wiki is overwritten, and the footer of every page says so.
 
 ## In CI

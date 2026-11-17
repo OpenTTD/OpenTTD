@@ -9,3 +9,6 @@ exclude = ["src/3rdparty/**"]
 [check]
 # Upstream documents are carried unmodified (ADR 0011): their links are upstream's to keep.
 exclude = ["changelog.md"]
+# Rules vendored from Majordomus carry front matter that does not parse as YAML (an unquoted ": ").
+# They are fixed upstream and replaced on the next vendor update, never edited here.
+front_matter_exclude = [".ai/repo/rules/vendor/**"]

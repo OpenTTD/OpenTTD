@@ -4,7 +4,9 @@
 //! Usage: mcp-plan [--panel http://127.0.0.1:8800 | --token <prismatic_mcp token file>] [--limit 20] [--params '{"cost_weight":1}']
 //!        mcp-plan --invest ...  (also decide with AlgoGlyph's transport-investment, see src/invest.rs)
 //!        mcp-plan --invest-inputs ... (print only the kernel input, to reproduce a case)
-//!        mcp-plan --track N ...   (price the N best rail lines of each list on the real map, src/linecost.rs)
+//!        mcp-plan --track N [--yards N] ...   (price the N best rail lines of each list on the real map,
+//!                                               src/linecost.rs; --yards prices the N best freight yards)
+//!        mcp-plan --calibrate [--record FILE] ...  (scale the plan by measured profit; --record keeps it)
 //!        mcp-plan --defaults   (print the default parameters)
 use std::time::Duration;
 
@@ -95,6 +97,10 @@ fn main() {
             "--calibrate" => calibrate_too = true,
             "--record" => record_to = args.next(),
             "--limit" => limit = args.next().and_then(|v| v.parse().ok()).unwrap_or(20),
+            "-h" | "--help" => {
+                println!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--track N [--yards N]] [--calibrate [--record FILE]] [--defaults]");
+                return;
+            }
             "--defaults" => {
                 println!("{}", plan::defaults());
                 return;
