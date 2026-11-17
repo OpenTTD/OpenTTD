@@ -5,9 +5,9 @@ kind: knowledge
 class: lesson
 title: "A panel announces itself before its game's MCP server is up, so a catalogue read once at discovery lacks every resource route"
 description: "When a client caches what an instance offers (hub, Rhai, a bot): read it again, never only at discovery."
-status: candidate
+status: verified
 epistemics: observed
-date: 2026-11-16
+date: 2026-11-17
 tags: [prismatic-mcp, hub, discovery]
 about: tools/research/mcp-rhai/src/hub.rs
 route: platform
@@ -31,3 +31,9 @@ MCP server answers. The hub read each instance's catalogue once, on discovery, s
 stayed without `/api/resources/*` for the life of the hub, and the audit answered "no stations
 operation". Since 36c66c3ac7 the hub reads a catalogue again after `CATALOGUE_TTL_CYCLES`
 (`tools/research/mcp-rhai/src/hub.rs`) and announces a catalogue that changed.
+
+# Evidence
+
+Re-verified against master at 5778b8909c (triage session ff4a0d12, 2026-11-17), read only:
+- tools/research/mcp-rhai/src/panel.rs:1316 registry_write, called at :1669 as the panel starts.
+- tools/research/mcp-rhai/src/hub.rs:375 CATALOGUE_TTL_CYCLES = 15 and :418 re-reads a catalogue once it is that many cycles old: the fix the record names (36c66c3ac7) is in place, and the lesson (a catalogue read once at discovery can be empty) stands.

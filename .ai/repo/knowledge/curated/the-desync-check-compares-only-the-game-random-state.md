@@ -5,9 +5,9 @@ kind: knowledge
 class: fact
 title: "Multiplayer desync detection compares only _random.state[0] at sync frames; a divergence that never feeds Random() goes unseen"
 description: "When using 'no desync reported' as evidence that a hook or experiment left clients in step."
-status: candidate
+status: verified
 epistemics: observed
-date: 2026-11-16
+date: 2026-11-17
 tags: [network]
 about: src/network/network.cpp
 route: platform
@@ -33,3 +33,9 @@ hooks, a quiet desync check proves only that the random streams agree.
 
 Authored from a read of the source at f069e8f0f5 (issue I0055); awaiting the owner's review.
 `majordomus knowledge promote the-desync-check-compares-only-the-game-random-state` with evidence, or `majordomus knowledge reject the-desync-check-compares-only-the-game-random-state --reason ...`.
+
+# Evidence
+
+Re-verified against master at 5778b8909c (triage session ff4a0d12, 2026-11-17), read only:
+- src/network/network.cpp:1292 _sync_seed_1 = _random.state[0]; the second seed is compiled only under NETWORK_SEND_DOUBLE_SEED (network.cpp:81, 1293).
+- src/network/network_client.cpp:926 and :951 receive _sync_seed_1; the second seed again only under NETWORK_SEND_DOUBLE_SEED (:920, :927, :952).

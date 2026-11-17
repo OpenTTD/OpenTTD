@@ -5,9 +5,9 @@ kind: knowledge
 class: convention
 title: "The owner auto-answers the bot's questions with openttd.view.ask.auto, so no 'Your bot asks' dialog interrupts play"
 description: "When the bot asks yes/no questions through openttd.view.ask and the owner does not want to click each red dialog."
-status: candidate
+status: verified
 epistemics: observed
-date: 2026-11-16
+date: 2026-11-17
 tags: [prismatic-mcp, gui, owner-switch]
 about: src/prismatic_mcp/prismatic_mcp_view.cpp
 route: platform
@@ -59,3 +59,10 @@ the window waits, and the close box answers no. A process with no main window (a
 Authored from a read of the source at the I0067 head; awaiting the owner's review.
 `majordomus knowledge promote the-owner-can-auto-answer-the-bots-questions` with evidence, or
 `majordomus knowledge reject the-owner-can-auto-answer-the-bots-questions --reason ...`.
+
+# Evidence
+
+Re-verified against master at 5778b8909c (triage session ff4a0d12, 2026-11-17), read only:
+- src/prismatic_mcp/prismatic_mcp_view.cpp:65-67 hold the owner switch (_ask_auto), its countdown (_ask_countdown) and ASK_COUNTDOWN_MAX = 600; :82-90 the countdown widgets and the bar that empties.
+- :234 and :281 return no tools on _network_dedicated, so the switch is a GUI-client tool.
+The owner's request is quoted verbatim in the record with its session id.

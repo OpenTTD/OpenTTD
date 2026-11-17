@@ -5,9 +5,9 @@ kind: knowledge
 class: constraint
 title: "Every PoolItem::Create must follow a CanAllocateItem for that pool; an assert build checks it, a release build dies with a FatalError when the pool is full"
 description: "When creating a pooled object (vehicle, town, sign, station, company, ...) in a command handler, the game loop or research code."
-status: candidate
+status: verified
 epistemics: observed
-date: 2026-11-16
+date: 2026-11-17
 tags: [core-utilities, commands]
 about: src/core/pool_func.hpp
 route: platform
@@ -40,3 +40,10 @@ full pool a refused command rather than a crash. `CreateAtIndex` (savegame loadi
 
 Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote a-pool-create-needs-can-allocate-item-first` with evidence, or `majordomus knowledge reject a-pool-create-needs-can-allocate-item-first --reason ...`.
+
+# Evidence
+
+Re-verified against master at 5778b8909c (triage session ff4a0d12, 2026-11-17), read only:
+- src/core/pool_type.hpp:193-199 CanAllocate(n) sets checked = ret ? n : 0 under WITH_ASSERT.
+- src/core/pool_func.hpp:118-124 GetNew asserts checked != 0, decrements it, and calls FatalError("{}: no more free items") when no slot is free.
+- src/signs_cmd.cpp:38 CmdPlaceSign returns STR_ERROR_TOO_MANY_SIGNS when Sign::CanAllocateItem() fails.

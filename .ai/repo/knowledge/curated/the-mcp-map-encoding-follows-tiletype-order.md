@@ -5,9 +5,9 @@ kind: knowledge
 class: constraint
 title: "The fork's openttd://map tile codes index a fixed string by TileType's numeric value; an upstream reorder mislabels tiles silently"
 description: "When rebasing onto an upstream change to src/tile_type.h."
-status: candidate
+status: verified
 epistemics: observed
-date: 2026-11-16
+date: 2026-11-17
 tags: [map-and-tiles, prismatic-mcp]
 about: src/prismatic_mcp/prismatic_mcp_world.cpp
 route: platform
@@ -34,3 +34,9 @@ that touches it.
 
 Authored from a read of the source at f069e8f0f5 (issue I0055); awaiting the owner's review.
 `majordomus knowledge promote the-mcp-map-encoding-follows-tiletype-order` with evidence, or `majordomus knowledge reject the-mcp-map-encoding-follows-tiletype-order --reason ...`.
+
+# Evidence
+
+Re-verified against master at 5778b8909c (triage session ff4a0d12, 2026-11-17), read only:
+- src/prismatic_mcp/prismatic_mcp_world.cpp:60 TYPE_CODES = "CRrHTSWVIBO"; :62-65 TypeCode indexes it by static_cast<size_t>(TileType), '?' past the end.
+- src/tile_type.h enum class TileType is Clear, Railway, Road, House, Trees, Station, Water, Void, Industry, TunnelBridge, Object, End: today the codes match position by position, with no static_assert tying them.

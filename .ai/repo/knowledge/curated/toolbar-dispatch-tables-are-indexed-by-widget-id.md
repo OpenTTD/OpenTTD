@@ -5,9 +5,9 @@ kind: knowledge
 class: constraint
 title: "The main toolbar's click and menu tables and its tooltips are indexed by widget id, so a new WID_TN_* value must be added at the same position everywhere"
 description: "When adding, removing or reordering a main or scenario-editor toolbar button."
-status: candidate
+status: verified
 epistemics: observed
-date: 2026-11-16
+date: 2026-11-17
 tags: [game-windows, gui-and-console]
 about: src/toolbar_gui.cpp
 route: platform
@@ -35,3 +35,9 @@ same way.
 
 Authored from a read of the source at f8b1d52e80 (issue I0066); awaiting the owner's review.
 `majordomus knowledge promote toolbar-dispatch-tables-are-indexed-by-widget-id` with evidence, or `majordomus knowledge reject toolbar-dispatch-tables-are-indexed-by-widget-id --reason ...`.
+
+# Evidence
+
+Re-verified against master at 5778b8909c (triage session ff4a0d12, 2026-11-17), read only:
+- src/toolbar_gui.cpp:2114 `_toolbar_button_procs[widget](this)` on click; :2119 `_menu_clicked_procs[widget](index)` on a dropdown; :2331 tooltip `STR_TOOLBAR_TOOLTIP_PAUSE_GAME + widget`; :2511 `_scen_toolbar_button_procs[widget]`.
+- The tables are plain arrays (:1375, :2009, :2385) and grep finds no static_assert in src/toolbar_gui.cpp.

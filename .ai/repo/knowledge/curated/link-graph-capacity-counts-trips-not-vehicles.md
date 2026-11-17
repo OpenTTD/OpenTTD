@@ -5,9 +5,9 @@ kind: knowledge
 class: fact
 title: "A link's capacity in the game's link graph is the capacity of the trips run over it, not of the vehicles assigned to it"
 description: "Before judging a route's fleet from cargo_link capacity and usage (openttd://world/graph), or sizing a fleet from it."
-status: candidate
+status: verified
 epistemics: observed
-date: 2026-11-16
+date: 2026-11-17
 tags: [linkgraph, economy, prismatic-mcp, planning]
 about: src/linkgraph/linkgraph.cpp
 route: platform
@@ -40,3 +40,11 @@ Dividing that by the four assigned buses invents three idle buses; the first liv
 capacity audit did exactly that (commit 4a24cf81a8 replaced it). Judge a link only once its capacity
 covers every assigned vehicle (mature), and compute the vehicles needed as
 max(1, ceil(usage / one vehicle's capacity)).
+
+# Evidence
+
+Re-verified against master at 5778b8909c (triage session ff4a0d12, 2026-11-17), read only:
+- src/station_cmd.cpp IncreaseStats walks the consist (for v = front; v != nullptr; v = v->Next()) and adds each vehicle's capacity to the link on departure.
+- src/linkgraph/linkgraph.cpp:220-225 LinkGraph::BaseEdge::Update adds capacity in EdgeUpdateMode::Increase.
+- src/prismatic_mcp/prismatic_mcp_graph.cpp:258 publishes that edge capacity as "capacity" on a cargo_link.
+- commit 4a24cf81a8 (cited) replaced the per-vehicle division the record warns against.
