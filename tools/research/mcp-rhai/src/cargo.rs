@@ -70,7 +70,9 @@ pub fn freight_pairs(world: &Value, engines: &Value, p: &Value, limit: usize) ->
                     if !enabled.iter().any(|m| m == mode) { continue; }
                     let Some((vname, cap, speed, price, running)) = freight_vehicle(engines, cname, rail, wagons) else { continue };
                     let periods = d / (speed.max(1.0) * 0.0903) + overhead;
-                    let per_unit = d * time_factor_for(periods, td1, td2) * payment / 2097152.0;
+                    // `calibration.<mode>`, read back from the running game (src/calibrate.rs); 1 unmeasured.
+                    let per_unit = d * time_factor_for(periods, td1, td2) * payment / 2097152.0
+                        * p.pointer(&format!("/calibration/{mode}")).and_then(Value::as_f64).unwrap_or(1.0);
                     let per_vehicle = cap * load * 12.0 / (2.0 * periods); // loaded one way, empty back
                     let build = if rail { d * rail_tile + rail_stations } else { d * road_tile * 0.5 + truck_stops };
                     if budget.is_some_and(|b| build > b) { continue; }

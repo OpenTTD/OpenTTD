@@ -232,7 +232,10 @@ pub fn plan(towns: &Value, graph: &Value, limit: usize, overrides: &Value, engin
                 // The vehicle's own effective speed when the game offers one, else the parameter.
                 let speed = vehicle.as_ref().map_or(*speed, |v| v.speed.max(1.0));
                 let periods = d / (speed * 0.0903) + overhead;
-                let per_passenger = d * time_factor(periods) * payment / 2097152.0;
+                // `calibration.<mode>`: what this mode really earned against what the model said, read
+                // back from the running game (src/calibrate.rs); 1 when nothing was measured.
+                let per_passenger = d * time_factor(periods) * payment / 2097152.0
+                    * p.pointer(&format!("/calibration/{name}")).and_then(Value::as_f64).unwrap_or(1.0);
                 let demand = supply * supply_factor;
                 let build = match name.as_str() {
                     "bus" => if connected { 0.0 } else { d * road_tile },

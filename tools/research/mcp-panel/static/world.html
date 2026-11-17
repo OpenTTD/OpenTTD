@@ -134,6 +134,26 @@
         </table>
       </div>
     </section>
+    <section id="calibration" class="mt-4 p-3 bg-white border border-gray-200 rounded-lg scroll-mt-20 dark:bg-gray-800 dark:border-gray-700">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+        <div><h3 class="text-lg font-semibold text-gray-900 dark:text-white">What the lines really earn, fed back into the plan</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Every running line's profit per vehicle last year (openttd://vehicles) against the planner's prediction for the same towns or industries; the median ratio per mode becomes <code>params.calibration</code> for the next plan (GET /api/plan?calibrate=1, src/calibrate.rs). Click a row: your camera goes to the line's first station.</p></div>
+        <div class="flex items-center gap-2">
+          <a href="/docs#/default/plan" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
+          <button id="cal-run" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap dark:bg-primary-600 dark:hover:bg-primary-700 disabled:opacity-50">Calibrate</button>
+        </div>
+      </div>
+      <div id="cal-modes" class="flex flex-wrap gap-2 mb-2"></div>
+      <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr><th class="px-3 py-2">Line (stations)</th><th class="px-3 py-2">Mode</th><th class="px-3 py-2">Planner's candidate</th><th class="px-3 py-2 text-right">Real / vehicle / month</th><th class="px-3 py-2 text-right">Predicted</th><th class="px-3 py-2 text-right">Ratio</th><th class="px-3 py-2">Why not measured</th></tr>
+          </thead>
+          <tbody id="cal-body"><tr><td class="px-3 py-2" colspan="7">Not run yet.</td></tr></tbody>
+        </table>
+      </div>
+      <p id="cal-params" class="mt-2 text-xs font-mono text-gray-500 dark:text-gray-400 break-all"></p>
+    </section>
     <p id="w-msg" class="mt-3 text-sm text-gray-500 dark:text-gray-400"></p>
   </main>
 

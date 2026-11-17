@@ -632,6 +632,23 @@ with 2 bridges, 11 inclines and a level crossing. One passenger pair had no rail
 fell back to air.
 
 
+### What the lines really earn, fed back into the plan
+
+`GET /api/plan?calibrate=1` (`mcp-plan --calibrate`, `src/calibrate.rs`) compares every running line
+with this plan's prediction for it. A line is a pair of stations its vehicles shuttle between
+(`openttd://vehicles`, two `goto_station` orders); its real profit is last year's per vehicle per
+month, counted only for vehicles at least two years old. It is matched to the planner's candidate
+whose ends lie within 12 tiles of both stations, in a mode its vehicles serve, and the prediction is
+that option's `monthly_profit` per vehicle. The median ratio per mode is `calibration.params`; pass it
+back as `params` and the next plan multiplies each mode's predicted income by it (`plan.rs`,
+`cargo.rs`: `calibration.<mode>`, 1 when unmeasured). A line nothing explains is listed with the
+reason. The World page's **Calibrate** shows it, and a row moves the owner's camera to the line.
+
+First reading, 2026-11-17, the :8800 game (one AI company, 17 years): freight rail 0.5 (three lines:
+0.97, 0.5, 0.2), passenger rail 0.2 (one line), bus 0.11 (two lines); four train lines matched no
+candidate. One vehicle per line, so a small sample; knowledge
+`the-planner-overpredicts-what-a-line-earns`.
+
 ### Transfer yards, proven on the map before any bot builds one
 
 `GET /api/plan?track=N&yards=N` (`mcp-plan --track N --yards N`, `src/yards.rs`) checks where two

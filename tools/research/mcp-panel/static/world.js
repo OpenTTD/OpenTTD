@@ -241,6 +241,44 @@ $('yards-body').addEventListener('click', (e) => {
   if (tr && tr.dataset.x !== '') goTo(+tr.dataset.x, +tr.dataset.y, 'shared end of a yard');
 });
 
+/* ---- back-propagation: real profit against the plan (GET /api/plan?calibrate=1) --------------- */
+let calStations = [];
+$('cal-run').addEventListener('click', async () => {
+  const btn = $('cal-run');
+  btn.disabled = true; btn.textContent = 'Calibrating…';
+  try {
+    const [r, st] = await Promise.all([fetch('/api/plan?calibrate=1'), get('/api/resources/stations')]);
+    const d = await r.json();
+    calStations = st.stations || [];
+    const c = d.calibration;
+    if (!r.ok || !c) throw new Error(d.error || 'no calibration in the answer');
+    const name = (id) => (calStations.find((s) => s.id === id) || {}).name || `#${id}`;
+    const money = (v) => (v == null ? '-' : Math.round(v).toLocaleString('en'));
+    $('cal-modes').innerHTML = Object.entries(c.modes || {}).map(([m, f]) => {
+      // Literal class names: Tailwind builds only the classes it finds written out.
+      const tone = f.factor >= 0.9 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
+        : f.factor >= 0.5 ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300'
+          : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300';
+      return `<span class="${tone} text-xs font-medium px-2.5 py-0.5 rounded-sm">${escHtml(m)} × ${f.factor} (${f.lines} line${f.lines === 1 ? '' : 's'}, real / predicted)</span>`;
+    }).join('') || '<span class="text-xs text-gray-500">no line measured yet</span>';
+    $('cal-body').innerHTML = (c.lines || []).map((l) => `<tr data-st="${l.stations[0]}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer">
+      <td class="px-3 py-2 font-medium text-gray-900 dark:text-white">${escHtml(name(l.stations[0]))} - ${escHtml(name(l.stations[1]))}</td>
+      <td class="px-3 py-2">${escHtml(l.mode || l.type)}</td><td class="px-3 py-2">${escHtml(l.candidate || '-')}</td>
+      <td class="px-3 py-2 text-right">${money(l.real_per_vehicle_month)}</td><td class="px-3 py-2 text-right">${money(l.predicted_per_vehicle_month)}</td>
+      <td class="px-3 py-2 text-right">${l.ratio == null ? '-' : l.ratio}</td><td class="px-3 py-2">${escHtml(l.why || '')}</td></tr>`).join('')
+      || '<tr><td class="px-3 py-2" colspan="7">No vehicle shuttles between two stations yet.</td></tr>';
+    $('cal-params').textContent = 'next plan: /api/plan?params=' + JSON.stringify(c.params);
+  } catch (e) {
+    $('cal-body').innerHTML = `<tr><td class="px-3 py-2 text-red-600" colspan="7">${escHtml(e.message)}</td></tr>`;
+  }
+  btn.disabled = false; btn.textContent = 'Calibrate';
+});
+$('cal-body').addEventListener('click', (e) => {
+  const tr = e.target.closest('tr[data-st]');
+  const s = tr && calStations.find((x) => String(x.id) === tr.dataset.st);
+  if (s) goTo(s.x, s.y, `station ${s.name}`);
+});
+
 setInterval(() => { if (state.live) refresh(); }, 5000);
 window.addEventListener('resize', () => setTimeout(drawMap, 30));
 

@@ -22,6 +22,8 @@ mod invest;
 mod linecost;
 #[path = "../yards.rs"]
 mod yards;
+#[path = "../calibrate.rs"]
+mod calibrate;
 #[path = "../hub_algoglyph.rs"]
 #[allow(dead_code)]
 mod hub_algoglyph;
@@ -80,6 +82,7 @@ fn main() {
     let mut invest_inputs = false;
     let mut track = 0usize;
     let mut yards_n = 0usize;
+    let mut calibrate_too = false;
     while let Some(a) = args.next() {
         match a.as_str() {
             "--panel" => panel = args.next().unwrap_or_default(),
@@ -88,6 +91,7 @@ fn main() {
             "--invest-inputs" => invest_inputs = true,
             "--track" => track = args.next().and_then(|v| v.parse().ok()).unwrap_or(3),
             "--yards" => yards_n = args.next().and_then(|v| v.parse().ok()).unwrap_or(2),
+            "--calibrate" => calibrate_too = true,
             "--limit" => limit = args.next().and_then(|v| v.parse().ok()).unwrap_or(20),
             "--defaults" => {
                 println!("{}", plan::defaults());
@@ -101,7 +105,7 @@ fn main() {
                 }
             },
             _ => {
-                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--track N [--yards N]] [--defaults]");
+                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--track N [--yards N]] [--calibrate] [--defaults]");
                 std::process::exit(2);
             }
         }
@@ -136,6 +140,14 @@ fn main() {
             for c in arr.iter_mut().filter(|c| c["mode"] == "freight_rail") { add_sites(c); }
         }
         if let Some(arr) = out["by_mode"]["rail"].as_array_mut() { for c in arr.iter_mut() { add_sites(c); } }
+        // --calibrate: what the running lines really earn against what this plan predicts for the
+        // same towns or industries, per mode (src/calibrate.rs); `calibration.params` goes back in
+        // as --params for the next plan. Read before track pricing changes any score.
+        if calibrate_too {
+            let mut cands: Vec<serde_json::Value> = out["pairs"].as_array().cloned().unwrap_or_default();
+            cands.extend(out["freight"].as_array().cloned().unwrap_or_default());
+            out["calibration"] = calibrate::calibrate(&src.resource("vehicles")?, &src.resource("stations")?, &cands, 12.0);
+        }
         // --track N: the N best rail lines of each list priced on the real map by AlgoGlyph's
         // track-planning (src/linecost.rs) instead of distance x tile cost, before the portfolio.
         if track > 0 {
