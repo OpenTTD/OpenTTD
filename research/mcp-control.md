@@ -653,7 +653,9 @@ nobody measured. Without `default` an unmeasured mode kept factor 1 and won ever
 reads the store when `PRISMATIC_PLAN_CALIBRATION` names it (`research/calibration.json`; `off` or unset:
 the model alone) and says so in the plan's log, so a duel result records which calibration it ran
 with. The duel form's **Calibrated plan** sets it for that duel only (`POST /api/duel` `calibrated`),
-and *Run this again* keeps it. It stays off by default until a duel shows it pays.
+and *Run this again* keeps it. It stays off by default: its first A/B (seed 31337, 36 months, run side
+by side) ended 1023810 calibrated against 1050432 uncalibrated, 2.5% lower after leading by 4.6% at
+month 31.
 
 First reading, 2026-11-17, the :8800 game (one AI company, 17 years): freight rail 0.5 (three lines:
 0.97, 0.5, 0.2), passenger rail 0.2 (one line), bus 0.11 (two lines); four train lines matched no
