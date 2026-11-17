@@ -289,6 +289,21 @@ TEST_CASE("A request is queued, listed with its kind and answered once", "[prism
 	CHECK(M::Call("openttd.ui.requests.answer", {{"id", id + 1000}, {"answer", "x"}})->value("ok", true) == false);
 	CHECK(M::Call("openttd.ui.menu.run", {{"index", -1}})->value("ok", true) == false);
 	CHECK_FALSE(M::Call("openttd.ui.something.else", json::object()).has_value());
+
+	/* Ask() queues the same way under the kind "ask", and that string is a cross-process
+	 * interface: rhai/ask_relay.rhai skips every queued request whose kind is not "ask", so a
+	 * rename here is otherwise caught only by tools/research/mcp-ask-check and a whole stack. */
+	size_t before_ask = M::Requests()["requests"].size();
+	uint64_t ask_id = M::Ask("build the most lucrative line");
+	CHECK(ask_id != 0);
+	auto asked = M::Requests()["requests"];
+	REQUIRE(asked.size() == before_ask + 1);
+	CHECK(asked.back()["id"] == ask_id);
+	CHECK(asked.back()["kind"] == "ask");
+	CHECK(asked.back()["text"] == "build the most lucrative line");
+	CHECK(M::Ask("") == 0); // nothing to ask: no request is queued
+	CHECK(M::Requests()["requests"].size() == before_ask + 1);
+
 	for (const auto &t : M::Tools()) CHECK(t["annotations"]["readOnlyHint"] == false); // a coverage probe must not run them
 }
 
