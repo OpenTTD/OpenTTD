@@ -131,6 +131,29 @@ Rule `project.panel-charts-go-through-one-layer` makes this blocking. Proof:
   data, the address survives a reload, maximize and Escape work, a click focuses, the phone width does
   not overflow, the World page draws, a tool page builds its form, and the console has no errors.
 
+### Duels on a click: run one, compare all
+
+`/results` lists every duel in `research/results` (written by `tools/research/mcp-duel`), newest first,
+with a chart of the final company values: the planned bot against its rival, one pair of bars per run.
+A bar or a row leads to the run's page, `/result/<name>`. Its title comes from the run itself (seed,
+months, both values), and it shows the two companies month by month, the plan, the written reading and
+both bots' logs, which can be filtered. The measure (value, money, loan or trains) and a maximized chart
+stay in the address. The seed filter is in the address of the list page.
+
+**Start the duel** on the same page takes months, seed, opponent AI and a label, and runs `mcp-duel` in
+the background on its own ports. Only one runs at a time. A progress bar follows its month lines, and a
+link to the new run appears when it ends. The routes are rows of the panel's table, so they are in
+OpenAPI, Swagger UI and Rhai:
+
+- `GET /api/results`
+- `GET /api/result?name=`
+- `POST /api/duel` (body checked: months 1 to 240, opponent an AI name)
+- `GET /api/duel`
+
+`mcp-route-check` never posts `/api/duel`, because it starts something and needs no input.
+`mcp-overview-check` checks the pages in a browser: every run is charted, a bar leads to its run, and
+the run's chart follows the measure in the address.
+
 ### A page per tool and resource
 
 Every item of the live MCP catalogue has its own page with a stable address: `/tool/<name>`

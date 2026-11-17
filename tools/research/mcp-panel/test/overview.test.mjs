@@ -88,3 +88,24 @@ test('app.css is built from the current sources (tailwindcss -i input.css -o sta
   execFileSync('tailwindcss', ['-i', 'input.css', '-o', out, '--minify'], { cwd: path.join(here, '..'), stdio: 'ignore' });
   assert.equal(fs.readFileSync(out, 'utf8'), fs.readFileSync(path.join(STATIC, 'app.css'), 'utf8'), 'rebuild static/app.css and commit it');
 });
+
+test('duel pages: options from results, every registered chart has its card', async () => {
+  const { CHARTS, duelsOption, duelOption, shortName } = await import('../static/results.js');
+  const results = [
+    { name: 'duel-20261117T041705-seed31337', seed: 31337, a: { value: 558331 }, b: { value: 27408 } },
+    { name: 'duel-20261117T020835-seed4242', seed: 4242, a: { value: 330926 }, b: { value: 21331 } },
+  ];
+  const o = duelsOption(results);
+  assert.deepEqual(o.series[0].data.map((d) => d.value), [330926, 558331], 'oldest first, left to right');
+  assert.equal(o.series[0].data[1].name, 'duel-20261117T041705-seed31337', 'a bar carries its run for the click');
+  assert.equal(shortName('duel-20261117T041705-seed31337'), '17.11. 04:17 · 31337');
+  const series = [{ month: 1, companies: { 1: { name: 'A', value: 10, trains: 0 }, 2: { name: 'B', value: 20, trains: 0 } } },
+    { month: 2, companies: { 1: { name: 'A', value: 30, trains: 1 }, 2: { name: 'B', value: 25, trains: 0 } } }];
+  const d = duelOption(series, { metric: 'trains' });
+  assert.deepEqual(d.series[0].data, [[1, 0], [2, 1]]);
+  assert.equal(d.series[0].step, 'end');
+  assert.equal(d.dataZoom[0].zoomOnMouseWheel, 'ctrl');
+  assert.ok(render(o).texts > 4 && render(d).paths > 2);
+  const src = fs.readFileSync(path.join(STATIC, 'results.js'), 'utf8');
+  for (const c of CHARTS) assert.ok(src.includes(`chartCard('${c.id}'`), `${c.id} has a maximizable card with role=img and aria-label`);
+});

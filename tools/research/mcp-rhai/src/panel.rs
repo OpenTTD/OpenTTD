@@ -31,6 +31,7 @@ use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 use crate::hub;
 use crate::panel_bot;
 use crate::panel_decision;
+use crate::panel_results;
 use crate::rhai_host;
 
 /// The panel's own directory (static pages, Rhai library, npm packages).
@@ -1878,6 +1879,11 @@ pub fn routes() -> Vec<Route> {
         r("GET", "/api/log", "log", "The server console log (token redacted)", false, None, h_log),
         r("GET", "/api/events", "events", "Events after ?since=<seq>, optionally ?kinds=game,company,... ; SSE: /api/events/stream", false, None, h_events),
         r("GET", "/api/overview", "overview", "Game state, companies and decisions in one read", true, None, h_overview),
+        r("GET", "/api/results", "results", "Every duel result (research/results, written by mcp-duel), newest first: seed, months, label, opponent, winner and both companies' final value", false, None, panel_results::h_results),
+        r("GET", "/api/result", "result", "One duel result by name (?name=duel-...): summary, month-by-month series, the plan, both bots' logs and the written reading", false, None, panel_results::h_result),
+        r("POST", "/api/duel", "duelStart", "Start a duel in the background (tools/research/mcp-duel): the planned bot against an unplanned one or an opponent AI, on its own ports; one at a time", false,
+          s(json!({"months": {"type": "integer", "minimum": 1, "maximum": 240}, "seed": {"type": "integer"}, "label": {"type": "string"}, "opponent": {"type": "string"}}), &[]), panel_results::h_duel_start),
+        r("GET", "/api/duel", "duelStatus", "The duel started from the panel: running or finished, the last month line, the winner line and the result's name", false, None, panel_results::h_duel_status),
         r("GET", "/api/overview/history", "overviewHistory", "The overview's history kept by the panel: one sample per game day (tick, date, vehicles, towns, per company money, value, loan, net); ?since=<tick> for the newer ones", false, None, h_history),
         r("GET", "/api/catalogue", "catalogue", "MCP initialize, resources/list and tools/list", true, None, h_catalogue),
         r("GET", "/api/resource", "readResource", "Read one MCP resource by ?uri=", true, None, h_resource),
@@ -2003,6 +2009,7 @@ fn query_params(path: &str) -> &'static [&'static str] {
         "/api/plan" => &["limit", "params", "track"],
         "/api/investment" => &["params"],
         "/api/content" => &["q"],
+        "/api/result" => &["name"],
         _ => &[],
     }
 }
@@ -2350,6 +2357,17 @@ impl Panel {
             // One page per tool, GUI client tool and resource, and the catalogue of them: stable
             // addresses (/tool/<name>, /client/<name>, /resource/<path>, /tools) whose title and
             // description come from the live catalogue, so a link opens to its own page.
+            // The duels: /results lists them, /result/<name> is one, titled from its own record.
+            if path == "/results" || path.starts_with("/result/") {
+                let (title, description, found) = panel_results::page_meta(path);
+                return match std::fs::read_to_string(statics().join("results.html")) {
+                    Ok(t) => {
+                        let html = t.replace("__TITLE__", &html_escape(&title)).replace("__DESCRIPTION__", &html_escape(&description));
+                        hub::respond(stream, if found { 200 } else { 404 }, "text/html; charset=utf-8", html.as_bytes())
+                    }
+                    Err(_) => send_json(stream, 404, &json!({"error": "static/results.html is missing"})),
+                };
+            }
             if path == "/tools" || path.starts_with("/tool/") || path.starts_with("/client/") || path.starts_with("/resource/") {
                 let (title, description, found) = page_meta(g, path);
                 return match std::fs::read_to_string(statics().join("tool.html")) {
@@ -2528,8 +2546,9 @@ mod tests {
         assert_eq!(ids.len(), rs.len(), "operationIds are unique");
         // server.py's table, route for route, plus the routes added after the Python panel was
         // retired: GET /api/content, POST /api/content/download, GET /api/overview/history, and the
-        // decision contract's GET /api/bridge/companies and POST /api/decision/pull.
-        assert_eq!(rs.len(), 37);
+        // decision contract's GET /api/bridge/companies and POST /api/decision/pull, and the duels
+        // (GET /api/results, GET /api/result, POST and GET /api/duel).
+        assert_eq!(rs.len(), 41);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -2538,7 +2557,7 @@ mod tests {
         }
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",
             "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai",
-            "/api/content", "/api/content/download", "/api/overview/history"].contains(&r.path)));
+            "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel"].contains(&r.path)));
     }
 
     #[test]

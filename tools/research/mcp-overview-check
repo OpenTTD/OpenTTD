@@ -113,6 +113,25 @@ try {
   const fields = await page.$$eval('#call [data-key]', (els) => els.map((e) => e.dataset.key));
   check('a tool page builds its form from the schema', fields.join(',') === 'company,name,value', fields.join(','));
 
+  // The duels: the list's chart has one pair of bars per run and a bar leads to the run's page,
+  // whose chart is drawn and whose measure survives a reload of the address.
+  await page.goto(`${base}/results`);
+  await page.waitForFunction(() => { const b = document.getElementById('duels-chart'); const i = b && globalThis.echarts.getInstanceByDom(b);
+    return i && (i.getOption().series || [])[0]?.data?.length > 0; }, null, { timeout: 15000 }).catch(() => {});
+  const bars = await page.evaluate(() => { const i = globalThis.echarts.getInstanceByDom(document.getElementById('duels-chart'));
+    return i ? i.getOption().series[0].data.length : 0; });
+  const rows = await page.$$eval('#duels-rows tr', (r) => r.length);
+  check('the duel list charts every run', bars > 0 && bars === rows, `${bars} bars, ${rows} rows`);
+  const target = await page.evaluate(() => { const i = globalThis.echarts.getInstanceByDom(document.getElementById('duels-chart'));
+    const bar = i.getOption().series[0].data.at(-1); i.trigger('click', { data: bar, componentType: 'series' }); return bar.name; });
+  await page.waitForURL(/\/result\//, { timeout: 10000 }).catch(() => {});
+  check('a bar leads to its run', page.url().endsWith('/result/' + target), page.url());
+  await page.goto(`${base}/result/${target}?metric=trains`);
+  await page.waitForTimeout(1200);
+  const duel = await page.evaluate(() => { const i = globalThis.echarts.getInstanceByDom(document.getElementById('duel-chart'));
+    return i ? { series: i.getOption().series.length, points: i.getOption().series[0].data.length, metric: document.getElementById('metric').value } : null; });
+  check('a run page draws both companies by the measure in the address', duel && duel.series === 2 && duel.points > 0 && duel.metric === 'trains', JSON.stringify(duel));
+
   check('the console stays free of errors', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
   await browser.close();

@@ -26,6 +26,8 @@ mod panel;
 mod panel_bot;
 #[path = "../panel_decision.rs"]
 mod panel_decision;
+#[path = "../panel_results.rs"]
+mod panel_results;
 
 static STOP: AtomicBool = AtomicBool::new(false);
 
