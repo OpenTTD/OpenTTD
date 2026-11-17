@@ -1,7 +1,11 @@
 // Director (RESEARCH-ONLY): moves the owner's GUI client like a person would, over the client's own
 // MCP server (openttd.view.*), driven by the panel's event feed: the camera glides to where the
-// bot works on a minimum-jerk path with small human deviations, zooms in, points at the tile the
-// bot surveys or builds with the cursor (the marked tile), and follows each bus it starts.
+// bot works as a hand moves a mouse, zooms in, points at the tile the bot surveys or builds with the
+// cursor (the marked tile), and follows each bus it starts.
+//
+// The glide is AlgoGlyph's human-pointing kernel (kernel(), through $MCP_ALGOGLYPH_DIR), the model
+// the bot's own cursor moves by in mcp-human: Fitts' law duration, a minimum-jerk curved path, an
+// overshoot corrected on long moves. Without AlgoGlyph it is the built-in minimum-jerk glide below.
 //
 //   MCP_VIEW_TOKEN=<token file of the GUI client> mcp-rhai tools/research/mcp-panel/rhai/director.rhai
 //
@@ -32,8 +36,32 @@ fn min_jerk(t) { t * t * t * (10.0 - 15.0 * t + 6.0 * t * t) }
 // A pseudo-random wobble in [-1, 1], seeded by the step, so a glide is not a ruler line.
 fn wobble(i, seed) { let v = ((i * 7919 + seed * 104729) % 2001) - 1000; v.to_float() / 1000.0 }
 
+// The glide along AlgoGlyph's human-pointing kernel. The kernel reads screen pixels, so tiles are
+// scaled by 32 (a tile's width at normal zoom) and back, which also keeps its pixel tremor below a
+// tile; a target of 4 tiles. At most 28 camera steps, each waiting as long as the samples it stands for.
+fn kernel_glide(view, fx, fy, tx, ty) {
+    let seed = (tx * 31 + ty) % 997;
+    let s = kernel("human-pointing", #{ from: [fx * 32, fy * 32], to: [tx * 32, ty * 32], width: 128.0, seed: seed, drag: false }).samples;
+    let n = s.len();
+    let stride = ((n + 27) / 28).max(1);
+    let wait = 0;
+    for i in 0..n {
+        wait += s[i][2];
+        if (i + 1) % stride == 0 || i == n - 1 {
+            let x = (s[i][0].to_float() / 32.0).round().to_int().max(1);
+            let y = (s[i][1].to_float() / 32.0).round().to_int().max(1);
+            mcp_call(view, "openttd.view.scroll_to", #{ x: x, y: y });
+            sleep(wait);
+            wait = 0;
+        }
+    }
+    mcp_call(view, "openttd.view.scroll_to", #{ x: tx, y: ty });
+    [tx, ty]
+}
+
 // Glide the camera from (fx, fy) to (tx, ty) like a hand on a mouse; returns the destination.
 fn glide(view, fx, fy, tx, ty) {
+    try { return kernel_glide(view, fx, fy, tx, ty); } catch { }
     let dx = (tx - fx).to_float(); let dy = (ty - fy).to_float();
     let dist = (dx * dx + dy * dy).sqrt();
     let steps = (dist / 5.0).to_int().max(4).min(28);
@@ -54,6 +82,12 @@ fn glide(view, fx, fy, tx, ty) {
 }
 
 let w = map_width(view);
+try {
+    kernel("human-pointing", #{ from: [0, 0], to: [32, 0], width: 128.0, seed: 1, drag: false });
+    print("camera moves by AlgoGlyph's human-pointing kernel");
+} catch (e) {
+    print(`camera moves by the built-in glide (${e})`);
+}
 let towns = mcp_read(view, "openttd://towns").data.towns;
 let largest = towns.reduce(|a, t| if a == () || t.population > a.population { t } else { a }, ());
 let at = [w / 2, w / 2];

@@ -185,8 +185,16 @@ and `ttd::wait_event(kind, seconds)`.
   `prismatic_mcp start <free port> <token file>`; the token file is mode 0600,
   `{"agent_token", "endpoint"}`.
 - `rhai/director.rhai` moves that client like a person would, over its MCP: the camera glides to
-  where the bot works along a minimum-jerk path (10t^3 - 15t^4 + 6t^5) with a small deviation that
-  peaks mid-way, faster in the middle and slower at both ends; it zooms in at the site, points the
+  where the bot works along AlgoGlyph's `human-pointing` kernel, the model the bot's own cursor
+  moves by in `mcp-human` (Fitts' law duration, a curved minimum-jerk path, an overshoot corrected on
+  long moves). Scripts call it as `kernel("human-pointing", #{from, to, width, seed, drag})`;
+  `kernel(id, input)` and `kernels()` reach every AlgoGlyph kernel through the flow CLI of
+  `$MCP_ALGOGLYPH_DIR` (`src/hub_algoglyph.rs`), and a unit test pins the answer a script gets to
+  `mcp-human`'s golden vectors. The kernel reads pixels, so the director scales tiles by 32 and
+  back and steps the camera at most 28 times. On seed 31337 (2026-11-17) a glide from the map's
+  centre (128,128) to (40,200) took 53 samples and 901 ms, overshot to (35,204) and settled on
+  (40,200). Without AlgoGlyph the director prints so and keeps its built-in minimum-jerk glide
+  (10t^3 - 15t^4 + 6t^5) with a small deviation that peaks mid-way. It zooms in at the site, points the
   cursor (`openttd.view.mark`, the marked tile) at every tile the bot surveys or builds, and
   follows each bus the bot starts for a moment. Targets are derived from the bot's log lines
   (`... at tile N`) and the client's `openttd://towns`. `mcp-e2e` starts it with the narrator.

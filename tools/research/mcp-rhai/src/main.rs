@@ -20,6 +20,10 @@
 //!   world_plan(limit)                  -> map   town pairs ranked, each with its mode (bus, rail, air)
 //!   world_plan_with(limit, params)     -> map   the same with any parameter overridden (see mcp-plan --defaults)
 //!   world_graph()                      -> map   the road network as nodes, edges and components
+//!   kernel(id, input)                  -> map   one AlgoGlyph kernel on that input (its `result`), through
+//!                                               the flow CLI of $MCP_ALGOGLYPH_DIR (hub_algoglyph.rs); throws
+//!                                               when there is no AlgoGlyph or the kernel refused
+//!   kernels()                          -> array every AlgoGlyph kernel with the input it reads
 //!   env(name)
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
@@ -29,6 +33,9 @@
 //! and one per OpenTTD console command in `list_cmds` (`con_companies()`, `con_date()`, `con_start_ai("PrismaticAI")`).
 use std::time::Duration;
 
+#[path = "hub_algoglyph.rs"]
+#[allow(dead_code)]
+mod algoglyph;
 mod graph;
 mod plan;
 
@@ -179,12 +186,29 @@ fn engine(panel: Panel) -> Engine {
         let params = plan::with_prices(&from_dyn(Dynamic::from_map(params))?, &get("/api/resources/economy/prices").unwrap_or(Value::Null));
         to_dyn(plan::plan(&towns, &g, limit.max(1) as usize, &params, &engines)?)
     });
+    // AlgoGlyph's kernels, e.g. kernel("human-pointing", #{from: [0, 0], to: [640, 320], width: 64.0, seed: 7}).
+    e.register_fn("kernel", |id: &str, input: Map| -> R<Dynamic> {
+        let v = algoglyph::flow(&["kernel", id, "-"], Some(&from_dyn(Dynamic::from_map(input))?))?;
+        to_dyn(kernel_result(id, v)?)
+    });
+    e.register_fn("kernels", || -> R<Dynamic> { to_dyn(algoglyph::flow(&["kernels"], None)?) });
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));
     e.register_fn("to_json", |d: Dynamic| -> R<String> {
         serde_json::to_string_pretty(&from_dyn(d)?).map_err(|e| e.to_string().into())
     });
     e
+}
+
+/// What a kernel answered, as a script reads it: the `result` of `{ok: true, result}`; a refusal
+/// (`ok: false` on the answer or on its result) is an error naming the kernel and its reasons.
+fn kernel_result(id: &str, v: Value) -> Result<Value, String> {
+    let r = v.get("result").cloned().unwrap_or_else(|| v.clone());
+    if v.get("ok") == Some(&Value::Bool(false)) || r.get("ok") == Some(&Value::Bool(false)) {
+        let why = v.get("errors").or_else(|| r.get("errors")).cloned().unwrap_or(v);
+        return Err(format!("{id} refused: {why}"));
+    }
+    Ok(r)
 }
 
 /// Rhai identifier for an MCP tool or console command name: dots and dashes become underscores.
@@ -461,5 +485,35 @@ mod tests {
         let params = out["params"].clone().cast::<Map>();
         assert_eq!(params["instance"].clone().into_string().unwrap(), "panel-1");
         assert!(e.eval::<Dynamic>("hub_subscribe()").is_err(), "a stream needs the WebSocket, not Rhai");
+    }
+
+    #[test]
+    fn a_kernel_answer_is_its_result_and_a_refusal_is_an_error() {
+        let ok = json!({"ok": true, "kernel": {"id": "human-pointing"}, "result": {"ok": true, "samples": [[1, 2, 16]]}});
+        assert_eq!(kernel_result("human-pointing", ok).unwrap()["samples"], json!([[1, 2, 16]]));
+        let refused = json!({"ok": false, "errors": ["width must be positive"]});
+        let e = kernel_result("human-pointing", refused).unwrap_err();
+        assert!(e.contains("human-pointing refused") && e.contains("width must be positive"), "{e}");
+        let inner = json!({"ok": true, "result": {"ok": false, "errors": ["no path"]}});
+        assert!(kernel_result("track-planning", inner).unwrap_err().contains("no path"));
+    }
+
+    /// A script's kernel("human-pointing", ...) moves exactly as the golden vectors mcp-human keeps
+    /// for AlgoGlyph parity; runs only where an AlgoGlyph checkout with that kernel is found.
+    #[test]
+    fn a_script_gets_the_human_pointing_kernel_bit_for_bit() {
+        if !algoglyph::dir().join("src/plates/human-pointing").is_dir() {
+            eprintln!("skip: no AlgoGlyph checkout with human-pointing at {}", algoglyph::dir().display());
+            return;
+        }
+        let golden: Value = serde_json::from_str(&std::fs::read_to_string(
+            concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-human/golden/human-pointing.v1.json")).unwrap()).unwrap();
+        let e = engine(Panel { base: "http://127.0.0.1:9".into() });
+        for c in golden["cases"].as_array().unwrap().iter().take(3) {
+            let script = format!("kernel(\"human-pointing\", #{{from: {}, to: {}, width: {:.1}, seed: {}, drag: {}}})",
+                c["from"], c["to"], c["width"].as_f64().unwrap(), c["seed"], c["drag"]);
+            let got = from_dyn(e.eval::<Dynamic>(&script).unwrap()).unwrap();
+            assert_eq!(got["samples"], c["samples"], "case {c}");
+        }
     }
 }
