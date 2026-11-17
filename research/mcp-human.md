@@ -268,6 +268,9 @@ tools/research/mcp-human-e2e --test    # ...and asserts on the server's map, exi
 tools/research/mcp-human-e2e --minutes 30 --front   # a long game, its window raised to watch
 ```
 
+The client always starts in OpenGFX, passed as `-I` on every start, so the game's own choice
+between installed sets (NoirGFX among them) never decides; `--gfx NAME` picks another set.
+
 The test checks the outcome on the **server**, which is authoritative. The client's new company
 must own new road tiles, two bus stations and a running bus with two orders. The test also checks
 that the cursor moved, that the client offers every UI and input tool, and that the server

@@ -9,13 +9,14 @@ status: verified
 epistemics: observed
 date: 2026-11-17
 tags: [bot, rail, pathfinding, planner, track-planning]
-about: tools/research/mcp-panel/server.py
+about: tools/research/mcp-rhai/src/panel_bot.rs
 route: platform
 provenance:
   origin: authored
   derived_from:
     - file:research/results/duel-20261116T074419-seed20208.md
-    - file:tools/research/mcp-panel/server.py
+    - file:tools/research/mcp-rhai/src/panel_bot.rs
+    - commit:60aef3caa5529bbe769e8c5c423615aefb7d196a
     - file:tools/research/mcp-rhai/src/linecost.rs
     - file:src/rail_cmd.cpp
     - file:research/results/duel-20261116T082722-seed20208.md

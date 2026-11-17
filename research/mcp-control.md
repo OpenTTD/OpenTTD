@@ -262,10 +262,12 @@ and `ttd::wait_event(kind, seconds)`.
 ## Watching it live, and notifications
 
 - `mcp-e2e` joins the GUI client full screen at the display's size (`--window WxH` for a window),
-  as a spectator named `owner-view`.
+  as a spectator named `owner-view`. The client always starts in OpenGFX (`-I` on every start, so
+  a set saved by an earlier run, such as NoirGFX, cannot take over); `--gfx NAME` picks another.
 - `rhai/narrator.rhai` follows the event feed and reports in the running game, as chat from the
   server (`owner-bot`): every route the bot opens or fails to open, its knobs, companies founded or
-  renamed, every MCP decision, pause and resume, and a summary at every new month. Run it beside the
+  renamed, every MCP decision, pause and resume, and a summary at every new month with each
+  company's trains, road vehicles, aircraft and ships, value and money. Run it beside the
   game: `mcp-rhai tools/research/mcp-panel/rhai/narrator.rhai`.
 - The panel window shows the same events as toasts, live from `/api/events/stream`, and an
   approval that waits for you stays on screen.
@@ -413,7 +415,8 @@ generic path as the hand-made `news` and `ask` tools.
 | Surface | What it does |
 |---|---|
 | `POST /api/news {text, style: "company", company, title?}` | the company newspaper with that company's manager face, as in "New transport company launched!". `title` is `launch`, `trouble`, `merger`, `bankrupt` or `none`, taken from the game's own strings. An unknown company is refused |
-| `openttd.view.ask`, `POST /api/ask {question, caption?}`, Rhai `ttd::ask_owner(question, seconds)` | a yes/no question in the game's own query dialog. It opens without keyboard focus, so only a deliberate click answers it |
+| `openttd.view.ask`, `POST /api/ask {question, caption?}`, Rhai `ttd::ask_owner(question, seconds)` | a yes/no question in a window laid out like the game's own query dialog ("Your bot asks", `WindowClass::PrismaticAsk`). It opens without keyboard focus, so only a deliberate click answers it |
+| `openttd.view.ask.auto {answer?, countdown?}`, console `mcp view.ask.auto answer=yes countdown=10` | the owner's switch. With `answer` alone a question is answered at once and no window opens. With `countdown` (1-600 s; alone it means `yes`) the window shows a bar that empties in real time, also while paused, and records the answer when it runs out; No or Yes answers first, a click on the bar stops the countdown, the close box answers no. No argument turns it off. `mcp-e2e` turns on a 10 s yes for the GUI client; `--ask-countdown N` changes it, `--ask-countdown 0` makes every question wait |
 | `openttd.view.ask.answers`, `GET /api/ask`, event `ask.answered` | every question with its answer: `yes`, `no` (also a closed dialog), `replaced` (a newer question took its place), or `null` while it is open |
 | News card, right column | the questions and their answers, live |
 | `steward.rhai` (supervised by `mcp-e2e`) | every three minutes it offers the planner's best pair you have not answered yet ("Show it to you?"). On yes your camera visits both towns and a newspaper sums it up. Only a real yes or no retires a pair. It asks about allowing more routes only when the game has `openttd.ai.set_setting`, and even then the change waits for your approval in the panel |

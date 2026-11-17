@@ -14,7 +14,8 @@ route: platform
 provenance:
   origin: authored
   derived_from:
-    - file:tools/research/mcp-panel/server.py
+    - file:tools/research/mcp-rhai/src/panel.rs
+    - commit:60aef3caa5529bbe769e8c5c423615aefb7d196a
     - file:tools/research/mcp-rhai/src/hub.rs
     - commit:36c66c3ac749411fe1e716c4ee34befe81791d78
 relations:

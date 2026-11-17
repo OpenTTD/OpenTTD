@@ -15,7 +15,8 @@ provenance:
   origin: authored
   derived_from:
     - file:src/console_cmds.cpp
-    - file:tools/research/mcp-panel/server.py
+    - file:tools/research/mcp-rhai/src/panel.rs
+    - commit:60aef3caa5529bbe769e8c5c423615aefb7d196a
     - commit:5a26a6189ea7d3e7616b946283ee0e77dd849dbf
     - commit:812defb0ce76d1af188bbc5a2a052a82c94f90a8
 relations:

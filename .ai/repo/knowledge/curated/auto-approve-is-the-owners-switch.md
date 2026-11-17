@@ -9,14 +9,15 @@ status: verified
 epistemics: decided
 date: 2026-11-15
 tags: [mcp, approval, oversight, agents]
-about: tools/research/mcp-panel/server.py
+about: tools/research/mcp-rhai/src/panel.rs
 route: enforcement
 provenance:
   origin: authored
   derived_from:
     - issue:I0031
     - issue:I0032
-    - file:tools/research/mcp-panel/server.py
+    - file:tools/research/mcp-rhai/src/panel.rs
+    - commit:60aef3caa5529bbe769e8c5c423615aefb7d196a
 relations:
   - type: relates_to
     target: file:.ai/repo/adrs/0008-an-agent-reaches-the-game-through-an-embedded-loopback-mcp-s.md

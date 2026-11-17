@@ -16,7 +16,8 @@ provenance:
   derived_from:
     - issue:I0069
     - file:src/video/dedicated_v.cpp
-    - file:tools/research/mcp-panel/server.py
+    - file:tools/research/mcp-rhai/src/panel.rs
+    - commit:60aef3caa5529bbe769e8c5c423615aefb7d196a
 ---
 
 # Lesson
