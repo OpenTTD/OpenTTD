@@ -7,7 +7,7 @@ title: "PrismaticAI's rail pathfinder: land, level crossings, bridges and tunnel
 description: "When choosing which planned rail line the owner's bot builds, or reading why a bot company has no trains."
 status: verified
 epistemics: observed
-date: 2026-11-16
+date: 2026-11-17
 tags: [bot, rail, pathfinding, planner, track-planning]
 about: tools/research/mcp-panel/server.py
 route: platform
@@ -19,6 +19,8 @@ provenance:
     - file:tools/research/mcp-rhai/src/linecost.rs
     - file:src/rail_cmd.cpp
     - file:research/results/duel-20261116T082722-seed20208.md
+    - file:research/results/duel-20261117T012840-seed31337.md
+    - file:src/vehicle_base.h
 ---
 
 # Constraint
@@ -49,6 +51,18 @@ whose bridge the game accepts in test mode (`AITestMode` plus `AIBridge.BuildBri
 successor 34bd520 it may also tunnel where the next tile rises in the line's direction (the far
 portal from `AITunnel.GetOtherTunnelEnd`, at most 15 tiles, accepted in test mode). No map so far
 has needed one, so a built tunnel has not been seen.
+
+Since bridge repository b4e20b5 the search takes **diagonal track**. Costs are in thirds of a straight
+piece, the game's own travel measure (`vehicle_base.h`: a straight piece is 16 steps of
+TILE_AXIAL_DISTANCE 192, a corner piece 8 steps of 2 × TILE_CORNER_DISTANCE). A corner piece that
+continues a diagonal (alternating corners) costs 2 against 3, a turn is paid once where the diagonal
+starts, and a U within two tiles is not taken. The estimate must stay above the diagonal cost (7 per
+tile left). At 6 every staircase toward the goal had the same f, the search spread over the whole
+rectangle between the stations, and lines that the old search found failed. On seed 31337, lines were
+48–76% corner pieces, and company value went from 250716 to 454403 on the same plan
+(duel-20261117T012840). A failed search logs whether the node budget ran out or the reachable tiles
+did. "every reachable tile tried, 1 nodes" means the station exit has no usable neighbour. A failed
+piece (ERR_AREA_NOT_CLEAR) still drops the whole line; re-planning from that piece is the next fix.
 
 # How to apply
 
