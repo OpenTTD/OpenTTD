@@ -290,6 +290,10 @@ fn get_or<'a>(v: &'a Value, k: &str, default: &'a Value) -> &'a Value {
 /// Freight lines handed to the bot at most (fr_*, fr2_* .. fr16_*); bridge 2026-11-17 declares as many.
 pub const MAX_FREIGHT_LINES: usize = 16;
 
+/// Freight lines the planned bot may plan itself once the handed ones are built (bridge own_lines; it
+/// defaults to 0 there, so a bot started without a plan, a duel's baseline, stays unplanned).
+pub const OWN_LINES: usize = 8;
+
 /// The bot's routes from the planner's portfolio within the budget, chosen from mcp-plan's answer:
 /// up to eight freight rail lines (fr_*, fr2_* .. fr8_*), one passenger rail pair (rail_a, rail_b)
 /// and one air pair (air_a, air_b, air_planes), with the events that explain each choice.
@@ -395,6 +399,10 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
                       py_str(e.get("from")), py_str(e.get("to")), py_str(e.get("distance")), py_str(e.get("profit")), py_str(e.get("score")),
                       if i == 0 { String::new() } else { format!(" (line {}, built when the money allows)", i + 1) }));
     }
+    if !lines.is_empty() {
+        settings.set("own_lines", json!(OWN_LINES));
+        event(format!("planner: after these lines the bot may plan up to {OWN_LINES} more itself (own_lines)"));
+    }
     if let Some(ps) = pair_score {
         let after = lines.iter().filter(|f| f.0 > ps).count();
         settings.set("rail_after", json!(after));
@@ -496,7 +504,7 @@ mod tests {
         // Freight lines are set after the loop, in order of score; the passenger pair (score 2) waits
         // for both freight lines (8 and 5), so rail_after is 2.
         assert_eq!(flat, ["air_a=4", "air_b=5", "air_planes=8", "rail_a=10", "rail_b=11", "fr_from=7", "fr_to=99", "fr_cargo=1",
-                          "fr2_from=8", "fr2_to=99", "fr2_cargo=1", "rail_after=2"]);
+                          "fr2_from=8", "fr2_to=99", "fr2_cargo=1", "own_lines=8", "rail_after=2"]);
         assert!(events.iter().any(|e| e == "planner: the passenger rail pair (score 2) is built after 2 freight line(s) that score more"));
         // A spare that scores above a portfolio line is built first.
         let order = json!({"portfolio": {"chosen": [fr(7, 3.0), rail(10, 4.0, "found")]}, "freight": [fr(7, 3.0), fr(8, 6.0)]});
