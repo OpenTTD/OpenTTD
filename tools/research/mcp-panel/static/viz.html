@@ -15,40 +15,12 @@
   <script src="/vendor/npm/echarts/dist/echarts.min.js"></script>
   <script src="/vendor/npm/d3/dist/d3.min.js"></script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 antialiased">
-  <nav class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-    <div class="px-3 py-3 lg:px-5">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <button data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" type="button" class="p-2 text-gray-600 rounded-sm cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><span class="sr-only">Toggle sidebar</span><svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button>
-          <a href="/" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Hub</a>
-          <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">World View</span>
-          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
-          <span id="conn" class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">connecting</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <label for="instance" class="text-sm text-gray-500 dark:text-gray-400">Instance</label>
-          <select id="instance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <aside id="sidebar" class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 w-64 h-full pt-16 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
-    <div class="flex-1 px-3 pt-5 pb-4 overflow-y-auto">
-      <ul class="space-y-2 font-medium">
-        <li><a href="/" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Hub: every instance</a></li>
-        <li><a href="/viz" aria-current="page" class="flex items-center p-2 text-base text-gray-900 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">World View</a></li>
-        <li><a href="/docs" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">API (OpenAPI)</a></li>
-      </ul>
-      <div class="pt-4 mt-4 space-y-2 text-sm text-gray-500 border-t border-gray-200 dark:border-gray-700 dark:text-gray-400">
-        <p>Docs: <code>research/mcp-viz.md</code></p>
-        <p>Check: <code>tools/research/mcp-viz-check</code></p>
-      </div>
-    </div>
-  </aside>
-  <main class="px-4 pt-20 pb-8 max-w-screen-2xl lg:ml-64">
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-app="hub" data-page="viz">
+  <script src="/static/shell.js"></script>
+  <main class="pb-8">
+    <span data-nav-extra class="flex items-center gap-2"><label for="instance" class="text-sm text-gray-500 dark:text-gray-400">Instance</label><select id="instance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select></span>
     <p class="text-xs text-gray-500 dark:text-gray-400">Everything here is read live through the hub from the instance's own MCP resources (openttd://world/graph, openttd://map, openttd://map/ways, openttd://companies). Parameters are in the address, so a view is a link; every card maximizes, Escape restores.</p>
-    <div id="graph-card" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+    <div id="graph-card" data-nav="World graph" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
       <div class="flex items-center justify-between mb-3 gap-2">
         <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">World graph</h2>
         <div id="graph-controls" class="flex items-center gap-2"></div>
@@ -59,14 +31,14 @@
       </div>
     </div>
     <div class="grid gap-4 xl:grid-cols-2">
-      <div id="terrain-card" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div id="terrain-card" data-nav="Terrain in 3D" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div class="flex items-center justify-between mb-3 gap-2">
           <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Terrain and roads</h2>
           <div id="terrain-controls" class="flex items-center gap-2"></div>
         </div>
         <div id="terrain" class="w-full h-[28rem]" role="img" aria-label="The map in three dimensions from tile heights, coloured by tile type, with road ways drawn"></div>
       </div>
-      <div id="economy-card" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div id="economy-card" data-nav="Economy" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div class="flex items-center justify-between mb-3 gap-2">
           <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Economy</h2>
           <div id="economy-controls" class="flex items-center gap-2"></div>

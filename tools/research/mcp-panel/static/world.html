@@ -7,44 +7,12 @@
   <title>OpenTTD World</title>
   <link rel="stylesheet" href="/static/app.css">
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 antialiased">
-  <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-    <div class="px-3 py-3 lg:px-5 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <button data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" type="button" class="p-2 text-gray-600 rounded-sm cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><span class="sr-only">Toggle sidebar</span><svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button>
-        <a href="/" class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">OpenTTD MCP</a>
-        <span class="text-gray-500 dark:text-gray-400">/ World</span>
-        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
-      </div>
-      <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-        <span id="w-stats"></span>
-        <a href="/docs" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">API</a>
-      </div>
-    </div>
-  </nav>
-
-  <aside id="sidebar" class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 w-64 h-full pt-16 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
-    <div class="flex-1 px-3 pt-5 pb-4 overflow-y-auto">
-      <ul class="space-y-2 font-medium">
-        <li><a href="/#overview" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Overview</a></li>
-        <li><a href="/#companies-card" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Companies</a></li>
-        <li><a href="/#bot" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">My bot</a></li>
-        <li><a href="/#control" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Control and approvals</a></li>
-        <li><a href="/#decisions-card" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Decisions and events</a></li>
-        <li><a href="/world" aria-current="page" class="flex items-center p-2 text-base text-gray-900 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">World: map and road graph</a></li>
-        <li><a href="/ui" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Interface: every window</a></li>
-        <li><a href="/#catalogue" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">MCP catalogue</a></li>
-        <li><a href="/#console" class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Developer console (~)</a></li>
-      </ul>
-      <div class="pt-4 mt-4 space-y-2 text-sm text-gray-500 border-t border-gray-200 dark:border-gray-700 dark:text-gray-400">
-        <p>Docs: <code>research/mcp-control.md</code></p>
-        <p>Rhai: <code>import "ttd" as ttd;</code></p>
-      </div>
-    </div>
-  </aside>
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-page="world">
+  <script src="/static/shell.js"></script>
 
 
-  <main class="pt-20 px-4 pb-8 max-w-screen-2xl mx-auto lg:ml-64">
+  <main class="pb-8">
+    <span id="w-stats" data-nav-extra class="hidden md:inline"></span>
     <div class="flex flex-wrap items-center gap-3 mb-4 p-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
       <label class="text-sm text-gray-900 dark:text-white">Map layer
         <select id="p-layer" class="ms-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
@@ -73,7 +41,7 @@
       <span class="text-xs text-gray-500 dark:text-gray-400">Parameters live in the address: a configured view is a link. Click a tile or a node: your game camera goes there and marks it. Drag to move the graph.</span>
     </div>
 
-    <div id="live" class="p-3 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800" data-frame>
+    <div id="live" data-nav="Live view" class="p-3 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800" data-frame>
       <div class="flex items-center justify-between mb-2">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Live view: what your game window shows</h3>
         <span class="text-xs text-gray-500 dark:text-gray-400">openttd.view.screenshot on the GUI client, about once a second</span>
@@ -116,7 +84,7 @@
       <p id="portfolio-solver" class="mb-2 text-xs text-gray-500 dark:text-gray-400"></p>
       <ul id="portfolio-body" class="space-y-1 text-sm text-gray-700 dark:text-gray-300"></ul>
     </section>
-    <section id="yards" class="mt-4 p-3 bg-white border border-gray-200 rounded-lg scroll-mt-20 dark:bg-gray-800 dark:border-gray-700">
+    <section id="yards" data-nav="Transfer yards" class="mt-4 p-3 bg-white border border-gray-200 rounded-lg scroll-mt-20 dark:bg-gray-800 dark:border-gray-700">
       <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
         <div><h3 class="text-lg font-semibold text-gray-900 dark:text-white">Transfer yards, proven before they are built</h3>
         <p class="text-xs text-gray-500 dark:text-gray-400">Where two planned rail lines meet: the better line's route is laid by AlgoGlyph track-planning and its tiles blocked, then the other line must still leave from a platform beside it (GET /api/plan?track=N&amp;yards=N, src/yards.rs). Click a row: your camera goes to the shared end.</p></div>
@@ -134,7 +102,7 @@
         </table>
       </div>
     </section>
-    <section id="calibration" class="mt-4 p-3 bg-white border border-gray-200 rounded-lg scroll-mt-20 dark:bg-gray-800 dark:border-gray-700">
+    <section id="calibration" data-nav="Calibration" class="mt-4 p-3 bg-white border border-gray-200 rounded-lg scroll-mt-20 dark:bg-gray-800 dark:border-gray-700">
       <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
         <div><h3 class="text-lg font-semibold text-gray-900 dark:text-white">What the lines really earn, fed back into the plan</h3>
         <p class="text-xs text-gray-500 dark:text-gray-400">Every running line's profit per vehicle last year (openttd://vehicles) against the planner's prediction for the same towns or industries; the median ratio per mode becomes <code>params.calibration</code> for the next plan (GET /api/plan?calibrate=1, src/calibrate.rs). Click a row: your camera goes to the line's first station.</p></div>

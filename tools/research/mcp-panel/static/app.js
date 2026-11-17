@@ -23,9 +23,9 @@ async function refreshStatus() {
   $('endpoint').textContent = `${s.endpoint} · game 127.0.0.1:${s.game_port}`;
   $('auto').checked = !!s.auto_approve;
   $('pending').innerHTML = s.pending.length ? s.pending.map((p) => `
-    <li class="flex items-center justify-between p-2 border border-gray-200 rounded-lg dark:border-gray-700">
-      <span class="font-mono">#${p.id} ${esc(p.tool)}(${esc(JSON.stringify(p.args))})</span>
-      <button data-approve="${p.id}" type="button" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700">Approve</button>
+    <li class="flex items-center justify-between gap-2 p-2 border border-gray-200 rounded-lg dark:border-gray-700">
+      <span class="min-w-0 font-mono break-all">#${p.id} ${esc(p.tool)}(${esc(JSON.stringify(p.args))})</span>
+      <button data-approve="${p.id}" type="button" class="shrink-0 text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700">Approve</button>
     </li>`).join('') : '<li>none</li>';
   $('events').innerHTML = s.events.map((e) => `
     <li class="mb-3 ms-4"><div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>

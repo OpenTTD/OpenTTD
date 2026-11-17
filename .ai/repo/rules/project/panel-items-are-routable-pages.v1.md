@@ -37,13 +37,22 @@ scoreboard could only be regenerated from a shell.
 - **Every button is a route.** A click calls a row of `routes()` (`panel.rs`), so the same action is in
   OpenAPI, Swagger UI and Rhai: `POST /api/scoreboard`, `POST /api/duel`, `GET /api/plan?track&yards`.
   The page shows the route it calls (an "API" link to its Swagger operation).
-- **Flowbite Pro and mobile first.** Pages use the panel's Flowbite Pro shell and cards; at 390 px they
-  do not scroll sideways and the navbar does not overflow.
+- **One shell, declared once.** Every page in `static/` (the panel's and the hub's) renders its navbar
+  and sidebar through `static/shell.js`, the Flowbite Pro admin shell: `<body data-app data-page>` names
+  the app and page, `[data-nav]` sections become the page's "On this page" entries, `[data-nav-extra]`
+  items move into the navbar. No page draws its own `<nav>` or `<aside>`, and `<main>` takes its frame
+  from the shell. A new page or feature extends this registry and these markers instead of copying a
+  layout (owner, 2026-11-17: "every page laid out differently, no DRY").
+- **Flowbite Pro and mobile first.** Pages use the shell and Flowbite Pro cards; at 390 px they do not
+  scroll sideways and the navbar does not overflow.
 
 # Proof
 
 - `node --test tools/research/mcp-panel/test/*.test.mjs`: `catalogue.test.mjs` derives items, facets,
   counts, the hierarchy and the drill from an OpenAPI fixture and round-trips the address.
+  `shell.test.mjs` takes every `static/*.html` from the directory (not a list) and fails a page with
+  its own navbar or sidebar, without shell.js first in `<body>`, with a frame class of its own, or
+  whose classic scripts clash in their shared scope (compiled together).
 - `cargo test --offline --release` in `tools/research/mcp-rhai`: the route table is unique, every POST
   declares its body, the scoreboard routes are present, `page_meta` titles each page.
 - `tools/research/mcp-overview-check <panel-url>` in a real browser: a tool page builds its form, a
