@@ -156,6 +156,19 @@ planned company solid, its rival dashed, one colour per run. The choice is kept 
 the same map, months and opponent, labelled "again: ...". It also links to the comparison. Repeating a
 run is how the spread between two runs of one bot was measured (1.1% on seed 31337).
 
+**Who starts duels.** The owner was asked (AskUserQuestion, session
+cd8d20a8-9d79-4332-b63e-b2592beb2cbd, 2026-11-17T08:40Z):
+
+> Before, you turned down a duel I started myself, so I made duels clickable at /results instead. The
+> next unmeasured change is up to 16 freight lines, which needs a duel of about 25 min on its own
+> ports. The main :8800 stack is not affected. Who starts the duels in this loop?
+
+Answer: **"You start them (Recommended)"**. The option text: "I start duels myself through the panel's
+/api/duel (they appear on /results with progress), measure each change and record the result. One at a
+time." So an agent measures its own changes by starting a duel through `POST /api/duel`, which keeps it
+visible on `/results`, never through a hidden background run. One duel runs at a time, and each result
+gets its reading.
+
 `mcp-route-check` never posts `/api/duel`, because it starts something and needs no input.
 `mcp-overview-check` checks the pages in a browser: every run is charted, a bar leads to its run, and
 the run's chart follows the measure in the address.
