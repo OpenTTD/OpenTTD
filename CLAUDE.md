@@ -162,7 +162,7 @@ Game objects (`Vehicle`, `Station`, `Town`, `Company`, `Order`, ...) live in slo
 - **AI-generated contributions are explicitly against project policy.** From `CONTRIBUTING.md`: issues/PRs that are LLM-generated will be closed, and repeat submitters may be blocked. A human must understand and be able to explain every line of a PR; AI may only be used to proofread text, not to write it. Keep this in mind if this repository's own contribution workflow is ever the subject of a task (vs. using Claude Code as a personal/local dev tool, which is a separate matter from what gets *submitted upstream*).
 - **Docs entry points**: `docs/savegame_format.md`, `docs/linkgraph.md`, `docs/game_coordinator.md`, `docs/admin_network.md`, `docs/logging_and_performance_metrics.md`, `docs/eints.md` (translation workflow — don't hand-edit language files, they're synced from the translator tool).
 
-<!-- majordomus:begin 44d502ffa9f8 f2d9a1017395dba3 -->
+<!-- majordomus:begin dfb7340c1a43 f2d9a1017395dba3 -->
 # CLAUDE.md
 
 Claude Code bootstrap. The repository's provider-neutral AI context lives under

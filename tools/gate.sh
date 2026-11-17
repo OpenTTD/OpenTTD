@@ -235,6 +235,8 @@ cmd_change() {
   tools/check-prismatic-docs.sh
   echo "==> tools/surfaces/surfaces check"
   tools/surfaces/surfaces check
+  echo "==> tools/research/readme-scoreboard --check (README scoreboard derived from research/results)"
+  tools/research/readme-scoreboard --check
   echo "==> tools/knowledge/refs check"
   tools/knowledge/refs check
   echo "==> tools/knowledge/refs impact HEAD (records citing what this change touches: re-read them)"

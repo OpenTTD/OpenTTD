@@ -166,6 +166,9 @@ the seed-31337 series as a chart) generated between `scoreboard` markers by
 (`mcp-duel`), and the card at the top of `/results` shows it with a *README current* / *README
 stale* badge and a **Regenerate README** button. The panel runs the one generator and computes no
 number itself, so README, panel, Swagger and Rhai cannot disagree. Commit and push stay the owner's.
+A commit that adds a duel result without the regenerated README fails: `readme-scoreboard --check`
+runs in the pre-commit hook (`.ai/repo/policy.yaml` enforcement `scoreboard-on-commit`, reconciled by
+`majordomus doctor`), in `tools/gate.sh change` and in the surfaces workflow.
 
 - `GET /api/scoreboard` (`readme-scoreboard --json`)
 - `POST /api/scoreboard` (rewrites the region, answers the new scoreboard)

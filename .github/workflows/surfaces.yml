@@ -47,6 +47,9 @@ jobs:
       - name: Check regions, links and anchors
         run: tools/surfaces/surfaces check
 
+      - name: Check the README scoreboard against research/results
+        run: tools/research/readme-scoreboard --check
+
       - name: Build the site
         run: tools/surfaces/surfaces site
 

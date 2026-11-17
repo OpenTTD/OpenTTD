@@ -207,6 +207,13 @@ enforcement:
     path: tools/surfaces/surfaces
     args: [check]
     wired_by: git-hook:pre-commit
+  # The README scoreboard is derived from research/results (tools/research/readme-scoreboard):
+  # a duel result committed without regenerating it fails the commit (2026-11-17: 0e5ad90487
+  # added the ten-year duel and left the landing page a run behind).
+  - name: scoreboard-on-commit
+    path: tools/research/readme-scoreboard
+    args: [--check]
+    wired_by: git-hook:pre-commit
 
 # mode: file (the default) generates the whole target; mode: region generates only the
 # text between the <!-- majordomus:begin --> and <!-- majordomus:end --> markers and

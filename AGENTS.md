@@ -109,7 +109,7 @@ These directories hold personal Claude Code tooling (commands, agents, skills, h
 - [tools/surfaces/README.md](./tools/surfaces/README.md) — the published surfaces (site, wiki, generated Markdown tables): why they are derived, how to regenerate them, and the check that enforces it.
 - [research/prismatic-mcp/README.md](./research/prismatic-mcp/README.md) — the embedded, research-only, compile-gated MCP server: what's actually implemented vs. staged, build/run/connect, and the phase-ordered research trail. Read this fork's own ground rules above first; nothing here overrides them.
 
-<!-- majordomus:begin 44d502ffa9f8 294efe4fb028e737 -->
+<!-- majordomus:begin dfb7340c1a43 294efe4fb028e737 -->
 # AGENTS.md
 
 This file is a bootstrap, not the rulebook. Read `README.md` for what this
