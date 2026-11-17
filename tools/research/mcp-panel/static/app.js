@@ -61,13 +61,9 @@ async function refreshOverview() {
 }
 
 async function loadCatalogue() {
-  const c = await api('/api/catalogue');
-  const res = (c.resources && c.resources.result && c.resources.result.resources) || [];
-  // Each tool and resource leads to its own page (/tool/<name>, /resource/<path>): its form, a call,
-  // the answer and the same call over REST, MCP and the console.
-  $('resources').innerHTML = res.map((r) => `<li><a href="/resource/${esc(r.uri.replace(/^openttd:\/\//, ''))}" class="text-primary-600 hover:underline dark:text-primary-500">${esc(r.uri)}</a></li>`).join('');
-  const tools = (c.tools && c.tools.result && c.tools.result.tools) || [];
-  $('tools').innerHTML = tools.map((t) => `<li><a href="/tool/${encodeURIComponent(t.name)}" title="${esc(t.description || '')}" class="text-primary-600 hover:underline dark:text-primary-500">${esc(t.name)}</a></li>`).join('');
+  // The same component as /tools (catalogue.js), compact, its filters kept in the address as c_*.
+  const [m, doc] = await Promise.all([import('/static/catalogue.js'), fetch('/openapi.json').then((r) => r.json())]);
+  m.mountCatalogue($('catalogue-mount'), m.catalogueItems(doc), { compact: true, prefix: 'c_' });
 }
 
 async function tick() {
@@ -84,11 +80,7 @@ document.addEventListener('click', async (ev) => {
   if (!t) return;
   ev.preventDefault();
   if (t.dataset.approve) { await api('/api/approve', { id: Number(t.dataset.approve) }); tick(); }
-  if (t.dataset.read) {
-    const r = await api('/api/resource?uri=' + encodeURIComponent(t.dataset.read));
-    $('resource-view').classList.remove('hidden');
-    $('resource-view').textContent = JSON.stringify(r, null, 2);
-  }
+  if (t.dataset.read) location.href = '/resource/' + t.dataset.read.replace(/^openttd:\/\//, '');
 });
 $('btn-pause').onclick = async () => { await api('/api/pause', { pause: true }); tick(); };
 $('btn-resume').onclick = async () => { await api('/api/pause', { pause: false }); tick(); };
@@ -383,7 +375,7 @@ loadChoices().catch(() => {});
 setInterval(() => loadChoices().catch(() => {}), 60000);
 loadBots().catch(() => {});
 setInterval(() => loadBots().catch(() => {}), 10000);
-setInterval(() => { if (!$('resources').children.length) loadCatalogue().catch(() => {}); }, 3000);
+setInterval(() => { if (!document.querySelector('#catalogue-mount [data-cards]')) loadCatalogue().catch(() => {}); }, 3000);
 
 
 /* ---- live notifications (SSE) ------------------------------------------------------------ */

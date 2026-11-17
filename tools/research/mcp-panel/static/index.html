@@ -301,16 +301,16 @@
       </div>
     </div>
 
-    <div id="catalogue" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <div class="flex items-center justify-between mb-3">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">MCP catalogue <a href="/tools" class="ms-2 text-sm font-normal text-primary-600 hover:underline dark:text-primary-500">every tool and resource, with its own page</a></h3>
-        <button id="btn-catalogue" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Reload</button>
+    <div id="catalogue" class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm scroll-mt-20 dark:border-gray-700 dark:bg-gray-800">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+        <div><h3 class="text-lg font-semibold text-gray-900 dark:text-white">MCP catalogue</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Every tool and resource of the live game, each with its own page: a form, a call, the answer, and the same call over REST, MCP and the console</p></div>
+        <div class="flex items-center gap-2">
+          <a href="/tools" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700">Full catalogue</a>
+          <button id="btn-catalogue" type="button" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Reload</button>
+        </div>
       </div>
-      <div class="grid gap-4 md:grid-cols-2">
-        <div><h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Resources (each opens its page)</h4><ul id="resources" class="space-y-1 text-sm font-mono"></ul></div>
-        <div><h4 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">Tools (each opens its page, with a form)</h4><ul id="tools" class="space-y-1 text-sm font-mono text-gray-700 dark:text-gray-300"></ul></div>
-      </div>
-      <pre id="resource-view" class="mt-4 p-3 max-h-80 overflow-auto text-xs bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200 hidden"></pre>
+      <div id="catalogue-mount"><p class="text-sm text-gray-500 dark:text-gray-400">Loading the catalogue…</p></div>
     </div>
   </main>
 

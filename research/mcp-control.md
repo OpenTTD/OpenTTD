@@ -198,6 +198,16 @@ plus `/tools`, the searchable catalogue of them all. The panel serves one templa
 `<title>` and description, so a link shows what it is before any script runs. An item that is not in
 the catalogue answers 404.
 
+**The catalogue** (`static/catalogue.js`, one component on `/tools` and, compact, in `#catalogue`
+on the panel's home) is faceted by facts the catalogue already states: kind (the OpenAPI tag),
+namespace (the name's own segment), the game's command category (named in each command's
+description) and safety (approval-gated, read-only, acts directly). Every facet shows its count
+under the other facets, and search, facets and a maximized map stay in the address (`c_` prefix on
+the home), so a filtered view is a link. The map is an ECharts sunburst kind > namespace >
+category > item whose drill is the facet filter: a ring sets the facets and the cards follow, the
+breadcrumb steps back, a leaf opens the item's page. Its pure parts are tested in
+`test/catalogue.test.mjs`.
+
 `static/tool.js` builds the rest from `/openapi.json`. A tool's form comes from its input schema
 (numbers with their bounds, enums as selects, booleans, objects as JSON). The call goes to the tool's
 derived route. A `pending_approval` answer names the approval, says where to approve it, and asks

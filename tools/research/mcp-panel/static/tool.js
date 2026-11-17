@@ -43,37 +43,6 @@ function setQuery(key, value) {
   history.replaceState(null, '', u);
 }
 
-/* ---- /tools: every item, searchable, each a link to its page ------------------------------- */
-function renderCatalogue(all) {
-  const q0 = new URL(location.href).searchParams.get('q') || '';
-  const groups = [['tool', 'Server tools'], ['client', 'GUI client tools'], ['resource', 'Resources']];
-  $('page').innerHTML = `
-    <div class="${card}">
-      <label for="q" class="sr-only">Search</label>
-      <input id="q" type="search" value="${esc(q0)}" placeholder="Search ${all.length} tools and resources (name or description)" class="${input}">
-      <p id="count" class="mt-2 text-xs text-gray-500 dark:text-gray-400"></p>
-    </div>
-    ${groups.map(([k, label]) => `<div class="${card}"><h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">${label} <span id="n-${k}" class="text-sm font-normal text-gray-500"></span></h2>
-      <div class="relative overflow-x-auto"><table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"><tbody id="g-${k}"></tbody></table></div></div>`).join('')}`;
-  const draw = () => {
-    const q = $('q').value.trim().toLowerCase();
-    setQuery('q', q);
-    let shown = 0;
-    for (const [k] of groups) {
-      const rows = all.filter((it) => it.kind === k && (!q || it.name.toLowerCase().includes(q) || it.summary.toLowerCase().includes(q)));
-      shown += rows.length;
-      $('n-' + k).textContent = `(${rows.length})`;
-      $('g-' + k).innerHTML = rows.map((it) => `<tr class="border-b dark:border-gray-700">
-        <td class="px-3 py-2 font-mono whitespace-nowrap"><a href="${esc(it.page)}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">${esc(it.name)}</a></td>
-        <td class="px-3 py-2">${gated(it) ? badge('approval-gated', 'yellow') : readOnly(it) ? badge('read-only', 'green') : ''}</td>
-        <td class="px-3 py-2">${esc(it.summary)}</td></tr>`).join('') || '<tr><td class="px-3 py-2">nothing matches</td></tr>';
-    }
-    $('count').textContent = `${shown} of ${all.length} shown`;
-  };
-  $('q').oninput = draw;
-  draw();
-}
-
 /* ---- a form from a JSON schema ---------------------------------------------------------------- */
 function field(key, prop, required, value) {
   const id = 'f-' + key, req = required ? ' required' : '';
@@ -211,7 +180,8 @@ function renderResource(it) {
   const doc = await (await fetch('/openapi.json')).json();
   const all = items(doc);
   const path = decodeURIComponent(location.pathname);
-  if (path === '/tools') return renderCatalogue(all);
+  // The catalogue is one component (catalogue.js), shared with the panel's home (#catalogue).
+  if (path === '/tools') return import('/static/catalogue.js').then((m) => m.mountCatalogue($('page'), m.catalogueItems(doc)));
   const it = all.find((x) => decodeURIComponent(x.page) === path);
   if (!it) {
     $('page').innerHTML = alert('Not in the live catalogue (the game may not offer it, or the GUI client is not attached). <a href="/tools" class="underline">All tools and resources</a>.', 'red');
