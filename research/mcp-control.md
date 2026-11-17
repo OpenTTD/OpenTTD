@@ -682,7 +682,7 @@ entry whose owning process is gone is dropped on the next discovery.
 
 | Surface | What it does |
 |---|---|
-| `GET /api/instances`, Rhai `api_instances()` | every registered instance with its role and endpoint, each checked with a live probe (a panel's `/api/status`, a client's MCP `ping`) |
+| `GET /api/instances`, Rhai `api_instances()` | every registered instance with its role and endpoint, each checked with a live probe (a panel's `/api/status`, a client's MCP `ping`), and the Majordomus task it runs under (`supervisor`, set by `mcp-e2e` from the task active in its checkout) |
 | `POST /api/instances/call {name, method, params}`, Rhai `api_instancesCall(...)` | one MCP JSON-RPC call on any instance by name: a panel's dedicated server, a client with its token. A server a panel started announces no token file (the panel holds it); it is listed with `via` (the owning panel, matched by its `mcp` endpoint) and called through that panel |
 | main page, Cluster card | the same list, live, with a link to each instance's own panel |
 | one binary snapshot per stack | `mcp-e2e` copies the binary next to the original (`openttd-e2e-<pid>`) and runs the server and the client from it. A rebuild of the shared build directory then cannot reach a client the supervisor restarts. Before this, the server, still on the old revision, refused every restarted client with "wrong revision" |

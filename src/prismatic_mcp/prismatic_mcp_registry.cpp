@@ -121,6 +121,12 @@ void Announce(const std::string &endpoint, uint16_t port, const std::string &tok
 		{"game_port", _network_dedicated ? nlohmann::json(_settings_client.network.server_port) : nlohmann::json(nullptr)},
 	};
 	if (!token_file.empty()) record["token_file"] = std::filesystem::absolute(token_file, ec).string();
+	/* Who supervises this process: a JSON object in PRISMATIC_MCP_SUPERVISOR (tools/research/mcp-e2e sets
+	 * it to the Majordomus task the stack was started under), passed through; anything else is ignored. */
+	if (const char *sup = std::getenv("PRISMATIC_MCP_SUPERVISOR"); sup != nullptr && *sup != '\0') {
+		nlohmann::json s = nlohmann::json::parse(sup, nullptr, false);
+		if (s.is_object()) record["supervisor"] = std::move(s);
+	}
 
 	/* Write beside, then rename: a reader never sees half a record. Owner read/write only. */
 	std::filesystem::path path = dir / (name + ".json");

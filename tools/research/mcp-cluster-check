@@ -11,7 +11,9 @@
 #      company it joined as (openttd.input.state, local_company);
 #   3. the hub (mcp-hub over that registry) lists exactly those 2N instances, all reachable;
 #   4. a client stopped cleanly withdraws its record;
-#   5. a client killed hard leaves a stale record, which the hub drops (its owner_pid is gone).
+#   5. a client killed hard leaves a stale record, which the hub drops (its owner_pid is gone);
+#   6. every record names its supervisor (PRISMATIC_MCP_SUPERVISOR, the Majordomus task, I0041),
+#      and the hub lists it with each instance.
 #
 # Usage: tools/research/mcp-cluster-check [--servers N] [--bin PATH]     exit 0 PASS, 1 FAIL, 3 setup
 set -euo pipefail
@@ -44,6 +46,10 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 export PRISMATIC_MCP_REGISTRY="$TMP/registry"
+# The supervisor every process writes into its record: the caller's, else a marker for this run.
+[[ -n "${PRISMATIC_MCP_SUPERVISOR:-}" ]] || PRISMATIC_MCP_SUPERVISOR="$(jq -cn --arg t "t-cluster-check-$$" '{by: "majordomus", task: $t, title: "mcp-cluster-check"}')"
+export PRISMATIC_MCP_SUPERVISOR
+SUP_TASK="$(jq -r .task <<<"$PRISMATIC_MCP_SUPERVISOR")"
 
 FAILS=0
 pass() { echo "PASS $*"; }
@@ -140,6 +146,13 @@ n="$(echo "$L" | jq '[.[] | select(.error == null and .operations > 0)] | length
 [[ "$n" == "$((2 * N))" && "$(echo "$L" | jq length)" == "$((2 * N))" ]] \
   && pass "the hub lists all $((2 * N)) instances, each reachable with its operations" \
   || fail "the hub lists $(echo "$L" | jq -c '[.[] | {name, kind, error, operations}]')"
+
+# 6. Supervision: every record and every instance the hub lists name the task.
+sup_rec="$(echo "$REC" | jq --arg t "$SUP_TASK" '[.[] | select(.supervisor.task == $t)] | length')"
+sup_hub="$(echo "$L" | jq --arg t "$SUP_TASK" '[.[] | select(.supervisor.task == $t)] | length')"
+[[ "$sup_rec" == "$((2 * N))" && "$sup_hub" == "$((2 * N))" ]] \
+  && pass "every record and every hub instance names its supervisor, task $SUP_TASK" \
+  || fail "supervisor $SUP_TASK in $sup_rec of $((2 * N)) records and $sup_hub hub instances: $(echo "$REC" | jq -c '[.[] | {name, supervisor}]')"
 
 # 4. A clean stop withdraws the record.
 before="$(ls "$PRISMATIC_MCP_REGISTRY" | wc -l | tr -d ' ')"

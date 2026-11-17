@@ -138,6 +138,11 @@ When an MCP server starts, it writes a record of itself to the instance registry
   any record whose owner process is gone.
 - **Who reads it.** The panel's `GET /api/instances` reads the same directory, so a cluster of
   instances is discoverable without the launcher knowing about discovery.
+- **Who supervises it.** When `PRISMATIC_MCP_SUPERVISOR` holds a JSON object, the record carries
+  it as `supervisor`; `mcp-e2e` sets it to the Majordomus task active in its checkout
+  (`{by: "majordomus", task, title, owner, worktree}`, from `majordomus context --json`), so
+  every server, client and panel of a stack names the task it runs under (I0041). Without an
+  active task `mcp-e2e` says the instances run unsupervised.
 - **What it does not hold.** A GUI process's live role (network client, host, single player)
   changes as it plays, so it is not in the record; ask the instance itself
   (`openttd://game/state`).
@@ -156,6 +161,8 @@ server, against an isolated registry, and checks:
 - a client stopped with SIGTERM withdraws its record;
 - a client killed with SIGKILL leaves a stale record, which the hub drops within its 2-second
   refresh.
+- every record, and every instance the hub lists, names the supervisor the run was given
+  (`supervisor.task`).
 
 ## Safety: the owner's switch and the owner's hand
 

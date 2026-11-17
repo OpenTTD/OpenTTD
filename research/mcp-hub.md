@@ -29,6 +29,8 @@ tools/research/mcp-rhai/target/release/mcp-hub --panel http://127.0.0.1:8800   #
 
 `ws://127.0.0.1:<port>/ws` speaks JSON-RPC 2.0; `POST /hub/rpc` takes the same requests one at a time
 (everything except streaming), and `GET /hub/instances` and `GET /hub/catalogue` serve the lists.
+Each instance in `/hub/instances` carries its record's `supervisor`: the Majordomus task it runs
+under, or null.
 
 | Method | Params | Answer |
 |---|---|---|

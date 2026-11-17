@@ -129,6 +129,22 @@ if [[ -z "${MCP_ALGOGLYPH_DIR:-}" ]]; then
 fi
 [[ -n "${MCP_ALGOGLYPH_DIR:-}" ]] && echo "    AlgoGlyph runner: $MCP_ALGOGLYPH_DIR"
 
+# Supervision: every process of the stack names, in its registry record, the Majordomus task the
+# stack runs under (I0041). The servers, clients and panels copy PRISMATIC_MCP_SUPERVISOR, a JSON
+# object, into their record's `supervisor`; the panel's /api/instances and the hub's
+# /hub/instances show it. Taken from `majordomus context --json` in this checkout when a task is
+# active there; a caller's own PRISMATIC_MCP_SUPERVISOR wins.
+if [[ -z "${PRISMATIC_MCP_SUPERVISOR:-}" && -f "$ROOT_DIR/.ai/manifest.yaml" ]] && command -v majordomus > /dev/null; then
+  sup="$(cd "$ROOT_DIR" && majordomus context --json 2>/dev/null | jq -c --arg wt "$ROOT_DIR" \
+    'select(.task.outcome == "active") | {by: "majordomus", task: .task.id, title: .task.task, owner: .task.owner, worktree: $wt}' 2>/dev/null || true)"
+  if [[ -n "$sup" ]]; then
+    export PRISMATIC_MCP_SUPERVISOR="$sup"
+  else
+    echo "    no active Majordomus task in $ROOT_DIR: the instances run unsupervised (majordomus start ... first)"
+  fi
+fi
+[[ -n "${PRISMATIC_MCP_SUPERVISOR:-}" ]] && echo "    supervised by: $(jq -r '"\(.by) \(.task) — \(.title)"' <<<"$PRISMATIC_MCP_SUPERVISOR" 2>/dev/null || echo "$PRISMATIC_MCP_SUPERVISOR")"
+
 # The panel: mcp-panel from tools/research/mcp-rhai (I0035; server.py, its Python predecessor, is
 # gone). One cargo build makes it and mcp-rhai, which runs the director and the other helpers; in a
 # fresh worktree that build takes minutes, later ones seconds. More instances follow.

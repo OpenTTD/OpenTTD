@@ -50,6 +50,8 @@ pub struct Instance {
     pub name: String,
     pub kind: String,
     pub access: Access,
+    /// Who supervises it: the record's `supervisor` (the Majordomus task it runs under), else null.
+    pub supervisor: Value,
 }
 
 impl Instance {
@@ -161,17 +163,18 @@ pub fn ops_from_mcp(instance: &str, tools: &Value, resources: &Value) -> Vec<Op>
 pub fn instance_from_record(rec: &Value, alive: &dyn Fn(i64) -> bool) -> Option<Instance> {
     let name = rec.get("name")?.as_str()?.to_string();
     let kind = rec.get("kind")?.as_str()?.to_string();
+    let supervisor = rec.get("supervisor").filter(|v| v.is_object()).cloned().unwrap_or(Value::Null);
     if let Some(pid) = rec.get("owner_pid").and_then(Value::as_i64) {
         if !alive(pid) { return None; }
     }
     if let Some(url) = rec.get("url").and_then(Value::as_str) {
-        return Some(Instance { name, kind, access: Access::Panel { base: url.trim_end_matches('/').to_string() } });
+        return Some(Instance { name, kind, access: Access::Panel { base: url.trim_end_matches('/').to_string() }, supervisor });
     }
     let file = rec.get("token_file")?.as_str()?;
     let tok: Value = serde_json::from_str(&std::fs::read_to_string(file).ok()?).ok()?;
     let token = tok.get("agent_token")?.as_str()?.to_string();
     let endpoint = rec.get("endpoint").or_else(|| tok.get("endpoint"))?.as_str()?.to_string();
-    Some(Instance { name, kind, access: Access::Mcp { endpoint, token } })
+    Some(Instance { name, kind, access: Access::Mcp { endpoint, token }, supervisor })
 }
 
 pub fn pid_alive(pid: i64) -> bool {
@@ -199,7 +202,7 @@ pub fn discover(registry: &Path, panels: &[String]) -> Vec<Instance> {
         let base = p.trim_end_matches('/').to_string();
         if !out.iter().any(|o| o.base() == base) {
             let port = base.rsplit(':').next().unwrap_or("panel").to_string();
-            out.push(Instance { name: format!("panel-{port}"), kind: "panel".into(), access: Access::Panel { base } });
+            out.push(Instance { name: format!("panel-{port}"), kind: "panel".into(), access: Access::Panel { base }, supervisor: Value::Null });
         }
     }
     out
@@ -397,6 +400,7 @@ impl State {
             "access": match i.access { Access::Panel { .. } => "panel", Access::Mcp { .. } => "mcp" },
             "operations": self.ops.get(&i.name).map(Vec::len).unwrap_or(0),
             "error": self.errors.get(&i.name),
+            "supervisor": i.supervisor,
         })).collect())
     }
 }

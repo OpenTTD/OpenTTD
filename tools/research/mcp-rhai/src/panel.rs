@@ -1234,8 +1234,16 @@ pub fn registry_record(name: &str, entry: &Value) -> Value {
     m.insert("name".into(), json!(name));
     m.insert("owner_pid".into(), json!(std::process::id()));
     m.insert("registered".into(), json!(unix_now()));
+    if let Some(sup) = supervisor() { m.insert("supervisor".into(), sup); }
     if let Some(e) = entry.as_object() { m.extend(e.clone()); }
     Value::Object(m)
+}
+
+/// Who supervises this process: `PRISMATIC_MCP_SUPERVISOR`, a JSON object (mcp-e2e sets it to the
+/// Majordomus task it was started under), or None when it is unset or not an object.
+pub fn supervisor() -> Option<Value> {
+    std::env::var("PRISMATIC_MCP_SUPERVISOR").ok()
+        .and_then(|s| serde_json::from_str::<Value>(&s).ok()).filter(Value::is_object)
 }
 
 pub fn registry_write(name: &str, entry: &Value) {
