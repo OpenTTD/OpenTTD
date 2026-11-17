@@ -71,6 +71,40 @@ Tab completes from the live catalogue, never from a list in the code:
 | `mcp <tool> ` | the tool's parameters not given yet, as `key=` (the value goes right after `=`) |
 | `bot ` or `ai ` | `status`, `set`, `start`, `stop`, `reload`, `help` |
 
+## One operator line, several decisions (`prismatic_mcp approve` / `deny`)
+
+One sentence in the console is answered with several gated calls. `plan vybuduj
+nejlukrativnejsi trat` is resolved by the panel's planner into three `openttd.ai.set_setting`
+calls, and each one becomes its own pending approval — so the operator used to type three
+`prismatic_mcp approve <id>` lines for one sentence. The verb now takes several ids at once:
+
+```text
+prismatic_mcp approvals              the pending queue, with each decision's tool and args
+prismatic_mcp approve <id> [<id> ...]   approve the decisions you name, one line
+prismatic_mcp deny <id> [<id> ...]      deny the decisions you name
+prismatic_mcp deny all                  deny every pending decision
+```
+
+Each id is reported on its own line with its outcome and, when it was pending, the tool and the
+exact canonical arguments it binds to, followed by a summary count (`3 approved, 0 refused.`).
+The printing is the point: the console log, not just a count, records what was consented to.
+
+**There is no `approve all`, by design.** The asymmetry is the whole content of the command:
+
+- An approval executes. Consenting to a whole queue consents to decisions the operator never
+  read, and when the queue holds proposals from several different plans, applying all of them
+  leaves whatever wrote last in place — a railway line nobody chose. So an approval is always
+  per named decision; `approve all` is refused with that reason, and every named id still goes
+  through `PrismaticMCP::ApproveById` one at a time. Nothing in this build auto-approves: the
+  server still sets `approval_required` on every mutation, unconditionally.
+- A denial enacts nothing — it only removes pending decisions — so `deny all` is allowed. It is
+  the cleanup that makes the operator's next named approval predictable.
+
+`deny all` on an empty queue says `Nothing is waiting: no decision is pending.` rather than
+succeeding silently. `PrismaticMCP::PendingApprovals()` is what the console reads for the queue:
+the ids and their tool and arguments, derived from the server's own state rather than parsed back
+out of the text `prismatic_mcp approvals` prints.
+
 ## What does not change
 
 - **Approvals.** A console call goes through the same dispatch, approvals and input arming as

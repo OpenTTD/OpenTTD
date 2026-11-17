@@ -18,6 +18,7 @@
 #include <span>
 #include <string>
 #include <string_view>
+#include <vector>
 
 /**
  * Lifecycle + control surface of the embedded MCP server. Every function here
@@ -60,6 +61,23 @@ std::string GetStatusLine();
 /* --- approval workflow (operator surface for the console) ------------------ */
 /** Human-readable list of pending approvals (id, tool, args). Never a token. */
 std::string ListApprovals();
+
+/**
+ * One still-PENDING approval, as the operator console needs it: the id to act on
+ * and exactly what consenting to it would do. Never a token.
+ */
+struct PendingApprovalInfo {
+	uint64_t id = 0;
+	std::string tool;            ///< the gated tool this approval belongs to.
+	std::string canonical_args;  ///< the exact arguments the approval binds to.
+	bool expired = false;        ///< past its TTL: listed, but ApproveById will refuse it.
+};
+/**
+ * Every approval whose state is still Pending, in id order. The console uses it to spell
+ * 'deny all' and to print what a named id would do. It decides nothing and approves nothing;
+ * there is deliberately no bulk approval anywhere in this build.
+ */
+std::vector<PendingApprovalInfo> PendingApprovals();
 /** Approve a pending mutation by id; returns false if not found/expired. */
 bool ApproveById(uint64_t id, std::string &message);
 /** Deny a pending mutation by id. */

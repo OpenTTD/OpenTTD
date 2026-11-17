@@ -1531,6 +1531,21 @@ std::string ListApprovals()
 	return s;
 }
 
+/* The pending queue, read rather than parsed out of ListApprovals()' prose: the console needs
+ * the ids for 'deny all' and the tool and arguments to print for an id the operator names.
+ * This decides nothing and approves nothing -- every id still goes through ApproveById or
+ * DenyById, one at a time, and there is no bulk approval in this build. */
+std::vector<PendingApprovalInfo> PendingApprovals()
+{
+	uint64_t now = (uint64_t)TimerGameTick::counter;
+	std::vector<PendingApprovalInfo> out;
+	for (const auto &a : _approvals) {
+		if (a.state != ApprovalState::Pending) continue;
+		out.push_back(PendingApprovalInfo{a.id, a.tool, a.canonical_args, now > a.expiry_tick});
+	}
+	return out;
+}
+
 bool ApproveById(uint64_t id, std::string &message)
 {
 	PendingApproval *a = FindApproval(id);

@@ -1859,7 +1859,8 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 {
 	if (argv.size() < 2) {
 		IConsolePrint(CC_HELP, "RESEARCH-ONLY/UNSTABLE: control the embedded loopback MCP server.");
-		IConsolePrint(CC_HELP, "Usage: 'prismatic_mcp <status|start [port] [token-file]|stop|endpoint|token|rotate|approvals|approve <id>|deny <id>|decisions [n]>'.");
+		IConsolePrint(CC_HELP, "Usage: 'prismatic_mcp <status|start [port] [token-file]|stop|endpoint|token|rotate|approvals|approve <id> [<id> ...]|deny <id> [<id> ...]|deny all|decisions [n]>'.");
+		IConsolePrint(CC_HELP, "One line settles several decisions. 'deny all' is allowed because a denial enacts nothing; an approval executes, so you name every id you approve.");
 		return true;
 	}
 
@@ -1932,14 +1933,79 @@ static bool ConPrismaticMcp(std::span<std::string_view> argv)
 		IConsolePrint(CC_INFO, "{}", PrismaticMCP::ListApprovals());
 		return true;
 	}
+	/*
+	 * One operator line settles several decisions, because one sentence typed at this console
+	 * ("plan vybuduj nejlukrativnejsi trat") is answered with three gated settings and so three
+	 * pending approvals: 'prismatic_mcp approve 7 8 9' is the one line that used to be three.
+	 *
+	 * Deliberately asymmetric, and this is the point of the command:
+	 *  - 'approve' takes NAMED ids only. There is no 'approve all' and must not be: approving a
+	 *    whole queue consents to decisions the operator never read, and when that queue holds
+	 *    proposals from several different plans, applying all of them leaves whatever wrote last
+	 *    in place -- a railway line nobody chose. Consent stays per decision; each id is still
+	 *    passed one at a time to PrismaticMCP::ApproveById, nothing here auto-approves anything.
+	 *  - 'deny all' exists because a denial cannot execute anything. It only clears the queue,
+	 *    which is what makes the operator's next named approval predictable.
+	 * Every id acted on is printed with its tool and its canonical arguments, so the console log
+	 * records exactly what was consented to (or refused), not just a count.
+	 */
 	if (sub == "approve" || sub == "deny") {
-		if (argv.size() < 3) { IConsolePrint(CC_ERROR, "Usage: prismatic_mcp {} <approval_id>", sub); return true; }
-		auto pid = ParseInteger(argv[2]);
-		if (!pid.has_value()) { IConsolePrint(CC_ERROR, "Invalid approval id."); return true; }
-		std::string msg;
-		bool ok = (sub == "approve") ? PrismaticMCP::ApproveById((uint64_t)*pid, msg)
-		                             : PrismaticMCP::DenyById((uint64_t)*pid, msg);
-		IConsolePrint(ok ? CC_INFO : CC_ERROR, "{}", msg);
+		bool approving = (sub == "approve");
+		if (argv.size() < 3) {
+			IConsolePrint(CC_ERROR, "Usage: prismatic_mcp {} <id> [<id> ...]{}", sub, approving ? "" : " | prismatic_mcp deny all");
+			if (approving) IConsolePrint(CC_HELP, "There is no 'approve all': you approve the decisions you name. 'prismatic_mcp approvals' lists them.");
+			return true;
+		}
+
+		/* Build the work list: either the ids the operator named, or -- for 'deny all' -- every
+		 * decision still pending, read from the server rather than parsed out of its prose. */
+		std::vector<PrismaticMCP::PendingApprovalInfo> pending = PrismaticMCP::PendingApprovals();
+		std::vector<PrismaticMCP::PendingApprovalInfo> work;
+		if (argv.size() == 3 && argv[2] == "all") {
+			if (approving) {
+				IConsolePrint(CC_ERROR, "Refused: 'approve all' does not exist. Name each id you approve: 'prismatic_mcp approve <id> [<id> ...]'.");
+				IConsolePrint(CC_HELP, "A denial enacts nothing, so 'prismatic_mcp deny all' is allowed; an approval executes, so it is never given in bulk.");
+				return true;
+			}
+			work = pending;
+			if (work.empty()) {
+				IConsolePrint(CC_WARNING, "Nothing is waiting: no decision is pending.");
+				return true;
+			}
+		} else {
+			for (size_t i = 2; i < argv.size(); i++) {
+				auto pid = ParseInteger(argv[i]);
+				if (!pid.has_value()) {
+					IConsolePrint(CC_ERROR, "Invalid approval id '{}'; nothing was {}.", argv[i], approving ? "approved" : "denied");
+					return true;
+				}
+				/* What this id would do, so the log shows it; an id that is not pending has
+				 * nothing to show and the per-id message below says why it was refused. */
+				PrismaticMCP::PendingApprovalInfo info{(uint64_t)*pid, {}, {}, false};
+				for (const auto &p : pending) {
+					if (p.id == info.id) { info = p; break; }
+				}
+				work.push_back(info);
+			}
+		}
+
+		int done = 0;
+		int refused = 0;
+		for (const auto &item : work) {
+			std::string msg;
+			bool ok = approving ? PrismaticMCP::ApproveById(item.id, msg)
+			                    : PrismaticMCP::DenyById(item.id, msg);
+			if (ok) done++; else refused++;
+			if (item.tool.empty()) {
+				IConsolePrint(ok ? CC_INFO : CC_ERROR, "#{}: {}", item.id, msg);
+			} else {
+				/* The record of what was consented to or refused: the tool and its exact arguments. */
+				IConsolePrint(ok ? CC_INFO : CC_ERROR, "#{}: {} -- tool={} args={}{}", item.id, msg,
+					item.tool, item.canonical_args, item.expired ? " (EXPIRED)" : "");
+			}
+		}
+		IConsolePrint(refused == 0 ? CC_INFO : CC_WARNING, "{} {}, {} refused.", done,
+			approving ? "approved" : "denied", refused);
 		return true;
 	}
 	if (sub == "decisions") {
