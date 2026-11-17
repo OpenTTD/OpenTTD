@@ -629,7 +629,8 @@ impl Game {
         let cfg = self.tmp.join("openttd.cfg");
         std::fs::write(&cfg, format!(
             "[network]\nserver_name = OpenTTD MCP research server\nserver_game_type = local\n\
-             server_port = {}\nmax_companies = 15\n[difficulty]\nmax_no_competitors = 1\n", self.args.game_port))
+             server_port = {}\nmax_companies = 15\n[difficulty]\nmax_no_competitors = 1\n\
+             [script]\nscript_max_opcode_till_suspend = {}\n", self.args.game_port, SCRIPT_OPCODES))
             .map_err(|e| format!("{}: {e}", cfg.display()))?;
         let argv: Vec<String> = vec![self.args.bin.clone(), "-D".into(), format!("127.0.0.1:{}", self.args.game_port), "-x".into(),
                                      "-g".into(), "-G".into(), self.args.seed.to_string(), "-c".into(), cfg.display().to_string(),
@@ -823,10 +824,16 @@ impl Game {
         }
         self.mcp_up.store(true, Ordering::SeqCst);
         self.event("mcp", &format!("MCP server up at {} (token held by the panel)", self.endpoint()));
-        // The bot plans paths in Squirrel; at the default budget (10000 opcodes a tick) a 240-tile rail
-        // search ate months of game time. 250000 is the game's own maximum for this server setting;
-        // scripts run on the server only, so it changes nothing in what clients compute.
-        let _ = self.console("setting script.script_max_opcode_till_suspend 250000");
+        // The script budget is set in openttd.cfg before the world is made (SCRIPT_OPCODES): the setting
+        // is NewgameOnly, so the console's `setting` here was refused and every game so far ran at the
+        // default 10000. Read it back so the log says what the bots really get.
+        let mark = self.log_seq();
+        if self.console("setting script.script_max_opcode_till_suspend").is_ok() {
+            thread::sleep(Duration::from_millis(600));
+            if let Some(line) = self.log_after(mark).into_iter().find(|l| l.contains("script_max_opcode_till_suspend")) {
+                self.event("server", &format!("script budget: {}", line.trim()));
+            }
+        }
         if !self.args.ai.is_empty() {
             // The bot starts with what the planner's portfolio chose (freight rail, passenger rail, air),
             // so its routes come from the one profitability model; without a plan it plays as before.
@@ -1097,6 +1104,13 @@ impl Game {
         }
     }
 }
+
+/// Opcodes a script may run per tick before it is suspended: the game's maximum for
+/// script.script_max_opcode_till_suspend (default 10000). The bot plans rail paths in Squirrel; at the
+/// default a 240-tile search ate months of game time, and with eight lines handed over the bot built
+/// one line every two to three months while its money waited (research/results duel-20261117T100202).
+/// Scripts run on the server only, so this changes nothing clients compute.
+pub const SCRIPT_OPCODES: u32 = 250000;
 
 impl Game {
     /// Keeps one sample per game day (a later read of the same day replaces it), at most
