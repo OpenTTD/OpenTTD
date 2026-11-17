@@ -23,4 +23,6 @@
    instead of widening the page on a phone (mcp-overview-check measures it at 390 px). */
 @layer base {
   .grid > * { min-width: 0; }
+  /* A link to #overview (or any id on the page) lands below the fixed navbar, not under it. */
+  main [id] { scroll-margin-top: 5rem; }
 }

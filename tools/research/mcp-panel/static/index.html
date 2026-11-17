@@ -184,37 +184,45 @@
 
     <div class="grid gap-4 mb-4 xl:grid-cols-3">
       <div id="ov-companies-card" data-maximize="ov-companies" data-chart="ov-companies" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 xl:col-span-2 flex flex-col">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-          <div>
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="min-w-0">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Companies over time</h3>
             <p id="ov-samples" class="text-xs text-gray-500 dark:text-gray-400">waiting for the first game day</p>
           </div>
-          <div data-toolbar class="flex flex-wrap items-center gap-2">
-            <span id="ov-live" data-state="off" class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">connecting</span>
-            <label for="ov-metric" class="sr-only">Metric</label><select id="ov-metric" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
-            <label for="ov-range" class="sr-only">Range</label><select id="ov-range" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
-            <button id="ov-focus-clear" type="button" class="hidden text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Show all companies</button>
+          <div data-toolbar class="flex shrink-0 items-center gap-2">
+            <span id="ov-live" data-state="off" class="group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 data-[state=live]:bg-green-100 data-[state=live]:text-green-800 dark:data-[state=live]:bg-green-900 dark:data-[state=live]:text-green-300"><span aria-hidden="true" class="size-2 rounded-full bg-gray-400 group-data-[state=live]:bg-green-500"></span><span data-live-text>connecting</span></span>
           </div>
         </div>
-        <div id="ov-companies" role="img" aria-label="Each company's chosen metric by game date; click a line to focus that company" class="w-full h-72 sm:h-80 lg:h-96 grow"></div>
+        <div data-controls class="flex flex-wrap items-center gap-2 mb-3">
+          <label for="ov-metric" class="sr-only">Metric</label><select id="ov-metric" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block py-2 ps-3 pe-9 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
+          <label for="ov-range" class="sr-only">Range</label><select id="ov-range" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block py-2 ps-3 pe-9 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></select>
+          <button id="ov-focus-clear" type="button" class="hidden text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Show all companies</button>
+        </div>
+        <div class="relative grow flex flex-col">
+          <div id="ov-companies" role="img" aria-label="Each company's chosen metric by game date; click a line to focus that company" class="w-full h-72 sm:h-80 lg:h-96 grow"></div>
+          <div id="ov-companies-empty" data-empty class="hidden absolute inset-0 flex items-center justify-center p-6 text-center"><p class="max-w-sm text-sm text-gray-500 dark:text-gray-400">No company in this game yet. The lines start on the day the first company is founded.</p></div>
+        </div>
       </div>
       <div id="ov-standing-card" data-maximize="ov-standing" data-chart="ov-standing" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 flex flex-col">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-          <div>
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="min-w-0">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Standing today</h3>
             <p class="text-xs text-gray-500 dark:text-gray-400">The same metric, the last game day; click a company to focus it</p>
           </div>
-          <div data-toolbar class="flex items-center gap-2"></div>
+          <div data-toolbar class="flex shrink-0 items-center gap-2"></div>
         </div>
-        <div id="ov-standing" role="img" aria-label="Companies ranked by the chosen metric on the last game day" class="w-full h-72 sm:h-80 lg:h-96 grow"></div>
+        <div class="relative grow flex flex-col">
+          <div id="ov-standing" role="img" aria-label="Companies ranked by the chosen metric on the last game day" class="w-full h-72 sm:h-80 lg:h-96 grow"></div>
+          <div id="ov-standing-empty" data-empty class="hidden absolute inset-0 flex items-center justify-center p-6 text-center"><p class="max-w-sm text-sm text-gray-500 dark:text-gray-400">No company to rank yet.</p></div>
+        </div>
       </div>
       <div id="ov-fleet-card" data-maximize="ov-fleet" data-chart="ov-fleet" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 xl:col-span-3 flex flex-col">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-          <div>
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="min-w-0">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Fleet</h3>
             <p class="text-xs text-gray-500 dark:text-gray-400">Vehicles in the game by date; click for every vehicle</p>
           </div>
-          <div data-toolbar class="flex items-center gap-2"></div>
+          <div data-toolbar class="flex shrink-0 items-center gap-2"></div>
         </div>
         <div id="ov-fleet" role="img" aria-label="Number of vehicles in the game by game date" class="w-full h-56 sm:h-64 grow"></div>
       </div>

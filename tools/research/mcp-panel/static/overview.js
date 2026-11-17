@@ -128,7 +128,23 @@ export function delta(samples, pick, days = 30) {
 }
 
 /* ---- the page ------------------------------------------------------------------------------- */
+/** A link to a section of this page (the sidebar's #overview) lands below the navbar and stays
+    there while the cards above it fill in (live, plan, news and cluster load after the first
+    paint and push it down), until the reader scrolls on their own or the page settles. */
+export function holdAnchor(doc = document, win = globalThis) {
+  const id = decodeURIComponent(win.location.hash.slice(1));
+  const target = id && doc.getElementById(id);
+  const main = doc.querySelector('main');
+  if (!target || !main || !main.contains(target) || !win.ResizeObserver) return;
+  const ro = new win.ResizeObserver(() => target.scrollIntoView({ block: 'start' }));
+  const release = () => ro.disconnect();
+  ro.observe(main);
+  for (const ev of ['wheel', 'touchstart', 'keydown', 'mousedown']) win.addEventListener(ev, release, { once: true, passive: true });
+  win.setTimeout(release, 8000);
+}
+
 function mount() {
+  holdAnchor();
   if (!$('ov-companies') || !echarts) return;
   let samples = [], last = -1, state = getState();
   const charts = {};
@@ -154,6 +170,9 @@ function mount() {
     $('ov-vehicles-delta').textContent = vehicles;
     $('ov-samples').textContent = samples.length ? `${samples.length} game days kept · ${samples[0].date} to ${samples[samples.length - 1].date}` : 'waiting for the first game day';
     $('ov-focus-clear').classList.toggle('hidden', !state.focus);
+    // Before the first company there is nothing to draw: say so instead of an empty frame.
+    const none = !companyIds(samples).length;
+    for (const id of ['ov-companies-empty', 'ov-standing-empty']) $(id).classList.toggle('hidden', !none);
   };
   const focus = (id) => {
     state.focus = id && id !== state.focus ? String(id) : '';
@@ -187,13 +206,14 @@ function mount() {
 
   // Live: the event stream pushes the moments worth a redraw; the poll covers a dropped stream.
   const live = $('ov-live');
+  const say = (text, state) => { live.querySelector('[data-live-text]').textContent = text; live.dataset.state = state; };
   try {
     const es = new EventSource('/api/events/stream?kinds=game.month,vehicles.count,company.founded,company.removed,game.new_world,game.paused,game.resumed');
-    es.onopen = () => { live.textContent = 'live'; live.dataset.state = 'live'; };
-    es.onerror = () => { live.textContent = 'reconnecting'; live.dataset.state = 'off'; };
+    es.onopen = () => say('live', 'live');
+    es.onerror = () => say('reconnecting', 'off');
     es.onmessage = pull;
     for (const k of ['game.month', 'vehicles.count', 'company.founded', 'company.removed', 'game.new_world']) es.addEventListener(k, pull);
-  } catch { live.textContent = 'polling'; }
+  } catch { say('polling', 'off'); }
   setInterval(pull, 3000);
 
   // Draw when the boxes have a size (not on a hidden tab), then once more after layout settles.

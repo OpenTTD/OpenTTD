@@ -122,3 +122,29 @@ test('runs side by side: each run a solid planned line and a dashed rival, one c
   assert.equal(o.series[0].id, 'duel-20261117T041705-seed31337-1', 'a line carries its run for the click');
   assert.ok(render(o).paths >= 4);
 });
+||||||| parent of 67064eb483 (Change: [PrismaticMCP] The overview's controls are one size in one header row, #overview lands below the navbar, and a game without a company says so)
+
+test('the overview cards share one header row and say when no company exists yet', async () => {
+  const html = fs.readFileSync(path.join(STATIC, 'index.html'), 'utf8');
+  const section = html.slice(html.indexOf('<section id="overview"'), html.indexOf('</section>', html.indexOf('<section id="overview"')));
+  for (const c of CHARTS) {
+    const card = section.slice(section.indexOf(`data-chart="${c.id}"`));
+    assert.match(card.slice(0, 900), /data-toolbar class="flex shrink-0/, `${c.id}: the toolbar keeps its place beside the title`);
+  }
+  for (const id of ['ov-companies-empty', 'ov-standing-empty']) assert.ok(section.includes(`id="${id}"`), `${id} exists`);
+  for (const sel of section.match(/<select [^>]*>/g)) assert.match(sel, /\bpe-9\b/, 'a select keeps room for its chevron');
+  const { holdAnchor } = await import('../static/overview.js');
+  const scrolled = [], listeners = {};
+  let observed;
+  const target = { scrollIntoView: () => scrolled.push(1) };
+  const main = { contains: (e) => e === target };
+  const win = {
+    location: { hash: '#overview' }, setTimeout: () => {}, addEventListener: (k, f) => { listeners[k] = f; },
+    ResizeObserver: class { constructor(f) { observed = f; } observe() {} disconnect() { observed = null; } },
+  };
+  holdAnchor({ getElementById: (id) => (id === 'overview' ? target : null), querySelector: () => main }, win);
+  observed(); observed();
+  assert.equal(scrolled.length, 2, 'the section is brought back while the cards above it grow');
+  listeners.wheel();
+  assert.equal(observed, null, 'the reader scrolling releases it');
+});

@@ -94,6 +94,34 @@ try {
   await page.waitForTimeout(300);
   check('a click on a company focuses it', new URL(page.url()).searchParams.get('ov_focus') === String(focused), `ov_focus=${new URL(page.url()).searchParams.get('ov_focus')}`);
 
+  // The owner's complaint of 2026-11-17: the controls looked mismatched and #overview landed under
+  // the navbar. A select keeps room for its chevron (Flowbite's pe-9, not p-2), every control of a
+  // card's header is one height, and the linked section clears the navbar after the cards above load.
+  const look = await page.evaluate(() => {
+    const px = (e, k) => parseFloat(getComputedStyle(e)[k]);
+    const sel = [...document.querySelectorAll('#overview select')];
+    const ctl = [...sel, ...document.querySelectorAll('#overview [data-toolbar] button')].filter((e) => e.offsetHeight);
+    return { chevron: Math.min(...sel.map((e) => px(e, 'paddingRight'))), heights: [...new Set(ctl.map((e) => e.offsetHeight))] };
+  });
+  check('a select keeps room for its chevron', look.chevron >= 28, `padding-right ${look.chevron}px`);
+  check("the overview's controls are one height", look.heights.length === 1, `heights ${look.heights.join(', ')}`);
+  const anchored = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  watch(anchored);
+  await anchored.goto(`${base}/#overview`);
+  await anchored.waitForTimeout(4000);
+  const lands = await anchored.evaluate(() => ({
+    nav: Math.round(document.querySelector('nav').getBoundingClientRect().bottom),
+    top: Math.round(document.getElementById('overview').getBoundingClientRect().top),
+  }));
+  check('#overview lands just below the navbar', lands.top >= lands.nav && lands.top <= lands.nav + 40, `section top ${lands.top}, navbar ${lands.nav}`);
+  await anchored.route('**/api/overview/history*', (r) => r.fulfill({ contentType: 'application/json',
+    body: JSON.stringify({ count: 2, last: 148, samples: [0, 1].map((i) => ({ t: 74 * (i + 1), date: `1950-01-0${i + 2}`, vehicles: 0, towns: 9, paused: false, companies: [] })) }) }));
+  await anchored.goto(`${base}/`);
+  await anchored.waitForTimeout(1500);
+  const empty = await anchored.evaluate(() => ['ov-companies-empty', 'ov-standing-empty'].map((id) => document.getElementById(id)?.offsetHeight > 0));
+  check('a game without a company says so instead of an empty frame', empty.every(Boolean), `visible ${empty.join(', ')}`);
+  await anchored.close();
+
   const phone = await browser.newPage({ viewport: { width: 390, height: 844 } });
   watch(phone);
   await phone.goto(`${base}/`);
