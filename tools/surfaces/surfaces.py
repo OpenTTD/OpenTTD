@@ -586,6 +586,31 @@ def walk_links(tokens):
                 yield child, None, line
 
 
+def link_graph(links: Links, docs: dict[str, Doc]) -> dict[str, set[str]]:
+    """For every document, the published documents its links lead to (images and itself excluded)."""
+    md, out = markdown(), {}
+    for path, doc in docs.items():
+        targets = set()
+        for tok, attr, _ in walk_links(collect_slugs(md, doc)):
+            if attr == "src":
+                continue
+            hrefs = [tok.attrGet(attr)] if attr else [m[2] for m in HTML_ATTR_RE.findall(tok.content)]
+            for href in hrefs:
+                target, _, problem = links.target(doc, href or "")
+                if not problem and target in docs and target != path:
+                    targets.add(target)
+        out[path] = targets
+    return out
+
+
+def backlinks(graph: dict[str, set[str]]) -> dict[str, set[str]]:
+    back: dict[str, set[str]] = {p: set() for p in graph}
+    for src, targets in graph.items():
+        for t in targets:
+            back.setdefault(t, set()).add(src)
+    return back
+
+
 def check_links(md: MarkdownIt, links: Links, doc: Doc, tokens) -> list[Finding]:
     found = []
     for tok, attr, line in walk_links(tokens):
@@ -944,6 +969,8 @@ class Site:
     def __init__(self, repo: Repo, cfg: dict, docs: dict[str, Doc], layer: Layer, out: Path):
         self.repo, self.cfg, self.docs, self.layer, self.out = repo, cfg, docs, layer, out
         self.links = Links(repo, docs)
+        self.graph = link_graph(self.links, docs)
+        self.back = backlinks(self.graph)
         root_readme = docs.get("README.md")
         self.title = (root_readme.title if root_readme else repo.name) or repo.name
         self.summary = root_readme.summary if root_readme else ""
@@ -1109,16 +1136,33 @@ class Site:
             f'<a class="{BTN_PRIMARY}" href="{esc(self.repo.edit(doc.path))}">Edit</a>'
         )
 
+    def link_card(self, doc: Doc) -> str:
+        """Where a document is linked from and what it links to, both derived from the documents."""
+        def items(paths: set[str]) -> str:
+            return "".join(
+                f'<li><a class="text-primary-700 hover:underline dark:text-primary-400" '
+                f'href="{esc(self.link(doc.page, self.docs[p].page))}" title="{esc(p)}">{esc(self.docs[p].title)}</a></li>'
+                for p in sorted(paths, key=lambda p: self.docs[p].title.lower()))
+        back, out = self.back.get(doc.path, set()), self.graph.get(doc.path, set())
+        if not back and not out:
+            return ""
+        col = '<div><h3 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">{}</h3><ul class="space-y-1 text-sm">{}</ul></div>'
+        return (f'<div class="{CARD} mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">'
+                + col.format(f"Linked from {len(back)}", items(back) or '<li class="text-gray-500">nothing yet</li>')
+                + col.format(f"Links to {len(out)}", items(out) or '<li class="text-gray-500">no other document</li>')
+                + "</div>")
+
     def doc_page(self, md: MarkdownIt, doc: Doc) -> str:
         meta = (
             f'<div class="mb-4 flex flex-wrap items-center gap-y-2 text-sm text-gray-500 dark:text-gray-400">'
             f'{badge(doc.group or "/")}<code class="me-3 break-all">{esc(doc.path)}</code>'
-            f'<span class="me-3">{doc.lines} lines</span><span>changed {fmt_date(doc.changed)}</span></div>'
+            f'<span class="me-3">{doc.lines} lines</span><span class="me-3">changed {fmt_date(doc.changed)}</span>'
+            f'<span>linked from {len(self.back.get(doc.path, ()))}</span></div>'
         )
         crumbs = [(part, "") for part in doc.path.split("/")[:-1]] + [(posixpath.basename(doc.path), "")]
         return self.shell(
             doc.page, doc.title,
-            meta + self.front_matter_card(doc) + self.article(md, doc),
+            meta + self.front_matter_card(doc) + self.article(md, doc) + self.link_card(doc),
             active=doc, crumbs=crumbs, actions=self.doc_actions(doc), description=doc.summary,
         )
 
@@ -1232,6 +1276,10 @@ class Site:
             '<div class="mb-4 grid grid-cols-1 gap-4">'
             + self.chart_card("docs", "Documentation map", "Area by size; click a document to open it",
                               self.select("docs.metric", [("lines", "by lines"), ("count", "by documents")], "lines"))
+            + self.chart_card("links", "How the documents link", "Every link between published documents; "
+                              "drag, zoom, hover for a title, click to open. Size is how often a document is linked.",
+                              self.select("links.min", [("1", "every linked document"), ("2", "linked twice or more"),
+                                                        ("5", "linked five times or more")], "1"))
             + "</div>" + f'<div class="{CARD}">' + filt
             + html_table(["Title", "Path", "Lines", "Changed", "Summary"], rows, "all-docs") + "</div>"
         )
@@ -1349,6 +1397,12 @@ class Site:
                 key=lambda x: -x["days"],
             ),
             "plan": plan,
+            "links": {
+                "nodes": [{"id": d.path, "name": d.title, "url": d.page, "group": d.group or "/",
+                           "in": len(self.back.get(d.path, ())), "out": len(self.graph.get(d.path, ()))}
+                          for d in self.docs.values()],
+                "edges": [[src, t] for src, ts in sorted(self.graph.items()) for t in sorted(ts)],
+            },
         }
 
     def search_index(self) -> list[dict]:
@@ -1427,8 +1481,14 @@ def build_wiki(repo: Repo, cfg: dict, docs: dict[str, Doc], out: Path) -> None:
         shutil.rmtree(out)
     out.mkdir(parents=True)
     links = Links(repo, docs)
+    back = backlinks(link_graph(links, docs))
     for d in docs.values():
         text = d.body if d.fm else d.text
+        if back.get(d.path):
+            refs = sorted(back[d.path], key=lambda p: docs[p].title.lower())
+            text = text.rstrip() + f"\n\n---\n\n**Linked from {len(refs)} document(s):** " + " · ".join(
+                f"[{docs[p].title.replace('[', '(').replace(']', ')')}]({posixpath.relpath(p, posixpath.dirname(d.path) or '.')})"
+                for p in refs) + "\n"
         if d.fm:
             if not re.search(r"^# ", text, re.M):
                 text = f"# {d.title}\n\n{text.lstrip()}"

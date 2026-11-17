@@ -138,6 +138,12 @@ elsewhere, which are fixed where they come from.
   per-document age at `HEAD` and plan progress. `data/search.json` holds the search index.
   Both are computed at build time from git, so the same commit always builds the same site.
 
+Every page ends with where it is linked from and what it links to, and the "All documents" page
+draws every link between published documents as a force graph (drag, zoom, hover, click; a
+`links.min` selector, kept in the URL, hides rarely linked documents). Both come from the links
+the documents already contain, resolved the way `check` resolves them, so a new link shows up
+on both ends with no index to maintain. The wiki gets the same "Linked from" line on every page.
+
 The shell shows the document's title as the page heading, so an article's first `# ` heading
 is dropped when it is that same title. The sidebar lists documents by title, with the path as
 the tooltip. Search reads the title, path, summary, headings and the first part of the body,
