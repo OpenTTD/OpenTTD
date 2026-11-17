@@ -1,0 +1,159 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY check of the CARRY-OUT half of the `plan` verb: the step that takes the settings
+# an answered sentence proposes and puts them on the running bot.
+#
+# `mcp-intent-check` proves a sentence is UNDERSTOOD. This proves the proposal REACHES the bot and
+# that nothing is applied behind the owner's back. The chain:
+#
+#   build_plan.rhai  ->  api_intent(text)        the same resolver the ~ console verb uses
+#                    ->  api_botSetting(...)     one call per proposed setting, on the running bot
+#                    ->  each returns pending_approval #id, because openttd.ai.set_setting is gated
+#   the owner approves in the panel or the ~ console; the bot builds on its next heartbeat.
+#
+# What it asserts, and why each assertion is the one worth making:
+#
+#   1. The script proposes only settings the running bot DECLARES. Read strict from the game
+#      (/api/bots -> running[].settings[].name, i.e. openttd.ai.list), never from a list typed
+#      here, so a renamed setting fails this check instead of producing a plan the bot cannot take.
+#      info.nut's literal names cannot see the loop-declared fr2_*..fr16_*, so the game is the
+#      only honest source.
+#   2. Every call comes back as `pending approval #<id>`. A call that silently succeeded would mean
+#      the gate is off; a call that errored would mean the bridge is broken. Both read differently.
+#   3. THE SAFETY PROPERTY, and the reason this check needs no approval to be useful: every
+#      declared setting's LIVE VALUE IS UNCHANGED afterwards. The script proposes and stops. An
+#      agent or script that approved its own gated changes would make the owner's setting a
+#      decoration, and this assertion is what proves it did not.
+#   4. The operator is told how to proceed: the approve commands are printed with the ids.
+#
+# It deliberately does NOT approve or deny anything. Each run leaves N pending approvals (N = the
+# settings the sentence proposes); they carry expires_at_tick and lapse on their own.
+#
+# Usage: mcp-carryout-check [--panel http://127.0.0.1:8800] [--text "<sentence>"]
+#                           [--rhai <build_plan.rhai>] [--binary <mcp-rhai>]
+# Exit: 0 every check passed, 1 a check failed, 2 usage, 3 a prerequisite is missing.
+set -uo pipefail
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+PANEL="http://127.0.0.1:8800"
+TEXT="vystav trat mezi nejproduktivnejsi les + pila"
+RHAI="$HERE/mcp-panel/rhai/build_plan.rhai"
+BINARY="$HERE/mcp-rhai/target/release/mcp-rhai"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --panel)  PANEL="${2:-}"; shift 2 ;;
+    --text)   TEXT="${2:-}"; shift 2 ;;
+    --rhai)   RHAI="${2:-}"; shift 2 ;;
+    --binary) BINARY="${2:-}"; shift 2 ;;
+    -h|--help) sed -n '2,33p' "$0"; exit 2 ;;
+    *) echo "mcp-carryout-check: unknown argument $1" >&2; exit 2 ;;
+  esac
+done
+
+command -v python3 >/dev/null || { echo "mcp-carryout-check: python3 is missing" >&2; exit 3; }
+command -v curl >/dev/null || { echo "mcp-carryout-check: curl is missing" >&2; exit 3; }
+[[ -x "$BINARY" ]] || { echo "mcp-carryout-check: no mcp-rhai at $BINARY (--binary)" >&2; exit 3; }
+[[ -r "$RHAI" ]] || { echo "mcp-carryout-check: no script at $RHAI (--rhai)" >&2; exit 3; }
+
+fails=0
+note() { printf '%s\n' "$*"; }
+fail() { printf 'FAIL %s\n' "$*"; fails=$((fails + 1)); }
+
+# The running bot and every declared setting's live value, as one "name=value" line each.
+# /api/bots -> {source, ais, running[], live}; a running bot is running[] = {id, name, settings[]}.
+# `companies` does not exist, and reading the wrong key here would make this check pass vacuously
+# with no bot running at all, so an empty snapshot is a prerequisite failure, not a pass.
+snapshot() {
+  curl -fsS --max-time 15 "$PANEL/api/bots" 2>/dev/null |
+  python3 -I -c '
+import json, sys
+try:
+    d = json.load(sys.stdin)
+except Exception:
+    sys.exit(0)
+for b in d.get("running") or []:
+    print("#bot\t%s\t%s" % (b.get("id"), b.get("name")))
+    for s in b.get("settings") or []:
+        if s.get("name") is not None:
+            print("%s\t%s" % (s["name"], s.get("value")))
+    break
+'
+}
+
+before="$(snapshot)"
+[[ -n "$before" ]] || { echo "mcp-carryout-check: no running bot at $PANEL — start one (bot start PrismaticAI)" >&2; exit 3; }
+bot_line="$(grep -m1 '^#bot' <<<"$before" || true)"
+declared_n=$(grep -vc '^#bot' <<<"$before")
+note "panel      $PANEL"
+note "bot        $(cut -f2,3 <<<"$bot_line" | tr '\t' ' '), $declared_n setting(s) declared"
+note "sentence   $TEXT"
+note ""
+
+out="$(BUILD_PLAN_TEXT="$TEXT" "$BINARY" "$RHAI" 2>&1)"
+printf '%s\n' "$out" | sed 's/^/    /'
+note ""
+
+# --- 1. it is a build sentence that proposed settings the bot declares --------------------------
+proposed="$(sed -n 's/.*would build with: #{\(.*\)}.*/\1/p' <<<"$out" | head -1)"
+# Declared before the branch: under `set -u` an empty ${#names[@]} on the find path aborted
+# the check mid-report with "names: unbound variable" -- found by running this check against
+# a find sentence, which is the control it needed.
+names=()
+if [[ -z "$proposed" ]]; then
+  fail "the sentence proposed no settings: either it reads as a find (say 'vystav'/'vybuduj'), or the resolver answered nothing"
+else
+  mapfile -t names < <(grep -oE '"[a-z_0-9]+":' <<<"$proposed" | tr -d '":')
+  note "proposed   ${#names[@]} setting(s): ${names[*]}"
+  for n in "${names[@]}"; do
+    # An exact first-field match on the tab, by awk: BSD grep on macOS has no -P, and a plain
+    # pattern would let `fr_to` be satisfied by `fr_to_something`.
+    awk -F'\t' -v n="$n" '$1 == n { found = 1 } END { exit !found }' <<<"$before" ||
+      fail "the plan names '$n', which the running bot does not declare: it would read perfectly and do nothing"
+  done
+fi
+grep -q 'REFUSED' <<<"$out" && fail "the script refused a setting the bot does not declare (see its output above)"
+
+# --- 2. every call is gated, and the ids are reported with their commands -----------------------
+mapfile -t pending < <(grep -oE 'pending approval #[0-9]+' <<<"$out" | grep -oE '[0-9]+')
+if [[ ${#names[@]} -gt 0 && ${#pending[@]} -ne ${#names[@]} ]]; then
+  fail "${#names[@]} setting(s) proposed but ${#pending[@]} pending approval(s): a call that silently succeeded means the gate is OFF, one that errored means the bridge is broken"
+else
+  note "gated      ${#pending[@]} pending approval(s): ${pending[*]:-none}"
+fi
+for id in "${pending[@]}"; do
+  grep -qF "prismatic_mcp approve $id" <<<"$out" || fail "approval #$id is waiting but the script never printed the command that clears it"
+done
+
+# --- 3. the safety property: nothing was applied ------------------------------------------------
+after="$(snapshot)"
+[[ -n "$after" ]] || { fail "the bot vanished between the two reads; the unchanged-value assertion could not be made"; after=""; }
+if [[ -n "$after" ]]; then
+  moved="$(python3 -I - "$before" "$after" <<'PY'
+import sys
+def parse(t):
+    return {l.split("\t")[0]: l.split("\t")[1] for l in t.splitlines()
+            if "\t" in l and not l.startswith("#bot")}
+b, a = parse(sys.argv[1]), parse(sys.argv[2])
+print("\n".join(f"{k}: {b[k]} -> {a[k]}" for k in b if k in a and b[k] != a[k]))
+PY
+)"
+  if [[ -n "$moved" ]]; then
+    fail "a live setting changed while nothing was approved — the gate did not hold:"
+    printf '     %s\n' "$moved"
+  else
+    note "unchanged  all $declared_n live setting value(s) are as before: the script approved nothing"
+  fi
+fi
+
+note ""
+if [[ $fails -eq 0 ]]; then
+  note "mcp-carryout-check: every check passed"
+  if [[ ${#pending[@]} -gt 0 ]]; then
+    note "            ${#pending[@]} change(s) now wait for the owner; they carry expires_at_tick and lapse unapproved."
+    note "            To build the line, the owner approves them, one per line:"
+    for id in "${pending[@]}"; do note "                prismatic_mcp approve $id"; done
+  fi
+  exit 0
+fi
+note "mcp-carryout-check: $fails check(s) failed"
+exit 1

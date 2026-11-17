@@ -782,6 +782,30 @@ named nothing would otherwise look understood. Run on the owner's own example it
 `build most_productive`, proposes `fr_from 3, fr_to 18, fr_cargo 7` and leaves three approvals
 waiting.
 
+**Proving the carry-out half.** `tools/research/mcp-carryout-check` drives `build_plan.rhai`
+against a running panel and asserts the four things that half can get wrong. It reads the settings
+the bot declares **strict from the running game** (`/api/bots` -> `running[].settings[].name`, i.e.
+`openttd.ai.list`), the only source that sees the loop-declared `fr2_*`..`fr16_*`, and refuses a
+plan naming anything else. It requires every call to come back `pending approval #<id>`: a call
+that silently succeeded would mean the gate is off, and one that errored would mean the bridge is
+broken, which read identically in the script's output. It requires the `prismatic_mcp approve <id>`
+line for each waiting id, so the operator is never left holding an id without its command. And the
+assertion that makes the check useful without any approval at all: **every one of the bot's live
+setting values is unchanged afterwards**. That is the safety property -- the script proposes and
+stops -- and it is what proves no script or agent approved its own gated changes. It approves and
+denies nothing itself; each run leaves as many pending changes as the sentence proposes, and they
+carry `expires_at_tick` and lapse unapproved.
+
+Two things measured while building it, both worth knowing before reading its output. A find
+sentence is its negative control and must fail (`--text "najdi nejproduktivnejsi les"` exits 1):
+that run is also what exposed an `names: unbound variable` abort under `set -u`, which is why the
+array is declared before the branch rather than inside it -- a check whose failure path has never
+run is unproven. And **identical pending changes collapse onto one approval id** by
+`argument_digest`: a second run that proposed the same `fr_cargo 7` reused approval #4 while the
+two settings whose values differed took fresh ids, so the number of ids waiting is not the number
+of runs times settings. On 2026-11-17, against master 4af99ac7 with 62 settings declared on
+company 0, both controls behaved as described and the positive run passed every check.
+
 `mcp-intent-check` proves the four sentences themselves, driven through `POST /api/console` the
 way the owner types them: that each one is *answered in the console* and not merely over HTTP, that
 the reading names the action, the ordering and the subjects it resolved, and two things nothing
