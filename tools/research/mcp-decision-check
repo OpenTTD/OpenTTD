@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY. Prismatic decides the bot over the bridge's decision contract, end to end (I0041).
+#
+# Runs `mcp-e2e --no-gui --no-browser` against an isolated instance registry, waits for the bot,
+# then checks the panel's two halves of research/prismatic-bridge/decision-contract.schema.json:
+#
+#   1. GET /api/bridge/companies answers the bridge's CompanyOut for every company, the bot among them;
+#   2. POST /api/decision/pull with no URL is refused (501), and a directive outside the contract is
+#      refused (422) with nothing applied;
+#   3. a directive in the shape prismatic_api's OpenttdController#decision answers (company_id of the
+#      bot, settings "aggressiveness=N", its own working alongside) is applied: the answer is a
+#      DecisionPullResult, the setting goes through approval, and the running bot reads N.
+#
+# The directive comes from PRISMATIC_DECISION_URL when it is set (Prismatic itself, e.g.
+# http://127.0.0.1:4000/api/openttd/decision, started with OPENTTD_BRIDGE_URL=<panel>/api/bridge;
+# the check prints the panel URL and waits for it), else from a stand-in on a loopback port that
+# answers what OpenttdController#decision answers, with the value chosen here.
+#
+# Usage: tools/research/mcp-decision-check [--bin PATH]   exit 0 PASS, 1 FAIL
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+BIN="$ROOT_DIR/build-gate-research/openttd"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --bin) BIN="$2"; shift 2 ;;
+    -h|--help) sed -n '2,19p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) echo "mcp-decision-check: unknown option $1" >&2; exit 2 ;;
+  esac
+done
+
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-decision-check.XXXXXX")"
+export PRISMATIC_MCP_REGISTRY="$TMP/registry"
+mkdir -p "$PRISMATIC_MCP_REGISTRY"
+free_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
+PIDS=()
+cleanup() {
+  for p in "${PIDS[@]}"; do kill -TERM "$p" 2>/dev/null || true; done
+  wait 2>/dev/null || true
+  rm -rf "$TMP"
+}
+trap cleanup EXIT INT TERM
+
+FAILS=0
+pass() { echo "PASS $*"; }
+fail() { echo "FAIL $*"; FAILS=$((FAILS + 1)); }
+
+PANEL_PORT="$(free_port)"; URL="http://127.0.0.1:$PANEL_PORT"
+"$ROOT_DIR/tools/research/mcp-e2e" --bin "$BIN" --no-gui --no-browser --panel-port "$PANEL_PORT" --seed 31337 \
+  > "$TMP/e2e.log" 2>&1 &
+PIDS+=($!)
+echo "==> mcp-e2e (log $TMP/e2e.log), panel $URL"
+for ((i = 0; i < 300; i++)); do
+  curl -s -m 3 "$URL/api/status" 2>/dev/null | grep -q '"ai_started": true' && break
+  sleep 2
+done
+curl -s -m 3 "$URL/api/status" | grep -q '"ai_started": true' || { echo "mcp-decision-check: no bot"; tail -30 "$TMP/e2e.log"; exit 1; }
+
+# 1. The bridge's companies, the bot among them (a started AI takes a moment to found its company).
+BOT=""
+for ((i = 0; i < 60; i++)); do
+  curl -s -m 10 "$URL/api/bridge/companies" > "$TMP/companies.json" || true
+  BOT="$(jq -r '[.[]? | select(.is_ai == true)][0].id // empty' "$TMP/companies.json" 2>/dev/null)"
+  [[ -n "$BOT" ]] && break
+  sleep 2
+done
+fields='["id","name","manager","is_ai","money","loan","income","company_value","performance","trains","lorries","busses","planes","ships"]'
+missing="$(jq -c --argjson f "$fields" '[.[] | . as $c | $f[] | . as $k | select(($c | has($k)) | not)] | unique' "$TMP/companies.json" 2>/dev/null || echo '"unreadable"')"
+[[ -n "$BOT" && "$missing" == "[]" ]] \
+  && pass "GET /api/bridge/companies answers CompanyOut for $(jq length "$TMP/companies.json") companies; the bot is company $BOT" \
+  || fail "GET /api/bridge/companies: bot '$BOT', missing fields $missing: $(head -c 400 "$TMP/companies.json")"
+
+# 2. Refusals: no URL, and a directive outside the contract.
+code="$(curl -s -o "$TMP/r501.json" -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d '{}' "$URL/api/decision/pull")"
+if [[ -n "${PRISMATIC_DECISION_URL:-}" ]]; then
+  echo "     (PRISMATIC_DECISION_URL is set, so the no-URL refusal is not checked)"
+else
+  [[ "$code" == 501 ]] && pass "a pull with no URL is refused: $(jq -r .error "$TMP/r501.json")" || fail "a pull with no URL answered $code"
+fi
+
+# The stand-in Prismatic: answers whatever $TMP/directive.json holds, as prismatic_api would.
+STAND_PORT="$(free_port)"
+python3 -I - "$STAND_PORT" "$TMP/directive.json" > "$TMP/stand-in.log" 2>&1 <<'PY' &
+import http.server, sys
+port, path = int(sys.argv[1]), sys.argv[2]
+class H(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        body = open(path, 'rb').read()
+        self.send_response(200); self.send_header('Content-Type', 'application/json')
+        self.send_header('Content-Length', str(len(body))); self.end_headers(); self.wfile.write(body)
+    def log_message(self, *a): pass
+http.server.HTTPServer(('127.0.0.1', port), H).serve_forever()
+PY
+PIDS+=($!)
+STAND="http://127.0.0.1:$STAND_PORT/api/openttd/decision"
+echo '{}' > "$TMP/directive.json"
+for ((i = 0; i < 50; i++)); do curl -s -m 1 -o /dev/null "$STAND" && break; sleep 0.2; done
+
+echo '{"ai": "", "company_id": 15, "settings": "aggressiveness=high"}' > "$TMP/directive.json"
+code="$(curl -s -o "$TMP/r422.json" -w '%{http_code}' -X POST -H 'Content-Type: application/json' \
+  -d "{\"url\": \"$STAND\"}" "$URL/api/decision/pull")"
+[[ "$code" == 422 && "$(jq '.errors | length' "$TMP/r422.json")" == 3 && "$(jq 'has("applied_rcon")' "$TMP/r422.json")" == false ]] \
+  && pass "a directive outside the contract is refused with its 3 reasons, nothing applied" \
+  || fail "a directive outside the contract answered $code: $(head -c 300 "$TMP/r422.json")"
+
+# 3. A decision applied to the running bot.
+setting() { curl -s -m 10 "$URL/api/bots" | jq -r --argjson c "$BOT" \
+  '[.running[] | select(.id == $c) | .settings[] | select(.name == "aggressiveness") | (.value // .current)][0] // empty'; }
+BEFORE="$(setting)"
+WANT=$(( BEFORE == 100 ? 25 : 100 ))
+if [[ -n "${PRISMATIC_DECISION_URL:-}" ]]; then
+  SRC="$PRISMATIC_DECISION_URL"
+  echo "==> the directive comes from Prismatic at $SRC (its OPENTTD_BRIDGE_URL must be $URL/api/bridge)"
+else
+  SRC="$STAND"
+  jq -n --argjson c "$BOT" --arg s "aggressiveness=$WANT" --argjson w "$WANT" \
+    '{ai: "PrismaticAI", company_id: $c, settings: $s, engine: "PrismaticMonteCarlo.simulate/3", chosen_aggressiveness: $w, candidates: []}' \
+    > "$TMP/directive.json"
+fi
+curl -s -m 10 -X POST -H 'Content-Type: application/json' -d '{"on": true}' "$URL/api/auto-approve" > /dev/null
+curl -s -m 90 -X POST -H 'Content-Type: application/json' -d "{\"url\": \"$SRC\"}" "$URL/api/decision/pull" > "$TMP/pull.json"
+shape="$(jq -r '(has("called_url") and has("raw_response") and (.applied_rcon.lines | type == "array"))' "$TMP/pull.json" 2>/dev/null || echo false)"
+[[ "$shape" == true ]] \
+  && pass "the pull answers a DecisionPullResult: $(jq -c '.applied_rcon.lines' "$TMP/pull.json")" \
+  || fail "the pull answered $(head -c 400 "$TMP/pull.json")"
+[[ -n "${PRISMATIC_DECISION_URL:-}" ]] && WANT="$(jq -r '.raw_response.settings' "$TMP/pull.json" | sed -n 's/.*aggressiveness=\([0-9]*\).*/\1/p')"
+AFTER=""
+for ((i = 0; i < 30; i++)); do AFTER="$(setting)"; [[ "$AFTER" == "$WANT" ]] && break; sleep 1; done
+[[ "$AFTER" == "$WANT" ]] \
+  && pass "the running bot reads aggressiveness=$AFTER (was $BEFORE), as decided" \
+  || fail "the bot reads aggressiveness=$AFTER (was $BEFORE), decided $WANT"
+curl -s -m 10 "$URL/api/events?kinds=panel.ai" | grep -q 'Prismatic decided' \
+  && pass "the decision is in the panel's event feed" || fail "no 'Prismatic decided' event"
+
+echo
+[[ "$FAILS" == 0 ]] && { echo "mcp-decision-check: PASS"; exit 0; } || { echo "mcp-decision-check: $FAILS failed"; exit 1; }

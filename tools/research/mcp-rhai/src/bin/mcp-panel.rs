@@ -24,6 +24,8 @@ mod rhai_host;
 mod panel;
 #[path = "../panel_bot.rs"]
 mod panel_bot;
+#[path = "../panel_decision.rs"]
+mod panel_decision;
 
 static STOP: AtomicBool = AtomicBool::new(false);
 

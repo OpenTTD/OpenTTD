@@ -30,6 +30,7 @@ use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
 use crate::hub;
 use crate::panel_bot;
+use crate::panel_decision;
 use crate::rhai_host;
 
 /// The panel's own directory (static pages, Rhai library, npm packages).
@@ -1806,6 +1807,21 @@ fn h_bot_setting(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     ok(panel_bot::set_bot_setting(g, &i.body["company"], &py_str(i.body.get("name")), &i.body["value"])?)
 }
 
+fn h_bridge_companies(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
+    ok(panel_decision::companies(g)?)
+}
+
+fn h_decision_pull(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let url = match i.body.get("url").and_then(Value::as_str).filter(|u| !u.is_empty()) {
+        Some(u) => u.to_string(),
+        None => std::env::var("PRISMATIC_DECISION_URL").unwrap_or_default(),
+    };
+    if url.is_empty() {
+        return Ok((501, json!({"error": "no decision URL: pass url, or set PRISMATIC_DECISION_URL (prismatic_api: http://127.0.0.1:4000/api/openttd/decision)"})));
+    }
+    panel_decision::pull(g, &url)
+}
+
 fn h_instances(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
     ok(json!({"registry": registry().display().to_string(), "instances": discover()}))
 }
@@ -1881,6 +1897,10 @@ pub fn routes() -> Vec<Route> {
           s(json!({"ai": st(), "settings": obj()}), &["ai"]), h_bot_start),
         r("POST", "/api/bots/setting", "botSetting", "Change one setting of a running bot (openttd.ai.set_setting, approval-gated)", true,
           s(json!({"company": {"type": "integer"}, "name": st(), "value": {"type": "integer"}}), &["company", "name", "value"]), h_bot_setting),
+        r("GET", "/api/bridge/companies", "bridgeCompanies", "Every company as the bridge's GET /companies answers it (CompanyOut: money, loan, income from the vehicles' profit, company value, vehicle counts), so Prismatic decides from this game with OPENTTD_BRIDGE_URL=<panel>/api/bridge (src/panel_decision.rs)", true,
+          None, h_bridge_companies),
+        r("POST", "/api/decision/pull", "decisionPull", "Prismatic decides the bot: GET a decision directive {ai, company_id, settings} from url (default PRISMATIC_DECISION_URL), check it against research/prismatic-bridge/decision-contract.schema.json and apply it (settings on the running AI through openttd.ai.set_setting, approval-gated; else start_ai), answering a DecisionPullResult", true,
+          s(json!({"url": st()}), &[]), h_decision_pull),
         r("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params); &track=N prices the N best rail lines of each list on the real map with AlgoGlyph track-planning (line_costs) before the portfolio is chosen", true,
           None, h_plan),
         r("GET", "/api/investment", "investment", "What to build, decided by AlgoGlyph's transport-investment kernel (routes of one or two legs through hubs, ranked by return on investment) over the planner's candidates from the live game, one run per cargo with that cargo's own vehicles, then one portfolio within the budget (default: the loan limit); ?params=JSON as /api/plan. The planner's own portfolio comes alongside for comparison", true,
@@ -2499,11 +2519,13 @@ mod tests {
         let ids: HashSet<&str> = rs.iter().map(|r| r.op_id).collect();
         assert_eq!(ids.len(), rs.len(), "operationIds are unique");
         // server.py's table, route for route, plus the routes added after the Python panel was
-        // retired: GET /api/content, POST /api/content/download, GET /api/overview/history.
-        assert_eq!(rs.len(), 35);
+        // retired: GET /api/content, POST /api/content/download, GET /api/overview/history, and the
+        // decision contract's GET /api/bridge/companies and POST /api/decision/pull.
+        assert_eq!(rs.len(), 37);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
-                       ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes")] {
+                       ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
+                       ("GET", "/api/bridge/companies"), ("POST", "/api/decision/pull")] {
             assert!(rs.iter().any(|r| r.method == m && r.path == p), "{m} {p}");
         }
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",

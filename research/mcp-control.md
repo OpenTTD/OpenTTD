@@ -643,6 +643,36 @@ is absent. If the resolver is not built or crashes, the console says `not unders
 money is not checked here, so a plan the company cannot afford is answered and then logged by the
 bot as "no freight route built".
 
+## Prismatic decides the bot: the bridge's decision contract in the panel
+
+The panel speaks both halves of the bridge's decision contract
+([`decision-contract.schema.json`](prismatic-bridge/decision-contract.schema.json), I0011), so a
+game run by `mcp-e2e` takes Prismatic's decisions without the Python bridge
+(`tools/research/mcp-rhai/src/panel_decision.rs`, I0041):
+
+- `GET /api/bridge/companies` answers what the bridge's `GET /companies` answers (`CompanyOut`),
+  from `openttd://companies` and `openttd://vehicles`: `income` is the vehicles' profit last year
+  (this year's until a year has passed). The game publishes no president's name, performance
+  rating or road-vehicle cargo, so `manager` is empty, `performance`, `lorries` and `busses` are
+  null and road vehicles are counted in `road_vehicles`. `prismatic_api`'s
+  `GET /api/openttd/decision` reads its company there with `OPENTTD_BRIDGE_URL=<panel>/api/bridge`.
+- `POST /api/decision/pull {url?}` GETs a directive from `url`, else `PRISMATIC_DECISION_URL`,
+  checks it against the contract and applies it, answering a `DecisionPullResult`. A directive
+  the contract refuses is answered 422 with every reason, and nothing is applied; no URL is 501.
+- Applying differs from the bridge in one place, on purpose. The bridge answers a `company_id`
+  with `reload_ai`, which restarts the AI with the settings it already had, so the settings
+  Prismatic decided are dropped. The panel sets them on the running AI (`openttd.ai.set_setting`,
+  approval-gated) and reloads only when the directive carries none; without a `company_id` it
+  starts `ai` with them, as the bridge does. Fields beyond the contract's three are not read and
+  are named in the answer: `prismatic_api` answers its working alongside (`engine`,
+  `chosen_aggressiveness`, `candidates`), which the contract's `additionalProperties: false`
+  does not allow.
+
+`tools/research/mcp-decision-check` proves it on seed 31337: the bot's company in `CompanyOut`,
+both refusals, and a directive in the shape `OpenttdController#decision` answers applied, the
+running bot reading the decided `aggressiveness` (50 before, 100 after, 2026-11-17). The directive
+comes from a loopback stand-in unless `PRISMATIC_DECISION_URL` names Prismatic itself.
+
 ## A cluster of instances: discovery and calls across it
 
 Every panel registers itself, and the GUI client it attaches, in a shared registry
