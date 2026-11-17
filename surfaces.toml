@@ -12,3 +12,86 @@ exclude = ["changelog.md"]
 # Rules vendored from Majordomus carry front matter that does not parse as YAML (an unquoted ": ").
 # They are fixed upstream and replaced on the next vendor update, never edited here.
 front_matter_exclude = [".ai/repo/rules/vendor/**"]
+
+# Numbers the README and other documents state, each counted from the tracked files on every
+# sync by the `facts` region (tools/surfaces/README.md). Only what to count is declared here.
+[[facts.items]]
+id = "game-commands"
+group = "mcp"
+short = "game commands (openttd.cmd.*)"
+label = "game commands, each an MCP tool an agent can call (`openttd.cmd.*`)"
+matches = 'DEF_CMD_TRAIT\(Commands::'
+in = "src/*_cmd.h"
+link = "research/mcp-api.md"
+
+[[facts.items]]
+id = "mcp-resources"
+group = "mcp"
+short = "live resources (openttd://)"
+label = "live MCP resources (`openttd://…`): map, towns, stations, vehicles, companies, …"
+matches = '^\s*\{"openttd://'
+in = "src/prismatic_mcp/prismatic_mcp_server.cpp"
+link = "research/prismatic-mcp/07-resource-catalog.md"
+
+[[facts.items]]
+id = "mcp-unit-tests"
+group = "proof"
+label = "unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)"
+matches = '^TEST_CASE\('
+in = "src/tests/test_prismatic_mcp.cpp"
+link = "research/prismatic-mcp/09-testing.md"
+
+[[facts.items]]
+id = "duels"
+group = "proof"
+label = "recorded bot-vs-bot duels, each with its JSON and its write-up"
+files = "research/results/duel-*.json"
+link = "tools/research/mcp-duel"
+
+[[facts.items]]
+id = "research-tools"
+group = "tooling"
+label = "research tools and checks (`tools/research/*`, shell and Python)"
+files = "tools/research/*"
+link = "research/tooling.md"
+
+[[facts.items]]
+id = "rust-tools"
+group = "tooling"
+label = "Rust programs: panel, hub, planner, Rhai runner, coverage, …"
+files = "tools/research/mcp-rhai/src/bin/*.rs"
+link = "research/mcp-control.md"
+
+[[facts.items]]
+id = "rhai-scripts"
+group = "tooling"
+label = "Rhai scripts that drive a live game (director, narrator, steward, …)"
+files = "tools/research/mcp-panel/rhai/*.rhai"
+link = "research/mcp-control.md"
+
+[[facts.items]]
+id = "decisions"
+group = "record"
+label = "architecture decisions (ADRs)"
+files = ".ai/repo/adrs/0*.md"
+link = ".ai/repo/adrs/README.md"
+
+[[facts.items]]
+id = "issues"
+group = "record"
+label = "planned issues, each with its evidence"
+files = ".ai/repo/project/issues/*.yaml"
+link = ".ai/repo/project/README.md"
+
+[[facts.items]]
+id = "knowledge"
+group = "record"
+label = "knowledge records (curated and candidates)"
+files = ".ai/repo/knowledge/*/*.md"
+link = ".ai/repo/knowledge/README.md"
+
+[[facts.items]]
+id = "documents"
+group = "record"
+label = "published documents on the site and the wiki"
+docs = ""

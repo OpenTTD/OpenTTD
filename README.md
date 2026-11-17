@@ -4,49 +4,66 @@
   </a>
 </p>
 
-<h1 align="center">OpenTTD &middot; Prismatic research fork</h1>
+<h1 align="center">OpenTTD &middot; NoirGFX &amp; agent lab</h1>
 
 <p align="center">
-  <strong>A 20-year-old C++20 game engine as a proving ground for coding agents.</strong><br>
-  Agents plan, build and play against rules they cannot fake: deterministic lockstep
-  multiplayer, savegames that must load forever, and a warning-heavy build.
+  <strong>A red-black linocut base graphics set, and a lab where bots and AI agents play OpenTTD<br>
+  through the same command system you do.</strong><br>
+  A personal research fork: every number below is counted from the repository, every claim links to its evidence.
 </p>
 
 <p align="center">
   <a href="https://korczis.github.io/OpenTTD/"><img alt="Site" src="https://img.shields.io/badge/site-korczis.github.io%2FOpenTTD-d11f1a?style=for-the-badge&labelColor=0b0b0b"></a>
-  <a href="https://github.com/korczis/OpenTTD/actions/workflows/surfaces.yml"><img alt="Surfaces" src="https://img.shields.io/github/actions/workflow/status/korczis/OpenTTD/surfaces.yml?branch=master&label=surfaces&style=for-the-badge&labelColor=0b0b0b"></a>
+  <a href="https://github.com/korczis/OpenTTD/actions/workflows/surfaces.yml"><img alt="Surfaces" src="https://img.shields.io/github/actions/workflow/status/korczis/OpenTTD/surfaces.yml?branch=master&label=docs%20check&style=for-the-badge&labelColor=0b0b0b"></a>
   <a href="https://github.com/korczis/OpenTTD/wiki"><img alt="Wiki" src="https://img.shields.io/badge/wiki-same%20docs-ece4d6?style=for-the-badge&labelColor=0b0b0b"></a>
   <a href="COPYING.md"><img alt="License GPL-2.0" src="https://img.shields.io/badge/license-GPL--2.0-ece4d6?style=for-the-badge&labelColor=0b0b0b"></a>
 </p>
 
 <p align="center">
-  <img alt="C++20" src="https://img.shields.io/badge/C%2B%2B-20-00599C?logo=cplusplus&logoColor=white">
-  <img alt="CMake" src="https://img.shields.io/badge/CMake-3.16%2B-064F8C?logo=cmake&logoColor=white">
-  <img alt="Rust" src="https://img.shields.io/badge/Rust-agent%20tooling-000000?logo=rust&logoColor=white">
-  <img alt="Python" src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white">
-  <img alt="MCP" src="https://img.shields.io/badge/MCP-embedded%20server-d11f1a">
-  <img alt="Rhai" src="https://img.shields.io/badge/Rhai-scripting-8a5a2b">
-  <img alt="Apache ECharts" src="https://img.shields.io/badge/Apache%20ECharts-6-AA344D?logo=apacheecharts&logoColor=white">
-  <img alt="Flowbite" src="https://img.shields.io/badge/Flowbite-Tailwind%204-1C64F2?logo=tailwindcss&logoColor=white">
-  <img alt="Mermaid" src="https://img.shields.io/badge/Mermaid-diagrams-FF3670?logo=mermaid&logoColor=white">
-  <img alt="Supervised by Majordomus" src="https://img.shields.io/badge/supervised%20by-Majordomus-0b0b0b">
-</p>
-
-<p align="center">
-  <a href="AGENTS.md"><b>Ground rules</b></a> &nbsp;&middot;&nbsp;
+  <a href="#noirgfx-the-game-as-a-linocut"><b>NoirGFX</b></a> &nbsp;&middot;&nbsp;
+  <a href="#the-planner-against-itself"><b>Bot duels</b></a> &nbsp;&middot;&nbsp;
+  <a href="#plug-in-an-agent-it-asks-before-it-acts"><b>Plug in an agent</b></a> &nbsp;&middot;&nbsp;
+  <a href="#counted-from-the-source"><b>Numbers</b></a> &nbsp;&middot;&nbsp;
+  <a href="#how-it-compares"><b>How it compares</b></a> &nbsp;&middot;&nbsp;
+  <a href="#how-this-was-made"><b>How it was made</b></a> &nbsp;&middot;&nbsp;
   <a href="#quick-start"><b>Quick start</b></a> &nbsp;&middot;&nbsp;
-  <a href="#the-planner-against-itself"><b>Results</b></a> &nbsp;&middot;&nbsp;
-  <a href="#whats-inside"><b>What's inside</b></a> &nbsp;&middot;&nbsp;
-  <a href="#built-with"><b>Built with</b></a> &nbsp;&middot;&nbsp;
-  <a href="research/prismatic-mcp/README.md"><b>MCP server</b></a> &nbsp;&middot;&nbsp;
   <a href="#00-about-this-fork"><b>Full story</b></a>
 </p>
 
-> [!NOTE]
-> **Personal research fork.** `korczis/OpenTTD` is public so its documentation can be published,
-> but it is not the official [OpenTTD](https://github.com/OpenTTD/OpenTTD) project and sends
-> nothing upstream. The original upstream README is preserved from [1.0) About](#10-about)
-> onward; license and credits are unchanged.
+> [!IMPORTANT]
+> **Not the official OpenTTD.** `korczis/OpenTTD` is a personal research fork. It sends nothing
+> upstream (no issues, pull requests or patches), and it joins public servers only with the
+> unmodified release client. The original README is kept from [1.0) About](#10-about) on;
+> licence and credits are unchanged. Upstream is [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD).
+
+## Three things to try
+
+| | NoirGFX | A bot duel | Your own agent |
+|---|---|---|---|
+| | [![NoirGFX ground, rail, road and water at 4x](research/noirgfx/preview-ground-4x.png)](research/noirgfx/README.md) | [![A research game: finances of the planned bot](docs/screenshots/game-finances.png)](#the-planner-against-itself) | [![The bot's yes/no question, shown in the game itself](docs/screenshots/your-bot-asks.png)](#plug-in-an-agent-it-asks-before-it-acts) |
+| **What** | every OpenGFX sprite recut as a three-ink linocut, 1x/2x/4x | two companies, same AI, one with a planner: watch who wins | an MCP client reads the live game and proposes moves you approve |
+| **Needs** | this repository, `uv`, Blender | a research build (`tools/gate.sh research`) | a research build plus any MCP client |
+| **Start** | [`noirgfx build && noirgfx install`](tools/research/noirgfx/README.md) | `tools/research/mcp-duel --months 36` | `tools/research/mcp-e2e`, then [connect](research/mcp-control.md) |
+| **Stock OpenTTD?** | the set plugs in like any base set; loading it in a stock release is `NOT RUN` yet | no: the duel needs this fork's MCP server | no: the MCP server is compiled into this fork |
+
+## NoirGFX: the game as a linocut
+
+A complete base graphics set in the owner's red-black linocut style: strict ink, paper and signal
+red, carved hatching, seamless across tiles at every zoom. It installs the way upstream designed
+graphics to be replaced, as a `.obg` plus six GRFs in `baseset/`, and it is never the default: you
+pick it in *Game Options → Base graphics set* or start with `openttd -I NoirGFX`.
+
+| Ground, rail, road and water (4x) | Trees from Kenney's CC0 models (4x) |
+|---|---|
+| [![NoirGFX terrain at 4x](research/noirgfx/preview-ground-4x.png)](research/noirgfx/preview-ground-4x.png) | [![NoirGFX trees rendered from Kenney models](research/noirgfx/preview-kenney-trees-4x.png)](research/noirgfx/preview-kenney-trees-4x.png) |
+
+**How it is made** (deterministic, no image model touched the shipped set): grfcodec decodes
+OpenGFX 8.0, a script restyles each sprite by palette material (upscale, ink and hatch, re-quantise
+to three inks), headless Blender renders the mapped sprites from CC0 [Kenney](https://kenney.nl/)
+models, and grfcodec encodes the result. Every colour and threshold lives in one file,
+[`style.toml`](tools/research/noirgfx/style.toml). The pipeline, its invariants and its checks:
+[`tools/research/noirgfx/README.md`](tools/research/noirgfx/README.md) and
+[`research/noirgfx/README.md`](research/noirgfx/README.md).
 
 ## The planner against itself
 
@@ -108,6 +125,91 @@ xychart-beta
 </details>
 
 <!-- scoreboard:end -->
+
+**Read it as an experiment, not a headline.** Most runs are one map (seed 31337) at 36 months,
+and company value ignores the track a company owns. Two runs of one unchanged bot differ by about
+1% one duel at a time and by 10% or more when several run side by side
+([knowledge record](.ai/repo/knowledge/curated/duels-run-side-by-side-are-noisy.md)), so a gain
+smaller than that is not told apart from noise. Each row links to the run's own write-up with
+both bots' logs; [`tools/research/mcp-duel`](tools/research/mcp-duel) reproduces one.
+
+## Plug in an agent: it asks before it acts
+
+The game carries an MCP server of its own (compile-gated, default OFF, loopback only). An agent
+reads live state through resources (map, towns, stations, vehicles, companies, finances) and
+changes the world only through the game's own command system: every game command and every Script
+API function is a tool, and a call that changes the game waits until the operator approves those
+exact arguments in the console (`prismatic_mcp approve <id>`). The bot's yes/no questions appear in
+the game itself, and the owner can let them confirm themselves after a countdown.
+
+```text
+MCP client ──stdio──▶ openttd-mcp-stdio ──HTTP──▶ panel (holds the token) ──▶ MCP server in the game
+                                                                               │
+          read: openttd://map, towns, stations, vehicles, companies …          │
+          act:  openttd.cmd.<Command>  ──▶ pending ──(operator approves)──▶ Command<>::Post
+```
+
+Start a stack with `tools/research/mcp-e2e`, point your client at
+[`tools/research/mcp-auto/openttd-mcp-stdio`](tools/research/mcp-auto/openttd-mcp-stdio), and read
+[`research/mcp-control.md`](research/mcp-control.md) for the panel, the `~` console (`mcp <tool>`),
+Rhai scripting and the hub. The whole catalogue, every route, is browsable in the panel's Swagger UI.
+
+## Counted from the source
+
+Each number is counted from the tracked files whenever the documents are regenerated
+(`tools/surfaces/surfaces sync`, declared in [`surfaces.toml`](surfaces.toml)), so it cannot drift
+from the code. The right-hand column says what was counted.
+
+<!-- surfaces:begin facts -->
+| Count | What | Counted from |
+|---|---|---|
+| **146** | [game commands, each an MCP tool an agent can call (`openttd.cmd.*`)](research/mcp-api.md) | `DEF_CMD_TRAIT\(Commands::` in `src/*_cmd.h` |
+| **22** | [live MCP resources (`openttd://…`): map, towns, stations, vehicles, companies, …](research/prismatic-mcp/07-resource-catalog.md) | `^\s*\{"openttd://` in `src/prismatic_mcp/prismatic_mcp_server.cpp` |
+| **27** | [unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)](research/prismatic-mcp/09-testing.md) | `^TEST_CASE\(` in `src/tests/test_prismatic_mcp.cpp` |
+| **35** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
+| **26** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
+| **6** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
+| **9** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
+| **31** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
+| **78** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
+| **76** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
+| **376** | published documents on the site and the wiki | published documents under `/` |
+<!-- surfaces:end facts -->
+
+## How it compares
+
+Other people have connected OpenTTD to language models, and they are worth a look. As each
+project describes itself (read 2026-11-17):
+
+| Project | How it reaches the game | Runs on stock OpenTTD | Changes the game | Published results |
+|---|---|---|---|---|
+| **this fork** | MCP server inside the engine; every command and Script API function a tool | no, a fork build | every change is a normal game command, held until the operator approves its exact arguments | yes, [the duels above](#the-planner-against-itself) |
+| [willibrandon/openttd-mcp](https://lobehub.com/mcp/willibrandon-openttd-mcp) | MCP over the Admin Port (Go) | yes | through Admin Port commands | — |
+| [OVER99K/openttd-directorate-mcp](https://glama.ai/mcp/servers/o8ze0w0kem) | MCP plus a GameScript (TypeScript), observe, plan, apply, verify | yes | through the GameScript; its page says spending limits and destructive-action gates are not handled | a public demo server |
+| [jplattel/openttd-llm](https://jplattel.nl/post/2026-01-22-llm-plays-openttd/) | an LLM drives an in-game AI through logs and Squirrel | yes | through the AI script | write-ups, several LLMs competing |
+
+## How this was made
+
+This fork is about AI coding agents, and nearly every commit since it left upstream was written
+with one, under the owner's direction. Each such commit carries a `Co-Authored-By` trailer, so the
+share is one command away:
+`git rev-list --count --grep='Co-Authored-By: Claude' $(git merge-base HEAD upstream/master)..HEAD`. That is why nothing
+here goes upstream: OpenTTD's [contribution policy](https://github.com/OpenTTD/OpenTTD/blob/master/CONTRIBUTING.md)
+does not accept AI-generated contributions, and this fork respects it. What the agents may do is
+written down and checked, not hoped for:
+
+- **The command system is the only door.** An agent changes the world exactly as a player does,
+  so every client stays bit-identical in lockstep.
+- **Never claim what did not run.** A report says `PASS`, `FAIL`, `PARTIAL`, `NOT RUN` or
+  `NOT APPLICABLE`, and the gates ([`tools/gate.sh`](tools/gate.sh)) record which ran.
+- **Derive, never restate.** The scoreboard, the numbers, the [site](https://korczis.github.io/OpenTTD/)
+  and the [wiki](https://github.com/korczis/OpenTTD/wiki) are generated from the repository, and a
+  stale table, a dead link or a flag a tool would refuse fails the commit.
+- **Savegames load forever, research code is gated.** No saved field is removed or renumbered, and
+  everything research-only is behind a default-OFF build option and labelled `RESEARCH-ONLY`.
+
+The full rules are in [`AGENTS.md`](AGENTS.md); the decisions behind them are the
+[ADRs](.ai/repo/adrs/README.md).
 
 ## What's inside
 
@@ -257,41 +359,36 @@ manifests linked per row, not here.
 | **Supervision** | [Majordomus](https://majordomus.dev) (task lifecycle, rules, decisions, peer board, MCP projection of `.ai/`) | [`.ai/`](.ai/README.md) |
 | **Content** | [OpenGFX](https://github.com/OpenTTD/OpenGFX) &middot; [Kenney](https://kenney.nl/) CC0 models (NoirGFX) | [`tools/research/noirgfx/`](tools/research/noirgfx/README.md) |
 
-## The rules it plays by
-
-- **The command system is the only door.** An agent changes the world exactly like a player
-  does, so every client stays bit-identical in lockstep.
-- **Research code is gated, labelled and removable.** `RESEARCH-ONLY`, loopback-bound, compiled
-  out of every build that does not ask for it ([`AGENTS.md`](AGENTS.md)).
-- **Never claim what did not run.** `NOT RUN` is a valid answer; a rounded-up `PASS` is a defect.
-- **Derive, never restate.** Tables, charts, the site and the wiki are generated from the
-  repository; the scoreboard above is too.
-- **Savegames load forever.** No saved field is removed, reordered or renumbered.
-
 ## Quick start
 
 ```bash
-# Plain build and the change-tier gate (configure, build, full ctest suite)
-tools/gate.sh change
+# NoirGFX: fetch the pinned tools and OpenGFX, build the set (about 10 minutes), install it
+tools/research/noirgfx/noirgfx bootstrap
+tools/research/noirgfx/noirgfx build
+tools/research/noirgfx/noirgfx install           # -> ~/Documents/OpenTTD/baseset, then pick NoirGFX
 
-# Research build with the MCP server ON, then the whole loop in one command:
-# headless server + MCP + PrismaticAI + control window (127.0.0.1:8800) + spectator GUI client
+# The research build (MCP server ON) and its gate: configure, build, every test
 tools/gate.sh research
+
+# The whole loop in one command: dedicated server + MCP + PrismaticAI + control panel
+# (http://127.0.0.1:8800) + a spectator GUI client that follows the bot
 tools/research/mcp-e2e
 
-# Regenerate the scoreboard after a new duel lands in research/results/
-tools/research/readme-scoreboard
+# A duel: the planned bot against the same bot unplanned, written to research/results/
+tools/research/mcp-duel --months 36
+tools/research/readme-scoreboard                 # the scoreboard above, from the new result
 
-# The published surfaces: check them, regenerate the Markdown tables, build the site locally
+# The documents: check them, regenerate their tables and numbers, build the site locally
 tools/surfaces/surfaces check
 tools/surfaces/surfaces sync
-tools/surfaces/surfaces site      # -> target/web/site
+tools/surfaces/surfaces site                     # -> target/web/site
 ```
 
-Prerequisites: a C++20 toolchain (on macOS with an older CLT, Homebrew LLVM — see
-[`CLAUDE.md`](./CLAUDE.md)), CMake 3.16+, and a base graphics set
-([`research/baseset-prerequisite-macos.md`](./research/baseset-prerequisite-macos.md)).
-Everything research-only binds to loopback and is labelled `RESEARCH-ONLY`.
+Every tool answers `--help` with its whole usage and refuses a flag it does not know (exit 2), and
+`tools/surfaces/surfaces check` fails when a document shows a flag a tool would refuse.
+Prerequisites: a C++20 toolchain, CMake 3.16+, and a base graphics set
+([`research/baseset-prerequisite-macos.md`](./research/baseset-prerequisite-macos.md)). Everything
+research-only binds to loopback and is labelled `RESEARCH-ONLY`.
 
 ## Table of contents
 

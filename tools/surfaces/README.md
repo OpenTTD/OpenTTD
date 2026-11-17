@@ -100,6 +100,13 @@ A region is a pair of HTML comments whose contents the generator owns:
 | `ai-rules` | `origin=project\|vendored\|all` | Rules: id, class, statement |
 | `ai-plan` | — | Milestones with issues done and still open (status derived from the issue stamps) |
 | `surfaces` | — | Where the site and the wiki are published |
+| `facts` | `group=<name>`, `as=table\|line\|pie` | Numbers counted from the tracked files: each `[[facts.items]]` in `surfaces.toml` counts regex `matches` `in` a glob, tracked `files` matching a glob, or published `docs` under a path; the table shows what was counted, `line` is one sentence of bold numbers, `pie` a Mermaid pie |
+
+A fact is the one kind of number a committed document can state without going stale: it changes
+only when the files it counts change, and `surfaces sync` rewrites it in the same commit. A count
+of commits or of today's date is not a fact in this sense, since every commit would change it; the
+site's overview computes those at build time instead. The overview also shows every fact as a card
+linked to its page, with what was counted as its tooltip.
 
 Edit the text around a region, never inside it. `surfaces sync` rewrites the inside, and
 `surfaces check` fails while it would.

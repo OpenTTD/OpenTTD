@@ -54,6 +54,7 @@ DEFAULTS = {
     "site": {"out": f"{GENERATED_ROOT}/site", "mount": "/site"},
     "wiki": {"out": f"{GENERATED_ROOT}/wiki", "mount": "/wiki"},
     "regions": {"report": f"{GENERATED_ROOT}/markdown"},
+    "facts": {"items": []},
 }
 
 REGION_RE = re.compile(
@@ -756,6 +757,43 @@ class Regions:
             ])
         return table(["Milestone", "Issues done", "Open issues"], rows)
 
+    # A fact is a number counted from the tracked files on every sync, never typed. surfaces.toml
+    # declares what to count (the one choice data cannot make); the region shows how it was counted.
+    def fact_value(self, item: dict) -> tuple[int, str]:
+        tracked = sorted(self.repo.tracked)
+        if "matches" in item:
+            pattern, glob = item["matches"], item.get("in", "**")
+            rx = re.compile(pattern, re.M)
+            n = sum(len(rx.findall((self.repo.root / f).read_text(errors="replace")))
+                    for f in tracked if matches(f, [glob]) and (self.repo.root / f).is_file())
+            return n, f"`{pattern}` in `{glob}`"
+        if "files" in item:
+            glob = item["files"]
+            return sum(1 for f in tracked if matches(f, [glob])), f"tracked files `{glob}`"
+        if "docs" in item:
+            prefix = item["docs"].strip("/")
+            n = sum(1 for d in self.docs.values() if not prefix or d.path.startswith(prefix + "/"))
+            return n, f"published documents under `{prefix or '/'}`"
+        raise ValueError(f"fact {item.get('id', '?')}: needs matches, files or docs")
+
+    def gen_facts(self, args: dict, doc: Doc) -> str:
+        items = [i for i in load_config(self.repo.root)["facts"]["items"]
+                 if not args.get("group") or i.get("group") == args["group"]]
+        rows = []
+        for item in items:
+            n, how = self.fact_value(item)
+            label = item["label"]
+            if item.get("link"):
+                label = f"[{label}]({rel_md(doc, item['link'])})"
+            rows.append((n, label, how, item))
+        if args.get("as") == "pie":
+            lines = ["```mermaid", f"pie showData title {args.get('title', 'Counted from the sources')}"]
+            lines += [f'    "{plain(i.get("short", i["label"]))}" : {n}' for n, _, _, i in rows]
+            return "\n".join(lines + ["```"])
+        if args.get("as") == "line":
+            return " · ".join(f"**{n:,}** {label}" for n, label, _, _ in rows)
+        return table(["Count", "What", "Counted from"], [[f"**{n:,}**", label, how] for n, label, how, _ in rows])
+
     def gen_surfaces(self, args: dict, doc: Doc) -> str:
         r = self.repo
         rows = [
@@ -1105,6 +1143,28 @@ class Site:
             for v, k in cards
         ) + "</div>"
 
+    def facts(self, here: str) -> str:
+        """The surfaces.toml facts as linked cards, each with how it was counted as its tooltip."""
+        items = self.cfg["facts"]["items"]
+        if not items:
+            return ""
+        regions, cards = Regions(self.repo, self.docs, self.layer), []
+        for item in items:
+            n, how = regions.fact_value(item)
+            target = item.get("link", "")
+            href = (self.link(here, self.docs[target].page) if target in self.docs
+                    else self.repo.blob(target) if target else "")
+            tag = f'a href="{esc(href)}"' if href else "div"
+            cards.append(
+                f'<{tag} class="{CARD} block hover:ring-2 hover:ring-primary-500" title="Counted from {esc(how.replace(chr(96), ''))}">'
+                f'<span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">{n:,}</span>'
+                f'<p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{esc(plain(item.get("short") or item["label"]))}</p>'
+                f'</{tag.split()[0]}>')
+        return ('<h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Counted from the sources</h2>'
+                '<p class="mb-3 text-sm text-gray-500 dark:text-gray-400">Every number is counted from the tracked '
+                'files when the site is built; hover a card for what was counted, click it for the page.</p>'
+                '<div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">' + "".join(cards) + "</div>")
+
     def chart_card(self, cid: str, title: str, subtitle: str, controls: str = "", span: str = "") -> str:
         return (
             f'<section id="card-{cid}" class="chart-card {CARD} {span} relative">'
@@ -1154,7 +1214,7 @@ class Site:
             + "</div>"
         )
         body = self.article(md, readme) if readme else ""
-        return self.shell("index.html", self.title, hero + self.kpis() + charts + body,
+        return self.shell("index.html", self.title, hero + self.kpis() + self.facts("index.html") + charts + body,
                           actions=self.doc_actions(readme) if readme else "", charts=True)
 
     def docs_page(self) -> str:
