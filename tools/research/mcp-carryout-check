@@ -25,6 +25,12 @@
 #      decoration, and this assertion is what proves it did not.
 #   4. The operator is told how to proceed: the approve commands are printed with the ids.
 #
+# Two limits of assertion 3, both found in openttd-e5's review of 27bd9944b3, worth knowing before
+# trusting it. It compares the SET of declared settings as well as their values, because a setting
+# that vanished between the two reads would otherwise read as unchanged. And a proposal whose value
+# already equals the live value makes it trivially true: there, assertion 2 -- every call gated --
+# is what proves the gate, not this one.
+#
 # It deliberately does NOT approve or deny anything. Each run leaves N pending approvals (N = the
 # settings the sentence proposes); they carry expires_at_tick and lapse on their own.
 #
@@ -116,7 +122,7 @@ grep -q 'REFUSED' <<<"$out" && fail "the script refused a setting the bot does n
 # --- 2. every call is gated, and the ids are reported with their commands -----------------------
 mapfile -t pending < <(grep -oE 'pending approval #[0-9]+' <<<"$out" | grep -oE '[0-9]+')
 if [[ ${#names[@]} -gt 0 && ${#pending[@]} -ne ${#names[@]} ]]; then
-  fail "${#names[@]} setting(s) proposed but ${#pending[@]} pending approval(s): a call that silently succeeded means the gate is OFF, one that errored means the bridge is broken"
+  fail "${#names[@]} setting(s) proposed but ${#pending[@]} pending approval(s): a call that silently succeeded means the gate is OFF — the panel's full-auto approve switch, which is a setting and not necessarily a fault — while a call that errored means the bridge is broken. The script's own output above says which of the two it was"
 else
   note "gated      ${#pending[@]} pending approval(s): ${pending[*]:-none}"
 fi
@@ -134,11 +140,23 @@ def parse(t):
     return {l.split("\t")[0]: l.split("\t")[1] for l in t.splitlines()
             if "\t" in l and not l.startswith("#bot")}
 b, a = parse(sys.argv[1]), parse(sys.argv[2])
-print("\n".join(f"{k}: {b[k]} -> {a[k]}" for k in b if k in a and b[k] != a[k]))
+out = []
+# The SET of declared settings is part of this assertion, not only the values. Comparing just the
+# keys present in both let a setting that vanished between the reads -- a restarted bot, a dropped
+# declaration -- read as "unchanged" (openttd-e5's review of 27bd9944b3).
+for k in sorted(set(b) - set(a)):
+    out.append(f"{k} = {b[k]}: declared before, MISSING after -- a restarted bot or a dropped "
+               f"declaration would otherwise read as unchanged")
+for k in sorted(set(a) - set(b)):
+    out.append(f"{k} = {a[k]}: APPEARED after, undeclared before")
+for k in sorted(set(b) & set(a)):
+    if b[k] != a[k]:
+        out.append(f"{k}: {b[k]} -> {a[k]}")
+print("\n".join(out))
 PY
 )"
   if [[ -n "$moved" ]]; then
-    fail "a live setting changed while nothing was approved — the gate did not hold:"
+    fail "a live setting changed, or the set of declared settings changed, while nothing was approved:"
     printf '     %s\n' "$moved"
   else
     note "unchanged  all $declared_n live setting value(s) are as before: the script approved nothing"

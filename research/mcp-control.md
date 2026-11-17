@@ -806,6 +806,17 @@ two settings whose values differed took fresh ids, so the number of ids waiting 
 of runs times settings. On 2026-11-17, against master 4af99ac7 with 62 settings declared on
 company 0, both controls behaved as described and the positive run passed every check.
 
+openttd-e5's review of the first version found the one gap worth knowing about. The unchanged-value
+assertion compared only the keys present in both reads, so a setting **declared before and missing
+after** -- a restarted bot, a dropped declaration -- read as "unchanged". It now compares the set of
+declared settings as well as the values, and names what vanished, what appeared and what moved; the
+comparison itself is proven in all three directions against crafted snapshots, while the end-to-end
+path for a vanished setting is not exercised (manufacturing it means restarting a bot under a
+running experiment). Two further notes from the same review: a proposal whose value already equals
+the live value makes that assertion trivially true, so the gated-call assertion is what proves the
+gate in that case; and when the panel's full-auto approve switch is on, the gated-call assertion
+fails truthfully but the message has to name the switch, or an owner setting reads as a bridge fault.
+
 `mcp-intent-check` proves the four sentences themselves, driven through `POST /api/console` the
 way the owner types them: that each one is *answered in the console* and not merely over HTTP, that
 the reading names the action, the ordering and the subjects it resolved, and two things nothing
