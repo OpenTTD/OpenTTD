@@ -324,6 +324,9 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
     spare.sort_by(|a, b| score(b).total_cmp(&score(a)));
     let mut settings = Settings::default();
     let (mut freight_lines, mut producers) = (0usize, HashSet::new());
+    // The freight lines chosen (portfolio first, then spares), set in order of score after the loop.
+    let mut lines: Vec<(f64, i64, i64, i64, Value)> = Vec::new();
+    let mut pair_score: Option<f64> = None;
     for c in chosen.iter().chain(spare.iter()) {
         let mode = c["mode"].as_str().unwrap_or("");
         let in_chosen = chosen.contains(c);
@@ -355,18 +358,13 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
             if !producers.insert(producer) {
                 continue;
             }
-            let prefix = if freight_lines == 0 { "fr_".to_string() } else { format!("fr{}_", freight_lines + 1) };
             freight_lines += 1;
-            settings.set(&format!("{prefix}from"), json!(producer));
-            settings.set(&format!("{prefix}to"), json!(acceptor));
-            settings.set(&format!("{prefix}cargo"), json!(cargo));
-            event(format!("planner: {} by rail {} -> {}, {} tiles, profit {}/month, score {}{}", py_str(c.get("cargo")),
-                          py_str(c["producer"].get("name")), py_str(c["acceptor"].get("name")), py_str(c.get("distance")),
-                          py_str(opt.get("monthly_profit")), py_str(c.get("score")),
-                          if prefix == "fr_" { String::new() } else { format!(" (line {freight_lines}, built when the money allows)") }));
+            lines.push((score(c), producer, acceptor, cargo, json!({"cargo": c.get("cargo"), "from": c["producer"].get("name"),
+                "to": c["acceptor"].get("name"), "distance": c.get("distance"), "profit": opt.get("monthly_profit"), "score": c.get("score")})));
         } else if !freight && mode == "rail" && !settings.has("rail_a") {
             settings.set("rail_a", c["a"]["id"].clone());
             settings.set("rail_b", c["b"]["id"].clone());
+            pair_score = Some(score(c));
             event(format!("planner: passengers by rail {} - {}, score {}", py_str(c["a"].get("name")), py_str(c["b"].get("name")), py_str(c.get("score"))));
         } else if !freight && mode == "air" && !settings.has("air_a") {
             let count = opt.pointer("/vehicles/count").filter(|v| crate::panel::py_int(v).map_or(false, |n| n != 0))
@@ -376,6 +374,26 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
             settings.set("air_planes", json!(count.clamp(1, 8)));
             event(format!("planner: air {} - {}, {count} plane(s), score {}", py_str(c["a"].get("name")), py_str(c["b"].get("name")), py_str(c.get("score"))));
         }
+    }
+    // The bot builds its lines in the order it is given, borrowing for each: the best score first.
+    // On seed 31337 a passenger pair scored 113003 was built second, before freight lines scored up
+    // to 240547, and the company was a third behind at month 24 (research/results
+    // duel-20261117T032759). Freight lines go in order of score, and rail_after tells the bot how many
+    // of them score above the passenger pair, to build before it.
+    lines.sort_by(|a, b| b.0.total_cmp(&a.0));
+    for (i, (_, producer, acceptor, cargo, e)) in lines.iter().enumerate() {
+        let prefix = if i == 0 { "fr_".to_string() } else { format!("fr{}_", i + 1) };
+        settings.set(&format!("{prefix}from"), json!(producer));
+        settings.set(&format!("{prefix}to"), json!(acceptor));
+        settings.set(&format!("{prefix}cargo"), json!(cargo));
+        event(format!("planner: {} by rail {} -> {}, {} tiles, profit {}/month, score {}{}", py_str(e.get("cargo")),
+                      py_str(e.get("from")), py_str(e.get("to")), py_str(e.get("distance")), py_str(e.get("profit")), py_str(e.get("score")),
+                      if i == 0 { String::new() } else { format!(" (line {}, built when the money allows)", i + 1) }));
+    }
+    if let Some(ps) = pair_score {
+        let after = lines.iter().filter(|f| f.0 > ps).count();
+        settings.set("rail_after", json!(after));
+        event(format!("planner: the passenger rail pair (score {ps}) is built after {after} freight line(s) that score more"));
     }
     settings
 }
@@ -470,8 +488,18 @@ mod tests {
         let mut events = Vec::new();
         let s = settings_from_plan(&out, &mut |e| events.push(e));
         let flat: Vec<String> = s.iter().map(|(k, v)| format!("{k}={}", py_str(Some(v)))).collect();
-        assert_eq!(flat, ["fr_from=7", "fr_to=99", "fr_cargo=1", "air_a=4", "air_b=5", "air_planes=8", "fr2_from=8", "fr2_to=99", "fr2_cargo=1",
-                          "rail_a=10", "rail_b=11"]);
+        // Freight lines are set after the loop, in order of score; the passenger pair (score 2) waits
+        // for both freight lines (8 and 5), so rail_after is 2.
+        assert_eq!(flat, ["air_a=4", "air_b=5", "air_planes=8", "rail_a=10", "rail_b=11", "fr_from=7", "fr_to=99", "fr_cargo=1",
+                          "fr2_from=8", "fr2_to=99", "fr2_cargo=1", "rail_after=2"]);
+        assert!(events.iter().any(|e| e == "planner: the passenger rail pair (score 2) is built after 2 freight line(s) that score more"));
+        // A spare that scores above a portfolio line is built first.
+        let order = json!({"portfolio": {"chosen": [fr(7, 3.0), rail(10, 4.0, "found")]}, "freight": [fr(7, 3.0), fr(8, 6.0)]});
+        let s2 = settings_from_plan(&order, &mut |_| {});
+        let get = |k: &str| s2.iter().find(|(n, _)| n.as_str() == k).map(|(_, v)| py_str(Some(v)));
+        assert_eq!(get("fr_from").as_deref(), Some("8"));
+        assert_eq!(get("fr2_from").as_deref(), Some("7"));
+        assert_eq!(get("rail_after").as_deref(), Some("1"), "only the line scoring 6 is above the pair's 4");
         assert_eq!(events[0], "planner portfolio by knapsack-dp: 3 investment(s), total score 20, 250k of 300k");
         assert_eq!(events[1], "planner: 2 rail line(s) priced on the map by track-planning, 1 with a route: 30 pieces 12346; 1 without a route dropped their rail option");
         assert!(events[2].starts_with("planner: the rail line T1 - B has no route on the map (no_route)"));

@@ -522,8 +522,13 @@ line is not handed over blind, and `~` says why a chosen line was passed over. W
 duel's planned company built no train in 36 months. A station site is taken only when its exit
 leads on, the same rule in `sites.rs` and in the bot: ahead or to either side is land or a road.
 
-The bot gets up to eight freight lines, `fr_*` and then `fr2_*` to `fr8_*`, in the planner's order
-and one per producer (it had four; after them a 21-year duel left its money idle). The bot start
+The bot gets up to eight freight lines, `fr_*` and then `fr2_*` to `fr8_*`, one per producer (it had
+four; after them a 21-year duel left its money idle). They come **in order of score**, and
+`rail_after` says how many of them score more than the passenger rail pair and are built before it.
+The bot borrows for each line, so the best goes first. On seed 31337 a pair scoring 113003 had been
+built second, ahead of freight lines scoring up to 240547, and the company was a third behind at
+month 24 (duel-20261117T032759). A bot without the setting keeps the old order (pair after the
+first freight line). The bot start
 asks the planner for 30 candidates and prices eight lines of each list, at most two per producer, so
 the priced lines cover as many producers as possible. On seed 20208 that gave five freight lines,
 two of them for other cargos than coal. The game ignores a setting an AI does not declare, so a
