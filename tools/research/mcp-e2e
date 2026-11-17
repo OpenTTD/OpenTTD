@@ -108,13 +108,13 @@ done
 # AlgoGlyph's flow runner, when a checkout of it is here: the planner's portfolio then runs on its
 # knapsack-dp kernel (the answer names the solver). Override with MCP_ALGOGLYPH_DIR; unset: built-in.
 if [[ -z "${MCP_ALGOGLYPH_DIR:-}" ]]; then
-  # The newest stacked branch first: exact-prices carries transport-investment, action-plan,
-  # track-planning and flow-cli under it. A checkout is taken only when its flow CLI lists every
-  # kernel the stack uses: the primary checkout can be far behind origin/main (585 commits on
-  # 2026-11-16) and would otherwise be taken without today's kernels, silently.
+  # The trunk first: AlgoGlyph's main carries the whole planner stack since 1b8e009 (2026-11-17;
+  # its answers equal exact-prices' on every kernel the stack uses). The stacked branches stay as
+  # fallbacks while the primary checkout is behind origin/main: a checkout is taken only when its
+  # flow CLI lists every kernel the stack uses, so a stale one is passed over, never used silently.
   NEED_KERNELS="knapsack-dp track-planning transport-investment action-plan"
-  for d in "$HOME/dev/algoglyph-wt/feature/exact-prices" "$HOME/dev/algoglyph-wt/feature/transport-investment" "$HOME/dev/algoglyph-wt/feature/action-plan" "$HOME/dev/algoglyph-wt/feature/track-planning" \
-           "$HOME/dev/algoglyph-wt/feature/flow-cli" "$HOME/dev/algoglyph"; do
+  for d in "$HOME/dev/algoglyph" "$HOME/dev/algoglyph-wt/feature/exact-prices" "$HOME/dev/algoglyph-wt/feature/transport-investment" \
+           "$HOME/dev/algoglyph-wt/feature/action-plan" "$HOME/dev/algoglyph-wt/feature/track-planning" "$HOME/dev/algoglyph-wt/feature/flow-cli"; do
     [[ -f "$d/package.json" ]] && grep -q '"flow"' "$d/package.json" && [[ -d "$d/node_modules" ]] || continue
     kernels="$(cd "$d" && npm run --silent flow -- kernels 2>/dev/null || true)"
     missing=""
