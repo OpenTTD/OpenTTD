@@ -131,6 +131,8 @@ pub fn h_duel_start(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let calibrated = i.body.get("calibrated").and_then(Value::as_bool).unwrap_or(false);
     let child = Command::new("bash").arg(repo().join("tools/research/mcp-duel")).args(&args).current_dir(repo())
         .env("PRISMATIC_PLAN_CALIBRATION", if calibrated { "research/calibration.json" } else { "off" })
+        // Both companies founded before the first tick runs: a duel starts the same way every time.
+        .env("PRISMATIC_START_PAUSED", "2")
         .stdin(Stdio::null()).stdout(out).stderr(err).spawn().map_err(|e| format!("mcp-duel: {e}"))?;
     let pid = child.id();
     g.event("duel", &format!("duel started from the panel: mcp-duel {}{}", args.join(" "), if calibrated { " (calibrated plan)" } else { "" }));

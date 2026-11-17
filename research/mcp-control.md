@@ -173,6 +173,14 @@ runs in the pre-commit hook (`.ai/repo/policy.yaml` enforcement `scoreboard-on-c
 - `GET /api/scoreboard` (`readme-scoreboard --json`)
 - `POST /api/scoreboard` (rewrites the region, answers the new scoreboard)
 
+**A start every run repeats.** Planning takes minutes of wall clock, so with the game running the
+planned bot and its rival started at ticks that depended on the machine's load: two runs of one bot
+ended 10% apart, the same rival 52% (knowledge `duels-run-side-by-side-are-noisy`). With
+`PRISMATIC_START_PAUSED=N` the panel pauses the game before planning, starts its bot, and unpauses once N
+AI companies exist; the server console founds a company while paused, and its script runs from the
+unpause. The duel form sets 2; run `mcp-duel` by hand with `PRISMATIC_START_PAUSED=2`. The plan log of
+the result records the tick it started at. Two identical runs then differed by 0.2%.
+
 **Bot settings per run.** The duel form, `POST /api/duel` (`bot_settings`) and `mcp-duel --bot-settings`
 take extra settings for the planned bot, e.g. `own_lines=8`: name=value pairs separated by commas, with
 whole values. They go on top of what the panel derives from the plan, so a bot feature gets its A/B

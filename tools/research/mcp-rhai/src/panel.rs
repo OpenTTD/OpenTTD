@@ -834,6 +834,31 @@ impl Game {
                 self.event("server", &format!("script budget: {}", line.trim()));
             }
         }
+        // A start every run repeats (PRISMATIC_START_PAUSED=N, set by a duel): the game stays paused
+        // while the planner plans and the bots start, and runs once N AI companies exist. Planning
+        // takes minutes of wall clock, so without it the planned bot and its rival started at game
+        // ticks that depended on the machine's load, and two runs of one bot ended 10% apart, the same
+        // rival 52% (knowledge duels-run-side-by-side-are-noisy). The server console's start_ai founds
+        // a company while paused; its script runs from the unpause on.
+        let hold = std::env::var("PRISMATIC_START_PAUSED").ok().and_then(|v| v.trim().parse::<usize>().ok()).filter(|n| *n > 0);
+        if let Some(n) = hold {
+            let _ = self.console("pause");
+            // `planner:` lines of kind ai are what a duel result keeps (mcp-duel), so the result says how it started.
+            self.event("ai", &format!("planner: game paused for a repeatable start; it runs once {n} AI company(ies) exist"));
+            let g = Arc::clone(&self);
+            thread::spawn(move || {
+                let ai_companies = |g: &Game| g.resource("openttd://companies").ok()
+                    .and_then(|c| c.pointer("/data/companies").and_then(Value::as_array).map(|a| a.iter().filter(|x| truthy(x.get("is_ai"))).count()))
+                    .unwrap_or(0);
+                let started = Instant::now();
+                while ai_companies(&g) < n && started.elapsed() < Duration::from_secs(1800) {
+                    thread::sleep(Duration::from_millis(500));
+                }
+                let tick = g.resource("openttd://game/state").ok().and_then(|s| s.get("game_tick").cloned()).unwrap_or(Value::Null);
+                let _ = g.console("unpause");
+                g.event("ai", &format!("planner: game unpaused at tick {tick} with {} AI company(ies) after {} s", ai_companies(&g), started.elapsed().as_secs()));
+            });
+        }
         if !self.args.ai.is_empty() {
             // The bot starts with what the planner's portfolio chose (freight rail, passenger rail, air),
             // so its routes come from the one profitability model; without a plan it plays as before.
