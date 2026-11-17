@@ -28,6 +28,13 @@ while [[ $# -gt 0 ]]; do
     *) echo "mcp-decision-check: unknown option $1" >&2; exit 2 ;;
   esac
 done
+# A linked worktree usually has no build of its own: take the primary checkout's.
+if [[ ! -x "$BIN" ]]; then
+  PRIMARY="$(cd "$(git -C "$ROOT_DIR" rev-parse --git-common-dir)/.." && pwd)"
+  [[ -x "$PRIMARY/build-gate-research/openttd" ]] && BIN="$PRIMARY/build-gate-research/openttd"
+fi
+[[ -x "$BIN" ]] || { echo "mcp-decision-check: no game binary at $BIN (build one, or pass --bin)" >&2; exit 1; }
+echo "==> game binary $BIN"
 
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-decision-check.XXXXXX")"
 export PRISMATIC_MCP_REGISTRY="$TMP/registry"
