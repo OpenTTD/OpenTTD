@@ -147,3 +147,9 @@ test('the overview cards share one header row and say when no company exists yet
   listeners.wheel();
   assert.equal(observed, null, 'the reader scrolling releases it');
 });
+
+test('every overview series has a stable id, so a new game day updates it in place', () => {
+  for (const option of [companiesOption(samples), standingOption(samples), fleetOption(samples)]) {
+    for (const s of option.series) assert.ok(s.id !== undefined && s.id !== '', `${s.name}: replaceMerge needs an id or the series replays its entrance on every redraw`);
+  }
+});

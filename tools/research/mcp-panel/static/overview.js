@@ -94,8 +94,9 @@ export function standingOption(samples, { metric = 'net', focus = '' } = {}) {
     grid: { left: 8, right: 56, top: 8, bottom: 8, containLabel: true },
     xAxis: { type: 'value', splitNumber: 3, ...axis, axisLabel: { color: INK.muted, hideOverlap: true, formatter: (v) => compact.format(v) } },
     yAxis: { type: 'category', data: rows.map((r) => r.name), axisLabel: { color: INK.text, width: 120, overflow: 'truncate', ellipsis: '…' }, axisLine: { lineStyle: { color: INK.grid } } },
+    // A stable id: replaceMerge then updates the bars in place instead of replaying their entrance.
     series: [{
-      type: 'bar', name: METRICS[metric], barMaxWidth: 28, cursor: 'pointer',
+      id: 'standing', type: 'bar', name: METRICS[metric], barMaxWidth: 28, cursor: 'pointer',
       label: { show: true, position: 'right', color: INK.text, formatter: (p) => compact.format(p.value) },
       data: rows.map((r) => ({ value: r.v, id: r.id, itemStyle: { color: colour(ids, r.id), opacity: focus && focus !== r.id ? 0.3 : 1, borderRadius: [0, 4, 4, 0] } })),
     }],
@@ -111,7 +112,7 @@ export function fleetOption(samples, { range = 'all' } = {}) {
     yAxis: { type: 'value', minInterval: 1, ...axis },
     dataZoom: zoom(zoomFrom(samples, range)),
     series: [{
-      name: 'Vehicles', type: 'line', step: 'end', showSymbol: false, cursor: 'pointer', color: PALETTE.dark[2],
+      id: 'vehicles', name: 'Vehicles', type: 'line', step: 'end', showSymbol: false, cursor: 'pointer', color: PALETTE.dark[2],
       areaStyle: { opacity: 0.18 }, data: samples.map((s) => [when(s), s.vehicles]),
     }],
   };
