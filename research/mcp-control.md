@@ -628,6 +628,19 @@ lines cost 5-19% more than the straight-line estimate: a 172-tile coal line 15,3
 with 2 bridges, 11 inclines and a level crossing. One passenger pair had no rail route at all and
 fell back to air.
 
+
+### Transfer yards, proven on the map before any bot builds one
+
+`GET /api/plan?track=N&yards=N` (`mcp-plan --track N --yards N`, `src/yards.rs`) checks where two
+priced rail lines meet at one station site whether a second platform beside the first can still
+reach its line. The better line A is laid by AlgoGlyph `track-planning`; every tile it takes (its
+pieces, each bridge and tunnel span, both stations) goes into the track input's `blocked`; then line
+B is laid from a platform one tile beside A's, same axis and exit, on buildable flat land. The
+answer's `yards.pairs` names both lines, the shared end, `proven`, the side, and B's track money from
+the yard against B alone, or, refuted, why each side failed. The World page's **Prove yards** runs it
+(four pairs, about half a minute each) and a row moves the owner's camera to the shared end.
+Yards in the bot were reverted twice (knowledge `the-bots-rail-pathfinder-lays-plain-track-only`);
+this is the proof the knowledge asked for before another try.
 ### Plan before acting: a DAG, then the presses
 
 `POST /api/actionplan {actions, cash?, loan?, max_loan?, loan_step?, company?}` sends the actions

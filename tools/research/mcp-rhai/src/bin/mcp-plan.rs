@@ -20,6 +20,8 @@ mod sites;
 mod invest;
 #[path = "../linecost.rs"]
 mod linecost;
+#[path = "../yards.rs"]
+mod yards;
 #[path = "../hub_algoglyph.rs"]
 #[allow(dead_code)]
 mod hub_algoglyph;
@@ -77,6 +79,7 @@ fn main() {
     let mut invest_too = false;
     let mut invest_inputs = false;
     let mut track = 0usize;
+    let mut yards_n = 0usize;
     while let Some(a) = args.next() {
         match a.as_str() {
             "--panel" => panel = args.next().unwrap_or_default(),
@@ -84,6 +87,7 @@ fn main() {
             "--invest" => invest_too = true,
             "--invest-inputs" => invest_inputs = true,
             "--track" => track = args.next().and_then(|v| v.parse().ok()).unwrap_or(3),
+            "--yards" => yards_n = args.next().and_then(|v| v.parse().ok()).unwrap_or(2),
             "--limit" => limit = args.next().and_then(|v| v.parse().ok()).unwrap_or(20),
             "--defaults" => {
                 println!("{}", plan::defaults());
@@ -97,7 +101,7 @@ fn main() {
                 }
             },
             _ => {
-                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--track N] [--defaults]");
+                eprintln!("usage: mcp-plan [--panel URL | --token FILE] [--limit N] [--params JSON] [--invest | --invest-inputs] [--track N [--yards N]] [--defaults]");
                 std::process::exit(2);
             }
         }
@@ -147,6 +151,14 @@ fn main() {
             }
             out["line_costs"] = serde_json::json!({"solver": "algoglyph track-planning on map, map/ways, map/terrain, economy/prices, bridges",
                                                    "priced": log});
+            // --yards N: prove up to N transfer yards offline (src/yards.rs): the better line's route
+            // blocked, can the other still leave from a platform beside it?
+            if yards_n > 0 {
+                let mut lines: Vec<serde_json::Value> = out["freight"].as_array().cloned().unwrap_or_default();
+                lines.extend(out["by_mode"]["rail"].as_array().cloned().unwrap_or_default());
+                out["yards"] = serde_json::json!({"solver": "algoglyph track-planning, the better line's tiles blocked (src/yards.rs)",
+                                                  "pairs": yards::prove(&lines, &base, yards_n)});
+            }
         }
         let mut candidates: Vec<serde_json::Value> = Vec::new();
         for (_, ps) in out["by_mode"].as_object().cloned().unwrap_or_default() {

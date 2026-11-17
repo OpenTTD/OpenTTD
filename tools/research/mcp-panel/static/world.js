@@ -207,6 +207,40 @@ $('p-component').onchange = (e) => { state.component = e.target.value; saveState
 $('p-live').onchange = (e) => { state.live = e.target.checked; saveState(); };
 saveState();
 setTimeout(refresh, 30);
+/* ---- transfer yards, proven offline before a bot builds one (GET /api/plan?track&yards) -------- */
+const escHtml = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function yardRow(y) {
+  const money = (v) => (v == null ? '-' : Math.round(v).toLocaleString('en'));
+  const verdict = y.proven
+    ? '<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">proven</span>'
+    : '<span class="bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">refuted</span>';
+  const why = y.proven ? `side ${y.side > 0 ? '+1' : '-1'}, B ${y.extra > 0 ? '+' : ''}${money(y.extra)}` : (y.tried || []).map((t) => `side ${t.side}: ${t.result}`).join('; ') || (y.a_route ? '' : 'A has no route');
+  const e = y.shared && y.shared.end;
+  return `<tr data-x="${e ? e.x : ''}" data-y="${e ? e.y : ''}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer">
+    <td class="px-3 py-2">${verdict}</td><td class="px-3 py-2 font-medium text-gray-900 dark:text-white">${escHtml(y.a)}</td><td class="px-3 py-2">${escHtml(y.b)}</td>
+    <td class="px-3 py-2 whitespace-nowrap">${e ? `(${e.x}, ${e.y})` : '-'}</td><td class="px-3 py-2 text-right">${money(y.b_alone)}</td><td class="px-3 py-2 text-right">${money(y.b_with_yard)}</td><td class="px-3 py-2">${escHtml(why)}</td></tr>`;
+}
+$('yards-run').addEventListener('click', async () => {
+  const btn = $('yards-run');
+  btn.disabled = true; btn.textContent = 'Proving…';
+  $('yards-body').innerHTML = '<tr><td class="px-3 py-2" colspan="7">Laying the routes with AlgoGlyph track-planning…</td></tr>';
+  try {
+    const r = await fetch('/api/plan?limit=10&track=6&yards=4');
+    const d = await r.json();
+    const pairs = (d.yards && d.yards.pairs) || [];
+    $('yards-body').innerHTML = r.ok
+      ? (pairs.map(yardRow).join('') || '<tr><td class="px-3 py-2" colspan="7">No two priced lines meet at one station site.</td></tr>')
+      : `<tr><td class="px-3 py-2 text-red-600 dark:text-red-400" colspan="7">${escHtml(d.error || 'HTTP ' + r.status)}</td></tr>`;
+  } catch (e) {
+    $('yards-body').innerHTML = `<tr><td class="px-3 py-2 text-red-600" colspan="7">${escHtml(e.message)}</td></tr>`;
+  }
+  btn.disabled = false; btn.textContent = 'Prove yards';
+});
+$('yards-body').addEventListener('click', (e) => {
+  const tr = e.target.closest('tr[data-x]');
+  if (tr && tr.dataset.x !== '') goTo(+tr.dataset.x, +tr.dataset.y, 'shared end of a yard');
+});
+
 setInterval(() => { if (state.live) refresh(); }, 5000);
 window.addEventListener('resize', () => setTimeout(drawMap, 30));
 

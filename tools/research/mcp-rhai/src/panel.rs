@@ -1732,6 +1732,7 @@ fn h_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let limit = i.query.int("limit", 20)?;
     let params = i.query.str_or("params", "");
     let track = i.query.int("track", 0)?;
+    let yards = i.query.int("yards", 0)?;
     let mut cmd = Command::new(&exe);
     cmd.arg("--panel").arg(g.panel_url()).arg("--limit").arg(limit.clamp(1, 500).to_string());
     if !params.is_empty() { cmd.arg("--params").arg(params); }
@@ -1740,8 +1741,9 @@ fn h_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
             return Ok((503, json!({"error": "track=N needs AlgoGlyph track-planning: MCP_ALGOGLYPH_DIR is not set"})));
         }
         cmd.arg("--track").arg(track.min(10).to_string());
+        if yards > 0 { cmd.arg("--yards").arg(yards.min(6).to_string()); }
     }
-    let r = run(&mut cmd, None, Duration::from_secs(60 + 60 * track.clamp(0, 10) as u64), None)?;
+    let r = run(&mut cmd, None, Duration::from_secs(60 + 60 * track.clamp(0, 10) as u64 + 60 * yards.clamp(0, 6) as u64), None)?;
     if r.code != 0 {
         return Ok((if r.code == 2 { 400 } else { 502 }, json!({"error": r.stderr.trim()})));
     }
@@ -1959,7 +1961,7 @@ pub fn routes() -> Vec<Route> {
           None, h_bridge_companies),
         r("POST", "/api/decision/pull", "decisionPull", "Prismatic decides the bot: GET a decision directive {ai, company_id, settings} from url (default PRISMATIC_DECISION_URL), check it against research/prismatic-bridge/decision-contract.schema.json and apply it (settings on the running AI through openttd.ai.set_setting, approval-gated; else start_ai), answering a DecisionPullResult", true,
           s(json!({"url": st()}), &[]), h_decision_pull),
-        r("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params); &track=N prices the N best rail lines of each list on the real map with AlgoGlyph track-planning (line_costs) before the portfolio is chosen", true,
+        r("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params); &track=N prices the N best rail lines of each list on the real map with AlgoGlyph track-planning (line_costs) before the portfolio is chosen; with track, &yards=N proves up to N transfer yards offline (yards: can the other line still leave from a platform beside the better line's, its tiles blocked; src/yards.rs)", true,
           None, h_plan),
         r("GET", "/api/investment", "investment", "What to build, decided by AlgoGlyph's transport-investment kernel (routes of one or two legs through hubs, ranked by return on investment) over the planner's candidates from the live game, one run per cargo with that cargo's own vehicles, then one portfolio within the budget (default: the loan limit); ?params=JSON as /api/plan. The planner's own portfolio comes alongside for comparison", true,
           None, h_investment),
@@ -2050,7 +2052,7 @@ fn query_params(path: &str) -> &'static [&'static str] {
         "/api/events" => &["since", "kinds", "limit"],
         "/api/resource" => &["uri"],
         "/api/news" => &["limit"],
-        "/api/plan" => &["limit", "params", "track"],
+        "/api/plan" => &["limit", "params", "track", "yards"],
         "/api/investment" => &["params"],
         "/api/content" => &["q"],
         "/api/result" => &["name"],

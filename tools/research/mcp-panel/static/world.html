@@ -116,6 +116,24 @@
       <p id="portfolio-solver" class="mb-2 text-xs text-gray-500 dark:text-gray-400"></p>
       <ul id="portfolio-body" class="space-y-1 text-sm text-gray-700 dark:text-gray-300"></ul>
     </section>
+    <section id="yards" class="mt-4 p-3 bg-white border border-gray-200 rounded-lg scroll-mt-20 dark:bg-gray-800 dark:border-gray-700">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+        <div><h3 class="text-lg font-semibold text-gray-900 dark:text-white">Transfer yards, proven before they are built</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Where two planned rail lines meet: the better line's route is laid by AlgoGlyph track-planning and its tiles blocked, then the other line must still leave from a platform beside it (GET /api/plan?track=N&amp;yards=N, src/yards.rs). Click a row: your camera goes to the shared end.</p></div>
+        <div class="flex items-center gap-2">
+          <a href="/docs#/default/plan" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
+          <button id="yards-run" type="button" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap dark:bg-primary-600 dark:hover:bg-primary-700 disabled:opacity-50">Prove yards</button>
+        </div>
+      </div>
+      <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr><th class="px-3 py-2">Verdict</th><th class="px-3 py-2">Better line (A)</th><th class="px-3 py-2">Other line (B)</th><th class="px-3 py-2">Shared end</th><th class="px-3 py-2 text-right">B alone</th><th class="px-3 py-2 text-right">B from the yard</th><th class="px-3 py-2">Why</th></tr>
+          </thead>
+          <tbody id="yards-body"><tr><td class="px-3 py-2" colspan="7">Not run yet: about half a minute per pair.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
     <p id="w-msg" class="mt-3 text-sm text-gray-500 dark:text-gray-400"></p>
   </main>
 

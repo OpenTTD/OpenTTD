@@ -26,6 +26,7 @@ provenance:
     - file:research/results/duel-20261117T045857-seed31337.md
     - file:research/results/duel-20261117T053732-seed31337.md
     - file:research/results/duel-20261117T100202-seed31337.md
+    - file:tools/research/mcp-rhai/src/yards.rs
 ---
 
 # Constraint
@@ -86,6 +87,14 @@ Three later findings on seed 31337 (bridge repository, branch feat/live-behaviou
   four-tile corridor kept. With a fallback station, the line there lost its train twice. Results were
   −16% and −48% against no yards. Before another try, prove the corridor offline on
   `openttd://map` with the first line's path.
+  **That proof exists since 2026-11-17** (`tools/research/mcp-rhai/src/yards.rs`; `mcp-plan --track N --yards N`,
+  `GET /api/plan?track=N&yards=N`, the World page's "Prove yards"): the better line's route is laid
+  by AlgoGlyph track-planning, its tiles and both stations are blocked (`blocked` in the track input),
+  and the other line must still route from a platform one tile beside the first, same axis and exit,
+  on buildable flat land. First reading on the live 1957 game of seed 31337's panel: three pairs
+  shared a station site, one was proven (a coal mine's yard, side −1, the second line's track 45
+  cheaper than alone) and two were refuted because no flat buildable platform fits beside the first.
+  A retry of yards in the bot hands over only proven pairs, with the side the proof found.
 
 - **More lines when money waits** (panel MAX_FREIGHT_LINES 16; bridge 2c01584). With eight lines the
   loan was repaid by month 30 and 308074 sat idle at month 36. Thirteen lines handed over, eleven
