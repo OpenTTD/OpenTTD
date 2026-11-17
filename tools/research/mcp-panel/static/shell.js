@@ -24,6 +24,7 @@
     { key: 'ui', href: '/ui', label: 'Interface: every window', title: 'Interface' },
     { key: 'tools', href: '/tools', label: 'MCP catalogue', title: 'Catalogue' },
     { key: 'results', href: '/results', label: 'Duels', title: 'Duels' },
+    { key: 'data', href: '/data', label: 'Data: query the event store', title: 'Data' },
     { key: 'docs', href: '/docs', label: 'API (OpenAPI, Swagger UI)', title: 'API' },
   ];
 

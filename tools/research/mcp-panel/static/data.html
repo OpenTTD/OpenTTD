@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>__TITLE__ · OpenTTD MCP</title>
+  <meta name="description" content="__DESCRIPTION__">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-title="__TITLE__" data-description="__DESCRIPTION__" data-page="data">
+  <script src="/static/shell.js"></script>
+
+  <main class="pb-16">
+    <div id="page">
+      <div class="grid gap-4 lg:grid-cols-3">
+        <section id="query" data-nav="Query" class="mb-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 lg:col-span-2">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div>
+              <h2 class="mb-1 text-xl font-bold leading-none text-gray-900 dark:text-white">Query the event store</h2>
+              <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Read-only SQL over this instance's DuckDB store (SELECT, WITH, DESCRIBE, SUMMARIZE, SHOW); the query lives in the address, so a query is a link</p>
+            </div>
+            <a href="/docs" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
+          </div>
+          <form id="query-form">
+            <label for="sql" class="sr-only">SQL</label>
+            <textarea id="sql" rows="6" spellcheck="false" autocomplete="off" placeholder="SELECT kind, count(*) AS n FROM events GROUP BY kind ORDER BY n DESC" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 px-3 py-2 block w-full font-mono"></textarea>
+            <div class="flex flex-wrap items-center gap-3 mt-3">
+              <button id="run" type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Run</button>
+              <span class="text-xs text-gray-500 dark:text-gray-400"><kbd class="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Enter</kbd> runs</span>
+              <span id="run-msg" class="text-sm text-gray-500 dark:text-gray-400" aria-live="polite"></span>
+            </div>
+          </form>
+          <div id="query-error" role="alert" class="hidden p-4 mt-3 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-900 dark:text-red-400"></div>
+        </section>
+
+        <section id="examples" data-nav="Examples" class="mb-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
+          <h2 class="mb-1 text-xl font-bold leading-none text-gray-900 dark:text-white">Examples</h2>
+          <p class="mb-3 text-sm font-normal text-gray-500 dark:text-gray-400">Derived from the store's schema (GET /api/db/tables); a click runs one</p>
+          <ul id="example-list" class="space-y-1 text-sm"></ul>
+          <h3 class="mt-4 mb-2 text-sm font-semibold text-gray-900 dark:text-white">Tables</h3>
+          <ul id="table-list" class="space-y-2 text-sm text-gray-700 dark:text-gray-300"></ul>
+        </section>
+      </div>
+
+      <div id="data-chart-card" data-maximize="data-chart" data-chart="data-chart" class="mb-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-col">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div>
+            <h2 class="mb-1 text-xl font-bold leading-none text-gray-900 dark:text-white">Chart of the answer</h2>
+            <p class="text-sm font-normal text-gray-500 dark:text-gray-400">A time-like or numeric column across, numeric columns up, one line per group; Ctrl+wheel zooms, a point leads to its row</p>
+          </div>
+          <div data-toolbar class="flex flex-wrap items-center gap-2 min-w-0 max-w-full">
+            <label for="chart-x" class="sr-only">Across (x)</label>
+            <select id="chart-x" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 block w-auto max-w-full"></select>
+            <label for="chart-y" class="sr-only">Up (y)</label>
+            <select id="chart-y" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 block w-auto max-w-full"></select>
+            <label for="chart-by" class="sr-only">One line per</label>
+            <select id="chart-by" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 py-2 ps-3 pe-9 block w-auto max-w-full"></select>
+          </div>
+        </div>
+        <p id="data-chart-empty" class="hidden py-6 text-sm text-center text-gray-500 dark:text-gray-400"></p>
+        <div id="data-chart" role="img" aria-label="The query's answer as lines: the chosen column across, the chosen numeric columns up" class="w-full h-72 sm:h-80 lg:h-96 grow"></div>
+      </div>
+
+      <section id="results" data-nav="Results" class="mb-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h2 class="mb-1 text-xl font-bold leading-none text-gray-900 dark:text-white">Answer <span id="result-count" class="text-sm font-normal text-gray-500 dark:text-gray-400"></span></h2>
+        </div>
+        <div id="capped" role="status" class="hidden p-4 mb-3 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-900 dark:text-yellow-300"></div>
+        <div class="relative overflow-x-auto rounded-lg overflow-y-auto max-h-[36rem]">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead id="data-head" class="sticky top-0 z-10 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"></thead>
+            <tbody id="data-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="bus" data-nav="Bus" class="mb-4 p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div>
+            <h2 class="mb-1 text-xl font-bold leading-none text-gray-900 dark:text-white">The event bus (ZeroMQ)</h2>
+            <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Every panel event on a PUB socket: frame one is the topic (the event kind), frame two the JSON envelope; subscribe by topic prefix</p>
+          </div>
+          <a href="/docs" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
+        </div>
+        <dl class="grid gap-3 grid-cols-1 sm:grid-cols-3">
+          <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50"><dt class="text-xs text-gray-500 dark:text-gray-400">Endpoint</dt><dd id="bus-endpoint" class="mt-1 font-mono text-sm font-semibold text-gray-900 break-all dark:text-white">-</dd></div>
+          <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50"><dt class="text-xs text-gray-500 dark:text-gray-400">Envelope schema</dt><dd id="bus-schema" class="mt-1 font-mono text-sm font-semibold text-gray-900 dark:text-white">-</dd></div>
+          <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50"><dt class="text-xs text-gray-500 dark:text-gray-400">Published</dt><dd id="bus-published" class="mt-1 text-xl font-bold text-gray-900 dark:text-white">-</dd></div>
+        </dl>
+        <h3 class="mt-4 mb-2 text-sm font-semibold text-gray-900 dark:text-white">Topics seen</h3>
+        <div id="bus-topics" class="flex flex-wrap gap-2 text-sm text-gray-500 dark:text-gray-400"></div>
+        <h3 class="mt-4 mb-2 text-sm font-semibold text-gray-900 dark:text-white">Subscribe</h3>
+        <div id="bus-snippets" class="grid gap-3 xl:grid-cols-2"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/vendor/flowbite.min.js"></script>
+  <script src="/vendor/echarts.min.js"></script>
+  <script type="module" src="/static/data.js"></script>
+</body>
+</html>
