@@ -818,6 +818,27 @@ both refusals, and a directive in the shape `OpenttdController#decision` answers
 running bot reading the decided `aggressiveness` (50 before, 100 after, 2026-11-17). The directive
 comes from a loopback stand-in unless `PRISMATIC_DECISION_URL` names Prismatic itself.
 
+**Against Prismatic itself.** The owner was asked whether to start Prismatic for this check and
+answered "ano, vse dotahni" (yes, finish everything; session b841bd49-6765-43f8-a346-c1b75faa98d1,
+2026-11-17T19:20Z). Prismatic reads its bridge URL once, at start, so the panel gets a known port:
+
+```
+# prismatic-platform at 773b2bb22e, a detached worktree of its own
+START_PRISMATIC_API=true DISABLE_DEV_RELOADERS=1 PRISMATIC_MCP_DISABLED=true PORT=4100 \
+  OPENTTD_BRIDGE_URL=http://127.0.0.1:8735/api/bridge mix phx.server
+PRISMATIC_DECISION_URL=http://127.0.0.1:4004/api/openttd/decision \
+  tools/research/mcp-decision-check --panel-port 8735
+```
+
+`OpenttdController#decision` is served by `PrismaticApi.Endpoint` on port 4004, which starts only
+with `START_PRISMATIC_API=true`; `DISABLE_DEV_RELOADERS=1` skips the per-request migration check,
+which refuses every request while the shared `prismatic_dev` database is behind the code (the
+decision reads no database). Result, 2026-11-17: PASS on all five checks. Prismatic read company 0
+through `GET /api/bridge/companies`, chose `aggressiveness=100` by Monte Carlo, the panel applied it
+through approval, and the running bot read 100 (was 50). The answer named the six fields beyond the
+contract as not read (`candidates`, `chosen_aggressiveness`, `company_input`, `engine`,
+`expected_value`, `iterations_per_candidate`).
+
 ## A cluster of instances: discovery and calls across it
 
 Every panel registers itself, and the GUI client it attaches, in a shared registry

@@ -14,17 +14,21 @@
 # The directive comes from PRISMATIC_DECISION_URL when it is set (Prismatic itself, e.g.
 # http://127.0.0.1:4000/api/openttd/decision, started with OPENTTD_BRIDGE_URL=<panel>/api/bridge;
 # the check prints the panel URL and waits for it), else from a stand-in on a loopback port that
-# answers what OpenttdController#decision answers, with the value chosen here.
+# answers what OpenttdController#decision answers, with the value chosen here. Prismatic reads its
+# bridge URL once, at start, so give the panel a known port with --panel-port and start Prismatic
+# with OPENTTD_BRIDGE_URL=http://127.0.0.1:<that port>/api/bridge first.
 #
-# Usage: tools/research/mcp-decision-check [--bin PATH]   exit 0 PASS, 1 FAIL
+# Usage: tools/research/mcp-decision-check [--bin PATH] [--panel-port N]   exit 0 PASS, 1 FAIL
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
+PANEL_PORT=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --bin) BIN="$2"; shift 2 ;;
-    -h|--help) sed -n '2,19p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    --panel-port) PANEL_PORT="$2"; shift 2 ;;
+    -h|--help) sed -n '2,21p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) echo "mcp-decision-check: unknown option $1" >&2; exit 2 ;;
   esac
 done
@@ -52,7 +56,8 @@ FAILS=0
 pass() { echo "PASS $*"; }
 fail() { echo "FAIL $*"; FAILS=$((FAILS + 1)); }
 
-PANEL_PORT="$(free_port)"; URL="http://127.0.0.1:$PANEL_PORT"
+[[ -n "$PANEL_PORT" ]] || PANEL_PORT="$(free_port)"
+URL="http://127.0.0.1:$PANEL_PORT"
 "$ROOT_DIR/tools/research/mcp-e2e" --bin "$BIN" --no-gui --no-browser --panel-port "$PANEL_PORT" --seed 31337 \
   > "$TMP/e2e.log" 2>&1 &
 PIDS+=($!)
