@@ -27,7 +27,13 @@ validation:
 evidence_required:
   - validation_run
 created_at: 2026-11-15
-updated_at: 2026-11-17T03:59:47Z
+updated_at: 2026-11-17T05:04:32Z
+started_at: 2026-11-17T05:04:21Z
+started_event: sha256:987889b4e6228eff611c0a471e220f36733058d99e40a5b67836c5c894c1b652
+verified_at: 2026-11-17T05:04:22Z
+verified_event: sha256:0c6e7be6939bdc00c67a64c0f6ade952137603b68e5b433929ac429629d5e38e
+completed_at: 2026-11-17T05:04:32Z
+completed_event: sha256:eb2f33cf594b420ea91bcebf886c657dd7248404ebd0b5ef66919048d9fc9411
 evidence:
   - covers: "validation_run"
     type: test
@@ -51,3 +57,9 @@ evidence:
     artifact: "11aa8f41db"
     commit: 11aa8f41dbf584fa7a98d9b7f4506fae7cc10c2d
     recorded_at: 2026-11-17T03:59:47Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/gate.sh research; tools/research/mcp-e2e (seed 31337) + tools/research/mcp-rhai/target/release/mcp-api-coverage --repo . --panel <that panel>"
+    result: "pass: mcp-api-coverage exits 0 against a panel on a fresh build of master with 082f59343c: commands 146/146, console 87/87 reachable (resettile, reload_newgrfs, newgrf_profile gated by _DEBUG and the developer-tools hook, derived from src/console_cmds.cpp; owner's choice 2026-11-17), Script API 630/630. gate research PASS (126/126, 770 MCP assertions in 26 cases)."
+    commit: 082f59343ca5119c17a0ed9be4f13e66bb489ec7
+    recorded_at: 2026-11-17T05:04:31Z
