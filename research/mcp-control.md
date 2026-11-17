@@ -206,6 +206,20 @@ time." So an agent measures its own changes by starting a duel through `POST /ap
 visible on `/results`, never through a hidden background run. One duel runs at a time, and each result
 gets its reading.
 
+Asked again (AskUserQuestion, session cd8d20a8-9d79-4332-b63e-b2592beb2cbd, 2026-11-17T21:05Z), while
+the held-game re-measure of own lines ran one ten-year duel after the other:
+
+> The own-lines re-measure is running: ten-year duel A (own_lines=0) is about a quarter done, and B
+> (own_lines=8) starts after it, through the panel, one at a time, about 3.5 h in total. Earlier you
+> answered that I start duels through the panel, one at a time. Two duels from a held game have matched
+> to 0.2% even when run at the same time. Should I speed it up?
+
+Answer: **"Run B alongside A now"**. The option text: "Start B (own_lines=8) now with mcp-duel and the
+same held start, next to A. Both done in about 2 h, but two games share the machine and it does not show
+on /results while running." So the two halves of a paired comparison may run at the same time, both
+from a held game (`PRISMATIC_START_PAUSED=2` for `mcp-duel` run outside the panel). The panel still
+runs one duel at a time.
+
 `mcp-route-check` never posts `/api/duel`, because it starts something and needs no input.
 `mcp-overview-check` checks the pages in a browser: every run is charted, a bar leads to its run, and
 the run's chart follows the measure in the address.
