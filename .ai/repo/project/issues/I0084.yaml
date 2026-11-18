@@ -1,0 +1,28 @@
+id: I0084
+milestone: planning-is-generated-from-recorded-history
+title: "The hub's audit.* events and its panel-less game.* events reach a bus and a store"
+slug: hub-events-stored
+priority: p3
+profile: implementation
+parallel_safe: true
+objective: "The hub publishes every hub.event it raises itself (audit.duplicate_station, audit.duplicate_depot, audit.over_capacity, audit.resolved, and the game.new_world, game.month, game.paused and game.resumed it derives for an MCP-only instance) through the same prismatic-bus/v1 envelope on a ZeroMQ PUB socket of its own and into a DuckDB store of its own, with the instance it is about; GET /api/bus and /api/db/query of the hub are rows of its method table. Relayed panel events are not stored twice."
+why: "hub.rs fan_in_mcp (every 5 s) and audit_watch_once (every 60 s) send these to WebSocket subscribers only (knowledge the-panel-bus-carries-these-event-kinds); a decision cannot read that a station was duplicated or a link was over capacity, and a game without a panel has no history at all."
+scope:
+  - "tools/research/mcp-rhai/src/hub.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-hub.rs"
+  - "research/mcp-hub.md"
+  - ".ai/repo/rules/project/mcp-surfaces-are-derived.v1.md"
+depends_on:
+  - I0080
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#decisions-publish-structured-events"
+acceptance_criteria:
+  - "A ZeroMQ SUB client on the hub's endpoint receives an audit.* event the hub raised, in the prismatic-bus/v1 envelope with the instance named"
+  - "The hub's store has the event within a second; a relayed panel event is in the panel's store only"
+  - "cargo test --bin mcp-hub and tools/research/mcp-hub-check pass"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub"
+  - "tools/research/mcp-hub-check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-18'

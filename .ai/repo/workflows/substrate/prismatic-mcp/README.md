@@ -73,6 +73,13 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 - A GUI-local tool: `src/prismatic_mcp/prismatic_mcp_view.cpp:Tools` and `Call` (refuse without `MainWindow`).
 - A game-changing action: a new type in `src/prismatic_mcp/prismatic_mcp_detail.h:IsKnownActionType`, validated in `ValidateAction`, executed in `ExecuteAction` through `Command<...>::Post`, never a direct pool write.
 - Panel, OpenAPI and Rhai surfaces derive from the live catalogue (rule `project.mcp-surfaces-are-derived`): no hand-written list.
+- Outside this module, the panel turns what this server reports into events: `tools/research/mcp-rhai/src/panel.rs:derive_game_events`
+  diffs `openttd://game/state`, `openttd://companies` and `openttd://decisions` once a second into `game.*`, `company.*`,
+  `vehicles.count` and `decision.*` on its bus (kinds and payloads: knowledge `the-panel-bus-carries-these-event-kinds`).
+  ADR 0033 (I0080) forwards that bus to a loopback ZeroMQ PUB socket and a DuckDB store per instance, read through
+  `GET /api/bus`, `GET /api/db/tables` and read-only `/api/db/query`; ADR 0034 (proposed) has planning decisions read
+  that store and publish `plan.*` events. A field added to a resource here reaches the store only through such an event or
+  `game.sample`, so name it there when a decision needs its history.
 
 ## Traps and forbidden operations
 
@@ -99,6 +106,7 @@ over MCP (Streamable HTTP, JSON-RPC) on loopback. Decided in ADR 0008 (server, a
 - Neighbouring maps: [game-windows](../game-windows/README.md), [rail-road-and-infrastructure](../rail-road-and-infrastructure/README.md).
 - ADR 0004, ADR 0008, ADR 0013, ADR 0014 (all proposed); rules `project.research-code-is-gated-and-labelled`, `project.game-state-mutates-only-through-commands`, `project.mcp-surfaces-are-derived`, `project.public-api-is-exposed`.
 - Knowledge `auto-approve-is-the-owners-switch`, `fixed-loopback-ports-collide`, `gated-code-is-invisible-to-a-default-build`, `dedicated-server-stdin-startup-race`.
+- Bus and store: ADR 0033 (accepted), ADR 0034 (proposed), feature `event-bus-and-store`, workflow `a-decision-reads-the-store`, rule `project.a-tuning-claim-needs-held-start-pairs` (advisory).
 - Research trail: `research/prismatic-mcp/README.md`, `research/prismatic-mcp/02-threat-model.md`, `research/prismatic-mcp/16-decision-contract.md`, `research/mcp-control.md`, `research/mcp-human.md`.
 
 ## Typical tasks

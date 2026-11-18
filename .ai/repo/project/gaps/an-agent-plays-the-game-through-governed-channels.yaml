@@ -21,6 +21,12 @@ observations:
 - id: bot-knobs-live
   statement: "PrismaticAI started with aggressiveness=75,max_routes=3,cash_reserve=10000 opened routes in Kindston and Flonham (6 vehicles) and reads the knobs at every heartbeat; changing a knob of a running AI needs openttd.ai.set_setting, not yet in the game"
   source: file:research/mcp-control.md
+- id: decisions-are-prose
+  statement: "At e4eeae5dda every planning choice is published only as panel.ai / panel.plan {text}; decisions read one live snapshot or a hand constant (OWN_LINES = 8 in panel_bot.rs), calibration lives in research/calibration.json, and mcp-duel reads the plan from the 200 status events"
+  source: file:.ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md
+- id: own-lines-was-noise
+  statement: "The +10.4% for own lines came from runs before the held start; the held-start re-measure gave -1.0% over ten years on seed 31337, with the two runs 0.3% apart at month 12"
+  source: file:research/results/duel-20261117T234725-seed31337.md
 conditions:
 - criterion: the-bridge-steers-a-company
   state: satisfied
@@ -62,5 +68,15 @@ conditions:
   because: "start-time knobs work end to end; live change waits for openttd.ai.set_setting (C++ side)"
   observations:
   - bot-knobs-live
+- criterion: decisions-publish-structured-events
+  state: missing
+  because: "no plan.* event exists; the store of I0080 is being written and nothing reads it yet"
+  observations:
+  - decisions-are-prose
+- criterion: history-tuning-is-held-start-proven
+  state: missing
+  because: "no default is derived from history; the one measured history-driven change (calibration) averaged about zero over three held-start seeds and stays off"
+  observations:
+  - own-lines-was-noise
 risks:
 - "Upstream API drift may break the MCP module when it is rebased"

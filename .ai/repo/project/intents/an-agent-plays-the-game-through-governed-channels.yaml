@@ -11,6 +11,7 @@ non_goals:
 milestones:
 - prismatic-steers-a-company-through-the-bridge
 - an-agent-reaches-the-game-over-mcp
+- planning-is-generated-from-recorded-history
 satisfaction:
 - id: the-bridge-steers-a-company
   criterion: "A Company AI started over rcon by the bridge builds a route on a live server"
@@ -44,5 +45,13 @@ satisfaction:
   criterion: "An AI company plays for the owner within knobs the owner sets and changes while it runs (routes, vehicles per route, cash reserve), from the panel, the REST/OpenAPI surface and Rhai, and its log reaches the event feed"
   evidence: command
   ref: "tools/research/mcp-rhai/target/release/mcp-rhai -e 'import \"ttd\" as ttd; ttd::bot_log(5)'"
+- id: decisions-publish-structured-events
+  criterion: "Every planning decision publishes a plan.* event with its inputs (live reads and store queries, or the fallback it took), its choice and its version, and Prismatic, AlgoGlyph and mcp-duel read those events or the store instead of console prose (ADR 0034)"
+  evidence: command
+  ref: "tools/research/mcp-panel-check (extended by I0081): a planned bot start leaves plan.portfolio and plan.bot_settings on the bus and in the store's events"
+- id: history-tuning-is-held-start-proven
+  criterion: "A bot default derived from recorded history replaced a hand constant only after held-start duel pairs on three seeds favoured it beyond the rival's spread, and the pairs are recorded under research/results/"
+  evidence: command
+  ref: "PRISMATIC_START_PAUSED=2 tools/research/mcp-duel --seed <4242|31337|20208>, paired (I0087)"
 created_at: '2026-11-15'
 updated_at: '2026-11-15'

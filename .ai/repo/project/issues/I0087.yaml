@@ -1,0 +1,29 @@
+id: I0087
+milestone: planning-is-generated-from-recorded-history
+title: "settings_from_plan derives own_lines and rail_after from stored duel outcomes, accepted only by held-start pairs on three seeds"
+slug: bot-settings-from-duels
+priority: p2
+profile: implementation
+parallel_safe: false
+objective: "settings_from_plan reads the stored plan.duel outcomes of earlier runs (same map size and seed class when there are enough, else all) and derives own_lines and rail_after from them by a stated rule, falling back to the constants (OWN_LINES = 8, rail_after from the plan's scores) when the store is off or holds too few pairs; plan.bot_settings names the rule, the rows and the fallback. The rule replaces the constants only after paired duels with PRISMATIC_START_PAUSED=2 on three seeds favour it against the constants, each pair read against its rival's spread."
+why: "OWN_LINES = 8 rests on a +10.4% that was noise (before the held start two runs differed by up to 52%; with it 0.2-0.3%, and the held-start re-measure gave -1.0% over ten years, research/results/duel-20261117T234725-seed31337.md). ADR 0034 point 6."
+scope:
+  - "tools/research/mcp-rhai/src/panel_bot.rs"
+  - "research/results/**"
+  - "research/mcp-control.md"
+  - ".ai/repo/knowledge/curated/**"
+depends_on:
+  - I0081
+  - I0083
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#history-tuning-is-held-start-proven"
+acceptance_criteria:
+  - "A cargo test derives own_lines and rail_after from fixed duel rows, and falls back to the constants with no rows"
+  - "Held-start duel pairs on seeds 4242, 31337 and 20208 (derived against constant) are recorded under research/results/ with the rival's spread"
+  - "The derived rule is the default only if all three pairs favour it beyond the rival's spread; otherwise the constants stay and a knowledge note records the result"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel"
+  - "PRISMATIC_START_PAUSED=2 tools/research/mcp-duel --months 36 --seed 4242"
+evidence_required:
+  - validation_run
+created_at: '2026-11-18'

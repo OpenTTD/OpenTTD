@@ -1,0 +1,32 @@
+id: I0085
+milestone: planning-is-generated-from-recorded-history
+title: "Prismatic fits its decision from stored samples instead of hand constants, and the panel records what it fitted"
+slug: prismatic-reads-the-store
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "The panel's bridge half (GET /api/bridge/companies) names the bus endpoint and the store query of the company's samples, so Prismatic's OpenttdController can fit growth per aggressiveness from recorded history (samples and plan.bot_settings of earlier runs) instead of mean_growth = aggressiveness * 0.08. The directive's own working (admitted by the decision contract) states what it fitted; POST /api/decision/pull publishes it as plan.directive. The contract and its fixtures say how history is offered."
+why: "prismatic-platform's OpenttdController (read only, apps/prismatic_api) reads /companies once and runs Monte Carlo over a hand model; ADR 0034 point 4: Prismatic reads the bus or the store, never the console. Prismatic already has prismatic_storage_duckdb, prismatic_blackboard and prismatic_monte_carlo."
+scope:
+  - "tools/research/mcp-rhai/src/panel_decision.rs"
+  - "research/prismatic-bridge/decision-contract.schema.json"
+  - "research/prismatic-bridge/decision-contract.example.json"
+  - "research/prismatic-bridge/ARCHITECTURE.md"
+  - "tools/research/mcp-decision-check"
+non_scope:
+  - "OpenttdController's own change (subscribe to ZeroMQ or query the store, fit the model): an issue in prismatic-platform, named here once it exists"
+depends_on:
+  - I0080
+  - I0081
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#decisions-publish-structured-events"
+acceptance_criteria:
+  - "GET /api/bridge/companies carries the bus endpoint and a samples query; the example fixtures validate against the schema"
+  - "A directive whose own working names fitted samples is applied and published as plan.directive with those inputs"
+  - "tools/research/mcp-decision-check passes"
+validation:
+  - "python3 -m jsonschema -i research/prismatic-bridge/decision-contract.example.json research/prismatic-bridge/decision-contract.schema.json"
+  - "tools/research/mcp-decision-check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-18'

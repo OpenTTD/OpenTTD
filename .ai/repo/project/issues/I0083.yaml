@@ -1,0 +1,28 @@
+id: I0083
+milestone: planning-is-generated-from-recorded-history
+title: "mcp-duel reads the plan and the monthly series from the store, not from capped HTTP lists"
+slug: duel-reads-the-store
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "mcp-duel takes the planned bot's plan from plan.* events and the AI logs from ai.log rows of the store, and its monthly series from the samples table of the run, by query on the panel's /api/db/query. A duel record names the store file and the run, so it can be re-read after the panel stopped. Without a store it falls back to today's reads and records that it did."
+why: "mcp-duel reads the plan from the 200 prose events of /api/status (line 88 at e4eeae5dda) and the AI log from at most 5000 bus events (line 105); its own comment records that the capped buffer once misdated a 120-month duel's months. A duel outcome is the input I0087 needs, so it has to be a stored, queryable fact."
+scope:
+  - "tools/research/mcp-duel"
+  - "tools/research/readme-scoreboard"
+  - "research/mcp-control.md"
+  - ".ai/repo/knowledge/curated/duels-run-side-by-side-are-noisy.md"
+depends_on:
+  - I0080
+  - I0081
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#decisions-publish-structured-events"
+acceptance_criteria:
+  - "A duel's JSON record holds the store file, instance and run, and its plan and logs come from store queries"
+  - "A 120-month duel's AI log is complete (no 5000-event cap) and its months match the samples' dates"
+  - "The duel's verdict is published as plan.duel {seed, months, held_start_tick, a, b, rival_spread} and stored"
+validation:
+  - "tools/research/mcp-duel --months 6 --seed 31337"
+evidence_required:
+  - validation_run
+created_at: '2026-11-18'
