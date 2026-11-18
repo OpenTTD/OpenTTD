@@ -43,7 +43,31 @@ enum Source {
     Mcp { endpoint: String, token: String },
 }
 
+/// Every resource this run read, in order, once each, with whether the read succeeded: the answer's
+/// `reads`, which the panel's plan.* events name as their live inputs (I0081).
+static READS: std::sync::Mutex<Vec<(String, bool)>> = std::sync::Mutex::new(Vec::new());
+
+fn note_read(name: &str, ok: bool) {
+    let mut r = READS.lock().unwrap();
+    let uri = format!("openttd://{name}");
+    match r.iter_mut().find(|(u, _)| *u == uri) {
+        Some(e) => e.1 |= ok,
+        None => r.push((uri, ok)),
+    }
+}
+
+fn reads() -> serde_json::Value {
+    serde_json::Value::Array(READS.lock().unwrap().iter().map(|(u, ok)| serde_json::json!({"uri": u, "ok": ok})).collect())
+}
+
 impl Source {
+    /// The data of resource openttd://<name>, the read noted in `reads`.
+    fn resource(&self, name: &str) -> Result<serde_json::Value, String> {
+        let r = self.read(name);
+        note_read(name, r.is_ok());
+        r
+    }
+
     fn from_token_file(path: &str) -> Result<Source, String> {
         let text = std::fs::read_to_string(path).map_err(|e| format!("{path}: {e}"))?;
         let v: serde_json::Value = serde_json::from_str(&text).map_err(|e| format!("{path}: {e}"))?;
@@ -51,8 +75,7 @@ impl Source {
         Ok(Source::Mcp { endpoint: field("endpoint")?, token: field("agent_token")? })
     }
 
-    /// The data of resource openttd://<name>.
-    fn resource(&self, name: &str) -> Result<serde_json::Value, String> {
+    fn read(&self, name: &str) -> Result<serde_json::Value, String> {
         let v: serde_json::Value = match self {
             Source::Panel(panel) => ureq::get(&format!("{panel}/api/resources/{name}"))
                 .timeout(Duration::from_secs(30)).call().map_err(|e| format!("{name}: {e}"))?
@@ -206,6 +229,7 @@ fn main() {
         // Which runner answered the kernel calls, only when the one-serve switch is on (I0086), so
         // the default answer stays as it was.
         if cargo::flow_serve::wanted() { out["algoglyph"] = cargo::flow_serve::summary(); }
+        out["reads"] = reads();
         Ok(out)
     })();
     match out {

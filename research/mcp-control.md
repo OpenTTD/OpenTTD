@@ -255,19 +255,16 @@ a 404.
 
 ### Events: SSE and REST over one bus
 
-Every event has a sequence number, a time, a `kind` and `data`, and goes onto one bus:
-
-| Kind | Source |
-|---|---|
-| `game.observed`, `company.observed` | the first MCP read of a game |
-| `game.month`, `game.paused`, `game.resumed`, `game.new_world` | derived from the difference between two MCP reads of `openttd://game/state` |
-| `vehicles.count` | the vehicle count changed |
-| `company.founded`, `company.removed`, `company.renamed` | the difference between two reads of `openttd://companies` |
-| `decision.recorded`, `decision.updated` | the difference between two reads of `openttd://decisions` |
-| `ai.log` | AI script log lines (`company`, `level`, `text`), parsed from the server console |
-| `console.line` | every other server console line (token redacted) |
-| `panel.<kind>` | the panel's own events (operator approvals, console commands, Rhai runs) |
-| `game.sample` | the overview's sample of a new game day (the object `/api/overview/history` answers), once per game day |
+Every event has a sequence number, a time, a `kind` and `data`, and goes onto one bus. The kinds are
+one table in the code, `tools/research/mcp-rhai/src/panel_events.rs:KINDS` (I0081): game state
+derived by difference between two MCP reads (`game.*`, `company.*`, `vehicles.count`,
+`decision.*`), the server console (`ai.log`, `console.line`), the GUI client (`news.shown`,
+`ask.answered`), the daily `game.sample`, the panel's own sentences (`panel.<kind>`, `{text}`) and
+the planning decisions as data (`plan.*`). `GET /api/bus` answers the table as `kinds` (kind,
+producer, data, when), and the knowledge note
+[`the-panel-bus-carries-these-event-kinds`](../.ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md)
+holds it as a region written from it (`mcp-panel --write-event-kinds`). A cargo test fails when a
+publish call names a kind outside the table, so neither list can drift from the code.
 
 Surfaces: `GET /api/events?since=<seq>&kinds=game,company` (REST; a kind matches itself and its
 `kind.` children) and `GET /api/events/stream?since=<seq>&kinds=...` (Server-Sent Events, `id:` is
@@ -280,7 +277,7 @@ One tap on the bus (`src/panel_store.rs`, ADR 0033, issue I0080) hands every eve
 two sinks: a ZeroMQ PUB socket and a DuckDB file of this instance. Nothing that publishes an event
 changed, with one exception: the overview's daily sample lived in its own ring and never reached
 the bus, so the panel now also publishes it as `game.sample`, once per game day. `panel.*` events
-carry only `{text}` for now; structured `plan.*` and `decision.*` events are follow-up work.
+carry only `{text}`; each planning decision also publishes a structured `plan.*` event (below).
 
 **The endpoint.** The panel binds `tcp://127.0.0.1:<port>`, with the port taken from
 `PRISMATIC_BUS_PORT` or picked by the OS. Nobody hard-codes it: `GET /api/bus` names it, and so do
@@ -368,6 +365,39 @@ registry record:
 `tools/research/mcp-panel-check` proves the chain on a running panel: the endpoint, an envelope
 received by `mcp-bus-tail`, `SELECT count(*) FROM events` > 0, and the refusal of INSERT and of a
 second statement.
+
+### Planning decisions as data: plan.* events (I0081)
+
+Each planning decision publishes one `plan.*` event beside its `panel.*` sentence (ADR 0034 point
+3). The sentence stays for the page; the event is what Prismatic, AlgoGlyph, `mcp-duel` and agents
+read, on ZeroMQ (topic prefix `plan`) or in the store:
+
+The kinds are the `plan.*` rows of the declared table (`GET /api/bus` `kinds`, and the region of the
+knowledge note named above): the bot's portfolio and its settings (every planned bot start), the
+calibration reading, the investment, the action plan, the intent answer, Prismatic's directive, and
+`plan.kernel` from `mcp-kernel-feed`, the one kind another process puts on the bus.
+
+The data is `{decision, version, inputs, choice}` (`panel_events.rs:plan`). `version` is
+`{revision, params, digest}`: the git revision the binary was built from (`build.rs`, with `-dirty`
+when `tools/research/mcp-rhai` had uncommitted changes) and the parameters the decision used with
+their digest. `inputs` is `{live, stored}`: `live` names what was read live (mcp-plan and mcp-intent
+answer the `openttd://` resources they read as `reads`), and `stored` is the store query with its row
+count, or `{fallback}` with the reason no history was read. No panel decision reads the store yet,
+so each fallback names the issue that adds its query. `choice` is what was decided, as data.
+
+```bash
+P=http://127.0.0.1:8800
+curl -s -X POST -H 'Content-Type: application/json' -d '{"ai":"PrismaticAI"}' $P/api/bots/planned   # plan only
+curl -s --get --data-urlencode "sql=SELECT kind, count(*) FROM events WHERE kind LIKE 'plan.%' GROUP BY 1" $P/api/db/query
+tools/research/mcp-rhai/target/release/mcp-bus-tail --panel $P --topic plan
+```
+
+`POST /api/bots/planned {ai, start?, track?}` plans the bot as a bot start does and answers the
+settings with both events' choices; `start: true` also starts the AI. `POST /api/bus/publish {kind,
+data}` accepts only the kinds the table marks external (`plan.kernel`) and only with the four
+fields; any other kind is refused with 400. `mcp-panel-check` lists the kinds from `GET /api/bus`,
+plans a bot (`--start-bot AI` also starts it) and finds `plan.portfolio` and `plan.bot_settings` in
+`/api/events`, on ZeroMQ and in the store.
 
 ### The bus on the Majordomus blackboard
 
@@ -910,8 +940,9 @@ echo '{"kernel":"action-plan","input":{"actions":[{"id":"r","kind":"repay_loan",
 industry. So `transport-investment`'s demands, from trailing production, and `knapsack-dp`'s values,
 from what each mode really earned, have no history to read. They need the `plan.*` events of I0081
 and a recorded per-line or per-industry fact (a producer, ADR 0034 point 5). `plan.kernel` goes to
-the feeder's stdout and does not reach the panel's bus or store, because that needs a publishing
-route in `panel.rs` (I0081).
+the feeder's stdout; with `--publish` each event also goes to the panel's `POST /api/bus/publish`
+and from there onto its bus, ZeroMQ and the store (I0081), and the printed event carries the panel's
+answer as `published`.
 
 ### Steering the plan from the panel
 

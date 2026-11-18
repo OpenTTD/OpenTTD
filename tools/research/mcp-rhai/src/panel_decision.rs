@@ -23,6 +23,7 @@ use std::time::Duration;
 
 use crate::panel::Game;
 use crate::panel_bot;
+use crate::panel_events;
 
 /// A directive the contract allows: at least one of `ai` and `company_id`, and the settings it carries.
 #[derive(Debug, PartialEq)]
@@ -130,8 +131,12 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
     };
     let (d, ignored) = match directive(&raw) {
         Ok(x) => x,
-        Err(errors) => return Ok((422, json!({"error": "the directive breaks the decision contract", "errors": errors,
-                                               "called_url": url, "raw_response": raw}))),
+        Err(errors) => {
+            g.event("ai", &format!("Prismatic's directive ({url}) breaks the decision contract and is not applied: {}", errors.join("; ")));
+            g.plan("plan.directive", directive_event(url, &raw, Err(&errors), &[], &[]));
+            return Ok((422, json!({"error": "the directive breaks the decision contract", "errors": errors,
+                                   "called_url": url, "raw_response": raw})));
+        }
     };
     let mut lines = Vec::new();
     if let Some(company) = d.company_id {
@@ -148,7 +153,25 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
     }
     if !ignored.is_empty() { lines.push(format!("not read (the directive's own working): {}", ignored.join(", "))); }
     g.event("ai", &format!("Prismatic decided ({url}): {}", lines.join("; ")));
+    g.plan("plan.directive", directive_event(url, &raw, Ok(&d), &ignored, &lines));
     Ok((200, json!({"called_url": url, "raw_response": raw, "applied_rcon": {"lines": lines}})))
+}
+
+/// The data of plan.directive: Prismatic's directive as read, what the panel applied of it (or why
+/// it applied nothing), and the directive's own working the contract does not read.
+pub fn directive_event(url: &str, raw: &Value, d: Result<&Directive, &Vec<String>>, ignored: &[String], lines: &[String]) -> Value {
+    let choice = match d {
+        Ok(d) => json!({"applied": true, "ai": d.ai, "company_id": d.company_id,
+                        "settings": d.settings.iter().map(|(k, v)| (k.clone(), json!(v))).collect::<serde_json::Map<String, Value>>(),
+                        "how": if d.company_id.is_some() { if d.settings.is_empty() { "reload" } else { "set_setting" } } else { "start" },
+                        "lines": lines, "ignored": ignored}),
+        Err(errors) => json!({"applied": false, "errors": errors}),
+    };
+    let working: serde_json::Map<String, Value> = raw.as_object().into_iter().flatten()
+        .filter(|(k, _)| !["ai", "company_id", "settings"].contains(&k.as_str())).map(|(k, v)| (k.clone(), v.clone())).collect();
+    panel_events::plan("prismatic.directive", json!({"contract": "research/prismatic-bridge/decision-contract.schema.json"}),
+                       json!({"url": url, "directive": raw, "engine": raw.get("engine"), "working": working}),
+                       &panel_events::live_only("I0085"), choice)
 }
 
 #[cfg(test)]
@@ -168,6 +191,25 @@ mod tests {
         let (d, ignored) = directive(&prismatic).unwrap();
         assert_eq!((d.company_id, d.settings), (Some(1), vec![("aggressiveness".into(), 100)]));
         assert_eq!(ignored, vec!["candidates", "chosen_aggressiveness", "engine"]);
+    }
+
+    #[test]
+    fn the_directive_event_says_what_was_applied_or_why_nothing_was() {
+        let raw = json!({"ai": "PrismaticAI", "company_id": 1, "settings": "aggressiveness=100", "engine": "PrismaticMonteCarlo.simulate/3"});
+        let (d, ignored) = directive(&raw).unwrap();
+        let lines = vec!["company 1 aggressiveness=100: pending (approval 3)".to_string()];
+        let e = directive_event("http://x/decision", &raw, Ok(&d), &ignored, &lines);
+        assert_eq!(e["decision"], "prismatic.directive");
+        assert_eq!(e["choice"], json!({"applied": true, "ai": "PrismaticAI", "company_id": 1, "settings": {"aggressiveness": 100},
+                                       "how": "set_setting", "lines": lines, "ignored": ["engine"]}));
+        assert_eq!(e["inputs"]["live"]["working"], json!({"engine": "PrismaticMonteCarlo.simulate/3"}));
+        assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0085"));
+        assert!(e["version"]["digest"].as_str().unwrap().starts_with("fnv1a64:"));
+        let bad = json!({"company_id": 15});
+        let errors = directive(&bad).unwrap_err();
+        let e = directive_event("http://x/decision", &bad, Err(&errors), &[], &[]);
+        assert_eq!(e["choice"]["applied"], false);
+        assert_eq!(e["choice"]["errors"], json!(errors));
     }
 
     #[test]

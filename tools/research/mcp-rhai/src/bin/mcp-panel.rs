@@ -27,6 +27,8 @@ mod panel;
 mod panel_bot;
 #[path = "../panel_decision.rs"]
 mod panel_decision;
+#[path = "../panel_events.rs"]
+mod panel_events;
 #[path = "../panel_results.rs"]
 mod panel_results;
 #[path = "../panel_store.rs"]
@@ -42,6 +44,19 @@ fn main() {
     let argv: Vec<String> = std::env::args().skip(1).collect();
     if argv.iter().any(|a| a == "-h" || a == "--help") {
         println!("{}\n\nRESEARCH-ONLY control panel for OpenTTD's embedded MCP server (ADR 0008).", panel::USAGE);
+        return;
+    }
+    // The knowledge note of event kinds holds the declared table (src/panel_events.rs) as a region;
+    // this writes it, and a cargo test fails while it differs.
+    if argv.iter().any(|a| a == "--write-event-kinds") {
+        let note = panel_results::repo().join(".ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md");
+        let done = std::fs::read_to_string(&note).map_err(|e| e.to_string())
+            .and_then(|t| panel_events::with_region(&t))
+            .and_then(|t| std::fs::write(&note, t).map_err(|e| e.to_string()));
+        match done {
+            Ok(()) => println!("mcp-panel: {} kinds written to {}", panel_events::KINDS.len(), note.display()),
+            Err(e) => { eprintln!("mcp-panel: {}: {e}", note.display()); std::process::exit(1); }
+        }
         return;
     }
     let mut args = match panel::parse_args(&argv) {

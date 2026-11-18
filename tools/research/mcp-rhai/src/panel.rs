@@ -31,6 +31,7 @@ use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 use crate::hub;
 use crate::panel_bot;
 use crate::panel_decision;
+use crate::panel_events::{self, Stored};
 use crate::panel_results;
 use crate::panel_store;
 use crate::rhai_host;
@@ -72,7 +73,8 @@ pub struct Args {
 }
 
 pub const USAGE: &str = "usage: mcp-panel --bin <openttd> [--panel-port 8800] [--mcp-port 8731] [--game-port 3979]\n\
-                         \x20                [--seed 1] [--ai PrismaticAI] [--auto-approve] [--no-plan-bot]";
+                         \x20                [--seed 1] [--ai PrismaticAI] [--auto-approve] [--no-plan-bot]\n\
+                         \x20      mcp-panel --write-event-kinds   (the knowledge note's table of event kinds, from src/panel_events.rs)";
 
 /// server.py's command line: `--name value` or `--name=value`.
 pub fn parse_args(argv: &[String]) -> Result<Args, String> {
@@ -847,8 +849,10 @@ impl Game {
         }
         let mut cmd = Command::new(&exe);
         cmd.arg("--panel").arg(self.panel_url());
+        let mut params = Map::new();
         if let Some(ml) = self.max_loan() {
-            cmd.arg("--params").arg(json!({"budget": ml}).to_string());
+            params.insert("budget".into(), json!(ml));
+            cmd.arg("--params").arg(Value::Object(params.clone()).to_string());
         }
         cmd.arg(text);
         let Ok(r) = run(&mut cmd, None, Duration::from_secs(180), None) else { return };
@@ -884,6 +888,7 @@ impl Game {
         }
         let count = a["candidates"].as_array().map_or(0, Vec::len);
         self.event("intent", &format!("~ plan #{n} {}: {count} candidate(s)", py_repr(&json!(text))));
+        self.plan("plan.intent", intent_event(text, &format!("console ~ plan #{n}"), &params, &out));
     }
 
     fn bring_up(self: Arc<Self>) {
@@ -1139,6 +1144,17 @@ impl Game {
             ev.truncate(200);
         }
         self.bus.publish(&format!("panel.{kind}"), json!({"text": text}));
+    }
+
+    /// Publish one planning decision as data (ADR 0034 point 3, I0081): a plan.* kind of the declared
+    /// table (src/panel_events.rs) with {decision, version, inputs, choice}, beside the decision's
+    /// panel.* sentence. A kind outside the table is refused, and the refusal is a panel.server line.
+    pub fn plan(&self, kind: &str, data: Value) -> Option<u64> {
+        if !kind.starts_with("plan.") || !panel_events::declared(kind) {
+            self.event("server", &format!("refused to publish {kind}: not a plan.* kind of src/panel_events.rs KINDS"));
+            return None;
+        }
+        Some(self.bus.publish(kind, data))
     }
 
     pub fn events_json(&self) -> Vec<Value> {
@@ -1772,6 +1788,8 @@ fn h_action_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
         return Ok((503, json!({"error": "no AlgoGlyph runner: set MCP_ALGOGLYPH_DIR (mcp-e2e finds one)"})));
     };
     let mut inp = i.body.as_object().cloned().unwrap_or_default();
+    // Where cash, loan and the loan limit came from, for plan.action.
+    let mut books = json!({"cash": "caller", "loan": "caller", "max_loan": "caller"});
     if !inp.contains_key("cash") || !inp.contains_key("loan") {
         // Money and loan from the console's `companies` line (openttd://companies has no loan on
         // every build): the requested company, else the first AI company.
@@ -1782,12 +1800,16 @@ fn h_action_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
         let want = inp.get("company").and_then(Value::as_i64);
         let row = rows.iter().find(|r| want.map_or(false, |w| r.0 - 1 == w)).or(rows.first());
         if let Some(r) = row {
-            inp.entry("cash").or_insert(json!(r.1));
-            inp.entry("loan").or_insert(json!(r.2));
+            let line = json!({"console": "companies", "company": r.0 - 1});
+            for (k, v) in [("cash", r.1), ("loan", r.2)] {
+                if !inp.contains_key(k) { inp.insert(k.into(), json!(v)); books[k] = line.clone(); }
+            }
         }
     }
     if !inp.contains_key("max_loan") {
-        inp.insert("max_loan".into(), json!(g.max_loan().unwrap_or(300000)));
+        let ml = g.max_loan();
+        books["max_loan"] = if ml.is_some() { json!("console: setting difficulty.max_loan") } else { json!("default 300000 (the console gave none)") };
+        inp.insert("max_loan".into(), json!(ml.unwrap_or(300000)));
     }
     inp.entry("loan_step").or_insert(json!(10000));
     inp.remove("company");
@@ -1814,7 +1836,17 @@ fn h_action_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     } else {
         format!("refused: {}", py_str(out.get("errors")))
     }));
+    g.plan("plan.action", action_event(&i.body, &inp, &books, &out));
     Ok((if ok_ { 200 } else { 422 }, Value::Object(out)))
+}
+
+/// The data of plan.action: the kernel's input, where its money came from, and its answer.
+pub fn action_event(body: &Value, input: &Value, books: &Value, out: &Map<String, Value>) -> Value {
+    let steps = out.get("result").and_then(|r| r.get("steps")).cloned();
+    panel_events::plan("algoglyph.action_plan", json!({"loan_step": input.get("loan_step"), "max_loan": input.get("max_loan")}),
+                       json!({"kernel": "action-plan", "runner": out.get("runner"), "books": books, "request": body}),
+                       &panel_events::live_only("I0086 feeds books from the store through mcp-kernel-feed"),
+                       json!({"ok": truthy(out.get("ok")), "steps": steps, "errors": out.get("errors"), "kernel_input": input}))
 }
 
 fn h_intent(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
@@ -1830,7 +1862,7 @@ fn h_intent(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     }
     let mut cmd = Command::new(&exe);
     cmd.arg("--panel").arg(g.panel_url());
-    if !params.is_empty() { cmd.arg("--params").arg(Value::Object(params).to_string()); }
+    if !params.is_empty() { cmd.arg("--params").arg(Value::Object(params.clone()).to_string()); }
     cmd.arg(&text);
     let r = run(&mut cmd, None, Duration::from_secs(180), None)?;
     if r.code != 0 {
@@ -1841,7 +1873,23 @@ fn h_intent(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     g.event("intent", &format!("{} -> {} {} {}: {} candidate(s)", py_repr(&json!(text)), py_str(out["intent"].get("action")),
                               py_str(out["intent"].get("ordering")), py_repr(&Value::Array(names)),
                               out["answer"]["candidates"].as_array().map_or(0, Vec::len)));
+    g.plan("plan.intent", intent_event(&text, "POST /api/intent", &params, &out));
     ok(out)
+}
+
+/// How many candidates of an intent answer the event carries; the answer itself has them all.
+pub const INTENT_CANDIDATES: usize = 5;
+
+/// The data of plan.intent: the sentence, its reading and the first candidates.
+pub fn intent_event(text: &str, via: &str, params: &Map<String, Value>, out: &Value) -> Value {
+    let a = &out["answer"];
+    let cands = a["candidates"].as_array().cloned().unwrap_or_default();
+    panel_events::plan("intent.answer", json!({"request": params, "candidates_kept": INTENT_CANDIDATES}),
+                       json!({"text": text, "via": via, "resolver": "mcp-intent", "reads": out.get("reads"),
+                              "vocabulary_size": out.get("vocabulary_size")}),
+                       &panel_events::live_only("no issue plans history for it yet"),
+                       json!({"intent": out.get("intent"), "how": a.get("how"), "candidates": cands.len(),
+                              "first": cands.into_iter().take(INTENT_CANDIDATES).collect::<Vec<_>>(), "build": a.get("build")}))
 }
 
 /// The calibration store, research/calibration.json (src/calibrate.rs `record`).
@@ -1872,7 +1920,22 @@ fn h_calibration_record(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String
     let out: Value = serde_json::from_str(&r.stdout).map_err(|e| e.to_string())?;
     let rec = out.pointer("/calibration/recorded").cloned().unwrap_or(Value::Null);
     g.event("ai", &format!("calibration recorded in research/calibration.json: {} reading(s), {}", rec["readings"], rec["params"]));
+    g.plan("plan.calibration", calibration_event(&out));
     Ok((200, json!({"reading": out["calibration"], "recorded": rec})))
+}
+
+/// The data of plan.calibration: this game's reading of real against predicted profit, and the
+/// factors the store holds after it.
+pub fn calibration_event(out: &Value) -> Value {
+    let cal = &out["calibration"];
+    let rec = &cal["recorded"];
+    let mut reading = cal.clone();
+    if let Some(m) = reading.as_object_mut() { m.remove("recorded"); }
+    panel_events::plan("calibration.record", json!({"limit": 500, "min_age_days": 730, "effective": out.get("params")}),
+                       json!({"planner": "mcp-plan --calibrate --record", "reads": out.get("reads")}),
+                       &Stored::Fallback(format!("{} (a file beside the store, read and rewritten; I0082 reads calibration from the store)",
+                                                 py_str(rec.get("file")))),
+                       json!({"reading": reading, "readings": rec.get("readings"), "factors": rec.pointer("/params/calibration")}))
 }
 
 fn h_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
@@ -1923,7 +1986,8 @@ fn h_investment(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     if !p.contains_key("budget") {
         if let Some(ml) = g.max_loan().filter(|m| *m != 0) { p.insert("budget".into(), json!(ml)); }
     }
-    let r = run(Command::new(&exe).arg("--panel").arg(g.panel_url()).arg("--invest").arg("--params").arg(Value::Object(p).to_string()),
+    let p_req = Value::Object(p);
+    let r = run(Command::new(&exe).arg("--panel").arg(g.panel_url()).arg("--invest").arg("--params").arg(p_req.to_string()),
                 None, Duration::from_secs(240), None)?;
     if r.code != 0 {
         return Ok((if r.code == 2 { 400 } else { 502 }, json!({"error": r.stderr.trim()})));
@@ -1936,7 +2000,20 @@ fn h_investment(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
                              chosen.iter().map(|c| format!("{} {} roi {:.2}", py_str(c.get("cargo")), py_str(c.get("mode")),
                                                            c.get("roi").and_then(Value::as_f64).unwrap_or(0.0)))
                                  .collect::<Vec<_>>().join(", ")));
+    g.plan("plan.investment", investment_event(&p_req, &out));
     ok(json!({"investment": inv, "planner_portfolio": out.get("portfolio"), "params": out.get("params")}))
+}
+
+/// The data of plan.investment: what AlgoGlyph's transport-investment chose over the planner's
+/// candidates, beside the planner's own portfolio.
+pub fn investment_event(request: &Value, out: &Value) -> Value {
+    let inv = &out["investment"];
+    panel_events::plan("algoglyph.transport_investment", json!({"request": request, "effective": out.get("params")}),
+                       json!({"planner": "mcp-plan --invest", "reads": out.get("reads"), "candidates": inv.get("candidates")}),
+                       &panel_events::live_only("I0086"),
+                       json!({"solver": inv.pointer("/portfolio/solver"), "chosen": inv.pointer("/portfolio/chosen"),
+                              "planner_chosen": out.pointer("/portfolio/chosen").and_then(Value::as_array).map(Vec::len),
+                              "error": inv.get("error")}))
 }
 
 fn h_graph(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
@@ -2015,6 +2092,39 @@ fn h_bot_setting(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     ok(panel_bot::set_bot_setting(g, &i.body["company"], &py_str(i.body.get("name")), &i.body["value"])?)
 }
 
+fn h_bot_planned(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let ai = py_str(i.body.get("ai"));
+    let track = i.body.get("track").and_then(Value::as_u64).unwrap_or(0).min(16) as usize;
+    let Some(p) = panel_bot::planned(g, track) else {
+        return Ok((503, json!({"error": format!("no planner: {BUILD_IT} (mcp-plan)")})));
+    };
+    let flat = p.settings.iter().map(|(k, v)| format!("{k}={}", py_str(Some(v)))).collect::<Vec<_>>().join(",");
+    let started = if truthy(i.body.get("start")) {
+        let settings: Map<String, Value> = p.settings.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
+        Some(panel_bot::start_bot(g, &ai, Value::Object(settings))?)
+    } else {
+        None
+    };
+    ok(json!({"ai": ai, "settings": flat, "started": started, "portfolio": p.portfolio, "bot_settings": p.bot_settings}))
+}
+
+/// GET /api/bus: the tap's answer (src/panel_store.rs) with the declared kinds added.
+fn h_bus(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let (code, mut out) = panel_store::h_bus(g, i)?;
+    out["kinds"] = panel_events::table();
+    Ok((code, out))
+}
+
+fn h_bus_publish(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let kind = py_str(i.body.get("kind"));
+    let data = i.body.get("data").cloned().unwrap_or(Value::Null);
+    if let Some(why) = panel_events::refuse_external(&kind, &data) {
+        return Ok((400, json!({"error": why})));
+    }
+    let seq = g.plan(&kind, data);
+    ok(json!({"published": kind, "seq": seq}))
+}
+
 fn h_bridge_companies(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
     ok(panel_decision::companies(g)?)
 }
@@ -2089,7 +2199,9 @@ pub fn routes() -> Vec<Route> {
         r("POST", "/api/scoreboard", "scoreboardWrite", "Regenerate the scoreboard region of README.md from research/results (tools/research/readme-scoreboard); answers the new scoreboard. Commit and push stay the owner's", false,
           s(json!({}), &[]), panel_results::h_scoreboard_write),
         r("GET", "/api/duel", "duelStatus", "The duel started from the panel: running or finished, the last month line, the winner line and the result's name", false, None, panel_results::h_duel_status),
-        r("GET", "/api/bus", "bus", "The event bus on ZeroMQ (ADR 0033): the PUB endpoint (tcp://127.0.0.1:<port>), the envelope schema prismatic-bus/v1, every topic seen with its count, and how many events went out; subscribe with any ZeroMQ SUB client (tools/research/mcp-rhai mcp-bus-tail)", false, None, panel_store::h_bus),
+        r("GET", "/api/bus", "bus", "The event bus on ZeroMQ (ADR 0033): the PUB endpoint (tcp://127.0.0.1:<port>), the envelope schema prismatic-bus/v1, every topic seen with its count, how many events went out, and `kinds`: every event kind the bus carries, the one declared table (src/panel_events.rs, I0081); subscribe with any ZeroMQ SUB client (tools/research/mcp-rhai mcp-bus-tail)", false, None, h_bus),
+        r("POST", "/api/bus/publish", "busPublish", "Put one event of a kind the table declares as external (`by: external` in GET /api/bus kinds; plan.kernel from mcp-kernel-feed --publish) on this panel's bus, so it reaches ZeroMQ and the store like the panel's own; the data must carry {decision, version, inputs, choice}. Any other kind is refused", false,
+          s(json!({"kind": st(), "data": obj()}), &["kind", "data"]), h_bus_publish),
         r("GET", "/api/db/tables", "dbTables", "The DuckDB store of this instance (ADR 0033): its file and every table (runs, events, samples) with its columns", false, None, panel_store::h_db_tables),
         r("GET", "/api/db/query", "dbQuery", "One read-only statement on the store (?sql=SELECT ...; SELECT, WITH, DESCRIBE, SUMMARIZE or SHOW, one statement, anything else 400; without sql the newest 20 events): {columns, rows, count, capped}, each row a list in column order, at most 5000 rows", false, None, panel_store::h_db_query),
         r("POST", "/api/db/query", "dbQueryPost", "The same read-only query with the statement in the body ({sql}), for statements too long for an address", false,
@@ -2117,6 +2229,8 @@ pub fn routes() -> Vec<Route> {
           None, h_bots),
         r("GET", "/api/bots/choices", "botChoices", "What a bot setting naming a town, industry or cargo may name, from openttd://world/graph (towns by population, industries with their cargos, every cargo)", true,
           None, h_bot_choices),
+        r("POST", "/api/bots/planned", "botPlanned", "Plan the owner's bot as the panel does when it starts one: mcp-plan's portfolio within the loan limit, then the settings chosen from it, published as plan.portfolio and plan.bot_settings beside the panel.ai sentences; with start: true also start `ai` with those settings (a new AI company). track: N prices the N best rail lines on the map first (needs AlgoGlyph; the bot start uses 16, 0 here unless given). Answers the settings and the two events' data", true,
+          s(json!({"ai": st(), "start": {"type": "boolean"}, "track": {"type": "integer", "minimum": 0, "maximum": 16}}), &["ai"]), h_bot_planned),
         r("POST", "/api/bots/start", "botStart", "Start the owner's bot: an AI with a settings map", false,
           s(json!({"ai": st(), "settings": obj()}), &["ai"]), h_bot_start),
         r("POST", "/api/bots/setting", "botSetting", "Change one setting of a running bot (openttd.ai.set_setting, approval-gated)", true,
@@ -2785,8 +2899,9 @@ mod tests {
         // decision contract's GET /api/bridge/companies and POST /api/decision/pull, and the duels
         // (GET /api/results, GET /api/result, POST and GET /api/duel), and the README scoreboard
         // (GET and POST /api/scoreboard), and the calibration store (GET and POST /api/calibration),
-        // and the bus tap (GET /api/bus, GET /api/db/tables, GET and POST /api/db/query; ADR 0033).
-        assert_eq!(rs.len(), 49);
+        // and the bus tap (GET /api/bus, GET /api/db/tables, GET and POST /api/db/query; ADR 0033),
+        // and the plan events' routes (POST /api/bus/publish, POST /api/bots/planned; I0081).
+        assert_eq!(rs.len(), 51);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -2797,7 +2912,62 @@ mod tests {
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",
             "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai",
             "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
-            "/api/bus", "/api/db/tables", "/api/db/query"].contains(&r.path)));
+            "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query"].contains(&r.path)));
+    }
+
+    #[test]
+    fn the_panels_decisions_publish_their_choice_as_data() {
+        // plan.action: the kernel's answer, and where cash, loan and the limit came from.
+        let books = json!({"cash": {"console": "companies", "company": 1}, "loan": "caller", "max_loan": "console: setting difficulty.max_loan"});
+        let input = json!({"actions": [{"id": "r", "kind": "repay_loan", "amount": 50000}], "cash": 90000, "loan": 50000,
+                           "max_loan": 300000, "loan_step": 10000});
+        let mut out = Map::new();
+        out.insert("ok".into(), json!(true));
+        out.insert("result".into(), json!({"steps": [{"press": "repay"}, {"press": "repay"}]}));
+        out.insert("runner".into(), json!("/x/algoglyph"));
+        let e = action_event(&json!({"actions": []}), &input, &books, &out);
+        assert_eq!(e["decision"], "algoglyph.action_plan");
+        assert_eq!(e["choice"]["ok"], true);
+        assert_eq!(e["choice"]["steps"].as_array().unwrap().len(), 2);
+        assert_eq!(e["choice"]["kernel_input"], input);
+        assert_eq!(e["inputs"]["live"]["books"], books);
+        assert_eq!(e["version"]["params"], json!({"loan_step": 10000, "max_loan": 300000}));
+        assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0086"));
+        // plan.intent: the reading and the first candidates only.
+        let cands: Vec<Value> = (0..8).map(|n| json!({"name": format!("mine {n}"), "production": n})).collect();
+        let answer = json!({"intent": {"action": "find", "ordering": "most productive", "subjects": [{"name": "coal mine"}]},
+                            "answer": {"how": "by production", "candidates": cands}, "reads": [{"uri": "openttd://towns", "ok": true}],
+                            "vocabulary_size": 900});
+        let mut params = Map::new();
+        params.insert("budget".into(), json!(300000));
+        let e = intent_event("find the most productive coal mine", "POST /api/intent", &params, &answer);
+        assert_eq!(e["decision"], "intent.answer");
+        assert_eq!(e["choice"]["candidates"], 8);
+        assert_eq!(e["choice"]["first"].as_array().unwrap().len(), INTENT_CANDIDATES);
+        assert_eq!(e["choice"]["intent"]["action"], "find");
+        assert_eq!(e["inputs"]["live"]["text"], "find the most productive coal mine");
+        assert_eq!(e["inputs"]["live"]["reads"][0]["uri"], "openttd://towns");
+        assert_eq!(e["version"]["params"]["request"], json!({"budget": 300000}));
+        // plan.calibration: the reading without its bookkeeping, and the factors after it.
+        let out = json!({"params": {"x": 1}, "calibration": {"lines": 3, "ratio": {"rail": 0.6},
+                         "recorded": {"file": "/r/research/calibration.json", "readings": 4, "params": {"calibration": {"rail": 0.7}}}}});
+        let e = calibration_event(&out);
+        assert_eq!(e["decision"], "calibration.record");
+        assert_eq!(e["choice"], json!({"reading": {"lines": 3, "ratio": {"rail": 0.6}}, "readings": 4, "factors": {"rail": 0.7}}));
+        assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().starts_with("/r/research/calibration.json (a file beside the store"));
+        // plan.investment: AlgoGlyph's portfolio beside the planner's.
+        let out = json!({"params": {"budget": 1}, "portfolio": {"chosen": [1, 2, 3]},
+                         "investment": {"candidates": 12, "portfolio": {"solver": "knapsack-dp", "chosen": [{"cargo": "Coal", "mode": "rail", "roi": 1.5}]}}});
+        let e = investment_event(&json!({"budget": 1}), &out);
+        assert_eq!(e["decision"], "algoglyph.transport_investment");
+        assert_eq!(e["choice"]["solver"], "knapsack-dp");
+        assert_eq!(e["choice"]["chosen"][0]["cargo"], "Coal");
+        assert_eq!(e["choice"]["planner_chosen"], 3);
+        assert_eq!(e["inputs"]["live"]["candidates"], 12);
+        for e in [action_event(&json!({}), &input, &books, &Map::new()), calibration_event(&json!({})), investment_event(&json!({}), &json!({}))] {
+            for f in ["decision", "version", "inputs", "choice"] { assert!(e.get(f).is_some(), "{f}"); }
+            assert!(crate::panel_events::refuse_external("plan.kernel", &e).is_none(), "the payload contract");
+        }
     }
 
     #[test]

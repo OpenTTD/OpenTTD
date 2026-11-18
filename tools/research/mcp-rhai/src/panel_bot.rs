@@ -12,6 +12,7 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use crate::panel::{py_int, py_json, py_str, run, Game};
+use crate::panel_events::{self, Stored};
 
 fn ai_dir() -> PathBuf {
     PathBuf::from(std::env::var("HOME").unwrap_or_default()).join("Documents/OpenTTD/ai")
@@ -441,13 +442,43 @@ pub const MAX_FREIGHT_LINES: usize = 16;
 /// 36-month duel shows their cost and not their return (duel-20261117T131347: -20%).
 pub const OWN_LINES: usize = 8;
 
+/// What the bot is handed, as settings and as the choices of the two plan.* events (I0081).
+pub struct Planned {
+    pub settings: Settings,
+    /// `choice` of plan.portfolio: the planner's portfolio as it was read.
+    pub portfolio: Value,
+    /// `choice` of plan.bot_settings: every line handed over, in its slot, and why others were not.
+    pub bot_settings: Value,
+}
+
+/// One end of a candidate line: its id and name.
+fn end(v: &Value) -> Value {
+    json!({"id": v.get("id"), "name": v.get("name")})
+}
+
+/// A planner candidate as the events carry it.
+fn line_of(c: &Value) -> Value {
+    let empty = json!({});
+    json!({"kind": c.get("kind"), "mode": c.get("mode"), "cargo": c.get("cargo"), "cargo_id": c.get("cargo_id"),
+           "from": end(get_or(c, "producer", get_or(c, "a", &empty))), "to": end(get_or(c, "acceptor", get_or(c, "b", &empty))),
+           "distance": c.get("distance"), "score": c.get("score")})
+}
+
+/// Settings as a JSON object and as the `start_ai` argument they make.
+fn settings_json(s: &Settings) -> (Value, String) {
+    (Value::Object(s.iter().cloned().collect()), s.iter().map(|(k, v)| format!("{k}={}", py_str(Some(v)))).collect::<Vec<_>>().join(","))
+}
+
 /// The bot's routes from the planner's portfolio within the budget, chosen from mcp-plan's answer:
-/// up to eight freight rail lines (fr_*, fr2_* .. fr8_*), one passenger rail pair (rail_a, rail_b)
-/// and one air pair (air_a, air_b, air_planes), with the events that explain each choice.
-pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Settings {
+/// up to sixteen freight rail lines (fr_*, fr2_* .. fr16_*), one passenger rail pair (rail_a,
+/// rail_b) and one air pair (air_a, air_b, air_planes), with the events that explain each choice and
+/// the same choice as data.
+pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Planned {
     let empty = json!({});
     let pf = out.get("portfolio").filter(|v| v.is_object()).unwrap_or(&empty);
     let chosen: Vec<Value> = pf["chosen"].as_array().cloned().unwrap_or_default();
+    let (mut dropped, mut spares_used) = (Vec::new(), 0usize);
+    let (mut passenger_rail, mut air) = (Value::Null, Value::Null);
     event(format!("planner portfolio by {}: {} investment(s), total score {}, {}k of {}k",
                   pf.get("solver").map_or("no solver".to_string(), |v| py_str(Some(v))), chosen.len(),
                   py_str(pf.get("total_score")), py_str(pf.get("investment_k")), py_str(pf.get("budget_k"))));
@@ -460,6 +491,9 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
                       if found.len() == priced.len() { String::new() } else { format!("; {} without a route dropped their rail option", priced.len() - found.len()) }));
     }
     let priced_any = !priced.is_empty();
+    let portfolio = json!({"solver": pf.get("solver"), "chosen": chosen.iter().map(line_of).collect::<Vec<_>>(),
+                           "total_score": pf.get("total_score"), "investment_k": pf.get("investment_k"), "budget_k": pf.get("budget_k"),
+                           "priced": {"lines": priced.len(), "with_route": priced.iter().filter(|p| p["status"] == json!("found")).count()}});
     // PrismaticAI lays rail over buildable land, level crossings, bridges and tunnels (rail.nut
     // FindRailPath), so any line track-planning found a route for is the bot's. When lines were
     // priced, an unpriced one is not handed over blind either: on seed 20208 an unpriced passenger
@@ -496,6 +530,7 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
                     "was not priced on the map, so it is not handed to the bot blind".to_string()
                 };
                 event(format!("planner: the {mode} line {line} {why}; the next line it can build goes instead"));
+                dropped.push(json!({"line": line_of(c), "why": why}));
             }
             continue;
         }
@@ -515,12 +550,15 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
                 continue;
             }
             freight_lines += 1;
+            if !in_chosen { spares_used += 1; }
             lines.push((score(c), producer, acceptor, cargo, json!({"cargo": c.get("cargo"), "from": c["producer"].get("name"),
                 "to": c["acceptor"].get("name"), "distance": c.get("distance"), "profit": opt.get("monthly_profit"), "score": c.get("score")})));
         } else if !freight && mode == "rail" && !settings.has("rail_a") {
             settings.set("rail_a", c["a"]["id"].clone());
             settings.set("rail_b", c["b"]["id"].clone());
             pair_score = Some(score(c));
+            if !in_chosen { spares_used += 1; }
+            passenger_rail = json!({"line": line_of(c), "spare": !in_chosen});
             event(format!("planner: passengers by rail {} - {}, score {}", py_str(c["a"].get("name")), py_str(c["b"].get("name")), py_str(c.get("score"))));
         } else if !freight && mode == "air" && !settings.has("air_a") {
             let count = opt.pointer("/vehicles/count").filter(|v| crate::panel::py_int(v).map_or(false, |n| n != 0))
@@ -528,6 +566,7 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
             settings.set("air_a", c["a"]["id"].clone());
             settings.set("air_b", c["b"]["id"].clone());
             settings.set("air_planes", json!(count.clamp(1, 8)));
+            air = json!({"line": line_of(c), "planes": count.clamp(1, 8)});
             event(format!("planner: air {} - {}, {count} plane(s), score {}", py_str(c["a"].get("name")), py_str(c["b"].get("name")), py_str(c.get("score"))));
         }
     }
@@ -537,8 +576,12 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
     // duel-20261117T032759). Freight lines go in order of score, and rail_after tells the bot how many
     // of them score above the passenger pair, to build before it.
     lines.sort_by(|a, b| b.0.total_cmp(&a.0));
+    let mut freight = Vec::new();
     for (i, (_, producer, acceptor, cargo, e)) in lines.iter().enumerate() {
         let prefix = if i == 0 { "fr_".to_string() } else { format!("fr{}_", i + 1) };
+        freight.push(json!({"slot": prefix, "from": producer, "to": acceptor, "cargo_id": cargo, "cargo": e.get("cargo"),
+                            "from_name": e.get("from"), "to_name": e.get("to"), "distance": e.get("distance"),
+                            "monthly_profit": e.get("profit"), "score": e.get("score")}));
         settings.set(&format!("{prefix}from"), json!(producer));
         settings.set(&format!("{prefix}to"), json!(acceptor));
         settings.set(&format!("{prefix}cargo"), json!(cargo));
@@ -550,66 +593,148 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Setting
         settings.set("own_lines", json!(OWN_LINES));
         event(format!("planner: after these lines the bot may plan up to {OWN_LINES} more itself (own_lines)"));
     }
+    let mut rail_after = Value::Null;
     if let Some(ps) = pair_score {
         let after = lines.iter().filter(|f| f.0 > ps).count();
         settings.set("rail_after", json!(after));
+        rail_after = json!(after);
         event(format!("planner: the passenger rail pair (score {ps}) is built after {after} freight line(s) that score more"));
     }
-    settings
+    let (as_object, flat) = settings_json(&settings);
+    let bot_settings = json!({"settings": as_object, "start_ai": flat, "freight": freight, "passenger_rail": passenger_rail, "air": air,
+                              "rail_after": rail_after, "own_lines": settings.0.iter().find(|(k, _)| k == "own_lines").map(|(_, v)| v.clone()),
+                              "dropped": dropped, "spares_used": spares_used});
+    Planned { settings, portfolio, bot_settings }
+}
+
+/// The parameters of the bot's settings rule, for its `version`.
+pub fn bot_params(extra: &str) -> Value {
+    json!({"max_freight_lines": MAX_FREIGHT_LINES, "own_lines": OWN_LINES, "PRISMATIC_BOT_SETTINGS": extra})
+}
+
+/// The data of plan.portfolio: the planner's answer read for the bot. `request` is what the planner
+/// was asked (its arguments and parameters), `planner` how it ran, `calibration` what was read for it.
+pub fn portfolio_event(out: &Value, p: &Planned, request: Value, planner: Value, calibration: &Value) -> Value {
+    let stored = if calibration.get("file").is_some() {
+        Stored::Fallback(format!("{} (a file beside the store, not a store query; I0082 reads calibration from the store)",
+                                 py_str(calibration.get("file"))))
+    } else {
+        panel_events::live_only("I0082")
+    };
+    panel_events::plan("bot.portfolio", json!({"request": request, "effective": out.get("params")}),
+                       json!({"planner": planner, "reads": out.get("reads"), "calibration": calibration}), &stored, p.portfolio.clone())
+}
+
+/// The data of plan.bot_settings, with the run's extra settings (PRISMATIC_BOT_SETTINGS) applied to
+/// `p.settings` and recorded: the settings the bot is started with.
+pub fn bot_settings_event(p: &mut Planned, extra_text: &str, portfolio_seq: Option<u64>) -> Value {
+    let from_run = match extra_settings(extra_text) {
+        Ok(extra) => {
+            for (k, v) in &extra { p.settings.set(k, json!(v)); }
+            json!({"settings": extra.iter().map(|(k, v)| (k.clone(), json!(v))).collect::<Map<String, Value>>()})
+        }
+        Err(e) => json!({"refused": e}),
+    };
+    let mut choice = p.bot_settings.clone();
+    let (as_object, flat) = settings_json(&p.settings);
+    choice["settings"] = as_object;
+    choice["start_ai"] = json!(flat);
+    choice["from_run"] = from_run;
+    panel_events::plan("bot.settings", bot_params(extra_text), json!({"portfolio_seq": portfolio_seq, "rule": "panel_bot.rs:settings_from_plan"}),
+                       &panel_events::live_only("I0087"), choice)
 }
 
 /// The bot's routes from the planner's portfolio within the budget (difficulty.max_loan), read live
-/// with mcp-plan; no settings without a planner or a portfolio.
+/// with mcp-plan when the panel plans its bot; no settings without a planner or a portfolio.
 pub fn planned_air(g: &Arc<Game>) -> Settings {
-    let exe = crate::panel::sibling("mcp-plan");
-    if !g.args.plan_bot || !exe.exists() {
+    if !g.args.plan_bot {
         return Settings::default();
     }
-    let mut params = match g.max_loan().filter(|b| *b != 0) { Some(b) => json!({"budget": b}), None => json!({}) };
+    // With AlgoGlyph present the best rail lines are priced on the real map (track-planning) before
+    // the portfolio is chosen, so the bot builds what pays on this terrain; as many lines of each list
+    // as the bot takes freight lines (at most two per producer, linecost.rs).
+    planned(g, MAX_FREIGHT_LINES).map(|p| p.settings).unwrap_or_default()
+}
+
+/// Plan the bot: ask mcp-plan for its portfolio (pricing the `track` best rail lines on the map when
+/// AlgoGlyph is present), choose the settings from it, and publish both decisions, as sentences
+/// (panel.ai) and as data (plan.portfolio, plan.bot_settings). None without a planner binary.
+pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
+    let exe = crate::panel::sibling("mcp-plan");
+    if !exe.exists() {
+        return None;
+    }
+    let budget = g.max_loan().filter(|b| *b != 0);
+    let mut params = match budget { Some(b) => json!({"budget": b}), None => json!({}) };
     // Back-propagation: with PRISMATIC_PLAN_CALIBRATION naming a calibration store (research/
     // calibration.json, relative to the repository), the plan starts from what earlier games earned
     // per mode instead of the model alone (src/calibrate.rs). Off unless a run asks for it: a duel's
     // calibrated: true, so its A/B decides whether it pays.
+    let mut calibration = Value::Null;
     if let Some(name) = std::env::var("PRISMATIC_PLAN_CALIBRATION").ok().filter(|v| !v.is_empty() && v != "off") {
         let path = crate::panel_results::repo().join(&name);
         match std::fs::read_to_string(&path).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok()) {
             Some(store) if store.pointer("/params/calibration").is_some_and(|c| c.as_object().is_some_and(|m| !m.is_empty())) => {
                 let cal = store["params"]["calibration"].clone();
-                g.event("ai", &format!("planner: calibration from {name} ({} reading(s)): {cal}", store["readings"].as_array().map_or(0, Vec::len)));
+                let readings = store["readings"].as_array().map_or(0, Vec::len);
+                g.event("ai", &format!("planner: calibration from {name} ({readings} reading(s)): {cal}"));
+                calibration = json!({"file": name, "readings": readings, "factors": cal});
                 params["calibration"] = cal;
             }
-            _ => g.event("ai", &format!("planner: calibration {name} asked for, but it holds no factor; the plan runs uncalibrated")),
+            _ => {
+                g.event("ai", &format!("planner: calibration {name} asked for, but it holds no factor; the plan runs uncalibrated"));
+                calibration = json!({"asked": name, "used": false, "why": "the file holds no factor"});
+            }
         }
     }
-    let mut cmd = Command::new(&exe);
+    let algoglyph = std::env::var("MCP_ALGOGLYPH_DIR").map_or(false, |d| !d.is_empty());
+    let track = if algoglyph { track } else { 0 };
     // Forty candidates, so up to sixteen freight lines with distinct producers can be found (ten gave
     // three on seed 20208, thirty six on seed 31337).
-    cmd.arg("--panel").arg(g.panel_url()).arg("--limit").arg("40").arg("--params").arg(py_json(&params));
-    // With AlgoGlyph present the best rail lines are priced on the real map (track-planning) before
-    // the portfolio is chosen, so the bot builds what pays on this terrain; as many lines of each list
-    // as the bot takes freight lines (at most two per producer, linecost.rs).
-    if std::env::var("MCP_ALGOGLYPH_DIR").map_or(false, |d| !d.is_empty()) {
-        cmd.arg("--track").arg(MAX_FREIGHT_LINES.to_string());
+    let mut argv = vec!["--panel".to_string(), g.panel_url(), "--limit".into(), "40".into(), "--params".into(), py_json(&params)];
+    if track > 0 {
+        argv.extend(["--track".to_string(), track.to_string()]);
     }
-    let out = match run(&mut cmd, None, Duration::from_secs(600), None) {
+    let request = json!({"budget": budget, "params": params, "limit": 40, "track": track});
+    let mut planner = json!({"exe": "mcp-plan", "args": argv[2..].to_vec(), "budget_from": "console: setting difficulty.max_loan",
+                             "algoglyph": algoglyph});
+    let out = match run(Command::new(&exe).args(&argv), None, Duration::from_secs(600), None) {
         Ok(r) if r.code == 0 => match serde_json::from_str::<Value>(&r.stdout) {
-            Ok(v) => v,
-            Err(e) => { g.event("ai", &format!("planner not reachable for the bot: {e}")); return Settings::default(); }
+            Ok(v) => Ok(v),
+            Err(e) => Err(format!("planner not reachable for the bot: {e}")),
         },
-        Ok(_) => json!({}),
-        Err(e) => { g.event("ai", &format!("planner not reachable for the bot: {e}")); return Settings::default(); }
+        Ok(r) => { planner["exit"] = json!(r.code); planner["stderr"] = json!(r.stderr.trim()); Ok(json!({})) }
+        Err(e) => Err(format!("planner not reachable for the bot: {e}")),
     };
-    let mut settings = settings_from_plan(&out, &mut |text| g.event("ai", &text));
+    let out = match out {
+        Ok(v) => v,
+        Err(e) => {
+            g.event("ai", &e);
+            planner["error"] = json!(e);
+            let mut p = settings_from_plan(&json!({}), &mut |_| {});
+            p.portfolio["error"] = json!(e);
+            let seq = g.plan("plan.portfolio", portfolio_event(&json!({}), &p, request, planner, &calibration));
+            // No plan, no settings: the bot starts unplanned, and the run's extra settings are not
+            // applied either (as before I0081).
+            p.bot_settings["unplanned"] = json!(e);
+            g.plan("plan.bot_settings", panel_events::plan("bot.settings", bot_params(""), json!({"portfolio_seq": seq}),
+                                                            &panel_events::live_only("I0087"), p.bot_settings.clone()));
+            return Some(p);
+        }
+    };
+    let mut p = settings_from_plan(&out, &mut |text| g.event("ai", &text));
+    let seq = g.plan("plan.portfolio", portfolio_event(&out, &p, request, planner, &calibration));
     // Extra settings for this bot from the run that started the stack (mcp-duel --bot-settings, the
     // duel form): an A/B of a bot feature without a code change. A malformed list is refused whole.
-    match extra_settings(&std::env::var("PRISMATIC_BOT_SETTINGS").unwrap_or_default()) {
-        Ok(extra) => for (k, v) in extra {
-            g.event("ai", &format!("bot setting from the run: {k}={v}"));
-            settings.set(&k, json!(v));
-        },
+    let extra = std::env::var("PRISMATIC_BOT_SETTINGS").unwrap_or_default();
+    match extra_settings(&extra) {
+        Ok(list) => for (k, v) in list { g.event("ai", &format!("bot setting from the run: {k}={v}")); },
         Err(e) => g.event("ai", &format!("bot settings from the run refused: {e}")),
     }
-    settings
+    let data = bot_settings_event(&mut p, &extra, seq);
+    p.bot_settings = data["choice"].clone();
+    g.plan("plan.bot_settings", data);
+    Some(p)
 }
 
 /// "name=value,name=value" with setting names of lower-case letters, digits and _ and whole values.
@@ -734,7 +859,8 @@ mod tests {
                          "line_costs": {"priced": [{"status": "found", "pieces": 30, "money": 12345.6}, {"status": "no_route"}]},
                          "freight": [fr(7, 8.0), fr(8, 5.0), fr(7, 4.0)], "by_mode": {"rail": [rail(1, 9.0, "no_route"), rail(10, 2.0, "found")]}});
         let mut events = Vec::new();
-        let s = settings_from_plan(&out, &mut |e| events.push(e));
+        let planned = settings_from_plan(&out, &mut |e| events.push(e));
+        let s = &planned.settings;
         let flat: Vec<String> = s.iter().map(|(k, v)| format!("{k}={}", py_str(Some(v)))).collect();
         // Freight lines are set after the loop, in order of score; the passenger pair (score 2) waits
         // for both freight lines (8 and 5), so rail_after is 2.
@@ -743,7 +869,7 @@ mod tests {
         assert!(events.iter().any(|e| e == "planner: the passenger rail pair (score 2) is built after 2 freight line(s) that score more"));
         // A spare that scores above a portfolio line is built first.
         let order = json!({"portfolio": {"chosen": [fr(7, 3.0), rail(10, 4.0, "found")]}, "freight": [fr(7, 3.0), fr(8, 6.0)]});
-        let s2 = settings_from_plan(&order, &mut |_| {});
+        let s2 = settings_from_plan(&order, &mut |_| {}).settings;
         let get = |k: &str| s2.iter().find(|(n, _)| n.as_str() == k).map(|(_, v)| py_str(Some(v)));
         assert_eq!(get("fr_from").as_deref(), Some("8"));
         assert_eq!(get("fr2_from").as_deref(), Some("7"));
@@ -753,6 +879,71 @@ mod tests {
         assert!(events[2].starts_with("planner: the rail line T1 - B has no route on the map (no_route)"));
         assert!(events.iter().any(|e| e.ends_with("(line 2, built when the money allows)")));
         let none = settings_from_plan(&json!({}), &mut |_| {});
-        assert!(none.0.is_empty());
+        assert!(none.settings.0.is_empty());
+        assert_eq!(none.bot_settings["settings"], json!({}));
+    }
+
+    /// The planner answer of `the_bot_gets_the_portfolio_with_rail_it_can_build`, as one fixture.
+    fn answer() -> Value {
+        let rail = |a: i64, score: f64, status: &str| json!({"kind": "passengers", "mode": "rail", "score": score,
+            "a": {"id": a, "name": format!("T{a}")}, "b": {"id": a + 1, "name": "B"},
+            "options": [{"mode": "rail", "track": {"status": status}}]});
+        let fr = |p: i64, score: f64| json!({"kind": "freight", "mode": "freight_rail", "score": score, "cargo": "Coal", "cargo_id": 1,
+            "distance": 40, "producer": {"id": format!("industry:{p}"), "name": "Mine"}, "acceptor": {"id": "industry:99", "name": "Plant"},
+            "options": [{"mode": "freight_rail", "monthly_profit": 500, "track": {"status": "found"}}]});
+        json!({"portfolio": {"solver": "knapsack-dp", "chosen": [rail(1, 9.0, "no_route"), fr(7, 8.0)], "total_score": 17,
+                             "investment_k": 250, "budget_k": 300},
+               "line_costs": {"priced": [{"status": "found", "pieces": 30, "money": 12345.6}, {"status": "no_route"}]},
+               "freight": [fr(7, 8.0), fr(8, 5.0)], "by_mode": {"rail": [rail(1, 9.0, "no_route"), rail(10, 2.0, "found")]},
+               "params": {"budget": 300000, "cost_weight": 1}, "reads": [{"uri": "openttd://towns", "ok": true}]})
+    }
+
+    #[test]
+    fn the_plan_events_of_settings_from_plan_carry_the_choice_as_data() {
+        let out = answer();
+        let mut p = settings_from_plan(&out, &mut |_| {});
+        assert_eq!(p.portfolio, json!({"solver": "knapsack-dp", "total_score": 17, "investment_k": 250, "budget_k": 300,
+            "priced": {"lines": 2, "with_route": 1},
+            "chosen": [
+                {"kind": "passengers", "mode": "rail", "cargo": null, "cargo_id": null, "from": {"id": 1, "name": "T1"},
+                 "to": {"id": 2, "name": "B"}, "distance": null, "score": 9.0},
+                {"kind": "freight", "mode": "freight_rail", "cargo": "Coal", "cargo_id": 1, "from": {"id": "industry:7", "name": "Mine"},
+                 "to": {"id": "industry:99", "name": "Plant"}, "distance": 40, "score": 8.0}]}));
+        let request = json!({"budget": 300000, "params": {"budget": 300000}, "limit": 40, "track": 16});
+        let e = portfolio_event(&out, &p, request.clone(), json!({"exe": "mcp-plan"}), &Value::Null);
+        assert_eq!(e["decision"], "bot.portfolio");
+        assert_eq!(e["version"]["params"], json!({"request": request, "effective": {"budget": 300000, "cost_weight": 1}}));
+        assert_eq!(e["version"]["revision"], panel_events::REVISION);
+        assert_eq!(e["inputs"]["live"]["reads"], json!([{"uri": "openttd://towns", "ok": true}]), "the planner's own list of reads");
+        assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0082"));
+        assert_eq!(e["choice"], p.portfolio);
+        let cal = portfolio_event(&out, &p, json!({}), json!({}), &json!({"file": "research/calibration.json", "readings": 3}));
+        assert!(cal["inputs"]["stored"]["fallback"].as_str().unwrap().starts_with("research/calibration.json (a file beside the store"));
+
+        let b = bot_settings_event(&mut p, "own_lines=0", Some(41));
+        assert_eq!(b["decision"], "bot.settings");
+        assert_eq!(b["version"]["params"], json!({"max_freight_lines": 16, "own_lines": 8, "PRISMATIC_BOT_SETTINGS": "own_lines=0"}));
+        assert_eq!(b["inputs"]["live"]["portfolio_seq"], 41);
+        assert!(b["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0087"));
+        let c = &b["choice"];
+        assert_eq!(c["settings"], json!({"rail_a": 10, "rail_b": 11, "fr_from": 7, "fr_to": 99, "fr_cargo": 1, "fr2_from": 8, "fr2_to": 99,
+                                         "fr2_cargo": 1, "own_lines": 0, "rail_after": 2}));
+        assert_eq!(c["start_ai"], "rail_a=10,rail_b=11,fr_from=7,fr_to=99,fr_cargo=1,fr2_from=8,fr2_to=99,fr2_cargo=1,own_lines=0,rail_after=2");
+        assert_eq!(c["own_lines"], 8, "what the rule chose; from_run says what the run changed");
+        assert_eq!(c["from_run"], json!({"settings": {"own_lines": 0}}));
+        assert_eq!(c["rail_after"], 2);
+        assert_eq!(c["freight"][0], json!({"slot": "fr_", "from": 7, "to": 99, "cargo_id": 1, "cargo": "Coal", "from_name": "Mine",
+                                           "to_name": "Plant", "distance": 40, "monthly_profit": 500, "score": 8.0}));
+        assert_eq!(c["freight"][1]["slot"], "fr2_");
+        assert_eq!(c["passenger_rail"]["line"]["from"], json!({"id": 10, "name": "T10"}));
+        assert_eq!(c["passenger_rail"]["spare"], true);
+        assert_eq!(c["air"], Value::Null);
+        assert_eq!(c["spares_used"], 2, "the passenger pair and the second freight line came from the lists");
+        assert_eq!(c["dropped"].as_array().unwrap().len(), 1);
+        assert_eq!(c["dropped"][0]["why"], "has no route on the map (no_route)");
+        assert_eq!(py_str(p.settings.iter().find(|(k, _)| k == "own_lines").map(|(_, v)| v)), "0", "the bot starts with the run's value");
+        let refused = bot_settings_event(&mut settings_from_plan(&out, &mut |_| {}), "own_lines=eight", None);
+        assert!(refused["choice"]["from_run"]["refused"].as_str().unwrap().contains("whole number"));
+        assert_eq!(refused["choice"]["settings"]["own_lines"], 8);
     }
 }

@@ -2,18 +2,28 @@
 # RESEARCH-ONLY check of the panel's derived surfaces against a running panel (issue I0032):
 # the OpenAPI document derived from the live MCP catalogue, the generic REST routes it declares,
 # Swagger UI, the REST event feed and the SSE event stream, and the same bus on ZeroMQ and in the
-# DuckDB store (ADR 0033, I0080).
+# DuckDB store (ADR 0033, I0080), with its declared event kinds and a planned bot's plan.portfolio
+# and plan.bot_settings events on the bus and in the store (I0081).
 #
-# Usage: tools/research/mcp-panel-check [--panel http://127.0.0.1:8800]
+# Usage: tools/research/mcp-panel-check [--panel http://127.0.0.1:8800] [--start-bot AI] [--track N]
+#
+# The planned bot: POST /api/bots/planned plans the bot as a panel's bot start does (mcp-plan's
+# portfolio, then the settings) and publishes both decisions. Without --start-bot the bot is planned
+# and not started, so the game is left as it was; --start-bot AI also starts AI with those settings,
+# a new AI company in the game checked. --track N prices N rail lines on the map first (AlgoGlyph;
+# minutes per line), 0 by default.
 # Exit status: 0 every check passed, 1 a check failed, 3 the panel is not reachable.
 set -euo pipefail
 
 PANEL="http://127.0.0.1:8800"
+START_BOT="" TRACK=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --panel) PANEL="${2:?--panel needs a URL}"; shift 2 ;;
+    --start-bot) START_BOT="${2:?--start-bot needs an AI name}"; shift 2 ;;
+    --track) TRACK="${2:?--track needs a number}"; shift 2 ;;
     -h|--help) sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0"; exit 0 ;;
-    *) echo "mcp-panel-check: unknown argument $1 (usage: mcp-panel-check [--panel URL])" >&2; exit 2 ;;
+    *) echo "mcp-panel-check: unknown argument $1 (usage: mcp-panel-check [--panel URL] [--start-bot AI] [--track N])" >&2; exit 2 ;;
   esac
 done
 for tool in python3 curl; do command -v "$tool" >/dev/null || { echo "mcp-panel-check: needs $tool" >&2; exit 3; }; done
@@ -136,6 +146,62 @@ code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: applica
 check "POST /api/db/query refuses INSERT (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
 code="$(curl -s -o /dev/null -w '%{http_code}' --get --data-urlencode 'sql=SELECT 1; DROP TABLE events' "$PANEL/api/db/query")"
 check "GET /api/db/query refuses a second statement (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
+
+# The declared event kinds and the planned bot's decisions as data (I0081, ADR 0034 point 3).
+kinds="$(py '
+import json, sys
+b = json.loads(sys.argv[1]); kinds = {k["kind"] for k in b.get("kinds") or []}
+need = ["plan.portfolio", "plan.bot_settings", "plan.calibration", "plan.investment", "plan.action", "plan.intent", "plan.directive", "plan.kernel"]
+seen = [t for t in b.get("topics_seen", {}) if t not in kinds]
+print(len(kinds), len([k for k in need if k in kinds]), len(need), ",".join(seen) or "-")' "${bus:-{\}}" 2>/dev/null || echo "0 0 8 ?")"
+read -r nkinds nplan nneed undeclared <<< "$kinds"
+check "GET /api/bus lists the declared kinds ($nkinds, plan.*: $nplan of $nneed)" "$([[ "$nkinds" -gt 0 && "$nplan" == "$nneed" ]] && echo 1 || echo 0)"
+check "every topic the bus has carried is a declared kind (undeclared: $undeclared)" "$([[ "$nkinds" -gt 0 && "$undeclared" == - ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' \
+  -d '{"kind":"plan.portfolio","data":{"decision":"x","version":{},"inputs":{},"choice":{}}}' "$PANEL/api/bus/publish")"
+check "POST /api/bus/publish refuses a kind the panel publishes itself (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
+
+ai="${START_BOT:-PrismaticAI}" start=false
+t0="$(python3 -I -c 'import time; print(int(time.time() * 1000))')"
+[[ -n "$START_BOT" ]] && start=true
+seq0="$(curl -fs "$PANEL/api/status" | py 'import json,sys; print(json.load(sys.stdin)["event_seq"])')"
+if [[ -x "$TAIL" && -n "$endpoint" ]]; then
+  "$TAIL" --endpoint "$endpoint" -n 2 --topic plan.portfolio --topic plan.bot_settings --timeout 900 > "$TMP/plan.jsonl" 2>/dev/null &
+  TAILPID=$!
+  sleep 1
+fi
+code="$(curl -s -o "$TMP/planned.json" -w '%{http_code}' --max-time 900 -X POST -H 'Content-Type: application/json' \
+  -d "{\"ai\":\"$ai\",\"start\":$start,\"track\":$TRACK}" "$PANEL/api/bots/planned")"
+summary="$(py '
+import json, sys
+d = json.load(open(sys.argv[1]))
+print(len(d.get("settings") or ""), "started" if d.get("started") else "planned", (d.get("bot_settings") or {}).get("rail_after"))' "$TMP/planned.json" 2>/dev/null || echo "0 - -")"
+read -r nset how rail_after <<< "$summary"
+check "POST /api/bots/planned $how a planned $ai (http=$code; settings: $nset chars, rail_after=$rail_after)" \
+  "$([[ "$code" == 200 && ( "$start" == false || "$how" == started ) ]] && echo 1 || echo 0)"
+rest="$(curl -fs "$PANEL/api/events?since=$seq0&kinds=plan" || echo '{"events": []}')"
+got="$(py '
+import json, sys
+ev = json.loads(sys.argv[1])["events"]
+ok = lambda e: all(f in e["data"] for f in ("decision", "version", "inputs", "choice")) and e["data"]["version"].get("revision")
+print(" ".join(sorted({e["kind"] for e in ev if ok(e)})))' "$rest" 2>/dev/null || true)"
+check "GET /api/events has plan.portfolio and plan.bot_settings with {decision, version, inputs, choice} ($got)" \
+  "$([[ "$got" == *plan.bot_settings* && "$got" == *plan.portfolio* ]] && echo 1 || echo 0)"
+if [[ -n "${TAILPID:-}" ]]; then
+  wait "$TAILPID" 2>/dev/null || true
+  zgot="$(py '
+import json, sys
+print(" ".join(sorted({json.loads(l)["kind"] for l in open(sys.argv[1]) if l.strip()})))' "$TMP/plan.jsonl" 2>/dev/null || true)"
+  check "a ZeroMQ SUB client receives plan.portfolio and plan.bot_settings ($zgot)" \
+    "$([[ "$zgot" == *plan.bot_settings* && "$zgot" == *plan.portfolio* ]] && echo 1 || echo 0)"
+else
+  check "a ZeroMQ SUB client receives the plan events (mcp-bus-tail not built at $TAIL)" 0
+fi
+sleep 2
+q="$(curl -fs --get --data-urlencode "sql=SELECT kind, count(*) AS n FROM events WHERE kind IN ('plan.portfolio', 'plan.bot_settings') AND ts_ms >= $t0 AND json_extract_string(data, '$.version.revision') IS NOT NULL GROUP BY 1 ORDER BY 1" "$PANEL/api/db/query" || true)"
+sgot="$(py 'import json,sys; print(" ".join(f"{k}={n}" for k, n in json.loads(sys.argv[1])["rows"]))' "${q:-{\}}" 2>/dev/null || true)"
+check "the store's events hold this run's plan.portfolio and plan.bot_settings (${sgot:-none})" \
+  "$([[ "$sgot" == *plan.bot_settings=* && "$sgot" == *plan.portfolio=* ]] && echo 1 || echo 0)"
 
 printf '\nmcp-panel-check: %d passed, %d failed\n' "$PASS" "$FAIL"
 [[ "$FAIL" -eq 0 ]]

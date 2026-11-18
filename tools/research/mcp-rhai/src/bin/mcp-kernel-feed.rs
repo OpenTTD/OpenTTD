@@ -4,14 +4,17 @@
 //! /api/db/query, kept current by the ZeroMQ bus's game.sample envelopes). src/kernel_feed.rs
 //! holds the rules; this is the process around them.
 //!
-//! Usage: mcp-kernel-feed [--panel http://127.0.0.1:8800] [--window DAYS] [--no-store] [--no-bus]
+//! Usage: mcp-kernel-feed [--panel http://127.0.0.1:8800] [--window DAYS] [--no-store] [--no-bus] [--publish]
 //!
 //! Standard input: one JSON request per line, {id?, kernel, input?, company?}. Standard output: one
 //! `plan.kernel` event per request, {kind, data: {decision, version, kernel, inputs: {live, stored
 //! | fallback, kernel_input}, runner, choice}}, where `choice` is the kernel's answer. The process
 //! ends when standard input closes. --no-store feeds nothing from history (the A/B arm "as today");
 //! --no-bus keeps the seed only. AlgoGlyph is $MCP_ALGOGLYPH_DIR, else ~/dev/algoglyph-wt/main,
-//! else ~/dev/algoglyph. Reads only: GET /api/bus, POST /api/db/query, the bus.
+//! else ~/dev/algoglyph. Reads only (GET /api/bus, POST /api/db/query, the bus), unless --publish:
+//! then each event also goes to the panel's POST /api/bus/publish (plan.kernel is a kind the panel
+//! declares as external, src/panel_events.rs), so it reaches the bus, ZeroMQ and the store; the
+//! panel's answer is the printed event's `published`.
 //!
 //! Exit status: 0 when standard input ended, 2 on bad usage.
 use std::io::{BufRead, Write};
@@ -28,21 +31,25 @@ mod flow_serve;
 mod hub_algoglyph;
 #[path = "../kernel_feed.rs"]
 mod kernel_feed;
+#[path = "../panel_events.rs"]
+#[allow(dead_code)]
+mod panel_events;
 
 use kernel_feed::{Source, Window};
 
-const USAGE: &str = "usage: mcp-kernel-feed [--panel URL] [--window DAYS] [--no-store] [--no-bus]  (requests on stdin, one JSON per line: {id?, kernel, input?, company?})";
+const USAGE: &str = "usage: mcp-kernel-feed [--panel URL] [--window DAYS] [--no-store] [--no-bus] [--publish]  (requests on stdin, one JSON per line: {id?, kernel, input?, company?})";
 
 struct Args {
     panel: String,
     window: usize,
     store: bool,
     bus: bool,
+    publish: bool,
 }
 
 fn parse(argv: &[String]) -> Result<Args, String> {
     let mut a = Args { panel: std::env::var("PRISMATIC_PANEL").unwrap_or_else(|_| "http://127.0.0.1:8800".into()),
-                       window: 30, store: true, bus: true };
+                       window: 30, store: true, bus: true, publish: false };
     let mut it = argv.iter();
     while let Some(flag) = it.next() {
         let mut val = || it.next().cloned().ok_or(format!("{flag} needs a value"));
@@ -51,6 +58,7 @@ fn parse(argv: &[String]) -> Result<Args, String> {
             "--window" => a.window = val()?.parse().map_err(|_| "--window needs a number of days".to_string())?,
             "--no-store" => a.store = false,
             "--no-bus" => a.bus = false,
+            "--publish" => a.publish = true,
             other => return Err(format!("unknown argument {other}")),
         }
     }
@@ -68,6 +76,16 @@ fn query(panel: &str, sql: &str) -> Result<Value, String> {
         Ok(r) => r.into_json().map_err(|e| format!("{url}: {e}")),
         Err(ureq::Error::Status(code, r)) => Err(format!("{url}: {code} {}", r.into_string().unwrap_or_default())),
         Err(e) => Err(format!("{url}: {e}")),
+    }
+}
+
+/// Put one event on the panel's bus (POST /api/bus/publish): the panel's answer, or the error.
+fn publish(panel: &str, e: &Value) -> Value {
+    let url = format!("{panel}/api/bus/publish");
+    match ureq::post(&url).timeout(Duration::from_secs(10)).send_json(json!({"kind": e["kind"], "data": e["data"]})) {
+        Ok(r) => r.into_json().unwrap_or_else(|err| json!({"error": format!("{url}: {err}")})),
+        Err(ureq::Error::Status(code, r)) => json!({"error": format!("{url}: {code} {}", r.into_string().unwrap_or_default())}),
+        Err(err) => json!({"error": format!("{url}: {err}")}),
     }
 }
 
@@ -160,6 +178,9 @@ fn main() {
         let w = window.lock().unwrap();
         let mut e = kernel_feed::event(kernel, &input, &fed, &w, live, &answer, flow_serve::summary());
         drop(w);
+        if args.publish {
+            e["published"] = publish(&args.panel, &e);
+        }
         if let Some(id) = q.get("id") { e["id"] = id.clone(); }
         let _ = writeln!(out, "{e}");
         let _ = out.flush();

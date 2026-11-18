@@ -12,7 +12,7 @@ scope:
   - "tools/research/mcp-rhai/src/panel_bot.rs"
   - "tools/research/mcp-rhai/src/panel_decision.rs"
   - "tools/research/mcp-rhai/src/panel_results.rs"
-  - "tools/research/mcp-panel-check"
+  - "tools/research/mcp-panel-check --panel http://127.0.0.1:<a panel of your own stack> --start-bot PrismaticAI"
   - "research/mcp-control.md"
   - ".ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md"
 depends_on:
@@ -29,3 +29,23 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-18'
+started_at: 2026-11-18T03:46:12Z
+started_event: sha256:a6344580c6792bb81dff8e7642178d9936a9dd49be26fbd14c521a0e83cf5ca0
+updated_at: 2026-11-18T04:37:53Z
+verified_at: 2026-11-18T04:37:33Z
+verified_event: sha256:b2009379699b00012e856759509d9798f13db583a59a418c8d4ca5f05c60d77a
+completed_at: 2026-11-18T04:37:53Z
+completed_event: sha256:325e6ee4824c9577e29990fdb7651e16dfcab727455534d0df67612a5eecc538
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel (and --bin mcp-plan, mcp-kernel-feed, mcp-intent)"
+    result: "mcp-panel 61 passed, mcp-plan 28 passed, mcp-kernel-feed 21 passed, mcp-intent 25 passed, 0 failed; includes the kinds-table scan (no publish call names an undeclared kind, every declared panel kind has a producer, the knowledge region equals the table; a mutation adding g.event(\"bogus\") made it fail) and the settings_from_plan payload test against a fixed planner answer"
+    commit: a5517e1817aa7e3d15a59a870af250924a642003
+    recorded_at: 2026-11-18T04:37:41Z
+  - covers: "validation_run"
+    type: manual
+    command: "tools/research/mcp-e2e --no-gui --no-browser --seed 3 --panel-port 8847 --mcp-port 8747 --game-port 3987; tools/research/mcp-panel-check --panel http://127.0.0.1:8847 --start-bot PrismaticAI"
+    result: "mcp-panel-check 29 passed, 0 failed: GET /api/bus lists 35 kinds (plan.* 8 of 8), every topic seen declared, POST /api/bus/publish refuses a panel kind, POST /api/bots/planned started a planned PrismaticAI, plan.portfolio and plan.bot_settings in /api/events, on ZeroMQ (mcp-bus-tail) and in the store. All eight kinds exercised on the same stack (bot start, /api/bots/planned, /api/intent, /api/actionplan, /api/investment, /api/calibration, /api/decision/pull applied and refused, mcp-kernel-feed --publish): store select kind,count(*) where kind like 'plan.%' = action 1, bot_settings 3, calibration 1, directive 2, intent 1, investment 1, kernel 1, portfolio 3, equal to /api/events; plan.intent, plan.action, plan.kernel received by mcp-bus-tail --topic plan"
+    commit: a5517e1817aa7e3d15a59a870af250924a642003
+    recorded_at: 2026-11-18T04:37:46Z

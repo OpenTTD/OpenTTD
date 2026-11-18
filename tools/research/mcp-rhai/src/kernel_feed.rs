@@ -179,14 +179,19 @@ pub fn feed(kernel: &str, input: &Value, company: Option<i64>, w: &Window, store
     (Value::Object(m), fed)
 }
 
-/// The `plan.kernel` event of one call (ADR 0034 point 3: {decision, version, inputs, choice}).
+/// The `plan.kernel` event of one call (ADR 0034 point 3: {decision, version, inputs, choice}), a
+/// kind src/panel_events.rs declares as external: `mcp-kernel-feed --publish` puts it on the panel's
+/// bus through POST /api/bus/publish. `version` is the build's revision with the feeding rules and
+/// the window as its parameters.
 pub fn event(kernel: &str, kernel_input: &Value, fed: &Fed, w: &Window, live: Value, answer: &Value, runner: Value) -> Value {
     let stored = match fed {
         Ok(v) => json!({"query": w.seed.as_ref().ok(), "rows": w.rows(), "from_store": w.from_store, "from_bus": w.from_bus, "used": v}),
         Err(why) => json!({"fallback": why, "query": w.seed.as_ref().ok(), "seed_error": w.seed.as_ref().err(), "rows": w.rows()}),
     };
+    let version = crate::panel_events::version(json!({"rules": VERSION, "window_days": w.days,
+                                                      "feeds": FEEDS.iter().map(|(k, _)| *k).collect::<Vec<_>>()}));
     json!({"kind": "plan.kernel", "data": {
-        "decision": "algoglyph.kernel", "version": VERSION, "kernel": kernel,
+        "decision": "algoglyph.kernel", "version": version, "kernel": kernel,
         "inputs": {"live": live, "stored": stored, "kernel_input": kernel_input},
         "runner": runner, "choice": answer}})
 }
@@ -226,6 +231,10 @@ mod tests {
         assert_eq!(fed["trailing"]["from"], "1950-10-13");
         let e = event("action-plan", &input, &Ok(fed), &w, json!({}), &json!({"ok": true}), json!({}));
         assert_eq!(e["kind"], "plan.kernel");
+        assert!(crate::panel_events::declared("plan.kernel"));
+        assert_eq!(crate::panel_events::refuse_external("plan.kernel", &e["data"]), None, "the panel accepts it as it is");
+        assert_eq!(e["data"]["version"]["params"]["rules"], VERSION);
+        assert_eq!(e["data"]["version"]["revision"], crate::panel_events::REVISION);
         assert_eq!(e["data"]["inputs"]["stored"]["rows"], 4);
         assert_eq!(e["data"]["inputs"]["stored"]["from_store"], 4);
     }
