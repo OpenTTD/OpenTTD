@@ -31,24 +31,25 @@ Before designing anything, this fork's existing admin-network, scripting, and wo
 
 The realized architecture is **three independent repositories/services**, not two:
 
-```
-korczis/OpenTTD                openttd-prismatic-bridge         prismatic-platform
-(this repo)                    (standalone, GitLab)              (untouched so far)
-+------------------+           +------------------------+       +---------------------+
-| openttd -D        |          | Python 3 / FastAPI      |       | ~90 Elixir/Phoenix   |
-| dedicated server   | <--TCP-- |  bridge/admin_client.py |       | apps -- OSINT, DD,   |
-|  runs ai/          |  :3977  |  bridge/protocol.py     |       | Monte Carlo,         |
-|  PrismaticAI/*.nut  |  admin  |  bridge/main.py (REST + |<-HTTP-|  deduction, power     |
-|  (real Company AI,  |  net    |    /ws/events WebSocket)|  ??   |  graph, property      |
-|   externally        |         +------------------------+       |  intelligence, ...   |
-|   steerable)        |                                          |  (not integrated yet) |
-+--------------------+                                          +----------------------+
+```mermaid
+flowchart LR
+  subgraph fork["korczis/OpenTTD (this repo)"]
+    server["openttd -D<br/>dedicated server<br/>runs PrismaticAI/*.nut<br/>(a real company AI, steerable from outside)"]
+  end
+  subgraph bridge["openttd-prismatic-bridge (standalone, GitLab)"]
+    py["Python 3 / FastAPI<br/>bridge/admin_client.py<br/>bridge/protocol.py<br/>bridge/main.py (REST + /ws/events)"]
+  end
+  subgraph pp["prismatic-platform (untouched so far)"]
+    apps["~90 Elixir/Phoenix apps<br/>OSINT, due diligence, Monte Carlo,<br/>deduction, power graph, property intelligence…<br/>(not integrated yet)"]
+  end
+  py -- "TCP :3977 admin network" --> server
+  apps -. "HTTP ??" .-> py
 ```
 
 ```mermaid
 flowchart LR
     subgraph OpenTTD["korczis/OpenTTD -- openttd -D (dedicated server)"]
-        AI["ai/PrismaticAI/*.nut<br/>real Company AI script<br/>(lives in the bridge repo,<br/>installed into OpenTTD's<br/>personal ai/ directory)"]
+        AI["PrismaticAI/*.nut<br/>real Company AI script<br/>(lived in the bridge repo; since 2026-11-18<br/>tools/research/prismatic-ai in this fork,<br/>linked into OpenTTD's personal ai/ directory)"]
         World["Game world / companies / economy"]
         AdminSrv["Admin network listener<br/>network.server_admin_port"]
 
@@ -78,7 +79,7 @@ flowchart LR
 - **`prismatic-platform` doesn't need to speak OpenTTD's binary admin protocol at all.** That was the single biggest assumption this document originally made (an Elixir NIF client living inside the umbrella) and it turned out to be unnecessary — the standalone bridge already speaks it, in Python, and exposes a normal REST/WebSocket API instead. Whatever eventually calls `PRISMATIC_DECISION_URL` / gets polled by `/decision/pull` just needs to speak HTTP and return `{"ai": str, "company_id": int, "settings": str}` — trivial from any Elixir/Phoenix controller, no protocol work needed on that side.
 - **`prismatic_openttd_bridge` as an Elixir app inside `prismatic-platform` was never built, and doesn't need to be**, given the above — unless a future decision explicitly wants the admin-network client itself to live inside the Elixir umbrella instead of as a sibling service (see §7).
 - **Nothing about the OpenTTD game client or UI changes.** A human can still connect and play normally, or just watch; goal 4 from §1 ("UI reuse") is satisfied by construction — nothing here touches `src/video/`, `src/gfx.cpp`, or any widget code.
-- **`ai/PrismaticAI/*.nut` is real code that exists**, and it's *content* (a normal Company AI script, loaded from OpenTTD's personal `ai/` directory like any other), not an engine change — no `src/` modification was needed. Beyond proving the control path (settings are readable, a heartbeat is loggable) it now builds real routes driven by its settings string: a single-town bus route by default, and — with `intercity=1` — roads between towns built tile by tile, plus rail/air/freight lines the owner's planner selects (Phase 2, §5). `tools/research/bridge-live-check` exercises exactly this end to end on this tree.
+- **`ai/PrismaticAI/*.nut` is real code that exists** (since 2026-11-18 in this fork at [`tools/research/prismatic-ai/`](../../tools/research/prismatic-ai/README.md), beside the panel and scripts that steer it; the bridge repository keeps its earlier history), and it's *content* (a normal Company AI script, loaded from OpenTTD's personal `ai/` directory like any other), not an engine change — no `src/` modification was needed. Beyond proving the control path (settings are readable, a heartbeat is loggable) it now builds real routes driven by its settings string: a single-town bus route by default, and — with `intercity=1` — roads between towns built tile by tile, plus rail/air/freight lines the owner's planner selects (Phase 2, §5). `tools/research/bridge-live-check` exercises exactly this end to end on this tree.
 
 ### 3.1) Why Python/FastAPI, not Rust+Rustler — and what "Rust" would actually mean now
 

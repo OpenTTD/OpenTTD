@@ -623,6 +623,38 @@ def check_links(md: MarkdownIt, links: Links, doc: Doc, tokens) -> list[Finding]
     return found
 
 
+# A diagram drawn in characters: box-drawing and arrow glyphs, or ASCII boxes and arrows. A Markdown
+# diagram is Mermaid (rule project.docs-are-derived-and-current): GitHub, the wiki and the site
+# render it, a reader can maximize it, and tools/surfaces/diagrams-check proves it renders.
+ASCII_ART_RE = re.compile(r"[─│┌┐└┘┬┴┼═║╔╗╚╝▶◀▲▼→←↑↓]|\+-{2,}|-{2,}>|<-{2,}|=+>|\|\s{2,}\|")
+# A directory listing (├── name, └── name) is a list of paths, not a diagram: it is told by its
+# branch glyphs, so a lone │ under an arrow drawing does not make the drawing a tree.
+TREE_LINE_RE = re.compile(r"(?:├──|└──)")
+# Fence languages that are code or data, never a drawing.
+CODE_FENCES = {"mermaid", "bash", "sh", "shell", "zsh", "console", "json", "jsonc", "yaml", "yml", "toml",
+               "rust", "cpp", "c", "h", "js", "javascript", "mjs", "ts", "python", "py", "rhai", "squirrel",
+               "nut", "html", "css", "sql", "diff", "ini", "cfg", "make", "cmake", "dot", "xml", "go", "elixir"}
+
+
+def check_diagrams(doc: Doc, tokens) -> list[Finding]:
+    """Every fenced block drawn in characters, other than a directory listing, is a finding."""
+    found = []
+    for tok in tokens:
+        if tok.type != "fence":
+            continue
+        lang = tok.info.strip().split(" ")[0].lower()
+        if lang in CODE_FENCES:
+            continue
+        lines = [l for l in tok.content.splitlines() if l.strip()]
+        art = len(ASCII_ART_RE.findall(tok.content))
+        branches = sum(1 for l in lines if TREE_LINE_RE.search(l))
+        if art >= 3 and branches < 2:
+            line = (tok.map[0] + 1 if tok.map else 0) + doc.offset
+            found.append(Finding("diagram", doc.path, line,
+                                 "a diagram drawn in characters: draw it as a ```mermaid block (rule project.docs-are-derived-and-current)"))
+    return found
+
+
 def render_html(md: MarkdownIt, links: Links, doc: Doc, tokens) -> str:
     for tok, attr, _ in walk_links(tokens):
         if attr:
@@ -1712,6 +1744,7 @@ def run_check(repo: Repo, cfg: dict, docs: dict[str, Doc], layer: Layer) -> list
         if matches(path, skip):
             continue
         findings += check_links(md, links, doc, parsed[path])
+        findings += check_diagrams(doc, parsed[path])
     for name in ("site", "wiki"):
         out = Path(cfg[name]["out"])
         if out.is_absolute() or out.parts[:2] != tuple(GENERATED_ROOT.split("/")):

@@ -2292,6 +2292,19 @@ pub fn routes() -> Vec<Route> {
           s(json!({"name": st(), "arguments": obj()}), &["name"]), h_view_tool),
         r("POST", "/api/rhai", "rhai", "Run a Rhai script against this panel, in the panel's own process (tools/research/mcp-rhai)", false,
           s(json!({"script": st(), "timeout": {"type": "number"}}), &["script"]), h_rhai),
+        // The script library as a workspace (src/panel_scripts.rs, the Scripts page /scripts).
+        r("GET", "/api/scripts", "scripts", "Every Rhai script of the library ($MCP_RHAI_PATH, else tools/research/mcp-panel/rhai): its header comment as documentation, the libraries it imports, the scripts importing it (a library), and its service state", false, None, crate::panel_scripts::h_scripts),
+        r("GET", "/api/script", "script", "One script (?name=): its text, documentation, imports, modification time and the parser's verdict (error with line and column, or null)", false, None, crate::panel_scripts::h_script),
+        r("POST", "/api/script/check", "scriptCheck", "Parse a text as Rhai without running or saving it: the error with its line and column, or null", false,
+          s(json!({"text": st()}), &["text"]), crate::panel_scripts::h_script_check),
+        r("POST", "/api/script/save", "scriptSave", "Save a script into the library (only text that parses; 422 with the error otherwise). A running service on it, or on a script importing it, reloads within a second. Committing stays the owner's", false,
+          s(json!({"name": st(), "text": st()}), &["name", "text"]), crate::panel_scripts::h_script_save),
+        r("GET", "/api/services", "services", "The scripts running as services in this panel: running, started, reloads, the last line's sequence number and the files watched for hot reload", false, None, crate::panel_scripts::h_services),
+        r("POST", "/api/services/start", "serviceStart", "Start a script as a service in the background (rail_monitor, rail_steward, ...); it reloads when its file or a library it imports changes", false,
+          s(json!({"name": st()}), &["name"]), crate::panel_scripts::h_service_start),
+        r("POST", "/api/services/stop", "serviceStop", "Stop a service at its next operation; its log stays readable", false,
+          s(json!({"name": st()}), &["name"]), crate::panel_scripts::h_service_stop),
+        r("GET", "/api/services/log", "serviceLog", "A service's printed lines after ?since=<seq> (?name=): [{seq, text}], whether it runs, the last sequence number", false, None, crate::panel_scripts::h_service_log),
     ]
 }
 
@@ -2712,6 +2725,24 @@ impl Panel {
                     Err(_) => send_json(stream, 404, &json!({"error": "static/results.html is missing"})),
                 };
             }
+            // The script workspace: an editor for the Rhai library, its services and their logs
+            // (static/scripts.html, src/panel_scripts.rs); /scripts/<name> opens one script.
+            if path == "/scripts" || path.starts_with("/scripts/") {
+                let name = percent_decode(path.strip_prefix("/scripts/").unwrap_or(""));
+                let (title, description) = if name.is_empty() {
+                    ("Scripts".to_string(), "The Rhai library: edit with highlighting and live checks, run once, or run as a service that reloads on every change".to_string())
+                } else {
+                    (format!("{name}.rhai"), crate::panel_scripts::list(&crate::rhai_host::rhai_dir()).into_iter()
+                        .find(|s| s["name"] == json!(name)).and_then(|s| s["doc"].as_str().map(|d| d.lines().next().unwrap_or("").to_string())).unwrap_or_default())
+                };
+                return match std::fs::read_to_string(statics().join("scripts.html")) {
+                    Ok(t) => {
+                        let html = t.replace("__TITLE__", &html_escape(&title)).replace("__DESCRIPTION__", &html_escape(&description));
+                        hub::respond(stream, 200, "text/html; charset=utf-8", html.as_bytes())
+                    }
+                    Err(_) => send_json(stream, 404, &json!({"error": "static/scripts.html is missing"})),
+                };
+            }
             // The store's page: queries kept in the address, numeric columns charted (static/data.html).
             if path == "/data" {
                 return match std::fs::read_to_string(statics().join("data.html")) {
@@ -2919,8 +2950,10 @@ mod tests {
         // (GET /api/results, GET /api/result, POST and GET /api/duel), and the README scoreboard
         // (GET and POST /api/scoreboard), and the calibration store (GET and POST /api/calibration),
         // and the bus tap (GET /api/bus, GET /api/db/tables, GET and POST /api/db/query; ADR 0033),
-        // and the plan events' routes (POST /api/bus/publish, POST /api/bots/planned; I0081).
-        assert_eq!(rs.len(), 51);
+        // and the plan events' routes (POST /api/bus/publish, POST /api/bots/planned; I0081), and the
+        // script workspace (GET /api/scripts, GET /api/script, POST /api/script/check and /save, GET
+        // /api/services, POST /api/services/start and /stop, GET /api/services/log; panel_scripts.rs).
+        assert_eq!(rs.len(), 59);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -2931,7 +2964,9 @@ mod tests {
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",
             "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai",
             "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
-            "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query"].contains(&r.path)));
+            "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query",
+            "/api/scripts", "/api/script", "/api/script/check", "/api/script/save",
+            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log"].contains(&r.path)));
     }
 
     #[test]

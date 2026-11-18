@@ -46,6 +46,10 @@ const windowsHtml = (ui, classes) => ui.windows.map((w, i) => {
 const statsText = (ui) => `${ui.windows.length} windows · ${ui.windows.reduce((n, w) => n + (w.widgets || []).length, 0)} widgets · screen ${ui.screen.w}x${ui.screen.h}`;
 /** What openttd.ui.at found under a point. */
 const atText = (classes, x, y, at) => `(${x},${y}): ${classNameOf(classes, at.window?.class ?? at.class)}${at.widget ? ' / ' + widgetLabel(at.widget) : ''}${at.tile !== undefined ? ` · tile ${at.tile}` : ''}`;
+/** What the page says when openttd.ui.windows has no answer: a headless game (a duel, a --no-gui
+    stack) has no GUI client to read. The panel's own error, when it gave one, is kept. */
+const noClientText = (answer) => `No GUI client is attached to this game, so there are no windows to show: `
+  + `start the stack without --no-gui (tools/research/mcp-e2e) to join one.${answer && answer.error ? ` (${String(answer.error).slice(0, 160)})` : ''}`;
 const ARMED = { true: globalThis.PanelTONE.green, false: globalThis.PanelTONE.yellow };
 const armedBadge = (armed) => `${UI.badge} ${ARMED[!!armed]}`;
 
@@ -60,13 +64,15 @@ function className(c) { return classNameOf(classes, c); }
 
 function draw() {
   if (!ui) return;
-  const img = $('screen-img'); const k = img.clientWidth / ui.screen.w;
+  const img = $('screen-img');
   const sel = $('p-window'); const keep = state.window;
   sel.innerHTML = windowOptions(ui, classes);
   sel.value = [...sel.options].some((o) => o.value === keep) ? keep : 'all';
-  $('overlay').innerHTML = overlayHtml(ui, classes, state, k);
+  // The list and the numbers need no picture: a client without a window (the null video driver of
+  // a headless stack) has windows but no screenshot. The overlay waits for the picture's size.
   $('windows').innerHTML = windowsHtml(ui, classes);
   $('u-stats').textContent = statsText(ui);
+  $('overlay').innerHTML = img.clientWidth ? overlayHtml(ui, classes, state, img.clientWidth / ui.screen.w) : '';
 }
 
 async function refresh() {
@@ -74,7 +80,16 @@ async function refresh() {
     const next = new Image();
     next.onload = () => { $('screen-img').src = next.src; draw(); };
     next.src = `/api/view/screenshot?t=${Date.now()}`;
-    ui = await client('openttd.ui.windows', { widgets: true });
+    const answer = await client('openttd.ui.windows', { widgets: true });
+    if (!answer || !Array.isArray(answer.windows)) {
+      // Empty cards say nothing: name why there is nothing, and how to get it.
+      ui = null;
+      $('u-msg').textContent = noClientText(answer);
+      $('windows').innerHTML = `<p class="text-sm text-gray-500 dark:text-gray-400">${esc(noClientText(answer))}</p>`;
+      return;
+    }
+    ui = answer;
+    draw();
     const st = await client('openttd.input.state');
     armed = !!st.armed;
     const a = $('u-armed');
@@ -123,6 +138,6 @@ setInterval(refresh, 1500);
 if (typeof module !== 'undefined') {
   module.exports = {
     readState, stateQuery, classNameOf, widgetLabel, clean, windowOptions, overlayHtml, windowsHtml,
-    statsText, atText, armedBadge, draw, refresh, press,
+    statsText, atText, armedBadge, noClientText, draw, refresh, press,
   };
 }

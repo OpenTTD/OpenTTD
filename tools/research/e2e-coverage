@@ -1,0 +1,106 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY. Enforces rule project.web-ui-is-covered-end-to-end: every page of the web UI has an
+// end-to-end check that drives it in a real browser. What no such check drives does not exist.
+//
+// Pages: every page of every app the one shell declares (tools/research/mcp-panel/static/shell.js,
+// APPS: the panel and the hub), derived, never listed here. A page is "<app> <href>".
+// Checks: every tools/research/*-check that drives Chrome through playwright-core and declares, in a
+// comment line, what it covers:   // e2e-covers: panel /scripts, hub /viz
+// A declaration in a file that does not drive a browser is refused, so a page cannot be "covered"
+// by a check that never opens it; a declared page the shell does not have is refused too.
+//
+// Usage: tools/research/e2e-coverage [--json]
+//        tools/research/e2e-coverage --run --panel <panel-url> [--hub <hub-url>]
+// Exit 0 when every page is covered, 1 otherwise (each uncovered page named), 2 on bad usage.
+// --run also runs every declaring check against a live stack: a check covering panel pages gets
+// --panel, one covering only hub pages gets --hub (mcp-pages-check gets both); every check's verdict
+// is printed and any failure, or a check that could not run, fails the run. A check that needs the
+// hub is NOT RUN, and said so, when no --hub is given.
+import fs from 'node:fs';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const here = path.dirname(new URL(import.meta.url).pathname);
+
+/** Every page of the shell's apps: [{app, href, key, label}]. */
+export function shellPages(shellPath = path.join(here, 'mcp-panel', 'static', 'shell.js')) {
+  const { APPS } = createRequire(import.meta.url)(shellPath);
+  return Object.entries(APPS).flatMap(([app, a]) => a.pages.map((p) => ({ app, href: p.href, key: p.key, label: p.label })));
+}
+
+/** What a check file declares and whether it drives a browser: {file, covers: ["panel /x"], browser}. */
+export function declaredBy(file, text) {
+  const covers = [];
+  for (const m of text.matchAll(/^\s*(?:\/\/|#)\s*e2e-covers:\s*(.+)$/gm)) {
+    for (const item of m[1].split(',')) { const t = item.trim().replace(/\s+/g, ' '); if (t) covers.push(t); }
+  }
+  return { file, covers, browser: /playwright-core/.test(text) && /chromium\.launch\(/.test(text) };
+}
+
+/** Every check of the research tools with its declaration. */
+export function checks(dir = here) {
+  return fs.readdirSync(dir).filter((f) => f.endsWith('-check')).sort()
+    .map((f) => declaredBy(f, fs.readFileSync(path.join(dir, f), 'utf8')));
+}
+
+/** The verdict: {pages, covered: {page: [files]}, uncovered: [page], refused: [reason]}. */
+export function coverage(pages, found) {
+  const names = new Set(pages.map((p) => `${p.app} ${p.href}`));
+  const covered = {};
+  const refused = [];
+  for (const c of found) {
+    for (const page of c.covers) {
+      if (!c.browser) { refused.push(`${c.file} declares ${page} but drives no browser (playwright-core chromium.launch)`); continue; }
+      // A declared sub-page (/resource/<path>, /scripts/<name>) counts for the page it belongs to.
+      const [app, href = ''] = page.split(' ');
+      const owner = pages.filter((p) => p.app === app && (href === p.href || (p.href !== '/' && href.startsWith(p.href)) || (p.href === '/tools' && /^\/(tool|resource|client)\b/.test(href)) || (p.href === '/results' && href.startsWith('/result'))));
+      if (!owner.length && !names.has(page)) { refused.push(`${c.file} declares ${page}, which the shell does not have`); continue; }
+      for (const o of owner.length ? owner : [{ app, href }]) (covered[`${o.app} ${o.href}`] ||= []).push(c.file);
+    }
+  }
+  const uncovered = [...names].filter((n) => !covered[n]);
+  return { pages: [...names], covered, uncovered, refused };
+}
+
+/** The command lines --run executes: [{file, argv, apps}] for every check declaring coverage. */
+export function runPlan(found, panel, hub) {
+  return found.filter((c) => c.browser && c.covers.length).map((c) => {
+    const apps = [...new Set(c.covers.map((x) => x.split(' ')[0]))];
+    const argv = apps.includes('panel') ? [panel] : [hub];
+    if (apps.includes('panel') && apps.includes('hub') && hub) argv.push('--hub', hub);
+    return { file: c.file, argv, apps, runnable: !argv.includes('') && !argv.includes(undefined) };
+  });
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname)) {
+  const args = process.argv.slice(2);
+  if (args.includes('--run')) {
+    const opt = (n) => (args.includes(n) ? args[args.indexOf(n) + 1] : '');
+    const panel = opt('--panel'), hub = opt('--hub');
+    if (!panel) { console.error('usage: e2e-coverage --run --panel <panel-url> [--hub <hub-url>]'); process.exit(2); }
+    const { spawnSync } = await import('node:child_process');
+    let bad = 0;
+    for (const r of runPlan(checks(), panel, hub)) {
+      if (!r.runnable) { console.log(`NOT RUN  ${r.file}: it covers ${r.apps.join(' and ')} pages and no --hub was given`); bad++; continue; }
+      if (r.apps.includes('hub') && !hub) { console.log(`NOT RUN  ${r.file}: its hub pages (no --hub given); its panel pages run`); bad++; }
+      const out = spawnSync(path.join(here, r.file), r.argv, { encoding: 'utf8', timeout: 600000 });
+      const last = (out.stdout || '').trim().split('\n').filter(Boolean).pop() || out.error?.message || '(no output)';
+      const ok = out.status === 0;
+      if (!ok) bad++;
+      console.log(`${ok ? 'PASS    ' : 'FAIL    '} ${r.file} ${r.argv.join(' ')}: ${last}`);
+      if (!ok) for (const l of (out.stdout || '').split('\n').filter((x) => /^FAIL /.test(x))) console.log(`           ${l}`);
+    }
+    console.log(`e2e-coverage --run: ${bad ? `${bad} check(s) failed or did not run` : 'every browser check passed'}`);
+    process.exit(bad ? 1 : 0);
+  }
+  if (args.some((a) => a !== '--json')) { console.error('usage: e2e-coverage [--json] | --run --panel <url> [--hub <url>]'); process.exit(2); }
+  const v = coverage(shellPages(), checks());
+  if (args.includes('--json')) console.log(JSON.stringify(v, null, 2));
+  else {
+    for (const p of v.pages) console.log(`${v.covered[p] ? 'COVERED  ' : 'MISSING  '}${p}${v.covered[p] ? '  <- ' + [...new Set(v.covered[p])].join(', ') : ''}`);
+    for (const r of v.refused) console.log(`REFUSED  ${r}`);
+  }
+  const bad = v.uncovered.length + v.refused.length;
+  console.log(`e2e-coverage: ${v.pages.length - v.uncovered.length}/${v.pages.length} pages covered end to end${bad ? `, ${v.uncovered.length} missing, ${v.refused.length} refused` : ''}`);
+  process.exit(bad ? 1 : 0);
+}

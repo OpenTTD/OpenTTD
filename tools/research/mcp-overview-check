@@ -9,6 +9,8 @@
 // and said so, on a panel without the event store). Drives the installed Chrome through
 // playwright-core (npm ci in tools/research/mcp-panel).
 //
+// e2e-covers: panel /, panel /world, panel /data, panel /results, panel /result/<name>, panel /tool/<name>
+//
 // Usage: tools/research/mcp-overview-check http://127.0.0.1:<panel-port>   (exit 0 PASS, 1 FAIL)
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
@@ -65,11 +67,15 @@ try {
     `${hist.count} game day(s), last tick ${hist.last}, ${hist.samples.at(-1)?.companies.length ?? 0} company(ies)`);
 
   await page.goto(`${base}/?ov_metric=value`);
-  await page.waitForFunction(() => {
-    const b = document.getElementById('ov-companies');
+  // Every registered chart, not only the first: on a game seconds old the fleet has no vehicle yet,
+  // and one look failed a healthy panel (e2e-coverage --run, 2026-11-18). Up to two minutes of game
+  // for the bot's first vehicles; a chart that stays empty after that is a real failure.
+  const ids = (await charts(page)).map((c) => c.id);
+  await page.waitForFunction((ids) => ids.every((id) => {
+    const b = document.getElementById(id);
     const i = b && globalThis.echarts && globalThis.echarts.getInstanceByDom(b);
     return i && (i.getOption().series || []).some((s) => (s.data || []).length > 0);
-  }, null, { timeout: 30000 }).catch(() => {});
+  }), ids, { timeout: 120000, polling: 2000 }).catch(() => {});
   for (const c of await charts(page)) check(`${c.id} is drawn with data`, c.width > 0 && c.points > 0, `width ${c.width}, ${c.series} series, ${c.points} points`);
   check('the metric comes from the address', (await page.inputValue('#ov-metric')) === 'value');
 

@@ -42,7 +42,9 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-          cache-dependency-path: tools/surfaces/package-lock.json
+          cache-dependency-path: |
+            tools/surfaces/package-lock.json
+            tools/research/mcp-panel/package-lock.json
 
       - name: Check regions, links and anchors
         run: tools/surfaces/surfaces check
@@ -50,8 +52,19 @@ jobs:
       - name: Check the README scoreboard against research/results
         run: tools/research/readme-scoreboard --check
 
+      - name: Every web UI page has a browser check (rule project.web-ui-is-covered-end-to-end)
+        run: tools/research/e2e-coverage
+
       - name: Build the site
         run: tools/surfaces/surfaces site
+
+      - name: Install the browser driver (playwright-core, from the panel's lockfile)
+        run: npm ci --no-audit --no-fund --prefix tools/research/mcp-panel
+
+      - name: Every Mermaid diagram renders in Chrome (rule project.docs-are-derived-and-current)
+        env:
+          CHROME: /usr/bin/google-chrome
+        run: tools/surfaces/diagrams-check
 
       - name: Build the wiki
         run: tools/surfaces/surfaces wiki

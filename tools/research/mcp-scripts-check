@@ -1,0 +1,116 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY: the panel's Scripts page (/scripts) driven in a real Chrome against a running panel.
+//
+// e2e-covers: panel /scripts, panel /scripts/<name>
+//
+// Usage: tools/research/mcp-scripts-check <panel-url> [--shots DIR]
+//
+// It opens /scripts/<a script that is not a library>, and checks that:
+//   - the library lists every script GET /api/scripts names, with the open one marked;
+//   - the editor shows the file highlighted (token spans), numbered lines and an outline;
+//   - a parse error typed into the editor is marked on its line, and Save refuses it (422);
+//   - a check script it creates (zz_scripts_check_<pid>.rhai) is saved, runs once with its output
+//     streamed, starts as a service, and reloads when the file changes on disk (hot reload);
+//   - nothing overflows the page at phone width (390 px).
+// The check script is stopped and its file removed at the end, pass or fail. --shots writes a
+// desktop and a phone screenshot. Exit 0 when every check passes, 1 otherwise, 2 on bad usage.
+import fs from 'node:fs';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const here = path.dirname(new URL(import.meta.url).pathname);
+const { chromium } = createRequire(path.join(here, 'mcp-panel', 'package.json'))('playwright-core');
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const args = process.argv.slice(2);
+const base = (args.find((a) => !a.startsWith('--') && args[args.indexOf(a) - 1] !== '--shots') || '').replace(/\/$/, '');
+const shots = args.includes('--shots') ? args[args.indexOf('--shots') + 1] : '';
+if (!base) { console.error('usage: mcp-scripts-check <panel-url> [--shots DIR]'); process.exit(2); }
+
+const results = [];
+const check = (name, ok, detail = '') => { results.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` (${detail})` : ''}`); };
+const api = async (p, body) => {
+  const r = await fetch(base + p, body === undefined ? {} : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  return { status: r.status, ...(await r.json().catch(() => ({}))) };
+};
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const lib = await api('/api/scripts');
+if (!lib.scripts) { console.error(`mcp-scripts-check: ${base}/api/scripts did not answer`); process.exit(1); }
+const name = `zz_scripts_check_${process.pid}`;
+const libDir = lib.dir_abs || lib.dir;
+const file = path.join(libDir, `${name}.rhai`);
+const target = lib.scripts.find((s) => !s.library && s.imports.length) || lib.scripts[0];
+
+const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+try {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(`${base}/scripts/${target.name}`, { waitUntil: 'networkidle' });
+  await page.waitForFunction(() => document.querySelector('[data-input]')?.value.length > 0);
+
+  const listed = await page.$$eval('#script-list a[data-name]', (as) => as.map((a) => a.dataset.name));
+  check('the library lists every script', listed.length === lib.scripts.length, `${listed.length} of ${lib.scripts.length}`);
+  check('the open script is marked', (await page.$eval('#script-list [aria-current="page"]', (a) => a.dataset.name).catch(() => '')) === target.name);
+  const spans = await page.$$eval('[data-code] span', (s) => s.length);
+  const lines = await page.$$eval('[data-gutter] > div', (d) => d.length);
+  const text = await page.$eval('[data-input]', (t) => t.value);
+  check('the editor highlights the file', spans > 20, `${spans} token spans`);
+  check('every line is numbered', lines === text.split('\n').length, `${lines} lines`);
+  check('the header comment is its documentation', (await page.textContent('#doc')).trim().length > 10);
+  await page.waitForFunction(() => document.querySelector('#check')?.textContent === 'parses' || document.querySelector('#check')?.textContent.startsWith('line'), null, { timeout: 5000 }).catch(() => {});
+
+  // A parse error, typed: marked on its line, and Save refuses it.
+  await page.click('[data-input]');
+  await page.keyboard.press('Meta+ArrowDown').catch(() => {});
+  await page.keyboard.press('Control+End');
+  await page.keyboard.type('\nlet broken = ;\n');
+  await page.waitForFunction(() => document.querySelector('#check')?.textContent.startsWith('line'), null, { timeout: 5000 }).catch(() => {});
+  const badge = await page.textContent('#check');
+  check('a parse error is found while typing', /^line \d+/.test(badge), badge);
+  check('its line is marked in the gutter', (await page.$$eval('[data-gutter] > .text-red-400', (d) => d.length)) === 1);
+  const refused = await api('/api/script/save', { name: target.name, text: text + '\nlet broken = ;\n' });
+  check('Save refuses text that does not parse', refused.status === 422 && refused.saved === false, `HTTP ${refused.status}`);
+  check('the file on disk is untouched', fs.readFileSync(path.join(libDir, `${target.name}.rhai`), 'utf8') === text);
+  await page.click('#revert');
+  if (shots) { fs.mkdirSync(shots, { recursive: true }); await page.screenshot({ path: path.join(shots, 'scripts-desktop.png'), fullPage: true }); }
+
+  // A script of the check's own: created, run once, started as a service, hot-reloaded.
+  await page.fill('#new-name', name);
+  await page.click('#new-form button[type="submit"]');
+  await page.waitForURL(`**/scripts/${name}`, { timeout: 5000 }).catch(() => {});
+  check('a new script is created from the page', fs.existsSync(file));
+  fs.writeFileSync(file, `// The Scripts page check's own service.\nprint("check v1");\nloop { sleep(200); }\n`);
+  await page.waitForFunction(() => document.querySelector('[data-input]')?.value.includes('check v1'), null, { timeout: 5000 }).catch(() => {});
+  check('a file changed on disk is loaded into the editor', (await page.$eval('[data-input]', (t) => t.value)).includes('check v1'));
+  await page.click('#svc-start');
+  await page.waitForFunction(() => document.querySelector('#svc-log')?.textContent.includes('check v1'), null, { timeout: 8000 }).catch(() => {});
+  check('the service runs and its log streams in', (await page.textContent('#svc-log')).includes('check v1'));
+  await sleep(1100);
+  fs.writeFileSync(file, `// The Scripts page check's own service.\nprint("check v2");\nloop { sleep(200); }\n`);
+  await page.waitForFunction(() => document.querySelector('#svc-log')?.textContent.includes('check v2'), null, { timeout: 8000 }).catch(() => {});
+  const log = await page.textContent('#svc-log');
+  check('an edit reloads the running service (hot reload)', log.includes('reloaded') && log.includes('check v2'));
+  await page.click('#svc-stop');
+  await page.fill('[data-input]', 'print("ran once: " + (40 + 2));\n');
+  await page.click('#run');
+  await page.waitForFunction(() => document.querySelector('#run-out')?.textContent.includes('== exit'), null, { timeout: 8000 }).catch(() => {});
+  check('Run once streams the output and the exit', /ran once: 42[\s\S]*== exit 0/.test(await page.textContent('#run-out')));
+  check('no script error on the page', errors.length === 0, errors.join('; '));
+
+  // A phone: nothing wider than the screen.
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto(`${base}/scripts/${target.name}`, { waitUntil: 'networkidle' });
+  const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  check('no horizontal scroll at 390 px', over <= 0, `${over} px over`);
+  if (shots) await page.screenshot({ path: path.join(shots, 'scripts-phone.png'), fullPage: false });
+} finally {
+  await api('/api/services/stop', { name }).catch(() => {});
+  await sleep(300);
+  fs.rmSync(file, { force: true });
+  await browser.close();
+}
+const failed = results.filter((r) => !r).length;
+console.log(`${failed ? 'FAIL' : 'PASS'} mcp-scripts-check: ${results.length - failed}/${results.length}`);
+process.exit(failed ? 1 : 0);

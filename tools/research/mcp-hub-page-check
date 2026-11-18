@@ -6,6 +6,8 @@
 // Chrome through playwright-core (a dev dependency of tools/research/mcp-panel: npm ci there), as
 // tools/research/mcp-viz-check does, so nothing downloads a browser.
 //
+// e2e-covers: hub /
+//
 // Usage: tools/research/mcp-hub-page-check http://127.0.0.1:<hub-port> [--event-wait S]   (exit 0 PASS, 1 FAIL)
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';

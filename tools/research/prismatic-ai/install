@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: make OpenTTD find this checkout's PrismaticAI.
+#
+# OpenTTD loads company AIs from the `ai/` folder of its personal directory (docs/directory_structure.md;
+# macOS ~/Documents/OpenTTD, elsewhere ~/.local/share/openttd or $XDG_DATA_HOME/openttd). The bot's
+# source lives in this repository (tools/research/prismatic-ai/PrismaticAI), so the personal folder
+# holds a symlink to it, never a copy: an edit here is what the next `start_ai PrismaticAI` loads.
+#
+# Usage: tools/research/prismatic-ai/install [--personal DIR] [--check]
+#   --personal DIR   the personal directory (default: derived as above)
+#   --check          report where PrismaticAI resolves and exit 0 when it is this checkout, 1 otherwise
+# A folder that is not already a symlink here is moved aside to PrismaticAI.bak.<timestamp>, never
+# deleted. Running it from another worktree points the game at that worktree's bot.
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SRC="$HERE/PrismaticAI"
+PERSONAL="" CHECK=0
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --personal) PERSONAL="${2:?}"; shift 2 ;;
+    --check) CHECK=1; shift ;;
+    -h|--help) sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0"; exit 0 ;;
+    *) echo "usage: install [--personal DIR] [--check]" >&2; exit 2 ;;
+  esac
+done
+if [[ -z "$PERSONAL" ]]; then
+  if [[ "$(uname)" == Darwin ]]; then PERSONAL="$HOME/Documents/OpenTTD"
+  else PERSONAL="${XDG_DATA_HOME:-$HOME/.local/share}/openttd"; fi
+fi
+DEST="$PERSONAL/ai/PrismaticAI"
+target="$( [[ -L "$DEST" ]] && readlink "$DEST" || echo "")"
+if [[ "$CHECK" == 1 ]]; then
+  if [[ "$target" == "$SRC" ]]; then echo "PrismaticAI -> $SRC (this checkout)"; exit 0; fi
+  echo "PrismaticAI at $DEST is ${target:+a link to $target}${target:-not a link to this checkout}" >&2; exit 1
+fi
+mkdir -p "$PERSONAL/ai"
+if [[ "$target" == "$SRC" ]]; then echo "PrismaticAI already -> $SRC"; exit 0; fi
+if [[ -L "$DEST" ]]; then
+  rm "$DEST"
+elif [[ -e "$DEST" ]]; then
+  bak="$DEST.bak.$(date +%Y%m%dT%H%M%S)"
+  mv "$DEST" "$bak"
+  echo "moved the old folder aside: $bak"
+fi
+ln -s "$SRC" "$DEST"
+echo "PrismaticAI -> $SRC"

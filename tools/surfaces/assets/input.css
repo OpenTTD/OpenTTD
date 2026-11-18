@@ -68,3 +68,9 @@ article h4[id] {
 .nav-icon {
   @apply h-5 w-5 text-gray-500 dark:text-gray-400;
 }
+
+/* Mermaid diagrams: rounded nodes and a card that scrolls a wide diagram instead of squeezing it. */
+@layer components {
+  figure.diagram pre.mermaid { @apply m-0 overflow-x-auto bg-transparent p-0 text-center; }
+  figure.diagram svg .node rect, figure.diagram svg .node polygon, figure.diagram svg .cluster rect { rx: 10px; ry: 10px; }
+}

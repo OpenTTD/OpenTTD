@@ -44,7 +44,7 @@ up with the track that reaches it.
 - After a bay stop or depot, call `BuildRoad(front, tile)` and check
   `AreRoadTilesConnected(front, tile)`. If they are not connected, demolish the piece and try the
   next site. Never return an unconnected site.
-- PrismaticAI does this in `ai/PrismaticAI/roadstop.nut` (bridge repository):
+- PrismaticAI does this in `tools/research/prismatic-ai/PrismaticAI/roadstop.nut`:
   `StraightRoadFront`, `BuildBusStopNear`, `BuildDepotNear`. Observed live on 2026-11-15: every stop
   built as drive-through, depots connected with buses leaving them, and a 26-tile intercity road
   served by 4 buses.

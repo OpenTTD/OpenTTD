@@ -5,6 +5,8 @@
 // console stays free of errors. Drives the installed Chrome through playwright-core (a dev
 // dependency of tools/research/mcp-panel: npm ci there), so nothing downloads a browser.
 //
+// e2e-covers: hub /viz
+//
 // Usage: tools/research/mcp-viz-check http://127.0.0.1:<hub-port>[/viz?...]   (exit 0 PASS, 1 FAIL)
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
@@ -33,6 +35,13 @@ try {
     return box && box.offsetWidth > 0 && window.echarts && window.echarts.getInstanceByDom(box);
   }) && document.querySelector('#terrain canvas'), null, { timeout: 45000 }).then(() => true).catch(() => false);
   check('every chart and the terrain rendered within 45 s', ready);
+  // Data, not only a frame: a game seconds old has no cargo waiting yet, so wait up to two minutes
+  // for every chart to carry points (one look failed a healthy hub, e2e-coverage --run 2026-11-18).
+  await page.waitForFunction(() => ['graph', 'money', 'waiting'].every((id) => {
+    const c = window.echarts && window.echarts.getInstanceByDom(document.getElementById(id));
+    const o = c && c.getOption();
+    return o && o.series.some((s) => (s.data || []).length > 0);
+  }), null, { timeout: 120000, polling: 2000 }).catch(() => {});
   const charts = await page.evaluate(() => ['graph', 'money', 'waiting'].map((id) => {
     const c = window.echarts && window.echarts.getInstanceByDom(document.getElementById(id));
     const o = c && c.getOption();

@@ -7,7 +7,7 @@ this is the tooling that drives a running game through it. Everything binds to l
 
 1. Once: `tools/gate.sh research` (the MCP-enabled binary) and
    `cargo build --release` in `tools/research/mcp-rhai`. The base sets (OpenGFX, OpenSFX, OpenMSX)
-   go in `~/Documents/OpenTTD/baseset/`, `PrismaticAI` in `~/Documents/OpenTTD/ai/`.
+   go in `~/Documents/OpenTTD/baseset/`; `tools/research/prismatic-ai/install` links `PrismaticAI` into `~/Documents/OpenTTD/ai/`.
 2. `tools/research/mcp-e2e`: the game, MCP, your bot, the window at http://127.0.0.1:8800/ and a
    spectator client. Auto-approve is off: every change waits for your Approve.
 3. In the window: **My bot** sets the knobs of the AI that plays for you; **Control** pauses and
@@ -31,8 +31,8 @@ panel owns its console), starts the MCP server and the company AI `PrismaticAI`,
 window at http://127.0.0.1:8800/ and joins an OpenTTD GUI client as a spectator so the game is
 visible. Ctrl-C stops all of it. Options: `--auto-approve`, `--no-gui`, `--no-browser`, ports,
 `--seed`. Prerequisites: a base graphics set (`research/baseset-prerequisite-macos.md`; OpenSFX
-and OpenMSX for sound and music), and `PrismaticAI` in `~/Documents/OpenTTD/ai/` (from
-`~/dev/openttd-prismatic-bridge/ai/`).
+and OpenMSX for sound and music), and `PrismaticAI` in `~/Documents/OpenTTD/ai/` (a symlink to
+`tools/research/prismatic-ai/PrismaticAI` that `tools/research/prismatic-ai/install` makes).
 
 ## The control window (`tools/research/mcp-panel`)
 
@@ -46,6 +46,7 @@ and OpenMSX for sound and music), and `PrismaticAI` in `~/Documents/OpenTTD/ai/`
 | Pause / Resume | `openttd.game.set_pause` through the approval flow; pending approvals get an Approve button |
 | Auto-approve (full auto) | the operator's switch: the panel approves its own pending decisions; off by default |
 | MCP catalogue | `resources/list` and `tools/list`; click a resource to read it |
+| Scripts (`/scripts`, `/scripts/<name>`) | The Rhai library as a workspace: every script with its header comment, imports and importers; an editor with Rhai highlighting, line numbers, an outline and a live parse check; Save (only text that parses), Run once (streamed), and Start/Stop as a service whose log streams and which reloads within a second when its file or a library it imports changes ([`research/rail-steward.md`](rail-steward.md), `src/panel_scripts.rs`) |
 | Developer console (`~`) | OpenTTD console commands, `/mcp <method> [json]`, `/read <uri>`, `/pause`, `/resume`, `/approve <id>`, `/auto on/off`, `/rhai <script>` (every line streamed as the script prints it), `/tail [kinds]` and `/untail` (the live event feed). Output is highlighted by content: errors, warnings, passes, events, debug lines, and JSON pretty-printed with coloured keys and values |
 
 Loopback HTTP API, for any external controller (scripts, agents, Prismatic):
@@ -63,6 +64,9 @@ Loopback HTTP API, for any external controller (scripts, agents, Prismatic):
 | `POST /api/auto-approve` | `{"on": bool}` | |
 | `POST /api/rhai` | `{"script"}` | a Rhai script's output |
 | `POST /api/rhai/stream` | `{"script"}` | the same, streamed line by line (SSE `out`, `err`, `exit`) |
+| `GET /api/scripts`, `GET /api/script?name=` | | the library ($MCP_RHAI_PATH, else `tools/research/mcp-panel/rhai`), one script with its parse verdict |
+| `POST /api/script/check`, `POST /api/script/save` | `{"text"}`, `{"name", "text"}` | the parser's error with line and column; save only what parses (422 otherwise) |
+| `GET /api/services`, `POST /api/services/start`, `POST /api/services/stop`, `GET /api/services/log?name=&since=` | `{"name"}` | scripts running in the background, hot-reloaded on change, and their printed lines |
 
 A POST with a foreign `Origin` is refused.
 
@@ -140,6 +144,27 @@ Rule `project.panel-charts-go-through-one-layer` makes this blocking. Proof:
 - `tools/research/mcp-overview-check <panel-url>` checks in a real browser: the charts are drawn with
   data, the address survives a reload, maximize and Escape work, a click focuses, the phone width does
   not overflow, the World page draws, a tool page builds its form, and the console has no errors.
+
+### Every page is driven end to end (rule `project.web-ui-is-covered-end-to-end`)
+
+Every page of the panel and the hub has a Playwright check that opens it in Chrome against a live
+game. What no such check drives is treated as not built.
+
+| Command | What it does |
+|---|---|
+| `tools/research/e2e-coverage` | Derives the pages from the shell (`static/shell.js` `APPS`) and the coverage from each check's `// e2e-covers:` line. It fails on a page no browser check declares, and on a declaration in a file that drives no browser. `tools/gate.sh change` runs it on every change |
+| `tools/research/e2e-coverage --run --panel <url> --hub <url>` | Runs every declaring check against the live stack, each against the instance it covers, and fails if any fails or could not run |
+| `tools/research/mcp-pages-check <panel-url> [--hub <url>]` | `/ui`, `/tools`, a `/resource/` page, `/docs`, the hub's `/docs`: content, shell, no page error, no sideways scroll at 390 px |
+| `tools/research/mcp-scripts-check <panel-url>` | The Scripts page through its controls: highlighting, a typed parse error, a refused Save, a new script, a service and its hot reload, Run once |
+| `tools/research/real-game-check <panel-url>` | Whether a stack is ready for a real game against people ([`real-game.md`](real-game.md)) |
+
+The first run (2026-11-18) found two defects that every unit test had missed:
+
+- `/ui` showed empty cards on a game without a GUI client;
+- its window list waited for a screenshot that a windowless client never sends.
+
+It also showed that two older checks failed on a game seconds old. Both now wait up to two minutes
+for the game's first data.
 
 ### Duels on a click: run one, compare all
 
@@ -454,6 +479,11 @@ absent.
 - `mcp-e2e` joins the GUI client full screen at the display's size (`--window WxH` for a window),
   as a spectator named `owner-view`. The client always starts in OpenGFX (`-I` on every start, so
   a set saved by an earlier run, such as NoirGFX, cannot take over); `--gfx NAME` picks another.
+- `rhai/rail_monitor.rhai` watches the bot's railway (lost, crashed, broken-down and stopped
+  trains, lines without a train, the bot's rail warnings) and posts it to the Majordomus board as
+  `openttd:<instance>:rail`; `rhai/rail_steward.rhai` closes lines that lose money, lengthens and adds
+  trains where cargo waits (AlgoGlyph knapsack-dp over the spare money) and hands faster locomotives
+  to autoreplace. Both run from the Scripts page as services: [`research/rail-steward.md`](rail-steward.md).
 - `rhai/narrator.rhai` follows the event feed and reports in the running game, as chat from the
   server (`owner-bot`): every route the bot opens or fails to open, its knobs, companies founded or
   renamed, every MCP decision, pause and resume, and a summary at every new month with each
@@ -520,7 +550,7 @@ running bot shows the same controls bound to its current values with an Apply ea
 *waiting for approval #N* until the operator approves it, *applied* only once `openttd.ai.list`
 reads the new value back, and then offers an undo, which is the reverse change asking again.
 
-`PrismaticAI` (`~/dev/openttd-prismatic-bridge/ai/PrismaticAI`) reads `aggressiveness` (buses per
+`PrismaticAI` (`tools/research/prismatic-ai/PrismaticAI`) reads `aggressiveness` (buses per
 route), `max_routes` (towns served) and `cash_reserve` (money kept) again at every heartbeat. Its
 log lines reach the event feed as `ai.log`, because the panel runs the server with `-d script=4`.
 
@@ -640,7 +670,7 @@ the first town.
 When the panel starts the bot, it asks planner v3 for the best air pair and the best rail pair
 (budget `difficulty.max_loan`). It passes the pair to the bot as the settings `air_a` and `air_b` (town ids)
 and records the choice as an `ai` event ("planner: air A - B, N tiles, score S"). PrismaticAI
-(`ai/PrismaticAI/air.nut` in the bridge repository) flies that pair first:
+(`tools/research/prismatic-ai/PrismaticAI/air.nut`) flies that pair first:
 
 - each airport goes where it accepts the most passengers over its catchment;
 - if the town authority or the land refuses a site, the next one is tried;
@@ -649,7 +679,7 @@ and records the choice as an `ai` event ("planner: air A - B, N tiles, score S")
   airport.
 
 Rail works the same way. The panel passes the best rail pair as `rail_a` and `rail_b`, only when
-planner v3 scores it above zero. `ai/PrismaticAI/rail.nut` then builds it:
+planner v3 scores it above zero. `tools/research/prismatic-ai/PrismaticAI/rail.nut` then builds it:
 
 - each station's axis points at the other town, on the site that accepts the most passengers, with
   a free exit tile;

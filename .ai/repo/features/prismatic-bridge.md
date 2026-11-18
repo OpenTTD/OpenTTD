@@ -5,7 +5,7 @@ kind: feature
 title: Prismatic bridge steering a Company AI
 short_title: Bridge
 headline: Prismatic decides, a standalone bridge relays over the admin network, and a normal Company AI acts in the game.
-summary: The bridge (a sibling Python/FastAPI service, to be rewritten in Rust per ADR 0032) drives ai/PrismaticAI through rcon start_ai and, on this fork's research build, sets a running AI's settings through openttd.ai.set_setting; prismatic-platform answers the decision contract, and the MCP panel consumes it without the bridge.
+summary: The bridge (a sibling Python/FastAPI service, to be rewritten in Rust per ADR 0032) drives PrismaticAI (tools/research/prismatic-ai, moved here from the bridge's ai/ on 2026-11-18) through rcon start_ai and, on this fork's research build, sets a running AI's settings through openttd.ai.set_setting; prismatic-platform answers the decision contract, and the MCP panel consumes it without the bridge.
 status: draft
 weight: 40
 areas: [agent-integration]

@@ -404,6 +404,19 @@ json Engines()
 			{"price", static_cast<int64_t>(e->GetCost())}, {"running_cost_per_year", static_cast<int64_t>(e->GetRunningCost())},
 			{"reliability_pct", ToPercent16(e->reliability)}, {"buildable_by", std::move(buildable_by)},
 		};
+		if (e->type == VehicleType::Train) {
+			/* What a fleet decision needs without a Script API call per engine: a wagon or a locomotive,
+			 * its power, and the rail types it runs on (by label, as openttd://railtypes names them). */
+			const RailVehicleInfo &rvi = e->VehInfo<RailVehicleInfo>();
+			item["wagon"] = rvi.railveh_type == RailVehicleType::Wagon;
+			item["power_hp"] = e->GetPower();
+			json rails = json::array();
+			for (int i = RAILTYPE_BEGIN; i < RAILTYPE_END; i++) {
+				const RailType rt = static_cast<RailType>(i);
+				if (rvi.railtypes.Test(rt) && !GetRailTypeInfo(rt)->label.Empty()) rails.push_back(GetRailTypeInfo(rt)->label.AsString());
+			}
+			item["railtypes"] = std::move(rails);
+		}
 		if (e->type == VehicleType::Aircraft) {
 			uint8_t sub = AircraftVehInfo(e->index)->subtype;
 			item["plane_type"] = sub == 0 ? "helicopter" : ((sub & AIR_FAST) ? "big" : "small");

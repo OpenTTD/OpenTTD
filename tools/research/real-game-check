@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY. Is this stack ready for a real game against real opponents over the internet?
+// Checks a running panel against research/real-game.md and prints one line per item:
+// PASS, WARN (allowed, but the page says why not), FAIL (not ready) or NOT RUN (could not be read).
+//
+//   build      the game was built from a clean commit (openttd://meta/build openttd_version -g…, not -m…),
+//              so opponents can build the same revision; the research override never spoofs one
+//   mcp        the MCP endpoint is on loopback (127.0.0.1 or ::1)
+//   bot        PrismaticAI runs, and the personal ai/ folder points at this checkout (install --check)
+//   access     network.server_game_type is public or invite-only (local is a LAN game)
+//   password   network.server_password is set for a closed game (WARN when empty: an open game)
+//   approval   auto-approve is off: every change waits for the host (WARN when on)
+//   disclose   the bot's disclose_name is 1, so its company says it is an AI (WARN when 0)
+//   ui         tools/research/e2e-coverage passes: every web UI page has a browser check
+//
+// Usage: tools/research/real-game-check <panel-url>
+// Exit 0 when nothing FAILs (WARNs allowed), 1 otherwise, 2 on bad usage.
+import { spawnSync } from 'node:child_process';
+import path from 'node:path';
+
+const here = path.dirname(new URL(import.meta.url).pathname);
+const base = (process.argv[2] || '').replace(/\/$/, '');
+if (!base || process.argv.length > 3) { console.error('usage: real-game-check <panel-url>'); process.exit(2); }
+
+const rows = [];
+const say = (item, verdict, detail) => { rows.push(verdict); console.log(`${verdict.padEnd(8)} ${item.padEnd(9)} ${detail}`); };
+const get = async (p) => (await fetch(base + p)).json();
+const post = async (p, body) => (await fetch(base + p, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })).json();
+const setting = async (name) => {
+  const out = await post('/api/console', { command: `setting ${name}`, wait: 1 });
+  const line = (out.output || []).find((l) => l.includes(`'${name}'`)) || '';
+  return /is '([^']*)'/.exec(line)?.[1];
+};
+
+try {
+  const build = await get('/api/resource?uri=openttd://meta/build');
+  const v = (build.data || build).openttd_version || '';
+  if (!v) say('build', 'NOT RUN', 'openttd://meta/build gave no openttd_version');
+  else if (/-m[0-9a-f]{7,}/.test(v)) say('build', 'FAIL', `${v}: built from a modified tree; opponents cannot build this revision (commit, then build)`);
+  else say('build', 'PASS', `${v}: a revision opponents can build from the same commit`);
+} catch (e) { say('build', 'NOT RUN', e.message); }
+
+try {
+  const st = await get('/api/status');
+  const host = st.endpoint ? new URL(st.endpoint).hostname : '';
+  say('mcp', ['127.0.0.1', '[::1]', 'localhost'].includes(host) ? 'PASS' : 'FAIL', `MCP endpoint ${st.endpoint || '(none)'}`);
+  say('approval', st.auto_approve ? 'WARN' : 'PASS', st.auto_approve ? 'auto-approve is ON: the host\'s tooling acts without per-change approval' : 'auto-approve is off: every change waits for the host');
+} catch (e) { say('mcp', 'NOT RUN', e.message); }
+
+try {
+  const bots = await get('/api/bots');
+  const bot = (bots.running || []).find((b) => b.ai === 'PrismaticAI');
+  const inst = spawnSync(path.join(here, 'prismatic-ai', 'install'), ['--check'], { encoding: 'utf8' });
+  if (!bot) say('bot', 'FAIL', 'no PrismaticAI company runs');
+  else say('bot', inst.status === 0 ? 'PASS' : 'WARN', `${bot.name} (company ${bot.id}); ${(inst.stdout || inst.stderr).trim()}`);
+  const disclose = bot && (bot.settings || []).find((s) => s.name === 'disclose_name');
+  if (bot) say('disclose', disclose?.value === 1 ? 'PASS' : 'WARN', disclose ? `disclose_name=${disclose.value}` : 'this bot declares no disclose_name (an older PrismaticAI)');
+} catch (e) { say('bot', 'NOT RUN', e.message); }
+
+try {
+  const type = await setting('network.server_game_type');
+  if (type === undefined) say('access', 'NOT RUN', 'the console did not answer network.server_game_type');
+  else say('access', type === 'local' ? 'FAIL' : 'PASS', `network.server_game_type is '${type}'${type === 'local' ? ' (a LAN game: set invite-only or public)' : ''}`);
+  const pw = await setting('network.server_password');
+  if (pw === undefined) say('password', 'NOT RUN', 'the console does not show network.server_password');
+  else say('password', pw ? 'PASS' : 'WARN', pw ? 'a server password is set' : 'no server password: anyone with the address or invite code can join');
+} catch (e) { say('access', 'NOT RUN', e.message); }
+
+const cov = spawnSync(path.join(here, 'e2e-coverage'), [], { encoding: 'utf8' });
+say('ui', cov.status === 0 ? 'PASS' : 'FAIL', (cov.stdout || '').trim().split('\n').pop());
+
+const fail = rows.filter((r) => r === 'FAIL' || r === 'NOT RUN').length;
+const warn = rows.filter((r) => r === 'WARN').length;
+console.log(`real-game-check: ${fail ? 'NOT READY' : 'READY'} (${rows.length - fail - warn} pass, ${warn} warn, ${fail} fail or not run)`);
+process.exit(fail ? 1 : 0);

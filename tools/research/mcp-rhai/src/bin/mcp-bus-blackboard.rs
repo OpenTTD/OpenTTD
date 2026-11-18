@@ -35,8 +35,12 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::mpsc;
 use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
-use serde_json::{json, Value};
+use serde_json::Value;
 use zeromq::{Socket, SocketRecv};
+
+#[path = "../board.rs"]
+mod board;
+use board::{clip, Board};
 
 const USAGE: &str = "usage: mcp-bus-blackboard [--panel URL]... [--endpoint tcp://HOST:PORT]... [--majordomus URL] [--repo DIR] [--min-gap SECONDS] [--duration SECONDS] [--dry-run]";
 
@@ -48,10 +52,8 @@ const MAX_TEXT: usize = 480;
 const RECENT_KEEP: usize = 3;
 /// The kind prefixes subscribed to: what the digest reads, never the console or the AI log.
 const TOPICS: [&str; 4] = ["game.", "company.", "decision.", "plan."];
-/// How often the registry is read again, and the MCP session pinged (the server forgets a session
-/// silent for 90 s).
+/// How often the registry is read again (the MCP session is pinged on board::PING).
 const RESCAN: Duration = Duration::from_secs(30);
-const PING: Duration = Duration::from_secs(30);
 
 // ------------------------------------------------------------------------------------ the digest
 
@@ -101,16 +103,6 @@ fn compact(x: f64) -> String {
     }
     let s = if v.abs() >= 100.0 { format!("{v:.0}") } else if v.abs() >= 10.0 { format!("{v:.1}") } else { format!("{v:.2}") };
     format!("{s}{unit}")
-}
-
-/// Cut a line to `max` characters, marking the cut.
-fn clip(s: &str, max: usize) -> String {
-    if s.chars().count() <= max {
-        return s.to_string();
-    }
-    let mut out: String = s.chars().take(max.saturating_sub(1)).collect();
-    out.push('…');
-    out
 }
 
 /// "1950-03-01" -> "1950-03".
@@ -278,111 +270,6 @@ fn self_text(instances: &BTreeSet<String>, gap_ms: u64) -> String {
     clip(&format!("OpenTTD bus digest (mcp-bus-blackboard, research-only): following {list}; claims openttd:<instance>:month once per game month and openttd:<instance>:events on company/world/decision/plan events, at most one post per instance per {} s", gap_ms / 1000), MAX_TEXT)
 }
 
-// --------------------------------------------------------------------------------------- the board
-
-/// An MCP session on a Majordomus server's board (`POST /mcp`, JSON answers, no stream).
-struct Board {
-    url: String,
-    session: Option<String>,
-    dry: bool,
-    /// Every claim announced, so a re-initialised session says them again.
-    claims: BTreeMap<String, String>,
-    next_id: u64,
-    last_rpc: Instant,
-}
-
-impl Board {
-    fn new(url: &str, dry: bool) -> Self {
-        Board { url: url.trim_end_matches('/').to_string(), session: None, dry, claims: BTreeMap::new(), next_id: 1, last_rpc: Instant::now() }
-    }
-
-    fn post(&mut self, body: &Value) -> Result<Option<Value>, ureq::Error> {
-        let mut req = ureq::post(&format!("{}/mcp", self.url)).timeout(Duration::from_secs(10))
-            .set("Content-Type", "application/json").set("Accept", "application/json, text/event-stream");
-        if let Some(s) = &self.session { req = req.set("Mcp-Session-Id", s); }
-        let resp = req.send_json(body.clone())?;
-        self.last_rpc = Instant::now();
-        if let Some(s) = resp.header("Mcp-Session-Id") { self.session = Some(s.to_string()); }
-        if resp.status() == 202 || resp.status() == 204 { return Ok(None); }
-        Ok(resp.into_json::<Value>().ok())
-    }
-
-    fn initialize(&mut self) -> Result<(), String> {
-        self.session = None;
-        let init = json!({"jsonrpc": "2.0", "id": 0, "method": "initialize", "params": {
-            "protocolVersion": "2025-06-18", "capabilities": {},
-            "clientInfo": {"name": "openttd-bus-blackboard", "title": "OpenTTD bus digest", "version": env!("CARGO_PKG_VERSION")}}});
-        self.post(&init).map_err(|e| format!("{}/mcp initialize: {e}", self.url))?;
-        if self.session.is_none() { return Err(format!("{}/mcp: no Mcp-Session-Id in the answer", self.url)); }
-        let _ = self.post(&json!({"jsonrpc": "2.0", "method": "notifications/initialized"}));
-        Ok(())
-    }
-
-    /// One JSON-RPC call; a forgotten session (404) is opened again, its claims said again, and the
-    /// call retried once.
-    fn rpc(&mut self, method: &str, params: Value) -> Result<Value, String> {
-        for attempt in 0..2 {
-            if self.session.is_none() {
-                self.initialize()?;
-                let replay: Vec<(String, String)> = self.claims.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
-                for (claim, intent) in replay { self.call_announce(&claim, &intent)?; }
-            }
-            self.next_id += 1;
-            let body = json!({"jsonrpc": "2.0", "id": self.next_id, "method": method, "params": params});
-            match self.post(&body) {
-                Ok(v) => {
-                    let v = v.unwrap_or(Value::Null);
-                    if let Some(e) = v.get("error") { return Err(format!("{method}: {e}")); }
-                    return Ok(v["result"].clone());
-                }
-                Err(ureq::Error::Status(404, _)) if attempt == 0 => self.session = None,
-                Err(e) => return Err(format!("{}/mcp {method}: {e}", self.url)),
-            }
-        }
-        Err(format!("{method}: the session was forgotten twice"))
-    }
-
-    fn call_announce(&mut self, claim: &str, intent: &str) -> Result<(), String> {
-        let mut args = json!({"intent": intent, "scope": []});
-        if !claim.is_empty() { args["claim"] = json!(claim); }
-        self.next_id += 1;
-        let body = json!({"jsonrpc": "2.0", "id": self.next_id, "method": "tools/call", "params": {"name": "majordomus_announce", "arguments": args}});
-        let v = self.post(&body).map_err(|e| format!("announce {claim}: {e}"))?.unwrap_or(Value::Null);
-        if v.get("error").is_some() || v.pointer("/result/isError") == Some(&json!(true)) {
-            return Err(format!("announce {claim}: {}", clip(&v.to_string(), 300)));
-        }
-        Ok(())
-    }
-
-    /// Announce one claim (`""` is the bridge's unnamed one).
-    fn announce(&mut self, claim: &str, intent: &str) -> Result<(), String> {
-        self.claims.insert(claim.to_string(), intent.to_string());
-        if self.dry {
-            println!("announce {}: {intent}", if claim.is_empty() { "(unnamed)" } else { claim });
-            return Ok(());
-        }
-        if self.session.is_none() {
-            return self.rpc("ping", json!({})).map(|_| ());
-        }
-        match self.call_announce(claim, intent) {
-            Err(e) if e.contains("404") => { self.session = None; self.rpc("ping", json!({})).map(|_| ()) }
-            other => other,
-        }
-    }
-
-    fn keep_alive(&mut self) {
-        if !self.dry && self.last_rpc.elapsed() >= PING {
-            if let Err(e) = self.rpc("ping", json!({})) { eprintln!("mcp-bus-blackboard: {e}"); }
-        }
-    }
-
-    fn close(&mut self) {
-        if let (false, Some(s)) = (self.dry, self.session.take()) {
-            let _ = ureq::delete(&format!("{}/mcp", self.url)).timeout(Duration::from_secs(5)).set("Mcp-Session-Id", &s).call();
-        }
-    }
-}
-
 // ------------------------------------------------------------------------------------- discovery
 
 struct Args {
@@ -416,23 +303,9 @@ fn parse(argv: &[String]) -> Result<Args, String> {
     Ok(a)
 }
 
-/// The primary checkout of the repository around `dir`: the parent of git's common directory.
-fn primary_checkout(dir: Option<&str>) -> Option<String> {
-    let mut cmd = std::process::Command::new("git");
-    if let Some(d) = dir { cmd.arg("-C").arg(d); }
-    let out = cmd.args(["rev-parse", "--path-format=absolute", "--git-common-dir"]).output().ok()?;
-    let common = String::from_utf8(out.stdout).ok()?;
-    std::path::Path::new(common.trim()).parent().map(|p| p.display().to_string())
-}
-
 /// The Majordomus server: given, or the one `majordomus serve ensure` names for the repository.
 fn majordomus_url(args: &Args) -> Result<String, String> {
-    if let Some(u) = &args.majordomus { return Ok(u.clone()); }
-    let repo = primary_checkout(args.repo.as_deref()).or_else(|| args.repo.clone()).unwrap_or_else(|| ".".into());
-    let out = std::process::Command::new("majordomus").args(["serve", "ensure", "--format", "json", "--repo", &repo])
-        .stderr(std::process::Stdio::null()).output().map_err(|e| format!("majordomus serve ensure: {e}"))?;
-    let v: Value = serde_json::from_slice(&out.stdout).map_err(|e| format!("majordomus serve ensure: {e}"))?;
-    v["url"].as_str().map(str::to_string).ok_or(format!("majordomus serve ensure ({repo}): no url ({})", v["standing"]))
+    board::majordomus_url(args.majordomus.as_deref(), args.repo.as_deref())
 }
 
 fn registry() -> std::path::PathBuf {
@@ -562,7 +435,7 @@ fn main() {
     }
     // instances named by --endpoint are learnt from their envelopes
     instances.retain(|i| !i.starts_with("tcp://"));
-    let mut board = Board::new(&url, args.dry);
+    let mut board = Board::new(&url, args.dry, "openttd-bus-blackboard", "OpenTTD bus digest");
     if let Err(e) = board.announce("", &self_text(&instances, args.gap_ms)) {
         eprintln!("mcp-bus-blackboard: {e}");
         std::process::exit(3);
@@ -614,6 +487,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use serde_json::json;
 
     fn env(kind: &str, data: Value) -> Value {
         json!({"schema": "prismatic-bus/v1", "seq": 1, "ts_ms": 0, "instance": "panel-8800", "game_date": "1950-03-14", "kind": kind, "data": data})

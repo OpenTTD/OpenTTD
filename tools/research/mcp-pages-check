@@ -1,0 +1,84 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY. The panel pages no other browser check drives, in a real Chrome: the Interface page
+// (/ui), the MCP catalogue (/tools) and one resource's page from it, the API page (/docs, Swagger UI)
+// and, with --hub, the hub's API page. Each page must come up in the one shell with its sidebar entry
+// marked current, show its own content (not only the frame), throw no page error and not scroll
+// sideways at phone width (390 px).
+//
+// e2e-covers: panel /ui, panel /tools, panel /resource, panel /docs, hub /docs
+//
+// Usage: tools/research/mcp-pages-check <panel-url> [--hub <hub-url>] [--shots DIR]
+// Exit 0 when every check passes, 1 otherwise, 2 on bad usage. Drives the installed Chrome through
+// playwright-core (npm ci in tools/research/mcp-panel); CHROME overrides its path.
+import fs from 'node:fs';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const here = path.dirname(new URL(import.meta.url).pathname);
+const { chromium } = createRequire(path.join(here, 'mcp-panel', 'package.json'))('playwright-core');
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const argv = process.argv.slice(2);
+const opt = (name) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] : '');
+const flagValues = new Set([opt('--hub'), opt('--shots')].filter(Boolean));
+const base = (argv.find((a) => !a.startsWith('--') && !flagValues.has(a)) || '').replace(/\/$/, '');
+const hub = opt('--hub').replace(/\/$/, '');
+const shots = opt('--shots');
+if (!base) { console.error('usage: mcp-pages-check <panel-url> [--hub <hub-url>] [--shots DIR]'); process.exit(2); }
+
+const results = [];
+const check = (name, ok, detail = '') => { results.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` (${detail})` : ''}`); };
+
+/** One page: what it is, where, and the content that proves it rendered (a predicate run in the page). */
+const pages = [
+  { name: 'panel /ui', url: `${base}/ui`, key: 'ui',
+    content: () => (document.getElementById('windows')?.textContent.trim().length || 0) + (document.getElementById('u-msg')?.textContent.trim().length || 0) > 0,
+    what: 'the window list, or the message saying which client it waits for' },
+  { name: 'panel /tools', url: `${base}/tools`, key: 'tools',
+    content: () => document.querySelectorAll('#page a[href^="/tool/"], #page a[href^="/resource/"]').length > 5,
+    what: 'catalogue links to tool and resource pages' },
+  { name: 'panel /resource', url: `${base}/resource/game/state`, key: 'tools',
+    content: () => /openttd:\/\/game\/state/.test(document.body.textContent) && document.getElementById('page')?.textContent.trim().length > 40,
+    what: 'the resource page of openttd://game/state' },
+  { name: 'panel /docs', url: `${base}/docs`, key: null,
+    content: () => document.querySelectorAll('.opblock').length > 10,
+    what: 'Swagger UI with the declared operations' },
+];
+if (hub) {
+  pages.push({ name: 'hub /docs', url: `${hub}/docs`, key: null,
+    content: () => document.querySelectorAll('.opblock').length > 3, what: 'the hub\'s Swagger UI' });
+}
+
+const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+try {
+  for (const p of pages) {
+    const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    // 'load', not 'networkidle': a live page (/ui) polls its screenshot forever.
+    const resp = await page.goto(p.url, { waitUntil: 'load' }).catch((e) => ({ status: () => `error ${e.message}` }));
+    check(`${p.name}: answers`, resp && resp.status() === 200, `HTTP ${resp && resp.status()}`);
+    const rendered = await page.waitForFunction(p.content, null, { timeout: 15000 }).then(() => true).catch(() => false);
+    check(`${p.name}: shows ${p.what}`, rendered);
+    if (p.key) {
+      const current = await page.$eval('#sidebar [aria-current="page"]', (a) => a.getAttribute('href')).catch(() => '');
+      check(`${p.name}: in the one shell, its sidebar entry current`, !!current && (await page.$('#shell-nav')) !== null, current || 'no current entry');
+      check(`${p.name}: one H1, from the shell`, (await page.$$eval('h1', (h) => h.length)) === 1);
+    }
+    check(`${p.name}: no page error`, errors.length === 0, errors.join('; '));
+    if (shots) {
+      fs.mkdirSync(shots, { recursive: true });
+      await page.screenshot({ path: path.join(shots, `${p.name.replace(/[^a-z]+/gi, '-').replace(/^-|-$/g, '')}.png`) });
+    }
+    await page.setViewportSize({ width: 390, height: 900 });
+    await page.waitForTimeout(300);
+    const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    check(`${p.name}: no horizontal scroll at 390 px`, over <= 0, `${over} px over`);
+    await page.close();
+  }
+} finally {
+  await browser.close();
+}
+const failed = results.filter((r) => !r).length;
+console.log(`${failed ? 'FAIL' : 'PASS'} mcp-pages-check: ${results.length - failed}/${results.length}`);
+process.exit(failed ? 1 : 0);

@@ -77,11 +77,17 @@ json Vehicles()
 		list.push_back({
 			{"id", v->index.base()}, {"unit", v->unitnumber}, {"type", TypeName(v->type)}, {"owner", v->owner.base()},
 			{"engine", v->GetEngine() != nullptr ? GetString(STR_ENGINE_NAME, v->engine_type) : std::string{}},
+			{"engine_id", v->engine_type.base()},
 			/* Position from the vehicle's world coordinates: an aircraft in flight has no tile of its own. */
 			{"tile", v->tile.base()}, {"x", v->x_pos / static_cast<int>(TILE_SIZE)}, {"y", v->y_pos / static_cast<int>(TILE_SIZE)},
 			{"z", v->z_pos}, {"speed", v->cur_speed},
 			{"stopped", v->vehstatus.Test(VehState::Stopped)}, {"in_depot", v->IsStoppedInDepot()},
 			{"crashed", v->vehstatus.Test(VehState::Crashed)},
+			/* The pathfinder found no way to the vehicle's destination (the "is lost" news): on rail a
+			 * broken line or a turn the train may not take. Broken down: stopped now
+			 * (Vehicle::HandleBreakdown's breakdown_ctr 1), not the countdown before it. */
+			{"lost", v->vehicle_flags.Test(VehicleFlag::PathfinderLost)},
+			{"broken_down", v->breakdown_ctr == 1},
 			{"cargo_capacity", v->cargo_cap}, {"cargo_count", v->cargo.StoredCount()},
 			{"parts", parts}, {"consist_capacity", consist_capacity}, {"consist_count", consist_count},
 			{"profit_this_year", static_cast<int64_t>(v->GetDisplayProfitThisYear())},

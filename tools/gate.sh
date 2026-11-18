@@ -239,6 +239,8 @@ cmd_change() {
   tools/research/readme-scoreboard --check
   echo "==> tools/knowledge/refs check"
   tools/knowledge/refs check
+  echo "==> tools/research/e2e-coverage (rule project.web-ui-is-covered-end-to-end: every web UI page has a browser check)"
+  tools/research/e2e-coverage
   echo "==> tools/knowledge/refs impact HEAD (records citing what this change touches: re-read them)"
   tools/knowledge/refs impact HEAD
   echo "==> tools/knowledge/refs coverage src/ (tracked files no subsystem map attaches to; informational)"

@@ -175,3 +175,13 @@ test('without a GUI client the page says so', async () => {
   await env.tick();
   assert.match($('u-msg').textContent, /no GUI client attached yet \(503\)/);
 });
+
+test('a game without a GUI client answers with an error, and the page names why the cards are empty', async () => {
+  // What a headless stack (a duel, --no-gui) really answers: JSON without windows, no thrown error
+  // (tools/research/mcp-pages-check found the empty cards on such a game).
+  env.routes = () => ({ error: 'no GUI client has attached its MCP server' });
+  await env.tick();
+  assert.match($('u-msg').textContent, /No GUI client is attached to this game/);
+  assert.match($('u-msg').textContent, /no GUI client has attached its MCP server/, 'the panel\'s own reason is kept');
+  assert.match($('windows').innerHTML, /start the stack without --no-gui/);
+});

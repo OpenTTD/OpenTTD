@@ -9,7 +9,7 @@ status: verified
 epistemics: observed
 date: 2026-11-17
 tags: [bot, rail, pathfinding, planner, track-planning]
-about: tools/research/mcp-rhai/src/panel_bot.rs
+about: tools/research/prismatic-ai/PrismaticAI/rail.nut
 route: platform
 provenance:
   origin: authored
@@ -34,7 +34,8 @@ provenance:
 
 # Constraint
 
-The bridge repository's `ai/PrismaticAI/rail.nut` `FindRailPath` is an A* search over buildable
+PrismaticAI's `rail.nut` `FindRailPath` (in this repository since 2026-11-18, `tools/research/prismatic-ai`;
+the bridge-repository commits named below are its earlier history) is an A* search over buildable
 tiles. A water, road or rail tile ends a branch, and the search never places a bridge, a tunnel or
 a level crossing. A planned line whose only routes need one of these fails: the bot builds both
 stations, logs "no rail path between the stations; removing them", and falls back to buses.
@@ -102,6 +103,12 @@ Three later findings on seed 31337 (bridge repository, branch feat/live-behaviou
   (`mcp-human yard`, seed 4242: two lines into Drundstone from side-by-side platforms, both trains
   running). The executor lays the planned track itself, so the proof holds for it; the bot's own
   pathfinder can still wall a yard in.
+
+- **Lines trains can run, and two platforms per terminus** (2026-11-18, this repository): no
+  90-degree turn at either end or across a re-plan, a path-signalled two-platform throat, a depot
+  behind a platform, the laid line walked before a train is bought. See
+  [[rail-lines-a-train-can-turn-on]] and `research/rail-steward.md`. This supersedes the reverted
+  yards above for lines into one site: each line has its own two-platform terminus.
 
 - **More lines when money waits** (panel MAX_FREIGHT_LINES 16; bridge 2c01584). With eight lines the
   loan was repaid by month 30 and 308074 sat idle at month 36. Thirteen lines handed over, eleven

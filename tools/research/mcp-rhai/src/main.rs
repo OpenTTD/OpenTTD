@@ -24,6 +24,9 @@
 //!                                               the flow CLI of $MCP_ALGOGLYPH_DIR (hub_algoglyph.rs); throws
 //!                                               when there is no AlgoGlyph or the kernel refused
 //!   kernels()                          -> array every AlgoGlyph kernel with the input it reads
+//!   board_post(claim, text)            -> bool  announce a named claim on the Majordomus board (board.rs):
+//!                                               the server of this checkout, $MAJORDOMUS_URL, or printed
+//!                                               only with $MCP_BOARD_DRY set
 //!   env(name)
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
@@ -36,6 +39,8 @@ use std::time::Duration;
 #[path = "hub_algoglyph.rs"]
 #[allow(dead_code)]
 mod algoglyph;
+#[allow(dead_code)]
+mod board;
 mod graph;
 mod plan;
 
@@ -192,6 +197,23 @@ fn engine(panel: Panel) -> Engine {
         to_dyn(kernel_result(id, v)?)
     });
     e.register_fn("kernels", || -> R<Dynamic> { to_dyn(algoglyph::flow(&["kernels"], None)?) });
+    // The Majordomus board (board.rs): one session for the whole script, opened on the first post on
+    // the server `majordomus serve ensure` names for this checkout ($MAJORDOMUS_URL overrides), or
+    // printed only when $MCP_BOARD_DRY is set.
+    let shared: std::sync::Arc<std::sync::Mutex<Option<board::Board>>> = Default::default();
+    let b1 = shared.clone();
+    e.register_fn("board_post", move |claim: &str, text: &str| -> R<bool> {
+        let mut slot = b1.lock().map_err(|_| "board_post: the session lock is poisoned".to_string())?;
+        if slot.is_none() {
+            let dry = !std::env::var("MCP_BOARD_DRY").unwrap_or_default().is_empty();
+            let url = if dry { "(dry run)".to_string() } else { board::majordomus_url(None, None)? };
+            *slot = Some(board::Board::new(&url, dry, "openttd-rhai-board", "OpenTTD Rhai script"));
+        }
+        let b = slot.as_mut().expect("just set");
+        b.keep_alive();
+        b.announce(claim, &board::clip(text, 480))?;
+        Ok(true)
+    });
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));
     e.register_fn("to_json", |d: Dynamic| -> R<String> {
@@ -337,16 +359,22 @@ fn derive_hub(e: &mut Engine, hub: &str) -> Vec<String> {
     names
 }
 
+/// The script library: $MCP_RHAI_PATH, else this checkout's tools/research/mcp-panel/rhai. `import`
+/// resolves against it, and the panel's Scripts page (panel_scripts.rs) lists, edits and runs it.
+pub(crate) fn rhai_dir() -> std::path::PathBuf {
+    let dir = std::env::var_os("MCP_RHAI_PATH").filter(|v| !v.is_empty()).map(std::path::PathBuf::from)
+        .unwrap_or_else(|| std::path::PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel/rhai")));
+    // Without the `..`: the Scripts page shows where the library is.
+    dir.canonicalize().unwrap_or(dir)
+}
+
 /// The engine a script runs in: the built-ins, every function derived from the live panel at `base`
 /// (and from the hub, when given), and `import` resolved against MCP_RHAI_PATH, else the panel's
 /// rhai/ library. mcp-rhai runs one script in it; mcp-panel runs /api/rhai scripts in it in process.
 pub(crate) fn host(base: &str, hub: Option<&str>) -> Engine {
     let panel = Panel { base: base.trim_end_matches('/').to_string() };
     let mut engine = engine(panel.clone());
-    let lib = std::env::var("MCP_RHAI_PATH").unwrap_or_else(|_| {
-        concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel/rhai").to_string()
-    });
-    engine.set_module_resolver(rhai::module_resolvers::FileModuleResolver::new_with_path(lib));
+    engine.set_module_resolver(rhai::module_resolvers::FileModuleResolver::new_with_path(rhai_dir()));
     let (mut tools, commands) = derive(&mut engine, &panel);
     // The hub (research/mcp-hub.md): every instance of the cluster through one surface.
     if let Some(h) = hub { tools.extend(derive_hub(&mut engine, h.trim_end_matches('/'))); }
@@ -474,6 +502,139 @@ mod tests {
         let v: Vec<String> = out.iter().map(|x| x.to_string()).collect();
         assert_eq!(v, vec!["5", "119", "1118", "1", "2", "6", "true", "false", "true", "true", "true", "game.new_world", "true", "true", "2"],
                    "119 rail tiles -> one action at the newest tile; a station is a single structure; retried surveys -> the last; a survey and its outcome on one tile -> one action, the outcome");
+    }
+
+    /// An engine that resolves `import` from mcp-panel/rhai, as the panel's does.
+    fn lib_engine() -> Engine {
+        let mut e = Engine::new();
+        e.set_module_resolver(rhai::module_resolvers::FileModuleResolver::new_with_path(
+            concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel/rhai")));
+        e
+    }
+
+    /// The fixture every rail_lib test reads: one company (0) with a coal line from station 1 (tile
+    /// 2*64+2) to station 2 (tile 40*64+40) on a 64-wide map, its record logged twice (the newest
+    /// wins), a second company's record on the same slot, and a train maker.
+    const RAIL_FIXTURE: &str = r#"
+        import "rail_lib" as rl;
+        let ev = [
+            #{ kind: "ai.log", seq: 1, data: #{ company: 0, text: "PrismaticAI: rail line 1: label=COAL A - B|a=130|b=2600|cargo=1|platforms=2|len=3|depot=129|trains_max=2|wagons_fit=4|tiles=60|state=open" } },
+            #{ kind: "ai.log", seq: 2, data: #{ company: 0, text: "PrismaticAI: rail line 1: label=COAL A - B|a=130|b=2600|cargo=1|platforms=2|len=4|depot=129|trains_max=2|wagons_fit=6|tiles=60|state=open" } },
+            #{ kind: "ai.log", seq: 3, data: #{ company: 1, text: "PrismaticAI: rail line 1: label=WOOD C - D|a=3000|b=3100|cargo=7|platforms=1|len=3|depot=1|trains_max=1|wagons_fit=4|tiles=9|state=open" } },
+            #{ kind: "ai.log", seq: 4, data: #{ company: 0, text: "PrismaticAI: no rail path from tile 1 to 2 (90 tiles): every reachable tile tried, 1 nodes" } },
+            #{ kind: "ai.log", seq: 5, data: #{ company: 0, text: "PrismaticAI heartbeat: date=1 money=2" } },
+        ];
+        // As openttd://stations has them: the sign's x, y, the station's own tile, the catchment.
+        let stations = [ #{ id: 1, owner: 0, tile: 999, x: 3, y: 2, catchment_area: #{ x: 0, y: 0, w: 9, h: 7 } },
+                         #{ id: 2, owner: 0, tile: 2600, x: 40, y: 40, catchment_area: #{ x: 36, y: 36, w: 9, h: 7 } },
+                         #{ id: 3, owner: 1, tile: 3000, x: 56, y: 46, catchment_area: () },
+                         #{ id: 4, owner: 0, tile: 5, x: 5, y: 0, catchment_area: #{ x: 0, y: 0, w: 20, h: 20 } } ];
+        fn train(id, age, last, now, parts, cap, count) {
+            #{ id: id, type: "train", owner: 0, engine_id: 10, tile: 500, age: age, max_age: 7000,
+               profit_last_year: last, profit_this_year: now, parts: parts, consist_capacity: cap,
+               consist_count: count, value: 9000, crashed: false, lost: false, broken_down: false,
+               stopped: false, in_depot: false, reliability: 80, current_order: 0,
+               orders: [#{ type: "goto_station", destination: 1 }, #{ type: "goto_depot", destination: 9 }, #{ type: "goto_station", destination: 2 }] }
+        }
+        let engines = [
+            #{ id: 10, type: "rail", wagon: false, name: "Kirby", max_speed_kmh: 64, power_hp: 300, price: 6000, railtypes: ["RAIL"], buildable_by: [0] },
+            #{ id: 11, type: "rail", wagon: false, name: "Ginzu", max_speed_kmh: 128, power_hp: 1000, price: 9000, railtypes: ["RAIL"], buildable_by: [0] },
+            #{ id: 12, type: "rail", wagon: false, name: "Maglev", max_speed_kmh: 400, power_hp: 5000, price: 90000, railtypes: ["MGLV"], buildable_by: [0] },
+            #{ id: 13, type: "rail", wagon: true, name: "Coal truck", max_speed_kmh: 500, power_hp: 0, price: 500, railtypes: ["RAIL"], buildable_by: [0] },
+            #{ id: 14, type: "rail", wagon: false, name: "Unbuildable", max_speed_kmh: 300, power_hp: 900, price: 9000, railtypes: ["RAIL"], buildable_by: [] },
+        ];
+        let p = rl::policy();
+    "#;
+
+    fn rail(script: &str) -> Vec<String> {
+        let out: rhai::Array = lib_engine().eval(&format!("{RAIL_FIXTURE}\n{script}")).unwrap();
+        out.iter().map(|x| x.to_string()).collect()
+    }
+
+    /// A record is parsed from its own keys, the newest per company and slot wins, a line takes the
+    /// trains whose orders name both stations, other companies' records are not its lines, and a
+    /// record's tile finds its station by the station's own tile or else the smallest catchment.
+    #[test]
+    fn rail_lines_are_read_from_the_bots_records_and_the_trains_orders() {
+        let v = rail(r#"
+            let recs = rl::records_from_events(ev);
+            let lines = rl::lines_of(0, recs, [train(5, 10, 0, 0, 4, 90, 0)], stations, 64);
+            [recs.len(), recs[0].len, recs[0].wagons_fit, recs[0].label, lines.len(), lines[0].a, lines[0].b,
+             lines[0].trains.len(), rl::parse_record("PrismaticAI heartbeat: x") == (), rl::lines_of(1, recs, [], stations, 64).len(),
+             rl::station_at(stations, 130, 64).id, rl::station_at(stations, 2600, 64).id, rl::station_at(stations, 63 * 64, 64) == ()]
+        "#);
+        assert_eq!(v, vec!["2", "4", "6", "COAL A - B", "1", "1", "2", "1", "true", "1", "1", "2", "true"]);
+    }
+
+    /// The decisions, each from what the line did: close after a losing year and a losing this
+    /// year; lengthen while a trainload waits and the platform has room; then add a train up to the
+    /// platforms; drop the newest losing train while nothing waits; nothing for a young line.
+    #[test]
+    fn rail_targets_follow_from_profit_waiting_cargo_and_the_platforms() {
+        let v = rail(r#"
+            let recs = rl::records_from_events(ev);
+            let losing = rl::lines_of(0, recs, [train(5, 500, -3000, -100, 4, 90, 0)], stations, 64)[0];
+            let short = rl::lines_of(0, recs, [train(5, 500, 20000, 5000, 4, 90, 0)], stations, 64)[0];
+            let full = rl::lines_of(0, recs, [train(5, 500, 20000, 5000, 7, 180, 0)], stations, 64)[0];
+            let two = rl::lines_of(0, recs, [train(5, 900, 20000, 5000, 7, 180, 0), train(6, 450, -500, 100, 7, 180, 0)], stations, 64)[0];
+            let young = rl::lines_of(0, recs, [train(5, 30, -3000, -100, 4, 90, 0)], stations, 64)[0];
+            let maxed = rl::lines_of(0, recs, [train(5, 500, 1, 1, 7, 180, 0), train(6, 500, 1, 1, 7, 180, 0)], stations, 64)[0];
+            [rl::target(losing, 0, p).action, rl::target(losing, 0, p).trains,
+             rl::target(short, 200, p).action, rl::target(short, 200, p).wagons,
+             rl::target(full, 200, p).action, rl::target(full, 200, p).trains,
+             rl::target(two, 10, p).action, rl::target(two, 10, p).trains,
+             rl::target(young, 0, p) == (), rl::target(short, 20, p) == (), rl::target(maxed, 500, p) == ()]
+        "#);
+        assert_eq!(v, vec!["close", "0", "lengthen", "6", "add_train", "2", "shrink", "1", "true", "true", "true"]);
+    }
+
+    /// Choosing: closings always; the rest within the budget by gain per cost when no kernel is
+    /// given; nothing paid for without money.
+    #[test]
+    fn rail_choices_fit_the_budget_and_closing_is_always_chosen() {
+        let v = rail(r#"
+            let items = [
+                #{ target: #{ action: "close", slot: 1 }, value: #{ cost: 0, gain: 100 } },
+                #{ target: #{ action: "lengthen", slot: 2 }, value: #{ cost: 1000, gain: 500 } },
+                #{ target: #{ action: "add_train", slot: 3 }, value: #{ cost: 9000, gain: 900 } },
+                #{ target: #{ action: "lengthen", slot: 4 }, value: #{ cost: 3000, gain: 2400 } },
+            ];
+            let c = rl::choose(items, 4500, ());
+            let slots = []; for t in c.chosen { slots.push(t.slot); }
+            let broke = rl::choose(items, 0, ());
+            [`${slots}`, c.solver, broke.chosen.len()]
+        "#);
+        assert_eq!(v, vec!["[1, 4, 2]", "greedy gain per cost", "1"]);
+    }
+
+    /// Renewal: only a buildable locomotive on the same rails and enough faster; never a wagon,
+    /// never another rail type, never one the company cannot buy.
+    #[test]
+    fn rail_renewals_pick_the_fastest_buildable_locomotive_on_the_same_rails() {
+        let v = rail(r#"
+            let r = rl::renewals(0, [train(5, 10, 0, 0, 4, 90, 0)], engines, p);
+            [r.len(), r[0].from, r[0].to, rl::renewals(0, [], engines, p).len()]
+        "#);
+        assert_eq!(v, vec!["1", "10", "11", "0"]);
+    }
+
+    /// The monitor's report: crashed and lost first, then a line without a train, then the bot's rail
+    /// warnings; the digest counts each kind.
+    #[test]
+    fn rail_problems_rank_crashed_and_lost_trains_first() {
+        let v = rail(r#"
+            let recs = rl::records_from_events(ev);
+            let lost = train(5, 10, 0, 0, 4, 90, 0); lost.lost = true; lost.orders = [];
+            let broken = train(6, 10, 0, 0, 4, 90, 0); broken.broken_down = true; broken.orders = [];
+            let crashed = train(7, 10, 0, 0, 4, 90, 0); crashed.crashed = true; crashed.orders = [];
+            let lines = rl::lines_of(0, recs, [], stations, 64);
+            let ps = rl::problems(0, lines, [broken, lost, crashed], rl::rail_warnings(ev));
+            let kinds = []; for x in ps { kinds.push(x.kind); }
+            let d = rl::digest("panel-1", "1950-01-01", ps, 2);
+            [`${kinds}`, d.contains("1 lost"), d.contains("train 7 crashed"), rl::digest("panel-1", "d", [], 2)]
+        "#);
+        assert_eq!(v, vec![r#"["crashed", "lost", "unserved", "warning", "broken_down"]"#, "true", "true",
+                           "OpenTTD panel-1 d rail: no problems"]);
     }
 
     #[test]

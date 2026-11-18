@@ -36,6 +36,8 @@ mod panel_decision;
 mod panel_events;
 #[path = "../panel_results.rs"]
 mod panel_results;
+#[path = "../panel_scripts.rs"]
+mod panel_scripts;
 #[path = "../panel_store.rs"]
 mod panel_store;
 

@@ -140,6 +140,29 @@
 
   // ---------------------------------------------------------------- Mermaid
 
+  /** Mermaid in the site's own palette (the Flowbite primary and grays the pages use), one config for
+      light and dark: rounded nodes, smooth edges, labels that wrap, diagrams that fit their card. */
+  function mermaidConfig(dark) {
+    const ink = dark ? { bg: '#1F2937', node: '#111827', line: '#9CA3AF', text: '#F9FAFB', muted: '#D1D5DB', border: '#3F83F8', cluster: '#374151' }
+      : { bg: '#FFFFFF', node: '#EBF5FF', line: '#6B7280', text: '#111928', muted: '#374151', border: '#1A56DB', cluster: '#F3F4F6' };
+    return {
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+      themeVariables: {
+        fontSize: '15px', background: ink.bg, primaryColor: ink.node, primaryBorderColor: ink.border,
+        primaryTextColor: ink.text, secondaryColor: ink.cluster, tertiaryColor: ink.cluster,
+        lineColor: ink.line, textColor: ink.muted, clusterBkg: ink.cluster, clusterBorder: ink.line,
+        edgeLabelBackground: ink.bg, nodeBorder: ink.border, mainBkg: ink.node,
+        actorBkg: ink.node, actorBorder: ink.border, signalColor: ink.line, noteBkgColor: ink.cluster,
+      },
+      flowchart: { curve: 'basis', htmlLabels: true, useMaxWidth: true, padding: 14, nodeSpacing: 44, rankSpacing: 56 },
+      sequence: { useMaxWidth: true, mirrorActors: false },
+      mindmap: { useMaxWidth: true },
+    };
+  }
+
   const diagrams = document.querySelectorAll('pre.mermaid');
   let mermaidReady = null;
 
@@ -151,12 +174,7 @@
         el.removeAttribute('data-processed');
         el.textContent = el.dataset.src;
       });
-      window.mermaid.initialize({
-        startOnLoad: false,
-        securityLevel: 'strict',
-        theme: isDark() ? 'dark' : 'default',
-        fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
-      });
+      window.mermaid.initialize(mermaidConfig(isDark()));
       return window.mermaid.run({ nodes: diagrams });
     }).catch((err) => console.error('[surfaces] mermaid', err));
   }

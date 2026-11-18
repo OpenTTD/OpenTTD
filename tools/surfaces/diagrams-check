@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+// Every Mermaid diagram of the published site renders: each built page that carries a
+// <pre class="mermaid"> is opened in a real Chrome (playwright-core), and every diagram on it must
+// become an SVG without Mermaid's "Syntax error" or "Parse error" in it. GitHub renders the same
+// Markdown blocks, so a diagram that fails here fails for every reader of the repository too.
+//
+// Usage: tools/surfaces/diagrams-check [SITE_DIR] [--shots DIR]
+//   SITE_DIR  a built site (tools/surfaces/surfaces site; default target/web/site)
+//   --shots   one screenshot of the first diagram of every page, for a visual review
+// Exit 0 when every diagram renders, 1 when one does not (each named with its page), 2 on bad usage.
+// Pages are served from SITE_DIR over a loopback HTTP server the check starts and stops itself.
+import fs from 'node:fs';
+import http from 'node:http';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const here = path.dirname(new URL(import.meta.url).pathname);
+const root = path.resolve(here, '..', '..');
+const req = createRequire(path.join(root, 'tools', 'research', 'mcp-panel', 'package.json'));
+const { chromium } = req('playwright-core');
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const argv = process.argv.slice(2);
+const shots = argv.includes('--shots') ? argv[argv.indexOf('--shots') + 1] : '';
+const site = path.resolve(argv.find((a) => !a.startsWith('--') && a !== shots) || path.join(root, 'target', 'web', 'site'));
+if (!fs.existsSync(path.join(site, 'index.html'))) { console.error(`diagrams-check: no built site at ${site} (run tools/surfaces/surfaces site)`); process.exit(2); }
+
+const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
+const pages = walk(site).filter((f) => f.endsWith('.html') && fs.readFileSync(f, 'utf8').includes('class="mermaid'));
+
+const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.json': 'application/json' };
+const server = http.createServer((q, r) => {
+  const p = path.join(site, decodeURIComponent(new URL(q.url, 'http://x').pathname));
+  const f = fs.existsSync(p) && fs.statSync(p).isDirectory() ? path.join(p, 'index.html') : p;
+  if (!f.startsWith(site) || !fs.existsSync(f)) { r.writeHead(404); r.end(); return; }
+  r.writeHead(200, { 'Content-Type': TYPES[path.extname(f)] || 'application/octet-stream' });
+  fs.createReadStream(f).pipe(r);
+});
+await new Promise((ok) => server.listen(0, '127.0.0.1', ok));
+const base = `http://127.0.0.1:${server.address().port}`;
+
+let bad = 0, total = 0;
+const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+try {
+  const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+  for (const f of pages) {
+    const rel = path.relative(site, f);
+    await page.goto(`${base}/${rel}`, { waitUntil: 'load' });
+    await page.waitForFunction(() => [...document.querySelectorAll('pre.mermaid')].every((p) => p.querySelector('svg') || p.dataset.processed), null, { timeout: 20000 }).catch(() => {});
+    const found = await page.$$eval('pre.mermaid', (ps) => ps.map((p, i) => {
+      const svg = p.querySelector('svg');
+      const text = svg ? svg.textContent : '';
+      return { i, svg: !!svg, error: !svg || /Syntax error|Parse error|error in text/i.test(text) ? (text.slice(0, 120) || 'not rendered') : '', head: (p.dataset.src || '').split('\n')[0] };
+    }));
+    for (const d of found) {
+      total++;
+      if (d.error) { bad++; console.log(`FAIL ${rel} diagram ${d.i + 1} (${d.head}): ${d.error}`); }
+    }
+    if (shots && found.length) {
+      fs.mkdirSync(shots, { recursive: true });
+      const el = await page.$('figure.diagram');
+      if (el) await el.screenshot({ path: path.join(shots, rel.replace(/[\/]/g, '__').replace(/\.html$/, '.png')) });
+    }
+  }
+} finally {
+  await browser.close();
+  server.close();
+}
+console.log(`diagrams-check: ${total - bad}/${total} diagrams render on ${pages.length} page(s)`);
+process.exit(bad ? 1 : 0);

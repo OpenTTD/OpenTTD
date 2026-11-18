@@ -8,7 +8,8 @@ sources are its tracked Markdown, its git history and its `.ai/` layer. The outp
 | Site | `surfaces site` | Every Markdown document as a page, plus an overview with interactive charts, the `.ai/` layer (features, decisions, rules, plan, dependency graph) and search | GitHub Pages |
 | Wiki | `surfaces wiki` | The same documents as wiki pages: `Home`, a sidebar, links rewritten to pages | The repository's GitHub wiki |
 | Markdown regions | `surfaces sync` | Tables inside the documents themselves (document indexes, features, decisions, rules, plan, surfaces), between markers | The repository |
-| Gate | `surfaces check` | Fails while a region is stale, a relative link or anchor leads nowhere, a document's front matter does not parse, or a tool's flags and its usage disagree | Pre-commit, `tools/gate.sh`, CI |
+| Gate | `surfaces check` | Fails while a region is stale, a relative link or anchor leads nowhere, a document's front matter does not parse, a tool's flags and its usage disagree, or a diagram is drawn in characters instead of Mermaid | Pre-commit, `tools/gate.sh`, CI |
+| Diagrams | `diagrams-check` | Opens every built page with a Mermaid block in Chrome and fails on a diagram that does not render to an SVG | CI, after `site` |
 
 Nothing in the generator names a repository. Every fact comes from git (`origin`, `HEAD`,
 the tracked files, the log), from the `.ai/manifest.yaml` sections, and from each
@@ -129,8 +130,13 @@ elsewhere, which are fixed where they come from.
   grouped by top-level directory, a breadcrumb, cards and tables. It is built from
   `assets/input.css` with Tailwind 4, Flowbite 4 and `flowbite-typography`.
 - **Front-end libraries.** Mermaid 12 renders diagrams and Apache ECharts 6 renders charts.
-  Both are copied from `node_modules` and loaded only on pages that need them. Nothing is
-  fetched from a CDN at view time.
+  Both come from `node_modules` at the versions `package-lock.json` pins, and each loads only on
+  pages that need it. This is the same release a CDN would serve, published with the site, so the
+  page never depends on a third party at view time and every build renders the same.
+- **Diagrams in the site's palette.** `assets/app.js` `mermaidConfig` gives Mermaid the site's
+  palette in light and dark, with the Flowbite primary for borders and the grays of the cards,
+  rounded nodes and smooth edges. Every diagram sits in a card with a maximize button, and Escape
+  restores it.
 - **Links.** A relative link to a published document becomes a link to its page, with
   GitHub-compatible heading anchors. A link to any other tracked file goes to GitHub at
   the exact commit the site was built from. Images load from that same commit.
@@ -163,10 +169,27 @@ workflow copies the pages with `rsync --checksum`, so a page whose size and time
 the old one is still replaced. Each sync replaces the whole
 wiki: any edit made in the wiki is overwritten, and the footer of every page says so.
 
+## Diagrams
+
+A Markdown diagram is a ```mermaid block (rule `project.docs-are-derived-and-current`). GitHub
+and the wiki render it natively, and the site renders it in its own palette. Two gates keep it
+so:
+
+- `surfaces check` (`check_diagrams`) fails on a fenced block drawn in characters: box-drawing or
+  arrow glyphs, or ASCII boxes and arrows. Code and data fences are exempt, and so is a directory
+  listing, told by its `├──` and `└──` branches. Upstream's documents are exempt through
+  `[check] exclude`.
+- `diagrams-check [SITE_DIR] [--shots DIR]` serves a built site on loopback, opens every page that
+  carries a diagram in Chrome (`playwright-core`, `CHROME` overrides the path), and fails on any
+  diagram that does not become an SVG or shows Mermaid's syntax error. `--shots` saves the first
+  diagram of each page for a visual review.
+
+`tools/research/test_surfaces_diagrams.py` pins what the detector flags and what it leaves alone.
+
 ## In CI
 
-`.github/workflows/surfaces.yml` runs `check`, `site` and `wiki` on every push and pull
-request. From the default branch only, it deploys the site to Pages and pushes the wiki.
+`.github/workflows/surfaces.yml` runs `check`, `site`, `diagrams-check` and `wiki` on every push
+and pull request, and `tools/research/e2e-coverage` (every web UI page has a browser check). From the default branch only, it deploys the site to Pages and pushes the wiki.
 The checkout is full-history but blobless, because the charts read the commit log.
 
 ## Enforcement
@@ -186,6 +209,7 @@ The project rule `project.published-surfaces-are-derived` states the contract.
 |---|---|
 | `surfaces` | Entry point. Creates the virtual environment, then runs `surfaces.py` |
 | `surfaces.py` | The generator: discovery, rendering, regions, check |
-| `assets/input.css`, `assets/app.js` | The site's stylesheet source and client script |
+| `assets/input.css`, `assets/app.js` | The site's stylesheet source and client script (Mermaid theme, ECharts builders, maximize) |
+| `diagrams-check` | Every Mermaid diagram of a built site renders, in Chrome |
 | `package.json`, `package-lock.json` | Pinned front-end dependencies |
 | `requirements.txt` | Pinned Python dependencies |
