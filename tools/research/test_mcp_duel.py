@@ -458,5 +458,22 @@ class Verdict(unittest.TestCase):
             self.assertEqual([(r["a"], r["b"], r["won"]) for r in runs], [(950946, 9852, True)])
 
 
+
+class Names(unittest.TestCase):
+    """Two duels ending in the same second (a held-start A/B pair) get two records: the second is
+    named -2, never written over the first (2026-11-18: one record of a pair was lost that way)."""
+
+    def test_a_taken_name_gets_a_number(self):
+        with tempfile.TemporaryDirectory() as d:
+            results = Path(d)
+            first = duel.unique_base(results, "duel-20261118T092354-seed4242")
+            self.assertEqual(first.name, "duel-20261118T092354-seed4242")
+            Path(f"{first}.json").write_text("{}")
+            second = duel.unique_base(results, "duel-20261118T092354-seed4242")
+            self.assertEqual(second.name, "duel-20261118T092354-seed4242-2")
+            Path(f"{second}.md").write_text("")
+            self.assertEqual(duel.unique_base(results, "duel-20261118T092354-seed4242").name, "duel-20261118T092354-seed4242-3")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -75,7 +75,7 @@ The bot builds and the steward decides. The bot then reconciles the line to the 
 (`lines.nut` `ReconcileLines`).
 
 1. **Record.** Every line logs one record at build time and again every game month:
-   `PrismaticAI: rail line <slot>: label=…|a=…|b=…|cargo=…|platforms=…|len=…|depot=…|trains_max=…|wagons_fit=…|tiles=…|state=…`.
+   `PrismaticAI: rail line <slot>: label=…|a=…|b=…|st_a=…|st_b=…|cargo=…|platforms=…|len=…|depot=…|trains_max=…|wagons_fit=…|tiles=…|state=…`.
    The panel stamps each ai.log event with its company.
 2. **Read** (`rail_lib.rhai`). The steward joins the records with `openttd://vehicles` (trains
    whose orders name both stations), `openttd://stations` and `openttd://engines`. Waiting cargo

@@ -44,7 +44,9 @@ flowchart TB
 - **Lines as desired state** (`lines.nut`). Each line has a slot and logs a record
   (`PrismaticAI: rail line <slot>: label=...|a=...|...|state=...`) when built and every game month.
   The settings `line<N>_trains` and `line<N>_wagons` are targets; the bot clones, resizes, sells, or
-  closes and demolishes a line to match. The bot never decides there; it reconciles.
+  closes a line to match, removing only what the line owns: its track (a level crossing keeps its
+  road), its own platforms (`AIRail.RemoveRailStationTileRectangle`, never a whole joined station)
+  and its throats and depot. The bot never decides there; it reconciles.
 - **Every build step checks the game's answer.** A step that fails is logged and skipped; the
   API's return values are the source of truth (header of `main.nut`).
 

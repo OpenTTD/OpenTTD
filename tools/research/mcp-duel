@@ -585,14 +585,26 @@ Both compete for the same towns and industries. {values}
 """
 
 
+def unique_base(results, name):
+    """The record's path without extension: `name`, or `name` with -2, -3, ... when a duel that
+    ended in the same second already took it."""
+    base, n = results / name, 1
+    while Path(f"{base}.json").exists() or Path(f"{base}.md").exists():
+        n += 1
+        base = results / f"{name}-{n}"
+    return base
+
+
 def main(argv):
     port, months, seed, label, root, opponent, bot_settings = argv
     cfg = {"months": int(months), "seed": int(seed), "label": label, "root": Path(root), "opponent": opponent,
            "bot_settings": bot_settings, "start_paused": int(os.environ.get("PRISMATIC_START_PAUSED") or 0)}
     out = duel(Panel(port), cfg)
-    rec, base = out["record"], cfg["root"] / "research" / "results" / out["name"]
+    rec, base = out["record"], unique_base(cfg["root"] / "research" / "results", out["name"])
     base.parent.mkdir(parents=True, exist_ok=True)
-    with open(f"{base}.json", "w") as f:
+    # Exclusive create: a duel run beside another (a held-start A/B pair) that ends in the same
+    # second never overwrites its partner's record (2026-11-18: one of a pair was lost that way).
+    with open(f"{base}.json", "x") as f:
         json.dump(rec, f, indent=2)
     with open(f"{base}.md", "w") as f:
         f.write(markdown(rec, out["b_name"]))

@@ -43,7 +43,11 @@ owner's approval unless the owner switched auto-approve on
 - a train with a different wagon count is sent to the depot, resized there and started again;
 - a missing train is cloned with shared orders;
 - a surplus train is sold;
-- a closing line sells its trains, then demolishes its track, stations and depot.
+- a closing line sells its trains, then removes its track, its own platforms and throats and its
+  depot, and nothing that is not its own: a level crossing keeps its road, and a station shared
+  with another line keeps that line's platforms. A reconciler that clears more than it owns
+  damages its neighbours, which is the same failure in a real system as in the game. An
+  independent review found exactly that in the first version.
 
 A target is capped by what the line can hold (`wagons_fit`). The rail-steward page records a run
 where a target above that cap was capped and caused no resizing loop.
