@@ -5,7 +5,8 @@
 //! Starts a headless dedicated server, owns its console, starts its MCP server (the bearer token
 //! stays in this process) and a company AI, and serves the control window, its declared and derived
 //! routes, /openapi.json, /docs (Swagger UI), the event bus (REST and SSE) and Rhai scripts in process
-//! on http://127.0.0.1:<panel-port>/. See src/panel.rs and research/mcp-control.md.
+//! on http://127.0.0.1:<panel-port>/; the bus also goes out on ZeroMQ and into a DuckDB store
+//! (src/panel_store.rs, ADR 0033). See src/panel.rs and research/mcp-control.md.
 //!
 //! Usage: mcp-panel --bin <openttd> [--panel-port 8800] [--mcp-port 8731] [--game-port 3979]
 //!                  [--seed 1] [--ai PrismaticAI] [--auto-approve] [--no-plan-bot]
@@ -28,6 +29,8 @@ mod panel_bot;
 mod panel_decision;
 #[path = "../panel_results.rs"]
 mod panel_results;
+#[path = "../panel_store.rs"]
+mod panel_store;
 
 static STOP: AtomicBool = AtomicBool::new(false);
 
@@ -72,6 +75,9 @@ fn main() {
         libc::signal(libc::SIGTERM, on_signal as libc::sighandler_t);
     }
     let game = panel::Game::new(args.clone());
+    let me = format!("panel-{}", args.panel_port);
+    // The bus tap follows the bus from its first event, so it starts before the game does (ADR 0033).
+    let tap = panel_store::start(game.clone(), &me);
     if let Err(e) = game.start() {
         eprintln!("mcp-panel: {e}");
         std::process::exit(1);
@@ -79,13 +85,20 @@ fn main() {
     let p = Arc::new(panel::Panel { game: game.clone(), routes: panel::routes() });
     std::thread::spawn(move || panel::serve(listener, p));
     println!("mcp-panel: http://127.0.0.1:{}/  (game server 127.0.0.1:{}, MCP {})", args.panel_port, args.game_port, game.endpoint());
-    let me = format!("panel-{}", args.panel_port);
+    let text = |v: serde_json::Value| v.as_str().unwrap_or("off").to_string();
+    println!("mcp-panel: bus {}  store {}", text(panel_store::endpoint()), text(panel_store::store_status()));
+    for e in [&tap.bus_error, &tap.store_error].into_iter().flatten() {
+        println!("mcp-panel: {e}");
+    }
     panel::registry_write(&me, &serde_json::json!({"kind": "panel", "role": "dedicated server + panel",
-        "url": game.panel_url(), "mcp": game.endpoint(), "game_port": args.game_port}));
+        "url": game.panel_url(), "mcp": game.endpoint(), "game_port": args.game_port,
+        "bus": panel_store::endpoint(), "store": panel_store::store_status()}));
     while !STOP.load(Ordering::SeqCst) {
         std::thread::sleep(Duration::from_millis(100));
     }
     panel::registry_remove(&me);
     panel::registry_remove(&format!("client-{}", args.panel_port));
     game.stop();
+    // The events of the stop itself reach the store before the process ends.
+    panel_store::stop();
 }

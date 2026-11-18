@@ -267,11 +267,107 @@ Every event has a sequence number, a time, a `kind` and `data`, and goes onto on
 | `ai.log` | AI script log lines (`company`, `level`, `text`), parsed from the server console |
 | `console.line` | every other server console line (token redacted) |
 | `panel.<kind>` | the panel's own events (operator approvals, console commands, Rhai runs) |
+| `game.sample` | the overview's sample of a new game day (the object `/api/overview/history` answers), once per game day |
 
 Surfaces: `GET /api/events?since=<seq>&kinds=game,company` (REST; a kind matches itself and its
 `kind.` children) and `GET /api/events/stream?since=<seq>&kinds=...` (Server-Sent Events, `id:` is
 the sequence number, `event:` the kind). In Rhai: `events(since)`, `events(since, "game,company")`,
 and `ttd::wait_event(kind, seconds)`.
+
+### The event bus on ZeroMQ and the DuckDB store
+
+One tap on the bus (`src/panel_store.rs`, ADR 0033, issue I0080) hands every event, in bus order, to
+two sinks: a ZeroMQ PUB socket and a DuckDB file of this instance. Nothing that publishes an event
+changed, with one exception: the overview's daily sample lived in its own ring and never reached
+the bus, so the panel now also publishes it as `game.sample`, once per game day. `panel.*` events
+carry only `{text}` for now; structured `plan.*` and `decision.*` events are follow-up work.
+
+**The endpoint.** The panel binds `tcp://127.0.0.1:<port>`, with the port taken from
+`PRISMATIC_BUS_PORT` or picked by the OS. Nobody hard-codes it: `GET /api/bus` names it, and so do
+the instance's registry record (`bus`) and `/api/status` (`bus`). `GET /api/bus` also lists every
+topic seen with its count and how many events went out (`published`). It binds to loopback only.
+
+**Topics and envelope.** Each message has two frames. The first is the topic, which is the event
+kind (`game.month`, `ai.log`, `game.sample`, `panel.console`, ...), so a subscription is a kind
+prefix: `game` takes every `game.*` event. The second is the envelope, JSON of schema
+`prismatic-bus/v1`:
+
+```json
+{"schema": "prismatic-bus/v1", "seq": 412, "ts_ms": 1763510400123, "instance": "panel-8800",
+ "session": "<CLAUDE_CODE_SESSION_ID or the Majordomus task, else null>", "seed": 3,
+ "game_tick": 51234, "game_date": "1950-07-14", "kind": "ai.log",
+ "data": {"company": 1, "level": "Info", "text": "..."}}
+```
+
+`seq` is the bus sequence number, as in `/api/events`. `ts_ms` is when the tap took the event,
+within milliseconds of its publication. `game_tick` and `game_date` are the event's own when it
+carries them, otherwise those of the newest overview sample, and null before the first sample. A
+subscriber that connects late misses what came before it (ZeroMQ PUB keeps no history): the store
+and `/api/events` keep that.
+
+**The store.** The panel writes `$PRISMATIC_STORE_DIR/<instance>.duckdb`, by default
+`~/.local/state/prismatic-mcp/store/panel-<port>.duckdb`. It commits in batches at least twice a
+second, so an event is in the store within a second. One file holds every run of its instance:
+
+| Table | Columns |
+|---|---|
+| `runs` | `instance, session, seed, started_ms, panel_port, mcp_port, game_port`: one row per panel start |
+| `events` | `instance, seq, ts_ms, kind, game_tick, game_date, data JSON`: every bus event |
+| `samples` | `instance, ts_ms, game_tick, game_date, company, name, money, loan, value, net, vehicles`: one row per company per game day, from `game.sample` |
+
+`seq` starts at 1 again with every panel start. To tell one run from the next, use `ts_ms >=
+runs.started_ms`. The store is the cargo feature `store` (on by default) and links the system
+libduckdb (Homebrew duckdb 1.5; `tools/research/mcp-rhai/build.rs` finds it, and
+`DUCKDB_LIB_DIR` overrides the location). A panel built without the feature, or one that cannot open the file,
+reports `"store": "off"`, and its query routes answer 503.
+
+**Queries.** `GET /api/db/tables` returns the schema. `GET /api/db/query?sql=...` and
+`POST /api/db/query {sql}` run one read-only statement: SELECT, WITH, DESCRIBE, SUMMARIZE or SHOW,
+checked after leading whitespace and comments. Anything else, or a second statement after `;`, is
+a 400. The answer is `{columns, rows, count, capped}`, where each row is a list in column order,
+capped at 5000 rows. A GET without `sql` answers the newest 20 events. The store's connection runs without external access (no file reads, no
+ATTACH, no extension loading) and prepares one statement only, so the guard is not the only lock.
+
+```sh
+P=http://127.0.0.1:8800
+curl -s --get --data-urlencode "sql=SELECT kind, count(*) AS n FROM events GROUP BY 1 ORDER BY 2 DESC" $P/api/db/query
+curl -s --get --data-urlencode "sql=SELECT game_date, name, net FROM samples ORDER BY ts_ms" $P/api/db/query
+curl -s -X POST -H 'Content-Type: application/json' \
+  -d '{"sql": "SELECT data->>'"'"'text'"'"' AS line FROM events WHERE kind = '"'"'ai.log'"'"' ORDER BY seq DESC LIMIT 20"}' $P/api/db/query
+```
+
+**Who can open the file, and when.** While the panel runs, it holds the file's lock, and no other
+process can open the file, not even read-only: `duckdb -readonly <file>` answers "Could not set
+lock ... Conflicting lock is held in .../mcp-panel". During a run, outside readers use
+`GET|POST /api/db/query` or the ZeroMQ bus. `/api/status` and `/api/bus` say this in
+`store_access`. Open the file directly only after the panel has stopped, for example
+`duckdb ~/.local/state/prismatic-mcp/store/panel-8800.duckdb "select kind, count(*) from events
+group by 1"`.
+
+**Rhai.** The routes are rows of the route table, so they are derived like every other route:
+`api_bus()`, `api_dbTables()`, `api_dbQuery(#{sql: "SELECT count(*) FROM events"})` (GET, the map
+becomes the query) and `api_dbQueryPost(#{sql: "..."})` (POST).
+
+**The page.** The panel serves `/data` from `static/data.html`, titled "Data". The page runs a
+query, keeps it in the address and charts the numeric columns. Without the file the route answers
+404 JSON.
+
+**Subscribing.** Any ZeroMQ SUB client works. Read the endpoint from `GET /api/bus` or from the
+registry record:
+
+- Rust, from the shell: `tools/research/mcp-rhai/target/release/mcp-bus-tail --panel $P -n 10
+  --topic game --timeout 30` prints one envelope per line (`--endpoint tcp://...` skips the
+  lookup). In code, use the pure-Rust `zeromq` crate: `SubSocket::new()`, `connect(endpoint)`,
+  `subscribe("game")`, and `recv()` yields the two frames.
+- Prismatic (Elixir): `chumak` (pure Erlang), with `{:ok, s} = :chumak.socket(:sub)`,
+  `:chumak.subscribe(s, "game")`, `:chumak.connect(s, :tcp, ~c"127.0.0.1", port)`, and
+  `{:ok, [topic, env]} = :chumak.recv_multipart(s)`. `erlzmq` does the same over libzmq.
+- AlgoGlyph (Node): the `zeromq` package, with `const s = new zmq.Subscriber(); s.connect(endpoint);
+  s.subscribe("game"); for await (const [topic, env] of s) { JSON.parse(env) }`.
+
+`tools/research/mcp-panel-check` proves the chain on a running panel: the endpoint, an envelope
+received by `mcp-bus-tail`, `SELECT count(*) FROM events` > 0, and the refusal of INSERT and of a
+second statement.
 
 ## Watching it live, and notifications
 

@@ -32,3 +32,6 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-18'
+started_at: 2026-11-17T23:47:53Z
+started_event: sha256:b1d059049ff746f347386634c6cf32d593d017c122608806b4be5d36c977eddc
+updated_at: 2026-11-17T23:47:53Z

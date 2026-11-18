@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # RESEARCH-ONLY check of the panel's derived surfaces against a running panel (issue I0032):
 # the OpenAPI document derived from the live MCP catalogue, the generic REST routes it declares,
-# Swagger UI, the REST event feed and the SSE event stream.
+# Swagger UI, the REST event feed and the SSE event stream, and the same bus on ZeroMQ and in the
+# DuckDB store (ADR 0033, I0080).
 #
 # Usage: tools/research/mcp-panel-check [--panel http://127.0.0.1:8800]
 # Exit status: 0 every check passed, 1 a check failed, 3 the panel is not reachable.
@@ -105,6 +106,36 @@ code="$(curl -s -o /dev/null -w '%{http_code}' "$PANEL/tool/no.such.tool")"
 check "a tool the catalogue lacks is a 404 page (http=$code)" "$([[ "$code" == 404 ]] && echo 1 || echo 0)"
 code="$(curl -s -o /dev/null -w '%{http_code}' "$PANEL/tools")"
 check "the catalogue page /tools is served (http=$code)" "$([[ "$code" == 200 ]] && echo 1 || echo 0)"
+
+# The bus on ZeroMQ and the DuckDB store (ADR 0033, I0080): the endpoint is published, a SUB client
+# receives what happens next, every event is in the store, and the query route only reads.
+TAIL="${MCP_BUS_TAIL:-$(cd "$(dirname "$0")" && pwd)/mcp-rhai/target/release/mcp-bus-tail}"
+bus="$(curl -fs "$PANEL/api/bus" || true)"
+endpoint="$(py 'import json,sys; print(json.loads(sys.argv[1]).get("endpoint") or "")' "${bus:-{\}}" 2>/dev/null || true)"
+check "GET /api/bus names the PUB endpoint (${endpoint:-none})" "$([[ "$endpoint" == tcp://127.0.0.1:* ]] && echo 1 || echo 0)"
+if [[ -x "$TAIL" && -n "$endpoint" ]]; then
+  "$TAIL" --endpoint "$endpoint" -n 1 --topic panel.console --timeout 10 > "$TMP/tail.jsonl" 2>/dev/null &
+  TAILPID=$!
+  sleep 1
+  curl -fs -X POST -H 'Content-Type: application/json' -d '{"command":"getdate"}' "$PANEL/api/console" >/dev/null
+  wait "$TAILPID" 2>/dev/null || true
+  got="$(py '
+import json, sys
+lines = [json.loads(l) for l in open(sys.argv[1]) if l.strip()]
+ok = [e for e in lines if e.get("schema") == "prismatic-bus/v1" and e.get("kind") == "panel.console" and "instance" in e and "seq" in e]
+print(len(ok))' "$TMP/tail.jsonl" 2>/dev/null || echo 0)"
+  check "a ZeroMQ SUB client (mcp-bus-tail) receives a panel.console envelope prismatic-bus/v1 ($got)" "$([[ "$got" -ge 1 ]] && echo 1 || echo 0)"
+else
+  check "a ZeroMQ SUB client receives an event (mcp-bus-tail not built at $TAIL)" 0
+fi
+q="$(curl -fs --get --data-urlencode 'sql=SELECT count(*) AS n FROM events' "$PANEL/api/db/query" || true)"
+nev="$(py 'import json,sys; print(json.loads(sys.argv[1])["rows"][0][0])' "${q:-{\}}" 2>/dev/null || echo 0)"
+check "GET /api/db/query: SELECT count(*) FROM events > 0 ($nev)" "$([[ "$nev" -gt 0 ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' \
+  -d '{"sql":"INSERT INTO events (kind) VALUES ('"'"'x'"'"')"}' "$PANEL/api/db/query")"
+check "POST /api/db/query refuses INSERT (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
+code="$(curl -s -o /dev/null -w '%{http_code}' --get --data-urlencode 'sql=SELECT 1; DROP TABLE events' "$PANEL/api/db/query")"
+check "GET /api/db/query refuses a second statement (http=$code)" "$([[ "$code" == 400 ]] && echo 1 || echo 0)"
 
 printf '\nmcp-panel-check: %d passed, %d failed\n' "$PASS" "$FAIL"
 [[ "$FAIL" -eq 0 ]]

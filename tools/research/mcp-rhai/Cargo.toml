@@ -13,3 +13,16 @@ serde = "1"
 tungstenite = { version = "0.28", default-features = false, features = ["handshake"] }
 # mcp-panel: signals (SIGINT/SIGTERM stop the game with the panel), kill(pid, 0), local time.
 libc = "0.2"
+# mcp-panel's bus tap (ADR 0033): the event bus on a ZeroMQ PUB socket, pure Rust (no system libzmq),
+# on a small tokio runtime of its own thread.
+zeromq = { version = "0.7", default-features = false, features = ["tokio-runtime", "tcp-transport"] }
+tokio = { version = "1", default-features = false, features = ["rt", "sync", "time"] }
+bytes = "1"
+# ... and into a DuckDB file per instance, linked against the system libduckdb 1.5 (Homebrew; build.rs
+# finds it), never the bundled C++ build. The crate's version 1.105xx.y is DuckDB 1.5.xx.
+duckdb = { version = "=1.10505.0", default-features = false, optional = true }
+
+[features]
+default = ["store"]
+# The DuckDB store of mcp-panel; without it the panel runs and reports "store": "off".
+store = ["dep:duckdb"]

@@ -32,6 +32,7 @@ use crate::hub;
 use crate::panel_bot;
 use crate::panel_decision;
 use crate::panel_results;
+use crate::panel_store;
 use crate::rhai_host;
 
 /// The panel's own directory (static pages, Rhai library, npm packages).
@@ -1140,9 +1141,24 @@ pub const SCRIPT_OPCODES: u32 = 250000;
 impl Game {
     /// Keeps one sample per game day (a later read of the same day replaces it), at most
     /// `HISTORY_MAX`; a tick lower than the last one is a new world, and the history starts again.
+    /// A new game day is also published as game.sample (the same object /api/overview/history
+    /// answers), once per day: the bus tap fills the store's `samples` from it and ZeroMQ subscribers
+    /// see the daily history like every other event (ADR 0033, I0080).
     fn record_sample(&self, sample: Value) {
-        let mut h = self.history.lock().unwrap();
-        push_sample(&mut h, sample);
+        let new_day = {
+            let mut h = self.history.lock().unwrap();
+            let new_day = h.back().map_or(true, |last| last["date"] != sample["date"]);
+            push_sample(&mut h, sample.clone());
+            new_day
+        };
+        if new_day {
+            self.bus.publish("game.sample", sample);
+        }
+    }
+
+    /// The newest overview sample (the latest known game clock), None before the first.
+    pub fn latest_sample(&self) -> Option<Value> {
+        self.history.lock().unwrap().back().cloned()
     }
 
     /// The samples with a tick above `since`.
@@ -1860,7 +1876,8 @@ fn h_status(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
     ok(json!({
         "server_running": g.server_running(), "mcp_up": g.mcp_up.load(Ordering::SeqCst), "endpoint": g.endpoint(),
         "ai": g.args.ai, "ai_started": g.ai_started.load(Ordering::SeqCst), "auto_approve": g.auto_approve.load(Ordering::SeqCst),
-        "pending": g.pending_json(), "game_port": g.args.game_port, "events": g.events_json(), "event_seq": g.bus.seq()}))
+        "pending": g.pending_json(), "game_port": g.args.game_port, "events": g.events_json(), "event_seq": g.bus.seq(),
+        "bus": panel_store::endpoint(), "store": panel_store::store_status(), "store_access": panel_store::store_access()}))
 }
 
 fn h_events(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
@@ -1993,6 +2010,11 @@ pub fn routes() -> Vec<Route> {
         r("POST", "/api/scoreboard", "scoreboardWrite", "Regenerate the scoreboard region of README.md from research/results (tools/research/readme-scoreboard); answers the new scoreboard. Commit and push stay the owner's", false,
           s(json!({}), &[]), panel_results::h_scoreboard_write),
         r("GET", "/api/duel", "duelStatus", "The duel started from the panel: running or finished, the last month line, the winner line and the result's name", false, None, panel_results::h_duel_status),
+        r("GET", "/api/bus", "bus", "The event bus on ZeroMQ (ADR 0033): the PUB endpoint (tcp://127.0.0.1:<port>), the envelope schema prismatic-bus/v1, every topic seen with its count, and how many events went out; subscribe with any ZeroMQ SUB client (tools/research/mcp-rhai mcp-bus-tail)", false, None, panel_store::h_bus),
+        r("GET", "/api/db/tables", "dbTables", "The DuckDB store of this instance (ADR 0033): its file and every table (runs, events, samples) with its columns", false, None, panel_store::h_db_tables),
+        r("GET", "/api/db/query", "dbQuery", "One read-only statement on the store (?sql=SELECT ...; SELECT, WITH, DESCRIBE, SUMMARIZE or SHOW, one statement, anything else 400; without sql the newest 20 events): {columns, rows, count, capped}, each row a list in column order, at most 5000 rows", false, None, panel_store::h_db_query),
+        r("POST", "/api/db/query", "dbQueryPost", "The same read-only query with the statement in the body ({sql}), for statements too long for an address", false,
+          s(json!({"sql": st()}), &["sql"]), panel_store::h_db_query),
         r("GET", "/api/overview/history", "overviewHistory", "The overview's history kept by the panel: one sample per game day (tick, date, vehicles, towns, per company money, value, loan, net); ?since=<tick> for the newer ones", false, None, h_history),
         r("GET", "/api/catalogue", "catalogue", "MCP initialize, resources/list and tools/list", true, None, h_catalogue),
         r("GET", "/api/resource", "readResource", "Read one MCP resource by ?uri=", true, None, h_resource),
@@ -2119,6 +2141,7 @@ fn query_params(path: &str) -> &'static [&'static str] {
         "/api/investment" => &["params"],
         "/api/content" => &["q"],
         "/api/result" => &["name"],
+        "/api/db/query" => &["sql"],
         _ => &[],
     }
 }
@@ -2477,6 +2500,17 @@ impl Panel {
                     Err(_) => send_json(stream, 404, &json!({"error": "static/results.html is missing"})),
                 };
             }
+            // The store's page: queries kept in the address, numeric columns charted (static/data.html).
+            if path == "/data" {
+                return match std::fs::read_to_string(statics().join("data.html")) {
+                    Ok(t) => {
+                        let html = t.replace("__TITLE__", "Data")
+                            .replace("__DESCRIPTION__", "Read-only queries on this instance's DuckDB store: runs, events and samples");
+                        hub::respond(stream, 200, "text/html; charset=utf-8", html.as_bytes())
+                    }
+                    Err(_) => send_json(stream, 404, &json!({"error": "static/data.html is missing"})),
+                };
+            }
             if path == "/tools" || path.starts_with("/tool/") || path.starts_with("/client/") || path.starts_with("/resource/") {
                 let (title, description, found) = page_meta(g, path);
                 return match std::fs::read_to_string(statics().join("tool.html")) {
@@ -2671,8 +2705,9 @@ mod tests {
         // retired: GET /api/content, POST /api/content/download, GET /api/overview/history, and the
         // decision contract's GET /api/bridge/companies and POST /api/decision/pull, and the duels
         // (GET /api/results, GET /api/result, POST and GET /api/duel), and the README scoreboard
-        // (GET and POST /api/scoreboard), and the calibration store (GET and POST /api/calibration).
-        assert_eq!(rs.len(), 45);
+        // (GET and POST /api/scoreboard), and the calibration store (GET and POST /api/calibration),
+        // and the bus tap (GET /api/bus, GET /api/db/tables, GET and POST /api/db/query; ADR 0033).
+        assert_eq!(rs.len(), 49);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -2682,7 +2717,8 @@ mod tests {
         }
         assert!(rs.iter().filter(|r| !r.needs_mcp).all(|r| ["/api/status", "/api/log", "/api/events", "/api/console", "/api/auto-approve",
             "/api/start-ai", "/api/bots/start", "/api/ui/classes", "/api/view/attach", "/api/view/tool", "/api/rhai",
-            "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration"].contains(&r.path)));
+            "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
+            "/api/bus", "/api/db/tables", "/api/db/query"].contains(&r.path)));
     }
 
     #[test]
