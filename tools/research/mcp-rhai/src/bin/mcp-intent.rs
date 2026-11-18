@@ -13,18 +13,13 @@ mod cargo;
 #[path = "../intent.rs"]
 mod intent;
 
-/// Every resource this answer read, in order, once each, with whether the read succeeded: the
-/// answer's `reads`, which the panel's plan.intent event names as its live inputs (I0081).
-static READS: std::sync::Mutex<Vec<(String, bool)>> = std::sync::Mutex::new(Vec::new());
+#[path = "../reads.rs"]
+mod reads;
 
+/// The data of resource openttd://<name>, the read noted in the answer's `reads`.
 fn get(base: &str, token: &Option<(String, String)>, name: &str) -> Result<serde_json::Value, String> {
     let r = read(base, token, name);
-    let mut reads = READS.lock().unwrap();
-    let uri = format!("openttd://{name}");
-    match reads.iter_mut().find(|(u, _)| *u == uri) {
-        Some(e) => e.1 |= r.is_ok(),
-        None => reads.push((uri, r.is_ok())),
-    }
+    reads::note(name, r.is_ok());
     r
 }
 
@@ -116,7 +111,7 @@ fn main() {
             serde_json::Value::Null
         };
         let ans = intent::answer(&parsed, &world, &p, &bot);
-        let reads: Vec<serde_json::Value> = READS.lock().unwrap().iter().map(|(u, ok)| serde_json::json!({"uri": u, "ok": ok})).collect();
+        let reads = reads::json();
         Ok(serde_json::json!({"intent": parsed, "answer": ans, "vocabulary_size": vocab.len(), "vocabulary_from": lang_dir, "reads": reads}))
     })();
     match out {
