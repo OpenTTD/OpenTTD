@@ -751,7 +751,13 @@ diacritics folded. A word that sets the action or the ordering is never also a n
 is not "pošta", mail).
 The only hand vocabulary is three orderings (nearest, most productive, most profitable) and two
 actions (find, build). A build is carried out once its settings reach the bot, through
-`openttd.ai.set_setting` (approval-gated) or the next `start_ai`. Without a budget in the request, the
+`openttd.ai.set_setting` or a fresh `openttd.ai.start` carrying them -- **both approval-gated,
+and there is no third way**. `ai::IsAiAction` (`src/prismatic_mcp/prismatic_mcp_ai.cpp:134`) names
+`ai.set_setting`, `ai.start`, `ai.stop` and `ai.reload`, and the server gates every one of them
+(`prismatic_mcp_server.cpp:908`). This sentence used to read "or the next `start_ai`", which
+invited the reading that starting the bot afresh is the ungated alternative. It is not: an
+operator's approval is structurally required before a sentence lays any track, whichever tool
+carries the settings. Without a budget in the request, the
 panel adds `difficulty.max_loan`, so the portfolio is solved and its solver is named
 (AlgoGlyph knapsack-dp when available).
 
