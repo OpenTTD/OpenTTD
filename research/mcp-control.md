@@ -178,7 +178,7 @@ planned bot and its rival started at ticks that depended on the machine's load: 
 ended 10% apart, the same rival 52% (knowledge `duels-run-side-by-side-are-noisy`). With
 `PRISMATIC_START_PAUSED=N` the panel pauses the game before planning, starts its bot, and unpauses once N
 AI companies exist; the server console founds a company while paused, and its script runs from the
-unpause. The duel form sets 2; run `mcp-duel` by hand with `PRISMATIC_START_PAUSED=2`. The plan log of
+unpause. The duel form and `mcp-duel` both default to 2 (`PRISMATIC_START_PAUSED=0` starts unpaused). The plan log of
 the result records the tick it started at. Two identical runs then differed by 0.2%.
 
 **Bot settings per run.** The duel form, `POST /api/duel` (`bot_settings`) and `mcp-duel --bot-settings`
@@ -217,7 +217,7 @@ the held-game re-measure of own lines ran one ten-year duel after the other:
 Answer: **"Run B alongside A now"**. The option text: "Start B (own_lines=8) now with mcp-duel and the
 same held start, next to A. Both done in about 2 h, but two games share the machine and it does not show
 on /results while running." So the two halves of a paired comparison may run at the same time, both
-from a held game (`PRISMATIC_START_PAUSED=2` for `mcp-duel` run outside the panel). The panel still
+from a held game (`mcp-duel` holds the start by default, inside or outside the panel). The panel still
 runs one duel at a time.
 
 `mcp-route-check` never posts `/api/duel`, because it starts something and needs no input.
