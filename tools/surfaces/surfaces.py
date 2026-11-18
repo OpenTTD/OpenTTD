@@ -302,11 +302,12 @@ def first_heading_and_paragraph(body: str) -> tuple[str, str]:
             if buf:
                 break
             continue
-        if not buf and (s.startswith(("|", "<!--", ">", "- ", "* ", "+ ", "![", "<", "---"))
-                        or re.match(r"\d+[.)] ", s)):
-            continue
+        if not buf and (s.startswith(("|", "<!--", ">", "- ", "* ", "+ ", "![", "---"))
+                        or re.match(r"\d+[.)] ", s)
+                        or (s.startswith("<") and not re.search(r"\w", html.unescape(plain(s))))):
+            continue  # an HTML line counts as prose only when text is left once its tags go
         buf.append(s)
-    para = plain(" ".join(buf))
+    para = plain(html.unescape(" ".join(buf)))
     if len(para) > 220:
         para = para[:217].rsplit(" ", 1)[0] + "..."
     return title, para
