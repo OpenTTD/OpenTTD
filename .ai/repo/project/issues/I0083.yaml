@@ -26,3 +26,23 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-18'
+verified_at: 2026-11-18T06:07:51Z
+verified_event: sha256:8c34b50052f338c9af32c99ad1495f276c71942728495309893f87bba0ffcdd1
+completed_at: 2026-11-18T06:07:57Z
+completed_event: sha256:192381135f6a02737b5027a67d74a1d548b1106f203ca2058f1d03e59975c7aa
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-duel --months 6 --seed 31337 (from the feature/duel-reads-store worktree, against a fresh panel built from it)"
+    result: "duel-20261118T070703-seed31337: record names store panel-51192.duckdb, instance panel-51192 and its run (ports 51192/51197/51199); plan (2 plan.* rows), planner lines (20), ai.log (1228 rows, bot_log_capped false) and 6 months from samples (missing_months []) all came from store queries, fallback null; plan.duel published as seq 1504 and found in the store (stored true), held_start_tick 1425. Result: B (unplanned) 9601 vs A 1."
+    commit: d1aa57d97ca1f6db017099bb0eb1fb67bec21d58
+    recorded_at: 2026-11-18T06:07:49Z
+  - covers: "validation_run"
+    type: test
+    command: "python3 -B tools/research/test_mcp_duel.py; lundra-cargo.sh <worktree> test --release -q"
+    result: "18 tests OK (fake panel running duckdb on the bus_sinks.rs schema: 12000 ai.log rows over 3 pages, fallback paths, plan.duel body); lundra 217 passed, 0 failed, all targets"
+    commit: d1aa57d97ca1f6db017099bb0eb1fb67bec21d58
+    recorded_at: 2026-11-18T06:07:49Z
+started_at: 2026-11-18T06:07:46Z
+started_event: sha256:61e08b1f5d30200907b03ef09b2a265cb3eaba0961e1c9435be03e95ee1ab64f
+updated_at: 2026-11-18T06:07:57Z
