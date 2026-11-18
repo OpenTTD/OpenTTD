@@ -115,6 +115,14 @@ try {
   });
   check('a select keeps room for its chevron', look.chevron >= 28, `padding-right ${look.chevron}px`);
   check("the overview's controls are one height", look.heights.length === 1, `heights ${look.heights.join(', ')}`);
+  // 2026-11-18: a long note pushed Maximize under it in three cards; at desktop width every card's
+  // toolbar sits on its title's row.
+  const heads = await page.evaluate(() => [...document.querySelectorAll('#overview [data-chart]')].map((card) => {
+    const bar = card.querySelector('[data-toolbar]');
+    const title = card.querySelector('h2');
+    return bar && title && bar.offsetHeight ? [card.id, Math.round(bar.getBoundingClientRect().top - title.getBoundingClientRect().top)] : [card.id, null];
+  }));
+  check("every overview card's toolbar is on its title's row", heads.every(([, d]) => d !== null && Math.abs(d) <= 12), heads.map(([id, d]) => `${id} ${d}`).join(', '));
   const anchored = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   watch(anchored);
   await anchored.goto(`${base}/#overview`);
