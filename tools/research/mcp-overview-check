@@ -5,8 +5,9 @@
 // Escape restores it, the metric survives a reload of the address, a click on a company focuses it
 // (ov_focus), a phone-width page does not scroll sideways, the World page's charts still come
 // through the one door, a tool page builds its form from the schema, and the console stays free
-// of errors, and /data runs the query in its address (skipped, and said so, on a panel without the
-// event store). Drives the installed Chrome through playwright-core (npm ci in tools/research/mcp-panel).
+// of errors, and /data runs the query in its address and charts a numeric column of it (skipped,
+// and said so, on a panel without the event store). Drives the installed Chrome through
+// playwright-core (npm ci in tools/research/mcp-panel).
 //
 // Usage: tools/research/mcp-overview-check http://127.0.0.1:<panel-port>   (exit 0 PASS, 1 FAIL)
 import { createRequire } from 'node:module';
@@ -242,6 +243,30 @@ try {
     });
     check('/data runs the query in its address and answers a row', data.sql === sql && data.rows.length === 1 && /^\d+$/.test(data.rows[0] || ''),
       `sql "${data.sql}", rows ${JSON.stringify(data.rows)}${data.error ? `, error: ${data.error}` : ''}`);
+    // A numeric column is charted through components.js ecInit: the samples (one row per company per
+    // game day) as lines over the tick. A game whose companies have no sample yet has nothing to chart.
+    const series = 'SELECT game_tick, company, money FROM samples ORDER BY game_tick';
+    const sampled = await fetch(`${base}/api/db/query?sql=${encodeURIComponent(series)}`).then((r) => r.json()).catch(() => ({}));
+    if (!sampled.count) {
+      skipped.push('/data chart');
+      console.log('SKIP /data charts a numeric column (no row in samples yet)');
+    } else {
+      await page.goto(`${base}/data?sql=${encodeURIComponent(series)}`);
+      await page.waitForFunction(() => {
+        const b = document.getElementById('data-chart');
+        const i = b && globalThis.echarts && globalThis.echarts.getInstanceByDom(b);
+        return i && (i.getOption().series || []).some((s) => (s.data || []).length > 0);
+      }, null, { timeout: 15000 }).catch(() => {});
+      const drawn = await page.evaluate(() => {
+        const b = document.getElementById('data-chart');
+        const i = b && globalThis.echarts.getInstanceByDom(b);
+        const s = i ? i.getOption().series || [] : [];
+        return { width: b ? b.offsetWidth : 0, series: s.length, points: s.reduce((n, x) => n + (x.data || []).length, 0) };
+      });
+      check('/data charts a numeric column from the store (samples.money over game_tick)',
+        drawn.width > 0 && drawn.series > 0 && drawn.points > 0,
+        `${sampled.count} row(s): width ${drawn.width}, ${drawn.series} series, ${drawn.points} points`);
+    }
   }
 
   check('the console stays free of errors', errors.length === 0, errors.slice(0, 3).join(' | '));
