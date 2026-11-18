@@ -4,8 +4,8 @@
 import { UI } from './panel-ui.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createRequire } from 'node:module';
 import { fakeDom, respond } from './fake-dom.mjs';
+import { catalogueItems, KIND_LABEL } from '../static/catalogue.js';
 
 const schema = {
   type: 'object',
@@ -48,24 +48,26 @@ const env = fakeDom({
   routes: (url) =>
     url === '/openapi.json' ? doc : url === '/api/resources/map/terrain' ? 'not json' : answer,
 });
-const require = createRequire(import.meta.url);
-const PATH = require.resolve('../static/tool.js');
 const $ = env.byId;
-/** Load the page script afresh at an address and let it draw. */
+let loaded = null;
+/** Open an address: the module's first load draws it (boot), a later address is drawn by start(),
+    as the browser would on a fresh load (one module instance, so coverage counts every page). */
 async function open(url) {
   env.location.href = url;
-  delete require.cache[PATH];
-  const m = require(PATH);
-  await m.boot;
+  if (loaded) await loaded.start();
+  else {
+    loaded = await import('../static/tool.js');
+    await loaded.boot;
+  }
   await env.settle();
-  return m;
+  return loaded;
 }
 
 test('items come from the OpenAPI tags, sorted, each with its page and schema', async () => {
-  const { items, gated, readOnly } = await open(
+  const { gated, readOnly } = await open(
     'http://127.0.0.1:8800/tool/openttd.ai.set_setting?company=3&live=true',
   );
-  const all = items(doc);
+  const all = catalogueItems(doc);
   assert.deepEqual(
     all.map((i) => [i.kind, i.name, i.page]),
     [
@@ -80,7 +82,12 @@ test('items come from the OpenAPI tags, sorted, each with its page and schema', 
   assert.equal(all[1].summary, 'Read-only list', 'a description stands in for a missing summary');
   assert.deepEqual(all.map(gated), [false, false, true, false]);
   assert.deepEqual(all.map(readOnly), [true, true, false, false]);
-  assert.deepEqual(items({}), []);
+  assert.deepEqual(
+    all.map((i) => i.opId),
+    ['terrain', 'aiList', 'setSetting', 'ask'],
+  );
+  assert.equal(all[1].schema, null, 'no request body, no schema');
+  assert.deepEqual(catalogueItems({}), []);
 });
 
 test("a field per schema property, in the shell's sets, its value from the address", async () => {
@@ -108,10 +115,10 @@ test("a field per schema property, in the shell's sets, its value from the addre
 });
 
 test('the same call on every surface: REST, MCP, the in-game console and OpenAPI', async () => {
-  const { toolSurfaces, resourceSurfaces, surfacesHtml, items } = await open(
+  const { toolSurfaces, resourceSurfaces, surfacesHtml } = await open(
     'http://127.0.0.1:8800/tool/openttd.ai.list',
   );
-  const byName = Object.fromEntries(items(doc).map((i) => [i.name, i]));
+  const byName = Object.fromEntries(catalogueItems(doc).map((i) => [i.name, i]));
   const [list, ask, terrain] = ['openttd.ai.list', 'openttd.view.ask', 'openttd://map/terrain'].map(
     (n) => byName[n],
   );
@@ -205,4 +212,39 @@ test('a resource page reads now and, live, every two seconds, kept in the addres
   assert.equal(env.location.search, '');
   await $('refresh').onclick();
   assert.match($('page').innerHTML, /mcp read openttd:\/\/map\/terrain/);
+});
+
+test('one derivation: /tools and every item page take their items from catalogueItems', async () => {
+  const all = catalogueItems(doc);
+  env.timers.splice(0); // the resource page's live reads are not part of this view
+  await open('http://127.0.0.1:8800/tools');
+  await env.tick(); // the catalogue draws on its first timer
+  const cards = $('page').querySelector('[data-cards]').querySelectorAll('a');
+  assert.deepEqual(
+    cards.map((a) => a.getAttribute('href')),
+    all.map((i) => i.page),
+    'the /tools cards are the derived items, in order',
+  );
+  assert.equal($('page').querySelector('[data-count]').textContent, `${all.length} of ${all.length}`);
+  for (const it of all) {
+    await open(`http://127.0.0.1:8800${it.page}`);
+    assert.doesNotMatch($('page').innerHTML, /Not in the live catalogue/, it.page);
+    assert.ok($('crumbs').innerHTML.endsWith(`${KIND_LABEL[it.kind]}</li>`), it.page);
+    if (it.kind !== 'resource') {
+      const keys = $('page').querySelectorAll('[data-key]').map((e) => e.dataset.key);
+      assert.deepEqual(keys, Object.keys(it.schema?.properties || {}), 'its form is its schema');
+      assert.match($('surfaces').innerHTML, new RegExp(`operationId ${it.opId} `));
+    } else {
+      assert.match($('page').innerHTML, new RegExp(`operationId ${it.opId} `));
+    }
+  }
+});
+
+test('tool.js has no derivation of its own: it imports the catalogue\'s', async () => {
+  const fs = await import('node:fs');
+  const src = fs.readFileSync(new URL('../static/tool.js', import.meta.url), 'utf8');
+  assert.match(src, /^import \{ catalogueItems[^}]*\} from '\.\/catalogue\.js';$/m);
+  assert.doesNotMatch(src, /doc\.paths|op\.tags|requestBody/, 'no second reading of OpenAPI');
+  const html = fs.readFileSync(new URL('../static/tool.html', import.meta.url), 'utf8');
+  assert.match(html, /<script type="module" src="\/static\/tool\.js"><\/script>/);
 });

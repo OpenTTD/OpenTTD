@@ -1,34 +1,17 @@
-'use strict';
 /* One page per MCP tool, GUI client tool and resource, and the catalogue of them, all derived from
    the panel's /openapi.json (itself derived from the live MCP catalogue): /tools, /tool/<name>,
    /client/<name>, /resource/<path>. A tool's form comes from its input schema; its values and the
-   catalogue's search are kept in the address, so a filled-in call is a link. */
+   catalogue's search are kept in the address, so a filled-in call is a link.
+   A module (tool.html loads it with type="module"): the items come from the one derivation,
+   catalogue.js catalogueItems, the same the /tools catalogue and the home's #catalogue draw, so an
+   item page and its card cannot disagree (rule project.panel-items-are-routable-pages). */
 
-const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-/** The shell's Pro class sets, one per role (static/shell.js publishes them as PanelUI first). */
-const UI = globalThis.PanelUI;
+import { catalogueItems, mountCatalogue, KIND_LABEL } from './catalogue.js';
+import { UI, TONE, $, esc } from './components.js';
+
+/** A card and a badge from the shell's Pro sets (static/shell.js UI and TONE, via components.js). */
 const card = `${UI.card} mb-4`;
-const badge = (text, tone) => `<span class="${UI.badge} ${globalThis.PanelTONE[tone || 'gray']}">${esc(text)}</span>`;
-
-/* The catalogue's items from OpenAPI: kind, name, page, the operation it calls, its schema. */
-function items(doc) {
-  const out = [];
-  for (const [path, ops] of Object.entries(doc.paths || {})) {
-    for (const [method, op] of Object.entries(ops)) {
-      const tag = (op.tags || [])[0];
-      let kind = null, name = null;
-      if (tag === 'mcp tools' && path.startsWith('/api/tools/')) { kind = 'tool'; name = path.slice(11); }
-      else if (tag === 'gui client tools' && path.startsWith('/api/client/')) { kind = 'client'; name = path.slice(12); }
-      else if (tag === 'mcp resources' && path.startsWith('/api/resources/')) { kind = 'resource'; name = 'openttd://' + path.slice(15); }
-      if (!kind) continue;
-      const page = kind === 'resource' ? '/resource/' + path.slice(15) : `/${kind}/${encodeURIComponent(name)}`;
-      const schema = op.requestBody?.content?.['application/json']?.schema || null;
-      out.push({ kind, name, page, method: method.toUpperCase(), path, summary: op.summary || op.description || '', schema, opId: op.operationId });
-    }
-  }
-  return out.sort((a, b) => a.name.localeCompare(b.name));
-}
+const badge = (text, tone) => `<span class="${UI.badge} ${TONE[tone || 'gray']}">${esc(text)}</span>`;
 
 const gated = (it) => /approval-gated/i.test(it.summary);
 const readOnly = (it) => it.kind === 'resource' || /read-only|readonly|^read /i.test(it.summary);
@@ -177,23 +160,21 @@ function renderResource(it) {
   read(); arm();
 }
 
-const boot = (async () => {
+/** Draw the page of the current address; the module runs it once as it loads (`boot`). */
+async function start() {
   const doc = await (await fetch('/openapi.json')).json();
-  const all = items(doc);
+  const all = catalogueItems(doc);
   const path = decodeURIComponent(location.pathname);
   // The catalogue is one component (catalogue.js), shared with the panel's home (#catalogue).
-  if (path === '/tools') return import('/static/catalogue.js').then((m) => m.mountCatalogue($('page'), m.catalogueItems(doc)));
+  if (path === '/tools') return mountCatalogue($('page'), all);
   const it = all.find((x) => decodeURIComponent(x.page) === path);
   if (!it) {
     $('page').innerHTML = alert('Not in the live catalogue (the game may not offer it, or the GUI client is not attached). <a href="/tools" class="underline">All tools and resources</a>.', 'red');
     return;
   }
-  $('crumbs').insertAdjacentHTML('beforeend', `<li class="text-gray-400">/</li><li class="text-gray-500 dark:text-gray-400">${esc({ tool: 'Server tools', client: 'GUI client tools', resource: 'Resources' }[it.kind])}</li>`);
+  $('crumbs').insertAdjacentHTML('beforeend', `<li class="text-gray-400">/</li><li class="text-gray-500 dark:text-gray-400">${esc(KIND_LABEL[it.kind])}</li>`);
   return it.kind === 'resource' ? renderResource(it) : renderTool(it);
-})();
-
-if (typeof module !== 'undefined') {
-  module.exports = {
-    items, gated, readOnly, field, readForm, shell, toolSurfaces, resourceSurfaces, surfacesHtml, alert, badge, boot,
-  };
 }
+const boot = start();
+
+export { gated, readOnly, field, readForm, shell, toolSurfaces, resourceSurfaces, surfacesHtml, alert, badge, start, boot };

@@ -20,7 +20,12 @@ const FACETS = ['kind', 'ns', 'cat', 'safety'];
 
 /* ---- items and facets (pure) --------------------------------------------------------------- */
 
-/** The catalogue's items from the panel's OpenAPI document. */
+/**
+ * The catalogue's items from the panel's OpenAPI document: kind, name, page, the operation it
+ * calls (method, path, operationId as `opId`), its input schema (`schema`, null without a body)
+ * and its facets. The one derivation of every page that lists or opens an item: /tools and the
+ * home's #catalogue (mountCatalogue) and each /tool, /client and /resource page (tool.js).
+ */
 export function catalogueItems(doc) {
   const out = [];
   for (const [path, ops] of Object.entries(doc.paths || {})) {
@@ -33,7 +38,9 @@ export function catalogueItems(doc) {
       if (!kind) continue;
       const page = kind === 'resource' ? '/resource/' + path.slice(15) : `/${kind}/${encodeURIComponent(name)}`;
       const summary = op.summary || op.description || '';
-      out.push({ kind, name, page, method: method.toUpperCase(), path, summary, ...facetsOf(kind, name, summary) });
+      const schema = op.requestBody?.content?.['application/json']?.schema || null;
+      out.push({ kind, name, page, method: method.toUpperCase(), path, summary, schema, opId: op.operationId,
+        ...facetsOf(kind, name, summary) });
     }
   }
   return out.sort((a, b) => a.name.localeCompare(b.name));
