@@ -15,6 +15,8 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use std::time::Duration;
 
+#[path = "../bus_sinks.rs"]
+mod bus_sinks;
 #[path = "../calibrate.rs"]
 #[allow(dead_code)]
 mod calibrate;
@@ -45,7 +47,7 @@ extern "C" fn on_signal(_: libc::c_int) {
 
 #[cfg(feature = "store")]
 fn import(file: &serde_json::Value, from: &str) -> Result<serde_json::Value, String> {
-    panel_store::import_calibration(&panel_store::store_dir(), file, from)
+    panel_store::import_calibration(&bus_sinks::store_dir(), file, from)
 }
 
 #[cfg(not(feature = "store"))]
@@ -132,7 +134,7 @@ fn main() {
     println!("mcp-panel: http://127.0.0.1:{}/  (game server 127.0.0.1:{}, MCP {})", args.panel_port, args.game_port, game.endpoint());
     let text = |v: serde_json::Value| v.as_str().unwrap_or("off").to_string();
     println!("mcp-panel: bus {}  store {}", text(panel_store::endpoint()), text(panel_store::store_status()));
-    for e in [&tap.bus_error, &tap.store_error].into_iter().flatten() {
+    for e in [&tap.sinks.bus_error, &tap.sinks.store_error].into_iter().flatten() {
         println!("mcp-panel: {e}");
     }
     panel::registry_write(&me, &serde_json::json!({"kind": "panel", "role": "dedicated server + panel",

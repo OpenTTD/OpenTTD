@@ -1,11 +1,13 @@
-//! RESEARCH-ONLY / UNSTABLE: every event kind the panel's bus carries, declared once (issue I0081,
-//! ADR 0034 point 3), and the payload every planning decision publishes.
+//! RESEARCH-ONLY / UNSTABLE: every event kind a bus carries, declared once (issue I0081, ADR 0034
+//! point 3), and the payload every planning decision publishes.
 //!
-//! `KINDS` is the one table. `GET /api/bus` lists it (`table`), the knowledge note
-//! `.ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md` holds it as a region
-//! written from it (`markdown`, `mcp-panel --write-event-kinds`), and a cargo test fails when a
-//! publish call in the panel's sources names a kind outside it, when a declared kind has no producer,
-//! or when the note's region differs from the table.
+//! `KINDS` is the one table: the panel's kinds (its bus, src/panel*.rs) and the hub's (the events
+//! src/hub.rs raises itself and publishes on its own bus, I0084). A panel's `GET /api/bus` lists the
+//! panel's rows and the hub's `GET /api/bus` the hub's (`table`); the knowledge note
+//! `.ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md` holds all of them as a
+//! region written from it (`markdown`, `mcp-panel --write-event-kinds`). A cargo test fails when a
+//! publish call in the panel's sources, or a kind the hub raises, names a kind outside it, when a
+//! declared kind has no producer, or when the note's region differs from the table.
 //!
 //! A planning decision publishes one `plan.*` event beside its `panel.*` sentence, with the data
 //! `{decision, version, inputs: {live, stored}, choice}` (`plan`): `version` is the code revision
@@ -23,6 +25,20 @@ pub enum By {
     Panel,
     /// Another process, through `POST /api/bus/publish`; only these kinds are accepted there.
     External,
+    /// The hub (src/hub.rs), on its own bus and store, never on a panel's (I0084). A kind may be a
+    /// panel's and the hub's both (game.month), each row with its own producer and data.
+    Hub,
+}
+
+impl By {
+    pub fn label(self) -> &'static str {
+        match self { By::Panel => "panel", By::External => "external", By::Hub => "hub" }
+    }
+
+    /// Is a kind of this producer on a panel's bus?
+    pub fn on_panel_bus(self) -> bool {
+        self != By::Hub
+    }
 }
 
 /// One declared event kind.
@@ -44,7 +60,7 @@ const fn k(kind: &'static str, by: By, producer: &'static str, data: &'static st
 /// The payload of every plan.* kind, named once.
 const PLAN: &str = "`{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} | {fallback}}, choice}`";
 
-/// Every kind the panel's bus carries. Order is the documentation's order.
+/// Every kind a bus carries: the panel's, then the hub's. Order is the documentation's order.
 pub const KINDS: &[Kind] = &[
     // Game state, derived by difference between two MCP reads (panel.rs:watch, derive_game_events).
     k("game.observed", By::Panel, "panel.rs:derive_game_events", "`{date, tick, vehicles, companies (count), towns}`", "the first read after the MCP server is up"),
@@ -85,22 +101,46 @@ pub const KINDS: &[Kind] = &[
     k("plan.intent", By::Panel, "panel.rs:h_intent, answer_plan", PLAN, "a sentence was resolved to an intent and candidates"),
     k("plan.directive", By::Panel, "panel_decision.rs:pull", PLAN, "Prismatic's directive was applied or refused (`POST /api/decision/pull`)"),
     k("plan.kernel", By::External, "kernel_feed.rs:event (mcp-kernel-feed --publish)", PLAN, "an AlgoGlyph kernel answered a request fed from the store (I0086)"),
+    // The hub's own events (I0084): derived for a game's MCP server that has no panel, every
+    // MCP_STATE_EVERY = 10 fan-in cycles (5 s), from two reads of openttd://game/state ...
+    k("game.new_world", By::Hub, "hub.rs:derive_state_events", "`{date}`", "an MCP-only instance's tick went back"),
+    k("game.month", By::Hub, "hub.rs:derive_state_events", "`{date}`", "an MCP-only instance's month changed"),
+    k("game.paused", By::Hub, "hub.rs:derive_state_events", "`{date}`", "an MCP-only instance's paused flag went on"),
+    k("game.resumed", By::Hub, "hub.rs:derive_state_events", "`{date}`", "an MCP-only instance's paused flag went off"),
+    k("vehicles.count", By::Hub, "hub.rs:derive_state_events", "`{from, to}`", "an MCP-only instance's vehicle count changed"),
+    k("companies.count", By::Hub, "hub.rs:derive_state_events", "`{from, to}`", "an MCP-only instance's company count changed"),
+    // ... and the audit watch over every instance, every --audit-every seconds (default 60).
+    k("audit.duplicate_station", By::Hub, "hub.rs:audit_findings", "a pair of `hub.audit`'s `duplicates`: `{owner, facilities, a, b, distance}`", "a duplicate station pair appeared"),
+    k("audit.duplicate_depot", By::Hub, "hub.rs:audit_findings", "a pair of `hub.audit`'s `depots.duplicates`: `{owner, type, a, b, distance, by, reach}`", "a duplicate depot pair appeared"),
+    k("audit.over_capacity", By::Hub, "hub.rs:audit_findings", "a route of `hub.audit`'s `capacity.over`: `{a, b, cargo, vehicles, capacity, usage, needed, too_many}`", "a route over capacity appeared (advisory)"),
+    k("audit.resolved", By::Hub, "hub.rs:audit_changes", "`{was, key, finding}`: the finding's kind, its key and its data", "a finding the last audit announced went away"),
 ];
 
-/// The declared kind, if `kind` is one.
+/// The declared kind of a panel's bus, if `kind` is one.
 pub fn find(kind: &str) -> Option<&'static Kind> {
-    KINDS.iter().find(|k| k.kind == kind)
+    KINDS.iter().find(|k| k.kind == kind && k.by.on_panel_bus())
 }
 
+/// Is `kind` declared on a panel's bus?
 pub fn declared(kind: &str) -> bool {
     find(kind).is_some()
 }
 
-/// The table as `GET /api/bus` answers it.
-pub fn table() -> Value {
-    Value::Array(KINDS.iter().map(|k| json!({"kind": k.kind, "by": match k.by { By::Panel => "panel", By::External => "external" },
+/// The declared kind the hub raises, if `kind` is one.
+pub fn hub_kind(kind: &str) -> Option<&'static Kind> {
+    KINDS.iter().find(|k| k.kind == kind && k.by == By::Hub)
+}
+
+/// The rows of the producers `of`, as `GET /api/bus` answers them.
+pub fn table(of: &[By]) -> Value {
+    Value::Array(KINDS.iter().filter(|k| of.contains(&k.by)).map(|k| json!({"kind": k.kind, "by": k.by.label(),
                                                "producer": k.producer, "data": k.data, "when": k.when})).collect())
 }
+
+/// The kinds on a panel's bus.
+pub const PANEL_BUS: &[By] = &[By::Panel, By::External];
+/// The kinds on the hub's bus.
+pub const HUB_BUS: &[By] = &[By::Hub];
 
 /// Where the knowledge note's region starts and ends.
 pub const REGION_BEGIN: &str = "<!-- event-kinds:begin (generated from tools/research/mcp-rhai/src/panel_events.rs KINDS: mcp-panel --write-event-kinds) -->";
@@ -110,7 +150,11 @@ pub const REGION_END: &str = "<!-- event-kinds:end -->";
 pub fn markdown() -> String {
     let mut s = String::from("| Kind | By | Producer | Data | When |\n|---|---|---|---|---|\n");
     for k in KINDS {
-        let by = match k.by { By::Panel => "panel", By::External => "external (`POST /api/bus/publish`)" };
+        let by = match k.by {
+            By::Panel => "panel",
+            By::External => "external (`POST /api/bus/publish`)",
+            By::Hub => "hub (its own bus and store)",
+        };
         s.push_str(&format!("| `{}` | {by} | `{}` | {} | {} |\n", k.kind, k.producer, k.data.replace('|', "\\|"), k.when.replace('|', "\\|")));
     }
     s
@@ -238,8 +282,9 @@ mod tests {
 
     #[test]
     fn the_table_is_unique_and_every_plan_kind_carries_the_plan_payload() {
-        let names: Vec<&str> = KINDS.iter().map(|k| k.kind).collect();
-        assert_eq!(names.iter().collect::<BTreeSet<_>>().len(), names.len(), "every kind once");
+        // Every kind once per bus: the panel's (panel and external rows) and the hub's.
+        let names: Vec<(&str, bool)> = KINDS.iter().map(|k| (k.kind, k.by.on_panel_bus())).collect();
+        assert_eq!(names.iter().collect::<BTreeSet<_>>().len(), names.len(), "every kind once per bus");
         for k in KINDS {
             assert!(k.kind.contains('.') && k.kind.chars().all(|c| c.is_ascii_lowercase() || c == '.' || c == '_'), "{}", k.kind);
             assert_eq!(k.kind.starts_with("plan."), k.data == PLAN, "{}: plan.* and only plan.* carry the plan payload", k.kind);
@@ -247,7 +292,15 @@ mod tests {
         for want in ["plan.portfolio", "plan.bot_settings", "plan.calibration", "plan.investment", "plan.action", "plan.intent", "plan.directive"] {
             assert!(find(want).is_some_and(|k| k.by == By::Panel), "{want} is the panel's (I0081)");
         }
-        assert!(table().as_array().unwrap().iter().all(|r| r["kind"].is_string() && r["by"].is_string() && r["producer"].is_string()));
+        let all = [By::Panel, By::External, By::Hub];
+        assert_eq!(table(&all).as_array().unwrap().len(), KINDS.len());
+        assert!(table(&all).as_array().unwrap().iter().all(|r| r["kind"].is_string() && r["by"].is_string() && r["producer"].is_string()));
+        // A panel's bus never lists the hub's rows, and the hub's lists only its own.
+        assert!(table(PANEL_BUS).as_array().unwrap().iter().all(|r| r["by"] != "hub"));
+        assert!(table(HUB_BUS).as_array().unwrap().iter().all(|r| r["by"] == "hub" && r["producer"].as_str().unwrap().starts_with("hub.rs:")));
+        assert!(find("audit.resolved").is_none() && hub_kind("audit.resolved").is_some(), "an audit kind is the hub's only");
+        assert_eq!(find("game.month").map(|k| k.by), Some(By::Panel));
+        assert_eq!(hub_kind("game.month").map(|k| k.data), Some("`{date}`"), "the hub's game.month is its own row");
     }
 
     #[test]
@@ -278,6 +331,7 @@ mod tests {
         let md = markdown();
         assert_eq!(md.lines().count(), KINDS.len() + 2);
         assert!(md.contains("| `plan.kernel` | external (`POST /api/bus/publish`) |"));
+        assert!(md.contains("| `audit.resolved` | hub (its own bus and store) | `hub.rs:audit_changes` |"));
     }
 
     #[test]
@@ -304,5 +358,6 @@ mod tests {
         assert!(refuse_external("plan.portfolio", &good).unwrap().contains("by the panel itself"));
         assert!(refuse_external("game.month", &good).is_some());
         assert!(refuse_external("plan.whatever", &good).unwrap().contains("not a declared kind"));
+        assert!(refuse_external("audit.resolved", &good).unwrap().contains("not a declared kind"), "the hub's kinds are not on a panel's bus");
     }
 }

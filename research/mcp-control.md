@@ -274,7 +274,9 @@ and `ttd::wait_event(kind, seconds)`.
 ### The event bus on ZeroMQ and the DuckDB store
 
 One tap on the bus (`src/panel_store.rs`, ADR 0033, issue I0080) hands every event, in bus order, to
-two sinks: a ZeroMQ PUB socket and a DuckDB file of this instance. Nothing that publishes an event
+two sinks: a ZeroMQ PUB socket and a DuckDB file of this instance. The sinks themselves
+(`src/bus_sinks.rs`) are shared with the hub, which publishes the events it raises itself on a bus
+and into a store of its own (research/mcp-hub.md, I0084). Nothing that publishes an event
 changed, with one exception: the overview's daily sample lived in its own ring and never reached
 the bus, so the panel now also publishes it as `game.sample`, once per game day. `panel.*` events
 carry only `{text}`; each planning decision also publishes a structured `plan.*` event (below).

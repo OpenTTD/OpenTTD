@@ -22,8 +22,11 @@ tags: [panel, events, zeromq, duckdb, planning]
 Being built in issue I0080 (ADR 0033): the bus's game, company, decision, console, news and panel
 events, plus the daily `game.sample`, reach a ZeroMQ subscriber in bus order and the store within a
 second; `GET /api/bus`, `GET /api/db/tables` and read-only `GET|POST /api/db/query` are routes of the
-panel's table, so OpenAPI, Swagger UI and Rhai reach them. The kinds and payloads are in knowledge
-`the-panel-bus-carries-these-event-kinds`.
+panel's table, so OpenAPI, Swagger UI and Rhai reach them. The hub publishes the events it raises
+itself (its `audit.*` findings and the `game.*` it derives for a game without a panel) on a ZeroMQ
+socket and into a DuckDB store of its own through the same code (`tools/research/mcp-rhai/src/bus_sinks.rs`, I0084;
+`GET /api/bus` and `/api/db/query` of the hub); a panel event the hub relays stays in its panel's
+store. The kinds and payloads are in knowledge `the-panel-bus-carries-these-event-kinds`.
 
 ## What it does not do
 
@@ -32,7 +35,6 @@ Only the calibration reads the store so far (I0082: the planned bot's `PRISMATIC
 planning decision publishes its choice as a structured `plan.*` event beside its prose (I0081; the
 kinds are one table, `tools/research/mcp-rhai/src/panel_events.rs`, listed by `GET /api/bus`), and
 each other decision's `inputs.stored` names the fallback it took and the issue of milestone
-`planning-is-generated-from-recorded-history` that adds its query. The hub's `audit.*` events and
-the `game.*` events it derives for panel-less games reach neither the socket nor a store (I0084).
-Prismatic and AlgoGlyph do not subscribe yet (I0085, I0086). Without libduckdb the panel runs with
+`planning-is-generated-from-recorded-history` that adds its query. No decision reads the hub's
+store yet. Prismatic and AlgoGlyph do not subscribe yet (I0085, I0086). Without libduckdb the panel runs with
 "store: off".

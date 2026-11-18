@@ -3,6 +3,7 @@
 //!
 //! Usage:
 //!   mcp-hub [serve] [--port 8790] [--registry DIR] [--panel URL]... [--static DIR] [--audit-every S]
+//!                   [--bus-port N] [--no-store]
 //!   mcp-hub check [--hub ws://127.0.0.1:8790/ws] [--event-wait SECONDS]
 //!   mcp-hub audit [--hub ws://127.0.0.1:8790/ws] [--json]
 //!   mcp-hub intent-check [--hub ws://127.0.0.1:8790/ws] ["<sentence>"]...
@@ -12,7 +13,11 @@
 //! POST /hub/rpc, GET /hub/instances, /hub/catalogue, and the page / (static/hub.html). Every
 //! --audit-every seconds (default 60, 0 off) it runs hub.audit and announces each new finding as a
 //! hub.event (audit.duplicate_station, audit.duplicate_depot, audit.over_capacity) and each one
-//! that went away as audit.resolved.
+//! that went away as audit.resolved. Every event the hub raises itself (those, and the game.* it
+//! derives for an MCP server without a panel) also goes out in the prismatic-bus/v1 envelope on a
+//! ZeroMQ PUB socket of its own (tcp://127.0.0.1:<--bus-port, default an ephemeral port>, GET
+//! /api/bus) and into a DuckDB store of its own ($PRISMATIC_STORE_DIR/hub-<port>.duckdb, GET
+//! /api/db/query; --no-store leaves it out). Relayed panel events stay in their panel's store.
 //! check: connects to a hub, calls every read-only operation of every instance that needs no
 //! required input, and waits for one streamed event; exits 1 on any failure.
 //! intent-check: sends each sentence (the owner's own examples by default, Czech with and without
@@ -25,8 +30,14 @@ use std::net::{TcpListener, TcpStream};
 use std::path::PathBuf;
 use std::time::{Duration, Instant};
 
+#[path = "../bus_sinks.rs"]
+#[allow(dead_code)]
+mod bus_sinks;
 #[path = "../hub.rs"]
 mod hub;
+#[path = "../panel_events.rs"]
+#[allow(dead_code)]
+mod panel_events;
 
 fn arg(args: &[String], name: &str) -> Option<String> {
     args.iter().position(|a| a == name).and_then(|i| args.get(i + 1).cloned())
@@ -256,6 +267,14 @@ fn intent_check(args: &[String]) -> i32 {
     i32::from(fail > 0)
 }
 
+/// The hub's own bus and store: `hub-<port>`, the PUB socket on --bus-port (0, the default, an
+/// ephemeral port), the store in $PRISMATIC_STORE_DIR unless --no-store.
+fn sink_config(args: &[String], port: u16) -> hub::SinkConfig {
+    let name = format!("hub-{port}");
+    let store = (!args.iter().any(|a| a == "--no-store")).then(|| bus_sinks::store_dir().join(format!("{name}.duckdb")));
+    hub::SinkConfig { name, bus_port: arg(args, "--bus-port").and_then(|p| p.parse().ok()).unwrap_or(0), store }
+}
+
 fn serve(args: &[String]) -> i32 {
     let port = arg(args, "--port").unwrap_or_else(|| "8790".into());
     let listener = match TcpListener::bind(format!("127.0.0.1:{port}")) {
@@ -270,6 +289,7 @@ fn serve(args: &[String]) -> i32 {
         refresh: Duration::from_secs(2),
         poll: Duration::from_millis(500),
         audit: Some(Duration::from_secs(arg(args, "--audit-every").and_then(|v| v.parse().ok()).unwrap_or(60))).filter(|d| !d.is_zero()),
+        sinks: Some(sink_config(args, listener.local_addr().map(|a| a.port()).unwrap_or(0))),
     };
     let addr = listener.local_addr().map(|a| a.to_string()).unwrap_or_default();
     let state = hub::run(listener, cfg);
@@ -277,6 +297,12 @@ fn serve(args: &[String]) -> i32 {
         let s = state.lock().unwrap();
         println!("mcp-hub: http://{addr}/  ws://{addr}/ws  ({} instance(s), {} operation(s))",
                  s.instances.len(), s.ops.values().map(Vec::len).sum::<usize>());
+        if let Some(k) = &s.sinks {
+            println!("mcp-hub: bus {}  store {}", k.endpoint.as_deref().unwrap_or("off"), k.store_status().as_str().unwrap_or("off"));
+            for e in [&k.bus_error, &k.store_error].into_iter().flatten() {
+                println!("mcp-hub: {e}");
+            }
+        }
     }
     loop { std::thread::sleep(Duration::from_secs(3600)); }
 }
@@ -296,8 +322,8 @@ fn main() {
         "check" => (&["--hub", "--event-wait"], &["--hub", "--event-wait"]),
         "audit" => (&["--hub", "--json"], &["--hub"]),
         "intent-check" => (&["--hub"], &["--hub"]),
-        _ => (&["--port", "--panel", "--registry", "--static", "--audit-every", "--help"],
-              &["--port", "--panel", "--registry", "--static", "--audit-every"]),
+        _ => (&["--port", "--panel", "--registry", "--static", "--audit-every", "--bus-port", "--no-store", "--help"],
+              &["--port", "--panel", "--registry", "--static", "--audit-every", "--bus-port"]),
     };
     if let Some(f) = unknown_flag(rest, known, valued) {
         eprintln!("mcp-hub {cmd}: unknown option {f} (-h for usage)");
@@ -547,7 +573,7 @@ mod tests {
         std::fs::create_dir_all(&empty).unwrap();
         let listener = TcpListener::bind("127.0.0.1:0").unwrap();
         let state = hub::run(listener, hub::Config { registry: empty, panels: vec![base], statics: default_static(),
-                                                  refresh: Duration::from_millis(40), poll: Duration::from_secs(60), audit: None });
+                                                  refresh: Duration::from_millis(40), poll: Duration::from_secs(60), audit: None, sinks: None });
         let count = |s: &hub::Shared| s.lock().unwrap().ops.values().map(Vec::len).sum::<usize>();
         assert_eq!(count(&state), 1, "before the game is up: only the status route");
         up.store(true, Ordering::SeqCst);
@@ -608,6 +634,201 @@ mod tests {
         assert_eq!(unresolved_elsewhere_resolved(&results), vec![("b".to_string(), "forest + sawmill".to_string(), "a".to_string())]);
         assert!(unresolved_elsewhere_resolved(&[r("a", "x", 0)]).is_empty());
     }
+    #[test]
+    fn a_hub_raised_event_is_a_prismatic_bus_v1_envelope_naming_its_instance() {
+        let ev = json!({"kind": "audit.duplicate_station", "data": {"owner": 0, "a": {"id": 3}, "b": {"id": 7}, "distance": 2}});
+        let env = hub::hub_envelope(4, "panel-8800", &ev, &json!("s1"), 99, None);
+        assert_eq!(env, json!({"schema": "prismatic-bus/v1", "seq": 4, "ts_ms": 99, "instance": "panel-8800", "session": "s1", "seed": null,
+                               "game_tick": null, "game_date": null, "kind": "audit.duplicate_station", "data": ev["data"]}));
+        // The panel's own envelope function, not a copy of it.
+        assert_eq!(env, bus_sinks::envelope(&json!({"seq": 4, "kind": ev["kind"], "data": ev["data"]}), "panel-8800", &json!("s1"), None, 99, None));
+        // A derived event carries the clock of the read it was seen at; its own date wins.
+        let clock = hub::clock_of(&json!({"game_tick": 200, "game_date": "1950-02-01", "data": {}}));
+        let month = json!({"kind": "game.month", "data": {"date": "1950-02-01"}, "derived_from": "openttd://game/state"});
+        let env = hub::hub_envelope(5, "gui-1", &month, &Value::Null, 1, Some(&clock));
+        assert_eq!((env["game_tick"].clone(), env["game_date"].clone(), env["instance"].clone()), (json!(200), json!("1950-02-01"), json!("gui-1")));
+        assert_eq!(env["data"], json!({"date": "1950-02-01"}), "the envelope's data is the event's data");
+    }
+
+    #[test]
+    fn every_kind_the_hub_raises_is_a_hub_row_of_the_one_table() {
+        // The kinds the hub's code names where it raises events, read from its source like the panel's.
+        let src = include_str!("../hub.rs");
+        let mut raised = std::collections::BTreeSet::new();
+        for f in ["pub fn derive_state_events", "pub fn audit_findings", "pub fn audit_changes"] {
+            let at = src.find(f).expect(f);
+            let body = &src[at..at + src[at..].find("\n}\n").expect("its end")];
+            for part in body.split('"').skip(1).step_by(2) {
+                if part.contains('.') && !part.starts_with('.') && part.chars().all(|c| c.is_ascii_lowercase() || c == '.' || c == '_') {
+                    raised.insert(part.to_string());
+                }
+            }
+        }
+        let hub_rows: Vec<&panel_events::Kind> = panel_events::KINDS.iter().filter(|k| k.by == panel_events::By::Hub).collect();
+        let declared: std::collections::BTreeSet<String> = hub_rows.iter().map(|k| k.kind.to_string()).collect();
+        assert_eq!(raised, declared, "the kinds hub.rs raises and the hub's rows of src/panel_events.rs KINDS");
+        for k in &hub_rows {
+            let f = k.producer.strip_prefix("hub.rs:").expect("a hub row names a hub.rs producer");
+            assert!(src.contains(&format!("pub fn {f}(")), "{}: no producer {f} in hub.rs", k.kind);
+            assert!(panel_events::hub_kind(k.kind).is_some());
+        }
+        // What the hub's GET /api/bus lists is exactly those rows.
+        let listed: Vec<Value> = panel_events::table(panel_events::HUB_BUS).as_array().unwrap().iter().map(|r| r["kind"].clone()).collect();
+        assert_eq!(listed.len(), hub_rows.len());
+        assert!(raised.contains("audit.resolved") && raised.contains("game.month") && raised.len() >= 10, "{raised:?}");
+    }
+
+    #[test]
+    fn the_hubs_bus_and_store_routes_are_rows_of_its_method_table() {
+        let spec = hub::openapi();
+        for (path, id, method) in [("/api/bus", "hubBus", "hub.bus"), ("/api/db/query", "hubDbQuery", "hub.db_query"),
+                                   ("/api/db/tables", "hubDbTables", "hub.db_tables"), ("/hub/instances", "hubInstances", "hub.instances"),
+                                   ("/hub/catalogue", "hubCatalogue", "hub.catalogue"), ("/hub/audit", "hubAudit", "hub.audit")] {
+            assert_eq!(spec["paths"][path]["get"]["operationId"], json!(id), "{path}");
+            assert_eq!(hub::get_method(path).as_deref(), Some(method), "{path} is served by its row");
+            assert_eq!(hub::operation_id(method), id);
+        }
+        assert_eq!(spec["paths"]["/api/db/query"]["get"]["parameters"][0]["name"], json!("sql"));
+        let methods = spec.pointer("/paths/~1hub~1rpc/post/requestBody/content/application~1json/schema/properties/method/enum").unwrap();
+        for m in ["hub.bus", "hub.db_tables", "hub.db_query"] {
+            assert!(methods.as_array().unwrap().contains(&json!(m)), "{m} missing from OpenAPI");
+        }
+        let sdl = hub::graphql::sdl(&hub::methods());
+        assert!(sdl.contains("db_query(sql: JSON): JSON") && sdl.contains("bus: JSON"), "{sdl}");
+        assert_eq!(hub::query_params("/api/db/query?sql=SELECT%20kind+FROM%20events%3B&x="), json!({"sql": "SELECT kind FROM events;", "x": ""}));
+        assert_eq!(hub::query_params("/api/bus"), json!({}));
+    }
+
+    /// A ZeroMQ SUB client on its own thread and runtime (the crate's zeromq, as mcp-bus-tail): every
+    /// (topic, envelope) it receives on `topic`.
+    fn subscribe(endpoint: &str, topic: &str) -> std::sync::mpsc::Receiver<(String, Value)> {
+        let (tx, rx) = std::sync::mpsc::channel();
+        let (ready_tx, ready_rx) = std::sync::mpsc::channel();
+        let (ep, topic) = (endpoint.to_string(), topic.to_string());
+        std::thread::spawn(move || {
+            let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+            rt.block_on(async move {
+                use zeromq::{Socket, SocketRecv};
+                let mut sub = zeromq::SubSocket::new();
+                sub.connect(&ep).await.unwrap();
+                sub.subscribe(&topic).await.unwrap();
+                let _ = ready_tx.send(());
+                while let Ok(msg) = sub.recv().await {
+                    let frame = |i: usize| msg.get(i).map(|b| String::from_utf8_lossy(b).into_owned()).unwrap_or_default();
+                    if tx.send((frame(0), serde_json::from_str(&frame(1)).unwrap_or(Value::Null))).is_err() { break; }
+                }
+            });
+        });
+        ready_rx.recv_timeout(Duration::from_secs(5)).expect("the SUB client connected");
+        rx
+    }
+
+    fn temp_dir(tag: &str) -> std::path::PathBuf {
+        let d = std::env::temp_dir().join(format!("hub-{tag}-{}-{}", std::process::id(), bus_sinks::now_ms()));
+        std::fs::create_dir_all(&d).unwrap();
+        d
+    }
+
+    #[cfg(feature = "store")]
+    #[test]
+    fn a_derived_game_event_enters_the_hubs_store_with_its_instance_and_clock_and_an_undeclared_kind_does_not() {
+        let dir = temp_dir("derived");
+        let sinks = Arc::new(bus_sinks::Sinks::open("hub-u", Value::Null, 0, Some(dir.join("hub-u.duckdb")),
+                                                    bus_sinks::Run { seed: None, ports: (None, None, None) }));
+        assert!(sinks.store_error.is_none(), "{:?}", sinks.store_error);
+        let mut s = hub::State::default();
+        s.sinks = Some(sinks.clone());
+        let before = json!({"game_date": "1950-01-31", "game_tick": 100, "data": {"paused": false}});
+        let now = json!({"game_date": "1950-02-01", "game_tick": 200, "data": {"paused": false}});
+        s.mcp_state.insert("gui-1".into(), now.clone());
+        for e in hub::derive_state_events(Some(&before), &now) { s.raise("gui-1", &e); }
+        s.raise("gui-1", &json!({"kind": "not.declared", "data": {}}));
+        sinks.commit(true);
+        let (code, out) = bus_sinks::query(Some(&sinks), "SELECT instance, seq, kind, game_tick, game_date, data->>'date' FROM events ORDER BY seq");
+        assert_eq!(code, 200, "{out}");
+        assert_eq!(out["rows"], json!([["gui-1", 1, "game.month", 200, "1950-02-01", "1950-02-01"]]), "one derived event, not the undeclared one");
+        let _ = std::fs::remove_dir_all(dir);
+    }
+
+    #[cfg(feature = "store")]
+    #[test]
+    fn a_raised_event_goes_out_on_zeromq_and_into_the_hubs_store_and_a_relayed_one_into_neither() {
+        let events = Arc::new(Mutex::new(Vec::new()));
+        let base = fake_panel(events.clone());
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let addr = listener.local_addr().unwrap();
+        let dir = temp_dir("sinks");
+        let registry = dir.join("registry");
+        std::fs::create_dir_all(&registry).unwrap();
+        let store = dir.join("hub-t.duckdb");
+        // The first audit runs 1.5 s after the start, so the SUB clients below are connected by then.
+        let cfg = hub::Config { registry, panels: vec![base], statics: default_static(), refresh: Duration::from_millis(200),
+                                poll: Duration::from_millis(50), audit: Some(Duration::from_millis(1500)),
+                                sinks: Some(hub::SinkConfig { name: "hub-t".into(), bus_port: 0, store: Some(store.clone()) }) };
+        hub::run(listener, cfg);
+        let get = |path: &str| -> Value { ureq::get(&format!("http://{addr}{path}")).call().unwrap().into_json().unwrap() };
+        let sql = |q: &str| -> Value { ureq::get(&format!("http://{addr}/api/db/query")).query("sql", q).call().unwrap().into_json().unwrap() };
+        let bus = get("/api/bus");
+        assert_eq!((bus["schema"].clone(), bus["instance"].clone()), (json!("prismatic-bus/v1"), json!("hub-t")));
+        assert_eq!(bus["store"], json!(store.display().to_string()));
+        assert!(bus["kinds"].as_array().unwrap().iter().all(|k| k["by"] == "hub"), "the hub lists its own kinds");
+        let endpoint = bus["endpoint"].as_str().expect("the hub's PUB endpoint").to_string();
+        let audit = subscribe(&endpoint, "audit");
+        let game = subscribe(&endpoint, "game");
+        let name = get("/hub/instances")[0]["name"].as_str().unwrap().to_string();
+
+        // Acceptance 1: a SUB client receives the audit event the hub raised, in the envelope, naming the instance.
+        let (topic, env) = audit.recv_timeout(Duration::from_secs(10)).expect("an audit event on the hub's bus");
+        let received = Instant::now();
+        assert_eq!(topic, "audit.duplicate_station");
+        let mut keys: Vec<&str> = env.as_object().unwrap().keys().map(String::as_str).collect();
+        keys.sort_unstable();
+        assert_eq!(keys, vec!["data", "game_date", "game_tick", "instance", "kind", "schema", "seed", "seq", "session", "ts_ms"]);
+        assert_eq!((env["schema"].clone(), env["kind"].clone(), env["instance"].clone(), env["seq"].clone()),
+                   (json!("prismatic-bus/v1"), json!("audit.duplicate_station"), json!(name), json!(1)));
+        assert_eq!(env["data"]["b"]["name"], json!("Here Central"));
+
+        // Acceptance 2: the hub's store has it within a second.
+        let q = "SELECT instance, kind, seq, json_extract_string(data, '$.b.name') FROM events";
+        let mut rows = sql(q)["rows"].clone();
+        while rows.as_array().map_or(true, Vec::is_empty) && received.elapsed() < Duration::from_secs(2) {
+            std::thread::sleep(Duration::from_millis(50));
+            rows = sql(q)["rows"].clone();
+        }
+        let took = received.elapsed();
+        assert_eq!(rows, json!([[name, "audit.duplicate_station", 1, "Here Central"]]));
+        assert!(took < Duration::from_secs(1), "in the store {took:?} after it went out");
+        assert_eq!(sql("SELECT instance, seed, panel_port, mcp_port, game_port FROM runs")["rows"], json!([["hub-t", null, null, null, null]]));
+
+        // A panel event the hub only relays streams to its subscribers, and reaches neither the hub's bus nor its store.
+        let mut ws = connect(&format!("ws://{addr}/ws")).unwrap();
+        let mut notes = Vec::new();
+        request(&mut ws, 1, "hub.subscribe", json!({"kinds": ["game"]}), &mut notes).unwrap();
+        events.lock().unwrap().push(json!({"seq": 1, "kind": "game.month", "data": {"date": "1950-02-01"}}));
+        let deadline = Instant::now() + Duration::from_secs(5);
+        let mut relayed = notes.iter().any(|n| n["params"]["event"]["kind"] == "game.month");
+        while !relayed && Instant::now() < deadline {
+            if let Ok(tungstenite::Message::Text(t)) = ws.read() {
+                relayed = serde_json::from_str::<Value>(t.as_str()).map(|v| v["params"]["event"]["kind"] == "game.month").unwrap_or(false);
+            }
+        }
+        assert!(relayed, "the relayed panel event reached the WebSocket subscriber");
+        assert!(game.recv_timeout(Duration::from_millis(1500)).is_err(), "a relayed panel event is not on the hub's bus");
+        assert_eq!(sql("SELECT kind, count(*) FROM events GROUP BY 1")["rows"], json!([["audit.duplicate_station", 1]]),
+                   "the hub's store holds its own event only, not the relayed one");
+
+        // The store routes are read-only, and the schema is the panel's.
+        assert_eq!(ureq::get(&format!("http://{addr}/api/db/query")).query("sql", "DROP TABLE events").call().err().map(|e| match e {
+            ureq::Error::Status(code, _) => code, _ => 0 }), Some(400));
+        let tables = get("/api/db/tables");
+        let names: Vec<&str> = tables["tables"].as_array().unwrap().iter().map(|t| t["name"].as_str().unwrap()).collect();
+        assert_eq!(names, vec!["events", "runs", "samples"]);
+        let rpc: Value = ureq::post(&format!("http://{addr}/hub/rpc"))
+            .send_json(json!({"jsonrpc": "2.0", "id": 2, "method": "hub.db_query", "params": {"sql": "SELECT count(*) FROM events"}})).unwrap().into_json().unwrap();
+        assert_eq!(rpc["result"]["rows"], json!([[1]]));
+        let _ = std::fs::remove_dir_all(dir);
+    }
+
     /// A panel with a status route, an echo route and an event bus whose events the test appends.
     fn fake_panel(events: Arc<Mutex<Vec<Value>>>) -> String {
         let l = TcpListener::bind("127.0.0.1:0").unwrap();
@@ -657,7 +878,7 @@ mod tests {
         let empty = std::env::temp_dir().join(format!("hubreg-{}", std::process::id()));
         std::fs::create_dir_all(&empty).unwrap();
         let cfg = hub::Config { registry: empty, panels: vec![base], statics: default_static(),
-                                refresh: Duration::from_millis(200), poll: Duration::from_millis(50), audit: Some(Duration::from_millis(150)) };
+                                refresh: Duration::from_millis(200), poll: Duration::from_millis(50), audit: Some(Duration::from_millis(150)), sinks: None };
         hub::run(listener, cfg);
         let mut ws = connect(&format!("ws://{addr}/ws")).unwrap();
         let mut notes = Vec::new();

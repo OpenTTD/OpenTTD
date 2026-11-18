@@ -3,8 +3,8 @@ schema: knowledge/v1
 id: the-panel-bus-carries-these-event-kinds
 kind: knowledge
 class: fact
-title: "The panel's bus carries game, company, decision, console, news, panel and plan events from one declared table; the hub's audit events never reach it"
-description: "Before subscribing to the panel's bus, its ZeroMQ socket or its DuckDB store (ADR 0033), or before a decision reads recorded history (ADR 0034): which event kinds exist (the table src/panel_events.rs declares, GET /api/bus kinds), who publishes each, what each carries, how often, what the plan.* events carry, and what is not on the bus at all."
+title: "The panel's bus carries game, company, decision, console, news, panel and plan events from one declared table; the hub's own audit and derived game events go to the hub's bus and store"
+description: "Before subscribing to a panel's or the hub's bus, its ZeroMQ socket or its DuckDB store (ADR 0033), or before a decision reads recorded history (ADR 0034): which event kinds exist (the table src/panel_events.rs declares, GET /api/bus kinds of each), who publishes each, what each carries, how often, what the plan.* events carry, where the hub's events are stored, and what is not on any bus at all."
 status: verified
 epistemics: observed
 date: 2026-11-18
@@ -23,9 +23,11 @@ provenance:
     - file:tools/research/mcp-rhai/src/panel_decision.rs
     - file:tools/research/mcp-duel
     - file:tools/research/mcp-rhai/src/calibrate.rs
+    - file:tools/research/mcp-rhai/src/bus_sinks.rs
     - issue:I0080
     - issue:I0081
     - issue:I0082
+    - issue:I0084
 relations:
   - type: documents
     target: file:.ai/repo/adrs/0033-every-panel-event-goes-out-on-zeromq-and-into-a-duckdb-store.md
@@ -44,11 +46,15 @@ events to ZeroMQ (topic = kind) and to the store's `events` table.
 
 ## The declared kinds (I0081)
 
-Every kind is a row of one table, `tools/research/mcp-rhai/src/panel_events.rs:KINDS`.
-`GET /api/bus` answers it as `kinds`, and the region below is written from it
-(`mcp-panel --write-event-kinds`). A cargo test of `mcp-panel` fails when a publish call in the
-panel's sources names a kind outside the table, when a declared kind has no producer, or when this
-region differs from the table: the list cannot drift from the code any more.
+Every kind is a row of one table, `tools/research/mcp-rhai/src/panel_events.rs:KINDS`: the
+panel's rows (by `panel` or `external`) and the hub's (by `hub`, I0084). A panel's `GET /api/bus`
+answers the panel's rows as `kinds`, the hub's `GET /api/bus` the hub's rows, and the region below
+is written from all of them (`mcp-panel --write-event-kinds`). A cargo test of `mcp-panel` fails
+when a publish call in the panel's sources names a kind outside the table, when a declared kind has
+no producer, or when this region differs from the table; one of `mcp-hub` fails when a kind the
+hub's code raises (`derive_state_events`, `audit_findings`, `audit_changes`) is not one of the
+hub's rows, or a hub row is raised by none: the list cannot drift from the code any more. A kind can
+be the panel's and the hub's both (`game.month`), as two rows with their own producer and data.
 
 <!-- event-kinds:begin (generated from tools/research/mcp-rhai/src/panel_events.rs KINDS: mcp-panel --write-event-kinds) -->
 | Kind | By | Producer | Data | When |
@@ -88,6 +94,16 @@ region differs from the table: the list cannot drift from the code any more.
 | `plan.intent` | panel | `panel.rs:h_intent, answer_plan` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a sentence was resolved to an intent and candidates |
 | `plan.directive` | panel | `panel_decision.rs:pull` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | Prismatic's directive was applied or refused (`POST /api/decision/pull`) |
 | `plan.kernel` | external (`POST /api/bus/publish`) | `kernel_feed.rs:event (mcp-kernel-feed --publish)` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | an AlgoGlyph kernel answered a request fed from the store (I0086) |
+| `game.new_world` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's tick went back |
+| `game.month` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's month changed |
+| `game.paused` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's paused flag went on |
+| `game.resumed` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's paused flag went off |
+| `vehicles.count` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{from, to}` | an MCP-only instance's vehicle count changed |
+| `companies.count` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{from, to}` | an MCP-only instance's company count changed |
+| `audit.duplicate_station` | hub (its own bus and store) | `hub.rs:audit_findings` | a pair of `hub.audit`'s `duplicates`: `{owner, facilities, a, b, distance}` | a duplicate station pair appeared |
+| `audit.duplicate_depot` | hub (its own bus and store) | `hub.rs:audit_findings` | a pair of `hub.audit`'s `depots.duplicates`: `{owner, type, a, b, distance, by, reach}` | a duplicate depot pair appeared |
+| `audit.over_capacity` | hub (its own bus and store) | `hub.rs:audit_findings` | a route of `hub.audit`'s `capacity.over`: `{a, b, cargo, vehicles, capacity, usage, needed, too_many}` | a route over capacity appeared (advisory) |
+| `audit.resolved` | hub (its own bus and store) | `hub.rs:audit_changes` | `{was, key, finding}`: the finding's kind, its key and its data | a finding the last audit announced went away |
 <!-- event-kinds:end -->
 
 Notes the table does not carry:
@@ -146,16 +162,37 @@ carry `{fallback: "uncalibrated: <why>"}` and the plan runs on the model alone. 
 the retired file research/calibration.json was imported once as a run of its own
 (`mcp-panel --import-calibration`, instance `calibration-import`, seed and map null).
 
-## Not on the bus
+## The hub's own events (I0084)
 
-- **The hub's events.** `tools/research/mcp-rhai/src/hub.rs:fan_in` reads each panel's
-  `/api/events` every 500 ms (`poll` in `tools/research/mcp-rhai/src/bin/mcp-hub.rs`) and relays
-  them as `hub.event` over its WebSocket. For a game with an MCP server and no panel,
-  `hub.rs:fan_in_mcp` derives `game.new_world`, `game.month` `{date}` and `game.paused` /
-  `game.resumed` every `MCP_STATE_EVERY` = 10 cycles (5 s) with `hub.rs:derive_state_events`.
-  `hub.rs:audit_watch_once` raises `audit.duplicate_station`, `audit.duplicate_depot`,
-  `audit.over_capacity` and `audit.resolved` every 60 s (`--audit-every`). All of these go to hub
-  subscribers only: no panel bus, no ZeroMQ socket and no store sees them.
+`tools/research/mcp-rhai/src/hub.rs:fan_in` reads each panel's `/api/events` every 500 ms (`poll`
+in `tools/research/mcp-rhai/src/bin/mcp-hub.rs`) and relays them as `hub.event` over its
+WebSocket; a relayed event is in its panel's store already and goes nowhere else. The events the
+hub raises itself go through `hub.rs:State::raise`: to the WebSocket subscribers as before, and in
+the same prismatic-bus/v1 envelope (`hub.rs:hub_envelope`, which is
+`tools/research/mcp-rhai/src/bus_sinks.rs:envelope`) to the hub's own ZeroMQ PUB socket and DuckDB
+store (`bus_sinks.rs:Sinks`, the code the panel's tap uses):
+
+- for a game with an MCP server and no panel, `hub.rs:fan_in_mcp` derives `game.new_world`,
+  `game.month` `{date}`, `game.paused` / `game.resumed`, `vehicles.count` and `companies.count`
+  every `MCP_STATE_EVERY` = 10 cycles (5 s) with `hub.rs:derive_state_events`; their envelope
+  carries the game clock of the read they were seen at;
+- `hub.rs:audit_watch_once` raises `audit.duplicate_station`, `audit.duplicate_depot`,
+  `audit.over_capacity` and `audit.resolved` every 60 s (`--audit-every`); their `game_tick` and
+  `game_date` are null unless the hub reads that instance's state itself.
+
+The envelope's `instance` is the instance the event is about, and so is the `instance` of its row in
+the hub's `events` table; `seq` is the hub's own counter and `seed` is null (the hub does not know
+it). The socket binds `tcp://127.0.0.1:<--bus-port, default ephemeral>`, the store is
+`$PRISMATIC_STORE_DIR/hub-<port>.duckdb` (`--no-store` leaves it out), with a `runs` row naming the
+hub and null ports. `GET /api/bus`, `GET /api/db/tables` and `GET /api/db/query` of the hub are rows
+of its method table (`hub.bus`, `hub.db_tables`, `hub.db_query`), so they are in its OpenAPI,
+GraphQL and Rhai (`hub_db_query(#{sql: ...})`). The hub's store is a file of the store directory, so
+the calibration's `query_every_store` reads it with the panels' stores: it holds no
+`plan.calibration`, and while the hub runs it is listed with an error, since the hub has no registry
+record whose `/api/db/query` could answer for it.
+
+## Not on any bus
+
 - **A duel's verdict.** It exists as a `research/results/` file and `panel.duel` prose, not as an
   event (I0083).
 - **The game itself.** Nothing on the bus is read from the game's own event stream; every game
@@ -166,10 +203,13 @@ the retired file research/calibration.json was imported once as a run of its own
 - Subscribe by kind prefix (`game`, `company`, `plan`, `ai.log`) on ZeroMQ, or query `events` by
   `kind` in the store (`select kind, count(*) from events where kind like 'plan.%' group by 1`); do
   not parse `panel.*` text when a structured kind exists.
-- A consumer that needs the hub's audit or panel-less games has to subscribe to the hub until they
-  reach a bus or a store (milestone `planning-is-generated-from-recorded-history`).
+- A consumer that needs the hub's audit findings or a panel-less game's events subscribes to the
+  hub's bus (`GET /api/bus` of the hub names the endpoint) or queries the hub's store
+  (`select instance, kind, data from events where kind like 'audit.%'`); a panel's events are in
+  that panel's store, never in the hub's.
 - `GET /api/bus` `kinds` is the authority for a running panel; a panel built before I0081 has no
   `kinds` and no `plan.*` events. A new kind is a row of `KINDS` first (the cargo test refuses it
   otherwise), then `mcp-panel --write-event-kinds`.
-- The hub's kinds (`hub.rs:derive_state_events`, the `audit.*` events) are not in the table: they are
-  not on a panel's bus (I0084).
+- The hub's kinds are rows of the same table, by `hub`: a new one is a row first (the `mcp-hub`
+  cargo test refuses it otherwise, and `State::raise` streams but does not publish an undeclared
+  kind). They are never on a panel's bus: `POST /api/bus/publish` refuses them.

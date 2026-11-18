@@ -30,7 +30,10 @@ relations:
 - During a run, read through the panel: `GET|POST /api/db/query`
   (`tools/research/mcp-rhai/src/panel_store.rs:run_query`), Rhai `api_dbQuery(#{sql: "..."})`,
   or the ZeroMQ bus (`GET /api/bus`, `mcp-bus-tail`). `/api/status` and `/api/bus` state the same
-  in `store_access` (`tools/research/mcp-rhai/src/panel_store.rs:STORE_ACCESS`).
+  in `store_access` (`tools/research/mcp-rhai/src/bus_sinks.rs:STORE_ACCESS`).
+- The hub's own store (`hub-<port>.duckdb`, I0084) is held the same way by the running `mcp-hub`
+  (`tools/research/mcp-rhai/src/bus_sinks.rs:Sinks`, the code the panel's tap uses): read it through
+  the hub's `GET /api/db/query` or `hub.db_query` while the hub runs.
 - Open the file directly (the duckdb CLI, a notebook, another process) only after the panel has
   stopped. On stop, `tools/research/mcp-rhai/src/panel_store.rs:stop` commits the last batch first.
 - Do not work around this by giving a second process its own write connection. Two panels never

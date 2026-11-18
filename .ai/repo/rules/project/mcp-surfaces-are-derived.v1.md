@@ -29,7 +29,13 @@ time the C++ side adds a tool, and a stale surface claims capability the game do
 - Instances come from the discovery registry (`GET /api/instances`), never from a list of ports.
 - The hub is the surface over all of them (`tools/research/mcp-rhai/src/hub.rs`, I0058): its instances come
   from the registry and `--panel`, its operations from each panel's `/openapi.json` and each MCP server's
-  `tools/list`/`resources/list`, its events from each panel's bus. `hub.catalogue`, `hub.call` and
+  `tools/list`/`resources/list`, its events from each panel's bus. The events the hub raises itself
+  (`audit.*`, and the `game.*` it derives for an MCP-only instance) are the hub's rows of the one kinds
+  table (`tools/research/mcp-rhai/src/panel_events.rs` `KINDS`, by `hub`) and go out on the hub's own ZeroMQ bus and into its own
+  DuckDB store through the panel's sinks (`tools/research/mcp-rhai/src/bus_sinks.rs`, I0084), never a copy of them; a relayed
+  panel event stays in its panel's store. The hub's `GET /api/bus`, `/api/db/tables` and `/api/db/query`,
+  like `/hub/instances`, `/hub/catalogue` and `/hub/audit`, are method rows with a `get` path, so their
+  OpenAPI operations, GraphQL fields and Rhai functions come from the same row. `hub.catalogue`, `hub.call` and
   `hub.subscribe` over `ws://<host>/ws` reach every one of them, and `static/hub.html` renders them with
   `static/components.js`; neither names an operation. Proof: `cargo test --bin mcp-hub` and
   `node --test 'tools/research/mcp-panel/test/*.test.mjs'` offline, `tools/research/mcp-hub-check`

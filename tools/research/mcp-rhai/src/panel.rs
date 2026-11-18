@@ -2129,7 +2129,7 @@ fn h_bot_planned(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
 /// GET /api/bus: the tap's answer (src/panel_store.rs) with the declared kinds added.
 fn h_bus(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let (code, mut out) = panel_store::h_bus(g, i)?;
-    out["kinds"] = panel_events::table();
+    out["kinds"] = panel_events::table(panel_events::PANEL_BUS);
     Ok((code, out))
 }
 
