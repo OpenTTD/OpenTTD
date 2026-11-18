@@ -26,3 +26,21 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-18'
+verified_at: 2026-11-18T05:45:58Z
+verified_event: sha256:a04a0f1acfe0beeb2cb7b19081ce1b6e375d84ce65a83f73da8366356490105d
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "lundra-cargo.sh <worktree> test --release --bin mcp-hub (cargo test --release --bin mcp-hub on lundra, Linux; this Mac was over its build limits, owner's answer in knowledge a-rust-build-goes-to-lundra-when-this-mac-is-over-its-limits)"
+    result: "39 passed, 0 failed, incl. a_raised_event_goes_out_on_zeromq_and_into_the_hubs_store_and_a_relayed_one_into_neither (SUB client gets audit.duplicate_station in prismatic-bus/v1 naming the instance; the hub's store has it within 1 s; a relayed game.month reaches neither); full cargo test --release green"
+    commit: a59269e386bafdca4c7ce1aaa65a9a2f14f5c325
+    recorded_at: 2026-11-18T05:45:41Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-hub-check --panel http://127.0.0.1:8800"
+    result: "4 instances, 2576 operations; read-only calls 100 pass, 6 skip (503), 14 fail, 1 event streamed. The same 14 fail identically on master bcda41efd0 without this change (panel-59186 and panel-59188, two duel panels of another session, answer 502 to bots/catalogue/graph/overview/plan/readResource; panel-8800 content and result answer 400): no regression, not a pass of the check as a whole"
+    commit: a59269e386bafdca4c7ce1aaa65a9a2f14f5c325
+    recorded_at: 2026-11-18T05:45:41Z
+started_at: 2026-11-18T05:45:38Z
+started_event: sha256:c77c15019161fe20acb0bc23911a40f5733cfb5efd02ac4168d613f7f999753d
+updated_at: 2026-11-18T05:45:58Z
