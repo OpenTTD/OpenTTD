@@ -369,6 +369,51 @@ registry record:
 received by `mcp-bus-tail`, `SELECT count(*) FROM events` > 0, and the refusal of INSERT and of a
 second statement.
 
+### The bus on the Majordomus blackboard
+
+`tools/research/mcp-rhai/src/bin/mcp-bus-blackboard.rs` forwards a digest of every panel's bus to
+the Majordomus blackboard, so an agent session that reads `majordomus_blackboard` or
+`majordomus_peers` sees the games without subscribing to ZeroMQ. It is off by default and runs only
+when started. Toward the panels it only subscribes.
+
+```sh
+B=tools/research/mcp-rhai/target/release/mcp-bus-blackboard
+$B                                    # every live panel record of the registry that names a bus
+$B --panel http://127.0.0.1:8800      # one panel (its GET /api/bus); --endpoint tcp://... works too
+$B --dry-run --duration 120           # print the posts instead of announcing them, stop after 2 min
+```
+
+**What it posts.** It posts a digest, not every event. For each instance there is one line per
+game month, from `game.month`: the date, the fleet, and each company's value, money and vehicles,
+highest value first. Names and per-company fleets come from `game.sample`, `company.observed` and
+`company.renamed`. The rare events are `company.founded`, `company.removed`, `game.new_world`,
+`decision.recorded`, `decision.updated` and `plan.*`. They go out at once, and the newest three are
+kept. Each instance gets at most one post per `--min-gap` (default 30 s). Anything that arrives
+inside the gap goes out with the next post. A rare event is never dropped, and a newer month
+replaces a waiting one. The console, the AI log, news and `panel.*` prose are not subscribed to.
+
+**Where it lands.** The blackboard (Majordomus ADR 0176) is a read-only join of three sources: each
+checkout's board, the mesh journal and the monitor. It writes nothing itself, and a process that is
+not an MCP client has no write path there. So the bridge becomes a board peer. It opens an MCP
+session over HTTP (`POST /mcp`) on the Majordomus server of the primary checkout and calls
+`majordomus_announce` with named claims and no scope:
+
+- `openttd:<instance>:month`: the month line;
+- `openttd:<instance>:events`: the newest rare events;
+- its own unnamed claim, saying which instances it follows.
+
+The server is `--majordomus URL`, otherwise `$MAJORDOMUS_URL`, otherwise what
+`majordomus serve ensure --format json` names for `--repo`. The default is the primary checkout of
+the current repository. The bridge pings the session every 30 s, because the server forgets a
+silent one after 90 s. A forgotten session is opened again and its claims are announced again.
+On SIGINT or SIGTERM, a last announcement says it stopped, and the session ends. The board keeps a
+departed peer's named claims, so the last digest stays readable until the next run replaces it.
+
+The mesh journal (`POST /api/v1/mesh/sessions`, whose intent change is a `session_changed` signal)
+would also reach other machines. It is not used, because on this machine the mesh is closed (the
+node key is not in the declaration's `trust.allow`), and the blackboard reports its mesh source as
+absent.
+
 ## Watching it live, and notifications
 
 - `mcp-e2e` joins the GUI client full screen at the display's size (`--window WxH` for a window),
