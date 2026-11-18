@@ -1,6 +1,7 @@
 // node --test tools/research/mcp-panel/test/ : the /data page (static/data.js, ADR 0033): examples
 // derived from the schema, the axes inferred from an answer, the chart option rendered server-side by
 // ECharts itself, the bus snippets, and the registry against static/data.html.
+import './panel-ui.mjs'; // first: shell.js publishes PanelUI before any page script
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
