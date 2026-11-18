@@ -200,8 +200,8 @@ function renderRunning() {
     const body = live.length ? editorMarkup(live, `c${c.id}`, { choices, disabled: !canSet, asked: asked.get(c.id) || {} })
       : `<p class="text-sm text-gray-500 dark:text-gray-400">${bots.live && bots.live.list ? 'This AI declares no setting that can change while it runs.' : 'The current values are not readable: this game binary has no openttd.ai.list.'}</p>`;
     return `<article class="p-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-900/40 dark:border-gray-700" data-bot="${h(c.id)}">
-      <header class="flex flex-wrap items-start justify-between gap-3 mb-3">
-        <div class="min-w-0"><h4 class="text-base font-semibold text-gray-900 dark:text-white">${h(c.name || `Company ${c.id}`)}</h4>
+      <header class="${UI.cardHead} mb-3">
+        <div class="${UI.cardHeadTitle}"><h4 class="text-base font-semibold text-gray-900 dark:text-white">${h(c.name || `Company ${c.id}`)}</h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">company ${h(c.id)} · ${h(c.ai || 'AI')}${c.running === false ? ' (stopped)' : ''} · money ${typeof c.money === 'number' ? whole.format(c.money) : h(c.money ?? '-')}</p></div>
         ${live.length ? `<div class="flex shrink-0 items-center gap-2"><span class="text-sm text-gray-500 dark:text-gray-400" data-pending>no change</span>
           <button type="button" class="${BTN_ALT}" data-reset-bot="${h(c.id)}" disabled>Reset</button>

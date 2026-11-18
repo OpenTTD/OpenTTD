@@ -9,14 +9,8 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 /** The shell's Pro class sets, one per role (static/shell.js UI). */
 const UI = globalThis.PanelUI;
-/** Badge tones (components.js TONE: a classic script cannot import it). */
-const TONE = {
-  green: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-  yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-  gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-  red: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-  purple: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-};
+/** The shell's badge tones (static/shell.js TONE). */
+const TONE = globalThis.PanelTONE;
 const tag = (text, tone) => `<span class="${UI.badge} ${TONE[tone]}">${esc(text)}</span>`;
 
 async function api(path, body) {

@@ -93,8 +93,8 @@ export function duelOption(series, { metric = 'value' } = {}) {
 /* ---- the pages ------------------------------------------------------------------------------- */
 function chartCard(id, title, note, label, height = 'h-72 sm:h-80 lg:h-96') {
   return `<div id="${id}-card" data-maximize="${id}" data-chart="${id}" class="${CLS.card} flex flex-col">
-    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-      <div><h2 class="${UI.cardTitle}">${esc(title)}</h2><p class="mt-2 ${UI.cardSub}">${esc(note)}</p></div>
+    <div class="${UI.cardHead} mb-3">
+      <div class="${UI.cardHeadTitle}"><h2 class="${UI.cardTitle}">${esc(title)}</h2><p class="mt-2 ${UI.cardSub}">${esc(note)}</p></div>
       <div data-toolbar class="flex flex-wrap items-center gap-2"></div>
     </div>
     <div id="${id}" role="img" aria-label="${esc(label)}" class="w-full ${height} grow"></div></div>`;
@@ -133,8 +133,8 @@ async function listPage() {
     ${chartCard('duels-chart', 'Final company value by duel', 'Planned bot against its rival at the end of each run; click a run for its page', 'Final company value of the planned bot and its rival, one pair of bars per duel')}
     ${chartCard('compare-chart', 'Runs side by side', 'Tick runs in the table: each planned company solid, its rival dashed, month by month', 'The ticked runs month by month, planned companies solid and rivals dashed')}
     <div class="${CLS.card}">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <h2 class="${UI.cardTitle}">All duels <span id="duels-n" class="${UI.cardSub}"></span></h2>
+      <div class="${UI.cardHead} mb-3">
+        <h2 class="${UI.cardHeadTitle} ${UI.cardTitle}">All duels <span id="duels-n" class="${UI.cardSub}"></span></h2>
         <label class="flex items-center gap-2 text-sm text-gray-900 dark:text-white">Seed <select id="seed" class="${UI.select}"><option value="">all</option>${seeds.map((s) => `<option${String(s) === state.seed ? ' selected' : ''}>${esc(s)}</option>`).join('')}</select></label>
       </div>
       <div class="${UI.tableWrap}"><table class="${UI.table}">
@@ -231,8 +231,8 @@ async function scoreboardCard() {
       <dd class="mt-1 ${UI.cardTitle}">${href ? `<a class="hover:underline" href="${esc(href)}">${esc(value)}</a>` : esc(value)}</dd>
       ${sub ? `<dd class="text-xs text-gray-500 dark:text-gray-400">${esc(sub)}</dd>` : ''}</div>`;
     const b = d.best;
-    box.innerHTML = `<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <div><h2 class="${UI.cardTitle}">Landing page scoreboard ${badge}</h2>
+    box.innerHTML = `<div class="${UI.cardHead} mb-3">
+        <div class="${UI.cardHeadTitle}"><h2 class="${UI.cardTitle}">Landing page scoreboard ${badge}</h2>
         <p class="mt-2 ${UI.cardSub}">README.md's scoreboard, derived from research/results by tools/research/readme-scoreboard; every duel regenerates it, commit and push stay yours</p></div>
         <div class="flex items-center gap-2"><a href="/docs#/default/scoreboardWrite" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
         <button id="sb-write" type="button" class="${UI.primary}"${stale ? '' : ' disabled'}>Regenerate README</button></div></div>
@@ -281,8 +281,8 @@ async function resultPage(name) {
         <pre class="p-3 max-h-[32rem] overflow-auto text-xs whitespace-pre-wrap bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200">${esc(d.markdown || 'no reading written')}</pre></div>
     </div>
     <div class="${CLS.card}">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-        <h2 class="${UI.cardTitle}">The bots' logs <span class="${UI.cardSub}">(${log.length} lines)</span></h2>
+      <div class="${UI.cardHead} mb-3">
+        <h2 class="${UI.cardHeadTitle} ${UI.cardTitle}">The bots' logs <span class="${UI.cardSub}">(${log.length} lines)</span></h2>
         <input id="log-q" type="search" placeholder="filter, e.g. line laid" class="${UI.input} w-full sm:w-72">
       </div>
       <pre id="log" class="p-3 max-h-[32rem] overflow-auto text-xs whitespace-pre-wrap bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200"></pre>

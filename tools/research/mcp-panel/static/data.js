@@ -5,7 +5,7 @@
    (components.js ecInit). The bus card shows the ZeroMQ endpoint (GET /api/bus) and how to subscribe
    from Rust, Python, Node and Elixir. The pure parts are exported for node --test (test/data.test.mjs). */
 
-import { ecInit, maximizable, PALETTE, $, esc, whole, compact, INK, AXIS as axis, patchAddress, TONE } from './components.js';
+import { ecInit, maximizable, PALETTE, UI, $, esc, whole, compact, INK, AXIS as axis, patchAddress, TONE } from './components.js';
 
 /** The registry: every chart of /data, the address keys it reads and where a click goes. */
 export const CHARTS = [
@@ -294,7 +294,6 @@ function page() {
   let tables = ADR_SCHEMA;
   let answer = null;
   let chart = null;
-  const UI = globalThis.PanelUI || {};
 
   const renderExamples = () => {
     $('example-list').innerHTML = exampleQueries(tables).map((e) => `<li><a href="${esc(e.href)}" data-example="${esc(e.id)}" class="block p-2 rounded-lg text-primary-600 hover:bg-gray-100 hover:underline dark:text-primary-500 dark:hover:bg-gray-700" title="${esc(e.sql)}">${esc(e.label)}</a></li>`).join('');

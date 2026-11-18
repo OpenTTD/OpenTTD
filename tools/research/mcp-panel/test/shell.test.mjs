@@ -130,8 +130,16 @@ for (const name of PANEL_PAGES) {
       ['tableWrap', (e) => e.tag === 'div' && e.cls.has('overflow-x-auto')],
       ['table', (e) => e.tag === 'table'],
       ['thead', (e) => e.tag === 'thead'],
+      ['cardHead', (e) => e.cls.has('justify-between') && e.cls.has('flex-wrap')],
     ];
-    for (const el of tags(html.replace(/<section id="console"[\s\S]*?<\/section>/, ''))) {
+    const all = tags(html.replace(/<section id="console"[\s\S]*?<\/section>/, ''));
+    // A card header row's first child is its title block, which grows so the row's actions stay on
+    // its row (f450a7dacd: Maximize fell 80 px below its title on a wrapped row).
+    all.forEach((el, i) => {
+      if (!roles.at(-1)[1](el)) return;
+      assert.deepEqual(lacks(all[i + 1], UI.cardHeadTitle), [], `the title block after a cardHead row lacks UI.cardHeadTitle`);
+    });
+    for (const el of all) {
       for (const [role, is] of roles) {
         if (!is(el)) continue;
         assert.deepEqual(lacks(el, UI[role]), [], `<${el.tag}${el.attrs.slice(0, 60)}…> is a ${role} without the shell's UI.${role}`);

@@ -9,12 +9,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 /** The shell's Pro class sets, one per role (static/shell.js publishes them as PanelUI first). */
 const UI = globalThis.PanelUI;
 const card = `${UI.card} mb-4`;
-const badge = (text, tone) => `<span class="${UI.badge} ${{
-  green: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-  yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-  blue: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-  gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-}[tone || 'gray']}">${esc(text)}</span>`;
+const badge = (text, tone) => `<span class="${UI.badge} ${globalThis.PanelTONE[tone || 'gray']}">${esc(text)}</span>`;
 
 /* The catalogue's items from OpenAPI: kind, name, page, the operation it calls, its schema. */
 function items(doc) {

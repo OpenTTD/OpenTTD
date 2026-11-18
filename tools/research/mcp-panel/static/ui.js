@@ -46,10 +46,7 @@ const windowsHtml = (ui, classes) => ui.windows.map((w, i) => {
 const statsText = (ui) => `${ui.windows.length} windows · ${ui.windows.reduce((n, w) => n + (w.widgets || []).length, 0)} widgets · screen ${ui.screen.w}x${ui.screen.h}`;
 /** What openttd.ui.at found under a point. */
 const atText = (classes, x, y, at) => `(${x},${y}): ${classNameOf(classes, at.window?.class ?? at.class)}${at.widget ? ' / ' + widgetLabel(at.widget) : ''}${at.tile !== undefined ? ` · tile ${at.tile}` : ''}`;
-const ARMED = {
-  true: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-  false: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-};
+const ARMED = { true: globalThis.PanelTONE.green, false: globalThis.PanelTONE.yellow };
 const armedBadge = (armed) => `${UI.badge} ${ARMED[!!armed]}`;
 
 /* ---- the page ------------------------------------------------------------------------------ */

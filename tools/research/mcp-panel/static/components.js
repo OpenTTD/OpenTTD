@@ -35,15 +35,8 @@ export const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&am
 /** Numbers as the panel writes them: 1,234,567 and 1.2M. */
 export const whole = new Intl.NumberFormat('en');
 export const compact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
-/** Flowbite badge tones. */
-export const TONE = {
-  green: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-  yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-  blue: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-  gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-  red: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-  purple: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-};
+/** Flowbite badge tones: the shell's (static/shell.js TONE), published with PanelUI. */
+export const TONE = globalThis.PanelTONE;
 /** A Flowbite badge (UI.badge) of one of TONE's tones, its text escaped. */
 export const badge = (text, tone = 'gray') => `<span class="whitespace-nowrap ${UI.badge} ${TONE[tone]}">${esc(text)}</span>`;
 /** Chart ink on the dark theme, and the value/category axis style drawn with it. */

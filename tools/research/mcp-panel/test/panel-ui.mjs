@@ -4,5 +4,6 @@
 // one set (static/components.js UI) and never a copy.
 import { createRequire } from 'node:module';
 
-export const { UI } = createRequire(import.meta.url)('../static/shell.js');
+export const { UI, TONE } = createRequire(import.meta.url)('../static/shell.js');
 globalThis.PanelUI = UI;
+globalThis.PanelTONE = TONE;
