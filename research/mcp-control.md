@@ -424,6 +424,44 @@ plans a bot (`--start-bot AI` also starts it) and finds `plan.portfolio` and `pl
 `/api/events`, on ZeroMQ and in the store. The planned bot passes only with a 200, settings handed
 over and no planner error.
 
+### The bot's own lines from stored duels (I0087)
+
+`own_lines` (the freight lines the planned bot plans itself once the handed ones are built) is the
+constant `OWN_LINES` = 8 and `rail_after` comes from the plan's scores. With
+`PRISMATIC_BOT_FROM_DUELS=1` in a run's environment (e.g. `PRISMATIC_BOT_FROM_DUELS=1
+tools/research/mcp-duel ...`), a planned bot start derives both from the stored duel outcomes instead
+(`tools/research/mcp-rhai/src/duel_outcomes.rs`). Off is the default, and stays the default until the
+derived rule wins held-start pairs on three seeds (rule `project.a-tuning-claim-needs-held-start-pairs`).
+
+- **History.** One statement (`duel_outcomes.rs:outcomes_sql`) on every store of the store directory
+  (`query_every_store`): each `plan.duel` verdict of at least 60 months, with the `plan.bot_settings`
+  events of the same instance. A verdict is joined with the settings its own run published before it:
+  how many freight lines the plan handed over (`h`), `own_lines` and `rail_after`. Only held starts
+  against the unplanned PrismaticAI count. Every duel runs on the map of the panel's generated config,
+  so map size does not split the history. Hub stores hold no duel and are not listed.
+- **Duels from before I0083.** They exist only as files in `research/results`.
+  `mcp-panel --import-duels [DIR]` imports them once into `$PRISMATIC_STORE_DIR/duel-import.duckdb`, as
+  I0082 imported the retired calibration file. Each record becomes one `plan.duel` with what its run
+  handed over (`choice.plan`, from its `plan.bot_settings` when the record has one, else from its
+  planner sentences). A record whose verdict is in a store already is skipped, and so is one imported
+  before.
+- **The rule** (`own-lines-by-handed-v1`, `duel_outcomes.rs:RULE`). The pairs are compared within
+  one seed, length and `h`. Each `own_lines` value is set against the smallest, with gain = A / A_smallest - 1,
+  and read against that group's rival spread ((max B - min B) / min B). A pair *pays* above the spread,
+  *costs* below minus the spread, and is *inside* otherwise. Near pairs have an `h` within 1 of this plan's;
+  with none, every pair is read. If some near pair pays and none costs, `own_lines` is twice the largest
+  value that paid, at most 16. If none pays, it is 0; if pairs both pay and cost, the constant stays.
+  For `rail_after`, groups that differ only in it and whose best arm beats every other beyond the spread
+  give that arm's share `rail_after / h`. The median near share times this plan's `h` is used, else the
+  plan's scores.
+- **Fallbacks.** The switch off, nothing handed over, the store off or no pair in the history keep
+  the constants, and `plan.bot_settings` says why (`inputs.stored.fallback` "constants: ...").
+- **The event.** `plan.bot_settings` names the query and its rows (`inputs.stored`), and the rule,
+  the stores, the outcomes used, the pairs with their verdicts and each value with its reason
+  (`inputs.live.from_duels`). The panel adds a sentence per value it changed ("planner: own_lines 16 from
+  stored duel outcomes (constant 8): ..."). A run's own `--bot-settings` still win over the derived
+  values.
+
 ### The bus on the Majordomus blackboard
 
 `tools/research/mcp-rhai/src/bin/mcp-bus-blackboard.rs` forwards a digest of every panel's bus to
