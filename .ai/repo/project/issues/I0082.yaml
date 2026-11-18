@@ -31,4 +31,33 @@ evidence_required:
 created_at: '2026-11-18'
 started_at: 2026-11-18T04:57:53Z
 started_event: sha256:160ee3076c8996ce9947c36b6cf37ebf14ee2633f81d49ccf7054f4b3e788fa6
-updated_at: 2026-11-18T04:57:53Z
+updated_at: 2026-11-18T05:40:06Z
+verified_at: 2026-11-18T05:39:47Z
+verified_event: sha256:cbebc13970b14cb158442de03c29d43cebc5aa36afe11592fdaf3d50c226cff9
+completed_at: 2026-11-18T05:40:06Z
+completed_event: sha256:10bd20e9258d5d06a874203bdfad211dab7248edcad836515a0a462019276807
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel"
+    result: "73 passed, 0 failed: the calibration's store query over DuckDB fixture rows (seed and map scope, run join, newest first), the import once as a run of its own read back read-only with the file's factors (bus 0.16, default 0.37, freight_rail 0.59, rail 0.15), fallback uncalibrated for off, store off, no reading, seed without a map and a file name, plan.bot_settings naming the query and its rows, plan.calibration's version params from calibrate.rs's constants; whole crate (cargo test --release) 200 passed over 10 test binaries"
+    commit: bb22b9256f17d459a2c64236a467dd22a409936f
+    recorded_at: 2026-11-18T05:39:50Z
+  - covers: "validation_run"
+    type: manual
+    command: "PRISMATIC_PLAN_CALIBRATION=all tools/research/mcp-e2e --bin build-gate-research/openttd --no-gui --no-browser --seed 3 --panel-port 18961 --mcp-port 18962 --game-port 18963; POST /api/calibration"
+    result: "bot start: plan.portfolio and plan.bot_settings inputs.stored {query: readings_sql all, rows: 2} over 7 stores (own via this panel, 5 files read-only, panel-8800 via http://127.0.0.1:8800/api/db/query), readings used: calibration-import seq 1 (6 lines), factors bus 0.16 default 0.37 freight_rail 0.59 rail 0.15, sentence 'planner: calibration from the store (all, 1 reading(s) in 2 row(s))'; POST /api/calibration published plan.calibration with inputs.stored {query, rows: 2} and readings 2"
+    commit: bb22b9256f17d459a2c64236a467dd22a409936f
+    recorded_at: 2026-11-18T05:39:51Z
+  - covers: "validation_run"
+    type: manual
+    command: "PRISMATIC_STORE_DIR=/dev/null/no-store PRISMATIC_PLAN_CALIBRATION=all tools/research/mcp-e2e ... --seed 3 --panel-port 18961; POST /api/calibration; GET /api/calibration?scope=seed"
+    result: "store off: plan.portfolio and plan.bot_settings inputs.stored {fallback: 'uncalibrated: store off: /dev/null/no-store: Not a directory (os error 20)'}, sentence 'planner: calibration asked for (all), but store off ...; the plan runs uncalibrated'; plan.calibration carried the same fallback with inputs.live.game {seed: 3, map: 256x256} and version params {min_age_days 730, reach_tiles 12, candidates 500}; GET answered fallback uncalibrated"
+    commit: bb22b9256f17d459a2c64236a467dd22a409936f
+    recorded_at: 2026-11-18T05:39:52Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/surfaces/surfaces check; tools/knowledge/refs check; tools/check-prismatic-docs.sh; git grep research/calibration.json -- '*.rs' '*.js' '*.sh'"
+    result: "surfaces 399 documents 0 findings; refs 2561 references 0 failures; prismatic docs PASS; no code names the file (only historical research/results records and a node test fixture string); mcp-panel --import-calibration twice: imported 1, then 0 (already 1)"
+    commit: bb22b9256f17d459a2c64236a467dd22a409936f
+    recorded_at: 2026-11-18T05:39:53Z
