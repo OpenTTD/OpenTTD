@@ -143,6 +143,7 @@ machine-readable files sit beside them: `internal-surface-inventory.json` and
 | [19 — Continuation Runbook](19-continuation-runbook.md) | Exact commands for the verified Decision-Contract vertical (Vertical B). Every line was run. |
 | [Determinism A/B (I0026) — the read-only MCP path does not perturb the simulation](determinism-ab.md) | Status: PASS. One map seed run three times, headless, through tools/research/determinism-ab: an idle run, an idle control, and a run hammered with read-only MCP reads for its whole length. At every shared game-day... |
 | [Exposure Coverage Matrix](exposure-coverage-matrix.md) | Honest coverage of internal domains using the mission's status vocabulary. What is not adapted is catalogued as designed-but-not-yet-adapted, not pretended-covered. |
+| [Owner answers: the event bus and the store](owner-answers-event-bus.md) | Answers the owner gave about the event bus on ZeroMQ and the DuckDB store (ADR 0033, I0080, ADR 0034, I0081-I0087), recorded verbatim with the session and the time. |
 | [MCP Spec Compliance Matrix (stable 2025-11-25)](spec-compliance-matrix.md) | Pinned version: 2025-11-25 (PrismaticMCP::PROTOCOL_VERSION). Draft/RC behavior is not implemented. Status: DONE / PARTIAL / STAGED. |
 <!-- surfaces:end docs-index -->
 

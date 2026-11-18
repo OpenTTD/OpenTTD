@@ -109,10 +109,21 @@ Three later findings on seed 31337 (bridge repository, branch feat/live-behaviou
   After that, laying track takes the game time, not the plan or the money.
 
 - **Its own lines once the plan is built** (bridge 31fdb68, `own_lines`; the panel passes 8). They cost
-  value until about month 50, because company value does not count track. Over ten years they paid +10.4%
-  (4811581 against 4356412 on seed 31337). **Judge any late investment on a ten-year duel:** a 36-month
-  duel showed the same lines at −20% and −5%. A duel's `bot_settings` (e.g. own_lines=8) gives such an A/B
-  without a code change.
+  value until about month 40, because company value does not count track. **Judge any late investment on
+  a ten-year duel:** a 36-month duel showed the same lines at −20% and −5%. A duel's `bot_settings` (e.g.
+  own_lines=8) gives such an A/B without a code change. The first ten-year reading (+10.4% on seed 31337,
+  duel-20261117T155736 against T180225) came from before held starts and was noise. Held-start pairs over
+  ten years, own_lines=8 against 0:
+
+  | Seed | own_lines=0 | own_lines=8 | Change | Trains (0 / 8) | Duels |
+  |---|---|---|---|---|---|
+  | 31337 | 4479471 | 4433637 | −1.0% | 14 / 15 | duel-20261117T225145, T234725 |
+  | 4242 | 2770405 | 4022718 | +45.2% | 11 / 18 | duel-20261118T011804, T011802 |
+  | 20208 | 2824858 | 3690922 | +30.7% | 9 / 15 | duel-20261118T012204, T012206 |
+
+  Own lines pay where the planner hands over few lines (9 or 11 trains), and are neutral where it already
+  fills the map (14 trains). The panel's default stays 8 (`OWN_LINES` in panel_bot.rs); I0087 derives it
+  from stored duel outcomes later.
 
 # How to apply
 
