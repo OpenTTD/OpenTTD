@@ -14,6 +14,7 @@ provenance:
   origin: authored
   derived_from:
     - file:tools/research/mcp-coverage-check
+    - file:tools/research/test_mcp_coverage_check.py
     - file:src/prismatic_mcp/prismatic_mcp_coverage.cpp
     - file:src/prismatic_mcp/prismatic_mcp_server.cpp
     - file:src/prismatic_mcp/prismatic_mcp_api.cpp
@@ -62,6 +63,12 @@ Close it generically, deriving everything from `tools/list` (no tool named):
    second or third.
 4. Derive arguments that pass the schema (`prefixItems` to `minItems`, `minimum`, first `enum`, a real id
    for `x-kind: id` from the matching resource), so the game's own check gives the verdict.
+   Done on the probe side, offline, 2026-11-18: `derived_value` in `mcp-coverage-check` honours
+   const, default, enum, numeric bounds, string lengths, prefixItems/minItems/maxItems, required
+   nested properties and the first anyOf/oneOf branch; `tools/research/test_mcp_coverage_check.py`
+   validates every schema shape the C++ publishers emit (run by `tools/gate.sh change`). Still open:
+   an `x-kind: id` gets 0, not an id that exists (needs a live resource read), and Script API
+   parameters described only in prose ("a script object") get 0, which the game refuses.
 5. Run `mcp-coverage-check --probe --report` at the end of every `mcp-e2e`.
 
 Only `openttd.decision.submit` then needs a real call, which stays on the throwaway `--exercise` path.
