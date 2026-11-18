@@ -288,7 +288,8 @@ recv.(recv)` },
 }
 
 /* ---- the page ------------------------------------------------------------------------------- */
-function page() {
+/** Mount the page; exported so a test can mount it again in a fresh document (test/data-page.test.mjs). */
+export function page() {
   const echarts = globalThis.echarts;
   const state = getState();
   let tables = ADR_SCHEMA;

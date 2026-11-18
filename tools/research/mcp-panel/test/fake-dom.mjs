@@ -3,6 +3,9 @@
 // the markup a script wrote (innerHTML is parsed into elements that keep their identity until it is
 // written again). fetch answers from a route table, timers are recorded and run on request, and
 // EventSource, WebSocket, Image and echarts are fakes a test drives. Nothing talks to a game.
+// A parsed element is one object wherever it is reached from (its ancestors' markup or its own), a
+// rewritten element's new markup is what the document then finds, a select's value is its selected
+// (or first) option, and dataset writes show as data-* attributes, as in a browser.
 
 const VOID = new Set(['input', 'img', 'br', 'hr', 'meta', 'link', 'source', 'option-void']);
 const unescape = (s) =>
@@ -12,21 +15,33 @@ const unescape = (s) =>
     .replace(/&gt;/g, '>')
     .replace(/&amp;/g, '&');
 const camel = (s) => s.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+const kebab = (s) => s.replace(/[A-Z]/g, (c) => '-' + c.toLowerCase());
 
 /** One simple selector: tag, #id, .class, [attr], [attr=value], :checked. */
 function matchesOne(el, sel) {
   const re =
-    /([a-zA-Z][\w-]*)|#([\w-]+)|\.([\w-[\]:/.]+)|\[([\w-]+)(?:=["']?([^\]"']*)["']?)?\]|:([\w-]+)/g;
+    /([a-zA-Z][\w-]*)|#([\w-]+)|\.([\w-[\]:/.]+)|\[([\w-]+)(?:([\^$*]?)=["']?([^\]"']*)["']?)?\]|:([\w-]+)/g;
   for (const m of sel.matchAll(re)) {
     if (m[1] && el.localName !== m[1].toLowerCase()) return false;
     if (m[2] && el.id !== m[2]) return false;
     if (m[3] && !el.classList.contains(m[3])) return false;
-    if (m[4] && (m[5] === undefined ? !el.hasAttribute(m[4]) : el.getAttribute(m[4]) !== m[5])) {
-      if (!(m[4] === 'type' && el.type === m[5])) return false;
+    if (m[4] && !attrMatches(el, m[4], m[5], m[6])) {
+      if (!(m[4] === 'type' && !m[5] && el.type === m[6])) return false;
     }
-    if (m[6] === 'checked' && !el.checked) return false;
+    if (m[7] === 'checked' && !el.checked) return false;
   }
   return true;
+}
+
+/** [name], [name=v], [name^=v], [name$=v], [name*=v]. */
+function attrMatches(el, name, op, want) {
+  if (want === undefined) return el.hasAttribute(name);
+  const v = el.getAttribute(name);
+  if (v === null) return false;
+  if (op === '^') return v.startsWith(want);
+  if (op === '$') return v.endsWith(want);
+  if (op === '*') return v.includes(want);
+  return v === want;
 }
 
 function matches(el, selector) {
@@ -68,7 +83,64 @@ export class FakeElement {
       checked: false,
       disabled: false,
     });
+    // dataset writes are data-* attributes too, so [data-x="y"] selectors see them.
+    this.dataset = new Proxy(
+      {},
+      {
+        set: (t, k, v) => {
+          t[k] = String(v);
+          if (typeof k === 'string') this.attrs['data-' + kebab(k)] = String(v);
+          return true;
+        },
+        deleteProperty: (t, k) => {
+          delete t[k];
+          if (typeof k === 'string') delete this.attrs['data-' + kebab(k)];
+          return true;
+        },
+      },
+    );
+    if (this.localName === 'option') {
+      // An option without a value attribute has its text as its value.
+      Object.defineProperty(this, 'value', {
+        get: () => ('value' in this.attrs ? this.attrs.value : this.textContent.trim()),
+        set: (v) => {
+          this.attrs.value = String(v);
+        },
+        configurable: true,
+        enumerable: true,
+      });
+    }
+    if (this.localName === 'select') {
+      // A select holds what was set, else its selected option, else its first one.
+      Object.defineProperty(this, 'value', {
+        get: () => {
+          if (this._value !== undefined) return this._value;
+          const opts = this.options;
+          const o = opts.find((x) => x.selected || x.hasAttribute('selected')) || opts[0];
+          return o ? o.value : '';
+        },
+        set: (v) => {
+          this._value = String(v);
+        },
+        configurable: true,
+        enumerable: true,
+      });
+    }
     for (const [k, v] of Object.entries(attrs)) this.setAttribute(k, v);
+  }
+
+  /** An anchor's href as the browser gives it: resolved against the page's address. */
+  get href() {
+    const h = this.getAttribute('href');
+    if (h === null) return '';
+    try {
+      return new URL(h, globalThis.location?.href || 'http://127.0.0.1/').href;
+    } catch {
+      return h;
+    }
+  }
+  set href(v) {
+    this.attrs.href = String(v);
   }
 
   setAttribute(k, v) {
@@ -90,6 +162,7 @@ export class FakeElement {
   }
   removeAttribute(k) {
     delete this.attrs[k];
+    if (k.startsWith('data-')) delete this.dataset[camel(k.slice(5))];
   }
 
   get className() {
@@ -120,6 +193,8 @@ export class FakeElement {
     this._html = String(v);
     this._text = null;
     this._parsed = null;
+    this._own = true; // written after parsing: its ancestors' markup no longer describes it
+    this._value = undefined; // a select's new options pick its value again
     this.kids = [];
   }
   get textContent() {
@@ -161,6 +236,13 @@ export class FakeElement {
         stack.push({ el, tag: tag.toLowerCase(), start: m.index + m[0].length });
       }
     }
+    // Each parsed element keeps its own part of the list: one object however it is reached.
+    for (let i = 0; i < out.length; i++) {
+      let end = i + 1;
+      while (end < out.length && out[end].depth > out[i].depth) end++;
+      const base = out[i].depth + 1;
+      out[i].el._parsed = out.slice(i + 1, end).map((p) => ({ el: p.el, depth: p.depth - base }));
+    }
     this._parsed = out;
     return out;
   }
@@ -168,7 +250,18 @@ export class FakeElement {
   /** Every element below this one: parsed markup and appended children, depth first. */
   descendants() {
     const out = [];
-    for (const { el } of this.parsed()) out.push(el, ...el.kidDescendants());
+    const list = this.parsed();
+    for (let i = 0; i < list.length; i++) {
+      const { el, depth } = list[i];
+      out.push(el);
+      if (!el._own) {
+        out.push(...el.kidDescendants());
+        continue;
+      }
+      // Rewritten: what it holds now, not what the markup above it said.
+      out.push(...el.descendants());
+      while (i + 1 < list.length && list[i + 1].depth > depth) i++;
+    }
     out.push(...this.kidDescendants());
     return out;
   }
@@ -273,6 +366,15 @@ export class FakeElement {
   }
   focus() {
     globalThis.document.activeElement = this;
+  }
+  /** Whether a node is this element or below it. */
+  contains(node) {
+    for (let e = node; e; e = e.parentNode) if (e === this) return true;
+    return false;
+  }
+  /** Recorded, not scrolled: env tests read `scrolled`. */
+  scrollIntoView(opts) {
+    (this.scrolled ||= []).push(opts ?? true);
   }
   getBoundingClientRect() {
     return { left: 0, top: 0, width: this.offsetWidth, height: this.offsetHeight };
@@ -454,6 +556,9 @@ export function fakeDom({ url = 'http://127.0.0.1:8800/', routes = () => ({}) } 
         },
         resize() {
           this.resized++;
+        },
+        clear() {
+          this.cleared = (this.cleared || 0) + 1;
         },
       };
       env.charts.push(chart);

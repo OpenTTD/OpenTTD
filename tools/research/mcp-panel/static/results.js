@@ -105,7 +105,8 @@ function arm(id, draw) {
   box.querySelector('[data-toolbar]').append(maximizable(box, id, { getState, setState, onResize: () => draw() }));
 }
 
-async function listPage() {
+/** /results; exported so a test can mount it again in a fresh document (test/results.test.mjs). */
+export async function listPage() {
   const state = getState();
   const all = (await (await fetch('/api/results')).json()).results || [];
   const seeds = [...new Set(all.map((r) => r.seed))].sort((a, b) => a - b);
@@ -252,7 +253,8 @@ async function scoreboardCard() {
   try { render(await (await fetch('/api/scoreboard')).json()); } catch (e) { render({ error: String(e) }); }
 }
 
-async function resultPage(name) {
+/** /result/<name>; exported for the same reason. */
+export async function resultPage(name) {
   const state = getState();
   const r = await fetch('/api/result?name=' + encodeURIComponent(name));
   if (!r.ok) { $('page').innerHTML = `<div class="${CLS.card}">No such duel. <a class="underline" href="/results">All duels</a>.</div>`; return; }
