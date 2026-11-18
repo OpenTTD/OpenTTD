@@ -27,6 +27,7 @@ provenance:
     - issue:I0080
     - issue:I0081
     - issue:I0082
+    - issue:I0083
     - issue:I0084
 relations:
   - type: documents
@@ -94,6 +95,7 @@ be the panel's and the hub's both (`game.month`), as two rows with their own pro
 | `plan.intent` | panel | `panel.rs:h_intent, answer_plan` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a sentence was resolved to an intent and candidates |
 | `plan.directive` | panel | `panel_decision.rs:pull` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | Prismatic's directive was applied or refused (`POST /api/decision/pull`) |
 | `plan.kernel` | external (`POST /api/bus/publish`) | `kernel_feed.rs:event (mcp-kernel-feed --publish)` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | an AlgoGlyph kernel answered a request fed from the store (I0086) |
+| `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, winner}`, read from the store (I0083) |
 | `game.new_world` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's tick went back |
 | `game.month` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's month changed |
 | `game.paused` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's paused flag went on |
@@ -118,8 +120,9 @@ Notes the table does not carry:
   what fills the store's `samples`.
 - **`panel.*` is prose.** `Game::event` publishes `{text}` and keeps the newest 200 for
   `GET /api/status`. The sentences stay for the page; consumers read the `plan.*` event of the same
-  decision instead of parsing English (`tools/research/mcp-duel` still parses `planner:` lines from
-  the capped 200 of `/api/status`; I0083 moves it to the store).
+  decision instead of parsing English (`tools/research/mcp-duel` reads its run's `plan.*` events
+  from the store since I0083, and keeps the `planner:` sentences, read from the store too, only for
+  the reader of its record).
 
 ## Planning decisions as data (ADR 0034 point 3)
 
@@ -128,7 +131,7 @@ Each planning decision publishes one `plan.*` event beside its `panel.*` sentenc
 
 - `decision`: the decision's name (`bot.portfolio`, `bot.settings`, `calibration.record`,
   `algoglyph.transport_investment`, `algoglyph.action_plan`, `intent.answer`,
-  `prismatic.directive`, `algoglyph.kernel`);
+  `prismatic.directive`, `algoglyph.kernel`, `duel.verdict`);
 - `version`: `{revision, params, digest}`: the git revision the binary was built from (`build.rs`,
   `-dirty` when the crate had uncommitted changes), the parameters the decision used and their
   FNV-1a 64 digest, so two runs with equal parameters carry equal digests;
@@ -144,9 +147,12 @@ Each planning decision publishes one `plan.*` event beside its `panel.*` sentenc
 `plan.portfolio` and `plan.bot_settings` come from every planned bot start and from
 `POST /api/bots/planned` (`start: true` also starts the AI); `plan.bot_settings` names the
 `plan.portfolio` it was chosen from (`inputs.live.portfolio_seq`) and the run's extra settings
-(`choice.from_run`). `plan.kernel` is the one external kind: `mcp-kernel-feed --publish` posts it to
+(`choice.from_run`). `plan.kernel` and `plan.duel` are the external kinds: `mcp-kernel-feed
+--publish` and `tools/research/mcp-duel` (once a duel's months are played) post them to
 `POST /api/bus/publish`, which accepts only kinds the table marks external and only with the four
-fields.
+fields. A duel's `plan.duel` carries its verdict as `choice` (`{seed, months, held_start_tick, a, b,
+rival_spread, winner}`) and in `inputs.stored` the store queries its plan, AI log and months came
+from, with their row counts, or the fallback it took without a store (I0083).
 
 **Calibration reads the store (I0082).** `plan.calibration` (`POST /api/calibration`) carries the
 reading (`choice.reading.lines`, each with `mode` and `ratio`) and the game it came from
@@ -193,8 +199,6 @@ record whose `/api/db/query` could answer for it.
 
 ## Not on any bus
 
-- **A duel's verdict.** It exists as a `research/results/` file and `panel.duel` prose, not as an
-  event (I0083).
 - **The game itself.** Nothing on the bus is read from the game's own event stream; every game
   event is a difference between two MCP reads.
 

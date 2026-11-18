@@ -6,6 +6,15 @@
 # `companies` command; after N months the one with the higher company value wins. The record goes to
 # research/results/duel-<time>-seed<N>.{json,md} with both bots' logs.
 #
+# What the record holds is read from the panel's DuckDB store (ADR 0033, ADR 0034, issue I0083) by
+# query on /api/db/query, paged so that no read is cut: the plan from the run's plan.* events (and its
+# `planner:` sentences for reading), the AI logs from its ai.log rows, the months from its samples
+# (the first sampled day of each game month), the held start's tick from game.paused/game.resumed.
+# The record names the store file, the instance, the run and every query, so it can be re-read after
+# the panel stopped. The verdict goes back on the bus as plan.duel (POST /api/bus/publish), and so
+# into the store. Without a store the duel reads as before (the newest 200 panel sentences of
+# /api/status, at most 5000 bus events, the console's months) and the record says why (`fallback`).
+#
 # Usage: tools/research/mcp-duel [--months 24] [--seed N] [--label text] [--opponent AI]
 #                               [--bot-settings k=v,...]
 # Exit: 0 the duel completed (whoever won), 1 the stack did not come up, 2 bad arguments.
@@ -55,82 +64,544 @@ if grep -q "Failed to load the specified AI" <<<"$out"; then
   echo "mcp-duel: the game has no AI named $OPPONENT: $out" >&2; exit 2
 fi
 
+# The Python below is also loaded, from this heredoc, by tools/research/test_mcp_duel.py, which runs it
+# offline against a fake panel: everything is a function, and the duel runs under __main__ only.
 python3 -I - "$PANEL" "$MONTHS" "$SEED" "$LABEL" "$ROOT_DIR" "$OPPONENT" "$BOT_SETTINGS" <<'PY'
-import json, os, re, sys, time, urllib.request
-port, months, seed, label, root, opponent, bot_settings = sys.argv[1], int(sys.argv[2]), sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7]
-ROW = re.compile(r"#:(\d+)\(.*?\)\s+Company Name: '([^']*)'\s+Year Founded: (\d+)\s+Money: (-?\d+)\s+Loan: (\d+)\s+Value: (-?\d+)\s+\(T:(\d+), R:(\d+), P:(\d+), S:(\d+)\)")
+import json
+import os
+import re
+import subprocess
+import sys
+import time
 import urllib.error
-def patient(open_):
-    # A busy game can make one read fail (a 502 from the panel, a timeout). Every call here only reads
-    # (state, events, the console's `companies`), so it is tried again; one failed read lost a whole
-    # 36-month run at month 15 (2026-11-17).
-    for attempt in range(6):
-        try:
-            with open_() as r:
-                return json.loads(r.read())
-        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
-            if isinstance(e, urllib.error.HTTPError) and e.code < 500 or attempt == 5:
-                raise
-            print(f"mcp-duel: a read failed ({e}); trying again", file=sys.stderr)
-            time.sleep(3)
-def post(path, body):
-    req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", data=json.dumps(body).encode(), headers={"Content-Type": "application/json"}, method="POST")
-    return patient(lambda: urllib.request.urlopen(req, timeout=30))
-def get(path):
-    return patient(lambda: urllib.request.urlopen(f"http://127.0.0.1:{port}{path}", timeout=30))
-def companies():
-    out = post("/api/console", {"command": "companies", "wait": 1.0}).get("output", [])
+import urllib.request
+from pathlib import Path
+
+ROW = re.compile(r"#:(\d+)\(.*?\)\s+Company Name: '([^']*)'\s+Year Founded: (\d+)\s+Money: (-?\d+)\s+Loan: (\d+)\s+Value: (-?\d+)\s+\(T:(\d+), R:(\d+), P:(\d+), S:(\d+)\)")
+# The most rows one /api/db/query answers (QUERY_CAP in tools/research/mcp-rhai/src/bus_sinks.rs).
+# Every store read pages by it, so a long duel's AI log is never cut there.
+PAGE = 5000
+# Seconds between two reads of the game clock.
+POLL = 20
+# The verdict's kind, declared external in tools/research/mcp-rhai/src/panel_events.rs KINDS.
+VERDICT = "plan.duel"
+
+
+def error_text(e):
+    """The panel's {"error": ...} of an HTTP error, else its reason."""
+    try:
+        return str(json.loads(e.read()).get("error") or e.reason)
+    except (ValueError, AttributeError, OSError):
+        return str(getattr(e, "reason", e))
+
+
+class Panel:
+    """The panel's HTTP API on 127.0.0.1:<port>."""
+
+    def __init__(self, port, sleep=time.sleep):
+        self.port = int(port)
+        self.base = f"http://127.0.0.1:{self.port}"
+        self.sleep = sleep
+
+    def patient(self, open_, settled=(), tries=6):
+        # A busy game can make one read fail (a 502 from the panel, a timeout). Every read here (state,
+        # events, the console's `companies`, the store) is tried again; one failed read lost a whole
+        # 36-month run at month 15 (2026-11-17). A status in `settled` is an answer, not a failure
+        # (503 from /api/db/query: the store is off).
+        for attempt in range(tries):
+            try:
+                with open_() as r:
+                    return json.loads(r.read())
+            except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
+                if isinstance(e, urllib.error.HTTPError) and (e.code < 500 or e.code in settled) or attempt == tries - 1:
+                    raise
+                print(f"mcp-duel: a read failed ({e}); trying again", file=sys.stderr)
+                self.sleep(3)
+
+    def post(self, path, body, settled=(), tries=6):
+        data = json.dumps(body).encode()
+        req = lambda: urllib.request.Request(self.base + path, data=data, headers={"Content-Type": "application/json"}, method="POST")
+        return self.patient(lambda: urllib.request.urlopen(req(), timeout=30), settled, tries)
+
+    def get(self, path, settled=()):
+        return self.patient(lambda: urllib.request.urlopen(self.base + path, timeout=30), settled)
+
+
+def companies(panel):
+    """The console's `companies`, keyed by its company number ("1" is company index 0)."""
+    out = panel.post("/api/console", {"command": "companies", "wait": 1.0}).get("output", [])
     text = " ".join(l if isinstance(l, str) else str(l) for l in out)
-    return {int(m[0]): {"name": m[1], "money": int(m[3]), "loan": int(m[4]), "value": int(m[5]),
-                         "trains": int(m[6]), "road": int(m[7]), "planes": int(m[8])} for m in ROW.findall(text)}
-def months_seen():
-    """The game month as a running count, from the game's own date (year * 12 + month). Counting
-    game.month events undercounted: the panel's event buffer is capped and drops the oldest, so a
-    120-month duel's month 72 was dated 29 months after its month 60 (2026-11-16)."""
-    date = str(get("/api/resources/game/state").get("game_date", ""))
-    m = re.match(r"(\d{4})-(\d{2})", date)
-    return int(m[1]) * 12 + int(m[2]) - 1 if m else 0
-plan = [e["text"] for e in get("/api/status")["events"] if e["kind"] == "ai" and e["text"].startswith("planner")]
-start = months_seen(); seen = start; series = []
-while seen - start < months:
-    time.sleep(20)
-    n = months_seen()
-    if n > seen:
-        seen = n
-        snap = companies()
-        date = get("/api/resources/game/state").get("game_date")
-        series.append({"month": n - start, "date": date, "companies": snap})
-        print(f"month {n - start:>2} {date}: " + "; ".join(f"#{k} {v['name']} value {v['value']} (T{v['trains']} R{v['road']} P{v['planes']})" for k, v in sorted(snap.items())), flush=True)
-final = series[-1]["companies"] if series else {}
-# Company #1 is the planned bot (started by the panel first), #2 the unplanned one.
-a, b = final.get(1, {}), final.get(2, {})
-b_name = "unplanned" if opponent == "PrismaticAI" else opponent
-winner = "A (planned)" if a.get("value", 0) > b.get("value", 0) else (f"B ({b_name})" if b.get("value", 0) > a.get("value", 0) else "tie")
-logs = {}
-for e in get("/api/events?since=0&kinds=ai.log&limit=5000").get("events", []):
-    logs.setdefault(str(e["data"]["company"]), []).append(e["data"]["text"])
-stamp = time.strftime("%Y%m%dT%H%M%S")
-os.makedirs(f"{root}/research/results", exist_ok=True)
-base = f"{root}/research/results/duel-{stamp}-seed{seed}"
-json.dump({"experiment": f"duel in one game: planned bot (A, company 1) vs {b_name} (B, company 2)", "label": label, "opponent": opponent, "bot_settings": bot_settings,
-           "seed": int(seed), "months": months, "plan": plan, "final": final, "winner": winner, "series": series, "bot_log": logs},
-          open(base + ".json", "w"), indent=2)
-rows = "\n".join(f"| {s['month']} | {s['date']} | {s['companies'].get(1, {}).get('value', '')} | {s['companies'].get(2, {}).get('value', '')} |" for s in series)
-open(base + ".md", "w").write(f"""# Duel in one game: planned bot vs {b_name} (seed {seed}, {months} months)
+    return {m[0]: {"name": m[1], "money": int(m[3]), "loan": int(m[4]), "value": int(m[5]),
+                   "trains": int(m[6]), "road": int(m[7]), "planes": int(m[8])} for m in ROW.findall(text)}
+
+
+def month_index(date):
+    """A game date's month as a running count (year * 12 + month - 1); None for no date."""
+    m = re.match(r"(\d{4})-(\d{2})", str(date or ""))
+    return int(m[1]) * 12 + int(m[2]) - 1 if m else None
+
+
+def month_text(index):
+    return f"{index // 12:04d}-{index % 12 + 1:02d}"
+
+
+def game_date(panel):
+    return panel.get("/api/resources/game/state").get("game_date")
+
+
+def months_seen(panel):
+    """The game month as a running count, from the game's own date. Counting game.month events
+    undercounted: the panel's event buffer is capped and drops the oldest, so a 120-month duel's
+    month 72 was dated 29 months after its month 60 (2026-11-16)."""
+    return month_index(game_date(panel)) or 0
+
+
+# ---------------------------------------------------------------------- the store (ADR 0033)
+
+class StoreOff(Exception):
+    """No store to read; the message is the fallback the record and the plan.duel event name."""
+
+
+def valid_instance(name):
+    """An instance name as the registry writes it (kernel_feed.rs valid_instance), so it can stand
+    in a quoted literal of a read-only statement."""
+    return bool(name) and len(name) <= 64 and all(c.isascii() and (c.isalnum() or c in "-_.") for c in name)
+
+
+def rows_of(answer):
+    """The rows of a /api/db/query answer {columns, rows, count, capped} as dicts by column name."""
+    cols = answer.get("columns") or []
+    return [dict(zip(cols, r)) for r in answer.get("rows") or []]
+
+
+class Store:
+    """This duel's run in the panel's store: the file, the instance, its `runs` row, and the window
+    [started_ms, until_ms] every read is bound to, so the record's queries read the same rows again
+    from the file after the panel stopped."""
+
+    def __init__(self, panel, file, instance, run=None):
+        self.panel, self.file, self.instance, self.run = panel, file, instance, run
+        self.until_ms = None
+        self.queries = {}
+
+    @classmethod
+    def find(cls, panel):
+        """The store and the newest run on this panel's port; StoreOff with the reason otherwise."""
+        try:
+            bus = panel.get("/api/bus", settled=(503,))
+        except urllib.error.HTTPError as e:
+            raise StoreOff(f"GET /api/bus answered {e.code} ({error_text(e)}): no bus tap (ADR 0033) on this panel")
+        except (urllib.error.URLError, TimeoutError) as e:
+            raise StoreOff(f"GET /api/bus failed: {e}")
+        file, instance = bus.get("store"), str(bus.get("instance") or "")
+        if not file or file == "off":
+            raise StoreOff("GET /api/bus answers store: off (a panel built without the store feature, or its file did not open)")
+        if not valid_instance(instance):
+            raise StoreOff(f"GET /api/bus names no instance the store can be queried by ({instance!r})")
+        store = cls(panel, file, instance)
+        rows = store.query("SELECT instance, session, seed, started_ms, panel_port, mcp_port, game_port FROM runs "
+                           f"WHERE instance = '{instance}' AND panel_port = {panel.port} ORDER BY started_ms DESC LIMIT 1")
+        if not rows:
+            raise StoreOff(f"the store {file} has no run of {instance} on panel port {panel.port}")
+        store.run = rows[0]
+        return store
+
+    def query(self, sql):
+        try:
+            answer = self.panel.post("/api/db/query", {"sql": sql}, settled=(503,))
+        except urllib.error.HTTPError as e:
+            raise StoreOff(f"POST /api/db/query answered {e.code}: {error_text(e)}")
+        except (urllib.error.URLError, TimeoutError) as e:
+            raise StoreOff(f"POST /api/db/query failed: {e}")
+        if answer.get("error"):
+            raise StoreOff(f"POST /api/db/query: {answer['error']}")
+        return rows_of(answer)
+
+    def run_filter(self):
+        """The rows of this run: a file keeps every run of its instance and seq restarts with each
+        panel start, so the run is told by ts_ms (research/mcp-control.md)."""
+        until = self.until_ms if self.until_ms is not None else 9223372036854775807
+        return f"instance = '{self.instance}' AND ts_ms BETWEEN {int(self.run['started_ms'])} AND {int(until)}"
+
+    def query_all(self, name, inner, order):
+        """Every row of `inner`, in pages of PAGE rows in `order` (which must be a total order), and
+        the statement recorded under `name` with its row count."""
+        out, pages = [], 0
+        while True:
+            page = self.query(f"SELECT * FROM ({inner}) AS q ORDER BY {order} LIMIT {PAGE} OFFSET {len(out)}")
+            pages += 1
+            out += page
+            if len(page) < PAGE:
+                break
+        self.queries[name] = {"sql": f"{inner} ORDER BY {order}", "rows": len(out), "pages": pages}
+        return out
+
+    def close_window(self):
+        """Bind every later read to what the store holds now: the newest ts_ms of the run."""
+        rows = self.query(f"SELECT max(ts_ms) AS until_ms FROM events WHERE {self.run_filter()}")
+        newest = rows[0].get("until_ms") if rows else None
+        self.until_ms = int(newest) if newest is not None else int(self.run["started_ms"])
+
+    def has_month(self, index):
+        rows = self.query(f"SELECT count(*) AS n FROM samples WHERE {self.run_filter()} AND substr(game_date, 1, 7) = '{month_text(index)}'")
+        return bool(rows and rows[0].get("n"))
+
+    def plan_events(self):
+        """The run's planning decisions as data (ADR 0034 point 3), the duel's own verdict excepted."""
+        rows = self.query_all("plan", "SELECT seq, kind, ts_ms, game_tick, game_date, CAST(data AS VARCHAR) AS data FROM events "
+                                      f"WHERE {self.run_filter()} AND kind LIKE 'plan.%' AND kind <> '{VERDICT}'", "seq")
+        return [dict(r, data=json.loads(r["data"]) if isinstance(r.get("data"), str) else r.get("data")) for r in rows]
+
+    def plan_lines(self):
+        """The `planner:` sentences of the run, newest first as /api/status listed them: prose for the
+        reader of the record and the panel's result page, never what a decision reads."""
+        rows = self.query_all("plan_lines", "SELECT seq, data->>'text' AS text FROM events "
+                                            f"WHERE {self.run_filter()} AND kind = 'panel.ai' AND starts_with(data->>'text', 'planner')",
+                              "seq DESC")
+        return [r["text"] for r in rows]
+
+    def ai_log(self):
+        """Every ai.log row of the run in bus order, by company index."""
+        rows = self.query_all("ai_log", "SELECT seq, data->>'company' AS company, data->>'text' AS text FROM events "
+                                        f"WHERE {self.run_filter()} AND kind = 'ai.log'", "seq")
+        logs = {}
+        for r in rows:
+            logs.setdefault(str(r["company"]), []).append(r["text"])
+        return logs
+
+    def held_rows(self):
+        return self.query_all("held_start", "SELECT seq, kind, game_tick FROM events "
+                                            f"WHERE {self.run_filter()} AND kind IN ('game.paused', 'game.resumed', 'plan.bot_settings')",
+                              "seq")
+
+    def samples(self):
+        """Every company of the first sampled day of each game month of the run."""
+        return self.query_all("samples", "SELECT company, name, game_tick, game_date, money, loan, value, net, vehicles FROM samples "
+                                         f"WHERE {self.run_filter()} AND company IS NOT NULL AND game_date IS NOT NULL "
+                                         "QUALIFY dense_rank() OVER (PARTITION BY substr(game_date, 1, 7) ORDER BY game_tick) = 1",
+                              "game_tick, company")
+
+    def record(self):
+        return {"file": self.file, "instance": self.instance, "run": self.run,
+                "window_ms": [int(self.run["started_ms"]), self.until_ms], "queries": self.queries}
+
+
+# ---------------------------------------------------------------------- reading the duel
+
+def held_start(rows, start_paused):
+    """The tick a held start ran from (PRISMATIC_START_PAUSED > 0): the tick of the game.paused that
+    precedes the first game.resumed after the bot's settings were chosen (the hold pauses before the
+    planner runs and resumes once the AI companies exist; the tick stands still while paused, so the
+    paused read is exact where the resumed one is up to a watch interval late). Rows are
+    {seq, kind, game_tick} in bus order; None when the start was not held or nothing was seen."""
+    if not start_paused:
+        return None
+    after = next((r["seq"] for r in rows if r["kind"] == "plan.bot_settings"), None)
+    paused = None
+    for r in rows:
+        if r["kind"] == "game.paused":
+            paused = r
+        elif r["kind"] == "game.resumed" and (after is None or r["seq"] > after):
+            return {"tick": (paused or r).get("game_tick"), "paused_seq": paused["seq"] if paused else None,
+                    "resumed_seq": r["seq"], "resumed_tick": r.get("game_tick")}
+    return None
+
+
+def series_from_samples(samples, start, months, console):
+    """Month k of the duel (1..months) is the first sampled day of game month start + k: every company
+    of that day, keyed by its console number (sample company index + 1), with the console's fleet
+    split of the same month (trains, road, planes; the store has the total only). A month the store
+    has no sample of is listed as missing and taken from the console reading, if there is one."""
+    by_month = {}
+    for r in samples:
+        by_month.setdefault(month_index(r["game_date"]), []).append(r)
+    series, missing = [], []
+    for k in range(1, months + 1):
+        rows = by_month.get(start + k)
+        live = console.get(k) or {}
+        if not rows:
+            missing.append(k)
+            if live:
+                series.append(dict(live, source="console"))
+            continue
+        split = live.get("companies") or {}
+        cs = {}
+        for r in sorted(rows, key=lambda r: int(r["company"])):
+            key = str(int(r["company"]) + 1)
+            fleet = split.get(key) or {}
+            cs[key] = {"name": r["name"], "money": int(r["money"]), "loan": int(r["loan"]), "value": int(r["value"]),
+                       "net": int(r["net"]), "vehicles": r["vehicles"],
+                       "trains": fleet.get("trains"), "road": fleet.get("road"), "planes": fleet.get("planes")}
+        series.append({"month": k, "date": rows[0]["game_date"], "tick": rows[0]["game_tick"], "companies": cs,
+                       "console_date": live.get("date")})
+    return series, missing
+
+
+def read_store(store, start, months, console, start_paused, wait=15, sleep=time.sleep):
+    """Everything the record reads from the store, once the duel's months are played: first wait
+    until the last month's sample is committed, then close the window and read."""
+    for _ in range(wait):
+        if store.has_month(start + months):
+            break
+        sleep(1)
+    store.close_window()
+    plan_events = store.plan_events()
+    series, missing = series_from_samples(store.samples(), start, months, console)
+    return {"plan": store.plan_lines(), "plan_events": plan_events, "bot_log": store.ai_log(), "series": series,
+            "missing_months": missing, "held": held_start(store.held_rows(), start_paused)}
+
+
+def read_fallback(panel, status_plan, console, start_paused):
+    """Today's reads, for a panel without a store: the plan sentences read at the start from the 200
+    of /api/status, the newest 5000 bus events, the console's months."""
+    logs = {}
+    for e in panel.get("/api/events?since=0&kinds=ai.log&limit=5000").get("events", []):
+        logs.setdefault(str(e["data"]["company"]), []).append(e["data"]["text"])
+    rows = [{"seq": e["seq"], "kind": e["kind"], "game_tick": (e.get("data") or {}).get("tick")}
+            for e in panel.get("/api/events?since=0&kinds=game.paused,game.resumed,plan.bot_settings&limit=5000").get("events", [])]
+    held = held_start(rows, start_paused)
+    if held is None and start_paused:
+        m = next((re.search(r"game unpaused at tick (\d+)", p) for p in status_plan if "game unpaused at tick" in p), None)
+        held = {"tick": int(m[1]), "from": "the planner sentence of /api/status"} if m else None
+    return {"plan": status_plan, "plan_events": [], "bot_log": logs, "series": [console[k] for k in sorted(console)],
+            "missing_months": [], "held": held, "bot_log_capped": sum(len(v) for v in logs.values()) >= 5000}
+
+
+# ---------------------------------------------------------------------- the verdict
+
+def winner_of(a, b, b_name):
+    if a.get("value", 0) > b.get("value", 0):
+        return "A (planned)"
+    return f"B ({b_name})" if b.get("value", 0) > a.get("value", 0) else "tie"
+
+
+def was_held(rec):
+    """Did a recorded duel start held? Its held_start_tick (from I0083 on), or, for older records, the
+    planner sentence the panel wrote when it unpaused."""
+    if rec.get("held_start_tick") is not None:
+        return True
+    return any(isinstance(p, str) and "game unpaused at tick" in p for p in rec.get("plan") or [])
+
+
+def rival_spread(results, seed, months, opponent, held, b_value, name):
+    """The spread of the rival's final value (B, the same bot in every arm) over the recorded duels of
+    this seed, length, opponent and start (held or not), this one included: (max - min) / min. ADR 0034
+    point 6 reads a pair against it; null with fewer than two runs."""
+    runs = []
+    for path in (sorted(results.glob("duel-*.json")) if results.is_dir() else []):
+        if path.stem == name:
+            continue
+        try:
+            rec = json.loads(path.read_text())
+            if (rec.get("seed"), rec.get("months"), rec.get("opponent", "PrismaticAI")) != (seed, months, opponent) or was_held(rec) != held:
+                continue
+            runs.append((path.stem, int(rec["final"]["2"]["value"])))
+        except (ValueError, KeyError, TypeError, OSError):
+            continue
+    if b_value is not None:
+        runs.append((name, int(b_value)))
+    values = [v for _, v in runs]
+    spread = round((max(values) - min(values)) / min(values), 4) if len(values) >= 2 and min(values) > 0 else None
+    return {"spread": spread, "runs": len(values), "min": min(values) if values else None, "max": max(values) if values else None,
+            "of": "B's final company value over the recorded duels of this seed, months, opponent and start, this one included",
+            "records": [n for n, _ in runs]}
+
+
+def fnv1a64(params):
+    """panel_events.rs digest: FNV-1a 64 of the parameters' compact JSON with sorted keys, so equal
+    parameters give the digest the panel's own plan.* events would."""
+    h = 0xcbf29ce484222325
+    for byte in json.dumps(params, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode():
+        h ^= byte
+        h = (h * 0x100000001b3) & 0xFFFFFFFFFFFFFFFF
+    return f"fnv1a64:{h:016x}"
+
+
+def revision(root):
+    """Git's short HEAD, `-dirty` when this script had uncommitted changes (as build.rs names the
+    panel's revision)."""
+    try:
+        git = lambda *a: subprocess.run(["git", "-C", root, *a], capture_output=True, text=True, check=True).stdout.strip()
+        return git("rev-parse", "--short=10", "HEAD") + ("-dirty" if git("status", "--porcelain", "--", "tools/research/mcp-duel") else "")
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown"
+
+
+def side(c, number):
+    return {"company": number, "name": c.get("name"), "value": c.get("value"), "money": c.get("money"), "loan": c.get("loan")}
+
+
+def verdict_payload(cfg, rev, held, a, b, rival, winner, store, fallback, record, panel_base):
+    """The data of plan.duel: {decision, version, inputs, choice} (panel_events.rs plan), with the
+    verdict {seed, months, held_start_tick, a, b, rival_spread} (and the winner) as its choice."""
+    params = {"months": cfg["months"], "opponent": cfg["opponent"], "bot_settings": cfg["bot_settings"],
+              "start_paused": cfg["start_paused"], "page": PAGE}
+    live = {"panel": panel_base, "clock": "GET /api/resources/game/state (game_date)",
+            "fleet": "POST /api/console companies (trains, road, planes per month)", "record": record}
+    if store is not None:
+        stored = {"query": {n: q["sql"] for n, q in store.queries.items()}, "rows": sum(q["rows"] for q in store.queries.values()),
+                  "by_query": {n: q["rows"] for n, q in store.queries.items()}, "file": store.file, "instance": store.instance,
+                  "run_started_ms": store.run["started_ms"], "window_ms": [int(store.run["started_ms"]), store.until_ms]}
+    else:
+        stored = {"fallback": fallback}
+    choice = {"seed": cfg["seed"], "months": cfg["months"], "held_start_tick": held, "a": side(a, 1), "b": side(b, 2),
+              "rival_spread": rival, "winner": winner}
+    return {"decision": "duel.verdict", "version": {"revision": rev, "params": params, "digest": fnv1a64(params)},
+            "inputs": {"live": live, "stored": stored}, "choice": choice}
+
+
+def publish_verdict(panel, store, payload, wait=10, sleep=time.sleep):
+    """POST /api/bus/publish {kind: plan.duel, data} once (a publish is not a read, so it is not tried
+    again), then find it in the store. What happened, for the record."""
+    out = {"kind": VERDICT, "seq": None, "stored": False}
+    try:
+        out["seq"] = panel.post("/api/bus/publish", {"kind": VERDICT, "data": payload}, tries=1).get("seq")
+    except urllib.error.HTTPError as e:
+        out["error"] = f"POST /api/bus/publish answered {e.code}: {error_text(e)}"
+        return out
+    except (urllib.error.URLError, TimeoutError) as e:
+        out["error"] = f"POST /api/bus/publish failed: {e}"
+        return out
+    if store is None or out["seq"] is None:
+        return out
+    sql = (f"SELECT seq FROM events WHERE instance = '{store.instance}' AND ts_ms >= {int(store.run['started_ms'])} "
+           f"AND kind = '{VERDICT}' AND seq = {int(out['seq'])}")
+    out["query"] = sql
+    for _ in range(wait):
+        try:
+            if store.query(sql):
+                out["stored"] = True
+                return out
+        except StoreOff as e:
+            out["error"] = f"not found in the store: {e}"
+            return out
+        sleep(1)
+    out["error"] = f"not in the store {wait} s after the publish"
+    return out
+
+
+# ---------------------------------------------------------------------- the duel
+
+def duel(panel, cfg, poll=POLL, sleep=time.sleep):
+    """Play the duel's months, read what the run recorded, publish the verdict; the record."""
+    try:
+        store, fallback = Store.find(panel), None
+        print(f"mcp-duel: store {store.file}, instance {store.instance}, run started at {store.run['started_ms']} ms", flush=True)
+    except StoreOff as e:
+        store, fallback = None, str(e)
+        print(f"mcp-duel: no store, reading as before I0083: {fallback}", file=sys.stderr, flush=True)
+    # Today's read of the plan, kept for the fallback: the newest 200 panel sentences, read now,
+    # before the duel's months push them out.
+    status_plan = [e["text"] for e in panel.get("/api/status")["events"] if e["kind"] == "ai" and e["text"].startswith("planner")]
+    start = months_seen(panel)
+    seen, console = start, {}
+    while seen - start < cfg["months"]:
+        sleep(poll)
+        n = months_seen(panel)
+        if n > seen:
+            seen = n
+            snap = companies(panel)
+            date = game_date(panel)
+            console[n - start] = {"month": n - start, "date": date, "companies": snap}
+            print(f"month {n - start:>2} {date}: " + "; ".join(f"#{k} {v['name']} value {v['value']} (T{v['trains']} R{v['road']} P{v['planes']})"
+                                                       for k, v in sorted(snap.items(), key=lambda kv: int(kv[0]))), flush=True)
+    reads = None
+    if store is not None:
+        try:
+            reads = read_store(store, start, cfg["months"], console, cfg["start_paused"], sleep=sleep)
+        except StoreOff as e:
+            store, fallback = None, f"the store could not be read after the duel: {e}"
+            print(f"mcp-duel: {fallback}; reading as before I0083", file=sys.stderr, flush=True)
+    if reads is None:
+        reads = read_fallback(panel, status_plan, console, cfg["start_paused"])
+    series = reads["series"]
+    final = series[-1]["companies"] if series else {}
+    # Company #1 is the planned bot (started by the panel first), #2 the unplanned one.
+    a, b = final.get("1", {}), final.get("2", {})
+    b_name = "unplanned" if cfg["opponent"] == "PrismaticAI" else cfg["opponent"]
+    winner = winner_of(a, b, b_name)
+    held = reads["held"]["tick"] if reads["held"] else None
+    name = f"duel-{time.strftime('%Y%m%dT%H%M%S')}-seed{cfg['seed']}"
+    results = cfg["root"] / "research" / "results"
+    rival = rival_spread(results, cfg["seed"], cfg["months"], cfg["opponent"], bool(cfg["start_paused"]), b.get("value"), name)
+    payload = verdict_payload(cfg, revision(str(cfg["root"])), held, a, b, rival, winner, store, fallback,
+                              f"research/results/{name}.json", panel.base)
+    verdict = publish_verdict(panel, store, payload, sleep=sleep)
+    return {"name": name, "b_name": b_name, "record": {
+        "experiment": f"duel in one game: planned bot (A, company 1) vs {b_name} (B, company 2)", "label": cfg["label"],
+        "opponent": cfg["opponent"], "bot_settings": cfg["bot_settings"], "seed": cfg["seed"], "months": cfg["months"],
+        "start_paused": cfg["start_paused"], "held_start_tick": held, "held_start": reads["held"],
+        "store": store.record() if store is not None else None, "fallback": fallback,
+        "missing_months": reads["missing_months"], "bot_log_capped": reads.get("bot_log_capped", False),
+        "plan": reads["plan"], "plan_events": reads["plan_events"], "final": final, "winner": winner,
+        "rival_spread": rival, "verdict_event": dict(verdict, data=payload),
+        "series": series, "bot_log": reads["bot_log"]}}
+
+
+def markdown(rec, b_name):
+    """The record's reading."""
+    a, b = rec["final"].get("1", {}), rec["final"].get("2", {})
+    label, bot_settings, opponent = rec["label"], rec["bot_settings"], rec["opponent"]
+    rows = "\n".join(f"| {s['month']} | {s['date']} | {s['companies'].get('1', {}).get('value', '')} | {s['companies'].get('2', {}).get('value', '')} |"
+                     for s in rec["series"])
+    v = rec["verdict_event"]
+    if v.get("seq") is None:
+        told = f"The verdict was not published: {v.get('error')}."
+    elif v["stored"]:
+        told = f"The verdict is {v['kind']} seq {v['seq']}, on the bus and in the store."
+    else:
+        told = f"The verdict is {v['kind']} seq {v['seq']} on the bus" + (f", not found in the store ({v['error']})." if v.get("error") else ".")
+    if rec["store"]:
+        st, q = rec["store"], rec["store"]["queries"]
+        n = lambda k: q.get(k, {}).get("rows", 0)
+        values = "Values come from the store's daily samples (the first sampled day of each game month), fleets from the console's `companies` command."
+        source = (f"Read from the store `{st['file']}` (instance `{st['instance']}`, run started at {st['run']['started_ms']} ms): "
+                  f"{n('plan')} plan.* event(s), {n('ai_log')} AI log line(s), {n('samples')} sample row(s) of the months"
+                  + (f"; months {rec['missing_months']} have no sample there and come from the console" if rec["missing_months"] else "")
+                  + f". {told}")
+    else:
+        values = "Values come from the console's `companies` command."
+        source = (f"No store: {rec['fallback']}. The plan, the AI log (the newest 5000 bus events"
+                  + (", cut there" if rec["bot_log_capped"] else "") + f") and the months were read as before I0083. {told}")
+    r = rec["rival_spread"]
+    spread = (f"Rival spread {r['spread'] * 100:.1f}% over {r['runs']} duels of this seed, length, opponent and start."
+              if r["spread"] is not None else f"Rival spread not measured: {r['runs']} duel(s) of this seed, length, opponent and start.")
+    plan = "\n".join("- " + p for p in rec["plan"]) or "- no planner line recorded"
+    return f"""# Duel in one game: planned bot vs {b_name} (seed {rec['seed']}, {rec['months']} months)
 
 Generated by `tools/research/mcp-duel`{(' (' + label + ')') if label else ''}. One game, one map: company 1 is PrismaticAI started from
 the planner's portfolio (by the panel){(' with extra settings ' + bot_settings) if bot_settings else ''}, company 2 {('the same AI started without a plan' if opponent == 'PrismaticAI' else opponent + ' with its own defaults')} right after it.
-Both compete for the same towns and industries. Values come from the console's `companies` command.
+Both compete for the same towns and industries. {values}
 
-{chr(10).join('- ' + p for p in plan) or '- no planner line recorded'}
+{source}
 
-**Winner: {winner}.** Final company value: A {a.get('value')} vs B {b.get('value')}.
+{plan}
+
+**Winner: {rec['winner']}.** Final company value: A {a.get('value')} vs B {b.get('value')}. {spread}
 
 | Month | Date | A (planned) value | B ({b_name}) value |
 |---|---|---|---|
 {rows}
-""")
-print(f"\nmcp-duel: winner {winner}: A {a.get('value')} vs B {b.get('value')}; {base}.md")
+"""
+
+
+def main(argv):
+    port, months, seed, label, root, opponent, bot_settings = argv
+    cfg = {"months": int(months), "seed": int(seed), "label": label, "root": Path(root), "opponent": opponent,
+           "bot_settings": bot_settings, "start_paused": int(os.environ.get("PRISMATIC_START_PAUSED") or 0)}
+    out = duel(Panel(port), cfg)
+    rec, base = out["record"], cfg["root"] / "research" / "results" / out["name"]
+    base.parent.mkdir(parents=True, exist_ok=True)
+    with open(f"{base}.json", "w") as f:
+        json.dump(rec, f, indent=2)
+    with open(f"{base}.md", "w") as f:
+        f.write(markdown(rec, out["b_name"]))
+    a, b = rec["final"].get("1", {}), rec["final"].get("2", {})
+    print(f"\nmcp-duel: winner {rec['winner']}: A {a.get('value')} vs B {b.get('value')}; {base}.md")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
 PY
 
 # The README scoreboard is derived from research/results: regenerate it after every result, so the

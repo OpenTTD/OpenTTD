@@ -101,6 +101,7 @@ pub const KINDS: &[Kind] = &[
     k("plan.intent", By::Panel, "panel.rs:h_intent, answer_plan", PLAN, "a sentence was resolved to an intent and candidates"),
     k("plan.directive", By::Panel, "panel_decision.rs:pull", PLAN, "Prismatic's directive was applied or refused (`POST /api/decision/pull`)"),
     k("plan.kernel", By::External, "kernel_feed.rs:event (mcp-kernel-feed --publish)", PLAN, "an AlgoGlyph kernel answered a request fed from the store (I0086)"),
+    k("plan.duel", By::External, "tools/research/mcp-duel:publish_verdict", PLAN, "a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, winner}`, read from the store (I0083)"),
     // The hub's own events (I0084): derived for a game's MCP server that has no panel, every
     // MCP_STATE_EVERY = 10 fan-in cycles (5 s), from two reads of openttd://game/state ...
     k("game.new_world", By::Hub, "hub.rs:derive_state_events", "`{date}`", "an MCP-only instance's tick went back"),
@@ -332,6 +333,7 @@ mod tests {
         assert_eq!(md.lines().count(), KINDS.len() + 2);
         assert!(md.contains("| `plan.kernel` | external (`POST /api/bus/publish`) |"));
         assert!(md.contains("| `audit.resolved` | hub (its own bus and store) | `hub.rs:audit_changes` |"));
+        assert!(md.contains("| `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` |"));
     }
 
     #[test]
@@ -344,6 +346,8 @@ mod tests {
         assert_eq!(d["version"]["params"], json!({"b": 1, "own_lines": 8}));
         assert_eq!(d["version"]["digest"], digest(&json!({"own_lines": 8, "b": 1})), "key order does not change the digest");
         assert_ne!(digest(&json!({"own_lines": 8})), digest(&json!({"own_lines": 0})));
+        // The same digest tools/research/mcp-duel computes in Python (test_mcp_duel.py pins it too).
+        assert_eq!(digest(&json!({"own_lines": 8, "b": 1})), "fnv1a64:846dbf03f70f43fa");
         assert_eq!(d["inputs"], json!({"live": {"planner": "mcp-plan"}, "stored": {"fallback": "store off"}}));
         assert_eq!(d["choice"], json!({"rail_after": 2}));
         assert_eq!(Stored::Query { sql: "SELECT 1".into(), rows: 3 }.to_json(), json!({"query": "SELECT 1", "rows": 3}));
@@ -354,6 +358,7 @@ mod tests {
     fn only_a_declared_external_kind_with_the_plan_payload_enters_from_outside() {
         let good = plan("algoglyph.kernel", json!({}), json!({}), &Stored::Fallback("x".into()), json!({}));
         assert_eq!(refuse_external("plan.kernel", &good), None);
+        assert_eq!(refuse_external("plan.duel", &good), None, "mcp-duel's verdict (I0083)");
         assert!(refuse_external("plan.kernel", &json!({"decision": "x"})).unwrap().contains("missing: version, inputs, choice"));
         assert!(refuse_external("plan.portfolio", &good).unwrap().contains("by the panel itself"));
         assert!(refuse_external("game.month", &good).is_some());

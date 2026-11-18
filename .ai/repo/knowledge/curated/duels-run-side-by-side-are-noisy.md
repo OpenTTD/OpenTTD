@@ -22,6 +22,7 @@ provenance:
     - file:research/results/duel-20261117T195416-seed31337.md
     - file:research/results/duel-20261117T195419-seed31337.md
     - file:tools/research/mcp-rhai/src/panel.rs
+    - issue:I0083
 relations:
   - type: relates_to
     target: file:.ai/repo/knowledge/curated/the-planner-overpredicts-what-a-line-earns.md
@@ -43,7 +44,8 @@ the planned bot starts, and the game's own randomness diverges from there.
 
 **The start is held since 2026-11-17** (panel `PRISMATIC_START_PAUSED=N`; a duel started from the panel
 sets 2): the game stays paused while the planner plans and both bots start, and runs once N AI
-companies exist; the result's plan log says at which tick. Two identical 6-month duels on seed 31337,
+companies exist; the result says at which tick (`held_start_tick`, read from the store since I0083;
+the plan log says it in words). Two identical 6-month duels on seed 31337,
 run at once on the loaded machine, then ended with the same fleets every month and the rival at 9852
 and 9830 (0.2%; duel-20261117T195416 and T195419), against 52% before. Not bit-identical yet, so keep
 reading A/Bs against repeats.
@@ -51,7 +53,9 @@ reading A/Bs against repeats.
 # How to apply it
 
 - Read an A/B only against its own noise: put the rival's spread (the same bot in both arms) next to
-  the planned bot's difference. A difference smaller than that says nothing.
+  the planned bot's difference. A difference smaller than that says nothing. Since I0083 every duel
+  computes it: `rival_spread` in its record and in its `plan.duel` event, (max - min) / min of the
+  rival's final value over the recorded duels of the same seed, length, opponent and start.
 - Run duels with the held start (`mcp-duel` and the panel's duel form both default to
   `PRISMATIC_START_PAUSED=2` since 2026-11-18; `=0` starts unpaused), prefer several seeds and repeats over one pair, and run duels one or two at a
   time when the result is meant to decide a default.

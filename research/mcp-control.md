@@ -178,8 +178,9 @@ planned bot and its rival started at ticks that depended on the machine's load: 
 ended 10% apart, the same rival 52% (knowledge `duels-run-side-by-side-are-noisy`). With
 `PRISMATIC_START_PAUSED=N` the panel pauses the game before planning, starts its bot, and unpauses once N
 AI companies exist; the server console founds a company while paused, and its script runs from the
-unpause. The duel form and `mcp-duel` both default to 2 (`PRISMATIC_START_PAUSED=0` starts unpaused). The plan log of
-the result records the tick it started at. Two identical runs then differed by 0.2%.
+unpause. The duel form and `mcp-duel` both default to 2 (`PRISMATIC_START_PAUSED=0` starts unpaused). The result
+records the tick it started at (`held_start_tick`, from the store's `game.paused`/`game.resumed`
+events since I0083; its plan log says it in words). Two identical runs then differed by 0.2%.
 
 **Bot settings per run.** The duel form, `POST /api/duel` (`bot_settings`) and `mcp-duel --bot-settings`
 take extra settings for the planned bot, e.g. `own_lines=8`: name=value pairs separated by commas, with
@@ -377,7 +378,8 @@ read, on ZeroMQ (topic prefix `plan`) or in the store:
 The kinds are the `plan.*` rows of the declared table (`GET /api/bus` `kinds`, and the region of the
 knowledge note named above): the bot's portfolio and its settings (every planned bot start), the
 calibration reading, the investment, the action plan, the intent answer, Prismatic's directive, and
-`plan.kernel` from `mcp-kernel-feed`, the one kind another process puts on the bus.
+the two kinds other processes put on the bus: `plan.kernel` from `mcp-kernel-feed` and `plan.duel`,
+a duel's verdict, from `mcp-duel` (I0083, described with the duel below).
 
 The data is `{decision, version, inputs, choice}` (`panel_events.rs:plan`). `version` is
 `{revision, params, digest}`: the git revision the binary was built from (`build.rs`, with `-dirty`
@@ -397,8 +399,8 @@ tools/research/mcp-rhai/target/release/mcp-bus-tail --panel $P --topic plan
 
 `POST /api/bots/planned {ai, start?, track?}` plans the bot as a bot start does and answers the
 settings with both events' choices; `start: true` also starts the AI. `POST /api/bus/publish {kind,
-data}` accepts only the kinds the table marks external (`plan.kernel`) and only with the four
-fields; any other kind is refused with 400. `mcp-panel-check` lists the kinds from `GET /api/bus`,
+data}` accepts only the kinds the table marks external (`plan.kernel`, `plan.duel`) and only with
+the four fields; any other kind is refused with 400. `mcp-panel-check` lists the kinds from `GET /api/bus`,
 plans a bot (`--start-bot AI` also starts it) and finds `plan.portfolio` and `plan.bot_settings` in
 `/api/events`, on ZeroMQ and in the store.
 
@@ -735,6 +737,38 @@ id, type, state, name) and `POST /api/content/download {ids}` (`content select` 
 `content download`; the game adds the libraries an AI needs). Both routes are in OpenAPI, so Swagger,
 MCP and Rhai have them too. The download is the owner's click. An AI the game does not
 have is refused before the first month. It writes `research/results/duel-*.{json,md}`.
+
+**What a duel reads, and from where (I0083).** Every game month the driver reads the game clock and
+the console's `companies` (the fleet split: trains, road, planes). Everything else the record holds
+comes from the panel's store (ADR 0033), by read-only statements on `POST /api/db/query`, each paged
+by the query cap (5000 rows) so that no read is cut:
+
+- the run: `GET /api/bus` names the store file and the instance, and the newest `runs` row on the
+  duel's panel port is the run; every read is bound to its window (`ts_ms` from the run's
+  `started_ms` to the newest event when the months are played);
+- the plan: the run's `plan.*` events (`plan_events`, the data of `plan.portfolio` and
+  `plan.bot_settings`), and the `planner:` sentences of `panel.ai`, kept for the reading (`plan`);
+- the AI logs: every `ai.log` row of the run (`bot_log`), however long the duel;
+- the months: the first sampled day of each game month in `samples` (`series`: value, money, loan,
+  net and vehicles from the store, the fleet split from the console reading of that month); a
+  month's date is its sample's date;
+- the held start: the tick of the `game.paused` before the first `game.resumed` after
+  `plan.bot_settings` (`held_start_tick`; the tick stands still while the game is held).
+
+The record names `store` `{file, instance, run, window_ms, queries}`, with each statement and its row
+count, so the same rows can be read again from the file once the panel has stopped. The verdict is
+published as `plan.duel` through `POST /api/bus/publish` and so stored: `{decision: "duel.verdict",
+version, inputs, choice: {seed, months, held_start_tick, a, b, rival_spread, winner}}`.
+`rival_spread` is the spread (max - min) / min of the rival's final value over the recorded duels of
+the same seed, length, opponent and start (held or not), this one included: the yardstick ADR 0034
+point 6 reads a pair against. The record keeps what the publish answered (`verdict_event`: its
+`seq` and whether it was found in the store).
+
+Without a store (a panel without `GET /api/bus`, `store: off`, or a store that stops answering)
+the duel reads as before: the planner sentences of the newest 200 of `/api/status`, at most 5000
+bus events for the logs (`bot_log_capped` says when that cut them), and the console's months. The
+record's `fallback` says why, `store` is null, and `plan.duel` carries the same reason as
+`inputs.stored.fallback`.
 
 Results so far against the default opponent, 36 months each: seed 20208 A 242657 vs B 8567;
 seed 31337 A 204356 vs B 28129; seed 4242 A 228703 vs B 21110. Each result file has its reading.
