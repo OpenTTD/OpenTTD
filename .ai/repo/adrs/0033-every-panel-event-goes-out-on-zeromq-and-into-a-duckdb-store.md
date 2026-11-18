@@ -73,7 +73,7 @@ Majordomus.
    A page `/data` in the panel (Flowbite, ECharts through the components.js door) runs a query, keeps
    it in the address, and charts numeric columns.
 5. **Use at decision time.** A decision reads the store through the same query API: the bot start,
-   the planner's calibration, a duel's reading. Moving existing calibration (`research/calibration.json`)
+   the planner's calibration, a duel's reading. Moving existing calibration (the file research/calibration.json, retired by I0082)
    onto the store is follow-up work, recorded in I0080.
 
 ## Consequences

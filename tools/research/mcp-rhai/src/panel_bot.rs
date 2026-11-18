@@ -12,7 +12,9 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use crate::panel::{py_int, py_json, py_str, run, Game};
+use crate::calibrate::{self, Scope};
 use crate::panel_events::{self, Stored};
+use crate::panel_store::Across;
 
 fn ai_dir() -> PathBuf {
     PathBuf::from(std::env::var("HOME").unwrap_or_default()).join("Documents/OpenTTD/ai")
@@ -613,16 +615,87 @@ pub fn bot_params(extra: &str) -> Value {
 }
 
 /// The data of plan.portfolio: the planner's answer read for the bot. `request` is what the planner
-/// was asked (its arguments and parameters), `planner` how it ran, `calibration` what was read for it.
-pub fn portfolio_event(out: &Value, p: &Planned, request: Value, planner: Value, calibration: &Value) -> Value {
-    let stored = if calibration.get("file").is_some() {
-        Stored::Fallback(format!("{} (a file beside the store, not a store query; I0082 reads calibration from the store)",
-                                 py_str(calibration.get("file"))))
-    } else {
-        panel_events::live_only("I0082")
-    };
+/// was asked (its arguments and parameters), `planner` how it ran, `cal` the calibration read for it:
+/// its store query and rows, or the fallback `uncalibrated` with the reason.
+pub fn portfolio_event(out: &Value, p: &Planned, request: Value, planner: Value, cal: &Calibration) -> Value {
     panel_events::plan("bot.portfolio", json!({"request": request, "effective": out.get("params")}),
-                       json!({"planner": planner, "reads": out.get("reads"), "calibration": calibration}), &stored, p.portfolio.clone())
+                       json!({"planner": planner, "reads": out.get("reads"), "calibration": cal.record}), &cal.stored, p.portfolio.clone())
+}
+
+/// What the planned bot's calibration read (I0082): the factors it plans with (None: uncalibrated),
+/// what its plan.* events name as their stored input, and the record they carry in `inputs.live`.
+pub struct Calibration {
+    pub factors: Option<Value>,
+    pub stored: Stored,
+    pub record: Value,
+    /// The readings read, each with its measured lines (`calibrate::readings_of`).
+    pub readings: Vec<Value>,
+}
+
+/// Why the plan runs on the model alone when nobody asked for calibration: the A/B did not favour it.
+pub const CALIBRATION_OFF: &str = "calibration is off (PRISMATIC_PLAN_CALIBRATION unset or off, the default: the three-seed held-start A/B averaged about zero, knowledge the-planner-overpredicts-what-a-line-earns; ADR 0034 point 6)";
+
+/// The calibration of `scope` for a game (`calibrate::game_of`), read with `read` (every store,
+/// `panel_store::query_every_store`): the factors of every reading it returns, or the fallback
+/// `uncalibrated` with its reason when calibration is off, the scope is not one, the store is off or
+/// it holds no reading. Never a silent default (ADR 0034 point 2).
+pub fn calibration(scope: &Scope, game: &Value, read: impl FnOnce(&str) -> Result<Across, String>) -> Calibration {
+    let name = match scope {
+        Scope::Off => "off".to_string(),
+        Scope::All => "all".to_string(),
+        Scope::Seed => "seed".to_string(),
+        Scope::Unknown(v) => v.clone(),
+    };
+    let fallback = |why: String, extra: Value| {
+        let mut record = json!({"scope": name, "used": false, "fallback": "uncalibrated", "why": why, "game": game});
+        if let (Some(r), Some(x)) = (record.as_object_mut(), extra.as_object()) { r.extend(x.clone()); }
+        Calibration { factors: None, stored: Stored::Fallback(format!("uncalibrated: {why}")), record, readings: Vec::new() }
+    };
+    match scope {
+        Scope::Off => return fallback(CALIBRATION_OFF.into(), json!({})),
+        Scope::Unknown(v) => {
+            let file = if v.ends_with(".json") { "; no file is read any more: calibration comes from the stores' plan.calibration events (I0082)" } else { "" };
+            return fallback(format!("PRISMATIC_PLAN_CALIBRATION={v} is none of off, all, seed{file}"), json!({}));
+        }
+        _ => {}
+    }
+    let sql = match calibrate::readings_sql(scope, game) {
+        Ok(q) => q,
+        Err(why) => return fallback(why, json!({})),
+    };
+    let across = match read(&sql) {
+        Ok(a) => a,
+        Err(why) => return fallback(why, json!({"query": sql})),
+    };
+    let answer = json!({"columns": across.columns, "rows": across.rows});
+    let readings = calibrate::readings_of(&answer);
+    if readings.is_empty() {
+        return fallback(format!("the store holds no calibration reading for this scope ({} row(s) from {} store(s))",
+                                across.rows.len(), across.stores.len()),
+                        json!({"query": sql, "rows": across.rows.len(), "stores": across.stores}));
+    }
+    let f = calibrate::factors(&readings);
+    let used: Vec<Value> = readings.iter().map(|r| json!({"instance": r["instance"], "seq": r["seq"], "ts_ms": r["ts_ms"],
+                                                          "seed": r["seed"], "map": r["map"], "lines": r["lines"].as_array().map_or(0, Vec::len)}))
+        .collect();
+    Calibration {
+        factors: Some(f["params"]["calibration"].clone()),
+        stored: Stored::Query { sql: sql.clone(), rows: across.rows.len() },
+        record: json!({"scope": name, "used": true, "query": sql, "rows": across.rows.len(), "stores": across.stores, "game": game,
+                       "readings": used, "lines": f["lines"], "modes": f["modes"], "factors": f["params"]["calibration"],
+                       "rule": calibrate::RULE}),
+        readings,
+    }
+}
+
+/// plan.bot_settings names the calibration its portfolio was planned with: its query and rows, or
+/// the fallback, when a run asked for calibration (off, the history of the settings themselves is
+/// I0087's, and the event says so).
+pub fn with_calibration(data: &mut Value, cal: &Calibration) {
+    data["inputs"]["live"]["calibration"] = cal.record.clone();
+    if cal.record["scope"] != "off" {
+        data["inputs"]["stored"] = cal.stored.to_json();
+    }
 }
 
 /// The data of plan.bot_settings, with the run's extra settings (PRISMATIC_BOT_SETTINGS) applied to
@@ -666,26 +739,25 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
     }
     let budget = g.max_loan().filter(|b| *b != 0);
     let mut params = match budget { Some(b) => json!({"budget": b}), None => json!({}) };
-    // Back-propagation: with PRISMATIC_PLAN_CALIBRATION naming a calibration store (research/
-    // calibration.json, relative to the repository), the plan starts from what earlier games earned
-    // per mode instead of the model alone (src/calibrate.rs). Off unless a run asks for it: a duel's
-    // calibrated: true, so its A/B decides whether it pays.
-    let mut calibration = Value::Null;
-    if let Some(name) = std::env::var("PRISMATIC_PLAN_CALIBRATION").ok().filter(|v| !v.is_empty() && v != "off") {
-        let path = crate::panel_results::repo().join(&name);
-        match std::fs::read_to_string(&path).ok().and_then(|t| serde_json::from_str::<Value>(&t).ok()) {
-            Some(store) if store.pointer("/params/calibration").is_some_and(|c| c.as_object().is_some_and(|m| !m.is_empty())) => {
-                let cal = store["params"]["calibration"].clone();
-                let readings = store["readings"].as_array().map_or(0, Vec::len);
-                g.event("ai", &format!("planner: calibration from {name} ({readings} reading(s)): {cal}"));
-                calibration = json!({"file": name, "readings": readings, "factors": cal});
-                params["calibration"] = cal;
-            }
-            _ => {
-                g.event("ai", &format!("planner: calibration {name} asked for, but it holds no factor; the plan runs uncalibrated"));
-                calibration = json!({"asked": name, "used": false, "why": "the file holds no factor"});
-            }
-        }
+    // Back-propagation (I0082): with PRISMATIC_PLAN_CALIBRATION `all` or `seed` the plan starts from
+    // what earlier games earned per mode, read from the stores' plan.calibration events, instead of
+    // the model alone (src/calibrate.rs). Off unless a run asks for it (a duel's calibrated: true), so
+    // its A/B decides whether it pays; every outcome is published, the fallback with its reason.
+    let scope = calibrate::scope(std::env::var("PRISMATIC_PLAN_CALIBRATION").ok().as_deref());
+    let game = if scope == Scope::Seed {
+        calibrate::game_of(g.args.seed, &g.resource("openttd://game/state").unwrap_or(Value::Null))
+    } else {
+        json!({"seed": g.args.seed, "map": null})
+    };
+    let cal = calibration(&scope, &game, crate::panel_store::query_every_store);
+    if let Some(f) = &cal.factors {
+        g.event("ai", &format!("planner: calibration from the store ({}, {} reading(s) in {} row(s)): {f}",
+                               cal.record["scope"].as_str().unwrap_or(""), cal.record["readings"].as_array().map_or(0, Vec::len),
+                               cal.record["rows"]));
+        params["calibration"] = f.clone();
+    } else if scope != Scope::Off {
+        g.event("ai", &format!("planner: calibration asked for ({}), but {}; the plan runs uncalibrated",
+                               cal.record["scope"].as_str().unwrap_or(""), py_str(cal.record.get("why"))));
     }
     let algoglyph = std::env::var("MCP_ALGOGLYPH_DIR").map_or(false, |d| !d.is_empty());
     let track = if algoglyph { track } else { 0 };
@@ -713,17 +785,19 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
             planner["error"] = json!(e);
             let mut p = settings_from_plan(&json!({}), &mut |_| {});
             p.portfolio["error"] = json!(e);
-            let seq = g.plan("plan.portfolio", portfolio_event(&json!({}), &p, request, planner, &calibration));
+            let seq = g.plan("plan.portfolio", portfolio_event(&json!({}), &p, request, planner, &cal));
             // No plan, no settings: the bot starts unplanned, and the run's extra settings are not
             // applied either (as before I0081).
             p.bot_settings["unplanned"] = json!(e);
-            g.plan("plan.bot_settings", panel_events::plan("bot.settings", bot_params(""), json!({"portfolio_seq": seq}),
-                                                            &panel_events::live_only("I0087"), p.bot_settings.clone()));
+            let mut data = panel_events::plan("bot.settings", bot_params(""), json!({"portfolio_seq": seq}),
+                                              &panel_events::live_only("I0087"), p.bot_settings.clone());
+            with_calibration(&mut data, &cal);
+            g.plan("plan.bot_settings", data);
             return Some(p);
         }
     };
     let mut p = settings_from_plan(&out, &mut |text| g.event("ai", &text));
-    let seq = g.plan("plan.portfolio", portfolio_event(&out, &p, request, planner, &calibration));
+    let seq = g.plan("plan.portfolio", portfolio_event(&out, &p, request, planner, &cal));
     // Extra settings for this bot from the run that started the stack (mcp-duel --bot-settings, the
     // duel form): an A/B of a bot feature without a code change. A malformed list is refused whole.
     let extra = std::env::var("PRISMATIC_BOT_SETTINGS").unwrap_or_default();
@@ -731,7 +805,8 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
         Ok(list) => for (k, v) in list { g.event("ai", &format!("bot setting from the run: {k}={v}")); },
         Err(e) => g.event("ai", &format!("bot settings from the run refused: {e}")),
     }
-    let data = bot_settings_event(&mut p, &extra, seq);
+    let mut data = bot_settings_event(&mut p, &extra, seq);
+    with_calibration(&mut data, &cal);
     p.bot_settings = data["choice"].clone();
     g.plan("plan.bot_settings", data);
     Some(p)
@@ -910,15 +985,15 @@ mod tests {
                 {"kind": "freight", "mode": "freight_rail", "cargo": "Coal", "cargo_id": 1, "from": {"id": "industry:7", "name": "Mine"},
                  "to": {"id": "industry:99", "name": "Plant"}, "distance": 40, "score": 8.0}]}));
         let request = json!({"budget": 300000, "params": {"budget": 300000}, "limit": 40, "track": 16});
-        let e = portfolio_event(&out, &p, request.clone(), json!({"exe": "mcp-plan"}), &Value::Null);
+        let off = calibration(&Scope::Off, &json!({"seed": 3, "map": null}), |_| panic!("calibration off reads no store"));
+        let e = portfolio_event(&out, &p, request.clone(), json!({"exe": "mcp-plan"}), &off);
         assert_eq!(e["decision"], "bot.portfolio");
         assert_eq!(e["version"]["params"], json!({"request": request, "effective": {"budget": 300000, "cost_weight": 1}}));
         assert_eq!(e["version"]["revision"], panel_events::REVISION);
         assert_eq!(e["inputs"]["live"]["reads"], json!([{"uri": "openttd://towns", "ok": true}]), "the planner's own list of reads");
-        assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0082"));
+        assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().starts_with("uncalibrated: calibration is off"));
+        assert_eq!(e["inputs"]["live"]["calibration"]["fallback"], "uncalibrated");
         assert_eq!(e["choice"], p.portfolio);
-        let cal = portfolio_event(&out, &p, json!({}), json!({}), &json!({"file": "research/calibration.json", "readings": 3}));
-        assert!(cal["inputs"]["stored"]["fallback"].as_str().unwrap().starts_with("research/calibration.json (a file beside the store"));
 
         let b = bot_settings_event(&mut p, "own_lines=0", Some(41));
         assert_eq!(b["decision"], "bot.settings");
@@ -945,5 +1020,66 @@ mod tests {
         let refused = bot_settings_event(&mut settings_from_plan(&out, &mut |_| {}), "own_lines=eight", None);
         assert!(refused["choice"]["from_run"]["refused"].as_str().unwrap().contains("whole number"));
         assert_eq!(refused["choice"]["settings"]["own_lines"], 8);
+    }
+
+    /// An answer of every store to `readings_sql`, as `panel_store::query_every_store` gives it.
+    fn across(rows: Vec<Value>) -> Across {
+        Across { columns: json!(["instance", "seq", "ts_ms", "seed", "map", "lines"]), stores: vec![json!({"store": "panel-1.duckdb", "via": "this panel", "rows": rows.len()})],
+                 rows }
+    }
+
+    #[test]
+    fn the_calibration_reads_the_store_and_falls_back_with_its_reason() {
+        let game = json!({"seed": 3, "map": "256x256"});
+        let rows = vec![json!(["panel-1", 9, 200, 3, "256x256", "[{\"mode\":\"bus\",\"ratio\":0.2},{\"mode\":\"rail\",\"ratio\":0.6}]"]),
+                        json!(["calibration-import", 1, 100, null, null, "[{\"mode\":\"bus\",\"ratio\":0.4}]"]),
+                        json!(["panel-1", 4, 50, 3, "256x256", "[{\"mode\":\"rail\",\"why\":\"far\"}]"])];
+        let mut asked = String::new();
+        let c = calibration(&Scope::All, &game, |sql| { asked = sql.to_string(); Ok(across(rows.clone())) });
+        assert_eq!(asked, calibrate::readings_sql(&Scope::All, &game).unwrap(), "the statement of src/calibrate.rs");
+        assert_eq!(c.factors, Some(json!({"bus": 0.3, "rail": 0.6, "default": 0.4})), "bus: median of 0.2 and 0.4");
+        assert_eq!(c.stored.to_json(), json!({"query": asked, "rows": 3}));
+        assert_eq!(c.record["used"], true);
+        assert_eq!(c.record["readings"], json!([{"instance": "panel-1", "seq": 9, "ts_ms": 200, "seed": 3, "map": "256x256", "lines": 2},
+                                               {"instance": "calibration-import", "seq": 1, "ts_ms": 100, "seed": null, "map": null, "lines": 1}]),
+                   "the rows it used; a reading that measured nothing is not one");
+        assert_eq!(c.record["stores"][0]["via"], "this panel");
+
+        // The store off: no calibration, and the event says why.
+        let off = calibration(&Scope::All, &game, |_| Err("store off: built without the store feature".into()));
+        assert_eq!(off.factors, None);
+        assert_eq!(off.stored.to_json(), json!({"fallback": "uncalibrated: store off: built without the store feature"}));
+        assert_eq!((off.record["fallback"].clone(), off.record["used"].clone()), (json!("uncalibrated"), json!(false)));
+        // Too little history: an empty store, or only readings that measured nothing.
+        let empty = calibration(&Scope::All, &game, |_| Ok(across(vec![rows[2].clone()])));
+        assert_eq!(empty.factors, None);
+        assert!(empty.stored.to_json()["fallback"].as_str().unwrap().starts_with("uncalibrated: the store holds no calibration reading"));
+        assert_eq!(empty.record["rows"], 1);
+        // The seed scope without a map size never queries; a file name is refused, never read.
+        let blind = calibration(&Scope::Seed, &json!({"seed": 3, "map": null}), |_| panic!("no query without a map"));
+        assert!(blind.record["why"].as_str().unwrap().contains("map size"));
+        let file = calibration(&calibrate::scope(Some("old/calibration.json")), &game, |_| panic!("a file name reads nothing"));
+        assert!(file.record["why"].as_str().unwrap().contains("no file is read"));
+        assert_eq!(file.factors, None);
+        // Off, the default: the model alone, said so.
+        let none = calibration(&calibrate::scope(None), &game, |_| panic!("off reads nothing"));
+        assert_eq!(none.stored.to_json()["fallback"], json!(format!("uncalibrated: {CALIBRATION_OFF}")));
+    }
+
+    #[test]
+    fn plan_bot_settings_names_the_calibration_query_and_its_rows() {
+        let out = answer();
+        let mut p = settings_from_plan(&out, &mut |_| {});
+        let game = json!({"seed": 3, "map": "256x256"});
+        let used = calibration(&Scope::All, &game, |_| Ok(across(vec![json!(["panel-1", 9, 200, 3, "256x256", "[{\"mode\":\"bus\",\"ratio\":0.2}]"])])));
+        let mut b = bot_settings_event(&mut p, "", Some(7));
+        with_calibration(&mut b, &used);
+        assert_eq!(b["inputs"]["stored"], json!({"query": calibrate::readings_sql(&Scope::All, &game).unwrap(), "rows": 1}));
+        assert_eq!(b["inputs"]["live"]["calibration"]["readings"][0]["seq"], 9);
+        assert_eq!(b["inputs"]["live"]["portfolio_seq"], 7);
+        let mut b = bot_settings_event(&mut p, "", Some(7));
+        with_calibration(&mut b, &calibration(&Scope::Off, &game, |_| unreachable!()));
+        assert!(b["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0087"), "off: the settings' own history is I0087's");
+        assert_eq!(b["inputs"]["live"]["calibration"]["scope"], "off");
     }
 }

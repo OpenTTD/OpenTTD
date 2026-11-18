@@ -382,8 +382,9 @@ The data is `{decision, version, inputs, choice}` (`panel_events.rs:plan`). `ver
 when `tools/research/mcp-rhai` had uncommitted changes) and the parameters the decision used with
 their digest. `inputs` is `{live, stored}`: `live` names what was read live (mcp-plan and mcp-intent
 answer the `openttd://` resources they read as `reads`), and `stored` is the store query with its row
-count, or `{fallback}` with the reason no history was read. No panel decision reads the store yet,
-so each fallback names the issue that adds its query. `choice` is what was decided, as data.
+count, or `{fallback}` with the reason no history was read. The calibration is the first decision
+that reads the store (I0082, below); every other fallback names the issue that adds its query.
+`choice` is what was decided, as data.
 
 ```bash
 P=http://127.0.0.1:8800
@@ -843,20 +844,45 @@ scales income minus running cost; until 2026-11-17 it scaled income alone, which
 cost a second time (found by an independent review, codex). A line nothing explains is listed with the
 reason. The World page's **Calibrate** shows it, and a row moves the owner's camera to the line.
 
-**A measurement outlives its game.** `mcp-plan --calibrate --record research/calibration.json`, or
-`POST /api/calibration`, adds the reading (when, from where, every measured line) to the tracked store;
-`GET /api/calibration` reads it. Its `params.calibration` is derived from every reading, never typed:
-per mode the median over all recorded lines, plus `default`, the median over every line, for a mode
-nobody measured. Without `default` an unmeasured mode kept factor 1 and won every comparison: on the
-:8800 map the calibrated portfolio swapped two freight lines for three air routes. The bot start
-reads the store when `PRISMATIC_PLAN_CALIBRATION` names it (`research/calibration.json`; `off` or unset:
-the model alone) and says so in the plan's log, so a duel result records which calibration it ran
-with. The duel form's **Calibrated plan** sets it for that duel only (`POST /api/duel` `calibrated`),
-and *Run this again* keeps it. It stays off by default: its first A/B (seed 31337, 36 months, run side
+**A measurement outlives its game, in the store** (I0082, ADR 0034 point 1). `POST /api/calibration`
+runs `mcp-plan --calibrate` and publishes the reading as `plan.calibration`, so it lands in the
+instance's store with the game it came from (`inputs.live.game`: seed and map size `WxH`); no file is
+written. `GET /api/calibration` (`?scope=all`, the default, or `seed`) answers every stored reading,
+the query that read them with its rows and `params.calibration` derived from them, never typed: per
+mode the median over every line of every reading, plus `default`, the median over every line, for a
+mode nobody measured. Without `default` an unmeasured mode kept factor 1 and won every comparison: on
+the :8800 map the calibrated portfolio swapped two freight lines for three air routes.
+
+The bot start reads the readings when `PRISMATIC_PLAN_CALIBRATION` asks for them: `all` (every
+reading) or `seed` (games of this seed and map size); unset or `off`, the model alone. The statement
+is `calibrate.rs:readings_sql`; `panel_store.rs:query_every_store` runs it on every store of the
+store directory: the panel's own through the code of `/api/db/query`, a stopped panel's file
+read-only, a running panel's through its `/api/db/query`. `plan.portfolio` and `plan.bot_settings`
+name the query and its rows (`inputs.stored`) and the readings used (`inputs.live.calibration`);
+with calibration off, the store off, or no reading in scope they carry `{fallback: "uncalibrated:
+<why>"}` and the plan runs uncalibrated, and the plan's log says which (`planner: calibration from
+the store ...` or `planner: calibration asked for ..., but ...`). A file name in
+`PRISMATIC_PLAN_CALIBRATION` is refused: no file is read any more.
+
+```bash
+P=http://127.0.0.1:8800
+curl -s -X POST $P/api/calibration                       # measure, publish plan.calibration
+curl -s "$P/api/calibration?scope=seed" | jq '{stored, readings, params}'
+PRISMATIC_PLAN_CALIBRATION=all tools/research/mcp-duel --months 36 --seed 4242 --label calibrated
+```
+
+The duel form's **Calibrated plan** sets `all` for that duel only (`POST /api/duel` `calibrated`), and
+*Run this again* keeps it. The one reading the retired file research/calibration.json held was
+imported once into `$PRISMATIC_STORE_DIR/calibration-import.duckdb` as a run of its own (no seed, map
+or ports; `mcp-panel --import-calibration FILE [NAME]`, which skips a reading already there), so
+`all` starts from the same factors the file gave (bus 0.16, freight_rail 0.59, rail 0.15, default
+0.37). Calibration stays off by default: its first A/B (seed 31337, 36 months, run side
 by side) ended 1023810 calibrated against 1050432 uncalibrated, 2.5% lower after leading by 4.6% at
 month 31. That run had a defect (the factor scaled income alone). With it fixed, paired on two seeds:
 seed 31337 −16.4% (794737 vs 950946), seed 20208 +43.5% (796631 vs 555180), with the same rival 52%
-apart between the arms of one seed: inconclusive (knowledge `duels-run-side-by-side-are-noisy`).
+apart between the arms of one seed: inconclusive (knowledge `duels-run-side-by-side-are-noisy`). With
+the held start on three seeds it averaged about zero (knowledge
+`the-planner-overpredicts-what-a-line-earns`); turning it on needs a new A/B (ADR 0034 point 6).
 
 First reading, 2026-11-17, the :8800 game (one AI company, 17 years): freight rail 0.5 (three lines:
 0.97, 0.5, 0.2), passenger rail 0.2 (one line), bus 0.11 (two lines); four train lines matched no

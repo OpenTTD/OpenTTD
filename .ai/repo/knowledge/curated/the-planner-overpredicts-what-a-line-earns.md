@@ -17,7 +17,8 @@ provenance:
     - file:tools/research/mcp-rhai/src/plan.rs
     - file:tools/research/mcp-rhai/src/cargo.rs
     - file:research/mcp-control.md
-    - file:research/calibration.json
+    - file:tools/research/mcp-rhai/src/panel_bot.rs
+    - issue:I0082
     - file:research/results/duel-20261117T183356-seed31337.md
     - file:research/results/duel-20261117T183400-seed31337.md
     - file:research/results/duel-20261117T231417-seed20208.md
@@ -43,8 +44,15 @@ is for its own fleet size, divided per vehicle.
 - Treat bus and passenger-rail scores as optimistic until a calibration says otherwise; freight rail
   was the closest.
 - Never calibrate only the measured modes: an unmeasured mode keeps factor 1 and wins every
-  comparison (the :8800 portfolio turned into three air routes). The store's `default` (median over
-  every line) covers them (`research/calibration.json`, written by `mcp-plan --calibrate --record`).
+  comparison (the :8800 portfolio turned into three air routes). The factors' `default` (median over
+  every line) covers them.
+- The readings live in the panel's store, not in a file (I0082): `POST /api/calibration` publishes
+  each as `plan.calibration`, `GET /api/calibration` and a planned bot start with
+  `PRISMATIC_PLAN_CALIBRATION=all` or `seed` read every store's readings back by query, and the
+  plan's events name the query and its rows, or `fallback: uncalibrated` with the reason. The one
+  reading of the retired file research/calibration.json (2026-11-17T16:55Z, the :8800 game) is the run
+  `calibration-import` of its own store, with no seed or map: `seed` never finds it, `all` gives its
+  factors (bus 0.16, freight_rail 0.59, rail 0.15, default 0.37).
 - A calibrated plan did not pay yet. Seed 31337, 36 months, same code, run side by side
   (2026-11-17): calibrated 1023810 (research/results/duel-20261117T183356-seed31337.md, four
   investments, three freight lines) against 1050432 uncalibrated (duel-20261117T183400, five

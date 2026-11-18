@@ -22,8 +22,10 @@ provenance:
     - file:tools/research/mcp-rhai/src/panel_results.rs
     - file:tools/research/mcp-rhai/src/panel_decision.rs
     - file:tools/research/mcp-duel
+    - file:tools/research/mcp-rhai/src/calibrate.rs
     - issue:I0080
     - issue:I0081
+    - issue:I0082
 relations:
   - type: documents
     target: file:.ai/repo/adrs/0033-every-panel-event-goes-out-on-zeromq-and-into-a-duckdb-store.md
@@ -80,7 +82,7 @@ region differs from the table: the list cannot drift from the code any more.
 | `panel.duel` | panel | `panel_results.rs` | `{text}` | a duel started from the panel; the README scoreboard was regenerated |
 | `plan.portfolio` | panel | `panel_bot.rs:planned` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | the planner's portfolio for the bot was read (the bot start, `POST /api/bots/planned`) |
 | `plan.bot_settings` | panel | `panel_bot.rs:planned` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | the bot's settings were chosen from that portfolio |
-| `plan.calibration` | panel | `panel.rs:h_calibration_record` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a calibration reading was measured and recorded (`POST /api/calibration`) |
+| `plan.calibration` | panel | `panel.rs:h_calibration_record` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a calibration reading was measured (`POST /api/calibration`); the planned bot reads every stored one back (I0082) |
 | `plan.investment` | panel | `panel.rs:h_investment` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | AlgoGlyph's transport-investment chose what to build (`GET /api/investment`) |
 | `plan.action` | panel | `panel.rs:h_action_plan` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | AlgoGlyph's action-plan answered (`POST /api/actionplan`) |
 | `plan.intent` | panel | `panel.rs:h_intent, answer_plan` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a sentence was resolved to an intent and candidates |
@@ -116,10 +118,9 @@ Each planning decision publishes one `plan.*` event beside its `panel.*` sentenc
   FNV-1a 64 digest, so two runs with equal parameters carry equal digests;
 - `inputs`: `{live, stored}`: `live` names what was read live (the planner's own `reads` list of
   `openttd://` resources, the console line money came from, the directive's URL ...), `stored` the
-  store query with its row count, or `{fallback}`: why no history was read. On I0081 no panel
-  decision reads the store yet; each fallback names the issue that adds its query (I0082
-  calibration, I0085 Prismatic, I0086 kernels, I0087 the bot's settings), and the calibration ones
-  name the file `research/calibration.json` they read instead;
+  store query with its row count, or `{fallback}`: why no history was read. The calibration is the
+  first decision that reads the store (I0082, below); every other fallback names the issue that adds
+  its query (I0085 Prismatic, I0086 kernels, I0087 the bot's settings);
 - `choice`: what was decided, as data (the portfolio's lines, the settings in their slots with
   `rail_after`, `own_lines` and the lines dropped, the directive applied or refused with its errors,
   the kernel's answer).
@@ -130,6 +131,20 @@ Each planning decision publishes one `plan.*` event beside its `panel.*` sentenc
 (`choice.from_run`). `plan.kernel` is the one external kind: `mcp-kernel-feed --publish` posts it to
 `POST /api/bus/publish`, which accepts only kinds the table marks external and only with the four
 fields.
+
+**Calibration reads the store (I0082).** `plan.calibration` (`POST /api/calibration`) carries the
+reading (`choice.reading.lines`, each with `mode` and `ratio`) and the game it came from
+(`inputs.live.game`: `{seed, map: "WxH"}`); its `inputs.stored` is the query that read the earlier
+readings, so `choice.factors` are those of every stored reading with this one. A planned bot start
+with `PRISMATIC_PLAN_CALIBRATION` `all` or `seed` (the duel form's *Calibrated plan* sets `all`) reads
+them back with `calibrate.rs:readings_sql` across every store of the store directory
+(`panel_store.rs:query_every_store`: its own through the code of `/api/db/query`, a stopped panel's
+file read-only, a running panel's through its `/api/db/query`), and `plan.portfolio` and
+`plan.bot_settings` name that query with its rows (`inputs.stored`) and the readings used
+(`inputs.live.calibration.readings`). Off (the default), with the store off, or with no reading, both
+carry `{fallback: "uncalibrated: <why>"}` and the plan runs on the model alone. The one reading of
+the retired file research/calibration.json was imported once as a run of its own
+(`mcp-panel --import-calibration`, instance `calibration-import`, seed and map null).
 
 ## Not on the bus
 
@@ -142,8 +157,7 @@ fields.
   `audit.over_capacity` and `audit.resolved` every 60 s (`--audit-every`). All of these go to hub
   subscribers only: no panel bus, no ZeroMQ socket and no store sees them.
 - **A duel's verdict.** It exists as a `research/results/` file and `panel.duel` prose, not as an
-  event. The calibration factors are in `plan.calibration`, but their store is still the file
-  `research/calibration.json` (I0082).
+  event (I0083).
 - **The game itself.** Nothing on the bus is read from the game's own event stream; every game
   event is a difference between two MCP reads.
 

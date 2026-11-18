@@ -38,7 +38,7 @@ decision point reads one live snapshot or a hand constant:
 - `tools/research/mcp-rhai/src/panel_bot.rs:settings_from_plan` chooses the bot's lines from one
   planner answer, with `MAX_FREIGHT_LINES` = 16 and `OWN_LINES` = 8 typed in, and `rail_after` from
   that answer's scores alone; `panel_bot.rs:planned_air` reads calibration from the file
-  `research/calibration.json` when `PRISMATIC_PLAN_CALIBRATION` names it.
+  research/calibration.json (retired by I0082) when `PRISMATIC_PLAN_CALIBRATION` names it.
 - The planner (`plan.rs:defaults`, `cargo.rs:portfolio`, `invest.rs:decide`, `linecost.rs:price`,
   `yards.rs:prove`, `sites.rs:site`, `intent.rs`) works on the current game only;
   `calibrate.rs:calibrate` reads one snapshot of vehicles at least 730 days old.
@@ -97,7 +97,7 @@ held-start seeds (-2.7%, -3.8%, +6.8%; knowledge `the-planner-overpredicts-what-
 
 ## Alternatives rejected
 
-- **Each consumer keeps its own history file** (as `research/calibration.json` does): a second copy
+- **Each consumer keeps its own history file** (as research/calibration.json did until I0082): a second copy
   per consumer, out of step with the store and invisible to the others.
 - **Consumers parse the prose events**: the sentences change with every wording fix; ADR 0033 made
   the data available, and English is not a contract.

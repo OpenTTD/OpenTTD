@@ -27,9 +27,11 @@ panel's table, so OpenAPI, Swagger UI and Rhai reach them. The kinds and payload
 
 ## What it does not do
 
-No decision reads the store yet: each planning decision publishes its choice as a structured
-`plan.*` event beside its prose (I0081; the kinds are one table, `src/panel_events.rs`, listed by
-`GET /api/bus`), and its `inputs.stored` names the fallback it took and the issue of milestone
+Only the calibration reads the store so far (I0082: the planned bot's `PRISMATIC_PLAN_CALIBRATION`
+`all` or `seed` reads every store's `plan.calibration` readings by query, off by default). Every
+planning decision publishes its choice as a structured `plan.*` event beside its prose (I0081; the
+kinds are one table, `tools/research/mcp-rhai/src/panel_events.rs`, listed by `GET /api/bus`), and
+each other decision's `inputs.stored` names the fallback it took and the issue of milestone
 `planning-is-generated-from-recorded-history` that adds its query. The hub's `audit.*` events and
 the `game.*` events it derives for panel-less games reach neither the socket nor a store (I0084).
 Prismatic and AlgoGlyph do not subscribe yet (I0085, I0086). Without libduckdb the panel runs with

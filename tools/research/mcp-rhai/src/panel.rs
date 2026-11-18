@@ -28,10 +28,11 @@ use std::sync::{mpsc, Arc, Condvar, Mutex};
 use std::thread;
 use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
+use crate::calibrate;
 use crate::hub;
 use crate::panel_bot;
 use crate::panel_decision;
-use crate::panel_events::{self, Stored};
+use crate::panel_events;
 use crate::panel_results;
 use crate::panel_store;
 use crate::rhai_host;
@@ -74,7 +75,8 @@ pub struct Args {
 
 pub const USAGE: &str = "usage: mcp-panel --bin <openttd> [--panel-port 8800] [--mcp-port 8731] [--game-port 3979]\n\
                          \x20                [--seed 1] [--ai PrismaticAI] [--auto-approve] [--no-plan-bot]\n\
-                         \x20      mcp-panel --write-event-kinds   (the knowledge note's table of event kinds, from src/panel_events.rs)";
+                         \x20      mcp-panel --write-event-kinds   (the knowledge note's table of event kinds, from src/panel_events.rs)\n\
+                         \x20      mcp-panel --import-calibration FILE [NAME]   (a retired calibration file's readings, once, into the store)";
 
 /// server.py's command line: `--name value` or `--name=value`.
 pub fn parse_args(argv: &[String]) -> Result<Args, String> {
@@ -1892,50 +1894,66 @@ pub fn intent_event(text: &str, via: &str, params: &Map<String, Value>, out: &Va
                               "first": cands.into_iter().take(INTENT_CANDIDATES).collect::<Vec<_>>(), "build": a.get("build")}))
 }
 
-/// The calibration store, research/calibration.json (src/calibrate.rs `record`).
-fn calibration_file() -> std::path::PathBuf {
-    crate::panel_results::repo().join("research/calibration.json")
+/// Every calibration reading the stores hold (I0082): `?scope=all` (default) or `seed` (this game's
+/// seed and map), the query that read them with its rows, and the factors derived from them, or the
+/// fallback `uncalibrated` with its reason (store off, no reading).
+fn h_calibration(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let scope = match i.query.str_or("scope", "all") {
+        "all" => calibrate::Scope::All,
+        "seed" => calibrate::Scope::Seed,
+        other => return Ok((400, json!({"error": format!("scope: all or seed, not {other}")}))),
+    };
+    let game = calibrate::game_of(g.args.seed, &g.resource("openttd://game/state").unwrap_or(Value::Null));
+    let cal = panel_bot::calibration(&scope, &game, panel_store::query_every_store);
+    let mut out = cal.record;
+    out["params"] = json!({"calibration": cal.factors.unwrap_or_else(|| json!({}))});
+    out["stored"] = cal.stored.to_json();
+    Ok((200, out))
 }
 
-fn h_calibration(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
-    Ok(match std::fs::read_to_string(calibration_file()) {
-        Ok(t) => (200, serde_json::from_str(&t).map_err(|e| e.to_string())?),
-        Err(_) => (200, json!({"readings": [], "params": {"calibration": {}}, "note": "no reading recorded yet: POST /api/calibration"})),
-    })
-}
-
-/// Measure the running game's lines against the plan and add the reading to the store.
+/// Measure the running game's lines against the plan and publish the reading as plan.calibration,
+/// which puts it in this instance's store; the factors answered are those of every stored reading
+/// with this one.
 fn h_calibration_record(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
     let exe = sibling("mcp-plan");
     if !exe.exists() {
         return Ok((503, json!({"error": BUILD_IT})));
     }
-    let file = calibration_file();
     let mut cmd = Command::new(&exe);
-    cmd.arg("--panel").arg(g.panel_url()).arg("--limit").arg("500").arg("--calibrate").arg("--record").arg(&file);
+    cmd.arg("--panel").arg(g.panel_url()).arg("--limit").arg(calibrate::CANDIDATES.to_string()).arg("--calibrate");
     let r = run(&mut cmd, None, Duration::from_secs(180), None)?;
     if r.code != 0 {
         return Ok((502, json!({"error": r.stderr.trim()})));
     }
     let out: Value = serde_json::from_str(&r.stdout).map_err(|e| e.to_string())?;
-    let rec = out.pointer("/calibration/recorded").cloned().unwrap_or(Value::Null);
-    g.event("ai", &format!("calibration recorded in research/calibration.json: {} reading(s), {}", rec["readings"], rec["params"]));
-    g.plan("plan.calibration", calibration_event(&out));
-    Ok((200, json!({"reading": out["calibration"], "recorded": rec})))
+    let game = calibrate::game_of(g.args.seed, &g.resource("openttd://game/state").unwrap_or(Value::Null));
+    let before = panel_bot::calibration(&calibrate::Scope::All, &game, panel_store::query_every_store);
+    let e = calibration_event(&out, &game, &before);
+    g.event("ai", &format!("calibration recorded in the store ({}): {} reading(s), factors {}", py_str(Some(&panel_store::store_status())),
+                           e["choice"]["readings"], e["choice"]["factors"]));
+    let answer = json!({"reading": out["calibration"], "recorded": {"store": panel_store::store_status(), "readings": e["choice"]["readings"],
+                                                                    "params": {"calibration": e["choice"]["factors"]}, "stored": e["inputs"]["stored"]}});
+    g.plan("plan.calibration", e);
+    Ok((200, answer))
 }
 
-/// The data of plan.calibration: this game's reading of real against predicted profit, and the
-/// factors the store holds after it.
-pub fn calibration_event(out: &Value) -> Value {
-    let cal = &out["calibration"];
-    let rec = &cal["recorded"];
-    let mut reading = cal.clone();
-    if let Some(m) = reading.as_object_mut() { m.remove("recorded"); }
-    panel_events::plan("calibration.record", json!({"limit": 500, "min_age_days": 730, "effective": out.get("params")}),
-                       json!({"planner": "mcp-plan --calibrate --record", "reads": out.get("reads")}),
-                       &Stored::Fallback(format!("{} (a file beside the store, read and rewritten; I0082 reads calibration from the store)",
-                                                 py_str(rec.get("file")))),
-                       json!({"reading": reading, "readings": rec.get("readings"), "factors": rec.pointer("/params/calibration")}))
+/// The data of plan.calibration: this game's reading of real against predicted profit (`out`, the
+/// answer of mcp-plan --calibrate) for `game` (its seed and map, which the `seed` scope compares),
+/// and the factors of every stored reading (`before`, read with the store's query) with this one.
+pub fn calibration_event(out: &Value, game: &Value, before: &panel_bot::Calibration) -> Value {
+    let reading = out["calibration"].clone();
+    let mut all = before.readings.clone();
+    let lines = calibrate::measured(&reading["lines"]);
+    // A reading that measured no line is stored but is no reading when read back (readings_of).
+    if !lines.is_empty() { all.push(json!({"lines": lines})); }
+    let f = calibrate::factors(&all);
+    let n = all.len();
+    let mut params = calibrate::rule_params();
+    params["effective"] = out.get("params").cloned().unwrap_or(Value::Null);
+    params["read_limit"] = json!(calibrate::QUERY_READINGS);
+    panel_events::plan("calibration.record", params,
+                       json!({"planner": "mcp-plan --calibrate", "reads": out.get("reads"), "game": game, "before": before.record}),
+                       &before.stored, json!({"reading": reading, "readings": n, "factors": f["params"]["calibration"], "modes": f["modes"]}))
 }
 
 fn h_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
@@ -1950,7 +1968,7 @@ fn h_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let calibrate = i.query.int("calibrate", 0)? != 0;
     let mut cmd = Command::new(&exe);
     // Calibration matches running lines to candidates, so it needs the long list, not the top few.
-    let limit = if calibrate { limit.max(500) } else { limit };
+    let limit = if calibrate { limit.max(calibrate::CANDIDATES as i64) } else { limit };
     cmd.arg("--panel").arg(g.panel_url()).arg("--limit").arg(limit.clamp(1, 500).to_string());
     if calibrate { cmd.arg("--calibrate"); }
     if !params.is_empty() { cmd.arg("--params").arg(params); }
@@ -2191,9 +2209,10 @@ pub fn routes() -> Vec<Route> {
         r("GET", "/api/results", "results", "Every duel result (research/results, written by mcp-duel), newest first: seed, months, label, opponent, winner and both companies' final value", false, None, panel_results::h_results),
         r("GET", "/api/result", "result", "One duel result by name (?name=duel-...): summary, month-by-month series, the plan, both bots' logs and the written reading", false, None, panel_results::h_result),
         r("POST", "/api/duel", "duelStart", "Start a duel in the background (tools/research/mcp-duel): the planned bot against an unplanned one or an opponent AI, on its own ports; one at a time", false,
-          s(json!({"months": {"type": "integer", "minimum": 1, "maximum": 240}, "seed": {"type": "integer"}, "label": {"type": "string"}, "opponent": {"type": "string"}, "bot_settings": {"type": "string", "description": "extra settings for the planned bot, e.g. own_lines=8"}, "calibrated": {"type": "boolean", "description": "start the planned bot's plan from research/calibration.json (GET /api/calibration)"}}), &[]), panel_results::h_duel_start),
-        r("GET", "/api/calibration", "calibration", "The calibration store (research/calibration.json): every recorded reading of real against predicted profit per vehicle, and params.calibration derived from all of them (per mode, the median over every line)", false, None, h_calibration),
-        r("POST", "/api/calibration", "calibrationRecord", "Measure this game's running lines against the plan (mcp-plan --calibrate) and add the reading to research/calibration.json; the bot start uses the store when PRISMATIC_PLAN_CALIBRATION names it (a duel with calibrated: true). Commit stays the owner's", true,
+          s(json!({"months": {"type": "integer", "minimum": 1, "maximum": 240}, "seed": {"type": "integer"}, "label": {"type": "string"}, "opponent": {"type": "string"}, "bot_settings": {"type": "string", "description": "extra settings for the planned bot, e.g. own_lines=8"}, "calibrated": {"type": "boolean", "description": "start the planned bot's plan from every calibration reading the stores hold (PRISMATIC_PLAN_CALIBRATION=all, GET /api/calibration)"}}), &[]), panel_results::h_duel_start),
+        r("GET", "/api/calibration", "calibration", "Every calibration reading the stores hold (plan.calibration events of this panel's store and every other one, I0082): ?scope=all (default) or seed (this game's seed and map), the query with its rows, the readings used and params.calibration derived from them (per mode, the median over every line), or the fallback uncalibrated with its reason", false,
+          None, h_calibration),
+        r("POST", "/api/calibration", "calibrationRecord", "Measure this game's running lines against the plan (mcp-plan --calibrate) and publish the reading as plan.calibration, which puts it in this instance's store; the planned bot start reads every stored reading when PRISMATIC_PLAN_CALIBRATION is all or seed (a duel with calibrated: true)", true,
           s(json!({}), &[]), h_calibration_record),
         r("GET", "/api/scoreboard", "scoreboard", "The README duel scoreboard as tools/research/readme-scoreboard derives it from research/results: best run, wins of all duels, the seed-31337 series, and whether README.md is current or stale", false, None, panel_results::h_scoreboard),
         r("POST", "/api/scoreboard", "scoreboardWrite", "Regenerate the scoreboard region of README.md from research/results (tools/research/readme-scoreboard); answers the new scoreboard. Commit and push stay the owner's", false,
@@ -2948,13 +2967,30 @@ mod tests {
         assert_eq!(e["inputs"]["live"]["text"], "find the most productive coal mine");
         assert_eq!(e["inputs"]["live"]["reads"][0]["uri"], "openttd://towns");
         assert_eq!(e["version"]["params"]["request"], json!({"budget": 300000}));
-        // plan.calibration: the reading without its bookkeeping, and the factors after it.
-        let out = json!({"params": {"x": 1}, "calibration": {"lines": 3, "ratio": {"rail": 0.6},
-                         "recorded": {"file": "/r/research/calibration.json", "readings": 4, "params": {"calibration": {"rail": 0.7}}}}});
-        let e = calibration_event(&out);
+        // plan.calibration: the reading, the game it came from, and the factors of every stored reading
+        // with it; the stored input is the query that read them, or the fallback when the store is off.
+        let out = json!({"params": {"x": 1}, "calibration": {"lines": [{"mode": "rail", "ratio": 0.8}, {"mode": "bus", "why": "far"}], "modes": {}}});
+        let game = json!({"seed": 3, "map": "256x256"});
+        let rows = vec![json!(["panel-1", 9, 200, 3, "256x256", "[{\"mode\":\"rail\",\"ratio\":0.6}]"])];
+        let before = panel_bot::calibration(&calibrate::Scope::All, &game, |_| Ok(panel_store::Across {
+            columns: json!(["instance", "seq", "ts_ms", "seed", "map", "lines"]), rows: rows.clone(), stores: vec![] }));
+        let e = calibration_event(&out, &game, &before);
         assert_eq!(e["decision"], "calibration.record");
-        assert_eq!(e["choice"], json!({"reading": {"lines": 3, "ratio": {"rail": 0.6}}, "readings": 4, "factors": {"rail": 0.7}}));
-        assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().starts_with("/r/research/calibration.json (a file beside the store"));
+        assert_eq!(e["choice"]["reading"], out["calibration"]);
+        assert_eq!(e["version"]["params"]["min_age_days"], json!(calibrate::MIN_AGE_DAYS), "the rule's own constants, not a copy");
+        assert_eq!(e["version"]["params"]["candidates"], json!(calibrate::CANDIDATES));
+        assert_eq!(e["version"]["params"]["effective"], json!({"x": 1}));
+        assert_eq!(e["choice"]["readings"], 2, "the stored one and this one");
+        assert_eq!(e["choice"]["factors"], json!({"rail": 0.7, "default": 0.7}), "median of 0.6 and 0.8");
+        assert_eq!(e["inputs"]["live"]["game"], game, "what the seed scope compares");
+        assert_eq!(e["inputs"]["stored"], json!({"query": calibrate::readings_sql(&calibrate::Scope::All, &game).unwrap(), "rows": 1}));
+        let off = panel_bot::calibration(&calibrate::Scope::All, &game, |_| Err("store off: the store is not open".into()));
+        let e = calibration_event(&out, &game, &off);
+        assert_eq!(e["choice"]["readings"], 1);
+        let young = json!({"calibration": {"lines": [{"mode": "bus", "why": "no vehicle has a whole last year yet"}]}});
+        assert_eq!(calibration_event(&young, &game, &before)["choice"]["readings"], 1, "a reading that measured nothing adds none");
+        assert_eq!(e["choice"]["factors"], json!({"rail": 0.8, "default": 0.8}), "this reading alone");
+        assert_eq!(e["inputs"]["stored"], json!({"fallback": "uncalibrated: store off: the store is not open"}));
         // plan.investment: AlgoGlyph's portfolio beside the planner's.
         let out = json!({"params": {"budget": 1}, "portfolio": {"chosen": [1, 2, 3]},
                          "investment": {"candidates": 12, "portfolio": {"solver": "knapsack-dp", "chosen": [{"cargo": "Coal", "mode": "rail", "roi": 1.5}]}}});
@@ -2964,7 +3000,7 @@ mod tests {
         assert_eq!(e["choice"]["chosen"][0]["cargo"], "Coal");
         assert_eq!(e["choice"]["planner_chosen"], 3);
         assert_eq!(e["inputs"]["live"]["candidates"], 12);
-        for e in [action_event(&json!({}), &input, &books, &Map::new()), calibration_event(&json!({})), investment_event(&json!({}), &json!({}))] {
+        for e in [action_event(&json!({}), &input, &books, &Map::new()), calibration_event(&json!({}), &game, &off), investment_event(&json!({}), &json!({}))] {
             for f in ["decision", "version", "inputs", "choice"] { assert!(e.get(f).is_some(), "{f}"); }
             assert!(crate::panel_events::refuse_external("plan.kernel", &e).is_none(), "the payload contract");
         }

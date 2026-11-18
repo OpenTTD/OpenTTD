@@ -126,11 +126,12 @@ pub fn h_duel_start(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let log = std::env::temp_dir().join(format!("mcp-duel-panel-{}.log", std::process::id()));
     let out = std::fs::File::create(&log).map_err(|e| format!("{}: {e}", log.display()))?;
     let err = out.try_clone().map_err(|e| e.to_string())?;
-    // calibrated: true starts the planned bot from the calibration store (PRISMATIC_PLAN_CALIBRATION,
-    // read by panel_bot planned_air); the plan's log, and with it the result, says so.
+    // calibrated: true starts the planned bot from every calibration reading the stores hold
+    // (PRISMATIC_PLAN_CALIBRATION=all, read by panel_bot planned); the plan's log, and with it the
+    // result, says so.
     let calibrated = i.body.get("calibrated").and_then(Value::as_bool).unwrap_or(false);
     let child = Command::new("bash").arg(repo().join("tools/research/mcp-duel")).args(&args).current_dir(repo())
-        .env("PRISMATIC_PLAN_CALIBRATION", if calibrated { "research/calibration.json" } else { "off" })
+        .env("PRISMATIC_PLAN_CALIBRATION", if calibrated { "all" } else { "off" })
         // Both companies founded before the first tick runs: a duel starts the same way every time.
         .env("PRISMATIC_START_PAUSED", "2")
         .stdin(Stdio::null()).stdout(out).stderr(err).spawn().map_err(|e| format!("mcp-duel: {e}"))?;

@@ -10,7 +10,26 @@
 //!
 //! Only vehicles with a whole last year count (age at least two years in days), so a new line's
 //! first months do not read as a failure. A line no candidate explains is listed with the reason.
+//!
+//! A reading outlives its game in the panel's store (issue I0082, ADR 0034 point 1): `POST
+//! /api/calibration` publishes it as plan.calibration, so it lands in the instance's `events`, and the
+//! planned bot reads every stored reading back with `readings_sql` (scope `PRISMATIC_PLAN_CALIBRATION`:
+//! `all`, `seed`, or off by default) and derives the factors with `factors`. No file is read.
 use serde_json::{json, Value};
+
+/// Only vehicles at least this old (in days) have a whole last year to measure.
+pub const MIN_AGE_DAYS: f64 = 730.0;
+/// A line matches a candidate whose two ends lie within this many tiles of its two stations.
+pub const REACH_TILES: f64 = 12.0;
+/// How many of the planner's candidates a reading matches lines against (`mcp-plan --limit`): the
+/// long list, not the top few.
+pub const CANDIDATES: usize = 500;
+
+/// The rule's parameters, as plan.calibration's `version.params` carries them: change one and the
+/// digest changes with it.
+pub fn rule_params() -> Value {
+    json!({"min_age_days": MIN_AGE_DAYS, "reach_tiles": REACH_TILES, "candidates": CANDIDATES})
+}
 
 /// The planner's modes a vehicle type can serve, passenger and freight.
 fn modes_of(kind: &str) -> &'static [&'static str] {
@@ -73,7 +92,7 @@ pub fn calibrate(vehicles: &Value, stations: &Value, candidates: &[Value], reach
     let at = |id: i64| st.iter().find(|s| s["id"].as_i64() == Some(id)).and_then(|s| xy(s));
     let mut out = Vec::new();
     let mut ratios: std::collections::BTreeMap<String, Vec<f64>> = Default::default();
-    for mut line in lines(vehicles, 730.0) {
+    for mut line in lines(vehicles, MIN_AGE_DAYS) {
         let Some(real) = line["real_per_vehicle_month"].as_f64() else {
             line["why"] = json!("no vehicle has a whole last year yet");
             out.push(line);
@@ -124,24 +143,32 @@ pub fn calibrate(vehicles: &Value, stations: &Value, candidates: &[Value], reach
     let all: Vec<f64> = out.iter().filter_map(|l| l["ratio"].as_f64()).collect();
     if let Some(d) = median(all) { params.insert("default".into(), json!((d * 100.0).round() / 100.0)); }
     json!({"lines": out, "modes": factors, "params": {"calibration": params},
-           "rule": "median of real / predicted profit per vehicle per month, over lines whose vehicles have a whole last year (age >= 730 days); apply with params"})
+           "rule": format!("median of real / predicted profit per vehicle per month, over lines whose vehicles have a whole last year (age >= {MIN_AGE_DAYS} days); apply with params")})
 }
 
-/// The calibration store (research/calibration.json) with one more reading: the reading's modes and
-/// lines, when and from where it was taken. `params.calibration` is derived again from every reading:
-/// per mode, the median over all readings' line ratios, so a reading of one line counts as one line.
-pub fn record(store: &Value, reading: &Value, at: &str, source: &str) -> Value {
-    let mut readings: Vec<Value> = store["readings"].as_array().cloned().unwrap_or_default();
-    let lines: Vec<Value> = reading["lines"].as_array().into_iter().flatten()
-        .filter(|l| l["ratio"].is_number())
+/// How the factors are derived from readings, named in every answer that carries them.
+pub const RULE: &str = "per mode, the median of real / predicted profit per vehicle per month over every line of every reading read (src/calibrate.rs factors); a mode nobody measured gets default, the median over every line";
+
+/// The measured lines of a reading (those with a ratio), as the store keeps them.
+pub fn measured(lines: &Value) -> Vec<Value> {
+    lines.as_array().into_iter().flatten().filter(|l| l["ratio"].is_number())
         .map(|l| json!({"mode": l["mode"], "candidate": l["candidate"], "ratio": l["ratio"],
                         "real_per_vehicle_month": l["real_per_vehicle_month"], "predicted_per_vehicle_month": l["predicted_per_vehicle_month"]}))
-        .collect();
-    readings.push(json!({"at": at, "source": source, "modes": reading["modes"], "lines": lines}));
+        .collect()
+}
+
+/// The factors of a set of readings (each `{lines}`): per mode the median over every reading's line
+/// ratios, so a reading of one line counts as one line, and `default`, the median over every line.
+/// `{modes: {mode: {factor, lines}}, params: {calibration}, lines}`.
+pub fn factors(readings: &[Value]) -> Value {
     let mut by_mode: std::collections::BTreeMap<String, Vec<f64>> = Default::default();
-    for r in &readings {
+    let mut all = Vec::new();
+    for r in readings {
         for l in r["lines"].as_array().into_iter().flatten() {
-            if let (Some(m), Some(x)) = (l["mode"].as_str(), l["ratio"].as_f64()) { by_mode.entry(m.to_string()).or_default().push(x); }
+            if let (Some(m), Some(x)) = (l["mode"].as_str(), l["ratio"].as_f64()) {
+                by_mode.entry(m.to_string()).or_default().push(x);
+                all.push(x);
+            }
         }
     }
     let modes: serde_json::Map<String, Value> = by_mode.into_iter()
@@ -151,12 +178,94 @@ pub fn record(store: &Value, reading: &Value, at: &str, source: &str) -> Value {
     // A mode nobody measured is not trusted more than the measured ones: it gets the median over every
     // line (`default`). Without it, an unmeasured mode kept factor 1 and won every comparison: on the
     // :8800 map the calibrated portfolio swapped two freight lines for three air routes (2026-11-17).
-    let all: Vec<f64> = readings.iter().flat_map(|r| r["lines"].as_array().cloned().unwrap_or_default())
-        .filter_map(|l| l["ratio"].as_f64()).collect();
+    let n = all.len();
     if let Some(d) = median(all) { params.insert("default".into(), json!((d * 100.0).round() / 100.0)); }
-    json!({"schema": "openttd-research/calibration/v1",
-           "rule": "per mode, the median of real / predicted profit per vehicle per month over every recorded line (tools/research/mcp-rhai src/calibrate.rs); written by mcp-plan --calibrate --record, never by hand",
-           "modes": modes, "params": {"calibration": params}, "readings": readings})
+    json!({"modes": modes, "params": {"calibration": params}, "lines": n})
+}
+
+/// Which recorded readings the planned bot's calibration reads (`PRISMATIC_PLAN_CALIBRATION`).
+#[derive(Clone, Debug, PartialEq)]
+pub enum Scope {
+    /// Unset, empty or `off`: the model alone (the default; ADR 0034 point 6).
+    Off,
+    /// `all`: every reading of every store.
+    All,
+    /// `seed`: the readings of games of this seed and map size.
+    Seed,
+    /// Anything else, refused with the reason (a file name among them: no file is read any more).
+    Unknown(String),
+}
+
+pub fn scope(text: Option<&str>) -> Scope {
+    match text.map(str::trim).unwrap_or("") {
+        "" | "off" | "0" => Scope::Off,
+        "all" | "on" | "1" => Scope::All,
+        "seed" => Scope::Seed,
+        other => Scope::Unknown(other.to_string()),
+    }
+}
+
+/// The game a reading was taken from, as plan.calibration carries it (`inputs.live.game`) and the
+/// `seed` scope compares it: the seed and the map size `WxH`.
+/// `state` is openttd://game/state as the server answers it (the envelope, its fields under `data`)
+/// or those fields alone.
+pub fn game_of(seed: i64, state: &Value) -> Value {
+    let d = state.get("data").filter(|d| d.is_object()).unwrap_or(state);
+    let map = match (d["map_width"].as_i64(), d["map_height"].as_i64()) {
+        (Some(w), Some(h)) => json!(format!("{w}x{h}")),
+        _ => Value::Null,
+    };
+    json!({"seed": seed, "map": map})
+}
+
+/// The newest readings one store answers; enough for every recorded game so far.
+pub const QUERY_READINGS: usize = 200;
+
+/// The read-only statement that reads the calibration readings of one store: every plan.calibration
+/// event, with the seed of the run it belongs to (the newest run of its instance started before it)
+/// and the map its game had, newest first. `game` (`game_of`) narrows it to one seed and map; an
+/// error when the `seed` scope has no map to compare.
+pub fn readings_sql(scope: &Scope, game: &Value) -> Result<String, String> {
+    let filter = match scope {
+        Scope::Seed => {
+            let seed = game["seed"].as_i64().ok_or("the seed scope needs this game's seed")?;
+            let map = game["map"].as_str().filter(|m| m.chars().all(|c| c.is_ascii_digit() || c == 'x'))
+                .ok_or("the seed scope needs this game's map size, and openttd://game/state gave none")?;
+            format!(" AND r.seed = {seed} AND json_extract_string(e.data, '$.inputs.live.game.map') = '{map}'")
+        }
+        Scope::All => String::new(),
+        Scope::Off | Scope::Unknown(_) => return Err("no query: calibration is not asked for".into()),
+    };
+    Ok(format!("WITH r AS (SELECT instance, seed, started_ms, lead(started_ms) OVER (PARTITION BY instance ORDER BY started_ms) AS until_ms FROM runs) \
+SELECT e.instance, e.seq, e.ts_ms, r.seed, json_extract_string(e.data, '$.inputs.live.game.map') AS map, CAST(json_extract(e.data, '$.choice.reading.lines') AS VARCHAR) AS lines \
+FROM events e LEFT JOIN r ON r.instance = e.instance AND e.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR e.ts_ms < r.until_ms) \
+WHERE e.kind = 'plan.calibration'{filter} ORDER BY e.ts_ms DESC LIMIT {QUERY_READINGS}"))
+}
+
+/// The readings of a `readings_sql` answer (`{columns, rows}`), each `{instance, seq, ts_ms, seed, map,
+/// lines}` with only its measured lines; a row whose lines measured nothing is left out.
+pub fn readings_of(answer: &Value) -> Vec<Value> {
+    let cols: Vec<&str> = answer["columns"].as_array().into_iter().flatten().filter_map(Value::as_str).collect();
+    let at = |row: &Value, name: &str| cols.iter().position(|c| *c == name).map_or(Value::Null, |i| row[i].clone());
+    answer["rows"].as_array().into_iter().flatten().filter_map(|row| {
+        let lines = match at(row, "lines") {
+            Value::String(t) => serde_json::from_str::<Value>(&t).unwrap_or(Value::Null),
+            other => other,
+        };
+        let lines = measured(&lines);
+        if lines.is_empty() { return None; }
+        Some(json!({"instance": at(row, "instance"), "seq": at(row, "seq"), "ts_ms": at(row, "ts_ms"),
+                    "seed": at(row, "seed"), "map": at(row, "map"), "lines": lines}))
+    }).collect()
+}
+
+/// The readings of the retired calibration file (schema openttd-research/calibration/v1, written by
+/// `mcp-plan --calibrate --record` until I0082 removed it), for the one import into the store.
+pub fn file_readings(file: &Value) -> Result<Vec<Value>, String> {
+    if file["schema"] != "openttd-research/calibration/v1" {
+        return Err(format!("not a calibration file of schema openttd-research/calibration/v1: {}", file["schema"]));
+    }
+    Ok(file["readings"].as_array().cloned().unwrap_or_default())
 }
 
 #[cfg(test)]
@@ -197,16 +306,60 @@ mod tests {
     }
 
     #[test]
-    fn readings_accumulate_and_the_factor_is_the_median_over_every_line() {
-        let r1 = json!({"modes": {}, "lines": [{"mode": "bus", "ratio": 0.1}, {"mode": "bus", "ratio": 0.3}, {"mode": "rail", "why": "x"}]});
-        let s1 = record(&json!({}), &r1, "2026-11-17T16:00Z", "panel :8800");
-        assert_eq!(s1["params"]["calibration"]["bus"], json!(0.2));
-        assert_eq!(s1["readings"][0]["lines"].as_array().unwrap().len(), 2, "unmeasured lines are not kept");
-        let r2 = json!({"modes": {}, "lines": [{"mode": "bus", "ratio": 0.9}]});
-        let s2 = record(&s1, &r2, "2026-11-18T10:00Z", "panel :8801");
-        assert_eq!(s2["readings"].as_array().unwrap().len(), 2);
-        assert_eq!(s2["modes"]["bus"], json!({"factor": 0.3, "lines": 3}), "median of 0.1, 0.3, 0.9");
-        assert_eq!(s2["params"]["calibration"]["default"], json!(0.3), "an unmeasured mode gets the median over every line");
+    fn the_factor_is_the_median_over_every_line_of_every_reading() {
+        let r1 = json!({"lines": measured(&json!([{"mode": "bus", "ratio": 0.1}, {"mode": "bus", "ratio": 0.3}, {"mode": "rail", "why": "x"}]))});
+        assert_eq!(r1["lines"].as_array().unwrap().len(), 2, "unmeasured lines are not kept");
+        let f1 = factors(&[r1.clone()]);
+        assert_eq!(f1["params"]["calibration"]["bus"], json!(0.2));
+        let r2 = json!({"lines": [{"mode": "bus", "ratio": 0.9}]});
+        let f2 = factors(&[r1, r2]);
+        assert_eq!(f2["modes"]["bus"], json!({"factor": 0.3, "lines": 3}), "median of 0.1, 0.3, 0.9");
+        assert_eq!(f2["params"]["calibration"]["default"], json!(0.3), "an unmeasured mode gets the median over every line");
+        assert_eq!(f2["lines"], 3);
+        assert_eq!(factors(&[]), json!({"modes": {}, "params": {"calibration": {}}, "lines": 0}));
+    }
+
+    #[test]
+    fn the_retired_file_gives_the_factors_it_held() {
+        // The one reading the retired file held (2026-11-17T16:55Z, the :8800 game): the
+        // store's rule gives the same factors the file's params carried.
+        let file = json!({"schema": "openttd-research/calibration/v1", "readings": [{"at": "2026-11-17T16:55Z", "lines": [
+            {"mode": "freight_rail", "ratio": 0.59}, {"mode": "bus", "ratio": 0.24}, {"mode": "freight_rail", "ratio": 0.78},
+            {"mode": "bus", "ratio": 0.08}, {"mode": "freight_rail", "ratio": 0.49}, {"mode": "rail", "ratio": 0.15}]}]});
+        let readings = file_readings(&file).unwrap();
+        assert_eq!(factors(&readings)["params"]["calibration"], json!({"bus": 0.16, "default": 0.37, "freight_rail": 0.59, "rail": 0.15}));
+        assert!(file_readings(&json!({"readings": []})).is_err());
+    }
+
+    #[test]
+    fn the_scope_is_off_unless_asked_and_a_file_name_is_refused() {
+        assert_eq!(scope(None), Scope::Off);
+        assert_eq!(scope(Some("off")), Scope::Off);
+        assert_eq!(scope(Some(" ")), Scope::Off);
+        assert_eq!(scope(Some("all")), Scope::All);
+        assert_eq!(scope(Some("seed")), Scope::Seed);
+        assert_eq!(scope(Some("some/calibration.json")), Scope::Unknown("some/calibration.json".into()));
+        let game = game_of(3, &json!({"map_width": 256, "map_height": 128}));
+        assert_eq!(game, json!({"seed": 3, "map": "256x128"}));
+        assert_eq!(game_of(3, &json!({"availability": "available", "data": {"map_width": 64, "map_height": 64}}))["map"], "64x64",
+                   "the resource's envelope");
+        assert!(readings_sql(&Scope::Seed, &game).unwrap().ends_with(&format!(
+            "WHERE e.kind = 'plan.calibration' AND r.seed = 3 AND json_extract_string(e.data, '$.inputs.live.game.map') = '256x128' ORDER BY e.ts_ms DESC LIMIT {QUERY_READINGS}")));
+        assert!(readings_sql(&Scope::All, &game).unwrap().contains("WHERE e.kind = 'plan.calibration' ORDER BY"));
+        assert!(readings_sql(&Scope::Seed, &game_of(3, &json!({}))).unwrap_err().contains("map size"));
+        assert!(readings_sql(&Scope::Off, &game).is_err());
+    }
+
+    #[test]
+    fn an_answer_gives_its_measured_readings() {
+        let answer = json!({"columns": ["instance", "seq", "ts_ms", "seed", "map", "lines"], "rows": [
+            ["panel-1", 7, 100, 3, "256x256", "[{\"mode\":\"bus\",\"ratio\":0.5,\"candidate\":\"A - B\"},{\"mode\":\"rail\",\"why\":\"far\"}]"],
+            ["panel-1", 5, 90, 3, "256x256", "[{\"mode\":\"rail\",\"why\":\"far\"}]"],
+            ["calibration-import", 1, 80, null, null, "not json"]]});
+        let r = readings_of(&answer);
+        assert_eq!(r.len(), 1, "a reading that measured nothing is no reading");
+        assert_eq!(r[0]["seq"], 7);
+        assert_eq!(r[0]["lines"], json!([{"mode": "bus", "ratio": 0.5, "candidate": "A - B", "real_per_vehicle_month": null, "predicted_per_vehicle_month": null}]));
     }
 
     #[test]

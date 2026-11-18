@@ -15,6 +15,9 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use std::time::Duration;
 
+#[path = "../calibrate.rs"]
+#[allow(dead_code)]
+mod calibrate;
 #[path = "../hub.rs"]
 #[allow(dead_code)]
 mod hub;
@@ -40,6 +43,16 @@ extern "C" fn on_signal(_: libc::c_int) {
     STOP.store(true, Ordering::SeqCst);
 }
 
+#[cfg(feature = "store")]
+fn import(file: &serde_json::Value, from: &str) -> Result<serde_json::Value, String> {
+    panel_store::import_calibration(&panel_store::store_dir(), file, from)
+}
+
+#[cfg(not(feature = "store"))]
+fn import(_: &serde_json::Value, _: &str) -> Result<serde_json::Value, String> {
+    Err("built without the store feature".into())
+}
+
 fn main() {
     let argv: Vec<String> = std::env::args().skip(1).collect();
     if argv.iter().any(|a| a == "-h" || a == "--help") {
@@ -56,6 +69,23 @@ fn main() {
         match done {
             Ok(()) => println!("mcp-panel: {} kinds written to {}", panel_events::KINDS.len(), note.display()),
             Err(e) => { eprintln!("mcp-panel: {}: {e}", note.display()); std::process::exit(1); }
+        }
+        return;
+    }
+    // The one import of the retired calibration file into the store (I0082): its readings become
+    // plan.calibration events of a run of their own, in $PRISMATIC_STORE_DIR/calibration-import.duckdb,
+    // where every planned bot start reads them. A second import of the same reading changes nothing.
+    if let Some(i) = argv.iter().position(|a| a == "--import-calibration") {
+        let Some(file) = argv.get(i + 1) else {
+            eprintln!("mcp-panel: --import-calibration FILE");
+            std::process::exit(2);
+        };
+        let done = std::fs::read_to_string(file).map_err(|e| format!("{file}: {e}"))
+            .and_then(|t| serde_json::from_str::<serde_json::Value>(&t).map_err(|e| format!("{file}: {e}")))
+            .and_then(|v| import(&v, argv.get(i + 2).map_or(file.as_str(), String::as_str)));
+        match done {
+            Ok(v) => println!("{v}"),
+            Err(e) => { eprintln!("mcp-panel: {e}"); std::process::exit(1); }
         }
         return;
     }

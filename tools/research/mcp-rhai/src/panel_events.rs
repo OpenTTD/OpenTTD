@@ -79,7 +79,7 @@ pub const KINDS: &[Kind] = &[
     // Planning decisions as data (ADR 0034 point 3), each beside its panel.* sentence.
     k("plan.portfolio", By::Panel, "panel_bot.rs:planned", PLAN, "the planner's portfolio for the bot was read (the bot start, `POST /api/bots/planned`)"),
     k("plan.bot_settings", By::Panel, "panel_bot.rs:planned", PLAN, "the bot's settings were chosen from that portfolio"),
-    k("plan.calibration", By::Panel, "panel.rs:h_calibration_record", PLAN, "a calibration reading was measured and recorded (`POST /api/calibration`)"),
+    k("plan.calibration", By::Panel, "panel.rs:h_calibration_record", PLAN, "a calibration reading was measured (`POST /api/calibration`); the planned bot reads every stored one back (I0082)"),
     k("plan.investment", By::Panel, "panel.rs:h_investment", PLAN, "AlgoGlyph's transport-investment chose what to build (`GET /api/investment`)"),
     k("plan.action", By::Panel, "panel.rs:h_action_plan", PLAN, "AlgoGlyph's action-plan answered (`POST /api/actionplan`)"),
     k("plan.intent", By::Panel, "panel.rs:h_intent, answer_plan", PLAN, "a sentence was resolved to an intent and candidates"),
@@ -146,8 +146,7 @@ pub fn version(params: Value) -> Value {
 /// What a decision read from recorded history: a store query with its row count, or the fallback it
 /// took instead (ADR 0034 point 2: never a silent default).
 pub enum Stored {
-    /// No panel decision reads the store on I0081; the decisions of I0082 to I0087 do.
-    #[allow(dead_code)]
+    /// The calibration reads it (I0082); the decisions of I0083 to I0087 will.
     Query { sql: String, rows: usize },
     Fallback(String),
 }
