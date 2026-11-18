@@ -681,14 +681,18 @@ and records the choice as an `ai` event ("planner: air A - B, N tiles, score S")
 Rail works the same way. The panel passes the best rail pair as `rail_a` and `rail_b`, only when
 planner v3 scores it above zero. `tools/research/prismatic-ai/PrismaticAI/rail.nut` then builds it:
 
-- each station's axis points at the other town, on the site that accepts the most passengers, with
-  a free exit tile;
-- the line is found by A* over buildable tiles: slopes stand on foundations, steep ones are avoided,
-  turns happen only on flat land, and a turn costs extra;
-- each piece is laid with `BuildRail(prev, tile, next)` into the stations' end tiles;
-- the depot stands beside the line and joins it in both directions;
-- one train runs on the single track, the fastest locomotive with `rail_wagons` passenger
-  carriages, so nothing can deadlock without signals;
+- each terminus's axis points at the other town, on the site that accepts the most passengers;
+  with `rail_platforms` 2 (the default) it has two platforms and a throat with a path signal on
+  each platform's exit;
+- the line is found by A* over buildable tiles. Slopes stand on foundations, steep ones are
+  avoided, a corner goes only where it fits its slope, and no 90-degree turn is laid anywhere,
+  station ends and re-plans included (`pf.forbid_90_deg` is on by default);
+- each piece is laid with `BuildRail(prev, tile, next)`, and the laid line is walked piece by
+  piece before a train is bought;
+- the depot stands behind a platform, or beside a straight piece of the line;
+- the platform length and wagons follow from the line's supply, distance and speed
+  (`PlatformPlan`). Up to `trains_max` trains share the single track, each waiting in a platform,
+  and the Rhai steward sets each line's trains and wagons ([`rail-steward.md`](rail-steward.md));
 - the bot borrows up to the loan limit before it builds, as the planner's budget assumes, and
   removes the stations again when no line can be found.
 

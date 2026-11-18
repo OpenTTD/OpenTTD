@@ -4,8 +4,9 @@
  * - A route is the set of stations in a vehicle's orders. For each route, the cargo waiting at its
  *   stations (AIStation.GetCargoWaiting) is compared with one vehicle's capacity: when more than 1.5
  *   loads wait and money is above the reserve, one more vehicle is cloned with shared orders, up to
- *   a cap per type (road 8, air 4). Trains are not added: a single track without signals would
- *   deadlock.
+ *   a cap per type (road 8, air 4). Trains are not added here: a rail line's trains and wagons are
+ *   the Rhai steward's targets, which lines.nut ReconcileLines carries out up to the line's
+ *   trains_max, the trains its two-platform termini hold without a meeting on the single track.
  * - Too many vehicles: on a two-stop route the game's link graph gives the planned monthly flow
  *   each way (GetCargoPlannedVia); needed = max(1, ceil(flow / one vehicle's monthly capacity)), and
  *   the newest vehicle above that is sold. Without link data yet, a route with more than one vehicle
