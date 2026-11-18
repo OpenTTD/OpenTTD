@@ -196,6 +196,22 @@ so on.
 
 ## What was checked
 
+- **Held-start A/B on three seeds** (24 months, two duels at a time, rule
+  `project.a-tuning-claim-needs-held-start-pairs`). The new geometry against the bridge's
+  previous bot (19c2cbe), measured on the planned company's value:
+
+  | Seed | New | Old | Change |
+  |---|---|---|---|
+  | 4242 | 265418 | 211797 | +25.3% |
+  | 31337 | 517772 | 348825 | +48.4% |
+  | 20208 | 415994 | 234031 | +77.8% |
+
+  - It starts behind (two-platform termini cost more) and overtakes by month 18.
+  - No arm logged a broken line. The stricter sites refuse a few more lines: "no rail path" came
+    2, 4 and 0 times against 2, 0 and 0.
+  - The unplanned rival runs each arm's own AI, so it is not a control. The direction is the same
+    on all three seeds.
+  - The records and their reading: knowledge `rail-lines-a-train-can-turn-on`.
 - **A 12-month duel on seed 4242** (`research/results/duel-20261118T063729-seed4242.md`). The
   bot ran with the new geometry, before the steward and line slots existed.
   - Six rail lines were built, each with two-platform termini at both ends, a throat with path
@@ -203,9 +219,7 @@ so on.
   - None logged "no rail path", a broken line or a refused throat.
   - At month 12 the planned company had 6 trains and was worth 55,349, against 7,840 for the
     unplanned one.
-  - This is one run. A tuning claim needs held-start pairs (rule
-    `project.a-tuning-claim-needs-held-start-pairs`), and that A/B against the previous geometry is
-    still to run.
+  - This is one run; the held-start A/B on three seeds above is the comparison.
 - **The bot reconciling its line targets**, in a 12-month duel on seed 4242 with
   `--bot-settings line1_wagons=3,line2_trains=2`
   (`research/results/duel-20261118T071045-seed4242.md`). These are start settings, which are not

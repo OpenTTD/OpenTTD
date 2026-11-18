@@ -97,7 +97,8 @@ is a fair one.
 
 | Part | Proven by | Status |
 |---|---|---|
-| The bot builds rail trains can run, two-platform termini, line targets | duels on seed 4242 ([`rail-steward.md`](rail-steward.md)) | proven on loopback |
+| The bot builds rail trains can run, two-platform termini, line targets | duels on seed 4242, the line-close duel ([`rail-steward.md`](rail-steward.md)) | proven on loopback |
+| The new geometry earns more than the old one | held-start A/B on seeds 4242, 31337 and 20208: +25%, +48%, +78% at 24 months | proven on loopback, against the same AI, not a person |
 | The bot against another AI in one game | `tools/research/mcp-duel --opponent <AI>` | proven on loopback (duel records in [`results/`](results/)) |
 | A human-style client playing through the UI | [`mcp-human.md`](mcp-human.md) | proven on loopback |
 | Every web UI page in a real browser | `tools/research/e2e-coverage --run` (rule `project.web-ui-is-covered-end-to-end`) | proven on loopback |

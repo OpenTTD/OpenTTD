@@ -71,15 +71,31 @@ wait off it.**
 
 # Evidence
 
-The 12-month duel on seed 4242 (`research/results/duel-20261118T063729-seed4242.md`):
+**Held-start A/B on three seeds, 2026-11-18** (rule `project.a-tuning-claim-needs-held-start-pairs`).
+The arms are the new geometry (070a021 on seed 4242, 5f19d4e on the others, which differ only in
+re-plans past a throat) and the bridge repository's 19c2cbe, the version before. Each duel ran 24
+months with a held start, two duels at a time. The value is the planned company's.
 
-- six rail lines, each with two-platform termini, path-signalled throats and a depot behind a
-  platform;
-- no "no rail path", broken line or refused throat in the log;
-- 6 trains at month 12.
+| Seed | New geometry | Old geometry | Change | Records |
+|---|---|---|---|---|
+| 4242 | 265418 | 211797 | +25.3% | duel-20261118T092354, T092354r |
+| 31337 | 517772 | 348825 | +48.4% | duel-20261118T095556, T095701 |
+| 20208 | 415994 | 234031 | +77.8% | duel-20261118T102534, T102603 |
 
-This proves the geometry builds and runs. It is not yet an earnings A/B: rule
-`project.a-tuning-claim-needs-held-start-pairs`.
+- **Over time.** The new geometry starts behind: on seed 4242 it was 9% lower at month 12, because
+  two-platform termini cost more. It overtakes by month 18.
+- **Failures.** No arm logged a broken line. "no rail path" came 2, 4 and 0 times in the new arms
+  against 2, 0 and 0 in the old ones: the straight throat exits and the room for two platforms
+  refuse more sites.
+- **The rival is not a control.** The unplanned company runs each arm's own AI, so the rival spread
+  cannot separate the two arms. All three seeds point the same way, by 25 to 78%, far beyond the
+  0.2% spread between held-start runs of one bot (knowledge `duels-run-side-by-side-are-noisy`).
+- **Not tested.** Ten-year duels, and the steward's targets during these runs (the steward did not
+  run: these are the bot's defaults).
+
+Earlier evidence: the 12-month duel on seed 4242 (`research/results/duel-20261118T063729-seed4242.md`)
+built six lines, each with two-platform termini, path-signalled throats and a depot behind a
+platform, and logged no "no rail path", broken line or refused throat.
 
 # How to apply
 
