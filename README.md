@@ -42,9 +42,9 @@
 |---|---|---|---|
 | | [![NoirGFX ground, rail, road and water at 4x](research/noirgfx/preview-ground-4x.png)](research/noirgfx/README.md) | [![A research game: finances of the planned bot](docs/screenshots/game-finances.png)](#the-planner-against-itself) | [![The bot's yes/no question, shown in the game itself](docs/screenshots/your-bot-asks.png)](#plug-in-an-agent-it-asks-before-it-acts) |
 | **What** | every OpenGFX sprite recut as a three-ink linocut, 1x/2x/4x | two companies, same AI, one with a planner: watch who wins | an MCP client reads the live game and proposes moves you approve |
-| **Needs** | this repository, `uv`, Blender | a research build (`tools/gate.sh research`) | a research build plus any MCP client |
-| **Start** | [`noirgfx build && noirgfx install`](tools/research/noirgfx/README.md) | `tools/research/mcp-duel --months 36` | `tools/research/mcp-e2e`, then [connect](research/mcp-control.md) |
-| **Stock OpenTTD?** | the set plugs in like any base set; loading it in a stock release is `NOT RUN` yet | no: the duel needs this fork's MCP server | no: the MCP server is compiled into this fork |
+| **Needs** | any OpenTTD: [download `noirgfx-1.tar`](https://github.com/korczis/OpenTTD/releases/tag/noirgfx-1) (or build it: this repository, `uv`, Blender) | a research build (`tools/gate.sh research`) | a research build plus any MCP client |
+| **Start** | drop the tar in `baseset/`, pick *NoirGFX* in Game Options | `tools/research/mcp-duel --months 36` | `tools/research/mcp-e2e`, then [connect](research/mcp-control.md) |
+| **Stock OpenTTD?** | yes: `PASS` in the official 15.3 macOS build ([screenshot](research/noirgfx/stock-15.3.png)); Windows and Linux `NOT RUN` | no: the duel needs this fork's MCP server | no: the MCP server is compiled into this fork |
 
 ## NoirGFX: the game as a linocut
 
@@ -52,6 +52,10 @@ A complete base graphics set in the owner's red-black linocut style: strict ink,
 red, carved hatching, seamless across tiles at every zoom. It installs the way upstream designed
 graphics to be replaced, as a `.obg` plus six GRFs in `baseset/`, and it is never the default: you
 pick it in *Game Options → Base graphics set* or start with `openttd -I NoirGFX`.
+
+**[Download NoirGFX 1](https://github.com/korczis/OpenTTD/releases/tag/noirgfx-1)**: one `.tar`, about 150 MB, into your `baseset/` folder, unpacked
+or not. Tested in stock OpenTTD 15.3 (official macOS build): the game logs `Using the NoirGFX base
+graphics set` and renders it ([screenshot](research/noirgfx/stock-15.3.png)).
 
 | Ground, rail, road and water (4x) | Trees from Kenney's CC0 models (4x) |
 |---|---|

@@ -43,6 +43,7 @@ Trees are rendered from Kenney models; everything else is restyled from OpenGFX 
 | OpenTTD loads the set | `dbg: [grf:1] Using the NoirGFX base graphics set`, blitter `32bpp-anim` |
 | Not the default, still selectable | fresh config, OpenGFX and NoirGFX installed: no choice gives `Using the OpenGFX base graphics set`; `-I NoirGFX` and `[graphicsset] name = NoirGFX` both give `Using the NoirGFX base graphics set` (`-v null:ticks=5 -d grf=1`) |
 | In-game screenshot | `ingame-title-4x.png` above, via `noirgfx shot` |
+| Stock OpenTTD 15.3 | PASS: the official macOS universal build (notarized, Developer ID OpenTTD Distribution Ltd, zip sha256 `c2ac22ab…f579`), an isolated `HOME` holding only `noirgfx-1.tar`, `-I NoirGFX -g -G 31337`: `Using the NoirGFX base graphics set`, and the game's own screenshot [`stock-15.3.png`](stock-15.3.png) (2026-11-18). Windows, Linux, 14.x and 16.0-RC1: NOT RUN |
 | `noirgfx check --rebuild` | PASS: a build from scratch into an empty temporary cache, Blender re-rendering all 1,113 Kenney sprites, gives a byte-identical tar (md5 `f50545e170c9381873c82dfff1c6f84a`, the set with `fallback = 1`), models from `noirgfx curate` verified against `kenney-curated.sha256` |
 
 Configuration: `build/openttd` built from master at the time (`OpenTTD 20261115-master`), macOS 26
@@ -61,6 +62,10 @@ It is still flaky: in the last run only the 4x shot landed.
 
 ## Limits
 
+- `noire_extra.grf` keeps OpenGFX's GRF ID and name (`FF4F5401`, "OpenGFX 8.0"), so the NewGRF
+  debug view labels it OpenGFX; only one base set loads at a time, so they never collide.
+- Released as [`noirgfx-1`](https://github.com/korczis/OpenTTD/releases/tag/noirgfx-1) (tar md5
+  `f50545e170c9381873c82dfff1c6f84a`, the byte-identical rebuild above).
 - Palette animation is not reproduced (water and lights are static images).
 - Window chrome comes from engine palette colours, not sprites; a base set cannot restyle it.
 - Sprite classification is geometric; a misclassified sprite gets the other treatment.
