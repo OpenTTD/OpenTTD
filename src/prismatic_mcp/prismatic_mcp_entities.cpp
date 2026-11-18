@@ -69,10 +69,12 @@ json Vehicles()
 		}
 		/* The whole consist: a train's engine carries nothing itself, its wagons do. */
 		uint parts = 0, consist_capacity = 0, consist_count = 0;
+		Money consist_value = 0;
 		for (const Vehicle *u = v; u != nullptr; u = u->Next()) {
 			parts++;
 			consist_capacity += u->cargo_cap;
 			consist_count += u->cargo.StoredCount();
+			consist_value += u->value;
 		}
 		list.push_back({
 			{"id", v->index.base()}, {"unit", v->unitnumber}, {"type", TypeName(v->type)}, {"owner", v->owner.base()},
@@ -96,6 +98,9 @@ json Vehicles()
 			{"age", v->age.base()}, {"max_age", v->max_age.base()},
 			{"reliability", ToPercent16(v->reliability)}, {"breakdowns", v->breakdowns_since_last_service},
 			{"value", static_cast<int64_t>(v->value)},
+			/* What the whole consist is worth now (every part's depreciated value): `value` is the
+			 * front vehicle's alone, which priced a train's wagons at nothing. */
+			{"consist_value", static_cast<int64_t>(consist_value)},
 			{"current_order", v->cur_real_order_index}, {"orders", std::move(orders)},
 		});
 	}

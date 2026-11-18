@@ -181,9 +181,11 @@ fn stamps(dir: &Path, name: &str) -> Vec<(PathBuf, Option<SystemTime>)> {
 
 /// Start `name` as a service on the panel at `base` (replacing a run of it that ended); its lines
 /// carry `reloads` restarts already.
-fn start_in(base: &str, dir: &Path, name: &str, reloads: u64, carry: Option<(Arc<Mutex<VecDeque<(u64, String)>>>, Arc<Mutex<u64>>)>) -> Result<Service, String> {
+fn start_in(base: &str, dir: &Path, name: &str, reloads: u64, carry: Option<(Arc<Mutex<VecDeque<(u64, String)>>>, Arc<Mutex<u64>>)>,
+            snapshot: Option<String>) -> Result<Service, String> {
     let p = path_of(dir, name)?;
-    let text = std::fs::read_to_string(&p).map_err(|e| format!("{}: {e}", p.display()))?;
+    // A reload starts from the text it validated, never from a second read that may differ.
+    let text = match snapshot { Some(t) => t, None => std::fs::read_to_string(&p).map_err(|e| format!("{}: {e}", p.display()))? };
     if let Some(err) = check(&text).as_object() {
         return Err(format!("{name} does not parse: {}", err.get("message").and_then(Value::as_str).unwrap_or("?")));
     }
@@ -212,10 +214,14 @@ fn start_in(base: &str, dir: &Path, name: &str, reloads: u64, carry: Option<(Arc
 pub fn start(base: &str, dir: &Path, name: &str) -> Result<Value, String> {
     let mut all = services().lock().unwrap();
     if let Some(s) = all.get(name) {
-        if s.running.load(Ordering::SeqCst) { return Ok(json!({"name": name, "running": true, "already": true})); }
+        if s.running.load(Ordering::SeqCst) {
+            // Asked to stop and not yet ended: starting now would run two copies.
+            if s.abort.load(Ordering::SeqCst) { return Err(format!("{name} is still stopping; start it again once it has ended")); }
+            return Ok(json!({"name": name, "running": true, "already": true}));
+        }
     }
     let carry = all.get(name).map(|s| (s.lines.clone(), s.seq.clone()));
-    let svc = start_in(base, dir, name, 0, carry)?;
+    let svc = start_in(base, dir, name, 0, carry, None)?;
     all.insert(name.to_string(), svc);
     Ok(json!({"name": name, "running": true}))
 }
@@ -256,23 +262,35 @@ pub fn reload_changed(base: &str, dir: &Path) -> Vec<String> {
     for name in names {
         let changed = {
             let s = &all[&name];
-            s.running.load(Ordering::SeqCst) && s.stamps.iter().any(|(p, t)| modified(p) != *t)
+            // A service asked to stop is never brought back by an edit (it ends at its next operation).
+            s.running.load(Ordering::SeqCst) && !s.abort.load(Ordering::SeqCst) && s.stamps.iter().any(|(p, t)| modified(p) != *t)
         };
         if !changed { continue; }
         let (lines, seq, reloads) = { let s = &all[&name]; (s.lines.clone(), s.seq.clone(), s.reloads) };
-        // Every file it would load must parse: its own and each library it imports.
-        let broken = stamps(dir, &name).into_iter().find_map(|(p, _)| {
-            let err = check(&std::fs::read_to_string(&p).unwrap_or_default());
-            err.as_object().map(|e| format!("{}: {}", p.file_name().map(|f| f.to_string_lossy().to_string()).unwrap_or_default(),
-                                            e.get("message").and_then(Value::as_str).unwrap_or("?")))
-        });
+        // Every file it would load must be read and parse: its own and each library it imports. A
+        // file that cannot be read (mid-save, removed) is a failure to wait out, never empty text.
+        let mut own = None;
+        let mut broken = None;
+        for (p, _) in stamps(dir, &name) {
+            let short = p.file_name().map(|f| f.to_string_lossy().to_string()).unwrap_or_default();
+            match std::fs::read_to_string(&p) {
+                Err(e) => { broken = Some(format!("{short} cannot be read: {e}")); break; }
+                Ok(text) => {
+                    if let Some(e) = check(&text).as_object() {
+                        broken = Some(format!("{short}: {}", e.get("message").and_then(Value::as_str).unwrap_or("?")));
+                        break;
+                    }
+                    if p == path_of(dir, &name).unwrap_or_default() { own = Some(text); }
+                }
+            }
+        }
         if let Some(why) = broken {
-            push(&lines, &seq, format!("== not reloaded, the new text does not parse: {why}"));
+            push(&lines, &seq, format!("== not reloaded, the old run goes on: {why}"));
             if let Some(s) = all.get_mut(&name) { s.stamps = stamps(dir, &name); }
             continue;
         }
         all[&name].abort.store(true, Ordering::SeqCst);
-        match start_in(base, dir, &name, reloads + 1, Some((lines.clone(), seq.clone()))) {
+        match start_in(base, dir, &name, reloads + 1, Some((lines.clone(), seq.clone())), own) {
             Ok(svc) => { all.insert(name.clone(), svc); done.push(name); }
             Err(e) => push(&lines, &seq, format!("== reload failed: {e}")),
         }
@@ -332,7 +350,9 @@ pub fn h_script_save(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let err = check(&text);
     if !err.is_null() { return Ok((422, json!({"saved": false, "error": err}))); }
     let p = path_of(&rhai_host::rhai_dir(), &name)?;
-    std::fs::write(&p, &text).map_err(|e| format!("{}: {e}", p.display()))?;
+    // Atomically: a watcher or a reader never sees half a file (write beside it, then rename).
+    let tmp = p.with_extension(format!("rhai.{}.tmp", std::process::id()));
+    std::fs::write(&tmp, &text).and_then(|_| std::fs::rename(&tmp, &p)).map_err(|e| { let _ = std::fs::remove_file(&tmp); format!("{}: {e}", p.display()) })?;
     g.event("rhai", &format!("script {name} saved ({} bytes)", text.len()));
     Ok((200, json!({"saved": true, "name": name, "modified": secs(modified(&p)), "error": Value::Null})))
 }
@@ -395,6 +415,20 @@ mod tests {
         assert!(e["message"].as_str().unwrap().len() > 3);
     }
 
+    /// Every script of the library parses: a script that does not is caught here, before a panel
+    /// refuses to start it as a service.
+    #[test]
+    fn every_script_of_the_library_parses() {
+        let dir = std::path::PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel/rhai"));
+        let scripts = list(&dir);
+        assert!(scripts.len() >= 10, "the library is read from {}", dir.display());
+        for s in scripts {
+            let name = s["name"].as_str().unwrap();
+            let text = std::fs::read_to_string(dir.join(format!("{name}.rhai"))).unwrap();
+            assert!(check(&text).is_null(), "{name}.rhai: {}", check(&text));
+        }
+    }
+
     #[test]
     fn a_library_is_a_script_another_one_imports() {
         let d = tmp("list");
@@ -441,6 +475,10 @@ mod tests {
         assert!(wait("not reloaded"));
         assert_eq!(status()[0]["reloads"], json!(1));
         stop("svc_main").unwrap();
+        // An edit while it stops must not bring it back (reload skips a service asked to stop).
+        thread::sleep(Duration::from_millis(1100));
+        std::fs::write(d.join("svc_lib.rhai"), "fn word() { \"four\" }\n").unwrap();
+        assert!(reload_changed(base, &d).is_empty(), "a stopping service is not reloaded");
         for _ in 0..200 { if !log("svc_main", 0).unwrap()["running"].as_bool().unwrap() { break; } thread::sleep(Duration::from_millis(25)); }
         assert_eq!(log("svc_main", 0).unwrap()["running"], false);
         assert!(start(base, &d, "nope_missing").is_err());

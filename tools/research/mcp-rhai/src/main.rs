@@ -618,6 +618,28 @@ mod tests {
         assert_eq!(v, vec!["1", "10", "11", "0"]);
     }
 
+    /// Pricing: a wagon at the consist's own wagons (consist_value less the front vehicle's value),
+    /// lengthening paid for every train of the line, a new train at the locomotive's price now plus
+    /// its wagons; and a record's station ids win over its tiles.
+    #[test]
+    fn rail_values_price_the_whole_consist_and_every_train() {
+        let v = rail(r#"
+            let recs = rl::records_from_events(ev);
+            let t1 = train(5, 500, 20000, 5000, 4, 90, 0); t1.consist_value = 9000 + 3 * 400;
+            let t2 = train(6, 500, 20000, 5000, 4, 90, 0); t2.consist_value = 9000 + 3 * 400;
+            let line = rl::lines_of(0, recs, [t1, t2], stations, 64)[0];
+            let lengthen = rl::value(line, #{ action: "lengthen", wagons: 5 }, engines);
+            let add = rl::value(line, #{ action: "add_train", trains: 3 }, engines);
+            let old = train(7, 500, 20000, 5000, 4, 90, 0);
+            let fallback = rl::value(rl::lines_of(0, recs, [old], stations, 64)[0], #{ action: "lengthen", wagons: 4 }, engines);
+            let byid = rl::records_from_events([#{ kind: "ai.log", data: #{ company: 0, text: "PrismaticAI: rail line 2: label=X|a=3000|b=3100|st_a=2|st_b=1|cargo=1|trains_max=2|wagons_fit=4|state=open" } }]);
+            let l2 = rl::lines_of(0, byid, [], stations, 64);
+            [lengthen.cost, add.cost, fallback.cost, l2.len(), l2[0].a, l2[0].b]
+        "#);
+        assert_eq!(v, vec!["1600", "7200", "500", "1", "2", "1"],
+                   "2 wagons x 400 x 2 trains; 6000 + 3 x 400; no consist_value: the cheapest wagon on the same rails (500); st_a/st_b win over tiles");
+    }
+
     /// The monitor's report: crashed and lost first, then a line without a train, then the bot's rail
     /// warnings; the digest counts each kind.
     #[test]

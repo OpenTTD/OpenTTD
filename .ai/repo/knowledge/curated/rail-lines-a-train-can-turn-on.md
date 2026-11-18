@@ -50,6 +50,13 @@ across a re-plan (`from_in`). Depots stand behind a platform's dead end, else be
 piece only. `VerifyRailLine` walks the laid line with `AIRail.AreTilesConnected` before any train
 is bought.
 
+**A two-platform throat adds a route the main line does not show.** The second platform joins the
+line by a sideways move (M2 to M). A corner on the line's first tile toward that side passes the
+check on the main platform's route and is still a 90-degree turn on the second one. Since
+2026-11-18 the line runs straight through each throat's first tile, and straight into the far one
+(`FindRailPath` `from_straight`, `to_straight`). Codex's independent review of the branch found
+this case.
+
 A second constraint drove the terminus shape: **a single track carries one train unless trains
 wait off it.**
 

@@ -49,7 +49,10 @@ function PrismaticAI::LineRecord(slot, line) {
 	local trains = PrismaticAI.TrainsOf(line);
 	local fit = trains.len() > 0 ? PrismaticAI.WagonsFit(line, trains[0]) : max(1, 2 * line.len - 1);
 	line.wagons_fit <- fit;
+	/* The station ids, so a reader matches the line's stations exactly, never by catchment. */
+	local st_a = AIStation.GetStationID(line.a), st_b = AIStation.GetStationID(line.b);
 	return "PrismaticAI: rail line " + slot + ": label=" + line.label + "|a=" + line.a + "|b=" + line.b +
+		"|st_a=" + (AIStation.IsValidStation(st_a) ? st_a : -1) + "|st_b=" + (AIStation.IsValidStation(st_b) ? st_b : -1) +
 		"|cargo=" + line.cargo + "|platforms=" + line.trains_max + "|len=" + line.len + "|depot=" + line.depot +
 		"|trains_max=" + line.trains_max + "|wagons_fit=" + fit + "|tiles=" + line.path.len() +
 		"|state=" + (line.closed ? "closed" : "open");
@@ -80,17 +83,14 @@ function PrismaticAI::ResizeTrain(line, train, want) {
 	local wagon = AIVehicle.GetNumWagons(train) > 1 ? AIVehicle.GetWagonEngineType(train, 1) : PrismaticAI.PickRailEngines(line.railtype, line.cargo).wagon;
 	while (AIVehicle.GetNumWagons(train) - 1 > want) AIVehicle.SellWagon(train, AIVehicle.GetNumWagons(train) - 1);
 	while (AIVehicle.GetNumWagons(train) - 1 < want && wagon != -1 && AIEngine.IsBuildable(wagon)) {
-		local w = AIVehicle.BuildVehicle(depot, wagon);
-		if (!AIVehicle.IsValidVehicle(w)) break;
-		if (AIEngine.GetCargoType(wagon) != line.cargo) AIVehicle.RefitVehicle(w, line.cargo);
-		AIVehicle.MoveWagon(w, 0, train, AIVehicle.GetNumWagons(train) - 1);
-		if (AIVehicle.GetLength(train) > line.len * 16) { AIVehicle.SellWagon(train, AIVehicle.GetNumWagons(train) - 1); break; }
+		if (!PrismaticAI.AddWagon(train, depot, wagon, line.cargo, line.len * 16)) break;
 	}
 	return AIVehicle.GetNumWagons(train) - 1;
 }
 
 /* Close `line`: every train to the depot and sold (this.selling, ManageFleet sells it there); once
- * none is left, its track, stations and depot are demolished. Returns true when it is gone. */
+ * none is left, its track, its own platforms and throats and its depot are removed (a crossing keeps
+ * its road, a joined station keeps the other lines' platforms). Returns true when it is gone. */
 function PrismaticAI::CloseLine(slot, line) {
 	local trains = PrismaticAI.TrainsOf(line);
 	foreach (t in trains) {
@@ -115,7 +115,9 @@ function PrismaticAI::CloseLine(slot, line) {
 		}
 		if (AITile.DemolishTile(t)) n++;
 	}
-	foreach (t in line.built) if (AITile.DemolishTile(t)) n++;
+	/* The stations' own platforms and throats only: a platform of another line joined to the same
+	 * station stays (RemoveRailStation, never DemolishTile on a station tile). */
+	foreach (st in line.stations) PrismaticAI.RemoveRailStation(st, line.len);
 	AITile.DemolishTile(line.depot);
 	line.closed = true;
 	AILog.Info("PrismaticAI: rail line " + slot + " closed: " + line.label + ", " + n + " tiles cleared");
@@ -138,7 +140,18 @@ function PrismaticAI::ReconcileLines(reserve) {
 			foreach (t in trains) {
 				if (this.selling.rawin(t)) continue;
 				local have = AIVehicle.GetNumWagons(t) - 1;
-				if (have == want_wagons) { if (this.resizing.rawin(t)) delete this.resizing[t]; continue; }
+				if (have == want_wagons) {
+					if (this.resizing.rawin(t)) {
+						/* The target came back to what the train has while it was on its way: start it
+						 * again, or cancel its depot order (sending it again cancels), never leave it
+						 * standing in the depot. */
+						if (AIVehicle.IsStoppedInDepot(t)) AIVehicle.StartStopVehicle(t);
+						else AIVehicle.SendVehicleToDepot(t);
+						delete this.resizing[t];
+						AILog.Info("PrismaticAI: rail line " + slot + ": train " + t + " keeps its " + have + " wagons and runs again");
+					}
+					continue;
+				}
 				if (AIVehicle.IsStoppedInDepot(t)) {
 					local got = PrismaticAI.ResizeTrain(line, t, want_wagons);
 					AIVehicle.StartStopVehicle(t);

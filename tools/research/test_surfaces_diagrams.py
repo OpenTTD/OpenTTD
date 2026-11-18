@@ -44,6 +44,11 @@ class DiagramsAreMermaid(unittest.TestCase):
         body = "```text\nclient ──stdio──▶ server ──▶ game\n          │\n          ▼\n```\n"
         self.assertEqual(len(self.findings(body)), 1)
 
+    def test_a_single_branch_listing_is_not_and_console_or_indented_drawings_are(self):
+        self.assertEqual(self.findings("```\nrepo/\n└── src/\n```\n"), [])
+        self.assertEqual(len(self.findings("```console\n+-----+    +-----+\n|  a  | -->|  b  |\n+-----+    +-----+\n```\n")), 1)
+        self.assertEqual(len(self.findings("Text.\n\n    +-----+    +-----+\n    |  a  | -->|  b  |\n    +-----+    +-----+\n")), 1)
+
     def test_mermaid_code_and_trees_are_not(self):
         body = ("```mermaid\nflowchart LR\n  a --> b --> c\n```\n\n"
                 "```bash\necho a | grep b --> c --> d\n```\n\n"

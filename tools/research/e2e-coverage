@@ -34,7 +34,11 @@ export function declaredBy(file, text) {
   for (const m of text.matchAll(/^\s*(?:\/\/|#)\s*e2e-covers:\s*(.+)$/gm)) {
     for (const item of m[1].split(',')) { const t = item.trim().replace(/\s+/g, ' '); if (t) covers.push(t); }
   }
-  return { file, covers, browser: /playwright-core/.test(text) && /chromium\.launch\(/.test(text) };
+  // The code without its comments: a declaration, `chromium.launch(` or `.goto(` written in a comment
+  // proves nothing (an independent review fooled the first version with a comment-only probe).
+  const code = text.split('\n').filter((l) => !/^\s*(\/\/|#|\*)/.test(l)).join('\n');
+  const browser = /playwright-core/.test(code) && /chromium\.launch\(/.test(code) && /\.goto\(/.test(code);
+  return { file, covers, browser };
 }
 
 /** Every check of the research tools with its declaration. */
@@ -53,7 +57,12 @@ export function coverage(pages, found) {
       if (!c.browser) { refused.push(`${c.file} declares ${page} but drives no browser (playwright-core chromium.launch)`); continue; }
       // A declared sub-page (/resource/<path>, /scripts/<name>) counts for the page it belongs to.
       const [app, href = ''] = page.split(' ');
-      const owner = pages.filter((p) => p.app === app && (href === p.href || (p.href !== '/' && href.startsWith(p.href)) || (p.href === '/tools' && /^\/(tool|resource|client)\b/.test(href)) || (p.href === '/results' && href.startsWith('/result'))));
+      // A page, or a page under it at a path boundary (/scripts/<name>, never /scriptsTYPO); the
+      // catalogue owns the item pages /tool/, /resource/, /client/, the duels /result/.
+      const under = (h, base) => h === base || (base !== '/' && h.startsWith(base + '/'));
+      const owner = pages.filter((p) => p.app === app && (under(href, p.href)
+        || (p.href === '/tools' && /^\/(tool|resource|client)(\/|$)/.test(href))
+        || (p.href === '/results' && /^\/result(\/|$)/.test(href))));
       if (!owner.length && !names.has(page)) { refused.push(`${c.file} declares ${page}, which the shell does not have`); continue; }
       for (const o of owner.length ? owner : [{ app, href }]) (covered[`${o.app} ${o.href}`] ||= []).push(c.file);
     }
@@ -79,7 +88,11 @@ if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(im
     const panel = opt('--panel'), hub = opt('--hub');
     if (!panel) { console.error('usage: e2e-coverage --run --panel <panel-url> [--hub <hub-url>]'); process.exit(2); }
     const { spawnSync } = await import('node:child_process');
-    let bad = 0;
+    // Coverage first: a run over checks that leave a page uncovered proves less than it says.
+    const cov = coverage(shellPages(), checks());
+    let bad = cov.uncovered.length + cov.refused.length;
+    for (const u of cov.uncovered) console.log(`MISSING  ${u}: no browser check declares it`);
+    for (const r of cov.refused) console.log(`REFUSED  ${r}`);
     for (const r of runPlan(checks(), panel, hub)) {
       if (!r.runnable) { console.log(`NOT RUN  ${r.file}: it covers ${r.apps.join(' and ')} pages and no --hub was given`); bad++; continue; }
       if (r.apps.includes('hub') && !hub) { console.log(`NOT RUN  ${r.file}: its hub pages (no --hub given); its panel pages run`); bad++; }

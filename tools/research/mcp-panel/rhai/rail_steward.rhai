@@ -41,21 +41,35 @@ fn setting_of(bot, name) {
     ()
 }
 
-/// Cargo waiting for a line at its stops (the most at either, toward the other), by the Script API
-/// in test mode (it reads, never changes).
+/// STATION_INVALID (ScriptBaseStation): as `via`, "via any station".
+const STATION_INVALID = 65535;
+
+/// Cargo waiting for a line at its stops (the most at either), by the Script API in test mode (it
+/// reads, never changes). Under cargodist it is the cargo routed to the line's other stop. Under
+/// manual distribution every waiting unit's next hop is STATION_INVALID (script_station.hpp), so
+/// a query via the other stop sees nothing: there it is the cargo waiting via any station.
 fn waiting_for(line) {
     let cargo = line.record.cargo ?? ();
     if cargo == () || line.a == () || line.b == () { return 0; }
+    let dist = openttd_api_ScriptCargo_GetDistributionType(#{ args: [cargo] });
+    let manual = dist.ok == true && dist.result == 0;
     let w = 0;
     for pair in [[line.a, line.b], [line.b, line.a]] {
-        let r = openttd_api_ScriptStation_GetCargoWaitingVia(#{ args: [pair[0], pair[1], cargo] });
+        let via = if manual { global::STATION_INVALID } else { pair[1] };
+        let r = openttd_api_ScriptStation_GetCargoWaitingVia(#{ args: [pair[0], via, cargo] });
         if r.ok == true && type_of(r.result) == "i64" && r.result > w { w = r.result; }
     }
     w
 }
 
-/// Hand one target to the bot (one gated setting change per value that differs).
-fn hand_over(bot, t, done) {
+/// Rounds before a target the owner did not approve is asked again (an hour at the default round).
+const RETRY_ROUNDS = 30;
+
+/// Hand one target to the bot: one gated setting change per value that differs. `done` remembers,
+/// per setting, the value asked, its approval id and the round it was asked in. The same value is
+/// not asked again while its approval is pending, nor within RETRY_ROUNDS after the owner left it
+/// unapproved; a different value is asked at once.
+fn hand_over(bot, t, done, round, pending) {
     let out = [];
     for what in ["trains", "wagons"] {
         let want = if what == "trains" { t.trains } else { t.wagons };
@@ -63,18 +77,21 @@ fn hand_over(bot, t, done) {
         let name = `line${t.slot}_${what}`;
         let now = setting_of(bot, name);
         if now == () { out.push(`${name}: the bot declares no such setting (more lines than slots)`); continue; }
-        let key = `${bot.id}:${name}=${want}`;
-        if now == want || done.contains(key) { continue; }
+        let key = `${bot.id}:${name}`;
+        if now == want { continue; }
+        let asked = done[key];
+        if asked != () && asked.want == want && (pending.contains(asked.id) || round - asked.round < global::RETRY_ROUNDS) { continue; }
         if dry() { out.push(`${name} ${now} -> ${want} (dry run)`); continue; }
         let r = api_botSetting(#{ company: bot.id, name: name, value: want });
-        done.push(key);
+        done[key] = #{ want: want, id: r.approval_id, round: round };
         out.push(`${name} ${now} -> ${want}: ${r.status ?? r}${if r.approval_id != () { ` #${r.approval_id}` } else { "" }}`);
     }
     out
 }
 
 let p = rl::policy();
-let done = [];         // targets already handed over, so a pending approval is not asked twice
+let done = #{};        // per setting: the value asked, its approval id, the round (hand_over)
+let round = 0;
 let renewed = [];      // autoreplace pairs already handed over
 let me = instance();
 print(`rail steward on ${me}: a round every ${every_s()} s${if dry() { ", dry run" } else { "" }}; policy ${p}`);
@@ -87,6 +104,9 @@ loop {
         let engines = read("openttd://engines").data.engines;
         let records = rl::records_from_events(events(0, "ai.log").events);
         let report = [];
+        round += 1;
+        let pending = [];
+        for p in status().pending ?? [] { pending.push(p.id); }
         for bot in api_bots().running ?? [] {
             if bot.ai != "PrismaticAI" { continue; }
             let lines = rl::lines_of(bot.id, records, vehicles, stations, map_w);
@@ -99,7 +119,7 @@ loop {
             let pick = rl::choose(items, bot.money - reserve, Fn("kernel"));
             for t in pick.chosen {
                 print(`  ${bot.name} line ${t.slot}: ${t.action}: ${t.why}`);
-                for line in hand_over(bot, t, done) { print(`    ${line}`); }
+                for line in hand_over(bot, t, done, round, pending) { print(`    ${line}`); }
                 report.push(`${t.action} line ${t.slot}`);
             }
             if pick.chosen.len() < items.len() { print(`  ${bot.name}: ${items.len() - pick.chosen.len()} more change(s) wait for money (${pick.solver})`); }

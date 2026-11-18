@@ -87,6 +87,13 @@ fn station_at(stations, tile, map_w) {
     best
 }
 
+/// The station with id `id`, or () (for -1 or a station that is gone).
+fn station_by_id(stations, id) {
+    if id == () || id < 0 { return (); }
+    for s in stations { if s.id == id { return s; } }
+    ()
+}
+
 /// The station ids a vehicle's orders name, in order (its goto_station orders; a depot or a
 /// waypoint is not a stop).
 fn order_stations(v) {
@@ -103,8 +110,10 @@ fn order_stations(v) {
 fn lines_of(company, records, vehicles, stations, map_w) {
     let out = [];
     for r in records {
-        let sa = station_at(stations, r.a, map_w);
-        let sb = station_at(stations, r.b, map_w);
+        // The record's station ids when it has them (a joined platform can lie in a smaller
+        // neighbour's catchment), else its tiles.
+        let sa = station_by_id(stations, r.st_a ?? -1) ?? station_at(stations, r.a, map_w);
+        let sb = station_by_id(stations, r.st_b ?? -1) ?? station_at(stations, r.b, map_w);
         let closed = (r.state ?? "open") == "closed";
         if r.company != () && r.company != company { continue; }
         // A line whose first station is gone (closed and cleared) belongs to nobody any more.
@@ -183,26 +192,42 @@ fn target(line, waiting, p) {
     ()
 }
 
-/// What a target costs and is expected to bring in a year, for choose(): #{cost, gain}. A wagon or a
-/// train costs what the game asks for it now (engines' price); a closing frees money and costs
-/// nothing to decide. The gain is the line's own earnings per unit of capacity times the capacity
-/// added, so it is derived from what the line has done, never assumed.
+/// What a target costs and is expected to bring in a year, for choose(): #{cost, gain}.
+/// - Cost is what the change asks for now. A wagon is priced at the consist's own wagons:
+///   (consist_value - value) / wagons, both depreciated values from openttd://vehicles, else the
+///   cheapest wagon the engines list sells on the same rails. Lengthening adds that to every train
+///   of the line. A new train is the locomotive's price now plus its wagons.
+/// - Gain is the line's own earnings per unit of capacity times the capacity added, so it is
+///   derived from what the line has done, never assumed.
+/// Closing and shrinking free money: no cost, gain the loss they stop.
 fn value(line, t, engines) {
     let s = line_stats(line);
     if t.action == "close" || t.action == "shrink" { return #{ cost: 0, gain: (-s.profit_last).max(1) }; }
     let train = line.trains[0];
-    let price = #{};
-    for e in engines { price[`${e.id}`] = e.price; }
-    let loco = price[`${train.engine_id}`] ?? 0;
+    let loco = (); 
+    for e in engines { if e.id == train.engine_id { loco = e; } }
+    let loco_price = if loco == () { 0 } else { loco.price };
+    let wagon_price = 0;
+    if s.wagons > 0 && train.consist_value != () && train.consist_value > train.value {
+        wagon_price = (train.consist_value - train.value) / s.wagons;
+    }
+    if wagon_price <= 0 {
+        for e in engines {
+            if e.type == "rail" && e.wagon == true && loco != () {
+                let same = false;
+                for rt in e.railtypes ?? [] { if (loco.railtypes ?? []).contains(rt) { same = true; } }
+                if same && (wagon_price <= 0 || e.price < wagon_price) { wagon_price = e.price; }
+            }
+        }
+    }
     let per_unit = if s.capacity > 0 { (s.profit_last.max(0) / s.trains.max(1)) / s.capacity } else { 0 };
     if t.action == "lengthen" {
         let add = t.wagons - s.wagons;
         let per_wagon = (s.capacity / s.wagons.max(1)).max(1);
-        let wagon_price = if s.wagons > 0 { ((train.value - loco).max(0)) / s.wagons } else { 0 };
-        return #{ cost: (wagon_price * add).max(1), gain: (per_unit * per_wagon * add).max(0) };
+        return #{ cost: (wagon_price * add * s.trains).max(1), gain: (per_unit * per_wagon * add * s.trains).max(0) };
     }
-    // add_train: a clone of the first train
-    #{ cost: train.value.max(1), gain: (s.profit_last.max(0) / s.trains.max(1)).max(0) }
+    // add_train: a clone of the first train, bought new
+    #{ cost: (loco_price + wagon_price * s.wagons).max(1), gain: (s.profit_last.max(0) / s.trains.max(1)).max(0) }
 }
 
 /// Choose the actions to take with `budget` money: closings and shrinks always (they free money),

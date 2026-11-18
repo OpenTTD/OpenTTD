@@ -63,6 +63,7 @@ flowchart LR
 |---|---|---|
 | `Turns90(d1, d2, d3)` rejects `d1 != d2 && d2 != d3 && d3 == -d1` | `FindRailPath` on every step, the step one beyond `from` (using `from_end`), the goal step into `to_end`, and a re-plan (`from_in`) | the game's own 90-degree rule; also faster: no 90-degree slowdown where it is allowed |
 | Two platforms and a two-tile throat (`rail_platforms`, default 2) | `BuildRailStationAt`, `TerminusGeometry`, `BuildThroat` | The second platform bends onto the main row at `M` as a diagonal, never at 90 degrees. The site check covers platforms and throat together: flat, buildable, and an exit that leads on |
+| Straight through each throat's first line tile (`L0`) and into the far one | `FindRailPath` `from_straight` / `to_straight`, `ExitLeadsOn(…, straight)` | The second platform joins the line by a sideways move (M2 to M). A corner on `L0` toward its side would be a 90-degree turn on the second platform's route only, invisible from the main one (found by Codex's independent review, 2026-11-18) |
 | A path signal on each platform's exit (`T1m`, `T1s`) | `BuildThroat` | A train leaves only when it can reserve its whole way into a free platform at the other end (a dead end counts as a safe position, `pbs.cpp` `IsSafeWaitingPosition`). It never waits on the single track, so up to `trains_max` = the smaller end's platforms share it with no passing loop |
 | The laid line is walked | `VerifyRailLine` (`AIRail.AreTilesConnected`) | A gap shows up as a warning with its tile, never as a lost train. A missing piece is laid once more |
 | The depot behind a platform's dead end | `BuildRailDepotBehind` | Trains reach it through their own platform and leave inside the signals. As a fallback, beside a straight piece only (`BuildRailDepotBeside`) |
@@ -80,6 +81,11 @@ The bot builds and the steward decides. The bot then reconciles the line to the 
    whose orders name both stations), `openttd://stations` and `openttd://engines`. Waiting cargo
    comes from the Script API in test mode (`ScriptStation.GetCargoWaitingVia`), which reads and
    changes nothing.
+   - Under cargodist it is the cargo routed to the other stop.
+   - Under manual distribution every waiting unit's next hop is `STATION_INVALID`, so it is the
+     cargo waiting via any station.
+   - Line records carry their station ids (`st_a`, `st_b`), so a joined platform inside a
+     neighbour's catchment still finds its own station.
 3. **Decide** (`target`, thresholds in `policy()`):
    - **close** a line that lost money last year and again this year, once its oldest train is
      past `judge_after_days` (400: profit resets on 1 January);
@@ -88,11 +94,15 @@ The bot builds and the steward decides. The bot then reconciles the line to the 
    - **shrink** by one train when almost nothing waits and the newest train lost money.
 4. **Choose** (`choose`). Closing and shrinking are always chosen. The rest goes through
    AlgoGlyph's `knapsack-dp` kernel over the money above the bot's `cash_reserve`.
-   - Cost is what the game asks for the wagons or the train now.
+   - Cost is what the change asks for now. A wagon is priced at the line's own wagons
+     (`consist_value` less the front vehicle's `value`, from `openttd://vehicles`), and lengthening
+     pays for every train of the line. A new train is the locomotive's price now plus its wagons.
    - Gain is the line's own profit per unit of capacity times the capacity added.
    - Without AlgoGlyph the steward chooses greedily by gain per cost, and the answer says which
      solver ran.
-5. **Hand over.** Each target is a setting of the bot, `line<slot>_trains` (0 closes the line)
+5. **Hand over.** A setting already asked for the same value is not asked again while its approval
+   is pending, nor within `RETRY_ROUNDS` after the owner left it unapproved. A new value is asked
+   at once. Each target is a setting of the bot, `line<slot>_trains` (0 closes the line)
    and `line<slot>_wagons`, set through `openttd.ai.set_setting`. That call waits for the owner's
    approval unless the owner switched auto-approve on (knowledge
    `auto-approve-is-the-owners-switch`).
@@ -101,8 +111,14 @@ The bot builds and the steward decides. The bot then reconciles the line to the 
      again;
    - a missing train is cloned with shared orders;
    - a surplus train is sold;
-   - a closing line sells its trains, then demolishes its track, stations and depot, so it stops
-     costing maintenance.
+   - a closing line sells its trains, then removes its track, its own platforms and throats, and
+     its depot, so it stops costing maintenance. The removal never touches what is not the line's:
+     - a level crossing loses only its rail (`AIRail.RemoveRail`), and the town keeps its road;
+     - a station loses only this line's platforms (`AIRail.RemoveRailStationTileRectangle`).
+       Demolishing a station tile would remove every platform of the station, a joined line's
+       included (`station_cmd.cpp` `RemoveRailStation`);
+   - a wagon the game will not refit or couple (a NewGRF rule) is sold again, and a train that
+     would carry nothing is not started (`AddWagon`).
 7. **Renew.** For each locomotive type the company runs, the steward looks for a buildable one on
    the same rails that is at least `renew_speed_gain` (1.15) times faster. It hands the pair to the
    game's own autoreplace (`ScriptGroup.SetAutoReplace(GROUP_ALL, old, new)` through the Script

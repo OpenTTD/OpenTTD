@@ -54,11 +54,12 @@ function PrismaticAI::RailStepCost(tile) {
  * corner piece on the exit fits its slope (PieceFits), is land the line can take or a road it can
  * cross. Without the slope rule a site passed here and the search then stopped after one node
  * ("every reachable tile tried, 1 nodes", OpenTTD seed 31337, New Prunpool). */
-function PrismaticAI::ExitLeadsOn(exit, out) {
+function PrismaticAI::ExitLeadsOn(exit, out, straight = false) {
 	local map_w = AIMap.GetMapSizeX();
 	local perp = (out == 1 || out == -1) ? map_w : 1;
 	local slope = AITile.GetSlope(exit);
-	foreach (d in [out, perp, -perp]) {
+	/* A throat's exit leads on straight only (see FindRailPath's from_straight). */
+	foreach (d in (straight ? [out] : [out, perp, -perp])) {
 		local n = exit + d;
 		if (d != out && !PrismaticAI.PieceFits(slope, PrismaticAI.PieceBetween(exit, exit - out, n))) continue;
 		if (PrismaticAI.RailStepCost(n) >= 0 || PrismaticAI.CanCross(n, d)) return true;
@@ -127,14 +128,18 @@ function PrismaticAI::PieceFits(slope, piece) {
  * like any other. `avoid` (a table of tiles) is left out of the search: a re-plan passes the tile a
  * piece failed on. `from_in` is the move that arrived at `from_end` (null: the station's straight
  * platform, from - from_end); a re-plan passes the move into the last laid tile, so the first new
- * piece cannot make a 90-degree turn with it. Returns the tiles (from first) or null within the node
- * budget. */
+ * piece cannot make a 90-degree turn with it. `from_straight` and `to_straight` keep the line
+ * straight through its first and last tile: beyond a two-platform throat the second platform
+ * reaches the line by a sideways move (M2 to M), so a corner on the line's first tile toward that
+ * side would make a 90-degree turn on the second platform's route, which the main platform's
+ * route does not show (found by an independent review, 2026-11-18). Returns the tiles (from
+ * first) or null within the node budget. */
 /* The estimate a tile left to go, in the same thirds: 7, between a diagonal piece (6) and a straight
  * one (9). At 6 every staircase toward the goal had the same f = g + h, so the search spread over the
  * whole rectangle between the stations and lines the old search found failed (seed 31337, 2026-11-17). */
 H_TILE <- 7;
 
-function PrismaticAI::FindRailPath(from, to, from_end, to_end, avoid = null, from_in = null) {
+function PrismaticAI::FindRailPath(from, to, from_end, to_end, avoid = null, from_in = null, from_straight = false, to_straight = false) {
 	local map_w = AIMap.GetMapSizeX();
 	local open = AIPriorityQueue();
 	local came = {}, cost = {};
@@ -233,6 +238,9 @@ function PrismaticAI::FindRailPath(from, to, from_end, to_end, avoid = null, fro
 		foreach (next in [cur - 1, cur + 1, cur - map_w, cur + map_w]) {
 			if (next == prev) continue;
 			if (avoid != null && avoid.rawin(next)) continue;
+			/* Straight through a throat's own exit tile, and straight into the far one. */
+			if (from_straight && came[cur] == -1 && (next - cur) != in_dir) continue;
+			if (to_straight && next == to && (next - cur) != (to_end - to)) continue;
 			/* A bridge's far head lets the line go on straight only. */
 			if (bridge_dir.rawin(cur) && (next - cur) != in_dir) continue;
 			local step = (next == to) ? 1 : PrismaticAI.RailStepCost(next);
@@ -360,8 +368,10 @@ function PrismaticAI::RailStationToJoin(origin, len) {
  * (`end`) the tile the line search starts from. The bend is a diagonal, never 90 degrees. Without a
  * throat (one platform) `end` is the platform's end and `exit` the tile beyond it.
  *
- * Returns {tile, end, exit, step, platforms, len, built, backs} or null: `built` lists every tile to
- * demolish if the line fails, `backs` the [depot tile, platform tile] pairs behind each platform's
+ * Returns {tile, end, exit, step, platforms, len, platform_rect, throat, backs} or null:
+ * `platform_rect` is this station's own platforms ([corner, opposite corner]), `throat` the plain
+ * track of its throat (RemoveRailStation removes both and nothing else), `backs` the [depot tile,
+ * platform tile] pairs behind each platform's
  * dead end (BuildRailDepotBehind). A company train station already near `origin` gets these
  * platforms (RailStationToJoin) wherever a site fits the station spread; only when none does is a
  * separate station built, with a warning. */
@@ -385,13 +395,12 @@ function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label,
 	tiles.KeepValue(1);
 	tiles.Valuate(PrismaticAI.RectFlat, w, h);
 	tiles.KeepValue(1);
-	if (site == "produce") {
-		tiles.Valuate(AITile.GetCargoProduction, cargo, w, h, 4);
-		tiles.KeepAboveValue(0);
-	} else {
-		tiles.Valuate(AITile.GetCargoAcceptance, cargo, w, h, 4);
-		tiles.KeepAboveValue(7);
-	}
+	/* What the station will catch: the platforms only, never the throat, which is plain track
+	 * (an industry beside the throat but out of the platforms' reach would pass otherwise). */
+	local sw = along_x ? len : platforms, sh = along_x ? platforms : len;
+	local offset = forward ? 0 : throat * step;
+	tiles.Valuate(PrismaticAI.PlatformCoverage, cargo, sw, sh, offset, site == "produce");
+	tiles.KeepAboveValue(site == "produce" ? 0 : 7);
 	local join = PrismaticAI.RailStationToJoin(origin, len);
 	local attempts = [];
 	if (join != null) {
@@ -428,21 +437,32 @@ function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label,
 				AILog.Warning("PrismaticAI: rail station at tile " + t + " refused: " + AIError.GetLastErrorString());
 				continue;
 			}
-			local built = [];
-			for (local p = 0; p < platforms; p++) for (local i = 0; i < len; i++) built.push(t + p * side + i * step);
-			if (platforms > 1 && !PrismaticAI.BuildThroat(g, built)) {
+			/* The platforms are one rectangle; the throat is plain track. They are removed apart: a
+			 * station tile is never demolished, because demolishing one removes every platform of
+			 * the station, a joined line's included (station_cmd.cpp RemoveRailStation). */
+			local corner = t + (platforms - 1) * side + (len - 1) * step;
+			local throat_tiles = [];
+			local rec = {tile = t, platform_rect = [t, corner], throat = throat_tiles, step = step};
+			if (platforms > 1 && !PrismaticAI.BuildThroat(g, throat_tiles)) {
 				AILog.Warning("PrismaticAI: throat of the station at tile " + t + " refused: " + AIError.GetLastErrorString());
-				foreach (x in built) AITile.DemolishTile(x);
+				PrismaticAI.RemoveRailStation(rec, len);
 				continue;
 			}
 			AILog.Info("PrismaticAI: built rail station " + label + " at tile " + t + ", " + platforms + " platform(s) of " + len
 				+ (into == AIStation.STATION_NEW ? "" : ", platforms of " + AIStation.GetName(into)
 					+ (rank == 0 ? " beside its others" : " (apart from its others)")));
-			return {tile = t, end = g.end, exit = g.exit, step = step, platforms = platforms, len = len, built = built, backs = g.backs};
+			return {tile = t, end = g.end, exit = g.exit, step = step, platforms = platforms, len = len,
+				platform_rect = [t, corner], throat = throat_tiles, backs = g.backs};
 		}
 	}
 	AILog.Warning("PrismaticAI: no rail station site " + label);
 	return null;
+}
+
+/* What a terminus whose site starts at `r` catches with its platforms (sw x sh tiles, `offset` from
+ * `r`): the cargo produced into the catchment at a mine, accepted at a town or factory (a valuator). */
+function PrismaticAI::PlatformCoverage(r, cargo, sw, sh, offset, produce) {
+	return produce ? AITile.GetCargoProduction(r + offset, cargo, sw, sh, 4) : AITile.GetCargoAcceptance(r + offset, cargo, sw, sh, 4);
 }
 
 /* The tiles of a terminus whose station corner is `t` (see BuildRailStationAt), with the main
@@ -467,7 +487,7 @@ function PrismaticAI::TerminusGeometry(t, len, platforms, step, side, out) {
 		if (PrismaticAI.RailStepCost(g.exit) < 0) continue;
 		/* The exit must lead on: a station between houses whose exit faces a road junction is a dead
 		 * end the line can never leave (OpenTTD seed 20208, Ganingbury). */
-		if (!PrismaticAI.ExitLeadsOn(g.exit, out)) continue;
+		if (!PrismaticAI.ExitLeadsOn(g.exit, out, platforms > 1)) continue;
 		foreach (row in rows) {
 			local far = forward ? row : row + (len - 1) * step;
 			g.backs.push([far - out, far]);
@@ -479,7 +499,8 @@ function PrismaticAI::TerminusGeometry(t, len, platforms, step, side, out) {
 
 /* Lay a terminus throat (TerminusGeometry): both platforms straight out onto T1m and T1s, a path
  * signal on each facing away from the platforms, the second platform bent onto the main row at M.
- * Every tile laid is added to `built`. Returns false when the game refuses a piece. */
+ * Every tile laid is added to `built` (the throat's own track). Returns false when the game
+ * refuses a piece. */
 function PrismaticAI::BuildThroat(g, built) {
 	local th = g.throat;
 	local pieces = [[th.end_m, th.t1m, th.m], [th.t1m, th.m, th.l0], [th.end_s, th.t1s, th.m2],
@@ -518,7 +539,7 @@ function PrismaticAI::BridgeType(a, b) {
  * tile since the search, ERR_AREA_NOT_CLEAR) is not the end of the line: from the last laid tile the
  * search runs again around the refused one, the last piece is relaid toward the new route, and the
  * rest follows (at most `replans` times). On seed 31337 a 212-tile coal line was dropped this way. */
-function PrismaticAI::BuildRailAlong(path, a_end, b_end, replans = 2) {
+function PrismaticAI::BuildRailAlong(path, a_end, b_end, replans = 2, to_straight = false) {
 	local n = path.len();
 	local corners = 0;
 	for (local i = 0; i < n; i++) {
@@ -559,12 +580,12 @@ function PrismaticAI::BuildRailAlong(path, a_end, b_end, replans = 2) {
 			local from_in = null;
 			if (i >= 3) from_in = PrismaticAI.UnitStep(path[i - 3], path[i - 2]);
 			else if (i == 2) from_in = PrismaticAI.UnitStep(a_end, path[0]);
-			local rest = PrismaticAI.FindRailPath(f, path[n - 1], e, b_end, avoid, from_in);
+			local rest = PrismaticAI.FindRailPath(f, path[n - 1], e, b_end, avoid, from_in, false, to_straight);
 			if (rest == null || rest.len() < 2) return null;
 			/* The piece on f still points at g; it is relaid toward the new route's first step. */
 			AIRail.RemoveRail(e, f, g);
 			AILog.Info("PrismaticAI: re-planned from tile " + f + " around tile " + g + ", " + rest.len() + " tiles to go");
-			local tail = PrismaticAI.BuildRailAlong(rest, e, b_end, replans - 1);
+			local tail = PrismaticAI.BuildRailAlong(rest, e, b_end, replans - 1, to_straight);
 			if (tail == null) return null;
 			local laid = path.slice(0, i - 1);
 			laid.extend(tail);
@@ -644,12 +665,19 @@ function PrismaticAI::BuildRailDepotBeside(path) {
 	return null;
 }
 
-/* Demolishes what a station record built (`st.built`: platforms and throat). A record without it
- * (from before the throat) demolishes its platform tiles: the step along the platform comes from the
+/* Removes what a station record built: its own platforms (AIRail.RemoveRailStationTileRectangle,
+ * never DemolishTile, which would take every platform of a joined station) and its throat. A record
+ * without `platform_rect` (from before the throat) demolishes its platform tiles: the step along the platform comes from the
  * record, since derived from end - tile it was 0 for a station facing the other way and the cleanup
  * after a failed line demolished one tile of three (OpenTTD seed 31337, 2026-11-17). */
 function PrismaticAI::RemoveRailStation(st, len) {
-	if ("built" in st) { foreach (t in st.built) AITile.DemolishTile(t); return; }
+	if ("platform_rect" in st) {
+		/* Only this station's own platforms (keep_rail false: their track goes too), never the
+		 * joined station's others, then the throat's plain track. */
+		AIRail.RemoveRailStationTileRectangle(st.platform_rect[0], st.platform_rect[1], false);
+		foreach (t in st.throat) AITile.DemolishTile(t);
+		return;
+	}
 	local step = ("step" in st) ? st.step : (st.end - st.tile) / max(1, len - 1);
 	for (local i = 0; i < len; i++) AITile.DemolishTile(st.tile + i * step);
 }
@@ -660,14 +688,15 @@ function PrismaticAI::RemoveRailStation(st, len) {
  * sets trains up to trains_max and wagons up to wagons_fit. */
 function PrismaticAI::BuildRailLineAndTrain(sa, sb, len, cargo, wagons, first_flags, label) {
 	AILog.Info("PrismaticAI: survey rail line from tile " + sa.exit + " to tile " + sb.exit);
-	local path = PrismaticAI.FindRailPath(sa.exit, sb.exit, sa.end, sb.end);
+	local throat_a = ("platforms" in sa) && sa.platforms > 1, throat_b = ("platforms" in sb) && sb.platforms > 1;
+	local path = PrismaticAI.FindRailPath(sa.exit, sb.exit, sa.end, sb.end, null, null, throat_a, throat_b);
 	if (path == null) {
 		AILog.Warning("PrismaticAI: no rail path between the stations; removing them");
 		PrismaticAI.RemoveRailStation(sa, len); PrismaticAI.RemoveRailStation(sb, len);
 		return 0;
 	}
 	/* What was actually laid: a re-plan around a refused piece changes the route. */
-	local laid = PrismaticAI.BuildRailAlong(path, sa.end, sb.end);
+	local laid = PrismaticAI.BuildRailAlong(path, sa.end, sb.end, 2, throat_b);
 	if (laid == null) return 0;
 	local broken = PrismaticAI.VerifyRailLine(laid, sa.end, sb.end);
 	if (broken != -1) {
@@ -680,13 +709,11 @@ function PrismaticAI::BuildRailLineAndTrain(sa, sb, len, cargo, wagons, first_fl
 	if (depot == null) depot = PrismaticAI.BuildRailDepotBeside(laid);
 	if (depot == null) { AILog.Warning("PrismaticAI: no rail depot behind a platform or beside the line"); return 0; }
 	local platforms = min(("platforms" in sa) ? sa.platforms : 1, ("platforms" in sb) ? sb.platforms : 1);
-	/* Everything the line owns, so closing it (lines.nut CloseLine) clears it to the last tile. */
-	local built = [];
-	if ("built" in sa) built.extend(sa.built);
-	if ("built" in sb) built.extend(sb.built);
+	/* Everything the line owns (its stations' own platforms and throats, its track, its depot), so
+	 * closing it (lines.nut CloseLine) clears it to the last tile and nothing of another line. */
 	local line = {a = sa.tile, b = sb.tile, depot = depot, cargo = cargo, wagons = wagons, flags = first_flags,
 		label = label, railtype = AIRail.GetCurrentRailType(), restored = 0, len = len, trains_max = platforms,
-		path = laid, built = built, closed = false};
+		path = laid, stations = [sa, sb], closed = false};
 	local train = PrismaticAI.BuildTrain(line);
 	if (train == -1) return 0;
 	RAIL_LINES.push(line);
@@ -725,20 +752,34 @@ function PrismaticAI::BuildTrain(line) {
 	if (!AIVehicle.IsValidVehicle(train)) { AILog.Warning("PrismaticAI: locomotive not bought: " + AIError.GetLastErrorString()); return -1; }
 	local max_len = (("len" in line) ? line.len : 3) * 16;
 	for (local i = 0; line.wagons <= 0 || i < line.wagons; i++) {
-		local w = AIVehicle.BuildVehicle(line.depot, e.wagon);
-		if (!AIVehicle.IsValidVehicle(w)) break;
-		if (AIEngine.GetCargoType(e.wagon) != line.cargo) AIVehicle.RefitVehicle(w, line.cargo);
-		AIVehicle.MoveWagon(w, 0, train, AIVehicle.GetNumWagons(train) - 1);
-		if (AIVehicle.GetLength(train) > max_len) {
-			/* One too many for the platform: a train longer than its platform blocks the throat. */
-			AIVehicle.SellWagon(train, AIVehicle.GetNumWagons(train) - 1);
-			break;
-		}
+		if (!PrismaticAI.AddWagon(train, line.depot, e.wagon, line.cargo, max_len)) break;
+	}
+	/* A train that carries nothing earns nothing: a NewGRF may refuse every wagon or refit. */
+	if (AIVehicle.GetCapacity(train, line.cargo) <= 0) {
+		AILog.Warning("PrismaticAI: no wagon of " + AIEngine.GetName(e.wagon) + " would carry " + AICargo.GetCargoLabel(line.cargo) + " behind " + AIEngine.GetName(e.loco) + "; the locomotive is sold");
+		AIVehicle.SellVehicle(train);
+		return -1;
 	}
 	AIOrder.AppendOrder(train, line.a, line.flags);
 	AIOrder.AppendOrder(train, line.b, AIOrder.OF_NONE);
 	AIVehicle.StartStopVehicle(train);
 	return train;
+}
+
+/* Buy one `wagon` in `depot`, refit it to `cargo` and couple it behind `train`, keeping the train
+ * within `max_len` sixteenths of a tile. A wagon the game will not refit or couple (a NewGRF rule)
+ * is sold again, never left in the depot. Returns true when the train has one more wagon. */
+function PrismaticAI::AddWagon(train, depot, wagon, cargo, max_len) {
+	local w = AIVehicle.BuildVehicle(depot, wagon);
+	if (!AIVehicle.IsValidVehicle(w)) return false;
+	if (AIEngine.GetCargoType(wagon) != cargo && !AIVehicle.RefitVehicle(w, cargo)) { AIVehicle.SellVehicle(w); return false; }
+	if (!AIVehicle.MoveWagon(w, 0, train, AIVehicle.GetNumWagons(train) - 1)) { AIVehicle.SellVehicle(w); return false; }
+	if (AIVehicle.GetLength(train) > max_len) {
+		/* One too many for the platform: a train longer than its platform blocks the throat. */
+		AIVehicle.SellWagon(train, AIVehicle.GetNumWagons(train) - 1);
+		return false;
+	}
+	return true;
 }
 
 /* Platform length and wagons for a line of `dist` tiles carrying `supply` units of `cargo` a month,

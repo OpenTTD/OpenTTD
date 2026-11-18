@@ -14,19 +14,21 @@ test('every page of the panel and the hub is covered by a browser check', () => 
 
 test('a declaration counts only in a file that drives a browser, and only for a page the shell has', () => {
   const pages = [{ app: 'panel', href: '/' }, { app: 'panel', href: '/tools' }, { app: 'panel', href: '/scripts' }];
-  const browser = "import x from 'playwright-core'; chromium.launch({});";
+  const browser = "import x from 'playwright-core'; chromium.launch({}); await page.goto(u);";
   const v = coverage(pages, [
-    declaredBy('a-check', `// e2e-covers: panel /scripts/rail_lib, panel /resource/game/state\n${browser}`),
+    declaredBy('a-check', `// e2e-covers: panel /scripts/rail_lib, panel /resource/game/state, panel /scriptsTYPO\n${browser}`),
     declaredBy('b-check', '// e2e-covers: panel /\ncurl -s http://x/'),
     declaredBy('c-check', `// e2e-covers: panel /nowhere\n${browser}`),
   ]);
   assert.deepEqual(Object.keys(v.covered).sort(), ['panel /scripts', 'panel /tools'], 'sub-pages count for their page');
   assert.deepEqual(v.uncovered, ['panel /']);
-  assert.equal(v.refused.length, 2, 'a curl script and an unknown page are refused');
+  assert.equal(v.refused.length, 3, 'a curl script, an unknown page and a typo past a path boundary are refused');
+  const probe = declaredBy('d-check', "// e2e-covers: panel /\n// playwright-core chromium.launch( page.goto(\nconsole.log('nothing');");
+  assert.equal(probe.browser, false, 'browser calls written only in comments do not count');
 });
 
 test('--run gives each check the instance it covers, and says NOT RUN without a hub', () => {
-  const b = "playwright-core chromium.launch(";
+  const b = "playwright-core chromium.launch( page.goto(";
   const plan = runPlan([declaredBy('p-check', `// e2e-covers: panel /\n${b}`), declaredBy('h-check', `// e2e-covers: hub /viz\n${b}`),
     declaredBy('both-check', `// e2e-covers: panel /ui, hub /docs\n${b}`)], 'http://p', '');
   assert.deepEqual(plan.map((r) => [r.file, r.argv, r.runnable]), [

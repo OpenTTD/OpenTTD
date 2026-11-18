@@ -627,28 +627,34 @@ def check_links(md: MarkdownIt, links: Links, doc: Doc, tokens) -> list[Finding]
 # diagram is Mermaid (rule project.docs-are-derived-and-current): GitHub, the wiki and the site
 # render it, a reader can maximize it, and tools/surfaces/diagrams-check proves it renders.
 ASCII_ART_RE = re.compile(r"[─│┌┐└┘┬┴┼═║╔╗╚╝▶◀▲▼→←↑↓]|\+-{2,}|-{2,}>|<-{2,}|=+>|\|\s{2,}\|")
-# A directory listing (├── name, └── name) is a list of paths, not a diagram: it is told by its
-# branch glyphs, so a lone │ under an arrow drawing does not make the drawing a tree.
-TREE_LINE_RE = re.compile(r"(?:├──|└──)")
-# Fence languages that are code or data, never a drawing.
-CODE_FENCES = {"mermaid", "bash", "sh", "shell", "zsh", "console", "json", "jsonc", "yaml", "yml", "toml",
+# A directory listing is a list of paths, not a diagram: a branch (├── name, └── name) or a
+# continuation (│   ...) at the start of the line, after any number of continuations. A block is a
+# listing when it has a branch and every line drawn in characters is one of these, so `repo/` with
+# a single `└── src/` is a listing and an arrow drawing with a lone │ is not.
+TREE_LINE_RE = re.compile(r"^\s*(?:[│|]\s+)*(?:├──|└──|[│|]\s*$|[│|]\s+\S)")
+TREE_BRANCH_RE = re.compile(r"(?:├──|└──)")
+# Fence languages that are code or data, never a drawing. `console` and `text` are not among them:
+# a box drawn under either label is still a drawing.
+CODE_FENCES = {"mermaid", "bash", "sh", "shell", "zsh", "json", "jsonc", "yaml", "yml", "toml",
                "rust", "cpp", "c", "h", "js", "javascript", "mjs", "ts", "python", "py", "rhai", "squirrel",
                "nut", "html", "css", "sql", "diff", "ini", "cfg", "make", "cmake", "dot", "xml", "go", "elixir"}
 
 
 def check_diagrams(doc: Doc, tokens) -> list[Finding]:
-    """Every fenced block drawn in characters, other than a directory listing, is a finding."""
+    """Every fenced or indented code block drawn in characters, other than a directory listing, is a
+    finding."""
     found = []
     for tok in tokens:
-        if tok.type != "fence":
+        if tok.type not in ("fence", "code_block"):
             continue
-        lang = tok.info.strip().split(" ")[0].lower()
+        lang = tok.info.strip().split(" ")[0].lower() if tok.type == "fence" else ""
         if lang in CODE_FENCES:
             continue
         lines = [l for l in tok.content.splitlines() if l.strip()]
         art = len(ASCII_ART_RE.findall(tok.content))
-        branches = sum(1 for l in lines if TREE_LINE_RE.search(l))
-        if art >= 3 and branches < 2:
+        drawn = [l for l in lines if ASCII_ART_RE.search(l)]
+        listing = any(TREE_BRANCH_RE.search(l) for l in lines) and all(TREE_LINE_RE.match(l) for l in drawn)
+        if art >= 3 and not listing:
             line = (tok.map[0] + 1 if tok.map else 0) + doc.offset
             found.append(Finding("diagram", doc.path, line,
                                  "a diagram drawn in characters: draw it as a ```mermaid block (rule project.docs-are-derived-and-current)"))
