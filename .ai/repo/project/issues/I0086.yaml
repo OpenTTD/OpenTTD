@@ -11,6 +11,10 @@ scope:
   - "tools/research/mcp-rhai/src/invest.rs"
   - "tools/research/mcp-rhai/src/cargo.rs"
   - "tools/research/mcp-rhai/src/hub_algoglyph.rs"
+  - "tools/research/mcp-rhai/src/flow_serve.rs"
+  - "tools/research/mcp-rhai/src/kernel_feed.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-kernel-feed.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-plan.rs"
   - "tools/research/mcp-rhai/src/panel.rs"
   - "research/mcp-control.md"
 non_scope:

@@ -813,6 +813,61 @@ the loan limit to `difficulty.max_loan`. The main page's Plan card draws the DAG
 looks for the AlgoGlyph runner in the newest stacked branch first (`feature/action-plan`, then
 `track-planning`, `flow-cli`, main).
 
+### AlgoGlyph fed from the store: one flow serve, trailing samples (I0086)
+
+**The split (2026-11-18).** AlgoGlyph stays a generic kernel runner. Its `flow serve` takes one JSON
+request per stdin line and answers one line per request. It learns nothing of OpenTTD, ZeroMQ or
+DuckDB. OpenTTD knows the game, so the subscriber lives here. It reads the store through the
+panel's read-only `/api/db/query`, follows the panel's ZeroMQ bus, and builds each kernel's input
+(ADR 0034 point 4). A ZeroMQ input adapter inside AlgoGlyph was rejected for three reasons. It
+would need a game-specific mapping from envelopes to kernel inputs there. It would add a network
+dependency to a repository whose flow rule (`project.typed-flow`) keeps the flow free of network and
+storage. And it would give AlgoGlyph a second reader of the store besides the panel. No AlgoGlyph
+change was needed. The Node `zeromq` recipe under "Subscribing" above remains for any other Node
+consumer.
+
+**One serve per process.** With `MCP_ALGOGLYPH_SERVE=1` every kernel call of a process goes to one
+long-lived `npm run flow -- serve` (`src/flow_serve.rs`). In `mcp-plan` that covers the
+track-planning calls of `--track N`, `transport-investment` and `knapsack-dp` (`cargo.rs:algoglyph`).
+The panel starts `mcp-plan` with its own environment, so a planned bot start is covered too. The
+answer then carries `algoglyph: {runner, pid, calls, fallbacks, gone}`. If the serve cannot start or
+fails, the process falls back to the per-call runner, counts the fallback and names the reason. The
+switch is off by default, so today's answers stay byte for byte the same.
+
+Measured on the live `:8800` game on 2026-11-18, with the machine at a load average of about 82,
+`mcp-plan --limit 40 --params '{"budget":300000}' --track 3` made 7 kernel calls. One call per
+process took 216 s and one serve took 76 s, run back to back. Two runs started at the same moment,
+so both read the same game state, gave identical answers apart from the `algoglyph` key (calls 7,
+fallbacks 0).
+
+**`mcp-kernel-feed`.** This binary holds one serve and a trailing window of the store's `samples`
+(the newest `--window` days per company, 30 by default, of the instance's latest run, seeded by one
+`SELECT` with `QUALIFY row_number()`). The bus's `game.sample` envelopes keep the window current
+and `game.new_world` empties it. It reads requests `{id?, kernel, input?, company?}` on stdin and
+writes one `plan.kernel` event per request on stdout:
+`{kind: "plan.kernel", data: {decision, version, kernel, inputs: {live, stored | fallback,
+kernel_input}, runner, choice}}`. `stored` names the seed query, the row count and how many rows
+came from the store and from the bus.
+
+The `FEEDS` table in `src/kernel_feed.rs` says which kernel takes what from history. Its first row is
+`action-plan`: `cash` and `loan`, whichever the caller left out, come from the company's newest
+stored day instead of the console's `companies` line. The trailing days (minimum and maximum cash,
+net change) travel in the event only, because the kernel refuses keys it does not declare. A kernel
+with no row, `--no-store`, a missing store, or a caller who gave both values gets the input as given,
+and the event says `fallback` with the reason.
+
+```bash
+echo '{"kernel":"action-plan","input":{"actions":[{"id":"r","kind":"repay_loan","amount":50000}],"loan_step":10000}}' \
+  | tools/research/mcp-rhai/target/release/mcp-kernel-feed --panel http://127.0.0.1:8800
+```
+
+**Not fed yet.** The store holds each company's books per day (`samples`) and nothing per line or per
+industry. So `transport-investment`'s demands, from trailing production, and `knapsack-dp`'s values,
+from what each mode really earned, have no history to read. They need the `plan.*` events of I0081
+and a recorded per-line or per-industry fact (a producer, ADR 0034 point 5). `plan.kernel` goes to
+the feeder's stdout and does not reach the panel's bus or store, because that needs a publishing
+route in `panel.rs` (I0081).
+
 ### Steering the plan from the panel
 
 `/world` has the planner's parameters as controls: the budget, the payback horizon in months, and

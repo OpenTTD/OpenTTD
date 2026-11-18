@@ -203,6 +203,9 @@ fn main() {
         if invest_inputs { return Ok(invest::input(&out, &engines, &towns).unwrap_or(serde_json::Value::Null)); }
         if invest_too { out["investment"] = invest::decide(&out, &engines, &towns); }
         out["model"] = serde_json::json!("v4: v3 for passengers, freight pairs from the world graph's industries priced with each cargo's own payment rate and transit periods, and a portfolio chosen by knapsack within the budget");
+        // Which runner answered the kernel calls, only when the one-serve switch is on (I0086), so
+        // the default answer stays as it was.
+        if cargo::flow_serve::wanted() { out["algoglyph"] = cargo::flow_serve::summary(); }
         Ok(out)
     })();
     match out {

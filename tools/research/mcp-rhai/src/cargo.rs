@@ -14,6 +14,10 @@ use serde_json::{json, Value};
 
 use crate::plan::time_factor_for;
 
+/// One long-lived AlgoGlyph `flow serve` per process, behind MCP_ALGOGLYPH_SERVE (I0086).
+#[path = "flow_serve.rs"]
+pub mod flow_serve;
+
 fn num(v: &Value, k: &str) -> f64 { v.get(k).and_then(Value::as_f64).unwrap_or(0.0) }
 
 /// A freight vehicle for `cargo` (by name): the road vehicle with the best capacity x speed, or the
@@ -132,8 +136,17 @@ fn knapsack_builtin(weights: &[usize], values: &[f64], capacity: usize) -> (f64,
 
 /// An AlgoGlyph kernel through its flow CLI (`npm run flow -- kernel <id> -`), when MCP_ALGOGLYPH_DIR
 /// names a checkout of it. Err says why there is no answer: no runner, a failed run, or a refusal.
+/// With `MCP_ALGOGLYPH_SERVE=1` every call of the process goes to one long-lived `flow serve`
+/// (src/flow_serve.rs), and to the per-call runner only if that serve cannot start or fails.
 pub fn algoglyph(kernel: &str, input: &Value) -> Result<Value, String> {
     let dir = std::env::var("MCP_ALGOGLYPH_DIR").map_err(|_| "MCP_ALGOGLYPH_DIR is not set".to_string())?;
+    if flow_serve::wanted() {
+        match flow_serve::kernel(std::path::Path::new(&dir), kernel, input) {
+            Ok(v) if v["ok"] == true => return Ok(v),
+            Ok(v) => return Err(format!("{kernel} refused: {}", v.get("errors").cloned().unwrap_or(v.clone()))),
+            Err(_) => flow_serve::fell_back(),
+        }
+    }
     // The answer goes to a file, not a pipe: the flow CLI ends with process.exit(), which drops what
     // a pipe has not taken yet, so an answer above 64 KiB arrived cut off (2026-11-16).
     let nanos = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |d| d.as_nanos());
