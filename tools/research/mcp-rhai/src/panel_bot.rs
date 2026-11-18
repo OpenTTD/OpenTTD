@@ -467,7 +467,7 @@ fn line_of(c: &Value) -> Value {
 }
 
 /// Settings as a JSON object and as the `start_ai` argument they make.
-fn settings_json(s: &Settings) -> (Value, String) {
+pub fn settings_json(s: &Settings) -> (Value, String) {
     (Value::Object(s.iter().cloned().collect()), s.iter().map(|(k, v)| format!("{k}={}", py_str(Some(v)))).collect::<Vec<_>>().join(","))
 }
 
@@ -731,9 +731,14 @@ pub fn planned_air(g: &Arc<Game>) -> Settings {
 
 /// Plan the bot: ask mcp-plan for its portfolio (pricing the `track` best rail lines on the map when
 /// AlgoGlyph is present), choose the settings from it, and publish both decisions, as sentences
-/// (panel.ai) and as data (plan.portfolio, plan.bot_settings). None without a planner binary.
+/// (panel.ai) and as data (plan.portfolio, plan.bot_settings). None without a planner binary. When
+/// the planner fails (it cannot run, exits non-zero or answers no JSON) both events are still
+/// published, `portfolio.error` and `bot_settings.unplanned` say why, and the settings are empty.
+/// PRISMATIC_PLANNER names another planner binary than the sibling mcp-plan (RESEARCH-ONLY: a
+/// planner under test, or a failing one to prove that a failure is reported).
 pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
-    let exe = crate::panel::sibling("mcp-plan");
+    let exe = std::env::var_os("PRISMATIC_PLANNER").filter(|v| !v.is_empty()).map(PathBuf::from)
+        .unwrap_or_else(|| crate::panel::sibling("mcp-plan"));
     if !exe.exists() {
         return None;
     }
@@ -775,7 +780,12 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
             Ok(v) => Ok(v),
             Err(e) => Err(format!("planner not reachable for the bot: {e}")),
         },
-        Ok(r) => { planner["exit"] = json!(r.code); planner["stderr"] = json!(r.stderr.trim()); Ok(json!({})) }
+        Ok(r) => {
+            planner["exit"] = json!(r.code);
+            planner["stderr"] = json!(r.stderr.trim());
+            Err(format!("planner failed for the bot: exit {}{}", r.code,
+                        r.stderr.trim().lines().last().map(|l| format!(": {l}")).unwrap_or_default()))
+        }
         Err(e) => Err(format!("planner not reachable for the bot: {e}")),
     };
     let out = match out {
@@ -787,9 +797,13 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
             p.portfolio["error"] = json!(e);
             let seq = g.plan("plan.portfolio", portfolio_event(&json!({}), &p, request, planner, &cal));
             // No plan, no settings: the bot starts unplanned, and the run's extra settings are not
-            // applied either (as before I0081).
+            // applied either; the event names them as asked and not applied.
+            let extra = std::env::var("PRISMATIC_BOT_SETTINGS").unwrap_or_default();
             p.bot_settings["unplanned"] = json!(e);
-            let mut data = panel_events::plan("bot.settings", bot_params(""), json!({"portfolio_seq": seq}),
+            if !extra.trim().is_empty() {
+                p.bot_settings["from_run"] = json!({"not_applied": extra, "why": "no plan: the bot starts unplanned"});
+            }
+            let mut data = panel_events::plan("bot.settings", bot_params(&extra), json!({"portfolio_seq": seq}),
                                               &panel_events::live_only("I0087"), p.bot_settings.clone());
             with_calibration(&mut data, &cal);
             g.plan("plan.bot_settings", data);

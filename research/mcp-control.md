@@ -372,8 +372,9 @@ second statement.
 ### Planning decisions as data: plan.* events (I0081)
 
 Each planning decision publishes one `plan.*` event beside its `panel.*` sentence (ADR 0034 point
-3). The sentence stays for the page; the event is what Prismatic, AlgoGlyph, `mcp-duel` and agents
-read, on ZeroMQ (topic prefix `plan`) or in the store:
+3). The sentence stays for the page; the event is what Prismatic, AlgoGlyph and agents can read,
+on ZeroMQ (topic prefix `plan`) or in the store. `mcp-duel` reads its run's `plan.portfolio` and
+`plan.bot_settings` from the store (I0083, below).
 
 The kinds are the `plan.*` rows of the declared table (`GET /api/bus` `kinds`, and the region of the
 knowledge note named above): the bot's portfolio and its settings (every planned bot start), the
@@ -398,11 +399,30 @@ tools/research/mcp-rhai/target/release/mcp-bus-tail --panel $P --topic plan
 ```
 
 `POST /api/bots/planned {ai, start?, track?}` plans the bot as a bot start does and answers the
-settings with both events' choices; `start: true` also starts the AI. `POST /api/bus/publish {kind,
-data}` accepts only the kinds the table marks external (`plan.kernel`, `plan.duel`) and only with
-the four fields; any other kind is refused with 400. `mcp-panel-check` lists the kinds from `GET /api/bus`,
+settings with both events' choices; `start: true` also starts the AI. When the planner fails (it
+cannot run, exits non-zero or answers no JSON) both events are still published, with
+`portfolio.error` and `bot_settings.unplanned`, and the route answers 502 without starting anything;
+the bot start of a stack, by contrast, starts its bot unplanned. The route plans also on a stack run
+with `--no-plan-bot`, which turns off only the bot start's plan. `PRISMATIC_PLANNER` names another
+planner binary than the sibling `mcp-plan` (research-only: a planner under test, or one that fails
+on purpose to prove the failure is reported).
+
+`plan.directive` says whether the contract accepted the directive (`accepted`) and gives each step
+the panel took with its own `state`: `applied`, `pending` (an approval-gated `set_setting` waits for
+the operator, who can still refuse it), `refused` (the game answered an error) or `error` (the call
+failed, so whether the game changed is not known). `outcome` sums them up (`applied`, `pending`,
+`partial`, `failed`, or `refused` for a directive outside the contract). Every step is tried and the
+event is published also when one fails; a failed call answers 502 with the lines so far.
+
+`GET /api/bus` answers its `kinds` also while the bus tap is down: 200, `endpoint` null and `error`
+saying why.
+
+`POST /api/bus/publish {kind, data}` accepts only the kinds the table marks external
+(`plan.kernel`, `plan.duel`) and only with the four fields; any other kind is refused with 400.
+`mcp-panel-check` lists the kinds from `GET /api/bus`,
 plans a bot (`--start-bot AI` also starts it) and finds `plan.portfolio` and `plan.bot_settings` in
-`/api/events`, on ZeroMQ and in the store.
+`/api/events`, on ZeroMQ and in the store. The planned bot passes only with a 200, settings handed
+over and no planner error.
 
 ### The bus on the Majordomus blackboard
 
