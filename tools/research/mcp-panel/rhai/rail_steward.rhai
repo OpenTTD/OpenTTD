@@ -65,11 +65,12 @@ fn waiting_for(line) {
 /// Rounds before a target the owner did not approve is asked again (an hour at the default round).
 const RETRY_ROUNDS = 30;
 
-/// Hand one target to the bot: one gated setting change per value that differs. `done` remembers,
-/// per setting, the value asked, its approval id and the round it was asked in. The same value is
-/// not asked again while its approval is pending, nor within RETRY_ROUNDS after the owner left it
-/// unapproved; a different value is asked at once.
-fn hand_over(bot, t, done, round, pending) {
+/// Hand one target to the bot: one gated setting change per value that differs. Called as a method
+/// on the memory of what was asked (`done.hand_over(...)`), because Rhai passes a map argument by
+/// value and only `this` is the caller's own map: per setting, the value asked, its approval id and
+/// the round it was asked in. The same value is not asked again while its approval is pending, nor
+/// within RETRY_ROUNDS after the owner left it unapproved; a different value is asked at once.
+fn hand_over(bot, t, round, pending) {
     let out = [];
     for what in ["trains", "wagons"] {
         let want = if what == "trains" { t.trains } else { t.wagons };
@@ -78,12 +79,10 @@ fn hand_over(bot, t, done, round, pending) {
         let now = setting_of(bot, name);
         if now == () { out.push(`${name}: the bot declares no such setting (more lines than slots)`); continue; }
         let key = `${bot.id}:${name}`;
-        if now == want { continue; }
-        let asked = done[key];
-        if asked != () && asked.want == want && (pending.contains(asked.id) || round - asked.round < global::RETRY_ROUNDS) { continue; }
+        if !rl::should_ask(this[key], now, want, round, pending, global::RETRY_ROUNDS) { continue; }
         if dry() { out.push(`${name} ${now} -> ${want} (dry run)`); continue; }
         let r = api_botSetting(#{ company: bot.id, name: name, value: want });
-        done[key] = #{ want: want, id: r.approval_id, round: round };
+        this[key] = #{ want: want, id: r.approval_id, round: round };
         out.push(`${name} ${now} -> ${want}: ${r.status ?? r}${if r.approval_id != () { ` #${r.approval_id}` } else { "" }}`);
     }
     out
@@ -119,7 +118,7 @@ loop {
             let pick = rl::choose(items, bot.money - reserve, Fn("kernel"));
             for t in pick.chosen {
                 print(`  ${bot.name} line ${t.slot}: ${t.action}: ${t.why}`);
-                for line in hand_over(bot, t, done, round, pending) { print(`    ${line}`); }
+                for line in done.hand_over(bot, t, round, pending) { print(`    ${line}`); }
                 report.push(`${t.action} line ${t.slot}`);
             }
             if pick.chosen.len() < items.len() { print(`  ${bot.name}: ${items.len() - pick.chosen.len()} more change(s) wait for money (${pick.solver})`); }

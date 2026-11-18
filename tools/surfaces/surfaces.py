@@ -626,7 +626,11 @@ def check_links(md: MarkdownIt, links: Links, doc: Doc, tokens) -> list[Finding]
 # A diagram drawn in characters: box-drawing and arrow glyphs, or ASCII boxes and arrows. A Markdown
 # diagram is Mermaid (rule project.docs-are-derived-and-current): GitHub, the wiki and the site
 # render it, a reader can maximize it, and tools/surfaces/diagrams-check proves it renders.
-ASCII_ART_RE = re.compile(r"[─│┌┐└┘┬┴┼═║╔╗╚╝▶◀▲▼→←↑↓]|\+-{2,}|-{2,}>|<-{2,}|=+>|\|\s{2,}\|")
+ASCII_ART_RE = re.compile(r"[─│┌┐└┘┬┴┼═║╔╗╚╝▶◀▲▼→←↑↓]|\+-{2,}|-{2,}>|<-{2,}|\|\s{2,}\|")
+# What only a drawing has: box-drawing glyphs or an ASCII box corner. An indented code block has no
+# language to say it is code, so it is judged by these alone; `=>`, `-->` and `|  |` are ordinary in
+# code (an arrow function, a comment, a table).
+BOX_RE = re.compile(r"[─│┌┐└┘┬┴┼═║╔╗╚╝]|\+-{2,}")
 # A directory listing is a list of paths, not a diagram: a branch (├── name, └── name) or a
 # continuation (│   ...) at the start of the line, after any number of continuations. A block is a
 # listing when it has a branch and every line drawn in characters is one of these, so `repo/` with
@@ -651,7 +655,7 @@ def check_diagrams(doc: Doc, tokens) -> list[Finding]:
         if lang in CODE_FENCES:
             continue
         lines = [l for l in tok.content.splitlines() if l.strip()]
-        art = len(ASCII_ART_RE.findall(tok.content))
+        art = len((BOX_RE if tok.type == "code_block" else ASCII_ART_RE).findall(tok.content))
         drawn = [l for l in lines if ASCII_ART_RE.search(l)]
         listing = any(TREE_BRANCH_RE.search(l) for l in lines) and all(TREE_LINE_RE.match(l) for l in drawn)
         if art >= 3 and not listing:

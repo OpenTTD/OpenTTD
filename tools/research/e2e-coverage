@@ -28,6 +28,15 @@ export function shellPages(shellPath = path.join(here, 'mcp-panel', 'static', 's
   return Object.entries(APPS).flatMap(([app, a]) => a.pages.map((p) => ({ app, href: p.href, key: p.key, label: p.label })));
 }
 
+/** A script without its comments: block comments, whole-line comments (// and #) and trailing //
+    comments (not a `://` in a URL), so a browser call written in any comment proves nothing. */
+export function stripComments(text) {
+  return text.replace(/\/\*[\s\S]*?\*\//g, '')
+    .split('\n').filter((l) => !/^\s*(\/\/|#)/.test(l))
+    .map((l) => l.replace(/(^|[^:])\/\/.*$/, '$1'))
+    .join('\n');
+}
+
 /** What a check file declares and whether it drives a browser: {file, covers: ["panel /x"], browser}. */
 export function declaredBy(file, text) {
   const covers = [];
@@ -36,7 +45,7 @@ export function declaredBy(file, text) {
   }
   // The code without its comments: a declaration, `chromium.launch(` or `.goto(` written in a comment
   // proves nothing (an independent review fooled the first version with a comment-only probe).
-  const code = text.split('\n').filter((l) => !/^\s*(\/\/|#|\*)/.test(l)).join('\n');
+  const code = stripComments(text);
   const browser = /playwright-core/.test(code) && /chromium\.launch\(/.test(code) && /\.goto\(/.test(code);
   return { file, covers, browser };
 }

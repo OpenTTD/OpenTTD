@@ -193,9 +193,9 @@ fn target(line, waiting, p) {
 }
 
 /// What a target costs and is expected to bring in a year, for choose(): #{cost, gain}.
-/// - Cost is what the change asks for now. A wagon is priced at the consist's own wagons:
-///   (consist_value - value) / wagons, both depreciated values from openttd://vehicles, else the
-///   cheapest wagon the engines list sells on the same rails. Lengthening adds that to every train
+/// - Cost is what the change asks for now. A wagon is priced at the cheapest wagon the engines list
+///   sells on the locomotive's rails, or at the line's own wagons ((consist_value - value) / wagons)
+///   when they are worth more. Lengthening adds that to every train
 ///   of the line. A new train is the locomotive's price now plus its wagons.
 /// - Gain is the line's own earnings per unit of capacity times the capacity added, so it is
 ///   derived from what the line has done, never assumed.
@@ -207,19 +207,22 @@ fn value(line, t, engines) {
     let loco = (); 
     for e in engines { if e.id == train.engine_id { loco = e; } }
     let loco_price = if loco == () { 0 } else { loco.price };
-    let wagon_price = 0;
-    if s.wagons > 0 && train.consist_value != () && train.consist_value > train.value {
-        wagon_price = (train.consist_value - train.value) / s.wagons;
-    }
-    if wagon_price <= 0 {
-        for e in engines {
-            if e.type == "rail" && e.wagon == true && loco != () {
-                let same = false;
-                for rt in e.railtypes ?? [] { if (loco.railtypes ?? []).contains(rt) { same = true; } }
-                if same && (wagon_price <= 0 || e.price < wagon_price) { wagon_price = e.price; }
-            }
+    // A wagon at what one costs new: the cheapest wagon on the locomotive's rails (the engines
+    // list's price now), or what the line's own wagons are worth when that is more (consist_value
+    // less the front vehicle's value, depreciated, so never below the new price of the cheapest).
+    let new_wagon = 0;
+    for e in engines {
+        if e.type == "rail" && e.wagon == true && loco != () {
+            let same = false;
+            for rt in e.railtypes ?? [] { if (loco.railtypes ?? []).contains(rt) { same = true; } }
+            if same && (new_wagon <= 0 || e.price < new_wagon) { new_wagon = e.price; }
         }
     }
+    let own_wagon = 0;
+    if s.wagons > 0 && train.consist_value != () && train.consist_value > train.value {
+        own_wagon = (train.consist_value - train.value) / s.wagons;
+    }
+    let wagon_price = new_wagon.max(own_wagon);
     let per_unit = if s.capacity > 0 { (s.profit_last.max(0) / s.trains.max(1)) / s.capacity } else { 0 };
     if t.action == "lengthen" {
         let add = t.wagons - s.wagons;
@@ -260,6 +263,16 @@ fn choose(items, budget, solve) {
     let left = budget;
     for it in paid { if it.value.cost <= left { chosen.push(it.target); left -= it.value.cost; } }
     #{ chosen: chosen, solver: "greedy gain per cost" }
+}
+
+/// Whether a target is asked for (again): never when it is already the setting's value; always
+/// for a value not asked before; and for the value asked last only once its approval is no longer
+/// pending and `retry_rounds` rounds have passed (the owner left it unapproved). `asked` is
+/// #{want, id, round} or ().
+fn should_ask(asked, now, want, round, pending, retry_rounds) {
+    if now == want { return false; }
+    if asked == () || asked.want != want { return true; }
+    !pending.contains(asked.id) && round - asked.round >= retry_rounds
 }
 
 /// Locomotive renewals for `company`: for each locomotive type its trains run, the fastest buildable

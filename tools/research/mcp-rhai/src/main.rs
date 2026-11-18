@@ -636,8 +636,35 @@ mod tests {
             let l2 = rl::lines_of(0, byid, [], stations, 64);
             [lengthen.cost, add.cost, fallback.cost, l2.len(), l2[0].a, l2[0].b]
         "#);
-        assert_eq!(v, vec!["1600", "7200", "500", "1", "2", "1"],
-                   "2 wagons x 400 x 2 trains; 6000 + 3 x 400; no consist_value: the cheapest wagon on the same rails (500); st_a/st_b win over tiles");
+        assert_eq!(v, vec!["2000", "7500", "500", "1", "2", "1"],
+                   "a wagon at the cheapest new one on the same rails (500, more than the line's own depreciated 400): 2 x 500 x 2 trains; 6000 + 3 x 500; st_a/st_b win over tiles");
+    }
+
+    /// The steward asks for a target once, not again while its approval is pending, again after
+    /// RETRY rounds without approval, and at once for a different value.
+    #[test]
+    fn rail_targets_are_asked_once_and_retried_only_after_a_refusal() {
+        let v = rail(r#"
+            let asked = #{ want: 2, id: 7, round: 10 };
+            [rl::should_ask((), 1, 2, 11, [], 30), rl::should_ask(asked, 1, 2, 12, [7], 30),
+             rl::should_ask(asked, 1, 2, 30, [], 30), rl::should_ask(asked, 1, 2, 40, [], 30),
+             rl::should_ask(asked, 1, 3, 12, [7], 30), rl::should_ask(asked, 2, 2, 99, [], 30)]
+        "#);
+        assert_eq!(v, vec!["true", "false", "false", "true", "true", "false"]);
+    }
+
+    /// The steward calls rail_lib from inside its own functions (hand_over) and keeps its memory
+    /// through `this`: both work in the engine the scripts run in.
+    #[test]
+    fn a_script_function_reaches_an_imported_library_and_keeps_its_memory_through_this() {
+        let out: rhai::Array = lib_engine().eval(r#"
+            import "rail_lib" as rl;
+            fn remember(key, want) { let ask = rl::should_ask(this[key], 0, want, 1, [], 30); if ask { this[key] = #{ want: want, id: 1, round: 1 }; } ask }
+            let done = #{};
+            [done.remember("a", 2), done.remember("a", 2), done.len()]
+        "#).unwrap();
+        let v: Vec<String> = out.iter().map(|x| x.to_string()).collect();
+        assert_eq!(v, vec!["true", "false", "1"]);
     }
 
     /// The monitor's report: crashed and lost first, then a line without a train, then the bot's rail

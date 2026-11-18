@@ -218,6 +218,26 @@ so on.
     (the run on port 8871).
   - The duel record keeps a selection of the bot's log, not the reconciliation lines: the evidence
     is the game state read during the run.
+- **Closing a line, live**: an 8-month duel on seed 4242 with `--bot-settings line1_trains=0`
+  (`research/results/duel-20261118T090800-seed4242.md`; the full log from the panel's DuckDB
+  store).
+  - Line 1 was built on 1950-02-04.
+  - On 1950-03-13 its train went to the depot to be sold.
+  - On 1950-05-01 the line was closed with 233 tiles cleared. Its record then said
+    `state=closed` with both station ids gone (`st_a=-1`).
+  - The company's other lines kept running.
+  - The company value of 1 is the point of the test, not a result: the line was closed on
+    purpose.
+- **An independent review in two passes** by Codex, read-only over the branch (Gemini's CLI is
+  refused for this account, and no valid OpenAI key or local model was available).
+  - The first pass found 14 defects, among them that closing a line demolished joined platforms
+    and crossing roads, and that a corner beyond a throat was a 90-degree turn on the second
+    platform's route.
+  - The second pass confirmed those fixes and found 6 gaps: a re-plan past a throat, wagon
+    prices, the steward re-asking pending targets (Rhai passes maps by value), comment-only
+    browser checks, shared temporary files and indented code taken for a diagram.
+  - Every finding was checked against the code and fixed (commits a837d92, 070a021 and the
+    second-pass fix).
 - **`cargo test` in `tools/research/mcp-rhai`.** The `rail_*` tests run `rail_lib.rhai` on
   fixtures: records, line assembly, every target, the choice within a budget, renewals, and the
   monitor's ranking and digest. The `panel_scripts` tests cover names, docs, imports, the parse

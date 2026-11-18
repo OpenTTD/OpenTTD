@@ -49,6 +49,9 @@ class DiagramsAreMermaid(unittest.TestCase):
         self.assertEqual(len(self.findings("```console\n+-----+    +-----+\n|  a  | -->|  b  |\n+-----+    +-----+\n```\n")), 1)
         self.assertEqual(len(self.findings("Text.\n\n    +-----+    +-----+\n    |  a  | -->|  b  |\n    +-----+    +-----+\n")), 1)
 
+    def test_indented_code_is_judged_by_boxes_only(self):
+        self.assertEqual(self.findings("Text.\n\n    const f = (a) => a;\n    // a --> b --> c\n    if (x || y) { g(); }\n"), [])
+
     def test_mermaid_code_and_trees_are_not(self):
         body = ("```mermaid\nflowchart LR\n  a --> b --> c\n```\n\n"
                 "```bash\necho a | grep b --> c --> d\n```\n\n"

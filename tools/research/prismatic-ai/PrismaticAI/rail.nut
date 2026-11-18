@@ -539,7 +539,7 @@ function PrismaticAI::BridgeType(a, b) {
  * tile since the search, ERR_AREA_NOT_CLEAR) is not the end of the line: from the last laid tile the
  * search runs again around the refused one, the last piece is relaid toward the new route, and the
  * rest follows (at most `replans` times). On seed 31337 a 212-tile coal line was dropped this way. */
-function PrismaticAI::BuildRailAlong(path, a_end, b_end, replans = 2, to_straight = false) {
+function PrismaticAI::BuildRailAlong(path, a_end, b_end, replans = 2, to_straight = false, from_straight = false) {
 	local n = path.len();
 	local corners = 0;
 	for (local i = 0; i < n; i++) {
@@ -580,12 +580,13 @@ function PrismaticAI::BuildRailAlong(path, a_end, b_end, replans = 2, to_straigh
 			local from_in = null;
 			if (i >= 3) from_in = PrismaticAI.UnitStep(path[i - 3], path[i - 2]);
 			else if (i == 2) from_in = PrismaticAI.UnitStep(a_end, path[0]);
-			local rest = PrismaticAI.FindRailPath(f, path[n - 1], e, b_end, avoid, from_in, false, to_straight);
+			/* Re-planning from the throat's own exit tile (f is path[0]) keeps it straight too. */
+			local rest = PrismaticAI.FindRailPath(f, path[n - 1], e, b_end, avoid, from_in, from_straight && i == 1, to_straight);
 			if (rest == null || rest.len() < 2) return null;
 			/* The piece on f still points at g; it is relaid toward the new route's first step. */
 			AIRail.RemoveRail(e, f, g);
 			AILog.Info("PrismaticAI: re-planned from tile " + f + " around tile " + g + ", " + rest.len() + " tiles to go");
-			local tail = PrismaticAI.BuildRailAlong(rest, e, b_end, replans - 1, to_straight);
+			local tail = PrismaticAI.BuildRailAlong(rest, e, b_end, replans - 1, to_straight, from_straight && i == 1);
 			if (tail == null) return null;
 			local laid = path.slice(0, i - 1);
 			laid.extend(tail);
@@ -696,7 +697,7 @@ function PrismaticAI::BuildRailLineAndTrain(sa, sb, len, cargo, wagons, first_fl
 		return 0;
 	}
 	/* What was actually laid: a re-plan around a refused piece changes the route. */
-	local laid = PrismaticAI.BuildRailAlong(path, sa.end, sb.end, 2, throat_b);
+	local laid = PrismaticAI.BuildRailAlong(path, sa.end, sb.end, 2, throat_b, throat_a);
 	if (laid == null) return 0;
 	local broken = PrismaticAI.VerifyRailLine(laid, sa.end, sb.end);
 	if (broken != -1) {

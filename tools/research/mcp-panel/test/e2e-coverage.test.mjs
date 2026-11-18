@@ -3,7 +3,7 @@
 // declares it (`// e2e-covers:`); tools/research/e2e-coverage is the enforcer, run here and by the gate.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { shellPages, checks, coverage, declaredBy, runPlan } from '../../e2e-coverage';
+import { shellPages, checks, coverage, declaredBy, runPlan, stripComments } from '../../e2e-coverage';
 
 test('every page of the panel and the hub is covered by a browser check', () => {
   const v = coverage(shellPages(), checks());
@@ -35,4 +35,10 @@ test('--run gives each check the instance it covers, and says NOT RUN without a 
     ['p-check', ['http://p'], true], ['h-check', [''], false], ['both-check', ['http://p'], true]]);
   assert.deepEqual(runPlan([declaredBy('both-check', `// e2e-covers: panel /ui, hub /docs\n${b}`)], 'http://p', 'http://h')[0].argv,
     ['http://p', '--hub', 'http://h']);
+});
+
+test('browser calls in block or trailing comments do not count, a URL in code does', () => {
+  assert.equal(declaredBy('x', "// e2e-covers: panel /\n/* playwright-core chromium.launch( page.goto( */\nrun();").browser, false);
+  assert.equal(declaredBy('y', "// e2e-covers: panel /\nrun(); // playwright-core chromium.launch( page.goto(").browser, false);
+  assert.match(stripComments("await page.goto('http://127.0.0.1:1/x'); // note"), /http:\/\/127\.0\.0\.1:1\/x/);
 });

@@ -351,7 +351,9 @@ pub fn h_script_save(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     if !err.is_null() { return Ok((422, json!({"saved": false, "error": err}))); }
     let p = path_of(&rhai_host::rhai_dir(), &name)?;
     // Atomically: a watcher or a reader never sees half a file (write beside it, then rename).
-    let tmp = p.with_extension(format!("rhai.{}.tmp", std::process::id()));
+    // One name per save: two saves at once (two tabs) must not share a temporary file.
+    static SAVES: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    let tmp = p.with_extension(format!("rhai.{}.{}.tmp", std::process::id(), SAVES.fetch_add(1, Ordering::SeqCst)));
     std::fs::write(&tmp, &text).and_then(|_| std::fs::rename(&tmp, &p)).map_err(|e| { let _ = std::fs::remove_file(&tmp); format!("{}: {e}", p.display()) })?;
     g.event("rhai", &format!("script {name} saved ({} bytes)", text.len()));
     Ok((200, json!({"saved": true, "name": name, "modified": secs(modified(&p)), "error": Value::Null})))
