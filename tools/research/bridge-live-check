@@ -30,7 +30,7 @@
 #   ADMIN_PORT      server admin network port   (default: 13977)
 #   SERVER_PORT     server game port            (default: 13979)
 #   BRIDGE_PORT     bridge HTTP port            (default: 18730)
-#   VEHICLE_TIMEOUT seconds to wait for vehicles>0 (default: 180)
+#   VEHICLE_TIMEOUT seconds to wait for vehicles>0 (default: 240)
 #   OUT_DIR         artifact directory (default: a timestamped dir under $TMPDIR)
 #
 set -euo pipefail
@@ -44,7 +44,7 @@ for arg in "$@"; do
 	case "$arg" in
 		--keep) KEEP=1 ;;
 		-h|--help)
-			sed -n '2,36p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+			sed -n '2,/^[^#]/s/^# \{0,1\}//p' "${BASH_SOURCE[0]}"
 			exit 0 ;;
 		*) echo "bridge-live-check: unknown argument: $arg" >&2; exit 2 ;;
 	esac

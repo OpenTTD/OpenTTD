@@ -356,13 +356,13 @@ and that is the owner's call (knowledge `auto-approve-is-the-owners-switch`).
 ## Rhai (`tools/research/mcp-rhai`)
 
 `cargo build --release` in `tools/research/mcp-rhai`, then
-`mcp-rhai [--panel URL] (<file.rhai> | -e '<script>')`, or `/rhai ...` in the developer console.
+`mcp-rhai [--panel URL] [--hub URL] (<file.rhai> | -e '<script>')`, or `/rhai ...` in the developer console.
 
 - Built-in: `rpc`, `read`, `overview`, `status`, `console`, `pause`, `approve`, `auto_approve`,
   `events`, `sleep`, `to_json`, `tools`, `commands`, `help`.
 - Derived at start-up, never listed by hand: one function per MCP tool in `tools/list` (dots
   become underscores: `openttd_game_set_pause(#{pause: true})`), and one per OpenTTD console
-  command in `list_cmds` (`con_companies()`, `con_newgame("42")`; 83 today), and one per operation
+  command in `list_cmds` (`con_companies()`, `con_newgame("42")`; `list_cmds` counts them), and one per operation
   of the panel's OpenAPI document (`api_<operationId>`: `api_bots()`, `api_botStart(#{...})`,
   `api_tool_openttd_game_set_pause(#{pause: true})`). A tool, console command or panel route added
   to the game is a Rhai function the next time a script starts.
@@ -550,7 +550,8 @@ station connects at both ends of its axis, so a train leaves the depot straight 
 preferred, and `depot` is null only when no site nearby has one. On the main stack all 30 sites of
 a plan had one.
 
-`tools/research/mcp-duel [--months 24] [--seed N] [--opponent AI]` is a duel in one game: the
+`tools/research/mcp-duel [--months 24] [--seed N] [--label text] [--opponent AI] [--bot-settings k=v,...]`
+is a duel in one game: the
 planned bot and an opponent compete for the same towns and industries on one map, and the higher
 company value wins. The opponent defaults to the same bot without a plan, which builds buses only.
 `--opponent` names any installed AI, such as AdmiralAI or SimpleAI from BaNaNaS. The panel's
@@ -1017,17 +1018,20 @@ derives OpenTTD's public API from the sources (the `Commands` enum, the register
 the Script API static functions) and checks what the running game exposes through MCP and OpenAPI.
 Rule `project.public-api-is-exposed` requires 100% in every dimension. On 2026-11-17: commands
 146/146, Script API 630/630 (`openttd.api.Script<Class>.<Function>`, derived from the build's own
-registration), console 87/90. The surface, how the Script API is counted and the live run are in
+registration), console 87/87 reachable with 3 gated by the build (`resettile` without `_DEBUG`;
+`reload_newgrfs` and `newgrf_profile` until `newgrf_developer_tools` is on). The surface, how the Script API is counted and the live run are in
 [`mcp-api.md`](mcp-api.md) (issue I0036).
 
 ## Limits
 
-- The only game-state change MCP offers is `openttd.game.set_pause`. Everything else a script
-  does to the game goes through the server console (`newgame`, `start_ai`, ...), not MCP.
-  Typed actions derived from the command table are planned on the C++ side.
-- `openttd://companies` returns an empty `name` and no value; `ttd::companies()` fills them from
-  the console's `companies` output.
-- The verdict of an executed pause is taken on the same tick it was posted, so a network server
-  answers `EXECUTED_UNVERIFIED`; `ttd::set_pause` checks the effect itself.
+- Every game-state change MCP offers is approval-gated: `openttd.game.set_pause`, one
+  `openttd.cmd.<Name>` per game command whose parameters convert from JSON, `openttd.ai.*` and
+  `openttd.api.*` with `execute: true` ([`prismatic-mcp/16-decision-contract.md`](prismatic-mcp/16-decision-contract.md)).
+  What is not a game command, such as `newgame`, still goes through the server console.
+- `openttd://companies` carries the displayed `name` and `company_value`; `ttd::companies()`
+  still also reads the console's `companies` output for the name and the value.
+- The verdict of an executed decision is taken after its command has run and is read with
+  `openttd.decision.get`. An `openttd.api.*` call executed on a network server is posted with no
+  callback and answers `EXECUTED_UNVERIFIED`; `ttd::set_pause` checks the effect itself.
 - The panel's console output is the server log since the command was sent, so concurrent
   activity can interleave.

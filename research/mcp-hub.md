@@ -186,7 +186,10 @@ bot and the human-motion player to the same rule.
   files, so whoever reaches the port reaches every instance. Keep it on 127.0.0.1.
 - It calls what a person asks for, including mutating operations; the approval flow of each panel
   (ADR 0008) and the arming switch of interface input (ADR 0014) still apply behind it.
-- Events come from panels only; a bare MCP server has no event bus to fan in.
+- A panel's events are its own bus. A bare MCP server has no bus, so its events are only what two
+  successive reads of `openttd://game/state` show (the Events row above) (`derive_state_events` in
+  `tools/research/mcp-rhai/src/hub.rs`, each marked `derived_from`): a change between two reads
+  is seen, anything that changed and changed back between them is not.
 - The page is checked in a real browser by `tools/research/mcp-hub-page-check` (headless installed
   Chrome through playwright-core); the World view by `tools/research/mcp-viz-check`.
 

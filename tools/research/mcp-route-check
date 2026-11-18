@@ -14,6 +14,10 @@
 # Usage: tools/research/mcp-route-check [panel-url]   (default http://127.0.0.1:8800)
 # Exit: 0 every exercised route passed, 1 a route failed, 2 the panel is not reachable.
 set -euo pipefail
+case "${1:-}" in
+  -h|--help) sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0"; exit 0 ;;
+  -*) echo "mcp-route-check: unknown option $1 (usage: mcp-route-check [panel-url])" >&2; exit 2 ;;
+esac
 URL="${1:-http://127.0.0.1:8800}"
 curl -fs --max-time 5 "$URL/api/status" >/dev/null || { echo "mcp-route-check: no panel at $URL" >&2; exit 2; }
 exec python3 -I - "$URL" <<'PY'

@@ -8,7 +8,13 @@
 set -euo pipefail
 
 PANEL="http://127.0.0.1:8800"
-[[ "${1:-}" == "--panel" ]] && PANEL="${2:?--panel needs a URL}"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --panel) PANEL="${2:?--panel needs a URL}"; shift 2 ;;
+    -h|--help) sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0"; exit 0 ;;
+    *) echo "mcp-panel-check: unknown argument $1 (usage: mcp-panel-check [--panel URL])" >&2; exit 2 ;;
+  esac
+done
 for tool in python3 curl; do command -v "$tool" >/dev/null || { echo "mcp-panel-check: needs $tool" >&2; exit 3; }; done
 curl -fs "$PANEL/api/status" >/dev/null || { echo "mcp-panel-check: no panel at $PANEL" >&2; exit 3; }
 

@@ -32,6 +32,21 @@ fn arg(args: &[String], name: &str) -> Option<String> {
     args.iter().position(|a| a == name).and_then(|i| args.get(i + 1).cloned())
 }
 
+/// The first flag in `args` that `known` does not list (values after a valued flag are skipped).
+fn unknown_flag<'a>(args: &'a [String], known: &[&str], valued: &[&str]) -> Option<&'a str> {
+    let mut skip = false;
+    for a in args {
+        if std::mem::take(&mut skip) {
+            continue;
+        }
+        if a.starts_with("--") && !known.contains(&a.as_str()) {
+            return Some(a);
+        }
+        skip = valued.contains(&a.as_str());
+    }
+    None
+}
+
 fn default_registry() -> PathBuf {
     std::env::var_os("PRISMATIC_MCP_REGISTRY").map(PathBuf::from).unwrap_or_else(|| {
         PathBuf::from(std::env::var("HOME").unwrap_or_default()).join(".local/state/prismatic-mcp/instances")
@@ -268,6 +283,26 @@ fn serve(args: &[String]) -> i32 {
 
 fn main() {
     let args: Vec<String> = std::env::args().skip(1).collect();
+    // A typo must not start a server that runs forever: every flag is one the command reads.
+    let (cmd, rest) = match args.first().map(String::as_str) {
+        Some(c @ ("check" | "audit" | "intent-check" | "serve")) => (c, &args[1..]),
+        Some(c) if !c.starts_with('-') => {
+            eprintln!("mcp-hub: unknown command '{c}' (check, audit, intent-check, serve; -h for usage)");
+            std::process::exit(2);
+        }
+        _ => ("serve", &args[..]),
+    };
+    let (known, valued): (&[&str], &[&str]) = match cmd {
+        "check" => (&["--hub", "--event-wait"], &["--hub", "--event-wait"]),
+        "audit" => (&["--hub", "--json"], &["--hub"]),
+        "intent-check" => (&["--hub"], &["--hub"]),
+        _ => (&["--port", "--panel", "--registry", "--static", "--audit-every", "--help"],
+              &["--port", "--panel", "--registry", "--static", "--audit-every"]),
+    };
+    if let Some(f) = unknown_flag(rest, known, valued) {
+        eprintln!("mcp-hub {cmd}: unknown option {f} (-h for usage)");
+        std::process::exit(2);
+    }
     let code = match args.first().map(String::as_str) {
         Some("check") => check(&args[1..]),
         Some("audit") => audit_cmd(&args[1..]),

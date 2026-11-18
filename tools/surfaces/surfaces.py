@@ -49,10 +49,12 @@ GENERATED_ROOT = "target/web"  # the root Majordomus discovers surface.json decl
 
 DEFAULTS = {
     "sources": {"include": ["**/*.md"], "exclude": []},
-    "check": {"exclude": []},
+    "check": {"exclude": [], "front_matter_exclude": []},
+    "flags": {"exclude": []},
     "site": {"out": f"{GENERATED_ROOT}/site", "mount": "/site"},
     "wiki": {"out": f"{GENERATED_ROOT}/wiki", "mount": "/wiki"},
     "regions": {"report": f"{GENERATED_ROOT}/markdown"},
+    "facts": {"items": []},
 }
 
 REGION_RE = re.compile(
@@ -202,7 +204,10 @@ def load_config(root: Path) -> dict:
 # --------------------------------------------------------------------------- documents
 
 
-def split_front_matter(text: str) -> tuple[dict | None, str, int]:
+FRONT_ERRORS: dict[str, str] = {}  # path -> why its front matter did not parse (a check finding)
+
+
+def split_front_matter(text: str, path: str = "") -> tuple[dict | None, str, int]:
     """Return (front matter, body, number of lines the front matter took)."""
     for fence, loader in (("---", yaml.safe_load), ("+++", tomllib.loads)):
         if text.startswith(fence + "\n"):
@@ -211,7 +216,9 @@ def split_front_matter(text: str) -> tuple[dict | None, str, int]:
                 raw = text[len(fence) + 1 : len(fence) + end.start()]
                 try:
                     data = loader(raw)
-                except Exception:  # noqa: BLE001 - malformed front matter is just text
+                except Exception as err:  # noqa: BLE001 - malformed front matter is text, and a finding
+                    if path:
+                        FRONT_ERRORS[path] = " ".join(str(err).split())[:160]
                     return None, text, 0
                 body = text[len(fence) + end.end() :]
                 if isinstance(data, dict):
@@ -261,9 +268,13 @@ class Doc:
         return self.text.count("\n") + 1
 
 
+H1_HTML_RE = re.compile(r"<h1\b[^>]*>(.*?)</h1>", re.I | re.S)
+
+
 def first_heading_and_paragraph(body: str) -> tuple[str, str]:
     title, para, in_fence, buf = "", "", False, []
-    for line in body.splitlines():
+    lines = body.splitlines()
+    for n, line in enumerate(lines):
         s = line.strip()
         if s.startswith(("```", "~~~")):
             in_fence = not in_fence
@@ -274,6 +285,14 @@ def first_heading_and_paragraph(body: str) -> tuple[str, str]:
             continue
         if not title and s.startswith("# "):
             title = plain(s[2:])
+            continue
+        if not title and (m := H1_HTML_RE.search(s)):
+            title = plain(html.unescape(re.sub(r"<[^>]+>", "", m.group(1))))
+            continue
+        if not title and not buf and n + 1 < len(lines) and re.fullmatch(r"=+\s*", lines[n + 1]) and s:
+            title = plain(s)
+            continue
+        if re.fullmatch(r"=+", s):
             continue
         if s.startswith("#"):
             if buf:
@@ -316,11 +335,11 @@ def load_docs(repo: Repo, cfg: dict) -> dict[str, Doc]:
         if not file.is_file():
             continue
         text = file.read_text(encoding="utf-8", errors="replace")
-        fm, body, offset = split_front_matter(text)
+        fm, body, offset = split_front_matter(text, path)
         doc = Doc(path=path, text=text, fm=fm, body=body, offset=offset)
         heading, para = first_heading_and_paragraph(body)
         fm = fm or {}
-        doc.title = str(fm.get("title") or heading or posixpath.basename(path)[:-3])
+        doc.title = plain(str(fm.get("title") or "")) or heading or posixpath.basename(path)[:-3]
         doc.summary = plain(
             str(fm.get("headline") or fm.get("description") or fm.get("statement") or para)
         )
@@ -401,8 +420,11 @@ def load_layer(repo: Repo) -> Layer:
         )
 
     def front(path: str) -> dict:
-        fm, _, _ = split_front_matter((repo.root / path).read_text(encoding="utf-8"))
-        return {**(fm or {}), "path": path}
+        fm, body, _ = split_front_matter((repo.root / path).read_text(encoding="utf-8"), path)
+        rec = {**(fm or {}), "path": path}
+        rec.setdefault("id", posixpath.basename(path)[:-3])
+        rec.setdefault("title", first_heading_and_paragraph(body)[0] or rec["id"])
+        return rec
 
     layer.features = sorted(
         (front(p) for p in files("features", ".md")), key=lambda f: (f.get("weight", 999), f["path"])
@@ -562,6 +584,31 @@ def walk_links(tokens):
                 yield child, "src", line
             elif child.type == "html_inline":
                 yield child, None, line
+
+
+def link_graph(links: Links, docs: dict[str, Doc]) -> dict[str, set[str]]:
+    """For every document, the published documents its links lead to (images and itself excluded)."""
+    md, out = markdown(), {}
+    for path, doc in docs.items():
+        targets = set()
+        for tok, attr, _ in walk_links(collect_slugs(md, doc)):
+            if attr == "src":
+                continue
+            hrefs = [tok.attrGet(attr)] if attr else [m[2] for m in HTML_ATTR_RE.findall(tok.content)]
+            for href in hrefs:
+                target, _, problem = links.target(doc, href or "")
+                if not problem and target in docs and target != path:
+                    targets.add(target)
+        out[path] = targets
+    return out
+
+
+def backlinks(graph: dict[str, set[str]]) -> dict[str, set[str]]:
+    back: dict[str, set[str]] = {p: set() for p in graph}
+    for src, targets in graph.items():
+        for t in targets:
+            back.setdefault(t, set()).add(src)
+    return back
 
 
 def check_links(md: MarkdownIt, links: Links, doc: Doc, tokens) -> list[Finding]:
@@ -735,6 +782,43 @@ class Regions:
             ])
         return table(["Milestone", "Issues done", "Open issues"], rows)
 
+    # A fact is a number counted from the tracked files on every sync, never typed. surfaces.toml
+    # declares what to count (the one choice data cannot make); the region shows how it was counted.
+    def fact_value(self, item: dict) -> tuple[int, str]:
+        tracked = sorted(self.repo.tracked)
+        if "matches" in item:
+            pattern, glob = item["matches"], item.get("in", "**")
+            rx = re.compile(pattern, re.M)
+            n = sum(len(rx.findall((self.repo.root / f).read_text(errors="replace")))
+                    for f in tracked if matches(f, [glob]) and (self.repo.root / f).is_file())
+            return n, f"`{pattern}` in `{glob}`"
+        if "files" in item:
+            glob = item["files"]
+            return sum(1 for f in tracked if matches(f, [glob])), f"tracked files `{glob}`"
+        if "docs" in item:
+            prefix = item["docs"].strip("/")
+            n = sum(1 for d in self.docs.values() if not prefix or d.path.startswith(prefix + "/"))
+            return n, f"published documents under `{prefix or '/'}`"
+        raise ValueError(f"fact {item.get('id', '?')}: needs matches, files or docs")
+
+    def gen_facts(self, args: dict, doc: Doc) -> str:
+        items = [i for i in load_config(self.repo.root)["facts"]["items"]
+                 if not args.get("group") or i.get("group") == args["group"]]
+        rows = []
+        for item in items:
+            n, how = self.fact_value(item)
+            label = item["label"]
+            if item.get("link"):
+                label = f"[{label}]({rel_md(doc, item['link'])})"
+            rows.append((n, label, how, item))
+        if args.get("as") == "pie":
+            lines = ["```mermaid", f"pie showData title {args.get('title', 'Counted from the sources')}"]
+            lines += [f'    "{plain(i.get("short", i["label"]))}" : {n}' for n, _, _, i in rows]
+            return "\n".join(lines + ["```"])
+        if args.get("as") == "line":
+            return " · ".join(f"**{n:,}** {label}" for n, label, _, _ in rows)
+        return table(["Count", "What", "Counted from"], [[f"**{n:,}**", label, how] for n, label, how, _ in rows])
+
     def gen_surfaces(self, args: dict, doc: Doc) -> str:
         r = self.repo
         rows = [
@@ -885,6 +969,8 @@ class Site:
     def __init__(self, repo: Repo, cfg: dict, docs: dict[str, Doc], layer: Layer, out: Path):
         self.repo, self.cfg, self.docs, self.layer, self.out = repo, cfg, docs, layer, out
         self.links = Links(repo, docs)
+        self.graph = link_graph(self.links, docs)
+        self.back = backlinks(self.graph)
         root_readme = docs.get("README.md")
         self.title = (root_readme.title if root_readme else repo.name) or repo.name
         self.summary = root_readme.summary if root_readme else ""
@@ -926,19 +1012,22 @@ class Site:
             )
             for d in groups[g]:
                 cls = "nav-doc" + (on if active is d else "")
-                label = d.path[len(g) + 1 :] if g else d.path
                 parts.append(
-                    f'<li><a href="{self.link(here, d.page)}" class="{cls}" title="{esc(d.title)}">'
-                    f'<span class="truncate">{esc(label)}</span></a></li>'
+                    f'<li><a href="{self.link(here, d.page)}" class="{cls}" title="{esc(d.path)}">'
+                    f'<span class="truncate">{esc(d.title)}</span></a></li>'
                 )
             parts.append("</ul></li>")
         parts.append("</ul>")
         return "".join(parts)
 
     def shell(self, here: str, title: str, content: str, active: Doc | None = None,
-              crumbs: list[tuple[str, str]] = (), actions: str = "", charts: bool = False) -> str:
+              crumbs: list[tuple[str, str]] = (), actions: str = "", charts: bool = False,
+              description: str = "", absolute: bool = False) -> str:
         root = posixpath.relpath(".", posixpath.dirname(here) or ".")
         root = "" if root == "." else root + "/"
+        # A page served at any URL (404.html) resolves its links from the site's base path.
+        base = (f'<base href="{esc(urllib.parse.urlparse(self.repo.pages_url).path or "/")}">\n'
+                if absolute else "")
         crumb = "".join(
             f'<li><div class="flex items-center"><span class="mx-1 text-gray-400">/</span>'
             + (f'<a href="{self.link(here, t)}" class="ms-1 text-sm font-medium text-gray-700 '
@@ -954,8 +1043,8 @@ class Site:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)} · {esc(self.repo.name)}</title>
-<meta name="description" content="{esc(self.summary)}">
+{base}<title>{esc(title)} · {esc(self.repo.name)}</title>
+<meta name="description" content="{esc(description or self.summary)}">
 <meta name="generator" content="tools/surfaces/surfaces site @ {esc(sha)}">
 <script>(function(){{try{{var t=localStorage.getItem('color-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}}catch(e){{}}}})()</script>
 <link rel="stylesheet" href="{root}css/app.css">
@@ -965,10 +1054,10 @@ class Site:
   <div class="px-3 py-3 lg:px-5 lg:ps-3"><div class="flex items-center justify-between">
     <div class="flex items-center justify-start">
       <button data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" type="button" class="me-2 rounded-lg p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 lg:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><span class="sr-only">Open sidebar</span>{icon("menu", "h-6 w-6")}</button>
-      <a href="{root}index.html" class="me-8 flex items-center"><span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">{esc(self.repo.name)}</span></a>
-      <form class="hidden lg:block" role="search" onsubmit="return false">
+      <a href="{root}index.html" class="me-3 flex items-center sm:me-8"><span class="self-center whitespace-nowrap text-lg font-semibold sm:text-xl dark:text-white">{esc(self.repo.name)}</span></a>
+      <form class="block" role="search" onsubmit="return false">
         <label for="search" class="sr-only">Search</label>
-        <div class="relative w-96">
+        <div class="relative w-40 sm:w-64 lg:w-96">
           <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-gray-500 dark:text-gray-400">{icon("search")}</div>
           <input type="search" id="search" autocomplete="off" placeholder="Search {len(self.docs)} documents  ( / )" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400">
           <div id="search-results" class="absolute z-50 mt-1 hidden max-h-96 w-full overflow-y-auto rounded-lg bg-white shadow-lg dark:bg-gray-700"></div>
@@ -976,9 +1065,9 @@ class Site:
       </form>
     </div>
     <div class="flex items-center gap-1">
-      <a href="{esc(self.repo.wiki_url)}" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" title="Wiki">{icon("book")}</a>
-      <a href="{esc(self.repo.web)}" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" title="Repository">{icon("code")}</a>
-      <button id="theme-toggle" type="button" class="rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700" title="Toggle dark mode"><span class="dark:hidden">{icon("moon")}</span><span class="hidden dark:inline">{icon("sun")}</span></button>
+      <a href="{esc(self.repo.wiki_url)}" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" title="Wiki" aria-label="Wiki">{icon("book")}</a>
+      <a href="{esc(self.repo.web)}" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" title="Repository" aria-label="Repository">{icon("code")}</a>
+      <button id="theme-toggle" type="button" class="rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700" title="Toggle dark mode" aria-label="Toggle dark mode"><span class="dark:hidden">{icon("moon")}</span><span class="hidden dark:inline">{icon("sun")}</span></button>
     </div>
   </div></div>
 </nav>
@@ -988,7 +1077,7 @@ class Site:
 <div id="main-content" class="relative h-full w-full overflow-y-auto bg-gray-50 pt-16 lg:ms-72 lg:w-[calc(100%-18rem)] dark:bg-gray-900">
 <main class="px-4 pt-6">
   <div class="mb-4">
-    <nav class="mb-3 flex" aria-label="Breadcrumb"><ol class="inline-flex items-center">
+    <nav class="mb-3 flex" aria-label="Breadcrumb"><ol class="inline-flex flex-wrap items-center">
       <li class="inline-flex items-center"><a href="{root}index.html" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary-600 dark:text-gray-400 dark:hover:text-white">{icon("home", "me-2 h-4 w-4")}Home</a></li>{crumb}
     </ol></nav>
     <div class="flex flex-wrap items-center justify-between gap-3">
@@ -1032,6 +1121,9 @@ class Site:
     def article(self, md: MarkdownIt, doc: Doc) -> str:
         tokens = collect_slugs(md, doc)
         body = render_html(md, self.links, doc, tokens)
+        first = re.match(r"\s*<h1\b[^>]*>(.*?)</h1>\s*", body, re.S)
+        if first and plain(html.unescape(re.sub(r"<[^>]+>", "", first.group(1)))) == doc.title:
+            body = body[first.end():]
         return (
             f'<article class="{CARD} format format-blue max-w-none lg:format-lg dark:format-invert">'
             f"{body}</article>"
@@ -1044,17 +1136,34 @@ class Site:
             f'<a class="{BTN_PRIMARY}" href="{esc(self.repo.edit(doc.path))}">Edit</a>'
         )
 
+    def link_card(self, doc: Doc) -> str:
+        """Where a document is linked from and what it links to, both derived from the documents."""
+        def items(paths: set[str]) -> str:
+            return "".join(
+                f'<li><a class="text-primary-700 hover:underline dark:text-primary-400" '
+                f'href="{esc(self.link(doc.page, self.docs[p].page))}" title="{esc(p)}">{esc(self.docs[p].title)}</a></li>'
+                for p in sorted(paths, key=lambda p: self.docs[p].title.lower()))
+        back, out = self.back.get(doc.path, set()), self.graph.get(doc.path, set())
+        if not back and not out:
+            return ""
+        col = '<div><h3 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">{}</h3><ul class="space-y-1 text-sm">{}</ul></div>'
+        return (f'<div class="{CARD} mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">'
+                + col.format(f"Linked from {len(back)}", items(back) or '<li class="text-gray-500">nothing yet</li>')
+                + col.format(f"Links to {len(out)}", items(out) or '<li class="text-gray-500">no other document</li>')
+                + "</div>")
+
     def doc_page(self, md: MarkdownIt, doc: Doc) -> str:
         meta = (
             f'<div class="mb-4 flex flex-wrap items-center gap-y-2 text-sm text-gray-500 dark:text-gray-400">'
-            f'{badge(doc.group or "/")}<code class="me-3">{esc(doc.path)}</code>'
-            f'<span class="me-3">{doc.lines} lines</span><span>changed {fmt_date(doc.changed)}</span></div>'
+            f'{badge(doc.group or "/")}<code class="me-3 break-all">{esc(doc.path)}</code>'
+            f'<span class="me-3">{doc.lines} lines</span><span class="me-3">changed {fmt_date(doc.changed)}</span>'
+            f'<span>linked from {len(self.back.get(doc.path, ()))}</span></div>'
         )
         crumbs = [(part, "") for part in doc.path.split("/")[:-1]] + [(posixpath.basename(doc.path), "")]
         return self.shell(
             doc.page, doc.title,
-            meta + self.front_matter_card(doc) + self.article(md, doc),
-            active=doc, crumbs=crumbs, actions=self.doc_actions(doc),
+            meta + self.front_matter_card(doc) + self.article(md, doc) + self.link_card(doc),
+            active=doc, crumbs=crumbs, actions=self.doc_actions(doc), description=doc.summary,
         )
 
     def kpis(self) -> str:
@@ -1077,6 +1186,28 @@ class Site:
             f'dark:text-gray-400">{esc(k)}</h3></div>'
             for v, k in cards
         ) + "</div>"
+
+    def facts(self, here: str) -> str:
+        """The surfaces.toml facts as linked cards, each with how it was counted as its tooltip."""
+        items = self.cfg["facts"]["items"]
+        if not items:
+            return ""
+        regions, cards = Regions(self.repo, self.docs, self.layer), []
+        for item in items:
+            n, how = regions.fact_value(item)
+            target = item.get("link", "")
+            href = (self.link(here, self.docs[target].page) if target in self.docs
+                    else self.repo.blob(target) if target else "")
+            tag = f'a href="{esc(href)}"' if href else "div"
+            cards.append(
+                f'<{tag} class="{CARD} block hover:ring-2 hover:ring-primary-500" title="Counted from {esc(how.replace(chr(96), ''))}">'
+                f'<span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">{n:,}</span>'
+                f'<p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{esc(plain(item.get("short") or item["label"]))}</p>'
+                f'</{tag.split()[0]}>')
+        return ('<h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Counted from the sources</h2>'
+                '<p class="mb-3 text-sm text-gray-500 dark:text-gray-400">Every number is counted from the tracked '
+                'files when the site is built; hover a card for what was counted, click it for the page.</p>'
+                '<div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">' + "".join(cards) + "</div>")
 
     def chart_card(self, cid: str, title: str, subtitle: str, controls: str = "", span: str = "") -> str:
         return (
@@ -1127,7 +1258,7 @@ class Site:
             + "</div>"
         )
         body = self.article(md, readme) if readme else ""
-        return self.shell("index.html", self.title, hero + self.kpis() + charts + body,
+        return self.shell("index.html", self.title, hero + self.kpis() + self.facts("index.html") + charts + body,
                           actions=self.doc_actions(readme) if readme else "", charts=True)
 
     def docs_page(self) -> str:
@@ -1145,6 +1276,10 @@ class Site:
             '<div class="mb-4 grid grid-cols-1 gap-4">'
             + self.chart_card("docs", "Documentation map", "Area by size; click a document to open it",
                               self.select("docs.metric", [("lines", "by lines"), ("count", "by documents")], "lines"))
+            + self.chart_card("links", "How the documents link", "Every link between published documents; "
+                              "drag, zoom, hover for a title, click to open. Size is how often a document is linked.",
+                              self.select("links.min", [("1", "every linked document"), ("2", "linked twice or more"),
+                                                        ("5", "linked five times or more")], "1"))
             + "</div>" + f'<div class="{CARD}">' + filt
             + html_table(["Title", "Path", "Lines", "Changed", "Summary"], rows, "all-docs") + "</div>"
         )
@@ -1188,9 +1323,9 @@ class Site:
             parts.append(f'<div class="{CARD} mb-4">' + html_table(["Milestone", "Done", "Progress"], rows) + "</div>")
             graph = ["flowchart LR"]
             for i in lay.issues:
-                label = (i.get("title") or i["id"]).replace('"', "'")
+                label = re.sub(r"[<>\"#]", "", plain(str(i.get("title") or i["id"])))
                 if len(label) > 48:
-                    label = label[:45] + "..."
+                    label = label[:45].rstrip() + "..."
                 graph.append(f'  {i["id"]}["{i["id"]}: {label}"]:::{i["status"]}')
                 for dep in i.get("depends_on") or []:
                     graph.append(f"  {dep} --> {i['id']}")
@@ -1262,11 +1397,18 @@ class Site:
                 key=lambda x: -x["days"],
             ),
             "plan": plan,
+            "links": {
+                "nodes": [{"id": d.path, "name": d.title, "url": d.page, "group": d.group or "/",
+                           "in": len(self.back.get(d.path, ())), "out": len(self.graph.get(d.path, ()))}
+                          for d in self.docs.values()],
+                "edges": [[src, t] for src, ts in sorted(self.graph.items()) for t in sorted(ts)],
+            },
         }
 
     def search_index(self) -> list[dict]:
         return [
-            {"t": d.title, "p": d.path, "u": d.page, "s": d.summary, "h": d.headings[:30]}
+            {"t": d.title, "p": d.path, "u": d.page, "s": d.summary, "h": d.headings[:30],
+             "b": plain(re.sub(r"```.*?```", " ", d.body, flags=re.S))[:1500]}
             for d in self.docs.values()
         ]
 
@@ -1294,7 +1436,8 @@ class Site:
             self.write("ai.html", self.ai_page())
         self.write("404.html", self.shell("404.html", "Not found",
                    f'<div class="{CARD}"><p class="text-gray-500 dark:text-gray-400">No page here. '
-                   f'Search above, or start from the <a class="text-primary-600 hover:underline" href="index.html">overview</a>.</p></div>'))
+                   f'Search above, or start from the <a class="font-medium text-primary-700 underline '
+                   f'dark:text-primary-400" href="index.html">overview</a>.</p></div>', absolute=True))
         self.write("data/site.json", json.dumps(self.data(), ensure_ascii=False))
         self.write("data/search.json", json.dumps(self.search_index(), ensure_ascii=False))
         self.write(".nojekyll", "")
@@ -1338,8 +1481,21 @@ def build_wiki(repo: Repo, cfg: dict, docs: dict[str, Doc], out: Path) -> None:
         shutil.rmtree(out)
     out.mkdir(parents=True)
     links = Links(repo, docs)
+    back = backlinks(link_graph(links, docs))
     for d in docs.values():
-        body = rewrite_source_links(d.text, lambda href, image, d=d: links.wiki(d, href, image))
+        text = d.body if d.fm else d.text
+        if back.get(d.path):
+            refs = sorted(back[d.path], key=lambda p: docs[p].title.lower())
+            text = text.rstrip() + f"\n\n---\n\n**Linked from {len(refs)} document(s):** " + " · ".join(
+                f"[{docs[p].title.replace('[', '(').replace(']', ')')}]({posixpath.relpath(p, posixpath.dirname(d.path) or '.')})"
+                for p in refs) + "\n"
+        if d.fm:
+            if not re.search(r"^# ", text, re.M):
+                text = f"# {d.title}\n\n{text.lstrip()}"
+            meta = yaml.safe_dump(d.fm, sort_keys=False, allow_unicode=True, default_flow_style=False).rstrip()
+            text += (f"\n\n<details><summary>Record metadata ({len(d.fm)} fields)</summary>\n\n"
+                     f"```yaml\n{meta}\n```\n\n</details>\n")
+        body = rewrite_source_links(text, lambda href, image, d=d: links.wiki(d, href, image))
         (out / f"{d.wiki}.md").write_text(body, encoding="utf-8")
     if "README.md" not in docs:
         (out / "Home.md").write_text(f"# {repo.name}\n\nSee the sidebar.\n")
@@ -1347,11 +1503,17 @@ def build_wiki(repo: Repo, cfg: dict, docs: dict[str, Doc], out: Path) -> None:
     for d in docs.values():
         groups.setdefault(d.group, []).append(d)
     side = [f"**[{repo.name}]({repo.web})** · [site]({repo.pages_url})", ""]
+    seen: dict[str, int] = {}
+    for d in docs.values():
+        seen[d.title] = seen.get(d.title, 0) + 1
     for g in sorted(groups, key=lambda g: (g != "", g.startswith("."), g.lower())):
-        side.append(f"**{g or '/'}**")
+        side.append(f"<details{' open' if g == '' else ''}><summary><b>{html.escape(g or '/')}</b> "
+                    f"({len(groups[g])})</summary>")
         side.append("")
-        side += [f"- [{d.title}]({d.wiki})" for d in groups[g]]
-        side.append("")
+        for d in groups[g]:
+            label = d.title if seen[d.title] == 1 else f"{d.title} ({posixpath.basename(d.path)[:-3]})"
+            side.append(f"- [{label.replace('[', '(').replace(']', ')')}]({d.wiki})")
+        side += ["", "</details>", ""]
     (out / "_Sidebar.md").write_text("\n".join(side))
     (out / "_Footer.md").write_text(
         f"Generated from [{repo.sha[:10]}]({repo.web}/commit/{repo.sha}) by `tools/surfaces/surfaces wiki`. "
@@ -1364,8 +1526,183 @@ def build_wiki(repo: Repo, cfg: dict, docs: dict[str, Doc], out: Path) -> None:
 # --------------------------------------------------------------------------- commands
 
 
+# --------------------------------------------------------------------------- tool flags
+#
+# A document that shows a tool with a flag restates the tool's parser, so it is checked against
+# it like a link against its target. Tools are the tracked executable scripts: shell scripts
+# parse with `case` arms, Python scripts with argparse. Three findings:
+#   usage  a flag the parser accepts is missing from the script's own usage header
+#   help   --help is missing, exits non-zero, or prints a fixed line range that stops before the
+#          end of that header or runs past it into the code
+#   flag   a document shows `tool --flag` and the tool's parser does not accept --flag
+# A shell script whose catch-all arm does not refuse (no `exit`) passes unknown flags on, so no
+# document can show a flag it would refuse: the third check skips it.
+
+SHEBANG_SHELL = re.compile(r"^#!.*\b(?:ba|z|da)?sh\b")
+SHEBANG_PYTHON = re.compile(r"^#!.*\bpython")
+CASE_ARM_RE = re.compile(
+    r"^[ \t]*\(?((?:-{1,2}[A-Za-z0-9][\w-]*(?:=\*)?)(?:[ \t]*\|[ \t]*-{1,2}[A-Za-z0-9][\w-]*(?:=\*)?)*)[ \t]*\)",
+    re.M)
+CATCH_ALL_RE = re.compile(r"^[ \t]*\*\)(.*)$", re.M)
+TEST_FLAG_RE = re.compile(r"==\s*[\"']?(--[A-Za-z][\w-]*)[\"']?\s*\]\]")
+ARGV_FLAG_RE = re.compile(r"[\"'](--[A-Za-z][\w-]*)[\"']\s+in\s+(?:sys\.)?argv\b")
+ARGPARSE_RE = re.compile(r"add_argument\(\s*((?:[\"']-{1,2}[\w-]+[\"']\s*,?\s*)+)")
+HELP_ARM_RE = re.compile(r"^[ \t]*\(?[^\n]*--help[^\n]*\)(.*)$", re.M)
+HELP_SED_RE = re.compile(r"sed -n ['\"]?(\d+),(\d+)p")
+LONG_FLAG_RE = re.compile(r"(?<![\w-])--[A-Za-z][\w-]*")
+SEGMENT_SPLIT_RE = re.compile(r"\|\||&&|[|;\n]")
+INLINE_CODE_RE = re.compile(r"(`+)(.+?)\1", re.S)
+ENV_ASSIGN_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*=")
+
+
+@dataclass
+class Tool:
+    path: str
+    name: str
+    flags: set[str]
+    strict: bool
+    header: list[str]
+    help_range: tuple[int, int] | None
+    help_line: int
+    help_exit: str = ""
+
+
+def load_tools(repo: Repo, cfg: dict) -> dict[str, list[Tool]]:
+    """Every tracked executable script with a parser, by file name."""
+    tools: dict[str, list[Tool]] = {}
+    for line in git(repo.root, "ls-files", "-s").splitlines():
+        meta, _, path = line.partition("\t")
+        if not meta.startswith("100755") or matches(path, cfg["flags"]["exclude"]):
+            continue
+        try:
+            text = (repo.root / path).read_text(errors="replace")
+        except OSError:
+            continue
+        first = text.split("\n", 1)[0]
+        flags: set[str] = set()
+        strict, help_range, help_line, help_exit = True, None, 0, ""
+        if SHEBANG_SHELL.match(first):
+            for m in CASE_ARM_RE.finditer(text):
+                for alt in m.group(1).split("|"):
+                    flags.add(alt.strip().removesuffix("=*"))
+            catch = [m.group(1) for m in CATCH_ALL_RE.finditer(text)]
+            strict = bool(catch) and all("exit" in c for c in catch)
+            tested = set(TEST_FLAG_RE.findall(text)) - flags
+            if tested:  # `[[ "$1" == --x ]]` refuses nothing it does not test
+                flags |= tested
+                strict = False
+            for m in HELP_ARM_RE.finditer(text):
+                help_line = text.count("\n", 0, m.start()) + 1
+                s = HELP_SED_RE.search(m.group(1))
+                if s:
+                    help_range = (int(s.group(1)), int(s.group(2)))
+                e = re.search(r"\bexit ([1-9]\d*)", m.group(1))
+                if e:
+                    help_exit = e.group(1)
+        elif SHEBANG_PYTHON.match(first):
+            parsed = list(ARGPARSE_RE.finditer(text))
+            for m in parsed:
+                flags.update(re.findall(r"-{1,2}[\w-]+", m.group(1)))
+            strict = bool(parsed) and "parse_known_args" not in text
+            if parsed and "add_help=False" not in text:
+                flags.add("--help")  # argparse adds it
+            argv = set(ARGV_FLAG_RE.findall(text))
+            if argv:  # `"--x" in argv` refuses nothing
+                flags |= argv
+                strict = False
+        else:
+            continue
+        if not flags:
+            continue
+        header = []
+        for h in text.split("\n")[1:]:
+            if not h.startswith("#"):
+                break
+            header.append(h)
+        name = posixpath.basename(path)
+        tools.setdefault(name, []).append(Tool(path, name, flags, strict, header, help_range, help_line, help_exit))
+    return tools
+
+
+def check_tool_headers(tools: dict[str, list[Tool]]) -> list[Finding]:
+    found = []
+    for tool in (t for ts in tools.values() for t in ts):
+        head = "\n".join(tool.header)
+        if re.search(r"\busage\b", head, re.I):
+            for flag in sorted(f for f in tool.flags if f.startswith("--") and f != "--help"):
+                if not re.search(rf"(?<![\w-]){re.escape(flag)}(?![\w-])", head):
+                    found.append(Finding("usage", tool.path, 1, f"accepts {flag}, which its usage header never names"))
+        if tool.help_exit:
+            found.append(Finding("help", tool.path, tool.help_line,
+                                 f"--help exits {tool.help_exit}: asking for help is not an error, exit 0"))
+        if tool.strict and tool.header and "--help" not in tool.flags and re.search(r"\busage\b", head, re.I):
+            found.append(Finding("help", tool.path, 1, "has a usage header but no -h|--help arm that prints it"))
+        if tool.help_range and tool.header:
+            last = 1 + max(i + 1 for i, h in enumerate(tool.header) if h.strip("# \t"))
+            if tool.help_range[1] < last:
+                found.append(Finding("help", tool.path, tool.help_line,
+                                     f"--help prints lines {tool.help_range[0]}-{tool.help_range[1]}, "
+                                     f"but the usage header runs to line {last}"))
+            elif tool.help_range[1] > last + 1:
+                found.append(Finding("help", tool.path, tool.help_line,
+                                     f"--help prints lines {tool.help_range[0]}-{tool.help_range[1]}, "
+                                     f"past the usage header's end at line {last}, so it prints code"))
+    return found
+
+
+def code_spans(doc: Doc) -> list[tuple[int, str]]:
+    """(offset, text) of every fenced block and inline code span in a document."""
+    spans, fenced = [], fenced_ranges(doc.text)
+    for a, b in fenced:
+        spans.append((a, doc.text[a:b]))
+    rest, pos = [], 0
+    for a, b in fenced:
+        rest.append((pos, doc.text[pos:a]))
+        pos = b
+    rest.append((pos, doc.text[pos:]))
+    for base, chunk in rest:
+        for m in INLINE_CODE_RE.finditer(chunk):
+            spans.append((base + m.start(2), m.group(2)))
+    return spans
+
+
+def check_doc_flags(tools: dict[str, list[Tool]], doc: Doc) -> list[Finding]:
+    found = []
+    for offset, code in code_spans(doc):
+        pos = 0
+        for segment in SEGMENT_SPLIT_RE.split(code):
+            start = code.find(segment, pos)
+            pos = start + len(segment)
+            words = segment.split()
+            while words and (ENV_ASSIGN_RE.match(words[0]) or words[0] in ("$", "!", "time", "exec")):
+                words.pop(0)
+            if not words:
+                continue
+            candidates = tools.get(posixpath.basename(words[0].strip("`'\"")), [])
+            if not candidates or not all(t.strict for t in candidates):
+                continue
+            accepted = set().union(*(t.flags for t in candidates))
+            for word in words[1:]:
+                if word == "--":
+                    break
+                for flag in LONG_FLAG_RE.findall(word.split("=", 1)[0]):
+                    if flag not in accepted:
+                        line = doc.text.count("\n", 0, offset + start) + 1
+                        found.append(Finding("flag", doc.path, line,
+                                             f"shows `{candidates[0].name} {flag}`, which {candidates[0].path} does not accept"))
+    return sorted(found, key=lambda f: f.line)
+
+
 def run_check(repo: Repo, cfg: dict, docs: dict[str, Doc], layer: Layer) -> list[Finding]:
     findings, _ = sync_regions(repo, docs, layer, write=False)
+    for path, why in sorted(FRONT_ERRORS.items()):
+        if not matches(path, cfg["check"]["front_matter_exclude"]):
+            findings.append(Finding("front", path, 1, f"front matter does not parse, so the page shows it as text: {why}"))
+    tools = load_tools(repo, cfg)
+    findings += check_tool_headers(tools)
+    for path, doc in docs.items():
+        if not matches(path, cfg["check"]["exclude"]):
+            findings += check_doc_flags(tools, doc)
     md = markdown()
     links = Links(repo, docs)
     parsed = {p: collect_slugs(md, d) for p, d in docs.items()}

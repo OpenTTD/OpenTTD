@@ -1,0 +1,31 @@
+id: I0081
+milestone: planning-is-generated-from-recorded-history
+title: "Every planning decision publishes a structured plan.* event (decision, version, inputs, choice) next to its prose, from one declared table of kinds"
+slug: structured-plan-events
+priority: p1
+profile: implementation
+parallel_safe: false
+objective: "settings_from_plan, planned_air, the calibration route, the investment route, the action plan, the intent answer and the Prismatic directive each publish one plan.* event (plan.portfolio, plan.bot_settings, plan.calibration, plan.investment, plan.action, plan.intent, plan.directive) whose payload is {decision, version, inputs, choice}; inputs names the live resources read and any store query with its row count or fallback. The kinds the panel publishes are declared in one table in the code, and the knowledge note of event kinds is derived from it. The panel.* sentences stay."
+why: "ADR 0034 point 3. Today every choice exists only as panel.ai / panel.plan {text} (knowledge the-panel-bus-carries-these-event-kinds), so mcp-duel parses English from the capped 200 of /api/status, and Prismatic and AlgoGlyph cannot read what was decided or from what."
+scope:
+  - "tools/research/mcp-rhai/src/panel.rs"
+  - "tools/research/mcp-rhai/src/panel_bot.rs"
+  - "tools/research/mcp-rhai/src/panel_decision.rs"
+  - "tools/research/mcp-rhai/src/panel_results.rs"
+  - "tools/research/mcp-panel-check"
+  - "research/mcp-control.md"
+  - ".ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md"
+depends_on:
+  - I0080
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#decisions-publish-structured-events"
+acceptance_criteria:
+  - "Each decision point named in the objective publishes its plan.* event with decision, version (git revision and parameter digest), inputs and choice; a cargo test checks the payload of settings_from_plan against a fixed planner answer"
+  - "The event kinds are one table in the code; GET /api/bus lists them, and no publish call names a kind outside it (a cargo test)"
+  - "mcp-panel-check starts a planned bot and finds plan.portfolio and plan.bot_settings on the bus and in the store's events"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel"
+  - "tools/research/mcp-panel-check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-18'

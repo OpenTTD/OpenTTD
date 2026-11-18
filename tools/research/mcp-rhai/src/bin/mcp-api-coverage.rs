@@ -193,6 +193,10 @@ fn main() {
             "--panel" => panel = args.next().unwrap_or_default(),
             "--json" => as_json = true,
             "--report" => report = true,
+            "-h" | "--help" => {
+                println!("usage: mcp-api-coverage [--repo PATH] [--panel URL] [--json] [--report]");
+                return;
+            }
             _ => {
                 eprintln!("usage: mcp-api-coverage [--repo PATH] [--panel URL] [--json] [--report]");
                 std::process::exit(2);

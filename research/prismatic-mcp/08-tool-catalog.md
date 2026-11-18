@@ -14,6 +14,7 @@ it. Each instance lists only what it can do (a dedicated server has no window: n
 | `openttd.cmd.<Name>` | `prismatic_mcp_commands.cpp`, `prismatic_mcp_params.hpp` | one tool per game command (`Commands` enum) whose parameters convert from JSON, derived from the command table; validated by a side-effect-free test run, posted through the network-safe command path, the verdict read with `openttd.decision.get` | the same approval as `submit` |
 | `openttd.ai.list`, `openttd.ai.set_setting`, `openttd.ai.start`, `openttd.ai.stop`, `openttd.ai.reload` | `prismatic_mcp_ai.cpp` | the company AIs and their settings (`openttd://ai`); a live setting changes without a restart | `list` none; the rest the same approval as `submit` |
 | `openttd.decision.get` | `prismatic_mcp_server.cpp` | one decision's provenance: the command result and the verdict taken after it ran | none, read-only |
+| `openttd.api.Script<Class>.<Function>` | `prismatic_mcp_api.cpp` | one tool per static function the build publishes to scripts, read back from a private Game Script engine (and an AI engine for what only AIs get); a call goes through the game's own script binding (`../mcp-api.md`) | none without `execute` (runs in `GSTestMode`, changes nothing); with `execute: true` the same approval as `submit`, as action `api.Script<Class>.<Function>` |
 
 Every tool declares `annotations.readOnlyHint`: true for one that changes nothing, false otherwise
 (with `destructiveHint` and `idempotentHint` where they apply). A view tool that declares nothing
@@ -61,5 +62,7 @@ arming → validate ownership/server-authority → immutable request digest → 
 thread via `Command<>::Post` → capture actual result → prevent duplicate execution → audit.
 
 The read-only command *inventory* (which internal `Commands` exist, their sync/server class, and
-adapter status) is the mapping in `01-openttd-system-map.md §5.4`; the future
-`openttd://commands/catalog` resource surfaces it without making any raw command remotely executable.
+adapter status) is the mapping in `01-openttd-system-map.md §5.4`. The `openttd://commands`
+resource now serves it, derived from the command table (category, flags, parameter schemas,
+`exposable`); every command it marks exposable is an approval-gated `openttd.cmd.<Name>` tool, so
+no command runs without an operator approval.

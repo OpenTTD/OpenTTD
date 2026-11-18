@@ -4,7 +4,7 @@
 //! JSON-RPC, resources, OpenTTD console commands, and the approval-gated pause. It talks to the
 //! panel's loopback API, so it never sees the bearer token.
 //!
-//! Usage: mcp-rhai [--panel http://127.0.0.1:8800] (<script.rhai> | -e '<script>')
+//! Usage: mcp-rhai [--panel http://127.0.0.1:8800] [--hub URL] (<script.rhai> | -e '<script>')
 //!
 //! Functions a script gets:
 //!   rpc(method)  rpc(method, params)  -> map   raw MCP JSON-RPC answer
@@ -365,6 +365,10 @@ pub(crate) fn host(base: &str, hub: Option<&str>) -> Engine {
 
 fn main() {
     let mut args = std::env::args().skip(1).collect::<Vec<_>>();
+    if args.iter().any(|a| a == "-h" || a == "--help") {
+        println!("usage: mcp-rhai [--panel URL] [--hub URL] (<script.rhai> | -e '<script>')");
+        return;
+    }
     let mut base = "http://127.0.0.1:8800".to_string();
     if let Some(i) = args.iter().position(|a| a == "--panel") {
         if i + 1 >= args.len() {

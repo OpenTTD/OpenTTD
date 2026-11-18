@@ -1,6 +1,6 @@
 //! RESEARCH-ONLY control panel for OpenTTD's embedded MCP server (ADR 0008, issue I0035), in Rust:
-//! the port of tools/research/mcp-panel/server.py, with the same command line, so mcp-e2e can start
-//! either (MCP_PANEL=rust tools/research/mcp-e2e ...).
+//! the port of the Python panel server.py, with the same command line. server.py was removed in
+//! 60aef3caa5, and tools/research/mcp-e2e starts this panel on every run.
 //!
 //! Starts a headless dedicated server, owns its console, starts its MCP server (the bearer token
 //! stays in this process) and a company AI, and serves the control window, its declared and derived

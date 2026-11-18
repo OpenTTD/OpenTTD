@@ -29,8 +29,15 @@ procedure for an experiment is `.ai/repo/workflows/research-experiment.md`.
 ## Decisions and knowledge
 
 - ADR 0002 (cost tiers), ADR 0005 (research CLI and manifest), ADR 0006 (toolchain probe),
-  ADR 0007 (bridge design in `research/prismatic-bridge/`).
+  ADR 0007 (bridge design in `research/prismatic-bridge/`; its "Phase 3 not started" is stale, see
+  ADR 0034), ADR 0032 (the bridge's admin client becomes a native Rust service, proposed),
+  ADR 0033 (every panel event on ZeroMQ and in a DuckDB store per instance, accepted; I0080),
+  ADR 0034 (planning decisions read that store and publish `plan.*` events, proposed; milestone
+  `planning-is-generated-from-recorded-history`).
+- Rule `project.a-tuning-claim-needs-held-start-pairs` (advisory) for any default changed on a duel
+  result; workflow `.ai/repo/workflows/a-decision-reads-the-store.md` for the procedure.
 - Knowledge `dedicated-server-stdin-startup-race`, `research-cli-keeps-the-system-compiler`,
-  `bridge-control-is-coarse-ai-restart`.
+  `bridge-control-is-coarse-ai-restart`, `the-panel-bus-carries-these-event-kinds`,
+  `duels-run-side-by-side-are-noisy`.
 - Verify a change here with `bash tools/research/test/research_test.sh` and
   `tools/gate.sh change`.

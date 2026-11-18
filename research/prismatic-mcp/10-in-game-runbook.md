@@ -10,15 +10,20 @@ compiler, both research options ON; Homebrew LLVM is no longer forced, see ADR 0
 
 ```bash
 tools/gate.sh research          # build-gate-research/, ctest, [prismatic_mcp] unit tests
-tools/research/mcp-live-check   # headless server + MCP over loopback, 14 checks
+tools/research/mcp-live-check   # headless server + MCP over loopback, one line per check
 ```
 
 It covers auth (401 without or with a wrong token, 403 with an `Origin` header), `initialize`
 (2025-11-25), live reads (`game_tick` advances between two reads), and the approval state
 machine of `openttd.game.set_pause`: pending, operator approval in the console, execution
-through the command system with `paused` observed true, a replay and changed arguments both
-sent back to `pending_approval`, and the listener closed after `prismatic_mcp stop`. It needs
-no fixture savegame (a new random map) and never prints the bearer token. Issue I0017.
+through the command system with `paused` observed true, the verdict read with
+`openttd.decision.get`, a replay and changed arguments both sent back to `pending_approval`.
+It then denies a decision submitted through `openttd.decision.submit`, runs `openttd.cmd.Pause`
+from the derived command catalogue, a command with a text parameter and a news command, and
+checks the listener is closed after `prismatic_mcp stop`. It needs no fixture savegame (a new
+random map) and never prints the bearer token. Issue I0017. The list of checks is the script
+itself (`grep -c '^check ' tools/research/mcp-live-check`); `09-testing.md` describes the same
+layer.
 
 ## Setup (original manual run, 2026-07-24)
 

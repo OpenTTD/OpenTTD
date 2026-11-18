@@ -5,7 +5,7 @@ kind: feature
 title: Research experiment CLI with manifest and evidence bundle
 short_title: Research CLI
 headline: An experiment records its own build profile, toolchain, commands and results, and its report is generated from that record.
-summary: tools/research/research drives init, configure, build, run, validate, report and clean over three build profiles and a versioned JSON manifest.
+summary: tools/research/research drives init, configure, build, run, validate, report and clean over four build profiles (research-debug, baseline-release, research-asan, research-mcp) and a versioned JSON manifest.
 status: stable
 weight: 30
 featured: true

@@ -51,6 +51,10 @@ fn main() {
     let mut panel = "http://127.0.0.1:8800".to_string();
     let mut token: Option<String> = None;
     while let Some(a) = args.next() {
+        if a == "-h" || a == "--help" {
+            println!("usage: mcp-graph [--panel URL | --token FILE]");
+            return;
+        }
         if a == "--panel" { panel = args.next().unwrap_or_default(); } else if a == "--token" { token = args.next(); } else {
             eprintln!("usage: mcp-graph [--panel URL | --token FILE]");
             std::process::exit(2);

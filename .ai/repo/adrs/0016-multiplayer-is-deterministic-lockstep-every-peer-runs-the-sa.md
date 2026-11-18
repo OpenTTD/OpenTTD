@@ -2,7 +2,7 @@
 schema: adr/v1
 id: adr-0016
 kind: adr
-title: Multiplayer is deterministic lockstep: every peer runs the same command stream and only commands cross the wire
+title: "Multiplayer is deterministic lockstep: every peer runs the same command stream and only commands cross the wire"
 status: proposed
 date: 2026-11-16
 tags:

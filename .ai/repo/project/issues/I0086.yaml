@@ -1,0 +1,31 @@
+id: I0086
+milestone: planning-is-generated-from-recorded-history
+title: "A long-lived AlgoGlyph flow serve is fed trailing data from the store, so kernels see history and not one snapshot"
+slug: algoglyph-reads-the-store
+priority: p3
+profile: implementation
+parallel_safe: true
+objective: "A subscriber in mcp-rhai holds one AlgoGlyph flow serve (as mcp-human's Flow does), follows the panel's ZeroMQ socket, and feeds transport-investment and knapsack-dp inputs built from the store's trailing samples and plan.* events (real earnings per mode, the lines already built) next to the live resources. Each call is published as plan.kernel {kernel, inputs (live and stored, with row counts), answer}. Without a store the kernels get today's live inputs and the event says fallback."
+why: "Every kernel input is a live snapshot today (invest.rs input, cargo.rs portfolio, linecost.rs price), started per call with npm run flow -- kernel or kept by mcp-human only; AlgoGlyph has no ZeroMQ or DuckDB code. ADR 0034 point 4: AlgoGlyph's inputs are assembled from the store by its caller."
+scope:
+  - "tools/research/mcp-rhai/src/invest.rs"
+  - "tools/research/mcp-rhai/src/cargo.rs"
+  - "tools/research/mcp-rhai/src/hub_algoglyph.rs"
+  - "tools/research/mcp-rhai/src/panel.rs"
+  - "research/mcp-control.md"
+non_scope:
+  - "A ZeroMQ or DuckDB reader inside AlgoGlyph itself: an issue in the algoglyph repository if one is ever wanted"
+depends_on:
+  - I0080
+  - I0081
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#decisions-publish-structured-events"
+acceptance_criteria:
+  - "One flow serve process answers every kernel call of a planned bot start (no npm run per call)"
+  - "plan.kernel events carry the stored inputs with their row counts; a cargo test builds the input from fixed store rows"
+  - "With the store off, the kernels answer as today and the event says fallback"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel"
+evidence_required:
+  - validation_run
+created_at: '2026-11-18'

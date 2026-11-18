@@ -22,4 +22,9 @@ running server (and the hub's catalogue across every instance).
 Rules honored: unknown → `null`/explicit availability (never coerced to 0); invalid uri → JSON-RPC
 `-32602`; lists sorted by stable id (pool ascending index); money states its unit; date states
 calendar Y-M-D; no memory addresses; no secrets. See `exposure-coverage-matrix.md` for the domains
-catalogued but not yet adapted (vehicles, towns, map regions, network-redacted, UI, debug, settings).
+catalogued but not yet adapted (network-redacted, debug, game settings).
+
+Status update (2026-11-17): this paragraph used to list vehicles, towns, map regions and UI as not
+yet adapted. They are resources now (`openttd://vehicles`, `openttd://towns`, `openttd://stations`,
+`openttd://map`, `openttd://map/ways`, `openttd://ui/menu`, ...: the rows of `RESOURCES` in
+`src/prismatic_mcp/prismatic_mcp_server.cpp`).

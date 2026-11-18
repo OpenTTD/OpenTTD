@@ -46,6 +46,14 @@ fn main() {
                 let v: serde_json::Value = std::fs::read_to_string(&f).ok().and_then(|t| serde_json::from_str(&t).ok()).unwrap_or_default();
                 token = Some((v["endpoint"].as_str().unwrap_or("").into(), v["agent_token"].as_str().unwrap_or("").into()));
             }
+            "-h" | "--help" => {
+                println!("usage: mcp-intent [--panel URL | --token FILE] [--lang-dir DIR] [--params JSON] \"<sentence>\"");
+                return;
+            }
+            f if f.starts_with("--") => {
+                eprintln!("mcp-intent: unknown option {f}; usage: mcp-intent [--panel URL | --token FILE] [--lang-dir DIR] [--params JSON] \"<sentence>\"");
+                std::process::exit(2);
+            }
             _ => text.push(a),
         }
     }

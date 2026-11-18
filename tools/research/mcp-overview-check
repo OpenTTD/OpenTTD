@@ -5,7 +5,8 @@
 // Escape restores it, the metric survives a reload of the address, a click on a company focuses it
 // (ov_focus), a phone-width page does not scroll sideways, the World page's charts still come
 // through the one door, a tool page builds its form from the schema, and the console stays free
-// of errors. Drives the installed Chrome through playwright-core (npm ci in tools/research/mcp-panel).
+// of errors, and /data runs the query in its address (skipped, and said so, on a panel without the
+// event store). Drives the installed Chrome through playwright-core (npm ci in tools/research/mcp-panel).
 //
 // Usage: tools/research/mcp-overview-check http://127.0.0.1:<panel-port>   (exit 0 PASS, 1 FAIL)
 import { createRequire } from 'node:module';
@@ -20,6 +21,7 @@ const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/M
 const base = (process.argv[2] || '').replace(/\/$/, '');
 if (!base) { console.error('usage: mcp-overview-check <panel-url>'); process.exit(2); }
 const checks = [];
+const skipped = [];
 const check = (name, ok, detail = '') => { checks.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` (${detail})` : ''}`); };
 
 const charts = (page) => page.evaluate(async () => {
@@ -113,6 +115,14 @@ try {
   });
   check('a select keeps room for its chevron', look.chevron >= 28, `padding-right ${look.chevron}px`);
   check("the overview's controls are one height", look.heights.length === 1, `heights ${look.heights.join(', ')}`);
+  // 2026-11-18: a long note pushed Maximize under it in three cards; at desktop width every card's
+  // toolbar sits on its title's row.
+  const heads = await page.evaluate(() => [...document.querySelectorAll('#overview [data-chart]')].map((card) => {
+    const bar = card.querySelector('[data-toolbar]');
+    const title = card.querySelector('h2');
+    return bar && title && bar.offsetHeight ? [card.id, Math.round(bar.getBoundingClientRect().top - title.getBoundingClientRect().top)] : [card.id, null];
+  }));
+  check("every overview card's toolbar is on its title's row", heads.every(([, d]) => d !== null && Math.abs(d) <= 12), heads.map(([id, d]) => `${id} ${d}`).join(', '));
   const anchored = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   watch(anchored);
   await anchored.goto(`${base}/#overview`);
@@ -212,10 +222,32 @@ try {
     return [i ? (i.getOption().series || []).length : -1, document.querySelectorAll('#duels-rows input[data-cmp]:checked').length]; });
   check('a comparison survives a reload of its address', again[0] === 4 && again[1] === 2, `${again[0]} lines, ${again[1]} ticked`);
 
+  // The event store's page (ADR 0033): a query in the address runs on load and answers a row. A
+  // panel without the store (no /api/db/query yet, or the store off) is skipped and says so; a skip
+  // is not a pass and is counted apart.
+  const probe = await fetch(`${base}/api/db/query?sql=${encodeURIComponent('SELECT 1')}`).catch(() => null);
+  const storeless = !probe ? 'the panel did not answer' : probe.status === 404 ? 'GET /api/db/query answers 404: this panel has no event store route yet'
+    : probe.status === 503 ? 'GET /api/db/query answers 503: the store is off in this panel' : '';
+  if (storeless) {
+    skipped.push('/data');
+    console.log(`SKIP /data runs the query in its address (${storeless})`);
+  } else {
+    const sql = 'SELECT count(*) FROM events';
+    await page.goto(`${base}/data?sql=${encodeURIComponent(sql)}`);
+    await page.waitForSelector('#data-rows tr[data-row]', { timeout: 15000 }).catch(() => {});
+    const data = await page.evaluate(() => {
+      const err = document.getElementById('query-error');
+      return { sql: document.getElementById('sql')?.value, rows: [...document.querySelectorAll('#data-rows tr[data-row]')].map((r) => r.textContent.trim()),
+        error: err && !err.classList.contains('hidden') ? err.textContent : '' };
+    });
+    check('/data runs the query in its address and answers a row', data.sql === sql && data.rows.length === 1 && /^\d+$/.test(data.rows[0] || ''),
+      `sql "${data.sql}", rows ${JSON.stringify(data.rows)}${data.error ? `, error: ${data.error}` : ''}`);
+  }
+
   check('the console stays free of errors', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
   await browser.close();
 }
 const failed = checks.filter((c) => !c).length;
-console.log(`\nmcp-overview-check: ${checks.length - failed} passed, ${failed} failed`);
+console.log(`\nmcp-overview-check: ${checks.length - failed} passed, ${failed} failed${skipped.length ? `, ${skipped.length} skipped (${skipped.join(', ')})` : ''}`);
 process.exit(failed ? 1 : 0);

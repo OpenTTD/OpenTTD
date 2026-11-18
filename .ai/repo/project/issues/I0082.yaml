@@ -1,0 +1,31 @@
+id: I0082
+milestone: planning-is-generated-from-recorded-history
+title: "Calibration is read from the store's events and samples, not from research/calibration.json"
+slug: calibration-in-the-store
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "The calibration reading (calibrate.rs: real against predicted profit per line, vehicles at least 730 days old) is published as plan.calibration and so stored; planned_air reads the latest factors of the same seed and map, or of all runs, through /api/db/query when PRISMATIC_PLAN_CALIBRATION asks for them, and publishes which rows it used. With the store off it falls back to no calibration and says so. research/calibration.json is no longer read; its one reading is imported once as a run of its own."
+why: "ADR 0033 named moving calibration onto the store as follow-up work (I0080); ADR 0034 point 1 forbids a second copy beside the store. The file holds one reading (factors bus 0.16, rail 0.15, freight_rail 0.59, default 0.37) and has no seed, map or run attached, so it cannot be filtered by the game it came from."
+scope:
+  - "tools/research/mcp-rhai/src/panel_bot.rs"
+  - "tools/research/mcp-rhai/src/calibrate.rs"
+  - "tools/research/mcp-rhai/src/panel.rs"
+  - "research/calibration.json"
+  - "research/mcp-control.md"
+  - ".ai/repo/knowledge/curated/the-planner-overpredicts-what-a-line-earns.md"
+depends_on:
+  - I0080
+  - I0081
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#decisions-publish-structured-events"
+acceptance_criteria:
+  - "A calibration reading appears as plan.calibration in the store; planned_air with PRISMATIC_PLAN_CALIBRATION reads it back by query and its plan.bot_settings names the query and the rows"
+  - "With the store off, planned_air publishes fallback=uncalibrated and runs as today without calibration"
+  - "No code reads research/calibration.json (grep), and the imported reading is a row of its own run"
+  - "Calibration stays off by default: the three-seed held-start A/B averaged about zero (knowledge the-planner-overpredicts-what-a-line-earns); turning it on needs a new A/B per ADR 0034 point 6"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel"
+evidence_required:
+  - validation_run
+created_at: '2026-11-18'

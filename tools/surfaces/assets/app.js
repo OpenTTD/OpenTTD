@@ -55,7 +55,7 @@
     }
     const hits = index
       .map((d) => {
-        const hay = [d.t, d.p, d.s, (d.h || []).join(' ')].join(' ').toLowerCase();
+        const hay = [d.t, d.p, d.s, (d.h || []).join(' '), d.b || ''].join(' ').toLowerCase();
         if (!terms.every((t) => hay.includes(t))) return null;
         const score = terms.reduce((n, t) => n + (d.t.toLowerCase().includes(t) ? 3 : 0)
           + (d.p.toLowerCase().includes(t) ? 2 : 0), 0);
@@ -219,6 +219,36 @@
         series: [{
           type: 'bar', data: rows.map((r) => ({ value: r.days, url: r.url })),
           itemStyle: { color: '#FDBA8C', borderRadius: [0, 3, 3, 0] },
+        }],
+      };
+    },
+    links(data) {
+      // Every link between published documents, as a force graph: a node per document that links
+      // or is linked, sized by how often it is linked, coloured by its top-level directory.
+      const min = Number(params.get('links.min') || 1);
+      const keep = new Set(data.links.nodes.filter((n) => n.in >= min || (min === 1 && n.out > 0)).map((n) => n.id));
+      const groups = [...new Set(data.links.nodes.filter((n) => keep.has(n.id)).map((n) => n.group))].sort();
+      return {
+        tooltip: {
+          formatter: (p) => (p.dataType === 'node'
+            ? escapeHtml(p.data.name) + '<br><code>' + escapeHtml(p.data.id) + '</code><br>linked from '
+              + p.data.in + ', links to ' + p.data.out
+            : ''),
+        },
+        legend: { type: 'scroll', bottom: 0, data: groups },
+        series: [{
+          type: 'graph', layout: 'force', roam: true, draggable: true,
+          categories: groups.map((g) => ({ name: g })),
+          force: { repulsion: 60, edgeLength: [30, 90], gravity: 0.08 },
+          emphasis: { focus: 'adjacency', lineStyle: { width: 2 } },
+          lineStyle: { opacity: 0.25, curveness: 0.1 },
+          label: { show: false },
+          data: data.links.nodes.filter((n) => keep.has(n.id)).map((n) => ({
+            ...n, category: groups.indexOf(n.group), symbolSize: 4 + 3 * Math.sqrt(n.in),
+            label: { show: n.in >= 8, formatter: n.name.length > 28 ? n.name.slice(0, 26) + '…' : n.name },
+          })),
+          links: data.links.edges.filter(([a, b]) => keep.has(a) && keep.has(b))
+            .map(([a, b]) => ({ source: a, target: b })),
         }],
       };
     },
