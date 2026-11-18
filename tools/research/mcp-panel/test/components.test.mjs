@@ -1,4 +1,5 @@
 // node --test tools/research/mcp-panel/test/ : the pure parts of static/components.js.
+import './panel-ui.mjs'; // first: shell.js publishes PanelUI before any page script
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { schemaFields, coerce, callParams, parseHash, formatHash, groupOps, HubClient, formatPlan, parsePlan, trackPlanParams, planSummary, planInstances, railtypeOptions } from '../static/components.js';
@@ -165,11 +166,17 @@ test('the shared kit: esc, number formats and the element of an id', () => {
   try { assert.deepEqual($('x'), { id: 'x' }); } finally { globalThis.document = doc; }
 });
 
-test('the shared kit: Flowbite classes, badges and chart ink keep their exact strings', () => {
-  assert.equal(CLS.field, 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white');
-  assert.equal(badge('<b>'), `<span class="whitespace-nowrap text-xs font-medium px-2 py-0.5 rounded-sm ${TONE.gray}">&lt;b&gt;</span>`);
-  assert.equal(badge('ok', 'green'), '<span class="whitespace-nowrap text-xs font-medium px-2 py-0.5 rounded-sm bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">ok</span>');
-  assert.deepEqual(Object.keys(TONE), ['green', 'yellow', 'blue', 'gray']);
+test('the shared kit: its classes are the shell\'s sets, badges are UI.badge, chart ink is kept', async () => {
+  const { UI } = await import('../static/components.js');
+  assert.equal(UI, globalThis.PanelUI, 'the one set the shell published, not a copy');
+  const carries = (cls, set) => assert.deepEqual(set.split(' ').filter((c) => !cls.split(' ').includes(c)), [], cls);
+  carries(CLS.card, UI.card);
+  carries(CLS.title, UI.cardTitle);
+  carries(CLS.input, UI.input);
+  carries(CLS.select, UI.select);
+  assert.equal(badge('<b>'), `<span class="whitespace-nowrap ${UI.badge} ${TONE.gray}">&lt;b&gt;</span>`);
+  assert.equal(badge('ok', 'green'), `<span class="whitespace-nowrap ${UI.badge} bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">ok</span>`);
+  assert.deepEqual(Object.keys(TONE), ['green', 'yellow', 'blue', 'gray', 'red', 'purple']);
   assert.equal(AXIS.axisLabel.color, INK.muted);
   assert.equal(AXIS.splitLine.lineStyle.type, 'dashed');
 });

@@ -1,3 +1,4 @@
+import './panel-ui.mjs'; // first: shell.js publishes PanelUI before any page script
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { catalogueItems, facetsOf, filterItems, facetCounts, hierarchy, drillTo, sunburstOption, readState, toolsHref, rootOf, facetsOfRoot } from '../static/catalogue.js';

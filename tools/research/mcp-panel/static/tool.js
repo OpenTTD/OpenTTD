@@ -6,9 +6,10 @@
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const card = 'p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800';
-const input = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white';
-const badge = (text, tone) => `<span class="text-xs font-medium px-2.5 py-0.5 rounded-sm ${{
+/** The shell's Pro class sets, one per role (static/shell.js publishes them as PanelUI first). */
+const UI = globalThis.PanelUI;
+const card = `${UI.card} mb-4`;
+const badge = (text, tone) => `<span class="${UI.badge} ${{
   green: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
   yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
   blue: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
@@ -50,18 +51,18 @@ function field(key, prop, required, value) {
     <span class="ms-1 text-xs font-normal text-gray-500">${esc(prop.type || 'any')}${prop.minimum !== undefined ? ` ≥ ${prop.minimum}` : ''}${prop.maximum !== undefined ? ` ≤ ${prop.maximum}` : ''}</span></label>`;
   const help = prop.description ? `<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">${esc(prop.description)}</p>` : '';
   if (Array.isArray(prop.enum)) {
-    return `<div>${label}<select id="${id}" data-key="${esc(key)}" data-type="enum" class="${input}"${req}><option value="">-</option>${prop.enum.map((v) => `<option${String(v) === value ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>${help}</div>`;
+    return `<div>${label}<select id="${id}" data-key="${esc(key)}" data-type="enum" class="${UI.select} block w-full"${req}><option value="">-</option>${prop.enum.map((v) => `<option${String(v) === value ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>${help}</div>`;
   }
   if (prop.type === 'boolean') {
-    return `<div class="flex items-center gap-2 pt-6"><input id="${id}" data-key="${esc(key)}" data-type="boolean" type="checkbox"${value === 'true' ? ' checked' : ''} class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded-sm"><label for="${id}" class="text-sm font-medium text-gray-900 dark:text-white">${esc(key)}</label>${help}</div>`;
+    return `<div class="flex items-center gap-2 pt-6"><input id="${id}" data-key="${esc(key)}" data-type="boolean" type="checkbox"${value === 'true' ? ' checked' : ''} class="${UI.check}"><label for="${id}" class="text-sm font-medium text-gray-900 dark:text-white">${esc(key)}</label>${help}</div>`;
   }
   if (prop.type === 'integer' || prop.type === 'number') {
-    return `<div>${label}<input id="${id}" data-key="${esc(key)}" data-type="${prop.type}" type="number" step="${prop.type === 'integer' ? 1 : 'any'}" value="${esc(value ?? '')}"${prop.minimum !== undefined ? ` min="${prop.minimum}"` : ''}${prop.maximum !== undefined ? ` max="${prop.maximum}"` : ''} class="${input}"${req}>${help}</div>`;
+    return `<div>${label}<input id="${id}" data-key="${esc(key)}" data-type="${prop.type}" type="number" step="${prop.type === 'integer' ? 1 : 'any'}" value="${esc(value ?? '')}"${prop.minimum !== undefined ? ` min="${prop.minimum}"` : ''}${prop.maximum !== undefined ? ` max="${prop.maximum}"` : ''} class="${UI.input} block w-full"${req}>${help}</div>`;
   }
   if (prop.type === 'object' || prop.type === 'array' || !prop.type) {
-    return `<div class="md:col-span-2">${label}<textarea id="${id}" data-key="${esc(key)}" data-type="json" rows="3" placeholder="${prop.type === 'array' ? '[ ]' : '{ }'}" class="${input} font-mono">${esc(value ?? '')}</textarea>${help}</div>`;
+    return `<div class="md:col-span-2">${label}<textarea id="${id}" data-key="${esc(key)}" data-type="json" rows="3" placeholder="${prop.type === 'array' ? '[ ]' : '{ }'}" class="${UI.input} block w-full font-mono">${esc(value ?? '')}</textarea>${help}</div>`;
   }
-  return `<div>${label}<input id="${id}" data-key="${esc(key)}" data-type="string" type="text" value="${esc(value ?? '')}" class="${input}"${req}>${help}</div>`;
+  return `<div>${label}<input id="${id}" data-key="${esc(key)}" data-type="string" type="text" value="${esc(value ?? '')}" class="${UI.input} block w-full"${req}>${help}</div>`;
 }
 
 function readForm() {
@@ -81,6 +82,21 @@ function readForm() {
 
 const shell = (s) => (/^[A-Za-z0-9_./:=-]+$/.test(s) ? s : `'${s.replace(/'/g, "'\\''")}'`);
 
+/* ---- the same call or read on every surface (pure) ------------------------------------------- */
+function toolSurfaces(it, body, host) {
+  const kv = Object.entries(body).map(([k, v]) => `${k}=${typeof v === 'object' ? JSON.stringify(v) : v}`).join(' ');
+  return [
+    ['REST (this panel)', `curl -s -X POST -H 'Content-Type: application/json' -d ${shell(JSON.stringify(body))} http://${host}${it.path}`],
+    ['MCP JSON-RPC', JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'tools/call', params: { name: it.name, arguments: body } })],
+    ['In-game console ~', it.kind === 'client' ? '(the GUI client has its own MCP server; use the panel or REST)' : `mcp ${it.name}${kv ? ' ' + kv : ''}`],
+    ['OpenAPI', `${it.method} ${it.path} · operationId ${it.opId} · /docs`],
+  ];
+}
+const resourceSurfaces = (it, host) => [['REST (this panel)', `curl -s http://${host}${it.path}`],
+  ['MCP JSON-RPC', JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'resources/read', params: { uri: it.name } })],
+  ['In-game console ~', `mcp read ${it.name}`], ['OpenAPI', `GET ${it.path} · operationId ${it.opId} · /docs`]];
+const surfacesHtml = (rows) => rows.map(([k, v]) => `<div><dt class="font-medium text-gray-900 dark:text-white">${esc(k)}</dt><dd class="mt-1 p-2 font-mono text-xs break-all bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200">${esc(v)}</dd></div>`).join('');
+
 /* ---- /tool/<name> and /client/<name> ------------------------------------------------------------- */
 function renderTool(it) {
   const params = new URL(location.href).searchParams;
@@ -90,31 +106,24 @@ function renderTool(it) {
     gated(it) ? badge('approval-gated: a change waits for the owner', 'yellow') : '', readOnly(it) ? badge('read-only', 'green') : ''].join('');
   $('page').innerHTML = `
     <div class="${card}">
-      <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Call it</h2>
+      <h2 class="mb-4 ${UI.cardTitle}">Call it</h2>
       <form id="call" class="grid gap-4 md:grid-cols-2">${Object.keys(props).length
         ? Object.entries(props).map(([k, p]) => field(k, p, required.includes(k), params.get(k))).join('')
         : '<p class="text-sm text-gray-500 dark:text-gray-400 md:col-span-2">This tool takes no parameters.</p>'}
         <div class="md:col-span-2 flex gap-2">
-          <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700">Call ${esc(it.name)}</button>
-          <button type="button" id="share" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Copy link with these values</button>
+          <button type="submit" class="${UI.primary}">Call ${esc(it.name)}</button>
+          <button type="button" id="share" class="${UI.secondary}">Copy link with these values</button>
         </div>
       </form>
       <div id="answer" class="mt-4"></div>
     </div>
     <div class="${card}">
-      <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">The same call elsewhere</h2>
+      <h2 class="mb-4 ${UI.cardTitle}">The same call elsewhere</h2>
       <dl id="surfaces" class="grid gap-3 text-sm"></dl>
     </div>`;
   const surfaces = () => {
     let body = {}; try { body = readForm(); } catch { /* typing */ }
-    const kv = Object.entries(body).map(([k, v]) => `${k}=${typeof v === 'object' ? JSON.stringify(v) : v}`).join(' ');
-    const rows = [
-      ['REST (this panel)', `curl -s -X POST -H 'Content-Type: application/json' -d ${shell(JSON.stringify(body))} http://${location.host}${it.path}`],
-      ['MCP JSON-RPC', JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'tools/call', params: { name: it.name, arguments: body } })],
-      ['In-game console ~', it.kind === 'client' ? '(the GUI client has its own MCP server; use the panel or REST)' : `mcp ${it.name}${kv ? ' ' + kv : ''}`],
-      ['OpenAPI', `${it.method} ${it.path} · operationId ${it.opId} · /docs`],
-    ];
-    $('surfaces').innerHTML = rows.map(([k, v]) => `<div><dt class="font-medium text-gray-900 dark:text-white">${esc(k)}</dt><dd class="mt-1 p-2 font-mono text-xs break-all bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200">${esc(v)}</dd></div>`).join('');
+    $('surfaces').innerHTML = surfacesHtml(toolSurfaces(it, body, location.host));
   };
   $('call').oninput = () => { surfaces(); for (const el of document.querySelectorAll('[data-key]')) setQuery(el.dataset.key, el.type === 'checkbox' ? (el.checked ? 'true' : '') : el.value); };
   $('share').onclick = () => navigator.clipboard?.writeText(location.href);
@@ -147,19 +156,16 @@ function renderResource(it) {
   $('page').innerHTML = `
     <div class="${card}">
       <div class="flex flex-wrap items-center gap-3 mb-3">
-        <button id="refresh" type="button" class="text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600">Read now</button>
-        <label class="inline-flex items-center gap-2 text-sm text-gray-900 dark:text-white"><input id="live" type="checkbox"${live ? ' checked' : ''} class="w-4 h-4 rounded-sm"> Live (every 2 s, kept in the address)</label>
+        <button id="refresh" type="button" class="${UI.primary}">Read now</button>
+        <label class="inline-flex items-center gap-2 text-sm text-gray-900 dark:text-white"><input id="live" type="checkbox"${live ? ' checked' : ''} class="${UI.check}"> Live (every 2 s, kept in the address)</label>
         <span id="read-at" class="text-xs text-gray-500"></span>
       </div>
       <pre id="data" class="p-3 max-h-[40rem] overflow-auto text-xs bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200"></pre>
     </div>
     <div class="${card}">
-      <h2 class="mb-3 text-lg font-semibold text-gray-900 dark:text-white">The same read elsewhere</h2>
+      <h2 class="mb-4 ${UI.cardTitle}">The same read elsewhere</h2>
       <dl class="grid gap-3 text-sm">
-        ${[['REST (this panel)', `curl -s http://${location.host}${it.path}`],
-           ['MCP JSON-RPC', JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'resources/read', params: { uri: it.name } })],
-           ['In-game console ~', `mcp read ${it.name}`], ['OpenAPI', `GET ${it.path} · operationId ${it.opId} · /docs`]]
-          .map(([k, v]) => `<div><dt class="font-medium text-gray-900 dark:text-white">${esc(k)}</dt><dd class="mt-1 p-2 font-mono text-xs break-all bg-gray-50 rounded-lg dark:bg-gray-900 text-gray-800 dark:text-gray-200">${esc(v)}</dd></div>`).join('')}
+        ${surfacesHtml(resourceSurfaces(it, location.host))}
       </dl>
     </div>`;
   let timer = null;
@@ -176,7 +182,7 @@ function renderResource(it) {
   read(); arm();
 }
 
-(async () => {
+const boot = (async () => {
   const doc = await (await fetch('/openapi.json')).json();
   const all = items(doc);
   const path = decodeURIComponent(location.pathname);
@@ -190,3 +196,9 @@ function renderResource(it) {
   $('crumbs').insertAdjacentHTML('beforeend', `<li class="text-gray-400">/</li><li class="text-gray-500 dark:text-gray-400">${esc({ tool: 'Server tools', client: 'GUI client tools', resource: 'Resources' }[it.kind])}</li>`);
   return it.kind === 'resource' ? renderResource(it) : renderTool(it);
 })();
+
+if (typeof module !== 'undefined') {
+  module.exports = {
+    items, gated, readOnly, field, readForm, shell, toolSurfaces, resourceSurfaces, surfacesHtml, alert, badge, boot,
+  };
+}

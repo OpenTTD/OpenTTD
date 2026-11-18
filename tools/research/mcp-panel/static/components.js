@@ -2,22 +2,28 @@
 // Pure functions first (tested with node --test, test/components.test.mjs), DOM components after.
 // Every list, form and stream is derived from what the hub returns; nothing is named here.
 
-/** Flowbite classes already in the panel's compiled app.css (index.html uses each of them). */
+/**
+ * The shell's Pro class sets, one per role (static/shell.js UI): shell.js is the first script of
+ * every page and publishes them as PanelUI before any module runs (a test does the same,
+ * test/panel-ui.mjs). Markup drawn from JS takes a role's set from here, never a copy of it
+ * (test/ui-classes.test.mjs).
+ */
+export const UI = globalThis.PanelUI;
+if (!UI) throw new Error('static/shell.js must run before components.js: it publishes PanelUI');
+
+/** The kit's compositions of those sets (a role's set plus layout) and its own few classes. */
 export const CLS = {
-  card: 'p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800',
-  title: 'mb-3 text-lg font-semibold text-gray-900 dark:text-white',
+  card: `${UI.card} mb-4`,
+  title: `${UI.cardTitle} mb-3`,
   label: 'mb-2 text-sm font-semibold text-gray-900 dark:text-white',
   muted: 'text-xs text-gray-500 dark:text-gray-400',
-  input: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white',
-  primary: 'text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800',
-  secondary: 'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
-  table: 'w-full text-sm text-left text-gray-500 dark:text-gray-400',
-  thead: 'text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400',
+  input: `${UI.input} block w-full`,
+  select: `${UI.select} block w-full`,
+  /** What an input and a select share (UI.input less its padding), for a control its row sizes. */
+  field: UI.input.split(' ').filter((c) => UI.select.split(' ').includes(c)).join(' '),
   cell: 'px-4 py-2',
   link: 'flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700',
   pre: 'w-full rounded-sm bg-gray-900',
-  /** A form control of the panel's pages (the input above plus Flowbite's primary focus ring). */
-  field: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white',
 };
 
 /* ---- the kit every page module shares (classic scripts cannot import it, see app.js) -------- */
@@ -35,9 +41,11 @@ export const TONE = {
   yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
   blue: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
   gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+  red: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+  purple: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
 };
-/** A Flowbite badge of one of TONE's tones, its text escaped. */
-export const badge = (text, tone = 'gray') => `<span class="whitespace-nowrap text-xs font-medium px-2 py-0.5 rounded-sm ${TONE[tone]}">${esc(text)}</span>`;
+/** A Flowbite badge (UI.badge) of one of TONE's tones, its text escaped. */
+export const badge = (text, tone = 'gray') => `<span class="whitespace-nowrap ${UI.badge} ${TONE[tone]}">${esc(text)}</span>`;
 /** Chart ink on the dark theme, and the value/category axis style drawn with it. */
 export const INK = { text: '#d1d5db', muted: '#9ca3af', grid: '#374151' };
 export const AXIS = { axisLabel: { color: INK.muted, hideOverlap: true }, axisLine: { lineStyle: { color: INK.grid } }, splitLine: { lineStyle: { color: INK.grid, type: 'dashed' } } };
@@ -201,8 +209,8 @@ export function operationForm(op, client, { onResult, onUri } = {}) {
   const inputs = {};
   const fields = schemaFields(op.schema).map((f) => {
     let input;
-    if (f.kind === 'enum') input = el('select', { class: CLS.input }, el('option', { value: '' }, '—'), ...f.options.map((o) => el('option', { value: o }, o)));
-    else if (f.kind === 'boolean') input = el('input', { type: 'checkbox' });
+    if (f.kind === 'enum') input = el('select', { class: CLS.select }, el('option', { value: '' }, '—'), ...f.options.map((o) => el('option', { value: o }, o)));
+    else if (f.kind === 'boolean') input = el('input', { type: 'checkbox', class: UI.check });
     else if (f.kind === 'json') input = el('textarea', { class: CLS.input, rows: '3', placeholder: 'JSON' });
     else input = el('input', { class: CLS.input, type: f.kind === 'number' ? 'number' : 'text', value: f.default ?? undefined });
     inputs[f.name] = input;
@@ -213,7 +221,7 @@ export function operationForm(op, client, { onResult, onUri } = {}) {
     inputs[`?${q.name}`] = input;
     return el('label', { class: 'block mb-2' }, el('span', { class: CLS.label }, `?${q.name}` + (q.required ? ' *' : '')), input);
   });
-  const run = el('button', { type: 'submit', class: op.read_only ? CLS.secondary : CLS.primary }, op.read_only ? 'Read' : 'Call');
+  const run = el('button', { type: 'submit', class: op.read_only ? UI.secondary : UI.primary }, op.read_only ? 'Read' : 'Call');
   const form = el('form', { onsubmit: async (e) => {
     e.preventDefault();
     const values = Object.fromEntries(Object.entries(inputs).map(([k, i]) => [k, i.type === 'checkbox' ? i.checked : i.value]));
@@ -260,8 +268,8 @@ export function instancesView(container, instances, state, onPick) {
     el('td', { class: CLS.cell }, el('a', { href: '#', class: 'font-medium text-primary-600 dark:text-primary-500 hover:underline', onclick: (e) => { e.preventDefault(); onPick(state.instance === i.name ? '' : i.name); } }, i.name)),
     el('td', { class: CLS.cell }, i.kind), el('td', { class: CLS.cell }, i.access), el('td', { class: CLS.cell }, String(i.operations)),
     el('td', { class: `${CLS.cell} font-mono text-xs` }, i.base), el('td', { class: CLS.cell }, i.error || ''));
-  container.replaceChildren(el('div', { class: 'overflow-x-auto' }, el('table', { class: CLS.table },
-    el('thead', { class: CLS.thead }, el('tr', {}, ...['Instance', 'Kind', 'Access', 'Operations', 'Base', 'Error'].map((h) => el('th', { class: 'px-4 py-3' }, h)))),
+  container.replaceChildren(el('div', { class: UI.tableWrap }, el('table', { class: UI.table },
+    el('thead', { class: UI.thead }, el('tr', {}, ...['Instance', 'Kind', 'Access', 'Operations', 'Base', 'Error'].map((h) => el('th', { class: 'px-4 py-3' }, h)))),
     el('tbody', {}, ...instances.map(row)))));
 }
 
@@ -376,7 +384,7 @@ export function trackPlanView(container, client, { ops = [], plan = '', instance
   const p = parsePlan(plan) || { from: { x: '', y: '', dir: 'NE' }, to: { x: '', y: '' }, railtype: '' };
   const num = (v) => el('input', { class: CLS.input, type: 'number', min: '0', value: v === '' ? undefined : v });
   const select = (options, value) => {
-    const s = el('select', { class: CLS.input }, ...options.map(([v, label]) => el('option', { value: v }, label)));
+    const s = el('select', { class: CLS.select }, ...options.map(([v, label]) => el('option', { value: v }, label)));
     s.value = value;
     return s;
   };
@@ -409,16 +417,16 @@ export function trackPlanView(container, client, { ops = [], plan = '', instance
           el('span', { class: `${tone} text-xs font-medium px-2.5 py-0.5 rounded-sm` }, s.status),
           s.money === null ? null : el('span', { class: 'text-sm font-semibold text-gray-900 dark:text-white' }, `${s.money.toLocaleString()} (game money${s.exact ? ', exact' : ''})`),
           el('span', { class: CLS.muted }, `${s.pieces} piece(s)`)),
-        el('table', { class: CLS.table }, el('tbody', {}, ...s.counts.map(([k, v]) => el('tr', { class: 'border-b dark:border-gray-700' },
+        el('table', { class: UI.table }, el('tbody', {}, ...s.counts.map(([k, v]) => el('tr', { class: 'border-b dark:border-gray-700' },
           el('th', { class: `${CLS.cell} font-medium text-gray-900 dark:text-white` }, k), el('td', { class: CLS.cell }, Number.isInteger(v) ? v : v.toFixed(1)))))),
-        onStart ? el('button', { type: 'button', class: `${CLS.secondary} mt-3`, onclick: () => onStart(plan.from) }, 'Centre the camera on the start') : null);
+        onStart ? el('button', { type: 'button', class: `${UI.secondary} mt-3`, onclick: () => onStart(plan.from) }, 'Centre the camera on the start') : null);
     } catch (err) { out.replaceChildren(el('p', { class: 'text-sm text-red-800 dark:text-red-300' }, err.message)); }
   } },
   el('label', { class: 'block mb-2' }, el('span', { class: CLS.label }, 'Game'), game),
   field('From (x, y, heading)', fx, fy, fd),
   field('To (x, y)', tx, ty),
   el('label', { class: 'block mb-2' }, el('span', { class: CLS.label }, 'Rail type'), rail),
-  el('button', { type: 'submit', class: CLS.primary }, 'Plan'));
+  el('button', { type: 'submit', class: UI.primary }, 'Plan'));
   container.replaceChildren(games.length ? form : el('p', { class: CLS.muted }, 'No instance publishes openttd://map.'), out);
   loadRail();
 }
@@ -544,7 +552,7 @@ export function maximizable(card, key, { getState, setState, onResize } = {}) {
     if (setState) setState({ max: on ? key : undefined });
     if (onResize) setTimeout(onResize, 30);
   };
-  const button = el('button', { type: 'button', class: CLS.secondary, onclick: () => apply(!card.classList.contains('fixed')) }, 'Maximize');
+  const button = el('button', { type: 'button', class: UI.secondary, onclick: () => apply(!card.classList.contains('fixed')) }, 'Maximize');
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && card.classList.contains('fixed')) { apply(false); button.focus(); } });
   if (getState && getState().max === key) apply(true);
   return button;

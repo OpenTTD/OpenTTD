@@ -1,7 +1,23 @@
 'use strict';
+/* The panel's home (index.html): status, approvals, overview tables, the developer console, live
+   notifications, the cluster, news, the action plan and content. A classic script (it cannot import
+   components.js): the Pro class sets come from the shell (static/shell.js publishes them as
+   PanelUI before this runs). The markup builders are pure and exported for node --test
+   (test/app.test.mjs); everything below them wires them to the page. */
 
 const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+/** The shell's Pro class sets, one per role (static/shell.js UI). */
+const UI = globalThis.PanelUI;
+/** Badge tones (components.js TONE: a classic script cannot import it). */
+const TONE = {
+  green: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+  yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+  gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+  red: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+  purple: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+};
+const tag = (text, tone) => `<span class="${UI.badge} ${TONE[tone]}">${esc(text)}</span>`;
 
 async function api(path, body) {
   const opts = body === undefined ? {} : {
@@ -14,23 +30,73 @@ async function api(path, body) {
 
 const money = (v) => (typeof v === 'number' ? v.toLocaleString('en') : v ?? '-');
 
-async function refreshStatus() {
-  const s = await api('/api/status');
-  $('conn').textContent = s.mcp_up ? 'MCP up' : (s.server_running ? 'server starting' : 'server down');
-  $('conn').className = 'text-xs font-medium px-2.5 py-0.5 rounded-sm ' + (s.mcp_up
-    ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
-    : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300');
-  $('endpoint').textContent = `${s.endpoint} · game 127.0.0.1:${s.game_port}`;
-  $('auto').checked = !!s.auto_approve;
-  $('pending').innerHTML = s.pending.length ? s.pending.map((p) => `
+/* ---- markup from what the panel answers (pure) --------------------------------------------- */
+/** The decisions waiting for the owner, each with its Approve. */
+const pendingHtml = (pending) => (pending.length ? pending.map((p) => `
     <li class="flex items-center justify-between gap-2 p-2 border border-gray-200 rounded-lg dark:border-gray-700">
       <span class="min-w-0 font-mono break-all">#${p.id} ${esc(p.tool)}(${esc(JSON.stringify(p.args))})</span>
-      <button data-approve="${p.id}" type="button" class="shrink-0 text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700">Approve</button>
-    </li>`).join('') : '<li>none</li>';
-  $('events').innerHTML = s.events.map((e) => `
+      <button data-approve="${p.id}" type="button" class="shrink-0 ${UI.primary}">Approve</button>
+    </li>`).join('') : '<li>none</li>');
+/** One point of a Flowbite timeline: a time line and its text. */
+const timelineItem = (time, text, ink = 'text-gray-700 dark:text-gray-300') => `
     <li class="mb-3 ms-4"><div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-      <time class="text-xs font-normal leading-none text-gray-400 dark:text-gray-500">${esc(e.t)} · ${esc(e.kind)}</time>
-      <p class="text-sm text-gray-700 dark:text-gray-300">${esc(e.text)}</p></li>`).join('');
+      <time class="text-xs font-normal leading-none text-gray-400 dark:text-gray-500">${time}</time>
+      <p class="text-sm ${ink}">${esc(text)}</p></li>`;
+const eventsHtml = (events) => events.map((e) => timelineItem(`${esc(e.t)} · ${esc(e.kind)}`, e.text)).join('');
+/** The fleet as a player counts it (primary vehicles by type); an older server only has the pool
+    count, which also counts wagons, parts and effects, and says so. */
+function fleetText(d) {
+  const f = d.fleet;
+  if (!f) return { total: d.num_vehicles, types: 'pool items (wagons, effects included)' };
+  const words = [['train', 'trains'], ['road', 'road'], ['ship', 'ships'], ['aircraft', 'aircraft']];
+  const types = words.filter(([k]) => f[k]).map(([k, w]) => `${f[k]} ${w}`).join(' · ');
+  return { total: f.total, types: types || 'none yet' };
+}
+const companiesHtml = (cs) => (cs.length ? cs.map((c) => `
+    <tr class="border-b dark:border-gray-700"><td class="px-4 py-2">${esc(c.id)}</td>
+      <td class="px-4 py-2 font-medium text-gray-900 dark:text-white">${esc(c.name ?? '')}</td>
+      <td class="px-4 py-2">${c.is_ai ? tag('AI', 'purple') : 'human'}</td>
+      <td class="px-4 py-2">${money(c.money)}</td><td class="px-4 py-2">${money(c.company_value ?? c.value)}</td>
+      <td class="px-4 py-2">${esc(c.inaugurated_year ?? '')}</td></tr>`).join('')
+  : '<tr><td class="px-4 py-3" colspan="6">no company yet (the AI starts one)</td></tr>');
+const decisionsHtml = (ds) => (ds.length ? ds.slice().reverse().map((x) => `
+    <tr class="border-b dark:border-gray-700"><td class="px-4 py-2">${esc(x.decision_id)}</td><td class="px-4 py-2">${esc(x.action_type)}</td>
+      <td class="px-4 py-2">#${esc(x.approval_id)}</td><td class="px-4 py-2">${esc(x.command_result)}</td>
+      <td class="px-4 py-2">${esc(x.verdict)}</td><td class="px-4 py-2">${esc(x.observed_tick)}</td></tr>`).join('')
+  : '<tr><td class="px-4 py-3" colspan="6">none yet</td></tr>');
+
+const clusterHtml = (instances) => instances.map((i) => {
+  const panel = i.url || i.panel;
+  return `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"><td class="px-4 py-2 font-medium text-gray-900 dark:text-white">${esc(i.name)}</td><td class="px-4 py-2">${esc(i.role)}</td><td class="px-4 py-2">${i.alive ? tag('alive', 'green') : tag('down', 'red')}${i.error ? ` <span class="text-xs">${esc(i.error)}</span>` : ''}</td><td class="px-4 py-2"><code>${esc(i.endpoint || i.mcp)}</code></td><td class="px-4 py-2">${panel ? `<a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="${esc(panel)}">${esc(panel)}</a>` : ''}</td></tr>`;
+}).join('') || '<tr><td class="px-4 py-2" colspan="5">no instance registered</td></tr>';
+const newsHtml = (news) => news.map((n) => timelineItem(`${esc(n.date)} · ${esc(n.type)}`, n.text, 'text-gray-900 dark:text-white')).join('')
+  || '<li class="ms-4 text-sm">no news yet</li>';
+const townOptions = (towns) => '<option value="">No viewport</option>'
+  + towns.sort((a, b) => a.name.localeCompare(b.name)).map((t) => `<option value="${t.id}">${esc(t.name)}</option>`).join('');
+const ANSWER = { yes: ['yes', 'green'], replaced: ['replaced', 'gray'], no: ['no', 'red'] };
+const asksHtml = (asks) => asks.slice(0, 10).map((a) => `<li class="flex items-start gap-2"><span>${tag(...(ANSWER[a.answer] || ['waiting for you', 'yellow']))}</span><span class="text-gray-900 dark:text-white">#${a.id} ${esc(a.question)}</span></li>`).join('')
+  || '<li>no question asked yet</li>';
+const planSummary = (res) => `${res.steps.length} press(es) in ${res.waves} wave(s); final cash ${res.final.cash}, loan ${res.final.loan}; lowest cash ${res.lowest?.cash ?? res.lowest}`;
+const planStepsHtml = (steps) => steps.map((s) => `<li>${s.n}. <b>${esc(s.action)}</b> ${s.presses > 1 ? `(${s.press}/${s.presses})` : ''} &rarr; cash ${s.cash}, loan ${s.loan}</li>`).join('');
+/** The action plan as a DAG placed by wave (x) and order within its wave (y). */
+function planGraphOption(graph) {
+  const byWave = {};
+  const nodes = graph.nodes.map((n) => { const i = (byWave[n.wave] = (byWave[n.wave] || 0) + 1) - 1; return { id: n.id, name: `${n.label || n.id}${n.presses > 1 ? ' x' + n.presses : ''}`, x: n.wave * 160, y: i * 70, symbolSize: 38, label: { show: true, color: '#e5e7eb' } }; });
+  return { backgroundColor: 'transparent', tooltip: {}, series: [{ type: 'graph', layout: 'none', roam: 'move', edgeSymbol: ['none', 'arrow'], edgeSymbolSize: 10,
+    data: nodes, links: graph.edges.map((e) => ({ source: e.from, target: e.to })), itemStyle: { color: '#3987e5' }, lineStyle: { color: '#9ca3af', width: 1.5 } }] };
+}
+const contentRowsHtml = (items) => items.map((it) => `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+      <td class="px-3 py-2"><input type="checkbox" value="${it.id}" ${/downloaded|installed/i.test(it.state) ? 'disabled' : ''} class="${UI.check}" aria-label="Select ${esc(it.name)}"></td>
+      <td class="px-3 py-2 font-medium text-gray-900 dark:text-white">${esc(it.name)}</td>
+      <td class="px-3 py-2">${esc(it.type)}</td><td class="px-3 py-2">${esc(it.state)}</td><td class="px-3 py-2 font-mono">${it.id}</td></tr>`).join('');
+
+async function refreshStatus() {
+  // The connection badge (#conn) is the shell's: it polls the same /api/status on every page.
+  const s = await api('/api/status');
+  $('endpoint').textContent = `${s.endpoint} · game 127.0.0.1:${s.game_port}`;
+  $('auto').checked = !!s.auto_approve;
+  $('pending').innerHTML = pendingHtml(s.pending);
+  $('events').innerHTML = eventsHtml(s.events);
   return s;
 }
 
@@ -40,31 +106,15 @@ async function refreshOverview() {
   const d = o.state.data;
   $('s-date').textContent = o.state.game_date ?? '-';
   $('s-tick').textContent = 'tick ' + money(o.state.game_tick);
-  // The fleet as a player counts it (primary vehicles by type); an older server only has the
-  // pool count, which also counts wagons, parts and effects, and says so.
-  const f = d.fleet;
-  $('s-vehicles').textContent = f ? f.total : d.num_vehicles;
-  $('s-fleet-types').textContent = f
-    ? [['train', 'trains'], ['road', 'road'], ['ship', 'ships'], ['aircraft', 'aircraft']].filter(([k]) => f[k]).map(([k, w]) => `${f[k]} ${w}`).join(' · ') || 'none yet'
-    : 'pool items (wagons, effects included)';
+  const fleet = fleetText(d);
+  $('s-vehicles').textContent = fleet.total;
+  $('s-fleet-types').textContent = fleet.types;
   $('s-companies').textContent = d.num_companies;
   $('s-map').textContent = d.num_towns;
   $('s-map-size').textContent = `map ${d.map_width}×${d.map_height}`;
   $('s-paused').textContent = d.paused ? 'paused' : 'running';
-  const cs = (o.companies.data && o.companies.data.companies) || [];
-  $('companies').innerHTML = cs.length ? cs.map((c) => `
-    <tr class="border-b dark:border-gray-700"><td class="px-4 py-2">${esc(c.id)}</td>
-      <td class="px-4 py-2 font-medium text-gray-900 dark:text-white">${esc(c.name ?? '')}</td>
-      <td class="px-4 py-2">${c.is_ai ? '<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-0.5 rounded-sm dark:bg-purple-900 dark:text-purple-300">AI</span>' : 'human'}</td>
-      <td class="px-4 py-2">${money(c.money)}</td><td class="px-4 py-2">${money(c.company_value ?? c.value)}</td>
-      <td class="px-4 py-2">${esc(c.inaugurated_year ?? '')}</td></tr>`).join('')
-    : '<tr><td class="px-4 py-3" colspan="6">no company yet (the AI starts one)</td></tr>';
-  const ds = (o.decisions.data && o.decisions.data.decisions) || [];
-  $('decisions').innerHTML = ds.length ? ds.slice().reverse().map((x) => `
-    <tr class="border-b dark:border-gray-700"><td class="px-4 py-2">${esc(x.decision_id)}</td><td class="px-4 py-2">${esc(x.action_type)}</td>
-      <td class="px-4 py-2">#${esc(x.approval_id)}</td><td class="px-4 py-2">${esc(x.command_result)}</td>
-      <td class="px-4 py-2">${esc(x.verdict)}</td><td class="px-4 py-2">${esc(x.observed_tick)}</td></tr>`).join('')
-    : '<tr><td class="px-4 py-3" colspan="6">none yet</td></tr>';
+  $('companies').innerHTML = companiesHtml((o.companies.data && o.companies.data.companies) || []);
+  $('decisions').innerHTML = decisionsHtml((o.decisions.data && o.decisions.data.decisions) || []);
 }
 
 async function loadCatalogue() {
@@ -77,9 +127,7 @@ async function tick() {
   try {
     const s = await refreshStatus();
     if (s.mcp_up) await refreshOverview();
-  } catch (e) {
-    $('conn').textContent = 'panel unreachable';
-  }
+  } catch (e) { /* the shell's #conn says the panel is unreachable */ }
 }
 
 document.addEventListener('click', async (ev) => {
@@ -113,16 +161,18 @@ function lineClass(t) {
   if (/dbg: \[/.test(t)) return 'text-gray-500';
   return 'text-green-200';
 }
-const out = (s) => {
-  const o = $('console-out');
+/** One console output: JSON pretty and coloured, any other text line by line, each classified. */
+function consoleHtml(s) {
   const text = String(s);
-  let html;
   const trimmed = text.trim();
   if ((trimmed.startsWith('{') || trimmed.startsWith('[')) && trimmed.length > 1) {
-    try { html = `<span class="block">${highlightJson(JSON.parse(trimmed))}</span>`; } catch { html = null; }
+    try { return `<span class="block">${highlightJson(JSON.parse(trimmed))}</span>`; } catch { /* not JSON */ }
   }
-  if (!html) html = text.split('\n').map((l) => `<span class="block ${lineClass(l)}">${esc(l)}</span>`).join('');
-  o.insertAdjacentHTML('beforeend', html);
+  return text.split('\n').map((l) => `<span class="block ${lineClass(l)}">${esc(l)}</span>`).join('');
+}
+const out = (s) => {
+  const o = $('console-out');
+  o.insertAdjacentHTML('beforeend', consoleHtml(s));
   while (o.childElementCount > 2000) o.firstElementChild.remove();
   o.scrollTop = o.scrollHeight;
 };
@@ -171,18 +221,22 @@ async function rhaiStream(script) {
   }
 }
 /* /tail [kinds]: the live event feed streamed into the console. */
+const EVENT_NAMES = ['ai.log', 'console.line', 'company.founded', 'company.renamed', 'company.removed', 'company.observed', 'decision.recorded', 'decision.updated',
+  'game.month', 'game.paused', 'game.resumed', 'game.new_world', 'game.observed', 'vehicles.count', 'panel.mcp', 'panel.operator', 'panel.console', 'panel.rhai', 'panel.ai'];
+/** The event names to listen to for kinds "a,b": each kind, then the children of a kind
+    (company.founded under company), which arrive under their own event names. */
+const tailNames = (kinds) => {
+  const asked = kinds.split(',');
+  const child = (k) => asked.some((x) => k.startsWith(x + '.')) && !asked.includes(k);
+  return [...asked, ...EVENT_NAMES.filter(child)];
+};
 let tailSource = null;
 function tail(kinds) {
   if (tailSource) tailSource.close();
   tailSource = new EventSource('/api/events/stream?kinds=' + encodeURIComponent(kinds));
   tailSource.onmessage = null;
   const show = (m) => { const e = JSON.parse(m.data); out(`[${e.kind}] ${e.data.text || e.data.line || JSON.stringify(e.data)}`); };
-  kinds.split(',').forEach((k) => tailSource.addEventListener(k, show));
-  // Children of a kind (company.founded under company) arrive under their own event names.
-  ['ai.log', 'console.line', 'company.founded', 'company.renamed', 'company.removed', 'company.observed', 'decision.recorded', 'decision.updated',
-    'game.month', 'game.paused', 'game.resumed', 'game.new_world', 'game.observed', 'vehicles.count', 'panel.mcp', 'panel.operator', 'panel.console', 'panel.rhai', 'panel.ai']
-    .filter((k) => kinds.split(',').some((x) => k === x || k.startsWith(x + '.')) && !kinds.split(',').includes(k))
-    .forEach((k) => tailSource.addEventListener(k, show));
+  tailNames(kinds).forEach((k) => tailSource.addEventListener(k, show));
   out(`tailing ${kinds} (/untail to stop)`);
 }
 
@@ -242,12 +296,14 @@ const NOTABLE = (e) => {
   if (e.kind === 'panel.mcp' && /pending approval/.test(d.text || '')) return `Approval needed: ${d.text}`;
   return null;
 };
+/** A notification's body: its kind, its text and a close button. */
+const toastHtml = (kind, text) => `<div class="ms-1 text-sm font-normal"><span class="mb-1 text-xs font-semibold text-gray-900 dark:text-white block">${esc(kind)}</span>${esc(text)}</div>
+    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" aria-label="Close">&times;</button>`;
 function toast(kind, text) {
   const el = document.createElement('div');
-  el.className = 'flex items-start w-full p-4 text-gray-500 bg-white rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800 border border-gray-200 dark:border-gray-700';
+  el.className = `${UI.card} flex items-start w-full text-gray-500 dark:text-gray-400`;
   el.setAttribute('role', 'alert');
-  el.innerHTML = `<div class="ms-1 text-sm font-normal"><span class="mb-1 text-xs font-semibold text-gray-900 dark:text-white block">${esc(kind)}</span>${esc(text)}</div>
-    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" aria-label="Close">&times;</button>`;
+  el.innerHTML = toastHtml(kind, text);
   el.querySelector('button').onclick = () => el.remove();
   $('toasts').prepend(el);
   setTimeout(() => el.remove(), kind.startsWith('panel') ? 30000 : 8000);
@@ -276,18 +332,11 @@ if (window.EventSource) {
 /* ---- cluster: every registered instance, probed live ------------------------------------------ */
 (function cluster() {
   const body = document.getElementById('cluster-body'); if (!body) return;
-  const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const badge = (ok) => ok
-    ? '<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">alive</span>'
-    : '<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">down</span>';
   async function load() {
     try {
       const d = await (await fetch('/api/instances')).json();
       document.getElementById('cluster-reg').textContent = `registry ${d.registry} · ${d.instances.length} instance(s)`;
-      body.innerHTML = d.instances.map((i) => {
-        const panel = i.url || i.panel;
-        return `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"><td class="px-4 py-2 font-medium text-gray-900 dark:text-white">${esc(i.name)}</td><td class="px-4 py-2">${esc(i.role)}</td><td class="px-4 py-2">${badge(i.alive)}${i.error ? ` <span class="text-xs">${esc(i.error)}</span>` : ''}</td><td class="px-4 py-2"><code>${esc(i.endpoint || i.mcp)}</code></td><td class="px-4 py-2">${panel ? `<a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="${esc(panel)}">${esc(panel)}</a>` : ''}</td></tr>`;
-      }).join('') || '<tr><td class="px-4 py-2" colspan="5">no instance registered</td></tr>';
+      body.innerHTML = clusterHtml(d.instances);
     } catch (e) { body.innerHTML = `<tr><td class="px-4 py-2" colspan="5">${esc(e.message)}</td></tr>`; }
   }
   load(); setInterval(load, 5000);
@@ -296,20 +345,19 @@ if (window.EventSource) {
 /* ---- news in the owner's game window: read it, and post to it ------------------------------- */
 (function news() {
   const list = document.getElementById('news-list'); if (!list) return;
-  const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const msg = (t) => { document.getElementById('news-msg').textContent = t; };
   const post = async (path, body) => (await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) })).json();
   async function load() {
     try {
       const d = await (await fetch('/api/news?limit=15')).json();
-      list.innerHTML = (d.news || []).map((n) => `<li class="mb-3 ms-4"><div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div><time class="mb-1 text-xs font-normal leading-none text-gray-400 dark:text-gray-500">${esc(n.date)} · ${esc(n.type)}</time><p class="text-sm text-gray-900 dark:text-white">${esc(n.text)}</p></li>`).join('') || '<li class="ms-4 text-sm">no news yet</li>';
+      list.innerHTML = newsHtml(d.news || []);
     } catch (e) { msg('no GUI client attached yet'); }
   }
   async function towns() {
     try {
       const d = await (await fetch('/api/resources/towns')).json();
       const sel = document.getElementById('news-town');
-      sel.innerHTML = '<option value="">No viewport</option>' + d.data.towns.sort((a, b) => a.name.localeCompare(b.name)).map((t) => `<option value="${t.id}">${esc(t.name)}</option>`).join('');
+      sel.innerHTML = townOptions(d.data.towns);
     } catch (e) { /* the game is still starting */ }
   }
   document.getElementById('news-form').addEventListener('submit', async (e) => {
@@ -326,11 +374,7 @@ if (window.EventSource) {
   async function asks() {
     try {
       const d = await (await fetch('/api/ask')).json();
-      const tag = (a) => a === 'yes' ? '<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">yes</span>'
-        : a === 'replaced' ? '<span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">replaced</span>'
-          : a === 'no' ? '<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">no</span>'
-          : '<span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">waiting for you</span>';
-      document.getElementById('ask-list').innerHTML = (d.asks || []).slice(0, 10).map((a) => `<li class="flex items-start gap-2"><span>${tag(a.answer)}</span><span class="text-gray-900 dark:text-white">#${a.id} ${esc(a.question)}</span></li>`).join('') || '<li>no question asked yet</li>';
+      document.getElementById('ask-list').innerHTML = asksHtml(d.asks || []);
     } catch (e) { /* no GUI client yet */ }
   }
   load(); towns(); asks(); setInterval(load, 4000); setInterval(asks, 3000); setInterval(towns, 60000);
@@ -342,7 +386,6 @@ if (window.EventSource) {
   let chart = null;
   // Through the one door (components.js ecInit, published by overview.js).
   const ec = () => { if (!chart && globalThis.ecInit) chart = globalThis.ecInit(box, echarts); return chart; };
-  const esc = (v) => String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   document.getElementById('plan-run').onclick = async () => {
     let actions;
     try { actions = JSON.parse(document.getElementById('plan-actions').value); } catch (e) { document.getElementById('plan-msg').textContent = 'actions are not JSON: ' + e.message; return; }
@@ -350,13 +393,10 @@ if (window.EventSource) {
     const d = await r.json();
     if (!d.ok) { document.getElementById('plan-msg').textContent = 'refused: ' + JSON.stringify(d.errors || d.error); document.getElementById('plan-steps').innerHTML = ''; return; }
     const res = d.result;
-    document.getElementById('plan-msg').textContent = `${res.steps.length} press(es) in ${res.waves} wave(s); final cash ${res.final.cash}, loan ${res.final.loan}; lowest cash ${res.lowest?.cash ?? res.lowest}`;
-    document.getElementById('plan-steps').innerHTML = res.steps.map((s) => `<li>${s.n}. <b>${esc(s.action)}</b> ${s.presses > 1 ? `(${s.press}/${s.presses})` : ''} &rarr; cash ${s.cash}, loan ${s.loan}</li>`).join('');
-    const byWave = {};
-    const nodes = res.graph.nodes.map((n) => { const i = (byWave[n.wave] = (byWave[n.wave] || 0) + 1) - 1; return { id: n.id, name: `${n.label || n.id}${n.presses > 1 ? ' x' + n.presses : ''}`, x: n.wave * 160, y: i * 70, symbolSize: 38, label: { show: true, color: '#e5e7eb' } }; });
+    document.getElementById('plan-msg').textContent = planSummary(res);
+    document.getElementById('plan-steps').innerHTML = planStepsHtml(res.steps);
     const c = ec(); if (!c) return;
-    c.setOption({ backgroundColor: 'transparent', tooltip: {}, series: [{ type: 'graph', layout: 'none', roam: 'move', edgeSymbol: ['none', 'arrow'], edgeSymbolSize: 10,
-      data: nodes, links: res.graph.edges.map((e) => ({ source: e.from, target: e.to })), itemStyle: { color: '#3987e5' }, lineStyle: { color: '#9ca3af', width: 1.5 } }] }, true);
+    c.setOption(planGraphOption(res.graph), true);
   };
 })();
 
@@ -371,10 +411,7 @@ if (window.EventSource) {
     msg.textContent = 'Asking the content server through the game...';
     const r = await api('/api/content?q=' + encodeURIComponent($('content-q').value));
     if (!r.items) { msg.textContent = 'Not available: ' + (r.error || r.text || r.status); return; }
-    rows.innerHTML = r.items.map((it) => `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-      <td class="px-3 py-2"><input type="checkbox" value="${it.id}" ${/downloaded|installed/i.test(it.state) ? 'disabled' : ''} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm" aria-label="Select ${esc(it.name)}"></td>
-      <td class="px-3 py-2 font-medium text-gray-900 dark:text-white">${esc(it.name)}</td>
-      <td class="px-3 py-2">${esc(it.type)}</td><td class="px-3 py-2">${esc(it.state)}</td><td class="px-3 py-2 font-mono">${it.id}</td></tr>`).join('');
+    rows.innerHTML = contentRowsHtml(r.items);
     rows.querySelectorAll('input[type=checkbox]').forEach((b) => { b.onchange = sync; });
     sync();
     msg.textContent = `${r.count} item(s) for "${r.query}".`;
@@ -388,3 +425,11 @@ if (window.EventSource) {
     msg.innerHTML = r.ids ? `Done: ${esc(lines.join(' | ') || 'downloaded')}. Search again to see the new state.` : 'Refused: ' + esc(r.error || r.text || r.status);
   };
 })();
+
+if (typeof module !== 'undefined') {
+  module.exports = {
+    money, pendingHtml, eventsHtml, fleetText, companiesHtml, decisionsHtml, clusterHtml, newsHtml,
+    townOptions, asksHtml, planSummary, planStepsHtml, planGraphOption, contentRowsHtml, highlightJson,
+    lineClass, consoleHtml, tailNames, NOTABLE, toastHtml, HELP,
+  };
+}
