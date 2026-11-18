@@ -81,7 +81,17 @@ fn main() {
         p["freight"] = serde_json::Value::Array(freight);
         // The bot's declared settings with their live values: which route slots exist, which are
         // free, and which modes it has. Without it the answer falls back to slot 1 and says so.
-        let bot = get(&panel, &token, "ai").unwrap_or(serde_json::Value::Null);
+        // Read once per answer, and only for a sentence that carries something out: a find sentence
+        // never looks at a slot, so it reads exactly the resources it read before slots existed.
+        // The answer then judges every candidate against this one reading, in memory (src/intent.rs
+        // `build`), so a skipped candidate costs no read. Counted rather than timed, with a
+        // counting proxy in front of the panel: 7 reads for a find sentence, 8 for a build
+        // sentence, whatever the number of candidates skipped.
+        let bot = if parsed["action"] == "build" {
+            get(&panel, &token, "ai").unwrap_or(serde_json::Value::Null)
+        } else {
+            serde_json::Value::Null
+        };
         let ans = intent::answer(&parsed, &world, &p, &bot);
         Ok(serde_json::json!({"intent": parsed, "answer": ans, "vocabulary_size": vocab.len(), "vocabulary_from": lang_dir}))
     })();
