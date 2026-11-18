@@ -217,10 +217,6 @@ static bool CreateMainSurface(uint w, uint h)
 	std::string caption = VideoDriver::GetCaption();
 	set_window_title(caption.c_str());
 
-	enable_hardware_cursor();
-	select_mouse_cursor(MOUSE_CURSOR_ARROW);
-	show_mouse(_allegro_screen);
-
 	GameSizeChanged();
 
 	return true;
@@ -450,6 +446,12 @@ std::optional<std::string_view> VideoDriver_Allegro::Start(const StringList &par
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height)) {
 		return "Failed to set up Allegro video";
 	}
+
+	/* By default mouse in Allegro is disabled. VideoDriver code assumes the opposite, so on start we need to enable it. */
+	enable_hardware_cursor();
+	select_mouse_cursor(MOUSE_CURSOR_ARROW);
+	show_mouse(_allegro_screen);
+
 	MarkWholeScreenDirty();
 	set_close_button_callback(HandleExitGameRequest);
 
