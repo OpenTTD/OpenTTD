@@ -3423,8 +3423,8 @@ STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}覆蓋�
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}你確定要覆蓋現有存檔嗎？
 STR_SAVELOAD_DELETE_TITLE                                       :{WHITE}刪除檔案
 STR_SAVELOAD_DELETE_WARNING                                     :{YELLOW}您確定要刪除檔案嗎？
-STR_SAVELOAD_DIRECTORY                                          :{STRING} (路徑)
-STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (上層資料夾)
+STR_SAVELOAD_DIRECTORY                                          :{STRING}（路徑）
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING}（上層資料夾）
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}為存檔輸入一個名稱
 
@@ -3551,7 +3551,7 @@ STR_GENERATION_CLEARING_TILES                                   :{BLACK}產生�
 STR_GENERATION_TOWN_GENERATION                                  :{BLACK}產生市鎮
 STR_GENERATION_LAND_INDUSTRY_GENERATION                         :{BLACK}產生陸上工業
 STR_GENERATION_WATER_INDUSTRY_GENERATION                        :{BLACK}產生水上工業
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}無法移動
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}產生物件
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}產生樹木
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}設定遊戲
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}執行單格迴圈中
@@ -3606,10 +3606,10 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}版本�
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最低相容版本：{SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 雜湊值：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}色盤：{SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :預設值 (D)
-STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :預設 (D) / 32 bpp
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :傳統 (W)
-STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :傳統 (W) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :預設值（D）
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :預設（D）/ 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :傳統（W）
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :傳統（W）/ 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}參數：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :無
 
