@@ -12,8 +12,17 @@ scope:
   - "tools/research/mcp-rhai/src/panel_bot.rs"
   - "tools/research/mcp-rhai/src/panel_decision.rs"
   - "tools/research/mcp-rhai/src/panel_results.rs"
-  - "tools/research/mcp-panel-check --panel http://127.0.0.1:<a panel of your own stack> --start-bot PrismaticAI"
+  - "tools/research/mcp-rhai/src/panel_events.rs"
+  - "tools/research/mcp-rhai/src/reads.rs"
+  - "tools/research/mcp-rhai/src/kernel_feed.rs"
+  - "tools/research/mcp-rhai/build.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-plan.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-intent.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-kernel-feed.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-panel.rs"
+  - "tools/research/mcp-panel-check"
   - "research/mcp-control.md"
+  - ".ai/repo/features/event-bus-and-store.md"
   - ".ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md"
 depends_on:
   - I0080
@@ -24,14 +33,14 @@ acceptance_criteria:
   - "The event kinds are one table in the code; GET /api/bus lists them, and no publish call names a kind outside it (a cargo test)"
   - "mcp-panel-check starts a planned bot and finds plan.portfolio and plan.bot_settings on the bus and in the store's events"
 validation:
-  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel"
-  - "tools/research/mcp-panel-check"
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel --bin mcp-plan --bin mcp-intent --bin mcp-kernel-feed"
+  - "tools/research/mcp-panel-check --panel http://127.0.0.1:<a panel of your own stack> --start-bot PrismaticAI"
 evidence_required:
   - validation_run
 created_at: '2026-11-18'
 started_at: 2026-11-18T03:46:12Z
 started_event: sha256:a6344580c6792bb81dff8e7642178d9936a9dd49be26fbd14c521a0e83cf5ca0
-updated_at: 2026-11-18T04:37:53Z
+updated_at: 2026-11-18T06:34:02Z
 verified_at: 2026-11-18T04:37:33Z
 verified_event: sha256:b2009379699b00012e856759509d9798f13db583a59a418c8d4ca5f05c60d77a
 completed_at: 2026-11-18T04:37:53Z
@@ -49,3 +58,15 @@ evidence:
     result: "mcp-panel-check 29 passed, 0 failed: GET /api/bus lists 35 kinds (plan.* 8 of 8), every topic seen declared, POST /api/bus/publish refuses a panel kind, POST /api/bots/planned started a planned PrismaticAI, plan.portfolio and plan.bot_settings in /api/events, on ZeroMQ (mcp-bus-tail) and in the store. All eight kinds exercised on the same stack (bot start, /api/bots/planned, /api/intent, /api/actionplan, /api/investment, /api/calibration, /api/decision/pull applied and refused, mcp-kernel-feed --publish): store select kind,count(*) where kind like 'plan.%' = action 1, bot_settings 3, calibration 1, directive 2, intent 1, investment 1, kernel 1, portfolio 3, equal to /api/events; plan.intent, plan.action, plan.kernel received by mcp-bus-tail --topic plan"
     commit: a5517e1817aa7e3d15a59a870af250924a642003
     recorded_at: 2026-11-18T04:37:46Z
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel --bin mcp-plan --bin mcp-intent --bin mcp-kernel-feed"
+    result: "Re-validated on 98632381a5 (the I0081 review fixes on origin/master; the two entries above ran on the uncommitted I0081 tree over a5517e1817, recorded at 04:37Z before bcda41efd0 was committed): mcp-panel 81 passed, mcp-plan 32 passed, mcp-intent 26 passed, mcp-kernel-feed 22 passed, 0 failed. New tests: a failing planner answers 502 and starts no bot, a fixed planner answers 200 with its settings (PRISMATIC_PLANNER); a directive whose start_ai call fails answers 502 and still publishes plan.directive (outcome failed, step error); per-step states and outcomes; GET /api/bus answers its kinds with 200 while the tap is down; plan.action books start from missing; the kinds scan reads past a gated function; the digest compares two key orders; reads.rs. Mutations (502 branch off, books always caller, /api/bus 503 kept, scan cut at the first #[cfg(test)]) each made their test fail"
+    commit: 98632381a5f17cb059b7fbae6ce1b107c2c7489a
+    recorded_at: 2026-11-18T06:34:01Z
+  - covers: "validation_run"
+    type: manual
+    command: "tools/research/mcp-e2e --bin /Users/korczis/dev/OpenTTD/build-gate-research/openttd --no-gui --no-browser --seed 3 --panel-port 8857 --mcp-port 8757 --game-port 3997; tools/research/mcp-panel-check --panel http://127.0.0.1:8857 --start-bot PrismaticAI; then a stack on 8858/8758/3998 with PRISMATIC_PLANNER set to a script that exits 3"
+    result: "On 98632381a5 (plan events carry revision 98632381a5): mcp-panel-check 29 passed, 0 failed (GET /api/bus 36 panel-bus kinds, plan.* 8 of 8; POST /api/bots/planned http=200, 601 chars of settings, rail_after=2, no planner error; plan.portfolio and plan.bot_settings in /api/events, on ZeroMQ and in the store). With the failing planner: exit 1, 28 passed, 1 failed in 35 s (http=502, 0 settings, planner error 'exit 3: mcp-plan: forced failure for the live check'); AI companies 1 before and 1 after, so no unplanned bot was started. On the same code before the last rebase (664fefc31c), POST /api/decision/pull of {company_id: 0, settings: aggressiveness=60} answered 200 and published plan.directive {accepted: true, outcome: pending, how: set_setting} with its one step pending (approval 2)"
+    commit: 98632381a5f17cb059b7fbae6ce1b107c2c7489a
+    recorded_at: 2026-11-18T06:34:02Z
