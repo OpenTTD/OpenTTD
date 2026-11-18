@@ -102,7 +102,19 @@ function PrismaticAI::CloseLine(slot, line) {
 	}
 	if (trains.len() > 0) return false;
 	local n = 0;
-	foreach (t in line.path) if (AITile.DemolishTile(t)) n++;
+	local path = line.path, count = path.len();
+	foreach (i, t in path) {
+		/* A level crossing carries a town's road: take only the rail off it (a crossing is always a
+		 * straight piece, so its neighbours along the line say which). DemolishTile would clear the
+		 * road too and cut the town's network. */
+		if (count >= 2 && AIRail.IsLevelCrossingTile(t)) {
+			local prev = (i > 0) ? path[i - 1] : t - (path[1] - t);
+			local next = (i + 1 < count) ? path[i + 1] : t + (t - path[i - 1]);
+			if (AIRail.RemoveRail(prev, t, next)) n++;
+			continue;
+		}
+		if (AITile.DemolishTile(t)) n++;
+	}
 	foreach (t in line.built) if (AITile.DemolishTile(t)) n++;
 	AITile.DemolishTile(line.depot);
 	line.closed = true;
