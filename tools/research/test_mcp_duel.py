@@ -413,6 +413,17 @@ class Verdict(unittest.TestCase):
         self.assertEqual(duel.fnv1a64({"own_lines": 8, "b": 1}), "fnv1a64:846dbf03f70f43fa")
         self.assertEqual(duel.fnv1a64({"b": 1, "own_lines": 8}), duel.fnv1a64({"own_lines": 8, "b": 1}))
 
+    def test_two_duels_ending_in_the_same_second_get_two_names(self):
+        with tempfile.TemporaryDirectory() as d:
+            results = Path(d) / "results"
+            ticks = iter(["20261118T102030", "20261118T102030", "20261118T102031"])
+            waited = []
+            first = duel.claim_name(results, 31337, clock=lambda: "20261118T102030", sleep=waited.append)
+            second = duel.claim_name(results, 31337, clock=lambda: next(ticks), sleep=waited.append)
+            self.assertEqual((first, second), ("duel-20261118T102030-seed31337", "duel-20261118T102031-seed31337"))
+            self.assertEqual(waited, [1, 1], "the taken second is waited out")
+            self.assertTrue((results / f"{second}.json").exists(), "the name is claimed by its file")
+
     def test_plan_duel_is_declared_external_in_the_table_and_the_note(self):
         self.assertIn("plan.duel", EXTERNAL)
         self.assertIn("| `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` |", NOTE.read_text())
