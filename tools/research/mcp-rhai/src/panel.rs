@@ -474,16 +474,91 @@ pub struct Run {
     pub stderr: String,
 }
 
+/// The children of `run` while they run, by pid. Each leads a process group of its own, so a stop
+/// reaches what it started too (mcp-plan --track runs AlgoGlyph's node). Before this, a panel
+/// stopped while the bot's planner ran left mcp-plan running, re-parented to PID 1.
+pub struct Children {
+    pids: Mutex<std::collections::BTreeSet<u32>>,
+    stopping: AtomicBool,
+}
+
+/// Unregisters a child of `run` once it is reaped, or when `run` returns early.
+struct Registered<'a>(&'a Children, u32);
+
+impl Drop for Registered<'_> {
+    fn drop(&mut self) {
+        self.0.pids.lock().unwrap().remove(&self.1);
+    }
+}
+
+impl Children {
+    pub const fn new() -> Self {
+        Children { pids: Mutex::new(std::collections::BTreeSet::new()), stopping: AtomicBool::new(false) }
+    }
+
+    pub fn running(&self) -> usize {
+        self.pids.lock().unwrap().len()
+    }
+
+    /// Spawn `cmd` in a process group of its own and register it; refused once `stop` has begun, so
+    /// nothing starts after the last child was stopped.
+    fn spawn(&self, cmd: &mut Command) -> Result<(Child, Registered<'_>), String> {
+        use std::os::unix::process::CommandExt;
+        let mut pids = self.pids.lock().unwrap();
+        if self.stopping.load(Ordering::SeqCst) {
+            return Err(format!("{cmd:?}: the panel is stopping"));
+        }
+        let child = cmd.process_group(0).spawn().map_err(|e| format!("{cmd:?}: {e}"))?;
+        let pid = child.id();
+        pids.insert(pid);
+        Ok((child, Registered(self, pid)))
+    }
+
+    /// Stop every child and its process group: SIGTERM, then SIGKILL after `grace`; each is reaped by
+    /// the `run` that waits on it. The number of children that were running.
+    pub fn stop(&self, grace: Duration) -> usize {
+        let signal = |sig: libc::c_int| for &pid in self.pids.lock().unwrap().iter() {
+            // SAFETY: kill(2) on a process group this process created and has not yet reaped.
+            unsafe { libc::kill(-(pid as libc::pid_t), sig); }
+        };
+        let n = {
+            let pids = self.pids.lock().unwrap();
+            self.stopping.store(true, Ordering::SeqCst);
+            pids.len()
+        };
+        let wait = |d: Duration| {
+            let deadline = Instant::now() + d;
+            while self.running() > 0 && Instant::now() < deadline { thread::sleep(Duration::from_millis(20)); }
+        };
+        signal(libc::SIGTERM);
+        wait(grace);
+        signal(libc::SIGKILL);
+        wait(Duration::from_secs(1));
+        n
+    }
+}
+
+pub static CHILDREN: Children = Children::new();
+
+/// Stop every subprocess the panel runs (`CHILDREN`): the shutdown path, before the game stops.
+pub fn stop_children(grace: Duration) -> usize {
+    CHILDREN.stop(grace)
+}
+
 /// Run a command to its end within `timeout`, its output captured (stdout to `stdout_file` when
 /// given), `input` on its stdin.
 pub fn run(cmd: &mut Command, input: Option<Vec<u8>>, timeout: Duration, stdout_file: Option<std::fs::File>) -> Result<Run, String> {
+    run_in(&CHILDREN, cmd, input, timeout, stdout_file)
+}
+
+fn run_in(children: &Children, cmd: &mut Command, input: Option<Vec<u8>>, timeout: Duration, stdout_file: Option<std::fs::File>) -> Result<Run, String> {
     let shown = format!("{cmd:?}");
     cmd.stdin(if input.is_some() { Stdio::piped() } else { Stdio::null() }).stderr(Stdio::piped());
     match stdout_file {
         Some(f) => cmd.stdout(f),
         None => cmd.stdout(Stdio::piped()),
     };
-    let mut child = cmd.spawn().map_err(|e| format!("{shown}: {e}"))?;
+    let (mut child, registered) = children.spawn(cmd)?;
     if let (Some(data), Some(mut stdin)) = (input, child.stdin.take()) {
         thread::spawn(move || { let _ = stdin.write_all(&data); });
     }
@@ -498,12 +573,16 @@ pub fn run(cmd: &mut Command, input: Option<Vec<u8>>, timeout: Duration, stdout_
     let status = loop {
         if let Some(s) = child.try_wait().map_err(|e| e.to_string())? { break s; }
         if Instant::now() >= deadline {
+            // SAFETY: kill(2) on the process group of a child not yet reaped; what it started goes too.
+            unsafe { libc::kill(-(child.id() as libc::pid_t), libc::SIGKILL); }
             let _ = child.kill();
             let _ = child.wait();
             return Err(format!("Command {shown} timed out after {} seconds", timeout.as_secs_f64()));
         }
         thread::sleep(Duration::from_millis(20));
     };
+    // Reaped: unregistered now, not after the readers, which a grandchild can hold open.
+    drop(registered);
     Ok(Run { code: status.code().unwrap_or(-1), stdout: out.join().unwrap_or_default(), stderr: err.join().unwrap_or_default() })
 }
 
@@ -2955,6 +3034,45 @@ mod tests {
         for k in ["bus", "store"] {
             assert!(schema["properties"][k]["description"].as_str().is_some_and(|d| d.contains("ADR 0033")), "{k} is described");
         }
+    }
+
+    #[test]
+    fn a_stop_kills_and_reaps_every_child_and_what_it_started() {
+        static KIDS: Children = Children::new();
+        let dir = std::env::temp_dir().join(format!("mcp-panel-children-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let grandchild_file = dir.join("grandchild.pid");
+        let gf = grandchild_file.clone();
+        // A child that started one of its own and waits on it, as mcp-plan --track waits on node.
+        let h = thread::spawn(move || {
+            let mut cmd = Command::new("/bin/sh");
+            cmd.arg("-c").arg("sleep 60 & echo $! > \"$0\"; wait").arg(&gf);
+            run_in(&KIDS, &mut cmd, None, Duration::from_secs(120), None)
+        });
+        let deadline = Instant::now() + Duration::from_secs(10);
+        let grandchild = loop {
+            if let Some(p) = std::fs::read_to_string(&grandchild_file).ok().and_then(|t| t.trim().parse::<i32>().ok()) { break p; }
+            assert!(Instant::now() < deadline, "the child did not start");
+            thread::sleep(Duration::from_millis(20));
+        };
+        assert_eq!(KIDS.running(), 1);
+        let started = Instant::now();
+        assert_eq!(KIDS.stop(Duration::from_secs(3)), 1);
+        assert_eq!(KIDS.running(), 0, "reaped");
+        let r = h.join().unwrap().unwrap();
+        assert_eq!(r.code, -1, "ended by a signal");
+        assert!(started.elapsed() < Duration::from_secs(3), "SIGTERM was enough: {:?}", started.elapsed());
+        // The grandchild got the signal through the process group (launchd or init reaps it).
+        let deadline = Instant::now() + Duration::from_secs(5);
+        // SAFETY: kill(pid, 0) only probes whether the process exists.
+        while unsafe { libc::kill(grandchild, 0) } == 0 {
+            assert!(Instant::now() < deadline, "grandchild {grandchild} survived the stop");
+            thread::sleep(Duration::from_millis(20));
+        }
+        let mut cmd = Command::new("/bin/true");
+        let refused = run_in(&KIDS, &mut cmd, None, Duration::from_secs(5), None).err().unwrap_or_default();
+        assert!(refused.contains("stopping"), "nothing starts after a stop: {refused}");
+        let _ = std::fs::remove_dir_all(&dir);
     }
 
     #[test]

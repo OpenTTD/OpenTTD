@@ -98,6 +98,12 @@ fn main() {
     }
     panel::registry_remove(&me);
     panel::registry_remove(&format!("client-{}", args.panel_port));
+    // The panel's subprocesses (the bot's planner, an intent, a plan) stop with it, before the game:
+    // a planner left running was re-parented to PID 1 and kept calling a panel that was gone.
+    let helpers = panel::stop_children(Duration::from_secs(3));
+    if helpers > 0 {
+        println!("mcp-panel: stopped {helpers} subprocess(es)");
+    }
     game.stop();
     // The events of the stop itself reach the store before the process ends.
     panel_store::stop();
