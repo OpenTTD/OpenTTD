@@ -48,7 +48,7 @@ issues, the same derivation `majordomus plan` makes.
 | [A change is validated at the tier its size needs, and the report cannot round up](milestones/a-change-is-validated-in-cost-tiers.yaml) | 4/4 | — |
 | [Internal state is observable through gated instrumentation, and every experiment records how it ran](milestones/internals-are-observable-with-recorded-provenance.yaml) | 8/8 | — |
 | [Prismatic steers a company in a live game through the standalone bridge](milestones/prismatic-steers-a-company-through-the-bridge.yaml) | 5/5 | — |
-| [An agent reads and, with approval, changes the game over an embedded MCP server](milestones/an-agent-reaches-the-game-over-mcp.yaml) | 51/52 | I0080 |
+| [An agent reads and, with approval, changes the game over an embedded MCP server](milestones/an-agent-reaches-the-game-over-mcp.yaml) | 52/52 | — |
 | [The fork is published, supervised by Majordomus, and current with upstream](milestones/the-fork-is-published-supervised-and-current.yaml) | 7/7 | — |
 | [NoirGFX: the game in the owner's SIG NIHL noir, from OpenGFX and Kenney models](milestones/the-game-wears-the-owners-noir-style.yaml) | 1/1 | — |
 | [Planning decisions read recorded history from the store and publish what they chose as data](milestones/planning-is-generated-from-recorded-history.yaml) | 0/7 | I0081, I0082, I0083, I0084, I0085, I0086, I0087 |

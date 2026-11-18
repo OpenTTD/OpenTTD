@@ -34,4 +34,51 @@ evidence_required:
 created_at: '2026-11-18'
 started_at: 2026-11-17T23:47:53Z
 started_event: sha256:b1d059049ff746f347386634c6cf32d593d017c122608806b4be5d36c977eddc
-updated_at: 2026-11-17T23:47:53Z
+updated_at: 2026-11-18T03:27:32Z
+verified_at: 2026-11-18T03:27:15Z
+verified_event: sha256:b742755d527ceeeb7a2340f6584f6da2a2ecb5493c3711849b27ae6990b03163
+completed_at: 2026-11-18T03:27:32Z
+completed_event: sha256:2d079152339f7b1ba572b7b3d9c55f53a6e021f10c0c2b5fe655fd9d58aae917
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel"
+    result: "53 passed, 0 failed at df5148ed0e (rebased on origin/master 09d160f0a7), incl. a_record_is_mcp_instance_v1 (bus, store) and a_stop_kills_and_reaps_every_child_and_what_it_started"
+    commit: df5148ed0e293189017fd319ee58c3be5a38e375
+    recorded_at: 2026-11-18T03:26:21Z
+  - covers: "validation_run"
+    type: test
+    command: "PANEL_CSS_CHECK=1 node --test tools/research/mcp-panel/test/*.test.mjs"
+    result: "144 tests, 144 pass, 0 fail at df5148ed0e (after app.css was rebuilt; 143/1 before)"
+    commit: df5148ed0e293189017fd319ee58c3be5a38e375
+    recorded_at: 2026-11-18T03:26:29Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-panel-check --panel http://127.0.0.1:8800"
+    result: "22 passed, 0 failed against the deployed panel: /api/bus names tcp://127.0.0.1:60009, mcp-bus-tail receives a prismatic-bus/v1 envelope, SELECT count(*) FROM events > 0, INSERT and a second statement refused 400"
+    commit: df5148ed0e293189017fd319ee58c3be5a38e375
+    recorded_at: 2026-11-18T03:26:35Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-route-check http://127.0.0.1:8800"
+    result: "1597 passed, 0 failed, 78 not exercised of 1675 operations; GET /api/bus, GET /api/db/tables, GET /api/db/query 200, POST /api/db/query empty body 400 (a first run hit one 60 s urllib timeout and was re-run)"
+    commit: df5148ed0e293189017fd319ee58c3be5a38e375
+    recorded_at: 2026-11-18T03:26:43Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-overview-check http://127.0.0.1:8800"
+    result: "30 passed, 0 failed: /data runs SELECT count(*) FROM events from its address (7044) and charts samples.money over game_tick through ecInit (1636 points)"
+    commit: df5148ed0e293189017fd319ee58c3be5a38e375
+    recorded_at: 2026-11-18T03:26:49Z
+  - covers: "validation_run"
+    type: manual
+    command: "mcp-rhai --panel http://127.0.0.1:8800 -e 'print(to_json(api_dbQuery(#{sql: \"select count(*) from events\"})))'; mcp-bus-tail --panel http://127.0.0.1:8800 -n 30; registry panel-8800.json"
+    result: "Rhai: {columns:[count_star()], rows:[[4393]], count:1}; 30 bus messages seq 4673-4702 contiguous and equal to /api/events, schema prismatic-bus/v1, each with instance, session, seed, game_tick, game_date; --topic panel.console and --topic game deliver only those kinds; 8 events in the events table 4-624 ms after their ts_ms; the registry record names bus and store; runs/events/samples = 1/4752/853"
+    commit: df5148ed0e293189017fd319ee58c3be5a38e375
+    recorded_at: 2026-11-18T03:26:57Z
+  - covers: "validation_run"
+    type: manual
+    command: "tools/research/mcp-e2e --bin build-gate-research/openttd --no-gui --no-browser --seed 3 --panel-port 65159 --mcp-port 65160 --game-port 65161; kill -TERM <mcp-e2e> while mcp-plan ran; pgrep"
+    result: "the panel printed 'stopped 1 subprocess(es)'; mcp-plan (pgid 74063) and its npm track-planning child gone, no process of the stack left"
+    commit: df5148ed0e293189017fd319ee58c3be5a38e375
+    recorded_at: 2026-11-18T03:27:03Z
