@@ -9,13 +9,13 @@
    A running bot is changed through one Apply that asks for exactly the keys that differ; each key
    is its own approval (openttd.ai.set_setting), so the button says how many it will ask. */
 
-import { CLS, $, esc as h, whole } from './components.js';
+import { UI, CLS, TONE, $, esc as h, whole } from './components.js';
 
 const LINE = /^([a-z]+?)(\d*)_([a-z]+)$/;
-const INPUT = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block dark:bg-gray-700 dark:border-gray-600 dark:text-white data-[dirty=true]:border-yellow-400 data-[dirty=true]:ring-1 data-[dirty=true]:ring-yellow-400 disabled:opacity-60';
-const BTN = `${CLS.primary} disabled:opacity-50 disabled:cursor-not-allowed`;
-const BTN_ALT = `${CLS.secondary} disabled:opacity-50 disabled:cursor-not-allowed`;
-const badge = (tone, text) => `<span class="bg-${tone}-100 text-${tone}-800 text-xs font-medium px-1.5 py-0.5 rounded-sm dark:bg-${tone}-900 dark:text-${tone}-300">${h(text)}</span>`;
+const INPUT = `${CLS.field} block data-[dirty=true]:border-yellow-400 data-[dirty=true]:ring-1 data-[dirty=true]:ring-yellow-400 disabled:opacity-60`;
+const BTN = `${UI.primary} disabled:cursor-not-allowed`;
+const BTN_ALT = `${UI.secondary} disabled:opacity-50 disabled:cursor-not-allowed`;
+const badge = (tone, text) => `<span class="${UI.badge} ${TONE[tone] || TONE.gray}">${h(text)}</span>`;
 
 /* ---- layout, derived from the names --------------------------------------------------------- */
 
@@ -146,7 +146,7 @@ export function editorMarkup(settings, key, opts = {}) {
   const row = (t, r) => `<tr class="border-t border-gray-200 dark:border-gray-700 align-top" data-line="${r.n}">
       <th scope="row" class="px-2 py-2 font-mono text-xs font-medium text-gray-500 whitespace-nowrap dark:text-gray-400">${r.n}</th>
       ${t.fields.map((f) => (r.cells[f] ? `<td class="px-2 py-1.5 min-w-[12rem]">${controlMarkup(r.cells[f], key, value(r.cells[f]), { ...opts, compact: true })}${state(r.cells[f])}</td>` : '<td></td>')).join('')}</tr>`;
-  const head = (t) => `<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"><tr><th scope="col" class="px-2 py-2">Line</th>${t.fields.map((f) => {
+  const head = (t) => `<thead class="${UI.thead}"><tr><th scope="col" class="px-2 py-2">Line</th>${t.fields.map((f) => {
     const first = t.rows.find((r) => r.cells[f]);
     return `<th scope="col" class="px-2 py-2" title="${h(first ? first.cells[f].description : '')}">${h(f)}</th>`;
   }).join('')}</tr></thead>`;
@@ -156,9 +156,9 @@ export function editorMarkup(settings, key, opts = {}) {
     const span = !unused.length ? '' : unused.length === 1 ? `${unused[0].n}` : `${unused[0].n}–${unused.at(-1).n}`;
     const notes = t.fields.map((f) => { const first = t.rows.find((r) => r.cells[f]); return first ? `<li><span class="font-mono">${h(f)}</span>: ${h(first.cells[f].description || '')}</li>` : ''; }).join('');
     return `<fieldset class="${FIELDSET} xl:col-span-2" data-lines="${h(t.base)}">${legend(`${t.base} lines`, ` <span class="font-normal normal-case">· ${used.length} in use, ${unused.length} unused</span>`)}
-      <div class="overflow-x-auto"><table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">${head(t)}<tbody>${used.map((r) => row(t, r)).join('') || `<tr><td colspan="${t.fields.length + 1}" class="px-2 py-2">no line in use</td></tr>`}</tbody></table></div>
+      <div class="${UI.tableWrap}"><table class="${UI.table}">${head(t)}<tbody>${used.map((r) => row(t, r)).join('') || `<tr><td colspan="${t.fields.length + 1}" class="px-2 py-2">no line in use</td></tr>`}</tbody></table></div>
       ${unused.length ? `<details class="mt-2 group" data-unused><summary class="text-sm font-medium cursor-pointer text-primary-700 dark:text-primary-400 hover:underline">${unused.length} unused line${unused.length > 1 ? 's' : ''} (${span})</summary>
-        <div class="mt-2 overflow-x-auto"><table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">${head(t)}<tbody>${unused.map((r) => row(t, r)).join('')}</tbody></table></div></details>` : ''}
+        <div class="mt-2 ${UI.tableWrap}"><table class="${UI.table}">${head(t)}<tbody>${unused.map((r) => row(t, r)).join('')}</tbody></table></div></details>` : ''}
       <ul class="mt-2 space-y-0.5 text-xs text-gray-500 dark:text-gray-400">${notes}</ul></fieldset>`;
   };
   return `<div class="grid gap-4 xl:grid-cols-2">${groups.map(group).join('')}${tables.map(table).join('')}</div>`;
@@ -200,8 +200,8 @@ function renderRunning() {
     const body = live.length ? editorMarkup(live, `c${c.id}`, { choices, disabled: !canSet, asked: asked.get(c.id) || {} })
       : `<p class="text-sm text-gray-500 dark:text-gray-400">${bots.live && bots.live.list ? 'This AI declares no setting that can change while it runs.' : 'The current values are not readable: this game binary has no openttd.ai.list.'}</p>`;
     return `<article class="p-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-900/40 dark:border-gray-700" data-bot="${h(c.id)}">
-      <header class="flex flex-wrap items-start justify-between gap-3 mb-3">
-        <div class="min-w-0"><h4 class="text-base font-semibold text-gray-900 dark:text-white">${h(c.name || `Company ${c.id}`)}</h4>
+      <header class="${UI.cardHead} mb-3">
+        <div class="${UI.cardHeadTitle}"><h4 class="text-base font-semibold text-gray-900 dark:text-white">${h(c.name || `Company ${c.id}`)}</h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">company ${h(c.id)} · ${h(c.ai || 'AI')}${c.running === false ? ' (stopped)' : ''} · money ${typeof c.money === 'number' ? whole.format(c.money) : h(c.money ?? '-')}</p></div>
         ${live.length ? `<div class="flex shrink-0 items-center gap-2"><span class="text-sm text-gray-500 dark:text-gray-400" data-pending>no change</span>
           <button type="button" class="${BTN_ALT}" data-reset-bot="${h(c.id)}" disabled>Reset</button>

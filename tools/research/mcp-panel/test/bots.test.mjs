@@ -1,5 +1,6 @@
 // node --test tools/research/mcp-panel/test/ : My bot (static/bots.js), laid out from the names the
 // game declares. The fixture is fictional; nothing here talks to a game.
+import './panel-ui.mjs'; // first: shell.js publishes PanelUI before any page script
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { layout, changes, kindOf, editorMarkup } from '../static/bots.js';

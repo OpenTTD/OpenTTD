@@ -41,7 +41,7 @@
 
     <div id="live" data-nav="Live view" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4" data-frame>
       <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Live view: what your game window shows</h2>
+        <div class="flex-1 basis-48 min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Live view: what your game window shows</h2>
           <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">openttd.view.screenshot on the GUI client, about once a second</p></div>
       </div>
       <img id="live-img" alt="The owner's OpenTTD window, refreshed about once a second" class="w-full rounded-sm bg-gray-900">
@@ -51,7 +51,7 @@
     <div class="grid gap-4 xl:grid-cols-2">
       <section class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 relative" data-frame>
         <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-          <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Map (openttd://map)</h2>
+          <h2 class="min-w-0 flex-1 basis-48 text-xl font-bold leading-none text-gray-900 dark:text-white">Map (openttd://map)</h2>
           <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Maximize</button>
         </div>
         <canvas id="map" role="img" aria-label="The whole map, one pixel group per tile, coloured by the chosen layer, with towns and stations" class="w-full aspect-square rounded-sm bg-gray-900"></canvas>
@@ -59,7 +59,7 @@
       </section>
       <section class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 relative" data-frame>
         <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-          <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Road network (/api/graph)</h2>
+          <h2 class="min-w-0 flex-1 basis-48 text-xl font-bold leading-none text-gray-900 dark:text-white">Road network (/api/graph)</h2>
           <button type="button" data-maximize class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">Maximize</button>
         </div>
         <div id="graph" role="img" aria-label="The road network as a graph on map coordinates: junctions, dead ends, stations and town anchors, edges by length" class="w-full aspect-square"></div>
@@ -67,7 +67,7 @@
     </div>
     <section class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mt-4">
       <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Route plan (/api/plan)</h2>
+        <div class="flex-1 basis-48 min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Route plan (/api/plan)</h2>
           <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Model v2 from the game's payment formula and speeds; vehicle costs not modelled. Lines on the map, colour by mode. Click a row: your camera goes to the first town.</p></div>
       </div>
       <div class="relative overflow-x-auto rounded-lg">
@@ -84,7 +84,7 @@
     </section>
     <section id="yards" data-nav="Transfer yards" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mt-4 scroll-mt-20">
       <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Transfer yards, proven before they are built</h2>
+        <div class="flex-1 basis-48 min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Transfer yards, proven before they are built</h2>
         <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Where two planned rail lines meet: the better line's route is laid by AlgoGlyph track-planning and its tiles blocked, then the other line must still leave from a platform beside it (GET /api/plan?track=N&amp;yards=N, src/yards.rs). Click a row: your camera goes to the shared end.</p></div>
         <div class="flex items-center gap-2">
           <a href="/docs#/default/plan" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>
@@ -102,7 +102,7 @@
     </section>
     <section id="calibration" data-nav="Calibration" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mt-4 scroll-mt-20">
       <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">What the lines really earn, fed back into the plan</h2>
+        <div class="flex-1 basis-48 min-w-0"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">What the lines really earn, fed back into the plan</h2>
         <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Every running line's profit per vehicle last year (openttd://vehicles) against the planner's prediction for the same towns or industries; the median ratio per mode becomes <code>params.calibration</code> for the next plan (GET /api/plan?calibrate=1, src/calibrate.rs). Click a row: your camera goes to the line's first station.</p></div>
         <div class="flex items-center gap-2">
           <a href="/docs#/default/plan" class="text-sm text-primary-600 hover:underline dark:text-primary-500">API</a>

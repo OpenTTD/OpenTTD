@@ -6,21 +6,35 @@ Usage: mcp-coverage-check [--probe [--exercise]] [--report] <token-file> [<token
 For each instance (a token file written by `prismatic_mcp start <port> <file>`):
   --probe   first exercise what can be exercised generically: read every resource in
             resources/list, and call every tool annotated readOnlyHint with arguments derived from
-            its inputSchema (a required integer 0, string "", boolean false). Each answer must be a
-            well-formed JSON-RPC result.
+            its inputSchema so that they satisfy it (see "Derived arguments" below). Each answer
+            must be a well-formed JSON-RPC result.
   --exercise  with --probe, also call every tool that is not read-only, once, with the same
             derived arguments, and require a well-formed answer: a result (isError allowed, it must
-            say why) or a JSON-RPC error with a message. ONLY for a throwaway game: it opens dialogs,
-            shows news, writes a screenshot, queues requests and submits a decision (which waits for
-            an approval nobody gives). A tool without readOnlyHint is a finding either way.
+            say why) or a JSON-RPC error with a message. ONLY for a throwaway game: it opens
+            dialogs, shows news, writes a screenshot, queues requests and submits a decision (which
+            waits for an approval nobody gives). A tool without readOnlyHint is a finding either
+            way.
 then read openttd://mcp/coverage, which the server's dispatch keeps, and list every published tool
 and resource that no client has called since the server started.
 
 Exit 0 when every instance's catalogue is covered, 10 when an entry is not (unless --report, which
 only prints), 2 on usage, 1 when an instance cannot be reached or answers malformed JSON-RPC.
 Nothing here names a tool: the catalogue is whatever tools/list and resources/list answer.
+
+Derived arguments: every required property of the inputSchema, recursively, and nothing optional.
+A value is const, else default (when it is in the enum, if any), else the first enum entry, else
+one built from its type: integer/number 0 moved into minimum/maximum, exclusiveMinimum/
+exclusiveMaximum and multipleOf; string "" padded to minLength; boolean false; null; an array of
+its prefixItems (draft-4 tuple items too) filled with `items` up to minItems and cut at maxItems;
+an object of its required properties (additionalProperties for one not in properties). A type
+union takes its first non-null type; an untyped schema is typed by its keywords (properties ->
+object, items -> array, minLength -> string, minimum -> integer), else 0. allOf is merged; anyOf
+and oneOf take their first branch, merged into the schema, so an object-level anyOf of required
+sets requires the first set. Not derived: pattern, format, uniqueItems, minProperties, $ref, and
+the meaning of x-kind (an x-kind: id gets 0 in its range, not an id that exists in the game).
 """
 import json
+import math
 import sys
 import urllib.request
 
@@ -39,14 +53,147 @@ def rpc(token_file, method, params):
     return out
 
 
+COMBINATORS = ("allOf", "anyOf", "oneOf")
+
+
+def merged(schema, branch):
+    """The schema with a branch folded in: required lists joined, properties united."""
+    out = dict(schema)
+    for key, value in branch.items():
+        if key == "required":
+            out["required"] = list(dict.fromkeys(list(out.get("required", [])) + list(value)))
+        elif key == "properties":
+            out["properties"] = {**out.get("properties", {}), **value}
+        else:
+            out[key] = value
+    return out
+
+
+def resolved(schema):
+    """The schema with allOf merged and the first branch of anyOf/oneOf taken, recursively."""
+    out = {k: v for k, v in (schema or {}).items() if k not in COMBINATORS}
+    for branch in (schema or {}).get("allOf", []):
+        out = merged(out, resolved(branch))
+    for key in ("anyOf", "oneOf"):
+        branches = (schema or {}).get(key) or []
+        if branches:
+            out = merged(out, resolved(branches[0]))
+    return out
+
+
+def schema_type(schema):
+    """The one type a value is built as: the first non-null of a union, else inferred."""
+    kind = schema.get("type")
+    if isinstance(kind, list):
+        kind = next((k for k in kind if k != "null"), kind[0] if kind else None)
+    if kind:
+        return kind
+    if any(k in schema for k in ("properties", "required", "additionalProperties")):
+        return "object"
+    if any(k in schema for k in ("items", "prefixItems", "minItems", "maxItems")):
+        return "array"
+    if any(k in schema for k in ("minLength", "maxLength", "pattern")):
+        return "string"
+    if any(k in schema for k in ("minimum", "maximum", "exclusiveMinimum", "exclusiveMaximum",
+                                 "multipleOf")):
+        return "integer"
+    return None
+
+
+def is_number(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def derived_number(schema, integral):
+    """0, or the first candidate built from the bounds that satisfies them all."""
+    lo, hi = schema.get("minimum"), schema.get("maximum")
+    xlo, xhi = schema.get("exclusiveMinimum"), schema.get("exclusiveMaximum")
+    if isinstance(xlo, bool):  # draft 4: a flag on minimum
+        lo, xlo = (None, lo) if xlo else (lo, None)
+    if isinstance(xhi, bool):
+        hi, xhi = (None, hi) if xhi else (hi, None)
+    step = schema.get("multipleOf")
+    step = step if is_number(step) and step > 0 else None
+
+    def fits(v):
+        return ((not is_number(lo) or v >= lo) and (not is_number(hi) or v <= hi)
+                and (not is_number(xlo) or v > xlo) and (not is_number(xhi) or v < xhi)
+                and (step is None or (v / step) == int(v / step)))
+
+    low = lo if is_number(lo) else xlo if is_number(xlo) else None
+    high = hi if is_number(hi) else xhi if is_number(xhi) else None
+    nearest = max(0, lo) if is_number(lo) else 0
+    nearest = min(nearest, hi) if is_number(hi) else nearest
+    candidates = [0, nearest, lo, hi]
+    if is_number(xlo):
+        candidates.append(xlo + 1)
+    if is_number(xhi):
+        candidates.append(xhi - 1)
+    if low is not None and high is not None:
+        candidates.append((low + high) / 2)
+    if step is not None:
+        candidates += [math.ceil(c / step) * step for c in list(candidates) if is_number(c)]
+    for c in candidates:
+        if not is_number(c):
+            continue
+        if integral:
+            for v in (math.ceil(c), math.floor(c)):
+                if fits(v):
+                    return int(v)
+        elif fits(c):
+            return c
+    return int(low) if integral and low is not None else (low if low is not None else 0)
+
+
+def derived_array(schema):
+    prefix, items = schema.get("prefixItems"), schema.get("items")
+    if isinstance(items, list):  # draft 4: a tuple
+        prefix, items = items, schema.get("additionalItems")
+    out = [derived_value(p) for p in prefix or []]
+    count = max(len(out), schema.get("minItems", 0))
+    while len(out) < count and items is not False:
+        out.append(derived_value(items if isinstance(items, dict) else {}))
+    if is_number(schema.get("maxItems")):
+        out = out[:schema["maxItems"]]
+    return out
+
+
+def derived_object(schema):
+    props = schema.get("properties", {})
+    extra = schema.get("additionalProperties")
+    return {name: derived_value(props.get(name, extra if isinstance(extra, dict) else {}))
+            for name in schema.get("required", [])}
+
+
+def derived_value(schema):
+    """A value that satisfies the schema, built from the schema alone (see the usage text)."""
+    s = resolved(schema)
+    if "const" in s:
+        return s["const"]
+    enum = s.get("enum")
+    if "default" in s and (not enum or s["default"] in enum):
+        return s["default"]
+    if enum:
+        return enum[0]
+    kind = schema_type(s)
+    if kind in ("integer", "number"):
+        return derived_number(s, kind == "integer")
+    if kind == "string":
+        return "a" * max(0, s.get("minLength", 0))
+    if kind == "boolean":
+        return False
+    if kind == "null":
+        return None
+    if kind == "array":
+        return derived_array(s)
+    if kind == "object":
+        return derived_object(s)
+    return 0
+
+
 def derived_args(schema):
-    args = {}
-    props = (schema or {}).get("properties", {})
-    for name in (schema or {}).get("required", []):
-        kind = props.get(name, {}).get("type", "string")
-        kind = kind[0] if isinstance(kind, list) else kind
-        args[name] = {"integer": 0, "number": 0, "boolean": False, "array": [], "object": {}}.get(kind, "")
-    return args
+    """The arguments of a tools/call: the inputSchema's value, always an object."""
+    return derived_value({"type": "object", **(schema or {})})
 
 
 def main(argv):
@@ -67,12 +214,15 @@ def main(argv):
                 for t in rpc(tf, "tools/list", {})["result"]["tools"]:
                     hint = t.get("annotations", {}).get("readOnlyHint")
                     if not isinstance(hint, bool):
-                        findings.append(f"{t['name']}: no annotations.readOnlyHint (the probe cannot tell whether it may call it)")
+                        findings.append(f"{t['name']}: no annotations.readOnlyHint"
+                                        " (the probe cannot tell whether it may call it)")
                     if hint is True or exercise:
-                        out = rpc(tf, "tools/call", {"name": t["name"], "arguments": derived_args(t.get("inputSchema"))})
+                        args = derived_args(t.get("inputSchema"))
+                        out = rpc(tf, "tools/call", {"name": t["name"], "arguments": args})
                         if "error" in out and not out["error"].get("message"):
                             findings.append(f"{t['name']}: a JSON-RPC error without a message")
-                        elif "result" in out and out["result"].get("isError") and not (out["result"].get("content") or [{}])[0].get("text"):
+                        elif ("result" in out and out["result"].get("isError")
+                              and not (out["result"].get("content") or [{}])[0].get("text")):
                             findings.append(f"{t['name']}: isError without saying why")
             cov = rpc(tf, "resources/read", {"uri": "openttd://mcp/coverage"})
             data = json.loads(cov["result"]["contents"][0]["text"])["data"]

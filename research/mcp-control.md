@@ -178,7 +178,7 @@ planned bot and its rival started at ticks that depended on the machine's load: 
 ended 10% apart, the same rival 52% (knowledge `duels-run-side-by-side-are-noisy`). With
 `PRISMATIC_START_PAUSED=N` the panel pauses the game before planning, starts its bot, and unpauses once N
 AI companies exist; the server console founds a company while paused, and its script runs from the
-unpause. The duel form sets 2; run `mcp-duel` by hand with `PRISMATIC_START_PAUSED=2`. The plan log of
+unpause. The duel form and `mcp-duel` both default to 2 (`PRISMATIC_START_PAUSED=0` starts unpaused). The plan log of
 the result records the tick it started at. Two identical runs then differed by 0.2%.
 
 **Bot settings per run.** The duel form, `POST /api/duel` (`bot_settings`) and `mcp-duel --bot-settings`
@@ -217,7 +217,7 @@ the held-game re-measure of own lines ran one ten-year duel after the other:
 Answer: **"Run B alongside A now"**. The option text: "Start B (own_lines=8) now with mcp-duel and the
 same held start, next to A. Both done in about 2 h, but two games share the machine and it does not show
 on /results while running." So the two halves of a paired comparison may run at the same time, both
-from a held game (`PRISMATIC_START_PAUSED=2` for `mcp-duel` run outside the panel). The panel still
+from a held game (`mcp-duel` holds the start by default, inside or outside the panel). The panel still
 runs one duel at a time.
 
 `mcp-route-check` never posts `/api/duel`, because it starts something and needs no input.
@@ -368,6 +368,51 @@ registry record:
 `tools/research/mcp-panel-check` proves the chain on a running panel: the endpoint, an envelope
 received by `mcp-bus-tail`, `SELECT count(*) FROM events` > 0, and the refusal of INSERT and of a
 second statement.
+
+### The bus on the Majordomus blackboard
+
+`tools/research/mcp-rhai/src/bin/mcp-bus-blackboard.rs` forwards a digest of every panel's bus to
+the Majordomus blackboard, so an agent session that reads `majordomus_blackboard` or
+`majordomus_peers` sees the games without subscribing to ZeroMQ. It is off by default and runs only
+when started. Toward the panels it only subscribes.
+
+```sh
+B=tools/research/mcp-rhai/target/release/mcp-bus-blackboard
+$B                                    # every live panel record of the registry that names a bus
+$B --panel http://127.0.0.1:8800      # one panel (its GET /api/bus); --endpoint tcp://... works too
+$B --dry-run --duration 120           # print the posts instead of announcing them, stop after 2 min
+```
+
+**What it posts.** It posts a digest, not every event. For each instance there is one line per
+game month, from `game.month`: the date, the fleet, and each company's value, money and vehicles,
+highest value first. Names and per-company fleets come from `game.sample`, `company.observed` and
+`company.renamed`. The rare events are `company.founded`, `company.removed`, `game.new_world`,
+`decision.recorded`, `decision.updated` and `plan.*`. They go out at once, and the newest three are
+kept. Each instance gets at most one post per `--min-gap` (default 30 s). Anything that arrives
+inside the gap goes out with the next post. A rare event is never dropped, and a newer month
+replaces a waiting one. The console, the AI log, news and `panel.*` prose are not subscribed to.
+
+**Where it lands.** The blackboard (Majordomus ADR 0176) is a read-only join of three sources: each
+checkout's board, the mesh journal and the monitor. It writes nothing itself, and a process that is
+not an MCP client has no write path there. So the bridge becomes a board peer. It opens an MCP
+session over HTTP (`POST /mcp`) on the Majordomus server of the primary checkout and calls
+`majordomus_announce` with named claims and no scope:
+
+- `openttd:<instance>:month`: the month line;
+- `openttd:<instance>:events`: the newest rare events;
+- its own unnamed claim, saying which instances it follows.
+
+The server is `--majordomus URL`, otherwise `$MAJORDOMUS_URL`, otherwise what
+`majordomus serve ensure --format json` names for `--repo`. The default is the primary checkout of
+the current repository. The bridge pings the session every 30 s, because the server forgets a
+silent one after 90 s. A forgotten session is opened again and its claims are announced again.
+On SIGINT or SIGTERM, a last announcement says it stopped, and the session ends. The board keeps a
+departed peer's named claims, so the last digest stays readable until the next run replaces it.
+
+The mesh journal (`POST /api/v1/mesh/sessions`, whose intent change is a `session_changed` signal)
+would also reach other machines. It is not used, because on this machine the mesh is closed (the
+node key is not in the declaration's `trust.allow`), and the blackboard reports its mesh source as
+absent.
 
 ## Watching it live, and notifications
 
@@ -902,7 +947,13 @@ diacritics folded. A word that sets the action or the ordering is never also a n
 is not "pošta", mail).
 The only hand vocabulary is three orderings (nearest, most productive, most profitable) and two
 actions (find, build). A build is carried out once its settings reach the bot, through
-`openttd.ai.set_setting` (approval-gated) or the next `start_ai`. Without a budget in the request, the
+`openttd.ai.set_setting` or a fresh `openttd.ai.start` carrying them -- **both approval-gated,
+and there is no third way**. `ai::IsAiAction` (`src/prismatic_mcp/prismatic_mcp_ai.cpp:134`) names
+`ai.set_setting`, `ai.start`, `ai.stop` and `ai.reload`, and the server gates every one of them
+(`prismatic_mcp_server.cpp:908`). This sentence used to read "or the next `start_ai`", which
+invited the reading that starting the bot afresh is the ungated alternative. It is not: an
+operator's approval is structurally required before a sentence lays any track, whichever tool
+carries the settings. Without a budget in the request, the
 panel adds `difficulty.max_loan`, so the portfolio is solved and its solver is named
 (AlgoGlyph knapsack-dp when available).
 

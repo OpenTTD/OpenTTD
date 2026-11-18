@@ -54,6 +54,19 @@ this checkout."). Master was pushed to `a118d1c513`. That session's two uncommit
 (`research/mcp-control.md`, `tools/research/mcp-rhai/src/bin/mcp-intent.rs`) stayed in the work tree,
 unstaged: a push carries commits only.
 
+A third time (AskUserQuestion, same session, 2026-11-18T01:0xZ):
+
+> Local master is ready to push: panel tests 143/144 (1 skipped), overview check 28/28 on :8800. My
+> commits: coverage probe 00cf6f4b7f, panel class sets and tests e61c117896, data test fix 6eb40a2558.
+> It also carries the session kompendium-epistemicke-anihilace-2e's two commits, merged into master as
+> 413be63e14: 16fa03f3b8 (a find sentence skips the unused openttd://ai read) and ef43d8e003 (doc: there
+> is no ungated way for a plan to reach the bot). Its own session blocks master pushes. Push master
+> with them?
+
+Answer: **"Push all (Recommended)"** ("Push master as it is: my three commits plus the peer's two
+reviewed-by-them commits."). Another session pushed master (`6f943beab8`) before this one
+could; both peer commits and the three named here are on origin.
+
 # How to apply it
 
 - Before a push, list `git log origin/master..HEAD --format='%h %s'` and name every commit that is not

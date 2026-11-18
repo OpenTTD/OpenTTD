@@ -53,8 +53,6 @@
   const FRAME = ['pt-20', 'px-4', 'max-w-screen-2xl', 'mx-auto', 'lg:ml-64'];
   const LINK = 'flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700';
   const SUB = 'flex items-center p-2 ps-4 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700';
-  const CONN = 'shrink-0 whitespace-nowrap text-xs font-medium px-2.5 py-0.5 rounded-sm';
-  const BTN = 'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 sm:px-4 sm:py-2 whitespace-nowrap dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700';
 
   /** The Pro class sets of the admin dashboard (reference.md sections 1, 6, 9, 13), one per role. A page's
       markup carries every class of its role's set (test/shell.test.mjs enforces it), plus layout only. */
@@ -75,7 +73,23 @@
     table: 'w-full text-sm text-left text-gray-500 dark:text-gray-400',
     thead: 'text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400',
     badge: 'text-xs font-medium px-2.5 py-0.5 rounded-sm',
+    // A card's header row and its title block: the title grows and wraps, its actions stay on its
+    // row (mcp-overview-check: Maximize never falls below its title).
+    cardHead: 'flex flex-wrap items-start justify-between gap-3',
+    cardHeadTitle: 'min-w-0 flex-1 basis-48',
   });
+  /** Flowbite badge tones, one per state; a badge is UI.badge plus one of them. */
+  const TONE = Object.freeze({
+    green: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    yellow: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    blue: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
+    red: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    purple: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+  });
+  /** The connection badge and the navbar's buttons, built from the sets above (compact on a phone). */
+  const CONN = `shrink-0 whitespace-nowrap ${UI.badge}`;
+  const BTN = UI.secondary.replace('px-4 py-2', 'px-3 py-1.5 sm:px-4 sm:py-2');
 
   const CHEVRON = '<svg class="w-6 h-6 text-gray-400 rtl:rotate-180" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>';
   const HOME = '<svg class="w-5 h-5 me-2.5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>';
@@ -185,6 +199,7 @@
       document.addEventListener('DOMContentLoaded', () => { watch.disconnect(); header(); });
     }
     globalThis.PanelUI = UI;
+    globalThis.PanelTONE = TONE;
     if (app.console) {
       const toConsole = () => { location.href = app.console; };
       document.getElementById('open-console').onclick = toConsole;
@@ -208,8 +223,7 @@
         try {
           const s = await (await fetch(app.status)).json();
           conn.textContent = s.mcp_up ? 'MCP up' : (s.server_running ? 'server starting' : 'server down');
-          conn.className = CONN + (s.mcp_up ? ' bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
-            : ' bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300');
+          conn.className = `${CONN} ${s.mcp_up ? TONE.green : TONE.red}`;
         } catch { conn.textContent = 'panel unreachable'; }
       };
       poll();
@@ -218,6 +232,6 @@
   }
 
   if (typeof module !== 'undefined') {
-    module.exports = { PAGES, APPS, FRAME, UI, pageOf, sidebarHtml, sectionsHtml, navbarHtml, asideHtml, crumbsHtml, headerHtml };
+    module.exports = { PAGES, APPS, FRAME, UI, TONE, pageOf, sidebarHtml, sectionsHtml, navbarHtml, asideHtml, crumbsHtml, headerHtml };
   }
 })();

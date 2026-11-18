@@ -52,8 +52,8 @@ reading A/Bs against repeats.
 
 - Read an A/B only against its own noise: put the rival's spread (the same bot in both arms) next to
   the planned bot's difference. A difference smaller than that says nothing.
-- Run duels with the held start (`PRISMATIC_START_PAUSED=2` for `mcp-duel` run by hand; the panel's
-  duel form sets it), prefer several seeds and repeats over one pair, and run duels one or two at a
+- Run duels with the held start (`mcp-duel` and the panel's duel form both default to
+  `PRISMATIC_START_PAUSED=2` since 2026-11-18; `=0` starts unpaused), prefer several seeds and repeats over one pair, and run duels one or two at a
   time when the result is meant to decide a default.
 - The paired corrected-calibration A/B of 2026-11-17 is such a case: seed 31337 −16.4%
   (794737 vs 950946), seed 20208 +43.5% (796631 vs 555180). Inconclusive; calibration stays off.

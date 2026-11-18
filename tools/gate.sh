@@ -243,6 +243,9 @@ cmd_change() {
   tools/knowledge/refs impact HEAD
   echo "==> tools/knowledge/refs coverage src/ (tracked files no subsystem map attaches to; informational)"
   tools/knowledge/refs coverage src/ | tail -n 1
+  # Offline unit tests of the research tools, found by name (tools/research/test_*.py), not listed.
+  echo "==> python3 -B -m unittest discover -s tools/research -p 'test_*.py' (research tool tests)"
+  python3 -B -m unittest discover -s tools/research -p 'test_*.py'
   if panel_changed; then panel_tests; fi
 
   if [[ ! -f build/CMakeCache.txt ]]; then

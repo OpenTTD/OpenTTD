@@ -33,7 +33,10 @@ trap cleanup EXIT INT TERM
 # Extra settings for the planned bot only (company A), on top of what the panel derives from the plan,
 # e.g. own_lines=8: an A/B of a bot feature without a code change. The panel reads them at bot start.
 export PRISMATIC_BOT_SETTINGS="$BOT_SETTINGS"
-echo "==> duel on :$PANEL, seed $SEED, $MONTHS months${BOT_SETTINGS:+, bot settings $BOT_SETTINGS}"
+# A held start (knowledge duels-run-side-by-side-are-noisy): the panel keeps the game paused until
+# both AI companies exist, so two runs of one seed start from the same state. 0 starts unpaused.
+export PRISMATIC_START_PAUSED="${PRISMATIC_START_PAUSED:-2}"
+echo "==> duel on :$PANEL, seed $SEED, $MONTHS months, held start $PRISMATIC_START_PAUSED${BOT_SETTINGS:+, bot settings $BOT_SETTINGS}"
 "$ROOT_DIR/tools/research/mcp-e2e" --no-gui --no-browser --seed "$SEED" --panel-port "$PANEL" \
   --mcp-port "$(free)" --game-port "$(free)" > "$TMP/stack.log" 2>&1 &
 PID=$!

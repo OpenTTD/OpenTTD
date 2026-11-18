@@ -1,5 +1,6 @@
 // node --test tools/research/mcp-panel/test/ : the overview's chart options (static/overview.js),
 // rendered server-side by ECharts itself, and the one-door rule over every panel script.
+import './panel-ui.mjs'; // first: shell.js publishes PanelUI before any page script
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';

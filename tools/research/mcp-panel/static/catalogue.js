@@ -11,7 +11,7 @@
    breadcrumb clears the deeper ones, the cards follow); a leaf opens the item's own page.
    Pure functions are exported for the Node tests (test/catalogue.test.mjs). */
 
-import { ecInit, maximizable, PALETTE, CLS, esc, badge, patchAddress } from './components.js';
+import { ecInit, maximizable, PALETTE, UI, CLS, esc, badge, patchAddress } from './components.js';
 
 export const KIND_LABEL = { tool: 'Server tools', client: 'GUI client tools', resource: 'Resources' };
 export const SAFETY_LABEL = { gated: 'Approval-gated', read: 'Read-only', other: 'Acts directly' };
@@ -160,7 +160,7 @@ const pill = (facet, value, label, count, active) => `<button type="button" data
     : 'text-gray-900 bg-white border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700'}">${esc(label)}<span class="text-xs opacity-75">${count}</span></button>`;
 
 function itemCard(it) {
-  return `<a href="${esc(it.page)}" class="group flex flex-col h-full p-4 bg-white border border-gray-200 rounded-lg hover:border-primary-500 hover:shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:border-primary-500">
+  return `<a href="${esc(it.page)}" class="${UI.card} group flex flex-col h-full hover:border-primary-500 hover:shadow-md dark:hover:border-primary-500">
     <div class="flex flex-wrap items-center gap-1.5 mb-2">${badge(KIND_LABEL[it.kind].replace(/s$/, ''), 'gray')}${badge(SAFETY_LABEL[it.safety], SAFETY_TONE[it.safety])}${it.cat !== it.ns ? badge(humanize(it.cat)) : ''}</div>
     <h3 class="font-mono text-sm font-semibold text-gray-900 break-all group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">${esc(it.name)}</h3>
     <p class="mt-1 text-sm text-gray-500 line-clamp-3 dark:text-gray-400">${esc(it.summary.replace(/^approval-gated:?\s*/i, '').replace(/^./, (c) => c.toUpperCase()))}</p>
@@ -181,22 +181,22 @@ export function mountCatalogue(box, all, { compact = false, prefix = '', echarts
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
         <div class="relative grow"><label for="${prefix}cq" class="sr-only">Search the catalogue</label>
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"><svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="none" viewBox="0 0 20 20"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/></svg></div>
-          <input id="${prefix}cq" type="search" value="${esc(state.q)}" placeholder="Search ${all.length} tools and resources: name or what it does" class="${CLS.field} ps-10"></div>
+          <input id="${prefix}cq" type="search" value="${esc(state.q)}" placeholder="Search ${all.length} tools and resources: name or what it does" class="${CLS.input} ps-10"></div>
         <span data-count class="text-sm text-gray-500 whitespace-nowrap dark:text-gray-400"></span>
         <button data-reset type="button" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500 whitespace-nowrap">Clear filters</button>
       </div>
       <div data-pills="kind" class="flex flex-wrap gap-2" role="group" aria-label="Kind"></div>
       <div data-pills="safety" class="flex flex-wrap gap-2" role="group" aria-label="Safety"></div>
       <div class="grid gap-3 sm:grid-cols-2">
-        <div><label for="${prefix}cns" class="block mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">Namespace</label><select id="${prefix}cns" data-select="ns" class="${CLS.field}"></select></div>
-        <div><label for="${prefix}ccat" class="block mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">Category</label><select id="${prefix}ccat" data-select="cat" class="${CLS.field}"></select></div>
+        <div><label for="${prefix}cns" class="block mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">Namespace</label><select id="${prefix}cns" data-select="ns" class="${CLS.select}"></select></div>
+        <div><label for="${prefix}ccat" class="block mb-1 text-xs font-medium text-gray-500 dark:text-gray-400">Category</label><select id="${prefix}ccat" data-select="cat" class="${CLS.select}"></select></div>
       </div>
     </div>
     <div class="grid gap-4 lg:grid-cols-3">
       <div id="${chartId}-card" class="${CLS.card} lg:col-span-1 !mb-0 self-start lg:sticky lg:top-20">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-          <div><h3 class="text-base font-semibold text-gray-900 dark:text-white">Map of the catalogue</h3>
-          <p class="text-xs text-gray-500 dark:text-gray-400">A ring zooms in, a leaf opens its page</p></div>
+          <div><h3 class="${UI.cardTitle}">Map of the catalogue</h3>
+          <p class="mt-2 ${UI.cardSub}">A ring zooms in, a leaf opens its page</p></div>
           <div data-toolbar class="flex items-center gap-2"></div>
         </div>
         <nav aria-label="Catalogue drill path"><ol data-crumbs class="flex flex-wrap items-center gap-1 text-sm"></ol></nav>
@@ -205,7 +205,7 @@ export function mountCatalogue(box, all, { compact = false, prefix = '', echarts
       <div class="lg:col-span-2">
         <div data-cards class="grid gap-3 sm:grid-cols-2 ${compact ? 'xl:grid-cols-3' : 'xl:grid-cols-3'}"></div>
         <div class="flex flex-wrap items-center gap-3 mt-4">
-          <button data-more type="button" class="hidden text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">Show more</button>
+          <button data-more type="button" class="hidden ${UI.secondary}">Show more</button>
           ${compact ? '<a data-full class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"></a>' : ''}
         </div>
       </div>

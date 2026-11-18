@@ -3,13 +3,15 @@
 // live in the address (#instance=..&mode=..&kinds=..&exaggeration=..&max=..), so a view is a link.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { HubClient, jsonView, scrollOp, CLS, KINDS, ecInit, maximizable, worldGraphOption, waitingOption, moneyOption, $ } from './components.js';
+import {
+  HubClient, jsonView, scrollOp, UI, CLS, KINDS, ecInit, maximizable, worldGraphOption, waitingOption, moneyOption, $,
+} from './components.js';
 
 const echarts = globalThis.echarts;
 const d3 = globalThis.d3;
 
 // ---- the address is the state -------------------------------------------------------------
-function getState() {
+export function getState() {
   const p = new URLSearchParams(location.hash.replace(/^#/, ''));
   return {
     instance: p.get('instance') || '', mode: p.get('mode') || 'map', max: p.get('max') || undefined,
@@ -17,7 +19,7 @@ function getState() {
     exaggeration: Number(p.get('exaggeration') || 6),
   };
 }
-function setState(patch) {
+export function setState(patch) {
   const s = { ...getState(), ...patch };
   const p = new URLSearchParams();
   if (s.instance) p.set('instance', s.instance);
@@ -43,15 +45,15 @@ async function read(instance, uri) {
 }
 
 /** Instances that publish the world graph, in the hub's order. */
-function candidates() {
-  return [...new Set(ops.filter((o) => o.id === 'resource:openttd://world/graph').map((o) => o.instance))];
+export function candidates(list = ops) {
+  return [...new Set(list.filter((o) => o.id === 'resource:openttd://world/graph').map((o) => o.instance))];
 }
 
 // ---- world graph --------------------------------------------------------------------------
 let graph = null;
 let graphChart = null;
 
-function forcePositions(g, kinds) {
+export function forcePositions(g, kinds) {
   const nodes = g.nodes.filter((n) => kinds.includes(n.kind)).map((n) => ({ id: n.id, x: n.x * 8, y: n.y * 8 }));
   const ids = new Set(nodes.map((n) => n.id));
   const links = g.edges.filter((e) => ids.has(e.from) && ids.has(e.to)).map((e) => ({ source: e.from, target: e.to }));
@@ -80,7 +82,7 @@ function renderGraph(attempt = 0) {
     const edges = graph.edges.filter((e) => e.from === node.id || e.to === node.id);
     const show = scrollOp(ops);
     const button = show ? Object.assign(document.createElement('button'), {
-      type: 'button', className: `${CLS.primary} mb-2`, textContent: 'Show in game',
+      type: 'button', className: `${UI.primary} mb-2`, textContent: 'Show in game',
       onclick: () => client.call('hub.call', { instance: show.instance, id: show.id, body: { x: node.x, y: node.y } }),
     }) : document.createTextNode('');
     $('details').replaceChildren(button, jsonView({ node, edges }));
@@ -90,11 +92,12 @@ function renderGraph(attempt = 0) {
 function graphControls() {
   const s = getState();
   const mode = document.createElement('select');
-  mode.className = CLS.input;
+  mode.className = CLS.select;
   for (const m of ['map', 'force']) mode.append(new Option(m === 'map' ? 'placed on the map' : 'force layout (D3)', m, false, s.mode === m));
   mode.onchange = () => { setState({ mode: mode.value }); renderGraph(); };
   const kinds = KINDS.map((k) => {
-    const box = Object.assign(document.createElement('input'), { type: 'checkbox', checked: s.kinds.includes(k), className: 'me-1' });
+    const box = Object.assign(document.createElement('input'),
+      { type: 'checkbox', checked: s.kinds.includes(k), className: `${UI.check} me-1` });
     box.onchange = () => {
       const now = getState().kinds;
       setState({ kinds: box.checked ? [...new Set([...now, k])] : now.filter((x) => x !== k) });
@@ -111,6 +114,24 @@ function graphControls() {
 // ---- terrain (three.js) -------------------------------------------------------------------
 const TYPE_COLOUR = { C: 0x6b8e23, R: 0x8b7355, r: 0x555555, H: 0xb22222, T: 0x2e5e1e, S: 0x9370db, W: 0x1e6fbf, V: 0x000000, I: 0xdaa520, B: 0x777777, O: 0xaaaaaa };
 let terrain = null;
+
+/** The terrain sampled down to at most 256 cells a side: every cell takes its tile's height (times
+    the exaggeration) and colour (its type's, or the road's where a road way runs). Pure. */
+export function terrainCells(map, ways, exaggeration) {
+  const step = Math.max(1, Math.ceil(Math.max(map.width, map.height) / 256));
+  const cols = Math.ceil(map.width / step), rows = Math.ceil(map.height / step);
+  const ys = [], hexes = [];
+  for (let j = 0; j < rows; j++) {
+    for (let i = 0; i < cols; i++) {
+      const x = Math.min(map.width - 1, i * step), y = Math.min(map.height - 1, j * step);
+      const h = parseInt(map.heights[y].substr(x * 2, 2), 16) || 0;
+      ys.push(h * exaggeration * 0.1);
+      const road = ways && ways.roads && ways.roads[y] && ways.roads[y][x] !== '0';
+      hexes.push(road ? 0x2b2b2b : (TYPE_COLOUR[map.types[y][x]] ?? 0x808080));
+    }
+  }
+  return { cols, rows, ys, hexes };
+}
 
 async function renderTerrain(instance) {
   const [map, ways] = await Promise.all([read(instance, 'openttd://map'), read(instance, 'openttd://map/ways')]);
@@ -139,26 +160,17 @@ async function renderTerrain(instance) {
     renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
     terrain.resize = resize;
   }
-  // Sample down to at most 256 cells a side; every cell takes its tile's type, height and road way.
-  const step = Math.max(1, Math.ceil(Math.max(map.width, map.height) / 256));
-  const cols = Math.ceil(map.width / step), rows = Math.ceil(map.height / step);
+  const { cols, rows, ys, hexes } = terrainCells(map, ways, getState().exaggeration);
   const geometry = new THREE.PlaneGeometry(cols, rows, cols - 1, rows - 1);
   geometry.rotateX(-Math.PI / 2);
   const pos = geometry.attributes.position;
   const colours = new Float32Array(pos.count * 3);
   const colour = new THREE.Color();
-  const exaggeration = getState().exaggeration;
-  for (let j = 0; j < rows; j++) {
-    for (let i = 0; i < cols; i++) {
-      const x = Math.min(map.width - 1, i * step), y = Math.min(map.height - 1, j * step);
-      const k = j * cols + i;
-      const h = parseInt(map.heights[y].substr(x * 2, 2), 16) || 0;
-      pos.setY(k, h * exaggeration * 0.1);
-      const road = ways && ways.roads && ways.roads[y] && ways.roads[y][x] !== '0';
-      colour.setHex(road ? 0x2b2b2b : (TYPE_COLOUR[map.types[y][x]] ?? 0x808080));
-      colours.set([colour.r, colour.g, colour.b], k * 3);
-    }
-  }
+  ys.forEach((y, k) => {
+    pos.setY(k, y);
+    colour.setHex(hexes[k]);
+    colours.set([colour.r, colour.g, colour.b], k * 3);
+  });
   geometry.setAttribute('color', new THREE.BufferAttribute(colours, 3));
   geometry.computeVertexNormals();
   if (terrain.mesh) { terrain.scene.remove(terrain.mesh); terrain.mesh.geometry.dispose(); }
@@ -218,4 +230,5 @@ async function start() {
 }
 
 const ready = new Promise((resolve) => { if (client.ws && client.ws.readyState === 1) resolve(); else if (client.on) client.on('open', resolve); else setTimeout(resolve, 500); });
-ready.then(start).catch((e) => { $('details').textContent = `hub: ${e.message || e}`; });
+export const started = ready.then(start)
+  .catch((e) => { $('details').textContent = `hub: ${e.message || e}`; });
