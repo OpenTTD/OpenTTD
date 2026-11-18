@@ -2939,12 +2939,22 @@ mod tests {
 
     #[test]
     fn a_record_is_mcp_instance_v1() {
-        let r = registry_record("panel-1", &json!({"kind": "panel", "url": "http://127.0.0.1:1", "game_port": 3}));
         let schema: Value = serde_json::from_str(&std::fs::read_to_string(here().join("../schema/mcp-instance.v1.schema.json")).unwrap()).unwrap();
-        for k in schema["required"].as_array().unwrap() { assert!(r.get(k.as_str().unwrap()).is_some(), "{k}"); }
-        for k in r.as_object().unwrap().keys() { assert!(schema["properties"].get(k).is_some(), "{k} is not in the schema"); }
-        assert_eq!(r["schema"], schema["properties"]["schema"]["const"]);
-        assert!(r.get("token").is_none() && r.get("agent_token").is_none());
+        // The entries mcp-panel and h_view_attach write, bus and store included (ADR 0033).
+        for r in [
+            registry_record("panel-1", &json!({"kind": "panel", "role": "dedicated server + panel", "url": "http://127.0.0.1:1",
+                "mcp": "http://127.0.0.1:2/mcp", "game_port": 3, "bus": "tcp://127.0.0.1:4", "store": "/x/panel-1.duckdb"})),
+            registry_record("client-1", &json!({"kind": "client", "role": "GUI client (owner view)", "token_file": "/x/t.json",
+                "panel": "http://127.0.0.1:1"})),
+        ] {
+            for k in schema["required"].as_array().unwrap() { assert!(r.get(k.as_str().unwrap()).is_some(), "{k}"); }
+            for k in r.as_object().unwrap().keys() { assert!(schema["properties"].get(k).is_some(), "{k} is not in the schema"); }
+            assert_eq!(r["schema"], schema["properties"]["schema"]["const"]);
+            assert!(r.get("token").is_none() && r.get("agent_token").is_none());
+        }
+        for k in ["bus", "store"] {
+            assert!(schema["properties"][k]["description"].as_str().is_some_and(|d| d.contains("ADR 0033")), "{k} is described");
+        }
     }
 
     #[test]

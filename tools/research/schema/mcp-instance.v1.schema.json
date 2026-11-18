@@ -16,7 +16,12 @@
     "token_file": {"type": "string", "description": "Path of the 0600 file {agent_token, endpoint}; absent when none was written"},
     "url": {"type": "string", "format": "uri", "description": "A panel's base URL (kind panel)"},
     "producer": {"type": "string"},
-    "game_port": {"type": ["integer", "null"], "description": "A dedicated server's game port; null for a GUI process"}
+    "game_port": {"type": ["integer", "null"], "description": "A dedicated server's game port; null for a GUI process"},
+    "mcp": {"type": "string", "format": "uri", "description": "The MCP endpoint of the dedicated server a panel runs (kind panel)"},
+    "panel": {"type": "string", "format": "uri", "description": "The base URL of the panel that attached this GUI client (kind client)"},
+    "bus": {"type": ["string", "null"], "description": "A panel's event bus (ADR 0033): the ZeroMQ PUB endpoint, tcp://127.0.0.1:<port>, topic = event kind, envelope prismatic-bus/v1; null when the bus could not bind (kind panel)"},
+    "store": {"type": "string", "description": "A panel's DuckDB event store (ADR 0033): the file path (runs, events, samples), or \"off\" when built without the store feature or the file could not be opened; read it through GET|POST /api/db/query while the panel runs, since the panel holds the file's lock (kind panel)"},
+    "supervisor": {"type": "object", "description": "Who supervises the process, from PRISMATIC_MCP_SUPERVISOR (mcp-e2e sets the Majordomus task it was started under); absent when unset"}
   },
   "not": {"anyOf": [{"required": ["agent_token"]}, {"required": ["token"]}]}
 }
