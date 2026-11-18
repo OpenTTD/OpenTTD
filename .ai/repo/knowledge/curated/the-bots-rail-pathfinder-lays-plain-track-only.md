@@ -122,8 +122,10 @@ Three later findings on seed 31337 (bridge repository, branch feat/live-behaviou
   | 20208 | 2824858 | 3690922 | +30.7% | 9 / 15 | duel-20261118T012204, T012206 |
 
   Own lines pay where the planner hands over few lines (9 or 11 trains), and are neutral where it already
-  fills the map (14 trains). The panel's default stays 8 (`OWN_LINES` in panel_bot.rs); I0087 derives it
-  from stored duel outcomes later.
+  fills the map (14 trains). The panel's default stays 8 (`OWN_LINES` in panel_bot.rs). I0087's rule that
+  derives it from stored duel outcomes (own_lines 0 on seed 31337, 16 on 4242 and 20208) did not beat 8 on
+  held-start pairs, and the repeats of those pairs a day later differed by 1-11% per arm. Yesterday's +45% and
+  +31% are therefore one draw per seed (knowledge `own-lines-derived-from-stored-duels-did-not-beat-the-constant`).
 
 # How to apply
 

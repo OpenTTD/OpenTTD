@@ -461,6 +461,11 @@ derived rule wins held-start pairs on three seeds (rule `project.a-tuning-claim-
   (`inputs.live.from_duels`). The panel adds a sentence per value it changed ("planner: own_lines 16 from
   stored duel outcomes (constant 8): ..."). A run's own `--bot-settings` still win over the derived
   values.
+- **Measured, and off.** Held-start ten-year pairs, derived against the constant, on 2026-11-18:
+  seed 31337 own_lines 0, -14.7% (rival spread 29.3%); 4242 own_lines 16, -8.7% (30.5%); 20208
+  own_lines 16, +17.6% (56.0%). None favours the rule beyond its spread, so the switch stays off and
+  `OWN_LINES` stays 8. The records and their readings are under `research/results/` (duel-20261118T102030
+  to T143728), and the knowledge note is `own-lines-derived-from-stored-duels-did-not-beat-the-constant`.
 
 ### The bus on the Majordomus blackboard
 
