@@ -261,6 +261,7 @@ function PrismaticAI::Behaviour() {
 		invest_borrow = AIController.GetSetting("invest_borrow"),
 		air_add_waiting = AIController.GetSetting("air_add_waiting"),
 		rail_twin_max = AIController.GetSetting("rail_twin_max"),
+		rail_double = AIController.GetSetting("rail_double"),
 	};
 	/* Autopilot (default on): a bot nobody gave a plan (no planner line, air or rail pair) grows on
 	 * its own instead of stopping at a few buses. In the LAN AI battle the unplanned default ended
@@ -398,7 +399,7 @@ function PrismaticAI::Start() {
 					own.production + " a month, score " + own.score);
 				local loan_before = AICompany.GetLoanAmount();
 				AICompany.SetLoanAmount(AICompany.GetMaxLoanAmount());
-				if (PrismaticAI.BuildFreightRailRoute(own.from, own.to, own.cargo, PrismaticAI.RailShape(b)) > 0) {
+				if (PrismaticAI.BuildFreightRailRoute(own.from, own.to, own.cargo, PrismaticAI.RailShape(b, true)) > 0) {
 					this.routes++;
 				} else {
 					AICompany.SetLoanAmount(loan_before);

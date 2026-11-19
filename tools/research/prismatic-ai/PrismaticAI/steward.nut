@@ -60,6 +60,16 @@ function PrismaticAI::LineWaiting(line) {
 	return w;
 }
 
+/* Whether a train of `line` stands loading or unloading at the station of `tile`. */
+function PrismaticAI::TrainLoadingAt(line, tile) {
+	local st = AIStation.GetStationID(tile);
+	foreach (t in PrismaticAI.TrainsOf(line)) {
+		if (AIVehicle.GetState(t) != AIVehicle.VS_AT_STATION) continue;
+		if (AIStation.GetStationID(AIVehicle.GetLocation(t)) == st) return true;
+	}
+	return false;
+}
+
 /* The target for `slot` (lines.nut reads this instead of the setting alone): the external steward's
  * setting when it set one, else the in-bot steward's own target when self_steward is on, else -1. */
 function PrismaticAI::EffectiveTarget(slot, what) {
@@ -88,7 +98,14 @@ function PrismaticAI::SelfSteward() {
 			local waiting = PrismaticAI.LineWaiting(line);
 			local loads = waiting.tofloat() / s.capacity.tofloat();
 			local fit = ("wagons_fit" in line) ? line.wagons_fit : s.wagons;
-			if (loads >= STEWARD_GROW_LOADS && s.wagons < fit) {
+			if (("path2" in line) && s.trains < line.trains_max && 2 * waiting * s.trains >= s.capacity &&
+					!PrismaticAI.TrainLoadingAt(line, line.a)) {
+				/* Double track (rail.nut): after AAAHogEx, a train more while half a trainload waits
+				 * and no train is loading at the source to take it. */
+				want.trains = s.trains + 1;
+				why = "add_train (double track): " + waiting + " waiting, half a train is " + (s.capacity / (2 * s.trains)) +
+					", none loading; " + s.trains + " -> " + want.trains + " of " + line.trains_max;
+			} else if (loads >= STEWARD_GROW_LOADS && s.wagons < fit) {
 				local per_wagon = max(1, s.capacity / max(1, s.trains * s.wagons));
 				local more = max(1, min(fit - s.wagons, (waiting + per_wagon - 1) / per_wagon));
 				want.wagons = s.wagons + more;

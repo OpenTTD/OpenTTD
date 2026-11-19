@@ -53,9 +53,11 @@ function PrismaticAI::LineRecord(slot, line) {
 	local st_a = AIStation.GetStationID(line.a), st_b = AIStation.GetStationID(line.b);
 	return "PrismaticAI: rail line " + slot + ": label=" + line.label + "|a=" + line.a + "|b=" + line.b +
 		"|st_a=" + (AIStation.IsValidStation(st_a) ? st_a : -1) + "|st_b=" + (AIStation.IsValidStation(st_b) ? st_b : -1) +
-		"|cargo=" + line.cargo + "|platforms=" + line.trains_max + "|len=" + line.len + "|depot=" + line.depot +
-		"|trains_max=" + line.trains_max + "|wagons_fit=" + fit + "|tiles=" + line.path.len() +
-		"|state=" + (line.closed ? "closed" : "open");
+		"|cargo=" + line.cargo + "|platforms=" + (("platforms" in line) ? line.platforms : line.trains_max) + "|len=" + line.len +
+		"|depot=" + line.depot + "|trains_max=" + line.trains_max + "|wagons_fit=" + fit +
+		"|tiles=" + (line.path.len() + (("path2" in line) ? line.path2.len() : 0)) +
+		/* A double-track line (rail.nut BuildDoubleRailLineAndTrain) says so; a single one as before. */
+		(("path2" in line) ? "|double=1" : "") + "|state=" + (line.closed ? "closed" : "open");
 }
 
 /* The game month now, to log every line's record once a month. */
@@ -101,8 +103,22 @@ function PrismaticAI::CloseLine(slot, line) {
 		}
 	}
 	if (trains.len() > 0) return false;
-	local n = 0;
-	local path = line.path, count = path.len();
+	local n = PrismaticAI.ClearPath(line.path);
+	/* A double-track line's second track (rail.nut BuildDoubleRailLineAndTrain). */
+	if ("path2" in line) n += PrismaticAI.ClearPath(line.path2);
+	/* The stations' own platforms and throats only: a platform of another line joined to the same
+	 * station stays (RemoveRailStation, never DemolishTile on a station tile). */
+	foreach (st in line.stations) PrismaticAI.RemoveRailStation(st, line.len);
+	AITile.DemolishTile(line.depot);
+	line.closed = true;
+	AILog.Info("PrismaticAI: rail line " + slot + " closed: " + line.label + ", " + n + " tiles cleared");
+	AILog.Info(PrismaticAI.LineRecord(slot, line));
+	return true;
+}
+
+/* Clear the track a line laid along `path`; returns the tiles cleared. */
+function PrismaticAI::ClearPath(path) {
+	local n = 0, count = path.len();
 	foreach (i, t in path) {
 		/* A level crossing carries a town's road: take only the rail off it (a crossing is always a
 		 * straight piece, so its neighbours along the line say which). DemolishTile would clear the
@@ -115,14 +131,7 @@ function PrismaticAI::CloseLine(slot, line) {
 		}
 		if (AITile.DemolishTile(t)) n++;
 	}
-	/* The stations' own platforms and throats only: a platform of another line joined to the same
-	 * station stays (RemoveRailStation, never DemolishTile on a station tile). */
-	foreach (st in line.stations) PrismaticAI.RemoveRailStation(st, line.len);
-	AITile.DemolishTile(line.depot);
-	line.closed = true;
-	AILog.Info("PrismaticAI: rail line " + slot + " closed: " + line.label + ", " + n + " tiles cleared");
-	AILog.Info(PrismaticAI.LineRecord(slot, line));
-	return true;
+	return n;
 }
 
 /* Make every line what its targets say (see the head of this file). */
