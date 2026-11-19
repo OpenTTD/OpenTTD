@@ -133,6 +133,19 @@ while single 10-year seeds swung from -29% to +48%. Its gain comes late. Since 2
 the default, on the same basis and with the same caveat as air10+catch (battle evidence, not
 held-start duel pairs).
 
+**The GA's champion became the default.** `PrismaticAI GA g14.0` (= g15.0; its genes came from the
+battle brain's safe proposal g13.brainSafe) beat the default on 20 of 20 common seeds over 20 years,
+with +30.9% mean value. Variants with a higher GA score on 6-7 matches did worse in pairs (g15.3:
+0.903), so the paired comparison, not the GA score, decides a default. Since 2026-11-19 the
+defaults are its genes:
+- aggressiveness 20,
+- air_add_waiting 0, air_max_tiles 420, air_planes 1, air_routes_max 3, air_towns 50,
+- invest_air_cap 12, invest_borrow 1, invest_min 50 (thousand), invest_ppv_div 2, invest_road_cap 20,
+- line_budget 90000,
+- the autopilot's own-lines floor 10.
+max_routes and cash_reserve stay under the autopilot's floors. In short: fewer air routes, and
+investment that starts earlier, accepts lower returns, borrows, and lets routes grow further.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

@@ -65,7 +65,7 @@ class PrismaticAI extends AIController {
 
 /* Autopilot floors (Behaviour): the profile of the battle's "solo-max" contestant, which reached
  * second place with the in-bot steward (research/ai-battle/README.md). */
-const AUTOPILOT_OWN_LINES = 8;
+const AUTOPILOT_OWN_LINES = 10;
 const AUTOPILOT_MAX_ROUTES = 30;
 const AUTOPILOT_CASH_RESERVE = 5000;
 

@@ -22,27 +22,26 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T101219-5133bfd2.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T101219-5133bfd2`](../results/battle-20261119T101219-5133bfd2.md) (0/0 replays identical).
+<!-- derived from research/results/battle-20261119T104404-126e4e25.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T104404-126e4e25`](../results/battle-20261119T104404-126e4e25.md) (0/0 replays identical).
 
-- Edition `5133bfd2cc505f66`: PrismaticAI and referee at `a23cbe0df43781fab4185354556e3c6df595c915`, base set `opengfx-8.0.tar`
+- Edition `126e4e259ee34db8`: PrismaticAI and referee at `0d9c59bb9099897fd7cc68c6e3bd016b79292874`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 47 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-m26d86c75f5), `mbp2` (20261119-master-gdf1e05e7d8), `ubuntu` (20261119-master-gdf1e05e7d8)
+- 39 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-ma23cbe0df4), `mbp2` (20261119-master-gdf1e05e7d8)
 - Replays: 0 of 0 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 47 | 47 | 188 | 4.0 | 1.0 | 94.8 M | 0 | 0 |
-| 2 | PrismaticAI double-track | 7 | 0 | 21 | 3.0 | 2.0 | 14.2 M | 0 | 0 |
-| 3 | PrismaticAI GA g13.0 | 8 | 0 | 24 | 3.0 | 2.0 | 14.2 M | 0 | 0 |
-| 4 | PrismaticAI GA g13.brainSafe | 6 | 0 | 18 | 3.0 | 2.0 | 13.3 M | 0 | 0 |
-| 5 | PrismaticAI | 5 | 0 | 15 | 3.0 | 2.0 | 11.1 M | 0 | 2 |
-| 6 | PrismaticAI GA g13.brainExplore | 7 | 0 | 20 | 2.857 | 2.14 | 9.6 M | 0 | 5 |
-| 7 | PrismaticAI GA g13.3 | 7 | 0 | 19 | 2.714 | 2.29 | 11.8 M | 0 | 0 |
-| 8 | PrismaticAI solo-max | 7 | 0 | 16 | 2.286 | 2.71 | 5.9 M | 0 | 6 |
-| 9 | AdmiralAI | 47 | 0 | 101 | 2.149 | 2.85 | 6.5 M | 0 | 2 |
-| 10 | LuDiAI AfterFix | 47 | 0 | 38 | 0.809 | 4.19 | 1.4 M | 0 | 2 |
-| 11 | CivilAI | 47 | 0 | 10 | 0.213 | 4.79 | 766.8 k | 3695 | 11 |
+| 1 | AAAHogEx | 39 | 39 | 156 | 4.0 | 1.0 | 97.6 M | 0 | 0 |
+| 2 | PrismaticAI GA g15.3 | 6 | 0 | 18 | 3.0 | 2.0 | 12.3 M | 0 | 0 |
+| 3 | PrismaticAI GA g15.0 | 7 | 0 | 20 | 2.857 | 2.14 | 14.4 M | 0 | 0 |
+| 4 | PrismaticAI | 6 | 0 | 17 | 2.833 | 2.17 | 11.2 M | 0 | 0 |
+| 5 | PrismaticAI GA g15.brainSafe | 7 | 0 | 18 | 2.571 | 2.43 | 10.9 M | 0 | 5 |
+| 6 | PrismaticAI GA g15.brainExplore | 6 | 0 | 15 | 2.5 | 2.5 | 8.5 M | 0 | 1 |
+| 7 | PrismaticAI solo-max | 7 | 0 | 16 | 2.286 | 2.71 | 6.0 M | 0 | 7 |
+| 8 | AdmiralAI | 39 | 0 | 86 | 2.205 | 2.79 | 6.7 M | 47 | 1 |
+| 9 | LuDiAI AfterFix | 39 | 0 | 37 | 0.949 | 4.05 | 1.9 M | 0 | 0 |
+| 10 | CivilAI | 39 | 0 | 7 | 0.179 | 4.82 | 668.2 k | 0 | 5 |
 <!-- battle:end -->
 
 ## How it fits together
@@ -246,6 +245,9 @@ The first editions showed two failures. The battle now catches both by itself.
   free source platform (it used to wait until no train was loading, which almost never held under
   a full load). On 3 seeds at 10 years it gave -28.8%, +47.5% and +11.6%: too chaotic for a single
   seed to decide, so the battle pairs it over 20 years.
+- **Champion to default.** The GA's elite g14.0/g15.0 (a brain proposal) beat the default on
+  20 of 20 common seeds (+30.9%), and its genes became the bot's defaults. A paired comparison
+  against the default decides this; a variant's GA score over 6-7 matches can rank wrongly.
 - **Last places cost.** The score subtracts `last_penalty` x the share of matches a variant
   ended last, so explorers that end last are culled fast.
 - **Defaults.** A tuned variant is a candidate. It becomes a default only through held-start duel
