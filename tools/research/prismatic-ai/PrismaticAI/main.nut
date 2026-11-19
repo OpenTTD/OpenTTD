@@ -22,6 +22,8 @@ PACE <- 20;
 RAIL_LINES <- [];
 /* air_full_load of the current heartbeat: BuildAirRoute is a static function, so it reads this. */
 PRISMATIC_FULL_LOAD <- 0;
+/* The most levelling one airport site may cost (setting air_level_max, in thousands; air.nut). */
+AIR_LEVEL_MAX <- 15000;
 
 
 class PrismaticAI extends AIController {
@@ -248,6 +250,7 @@ function PrismaticAI::Behaviour() {
 		air_towns = AIController.GetSetting("air_towns"),
 		air_min_tiles = AIController.GetSetting("air_min_tiles"),
 		air_max_tiles = AIController.GetSetting("air_max_tiles"),
+		air_level_max = AIController.GetSetting("air_level_max") * 1000,
 		foreign_airports = AIController.GetSetting("foreign_airports"),
 		invest_min = AIController.GetSetting("invest_min") * 1000,
 		invest_ppv_div = AIController.GetSetting("invest_ppv_div"),
@@ -325,6 +328,7 @@ function PrismaticAI::Start() {
 		this.steward_on = b.self_steward == 1;
 		/* Before anything is built this heartbeat: the first air route reads it too. */
 		PRISMATIC_FULL_LOAD = b.air_full_load;
+		AIR_LEVEL_MAX = b.air_level_max;
 		local knobs = "aggressiveness=" + b.aggressiveness + " max_routes=" + b.max_routes + " cash_reserve=" + b.cash_reserve +
 			" intercity=" + b.intercity + " self_steward=" + b.self_steward + " own_lines=" + b.own_lines +
 			(b.autopiloted ? " autopilot=engaged" : (b.grows ? " autopilot=growth-on-plan" : ""));

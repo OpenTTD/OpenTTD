@@ -1657,7 +1657,7 @@ def cmd_fitness(cfg: dict) -> int:
 
 
 def cmd_ablate(cfg: dict, seed: int, years: int, variants: list[str], field: list[str],
-               write: bool) -> int:
+               write: bool, log_dir: str | None = None) -> int:
     """Run one local match per variant of the working tree's PrismaticAI (settings "name=a=1,b=2"),
     each against the same field on the same seed, in parallel, and print (and with --write record
     under research/results/) every variant's final standing. Deterministic: same tree, binary and
@@ -1693,10 +1693,13 @@ def cmd_ablate(cfg: dict, seed: int, years: int, variants: list[str], field: lis
             (per / "scripts" / "game_start.scr").write_text(start_script_text(lineup))
             procs.append((name, settings, lineup, subprocess.Popen(
                 [str(binary), "-c", "battle.cfg", "-x", "-v", f"null:ticks={match_ticks(years)}", "-s", "null",
-                 "-m", "null", "-g", "-G", str(seed), "-d", "script=1"], cwd=tmp,
+                 "-m", "null", "-g", "-G", str(seed), "-d", f"script={4 if log_dir else 1}"], cwd=tmp,
                 env=dict(os.environ, HOME=str(home)), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)))
         for name, settings, lineup, proc in procs:
             out, _ = proc.communicate(timeout=1800)
+            if log_dir:
+                Path(log_dir).mkdir(parents=True, exist_ok=True)
+                (Path(log_dir) / f"{name}.log").write_text(out)
             series, errors = parse_log(out)
             mine = series.get(0, [])
             last = mine[-1] if mine else {}
@@ -1762,6 +1765,7 @@ def main(argv: list[str] | None = None) -> int:
                     help='ablate: "name=setting=v,setting=v" (the first is the baseline), repeatable')
     ap.add_argument("--field", default="AAAHogEx,AdmiralAI", help="ablate: comma-separated opponents")
     ap.add_argument("--write", action="store_true", help="ablate: record under research/results/")
+    ap.add_argument("--log-dir", help="ablate: keep each variant's full log (script debug level 4) here")
     ap.add_argument("--edition", help="report: a past edition (its arena bundle must still be the "
                                       "prepared one, for its provenance)")
     a = ap.parse_args(argv)
@@ -1790,7 +1794,7 @@ def main(argv: list[str] | None = None) -> int:
     elif a.command == "reap":
         Orchestrator(cfg).reap()
     elif a.command == "ablate":
-        return cmd_ablate(cfg, a.seed, a.years, a.variant, a.field.split(","), a.write)
+        return cmd_ablate(cfg, a.seed, a.years, a.variant, a.field.split(","), a.write, a.log_dir)
     return 0
 
 

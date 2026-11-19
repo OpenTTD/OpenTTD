@@ -255,6 +255,13 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
+			name = "air_level_max",
+			description = "Most levelling one airport site may cost, in thousands (a hilly map needs more).",
+			min_value = 0, max_value = 200,
+			easy_value = 15, medium_value = 15, hard_value = 15, custom_value = 15, step_size = 5,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
 			name = "foreign_airports",
 			description = "Autopilot: skip a town with this many airports of other companies within 16 tiles (0: never skip).",
 			min_value = 0, max_value = 5,
