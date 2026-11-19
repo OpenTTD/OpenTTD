@@ -19,7 +19,8 @@ tools/research/prismatic-ai/install --check  # exit 0 when the game loads this c
 ```
 
 The personal folder gets a symlink, never a copy, so the next `start_ai PrismaticAI` loads an
-edit made here. A real folder found there is moved aside to `PrismaticAI.bak.<time>`. Run the
+edit made here. A real folder found there is moved aside to `ai-backup/PrismaticAI.<time>`, outside
+`ai/`, because the game scans every folder of `ai/` and a backup left there is a second PrismaticAI. Run the
 script from another worktree to point the game at that worktree's bot. `--personal DIR` covers
 another personal directory: Linux uses `$XDG_DATA_HOME/openttd`, and a test run can use a scratch
 `HOME`.

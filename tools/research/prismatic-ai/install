@@ -9,8 +9,9 @@
 # Usage: tools/research/prismatic-ai/install [--personal DIR] [--check]
 #   --personal DIR   the personal directory (default: derived as above)
 #   --check          report where PrismaticAI resolves and exit 0 when it is this checkout, 1 otherwise
-# A folder that is not already a symlink here is moved aside to PrismaticAI.bak.<timestamp>, never
-# deleted. Running it from another worktree points the game at that worktree's bot.
+# A folder that is not already a symlink here is moved aside to <personal>/ai-backup/PrismaticAI.<time>,
+# never deleted, and outside ai/: the game scans every folder of ai/ for an info.nut, so a backup left
+# there is a second PrismaticAI. Running it from another worktree points the game at that worktree's bot.
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC="$HERE/PrismaticAI"
@@ -38,7 +39,8 @@ if [[ "$target" == "$SRC" ]]; then echo "PrismaticAI already -> $SRC"; exit 0; f
 if [[ -L "$DEST" ]]; then
   rm "$DEST"
 elif [[ -e "$DEST" ]]; then
-  bak="$DEST.bak.$(date +%Y%m%dT%H%M%S)"
+  mkdir -p "$PERSONAL/ai-backup"
+  bak="$PERSONAL/ai-backup/PrismaticAI.$(date +%Y%m%dT%H%M%S)"
   mv "$DEST" "$bak"
   echo "moved the old folder aside: $bak"
 fi
