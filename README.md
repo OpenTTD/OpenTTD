@@ -462,11 +462,11 @@ from the code. The right-hand column says what was counted.
 | **63** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
 | **36** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
 | **9** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
-| **12** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
+| **13** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
 | **34** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **86** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
 | **84** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **455** | published documents on the site and the wiki | published documents under `/` |
+| **456** | published documents on the site and the wiki | published documents under `/` |
 <!-- surfaces:end facts -->
 
 ## How it compares
@@ -1048,6 +1048,7 @@ itself (generated):
 | [Research / validation layer](research/README.md) | This directory is part of this fork's own process scaffolding, not upstream OpenTTD material — see AGENTS.md for the full context (this repo is a personal research fork used as a validation target for the Prismatic... |
 | [Experiment report: baseset-prerequisite-macos](research/baseset-prerequisite-macos.md) | The four regression ctest cases (regression_regression, regression_stationlist, regression_gs, regression_gs_compat) require a base graphics set to be installed, even though they run headless (-vnull -snull -mnull).... |
 | [Experiment report:](research/experiment-template.md) | List the exact commands run and their outcome. Don't summarize away detail — "ran the tests" is not enough, "tools/gate.sh change -> exit 0, 98/98 tests" is. |
+| [Live arena](research/live-arena.md) | RESEARCH-ONLY. The live arena is the visible counterpart of the LAN AI battle. It has the same contestants as the battle: PrismaticAI from this repository, its solo-max variant, and four AIs from BaNaNaS. They play... |
 | [The public C++ API through MCP and OpenAPI](research/mcp-api.md) | RESEARCH-ONLY. Issue I0036, rule project.public-api-is-exposed. |
 | [The MCP catalogue in the in-game console](research/mcp-console.md) | RESEARCH-ONLY, UNSTABLE. Issue I0067; rule project.mcp-surfaces-are-derived. |
 | [Driving OpenTTD from outside: MCP panel, developer console and Rhai](research/mcp-control.md) | RESEARCH-ONLY. The embedded MCP server (ADR 0008, research/prismatic-mcp/) is the channel; this is the tooling that drives a running game through it. Everything binds to loopback. |
