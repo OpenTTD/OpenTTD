@@ -20,11 +20,19 @@ EVERY=0
 # there failed on fresh maps (GA g30.brainSafe/brainSafe1 each ended last once).
 POSTMORTEM="${BRAIN_POSTMORTEM:-$HERE/../mcp-rhai/target/release/battle-postmortem}"
 KEEP="${BRAIN_EDITIONS:-10}"
+BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-ad8114473cb357a6}"
+REBASE="${BRAIN_BASELINE_REBASE:-1.12}"
 
 once() {
   local tmp; tmp="$(mktemp -d)"
-  local eds; eds="$("$POSTMORTEM" editions | head -n "$KEEP" | sed "s/.*/'&'/" | paste -sd, -)"
+  local all; all="$("$POSTMORTEM" editions | head -n "$KEEP")"
+  local eds; eds="$(sed "s/.*/'&'/" <<<"$all" | paste -sd, -)"
   [[ -n "$eds" ]] || { echo "battle-brain: no editions in the store" >&2; return 1; }
+  # The default the target pairs against changed in 6111dc0fef (the GA's elite); the first edition
+  # with it is $BASELINE_SINCE. Older rows paired against the former default, so they are rebased by
+  # the measured ratio of the elite over it ($BASELINE_REBASE: geometric mean 1.12 over 40 new maps).
+  local cur; cur="$(sed -n "1,/^${BASELINE_SINCE}\$/p" <<<"$all" | sed "s/.*/'&'/" | paste -sd, -)"
+  grep -qx "$BASELINE_SINCE" <<<"$all" || cur="$eds"
   # The target is paired: a variant's value share divided by the default PrismaticAI's on the same
   # edition and seed (the signal that held: GA g14.0 won 20/20 paired seeds). Unpaired rows are left out.
   duckdb -readonly "$RESULTS/analytics.duckdb" -csv \
@@ -32,9 +40,10 @@ once() {
                 FROM analyses a JOIN contestants c USING (edition, contestant)
                 WHERE c.prismatic AND a.value_share_of_winner > 0 AND a.seed IS NOT NULL AND a.edition IN ($eds)),
           d AS (SELECT edition, seed, s FROM a WHERE contestant = 'PrismaticAI')
-     SELECT a.edition, a.contestant, a.settings, a.s / d.s AS share
+     SELECT a.edition, a.contestant, a.settings,
+            a.s / d.s / (CASE WHEN a.edition IN ($cur) THEN 1.0 ELSE $REBASE END) AS share
      FROM a JOIN d USING (edition, seed) WHERE a.contestant <> 'PrismaticAI'" > "$tmp/rows.csv"
-  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions"
+  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions; editions before $BASELINE_SINCE rebased by 1/$REBASE (default changed in 6111dc0fef)"
   curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json"
   local args=()
   for l in nx exla axon polaris complex telemetry xla elixir_make nimble_pool jason; do args+=(-pa "$LIBS/$l/ebin"); done

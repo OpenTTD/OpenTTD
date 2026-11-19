@@ -100,6 +100,17 @@ seeds include the edition), and `target` says so. The first such run had 195 row
 settings for 21 genes, so the brain explores again (`enough_data` false). That is honest: it has
 not yet seen enough fresh maps.
 
+### When the default changes
+
+The target pairs every variant with the default `PrismaticAI` of its own edition, so a new default
+moves the baseline. In `6111dc0fef` the GA's elite became the default (geometric mean 1.12 over the
+former default on 40 new maps, 95 % CI 1.03 to 1.21), first played in edition `ad811447`. The
+runner rebases rows from editions before `$BRAIN_BASELINE_SINCE` (default `ad8114473cb357a6`) by
+1 / `$BRAIN_BASELINE_REBASE` (default 1.12), so old and new rows measure against the same default.
+The rebase is a single measured factor, not a per-map one, and `target` in `brain.json` names it.
+The first run after the change had 206 rows and 26 distinct settings for 20 genes, so it still
+explores. On the next default change, set both variables to the new edition and measured ratio.
+
 ### Why a safe pick comes first
 
 Until 2026-11-19 the brain proposed by UCB only, so both of the GA's brain offspring were
