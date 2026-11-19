@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
-const { leaderboardHtml, tuningHtml, hostsHtml, liveHtml, eventsHtml, kpis, money } = createRequire(import.meta.url)('../static/battle.js');
+const { leaderboardHtml, tuningHtml, pairedHtml, hostsHtml, liveHtml, eventsHtml, kpis, money } = createRequire(import.meta.url)('../static/battle.js');
 const lb = [
   { key: 'AAAHogEx', points: 30, avg_points: 1.0, avg_rank: 1.0, played: 6, avg_value: 9e7, anomalies: 0 },
   { key: 'PrismaticAI GA g1.1', points: 20, avg_points: 0.7, avg_rank: 2.0, played: 6, avg_value: 4e6, anomalies: 1 },
@@ -50,4 +50,15 @@ test('arenas, live matches and events render from the API shapes', () => {
   assert.match(eventsHtml([{ at: 1, msg: 'ALERT fleet_drop' }]), /text-amber-500/);
   assert.equal(money(2.5e6), '2.5M');
   assert.equal(money('x'), '–');
+});
+
+test('the paired table ranks by ratio and marks promotion candidates', () => {
+  const html = pairedHtml([
+    { contestant: 'PrismaticAI GA g3.0', pairs: 20, wins: 20, ratio: 1.309 },
+    { contestant: 'AAAHogEx', pairs: 20, wins: 20, ratio: 8.1 },
+    { contestant: 'PrismaticAI solo-max', pairs: 20, wins: 4, ratio: 0.8 },
+  ], [{ contestant: 'PrismaticAI GA g3.0' }]);
+  assert.ok(html.indexOf('AAAHogEx') < html.indexOf('GA g3.0') && html.indexOf('GA g3.0') < html.indexOf('solo-max'));
+  assert.match(html, /GA g3\.0 <span[^>]*>promote<\/span>/);
+  assert.match(html, /text-red-500[^>]*>0\.8</);
 });

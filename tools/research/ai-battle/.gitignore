@@ -1,0 +1,2 @@
+# Python bytecode from importing battle.py (tests, ad-hoc scripts) is never tracked.
+__pycache__/
