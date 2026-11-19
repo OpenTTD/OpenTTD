@@ -248,6 +248,9 @@ The first editions showed two failures. The battle now catches both by itself.
 - **Champion to default.** The GA's elite g14.0/g15.0 (a brain proposal) beat the default on
   20 of 20 common seeds (+30.9%), and its genes became the bot's defaults. A paired comparison
   against the default decides this; a variant's GA score over 6-7 matches can rank wrongly.
+- **`PrismaticAI pre-champion`** (the defaults before the champion, as settings; only the
+  autopilot's own-lines floor of 10 cannot be set back to 8) plays as an anchor, so the pairing
+  keeps confirming the switch and the battle brain keeps a fixed baseline across it.
 - **Last places cost.** The score subtracts `last_penalty` x the share of matches a variant
   ended last, so explorers that end last are culled fast.
 - **Defaults.** A tuned variant is a candidate. It becomes a default only through held-start duel

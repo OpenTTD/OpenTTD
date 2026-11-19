@@ -45,6 +45,13 @@
       "group": "PrismaticAI"
     },
     {
+      "ai": "PrismaticAI",
+      "label": "PrismaticAI pre-champion",
+      "source": "repository",
+      "group": "PrismaticAI",
+      "settings": "aggressiveness=50,air_add_waiting=10,air_max_tiles=260,air_planes=2,air_routes_max=10,air_towns=25,invest_air_cap=10,invest_borrow=0,invest_min=150,invest_ppv_div=3,invest_road_cap=12,line_budget=80000"
+    },
+    {
       "ai": "AAAHogEx",
       "source": "bananas"
     },
@@ -146,7 +153,8 @@
     "mutation_rate": 0.35,
     "anchors": [
       "PrismaticAI",
-      "PrismaticAI solo-max"
+      "PrismaticAI solo-max",
+      "PrismaticAI pre-champion"
     ],
     "fixed": {
       "intercity": 1,
