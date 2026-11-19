@@ -732,7 +732,11 @@ class Store:
 
     def __init__(self, path: Path):
         self.path = path
-        self.db = sqlite3.connect(path, check_same_thread=False)
+        # WAL: readers (the API, battle-postmortem, a notebook) never block the writer or each other,
+        # and a busy timeout instead of "database is locked" when they meet a checkpoint.
+        self.db = sqlite3.connect(path, check_same_thread=False, timeout=30)
+        self.db.execute("PRAGMA journal_mode=WAL")
+        self.db.execute("PRAGMA busy_timeout=30000")
         self.db.executescript(SCHEMA)
         self.lock = threading.Lock()
 
@@ -771,7 +775,7 @@ class Store:
         """Read-only SQL for the API: one SELECT/WITH statement on a read-only connection."""
         if not re.match(r"\s*(select|with)\b", sql, re.I) or ";" in sql.strip().rstrip(";"):
             return {"error": "one read-only SELECT or WITH statement only"}
-        ro = sqlite3.connect(f"file:{self.path}?mode=ro", uri=True)
+        ro = sqlite3.connect(f"file:{self.path}?mode=ro", uri=True, timeout=30)
         try:
             cur = ro.execute(sql)
             cols = [d[0] for d in cur.description or []]

@@ -127,6 +127,12 @@ Recorded ablations (`research/results/ablation-20261119T094*`, 10 years, a plan 
 This is the reason the planner (AlgoGlyph kernels through the panel) lost to the bot's own
 autopilot: its plan replaced growth instead of seeding it.
 
+Double track (`rail_double`), after its add rule fills a free source platform, was paired with the
+default in the battle on 74 common seeds over 20 years: +14.8% mean value, better in 56 of 74,
+while single 10-year seeds swung from -29% to +48%. Its gain comes late. Since 2026-11-19 it is
+the default, on the same basis and with the same caveat as air10+catch (battle evidence, not
+held-start duel pairs).
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

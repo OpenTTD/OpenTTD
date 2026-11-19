@@ -350,9 +350,9 @@ class PrismaticAI extends AIInfo {
 		});
 		AddSetting({
 			name = "rail_double",
-			description = "1: the bot's own new freight lines are double track (after AAAHogEx): one one-way track each way with path signals, so a line runs many trains and the in-bot steward adds one while half a trainload waits and no train loads at the source (rail.nut BuildDoubleRailLine); 0 (default): single track, two trains a line.",
+			description = "1: the bot's own new freight lines are double track (after AAAHogEx): one one-way track each way with path signals, so a line runs many trains and the in-bot steward adds one while half a trainload waits and no train loads at the source (rail.nut BuildDoubleRailLine); 0 (default): single track, two trains a line. Default 1 since 2026-11-19: in the battle, 20 years, paired on 74 common seeds, +14.8% mean value and better in 56 of 74; 0: single track.",
 			min_value = 0, max_value = 1,
-			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0,
+			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
 			flags = CONFIG_INGAME | CONFIG_BOOLEAN,
 		});
 		AddSetting({
