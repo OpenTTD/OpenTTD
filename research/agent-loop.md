@@ -52,8 +52,8 @@ flowchart LR
 | Observe | IMPLEMENTED in the panel | every answer of the panel's `GET /api/bridge/companies` is recorded as an observation: its game tick and date and a digest of the companies' identities (`panel_decision.rs` `observe`, `identity_digest`), readable at `GET /api/bridge/observation` | the Python bridge's `/companies` still carries no tick or digest |
 | Decide | PARTIAL | Prismatic's `GET /api/openttd/decision` (Monte Carlo over `aggressiveness`); the panel binds its directive to the observation Prismatic made during the pull | Prismatic does not echo `observed_digest` yet (the panel reads it when it does); a change in prismatic-platform |
 | Validate | IMPLEMENTED | the panel's contract checks (`panel_decision.rs` `directive`, `fit_of`), its freshness check before any step (`freshness`: observed during the pull, the echoed digest, companies unchanged, at most 31 game days old, an AI company; 409 otherwise) and the game's `ValidateAction` | the bridge does not validate a directive |
-| Authorize | PARTIAL | the game's approval: one-time, bound to the exact canonical arguments, with a TTL (`prismatic_mcp_server.cpp`, `prismatic_mcp_detail.h`) | who approved: the panel's `/api/approve` and its auto-approve need only loopback, and the bridge's `origin/main` approves its own request over rcon |
-| Execute | IMPLEMENTED | `Command<>::Post` on the game's main thread, through the command system | the checked-out bridge still sends `reload_ai` with the off-by-one id |
+| Authorize | PARTIAL | the game's approval: one-time, bound to the exact canonical arguments, with a TTL (`prismatic_mcp_server.cpp`, `prismatic_mcp_detail.h`); the bridge no longer approves its own request (branch `feature/operator-approval` of openttd-prismatic-bridge, 09afefa: pending, the operator approves in the game, `POST /decision/resume`) | who approved is not recorded: the panel's `/api/approve` and its auto-approve need only loopback; the bridge's branch is not on its `main` yet |
+| Execute | IMPLEMENTED | `Command<>::Post` on the game's main thread, through the command system; the bridge's branch carries its `origin/main` fixes (the company id off by one, settings through `bot set`) | the bridge's checked-out `feat/live-behaviour` still lacks them until that branch is merged |
 | Verify | IMPLEMENTED in the panel | the game's verdict, read back (`AIConfig::GetSetting` for `ai.set_setting`), and the panel's step states follow it (`panel_decision.rs` `state_of`, `verdict_state`): `applied` only for `VERIFIED_SUCCESS` | a step with no verdict to read (an AI started through the console) is `sent`, not verified |
 | Record | IMPLEMENTED in the panel | `plan.directive` on the ZeroMQ bus and in the DuckDB store, with its inputs, observation, idempotency key, version and choice; a directive that waited is settled by `plan.directive_outcome` once the game's verdicts are in (or `expired` after an hour); a keyed pull runs once (`keyed`) | the game's own provenance lives in memory, capped at 128 |
 
@@ -94,5 +94,11 @@ Each closes one row above without a new tracking record:
    repeat is replayed with the same lines and the store holds one `plan.directive` with the key.
    Two of the check's own reads raced the store's batched commit and were made to wait for the
    records they assert.
-4. The checked-out bridge is brought to its `origin/main`; its self-approval is replaced by the
-   panel's operator approval or recorded as an explicit policy.
+4. **Done on a branch** (2026-11-19; the owner chose to remove self-approval rather than keep it as a
+   policy): openttd-prismatic-bridge `feature/operator-approval` (09afefa) merges its `origin/main`
+   into `feat/live-behaviour` and approves nothing itself; a setting that waits is answered as
+   `pending`, the operator approves it in the game and `POST /decision/resume` applies it.
+   Evidence: the bridge's `pytest tests/` 53 passed; its `tests/live_decision_settings.sh` PASS
+   against this fork's research build: the pull left aggressiveness at 20 with approval #1
+   pending, the operator approved #1 on the server console, `/decision/resume` applied it and the
+   AI read 100. Merging that branch into the bridge's `main` is the bridge's own decision.
