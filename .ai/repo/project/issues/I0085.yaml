@@ -30,3 +30,30 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-18'
+started_at: 2026-11-19T04:18:08Z
+started_event: sha256:f7280094cf9ef0bd92d3a638db37b0a85f14ab229b07f54923f3f34899e6eb4b
+updated_at: 2026-11-19T04:24:34Z
+verified_at: 2026-11-19T04:24:30Z
+verified_event: sha256:2ff2fb606ebcfe2f647aae9c8fbc26f19b6f6ffeb6d8d2b967f0003d313fe618
+completed_at: 2026-11-19T04:24:34Z
+completed_event: sha256:6423839084439933f13ddcc1aed8f247aa819706f6bbb5a8720b3a65bb4ea0ce
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "python3 -m jsonschema -i research/prismatic-bridge/decision-contract.example.json research/prismatic-bridge/decision-contract.schema.json (jsonschema 4.26.0 in a scratch venv; system python3 has no jsonschema module)"
+    result: "PASS, exit 0 at a6ec99151ad98a6a22fa1c7e25f068c3292bb990: the example (request with a prismatic-fit/v1 fit, response, companies with prismatic-history/v1 history) validates. Negative controls exit 1: fit schema prismatic-fit/v2, fit from 0 rows without fallback, fit samples without query or bus, history schema v2, history without samples_query; exit 0 for rows 0 with a fallback, no companies, no fit"
+    artifact: "research/prismatic-bridge/decision-contract.schema.json research/prismatic-bridge/decision-contract.example.json"
+    commit: a6ec99151ad98a6a22fa1c7e25f068c3292bb990
+    recorded_at: 2026-11-19T04:24:06Z
+  - covers: "validation_run"
+    type: test
+    command: "tools/research/mcp-decision-check (seed 31337, stand-in Prismatic on loopback, game binary build-gate-research/openttd of the primary checkout, its own registry and store under $TMP)"
+    result: "PASS 10/10, exit 0 at a6ec99151ad98a6a22fa1c7e25f068c3292bb990 (code identical to the run, which preceded one doc-comment edit): every company of GET /api/bridge/companies offers history (bus tcp://127.0.0.1:64279, samples query); the bot's samples query answers 1 row of 12 columns on /api/db/query; no-URL 501; out-of-contract 422 with 3 reasons, its plan.directive in the store refused with fallback 'Prismatic sent no fit: ...'; the fitted directive (fit prismatic-fit/v1 from that query, 1 row) is applied (bot reads aggressiveness=100, was 50) and the store's plan.directive (read back through /api/db/query) has inputs.stored.query = the bot's samples query, rows 1, fit = the directive's fit, model growth_by_aggressiveness, outcome pending (auto-approve); the pull's lines say 'fit: growth_by_aggressiveness from 1 recorded rows (store query)'"
+    commit: a6ec99151ad98a6a22fa1c7e25f068c3292bb990
+    recorded_at: 2026-11-19T04:24:18Z
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release -q (tools/research/mcp-rhai, every target)"
+    result: "at a6ec99151ad98a6a22fa1c7e25f068c3292bb990: 274 passed, 0 failed (mcp-panel 114 incl. 7 new panel_decision tests: contract and code name the same versions and fields; the example's history and fit are what the panel offers and records; companies stay a list with history; a fitted directive publishes query, rows and fit as inputs.stored (store query and bus); fallbacks for no fit, Prismatic's own fallback, schema v2, 0 rows, a write statement; and the samples query on an in-memory DuckDB store: one row per game month and run, aggressiveness from an applied plan.directive of the same run and company only). tools/surfaces/surfaces check 0 findings, tools/knowledge/refs check 0 failures, majordomus plan validate 0 failures"
+    commit: a6ec99151ad98a6a22fa1c7e25f068c3292bb990
+    recorded_at: 2026-11-19T04:24:20Z
