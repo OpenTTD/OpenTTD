@@ -79,6 +79,22 @@ first refusal, skips towns that already hold another company's airport, and pick
 biggest towns (up to 10 routes). On seed 930967890 in 1965 that gave 19 planes against AAAHogEx's 20
 and 2.15M against 2.64M. The remaining gap is rail (14 trains against 28) and income per quarter.
 
+What AAAHogEx does that PrismaticAI does not, from its source, ranked by growth effect:
+1. Debt-financed reinvestment with cash near zero.
+2. One ROI-ranked candidate pool across all modes and distances.
+3. Early air with a full load at both ends.
+4. Double-track rail with uncapped train cloning.
+5. Road-stop rings joined to each passenger station.
+6. Line extension.
+7. Pruning.
+8. Statues.
+
+Four of these became bot settings (catchment rings, statues, full load, borrowing) and stay off by
+default. The recorded single-seed ablation (`research/results/ablation-20261119T062938-seed930967890.md`)
+gave catchment rings +4%, full load -2%, borrowing 0 and statues -45%. Transplanted alone into a bot
+built otherwise, they do not carry AAAHogEx's edge. The battle's genetic algorithm explores them on
+many seeds. Double-track rail (item 4) and the unified pool (item 2) are not ported yet.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

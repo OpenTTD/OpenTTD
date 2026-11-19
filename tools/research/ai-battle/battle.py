@@ -1502,6 +1502,83 @@ def cmd_fitness(cfg: dict) -> int:
     return 10 if fails else 0
 
 
+def cmd_ablate(cfg: dict, seed: int, years: int, variants: list[str], field: list[str],
+               write: bool) -> int:
+    """Run one local match per variant of the working tree's PrismaticAI (settings "name=a=1,b=2"),
+    each against the same field on the same seed, in parallel, and print (and with --write record
+    under research/results/) every variant's final standing. Deterministic: same tree, binary and
+    seed, same table."""
+    arena = cfg["cache"] / "arena"
+    binary = REPO / "build" / "openttd"
+    if not binary.is_file() or not (arena / "baseset").is_dir():
+        print("ablate: NOT RUN: needs build/openttd and a prepared arena cache")
+        return 12
+    import tempfile
+    mc = dict(cfg["match"], years=years)
+    rows = []
+    with tempfile.TemporaryDirectory(prefix="battle-ablate-") as tmp:
+        ai = Path(tmp) / "ai"
+        ai.mkdir()
+        subprocess.run(["cp", "-R", str(REPO / cfg["prismatic"]["path"]), str(ai)], check=True)
+        subprocess.run(["cp", "-R", str(arena / "ai" / "library"), *[str(t) for t in (arena / "ai").glob("*.tar")
+                        if t.name != "PrismaticAI.tar"], str(ai)], check=True)
+        (Path(tmp) / "battle.cfg").write_text(battle_cfg_text(mc))
+        procs = []
+        for v in variants:
+            name, _, settings = v.partition("=")
+            home = Path(tmp) / f"h-{name}"
+            per = home / "Documents" / "OpenTTD"
+            (per / "scripts").mkdir(parents=True)
+            os.symlink(ai, per / "ai")
+            os.symlink(arena / "baseset", per / "baseset")
+            os.symlink(arena / "game", per / "game")
+            (home / ".local" / "share").mkdir(parents=True)
+            os.symlink(per, home / ".local" / "share" / "openttd")
+            lineup = [{"ai": "PrismaticAI", "key": name, "settings": settings}] + \
+                     [{"ai": f, "key": f} for f in field]
+            (per / "scripts" / "game_start.scr").write_text(start_script_text(lineup))
+            procs.append((name, settings, lineup, subprocess.Popen(
+                [str(binary), "-c", "battle.cfg", "-x", "-v", f"null:ticks={match_ticks(years)}", "-s", "null",
+                 "-m", "null", "-g", "-G", str(seed), "-d", "script=1"], cwd=tmp,
+                env=dict(os.environ, HOME=str(home)), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)))
+        for name, settings, lineup, proc in procs:
+            out, _ = proc.communicate(timeout=1800)
+            series, errors = parse_log(out)
+            mine = series.get(0, [])
+            last = mine[-1] if mine else {}
+            field_best = max((s[-1]["value"] for c, s in series.items() if c > 0 and s), default=0)
+            rows.append({"variant": name, "settings": settings, "exit_code": proc.returncode,
+                         "value": last.get("value", 0), "money": last.get("money", 0),
+                         "vehicles": last.get("vehicles", 0), "rail": last.get("rail"), "road": last.get("road"),
+                         "air": last.get("air"), "errors": errors.get(0, 0), "field_best": field_best,
+                         "t": last.get("t", "")})
+    base = rows[0]["value"] or 1
+    for r in rows:
+        r["vs_first"] = round(r["value"] / base - 1, 4)
+        print(f"ablate: {r['variant']:12} value {r['value']:>12,} ({r['vs_first']:+.1%})  veh {r['vehicles']:>4} "
+              f"rail {r['rail']} road {r['road']} air {r['air']}  err {r['errors']}  [{r['settings']}]")
+    if write:
+        now = dt.datetime.now(dt.timezone.utc)
+        rid = f"ablation-{now.strftime('%Y%m%dT%H%M%S')}-seed{seed}"
+        rec = {"schema": "ai-battle-ablation/v1", "id": rid, "generated_at": now.isoformat(timespec="seconds"),
+               "seed": seed, "years": years, "field": field, "match_cfg": mc,
+               "rev": git("rev-parse", "HEAD"), "tree_dirty": bool(git("status", "--porcelain", "--",
+                                                                        cfg["prismatic"]["path"])),
+               "rows": rows}
+        (RESULTS_DIR / f"{rid}.json").write_text(json.dumps(rec, indent=1) + "\n")
+        md = [f"# {rid}", "", "Derived from its .json by `tools/research/ai-battle/battle.py ablate --write`; do not edit.", "",
+              f"One local match per variant of PrismaticAI against {', '.join(field)}, seed {seed}, {years} years "
+              f"from {mc['start_year']}, at `{rec['rev'][:10]}`{' (tree dirty)' if rec['tree_dirty'] else ''}. "
+              "Each value is the variant's last quarterly referee sample. One seed: a direction, not a verdict.", "",
+              "| Variant | Value | vs first | Vehicles | Rail | Road | Air | Squirrel errors | Settings |",
+              "|---|---|---|---|---|---|---|---|---|"]
+        md += [f"| {r['variant']} | {r['value']:,} | {r['vs_first']:+.1%} | {r['vehicles']} | {r['rail']} | {r['road']} | "
+               f"{r['air']} | {r['errors']} | `{r['settings']}` |" for r in rows]
+        (RESULTS_DIR / f"{rid}.md").write_text("\n".join(md) + "\n")
+        log(f"wrote research/results/{rid}.{{json,md}}")
+    return 0
+
+
 def cmd_status(cfg: dict) -> None:
     orch = Orchestrator(cfg)
     print(f"edition {orch.digest} (rev {orch.provenance['rev'][:10]})")
@@ -1519,12 +1596,18 @@ def cmd_status(cfg: dict) -> None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     ap.add_argument("command", choices=["discover", "fetch", "prepare", "probe", "run", "status",
-                                        "report", "check", "fitness"])
+                                        "report", "check", "fitness", "ablate"])
     ap.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--allow-dirty", action="store_true",
                     help="prepare: export uncommitted PrismaticAI/referee (records are refused)")
     ap.add_argument("--check", action="store_true", help="report: only check, write nothing")
+    ap.add_argument("--seed", type=int, default=930967890, help="ablate: the map seed")
+    ap.add_argument("--years", type=int, default=6, help="ablate: game years")
+    ap.add_argument("--variant", action="append", default=[],
+                    help='ablate: "name=setting=v,setting=v" (the first is the baseline), repeatable')
+    ap.add_argument("--field", default="AAAHogEx,AdmiralAI", help="ablate: comma-separated opponents")
+    ap.add_argument("--write", action="store_true", help="ablate: record under research/results/")
     ap.add_argument("--edition", help="report: a past edition (its arena bundle must still be the "
                                       "prepared one, for its provenance)")
     a = ap.parse_args(argv)
@@ -1550,6 +1633,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_report(cfg, a.check, a.edition)
     elif a.command == "fitness":
         return cmd_fitness(cfg)
+    elif a.command == "ablate":
+        return cmd_ablate(cfg, a.seed, a.years, a.variant, a.field.split(","), a.write)
     return 0
 
 

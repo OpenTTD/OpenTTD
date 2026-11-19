@@ -300,6 +300,41 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
+			name = "catchment_stops",
+			description = "Catchment ring (learned from AAAHogEx): most joined drive-through road stops around each passenger airport, so it collects the whole town (catchment.nut; default 0: off, it cost ~7% on the fitness seed at 6 years; the battle's GA explores it).",
+			min_value = 0, max_value = 30,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "catchment_spacing",
+			description = "Catchment ring: tiles between two of its road stops.",
+			min_value = 2, max_value = 10,
+			easy_value = 4, medium_value = 4, hard_value = 4, custom_value = 4, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "statue_money",
+			description = "Statues (learned from AAAHogEx): money in thousands above which the bot builds a statue in each town next to its stations (statues.nut; default 0: off, it cost ~30% on the fitness seed at 6 years; the battle's GA explores it).",
+			min_value = 0, max_value = 5000,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 50,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "air_full_load",
+			description = "1: planes wait for a full load at both airports (learned from AAAHogEx); 0 (default): they leave at once; full load cost ~5% on the fitness seed at 6 years.",
+			min_value = 0, max_value = 1,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "invest_borrow",
+			description = "1: InvestSurplus may borrow up to the loan limit for a vehicle that pays back (learned from AAAHogEx, which keeps its cash near zero); 0 (default): bank money only; borrowing changed nothing on the fitness seed at 6 years.",
+			min_value = 0, max_value = 1,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
 			name = "autopilot",
 			description = "1 (default): a bot started without a plan from the panel (no planner line, air or rail pair) grows on its own: in-bot steward, own freight lines (at least 8), intercity roads, up to 30 routes and a 5000 reserve. 0: the unplanned bot stays as small as its settings say (the duels' rival before 2026-11-19).",
 			min_value = 0, max_value = 1,

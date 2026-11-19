@@ -467,7 +467,7 @@ from the code. The right-hand column says what was counted.
 | **35** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **86** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
 | **85** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **466** | published documents on the site and the wiki | published documents under `/` |
+| **468** | published documents on the site and the wiki | published documents under `/` |
 <!-- surfaces:end facts -->
 
 ## How it compares
@@ -1059,6 +1059,7 @@ itself (generated):
 | [A person-like player: the interface as data, the mouse as input](research/mcp-human.md) | RESEARCH-ONLY. The embedded MCP server (ADR 0008, research/prismatic-mcp/) runs in every OpenTTD process: a dedicated server and each GUI client have their own. This document covers the part that lets a bot play the... |
 | [World View: the game's world in the external console](research/mcp-viz.md) | RESEARCH-ONLY. The hub (research/mcp-hub.md) serves /viz, a page built only on tools/research/mcp-panel/static/components.js and the hub's WebSocket. Everything on it is read live from one instance's own MCP... |
 | [A loopback R&D game across a revision mismatch](research/net-compat.md) | RESEARCH-ONLY, UNSTABLE. Issue I0070; ADR 0029; rule project.research-net-compat-is-local-and-non-spoofing. |
+| [Play in the browser](research/play-in-browser.md) | RESEARCH-ONLY. The panel's Play page (/play) runs the game in your browser, fullscreen if you want. The browser does not get a video stream or screenshots. It runs the real OpenTTD client, compiled to WebAssembly by... |
 | [Rail lines that pay: geometry, a steward and a monitor](research/rail-steward.md) | RESEARCH-ONLY. How the owner's bot builds rail that trains can always run, and what keeps each line paying afterwards. The parts: |
 | [A real game: a real opponent, over the real internet](research/real-game.md) | RESEARCH-ONLY. The owner's goal (2026-11-18): play a real game, over the real internet, against a real opponent. This page covers: |
 | [Real-world scenarios: a place as an OpenTTD map](research/real-world-scenario.md) | A place name becomes a playable OpenTTD map: resolved to explicit candidates, acquired from lawful open data into a versioned snapshot, compiled offline into a heightmap, towns, industries and an economy whose every... |

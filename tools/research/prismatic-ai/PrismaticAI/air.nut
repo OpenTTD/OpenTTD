@@ -157,8 +157,9 @@ function PrismaticAI::BuildAirRoute(a, b, planes) {
 		if (AIEngine.GetCargoType(engine) != pax) AIVehicle.RefitVehicle(v, pax);
 		/* Alternate the first stop so the planes spread over the route. */
 		local first = (i % 2 == 0) ? pa : pb, second = (i % 2 == 0) ? pb : pa;
-		AIOrder.AppendOrder(v, first, AIOrder.OF_NONE);
-		AIOrder.AppendOrder(v, second, AIOrder.OF_NONE);
+		local flags = (PRISMATIC_FULL_LOAD == 1) ? AIOrder.OF_FULL_LOAD_ANY : AIOrder.OF_NONE;
+		AIOrder.AppendOrder(v, first, flags);
+		AIOrder.AppendOrder(v, second, flags);
 		AIVehicle.StartStopVehicle(v);
 		running++;
 		AILog.Info("PrismaticAI: plane " + running + " (" + AIEngine.GetName(engine) + ") flies " + AITown.GetName(a) + " - " + AITown.GetName(b));

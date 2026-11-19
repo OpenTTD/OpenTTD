@@ -165,7 +165,11 @@
       "invest_min": 150,
       "invest_ppv_div": 3,
       "invest_road_cap": 12,
-      "invest_air_cap": 10
+      "invest_air_cap": 10,
+      "catchment_stops": 0,
+      "statue_money": 0,
+      "air_full_load": 0,
+      "invest_borrow": 0
     },
     "space": {
       "aggressiveness": [
@@ -232,6 +236,26 @@
         4,
         24,
         2
+      ],
+      "catchment_stops": [
+        0,
+        12,
+        2
+      ],
+      "statue_money": [
+        0,
+        2000,
+        200
+      ],
+      "air_full_load": [
+        0,
+        1,
+        1
+      ],
+      "invest_borrow": [
+        0,
+        1,
+        1
       ]
     }
   }

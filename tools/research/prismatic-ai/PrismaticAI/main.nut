@@ -20,6 +20,8 @@ PACE <- 20;
 /* Every rail line the bot built ({a, b, depot, cargo, wagons, flags, label, railtype, restored}),
  * so KeepLinesServed can put a train back on a line that lost its own. */
 RAIL_LINES <- [];
+/* air_full_load of the current heartbeat: BuildAirRoute is a static function, so it reads this. */
+PRISMATIC_FULL_LOAD <- 0;
 
 
 class PrismaticAI extends AIController {
@@ -40,6 +42,8 @@ class PrismaticAI extends AIController {
 	air_failed = 0; /* autopilot air pairs that could not be built this game year */
 	air_year = 0; /* the game year air_failed counts for */
 	air_cap = 10; /* planes per route with the steward on: this heartbeat's invest_air_cap */
+	ringed = null; /* station id -> the game year its catchment ring was last grown (catchment.nut) */
+	full_load = 1; /* this heartbeat's air_full_load, for air routes built from here on */
 	air_towns = null; /* town id -> true where an autopilot airport stands */
 	air_tried = null; /* "a-b" town pairs the autopilot tried for air */
 
@@ -53,6 +57,7 @@ class PrismaticAI extends AIController {
 		this.self_targets = {};
 		this.air_towns = {};
 		this.air_tried = {};
+		this.ringed = {};
 	}
 }
 
@@ -71,6 +76,8 @@ require("fleet.nut");
 require("lines.nut");
 require("steward.nut");
 require("autopilot.nut");
+require("catchment.nut");
+require("statues.nut");
 
 /* Cheapest buildable road engine that carries a passenger-class cargo. */
 function PrismaticAI::PickPassengerEngine() {
@@ -245,6 +252,11 @@ function PrismaticAI::Behaviour() {
 		invest_road_cap = AIController.GetSetting("invest_road_cap"),
 		invest_air_cap = AIController.GetSetting("invest_air_cap"),
 		reinvest_budgets = AIController.GetSetting("reinvest_budgets"),
+		catchment_stops = AIController.GetSetting("catchment_stops"),
+		catchment_spacing = AIController.GetSetting("catchment_spacing"),
+		statue_money = AIController.GetSetting("statue_money"),
+		air_full_load = AIController.GetSetting("air_full_load"),
+		invest_borrow = AIController.GetSetting("invest_borrow"),
 	};
 	/* Autopilot (default on): a bot nobody gave a plan (no planner line, air or rail pair) grows on
 	 * its own instead of stopping at a few buses. In the LAN AI battle the unplanned default ended
@@ -298,6 +310,8 @@ function PrismaticAI::Start() {
 		 * names a company after its first station's town, so this waits for that name. */
 		if (!disclosed && AIController.GetSetting("disclose_name") == 1) disclosed = PrismaticAI.DiscloseName();
 		this.steward_on = b.self_steward == 1;
+		/* Before anything is built this heartbeat: the first air route reads it too. */
+		PRISMATIC_FULL_LOAD = b.air_full_load;
 		local knobs = "aggressiveness=" + b.aggressiveness + " max_routes=" + b.max_routes + " cash_reserve=" + b.cash_reserve +
 			" intercity=" + b.intercity + " self_steward=" + b.self_steward + " own_lines=" + b.own_lines +
 			(b.autopiloted ? " autopilot=engaged" : "");
@@ -411,6 +425,9 @@ function PrismaticAI::Start() {
 		this.ManageFleet(b.cash_reserve);
 		/* With the steward on, idle money buys vehicles where vehicles earn most (fleet.nut). */
 		if (b.self_steward == 1) this.InvestSurplus(b);
+		/* Mechanisms learned from AAAHogEx, each behind its own setting (catchment.nut, statues.nut). */
+		this.GrowCatchment(b);
+		this.BuildStatues(b);
 		/* Every rail line keeps a train: one lost at a level crossing or sold is replaced. */
 		PrismaticAI.KeepLinesServed(b.cash_reserve);
 		/* Each line runs what the steward's targets say (lines.nut), and its record is logged again

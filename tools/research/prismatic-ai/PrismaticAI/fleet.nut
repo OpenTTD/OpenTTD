@@ -66,7 +66,9 @@ const INVEST_SURPLUS_RESERVES = 20;
  * lines grow through the steward's targets (lines.nut, steward.nut). */
 function PrismaticAI::InvestSurplus(b) {
 	local money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
-	if (money < max(b.invest_min, INVEST_SURPLUS_RESERVES * b.cash_reserve)) return;
+	/* With invest_borrow the unused loan counts too (AAAHogEx plans against balance + unused loan). */
+	local usable = money + (b.invest_borrow == 1 ? AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount() : 0);
+	if (usable < max(b.invest_min, INVEST_SURPLUS_RESERVES * b.cash_reserve)) return;
 	local routes = {};
 	local all = AIVehicleList();
 	for (local v = all.Begin(); !all.IsEnd(); v = all.Next()) {
@@ -90,6 +92,13 @@ function PrismaticAI::InvestSurplus(b) {
 	if (best == null) return;
 	local depot = PrismaticAI.DepotFor(best.sample);
 	if (depot == -1) return;
+	local price = AIEngine.GetPrice(AIVehicle.GetEngineType(best.sample));
+	if (money < price + b.cash_reserve) {
+		if (b.invest_borrow != 1) return;
+		local step = AICompany.GetLoanInterval();
+		local want = AICompany.GetLoanAmount() + ((price + b.cash_reserve - money) / step + 1) * step;
+		if (want > AICompany.GetMaxLoanAmount() || !AICompany.SetLoanAmount(want)) return;
+	}
 	local nv = AIVehicle.CloneVehicle(depot, best.sample, true);
 	if (AIVehicle.IsValidVehicle(nv)) {
 		AIVehicle.StartStopVehicle(nv);
