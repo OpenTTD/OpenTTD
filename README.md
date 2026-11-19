@@ -27,6 +27,7 @@
   <a href="#what-the-duels-have-taught-so-far"><b>Findings</b></a> &nbsp;&middot;&nbsp;
   <a href="#rail-lines-that-pay"><b>Rail</b></a> &nbsp;&middot;&nbsp;
   <a href="#every-event-on-a-bus-and-in-a-store"><b>Events</b></a> &nbsp;&middot;&nbsp;
+  <a href="#a-real-place-as-the-map"><b>Real place</b></a> &nbsp;&middot;&nbsp;
   <a href="#a-real-game-over-the-internet"><b>Real game</b></a> &nbsp;&middot;&nbsp;
   <a href="#beyond-the-game"><b>Beyond the game</b></a> &nbsp;&middot;&nbsp;
   <a href="#counted-from-the-source"><b>Numbers</b></a> &nbsp;&middot;&nbsp;
@@ -396,6 +397,31 @@ drags roads with the game's own tools and glides the camera to its work. A click
 only where a person's click would, and the owner can pause it from the fork's toolbar menu and take
 over at any moment. It has built a transfer yard, two lines into one station from platforms side by
 side, proven on the map first.
+
+## A real place as the map
+
+A place name becomes a playable map ([`research/real-world-scenario.md`](research/real-world-scenario.md)).
+`rw-scenario` ([`tools/research/real-world`](tools/research/real-world/), Rust) resolves "Brno,
+Czech Republic" to ranked candidates with explicit bounds, and refuses an ambiguous name instead of
+guessing. It acquires a bounded set of lawful open data (OpenStreetMap features through Nominatim
+and Overpass, elevation from the Copernicus GLO-30 DEM) into a versioned snapshot, and compiles that
+snapshot offline and deterministically into a heightmap and a GameScript.
+
+- **The game is reached only through supported paths.** The heightmap loads headless through
+  `-g`; the script founds the towns, builds the industries and signs the landmarks through the
+  Script API, so no game state is written directly. Nothing is compiled into OpenTTD.
+- **Every entity says how it is known.** Each town, industry and economy link is OBSERVED,
+  DERIVED, INFERRED or HYPOTHETICAL, with its evidence, rule and confidence, also in its in-game
+  window. A quarry with no temperate counterpart becomes a labelled HYPOTHETICAL stand-in, never
+  named after its operator.
+- **The committed Brno slice replays offline.** `rw-scenario replay` proves the compile is
+  deterministic; the network is used only with `--live`, paced, cached and bounded. The panel
+  previews a scenario on its own page.
+
+```bash
+tools/research/real-world/rw-scenario compile --snapshot tools/research/real-world/fixtures/brno/snapshot.json --out build-real-world/brno
+tools/research/real-world/rw-scenario replay  --snapshot tools/research/real-world/fixtures/brno/snapshot.json --expect tools/research/real-world/fixtures/brno/SHA256SUMS
+```
 
 ## A real game over the internet
 
@@ -879,7 +905,8 @@ Prismatic has a machine-checkable schema in this repository
 (`research/prismatic-bridge/decision-contract.schema.json`, I0011); Prismatic answers it with a
 Monte Carlo choice, and the MCP panel applies the answer at `POST /api/decision/pull`
 (`tools/research/mcp-decision-check`). A native Rust bridge is decided (ADR 0032) but not yet
-written; world seeding from real elevation data and broader Prismatic decisions are not built.
+written, and broader Prismatic decisions are not built. A map from real data now exists apart from
+the bridge: [a real place as the map](#a-real-place-as-the-map).
 
 ### 0.3) What this fork is not
 
@@ -1025,6 +1052,7 @@ itself (generated):
 | [A loopback R&D game across a revision mismatch](research/net-compat.md) | RESEARCH-ONLY, UNSTABLE. Issue I0070; ADR 0029; rule project.research-net-compat-is-local-and-non-spoofing. |
 | [Rail lines that pay: geometry, a steward and a monitor](research/rail-steward.md) | RESEARCH-ONLY. How the owner's bot builds rail that trains can always run, and what keeps each line paying afterwards. The parts: |
 | [A real game: a real opponent, over the real internet](research/real-game.md) | RESEARCH-ONLY. The owner's goal (2026-11-18): play a real game, over the real internet, against a real opponent. This page covers: |
+| [Real-world scenarios: a place as an OpenTTD map](research/real-world-scenario.md) | A place name becomes a playable OpenTTD map: resolved to explicit candidates, acquired from lawful open data into a versioned snapshot, compiled offline into a heightmap, towns, industries and an economy whose every... |
 | [Research-mode tooling](research/tooling.md) | This document is the detailed reference for tools/research/research, the canonical entry point that turns the policy in AGENTS.md §"Research-mode access to internals" and this directory's README.md into runnable,... |
 | [Playing on official public servers: the vanilla client](research/vanilla-client.md) | RESEARCH-ONLY tooling, not a change to the game. Issue I0071; ADR 0030; complements net-compat.md (ADR 0029), which is about games you run. |
 <!-- surfaces:end docs-index -->
@@ -1140,7 +1168,7 @@ Open questions, not conclusions:
 | A real game over the internet | a hosted dedicated server of one clean commit; the vanilla client for public servers | Prepared; a remote opponent is `NOT RUN` ([`research/real-game.md`](./research/real-game.md)) |
 | Build/test gates and experiment manifests | exit codes, test output, `manifest.json` and a generated `summary.md` | Implemented (0.5) |
 | Published surfaces | site, wiki and generated Markdown tables, checked on every commit | Implemented (0.4.2) |
-| World seeding from real elevation data | a heightmap through the headless `-g <file>` start | Experimental: the start works, the data pipeline is not built |
+| Real-world scenarios | a place compiled from OpenStreetMap and Copernicus GLO-30 into a heightmap (`-g`) and a GameScript, every entity labelled with its evidence | Experimental: the Brno slice compiles, replays and loads headless ([`research/real-world-scenario.md`](./research/real-world-scenario.md)) |
 | Human oversight | every commit, push, override and approval of a game change | Implemented |
 
 ### 0.11) Experiment lifecycle, outputs, and evidence policy
