@@ -220,8 +220,13 @@ pub fn discover(registry: &Path, panels: &[String]) -> Vec<Instance> {
     out
 }
 
+/// How long the hub waits for one instance's answer. A panel's planner reads take longer than a
+/// lookup: GET /api/investment runs the planner and AlgoGlyph (about 33 s on a loaded machine) and
+/// GET /api/calibration reads every store (about 20 s), so 15 s cut them off as network errors.
+const CALL_TIMEOUT: Duration = Duration::from_secs(120);
+
 fn agent() -> ureq::Agent {
-    ureq::AgentBuilder::new().timeout(Duration::from_secs(15)).build()
+    ureq::AgentBuilder::new().timeout(CALL_TIMEOUT).build()
 }
 
 fn http_json(resp: Result<ureq::Response, ureq::Error>) -> Result<Value, String> {
