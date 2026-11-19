@@ -70,7 +70,9 @@ function PrismaticAI::ManageFleet(reserve) {
 		local v = r.sample;
 		local type = AIVehicle.GetVehicleType(v);
 		if (type == AIVehicle.VT_RAIL) continue;
-		local cap_limit = (type == AIVehicle.VT_AIR) ? 4 : 8;
+		/* Planes per air route: 4, or 8 with the steward on (autopilot): in the battle the winner ran
+		 * 10-14 planes on its first routes by 1962 and its air profit funded everything else. */
+		local cap_limit = (type == AIVehicle.VT_AIR) ? (this.steward_on ? 8 : 4) : 8;
 		if (r.count >= cap_limit) continue;
 		local cargo = AIEngine.GetCargoType(AIVehicle.GetEngineType(v));
 		local cap = AIVehicle.GetCapacity(v, cargo);

@@ -85,6 +85,17 @@ class MatchContract(unittest.TestCase):
         self.assertIn("null:ticks=7", text)
         self.assertIn("-G 3", text)
 
+    def test_grouped_contestants_take_turns_one_per_match(self):
+        cs = [{"key": "P1", "group": "P"}, {"key": "P2", "group": "P"}, {"key": "A"}, {"key": "B"}]
+        seen = set()
+        for n in range(4):
+            lu = [c["key"] for c in battle.lineup_for(cs, n)]
+            self.assertEqual(len(lu), 3)
+            self.assertEqual(sum(k.startswith("P") for k in lu), 1)
+            self.assertTrue({"A", "B"} <= set(lu))
+            seen |= {k for k in lu if k.startswith("P")}
+        self.assertEqual(seen, {"P1", "P2"})
+
     def test_contestant_key_prefers_label(self):
         self.assertEqual(battle.contestant_key({"ai": "P", "settings": "x=1"}), "P[x=1]")
         self.assertEqual(battle.contestant_key({"ai": "P", "label": "P max"}), "P max")

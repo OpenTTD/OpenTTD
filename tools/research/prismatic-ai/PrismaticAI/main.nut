@@ -36,6 +36,11 @@ class PrismaticAI extends AIController {
 	idle = null; /* route key -> heartbeats in a row with almost nothing waiting */
 	self_targets = null; /* slot -> {trains, wagons}: the in-bot steward's targets (steward.nut) */
 	steward_on = false; /* this heartbeat's Behaviour().self_steward == 1 (steward.nut) */
+	auto_air = 0; /* autopilot air routes built (autopilot.nut) */
+	air_failed = 0; /* autopilot air pairs that could not be built this game year */
+	air_year = 0; /* the game year air_failed counts for */
+	air_towns = null; /* town id -> true where an autopilot airport stands */
+	air_tried = null; /* "a-b" town pairs the autopilot tried for air */
 
 	constructor() {
 		this.name = AICompany.GetName(AICompany.COMPANY_SELF);
@@ -45,6 +50,8 @@ class PrismaticAI extends AIController {
 		this.resizing = {};
 		this.idle = {};
 		this.self_targets = {};
+		this.air_towns = {};
+		this.air_tried = {};
 	}
 }
 
@@ -62,6 +69,7 @@ require("rail.nut");
 require("fleet.nut");
 require("lines.nut");
 require("steward.nut");
+require("autopilot.nut");
 
 /* Cheapest buildable road engine that carries a passenger-class cargo. */
 function PrismaticAI::PickPassengerEngine() {
@@ -293,6 +301,9 @@ function PrismaticAI::Start() {
 			if (PrismaticAI.BuildAirRoute(b.air_a, b.air_b, b.air_planes) > 0) this.routes++;
 			money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 		}
+		/* Without a plan, the autopilot's own air routes come first: the gap to the winner opens in the
+		 * first quarters, and a plane between two big towns earns the most per vehicle (autopilot.nut). */
+		if (this.AutopilotAir(b)) money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 		/* The portfolio's freight first: by the game's payment rates, coal and wood by rail pay most.
 		 * The planner's first line is built at once; each next one (fr2_* to fr16_*) once the bank
 		 * balance plus the loan headroom reach line_budget, one line per heartbeat, each tried once. */

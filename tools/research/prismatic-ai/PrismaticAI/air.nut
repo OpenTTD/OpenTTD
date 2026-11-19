@@ -13,6 +13,9 @@
  * Every step is logged with its tile, so the director moves the camera and the cursor there.
  */
 
+/* The most levelling a site may cost before an airport is built on it instead of skipped. */
+const LEVEL_MAX_COST = 15000;
+
 function PrismaticAI::PassengerCargo() {
 	local cargos = AICargoList();
 	for (local c = cargos.Begin(); !cargos.IsEnd(); c = cargos.Next()) {
@@ -50,6 +53,24 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 			AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t);
 			return t;
 		}
+		/* Most refusals in the battle were slopes (ERR_FLAT_LAND_REQUIRED): level the rectangle to the
+		 * height of its first tile and try once more, which a buildable rectangle usually allows. */
+		if (AIError.GetLastError() == AIError.ERR_FLAT_LAND_REQUIRED) {
+			local far = AIMap.GetTileIndex(AIMap.GetTileX(t) + w - 1, AIMap.GetTileY(t) + h - 1);
+			/* Only when levelling is cheap: in a battle, levelling plus two airports once left no money
+			 * for a plane, and the company sat on two empty airports for good. */
+			local cost = 0;
+			{
+				local test = AITestMode();
+				local acc = AIAccounting();
+				AITile.LevelTiles(t, far);
+				cost = acc.GetCosts();
+			}
+			if (cost <= LEVEL_MAX_COST && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
+				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it");
+				return t;
+			}
+		}
 		AILog.Warning("PrismaticAI: airport at tile " + t + " refused: " + AIError.GetLastErrorString());
 	}
 	AILog.Warning("PrismaticAI: no airport site in " + AITown.GetName(town) + " after " + tried + " tries");
@@ -70,6 +91,13 @@ function PrismaticAI::PickPlane(type, pax) {
 	return best;
 }
 
+/* Remove an airport of ours that no vehicle serves (a route that was not completed). */
+function PrismaticAI::RemoveIdleAirport(tile) {
+	local st = AIStation.GetStationID(tile);
+	if (!AIStation.IsValidStation(st) || AIVehicleList_Station(st).Count() > 0) return;
+	if (AIAirport.RemoveAirport(tile)) AILog.Info("PrismaticAI: removed unused airport at tile " + tile);
+}
+
 /* An air route between towns a and b with up to `planes` aircraft. Returns the number running. */
 function PrismaticAI::BuildAirRoute(a, b, planes) {
 	if (!AITown.IsValidTown(a) || !AITown.IsValidTown(b) || a == b) {
@@ -84,9 +112,16 @@ function PrismaticAI::BuildAirRoute(a, b, planes) {
 	local pa = PrismaticAI.BuildAirportNear(a, type, pax);
 	if (pa == null) return 0;
 	local pb = PrismaticAI.BuildAirportNear(b, type, pax);
-	if (pb == null) return 0;
+	/* A half-built route is an airport that costs upkeep and carries nobody: in a battle the
+	 * autopilot left dozens. Take the first airport down again when the second one fails. */
+	if (pb == null) { PrismaticAI.RemoveIdleAirport(pa); return 0; }
 	local engine = PrismaticAI.PickPlane(type, pax);
-	if (engine == -1) { AILog.Warning("PrismaticAI: no plane fits these airports yet"); return 0; }
+	if (engine == -1) {
+		AILog.Warning("PrismaticAI: no plane fits these airports yet");
+		PrismaticAI.RemoveIdleAirport(pa);
+		PrismaticAI.RemoveIdleAirport(pb);
+		return 0;
+	}
 	local hangar = AIAirport.GetHangarOfAirport(pa);
 	local running = 0;
 	for (local i = 0; i < planes; i++) {

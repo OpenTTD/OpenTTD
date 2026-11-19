@@ -52,6 +52,15 @@ lines and intercity roads when no plan was handed over, by the owner's order tha
 never last (rule `project.prismatic-ai-is-never-last`). `autopilot=0` gives the old unplanned
 bot. The battle's control contestant `PrismaticAI solo-max` runs that way.
 
+The winner's lead opens in the first two quarters, and it is carried by aircraft. In edition
+91a72662 (rev df1e05e7d8) AAAHogEx ran 10 planes and about 340k of air profit a year by January
+1961, while no PrismaticAI configuration owned an aircraft in any match and its first vehicle often
+came after the first quarter. Its rail earned more per train (29k against 4k in 1962), but it
+never scaled. A single-track line holds two trains (`rail_platforms` is at most 2), so rail grows
+only by more lines. Since this was found, the autopilot builds its own air routes first
+(`autopilot.nut`). Three PrismaticAI configurations on one map took each other's airport towns, so
+the battle plays one of them per match (`lineup_for`).
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

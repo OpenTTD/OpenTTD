@@ -361,6 +361,20 @@ def cmd_fetch(cfg: dict) -> None:
 
 # -------------------------------------------------------------------------------------- matches
 
+def lineup_for(contestants: list[dict], n: int) -> list[dict]:
+    """Match n's lineup. Contestants sharing a `group` (the PrismaticAI configurations) take turns,
+    one per match: two copies of one bot on one map share its best airport towns and industries
+    and starve each other. Everyone else plays every match. The start order rotates."""
+    groups: dict[str, list[dict]] = {}
+    for c in contestants:
+        if c.get("group"):
+            groups.setdefault(c["group"], []).append(c)
+    picked = {g: members[n % len(members)]["key"] for g, members in groups.items()}
+    chosen = [c for c in contestants if not c.get("group") or picked[c["group"]] == c["key"]]
+    rot = n % len(chosen)
+    return chosen[rot:] + chosen[:rot]
+
+
 def match_ticks(years: int) -> int:
     """Start on Jan 1 and run past Jan 3 of the final year, so its Q4 report is printed."""
     return int((years * 365.25 + 6) * 74)
@@ -669,9 +683,9 @@ SWAGGER_PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 
 
 class Orchestrator:
-    def __init__(self, cfg: dict):
+    def __init__(self, cfg: dict, edition: str | None = None):
         self.cfg = cfg
-        self.digest = edition_of(cfg)
+        self.digest = edition or edition_of(cfg)
         self.provenance = json.loads((cfg["cache"] / "arena" / "PROVENANCE.json").read_text())
         self.mdir = cfg["results"] / self.digest / "matches"
         self.mdir.mkdir(parents=True, exist_ok=True)
@@ -682,6 +696,10 @@ class Orchestrator:
         for f in sorted(self.mdir.glob("*.json")):
             m = json.loads(f.read_text())
             self.matches[m["id"]] = m
+        if edition and self.matches:
+            # A past edition: its contestants are the ones its matches were played with.
+            first = min(self.matches.values(), key=lambda m: m["id"])
+            self.contestants = [dict(c) for c in first["lineup"]]
         self.counter = max([int(m["id"].split("-")[1]) for m in self.matches.values()] + [0])
         self.lock = threading.Lock()
         self.stop = threading.Event()
@@ -717,8 +735,7 @@ class Orchestrator:
         if original:
             seed, lineup = original["seed"], original["lineup"]
         else:
-            rot = self.counter % len(self.contestants)
-            lineup = self.contestants[rot:] + self.contestants[:rot]   # rotate the start order
+            lineup = lineup_for(self.contestants, self.counter)
             seed = int(hashlib.sha256(f"{self.cfg['seed']}:{self.counter}".encode())
                        .hexdigest()[:8], 16) % 2_000_000_000
         return {"id": f"m-{self.counter:04d}", "host": host.name, "host_version": host.version,
@@ -1126,10 +1143,14 @@ def validate_record(rec: dict, name: str) -> list[str]:
     return errs
 
 
-def cmd_report(cfg: dict, check_only: bool) -> int:
+def cmd_report(cfg: dict, check_only: bool, edition: str | None = None) -> int:
     if check_only:
         return cmd_check()
-    orch = Orchestrator(cfg)
+    if edition and json.loads((cfg["cache"] / "arena" / "PROVENANCE.json").read_text())["rev"] \
+            and not (cfg["results"] / edition / "matches").is_dir():
+        log(f"no matches of edition {edition}")
+        return 12
+    orch = Orchestrator(cfg, edition)
     rec = build_record(cfg, orch)
     if not [m for m in rec["matches"] if m["status"] == "done"]:
         log("no finished match in this edition yet; nothing written")
@@ -1247,31 +1268,46 @@ def cmd_fitness(cfg: dict) -> int:
                         str(personal / "ai")], check=True)
         subprocess.run(["cp", "-R", str(REPO / cfg["referee"]["path"]), str(personal / "game")],
                        check=True)
-        lineup = [dict(c, key=contestant_key(c)) for c in fit["contestants"]]
-        (personal / "scripts" / "game_start.scr").write_text(start_script_text(lineup))
         mc = dict(cfg["match"], years=fit["years"])
         (Path(tmp) / "battle.cfg").write_text(battle_cfg_text(mc))
         t0 = time.time()
-        r = subprocess.run([str(binary), "-c", "battle.cfg", "-x", "-v",
-                            f"null:ticks={match_ticks(fit['years'])}", "-s", "null", "-m", "null",
-                            "-g", "-G", str(fit["seed"]), "-d", "script=1"], cwd=tmp,
-                           env=dict(os.environ, HOME=str(home)), capture_output=True, text=True,
-                           timeout=fit.get("timeout_s", 600))
-        series, errors = parse_log(r.stdout + r.stderr)
-    m = {"lineup": lineup, "years": fit["years"], "match_cfg": mc, "exit_code": r.returncode,
-         "series": {lineup[c]["key"]: s for c, s in series.items() if c < len(lineup)},
-         "errors": {lineup[c]["key"]: n for c, n in errors.items() if c < len(lineup)}}
-    m["status"] = match_status(m, r.returncode)
-    for c in lineup:
-        s = m["series"].get(c["key"], [])
-        peak, final = fleet_peak_final(s)
-        print(f"fitness: {c['key']:28} value {s[-1]['value'] if s else 0:>12,}  vehicles peak "
-              f"{peak:>4} final {final:>4}  {' '.join(anomalies(s, m['errors'].get(c['key'], 0), fit['rules'])) or 'ok'}")
-    fails = fitness_verdict(m, fit)
+        fails: list[str] = []
+        # One match per lineup, run in parallel (one single-threaded OpenTTD process each).
+        lineups = [[dict(c, key=contestant_key(c)) for c in lu] for lu in fit["lineups"]]
+        procs = []
+        for i, lineup in enumerate(lineups):
+            mhome = Path(tmp) / f"m{i}"
+            mper = mhome / "Documents" / "OpenTTD"
+            (mper / "scripts").mkdir(parents=True)
+            for d in ("baseset", "ai", "game"):
+                os.symlink(personal / d, mper / d)
+            (mhome / ".local" / "share").mkdir(parents=True)
+            os.symlink(mper, mhome / ".local" / "share" / "openttd")
+            (mper / "scripts" / "game_start.scr").write_text(start_script_text(lineup))
+            procs.append(subprocess.Popen(
+                [str(binary), "-c", "battle.cfg", "-x", "-v", f"null:ticks={match_ticks(fit['years'])}",
+                 "-s", "null", "-m", "null", "-g", "-G", str(fit["seed"]), "-d", "script=1"],
+                cwd=tmp, env=dict(os.environ, HOME=str(mhome)), stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT, text=True))
+        for i, (lineup, proc) in enumerate(zip(lineups, procs)):
+            out, _ = proc.communicate(timeout=fit.get("timeout_s", 600))
+            series, errors = parse_log(out)
+            m = {"lineup": lineup, "years": fit["years"], "match_cfg": mc,
+                 "exit_code": proc.returncode,
+                 "series": {lineup[c]["key"]: s for c, s in series.items() if c < len(lineup)},
+                 "errors": {lineup[c]["key"]: n for c, n in errors.items() if c < len(lineup)}}
+            m["status"] = match_status(m, proc.returncode)
+            for c in lineup:
+                s = m["series"].get(c["key"], [])
+                peak, final = fleet_peak_final(s)
+                print(f"fitness[{i}]: {c['key']:26} value {s[-1]['value'] if s else 0:>12,}  vehicles "
+                      f"peak {peak:>4} final {final:>4}  "
+                      f"{' '.join(anomalies(s, m['errors'].get(c['key'], 0), fit['rules'])) or 'ok'}")
+            fails += [f"[{i}] {f}" for f in fitness_verdict(m, fit)]
     for f in fails:
         print(f"fitness: FAIL {f}", file=sys.stderr)
-    print(f"fitness: {'FAIL' if fails else 'PASS'} ({fit['years']} years, seed {fit['seed']}, "
-          f"{time.time() - t0:.0f} s)")
+    print(f"fitness: {'FAIL' if fails else 'PASS'} ({len(lineups)} match(es), {fit['years']} years, "
+          f"seed {fit['seed']}, {time.time() - t0:.0f} s)")
     return 10 if fails else 0
 
 
@@ -1298,6 +1334,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--allow-dirty", action="store_true",
                     help="prepare: export uncommitted PrismaticAI/referee (records are refused)")
     ap.add_argument("--check", action="store_true", help="report: only check, write nothing")
+    ap.add_argument("--edition", help="report: a past edition (its arena bundle must still be the "
+                                      "prepared one, for its provenance)")
     a = ap.parse_args(argv)
     if a.command == "check":
         return cmd_check()
@@ -1318,7 +1356,7 @@ def main(argv: list[str] | None = None) -> int:
     elif a.command == "status":
         cmd_status(cfg)
     elif a.command == "report":
-        return cmd_report(cfg, a.check)
+        return cmd_report(cfg, a.check, a.edition)
     elif a.command == "fitness":
         return cmd_fitness(cfg)
     return 0

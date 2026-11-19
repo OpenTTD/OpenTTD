@@ -22,7 +22,23 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-No battle record yet: run `battle.py report`.
+<!-- derived from research/results/battle-20261119T054742-91a72662.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T054742-91a72662`](../results/battle-20261119T054742-91a72662.md) (0/0 replays identical).
+
+- Edition `91a726628e57de21`: PrismaticAI and referee at `df1e05e7d80c160ef3111d99a6fd62b642d99651`, base set `opengfx-8.0.tar`
+- 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
+- 37 scored match(es) on `imac` (20260724-prismatic-mcp-server-m64d95df5ae), `mbp` (20261119-master-mf87e1d279c), `mbp2` (20261119-master-g9750b3f946)
+- Replays: 0 of 0 identical to their original on another arena
+
+| # | Contestant | Played | Wins | Points | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
+|---|---|---|---|---|---|---|---|---|
+| 1 | AAAHogEx | 37 | 37 | 222 | 1.0 | 94.2 M | 0 | 0 |
+| 2 | AdmiralAI | 37 | 0 | 143 | 3.14 | 4.6 M | 0 | 3 |
+| 3 | PrismaticAI self-steward | 37 | 0 | 115 | 3.89 | 3.1 M | 0 | 30 |
+| 4 | PrismaticAI | 37 | 0 | 113 | 3.95 | 3.1 M | 0 | 20 |
+| 5 | PrismaticAI solo-max | 37 | 0 | 110 | 4.03 | 2.9 M | 0 | 35 |
+| 6 | LuDiAI AfterFix | 37 | 0 | 61 | 5.35 | 1.5 M | 0 | 0 |
+| 7 | CivilAI | 37 | 0 | 13 | 6.65 | 468.4 k | 7405 | 6 |
 <!-- battle:end -->
 
 ## How it fits together
@@ -128,10 +144,15 @@ i.e. a script crashing).
 
 ## PrismaticAI as a contestant
 
-PrismaticAI enters three times, under three labels, so each set of settings is its own contestant:
+PrismaticAI enters three times, under three labels, so each set of settings is its own contestant.
+They share `"group": "PrismaticAI"`, and a group plays **one member per match**, in turn
+(`lineup_for`). Two copies of the same bot on one map take each other's best airport towns and
+industries, and in the fitness match the second autopilot starved. Everyone else plays every match:
 
 - `PrismaticAI`: no settings, the way a bot started without the panel runs. Since 2026-11-19 its
-  `autopilot` (default 1) engages: in-bot steward, own lines, intercity roads, 30 routes.
+  `autopilot` (default 1) engages: in-bot steward, own lines, intercity roads, 30 routes, and its
+  own **air routes first** (up to 6, between big towns 60-260 tiles apart, up to 8 planes each;
+  `autopilot.nut`). The winner's lead opens in the first quarters, carried by aircraft.
 - `PrismaticAI solo-max`: `aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0`,
   the control without any steward.
   It plans its own freight rail lines and intercity roads without the panel's planner.
@@ -188,8 +209,8 @@ The first editions showed two failures. The battle now catches both by itself.
 By the owner's order, `PrismaticAI` and `PrismaticAI self-steward` are never last
 (`never_last` in `battle.json`, rule `project.prismatic-ai-is-never-last`). `battle.py check`
 fails when one of them is last on the newest record's leaderboard. `battle.py fitness` fails
-when one is last by final value on its seed. Its lineup holds all three PrismaticAI
-configurations, AAAHogEx and LuDiAI AfterFix.
+when one is last by final value on its seed. It runs one match per PrismaticAI
+configuration, in parallel, each against AAAHogEx, LuDiAI AfterFix and AdmiralAI.
 
 ## Where we lose: post-mortems, store, throughput
 

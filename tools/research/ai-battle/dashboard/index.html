@@ -107,6 +107,7 @@
       <button data-v="log" aria-pressed="true">Log</button><button data-v="lin">Linear</button>
     </div>
     <a class="sub" href="/docs" target="_blank" rel="noopener">API</a>
+    <a class="sub" href="/api/query?sql=SELECT%20contestant%2C%20count(*)%20matches%2C%20round(avg(rank)%2C2)%20avg_rank%20FROM%20standings%20GROUP%20BY%20contestant%20ORDER%20BY%20avg_rank" target="_blank" rel="noopener">SQL</a>
   </div>
 </header>
 <main>
@@ -114,6 +115,7 @@
   <section class="panel wide"><h2><span>Live matches</span><span id="livecount"></span></h2><div class="live" id="live"></div></section>
   <section class="panel"><h2>Leaderboard</h2><div class="scroll" id="board"></div></section>
   <section class="panel"><h2>Alerts (self-monitoring)</h2><div class="alerts" id="alerts"></div></section>
+  <section class="panel wide"><h2><span>Post-mortems: where each contestant lost to the winner</span><span class="sub">gap · behind since · findings</span></h2><div class="scroll" id="pm"></div></section>
   <section class="panel"><h2>Recent results</h2><div class="scroll" id="recent"></div></section>
   <section class="panel"><h2>Replays on another arena (determinism)</h2><div class="scroll" id="det"></div></section>
   <section class="panel wide"><h2>Orchestrator log</h2><div class="events" id="events"></div></section>
@@ -222,7 +224,7 @@ function render(st) {
   $('hosts').innerHTML = st.hosts.map((h) => `
     <div class="host"><b>${esc(h.name)}</b> <span class="${h.state}">${h.state}</span>
       <div class="sub">${esc(h.version || h.detail || '')}</div>
-      <div class="sub">${h.running}/${h.slots} running · ${h.done} done</div>
+      <div class="sub">${h.running}/${h.slots} running · ${h.done} done${(st.perf || {})[h.name] ? ` · ${st.perf[h.name].years_per_min} game-yr/min` : ''}</div>
       <div class="slots">${Array.from({ length: h.slots }, (_, i) => `<span class="slot ${i < h.running ? 'busy' : ''}"></span>`).join('')}</div>
     </div>`).join('');
 
@@ -255,6 +257,15 @@ function render(st) {
       <td class="num">${r.avg_rank ?? '–'}</td><td class="num">${num(r.avg_value)}</td>
       <td class="num">${r.anomalies ? `<span class="pill warn">${r.anomalies}</span>` : 0}</td></tr>`).join('')}</table>
     <div class="sub" style="margin-top:8px">Points: last place 0, each place above +1. Matches that reached the final year count; replays don't. Anomalous: matches with a fleet drop, Squirrel errors or no vehicles.</div>`;
+
+  const pms = [];
+  for (const x of st.postmortems || []) for (const p of x.postmortem) pms.push(Object.assign({ match: x.match }, p));
+  $('pm').innerHTML = pms.length ? `<table><tr><th>match</th><th>contestant</th><th class="num">gap</th><th>behind since</th><th>findings</th></tr>
+    ${pms.filter((p) => p.contestant.startsWith('PrismaticAI')).concat(pms.filter((p) => !p.contestant.startsWith('PrismaticAI'))).slice(0, 40).map((p) => `<tr>
+      <td>${p.match}</td><td><span class="dot" style="background:${colour(p.contestant)}"></span>${esc(p.contestant)}</td>
+      <td class="num">${p.gap}×</td><td>${p.behind_since || '–'}</td>
+      <td class="sub" style="white-space:normal">${p.findings.map(esc).join(' · ') || '–'}</td></tr>`).join('')}</table>`
+    : '<div class="empty">No finished match in this edition yet. Every finished match gets one, stored in battle.sqlite (table postmortems).</div>';
 
   const alerts = st.events.filter((e) => e.msg.startsWith('ALERT')).reverse();
   $('alerts').innerHTML = alerts.length ? alerts.map((e) => `<div>${e.at} ${esc(e.msg.slice(6))}</div>`).join('')
