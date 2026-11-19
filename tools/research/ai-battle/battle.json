@@ -39,13 +39,6 @@
     },
     {
       "ai": "PrismaticAI",
-      "label": "PrismaticAI solo-max",
-      "source": "repository",
-      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0,air_add_waiting=0,catchment_stops=0,rail_double=0",
-      "group": "PrismaticAI"
-    },
-    {
-      "ai": "PrismaticAI",
       "label": "PrismaticAI pre-elite",
       "source": "repository",
       "group": "PrismaticAI",
@@ -153,7 +146,6 @@
     "mutation_rate": 0.35,
     "anchors": [
       "PrismaticAI",
-      "PrismaticAI solo-max",
       "PrismaticAI pre-elite"
     ],
     "fixed": {
