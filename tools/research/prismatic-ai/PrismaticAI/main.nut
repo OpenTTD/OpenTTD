@@ -394,6 +394,8 @@ function PrismaticAI::Start() {
 
 		/* Capacity follows demand: add where cargo piles up, sell what keeps losing money. */
 		this.ManageFleet(b.cash_reserve);
+		/* With the steward on, idle money buys vehicles where vehicles earn most (fleet.nut). */
+		if (b.self_steward == 1) this.InvestSurplus(b.cash_reserve);
 		/* Every rail line keeps a train: one lost at a level crossing or sold is replaced. */
 		PrismaticAI.KeepLinesServed(b.cash_reserve);
 		/* Each line runs what the steward's targets say (lines.nut), and its record is logged again

@@ -30,7 +30,7 @@ function PrismaticAI::NextAutopilotAirPair() {
 	towns.Sort(AIList.SORT_BY_VALUE, AIList.SORT_DESCENDING);
 	towns.KeepTop(AUTOPILOT_AIR_TOWNS);
 	local list = [];
-	foreach (t, pop in towns) list.push([t, pop]);
+	foreach (t, pop in towns) if (!AIR_BAD_TOWNS.rawin(t)) list.push([t, pop]);
 	local best = null, best_score = 0;
 	for (local i = 0; i < list.len(); i++) {
 		if (this.air_towns.rawin(list[i][0])) continue;

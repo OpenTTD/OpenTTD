@@ -61,6 +61,17 @@ only by more lines. Since this was found, the autopilot builds its own air route
 (`autopilot.nut`). Three PrismaticAI configurations on one map took each other's airport towns, so
 the battle plays one of them per match (`lineup_for`).
 
+In the first air edition (361b802f) three further failures showed up, all fixed in the bot:
+- Airports were refused by `ERR_STATION_TOO_MANY_STATIONS_IN_TOWN` (365 sites in one game) and
+  `ERR_LOCAL_AUTHORITY_REFUSES`. The bot now joins an adjacent station of its own and stops
+  surveying a town whose authority refuses (`AIR_BAD_TOWNS`).
+- `fleet.nut`'s "almost nothing waits" rule sold planes on routes earning about 67k a plane a
+  year, because aircraft pick up every passenger. A route whose judged vehicles earned money last
+  year is no longer thinned (`RouteEarns`).
+- Idle money still did not buy vehicles. With the steward on, `InvestSurplus` adds a vehicle to
+  the route earning most per vehicle while that is above a third of its price. On one seed the
+  12-year value rose by about a fifth, with 14-16 planes instead of 2-4.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

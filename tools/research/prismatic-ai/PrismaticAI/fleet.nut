@@ -40,6 +40,64 @@ function PrismaticAI::DepotFor(v) {
 	return depots.IsEmpty() ? -1 : depots.Begin();
 }
 
+/* Whether the route's vehicles that are old enough to judge (a year) earned money last year. Little
+ * waiting cargo on such a route means it is served well, not over-served: aircraft pick up every
+ * passenger, and the "nothing waits" rule sold a pair of planes earning about 67k a year each, until
+ * the air routes were gone (LAN AI battle, research/ai-battle/README.md). */
+function PrismaticAI::RouteEarns(k) {
+	local profit = 0, judged = 0;
+	local all = AIVehicleList();
+	for (local u = all.Begin(); !all.IsEnd(); u = all.Next()) {
+		if (AIVehicle.GetAge(u) < 365 || PrismaticAI.RouteKey(u) != k) continue;
+		profit += AIVehicle.GetProfitLastYear(u);
+		judged++;
+	}
+	return judged == 0 || profit > 0;
+}
+
+/* Surplus to put to work (steward on): money above this many reserves funds more vehicles. */
+const INVEST_SURPLUS_RESERVES = 20;
+const INVEST_SURPLUS_MIN = 150000;
+
+/* Put idle money to work: one more vehicle on the route whose judged vehicles (a year old) earned
+ * the most per vehicle last year, while that is above a third of the vehicle's price and the route
+ * is under its cap. The winner of the LAN AI battle grew its fleet tenfold while PrismaticAI sat on
+ * millions with ~30 vehicles; waiting cargo alone never called for more. Road and air only: rail
+ * lines grow through the steward's targets (lines.nut, steward.nut). */
+function PrismaticAI::InvestSurplus(reserve) {
+	local money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
+	if (money < max(INVEST_SURPLUS_MIN, INVEST_SURPLUS_RESERVES * reserve)) return;
+	local routes = {};
+	local all = AIVehicleList();
+	for (local v = all.Begin(); !all.IsEnd(); v = all.Next()) {
+		if (this.selling.rawin(v)) continue;
+		local type = AIVehicle.GetVehicleType(v);
+		if (type != AIVehicle.VT_ROAD && type != AIVehicle.VT_AIR) continue;
+		local k = PrismaticAI.RouteKey(v);
+		if (k == "") continue;
+		if (!routes.rawin(k)) routes[k] <- {sample = v, count = 0, profit = 0, judged = 0, type = type};
+		local r = routes[k];
+		r.count++;
+		if (AIVehicle.GetAge(v) >= 365) { r.profit += AIVehicle.GetProfitLastYear(v); r.judged++; }
+	}
+	local best = null, best_ppv = 0;
+	foreach (k, r in routes) {
+		if (r.judged == 0 || r.count >= ((r.type == AIVehicle.VT_AIR) ? 8 : 8)) continue;
+		local ppv = r.profit / r.judged;
+		if (ppv * 3 < AIEngine.GetPrice(AIVehicle.GetEngineType(r.sample))) continue;
+		if (ppv > best_ppv) { best_ppv = ppv; best = r; }
+	}
+	if (best == null) return;
+	local depot = PrismaticAI.DepotFor(best.sample);
+	if (depot == -1) return;
+	local nv = AIVehicle.CloneVehicle(depot, best.sample, true);
+	if (AIVehicle.IsValidVehicle(nv)) {
+		AIVehicle.StartStopVehicle(nv);
+		AILog.Info("PrismaticAI: invest: " + best_ppv + " a year per vehicle on route " + PrismaticAI.RouteKey(best.sample) +
+			"; added vehicle " + nv + " (" + (best.count + 1) + " on the route, money " + money + ")");
+	}
+}
+
 function PrismaticAI::ManageFleet(reserve) {
 	local routes = {};
 	local list = AIVehicleList();
@@ -121,7 +179,7 @@ function PrismaticAI::ManageFleet(reserve) {
 		}
 		/* Too many by waiting cargo, where the link graph has no answer yet: almost nothing waits at any
 		 * stop for 6 heartbeats in a row and the route has more than one vehicle. */
-		if (waiting * 4 < cap && r.count > 1) {
+		if (waiting * 4 < cap && r.count > 1 && !PrismaticAI.RouteEarns(k)) {
 			local n = this.idle.rawin(k) ? this.idle[k] + 1 : 1;
 			this.idle[k] <- n;
 			if (n >= 6) {

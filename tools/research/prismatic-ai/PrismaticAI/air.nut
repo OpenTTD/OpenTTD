@@ -13,6 +13,10 @@
  * Every step is logged with its tile, so the director moves the camera and the cursor there.
  */
 
+/* Towns where an airport of ours cannot go (the authority refuses, or the town has too many
+ * stations and none of ours is adjacent): town id -> the error. The autopilot skips them. */
+AIR_BAD_TOWNS <- {};
+
 /* The most levelling a site may cost before an airport is built on it instead of skipped. */
 const LEVEL_MAX_COST = 15000;
 
@@ -71,7 +75,21 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 				return t;
 			}
 		}
+		local err = AIError.GetLastError();
+		/* The town allows no further station: join one of ours next to the site instead. In a battle
+		 * this refused 365 sites in one game. */
+		if (err == AIStation.ERR_STATION_TOO_MANY_STATIONS_IN_TOWN &&
+				AIAirport.BuildAirport(t, type, AIStation.STATION_JOIN_ADJACENT)) {
+			AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + ", joined to our adjacent station");
+			return t;
+		}
 		AILog.Warning("PrismaticAI: airport at tile " + t + " refused: " + AIError.GetLastErrorString());
+		/* The authority's answer is the same for every site of this town: stop surveying it. */
+		if (err == AIError.ERR_LOCAL_AUTHORITY_REFUSES) {
+			AIR_BAD_TOWNS[town] <- "authority";
+			return null;
+		}
+		if (err == AIStation.ERR_STATION_TOO_MANY_STATIONS_IN_TOWN) AIR_BAD_TOWNS[town] <- "stations";
 	}
 	AILog.Warning("PrismaticAI: no airport site in " + AITown.GetName(town) + " after " + tried + " tries");
 	return null;
