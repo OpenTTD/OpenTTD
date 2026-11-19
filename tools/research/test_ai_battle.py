@@ -96,6 +96,26 @@ class MatchContract(unittest.TestCase):
             seen |= {k for k in lu if k.startswith("P")}
         self.assertEqual(seen, {"P1", "P2"})
 
+    def test_reap_keeps_the_current_edition_and_finished_matches(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            for ed, mid, finished in (("cur", "m-0001", False), ("old", "m-0001", False), ("old", "m-0002", True)):
+                d = Path(tmp) / "matches" / ed / mid
+                d.mkdir(parents=True)
+                proc = subprocess.Popen(["sleep", "30"])
+                (d / "pid").write_text(str(proc.pid))
+                if finished:
+                    (d / "exit_code").write_text("0")
+                procs = getattr(self, "_procs", [])
+                procs.append((ed, mid, proc))
+                self._procs = procs
+            out = subprocess.run(["/bin/sh", "-c", battle.reap_script(tmp, "cur")], capture_output=True,
+                                 text=True).stdout.strip()
+            self.assertEqual(out, "reaped 1")
+            alive = {(ed, mid): p.poll() is None for ed, mid, p in self._procs}
+            self.assertEqual(alive, {("cur", "m-0001"): True, ("old", "m-0001"): False, ("old", "m-0002"): True})
+            for _, _, p in self._procs:
+                p.kill()
+
     def test_contestant_key_prefers_label(self):
         self.assertEqual(battle.contestant_key({"ai": "P", "settings": "x=1"}), "P[x=1]")
         self.assertEqual(battle.contestant_key({"ai": "P", "label": "P max"}), "P max")

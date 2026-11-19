@@ -523,6 +523,15 @@ def match_dir(root: str, m: dict) -> str:
     return f"{root}/matches/{m['edition']}/{m['id']}"
 
 
+def reap_script(root: str, keep_edition: str) -> str:
+    """Stop, through its pid file, every still-running match of another edition on a host: after a
+    restart into a new edition (a new bot, config or GA generation) those would only hold slots."""
+    return (f'n=0; for d in {root}/matches/*/m-*; do case "$d" in */{keep_edition}/*) continue;; esac; '
+            '[ -f "$d/pid" ] || continue; [ -f "$d/exit_code" ] && continue; '
+            'kill -0 "$(cat "$d/pid")" 2>/dev/null || continue; kill "$(cat "$d/pid")" && n=$((n+1)); '
+            'done; echo "reaped $n"')
+
+
 def launch_script(host: Host, m: dict, mc: dict) -> str:
     root, mdir = host.root, match_dir(host.root, m)
     personal = f"{mdir}/home/Documents/OpenTTD"
@@ -895,6 +904,16 @@ class Orchestrator:
         return [m for m in self.matches.values()
                 if m["host"] == host.name and m["status"] in ("starting", "running")]
 
+    def reap(self) -> None:
+        for host in self.hosts:
+            try:
+                r = host.sh(reap_script(host.root, self.digest), timeout=30)
+            except subprocess.TimeoutExpired:
+                continue
+            n = r.stdout.strip().replace("reaped ", "")
+            if r.returncode == 0 and n not in ("", "0"):
+                self.event(f"host {host.name}: stopped {n} match(es) of an older edition")
+
     def reload_hosts(self) -> None:
         """Pick up hosts added to the local hosts file (e.g. by `discover`) without a restart."""
         known = {h.name for h in self.hosts}
@@ -1189,6 +1208,7 @@ class Orchestrator:
                    f"rev {self.provenance['rev'][:10]})")
         signal.signal(signal.SIGTERM, lambda *_: self.stop.set())
         signal.signal(signal.SIGINT, lambda *_: self.stop.set())
+        self.reap()
         last = 0.0
         restart = False
         while not self.stop.is_set():
@@ -1625,7 +1645,7 @@ def cmd_status(cfg: dict) -> None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     ap.add_argument("command", choices=["discover", "fetch", "prepare", "probe", "run", "status",
-                                        "report", "check", "fitness", "ablate"])
+                                        "report", "check", "fitness", "ablate", "reap"])
     ap.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--allow-dirty", action="store_true",
@@ -1662,6 +1682,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_report(cfg, a.check, a.edition)
     elif a.command == "fitness":
         return cmd_fitness(cfg)
+    elif a.command == "reap":
+        Orchestrator(cfg).reap()
     elif a.command == "ablate":
         return cmd_ablate(cfg, a.seed, a.years, a.variant, a.field.split(","), a.write)
     return 0

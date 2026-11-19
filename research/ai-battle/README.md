@@ -90,6 +90,9 @@ python3 $B status     # leaderboard and replays of the current edition
 python3 $B report     # research/results/battle-<utc>-<edition>.{json,md} + README leaderboard
 python3 $B check      # every record valid, every derived file current (exit 10 / 11 otherwise)
 python3 $B fitness    # the working tree's PrismaticAI in one short local match (gate, on change)
+python3 $B ablate --variant "base=..." --variant "x=setting=v" --years 10 --seed S --write
+                      # one deterministic local match per settings variant, recorded in research/results
+python3 $B reap       # stop running matches of older editions on every arena (run does it on start)
 ```
 
 `run` never stops on its own. It re-probes online hosts every `schedule_every_s` and offline ones
