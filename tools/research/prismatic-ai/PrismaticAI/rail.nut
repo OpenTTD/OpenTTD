@@ -862,7 +862,9 @@ function PrismaticAI::BuildDoubleRailLineAndTrain(sa, sb, len, cargo, first_flag
 		 * and the second track's reserved tiles are what a hilly map most often refuses). */
 		return -1;
 	}
+	local acc_a = AIAccounting();
 	local laid = PrismaticAI.BuildRailAlong(path, sa.end, sb.end, 2, true, true);
+	local cost_a = acc_a.GetCosts();
 	if (laid == null) return 0;
 	local broken = PrismaticAI.VerifyRailLine(laid, sa.end, sb.end);
 	if (broken == -1) broken = PrismaticAI.VerifyJunction(da, false);
@@ -871,11 +873,20 @@ function PrismaticAI::BuildDoubleRailLineAndTrain(sa, sb, len, cargo, first_flag
 		AILog.Warning("PrismaticAI: rail line " + label + " is broken at tile " + broken + "; no train on a line it cannot run");
 		return 0;
 	}
-	/* Track B: the same search, track A's tiles left out, entered sideways at S1 (from_in). */
+	/* Track B only when, after it, the money still buys the train: track B costs about what track A
+	 * did. On OpenTTD seed 1516196607 (company 4) both tracks took the whole loan, the locomotive
+	 * was refused for ERR_NOT_ENOUGH_CASH, and the company went bankrupt in 1961 with two buses. */
+	local engines = PrismaticAI.PickRailEngines(AIRail.GetCurrentRailType(), cargo);
+	local train_price = (engines.loco == -1) ? 0 : AIEngine.GetPrice(engines.loco) +
+		(engines.wagon == -1 ? 0 : 2 * len * AIEngine.GetPrice(engines.wagon));
+	local funds = AICompany.GetBankBalance(AICompany.COMPANY_SELF) + AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
+	local afford_b = funds >= cost_a + train_price;
+	if (!afford_b) AILog.Warning("PrismaticAI: no second track for " + label + ": it would cost about " + cost_a +
+		" and leave less than the train's " + train_price + " (funds " + funds + ")");
 	local taken = {};
 	foreach (t in laid) taken[t] <- 1;
 	local laid2 = null;
-	local path2 = PrismaticAI.FindRailPath(da.b2, db.b2, da.s1, db.s1, taken, da.lane, true, true);
+	local path2 = afford_b ? PrismaticAI.FindRailPath(da.b2, db.b2, da.s1, db.s1, taken, da.lane, true, true) : null;
 	if (path2 != null) laid2 = PrismaticAI.BuildRailAlong(path2, da.s1, db.s1, 2, true, true);
 	if (laid2 != null) {
 		broken = PrismaticAI.VerifyRailLine(laid2, da.s1, db.s1);
