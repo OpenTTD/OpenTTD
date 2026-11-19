@@ -509,186 +509,100 @@ and threshold lives in [`style.toml`](tools/research/noirgfx/style.toml). Build 
 
 ## 0.0) About this fork
 
-`korczis/OpenTTD` is a **personal research fork**, public on GitHub, not the official OpenTTD project and not staged for upstream contribution. It is owned by korczis and serves two purposes: an **LLM and agent lab**, where language models, Rhai scripts and planners play the game through an embedded MCP server and the game's own command system, and a real, complex, long-lived C++ codebase on which to validate the **Prismatic platform**'s coding-agent workflows (how agents plan and scope changes, how gating and reproducibility hold up, how agent-driven engineering behaves against a substrate too large and too convention-heavy to fake).
+`korczis/OpenTTD` is a **personal research fork**, public on GitHub, not the official OpenTTD
+project and not staged for upstream contribution. It is owned by korczis and has two purposes:
 
-Sections 1.0 onward below are the **original upstream OpenTTD README**, kept intact for its technical value and attribution. This section only documents what's specific to this fork.
+- **An LLM and agent lab.** Language models, Rhai scripts and planners play the game through an
+  embedded MCP server and the game's own command system, and recorded duels measure what they
+  achieve.
+- **A validation target for coding agents.** It is a real, long-lived C++ codebase on which the
+  **Prismatic platform**'s agent workflows are tested: how agents plan and scope changes, and
+  whether gating and reproducibility hold up against a substrate too large and too
+  convention-heavy to fake.
 
-```mermaid
-flowchart LR
-    subgraph P["~/dev/prismatic-platform (private, untouched)"]
-        P1["Elixir/Phoenix umbrella<br/>OSINT / decision-support"]
-        P2["just check / precommit / ci"]
-        P3["agent definitions and commands"]
-    end
-
-    subgraph F["korczis/OpenTTD (this fork)"]
-        F1["System under test: C++20, CMake/CTest"]
-        F2["tools/gate.sh: smoke / change / research / full"]
-        F3["AGENTS.md, CLAUDE.md, research/"]
-    end
-
-    P -- "generic principles only<br/>(read, adapted, never copied wholesale)" --> F
-    F -. "no automated sync —<br/>human judgement only" .-> P
-```
+Sections 1.0 onward are the **original upstream OpenTTD README**, kept intact for its technical
+value and attribution. This section documents only what is specific to this fork.
 
 ### 0.1) Purpose and goals
 
-OpenTTD plays two roles at once in this repository:
+- **Let AI play a real game honestly.** OpenTTD is deterministic lockstep: every client must
+  compute bit-identical results from the same command stream. An agent that changes the world
+  through anything but a registered command desyncs the game, so the game itself grades the
+  integration.
+- **Validate coding agents on code that was not shaped for them.** The command system
+  (`src/command.cpp`), savegames that must load forever (`src/saveload/`), a pathfinder
+  specialised per vehicle type and a warning-heavy Doxygen convention are invariants an agent has
+  to respect. Breaking one compiles fine and still desyncs a game or corrupts a save, which is the
+  "looks fine, is broken" failure this fork exists to catch.
+- **Report only what ran.** The layered gate (`tools/gate.sh`) and the `PASS` / `FAIL` /
+  `PARTIAL` / `NOT RUN` / `NOT APPLICABLE` taxonomy are themselves under evaluation: a gate too
+  cheap to catch real problems, or too expensive to be used, is a result worth knowing.
+- **Make every experiment reproducible.** Build profiles, toolchain, commands and results are
+  recorded into a manifest, and the report is generated from that record.
 
-- **System under test.** `src/`, `regression/`, the build system, and OpenTTD's own engineering conventions are the real substrate an agent has to actually respect to make a correct, working change — that's what makes it useful as a validation target instead of a toy. Concretely, this means things like: the deterministic command-pattern architecture (`src/command.cpp`) that every game-state mutation must go through, because multiplayer is bit-identical lockstep across clients; backward-compatible savegame versioning (`src/saveload/`) where a field, once shipped, can never simply be deleted; a YAPF pathfinder specialized per vehicle type; and a project-wide Doxygen documentation convention enforced by warning-heavy compiler flags. An agent that ignores any of these doesn't just write ugly code — it writes code that would desync a multiplayer game or corrupt old savegames, which is exactly the kind of "looks fine, is actually broken" failure this fork exists to catch before it's reported as a pass.
-- **Not a product being developed here.** Nothing in this fork is intended to become an OpenTTD feature or fix, and no change here is judged by whether it improves gameplay. Changes exist to produce evidence about *how the change was made and validated* — the deliverable of a session in this repository is closer to an experiment report (see `research/experiment-template.md`) than to a shipped feature.
+Nothing here is meant to become an upstream OpenTTD feature. Every change is classified, before it
+is made, as one of the four kinds of change in [`AGENTS.md`](./AGENTS.md):
 
-Concretely, this fork exists to:
-
-- **validate and stress-test the Prismatic platform** against a real, non-trivial, long-lived codebase, rather than a purpose-built toy. A toy codebase can be shaped to be easy for an agent to succeed in; OpenTTD wasn't built for that and doesn't bend to make results look better than they are.
-- **run controlled experiments with coding agents** — planning, scoping, and executing changes under explicit constraints (see the four kinds of change below), so that a given experiment has a stated goal, a bounded surface area, and a predictable way to tell whether it succeeded.
-- **evaluate the quality of changes, fixes, and refactors, and the decision processes behind them** — not just whether a diff compiles, but whether the reasoning that produced it holds up: did the agent correctly identify the relevant convention (e.g. "this touches game state, so it must go through a command handler"), or did it get a working-looking result for the wrong reason.
-- **measure the reproducibility, quality, and reliability of agentic workflows** — can the same task, run again (possibly by a different agent, or the same agent on a different day), be trusted to produce a comparable, honestly-reported result, rather than a one-off lucky success.
-- **develop and validate gating, tooling orchestration, and experimental protocols** — the layered `tools/gate.sh` model and the `research/` reporting taxonomy in this repository are themselves part of what's being evaluated, not just scaffolding around it: a gating design that's too cheap to catch real problems, or too expensive to actually get used, is itself a negative result worth knowing about.
-
-Every change made in this fork should be traceable to at least one of the five goals above — if it isn't, it's probably out of scope for this repository (see 0.3).
-
-Why this matters beyond the mechanics: Prismatic's actual application domain (see 0.2.1) is decision-support work where a wrong or overconfident answer has real cost. That's part of why this fork insists on the fail-closed reporting habit described in 0.6 — never claiming PASS on untested work — rather than on optimistic status reporting: the gating discipline being validated here is meant to transfer back to a context where it actually matters, not just to look tidy in a research repo.
-
-**The four kinds of change** (from `AGENTS.md`) that every experiment in this fork is classified as, before it's touched:
-
-```mermaid
-flowchart TD
-    Start(["A change is about to be made"]) --> Q1{"Does it touch<br/>src/, regression/, docs/<br/>under upstream conventions?"}
-    Q1 -- yes --> C1["1. Product change<br/>(subject to OpenTTD's own<br/>engineering conventions)"]
-    Q1 -- no --> Q2{"Does it touch<br/>tools/gate.sh or research/?"}
-    Q2 -- yes --> C2["2. Experimental infrastructure change<br/>(this fork's own validation tooling)"]
-    Q2 -- no --> Q3{"Does it touch<br/>.claude/ or .aiad/?"}
-    Q3 -- yes --> C3["3. Agentic tooling change<br/>(local-only, never committed)"]
-    Q3 -- no --> C4["4. Documentation change<br/>(README / AGENTS.md / CLAUDE.md)"]
-    C1 --> Gate["Validated by the matching tools/gate.sh tier —<br/>see 0.5"]
-    C2 --> Gate
-    C4 --> Gate
-    C3 --> Local["Stays local — no gate needed,<br/>never enters git history"]
-```
+| Kind | What it touches | Validated by |
+|---|---|---|
+| 1. Product change | OpenTTD's own code and docs (`src/`, `regression/`, `docs/`), under upstream's conventions | the matching `tools/gate.sh` tier (0.5) |
+| 2. Experimental infrastructure | this fork's tooling (`tools/gate.sh`, `tools/surfaces/`, `tools/research/`, `research/`) | the matching `tools/gate.sh` tier |
+| 3. Agentic tooling | the local `.claude/` and `.aiad/` | nothing: local only, never committed |
+| 4. Documentation | `README.md`, `AGENTS.md`, `CLAUDE.md`, `.ai/` records | `tools/surfaces/surfaces check` and `tools/gate.sh change` |
 
 ### 0.2) Relationship to the Prismatic platform
 
-#### 0.2.1) What Prismatic is
+**Prismatic** is a separate, private Elixir/Phoenix platform by korczis for decision-support and
+OSINT work (due diligence, investigation, M&A research), with a large investment in its own
+agent-engineering tooling. Its repository, `~/dev/prismatic-platform`, is never modified from here.
+OpenTTD was picked to validate that tooling because it shares nothing with it: a 20-year-old C++
+codebase with its own strict conventions and an independent CMake/CTest toolchain, so the tooling
+under test cannot grade itself.
 
-**Prismatic** is a separate, private platform under active development by korczis — its own repository, `~/dev/prismatic-platform`, is not part of this repository and is never modified by work done here. Studied directly from that repository (its own `mix.exs` and `CLAUDE.md`) rather than guessed:
+The relationship is one-directional and arm's-length. Generic, stack-independent principles (the
+tiered `check` / `precommit` / `ci` model, the fail-closed completion taxonomy, the rule against a
+self-authorised gate bypass) were read from specific Prismatic files, re-implemented against
+OpenTTD's own toolchain and written once into `AGENTS.md`, `tools/gate.sh` and `research/`.
+Prismatic-specific detail stayed behind. Nothing flows back automatically: findings inform
+Prismatic by human judgement only.
 
-- It's an Elixir/Phoenix **umbrella monorepo** — dozens of independent applications under `apps/` (OSINT source connectors, storage backends across several engines, browser automation/crawling, an internal agent-orchestration kernel, a web front end, and more), built around **interactive decision-support and OSINT (open-source intelligence) work** — the platform's own stated focus is due-diligence investigation, critical-infrastructure threat analysis, and M&A-style research.
-- It carries a correspondingly large investment in its **own AI-agent engineering tooling**: several hundred specialized agent definitions and domain-specific commands under its own `.claude/`/`.aiad/`, a layered `just check` / `just precommit` / `just ci` local-validation workflow (the direct ancestor of this fork's `tools/gate.sh` smoke/change/full tiers), and a git-worktree-based session-isolation system so multiple agent sessions can work without stepping on each other.
-- Its process documentation is dense, self-referential, and specific to its own stack and internal conventions — useful as raw material to mine for generic principles, not something to import wholesale (see 0.2.3).
-
-#### 0.2.2) Why an unrelated, external codebase is used to validate it
-
-A platform whose actual job is decision-support/OSINT analysis can't cleanly validate its own agentic tooling against its own codebase — an agent that's good at editing code that's already full of hooks and conventions *for* the very tooling being tested doesn't tell you much about how well that tooling generalizes. OpenTTD was picked deliberately because it shares essentially nothing with Prismatic:
-
-- it's a 20+ year old, large, real C++20 codebase (dozens of subsystem directories under `src/`) with its own strict, unrelated engineering conventions — a deterministic command-pattern architecture, backward-compatible savegame versioning going back decades, a heavy Doxygen documentation style;
-- it has nothing to do with Elixir, Phoenix, OSINT, or decision-support workflows, so no part of it was shaped to be agent-friendly or Prismatic-friendly;
-- it has an established, independently working build and test toolchain (CMake + CTest, 98 pre-existing tests) that this fork's own gating model can be checked against without having to trust the very tooling under evaluation to grade itself.
-
-That independence is the point: results produced in this fork say something about how Prismatic's agentic workflows and gating designs hold up against unfamiliar, real-world engineering conventions, rather than against code that was already shaped to fit the platform.
-
-#### 0.2.3) What is adapted vs. left behind
-
-This fork's relationship to Prismatic is one-directional and deliberately arm's-length:
-
-- **Principles flow from Prismatic into this fork, adapted — not copied wholesale.** Where Prismatic's own workflow conventions contain a generic, stack-independent idea (for example: a cheap/standard/expensive tiered validation model with one entry point per tier, or a fail-closed reporting taxonomy that refuses to round an uncertain result up to "passed"), this fork re-implements that *idea* against OpenTTD's own CMake/CTest toolchain in `AGENTS.md`, `tools/gate.sh`, and `research/`. Prismatic-specific implementation detail (its language/framework, its own tool and app names, its internal branding, doctrine, and domain-specific policies) is deliberately left behind — see `AGENTS.md` for the explicit classification of what was and wasn't carried over, and why.
-- **Nothing flows back automatically.** Findings from working in this fork inform Prismatic's own design by human judgment, not by any automated sync — there is no tooling in either repository that writes from one into the other. `~/dev/prismatic-platform` is read for inspiration; it is never edited from here.
-
-#### 0.2.4) Integration mechanics — what actually gets read, and how
-
-"Adapted, not copied" isn't a vague policy statement — every principle that made it into this fork followed the same concrete pipeline:
-
-```mermaid
-flowchart LR
-    A["Read a specific file in<br/>~/dev/prismatic-platform<br/>(never guessed from its name)"] --> B{"Classify"}
-    B -- "A: generic,<br/>stack-independent" --> C["Re-implement the idea against<br/>OpenTTD's own CMake/CTest toolchain"]
-    B -- "B: sound idea,<br/>needs adaptation" --> C
-    B -- "C: Prismatic-specific,<br/>inspiration only" --> D["Noted in this README,<br/>not ported"]
-    B -- "D: not transferable<br/>(stack- or domain-specific)" --> D
-    C --> E["Written ONCE into<br/>AGENTS.md / tools/gate.sh / research/"]
-    E --> F["Validated with tools/gate.sh<br/>against OpenTTD itself"]
-```
-
-Concrete examples of what actually crossed that pipeline while this fork's tooling was built — not hypothetical, this is what happened:
-
-| Studied in Prismatic | Category | Landed as, in this fork |
-|---|---|---|
-| `justfile`'s `check` / `precommit` / `ci` tiers (~30s / ~2-3min / ~5-10min, one entry point per tier, "these match what CI runs too") | A — generic pattern | `tools/gate.sh smoke` / `change` / `full` |
-| Fail-closed completion taxonomy (`VERIFIED` / `PARTIALLY VERIFIED` / `BLOCKED`; "don't mark VERIFIED unless every blocking criterion actually passed") | A — generic pattern | `research/README.md`'s PASS / FAIL / PARTIAL / NOT RUN / NOT APPLICABLE taxonomy |
-| "No self-authorized gate bypass; an override may only be prepared at a human's own request, with their stated reason attached" | A — generic pattern | `AGENTS.md` ground rules |
-| Mandatory report sections (mission, actions taken, files modified, next steps) enforced by a session-end hook before a report is accepted | A, simplified | `research/experiment-template.md`'s required fields |
-| `mix compile` / `mix test` / `credo` / `dialyzer` as the actual per-tier check commands | B — needs adaptation | `cmake --build` / `ctest` (OpenTTD has no lint tool, so no lint step was invented to match) |
-| Git Worktree Operating System (`just wt-new` / `wt-claim` / `wt-doctor`, mandatory per-session isolated worktrees so concurrent agents never share a dirty root) | C — inspiration only | Not built here; this fork instead follows the lighter-weight "check `git status`, protect the existing dirty tree" rule already in `AGENTS.md`, which addresses the same underlying concern for a solo fork with no concurrent sessions |
-| A build-failing check that greps for and *forbids* rollback logic in database migrations | D — rejected, not transferable | Explicitly not echoed: OpenTTD's real rule points the opposite way — savegames must stay loadable forever (`src/saveload/`), so "forbid going backward" is the wrong instinct here |
-| GitLab server-side pre-receive hook enforcing an `AIAD-Gate` commit trailer, with a multi-approver override protocol | D — not transferable | Not applicable — a solo personal fork has no server-side git hooks and no second approver |
-
-This wasn't a one-time import. If this fork's gating model changes in the future, new principles would be expected to cross the same pipeline — read the specific source, classify it, adapt (or reject) it explicitly, write it once.
-
-#### 0.2.5) The bridge to Prismatic
-
-[`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) documents an actual bridge — a standalone sibling repository, `~/dev/openttd-prismatic-bridge` (Python/FastAPI), that speaks OpenTTD's admin-network protocol directly, exposes a REST + WebSocket API, and can already start/steer a real, externally-controllable Company AI (`ai/PrismaticAI`) end to end (8/8 of its own tests passing). That AI no longer just idles either: it builds a single-town bus route (two stops, a depot, 1-3 buses scaled by its `aggressiveness` setting), verified against a live server (`busses` 0→3, `company_value` 1→11025), and intercity road, rail, air and freight routes behind its settings. The decision contract with `prismatic-platform` has a machine-checkable schema in this repository (I0011, `research/prismatic-bridge/decision-contract.schema.json`); `prismatic-platform` answers it, and this fork's MCP panel consumes it at `POST /api/decision/pull` (checked end to end by `tools/research/mcp-decision-check`). The bridge's language is decided: a native Rust service (I0012, ADR 0032), still to be written in the bridge repository, so the Python bridge is the running implementation. What's not built yet: world seeding from real elevation data, and live decision-making that uses more of Prismatic than one Monte Carlo choice. Each remaining phase needs its own approval before being built — see the design doc for the full phase table and open questions.
+**The bridge.** [`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md)
+documents a standalone sibling service, `~/dev/openttd-prismatic-bridge`, that speaks OpenTTD's
+admin-network protocol and drives a Company AI (`PrismaticAI`). The decision contract with
+Prismatic has a machine-checkable schema in this repository
+(`research/prismatic-bridge/decision-contract.schema.json`, I0011); Prismatic answers it with a
+Monte Carlo choice, and the MCP panel applies the answer at `POST /api/decision/pull`
+(`tools/research/mcp-decision-check`). A native Rust bridge is decided (ADR 0032) but not yet
+written; world seeding from real elevation data and broader Prismatic decisions are not built.
 
 ### 0.3) What this fork is not
 
-- **Not affiliated with, and not a contribution channel to, the official [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD) project** — despite being hosted on GitHub as `korczis/OpenTTD`, it has no operational relationship to the upstream repository: no shared issue tracker, no CI feeding results back upstream, no listing as an active fork in any contribution sense.
-- **Not a place where issues or pull requests get opened upstream** — everything, including changes that happen to turn out well, stays local to this fork. A change proven here becoming an actual upstream contribution would require a separate, deliberate decision and a freshly-prepared PR built for that purpose specifically — that's out of scope for anything done in this repository by default.
-- **Not bound, as a *local* rule, by upstream's own contribution process** (`CONTRIBUTING.md`, PR templates, the strict commit-message grammar, "ask before large changes" discussion norms, the "AI-generated contributions are against policy" clause, `commit-checker`/`docs-checker` CI). That whole process exists to let a large volunteer maintainer base safely accept changes from strangers into a shared project — it describes upstream's own governance model, not this one. This fork has a single owner and no external reviewers, so that model simply doesn't map onto it; it's kept in this fork's docs purely as background technical reference (e.g. it explains conventions visible in the code).
-- **Not a public showcase of "an AI agent wrote OpenTTD code."** Results produced here are for informing Prismatic's own design, not for demonstrating agentic coding to an audience — hence the emphasis on honest, fail-closed reporting over polished-looking output.
+- **Not affiliated with, or a contribution channel to, [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD).**
+  No issues, pull requests or patches go upstream; a change that turns out well stays here.
+- **Not bound locally by upstream's contribution process.** `CONTRIBUTING.md`, the commit grammar,
+  the PR templates and the policy against AI-generated contributions govern upstream's shared
+  project; they are kept as technical background. This fork respects that policy by sending
+  nothing upstream.
+- **Not a product.** No change here is judged by whether it improves gameplay; it is judged by the
+  evidence of how it was made and validated.
 
 ### 0.4) What this fork adds on top of upstream OpenTTD
 
 | Path | Purpose |
 |---|---|
-| [`AGENTS.md`](./AGENTS.md) | Vendor-neutral ground rules for any coding agent working here: the four kinds of change, no-upstream / no-auto-commit / protect-dirty-tree rules, fail-closed reporting, the validation-layer model, and the research-mode policy for internals/debug/instrumentation access. |
-| [`CLAUDE.md`](./CLAUDE.md) | Claude Code-specific workflow notes (points to `AGENTS.md` first), plus OpenTTD's own build/run/test commands, architecture, and code style as technical reference. |
-| [`tools/gate.sh`](./tools/gate.sh) | Single entry point for layered local validation — see 0.5 below. |
-| [`tools/research/research`](./tools/research/research) | Canonical research-mode CLI: build profiles, headless instrumentation capture, a machine-readable experiment manifest, and a generated evidence bundle — see [`research/tooling.md`](./research/tooling.md). |
-| [`research/`](./research/) | The validation-layer writeup, the experiment-report template, and the detailed tooling reference. |
-| [`research/prismatic-mcp/`](./research/prismatic-mcp/) | Research trail for the embedded, research-only, compile-gated MCP server (see 0.4.1 below and `research/prismatic-mcp/README.md`). |
-| [`src/prismatic_mcp/`](./src/prismatic_mcp/) | The MCP server implementation itself, gated behind `OPTION_PRISMATIC_MCP_SERVER` (default OFF). |
-| [`tools/research/mcp-e2e`](./tools/research/mcp-e2e), [`mcp-panel/`](./tools/research/mcp-panel/), [`mcp-rhai/`](./tools/research/mcp-rhai/) | Drive a running game from outside: one-command end-to-end run, the loopback control window with its `~` developer console and HTTP API, and Rhai scripting against it — see [`research/mcp-control.md`](./research/mcp-control.md). |
+| [`src/prismatic_mcp/`](./src/prismatic_mcp/) | The embedded MCP server, gated behind `OPTION_PRISMATIC_MCP_SERVER` (default OFF); research trail in [`research/prismatic-mcp/`](./research/prismatic-mcp/README.md). |
 | [`tools/research/mcp-auto/openttd-mcp-stdio`](./tools/research/mcp-auto/openttd-mcp-stdio) | The stdio MCP proxy an LLM client (Claude Code, MCP Inspector, ...) runs; the panel holds the token. |
-| [`tools/research/mcp-duel`](./tools/research/mcp-duel), [`readme-scoreboard`](./tools/research/readme-scoreboard), [`research/results/`](./research/results/) | Bot-vs-bot duels, their recorded results, and the scoreboard generated from them. |
-| [`tools/research/mcp-live-check`](./tools/research/mcp-live-check) | Scripted live check of the MCP server against a running build. |
-| [`tools/research/noirgfx/`](./tools/research/noirgfx/README.md), [`research/noirgfx/`](./research/noirgfx/README.md) | NoirGFX, the fork's base graphics set, and its deterministic build pipeline. |
-| [`.ai/`](./.ai/README.md) | The supervised AI layer: ADRs, rules, plan, intents and knowledge that every agent reads the same way (Majordomus). |
-| [`tools/check-prismatic-docs.sh`](./tools/check-prismatic-docs.sh) | Freshness gate for the generated contributor docs (section 0.4.1). |
-| [`tools/surfaces/`](./tools/surfaces/README.md), [`surfaces.toml`](./surfaces.toml), [`.github/workflows/surfaces.yml`](./.github/workflows/surfaces.yml) | The published surfaces: site, wiki and Markdown regions derived from the repository, and the check that keeps them current (section 0.4.2). |
-| `.claude/`, `.aiad/` *(not committed)* | Personal Claude Code tooling imported from a sibling private project, kept strictly local via `.git/info/exclude`. |
+| [`tools/research/mcp-rhai/`](./tools/research/mcp-rhai/) | The Rust tooling: the Rhai host, the control panel, the hub, the planner and intent clients, the bus bridges, API coverage. |
+| [`tools/research/mcp-panel/`](./tools/research/mcp-panel/) | The panel's pages and its Rhai scripts (`rhai/`): director, narrator, steward, full game, ... |
+| [`tools/research/mcp-e2e`](./tools/research/mcp-e2e), [`mcp-duel`](./tools/research/mcp-duel), [`mcp-human`](./tools/research/mcp-human/) | The one-command stack, bot-vs-bot duels (results in [`research/results/`](./research/results/)), a bot that plays through the UI. |
+| [`tools/gate.sh`](./tools/gate.sh), [`tools/research/research`](./tools/research/research) | Layered local validation (0.5) and the research-mode CLI with its experiment manifest ([`research/tooling.md`](./research/tooling.md)). |
+| [`tools/surfaces/`](./tools/surfaces/README.md), [`surfaces.toml`](./surfaces.toml), [`tools/knowledge/`](./tools/knowledge/README.md) | The published surfaces (0.4.2), and the checks that keep the `.ai/` records' citations true. |
+| [`tools/research/noirgfx/`](./tools/research/noirgfx/README.md) | NoirGFX, the fork's base graphics set, and its deterministic build pipeline. |
+| [`AGENTS.md`](./AGENTS.md), [`CLAUDE.md`](./CLAUDE.md), [`.ai/`](./.ai/README.md) | Ground rules for any agent, Claude Code notes, and the supervised AI layer (ADRs, rules, plan, intents, knowledge) under Majordomus. |
+| `.claude/`, `.aiad/` *(not committed)* | Personal agent tooling, kept local through `.git/info/exclude`. |
 
-Laid out as a tree, to make the upstream/fork boundary explicit:
-
-```
-korczis/OpenTTD/
-├── src/, regression/, docs/, cmake/, os/, media/, bin/     <- upstream OpenTTD, conventions unmodified
-├── CMakeLists.txt, COMPILING.md, CODINGSTYLE.md, ...       <- upstream build system & docs, unmodified
-├── CONTRIBUTING.md, .github/                               <- upstream contribution process (background reference only, see 0.3)
-├── COPYING.md, CREDITS.md                                  <- upstream license & attribution, unmodified (see 0.7)
-│
-├── README.md            <- upstream content preserved below "0.0) About this fork" (this document)
-├── AGENTS.md             * fork-added: vendor-neutral agent ground rules
-├── CLAUDE.md              * fork-added pointer + preserved upstream-technical reference content
-│
-├── tools/
-│   ├── gate.sh            * fork-added: smoke / change / research / full validation entry point
-│   ├── check-prismatic-docs.sh  * fork-added: generated-docs freshness gate
-│   ├── surfaces/          * fork-added: site / wiki / Markdown-region generator and its check (0.4.2)
-│   └── research/          * fork-added: research-mode CLI, mcp-e2e / mcp-duel / mcp-auto (stdio proxy),
-│                            mcp-rhai (Rust: panel, hub, planner, Rhai host), mcp-panel (+ rhai/ scripts),
-│                            mcp-human, noirgfx, and the live checks
-│
-├── research/              * fork-added: gating model, experiment template, tooling reference, MCP control,
-│                            hub, duel results, NoirGFX, prismatic-mcp/ research trail
-│                            (every document is listed in research/README.md's generated index)
-│
-├── .ai/                   * fork-added: supervised AI layer (ADRs, rules, plan, intents, knowledge)
-├── src/prismatic_mcp/       * fork-added: MCP server implementation, gated by OPTION_PRISMATIC_MCP_SERVER (default OFF)
-├── surfaces.toml            * fork-added: what the published surfaces publish (0.4.2)
-├── .github/workflows/surfaces.yml  * fork-added: check, then publish the site and the wiki
-│
-├── .claude/                 (fork-added, LOCAL ONLY — .git/info/exclude, never committed, never pushed)
-└── .aiad/                   (fork-added, LOCAL ONLY — .git/info/exclude, never committed, never pushed)
-```
+Everything else (`src/` outside `prismatic_mcp/`, `regression/`, `docs/`, the build system,
+`COPYING.md`, `CREDITS.md`) is upstream's and follows upstream's conventions.
 
 <!-- BEGIN GENERATED: prismatic-mcp-getting-started (source: research/prismatic-mcp/contributor-catalog.json; generated by tools/research/generate_prismatic_docs.py — do not hand-edit between these markers; edit the JSON and rerun the generator instead) -->
 #### 0.4.1) Getting started — Prismatic MCP for contributors
@@ -753,12 +667,10 @@ Known limitations (also generated from the same source):
 
 #### 0.4.2) Published surfaces
 
-Everything this fork publishes is derived from what git tracks: its Markdown, its history
-and its `.ai/` layer. `tools/surfaces/surfaces` renders every document to a GitHub Pages
-site and to the GitHub wiki, and keeps the tables marked as generated in these documents
-current. `surfaces check` fails the commit, `tools/gate.sh change` and CI on a stale
-table or a link to nothing. The motivation and the design are in
-[`tools/surfaces/README.md`](./tools/surfaces/README.md) and ADR 0012.
+Everything this fork publishes is derived from what git tracks: its Markdown, its history and its
+`.ai/` layer. `tools/surfaces/surfaces` renders every document to a GitHub Pages site and to the
+GitHub wiki, and keeps the generated tables in these documents current; a stale table or a link to
+nothing fails the commit, `tools/gate.sh change` and CI. Design: [`tools/surfaces/README.md`](./tools/surfaces/README.md), ADR 0012.
 
 <!-- surfaces:begin surfaces -->
 | Surface | Where | What it carries |
@@ -785,56 +697,26 @@ What the fork delivers, from its `.ai/` feature records:
 
 ### 0.5) Validation / gating model
 
-Local validation is layered by cost, with one entry point (`tools/gate.sh`) for the build/test tiers:
+Local validation is layered by cost, with one entry point for the build and test tiers. Each tier
+wraps OpenTTD's own CMake/CTest toolchain; there is no lint gate because the codebase has no lint
+tool, and this fork does not fake one. `tools/gate.sh --help` lists the exact commands per tier.
 
 | Tier | Command | Cost | When to use it |
 |---|---|---|---|
-| Smoke | `tools/gate.sh smoke` | cheapest | fast feedback while actively iterating |
-| Change | `tools/gate.sh change` | standard | before calling a task/change done |
-| Research | `tools/gate.sh research` | standard+ | a change to code behind `OPTION_RESEARCH_INSTRUMENTATION` (or the MCP server option), which the other tiers never compile |
-| Full | `tools/gate.sh full` | expensive | significant changes, or an experimental baseline |
-| Research/evaluation | `tools/research/research validate --gate research` | n/a | lints a generated `manifest.json` for completeness/honesty (see `research/tooling.md`); [`research/experiment-template.md`](./research/experiment-template.md) remains available for a freeform, manually-written report |
+| Smoke | `tools/gate.sh smoke` | cheapest | fast feedback while iterating (incremental build, optional targeted tests) |
+| Change | `tools/gate.sh change` | standard | before calling a change done: docs, surfaces, scoreboard and knowledge checks, build, the full suite |
+| Research | `tools/gate.sh research` | standard+ | code behind `OPTION_RESEARCH_INSTRUMENTATION` or the MCP server option, which the other tiers never compile |
+| Full | `tools/gate.sh full` | expensive | significant changes or a baseline: a clean-room build in `build-fullgate/` |
+| Evaluation | `tools/research/research validate --gate research` | n/a | checks a generated `manifest.json` for completeness and honesty |
 
-All four build/test tiers are thin wrappers around OpenTTD's own existing CMake/CTest toolchain (see `CLAUDE.md` §Test) — there is no separate lint/format gate, because no such tool currently exists in this codebase, and this fork doesn't fake one. Full details and the experiment-report taxonomy are in [`research/README.md`](./research/README.md); the research-mode CLI itself (build profiles, the instrumentation demonstrator, the manifest schema, the evidence-bundle layout) is in [`research/tooling.md`](./research/tooling.md).
-
-What each tier actually runs, and why the cost differs:
-
-```mermaid
-flowchart TD
-    S(["tools/gate.sh smoke"]) --> S1["git diff --check<br/>(unstaged + staged)"]
-    S1 --> S2{"build/ already<br/>configured?"}
-    S2 -- no --> SErr["fail fast:<br/>run change/full first"]
-    S2 -- yes --> S3["cmake --build build<br/>(incremental)"]
-    S3 --> SOpt["optional: ctest -R &lt;regex&gt;<br/>(targeted tests only)"]
-
-    C(["tools/gate.sh change"]) --> C1["git diff --check"]
-    C1 --> C1a["generated-docs, surfaces,<br/>scoreboard and knowledge checks"]
-    C1a --> C2{"build/ configured?"}
-    C2 -- no --> C2a["cmake -S . -B build<br/>(initial configure)"]
-    C2 -- yes --> C3
-    C2a --> C3["cmake --build build<br/>(incremental)"]
-    C3 --> C4["ctest --test-dir build<br/>(the full suite)"]
-    C4 --> C5["git status --porcelain<br/>(review for stray generated files)"]
-
-    R(["tools/gate.sh research"]) --> R1["git diff --check"]
-    R1 --> R2["cmake -S . -B build-gate-research<br/>(research option ON, MCP option ON when present)"]
-    R2 --> R3["cmake --build build-gate-research"]
-    R3 --> R4["research_status compiled in?<br/>(else fail)"]
-    R4 --> R5["ctest, then openttd_test<br/>'[prismatic_mcp]'"]
-
-    F(["tools/gate.sh full"]) --> F1["rm -rf build-fullgate<br/>(clean room, build/ untouched)"]
-    F1 --> F2["cmake -S . -B build-fullgate<br/>(fresh configure)"]
-    F2 --> F3["cmake --build build-fullgate<br/>(clean build, no cache)"]
-    F3 --> F4["ctest --test-dir build-fullgate<br/>(full suite, from scratch)"]
-```
-
-`full` deliberately builds into `build-fullgate/` rather than wiping the existing `build/` — that keeps a fast iteration build available even while a clean-room validation run is being prepared or reviewed.
+The taxonomy and the experiment report are in [`research/README.md`](./research/README.md); the
+research CLI (profiles, instrumentation, manifest schema, evidence bundle) in [`research/tooling.md`](./research/tooling.md).
 
 ### 0.6) Ground rules (short version)
 
 The full rules live in [`AGENTS.md`](./AGENTS.md) and, as the rules Majordomus resolves, under
-[`.ai/repo/rules/project/`](./.ai/repo/rules/project/). The project rules in force, generated
-from those files:
+[`.ai/repo/rules/project/`](./.ai/repo/rules/project/). The project rules in force, generated from
+those files:
 
 <!-- surfaces:begin ai-rules origin=project -->
 | Rule | Class | Statement |
@@ -856,115 +738,90 @@ from those files:
 | [project.tooling-language-preference](.ai/repo/rules/project/tooling-language-preference.v1.md) | advisory | Write new extension logic in Rhai, new hosts and tools in Rust, change OpenTTD itself in C++, and reach for C only where OpenTTD requires it; do not grow new capability in Python or shell. |
 <!-- surfaces:end ai-rules -->
 
-In short:
-
-- **No pushes, issues, or PRs to upstream OpenTTD, ever.** This fork's git history and this fork's GitHub repository are the only places any of this work is visible.
-- **No commit or push without an explicit, current instruction** — prior approval doesn't carry forward to later, different changes. Every commit in this repository's history was made in direct response to an explicit instruction in the session that produced it, not inferred from "you approved something like this before."
-- **Protect the existing working tree** — check `git status` before anything destructive (`checkout`/`restore`/`reset`/`clean`, `rm -rf` inside the repo), and never discard uncommitted work that wasn't created in the current session.
-- **Prefer minimal, scoped changes over broad refactors** — this is a research substrate, not a product to polish; a large unscoped diff is harder to attribute to a specific experiment goal (see 0.1).
-- **Report validation honestly** — never claim a gate passed if it wasn't run, and never round an ambiguous result up to PASS. Concretely, this is why 0.5 above states plainly which tier was actually last measured, rather than implying all three run on every change.
-
-The anti-bypass rule specifically, since it's the one most tempting to shortcut under time pressure:
-
-```mermaid
-flowchart LR
-    G["A gate fails,<br/>or can't be run"] --> D{"What happens next?"}
-    D -- "allowed" --> R1["Report it plainly:<br/>FAIL / NOT RUN, with why"]
-    D -- "allowed, human-initiated" --> R2["Human explicitly requests an<br/>override, with a stated reason —<br/>agent may then record it"]
-    D -- "never" --> X1["Agent silently retries with<br/>--no-verify or similar"]
-    D -- "never" --> X2["Agent narrows scope quietly<br/>just to make the gate pass"]
-    D -- "never" --> X3["Agent commits and plans a<br/>'follow-up fix' — a failed gate<br/>means nothing was committed,<br/>so there is nothing to follow up"]
-```
+A failing gate is reported plainly as `FAIL` or `NOT RUN`, with the reason. An agent never retries
+with `--no-verify`, never narrows scope quietly to make a gate pass, and never commits now to "fix
+it in a follow-up"; an override exists only at the owner's own request, with the stated reason.
 
 ### 0.7) Relationship to upstream OpenTTD
 
-This fork tracks upstream OpenTTD as its technical foundation and does not modify its license, copyright, or attribution — see [3.0) Licensing](#30-licensing) and [4.0) Credits](#40-credits) below, both unchanged from upstream. Everything from section 1.0 onward is the original upstream README.
-
-This is a checkable claim, not just an assertion — from the repository root:
-
-```bash
-git log --oneline -- COPYING.md CREDITS.md   # only upstream commits should appear
-git diff upstream/master -- COPYING.md CREDITS.md  # (if an upstream remote is configured) empty diff expected
-```
-
-Everything this fork adds lives in the paths listed in the tree in 0.4 above, plus the "0.0) About this fork" section of this very file — the upstream game, its build system, its license, and its credits are otherwise carried forward unmodified.
+This fork tracks upstream OpenTTD as its technical foundation and does not modify its licence,
+copyright or attribution: [3.0) Licensing](#30-licensing) and [4.0) Credits](#40-credits) are
+unchanged, and `git log --oneline -- COPYING.md CREDITS.md` shows only upstream commits. Everything
+the fork adds is in the paths listed in 0.4 and in this section of the README.
 
 ### 0.8) Research questions
 
-These are open questions this fork is used to investigate, not conclusions — none of them should be read as already answered:
+Open questions, not conclusions:
 
-- Can an agent correctly classify a requested change into the right one of the four kinds of change (0.1, `AGENTS.md`) before touching anything, and scope it accordingly?
-- Does a tiered, cost-matched validation model (smoke/change/full, 0.5) actually get used proportionately to change size in practice, or does it get over- or under-applied under time pressure?
-- Does fail-closed status reporting (never rounding PARTIAL up to PASS, 0.6) hold up consistently across many sessions, or does drift toward optimistic reporting appear over time?
-- How well does a change made in a large, convention-heavy, deterministic-lockstep codebase (OpenTTD) hold up against the specific invariants that actually break it — e.g. mutating game state outside `src/command.cpp`, or a savegame-incompatible field change — rather than merely compiling and passing existing tests?
-- When the admin-network bridge described in [`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) is used to let an external process control a Company AI, can success or failure of an issued directive be reported using the same PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy already used for build/test gates?
-- If repository-level retrieval or shared agent coordination state (0.9) is ever wired into sessions working in this fork, does it measurably change scoping accuracy or gate outcomes compared to sessions without it?
+- Does a plan help? The planned bot beats the same bot unplanned in most recorded duels, but is a
+  given improvement larger than the noise between runs ([duels](#the-planner-against-itself),
+  rule `project.a-tuning-claim-needs-held-start-pairs`)?
+- How well does an LLM play through MCP when every change waits for an approval of its exact
+  arguments, and which of its proposals does the owner refuse?
+- Can an agent classify a requested change into the right kind (0.1) and respect the invariants
+  that actually break this codebase (commands only, savegame versioning), not merely compile?
+- Does fail-closed reporting hold across many sessions and agents, or does it drift toward
+  optimistic status over time?
+- Do shared coordination state and derived context (0.9) measurably improve scoping and gate
+  outcomes compared with sessions without them?
 
 ### 0.9) Agent and cognition concepts under evaluation
 
-This section separates what's actually confirmed from what isn't. Sources: this README's own 0.2 (studied directly from `~/dev/prismatic-platform` in an earlier session), and, where noted, this fork's local, git-excluded `.aiad/`/`.claude/` directories — personal Claude Code tooling imported from Prismatic for local reference (`AGENTS.md`). Treat its Prismatic-side claims as a snapshot, not as re-verified against `~/dev/prismatic-platform`.
-
-#### RAG (retrieval-augmented context)
-
-Prismatic's own imported agent tooling repeatedly describes retrieval-augmented generation as a real mechanism elsewhere in that platform — embedding-based retrieval over indexed content, with named quality dimensions such as retrieval precision and context-relevance scoring. **None of this is currently wired into how agents work in this OpenTTD fork**: a session here reads repository files directly with ordinary tools, not through an indexed retrieval layer. RAG is listed as a **conceptual** integration point (0.10) — something this fork could plausibly be used to evaluate if a retrieval layer were ever pointed at it — not a mechanism in current use. If it is used here in the future, a retrieved passage's relevance score would not by itself be evidence that the retrieved content is correct or applicable (0.11).
-
-#### Blackboard-style coordination
-
-The same local tooling repeatedly references a shared, topic-namespaced put/subscribe coordination store used to share state, hypotheses, and evidence across multiple specialized agents elsewhere in Prismatic. As with RAG, **this is not currently used by sessions working in this fork** — there is no shared coordination state between agent sessions here beyond the git history and this documentation. It's listed as a **conceptual** integration point: relevant open questions include whether shared state reduces duplicated work and improves handoffs between sessions, or whether it just as easily propagates an incorrect assumption from one session to the next. The existence of shared state is not itself evidence of better coordination.
-
-#### Prismatic agents / roles
-
-The imported local tooling defines a very large number of specialized, individually named agents, but not a small, generic role taxonomy (e.g. "planner / implementer / reviewer / verifier") that this document can responsibly claim maps onto sessions in this fork. No such mapping is asserted here. This fork's own experiment workflow (0.11) instead uses its own generic steps — plan, implement, validate, report — carried out by whichever coding agent is working a given session, under human oversight; these are not claimed to correspond to specific named Prismatic agent roles.
+- **MCP as the agent's only door.** Reads are resources, changes are tools that become game
+  commands after the operator's approval; the catalogue, the console surface, Rhai and the OpenAPI
+  document are all derived from it (rule `project.mcp-surfaces-are-derived`).
+- **Blackboard-style coordination.** The Majordomus peer board and blackboard are in use: agent
+  sessions announce their intent and paths there, and `mcp-bus-blackboard` posts a digest of every
+  running game's event bus to it ([`research/mcp-control.md`](./research/mcp-control.md)). Whether
+  shared state improves handoffs or just spreads a wrong assumption is an open question; its
+  existence is not evidence of better coordination.
+- **Retrieval with checked citations.** Sessions read the repository directly. `tools/knowledge/consult`
+  gives an external model the context `majordomus context resolve` derives for a path and checks
+  every file and symbol its answer cites ([`tools/knowledge/README.md`](./tools/knowledge/README.md));
+  an answer becomes a record only after a worker verified it.
+- **Roles.** No named Prismatic agent roles are claimed here. A session plans, implements, validates
+  and reports under the owner's oversight, whichever agent runs it.
 
 ### 0.10) Integration points
 
-| Integration point | Role | Data / artifacts | Status |
-|---|---|---|---|
-| Repository access | A coding agent reads and edits this fork's working tree under `AGENTS.md` ground rules | Git history, diffs, working-tree state | Implemented |
-| Task specification | A session's stated goal, classified into one of the four kinds of change (0.1) | Task prompt, base revision | Implemented |
-| Build/test validation gates | `tools/gate.sh` smoke / change / research / full tiers wrapping this repo's own CMake/CTest toolchain | Exit codes, build/test output | Implemented (0.5) |
-| Experiment reporting | `tools/research/research report` generates `manifest.json` + `summary.md`; `research/experiment-template.md` remains for a manual, freeform note | A generated evidence bundle under `build-research-runs/<id>/` (not committed or gated by default), or a filled-in template copy | Implemented (automated CLI path + manual template, both valid) |
-| Research-mode build/instrumentation capture | `tools/research/research configure/build/run` against `research-debug`/`baseline-release`/`research-asan` profiles, capturing the `research_status` demonstrator headless | `manifest.json`'s `build`/`runtime`/`instrumentation` fields, `diagnostics/research_status.txt` | Implemented (`research-debug`/`baseline-release`); `research-asan` is configure-only so far |
-| Admin-network control/observation bridge | Standalone `openttd-prismatic-bridge` service drives a Company AI via OpenTTD's admin network (`start_ai`/`reload_ai`), which runs a single-town bus route and, behind its settings, intercity road, rail, air and freight routes, and exposes a REST/WebSocket observation API | HTTP/WebSocket traffic, admin-network TCP traffic | Implemented — Phases 1–2 (see `research/prismatic-bridge/ARCHITECTURE.md` §5); lives in a separate, standalone repository, not this one |
-| Prismatic decision-making wired to the bridge (`prismatic_monte_carlo` / `prismatic_deduction` / `prismatic_intelligence_fusion`) | Computes the settings string the in-game AI runs with | A decision directive via `/decision/pull`, checked against `research/prismatic-bridge/decision-contract.schema.json` | Partial — Phase 3: the contract is defined (I0011); `prismatic-platform` answers it with a Monte Carlo choice of `aggressiveness`, and this fork's MCP panel applies it at `POST /api/decision/pull` (`tools/research/mcp-decision-check`, I0041). Phase 5, deduction and intelligence fusion, is not started (`research/prismatic-bridge/ARCHITECTURE.md` §5, §7) |
-| World seeding from real elevation/GIS data | Headless `-g <heightmap-file>` start (corrected from an earlier `-G` typo — `-G` is the map-generation random seed flag, unrelated) | A heightmap file | Experimental / partially confirmed — the headless start path itself works; the data-prep pipeline (Phase 4) has not been built |
-| Repository-level retrieval (RAG) feeding an agent's context in this fork | n/a | n/a | Conceptual (0.9) — referenced in Prismatic's own tooling, not confirmed as used in sessions here |
-| Shared coordination state (Blackboard-style) across agent sessions in this fork | n/a | n/a | Conceptual (0.9) — same caveat |
-| Published surfaces | `tools/surfaces` derives a GitHub Pages site, the GitHub wiki and the generated Markdown tables from the tracked documents, git and `.ai/`; `surfaces check` blocks drift | `target/web/{site,wiki,markdown}/` with `web-surface/v1` declarations; Pages and wiki deployments from `.github/workflows/surfaces.yml` | Implemented (0.4.2, ADR 0012) |
-| Human oversight / approval | Every commit, push, override, and large design change requires an explicit, current instruction (0.6) | This repository's own commit history; design docs such as `research/prismatic-bridge/ARCHITECTURE.md`, which is itself gated phase-by-phase on human approval | Implemented |
+| Integration point | What it carries | Status |
+|---|---|---|
+| Embedded MCP server | live state as resources; every game command and Script API function as an approval-gated tool | Implemented, research build only ([`research/prismatic-mcp/`](./research/prismatic-mcp/README.md)) |
+| LLM clients | any MCP client over the stdio proxy, the panel holding the token | Implemented |
+| Rhai scripting | every MCP tool, console command and panel route as a function | Implemented ([`research/mcp-control.md`](./research/mcp-control.md)) |
+| Control panel, hub, event bus | REST/OpenAPI, SSE, one WebSocket over every instance, ZeroMQ bus with a DuckDB store | Implemented |
+| Planner (AlgoGlyph) | rail lines priced on the live map, a portfolio chosen by knapsack, played by PrismaticAI | Implemented; measured by the duels |
+| Admin-network bridge and Prismatic decisions | one Monte Carlo decision through the decision contract | Partial (0.2) |
+| Majordomus blackboard | agent sessions' intents and a digest of every game's bus | Implemented, off by default for the bus |
+| Build/test gates and experiment manifests | exit codes, test output, `manifest.json` and a generated `summary.md` | Implemented (0.5) |
+| Published surfaces | site, wiki and generated Markdown tables, checked on every commit | Implemented (0.4.2) |
+| World seeding from real elevation data | a heightmap through the headless `-g <file>` start | Experimental: the start works, the data pipeline is not built |
+| Human oversight | every commit, push, override and approval of a game change | Implemented |
 
 ### 0.11) Experiment lifecycle, outputs, and evidence policy
 
-A session working in this fork is expected to, in order:
+A session states the task and its kind of change (0.1), records the base revision and working tree,
+makes a scoped change, runs the matching gate (0.5), records the exact commands with their exit
+status and what remained uncovered, and classifies the result without rounding it up.
+`tools/research/research init` → `configure` → `build` → `run` → `validate` → `report` automates
+that into `manifest.json` and `summary.md`; [`research/experiment-template.md`](./research/experiment-template.md)
+remains for a freeform note.
 
-1. State the task and which of the four kinds of change it is (0.1, `AGENTS.md`).
-2. Record the base revision and working-tree state (`git status`, `git rev-parse --short HEAD`).
-3. Make a scoped change.
-4. Run the validation tier matching the change's size (0.5).
-5. Capture the exact commands run and their exit status — not a summary like "tests passed."
-6. Record what wasn't covered or remains uncertain.
-7. Classify the result — `PASS` / `FAIL` / `PARTIAL` / `NOT RUN` / `NOT APPLICABLE` (`research/README.md`) — never rounded up.
-8. Optionally record all of the above in a copy of [`research/experiment-template.md`](./research/experiment-template.md); it's a working note kept at the operator's discretion, not a committed or gated artifact by default. Alternatively, when the experiment touches a build/instrumentation profile, `tools/research/research init` → `configure` → `build` → `run` → `validate --gate research` → `report` automates steps 2–7 into a generated `manifest.json` + `summary.md` (see [`research/tooling.md`](./research/tooling.md)) — both paths are valid; the CLI produces structured evidence, the template is for freeform narrative.
-
-Expected artifacts, when produced: the change itself (diff or commit, if any); the exact validation commands and their exit codes; a filled experiment report in the shape of `experiment-template.md`, if one is kept; and, for bridge-related work, the bridge's own test output and observation-endpoint state (`research/prismatic-bridge/ARCHITECTURE.md` §3) — which lives in a separate repository, not this one.
-
-Claims and evidence discipline:
-
-- A successful build shows the change compiles under the tested configuration — not that it's behaviorally correct.
-- A passing test run supports only the behavior actually covered by the tests that ran.
-- A generated diff or patch is an artifact, not a finding — the finding is the recorded validation outcome and its interpretation.
-- An agent's own confidence or self-assessment is not independent validation.
-- No result is `PASS` unless the validating command was actually run and actually succeeded (0.6, `research/README.md`).
-- A retrieval score or a shared-coordination-state entry (0.9), if either is ever used here, is not by itself evidence that the retrieved content or shared assumption was correct.
+- A build shows the change compiles in the tested configuration, not that it behaves correctly.
+- A passing test run supports only the behaviour those tests cover.
+- An agent's confidence, a model's answer or a retrieval score is not independent validation.
+- No result is `PASS` unless the validating command ran and succeeded.
 
 ### 0.12) Limitations
 
-- Results produced in this fork are specific to the tasks, prompts, and repository revision they were produced against — not a general claim about agentic software engineering.
-- OpenTTD is one large C++ codebase with its own particular conventions (0.1); it is not a representative sample of all software projects, languages, or domains.
-- Agent behavior depends on the specific model, tools, and context available in a given session; results from one configuration don't automatically transfer to another.
-- Passing this fork's existing tests demonstrates only the behavior those tests actually cover (0.11).
-- This fork's own gating and reporting model (0.5, 0.6) is itself one of the things being evaluated here, not a proven-correct baseline — see 0.2.4's "D — rejected, not transferable" row for a concrete example of a Prismatic-side pattern this fork deliberately did not adopt.
-- The admin-network bridge to a running OpenTTD server (`research/prismatic-bridge/ARCHITECTURE.md`) is a standalone service whose AI runs settings-driven, hand-written route strategies. The decision contract with `prismatic-platform` is defined and answered (Phase 3), but the decision it carries is one setting (`aggressiveness`) chosen by one Monte Carlo model; findings about "an agent controlling a game" are limited to the control/observation transport, hand-written strategies and that one decision, not to decision quality driven by broader external modeling.
+- Results are specific to the tasks, models, tools and revision they were produced with, and do
+  not generalise beyond the tested configuration.
+- OpenTTD is one codebase with its own conventions, not a representative sample of software.
+- Most duels run on one map (seed 31337); company value ignores owned track, and runs side by side
+  are noisy (see [the planner against itself](#the-planner-against-itself)).
+- The gating and reporting model is itself under evaluation, not a proven baseline.
+- The bridge's Company AI runs hand-written strategies, and the Prismatic decision it receives is
+  one setting chosen by one Monte Carlo model.
 
 ## 1.0) About
 
