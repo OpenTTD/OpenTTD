@@ -519,7 +519,7 @@ from the code. The right-hand column says what was counted.
 | **27** | [unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)](research/prismatic-mcp/09-testing.md) | `^TEST_CASE\(` in `src/tests/test_prismatic_mcp.cpp` |
 | **71** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
 | **39** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
-| **10** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
+| **11** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
 | **14** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
 | **35** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **92** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
@@ -1271,6 +1271,10 @@ Open questions, not conclusions:
   gives an external model the context `majordomus context resolve` derives for a path and checks
   every file and symbol its answer cites ([`tools/knowledge/README.md`](./tools/knowledge/README.md));
   an answer becomes a record only after a worker verified it.
+  The panel's `GET /api/evidence` and `mcp-evidence` rank passages of every tracked file at `HEAD`
+  (BM25, lexical) with path, lines, source class, commit and a freshness check, and answer
+  `insufficient evidence` when nothing covers the question; on its own benchmark (v1, 15 questions)
+  recall@5 is 0.69 and MRR 0.60 ([`research/agent-loop.md`](./research/agent-loop.md) step 5).
 - **Roles.** No named Prismatic agent roles are claimed here. A session plans, implements, validates
   and reports under the owner's oversight, whichever agent runs it.
 

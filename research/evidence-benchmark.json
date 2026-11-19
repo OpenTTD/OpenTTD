@@ -1,0 +1,22 @@
+{
+  "name": "openttd-evidence",
+  "version": 1,
+  "about": "Questions an agent working in this repository asks, each with the paths whose passages are the evidence (any one of them counts) or `insufficient: true` when this repository holds none. Scored by tools/research/mcp-rhai mcp-evidence --benchmark: recall@5 and MRR over the answerable questions, and how many unanswerable ones were answered `insufficient evidence`. Written before the first run (2026-11-19); a new version adds questions, it does not tune old ones to the results.",
+  "questions": [
+    {"q": "where does the panel refuse a Prismatic directive that was not decided from a current observation", "expect": ["tools/research/mcp-rhai/src/panel_decision.rs"]},
+    {"q": "which rule forbids changing game state outside registered commands", "expect": [".ai/repo/rules/project/game-state-mutates-only-through-commands.v1.md"]},
+    {"q": "how must an obsolete savegame field be handled", "expect": [".ai/repo/rules/project/savegame-fields-are-version-gated.v1.md"]},
+    {"q": "Rhai debugger breakpoint step over call stack scope", "expect": ["tools/research/mcp-rhai/src/rhai_debug.rs"]},
+    {"q": "which decision put every panel event on ZeroMQ and into a DuckDB store", "expect": [".ai/repo/adrs/0033-every-panel-event-goes-out-on-zeromq-and-into-a-duckdb-store.md"]},
+    {"q": "shared memory between scripts compare and swap revision", "expect": ["tools/research/mcp-rhai/src/rhai_shared.rs"]},
+    {"q": "where is an MCP mutation's approval bound to its exact arguments", "expect": ["src/prismatic_mcp/prismatic_mcp_server.cpp", "src/prismatic_mcp/prismatic_mcp_detail.h"]},
+    {"q": "unit tests of the MCP server's approval state machine", "expect": ["src/tests/test_prismatic_mcp.cpp"]},
+    {"q": "Prismatic client loopback token Authorization header", "expect": ["tools/research/mcp-rhai/src/prismatic.rs"]},
+    {"q": "why are duels run side by side noisy and what does a held start change", "expect": [".ai/repo/knowledge/curated/duels-run-side-by-side-are-noisy.md"]},
+    {"q": "a real place from OpenStreetMap and elevation data as an OpenTTD heightmap", "expect": ["research/real-world-scenario.md", "research/mechanisms/real-world-scenario.md"]},
+    {"q": "forbid_90_deg rail lines a train can turn on", "expect": [".ai/repo/knowledge/curated/rail-lines-a-train-can-turn-on.md", "research/rail-steward.md"]},
+    {"q": "idempotency key replayed decision pull", "expect": ["tools/research/mcp-rhai/src/panel_decision.rs"]},
+    {"q": "recipe for sourdough bread fermentation", "insufficient": true},
+    {"q": "Kubernetes helm chart ingress controller", "insufficient": true}
+  ]
+}

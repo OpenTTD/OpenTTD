@@ -47,7 +47,7 @@ flowchart LR
 
 | Stage | Status | What exists | What is missing |
 |---|---|---|---|
-| Retrieve | PARTIAL | `majordomus_search` (MCP): case-insensitive substring search over the `.ai/` layer and the Markdown under `docs/`, `research/` and the root, as declared in `.ai/repo/knowledge/sources.yaml`; `majordomus context resolve` with a sha256 per document; knowledge records with `provenance.derived_from`; `tools/knowledge/refs check` proves every cited path and `path:Symbol` exists | source code is not indexed; a hit carries no commit and no line; no semantic index; the CLI `majordomus search` reads only the unversioned `.ai/local/` records |
+| Retrieve | PARTIAL | the panel's `GET /api/evidence?q=&k=` and the `mcp-evidence` CLI (`tools/research/mcp-rhai/src/evidence.rs`): BM25 over every git-tracked text file at `HEAD` (source, tests, rules, ADRs, knowledge, plans, docs, records), in windows of 30 lines; each passage carries its path, lines, source class, commit and file digest, is ranked current code and policy before plans and records, and is checked against the file now (`current`, moved, `stale`, `deleted`); a question no passage covers by half is answered `insufficient evidence`. Alongside it: `majordomus_search` over the `.ai/` layer and the Markdown, `majordomus context resolve` with a sha256 per document, `tools/knowledge/refs check` for every cited path and symbol | lexical, not semantic (no embeddings): recall@5 0.69 and MRR 0.60 on `research/evidence-benchmark.json` v1; uncommitted changes are not indexed; the CLI `majordomus search` reads only the unversioned `.ai/local/` records |
 | Coordinate | PARTIAL | mesh claims (exclusive or advisory over paths, liveness by beats, a signed journal), handovers with front matter, the peer board's free-text announcements (`src/board.rs`), `mcp-bus-blackboard`'s monthly digest | typed records (observation, decision, blocker, ...), a revision or compare-and-swap on content; the typed bus (`panel_events.rs` `KINDS`) is local to one panel |
 | Observe | IMPLEMENTED in the panel | every answer of the panel's `GET /api/bridge/companies` is recorded as an observation: its game tick and date and a digest of the companies' identities (`panel_decision.rs` `observe`, `identity_digest`), readable at `GET /api/bridge/observation` | the Python bridge's `/companies` still carries no tick or digest |
 | Decide | PARTIAL | Prismatic's `GET /api/openttd/decision` (Monte Carlo over `aggressiveness`); the panel binds its directive to the observation Prismatic made during the pull | Prismatic does not echo `observed_digest` yet (the panel reads it when it does); a change in prismatic-platform |
@@ -65,8 +65,9 @@ flowchart LR
 - **The weakest link is authorization.** An approval proves the arguments, not the approver: the
   panel's auto-approve and the bridge's self-approval both turn the gate into a formality, by
   design for a research loop on loopback, and to be stated wherever the loop is described.
-- **Retrieval is lookup, not RAG.** Substring search over documents plus checked citations is useful
-  and honest; calling it retrieval-augmented generation would not be.
+- **Retrieval is lexical, with provenance.** Ranked passages with commit, lines and a freshness
+  check, and an explicit `insufficient evidence`, are evidence an agent can cite; no model writes
+  the answer from them here, so calling it retrieval-augmented generation would not be honest.
 
 ## The smallest next steps, in order
 
@@ -102,3 +103,16 @@ Each closes one row above without a new tracking record:
    against this fork's research build: the pull left aggressiveness at 20 with approval #1
    pending, the operator approved #1 on the server console, `/decision/resume` applied it and the
    AI read 100. Merging that branch into the bridge's `main` is the bridge's own decision.
+5. **Done** (2026-11-19): retrieval with provenance. `GET /api/evidence?q=<question>&k=<1-20>` and
+   `mcp-evidence "<question>"` answer passages of the repository at `HEAD` with path, lines, class,
+   commit, file digest and freshness, or `insufficient evidence` (the nearest passages are still
+   listed, none covering half the question's terms). The index is built from `git ls-files` once
+   per `HEAD` and cached. Evidence: `cargo test --release` (evidence 10/10, mcp-panel 181/181);
+   `mcp-evidence --benchmark research/evidence-benchmark.json` (v1: 15 questions written before
+   the first run, 2 of them with no answer here): first run recall@5 0.615 (8/13), MRR 0.526,
+   insufficient 2/2; after the milestones, issues and intents under `.ai/repo/project/` were
+   classed as plans and data files as configuration (they had ranked as implementation) recall@5
+   0.692 (9/13), MRR 0.603, insufficient 2/2. Still missed: ADR 0033 (a source file mentioning
+   ZeroMQ and DuckDB ranks first), two curated knowledge records and the real-world scenario doc
+   (their implementation ranks first). The questions are not tuned to the results; a new version
+   adds questions.

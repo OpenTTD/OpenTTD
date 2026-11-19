@@ -53,6 +53,8 @@ mod panel_npm;
 mod rhai_shared;
 #[path = "../rhai_debug.rs"]
 mod rhai_debug;
+#[path = "../evidence.rs"]
+mod evidence;
 #[path = "../panel_realworld.rs"]
 mod panel_realworld;
 #[path = "../panel_store.rs"]

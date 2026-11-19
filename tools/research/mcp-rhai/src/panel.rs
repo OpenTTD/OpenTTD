@@ -2213,6 +2213,18 @@ fn h_bus_publish(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     ok(json!({"published": kind, "seq": seq}))
 }
 
+/// GET /api/evidence?q=&k=: passages of this repository that answer `q`, with their provenance and
+/// freshness, or `insufficient evidence`.
+fn h_evidence(_: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
+    let q = i.query.get("q").unwrap_or("").trim().to_string();
+    if q.is_empty() { return Ok((400, json!({"error": "?q= is the question"}))); }
+    let k = i.query.get("k").and_then(|k| k.parse::<usize>().ok()).unwrap_or(5).clamp(1, 20);
+    let root = crate::panel_results::repo();
+    let index = crate::evidence::index_of(&root)?;
+    let now = |p: &str| std::fs::read_to_string(root.join(p)).ok();
+    Ok((200, index.answer(&q, k, &now)))
+}
+
 fn h_bridge_companies(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
     ok(panel_decision::observe(g)?)
 }
@@ -2394,6 +2406,8 @@ pub fn routes() -> Vec<Route> {
         r("GET", "/api/rhai/debug", "rhaiDebug", "A debug session's state (?id=), or every session without one", false, None, crate::rhai_debug::h_debug),
         r("POST", "/api/rhai/debug/command", "rhaiDebugCommand", "Steer a paused debug session: continue, step (into a function), over, out (of the function), stop; breakpoints may be replaced with any command (an empty command only sets them). Answers the session once it pauses again or finishes", false,
           s(json!({"id": {"type": "integer"}, "command": st(), "breakpoints": {"type": "array", "items": {"type": "integer", "minimum": 1}}}), &["id"]), crate::rhai_debug::h_debug_command),
+        // Evidence with provenance (src/evidence.rs; research/agent-loop.md, Retrieve).
+        r("GET", "/api/evidence", "evidence", "Passages of this repository that answer ?q= (k results, default 5): each with its path, lines, source class (implementation, test, policy, design, knowledge, documentation, candidate, record), the commit the index was built at, the file's digest, its text and its freshness now (current, with its new lines when it moved; stale; deleted); `insufficient evidence` when no passage covers half the question's terms. Indexed from the tracked files, without .ai/local, vendored trees, binaries or secret-looking paths", false, None, h_evidence),
         r("GET", "/api/services", "services", "The scripts running as services in this panel: running, started, reloads, the last line's sequence number and the files watched for hot reload", false, None, crate::panel_scripts::h_services),
         r("POST", "/api/services/start", "serviceStart", "Start a script as a service in the background (rail_monitor, rail_steward, ...); it reloads when its file or a library it imports changes", false,
           s(json!({"name": st()}), &["name"]), crate::panel_scripts::h_service_start),
@@ -2471,6 +2485,7 @@ fn query_params(path: &str) -> &'static [(&'static str, bool)] {
         "/api/services/log" => &[("name", true), ("since", false)],
         "/api/rhai/shared" => &[("key", false), ("prefix", false)],
         "/api/rhai/debug" => &[("id", false)],
+        "/api/evidence" => &[("q", true), ("k", false)],
         _ => &[],
     }
 }
@@ -3146,7 +3161,8 @@ mod tests {
         // shared memory (GET and POST /api/rhai/shared, POST /api/rhai/shared/delete; rhai_shared.rs, I0091).
         // And the debugger (POST /api/rhai/debug, GET /api/rhai/debug, POST /api/rhai/debug/command; I0090).
         // And the observation a directive is bound to (GET /api/bridge/observation; agent loop step 1).
-        assert_eq!(rs.len(), 70);
+        // And evidence retrieval (GET /api/evidence; research/agent-loop.md, Retrieve).
+        assert_eq!(rs.len(), 71);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -3159,7 +3175,7 @@ mod tests {
             "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
             "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query",
             "/api/scripts", "/api/script", "/api/script/check", "/api/script/save",
-            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions", "/api/rhai/shared", "/api/rhai/shared/delete", "/api/rhai/debug", "/api/rhai/debug/command", "/api/bridge/observation",
+            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions", "/api/rhai/shared", "/api/rhai/shared/delete", "/api/rhai/debug", "/api/rhai/debug/command", "/api/bridge/observation", "/api/evidence",
             "/api/realworld", "/api/realworld/scenario", "/api/realworld/compile"].contains(&r.path)));
     }
 
