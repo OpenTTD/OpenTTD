@@ -42,6 +42,7 @@ Generated from each document's title and first paragraph (`tools/surfaces/surfac
 <!-- surfaces:begin docs-index dir=research -->
 | Document | What it is |
 |---|---|
+| [The agent loop: retrieve, coordinate, decide, approve, act, verify](agent-loop.md) | RESEARCH-ONLY. The owner asked (2026-11-19) for one real loop: an agent retrieves versioned evidence with citations, coordinates through a shared blackboard, forms a decision from observed bridge and game state,... |
 | [LAN AI battle](ai-battle/README.md) | RESEARCH-ONLY. A tournament between company AIs that never stops. Every machine on the local network that answers SSH and has an OpenTTD build becomes an arena. The contestants are PrismaticAI from this repository,... |
 | [Experiment report: baseset-prerequisite-macos](baseset-prerequisite-macos.md) | The four regression ctest cases (regression_regression, regression_stationlist, regression_gs, regression_gs_compat) require a base graphics set to be installed, even though they run headless (-vnull -snull -mnull).... |
 | [Battle brain and live tuner](battle-brain.md) | RESEARCH-ONLY. Self-improvement in two loops, both fed from the LAN battle's recorded data: |
