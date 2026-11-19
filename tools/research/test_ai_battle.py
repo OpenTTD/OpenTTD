@@ -287,7 +287,8 @@ class Tuning(unittest.TestCase):
               {"status": "done", "standings": [{"key": "X", "value": 50}, {"key": "W", "value": 5}]},
               {"status": "done", "replica_of": "m", "standings": [{"key": "X", "value": 1}]}]
         f = battle.fitness_of("X", ms)
-        self.assertEqual((f["matches"], f["points"], f["log_gap"]), (2, 0.5, -0.5))
+        self.assertEqual((f["matches"], f["points"], f["log_gap"], f["last_share"]), (2, 0.5, -0.5, 0.5))
+        self.assertEqual(battle.fitness_of("X", ms, 0.5)["score"], round(0.5 - 0.05 - 0.25, 4))
 
 
 class Records(unittest.TestCase):

@@ -301,9 +301,9 @@ class PrismaticAI extends AIInfo {
 		});
 		AddSetting({
 			name = "catchment_stops",
-			description = "Catchment ring (learned from AAAHogEx): most joined drive-through road stops around each passenger airport, so it collects the whole town (catchment.nut; default 0: off; see air_add_waiting for the evidence and the battle contestant that measures it).",
+			description = "Catchment ring (learned from AAAHogEx): most joined drive-through road stops around each passenger airport, so it collects the whole town (catchment.nut; default 8 together with air_add_waiting=10, see its evidence; 0: off).",
 			min_value = 0, max_value = 30,
-			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
+			easy_value = 8, medium_value = 8, hard_value = 8, custom_value = 8, step_size = 1,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
@@ -336,9 +336,9 @@ class PrismaticAI extends AIInfo {
 		});
 		AddSetting({
 			name = "air_add_waiting",
-			description = "Planes (learned from AAAHogEx): add a plane to an air route while the passengers waiting at BOTH of its airports exceed this, up to invest_air_cap (fleet.nut; 0, the default: the old rule of 1.5 loads at one end. 10 with catchment_stops=8 gained +37% on 3 seeds at 10 years but lost on the 6-year fitness seed; the battle measures it as the contestant 'PrismaticAI air10+catch').",
+			description = "Planes (learned from AAAHogEx): add a plane to an air route while the passengers waiting at BOTH of its airports exceed this, up to invest_air_cap (fleet.nut; default 10 together with catchment_stops=8 since 2026-11-19: in the battle, 20 years, paired on 36 common seeds, +14.8% mean value and better in 27 of 36; 0: the old rule of 1.5 loads at one end).",
 			min_value = 0, max_value = 500,
-			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 10,
+			easy_value = 10, medium_value = 10, hard_value = 10, custom_value = 10, step_size = 10,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({

@@ -163,10 +163,11 @@ def tuning_state(cfg: dict) -> dict:
     return state
 
 
-def fitness_of(key: str, matches: list[dict]) -> dict:
-    """Mean normalised points per match (1 = won, 0 = last) and mean log10 of value / winner's value
-    over the contestant's scored matches."""
-    pts, logs = [], []
+def fitness_of(key: str, matches: list[dict], last_penalty: float = 0.0) -> dict:
+    """Mean normalised points per match (1 = won, 0 = last), mean log10 of value / winner's value,
+    and the share of matches it ended last, over the contestant's scored matches. The score is
+    points + 0.1 x log gap - last_penalty x last share: an explorer that ends last is culled fast."""
+    pts, logs, lasts = [], [], 0
     for m in matches:
         if m.get("status") != "done" or m.get("replica_of"):
             continue
@@ -175,10 +176,12 @@ def fitness_of(key: str, matches: list[dict]) -> dict:
             if f["key"] == key:
                 pts.append((len(st) - 1 - rank) / max(1, len(st) - 1))
                 logs.append(math.log10(max(1, f["value"]) / max(1, st[0]["value"])))
+                lasts += rank == len(st) - 1
     n = len(pts)
     return {"matches": n, "points": round(sum(pts) / n, 4) if n else 0.0,
             "log_gap": round(sum(logs) / n, 4) if n else 0.0,
-            "score": round(sum(pts) / n + 0.1 * sum(logs) / n, 4) if n else -9.0}
+            "last_share": round(lasts / n, 4) if n else 0.0,
+            "score": round(sum(pts) / n + 0.1 * sum(logs) / n - last_penalty * lasts / n, 4) if n else -9.0}
 
 
 def next_generation(t: dict, state: dict, scored: list[tuple[dict, dict]]) -> list[dict]:
@@ -931,7 +934,7 @@ class Orchestrator:
         state = tuning_state(self.cfg)
         variants = state["variants"]
         ms = list(self.matches.values())
-        scored = [(v, fitness_of(v["label"], ms)) for v in variants]
+        scored = [(v, fitness_of(v["label"], ms, t.get("last_penalty", 0.0))) for v in variants]
         if any(f["matches"] < t["matches_per_variant"] for _, f in scored):
             return False
         anchors = {k: fitness_of(k, ms) for k in t.get("anchors", [])}
@@ -1080,7 +1083,8 @@ class Orchestrator:
         return {"generation": state["generation"], "matches_per_variant": t["matches_per_variant"],
                 "space": t["space"],
                 "variants": [{"label": v["label"], "settings": v["settings"], "parents": v["parents"],
-                              "fitness": fitness_of(v["label"], ms)} for v in state["variants"]],
+                              "fitness": fitness_of(v["label"], ms, t.get("last_penalty", 0.0))}
+                             for v in state["variants"]],
                 "anchors": {k: fitness_of(k, ms) for k in t.get("anchors", [])},
                 "history": [{"generation": h["generation"], "best": max(
                     (v["fitness"]["score"] for v in h["variants"]), default=None),

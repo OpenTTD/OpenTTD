@@ -104,6 +104,12 @@ Two further mechanisms were measured with recorded 3-seed, 10-year ablations
   +13.3%, -6.7% and +4.7% alone. Combined with air10+catch it was worse on all three seeds
   (+19.9%, +29.7%, -18.0%), so it is off by default and a GA gene.
 
+In the battle (20 years, editions from fd41eaa1 on), the anchor `PrismaticAI air10+catch` played
+the default on 36 common seeds. It had a +14.8% higher mean value and was better on 27 of 36. So
+since 2026-11-19 the bot's defaults are `air_add_waiting=10` and `catchment_stops=8`. This is
+a default change on battle evidence (paired, deterministic, 36 seeds), not on the held-start duel
+pairs that rule `project.a-tuning-claim-needs-held-start-pairs` asks for; those have not been run.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

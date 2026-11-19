@@ -41,15 +41,8 @@
       "ai": "PrismaticAI",
       "label": "PrismaticAI solo-max",
       "source": "repository",
-      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0",
+      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0,air_add_waiting=0,catchment_stops=0",
       "group": "PrismaticAI"
-    },
-    {
-      "ai": "PrismaticAI",
-      "label": "PrismaticAI air10+catch",
-      "source": "repository",
-      "group": "PrismaticAI",
-      "settings": "air_add_waiting=10,catchment_stops=8"
     },
     {
       "ai": "AAAHogEx",
@@ -120,7 +113,7 @@
         {
           "ai": "PrismaticAI",
           "label": "PrismaticAI solo-max",
-          "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0"
+          "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0,air_add_waiting=0,catchment_stops=0"
         },
         {
           "ai": "AAAHogEx"
@@ -153,8 +146,7 @@
     "mutation_rate": 0.35,
     "anchors": [
       "PrismaticAI",
-      "PrismaticAI solo-max",
-      "PrismaticAI air10+catch"
+      "PrismaticAI solo-max"
     ],
     "fixed": {
       "intercity": 1,
@@ -174,11 +166,11 @@
       "invest_ppv_div": 3,
       "invest_road_cap": 12,
       "invest_air_cap": 10,
-      "catchment_stops": 0,
+      "catchment_stops": 8,
       "statue_money": 0,
       "air_full_load": 0,
       "invest_borrow": 0,
-      "air_add_waiting": 0,
+      "air_add_waiting": 10,
       "rail_twin_max": 0
     },
     "space": {
@@ -280,6 +272,7 @@
     },
     "brain_offspring": 2,
     "brain_file": "~/ttd-battle/results/brain.json",
-    "brain_max_age_s": 7200
+    "brain_max_age_s": 7200,
+    "last_penalty": 0.5
   }
 }

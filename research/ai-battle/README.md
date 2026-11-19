@@ -22,26 +22,31 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T064443-39bd2399.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T064443-39bd2399`](../results/battle-20261119T064443-39bd2399.md) (0/0 replays identical).
+<!-- derived from research/results/battle-20261119T072805-76e7404c.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T072805-76e7404c`](../results/battle-20261119T072805-76e7404c.md) (1/1 replays identical).
 
-- Edition `39bd23991fcfbd41`: PrismaticAI and referee at `e19ade47bded73203d1cb75604326fe8ab972e34`, base set `opengfx-8.0.tar`
+- Edition `76e7404cc8781ed5`: PrismaticAI and referee at `f3b937c7ede4e8217e291abc19a8523e05933eea`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 39 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-m42528010af, 20261119-master-me19ade47bd), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 0 of 0 identical to their original on another arena
+- 43 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-m55328bdb56), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 1 of 1 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 39 | 39 | 156 | 4.0 | 1.0 | 94.0 M | 0 | 0 |
-| 2 | PrismaticAI GA g0.0 | 7 | 0 | 20 | 2.857 | 2.14 | 11.0 M | 0 | 1 |
-| 3 | PrismaticAI GA g0.2 | 7 | 0 | 20 | 2.857 | 2.14 | 9.9 M | 0 | 0 |
-| 4 | PrismaticAI GA g0.1 | 6 | 0 | 17 | 2.833 | 2.17 | 10.5 M | 0 | 0 |
-| 5 | PrismaticAI GA g0.3 | 6 | 0 | 17 | 2.833 | 2.17 | 10.3 M | 0 | 0 |
-| 6 | PrismaticAI | 6 | 0 | 17 | 2.833 | 2.17 | 9.6 M | 0 | 1 |
-| 7 | PrismaticAI solo-max | 7 | 0 | 16 | 2.286 | 2.71 | 5.2 M | 0 | 7 |
-| 8 | AdmiralAI | 39 | 0 | 87 | 2.231 | 2.77 | 6.6 M | 0 | 6 |
-| 9 | LuDiAI AfterFix | 39 | 0 | 32 | 0.821 | 4.18 | 1.1 M | 0 | 4 |
-| 10 | CivilAI | 39 | 0 | 8 | 0.205 | 4.79 | 547.8 k | 3825 | 9 |
+| 1 | AAAHogEx | 43 | 43 | 172 | 4.0 | 1.0 | 94.6 M | 0 | 1 |
+| 2 | PrismaticAI air10+catch | 7 | 0 | 20 | 2.857 | 2.14 | 11.2 M | 0 | 0 |
+| 3 | PrismaticAI GA g3.0 | 6 | 0 | 17 | 2.833 | 2.17 | 12.1 M | 0 | 0 |
+| 4 | PrismaticAI GA g3.brain1 | 6 | 0 | 17 | 2.833 | 2.17 | 8.6 M | 0 | 0 |
+| 5 | PrismaticAI | 5 | 0 | 14 | 2.8 | 2.2 | 9.7 M | 0 | 2 |
+| 6 | PrismaticAI GA g3.brain0 | 6 | 0 | 15 | 2.5 | 2.5 | 7.0 M | 0 | 0 |
+| 7 | PrismaticAI solo-max | 6 | 0 | 15 | 2.5 | 2.5 | 5.7 M | 0 | 6 |
+| 8 | AdmiralAI | 43 | 0 | 98 | 2.279 | 2.72 | 6.9 M | 0 | 2 |
+| 9 | PrismaticAI GA g3.3 | 7 | 0 | 12 | 1.714 | 3.29 | 3.0 M | 0 | 0 |
+| 10 | LuDiAI AfterFix | 43 | 0 | 37 | 0.86 | 4.14 | 1.5 M | 0 | 4 |
+| 11 | CivilAI | 43 | 0 | 13 | 0.302 | 4.7 | 647.8 k | 0 | 9 |
+
+| Seed | Original | Replay | Arenas | Identical |
+|---|---|---|---|---|
+| 1251879686 | m-0013 | m-0064 | mbp2 / mbp | yes |
 <!-- battle:end -->
 
 ## How it fits together
@@ -235,9 +240,11 @@ The first editions showed two failures. The battle now catches both by itself.
   Proposals join as `g<gen>.brain<k>`, clamped into the space. A missing, stale (older than
   `brain_max_age_s`) or invalid file adds nothing.
 - **Candidates under test.** `PrismaticAI air10+catch` (`air_add_waiting=10,catchment_stops=8`,
-  mechanisms learned from AAAHogEx) plays in the group as an anchor. In the recorded 10-year
-  ablations it gained on two seeds of three (`research/results/ablation-20261119T0642*`), and it
-  lost on the 6-year fitness seed. The battle decides whether it becomes the default.
+  mechanisms learned from AAAHogEx) played in the group as an anchor. Paired on 36 common seeds
+  over 20 years, it beat the default by +14.8% mean value and won 27 of 36. Its settings became
+  the default, and the anchor was retired.
+- **Last places cost.** The score subtracts `last_penalty` x the share of matches a variant
+  ended last, so explorers that end last are culled fast.
 - **Defaults.** A tuned variant is a candidate. It becomes a default only through held-start duel
   pairs (rule `project.a-tuning-claim-needs-held-start-pairs`).
 
