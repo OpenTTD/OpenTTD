@@ -156,15 +156,25 @@ fn matches_from_store(db: &Path, edition: &str, cfg: &BTreeMap<String, Value>) -
             rec["standings"].as_array_mut().unwrap().push(json!({"key": k, "value": v, "vehicles": veh, "stations": sta}));
         }
     }
-    let mut st = c.prepare("SELECT match_id, contestant, t, value, money, income, vehicles, stations FROM samples WHERE edition = ?1 ORDER BY match_id, contestant, t").map_err(e)?;
-    let rows = st.query_map([edition], |r| Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?, r.get::<_, String>(2)?,
-        r.get::<_, Option<f64>>(3)?, r.get::<_, Option<f64>>(4)?, r.get::<_, Option<f64>>(5)?, r.get::<_, Option<f64>>(6)?, r.get::<_, Option<f64>>(7)?))).map_err(e)?;
-    for row in rows {
-        let (m, k, t, v, money, income, veh, sta) = row.map_err(e)?;
+    let mut st = c.prepare("SELECT * FROM samples WHERE edition = ?1 ORDER BY match_id, contestant, t").map_err(e)?;
+    // Every column by name, so a column the referee adds later is carried too (the store is add-only).
+    let cols: Vec<String> = st.column_names().iter().map(|c| c.to_string()).collect();
+    let mut rows = st.query([edition]).map_err(e)?;
+    while let Some(r) = rows.next().map_err(e)? {
+        let mut sample = serde_json::Map::new();
+        let (mut m, mut k) = (String::new(), String::new());
+        for (i, c) in cols.iter().enumerate() {
+            match c.as_str() {
+                "edition" => {}
+                "match_id" => m = r.get(i).map_err(e)?,
+                "contestant" => k = r.get(i).map_err(e)?,
+                "t" => { sample.insert("t".into(), json!(r.get::<_, String>(i).map_err(e)?)); }
+                _ => { sample.insert(c.clone(), json!(r.get::<_, Option<f64>>(i).map_err(e)?)); }
+            }
+        }
         if let Some(rec) = out.get_mut(&m) {
             let series = rec["series"].as_object_mut().unwrap();
-            let list = series.entry(k).or_insert_with(|| json!([]));
-            list.as_array_mut().unwrap().push(json!({"t": t, "value": v, "money": money, "income": income, "vehicles": veh, "stations": sta}));
+            series.entry(k).or_insert_with(|| json!([])).as_array_mut().unwrap().push(Value::Object(sample));
         }
     }
     Ok(out.into_values().collect())
@@ -331,7 +341,13 @@ fn main() {
         let dir = a.matches.clone().unwrap_or_else(|| home().join("ttd-battle/results").join(&edition).join("matches"));
         matches_from_json(&dir, &cfg)
     };
-    let records = records.unwrap_or_else(|err| { eprintln!("battle-postmortem: {err}"); std::process::exit(12) });
+    let mut records = records.unwrap_or_else(|err| { eprintln!("battle-postmortem: {err}"); std::process::exit(12) });
+    let mut from_store = from_store;
+    if records.is_empty() && from_store {
+        // An edition from before the store: its JSON match records.
+        let dir = home().join("ttd-battle/results").join(&edition).join("matches");
+        if let Ok(r) = matches_from_json(&dir, &cfg) { records = r; from_store = false; }
+    }
     if records.is_empty() {
         eprintln!("battle-postmortem: no match of edition {edition}");
         std::process::exit(12);

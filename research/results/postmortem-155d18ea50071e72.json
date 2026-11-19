@@ -3,6 +3,7 @@
     {
       "field": 7,
       "final_vehicles": 369.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.928,
@@ -11,6 +12,7 @@
       "last": false,
       "losses": [],
       "match": "m-0001",
+      "mode_mix": {},
       "peak_vehicles": 369.0,
       "rank": 1,
       "seed": 1251879686,
@@ -26,6 +28,7 @@
     {
       "field": 7,
       "final_vehicles": 246.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1962-01",
       "host": "mbp",
       "idle_cash_share": 0.669,
@@ -41,6 +44,7 @@
         }
       ],
       "match": "m-0001",
+      "mode_mix": {},
       "peak_vehicles": 246.0,
       "rank": 3,
       "seed": 1251879686,
@@ -56,6 +60,7 @@
     {
       "field": 7,
       "final_vehicles": 34.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.804,
@@ -77,6 +82,7 @@
         }
       ],
       "match": "m-0001",
+      "mode_mix": {},
       "peak_vehicles": 37.0,
       "rank": 5,
       "seed": 1251879686,
@@ -92,6 +98,7 @@
     {
       "field": 7,
       "final_vehicles": 54.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.202,
@@ -107,6 +114,7 @@
         }
       ],
       "match": "m-0001",
+      "mode_mix": {},
       "peak_vehicles": 61.0,
       "rank": 6,
       "seed": 1251879686,
@@ -122,6 +130,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp",
       "idle_cash_share": 0.644,
@@ -161,6 +170,7 @@
         }
       ],
       "match": "m-0001",
+      "mode_mix": {},
       "peak_vehicles": 6.0,
       "rank": 7,
       "seed": 1251879686,
@@ -176,6 +186,7 @@
     {
       "field": 7,
       "final_vehicles": 25.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1963-04",
       "host": "mbp",
       "idle_cash_share": 0.964,
@@ -196,6 +207,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 2.2,
           "threshold": 2.0,
@@ -203,6 +220,7 @@
         }
       ],
       "match": "m-0001",
+      "mode_mix": {},
       "peak_vehicles": 32.0,
       "rank": 2,
       "seed": 1251879686,
@@ -218,6 +236,7 @@
     {
       "field": 7,
       "final_vehicles": 12.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.94,
@@ -244,6 +263,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 3.833,
           "threshold": 2.0,
@@ -251,6 +276,7 @@
         }
       ],
       "match": "m-0001",
+      "mode_mix": {},
       "peak_vehicles": 23.0,
       "rank": 4,
       "seed": 1251879686,
@@ -266,6 +292,7 @@
     {
       "field": 7,
       "final_vehicles": 326.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.906,
@@ -274,6 +301,7 @@
       "last": false,
       "losses": [],
       "match": "m-0002",
+      "mode_mix": {},
       "peak_vehicles": 326.0,
       "rank": 1,
       "seed": 930967890,
@@ -289,6 +317,7 @@
     {
       "field": 7,
       "final_vehicles": 169.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-04",
       "host": "mbp",
       "idle_cash_share": 0.687,
@@ -304,6 +333,7 @@
         }
       ],
       "match": "m-0002",
+      "mode_mix": {},
       "peak_vehicles": 191.0,
       "rank": 5,
       "seed": 930967890,
@@ -319,6 +349,7 @@
     {
       "field": 7,
       "final_vehicles": 4.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -346,6 +377,7 @@
         }
       ],
       "match": "m-0002",
+      "mode_mix": {},
       "peak_vehicles": 6.0,
       "rank": 6,
       "seed": 930967890,
@@ -361,6 +393,7 @@
     {
       "field": 7,
       "final_vehicles": 155.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp",
       "idle_cash_share": 0.456,
@@ -376,6 +409,7 @@
         }
       ],
       "match": "m-0002",
+      "mode_mix": {},
       "peak_vehicles": 155.0,
       "rank": 4,
       "seed": 930967890,
@@ -391,6 +425,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-04",
       "host": "mbp",
       "idle_cash_share": 0.768,
@@ -430,6 +465,7 @@
         }
       ],
       "match": "m-0002",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 7,
       "seed": 930967890,
@@ -445,6 +481,7 @@
     {
       "field": 7,
       "final_vehicles": 15.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-01",
       "host": "mbp",
       "idle_cash_share": 0.969,
@@ -466,6 +503,7 @@
         }
       ],
       "match": "m-0002",
+      "mode_mix": {},
       "peak_vehicles": 24.0,
       "rank": 2,
       "seed": 930967890,
@@ -481,6 +519,7 @@
     {
       "field": 7,
       "final_vehicles": 10.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1966-07",
       "host": "mbp",
       "idle_cash_share": 0.967,
@@ -508,6 +547,7 @@
         }
       ],
       "match": "m-0002",
+      "mode_mix": {},
       "peak_vehicles": 20.0,
       "rank": 3,
       "seed": 930967890,
@@ -523,6 +563,7 @@
     {
       "field": 7,
       "final_vehicles": 332.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.894,
@@ -531,6 +572,7 @@
       "last": false,
       "losses": [],
       "match": "m-0003",
+      "mode_mix": {},
       "peak_vehicles": 332.0,
       "rank": 1,
       "seed": 1814625749,
@@ -546,6 +588,7 @@
     {
       "field": 7,
       "final_vehicles": 135.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-04",
       "host": "mbp",
       "idle_cash_share": 0.853,
@@ -561,6 +604,7 @@
         }
       ],
       "match": "m-0003",
+      "mode_mix": {},
       "peak_vehicles": 154.0,
       "rank": 2,
       "seed": 1814625749,
@@ -576,6 +620,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.75,
@@ -603,6 +648,7 @@
         }
       ],
       "match": "m-0003",
+      "mode_mix": {},
       "peak_vehicles": 25.0,
       "rank": 7,
       "seed": 1814625749,
@@ -618,6 +664,7 @@
     {
       "field": 7,
       "final_vehicles": 11.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.013,
@@ -639,6 +686,7 @@
         }
       ],
       "match": "m-0003",
+      "mode_mix": {},
       "peak_vehicles": 45.0,
       "rank": 5,
       "seed": 1814625749,
@@ -654,6 +702,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -693,6 +742,7 @@
         }
       ],
       "match": "m-0003",
+      "mode_mix": {},
       "peak_vehicles": 6.0,
       "rank": 6,
       "seed": 1814625749,
@@ -708,6 +758,7 @@
     {
       "field": 7,
       "final_vehicles": 20.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-01",
       "host": "mbp",
       "idle_cash_share": 0.937,
@@ -735,6 +786,7 @@
         }
       ],
       "match": "m-0003",
+      "mode_mix": {},
       "peak_vehicles": 32.0,
       "rank": 4,
       "seed": 1814625749,
@@ -750,6 +802,7 @@
     {
       "field": 7,
       "final_vehicles": 10.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-04",
       "host": "mbp",
       "idle_cash_share": 0.957,
@@ -777,6 +830,7 @@
         }
       ],
       "match": "m-0003",
+      "mode_mix": {},
       "peak_vehicles": 25.0,
       "rank": 3,
       "seed": 1814625749,
@@ -792,6 +846,7 @@
     {
       "field": 7,
       "final_vehicles": 382.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.935,
@@ -800,6 +855,7 @@
       "last": false,
       "losses": [],
       "match": "m-0004",
+      "mode_mix": {},
       "peak_vehicles": 382.0,
       "rank": 1,
       "seed": 397755790,
@@ -815,6 +871,7 @@
     {
       "field": 7,
       "final_vehicles": 110.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.816,
@@ -830,6 +887,7 @@
         }
       ],
       "match": "m-0004",
+      "mode_mix": {},
       "peak_vehicles": 167.0,
       "rank": 3,
       "seed": 397755790,
@@ -845,6 +903,7 @@
     {
       "field": 7,
       "final_vehicles": 82.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.881,
@@ -866,6 +925,7 @@
         }
       ],
       "match": "m-0004",
+      "mode_mix": {},
       "peak_vehicles": 82.0,
       "rank": 6,
       "seed": 397755790,
@@ -881,6 +941,7 @@
     {
       "field": 7,
       "final_vehicles": 133.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1961-04",
       "host": "mbp",
       "idle_cash_share": 0.261,
@@ -889,6 +950,7 @@
       "last": false,
       "losses": [],
       "match": "m-0004",
+      "mode_mix": {},
       "peak_vehicles": 133.0,
       "rank": 4,
       "seed": 397755790,
@@ -904,6 +966,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -943,6 +1006,7 @@
         }
       ],
       "match": "m-0004",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 7,
       "seed": 397755790,
@@ -958,6 +1022,7 @@
     {
       "field": 7,
       "final_vehicles": 38.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1966-01",
       "host": "mbp",
       "idle_cash_share": 0.949,
@@ -972,6 +1037,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 2.026,
           "threshold": 2.0,
@@ -979,6 +1050,7 @@
         }
       ],
       "match": "m-0004",
+      "mode_mix": {},
       "peak_vehicles": 42.0,
       "rank": 2,
       "seed": 397755790,
@@ -994,6 +1066,7 @@
     {
       "field": 7,
       "final_vehicles": 8.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.906,
@@ -1020,6 +1093,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 7.125,
           "threshold": 2.0,
@@ -1027,6 +1106,7 @@
         }
       ],
       "match": "m-0004",
+      "mode_mix": {},
       "peak_vehicles": 25.0,
       "rank": 5,
       "seed": 397755790,
@@ -1042,6 +1122,7 @@
     {
       "field": 7,
       "final_vehicles": 416.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "imac",
       "idle_cash_share": 0.924,
@@ -1050,6 +1131,7 @@
       "last": false,
       "losses": [],
       "match": "m-0005",
+      "mode_mix": {},
       "peak_vehicles": 416.0,
       "rank": 1,
       "seed": 852521374,
@@ -1065,6 +1147,7 @@
     {
       "field": 7,
       "final_vehicles": 121.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.248,
@@ -1080,6 +1163,7 @@
         }
       ],
       "match": "m-0005",
+      "mode_mix": {},
       "peak_vehicles": 126.0,
       "rank": 4,
       "seed": 852521374,
@@ -1095,6 +1179,7 @@
     {
       "field": 7,
       "final_vehicles": 24.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 1.0,
@@ -1116,6 +1201,7 @@
         }
       ],
       "match": "m-0005",
+      "mode_mix": {},
       "peak_vehicles": 24.0,
       "rank": 7,
       "seed": 852521374,
@@ -1131,6 +1217,7 @@
     {
       "field": 7,
       "final_vehicles": 58.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.213,
@@ -1146,6 +1233,7 @@
         }
       ],
       "match": "m-0005",
+      "mode_mix": {},
       "peak_vehicles": 71.0,
       "rank": 5,
       "seed": 852521374,
@@ -1161,6 +1249,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.636,
@@ -1194,6 +1283,7 @@
         }
       ],
       "match": "m-0005",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 6,
       "seed": 852521374,
@@ -1209,6 +1299,7 @@
     {
       "field": 7,
       "final_vehicles": 23.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.953,
@@ -1223,6 +1314,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 2.565,
           "threshold": 2.0,
@@ -1230,6 +1327,7 @@
         }
       ],
       "match": "m-0005",
+      "mode_mix": {},
       "peak_vehicles": 32.0,
       "rank": 2,
       "seed": 852521374,
@@ -1245,6 +1343,7 @@
     {
       "field": 7,
       "final_vehicles": 11.0,
+      "first_vehicle_quarter": 4,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.954,
@@ -1265,6 +1364,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 4.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 4.727,
           "threshold": 2.0,
@@ -1272,6 +1377,7 @@
         }
       ],
       "match": "m-0005",
+      "mode_mix": {},
       "peak_vehicles": 26.0,
       "rank": 3,
       "seed": 852521374,
@@ -1287,6 +1393,7 @@
     {
       "field": 7,
       "final_vehicles": 444.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "imac",
       "idle_cash_share": 0.926,
@@ -1295,6 +1402,7 @@
       "last": false,
       "losses": [],
       "match": "m-0006",
+      "mode_mix": {},
       "peak_vehicles": 446.0,
       "rank": 1,
       "seed": 622201523,
@@ -1310,6 +1418,7 @@
     {
       "field": 7,
       "final_vehicles": 122.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.664,
@@ -1325,6 +1434,7 @@
         }
       ],
       "match": "m-0006",
+      "mode_mix": {},
       "peak_vehicles": 163.0,
       "rank": 4,
       "seed": 622201523,
@@ -1340,6 +1450,7 @@
     {
       "field": 7,
       "final_vehicles": 44.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 1.0,
@@ -1361,6 +1472,7 @@
         }
       ],
       "match": "m-0006",
+      "mode_mix": {},
       "peak_vehicles": 51.0,
       "rank": 6,
       "seed": 622201523,
@@ -1376,6 +1488,7 @@
     {
       "field": 7,
       "final_vehicles": 46.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.154,
@@ -1391,6 +1504,7 @@
         }
       ],
       "match": "m-0006",
+      "mode_mix": {},
       "peak_vehicles": 48.0,
       "rank": 5,
       "seed": 622201523,
@@ -1406,6 +1520,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 1.0,
@@ -1445,6 +1560,7 @@
         }
       ],
       "match": "m-0006",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 7,
       "seed": 622201523,
@@ -1460,6 +1576,7 @@
     {
       "field": 7,
       "final_vehicles": 24.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.951,
@@ -1481,6 +1598,7 @@
         }
       ],
       "match": "m-0006",
+      "mode_mix": {},
       "peak_vehicles": 26.0,
       "rank": 2,
       "seed": 622201523,
@@ -1496,6 +1614,7 @@
     {
       "field": 7,
       "final_vehicles": 12.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "imac",
       "idle_cash_share": 0.965,
@@ -1523,6 +1642,7 @@
         }
       ],
       "match": "m-0006",
+      "mode_mix": {},
       "peak_vehicles": 25.0,
       "rank": 3,
       "seed": 622201523,
@@ -1538,6 +1658,7 @@
     {
       "field": 7,
       "final_vehicles": 616.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.903,
@@ -1546,6 +1667,7 @@
       "last": false,
       "losses": [],
       "match": "m-0007",
+      "mode_mix": {},
       "peak_vehicles": 617.0,
       "rank": 1,
       "seed": 1791605593,
@@ -1561,6 +1683,7 @@
     {
       "field": 7,
       "final_vehicles": 130.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1961-10",
       "host": "mbp2",
       "idle_cash_share": 0.531,
@@ -1576,6 +1699,7 @@
         }
       ],
       "match": "m-0007",
+      "mode_mix": {},
       "peak_vehicles": 185.0,
       "rank": 4,
       "seed": 1791605593,
@@ -1591,6 +1715,7 @@
     {
       "field": 7,
       "final_vehicles": 53.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.793,
@@ -1612,6 +1737,7 @@
         }
       ],
       "match": "m-0007",
+      "mode_mix": {},
       "peak_vehicles": 65.0,
       "rank": 6,
       "seed": 1791605593,
@@ -1627,6 +1753,7 @@
     {
       "field": 7,
       "final_vehicles": 173.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.426,
@@ -1642,6 +1769,7 @@
         }
       ],
       "match": "m-0007",
+      "mode_mix": {},
       "peak_vehicles": 173.0,
       "rank": 5,
       "seed": 1791605593,
@@ -1657,6 +1785,7 @@
     {
       "field": 7,
       "final_vehicles": 1.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 1.0,
@@ -1696,6 +1825,7 @@
         }
       ],
       "match": "m-0007",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 7,
       "seed": 1791605593,
@@ -1711,6 +1841,7 @@
     {
       "field": 7,
       "final_vehicles": 21.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.938,
@@ -1725,6 +1856,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 3.381,
           "threshold": 2.0,
@@ -1732,6 +1869,7 @@
         }
       ],
       "match": "m-0007",
+      "mode_mix": {},
       "peak_vehicles": 29.0,
       "rank": 2,
       "seed": 1791605593,
@@ -1747,6 +1885,7 @@
     {
       "field": 7,
       "final_vehicles": 17.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.944,
@@ -1768,6 +1907,7 @@
         }
       ],
       "match": "m-0007",
+      "mode_mix": {},
       "peak_vehicles": 27.0,
       "rank": 3,
       "seed": 1791605593,
@@ -1783,6 +1923,7 @@
     {
       "field": 7,
       "final_vehicles": 370.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.896,
@@ -1791,6 +1932,7 @@
       "last": false,
       "losses": [],
       "match": "m-0008",
+      "mode_mix": {},
       "peak_vehicles": 370.0,
       "rank": 1,
       "seed": 1016335253,
@@ -1806,6 +1948,7 @@
     {
       "field": 7,
       "final_vehicles": 108.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1962-07",
       "host": "mbp2",
       "idle_cash_share": 0.763,
@@ -1821,6 +1964,7 @@
         }
       ],
       "match": "m-0008",
+      "mode_mix": {},
       "peak_vehicles": 162.0,
       "rank": 3,
       "seed": 1016335253,
@@ -1836,6 +1980,7 @@
     {
       "field": 7,
       "final_vehicles": 28.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.904,
@@ -1857,6 +2002,7 @@
         }
       ],
       "match": "m-0008",
+      "mode_mix": {},
       "peak_vehicles": 28.0,
       "rank": 6,
       "seed": 1016335253,
@@ -1872,6 +2018,7 @@
     {
       "field": 7,
       "final_vehicles": 199.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp2",
       "idle_cash_share": 0.515,
@@ -1887,6 +2034,7 @@
         }
       ],
       "match": "m-0008",
+      "mode_mix": {},
       "peak_vehicles": 201.0,
       "rank": 5,
       "seed": 1016335253,
@@ -1902,6 +2050,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.711,
@@ -1935,6 +2084,7 @@
         }
       ],
       "match": "m-0008",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 7,
       "seed": 1016335253,
@@ -1950,6 +2100,7 @@
     {
       "field": 7,
       "final_vehicles": 24.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1962-07",
       "host": "mbp2",
       "idle_cash_share": 0.944,
@@ -1971,6 +2122,7 @@
         }
       ],
       "match": "m-0008",
+      "mode_mix": {},
       "peak_vehicles": 31.0,
       "rank": 2,
       "seed": 1016335253,
@@ -1986,6 +2138,7 @@
     {
       "field": 7,
       "final_vehicles": 11.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.961,
@@ -2013,6 +2166,7 @@
         }
       ],
       "match": "m-0008",
+      "mode_mix": {},
       "peak_vehicles": 24.0,
       "rank": 4,
       "seed": 1016335253,
@@ -2028,6 +2182,7 @@
     {
       "field": 7,
       "final_vehicles": 410.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.941,
@@ -2036,6 +2191,7 @@
       "last": false,
       "losses": [],
       "match": "m-0009",
+      "mode_mix": {},
       "peak_vehicles": 410.0,
       "rank": 1,
       "seed": 1182050720,
@@ -2051,6 +2207,7 @@
     {
       "field": 7,
       "final_vehicles": 389.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.678,
@@ -2066,6 +2223,7 @@
         }
       ],
       "match": "m-0009",
+      "mode_mix": {},
       "peak_vehicles": 389.0,
       "rank": 3,
       "seed": 1182050720,
@@ -2081,6 +2239,7 @@
     {
       "field": 7,
       "final_vehicles": 90.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.533,
@@ -2096,6 +2255,7 @@
         }
       ],
       "match": "m-0009",
+      "mode_mix": {},
       "peak_vehicles": 90.0,
       "rank": 6,
       "seed": 1182050720,
@@ -2111,6 +2271,7 @@
     {
       "field": 7,
       "final_vehicles": 62.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.285,
@@ -2126,6 +2287,7 @@
         }
       ],
       "match": "m-0009",
+      "mode_mix": {},
       "peak_vehicles": 76.0,
       "rank": 5,
       "seed": 1182050720,
@@ -2141,6 +2303,7 @@
     {
       "field": 7,
       "final_vehicles": 4.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.726,
@@ -2168,6 +2331,7 @@
         }
       ],
       "match": "m-0009",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 7,
       "seed": 1182050720,
@@ -2183,6 +2347,7 @@
     {
       "field": 7,
       "final_vehicles": 27.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.957,
@@ -2203,6 +2368,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 2.815,
           "threshold": 2.0,
@@ -2210,6 +2381,7 @@
         }
       ],
       "match": "m-0009",
+      "mode_mix": {},
       "peak_vehicles": 33.0,
       "rank": 2,
       "seed": 1182050720,
@@ -2225,6 +2397,7 @@
     {
       "field": 7,
       "final_vehicles": 13.0,
+      "first_vehicle_quarter": 3,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.865,
@@ -2251,6 +2424,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 3.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 4.692,
           "threshold": 2.0,
@@ -2258,6 +2437,7 @@
         }
       ],
       "match": "m-0009",
+      "mode_mix": {},
       "peak_vehicles": 23.0,
       "rank": 4,
       "seed": 1182050720,
@@ -2273,6 +2453,7 @@
     {
       "field": 7,
       "final_vehicles": 364.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.926,
@@ -2281,6 +2462,7 @@
       "last": false,
       "losses": [],
       "match": "m-0010",
+      "mode_mix": {},
       "peak_vehicles": 370.0,
       "rank": 1,
       "seed": 644316239,
@@ -2296,6 +2478,7 @@
     {
       "field": 7,
       "final_vehicles": 113.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1963-10",
       "host": "mbp2",
       "idle_cash_share": 0.829,
@@ -2311,6 +2494,7 @@
         }
       ],
       "match": "m-0010",
+      "mode_mix": {},
       "peak_vehicles": 129.0,
       "rank": 3,
       "seed": 644316239,
@@ -2326,6 +2510,7 @@
     {
       "field": 7,
       "final_vehicles": 36.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp2",
       "idle_cash_share": 0.849,
@@ -2347,6 +2532,7 @@
         }
       ],
       "match": "m-0010",
+      "mode_mix": {},
       "peak_vehicles": 48.0,
       "rank": 6,
       "seed": 644316239,
@@ -2362,6 +2548,7 @@
     {
       "field": 7,
       "final_vehicles": 102.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp2",
       "idle_cash_share": 0.461,
@@ -2377,6 +2564,7 @@
         }
       ],
       "match": "m-0010",
+      "mode_mix": {},
       "peak_vehicles": 102.0,
       "rank": 5,
       "seed": 644316239,
@@ -2392,6 +2580,7 @@
     {
       "field": 7,
       "final_vehicles": 4.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp2",
       "idle_cash_share": 0.961,
@@ -2419,6 +2608,7 @@
         }
       ],
       "match": "m-0010",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 7,
       "seed": 644316239,
@@ -2434,6 +2624,7 @@
     {
       "field": 7,
       "final_vehicles": 24.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1966-07",
       "host": "mbp2",
       "idle_cash_share": 0.97,
@@ -2448,6 +2639,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 2.625,
           "threshold": 2.0,
@@ -2455,6 +2652,7 @@
         }
       ],
       "match": "m-0010",
+      "mode_mix": {},
       "peak_vehicles": 31.0,
       "rank": 2,
       "seed": 644316239,
@@ -2470,6 +2668,7 @@
     {
       "field": 7,
       "final_vehicles": 15.0,
+      "first_vehicle_quarter": 4,
       "gap_opens": "1960-10",
       "host": "mbp2",
       "idle_cash_share": 0.936,
@@ -2496,6 +2695,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 4.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 3.8,
           "threshold": 2.0,
@@ -2503,6 +2708,7 @@
         }
       ],
       "match": "m-0010",
+      "mode_mix": {},
       "peak_vehicles": 28.0,
       "rank": 4,
       "seed": 644316239,
@@ -2518,6 +2724,7 @@
     {
       "field": 7,
       "final_vehicles": 493.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.932,
@@ -2526,6 +2733,7 @@
       "last": false,
       "losses": [],
       "match": "m-0011",
+      "mode_mix": {},
       "peak_vehicles": 493.0,
       "rank": 1,
       "seed": 1005694260,
@@ -2541,6 +2749,7 @@
     {
       "field": 7,
       "final_vehicles": 457.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.477,
@@ -2556,6 +2765,7 @@
         }
       ],
       "match": "m-0011",
+      "mode_mix": {},
       "peak_vehicles": 517.0,
       "rank": 2,
       "seed": 1005694260,
@@ -2571,6 +2781,7 @@
     {
       "field": 7,
       "final_vehicles": 144.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.633,
@@ -2586,6 +2797,7 @@
         }
       ],
       "match": "m-0011",
+      "mode_mix": {},
       "peak_vehicles": 145.0,
       "rank": 6,
       "seed": 1005694260,
@@ -2601,6 +2813,7 @@
     {
       "field": 7,
       "final_vehicles": 132.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.484,
@@ -2616,6 +2829,7 @@
         }
       ],
       "match": "m-0011",
+      "mode_mix": {},
       "peak_vehicles": 132.0,
       "rank": 5,
       "seed": 1005694260,
@@ -2631,6 +2845,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 1.0,
@@ -2670,6 +2885,7 @@
         }
       ],
       "match": "m-0011",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 7,
       "seed": 1005694260,
@@ -2685,6 +2901,7 @@
     {
       "field": 7,
       "final_vehicles": 19.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.946,
@@ -2706,6 +2923,7 @@
         }
       ],
       "match": "m-0011",
+      "mode_mix": {},
       "peak_vehicles": 28.0,
       "rank": 3,
       "seed": 1005694260,
@@ -2721,6 +2939,7 @@
     {
       "field": 7,
       "final_vehicles": 11.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.934,
@@ -2754,6 +2973,7 @@
         }
       ],
       "match": "m-0011",
+      "mode_mix": {},
       "peak_vehicles": 27.0,
       "rank": 4,
       "seed": 1005694260,
@@ -2769,6 +2989,7 @@
     {
       "field": 7,
       "final_vehicles": 584.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.888,
@@ -2777,6 +2998,7 @@
       "last": false,
       "losses": [],
       "match": "m-0012",
+      "mode_mix": {},
       "peak_vehicles": 584.0,
       "rank": 1,
       "seed": 542166871,
@@ -2792,6 +3014,7 @@
     {
       "field": 7,
       "final_vehicles": 91.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-10",
       "host": "mbp2",
       "idle_cash_share": 0.865,
@@ -2813,6 +3036,7 @@
         }
       ],
       "match": "m-0012",
+      "mode_mix": {},
       "peak_vehicles": 91.0,
       "rank": 3,
       "seed": 542166871,
@@ -2828,6 +3052,7 @@
     {
       "field": 7,
       "final_vehicles": 12.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.913,
@@ -2846,9 +3071,16 @@
           "measured": 0.345,
           "threshold": 0.5,
           "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
         }
       ],
       "match": "m-0012",
+      "mode_mix": {},
       "peak_vehicles": 18.0,
       "rank": 6,
       "seed": 542166871,
@@ -2864,6 +3096,7 @@
     {
       "field": 7,
       "final_vehicles": 82.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.695,
@@ -2885,6 +3118,7 @@
         }
       ],
       "match": "m-0012",
+      "mode_mix": {},
       "peak_vehicles": 82.0,
       "rank": 5,
       "seed": 542166871,
@@ -2900,6 +3134,7 @@
     {
       "field": 7,
       "final_vehicles": 4.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.717,
@@ -2933,6 +3168,7 @@
         }
       ],
       "match": "m-0012",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 7,
       "seed": 542166871,
@@ -2948,6 +3184,7 @@
     {
       "field": 7,
       "final_vehicles": 27.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-07",
       "host": "mbp2",
       "idle_cash_share": 0.946,
@@ -2975,6 +3212,7 @@
         }
       ],
       "match": "m-0012",
+      "mode_mix": {},
       "peak_vehicles": 28.0,
       "rank": 2,
       "seed": 542166871,
@@ -2990,6 +3228,7 @@
     {
       "field": 7,
       "final_vehicles": 15.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-07",
       "host": "mbp2",
       "idle_cash_share": 0.954,
@@ -3011,6 +3250,7 @@
         }
       ],
       "match": "m-0012",
+      "mode_mix": {},
       "peak_vehicles": 22.0,
       "rank": 4,
       "seed": 542166871,
@@ -3025,7 +3265,297 @@
     },
     {
       "field": 7,
+      "final_vehicles": 453.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": null,
+      "host": "ubuntu",
+      "idle_cash_share": 0.929,
+      "income_per_vehicle": 9798.626,
+      "key": "AAAHogEx",
+      "last": false,
+      "losses": [],
+      "match": "m-0017",
+      "mode_mix": {},
+      "peak_vehicles": 453.0,
+      "rank": 1,
+      "seed": 145339768,
+      "stations": 204.0,
+      "stations_per_vehicle": 0.45,
+      "value": 141890577.0,
+      "value_share_of_winner": 1.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9798.626,
+      "winner_value": 141890577.0,
+      "winner_vehicles": 423.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 28.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-04",
+      "host": "ubuntu",
+      "idle_cash_share": 0.517,
+      "income_per_vehicle": 2935.576,
+      "key": "AdmiralAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.3,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0017",
+      "mode_mix": {},
+      "peak_vehicles": 28.0,
+      "rank": 5,
+      "seed": 145339768,
+      "stations": 26.0,
+      "stations_per_vehicle": 0.929,
+      "value": 467329.0,
+      "value_share_of_winner": 0.003,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9798.626,
+      "winner_value": 141890577.0,
+      "winner_vehicles": 423.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 33.0,
+      "first_vehicle_quarter": 2,
+      "gap_opens": "1960-04",
+      "host": "ubuntu",
+      "idle_cash_share": 0.796,
+      "income_per_vehicle": 1264.811,
+      "key": "CivilAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.796,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.129,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        }
+      ],
+      "match": "m-0017",
+      "mode_mix": {},
+      "peak_vehicles": 34.0,
+      "rank": 4,
+      "seed": 145339768,
+      "stations": 21.0,
+      "stations_per_vehicle": 0.636,
+      "value": 1071737.0,
+      "value_share_of_winner": 0.008,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9798.626,
+      "winner_value": 141890577.0,
+      "winner_vehicles": 423.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 16.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-04",
+      "host": "ubuntu",
+      "idle_cash_share": 0.152,
+      "income_per_vehicle": 1696.525,
+      "key": "LuDiAI AfterFix",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.173,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0017",
+      "mode_mix": {},
+      "peak_vehicles": 16.0,
+      "rank": 6,
+      "seed": 145339768,
+      "stations": 4.0,
+      "stations_per_vehicle": 0.25,
+      "value": 55595.0,
+      "value_share_of_winner": 0.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9798.626,
+      "winner_value": 141890577.0,
+      "winner_vehicles": 423.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 1.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "ubuntu",
+      "idle_cash_share": 0.81,
+      "income_per_vehicle": 298.25,
+      "key": "PrismaticAI",
+      "last": true,
+      "losses": [
+        {
+          "cause": "stalls_small",
+          "measured": 5.0,
+          "threshold": 10.0,
+          "what": "peak fleet below the threshold: it never grew past its first routes"
+        },
+        {
+          "cause": "fleet_decays",
+          "measured": 0.2,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.81,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.03,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 8.0,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0017",
+      "mode_mix": {},
+      "peak_vehicles": 5.0,
+      "rank": 7,
+      "seed": 145339768,
+      "stations": 8.0,
+      "stations_per_vehicle": 8.0,
+      "value": 55013.0,
+      "value_share_of_winner": 0.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9798.626,
+      "winner_value": 141890577.0,
+      "winner_vehicles": 423.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 33.0,
+      "first_vehicle_quarter": 2,
+      "gap_opens": "1960-04",
+      "host": "ubuntu",
+      "idle_cash_share": 0.938,
+      "income_per_vehicle": 3507.534,
+      "key": "PrismaticAI self-steward",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.938,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.358,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        }
+      ],
+      "match": "m-0017",
+      "mode_mix": {},
+      "peak_vehicles": 41.0,
+      "rank": 2,
+      "seed": 145339768,
+      "stations": 65.0,
+      "stations_per_vehicle": 1.97,
+      "value": 6213094.0,
+      "value_share_of_winner": 0.044,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9798.626,
+      "winner_value": 141890577.0,
+      "winner_vehicles": 423.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 17.0,
+      "first_vehicle_quarter": 4,
+      "gap_opens": "1960-04",
+      "host": "ubuntu",
+      "idle_cash_share": 0.913,
+      "income_per_vehicle": 2937.147,
+      "key": "PrismaticAI solo-max",
+      "last": false,
+      "losses": [
+        {
+          "cause": "fleet_decays",
+          "measured": 0.586,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.913,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.3,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 4.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 4.176,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0017",
+      "mode_mix": {},
+      "peak_vehicles": 29.0,
+      "rank": 3,
+      "seed": 145339768,
+      "stations": 71.0,
+      "stations_per_vehicle": 4.176,
+      "value": 2719808.0,
+      "value_share_of_winner": 0.019,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9798.626,
+      "winner_value": 141890577.0,
+      "winner_vehicles": 423.0
+    },
+    {
+      "field": 7,
       "final_vehicles": 383.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.936,
@@ -3034,6 +3564,7 @@
       "last": false,
       "losses": [],
       "match": "m-0019",
+      "mode_mix": {},
       "peak_vehicles": 383.0,
       "rank": 1,
       "seed": 1538202881,
@@ -3049,6 +3580,7 @@
     {
       "field": 7,
       "final_vehicles": 293.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.068,
@@ -3064,6 +3596,7 @@
         }
       ],
       "match": "m-0019",
+      "mode_mix": {},
       "peak_vehicles": 309.0,
       "rank": 3,
       "seed": 1538202881,
@@ -3079,6 +3612,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 7,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.965,
@@ -3097,9 +3631,16 @@
           "measured": 0.965,
           "threshold": 0.6,
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 7.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
         }
       ],
       "match": "m-0019",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 6,
       "seed": 1538202881,
@@ -3115,6 +3656,7 @@
     {
       "field": 7,
       "final_vehicles": 65.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.465,
@@ -3130,6 +3672,7 @@
         }
       ],
       "match": "m-0019",
+      "mode_mix": {},
       "peak_vehicles": 75.0,
       "rank": 5,
       "seed": 1538202881,
@@ -3145,6 +3688,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.756,
@@ -3178,6 +3722,7 @@
         }
       ],
       "match": "m-0019",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 7,
       "seed": 1538202881,
@@ -3193,6 +3738,7 @@
     {
       "field": 7,
       "final_vehicles": 20.0,
+      "first_vehicle_quarter": 3,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.949,
@@ -3213,6 +3759,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 3.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 3.1,
           "threshold": 2.0,
@@ -3220,6 +3772,7 @@
         }
       ],
       "match": "m-0019",
+      "mode_mix": {},
       "peak_vehicles": 29.0,
       "rank": 2,
       "seed": 1538202881,
@@ -3235,6 +3788,7 @@
     {
       "field": 7,
       "final_vehicles": 9.0,
+      "first_vehicle_quarter": 6,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.859,
@@ -3261,6 +3815,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 6.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 6.444,
           "threshold": 2.0,
@@ -3268,6 +3828,7 @@
         }
       ],
       "match": "m-0019",
+      "mode_mix": {},
       "peak_vehicles": 19.0,
       "rank": 4,
       "seed": 1538202881,
@@ -3283,6 +3844,7 @@
     {
       "field": 7,
       "final_vehicles": 473.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.926,
@@ -3291,6 +3853,7 @@
       "last": false,
       "losses": [],
       "match": "m-0020",
+      "mode_mix": {},
       "peak_vehicles": 473.0,
       "rank": 1,
       "seed": 415608858,
@@ -3306,6 +3869,7 @@
     {
       "field": 7,
       "final_vehicles": 143.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-01",
       "host": "mbp",
       "idle_cash_share": 0.89,
@@ -3321,6 +3885,7 @@
         }
       ],
       "match": "m-0020",
+      "mode_mix": {},
       "peak_vehicles": 147.0,
       "rank": 2,
       "seed": 415608858,
@@ -3336,6 +3901,7 @@
     {
       "field": 7,
       "final_vehicles": 10.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -3357,6 +3923,7 @@
         }
       ],
       "match": "m-0020",
+      "mode_mix": {},
       "peak_vehicles": 10.0,
       "rank": 7,
       "seed": 415608858,
@@ -3372,6 +3939,7 @@
     {
       "field": 7,
       "final_vehicles": 184.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.011,
@@ -3387,6 +3955,7 @@
         }
       ],
       "match": "m-0020",
+      "mode_mix": {},
       "peak_vehicles": 184.0,
       "rank": 5,
       "seed": 415608858,
@@ -3402,6 +3971,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -3441,6 +4011,7 @@
         }
       ],
       "match": "m-0020",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 6,
       "seed": 415608858,
@@ -3456,6 +4027,7 @@
     {
       "field": 7,
       "final_vehicles": 23.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.952,
@@ -3470,6 +4042,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 3.13,
           "threshold": 2.0,
@@ -3477,6 +4055,7 @@
         }
       ],
       "match": "m-0020",
+      "mode_mix": {},
       "peak_vehicles": 33.0,
       "rank": 3,
       "seed": 415608858,
@@ -3492,6 +4071,7 @@
     {
       "field": 7,
       "final_vehicles": 15.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.955,
@@ -3512,6 +4092,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 4.667,
           "threshold": 2.0,
@@ -3519,6 +4105,7 @@
         }
       ],
       "match": "m-0020",
+      "mode_mix": {},
       "peak_vehicles": 32.0,
       "rank": 4,
       "seed": 415608858,
@@ -3534,6 +4121,7 @@
     {
       "field": 7,
       "final_vehicles": 448.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.904,
@@ -3542,6 +4130,7 @@
       "last": false,
       "losses": [],
       "match": "m-0021",
+      "mode_mix": {},
       "peak_vehicles": 466.0,
       "rank": 1,
       "seed": 1623305058,
@@ -3557,6 +4146,7 @@
     {
       "field": 7,
       "final_vehicles": 506.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-01",
       "host": "mbp",
       "idle_cash_share": 0.056,
@@ -3572,6 +4162,7 @@
         }
       ],
       "match": "m-0021",
+      "mode_mix": {},
       "peak_vehicles": 512.0,
       "rank": 3,
       "seed": 1623305058,
@@ -3587,6 +4178,7 @@
     {
       "field": 7,
       "final_vehicles": 10.0,
+      "first_vehicle_quarter": 9,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -3605,9 +4197,16 @@
           "measured": 0.065,
           "threshold": 0.5,
           "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 9.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
         }
       ],
       "match": "m-0021",
+      "mode_mix": {},
       "peak_vehicles": 10.0,
       "rank": 7,
       "seed": 1623305058,
@@ -3623,6 +4222,7 @@
     {
       "field": 7,
       "final_vehicles": 99.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.669,
@@ -3644,6 +4244,7 @@
         }
       ],
       "match": "m-0021",
+      "mode_mix": {},
       "peak_vehicles": 130.0,
       "rank": 5,
       "seed": 1623305058,
@@ -3659,6 +4260,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -3698,6 +4300,7 @@
         }
       ],
       "match": "m-0021",
+      "mode_mix": {},
       "peak_vehicles": 6.0,
       "rank": 6,
       "seed": 1623305058,
@@ -3713,6 +4316,7 @@
     {
       "field": 7,
       "final_vehicles": 12.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.904,
@@ -3746,6 +4350,7 @@
         }
       ],
       "match": "m-0021",
+      "mode_mix": {},
       "peak_vehicles": 24.0,
       "rank": 4,
       "seed": 1623305058,
@@ -3761,6 +4366,7 @@
     {
       "field": 7,
       "final_vehicles": 11.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.956,
@@ -3788,6 +4394,7 @@
         }
       ],
       "match": "m-0021",
+      "mode_mix": {},
       "peak_vehicles": 22.0,
       "rank": 2,
       "seed": 1623305058,
@@ -3803,6 +4410,7 @@
     {
       "field": 7,
       "final_vehicles": 401.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.933,
@@ -3811,6 +4419,7 @@
       "last": false,
       "losses": [],
       "match": "m-0022",
+      "mode_mix": {},
       "peak_vehicles": 436.0,
       "rank": 1,
       "seed": 589628189,
@@ -3826,6 +4435,7 @@
     {
       "field": 7,
       "final_vehicles": 100.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1963-10",
       "host": "mbp",
       "idle_cash_share": 0.926,
@@ -3847,6 +4457,7 @@
         }
       ],
       "match": "m-0022",
+      "mode_mix": {},
       "peak_vehicles": 146.0,
       "rank": 2,
       "seed": 589628189,
@@ -3862,6 +4473,7 @@
     {
       "field": 7,
       "final_vehicles": 126.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.647,
@@ -3877,6 +4489,7 @@
         }
       ],
       "match": "m-0022",
+      "mode_mix": {},
       "peak_vehicles": 126.0,
       "rank": 6,
       "seed": 589628189,
@@ -3892,6 +4505,7 @@
     {
       "field": 7,
       "final_vehicles": 225.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.326,
@@ -3907,6 +4521,7 @@
         }
       ],
       "match": "m-0022",
+      "mode_mix": {},
       "peak_vehicles": 244.0,
       "rank": 5,
       "seed": 589628189,
@@ -3922,6 +4537,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -3961,6 +4577,7 @@
         }
       ],
       "match": "m-0022",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 7,
       "seed": 589628189,
@@ -3976,6 +4593,7 @@
     {
       "field": 7,
       "final_vehicles": 29.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.931,
@@ -4003,6 +4621,7 @@
         }
       ],
       "match": "m-0022",
+      "mode_mix": {},
       "peak_vehicles": 30.0,
       "rank": 3,
       "seed": 589628189,
@@ -4018,6 +4637,7 @@
     {
       "field": 7,
       "final_vehicles": 8.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.934,
@@ -4045,6 +4665,7 @@
         }
       ],
       "match": "m-0022",
+      "mode_mix": {},
       "peak_vehicles": 22.0,
       "rank": 4,
       "seed": 589628189,
@@ -4060,6 +4681,7 @@
     {
       "field": 7,
       "final_vehicles": 377.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.918,
@@ -4068,6 +4690,7 @@
       "last": false,
       "losses": [],
       "match": "m-0023",
+      "mode_mix": {},
       "peak_vehicles": 377.0,
       "rank": 1,
       "seed": 1987023718,
@@ -4083,6 +4706,7 @@
     {
       "field": 7,
       "final_vehicles": 26.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.799,
@@ -4110,6 +4734,7 @@
         }
       ],
       "match": "m-0023",
+      "mode_mix": {},
       "peak_vehicles": 51.0,
       "rank": 5,
       "seed": 1987023718,
@@ -4125,6 +4750,7 @@
     {
       "field": 7,
       "final_vehicles": 17.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.727,
@@ -4146,6 +4772,7 @@
         }
       ],
       "match": "m-0023",
+      "mode_mix": {},
       "peak_vehicles": 19.0,
       "rank": 6,
       "seed": 1987023718,
@@ -4161,6 +4788,7 @@
     {
       "field": 7,
       "final_vehicles": 117.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.505,
@@ -4176,6 +4804,7 @@
         }
       ],
       "match": "m-0023",
+      "mode_mix": {},
       "peak_vehicles": 117.0,
       "rank": 4,
       "seed": 1987023718,
@@ -4191,6 +4820,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp",
       "idle_cash_share": 0.737,
@@ -4230,6 +4860,7 @@
         }
       ],
       "match": "m-0023",
+      "mode_mix": {},
       "peak_vehicles": 7.0,
       "rank": 7,
       "seed": 1987023718,
@@ -4245,6 +4876,7 @@
     {
       "field": 7,
       "final_vehicles": 24.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1961-04",
       "host": "mbp",
       "idle_cash_share": 0.952,
@@ -4266,6 +4898,7 @@
         }
       ],
       "match": "m-0023",
+      "mode_mix": {},
       "peak_vehicles": 33.0,
       "rank": 2,
       "seed": 1987023718,
@@ -4281,6 +4914,7 @@
     {
       "field": 7,
       "final_vehicles": 10.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.952,
@@ -4308,6 +4942,7 @@
         }
       ],
       "match": "m-0023",
+      "mode_mix": {},
       "peak_vehicles": 22.0,
       "rank": 3,
       "seed": 1987023718,
@@ -4323,6 +4958,7 @@
     {
       "field": 7,
       "final_vehicles": 418.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.922,
@@ -4331,6 +4967,7 @@
       "last": false,
       "losses": [],
       "match": "m-0025",
+      "mode_mix": {},
       "peak_vehicles": 418.0,
       "rank": 1,
       "seed": 898469763,
@@ -4346,6 +4983,7 @@
     {
       "field": 7,
       "final_vehicles": 220.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-01",
       "host": "mbp2",
       "idle_cash_share": 0.853,
@@ -4361,6 +4999,7 @@
         }
       ],
       "match": "m-0025",
+      "mode_mix": {},
       "peak_vehicles": 224.0,
       "rank": 2,
       "seed": 898469763,
@@ -4376,6 +5015,7 @@
     {
       "field": 7,
       "final_vehicles": 10.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 1.0,
@@ -4397,6 +5037,7 @@
         }
       ],
       "match": "m-0025",
+      "mode_mix": {},
       "peak_vehicles": 11.0,
       "rank": 6,
       "seed": 898469763,
@@ -4412,6 +5053,7 @@
     {
       "field": 7,
       "final_vehicles": 48.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.073,
@@ -4424,9 +5066,16 @@
           "measured": 0.155,
           "threshold": 0.5,
           "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
         }
       ],
       "match": "m-0025",
+      "mode_mix": {},
       "peak_vehicles": 51.0,
       "rank": 5,
       "seed": 898469763,
@@ -4442,6 +5091,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 1.0,
@@ -4475,6 +5125,7 @@
         }
       ],
       "match": "m-0025",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 7,
       "seed": 898469763,
@@ -4490,6 +5141,7 @@
     {
       "field": 7,
       "final_vehicles": 19.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.948,
@@ -4511,6 +5163,7 @@
         }
       ],
       "match": "m-0025",
+      "mode_mix": {},
       "peak_vehicles": 24.0,
       "rank": 3,
       "seed": 898469763,
@@ -4526,6 +5179,7 @@
     {
       "field": 7,
       "final_vehicles": 9.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1963-04",
       "host": "mbp2",
       "idle_cash_share": 0.96,
@@ -4553,6 +5207,7 @@
         }
       ],
       "match": "m-0025",
+      "mode_mix": {},
       "peak_vehicles": 23.0,
       "rank": 4,
       "seed": 898469763,
@@ -4568,6 +5223,7 @@
     {
       "field": 7,
       "final_vehicles": 406.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.93,
@@ -4576,6 +5232,7 @@
       "last": false,
       "losses": [],
       "match": "m-0026",
+      "mode_mix": {},
       "peak_vehicles": 412.0,
       "rank": 1,
       "seed": 194341801,
@@ -4591,6 +5248,7 @@
     {
       "field": 7,
       "final_vehicles": 243.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1962-07",
       "host": "mbp2",
       "idle_cash_share": 0.396,
@@ -4606,6 +5264,7 @@
         }
       ],
       "match": "m-0026",
+      "mode_mix": {},
       "peak_vehicles": 251.0,
       "rank": 4,
       "seed": 194341801,
@@ -4621,6 +5280,7 @@
     {
       "field": 7,
       "final_vehicles": 19.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 1.0,
@@ -4642,6 +5302,7 @@
         }
       ],
       "match": "m-0026",
+      "mode_mix": {},
       "peak_vehicles": 20.0,
       "rank": 5,
       "seed": 194341801,
@@ -4657,6 +5318,7 @@
     {
       "field": 7,
       "final_vehicles": 56.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.03,
@@ -4672,6 +5334,7 @@
         }
       ],
       "match": "m-0026",
+      "mode_mix": {},
       "peak_vehicles": 56.0,
       "rank": 6,
       "seed": 194341801,
@@ -4687,6 +5350,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.643,
@@ -4726,6 +5390,7 @@
         }
       ],
       "match": "m-0026",
+      "mode_mix": {},
       "peak_vehicles": 7.0,
       "rank": 7,
       "seed": 194341801,
@@ -4741,6 +5406,7 @@
     {
       "field": 7,
       "final_vehicles": 23.0,
+      "first_vehicle_quarter": 3,
       "gap_opens": "1963-10",
       "host": "mbp2",
       "idle_cash_share": 0.951,
@@ -4755,6 +5421,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 3.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 2.565,
           "threshold": 2.0,
@@ -4762,6 +5434,7 @@
         }
       ],
       "match": "m-0026",
+      "mode_mix": {},
       "peak_vehicles": 28.0,
       "rank": 2,
       "seed": 194341801,
@@ -4777,6 +5450,7 @@
     {
       "field": 7,
       "final_vehicles": 12.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1963-01",
       "host": "mbp2",
       "idle_cash_share": 0.962,
@@ -4797,6 +5471,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 4.0,
           "threshold": 2.0,
@@ -4804,6 +5484,7 @@
         }
       ],
       "match": "m-0026",
+      "mode_mix": {},
       "peak_vehicles": 26.0,
       "rank": 3,
       "seed": 194341801,
@@ -4819,6 +5500,7 @@
     {
       "field": 7,
       "final_vehicles": 374.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.936,
@@ -4827,6 +5509,7 @@
       "last": false,
       "losses": [],
       "match": "m-0027",
+      "mode_mix": {},
       "peak_vehicles": 388.0,
       "rank": 1,
       "seed": 1112431946,
@@ -4842,6 +5525,7 @@
     {
       "field": 7,
       "final_vehicles": 179.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.752,
@@ -4857,6 +5541,7 @@
         }
       ],
       "match": "m-0027",
+      "mode_mix": {},
       "peak_vehicles": 213.0,
       "rank": 4,
       "seed": 1112431946,
@@ -4872,6 +5557,7 @@
     {
       "field": 7,
       "final_vehicles": 67.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.664,
@@ -4893,6 +5579,7 @@
         }
       ],
       "match": "m-0027",
+      "mode_mix": {},
       "peak_vehicles": 67.0,
       "rank": 6,
       "seed": 1112431946,
@@ -4908,6 +5595,7 @@
     {
       "field": 7,
       "final_vehicles": 203.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.362,
@@ -4923,6 +5611,7 @@
         }
       ],
       "match": "m-0027",
+      "mode_mix": {},
       "peak_vehicles": 208.0,
       "rank": 5,
       "seed": 1112431946,
@@ -4938,6 +5627,7 @@
     {
       "field": 7,
       "final_vehicles": 1.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -4977,6 +5667,7 @@
         }
       ],
       "match": "m-0027",
+      "mode_mix": {},
       "peak_vehicles": 6.0,
       "rank": 7,
       "seed": 1112431946,
@@ -4992,6 +5683,7 @@
     {
       "field": 7,
       "final_vehicles": 24.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.937,
@@ -5019,6 +5711,7 @@
         }
       ],
       "match": "m-0027",
+      "mode_mix": {},
       "peak_vehicles": 26.0,
       "rank": 2,
       "seed": 1112431946,
@@ -5034,6 +5727,7 @@
     {
       "field": 7,
       "final_vehicles": 8.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.959,
@@ -5061,6 +5755,7 @@
         }
       ],
       "match": "m-0027",
+      "mode_mix": {},
       "peak_vehicles": 28.0,
       "rank": 3,
       "seed": 1112431946,
@@ -5076,6 +5771,7 @@
     {
       "field": 7,
       "final_vehicles": 316.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.938,
@@ -5084,6 +5780,7 @@
       "last": false,
       "losses": [],
       "match": "m-0028",
+      "mode_mix": {},
       "peak_vehicles": 318.0,
       "rank": 1,
       "seed": 431109973,
@@ -5099,6 +5796,7 @@
     {
       "field": 7,
       "final_vehicles": 212.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1962-04",
       "host": "mbp2",
       "idle_cash_share": 0.783,
@@ -5114,6 +5812,7 @@
         }
       ],
       "match": "m-0028",
+      "mode_mix": {},
       "peak_vehicles": 236.0,
       "rank": 3,
       "seed": 431109973,
@@ -5129,6 +5828,7 @@
     {
       "field": 7,
       "final_vehicles": 48.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 1.0,
@@ -5150,6 +5850,7 @@
         }
       ],
       "match": "m-0028",
+      "mode_mix": {},
       "peak_vehicles": 49.0,
       "rank": 7,
       "seed": 431109973,
@@ -5165,6 +5866,7 @@
     {
       "field": 7,
       "final_vehicles": 103.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-04",
       "host": "mbp2",
       "idle_cash_share": 0.563,
@@ -5180,6 +5882,7 @@
         }
       ],
       "match": "m-0028",
+      "mode_mix": {},
       "peak_vehicles": 103.0,
       "rank": 4,
       "seed": 431109973,
@@ -5195,6 +5898,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp2",
       "idle_cash_share": 1.0,
@@ -5228,6 +5932,7 @@
         }
       ],
       "match": "m-0028",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 6,
       "seed": 431109973,
@@ -5243,6 +5948,7 @@
     {
       "field": 7,
       "final_vehicles": 22.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-04",
       "host": "mbp2",
       "idle_cash_share": 0.947,
@@ -5264,6 +5970,7 @@
         }
       ],
       "match": "m-0028",
+      "mode_mix": {},
       "peak_vehicles": 30.0,
       "rank": 2,
       "seed": 431109973,
@@ -5279,6 +5986,7 @@
     {
       "field": 7,
       "final_vehicles": 10.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.925,
@@ -5312,6 +6020,7 @@
         }
       ],
       "match": "m-0028",
+      "mode_mix": {},
       "peak_vehicles": 22.0,
       "rank": 5,
       "seed": 431109973,
@@ -5327,6 +6036,7 @@
     {
       "field": 7,
       "final_vehicles": 276.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.93,
@@ -5335,6 +6045,7 @@
       "last": false,
       "losses": [],
       "match": "m-0029",
+      "mode_mix": {},
       "peak_vehicles": 305.0,
       "rank": 1,
       "seed": 864970882,
@@ -5350,6 +6061,7 @@
     {
       "field": 7,
       "final_vehicles": 197.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.912,
@@ -5365,6 +6077,7 @@
         }
       ],
       "match": "m-0029",
+      "mode_mix": {},
       "peak_vehicles": 206.0,
       "rank": 3,
       "seed": 864970882,
@@ -5380,6 +6093,7 @@
     {
       "field": 7,
       "final_vehicles": 6.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -5401,6 +6115,7 @@
         }
       ],
       "match": "m-0029",
+      "mode_mix": {},
       "peak_vehicles": 10.0,
       "rank": 7,
       "seed": 864970882,
@@ -5416,6 +6131,7 @@
     {
       "field": 7,
       "final_vehicles": 179.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.251,
@@ -5431,6 +6147,7 @@
         }
       ],
       "match": "m-0029",
+      "mode_mix": {},
       "peak_vehicles": 179.0,
       "rank": 4,
       "seed": 864970882,
@@ -5446,6 +6163,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -5479,6 +6197,7 @@
         }
       ],
       "match": "m-0029",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 6,
       "seed": 864970882,
@@ -5494,6 +6213,7 @@
     {
       "field": 7,
       "final_vehicles": 25.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1966-10",
       "host": "mbp",
       "idle_cash_share": 0.939,
@@ -5521,6 +6241,7 @@
         }
       ],
       "match": "m-0029",
+      "mode_mix": {},
       "peak_vehicles": 32.0,
       "rank": 2,
       "seed": 864970882,
@@ -5536,6 +6257,7 @@
     {
       "field": 7,
       "final_vehicles": 9.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.819,
@@ -5569,6 +6291,7 @@
         }
       ],
       "match": "m-0029",
+      "mode_mix": {},
       "peak_vehicles": 19.0,
       "rank": 5,
       "seed": 864970882,
@@ -5584,6 +6307,7 @@
     {
       "field": 7,
       "final_vehicles": 483.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.899,
@@ -5592,6 +6316,7 @@
       "last": false,
       "losses": [],
       "match": "m-0030",
+      "mode_mix": {},
       "peak_vehicles": 483.0,
       "rank": 1,
       "seed": 1201871748,
@@ -5607,6 +6332,7 @@
     {
       "field": 7,
       "final_vehicles": 533.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.634,
@@ -5622,6 +6348,7 @@
         }
       ],
       "match": "m-0030",
+      "mode_mix": {},
       "peak_vehicles": 536.0,
       "rank": 2,
       "seed": 1201871748,
@@ -5637,6 +6364,7 @@
     {
       "field": 7,
       "final_vehicles": 15.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.936,
@@ -5658,6 +6386,7 @@
         }
       ],
       "match": "m-0030",
+      "mode_mix": {},
       "peak_vehicles": 15.0,
       "rank": 6,
       "seed": 1201871748,
@@ -5673,6 +6402,7 @@
     {
       "field": 7,
       "final_vehicles": 170.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.168,
@@ -5688,6 +6418,7 @@
         }
       ],
       "match": "m-0030",
+      "mode_mix": {},
       "peak_vehicles": 175.0,
       "rank": 5,
       "seed": 1201871748,
@@ -5703,6 +6434,7 @@
     {
       "field": 7,
       "final_vehicles": 0.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.0,
@@ -5736,6 +6468,7 @@
         }
       ],
       "match": "m-0030",
+      "mode_mix": {},
       "peak_vehicles": 4.0,
       "rank": 7,
       "seed": 1201871748,
@@ -5751,6 +6484,7 @@
     {
       "field": 7,
       "final_vehicles": 13.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.91,
@@ -5771,6 +6505,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 4.462,
           "threshold": 2.0,
@@ -5778,6 +6518,7 @@
         }
       ],
       "match": "m-0030",
+      "mode_mix": {},
       "peak_vehicles": 25.0,
       "rank": 4,
       "seed": 1201871748,
@@ -5793,6 +6534,7 @@
     {
       "field": 7,
       "final_vehicles": 9.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.975,
@@ -5813,6 +6555,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 5.333,
           "threshold": 2.0,
@@ -5820,6 +6568,7 @@
         }
       ],
       "match": "m-0030",
+      "mode_mix": {},
       "peak_vehicles": 26.0,
       "rank": 3,
       "seed": 1201871748,
@@ -5835,6 +6584,7 @@
     {
       "field": 7,
       "final_vehicles": 364.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.939,
@@ -5843,6 +6593,7 @@
       "last": false,
       "losses": [],
       "match": "m-0031",
+      "mode_mix": {},
       "peak_vehicles": 430.0,
       "rank": 1,
       "seed": 822940995,
@@ -5858,6 +6609,7 @@
     {
       "field": 7,
       "final_vehicles": 361.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.321,
@@ -5873,6 +6625,7 @@
         }
       ],
       "match": "m-0031",
+      "mode_mix": {},
       "peak_vehicles": 379.0,
       "rank": 3,
       "seed": 822940995,
@@ -5888,6 +6641,7 @@
     {
       "field": 7,
       "final_vehicles": 90.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.731,
@@ -5906,9 +6660,16 @@
           "measured": 0.073,
           "threshold": 0.5,
           "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
         }
       ],
       "match": "m-0031",
+      "mode_mix": {},
       "peak_vehicles": 128.0,
       "rank": 4,
       "seed": 822940995,
@@ -5924,6 +6685,7 @@
     {
       "field": 7,
       "final_vehicles": 39.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.074,
@@ -5945,6 +6707,7 @@
         }
       ],
       "match": "m-0031",
+      "mode_mix": {},
       "peak_vehicles": 69.0,
       "rank": 6,
       "seed": 822940995,
@@ -5960,6 +6723,7 @@
     {
       "field": 7,
       "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.968,
@@ -5999,6 +6763,7 @@
         }
       ],
       "match": "m-0031",
+      "mode_mix": {},
       "peak_vehicles": 6.0,
       "rank": 7,
       "seed": 822940995,
@@ -6014,6 +6779,7 @@
     {
       "field": 7,
       "final_vehicles": 14.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.624,
@@ -6041,6 +6807,7 @@
         }
       ],
       "match": "m-0031",
+      "mode_mix": {},
       "peak_vehicles": 22.0,
       "rank": 5,
       "seed": 822940995,
@@ -6056,6 +6823,7 @@
     {
       "field": 7,
       "final_vehicles": 11.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.948,
@@ -6089,6 +6857,7 @@
         }
       ],
       "match": "m-0031",
+      "mode_mix": {},
       "peak_vehicles": 27.0,
       "rank": 2,
       "seed": 822940995,
@@ -6103,7 +6872,285 @@
     },
     {
       "field": 7,
+      "final_vehicles": 404.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": null,
+      "host": "imac",
+      "idle_cash_share": 0.945,
+      "income_per_vehicle": 10253.429,
+      "key": "AAAHogEx",
+      "last": false,
+      "losses": [],
+      "match": "m-0033",
+      "mode_mix": {},
+      "peak_vehicles": 404.0,
+      "rank": 1,
+      "seed": 916840154,
+      "stations": 167.0,
+      "stations_per_vehicle": 0.413,
+      "value": 129138425.0,
+      "value_share_of_winner": 1.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 10253.429,
+      "winner_value": 129138425.0,
+      "winner_vehicles": 396.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 159.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "imac",
+      "idle_cash_share": 0.766,
+      "income_per_vehicle": 1402.785,
+      "key": "AdmiralAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.137,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0033",
+      "mode_mix": {},
+      "peak_vehicles": 159.0,
+      "rank": 3,
+      "seed": 916840154,
+      "stations": 61.0,
+      "stations_per_vehicle": 0.384,
+      "value": 4647042.0,
+      "value_share_of_winner": 0.036,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 10253.429,
+      "winner_value": 129138425.0,
+      "winner_vehicles": 396.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 13.0,
+      "first_vehicle_quarter": 12,
+      "gap_opens": "1960-07",
+      "host": "imac",
+      "idle_cash_share": 1.0,
+      "income_per_vehicle": 1302.365,
+      "key": "CivilAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 1.0,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.127,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 12.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        }
+      ],
+      "match": "m-0033",
+      "mode_mix": {},
+      "peak_vehicles": 14.0,
+      "rank": 6,
+      "seed": 916840154,
+      "stations": 14.0,
+      "stations_per_vehicle": 1.077,
+      "value": 114074.0,
+      "value_share_of_winner": 0.001,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 10253.429,
+      "winner_value": 129138425.0,
+      "winner_vehicles": 396.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 184.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "imac",
+      "idle_cash_share": 0.179,
+      "income_per_vehicle": 1151.035,
+      "key": "LuDiAI AfterFix",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.112,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0033",
+      "mode_mix": {},
+      "peak_vehicles": 184.0,
+      "rank": 5,
+      "seed": 916840154,
+      "stations": 25.0,
+      "stations_per_vehicle": 0.136,
+      "value": 1874056.0,
+      "value_share_of_winner": 0.015,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 10253.429,
+      "winner_value": 129138425.0,
+      "winner_vehicles": 396.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "imac",
+      "idle_cash_share": 0.915,
+      "income_per_vehicle": 493.917,
+      "key": "PrismaticAI",
+      "last": true,
+      "losses": [
+        {
+          "cause": "stalls_small",
+          "measured": 4.0,
+          "threshold": 10.0,
+          "what": "peak fleet below the threshold: it never grew past its first routes"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.915,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.048,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 2.667,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0033",
+      "mode_mix": {},
+      "peak_vehicles": 4.0,
+      "rank": 7,
+      "seed": 916840154,
+      "stations": 8.0,
+      "stations_per_vehicle": 2.667,
+      "value": 52228.0,
+      "value_share_of_winner": 0.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 10253.429,
+      "winner_value": 129138425.0,
+      "winner_vehicles": 396.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 24.0,
+      "first_vehicle_quarter": 2,
+      "gap_opens": "1962-07",
+      "host": "imac",
+      "idle_cash_share": 0.955,
+      "income_per_vehicle": 4253.344,
+      "key": "PrismaticAI self-steward",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.955,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.415,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 3.042,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0033",
+      "mode_mix": {},
+      "peak_vehicles": 27.0,
+      "rank": 2,
+      "seed": 916840154,
+      "stations": 73.0,
+      "stations_per_vehicle": 3.042,
+      "value": 6004279.0,
+      "value_share_of_winner": 0.046,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 10253.429,
+      "winner_value": 129138425.0,
+      "winner_vehicles": 396.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 15.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "imac",
+      "idle_cash_share": 0.946,
+      "income_per_vehicle": 3861.417,
+      "key": "PrismaticAI solo-max",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.946,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.377,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 4.4,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0033",
+      "mode_mix": {},
+      "peak_vehicles": 22.0,
+      "rank": 4,
+      "seed": 916840154,
+      "stations": 66.0,
+      "stations_per_vehicle": 4.4,
+      "value": 3876173.0,
+      "value_share_of_winner": 0.03,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 10253.429,
+      "winner_value": 129138425.0,
+      "winner_vehicles": 396.75
+    },
+    {
+      "field": 7,
       "final_vehicles": 366.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.911,
@@ -6112,6 +7159,7 @@
       "last": false,
       "losses": [],
       "match": "m-0034",
+      "mode_mix": {},
       "peak_vehicles": 366.0,
       "rank": 1,
       "seed": 1503674030,
@@ -6127,6 +7175,7 @@
     {
       "field": 7,
       "final_vehicles": 510.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1964-10",
       "host": "mbp",
       "idle_cash_share": 0.064,
@@ -6142,6 +7191,7 @@
         }
       ],
       "match": "m-0034",
+      "mode_mix": {},
       "peak_vehicles": 512.0,
       "rank": 4,
       "seed": 1503674030,
@@ -6157,6 +7207,7 @@
     {
       "field": 7,
       "final_vehicles": 22.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-04",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -6175,9 +7226,16 @@
           "measured": 0.069,
           "threshold": 0.5,
           "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
         }
       ],
       "match": "m-0034",
+      "mode_mix": {},
       "peak_vehicles": 25.0,
       "rank": 6,
       "seed": 1503674030,
@@ -6193,6 +7251,7 @@
     {
       "field": 7,
       "final_vehicles": 140.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1963-04",
       "host": "mbp",
       "idle_cash_share": 0.505,
@@ -6208,6 +7267,7 @@
         }
       ],
       "match": "m-0034",
+      "mode_mix": {},
       "peak_vehicles": 144.0,
       "rank": 5,
       "seed": 1503674030,
@@ -6223,6 +7283,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -6262,6 +7323,7 @@
         }
       ],
       "match": "m-0034",
+      "mode_mix": {},
       "peak_vehicles": 6.0,
       "rank": 7,
       "seed": 1503674030,
@@ -6277,6 +7339,7 @@
     {
       "field": 7,
       "final_vehicles": 21.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1965-07",
       "host": "mbp",
       "idle_cash_share": 0.944,
@@ -6298,6 +7361,7 @@
         }
       ],
       "match": "m-0034",
+      "mode_mix": {},
       "peak_vehicles": 27.0,
       "rank": 2,
       "seed": 1503674030,
@@ -6313,6 +7377,7 @@
     {
       "field": 7,
       "final_vehicles": 10.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1965-01",
       "host": "mbp",
       "idle_cash_share": 0.958,
@@ -6340,6 +7405,7 @@
         }
       ],
       "match": "m-0034",
+      "mode_mix": {},
       "peak_vehicles": 23.0,
       "rank": 3,
       "seed": 1503674030,
@@ -6355,6 +7421,7 @@
     {
       "field": 7,
       "final_vehicles": 368.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp2",
       "idle_cash_share": 0.922,
@@ -6363,6 +7430,7 @@
       "last": false,
       "losses": [],
       "match": "m-0035",
+      "mode_mix": {},
       "peak_vehicles": 399.0,
       "rank": 1,
       "seed": 1937674649,
@@ -6378,6 +7446,7 @@
     {
       "field": 7,
       "final_vehicles": 124.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1965-01",
       "host": "mbp2",
       "idle_cash_share": 0.87,
@@ -6399,6 +7468,7 @@
         }
       ],
       "match": "m-0035",
+      "mode_mix": {},
       "peak_vehicles": 227.0,
       "rank": 2,
       "seed": 1937674649,
@@ -6414,6 +7484,7 @@
     {
       "field": 7,
       "final_vehicles": 9.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp2",
       "idle_cash_share": 0.926,
@@ -6441,6 +7512,7 @@
         }
       ],
       "match": "m-0035",
+      "mode_mix": {},
       "peak_vehicles": 9.0,
       "rank": 6,
       "seed": 1937674649,
@@ -6456,6 +7528,7 @@
     {
       "field": 7,
       "final_vehicles": 293.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1961-01",
       "host": "mbp2",
       "idle_cash_share": 0.573,
@@ -6471,6 +7544,7 @@
         }
       ],
       "match": "m-0035",
+      "mode_mix": {},
       "peak_vehicles": 336.0,
       "rank": 5,
       "seed": 1937674649,
@@ -6486,6 +7560,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp2",
       "idle_cash_share": 1.0,
@@ -6519,6 +7594,7 @@
         }
       ],
       "match": "m-0035",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 7,
       "seed": 1937674649,
@@ -6534,6 +7610,7 @@
     {
       "field": 7,
       "final_vehicles": 24.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1965-01",
       "host": "mbp2",
       "idle_cash_share": 0.961,
@@ -6555,6 +7632,7 @@
         }
       ],
       "match": "m-0035",
+      "mode_mix": {},
       "peak_vehicles": 34.0,
       "rank": 3,
       "seed": 1937674649,
@@ -6570,6 +7648,7 @@
     {
       "field": 7,
       "final_vehicles": 11.0,
+      "first_vehicle_quarter": 4,
       "gap_opens": "1960-07",
       "host": "mbp2",
       "idle_cash_share": 0.953,
@@ -6590,6 +7669,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 4.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 4.727,
           "threshold": 2.0,
@@ -6597,6 +7682,7 @@
         }
       ],
       "match": "m-0035",
+      "mode_mix": {},
       "peak_vehicles": 24.0,
       "rank": 4,
       "seed": 1937674649,
@@ -6612,6 +7698,7 @@
     {
       "field": 7,
       "final_vehicles": 230.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.894,
@@ -6620,6 +7707,7 @@
       "last": false,
       "losses": [],
       "match": "m-0036",
+      "mode_mix": {},
       "peak_vehicles": 230.0,
       "rank": 1,
       "seed": 1710584728,
@@ -6635,6 +7723,7 @@
     {
       "field": 7,
       "final_vehicles": 359.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1968-04",
       "host": "mbp",
       "idle_cash_share": 0.587,
@@ -6650,6 +7739,7 @@
         }
       ],
       "match": "m-0036",
+      "mode_mix": {},
       "peak_vehicles": 359.0,
       "rank": 2,
       "seed": 1710584728,
@@ -6665,6 +7755,7 @@
     {
       "field": 7,
       "final_vehicles": 22.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp",
       "idle_cash_share": 0.0,
@@ -6680,6 +7771,7 @@
         }
       ],
       "match": "m-0036",
+      "mode_mix": {},
       "peak_vehicles": 23.0,
       "rank": 7,
       "seed": 1710584728,
@@ -6695,6 +7787,7 @@
     {
       "field": 7,
       "final_vehicles": 43.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1961-01",
       "host": "mbp",
       "idle_cash_share": 0.139,
@@ -6710,6 +7803,7 @@
         }
       ],
       "match": "m-0036",
+      "mode_mix": {},
       "peak_vehicles": 56.0,
       "rank": 5,
       "seed": 1710584728,
@@ -6725,6 +7819,7 @@
     {
       "field": 7,
       "final_vehicles": 1.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1961-01",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -6764,6 +7859,7 @@
         }
       ],
       "match": "m-0036",
+      "mode_mix": {},
       "peak_vehicles": 6.0,
       "rank": 6,
       "seed": 1710584728,
@@ -6779,6 +7875,7 @@
     {
       "field": 7,
       "final_vehicles": 25.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1965-01",
       "host": "mbp",
       "idle_cash_share": 0.911,
@@ -6799,6 +7896,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 3.08,
           "threshold": 2.0,
@@ -6806,6 +7909,7 @@
         }
       ],
       "match": "m-0036",
+      "mode_mix": {},
       "peak_vehicles": 29.0,
       "rank": 3,
       "seed": 1710584728,
@@ -6821,6 +7925,7 @@
     {
       "field": 7,
       "final_vehicles": 6.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-10",
       "host": "mbp",
       "idle_cash_share": 0.899,
@@ -6841,6 +7946,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 9.167,
           "threshold": 2.0,
@@ -6848,6 +7959,7 @@
         }
       ],
       "match": "m-0036",
+      "mode_mix": {},
       "peak_vehicles": 20.0,
       "rank": 4,
       "seed": 1710584728,
@@ -6863,6 +7975,7 @@
     {
       "field": 7,
       "final_vehicles": 449.0,
+      "first_vehicle_quarter": 0,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.917,
@@ -6871,6 +7984,7 @@
       "last": false,
       "losses": [],
       "match": "m-0037",
+      "mode_mix": {},
       "peak_vehicles": 495.0,
       "rank": 1,
       "seed": 700804041,
@@ -6886,6 +8000,7 @@
     {
       "field": 7,
       "final_vehicles": 173.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1963-01",
       "host": "mbp",
       "idle_cash_share": 0.869,
@@ -6901,6 +8016,7 @@
         }
       ],
       "match": "m-0037",
+      "mode_mix": {},
       "peak_vehicles": 183.0,
       "rank": 2,
       "seed": 700804041,
@@ -6916,6 +8032,7 @@
     {
       "field": 7,
       "final_vehicles": 103.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.649,
@@ -6937,6 +8054,7 @@
         }
       ],
       "match": "m-0037",
+      "mode_mix": {},
       "peak_vehicles": 108.0,
       "rank": 5,
       "seed": 700804041,
@@ -6952,6 +8070,7 @@
     {
       "field": 7,
       "final_vehicles": 45.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.668,
@@ -6973,6 +8092,7 @@
         }
       ],
       "match": "m-0037",
+      "mode_mix": {},
       "peak_vehicles": 55.0,
       "rank": 6,
       "seed": 700804041,
@@ -6988,6 +8108,7 @@
     {
       "field": 7,
       "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 1.0,
@@ -7015,6 +8136,7 @@
         }
       ],
       "match": "m-0037",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 7,
       "seed": 700804041,
@@ -7030,6 +8152,7 @@
     {
       "field": 7,
       "final_vehicles": 18.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.911,
@@ -7050,6 +8173,12 @@
           "what": "income per vehicle as a share of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 3.667,
           "threshold": 2.0,
@@ -7057,6 +8186,7 @@
         }
       ],
       "match": "m-0037",
+      "mode_mix": {},
       "peak_vehicles": 20.0,
       "rank": 4,
       "seed": 700804041,
@@ -7072,6 +8202,7 @@
     {
       "field": 7,
       "final_vehicles": 15.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.956,
@@ -7092,6 +8223,12 @@
           "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
         },
         {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
           "cause": "idle_stations",
           "measured": 4.133,
           "threshold": 2.0,
@@ -7099,6 +8236,7 @@
         }
       ],
       "match": "m-0037",
+      "mode_mix": {},
       "peak_vehicles": 27.0,
       "rank": 3,
       "seed": 700804041,
@@ -7114,6 +8252,7 @@
     {
       "field": 7,
       "final_vehicles": 323.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": null,
       "host": "mbp",
       "idle_cash_share": 0.919,
@@ -7122,6 +8261,7 @@
       "last": false,
       "losses": [],
       "match": "m-0038",
+      "mode_mix": {},
       "peak_vehicles": 323.0,
       "rank": 1,
       "seed": 2798290,
@@ -7137,6 +8277,7 @@
     {
       "field": 7,
       "final_vehicles": 72.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1962-10",
       "host": "mbp",
       "idle_cash_share": 0.942,
@@ -7158,6 +8299,7 @@
         }
       ],
       "match": "m-0038",
+      "mode_mix": {},
       "peak_vehicles": 82.0,
       "rank": 2,
       "seed": 2798290,
@@ -7173,6 +8315,7 @@
     {
       "field": 7,
       "final_vehicles": 18.0,
+      "first_vehicle_quarter": 2,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.743,
@@ -7191,9 +8334,16 @@
           "measured": 0.204,
           "threshold": 0.5,
           "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
         }
       ],
       "match": "m-0038",
+      "mode_mix": {},
       "peak_vehicles": 20.0,
       "rank": 6,
       "seed": 2798290,
@@ -7209,6 +8359,7 @@
     {
       "field": 7,
       "final_vehicles": 217.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-04",
       "host": "mbp",
       "idle_cash_share": 0.344,
@@ -7224,6 +8375,7 @@
         }
       ],
       "match": "m-0038",
+      "mode_mix": {},
       "peak_vehicles": 217.0,
       "rank": 5,
       "seed": 2798290,
@@ -7239,6 +8391,7 @@
     {
       "field": 7,
       "final_vehicles": 4.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-10",
       "host": "mbp",
       "idle_cash_share": 0.556,
@@ -7266,6 +8419,7 @@
         }
       ],
       "match": "m-0038",
+      "mode_mix": {},
       "peak_vehicles": 5.0,
       "rank": 7,
       "seed": 2798290,
@@ -7281,6 +8435,7 @@
     {
       "field": 7,
       "final_vehicles": 27.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1960-07",
       "host": "mbp",
       "idle_cash_share": 0.924,
@@ -7308,6 +8463,7 @@
         }
       ],
       "match": "m-0038",
+      "mode_mix": {},
       "peak_vehicles": 29.0,
       "rank": 3,
       "seed": 2798290,
@@ -7323,6 +8479,7 @@
     {
       "field": 7,
       "final_vehicles": 12.0,
+      "first_vehicle_quarter": 1,
       "gap_opens": "1965-04",
       "host": "mbp",
       "idle_cash_share": 0.958,
@@ -7350,6 +8507,7 @@
         }
       ],
       "match": "m-0038",
+      "mode_mix": {},
       "peak_vehicles": 27.0,
       "rank": 4,
       "seed": 2798290,
@@ -7361,28 +8519,1666 @@
       "winner_income_per_vehicle": 9398.955,
       "winner_value": 87285164.0,
       "winner_vehicles": 302.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 416.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": null,
+      "host": "mbp2",
+      "idle_cash_share": 0.932,
+      "income_per_vehicle": 8483.169,
+      "key": "AAAHogEx",
+      "last": false,
+      "losses": [],
+      "match": "m-0039",
+      "mode_mix": {},
+      "peak_vehicles": 417.0,
+      "rank": 1,
+      "seed": 557130425,
+      "stations": 158.0,
+      "stations_per_vehicle": 0.38,
+      "value": 119742355.0,
+      "value_share_of_winner": 1.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 8483.169,
+      "winner_value": 119742355.0,
+      "winner_vehicles": 407.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 224.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1961-01",
+      "host": "mbp2",
+      "idle_cash_share": 0.907,
+      "income_per_vehicle": 946.866,
+      "key": "AdmiralAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.112,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0039",
+      "mode_mix": {},
+      "peak_vehicles": 233.0,
+      "rank": 2,
+      "seed": 557130425,
+      "stations": 54.0,
+      "stations_per_vehicle": 0.241,
+      "value": 7487126.0,
+      "value_share_of_winner": 0.063,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 8483.169,
+      "winner_value": 119742355.0,
+      "winner_vehicles": 407.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 22.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.761,
+      "income_per_vehicle": 1211.7,
+      "key": "CivilAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.761,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.143,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0039",
+      "mode_mix": {},
+      "peak_vehicles": 26.0,
+      "rank": 6,
+      "seed": 557130425,
+      "stations": 11.0,
+      "stations_per_vehicle": 0.5,
+      "value": 805311.0,
+      "value_share_of_winner": 0.007,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 8483.169,
+      "winner_value": 119742355.0,
+      "winner_vehicles": 407.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 116.0,
+      "first_vehicle_quarter": 2,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.435,
+      "income_per_vehicle": 1015.983,
+      "key": "LuDiAI AfterFix",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.12,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        }
+      ],
+      "match": "m-0039",
+      "mode_mix": {},
+      "peak_vehicles": 125.0,
+      "rank": 4,
+      "seed": 557130425,
+      "stations": 13.0,
+      "stations_per_vehicle": 0.112,
+      "value": 1845862.0,
+      "value_share_of_winner": 0.015,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 8483.169,
+      "winner_value": 119742355.0,
+      "winner_vehicles": 407.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 4.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.749,
+      "income_per_vehicle": 575.375,
+      "key": "PrismaticAI",
+      "last": true,
+      "losses": [
+        {
+          "cause": "stalls_small",
+          "measured": 6.0,
+          "threshold": 10.0,
+          "what": "peak fleet below the threshold: it never grew past its first routes"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.749,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.068,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0039",
+      "mode_mix": {},
+      "peak_vehicles": 6.0,
+      "rank": 7,
+      "seed": 557130425,
+      "stations": 8.0,
+      "stations_per_vehicle": 2.0,
+      "value": 112510.0,
+      "value_share_of_winner": 0.001,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 8483.169,
+      "winner_value": 119742355.0,
+      "winner_vehicles": 407.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 24.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.966,
+      "income_per_vehicle": 4754.74,
+      "key": "PrismaticAI self-steward",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.966,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 2.333,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0039",
+      "mode_mix": {},
+      "peak_vehicles": 27.0,
+      "rank": 3,
+      "seed": 557130425,
+      "stations": 56.0,
+      "stations_per_vehicle": 2.333,
+      "value": 6382169.0,
+      "value_share_of_winner": 0.053,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 8483.169,
+      "winner_value": 119742355.0,
+      "winner_vehicles": 407.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 8.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.904,
+      "income_per_vehicle": 4099.188,
+      "key": "PrismaticAI solo-max",
+      "last": false,
+      "losses": [
+        {
+          "cause": "fleet_decays",
+          "measured": 0.381,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.904,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.483,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 6.625,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0039",
+      "mode_mix": {},
+      "peak_vehicles": 21.0,
+      "rank": 5,
+      "seed": 557130425,
+      "stations": 53.0,
+      "stations_per_vehicle": 6.625,
+      "value": 1640286.0,
+      "value_share_of_winner": 0.014,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 8483.169,
+      "winner_value": 119742355.0,
+      "winner_vehicles": 407.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 285.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": null,
+      "host": "mbp2",
+      "idle_cash_share": 0.9,
+      "income_per_vehicle": 5900.63,
+      "key": "AAAHogEx",
+      "last": false,
+      "losses": [],
+      "match": "m-0041",
+      "mode_mix": {},
+      "peak_vehicles": 292.0,
+      "rank": 1,
+      "seed": 1131845159,
+      "stations": 126.0,
+      "stations_per_vehicle": 0.442,
+      "value": 53483017.0,
+      "value_share_of_winner": 1.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 5900.63,
+      "winner_value": 53483017.0,
+      "winner_vehicles": 287.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 422.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1964-01",
+      "host": "mbp2",
+      "idle_cash_share": 0.076,
+      "income_per_vehicle": 666.663,
+      "key": "AdmiralAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.113,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0041",
+      "mode_mix": {},
+      "peak_vehicles": 439.0,
+      "rank": 3,
+      "seed": 1131845159,
+      "stations": 103.0,
+      "stations_per_vehicle": 0.244,
+      "value": 3420952.0,
+      "value_share_of_winner": 0.064,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 5900.63,
+      "winner_value": 53483017.0,
+      "winner_vehicles": 287.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 29.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.696,
+      "income_per_vehicle": 1871.692,
+      "key": "CivilAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.696,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.317,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0041",
+      "mode_mix": {},
+      "peak_vehicles": 29.0,
+      "rank": 6,
+      "seed": 1131845159,
+      "stations": 10.0,
+      "stations_per_vehicle": 0.345,
+      "value": 1103543.0,
+      "value_share_of_winner": 0.021,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 5900.63,
+      "winner_value": 53483017.0,
+      "winner_vehicles": 287.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 80.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.219,
+      "income_per_vehicle": 964.133,
+      "key": "LuDiAI AfterFix",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.163,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0041",
+      "mode_mix": {},
+      "peak_vehicles": 99.0,
+      "rank": 5,
+      "seed": 1131845159,
+      "stations": 13.0,
+      "stations_per_vehicle": 0.163,
+      "value": 1134915.0,
+      "value_share_of_winner": 0.021,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 5900.63,
+      "winner_value": 53483017.0,
+      "winner_vehicles": 287.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 1.0,
+      "income_per_vehicle": 480.375,
+      "key": "PrismaticAI",
+      "last": true,
+      "losses": [
+        {
+          "cause": "stalls_small",
+          "measured": 5.0,
+          "threshold": 10.0,
+          "what": "peak fleet below the threshold: it never grew past its first routes"
+        },
+        {
+          "cause": "fleet_decays",
+          "measured": 0.4,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 1.0,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.081,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 3.5,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0041",
+      "mode_mix": {},
+      "peak_vehicles": 5.0,
+      "rank": 7,
+      "seed": 1131845159,
+      "stations": 7.0,
+      "stations_per_vehicle": 3.5,
+      "value": 1.0,
+      "value_share_of_winner": 0.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 5900.63,
+      "winner_value": 53483017.0,
+      "winner_vehicles": 287.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 18.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.946,
+      "income_per_vehicle": 4601.153,
+      "key": "PrismaticAI self-steward",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.946,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 2.778,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0041",
+      "mode_mix": {},
+      "peak_vehicles": 21.0,
+      "rank": 2,
+      "seed": 1131845159,
+      "stations": 50.0,
+      "stations_per_vehicle": 2.778,
+      "value": 4236990.0,
+      "value_share_of_winner": 0.079,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 5900.63,
+      "winner_value": 53483017.0,
+      "winner_vehicles": 287.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 9.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1963-07",
+      "host": "mbp2",
+      "idle_cash_share": 0.918,
+      "income_per_vehicle": 3363.556,
+      "key": "PrismaticAI solo-max",
+      "last": false,
+      "losses": [
+        {
+          "cause": "fleet_decays",
+          "measured": 0.529,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.918,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 6.333,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0041",
+      "mode_mix": {},
+      "peak_vehicles": 17.0,
+      "rank": 4,
+      "seed": 1131845159,
+      "stations": 57.0,
+      "stations_per_vehicle": 6.333,
+      "value": 2047425.0,
+      "value_share_of_winner": 0.038,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 5900.63,
+      "winner_value": 53483017.0,
+      "winner_vehicles": 287.25
+    },
+    {
+      "field": 7,
+      "final_vehicles": 296.0,
+      "first_vehicle_quarter": 0,
+      "gap_opens": null,
+      "host": "mbp",
+      "idle_cash_share": 0.941,
+      "income_per_vehicle": 6926.13,
+      "key": "AAAHogEx",
+      "last": false,
+      "losses": [],
+      "match": "m-0042",
+      "mode_mix": {},
+      "peak_vehicles": 378.0,
+      "rank": 1,
+      "seed": 373397060,
+      "stations": 129.0,
+      "stations_per_vehicle": 0.436,
+      "value": 74183244.0,
+      "value_share_of_winner": 1.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6926.13,
+      "winner_value": 74183244.0,
+      "winner_vehicles": 318.5
+    },
+    {
+      "field": 7,
+      "final_vehicles": 333.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1967-07",
+      "host": "mbp",
+      "idle_cash_share": 0.907,
+      "income_per_vehicle": 1452.741,
+      "key": "AdmiralAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.21,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0042",
+      "mode_mix": {},
+      "peak_vehicles": 334.0,
+      "rank": 2,
+      "seed": 373397060,
+      "stations": 97.0,
+      "stations_per_vehicle": 0.291,
+      "value": 14756204.0,
+      "value_share_of_winner": 0.199,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6926.13,
+      "winner_value": 74183244.0,
+      "winner_vehicles": 318.5
+    },
+    {
+      "field": 7,
+      "final_vehicles": 85.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-10",
+      "host": "mbp",
+      "idle_cash_share": 0.879,
+      "income_per_vehicle": 522.653,
+      "key": "CivilAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.075,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0042",
+      "mode_mix": {},
+      "peak_vehicles": 85.0,
+      "rank": 6,
+      "seed": 373397060,
+      "stations": 16.0,
+      "stations_per_vehicle": 0.188,
+      "value": 694273.0,
+      "value_share_of_winner": 0.009,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6926.13,
+      "winner_value": 74183244.0,
+      "winner_vehicles": 318.5
+    },
+    {
+      "field": 7,
+      "final_vehicles": 78.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.364,
+      "income_per_vehicle": 1346.939,
+      "key": "LuDiAI AfterFix",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.194,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0042",
+      "mode_mix": {},
+      "peak_vehicles": 79.0,
+      "rank": 5,
+      "seed": 373397060,
+      "stations": 10.0,
+      "stations_per_vehicle": 0.128,
+      "value": 1351599.0,
+      "value_share_of_winner": 0.018,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6926.13,
+      "winner_value": 74183244.0,
+      "winner_vehicles": 318.5
+    },
+    {
+      "field": 7,
+      "final_vehicles": 2.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-10",
+      "host": "mbp",
+      "idle_cash_share": 1.0,
+      "income_per_vehicle": 244.0,
+      "key": "PrismaticAI",
+      "last": true,
+      "losses": [
+        {
+          "cause": "stalls_small",
+          "measured": 4.0,
+          "threshold": 10.0,
+          "what": "peak fleet below the threshold: it never grew past its first routes"
+        },
+        {
+          "cause": "fleet_decays",
+          "measured": 0.5,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 1.0,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.035,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 4.0,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0042",
+      "mode_mix": {},
+      "peak_vehicles": 4.0,
+      "rank": 7,
+      "seed": 373397060,
+      "stations": 8.0,
+      "stations_per_vehicle": 4.0,
+      "value": 7938.0,
+      "value_share_of_winner": 0.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6926.13,
+      "winner_value": 74183244.0,
+      "winner_vehicles": 318.5
+    },
+    {
+      "field": 7,
+      "final_vehicles": 20.0,
+      "first_vehicle_quarter": 2,
+      "gap_opens": "1964-10",
+      "host": "mbp",
+      "idle_cash_share": 0.897,
+      "income_per_vehicle": 3669.235,
+      "key": "PrismaticAI self-steward",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.897,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 3.0,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0042",
+      "mode_mix": {},
+      "peak_vehicles": 27.0,
+      "rank": 3,
+      "seed": 373397060,
+      "stations": 60.0,
+      "stations_per_vehicle": 3.0,
+      "value": 3690169.0,
+      "value_share_of_winner": 0.05,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6926.13,
+      "winner_value": 74183244.0,
+      "winner_vehicles": 318.5
+    },
+    {
+      "field": 7,
+      "final_vehicles": 10.0,
+      "first_vehicle_quarter": 2,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.873,
+      "income_per_vehicle": 2966.425,
+      "key": "PrismaticAI solo-max",
+      "last": false,
+      "losses": [
+        {
+          "cause": "fleet_decays",
+          "measured": 0.435,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.873,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.428,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 5.2,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0042",
+      "mode_mix": {},
+      "peak_vehicles": 23.0,
+      "rank": 4,
+      "seed": 373397060,
+      "stations": 52.0,
+      "stations_per_vehicle": 5.2,
+      "value": 1500129.0,
+      "value_share_of_winner": 0.02,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6926.13,
+      "winner_value": 74183244.0,
+      "winner_vehicles": 318.5
+    },
+    {
+      "field": 7,
+      "final_vehicles": 388.0,
+      "first_vehicle_quarter": 0,
+      "gap_opens": null,
+      "host": "mbp",
+      "idle_cash_share": 0.928,
+      "income_per_vehicle": 9797.896,
+      "key": "AAAHogEx",
+      "last": false,
+      "losses": [],
+      "match": "m-0044",
+      "mode_mix": {},
+      "peak_vehicles": 402.0,
+      "rank": 1,
+      "seed": 1419691949,
+      "stations": 169.0,
+      "stations_per_vehicle": 0.436,
+      "value": 115247827.0,
+      "value_share_of_winner": 1.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9797.896,
+      "winner_value": 115247827.0,
+      "winner_vehicles": 378.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 75.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.921,
+      "income_per_vehicle": 2456.56,
+      "key": "AdmiralAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.921,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.251,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0044",
+      "mode_mix": {},
+      "peak_vehicles": 111.0,
+      "rank": 3,
+      "seed": 1419691949,
+      "stations": 56.0,
+      "stations_per_vehicle": 0.747,
+      "value": 5622550.0,
+      "value_share_of_winner": 0.049,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9797.896,
+      "winner_value": 115247827.0,
+      "winner_vehicles": 378.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 12.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.895,
+      "income_per_vehicle": 2468.432,
+      "key": "CivilAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.895,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.252,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0044",
+      "mode_mix": {},
+      "peak_vehicles": 14.0,
+      "rank": 6,
+      "seed": 1419691949,
+      "stations": 8.0,
+      "stations_per_vehicle": 0.667,
+      "value": 917910.0,
+      "value_share_of_winner": 0.008,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9797.896,
+      "winner_value": 115247827.0,
+      "winner_vehicles": 378.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 204.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.65,
+      "income_per_vehicle": 1014.787,
+      "key": "LuDiAI AfterFix",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.104,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0044",
+      "mode_mix": {},
+      "peak_vehicles": 204.0,
+      "rank": 5,
+      "seed": 1419691949,
+      "stations": 19.0,
+      "stations_per_vehicle": 0.093,
+      "value": 2359653.0,
+      "value_share_of_winner": 0.02,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9797.896,
+      "winner_value": 115247827.0,
+      "winner_vehicles": 378.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.976,
+      "income_per_vehicle": 474.25,
+      "key": "PrismaticAI",
+      "last": true,
+      "losses": [
+        {
+          "cause": "stalls_small",
+          "measured": 5.0,
+          "threshold": 10.0,
+          "what": "peak fleet below the threshold: it never grew past its first routes"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.976,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.048,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 2.667,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0044",
+      "mode_mix": {},
+      "peak_vehicles": 5.0,
+      "rank": 7,
+      "seed": 1419691949,
+      "stations": 8.0,
+      "stations_per_vehicle": 2.667,
+      "value": 44296.0,
+      "value_share_of_winner": 0.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9797.896,
+      "winner_value": 115247827.0,
+      "winner_vehicles": 378.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 28.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.963,
+      "income_per_vehicle": 4786.714,
+      "key": "PrismaticAI self-steward",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.963,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.489,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 2.214,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0044",
+      "mode_mix": {},
+      "peak_vehicles": 34.0,
+      "rank": 2,
+      "seed": 1419691949,
+      "stations": 62.0,
+      "stations_per_vehicle": 2.214,
+      "value": 6695913.0,
+      "value_share_of_winner": 0.058,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9797.896,
+      "winner_value": 115247827.0,
+      "winner_vehicles": 378.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 13.0,
+      "first_vehicle_quarter": 3,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.941,
+      "income_per_vehicle": 5033.769,
+      "key": "PrismaticAI solo-max",
+      "last": false,
+      "losses": [
+        {
+          "cause": "fleet_decays",
+          "measured": 0.419,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.941,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 3.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 4.923,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0044",
+      "mode_mix": {},
+      "peak_vehicles": 31.0,
+      "rank": 4,
+      "seed": 1419691949,
+      "stations": 64.0,
+      "stations_per_vehicle": 4.923,
+      "value": 4587614.0,
+      "value_share_of_winner": 0.04,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 9797.896,
+      "winner_value": 115247827.0,
+      "winner_vehicles": 378.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 415.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": null,
+      "host": "mbp",
+      "idle_cash_share": 0.923,
+      "income_per_vehicle": 6179.506,
+      "key": "AAAHogEx",
+      "last": false,
+      "losses": [],
+      "match": "m-0045",
+      "mode_mix": {},
+      "peak_vehicles": 429.0,
+      "rank": 1,
+      "seed": 1232613255,
+      "stations": 144.0,
+      "stations_per_vehicle": 0.347,
+      "value": 80062824.0,
+      "value_share_of_winner": 1.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6179.506,
+      "winner_value": 80062824.0,
+      "winner_vehicles": 412.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 243.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1963-01",
+      "host": "mbp",
+      "idle_cash_share": 0.726,
+      "income_per_vehicle": 1628.966,
+      "key": "AdmiralAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.264,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0045",
+      "mode_mix": {},
+      "peak_vehicles": 275.0,
+      "rank": 2,
+      "seed": 1232613255,
+      "stations": 79.0,
+      "stations_per_vehicle": 0.325,
+      "value": 8119718.0,
+      "value_share_of_winner": 0.101,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6179.506,
+      "winner_value": 80062824.0,
+      "winner_vehicles": 412.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 46.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-10",
+      "host": "mbp",
+      "idle_cash_share": 1.0,
+      "income_per_vehicle": 341.528,
+      "key": "CivilAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 1.0,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.055,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0045",
+      "mode_mix": {},
+      "peak_vehicles": 46.0,
+      "rank": 6,
+      "seed": 1232613255,
+      "stations": 21.0,
+      "stations_per_vehicle": 0.457,
+      "value": 282080.0,
+      "value_share_of_winner": 0.004,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6179.506,
+      "winner_value": 80062824.0,
+      "winner_vehicles": 412.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 101.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.368,
+      "income_per_vehicle": 2245.012,
+      "key": "LuDiAI AfterFix",
+      "last": false,
+      "losses": [
+        {
+          "cause": "low_yield",
+          "measured": 0.363,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0045",
+      "mode_mix": {},
+      "peak_vehicles": 113.0,
+      "rank": 5,
+      "seed": 1232613255,
+      "stations": 15.0,
+      "stations_per_vehicle": 0.149,
+      "value": 2011514.0,
+      "value_share_of_winner": 0.025,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6179.506,
+      "winner_value": 80062824.0,
+      "winner_vehicles": 412.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 1.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 1.0,
+      "income_per_vehicle": 565.5,
+      "key": "PrismaticAI",
+      "last": true,
+      "losses": [
+        {
+          "cause": "stalls_small",
+          "measured": 6.0,
+          "threshold": 10.0,
+          "what": "peak fleet below the threshold: it never grew past its first routes"
+        },
+        {
+          "cause": "fleet_decays",
+          "measured": 0.167,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 1.0,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.092,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 8.0,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0045",
+      "mode_mix": {},
+      "peak_vehicles": 6.0,
+      "rank": 7,
+      "seed": 1232613255,
+      "stations": 8.0,
+      "stations_per_vehicle": 8.0,
+      "value": 1.0,
+      "value_share_of_winner": 0.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6179.506,
+      "winner_value": 80062824.0,
+      "winner_vehicles": 412.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 18.0,
+      "first_vehicle_quarter": 5,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.95,
+      "income_per_vehicle": 3483.521,
+      "key": "PrismaticAI self-steward",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.95,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 5.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 3.0,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0045",
+      "mode_mix": {},
+      "peak_vehicles": 26.0,
+      "rank": 4,
+      "seed": 1232613255,
+      "stations": 54.0,
+      "stations_per_vehicle": 3.0,
+      "value": 4181564.0,
+      "value_share_of_winner": 0.052,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6179.506,
+      "winner_value": 80062824.0,
+      "winner_vehicles": 412.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 14.0,
+      "first_vehicle_quarter": 2,
+      "gap_opens": "1963-10",
+      "host": "mbp",
+      "idle_cash_share": 0.968,
+      "income_per_vehicle": 5281.821,
+      "key": "PrismaticAI solo-max",
+      "last": false,
+      "losses": [
+        {
+          "cause": "fleet_decays",
+          "measured": 0.424,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.968,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "slow_start",
+          "measured": 2.0,
+          "threshold": 1.0,
+          "what": "quarters before its first vehicle"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 3.643,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0045",
+      "mode_mix": {},
+      "peak_vehicles": 33.0,
+      "rank": 3,
+      "seed": 1232613255,
+      "stations": 51.0,
+      "stations_per_vehicle": 3.643,
+      "value": 5494590.0,
+      "value_share_of_winner": 0.069,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 6179.506,
+      "winner_value": 80062824.0,
+      "winner_vehicles": 412.75
+    },
+    {
+      "field": 7,
+      "final_vehicles": 423.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": null,
+      "host": "mbp",
+      "idle_cash_share": 0.927,
+      "income_per_vehicle": 7628.351,
+      "key": "AAAHogEx",
+      "last": false,
+      "losses": [],
+      "match": "m-0047",
+      "mode_mix": {},
+      "peak_vehicles": 456.0,
+      "rank": 1,
+      "seed": 183461550,
+      "stations": 172.0,
+      "stations_per_vehicle": 0.407,
+      "value": 106497871.0,
+      "value_share_of_winner": 1.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 7628.351,
+      "winner_value": 106497871.0,
+      "winner_vehicles": 415.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 75.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-10",
+      "host": "mbp",
+      "idle_cash_share": 0.958,
+      "income_per_vehicle": 3821.623,
+      "key": "AdmiralAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.958,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        }
+      ],
+      "match": "m-0047",
+      "mode_mix": {},
+      "peak_vehicles": 80.0,
+      "rank": 2,
+      "seed": 183461550,
+      "stations": 33.0,
+      "stations_per_vehicle": 0.44,
+      "value": 9979448.0,
+      "value_share_of_winner": 0.094,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 7628.351,
+      "winner_value": 106497871.0,
+      "winner_vehicles": 415.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 15.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 1.0,
+      "income_per_vehicle": 376.396,
+      "key": "CivilAI",
+      "last": true,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 1.0,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.049,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0047",
+      "mode_mix": {},
+      "peak_vehicles": 15.0,
+      "rank": 7,
+      "seed": 183461550,
+      "stations": 8.0,
+      "stations_per_vehicle": 0.533,
+      "value": 1.0,
+      "value_share_of_winner": 0.0,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 7628.351,
+      "winner_value": 106497871.0,
+      "winner_vehicles": 415.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 68.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.602,
+      "income_per_vehicle": 1110.554,
+      "key": "LuDiAI AfterFix",
+      "last": false,
+      "losses": [
+        {
+          "cause": "fleet_decays",
+          "measured": 0.511,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.602,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.146,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        }
+      ],
+      "match": "m-0047",
+      "mode_mix": {},
+      "peak_vehicles": 133.0,
+      "rank": 5,
+      "seed": 183461550,
+      "stations": 16.0,
+      "stations_per_vehicle": 0.235,
+      "value": 1426189.0,
+      "value_share_of_winner": 0.013,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 7628.351,
+      "winner_value": 106497871.0,
+      "winner_vehicles": 415.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 3.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.704,
+      "income_per_vehicle": 614.917,
+      "key": "PrismaticAI",
+      "last": false,
+      "losses": [
+        {
+          "cause": "stalls_small",
+          "measured": 4.0,
+          "threshold": 10.0,
+          "what": "peak fleet below the threshold: it never grew past its first routes"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.704,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.081,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 2.667,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0047",
+      "mode_mix": {},
+      "peak_vehicles": 4.0,
+      "rank": 6,
+      "seed": 183461550,
+      "stations": 8.0,
+      "stations_per_vehicle": 2.667,
+      "value": 89729.0,
+      "value_share_of_winner": 0.001,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 7628.351,
+      "winner_value": 106497871.0,
+      "winner_vehicles": 415.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 28.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.957,
+      "income_per_vehicle": 4122.777,
+      "key": "PrismaticAI self-steward",
+      "last": false,
+      "losses": [
+        {
+          "cause": "hoards_cash",
+          "measured": 0.957,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 2.571,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0047",
+      "mode_mix": {},
+      "peak_vehicles": 35.0,
+      "rank": 3,
+      "seed": 183461550,
+      "stations": 72.0,
+      "stations_per_vehicle": 2.571,
+      "value": 6954851.0,
+      "value_share_of_winner": 0.065,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 7628.351,
+      "winner_value": 106497871.0,
+      "winner_vehicles": 415.0
+    },
+    {
+      "field": 7,
+      "final_vehicles": 11.0,
+      "first_vehicle_quarter": 1,
+      "gap_opens": "1960-07",
+      "host": "mbp",
+      "idle_cash_share": 0.924,
+      "income_per_vehicle": 3242.614,
+      "key": "PrismaticAI solo-max",
+      "last": false,
+      "losses": [
+        {
+          "cause": "fleet_decays",
+          "measured": 0.458,
+          "threshold": 0.6,
+          "what": "final fleet as a share of its peak: vehicles sold, not replaced"
+        },
+        {
+          "cause": "hoards_cash",
+          "measured": 0.924,
+          "threshold": 0.6,
+          "what": "share of company value held as cash over the last year, with a fleet below a quarter of the winner's"
+        },
+        {
+          "cause": "low_yield",
+          "measured": 0.425,
+          "threshold": 0.5,
+          "what": "income per vehicle as a share of the winner's"
+        },
+        {
+          "cause": "idle_stations",
+          "measured": 5.182,
+          "threshold": 2.0,
+          "what": "stations per vehicle at the end: stations left unserved"
+        }
+      ],
+      "match": "m-0047",
+      "mode_mix": {},
+      "peak_vehicles": 24.0,
+      "rank": 4,
+      "seed": 183461550,
+      "stations": 57.0,
+      "stations_per_vehicle": 5.182,
+      "value": 2268163.0,
+      "value_share_of_winner": 0.021,
+      "winner": "AAAHogEx",
+      "winner_income_per_vehicle": 7628.351,
+      "winner_value": 106497871.0,
+      "winner_vehicles": 415.0
     }
   ],
   "contestants": [
     {
-      "avg_final_vehicles": 398.655,
-      "avg_idle_cash_share": 0.92,
-      "avg_peak_vehicles": 407.483,
+      "avg_final_vehicles": 395.703,
+      "avg_idle_cash_share": 0.922,
+      "avg_peak_vehicles": 406.703,
       "avg_rank": 1.0,
       "avg_value_share_of_winner": 1.0,
       "causes": [],
       "key": "AAAHogEx",
       "last_place": 0,
-      "matches": 29,
+      "matches": 37,
       "median_gap_opens": null,
       "prismatic": false,
       "settings": ""
     },
     {
-      "avg_final_vehicles": 22.414,
-      "avg_idle_cash_share": 0.932,
-      "avg_peak_vehicles": 29.069,
-      "avg_rank": 2.621,
+      "avg_final_vehicles": 22.784,
+      "avg_idle_cash_share": 0.935,
+      "avg_peak_vehicles": 29.216,
+      "avg_rank": 2.622,
       "avg_value_share_of_winner": 0.056,
       "causes": [
         {
@@ -7391,34 +10187,100 @@
         },
         {
           "cause": "hoards_cash",
-          "matches": 29
+          "matches": 37
         },
         {
           "cause": "idle_stations",
-          "matches": 29
+          "matches": 36
         },
         {
           "cause": "low_yield",
-          "matches": 13
+          "matches": 16
+        },
+        {
+          "cause": "slow_start",
+          "matches": 16
         }
       ],
       "key": "PrismaticAI self-steward",
       "last_place": 0,
-      "matches": 29,
+      "matches": 37,
       "median_gap_opens": "1960-07",
       "prismatic": true,
       "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,self_steward=1"
     },
     {
-      "avg_final_vehicles": 222.138,
-      "avg_idle_cash_share": 0.648,
-      "avg_peak_vehicles": 244.586,
-      "avg_rank": 3.0,
-      "avg_value_share_of_winner": 0.054,
+      "avg_final_vehicles": 216.243,
+      "avg_idle_cash_share": 0.664,
+      "avg_peak_vehicles": 236.541,
+      "avg_rank": 2.946,
+      "avg_value_share_of_winner": 0.059,
       "causes": [
         {
           "cause": "fleet_decays",
           "matches": 2
+        },
+        {
+          "cause": "hoards_cash",
+          "matches": 6
+        },
+        {
+          "cause": "low_yield",
+          "matches": 36
+        }
+      ],
+      "key": "AdmiralAI",
+      "last_place": 0,
+      "matches": 37,
+      "median_gap_opens": "1962-01",
+      "prismatic": false,
+      "settings": ""
+    },
+    {
+      "avg_final_vehicles": 11.27,
+      "avg_idle_cash_share": 0.935,
+      "avg_peak_vehicles": 24.432,
+      "avg_rank": 3.649,
+      "avg_value_share_of_winner": 0.036,
+      "causes": [
+        {
+          "cause": "fleet_decays",
+          "matches": 34
+        },
+        {
+          "cause": "hoards_cash",
+          "matches": 37
+        },
+        {
+          "cause": "idle_stations",
+          "matches": 37
+        },
+        {
+          "cause": "low_yield",
+          "matches": 14
+        },
+        {
+          "cause": "slow_start",
+          "matches": 16
+        }
+      ],
+      "key": "PrismaticAI solo-max",
+      "last_place": 0,
+      "matches": 37,
+      "median_gap_opens": "1960-07",
+      "prismatic": true,
+      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000"
+    },
+    {
+      "avg_final_vehicles": 115.676,
+      "avg_idle_cash_share": 0.348,
+      "avg_peak_vehicles": 125.162,
+      "avg_rank": 4.973,
+      "avg_value_share_of_winner": 0.016,
+      "causes": [
+        {
+          "cause": "fleet_decays",
+          "matches": 3
         },
         {
           "cause": "hoards_cash",
@@ -7426,79 +10288,25 @@
         },
         {
           "cause": "low_yield",
-          "matches": 29
-        }
-      ],
-      "key": "AdmiralAI",
-      "last_place": 0,
-      "matches": 29,
-      "median_gap_opens": "1962-04",
-      "prismatic": false,
-      "settings": ""
-    },
-    {
-      "avg_final_vehicles": 11.034,
-      "avg_idle_cash_share": 0.938,
-      "avg_peak_vehicles": 24.276,
-      "avg_rank": 3.586,
-      "avg_value_share_of_winner": 0.037,
-      "causes": [
-        {
-          "cause": "fleet_decays",
-          "matches": 27
+          "matches": 36
         },
         {
-          "cause": "hoards_cash",
-          "matches": 29
-        },
-        {
-          "cause": "idle_stations",
-          "matches": 29
-        },
-        {
-          "cause": "low_yield",
-          "matches": 9
-        }
-      ],
-      "key": "PrismaticAI solo-max",
-      "last_place": 0,
-      "matches": 29,
-      "median_gap_opens": "1960-07",
-      "prismatic": true,
-      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000"
-    },
-    {
-      "avg_final_vehicles": 118.379,
-      "avg_idle_cash_share": 0.341,
-      "avg_peak_vehicles": 126.828,
-      "avg_rank": 4.966,
-      "avg_value_share_of_winner": 0.017,
-      "causes": [
-        {
-          "cause": "fleet_decays",
+          "cause": "slow_start",
           "matches": 2
-        },
-        {
-          "cause": "hoards_cash",
-          "matches": 3
-        },
-        {
-          "cause": "low_yield",
-          "matches": 28
         }
       ],
       "key": "LuDiAI AfterFix",
       "last_place": 0,
-      "matches": 29,
+      "matches": 37,
       "median_gap_opens": "1960-07",
       "prismatic": false,
       "settings": ""
     },
     {
-      "avg_final_vehicles": 39.586,
-      "avg_idle_cash_share": 0.829,
-      "avg_peak_vehicles": 43.897,
-      "avg_rank": 6.069,
+      "avg_final_vehicles": 37.919,
+      "avg_idle_cash_share": 0.84,
+      "avg_peak_vehicles": 41.514,
+      "avg_rank": 6.027,
       "avg_value_share_of_winner": 0.006,
       "causes": [
         {
@@ -7507,11 +10315,15 @@
         },
         {
           "cause": "hoards_cash",
-          "matches": 25
+          "matches": 32
         },
         {
           "cause": "low_yield",
-          "matches": 28
+          "matches": 36
+        },
+        {
+          "cause": "slow_start",
+          "matches": 8
         },
         {
           "cause": "stalls_small",
@@ -7519,43 +10331,43 @@
         }
       ],
       "key": "CivilAI",
-      "last_place": 7,
-      "matches": 29,
+      "last_place": 8,
+      "matches": 37,
       "median_gap_opens": "1960-07",
       "prismatic": false,
       "settings": ""
     },
     {
-      "avg_final_vehicles": 2.517,
-      "avg_idle_cash_share": 0.856,
-      "avg_peak_vehicles": 5.069,
-      "avg_rank": 6.759,
+      "avg_final_vehicles": 2.486,
+      "avg_idle_cash_share": 0.864,
+      "avg_peak_vehicles": 5.027,
+      "avg_rank": 6.784,
       "avg_value_share_of_winner": 0.0,
       "causes": [
         {
           "cause": "fleet_decays",
-          "matches": 17
+          "matches": 21
         },
         {
           "cause": "hoards_cash",
-          "matches": 27
+          "matches": 35
         },
         {
           "cause": "idle_stations",
-          "matches": 26
+          "matches": 33
         },
         {
           "cause": "low_yield",
-          "matches": 29
+          "matches": 37
         },
         {
           "cause": "stalls_small",
-          "matches": 29
+          "matches": 37
         }
       ],
       "key": "PrismaticAI",
-      "last_place": 22,
-      "matches": 29,
+      "last_place": 29,
+      "matches": 37,
       "median_gap_opens": "1960-07",
       "prismatic": true,
       "settings": ""
@@ -7563,12 +10375,12 @@
   ],
   "edition": "155d18ea50071e72",
   "field": 7,
-  "matches": 29,
+  "matches": 37,
   "prismatic_last": [
     {
       "key": "PrismaticAI",
-      "last_place": 22,
-      "matches": 29
+      "last_place": 29,
+      "matches": 37
     }
   ],
   "proposals": [
@@ -7576,23 +10388,23 @@
       "because": [
         {
           "cause": "fleet_decays",
-          "matches": 17
+          "matches": 21
         },
         {
           "cause": "hoards_cash",
-          "matches": 27
+          "matches": 35
         },
         {
           "cause": "idle_stations",
-          "matches": 26
+          "matches": 33
         },
         {
           "cause": "low_yield",
-          "matches": 29
+          "matches": 37
         },
         {
           "cause": "stalls_small",
-          "matches": 29
+          "matches": 37
         }
       ],
       "for": "PrismaticAI",
@@ -7602,15 +10414,15 @@
       "because": [
         {
           "cause": "fleet_decays",
-          "matches": 27
+          "matches": 34
         },
         {
           "cause": "hoards_cash",
-          "matches": 29
+          "matches": 37
         },
         {
           "cause": "idle_stations",
-          "matches": 29
+          "matches": 37
         }
       ],
       "for": "PrismaticAI solo-max",
@@ -7626,6 +10438,612 @@
     "idle_stations_per_vehicle": 2.0,
     "last_quarters": 4,
     "low_yield_share": 0.5,
+    "mode_gap_share": 0.3,
+    "slow_start_quarters": 1,
     "stall_peak_vehicles": 10.0
+  },
+  "trajectories": {
+    "AAAHogEx": {
+      "1960": {
+        "value": 0.0,
+        "vehicles": 0.0
+      },
+      "1961": {
+        "value": 229184.0,
+        "vehicles": 9.0
+      },
+      "1962": {
+        "value": 692426.0,
+        "vehicles": 21.0
+      },
+      "1963": {
+        "value": 1235566.0,
+        "vehicles": 39.0
+      },
+      "1964": {
+        "value": 2059811.0,
+        "vehicles": 86.0
+      },
+      "1965": {
+        "value": 2889303.0,
+        "vehicles": 122.0
+      },
+      "1966": {
+        "value": 4001210.0,
+        "vehicles": 153.0
+      },
+      "1967": {
+        "value": 6348365.0,
+        "vehicles": 168.0
+      },
+      "1968": {
+        "value": 9731181.0,
+        "vehicles": 191.0
+      },
+      "1969": {
+        "value": 14215521.0,
+        "vehicles": 209.0
+      },
+      "1970": {
+        "value": 18935851.0,
+        "vehicles": 213.0
+      },
+      "1971": {
+        "value": 24302747.0,
+        "vehicles": 230.0
+      },
+      "1972": {
+        "value": 30437706.0,
+        "vehicles": 233.0
+      },
+      "1973": {
+        "value": 36487517.0,
+        "vehicles": 249.0
+      },
+      "1974": {
+        "value": 42599298.0,
+        "vehicles": 277.0
+      },
+      "1975": {
+        "value": 49345723.0,
+        "vehicles": 277.0
+      },
+      "1976": {
+        "value": 57109250.0,
+        "vehicles": 300.0
+      },
+      "1977": {
+        "value": 64674394.0,
+        "vehicles": 329.0
+      },
+      "1978": {
+        "value": 73236010.0,
+        "vehicles": 347.0
+      },
+      "1979": {
+        "value": 82779331.0,
+        "vehicles": 370.0
+      },
+      "1980": {
+        "value": 94415475.0,
+        "vehicles": 388.0
+      }
+    },
+    "AdmiralAI": {
+      "1960": {
+        "value": 0.0,
+        "vehicles": 0.0
+      },
+      "1961": {
+        "value": 102721.0,
+        "vehicles": 21.0
+      },
+      "1962": {
+        "value": 293107.0,
+        "vehicles": 46.0
+      },
+      "1963": {
+        "value": 444609.0,
+        "vehicles": 68.0
+      },
+      "1964": {
+        "value": 550803.0,
+        "vehicles": 92.0
+      },
+      "1965": {
+        "value": 708021.0,
+        "vehicles": 105.0
+      },
+      "1966": {
+        "value": 905564.0,
+        "vehicles": 121.0
+      },
+      "1967": {
+        "value": 1150226.0,
+        "vehicles": 124.0
+      },
+      "1968": {
+        "value": 1333171.0,
+        "vehicles": 137.0
+      },
+      "1969": {
+        "value": 1479578.0,
+        "vehicles": 155.0
+      },
+      "1970": {
+        "value": 1555653.0,
+        "vehicles": 161.0
+      },
+      "1971": {
+        "value": 1715194.0,
+        "vehicles": 162.0
+      },
+      "1972": {
+        "value": 2010014.0,
+        "vehicles": 160.0
+      },
+      "1973": {
+        "value": 2213737.0,
+        "vehicles": 168.0
+      },
+      "1974": {
+        "value": 2454997.0,
+        "vehicles": 170.0
+      },
+      "1975": {
+        "value": 2662800.0,
+        "vehicles": 179.0
+      },
+      "1976": {
+        "value": 2959583.0,
+        "vehicles": 180.0
+      },
+      "1977": {
+        "value": 3302219.0,
+        "vehicles": 179.0
+      },
+      "1978": {
+        "value": 3565877.0,
+        "vehicles": 174.0
+      },
+      "1979": {
+        "value": 4004962.0,
+        "vehicles": 173.0
+      },
+      "1980": {
+        "value": 4443699.0,
+        "vehicles": 173.0
+      }
+    },
+    "CivilAI": {
+      "1960": {
+        "value": 0.0,
+        "vehicles": 0.0
+      },
+      "1961": {
+        "value": 1.0,
+        "vehicles": 3.0
+      },
+      "1962": {
+        "value": 1.0,
+        "vehicles": 4.0
+      },
+      "1963": {
+        "value": 1.0,
+        "vehicles": 6.0
+      },
+      "1964": {
+        "value": 1.0,
+        "vehicles": 8.0
+      },
+      "1965": {
+        "value": 1.0,
+        "vehicles": 9.0
+      },
+      "1966": {
+        "value": 1.0,
+        "vehicles": 9.0
+      },
+      "1967": {
+        "value": 1352.0,
+        "vehicles": 10.0
+      },
+      "1968": {
+        "value": 13130.0,
+        "vehicles": 12.0
+      },
+      "1969": {
+        "value": 30780.0,
+        "vehicles": 12.0
+      },
+      "1970": {
+        "value": 45479.0,
+        "vehicles": 12.0
+      },
+      "1971": {
+        "value": 73169.0,
+        "vehicles": 13.0
+      },
+      "1972": {
+        "value": 114376.0,
+        "vehicles": 13.0
+      },
+      "1973": {
+        "value": 157168.0,
+        "vehicles": 15.0
+      },
+      "1974": {
+        "value": 191411.0,
+        "vehicles": 17.0
+      },
+      "1975": {
+        "value": 223472.0,
+        "vehicles": 16.0
+      },
+      "1976": {
+        "value": 274596.0,
+        "vehicles": 17.0
+      },
+      "1977": {
+        "value": 310404.0,
+        "vehicles": 17.0
+      },
+      "1978": {
+        "value": 436082.0,
+        "vehicles": 20.5
+      },
+      "1979": {
+        "value": 512776.5,
+        "vehicles": 23.5
+      },
+      "1980": {
+        "value": 598309.5,
+        "vehicles": 23.0
+      }
+    },
+    "LuDiAI AfterFix": {
+      "1960": {
+        "value": 0.0,
+        "vehicles": 0.0
+      },
+      "1961": {
+        "value": 13843.0,
+        "vehicles": 5.0
+      },
+      "1962": {
+        "value": 30975.0,
+        "vehicles": 15.0
+      },
+      "1963": {
+        "value": 52619.0,
+        "vehicles": 21.0
+      },
+      "1964": {
+        "value": 91377.0,
+        "vehicles": 29.0
+      },
+      "1965": {
+        "value": 120463.0,
+        "vehicles": 40.0
+      },
+      "1966": {
+        "value": 164863.0,
+        "vehicles": 47.0
+      },
+      "1967": {
+        "value": 210985.0,
+        "vehicles": 49.0
+      },
+      "1968": {
+        "value": 255269.0,
+        "vehicles": 52.0
+      },
+      "1969": {
+        "value": 332801.0,
+        "vehicles": 62.0
+      },
+      "1970": {
+        "value": 447623.0,
+        "vehicles": 71.0
+      },
+      "1971": {
+        "value": 537172.0,
+        "vehicles": 78.0
+      },
+      "1972": {
+        "value": 607806.0,
+        "vehicles": 76.0
+      },
+      "1973": {
+        "value": 702171.0,
+        "vehicles": 91.0
+      },
+      "1974": {
+        "value": 725817.0,
+        "vehicles": 96.0
+      },
+      "1975": {
+        "value": 850906.0,
+        "vehicles": 86.0
+      },
+      "1976": {
+        "value": 1023375.0,
+        "vehicles": 93.0
+      },
+      "1977": {
+        "value": 1205448.0,
+        "vehicles": 92.0
+      },
+      "1978": {
+        "value": 1312489.0,
+        "vehicles": 91.0
+      },
+      "1979": {
+        "value": 1445054.0,
+        "vehicles": 98.0
+      },
+      "1980": {
+        "value": 1546305.0,
+        "vehicles": 102.0
+      }
+    },
+    "PrismaticAI": {
+      "1960": {
+        "value": 0.0,
+        "vehicles": 0.0
+      },
+      "1961": {
+        "value": 21690.0,
+        "vehicles": 4.0
+      },
+      "1962": {
+        "value": 25017.0,
+        "vehicles": 4.0
+      },
+      "1963": {
+        "value": 23843.0,
+        "vehicles": 4.0
+      },
+      "1964": {
+        "value": 22854.0,
+        "vehicles": 4.0
+      },
+      "1965": {
+        "value": 22133.0,
+        "vehicles": 3.0
+      },
+      "1966": {
+        "value": 20802.0,
+        "vehicles": 3.0
+      },
+      "1967": {
+        "value": 19240.0,
+        "vehicles": 3.0
+      },
+      "1968": {
+        "value": 17778.0,
+        "vehicles": 3.0
+      },
+      "1969": {
+        "value": 18858.0,
+        "vehicles": 3.0
+      },
+      "1970": {
+        "value": 20310.0,
+        "vehicles": 3.0
+      },
+      "1971": {
+        "value": 21943.0,
+        "vehicles": 3.0
+      },
+      "1972": {
+        "value": 26820.0,
+        "vehicles": 3.0
+      },
+      "1973": {
+        "value": 28596.0,
+        "vehicles": 3.0
+      },
+      "1974": {
+        "value": 29743.0,
+        "vehicles": 3.0
+      },
+      "1975": {
+        "value": 30284.0,
+        "vehicles": 3.0
+      },
+      "1976": {
+        "value": 31751.0,
+        "vehicles": 3.0
+      },
+      "1977": {
+        "value": 33737.0,
+        "vehicles": 3.0
+      },
+      "1978": {
+        "value": 36368.0,
+        "vehicles": 3.0
+      },
+      "1979": {
+        "value": 38008.0,
+        "vehicles": 3.0
+      },
+      "1980": {
+        "value": 39031.0,
+        "vehicles": 3.0
+      }
+    },
+    "PrismaticAI self-steward": {
+      "1960": {
+        "value": 0.0,
+        "vehicles": 0.0
+      },
+      "1961": {
+        "value": 14873.0,
+        "vehicles": 9.0
+      },
+      "1962": {
+        "value": 209128.0,
+        "vehicles": 19.0
+      },
+      "1963": {
+        "value": 459394.0,
+        "vehicles": 24.0
+      },
+      "1964": {
+        "value": 635960.0,
+        "vehicles": 24.0
+      },
+      "1965": {
+        "value": 816829.0,
+        "vehicles": 23.0
+      },
+      "1966": {
+        "value": 1031964.0,
+        "vehicles": 24.0
+      },
+      "1967": {
+        "value": 1272706.0,
+        "vehicles": 23.0
+      },
+      "1968": {
+        "value": 1558215.0,
+        "vehicles": 24.0
+      },
+      "1969": {
+        "value": 1841325.0,
+        "vehicles": 23.0
+      },
+      "1970": {
+        "value": 2172140.0,
+        "vehicles": 23.0
+      },
+      "1971": {
+        "value": 2465954.0,
+        "vehicles": 23.0
+      },
+      "1972": {
+        "value": 2691806.0,
+        "vehicles": 23.0
+      },
+      "1973": {
+        "value": 2986845.0,
+        "vehicles": 23.0
+      },
+      "1974": {
+        "value": 3331457.0,
+        "vehicles": 23.0
+      },
+      "1975": {
+        "value": 3660216.0,
+        "vehicles": 22.0
+      },
+      "1976": {
+        "value": 4037749.0,
+        "vehicles": 23.0
+      },
+      "1977": {
+        "value": 4383414.0,
+        "vehicles": 23.0
+      },
+      "1978": {
+        "value": 4718627.0,
+        "vehicles": 22.0
+      },
+      "1979": {
+        "value": 5012101.0,
+        "vehicles": 23.0
+      },
+      "1980": {
+        "value": 5341814.0,
+        "vehicles": 24.0
+      }
+    },
+    "PrismaticAI solo-max": {
+      "1960": {
+        "value": 0.0,
+        "vehicles": 0.0
+      },
+      "1961": {
+        "value": 2773.0,
+        "vehicles": 7.0
+      },
+      "1962": {
+        "value": 114296.0,
+        "vehicles": 15.0
+      },
+      "1963": {
+        "value": 293189.0,
+        "vehicles": 20.0
+      },
+      "1964": {
+        "value": 498641.0,
+        "vehicles": 19.0
+      },
+      "1965": {
+        "value": 631810.0,
+        "vehicles": 18.0
+      },
+      "1966": {
+        "value": 791207.0,
+        "vehicles": 16.0
+      },
+      "1967": {
+        "value": 959285.0,
+        "vehicles": 14.0
+      },
+      "1968": {
+        "value": 1148434.0,
+        "vehicles": 14.0
+      },
+      "1969": {
+        "value": 1366835.0,
+        "vehicles": 12.0
+      },
+      "1970": {
+        "value": 1519933.0,
+        "vehicles": 12.0
+      },
+      "1971": {
+        "value": 1728336.0,
+        "vehicles": 12.0
+      },
+      "1972": {
+        "value": 1892488.0,
+        "vehicles": 12.0
+      },
+      "1973": {
+        "value": 2088044.0,
+        "vehicles": 12.0
+      },
+      "1974": {
+        "value": 2271749.0,
+        "vehicles": 11.0
+      },
+      "1975": {
+        "value": 2499086.0,
+        "vehicles": 11.0
+      },
+      "1976": {
+        "value": 2682390.0,
+        "vehicles": 11.0
+      },
+      "1977": {
+        "value": 2892192.0,
+        "vehicles": 11.0
+      },
+      "1978": {
+        "value": 3078543.0,
+        "vehicles": 11.0
+      },
+      "1979": {
+        "value": 3288644.0,
+        "vehicles": 11.0
+      },
+      "1980": {
+        "value": 3491866.0,
+        "vehicles": 11.0
+      }
+    }
   }
 }

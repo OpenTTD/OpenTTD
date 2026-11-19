@@ -31,6 +31,15 @@ pub const HOARD_FLEET_SHARE: f64 = 0.25;
 pub const LOW_YIELD_SHARE: f64 = 0.5;
 /// More than this many stations per vehicle: stations built and left unserved.
 pub const IDLE_STATIONS_PER_VEHICLE: f64 = 2.0;
+/// A first vehicle later than this many quarters after the first sample is a slow start: the
+/// winner of edition 91a72662 ran 4 planes in its first quarter.
+pub const SLOW_START_QUARTERS: usize = 1;
+/// A mode that earns at least this share of the winner's profit over the last year, where the
+/// contestant runs no vehicle of that mode, is a mode gap (referee v3 fields; absent before).
+pub const MODE_GAP_SHARE: f64 = 0.3;
+/// The referee's per-mode fields: vehicle count and last year's profit of each mode.
+pub const MODES: [(&str, &str, &str); 4] = [("rail", "rail", "prail"), ("road", "road", "proad"), ("air", "air", "pair"), ("water", "water", "pwater")];
+
 /// The gap to the winner is open while the value is below this share of the winner's.
 pub const GAP_SHARE: f64 = 0.5;
 /// Quarters averaged as "the last year".
@@ -98,6 +107,24 @@ pub fn contestant(m: &Value, key: &str) -> Option<Value> {
         }
     }
 
+    // Quarters until the first vehicle (None: never).
+    let first_vehicle = rows.iter().position(|r| num(r, "vehicles") > 0.0);
+    // Per mode: the winner's share of its profit over the last year, and whether we run that mode.
+    let w_profit: Vec<f64> = MODES.iter().map(|(_, _, p)| mean(&wlast.iter().map(|r| num(r, p).max(0.0)).collect::<Vec<_>>())).collect();
+    let w_total: f64 = w_profit.iter().sum();
+    let mut mode_gaps = Vec::new();
+    let mut mix = serde_json::Map::new();
+    if w_total > 0.0 {
+        for (i, (mode, count, _)) in MODES.iter().enumerate() {
+            let ours = last.iter().map(|r| num(r, count)).fold(0.0, f64::max);
+            let share = w_profit[i] / w_total;
+            mix.insert(mode.to_string(), json!({"winner_profit_share": round3(share), "vehicles": ours}));
+            if rank > 0 && share >= MODE_GAP_SHARE && ours == 0.0 {
+                mode_gaps.push((mode.to_string(), share));
+            }
+        }
+    }
+
     let mut losses = Vec::new();
     let mut loss = |cause: &str, measured: f64, threshold: f64, what: &str| {
         losses.push(json!({"cause": cause, "measured": round3(measured), "threshold": threshold, "what": what}));
@@ -114,8 +141,18 @@ pub fn contestant(m: &Value, key: &str) -> Option<Value> {
     if rank > 0 && w_ipv > 0.0 && ipv < LOW_YIELD_SHARE * w_ipv {
         loss("low_yield", ipv / w_ipv, LOW_YIELD_SHARE, "income per vehicle as a share of the winner's");
     }
+    match first_vehicle {
+        Some(q) if q > SLOW_START_QUARTERS => loss("slow_start", q as f64, SLOW_START_QUARTERS as f64, "quarters before its first vehicle"),
+        None => loss("slow_start", rows.len() as f64, SLOW_START_QUARTERS as f64, "no vehicle in the whole game"),
+        _ => {}
+    }
     if spv > IDLE_STATIONS_PER_VEHICLE {
         loss("idle_stations", spv, IDLE_STATIONS_PER_VEHICLE, "stations per vehicle at the end: stations left unserved");
+    }
+
+    for (mode, share) in &mode_gaps {
+        losses.push(json!({"cause": "mode_gap", "mode": mode, "measured": round3(*share), "threshold": MODE_GAP_SHARE,
+            "what": format!("the winner's share of profit from {mode}, where it runs no {mode} vehicle")}));
     }
 
     Some(json!({
@@ -139,6 +176,8 @@ pub fn contestant(m: &Value, key: &str) -> Option<Value> {
         "stations": stations,
         "stations_per_vehicle": round3(spv),
         "gap_opens": gap_opens,
+        "first_vehicle_quarter": first_vehicle,
+        "mode_mix": mix,
         "losses": losses,
     }))
 }
@@ -181,8 +220,52 @@ fn remedy(cause: &str, s: &mut BTreeMap<String, String>) {
         "stalls_small" => { set("aggressiveness", "100"); set("max_routes", "30"); set("cash_reserve", "5000"); set("intercity", "1"); }
         "fleet_decays" | "hoards_cash" | "idle_stations" => { set("self_steward", "1"); set("cash_reserve", "5000"); }
         "low_yield" => { set("own_lines", "8"); set("intercity", "1"); }
+        "slow_start" => { set("cash_reserve", "5000"); set("aggressiveness", "100"); }
         _ => {}
     }
+}
+
+/// The fields the yearly trajectory follows (the January sample of each year, median over matches).
+pub const TRAJECTORY_FIELDS: [&str; 7] = ["value", "vehicles", "air", "rail", "pair", "prail", "proad"];
+
+fn median(mut xs: Vec<f64>) -> f64 {
+    if xs.is_empty() { return 0.0; }
+    xs.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+    let n = xs.len();
+    if n % 2 == 1 { xs[n / 2] } else { (xs[n / 2 - 1] + xs[n / 2]) / 2.0 }
+}
+
+/// Per contestant, per year: the median over finished matches of each TRAJECTORY_FIELDS value in
+/// the January sample. It shows when and in what a contestant falls behind, e.g. the winner's air
+/// profit in year 1 against none of ours.
+pub fn trajectories(matches: &[Value]) -> Value {
+    let mut acc: BTreeMap<String, BTreeMap<String, BTreeMap<&str, Vec<f64>>>> = BTreeMap::new();
+    for m in matches {
+        if m.get("status").and_then(Value::as_str) != Some("done") || m.get("replica_of").is_some_and(|r| !r.is_null()) {
+            continue;
+        }
+        for (k, rows) in m.get("series").and_then(Value::as_object).into_iter().flatten() {
+            for r in rows.as_array().into_iter().flatten() {
+                let t = r.get("t").and_then(Value::as_str).unwrap_or("");
+                if !t.ends_with("-01") { continue; }
+                let year = acc.entry(k.clone()).or_default().entry(t[..4].to_string()).or_default();
+                for f in TRAJECTORY_FIELDS {
+                    if let Some(v) = r.get(f).and_then(Value::as_f64) { year.entry(f).or_default().push(v); }
+                }
+            }
+        }
+    }
+    let mut out = serde_json::Map::new();
+    for (k, years) in acc {
+        let mut ys = serde_json::Map::new();
+        for (y, fields) in years {
+            let mut row = serde_json::Map::new();
+            for (f, xs) in fields { row.insert(f.to_string(), json!(median(xs))); }
+            ys.insert(y, Value::Object(row));
+        }
+        out.insert(k, Value::Object(ys));
+    }
+    Value::Object(out)
 }
 
 /// The post-mortem of one edition: every finished match's contestant analyses, aggregated per
@@ -216,7 +299,9 @@ pub fn edition(edition: &str, matches: &[Value], prismatic: &dyn Fn(&Value, &str
         let mut causes: BTreeMap<String, usize> = BTreeMap::new();
         for r in rows.iter() {
             for l in r["losses"].as_array().into_iter().flatten() {
-                *causes.entry(l["cause"].as_str().unwrap_or("").to_string()).or_default() += 1;
+                let c = l["cause"].as_str().unwrap_or("");
+                let k = match l["mode"].as_str() { Some(m) => format!("{c}:{m}"), None => c.to_string() };
+                *causes.entry(k).or_default() += 1;
             }
         }
         let mut gaps: Vec<&str> = rows.iter().filter_map(|r| r["gap_opens"].as_str()).collect();
@@ -273,12 +358,13 @@ pub fn edition(edition: &str, matches: &[Value], prismatic: &dyn Fn(&Value, &str
         "thresholds": {
             "stall_peak_vehicles": STALL_PEAK_VEHICLES, "decay_final_share": DECAY_FINAL_SHARE,
             "hoard_cash_share": HOARD_CASH_SHARE, "hoard_fleet_share": HOARD_FLEET_SHARE, "low_yield_share": LOW_YIELD_SHARE,
-            "idle_stations_per_vehicle": IDLE_STATIONS_PER_VEHICLE, "gap_share": GAP_SHARE,
+            "idle_stations_per_vehicle": IDLE_STATIONS_PER_VEHICLE, "gap_share": GAP_SHARE, "slow_start_quarters": SLOW_START_QUARTERS, "mode_gap_share": MODE_GAP_SHARE,
             "last_quarters": LAST_QUARTERS,
         },
         "contestants": contestants,
         "prismatic_last": prismatic_last,
         "proposals": proposals,
+        "trajectories": trajectories(matches),
         "analyses": analyses,
     })
 }
@@ -319,7 +405,44 @@ pub fn markdown(pm: &Value) -> String {
         t["hoard_cash_share"], t["last_quarters"], t["hoard_fleet_share"]);
     s += &format!("- `low_yield`: income per vehicle below {} of the winner's\n", t["low_yield_share"]);
     s += &format!("- `idle_stations`: more than {} stations per vehicle at the end\n", t["idle_stations_per_vehicle"]);
+    s += &format!("- `slow_start`: first vehicle more than {} quarter(s) after the start\n", t["slow_start_quarters"]);
+    s += &format!("- `mode_gap`: a mode that earns at least {} of the winner's profit, with no vehicle of it (referee v3)\n", t["mode_gap_share"]);
     s += &format!("- gap opens: the first quarter from which value stays below {} of the winner's\n\n", t["gap_share"]);
+    // When and in what: the yearly medians of the best contestant against every PrismaticAI one.
+    if let (Some(best), Some(traj)) = (pm["contestants"].as_array().and_then(|c| c.first()), pm["trajectories"].as_object()) {
+        let best = best["key"].as_str().unwrap_or("");
+        let mut who: Vec<&str> = vec![best];
+        for c in pm["contestants"].as_array().into_iter().flatten() {
+            if c["prismatic"].as_bool() == Some(true) { who.push(c["key"].as_str().unwrap_or("")); }
+        }
+        if traj.contains_key(best) {
+            s += "## Trajectory (median of the January samples over the matches)\n\n";
+            s += "Value / vehicles (of which aircraft and trains) / last year's profit from air and rail, the \
+                  best contestant first. Without the parenthesis, the referee of that edition had no per-mode fields.\n\n";
+            s += "| Year |";
+            for w in &who { s += &format!(" {w} |"); }
+            s += "\n|---|";
+            for _ in &who { s += "---|"; }
+            s += "\n";
+            let years: Vec<String> = traj[best].as_object().map(|y| y.keys().cloned().collect()).unwrap_or_default();
+            for (i, y) in years.iter().enumerate() {
+                if !(i < 3 || i % 5 == 0 || i + 1 == years.len()) { continue; }
+                s += &format!("| {y} |");
+                for w in &who {
+                    let r = &traj[*w][y.as_str()];
+                    let f = |k: &str| r.get(k).and_then(Value::as_f64);
+                    let k = |x: Option<f64>| x.map(|v| if v.abs() >= 1e6 { format!("{:.1}M", v / 1e6) } else if v.abs() >= 1e3 { format!("{:.0}k", v / 1e3) } else { format!("{v:.0}") }).unwrap_or_default();
+                    s += &format!(" {} / {} veh", k(f("value")), k(f("vehicles")));
+                    if f("air").is_some() || f("rail").is_some() {
+                        s += &format!(" ({} air, {} rail) / profit air {} rail {}", k(f("air")), k(f("rail")), k(f("pair")), k(f("prail")));
+                    }
+                    s += " |";
+                }
+                s += "\n";
+            }
+            s += "\n";
+        }
+    }
     s += "## Proposals for the next edition\n\n";
     let props = pm["proposals"].as_array().cloned().unwrap_or_default();
     if props.is_empty() {
@@ -431,6 +554,27 @@ mod tests {
         a["id"] = json!("m-0002");
         assert_eq!(pm, edition("e1", &[fixture(), a], &lineup_is_prismatic));
         assert!(markdown(&pm).contains("PrismaticAI finished last"));
+    }
+
+    #[test]
+    fn a_late_start_and_a_missing_mode_are_named() {
+        let mut m = fixture();
+        // The winner earns from air from the start; PrismaticAI starts late and never flies.
+        for r in m["series"]["Winner"].as_array_mut().unwrap() {
+            r["air"] = json!(5); r["pair"] = json!(80000); r["prail"] = json!(10000);
+        }
+        let s = m["series"]["PrismaticAI"].as_array_mut().unwrap();
+        s[1]["vehicles"] = json!(0);
+        s.push(q("1963-01", 10000., 45000., 800., 2., 7.));
+        let a = contestant(&m, "PrismaticAI").unwrap();
+        let c = causes(&a);
+        assert!(c.contains(&"slow_start".to_string()), "{c:?}");
+        let gap = a["losses"].as_array().unwrap().iter().find(|l| l["cause"] == "mode_gap").unwrap();
+        assert_eq!(gap["mode"], "air");
+        assert_eq!(a["first_vehicle_quarter"], 2);
+        let pm = edition("e1", &[m], &lineup_is_prismatic);
+        let pc = pm["contestants"].as_array().unwrap().iter().find(|c| c["key"] == "PrismaticAI").unwrap();
+        assert!(pc["causes"].as_array().unwrap().iter().any(|c| c["cause"] == "mode_gap:air"));
     }
 
     #[test]

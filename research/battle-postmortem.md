@@ -98,11 +98,20 @@ Each cause is a test against a named constant. The record repeats the constants 
 | `hoards_cash` | not the winner, idle cash > 0.6 of value and fleet < 0.25 × the winner's | money is not working |
 | `low_yield` | not the winner, income per vehicle < 0.5 × the winner's | its vehicles earn too little |
 | `idle_stations` | more than 2 stations per vehicle at the end | stations built and left unserved |
+| `slow_start` | first vehicle later than the first quarter after the start | it idled while the winner was already earning |
+| `mode_gap:<mode>` | not the winner; a mode earns at least 0.3 of the winner's last-year profit, and it runs no vehicle of that mode | it is absent from the winner's source of money (referee v3 fields `air`/`pair` etc.; absent in older editions) |
 
 `hoards_cash` is relative on purpose. The first version tested idle cash alone and flagged the
 winner in every match: late in a 20-year game a winner's value is mostly cash, because vehicles
 depreciate. With the fleet condition added, AAAHogEx has no cause, and AdmiralAI has `hoards_cash`
-in 4 of 29 matches, against 29 of 29 for every PrismaticAI contestant (edition `155d18ea`).
+in 6 of 37 matches, against 35 to 37 of 37 for every PrismaticAI contestant (edition `155d18ea`).
+
+## Trajectory
+
+For each contestant and each year, the record keeps the median over finished matches of the January
+sample's `value`, `vehicles`, `air`, `rail`, `pair`, `prail` and `proad` (`trajectories`). The
+Markdown shows the best contestant next to every PrismaticAI one, for the first three years, every
+fifth year after that, and the last year. That table answers when and in what the gap opens.
 
 ## From causes to proposals
 
@@ -115,33 +124,44 @@ remedy names the knobs of `info.nut` that address the cause:
 | `stalls_small` | `aggressiveness=100, max_routes=30, cash_reserve=5000, intercity=1` |
 | `fleet_decays`, `hoards_cash`, `idle_stations` | `self_steward=1, cash_reserve=5000` |
 | `low_yield` | `own_lines=8, intercity=1` |
+| `slow_start` | `aggressiveness=100, cash_reserve=5000` |
+| `mode_gap:<mode>` | none: no setting adds a mode; it is a bot change |
 
 If the result differs from the contestant's settings, it is a proposal. A proposal that equals a
 contestant already in the battle tells you that the settings alone cannot fix the cause and the
 bot's behaviour must change. That is what edition `155d18ea` shows. Both proposals equal the
-`self-steward` contestant's settings, and that contestant still has `idle_stations` and
-`hoards_cash` in 29 of 29 matches.
+`self-steward` contestant's settings, and that contestant still has `idle_stations` in 36 and
+`hoards_cash` in 37 of 37 matches.
 
 ## What the first post-mortem found
 
-From [`postmortem-155d18ea50071e72.md`](results/postmortem-155d18ea50071e72.md) (29 matches, PrismaticAI
+From [`postmortem-155d18ea50071e72.md`](results/postmortem-155d18ea50071e72.md) (37 matches, PrismaticAI
 at `ba51ba6022`, 20 years from 1960, an 8×8 temperate map):
 
-- Default `PrismaticAI` was last in 22 of 29 matches: a peak fleet of 5 and a final fleet of 2.5,
+- Default `PrismaticAI` was last in 29 of 37 matches: a peak fleet of 5 and a final fleet of 2.5,
   with `stalls_small` and `low_yield` in all of them.
-- `solo-max` lost its fleet (peak 24, final 11, `fleet_decays` in 27) and kept 55 stations for it.
-- `self-steward` was second on average with 22 vehicles against the winner's 399. Its stations stay
+- `solo-max` lost its fleet (peak 24, final 11, `fleet_decays` in 34) and kept 55 stations for it.
+- `self-steward` was second on average with 23 vehicles against the winner's 396. Its stations stay
   idle and its cash keeps piling up.
 - The gap to the winner opens, in the median, in the second quarter (1960-07). The deficit starts
   with early fleet growth, not with late reinvestment.
 
 These findings hold for that edition and its match parameters only.
 
+The next edition, `91a72662` (PrismaticAI at `df1e05e7d8`, with autopilot but without air), read from
+the store after 10 finished matches, showed the two causes that explain the rest:
+
+- `mode_gap:air` in 10 of 10 matches for every PrismaticAI contestant. In 1961 the winner already
+  ran 10 aircraft that earned 338k a year, and no PrismaticAI company ever owned an aircraft.
+- Scaling, not quality. In 1962 PrismaticAI's trains earned about 29k each and the winner's about
+  4k. By 1965 the winner ran 24 trains and 26 aircraft, and by 1980 84 trains, 50 aircraft and
+  280 road vehicles. PrismaticAI's whole fleet peaked at about 24 vehicles and then shrank.
+
 ## Performance
 
 Parsing and analysis run on rayon's pool (all cores). One task per match record, and the
-per-contestant analysis is a single pass over its series. The 29 matches of `155d18ea` (7
-contestants, 81 quarters each) took 6 ms to read and 6 ms to analyse on 12 threads. The binary
+per-contestant analysis is a single pass over its series. The 37 matches of `155d18ea` (7
+contestants, 81 quarters each) took 8 ms to read and 16 ms to analyse on 12 threads. The binary
 prints both timings on every run. DuckDB writes go in one transaction.
 
 ## Where it lives
