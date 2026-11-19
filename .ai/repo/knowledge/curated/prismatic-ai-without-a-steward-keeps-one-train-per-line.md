@@ -189,6 +189,14 @@ The sum is unchanged and the worst seed is up 39%. g26.0 on seed 725554694 went 
 no plane to 3.4M with 16 planes. Single seeds are a direction, not a verdict; the GA decides the
 gene on paired matches.
 
+A caveat on any single replay: with `air_keep_last=0`, the committed code ends that seed at 2.2M
+with 8 planes, not at 1.3M with none like the code before it
+(`research/results/ablation-20261119T140023-seed725554694.md`). The only difference between the
+two is extra script work (counting planes). A script's operations decide on which tick its
+actions land, so any code change perturbs the whole game. A single-seed difference therefore
+mixes the change with this noise, which is why the GA and the promotion rule judge on many
+paired seeds.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
