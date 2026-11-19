@@ -25,6 +25,7 @@
   <a href="#plans-in-a-sentence"><b>Plans in a sentence</b></a> &nbsp;&middot;&nbsp;
   <a href="#the-planner-against-itself"><b>Bot duels</b></a> &nbsp;&middot;&nbsp;
   <a href="#what-the-duels-have-taught-so-far"><b>Findings</b></a> &nbsp;&middot;&nbsp;
+  <a href="#against-other-ais-the-lan-battle"><b>AI battle</b></a> &nbsp;&middot;&nbsp;
   <a href="#rail-lines-that-pay"><b>Rail</b></a> &nbsp;&middot;&nbsp;
   <a href="#every-event-on-a-bus-and-in-a-store"><b>Events</b></a> &nbsp;&middot;&nbsp;
   <a href="#a-real-place-as-the-map"><b>Real place</b></a> &nbsp;&middot;&nbsp;
@@ -68,7 +69,10 @@ On top of that sit:
 - **an event bus and a store** in every control panel: each event goes out on ZeroMQ and into a
   DuckDB file, and planning decisions [read that history back](#every-event-on-a-bus-and-in-a-store);
 - **recorded duels** that measure whether the plan helps, and
-  [what they have taught so far](#what-the-duels-have-taught-so-far), negative results included.
+  [what they have taught so far](#what-the-duels-have-taught-so-far), negative results included;
+- **a LAN tournament** against the best BaNaNaS AIs, with a derived leaderboard, a post-mortem of
+  every loss and a genetic algorithm that tunes the bot's settings
+  ([AI battle](#against-other-ais-the-lan-battle)).
 
 How each idea carries over to the real world is [beyond the game](#beyond-the-game). The next step
 is [a real game against real opponents over the internet](#a-real-game-over-the-internet).
@@ -123,7 +127,8 @@ some clients refuse dots. The panel's Swagger UI lists the whole catalogue, ever
 ## Script a live game in Rhai
 
 [Rhai](https://rhai.rs/) is the fork's extension language: new extension logic is written in Rhai,
-hosts and tools in Rust ([rule](.ai/repo/rules/project/tooling-language-preference.v1.md)).
+hosts and tools in Rust ([rule](.ai/repo/rules/project/tooling-language-preference.v1.md),
+[mechanism](research/mechanisms/rhai-scripting.md)).
 [`mcp-rhai`](tools/research/mcp-rhai/) runs a script against a live game, and nothing it calls is
 listed by hand. At start-up it derives one function per MCP tool (`openttd_game_set_pause(#{pause:
 true})`), one per OpenTTD console command (`con_companies()`) and one per operation of the panel's
@@ -154,6 +159,7 @@ developer console. Examples from [`tools/research/mcp-panel/rhai/`](tools/resear
 | [`rail_steward.rhai`](tools/research/mcp-panel/rhai/rail_steward.rhai) | keeps every rail line paying: reads the game each round, decides per line and hands the bot a target to reconcile |
 | [`rail_monitor.rhai`](tools/research/mcp-panel/rhai/rail_monitor.rhai) | watches the bot's railway in the background and posts what is wrong to the Majordomus board |
 | [`demo.rhai`](tools/research/mcp-panel/rhai/demo.rhai) | a game driven entirely from outside, from a new world to a final report |
+| [`arena.rhai`](tools/research/mcp-panel/rhai/arena.rhai) | keeps a lineup of company AIs playing as desired state and reports the standings in chat and as a newspaper |
 
 The libraries they import: [`ttd.rhai`](tools/research/mcp-panel/rhai/ttd.rhai) (high-level game
 commands), [`rail_lib.rhai`](tools/research/mcp-panel/rhai/rail_lib.rhai) (rail lines as pure
@@ -309,6 +315,41 @@ decides when a measurement may change a default.
 
 </details>
 
+## Against other AIs: the LAN battle
+
+A duel compares the bot with itself. The [LAN AI battle](research/ai-battle/README.md) compares it
+with the best company AIs of BaNaNaS. It is a tournament that never stops: every machine on the
+local network that answers SSH and has an OpenTTD build becomes an arena and plays headless
+free-for-all matches (null video driver, 20 years from 1960). The contestants are PrismaticAI in
+several configurations and four BaNaNaS AIs. A read-only referee Game Script logs every company
+every quarter, and nothing under `src/` changes.
+
+- **The leaderboard is a record, not a claim.** `battle.py report` derives it from the newest
+  `research/results/battle-*.json`, and `battle.py check`, run by `tools/gate.sh change`, fails
+  when it is stale. Some matches are replayed on a second arena to prove a result does not depend
+  on the machine (rule [`project.battle-records-are-reproducible`](.ai/repo/rules/project/battle-records-are-reproducible.v1.md),
+  ADR 0035).
+- **The honest standing.** In the first air edition (record
+  [`battle-20261119T060827-361b802f`](research/results/battle-20261119T060827-361b802f.md), 64
+  matches, 4 of 4 replays identical), AAAHogEx won every match. The three PrismaticAI
+  configurations ranked second to fourth on points per match, ahead of AdmiralAI, LuDiAI and
+  CivilAI, and won none. The [live table](research/ai-battle/README.md#leaderboard) is the
+  current one.
+- **A post-mortem says why.** After every finished match a Rust tool
+  ([`battle-postmortem`](research/battle-postmortem.md)) names why each contestant lost, shows year
+  by year where PrismaticAI falls behind the winner, proposes the next round's settings and posts
+  where PrismaticAI stands to the Majordomus board. Its first findings were a missing mode of
+  transport (no aircraft while the winner flew from 1961) and scale: a fleet that peaked at about
+  24 vehicles against the winner's hundreds.
+- **A genetic algorithm tunes the bot inside the battle** (ADR 0036). Every strategy setting of
+  PrismaticAI is a live AI setting, so the same knobs reach the `~` console, MCP, Rhai, the panel,
+  a battle settings string and the genes. Variants meet the same maps on common seeds, the best
+  one is kept, and the rest are bred into the next edition.
+- **The live arena is the visible counterpart.** [`arena.rhai`](tools/research/mcp-panel/rhai/arena.rhai)
+  keeps the same contestants playing in one game you watch in a window and the panel, and
+  editing its lineup changes the running game within seconds. It makes no ranking claim
+  ([`research/live-arena.md`](research/live-arena.md)).
+
 ## Rail lines that pay
 
 The owner saw trains that could not turn around and lines that lost money, and the game's own
@@ -461,7 +502,7 @@ from the code. The right-hand column says what was counted.
 | **22** | [live MCP resources (`openttd://…`): map, towns, stations, vehicles, companies, …](research/prismatic-mcp/07-resource-catalog.md) | `^\s*\{"openttd://` in `src/prismatic_mcp/prismatic_mcp_server.cpp` |
 | **27** | [unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)](research/prismatic-mcp/09-testing.md) | `^TEST_CASE\(` in `src/tests/test_prismatic_mcp.cpp` |
 | **63** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
-| **37** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
+| **36** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
 | **10** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
 | **14** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
 | **35** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
@@ -820,6 +861,7 @@ and threshold lives in [`style.toml`](tools/research/noirgfx/style.toml). Build 
     - 0.5) [Validation / gating model](#05-validation--gating-model)
     - 0.6) [Ground rules (short version)](#06-ground-rules-short-version)
     - 0.7) [Relationship to upstream OpenTTD](#07-relationship-to-upstream-openttd)
+        - 0.7.1) [Architecture decisions](#071-architecture-decisions)
     - 0.8) [Research questions](#08-research-questions)
     - 0.9) [Agent and cognition concepts under evaluation](#09-agent-and-cognition-concepts-under-evaluation)
     - 0.10) [Integration points](#010-integration-points)
@@ -1127,6 +1169,55 @@ copyright or attribution: [3.0) Licensing](#30-licensing) and [4.0) Credits](#40
 unchanged, and `git log --oneline -- COPYING.md CREDITS.md` shows only upstream commits. Everything
 the fork adds is in the paths listed in 0.4 and in this section of the README.
 
+#### 0.7.1) Architecture decisions
+
+Every decision behind the rules above, upstream's architecture recorded as it is and the fork's own
+choices, with its status (generated from [`.ai/repo/adrs/`](./.ai/repo/adrs/README.md)):
+
+<details><summary>All ADRs</summary>
+
+<!-- surfaces:begin ai-adrs -->
+| Decision | Status | Title |
+|---|---|---|
+| [adr-0001](.ai/repo/adrs/0001-this-fork-is-a-private-research-target-and-never-interacts-w.md) | proposed | This fork is a private research target and never interacts with upstream |
+| [adr-0002](.ai/repo/adrs/0002-validation-runs-in-three-cost-tiers-behind-one-gate-script-a.md) | proposed | Validation runs in three cost tiers behind one gate script, and a report never claims a step that did not run |
+| [adr-0003](.ai/repo/adrs/0003-principles-are-adapted-from-prismatic-into-this-fork-one-way.md) | proposed | Principles are adapted from Prismatic into this fork one way, and nothing flows back automatically |
+| [adr-0004](.ai/repo/adrs/0004-research-access-to-internals-is-permitted-and-research-code-.md) | proposed | Research access to internals is permitted, and research code is compile-gated, labelled and removable |
+| [adr-0005](.ai/repo/adrs/0005-an-experiment-is-driven-by-the-research-cli-and-its-build-pr.md) | proposed | An experiment is driven by the research CLI and its build profile, runtime flags and evidence are recorded in a versioned manifest |
+| [adr-0006](.ai/repo/adrs/0006-the-research-cli-keeps-the-system-compiler-when-it-supports-.md) | proposed | The research CLI keeps the system compiler when it supports source_location and falls back to Homebrew LLVM only when it does not |
+| [adr-0007](.ai/repo/adrs/0007-prismatic-steers-a-company-through-a-standalone-bridge-that-.md) | proposed | Prismatic steers a company through a standalone bridge that drives a Company AI over rcon, not through a Game Script relay |
+| [adr-0008](.ai/repo/adrs/0008-an-agent-reaches-the-game-through-an-embedded-loopback-mcp-s.md) | proposed | An agent reaches the game through an embedded loopback MCP server whose mutations pass a digest-bound human approval and the command system |
+| [adr-0009](.ai/repo/adrs/0009-the-fork-s-site-is-a-zola-project-published-to-github-pages-.md) | superseded | The fork's site is a Zola project published to GitHub Pages from a fork-only workflow |
+| [adr-0010](.ai/repo/adrs/0010-majordomus-supervises-this-fork-and-the-ai-layer-is-its-trac.md) | proposed | Majordomus supervises this fork and the .ai/ layer is its tracked governance record |
+| [adr-0011](.ai/repo/adrs/0011-the-fork-follows-upstream-by-rebasing-its-commits-onto-upstr.md) | proposed | The fork follows upstream by rebasing its commits onto upstream master, and upstream is a fetch-only remote |
+| [adr-0012](.ai/repo/adrs/0012-every-published-surface-is-derived-from-tracked-markdown-git.md) | proposed | Every published surface is derived from tracked Markdown, git and the .ai layer by one generic generator |
+| [adr-0013](.ai/repo/adrs/0013-every-openttd-process-may-run-its-own-mcp-server-and-its-vie.md) | proposed | Every OpenTTD process may run its own MCP server, and its view tools act on the local viewport only, with no command and no approval |
+| [adr-0014](.ai/repo/adrs/0014-interface-input-from-an-agent-is-armed-per-process-by-the-ow.md) | proposed | Interface input from an agent is armed per process by the owner and yields to the owner's mouse, and every action it causes is an ordinary client command |
+| [adr-0015](.ai/repo/adrs/0015-the-fork-does-not-run-upstream-s-ci-workflows-on-push-pages-.md) | proposed | The fork does not run upstream's CI workflows on push; Pages deploys from Surfaces alone |
+| [adr-0016](.ai/repo/adrs/0016-multiplayer-is-deterministic-lockstep-every-peer-runs-the-sa.md) | proposed | Multiplayer is deterministic lockstep: every peer runs the same command stream and only commands cross the wire |
+| [adr-0017](.ai/repo/adrs/0017-game-objects-live-in-typed-pools-addressed-by-strong-ids-nev.md) | proposed | Game objects live in typed pools addressed by strong IDs, never by persistent pointers |
+| [adr-0018](.ai/repo/adrs/0018-every-savegame-ever-written-stays-loadable-saved-fields-are-.md) | proposed | Every savegame ever written stays loadable: saved fields are gated by SaveLoadVersion and old layouts are converted after load |
+| [adr-0019](.ai/repo/adrs/0019-settings-are-declared-once-in-ini-tables-that-settingsgen-co.md) | proposed | Settings are declared once in ini tables that settingsgen compiles into the tables used by the config file, the savegame, the GUI and network sync |
+| [adr-0020](.ai/repo/adrs/0020-player-facing-text-is-compiled-from-english-txt-by-strgen-an.md) | proposed | Player-facing text is compiled from english.txt by strgen, and translations arrive from eints and are never edited by hand |
+| [adr-0021](.ai/repo/adrs/0021-ai-and-game-scripts-run-in-embedded-squirrel-against-a-gener.md) | proposed | AI and Game Scripts run in embedded Squirrel against a generated API, and old API versions are kept through compatibility scripts |
+| [adr-0022](.ai/repo/adrs/0022-platform-backends-are-drivers-registered-in-factories-and-ch.md) | proposed | Platform backends are drivers registered in factories and chosen at runtime, so one binary can run with a window, headless or silent |
+| [adr-0023](.ai/repo/adrs/0023-the-map-is-a-flat-array-of-tiles-whose-behaviour-is-dispatch.md) | proposed | The map is a flat array of tiles whose behaviour is dispatched by tile type through a table of tile procedures |
+| [adr-0024](.ai/repo/adrs/0024-the-cargodist-link-graph-is-computed-in-background-threads-a.md) | proposed | The cargodist link graph is computed in background threads and joined at a fixed economy date, pausing the game rather than joining late |
+| [adr-0025](.ai/repo/adrs/0025-game-time-runs-on-separate-tick-calendar-economy-and-real-ti.md) | proposed | Game time runs on separate tick, calendar, economy and real-time timers, and periodic work subscribes to the one that matches its meaning |
+| [adr-0026](.ai/repo/adrs/0026-pathfinding-is-yapf-an-a-framework-composed-at-compile-time-.md) | proposed | Pathfinding is YAPF, an A* framework composed at compile time from policy templates and specialised per vehicle type |
+| [adr-0027](.ai/repo/adrs/0027-cmake-is-the-only-build-system-and-every-directory-declares-.md) | proposed | CMake is the only build system, and every directory declares its sources with add_files under explicit conditions |
+| [adr-0028](.ai/repo/adrs/0028-graphics-sounds-and-music-come-from-replaceable-base-sets-an.md) | proposed | Graphics, sounds and music come from replaceable base sets and NewGRFs, and the engine ships no proprietary data |
+| [adr-0029](.ai/repo/adrs/0029-a-research-gated-local-only-override-accepts-a-mismatched-pee.md) | proposed | A research-gated, local-only override accepts a mismatched peer revision for a loopback R&D game, without spoofing the build's own revision |
+| [adr-0030](.ai/repo/adrs/0030-public-servers-are-played-with-an-unmodified-official-client.md) | proposed | Public servers are played with an unmodified official client; fork features run only on the owner's own servers, on a client built on the same release |
+| [adr-0032](.ai/repo/adrs/0032-the-bridge-s-admin-protocol-client-is-a-native-rust-service-.md) | proposed | The bridge's admin-protocol client is a native Rust service (axum + tokio), not the Python/FastAPI bridge |
+| [adr-0033](.ai/repo/adrs/0033-every-panel-event-goes-out-on-zeromq-and-into-a-duckdb-store.md) | accepted | Every panel event goes out on a ZeroMQ PUB socket and into a DuckDB store, per instance, from one tap on the bus |
+| [adr-0034](.ai/repo/adrs/0034-planning-decisions-read-recorded-history-and-emit-structured.md) | proposed | Planning decisions read recorded history from the store and publish each choice as a structured event |
+| [adr-0035](.ai/repo/adrs/0035-company-ais-are-ranked-in-headless-null-driver-matches-on-ever.md) | accepted | Company AIs are ranked in headless null-driver matches on every reachable LAN machine, and the ranking is a derived record |
+| [adr-0036](.ai/repo/adrs/0036-prismatic-ai-settings-are-tuned-by-a-deterministic-genetic-algorith.md) | accepted | PrismaticAI's settings are tuned by a deterministic genetic algorithm over the LAN battle, and a tuned setting reaches a default only through held-start duels |
+<!-- surfaces:end ai-adrs -->
+
+</details>
+
 ### 0.8) Research questions
 
 Open questions, not conclusions:
@@ -1183,6 +1274,7 @@ Open questions, not conclusions:
 | Build/test gates and experiment manifests | exit codes, test output, `manifest.json` and a generated `summary.md` | Implemented (0.5) |
 | Published surfaces | site, wiki and generated Markdown tables, checked on every commit | Implemented (0.4.2) |
 | Real-world scenarios | a place compiled from OpenStreetMap and Copernicus GLO-30 into a heightmap (`-g`) and a GameScript, every entity labelled with its evidence | Experimental: the Brno slice compiles, replays and loads headless ([`research/real-world-scenario.md`](./research/real-world-scenario.md)) |
+| LAN AI battle | headless matches between PrismaticAI and BaNaNaS AIs on every SSH-reachable machine; a derived leaderboard, post-mortems and a genetic algorithm over the bot's settings | Implemented ([`research/ai-battle/README.md`](./research/ai-battle/README.md), ADR 0035, ADR 0036) |
 | Human oversight | every commit, push, override and approval of a game change | Implemented |
 
 ### 0.11) Experiment lifecycle, outputs, and evidence policy
