@@ -1,0 +1,37 @@
+# RESEARCH-ONLY. The real-world scenario pipeline: place resolution, lawful bounded acquisition,
+# a versioned snapshot, and an offline, deterministic compiler to an OpenTTD heightmap, town data
+# and a GameScript that places towns and industries through the game's own commands.
+# It runs outside the game; nothing here is compiled into OpenTTD. See research/real-world-scenario.md.
+[package]
+name = "rw-scenario"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "rw_scenario"
+path = "src/lib.rs"
+
+[[bin]]
+name = "rw-scenario"
+path = "src/main.rs"
+required-features = ["live"]
+
+[features]
+# `live`: the network client (resolve --live, acquire --live) and the command line. The panel links
+# the library without it (default-features = false), so the HTTP client never reaches it.
+default = ["live"]
+live = ["dep:ureq"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# src/cog.rs: the DEFLATE of Copernicus GLO-30 COG tiles (pure Rust, already in the dependency tree).
+miniz_oxide = "0.9"
+sha2 = "0.10"
+# Only `acquire --live` and `resolve --live` use the network; compile, replay and validate never do.
+ureq = { version = "2.10", optional = true }
+
+[dev-dependencies]
+# tests/schema.rs: the `pattern` keyword of the JSON Schema subset it checks.
+regex = { version = "1", default-features = false, features = ["std", "unicode-perl"] }

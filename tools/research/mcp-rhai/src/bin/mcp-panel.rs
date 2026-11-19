@@ -40,6 +40,8 @@ mod panel_events;
 mod panel_results;
 #[path = "../panel_scripts.rs"]
 mod panel_scripts;
+#[path = "../panel_realworld.rs"]
+mod panel_realworld;
 #[path = "../panel_store.rs"]
 mod panel_store;
 

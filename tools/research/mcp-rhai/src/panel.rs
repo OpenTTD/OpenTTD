@@ -34,6 +34,7 @@ use crate::panel_bot;
 use crate::panel_decision;
 use crate::panel_events;
 use crate::panel_results;
+use crate::panel_realworld;
 use crate::panel_store;
 use crate::rhai_host;
 
@@ -2235,6 +2236,10 @@ pub fn routes() -> Vec<Route> {
         r("GET", "/api/scoreboard", "scoreboard", "The README duel scoreboard as tools/research/readme-scoreboard derives it from research/results: best run, wins of all duels, the seed-31337 series, and whether README.md is current or stale", false, None, panel_results::h_scoreboard),
         r("POST", "/api/scoreboard", "scoreboardWrite", "Regenerate the scoreboard region of README.md from research/results (tools/research/readme-scoreboard); answers the new scoreboard. Commit and push stay the owner's", false,
           s(json!({}), &[]), panel_results::h_scoreboard_write),
+        r("GET", "/api/realworld", "realWorld", "Every real-world place snapshot (tools/research/real-world/fixtures/*/snapshot.json, research/real-world-scenario.md): the query, the candidate it resolved to, the map's size and scale, each source with its licence and completeness, and what the offline compiler makes of it (entities and economy edges by evidence class: OBSERVED, DERIVED, INFERRED, HYPOTHETICAL)", false, None, panel_realworld::h_list),
+        r("GET", "/api/realworld/scenario", "realWorldScenario", "One place compiled in process by the one compiler (?name=brno): the scenario (heightmap, towns, industries, landmark signs, economy edges, each with its evidence class, rationale, confidence and rule), the snapshot's candidates, sources, licences and features, the heightmap as a PNG data URI, and both validations. Offline and deterministic", false, None, panel_realworld::h_scenario),
+        r("POST", "/api/realworld/compile", "realWorldCompile", "Write one place's compiled artifacts (heightmap.png, towns.json, the RealWorldScenario GameScript, openttd.cfg, preview.svg, scenario.json, SHA256SUMS) to build-real-world/<name>/ and say whether they match the hashes recorded with its fixture. Offline; the headless load is tools/research/real-world/rw-scenario load-check", false,
+          s(json!({"name": st()}), &["name"]), panel_realworld::h_compile),
         r("GET", "/api/duel", "duelStatus", "The duel started from the panel: running or finished, the last month line, the winner line and the result's name", false, None, panel_results::h_duel_status),
         r("GET", "/api/bus", "bus", "The event bus on ZeroMQ (ADR 0033): the PUB endpoint (tcp://127.0.0.1:<port>), the envelope schema prismatic-bus/v1, every topic seen with its count, how many events went out, and `kinds`: every event kind the bus carries, the one declared table (src/panel_events.rs, I0081), answered also when the tap is down (endpoint null, `error` says why); subscribe with any ZeroMQ SUB client (tools/research/mcp-rhai mcp-bus-tail)", false, None, h_bus),
         r("POST", "/api/bus/publish", "busPublish", "Put one event of a kind the table declares as external (`by: external` in GET /api/bus kinds; plan.kernel from mcp-kernel-feed --publish) on this panel's bus, so it reaches ZeroMQ and the store like the panel's own; the data must carry {decision, version, inputs, choice}. Any other kind is refused", false,
@@ -2766,6 +2771,17 @@ impl Panel {
                     Err(_) => send_json(stream, 404, &json!({"error": "static/scripts.html is missing"})),
                 };
             }
+            // The real-world places: /realworld lists them, /realworld/<name> is one, titled from its snapshot.
+            if path == "/realworld" || path.starts_with("/realworld/") {
+                let (title, description, found) = panel_realworld::page_meta(path);
+                return match std::fs::read_to_string(statics().join("realworld.html")) {
+                    Ok(t) => {
+                        let html = t.replace("__TITLE__", &html_escape(&title)).replace("__DESCRIPTION__", &html_escape(&description));
+                        hub::respond(stream, if found { 200 } else { 404 }, "text/html; charset=utf-8", html.as_bytes())
+                    }
+                    Err(_) => send_json(stream, 404, &json!({"error": "static/realworld.html is missing"})),
+                };
+            }
             // The store's page: queries kept in the address, numeric columns charted (static/data.html).
             if path == "/data" {
                 return match std::fs::read_to_string(statics().join("data.html")) {
@@ -2975,8 +2991,9 @@ mod tests {
         // and the bus tap (GET /api/bus, GET /api/db/tables, GET and POST /api/db/query; ADR 0033),
         // and the plan events' routes (POST /api/bus/publish, POST /api/bots/planned; I0081), and the
         // script workspace (GET /api/scripts, GET /api/script, POST /api/script/check and /save, GET
-        // /api/services, POST /api/services/start and /stop, GET /api/services/log; panel_scripts.rs).
-        assert_eq!(rs.len(), 59);
+        // /api/services, POST /api/services/start and /stop, GET /api/services/log; panel_scripts.rs),
+        // and the real-world places (GET /api/realworld, GET /api/realworld/scenario, POST /api/realworld/compile).
+        assert_eq!(rs.len(), 62);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -2989,7 +3006,8 @@ mod tests {
             "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
             "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query",
             "/api/scripts", "/api/script", "/api/script/check", "/api/script/save",
-            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log"].contains(&r.path)));
+            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log",
+            "/api/realworld", "/api/realworld/scenario", "/api/realworld/compile"].contains(&r.path)));
     }
 
     #[test]

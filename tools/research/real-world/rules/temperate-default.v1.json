@@ -1,0 +1,93 @@
+{
+  "id": "rw-rules/temperate-default",
+  "version": 1,
+  "description": "RESEARCH-ONLY mapping from OpenStreetMap feature classes to the default temperate OpenTTD economy. Generic: no place name appears here. Every role below is checked against the running game by the generated GameScript (cargo labels of each industry type), never trusted blindly.",
+  "profile": {
+    "climate": "temperate",
+    "landscape": 0,
+    "source": "src/table/build_industry.h _origin_industry_specs (lines 1135-1235: coal mine, power station, sawmill, forest, oil refinery, factory, steel mill, farm; 1316 iron ore mine) and src/table/cargo_const.h cargo labels",
+    "industries": {
+      "coal_mine": { "produces": ["COAL"], "accepts": [] },
+      "power_station": { "produces": [], "accepts": ["COAL"] },
+      "forest": { "produces": ["WOOD"], "accepts": [] },
+      "sawmill": { "produces": ["GOOD"], "accepts": ["WOOD"] },
+      "farm": { "produces": ["GRAI", "LVST"], "accepts": [] },
+      "factory": { "produces": ["GOOD"], "accepts": ["GRAI", "LVST", "STEL"] },
+      "iron_ore_mine": { "produces": ["IORE"], "accepts": [] },
+      "steel_mill": { "produces": ["STEL"], "accepts": ["IORE"] }
+    },
+    "town": { "produces": ["PASS", "MAIL"], "accepts": ["PASS", "MAIL", "GOOD"] }
+  },
+  "classify": [
+    { "class": "settlement", "elements": ["node"], "tags": { "place": ["city", "town", "village", "suburb"] } },
+    { "class": "landmark", "elements": ["node"], "tags": { "natural": ["peak", "hill"] } },
+    { "class": "landmark", "elements": ["node", "way"], "tags": { "tourism": ["viewpoint"] } },
+    { "class": "extraction", "elements": ["node", "way", "relation"], "tags": { "landuse": ["quarry"] } },
+    { "class": "protected_area", "elements": ["node", "way", "relation"], "tags": { "leisure": ["nature_reserve"] } },
+    { "class": "power_plant", "elements": ["node", "way", "relation"], "tags": { "power": ["plant"], "plant:source": ["coal", "gas", "oil", "waste", "biomass", "biogas"] } },
+    { "class": "power_plant_other", "elements": ["node", "way", "relation"], "tags": { "power": ["plant"] } },
+    { "class": "sawmill", "elements": ["node", "way"], "tags": { "craft": ["sawmill"] } },
+    { "class": "works", "elements": ["node", "way", "relation"], "tags": { "man_made": ["works"] } },
+    { "class": "industrial_area", "elements": ["way", "relation"], "tags": { "landuse": ["industrial"] } },
+    { "class": "farmland", "elements": ["way"], "tags": { "landuse": ["farmland"] } },
+    { "class": "forest", "elements": ["way", "relation"], "tags": { "landuse": ["forest"] } },
+    { "class": "rail_station", "elements": ["node"], "tags": { "railway": ["station"] } },
+    { "class": "water", "elements": ["way", "relation"], "tags": { "natural": ["water"], "water": ["reservoir", "lake"] } }
+  ],
+  "keep_tags": ["name", "leisure", "boundary", "protect_class", "place", "population", "natural", "tourism", "ele", "landuse", "resource", "power", "plant:source", "plant:output:electricity", "man_made", "product", "craft", "industrial", "railway", "water", "wikidata", "disused", "abandoned"],
+  "acquire_limit": {
+    "settlement": 80,
+    "landmark": 60,
+    "extraction": 20,
+    "power_plant": 20,
+    "power_plant_other": 20,
+    "protected_area": 100,
+    "sawmill": 10,
+    "works": 30,
+    "industrial_area": 25,
+    "farmland": 25,
+    "forest": 25,
+    "rail_station": 60,
+    "water": 10
+  },
+  "map": {
+    "settlement": { "kind": "town", "evidence": "DERIVED", "confidence": 0.9, "rationale": "A mapped settlement becomes a town at its mapped position; its game population is a balance assumption (see population_basis)." },
+    "landmark": { "kind": "sign", "evidence": "DERIVED", "confidence": 0.9, "rationale": "A mapped peak, hill or viewpoint is a landmark. It becomes a sign with its name and is never an industry; any mine or quarry nearby is a separate feature with its own evidence.", "max": 12 },
+    "extraction": { "kind": "industry", "role": "coal_mine", "substitute": true, "evidence": "HYPOTHETICAL", "confidence": 0.0, "rationale": "landuse=quarry records an extraction site (here sand, gravel, clay or stone), not its operator, output or whether it still operates. No temperate industry extracts or accepts aggregate or clay (src/table/build_industry.h), so the game gets a coal mine at the site as a gameplay stand-in; nothing says coal is mined there.", "max": 2 },
+    "protected_area": { "kind": "sign", "evidence": "DERIVED", "confidence": 0.9, "rationale": "A mapped nature reserve or protected area is a landmark: a sign with its name, never an industry and never built on by this compiler.", "max": 12 },
+    "power_plant": { "kind": "industry", "role": "power_station", "evidence": "INFERRED", "confidence": 0.55, "rationale": "A mapped fuel-burning power plant (plant:source coal, gas, oil, waste or biomass) is the game's power station. That it accepts coal is the game's rule, not the plant's fuel, so the role is inferred, not derived.", "max": 2 },
+    "power_plant_other": { "kind": "none", "evidence": "OBSERVED", "confidence": 1.0, "rationale": "A solar, hydro, wind or battery plant burns no cargo; the game has no industry for it, so it is not represented." },
+    "sawmill": { "kind": "industry", "role": "sawmill", "evidence": "DERIVED", "confidence": 0.7, "rationale": "A mapped sawmill becomes the game's sawmill.", "max": 2 },
+    "works": { "kind": "industry", "role": "factory", "substitute": true, "evidence": "HYPOTHETICAL", "confidence": 0.0, "rationale": "man_made=works records a plant whose product (electronics, metal, food, ...) the temperate factory (grain, livestock and steel to goods) does not make; the game's factory at the site is a gameplay stand-in.", "max": 2 },
+    "industrial_area": { "kind": "industry", "role": "factory", "substitute": true, "evidence": "HYPOTHETICAL", "confidence": 0.0, "rationale": "landuse=industrial records land use, not a business. The largest area hosts the game's factory as a gameplay stand-in consumer of farm cargo.", "max": 1 },
+    "farmland": { "kind": "industry", "role": "farm", "evidence": "DERIVED", "confidence": 0.6, "rationale": "Mapped farmland becomes the game's farm at the centre of its bounding box; production volume is the game's, not the field's.", "max": 4 },
+    "forest": { "kind": "industry", "role": "forest", "evidence": "DERIVED", "confidence": 0.65, "rationale": "A mapped forest becomes the game's forest at the centre of its bounding box; whether it is logged is not known.", "max": 3 },
+    "rail_station": { "kind": "none", "evidence": "OBSERVED", "confidence": 1.0, "rationale": "Mapped railway stations are not built; they are the connectivity basis of the economy edges they lie near." },
+    "water": { "kind": "none", "evidence": "OBSERVED", "confidence": 1.0, "rationale": "An OpenTTD heightmap has water only at height 0 (sea level), so inland lakes and reservoirs above sea level cannot be represented." }
+  },
+  "settlement": {
+    "population_scale": 1.0,
+    "population_exponent": 0.66,
+    "min_population": 150,
+    "max_population": 4000,
+    "default_population": { "city": 100000, "town": 8000, "village": 600, "suburb": 8000 },
+    "city_from_population": 100000,
+    "max_towns": 14,
+    "part_of_city_places": ["suburb"],
+    "whole_places": ["city", "town"],
+    "min_spacing_tiles": 14
+  },
+  "economy": {
+    "max_consumers_per_cargo": 2,
+    "max_edge_tiles": 200,
+    "passenger_min_tiles": 14,
+    "passenger_max_tiles": 180,
+    "passenger_pairs": 10,
+    "goods_town_min_population": 1000,
+    "station_radius_tiles": 8
+  },
+  "heightmap": { "metres_per_level": 15.0, "min_levels": 4, "max_levels": 64 },
+  "border_tiles": 3,
+  "industry_spacing_tiles": 9,
+  "sign_spacing_tiles": 10
+}

@@ -1,0 +1,691 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "real-world-scenario/v1",
+  "title": "Real-world snapshot and compiled OpenTTD scenario (RESEARCH-ONLY)",
+  "description": "The canonical contract of tools/research/real-world (rw-scenario). A snapshot (real-world-snapshot/v1) is what was acquired for one place, with its provenance; a scenario (real-world-scenario/v1) is what the offline compiler made of it. Implementation and the stricter checks (ordering, hashes, evidence rules): tools/research/real-world/src/model.rs, snapshot.rs (validate) and compile.rs (validate). Ordering: features by id, entities by id, edges by id; tag maps are sorted by key; coordinates are WGS84 degrees with 7 decimals (grid points 5); elevation in decimetres. A snapshot whose content_sha256 does not match its content is invalid. Providers and layers come from tools/research/real-world/providers.v1.json. Raw provider payloads are never part of either document; only their SHA-256.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/snapshot"
+    },
+    {
+      "$ref": "#/$defs/scenario"
+    }
+  ],
+  "$defs": {
+    "evidence": {
+      "enum": [
+        "OBSERVED",
+        "DERIVED",
+        "INFERRED",
+        "HYPOTHETICAL"
+      ],
+      "description": "OBSERVED: the source records it. DERIVED: a deterministic rule made a game construct of the same kind from an observed fact. INFERRED: a judgement under uncertainty (a role the source does not state, a default for a missing value, a proximity link). HYPOTHETICAL: invented for playability, no source supports it."
+    },
+    "latlon": {
+      "type": "object",
+      "required": [
+        "lat",
+        "lon"
+      ],
+      "properties": {
+        "lat": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        }
+      }
+    },
+    "bbox": {
+      "type": "object",
+      "required": [
+        "south",
+        "west",
+        "north",
+        "east"
+      ],
+      "properties": {
+        "south": {
+          "type": "number"
+        },
+        "west": {
+          "type": "number"
+        },
+        "north": {
+          "type": "number"
+        },
+        "east": {
+          "type": "number"
+        }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "const": "rw-scenario"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "extent": {
+      "type": "object",
+      "required": [
+        "crs",
+        "side_m",
+        "bbox",
+        "map_size",
+        "metres_per_tile"
+      ],
+      "properties": {
+        "crs": {
+          "type": "object",
+          "required": [
+            "id",
+            "description",
+            "origin",
+            "radius_m"
+          ],
+          "properties": {
+            "id": {
+              "const": "local-eqr/v1"
+            },
+            "origin": {
+              "$ref": "#/$defs/latlon"
+            },
+            "radius_m": {
+              "type": "number"
+            }
+          }
+        },
+        "side_m": {
+          "type": "number",
+          "minimum": 4000,
+          "maximum": 80000
+        },
+        "bbox": {
+          "$ref": "#/$defs/bbox"
+        },
+        "map_size": {
+          "enum": [
+            64,
+            128,
+            256,
+            512,
+            1024,
+            2048,
+            4096
+          ]
+        },
+        "metres_per_tile": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "rank",
+        "id",
+        "name",
+        "display_name",
+        "category",
+        "kind",
+        "place_rank",
+        "importance",
+        "country_code",
+        "bbox",
+        "center",
+        "settlement"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^osm:(node|way|relation)/[0-9]+$"
+        },
+        "importance": {
+          "type": "number"
+        },
+        "settlement": {
+          "type": "boolean"
+        },
+        "bbox": {
+          "$ref": "#/$defs/bbox"
+        },
+        "center": {
+          "$ref": "#/$defs/latlon"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "provider",
+        "endpoint",
+        "layer",
+        "retrieved_at",
+        "license",
+        "attribution",
+        "allowed_purpose",
+        "retention",
+        "redistribution",
+        "completeness",
+        "requests",
+        "raw_sha256",
+        "terms_checked",
+        "diagnostics"
+      ],
+      "properties": {
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completeness": {
+          "enum": [
+            "complete",
+            "partial",
+            "failed"
+          ]
+        },
+        "retrieved_at": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+        },
+        "raw_sha256": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "kind": {
+          "enum": [
+            "geocoder",
+            "vector",
+            "elevation"
+          ],
+          "description": "the layer kind from tools/research/real-world/providers.v1.json; snapshots are validated by kind, never by provider id"
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "required": [
+        "id",
+        "class",
+        "at",
+        "bbox_area_m2",
+        "tags",
+        "source",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^osm:(node|way|relation)/[0-9]+$"
+        },
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "at": {
+          "$ref": "#/$defs/latlon"
+        },
+        "bbox": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/bbox"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "const": "OBSERVED"
+        }
+      }
+    },
+    "transformation": {
+      "type": "object",
+      "required": [
+        "seq",
+        "step",
+        "tool",
+        "params",
+        "output_sha256",
+        "diagnostics"
+      ],
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "tool": {
+          "$ref": "#/$defs/tool"
+        },
+        "output_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "required": [
+        "schema",
+        "tool",
+        "request",
+        "resolution",
+        "extent",
+        "sources",
+        "elevation",
+        "features",
+        "transformations",
+        "content_sha256"
+      ],
+      "properties": {
+        "schema": {
+          "const": "real-world-snapshot/v1"
+        },
+        "tool": {
+          "$ref": "#/$defs/tool"
+        },
+        "request": {
+          "type": "object",
+          "required": [
+            "query",
+            "map_size",
+            "elevation_grid",
+            "margin",
+            "pick"
+          ]
+        },
+        "resolution": {
+          "type": "object",
+          "required": [
+            "provider",
+            "source",
+            "candidates",
+            "chosen",
+            "ambiguous",
+            "rule",
+            "reason"
+          ],
+          "properties": {
+            "candidates": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/candidate"
+              }
+            },
+            "chosen": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "ambiguous": {
+              "type": "boolean"
+            },
+            "rule": {
+              "const": "dominant-settlement/v1"
+            }
+          }
+        },
+        "extent": {
+          "$ref": "#/$defs/extent"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "elevation": {
+          "type": "object",
+          "required": [
+            "source",
+            "grid",
+            "decimetres"
+          ],
+          "properties": {
+            "grid": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 257
+            },
+            "decimetres": {
+              "type": "array",
+              "items": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/feature"
+          }
+        },
+        "transformations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/transformation"
+          }
+        },
+        "content_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "entity": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "game",
+        "tile",
+        "evidence_feature",
+        "anchor_feature",
+        "source_label",
+        "evidence",
+        "confidence",
+        "rationale",
+        "rule",
+        "population",
+        "population_basis",
+        "city"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(town|industry|sign):"
+        },
+        "game": {
+          "type": "object",
+          "required": [
+            "kind",
+            "role",
+            "produces",
+            "accepts"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "town",
+                "industry",
+                "sign"
+              ]
+            },
+            "produces": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Z_]{4}$"
+              }
+            },
+            "accepts": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Z_]{4}$"
+              }
+            }
+          }
+        },
+        "tile": {
+          "type": "object",
+          "required": [
+            "x",
+            "y"
+          ],
+          "properties": {
+            "x": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "y": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "evidence_feature": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "the feature that is evidence for the entity as it is in the game; null exactly when evidence is HYPOTHETICAL"
+        },
+        "evidence": {
+          "enum": [
+            "DERIVED",
+            "INFERRED",
+            "HYPOTHETICAL"
+          ],
+          "description": "a game entity is never OBSERVED; its source feature is"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rule": {
+          "type": "string",
+          "pattern": "@rw-rules/"
+        },
+        "anchor_feature": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "the feature whose position the entity takes; a HYPOTHETICAL gameplay stand-in names its site here and nothing as evidence"
+        },
+        "site": {
+          "description": "The anchor feature's mapped extent in tiles (inclusive bounding box); absent for a point anchor or none.",
+          "type": "object",
+          "required": [
+            "x0",
+            "y0",
+            "x1",
+            "y1"
+          ],
+          "properties": {
+            "x0": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "y0": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "x1": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "y1": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": [
+        "id",
+        "from",
+        "to",
+        "cargo",
+        "distance_tiles",
+        "basis",
+        "evidence",
+        "confidence"
+      ],
+      "properties": {
+        "evidence": {
+          "enum": [
+            "INFERRED",
+            "HYPOTHETICAL"
+          ]
+        },
+        "cargo": {
+          "type": "string",
+          "pattern": "^[A-Z_]{4}$"
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "required": [
+        "schema",
+        "tool",
+        "rules",
+        "snapshot_sha256",
+        "query",
+        "chosen",
+        "extent",
+        "heightmap",
+        "settings",
+        "entities",
+        "economy",
+        "lost_detail",
+        "attribution",
+        "transformations",
+        "artifacts",
+        "diagnostics"
+      ],
+      "properties": {
+        "schema": {
+          "const": "real-world-scenario/v1"
+        },
+        "tool": {
+          "$ref": "#/$defs/tool"
+        },
+        "rules": {
+          "type": "object",
+          "required": [
+            "id",
+            "version",
+            "sha256"
+          ]
+        },
+        "snapshot_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "extent": {
+          "$ref": "#/$defs/extent"
+        },
+        "heightmap": {
+          "type": "object",
+          "required": [
+            "file",
+            "sha256",
+            "width",
+            "height",
+            "min_elevation_m",
+            "max_elevation_m",
+            "levels",
+            "metres_per_level",
+            "grey_rule"
+          ]
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/entity"
+          }
+        },
+        "economy": {
+          "type": "object",
+          "required": [
+            "edges",
+            "isolated",
+            "chains"
+          ],
+          "properties": {
+            "edges": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/edge"
+              }
+            },
+            "isolated": {
+              "type": "array",
+              "maxItems": 0
+            }
+          }
+        },
+        "attribution": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "file",
+              "sha256",
+              "purpose"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

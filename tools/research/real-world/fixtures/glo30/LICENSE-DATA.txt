@@ -1,0 +1,14 @@
+N49_00_E016_00.header.bin is the first 1280 bytes of
+https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N49_00_E016_00_DEM/Copernicus_DSM_COG_10_N49_00_E016_00_DEM.tif
+(read with one anonymous range request on 2026-11-19): the TIFF directories only (size, tiling,
+compression, predictor, georeferencing and tile offsets), no elevation values. It is kept as the
+offline test of the COG reader (src/cog.rs).
+
+Copernicus DEM GLO-30 (Copernicus WorldDEM™-30): © DLR e.V. 2010-2014 and © Airbus Defence and Space
+GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved.
+"The organisations in charge of the Copernicus programme by law or by delegation do not incur any
+liability for any use of the Copernicus WorldDEM-30". This work is not endorsed by Airbus Defence and
+Space GmbH, the European Union, ESA, any other entity in charge of the Copernicus programme, or the
+OpenStreetMap Foundation. Subsequent users who redistribute it are bound by the same obligations
+(Copernicus DEM GLO-30-F licence, Art. 6). Copernicus is a trade mark owned by the European Union;
+WorldDEM™ is a trade mark owned by Airbus Defence and Space GmbH.

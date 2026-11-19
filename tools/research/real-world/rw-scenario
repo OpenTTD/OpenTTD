@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY. Entry point of the real-world scenario pipeline (research/real-world-scenario.md).
+# Builds the Rust tool on first use (offline, its own target directory), then runs it with the
+# arguments given and exits with its exit code. `rw-scenario help` lists the commands.
+#
+#   tools/research/real-world/rw-scenario compile --snapshot tools/research/real-world/fixtures/brno/snapshot.json --out build-real-world/brno
+#   tools/research/real-world/rw-scenario replay  --snapshot tools/research/real-world/fixtures/brno/snapshot.json --expect tools/research/real-world/fixtures/brno/SHA256SUMS
+#   tools/research/real-world/rw-scenario acquire --live --query "Brno, Czech Republic" --out build-real-world/brno.snapshot.json
+#
+# The network is used only by `acquire --live` and `resolve --live`.
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BIN="$HERE/target/debug/rw-scenario"
+if [[ ! -x "$BIN" || -n "$(find "$HERE/src" "$HERE/Cargo.toml" -newer "$BIN" 2>/dev/null | head -1)" ]]; then
+  echo "rw-scenario: building (cargo build --offline, $HERE/target)" >&2
+  CARGO_TARGET_DIR="$HERE/target" cargo build --offline --quiet --manifest-path "$HERE/Cargo.toml" >&2
+fi
+exec "$BIN" "$@"

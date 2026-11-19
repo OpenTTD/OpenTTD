@@ -17,6 +17,9 @@ docs/source/*
 /tools/research/mcp-panel/node_modules/
 /tools/research/mcp-rhai/target/
 /tools/research/mcp-human/target/
+# tools/research/real-world: its cargo target and the network cache of `acquire --live`
+/tools/research/real-world/target/
+/tools/research/real-world/.cache/
 /tools/research/mcp-panel/__pycache__/
 
 # Published surfaces (tools/surfaces): generated output, the Python environment, the asset tree

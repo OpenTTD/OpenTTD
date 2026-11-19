@@ -1,0 +1,45 @@
+{
+  "schema": "rw-providers/v1",
+  "description": "RESEARCH-ONLY. The one table of providers and layers rw-scenario may use. Validation goes by layer kind (geocoder, vector, elevation), never by provider id, so a provider is swapped here and nowhere else. terms_checked says when and where the terms were read; a row whose terms were not re-read says so.",
+  "providers": [
+    {
+      "id": "nominatim-search",
+      "kind": "geocoder",
+      "layer": "place-candidates",
+      "provider": "Nominatim (OpenStreetMap Foundation)",
+      "endpoint": "https://nominatim.openstreetmap.org/search",
+      "license": "ODbL-1.0 (Open Database License)",
+      "attribution": "Place candidates: Nominatim, data © OpenStreetMap contributors, ODbL 1.0, https://www.openstreetmap.org/copyright",
+      "allowed_purpose": "occasional single-place search under the usage policy https://operations.osmfoundation.org/policies/nominatim/ : at most 1 request a second, identifying User-Agent, results cached, no bulk, no autocomplete, no systematic queries",
+      "retention": "results cached by the client, as the usage policy requires",
+      "redistribution": "allowed under ODbL with attribution and share-alike",
+      "terms_checked": "https://operations.osmfoundation.org/policies/nominatim/ read 2026-11-18 (session openttd-07)"
+    },
+    {
+      "id": "overpass-features",
+      "kind": "vector",
+      "layer": "vector-features",
+      "provider": "Overpass API (overpass-api.de) over OpenStreetMap",
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "license": "ODbL-1.0 (Open Database License)",
+      "attribution": "Map data © OpenStreetMap contributors, ODbL 1.0, https://www.openstreetmap.org/copyright",
+      "allowed_purpose": "one bounded serial query per snapshot, far under the fair-use guide (< 10 000 queries and < 1 GB a day; regular use a hundredth of that); back off 30 s after HTTP 429",
+      "retention": "raw answer cached locally (ignored by git); the snapshot keeps normalised features only",
+      "redistribution": "allowed under ODbL with attribution and share-alike; the fixture is an ODbL extract",
+      "terms_checked": "https://wiki.openstreetmap.org/wiki/Overpass_API read 2026-11-18 (session openttd-07)"
+    },
+    {
+      "id": "copernicus-glo30-aws",
+      "kind": "elevation",
+      "layer": "elevation",
+      "provider": "Copernicus DEM GLO-30 (Copernicus WorldDEM™-30), AWS Open Data bucket copernicus-dem-30m",
+      "endpoint": "https://copernicus-dem-30m.s3.amazonaws.com/",
+      "license": "Copernicus DEM GLO-30-F licence (COP-DEM-GLO-30-F, Global 30m Full, Free & Open): free, worldwide, reproduction, distribution, communication to the public and adaptation allowed (Art. 3-5) under the notices of Art. 6",
+      "attribution": "Elevation: Copernicus DEM GLO-30 (Copernicus WorldDEM™-30), resampled and quantised; \"produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved\". \"The organisations in charge of the Copernicus programme by law or by delegation do not incur any liability for any use of the Copernicus WorldDEM-30\". This work is not endorsed by Airbus Defence and Space GmbH, the European Union, ESA, any other entity in charge of the Copernicus programme, or the OpenStreetMap Foundation. Subsequent users who redistribute this data are bound by the same obligations (Copernicus DEM GLO-30-F licence, Art. 6). Copernicus is a trade mark owned by the European Union; WorldDEM™ is a trade mark owned by Airbus Defence and Space GmbH.",
+      "allowed_purpose": "anonymous HTTPS range reads of the Cloud Optimized GeoTIFF tiles covering the extent, no account (AWS Open Data); only the TIFF directories and the internal tiles the sample grid needs are read, never a whole file that is not needed; a Digital Surface Model (buildings and canopy included)",
+      "retention": "the bytes read are cached locally (ignored by git); the snapshot keeps the sampled grid and the SHA-256 of every range read",
+      "redistribution": "allowed with the Art. 6 notices; Subsequent Users are bound by the same obligations (Art. 6(e))",
+      "terms_checked": "the Copernicus DEM GLO-30-F licence (Art. 3-6, from the Copernicus Data Space licence PDF) read 2026-11-18 by session openttd-80 and its Art. 6 re-read verbatim 2026-11-19 by session openttd-07 from that copy; https://registry.opendata.aws/copernicus-dem/ read 2026-11-18 (session openttd-07): GLO-30 public, no AWS account required"
+    }
+  ]
+}

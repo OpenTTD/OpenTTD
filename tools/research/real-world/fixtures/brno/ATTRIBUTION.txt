@@ -1,0 +1,18 @@
+Brno snapshot (snapshot.json), acquired by tools/research/real-world/rw-scenario.
+
+Map data and place candidates © OpenStreetMap contributors, available under the Open Database
+License 1.0 (ODbL): https://opendatacommons.org/licenses/odbl/1-0/ ,
+https://www.openstreetmap.org/copyright . Place search through Nominatim under its usage policy:
+https://operations.osmfoundation.org/policies/nominatim/
+
+Elevation: Copernicus DEM GLO-30 (Copernicus WorldDEM™-30), read from the AWS Open Data bucket
+copernicus-dem-30m and resampled: "produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and
+© Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA;
+all rights reserved". "The organisations in charge of the Copernicus programme by law or by
+delegation do not incur any liability for any use of the Copernicus WorldDEM-30". This work is not
+endorsed by Airbus Defence and Space GmbH, the European Union, ESA, any other entity in charge of the
+Copernicus programme, or the OpenStreetMap Foundation. Copernicus is a trade mark owned by the
+European Union; WorldDEM™ is a trade mark owned by Airbus Defence and Space GmbH.
+
+Subsequent users who redistribute this data, changed or not, are bound by the same obligations
+(ODbL 1.0 share-alike; Copernicus DEM GLO-30-F licence Art. 6(e)).

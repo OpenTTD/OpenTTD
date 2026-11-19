@@ -26,6 +26,7 @@
     { key: 'results', href: '/results', label: 'Duels', title: 'Duels' },
     { key: 'data', href: '/data', label: 'Data: query the event store', title: 'Data' },
     { key: 'scripts', href: '/scripts', label: 'Scripts: Rhai editor and services', title: 'Scripts' },
+    { key: 'realworld', href: '/realworld', label: 'Real world: places as maps', title: 'Real world' },
     { key: 'docs', href: '/docs', label: 'API (OpenAPI, Swagger UI)', title: 'API' },
   ];
 

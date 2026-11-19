@@ -1,0 +1,6 @@
+nominatim.json is one Nominatim search answer ("Springfield", format=jsonv2, limit=10, fetched
+2026-11-18T07:19Z with the User-Agent "openttd-real-world-research/0.1 (research fork)"), kept as the
+offline test of an ambiguous place. It is OpenStreetMap data under the Open Database License 1.0:
+  https://opendatacommons.org/licenses/odbl/1-0/
+Data © OpenStreetMap contributors, https://www.openstreetmap.org/copyright
+Nominatim usage policy: https://operations.osmfoundation.org/policies/nominatim/

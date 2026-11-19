@@ -39,6 +39,9 @@ Usage: $SELF <smoke|change|research|full> [options]
             file this change touches (tools/knowledge/refs impact HEAD)
             and how many src/ files no subsystem map tracks
             (tools/knowledge/refs coverage src/, informational).
+            When the change touches tools/research/real-world, also runs its
+            cargo tests and replays the Brno snapshot against its recorded
+            hashes (offline).
             Names the research tier when the change touches research-gated
             code.
 
@@ -200,6 +203,23 @@ panel_tests() {
   PANEL_CSS_CHECK="$css" node --test "$dir"/test/*.test.mjs
 }
 
+# Whether this change, staged or not, touches the real-world scenario pipeline.
+real_world_changed() {
+  { git diff --name-only HEAD 2>/dev/null; git ls-files --others --exclude-standard; } \
+    | grep -qE '^tools/research/real-world/|^tools/research/schema/real-world-scenario\.'
+}
+
+# The pipeline's own proof (research/real-world-scenario.md): its offline tests (determinism,
+# replay, licensing, provenance, evidence rules, the schema) and a replay of the committed snapshot
+# against the hashes recorded with it. Offline: nothing here uses the network.
+real_world_tests() {
+  local dir=tools/research/real-world
+  echo "==> cargo test --offline ($dir)"
+  (cd "$dir" && CARGO_TARGET_DIR="$PWD/target" cargo test --offline --quiet)
+  echo "==> $dir/rw-scenario replay --expect $dir/fixtures/brno/SHA256SUMS"
+  "$dir/rw-scenario" replay --snapshot "$dir/fixtures/brno/snapshot.json" --expect "$dir/fixtures/brno/SHA256SUMS" >/dev/null
+}
+
 cmd_smoke() {
   local ctest_regex=""
   while [[ $# -gt 0 ]]; do
@@ -249,6 +269,7 @@ cmd_change() {
   echo "==> python3 -B -m unittest discover -s tools/research -p 'test_*.py' (research tool tests)"
   python3 -B -m unittest discover -s tools/research -p 'test_*.py'
   if panel_changed; then panel_tests; fi
+  if real_world_changed; then real_world_tests; fi
 
   if [[ ! -f build/CMakeCache.txt ]]; then
     echo "==> cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo (initial configure)"

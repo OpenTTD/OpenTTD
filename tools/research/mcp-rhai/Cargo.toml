@@ -18,6 +18,9 @@ libc = "0.2"
 zeromq = { version = "0.7", default-features = false, features = ["tokio-runtime", "tcp-transport"] }
 tokio = { version = "1", default-features = false, features = ["rt", "sync", "time"] }
 bytes = "1"
+# The real-world scenario compiler (tools/research/real-world), linked so the panel serves the one
+# implementation instead of a copy (src/panel_realworld.rs).
+rw-scenario = { path = "../real-world", default-features = false }
 # ... and into a DuckDB file per instance, linked against the system libduckdb 1.5 (Homebrew; build.rs
 # finds it), never the bundled C++ build. The crate's version 1.105xx.y is DuckDB 1.5.xx.
 duckdb = { version = "=1.10505.0", default-features = false, optional = true }
