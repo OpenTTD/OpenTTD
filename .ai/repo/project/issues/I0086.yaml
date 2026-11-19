@@ -38,4 +38,23 @@ evidence_required:
 created_at: '2026-11-18'
 started_at: 2026-11-19T04:14:37Z
 started_event: sha256:6ff8c066a648565319c5595fff4789bddb7012bbf05727441119ab5869cfdaf5
-updated_at: 2026-11-19T04:14:37Z
+updated_at: 2026-11-19T04:18:16Z
+verified_at: 2026-11-19T04:18:00Z
+verified_event: sha256:c5bcd441980d6e035d947faf544c87976949408cdc138fd4d3d719a3a092a479
+completed_at: 2026-11-19T04:18:16Z
+completed_event: sha256:6dcd46dc6cfe09b3ece3529044ab2015605e63aa6e1d98b62f53d0b78391567e
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel; --bin mcp-kernel-feed"
+    result: "this Mac at c166c8d8db (on origin/master e93942533b): mcp-panel 118 passed, incl. kernel_feed's 7 tests (now compiled into mcp-panel), an action plan's books built from fixed rows of an in-memory DuckDB store with two runs (newest day of the latest run, 4 rows named in plan.action's inputs.stored), the store-off, no-day and caller-gave-both fallbacks, and plan.portfolio's kernel_runner; mcp-kernel-feed 22 passed"
+    artifact: "c166c8d8dbb222109cbd22d2ebb4234087b1b611"
+    commit: c166c8d8dbb222109cbd22d2ebb4234087b1b611
+    recorded_at: 2026-11-19T04:18:05Z
+  - covers: "validation_run"
+    type: artifact
+    command: "PATH=<npm-logging shim>:$PATH [MCP_ALGOGLYPH_SERVE=1] mcp-plan --panel http://127.0.0.1:8800 --limit 40 --params '{\"budget\":300000}' --track 16 (the planned bot start's planner arguments, both arms started at the same moment); echo <action-plan request> | mcp-kernel-feed --panel http://127.0.0.1:8800 --no-bus [--no-store] (read-only, no --publish)"
+    result: "criterion 1, with MCP_ALGOGLYPH_SERVE=1 (off by default; the held-start parity duel pair that would make it the default was NOT RUN: 34 GiB free, below 35): 1 npm process (flow -- serve) answered all 22 kernel calls (21 track-planning, 1 knapsack-dp), 0 fallbacks, 53 s; unset: 22 npm processes (flow -- kernel), 107 s; answers identical apart from the algoglyph key. Criteria 2 and 3 on :8800's store: plan.kernel for action-plan carried the samples query, rows 30, from_store 30, newest day 1965-03-22; with --no-store and the books given, the kernel answered as before (5 steps) and the event said fallback: the store is switched off for this feeder (--no-store)"
+    artifact: "research/mcp-control.md#algoglyph-fed-from-the-store-one-flow-serve-trailing-samples-i0086"
+    commit: c166c8d8dbb222109cbd22d2ebb4234087b1b611
+    recorded_at: 2026-11-19T04:18:08Z
