@@ -18,4 +18,6 @@ broadcast:
   mode: disabled
 trust:
   policy: deny_unknown
-  allow: []
+  allow:
+    # 5d81b5c9 — Tomass-MacBook-Pro.local (macos aarch64)
+    - "3f7b357805aa15ecdb3c1ace7e7ac02de263e3d0def8aafda9ad280d3af7c813"
