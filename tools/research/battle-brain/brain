@@ -15,18 +15,26 @@ export ASDF_ELIXIR_VERSION="${ASDF_ELIXIR_VERSION:-1.19.0-otp-28}" ASDF_ERLANG_V
 EVERY=0
 [[ "${1:-}" == "--every" ]] && EVERY="${2:?--every needs seconds}"
 
+# Only the newest editions train the brain ($BRAIN_EDITIONS, default 10): before 46dd8814f9 every
+# edition replayed the same 6-8 seeds, so older rows teach those maps, and "safe" picks learned
+# there failed on fresh maps (GA g30.brainSafe/brainSafe1 each ended last once).
+POSTMORTEM="${BRAIN_POSTMORTEM:-$HERE/../mcp-rhai/target/release/battle-postmortem}"
+KEEP="${BRAIN_EDITIONS:-10}"
+
 once() {
   local tmp; tmp="$(mktemp -d)"
+  local eds; eds="$("$POSTMORTEM" editions | head -n "$KEEP" | sed "s/.*/'&'/" | paste -sd, -)"
+  [[ -n "$eds" ]] || { echo "battle-brain: no editions in the store" >&2; return 1; }
   # The target is paired: a variant's value share divided by the default PrismaticAI's on the same
   # edition and seed (the signal that held: GA g14.0 won 20/20 paired seeds). Unpaired rows are left out.
   duckdb -readonly "$RESULTS/analytics.duckdb" -csv \
     "WITH a AS (SELECT a.edition, a.seed, a.contestant, c.settings, a.value_share_of_winner AS s
                 FROM analyses a JOIN contestants c USING (edition, contestant)
-                WHERE c.prismatic AND a.value_share_of_winner > 0 AND a.seed IS NOT NULL),
+                WHERE c.prismatic AND a.value_share_of_winner > 0 AND a.seed IS NOT NULL AND a.edition IN ($eds)),
           d AS (SELECT edition, seed, s FROM a WHERE contestant = 'PrismaticAI')
      SELECT a.edition, a.contestant, a.settings, a.s / d.s AS share
      FROM a JOIN d USING (edition, seed) WHERE a.contestant <> 'PrismaticAI'" > "$tmp/rows.csv"
-  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed"
+  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions"
   curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json"
   local args=()
   for l in nx exla axon polaris complex telemetry xla elixir_make nimble_pool jason; do args+=(-pa "$LIBS/$l/ebin"); done

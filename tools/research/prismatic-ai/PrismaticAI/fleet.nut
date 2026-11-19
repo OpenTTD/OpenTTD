@@ -110,6 +110,18 @@ function PrismaticAI::InvestSurplus(b) {
 function PrismaticAI::ManageFleet(reserve) {
 	local routes = {};
 	local list = AIVehicleList();
+	/* Planes per air route that are not on their way to be sold. With air_keep_last on (AIR_KEEP_LAST,
+	 * main.nut) the last one is never sold: on
+	 * OpenTTD seed 725554694 (company 2) every plane lost money in 1964-66, the seller took the last
+	 * of each route, and with no plane left to clone the company never flew again and ended among
+	 * the weakest AIs. The default, which kept one plane on its first route, grew it back to 12
+	 * planes at 23k a year each. */
+	local flying = {};
+	for (local v = list.Begin(); !list.IsEnd(); v = list.Next()) {
+		if (AIVehicle.GetVehicleType(v) != AIVehicle.VT_AIR || this.selling.rawin(v)) continue;
+		local k = PrismaticAI.RouteKey(v);
+		flying[k] <- (flying.rawin(k) ? flying[k] : 0) + 1;
+	}
 	for (local v = list.Begin(); !list.IsEnd(); v = list.Next()) {
 		/* Selling: two years old, losing money last year and this year. */
 		if (this.selling.rawin(v)) {
@@ -121,7 +133,10 @@ function PrismaticAI::ManageFleet(reserve) {
 			continue;
 		}
 		if (AIVehicle.GetAge(v) > 730 && AIVehicle.GetProfitLastYear(v) < 0 && AIVehicle.GetProfitThisYear(v) < 0) {
+			local air = AIVehicle.GetVehicleType(v) == AIVehicle.VT_AIR;
+			if (air && AIR_KEEP_LAST == 1 && flying[PrismaticAI.RouteKey(v)] <= 1) continue; /* the route's last plane */
 			if (AIVehicle.SendVehicleToDepot(v)) {
+				if (air) flying[PrismaticAI.RouteKey(v)]--;
 				this.selling[v] <- true;
 				AILog.Info("PrismaticAI: fleet: vehicle " + v + " lost money two years running; sending it to be sold");
 			}

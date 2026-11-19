@@ -143,6 +143,11 @@ defaults are its genes:
 - invest_air_cap 12, invest_borrow 1, invest_min 50 (thousand), invest_ppv_div 2, invest_road_cap 20,
 - line_budget 90000,
 - the autopilot's own-lines floor 10.
+Caveat (2026-11-19, later): those 20 pairs came from editions before 46dd8814f9, which replayed
+the same 6-8 seeds, so the result is partly fitted to those maps. Once every generation met
+new maps, the champion was even with `PrismaticAI pre-champion` (4 of 10 pairs). Pre-champion
+stays an anchor until 16 or more pairs on new maps exist, and then the promotion rule decides.
+The battle brain also learns only from the newest 10 editions (BRAIN_EDITIONS).
 max_routes and cash_reserve stay under the autopilot's floors. In short: fewer air routes, and
 investment that starts earlier, accepts lower returns, borrows, and lets routes grow further.
 
@@ -164,6 +169,38 @@ Fixes:
 Replaying 3 years of that seed raised the default's value from 1 to 318k (8 trains, 2 planes).
 Seeds 930967890 and 31337 were unchanged over 6 years. A cap of 60 everywhere cost those seeds
 38% and 8%, which is why it is raised only after the opener fails.
+
+**The seller killed air for good (2026-11-19).** In edition 6779ebec, two GA variants ended last
+on two maps, both without a single plane. Replays need the arena's start order, because the first
+company to start takes the first airport sites (`battle.py ablate --slot N`). With that order, the
+20-year replay of seed 725554694, company 2, reproduced the arena exactly: 62 vehicles and no
+plane.
+
+Every plane lost money in 1964-66, and the fleet seller also sold each route's last one. With no
+plane left to clone, the company never flew again. The default had kept one plane on its first
+route and grew it back to 12 planes at 23k a year each.
+
+The new setting `air_keep_last` (on by default, a GA gene) keeps the last plane of an air route.
+Default bot over 20 years, before -> after:
+
+| Seed | Before | After |
+|---|---|---|
+| 930967890 | 15.6M | 15.3M |
+| 31337 | 13.6M | 12.7M |
+| 496519251 | 3.2M | 5.9M |
+| 725554694 (slot 2) | 5.9M | 4.5M |
+
+The sum is unchanged and the worst seed is up 39%. g26.0 on seed 725554694 went from 1.3M with
+no plane to 3.4M with 16 planes. Single seeds are a direction, not a verdict; the GA decides the
+gene on paired matches.
+
+A caveat on any single replay: with `air_keep_last=0`, the committed code ends that seed at 2.2M
+with 8 planes, not at 1.3M with none like the code before it
+(`research/results/ablation-20261119T140023-seed725554694.md`). The only difference between the
+two is extra script work (counting planes). A script's operations decide on which tick its
+actions land, so any code change perturbs the whole game. A single-seed difference therefore
+mixes the change with this noise, which is why the GA and the promotion rule judge on many
+paired seeds.
 
 # How to apply it
 

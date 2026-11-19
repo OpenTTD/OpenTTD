@@ -1,0 +1,71 @@
+{
+ "schema": "ai-battle-ablation/v1",
+ "id": "ablation-20261119T140023-seed725554694",
+ "generated_at": "2026-11-19T14:00:23+00:00",
+ "seed": 725554694,
+ "years": 20,
+ "field": [
+  "CivilAI",
+  "AdmiralAI",
+  "AAAHogEx",
+  "LuDiAI AfterFix"
+ ],
+ "slot": 2,
+ "match_cfg": {
+  "years": 20,
+  "start_year": 1960,
+  "landscape": "temperate",
+  "map_x": 8,
+  "map_y": 8,
+  "breakdowns": 1
+ },
+ "rev": "59d0582b4259588f6795a21e1bffe39a872fed5a",
+ "tree_dirty": false,
+ "rows": [
+  {
+   "variant": "g26.0",
+   "settings": "aggressiveness=20,air_add_waiting=20,air_full_load=0,air_max_tiles=380,air_planes=1,air_routes_max=5,air_towns=25,cash_reserve=20000,catchment_stops=6,intercity=1,invest_air_cap=4,invest_borrow=1,invest_min=50,invest_ppv_div=4,invest_road_cap=10,line_budget=30000,max_routes=18,own_lines=20,rail_twin_max=16,self_steward=1,statue_money=1800",
+   "exit_code": 0,
+   "value": 3353348,
+   "money": 2843435,
+   "vehicles": 61,
+   "rail": 7,
+   "road": 38,
+   "air": 16,
+   "errors": 0,
+   "field_best": 85298419,
+   "t": "1980-01",
+   "vs_first": 0.0
+  },
+  {
+   "variant": "g26.0-sell-last",
+   "settings": "aggressiveness=20,air_add_waiting=20,air_full_load=0,air_max_tiles=380,air_planes=1,air_routes_max=5,air_towns=25,cash_reserve=20000,catchment_stops=6,intercity=1,invest_air_cap=4,invest_borrow=1,invest_min=50,invest_ppv_div=4,invest_road_cap=10,line_budget=30000,max_routes=18,own_lines=20,rail_twin_max=16,self_steward=1,statue_money=1800,air_keep_last=0",
+   "exit_code": 0,
+   "value": 2153134,
+   "money": 1814795,
+   "vehicles": 36,
+   "rail": 5,
+   "road": 23,
+   "air": 8,
+   "errors": 0,
+   "field_best": 79813546,
+   "t": "1980-01",
+   "vs_first": -0.3579
+  },
+  {
+   "variant": "default",
+   "settings": "",
+   "exit_code": 0,
+   "value": 4509983,
+   "money": 3457640,
+   "vehicles": 66,
+   "rail": 3,
+   "road": 29,
+   "air": 34,
+   "errors": 0,
+   "field_best": 90853670,
+   "t": "1980-01",
+   "vs_first": 0.3449
+  }
+ ]
+}
