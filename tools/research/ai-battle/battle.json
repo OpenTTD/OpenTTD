@@ -282,5 +282,11 @@
     "brain_file": "~/ttd-battle/results/brain.json",
     "brain_max_age_s": 7200,
     "last_penalty": 0.5
+  },
+  "promotion": {
+    "base": "PrismaticAI",
+    "min_pairs": 16,
+    "min_win_share": 0.8,
+    "min_ratio": 1.05
   }
 }

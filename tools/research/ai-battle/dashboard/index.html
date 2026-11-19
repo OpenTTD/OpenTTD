@@ -115,6 +115,7 @@
   <section class="panel wide"><h2><span>Live matches</span><span id="livecount"></span></h2><div class="live" id="live"></div></section>
   <section class="panel"><h2>Leaderboard</h2><div class="scroll" id="board"></div></section>
   <section class="panel"><h2>Alerts (self-monitoring)</h2><div class="alerts" id="alerts"></div></section>
+  <section class="panel wide"><h2><span>Paired with the default (common seeds)</span><span class="sub">what decides the next default</span></h2><div class="scroll" id="paired"></div></section>
   <section class="panel wide"><h2><span>Self-tuning (genetic algorithm)</span><span class="sub" id="gen"></span></h2><div class="scroll" id="tuning"></div></section>
   <section class="panel wide"><h2><span>Post-mortems: where each contestant lost to the winner</span><span class="sub">gap · behind since · findings</span></h2><div class="scroll" id="pm"></div></section>
   <section class="panel"><h2>Recent results</h2><div class="scroll" id="recent"></div></section>
@@ -258,6 +259,14 @@ function render(st) {
       <td class="num">${r.avg_rank ?? '–'}</td><td class="num">${num(r.avg_value)}</td>
       <td class="num">${r.anomalies ? `<span class="pill warn">${r.anomalies}</span>` : 0}</td></tr>`).join('')}</table>
     <div class="sub" style="margin-top:8px">Points per match: last place 0, each place above +1; ranked per match played, because the PrismaticAI configurations take turns. Matches that reached the final year count; replays don't. Anomalous: matches with a fleet drop, Squirrel errors or no vehicles.</div>`;
+
+  const promo = new Set((st.promotions || []).map((p) => p.contestant));
+  $('paired').innerHTML = (st.paired || []).length ? `<table><tr><th>contestant</th><th class="num">pairs</th><th class="num">wins</th><th class="num">mean ratio vs default</th><th></th></tr>
+    ${st.paired.map((r) => `<tr><td><span class="dot" style="background:${colour(r.contestant)}"></span>${esc(r.contestant)}</td>
+      <td class="num">${r.pairs}</td><td class="num">${r.wins}</td><td class="num"><b>${r.ratio}×</b></td>
+      <td>${promo.has(r.contestant) ? '<span class="pill" style="color:var(--ok)">PROMOTE candidate</span>' : ''}</td></tr>`).join('')}</table>
+    <div class="sub" style="margin-top:6px">A candidate needs ≥16 pairs, ≥80% wins and a mean ratio above 1.05 (battle.json promotion). It is proposed, never applied: a default changes through a commit.</div>`
+    : '<div class="empty">No finished pair yet.</div>';
 
   const tu = st.tuning;
   if (!tu) { $('tuning').innerHTML = '<div class="empty">Tuning is off (battle.json tuning.enabled).</div>'; $('gen').textContent = ''; }
