@@ -24,6 +24,10 @@
   <a href="#script-a-live-game-in-rhai"><b>Rhai</b></a> &nbsp;&middot;&nbsp;
   <a href="#plans-in-a-sentence"><b>Plans in a sentence</b></a> &nbsp;&middot;&nbsp;
   <a href="#the-planner-against-itself"><b>Bot duels</b></a> &nbsp;&middot;&nbsp;
+  <a href="#what-the-duels-have-taught-so-far"><b>Findings</b></a> &nbsp;&middot;&nbsp;
+  <a href="#rail-lines-that-pay"><b>Rail</b></a> &nbsp;&middot;&nbsp;
+  <a href="#every-event-on-a-bus-and-in-a-store"><b>Events</b></a> &nbsp;&middot;&nbsp;
+  <a href="#a-real-game-over-the-internet"><b>Real game</b></a> &nbsp;&middot;&nbsp;
   <a href="#beyond-the-game"><b>Beyond the game</b></a> &nbsp;&middot;&nbsp;
   <a href="#counted-from-the-source"><b>Numbers</b></a> &nbsp;&middot;&nbsp;
   <a href="#how-it-compares"><b>How it compares</b></a> &nbsp;&middot;&nbsp;
@@ -53,11 +57,20 @@ layers, each one usable on its own:
 - **The game decides what is allowed.** Every change an agent makes is a normal game command,
   held until the operator approves its exact arguments. No script and no model approves itself.
 
-On top of that sit a planner (AlgoGlyph) that prices track on the live map, a company AI that
-builds its plan with rail lines a train can always run, a Rhai steward that keeps each line paying,
-and recorded duels that measure whether the plan helps. How each idea carries over to the real
-world is [beyond the game](#beyond-the-game). The next step is a real game against real opponents
-over the internet, [prepared here](research/real-game.md).
+On top of that sit:
+
+- **a planner** (AlgoGlyph) that prices track tile by tile on the live map and picks a portfolio of
+  lines with a knapsack over the company's money;
+- **a company AI** ([PrismaticAI](tools/research/prismatic-ai/README.md)) that builds that plan with
+  [rail lines a train can always run](#rail-lines-that-pay), and a Rhai steward that keeps each line
+  paying;
+- **an event bus and a store** in every control panel: each event goes out on ZeroMQ and into a
+  DuckDB file, and planning decisions [read that history back](#every-event-on-a-bus-and-in-a-store);
+- **recorded duels** that measure whether the plan helps, and
+  [what they have taught so far](#what-the-duels-have-taught-so-far), negative results included.
+
+How each idea carries over to the real world is [beyond the game](#beyond-the-game). The next step
+is [a real game against real opponents over the internet](#a-real-game-over-the-internet).
 
 ## Three things to try
 
@@ -137,6 +150,15 @@ developer console. Examples from [`tools/research/mcp-panel/rhai/`](tools/resear
 | [`director.rhai`](tools/research/mcp-panel/rhai/director.rhai) | moves the owner's camera like a hand moves a mouse, to where the bot works, and follows its vehicles |
 | [`ask_relay.rhai`](tools/research/mcp-panel/rhai/ask_relay.rhai) | answers the questions asked from the fork's toolbar menu (*Ask the planner...*) inside the game |
 | [`build_plan.rhai`](tools/research/mcp-panel/rhai/build_plan.rhai) | carries a plain-language plan out: sends its settings to the bot, each waiting for approval |
+| [`rail_steward.rhai`](tools/research/mcp-panel/rhai/rail_steward.rhai) | keeps every rail line paying: reads the game each round, decides per line and hands the bot a target to reconcile |
+| [`rail_monitor.rhai`](tools/research/mcp-panel/rhai/rail_monitor.rhai) | watches the bot's railway in the background and posts what is wrong to the Majordomus board |
+| [`demo.rhai`](tools/research/mcp-panel/rhai/demo.rhai) | a game driven entirely from outside, from a new world to a final report |
+
+The libraries they import: [`ttd.rhai`](tools/research/mcp-panel/rhai/ttd.rhai) (high-level game
+commands), [`rail_lib.rhai`](tools/research/mcp-panel/rhai/rail_lib.rhai) (rail lines as pure
+data, shared by the steward and the monitor) and
+[`director_lib.rhai`](tools/research/mcp-panel/rhai/director_lib.rhai) (the director's event logic);
+`rail_lib` and `director_lib` are tested offline with `cargo test` in `tools/research/mcp-rhai`.
 
 ## Plans in a sentence
 
@@ -216,6 +238,186 @@ and company value ignores the track a company owns. Two runs of one unchanged bo
 ([knowledge record](.ai/repo/knowledge/curated/duels-run-side-by-side-are-noisy.md)), so a gain
 smaller than that is not told apart from noise. Each row links to the run's own write-up with
 both bots' logs; [`tools/research/mcp-duel`](tools/research/mcp-duel) reproduces one.
+
+## What the duels have taught so far
+
+A duel is a measurement, and most of what it has measured is how easy it is to fool yourself.
+Each finding below is a curated knowledge record that names its runs; the numbers are quoted from
+those records, and the rule [`project.a-tuning-claim-needs-held-start-pairs`](.ai/repo/rules/project/a-tuning-claim-needs-held-start-pairs.v1.md)
+decides when a measurement may change a default.
+
+| Finding | What was measured | So |
+|---|---|---|
+| **A held start makes two runs comparable** | A duel runs in wall-clock time, so on a loaded machine the planner's minutes became a different start tick: the same unplanned rival ended 52% apart in the two arms of one run. With the game paused while the planner plans and both bots start (`PRISMATIC_START_PAUSED`), two identical 6-month duels ended 0.2% apart. | every duel since 2026-11-17 starts held; over 120 months even held repeats drift by -7.6% to +11.4%, so a ten-year A/B is read against its rival's spread ([record](.ai/repo/knowledge/curated/duels-run-side-by-side-are-noisy.md)) |
+| **Rail a train can turn on pays** | The new rail geometry against the previous bot, held-start pairs on seeds 4242, 31337 and 20208, 24 months: +25%, +48% and +78%. It starts behind, because two-platform termini cost more, and overtakes by month 18. | the geometry is the default ([record](.ai/repo/knowledge/curated/rail-lines-a-train-can-turn-on.md), [rail steward](research/rail-steward.md)) |
+| **The script budget was the hidden ceiling** | Every bot before r13 ran with 10,000 opcodes instead of the 250,000 the panel meant to give it; with the real budget, seed 31337 at 36 months went from 597,075 to 995,647. | rows r12 and r13 of the [scoreboard](#the-planner-against-itself) |
+| **The planner overpredicts what a line earns** | Real over predicted profit per vehicle: freight rail median 0.5, bus 0.11. A plan calibrated on those readings, held-start pairs on three seeds: -2.7%, -3.8% and +6.8%. | calibration stays off until there are more readings ([record](.ai/repo/knowledge/curated/the-planner-overpredicts-what-a-line-earns.md)) |
+| **Deriving the bot's own lines from stored duels did not beat the constant** | `own_lines` derived from earlier duel outcomes against the constant 8, held-start pairs, 120 months: -14.7%, -8.7% and +17.6%, each inside its rival's spread. | the derived rule stays off, `OWN_LINES` = 8 stays ([record](.ai/repo/knowledge/curated/own-lines-derived-from-stored-duels-did-not-beat-the-constant.md), I0087) |
+| **Exposure is complete, exercise is not** | Every game command, console command and Script API function is routed as a tool (146/146, 87/87, 630/630), but live scenarios had called about 2% of the tools and resources, and none of `openttd.api.*` or `openttd.cmd.*`. | "exposed" is not "tested"; the coverage probe is the next piece of work ([record](.ai/repo/knowledge/curated/mcp-exercise-coverage-is-two-percent.md)) |
+
+<details><summary>Every curated knowledge record (generated)</summary>
+
+<!-- surfaces:begin docs-index dir=.ai/repo/knowledge/curated -->
+| Document | What it is |
+|---|---|
+| [Curated notes](.ai/repo/knowledge/curated/README.md) | What this repository chose to write about itself, discovered as a knowledge source class. |
+| [Rewriting history under an active task leaves finish nothing to accept](.ai/repo/knowledge/curated/a-history-rewrite-strands-the-active-task.md) | Before rewriting fork history while a Majordomus task is open, or when finish refuses with 'diverged from recorded head'. |
+| [A panel announces itself before its game's MCP server is up, so a catalogue read once at discovery lacks every resource route](.ai/repo/knowledge/curated/a-panel-registers-before-its-game-is-up.md) | When a client caches what an instance offers (hub, Rhai, a bot): read it again, never only at discovery. |
+| [In the shared checkout a peer's commit rides every push; whether it goes out is the owner's call](.ai/repo/knowledge/curated/a-peer-commit-rides-every-push-of-a-shared-checkout.md) | When local master holds a commit by another session whose own session refused to push it, and you are about to push your own work. |
+| [Every PoolItem::Create must follow a CanAllocateItem for that pool; an assert build checks it, a release build dies with a FatalError when the pool is full](.ai/repo/knowledge/curated/a-pool-create-needs-can-allocate-item-first.md) | When creating a pooled object (vehicle, town, sign, station, company, ...) in a command handler, the game loop or research code. |
+| [Game timers with the same period and priority run in pointer order, so a timer that draws Random() needs a Priority value of its own](.ai/repo/knowledge/curated/a-random-timer-needs-its-own-priority.md) | Before adding an IntervalTimer on TimerGameEconomy or TimerGameCalendar. |
+| [Bash reads a running script by byte offset: edit it only by appending](.ai/repo/knowledge/curated/a-running-bash-script-is-read-by-offset.md) | Before editing a tools/research shell script (mcp-duel, mcp-e2e, gate.sh ...) while a run of it may be in progress. |
+| [While a panel runs, no other process can open its DuckDB store, not even read-only](.ai/repo/knowledge/curated/a-running-panels-duckdb-store-is-locked-to-other-processes.md) | When a tool, agent or the duckdb CLI wants a panel's store (~/.local/state/prismatic-mcp/store/.duckdb) during a run. |
+| [When this Mac is over its build limits, mcp-rhai is built and tested on lundra, with the owner's libduckdb in user space](.ai/repo/knowledge/curated/a-rust-build-goes-to-lundra-when-this-mac-is-over-its-limits.md) | Before a cargo build or test of tools/research/mcp-rhai while disk is under 35 GiB free or load is far above the core count; how the build is offloaded and what it can and cannot prove. |
+| [A path search in an AI script spends game time: raise the opcode budget and weight the heuristic](.ai/repo/knowledge/curated/a-script-path-search-spends-game-time.md) | When a Squirrel AI (PrismaticAI) plans long rail or road lines, or an A/B run shows a bot idle for months. |
+| [A station's name sign takes a click on the tiles beside the station](.ai/repo/knowledge/curated/a-station-name-sign-takes-the-click-beside-it.md) | When a person-like player (mcp-human) clicks a tile next to an existing station (a second platform, a depot) and nothing happens and the game says nothing. |
+| [A task's scope must cover every path its commits touch; finish and the pre-push hook refuse anything outside it](.ai/repo/knowledge/curated/a-task-scope-must-cover-every-path-its-commit-touches.md) | When starting a Majordomus task for work that spans C++, tools/research, docs and the .ai layer. |
+| [Auto-approve of MCP decisions is switched on only by the owner, never inferred by an agent](.ai/repo/knowledge/curated/auto-approve-is-the-owners-switch.md) | When launching tools/research/mcp-e2e, scripting the panel, or building an agent loop over the MCP approval flow. |
+| [rcon reaches only server console commands, so the bridge steers a company by restarting its AI with new settings](.ai/repo/knowledge/curated/bridge-control-is-coarse-ai-restart.md) | When designing a new control path from an external agent into a running game. |
+| [Income per delivery is distance times a time factor; ground vehicles cover about 0.036 tiles a day per km/h](.ai/repo/knowledge/curated/cargo-payment-and-vehicle-speed.md) | When a planner, bot or script estimates what a route earns, how long cargo is in transit, or which mode of transport pays. |
+| [A check run against :8800 can test an old panel: mcp-e2e moves a new stack to a free port when 8800 is held](.ai/repo/knowledge/curated/checks-can-test-an-old-panel-when-a-stack-moves-port.md) | When restarting the main stack and then running mcp-panel-check, mcp-route-check or mcp-view-check against the default address. |
+| [A dedicated server's console runs one line per select(): lines written together wait in the stream buffer](.ai/repo/knowledge/curated/dedicated-console-reads-one-buffered-line-per-select.md) | When a tool writes several console commands to a dedicated server's stdin in quick succession (the panel, a script, a ~ plan answer). |
+| [The headless research run feeds console commands on stdin after a fixed delay, and a loaded machine can lose them](.ai/repo/knowledge/curated/dedicated-server-stdin-startup-race.md) | When a research run passes but its research_status line is missing, or when scheduling a run next to a heavy build. |
+| [Duels run side by side on a loaded machine differ by 10% or more for the same bot](.ai/repo/knowledge/curated/duels-run-side-by-side-are-noisy.md) | Before reading an A/B duel result, or before running several duels at once; the 1% spread measured on a quiet machine does not hold under load. |
+| [PauseModes is an 8-bit set whose bits are all used and it is saved as one byte, so a new pause reason needs a wider, version-gated field](.ai/repo/knowledge/curated/every-pause-bit-is-taken.md) | Before adding a pause reason (for example a research or MCP pause). |
+| [A fixed loopback port can belong to another local service; a listener that binds only IPv6 then sends clients elsewhere](.ai/repo/knowledge/curated/fixed-loopback-ports-collide.md) | When starting an MCP server in an OpenTTD process, or picking a port for any local research service. |
+| [Every fork commit names the issue it served in a Refs trailer](.ai/repo/knowledge/curated/fork-history-carries-issue-trailers.md) | When writing a commit on this fork, or tracing a commit to the plan. |
+| [A default build and its 98/98 tests say nothing about research code; verify with the option ON](.ai/repo/knowledge/curated/gated-code-is-invisible-to-a-default-build.md) | When rebasing onto upstream, merging, or changing a header the gated code includes. |
+| [Under set -o pipefail, producer \| grep -q reports a match as a failure](.ai/repo/knowledge/curated/grep-q-under-pipefail-is-a-false-negative.md) | When a gate or research script checks a binary or a log with strings/cat piped into grep -q. |
+| [-g loads a heightmap, savegame or scenario headlessly; -G is the map-generation random seed](.ai/repo/knowledge/curated/heightmap-flag-is-lowercase-g.md) | When seeding a world from real elevation data, or reading a command line that passes -G. |
+| [A link's capacity in the game's link graph is the capacity of the trips run over it, not of the vehicles assigned to it](.ai/repo/knowledge/curated/link-graph-capacity-counts-trips-not-vehicles.md) | Before judging a route's fleet from cargo_link capacity and usage (openttd://world/graph), or sizing a fleet from it. |
+| [On macOS a missing base graphics set hangs every headless run instead of failing it](.ai/repo/knowledge/curated/macos-missing-baseset-hangs-headless-runs.md) | When a regression ctest case times out at 120 s, or a research run exits 124 with no research_status line. |
+| [Every MCP tool is exposed, but about 2% are ever called, and a call counts as covered before its arguments are checked](.ai/repo/knowledge/curated/mcp-exercise-coverage-is-two-percent.md) | Before claiming MCP coverage, reading openttd://mcp/coverage, or extending tools/research/mcp-coverage-check; the measured gap and the smallest generic way to close it. |
+| [A NewgameOnly setting is refused by the console in a running game: put it in openttd.cfg before the world is made, and read it back](.ai/repo/knowledge/curated/newgame-only-settings-are-refused-by-the-console-in-a-running-game.md) | When a tool (panel, duel, test stack) changes a game setting with the console's setting after the server started, or when a measurement depends on a server setting. |
+| [own_lines derived from stored duel outcomes did not beat the constant 8 on three held-start ten-year pairs](.ai/repo/knowledge/curated/own-lines-derived-from-stored-duels-did-not-beat-the-constant.md) | Before turning PRISMATIC_BOT_FROM_DUELS on by default, changing the rule own-lines-by-handed-v1, or tuning own_lines again from duels. |
+| [A rail line holds no 90-degree turn, anywhere: pf.forbid_90_deg is on by default and a train meeting one is lost](.ai/repo/knowledge/curated/rail-lines-a-train-can-turn-on.md) | When building, re-planning or checking rail track for a bot, or reading why a bot's trains are lost or a rail line earns nothing. |
+| [Forcing Homebrew LLVM on a current Xcode breaks the build; probe the system compiler first](.ai/repo/knowledge/curated/research-cli-keeps-the-system-compiler.md) | When a research-profile configure fails with hundreds of 'unknown type name size_t' errors, or when choosing a toolchain on macOS. |
+| [A road depot or bay stop faces its front tile but is not connected to it; drive-through stops run along the road's axis](.ai/repo/knowledge/curated/road-stops-and-depots-need-their-entrance-road.md) | When a bot, a Rhai script or an MCP caller builds a road station, a road depot, a rail depot or a train station. |
+| [PrismaticAI's rail pathfinder: land, level crossings, bridges and tunnels, each taken only as the game allows it](.ai/repo/knowledge/curated/the-bots-rail-pathfinder-lays-plain-track-only.md) | When choosing which planned rail line the owner's bot builds, or reading why a bot company has no trains. |
+| [Multiplayer desync detection compares only random.state[0] at sync frames; a divergence that never feeds Random() goes unseen](.ai/repo/knowledge/curated/the-desync-check-compares-only-the-game-random-state.md) | When using 'no desync reported' as evidence that a hook or experiment left clients in step. |
+| [The fork's openttd://map tile codes index a fixed string by TileType's numeric value; an upstream reorder mislabels tiles silently](.ai/repo/knowledge/curated/the-mcp-map-encoding-follows-tiletype-order.md) | When rebasing onto an upstream change to src/tile_type.h. |
+| [Under the null sound driver no mixer channel is ever freed, so after eight effects every StartSound returns early](.ai/repo/knowledge/curated/the-null-sound-driver-never-frees-a-mixer-channel.md) | When instrumenting or counting sound effects in a headless (-s null) research or regression run. |
+| [Under -v null, work queued with VideoDriver::QueueOnMainThread never runs, so an MCP screenshot writes no file](.ai/repo/knowledge/curated/the-null-video-driver-never-drains-the-main-thread-queue.md) | Before using a capture or any queued main-thread work in a null-video (regression or headless) run. |
+| [The owner auto-answers the bot's questions with openttd.view.ask.auto, so no 'Your bot asks' dialog interrupts play](.ai/repo/knowledge/curated/the-owner-can-auto-answer-the-bots-questions.md) | When the bot asks yes/no questions through openttd.view.ask and the owner does not want to click each red dialog. |
+| [The panel's bus carries game, company, decision, console, news, panel and plan events from one declared table; the hub's own audit and derived game events go to the hub's bus and store](.ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md) | Before subscribing to a panel's or the hub's bus, its ZeroMQ socket or its DuckDB store (ADR 0033), or before a decision reads recorded history (ADR 0034): which event kinds exist (the table src/panel_events.rs declares, GET /api/bus kinds of each), who publishes each, what each carries, how often, what the plan. events carry, where the hub's events are stored, and what is not on any bus at all. |
+| [The planner predicts more profit per vehicle than the running lines earn](.ai/repo/knowledge/curated/the-planner-overpredicts-what-a-line-earns.md) | Before trusting a plan's monthly_profit or score, or when choosing params for a new plan; read the game's own calibration first. |
+| [The main toolbar's click and menu tables and its tooltips are indexed by widget id, so a new WID_TN value must be added at the same position everywhere](.ai/repo/knowledge/curated/toolbar-dispatch-tables-are-indexed-by-widget-id.md) | When adding, removing or reordering a main or scenario-editor toolbar button. |
+| [On 2026-11-15 the fork moved from 317 commits behind upstream to a linear series on top of it](.ai/repo/knowledge/curated/upstream-rebase-2026-11-15.md) | When the next upstream sync needs a baseline, or when a hash from before 2026-11-15 does not resolve. |
+<!-- surfaces:end docs-index -->
+
+</details>
+
+## Rail lines that pay
+
+The owner saw trains that could not turn around and lines that lost money, and the game's own
+rules explained both. `pf.forbid_90_deg` is on by default, so two corner pieces on adjacent tiles
+that turn the same way are two dead ends to a train: it finds no path, is flagged lost, turns at the
+end of the track and earns nothing. The bot checked this only in the middle of a line, never right
+after a station's exit, before the far station or at the first step of a re-plan, and it joined
+depots on corners. One platform per station also limited a line to one train.
+
+What runs now ([`research/rail-steward.md`](research/rail-steward.md)):
+
+- **The bot builds rail a train can always run.** The 90-degree check runs at every step, at both
+  ends and across a re-plan; depots stand behind a platform's dead end or beside a straight piece;
+  termini have two platforms behind a throat with path signals; and the laid line is walked tile by
+  tile with `AIRail.AreTilesConnected` before any train is bought. Closing a line removes only what
+  the line owns, and on a level crossing only the rail, so the town keeps its road.
+- **A Rhai steward sets each line's target.** [`rail_steward.rhai`](tools/research/mcp-panel/rhai/rail_steward.rhai)
+  reads every line's record and decides what it should run: it closes a line that loses money,
+  lengthens and adds trains where cargo waits, and renews old locomotives. The bot reconciles the
+  line to that target, the way a controller reconciles desired state.
+- **A Rhai monitor reports what is wrong.** [`rail_monitor.rhai`](tools/research/mcp-panel/rhai/rail_monitor.rhai)
+  posts lost and broken trains to the Majordomus board, where agent sessions read them.
+- **The scripts run as services.** The panel's Scripts page edits each script with a live parse
+  check, runs it in the background and reloads it when its file changes.
+
+Every number the steward uses comes from the game or the line's own record; the scripts name no
+line, station or engine.
+
+## Every event on a bus and in a store
+
+Each control panel publishes every event it sees to two sinks
+([ADR 0033](.ai/repo/adrs/0033-every-panel-event-goes-out-on-zeromq-and-into-a-duckdb-store.md)): a
+ZeroMQ PUB socket any process on the machine can follow live, and a DuckDB file of its own instance
+that keeps the history. Planning then reads that history instead of a hand-kept file
+([ADR 0034](.ai/repo/adrs/0034-planning-decisions-read-recorded-history-and-emit-structured.md)):
+
+```mermaid
+flowchart LR
+  game["game and bot"] --> panel["control panel"]
+  panel --> zmq["ZeroMQ PUB<br/>live, no history"]
+  panel --> store[("DuckDB store<br/>one file per instance")]
+  zmq --> hub["hub<br/>(its own bus and store)"]
+  zmq --> board["Majordomus blackboard<br/>one digest line per game month"]
+  store --> data["/data page<br/>query and chart"]
+  store --> duel["mcp-duel<br/>plan, logs, months; verdict as plan.duel"]
+  store --> calib["calibration<br/>every store's plan.calibration"]
+  store --> kernels["AlgoGlyph flow serve<br/>a company's trailing books"]
+```
+
+- **Decisions are data.** Each planning decision publishes a structured `plan.*` event beside its
+  sentence, from one declared table of kinds (I0081).
+- **A duel reads its own record.** `mcp-duel` takes its plan, logs and months from the store and
+  publishes its verdict as `plan.duel` (I0083).
+- **Calibration outlives its game.** The planner reads `plan.calibration` readings back from every
+  store by query; `research/calibration.json` is retired (I0082).
+- **AlgoGlyph runs as one long-lived flow serve**, fed with a company's books from the store's
+  trailing samples (I0086).
+
+A running panel holds its DuckDB file locked, so other processes query it through the panel
+(`GET|POST /api/db/query`, read-only, also from Rhai) or follow the bus. Details:
+[`research/mcp-control.md`](research/mcp-control.md#the-event-bus-on-zeromq-and-the-duckdb-store).
+
+## The control panel and the hub
+
+The panel is one Rust binary per stack (`mcp-panel`, built from
+[`tools/research/mcp-rhai`](tools/research/mcp-rhai/)). It holds the MCP token in memory only and
+serves one Flowbite Pro shell whose pages are declared once, in
+[`static/shell.js`](tools/research/mcp-panel/static/shell.js): the overview with the companies'
+history, the world with the map, the plan and transfer yards, every window of the game's interface,
+the faceted MCP catalogue with a page per tool and resource, the duels with a page and a chart per
+run, the event store, the Rhai scripts, and the API under Swagger UI. Every button is a declared
+route of the OpenAPI document, and every page is driven end to end in a real browser by a
+Playwright check (rule [`project.web-ui-is-covered-end-to-end`](.ai/repo/rules/project/web-ui-is-covered-end-to-end.v1.md)).
+
+The [hub](research/mcp-hub.md) (`mcp-hub`) puts every running instance behind one WebSocket
+JSON-RPC surface, derived from each panel's OpenAPI document and each MCP server's catalogue, and
+its [world view](research/mcp-viz.md) draws the live world graph (ECharts) and the terrain in 3D
+(three.js). Both are loopback only.
+
+## A player with a mouse
+
+The company AI acts through the command system directly, which is correct and governed, but nothing
+visible happens on the way. [`mcp-human`](research/mcp-human.md) plays the way a person does: it
+reads every window, widget, caption and tooltip from the game's window system
+(`openttd.ui.windows`), finds buttons by what they say, moves the visible cursor with human motion,
+drags roads with the game's own tools and glides the camera to its work. A click becomes a command
+only where a person's click would, and the owner can pause it from the fork's toolbar menu and take
+over at any moment. It has built a transfer yard, two lines into one station from platforms side by
+side, proven on the map first.
+
+## A real game over the internet
+
+OpenTTD multiplayer is deterministic lockstep: a client whose revision differs from the server's is
+refused, because different code would desync. That decides the shape of a real game
+([`research/real-game.md`](research/real-game.md)):
+
+| Where you play | Client | Fork features |
+|---|---|---|
+| An official public server | the [vanilla client](research/vanilla-client.md): the release tag, built unmodified and checked to be | none: no MCP, no automation |
+| A game the owner hosts | a dedicated server of this fork from one clean commit; opponents build the same commit | the owner's bot plays one company, watched and steered over the loopback MCP server |
+| A loopback R&D game | both ends from one checkout, or a [research override](research/net-compat.md) that only widens what a server you run accepts | everything |
+
+The fork never reports a revision it is not
+([ADR 0030](.ai/repo/adrs/0030-public-servers-are-played-with-an-unmodified-official-client.md),
+rule [`project.research-net-compat-is-local-and-non-spoofing`](.ai/repo/rules/project/research-net-compat-is-local-and-non-spoofing.v1.md)).
+`tools/research/real-game-check <panel-url>` checks a hosted stack against the page before the game
+starts: a clean-commit build, MCP on loopback, the bot installed from this checkout, a public or
+invite-only server, auto-approve off so every change waits for the host, the bot's company
+disclosed as an AI, and every web page covered.
+Everything else is proven on loopback; a remote person joining over the internet is still
+`NOT RUN`.
 
 ## Counted from the source
 
@@ -358,7 +560,9 @@ renews locomotives, and a monitor posts lost and broken trains to the agents' bo
 
 **Control panel and hub** &mdash; [`research/mcp-control.md`](research/mcp-control.md)<br>
 One Rust binary per stack with its `~` developer console, OpenAPI and Swagger UI, duels on a click,
-an event bus (ZeroMQ, DuckDB store); the hub puts every running instance behind one WebSocket.
+a Rhai editor whose scripts run as hot-reloaded services, and an event bus on ZeroMQ with a DuckDB
+store per instance; the hub puts every running instance behind one WebSocket.
+&rarr; [panel and hub](#the-control-panel-and-the-hub) &middot; [events](#every-event-on-a-bus-and-in-a-store)
 
 </td>
 </tr>
@@ -429,6 +633,9 @@ flowchart LR
     end
 
     hub["Control panel &amp; hub<br/>WebSocket · every instance"]
+    bus[("ZeroMQ bus +<br/>DuckDB store")]
+    steward["Rhai steward &amp; monitor<br/>line targets · lost trains"]
+    board["Majordomus board"]
 
     owner -->|watches, approves,<br/>auto-answers| gui
     llm -->|stdio proxy| hub
@@ -443,6 +650,12 @@ flowchart LR
     bot -->|commands| srv
     tools --> hub
     hub --> planner
+    hub --> bus
+    bus -->|history, calibration,<br/>duel records| planner
+    rhai --> steward
+    steward -->|line targets| bot
+    steward --> board
+    bus -->|monthly digest| board
 
     classDef owner fill:#d11f1a,stroke:#0b0b0b,color:#ece4d6;
     classDef core fill:#0b0b0b,stroke:#d11f1a,color:#ece4d6;
@@ -514,9 +727,22 @@ claude mcp add openttd -- "$PWD/tools/research/mcp-auto/openttd-mcp-stdio"
 cargo build --release --manifest-path tools/research/mcp-rhai/Cargo.toml
 tools/research/mcp-rhai/target/release/mcp-rhai tools/research/mcp-panel/rhai/full_game.rhai
 
+# The owner's company AI: point the game's personal ai/ folder at this checkout, then check it
+tools/research/prismatic-ai/install
+tools/research/prismatic-ai/install --check
+
 # A duel: the planned bot against the same bot unplanned, written to research/results/
 tools/research/mcp-duel --months 36
 tools/research/readme-scoreboard                 # the scoreboard above, from the new result
+
+# Every running instance behind one WebSocket, with the world view (http://127.0.0.1:8790/)
+cargo build --release --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-hub
+tools/research/mcp-rhai/target/release/mcp-hub --port 8790
+
+# Public servers: the release tag built unmodified, proven so, then played
+tools/research/vanilla-client build 15.3
+tools/research/vanilla-client check 15.3
+tools/research/vanilla-client run 15.3
 
 # The documents: check them, regenerate their tables and numbers, build the site locally
 tools/surfaces/surfaces check
@@ -561,6 +787,7 @@ and threshold lives in [`style.toml`](tools/research/noirgfx/style.toml). Build 
     - 0.4) [What this fork adds on top of upstream OpenTTD](#04-what-this-fork-adds-on-top-of-upstream-openttd)
         - 0.4.1) [Getting started — Prismatic MCP for contributors](#041-getting-started--prismatic-mcp-for-contributors)
         - 0.4.2) [Published surfaces](#042-published-surfaces)
+        - 0.4.3) [Research documents](#043-research-documents)
     - 0.5) [Validation / gating model](#05-validation--gating-model)
     - 0.6) [Ground rules (short version)](#06-ground-rules-short-version)
     - 0.7) [Relationship to upstream OpenTTD](#07-relationship-to-upstream-openttd)
@@ -569,6 +796,7 @@ and threshold lives in [`style.toml`](tools/research/noirgfx/style.toml). Build 
     - 0.10) [Integration points](#010-integration-points)
     - 0.11) [Experiment lifecycle, outputs, and evidence policy](#011-experiment-lifecycle-outputs-and-evidence-policy)
     - 0.12) [Limitations](#012-limitations)
+    - 0.13) [Where the work stands](#013-where-the-work-stands)
 - 1.0) [About](#10-about)
     - 1.1) [Downloading OpenTTD](#11-downloading-openttd)
     - 1.2) [OpenTTD gameplay manual](#12-openttd-gameplay-manual)
@@ -673,7 +901,10 @@ written; world seeding from real elevation data and broader Prismatic decisions 
 | [`tools/research/mcp-rhai/`](./tools/research/mcp-rhai/) | The Rust tooling: the Rhai host, the control panel, the hub, the planner and intent clients, the bus bridges, API coverage. |
 | [`tools/research/mcp-panel/`](./tools/research/mcp-panel/) | The panel's pages and its Rhai scripts (`rhai/`): director, narrator, steward, full game, ... |
 | [`tools/research/mcp-e2e`](./tools/research/mcp-e2e), [`mcp-duel`](./tools/research/mcp-duel), [`mcp-human`](./tools/research/mcp-human/) | The one-command stack, bot-vs-bot duels (results in [`research/results/`](./research/results/)), a bot that plays through the UI. |
-| [`tools/research/prismatic-ai/`](./tools/research/prismatic-ai/README.md) | The owner's company AI (Squirrel content, not engine code; linked into the personal `ai/` folder by its `install`): planned freight, passenger, air and bus lines, rail termini trains can always run, and line targets the Rhai steward sets — see [`research/rail-steward.md`](./research/rail-steward.md). |
+| [`tools/research/prismatic-ai/`](./tools/research/prismatic-ai/README.md) | The owner's company AI (Squirrel content, not engine code; linked into the personal `ai/` folder by its `install`, which moves an old copy to `ai-backup/`): planned freight, passenger, air and bus lines, rail termini trains can always run, and line targets the Rhai steward sets — see [`research/rail-steward.md`](./research/rail-steward.md). |
+| [`tools/research/mcp-panel/rhai/rail_steward.rhai`](./tools/research/mcp-panel/rhai/rail_steward.rhai), [`rail_monitor.rhai`](./tools/research/mcp-panel/rhai/rail_monitor.rhai) | The steward that sets each rail line's target and the monitor that posts lost and broken trains to the Majordomus board. |
+| [`tools/research/vanilla-client`](./tools/research/vanilla-client), [`real-game-check`](./tools/research/real-game-check) | The unmodified release client for public servers ([`research/vanilla-client.md`](./research/vanilla-client.md)) and the readiness check for a hosted real game ([`research/real-game.md`](./research/real-game.md)). |
+| [`tools/research/e2e-coverage`](./tools/research/e2e-coverage) and the `tools/research/mcp-*-check` family | Every web page driven in a real browser, and one live check per surface of the panel, the hub and the game. |
 | [`tools/gate.sh`](./tools/gate.sh), [`tools/research/research`](./tools/research/research) | Layered local validation (0.5) and the research-mode CLI with its experiment manifest ([`research/tooling.md`](./research/tooling.md)). |
 | [`tools/surfaces/`](./tools/surfaces/README.md), [`surfaces.toml`](./surfaces.toml), [`tools/knowledge/`](./tools/knowledge/README.md) | The published surfaces (0.4.2), and the checks that keep the `.ai/` records' citations true. |
 | [`tools/research/noirgfx/`](./tools/research/noirgfx/README.md) | NoirGFX, the fork's base graphics set, and its deterministic build pipeline. |
@@ -774,6 +1005,30 @@ What the fork delivers, from its `.ai/` feature records:
 | [AI layer](.ai/repo/features/supervised-ai-layer.md) | stable | Decisions, rules, plan, intents and knowledge live in tracked records that every agent and provider reads the same way. |
 <!-- surfaces:end ai-features -->
 
+#### 0.4.3) Research documents
+
+Every write-up under [`research/`](./research/README.md), with the summary each one gives of
+itself (generated):
+
+<!-- surfaces:begin docs-index dir=research depth=1 -->
+| Document | What it is |
+|---|---|
+| [Research / validation layer](research/README.md) | This directory is part of this fork's own process scaffolding, not upstream OpenTTD material — see AGENTS.md for the full context (this repo is a personal research fork used as a validation target for the Prismatic... |
+| [Experiment report: baseset-prerequisite-macos](research/baseset-prerequisite-macos.md) | The four regression ctest cases (regression_regression, regression_stationlist, regression_gs, regression_gs_compat) require a base graphics set to be installed, even though they run headless (-vnull -snull -mnull).... |
+| [Experiment report:](research/experiment-template.md) | List the exact commands run and their outcome. Don't summarize away detail — "ran the tests" is not enough, "tools/gate.sh change -> exit 0, 98/98 tests" is. |
+| [The public C++ API through MCP and OpenAPI](research/mcp-api.md) | RESEARCH-ONLY. Issue I0036, rule project.public-api-is-exposed. |
+| [The MCP catalogue in the in-game console](research/mcp-console.md) | RESEARCH-ONLY, UNSTABLE. Issue I0067; rule project.mcp-surfaces-are-derived. |
+| [Driving OpenTTD from outside: MCP panel, developer console and Rhai](research/mcp-control.md) | RESEARCH-ONLY. The embedded MCP server (ADR 0008, research/prismatic-mcp/) is the channel; this is the tooling that drives a running game through it. Everything binds to loopback. |
+| [The MCP hub: every instance, every operation, every event over one WebSocket](research/mcp-hub.md) | RESEARCH-ONLY, UNSTABLE. Issue I0058; rule project.mcp-surfaces-are-derived. |
+| [A person-like player: the interface as data, the mouse as input](research/mcp-human.md) | RESEARCH-ONLY. The embedded MCP server (ADR 0008, research/prismatic-mcp/) runs in every OpenTTD process: a dedicated server and each GUI client have their own. This document covers the part that lets a bot play the... |
+| [World View: the game's world in the external console](research/mcp-viz.md) | RESEARCH-ONLY. The hub (research/mcp-hub.md) serves /viz, a page built only on tools/research/mcp-panel/static/components.js and the hub's WebSocket. Everything on it is read live from one instance's own MCP... |
+| [A loopback R&D game across a revision mismatch](research/net-compat.md) | RESEARCH-ONLY, UNSTABLE. Issue I0070; ADR 0029; rule project.research-net-compat-is-local-and-non-spoofing. |
+| [Rail lines that pay: geometry, a steward and a monitor](research/rail-steward.md) | RESEARCH-ONLY. How the owner's bot builds rail that trains can always run, and what keeps each line paying afterwards. The parts: |
+| [A real game: a real opponent, over the real internet](research/real-game.md) | RESEARCH-ONLY. The owner's goal (2026-11-18): play a real game, over the real internet, against a real opponent. This page covers: |
+| [Research-mode tooling](research/tooling.md) | This document is the detailed reference for tools/research/research, the canonical entry point that turns the policy in AGENTS.md §"Research-mode access to internals" and this directory's README.md into runnable,... |
+| [Playing on official public servers: the vanilla client](research/vanilla-client.md) | RESEARCH-ONLY tooling, not a change to the game. Issue I0071; ADR 0030; complements net-compat.md (ADR 0029), which is about games you run. |
+<!-- surfaces:end docs-index -->
+
 ### 0.5) Validation / gating model
 
 Local validation is layered by cost, with one entry point for the build and test tiers. Each tier
@@ -836,7 +1091,12 @@ Open questions, not conclusions:
 
 - Does a plan help? The planned bot beats the same bot unplanned in most recorded duels, but is a
   given improvement larger than the noise between runs ([duels](#the-planner-against-itself),
-  rule `project.a-tuning-claim-needs-held-start-pairs`)?
+  [findings](#what-the-duels-have-taught-so-far), rule `project.a-tuning-claim-needs-held-start-pairs`)?
+- Can recorded history make a plan better? Calibration from measured earnings and own lines
+  derived from stored duels have not yet beaten their constants; with more vehicles per line and
+  more seeds, do they?
+- Does the bot that wins against itself on loopback hold up against a person over the internet
+  ([real game](#a-real-game-over-the-internet))?
 - How well does an LLM play through MCP when every change waits for an approval of its exact
   arguments, and which of its proposals does the owner refuse?
 - Can an agent classify a requested change into the right kind (0.1) and respect the invariants
@@ -870,10 +1130,14 @@ Open questions, not conclusions:
 | Embedded MCP server | live state as resources; every game command and Script API function as an approval-gated tool | Implemented, research build only ([`research/prismatic-mcp/`](./research/prismatic-mcp/README.md)) |
 | LLM clients | any MCP client over the stdio proxy, the panel holding the token | Implemented |
 | Rhai scripting | every MCP tool, console command and panel route as a function | Implemented ([`research/mcp-control.md`](./research/mcp-control.md)) |
-| Control panel, hub, event bus | REST/OpenAPI, SSE, one WebSocket over every instance, ZeroMQ bus with a DuckDB store | Implemented |
+| Control panel, hub, event bus | REST/OpenAPI, SSE, one WebSocket over every instance, ZeroMQ bus with a DuckDB store per instance, the hub's own bus and store | Implemented ([ADR 0033](./.ai/repo/adrs/0033-every-panel-event-goes-out-on-zeromq-and-into-a-duckdb-store.md)) |
+| Planning from recorded history | structured `plan.*` events; duels, calibration and AlgoGlyph read the stores | Implemented ([ADR 0034](./.ai/repo/adrs/0034-planning-decisions-read-recorded-history-and-emit-structured.md), I0081-I0087) |
 | Planner (AlgoGlyph) | rail lines priced on the live map, a portfolio chosen by knapsack, played by PrismaticAI | Implemented; measured by the duels |
-| Admin-network bridge and Prismatic decisions | one Monte Carlo decision through the decision contract | Partial (0.2) |
+| Rail steward and monitor | each rail line's target set by a Rhai service; lost and broken trains on the agents' board | Implemented ([`research/rail-steward.md`](./research/rail-steward.md)) |
+| Person-like player | the game's interface as data, the visible cursor as input | Implemented ([`research/mcp-human.md`](./research/mcp-human.md)) |
+| Admin-network bridge and Prismatic decisions | a decision from `prismatic_api` through the decision contract, kept on the running AI | Partial (0.2) |
 | Majordomus blackboard | agent sessions' intents and a digest of every game's bus | Implemented, off by default for the bus |
+| A real game over the internet | a hosted dedicated server of one clean commit; the vanilla client for public servers | Prepared; a remote opponent is `NOT RUN` ([`research/real-game.md`](./research/real-game.md)) |
 | Build/test gates and experiment manifests | exit codes, test output, `manifest.json` and a generated `summary.md` | Implemented (0.5) |
 | Published surfaces | site, wiki and generated Markdown tables, checked on every commit | Implemented (0.4.2) |
 | World seeding from real elevation data | a heightmap through the headless `-g <file>` start | Experimental: the start works, the data pipeline is not built |
@@ -901,8 +1165,34 @@ remains for a freeform note.
 - Most duels run on one map (seed 31337); company value ignores owned track, and runs side by side
   are noisy (see [the planner against itself](#the-planner-against-itself)).
 - The gating and reporting model is itself under evaluation, not a proven baseline.
+- Ten-year duels do not repeat closely even from a held start (-7.6% to +11.4% for the same
+  arm), so a long A/B that does not clear its rival's spread is inconclusive.
+- Every game command, console command and Script API function is exposed, but live scenarios
+  have exercised only about 2% of the tools and resources, and a call with wrong arguments still
+  counts as covered ([record](./.ai/repo/knowledge/curated/mcp-exercise-coverage-is-two-percent.md)).
+- The planner's predictions are optimistic (real over predicted: freight rail about 0.5, bus about
+  0.1), and the readings behind them come from lines with one vehicle each.
+- The bot's opponents so far are other AIs on loopback; no remote person has played against it.
 - The bridge's Company AI runs hand-written strategies, and the Prismatic decision it receives is
   one setting chosen by one Monte Carlo model.
+
+### 0.13) Where the work stands
+
+Milestones of the plan with the issues done and still open, derived from the issue records in
+[`.ai/repo/project/`](./.ai/repo/project/README.md) (generated):
+
+<!-- surfaces:begin ai-plan -->
+| Milestone | Issues done | Open issues |
+|---|---|---|
+| [The fork states what it is, and one set of ground rules binds every agent](.ai/repo/project/milestones/the-fork-is-a-governed-research-target.yaml) | 2/2 | — |
+| [A change is validated at the tier its size needs, and the report cannot round up](.ai/repo/project/milestones/a-change-is-validated-in-cost-tiers.yaml) | 4/4 | — |
+| [Internal state is observable through gated instrumentation, and every experiment records how it ran](.ai/repo/project/milestones/internals-are-observable-with-recorded-provenance.yaml) | 8/8 | — |
+| [Prismatic steers a company in a live game through the standalone bridge](.ai/repo/project/milestones/prismatic-steers-a-company-through-the-bridge.yaml) | 5/5 | — |
+| [An agent reads and, with approval, changes the game over an embedded MCP server](.ai/repo/project/milestones/an-agent-reaches-the-game-over-mcp.yaml) | 52/52 | — |
+| [The fork is published, supervised by Majordomus, and current with upstream](.ai/repo/project/milestones/the-fork-is-published-supervised-and-current.yaml) | 7/7 | — |
+| [NoirGFX: the game in the owner's SIG NIHL noir, from OpenGFX and Kenney models](.ai/repo/project/milestones/the-game-wears-the-owners-noir-style.yaml) | 1/1 | — |
+| [Planning decisions read recorded history from the store and publish what they chose as data](.ai/repo/project/milestones/planning-is-generated-from-recorded-history.yaml) | 5/7 | I0085, I0086 |
+<!-- surfaces:end ai-plan -->
 
 ## 1.0) About
 
