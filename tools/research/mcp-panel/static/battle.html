@@ -44,6 +44,14 @@
         </table></div>
       </div>
 
+      <div id="paired" data-nav="Paired vs default" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-3"><div class="min-w-0 flex-1 basis-48"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Paired vs default</h2><p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Each contestant against the default PrismaticAI on the same seeds; "promote" marks a candidate for the next default (≥16 pairs, ≥80 % wins, ratio &gt; 1.05)</p></div></div>
+        <div class="relative overflow-x-auto rounded-lg"><table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"><tr><th class="px-3 py-2">Contestant</th><th class="px-3 py-2 text-right">Pairs</th><th class="px-3 py-2 text-right">Wins</th><th class="px-3 py-2 text-right">Mean ratio</th></tr></thead>
+          <tbody id="paired-body"></tbody>
+        </table></div>
+      </div>
+
       <div id="arenas" data-nav="Arenas" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800">
         <div class="flex flex-wrap items-start justify-between gap-3 mb-3"><div class="min-w-0 flex-1 basis-48"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Arenas</h2><p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Every LAN machine that runs matches, its slots and its build</p></div></div>
         <div class="relative overflow-x-auto rounded-lg"><table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

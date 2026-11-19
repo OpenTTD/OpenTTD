@@ -65,6 +65,21 @@
     }).join('');
   }
 
+  /** Every contestant against the default on the same seeds (battle.py paired_vs), best ratio first;
+      a promotion candidate (battle.py promotions) is marked. This, not a short GA score, decides a default. */
+  function pairedHtml(paired, promotions) {
+    const promoted = new Set((promotions || []).map((p) => p.contestant));
+    return [...(paired || [])].sort((a, b) => (b.ratio ?? 0) - (a.ratio ?? 0)).map((r) => {
+      const share = r.pairs ? r.wins / r.pairs : 0;
+      return `<tr class="border-t border-gray-100 dark:border-gray-700">
+        <td class="${TD} font-medium ${isPrismatic(r.contestant) ? 'text-primary-600 dark:text-primary-400' : 'text-gray-900 dark:text-white'}">${esc(r.contestant)}${promoted.has(r.contestant) ? badge('promote', 'green') : ''}</td>
+        <td class="${TD} text-right tabular-nums">${num(r.pairs)}</td>
+        <td class="${TD} text-right tabular-nums">${num(r.wins)} <span class="text-gray-400">(${num(100 * share)} %)</span></td>
+        <td class="${TD} text-right tabular-nums ${r.ratio >= 1 ? 'text-green-500' : 'text-red-500'}">${num(r.ratio, 3)}</td>
+      </tr>`;
+    }).join('');
+  }
+
   function hostsHtml(hosts) {
     return (hosts || []).map((h) => {
       const on = h.state === 'online';
@@ -123,7 +138,7 @@
     };
   }
 
-  if (typeof module !== 'undefined') { module.exports = { leaderboardHtml, tuningHtml, hostsHtml, liveHtml, eventsHtml, kpis, money }; }
+  if (typeof module !== 'undefined') { module.exports = { leaderboardHtml, tuningHtml, pairedHtml, hostsHtml, liveHtml, eventsHtml, kpis, money }; }
   if (typeof document === 'undefined') return;
 
   const $ = (id) => document.getElementById(id);
@@ -142,6 +157,7 @@
     $('k-last').textContent = `last on average: ${k.lastKey}`;
     $('lb-body').innerHTML = leaderboardHtml(st.leaderboard);
     $('ga-body').innerHTML = tuningHtml(st.tuning) || '<tr><td class="px-3 py-3 text-sm text-gray-500" colspan="5">No GA generation yet.</td></tr>';
+    $('paired-body').innerHTML = pairedHtml(st.paired, st.promotions) || '<tr><td class="px-3 py-3 text-sm text-gray-500" colspan="4">No pairs with the default yet in this edition.</td></tr>';
     $('hosts-body').innerHTML = hostsHtml(st.hosts);
     $('live-list').innerHTML = liveHtml(st.live) || '<li class="py-2 text-sm text-gray-500">No match running.</li>';
     $('events-list').innerHTML = eventsHtml(st.events);
