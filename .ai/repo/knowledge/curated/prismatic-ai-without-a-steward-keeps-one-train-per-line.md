@@ -202,6 +202,22 @@ actions land, so any code change perturbs the whole game. A single-seed differen
 mixes the change with this noise, which is why the GA and the promotion rule judge on many
 paired seeds.
 
+**A double-track line bankrupted the company (2026-11-19).** In edition 150ed917,
+`g30.brainSafe1` ended last with a value of 1. In the 20-year replay of seed 1516196607 (company
+4, `--slot 4`), the bot laid both tracks of a 192-tile line, 58 signals included, on the whole
+300k loan. The locomotive was then refused for ERR_NOT_ENOUGH_CASH, and the company went
+bankrupt in 1961 with two buses.
+
+Track B is now laid only when the money still buys the train afterwards: track A's actual cost
+plus the train's price must be covered (`rail.nut`). Otherwise the line runs single track. The
+same replay survives at 452k with 46 vehicles. The default bot over 20 years:
+
+| Seed | Before | After |
+|---|---|---|
+| 1516196607 | 7.6M | 9.3M |
+| 930967890 | 15.3M | 16.0M |
+| 31337 | 12.7M | 15.3M |
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
