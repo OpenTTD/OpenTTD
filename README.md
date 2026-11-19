@@ -906,7 +906,9 @@ admin-network protocol and drives a Company AI (`PrismaticAI`). The decision con
 Prismatic has a machine-checkable schema in this repository
 (`research/prismatic-bridge/decision-contract.schema.json`, I0011); Prismatic answers it with a
 Monte Carlo choice, and the MCP panel applies the answer at `POST /api/decision/pull`
-(`tools/research/mcp-decision-check`). A native Rust bridge is decided (ADR 0032) but not yet
+(`tools/research/mcp-decision-check`). The panel offers each company's recorded history (the bus
+endpoint and a store query of its samples) and records the fit a directive reports, or the fallback
+it took (I0085); Prismatic itself still decides from a hand growth model. A native Rust bridge is decided (ADR 0032) but not yet
 written, and broader Prismatic decisions are not built. A map from real data now exists apart from
 the bridge: [a real place as the map](#a-real-place-as-the-map).
 

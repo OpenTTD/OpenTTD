@@ -93,7 +93,7 @@ be the panel's and the hub's both (`game.month`), as two rows with their own pro
 | `plan.investment` | panel | `panel.rs:h_investment` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | AlgoGlyph's transport-investment chose what to build (`GET /api/investment`) |
 | `plan.action` | panel | `panel.rs:h_action_plan` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | AlgoGlyph's action-plan answered (`POST /api/actionplan`) |
 | `plan.intent` | panel | `panel.rs:h_intent, answer_plan` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a sentence was resolved to an intent and candidates |
-| `plan.directive` | panel | `panel_decision.rs:pull` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | Prismatic's directive was pulled: refused by the contract, or each step with its state (applied, pending approval, refused, error) (`POST /api/decision/pull`) |
+| `plan.directive` | panel | `panel_decision.rs:pull` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | Prismatic's directive was pulled: refused by the contract, or each step with its state (applied, pending approval, refused, error) (`POST /api/decision/pull`); `inputs.stored` is the fit it sent (its samples query or bus, rows, model, I0085) or the fallback |
 | `plan.kernel` | external (`POST /api/bus/publish`) | `kernel_feed.rs:event (mcp-kernel-feed --publish)` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | an AlgoGlyph kernel answered a request fed from the store (I0086) |
 | `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, winner}`, read from the store (I0083) |
 | `game.new_world` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's tick went back |
@@ -140,8 +140,10 @@ Each planning decision publishes one `plan.*` event beside its `panel.*` sentenc
   store query with its row count, or `{fallback}`: why no history was read. The calibration is the
   first decision that reads the store (I0082, below), and the bot's settings read it behind a switch
   (I0087, below). `plan.action` names the `samples` statement its cash and loan came from, with the
-  rows, or the fallback after which the console filled them (I0086). Every other fallback names the
-  issue that adds its query (I0085 Prismatic);
+  rows, or the fallback after which the console filled them (I0086). `plan.directive`'s is what
+  Prismatic fitted from (I0085): the samples query (or the bus) with its rows and the fit itself, or
+  the fallback (no fit sent, Prismatic fell back, the fit breaks the contract). Every other fallback
+  says why that decision reads no history;
 - `choice`: what was decided, as data (the portfolio's lines, the settings in their slots with
   `rail_after`, `own_lines` and the lines dropped, the directive applied or refused with its errors,
   the kernel's answer).

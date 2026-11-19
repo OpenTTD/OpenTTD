@@ -2,9 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/korczis/OpenTTD/research/prismatic-bridge/decision-contract.schema.json",
   "title": "openttd-prismatic-bridge /decision/pull contract",
-  "description": "The machine-checkable contract for the bridge's POST /decision/pull endpoint (ARCHITECTURE.md §4, §7). The endpoint GETs a decision directive from PRISMATIC_DECISION_URL (a prismatic-platform route this repository does not assume), applies it to a running OpenTTD company via the Admin Network (reload_ai when company_id is present, else start_ai when ai is present), and returns a DecisionPullResult. 'request' is the directive prismatic-platform must produce; 'response' is what the bridge returns. The bridge reads only the three documented directive fields; the admin-client language (I0012 / ADR 0032) does not change this HTTP contract.",
+  "description": "The machine-checkable contract for the bridge's POST /decision/pull endpoint (ARCHITECTURE.md §4, §7). The endpoint GETs a decision directive from PRISMATIC_DECISION_URL (a prismatic-platform route this repository does not assume), applies it to a running OpenTTD company via the Admin Network (reload_ai when company_id is present, else start_ai when ai is present), and returns a DecisionPullResult. 'request' is the directive prismatic-platform must produce; 'response' is what the bridge returns. The bridge reads only the three documented directive fields; the admin-client language (I0012 / ADR 0032) does not change this HTTP contract. Since I0085 (ADR 0034 point 4) the contract also says how recorded history is offered and how a fit from it is reported, both version-gated by their own 'schema' string: the MCP panel's GET /api/bridge/companies gives each CompanyOut a 'history' (companyHistory, prismatic-history/v1: the bus endpoint and the store query of the company's samples), and a directive's working may carry a 'fit' (prismatic-fit/v1: the model, its parameters, the samples it was fitted from and its quality, or the fallback it took), which the panel records in plan.directive. 'companies' is an optional fixture of that answer.",
   "type": "object",
-  "required": ["request", "response"],
+  "required": [
+    "request",
+    "response"
+  ],
   "additionalProperties": false,
   "properties": {
     "request": {
@@ -14,36 +17,61 @@
     "response": {
       "$ref": "#/$defs/decisionPullResult",
       "description": "The DecisionPullResult the bridge returns from POST /decision/pull."
+    },
+    "companies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/bridgeCompany"
+      },
+      "description": "What GET /api/bridge/companies of the MCP panel answers: the bridge's CompanyOut list, each with the history the panel offers for it (I0085). Optional: the bridge's own GET /companies has no history."
     }
   },
   "$defs": {
     "decisionDirective": {
       "type": "object",
-      "description": "What PRISMATIC_DECISION_URL returns. At least one of 'ai' or 'company_id' must be present, or the bridge applies nothing. When 'company_id' is present the bridge sets 'settings' on that company's running AI with the research fork's 'bot set' (approval-gated, approved by the bridge), and issues 'reload_ai <company_id>' when the server has no such command or no settings are given; otherwise, when 'ai' is present, it issues 'start_ai <ai> [settings]'. Only these three fields are read. A directive may carry its own working beside them (prismatic_api answers 'engine', 'chosen_aggressiveness', 'candidates', 'expected_value', 'iterations_per_candidate', 'company_input'); consumers do not read it, and the MCP panel names it in its answer.",
+      "description": "What PRISMATIC_DECISION_URL returns. At least one of 'ai' or 'company_id' must be present, or the bridge applies nothing. When 'company_id' is present the bridge sets 'settings' on that company's running AI with the research fork's 'bot set' (approval-gated, approved by the bridge), and issues 'reload_ai <company_id>' when the server has no such command or no settings are given; otherwise, when 'ai' is present, it issues 'start_ai <ai> [settings]'. Only these three fields are read. A directive may carry its own working beside them (prismatic_api answers 'engine', 'chosen_aggressiveness', 'candidates', 'expected_value', 'iterations_per_candidate', 'company_input'); consumers do not read it, and the MCP panel names it in its answer. One field of the working is read since I0085: 'fit', what the decision was fitted from (fitRecord); the MCP panel records it in plan.directive's inputs.stored, and states a fallback when it is absent or breaks this schema. A fit never changes what is applied.",
       "additionalProperties": true,
       "minProperties": 1,
       "anyOf": [
-        { "required": ["company_id"] },
-        { "required": ["ai"] }
+        {
+          "required": [
+            "company_id"
+          ]
+        },
+        {
+          "required": [
+            "ai"
+          ]
+        }
       ],
       "properties": {
         "ai": {
           "type": "string",
           "minLength": 1,
           "description": "AI short name as registered with OpenTTD, e.g. 'PrismaticAI'. Used by start_ai when company_id is absent.",
-          "examples": ["PrismaticAI"]
+          "examples": [
+            "PrismaticAI"
+          ]
         },
         "company_id": {
           "type": "integer",
           "minimum": 0,
           "maximum": 14,
           "description": "Zero-based OpenTTD company id (0..14; OpenTTD allows at most 15 companies). When present, the bridge reloads that company's AI with reload_ai.",
-          "examples": [0]
+          "examples": [
+            0
+          ]
         },
         "settings": {
           "type": "string",
           "description": "AI settings string as accepted by the console's start_ai command: a comma-separated list of key=value pairs, no spaces. Applied on start_ai; with a company_id, set on the running AI through the research fork's 'bot set' where the server has it (else reload_ai keeps the company's stored settings).",
-          "examples": ["aggressiveness=75", "intercity=0,aggressiveness=75,max_routes=4"]
+          "examples": [
+            "aggressiveness=75",
+            "intercity=0,aggressiveness=75,max_routes=4"
+          ]
+        },
+        "fit": {
+          "$ref": "#/$defs/fitRecord"
         }
       }
     },
@@ -51,13 +79,18 @@
       "type": "object",
       "description": "The bridge's response: the URL it called, the raw directive it received, and the rcon result of applying it (null when nothing was applied).",
       "additionalProperties": false,
-      "required": ["called_url", "raw_response"],
+      "required": [
+        "called_url",
+        "raw_response"
+      ],
       "properties": {
         "called_url": {
           "type": "string",
           "format": "uri",
           "description": "The PRISMATIC_DECISION_URL the bridge GET-ed.",
-          "examples": ["http://127.0.0.1:8000/openttd/decision"]
+          "examples": [
+            "http://127.0.0.1:8000/openttd/decision"
+          ]
         },
         "raw_response": {
           "$ref": "#/$defs/decisionDirective",
@@ -66,8 +99,12 @@
         "applied_rcon": {
           "description": "The console (rcon) output of the reload_ai/start_ai command the directive triggered, or null when neither field was present so nothing was applied.",
           "anyOf": [
-            { "type": "null" },
-            { "$ref": "#/$defs/rconResponse" }
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/rconResponse"
+            }
           ]
         }
       }
@@ -76,12 +113,229 @@
       "type": "object",
       "description": "An OpenTTD console command's output lines (start_ai/reload_ai usually return an empty list on success).",
       "additionalProperties": false,
-      "required": ["lines"],
+      "required": [
+        "lines"
+      ],
       "properties": {
         "lines": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "description": "One entry per console output line."
+        }
+      }
+    },
+    "fitRecord": {
+      "type": "object",
+      "description": "What a decision was fitted from (I0085, ADR 0034 point 1-2): the model, its parameters, the recorded samples it read (a read-only store query on a panel's /api/db/query, or the bus, with the row count) and the fit's quality; or, when Prismatic could not fit (store off, too few rows), the fallback it took instead, with the parameters it used. Version-gated: a reader reads only a 'schema' it knows and states a fallback for any other.",
+      "required": [
+        "schema",
+        "model",
+        "parameters",
+        "samples"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "schema": {
+          "const": "prismatic-fit/v1",
+          "description": "The version of this record; the MCP panel reads prismatic-fit/v1."
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What was fitted, e.g. 'growth_by_aggressiveness' (mean and spread of company-value growth per aggressiveness)",
+          "examples": [
+            "growth_by_aggressiveness"
+          ]
+        },
+        "parameters": {
+          "type": "object",
+          "description": "The fitted parameters (or, with 'fallback', the hand constants used instead), as the model names them."
+        },
+        "samples": {
+          "type": "object",
+          "description": "The recorded samples the fit read: a read-only statement ('query', as a panel's companyHistory.samples_query offers it, on 'query_url') or the bus ('bus', the kinds it folded), and how many rows or samples it used.",
+          "required": [
+            "rows"
+          ],
+          "anyOf": [
+            {
+              "required": [
+                "query"
+              ]
+            },
+            {
+              "required": [
+                "bus"
+              ]
+            }
+          ],
+          "additionalProperties": true,
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "description": "One read-only statement (SELECT or WITH) on the store, as /api/db/query runs it."
+            },
+            "query_url": {
+              "type": "string",
+              "format": "uri",
+              "description": "Where the statement ran: a panel's /api/db/query."
+            },
+            "bus": {
+              "type": "string",
+              "pattern": "^tcp://",
+              "description": "The ZeroMQ PUB endpoint the samples were folded from (prismatic-bus/v1)."
+            },
+            "kinds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The bus kinds folded, e.g. game.sample."
+            },
+            "rows": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Rows (or samples) the fit used."
+            },
+            "runs": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Distinct runs among them, when known."
+            }
+          }
+        },
+        "quality": {
+          "type": "object",
+          "description": "How well the model fits, as numbers the model names (e.g. per-aggressiveness sample counts, residual spread, r2)."
+        },
+        "fallback": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Why no fit was made and the hand constants were used instead (store off, fewer rows than the minimum). Required, non-empty, when samples.rows is 0."
+        }
+      },
+      "if": {
+        "properties": {
+          "samples": {
+            "properties": {
+              "rows": {
+                "const": 0
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "fallback"
+        ],
+        "properties": {
+          "fallback": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "companyHistory": {
+      "type": "object",
+      "description": "The recorded history the MCP panel offers for one company (I0085): the bus to subscribe to and the store query of the company's samples, so Prismatic fits from history instead of one snapshot (ADR 0034 point 4). Version-gated by 'schema'.",
+      "required": [
+        "schema",
+        "bus",
+        "store",
+        "query_url",
+        "samples_query"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "schema": {
+          "const": "prismatic-history/v1"
+        },
+        "bus": {
+          "type": "object",
+          "required": [
+            "endpoint",
+            "envelope",
+            "kinds"
+          ],
+          "properties": {
+            "endpoint": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^tcp://",
+              "description": "The panel's ZeroMQ PUB endpoint, null when the socket did not bind."
+            },
+            "envelope": {
+              "const": "prismatic-bus/v1"
+            },
+            "kinds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "The kinds a fit reads: game.sample (one per game day) and plan.directive (the settings applied)."
+            }
+          }
+        },
+        "store": {
+          "type": "string",
+          "description": "The panel's store file, or 'off' (then query_url answers 503 and a fit states its fallback)."
+        },
+        "query_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The panel's read-only GET|POST /api/db/query ('sql')."
+        },
+        "samples_query": {
+          "type": "string",
+          "minLength": 1,
+          "description": "One read-only statement: the company's samples, the first of each game month per run, each with the run's seed and the aggressiveness an applied plan.directive had set for the company by then (null: none recorded, the AI's own default)."
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The columns samples_query answers, in order."
+        },
+        "min_rows": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "The fewest rows the panel considers a fit from (advisory; the fit states its own fallback)."
+        }
+      }
+    },
+    "bridgeCompany": {
+      "type": "object",
+      "description": "One CompanyOut of the bridge's GET /companies (the panel answers the same fields), with the history the MCP panel offers for it.",
+      "required": [
+        "id",
+        "name",
+        "is_ai"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        },
+        "name": {
+          "type": "string"
+        },
+        "is_ai": {
+          "type": "boolean"
+        },
+        "history": {
+          "$ref": "#/$defs/companyHistory"
         }
       }
     }

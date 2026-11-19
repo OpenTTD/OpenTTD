@@ -11,6 +11,18 @@
 #      bot, settings "aggressiveness=N", its own working alongside) is applied: the answer is a
 #      DecisionPullResult, the setting goes through approval, and the running bot reads N.
 #
+# and, since I0085, how recorded history reaches Prismatic and how its fit comes back:
+#
+#   1b. every company of GET /api/bridge/companies offers its `history` (prismatic-history/v1): the
+#       bus endpoint and a samples query, which the panel's /api/db/query answers with its columns;
+#   3b. the stand-in's directive carries a `fit` (prismatic-fit/v1) from that query with the rows it
+#       answered, and the plan.directive the store holds (read back through /api/db/query) names that
+#       query, those rows and the fit as inputs.stored; with Prismatic itself, a directive without a
+#       fit is recorded with its stated fallback instead;
+#   2b. the directive outside the contract carries no fit, and its plan.directive says so.
+#
+# The run's store is its own ($TMP/store), never the user's.
+#
 # The directive comes from PRISMATIC_DECISION_URL when it is set (Prismatic itself, e.g.
 # http://127.0.0.1:4000/api/openttd/decision, started with OPENTTD_BRIDGE_URL=<panel>/api/bridge;
 # the check prints the panel URL and waits for it), else from a stand-in on a loopback port that
@@ -43,7 +55,8 @@ echo "==> game binary $BIN"
 
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/mcp-decision-check.XXXXXX")"
 export PRISMATIC_MCP_REGISTRY="$TMP/registry"
-mkdir -p "$PRISMATIC_MCP_REGISTRY"
+export PRISMATIC_STORE_DIR="$TMP/store"
+mkdir -p "$PRISMATIC_MCP_REGISTRY" "$PRISMATIC_STORE_DIR"
 free_port() { python3 -I -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1", 0)); print(s.getsockname()[1])'; }
 PIDS=()
 cleanup() {
@@ -83,6 +96,36 @@ missing="$(jq -c --argjson f "$fields" '[.[] | . as $c | $f[] | . as $k | select
   && pass "GET /api/bridge/companies answers CompanyOut for $(jq length "$TMP/companies.json") companies; the bot is company $BOT" \
   || fail "GET /api/bridge/companies: bot '$BOT', missing fields $missing: $(head -c 400 "$TMP/companies.json")"
 
+# One read-only statement on the panel's store: the answer of POST /api/db/query.
+db_query() { jq -n --arg sql "$1" '{sql: $sql}' | curl -s -m 20 -X POST -H 'Content-Type: application/json' -d @- "$URL/api/db/query"; }
+# The data of the newest plan.directive in the store (committed within a second), newer than seq $1.
+last_directive() {
+  local after="$1" out
+  for ((j = 0; j < 20; j++)); do
+    out="$(db_query "SELECT seq, data FROM events WHERE kind = 'plan.directive' AND seq > $after ORDER BY seq DESC LIMIT 1")"
+    [[ "$(jq -r '.count // 0' <<< "$out")" -gt 0 ]] && { jq -c '.rows[0][1] | if type == "string" then fromjson else . end' <<< "$out"; return; }
+    sleep 0.5
+  done
+  echo null
+}
+directive_seq() { db_query "SELECT coalesce(max(seq), 0) FROM events WHERE kind = 'plan.directive'" | jq -r '.rows[0][0] // 0'; }
+
+# 1b. The history each company offers, and the bot's samples query answered by the store.
+bad_history="$(jq -c '[.[] | select((.history.schema != "prismatic-history/v1") or ((.history.bus.endpoint // "") | startswith("tcp://") | not)
+                                 or ((.history.samples_query // "") == "") or ((.history.query_url // "") | endswith("/api/db/query") | not)) | .id]' "$TMP/companies.json" 2>/dev/null || echo '"unreadable"')"
+SQL="$(jq -r --argjson c "${BOT:-0}" '.[] | select(.id == $c) | .history.samples_query // empty' "$TMP/companies.json")"
+COLS="$(jq -c --argjson c "${BOT:-0}" '.[] | select(.id == $c) | .history.columns' "$TMP/companies.json")"
+ROWS=0
+for ((i = 0; i < 30; i++)); do
+  db_query "$SQL" > "$TMP/samples.json"
+  ROWS="$(jq -r '.count // 0' "$TMP/samples.json" 2>/dev/null || echo 0)"
+  [[ "$ROWS" -gt 0 ]] && break
+  sleep 2
+done
+[[ "$bad_history" == "[]" && -n "$SQL" && "$(jq -c .columns "$TMP/samples.json")" == "$COLS" && "$ROWS" -gt 0 ]] \
+  && pass "every company offers its history (bus $(jq -r '.[0].history.bus.endpoint' "$TMP/companies.json"), samples query); the bot's query answers $ROWS rows of $(jq -r '.columns | length' "$TMP/samples.json") columns" \
+  || fail "history: companies without a valid one $bad_history, the bot's query answered $(head -c 300 "$TMP/samples.json")"
+
 # 2. Refusals: no URL, and a directive outside the contract.
 code="$(curl -s -o "$TMP/r501.json" -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d '{}' "$URL/api/decision/pull")"
 if [[ -n "${PRISMATIC_DECISION_URL:-}" ]]; then
@@ -115,6 +158,10 @@ code="$(curl -s -o "$TMP/r422.json" -w '%{http_code}' -X POST -H 'Content-Type: 
 [[ "$code" == 422 && "$(jq '.errors | length' "$TMP/r422.json")" == 3 && "$(jq 'has("applied_rcon")' "$TMP/r422.json")" == false ]] \
   && pass "a directive outside the contract is refused with its 3 reasons, nothing applied" \
   || fail "a directive outside the contract answered $code: $(head -c 300 "$TMP/r422.json")"
+refused="$(last_directive 0)"
+[[ "$(jq -r '.choice.outcome' <<< "$refused")" == refused && "$(jq -r '.inputs.stored.fallback // ""' <<< "$refused")" == "Prismatic sent no fit"* ]] \
+  && pass "its plan.directive in the store is refused and states the fallback: $(jq -r '.inputs.stored.fallback' <<< "$refused" | cut -c1-60)..." \
+  || fail "the refused directive's plan.directive: $(head -c 300 <<< "$refused")"
 
 # 3. A decision applied to the running bot.
 setting() { curl -s -m 10 "$URL/api/bots" | jq -r --argjson c "$BOT" \
@@ -126,10 +173,16 @@ if [[ -n "${PRISMATIC_DECISION_URL:-}" ]]; then
   echo "==> the directive comes from Prismatic at $SRC (its OPENTTD_BRIDGE_URL must be $URL/api/bridge)"
 else
   SRC="$STAND"
-  jq -n --argjson c "$BOT" --arg s "aggressiveness=$WANT" --argjson w "$WANT" \
-    '{ai: "PrismaticAI", company_id: $c, settings: $s, engine: "PrismaticMonteCarlo.simulate/3", chosen_aggressiveness: $w, candidates: []}' \
+  # What a fitting Prismatic answers: its working names the samples query it was fitted from.
+  jq -n --argjson c "$BOT" --arg s "aggressiveness=$WANT" --argjson w "$WANT" --arg q "$SQL" --argjson n "$ROWS" \
+        --arg u "$URL/api/db/query" \
+    '{ai: "PrismaticAI", company_id: $c, settings: $s, engine: "PrismaticMonteCarlo.simulate/3", chosen_aggressiveness: $w, candidates: [],
+      fit: {schema: "prismatic-fit/v1", model: "growth_by_aggressiveness",
+            parameters: {by_aggressiveness: [{aggressiveness: $w, mean_growth: 0.04, std_growth: 0.1, n: $n}]},
+            samples: {query: $q, query_url: $u, rows: $n, runs: 1}, quality: {rows_used: $n}}}' \
     > "$TMP/directive.json"
 fi
+SEQ0="$(directive_seq)"
 curl -s -m 10 -X POST -H 'Content-Type: application/json' -d '{"on": true}' "$URL/api/auto-approve" > /dev/null
 curl -s -m 90 -X POST -H 'Content-Type: application/json' -d "{\"url\": \"$SRC\"}" "$URL/api/decision/pull" > "$TMP/pull.json"
 shape="$(jq -r '(has("called_url") and has("raw_response") and (.applied_rcon.lines | type == "array"))' "$TMP/pull.json" 2>/dev/null || echo false)"
@@ -144,6 +197,25 @@ for ((i = 0; i < 30; i++)); do AFTER="$(setting)"; [[ "$AFTER" == "$WANT" ]] && 
   || fail "the bot reads aggressiveness=$AFTER (was $BEFORE), decided $WANT"
 curl -s -m 10 "$URL/api/events?kinds=panel.ai" | grep -q 'Prismatic decided' \
   && pass "the decision is in the panel's event feed" || fail "no 'Prismatic decided' event"
+
+# 3b. What the directive was fitted from, as the store holds its plan.directive.
+pd="$(last_directive "$SEQ0")"
+echo "$pd" > "$TMP/plan-directive.json"
+if [[ -n "${PRISMATIC_DECISION_URL:-}" ]] && ! jq -e '.inputs.live.directive.fit' <<< "$pd" > /dev/null 2>&1; then
+  [[ -n "$(jq -r '.inputs.stored.fallback // empty' <<< "$pd")" && "$(jq -r '.choice.accepted' <<< "$pd")" == true ]] \
+    && pass "Prismatic sent no fit; its plan.directive states the fallback: $(jq -r '.inputs.stored.fallback' <<< "$pd" | cut -c1-80)..." \
+    || fail "Prismatic's plan.directive without a fit: $(head -c 400 <<< "$pd")"
+else
+  WANT_Q="$(jq -r '.fit.samples.query' "$TMP/directive.json" 2>/dev/null)"
+  [[ -n "${PRISMATIC_DECISION_URL:-}" ]] && WANT_Q="$(jq -r '.inputs.live.directive.fit.samples.query // .inputs.live.directive.fit.samples.bus' <<< "$pd")"
+  [[ "$(jq -r '.choice.accepted' <<< "$pd")" == true && "$(jq -r '.inputs.stored.query // .inputs.stored.bus' <<< "$pd")" == "$WANT_Q" \
+     && "$(jq -c '.inputs.stored.fit' <<< "$pd")" == "$(jq -c '.inputs.live.directive.fit' <<< "$pd")" && "$(jq -r '.inputs.stored.rows' <<< "$pd")" -gt 0 ]] \
+    && pass "the store's plan.directive names the fitted samples: query of the bot's history, $(jq -r '.inputs.stored.rows' <<< "$pd") rows, model $(jq -r '.inputs.stored.fit.model' <<< "$pd"), outcome $(jq -r '.choice.outcome' <<< "$pd")" \
+    || fail "the store's plan.directive: $(head -c 600 <<< "$pd")"
+  jq -r '.applied_rcon.lines[]' "$TMP/pull.json" | grep -q '^fit: .* recorded rows' \
+    && pass "the pull's lines say what was recorded: $(jq -r '.applied_rcon.lines[]' "$TMP/pull.json" | grep '^fit: ')" \
+    || fail "no fit line in $(jq -c '.applied_rcon.lines' "$TMP/pull.json")"
+fi
 
 echo
 [[ "$FAILS" == 0 ]] && { echo "mcp-decision-check: PASS"; exit 0; } || { echo "mcp-decision-check: $FAILS failed"; exit 1; }

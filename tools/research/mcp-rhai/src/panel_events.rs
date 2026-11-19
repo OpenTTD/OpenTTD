@@ -99,7 +99,7 @@ pub const KINDS: &[Kind] = &[
     k("plan.investment", By::Panel, "panel.rs:h_investment", PLAN, "AlgoGlyph's transport-investment chose what to build (`GET /api/investment`)"),
     k("plan.action", By::Panel, "panel.rs:h_action_plan", PLAN, "AlgoGlyph's action-plan answered (`POST /api/actionplan`)"),
     k("plan.intent", By::Panel, "panel.rs:h_intent, answer_plan", PLAN, "a sentence was resolved to an intent and candidates"),
-    k("plan.directive", By::Panel, "panel_decision.rs:pull", PLAN, "Prismatic's directive was pulled: refused by the contract, or each step with its state (applied, pending approval, refused, error) (`POST /api/decision/pull`)"),
+    k("plan.directive", By::Panel, "panel_decision.rs:pull", PLAN, "Prismatic's directive was pulled: refused by the contract, or each step with its state (applied, pending approval, refused, error) (`POST /api/decision/pull`); `inputs.stored` is the fit it sent (its samples query or bus, rows, model, I0085) or the fallback"),
     k("plan.kernel", By::External, "kernel_feed.rs:event (mcp-kernel-feed --publish)", PLAN, "an AlgoGlyph kernel answered a request fed from the store (I0086)"),
     k("plan.duel", By::External, "tools/research/mcp-duel:publish_verdict", PLAN, "a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, winner}`, read from the store (I0083)"),
     // The hub's own events (I0084): derived for a game's MCP server that has no panel, every

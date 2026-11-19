@@ -1,16 +1,186 @@
 {
   "request": {
     "ai": "PrismaticAI",
-    "settings": "intercity=0,aggressiveness=75"
+    "company_id": 1,
+    "settings": "aggressiveness=75",
+    "engine": "PrismaticMonteCarlo.simulate/3",
+    "chosen_aggressiveness": 75,
+    "fit": {
+      "schema": "prismatic-fit/v1",
+      "model": "growth_by_aggressiveness",
+      "parameters": {
+        "horizon_months": 12,
+        "by_aggressiveness": [
+          {
+            "aggressiveness": 50,
+            "mean_growth": 0.034,
+            "std_growth": 0.118,
+            "n": 24
+          },
+          {
+            "aggressiveness": 75,
+            "mean_growth": 0.051,
+            "std_growth": 0.162,
+            "n": 24
+          }
+        ]
+      },
+      "samples": {
+        "query": "WITH r AS (SELECT instance, seed, started_ms, lead(started_ms) OVER (PARTITION BY instance ORDER BY started_ms) AS until_ms FROM runs), s AS (SELECT x.instance, r.seed, r.started_ms AS run_ms, x.ts_ms, x.game_tick, x.game_date, x.value, x.money, x.loan, x.net, x.vehicles FROM samples x JOIN r ON r.instance = x.instance AND x.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR x.ts_ms < r.until_ms) WHERE x.company = 1 QUALIFY row_number() OVER (PARTITION BY x.instance, r.started_ms, substr(x.game_date, 1, 7) ORDER BY x.game_tick, x.ts_ms) = 1), a AS (SELECT e.instance, r.started_ms AS run_ms, e.ts_ms, TRY_CAST(json_extract_string(e.data, '$.choice.settings.aggressiveness') AS BIGINT) AS aggressiveness, json_extract_string(e.data, '$.choice.outcome') AS directive_outcome FROM events e JOIN r ON r.instance = e.instance AND e.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR e.ts_ms < r.until_ms) WHERE e.kind = 'plan.directive' AND json_extract_string(e.data, '$.choice.outcome') IN ('applied', 'pending') AND TRY_CAST(json_extract_string(e.data, '$.choice.company_id') AS BIGINT) = 1 AND json_extract_string(e.data, '$.choice.settings.aggressiveness') IS NOT NULL) SELECT s.instance, s.seed, s.run_ms, s.game_tick, s.game_date, s.value, s.money, s.loan, s.net, s.vehicles, a.aggressiveness, a.directive_outcome FROM s ASOF LEFT JOIN a ON s.instance = a.instance AND s.run_ms = a.run_ms AND s.ts_ms >= a.ts_ms ORDER BY s.instance, s.run_ms, s.game_tick",
+        "query_url": "http://127.0.0.1:8800/api/db/query",
+        "rows": 48,
+        "runs": 2
+      },
+      "quality": {
+        "rows_used": 48,
+        "candidates_fitted": 2,
+        "residual_std": 0.131
+      },
+      "fallback": null
+    }
   },
   "response": {
-    "called_url": "http://127.0.0.1:8000/openttd/decision",
+    "called_url": "http://127.0.0.1:4000/api/openttd/decision",
     "raw_response": {
       "ai": "PrismaticAI",
-      "settings": "intercity=0,aggressiveness=75"
+      "company_id": 1,
+      "settings": "aggressiveness=75",
+      "engine": "PrismaticMonteCarlo.simulate/3",
+      "chosen_aggressiveness": 75,
+      "fit": {
+        "schema": "prismatic-fit/v1",
+        "model": "growth_by_aggressiveness",
+        "parameters": {
+          "horizon_months": 12,
+          "by_aggressiveness": [
+            {
+              "aggressiveness": 50,
+              "mean_growth": 0.034,
+              "std_growth": 0.118,
+              "n": 24
+            },
+            {
+              "aggressiveness": 75,
+              "mean_growth": 0.051,
+              "std_growth": 0.162,
+              "n": 24
+            }
+          ]
+        },
+        "samples": {
+          "query": "WITH r AS (SELECT instance, seed, started_ms, lead(started_ms) OVER (PARTITION BY instance ORDER BY started_ms) AS until_ms FROM runs), s AS (SELECT x.instance, r.seed, r.started_ms AS run_ms, x.ts_ms, x.game_tick, x.game_date, x.value, x.money, x.loan, x.net, x.vehicles FROM samples x JOIN r ON r.instance = x.instance AND x.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR x.ts_ms < r.until_ms) WHERE x.company = 1 QUALIFY row_number() OVER (PARTITION BY x.instance, r.started_ms, substr(x.game_date, 1, 7) ORDER BY x.game_tick, x.ts_ms) = 1), a AS (SELECT e.instance, r.started_ms AS run_ms, e.ts_ms, TRY_CAST(json_extract_string(e.data, '$.choice.settings.aggressiveness') AS BIGINT) AS aggressiveness, json_extract_string(e.data, '$.choice.outcome') AS directive_outcome FROM events e JOIN r ON r.instance = e.instance AND e.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR e.ts_ms < r.until_ms) WHERE e.kind = 'plan.directive' AND json_extract_string(e.data, '$.choice.outcome') IN ('applied', 'pending') AND TRY_CAST(json_extract_string(e.data, '$.choice.company_id') AS BIGINT) = 1 AND json_extract_string(e.data, '$.choice.settings.aggressiveness') IS NOT NULL) SELECT s.instance, s.seed, s.run_ms, s.game_tick, s.game_date, s.value, s.money, s.loan, s.net, s.vehicles, a.aggressiveness, a.directive_outcome FROM s ASOF LEFT JOIN a ON s.instance = a.instance AND s.run_ms = a.run_ms AND s.ts_ms >= a.ts_ms ORDER BY s.instance, s.run_ms, s.game_tick",
+          "query_url": "http://127.0.0.1:8800/api/db/query",
+          "rows": 48,
+          "runs": 2
+        },
+        "quality": {
+          "rows_used": 48,
+          "candidates_fitted": 2,
+          "residual_std": 0.131
+        },
+        "fallback": null
+      }
     },
     "applied_rcon": {
-      "lines": []
+      "lines": [
+        "company 1 aggressiveness=75: set",
+        "fit: growth_by_aggressiveness from 48 recorded rows (store query)",
+        "not read (the directive's own working): chosen_aggressiveness, engine"
+      ]
     }
-  }
+  },
+  "companies": [
+    {
+      "id": 0,
+      "name": "Pintborough Transport",
+      "manager": "",
+      "is_ai": false,
+      "money": 299010,
+      "loan": 300000,
+      "company_value": 1510,
+      "income": 0,
+      "performance": null,
+      "trains": 0,
+      "road_vehicles": 0,
+      "lorries": null,
+      "busses": null,
+      "planes": 0,
+      "ships": 0,
+      "history": {
+        "schema": "prismatic-history/v1",
+        "bus": {
+          "endpoint": "tcp://127.0.0.1:61234",
+          "envelope": "prismatic-bus/v1",
+          "kinds": [
+            "game.sample",
+            "plan.directive"
+          ]
+        },
+        "store": "/Users/example/.local/state/prismatic-mcp/store/panel-8800.duckdb",
+        "query_url": "http://127.0.0.1:8800/api/db/query",
+        "samples_query": "WITH r AS (SELECT instance, seed, started_ms, lead(started_ms) OVER (PARTITION BY instance ORDER BY started_ms) AS until_ms FROM runs), s AS (SELECT x.instance, r.seed, r.started_ms AS run_ms, x.ts_ms, x.game_tick, x.game_date, x.value, x.money, x.loan, x.net, x.vehicles FROM samples x JOIN r ON r.instance = x.instance AND x.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR x.ts_ms < r.until_ms) WHERE x.company = 0 QUALIFY row_number() OVER (PARTITION BY x.instance, r.started_ms, substr(x.game_date, 1, 7) ORDER BY x.game_tick, x.ts_ms) = 1), a AS (SELECT e.instance, r.started_ms AS run_ms, e.ts_ms, TRY_CAST(json_extract_string(e.data, '$.choice.settings.aggressiveness') AS BIGINT) AS aggressiveness, json_extract_string(e.data, '$.choice.outcome') AS directive_outcome FROM events e JOIN r ON r.instance = e.instance AND e.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR e.ts_ms < r.until_ms) WHERE e.kind = 'plan.directive' AND json_extract_string(e.data, '$.choice.outcome') IN ('applied', 'pending') AND TRY_CAST(json_extract_string(e.data, '$.choice.company_id') AS BIGINT) = 0 AND json_extract_string(e.data, '$.choice.settings.aggressiveness') IS NOT NULL) SELECT s.instance, s.seed, s.run_ms, s.game_tick, s.game_date, s.value, s.money, s.loan, s.net, s.vehicles, a.aggressiveness, a.directive_outcome FROM s ASOF LEFT JOIN a ON s.instance = a.instance AND s.run_ms = a.run_ms AND s.ts_ms >= a.ts_ms ORDER BY s.instance, s.run_ms, s.game_tick",
+        "columns": [
+          "instance",
+          "seed",
+          "run_ms",
+          "game_tick",
+          "game_date",
+          "value",
+          "money",
+          "loan",
+          "net",
+          "vehicles",
+          "aggressiveness",
+          "directive_outcome"
+        ],
+        "min_rows": 12
+      }
+    },
+    {
+      "id": 1,
+      "name": "Prismatic",
+      "manager": "",
+      "is_ai": true,
+      "money": 412000,
+      "loan": 100000,
+      "company_value": 523000,
+      "income": 61000,
+      "performance": null,
+      "trains": 2,
+      "road_vehicles": 3,
+      "lorries": null,
+      "busses": null,
+      "planes": 0,
+      "ships": 0,
+      "history": {
+        "schema": "prismatic-history/v1",
+        "bus": {
+          "endpoint": "tcp://127.0.0.1:61234",
+          "envelope": "prismatic-bus/v1",
+          "kinds": [
+            "game.sample",
+            "plan.directive"
+          ]
+        },
+        "store": "/Users/example/.local/state/prismatic-mcp/store/panel-8800.duckdb",
+        "query_url": "http://127.0.0.1:8800/api/db/query",
+        "samples_query": "WITH r AS (SELECT instance, seed, started_ms, lead(started_ms) OVER (PARTITION BY instance ORDER BY started_ms) AS until_ms FROM runs), s AS (SELECT x.instance, r.seed, r.started_ms AS run_ms, x.ts_ms, x.game_tick, x.game_date, x.value, x.money, x.loan, x.net, x.vehicles FROM samples x JOIN r ON r.instance = x.instance AND x.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR x.ts_ms < r.until_ms) WHERE x.company = 1 QUALIFY row_number() OVER (PARTITION BY x.instance, r.started_ms, substr(x.game_date, 1, 7) ORDER BY x.game_tick, x.ts_ms) = 1), a AS (SELECT e.instance, r.started_ms AS run_ms, e.ts_ms, TRY_CAST(json_extract_string(e.data, '$.choice.settings.aggressiveness') AS BIGINT) AS aggressiveness, json_extract_string(e.data, '$.choice.outcome') AS directive_outcome FROM events e JOIN r ON r.instance = e.instance AND e.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR e.ts_ms < r.until_ms) WHERE e.kind = 'plan.directive' AND json_extract_string(e.data, '$.choice.outcome') IN ('applied', 'pending') AND TRY_CAST(json_extract_string(e.data, '$.choice.company_id') AS BIGINT) = 1 AND json_extract_string(e.data, '$.choice.settings.aggressiveness') IS NOT NULL) SELECT s.instance, s.seed, s.run_ms, s.game_tick, s.game_date, s.value, s.money, s.loan, s.net, s.vehicles, a.aggressiveness, a.directive_outcome FROM s ASOF LEFT JOIN a ON s.instance = a.instance AND s.run_ms = a.run_ms AND s.ts_ms >= a.ts_ms ORDER BY s.instance, s.run_ms, s.game_tick",
+        "columns": [
+          "instance",
+          "seed",
+          "run_ms",
+          "game_tick",
+          "game_date",
+          "value",
+          "money",
+          "loan",
+          "net",
+          "vehicles",
+          "aggressiveness",
+          "directive_outcome"
+        ],
+        "min_rows": 12
+      }
+    }
+  ]
 }

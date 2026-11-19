@@ -29,6 +29,8 @@ the same.
 
 ## What it does not do
 
-Prismatic decides from one read of the companies and a hand growth model, not from recorded history
-(ADR 0034, I0085). The Rust rewrite of the bridge client (ADR 0032, proposed) is not done. On a
+Prismatic still decides from one read of the companies and a hand growth model, not from recorded
+history (ADR 0034). This fork's half is done (I0085): the panel offers each company's history (the
+bus endpoint and a store query of its samples) and records the fit a directive reports, or states
+the fallback; fitting it is `prismatic-platform`'s own change. The Rust rewrite of the bridge client (ADR 0032, proposed) is not done. On a
 vanilla server the only control is still rcon `start_ai`/`reload_ai`, which restarts the AI.

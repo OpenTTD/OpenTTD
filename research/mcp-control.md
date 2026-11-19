@@ -1315,6 +1315,13 @@ game run by `mcp-e2e` takes Prismatic's decisions without the Python bridge
   rating or road-vehicle cargo, so `manager` is empty, `performance`, `lorries` and `busses` are
   null and road vehicles are counted in `road_vehicles`. `prismatic_api`'s
   `GET /api/openttd/decision` reads its company there with `OPENTTD_BRIDGE_URL=<panel>/api/bridge`.
+  The answer stays the bridge's list, and each company carries `history` (`prismatic-history/v1`,
+  I0085, ADR 0034 point 4): the panel's bus endpoint with the kinds a fit reads (`game.sample`,
+  `plan.directive`), the store (or `off`), `query_url` (this panel's `/api/db/query`) and
+  `samples_query`, one read-only statement of the company's samples in every run of the store: the
+  first sample of each game month, with the run's seed and start and the `aggressiveness` the
+  latest applied (or pending) `plan.directive` of that run had set for the company by then, null
+  before any (`panel_decision.rs:samples_sql`).
 - `POST /api/decision/pull {url?}` GETs a directive from `url`, else `PRISMATIC_DECISION_URL`,
   checks it against the contract and applies it, answering a `DecisionPullResult`. A directive
   the contract refuses is answered 422 with every reason, and nothing is applied; no URL is 501.
@@ -1327,6 +1334,15 @@ game run by `mcp-e2e` takes Prismatic's decisions without the Python bridge
   `chosen_aggressiveness`, `candidates`), which the contract admits as the directive's own working
   (its `additionalProperties` is true since 2026-11-17; it was false, and Prismatic's real answer
   broke it).
+- One field of the working is read since I0085: `fit` (`prismatic-fit/v1`, `fitRecord` of the
+  contract), what Prismatic fitted its decision from: `model`, `parameters`, `samples` (`query` on
+  `query_url`, or `bus` with `kinds`, and `rows`), `quality`, and `fallback` when it could not fit
+  (required when `rows` is 0). `plan.directive`'s `inputs.stored` records it: the query (or bus)
+  and rows with the fit, or `{fallback}` with why none was read: Prismatic sent no fit (today's
+  `OpenttdController`, a snapshot and its hand model), Prismatic fell back (its fit stays
+  recorded), or the fit breaks the contract (`fit_errors`; another `schema` version is not read).
+  A fit never refuses a directive and never changes what is applied; the answer's lines say what
+  was recorded (`fit: ...`).
 
 `tools/research/mcp-decision-check` proves it on seed 31337: the bot's company in `CompanyOut`,
 both refusals, and a directive in the shape `OpenttdController#decision` answers applied, the

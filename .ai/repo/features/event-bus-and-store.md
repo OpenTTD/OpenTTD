@@ -36,5 +36,6 @@ planning decision publishes its choice as a structured `plan.*` event beside its
 kinds are one table, `tools/research/mcp-rhai/src/panel_events.rs`, listed by `GET /api/bus`), and
 each other decision's `inputs.stored` names the fallback it took and the issue of milestone
 `planning-is-generated-from-recorded-history` that adds its query. No decision reads the hub's
-store yet. Prismatic and AlgoGlyph do not subscribe yet (I0085, I0086). Without libduckdb the panel runs with
+store yet. The panel offers Prismatic each company's samples query and bus endpoint and records
+the fit it reports (I0085); Prismatic's own fit and AlgoGlyph's subscriber are not built yet (I0086). Without libduckdb the panel runs with
 "store: off".
