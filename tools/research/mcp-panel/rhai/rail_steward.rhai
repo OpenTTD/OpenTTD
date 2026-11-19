@@ -41,7 +41,7 @@ fn setting_of(bot, name) {
     ()
 }
 
-/// STATION_INVALID (ScriptBaseStation): as `via`, "via any station".
+// STATION_INVALID (ScriptBaseStation): as `via`, "via any station".
 const STATION_INVALID = 65535;
 
 /// Cargo waiting for a line at its stops (the most at either), by the Script API in test mode (it
@@ -62,7 +62,7 @@ fn waiting_for(line) {
     w
 }
 
-/// Rounds before a target the owner did not approve is asked again (an hour at the default round).
+// Rounds before a target the owner did not approve is asked again (an hour at the default round).
 const RETRY_ROUNDS = 30;
 
 /// Hand one target to the bot: one gated setting change per value that differs. Called as a method

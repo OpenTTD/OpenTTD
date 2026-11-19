@@ -56,7 +56,7 @@ flowchart LR
 
 | Issue | Status |
 |---|---|
-| I0088 | planned |
+| I0088 | built: `src/rhai_catalogue.rs` and `GET /api/rhai/functions`; `cargo test --release` on lundra 304/304 (5 new); the live route against a running panel `NOT RUN` (no local build while this Mac is under its disk floor) |
 | I0089 | planned |
 | I0090 | planned |
 | I0091 | planned |
@@ -83,10 +83,19 @@ own task in that repository with its own tests. Until those routes exist, a `pri
 that needs them fails with a typed error naming the missing route, never with invented data.
 
 Beside this milestone, the AI battle already runs Axon on EXLA locally:
-`research/battle-brain.md` (on master, not yet on this branch) trains a small ensemble on the battle's records
+[`research/battle-brain.md`](battle-brain.md) trains a small ensemble on the battle's records
 with prismatic-platform's compiled Nx/EXLA/Axon, and `prismatic_tune.rhai` applies its best
 settings through approval-gated tools. Its output, `brain.json`, is a second source a Rhai
 function can read.
+
+## Doc comments are for functions
+
+The catalogue reads a library function's `///` comments, which needs Rhai's `metadata` feature.
+With it, the parser holds `///` to its meaning: a doc comment must be followed by a function, and
+`/// ...` before a `const` or a statement is a parse error ("Doc-comment must be followed
+immediately by a function definition"). Comment anything else with `//`. The library's two such
+comments (`rail_steward.rhai`) are `//` now, and `every_script_of_the_library_parses` guards the
+rest.
 
 ## Constraints
 

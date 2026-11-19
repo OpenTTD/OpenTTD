@@ -6,7 +6,8 @@ description = "RESEARCH-ONLY: run Rhai scripts against the OpenTTD MCP control p
 publish = false
 
 [dependencies]
-rhai = { version = "1.19", features = ["serde"] }
+# metadata: the engine lists its functions with their signatures for the Scripts page (I0088).
+rhai = { version = "1.19", features = ["serde", "metadata"] }
 ureq = { version = "2.10", features = ["json"] }
 serde_json = "1"
 serde = "1"

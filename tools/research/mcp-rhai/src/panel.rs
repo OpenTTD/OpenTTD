@@ -2358,6 +2358,7 @@ pub fn routes() -> Vec<Route> {
           s(json!({"text": st()}), &["text"]), crate::panel_scripts::h_script_check),
         r("POST", "/api/script/save", "scriptSave", "Save a script into the library (only text that parses; 422 with the error otherwise). A running service on it, or on a script importing it, reloads within a second. Committing stays the owner's", false,
           s(json!({"name": st(), "text": st()}), &["name", "text"]), crate::panel_scripts::h_script_save),
+        r("GET", "/api/rhai/functions", "rhaiFunctions", "Every function a Rhai script of this panel can call (src/rhai_catalogue.rs, I0088): host functions with the doc of src/main.rs, one per MCP tool with its description and input schema, one per OpenAPI operation with its route, one per console command, and every non-private function of each library script with its /// comments; derived at most every 30 s (?fresh=1 derives now)", false, None, crate::rhai_catalogue::h_functions),
         r("GET", "/api/services", "services", "The scripts running as services in this panel: running, started, reloads, the last line's sequence number and the files watched for hot reload", false, None, crate::panel_scripts::h_services),
         r("POST", "/api/services/start", "serviceStart", "Start a script as a service in the background (rail_monitor, rail_steward, ...); it reloads when its file or a library it imports changes", false,
           s(json!({"name": st()}), &["name"]), crate::panel_scripts::h_service_start),
@@ -3073,8 +3074,9 @@ mod tests {
         // and the plan events' routes (POST /api/bus/publish, POST /api/bots/planned; I0081), and the
         // script workspace (GET /api/scripts, GET /api/script, POST /api/script/check and /save, GET
         // /api/services, POST /api/services/start and /stop, GET /api/services/log; panel_scripts.rs),
-        // and the real-world places (GET /api/realworld, GET /api/realworld/scenario, POST /api/realworld/compile).
-        assert_eq!(rs.len(), 62);
+        // and the real-world places (GET /api/realworld, GET /api/realworld/scenario, POST /api/realworld/compile),
+        // and the Rhai function catalogue (GET /api/rhai/functions; rhai_catalogue.rs, I0088).
+        assert_eq!(rs.len(), 63);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -3087,7 +3089,7 @@ mod tests {
             "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
             "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query",
             "/api/scripts", "/api/script", "/api/script/check", "/api/script/save",
-            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log",
+            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions",
             "/api/realworld", "/api/realworld/scenario", "/api/realworld/compile"].contains(&r.path)));
     }
 
