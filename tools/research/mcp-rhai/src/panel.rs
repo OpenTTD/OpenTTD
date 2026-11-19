@@ -2834,7 +2834,8 @@ impl Panel {
                 };
                 return match std::fs::read_to_string(statics().join("scripts.html")) {
                     Ok(t) => {
-                        let html = t.replace("__TITLE__", &html_escape(&title)).replace("__DESCRIPTION__", &html_escape(&description));
+                        let html = t.replace("__TITLE__", &html_escape(&title)).replace("__DESCRIPTION__", &html_escape(&description))
+                            .replace("__IMPORTMAP__", crate::panel_npm::import_map_tag(&here().join("node_modules")));
                         hub::respond(stream, 200, "text/html; charset=utf-8", html.as_bytes())
                     }
                     Err(_) => send_json(stream, 404, &json!({"error": "static/scripts.html is missing"})),
@@ -2871,6 +2872,11 @@ impl Panel {
                     }
                     Err(_) => send_json(stream, 404, &json!({"error": "static/tool.html is missing"})),
                 };
+            }
+            // Any file of an installed npm package, for ES modules a page imports through its
+            // import map (src/panel_npm.rs; the Scripts page's CodeMirror, I0089).
+            if let Some((f, ctype)) = crate::panel_npm::npm_file(&here().join("node_modules"), path) {
+                return file(stream, f, ctype);
             }
             if let Some((rel, ctype)) = vendor(path) {
                 return match std::fs::read(here().join("node_modules").join(rel)) {

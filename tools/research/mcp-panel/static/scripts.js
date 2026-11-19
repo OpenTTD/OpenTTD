@@ -6,6 +6,8 @@
    whose log streams below and which reloads by itself when its file, or a library it imports,
    changes (hot reload). A file changed outside (an editor, git) is loaded again while the page has
    no unsaved edit, and offered otherwise. The script is in the address, so a script is a link.
+   The editor is CodeMirror 6 (static/rhai-editor.js: completion and hover from GET /api/rhai/functions,
+   the parse error as a lint marker), the plain one below when CodeMirror cannot load.
    Keys: Ctrl/Cmd+S saves, Ctrl/Cmd+Enter runs, Escape stops a run, Tab indents.
    The pure parts are exported for node --test (test/scripts.test.mjs). */
 
@@ -171,7 +173,7 @@ export function editor(host, { onChange, onSave, onRun, onStop } = {}) {
     get value() { return ta.value; },
     set value(v) { ta.value = v; paint(); },
     focus: () => ta.focus(),
-    markError(line) { errorLine = line || 0; paint(); },
+    markError(err) { errorLine = (err && typeof err === 'object' ? err.line : err) || 0; paint(); },
     goto(line) {
       const at = offsetOfLine(ta.value, line);
       ta.focus(); ta.selectionStart = ta.selectionEnd = at;
@@ -189,12 +191,24 @@ const api = async (path, body) => {
   return { status: r.status, ...j };
 };
 
-function boot() {
+/** The CodeMirror 6 editor (static/rhai-editor.js, through the page's import map), or the plain
+    editor above when CodeMirror cannot load (no npm ci in tools/research/mcp-panel). */
+export async function makeEditor(host, opts, load = () => import('./rhai-editor.js')) {
+  try { return (await load()).rhaiEditor(host, opts); } catch (e) {
+    console.warn('CodeMirror did not load; the plain editor runs instead:', e?.message || e);
+    return editor(host, opts);
+  }
+}
+
+async function boot() {
   const state = { name: scriptOfPath(location.pathname), saved: '', modified: null, scripts: [], seq: 0, run: null, checkTimer: 0 };
-  const ed = editor($('editor'), {
+  const ed = await makeEditor($('editor'), {
     onChange: () => { markDirty(); scheduleCheck(); },
-    onSave: save, onRun: runOnce, onStop: stopRun,
+    onSave: () => save(), onRun: () => runOnce(), onStop: () => stopRun(),
   });
+  // The editor for the page's browser check (tools/research/mcp-scripts-check) and the console:
+  // its text is window.scriptsEditor.value whichever editor runs.
+  window.scriptsEditor = ed;
   const term = (box, line, tone = '') => {
     const div = document.createElement('div');
     div.className = tone;
@@ -217,13 +231,13 @@ function boot() {
   function showError(err) {
     const box = $('check');
     if (!err) {
-      ed.markError(0);
+      ed.markError(null);
       box.className = `${UI.badge} ${TONE.green}`;
       box.textContent = 'parses';
       $('check-detail').textContent = '';
       return;
     }
-    ed.markError(err.line);
+    ed.markError(err);
     box.className = `${UI.badge} ${TONE.red}`;
     box.textContent = `line ${err.line ?? '?'}, column ${err.column ?? '?'}`;
     $('check-detail').innerHTML = `<button type="button" data-line="${err.line}" class="text-left text-red-400 hover:underline">${esc(err.message)}</button>`;

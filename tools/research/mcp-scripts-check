@@ -48,28 +48,40 @@ try {
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(`${base}/scripts/${target.name}`, { waitUntil: 'networkidle' });
-  await page.waitForFunction(() => document.querySelector('[data-input]')?.value.length > 0);
+  // The editor's text through the page's handle (static/scripts.js window.scriptsEditor), whichever
+  // editor runs; the checks below then require CodeMirror 6 (I0089), not the plain fallback.
+  await page.waitForFunction(() => window.scriptsEditor?.value.length > 0);
+  check('the editor is CodeMirror 6', (await page.getAttribute('#editor', 'data-editor')) === 'codemirror');
 
   const listed = await page.$$eval('#script-list a[data-name]', (as) => as.map((a) => a.dataset.name));
   check('the library lists every script', listed.length === lib.scripts.length, `${listed.length} of ${lib.scripts.length}`);
   check('the open script is marked', (await page.$eval('#script-list [aria-current="page"]', (a) => a.dataset.name).catch(() => '')) === target.name);
-  const spans = await page.$$eval('[data-code] span', (s) => s.length);
-  const lines = await page.$$eval('[data-gutter] > div', (d) => d.length);
-  const text = await page.$eval('[data-input]', (t) => t.value);
-  check('the editor highlights the file', spans > 20, `${spans} token spans`);
-  check('every line is numbered', lines === text.split('\n').length, `${lines} lines`);
+  const spans = await page.$$eval('#editor .cm-content span', (s) => s.filter((x) => getComputedStyle(x).color !== getComputedStyle(x.parentElement).color).length);
+  const numbered = await page.$$eval('#editor .cm-lineNumbers .cm-gutterElement', (d) => d.map((x) => Number(x.textContent)).filter(Boolean));
+  const text = await page.evaluate(() => window.scriptsEditor.value);
+  check('the editor highlights the file', spans > 20, `${spans} coloured token spans`);
+  check('the lines are numbered from 1', numbered.length > 5 && numbered[0] === 1, `${numbered.length} numbers shown`);
   check('the header comment is its documentation', (await page.textContent('#doc')).trim().length > 10);
   await page.waitForFunction(() => document.querySelector('#check')?.textContent === 'parses' || document.querySelector('#check')?.textContent.startsWith('line'), null, { timeout: 5000 }).catch(() => {});
 
   // A parse error, typed: marked on its line, and Save refuses it.
-  await page.click('[data-input]');
+  await page.click('#editor .cm-content');
   await page.keyboard.press('Meta+ArrowDown').catch(() => {});
   await page.keyboard.press('Control+End');
   await page.keyboard.type('\nlet broken = ;\n');
   await page.waitForFunction(() => document.querySelector('#check')?.textContent.startsWith('line'), null, { timeout: 5000 }).catch(() => {});
   const badge = await page.textContent('#check');
   check('a parse error is found while typing', /^line \d+/.test(badge), badge);
-  check('its line is marked in the gutter', (await page.$$eval('[data-gutter] > .text-red-400', (d) => d.length)) === 1);
+  await page.waitForSelector('#editor .cm-lint-marker-error', { timeout: 5000 }).catch(() => {});
+  check('its line is marked in the gutter', (await page.$$eval('#editor .cm-lint-marker-error', (d) => d.length)) === 1);
+  check('the error is underlined in the text', (await page.$$eval('#editor .cm-lintRange-error', (d) => d.length)) >= 1);
+  // Completion from GET /api/rhai/functions (I0088): a host function is offered by its prefix.
+  await page.keyboard.type('rp');
+  await page.keyboard.press('Control+Space');
+  await page.waitForSelector('.cm-tooltip-autocomplete li', { timeout: 5000 }).catch(() => {});
+  const offered = await page.$$eval('.cm-tooltip-autocomplete li', (li) => li.map((x) => x.textContent));
+  check('completion offers the catalogue\'s functions', offered.some((o) => o.startsWith('rpc')), offered.slice(0, 5).join(', '));
+  await page.keyboard.press('Escape');
   const refused = await api('/api/script/save', { name: target.name, text: text + '\nlet broken = ;\n' });
   check('Save refuses text that does not parse', refused.status === 422 && refused.saved === false, `HTTP ${refused.status}`);
   check('the file on disk is untouched', fs.readFileSync(path.join(libDir, `${target.name}.rhai`), 'utf8') === text);
@@ -82,8 +94,8 @@ try {
   await page.waitForURL(`**/scripts/${name}`, { timeout: 5000 }).catch(() => {});
   check('a new script is created from the page', fs.existsSync(file));
   fs.writeFileSync(file, `// The Scripts page check's own service.\nprint("check v1");\nloop { sleep(200); }\n`);
-  await page.waitForFunction(() => document.querySelector('[data-input]')?.value.includes('check v1'), null, { timeout: 5000 }).catch(() => {});
-  check('a file changed on disk is loaded into the editor', (await page.$eval('[data-input]', (t) => t.value)).includes('check v1'));
+  await page.waitForFunction(() => window.scriptsEditor?.value.includes('check v1'), null, { timeout: 5000 }).catch(() => {});
+  check('a file changed on disk is loaded into the editor', (await page.evaluate(() => window.scriptsEditor.value)).includes('check v1'));
   await page.click('#svc-start');
   await page.waitForFunction(() => document.querySelector('#svc-log')?.textContent.includes('check v1'), null, { timeout: 8000 }).catch(() => {});
   check('the service runs and its log streams in', (await page.textContent('#svc-log')).includes('check v1'));
@@ -93,7 +105,7 @@ try {
   const log = await page.textContent('#svc-log');
   check('an edit reloads the running service (hot reload)', log.includes('reloaded') && log.includes('check v2'));
   await page.click('#svc-stop');
-  await page.fill('[data-input]', 'print("ran once: " + (40 + 2));\n');
+  await page.evaluate(() => { window.scriptsEditor.value = 'print("ran once: " + (40 + 2));\n'; });
   await page.click('#run');
   await page.waitForFunction(() => document.querySelector('#run-out')?.textContent.includes('== exit'), null, { timeout: 8000 }).catch(() => {});
   check('Run once streams the output and the exit', /ran once: 42[\s\S]*== exit 0/.test(await page.textContent('#run-out')));

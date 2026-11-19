@@ -57,7 +57,7 @@ flowchart LR
 | Issue | Status |
 |---|---|
 | I0088 | built: `src/rhai_catalogue.rs` and `GET /api/rhai/functions`; `cargo test --release` on lundra 304/304 (5 new); the live route against a running panel `NOT RUN` (no local build while this Mac is under its disk floor) |
-| I0089 | planned |
+| I0089 | built: CodeMirror 6 (`static/rhai-editor.js`, `static/rhai-lang.js`) through an import map derived from npm's lock (`src/panel_npm.rs`); `node --test` 266/266 with the app.css check, `cargo test --release` on lundra 308/308; a browser run against a fixture server (static files and node_modules served as the panel serves them, fake `/api` answers) 7/7: CodeMirror loads, colours, marks a parse error, completes `rpc` and `ttd::report` under the import alias, and shows hover docs; `tools/research/mcp-scripts-check` against a live panel `NOT RUN` (no local build) |
 | I0090 | planned |
 | I0091 | planned |
 | I0092 | planned |
