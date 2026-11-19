@@ -1,0 +1,70 @@
+{
+ "schema": "ai-battle-ablation/v1",
+ "id": "ablation-20261119T131147-seed1807087905",
+ "generated_at": "2026-11-19T13:11:47+00:00",
+ "seed": 1807087905,
+ "years": 3,
+ "field": [
+  "LuDiAI AfterFix",
+  "CivilAI",
+  "AdmiralAI",
+  "AAAHogEx"
+ ],
+ "match_cfg": {
+  "years": 3,
+  "start_year": 1960,
+  "landscape": "temperate",
+  "map_x": 8,
+  "map_y": 8,
+  "breakdowns": 1
+ },
+ "rev": "19582376f632b22fb7b2ebe05972b7b7ed9f10ec",
+ "tree_dirty": false,
+ "rows": [
+  {
+   "variant": "fixed",
+   "settings": "",
+   "exit_code": 0,
+   "value": 318482,
+   "money": 36497,
+   "vehicles": 28,
+   "rail": 8,
+   "road": 18,
+   "air": 2,
+   "errors": 0,
+   "field_best": 1375824,
+   "t": "1963-01",
+   "vs_first": 0.0
+  },
+  {
+   "variant": "single",
+   "settings": "rail_double=0",
+   "exit_code": 0,
+   "value": 176278,
+   "money": 177315,
+   "vehicles": 17,
+   "rail": 5,
+   "road": 12,
+   "air": 0,
+   "errors": 0,
+   "field_best": 1489919,
+   "t": "1963-01",
+   "vs_first": -0.4465
+  },
+  {
+   "variant": "level60",
+   "settings": "air_level_max=60",
+   "exit_code": 0,
+   "value": 346805,
+   "money": 246747,
+   "vehicles": 19,
+   "rail": 7,
+   "road": 11,
+   "air": 1,
+   "errors": 0,
+   "field_best": 1503731,
+   "t": "1963-01",
+   "vs_first": 0.0889
+  }
+ ]
+}
