@@ -107,7 +107,7 @@ defmodule Brain do
         uncertainty: Float.round(Nx.to_number(std[i]), 4)}
     end
     best_seen = rows |> Enum.max_by(& &1.share, fn -> nil end)
-    doc = %{schema: "battle-brain/v1", rows: length(rows), distinct_settings: distinct, genes: genes,
+    doc = %{schema: "battle-brain/v1", target: System.get_env("BRAIN_TARGET", "raw: log value share of the winner"), rows: length(rows), distinct_settings: distinct, genes: genes,
       members: @members, epochs: @epochs, candidates: @candidates, kappa: @kappa,
       backend: "EXLA #{inspect(EXLA.Client.get_supported_platforms() |> Map.keys())}",
       train_ms: div(train_us, 1000), score_ms: div(score_us, 1000), in_sample_r2: Float.round(r2, 3),

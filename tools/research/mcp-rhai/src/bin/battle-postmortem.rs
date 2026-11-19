@@ -216,20 +216,24 @@ fn write_duckdb(path: &Path, pm: &Value) -> Result<(), String> {
         CREATE TABLE IF NOT EXISTS contestants(edition VARCHAR, contestant VARCHAR, prismatic BOOLEAN, settings VARCHAR,
             matches INTEGER, avg_rank DOUBLE, last_place INTEGER, avg_value_share_of_winner DOUBLE, avg_idle_cash_share DOUBLE,
             median_gap_opens VARCHAR, causes JSON);
-        CREATE TABLE IF NOT EXISTS proposals(edition VARCHAR, contestant VARCHAR, settings VARCHAR, because JSON);").map_err(e)?;
+        CREATE TABLE IF NOT EXISTS proposals(edition VARCHAR, contestant VARCHAR, settings VARCHAR, because JSON);
+        -- The seed, so a contestant pairs with the default on the same map (the brain's paired target).
+        ALTER TABLE analyses ADD COLUMN IF NOT EXISTS seed BIGINT;").map_err(e)?;
     let ed = pm["edition"].as_str().unwrap_or("");
     let tx = c.transaction().map_err(e)?;
     for t in ["analyses", "contestants", "proposals"] {
         tx.execute(&format!("DELETE FROM {t} WHERE edition = ?"), params![ed]).map_err(e)?;
     }
     {
-        let mut st = tx.prepare("INSERT INTO analyses VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?, string_split(?, ','))").map_err(e)?;
+        let mut st = tx.prepare("INSERT INTO analyses (edition, match_id, contestant, rank, field, last, value, value_share_of_winner,
+            peak_vehicles, final_vehicles, idle_cash_share, income_per_vehicle, stations_per_vehicle, gap_opens, causes, seed)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?, string_split(?, ','), ?)").map_err(e)?;
         for a in pm["analyses"].as_array().into_iter().flatten() {
             let causes = a["losses"].as_array().into_iter().flatten().filter_map(|l| l["cause"].as_str()).collect::<Vec<_>>().join(",");
             st.execute(params![ed, a["match"].as_str(), a["key"].as_str(), a["rank"].as_i64(), a["field"].as_i64(),
                 a["last"].as_bool(), a["value"].as_f64(), a["value_share_of_winner"].as_f64(), a["peak_vehicles"].as_f64(),
                 a["final_vehicles"].as_f64(), a["idle_cash_share"].as_f64(), a["income_per_vehicle"].as_f64(),
-                a["stations_per_vehicle"].as_f64(), a["gap_opens"].as_str(), causes]).map_err(e)?;
+                a["stations_per_vehicle"].as_f64(), a["gap_opens"].as_str(), causes, a["seed"].as_i64()]).map_err(e)?;
         }
         let mut st = tx.prepare("INSERT INTO contestants VALUES (?,?,?,?,?,?,?,?,?,?,?)").map_err(e)?;
         for c in pm["contestants"].as_array().into_iter().flatten() {

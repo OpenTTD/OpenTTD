@@ -53,9 +53,9 @@ Elixir 1.19 / Erlang 28 (`$BRAIN_LIBS`, `ASDF_*_VERSION`), so XLA is not downloa
 
 | Step | What |
 |---|---|
-| Data | `analyses JOIN contestants` from the post-mortem's `analytics.duckdb`: every PrismaticAI non-winner match result with its settings and its value share of the winner |
+| Data | `analyses JOIN contestants` from the post-mortem's `analytics.duckdb`, **paired**: every PrismaticAI variant's result with its settings, against the default `PrismaticAI` on the same edition and seed (`analyses.seed`, backfilled for every edition in the store) |
 | Features | each gene of the GA's space scaled to [0, 1]; a gene the setting does not name takes the midpoint and a 0 "named" flag, so the net can tell a default from a value |
-| Target | log of the value share of the winner |
+| Target | log of (the variant's value share of the winner / the default's on the same seed); `brain.json` names it in `target`, and `predicted_share` is that ratio |
 | Model | 5 members, each 2 × 32 tanh with dropout 0.1, trained by Adam (lr 0.01, 400 steps) on its own bootstrap sample |
 | Search | 50,000 random candidates on the GA's grid (min, max, step per gene), scored in one batched EXLA call per member |
 | Pick | 8 proposals, alternating `safe` (best lower confidence bound, mean − κ·spread) and `explore` (best upper confidence bound, mean + κ·spread), κ = 1, each with its kind, predicted share and spread |
@@ -74,6 +74,18 @@ Tooling language: the repository's rule `project.tooling-language-preference` as
 The owner asked for EXLA and Axon by name, and both are Elixir libraries, so the learned part is a
 single Elixir script behind a thin runner. Its input and output are files (CSV in, JSON out), and
 nothing else in the repository depends on Elixir.
+
+### The champion, and why the target is paired
+
+The brain's safe proposal in generation 13, `g13.brainSafe`, carried into the GA as `g14.0` and
+`g15.0`, was paired with the default on 20 common seeds over 20 years. It won all 20, with a mean
+value 30.9 % higher. Its genes became the bot's defaults (`1f3400b85d`): fewer air routes, and
+investment that starts earlier, borrows and grows routes further. A variant with a higher GA
+score over 6 to 7 matches, `g15.3`, lost its pairing (0.903). Short GA scores rank noisily, and
+paired comparisons on the same seeds decide. The brain's target is therefore the paired ratio
+against the default, not the raw share. On the first paired run (2026-11-19) the brain had 607
+paired rows with 53 distinct settings for 19 genes, enough data for the first time. Its safe pick
+predicted 1.48 × the default, with a spread of 0.09 in log terms.
 
 ### Why a safe pick comes first
 
