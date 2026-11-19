@@ -386,6 +386,19 @@ test('the console toggles with ~ and its buttons', async () => {
   $('open-console').onclick();
   $('side-console').onclick();
   assert.ok(!hidden());
+  const c = $('console').classList;
+  assert.ok(c.contains('flex'), 'open, the drawer is a flex column (header, output, input)');
+  assert.ok(env.document.body.classList.contains('console-open'), 'open, the page keeps room below its last card');
+  $('expand-console').onclick();
+  assert.ok(c.contains('h-[85vh]') && !c.contains('h-80'), 'Expand grows it to most of the screen');
+  assert.equal($('expand-console').textContent, 'Shrink');
+  $('expand-console').onclick();
+  assert.ok(c.contains('h-80') && !c.contains('h-[85vh]'), 'and back');
+  $('console-out').textContent = 'something';
+  $('clear-console').onclick();
+  assert.equal($('console-out').textContent, '', 'Clear empties the output');
+  $('close-console').onclick();
+  assert.ok(hidden() && !c.contains('flex') && !env.document.body.classList.contains('console-open'));
 });
 
 test("live events become toasts with the shell's card, at most five", async () => {

@@ -51,8 +51,10 @@
   }
 
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  /** The frame every page's <main> gets: under the navbar, beside the sidebar, one gutter and width. */
-  const FRAME = ['pt-20', 'px-4', 'max-w-screen-2xl', 'mx-auto', 'lg:ml-64'];
+  /** The frame every page's <main> gets: under the navbar, beside the sidebar, one gutter. It fills
+   *  the width beside the sidebar at every size: a cap (max-w-screen-2xl) left a third of a 2560 px
+   *  screen empty, and the cards and grids already wrap by their own breakpoints. */
+  const FRAME = ['pt-20', 'px-4', 'sm:px-6', 'lg:ml-64'];
   const LINK = 'flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700';
   const SUB = 'flex items-center p-2 ps-4 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700';
 

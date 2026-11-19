@@ -175,10 +175,22 @@ const out = (s) => {
   while (o.childElementCount > 2000) o.firstElementChild.remove();
   o.scrollTop = o.scrollHeight;
 };
+/* The drawer is display:flex when open (header, output that fills, input) and hidden when closed;
+   while open, <main> keeps room below its last card (console-open) so nothing hides under it. */
 const toggleConsole = (show) => {
   const c = $('console'); const on = show ?? c.classList.contains('hidden');
-  c.classList.toggle('hidden', !on); if (on) $('console-in').focus();
+  c.classList.toggle('hidden', !on); c.classList.toggle('flex', on);
+  document.body.classList.toggle('console-open', on);
+  if (on) $('console-in').focus();
 };
+/* Expand: from a strip (h-80) to most of the screen (h-[85vh]) and back. */
+const expandConsole = (big) => {
+  const c = $('console'); const on = big ?? !c.classList.contains('h-[85vh]');
+  c.classList.toggle('h-[85vh]', on); c.classList.toggle('h-80', !on);
+  const b = $('expand-console'); if (b) { b.textContent = on ? 'Shrink' : 'Expand'; b.setAttribute('aria-pressed', String(on)); }
+};
+if ($('expand-console')) $('expand-console').onclick = () => expandConsole();
+if ($('clear-console')) $('clear-console').onclick = () => { $('console-out').textContent = ''; $('console-in').focus(); };
 $('open-console').onclick = () => toggleConsole(true);
 $('side-console').onclick = () => toggleConsole(true);
 if (location.hash === '#console') toggleConsole(true); // a link from another page opens the console

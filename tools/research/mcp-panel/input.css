@@ -25,4 +25,7 @@
   .grid > * { min-width: 0; }
   /* A link to #overview (or any id on the page) lands below the fixed navbar, not under it. */
   main [id] { scroll-margin-top: 5rem; }
+  /* While the developer console drawer is open (app.js toggleConsole), the page keeps room below
+     its last card for the drawer, so nothing hides under it; closed, no empty band is left. */
+  body.console-open main { padding-bottom: calc(min(85vh, 20rem) + 2rem); }
 }
