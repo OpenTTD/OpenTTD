@@ -342,6 +342,13 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
+			name = "rail_twin_max",
+			description = "Rail capacity (after AAAHogEx's double track): most twin lines, each a second line with its own track and platforms between the same two industries, built when a line runs all its trains and still has a trainload waiting (steward.nut TwinLines; 0: off).",
+			min_value = 0, max_value = 24,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
 			name = "autopilot",
 			description = "1 (default): a bot started without a plan from the panel (no planner line, air or rail pair) grows on its own: in-bot steward, own freight lines (at least 8), intercity roads, up to 30 routes and a 5000 reserve. 0: the unplanned bot stays as small as its settings say (the duels' rival before 2026-11-19).",
 			min_value = 0, max_value = 1,

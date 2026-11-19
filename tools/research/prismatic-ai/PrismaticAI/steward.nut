@@ -115,3 +115,37 @@ function PrismaticAI::OwnLinesCap(b, money) {
 	}
 	return b.own_lines;
 }
+
+/* Twin lines (setting rail_twin_max; after AAAHogEx's double track, which let its rail reach ~2M a
+ * year). A line holds two trains on its single track. When one runs all of them, has run at least
+ * TWIN_MIN_AGE days, and still has a full trainload waiting, a second line goes between the same
+ * two industries: its own track and platforms beside the first one's, its own trains. One twin per
+ * line, at most rail_twin_max, one per game month, when money and loan headroom reach line_budget. */
+const TWIN_MIN_AGE = 180;
+
+function PrismaticAI::TwinLines(b) {
+	if (b.rail_twin_max <= 0 || this.twins >= b.rail_twin_max) return;
+	local headroom = AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
+	if (AICompany.GetBankBalance(AICompany.COMPANY_SELF) + headroom < b.line_budget) return;
+	foreach (i, line in RAIL_LINES) {
+		if (line.closed || !("from" in line) || ("twinned" in line)) continue;
+		if (!AIIndustry.IsValidIndustry(line.from) || !AIIndustry.IsValidIndustry(line.to)) continue;
+		local s = this.LineStats(line);
+		if (s.trains < line.trains_max || s.capacity <= 0 || s.oldest < TWIN_MIN_AGE) continue;
+		local waiting = PrismaticAI.LineWaiting(line);
+		if (waiting < s.capacity / max(1, s.trains)) continue;
+		line.twinned <- true;
+		AILog.Info("PrismaticAI: twin for rail line " + (i + 1) + " (" + line.label + "): " + s.trains + " trains running, " + waiting + " waiting");
+		local loan_before = AICompany.GetLoanAmount();
+		AICompany.SetLoanAmount(AICompany.GetMaxLoanAmount());
+		if (PrismaticAI.BuildFreightRailRoute(line.from, line.to, line.cargo, PrismaticAI.RailShape(b)) > 0) {
+			this.twins++;
+			this.routes++;
+			RAIL_LINES.top().twinned <- true;
+		} else {
+			AICompany.SetLoanAmount(loan_before);
+			AILog.Info("PrismaticAI: twin not built; loan back to " + AICompany.GetLoanAmount());
+		}
+		return;
+	}
+}

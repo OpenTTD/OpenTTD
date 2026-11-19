@@ -44,6 +44,7 @@ class PrismaticAI extends AIController {
 	air_cap = 10; /* planes per route with the steward on: this heartbeat's invest_air_cap */
 	air_add_waiting = 0; /* this heartbeat's air_add_waiting (fleet.nut) */
 	ringed = null; /* station id -> the game year its catchment ring was last grown (catchment.nut) */
+	twins = 0; /* twin rail lines built (steward.nut TwinLines) */
 	full_load = 1; /* this heartbeat's air_full_load, for air routes built from here on */
 	air_towns = null; /* town id -> true where an autopilot airport stands */
 	air_tried = null; /* "a-b" town pairs the autopilot tried for air */
@@ -259,6 +260,7 @@ function PrismaticAI::Behaviour() {
 		air_full_load = AIController.GetSetting("air_full_load"),
 		invest_borrow = AIController.GetSetting("invest_borrow"),
 		air_add_waiting = AIController.GetSetting("air_add_waiting"),
+		rail_twin_max = AIController.GetSetting("rail_twin_max"),
 	};
 	/* Autopilot (default on): a bot nobody gave a plan (no planner line, air or rail pair) grows on
 	 * its own instead of stopping at a few buses. In the LAN AI battle the unplanned default ended
@@ -436,7 +438,10 @@ function PrismaticAI::Start() {
 		/* Each line runs what the steward's targets say (lines.nut), and its record is logged again
 		 * once a game month so a steward started late still finds it. */
 		/* With self_steward, the bot sets its own line targets once a game month (steward.nut). */
-		if (b.self_steward == 1 && PrismaticAI.MonthKey() != this.month) this.SelfSteward();
+		if (b.self_steward == 1 && PrismaticAI.MonthKey() != this.month) {
+			this.SelfSteward();
+			this.TwinLines(b);
+		}
 		this.ReconcileLines(b.cash_reserve);
 		if (PrismaticAI.MonthKey() != this.month) { this.month = PrismaticAI.MonthKey(); PrismaticAI.LogLines(); }
 		/* Borrowed money that sits idle only costs interest: repay what is above twice the reserve. */

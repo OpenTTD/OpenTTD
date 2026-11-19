@@ -902,7 +902,10 @@ function PrismaticAI::BuildFreightRailRoute(p, q, cargo, shape) {
 	if (sa == null) return 0;
 	local sb = PrismaticAI.BuildRailStationAt(ql, pl, plan.len, cargo, "accept", "at " + AIIndustry.GetName(q), shape.platforms);
 	if (sb == null) { PrismaticAI.RemoveRailStation(sa, plan.len); return 0; }
-	return PrismaticAI.BuildRailLineAndTrain(sa, sb, plan.len, cargo, plan.wagons, AIOrder.OF_FULL_LOAD_ANY, label);
+	local built = PrismaticAI.BuildRailLineAndTrain(sa, sb, plan.len, cargo, plan.wagons, AIOrder.OF_FULL_LOAD_ANY, label);
+	/* The industries it serves, so a saturated line can get a twin (steward.nut TwinLines). */
+	if (built > 0) { RAIL_LINES.top().from <- p; RAIL_LINES.top().to <- q; }
+	return built;
 }
 
 /* The bot's own next freight line: the best untried pair of a producing industry nobody serves yet

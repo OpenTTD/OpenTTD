@@ -95,6 +95,15 @@ gave catchment rings +4%, full load -2%, borrowing 0 and statues -45%. Transplan
 built otherwise, they do not carry AAAHogEx's edge. The battle's genetic algorithm explores them on
 many seeds. Double-track rail (item 4) and the unified pool (item 2) are not ported yet.
 
+Two further mechanisms were measured with recorded 3-seed, 10-year ablations
+(`research/results/ablation-20261119T06*`):
+- `air_add_waiting=10` with `catchment_stops=8` (a plane more while both airports have passengers
+  waiting, and road-stop rings): +59.5%, +46.9% and -1.9%. On the 6-year fitness lineup it lost.
+  The default stays off, and the battle plays it as the group anchor `PrismaticAI air10+catch`.
+- `rail_twin_max` (a second line between the same industries when a line is saturated):
+  +13.3%, -6.7% and +4.7% alone. Combined with air10+catch it was worse on all three seeds
+  (+19.9%, +29.7%, -18.0%), so it is off by default and a GA gene.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

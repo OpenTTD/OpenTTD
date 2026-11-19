@@ -178,7 +178,8 @@
       "statue_money": 0,
       "air_full_load": 0,
       "invest_borrow": 0,
-      "air_add_waiting": 0
+      "air_add_waiting": 0,
+      "rail_twin_max": 0
     },
     "space": {
       "aggressiveness": [
@@ -270,6 +271,11 @@
         0,
         100,
         10
+      ],
+      "rail_twin_max": [
+        0,
+        16,
+        2
       ]
     },
     "brain_offspring": 2,

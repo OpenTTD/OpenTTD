@@ -1,0 +1,83 @@
+{
+ "schema": "ai-battle-ablation/v1",
+ "id": "ablation-20261119T065438-seed930967890",
+ "generated_at": "2026-11-19T06:54:38+00:00",
+ "seed": 930967890,
+ "years": 10,
+ "field": [
+  "AAAHogEx",
+  "AdmiralAI"
+ ],
+ "match_cfg": {
+  "years": 10,
+  "start_year": 1960,
+  "landscape": "temperate",
+  "map_x": 8,
+  "map_y": 8,
+  "breakdowns": 1
+ },
+ "rev": "55328bdb56a8c7ffab199c213eb3afd123655324",
+ "tree_dirty": true,
+ "rows": [
+  {
+   "variant": "off",
+   "settings": "rail_twin_max=0",
+   "exit_code": 0,
+   "value": 2970755,
+   "money": 2482340,
+   "vehicles": 37,
+   "rail": 7,
+   "road": 20,
+   "air": 10,
+   "errors": 0,
+   "field_best": 14991494,
+   "t": "1970-01",
+   "vs_first": 0.0
+  },
+  {
+   "variant": "twin",
+   "settings": "rail_twin_max=8",
+   "exit_code": 0,
+   "value": 3366229,
+   "money": 2848825,
+   "vehicles": 35,
+   "rail": 11,
+   "road": 10,
+   "air": 14,
+   "errors": 0,
+   "field_best": 12769647,
+   "t": "1970-01",
+   "vs_first": 0.1331
+  },
+  {
+   "variant": "air10catch",
+   "settings": "air_add_waiting=10,catchment_stops=8",
+   "exit_code": 0,
+   "value": 4737340,
+   "money": 3996783,
+   "vehicles": 54,
+   "rail": 17,
+   "road": 19,
+   "air": 18,
+   "errors": 0,
+   "field_best": 15048398,
+   "t": "1970-01",
+   "vs_first": 0.5947
+  },
+  {
+   "variant": "air10catch+twin",
+   "settings": "air_add_waiting=10,catchment_stops=8,rail_twin_max=8",
+   "exit_code": 0,
+   "value": 3561794,
+   "money": 2857758,
+   "vehicles": 53,
+   "rail": 13,
+   "road": 23,
+   "air": 17,
+   "errors": 0,
+   "field_best": 16288292,
+   "t": "1970-01",
+   "vs_first": 0.199
+  }
+ ]
+}
