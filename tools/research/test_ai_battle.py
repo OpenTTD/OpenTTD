@@ -77,6 +77,14 @@ class MatchContract(unittest.TestCase):
                                          {"ai": "PrismaticAI", "settings": "a=1,b=2"}])
         self.assertEqual(text, 'start_ai "LuDiAI AfterFix"\nstart_ai "PrismaticAI" a=1,b=2\n')
 
+    def test_launch_uses_an_edition_directory_and_refuses_a_leftover(self):
+        host = battle.Host({"name": "h", "ssh": None}, "$HOME/ttd-battle")
+        m = {"id": "m-0001", "edition": "abc", "lineup": [{"ai": "A"}], "ticks": 7, "seed": 3}
+        text = battle.launch_script(host, m, MC)
+        self.assertIn("test ! -e $HOME/ttd-battle/matches/abc/m-0001\n", text)
+        self.assertIn("null:ticks=7", text)
+        self.assertIn("-G 3", text)
+
     def test_contestant_key_prefers_label(self):
         self.assertEqual(battle.contestant_key({"ai": "P", "settings": "x=1"}), "P[x=1]")
         self.assertEqual(battle.contestant_key({"ai": "P", "label": "P max"}), "P max")

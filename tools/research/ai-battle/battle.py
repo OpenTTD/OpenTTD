@@ -370,10 +370,17 @@ def start_script_text(lineup: list[dict]) -> str:
                      for c in lineup) + "\n"
 
 
+def match_dir(root: str, m: dict) -> str:
+    """Match ids restart in every edition, so the directory is per edition."""
+    return f"{root}/matches/{m['edition']}/{m['id']}"
+
+
 def launch_script(host: Host, m: dict, mc: dict) -> str:
-    root, mdir = host.root, f"{host.root}/matches/{m['id']}"
+    root, mdir = host.root, match_dir(host.root, m)
     personal = f"{mdir}/home/Documents/OpenTTD"
+    # A leftover directory would hand its old exit_code and log to this match: refuse it.
     return f"""set -e
+test ! -e {mdir}
 mkdir -p {personal}/scripts
 cd {mdir}
 for d in baseset ai game; do ln -sfn {root}/arena/$d {personal}/$d; done
@@ -534,7 +541,16 @@ class Orchestrator:
         return [m for m in self.matches.values()
                 if m["host"] == host.name and m["status"] in ("starting", "running")]
 
+    def reload_hosts(self) -> None:
+        """Pick up hosts added to the local hosts file (e.g. by `discover`) without a restart."""
+        known = {h.name for h in self.hosts}
+        for spec in load_hosts(self.cfg):
+            if spec["name"] not in known:
+                self.hosts.append(Host(spec, self.cfg.get("remote_root", "$HOME/ttd-battle")))
+                self.event(f"host {spec['name']}: added from the hosts file")
+
     def schedule_pass(self) -> None:
+        self.reload_hosts()
         for host in self.hosts:
             if time.time() < host.next_probe:
                 continue
@@ -572,7 +588,7 @@ class Orchestrator:
             return
         parts = []
         for m in running:
-            d = f"{host.root}/matches/{m['id']}"
+            d = match_dir(host.root, m)
             parts.append(f"echo '@@@ {m['id']}'; cat {d}/exit_code 2>/dev/null || echo RUNNING; "
                          f"grep -a -E 'REF Q|\\] \\[S\\] ' {d}/match.log 2>/dev/null | tail -n 4000")
         try:
@@ -599,7 +615,7 @@ class Orchestrator:
                 self.finish(m, int(status_line.strip() or -1))
             elif time.time() - m.get("progress_at", m["started_at"]) > self.cfg.get("stall_s", 600):
                 # A hung binary (e.g. a blocking OS error dialog) never writes exit_code.
-                d = f"{host.root}/matches/{m['id']}"
+                d = match_dir(host.root, m)
                 host.sh(f"kill $(cat {d}/pid) 2>/dev/null; echo 137 > {d}/exit_code")
                 self.event(f"{m['id']} on {host.name}: no referee output for "
                            f"{self.cfg.get('stall_s', 600)}s, killed")

@@ -92,7 +92,7 @@ tree instead and marks the edition dirty. `check` refuses every record from a di
 
 ## How a match runs
 
-1. **Isolation.** Each match runs in its own `$HOME/ttd-battle/matches/<id>/` with its own `HOME`.
+1. **Isolation.** Each match runs in its own `$HOME/ttd-battle/matches/<edition>/<id>/` with its own `HOME`.
    OpenTTD's personal directory is therefore `<match>/home/Documents/OpenTTD`, and it symlinks to
    the shared arena. The user's real `~/Documents/OpenTTD` is never touched; macOS TCC blocks it
    for SSH sessions anyway. With `-c battle.cfg`, the config directory is the match directory.
@@ -152,7 +152,7 @@ bot on its own, not the panel's plan, and its results are not duels in the sense
 |---|---|
 | `~/ttd-battle/content/` | `fetch`'s download home (`content_download/ai`) |
 | `~/ttd-battle/arena/` | the bundle and `PROVENANCE.json`, rsynced to every arena's `$HOME/ttd-battle/arena` |
-| `$HOME/ttd-battle/matches/<id>/` (each arena) | `match.log`, `battle.cfg`, `pid`, `exit_code`, the isolated `home/` |
+| `$HOME/ttd-battle/matches/<edition>/<id>/` (each arena) | `match.log`, `battle.cfg`, `pid`, `exit_code`, the isolated `home/` |
 | `~/ttd-battle/results/<edition>/matches/<id>.json` | each match: arena, build, seed, lineup, quarterly series, standings |
 | `research/results/battle-*.json` / `.md` | the tracked records; the `.md` is derived from the `.json` |
 
