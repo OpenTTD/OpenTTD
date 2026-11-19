@@ -191,16 +191,24 @@ gated_files_changed() {
 
 # Whether this change, staged or not, touches the panel's pages, charts or stylesheet.
 panel_changed() {
-  { git diff --name-only HEAD 2>/dev/null; git ls-files --others --exclude-standard; } \
-    | grep -qE '^tools/research/mcp-panel/(static|test)/|^tools/research/mcp-panel/input\.css$'
+  local files
+  files="$(changed_files)"
+  grep -qE '^tools/research/mcp-panel/(static|test)/|^tools/research/mcp-panel/input\.css$' <<< "$files"
 }
 
 # PrismaticAI or the battle tooling changed: run the working tree's bot in one short headless match
 # (rule project.battle-records-are-reproducible; tools/research/ai-battle/battle.py fitness). It fails
 # on a Squirrel error, an unfinished match or a collapsing fleet; it says NOT RUN without the arena.
+# The changed-file list is captured before matching: `grep -q` exits at its first match, the writer
+# then dies of SIGPIPE, and under pipefail the whole pipe reported "no change", so a step was skipped.
+changed_files() {
+  { git diff --name-only HEAD 2>/dev/null; git ls-files --others --exclude-standard; } || true
+}
+
 bot_changed() {
-  { git diff --name-only HEAD 2>/dev/null; git ls-files --others --exclude-standard; } \
-    | grep -qE '^tools/research/(prismatic-ai|ai-battle)/'
+  local files
+  files="$(changed_files)"
+  grep -qE '^tools/research/(prismatic-ai|ai-battle)/' <<< "$files"
 }
 
 # The panel's own tests (rule project.panel-charts-go-through-one-layer): chart options rendered by
@@ -215,8 +223,9 @@ panel_tests() {
 
 # Whether this change, staged or not, touches the real-world scenario pipeline.
 real_world_changed() {
-  { git diff --name-only HEAD 2>/dev/null; git ls-files --others --exclude-standard; } \
-    | grep -qE '^tools/research/real-world/|^tools/research/schema/real-world-scenario\.'
+  local files
+  files="$(changed_files)"
+  grep -qE '^tools/research/real-world/|^tools/research/schema/real-world-scenario\.' <<< "$files"
 }
 
 # The pipeline's own proof (research/real-world-scenario.md): its offline tests (determinism,

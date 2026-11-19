@@ -230,6 +230,76 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_INGAME | CONFIG_BOOLEAN,
 		});
 		AddSetting({
+			name = "air_routes_max",
+			description = "Autopilot: most own air routes (autopilot.nut).",
+			min_value = 0, max_value = 30,
+			easy_value = 10, medium_value = 10, hard_value = 10, custom_value = 10, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "air_towns",
+			description = "Autopilot: how many of the most populous towns air pairs are chosen from.",
+			min_value = 4, max_value = 60,
+			easy_value = 25, medium_value = 25, hard_value = 25, custom_value = 25, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "air_min_tiles",
+			description = "Autopilot: shortest air pair, in tiles.",
+			min_value = 20, max_value = 400,
+			easy_value = 60, medium_value = 60, hard_value = 60, custom_value = 60, step_size = 10,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "air_max_tiles",
+			description = "Autopilot: longest air pair, in tiles.",
+			min_value = 60, max_value = 800,
+			easy_value = 260, medium_value = 260, hard_value = 260, custom_value = 260, step_size = 10,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "foreign_airports",
+			description = "Autopilot: skip a town with this many airports of other companies within 16 tiles (0: never skip).",
+			min_value = 0, max_value = 5,
+			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "invest_min",
+			description = "Fleet: idle money (in thousands) above which InvestSurplus buys vehicles where they earn most.",
+			min_value = 0, max_value = 2000,
+			easy_value = 150, medium_value = 150, hard_value = 150, custom_value = 150, step_size = 10,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "invest_ppv_div",
+			description = "Fleet: a route gets one more vehicle while its vehicles earn more than price / this per year.",
+			min_value = 1, max_value = 10,
+			easy_value = 3, medium_value = 3, hard_value = 3, custom_value = 3, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "invest_road_cap",
+			description = "Fleet: most road vehicles per route that InvestSurplus grows to.",
+			min_value = 1, max_value = 40,
+			easy_value = 12, medium_value = 12, hard_value = 12, custom_value = 12, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "invest_air_cap",
+			description = "Fleet: most planes per route (InvestSurplus, and fleet growth with the steward on).",
+			min_value = 1, max_value = 30,
+			easy_value = 10, medium_value = 10, hard_value = 10, custom_value = 10, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "reinvest_budgets",
+			description = "Steward: own lines beyond own_lines need this many line budgets in the bank.",
+			min_value = 1, max_value = 10,
+			easy_value = 2, medium_value = 2, hard_value = 2, custom_value = 2, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
 			name = "autopilot",
 			description = "1 (default): a bot started without a plan from the panel (no planner line, air or rail pair) grows on its own: in-bot steward, own freight lines (at least 8), intercity roads, up to 30 routes and a 5000 reserve. 0: the unplanned bot stays as small as its settings say (the duels' rival before 2026-11-19).",
 			min_value = 0, max_value = 1,

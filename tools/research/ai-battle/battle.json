@@ -158,7 +158,14 @@
       "own_lines": 8,
       "cash_reserve": 5000,
       "line_budget": 80000,
-      "air_planes": 2
+      "air_planes": 2,
+      "air_routes_max": 10,
+      "air_towns": 25,
+      "air_max_tiles": 260,
+      "invest_min": 150,
+      "invest_ppv_div": 3,
+      "invest_road_cap": 12,
+      "invest_air_cap": 10
     },
     "space": {
       "aggressiveness": [
@@ -190,6 +197,41 @@
         1,
         6,
         1
+      ],
+      "air_routes_max": [
+        2,
+        20,
+        1
+      ],
+      "air_towns": [
+        10,
+        50,
+        5
+      ],
+      "air_max_tiles": [
+        160,
+        500,
+        20
+      ],
+      "invest_min": [
+        50,
+        600,
+        50
+      ],
+      "invest_ppv_div": [
+        1,
+        6,
+        1
+      ],
+      "invest_road_cap": [
+        6,
+        30,
+        2
+      ],
+      "invest_air_cap": [
+        4,
+        24,
+        2
       ]
     }
   }

@@ -23,7 +23,7 @@ const STEWARD_JUDGE_AFTER_DAYS = 400;
 const STEWARD_GROW_LOADS = 1.0;
 const STEWARD_SHRINK_LOADS = 0.25;
 /* Beyond own_lines, a further own line needs this many line budgets in the bank (not on loan). */
-const STEWARD_REINVEST_BUDGETS = 2;
+
 /* No more own lines than this however rich the bot is (the planner's own cap is 16 handed lines). */
 const STEWARD_OWN_LINES_MAX = 32;
 
@@ -108,9 +108,9 @@ function PrismaticAI::SelfSteward() {
 }
 
 /* How many own lines the bot may plan: own_lines, or up to STEWARD_OWN_LINES_MAX with self_steward
- * once the bank (not the loan) holds STEWARD_REINVEST_BUDGETS line budgets. */
+ * once the bank (not the loan) holds `reinvest_budgets` line budgets. */
 function PrismaticAI::OwnLinesCap(b, money) {
-	if (b.self_steward == 1 && this.own_built >= b.own_lines && money >= STEWARD_REINVEST_BUDGETS * b.line_budget) {
+	if (b.self_steward == 1 && this.own_built >= b.own_lines && money >= b.reinvest_budgets * b.line_budget) {
 		return STEWARD_OWN_LINES_MAX;
 	}
 	return b.own_lines;

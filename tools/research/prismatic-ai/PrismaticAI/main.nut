@@ -39,6 +39,7 @@ class PrismaticAI extends AIController {
 	auto_air = 0; /* autopilot air routes built (autopilot.nut) */
 	air_failed = 0; /* autopilot air pairs that could not be built this game year */
 	air_year = 0; /* the game year air_failed counts for */
+	air_cap = 10; /* planes per route with the steward on: this heartbeat's invest_air_cap */
 	air_towns = null; /* town id -> true where an autopilot airport stands */
 	air_tried = null; /* "a-b" town pairs the autopilot tried for air */
 
@@ -231,6 +232,19 @@ function PrismaticAI::Behaviour() {
 		own_lines = AIController.GetSetting("own_lines"),
 		self_steward = AIController.GetSetting("self_steward"),
 		autopilot = AIController.GetSetting("autopilot"),
+		/* Strategy knobs: every one is an AI setting, so the tilde console (`bot set`), MCP
+		 * openttd.ai.set_setting, Rhai api_botSetting, the panel, battle settings strings and the
+		 * battle's genetic algorithm all steer them, live (info.nut). */
+		air_routes_max = AIController.GetSetting("air_routes_max"),
+		air_towns = AIController.GetSetting("air_towns"),
+		air_min_tiles = AIController.GetSetting("air_min_tiles"),
+		air_max_tiles = AIController.GetSetting("air_max_tiles"),
+		foreign_airports = AIController.GetSetting("foreign_airports"),
+		invest_min = AIController.GetSetting("invest_min") * 1000,
+		invest_ppv_div = AIController.GetSetting("invest_ppv_div"),
+		invest_road_cap = AIController.GetSetting("invest_road_cap"),
+		invest_air_cap = AIController.GetSetting("invest_air_cap"),
+		reinvest_budgets = AIController.GetSetting("reinvest_budgets"),
 	};
 	/* Autopilot (default on): a bot nobody gave a plan (no planner line, air or rail pair) grows on
 	 * its own instead of stopping at a few buses. In the LAN AI battle the unplanned default ended
@@ -393,9 +407,10 @@ function PrismaticAI::Start() {
 		}
 
 		/* Capacity follows demand: add where cargo piles up, sell what keeps losing money. */
+		this.air_cap = b.invest_air_cap;
 		this.ManageFleet(b.cash_reserve);
 		/* With the steward on, idle money buys vehicles where vehicles earn most (fleet.nut). */
-		if (b.self_steward == 1) this.InvestSurplus(b.cash_reserve);
+		if (b.self_steward == 1) this.InvestSurplus(b);
 		/* Every rail line keeps a train: one lost at a level crossing or sold is replaced. */
 		PrismaticAI.KeepLinesServed(b.cash_reserve);
 		/* Each line runs what the steward's targets say (lines.nut), and its record is logged again

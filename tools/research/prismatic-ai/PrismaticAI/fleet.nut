@@ -55,18 +55,18 @@ function PrismaticAI::RouteEarns(k) {
 	return judged == 0 || profit > 0;
 }
 
-/* Surplus to put to work (steward on): money above this many reserves funds more vehicles. */
+/* Surplus to put to work (steward on): money above this many reserves, and above the setting
+ * invest_min, funds more vehicles. */
 const INVEST_SURPLUS_RESERVES = 20;
-const INVEST_SURPLUS_MIN = 150000;
 
 /* Put idle money to work: one more vehicle on the route whose judged vehicles (a year old) earned
  * the most per vehicle last year, while that is above a third of the vehicle's price and the route
  * is under its cap. The winner of the LAN AI battle grew its fleet tenfold while PrismaticAI sat on
  * millions with ~30 vehicles; waiting cargo alone never called for more. Road and air only: rail
  * lines grow through the steward's targets (lines.nut, steward.nut). */
-function PrismaticAI::InvestSurplus(reserve) {
+function PrismaticAI::InvestSurplus(b) {
 	local money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
-	if (money < max(INVEST_SURPLUS_MIN, INVEST_SURPLUS_RESERVES * reserve)) return;
+	if (money < max(b.invest_min, INVEST_SURPLUS_RESERVES * b.cash_reserve)) return;
 	local routes = {};
 	local all = AIVehicleList();
 	for (local v = all.Begin(); !all.IsEnd(); v = all.Next()) {
@@ -82,9 +82,9 @@ function PrismaticAI::InvestSurplus(reserve) {
 	}
 	local best = null, best_ppv = 0;
 	foreach (k, r in routes) {
-		if (r.judged == 0 || r.count >= ((r.type == AIVehicle.VT_AIR) ? 10 : 12)) continue;
+		if (r.judged == 0 || r.count >= ((r.type == AIVehicle.VT_AIR) ? b.invest_air_cap : b.invest_road_cap)) continue;
 		local ppv = r.profit / r.judged;
-		if (ppv * 3 < AIEngine.GetPrice(AIVehicle.GetEngineType(r.sample))) continue;
+		if (ppv * b.invest_ppv_div < AIEngine.GetPrice(AIVehicle.GetEngineType(r.sample))) continue;
 		if (ppv > best_ppv) { best_ppv = ppv; best = r; }
 	}
 	if (best == null) return;
@@ -130,7 +130,7 @@ function PrismaticAI::ManageFleet(reserve) {
 		if (type == AIVehicle.VT_RAIL) continue;
 		/* Planes per air route: 4, or 8 with the steward on (autopilot): in the battle the winner ran
 		 * 10-14 planes on its first routes by 1962 and its air profit funded everything else. */
-		local cap_limit = (type == AIVehicle.VT_AIR) ? (this.steward_on ? 8 : 4) : 8;
+		local cap_limit = (type == AIVehicle.VT_AIR) ? (this.steward_on ? this.air_cap : 4) : 8;
 		if (r.count >= cap_limit) continue;
 		local cargo = AIEngine.GetCargoType(AIVehicle.GetEngineType(v));
 		local cap = AIVehicle.GetCapacity(v, cargo);
