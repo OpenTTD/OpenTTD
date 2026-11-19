@@ -126,7 +126,9 @@ fn check(args: &[String]) -> i32 {
     for op in &ops {
         let required_query = op["query"].as_array().map_or(false, |q| q.iter().any(|p| p["required"] == json!(true)));
         let required_body = op["schema"]["required"].as_array().map_or(false, |r| !r.is_empty());
-        if op["read_only"] != json!(true) || op["stream"] == json!(true) || required_query || required_body { continue; }
+        // A templated path (/play/{file}) needs an input the check has none of, like a required query.
+        let templated_path = op["path"].as_str().map_or(false, |p| p.contains('{'));
+        if op["read_only"] != json!(true) || op["stream"] == json!(true) || required_query || required_body || templated_path { continue; }
         let params = json!({"instance": op["instance"], "id": op["id"]});
         let r = request(&mut ws, next(), "hub.call", params, &mut notes).unwrap_or_else(|e| json!({"error": e}));
         match verdict(&r) {
