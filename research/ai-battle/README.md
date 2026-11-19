@@ -22,32 +22,31 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T224544-1cff10c1.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T224544-1cff10c1`](../results/battle-20261119T224544-1cff10c1.md) (2/2 replays identical).
+<!-- derived from research/results/battle-20261119T231126-7414f868.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T231126-7414f868`](../results/battle-20261119T231126-7414f868.md) (0/1 replays identical).
 
-- Edition `1cff10c1f4459d35`: PrismaticAI and referee at `17cf96039a050eb21f3afa13dc00b0901d7a2afa`, base set `opengfx-8.0.tar`
+- Edition `7414f868144c446a`: PrismaticAI and referee at `ca624b034c8655a9dca3353ca1fbc4b703339daf`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 49 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-ma6b147b162), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 2 of 2 identical to their original on another arena
+- 46 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-m2d3aa28066), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 0 of 1 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 49 | 49 | 196 | 4.0 | 1.0 | 100.8 M | 0 | 0 |
-| 2 | PrismaticAI GA g67.0 | 8 | 0 | 22 | 2.75 | 2.25 | 10.8 M | 0 | 0 |
-| 3 | PrismaticAI | 6 | 0 | 16 | 2.667 | 2.33 | 11.0 M | 0 | 0 |
-| 4 | PrismaticAI GA g67.3 | 6 | 0 | 16 | 2.667 | 2.33 | 10.2 M | 0 | 0 |
-| 5 | PrismaticAI pre-elite | 7 | 0 | 18 | 2.571 | 2.43 | 12.8 M | 0 | 1 |
-| 6 | AdmiralAI | 49 | 0 | 120 | 2.449 | 2.55 | 8.5 M | 0 | 2 |
-| 7 | PrismaticAI GA g67.brainSafe | 8 | 0 | 19 | 2.375 | 2.62 | 9.6 M | 0 | 0 |
-| 8 | PrismaticAI solo-max | 7 | 0 | 16 | 2.286 | 2.71 | 5.0 M | 0 | 3 |
-| 9 | PrismaticAI GA g67.brainExplore | 7 | 0 | 14 | 2.0 | 3.0 | 5.3 M | 0 | 0 |
-| 10 | LuDiAI AfterFix | 49 | 0 | 45 | 0.918 | 4.08 | 1.6 M | 0 | 3 |
-| 11 | CivilAI | 49 | 0 | 8 | 0.163 | 4.84 | 905.3 k | 0 | 8 |
+| 1 | AAAHogEx | 46 | 46 | 184 | 4.0 | 1.0 | 95.5 M | 0 | 0 |
+| 2 | PrismaticAI | 6 | 0 | 18 | 3.0 | 2.0 | 17.0 M | 0 | 2 |
+| 3 | PrismaticAI GA g69.0 | 6 | 0 | 18 | 3.0 | 2.0 | 13.1 M | 0 | 0 |
+| 4 | PrismaticAI GA g69.brainSafe | 8 | 0 | 24 | 3.0 | 2.0 | 9.9 M | 0 | 0 |
+| 5 | PrismaticAI pre-elite | 8 | 0 | 23 | 2.875 | 2.12 | 13.9 M | 0 | 0 |
+| 6 | PrismaticAI GA g69.brainExplore | 6 | 0 | 15 | 2.5 | 2.5 | 8.5 M | 0 | 1 |
+| 7 | PrismaticAI GA g69.3 | 6 | 0 | 14 | 2.333 | 2.67 | 7.5 M | 0 | 0 |
+| 8 | PrismaticAI solo-max | 6 | 0 | 14 | 2.333 | 2.67 | 5.5 M | 0 | 1 |
+| 9 | AdmiralAI | 46 | 0 | 103 | 2.239 | 2.76 | 7.2 M | 0 | 1 |
+| 10 | LuDiAI AfterFix | 46 | 0 | 40 | 0.87 | 4.13 | 1.6 M | 0 | 0 |
+| 11 | CivilAI | 46 | 0 | 7 | 0.152 | 4.85 | 610.1 k | 0 | 7 |
 
 | Seed | Original | Replay | Arenas | Identical |
 |---|---|---|---|---|
-| 490140749 | m-0025 | m-0040 | mbp2 / mbp | yes |
-| 665336382 | m-0001 | m-0048 | mbp / mbp2 | yes |
+| 1718326140 | m-0010 | m-0064 | imac / mbp | NO |
 <!-- battle:end -->
 
 ## How it fits together
@@ -265,6 +264,10 @@ The first editions showed two failures. The battle now catches both by itself.
   borrowing for investment, catchment rings of 2, at most 6 planes and 14 road vehicles a
   route. Its genes are the defaults now and the GA starts from them. **`PrismaticAI
   pre-elite`** plays the former defaults as settings and is an anchor in place of pre-champion.
+- **`PrismaticAI solo-max` retires from the tournament (2026-11-20).** With autopilot 0 it never
+  flies under the current code. It lost all 13 of its pairs with the default (mean ratio 0.38)
+  and caused most of the remaining PrismaticAI last places. It stays in the fitness check, which
+  covers the autopilot-off code path.
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets
   new maps. Before, every generation was judged, and tuned, on the same handful of seeds.
 - **Promotion, detected automatically.** The orchestrator pairs every configuration (its settings, not
