@@ -2361,17 +2361,19 @@ pub fn derive_routes(tools: &[Value], client_tools: &[Value], resources: &[Value
     out
 }
 
-/// The query parameters a declared GET route documents.
-fn query_params(path: &str) -> &'static [&'static str] {
+/// The query parameters a declared GET route documents, each with whether its handler requires it
+/// (answers 400 or an error without it), so a client such as the hub's check knows which reads it
+/// may call with no input.
+fn query_params(path: &str) -> &'static [(&'static str, bool)] {
     match path {
-        "/api/events" => &["since", "kinds", "limit"],
-        "/api/resource" => &["uri"],
-        "/api/news" => &["limit"],
-        "/api/plan" => &["limit", "params", "track", "yards", "calibrate"],
-        "/api/investment" => &["params"],
-        "/api/content" => &["q"],
-        "/api/result" => &["name"],
-        "/api/db/query" => &["sql"],
+        "/api/events" => &[("since", false), ("kinds", false), ("limit", false)],
+        "/api/resource" => &[("uri", true)],
+        "/api/news" => &[("limit", false)],
+        "/api/plan" => &[("limit", false), ("params", false), ("track", false), ("yards", false), ("calibrate", false)],
+        "/api/investment" => &[("params", false)],
+        "/api/content" => &[("q", true)],
+        "/api/result" => &[("name", true)],
+        "/api/db/query" => &[("sql", false)],
         _ => &[],
     }
 }
@@ -2387,7 +2389,7 @@ pub fn openapi_doc(routes: &[Route], derived: &[Derived], panel_port: u16) -> Va
         }
         let q = if method == "GET" { query_params(path) } else { &[] };
         if !q.is_empty() {
-            o["parameters"] = Value::Array(q.iter().map(|n| json!({"name": n, "in": "query", "schema": {"type": "string"}})).collect());
+            o["parameters"] = Value::Array(q.iter().map(|(n, req)| json!({"name": n, "in": "query", "required": req, "schema": {"type": "string"}})).collect());
         }
         if let Some(a) = item.and_then(|i| i.get("annotations")).filter(|a| truthy(Some(a))) {
             o["x-mcp-annotations"] = a.clone();
@@ -3066,6 +3068,13 @@ mod tests {
         // The hub reads the same document into the same operations.
         let ops = hub::ops_from_openapi("panel-1", &doc);
         assert!(ops.iter().any(|o| o.id == "tool_openttd_decision_validate" && o.read_only));
+        // A read whose handler answers 400 without its query parameter says so, and the hub's check
+        // (which calls only reads that need no input) leaves it out; an optional one stays optional.
+        let query = |id: &str| ops.iter().find(|o| o.id == id).unwrap().query.clone();
+        assert_eq!(query("content"), vec![("q".to_string(), true)]);
+        assert_eq!(query("result"), vec![("name".to_string(), true)]);
+        assert_eq!(query("readResource"), vec![("uri".to_string(), true)]);
+        assert!(query("events").iter().all(|(_, required)| !required));
         assert!(ops.iter().any(|o| o.id == "eventStream" && o.stream));
         let _ = no_op;
     }
