@@ -22,26 +22,31 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T104404-126e4e25.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T104404-126e4e25`](../results/battle-20261119T104404-126e4e25.md) (0/0 replays identical).
+<!-- derived from research/results/battle-20261119T110859-f063413c.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T110859-f063413c`](../results/battle-20261119T110859-f063413c.md) (0/1 replays identical).
 
-- Edition `126e4e259ee34db8`: PrismaticAI and referee at `0d9c59bb9099897fd7cc68c6e3bd016b79292874`, base set `opengfx-8.0.tar`
+- Edition `f063413cd336e1fe`: PrismaticAI and referee at `1f3400b85de084fcb4bb1230b95817962e917176`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 39 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-ma23cbe0df4), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 0 of 0 identical to their original on another arena
+- 46 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-mec42cfe720), `mbp2` (20261119-master-gdf1e05e7d8), `ubuntu` (20261119-master-gdf1e05e7d8)
+- Replays: 0 of 1 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 39 | 39 | 156 | 4.0 | 1.0 | 97.6 M | 0 | 0 |
-| 2 | PrismaticAI GA g15.3 | 6 | 0 | 18 | 3.0 | 2.0 | 12.3 M | 0 | 0 |
-| 3 | PrismaticAI GA g15.0 | 7 | 0 | 20 | 2.857 | 2.14 | 14.4 M | 0 | 0 |
-| 4 | PrismaticAI | 6 | 0 | 17 | 2.833 | 2.17 | 11.2 M | 0 | 0 |
-| 5 | PrismaticAI GA g15.brainSafe | 7 | 0 | 18 | 2.571 | 2.43 | 10.9 M | 0 | 5 |
-| 6 | PrismaticAI GA g15.brainExplore | 6 | 0 | 15 | 2.5 | 2.5 | 8.5 M | 0 | 1 |
-| 7 | PrismaticAI solo-max | 7 | 0 | 16 | 2.286 | 2.71 | 6.0 M | 0 | 7 |
-| 8 | AdmiralAI | 39 | 0 | 86 | 2.205 | 2.79 | 6.7 M | 47 | 1 |
-| 9 | LuDiAI AfterFix | 39 | 0 | 37 | 0.949 | 4.05 | 1.9 M | 0 | 0 |
-| 10 | CivilAI | 39 | 0 | 7 | 0.179 | 4.82 | 668.2 k | 0 | 5 |
+| 1 | AAAHogEx | 46 | 46 | 184 | 4.0 | 1.0 | 93.3 M | 0 | 0 |
+| 2 | PrismaticAI | 7 | 0 | 21 | 3.0 | 2.0 | 17.3 M | 0 | 0 |
+| 3 | PrismaticAI GA g16.brainSafe | 6 | 0 | 18 | 3.0 | 2.0 | 13.6 M | 0 | 5 |
+| 4 | PrismaticAI GA g16.0 | 7 | 0 | 21 | 3.0 | 2.0 | 10.3 M | 0 | 0 |
+| 5 | PrismaticAI pre-champion | 7 | 0 | 20 | 2.857 | 2.14 | 14.1 M | 0 | 0 |
+| 6 | PrismaticAI GA g16.brainExplore | 7 | 0 | 20 | 2.857 | 2.14 | 8.5 M | 0 | 2 |
+| 7 | PrismaticAI GA g16.3 | 6 | 0 | 16 | 2.667 | 2.33 | 12.3 M | 0 | 0 |
+| 8 | PrismaticAI solo-max | 6 | 0 | 14 | 2.333 | 2.67 | 5.9 M | 0 | 6 |
+| 9 | AdmiralAI | 46 | 0 | 100 | 2.174 | 2.83 | 6.9 M | 59 | 2 |
+| 10 | LuDiAI AfterFix | 46 | 0 | 38 | 0.826 | 4.17 | 1.7 M | 0 | 2 |
+| 11 | CivilAI | 46 | 0 | 8 | 0.174 | 4.83 | 735.3 k | 0 | 10 |
+
+| Seed | Original | Replay | Arenas | Identical |
+|---|---|---|---|---|
+| 1237256277 | m-0004 | m-0048 | imac / mbp | NO |
 <!-- battle:end -->
 
 ## How it fits together
