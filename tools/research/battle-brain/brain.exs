@@ -2,9 +2,9 @@
 # from every recorded PrismaticAI result (its settings -> its log value share of the winner), an
 # ensemble of small Axon networks compiled by EXLA predicts what an untried setting would score,
 # with the ensemble's spread as its uncertainty. It scores tens of thousands of candidate settings
-# from the genetic algorithm's own gene space in one batched EXLA call and proposes the best by
-# upper confidence bound (mean + kappa * spread), so with little data it explores and with much
-# it exploits. It never changes a contestant: proposals are an input for the battle's GA
+# from the genetic algorithm's own gene space in one batched EXLA call and proposes, alternately,
+# the best by lower confidence bound (mean - kappa * spread: safe) and by upper confidence bound
+# (mean + kappa * spread: explore). It never changes a contestant: proposals are an input for the battle's GA
 # (/api/tuning) and the live tuner (rhai/prismatic_tune.rhai).
 #
 # Input  (argv[0]): a CSV of edition,contestant,settings,share (tools/research/battle-brain/brain).
@@ -88,13 +88,21 @@ defmodule Brain do
     {score_us, preds} = :timer.tc(fn -> members |> Enum.map(&predict.(&1, xc)) |> Nx.stack() |> Nx.squeeze(axes: [2]) end)
     mean = Nx.mean(preds, axes: [0]); std = Nx.standard_deviation(preds, axes: [0])
     ucb = Nx.add(mean, Nx.multiply(std, @kappa))
-    order = ucb |> Nx.argsort(direction: :desc) |> Nx.slice([0], [@top]) |> Nx.to_flat_list()
+    lcb = Nx.subtract(mean, Nx.multiply(std, @kappa))
+    # The proposals alternate a safe pick and an explorer: the best lower confidence bound (where
+    # the ensemble agrees the setting is good) and the best upper one (where it might be). The GA
+    # takes the first two, so each generation gets one of each; an explorer that ends last is culled
+    # by the GA's last-place penalty, a safe pick keeps the population from collapsing.
+    safe = lcb |> Nx.argsort(direction: :desc) |> Nx.slice([0], [@top]) |> Nx.to_flat_list()
+    bold = ucb |> Nx.argsort(direction: :desc) |> Nx.slice([0], [@top]) |> Nx.to_flat_list()
+    order = Enum.zip(safe, bold) |> Enum.flat_map(fn {a, b} -> [{a, "safe"}, {b, "explore"}] end)
+            |> Enum.uniq_by(&elem(&1, 0)) |> Enum.take(@top)
     # In-sample fit of the ensemble mean, as a sanity figure (not a validation).
     fit = members |> Enum.map(&predict.(&1, x)) |> Nx.stack() |> Nx.mean(axes: [0])
     r2 = 1 - Nx.to_number(Nx.sum(Nx.pow(Nx.subtract(y, fit), 2))) / max(Nx.to_number(Nx.sum(Nx.pow(Nx.subtract(y, Nx.mean(y)), 2))), 1.0e-9)
-    proposals = for i <- order do
+    proposals = for {i, kind} <- order do
       c = Enum.at(cands, i)
-      %{settings: c |> Enum.sort() |> Enum.map_join(",", fn {k, v} -> "#{k}=#{round(v)}" end),
+      %{settings: c |> Enum.sort() |> Enum.map_join(",", fn {k, v} -> "#{k}=#{round(v)}" end), kind: kind,
         predicted_share: Float.round(:math.exp(Nx.to_number(mean[i])), 4),
         uncertainty: Float.round(Nx.to_number(std[i]), 4)}
     end
