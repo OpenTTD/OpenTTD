@@ -301,7 +301,7 @@ class PrismaticAI extends AIInfo {
 		});
 		AddSetting({
 			name = "catchment_stops",
-			description = "Catchment ring (learned from AAAHogEx): most joined drive-through road stops around each passenger airport, so it collects the whole town (catchment.nut; default 0: off, it cost ~7% on the fitness seed at 6 years; the battle's GA explores it).",
+			description = "Catchment ring (learned from AAAHogEx): most joined drive-through road stops around each passenger airport, so it collects the whole town (catchment.nut; default 0: off; see air_add_waiting for the evidence and the battle contestant that measures it).",
 			min_value = 0, max_value = 30,
 			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
 			flags = CONFIG_INGAME,
@@ -332,6 +332,13 @@ class PrismaticAI extends AIInfo {
 			description = "1: InvestSurplus may borrow up to the loan limit for a vehicle that pays back (learned from AAAHogEx, which keeps its cash near zero); 0 (default): bank money only; borrowing changed nothing on the fitness seed at 6 years.",
 			min_value = 0, max_value = 1,
 			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "air_add_waiting",
+			description = "Planes (learned from AAAHogEx): add a plane to an air route while the passengers waiting at BOTH of its airports exceed this, up to invest_air_cap (fleet.nut; 0, the default: the old rule of 1.5 loads at one end. 10 with catchment_stops=8 gained +37% on 3 seeds at 10 years but lost on the 6-year fitness seed; the battle measures it as the contestant 'PrismaticAI air10+catch').",
+			min_value = 0, max_value = 500,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 10,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({

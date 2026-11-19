@@ -249,6 +249,19 @@ class Tuning(unittest.TestCase):
         self.assertTrue(g1[0]["label"].endswith("g1.0"))
         self.assertEqual(g1, battle.next_generation(self.T, {"generation": 0}, scored))
 
+    def test_brain_proposals_join_as_clamped_offspring(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            f = Path(tmp) / "brain.json"
+            f.write_text(json.dumps({"schema": "battle-brain/v1", "proposals": [
+                {"settings": "a=37,b=99,zzz=1"}, {"settings": "a=200"}]}))
+            t = dict(self.T, brain_offspring=2, brain_file=str(f))
+            self.assertEqual(battle.brain_proposals(t), [{"a": 40, "b": 10}, {"a": 100, "b": 4}])
+            g0 = battle.first_generation(t)
+            g1 = battle.next_generation(t, {"generation": 0}, [(v, {"score": i}) for i, v in enumerate(g0)])
+            self.assertEqual([v["label"].rsplit(" ", 1)[1] for v in g1[1:3]], ["g1.brain0", "g1.brain1"])
+            f.write_text("{}")
+            self.assertEqual(battle.brain_proposals(t), [])
+
     def test_fitness_normalises_points_and_gap(self):
         ms = [{"status": "done", "standings": [{"key": "W", "value": 100}, {"key": "X", "value": 10}]},
               {"status": "done", "standings": [{"key": "X", "value": 50}, {"key": "W", "value": 5}]},

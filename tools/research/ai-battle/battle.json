@@ -45,6 +45,13 @@
       "group": "PrismaticAI"
     },
     {
+      "ai": "PrismaticAI",
+      "label": "PrismaticAI air10+catch",
+      "source": "repository",
+      "group": "PrismaticAI",
+      "settings": "air_add_waiting=10,catchment_stops=8"
+    },
+    {
       "ai": "AAAHogEx",
       "source": "bananas"
     },
@@ -146,7 +153,8 @@
     "mutation_rate": 0.35,
     "anchors": [
       "PrismaticAI",
-      "PrismaticAI solo-max"
+      "PrismaticAI solo-max",
+      "PrismaticAI air10+catch"
     ],
     "fixed": {
       "intercity": 1,
@@ -169,7 +177,8 @@
       "catchment_stops": 0,
       "statue_money": 0,
       "air_full_load": 0,
-      "invest_borrow": 0
+      "invest_borrow": 0,
+      "air_add_waiting": 0
     },
     "space": {
       "aggressiveness": [
@@ -256,7 +265,15 @@
         0,
         1,
         1
+      ],
+      "air_add_waiting": [
+        0,
+        100,
+        10
       ]
-    }
+    },
+    "brain_offspring": 2,
+    "brain_file": "~/ttd-battle/results/brain.json",
+    "brain_max_age_s": 7200
   }
 }

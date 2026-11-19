@@ -52,6 +52,12 @@ cheap, noise-free fitness function, where duels are expensive and noisy (knowled
 4. **No default changes from here.** A tuned variant is a candidate. Its settings become a bot
    default only through held-start duel pairs (rule `project.a-tuning-claim-needs-held-start-pairs`).
 
+5. **Model-guided offspring.** Up to `brain_offspring` children per generation come from the
+   proposals of `tools/research/battle-brain`: an Axon/EXLA ensemble that learns settings to
+   log value share from every recorded result and ranks the gene space by an upper confidence
+   bound. Evolution then explores where the model is uncertain or promising, not only where
+   mutation lands.
+
 ## Consequences
 
 - Tuning runs unattended on every arena. Each generation is a record under `research/results/`.

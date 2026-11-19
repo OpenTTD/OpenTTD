@@ -42,6 +42,7 @@ class PrismaticAI extends AIController {
 	air_failed = 0; /* autopilot air pairs that could not be built this game year */
 	air_year = 0; /* the game year air_failed counts for */
 	air_cap = 10; /* planes per route with the steward on: this heartbeat's invest_air_cap */
+	air_add_waiting = 0; /* this heartbeat's air_add_waiting (fleet.nut) */
 	ringed = null; /* station id -> the game year its catchment ring was last grown (catchment.nut) */
 	full_load = 1; /* this heartbeat's air_full_load, for air routes built from here on */
 	air_towns = null; /* town id -> true where an autopilot airport stands */
@@ -257,6 +258,7 @@ function PrismaticAI::Behaviour() {
 		statue_money = AIController.GetSetting("statue_money"),
 		air_full_load = AIController.GetSetting("air_full_load"),
 		invest_borrow = AIController.GetSetting("invest_borrow"),
+		air_add_waiting = AIController.GetSetting("air_add_waiting"),
 	};
 	/* Autopilot (default on): a bot nobody gave a plan (no planner line, air or rail pair) grows on
 	 * its own instead of stopping at a few buses. In the LAN AI battle the unplanned default ended
@@ -422,6 +424,7 @@ function PrismaticAI::Start() {
 
 		/* Capacity follows demand: add where cargo piles up, sell what keeps losing money. */
 		this.air_cap = b.invest_air_cap;
+		this.air_add_waiting = b.air_add_waiting;
 		this.ManageFleet(b.cash_reserve);
 		/* With the steward on, idle money buys vehicles where vehicles earn most (fleet.nut). */
 		if (b.self_steward == 1) this.InvestSurplus(b);

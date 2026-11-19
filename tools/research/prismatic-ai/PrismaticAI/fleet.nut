@@ -206,9 +206,17 @@ function PrismaticAI::ManageFleet(reserve) {
 			continue;
 		}
 		this.idle[k] <- 0;
-		if (waiting * 2 <= cap * 3) continue;
+		/* Air, learned from AAAHogEx: a plane more while both airports have passengers waiting, not
+		 * only when one end piles up 1.5 loads (it ran twice our planes on the same routes). */
+		local both_ok = false;
+		if (type == AIVehicle.VT_AIR && this.air_add_waiting > 0 && stops.len() == 2) {
+			local w0 = AIStation.GetCargoWaiting(stops[0], cargo), w1 = AIStation.GetCargoWaiting(stops[1], cargo);
+			both_ok = min(w0, w1) > this.air_add_waiting;
+			if (both_ok) { waiting = min(w0, w1); where = AIStation.GetLocation(stops[0]); }
+		}
+		if (!both_ok && waiting * 2 <= cap * 3) continue;
 		/* And never above what the link's planned flow needs plus one, once the link graph knows it. */
-		if (stops.len() == 2) {
+		if (stops.len() == 2 && !both_ok) {
 			local flow = max(AIStation.GetCargoPlannedVia(stops[0], stops[1], cargo), AIStation.GetCargoPlannedVia(stops[1], stops[0], cargo));
 			local tiles = AIMap.DistanceManhattan(AIStation.GetLocation(stops[0]), AIStation.GetLocation(stops[1]));
 			local kmh = max(1, AIEngine.GetMaxSpeed(AIVehicle.GetEngineType(v)));

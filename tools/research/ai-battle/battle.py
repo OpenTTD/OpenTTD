@@ -130,6 +130,28 @@ def mutate(t: dict, genes: dict, rng: random.Random, rate: float | None = None) 
     return out
 
 
+def brain_proposals(t: dict) -> list[dict]:
+    """Up to `brain_offspring` proposals from brain.json (schema battle-brain/v1) younger than
+    `brain_max_age_s`, as genes inside the declared space. Nothing when absent, stale or invalid."""
+    n = int(t.get("brain_offspring", 0))
+    path = expand(t.get("brain_file", "~/ttd-battle/results/brain.json"))
+    if n <= 0 or not path.is_file() or time.time() - path.stat().st_mtime > t.get("brain_max_age_s", 7200):
+        return []
+    try:
+        data = json.loads(path.read_text())
+        if data.get("schema") != "battle-brain/v1":
+            return []
+        out = []
+        for p in data.get("proposals", [])[:n]:
+            kv = dict(x.split("=", 1) for x in str(p.get("settings", "")).split(",") if "=" in x)
+            genes = {k: clamp_gene(t["space"], k, float(kv.get(k, t["start"].get(k, t["space"][k][0]))))
+                     for k in t["space"]}
+            out.append(genes)
+        return out
+    except (ValueError, KeyError, TypeError):
+        return []
+
+
 def tuning_state(cfg: dict) -> dict:
     p = tuning_path(cfg)
     if p.is_file():
@@ -170,6 +192,13 @@ def next_generation(t: dict, state: dict, scored: list[tuple[dict, dict]]) -> li
     def pick():
         a, b = rng.sample(ranked[:max(2, len(ranked))], 2) if len(ranked) > 1 else (ranked[0], ranked[0])
         return a if ranked.index(a) < ranked.index(b) else b
+    # Model-guided offspring: the top proposals of tools/research/battle-brain (an Axon/EXLA ensemble
+    # trained on every PrismaticAI result) join as children, clamped into the gene space.
+    for k, genes in enumerate(brain_proposals(t)):
+        if len(out) >= t["population"]:
+            break
+        out.append(variant(t, gen, len(out), genes, [f"brain{k}"]))
+        out[-1]["label"] = f"{t['label_prefix']} g{gen}.brain{k}"
     while len(out) < t["population"]:
         p1, p2 = pick(), pick()
         child = {k: (p1["genes"] if rng.random() < 0.5 else p2["genes"]).get(k, t["start"].get(k))

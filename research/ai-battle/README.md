@@ -22,30 +22,26 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T060827-361b802f.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T060827-361b802f`](../results/battle-20261119T060827-361b802f.md) (4/4 replays identical).
+<!-- derived from research/results/battle-20261119T064443-39bd2399.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T064443-39bd2399`](../results/battle-20261119T064443-39bd2399.md) (0/0 replays identical).
 
-- Edition `361b802f523018f4`: PrismaticAI and referee at `bd98bbad736035c3bd7478ebec1accc1230455dc`, base set `opengfx-8.0.tar`
+- Edition `39bd23991fcfbd41`: PrismaticAI and referee at `e19ade47bded73203d1cb75604326fe8ab972e34`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 64 scored match(es) on `imac` (20260724-prismatic-mcp-server-m64d95df5ae), `mbp` (20261119-master-m82c3c2fc0b), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 4 of 4 identical to their original on another arena
+- 39 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-m42528010af, 20261119-master-me19ade47bd), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 0 of 0 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 64 | 64 | 256 | 4.0 | 1.0 | 104.5 M | 0 | 0 |
-| 2 | PrismaticAI self-steward | 22 | 0 | 60 | 2.727 | 2.27 | 7.0 M | 0 | 11 |
-| 3 | PrismaticAI | 20 | 0 | 49 | 2.45 | 2.55 | 6.1 M | 0 | 6 |
-| 4 | PrismaticAI solo-max | 22 | 0 | 52 | 2.364 | 2.64 | 5.5 M | 0 | 22 |
-| 5 | AdmiralAI | 64 | 0 | 150 | 2.344 | 2.66 | 6.5 M | 0 | 5 |
-| 6 | LuDiAI AfterFix | 64 | 0 | 67 | 1.047 | 3.95 | 1.7 M | 0 | 1 |
-| 7 | CivilAI | 64 | 0 | 6 | 0.094 | 4.91 | 582.4 k | 3750 | 10 |
-
-| Seed | Original | Replay | Arenas | Identical |
-|---|---|---|---|---|
-| 1566354715 | m-0013 | m-0048 | mbp2 / mbp | yes |
-| 1251879686 | m-0001 | m-0056 | mbp / mbp2 | yes |
-| 1738814815 | m-0014 | m-0064 | mbp2 / mbp | yes |
-| 700686639 | m-0015 | m-0072 | mbp2 / mbp | yes |
+| 1 | AAAHogEx | 39 | 39 | 156 | 4.0 | 1.0 | 94.0 M | 0 | 0 |
+| 2 | PrismaticAI GA g0.0 | 7 | 0 | 20 | 2.857 | 2.14 | 11.0 M | 0 | 1 |
+| 3 | PrismaticAI GA g0.2 | 7 | 0 | 20 | 2.857 | 2.14 | 9.9 M | 0 | 0 |
+| 4 | PrismaticAI GA g0.1 | 6 | 0 | 17 | 2.833 | 2.17 | 10.5 M | 0 | 0 |
+| 5 | PrismaticAI GA g0.3 | 6 | 0 | 17 | 2.833 | 2.17 | 10.3 M | 0 | 0 |
+| 6 | PrismaticAI | 6 | 0 | 17 | 2.833 | 2.17 | 9.6 M | 0 | 1 |
+| 7 | PrismaticAI solo-max | 7 | 0 | 16 | 2.286 | 2.71 | 5.2 M | 0 | 7 |
+| 8 | AdmiralAI | 39 | 0 | 87 | 2.231 | 2.77 | 6.6 M | 0 | 6 |
+| 9 | LuDiAI AfterFix | 39 | 0 | 32 | 0.821 | 4.18 | 1.1 M | 0 | 4 |
+| 10 | CivilAI | 39 | 0 | 8 | 0.205 | 4.79 | 547.8 k | 3825 | 9 |
 <!-- battle:end -->
 
 ## How it fits together
@@ -230,6 +226,15 @@ The first editions showed two failures. The battle now catches both by itself.
 - **State and display.** `~/ttd-battle/tuning/state.json` holds the current variants and every
   past generation's genes, parents and fitness. `/api/tuning` serves it, and the dashboard's
   *Self-tuning* panel shows it.
+- **Model-guided offspring.** Each new generation also takes the top `brain_offspring` proposals
+  of `tools/research/battle-brain` (`~/ttd-battle/results/brain.json`, schema `battle-brain/v1`):
+  an Axon/EXLA ensemble trained on every PrismaticAI result, scoring the gene space by UCB.
+  Proposals join as `g<gen>.brain<k>`, clamped into the space. A missing, stale (older than
+  `brain_max_age_s`) or invalid file adds nothing.
+- **Candidates under test.** `PrismaticAI air10+catch` (`air_add_waiting=10,catchment_stops=8`,
+  mechanisms learned from AAAHogEx) plays in the group as an anchor. In the recorded 10-year
+  ablations it gained on two seeds of three (`research/results/ablation-20261119T0642*`), and it
+  lost on the 6-year fitness seed. The battle decides whether it becomes the default.
 - **Defaults.** A tuned variant is a candidate. It becomes a default only through held-start duel
   pairs (rule `project.a-tuning-claim-needs-held-start-pairs`).
 
