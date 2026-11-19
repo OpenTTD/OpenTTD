@@ -10,7 +10,7 @@ class BattleReferee extends GSInfo {
 	function GetName()        { return "BattleReferee"; }
 	function GetShortName()   { return "BREF"; }
 	function GetDescription() { return "AI-battle referee: logs company standings every quarter; read-only."; }
-	function GetVersion()     { return 2; }
+	function GetVersion()     { return 3; }
 	function GetAPIVersion()  { return "16"; }
 	function GetDate()        { return "2026-11-19"; }
 	function CreateInstance() { return "BattleReferee"; }

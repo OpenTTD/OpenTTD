@@ -10,7 +10,7 @@ status: draft
 weight: 45
 areas: [agent-integration]
 audiences: [prismatic-integrator]
-rules: [project.battle-records-are-reproducible, project.prismatic-ai-passes-the-headless-fitness-check, project.docs-are-derived-and-current, project.a-tuning-claim-needs-held-start-pairs]
+rules: [project.battle-records-are-reproducible, project.prismatic-ai-passes-the-headless-fitness-check, project.prismatic-ai-is-never-last, project.docs-are-derived-and-current, project.a-tuning-claim-needs-held-start-pairs]
 docs: [research/ai-battle/README.md]
 adrs: [adr-0035, adr-0021, adr-0025]
 related: [prismatic-bridge, research-experiment-cli, layered-validation-gate]
@@ -36,7 +36,11 @@ the tooling changes (rule `project.prismatic-ai-passes-the-headless-fitness-chec
 (`/api/state`, `/api/stream` server-sent events, `/api/matches/{id}`, OpenAPI with Swagger UI at
 `/docs`) serves the dashboard and any other client. PrismaticAI enters as default, solo-max, and
 self-steward: solo-max plus the opt-in in-bot steward that keeps its lines growing without the
-panel (knowledge `prismatic-ai-without-a-steward-keeps-one-train-per-line`).
+panel (knowledge `prismatic-ai-without-a-steward-keeps-one-train-per-line`). Every finished
+match gets a post-mortem of where each loser fell behind, and all samples, standings,
+post-mortems, throughput and events go to `~/ttd-battle/results/battle.sqlite`, readable through
+`/api/query`. PrismaticAI with no settings (autopilot) and self-steward are never last (rule
+`project.prismatic-ai-is-never-last`).
 
 ## What it does not do
 

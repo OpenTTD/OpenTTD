@@ -130,8 +130,10 @@ i.e. a script crashing).
 
 PrismaticAI enters three times, under three labels, so each set of settings is its own contestant:
 
-- `PrismaticAI`: the settings' defaults, the way a bot started without the panel runs.
-- `PrismaticAI solo-max`: `aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000`.
+- `PrismaticAI`: no settings, the way a bot started without the panel runs. Since 2026-11-19 its
+  `autopilot` (default 1) engages: in-bot steward, own lines, intercity roads, 30 routes.
+- `PrismaticAI solo-max`: `aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0`,
+  the control without any steward.
   It plans its own freight rail lines and intercity roads without the panel's planner.
 - `PrismaticAI self-steward`: solo-max plus `self_steward=1`, the in-bot steward (see below).
 
@@ -181,6 +183,40 @@ The first editions showed two failures. The battle now catches both by itself.
   keep each standing's anomalies, and the leaderboard counts each contestant's anomalous matches.
   The same check flagged CivilAI crashing (thousands of Squirrel errors in one match).
 
+## Never last
+
+By the owner's order, `PrismaticAI` and `PrismaticAI self-steward` are never last
+(`never_last` in `battle.json`, rule `project.prismatic-ai-is-never-last`). `battle.py check`
+fails when one of them is last on the newest record's leaderboard. `battle.py fitness` fails
+when one is last by final value on its seed. Its lineup holds all three PrismaticAI
+configurations, AAAHogEx and LuDiAI AfterFix.
+
+## Where we lose: post-mortems, store, throughput
+
+- **Telemetry.** The referee (v3) adds these fields to each company's quarterly line:
+  - vehicle counts by transport mode (`rail`, `road`, `air`, `water`),
+  - each mode's profit last year (`prail` ... `pwater`),
+  - cargo delivered and expenses.
+- **Post-mortem after every match.** Every contestant that did not win gets:
+  - `gap`: the winner's value divided by its own,
+  - `behind_since`: the first quarter in which the winner was worth twice as much,
+  - `findings`: fleet size, income per vehicle, cargo delivered, the profit deficit per transport
+    mode, and anomalies.
+
+  A post-mortem of a PrismaticAI contestant is also a `POSTMORTEM` line in the event log and on
+  the dashboard. A cross-match layer (causes, last-place counts, settings proposals) is
+  `tools/research/mcp-rhai`'s `battle-postmortem` (documented in `research/battle-postmortem.md`).
+- **Store.** Everything is written to `~/ttd-battle/results/battle.sqlite`:
+  - tables `matches` (with the lineup as `{key, ai, settings}`), `samples`, `standings`,
+    `postmortems`, `host_perf` and `events`,
+  - column names are only ever added, never renamed,
+  - DuckDB reads it with `ATTACH '<file>' (TYPE sqlite)`,
+  - `GET /api/query?sql=` runs one read-only `SELECT`/`WITH` on it.
+- **Throughput.** `host_perf` and `/api/perf` give game years per wall-clock minute per arena.
+  Every match is one single-threaded OpenTTD process, so the parallelism that pays is slots per
+  core. Each arena runs about one match per core and keeps a few cores free on the machine the
+  owner works at. A match takes about 90 MB, so memory is not the limit.
+
 ## API and dashboard
 
 `battle.py run` serves a read-only HTTP API on loopback. The dashboard uses it, and so can any
@@ -193,6 +229,8 @@ other client (`curl`, the panel, a notebook):
 | `/api/stream` | server-sent events (`event: state`), the whole state every `stream_every_s` |
 | `/api/state` | the same state, once |
 | `/api/leaderboard`, `/api/hosts`, `/api/matches`, `/api/matches/{id}` | parts of it; a match with its full quarterly series |
+| `/api/postmortems`, `/api/perf` | where each contestant lost, per finished match; throughput per arena |
+| `/api/query?sql=` | one read-only SQL statement over the store |
 
 The dashboard has these features:
 

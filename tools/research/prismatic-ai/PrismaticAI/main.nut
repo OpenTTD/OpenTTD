@@ -35,6 +35,7 @@ class PrismaticAI extends AIController {
 	month = -1; /* the game month the line records were last logged in */
 	idle = null; /* route key -> heartbeats in a row with almost nothing waiting */
 	self_targets = null; /* slot -> {trains, wagons}: the in-bot steward's targets (steward.nut) */
+	steward_on = false; /* this heartbeat's Behaviour().self_steward == 1 (steward.nut) */
 
 	constructor() {
 		this.name = AICompany.GetName(AICompany.COMPANY_SELF);
@@ -46,6 +47,12 @@ class PrismaticAI extends AIController {
 		this.self_targets = {};
 	}
 }
+
+/* Autopilot floors (Behaviour): the profile of the battle's "solo-max" contestant, which reached
+ * second place with the in-bot steward (research/ai-battle/README.md). */
+const AUTOPILOT_OWN_LINES = 8;
+const AUTOPILOT_MAX_ROUTES = 30;
+const AUTOPILOT_CASH_RESERVE = 5000;
 
 /* After the class: intercity.nut adds methods to it. */
 require("roadstop.nut");
@@ -193,7 +200,7 @@ function PrismaticAI::RepaySurplus(keep) {
 /* The owner's behaviour knobs, read again at every heartbeat: all are CONFIG_INGAME, so a change made
  * while the AI runs (the settings GUI, or an MCP tool that sets them) takes effect without a restart. */
 function PrismaticAI::Behaviour() {
-	return {
+	local b = {
 		aggressiveness = AIController.GetSetting("aggressiveness"),
 		heartbeat = AIController.GetSetting("heartbeat_seconds"),
 		max_routes = AIController.GetSetting("max_routes"),
@@ -215,7 +222,23 @@ function PrismaticAI::Behaviour() {
 		line_budget = AIController.GetSetting("line_budget"),
 		own_lines = AIController.GetSetting("own_lines"),
 		self_steward = AIController.GetSetting("self_steward"),
+		autopilot = AIController.GetSetting("autopilot"),
 	};
+	/* Autopilot (default on): a bot nobody gave a plan (no planner line, air or rail pair) grows on
+	 * its own instead of stopping at a few buses. In the LAN AI battle the unplanned default ended
+	 * last in every match (research/ai-battle/README.md). It runs the in-bot steward, plans its own
+	 * freight lines, connects towns and keeps a small reserve. A plan from the panel switches it off,
+	 * and autopilot=0 restores the unplanned bot that duels used as their rival before 2026-11-19. */
+	b.planned <- b.freight.len() > 0 || (b.air_a >= 0 && b.air_b >= 0) || (b.rail_a >= 0 && b.rail_b >= 0);
+	b.autopiloted <- b.autopilot == 1 && !b.planned;
+	if (b.autopiloted) {
+		b.self_steward = 1;
+		b.own_lines = max(b.own_lines, AUTOPILOT_OWN_LINES);
+		b.max_routes = max(b.max_routes, AUTOPILOT_MAX_ROUTES);
+		b.intercity = 1;
+		b.cash_reserve = min(b.cash_reserve, AUTOPILOT_CASH_RESERVE);
+	}
+	return b;
 }
 
 /* The planner's freight rail lines in its order: fr_* then fr2_* to fr16_* (as info.nut declares
@@ -252,8 +275,10 @@ function PrismaticAI::Start() {
 		/* A real game against people: the company says it is an AI (research/real-game.md). The game
 		 * names a company after its first station's town, so this waits for that name. */
 		if (!disclosed && AIController.GetSetting("disclose_name") == 1) disclosed = PrismaticAI.DiscloseName();
+		this.steward_on = b.self_steward == 1;
 		local knobs = "aggressiveness=" + b.aggressiveness + " max_routes=" + b.max_routes + " cash_reserve=" + b.cash_reserve +
-			" intercity=" + b.intercity;
+			" intercity=" + b.intercity + " self_steward=" + b.self_steward + " own_lines=" + b.own_lines +
+			(b.autopiloted ? " autopilot=engaged" : "");
 		if (knobs != last) {
 			AILog.Info("PrismaticAI behaviour: " + knobs);
 			last = knobs;

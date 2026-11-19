@@ -462,12 +462,12 @@ from the code. The right-hand column says what was counted.
 | **27** | [unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)](research/prismatic-mcp/09-testing.md) | `^TEST_CASE\(` in `src/tests/test_prismatic_mcp.cpp` |
 | **63** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
 | **36** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
-| **9** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
+| **10** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
 | **13** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
 | **34** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **86** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
 | **85** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **458** | published documents on the site and the wiki | published documents under `/` |
+| **459** | published documents on the site and the wiki | published documents under `/` |
 <!-- surfaces:end facts -->
 
 ## How it compares
@@ -1101,6 +1101,7 @@ those files:
 | [project.panel-charts-go-through-one-layer](.ai/repo/rules/project/panel-charts-go-through-one-layer.v1.md) | blocking | Create a panel chart only through components.js ecInit, register it with its parameters and drill target, keep its parameters in the address, make its card maximizable, and commit a static/app.css rebuilt from input.css and the current markup. |
 | [project.panel-items-are-routable-pages](.ai/repo/rules/project/panel-items-are-routable-pages.v1.md) | blocking | Give every panel item its own stable page with a server-side title and description, link every mention of it, keep filters and views in the address, back every button by a declared panel route, and derive every grouping from the catalogue itself. |
 | [project.personal-tooling-stays-uncommitted](.ai/repo/rules/project/personal-tooling-stays-uncommitted.v1.md) | blocking | Never commit .claude/, .aiad/, .agents/ or .codex/; exclude them through .git/info/exclude, and write any principle worth keeping from them once into AGENTS.md or .ai/. |
+| [project.prismatic-ai-is-never-last](.ai/repo/rules/project/prismatic-ai-is-never-last.v1.md) | blocking | Keep every contestant in battle.json never_last above last place, in the newest battle record and in the fitness match. Fix the bot when it falls there, and never drop a contestant from the list to make a check pass. |
 | [project.prismatic-ai-passes-the-headless-fitness-check](.ai/repo/rules/project/prismatic-ai-passes-the-headless-fitness-check.v1.md) | blocking | Do not commit a change under tools/research/prismatic-ai or tools/research/ai-battle unless battle.py fitness passes, or says NOT RUN because no arena cache exists on this machine and you say so. |
 | [project.public-api-is-exposed](.ai/repo/rules/project/public-api-is-exposed.v1.md) | blocking | Expose every Commands enum entry as openttd.cmd.<Name> (<Name> its Cmd* function without the prefix, as its DEF_CMD_TRAIT declares), every Script API static function as openttd.api.<Class>.<Function>, and every console command through the derived console surface, each with its OpenAPI route; keep mcp-api-coverage at 100% in every dimension. |
 | [project.published-surfaces-are-derived](.ai/repo/rules/project/published-surfaces-are-derived.v1.md) | blocking | Publish documentation only through tools/surfaces, edit the source document and never a generated region, page or wiki entry, and keep tools/surfaces/surfaces check passing (no stale region, no relative link or anchor to nothing). |

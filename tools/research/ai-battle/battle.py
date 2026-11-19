@@ -39,6 +39,7 @@ import os
 import re
 import signal
 import socket
+import sqlite3
 import subprocess
 import sys
 import tarfile
@@ -55,9 +56,10 @@ BEGIN, END = "<!-- battle:begin -->", "<!-- battle:end -->"
 RECORD_SCHEMA = "ai-battle-record/v1"
 RECORD_GLOB = "battle-*.json"
 
-REF_LINE = re.compile(
-    r"REF Q date=(\d+)-(\d+) cid=(\d+) value=(-?\d+) money=(-?\d+) income=(-?\d+) "
-    r"perf=(-?\d+) vehicles=(\d+) stations=(\d+) name=(.*)$")
+# "REF Q date=<y>-<m> cid=<n> <key>=<int> ... name=<rest of line>" (referee v2 and v3 fields).
+REF_LINE = re.compile(r"REF Q date=(\d+)-(\d+) cid=(\d+) (.*?) ?name=(.*)$")
+REF_FIELD = re.compile(r"(\w+)=(-?\d+)")
+MODES = ("rail", "road", "air", "water")
 # An AI's Squirrel error: "dbg: [script:1] [<company>] [S] <text>".
 SQ_ERROR = re.compile(r"\[script:\d\] \[(\d+)\] \[S\] ")
 
@@ -393,6 +395,8 @@ test ! -e {mdir}
 mkdir -p {personal}/scripts
 cd {mdir}
 for d in baseset ai game; do ln -sfn {root}/arena/$d {personal}/$d; done
+# Linux (XDG) reads the personal directory from ~/.local/share/openttd: point it at the same one.
+mkdir -p {mdir}/home/.local/share && ln -sfn {personal} {mdir}/home/.local/share/openttd
 test -f {root}/arena/baseset/*.tar
 cat > {personal}/scripts/game_start.scr <<'EOS'
 {start_script_text(m['lineup'])}EOS
@@ -412,11 +416,12 @@ def parse_log(text: str) -> tuple[dict, dict]:
     for line in text.splitlines():
         m = REF_LINE.search(line)
         if m:
-            y, mo, cid, value, money, income, perf, veh, st, name = m.groups()
-            by_key[(int(cid), int(y), int(mo))] = {
-                "t": f"{y}-{int(mo):02d}", "value": int(value), "money": int(money),
-                "income": int(income), "perf": int(perf), "vehicles": int(veh),
-                "stations": int(st), "name": name.strip()}
+            y, mo, cid, fields, name = m.groups()
+            sample = {"t": f"{y}-{int(mo):02d}", "name": name.strip()}
+            sample.update({k: int(v) for k, v in REF_FIELD.findall(fields)})
+            for k in ("value", "money", "income", "perf", "vehicles", "stations"):
+                sample.setdefault(k, 0)
+            by_key[(int(cid), int(y), int(mo))] = sample
             continue
         e = SQ_ERROR.search(line)
         if e:
@@ -493,6 +498,132 @@ def determinism(matches: list[dict]) -> list[dict]:
     return out
 
 
+def postmortem(m: dict) -> list[dict]:
+    """Where each contestant lost to the winner of a finished match: the final gap, the year the
+    winner pulled away (twice the value), and the largest deficits by transport mode, fleet size,
+    income per vehicle and cargo delivered. Derived from the referee's quarterly samples only."""
+    st = m.get("standings") or []
+    if not st:
+        return []
+    win = st[0]["key"]
+    ws = m["series"].get(win, [])
+    wlast = ws[-1] if ws else {}
+    wby_t = {s["t"]: s for s in ws}
+    out = []
+    for f in st[1:]:
+        s = m["series"].get(f["key"], [])
+        if not s:
+            continue
+        last = s[-1]
+        behind = next((x["t"] for x in s if x["t"] in wby_t and x["value"] > 0
+                       and wby_t[x["t"]]["value"] > 2 * x["value"]), None)
+        findings = []
+        if wlast.get("vehicles", 0) > 1.5 * max(1, last.get("vehicles", 0)):
+            findings.append(f"fleet {last.get('vehicles', 0)} vs {wlast['vehicles']}")
+        ipv, wipv = (last.get("income", 0) / max(1, last.get("vehicles", 0)),
+                     wlast.get("income", 0) / max(1, wlast.get("vehicles", 0)))
+        if wipv > 1.5 * max(1, ipv):
+            findings.append(f"income per vehicle {ipv:,.0f} vs {wipv:,.0f}")
+        if "cargo" in last and wlast.get("cargo", 0) > 1.5 * max(1, last["cargo"]):
+            findings.append(f"cargo delivered/q {last['cargo']:,} vs {wlast['cargo']:,}")
+        for mode in MODES:
+            mine, theirs = last.get("p" + mode), wlast.get("p" + mode)
+            if mine is None or theirs is None:
+                continue
+            if theirs - mine > 0.2 * max(1, wlast.get("income", 0)) * 4:
+                findings.append(f"{mode} profit/yr {mine:,} vs {theirs:,} "
+                                f"({last.get(mode, 0)} vs {wlast.get(mode, 0)} vehicles)")
+        findings += [f"anomaly {a}" for a in f.get("anomalies", [])]
+        out.append({"contestant": f["key"], "winner": win,
+                    "gap": round(wlast.get("value", 0) / max(1, last.get("value", 1)), 2),
+                    "behind_since": behind,
+                    "mix": {mode: last.get(mode) for mode in MODES if mode in last},
+                    "winner_mix": {mode: wlast.get(mode) for mode in MODES if mode in wlast},
+                    "findings": findings})
+    return out
+
+
+SCHEMA = """
+CREATE TABLE IF NOT EXISTS matches (id TEXT, edition TEXT, host TEXT, host_version TEXT,
+  seed INTEGER, years INTEGER, ticks INTEGER, status TEXT, exit_code INTEGER, started_at REAL,
+  finished_at REAL, replica_of TEXT, lineup TEXT, PRIMARY KEY (edition, id));
+CREATE TABLE IF NOT EXISTS samples (edition TEXT, match_id TEXT, contestant TEXT, t TEXT,
+  value INTEGER, money INTEGER, income INTEGER, perf INTEGER, vehicles INTEGER, stations INTEGER,
+  rail INTEGER, road INTEGER, air INTEGER, water INTEGER, prail INTEGER, proad INTEGER,
+  pair INTEGER, pwater INTEGER, cargo INTEGER, expenses INTEGER,
+  PRIMARY KEY (edition, match_id, contestant, t));
+CREATE TABLE IF NOT EXISTS standings (edition TEXT, match_id TEXT, rank INTEGER, contestant TEXT,
+  value INTEGER, vehicles INTEGER, stations INTEGER, errors INTEGER, anomalies TEXT,
+  PRIMARY KEY (edition, match_id, contestant));
+CREATE TABLE IF NOT EXISTS postmortems (edition TEXT, match_id TEXT, contestant TEXT, winner TEXT,
+  gap REAL, behind_since TEXT, findings TEXT, mix TEXT, winner_mix TEXT,
+  PRIMARY KEY (edition, match_id, contestant));
+CREATE TABLE IF NOT EXISTS host_perf (edition TEXT, match_id TEXT, host TEXT, host_version TEXT,
+  game_years REAL, wall_s REAL, years_per_min REAL, PRIMARY KEY (edition, match_id));
+CREATE TABLE IF NOT EXISTS events (at REAL, edition TEXT, msg TEXT);
+"""
+SAMPLE_COLS = ("value", "money", "income", "perf", "vehicles", "stations", "rail", "road", "air",
+               "water", "prail", "proad", "pair", "pwater", "cargo", "expenses")
+
+
+class Store:
+    """Every sample, standing, post-mortem, throughput figure and event, in SQLite (machine-friendly;
+    DuckDB reads it with ATTACH '<file>' (TYPE sqlite)). One writer: the orchestrator's loop."""
+
+    def __init__(self, path: Path):
+        self.path = path
+        self.db = sqlite3.connect(path, check_same_thread=False)
+        self.db.executescript(SCHEMA)
+        self.lock = threading.Lock()
+
+    def match(self, m: dict) -> None:
+        with self.lock, self.db:
+            self.db.execute("INSERT OR REPLACE INTO matches VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", (
+                m["id"], m["edition"], m["host"], m.get("host_version", ""), m["seed"], m["years"],
+                m["ticks"], m["status"], m.get("exit_code"), m["started_at"], m.get("finished_at"),
+                m.get("replica_of"), json.dumps([{"key": c["key"], "ai": c["ai"],
+                                                  "settings": c.get("settings", "")}
+                                                 for c in m["lineup"]])))
+            rows = [(m["edition"], m["id"], key, s["t"], *[s.get(c) for c in SAMPLE_COLS])
+                    for key, series in m["series"].items() for s in series]
+            self.db.executemany("INSERT OR REPLACE INTO samples VALUES (" + ",".join("?" * 20) + ")",
+                                rows)
+            for rank, f in enumerate(m.get("standings") or [], 1):
+                self.db.execute("INSERT OR REPLACE INTO standings VALUES (?,?,?,?,?,?,?,?,?)", (
+                    m["edition"], m["id"], rank, f["key"], f["value"], f["vehicles"],
+                    f["stations"], f["errors"], json.dumps(f.get("anomalies", []))))
+            for pm in m.get("postmortem") or []:
+                self.db.execute("INSERT OR REPLACE INTO postmortems VALUES (?,?,?,?,?,?,?,?,?)", (
+                    m["edition"], m["id"], pm["contestant"], pm["winner"], pm["gap"],
+                    pm["behind_since"], json.dumps(pm["findings"]), json.dumps(pm["mix"]),
+                    json.dumps(pm["winner_mix"])))
+            if m.get("perf"):
+                p = m["perf"]
+                self.db.execute("INSERT OR REPLACE INTO host_perf VALUES (?,?,?,?,?,?,?)", (
+                    m["edition"], m["id"], m["host"], m.get("host_version", ""), p["game_years"],
+                    p["wall_s"], p["years_per_min"]))
+
+    def event(self, edition: str, msg: str) -> None:
+        with self.lock, self.db:
+            self.db.execute("INSERT INTO events VALUES (?,?,?)", (time.time(), edition, msg))
+
+    def query(self, sql: str, cap: int = 5000) -> dict:
+        """Read-only SQL for the API: one SELECT/WITH statement on a read-only connection."""
+        if not re.match(r"\s*(select|with)\b", sql, re.I) or ";" in sql.strip().rstrip(";"):
+            return {"error": "one read-only SELECT or WITH statement only"}
+        ro = sqlite3.connect(f"file:{self.path}?mode=ro", uri=True)
+        try:
+            cur = ro.execute(sql)
+            cols = [d[0] for d in cur.description or []]
+            rows = cur.fetchmany(cap + 1)
+            return {"columns": cols, "rows": rows[:cap], "count": min(len(rows), cap),
+                    "capped": len(rows) > cap}
+        except sqlite3.Error as exc:
+            return {"error": str(exc)}
+        finally:
+            ro.close()
+
+
 OPENAPI = {
     "openapi": "3.0.3",
     "info": {"title": "LAN AI battle", "version": "1",
@@ -511,6 +642,16 @@ OPENAPI = {
                                "responses": {"200": {"description": "hosts"}}}},
         "/api/matches": {"get": {"summary": "Every match of the edition: status, anomalies, standings",
                                  "responses": {"200": {"description": "matches"}}}},
+        "/api/postmortems": {"get": {"summary": "Where each contestant lost to the winner, per "
+                                                 "finished match of the edition (newest first)",
+                                      "responses": {"200": {"description": "post-mortems"}}}},
+        "/api/perf": {"get": {"summary": "Throughput per arena: game years per wall-clock minute",
+                              "responses": {"200": {"description": "per-host throughput"}}}},
+        "/api/query": {"get": {"summary": "Read-only SQL over the store (tables matches, samples, "
+                                          "standings, postmortems, host_perf, events)",
+                               "parameters": [{"name": "sql", "in": "query", "required": True,
+                                               "schema": {"type": "string"}}],
+                               "responses": {"200": {"description": "{columns, rows, count, capped}"}}}},
         "/api/matches/{id}": {"get": {"summary": "One match with its full quarterly series",
                                       "parameters": [{"name": "id", "in": "path", "required": True,
                                                       "schema": {"type": "string"}}],
@@ -534,6 +675,7 @@ class Orchestrator:
         self.provenance = json.loads((cfg["cache"] / "arena" / "PROVENANCE.json").read_text())
         self.mdir = cfg["results"] / self.digest / "matches"
         self.mdir.mkdir(parents=True, exist_ok=True)
+        self.store = Store(cfg["results"] / "battle.sqlite")
         self.hosts = [Host(h, cfg.get("remote_root", "$HOME/ttd-battle")) for h in load_hosts(cfg)]
         self.contestants = [dict(c, key=contestant_key(c)) for c in cfg["contestants"]]
         self.matches: dict[str, dict] = {}
@@ -549,12 +691,14 @@ class Orchestrator:
         tmp = self.mdir / f"{m['id']}.json.tmp"
         tmp.write_text(json.dumps(m))
         tmp.replace(self.mdir / f"{m['id']}.json")
+        self.store.match(m)
 
     def event(self, msg: str) -> None:
         log(msg)
         with self.lock:
             self.events.append({"at": time.strftime("%H:%M:%S"), "msg": msg})
             del self.events[:-80]
+        self.store.event(self.digest, msg)
 
     # ---- scheduling
     def replay_candidate(self, host: Host) -> dict | None:
@@ -689,12 +833,37 @@ class Orchestrator:
         m["standings"] = standings_of(m, self.cfg.get("anomaly_rules", {}))
         m["exit_code"], m["finished_at"] = code, time.time()
         m["status"] = match_status(m, code)
+        m["postmortem"] = postmortem(m)
+        wall = m["finished_at"] - m["started_at"]
+        last_t = max((s[-1]["t"] for s in m["series"].values() if s), default="")
+        years = (int(last_t[:4]) + (int(last_t[5:]) - 1) / 12 - m["match_cfg"]["start_year"]) if last_t else 0
+        m["perf"] = {"game_years": round(years, 2), "wall_s": round(wall, 1),
+                     "years_per_min": round(years / max(wall, 1) * 60, 2)}
         self.save(m)
+        for pm in m["postmortem"]:
+            if pm["contestant"].startswith("PrismaticAI") and pm["findings"]:
+                self.event(f"POSTMORTEM {m['id']}: {pm['contestant']} {pm['gap']}x behind "
+                           f"{pm['winner']}" + (f" since {pm['behind_since']}" if pm["behind_since"] else "")
+                           + ": " + "; ".join(pm["findings"][:3]))
         w = m["standings"][0] if m["standings"] else None
         self.event(f"{m['id']} on {m['host']} {m['status']}"
                    + (f": winner {w['key']} ({w['value']:,})" if w else ""))
 
     # ---- views
+    def perf(self) -> dict:
+        """Game years per wall-clock minute per arena, over its finished matches of the edition."""
+        out = {}
+        for m in self.matches.values():
+            p = m.get("perf")
+            if p and m["status"] == "done":
+                h = out.setdefault(m["host"], {"matches": 0, "game_years": 0.0, "wall_s": 0.0})
+                h["matches"] += 1
+                h["game_years"] += p["game_years"]
+                h["wall_s"] += p["wall_s"]
+        for h in out.values():
+            h["years_per_min"] = round(h["game_years"] / max(h["wall_s"], 1) * 60, 2)
+        return out
+
     def state(self) -> dict:
         with self.lock:
             matches = sorted(self.matches.values(), key=lambda m: m["id"], reverse=True)
@@ -714,6 +883,9 @@ class Orchestrator:
                            for m in matches if m["status"] not in ("running", "starting")][:30],
                 "leaderboard": leaderboard(keys, matches),
                 "determinism": determinism(matches),
+                "perf": self.perf(),
+                "postmortems": [{"match": m["id"], "postmortem": m["postmortem"]} for m in matches
+                                if m.get("postmortem")][:12],
                 "events": list(self.events),
             }
 
@@ -750,6 +922,18 @@ class Orchestrator:
                                "determinism": st["determinism"]})
                 elif path == "/api/hosts":
                     self.json(orch.state()["hosts"])
+                elif path == "/api/perf":
+                    self.json(orch.perf())
+                elif path == "/api/postmortems":
+                    self.json([{"match": m["id"], "host": m["host"], "seed": m["seed"],
+                                "postmortem": m.get("postmortem", [])}
+                               for m in sorted(orch.matches.values(), key=lambda m: m["id"],
+                                               reverse=True) if m.get("postmortem")])
+                elif path == "/api/query":
+                    from urllib.parse import parse_qs, urlsplit
+                    sql = (parse_qs(urlsplit(self.path).query).get("sql") or [""])[0]
+                    res = orch.store.query(sql)
+                    self.json(res, 400 if "error" in res else 200)
                 elif path.startswith("/api/matches/"):
                     m = orch.matches.get(path.rsplit("/", 1)[1])
                     self.json(m if m else {"error": "no such match"}, 200 if m else 404)
@@ -970,6 +1154,13 @@ def cmd_check() -> int:
         md = f.with_suffix(".md")
         if not md.is_file() or md.read_text() != render_md(rec):
             drift.append(f"{md.name}: not derived from {f.name} (run battle.py report)")
+    latest = latest_record()
+    cfg_never = json.loads(DEFAULT_CONFIG.read_text()).get("never_last", [])
+    if latest and latest["leaderboard"]:
+        board = [r for r in latest["leaderboard"] if r["played"]]
+        if board and board[-1]["key"] in cfg_never:
+            errs.append(f"{latest['id']}: {board[-1]['key']} is last on the leaderboard "
+                        "(battle.json never_last; rule project.prismatic-ai-passes-the-headless-fitness-check)")
     text = README.read_text()
     if BEGIN not in text or END not in text:
         errs.append(f"{README.relative_to(REPO)}: battle region markers missing")
@@ -1019,6 +1210,11 @@ def fitness_verdict(m: dict, fit: dict) -> list[str]:
         if c["key"] not in fit.get("must_be_healthy", []):
             bad = [b for b in bad if b.startswith("squirrel")]
         fails += [f"{c['key']}: {b}" for b in bad]
+    # The owner's order (2026-11-19): PrismaticAI is never last. By final value on the fitness seed.
+    finals = sorted(((s[-1]["value"] if s else 0), k) for k, s in
+                    ((c["key"], m["series"].get(c["key"], [])) for c in m["lineup"]))
+    if finals and finals[0][1] in fit.get("never_last", []):
+        fails.append(f"{finals[0][1]}: last of {len(finals)} (value {finals[0][0]:,})")
     return fails
 
 
@@ -1043,6 +1239,8 @@ def cmd_fitness(cfg: dict) -> int:
         (personal / "ai").mkdir()
         (personal / "game").mkdir()
         os.symlink(arena / "baseset", personal / "baseset")
+        (home / ".local" / "share").mkdir(parents=True)
+        os.symlink(personal, home / ".local" / "share" / "openttd")   # Linux (XDG)
         subprocess.run(["cp", "-R", str(REPO / cfg["prismatic"]["path"]), str(personal / "ai")],
                        check=True)
         subprocess.run(["cp", "-R", str(arena / "ai" / "library"), *map(str, ref_tars),

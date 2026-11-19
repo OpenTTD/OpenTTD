@@ -164,6 +164,60 @@ class Health(unittest.TestCase):
         self.assertTrue(battle.fitness_verdict(m, fit)[0].startswith("match incomplete"))
 
 
+class Telemetry(unittest.TestCase):
+    def test_v3_fields_parse_and_v2_lines_still_do(self):
+        v3 = ("dbg: [script:1] [18] [E] REF Q date=1961-4 cid=0 value=9 money=1 income=2 perf=3 "
+              "vehicles=4 stations=5 rail=1 road=3 air=0 water=0 prail=-7 proad=12 pair=0 pwater=0 "
+              "cargo=44 expenses=-6 name=Big Co Transport")
+        series, _ = battle.parse_log(v3 + "\n" + ref(1961, 7, 0, 10))
+        a, b = series[0]
+        self.assertEqual((a["rail"], a["proad"], a["cargo"], a["name"]), (1, 12, 44, "Big Co Transport"))
+        self.assertEqual((b["value"], b["vehicles"]), (10, 1))
+        self.assertNotIn("rail", b)
+
+    def test_postmortem_names_where_a_loser_falls_behind(self):
+        lineup = [{"key": "W", "ai": "W"}, {"key": "P", "ai": "PrismaticAI"}]
+        def s(t, value, veh, income, prail, proad):
+            return {"t": t, "value": value, "vehicles": veh, "income": income, "rail": veh // 2,
+                    "road": veh - veh // 2, "air": 0, "water": 0, "prail": prail, "proad": proad,
+                    "pair": 0, "pwater": 0, "cargo": veh * 10}
+        m = {"lineup": lineup, "errors": {}, "series": {
+            "W": [s("1961-01", 100, 10, 50, 0, 0), s("1962-01", 1000, 100, 4000, 9000, 900)],
+            "P": [s("1961-01", 80, 8, 40, 0, 0), s("1962-01", 200, 10, 100, 100, 50)]}}
+        m["standings"] = battle.standings_of(m)
+        pm = battle.postmortem(m)
+        self.assertEqual(len(pm), 1)
+        self.assertEqual((pm[0]["contestant"], pm[0]["winner"], pm[0]["gap"]), ("P", "W", 5.0))
+        self.assertEqual(pm[0]["behind_since"], "1962-01")
+        text = " | ".join(pm[0]["findings"])
+        self.assertIn("fleet 10 vs 100", text)
+        self.assertIn("rail profit/yr", text)
+
+    def test_store_is_read_only_through_the_api(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            st = battle.Store(Path(tmp) / "b.sqlite")
+            m = match("m-0001", "h1", 1, [3, 2, 1])
+            m.update(edition="e1", started_at=0.0, ticks=1, lineup=[{"key": k, "ai": k} for k in KEYS])
+            st.match(m)
+            r = st.query("SELECT contestant, rank FROM standings ORDER BY rank")
+            self.assertEqual([row[0] for row in r["rows"]], KEYS)
+            self.assertIn("error", st.query("DELETE FROM standings"))
+            self.assertIn("error", st.query("SELECT 1; DROP TABLE matches"))
+            lineup = json.loads(st.query("SELECT lineup FROM matches")["rows"][0][0])
+            self.assertEqual(lineup[0], {"key": "A", "ai": "A", "settings": ""})
+
+    def test_fitness_fails_when_a_never_last_bot_is_last(self):
+        lineup = [{"ai": "PrismaticAI", "key": "PrismaticAI"}, {"ai": "X", "key": "X"}]
+        fl = Health.fleet
+        m = {"status": "done", "lineup": lineup, "errors": {},
+             "series": {"PrismaticAI": [dict(p, value=5) for p in fl(1, 2)],
+                        "X": [dict(p, value=9) for p in fl(1, 2)]}}
+        fit = {"rules": Health.RULES, "never_last": ["PrismaticAI"]}
+        self.assertEqual(battle.fitness_verdict(m, fit), ["PrismaticAI: last of 2 (value 5)"])
+        m["series"]["X"][-1]["value"] = 1
+        self.assertEqual(battle.fitness_verdict(m, fit), [])
+
+
 class Records(unittest.TestCase):
     NAME = "battle-20261119T000000-abcdef12.json"
 

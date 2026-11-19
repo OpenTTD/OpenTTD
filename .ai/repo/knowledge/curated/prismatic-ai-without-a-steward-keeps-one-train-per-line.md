@@ -47,6 +47,11 @@ That is two seeds, unpaired with a held start, and in a headless battle rather t
 is no reason to change a default (rule `project.a-tuning-claim-needs-held-start-pairs`). The
 battle's records compare the two contestants on every seed of an edition.
 
+Since 2026-11-19 the unplanned bot defaults to `autopilot=1`, which turns on this steward, own
+lines and intercity roads when no plan was handed over, by the owner's order that PrismaticAI is
+never last (rule `project.prismatic-ai-is-never-last`). `autopilot=0` gives the old unplanned
+bot. The battle's control contestant `PrismaticAI solo-max` runs that way.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

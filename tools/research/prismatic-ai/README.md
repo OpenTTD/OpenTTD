@@ -71,6 +71,7 @@ Full rationale: [`research/rail-steward.md`](../../../research/rail-steward.md),
 | `rail_platforms`, `rail_len`, `rail_wagons` | the owner, a duel's `--bot-settings` | the shape of new rail lines (0: derive) |
 | `disclose_name` | the owner, for a real game against people | 1 appends " (AI)" to the company's name ([`research/real-game.md`](../../../research/real-game.md)) |
 | `line<N>_trains`, `line<N>_wagons` (24 slots) | `tools/research/mcp-panel/rhai/rail_steward.rhai` | the target of rail line N: trains (0 closes it), wagons per train |
+| `autopilot` | default 1; the owner (0 restores the duels' old unplanned rival) | a bot started without a plan (no planner line, air or rail pair) grows on its own: in-bot steward, at least 8 own freight lines, intercity roads, up to 30 routes, a 5000 reserve (`main.nut:Behaviour`, rule `project.prismatic-ai-is-never-last`) |
 | `self_steward` | the owner, e.g. the headless LAN AI battle ([`research/ai-battle/README.md`](../../../research/ai-battle/README.md)) | 1: lines without a steward's target follow the Rhai steward's policy inside the bot, and idle money funds own lines beyond `own_lines` (`steward.nut`); 0 (default): unchanged |
 
 Every finished line logs a record once at build time and again every game month:

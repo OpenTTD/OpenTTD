@@ -40,7 +40,7 @@
       "ai": "PrismaticAI",
       "label": "PrismaticAI solo-max",
       "source": "repository",
-      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000"
+      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0"
     },
     {
       "ai": "PrismaticAI",
@@ -74,9 +74,14 @@
       "fleet_keep": 0.7
     },
     "must_be_healthy": [
+      "PrismaticAI",
       "PrismaticAI self-steward"
     ],
     "contestants": [
+      {
+        "ai": "PrismaticAI",
+        "label": "PrismaticAI"
+      },
       {
         "ai": "PrismaticAI",
         "label": "PrismaticAI self-steward",
@@ -85,15 +90,26 @@
       {
         "ai": "PrismaticAI",
         "label": "PrismaticAI solo-max",
-        "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000"
+        "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,autopilot=0"
       },
       {
         "ai": "AAAHogEx"
+      },
+      {
+        "ai": "LuDiAI AfterFix"
       }
+    ],
+    "never_last": [
+      "PrismaticAI",
+      "PrismaticAI self-steward"
     ]
   },
   "anomaly_rules": {
     "fleet_min_peak": 10,
     "fleet_keep": 0.7
-  }
+  },
+  "never_last": [
+    "PrismaticAI",
+    "PrismaticAI self-steward"
+  ]
 }

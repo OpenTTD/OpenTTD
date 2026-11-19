@@ -64,7 +64,7 @@ function PrismaticAI::LineWaiting(line) {
  * setting when it set one, else the in-bot steward's own target when self_steward is on, else -1. */
 function PrismaticAI::EffectiveTarget(slot, what) {
 	local external = PrismaticAI.LineTarget(slot, what);
-	if (external >= 0 || AIController.GetSetting("self_steward") != 1) return external;
+	if (external >= 0 || !this.steward_on) return external;
 	if (!this.self_targets.rawin(slot)) return -1;
 	return this.self_targets[slot][what];
 }
