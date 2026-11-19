@@ -172,7 +172,7 @@ IniGroup &IniLoadFile::CreateGroup(std::string_view name)
  */
 void IniLoadFile::RemoveGroup(std::string_view name)
 {
-	this->groups.remove_if([&name](const IniGroup &group) { return group.name.starts_with(name); });
+	std::erase_if(this->groups, [name](const IniGroup &group) { return group.name == name; });
 }
 
 /**
