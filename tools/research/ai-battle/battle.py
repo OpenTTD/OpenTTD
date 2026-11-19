@@ -21,6 +21,8 @@ Commands:
   status     print the current edition's leaderboard
   report     write research/results/battle-<utc>-<edition>.{json,md} and the README leaderboard
   check      validate every battle record and that the README leaderboard is derived (the gate)
+  fitness    one short local match of the working tree's PrismaticAI against a reference AI; fails
+             on a Squirrel error, an unfinished match or a collapsing fleet (the gate, on change)
 
 Exit codes (Majordomus convention): 0 ok, 2 usage, 10 contract unmet, 11 drift, 12 missing.
 """
@@ -244,6 +246,13 @@ def arena_digest(cache: Path) -> str:
     return h.hexdigest()[:16]
 
 
+def edition_of(cfg: dict) -> str:
+    """The edition: the arena bundle plus everything else that decides a match (contestants with
+    their settings, the match parameters). Changing any of them starts a new edition."""
+    rules = json.dumps({"contestants": cfg["contestants"], "match": cfg["match"]}, sort_keys=True)
+    return hashlib.sha256((arena_digest(cfg["cache"]) + rules).encode()).hexdigest()[:16]
+
+
 def export_tree(path: str, rev: str, dest_tar: Path) -> None:
     """`git archive` a repository directory with its parents stripped: <basename>/... in the tar."""
     raw = subprocess.run(["git", "-C", str(REPO), "archive", "--format=tar", rev, path],
@@ -295,7 +304,7 @@ def cmd_prepare(cfg: dict, allow_dirty: bool) -> None:
         "prepared_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
     }, indent=2) + "\n")
     log(f"arena prepared: rev {rev[:10]}{' (DIRTY)' if dirty else ''}, "
-        f"edition {arena_digest(cfg['cache'])}")
+        f"edition {edition_of(cfg)}")
 
 
 def cmd_fetch(cfg: dict) -> None:
@@ -418,14 +427,16 @@ def parse_log(text: str) -> tuple[dict, dict]:
     return series, errors
 
 
-def standings_of(m: dict) -> list[dict]:
+def standings_of(m: dict, rules: dict | None = None) -> list[dict]:
     final = []
     for c in m["lineup"]:
         s = m["series"].get(c["key"], [])
         last = s[-1] if s else {}
+        errors = m["errors"].get(c["key"], 0)
         final.append({"key": c["key"], "value": last.get("value", 0),
                       "vehicles": last.get("vehicles", 0), "stations": last.get("stations", 0),
-                      "income": last.get("income", 0), "errors": m["errors"].get(c["key"], 0)})
+                      "income": last.get("income", 0), "errors": errors,
+                      "anomalies": anomalies(s, errors, rules or {})})
     final.sort(key=lambda f: (-f["value"], f["key"]))
     return final
 
@@ -440,20 +451,22 @@ def match_status(m: dict, exit_code: int) -> str:
 def leaderboard(contestants: list[str], matches: list[dict]) -> list[dict]:
     """Points per match: last place 0, each place above +1. Replays and unfinished matches don't count."""
     rows = {k: {"key": k, "played": 0, "wins": 0, "points": 0, "rank_sum": 0, "value_sum": 0,
-                "errors": 0} for k in contestants}
+                "errors": 0, "anomalies": 0} for k in contestants}
     for m in matches:
         if m["status"] != "done" or m.get("replica_of"):
             continue
         n = len(m["standings"])
         for rank, f in enumerate(m["standings"]):
             r = rows.setdefault(f["key"], {"key": f["key"], "played": 0, "wins": 0, "points": 0,
-                                           "rank_sum": 0, "value_sum": 0, "errors": 0})
+                                           "rank_sum": 0, "value_sum": 0, "errors": 0,
+                                           "anomalies": 0})
             r["played"] += 1
             r["wins"] += rank == 0
             r["points"] += n - 1 - rank
             r["rank_sum"] += rank + 1
             r["value_sum"] += f["value"]
             r["errors"] += f["errors"]
+            r["anomalies"] += bool(f.get("anomalies"))
     out = list(rows.values())
     for r in out:
         r["avg_rank"] = round(r["rank_sum"] / r["played"], 2) if r["played"] else None
@@ -480,10 +493,44 @@ def determinism(matches: list[dict]) -> list[dict]:
     return out
 
 
+OPENAPI = {
+    "openapi": "3.0.3",
+    "info": {"title": "LAN AI battle", "version": "1",
+             "description": "RESEARCH-ONLY. Read-only view of the running tournament "
+                            "(tools/research/ai-battle/battle.py run). See research/ai-battle/README.md."},
+    "paths": {
+        "/api/state": {"get": {"summary": "Everything the dashboard shows: edition, arenas, live "
+                                          "matches with quarterly series, leaderboard, replays, events",
+                               "responses": {"200": {"description": "state"}}}},
+        "/api/stream": {"get": {"summary": "The same state as server-sent events (event: state), "
+                                           "pushed every stream_every_s",
+                                "responses": {"200": {"description": "text/event-stream"}}}},
+        "/api/leaderboard": {"get": {"summary": "Leaderboard and replay comparison of the edition",
+                                     "responses": {"200": {"description": "leaderboard"}}}},
+        "/api/hosts": {"get": {"summary": "Arenas: state, build, slots, running and done matches",
+                               "responses": {"200": {"description": "hosts"}}}},
+        "/api/matches": {"get": {"summary": "Every match of the edition: status, anomalies, standings",
+                                 "responses": {"200": {"description": "matches"}}}},
+        "/api/matches/{id}": {"get": {"summary": "One match with its full quarterly series",
+                                      "parameters": [{"name": "id", "in": "path", "required": True,
+                                                      "schema": {"type": "string"}}],
+                                      "responses": {"200": {"description": "match"},
+                                                    "404": {"description": "no such match"}}}},
+    },
+}
+
+SWAGGER_PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>LAN AI Battle API</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.17.14/swagger-ui.min.css">
+</head><body><div id="ui"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.17.14/swagger-ui-bundle.min.js"></script>
+<script>SwaggerUIBundle({url: '/api/openapi.json', dom_id: '#ui'});</script></body></html>"""
+
+
 class Orchestrator:
     def __init__(self, cfg: dict):
         self.cfg = cfg
-        self.digest = arena_digest(cfg["cache"])
+        self.digest = edition_of(cfg)
         self.provenance = json.loads((cfg["cache"] / "arena" / "PROVENANCE.json").read_text())
         self.mdir = cfg["results"] / self.digest / "matches"
         self.mdir.mkdir(parents=True, exist_ok=True)
@@ -611,6 +658,7 @@ class Orchestrator:
             # Company ids follow the start order: a `-g` null-driver game has no human company.
             m["series"] = {lineup[c]["key"]: s for c, s in series.items() if c < len(lineup)}
             m["errors"] = {lineup[c]["key"]: n for c, n in errors.items() if c < len(lineup)}
+            self.watch(m)
             if status_line.strip() != "RUNNING":
                 self.finish(m, int(status_line.strip() or -1))
             elif time.time() - m.get("progress_at", m["started_at"]) > self.cfg.get("stall_s", 600):
@@ -622,8 +670,23 @@ class Orchestrator:
             else:
                 self.save(m)
 
+    def watch(self, m: dict) -> None:
+        """Self-monitoring: every contestant's anomalies, live; a new one goes to the event log."""
+        rules = self.cfg.get("anomaly_rules", {})
+        live = {c["key"]: anomalies(m["series"].get(c["key"], []), m["errors"].get(c["key"], 0), rules)
+                for c in m["lineup"]}
+        seen = m.setdefault("alerted", {})
+        for key, found in live.items():
+            for a in found:
+                kind = a.split(":")[0]
+                if kind not in seen.get(key, []):
+                    seen.setdefault(key, []).append(kind)
+                    self.event(f"ALERT {m['id']} on {m['host']}: {key} {a}")
+        m["anomalies"] = {k: v for k, v in live.items() if v}
+
     def finish(self, m: dict, code: int) -> None:
-        m["standings"] = standings_of(m)
+        self.watch(m)
+        m["standings"] = standings_of(m, self.cfg.get("anomaly_rules", {}))
         m["exit_code"], m["finished_at"] = code, time.time()
         m["status"] = match_status(m, code)
         self.save(m)
@@ -658,21 +721,59 @@ class Orchestrator:
         orch = self
 
         class Handler(http.server.BaseHTTPRequestHandler):
-            def do_GET(self):  # noqa: N802 (http.server's naming)
-                if self.path.startswith("/api/state"):
-                    body, ctype = json.dumps(orch.state()).encode(), "application/json"
-                elif self.path in ("/", "/index.html"):
-                    body = (HERE / "dashboard" / "index.html").read_bytes()
-                    ctype = "text/html; charset=utf-8"
-                else:
-                    self.send_error(404)
-                    return
-                self.send_response(200)
+            def send_body(self, body: bytes, ctype: str, code: int = 200):
+                self.send_response(code)
                 self.send_header("Content-Type", ctype)
                 self.send_header("Cache-Control", "no-store")
+                self.send_header("Access-Control-Allow-Origin", "*")
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
                 self.wfile.write(body)
+
+            def json(self, data, code: int = 200):
+                self.send_body(json.dumps(data).encode(), "application/json", code)
+
+            def do_GET(self):  # noqa: N802 (http.server's naming)
+                path = self.path.split("?", 1)[0]
+                if path in ("/", "/index.html"):
+                    self.send_body((HERE / "dashboard" / "index.html").read_bytes(),
+                                   "text/html; charset=utf-8")
+                elif path == "/docs":
+                    self.send_body(SWAGGER_PAGE.encode(), "text/html; charset=utf-8")
+                elif path == "/api/openapi.json":
+                    self.json(OPENAPI)
+                elif path == "/api/state":
+                    self.json(orch.state())
+                elif path == "/api/leaderboard":
+                    st = orch.state()
+                    self.json({"edition": st["edition"], "leaderboard": st["leaderboard"],
+                               "determinism": st["determinism"]})
+                elif path == "/api/hosts":
+                    self.json(orch.state()["hosts"])
+                elif path.startswith("/api/matches/"):
+                    m = orch.matches.get(path.rsplit("/", 1)[1])
+                    self.json(m if m else {"error": "no such match"}, 200 if m else 404)
+                elif path == "/api/matches":
+                    self.json([{k: m.get(k) for k in ("id", "host", "seed", "status", "replica_of",
+                                                      "anomalies", "standings")}
+                               for m in sorted(orch.matches.values(), key=lambda m: m["id"])])
+                elif path == "/api/stream":
+                    # Server-sent events: the whole state every stream_every_s, until the client goes.
+                    self.send_response(200)
+                    self.send_header("Content-Type", "text/event-stream")
+                    self.send_header("Cache-Control", "no-store")
+                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.end_headers()
+                    try:
+                        while not orch.stop.is_set():
+                            self.wfile.write(b"event: state\ndata: " + json.dumps(orch.state()).encode()
+                                             + b"\n\n")
+                            self.wfile.flush()
+                            orch.stop.wait(orch.cfg.get("stream_every_s", 2))
+                    except (BrokenPipeError, ConnectionResetError):
+                        pass
+                else:
+                    self.json({"error": "not found", "see": "/api/openapi.json"}, 404)
 
             def log_message(self, *args):
                 pass
@@ -720,8 +821,9 @@ def build_record(cfg: dict, orch: Orchestrator) -> dict:
                      "seed": m["seed"], "years": m["years"], "ticks": m["ticks"],
                      "lineup": [c["key"] for c in m["lineup"]], "replica_of": m.get("replica_of"),
                      "status": m["status"], "exit_code": m.get("exit_code"),
-                     "standings": [{k: f[k] for k in ("key", "value", "vehicles", "stations",
-                                                      "errors")} for f in m["standings"] or []]}
+                     "standings": [{k: f.get(k, []) for k in ("key", "value", "vehicles",
+                                                              "stations", "errors", "anomalies")}
+                                   for f in m["standings"] or []]}
                     for m in matches],
         "leaderboard": leaderboard(keys, matches),
         "determinism": determinism(matches),
@@ -752,24 +854,28 @@ def render_md(rec: dict) -> str:
         f"- {len(done)} scored match(es) on "
         + ", ".join(f"`{h['name']}` ({', '.join(h['versions'])})" for h in rec["hosts"]),
         f"- Replays: {same} of {len(det)} identical to their original on another arena", "",
-        "| # | Contestant | Played | Wins | Points | Avg rank | Avg final value | Squirrel errors |",
-        "|---|---|---|---|---|---|---|---|",
+        "| # | Contestant | Played | Wins | Points | Avg rank | Avg final value | Squirrel errors "
+        "| Matches with anomalies |",
+        "|---|---|---|---|---|---|---|---|---|",
     ]
     for i, r in enumerate(rec["leaderboard"], 1):
         lines.append(f"| {i} | {r['key']} | {r['played']} | {r['wins']} | {r['points']} | "
                      f"{r['avg_rank'] if r['avg_rank'] is not None else '-'} | "
-                     f"{money(r['avg_value'])} | {r['errors']} |")
+                     f"{money(r['avg_value'])} | {r['errors']} | {r.get('anomalies', 0)} |")
     if det:
         lines += ["", "| Seed | Original | Replay | Arenas | Identical |", "|---|---|---|---|---|"]
         for d in det:
             lines.append(f"| {d['seed']} | {d['original']} | {d['replay']} | "
                          f"{' / '.join(d['hosts'])} | {'yes' if d['identical'] else 'NO'} |")
-    lines += ["", "| Match | Arena | Seed | Winner | Value | Last |", "|---|---|---|---|---|---|"]
+    lines += ["", "| Match | Arena | Seed | Winner | Value | Last | Anomalies |",
+              "|---|---|---|---|---|---|---|"]
     for m in rec["matches"]:
         s = m["standings"]
+        flags = "; ".join(f"{f['key']}: {', '.join(f['anomalies'])}" for f in s if f.get("anomalies"))
         lines.append(f"| {m['id']}{' (replay)' if m['replica_of'] else ''} | {m['host']} | "
                      f"{m['seed']} | {s[0]['key'] if s else '-'} | "
-                     f"{money(s[0]['value']) if s else '-'} | {s[-1]['key'] if s else '-'} |")
+                     f"{money(s[0]['value']) if s else '-'} | {s[-1]['key'] if s else '-'} | "
+                     f"{flags or '-'} |")
     return "\n".join(lines) + "\n"
 
 
@@ -880,6 +986,97 @@ def cmd_check() -> int:
     return 0
 
 
+def fleet_peak_final(series: list[dict]) -> tuple[int, int]:
+    """(peak, final) vehicle count over a contestant's quarterly samples."""
+    counts = [s["vehicles"] for s in series] or [0]
+    return max(counts), counts[-1]
+
+
+def anomalies(series: list[dict], errors: int, rules: dict) -> list[str]:
+    """What looks wrong with one contestant in one match. The orchestrator attaches these to every
+    match and the fitness check fails on them. `rules`: fleet_min_peak, fleet_keep (fraction)."""
+    out = []
+    if errors:
+        out.append(f"squirrel_errors:{errors}")
+    peak, final = fleet_peak_final(series)
+    if peak >= rules.get("fleet_min_peak", 10) and final < rules.get("fleet_keep", 0.7) * peak:
+        out.append(f"fleet_drop:{peak}->{final}")
+    if series and len(series) >= 8 and series[-1]["vehicles"] == 0:
+        out.append("no_vehicles")
+    return out
+
+
+def fitness_verdict(m: dict, fit: dict) -> list[str]:
+    """The fitness check's failures for one finished local match (empty: PASS)."""
+    fails = []
+    if m["status"] != "done":
+        fails.append(f"match {m['status']} (exit {m.get('exit_code')}): the bot or the referee broke")
+    for c in m["lineup"]:
+        if not c["ai"].startswith("PrismaticAI"):
+            continue
+        bad = anomalies(m["series"].get(c["key"], []), m["errors"].get(c["key"], 0), fit["rules"])
+        # Every PrismaticAI must not crash; only the ones named healthy must also keep their fleet.
+        if c["key"] not in fit.get("must_be_healthy", []):
+            bad = [b for b in bad if b.startswith("squirrel")]
+        fails += [f"{c['key']}: {b}" for b in bad]
+    return fails
+
+
+def cmd_fitness(cfg: dict) -> int:
+    """A short local match of the working tree's PrismaticAI (not an exported commit: this is the
+    check that runs before a commit) against a reference AI, on a fixed seed. Deterministic: the null
+    driver runs on ticks, so the same tree and binary give the same verdict."""
+    fit = cfg["fitness"]
+    arena = cfg["cache"] / "arena"
+    binary = REPO / "build" / "openttd"
+    ref_tars = [t for t in (arena / "ai").glob("*.tar") if t.name != "PrismaticAI.tar"] if (
+        arena / "ai").is_dir() else []
+    if not binary.is_file() or not (arena / "baseset").is_dir() or not ref_tars:
+        print(f"fitness: NOT RUN: needs {binary.relative_to(REPO)} and an arena cache with a base set "
+              f"and reference AIs at {arena} (battle.py fetch && battle.py prepare)")
+        return 0
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="battle-fitness-") as tmp:
+        home = Path(tmp) / "home"
+        personal = home / "Documents" / "OpenTTD"
+        (personal / "scripts").mkdir(parents=True)
+        (personal / "ai").mkdir()
+        (personal / "game").mkdir()
+        os.symlink(arena / "baseset", personal / "baseset")
+        subprocess.run(["cp", "-R", str(REPO / cfg["prismatic"]["path"]), str(personal / "ai")],
+                       check=True)
+        subprocess.run(["cp", "-R", str(arena / "ai" / "library"), *map(str, ref_tars),
+                        str(personal / "ai")], check=True)
+        subprocess.run(["cp", "-R", str(REPO / cfg["referee"]["path"]), str(personal / "game")],
+                       check=True)
+        lineup = [dict(c, key=contestant_key(c)) for c in fit["contestants"]]
+        (personal / "scripts" / "game_start.scr").write_text(start_script_text(lineup))
+        mc = dict(cfg["match"], years=fit["years"])
+        (Path(tmp) / "battle.cfg").write_text(battle_cfg_text(mc))
+        t0 = time.time()
+        r = subprocess.run([str(binary), "-c", "battle.cfg", "-x", "-v",
+                            f"null:ticks={match_ticks(fit['years'])}", "-s", "null", "-m", "null",
+                            "-g", "-G", str(fit["seed"]), "-d", "script=1"], cwd=tmp,
+                           env=dict(os.environ, HOME=str(home)), capture_output=True, text=True,
+                           timeout=fit.get("timeout_s", 600))
+        series, errors = parse_log(r.stdout + r.stderr)
+    m = {"lineup": lineup, "years": fit["years"], "match_cfg": mc, "exit_code": r.returncode,
+         "series": {lineup[c]["key"]: s for c, s in series.items() if c < len(lineup)},
+         "errors": {lineup[c]["key"]: n for c, n in errors.items() if c < len(lineup)}}
+    m["status"] = match_status(m, r.returncode)
+    for c in lineup:
+        s = m["series"].get(c["key"], [])
+        peak, final = fleet_peak_final(s)
+        print(f"fitness: {c['key']:28} value {s[-1]['value'] if s else 0:>12,}  vehicles peak "
+              f"{peak:>4} final {final:>4}  {' '.join(anomalies(s, m['errors'].get(c['key'], 0), fit['rules'])) or 'ok'}")
+    fails = fitness_verdict(m, fit)
+    for f in fails:
+        print(f"fitness: FAIL {f}", file=sys.stderr)
+    print(f"fitness: {'FAIL' if fails else 'PASS'} ({fit['years']} years, seed {fit['seed']}, "
+          f"{time.time() - t0:.0f} s)")
+    return 10 if fails else 0
+
+
 def cmd_status(cfg: dict) -> None:
     orch = Orchestrator(cfg)
     print(f"edition {orch.digest} (rev {orch.provenance['rev'][:10]})")
@@ -897,7 +1094,7 @@ def cmd_status(cfg: dict) -> None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     ap.add_argument("command", choices=["discover", "fetch", "prepare", "probe", "run", "status",
-                                        "report", "check"])
+                                        "report", "check", "fitness"])
     ap.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--allow-dirty", action="store_true",
@@ -924,6 +1121,8 @@ def main(argv: list[str] | None = None) -> int:
         cmd_status(cfg)
     elif a.command == "report":
         return cmd_report(cfg, a.check)
+    elif a.command == "fitness":
+        return cmd_fitness(cfg)
     return 0
 
 

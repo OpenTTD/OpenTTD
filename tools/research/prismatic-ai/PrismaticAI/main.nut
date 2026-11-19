@@ -34,6 +34,7 @@ class PrismaticAI extends AIController {
 	resizing = null; /* train id -> true while it drives to its depot to change its wagons (lines.nut) */
 	month = -1; /* the game month the line records were last logged in */
 	idle = null; /* route key -> heartbeats in a row with almost nothing waiting */
+	self_targets = null; /* slot -> {trains, wagons}: the in-bot steward's targets (steward.nut) */
 
 	constructor() {
 		this.name = AICompany.GetName(AICompany.COMPANY_SELF);
@@ -42,6 +43,7 @@ class PrismaticAI extends AIController {
 		this.selling = {};
 		this.resizing = {};
 		this.idle = {};
+		this.self_targets = {};
 	}
 }
 
@@ -52,6 +54,7 @@ require("air.nut");
 require("rail.nut");
 require("fleet.nut");
 require("lines.nut");
+require("steward.nut");
 
 /* Cheapest buildable road engine that carries a passenger-class cargo. */
 function PrismaticAI::PickPassengerEngine() {
@@ -211,6 +214,7 @@ function PrismaticAI::Behaviour() {
 		freight = PrismaticAI.FreightLines(),
 		line_budget = AIController.GetSetting("line_budget"),
 		own_lines = AIController.GetSetting("own_lines"),
+		self_steward = AIController.GetSetting("self_steward"),
 	};
 }
 
@@ -315,12 +319,13 @@ function PrismaticAI::Start() {
 		foreach (line in b.freight) if (!this.freight_tried.rawin(line.from + "-" + line.to + "-" + line.cargo)) handed_done = false;
 		local pair_open = b.rail_a >= 0 && b.rail_b >= 0 && this.rail_done != rail_key;
 		local headroom_own = AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
-		if (handed_done && !pair_open && this.own_built < b.own_lines && money + headroom_own >= b.line_budget) {
+		local own_cap = this.OwnLinesCap(b, money);
+		if (handed_done && !pair_open && this.own_built < own_cap && money + headroom_own >= b.line_budget) {
 			local own = PrismaticAI.NextOwnFreightLine(this.freight_tried);
 			if (own != null) {
 				this.freight_tried[own.from + "-" + own.to + "-" + own.cargo] <- true;
 				this.own_built++;
-				AILog.Info("PrismaticAI: own plan " + this.own_built + "/" + b.own_lines + ": " + AICargo.GetCargoLabel(own.cargo) + " " +
+				AILog.Info("PrismaticAI: own plan " + this.own_built + "/" + own_cap + ": " + AICargo.GetCargoLabel(own.cargo) + " " +
 					AIIndustry.GetName(own.from) + " - " + AIIndustry.GetName(own.to) + ", " + own.distance + " tiles, " +
 					own.production + " a month, score " + own.score);
 				local loan_before = AICompany.GetLoanAmount();
@@ -357,6 +362,8 @@ function PrismaticAI::Start() {
 		PrismaticAI.KeepLinesServed(b.cash_reserve);
 		/* Each line runs what the steward's targets say (lines.nut), and its record is logged again
 		 * once a game month so a steward started late still finds it. */
+		/* With self_steward, the bot sets its own line targets once a game month (steward.nut). */
+		if (b.self_steward == 1 && PrismaticAI.MonthKey() != this.month) this.SelfSteward();
 		this.ReconcileLines(b.cash_reserve);
 		if (PrismaticAI.MonthKey() != this.month) { this.month = PrismaticAI.MonthKey(); PrismaticAI.LogLines(); }
 		/* Borrowed money that sits idle only costs interest: repay what is above twice the reserve. */

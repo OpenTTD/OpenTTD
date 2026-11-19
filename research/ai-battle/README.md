@@ -2,7 +2,7 @@
 
 **RESEARCH-ONLY.** A tournament between company AIs that never stops. Every machine on the local
 network that answers SSH and has an OpenTTD build becomes an arena. The contestants are PrismaticAI
-from this repository and four AIs from BaNaNaS. The orchestrator replays an occasional match on a
+from this repository, in three configurations, and four AIs from BaNaNaS. The orchestrator replays an occasional match on a
 second arena to keep checking that a result does not depend on the machine. A live dashboard shows
 the run.
 Nothing under `src/` changes. The tournament uses existing interfaces only: the null video driver,
@@ -10,6 +10,10 @@ the per-game console script, the Game Script API and the BaNaNaS content client.
 
 Decision: ADR 0035. Feature: `lan-ai-battle`. Rule: `project.battle-records-are-reproducible`.
 Skill: `run-the-lan-ai-battle`. All are under `.ai/repo/`.
+
+The visible counterpart is [`research/live-arena.md`](../live-arena.md): the same contestants in
+one live game that the MCP panel and Rhai scripts drive, in the browser. It makes no ranking
+claim.
 
 ## Leaderboard
 
@@ -66,6 +70,7 @@ python3 $B run        # tournament + dashboard on http://127.0.0.1:8765/ (SIGTER
 python3 $B status     # leaderboard and replays of the current edition
 python3 $B report     # research/results/battle-<utc>-<edition>.{json,md} + README leaderboard
 python3 $B check      # every record valid, every derived file current (exit 10 / 11 otherwise)
+python3 $B fitness    # the working tree's PrismaticAI in one short local match (gate, on change)
 ```
 
 `run` never stops on its own. It re-probes online hosts every `schedule_every_s` and offline ones
@@ -80,10 +85,12 @@ build is enough, so a Linux box without GUI libraries can be an arena. Arenas ne
 
 ## Editions
 
-The **edition** is the content hash of the arena bundle: the base set, every AI tar, PrismaticAI
-and the referee. Matches, the leaderboard, replays and records all belong to exactly one edition,
-and nothing is compared across editions. A new PrismaticAI commit, AI version or referee is a
-new edition.
+The **edition** is a content hash of two things. The first is the arena bundle: the base set,
+every AI tar, PrismaticAI and the referee. The second is everything else that decides a match:
+the contestants with their settings, and the match parameters (`edition_of`). Matches, the
+leaderboard, replays and records all belong to exactly one edition, and nothing is compared
+across editions. A new PrismaticAI commit, AI version, referee, contestant, setting or match
+parameter is a new edition.
 
 `prepare` exports PrismaticAI (`tools/research/prismatic-ai/PrismaticAI`) and the referee with
 `git archive` at one commit. It strips the parent directories, so each tar has its script folder
@@ -121,16 +128,82 @@ i.e. a script crashing).
 
 ## PrismaticAI as a contestant
 
-PrismaticAI enters twice, under two labels, so each set of settings is its own contestant:
+PrismaticAI enters three times, under three labels, so each set of settings is its own contestant:
 
 - `PrismaticAI`: the settings' defaults, the way a bot started without the panel runs.
 - `PrismaticAI solo-max`: `aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000`.
   It plans its own freight rail lines and intercity roads without the panel's planner.
+- `PrismaticAI self-steward`: solo-max plus `self_steward=1`, the in-bot steward (see below).
 
 Both go through the same control path the bridge uses: settings handed to `start_ai`
 (feature `prismatic-bridge`). Neither gets the planner's lines. The battle therefore measures the
 bot on its own, not the panel's plan, and its results are not duels in the sense of rule
 `project.a-tuning-claim-needs-held-start-pairs`. A default changes on duels, not on this.
+
+## Why PrismaticAI lost, and what changed
+
+The first editions showed two failures. The battle now catches both by itself.
+
+- **PrismaticAI with default settings stays small.** That is by design. Without the panel, the
+  bot plans no rail lines (`own_lines` is 0) and runs a few bus routes (`max_routes`). It is
+  built to be steered by the panel's planner and the Rhai steward.
+- **`PrismaticAI solo-max` drops.** It plans its own rail lines and grows faster than everyone but
+  AAAHogEx for two or three years. Then its fleet shrinks by a third to a half while its bank
+  balance climbs. The cause is in the bot's design. A rail line runs what the Rhai steward sets
+  (`line<N>_trains`, `line<N>_wagons`; `lines.nut`), and without the panel there is no steward, so
+  every line keeps the one train it was built with. Once `own_lines` lines are planned, the
+  earnings have nowhere to go. Meanwhile `fleet.nut` sells road vehicles that lose money and buys
+  no replacements.
+- **The fix is opt-in, so no default changes** (rule
+  `project.a-tuning-claim-needs-held-start-pairs`). With `self_steward=1`, the bot applies the Rhai
+  steward's policy (`rail_lib.rhai::target`) itself to every line without an external target:
+  lengthen, add a train, shrink, or close. It also funds own lines beyond `own_lines` from money in
+  the bank (`tools/research/prismatic-ai/PrismaticAI/steward.nut`). The contestant
+  `PrismaticAI self-steward` is solo-max plus `self_steward=1`, in the same matches on the same
+  seeds, so each record compares the two directly.
+
+**Why no test caught it, and what catches it now:**
+
+- `battle.py fitness` runs the working tree's PrismaticAI for six years on a fixed seed, against
+  solo-max and AAAHogEx. It fails on a Squirrel error from any PrismaticAI, on an unfinished
+  match, or on a collapsing fleet of a contestant named in `fitness.must_be_healthy`. The null
+  driver is deterministic, so the verdict is stable. `tools/gate.sh change` runs it whenever
+  `tools/research/prismatic-ai` or `tools/research/ai-battle` changes. Without an arena cache it
+  says NOT RUN.
+- **Self-monitoring while the battle runs.** The orchestrator attaches `anomalies` to every
+  contestant of every match, live:
+  - `fleet_drop:<peak>-><now>`: the fleet fell below `anomaly_rules.fleet_keep` of a peak of at
+    least `fleet_min_peak` vehicles,
+  - `squirrel_errors:<n>`,
+  - `no_vehicles`.
+
+  A new anomaly goes to the event log as an `ALERT` and onto the dashboard's alert panel. Records
+  keep each standing's anomalies, and the leaderboard counts each contestant's anomalous matches.
+  The same check flagged CivilAI crashing (thousands of Squirrel errors in one match).
+
+## API and dashboard
+
+`battle.py run` serves a read-only HTTP API on loopback. The dashboard uses it, and so can any
+other client (`curl`, the panel, a notebook):
+
+| Path | What |
+|---|---|
+| `/` | the dashboard |
+| `/docs` | Swagger UI over `/api/openapi.json` |
+| `/api/stream` | server-sent events (`event: state`), the whole state every `stream_every_s` |
+| `/api/state` | the same state, once |
+| `/api/leaderboard`, `/api/hosts`, `/api/matches`, `/api/matches/{id}` | parts of it; a match with its full quarterly series |
+
+The dashboard has these features:
+
+- It follows `/api/stream` and falls back to polling. The connection indicator turns red after
+  ten seconds without an update.
+- Each live match draws every contestant's quarterly series. The metric is value, vehicles,
+  income or rating, on a log or linear scale; the choice is kept per browser. Hovering or
+  touching a chart shows every contestant's figures at that quarter.
+- Contestants with an anomaly are drawn dashed and carry a badge.
+- There are panels for the leaderboard (with points bars), alerts, recent results, replays and
+  the event log.
 
 ## What the battle can and cannot claim
 

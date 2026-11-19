@@ -195,6 +195,14 @@ panel_changed() {
     | grep -qE '^tools/research/mcp-panel/(static|test)/|^tools/research/mcp-panel/input\.css$'
 }
 
+# PrismaticAI or the battle tooling changed: run the working tree's bot in one short headless match
+# (rule project.battle-records-are-reproducible; tools/research/ai-battle/battle.py fitness). It fails
+# on a Squirrel error, an unfinished match or a collapsing fleet; it says NOT RUN without the arena.
+bot_changed() {
+  { git diff --name-only HEAD 2>/dev/null; git ls-files --others --exclude-standard; } \
+    | grep -qE '^tools/research/(prismatic-ai|ai-battle)/'
+}
+
 # The panel's own tests (rule project.panel-charts-go-through-one-layer): chart options rendered by
 # ECharts, the one-door scan, the chart registry, and app.css against a fresh build of its sources.
 panel_tests() {
@@ -273,6 +281,10 @@ cmd_change() {
   echo "==> python3 -B -m unittest discover -s tools/research -p 'test_*.py' (research tool tests)"
   python3 -B -m unittest discover -s tools/research -p 'test_*.py'
   if panel_changed; then panel_tests; fi
+  if bot_changed; then
+    echo "==> tools/research/ai-battle/battle.py fitness (PrismaticAI in one short headless match)"
+    python3 -B tools/research/ai-battle/battle.py fitness
+  fi
   if real_world_changed; then real_world_tests; fi
 
   if [[ ! -f build/CMakeCache.txt ]]; then

@@ -4,61 +4,86 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LAN AI Battle</title>
+<!-- RESEARCH-ONLY dashboard of tools/research/ai-battle/battle.py run. Data: GET /api/stream
+     (server-sent events, the state of /api/state), falling back to polling; API: /docs. -->
 <style>
   :root {
     --bg: #f6f5f2; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6a66; --line: #e3e1db;
-    --ok: #2f7d4f; --warn: #a86a12; --bad: #b23a3a;
-    --c0: #2f6fdb; --c1: #d4542b; --c2: #1f9a7a; --c3: #8b4fc9; --c4: #c79a12; --c5: #5d6b7a;
+    --ok: #2f7d4f; --warn: #a86a12; --bad: #b23a3a; --accent: #2f6fdb;
+    --c0: #2f6fdb; --c1: #d4542b; --c2: #1f9a7a; --c3: #8b4fc9; --c4: #c79a12; --c5: #d0458b; --c6: #5d6b7a;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #141413; --panel: #1e1e1c; --ink: #ecebe6; --muted: #9c9a93; --line: #34332f;
-      --ok: #5cc98a; --warn: #e0a84a; --bad: #ef7a7a;
-      --c0: #6c9bf0; --c1: #f07f57; --c2: #4cc7a3; --c3: #b386ec; --c4: #e8c24a; --c5: #9aa7b4;
+      --ok: #5cc98a; --warn: #e0a84a; --bad: #ef7a7a; --accent: #6c9bf0;
+      --c0: #6c9bf0; --c1: #f07f57; --c2: #4cc7a3; --c3: #b386ec; --c4: #e8c24a; --c5: #f07bb4; --c6: #9aa7b4;
     }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413; --panel: #1e1e1c; --ink: #ecebe6; --muted: #9c9a93; --line: #34332f;
+    --ok: #5cc98a; --warn: #e0a84a; --bad: #ef7a7a; --accent: #6c9bf0;
+    --c0: #6c9bf0; --c1: #f07f57; --c2: #4cc7a3; --c3: #b386ec; --c4: #e8c24a; --c5: #f07bb4; --c6: #9aa7b4;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink);
          font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  header { padding: 20px 24px 8px; display: flex; flex-wrap: wrap; gap: 8px 24px;
-           align-items: baseline; }
+  header { padding: 16px 24px 8px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
   h1 { font-size: 20px; margin: 0; letter-spacing: -0.01em; }
-  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
-       margin: 0 0 10px; font-weight: 600; }
-  .sub { color: var(--muted); font-size: 13px; }
+  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+       margin: 0 0 10px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; }
+  .sub { color: var(--muted); font-size: 12px; }
+  .spacer { flex: 1; }
+  .controls { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .seg button { border: 0; background: transparent; color: var(--ink); padding: 4px 10px; font: inherit;
+                font-size: 12px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  a { color: var(--accent); }
+  .conn { font-size: 12px; display: inline-flex; align-items: center; gap: 6px; }
+  .conn i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); display: inline-block; }
+  .conn.live i { background: var(--ok); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 25%, transparent); }
+  .conn.stale i { background: var(--bad); }
   main { padding: 8px 24px 32px; display: grid; gap: 16px;
          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
-           padding: 16px; min-width: 0; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
   .wide { grid-column: 1 / -1; }
   table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line);
-           white-space: nowrap; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
   th { color: var(--muted); font-weight: 500; font-size: 12px; }
   td.num, th.num { text-align: right; }
   .scroll { overflow-x: auto; }
-  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%;
-         margin-right: 6px; vertical-align: -1px; }
-  .pill { font-size: 12px; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--line); }
-  .online { color: var(--ok); } .offline, .error { color: var(--bad); }
-  .no-binary { color: var(--warn); }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .pill { font-size: 11px; padding: 1px 7px; border-radius: 99px; border: 1px solid var(--line); margin-left: 4px; }
+  .pill.bad { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 40%, var(--line)); }
+  .pill.warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, var(--line)); }
+  .online { color: var(--ok); } .offline, .error { color: var(--bad); } .no-binary { color: var(--warn); }
   .hosts { display: flex; flex-wrap: wrap; gap: 10px; }
-  .host { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; min-width: 170px;
-          flex: 1 1 170px; }
+  .host { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; flex: 1 1 180px; min-width: 0; }
   .host b { font-size: 15px; }
-  .slots { display: flex; gap: 4px; margin-top: 6px; }
+  .slots { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
   .slot { width: 16px; height: 6px; border-radius: 3px; background: var(--line); }
   .slot.busy { background: var(--ok); }
-  .live { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
-  .match { border: 1px solid var(--line); border-radius: 8px; padding: 12px; min-width: 0; }
-  .match .top { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
+  .live { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+  .match { border: 1px solid var(--line); border-radius: 8px; padding: 12px; min-width: 0; position: relative; }
+  .match .top { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; flex-wrap: wrap; }
+  .match table { table-layout: fixed; }
+  .match td:first-child, .match th:first-child { width: 58%; overflow: hidden; text-overflow: ellipsis; }
+  .match td, .match th { padding: 4px 4px; }
   .bar { height: 4px; background: var(--line); border-radius: 2px; margin: 8px 0; overflow: hidden; }
-  .bar i { display: block; height: 100%; background: var(--c0); }
-  svg { width: 100%; height: auto; display: block; }
+  .bar i { display: block; height: 100%; background: var(--accent); transition: width .6s; }
+  .chart { position: relative; }
+  svg { width: 100%; height: auto; display: block; touch-action: none; }
   svg text { fill: var(--muted); font-size: 10px; }
-  .legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; margin-top: 6px; }
-  .events { font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; max-height: 260px;
-            overflow-y: auto; color: var(--muted); }
+  .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line);
+         border-radius: 6px; padding: 6px 8px; font-size: 11px; box-shadow: 0 4px 14px rgba(0,0,0,.15);
+         white-space: nowrap; z-index: 2; display: none; }
+  .tip b { display: block; margin-bottom: 2px; }
+  .events { font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; max-height: 260px; overflow-y: auto; color: var(--muted); }
+  .events .alert { color: var(--bad); }
+  .alerts { display: flex; flex-direction: column; gap: 4px; font-size: 13px; max-height: 260px; overflow-y: auto; }
+  .alerts div { padding: 6px 8px; border-left: 3px solid var(--bad); background: color-mix(in srgb, var(--bad) 8%, transparent); border-radius: 4px; }
+  .barcell { position: relative; min-width: 90px; }
+  .barcell span { position: absolute; left: 0; top: 50%; transform: translateY(-50%); height: 6px; border-radius: 3px; opacity: .35; }
   .empty { color: var(--muted); font-style: italic; }
   @media (max-width: 860px) {
     header, main { padding-left: 16px; padding-right: 16px; }
@@ -70,24 +95,39 @@
 <body>
 <header>
   <h1>LAN AI Battle</h1>
-  <span class="sub" id="meta">connecting…</span>
+  <span class="conn" id="conn"><i></i><span>connecting</span></span>
+  <span class="sub" id="meta"></span>
+  <span class="spacer"></span>
+  <div class="controls">
+    <div class="seg" id="metric" role="group" aria-label="metric">
+      <button data-v="value" aria-pressed="true">Value</button><button data-v="vehicles">Vehicles</button>
+      <button data-v="income">Income/q</button><button data-v="perf">Rating</button>
+    </div>
+    <div class="seg" id="scale" role="group" aria-label="scale">
+      <button data-v="log" aria-pressed="true">Log</button><button data-v="lin">Linear</button>
+    </div>
+    <a class="sub" href="/docs" target="_blank" rel="noopener">API</a>
+  </div>
 </header>
 <main>
   <section class="panel wide"><h2>Arenas</h2><div class="hosts" id="hosts"></div></section>
-  <section class="panel wide"><h2>Live matches</h2><div class="live" id="live"></div></section>
+  <section class="panel wide"><h2><span>Live matches</span><span id="livecount"></span></h2><div class="live" id="live"></div></section>
   <section class="panel"><h2>Leaderboard</h2><div class="scroll" id="board"></div></section>
+  <section class="panel"><h2>Alerts (self-monitoring)</h2><div class="alerts" id="alerts"></div></section>
   <section class="panel"><h2>Recent results</h2><div class="scroll" id="recent"></div></section>
-  <section class="panel wide"><h2>Replays on another arena (determinism)</h2><div class="scroll" id="det"></div></section>
+  <section class="panel"><h2>Replays on another arena (determinism)</h2><div class="scroll" id="det"></div></section>
   <section class="panel wide"><h2>Orchestrator log</h2><div class="events" id="events"></div></section>
 </main>
 <script>
 'use strict';
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-let colours = {};
+const ui = { metric: 'value', scale: 'log' };
+try { Object.assign(ui, JSON.parse(localStorage.getItem('battle-ui') || '{}')); } catch (e) { /* storage blocked */ }
+let colours = {}, last = null, lastAt = 0;
 
-function colour(key) { return colours[key] || 'var(--c5)'; }
-function money(v) {
+function colour(key) { return colours[key] || 'var(--c6)'; }
+function num(v) {
   const a = Math.abs(v);
   if (a >= 1e9) return (v / 1e9).toFixed(2) + ' B';
   if (a >= 1e6) return (v / 1e6).toFixed(1) + ' M';
@@ -95,38 +135,89 @@ function money(v) {
   return String(v);
 }
 function dur(s) { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + 'm ' + String(s % 60).padStart(2, '0') + 's'; }
+function tyear(t) { const [y, m] = t.split('-').map(Number); return y + (m - 1) / 12; }
 
+function seg(id) {
+  $(id).querySelectorAll('button').forEach((b) => {
+    b.setAttribute('aria-pressed', String(b.dataset.v === ui[id]));
+    b.onclick = () => {
+      ui[id] = b.dataset.v;
+      try { localStorage.setItem('battle-ui', JSON.stringify(ui)); } catch (e) { /* storage blocked */ }
+      seg(id); if (last) render(last);
+    };
+  });
+}
+
+/* One match chart: every contestant's quarterly series of the chosen metric, log or linear. */
 function chart(m, cfg) {
-  const W = 420, H = 180, L = 40, R = 8, T = 8, B = 20;
+  const W = 420, H = 190, L = 44, R = 8, T = 8, B = 20, key = ui.metric, log = ui.scale === 'log';
   const start = cfg.start_year, end = cfg.start_year + m.years;
-  const x = (t) => { const [y, mo] = t.split('-').map(Number); return L + (W - L - R) * ((y + (mo - 1) / 12 - start) / (end - start)); };
-  let max = 1;
-  for (const s of Object.values(m.series)) for (const p of s) max = Math.max(max, p.value);
+  const x = (t) => L + (W - L - R) * ((tyear(t) - start) / (end - start));
+  let max = 1, min = 0;
+  for (const s of Object.values(m.series)) for (const p of s) { max = Math.max(max, p[key]); min = Math.min(min, p[key]); }
+  if (log) min = 0;
   const lmax = Math.log10(Math.max(10, max));
-  const y = (v) => T + (H - T - B) * (1 - Math.log10(Math.max(1, v)) / lmax);
+  const y = log ? (v) => T + (H - T - B) * (1 - Math.log10(Math.max(1, v)) / lmax)
+                : (v) => T + (H - T - B) * (1 - (v - min) / Math.max(1, max - min));
   let g = '';
-  for (let e = 0; e <= Math.floor(lmax); e += (lmax > 6 ? 2 : 1)) {
-    const yy = y(10 ** e);
-    g += `<line x1="${L}" x2="${W - R}" y1="${yy}" y2="${yy}" stroke="var(--line)"/>` +
-         `<text x="${L - 4}" y="${yy + 3}" text-anchor="end">${money(10 ** e)}</text>`;
+  const ticks = log ? Array.from({ length: Math.floor(lmax) + 1 }, (_, e) => 10 ** e).filter((_, e) => lmax <= 6 || e % 2 === 0)
+                    : [0, .25, .5, .75, 1].map((f) => min + f * (max - min));
+  for (const v of ticks) {
+    const yy = y(v);
+    g += `<line x1="${L}" x2="${W - R}" y1="${yy}" y2="${yy}" stroke="var(--line)"/><text x="${L - 4}" y="${yy + 3}" text-anchor="end">${num(Math.round(v))}</text>`;
   }
-  for (let yr = start; yr <= end; yr += 5) {
-    const xx = x(yr + '-1');
-    g += `<text x="${xx}" y="${H - 6}" text-anchor="middle">${yr}</text>`;
-  }
-  for (const [key, s] of Object.entries(m.series)) {
+  for (let yr = start; yr <= end; yr += 5) g += `<text x="${x(yr + '-1')}" y="${H - 6}" text-anchor="middle">${yr}</text>`;
+  for (const [k, s] of Object.entries(m.series)) {
     if (!s.length) continue;
-    const pts = s.map((p) => `${x(p.t).toFixed(1)},${y(p.value).toFixed(1)}`).join(' ');
-    g += `<polyline fill="none" stroke="${colour(key)}" stroke-width="2" points="${pts}"><title>${esc(key)}</title></polyline>`;
+    const pts = s.map((p) => `${x(p.t).toFixed(1)},${y(p[key]).toFixed(1)}`).join(' ');
+    const bad = (m.anomalies || {})[k];
+    g += `<polyline fill="none" stroke="${colour(k)}" stroke-width="${bad ? 2.5 : 1.8}" ${bad ? 'stroke-dasharray="5 3"' : ''} points="${pts}"/>`;
   }
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="company value over time (log scale)">${g}</svg>`;
+  g += `<line class="cursor" x1="0" x2="0" y1="${T}" y2="${H - B}" stroke="var(--muted)" stroke-dasharray="2 3" visibility="hidden"/>`;
+  return `<div class="chart" data-id="${m.id}"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${key} over time">${g}</svg><div class="tip"></div></div>`;
+}
+
+/* Hover/touch: the nearest quarter's values of every contestant, sorted. */
+function bindTips(state) {
+  document.querySelectorAll('.chart').forEach((el) => {
+    const m = state.live.find((mm) => mm.id === el.dataset.id);
+    if (!m) return;
+    const svg = el.querySelector('svg'), tip = el.querySelector('.tip'), cur = svg.querySelector('.cursor');
+    const cfg = state.match_cfg, start = cfg.start_year, end = start + m.years;
+    const move = (ev) => {
+      const r = svg.getBoundingClientRect(), px = ((ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left) / r.width * 420;
+      const year = start + (px - 44) / (420 - 52) * (end - start);
+      const rows = [];
+      let at = '';
+      for (const [k, s] of Object.entries(m.series)) {
+        let best = null;
+        for (const p of s) if (!best || Math.abs(tyear(p.t) - year) < Math.abs(tyear(best.t) - year)) best = p;
+        if (best) { rows.push([k, best[ui.metric]]); at = best.t; }
+      }
+      if (!rows.length) return;
+      rows.sort((a, b) => b[1] - a[1]);
+      tip.innerHTML = `<b>${at}</b>` + rows.map(([k, v]) => `<div><span class="dot" style="background:${colour(k)}"></span>${esc(k)}: ${num(v)}</div>`).join('');
+      tip.style.display = 'block';
+      const left = Math.min(r.width - tip.offsetWidth - 4, Math.max(4, px / 420 * r.width + 12));
+      tip.style.left = left + 'px'; tip.style.top = '8px';
+      cur.setAttribute('x1', px); cur.setAttribute('x2', px); cur.setAttribute('visibility', 'visible');
+    };
+    const out = () => { tip.style.display = 'none'; cur.setAttribute('visibility', 'hidden'); };
+    svg.addEventListener('mousemove', move); svg.addEventListener('touchmove', move, { passive: true });
+    svg.addEventListener('mouseleave', out); svg.addEventListener('touchend', out);
+  });
+}
+
+function badges(list) {
+  return (list || []).map((a) => `<span class="pill ${a.startsWith('squirrel') ? 'bad' : 'warn'}" title="anomaly">${esc(a.replace('_', ' '))}</span>`).join('');
 }
 
 function render(st) {
-  st.contestants.forEach((k, i) => { colours[k] = `var(--c${i % 6})`; });
+  last = st; lastAt = Date.now();
+  st.contestants.forEach((k, i) => { colours[k] = `var(--c${i % 7})`; });
   const p = st.provenance || {};
-  $('meta').textContent = `${st.contestants.length} contestants · ${st.match_cfg.years}-year free-for-all from ${st.match_cfg.start_year} · ` +
-    `${2 ** st.match_cfg.map_x}×${2 ** st.match_cfg.map_y} ${st.match_cfg.landscape} · edition ${st.edition.slice(0, 8)} · PrismaticAI @ ${(p.rev || '').slice(0, 10)}${p.dirty ? ' (DIRTY)' : ''} · updated ${new Date(st.now * 1000).toLocaleTimeString()}`;
+  $('meta').textContent = `${st.contestants.length} contestants · ${st.match_cfg.years} years from ${st.match_cfg.start_year} · ` +
+    `${2 ** st.match_cfg.map_x}×${2 ** st.match_cfg.map_y} ${st.match_cfg.landscape} · edition ${st.edition.slice(0, 8)} · rev ${(p.rev || '').slice(0, 10)}${p.dirty ? ' DIRTY' : ''}`;
 
   $('hosts').innerHTML = st.hosts.map((h) => `
     <div class="host"><b>${esc(h.name)}</b> <span class="${h.state}">${h.state}</span>
@@ -135,57 +226,73 @@ function render(st) {
       <div class="slots">${Array.from({ length: h.slots }, (_, i) => `<span class="slot ${i < h.running ? 'busy' : ''}"></span>`).join('')}</div>
     </div>`).join('');
 
+  $('livecount').textContent = st.live.length ? `${st.live.length} running` : '';
   $('live').innerHTML = st.live.length ? st.live.map((m) => {
-    let last = '';
-    for (const s of Object.values(m.series)) if (s.length && s[s.length - 1].t > last) last = s[s.length - 1].t;
-    const yNow = last ? Number(last.split('-')[0]) + (Number(last.split('-')[1]) - 1) / 12 : st.match_cfg.start_year;
-    const pct = Math.min(100, 100 * (yNow - st.match_cfg.start_year) / m.years);
+    let lt = '';
+    for (const s of Object.values(m.series)) if (s.length && s[s.length - 1].t > lt) lt = s[s.length - 1].t;
+    const pct = lt ? Math.min(100, 100 * (tyear(lt) - st.match_cfg.start_year) / m.years) : 0;
     const rows = m.lineup.map((c) => {
       const s = m.series[c.key] || [];
-      return { key: c.key, p: s[s.length - 1] || {}, err: (m.errors || {})[c.key] || 0 };
+      return { key: c.key, p: s[s.length - 1] || {}, bad: (m.anomalies || {})[c.key] };
     }).sort((a, b) => (b.p.value || 0) - (a.p.value || 0));
     return `<div class="match">
-      <div class="top"><b>${m.id}${m.replica_of ? ` <span class="pill">replay of ${esc(m.replica_of)}</span>` : ''}</b><span class="sub">${esc(m.host)} · seed ${m.seed} · ${last || 'starting'} · ${dur(st.now - m.started_at)}</span></div>
+      <div class="top"><b>${m.id}${m.replica_of ? ` <span class="pill">replay of ${esc(m.replica_of)}</span>` : ''}</b>
+        <span class="sub">${esc(m.host)} · seed ${m.seed} · ${lt || 'starting'} · ${dur(st.now - m.started_at)}</span></div>
       <div class="bar"><i style="width:${pct}%"></i></div>
       ${chart(m, st.match_cfg)}
-      <table><tr><th>AI</th><th class="num">value</th><th class="num">veh</th><th class="num">stations</th></tr>
-      ${rows.map((r) => `<tr><td><span class="dot" style="background:${colour(r.key)}"></span>${esc(r.key)}${r.err ? ` <span class="pill bad" title="Squirrel errors">${r.err} err</span>` : ''}</td>
-        <td class="num">${money(r.p.value || 0)}</td><td class="num">${r.p.vehicles || 0}</td><td class="num">${r.p.stations || 0}</td></tr>`).join('')}
+      <table><tr><th>AI</th><th class="num">value</th><th class="num">veh</th><th class="num">st</th></tr>
+      ${rows.map((r) => `<tr><td><span class="dot" style="background:${colour(r.key)}"></span>${esc(r.key)}${badges(r.bad)}</td>
+        <td class="num">${num(r.p.value || 0)}</td><td class="num">${r.p.vehicles || 0}</td><td class="num">${r.p.stations || 0}</td></tr>`).join('')}
       </table></div>`;
-  }).join('') : '<div class="empty">No match running yet.</div>';
+  }).join('') : '<div class="empty">No match running.</div>';
+  bindTips(st);
 
-  $('board').innerHTML = `<table><tr><th>#</th><th>AI</th><th class="num">played</th><th class="num">wins</th><th class="num">points</th><th class="num">avg rank</th><th class="num">avg value</th></tr>
+  const top = Math.max(1, ...st.leaderboard.map((r) => r.points));
+  $('board').innerHTML = `<table><tr><th>#</th><th>AI</th><th class="num">played</th><th class="num">wins</th><th>points</th><th class="num">avg rank</th><th class="num">avg value</th><th class="num">anomalous</th></tr>
     ${st.leaderboard.map((r, i) => `<tr><td>${i + 1}</td><td><span class="dot" style="background:${colour(r.key)}"></span>${esc(r.key)}</td>
-      <td class="num">${r.played}</td><td class="num">${r.wins}</td><td class="num">${r.points}</td>
-      <td class="num">${r.avg_rank ?? '–'}</td><td class="num">${money(r.avg_value)}</td></tr>`).join('')}</table>
-    <div class="sub" style="margin-top:8px">Points per match: last place 0, each place above +1. Only matches that reached the final year count; replays don't.</div>`;
+      <td class="num">${r.played}</td><td class="num">${r.wins}</td>
+      <td class="barcell"><span style="width:${100 * r.points / top}%;background:${colour(r.key)}"></span>${r.points}</td>
+      <td class="num">${r.avg_rank ?? '–'}</td><td class="num">${num(r.avg_value)}</td>
+      <td class="num">${r.anomalies ? `<span class="pill warn">${r.anomalies}</span>` : 0}</td></tr>`).join('')}</table>
+    <div class="sub" style="margin-top:8px">Points: last place 0, each place above +1. Matches that reached the final year count; replays don't. Anomalous: matches with a fleet drop, Squirrel errors or no vehicles.</div>`;
+
+  const alerts = st.events.filter((e) => e.msg.startsWith('ALERT')).reverse();
+  $('alerts').innerHTML = alerts.length ? alerts.map((e) => `<div>${e.at} ${esc(e.msg.slice(6))}</div>`).join('')
+    : '<div class="empty" style="border:0;background:none">No anomaly in this run yet.</div>';
 
   $('recent').innerHTML = st.recent.length ? `<table><tr><th>match</th><th>arena</th><th>status</th><th>winner</th><th class="num">value</th></tr>
     ${st.recent.map((m) => {
       const w = (m.standings || [])[0];
       return `<tr><td>${m.id}${m.replica_of ? ' ↺' : ''}</td><td>${esc(m.host)}</td><td>${m.status}</td>
         <td>${w ? `<span class="dot" style="background:${colour(w.key)}"></span>${esc(w.key)}` : '–'}</td>
-        <td class="num">${w ? money(w.value) : '–'}</td></tr>`;
-    }).join('')}</table>` : '<div class="empty">No finished matches yet.</div>';
+        <td class="num">${w ? num(w.value) : '–'}</td></tr>`;
+    }).join('')}</table>` : '<div class="empty">No finished match yet.</div>';
 
-  $('det').innerHTML = st.determinism.length ? `<table><tr><th>seed</th><th>original</th><th>replay</th><th>arenas</th><th>builds</th><th>result</th></tr>
-    ${st.determinism.map((d) => `<tr><td>${d.seed}</td><td>${d.original}</td><td>${d.replay}</td><td>${d.hosts.map(esc).join(' / ')}</td>
-      <td class="sub">${d.versions.map(esc).join(' / ')}</td><td class="${d.identical ? 'online' : 'error'}">${d.identical ? 'identical' : 'DIFFERENT'}</td></tr>`).join('')}</table>`
+  $('det').innerHTML = st.determinism.length ? `<table><tr><th>seed</th><th>original</th><th>replay</th><th>arenas</th><th>result</th></tr>
+    ${st.determinism.map((d) => `<tr title="${d.versions.map(esc).join(' / ')}"><td>${d.seed}</td><td>${d.original}</td><td>${d.replay}</td>
+      <td>${d.hosts.map(esc).join(' / ')}</td><td class="${d.identical ? 'online' : 'error'}">${d.identical ? 'identical' : 'DIFFERENT'}</td></tr>`).join('')}</table>`
     : '<div class="empty">No replay finished yet: every few matches one is replayed on another arena with the same seed and start order.</div>';
 
-  $('events').innerHTML = st.events.slice().reverse().map((e) => `<div>${e.at} ${esc(e.msg)}</div>`).join('');
+  $('events').innerHTML = st.events.slice().reverse().map((e) => `<div class="${e.msg.startsWith('ALERT') ? 'alert' : ''}">${e.at} ${esc(e.msg)}</div>`).join('');
 }
 
-async function tick() {
-  try {
-    const r = await fetch('/api/state', { cache: 'no-store' });
-    render(await r.json());
-  } catch (e) {
-    $('meta').textContent = 'orchestrator unreachable — is `battle.py run` still running?';
-  }
+function setConn(cls, text) { $('conn').className = 'conn ' + cls; $('conn').querySelector('span').textContent = text; }
+let poll = null;
+function startPolling() {
+  if (poll) return;
+  const tick = async () => {
+    try { render(await (await fetch('/api/state', { cache: 'no-store' })).json()); setConn('live', 'polling'); }
+    catch (e) { setConn('stale', 'orchestrator unreachable'); }
+  };
+  tick(); poll = setInterval(tick, 3000);
 }
-tick();
-setInterval(tick, 3000);
+if ('EventSource' in window) {
+  const es = new EventSource('/api/stream');
+  es.addEventListener('state', (ev) => { render(JSON.parse(ev.data)); setConn('live', 'live'); });
+  es.onerror = () => { setConn('stale', 'reconnecting'); };
+} else { startPolling(); }
+setInterval(() => { if (Date.now() - lastAt > 10000) setConn('stale', lastAt ? 'no update for ' + Math.round((Date.now() - lastAt) / 1000) + ' s' : 'connecting'); }, 2000);
+seg('metric'); seg('scale');
 </script>
 </body>
 </html>

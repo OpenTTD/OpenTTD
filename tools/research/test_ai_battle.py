@@ -133,6 +133,37 @@ def record(**over):
     return rec
 
 
+class Health(unittest.TestCase):
+    RULES = {"fleet_min_peak": 10, "fleet_keep": 0.7}
+
+    @staticmethod
+    def fleet(*counts):
+        return [{"t": f"{1960 + i // 4}-{1 + 3 * (i % 4):02d}", "value": 1, "vehicles": v}
+                for i, v in enumerate(counts)]
+
+    def test_fleet_drop_and_errors_are_anomalies(self):
+        self.assertEqual(battle.anomalies(self.fleet(5, 22, 20, 11), 0, self.RULES), ["fleet_drop:22->11"])
+        self.assertEqual(battle.anomalies(self.fleet(5, 22, 20, 16), 0, self.RULES), [])
+        self.assertEqual(battle.anomalies(self.fleet(2, 9, 3), 0, self.RULES), [])  # too small to judge
+        self.assertEqual(battle.anomalies(self.fleet(1, 2), 3, self.RULES), ["squirrel_errors:3"])
+
+    def test_fitness_fails_on_collapse_of_a_healthy_bot_and_on_any_bot_crash(self):
+        fit = {"rules": self.RULES, "must_be_healthy": ["P steward"]}
+        lineup = [{"ai": "PrismaticAI", "key": "P steward"}, {"ai": "PrismaticAI", "key": "P max"},
+                  {"ai": "AAAHogEx", "key": "AAAHogEx"}]
+        m = {"status": "done", "lineup": lineup, "errors": {},
+             "series": {"P steward": self.fleet(5, 22, 21), "P max": self.fleet(5, 24, 9),
+                        "AAAHogEx": self.fleet(1, 50, 2)}}
+        self.assertEqual(battle.fitness_verdict(m, fit), [])          # only the healthy bot is judged
+        m["series"]["P steward"] = self.fleet(5, 22, 8)
+        self.assertEqual(battle.fitness_verdict(m, fit), ["P steward: fleet_drop:22->8"])
+        m["series"]["P steward"] = self.fleet(5, 22, 21)
+        m["errors"] = {"P max": 2}
+        self.assertEqual(battle.fitness_verdict(m, fit), ["P max: squirrel_errors:2"])
+        m["status"] = "incomplete"
+        self.assertTrue(battle.fitness_verdict(m, fit)[0].startswith("match incomplete"))
+
+
 class Records(unittest.TestCase):
     NAME = "battle-20261119T000000-abcdef12.json"
 

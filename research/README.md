@@ -42,7 +42,7 @@ Generated from each document's title and first paragraph (`tools/surfaces/surfac
 <!-- surfaces:begin docs-index dir=research -->
 | Document | What it is |
 |---|---|
-| [LAN AI battle](ai-battle/README.md) | RESEARCH-ONLY. A tournament between company AIs that never stops. Every machine on the local network that answers SSH and has an OpenTTD build becomes an arena. The contestants are PrismaticAI from this repository... |
+| [LAN AI battle](ai-battle/README.md) | RESEARCH-ONLY. A tournament between company AIs that never stops. Every machine on the local network that answers SSH and has an OpenTTD build becomes an arena. The contestants are PrismaticAI from this repository,... |
 | [Experiment report: baseset-prerequisite-macos](baseset-prerequisite-macos.md) | The four regression ctest cases (regression_regression, regression_stationlist, regression_gs, regression_gs_compat) require a base graphics set to be installed, even though they run headless (-vnull -snull -mnull).... |
 | [Concepts: what the fork demonstrates](concepts/README.md) | This fork is a testbed for AI agents that make and carry out decisions under human oversight. The pages here describe the ideas it demonstrates. Each idea is shown in the game with links to the code that implements... |
 | [Agents and supervision](concepts/agents-and-supervision.md) | Several agents work on the same thing at the same time. A supervisory layer gives them shared, written rules, a way to say what each is doing, a record of what was decided, and a handover when one stops and another... |

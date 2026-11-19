@@ -23,15 +23,77 @@
     "map_y": 8,
     "breakdowns": 1
   },
-  "prismatic": {"path": "tools/research/prismatic-ai/PrismaticAI", "rev": "HEAD"},
-  "referee": {"path": "tools/research/ai-battle/referee/BattleReferee"},
+  "prismatic": {
+    "path": "tools/research/prismatic-ai/PrismaticAI",
+    "rev": "HEAD"
+  },
+  "referee": {
+    "path": "tools/research/ai-battle/referee/BattleReferee"
+  },
   "contestants": [
-    {"ai": "PrismaticAI", "label": "PrismaticAI", "source": "repository"},
-    {"ai": "PrismaticAI", "label": "PrismaticAI solo-max", "source": "repository",
-     "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000"},
-    {"ai": "AAAHogEx", "source": "bananas"},
-    {"ai": "LuDiAI AfterFix", "source": "bananas"},
-    {"ai": "CivilAI", "source": "bananas"},
-    {"ai": "AdmiralAI", "source": "bananas"}
-  ]
+    {
+      "ai": "PrismaticAI",
+      "label": "PrismaticAI",
+      "source": "repository"
+    },
+    {
+      "ai": "PrismaticAI",
+      "label": "PrismaticAI solo-max",
+      "source": "repository",
+      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000"
+    },
+    {
+      "ai": "PrismaticAI",
+      "label": "PrismaticAI self-steward",
+      "source": "repository",
+      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,self_steward=1"
+    },
+    {
+      "ai": "AAAHogEx",
+      "source": "bananas"
+    },
+    {
+      "ai": "LuDiAI AfterFix",
+      "source": "bananas"
+    },
+    {
+      "ai": "CivilAI",
+      "source": "bananas"
+    },
+    {
+      "ai": "AdmiralAI",
+      "source": "bananas"
+    }
+  ],
+  "fitness": {
+    "years": 6,
+    "seed": 930967890,
+    "timeout_s": 600,
+    "rules": {
+      "fleet_min_peak": 10,
+      "fleet_keep": 0.7
+    },
+    "must_be_healthy": [
+      "PrismaticAI self-steward"
+    ],
+    "contestants": [
+      {
+        "ai": "PrismaticAI",
+        "label": "PrismaticAI self-steward",
+        "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,self_steward=1"
+      },
+      {
+        "ai": "PrismaticAI",
+        "label": "PrismaticAI solo-max",
+        "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000"
+      },
+      {
+        "ai": "AAAHogEx"
+      }
+    ]
+  },
+  "anomaly_rules": {
+    "fleet_min_peak": 10,
+    "fleet_keep": 0.7
+  }
 }

@@ -34,6 +34,7 @@ another personal directory: Linux uses `$XDG_DATA_HOME/openttd`, and a test run 
 | `rail.nut` | Rail lines: termini with a throat, the A* line search, laying, the walk check, depots, trains, platform length |
 | `lines.nut` | Rail lines as desired state: line slots, the record the Rhai steward reads (with station ids), and the reconciliation of its targets; closing removes only what the line owns |
 | `fleet.nut` | Road and air capacity follows waiting cargo and the link graph's planned flow; vehicles that lose money are sold |
+| `steward.nut` | The in-bot steward behind `self_steward=1`: the Rhai steward's line policy for lines with no external target, and reinvestment of idle money in more own lines |
 | `roadstop.nut`, `intercity.nut`, `air.nut` | Bus stops and depots facing their road, intercity roads tile by tile, airports and aircraft |
 
 ## Rail lines a train can always run
@@ -70,6 +71,7 @@ Full rationale: [`research/rail-steward.md`](../../../research/rail-steward.md),
 | `rail_platforms`, `rail_len`, `rail_wagons` | the owner, a duel's `--bot-settings` | the shape of new rail lines (0: derive) |
 | `disclose_name` | the owner, for a real game against people | 1 appends " (AI)" to the company's name ([`research/real-game.md`](../../../research/real-game.md)) |
 | `line<N>_trains`, `line<N>_wagons` (24 slots) | `tools/research/mcp-panel/rhai/rail_steward.rhai` | the target of rail line N: trains (0 closes it), wagons per train |
+| `self_steward` | the owner, e.g. the headless LAN AI battle ([`research/ai-battle/README.md`](../../../research/ai-battle/README.md)) | 1: lines without a steward's target follow the Rhai steward's policy inside the bot, and idle money funds own lines beyond `own_lines` (`steward.nut`); 0 (default): unchanged |
 
 Every finished line logs a record once at build time and again every game month:
 

@@ -10,7 +10,7 @@ status: draft
 weight: 45
 areas: [agent-integration]
 audiences: [prismatic-integrator]
-rules: [project.battle-records-are-reproducible, project.docs-are-derived-and-current, project.a-tuning-claim-needs-held-start-pairs]
+rules: [project.battle-records-are-reproducible, project.prismatic-ai-passes-the-headless-fitness-check, project.docs-are-derived-and-current, project.a-tuning-claim-needs-held-start-pairs]
 docs: [research/ai-battle/README.md]
 adrs: [adr-0035, adr-0021, adr-0025]
 related: [prismatic-bridge, research-experiment-cli, layered-validation-gate]
@@ -27,6 +27,16 @@ rsyncs the bundle to each arena and fills its slots with 20-year free-for-all ma
 SSH, kills a stalled match, replays every few matches on another arena, and serves the dashboard
 on loopback. `report` writes the record, and `check` keeps the record and the README leaderboard
 derived in `tools/gate.sh change`.
+
+The orchestrator also watches itself. Every contestant of every match carries live `anomalies`
+(`fleet_drop`, `squirrel_errors`, `no_vehicles`), and a new one is an `ALERT` in the event log
+and on the dashboard. `fitness` runs the working tree's PrismaticAI in one short deterministic
+match and fails on a crash or a collapsing fleet, in `tools/gate.sh change` whenever the bot or
+the tooling changes (rule `project.prismatic-ai-passes-the-headless-fitness-check`). The API
+(`/api/state`, `/api/stream` server-sent events, `/api/matches/{id}`, OpenAPI with Swagger UI at
+`/docs`) serves the dashboard and any other client. PrismaticAI enters as default, solo-max, and
+self-steward: solo-max plus the opt-in in-bot steward that keeps its lines growing without the
+panel (knowledge `prismatic-ai-without-a-steward-keeps-one-train-per-line`).
 
 ## What it does not do
 

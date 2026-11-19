@@ -19,6 +19,8 @@ related:
   - file:.ai/repo/rules/project/a-tuning-claim-needs-held-start-pairs.v1.md
   - file:.ai/repo/rules/project/battle-records-are-reproducible.v1.md
   - file:.ai/repo/features/lan-ai-battle.md
+  - file:.ai/repo/rules/project/prismatic-ai-passes-the-headless-fitness-check.v1.md
+  - file:.ai/repo/knowledge/curated/prismatic-ai-without-a-steward-keeps-one-train-per-line.md
   - file:tools/research/ai-battle/battle.py
 provenance:
   origin: authored
@@ -77,6 +79,10 @@ Rank company AIs in **headless free-for-all matches** run by `tools/research/ai-
   pair of builds.
 - The tournament adds no code under `src/` and no CMake option. The referee and the orchestrator
   are research tooling, labelled RESEARCH-ONLY (ADR 0004).
+- Determinism makes a short match a usable regression test. `battle.py fitness` runs the bot of
+  the working tree for six game years in seconds and is a gate step (rule
+  `project.prismatic-ai-passes-the-headless-fitness-check`, added when the battle showed
+  PrismaticAI's fleet collapsing; knowledge `prismatic-ai-without-a-steward-keeps-one-train-per-line`).
 - The browser dashboard is served by the orchestrator on loopback. It is not a page of the panel
   shell, so rule `project.web-ui-is-covered-end-to-end` (shell pages) does not cover it; its data
   path is covered by `tools/research/test_ai_battle.py`.

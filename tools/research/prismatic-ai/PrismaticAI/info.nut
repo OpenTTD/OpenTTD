@@ -230,6 +230,13 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_INGAME | CONFIG_BOOLEAN,
 		});
 		AddSetting({
+			name = "self_steward",
+			description = "1: with no steward's target for a rail line, the bot applies the Rhai steward's policy itself (lengthen, add a train, shrink, close) and reinvests idle money in more own lines beyond own_lines (steward.nut); 0: lines run what the external steward sets.",
+			min_value = 0, max_value = 1,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0,
+			flags = CONFIG_INGAME | CONFIG_BOOLEAN,
+		});
+		AddSetting({
 			name = "air_planes",
 			description = "Aircraft on the planner's air route.",
 			min_value = 1,

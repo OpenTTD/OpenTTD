@@ -130,8 +130,9 @@ function PrismaticAI::ReconcileLines(reserve) {
 	foreach (i, line in RAIL_LINES) {
 		if (line.closed) continue;
 		local slot = i + 1;
-		local want_trains = PrismaticAI.LineTarget(slot, "trains");
-		local want_wagons = PrismaticAI.LineTarget(slot, "wagons");
+		/* The external steward's setting, else the in-bot steward's target (steward.nut). */
+		local want_trains = this.EffectiveTarget(slot, "trains");
+		local want_wagons = this.EffectiveTarget(slot, "wagons");
 		if (want_trains == 0) { this.CloseLine(slot, line); continue; }
 		local trains = PrismaticAI.TrainsOf(line);
 		if (want_wagons > 0) {
