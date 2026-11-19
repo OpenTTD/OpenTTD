@@ -46,10 +46,10 @@
     },
     {
       "ai": "PrismaticAI",
-      "label": "PrismaticAI pre-champion",
+      "label": "PrismaticAI pre-elite",
       "source": "repository",
       "group": "PrismaticAI",
-      "settings": "aggressiveness=50,air_add_waiting=10,air_max_tiles=260,air_planes=2,air_routes_max=10,air_towns=25,invest_air_cap=10,invest_borrow=0,invest_min=150,invest_ppv_div=3,invest_road_cap=12,line_budget=80000"
+      "settings": "aggressiveness=20,air_level_max=15,air_max_tiles=420,cash_reserve=20000,catchment_stops=8,invest_air_cap=12,invest_borrow=1,invest_ppv_div=2,invest_road_cap=20,line_budget=90000,max_routes=4,rail_twin_max=0,self_steward=0"
     },
     {
       "ai": "AAAHogEx",
@@ -154,7 +154,7 @@
     "anchors": [
       "PrismaticAI",
       "PrismaticAI solo-max",
-      "PrismaticAI pre-champion"
+      "PrismaticAI pre-elite"
     ],
     "fixed": {
       "intercity": 1,
@@ -162,26 +162,26 @@
       "air_keep_last": 1
     },
     "start": {
-      "aggressiveness": 20,
-      "max_routes": 4,
-      "own_lines": 10,
-      "cash_reserve": 15000,
-      "line_budget": 90000,
+      "aggressiveness": 50,
+      "max_routes": 30,
+      "own_lines": 0,
+      "cash_reserve": 0,
+      "line_budget": 80000,
       "air_planes": 1,
       "air_routes_max": 3,
       "air_towns": 50,
-      "air_max_tiles": 420,
-      "air_level_max": 15,
+      "air_max_tiles": 480,
+      "air_level_max": 10,
       "invest_min": 50,
-      "invest_ppv_div": 2,
-      "invest_road_cap": 20,
-      "invest_air_cap": 12,
-      "catchment_stops": 8,
+      "invest_ppv_div": 5,
+      "invest_road_cap": 14,
+      "invest_air_cap": 6,
+      "catchment_stops": 2,
       "statue_money": 0,
       "air_full_load": 0,
-      "invest_borrow": 1,
+      "invest_borrow": 0,
       "air_add_waiting": 0,
-      "rail_twin_max": 0
+      "rail_twin_max": 2
     },
     "space": {
       "aggressiveness": [
@@ -294,6 +294,8 @@
     "base": "PrismaticAI",
     "min_pairs": 16,
     "min_win_share": 0.8,
-    "min_ratio": 1.05
+    "min_ratio": 1.05,
+    "min_pairs_ci": 30,
+    "min_ci_low": 1.0
   }
 }

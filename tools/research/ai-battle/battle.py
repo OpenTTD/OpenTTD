@@ -120,20 +120,46 @@ def paired_vs(matches: list[dict], base: str) -> list[dict]:
     out = []
     for k, ps in stats.items():
         ratios = [v / max(1, b) for v, b in ps]
+        logs = [math.log(max(1, v) / max(1, b)) for v, b in ps]
+        geo, ci_low = log_ratio_ci(logs, k)
         out.append({"contestant": label_of.get(k, k), "settings": k.split("|", 1)[1] if "|" in k else "",
                     "pairs": len(ps), "ratio": round(sum(ratios) / len(ratios), 3),
-                    "wins": sum(v > b for v, b in ps)})
+                    "wins": sum(v > b for v, b in ps), "geo": geo, "ci_low": ci_low})
     return sorted(out, key=lambda r: -r["ratio"])
 
 
+def log_ratio_ci(logs: list[float], key: str, resamples: int = 2000) -> tuple[float, float]:
+    """Geometric mean of the paired value ratios and the lower end of its 95% bootstrap interval
+    (percentile, deterministic: the resampling is seeded by the configuration). The log ratio,
+    not the win count, carries the size of each pair's difference: on 40 pairs the GA's elite
+    won 25 (62%) yet its interval was 1.03-1.21."""
+    if len(logs) < 2:
+        return (round(math.exp(logs[0]), 3) if logs else 1.0), 0.0
+    rng = random.Random(key)
+    n = len(logs)
+    means = sorted(sum(rng.choices(logs, k=n)) / n for _ in range(resamples))
+    return round(math.exp(sum(logs) / n), 3), round(math.exp(means[int(0.025 * resamples)]), 3)
+
+
 def promotions(matches: list[dict], rules: dict) -> list[dict]:
-    """Candidates for the bot's next default: a PrismaticAI configuration that beat the default on
-    at least `min_pairs` common seeds, winning at least `min_win_share` of them, with a mean value
-    ratio above `min_ratio`. Proposed, never applied: a default changes through a commit."""
+    """Candidates for the bot's next default: a PrismaticAI configuration paired with the default on
+    common seeds, with a mean value ratio above `min_ratio`, and either
+    - at least `min_pairs` pairs, winning at least `min_win_share` of them (a clear winner), or
+    - at least `min_pairs_ci` pairs, with the lower end of the 95% bootstrap interval of its
+      geometric mean ratio above `min_ci_low` (a steady gain in a noisy five-AI field, where an
+      80% win share is out of reach for a +10-15% configuration).
+    Proposed, never applied: a default changes through a commit."""
     base = rules.get("base", "PrismaticAI")
-    return [dict(r, base=base) for r in paired_vs(matches, base)
-            if r["contestant"].startswith("PrismaticAI") and r["pairs"] >= rules.get("min_pairs", 16)
-            and r["wins"] >= rules.get("min_win_share", 0.8) * r["pairs"] and r["ratio"] > rules.get("min_ratio", 1.05)]
+    out = []
+    for r in paired_vs(matches, base):
+        if not r["contestant"].startswith("PrismaticAI") or r["ratio"] <= rules.get("min_ratio", 1.05):
+            continue
+        clear = r["pairs"] >= rules.get("min_pairs", 16) and r["wins"] >= rules.get("min_win_share", 0.8) * r["pairs"]
+        steady = ("min_pairs_ci" in rules and r["pairs"] >= rules["min_pairs_ci"]
+                  and r["ci_low"] > rules.get("min_ci_low", 1.0))
+        if clear or steady:
+            out.append(dict(r, base=base, why="win share" if clear else "interval"))
+    return out
 
 
 def tuning_path(cfg: dict) -> Path:

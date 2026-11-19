@@ -309,6 +309,19 @@ class Promotion(unittest.TestCase):
         self.assertEqual(promo, ["PrismaticAI X"])                         # Y: +4% is below min_ratio
         self.assertEqual(battle.promotions(ms, {"min_pairs": 20}), [])
 
+    def test_a_steady_gain_is_promoted_by_its_interval_not_its_win_share(self):
+        # +15% on 2 of 3 seeds, -5% on the third: a 67% win share, below 0.8, but a steady gain.
+        vals = [115, 115, 95]
+        ms = [self.m(s, [("PrismaticAI", 100), ("PrismaticAI Z", vals[s % 3])]) for s in range(36)]
+        z = [r for r in battle.paired_vs(ms, "PrismaticAI") if r["contestant"] == "PrismaticAI Z"][0]
+        self.assertEqual((z["pairs"], z["wins"]), (36, 24))
+        self.assertGreater(z["ci_low"], 1.0)
+        rules = {"min_pairs": 16, "min_win_share": 0.8, "min_ratio": 1.05}
+        self.assertEqual(battle.promotions(ms, rules), [])
+        promo = battle.promotions(ms, dict(rules, min_pairs_ci=30, min_ci_low=1.0))
+        self.assertEqual([(p["contestant"], p["why"]) for p in promo], [("PrismaticAI Z", "interval")])
+        self.assertEqual(battle.promotions(ms[:24], dict(rules, min_pairs_ci=30)), [])   # too few pairs
+
     def test_a_configuration_is_pooled_across_its_labels(self):
         def g(seed, label, value, settings):
             return {"status": "done", "seed": seed, "started_at": seed, "edition": f"e{seed // 6}",

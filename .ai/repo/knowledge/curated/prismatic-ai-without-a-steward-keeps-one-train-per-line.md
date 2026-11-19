@@ -218,6 +218,23 @@ same replay survives at 452k with 46 vehicles. The default bot over 20 years:
 | 930967890 | 15.3M | 16.0M |
 | 31337 | 12.7M | 15.3M |
 
+**The GA's elite became the default by its interval (2026-11-19, later).** One configuration (as
+g54.0, g57.0 and g58.0) was paired with the default on 40 new maps:
+- geometric mean ratio 1.12, with a 95% bootstrap interval of 1.03-1.21 (t = 2.7),
+- 25 wins (62%).
+
+Its genes: aggressiveness 50, max_routes 30, no cash reserve, no borrowing for investment,
+catchment_stops 2, invest_air_cap 6, invest_road_cap 14, invest_ppv_div 5, rail_twin_max 2,
+air_level_max 10, air_max_tiles 480, the in-bot steward on.
+
+An 80% win share is out of reach for a steady +10-15% gain in a five-AI field, so promotion now
+also accepts at least 30 pairs whose interval starts above 1.0 (`battle.py promotions`).
+
+This deviates from the advisory rule `project.a-tuning-claim-needs-held-start-pairs`: no
+held-start duel was run. The held-start pairs of the earlier defaults could not resolve effects
+under ~20%, so the 40-seed paired battle is the stronger evidence here. The former defaults
+play on as the anchor `PrismaticAI pre-elite`, so the switch keeps being re-measured.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
