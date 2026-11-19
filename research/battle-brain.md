@@ -129,6 +129,9 @@ runner rebases rows from editions before `$BRAIN_BASELINE_SINCE` (default `ad811
 The rebase is a single measured factor, not a per-map one, and `target` in `brain.json` names it.
 The first run after the change had 206 rows and 26 distinct settings for 20 genes, so it still
 explores. On the next default change, set both variables to the new edition and measured ratio.
+A behaviour change that interacts with the genes cannot be rebased by one factor. One example is a
+fix that makes levelling cost more, which moves the best `air_level_max`. For such a change, set
+`BRAIN_TRAIN_SINCE` to the first edition with it, and older editions are left out entirely.
 
 ### Why a safe pick comes first
 
