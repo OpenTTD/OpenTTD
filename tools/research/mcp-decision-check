@@ -250,8 +250,8 @@ for ((i = 0; i < 40; i++)); do
   sleep 0.5
 done
 [[ -n "$OUT" && "$(jq -r '.inputs.live.directive_seq' <<< "$OUT")" == "$DSEQ" && "$(jq -r '.choice.outcome' <<< "$OUT")" == applied \
-   && "$(jq -r '.choice.steps[0].verdict' <<< "$OUT")" == VERIFIED_SUCCESS ]] \
-  && pass "the directive's outcome follows its approval: plan.directive_outcome for seq $DSEQ says applied (VERIFIED_SUCCESS, decision $(jq -r '.choice.steps[0].decision_id' <<< "$OUT"))" \
+   && "$(jq -r '.choice.steps[0].verdict' <<< "$OUT")" == VERIFIED_SUCCESS && "$(jq -r '.choice.steps[0].approved_by.channel' <<< "$OUT")" == auto-approve ]] \
+  && pass "the directive's outcome follows its approval: plan.directive_outcome for seq $DSEQ says applied (VERIFIED_SUCCESS, decision $(jq -r '.choice.steps[0].decision_id' <<< "$OUT"), approved by $(jq -r '.choice.steps[0].approved_by.channel' <<< "$OUT"))" \
   || fail "no applied plan.directive_outcome for plan.directive $DSEQ: $(head -c 300 <<< "$OUT")"
 
 # 3e. A pull with an idempotency key runs once (research/agent-loop.md step 3): its repeat answers

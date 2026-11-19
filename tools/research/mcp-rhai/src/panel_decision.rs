@@ -512,6 +512,35 @@ pub fn track(seq: u64, url: &str, steps: &[Value]) {
     }
 }
 
+/// How each approval the panel gave was given, by approval id: {channel, declared?}.
+fn approvals() -> &'static Mutex<BTreeMap<i64, Value>> {
+    static A: OnceLock<Mutex<BTreeMap<i64, Value>>> = OnceLock::new();
+    A.get_or_init(|| Mutex::new(BTreeMap::new()))
+}
+
+/// Remember how approval `id` was given (the last 512 kept).
+pub fn record_approval(id: i64, by: Value) {
+    if let Ok(mut a) = approvals().lock() {
+        a.insert(id, by);
+        while a.len() > 512 { let first = *a.keys().next().unwrap_or(&id); a.remove(&first); }
+    }
+}
+
+/// How approval `id` was given, if the panel gave it: {channel, declared?}.
+pub fn approver(id: i64) -> Option<Value> {
+    approvals().lock().ok()?.get(&id).cloned()
+}
+
+/// An approval's channel in words: `auto-approve (no person)` or `api, declared by <name>`.
+pub fn approval_label(by: &Value) -> String {
+    match (by.get("channel").and_then(Value::as_str), by.get("declared").and_then(Value::as_str)) {
+        (Some("auto-approve"), _) => "auto-approve, no person".into(),
+        (Some(c), Some(d)) => format!("{c}, declared by {d}"),
+        (Some(c), None) => format!("{c}, no approver declared"),
+        _ => "unknown channel".into(),
+    }
+}
+
 /// Apply one decision record of openttd://decisions to the open steps it belongs to (by its
 /// approval_id): the step takes the decision's id and, once final, its verdict's state.
 pub fn settle(open: &mut Open, decision: &Value) {
@@ -519,6 +548,8 @@ pub fn settle(open: &mut Open, decision: &Value) {
     for s in open.steps.iter_mut() {
         if s.get("approval_id").and_then(Value::as_u64) != Some(approval) { continue; }
         s["decision_id"] = decision.get("decision_id").cloned().unwrap_or(Value::Null);
+        // How its approval was given: by the panel (api or auto-approve), else outside it (the game's console).
+        s["approved_by"] = approver(approval as i64).unwrap_or_else(|| json!({"channel": "outside the panel"}));
         if let Some(state) = decision.get("verdict").and_then(Value::as_str).and_then(verdict_state) {
             s["state"] = json!(state);
             s["verdict"] = decision["verdict"].clone();
@@ -892,6 +923,24 @@ mod tests {
         let e = outcome_event(&d, false);
         assert_eq!((e["choice"]["outcome"].clone(), e["inputs"]["live"]["directive_seq"].clone()), (json!("partial"), json!(7)));
         assert_eq!(outcome_event(&d, true)["choice"]["outcome"], "expired");
+    }
+
+    #[test]
+    fn a_step_says_how_its_approval_was_given() {
+        record_approval(4401, json!({"channel": "auto-approve"}));
+        record_approval(4402, json!({"channel": "api", "declared": "korczis"}));
+        let pending = |id: u64| step(format!("company 1 s{id}=1"), Ok(json!({"status": "pending_approval", "approval_id": id})));
+        let mut d = Open { seq: 9, url: "u".into(), opened: std::time::Instant::now(), steps: vec![pending(4401), pending(4402), pending(4403)] };
+        for id in [4401, 4402, 4403] { settle(&mut d, &json!({"approval_id": id, "decision_id": 1, "verdict": "VERIFIED_SUCCESS"})); }
+        assert_eq!(d.steps[0]["approved_by"]["channel"], "auto-approve");
+        assert_eq!(d.steps[1]["approved_by"], json!({"channel": "api", "declared": "korczis"}));
+        assert_eq!(d.steps[2]["approved_by"]["channel"], "outside the panel");
+        assert_eq!(approval_label(&json!({"channel": "auto-approve"})), "auto-approve, no person");
+        assert_eq!(approval_label(&json!({"channel": "api", "declared": "k"})), "api, declared by k");
+        assert_eq!(approval_label(&json!({"channel": "api", "declared": null})), "api, no approver declared");
+        assert_eq!(approval_label(&json!({})), "unknown channel");
+        for n in 0..600 { record_approval(900_000 + n, json!({"channel": "api"})); }
+        assert!(approver(4401).is_none() && approver(900_599).is_some(), "the oldest go first");
     }
 
     #[test]

@@ -1106,12 +1106,18 @@ impl Game {
         Ok(out)
     }
 
-    pub fn approve(&self, id: i64) -> Result<Value, String> {
+    /// Approve pending request `id` in the game's console and resubmit it. `by` is the channel it
+    /// came through (`api`: POST /api/approve, with the approver it declares, if any;
+    /// `auto-approve`: the panel's switch, no person), recorded so every directive step can say
+    /// how its approval was given (research/agent-loop.md, Authorize). It is provenance, not
+    /// authentication: the loopback API checks no identity.
+    pub fn approve(&self, id: i64, by: Value) -> Result<Value, String> {
         let Some(info) = self.pending.lock().unwrap().remove(&id) else {
             return Ok(json!({"error": format!("no pending approval #{id} known to the panel")}));
         };
         self.console(&format!("prismatic_mcp approve {id}"))?;
-        self.event("operator", &format!("approved #{id} in the OpenTTD console"));
+        panel_decision::record_approval(id, by.clone());
+        self.event("operator", &format!("approved #{id} in the OpenTTD console ({})", panel_decision::approval_label(&by)));
         thread::sleep(Duration::from_millis(500));
         let tool = info["tool"].as_str().unwrap_or("");
         let out = self.tool(tool, info["args"].clone())?;
@@ -1135,7 +1141,7 @@ impl Game {
             if self.auto_approve.load(Ordering::SeqCst) {
                 let ids: Vec<i64> = self.pending.lock().unwrap().keys().copied().collect();
                 for id in ids {
-                    let _ = self.approve(id);
+                    let _ = self.approve(id, json!({"channel": "auto-approve"}));
                 }
             }
         }
@@ -2143,7 +2149,8 @@ fn h_pause(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
 }
 
 fn h_approve(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
-    ok(g.approve(py_int(&i.body["id"])?)?)
+    let declared = i.body.get("by").and_then(Value::as_str).map(|b| b.chars().take(64).collect::<String>());
+    ok(g.approve(py_int(&i.body["id"])?, json!({"channel": "api", "declared": declared}))?)
 }
 
 fn h_bots(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
@@ -2312,8 +2319,8 @@ pub fn routes() -> Vec<Route> {
           s(json!({"ids": {"type": "array", "items": {"type": "integer"}}, "wait": {"type": "number"}}), &["ids"]), h_content_download),
         r("POST", "/api/pause", "pause", "Pause or resume through the approval-gated MCP tool", true,
           s(json!({"pause": {"type": "boolean"}}), &["pause"]), h_pause),
-        r("POST", "/api/approve", "approve", "The operator's approval of a pending decision, then its resubmission", true,
-          s(json!({"id": {"type": "integer"}}), &["id"]), h_approve),
+        r("POST", "/api/approve", "approve", "The operator's approval of a pending decision, then its resubmission; `by` names the approver it declares (recorded as the approval's channel and declared name in plan.directive_outcome, not checked: the loopback API authenticates no one)", true,
+          s(json!({"id": {"type": "integer"}, "by": st()}), &["id"]), h_approve),
         r("POST", "/api/auto-approve", "autoApprove", "The owner's full-auto switch", false,
           s(json!({"on": {"type": "boolean"}}), &["on"]), h_auto),
         r("POST", "/api/start-ai", "startAi", "Start a company AI with an optional settings string", false,

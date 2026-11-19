@@ -447,7 +447,11 @@ A directive that waits stays open in the panel: each `decision.recorded` or `dec
 step's `approval_id` gives that step its decision and, once final, its verdict's state, and when no
 step waits any more the panel publishes `plan.directive_outcome` (`inputs.live.directive_seq` names
 the `plan.directive`). A denied approval leaves no decision record, so a directive with no verdict
-after an hour is closed as `expired`, never as applied.
+after an hour is closed as `expired`, never as applied. Each settled step says how its approval was
+given (`approved_by`): `{channel: "api", declared}` for `POST /api/approve` (`by` names the approver
+the caller declares; nothing checks it, the loopback API authenticates no one), `{channel:
+"auto-approve"}` for the panel's switch, where no person approved, or `{channel: "outside the
+panel"}` for one approved elsewhere, as in the game's console.
 
 `POST /api/decision/pull {url, key}` with an idempotency `key` (1-128 letters, digits and `_ . : -`)
 runs once per key (research/agent-loop.md step 3): its first completed answer is kept for a day,
