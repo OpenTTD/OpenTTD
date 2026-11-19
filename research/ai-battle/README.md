@@ -22,26 +22,26 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T083528-fb2ff9b1.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T083528-fb2ff9b1`](../results/battle-20261119T083528-fb2ff9b1.md) (0/0 replays identical).
+<!-- derived from research/results/battle-20261119T085213-10293148.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T085213-10293148`](../results/battle-20261119T085213-10293148.md) (0/0 replays identical).
 
-- Edition `fb2ff9b1ad1d6dce`: PrismaticAI and referee at `f26a6f7f02cc784419e6c7b01b9c560c9517113e`, base set `opengfx-8.0.tar`
+- Edition `1029314815784200`: PrismaticAI and referee at `6ddb95d60a488573a495daa98810141fd277c68f`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 45 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-mf26a6f7f02), `mbp2` (20261119-master-gdf1e05e7d8), `ubuntu` (20261119-master-gdf1e05e7d8)
+- 38 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-m1626720d25), `mbp2` (20261119-master-gdf1e05e7d8)
 - Replays: 0 of 0 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 45 | 45 | 180 | 4.0 | 1.0 | 100.1 M | 0 | 0 |
-| 2 | PrismaticAI GA g8.3 | 8 | 0 | 24 | 3.0 | 2.0 | 14.0 M | 0 | 0 |
-| 3 | PrismaticAI GA g8.brain0 | 8 | 0 | 23 | 2.875 | 2.12 | 10.7 M | 0 | 0 |
-| 4 | PrismaticAI GA g8.brain1 | 8 | 0 | 23 | 2.875 | 2.12 | 9.9 M | 0 | 0 |
-| 5 | PrismaticAI GA g8.0 | 7 | 0 | 20 | 2.857 | 2.14 | 11.8 M | 0 | 3 |
-| 6 | PrismaticAI | 6 | 0 | 17 | 2.833 | 2.17 | 9.4 M | 0 | 1 |
-| 7 | PrismaticAI solo-max | 8 | 0 | 20 | 2.5 | 2.5 | 5.9 M | 0 | 8 |
-| 8 | AdmiralAI | 45 | 0 | 92 | 2.044 | 2.96 | 6.1 M | 0 | 2 |
-| 9 | LuDiAI AfterFix | 45 | 0 | 37 | 0.822 | 4.18 | 1.4 M | 0 | 3 |
-| 10 | CivilAI | 45 | 0 | 14 | 0.311 | 4.69 | 670.2 k | 33 | 6 |
+| 1 | AAAHogEx | 38 | 38 | 152 | 4.0 | 1.0 | 92.5 M | 0 | 0 |
+| 2 | PrismaticAI GA g9.0 | 6 | 0 | 18 | 3.0 | 2.0 | 12.6 M | 0 | 1 |
+| 3 | PrismaticAI GA g9.3 | 6 | 0 | 18 | 3.0 | 2.0 | 11.8 M | 0 | 1 |
+| 4 | PrismaticAI GA g9.brain0 | 7 | 0 | 21 | 3.0 | 2.0 | 11.6 M | 0 | 0 |
+| 5 | PrismaticAI GA g9.brain1 | 7 | 0 | 19 | 2.714 | 2.29 | 8.6 M | 0 | 0 |
+| 6 | PrismaticAI | 6 | 0 | 16 | 2.667 | 2.33 | 8.3 M | 0 | 0 |
+| 7 | PrismaticAI solo-max | 6 | 0 | 13 | 2.167 | 2.83 | 6.1 M | 0 | 6 |
+| 8 | AdmiralAI | 38 | 0 | 81 | 2.132 | 2.87 | 6.0 M | 0 | 4 |
+| 9 | LuDiAI AfterFix | 38 | 0 | 31 | 0.816 | 4.18 | 1.4 M | 0 | 3 |
+| 10 | CivilAI | 38 | 0 | 11 | 0.289 | 4.71 | 608.3 k | 3730 | 8 |
 <!-- battle:end -->
 
 ## How it fits together
@@ -232,7 +232,8 @@ The first editions showed two failures. The battle now catches both by itself.
 - **Model-guided offspring.** Each new generation also takes the top `brain_offspring` proposals
   of `tools/research/battle-brain` (`~/ttd-battle/results/brain.json`, schema `battle-brain/v1`):
   an Axon/EXLA ensemble trained on every PrismaticAI result, scoring the gene space by UCB.
-  Proposals join as `g<gen>.brain<k>`, clamped into the space. A missing, stale (older than
+  Proposals join as `g<gen>.brainSafe` (best lower confidence bound) or `g<gen>.brainExplore`
+  (best upper bound), clamped into the space. A missing, stale (older than
   `brain_max_age_s`) or invalid file adds nothing.
 - **Candidates under test.** `PrismaticAI air10+catch` (`air_add_waiting=10,catchment_stops=8`,
   mechanisms learned from AAAHogEx) played in the group as an anchor. Paired on 36 common seeds

@@ -171,8 +171,7 @@
       "air_full_load": 0,
       "invest_borrow": 0,
       "air_add_waiting": 10,
-      "rail_twin_max": 0,
-      "rail_double": 0
+      "rail_twin_max": 0
     },
     "space": {
       "aggressiveness": [
@@ -269,11 +268,6 @@
         0,
         16,
         2
-      ],
-      "rail_double": [
-        0,
-        1,
-        1
       ]
     },
     "brain_offspring": 2,

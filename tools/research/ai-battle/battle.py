@@ -146,7 +146,7 @@ def brain_proposals(t: dict) -> list[dict]:
             kv = dict(x.split("=", 1) for x in str(p.get("settings", "")).split(",") if "=" in x)
             genes = {k: clamp_gene(t["space"], k, float(kv.get(k, t["start"].get(k, t["space"][k][0]))))
                      for k in t["space"]}
-            out.append(genes)
+            out.append((genes, str(p.get("kind", "")).capitalize()))
         return out
     except (ValueError, KeyError, TypeError):
         return []
@@ -197,11 +197,13 @@ def next_generation(t: dict, state: dict, scored: list[tuple[dict, dict]]) -> li
         return a if ranked.index(a) < ranked.index(b) else b
     # Model-guided offspring: the top proposals of tools/research/battle-brain (an Axon/EXLA ensemble
     # trained on every PrismaticAI result) join as children, clamped into the gene space.
-    for k, genes in enumerate(brain_proposals(t)):
+    # A proposal's "kind" (safe: best lower confidence bound; explore: best upper) names it.
+    for k, (genes, kind) in enumerate(brain_proposals(t)):
         if len(out) >= t["population"]:
             break
-        out.append(variant(t, gen, len(out), genes, [f"brain{k}"]))
-        out[-1]["label"] = f"{t['label_prefix']} g{gen}.brain{k}"
+        tag = f"brain{kind}" if kind else f"brain{k}"
+        out.append(variant(t, gen, len(out), genes, [tag]))
+        out[-1]["label"] = f"{t['label_prefix']} g{gen}.{tag}"
     while len(out) < t["population"]:
         p1, p2 = pick(), pick()
         child = {k: (p1["genes"] if rng.random() < 0.5 else p2["genes"]).get(k, t["start"].get(k))
