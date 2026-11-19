@@ -433,11 +433,21 @@ planner binary than the sibling `mcp-plan` (research-only: a planner under test,
 on purpose to prove the failure is reported).
 
 `plan.directive` says whether the contract accepted the directive (`accepted`) and gives each step
-the panel took with its own `state`: `applied`, `pending` (an approval-gated `set_setting` waits for
-the operator, who can still refuse it), `refused` (the game answered an error) or `error` (the call
-failed, so whether the game changed is not known). `outcome` sums them up (`applied`, `pending`,
-`partial`, `failed`, or `refused` for a directive outside the contract). Every step is tried and the
-event is published also when one fails; a failed call answers 502 with the lines so far.
+the panel took with its own `state`, read from the game's answer (research/agent-loop.md step 2):
+`applied` only when the game verified it (`VERIFIED_SUCCESS`), `pending` (an approval-gated
+`set_setting` waits for the operator, who can still refuse it), `executed` (it ran, its verdict not
+yet taken), `unverified` (`EXECUTED_UNVERIFIED`), `refused` (the game answered an error, rejected it
+or `VERIFIED_FAILURE`), `sent` (done without any verdict to read, as starting an AI through the
+console) or `error` (the call failed, so whether the game changed is not known). `outcome` sums them
+up (`applied`, `pending`, `unverified`, `sent`, `partial`, `failed`; `refused` for a directive outside
+the contract, `stale` for one not bound to a current observation). Every step is tried and the event
+is published also when one fails; a failed call answers 502 with the lines so far.
+
+A directive that waits stays open in the panel: each `decision.recorded` or `decision.updated` with a
+step's `approval_id` gives that step its decision and, once final, its verdict's state, and when no
+step waits any more the panel publishes `plan.directive_outcome` (`inputs.live.directive_seq` names
+the `plan.directive`). A denied approval leaves no decision record, so a directive with no verdict
+after an hour is closed as `expired`, never as applied.
 
 `GET /api/bus` answers its `kinds` also while the bus tap is down: 200, `endpoint` null and `error`
 saying why.

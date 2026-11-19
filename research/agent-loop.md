@@ -54,8 +54,8 @@ flowchart LR
 | Validate | IMPLEMENTED | the panel's contract checks (`panel_decision.rs` `directive`, `fit_of`), its freshness check before any step (`freshness`: observed during the pull, the echoed digest, companies unchanged, at most 31 game days old, an AI company; 409 otherwise) and the game's `ValidateAction` | the bridge does not validate a directive |
 | Authorize | PARTIAL | the game's approval: one-time, bound to the exact canonical arguments, with a TTL (`prismatic_mcp_server.cpp`, `prismatic_mcp_detail.h`) | who approved: the panel's `/api/approve` and its auto-approve need only loopback, and the bridge's `origin/main` approves its own request over rcon |
 | Execute | IMPLEMENTED | `Command<>::Post` on the game's main thread, through the command system | the checked-out bridge still sends `reload_ai` with the off-by-one id |
-| Verify | PARTIAL | the game's verdict, read back (`AIConfig::GetSetting` for `ai.set_setting`): `VERIFIED_SUCCESS`, `VERIFIED_FAILURE`, `EXECUTED_UNVERIFIED` | the panel counts a step as applied without reading that verdict (`panel_decision.rs` `state_of`) |
-| Record | PARTIAL | `plan.directive` on the ZeroMQ bus and in the DuckDB store, with its inputs, version and choice | the later approval of a pending directive is not recorded as its outcome; no idempotency key; the game's provenance lives in memory, capped |
+| Verify | IMPLEMENTED in the panel | the game's verdict, read back (`AIConfig::GetSetting` for `ai.set_setting`), and the panel's step states follow it (`panel_decision.rs` `state_of`, `verdict_state`): `applied` only for `VERIFIED_SUCCESS` | a step with no verdict to read (an AI started through the console) is `sent`, not verified |
+| Record | PARTIAL | `plan.directive` on the ZeroMQ bus and in the DuckDB store, with its inputs, observation, version and choice; a directive that waited is settled by `plan.directive_outcome` once the game's verdicts are in (or `expired` after an hour) | no idempotency key; the game's provenance lives in memory, capped |
 
 ## What the gaps mean
 
@@ -81,8 +81,12 @@ Each closes one row above without a new tracking record:
    (`stale`). `tools/research/mcp-decision-check`, extended with these cases: PASS 14/14 with
    `--no-plan-bot` (the decision path needs no plan); without it, FAIL `no bot` on a machine at load
    65, its planned bot not started within the 10-minute wait.
-2. The panel reads the game's verdict for every step (`state_of`) and records the outcome of a
-   pending directive when it is approved or denied.
+2. **Done** (2026-11-19): the panel reads the game's verdict for every step (`state_of`), and a
+   directive that waited is settled by `plan.directive_outcome` (`on_decision`, from each
+   `decision.*` event) or closed as `expired` when a denial leaves no verdict. Evidence: `cargo test
+   --release --bin mcp-panel` 168/168; `tools/research/mcp-decision-check --no-plan-bot` PASS 15/15
+   live: the approved directive's `plan.directive_outcome` says `applied`, `VERIFIED_SUCCESS`,
+   decision 1.
 3. A pull carries an idempotency key; a second pull with the same key answers the first result.
 4. The checked-out bridge is brought to its `origin/main`; its self-approval is replaced by the
    panel's operator approval or recorded as an explicit policy.

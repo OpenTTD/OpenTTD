@@ -1222,7 +1222,15 @@ impl Game {
                                             self.resource("openttd://decisions")) else { continue };
             let Some(cur) = Snapshot::of(&st, &cs, &ds) else { continue };
             for (kind, data) in derive_game_events(prev.as_ref(), &cur) {
+                // A decision record may settle a directive that waited (research/agent-loop.md step 2).
+                let settles = kind.starts_with("decision.").then(|| data.clone());
                 self.bus.publish(kind, data);
+                for outcome in panel_decision::on_decision(settles.as_ref(), Instant::now()) {
+                    self.plan("plan.directive_outcome", outcome);
+                }
+            }
+            for outcome in panel_decision::on_decision(None, Instant::now()) {
+                self.plan("plan.directive_outcome", outcome);
             }
             if let Some(sample) = sample_of(&st, &cs) { self.record_sample(sample); }
             prev = Some(cur);

@@ -273,7 +273,8 @@ pub const HAND_MODEL: &str = "mean_growth = aggressiveness * 0.08, std_growth = 
 /// The read-only statement of `company`'s recorded samples in every run of the store: the first
 /// sample of each game month (so a long store stays under /api/db/query's cap), each with its run
 /// (`run_ms`, the run's start, and `seed`) and the aggressiveness the latest plan.directive of that
-/// run had set for the company by then, with its outcome (`applied`, or `pending` approval); null
+/// run had set for the company by then, with its outcome when it was published (`applied`, `pending`
+/// approval or verdict, `unverified`, or `sent`; plan.directive_outcome tells how a pending one ended); null
 /// before any, which is the AI's own default. A company id is reused across runs, so a fit reads
 /// the rows whose aggressiveness is known.
 pub fn samples_sql(company: i64) -> String {
@@ -286,7 +287,7 @@ a AS (SELECT e.instance, r.started_ms AS run_ms, e.ts_ms, \
 TRY_CAST(json_extract_string(e.data, '$.choice.settings.aggressiveness') AS BIGINT) AS aggressiveness, \
 json_extract_string(e.data, '$.choice.outcome') AS directive_outcome \
 FROM events e JOIN r ON r.instance = e.instance AND e.ts_ms >= r.started_ms AND (r.until_ms IS NULL OR e.ts_ms < r.until_ms) \
-WHERE e.kind = 'plan.directive' AND json_extract_string(e.data, '$.choice.outcome') IN ('applied', 'pending') \
+WHERE e.kind = 'plan.directive' AND json_extract_string(e.data, '$.choice.outcome') IN ('applied', 'pending', 'unverified', 'sent') \
 AND TRY_CAST(json_extract_string(e.data, '$.choice.company_id') AS BIGINT) = {company} \
 AND json_extract_string(e.data, '$.choice.settings.aggressiveness') IS NOT NULL) \
 SELECT s.instance, s.seed, s.run_ms, s.game_tick, s.game_date, s.value, s.money, s.loan, s.net, s.vehicles, a.aggressiveness, a.directive_outcome \
@@ -423,15 +424,33 @@ fn line(what: &str, answer: &Value) -> String {
     }
 }
 
-/// The state one step of applying a directive reached: `applied`, `pending` (it waits for the
-/// operator's approval, who may still refuse it), `refused` (the game answered an error) or `error`
-/// (the call itself failed, so whether the game changed is not known).
+/// The state one step of applying a directive reached, read from the game's own answer
+/// (research/agent-loop.md step 2): `pending` (it waits for the operator's approval, who may still
+/// refuse it), `refused` (the game answered an error or rejected it), `error` (the call itself
+/// failed, so whether the game changed is not known), and for a call the game ran, its verdict:
+/// `applied` only for VERIFIED_SUCCESS, `refused` for VERIFIED_FAILURE, `unverified` for
+/// EXECUTED_UNVERIFIED, `executed` while it is still PENDING_OBSERVATION. An answer with no verdict
+/// at all (starting an AI goes through the console, not a command) is `sent`: done, not verified.
 pub fn state_of(answer: &Result<Value, String>) -> &'static str {
     match answer {
         Err(_) => "error",
         Ok(a) if a.get("status").and_then(Value::as_str) == Some("pending_approval") => "pending",
-        Ok(a) if a.get("error").is_some_and(|e| !e.is_null()) || a.get("ok") == Some(&json!(false)) => "refused",
-        Ok(_) => "applied",
+        Ok(a) if a.get("error").is_some_and(|e| !e.is_null()) || a.get("ok") == Some(&json!(false))
+            || a.get("status").and_then(Value::as_str) == Some("rejected") => "refused",
+        Ok(a) => match a.get("verdict").and_then(Value::as_str) {
+            Some(v) => verdict_state(v).unwrap_or("executed"),
+            None => "sent",
+        },
+    }
+}
+
+/// The state a final verdict of the game gives a step; None while it is PENDING_OBSERVATION.
+pub fn verdict_state(verdict: &str) -> Option<&'static str> {
+    match verdict {
+        "VERIFIED_SUCCESS" => Some("applied"),
+        "VERIFIED_FAILURE" => Some("refused"),
+        "EXECUTED_UNVERIFIED" => Some("unverified"),
+        _ => None,
     }
 }
 
@@ -446,18 +465,91 @@ pub fn step(what: String, answer: Result<Value, String>) -> Value {
     }
 }
 
-/// The directive as a whole from its steps: `applied` when every step was, `pending` when the rest
-/// wait for approval, `failed` when none got through, `partial` otherwise.
+/// The directive as a whole from its steps: `applied` only when the game verified every step,
+/// `failed` when none got through, `partial` when some did not, `pending` while a step waits for
+/// approval or for its verdict, `unverified` when a step ran but the game could not verify it, and
+/// `sent` when a step was done without any verdict to read.
 pub fn outcome(steps: &[Value]) -> &'static str {
     let n = |s: &str| steps.iter().filter(|x| x["state"] == json!(s)).count();
     let bad = n("error") + n("refused");
     match () {
         _ if steps.is_empty() => "nothing",
-        _ if n("applied") == steps.len() => "applied",
         _ if bad == steps.len() => "failed",
         _ if bad > 0 => "partial",
-        _ => "pending",
+        _ if n("pending") + n("executed") > 0 => "pending",
+        _ if n("unverified") > 0 => "unverified",
+        _ if n("sent") > 0 => "sent",
+        _ => "applied",
     }
+}
+
+// ---------------------------------------------------------------------- outcome of a pending directive (step 2)
+
+/// A directive whose steps still wait for an approval or a verdict.
+#[derive(Clone, Debug)]
+pub struct Open {
+    pub seq: u64,
+    pub url: String,
+    pub opened: std::time::Instant,
+    pub steps: Vec<Value>,
+}
+
+/// How long an open directive waits for its verdicts before its outcome is recorded as `expired`
+/// (a denied approval leaves no decision record, so its step never gets a verdict).
+pub const OUTCOME_WAIT: Duration = Duration::from_secs(3600);
+
+fn open_directives() -> &'static Mutex<Vec<Open>> {
+    static O: OnceLock<Mutex<Vec<Open>>> = OnceLock::new();
+    O.get_or_init(|| Mutex::new(Vec::new()))
+}
+
+/// Keep a published directive (plan.directive at `seq`) open while any of its steps waits.
+pub fn track(seq: u64, url: &str, steps: &[Value]) {
+    if steps.iter().any(|s| s["state"] == "pending" || s["state"] == "executed") {
+        if let Ok(mut o) = open_directives().lock() {
+            o.push(Open { seq, url: url.to_string(), opened: std::time::Instant::now(), steps: steps.to_vec() });
+        }
+    }
+}
+
+/// Apply one decision record of openttd://decisions to the open steps it belongs to (by its
+/// approval_id): the step takes the decision's id and, once final, its verdict's state.
+pub fn settle(open: &mut Open, decision: &Value) {
+    let Some(approval) = decision.get("approval_id").and_then(Value::as_u64) else { return };
+    for s in open.steps.iter_mut() {
+        if s.get("approval_id").and_then(Value::as_u64) != Some(approval) { continue; }
+        s["decision_id"] = decision.get("decision_id").cloned().unwrap_or(Value::Null);
+        if let Some(state) = decision.get("verdict").and_then(Value::as_str).and_then(verdict_state) {
+            s["state"] = json!(state);
+            s["verdict"] = decision["verdict"].clone();
+        } else {
+            s["state"] = json!("executed");
+        }
+    }
+}
+
+/// The data of plan.directive_outcome: the directive it settles and each step's final state.
+pub fn outcome_event(open: &Open, expired: bool) -> Value {
+    let result = if expired { "expired".to_string() } else { outcome(&open.steps).to_string() };
+    panel_events::plan("prismatic.directive_outcome", json!({"directive_seq": open.seq}),
+                       json!({"url": open.url, "directive_seq": open.seq}), &panel_events::Stored::Fallback(String::new()),
+                       json!({"outcome": result, "steps": open.steps,
+                              "why": if expired { "no verdict within an hour: denied, expired or never resubmitted" } else { "every step has the game's verdict" }}))
+}
+
+/// A decision record seen (decision.recorded or decision.updated): the outcome of every open
+/// directive it completes, and of every one that waited longer than OUTCOME_WAIT.
+pub fn on_decision(decision: Option<&Value>, now: std::time::Instant) -> Vec<Value> {
+    let Ok(mut o) = open_directives().lock() else { return Vec::new() };
+    let mut out = Vec::new();
+    o.retain_mut(|d| {
+        if let Some(dec) = decision { settle(d, dec); }
+        let waiting = d.steps.iter().any(|s| s["state"] == "pending" || s["state"] == "executed");
+        if !waiting { out.push(outcome_event(d, false)); return false; }
+        if now.duration_since(d.opened) > OUTCOME_WAIT { out.push(outcome_event(d, true)); return false; }
+        true
+    });
+    out
 }
 
 /// Pull a directive from `url` and apply it: the DecisionPullResult, with `applied_rcon` null when
@@ -518,7 +610,8 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
     g.event("ai", &format!("Prismatic decided ({url}): {}", lines.join("; ")));
     let mut data = directive_event(url, &raw, Ok(&d), &ignored, &steps);
     data["inputs"]["live"]["observation"] = observed.unwrap_or(Value::Null);
-    g.plan("plan.directive", data);
+    // A step that waits keeps the directive open: its outcome follows as plan.directive_outcome.
+    if let Some(seq) = g.plan("plan.directive", data) { track(seq, url, &steps); }
     let errors: Vec<&str> = steps.iter().filter(|s| s["state"] == json!("error")).filter_map(|s| s["error"].as_str()).collect();
     if !errors.is_empty() {
         return Ok((502, json!({"error": format!("applying the directive failed: {}", errors.join("; ")), "called_url": url,
@@ -655,7 +748,8 @@ mod tests {
 
     #[test]
     fn a_directive_is_applied_only_when_every_step_was() {
-        let ok = || step("start PrismaticAI".into(), Ok(json!({"status": "started", "via": "console"})));
+        let ok = || step("company 1 a=1".into(), Ok(json!({"status": "executed", "approval_id": 9, "verdict": "VERIFIED_SUCCESS"})));
+        let sent = || step("start PrismaticAI".into(), Ok(json!({"status": "started", "via": "console"})));
         let pending = || step("company 1 a=1".into(), Ok(json!({"status": "pending_approval", "approval_id": 9})));
         let refused = || step("company 1 a=1".into(), Ok(json!({"error": "this game binary has no openttd.ai.set_setting"})));
         let failed = || step("company 1 a=1".into(), Err("timeout".into()));
@@ -665,6 +759,51 @@ mod tests {
         assert_eq!(outcome(&[pending(), refused()]), "partial");
         assert_eq!(outcome(&[refused(), failed()]), "failed");
         assert_eq!(outcome(&[]), "nothing");
+        assert_eq!(outcome(&[sent()]), "sent", "a console start has no verdict: sent, not applied");
+        assert_eq!(outcome(&[ok(), sent()]), "sent");
+        for (answer, state) in [(json!({"status": "executed", "verdict": "VERIFIED_FAILURE"}), "refused"),
+                                (json!({"status": "executed", "verdict": "EXECUTED_UNVERIFIED"}), "unverified"),
+                                (json!({"status": "executed", "verdict": "PENDING_OBSERVATION"}), "executed"),
+                                (json!({"status": "rejected", "verdict": "PENDING_OBSERVATION"}), "refused")] {
+            assert_eq!(state_of(&Ok(answer.clone())), state, "{answer}");
+        }
+        let unverified = || step("x".into(), Ok(json!({"status": "executed", "verdict": "EXECUTED_UNVERIFIED"})));
+        let executed = || step("x".into(), Ok(json!({"status": "executed", "verdict": "PENDING_OBSERVATION"})));
+        assert_eq!(outcome(&[ok(), unverified()]), "unverified");
+        assert_eq!(outcome(&[ok(), executed()]), "pending");
+        assert_eq!(verdict_state("PENDING_OBSERVATION"), None);
+    }
+
+    #[test]
+    fn a_pending_directive_is_settled_by_the_games_verdicts_or_expires() {
+        let pending = |id: u64| step(format!("company 1 s{id}=1"), Ok(json!({"status": "pending_approval", "approval_id": id})));
+        let mut d = Open { seq: 7, url: "u".into(), opened: std::time::Instant::now(), steps: vec![pending(11), pending(12)] };
+        settle(&mut d, &json!({"approval_id": 11, "decision_id": 3, "verdict": "PENDING_OBSERVATION"}));
+        assert_eq!((d.steps[0]["state"].clone(), d.steps[0]["decision_id"].clone()), (json!("executed"), json!(3)));
+        settle(&mut d, &json!({"approval_id": 11, "decision_id": 3, "verdict": "VERIFIED_SUCCESS"}));
+        settle(&mut d, &json!({"approval_id": 99, "verdict": "VERIFIED_FAILURE"}));
+        settle(&mut d, &json!({"decision_id": 1}));
+        assert_eq!((d.steps[0]["state"].clone(), d.steps[1]["state"].clone()), (json!("applied"), json!("pending")));
+        settle(&mut d, &json!({"approval_id": 12, "decision_id": 4, "verdict": "VERIFIED_FAILURE"}));
+        let e = outcome_event(&d, false);
+        assert_eq!((e["choice"]["outcome"].clone(), e["inputs"]["live"]["directive_seq"].clone()), (json!("partial"), json!(7)));
+        assert_eq!(outcome_event(&d, true)["choice"]["outcome"], "expired");
+    }
+
+    #[test]
+    fn open_directives_close_on_their_last_verdict_or_after_the_wait() {
+        let pending = |id: u64| step(format!("company 1 s{id}=1"), Ok(json!({"status": "pending_approval", "approval_id": id})));
+        track(100, "u", &[pending(901)]);
+        track(101, "u", &[pending(902)]);
+        track(102, "u", &[step("x".into(), Ok(json!({"status": "executed", "verdict": "VERIFIED_SUCCESS"})))]);
+        let now = std::time::Instant::now();
+        let done = on_decision(Some(&json!({"approval_id": 901, "decision_id": 5, "verdict": "VERIFIED_SUCCESS"})), now);
+        let mine: Vec<&Value> = done.iter().filter(|e| e["inputs"]["live"]["directive_seq"] == 100).collect();
+        assert_eq!(mine.len(), 1);
+        assert_eq!(mine[0]["choice"]["outcome"], "applied");
+        assert!(done.iter().all(|e| e["inputs"]["live"]["directive_seq"] != 102), "a directive with nothing waiting is never tracked");
+        let later = on_decision(None, now + OUTCOME_WAIT + Duration::from_secs(1));
+        assert!(later.iter().any(|e| e["inputs"]["live"]["directive_seq"] == 101 && e["choice"]["outcome"] == "expired"));
     }
 
     #[test]
@@ -758,7 +897,7 @@ mod tests {
                          "engine": "PrismaticMonteCarlo.simulate/3", "fit": a_fit()});
         let (d, ignored) = directive(&raw).unwrap();
         assert_eq!(ignored, vec!["engine"]);
-        let steps = vec![step("company 1 aggressiveness=50".into(), Ok(json!({"status": "set"})))];
+        let steps = vec![step("company 1 aggressiveness=50".into(), Ok(json!({"status": "executed", "verdict": "VERIFIED_SUCCESS"})))];
         let e = directive_event("http://x/decision", &raw, Ok(&d), &ignored, &steps);
         assert_eq!(e["inputs"]["stored"], json!({"query": samples_sql(1), "rows": 40, "fit": a_fit(),
                                                   "query_url": "http://127.0.0.1:8800/api/db/query", "runs": 2}));
@@ -825,7 +964,7 @@ mod tests {
         // and one for another company.
         let event = |seq: i64, ts: i64, raw: Value, applied: bool| {
             let (d, ignored) = directive(&raw).unwrap();
-            let answer = if applied { Ok(json!({"status": "set"})) } else { Ok(json!({"error": "refused"})) };
+            let answer = if applied { Ok(json!({"status": "executed", "verdict": "VERIFIED_SUCCESS"})) } else { Ok(json!({"error": "refused"})) };
             let steps = vec![step("set".into(), answer)];
             envelope(&json!({"seq": seq, "kind": "plan.directive", "data": directive_event("u", &raw, Ok(&d), &ignored, &steps)}),
                      "panel-t", &Value::Null, None, ts, None)
