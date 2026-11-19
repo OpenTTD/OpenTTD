@@ -21,3 +21,5 @@ trust:
   allow:
     # 5d81b5c9 — Tomass-MacBook-Pro.local (macos aarch64)
     - "3f7b357805aa15ecdb3c1ace7e7ac02de263e3d0def8aafda9ad280d3af7c813"
+    # 641bdb94 — Tomass-MacBook-Pro-2.local (macos aarch64)
+    - "946e8aa593fe16c58d5eb43493338810896cd10bc6bdd44ffa8e9bfebd37ca1f"
