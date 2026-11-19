@@ -211,7 +211,7 @@ bot and the human-motion player to the same rule.
 | `mcp-hub intent-check [--hub URL] ["<sentence>"]...` | the owner's requests in plain language through the hub: every instance with an `/intent` operation (openttd-80's `/api/intent`, I0069) answers each sentence (the owner's own examples by default, Czech with and without diacritics and English) with an action, its candidates, and a plan to build; a sentence whose subjects one instance resolves and another does not is a WARN on the second (a fallback answer, advisory; derived across the instances, I0078) |
 | `tools/research/mcp-dup-check` | against whatever runs: no instance holds a duplicate pair; each pair named with both stations and the distance |
 | `tools/research/mcp-cluster-check [--servers N]` | discovery for a cluster: N servers and N null-driver clients, each announcing its MCP; the hub lists all 2N, a SIGTERM withdraws a record, and a SIGKILL's stale record is dropped |
-| `tools/research/mcp-hub-check` | against whatever runs: every instance discovered, every read-only operation that needs no input called through the WebSocket, one event streamed; a 503 ("no GUI client attached") is counted as skipped |
+| `tools/research/mcp-hub-check` | against whatever runs: every instance discovered, every read-only operation that needs no input (no required query parameter, no required body field, as the panel's `/openapi.json` declares them) called through the WebSocket, one event streamed; a 503 ("no GUI client attached") is counted as skipped |
 
 ## Limits
 

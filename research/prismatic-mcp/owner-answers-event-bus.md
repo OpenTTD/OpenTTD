@@ -26,3 +26,21 @@ Answer, all four options:
 - "Majordomus blackboard too": also forward game events (or a digest) to the Majordomus mesh blackboard,
   so every agent session sees them there, not only on ZeroMQ.
 - "My replies are not visible": keep each reply to a few lines.
+
+## 2026-11-18T14:50 local, session cd8d20a8-9d79-4332-b63e-b2592beb2cbd
+
+Question: "The real-world scenario slice (session openttd-07) uses Open-Meteo for elevation (Copernicus
+GLO-90 behind a non-commercial API, sampled at about 642 m) instead of the source policy's Copernicus
+GLO-30 from AWS (30 m, no account, open licence). Which should it use?"
+
+Answer: "Copernicus GLO-30 (Recommended)": switch to GLO-30 range-read from the AWS open-data bucket;
+finer terrain, no non-commercial term.
+
+Question: "Two Python server.py panels from /Users/korczis/dev/openTTD have run for 2 days on ports
+59186 and 59188 (PIDs 63228, 63216). They answer 502 and keep I0084 from passing its hub check. I did
+not start them. May I stop them?"
+
+Answer: "Stop them (Recommended)": send them SIGTERM and remove their stale registry records, then rerun
+the hub check for I0084.
+
+Done by the lead at about 14:55 local: both panels stopped; no registry record referenced them.
