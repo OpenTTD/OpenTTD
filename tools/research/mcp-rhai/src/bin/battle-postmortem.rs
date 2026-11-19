@@ -19,9 +19,17 @@
 //!                     ~/ttd-battle/results/postmortem-<edition>.json/.md and the DuckDB tables, and
 //!                     print one summary line (what the dashboard and an agent's monitor read).
 //!                     It never writes under research/: a committed record is a deliberate run.
+//!                     Each new summary, its top causes and proposals are also announced on the
+//!                     Majordomus board (named claims battle.postmortem.*), so every session on the
+//!                     mesh reads where PrismaticAI stands without asking; --no-board turns it off,
+//!                     $MCP_BOARD_DRY prints instead.
 //! Exit codes: 0 ok, 2 usage, 11 a derived file is stale, 12 no data for the edition.
 #[path = "../postmortem.rs"]
 mod postmortem;
+// watch never ends, so it never closes its board session (the board keeps the last posts).
+#[allow(dead_code)]
+#[path = "../board.rs"]
+mod board;
 
 use rayon::prelude::*;
 use serde_json::{json, Value};
@@ -51,6 +59,7 @@ struct Args {
     matches: Option<PathBuf>,
     json: bool,
     every: u64,
+    board: bool,
 }
 
 fn usage(msg: &str) -> ! {
@@ -71,6 +80,7 @@ fn args() -> Args {
         matches: None,
         json: false,
         every: 60,
+        board: true,
     };
     let mut it = std::env::args().skip(1);
     while let Some(x) = it.next() {
@@ -87,6 +97,7 @@ fn args() -> Args {
             "--no-duckdb" => a.duckdb = None,
             "--matches" => a.matches = Some(PathBuf::from(val("--matches"))),
             "--json" => a.json = true,
+            "--no-board" => a.board = false,
             "-h" | "--help" => usage("help"),
             other => usage(&format!("unknown argument {other}")),
         }
@@ -282,6 +293,8 @@ fn watch(a: &Args) -> ! {
     let cfg_path = a.config.clone();
     let local = a.db.parent().map(Path::to_path_buf).unwrap_or_else(|| home().join("ttd-battle/results"));
     let mut seen: BTreeMap<String, i64> = BTreeMap::new();
+    let dry = std::env::var("MCP_BOARD_DRY").is_ok_and(|v| !v.is_empty());
+    let mut brd: Option<board::Board> = None;
     eprintln!("battle-postmortem watch: {} every {}s, writing {}", a.db.display(), a.every, local.display());
     loop {
         if let Some(ed) = editions(&a.db).ok().and_then(|es| es.into_iter().next()) {
@@ -299,15 +312,39 @@ fn watch(a: &Args) -> ! {
                             .map(|l| format!("{} {}/{}", l["key"].as_str().unwrap_or(""), l["last_place"], l["matches"])).collect();
                         let best = pm["contestants"].as_array().and_then(|c| c.iter().find(|c| c["prismatic"].as_bool() == Some(true)))
                             .map(|c| format!("{} avg_rank {}", c["key"].as_str().unwrap_or(""), c["avg_rank"])).unwrap_or_default();
-                        println!("postmortem {ed}: {n} finished; best PrismaticAI: {best}; PrismaticAI last: {}{}",
+                        let line = format!("postmortem {ed}: {n} finished; best PrismaticAI: {best}; PrismaticAI last: {}{}",
                             if last.is_empty() { "none".into() } else { last.join(", ") }, if ok { "" } else { " (files not written)" });
+                        println!("{line}");
+                        if a.board {
+                            if brd.is_none() {
+                                match if dry { Ok("(dry run)".to_string()) } else { board::majordomus_url(None, None) } {
+                                    Ok(url) => brd = Some(board::Board::new(&url, dry, "battle-postmortem", "LAN battle post-mortem")),
+                                    Err(err) => eprintln!("board: {err}"),
+                                }
+                            }
+                            if let Some(b) = brd.as_mut() {
+                                let _ = b.announce("battle.postmortem.summary", &board::clip(&line, 480));
+                                let causes: Vec<String> = pm["contestants"].as_array().into_iter().flatten()
+                                    .filter(|c| c["prismatic"].as_bool() == Some(true))
+                                    .map(|c| format!("{}: {}", c["key"].as_str().unwrap_or(""),
+                                        c["causes"].as_array().into_iter().flatten().take(4)
+                                            .map(|x| format!("{} {}", x["cause"].as_str().unwrap_or(""), x["matches"])).collect::<Vec<_>>().join(", ")))
+                                    .collect();
+                                let _ = b.announce("battle.postmortem.causes", &board::clip(&causes.join(" | "), 480));
+                                let props: Vec<String> = pm["proposals"].as_array().into_iter().flatten()
+                                    .map(|p| format!("{} -> {}", p["for"].as_str().unwrap_or(""), p["settings"].as_str().unwrap_or(""))).collect();
+                                let props = if props.is_empty() { "none".to_string() } else { props.join(" | ") };
+                                let _ = b.announce("battle.postmortem.proposals", &board::clip(&props, 480));
+                            }
+                        }
                         seen.insert(ed, n);
                     }
                     Err(err) => eprintln!("battle-postmortem watch: {err}"),
                 }
             }
         }
-        std::thread::sleep(std::time::Duration::from_secs(a.every.max(5)));
+        if let Some(b) = brd.as_mut() { b.keep_alive(); }
+        std::thread::sleep(std::time::Duration::from_secs(a.every.max(5)).min(board::PING));
     }
 }
 

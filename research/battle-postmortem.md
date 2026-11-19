@@ -38,6 +38,13 @@ matches than at its last look, it analyses the edition again. It writes
 postmortem 91a726628e57de21: 12 finished; best PrismaticAI: PrismaticAI avg_rank 2.1; PrismaticAI last: none
 ```
 
+The same summary, each PrismaticAI contestant's top causes and the proposals are announced on the
+Majordomus board as the named claims `battle.postmortem.summary`, `battle.postmortem.causes` and
+`battle.postmortem.proposals`, under the peer `battle-postmortem` (`src/board.rs`; the server of this
+checkout, or `$MAJORDOMUS_URL`). Every session on the mesh reads where PrismaticAI stands from the
+board, and the board keeps the last posts after `watch` stops. `--no-board` turns this off, and
+`MCP_BOARD_DRY=1` prints the announcements instead.
+
 That line is what a monitor reads: an agent session's `Monitor`, or a shell loop. `watch` never
 writes under `research/`. A committed record comes only from a deliberate
 `battle-postmortem --edition <E>` once the round is over, together with the battle's own record.
