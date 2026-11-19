@@ -212,9 +212,16 @@ if [[ -z "${PRISMATIC_DECISION_URL:-}" ]]; then
       && pass "a directive $([[ $mode == blind ]] && echo 'decided without observing' || echo 'bound to another observation') is refused (409), nothing applied" \
       || fail "the $mode directive answered $code: $(head -c 300 "$TMP/r409.json")"
   done
-  [[ "$(jq -r '.choice.outcome' <<< "$(last_directive 0)")" == stale ]] \
-    && pass "the refusal is in the store as plan.directive with outcome stale" \
-    || fail "the refused directive's plan.directive: $(last_directive 0 | head -c 300)"
+  # The store commits in batches: wait until both refusals are in it, then read them.
+  STALE=0
+  for ((i = 0; i < 20; i++)); do
+    STALE="$(db_query "SELECT count(*) FROM events WHERE kind = 'plan.directive' AND json_extract_string(data, '\$.choice.outcome') = 'stale'" | jq -r '.rows[0][0] // 0')"
+    [[ "$STALE" -ge 2 ]] && break
+    sleep 0.5
+  done
+  [[ "$STALE" -ge 2 ]] \
+    && pass "both refusals are in the store as plan.directive with outcome stale" \
+    || fail "the store holds $STALE stale plan.directive events, expected 2"
   echo observe > "$TMP/mode"
 fi
 SEQ0="$(directive_seq)"
@@ -246,6 +253,24 @@ done
    && "$(jq -r '.choice.steps[0].verdict' <<< "$OUT")" == VERIFIED_SUCCESS ]] \
   && pass "the directive's outcome follows its approval: plan.directive_outcome for seq $DSEQ says applied (VERIFIED_SUCCESS, decision $(jq -r '.choice.steps[0].decision_id' <<< "$OUT"))" \
   || fail "no applied plan.directive_outcome for plan.directive $DSEQ: $(head -c 300 <<< "$OUT")"
+
+# 3e. A pull with an idempotency key runs once (research/agent-loop.md step 3): its repeat answers
+#     the first result again, replayed, and the store holds no second plan.directive.
+if [[ -z "${PRISMATIC_DECISION_URL:-}" ]]; then
+  KEY="decision-check-$$"
+  jq --arg s "aggressiveness=50" '.settings = $s | .chosen_aggressiveness = 50' "$TMP/directive.json" > "$TMP/d2.json" && cp "$TMP/d2.json" "$TMP/directive.json"
+  K1="$(curl -s -m 90 -X POST -H 'Content-Type: application/json' -d "{\"url\": \"$STAND\", \"key\": \"$KEY\"}" "$URL/api/decision/pull")"
+  keyed_count() { db_query "SELECT count(*) FROM events WHERE kind = 'plan.directive' AND json_extract_string(data, '\$.inputs.live.key') = '$KEY'" | jq -r '.rows[0][0] // 0'; }
+  # The store commits in batches: wait for the first pull's record before repeating.
+  for ((i = 0; i < 20; i++)); do [[ "$(keyed_count)" -ge 1 ]] && break; sleep 0.5; done
+  K2="$(curl -s -m 90 -X POST -H 'Content-Type: application/json' -d "{\"url\": \"$STAND\", \"key\": \"$KEY\"}" "$URL/api/decision/pull")"
+  sleep 2
+  KN="$(keyed_count)"
+  [[ "$(jq -r '.replayed // false' <<< "$K1")" == false && "$(jq -r '.replayed' <<< "$K2")" == true \
+     && "$(jq -c '.applied_rcon.lines' <<< "$K1")" == "$(jq -c '.applied_rcon.lines' <<< "$K2")" && "$KN" == 1 ]] \
+    && pass "a keyed pull runs once: its repeat is replayed with the same lines, and the store holds one plan.directive with the key" \
+    || fail "keyed pull: first $(head -c 200 <<< "$K1"), repeat $(head -c 200 <<< "$K2"), plan.directive with the key: $KN"
+fi
 
 # 3b. What the directive was fitted from, as the store holds its plan.directive.
 pd="$(last_directive "$SEQ0")"

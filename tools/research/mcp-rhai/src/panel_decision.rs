@@ -552,11 +552,75 @@ pub fn on_decision(decision: Option<&Value>, now: std::time::Instant) -> Vec<Val
     out
 }
 
+// ---------------------------------------------------------------------- idempotent pulls (agent loop step 3)
+
+/// How long a pull's answer is kept under its key, and how many keys are kept.
+pub const KEY_TTL: Duration = Duration::from_secs(24 * 3600);
+pub const MAX_KEYS: usize = 256;
+
+/// A key is 1 to 128 characters of letters, digits and `_ . : -`.
+pub fn valid_key(k: &str) -> bool {
+    (1..=128).contains(&k.len()) && k.bytes().all(|b| b.is_ascii_alphanumeric() || b"_.:-".contains(&b))
+}
+
+/// A key's state: a pull running under it, or the answer its pull completed with.
+#[derive(Clone, Debug)]
+pub enum Keyed {
+    Running,
+    Done(std::time::Instant, u16, Value),
+}
+
+fn keys() -> &'static Mutex<BTreeMap<String, Keyed>> {
+    static K: OnceLock<Mutex<BTreeMap<String, Keyed>>> = OnceLock::new();
+    K.get_or_init(|| Mutex::new(BTreeMap::new()))
+}
+
+/// Run `pull` at most once per `key`: the first completed answer is kept for KEY_TTL and a repeat
+/// answers it again with `replayed: true`, applying nothing; a repeat while it runs is refused (409).
+/// A transient answer (501, 502: nothing was decided or applied) is not kept, so a retry runs anew.
+/// Without a key every pull runs.
+pub fn keyed<F: FnOnce() -> Result<(u16, Value), String>>(key: Option<&str>, now: std::time::Instant, pull: F) -> Result<(u16, Value), String> {
+    let Some(key) = key else { return pull() };
+    if !valid_key(key) { return Ok((400, json!({"error": "key: 1-128 characters of letters, digits and _ . : -"}))); }
+    {
+        let mut k = keys().lock().map_err(|_| "the keys' lock is poisoned".to_string())?;
+        k.retain(|_, v| match v { Keyed::Running => true, Keyed::Done(at, _, _) => now.duration_since(*at) < KEY_TTL });
+        match k.get(key) {
+            Some(Keyed::Running) => return Ok((409, json!({"error": format!("a pull with key {key:?} is running"), "key": key}))),
+            Some(Keyed::Done(_, status, answer)) => {
+                let mut a = answer.clone();
+                a["replayed"] = json!(true);
+                a["key"] = json!(key);
+                return Ok((*status, a));
+            }
+            None if k.len() >= MAX_KEYS => {
+                let oldest = k.iter().filter_map(|(n, v)| match v { Keyed::Done(at, ..) => Some((*at, n.clone())), _ => None }).min().map(|(_, n)| n);
+                if let Some(n) = oldest { k.remove(&n); }
+            }
+            None => {}
+        }
+        k.insert(key.to_string(), Keyed::Running);
+    }
+    let result = pull();
+    let mut k = keys().lock().map_err(|_| "the keys' lock is poisoned".to_string())?;
+    match &result {
+        Ok((status, answer)) if *status != 501 && *status != 502 => {
+            let mut a = answer.clone();
+            a["key"] = json!(key);
+            k.insert(key.to_string(), Keyed::Done(now, *status, a.clone()));
+            return Ok((*status, a));
+        }
+        _ => { k.remove(key); }
+    }
+    result
+}
+
 /// Pull a directive from `url` and apply it: the DecisionPullResult, with `applied_rcon` null when
 /// the directive asked for nothing. A directive the contract refuses is applied not at all. Every
 /// step is tried and published in plan.directive with the state it reached, also when a call fails;
 /// a failed call then answers 502 with the lines so far.
-pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
+/// The key it ran under (step 3, `keyed`) is recorded in plan.directive's `inputs.live.key`.
+pub fn pull_with(g: &Arc<Game>, url: &str, key: Option<&str>) -> Result<(u16, Value), String> {
     let since = last().0;
     let raw: Value = match ureq::get(url).timeout(Duration::from_secs(60)).call() {
         Ok(r) => r.into_json().map_err(|e| format!("{url}: not JSON ({e})"))?,
@@ -587,6 +651,7 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
         g.event("ai", &format!("Prismatic's directive ({url}) is not applied: {}", stale.join("; ")));
         let mut data = directive_event(url, &raw, Err(&stale), &ignored, &[]);
         data["inputs"]["live"]["observation"] = observed.clone().unwrap_or(Value::Null);
+        data["inputs"]["live"]["key"] = json!(key);
         data["choice"]["outcome"] = json!("stale");
         g.plan("plan.directive", data);
         return Ok((409, json!({"error": "the directive is not bound to a current observation", "errors": stale,
@@ -610,6 +675,7 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
     g.event("ai", &format!("Prismatic decided ({url}): {}", lines.join("; ")));
     let mut data = directive_event(url, &raw, Ok(&d), &ignored, &steps);
     data["inputs"]["live"]["observation"] = observed.unwrap_or(Value::Null);
+    data["inputs"]["live"]["key"] = json!(key);
     // A step that waits keeps the directive open: its outcome follows as plan.directive_outcome.
     if let Some(seq) = g.plan("plan.directive", data) { track(seq, url, &steps); }
     let errors: Vec<&str> = steps.iter().filter(|s| s["state"] == json!("error")).filter_map(|s| s["error"].as_str()).collect();
@@ -772,6 +838,44 @@ mod tests {
         assert_eq!(outcome(&[ok(), unverified()]), "unverified");
         assert_eq!(outcome(&[ok(), executed()]), "pending");
         assert_eq!(verdict_state("PENDING_OBSERVATION"), None);
+    }
+
+    #[test]
+    fn a_keyed_pull_runs_once_and_answers_its_repeats() {
+        let now = std::time::Instant::now();
+        let runs = std::cell::Cell::new(0);
+        let pull = || { runs.set(runs.get() + 1); Ok((200, json!({"applied_rcon": {"lines": ["x"]}}))) };
+        let (s1, a1) = keyed(Some("k-step3-a"), now, pull).unwrap();
+        let (s2, a2) = keyed(Some("k-step3-a"), now, || { runs.set(runs.get() + 1); Ok((200, json!({}))) }).unwrap();
+        assert_eq!((s1, s2, runs.get()), (200, 200, 1), "the repeat applies nothing");
+        assert_eq!((a1.get("replayed"), a2["replayed"].clone(), a2["applied_rcon"].clone()), (None, json!(true), a1["applied_rcon"].clone()));
+        assert_eq!(a2["key"], "k-step3-a");
+        // A refusal is an answer too, and is kept.
+        keyed(Some("k-step3-b"), now, || Ok((409, json!({"error": "stale"})))).unwrap();
+        assert_eq!(keyed(Some("k-step3-b"), now, || Ok((200, json!({})))).unwrap().0, 409);
+        // A transient failure is not kept: the retry runs.
+        keyed(Some("k-step3-c"), now, || Ok((502, json!({"error": "unreachable"})))).unwrap();
+        assert_eq!(keyed(Some("k-step3-c"), now, || Ok((200, json!({})))).unwrap().0, 200);
+        keyed(Some("k-step3-e"), now, || Err("boom".into())).unwrap_err();
+        assert_eq!(keyed(Some("k-step3-e"), now, || Ok((200, json!({})))).unwrap().0, 200, "an error frees the key");
+        // Without a key every pull runs; a malformed key is refused; an old answer expires.
+        let n = std::cell::Cell::new(0);
+        keyed(None, now, || { n.set(n.get() + 1); Ok((200, json!({}))) }).unwrap();
+        keyed(None, now, || { n.set(n.get() + 1); Ok((200, json!({}))) }).unwrap();
+        assert_eq!(n.get(), 2);
+        assert_eq!(keyed(Some("bad key"), now, || Ok((200, json!({})))).unwrap().0, 400);
+        assert_eq!(keyed(Some("k-step3-a"), now + KEY_TTL + Duration::from_secs(1), || Ok((201, json!({})))).unwrap().0, 201);
+        assert!(valid_key("prismatic:2026-11-19.1") && !valid_key("") && !valid_key(&"k".repeat(129)));
+    }
+
+    #[test]
+    fn a_repeat_while_the_key_runs_is_refused() {
+        let now = std::time::Instant::now();
+        let inner = keyed(Some("k-step3-d"), now, || {
+            let (status, _) = keyed(Some("k-step3-d"), now, || Ok((200, json!({})))).unwrap();
+            Ok((200, json!({"inner_status": status})))
+        }).unwrap();
+        assert_eq!(inner.1["inner_status"], 409);
     }
 
     #[test]

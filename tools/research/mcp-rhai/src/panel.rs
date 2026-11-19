@@ -2224,7 +2224,8 @@ fn h_decision_pull(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     if url.is_empty() {
         return Ok((501, json!({"error": "no decision URL: pass url, or set PRISMATIC_DECISION_URL (prismatic_api: http://127.0.0.1:4000/api/openttd/decision)"})));
     }
-    panel_decision::pull(g, &url)
+    let key = i.body.get("key").and_then(Value::as_str);
+    panel_decision::keyed(key, Instant::now(), || panel_decision::pull_with(g, &url, key))
 }
 
 fn h_instances(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
@@ -2331,7 +2332,7 @@ pub fn routes() -> Vec<Route> {
           None, h_bridge_companies),
         r("GET", "/api/bridge/observation", "bridgeObservation", "The latest answer of GET /api/bridge/companies as the observation a directive is bound to (research/agent-loop.md step 1): its number, game tick and date, the digest of the companies' identities and the age limit in game days; POST /api/decision/pull refuses a directive not decided from a current observation", false, None, h_bridge_observation),
         r("POST", "/api/decision/pull", "decisionPull", "Prismatic decides the bot: GET a decision directive {ai, company_id, settings} from url (default PRISMATIC_DECISION_URL), check it against research/prismatic-bridge/decision-contract.schema.json and apply it (settings on the running AI through openttd.ai.set_setting, approval-gated; else start_ai), answering a DecisionPullResult; the fit its working carries (prismatic-fit/v1) is recorded in plan.directive's inputs.stored, or the fallback when there is none", true,
-          s(json!({"url": st()}), &[]), h_decision_pull),
+          s(json!({"url": st(), "key": st()}), &[]), h_decision_pull),
         r("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params); &track=N prices the N best rail lines of each list on the real map with AlgoGlyph track-planning (line_costs) before the portfolio is chosen; &calibrate=1 adds `calibration`: every running line's real profit per vehicle (openttd://vehicles profit_last_year) against this plan's prediction for the same towns or industries, the median ratio per mode, and `params.calibration` to pass back as params (src/calibrate.rs); with track, &yards=N proves up to N transfer yards offline (yards: can the other line still leave from a platform beside the better line's, its tiles blocked; src/yards.rs)", true,
           None, h_plan),
         r("GET", "/api/investment", "investment", "What to build, decided by AlgoGlyph's transport-investment kernel (routes of one or two legs through hubs, ranked by return on investment) over the planner's candidates from the live game, one run per cargo with that cargo's own vehicles, then one portfolio within the budget (default: the loan limit); ?params=JSON as /api/plan. The planner's own portfolio comes alongside for comparison", true,

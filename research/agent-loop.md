@@ -55,7 +55,7 @@ flowchart LR
 | Authorize | PARTIAL | the game's approval: one-time, bound to the exact canonical arguments, with a TTL (`prismatic_mcp_server.cpp`, `prismatic_mcp_detail.h`) | who approved: the panel's `/api/approve` and its auto-approve need only loopback, and the bridge's `origin/main` approves its own request over rcon |
 | Execute | IMPLEMENTED | `Command<>::Post` on the game's main thread, through the command system | the checked-out bridge still sends `reload_ai` with the off-by-one id |
 | Verify | IMPLEMENTED in the panel | the game's verdict, read back (`AIConfig::GetSetting` for `ai.set_setting`), and the panel's step states follow it (`panel_decision.rs` `state_of`, `verdict_state`): `applied` only for `VERIFIED_SUCCESS` | a step with no verdict to read (an AI started through the console) is `sent`, not verified |
-| Record | PARTIAL | `plan.directive` on the ZeroMQ bus and in the DuckDB store, with its inputs, observation, version and choice; a directive that waited is settled by `plan.directive_outcome` once the game's verdicts are in (or `expired` after an hour) | no idempotency key; the game's provenance lives in memory, capped |
+| Record | IMPLEMENTED in the panel | `plan.directive` on the ZeroMQ bus and in the DuckDB store, with its inputs, observation, idempotency key, version and choice; a directive that waited is settled by `plan.directive_outcome` once the game's verdicts are in (or `expired` after an hour); a keyed pull runs once (`keyed`) | the game's own provenance lives in memory, capped at 128 |
 
 ## What the gaps mean
 
@@ -87,6 +87,12 @@ Each closes one row above without a new tracking record:
    --release --bin mcp-panel` 168/168; `tools/research/mcp-decision-check --no-plan-bot` PASS 15/15
    live: the approved directive's `plan.directive_outcome` says `applied`, `VERIFIED_SUCCESS`,
    decision 1.
-3. A pull carries an idempotency key; a second pull with the same key answers the first result.
+3. **Done** (2026-11-19): a pull with an idempotency `key` runs once; a repeat answers the first
+   result with `replayed: true`, a repeat while it runs is refused (409), and a transient failure
+   (501, 502) is not kept, so a retry runs anew. Evidence: `cargo test --release --bin mcp-panel`
+   170/170; `tools/research/mcp-decision-check --no-plan-bot` PASS 16/16 live: the keyed pull's
+   repeat is replayed with the same lines and the store holds one `plan.directive` with the key.
+   Two of the check's own reads raced the store's batched commit and were made to wait for the
+   records they assert.
 4. The checked-out bridge is brought to its `origin/main`; its self-approval is replaced by the
    panel's operator approval or recorded as an explicit policy.

@@ -449,6 +449,14 @@ step waits any more the panel publishes `plan.directive_outcome` (`inputs.live.d
 the `plan.directive`). A denied approval leaves no decision record, so a directive with no verdict
 after an hour is closed as `expired`, never as applied.
 
+`POST /api/decision/pull {url, key}` with an idempotency `key` (1-128 letters, digits and `_ . : -`)
+runs once per key (research/agent-loop.md step 3): its first completed answer is kept for a day,
+and a repeat answers it again with `replayed: true`, applying nothing and publishing no second
+`plan.directive`; a repeat while it still runs is refused (409). A transient answer (501, 502:
+nothing was decided or applied) is not kept, so a retry runs anew. The key is recorded as
+`inputs.live.key` of the directive's `plan.directive`. Without a key every pull runs; a repeated
+identical setting still meets the game's own approval, which reuses the pending request.
+
 `GET /api/bus` answers its `kinds` also while the bus tap is down: 200, `endpoint` null and `error`
 saying why.
 
