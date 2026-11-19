@@ -165,6 +165,30 @@ Replaying 3 years of that seed raised the default's value from 1 to 318k (8 trai
 Seeds 930967890 and 31337 were unchanged over 6 years. A cap of 60 everywhere cost those seeds
 38% and 8%, which is why it is raised only after the opener fails.
 
+**The seller killed air for good (2026-11-19).** In edition 6779ebec, two GA variants ended last
+on two maps, both without a single plane. Replays need the arena's start order, because the first
+company to start takes the first airport sites (`battle.py ablate --slot N`). With that order, the
+20-year replay of seed 725554694, company 2, reproduced the arena exactly: 62 vehicles and no
+plane.
+
+Every plane lost money in 1964-66, and the fleet seller also sold each route's last one. With no
+plane left to clone, the company never flew again. The default had kept one plane on its first
+route and grew it back to 12 planes at 23k a year each.
+
+The new setting `air_keep_last` (on by default, a GA gene) keeps the last plane of an air route.
+Default bot over 20 years, before -> after:
+
+| Seed | Before | After |
+|---|---|---|
+| 930967890 | 15.6M | 15.3M |
+| 31337 | 13.6M | 12.7M |
+| 496519251 | 3.2M | 5.9M |
+| 725554694 (slot 2) | 5.9M | 4.5M |
+
+The sum is unchanged and the worst seed is up 39%. g26.0 on seed 725554694 went from 1.3M with
+no plane to 3.4M with 16 planes. Single seeds are a direction, not a verdict; the GA decides the
+gene on paired matches.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

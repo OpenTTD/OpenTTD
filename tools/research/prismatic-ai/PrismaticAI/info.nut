@@ -262,6 +262,13 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
+			name = "air_keep_last",
+			description = "Never sell the last plane of an air route for losing money (a dead route never flies again).",
+			min_value = 0, max_value = 1,
+			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
+			flags = CONFIG_BOOLEAN | CONFIG_INGAME,
+		});
+		AddSetting({
 			name = "foreign_airports",
 			description = "Autopilot: skip a town with this many airports of other companies within 16 tiles (0: never skip).",
 			min_value = 0, max_value = 5,

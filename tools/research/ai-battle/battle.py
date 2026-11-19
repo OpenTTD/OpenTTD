@@ -1657,7 +1657,7 @@ def cmd_fitness(cfg: dict) -> int:
 
 
 def cmd_ablate(cfg: dict, seed: int, years: int, variants: list[str], field: list[str],
-               write: bool, log_dir: str | None = None) -> int:
+               write: bool, log_dir: str | None = None, slot: int = 0) -> int:
     """Run one local match per variant of the working tree's PrismaticAI (settings "name=a=1,b=2"),
     each against the same field on the same seed, in parallel, and print (and with --write record
     under research/results/) every variant's final standing. Deterministic: same tree, binary and
@@ -1688,8 +1688,10 @@ def cmd_ablate(cfg: dict, seed: int, years: int, variants: list[str], field: lis
             os.symlink(arena / "game", per / "game")
             (home / ".local" / "share").mkdir(parents=True)
             os.symlink(per, home / ".local" / "share" / "openttd")
-            lineup = [{"ai": "PrismaticAI", "key": name, "settings": settings}] + \
-                     [{"ai": f, "key": f} for f in field]
+            # `slot`: PrismaticAI's place in the start order (company id), as in the arena's match;
+            # who starts first gets the first airport sites, so a replay must keep it.
+            lineup = [{"ai": f, "key": f} for f in field]
+            lineup.insert(min(slot, len(lineup)), {"ai": "PrismaticAI", "key": name, "settings": settings})
             (per / "scripts" / "game_start.scr").write_text(start_script_text(lineup))
             procs.append((name, settings, lineup, subprocess.Popen(
                 [str(binary), "-c", "battle.cfg", "-x", "-v", f"null:ticks={match_ticks(years)}", "-s", "null",
@@ -1701,9 +1703,10 @@ def cmd_ablate(cfg: dict, seed: int, years: int, variants: list[str], field: lis
                 Path(log_dir).mkdir(parents=True, exist_ok=True)
                 (Path(log_dir) / f"{name}.log").write_text(out)
             series, errors = parse_log(out)
-            mine = series.get(0, [])
+            me = min(slot, len(field))
+            mine = series.get(me, [])
             last = mine[-1] if mine else {}
-            field_best = max((s[-1]["value"] for c, s in series.items() if c > 0 and s), default=0)
+            field_best = max((s[-1]["value"] for c, s in series.items() if c != me and s), default=0)
             rows.append({"variant": name, "settings": settings, "exit_code": proc.returncode,
                          "value": last.get("value", 0), "money": last.get("money", 0),
                          "vehicles": last.get("vehicles", 0), "rail": last.get("rail"), "road": last.get("road"),
@@ -1718,7 +1721,7 @@ def cmd_ablate(cfg: dict, seed: int, years: int, variants: list[str], field: lis
         now = dt.datetime.now(dt.timezone.utc)
         rid = f"ablation-{now.strftime('%Y%m%dT%H%M%S')}-seed{seed}"
         rec = {"schema": "ai-battle-ablation/v1", "id": rid, "generated_at": now.isoformat(timespec="seconds"),
-               "seed": seed, "years": years, "field": field, "match_cfg": mc,
+               "seed": seed, "years": years, "field": field, "slot": slot, "match_cfg": mc,
                "rev": git("rev-parse", "HEAD"), "tree_dirty": bool(git("status", "--porcelain", "--",
                                                                         cfg["prismatic"]["path"])),
                "rows": rows}
@@ -1765,6 +1768,8 @@ def main(argv: list[str] | None = None) -> int:
                     help='ablate: "name=setting=v,setting=v" (the first is the baseline), repeatable')
     ap.add_argument("--field", default="AAAHogEx,AdmiralAI", help="ablate: comma-separated opponents")
     ap.add_argument("--write", action="store_true", help="ablate: record under research/results/")
+    ap.add_argument("--slot", type=int, default=0,
+                    help="ablate: PrismaticAI's place in the start order (its company id), as in the arena")
     ap.add_argument("--log-dir", help="ablate: keep each variant's full log (script debug level 4) here")
     ap.add_argument("--edition", help="report: a past edition (its arena bundle must still be the "
                                       "prepared one, for its provenance)")
@@ -1794,7 +1799,7 @@ def main(argv: list[str] | None = None) -> int:
     elif a.command == "reap":
         Orchestrator(cfg).reap()
     elif a.command == "ablate":
-        return cmd_ablate(cfg, a.seed, a.years, a.variant, a.field.split(","), a.write, a.log_dir)
+        return cmd_ablate(cfg, a.seed, a.years, a.variant, a.field.split(","), a.write, a.log_dir, a.slot)
     return 0
 
 
