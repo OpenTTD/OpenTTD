@@ -22,7 +22,25 @@ $B                                  # newest edition in ~/ttd-battle/results/bat
 $B --edition 155d18ea50071e72       # one edition; from its JSON match records if the store lacks it
 $B editions                         # the editions in the store, newest first
 $B check                            # every postmortem-*.md is what its .json derives (exit 11 if not)
+$B watch --every 60                 # the post-round loop (below)
 ```
+
+With no finished match in the edition, nothing is written and the exit code is 12. A record of
+nothing would pass for a round.
+
+### The post-round loop
+
+`watch` checks the store every `--every` seconds. When the newest edition has more finished
+matches than at its last look, it analyses the edition again. It writes
+`~/ttd-battle/results/postmortem-<edition>.json/.md` and the DuckDB tables, and prints one line:
+
+```
+postmortem 91a726628e57de21: 12 finished; best PrismaticAI: PrismaticAI avg_rank 2.1; PrismaticAI last: none
+```
+
+That line is what a monitor reads: an agent session's `Monitor`, or a shell loop. `watch` never
+writes under `research/`. A committed record comes only from a deliberate
+`battle-postmortem --edition <E>` once the round is over, together with the battle's own record.
 
 If your `~/.cargo/config.toml` sets `-C lto` in a target's `rustflags`, prefix cargo with
 `RUSTFLAGS="-C target-cpu=native"` (see [live-arena.md](live-arena.md)).

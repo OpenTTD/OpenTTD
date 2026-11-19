@@ -14,6 +14,11 @@
 //!                     [--duckdb PATH | --no-duckdb] [--matches DIR] [--json]
 //!   battle-postmortem check [--out DIR]     every postmortem-*.md is what its .json derives (exit 11 if not)
 //!   battle-postmortem editions [--db PATH]  the editions in the store, newest first
+//!   battle-postmortem watch [--every 60] ... the post-round loop: whenever the newest edition has
+//!                     more finished matches than at the last look, analyse it again into
+//!                     ~/ttd-battle/results/postmortem-<edition>.json/.md and the DuckDB tables, and
+//!                     print one summary line (what the dashboard and an agent's monitor read).
+//!                     It never writes under research/: a committed record is a deliberate run.
 //! Exit codes: 0 ok, 2 usage, 11 a derived file is stale, 12 no data for the edition.
 #[path = "../postmortem.rs"]
 mod postmortem;
@@ -45,6 +50,7 @@ struct Args {
     duckdb: Option<PathBuf>,
     matches: Option<PathBuf>,
     json: bool,
+    every: u64,
 }
 
 fn usage(msg: &str) -> ! {
@@ -64,12 +70,14 @@ fn args() -> Args {
         duckdb: Some(home().join("ttd-battle/results/analytics.duckdb")),
         matches: None,
         json: false,
+        every: 60,
     };
     let mut it = std::env::args().skip(1);
     while let Some(x) = it.next() {
         let mut val = |name: &str| it.next().unwrap_or_else(|| usage(&format!("{name} needs a value")));
         match x.as_str() {
-            "check" | "editions" | "run" => a.cmd = x,
+            "check" | "editions" | "run" | "watch" => a.cmd = x,
+            "--every" => a.every = val("--every").parse().unwrap_or_else(|_| usage("--every needs seconds")),
             "--edition" => a.edition = Some(val("--edition")),
             "--newest" => a.edition = None,
             "--db" => a.db = PathBuf::from(val("--db")),
@@ -251,8 +259,53 @@ fn check(out: &Path) -> i32 {
     if stale > 0 { 11 } else { 0 }
 }
 
+/// Finished matches of an edition in the store.
+fn finished(db: &Path, edition: &str) -> i64 {
+    open_ro(db).ok().and_then(|c| c.query_row(
+        "SELECT count(*) FROM matches WHERE edition = ?1 AND status = 'done' AND replica_of IS NULL",
+        [edition], |r| r.get(0)).ok()).unwrap_or(0)
+}
+
+/// The post-round loop (`watch`): analyse the newest edition again whenever it has more finished
+/// matches, into the local results directory and DuckDB, and say so on one line.
+fn watch(a: &Args) -> ! {
+    let cfg_path = a.config.clone();
+    let local = a.db.parent().map(Path::to_path_buf).unwrap_or_else(|| home().join("ttd-battle/results"));
+    let mut seen: BTreeMap<String, i64> = BTreeMap::new();
+    eprintln!("battle-postmortem watch: {} every {}s, writing {}", a.db.display(), a.every, local.display());
+    loop {
+        if let Some(ed) = editions(&a.db).ok().and_then(|es| es.into_iter().next()) {
+            let n = finished(&a.db, &ed);
+            if n > *seen.get(&ed).unwrap_or(&0) {
+                let cfg = contestants(&cfg_path);
+                match matches_from_store(&a.db, &ed, &cfg) {
+                    Ok(records) => {
+                        let pm = postmortem::edition(&ed, &records, &postmortem::lineup_is_prismatic);
+                        let base = local.join(format!("postmortem-{ed}"));
+                        let ok = std::fs::write(base.with_extension("json"), serde_json::to_string_pretty(&pm).unwrap() + "\n").is_ok()
+                            && std::fs::write(base.with_extension("md"), postmortem::markdown(&pm)).is_ok();
+                        if let Some(p) = &a.duckdb { if let Err(err) = write_duckdb(p, &pm) { eprintln!("duckdb: {err}"); } }
+                        let last: Vec<String> = pm["prismatic_last"].as_array().into_iter().flatten()
+                            .map(|l| format!("{} {}/{}", l["key"].as_str().unwrap_or(""), l["last_place"], l["matches"])).collect();
+                        let best = pm["contestants"].as_array().and_then(|c| c.iter().find(|c| c["prismatic"].as_bool() == Some(true)))
+                            .map(|c| format!("{} avg_rank {}", c["key"].as_str().unwrap_or(""), c["avg_rank"])).unwrap_or_default();
+                        println!("postmortem {ed}: {n} finished; best PrismaticAI: {best}; PrismaticAI last: {}{}",
+                            if last.is_empty() { "none".into() } else { last.join(", ") }, if ok { "" } else { " (files not written)" });
+                        seen.insert(ed, n);
+                    }
+                    Err(err) => eprintln!("battle-postmortem watch: {err}"),
+                }
+            }
+        }
+        std::thread::sleep(std::time::Duration::from_secs(a.every.max(5)));
+    }
+}
+
 fn main() {
     let a = args();
+    if a.cmd == "watch" {
+        watch(&a);
+    }
     match a.cmd.as_str() {
         "check" => std::process::exit(check(&a.out)),
         "editions" => {
