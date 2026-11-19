@@ -180,7 +180,7 @@ Every plane lost money in 1964-66, and the fleet seller also sold each route's l
 plane left to clone, the company never flew again. The default had kept one plane on its first
 route and grew it back to 12 planes at 23k a year each.
 
-The new setting `air_keep_last` (on by default, a GA gene) keeps the last plane of an air route.
+The new setting `air_keep_last` (on by default) keeps the last plane of an air route. It is pinned in `tuning.fixed`, not a gene: the battle brain kept proposing 0 because most of its rows predate the gene, and `g39.brainSafe` and `g41.brainSafe` ended last with it off. A setting that fixes a bug stays out of the GA's space.
 Default bot over 20 years, before -> after:
 
 | Seed | Before | After |

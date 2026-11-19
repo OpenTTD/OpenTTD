@@ -158,7 +158,8 @@
     ],
     "fixed": {
       "intercity": 1,
-      "self_steward": 1
+      "self_steward": 1,
+      "air_keep_last": 1
     },
     "start": {
       "aggressiveness": 20,
@@ -171,7 +172,6 @@
       "air_towns": 50,
       "air_max_tiles": 420,
       "air_level_max": 15,
-      "air_keep_last": 1,
       "invest_min": 50,
       "invest_ppv_div": 2,
       "invest_road_cap": 20,
@@ -228,11 +228,6 @@
         5,
         60,
         5
-      ],
-      "air_keep_last": [
-        0,
-        1,
-        1
       ],
       "air_max_tiles": [
         160,
