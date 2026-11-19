@@ -166,7 +166,12 @@ def load_repo(root: Path) -> Repo:
             branch = git(root, "rev-parse", "--abbrev-ref", "HEAD").strip()
     # What git tracks, plus new files it would not ignore: exactly what the next commit can hold,
     # so `sync` and `check` agree before and after a `git add`. CI checkouts have none of the second.
-    tracked = set(git(root, "ls-files", "-z", "--cached", "--others", "--exclude-standard").split("\0")) - {""}
+    # Inside a git hook (git exports GIT_INDEX_FILE to pre-commit) the commit holds only the index:
+    # a document written but not added would pass the hook and be missing in CI, so it is left out.
+    sources = ["--cached"]
+    if not os.environ.get("GIT_INDEX_FILE"):
+        sources += ["--others", "--exclude-standard"]
+    tracked = set(git(root, "ls-files", "-z", *sources).split("\0")) - {""}
     tracked = {p for p in tracked if (root / p).exists()}
     dirs = {""}
     for p in tracked:
