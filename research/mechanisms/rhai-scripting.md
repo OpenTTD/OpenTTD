@@ -34,7 +34,8 @@ flowchart TB
 
 - **Built-ins.** `rpc`, `read`, `overview`, `status`, `console`, `pause`, `approve`,
   `auto_approve`, `events`, `mcp_call`, `mcp_read`, `world_plan`, `world_graph`, `kernel`,
-  `kernels`, `board_post`, `env`, `sleep`, `to_json`, and `tools()`, `commands()`, `help()` to list
+  `kernels`, `board_post`, `loopback_get` (JSON from a loopback URL only: no other host, no
+  userinfo, no redirects), `env`, `sleep`, `to_json`, and `tools()`, `commands()`, `help()` to list
   what was derived (header of `main.rs`).
 - **Derived functions** (`derive` in `main.rs`): a tool name with dots turned into underscores, an
   `api_<operationId>` per operation of the panel's OpenAPI document (streaming routes left out), a

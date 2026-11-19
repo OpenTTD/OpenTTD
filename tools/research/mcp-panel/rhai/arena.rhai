@@ -86,6 +86,30 @@ fn standings() {
     rows
 }
 
+// The headless LAN battle's top three by points, from its dashboard API (research/ai-battle),
+// as one chat line. It needs loopback_get, which a panel built before it lacks, and a running
+// `battle.py run`; without either it prints why and says nothing.
+const BATTLE_API = "http://127.0.0.1:8765/api/leaderboard";
+
+fn battle_line() {
+    try {
+        let b = loopback_get(global::BATTLE_API);
+        let lb = b.leaderboard;
+        lb.sort(|x, y| y.points - x.points);
+        let top = [];
+        for r in lb {
+            if top.len() < 3 && r.played > 0 { top.push(`${r.key} ${r.points}p/${r.played}`); }
+        }
+        if top.is_empty() { return; }
+        let line = `LAN battle ${b.edition}: `;
+        let i = 0;
+        for t in top { line += if i == 0 { t } else { ", " + t }; i += 1; }
+        say(line);
+    } catch (err) {
+        print(`battle: ${err}`);
+    }
+}
+
 // Prints the standings and says them in chat; returns the leading AI ("" with no company), so the
 // caller can put a change of leader in the newspaper.
 fn report() {
@@ -94,12 +118,14 @@ fn report() {
     let text = `${s.date}  standings:`;
     let place = 1;
     for r in rows {
-        let line = `${place}. ${r.ai}  value ${r.value}  vehicles ${r.vehicles}`;
+        // The company name tells apart several companies of one AI (the PrismaticAI variants).
+        let line = `${place}. ${r.ai} (${r.name})  value ${r.value}  vehicles ${r.vehicles}`;
         text += "\n  " + line;
         say(line);
         place += 1;
     }
     print(text);
+    battle_line();
     if rows.is_empty() { "" } else { rows[0].ai }
 }
 

@@ -65,8 +65,16 @@ Every 20 s (`ROUND_S`), the service:
 2. compares them with `LINEUP` per AI name. Two entries with the same AI mean two companies. The
    service starts the first entry that is short, one per round, with `start_ai "<name>"
    <settings>`. The name goes in double quotes for an AI whose name has a space;
-3. every sixth round, it ranks the companies by company value and says the ranking in chat. When
-   the leader changes, it shows a newspaper.
+3. every sixth round, it ranks the companies by company value and says the ranking in chat, each
+   AI with its company name, so the PrismaticAI variants can be told apart. When the leader changes,
+   it shows a newspaper;
+4. in the same report, it says the headless battle's top three by points in one line
+   (`LAN battle <edition>: AI points/played, ...`). It reads them from `battle.py run`'s
+   `http://127.0.0.1:8765/api/leaderboard` with the built-in `loopback_get`. That built-in reads JSON
+   from a loopback URL only: it refuses another host, a URL with userinfo
+   (`http://127.0.0.1:80@elsewhere/`) and redirects. A panel built before `loopback_get` existed
+   lacks it. The script then prints `battle: ... Function not found` in its log and plays on. The
+   line appears from the next start of the stack, which builds the panel anew.
 
 The script never removes or stops a company. Removing an entry from `LINEUP` only stops it from
 being restarted. Starting an AI goes through the server console, as the operator would type it,

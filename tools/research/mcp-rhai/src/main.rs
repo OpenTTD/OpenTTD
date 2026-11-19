@@ -27,6 +27,9 @@
 //!   board_post(claim, text)            -> bool  announce a named claim on the Majordomus board (board.rs):
 //!                                               the server of this checkout, $MAJORDOMUS_URL, or printed
 //!                                               only with $MCP_BOARD_DRY set
+//!   loopback_get(url)                  -> map   GET a JSON document from a loopback URL only (127.0.0.1,
+//!                                               localhost, [::1]), e.g. the LAN battle's /api/leaderboard;
+//!                                               throws for any other host
 //!   env(name)
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
@@ -78,6 +81,37 @@ impl Panel {
         };
         to_dyn(v)
     }
+}
+
+/// Whether `url` is plain HTTP to this machine's loopback interface, the only place
+/// `loopback_get` may read from: a script must not reach the network beyond this machine.
+fn is_loopback_url(url: &str) -> bool {
+    let Some(rest) = url.strip_prefix("http://") else { return false };
+    let host = rest.split(['/', '?', '#']).next().unwrap_or("");
+    if host.contains('@') {
+        return false; // userinfo: "localhost:80@elsewhere" connects to elsewhere
+    }
+    let host = if host.starts_with('[') {
+        host.split(']').next().map(|h| format!("{h}]")).unwrap_or_default()
+    } else {
+        host.split(':').next().unwrap_or("").to_string()
+    };
+    matches!(host.as_str(), "127.0.0.1" | "localhost" | "[::1]")
+}
+
+fn loopback_get(url: &str) -> R<Dynamic> {
+    if !is_loopback_url(url) {
+        return Err(format!("loopback_get: {url} is not a loopback http URL").into());
+    }
+    // No redirects: a loopback server must not be able to send the script to another host.
+    let agent = ureq::AgentBuilder::new().redirects(0).timeout(Duration::from_secs(10)).build();
+    let v: Value = agent
+        .get(url)
+        .call()
+        .map_err(|e| format!("GET {url}: {e}"))?
+        .into_json()
+        .map_err(|e| format!("GET {url}: {e}"))?;
+    to_dyn(v)
 }
 
 fn to_dyn(v: Value) -> R<Dynamic> {
@@ -214,6 +248,7 @@ fn engine(panel: Panel) -> Engine {
         b.announce(claim, &board::clip(text, 480))?;
         Ok(true)
     });
+    e.register_fn("loopback_get", loopback_get);
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));
     e.register_fn("to_json", |d: Dynamic| -> R<String> {
@@ -442,6 +477,24 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn loopback_get_only_reads_this_machine() {
+        use super::is_loopback_url as ok;
+        assert!(ok("http://127.0.0.1:8765/api/leaderboard"));
+        assert!(ok("http://localhost/x"));
+        assert!(ok("http://[::1]:80/"));
+        assert!(!ok("https://127.0.0.1/"));
+        assert!(!ok("http://192.168.100.10:8765/"));
+        assert!(!ok("http://127.0.0.1.evil.example/"));
+        assert!(!ok("http://localhost.evil.example:80/"));
+        assert!(!ok("http://user@evil.example/"));
+        assert!(!ok("http://localhost:80@evil.example/"));
+        assert!(!ok("http://127.0.0.1:80@evil.example/"));
+        assert!(!ok("http://[::1]@evil.example/"));
+        assert!(!ok("http://evil.example\\@127.0.0.1/"));
+        assert!(super::loopback_get("http://example.com/").is_err());
+    }
+
     use super::*;
     use std::io::{Read, Write};
 
