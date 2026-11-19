@@ -1074,6 +1074,22 @@ process took 216 s and one serve took 76 s, run back to back. Two runs started a
 so both read the same game state, gave identical answers apart from the `algoglyph` key (calls 7,
 fallbacks 0).
 
+A planned bot start runs `mcp-plan --limit 40 --params '{"budget": 300000}' --track 16` (the
+arguments its `plan.portfolio` events on `:8800` record). That run was measured on 2026-11-19 against
+the live `:8800` game at a load average of about 24, with an `npm` shim on `PATH` that logged every
+start. The serve arm and the per-call arm were started at the same moment:
+
+| Runner | `npm` processes | Kernel calls | Wall time | Answer |
+|---|---|---|---|---|
+| `MCP_ALGOGLYPH_SERVE=1` | 1 (`flow -- serve`) | 22 (21 track-planning, 1 knapsack-dp), 0 fallbacks | 53 s | identical apart from the `algoglyph` key |
+| unset (today's default) | 22 (`flow -- kernel`) | 22 | 107 s | |
+
+`plan.portfolio` names the runner of every planned bot start in `inputs.live.planner.kernel_runner`
+(`panel_bot.rs:kernel_runner`): mcp-plan's `algoglyph` summary under the switch, else the per-call
+runner. The switch stays off by default until a held-start parity duel pair (`MCP_ALGOGLYPH_SERVE=1`
+against unset) has been run. That pair was not run on 2026-11-19 because the disk had 34 GiB free,
+below the 35 GiB a pair may start with.
+
 **`mcp-kernel-feed`.** This binary holds one serve and a trailing window of the store's `samples`
 (the newest `--window` days per company, 30 by default, of the instance's latest run, seeded by one
 `SELECT` with `QUALIFY row_number()`). The bus's `game.sample` envelopes keep the window current
@@ -1095,13 +1111,29 @@ echo '{"kernel":"action-plan","input":{"actions":[{"id":"r","kind":"repay_loan",
   | tools/research/mcp-rhai/target/release/mcp-kernel-feed --panel http://127.0.0.1:8800
 ```
 
-**Not fed yet.** The store holds each company's books per day (`samples`) and nothing per line or per
-industry. So `transport-investment`'s demands, from trailing production, and `knapsack-dp`'s values,
-from what each mode really earned, have no history to read. They need the `plan.*` events of I0081
-and a recorded per-line or per-industry fact (a producer, ADR 0034 point 5). `plan.kernel` goes to
-the feeder's stdout; with `--publish` each event also goes to the panel's `POST /api/bus/publish`
-and from there onto its bus, ZeroMQ and the store (I0081), and the printed event carries the panel's
-answer as `published`.
+On `:8800`'s store on 2026-11-19 (read-only, without `--publish`), the request above was fed 30
+stored days of the latest run (`rows` 30, `from_store` 30, newest day 1965-03-22). With `--no-store`
+and the books given by the caller, the kernel answered as before (5 steps) and the event said
+`fallback: the store is switched off for this feeder (--no-store)`.
+
+**The panel's own action plan.** `POST /api/actionplan` takes `cash` and `loan`, whichever the body
+left out, from the same statement on the panel's own store (`panel.rs:books_from_store`, through
+`kernel_feed::from_store`). It reads the newest stored day of the asked company, else of the lowest
+company id. The console's `companies` line fills only what the store could not give: the store off,
+no day of that company, or no day in the latest run. `plan.action` names its `inputs.stored` either
+way: the statement with its row count, or the fallback with its reason. `inputs.live.books` says
+where each value came from, the stored day or the console line, and carries the trailing window.
+
+**Not fed yet.** The store holds each company's books per day (`samples`) and nothing per industry,
+so `transport-investment`'s demands, from trailing production, have no history to read. Recording
+production would add a producer, which needs a decision (ADR 0034 point 5). `knapsack-dp`'s values
+in a planned bot start are the planner's scores. With `PRISMATIC_PLAN_CALIBRATION=all|seed` (I0082)
+those scores are scaled per mode by what earlier games' lines really earned, read from the stores'
+`plan.calibration` events. That is history, but it reaches the kernel through the planner, not as a
+feed of `FEEDS`. The planner's kernel calls are recorded in `plan.portfolio`, not one `plan.kernel`
+event per call. `plan.kernel` goes to the feeder's stdout. With `--publish` each event also goes to
+the panel's `POST /api/bus/publish`, and from there onto its bus, ZeroMQ and the store (I0081). The
+printed event then carries the panel's answer as `published`.
 
 ### Steering the plan from the panel
 

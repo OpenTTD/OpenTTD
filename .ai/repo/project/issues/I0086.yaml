@@ -16,6 +16,9 @@ scope:
   - "tools/research/mcp-rhai/src/bin/mcp-kernel-feed.rs"
   - "tools/research/mcp-rhai/src/bin/mcp-plan.rs"
   - "tools/research/mcp-rhai/src/panel.rs"
+  - "tools/research/mcp-rhai/src/panel_bot.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-panel.rs"
+  - "README.md"
   - "research/mcp-control.md"
 non_scope:
   - "A ZeroMQ or DuckDB reader inside AlgoGlyph itself: an issue in the algoglyph repository if one is ever wanted"
@@ -33,3 +36,6 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-18'
+started_at: 2026-11-19T04:14:37Z
+started_event: sha256:6ff8c066a648565319c5595fff4789bddb7012bbf05727441119ab5869cfdaf5
+updated_at: 2026-11-19T04:14:37Z

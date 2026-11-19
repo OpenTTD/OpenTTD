@@ -30,6 +30,7 @@ use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
 use crate::calibrate;
 use crate::hub;
+use crate::kernel_feed;
 use crate::panel_bot;
 use crate::panel_decision;
 use crate::panel_events;
@@ -1793,6 +1794,12 @@ fn h_action_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let mut inp = i.body.as_object().cloned().unwrap_or_default();
     // Where cash, loan and the loan limit came from, for plan.action.
     let mut books = books_from_caller(&inp);
+    // Cash and loan from the company's newest day in the store (I0086, ADR 0034 point 1), whichever
+    // the body left out; the console below fills what the store could not, and the event names which.
+    let stored = books_from_store(&mut inp, &mut books, &format!("panel-{}", g.args.panel_port), |sql| {
+        let (code, v) = panel_store::run_query(sql);
+        if code == 200 { Ok(v) } else { Err(py_str(v.get("error"))) }
+    });
     if !inp.contains_key("cash") || !inp.contains_key("loan") {
         // Money and loan from the console's `companies` line (openttd://companies has no loan on
         // every build): the requested company, else the first AI company.
@@ -1839,8 +1846,37 @@ fn h_action_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     } else {
         format!("refused: {}", py_str(out.get("errors")))
     }));
-    g.plan("plan.action", action_event(&i.body, &inp, &books, &out));
+    g.plan("plan.action", action_event(&i.body, &inp, &books, &out, &stored));
     Ok((if ok_ { 200 } else { 422 }, Value::Object(out)))
+}
+
+/// The days of samples an action plan's books are read with: the newest one feeds the kernel, the
+/// window travels in plan.action as the trailing books.
+pub const ACTION_BOOK_DAYS: usize = 30;
+
+/// Cash and loan of an action plan, whichever `inp` lacks, from the newest stored day of the asked
+/// company (else the lowest company id) of this instance's latest run, read with `read` (the
+/// panel's own store: `kernel_feed::from_store`). `books` records where each came from. What
+/// plan.action names as its stored input: the statement and its rows, or why the store gave
+/// nothing, so the console fills the rest (ADR 0034 point 2).
+pub fn books_from_store(inp: &mut Map<String, Value>, books: &mut Value, instance: &str,
+                        read: impl FnOnce(&str) -> Result<Value, String>) -> panel_events::Stored {
+    if inp.contains_key("cash") && inp.contains_key("loan") {
+        return panel_events::Stored::Fallback("the caller gave cash and loan".into());
+    }
+    let company = inp.get("company").and_then(Value::as_i64);
+    let (fed_input, fed, w) = kernel_feed::from_store("action-plan", &Value::Object(inp.clone()), company, instance,
+                                                      ACTION_BOOK_DAYS, read);
+    if let Ok(used) = &fed {
+        let day = json!({"store": "samples", "company": used["company"], "game_date": used["game_date"],
+                         "game_tick": used["game_tick"]});
+        for k in used["took"].as_array().into_iter().flatten().filter_map(Value::as_str) {
+            inp.insert(k.into(), fed_input[k].clone());
+            books[k] = day.clone();
+        }
+        books["trailing"] = used["trailing"].clone();
+    }
+    kernel_feed::stored(&fed, &w)
 }
 
 /// Where cash, loan and the loan limit of an action plan come from before the console is read:
@@ -1851,11 +1887,11 @@ pub fn books_from_caller(body: &Map<String, Value>) -> Value {
 }
 
 /// The data of plan.action: the kernel's input, where its money came from, and its answer.
-pub fn action_event(body: &Value, input: &Value, books: &Value, out: &Map<String, Value>) -> Value {
+pub fn action_event(body: &Value, input: &Value, books: &Value, out: &Map<String, Value>, stored: &panel_events::Stored) -> Value {
     let steps = out.get("result").and_then(|r| r.get("steps")).cloned();
     panel_events::plan("algoglyph.action_plan", json!({"loan_step": input.get("loan_step"), "max_loan": input.get("max_loan")}),
                        json!({"kernel": "action-plan", "runner": out.get("runner"), "books": books, "request": body}),
-                       &panel_events::live_only("I0086 feeds books from the store through mcp-kernel-feed"),
+                       stored,
                        json!({"ok": truthy(out.get("ok")), "steps": steps, "errors": out.get("errors"), "kernel_input": input}))
 }
 
@@ -2285,7 +2321,7 @@ pub fn routes() -> Vec<Route> {
           None, h_plan),
         r("GET", "/api/investment", "investment", "What to build, decided by AlgoGlyph's transport-investment kernel (routes of one or two legs through hubs, ranked by return on investment) over the planner's candidates from the live game, one run per cargo with that cargo's own vehicles, then one portfolio within the budget (default: the loan limit); ?params=JSON as /api/plan. The planner's own portfolio comes alongside for comparison", true,
           None, h_investment),
-        r("POST", "/api/actionplan", "actionPlan", "Plan before acting: a set of actions with dependencies ({id, kind, label?, cost?, income?, amount?+step?, repeat?, after?}) turned by AlgoGlyph's action-plan kernel into a validated DAG and executable presses (repay 50k = 5 x repay 10k as one plan) with the cash and loan after each, refused if it would overdraw; cash, loan and loan limits default to the bot company's and the game's", true,
+        r("POST", "/api/actionplan", "actionPlan", "Plan before acting: a set of actions with dependencies ({id, kind, label?, cost?, income?, amount?+step?, repeat?, after?}) turned by AlgoGlyph's action-plan kernel into a validated DAG and executable presses (repay 50k = 5 x repay 10k as one plan) with the cash and loan after each, refused if it would overdraw; cash and loan default to the bot company's newest day in the store (the console's companies line when the store has none; plan.action names which), the loan limits to the game's", true,
           s(json!({"actions": {"type": "array"}, "cash": {"type": "number"}, "loan": {"type": "number"}, "max_loan": {"type": "number"},
                    "loan_step": {"type": "number"}, "company": {"type": "integer"}}), &["actions"]), h_action_plan),
         r("POST", "/api/intent", "intent", "A sentence from the owner (\"najdi nejbližší les + pilu\", \"vybuduj nejlukrativnější trať\", \"find the most productive coal mine\") answered over the live game: nouns from the game's own language files and world graph, orderings nearest / most productive / most profitable, candidates in order, and for build the bot settings that carry out the first (tools/research/mcp-rhai src/intent.rs)", true,
@@ -3010,6 +3046,70 @@ mod tests {
             "/api/realworld", "/api/realworld/scenario", "/api/realworld/compile"].contains(&r.path)));
     }
 
+    /// A store with two runs of one instance: the older run's days must not feed the books.
+    #[cfg(feature = "store")]
+    fn store_with_books() -> crate::bus_sinks::db::Store {
+        use crate::bus_sinks::{db, sample_rows};
+        let mut st = db::Store::open_in_memory("panel-8800").unwrap();
+        st.insert_run(&json!("old"), Some(1), 10, (None, None, None)).unwrap();
+        let day = |t: i64, date: &str, c0: (f64, f64), c1: (f64, f64)| json!({"t": t, "date": date, "companies": [
+            {"id": 0, "name": "A", "money": c0.0, "loan": c0.1, "value": 1.0, "net": 0.0, "fleet": 0},
+            {"id": 1, "name": "B", "money": c1.0, "loan": c1.1, "value": 1.0, "net": 0.0, "fleet": 2}]});
+        st.insert_samples(&sample_rows(&day(90000, "1960-01-01", (9.0, 9.0), (9.0, 9.0)), 20)).unwrap();
+        st.insert_run(&json!("new"), Some(4242), 1000, (None, None, None)).unwrap();
+        st.insert_samples(&sample_rows(&day(22376, "1950-10-13", (300000.0, 300000.0), (50000.0, 0.0)), 1001)).unwrap();
+        st.insert_samples(&sample_rows(&day(22456, "1950-10-14", (298290.0, 300000.0), (51000.0, 10000.0)), 1002)).unwrap();
+        st
+    }
+
+    #[cfg(feature = "store")]
+    #[test]
+    fn an_action_plan_takes_its_books_from_the_newest_stored_day_of_the_latest_run() {
+        let st = store_with_books();
+        let r = st.reader().unwrap();
+        let mut inp = json!({"actions": [{"id": "r", "kind": "repay_loan", "amount": 50000}]}).as_object().cloned().unwrap();
+        let mut books = books_from_caller(&inp);
+        let stored = books_from_store(&mut inp, &mut books, "panel-8800", |sql| r.query(sql));
+        assert_eq!((inp["cash"].as_f64(), inp["loan"].as_f64()), (Some(298290.0), Some(300000.0)), "company 0's newest day");
+        assert_eq!(books["cash"], json!({"store": "samples", "company": 0, "game_date": "1950-10-14", "game_tick": 22456}));
+        assert_eq!(books["loan"]["store"], "samples");
+        assert_eq!(books["max_loan"], "missing");
+        assert_eq!(books["trailing"]["days"], 2, "the older run's day is not in the window");
+        let s = stored.to_json();
+        assert!(s["query"].as_str().unwrap().contains("FROM samples"), "{s}");
+        assert_eq!(s["rows"], 4, "two days of two companies");
+        // The event carries the statement and its row count.
+        let e = action_event(&json!({}), &Value::Object(inp.clone()), &books, &Map::new(), &stored);
+        assert_eq!(e["inputs"]["stored"]["rows"], 4);
+        assert_eq!(e["inputs"]["live"]["books"]["cash"]["game_tick"], 22456);
+        // A named company gets its own books; a loan the caller gave stays the caller's.
+        let mut inp = json!({"actions": [], "company": 1, "loan": 7}).as_object().cloned().unwrap();
+        let mut books = books_from_caller(&inp);
+        books_from_store(&mut inp, &mut books, "panel-8800", |sql| r.query(sql));
+        assert_eq!((inp["cash"].as_f64(), inp["loan"].as_i64()), (Some(51000.0), Some(7)));
+        assert_eq!((books["cash"]["company"].clone(), books["loan"].clone()), (json!(1), json!("caller")));
+    }
+
+    #[test]
+    fn without_a_store_the_books_stay_missing_for_the_console_and_the_event_says_fallback() {
+        let mut inp = json!({"actions": []}).as_object().cloned().unwrap();
+        let mut books = books_from_caller(&inp);
+        let stored = books_from_store(&mut inp, &mut books, "panel-8800", |_| Err("store off: the store is not open".into()));
+        assert!(inp.get("cash").is_none() && inp.get("loan").is_none(), "the console fills them, as before I0086");
+        assert_eq!(books["cash"], "missing");
+        let e = action_event(&json!({}), &Value::Object(inp), &books, &Map::new(), &stored);
+        assert_eq!(e["inputs"]["stored"]["fallback"], "the store gave no samples: store off: the store is not open");
+        // A store with no day of the asked company is a fallback too, never a silent default.
+        let empty = json!({"columns": ["company", "game_tick", "game_date", "money", "loan", "value", "net", "vehicles"], "rows": []});
+        let mut inp = json!({"actions": [], "company": 3}).as_object().cloned().unwrap();
+        let stored = books_from_store(&mut inp, &mut books_from_caller(&json!({}).as_object().cloned().unwrap()), "panel-8800", |_| Ok(empty));
+        assert_eq!(stored.to_json()["fallback"], "no stored day of company 3");
+        // Both given: the store is not read at all.
+        let mut inp = json!({"actions": [], "cash": 1, "loan": 0}).as_object().cloned().unwrap();
+        let stored = books_from_store(&mut inp, &mut json!({}), "panel-8800", |_| panic!("not read"));
+        assert_eq!(stored.to_json()["fallback"], "the caller gave cash and loan");
+    }
+
     #[test]
     fn the_panels_decisions_publish_their_choice_as_data() {
         // plan.action: the kernel's answer, and where cash, loan and the limit came from.
@@ -3020,14 +3120,14 @@ mod tests {
         out.insert("ok".into(), json!(true));
         out.insert("result".into(), json!({"steps": [{"press": "repay"}, {"press": "repay"}]}));
         out.insert("runner".into(), json!("/x/algoglyph"));
-        let e = action_event(&json!({"actions": []}), &input, &books, &out);
+        let e = action_event(&json!({"actions": []}), &input, &books, &out, &panel_events::Stored::Fallback("the caller gave cash and loan".into()));
         assert_eq!(e["decision"], "algoglyph.action_plan");
         assert_eq!(e["choice"]["ok"], true);
         assert_eq!(e["choice"]["steps"].as_array().unwrap().len(), 2);
         assert_eq!(e["choice"]["kernel_input"], input);
         assert_eq!(e["inputs"]["live"]["books"], books);
         assert_eq!(e["version"]["params"], json!({"loan_step": 10000, "max_loan": 300000}));
-        assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0086"));
+        assert_eq!(e["inputs"]["stored"]["fallback"], "the caller gave cash and loan");
         // plan.intent: the reading and the first candidates only.
         let cands: Vec<Value> = (0..8).map(|n| json!({"name": format!("mine {n}"), "production": n})).collect();
         let answer = json!({"intent": {"action": "find", "ordering": "most productive", "subjects": [{"name": "coal mine"}]},
@@ -3076,7 +3176,7 @@ mod tests {
         assert_eq!(e["choice"]["chosen"][0]["cargo"], "Coal");
         assert_eq!(e["choice"]["planner_chosen"], 3);
         assert_eq!(e["inputs"]["live"]["candidates"], 12);
-        for e in [action_event(&json!({}), &input, &books, &Map::new()), calibration_event(&json!({}), &game, &off), investment_event(&json!({}), &json!({}))] {
+        for e in [action_event(&json!({}), &input, &books, &Map::new(), &panel_events::Stored::Fallback("x".into())), calibration_event(&json!({}), &game, &off), investment_event(&json!({}), &json!({}))] {
             for f in ["decision", "version", "inputs", "choice"] { assert!(e.get(f).is_some(), "{f}"); }
             assert!(crate::panel_events::refuse_external("plan.kernel", &e).is_none(), "the payload contract");
         }

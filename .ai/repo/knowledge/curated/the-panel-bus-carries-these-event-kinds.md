@@ -139,8 +139,9 @@ Each planning decision publishes one `plan.*` event beside its `panel.*` sentenc
   `openttd://` resources, the console line money came from, the directive's URL ...), `stored` the
   store query with its row count, or `{fallback}`: why no history was read. The calibration is the
   first decision that reads the store (I0082, below), and the bot's settings read it behind a switch
-  (I0087, below); every other fallback names the issue that adds its query (I0085 Prismatic, I0086
-  kernels);
+  (I0087, below). `plan.action` names the `samples` statement its cash and loan came from, with the
+  rows, or the fallback after which the console filled them (I0086). Every other fallback names the
+  issue that adds its query (I0085 Prismatic);
 - `choice`: what was decided, as data (the portfolio's lines, the settings in their slots with
   `rail_after`, `own_lines` and the lines dropped, the directive applied or refused with its errors,
   the kernel's answer).

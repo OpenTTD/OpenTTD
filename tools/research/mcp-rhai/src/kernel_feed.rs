@@ -179,6 +179,39 @@ pub fn feed(kernel: &str, input: &Value, company: Option<i64>, w: &Window, store
     (Value::Object(m), fed)
 }
 
+/// One kernel call fed from the store by a caller that holds no window of its own (the panel's
+/// `POST /api/actionplan`): a window of `days` seeded with `seed_sql` through `read` (the panel's
+/// own store, the code of `/api/db/query`), then `feed`. The input, what was fed or why not, and the
+/// window (its seed statement and row count). A store that is off or refuses the statement is the
+/// fallback it names.
+#[allow(dead_code)] // mcp-kernel-feed keeps a window of its own
+pub fn from_store(kernel: &str, input: &Value, company: Option<i64>, instance: &str, days: usize,
+                  read: impl FnOnce(&str) -> Result<Value, String>) -> (Value, Fed, Window) {
+    let mut w = Window::new(days);
+    let mut rows = Vec::new();
+    w.seed = seed_sql(instance, w.days).and_then(|sql| {
+        rows = samples_of_answer(&read(&sql)?)?;
+        Ok(sql)
+    });
+    for s in rows { w.push(s, Source::Store); }
+    if let Err(why) = &w.seed {
+        let why = format!("the store gave no samples: {why}");
+        return (input.clone(), Err(why), w);
+    }
+    let (input, fed) = feed(kernel, input, company, &w, true);
+    (input, fed, w)
+}
+
+/// What a plan.* event names as its stored input for one fed call: the seed statement with the rows
+/// it gave, or the fallback with its reason (ADR 0034 point 2).
+#[allow(dead_code)] // mcp-kernel-feed writes its own `inputs.stored` (`event`)
+pub fn stored(fed: &Fed, w: &Window) -> crate::panel_events::Stored {
+    match (fed, &w.seed) {
+        (Ok(_), Ok(sql)) => crate::panel_events::Stored::Query { sql: sql.clone(), rows: w.rows() },
+        (Err(why), _) | (Ok(_), Err(why)) => crate::panel_events::Stored::Fallback(why.clone()),
+    }
+}
+
 /// The `plan.kernel` event of one call (ADR 0034 point 3: {decision, version, inputs, choice}), a
 /// kind src/panel_events.rs declares as external: `mcp-kernel-feed --publish` puts it on the panel's
 /// bus through POST /api/bus/publish. `version` is the build's revision with the feeding rules and

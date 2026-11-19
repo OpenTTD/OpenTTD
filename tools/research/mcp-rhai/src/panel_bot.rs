@@ -646,6 +646,17 @@ pub fn apply_from_duels(p: &mut Planned, d: &duel_outcomes::Derivation, event: &
 /// The data of plan.portfolio: the planner's answer read for the bot. `request` is what the planner
 /// was asked (its arguments and parameters), `planner` how it ran, `cal` the calibration read for it:
 /// its store query and rows, or the fallback `uncalibrated` with the reason.
+/// What answered the planner's AlgoGlyph calls, for plan.portfolio's `inputs.live.planner`: mcp-plan's
+/// `algoglyph` summary when MCP_ALGOGLYPH_SERVE asked for one flow serve (`{runner, pid, calls,
+/// fallbacks, gone}`, src/flow_serve.rs), else the per-call runner, else none (I0086).
+pub fn kernel_runner(out: &Value, algoglyph: bool) -> Value {
+    match out.get("algoglyph") {
+        Some(a) => a.clone(),
+        None if algoglyph => json!({"runner": "npm run flow -- kernel, one process per call (MCP_ALGOGLYPH_SERVE unset)"}),
+        None => json!({"runner": "none (MCP_ALGOGLYPH_DIR unset)"}),
+    }
+}
+
 pub fn portfolio_event(out: &Value, p: &Planned, request: Value, planner: Value, cal: &Calibration) -> Value {
     panel_events::plan("bot.portfolio", json!({"request": request, "effective": out.get("params")}),
                        json!({"planner": planner, "reads": out.get("reads"), "calibration": cal.record}), &cal.stored, p.portfolio.clone())
@@ -845,6 +856,7 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
         }
     };
     let mut p = settings_from_plan(&out, &mut |text| g.event("ai", &text));
+    planner["kernel_runner"] = kernel_runner(&out, algoglyph);
     let seq = g.plan("plan.portfolio", portfolio_event(&out, &p, request, planner, &cal));
     // own_lines and rail_after from the stored duel outcomes (I0087), when the run turns the switch on;
     // otherwise, and when the stores give no pair, the constants above, with the reason in the event.
@@ -886,6 +898,14 @@ pub fn extra_settings(text: &str) -> Result<Vec<(String, i64)>, String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn the_portfolio_event_names_what_answered_the_kernel_calls() {
+        let serve = json!({"runner": "flow serve, one process for every call", "pid": 7, "calls": 33, "fallbacks": 0, "gone": null});
+        assert_eq!(kernel_runner(&json!({"algoglyph": serve.clone()}), true), serve);
+        assert!(kernel_runner(&json!({}), true)["runner"].as_str().unwrap().contains("one process per call"));
+        assert!(kernel_runner(&json!({}), false)["runner"].as_str().unwrap().starts_with("none"));
+    }
 
     const INFO: &str = r#"class X extends AIInfo {
 	function GetName()        { return "PrismaticAI"; }

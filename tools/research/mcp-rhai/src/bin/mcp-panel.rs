@@ -25,6 +25,9 @@ mod duel_outcomes;
 #[path = "../hub.rs"]
 #[allow(dead_code)]
 mod hub;
+#[path = "../kernel_feed.rs"]
+#[allow(dead_code)] // the panel feeds its action plan (from_store); the window and the event are mcp-kernel-feed's
+mod kernel_feed;
 #[path = "../main.rs"]
 #[allow(dead_code)]
 mod rhai_host;

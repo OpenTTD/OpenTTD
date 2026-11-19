@@ -363,8 +363,9 @@ flowchart LR
   publishes its verdict as `plan.duel` (I0083).
 - **Calibration outlives its game.** The planner reads `plan.calibration` readings back from every
   store by query; `research/calibration.json` is retired (I0082).
-- **AlgoGlyph runs as one long-lived flow serve**, fed with a company's books from the store's
-  trailing samples (I0086).
+- **AlgoGlyph can run as one long-lived flow serve** (`MCP_ALGOGLYPH_SERVE=1`): every kernel
+  call of a planned bot start goes through one process (22 calls on `:8800`, 2026-11-19). Its kernels, and the panel's own
+  action plan, take a company's books from the store's trailing samples (I0086).
 
 A running panel holds its DuckDB file locked, so other processes query it through the panel
 (`GET|POST /api/db/query`, read-only, also from Rhai) or follow the bus. Details:
