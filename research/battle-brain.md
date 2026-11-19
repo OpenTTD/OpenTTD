@@ -87,6 +87,19 @@ against the default, not the raw share. On the first paired run (2026-11-19) the
 paired rows with 53 distinct settings for 19 genes, enough data for the first time. Its safe pick
 predicted 1.48 × the default, with a spread of 0.09 in log terms.
 
+### Only fresh maps teach it
+
+Before `46dd8814f9`, every battle edition restarted its seed counter. Every GA generation, and so
+every training row, therefore replayed the same 6 to 8 maps. On fresh maps the picture changed:
+- In paired comparisons the champion was only even with the old default (pre-champion won 4 of
+  10 pairs).
+- Both safe picks of generation 30, `g30.brainSafe` and `g30.brainSafe1`, each ended last once.
+
+The brain now trains only on the newest editions (`BRAIN_EDITIONS`, default 10, the editions since
+seeds include the edition), and `target` says so. The first such run had 195 rows and 26 distinct
+settings for 21 genes, so the brain explores again (`enough_data` false). That is honest: it has
+not yet seen enough fresh maps.
+
 ### Why a safe pick comes first
 
 Until 2026-11-19 the brain proposed by UCB only, so both of the GA's brain offspring were
