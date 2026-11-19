@@ -69,8 +69,7 @@ over the internet, [prepared here](research/real-game.md).
 | **Needs** | a research build (`tools/gate.sh research`) and any MCP client | a research build and `cargo build --release` in [`mcp-rhai`](tools/research/mcp-rhai/) | a research build |
 
 All three need this fork's research build: the MCP server is compiled into it, default OFF and
-loopback only. The one piece that runs in stock OpenTTD is [NoirGFX](#noirgfx-the-game-as-a-linocut),
-the fork's base graphics set.
+loopback only.
 
 ## Plug in an LLM: it asks before it acts
 
