@@ -29,10 +29,18 @@
 //!   `inputs.stored`: the query and rows with the fit, or a fallback that says why there is none (no
 //!   fit sent, Prismatic fell back, or the fit breaks the contract). A fit never changes what is
 //!   applied: the settings are the decision, the fit is how it was reached.
+//!
+//! A directive is bound to what Prismatic observed (research/agent-loop.md, step 1). Each answer of
+//! `GET /api/bridge/companies` is recorded as an observation: the game tick and date it was read at
+//! and a digest of the companies' identities (id, AI flag, name; money moves every tick, so it is
+//! left out). A pull applies a directive only when Prismatic observed this game during that pull,
+//! the companies are still the ones it observed, the observation is at most a month of game time
+//! old, the company it names is an AI company, and a directive that echoes `observed_digest` names
+//! that very observation. Anything else is refused before a step is taken (409), and recorded so.
 
 use serde_json::{json, Value};
 use std::collections::BTreeMap;
-use std::sync::Arc;
+use std::sync::{Arc, Mutex, OnceLock};
 use std::time::Duration;
 
 use crate::bus_sinks::{read_only_sql, SCHEMA as BUS_SCHEMA};
@@ -48,8 +56,9 @@ pub struct Directive {
     pub settings: Vec<(String, i64)>,
 }
 
-/// The fields of a directive the panel reads: the contract's three, and the working's `fit` (I0085).
-pub const READ: &[&str] = &["ai", "company_id", "settings", "fit"];
+/// The fields of a directive the panel reads: the contract's three, the working's `fit` (I0085) and
+/// the `observed_digest` it may echo (research/agent-loop.md step 1).
+pub const READ: &[&str] = &["ai", "company_id", "settings", "fit", "observed_digest"];
 
 /// The directive in `v`, or every reason the contract refuses it. Fields beyond the contract's
 /// three are the directive's own working, which the contract admits; the panel reads only its `fit`
@@ -126,6 +135,123 @@ pub fn companies(g: &Arc<Game>) -> Result<Value, String> {
     let list = bridge_companies(&g.resource("openttd://companies")?, &g.resource("openttd://vehicles")?);
     Ok(offer_history(list, &crate::panel_store::endpoint(), &crate::panel_store::store_status(),
                      &format!("http://127.0.0.1:{}", g.args.panel_port)))
+}
+
+// ---------------------------------------------------------------------- observation (agent loop step 1)
+
+/// Game ticks in a day (DAY_TICKS, src/timer/timer_game_tick.h).
+pub const DAY_TICKS: i64 = 74;
+/// How old an observation a directive may be decided from, in game days: Prismatic's inputs
+/// (money, last year's income) move on a monthly scale. `$PRISMATIC_DIRECTIVE_MAX_AGE_DAYS` overrides it.
+pub const MAX_AGE_DAYS: i64 = 31;
+
+/// What one answer of `GET /api/bridge/companies` showed: when, and which companies.
+#[derive(Clone, Debug, PartialEq)]
+pub struct Observation {
+    pub seq: u64,
+    pub tick: i64,
+    pub date: Value,
+    pub digest: String,
+    pub companies: Vec<(i64, bool)>,
+}
+
+impl Observation {
+    pub fn json(&self) -> Value {
+        json!({"seq": self.seq, "tick": self.tick, "date": self.date, "digest": self.digest,
+               "companies": self.companies.iter().map(|(id, ai)| json!({"id": id, "is_ai": ai})).collect::<Vec<_>>()})
+    }
+}
+
+/// The companies' identities in id order: (id, is_ai).
+pub fn identities(list: &Value) -> Vec<(i64, bool)> {
+    let mut out: Vec<(i64, bool)> = list.as_array().into_iter().flatten()
+        .filter_map(|c| Some((c.get("id")?.as_i64()?, c.get("is_ai").and_then(Value::as_bool).unwrap_or(false)))).collect();
+    out.sort();
+    out
+}
+
+/// FNV-1a 64 over each company's id, AI flag and name in id order: the same companies give the same
+/// digest whatever their money, and a company founded, gone, renamed or taken over changes it.
+pub fn identity_digest(list: &Value) -> String {
+    let mut rows: Vec<(i64, bool, String)> = list.as_array().into_iter().flatten().filter_map(|c| Some((
+        c.get("id")?.as_i64()?, c.get("is_ai").and_then(Value::as_bool).unwrap_or(false),
+        c.get("name").and_then(Value::as_str).unwrap_or("").to_string()))).collect();
+    rows.sort();
+    let mut h: u64 = 0xcbf29ce484222325;
+    for (id, ai, name) in rows {
+        for b in format!("{id}\u{1f}{ai}\u{1f}{name}\u{1e}").bytes() { h ^= b as u64; h = h.wrapping_mul(0x100000001b3); }
+    }
+    format!("{h:016x}")
+}
+
+fn observations() -> &'static Mutex<(u64, Option<Observation>)> {
+    static O: OnceLock<Mutex<(u64, Option<Observation>)>> = OnceLock::new();
+    O.get_or_init(|| Mutex::new((0, None)))
+}
+
+/// Record an answer of `GET /api/bridge/companies` as the latest observation.
+pub fn record(tick: i64, date: Value, list: &Value) -> Observation {
+    let mut g = observations().lock().unwrap_or_else(|e| e.into_inner());
+    g.0 += 1;
+    let o = Observation { seq: g.0, tick, date, digest: identity_digest(list), companies: identities(list) };
+    g.1 = Some(o.clone());
+    o
+}
+
+/// The number of observations so far and the latest one.
+pub fn last() -> (u64, Option<Observation>) {
+    let g = observations().lock().unwrap_or_else(|e| e.into_inner());
+    (g.0, g.1.clone())
+}
+
+/// The game's tick and date now (openttd://game/state).
+pub fn game_time(g: &Arc<Game>) -> Result<(i64, Value), String> {
+    let st = g.resource("openttd://game/state")?;
+    let tick = st.get("game_tick").and_then(Value::as_i64).ok_or("openttd://game/state has no game_tick")?;
+    Ok((tick, st.get("game_date").cloned().unwrap_or(Value::Null)))
+}
+
+/// `GET /api/bridge/companies`: the companies, recorded as an observation.
+pub fn observe(g: &Arc<Game>) -> Result<Value, String> {
+    let list = companies(g)?;
+    let (tick, date) = game_time(g)?;
+    record(tick, date, &list);
+    Ok(list)
+}
+
+/// Why a directive may not be applied (empty: it may). Fail closed: no observation during the pull,
+/// one the directive does not name, companies changed since, an observation too old or from before
+/// a new world, or a company that is not an AI company of the observation.
+pub fn freshness(obs: Option<&Observation>, since: u64, now_tick: i64, now_digest: &str, d: &Directive, raw: &Value, max_age_days: i64) -> Vec<String> {
+    let Some(o) = obs.filter(|o| o.seq > since) else {
+        return vec!["Prismatic decided without observing this game during the pull: point its OPENTTD_BRIDGE_URL at <panel>/api/bridge".into()];
+    };
+    let mut why = Vec::new();
+    if let Some(echo) = raw.get("observed_digest") {
+        if echo.as_str() != Some(o.digest.as_str()) {
+            why.push(format!("the directive names observation {echo}, not the one served ({})", o.digest));
+        }
+    }
+    if now_digest != o.digest {
+        why.push(format!("the companies changed since the observation (digest {} now {now_digest})", o.digest));
+    }
+    let age = now_tick - o.tick;
+    if age < 0 {
+        why.push(format!("the game went back since the observation (tick {} now {now_tick}): a new world", o.tick));
+    } else if age > max_age_days * DAY_TICKS {
+        why.push(format!("the observation is {} days old, more than {max_age_days}", age / DAY_TICKS));
+    }
+    if let Some(c) = d.company_id {
+        if !o.companies.iter().any(|(id, ai)| *id == c && *ai) {
+            why.push(format!("company {c} is not an AI company of the observation"));
+        }
+    }
+    why
+}
+
+/// The age limit in force: `$PRISMATIC_DIRECTIVE_MAX_AGE_DAYS`, else MAX_AGE_DAYS.
+pub fn max_age_days() -> i64 {
+    std::env::var("PRISMATIC_DIRECTIVE_MAX_AGE_DAYS").ok().and_then(|v| v.parse().ok()).filter(|d| *d >= 0).unwrap_or(MAX_AGE_DAYS)
 }
 
 // ---------------------------------------------------------------------- history offered (I0085)
@@ -339,6 +465,7 @@ pub fn outcome(steps: &[Value]) -> &'static str {
 /// step is tried and published in plan.directive with the state it reached, also when a call fails;
 /// a failed call then answers 502 with the lines so far.
 pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
+    let since = last().0;
     let raw: Value = match ureq::get(url).timeout(Duration::from_secs(60)).call() {
         Ok(r) => r.into_json().map_err(|e| format!("{url}: not JSON ({e})"))?,
         Err(ureq::Error::Status(code, r)) => {
@@ -356,6 +483,23 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
                                    "called_url": url, "raw_response": raw})));
         }
     };
+    // Bound to what Prismatic observed during this pull, or not applied at all.
+    let (_, obs) = last();
+    let now = game_time(g).and_then(|(t, _)| Ok((t, identity_digest(&bridge_companies(&g.resource("openttd://companies")?, &json!({}))))));
+    let (now_tick, stale) = match now {
+        Ok((tick, digest)) => (tick, freshness(obs.as_ref(), since, tick, &digest, &d, &raw, max_age_days())),
+        Err(e) => (0, vec![format!("the game's state cannot be read now, so the directive cannot be checked against it: {e}")]),
+    };
+    let observed = obs.as_ref().filter(|o| o.seq > since).map(|o| { let mut j = o.json(); j["age_ticks"] = json!(now_tick - o.tick); j });
+    if !stale.is_empty() {
+        g.event("ai", &format!("Prismatic's directive ({url}) is not applied: {}", stale.join("; ")));
+        let mut data = directive_event(url, &raw, Err(&stale), &ignored, &[]);
+        data["inputs"]["live"]["observation"] = observed.clone().unwrap_or(Value::Null);
+        data["choice"]["outcome"] = json!("stale");
+        g.plan("plan.directive", data);
+        return Ok((409, json!({"error": "the directive is not bound to a current observation", "errors": stale,
+                               "observation": observed, "called_url": url, "raw_response": raw})));
+    }
     let mut steps = Vec::new();
     if let Some(company) = d.company_id {
         if d.settings.is_empty() {
@@ -372,7 +516,9 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
     lines.push(fit_line(&fit_stored(&raw)));
     if !ignored.is_empty() { lines.push(format!("not read (the directive's own working): {}", ignored.join(", "))); }
     g.event("ai", &format!("Prismatic decided ({url}): {}", lines.join("; ")));
-    g.plan("plan.directive", directive_event(url, &raw, Ok(&d), &ignored, &steps));
+    let mut data = directive_event(url, &raw, Ok(&d), &ignored, &steps);
+    data["inputs"]["live"]["observation"] = observed.unwrap_or(Value::Null);
+    g.plan("plan.directive", data);
     let errors: Vec<&str> = steps.iter().filter(|s| s["state"] == json!("error")).filter_map(|s| s["error"].as_str()).collect();
     if !errors.is_empty() {
         return Ok((502, json!({"error": format!("applying the directive failed: {}", errors.join("; ")), "called_url": url,
@@ -406,6 +552,63 @@ pub fn directive_event(url: &str, raw: &Value, d: Result<&Directive, &Vec<String
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn cos(rows: &[(i64, bool, &str, i64)]) -> Value {
+        Value::Array(rows.iter().map(|(id, ai, name, money)| json!({"id": id, "is_ai": ai, "name": name, "money": money})).collect())
+    }
+
+    #[test]
+    fn the_identity_digest_ignores_money_and_order_but_not_identity() {
+        let a = cos(&[(0, false, "Owner", 100), (1, true, "Bot", 5)]);
+        let same = cos(&[(1, true, "Bot", 9999), (0, false, "Owner", -3)]);
+        assert_eq!(identity_digest(&a), identity_digest(&same));
+        for changed in [cos(&[(0, false, "Owner", 1)]), cos(&[(0, false, "Owner", 1), (1, true, "Bot2", 5)]),
+                        cos(&[(0, false, "Owner", 1), (1, false, "Bot", 5)]), cos(&[(0, false, "Owner", 1), (2, true, "Bot", 5)])] {
+            assert_ne!(identity_digest(&a), identity_digest(&changed), "{changed}");
+        }
+        assert_eq!(identity_digest(&json!([])).len(), 16);
+        assert_eq!(identities(&a), vec![(0, false), (1, true)]);
+    }
+
+    #[test]
+    fn a_directive_is_applied_only_against_a_current_observation() {
+        let list = cos(&[(0, false, "Owner", 1), (1, true, "Bot", 1)]);
+        let o = Observation { seq: 5, tick: 10_000, date: json!("1950-03-01"), digest: identity_digest(&list), companies: identities(&list) };
+        let d = Directive { ai: Some("PrismaticAI".into()), company_id: Some(1), settings: vec![] };
+        let now = identity_digest(&list);
+        let f = |obs: Option<&Observation>, since, tick, digest: &str, d: &Directive, raw: Value| freshness(obs, since, tick, digest, d, &raw, 31);
+        assert!(f(Some(&o), 4, 10_100, &now, &d, json!({})).is_empty(), "fresh, same companies, an AI company");
+        assert!(f(Some(&o), 4, 10_100, &now, &d, json!({"observed_digest": o.digest})).is_empty(), "the echo matches");
+        assert!(f(None, 0, 1, &now, &d, json!({}))[0].contains("without observing"));
+        assert!(f(Some(&o), 5, 10_100, &now, &d, json!({}))[0].contains("without observing"), "an observation from before this pull");
+        assert!(f(Some(&o), 4, 10_100, &now, &d, json!({"observed_digest": "0000"}))[0].contains("names observation"));
+        assert!(f(Some(&o), 4, 10_100, "ffff", &d, json!({}))[0].contains("companies changed"));
+        assert!(f(Some(&o), 4, 10_000 + 32 * DAY_TICKS, &now, &d, json!({}))[0].contains("32 days old"));
+        assert!(f(Some(&o), 4, 10_000 + 31 * DAY_TICKS, &now, &d, json!({})).is_empty(), "31 days is still current");
+        assert!(f(Some(&o), 4, 9_000, &now, &d, json!({}))[0].contains("new world"));
+        let owner = Directive { company_id: Some(0), ..Directive { ai: None, company_id: None, settings: vec![] } };
+        assert!(f(Some(&o), 4, 10_100, &now, &owner, json!({}))[0].contains("not an AI company"));
+        let start = Directive { ai: Some("PrismaticAI".into()), company_id: None, settings: vec![] };
+        assert!(f(Some(&o), 4, 10_100, &now, &start, json!({})).is_empty(), "starting an AI names no company");
+        let all = f(Some(&o), 4, 9_000, "ffff", &owner, json!({"observed_digest": "x"}));
+        assert_eq!(all.len(), 4, "every reason is named: {all:?}");
+    }
+
+    #[test]
+    fn observations_are_numbered_and_the_latest_kept() {
+        let (before, _) = last();
+        let list = cos(&[(1, true, "Bot", 1)]);
+        let o = record(7, json!("1950-01-01"), &list);
+        assert!(o.seq > before);
+        let (n, latest) = last();
+        assert!(n >= o.seq && latest.is_some());
+        assert_eq!(o.json()["companies"][0], json!({"id": 1, "is_ai": true}));
+        std::env::set_var("PRISMATIC_DIRECTIVE_MAX_AGE_DAYS", "3");
+        assert_eq!(max_age_days(), 3);
+        std::env::set_var("PRISMATIC_DIRECTIVE_MAX_AGE_DAYS", "-1");
+        assert_eq!(max_age_days(), MAX_AGE_DAYS);
+        std::env::remove_var("PRISMATIC_DIRECTIVE_MAX_AGE_DAYS");
+    }
 
     #[test]
     fn the_contracts_example_and_prismatics_answer_are_directives() {

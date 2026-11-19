@@ -2199,7 +2199,13 @@ fn h_bus_publish(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
 }
 
 fn h_bridge_companies(g: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
-    ok(panel_decision::companies(g)?)
+    ok(panel_decision::observe(g)?)
+}
+
+/// GET /api/bridge/observation: the latest answer of GET /api/bridge/companies as an observation.
+fn h_bridge_observation(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> {
+    let (count, latest) = panel_decision::last();
+    ok(json!({"observations": count, "latest": latest.map(|o| o.json()), "max_age_days": panel_decision::max_age_days()}))
 }
 
 fn h_decision_pull(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
@@ -2315,6 +2321,7 @@ pub fn routes() -> Vec<Route> {
           s(json!({"company": {"type": "integer"}, "name": st(), "value": {"type": "integer"}}), &["company", "name", "value"]), h_bot_setting),
         r("GET", "/api/bridge/companies", "bridgeCompanies", "Every company as the bridge's GET /companies answers it (CompanyOut: money, loan, income from the vehicles' profit, company value, vehicle counts), so Prismatic decides from this game with OPENTTD_BRIDGE_URL=<panel>/api/bridge (src/panel_decision.rs); each company's `history` (prismatic-history/v1, I0085) names the bus endpoint and the read-only store query of its samples, to fit from on /api/db/query", true,
           None, h_bridge_companies),
+        r("GET", "/api/bridge/observation", "bridgeObservation", "The latest answer of GET /api/bridge/companies as the observation a directive is bound to (research/agent-loop.md step 1): its number, game tick and date, the digest of the companies' identities and the age limit in game days; POST /api/decision/pull refuses a directive not decided from a current observation", false, None, h_bridge_observation),
         r("POST", "/api/decision/pull", "decisionPull", "Prismatic decides the bot: GET a decision directive {ai, company_id, settings} from url (default PRISMATIC_DECISION_URL), check it against research/prismatic-bridge/decision-contract.schema.json and apply it (settings on the running AI through openttd.ai.set_setting, approval-gated; else start_ai), answering a DecisionPullResult; the fit its working carries (prismatic-fit/v1) is recorded in plan.directive's inputs.stored, or the fallback when there is none", true,
           s(json!({"url": st()}), &[]), h_decision_pull),
         r("GET", "/api/plan", "plan", "A route plan: town pairs ranked by model v2 from the game's payment formula, vehicle speeds and base prices (tools/research/mcp-rhai src/plan.rs), each with its mode of transport (bus, rail, air), plus the best pairs of each mode; ?limit=N&params=JSON overrides any assumption (the answer echoes the effective params); &track=N prices the N best rail lines of each list on the real map with AlgoGlyph track-planning (line_costs) before the portfolio is chosen; &calibrate=1 adds `calibration`: every running line's real profit per vehicle (openttd://vehicles profit_last_year) against this plan's prediction for the same towns or industries, the median ratio per mode, and `params.calibration` to pass back as params (src/calibrate.rs); with track, &yards=N proves up to N transfer yards offline (yards: can the other line still leave from a platform beside the better line's, its tiles blocked; src/yards.rs)", true,
@@ -3122,7 +3129,8 @@ mod tests {
         // and the Rhai function catalogue (GET /api/rhai/functions; rhai_catalogue.rs, I0088), and the
         // shared memory (GET and POST /api/rhai/shared, POST /api/rhai/shared/delete; rhai_shared.rs, I0091).
         // And the debugger (POST /api/rhai/debug, GET /api/rhai/debug, POST /api/rhai/debug/command; I0090).
-        assert_eq!(rs.len(), 69);
+        // And the observation a directive is bound to (GET /api/bridge/observation; agent loop step 1).
+        assert_eq!(rs.len(), 70);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -3135,7 +3143,7 @@ mod tests {
             "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
             "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query",
             "/api/scripts", "/api/script", "/api/script/check", "/api/script/save",
-            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions", "/api/rhai/shared", "/api/rhai/shared/delete", "/api/rhai/debug", "/api/rhai/debug/command",
+            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions", "/api/rhai/shared", "/api/rhai/shared/delete", "/api/rhai/debug", "/api/rhai/debug/command", "/api/bridge/observation",
             "/api/realworld", "/api/realworld/scenario", "/api/realworld/compile"].contains(&r.path)));
     }
 
@@ -3718,7 +3726,7 @@ mod tests {
     }
 
     #[test]
-    fn a_directive_whose_call_fails_is_published_with_that_step_and_answers_502() {
+    fn a_directive_decided_without_an_observation_is_refused_and_published() {
         let l = TcpListener::bind("127.0.0.1:0").unwrap();
         let url = format!("http://{}/decision", l.local_addr().unwrap());
         thread::spawn(move || for mut c in l.incoming().flatten() {
@@ -3728,15 +3736,15 @@ mod tests {
         });
         let (g, p) = bare_panel("4");
         let since = g.bus.seq();
-        // No server: start_ai cannot be sent, so the one step fails.
+        // The stand-in never reads GET /api/bridge/companies, and this panel has no game to read: the
+        // directive is bound to nothing current, so nothing is tried (research/agent-loop.md step 1).
         let (code, out) = post_to(&p, "/api/decision/pull", json!({"url": url}));
-        assert_eq!(code, 502, "{out}");
-        assert!(out["error"].as_str().unwrap().contains("console is closed"), "{out}");
-        assert_eq!(out["applied_rcon"]["lines"][0], "start PrismaticAI: error the server's console is closed");
+        assert_eq!(code, 409, "{out}");
+        assert!(out["errors"][0].as_str().unwrap().contains("cannot be read"), "{out}");
+        assert!(out.get("applied_rcon").is_none(), "nothing applied: {out}");
         let ev = g.bus.since(since, &kinds_of("plan.directive"), 10);
-        assert_eq!(ev.len(), 1, "the directive is on the bus although applying it failed");
+        assert_eq!(ev.len(), 1, "the refusal is on the bus");
         let choice = &ev[0]["data"]["choice"];
-        assert_eq!((choice["accepted"].clone(), choice["outcome"].clone()), (json!(true), json!("failed")));
-        assert_eq!(choice["steps"][0]["state"], "error");
+        assert_eq!((choice["accepted"].clone(), choice["outcome"].clone()), (json!(false), json!("stale")));
     }
 }

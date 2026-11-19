@@ -19,7 +19,11 @@
 #       answered, and the plan.directive the store holds (read back through /api/db/query) names that
 #       query, those rows and the fit as inputs.stored; with Prismatic itself, a directive without a
 #       fit is recorded with its stated fallback instead;
-#   2b. the directive outside the contract carries no fit, and its plan.directive says so.
+#   2b. the directive outside the contract carries no fit, and its plan.directive says so;
+#   2c. (research/agent-loop.md step 1) the stand-in reads GET /api/bridge/companies while it decides,
+#       as Prismatic does, and echoes the observation's digest; a directive decided without observing,
+#       or naming an observation it was not served, is refused (409) with nothing applied, and the
+#       applied directive's plan.directive names its observation (3c).
 #
 # The run's store is its own ($TMP/store), never the user's.
 #
@@ -30,17 +34,21 @@
 # bridge URL once, at start, so give the panel a known port with --panel-port and start Prismatic
 # with OPENTTD_BRIDGE_URL=http://127.0.0.1:<that port>/api/bridge first.
 #
-# Usage: tools/research/mcp-decision-check [--bin PATH] [--panel-port N]   exit 0 PASS, 1 FAIL, 2 usage,
-#        3 no binary
+# Usage: tools/research/mcp-decision-check [--bin PATH] [--panel-port N] [--no-plan-bot]
+#        exit 0 PASS, 1 FAIL, 2 usage, 3 no binary
+# --no-plan-bot starts the bot without the planner first, so it runs within seconds: the decision
+# path does not need a plan, and on a loaded machine the planned start can outlast the 10-minute wait.
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BIN="$ROOT_DIR/build-gate-research/openttd"
 PANEL_PORT=""
+PLAN=()
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --bin) BIN="$2"; shift 2 ;;
     --panel-port) PANEL_PORT="$2"; shift 2 ;;
+    --no-plan-bot) PLAN=(--no-plan-bot); shift ;;
     -h|--help) sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0"; exit 0 ;;
     *) echo "mcp-decision-check: unknown option $1" >&2; exit 2 ;;
   esac
@@ -72,7 +80,7 @@ fail() { echo "FAIL $*"; FAILS=$((FAILS + 1)); }
 
 [[ -n "$PANEL_PORT" ]] || PANEL_PORT="$(free_port)"
 URL="http://127.0.0.1:$PANEL_PORT"
-"$ROOT_DIR/tools/research/mcp-e2e" --bin "$BIN" --no-gui --no-browser --panel-port "$PANEL_PORT" --seed 31337 \
+"$ROOT_DIR/tools/research/mcp-e2e" --bin "$BIN" --no-gui --no-browser "${PLAN[@]}" --panel-port "$PANEL_PORT" --seed 31337 \
   > "$TMP/e2e.log" 2>&1 &
 PIDS+=($!)
 echo "==> mcp-e2e (log $TMP/e2e.log), panel $URL"
@@ -136,12 +144,21 @@ fi
 
 # The stand-in Prismatic: answers whatever $TMP/directive.json holds, as prismatic_api would.
 STAND_PORT="$(free_port)"
-python3 -I - "$STAND_PORT" "$TMP/directive.json" > "$TMP/stand-in.log" 2>&1 <<'PY' &
-import http.server, sys
-port, path = int(sys.argv[1]), sys.argv[2]
+# Like Prismatic, it reads the panel's GET /api/bridge/companies while it decides (so the panel records
+# the observation the directive is bound to) and echoes that observation's digest. $TMP/mode makes it
+# misbehave on purpose: `blind` decides without observing, `wrong` echoes a digest it was not served.
+python3 -I - "$STAND_PORT" "$TMP/directive.json" "$URL" "$TMP/mode" > "$TMP/stand-in.log" 2>&1 <<'PY' &
+import http.server, json, sys, urllib.request
+port, path, panel, mode_file = int(sys.argv[1]), sys.argv[2], sys.argv[3], sys.argv[4]
 class H(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
-        body = open(path, 'rb').read()
+        directive = json.load(open(path))
+        mode = open(mode_file).read().strip()
+        if mode != 'blind' and isinstance(directive, dict) and directive:
+            urllib.request.urlopen(panel + '/api/bridge/companies', timeout=30).read()
+            seen = json.load(urllib.request.urlopen(panel + '/api/bridge/observation', timeout=30))
+            directive['observed_digest'] = '0000000000000000' if mode == 'wrong' else seen['latest']['digest']
+        body = json.dumps(directive).encode()
         self.send_response(200); self.send_header('Content-Type', 'application/json')
         self.send_header('Content-Length', str(len(body))); self.end_headers(); self.wfile.write(body)
     def log_message(self, *a): pass
@@ -150,6 +167,7 @@ PY
 PIDS+=($!)
 STAND="http://127.0.0.1:$STAND_PORT/api/openttd/decision"
 echo '{}' > "$TMP/directive.json"
+echo observe > "$TMP/mode"
 for ((i = 0; i < 50; i++)); do curl -s -m 1 -o /dev/null "$STAND" && break; sleep 0.2; done
 
 echo '{"ai": "", "company_id": 15, "settings": "aggressiveness=high"}' > "$TMP/directive.json"
@@ -182,6 +200,23 @@ else
             samples: {query: $q, query_url: $u, rows: $n, runs: 1}, quality: {rows_used: $n}}}' \
     > "$TMP/directive.json"
 fi
+# 2c. A directive not bound to what Prismatic observed is refused before any step (research/agent-loop.md
+#     step 1): decided without observing during the pull, or naming an observation it was not served.
+if [[ -z "${PRISMATIC_DECISION_URL:-}" ]]; then
+  for mode in blind wrong; do
+    echo "$mode" > "$TMP/mode"
+    code="$(curl -s -o "$TMP/r409.json" -w '%{http_code}' -m 60 -X POST -H 'Content-Type: application/json' \
+      -d "{\"url\": \"$STAND\"}" "$URL/api/decision/pull")"
+    want="$([[ $mode == blind ]] && echo 'without observing' || echo 'names observation')"
+    [[ "$code" == 409 && "$(jq -r '.errors | join(" ")' "$TMP/r409.json")" == *"$want"* && "$(jq 'has("applied_rcon")' "$TMP/r409.json")" == false ]] \
+      && pass "a directive $([[ $mode == blind ]] && echo 'decided without observing' || echo 'bound to another observation') is refused (409), nothing applied" \
+      || fail "the $mode directive answered $code: $(head -c 300 "$TMP/r409.json")"
+  done
+  [[ "$(jq -r '.choice.outcome' <<< "$(last_directive 0)")" == stale ]] \
+    && pass "the refusal is in the store as plan.directive with outcome stale" \
+    || fail "the refused directive's plan.directive: $(last_directive 0 | head -c 300)"
+  echo observe > "$TMP/mode"
+fi
 SEQ0="$(directive_seq)"
 curl -s -m 10 -X POST -H 'Content-Type: application/json' -d '{"on": true}' "$URL/api/auto-approve" > /dev/null
 curl -s -m 90 -X POST -H 'Content-Type: application/json' -d "{\"url\": \"$SRC\"}" "$URL/api/decision/pull" > "$TMP/pull.json"
@@ -201,6 +236,10 @@ curl -s -m 10 "$URL/api/events?kinds=panel.ai" | grep -q 'Prismatic decided' \
 # 3b. What the directive was fitted from, as the store holds its plan.directive.
 pd="$(last_directive "$SEQ0")"
 echo "$pd" > "$TMP/plan-directive.json"
+# 3c. ... and the observation it was decided from (research/agent-loop.md step 1).
+[[ "$(jq -r '.inputs.live.observation.digest // ""' <<< "$pd")" =~ ^[0-9a-f]{16}$ && "$(jq -r '.inputs.live.observation.age_ticks' <<< "$pd")" -ge 0 ]] \
+  && pass "the applied directive names its observation: digest $(jq -r '.inputs.live.observation.digest' <<< "$pd"), tick $(jq -r '.inputs.live.observation.tick' <<< "$pd"), $(jq -r '.inputs.live.observation.age_ticks' <<< "$pd") ticks old" \
+  || fail "the applied directive has no observation: $(jq -c '.inputs.live.observation' <<< "$pd" | head -c 300)"
 if [[ -n "${PRISMATIC_DECISION_URL:-}" ]] && ! jq -e '.inputs.live.directive.fit' <<< "$pd" > /dev/null 2>&1; then
   [[ -n "$(jq -r '.inputs.stored.fallback // empty' <<< "$pd")" && "$(jq -r '.choice.accepted' <<< "$pd")" == true ]] \
     && pass "Prismatic sent no fit; its plan.directive states the fallback: $(jq -r '.inputs.stored.fallback' <<< "$pd" | cut -c1-80)..." \
