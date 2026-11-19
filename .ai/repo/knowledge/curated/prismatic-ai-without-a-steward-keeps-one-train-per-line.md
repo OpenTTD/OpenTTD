@@ -143,6 +143,11 @@ defaults are its genes:
 - invest_air_cap 12, invest_borrow 1, invest_min 50 (thousand), invest_ppv_div 2, invest_road_cap 20,
 - line_budget 90000,
 - the autopilot's own-lines floor 10.
+Caveat (2026-11-19, later): those 20 pairs came from editions before 46dd8814f9, which replayed
+the same 6-8 seeds, so the result is partly fitted to those maps. Once every generation met
+new maps, the champion was even with `PrismaticAI pre-champion` (4 of 10 pairs). Pre-champion
+stays an anchor until 16 or more pairs on new maps exist, and then the promotion rule decides.
+The battle brain also learns only from the newest 10 editions (BRAIN_EDITIONS).
 max_routes and cash_reserve stay under the autopilot's floors. In short: fewer air routes, and
 investment that starts earlier, accepts lower returns, borrows, and lets routes grow further.
 
