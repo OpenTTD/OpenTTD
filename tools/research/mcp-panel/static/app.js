@@ -31,11 +31,16 @@ const pendingHtml = (pending) => (pending.length ? pending.map((p) => `
       <span class="min-w-0 font-mono break-all">#${p.id} ${esc(p.tool)}(${esc(JSON.stringify(p.args))})</span>
       <button data-approve="${p.id}" type="button" class="shrink-0 ${UI.primary}">Approve</button>
     </li>`).join('') : '<li>none</li>');
+/** A game string as a person reads it: OpenTTD's formatting codes (font, colour, sprites: the
+ *  private use area its strings carry them in) and control characters dropped, line breaks folded
+ *  into one space. */
+const gameText = (s) => String(s ?? '').replace(/[\ue000-\uf8ff\u0000-\u0008\u000b-\u001f\u007f-\u009f]/g, '')
+  .replace(/\s+/g, ' ').trim();
 /** One point of a Flowbite timeline: a time line and its text. */
 const timelineItem = (time, text, ink = 'text-gray-700 dark:text-gray-300') => `
     <li class="mb-3 ms-4"><div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
       <time class="text-xs font-normal leading-none text-gray-400 dark:text-gray-500">${time}</time>
-      <p class="text-sm ${ink}">${esc(text)}</p></li>`;
+      <p class="text-sm ${ink}">${esc(gameText(text))}</p></li>`;
 const eventsHtml = (events) => events.map((e) => timelineItem(`${esc(e.t)} · ${esc(e.kind)}`, e.text)).join('');
 /** The fleet as a player counts it (primary vehicles by type); an older server only has the pool
     count, which also counts wagons, parts and effects, and says so. */
@@ -422,7 +427,7 @@ if (window.EventSource) {
 
 if (typeof module !== 'undefined') {
   module.exports = {
-    money, pendingHtml, eventsHtml, fleetText, companiesHtml, decisionsHtml, clusterHtml, newsHtml,
+    money, gameText, pendingHtml, eventsHtml, fleetText, companiesHtml, decisionsHtml, clusterHtml, newsHtml,
     townOptions, asksHtml, planSummary, planStepsHtml, planGraphOption, contentRowsHtml, highlightJson,
     lineClass, consoleHtml, tailNames, NOTABLE, toastHtml, HELP,
   };

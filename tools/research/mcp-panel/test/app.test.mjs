@@ -451,3 +451,14 @@ test('timers refresh the page and the live view swaps in each new screenshot', a
   env.images.at(-1).onerror();
   assert.equal($('live-msg').textContent, 'no GUI client attached yet');
 });
+
+test("a game string loses OpenTTD's formatting codes before it is shown (news and events)", () => {
+  // The codes the live news carried on 2026-11-19 (U+E054 big font, U+E006 colour, U+E052, U+E055),
+  // around a fictional item, with the game's own line break and no-break space.
+  const raw = 'Service subsidy offered:\n\nFirst Coal from Fictional Mine to Fictional Plant pays for 1 year!';
+  assert.equal(app.gameText(raw), 'Service subsidy offered: First Coal from Fictional Mine to Fictional Plant pays for 1 year!');
+  const html = app.newsHtml([{ date: '1950-02-01', type: 'subsidies', text: raw }]) + app.eventsHtml([{ t: '12:00', kind: 'news', text: raw }]);
+  assert.doesNotMatch(html, /[-]/, 'no formatting code reaches the page');
+  assert.equal(app.gameText('built a <bus> route'), 'built a <bus> route', 'plain text is untouched (esc still escapes it)');
+  assert.equal(app.gameText(undefined), '');
+});

@@ -122,6 +122,11 @@ try {
   });
   check('a select keeps room for its chevron', look.chevron >= 28, `padding-right ${look.chevron}px`);
   check("the overview's controls are one height", look.heights.length === 1, `heights ${look.heights.join(', ')}`);
+  // 2026-11-19: the news showed OpenTTD's formatting codes (private use area) as boxes. No game
+  // string reaches the page with them, whichever feed it came through.
+  await page.waitForFunction(() => document.querySelectorAll('#news-list li').length > 0, null, { timeout: 8000 }).catch(() => {});
+  const codes = await page.evaluate(() => [...document.body.innerText].filter((c) => c.codePointAt(0) >= 0xe000 && c.codePointAt(0) <= 0xf8ff).length);
+  check("the page shows no game formatting code", codes === 0, `${codes} code(s) in the text`);
   // 2026-11-18: a long note pushed Maximize under it in three cards; at desktop width every card's
   // toolbar sits on its title's row.
   const heads = await page.evaluate(() => [...document.querySelectorAll('#overview [data-chart]')].map((card) => {
