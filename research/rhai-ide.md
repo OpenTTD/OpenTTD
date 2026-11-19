@@ -63,6 +63,31 @@ flowchart LR
 | I0092 | planned |
 | I0093 | planned |
 
+## What Prismatic offers over HTTP today
+
+A read-only survey of `~/dev/prismatic-platform` (2026-11-19; nothing there was changed) found:
+
+| Need | What exists | Usable from Rhai now |
+|---|---|---|
+| The API itself | `PrismaticApi.Endpoint` on `127.0.0.1:4004` in dev, started only with `START_PRISMATIC_API=true` | yes, when started |
+| The OpenTTD decision | `GET /api/openttd/decision?company_id=N`: loopback only, optional bearer `PRISMATIC_OPENTTD_TOKEN`, a Monte Carlo choice of `aggressiveness` | yes |
+| MCP tools | `POST /api/mcp/exec` `{"tool", "arguments"}`, `POST /api/mcp/jsonrpc`; loopback guard, optional `PRISMATIC_MCP_TOKEN`; profile `read_only` by default | yes, read-only tools |
+| A blackboard | `Prismatic.MCP.Blackboard` through the `blackboard.*` MCP tools (get, put, query, list_frames, ...) | only with `PRISMATIC_MCP_PROFILE=full_access`: every `blackboard.*` tool, reads included, is registered as not read-only |
+| `prismatic_blackboard` (the app) | an internal API (`put/get/query` on a named GenServer, atom-keyed frames) | **no**: no JSON route can carry its arguments |
+| Axon/EXLA inference | `Prismatic3NL.L2Learning.NeuralEngine` (`predict/2`, `load_model/2`), `ValuationModel`, `AxonBridge`: internal only | **no**: no route; `three_nl.analyze_l2` returns a hardcoded fallback |
+
+So I0092 has two halves (owner's answer 5 below): Rhai functions over what exists (the decision,
+MCP tools, the `blackboard.*` tools), and new loopback routes in prismatic-platform for
+`NeuralEngine` predict and load and for `prismatic_blackboard` put, get and query, done as their
+own task in that repository with its own tests. Until those routes exist, a `prismatic_*` call
+that needs them fails with a typed error naming the missing route, never with invented data.
+
+Beside this milestone, the AI battle already runs Axon on EXLA locally:
+`research/battle-brain.md` (on master, not yet on this branch) trains a small ensemble on the battle's records
+with prismatic-platform's compiled Nx/EXLA/Axon, and `prismatic_tune.rhai` applies its best
+settings through approval-gated tools. Its output, `brain.json`, is a second source a Rhai
+function can read.
+
 ## Constraints
 
 - **Nothing reaches the game outside its commands.** The debugger pauses a script, never the game;
@@ -74,8 +99,9 @@ flowchart LR
   typed into the page (rule `project.mcp-surfaces-are-derived`).
 - **CodeMirror comes from the panel's `node_modules`** through the allow-listed `/vendor/npm`
   route: no CDN and no committed copy, as for ECharts, three.js and D3.
-- **prismatic-platform is never modified from here.** If Prismatic lacks an HTTP route the
-  integration needs, that is recorded as a gap, not patched in its tree.
+- **prismatic-platform changes only in its own task.** If Prismatic lacks an HTTP route the
+  integration needs, the route is added in that repository as its own task, with its own tests
+  and commits (owner's answer 5), never from this tree.
 - **Rust builds run on lundra** while this Mac is under its disk floor (knowledge
   `a-rust-build-goes-to-lundra-when-this-mac-is-over-its-limits`).
 
@@ -95,3 +121,15 @@ quoted verbatim.
 3. *This Mac has 30 GiB free (the floor for heavy builds is 35), and the Rust work needs cargo
    builds. How do I build?* Options: offload to lundra (recommended); locally after freeing disk;
    locally anyway. Answer: **"Offload to lundra (Recommended)"**.
+4. *Push from this machine is blocked: the repository's mesh is enabled with trust policy
+   deny_unknown, and this machine's key (946e8aa5…) is not in trust.allow, so the pre-push finish
+   --check refuses every task. Should I enrol this machine (`majordomus mesh enrol`, commit the
+   change to .ai/repo/mesh)?* Options: enrol this machine (recommended); don't enrol.
+   Answer: **"Enrol this machine (Recommended)"**.
+5. *The prismatic-platform survey (read only): prismatic_api has NO working route for Axon/EXLA
+   inference (three_nl.analyze_l2 returns a hardcoded fallback; NeuralEngine.predict and the
+   others have no HTTP route). Its blackboard (prismatic_blackboard) has no usable HTTP surface;
+   only Prismatic.MCP.Blackboard is reachable through POST /api/mcp/exec, and only with
+   PRISMATIC_MCP_PROFILE=full_access. What scope should I0092 have?* Options: what exists plus
+   routes in Prismatic (recommended); only what exists; pause I0092.
+   Answer: **"What exists + routes in Prismatic (Recommended)"**.
