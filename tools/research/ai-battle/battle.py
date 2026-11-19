@@ -92,6 +92,40 @@ def load_config(path: Path) -> dict:
 
 # ------------------------------------------------------------------------------- self-tuning (GA)
 
+def paired_vs(matches: list[dict], base: str) -> list[dict]:
+    """Every contestant against `base` on the same seeds (common random numbers): pairs, mean value
+    ratio, wins. The paired comparison is what decides a default, not a GA score over few matches."""
+    by_seed: dict[int, dict[str, int]] = {}
+    for m in matches:
+        if m.get("status") != "done" or m.get("replica_of"):
+            continue
+        for f in m.get("standings") or []:
+            by_seed.setdefault(m["seed"], {})[f["key"]] = f["value"]
+    stats: dict[str, list] = {}
+    for vals in by_seed.values():
+        if base not in vals:
+            continue
+        for k, v in vals.items():
+            if k != base:
+                stats.setdefault(k, []).append((v, vals[base]))
+    out = []
+    for k, ps in stats.items():
+        ratios = [v / max(1, b) for v, b in ps]
+        out.append({"contestant": k, "pairs": len(ps), "ratio": round(sum(ratios) / len(ratios), 3),
+                    "wins": sum(v > b for v, b in ps)})
+    return sorted(out, key=lambda r: -r["ratio"])
+
+
+def promotions(matches: list[dict], rules: dict) -> list[dict]:
+    """Candidates for the bot's next default: a PrismaticAI configuration that beat the default on
+    at least `min_pairs` common seeds, winning at least `min_win_share` of them, with a mean value
+    ratio above `min_ratio`. Proposed, never applied: a default changes through a commit."""
+    base = rules.get("base", "PrismaticAI")
+    return [dict(r, base=base) for r in paired_vs(matches, base)
+            if r["contestant"].startswith("PrismaticAI") and r["pairs"] >= rules.get("min_pairs", 16)
+            and r["wins"] >= rules.get("min_win_share", 0.8) * r["pairs"] and r["ratio"] > rules.get("min_ratio", 1.05)]
+
+
 def tuning_path(cfg: dict) -> Path:
     return cfg["cache"] / "tuning" / "state.json"
 
@@ -812,6 +846,9 @@ OPENAPI = {
         "/api/tuning": {"get": {"summary": "Self-tuning: the generation, every variant's settings, "
                                            "parents and fitness, the anchors, and the history",
                                 "responses": {"200": {"description": "tuning state"}}}},
+        "/api/promotions": {"get": {"summary": "Every contestant paired with the default on common seeds, "
+                                               "and the configurations that qualify as its successor",
+                                    "responses": {"200": {"description": "paired, promotions"}}}},
         "/api/perf": {"get": {"summary": "Throughput per arena: game years per wall-clock minute",
                               "responses": {"200": {"description": "per-host throughput"}}}},
         "/api/query": {"get": {"summary": "Read-only SQL over the store (tables matches, samples, "
@@ -861,6 +898,7 @@ class Orchestrator:
         self.lock = threading.Lock()
         self.stop = threading.Event()
         self.events: list[dict] = []
+        self.promoted: set[str] = set()
 
     def save(self, m: dict) -> None:
         tmp = self.mdir / f"{m['id']}.json.tmp"
@@ -1058,6 +1096,14 @@ class Orchestrator:
                     self.event(f"ALERT {m['id']} on {m['host']}: {key} {a}")
         m["anomalies"] = {k: v for k, v in live.items() if v}
 
+    def announce_promotions(self) -> None:
+        for p in promotions(list(self.matches.values()), self.cfg.get("promotion", {})):
+            key = p["contestant"]
+            if key not in self.promoted:
+                self.promoted.add(key)
+                self.event(f"PROMOTE {key}: beat {p['base']} on {p['wins']}/{p['pairs']} common seeds, "
+                           f"mean ratio {p['ratio']}; candidate for the next default")
+
     def finish(self, m: dict, code: int) -> None:
         self.watch(m)
         m["standings"] = standings_of(m, self.cfg.get("anomaly_rules", {}))
@@ -1070,6 +1116,7 @@ class Orchestrator:
         m["perf"] = {"game_years": round(years, 2), "wall_s": round(wall, 1),
                      "years_per_min": round(years / max(wall, 1) * 60, 2)}
         self.save(m)
+        self.announce_promotions()
         for pm in m["postmortem"]:
             if pm["contestant"].startswith("PrismaticAI") and pm["findings"]:
                 self.event(f"POSTMORTEM {m['id']}: {pm['contestant']} {pm['gap']}x behind "
@@ -1132,6 +1179,8 @@ class Orchestrator:
                 "determinism": determinism(matches),
                 "perf": self.perf(),
                 "tuning": self.tuning_view(),
+                "paired": paired_vs(matches, self.cfg.get("promotion", {}).get("base", "PrismaticAI")),
+                "promotions": promotions(matches, self.cfg.get("promotion", {})),
                 "postmortems": [{"match": m["id"], "postmortem": m["postmortem"]} for m in matches
                                 if m.get("postmortem")][:12],
                 "events": list(self.events),
@@ -1172,6 +1221,9 @@ class Orchestrator:
                     self.json(orch.state()["hosts"])
                 elif path == "/api/tuning":
                     self.json(orch.tuning_view() or {"enabled": False})
+                elif path == "/api/promotions":
+                    st = orch.state()
+                    self.json({"paired": st["paired"], "promotions": st["promotions"]})
                 elif path == "/api/perf":
                     self.json(orch.perf())
                 elif path == "/api/postmortems":

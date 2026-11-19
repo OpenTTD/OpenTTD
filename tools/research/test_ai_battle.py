@@ -291,6 +291,23 @@ class Tuning(unittest.TestCase):
         self.assertEqual(battle.fitness_of("X", ms, 0.5)["score"], round(0.5 - 0.05 - 0.25, 4))
 
 
+class Promotion(unittest.TestCase):
+    @staticmethod
+    def m(seed, vals, **kw):
+        return dict({"status": "done", "seed": seed, "standings": [{"key": k, "value": v} for k, v in vals]}, **kw)
+
+    def test_pairs_on_common_seeds_and_promotes_only_clear_winners(self):
+        ms = [self.m(s, [("PrismaticAI", 100), ("PrismaticAI X", 130), ("AAAHogEx", 900)]) for s in range(18)]
+        ms += [self.m(s, [("PrismaticAI", 100), ("PrismaticAI Y", 104)]) for s in range(18)]
+        ms.append(self.m(99, [("PrismaticAI X", 1)]))                      # no default on that seed
+        ms.append(self.m(1, [("PrismaticAI", 1), ("PrismaticAI X", 999)], replica_of="m-1"))  # replay
+        pv = {r["contestant"]: r for r in battle.paired_vs(ms, "PrismaticAI")}
+        self.assertEqual((pv["PrismaticAI X"]["pairs"], pv["PrismaticAI X"]["wins"], pv["PrismaticAI X"]["ratio"]), (18, 18, 1.3))
+        promo = [p["contestant"] for p in battle.promotions(ms, {"min_pairs": 16, "min_win_share": 0.8, "min_ratio": 1.05})]
+        self.assertEqual(promo, ["PrismaticAI X"])                         # Y: +4% is below min_ratio
+        self.assertEqual(battle.promotions(ms, {"min_pairs": 20}), [])
+
+
 class Records(unittest.TestCase):
     NAME = "battle-20261119T000000-abcdef12.json"
 

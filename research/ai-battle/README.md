@@ -22,31 +22,32 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T110859-f063413c.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T110859-f063413c`](../results/battle-20261119T110859-f063413c.md) (0/1 replays identical).
+<!-- derived from research/results/battle-20261119T115424-5240c368.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T115424-5240c368`](../results/battle-20261119T115424-5240c368.md) (2/2 replays identical).
 
-- Edition `f063413cd336e1fe`: PrismaticAI and referee at `1f3400b85de084fcb4bb1230b95817962e917176`, base set `opengfx-8.0.tar`
+- Edition `5240c368db4cff47`: PrismaticAI and referee at `1f3400b85de084fcb4bb1230b95817962e917176`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 46 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-mec42cfe720), `mbp2` (20261119-master-gdf1e05e7d8), `ubuntu` (20261119-master-gdf1e05e7d8)
-- Replays: 0 of 1 identical to their original on another arena
+- 41 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-mec42cfe720), `mbp2` (20261119-master-gdf1e05e7d8), `ubuntu` (20261119-master-gdf1e05e7d8)
+- Replays: 2 of 2 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 46 | 46 | 184 | 4.0 | 1.0 | 93.3 M | 0 | 0 |
-| 2 | PrismaticAI | 7 | 0 | 21 | 3.0 | 2.0 | 17.3 M | 0 | 0 |
-| 3 | PrismaticAI GA g16.brainSafe | 6 | 0 | 18 | 3.0 | 2.0 | 13.6 M | 0 | 5 |
-| 4 | PrismaticAI GA g16.0 | 7 | 0 | 21 | 3.0 | 2.0 | 10.3 M | 0 | 0 |
-| 5 | PrismaticAI pre-champion | 7 | 0 | 20 | 2.857 | 2.14 | 14.1 M | 0 | 0 |
-| 6 | PrismaticAI GA g16.brainExplore | 7 | 0 | 20 | 2.857 | 2.14 | 8.5 M | 0 | 2 |
-| 7 | PrismaticAI GA g16.3 | 6 | 0 | 16 | 2.667 | 2.33 | 12.3 M | 0 | 0 |
-| 8 | PrismaticAI solo-max | 6 | 0 | 14 | 2.333 | 2.67 | 5.9 M | 0 | 6 |
-| 9 | AdmiralAI | 46 | 0 | 100 | 2.174 | 2.83 | 6.9 M | 59 | 2 |
-| 10 | LuDiAI AfterFix | 46 | 0 | 38 | 0.826 | 4.17 | 1.7 M | 0 | 2 |
-| 11 | CivilAI | 46 | 0 | 8 | 0.174 | 4.83 | 735.3 k | 0 | 10 |
+| 1 | AAAHogEx | 41 | 41 | 164 | 4.0 | 1.0 | 89.9 M | 0 | 0 |
+| 2 | PrismaticAI GA g19.brainExplore | 6 | 0 | 18 | 3.0 | 2.0 | 15.9 M | 0 | 3 |
+| 3 | PrismaticAI | 4 | 0 | 12 | 3.0 | 2.0 | 14.7 M | 0 | 0 |
+| 4 | PrismaticAI pre-champion | 7 | 0 | 21 | 3.0 | 2.0 | 14.1 M | 0 | 0 |
+| 5 | PrismaticAI GA g19.0 | 6 | 0 | 18 | 3.0 | 2.0 | 11.9 M | 0 | 2 |
+| 6 | PrismaticAI GA g19.brainSafe | 7 | 0 | 20 | 2.857 | 2.14 | 15.2 M | 0 | 1 |
+| 7 | PrismaticAI GA g19.3 | 6 | 0 | 17 | 2.833 | 2.17 | 15.3 M | 0 | 4 |
+| 8 | PrismaticAI solo-max | 5 | 0 | 12 | 2.4 | 2.6 | 5.3 M | 0 | 5 |
+| 9 | AdmiralAI | 41 | 0 | 85 | 2.073 | 2.93 | 6.9 M | 0 | 1 |
+| 10 | LuDiAI AfterFix | 41 | 0 | 32 | 0.78 | 4.22 | 1.6 M | 0 | 4 |
+| 11 | CivilAI | 41 | 0 | 11 | 0.268 | 4.73 | 737.6 k | 0 | 7 |
 
 | Seed | Original | Replay | Arenas | Identical |
 |---|---|---|---|---|
-| 1237256277 | m-0004 | m-0048 | imac / mbp | NO |
+| 1251879686 | m-0008 | m-0040 | mbp2 / mbp | yes |
+| 1251879686 | m-0007 | m-0048 | mbp2 / mbp | yes |
 <!-- battle:end -->
 
 ## How it fits together
@@ -256,6 +257,11 @@ The first editions showed two failures. The battle now catches both by itself.
 - **`PrismaticAI pre-champion`** (the defaults before the champion, as settings; only the
   autopilot's own-lines floor of 10 cannot be set back to 8) plays as an anchor, so the pairing
   keeps confirming the switch and the battle brain keeps a fixed baseline across it.
+- **Promotion, detected automatically.** The orchestrator pairs every contestant with the default on
+  common seeds (`/api/promotions`, the dashboard's *Paired with the default* panel). A PrismaticAI
+  configuration that beats it on at least `promotion.min_pairs` seeds, winning at least
+  `min_win_share` of them, with a mean ratio above `min_ratio`, is announced as a `PROMOTE` event.
+  It is a proposal: the default changes through a commit that passes the gate.
 - **Last places cost.** The score subtracts `last_penalty` x the share of matches a variant
   ended last, so explorers that end last are culled fast.
 - **Defaults.** A tuned variant is a candidate. It becomes a default only through held-start duel
