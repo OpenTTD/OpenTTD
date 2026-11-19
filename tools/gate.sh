@@ -43,7 +43,9 @@ Usage: $SELF <smoke|change|research|full> [options]
             (tools/knowledge/refs coverage src/, informational).
             When the change touches tools/research/real-world, also runs its
             cargo tests and replays the Brno snapshot against its recorded
-            hashes (offline).
+            hashes (offline). When it touches the Rhai host's Prismatic client
+            (tools/research/mcp-rhai/src/prismatic.rs), also requires 100% line
+            coverage of that file (cargo llvm-cov; NOT RUN, so PARTIAL, without it).
             Names the research tier when the change touches research-gated
             code.
 
@@ -221,6 +223,31 @@ panel_tests() {
   PANEL_CSS_CHECK="$css" node --test "$dir"/test/*.test.mjs
 }
 
+# Whether this change, staged or not, touches the Rhai host's Prismatic client (I0092).
+prismatic_changed() {
+  local files
+  files="$(changed_files)"
+  grep -qE '^tools/research/mcp-rhai/src/prismatic\.rs$' <<< "$files"
+}
+
+# The Prismatic client stays fully covered by its own tests (I0092; the owner asked for 100%):
+# cargo llvm-cov over mcp-rhai's tests, then every line of src/prismatic.rs executed at least once.
+# Without cargo-llvm-cov the step is NOT RUN and the tier PARTIAL, never PASS.
+prismatic_coverage() {
+  local dir=tools/research/mcp-rhai lcov
+  if ! cargo llvm-cov --version >/dev/null 2>&1; then
+    echo "src/prismatic.rs coverage: NOT RUN -- cargo-llvm-cov is not installed (cargo install cargo-llvm-cov)"
+    return "$EXIT_PARTIAL"
+  fi
+  lcov="$(mktemp)"
+  echo "==> cargo llvm-cov --release --bin mcp-rhai ($dir; src/prismatic.rs must be 100% covered)"
+  (cd "$dir" && cargo llvm-cov --release --bin mcp-rhai --lcov --output-path "$lcov" --quiet)
+  awk '/^SF:.*\/src\/prismatic\.rs$/ { f = 1 } /^end_of_record/ { f = 0 }
+       f && /^DA:/ { split($0, a, /[:,]/); n++; if (a[3] == 0) { z++; missed = missed " " a[2] } }
+       END { printf "src/prismatic.rs: %d of %d lines covered%s\n", n - z, n, (z ? ", missed:" missed : "");
+             exit (n == 0 || z > 0) }' "$lcov"
+}
+
 # Whether this change, staged or not, touches the real-world scenario pipeline.
 real_world_changed() {
   local files
@@ -302,6 +329,7 @@ cmd_change() {
     python3 -B tools/research/ai-battle/battle.py fitness
   fi
   if real_world_changed; then real_world_tests; fi
+  if prismatic_changed; then prismatic_coverage || status=$?; fi
 
   if [[ ! -f build/CMakeCache.txt ]]; then
     echo "==> cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo (initial configure)"

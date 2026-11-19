@@ -60,7 +60,7 @@ flowchart LR
 | I0089 | **done**: CodeMirror 6 on the Scripts page; `tools/research/mcp-scripts-check` against a live panel 19/19 (CodeMirror loads, colours, numbers lines, marks and underlines a parse error, completes `rpc`, saves, reloads a service, runs once, no horizontal scroll at 390 px); `node --test` 265/265 |
 | I0090 | **done**: `src/rhai_debug.rs` on rhai's debugging interface; `POST /api/rhai/debug`, `GET /api/rhai/debug`, `POST /api/rhai/debug/command`; a breakpoint gutter, the paused line highlighted, Continue/Step/Over/Out/Stop and F5/F10/F11 keys, the scope and the call stack on the page; `cargo test` 153/153 (7 new: breakpoint, into, out, over, stop, breakpoints changed while paused, run-through); live: `mcp-scripts-check` 29/29 (gutter click, pause at line 6, highlight, scope `x = 1`, Step into `add`, Continue to the end), `mcp-route-check` 841 passed 0 failed |
 | I0091 | **done**: `src/rhai_shared.rs`, `GET/POST /api/rhai/shared`, `POST /api/rhai/shared/delete`, Rhai `shared_get`, `shared_entry`, `shared_set`, `shared_cas`, `shared_delete`, `shared_keys`; the Scripts page's live Shared memory table; `cargo test` 146/146 (7 new, among them 8 threads × 50 compare-and-swap increments losing none); live: `mcp-scripts-check` 23/23, `mcp-route-check` 838 passed 0 failed, every write a `rhai.shared` event in the DuckDB store; not a session console (deferred: a script runs once or as a service, see I0090) |
-| I0092 | planned |
+| I0092 | **done for this repository**: `src/prismatic.rs` and the `prismatic_*` Rhai functions over what prismatic_api serves (the decision, MCP tools and exec, the `blackboard.*` tools); 100% line coverage (272/272, `cargo llvm-cov`), enforced by `tools/gate.sh change` (proven to fail at 272 of 275); contract tests on a fixture server 10/10 (refusals, timeouts, a silent server, off-contract answers, tokens never in a URL or an error); `tools/research/prismatic-rhai-check` against a live prismatic_api `NOT RUN` (nothing answers on 4004), against a fixture 6/6. Not done: the new loopback routes in prismatic-platform for Axon/EXLA inference and `prismatic_blackboard` (owner's answer 5: that repository's own task) |
 | I0093 | planned |
 
 ## What Prismatic offers over HTTP today
@@ -110,6 +110,29 @@ as a claim (`shared_cas("lock.steward", 0, "me")` succeeds once). Every write an
 What it is not: durable (a restarted panel starts empty; the store keeps the history), shared
 between panels (each panel has its own), or authenticated (`writer` is what the script declares,
 `$MCP_RHAI_WRITER` or `rhai`). Coordination between agent sessions stays on the Majordomus mesh.
+
+## Rhai and Prismatic
+
+`prismatic_decision()`, `prismatic_tools()`, `prismatic_exec(tool, args)`, `prismatic_bb_get`,
+`prismatic_bb_put` and `prismatic_bb_query` call prismatic_api on loopback (`$PRISMATIC_URL`,
+default `http://127.0.0.1:4004`; anything off loopback is refused before a request is made). Tokens
+come from `$PRISMATIC_OPENTTD_TOKEN` and `$PRISMATIC_MCP_TOKEN` and go only into an `Authorization`
+header. Every answer is checked before a script sees it: the decision against the contract
+(`ai`, `settings` as `name=int` pairs, `chosen_aggressiveness` 0-100, `expected_value`, its
+`candidates`), a tool's answer against Prismatic's `{ok, data | error}` envelope. Every failure is
+one error a script catches with `try`/`catch`, its text beginning with its kind:
+
+| Text begins | Meaning |
+|---|---|
+| `prismatic: configuration` | the address is off loopback, a tool name is malformed, a blackboard value is not a map |
+| `prismatic: unreachable` | nothing answered, the connection broke or timed out |
+| `prismatic: refused (<status> <code>)` | Prismatic answered with its own error code, e.g. `BRIDGE_UNREACHABLE`, `PROFILE_READ_ONLY` |
+| `prismatic: invalid answer` | Prismatic answered, but not what the contract says |
+
+What a script cannot get yet: inference from Prismatic's Axon/EXLA models and the
+`prismatic_blackboard` app, because prismatic_api has no route for them. A call that would need one
+is refused with Prismatic's 404, never answered with made-up data. The `blackboard.*` tools answer
+only when Prismatic runs with `PRISMATIC_MCP_PROFILE=full_access`, and a refusal says so.
 
 ## Doc comments are for functions
 

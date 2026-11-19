@@ -37,6 +37,13 @@
 //!   shared_delete(key)                 -> bool  delete it; false when it was absent
 //!   shared_keys()  shared_keys(prefix) -> array the keys, in order; every write is a rhai.shared event,
 //!                                               and the writer is $MCP_RHAI_WRITER, else "rhai"
+//!   prismatic_decision()  prismatic_decision(company)  -> map  Prismatic's decision for the bot, checked
+//!                                               against the contract (prismatic.rs; $PRISMATIC_URL, loopback)
+//!   prismatic_tools()                  -> array Prismatic's MCP tools
+//!   prismatic_exec(tool, args)         -> any   one of Prismatic's MCP tools, its data
+//!   prismatic_bb_get(frame, key)  prismatic_bb_put(frame, key, map)  prismatic_bb_query(frame, limit)
+//!                                               Prismatic's blackboard (its blackboard.* MCP tools); every
+//!                                               failure is an error whose text begins "prismatic: <kind>"
 //!   env(name)
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
@@ -53,6 +60,7 @@ mod algoglyph;
 mod board;
 mod graph;
 mod plan;
+mod prismatic;
 
 use rhai::{Dynamic, Engine, EvalAltResult, Map};
 use serde_json::{json, Value};
@@ -328,6 +336,8 @@ fn engine(panel: Panel) -> Engine {
     let k0 = keys.clone();
     e.register_fn("shared_keys", move || -> R<Dynamic> { k0("") });
     e.register_fn("shared_keys", move |prefix: &str| -> R<Dynamic> { keys(prefix) });
+    // Prismatic over loopback HTTP (src/prismatic.rs, I0092).
+    prismatic::register(&mut e);
     e.register_fn("loopback_get", loopback_get);
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));

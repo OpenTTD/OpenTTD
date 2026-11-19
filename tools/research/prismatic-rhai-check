@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: Rhai's prismatic_* functions (tools/research/mcp-rhai/src/prismatic.rs, I0092)
+# against a live prismatic_api on loopback. The contract tests in prismatic.rs answer every function
+# from a fixture; this check is the other half: the real service.
+#
+# Each line is PASS, FAIL or NOT RUN. A typed refusal (the bridge unreachable for a decision, the
+# read_only profile for a blackboard write) is the client working as specified and is reported as
+# such, with Prismatic's own code; only an untyped error or a wrong shape is a FAIL.
+#
+# Usage: tools/research/prismatic-rhai-check [prismatic-url]
+#        (default $PRISMATIC_URL, else http://127.0.0.1:4004; start the API in prismatic-platform
+#        with START_PRISMATIC_API=true)
+# Exit: 0 every call answered as specified, 1 a call did not, 3 NOT RUN (nothing answers there),
+#       2 bad usage.
+set -euo pipefail
+
+case "${1:-}" in
+  -h|--help) sed -n '2,/^[^#]/s/^# \{0,1\}//p' "$0"; exit 0 ;;
+  -*) echo "prismatic-rhai-check: unknown option $1 (-h prints the usage)" >&2; exit 2 ;;
+esac
+URL="${1:-${PRISMATIC_URL:-http://127.0.0.1:4004}}"
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+RHAI="$HERE/mcp-rhai/target/release/mcp-rhai"
+
+if ! curl -sf -m 5 "$URL/api/v1/health" >/dev/null 2>&1; then
+  echo "NOT RUN  prismatic_api: nothing answers $URL/api/v1/health (start it in prismatic-platform with START_PRISMATIC_API=true)"
+  exit 3
+fi
+if [[ ! -x "$RHAI" ]]; then
+  echo "NOT RUN  mcp-rhai is not built: cargo build --release --manifest-path $HERE/mcp-rhai/Cargo.toml --bin mcp-rhai"
+  exit 3
+fi
+
+# One script calls every function; each prints "<name>|<ok or the error text>". No panel is needed
+# (port 1 refuses at once, so nothing is derived from another stack).
+out="$(PRISMATIC_URL="$URL" "$RHAI" --panel http://127.0.0.1:1 -e '
+fn try_call(name, f) {
+    let r = "";
+    try { let v = call(f); r = "ok " + type_of(v); } catch (e) { r = "" + e; }
+    print(name + "|" + r);
+}
+try_call("prismatic_tools", || prismatic_tools());
+try_call("prismatic_decision", || prismatic_decision());
+try_call("prismatic_exec", || prismatic_exec("blackboard.list_frames", #{}));
+try_call("prismatic_bb_get", || prismatic_bb_get("openttd", "prismatic-rhai-check"));
+try_call("prismatic_bb_put", || prismatic_bb_put("openttd", "prismatic-rhai-check", #{at: timestamp().elapsed}));
+try_call("prismatic_bb_query", || prismatic_bb_query("openttd", 5));
+' 2>&1)" || true
+
+fail=0
+while IFS='|' read -r name result; do
+  [[ -z "$name" ]] && continue
+  case "$result" in
+    ok*) echo "PASS     $name -> ${result#ok }" ;;
+    "prismatic: refused"*) echo "PASS     $name -> typed refusal: ${result#prismatic: }" ;;
+    *) echo "FAIL     $name -> $result"; fail=1 ;;
+  esac
+done < <(grep '|' <<< "$out")
+if ! grep -q '|' <<< "$out"; then echo "FAIL     mcp-rhai printed no result: $out"; fail=1; fi
+echo "prismatic-rhai-check: $([[ $fail -eq 0 ]] && echo PASS || echo FAIL) against $URL"
+exit "$fail"

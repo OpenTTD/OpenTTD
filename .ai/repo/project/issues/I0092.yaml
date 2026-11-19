@@ -29,3 +29,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-19'
+started_at: 2026-11-19T14:42:47Z
+started_event: sha256:d785a2cb954b28efea7809eca64bc44b8997dd58a20ea4f28aee07c3832f469c
+updated_at: 2026-11-19T14:42:58Z
+verified_at: 2026-11-19T14:42:51Z
+verified_event: sha256:eb2fa0ed9b5de5c97dd04c88f274b091125b78b59cf9d680a15c00f90edaa8d4
+completed_at: 2026-11-19T14:42:58Z
+completed_event: sha256:fe74b80c3e609b361cb23df0e07a23967b991e191e74a2df891cc53fe576b499
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo llvm-cov --release --bin mcp-rhai (gate step prismatic_coverage); cargo test --release --bin mcp-rhai; cargo test --release --bin mcp-panel; tools/research/prismatic-rhai-check"
+    result: "src/prismatic.rs 272/272 lines (100%); the gate step fails at 272/275 with an untested function; mcp-rhai 35/35 (10 contract tests), mcp-panel 163/163; prismatic-rhai-check NOT RUN live (nothing on 4004, exit 3), 6/6 against a fixture"
+    commit: d795cfb79cb80efc28d225f08623a8e782f34958
+    recorded_at: 2026-11-19T14:42:55Z

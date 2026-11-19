@@ -154,10 +154,15 @@ every function a script can call, from `GET /api/rhai/functions` (host functions
 tool, OpenAPI route and console command, and every library function under the alias a script
 imports it as). A script runs once with its output streamed, or as a service that reloads when its
 file changes, or under the debugger: breakpoints in the gutter, step into, over and out, the
-variables in scope and the call stack while it is paused. Scripts and services share keys through `shared_set`, `shared_get` and `shared_cas`
+variables in scope and the call stack while it is paused. Scripts and services share keys through
+`shared_set`, `shared_get` and `shared_cas`
 (a write that names the revision it expects, so concurrent writers never lose an update), shown
-live on the page, every write a `rhai.shared` event on the bus
-([`research/rhai-ide.md`](research/rhai-ide.md)). Examples from [`tools/research/mcp-panel/rhai/`](tools/research/mcp-panel/rhai/):
+live on the page, every write a `rhai.shared` event on the bus. Scripts also
+call Prismatic on loopback (`prismatic_decision`, `prismatic_exec`, `prismatic_bb_get`, ...), every
+answer checked against its contract and every failure a typed error
+([`research/rhai-ide.md`](research/rhai-ide.md)).
+
+Examples from [`tools/research/mcp-panel/rhai/`](tools/research/mcp-panel/rhai/):
 
 | Script | What it does in the running game |
 |---|---|
@@ -513,7 +518,7 @@ from the code. The right-hand column says what was counted.
 | **22** | [live MCP resources (`openttd://…`): map, towns, stations, vehicles, companies, …](research/prismatic-mcp/07-resource-catalog.md) | `^\s*\{"openttd://` in `src/prismatic_mcp/prismatic_mcp_server.cpp` |
 | **27** | [unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)](research/prismatic-mcp/09-testing.md) | `^TEST_CASE\(` in `src/tests/test_prismatic_mcp.cpp` |
 | **63** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
-| **38** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
+| **39** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
 | **10** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
 | **14** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
 | **35** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
@@ -1339,7 +1344,7 @@ Milestones of the plan with the issues done and still open, derived from the iss
 | [The fork is published, supervised by Majordomus, and current with upstream](.ai/repo/project/milestones/the-fork-is-published-supervised-and-current.yaml) | 7/7 | — |
 | [NoirGFX: the game in the owner's SIG NIHL noir, from OpenGFX and Kenney models](.ai/repo/project/milestones/the-game-wears-the-owners-noir-style.yaml) | 1/1 | — |
 | [Planning decisions read recorded history from the store and publish what they chose as data](.ai/repo/project/milestones/planning-is-generated-from-recorded-history.yaml) | 7/7 | — |
-| [Rhai is a live IDE: edited, run, debugged and inspected in the panel, and it reaches Prismatic's models and blackboard](.ai/repo/project/milestones/rhai-is-a-live-ide.yaml) | 4/6 | I0092, I0093 |
+| [Rhai is a live IDE: edited, run, debugged and inspected in the panel, and it reaches Prismatic's models and blackboard](.ai/repo/project/milestones/rhai-is-a-live-ide.yaml) | 5/6 | I0093 |
 <!-- surfaces:end ai-plan -->
 
 ## 1.0) About
