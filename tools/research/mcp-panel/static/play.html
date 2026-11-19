@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Play · OpenTTD MCP</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 antialiased" data-page="play" data-description="The running game in your browser: the real OpenTTD client in WebAssembly draws every frame here and joins the server over a WebSocket; only the game's own network packets cross the wire.">
+  <script src="/static/shell.js"></script>
+
+  <main>
+    <!-- The stage fills the rest of the screen; Fullscreen hands the whole screen to it (canvas + HUD). -->
+    <section id="stage" class="relative w-full overflow-hidden bg-black rounded-xl border border-gray-200 dark:border-gray-700 h-[calc(100vh-14rem)] min-h-[24rem]" aria-label="Game">
+      <canvas id="canvas" class="block w-full h-full outline-none" tabindex="0" oncontextmenu="event.preventDefault()"></canvas>
+
+      <!-- HUD: top bar over the game, out of the way, always readable. -->
+      <div id="hud" class="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-2 sm:p-3">
+        <div class="pointer-events-auto flex items-center gap-2 rounded-lg bg-gray-900/70 backdrop-blur px-3 py-1.5 border border-gray-700 text-xs text-gray-200">
+          <span id="play-dot" class="inline-block w-2 h-2 rounded-full bg-gray-500" aria-hidden="true"></span>
+          <span id="play-state" aria-live="polite">loading</span>
+          <span class="hidden sm:inline text-gray-500">·</span>
+          <span id="play-fps" class="hidden sm:inline tabular-nums text-gray-400"></span>
+        </div>
+        <div class="pointer-events-auto flex items-center gap-1">
+          <button id="play-focus" type="button" title="Give the keyboard to the game" class="hidden sm:inline-flex items-center rounded-lg bg-gray-900/70 backdrop-blur border border-gray-700 px-3 py-1.5 text-xs font-medium text-gray-200 hover:bg-gray-800 focus:ring-2 focus:ring-primary-500 focus:outline-none">Keyboard</button>
+          <button id="play-fullscreen" type="button" title="Fullscreen (F)" class="inline-flex items-center gap-1.5 text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            <svg class="w-3.5 h-3.5" aria-hidden="true" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+            <span>Fullscreen</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- One overlay for every state the game is not playing in: loading, not built, joining, lost. -->
+      <div id="play-overlay" class="absolute inset-0 flex items-center justify-center p-6 bg-gray-950/80">
+        <div class="max-w-lg w-full rounded-xl border border-gray-700 bg-gray-900 p-6 text-center shadow-xl">
+          <div id="play-spinner" role="status" class="mx-auto mb-4 w-8 h-8 rounded-full border-2 border-gray-600 border-t-primary-500 animate-spin motion-reduce:animate-none"></div>
+          <p id="play-title" role="heading" aria-level="2" class="text-base font-semibold text-white">Loading the game</p>
+          <p id="play-message" class="mt-2 text-sm text-gray-400">Fetching the WebAssembly client…</p>
+          <pre id="play-command" class="hidden mt-4 text-left text-xs font-mono whitespace-pre-wrap rounded-lg bg-gray-950 border border-gray-800 p-3 text-green-300"></pre>
+          <progress id="play-progress" class="hidden mt-4 w-full h-1.5 accent-primary-500" max="1" value="0"></progress>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-500 dark:text-gray-400">
+      <span><kbd class="px-1.5 py-0.5 rounded border border-gray-600 bg-gray-800 text-gray-300">F</kbd> fullscreen</span>
+      <span><kbd class="px-1.5 py-0.5 rounded border border-gray-600 bg-gray-800 text-gray-300">Esc</kbd> leave fullscreen</span>
+      <span>Joins as a spectator: open the company window in the game to start your own company.</span>
+      <span id="play-build" class="font-mono"></span>
+    </div>
+  </main>
+
+  <script src="/vendor/flowbite.min.js"></script>
+  <script src="/static/play.js"></script>
+</body>
+</html>

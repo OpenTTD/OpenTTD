@@ -35,6 +35,8 @@ mod rhai_host;
 mod panel;
 #[path = "../panel_bot.rs"]
 mod panel_bot;
+#[path = "../panel_play.rs"]
+mod panel_play;
 #[path = "../panel_decision.rs"]
 mod panel_decision;
 #[path = "../panel_events.rs"]

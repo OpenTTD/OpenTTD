@@ -2468,6 +2468,20 @@ pub fn openapi_doc(routes: &[Route], derived: &[Derived], panel_port: u16) -> Va
         "responses": {"200": {"description": "text/event-stream"}}}}));
     paths.insert("/api/view/screenshot".into(), json!({"get": {"operationId": "viewScreenshot", "tags": ["view"],
         "summary": "What the attached GUI client shows right now, as PNG", "responses": {"200": {"description": "image/png"}}}}));
+    paths.insert("/play".into(), json!({"get": {"operationId": "playPage", "tags": ["play"],
+        "summary": "Play the running game in the browser: the real OpenTTD client in WebAssembly, fullscreen (research/play-in-browser.md)",
+        "responses": {"200": {"description": "text/html"}}}}));
+    paths.insert("/api/play".into(), json!({"get": {"operationId": "playState", "tags": ["play"],
+        "summary": "Whether the WebAssembly client is built, where, and the bridge it joins through",
+        "responses": {"200": {"description": "application/json"}}}}));
+    paths.insert("/play/{file}".into(), json!({"get": {"operationId": "playFile", "tags": ["play"],
+        "summary": "A file of the built WebAssembly client: openttd.js, openttd.wasm or openttd.data",
+        "parameters": [{"name": "file", "in": "path", "required": true, "schema": {"type": "string", "enum": ["openttd.js", "openttd.wasm", "openttd.data"]}}],
+        "responses": {"200": {"description": "the file"}, "404": {"description": "not built"}}}}));
+    // Not a read: a player's commands travel over it (readOnlyHint false keeps the hub from probing it).
+    paths.insert("/ws/game".into(), json!({"get": {"operationId": "playBridge", "tags": ["play"], "x-mcp-annotations": {"readOnlyHint": false},
+        "summary": "WebSocket upgrade: raw bytes to and from the game server (127.0.0.1:<game port>), the panel's own pages only (Origin), subprotocol binary",
+        "responses": {"101": {"description": "switching protocols"}, "403": {"description": "foreign origin"}, "503": {"description": "too many bridges"}}}}));
     paths.insert("/api/events/stream".into(), json!({"get": {"operationId": "eventStream", "tags": ["events"],
         "summary": "Server-sent events: every event as it is published (?since=, ?kinds=)",
         "responses": {"200": {"description": "text/event-stream"}}}}));
@@ -2736,6 +2750,11 @@ impl Panel {
     }
 
     pub fn handle(&self, mut stream: TcpStream) {
+        // The browser's OpenTTD (WASM) joins the game through this bridge (src/panel_play.rs). It is
+        // told apart before the request is read, because the WebSocket handshake needs it unread.
+        if crate::panel_play::is_game_upgrade(&stream) {
+            return crate::panel_play::bridge(stream, self.game.args.panel_port, self.game.args.game_port);
+        }
         let Some(req) = read_request(&mut stream) else { return };
         let g = &self.game;
         let file = |stream: TcpStream, f: PathBuf, ctype: &str| match std::fs::read(&f) {
@@ -2766,6 +2785,12 @@ impl Panel {
                 "/" | "/index.html" => return file(stream, statics().join("index.html"), "text/html; charset=utf-8"),
                 "/ui" => return file(stream, statics().join("ui.html"), "text/html; charset=utf-8"),
                 "/world" => return file(stream, statics().join("world.html"), "text/html; charset=utf-8"),
+                "/play" => return file(stream, statics().join("play.html"), "text/html; charset=utf-8"),
+                "/api/play" => {
+                    let dir = crate::panel_play::play_dir(&here().join("../../.."));
+                    return send_json(stream, 200, &json!({"built": crate::panel_play::play_built(&dir), "dir": dir.display().to_string(),
+                        "game_port": g.args.game_port, "bridge": "/ws/game", "max_bridges": crate::panel_play::MAX_BRIDGES}));
+                }
                 "/docs" => return hub::respond(stream, 200, "text/html; charset=utf-8", SWAGGER_HTML.as_bytes()),
                 "/openapi.json" => return send_json(stream, 200, &openapi_doc(&self.routes, &live_derived(g), g.args.panel_port)),
                 "/api/view/screenshot" => return match screenshot(g) {
@@ -2843,6 +2868,13 @@ impl Panel {
                 return match std::fs::read(here().join("node_modules").join(rel)) {
                     Ok(b) => hub::respond(stream, 200, ctype, &b),
                     Err(_) => send_json(stream, 404, &json!({"error": "run npm ci in tools/research/mcp-panel"})),
+                };
+            }
+            if let Some(name) = path.strip_prefix("/play/") {
+                let dir = crate::panel_play::play_dir(&here().join("../../.."));
+                return match crate::panel_play::play_file(&dir, name) {
+                    Some((f, ctype)) => file(stream, f, ctype),
+                    None => send_json(stream, 404, &json!({"error": "not built: see research/play-in-browser.md"})),
                 };
             }
             if let Some(rel) = path.strip_prefix("/static/") {
@@ -3217,10 +3249,12 @@ mod tests {
         assert!(paths["/api/resources/map"]["get"].get("requestBody").is_none());
         assert_eq!(paths["/api/events"]["get"]["parameters"].as_array().unwrap().len(), 3);
         assert_eq!(paths["/api/plan"]["get"]["parameters"][2]["name"], "track");
-        for p in ["/api/rhai/stream", "/api/view/screenshot", "/api/events/stream"] { assert!(paths.contains_key(p)); }
+        for p in ["/api/rhai/stream", "/api/view/screenshot", "/api/events/stream", "/play", "/api/play", "/play/{file}", "/ws/game"] { assert!(paths.contains_key(p)); }
+        assert_eq!(paths["/ws/game"]["get"]["x-mcp-annotations"]["readOnlyHint"], json!(false), "the game bridge is no read");
         // GET and POST on one path are two operations of one path item.
         assert!(paths["/api/news"].get("get").is_some() && paths["/api/news"].get("post").is_some());
-        assert_eq!(paths.len(), rs.iter().map(|r| r.path).collect::<HashSet<_>>().len() + 3 + derived.len());
+        // + the declared-by-hand paths: three streams/binaries and the four Play routes (panel_play.rs).
+        assert_eq!(paths.len(), rs.iter().map(|r| r.path).collect::<HashSet<_>>().len() + 7 + derived.len());
         // The hub reads the same document into the same operations.
         let ops = hub::ops_from_openapi("panel-1", &doc);
         assert!(ops.iter().any(|o| o.id == "tool_openttd_decision_validate" && o.read_only));

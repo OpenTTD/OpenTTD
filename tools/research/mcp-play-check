@@ -1,0 +1,81 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY. The Play page (/play, research/play-in-browser.md) in a real Chrome: it comes up in the
+// one shell with its sidebar entry current, throws no page error, does not scroll sideways at phone
+// width (390 px), and has its stage, canvas and Fullscreen button. When the WebAssembly client is built
+// (/api/play built:true) it also loads it, waits until the client runs, and proves the client joined
+// the game through the panel's WebSocket bridge: the server's own `clients` list grows by one. With
+// the client not built, the page must say so and how to build it, and the join is NOT RUN (said so).
+//
+// e2e-covers: panel /play
+//
+// Usage: tools/research/mcp-play-check <panel-url> [--join-timeout 180] [--shots DIR]
+// Exit 0 when every check passes, 1 otherwise, 2 on bad usage. Drives the installed Chrome through
+// playwright-core (npm ci in tools/research/mcp-panel); CHROME overrides its path.
+import fs from 'node:fs';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const here = path.dirname(new URL(import.meta.url).pathname);
+const { chromium } = createRequire(path.join(here, 'mcp-panel', 'package.json'))('playwright-core');
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const argv = process.argv.slice(2);
+const opt = (name) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] : '');
+const values = new Set([opt('--join-timeout'), opt('--shots')].filter(Boolean));
+const base = (argv.find((a) => !a.startsWith('--') && !values.has(a)) || '').replace(/\/$/, '');
+const joinTimeout = Number(opt('--join-timeout') || 180) * 1000;
+const shots = opt('--shots');
+if (!base) { console.error('usage: mcp-play-check <panel-url> [--join-timeout 180] [--shots DIR]'); process.exit(2); }
+
+const results = [];
+const check = (name, ok, detail = '') => { results.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` (${detail})` : ''}`); };
+const clients = async () => {
+  const r = await fetch(`${base}/api/console`, { method: 'POST', headers: { 'content-type': 'application/json', origin: base },
+    body: JSON.stringify({ command: 'clients' }) }).then((x) => x.json()).catch(() => ({}));
+  const lines = [].concat(r.lines || r.output || r.result || []).map(String);
+  return lines.filter((l) => /^Client #\d+/.test(l.trim())).length;
+};
+
+const info = await fetch(`${base}/api/play`).then((r) => r.json()).catch((e) => ({ error: String(e) }));
+check('panel /api/play: answers with built and game_port', typeof info.built === 'boolean' && Number(info.game_port) > 0, JSON.stringify(info));
+
+const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ['--use-gl=angle', '--enable-unsafe-swiftshader'] });
+try {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  const before = info.built ? await clients() : 0;
+  const resp = await page.goto(`${base}/play`, { waitUntil: 'load' }).catch((e) => ({ status: () => `error ${e.message}` }));
+  check('panel /play: answers', resp && resp.status() === 200, `HTTP ${resp && resp.status()}`);
+  const current = await page.$eval('#sidebar [aria-current="page"]', (a) => a.getAttribute('href')).catch(() => '');
+  check('panel /play: in the one shell, its sidebar entry current', current === '/play', current || 'no current entry');
+  check('panel /play: one H1, from the shell', (await page.$$eval('h1', (h) => h.length)) === 1);
+  check('panel /play: a stage with the canvas and a Fullscreen button',
+    (await page.$('#stage #canvas')) !== null && (await page.$('#play-fullscreen')) !== null);
+
+  if (info.built) {
+    const running = await page.waitForFunction(() => /playing/.test(document.getElementById('play-state')?.textContent || ''),
+      null, { timeout: joinTimeout }).then(() => true).catch(() => false);
+    check('panel /play: the WebAssembly client runs', running, await page.$eval('#play-state', (e) => e.textContent).catch(() => ''));
+    let after = before;
+    for (let i = 0; i < joinTimeout / 2000 && after <= before; i++) { await page.waitForTimeout(2000); after = await clients(); }
+    check('panel /play: the client joined the game through /ws/game (the server lists one more client)', after > before, `${before} -> ${after}`);
+  } else {
+    const says = await page.waitForFunction(() => /not built/i.test(document.getElementById('play-title')?.textContent || ''),
+      null, { timeout: 15000 }).then(() => true).catch(() => false);
+    check('panel /play: says the client is not built and how to build it', says);
+    console.log('NOT RUN panel /play: joining the game (the WebAssembly client is not built)');
+  }
+  check('panel /play: no page error', errors.length === 0, errors.join('; '));
+  if (shots) { fs.mkdirSync(shots, { recursive: true }); await page.screenshot({ path: path.join(shots, 'play.png') }); }
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.waitForTimeout(300);
+  const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  check('panel /play: no horizontal scroll at 390 px', over <= 0, `${over} px over`);
+  await page.close();
+} finally {
+  await browser.close();
+}
+const failed = results.filter((r) => !r).length;
+console.log(`${failed ? 'FAIL' : 'PASS'} mcp-play-check: ${results.length - failed}/${results.length}`);
+process.exit(failed ? 1 : 0);

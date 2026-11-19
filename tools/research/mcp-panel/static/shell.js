@@ -22,6 +22,7 @@
   const PAGES = [
     { key: 'home', href: '/', label: 'Overview', title: 'Panel', icon: 'M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10' },
     { key: 'world', href: '/world', label: 'World: map, plan, yards', title: 'World', icon: 'M9 20l-6-3V4l6 3m0 13 6-3m-6 3V7m6 10 6 3V7l-6-3m0 13V4M9 7l6-3' },
+    { key: 'play', href: '/play', label: 'Play: the game in your browser', title: 'Play', icon: 'M7 5l12 7-12 7z' },
     { key: 'ui', href: '/ui', label: 'Interface: every window', title: 'Interface', icon: 'M4 5h16v14H4zM4 9h16M8 5v4' },
     { key: 'tools', href: '/tools', label: 'MCP catalogue', title: 'Catalogue', icon: 'M4 6h16M4 12h16M4 18h10' },
     { key: 'results', href: '/results', label: 'Duels', title: 'Duels', icon: 'M7 4h10v4a5 5 0 0 1-10 0zM5 5H3v2a4 4 0 0 0 4 4m12-6h2v2a4 4 0 0 1-4 4m-5 2v4m-4 3h8' },
