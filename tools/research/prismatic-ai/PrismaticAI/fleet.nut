@@ -82,7 +82,7 @@ function PrismaticAI::InvestSurplus(reserve) {
 	}
 	local best = null, best_ppv = 0;
 	foreach (k, r in routes) {
-		if (r.judged == 0 || r.count >= ((r.type == AIVehicle.VT_AIR) ? 8 : 8)) continue;
+		if (r.judged == 0 || r.count >= ((r.type == AIVehicle.VT_AIR) ? 10 : 12)) continue;
 		local ppv = r.profit / r.judged;
 		if (ppv * 3 < AIEngine.GetPrice(AIVehicle.GetEngineType(r.sample))) continue;
 		if (ppv > best_ppv) { best_ppv = ppv; best = r; }

@@ -14,14 +14,35 @@
  * where neither town has an airport of ours yet, and the pair was never tried.
  */
 
-const AUTOPILOT_AIR_ROUTES = 6;
-const AUTOPILOT_AIR_TOWNS = 12;
+const AUTOPILOT_AIR_ROUTES = 10;
+const AUTOPILOT_AIR_TOWNS = 25;
+/* A town with this many airports of other companies within AUTOPILOT_AIR_NEAR tiles is skipped:
+ * its authority refuses the next one, and the battle's winner takes the biggest towns first. */
+const AUTOPILOT_FOREIGN_AIRPORTS = 1;
+const AUTOPILOT_AIR_NEAR = 16;
 const AUTOPILOT_AIR_MIN_TILES = 60;
 const AUTOPILOT_AIR_MAX_TILES = 260;
 /* Money plus loan headroom an air route needs before it is tried (two airports and two planes). */
 const AUTOPILOT_AIR_BUDGET = 60000;
 /* After this many pairs that could not be built (no airport site, no money), stop trying. */
 const AUTOPILOT_AIR_MAX_FAILS = 6;
+
+/* Airport tiles of other companies within AUTOPILOT_AIR_NEAR tiles of the town centre, counted as
+ * distinct stations. */
+function PrismaticAI::ForeignAirportsNear(town) {
+	local c = AITown.GetLocation(town), r = AUTOPILOT_AIR_NEAR;
+	local tiles = AITileList();
+	tiles.AddRectangle(AIMap.GetTileIndex(max(1, AIMap.GetTileX(c) - r), max(1, AIMap.GetTileY(c) - r)),
+		AIMap.GetTileIndex(min(AIMap.GetMapSizeX() - 2, AIMap.GetTileX(c) + r), min(AIMap.GetMapSizeY() - 2, AIMap.GetTileY(c) + r)));
+	tiles.Valuate(AIAirport.IsAirportTile);
+	tiles.KeepValue(1);
+	local stations = {};
+	foreach (t, _ in tiles) {
+		if (AITile.GetOwner(t) == AICompany.ResolveCompanyID(AICompany.COMPANY_SELF)) continue;
+		stations[AIStation.GetStationID(t)] <- true;
+	}
+	return stations.len();
+}
 
 /* The next town pair for an autopilot air route, or null. */
 function PrismaticAI::NextAutopilotAirPair() {
@@ -30,7 +51,14 @@ function PrismaticAI::NextAutopilotAirPair() {
 	towns.Sort(AIList.SORT_BY_VALUE, AIList.SORT_DESCENDING);
 	towns.KeepTop(AUTOPILOT_AIR_TOWNS);
 	local list = [];
-	foreach (t, pop in towns) if (!AIR_BAD_TOWNS.rawin(t)) list.push([t, pop]);
+	foreach (t, pop in towns) {
+		if (AIR_BAD_TOWNS.rawin(t)) continue;
+		if (!this.air_towns.rawin(t) && PrismaticAI.ForeignAirportsNear(t) >= AUTOPILOT_FOREIGN_AIRPORTS) {
+			AIR_BAD_TOWNS[t] <- "foreign airport";
+			continue;
+		}
+		list.push([t, pop]);
+	}
 	local best = null, best_score = 0;
 	for (local i = 0; i < list.len(); i++) {
 		if (this.air_towns.rawin(list[i][0])) continue;

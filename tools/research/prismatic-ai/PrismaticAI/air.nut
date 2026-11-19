@@ -89,7 +89,13 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 			AIR_BAD_TOWNS[town] <- "authority";
 			return null;
 		}
-		if (err == AIStation.ERR_STATION_TOO_MANY_STATIONS_IN_TOWN) AIR_BAD_TOWNS[town] <- "stations";
+		/* "Too many stations" is the authority refusing another airport (STR_ERROR_LOCAL_AUTHORITY_
+		 * REFUSES_AIRPORT): the same for every site, so stop here as well. In the battle it cost up
+		 * to 125 refused surveys a game, mostly in towns where AAAHogEx flew first. */
+		if (err == AIStation.ERR_STATION_TOO_MANY_STATIONS_IN_TOWN) {
+			AIR_BAD_TOWNS[town] <- "stations";
+			return null;
+		}
 	}
 	AILog.Warning("PrismaticAI: no airport site in " + AITown.GetName(town) + " after " + tried + " tries");
 	return null;

@@ -72,6 +72,13 @@ In the first air edition (361b802f) three further failures showed up, all fixed 
   the route earning most per vehicle while that is above a third of its price. On one seed the
   12-year value rose by about a fifth, with 14-16 planes instead of 2-4.
 
+Next, with airports placeable, the limit was where they may go. `ERR_STATION_TOO_MANY_STATIONS_IN_TOWN`
+is the authority refusing another airport. The winner flies from month one and takes the biggest
+towns' slots first, and the bot then surveyed 25 sites in each refusing town. It now stops at the
+first refusal, skips towns that already hold another company's airport, and picks from the 25
+biggest towns (up to 10 routes). On seed 930967890 in 1965 that gave 19 planes against AAAHogEx's 20
+and 2.15M against 2.64M. The remaining gap is rail (14 trains against 28) and income per quarter.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
