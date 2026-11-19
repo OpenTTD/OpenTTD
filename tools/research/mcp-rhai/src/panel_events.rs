@@ -92,6 +92,8 @@ pub const KINDS: &[Kind] = &[
     k("panel.plan", By::Panel, "panel.rs:Game::event", "`{text}`", "an action plan or an investment was decided"),
     k("panel.intent", By::Panel, "panel.rs:Game::event", "`{text}`", "a sentence was answered (`POST /api/intent`, `~ plan` in the console)"),
     k("panel.duel", By::Panel, "panel_results.rs", "`{text}`", "a duel started from the panel; the README scoreboard was regenerated"),
+    // The memory Rhai scripts and services share (rhai_shared.rs, I0091): the audit trail of every write.
+    k("rhai.shared", By::Panel, "rhai_shared.rs:h_shared_set, h_shared_delete", "`{op: set|delete, key, rev, writer, value}`", "a script, a service or the operator wrote or deleted a shared key"),
     // Planning decisions as data (ADR 0034 point 3), each beside its panel.* sentence.
     k("plan.portfolio", By::Panel, "panel_bot.rs:planned", PLAN, "the planner's portfolio for the bot was read (the bot start, `POST /api/bots/planned`)"),
     k("plan.bot_settings", By::Panel, "panel_bot.rs:planned", PLAN, "the bot's settings were chosen from that portfolio"),
@@ -241,6 +243,7 @@ mod tests {
         ("panel_decision.rs", include_str!("panel_decision.rs")),
         ("panel_results.rs", include_str!("panel_results.rs")),
         ("panel_store.rs", include_str!("panel_store.rs")),
+        ("rhai_shared.rs", include_str!("rhai_shared.rs")),
     ];
 
     /// The string literal at the start of `s` (after `"`), if `s` starts with one.

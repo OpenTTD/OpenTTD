@@ -87,6 +87,7 @@ be the panel's and the hub's both (`game.month`), as two rows with their own pro
 | `panel.plan` | panel | `panel.rs:Game::event` | `{text}` | an action plan or an investment was decided |
 | `panel.intent` | panel | `panel.rs:Game::event` | `{text}` | a sentence was answered (`POST /api/intent`, `~ plan` in the console) |
 | `panel.duel` | panel | `panel_results.rs` | `{text}` | a duel started from the panel; the README scoreboard was regenerated |
+| `rhai.shared` | panel | `rhai_shared.rs:h_shared_set, h_shared_delete` | `{op: set\|delete, key, rev, writer, value}` | a script, a service or the operator wrote or deleted a shared key |
 | `plan.portfolio` | panel | `panel_bot.rs:planned` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | the planner's portfolio for the bot was read (the bot start, `POST /api/bots/planned`) |
 | `plan.bot_settings` | panel | `panel_bot.rs:planned` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | the bot's settings were chosen from that portfolio |
 | `plan.calibration` | panel | `panel.rs:h_calibration_record` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a calibration reading was measured (`POST /api/calibration`); the planned bot reads every stored one back (I0082) |

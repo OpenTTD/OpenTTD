@@ -87,6 +87,27 @@
         </div>
         <div id="svc-log" role="log" aria-label="Service log" class="p-3 font-mono text-xs leading-5 text-gray-200 bg-gray-900 rounded-lg h-64 overflow-y-auto whitespace-pre-wrap"></div>
       </section>
+
+      <section id="shared" data-nav="Shared memory" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 xl:col-span-4">
+        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+          <div class="min-w-0 flex-1 basis-48">
+            <h2 class="mb-1 text-xl font-bold leading-none text-gray-900 dark:text-white">Shared memory <span id="shared-count" class="text-sm font-normal text-gray-500 dark:text-gray-400"></span></h2>
+            <p class="text-sm font-normal text-gray-500 dark:text-gray-400">What scripts and services share (<code>shared_set</code>, <code>shared_cas</code>, <code>shared_get</code>), live: every write has a revision and its declared writer, and is a <code>rhai.shared</code> event on the bus. It lives in the panel: a restarted panel starts empty.</p>
+          </div>
+          <div data-toolbar class="flex flex-wrap items-center gap-2 min-w-0 max-w-full">
+            <label for="shared-filter" class="sr-only">Filter shared keys</label>
+            <input id="shared-filter" type="search" placeholder="Key prefix" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 px-3 py-2 block w-full">
+          </div>
+        </div>
+        <div class="relative overflow-x-auto rounded-lg">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr><th scope="col" class="px-4 py-3">Key</th><th scope="col" class="px-4 py-3">Value</th><th scope="col" class="px-4 py-3">Rev</th><th scope="col" class="px-4 py-3">Writer</th><th scope="col" class="px-4 py-3">Written</th></tr>
+            </thead>
+            <tbody id="shared-rows"></tbody>
+          </table>
+        </div>
+      </section>
     </div>
   </main>
 

@@ -49,6 +49,8 @@ mod panel_scripts;
 mod rhai_catalogue;
 #[path = "../panel_npm.rs"]
 mod panel_npm;
+#[path = "../rhai_shared.rs"]
+mod rhai_shared;
 #[path = "../panel_realworld.rs"]
 mod panel_realworld;
 #[path = "../panel_store.rs"]

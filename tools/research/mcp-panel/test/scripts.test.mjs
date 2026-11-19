@@ -99,3 +99,17 @@ test('the page has every element its script reads', () => {
   const ids = new Set([...js.matchAll(/\$\('([a-z0-9-]+)'\)/g)].map((m) => m[1]));
   for (const id of ids) assert.match(html, new RegExp(`id="${id}"`), `#${id}`);
 });
+
+test('the shared memory renders as escaped rows with revision, writer and age', async () => {
+  const { sharedRows } = await import('../static/scripts.js');
+  const html = sharedRows([{ key: 'rail.line.1', value: { trains: 2, note: '<b>' }, rev: 3, writer: 'rail_steward', at: 100 },
+    { key: 'big', value: 'x'.repeat(300), rev: 1, writer: 'w', at: 40 }], 130);
+  assert.match(html, /data-key="rail\.line\.1"/);
+  assert.match(html, />3</);
+  assert.match(html, /rail_steward/);
+  assert.match(html, /30 s ago/);
+  assert.match(html, /2 min ago/);
+  assert.ok(!html.includes('<b>'), 'values are escaped');
+  assert.ok(html.includes('…'), 'a long value is cut');
+  assert.match(sharedRows([]), /Nothing shared yet/);
+});

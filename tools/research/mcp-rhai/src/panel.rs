@@ -2359,6 +2359,12 @@ pub fn routes() -> Vec<Route> {
         r("POST", "/api/script/save", "scriptSave", "Save a script into the library (only text that parses; 422 with the error otherwise). A running service on it, or on a script importing it, reloads within a second. Committing stays the owner's", false,
           s(json!({"name": st(), "text": st()}), &["name", "text"]), crate::panel_scripts::h_script_save),
         r("GET", "/api/rhai/functions", "rhaiFunctions", "Every function a Rhai script of this panel can call (src/rhai_catalogue.rs, I0088): host functions with the doc of src/main.rs, one per MCP tool with its description and input schema, one per OpenAPI operation with its route, one per console command, and every non-private function of each library script with its /// comments; derived at most every 30 s (?fresh=1 derives now)", false, None, crate::rhai_catalogue::h_functions),
+        // Memory the scripts and services share (src/rhai_shared.rs, I0091): every write a rhai.shared event.
+        r("GET", "/api/rhai/shared", "rhaiShared", "The memory Rhai scripts and services share: one key (?key=, 404 when absent) or every key under ?prefix=, each with its value, revision, declared writer and time. In the panel's memory: a restarted panel starts empty; the store keeps every write as a rhai.shared event", false, None, crate::rhai_shared::h_shared),
+        r("POST", "/api/rhai/shared", "rhaiSharedSet", "Write a shared key. With rev, only if the key is at that revision (0: only if it does not exist); 409 with the current revision otherwise. Published as a rhai.shared event", false,
+          s(json!({"key": st(), "value": {}, "writer": st(), "rev": {"type": "integer", "minimum": 0}}), &["key", "value"]), crate::rhai_shared::h_shared_set),
+        r("POST", "/api/rhai/shared/delete", "rhaiSharedDelete", "Delete a shared key (with rev, only at that revision); 409 when it is absent or at another revision. Published as a rhai.shared event", false,
+          s(json!({"key": st(), "writer": st(), "rev": {"type": "integer", "minimum": 0}}), &["key"]), crate::rhai_shared::h_shared_delete),
         r("GET", "/api/services", "services", "The scripts running as services in this panel: running, started, reloads, the last line's sequence number and the files watched for hot reload", false, None, crate::panel_scripts::h_services),
         r("POST", "/api/services/start", "serviceStart", "Start a script as a service in the background (rail_monitor, rail_steward, ...); it reloads when its file or a library it imports changes", false,
           s(json!({"name": st()}), &["name"]), crate::panel_scripts::h_service_start),
@@ -2434,6 +2440,7 @@ fn query_params(path: &str) -> &'static [(&'static str, bool)] {
         // The script workspace (panel_scripts.rs): one script, and a service's lines after a seq.
         "/api/script" => &[("name", true)],
         "/api/services/log" => &[("name", true), ("since", false)],
+        "/api/rhai/shared" => &[("key", false), ("prefix", false)],
         _ => &[],
     }
 }
@@ -3105,8 +3112,9 @@ mod tests {
         // script workspace (GET /api/scripts, GET /api/script, POST /api/script/check and /save, GET
         // /api/services, POST /api/services/start and /stop, GET /api/services/log; panel_scripts.rs),
         // and the real-world places (GET /api/realworld, GET /api/realworld/scenario, POST /api/realworld/compile),
-        // and the Rhai function catalogue (GET /api/rhai/functions; rhai_catalogue.rs, I0088).
-        assert_eq!(rs.len(), 63);
+        // and the Rhai function catalogue (GET /api/rhai/functions; rhai_catalogue.rs, I0088), and the
+        // shared memory (GET and POST /api/rhai/shared, POST /api/rhai/shared/delete; rhai_shared.rs, I0091).
+        assert_eq!(rs.len(), 66);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -3119,7 +3127,7 @@ mod tests {
             "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
             "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query",
             "/api/scripts", "/api/script", "/api/script/check", "/api/script/save",
-            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions",
+            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions", "/api/rhai/shared", "/api/rhai/shared/delete",
             "/api/realworld", "/api/realworld/scenario", "/api/realworld/compile"].contains(&r.path)));
     }
 

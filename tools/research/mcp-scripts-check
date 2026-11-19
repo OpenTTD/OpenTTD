@@ -110,6 +110,17 @@ try {
   await page.click('#run');
   await page.waitForFunction(() => document.querySelector('#run-out')?.textContent.includes('== exit'), null, { timeout: 8000 }).catch(() => {});
   check('Run once streams the output and the exit', /ran once: 42[\s\S]*== exit 0/.test(await page.textContent('#run-out')));
+  // Shared memory (I0091): a script writes a key, a stale compare-and-swap is refused and the current
+  // one goes through; the page's table shows the key live, and the bus carries each write.
+  const key = `check.shared.${process.pid}`;
+  const ran = await api('/api/rhai', { script: `let r = shared_set("${key}", #{n: 1});\nprint(r);\nprint(shared_cas("${key}", 0, #{n: 9}));\nprint(shared_cas("${key}", r, #{n: 2}));\nprint(shared_get("${key}").n);\nprint(shared_keys("check.shared.").len());` });
+  check('a script shares a value; a stale compare-and-swap is refused, the current one is not', String(ran.output).trim().split('\n').join(' ') === '1 false true 2 1', JSON.stringify(ran.output));
+  await page.waitForSelector(`#shared-rows [data-key="${key}"]`, { timeout: 5000 }).catch(() => {});
+  check('the page shows the shared key with its revision', /\b2\b/.test(await page.textContent(`#shared-rows [data-key="${key}"]`).catch(() => '')));
+  const bus = await api('/api/events?since=0&kinds=rhai.shared&limit=500');
+  check('every shared write is a rhai.shared event', (bus.events || []).filter((e) => e.data?.key === key).length === 2, `${(bus.events || []).length} rhai.shared events`);
+  const gone = await api('/api/rhai/shared/delete', { key, rev: 2 });
+  check('a shared key is deleted at its revision', gone.deleted === true && (await api(`/api/rhai/shared?key=${key}`)).status === 404);
   check('no script error on the page', errors.length === 0, errors.join('; '));
 
   // A phone: nothing wider than the screen.

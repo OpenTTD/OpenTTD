@@ -59,7 +59,7 @@ flowchart LR
 | I0088 | **done**: `GET /api/rhai/functions` answers 1,866 functions on a live panel (24 host, 786 tool, 876 route, 87 console, 93 library), signatures as Rhai reads them (`rpc(string) -> Dynamic`); `mcp-route-check` 835 passed, 0 failed; `cargo test --release --bin mcp-panel` 139/139 |
 | I0089 | **done**: CodeMirror 6 on the Scripts page; `tools/research/mcp-scripts-check` against a live panel 19/19 (CodeMirror loads, colours, numbers lines, marks and underlines a parse error, completes `rpc`, saves, reloads a service, runs once, no horizontal scroll at 390 px); `node --test` 265/265 |
 | I0090 | planned |
-| I0091 | planned |
+| I0091 | **done**: `src/rhai_shared.rs`, `GET/POST /api/rhai/shared`, `POST /api/rhai/shared/delete`, Rhai `shared_get`, `shared_entry`, `shared_set`, `shared_cas`, `shared_delete`, `shared_keys`; the Scripts page's live Shared memory table; `cargo test` 146/146 (7 new, among them 8 threads × 50 compare-and-swap increments losing none); live: `mcp-scripts-check` 23/23, `mcp-route-check` 838 passed 0 failed, every write a `rhai.shared` event in the DuckDB store; not a session console (deferred: a script runs once or as a service, see I0090) |
 | I0092 | planned |
 | I0093 | planned |
 
@@ -87,6 +87,18 @@ Beside this milestone, the AI battle already runs Axon on EXLA locally:
 with prismatic-platform's compiled Nx/EXLA/Axon, and `prismatic_tune.rhai` applies its best
 settings through approval-gated tools. Its output, `brain.json`, is a second source a Rhai
 function can read.
+
+## Shared memory
+
+Scripts and services of one panel share keys (`rail.line.3`) holding JSON values. Each key has a
+revision: `shared_cas(key, rev, value)` writes only if the key is still at `rev` (0: only if it does
+not exist yet), so two services updating one key never lose a write silently, and a key can serve
+as a claim (`shared_cas("lock.steward", 0, "me")` succeeds once). Every write and delete is a
+`rhai.shared` event on the bus and in the DuckDB store, which is the audit trail.
+
+What it is not: durable (a restarted panel starts empty; the store keeps the history), shared
+between panels (each panel has its own), or authenticated (`writer` is what the script declares,
+`$MCP_RHAI_WRITER` or `rhai`). Coordination between agent sessions stays on the Majordomus mesh.
 
 ## Doc comments are for functions
 

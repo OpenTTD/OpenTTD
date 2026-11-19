@@ -130,6 +130,19 @@ export function scriptBadges(s) {
   return out;
 }
 
+/** The shared memory's entries (GET /api/rhai/shared) as table rows, escaped: key, value (JSON,
+    cut at 160 characters with the whole in its title), revision, writer and time. */
+export function sharedRows(entries, now = Date.now() / 1000) {
+  const ago = (at) => { const s = Math.max(0, Math.round(now - at)); return s < 60 ? `${s} s ago` : s < 3600 ? `${Math.round(s / 60)} min ago` : `${Math.round(s / 3600)} h ago`; };
+  return (entries || []).map((e) => {
+    const json = JSON.stringify(e.value);
+    const shown = json.length > 160 ? `${json.slice(0, 159)}…` : json;
+    return `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" data-key="${esc(e.key)}"><td class="px-4 py-2 font-mono text-gray-900 dark:text-white">${esc(e.key)}</td>`
+      + `<td class="px-4 py-2 font-mono text-xs break-all" title="${esc(json)}">${esc(shown)}</td><td class="px-4 py-2">${Number(e.rev) || 0}</td>`
+      + `<td class="px-4 py-2 font-mono text-xs">${esc(e.writer)}</td><td class="px-4 py-2 whitespace-nowrap">${esc(ago(e.at))}</td></tr>`;
+  }).join('') || '<tr><td colspan="5" class="px-4 py-3 text-gray-500 dark:text-gray-400">Nothing shared yet.</td></tr>';
+}
+
 /** The first line of a doc, for the list. */
 export const firstLine = (doc) => String(doc || '').split('\n').find((l) => l.trim()) || '';
 
@@ -405,6 +418,17 @@ async function boot() {
       }
     }
   }, 1000);
+
+  // The shared memory, live: every second, under the typed prefix (src/rhai_shared.rs, I0091).
+  async function loadShared() {
+    const prefix = $('shared-filter').value.trim();
+    const r = await api(`/api/rhai/shared${prefix ? `?prefix=${encodeURIComponent(prefix)}` : ''}`);
+    $('shared-rows').innerHTML = sharedRows(r.entries);
+    $('shared-count').textContent = `${r.count ?? 0}`;
+  }
+  $('shared-filter').addEventListener('input', loadShared);
+  setInterval(loadShared, 1000);
+  loadShared();
 
   loadList().then(() => open(state.name || state.scripts.find((s) => !s.library)?.name || '', !scriptOfPath(location.pathname) && !!state.scripts.length));
 }

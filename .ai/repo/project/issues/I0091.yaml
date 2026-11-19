@@ -28,3 +28,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-19'
+started_at: 2026-11-19T12:31:35Z
+started_event: sha256:5b7115f60b2a40e7989f1b907d186235e1348463e2b9df620cfb9377c987e70d
+updated_at: 2026-11-19T12:31:56Z
+verified_at: 2026-11-19T12:31:42Z
+verified_event: sha256:d07578ea7c5002b1e51744c97c1e661e41737c36b0e592a7ee6486a061645e36
+completed_at: 2026-11-19T12:31:56Z
+completed_event: sha256:8c40a1e72474ec2c3c1b670dc05f38227ff5bf5aeecb2b59193c22e2337244b0
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release --bin mcp-panel; tools/research/mcp-scripts-check http://127.0.0.1:8870; tools/research/mcp-route-check http://127.0.0.1:8870"
+    result: "146/146 (7 new: CAS, conflicts, limits, 8x50 concurrent increments lose none); scripts check 23/23 live; route check 838 passed 0 failed; 5 rhai.shared events in the DuckDB store"
+    commit: 6768c6ef3a854efd6e088c114342b3651271d064
+    recorded_at: 2026-11-19T12:31:49Z

@@ -30,6 +30,13 @@
 //!   loopback_get(url)                  -> map   GET a JSON document from a loopback URL only (127.0.0.1,
 //!                                               localhost, [::1]), e.g. the LAN battle's /api/leaderboard;
 //!                                               throws for any other host
+//!   shared_get(key)                    -> any   a value the panel's scripts and services share, or () (rhai_shared.rs)
+//!   shared_entry(key)                  -> map   the same with its rev, writer and time, or ()
+//!   shared_set(key, value)             -> int   write it; answers the new revision
+//!   shared_cas(key, rev, value)        -> bool  write only if the key is at rev (0: absent); false when not
+//!   shared_delete(key)                 -> bool  delete it; false when it was absent
+//!   shared_keys()  shared_keys(prefix) -> array the keys, in order; every write is a rhai.shared event,
+//!                                               and the writer is $MCP_RHAI_WRITER, else "rhai"
 //!   env(name)
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
@@ -112,6 +119,26 @@ fn loopback_get(url: &str) -> R<Dynamic> {
         .into_json()
         .map_err(|e| format!("GET {url}: {e}"))?;
     to_dyn(v)
+}
+
+/// The writer a script declares on the shared memory: $MCP_RHAI_WRITER, else "rhai".
+fn shared_writer() -> String {
+    std::env::var("MCP_RHAI_WRITER").ok().filter(|w| !w.is_empty()).unwrap_or_else(|| "rhai".to_string())
+}
+
+/// One call of the panel's shared-memory routes, with its status: a 404 or 409 is an answer a
+/// script acts on, not a failure; only an unreachable panel is an error here.
+fn shared_call(base: &str, method: &str, path: &str, body: Option<Value>) -> Result<(u16, Value), Box<EvalAltResult>> {
+    let url = format!("{base}{path}");
+    let resp = match body {
+        Some(b) => ureq::post(&url).timeout(Duration::from_secs(15)).send_json(b),
+        None => ureq::request(method, &url).timeout(Duration::from_secs(15)).call(),
+    };
+    match resp {
+        Ok(r) => Ok((r.status(), r.into_json().unwrap_or(Value::Null))),
+        Err(ureq::Error::Status(code, r)) => Ok((code, r.into_json().unwrap_or(Value::Null))),
+        Err(e) => Err(format!("{method} {path}: {e}").into()),
+    }
 }
 
 fn to_dyn(v: Value) -> R<Dynamic> {
@@ -248,6 +275,59 @@ fn engine(panel: Panel) -> Engine {
         b.announce(claim, &board::clip(text, 480))?;
         Ok(true)
     });
+    // The panel's shared memory (src/rhai_shared.rs, I0091), over its loopback API like every other
+    // call, so a script reads and writes the same keys in the panel and from the command line.
+    let b = panel.base.clone();
+    e.register_fn("shared_get", move |key: &str| -> R<Dynamic> {
+        match shared_call(&b, "GET", &format!("/api/rhai/shared?key={key}"), None)? {
+            (200, v) => to_dyn(v.get("value").cloned().unwrap_or(Value::Null)),
+            (404, _) => Ok(Dynamic::UNIT),
+            (c, v) => Err(format!("shared_get({key}): HTTP {c}: {}", v["error"]).into()),
+        }
+    });
+    let b = panel.base.clone();
+    e.register_fn("shared_entry", move |key: &str| -> R<Dynamic> {
+        match shared_call(&b, "GET", &format!("/api/rhai/shared?key={key}"), None)? {
+            (200, v) => to_dyn(v),
+            (404, _) => Ok(Dynamic::UNIT),
+            (c, v) => Err(format!("shared_entry({key}): HTTP {c}: {}", v["error"]).into()),
+        }
+    });
+    let b = panel.base.clone();
+    e.register_fn("shared_set", move |key: &str, value: Dynamic| -> R<i64> {
+        let body = json!({"key": key, "value": from_dyn(value)?, "writer": shared_writer()});
+        match shared_call(&b, "POST", "/api/rhai/shared", Some(body))? {
+            (200, v) => Ok(v["rev"].as_i64().unwrap_or(0)),
+            (c, v) => Err(format!("shared_set({key}): HTTP {c}: {}", v["error"]).into()),
+        }
+    });
+    let b = panel.base.clone();
+    e.register_fn("shared_cas", move |key: &str, rev: i64, value: Dynamic| -> R<bool> {
+        let body = json!({"key": key, "value": from_dyn(value)?, "writer": shared_writer(), "rev": rev.max(0)});
+        match shared_call(&b, "POST", "/api/rhai/shared", Some(body))? {
+            (200, _) => Ok(true),
+            (409, _) => Ok(false),
+            (c, v) => Err(format!("shared_cas({key}): HTTP {c}: {}", v["error"]).into()),
+        }
+    });
+    let b = panel.base.clone();
+    e.register_fn("shared_delete", move |key: &str| -> R<bool> {
+        match shared_call(&b, "POST", "/api/rhai/shared/delete", Some(json!({"key": key, "writer": shared_writer()})))? {
+            (200, _) => Ok(true),
+            (409, _) => Ok(false),
+            (c, v) => Err(format!("shared_delete({key}): HTTP {c}: {}", v["error"]).into()),
+        }
+    });
+    let b = panel.base.clone();
+    let keys = move |prefix: &str| -> R<Dynamic> {
+        match shared_call(&b, "GET", &format!("/api/rhai/shared?prefix={prefix}"), None)? {
+            (200, v) => to_dyn(Value::Array(v["entries"].as_array().into_iter().flatten().map(|e| e["key"].clone()).collect())),
+            (c, v) => Err(format!("shared_keys: HTTP {c}: {}", v["error"]).into()),
+        }
+    };
+    let k0 = keys.clone();
+    e.register_fn("shared_keys", move || -> R<Dynamic> { k0("") });
+    e.register_fn("shared_keys", move |prefix: &str| -> R<Dynamic> { keys(prefix) });
     e.register_fn("loopback_get", loopback_get);
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));
