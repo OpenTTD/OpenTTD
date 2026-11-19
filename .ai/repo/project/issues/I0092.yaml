@@ -1,0 +1,31 @@
+id: I0092
+milestone: rhai-is-a-live-ide
+title: "Rhai calls Prismatic over loopback HTTP: Axon/EXLA inference and the blackboard, schema-checked and 100% covered"
+slug: rhai-prismatic
+priority: p1
+profile: implementation
+parallel_safe: false
+objective: "prismatic_* functions in the Rhai host call Prismatic's HTTP API on loopback: inference from its Axon/EXLA models and reads and writes of prismatic_blackboard, each request and answer checked against a schema in this repository, every failure a typed error the script can catch; contract tests against a fixture server, a live check against prismatic_api, and 100% line coverage of the module, enforced by tools/gate.sh change."
+why: "Owner answer (AskUserQuestion 2026-11-19): Rhai calls Prismatic over HTTP, 'but the integration must be rock-solid, fully tested, enforced, integraded, 100 % test covered'. prismatic-platform itself is never modified from here."
+scope:
+  - "tools/research/mcp-rhai/src/prismatic.rs"
+  - "tools/research/mcp-rhai/src/main.rs"
+  - "tools/research/mcp-rhai/Cargo.toml"
+  - "tools/research/mcp-rhai/Cargo.lock"
+  - "research/prismatic-bridge/**"
+  - "tools/research/prismatic-rhai-check"
+  - "tools/gate.sh"
+  - "research/rhai-ide.md"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#rhai-is-a-live-ide"
+acceptance_criteria:
+  - "cargo-llvm-cov reports 100% line coverage for src/prismatic.rs, and tools/gate.sh change fails when it is lower"
+  - "Contract tests answer every function from a fixture server, including refusals, timeouts and schema violations"
+  - "tools/research/prismatic-rhai-check calls the live prismatic_api, or reports NOT RUN with the reason when it is down"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml"
+  - tools/research/prismatic-rhai-check
+evidence_required:
+  - validation_run
+created_at: '2026-11-19'

@@ -1,0 +1,26 @@
+id: I0088
+milestone: rhai-is-a-live-ide
+title: "GET /api/rhai/functions derives every function a script can call, with signature and doc"
+slug: rhai-function-catalogue
+priority: p1
+profile: implementation
+parallel_safe: true
+objective: "One route answers the functions a Rhai script can call in the panel's engine: the host functions of src/main.rs with their doc lines, the derived ones (one per MCP tool, console command and OpenAPI operation, each with its schema) and the exported functions of every library script with its doc comment, all derived, none listed by hand."
+why: "Completion, hover, the docs and an agent writing a script all need the same answer, and today it exists only as tools() commands() help() inside a running script."
+scope:
+  - "tools/research/mcp-rhai/src/main.rs"
+  - "tools/research/mcp-rhai/src/panel.rs"
+  - "tools/research/mcp-rhai/src/panel_scripts.rs"
+  - "tools/research/mcp-rhai/src/rhai_catalogue.rs"
+  - "research/rhai-ide.md"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#rhai-is-a-live-ide"
+acceptance_criteria:
+  - "A cargo test derives the catalogue from an engine with a fake panel and finds a host function, a derived tool and a library function, each with a signature"
+  - "GET /api/rhai/functions is in the OpenAPI document and the route check"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml"
+evidence_required:
+  - validation_run
+created_at: '2026-11-19'

@@ -1,0 +1,30 @@
+id: I0093
+milestone: rhai-is-a-live-ide
+title: "The Rhai IDE is documented, published on the site and the wiki, and merged to master"
+slug: rhai-ide-published
+priority: p2
+profile: implementation
+parallel_safe: false
+objective: "research/rhai-ide.md, the README's Rhai section, research/mcp-control.md and the mechanism page describe what is built; the site and the wiki are regenerated; the branch is merged to master and pushed."
+why: "The owner asked for the work to be documented, deployed and delivered to master, and for GitHub, the README and the pages to stay current."
+scope:
+  - "README.md"
+  - "research/rhai-ide.md"
+  - "research/mcp-control.md"
+  - "research/mechanisms/rhai-scripting.md"
+  - "research/README.md"
+depends_on:
+  - I0089
+  - I0090
+  - I0091
+  - I0092
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#rhai-is-a-live-ide"
+acceptance_criteria:
+  - "tools/surfaces/surfaces check passes and the site builds with every new page"
+  - "origin/master holds the milestone's work"
+validation:
+  - "tools/surfaces/surfaces check"
+evidence_required:
+  - validation_run
+created_at: '2026-11-19'

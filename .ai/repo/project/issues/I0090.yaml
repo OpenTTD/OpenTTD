@@ -1,0 +1,33 @@
+id: I0090
+milestone: rhai-is-a-live-ide
+title: "A Rhai debugger in the panel: breakpoints, step in, over and out, scope and call stack"
+slug: rhai-debugger
+priority: p1
+profile: implementation
+parallel_safe: false
+objective: "Enable rhai's debugging feature in the panel's engine and run a script as a debug session: breakpoints by line, step into, over and out, continue, stop, and at every pause the scope's variables and the call stack, over POST /api/rhai/debug/* with an SSE stream, and on the page as a gutter, a toolbar and a variables panel."
+why: "A script that drives a live game is debugged today with print lines; the owner asked for scripts that are debuggable and inspectable in real time."
+scope:
+  - "tools/research/mcp-rhai/Cargo.toml"
+  - "tools/research/mcp-rhai/Cargo.lock"
+  - "tools/research/mcp-rhai/src/rhai_debug.rs"
+  - "tools/research/mcp-rhai/src/main.rs"
+  - "tools/research/mcp-rhai/src/panel.rs"
+  - "tools/research/mcp-panel/static/scripts.js"
+  - "tools/research/mcp-panel/static/scripts.html"
+  - "tools/research/mcp-panel/test/**"
+  - "tools/research/mcp-scripts-check"
+  - "research/rhai-ide.md"
+depends_on:
+  - I0089
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#rhai-is-a-live-ide"
+acceptance_criteria:
+  - "cargo tests stop at a breakpoint, step over a call, step into a function, read a variable and the stack, and continue to the end"
+  - "mcp-scripts-check sets a breakpoint, runs, sees the pause and a variable's value, steps and continues"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml"
+  - tools/research/mcp-scripts-check
+evidence_required:
+  - validation_run
+created_at: '2026-11-19'

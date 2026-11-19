@@ -1,0 +1,21 @@
+id: rhai-is-a-live-ide
+title: "Rhai is a live IDE: edited, run, debugged and inspected in the panel, and it reaches Prismatic's models and blackboard"
+slug: rhai-is-a-live-ide
+order: 90
+priority: p1
+problem: "The Scripts page is a hand-written textarea with its own tokenizer, a parse check, Run once and hot-reloaded services. There is no completion or hover from the functions a script can call, no breakpoint, no stepping, no view of a running script's variables, no state shared between scripts beyond the Majordomus board, and no way for a script to call Prismatic's Axon/EXLA models or its blackboard."
+outcome: "The Scripts page runs CodeMirror 6 with Rhai highlighting, lint from the parser, completion and hover derived from the live function catalogue, a breakpoint gutter and a debugger (step, continue, scope, call stack) driven by Rhai's debugging interface in the panel's own engine; scripts share an inspectable memory; Rhai calls Prismatic over loopback HTTP with a schema-checked contract and 100% line coverage enforced by the gate; every part is documented, published and on master."
+acceptance_criteria:
+- "The Scripts page edits with CodeMirror 6 served from the panel's node_modules; mcp-scripts-check drives highlighting, lint, completion, breakpoints and stepping in a real browser"
+- "GET /api/rhai/functions lists every function a script can call, derived from the engine and the library, with signature and doc"
+- "A debug session stops at a breakpoint, steps in, over and out, and shows the scope and call stack, over the panel API and on the page"
+- "Scripts and services share an inspectable memory (shared_get, shared_set, shared_keys) shown on the page and published on the bus"
+- "Rhai's prismatic_* functions call Prismatic over loopback HTTP; their module has 100% line coverage, and tools/gate.sh change fails below it"
+- "research/rhai-ide.md, README.md, the site and the wiki describe what is built, and the work is merged to master"
+validation:
+- "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml"
+- "node --test tools/research/mcp-panel/test/"
+- tools/research/mcp-scripts-check
+evidence_required: []
+created_at: '2026-11-19'
+updated_at: '2026-11-19'

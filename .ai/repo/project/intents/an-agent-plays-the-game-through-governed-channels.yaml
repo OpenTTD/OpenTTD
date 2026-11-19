@@ -12,6 +12,7 @@ milestones:
 - prismatic-steers-a-company-through-the-bridge
 - an-agent-reaches-the-game-over-mcp
 - planning-is-generated-from-recorded-history
+- rhai-is-a-live-ide
 satisfaction:
 - id: the-bridge-steers-a-company
   criterion: "A Company AI started over rcon by the bridge builds a route on a live server"
@@ -53,5 +54,9 @@ satisfaction:
   criterion: "A bot default derived from recorded history replaced a hand constant only after held-start duel pairs on three seeds favoured it beyond the rival's spread, and the pairs are recorded under research/results/"
   evidence: command
   ref: "PRISMATIC_START_PAUSED=2 tools/research/mcp-duel --seed <4242|31337|20208>, paired (I0087)"
+- id: rhai-is-a-live-ide
+  criterion: "A Rhai script is edited with completion and lint, run, stopped at a breakpoint and inspected on the panel's Scripts page, shares memory with other scripts, and calls Prismatic over loopback with 100% covered, gate-enforced code"
+  evidence: command
+  ref: "tools/research/mcp-scripts-check and cargo llvm-cov on tools/research/mcp-rhai (I0088-I0093)"
 created_at: '2026-11-15'
-updated_at: '2026-11-15'
+updated_at: '2026-11-19'

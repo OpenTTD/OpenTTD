@@ -1,0 +1,30 @@
+id: I0091
+milestone: rhai-is-a-live-ide
+title: "Scripts share an inspectable memory, and a live console evaluates in a running session"
+slug: rhai-shared-memory
+priority: p2
+profile: implementation
+parallel_safe: true
+objective: "A panel-side shared memory (shared_get, shared_set, shared_keys, shared_watch) every script and service reads and writes, shown live on the Scripts page, each write a rhai.shared event on the bus and in the store; a console that evaluates an expression in a persistent session scope."
+why: "Services such as the steward and the monitor share nothing but the board; the owner asked for shared memory and for scripts that are invokable and inspectable in real time."
+scope:
+  - "tools/research/mcp-rhai/src/rhai_shared.rs"
+  - "tools/research/mcp-rhai/src/main.rs"
+  - "tools/research/mcp-rhai/src/panel.rs"
+  - "tools/research/mcp-rhai/src/panel_events.rs"
+  - "tools/research/mcp-panel/static/scripts.js"
+  - "tools/research/mcp-panel/static/scripts.html"
+  - "tools/research/mcp-panel/test/**"
+  - "research/rhai-ide.md"
+depends_on:
+  - I0088
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#rhai-is-a-live-ide"
+acceptance_criteria:
+  - "cargo tests write from one engine and read from another, and see the bus event"
+  - "The Scripts page shows a value a running service wrote"
+validation:
+  - "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml"
+evidence_required:
+  - validation_run
+created_at: '2026-11-19'

@@ -1,0 +1,33 @@
+id: I0089
+milestone: rhai-is-a-live-ide
+title: "The Scripts page edits with CodeMirror 6: Rhai highlighting, lint from the parser, completion and hover from the catalogue"
+slug: rhai-codemirror
+priority: p1
+profile: implementation
+parallel_safe: false
+objective: "Replace the hand-written editor with CodeMirror 6 served from the panel's node_modules (allow-listed /vendor/npm route, no CDN, nothing committed): a Rhai stream language, the parse check as lint diagnostics, completion and hover from GET /api/rhai/functions, the existing keys (save, run, stop), inside the Flowbite shell."
+why: "The owner chose CodeMirror 6 (AskUserQuestion 2026-11-19, research/rhai-ide.md); the current textarea cannot carry completion, hover, lint markers or a breakpoint gutter."
+scope:
+  - "tools/research/mcp-panel/package.json"
+  - "tools/research/mcp-panel/package-lock.json"
+  - "tools/research/mcp-panel/static/scripts.html"
+  - "tools/research/mcp-panel/static/scripts.js"
+  - "tools/research/mcp-panel/static/rhai-lang.js"
+  - "tools/research/mcp-panel/static/app.css"
+  - "tools/research/mcp-panel/test/**"
+  - "tools/research/mcp-rhai/src/panel.rs"
+  - "tools/research/mcp-scripts-check"
+  - "research/rhai-ide.md"
+depends_on:
+  - I0088
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#rhai-is-a-live-ide"
+acceptance_criteria:
+  - "node tests cover the Rhai language's tokens, the lint mapping and the completion source"
+  - "mcp-scripts-check opens a script, sees highlighted tokens, a lint marker on a broken line, a completion of a derived function, and saves"
+validation:
+  - "node --test tools/research/mcp-panel/test/"
+  - tools/research/mcp-scripts-check
+evidence_required:
+  - validation_run
+created_at: '2026-11-19'
