@@ -94,7 +94,17 @@ defmodule Brain do
     # takes the first two, so each generation gets one of each; an explorer that ends last is culled
     # by the GA's last-place penalty, a safe pick keeps the population from collapsing.
     safe = lcb |> Nx.argsort(direction: :desc) |> Nx.slice([0], [@top]) |> Nx.to_flat_list()
-    bold = ucb |> Nx.argsort(direction: :desc) |> Nx.slice([0], [@top]) |> Nx.to_flat_list()
+    # The explorer is constrained: only candidates whose lower bound clears the floor (a ratio to
+    # the default, $BRAIN_EXPLORE_FLOOR, default 0.9) may be picked, so exploring never proposes a
+    # setting the ensemble already expects to lose badly (g66.brainExplore: short air routes, last
+    # once in edition 69577ebe). Where no candidate clears it, the explorer falls back to the safe order.
+    floor = :math.log(String.to_float(System.get_env("BRAIN_EXPLORE_FLOOR", "0.9")))
+    ok = Nx.greater_equal(lcb, floor)
+    bold = if Nx.to_number(Nx.any(ok)) == 1 do
+      Nx.select(ok, ucb, Nx.Constants.neg_infinity(:f32)) |> Nx.argsort(direction: :desc) |> Nx.slice([0], [@top]) |> Nx.to_flat_list()
+    else
+      safe
+    end
     order = Enum.zip(safe, bold) |> Enum.flat_map(fn {a, b} -> [{a, "safe"}, {b, "explore"}] end)
             |> Enum.uniq_by(&elem(&1, 0)) |> Enum.take(@top)
     # In-sample fit of the ensemble mean, as a sanity figure (not a validation).
@@ -108,7 +118,7 @@ defmodule Brain do
     end
     best_seen = rows |> Enum.max_by(& &1.share, fn -> nil end)
     doc = %{schema: "battle-brain/v1", target: System.get_env("BRAIN_TARGET", "raw: log value share of the winner"), rows: length(rows), distinct_settings: distinct, genes: genes,
-      members: @members, epochs: @epochs, candidates: @candidates, kappa: @kappa,
+      members: @members, epochs: @epochs, candidates: @candidates, kappa: @kappa, explore_floor: :math.exp(floor),
       backend: "EXLA #{inspect(EXLA.Client.get_supported_platforms() |> Map.keys())}",
       train_ms: div(train_us, 1000), score_ms: div(score_us, 1000), in_sample_r2: Float.round(r2, 3),
       enough_data: distinct >= 2 * length(genes),

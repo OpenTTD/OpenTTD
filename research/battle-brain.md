@@ -58,7 +58,7 @@ Elixir 1.19 / Erlang 28 (`$BRAIN_LIBS`, `ASDF_*_VERSION`), so XLA is not downloa
 | Target | log of (the variant's value share of the winner / the default's on the same seed); `brain.json` names it in `target`, and `predicted_share` is that ratio |
 | Model | 5 members, each 2 × 32 tanh with dropout 0.1, trained by Adam (lr 0.01, 400 steps) on its own bootstrap sample |
 | Search | 50,000 random candidates on the GA's grid (min, max, step per gene), scored in one batched EXLA call per member |
-| Pick | 8 proposals, alternating `safe` (best lower confidence bound, mean − κ·spread) and `explore` (best upper confidence bound, mean + κ·spread), κ = 1, each with its kind, predicted share and spread |
+| Pick | 8 proposals, alternating `safe` (best lower confidence bound, mean − κ·spread) and `explore` (best upper confidence bound, mean + κ·spread, among candidates whose lower bound is at least `$BRAIN_EXPLORE_FLOOR` × the default, 0.9 by default), κ = 1, each with its kind, predicted share and spread |
 
 `brain.json` (schema `battle-brain/v1`) records the data it had (`rows`, `distinct_settings`) and the
 in-sample R² of the ensemble mean, which is a sanity figure and not a validation. `enough_data` is
@@ -99,6 +99,15 @@ The brain now trains only on the newest editions (`BRAIN_EDITIONS`, default 10, 
 seeds include the edition), and `target` says so. The first such run had 195 rows and 26 distinct
 settings for 21 genes, so the brain explores again (`enough_data` false). That is honest: it has
 not yet seen enough fresh maps.
+
+### Why the explorer has a floor
+
+In edition `69577ebe`, `GA g66.brainExplore` finished last in 1 of 7 matches. Its value share of the
+winner was 0.017 and its fleet decayed from 49 to 31 (`fleet_decays`, `low_yield`). Unconstrained UCB
+had picked it for its spread (0.47), not its mean: short air routes (`air_max_tiles=200`, `air_towns=10`)
+with full load. The explorer now chooses only among candidates whose lower bound is at least 0.9 ×
+the default, and falls back to the safe order when none qualifies. `brain.json` records the floor
+as `explore_floor`. The first constrained run's explorer had a spread of 0.27.
 
 ### When the default changes
 
