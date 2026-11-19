@@ -254,6 +254,8 @@ function PrismaticAI::Behaviour() {
 		air_max_tiles = AIController.GetSetting("air_max_tiles"),
 		air_level_max = AIController.GetSetting("air_level_max") * 1000,
 		air_keep_last = AIController.GetSetting("air_keep_last"),
+		air_grow_money = AIController.GetSetting("air_grow_money") * 1000,
+		air_reuse = AIController.GetSetting("air_reuse"),
 		foreign_airports = AIController.GetSetting("foreign_airports"),
 		invest_min = AIController.GetSetting("invest_min") * 1000,
 		invest_ppv_div = AIController.GetSetting("invest_ppv_div"),

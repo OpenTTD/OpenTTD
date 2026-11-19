@@ -262,6 +262,20 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
+			name = "air_grow_money",
+			description = "Autopilot: one more air route beyond air_routes_max per this much bank money above the reserve, in thousands (0: never more than air_routes_max).",
+			min_value = 0, max_value = 10000,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 250,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "air_reuse",
+			description = "Autopilot: once no pair of fresh towns is left, a new air route may fly from an airport of ours (a hub); 0: one route per airport.",
+			min_value = 0, max_value = 1,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0,
+			flags = CONFIG_BOOLEAN | CONFIG_INGAME,
+		});
+		AddSetting({
 			name = "air_keep_last",
 			description = "Never sell the last plane of an air route for losing money (a dead route never flies again).",
 			min_value = 0, max_value = 1,

@@ -16,6 +16,19 @@
 /* Towns where an airport of ours cannot go (the authority refuses, or the town has too many
  * stations and none of ours is adjacent): town id -> the error. The autopilot skips them. */
 AIR_BAD_TOWNS <- {};
+/* Our airport in a town: town id -> its tile. A new route from that town flies from it (air_reuse). */
+AIR_PORTS <- {};
+
+/* Our airport tile in `town` that is still ours, or null. */
+function PrismaticAI::OurAirportIn(town) {
+	if (!AIR_PORTS.rawin(town)) return null;
+	local t = AIR_PORTS[town];
+	if (!AIAirport.IsAirportTile(t) || AITile.GetOwner(t) != AICompany.ResolveCompanyID(AICompany.COMPANY_SELF)) {
+		delete AIR_PORTS[town];
+		return null;
+	}
+	return t;
+}
 
 /* The most levelling one site may cost is the setting air_level_max (AIR_LEVEL_MAX, main.nut); the
  * autopilot's route budget reserves it for both airports (autopilot.nut). */
@@ -138,12 +151,22 @@ function PrismaticAI::BuildAirRoute(a, b, planes) {
 	if (pax == -1 || type == -1) { AILog.Warning("PrismaticAI: no passengers or no airport type available yet"); return 0; }
 	AILog.Info("PrismaticAI: planner pair by air: " + AITown.GetName(a) + " - " + AITown.GetName(b) +
 		" (" + AIMap.DistanceManhattan(AITown.GetLocation(a), AITown.GetLocation(b)) + " tiles)");
-	local pa = PrismaticAI.BuildAirportNear(a, type, pax);
+	/* A town that has our airport flies from it: a hub serves several routes (air_reuse). */
+	local pa = PrismaticAI.OurAirportIn(a);
+	if (pa == null) pa = PrismaticAI.BuildAirportNear(a, type, pax);
 	if (pa == null) return 0;
-	local pb = PrismaticAI.BuildAirportNear(b, type, pax);
+	local pb = PrismaticAI.OurAirportIn(b);
+	if (pb == null) pb = PrismaticAI.BuildAirportNear(b, type, pax);
 	/* A half-built route is an airport that costs upkeep and carries nobody: in a battle the
 	 * autopilot left dozens. Take the first airport down again when the second one fails. */
 	if (pb == null) { PrismaticAI.RemoveIdleAirport(pa); return 0; }
+	AIR_PORTS[a] <- pa;
+	AIR_PORTS[b] <- pb;
+	/* A reused airport may be smaller than what is built now: the plane must fit both. */
+	foreach (t in [pa, pb]) {
+		local at = AIAirport.GetAirportType(t);
+		if (at == AIAirport.AT_SMALL || at == AIAirport.AT_COMMUTER) type = at;
+	}
 	local engine = PrismaticAI.PickPlane(type, pax);
 	if (engine == -1) {
 		AILog.Warning("PrismaticAI: no plane fits these airports yet");

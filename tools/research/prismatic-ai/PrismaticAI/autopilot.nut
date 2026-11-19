@@ -62,11 +62,21 @@ function PrismaticAI::NextAutopilotAirPair(b) {
 		}
 		list.push([t, pop]);
 	}
+	/* Fresh towns first; with air_reuse, once none is left, a pair may start or end at a town
+	 * that has our airport already: after three routes the bot found no fresh pair on OpenTTD
+	 * seed 930967890 (other companies fly from every big town) and sat on 15M for 17 years. */
+	local best = this.BestAirPair(list, b, false);
+	if (best == null && b.air_reuse == 1) best = this.BestAirPair(list, b, true);
+	return best;
+}
+
+/* The best untried pair of `list` ([town, population]) by min(population) x distance. */
+function PrismaticAI::BestAirPair(list, b, reuse) {
 	local best = null, best_score = 0;
 	for (local i = 0; i < list.len(); i++) {
-		if (this.air_towns.rawin(list[i][0])) continue;
+		if (!reuse && this.air_towns.rawin(list[i][0])) continue;
 		for (local j = i + 1; j < list.len(); j++) {
-			if (this.air_towns.rawin(list[j][0])) continue;
+			if (!reuse && this.air_towns.rawin(list[j][0])) continue;
 			local key = list[i][0] + "-" + list[j][0];
 			if (this.air_tried.rawin(key)) continue;
 			local dist = AIMap.DistanceManhattan(AITown.GetLocation(list[i][0]), AITown.GetLocation(list[j][0]));
@@ -84,8 +94,13 @@ function PrismaticAI::AutopilotAir(b) {
 	/* Failed pairs are forgiven once a game year: a richer company affords a site it could not before. */
 	local year = AIDate.GetYear(AIDate.GetCurrentDate());
 	if (year != this.air_year) { this.air_year = year; this.air_failed = 0; }
-	if (!b.grows || this.auto_air >= b.air_routes_max || this.air_failed >= AUTOPILOT_AIR_MAX_FAILS) return false;
 	local money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
+	/* Idle money buys more air routes: one beyond air_routes_max per `air_grow_money` in the bank
+	 * above the reserve. With a fixed three routes of six planes the bot held 15M idle by 1980 on
+	 * OpenTTD seed 930967890 (fleet 79, value ~ its cash), while AAAHogEx grew to 434 vehicles. */
+	local routes_max = b.air_routes_max;
+	if (b.air_grow_money > 0) routes_max += max(0, money - b.cash_reserve) / b.air_grow_money;
+	if (!b.grows || this.auto_air >= routes_max || this.air_failed >= AUTOPILOT_AIR_MAX_FAILS) return false;
 	local headroom = AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
 	/* The real price of the route: two airports, the planes, and a margin for levelling. Without
 	 * this check a route once spent everything on airports and bought no plane. */
@@ -100,7 +115,7 @@ function PrismaticAI::AutopilotAir(b) {
 	local pair = this.NextAutopilotAirPair(b);
 	if (pair == null) return false;
 	this.air_tried[pair[2]] <- true;
-	AILog.Info("PrismaticAI: autopilot air " + (this.auto_air + 1) + "/" + b.air_routes_max + ": " +
+	AILog.Info("PrismaticAI: autopilot air " + (this.auto_air + 1) + "/" + routes_max + ": " +
 		AITown.GetName(pair[0]) + " - " + AITown.GetName(pair[1]) + ", " + pair[3] + " tiles");
 	local loan_before = AICompany.GetLoanAmount();
 	AICompany.SetLoanAmount(AICompany.GetMaxLoanAmount());

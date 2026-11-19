@@ -235,6 +235,25 @@ held-start duel was run. The held-start pairs of the earlier defaults could not 
 under ~20%, so the 40-seed paired battle is the stronger evidence here. The former defaults
 play on as the anchor `PrismaticAI pre-elite`, so the switch keeps being re-measured.
 
+**The late cash pile is not the gap (2026-11-19, night).** Every PrismaticAI configuration's fleet
+stopped growing at 40-80 vehicles from about 1970, with cash making up ~97% of company value,
+while AAAHogEx grew from 228 to 434 vehicles. A 20-year replay of the default (seed 930967890)
+showed why: after 3 air routes the autopilot found no fresh town pair, because other companies
+fly from every big town and towns with our airport were excluded.
+
+Two settings, both GA genes and off by default, lift the cap:
+- `air_reuse`: new routes may fly from our airports, as hubs.
+- `air_grow_money`: one more air route per that much idle money.
+
+Together they roughly tripled the fleet (50 planes against 18) but lowered value on all three
+seeds, by 5-22%. Planes bought late do not pay back before the match ends, and they count
+depreciated, below the cash spent on them. `air_reuse` alone: +15% on one seed, no change on
+two. The gap to AAAHogEx opens early (income compounding), not in the idle cash of the last
+decade.
+
+Noise: the same default replay of seed 31337 ended at 18.2M before an unrelated script change
+and at 11.6M after it, so one seed alone cannot decide anything.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

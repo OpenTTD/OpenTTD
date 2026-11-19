@@ -181,7 +181,9 @@
       "air_full_load": 0,
       "invest_borrow": 0,
       "air_add_waiting": 0,
-      "rail_twin_max": 2
+      "rail_twin_max": 2,
+      "air_reuse": 0,
+      "air_grow_money": 0
     },
     "space": {
       "aggressiveness": [
@@ -283,6 +285,16 @@
         0,
         16,
         2
+      ],
+      "air_reuse": [
+        0,
+        1,
+        1
+      ],
+      "air_grow_money": [
+        0,
+        4000,
+        500
       ]
     },
     "brain_offspring": 2,
