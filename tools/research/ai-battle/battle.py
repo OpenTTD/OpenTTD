@@ -93,25 +93,35 @@ def load_config(path: Path) -> dict:
 # ------------------------------------------------------------------------------- self-tuning (GA)
 
 def paired_vs(matches: list[dict], base: str) -> list[dict]:
-    """Every contestant against `base` on the same seeds (common random numbers): pairs, mean value
-    ratio, wins. The paired comparison is what decides a default, not a GA score over few matches."""
+    """Every configuration against `base` on the same seeds (common random numbers): pairs, mean
+    value ratio, wins. A configuration is its settings, not its label: the GA's elite keeps its
+    genes but takes a new label every generation, and only pooled by settings do its pairs add up.
+    The paired comparison decides a default, not a GA score over a few matches."""
     by_seed: dict[int, dict[str, int]] = {}
-    for m in matches:
+    label_of: dict[str, str] = {}
+    base_id = None
+    for m in sorted(matches, key=lambda m: m.get("started_at", 0)):
         if m.get("status") != "done" or m.get("replica_of"):
             continue
+        ident = {c["key"]: (c.get("ai", c["key"]) + "|" + c.get("settings", "")) for c in m.get("lineup", [])}
         for f in m.get("standings") or []:
-            by_seed.setdefault(m["seed"], {})[f["key"]] = f["value"]
+            cid = ident.get(f["key"], f["key"])
+            label_of[cid] = f["key"]                       # the newest label of that configuration
+            if f["key"] == base:
+                base_id = cid
+            by_seed.setdefault((m.get("edition", ""), m["seed"]), {})[cid] = f["value"]
     stats: dict[str, list] = {}
     for vals in by_seed.values():
-        if base not in vals:
+        if base_id not in vals:
             continue
         for k, v in vals.items():
-            if k != base:
-                stats.setdefault(k, []).append((v, vals[base]))
+            if k != base_id:
+                stats.setdefault(k, []).append((v, vals[base_id]))
     out = []
     for k, ps in stats.items():
         ratios = [v / max(1, b) for v, b in ps]
-        out.append({"contestant": k, "pairs": len(ps), "ratio": round(sum(ratios) / len(ratios), 3),
+        out.append({"contestant": label_of.get(k, k), "settings": k.split("|", 1)[1] if "|" in k else "",
+                    "pairs": len(ps), "ratio": round(sum(ratios) / len(ratios), 3),
                     "wins": sum(v > b for v, b in ps)})
     return sorted(out, key=lambda r: -r["ratio"])
 
@@ -232,10 +242,14 @@ def next_generation(t: dict, state: dict, scored: list[tuple[dict, dict]]) -> li
     # Model-guided offspring: the top proposals of tools/research/battle-brain (an Axon/EXLA ensemble
     # trained on every PrismaticAI result) join as children, clamped into the gene space.
     # A proposal's "kind" (safe: best lower confidence bound; explore: best upper) names it.
+    used = set()
     for k, (genes, kind) in enumerate(brain_proposals(t)):
         if len(out) >= t["population"]:
             break
         tag = f"brain{kind}" if kind else f"brain{k}"
+        if tag in used:  # two proposals of one kind: labels must stay unique, they are contestant keys
+            tag = f"{tag}{k}"
+        used.add(tag)
         out.append(variant(t, gen, len(out), genes, [tag]))
         out[-1]["label"] = f"{t['label_prefix']} g{gen}.{tag}"
     while len(out) < t["population"]:
@@ -879,6 +893,11 @@ class Orchestrator:
         self.provenance = json.loads((cfg["cache"] / "arena" / "PROVENANCE.json").read_text())
         self.mdir = cfg["results"] / self.digest / "matches"
         self.mdir.mkdir(parents=True, exist_ok=True)
+        # Which code this edition runs: GA generations are new editions of the same bot, and pairing
+        # for promotion pools every edition of the same arena revision.
+        rev = json.loads((cfg["cache"] / "arena" / "PROVENANCE.json").read_text())["rev"]
+        (self.mdir.parent / "edition.json").write_text(json.dumps({"edition": self.digest, "rev": rev}) + "\n")
+        self.rev = rev
         self.store = Store(cfg["results"] / "battle.sqlite")
         self.hosts = [Host(h, cfg.get("remote_root", "$HOME/ttd-battle")) for h in load_hosts(cfg)]
         self.contestants = [dict(c, key=contestant_key(c)) for c in cfg["contestants"]]
@@ -938,7 +957,9 @@ class Orchestrator:
                 if c.get("group"):
                     sizes[c["group"]] = sizes.get(c["group"], 0) + 1
             block = max(sizes.values(), default=1)
-            seed = int(hashlib.sha256(f"{self.cfg['seed']}:{self.counter // block}".encode())
+            # The edition is part of the seed: every GA generation meets new maps instead of being
+            # judged (and tuned) on the same handful of seeds again and again.
+            seed = int(hashlib.sha256(f"{self.cfg['seed']}:{self.digest}:{self.counter // block}".encode())
                        .hexdigest()[:8], 16) % 2_000_000_000
         return {"id": f"m-{self.counter:04d}", "host": host.name, "host_version": host.version,
                 "seed": seed, "years": mc["years"], "ticks": match_ticks(mc["years"]),
@@ -1096,8 +1117,24 @@ class Orchestrator:
                     self.event(f"ALERT {m['id']} on {m['host']}: {key} {a}")
         m["anomalies"] = {k: v for k, v in live.items() if v}
 
+    def sibling_matches(self) -> list[dict]:
+        """Finished matches of every edition that runs the same arena revision (GA generations)."""
+        out = [m for m in self.matches.values() if m.get("status") == "done"]
+        for ed in self.cfg["results"].glob("*/edition.json"):
+            try:
+                info = json.loads(ed.read_text())
+            except ValueError:
+                continue
+            if info.get("rev") != self.rev or info.get("edition") == self.digest:
+                continue
+            for f in (ed.parent / "matches").glob("*.json"):
+                m = json.loads(f.read_text())
+                if m.get("status") == "done":
+                    out.append(m)
+        return out
+
     def announce_promotions(self) -> None:
-        for p in promotions(list(self.matches.values()), self.cfg.get("promotion", {})):
+        for p in promotions(self.sibling_matches(), self.cfg.get("promotion", {})):
             key = p["contestant"]
             if key not in self.promoted:
                 self.promoted.add(key)
@@ -1159,6 +1196,13 @@ class Orchestrator:
         return out
 
     def state(self) -> dict:
+        now = time.time()
+        if now - getattr(self, "_pair_at", 0) > 30:  # pooled over sibling editions: cached 30 s
+            pool = self.sibling_matches()
+            self._paired = paired_vs(pool, self.cfg.get("promotion", {}).get("base", "PrismaticAI"))
+            self._promos = promotions(pool, self.cfg.get("promotion", {}))
+            self._pair_at = now
+        paired, promos = self._paired, self._promos
         with self.lock:
             matches = sorted(self.matches.values(), key=lambda m: m["id"], reverse=True)
             keys = [c["key"] for c in self.contestants]
@@ -1179,8 +1223,7 @@ class Orchestrator:
                 "determinism": determinism(matches),
                 "perf": self.perf(),
                 "tuning": self.tuning_view(),
-                "paired": paired_vs(matches, self.cfg.get("promotion", {}).get("base", "PrismaticAI")),
-                "promotions": promotions(matches, self.cfg.get("promotion", {})),
+                "paired": paired, "promotions": promos,
                 "postmortems": [{"match": m["id"], "postmortem": m["postmortem"]} for m in matches
                                 if m.get("postmortem")][:12],
                 "events": list(self.events),

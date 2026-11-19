@@ -294,7 +294,9 @@ class Tuning(unittest.TestCase):
 class Promotion(unittest.TestCase):
     @staticmethod
     def m(seed, vals, **kw):
-        return dict({"status": "done", "seed": seed, "standings": [{"key": k, "value": v} for k, v in vals]}, **kw)
+        return dict({"status": "done", "seed": seed, "edition": "e",
+                     "standings": [{"key": k, "value": v} for k, v in vals],
+                     "lineup": [{"key": k, "ai": k, "settings": ""} for k, _ in vals]}, **kw)
 
     def test_pairs_on_common_seeds_and_promotes_only_clear_winners(self):
         ms = [self.m(s, [("PrismaticAI", 100), ("PrismaticAI X", 130), ("AAAHogEx", 900)]) for s in range(18)]
@@ -306,6 +308,17 @@ class Promotion(unittest.TestCase):
         promo = [p["contestant"] for p in battle.promotions(ms, {"min_pairs": 16, "min_win_share": 0.8, "min_ratio": 1.05})]
         self.assertEqual(promo, ["PrismaticAI X"])                         # Y: +4% is below min_ratio
         self.assertEqual(battle.promotions(ms, {"min_pairs": 20}), [])
+
+    def test_a_configuration_is_pooled_across_its_labels(self):
+        def g(seed, label, value, settings):
+            return {"status": "done", "seed": seed, "started_at": seed, "edition": f"e{seed // 6}",
+                    "lineup": [{"key": "PrismaticAI", "ai": "PrismaticAI", "settings": ""},
+                               {"key": label, "ai": "PrismaticAI", "settings": settings}],
+                    "standings": [{"key": label, "value": value}, {"key": "PrismaticAI", "value": 100}]}
+        ms = [g(s, f"PrismaticAI GA g{s // 6}.0", 150, "a=1") for s in range(18)]
+        pv = battle.paired_vs(ms, "PrismaticAI")
+        self.assertEqual(len(pv), 1)
+        self.assertEqual((pv[0]["pairs"], pv[0]["contestant"], pv[0]["settings"]), (18, "PrismaticAI GA g2.0", "a=1"))
 
 
 class Records(unittest.TestCase):
