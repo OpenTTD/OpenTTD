@@ -400,7 +400,8 @@ side, proven on the map first.
 
 ## A real place as the map
 
-A place name becomes a playable map ([`research/real-world-scenario.md`](research/real-world-scenario.md)).
+A place name becomes a playable map ([`research/real-world-scenario.md`](research/real-world-scenario.md);
+mechanism: [real-world scenario](research/mechanisms/real-world-scenario.md)).
 `rw-scenario` ([`tools/research/real-world`](tools/research/real-world/), Rust) resolves "Brno,
 Czech Republic" to ranked candidates with explicit bounds, and refuses an ambiguous name instead of
 guessing. It acquires a bounded set of lawful open data (OpenStreetMap features through Nominatim
