@@ -73,6 +73,22 @@ defmodule Brain do
     end
   end
 
+  # Local candidates: a parent from the best measured settings, with 1 to 3 genes moved to another
+  # point of the grid. While the data is thin, safe picks come only from these (a trust region).
+  def local_candidates(parents, genes, space, n, seed) do
+    :rand.seed(:exsss, {seed + 7, seed + 8, seed + 9})
+    for _ <- 1..n do
+      base = Enum.random(parents)
+      moved = Enum.take_random(genes, :rand.uniform(3))
+      Map.new(genes, fn g ->
+        [lo, hi, step] = space[g]
+        steps = max(round((hi - lo) / max(step, 1)), 0)
+        v = if g in moved or not Map.has_key?(base, g), do: lo + step * :rand.uniform(steps + 1) - step, else: base[g]
+        {g, v}
+      end)
+    end
+  end
+
   def run(csv, space_json, out) do
     space = space_json |> File.read!() |> Jason.decode!() |> Map.get("space", %{}) |> Map.new(fn {k, v} -> {k, Enum.map(v, &(&1 * 1.0))} end)
     genes = space |> Map.keys() |> Enum.sort()
@@ -83,7 +99,15 @@ defmodule Brain do
     {train_us, members} = :timer.tc(fn -> for s <- 1..@members, do: train(x, y, s) end)
     model = model(elem(Nx.shape(x), 1))
     {_init, predict} = Axon.build(model, compiler: EXLA)
-    cands = candidates(genes, space, @candidates, length(rows))
+    # Parents: the best measured settings by their mean paired share (at least 2 rows each).
+    parents = rows |> Enum.group_by(& &1.settings) |> Enum.filter(fn {_, rs} -> length(rs) >= 2 end)
+              |> Enum.map(fn {st, rs} -> {st, Enum.sum(Enum.map(rs, &:math.log(max(&1.share, 1.0e-6)))) / length(rs)} end)
+              |> Enum.sort_by(&elem(&1, 1), :desc) |> Enum.take(5) |> Enum.map(&parse_settings(elem(&1, 0)))
+    n_local = if parents == [], do: 0, else: div(@candidates, 2)
+    cands = candidates(genes, space, @candidates - n_local, length(rows)) ++
+            (if n_local > 0, do: local_candidates(parents, genes, space, n_local, length(rows)), else: [])
+    local = Nx.tensor(List.duplicate(0, @candidates - n_local) ++ List.duplicate(1, n_local), type: :u8)
+    enough = distinct >= 2 * length(genes)
     xc = cands |> Enum.map(&features(&1, genes, space)) |> Nx.tensor(type: :f32)
     {score_us, preds} = :timer.tc(fn -> members |> Enum.map(&predict.(&1, xc)) |> Nx.stack() |> Nx.squeeze(axes: [2]) end)
     mean = Nx.mean(preds, axes: [0]); std = Nx.standard_deviation(preds, axes: [0])
@@ -93,7 +117,8 @@ defmodule Brain do
     # the ensemble agrees the setting is good) and the best upper one (where it might be). The GA
     # takes the first two, so each generation gets one of each; an explorer that ends last is culled
     # by the GA's last-place penalty, a safe pick keeps the population from collapsing.
-    safe = lcb |> Nx.argsort(direction: :desc) |> Nx.slice([0], [@top]) |> Nx.to_flat_list()
+    safe_lcb = if enough or n_local == 0, do: lcb, else: Nx.select(local, lcb, Nx.Constants.neg_infinity(:f32))
+    safe = safe_lcb |> Nx.argsort(direction: :desc) |> Nx.slice([0], [@top]) |> Nx.to_flat_list()
     # The explorer is constrained: only candidates whose lower bound clears the floor (a ratio to
     # the default, $BRAIN_EXPLORE_FLOOR, default 0.9) may be picked, so exploring never proposes a
     # setting the ensemble already expects to lose badly (g66.brainExplore: short air routes, last
@@ -118,10 +143,10 @@ defmodule Brain do
     end
     best_seen = rows |> Enum.max_by(& &1.share, fn -> nil end)
     doc = %{schema: "battle-brain/v1", target: System.get_env("BRAIN_TARGET", "raw: log value share of the winner"), rows: length(rows), distinct_settings: distinct, genes: genes,
-      members: @members, epochs: @epochs, candidates: @candidates, kappa: @kappa, explore_floor: :math.exp(floor),
+      members: @members, epochs: @epochs, candidates: @candidates, kappa: @kappa, explore_floor: :math.exp(floor), trust_region: not enough and n_local > 0, parents: length(parents),
       backend: "EXLA #{inspect(EXLA.Client.get_supported_platforms() |> Map.keys())}",
       train_ms: div(train_us, 1000), score_ms: div(score_us, 1000), in_sample_r2: Float.round(r2, 3),
-      enough_data: distinct >= 2 * length(genes),
+      enough_data: enough,
       best_seen: best_seen && %{settings: best_seen.settings, share: best_seen.share},
       proposals: proposals}
     File.write!(out, Jason.encode!(doc, pretty: true))

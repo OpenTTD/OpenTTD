@@ -57,7 +57,7 @@ Elixir 1.19 / Erlang 28 (`$BRAIN_LIBS`, `ASDF_*_VERSION`), so XLA is not downloa
 | Features | each gene of the GA's space scaled to [0, 1]; a gene the setting does not name takes the midpoint and a 0 "named" flag, so the net can tell a default from a value |
 | Target | log of (the variant's value share of the winner / the default's on the same seed); `brain.json` names it in `target`, and `predicted_share` is that ratio |
 | Model | 5 members, each 2 × 32 tanh with dropout 0.1, trained by Adam (lr 0.01, 400 steps) on its own bootstrap sample |
-| Search | 50,000 random candidates on the GA's grid (min, max, step per gene), scored in one batched EXLA call per member |
+| Search | 50,000 candidates on the GA's grid (min, max, step per gene), scored in one batched EXLA call per member: half uniform over the space, half local (one of the 5 best measured settings, with at least 2 rows each, with 1 to 3 genes moved) |
 | Pick | 8 proposals, alternating `safe` (best lower confidence bound, mean − κ·spread) and `explore` (best upper confidence bound, mean + κ·spread, among candidates whose lower bound is at least `$BRAIN_EXPLORE_FLOOR` × the default, 0.9 by default), κ = 1, each with its kind, predicted share and spread |
 
 `brain.json` (schema `battle-brain/v1`) records the data it had (`rows`, `distinct_settings`) and the
@@ -108,6 +108,16 @@ had picked it for its spread (0.47), not its mean: short air routes (`air_max_ti
 with full load. The explorer now chooses only among candidates whose lower bound is at least 0.9 ×
 the default, and falls back to the safe order when none qualifies. `brain.json` records the floor
 as `explore_floor`. The first constrained run's explorer had a spread of 0.27.
+
+### Why safe picks stay near measured settings while data is thin
+
+In edition `1cff10c1`, the safe pick `GA g67.brainSafe` finished last in 1 of 3 matches (value
+share 0.087, fleet 33). Its settings were far from anything measured: low growth caps
+(`invest_road_cap=8`, `invest_air_cap=4`, `air_planes=1`, `max_routes=8`). The ensemble's
+lower bound was confident there only because no data contradicted it. While `enough_data` is false,
+safe picks now come only from the local candidates, a trust region around the best measured
+settings. `brain.json` records `trust_region` and the number of `parents`. On the first such run, the
+safe pick predicted 1.19 × the default with a spread of 0.05, down from 1.37 with 0.19.
 
 ### When the default changes
 
