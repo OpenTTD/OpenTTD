@@ -93,7 +93,10 @@ Four of these became bot settings (catchment rings, statues, full load, borrowin
 default. The recorded single-seed ablation (`research/results/ablation-20261119T062938-seed930967890.md`)
 gave catchment rings +4%, full load -2%, borrowing 0 and statues -45%. Transplanted alone into a bot
 built otherwise, they do not carry AAAHogEx's edge. The battle's genetic algorithm explores them on
-many seeds. Double-track rail (item 4) and the unified pool (item 2) are not ported yet.
+many seeds. The unified pool (item 2) is not ported yet. Double-track rail (item 4) is the opt-in
+setting `rail_double` since 2026-11-19. Its recorded 3-seed, 10-year ablations gave -24.2%, -15.5%
+and +16.4%, and rail trains did not grow (knowledge `rail-lines-a-train-can-turn-on`, section
+*Double track*). It stays off by default.
 
 Two further mechanisms were measured with recorded 3-seed, 10-year ablations
 (`research/results/ablation-20261119T06*`):

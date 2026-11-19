@@ -1,0 +1,53 @@
+{
+ "schema": "ai-battle-ablation/v1",
+ "id": "ablation-20261119T083459-seed1814625749",
+ "generated_at": "2026-11-19T08:34:59+00:00",
+ "seed": 1814625749,
+ "years": 10,
+ "field": [
+  "AAAHogEx",
+  "AdmiralAI"
+ ],
+ "match_cfg": {
+  "years": 10,
+  "start_year": 1960,
+  "landscape": "temperate",
+  "map_x": 8,
+  "map_y": 8,
+  "breakdowns": 1
+ },
+ "rev": "9a4375502cb520874de0137342f927e1ac33f423",
+ "tree_dirty": false,
+ "rows": [
+  {
+   "variant": "off",
+   "settings": "rail_double=0",
+   "exit_code": 0,
+   "value": 4679708,
+   "money": 3311056,
+   "vehicles": 62,
+   "rail": 20,
+   "road": 12,
+   "air": 30,
+   "errors": 0,
+   "field_best": 13283667,
+   "t": "1970-01",
+   "vs_first": 0.0
+  },
+  {
+   "variant": "on",
+   "settings": "rail_double=1",
+   "exit_code": 0,
+   "value": 3955350,
+   "money": 3038983,
+   "vehicles": 58,
+   "rail": 15,
+   "road": 17,
+   "air": 26,
+   "errors": 0,
+   "field_best": 17081432,
+   "t": "1970-01",
+   "vs_first": -0.1548
+  }
+ ]
+}

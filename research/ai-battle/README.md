@@ -243,6 +243,26 @@ The first editions showed two failures. The battle now catches both by itself.
 - **Defaults.** A tuned variant is a candidate. It becomes a default only through held-start duel
   pairs (rule `project.a-tuning-claim-needs-held-start-pairs`).
 
+## Double track
+
+AAAHogEx's rail scales by double track; PrismaticAI's single-track line holds two trains. The
+opt-in setting `rail_double=1` builds the bot's own freight lines with one one-way track each way
+and path signals (`tools/research/prismatic-ai/README.md`, section *Double track*). It is off by
+default. Recorded 10-year ablations against AAAHogEx and AdmiralAI, one per seed:
+[`seed930967890`](../results/ablation-20261119T083455-seed930967890.md),
+[`seed1814625749`](../results/ablation-20261119T083459-seed1814625749.md),
+[`seed1251879686`](../results/ablation-20261119T083502-seed1251879686.md).
+
+- **Value.** Lower on two seeds and higher on one.
+- **Train count.** Rail trains did not grow. The steward adds a train only while half a trainload
+  waits and no train loads at the source. With full load at the source and short trains (the
+  platform follows demand), a train is nearly always loading, so the extra track is paid for and
+  carries no extra trains.
+- **Noise.** A bot edit that changes no decision still moves a 10-year result by a few percent.
+  HEAD with one no-op expression added to `LineRecord` matched the edited tree's `rail_double=0`
+  value exactly, and both differed from HEAD. A shift of a few Squirrel opcodes moves an action by
+  one tick, and the match diverges from there. Read a single-seed difference of that size as noise.
+
 ## Never last
 
 By the owner's order, `PrismaticAI` and `PrismaticAI self-steward` are never last
