@@ -30,12 +30,17 @@ if [[ -z "$PERSONAL" ]]; then
 fi
 DEST="$PERSONAL/ai/PrismaticAI"
 target="$( [[ -L "$DEST" ]] && readlink "$DEST" || echo "")"
+# The same folder, compared by device and inode (test -ef), not as text: on a case-insensitive file
+# system ~/dev/openTTD and ~/dev/OpenTTD are one checkout, and a text compare called them two.
+same() { [[ -n "$target" && "$target" -ef "$SRC" ]]; }
 if [[ "$CHECK" == 1 ]]; then
-  if [[ "$target" == "$SRC" ]]; then echo "PrismaticAI -> $SRC (this checkout)"; exit 0; fi
-  echo "PrismaticAI at $DEST is ${target:+a link to $target}${target:-not a link to this checkout}" >&2; exit 1
+  if same; then echo "PrismaticAI -> $target (this checkout)"; exit 0; fi
+  if [[ -n "$target" ]]; then echo "PrismaticAI at $DEST links to $target, not to this checkout ($SRC)" >&2
+  else echo "PrismaticAI at $DEST is not a link to this checkout ($SRC)" >&2; fi
+  exit 1
 fi
 mkdir -p "$PERSONAL/ai"
-if [[ "$target" == "$SRC" ]]; then echo "PrismaticAI already -> $SRC"; exit 0; fi
+if same; then echo "PrismaticAI already -> $target"; exit 0; fi
 if [[ -L "$DEST" ]]; then
   rm "$DEST"
 elif [[ -e "$DEST" ]]; then
