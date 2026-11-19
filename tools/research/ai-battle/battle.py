@@ -983,10 +983,16 @@ class Orchestrator:
                 self.event(f"host {host.name}: stopped {n} match(es) of an older edition")
 
     def reload_hosts(self) -> None:
-        """Pick up hosts added to the local hosts file (e.g. by `discover`) without a restart."""
-        known = {h.name for h in self.hosts}
+        """Pick up hosts added to the local hosts file (e.g. by `discover`), and slot counts changed
+        in it (e.g. a host handed back after another experiment), without a restart."""
+        known = {h.name: h for h in self.hosts}
         for spec in load_hosts(self.cfg):
-            if spec["name"] not in known:
+            if spec["name"] in known:
+                h, slots = known[spec["name"]], int(spec.get("slots", 1))
+                if h.slots != slots:
+                    self.event(f"host {h.name}: slots {h.slots} -> {slots} from the hosts file")
+                    h.slots = slots
+            else:
                 self.hosts.append(Host(spec, self.cfg.get("remote_root", "$HOME/ttd-battle")))
                 self.event(f"host {spec['name']}: added from the hosts file")
 
