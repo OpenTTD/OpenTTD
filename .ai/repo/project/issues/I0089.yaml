@@ -31,3 +31,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-19'
+updated_at: 2026-11-19T11:55:34Z
+started_at: 2026-11-19T11:55:17Z
+started_event: sha256:9c1b30236adb581990bc61545b5cb496fc862c367add12ed7a24c27b4fb1e057
+verified_at: 2026-11-19T11:55:24Z
+verified_event: sha256:471667a2b00a235285ea491f881047af575cfdfa6e5fcc1a40b583d01351d666
+completed_at: 2026-11-19T11:55:34Z
+completed_event: sha256:a574659794f28198e1fa33d57c295a99e84885a78cc5af72e3994cb1f8eaccd5
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "node --test tools/research/mcp-panel/test/*.test.mjs; tools/research/mcp-scripts-check http://127.0.0.1:8870"
+    result: "node 265/265; scripts check 19/19 against a live panel (CodeMirror, highlighting, lint marker, completion of rpc, save, hot reload, run once, 390 px)"
+    commit: 377987ceca35fa3ffdbbd4e14459e0d6fd71a6cc
+    recorded_at: 2026-11-19T11:54:52Z

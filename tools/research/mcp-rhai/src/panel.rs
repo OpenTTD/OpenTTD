@@ -2438,6 +2438,12 @@ fn query_params(path: &str) -> &'static [(&'static str, bool)] {
     }
 }
 
+/// The required query parameters of a declared GET route that a request lacks (query_params), so
+/// the dispatcher answers 400 before any handler runs, as it does for a POST's missing fields.
+pub fn missing_query(path: &str, query: &Query) -> Vec<&'static str> {
+    query_params(path).iter().filter(|(n, req)| *req && query.get(n).map_or(true, str::is_empty)).map(|(n, _)| *n).collect()
+}
+
 /// The OpenAPI 3.1 document of the declared routes, the streaming routes, and the derived routes.
 pub fn openapi_doc(routes: &[Route], derived: &[Derived], panel_port: u16) -> Value {
     let mut paths = Map::new();
@@ -2929,6 +2935,12 @@ impl Panel {
             if !errs.is_empty() {
                 return (400, json!({"error": format!("invalid body: {}", errs.join("; "))}));
             }
+        } else if hit.is_some() {
+            let missing = missing_query(path, &req.query);
+            if !missing.is_empty() {
+                let names: Vec<String> = missing.iter().map(|n| format!("?{n}=")).collect();
+                return (400, json!({"error": format!("missing required query parameter: {}", names.join(", "))}));
+            }
         }
         let up = g.mcp_up.load(Ordering::SeqCst);
         let result: Result<(u16, Value), String> = (|| {
@@ -3057,6 +3069,16 @@ mod tests {
     }
 
     fn no_op(_: &Arc<Game>, _: &Input) -> Result<(u16, Value), String> { Ok((200, json!({}))) }
+
+    #[test]
+    fn a_get_without_its_required_query_is_refused_before_its_handler() {
+        assert_eq!(missing_query("/api/script", &Query::parse("")), vec!["name"]);
+        assert_eq!(missing_query("/api/script", &Query::parse("name=")), vec!["name"]);
+        assert!(missing_query("/api/script", &Query::parse("name=ttd")).is_empty());
+        assert_eq!(missing_query("/api/services/log", &Query::parse("since=3")), vec!["name"]);
+        assert!(missing_query("/api/events", &Query::parse("")).is_empty(), "optional parameters only");
+        assert!(missing_query("/api/status", &Query::parse("")).is_empty());
+    }
 
     #[test]
     fn the_route_table_is_unique_and_each_post_but_close_declares_its_body() {

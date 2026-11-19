@@ -56,8 +56,8 @@ flowchart LR
 
 | Issue | Status |
 |---|---|
-| I0088 | built: `src/rhai_catalogue.rs` and `GET /api/rhai/functions`; `cargo test --release` on lundra 304/304 (5 new); the live route against a running panel `NOT RUN` (no local build while this Mac is under its disk floor) |
-| I0089 | built: CodeMirror 6 (`static/rhai-editor.js`, `static/rhai-lang.js`) through an import map derived from npm's lock (`src/panel_npm.rs`); `node --test` 266/266 with the app.css check, `cargo test --release` on lundra 308/308; a browser run against a fixture server (static files and node_modules served as the panel serves them, fake `/api` answers) 7/7: CodeMirror loads, colours, marks a parse error, completes `rpc` and `ttd::report` under the import alias, and shows hover docs; `tools/research/mcp-scripts-check` against a live panel `NOT RUN` (no local build) |
+| I0088 | **done**: `GET /api/rhai/functions` answers 1,866 functions on a live panel (24 host, 786 tool, 876 route, 87 console, 93 library), signatures as Rhai reads them (`rpc(string) -> Dynamic`); `mcp-route-check` 835 passed, 0 failed; `cargo test --release --bin mcp-panel` 139/139 |
+| I0089 | **done**: CodeMirror 6 on the Scripts page; `tools/research/mcp-scripts-check` against a live panel 19/19 (CodeMirror loads, colours, numbers lines, marks and underlines a parse error, completes `rpc`, saves, reloads a service, runs once, no horizontal scroll at 390 px); `node --test` 265/265 |
 | I0090 | planned |
 | I0091 | planned |
 | I0092 | planned |
@@ -142,3 +142,15 @@ quoted verbatim.
    PRISMATIC_MCP_PROFILE=full_access. What scope should I0092 have?* Options: what exists plus
    routes in Prismatic (recommended); only what exists; pause I0092.
    Answer: **"What exists + routes in Prismatic (Recommended)"**.
+6. *Live checks of the Rhai IDE (mcp-scripts-check in Chrome, the debugger) need a panel built from
+   the feature/rhai-ide branch. This Mac has 26 GiB free (floor 35); a cold build of mcp-panel in its
+   own target directory takes ~2–3 GB. How should I verify live?* Options: build locally anyway
+   (recommended); whole stack on lundra; wait for freed disk.
+   Answer: **"Build locally anyway (Recommended)"**.
+7. *Two worktrees are merged into master, have no changes and nothing is running in them:
+   OpenTTD-wt/feature/rail-steward (4.0 GB) and OpenTTD-wt/docs/real-world-interlink (0.5 GB). ...
+   Remove them (`git worktree remove`; branches stay)?* Options: remove both (recommended); leave
+   them. Answer: **"Remove both (Recommended)"**.
+8. *feature/rhai-ide holds I0088 and I0089 ... live NOT RUN. Merging into master also brings the
+   milestone's 6 issue records (I0090–I0093 still open). When should it go to master?* Options:
+   after the live check (recommended); now. Answer: **"After the live check (Recommended)"**.

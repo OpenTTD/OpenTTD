@@ -60,7 +60,8 @@ try {
   const numbered = await page.$$eval('#editor .cm-lineNumbers .cm-gutterElement', (d) => d.map((x) => Number(x.textContent)).filter(Boolean));
   const text = await page.evaluate(() => window.scriptsEditor.value);
   check('the editor highlights the file', spans > 20, `${spans} coloured token spans`);
-  check('the lines are numbered from 1', numbered.length > 5 && numbered[0] === 1, `${numbered.length} numbers shown`);
+  // CodeMirror's first gutter element is a hidden spacer holding the widest number, so read the least.
+  check('the lines are numbered from 1', numbered.length > 5 && Math.min(...numbered) === 1, `${numbered.length} numbers shown`);
   check('the header comment is its documentation', (await page.textContent('#doc')).trim().length > 10);
   await page.waitForFunction(() => document.querySelector('#check')?.textContent === 'parses' || document.querySelector('#check')?.textContent.startsWith('line'), null, { timeout: 5000 }).catch(() => {});
 

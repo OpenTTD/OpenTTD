@@ -42,6 +42,59 @@ pub fn name_of(signature: &str) -> &str {
     s.split('(').next().unwrap_or(s).trim()
 }
 
+/// A signature as a script writer reads it: the engine's Rust paths and its error wrapper taken
+/// off, unnamed parameters shown by type. `rpc(_: string) -> core::result::Result<rhai::types::
+/// dynamic::Dynamic, alloc::boxed::Box<rhai::types::error::EvalAltResult>>` is
+/// `rpc(string) -> Dynamic`.
+pub fn clean_signature(sig: &str) -> String {
+    let s = sig.trim();
+    let Some(open) = s.find('(') else { return s.to_string() };
+    let (head, tail) = s.split_at(open);
+    let mut t = String::with_capacity(tail.len());
+    // Drop every module path (`a::b::Type` -> `Type`) inside the parameters and the result.
+    let mut word = String::new();
+    let mut chars = tail.chars().peekable();
+    while let Some(c) = chars.next() {
+        if c.is_ascii_alphanumeric() || c == '_' {
+            word.push(c);
+        } else if c == ':' && chars.peek() == Some(&':') && !word.is_empty() {
+            chars.next();
+            word.clear();
+        } else {
+            t.push_str(&word);
+            word.clear();
+            t.push(c);
+        }
+    }
+    t.push_str(&word);
+    let t = t.replace("_: ", "");
+    let t = unwrap_result(&t);
+    format!("{head}{t}")
+}
+
+/// `Result<T, Box<EvalAltResult>>` (with or without spaces) as `T`, wherever it stands.
+fn unwrap_result(s: &str) -> String {
+    let mut out = s.to_string();
+    while let Some(at) = out.find("Result<") {
+        let start = at + "Result<".len();
+        let mut depth = 1usize;
+        let mut comma = None;
+        let mut end = None;
+        for (i, c) in out[start..].char_indices() {
+            match c {
+                '<' => depth += 1,
+                '>' => { depth -= 1; if depth == 0 { end = Some(start + i); break; } }
+                ',' if depth == 1 && comma.is_none() => comma = Some(start + i),
+                _ => {}
+            }
+        }
+        let (Some(end), Some(comma)) = (end, comma) else { break };
+        let inner = out[start..comma].trim().to_string();
+        out.replace_range(at..=end, &inner);
+    }
+    out
+}
+
 /// The documentation of each host function, read from `//!` lines that list them:
 /// `//!   name(args)  other(args)   -> type  text`, continued on deeper-indented lines.
 /// A line naming several functions documents each of them.
@@ -193,7 +246,7 @@ pub fn catalogue(src: &Sources) -> Value {
             v
         });
         if let Some(a) = entry.get_mut("signatures").and_then(Value::as_array_mut) {
-            let s = Value::String(sig.trim().to_string());
+            let s = Value::String(clean_signature(&sig));
             if !a.contains(&s) { a.push(s); }
         }
     }
@@ -295,6 +348,16 @@ mod tests {
         for n in ["rpc", "read", "board_post", "kernel", "loopback_get", "env", "sleep", "to_json", "tools"] {
             assert!(d.contains_key(n), "main.rs documents {n}");
         }
+    }
+
+    #[test]
+    fn signatures_read_as_rhai() {
+        assert_eq!(clean_signature("rpc(_: string) -> core::result::Result<rhai::types::dynamic::Dynamic,alloc::boxed::Box<rhai::types::error::EvalAltResult>>"),
+                   "rpc(string) -> Dynamic");
+        assert_eq!(clean_signature("board_post(claim: &str, text: &str) -> Result<bool, Box<EvalAltResult>>"), "board_post(claim: &str, text: &str) -> bool");
+        assert_eq!(clean_signature("sleep(_: i64)"), "sleep(i64)");
+        assert_eq!(clean_signature("f(a: Result<i64>) -> i64"), "f(a: Result<i64>) -> i64");
+        assert_eq!(clean_signature("plain"), "plain");
     }
 
     #[test]

@@ -7,6 +7,11 @@
 #   the panel validates bodies against the declared schema before any handler runs;
 # - every MCP tool annotated readOnlyHint (x-mcp-annotations in OpenAPI) is called with {} and must
 #   succeed;
+# - every GET whose required query parameters (OpenAPI `required: true`) this check does not supply
+#   answers 400, never 5xx: the panel refuses a missing ?param before any handler runs;
+# - a WebSocket upgrade (an operation whose responses declare 101) is not an HTTP read: it is named
+#   and not called;
+# - a route that drops the connection without an answer is a failure, not a crash of this check;
 # - the rest (POST operations that change something and need nothing) are not called blindly: they
 #   are counted and named, so the report says what was not exercised; so are routes that need the
 #   owner's GUI client on a stack that has none (503 "no GUI client attached").
@@ -39,6 +44,8 @@ def call(method, path, body=None):
             return r.status, r.headers.get("Content-Type", ""), r.read()
     except urllib.error.HTTPError as e:
         return e.code, e.headers.get("Content-Type", ""), e.read()
+    except (OSError, ValueError) as e:  # a dropped connection or a broken answer: reported, not raised
+        return 0, "", f"{type(e).__name__}: {e}".encode()
 
 
 spec = json.loads(urllib.request.urlopen(URL + "/openapi.json", timeout=30).read())
@@ -50,12 +57,37 @@ for path, ops in sorted(spec["paths"].items()):
         if "stream" in path:
             skipped.append(f"{name} (stream)")
             continue
+        if "101" in (op.get("responses") or {}):
+            skipped.append(f"{name} (WebSocket upgrade)")
+            continue
+        needs = [p["name"] for p in op.get("parameters") or [] if p.get("in") == "query" and p.get("required")]
+        if method == "GET" and needs and path not in QUERY:
+            code, _, data = call("GET", path)
+            ok = code == 400
+            (passed if ok else failed).append(f"{name} without ?{'=, ?'.join(needs)}= -> {code}" + ("" if ok else f" {data[:120]!r}"))
+            continue
         if method == "GET":
-            code, ctype, data = call("GET", path)
+            # A path parameter takes the first value its schema enumerates; without one the route
+            # needs input this check cannot invent, and is named instead of called.
+            target = path
+            for p in [p for p in op.get("parameters") or [] if p.get("in") == "path"]:
+                values = (p.get("schema") or {}).get("enum") or []
+                if not values:
+                    target = None
+                    break
+                target = target.replace("{" + p["name"] + "}", str(values[0]))
+            if target is None:
+                skipped.append(f"{name} (path parameter without enumerated values)")
+                continue
+            code, ctype, data = call("GET", target)
             if code == 503 and b"no GUI client attached" in data:
                 skipped.append(f"{name} (needs a GUI client; this stack has none)")
                 continue
-            ok = code == 200 and (ctype.startswith("image/") or ctype.startswith("application/json"))
+            # The answer must be one the operation declares (never 5xx), in a content type declared
+            # for that status; a status declared without content may answer any type.
+            declared = (op.get("responses") or {}).get(str(code))
+            types = list(((declared or {}).get("content") or {}).keys())
+            ok = declared is not None and code < 500 and (not types or any(ctype.startswith(t) for t in types))
             (passed if ok else failed).append(f"{name} -> {code} {ctype.split(';')[0]}" + ("" if ok else f" {data[:120]!r}"))
             continue
         schema = (((op.get("requestBody") or {}).get("content") or {}).get("application/json") or {}).get("schema") or {}
