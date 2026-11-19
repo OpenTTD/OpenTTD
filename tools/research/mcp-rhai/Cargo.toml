@@ -24,6 +24,11 @@ rw-scenario = { path = "../real-world", default-features = false }
 # ... and into a DuckDB file per instance, linked against the system libduckdb 1.5 (Homebrew; build.rs
 # finds it), never the bundled C++ build. The crate's version 1.105xx.y is DuckDB 1.5.xx.
 duckdb = { version = "=1.10505.0", default-features = false, optional = true }
+# battle-postmortem (research/battle-postmortem.md): reads the LAN battle's machine store
+# (~/ttd-battle/results/battle.sqlite, written by battle.py) read-only, and analyses every match in
+# parallel on all cores.
+rusqlite = { version = "0.32", features = ["bundled"] }
+rayon = "1.10"
 
 [features]
 default = ["store"]

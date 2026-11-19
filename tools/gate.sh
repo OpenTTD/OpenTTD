@@ -269,6 +269,13 @@ cmd_change() {
   tools/research/readme-scoreboard --check
   echo "==> tools/research/ai-battle/battle.py check (rule project.battle-records-are-reproducible)"
   python3 -B tools/research/ai-battle/battle.py check
+  if compgen -G 'research/results/postmortem-*.json' > /dev/null; then
+    echo "==> battle-postmortem check (research/battle-postmortem.md: every post-mortem .md is what its .json derives)"
+    # RUSTFLAGS replaces a target's rustflags from a global cargo config; a `-C lto` there breaks
+    # build scripts (research/live-arena.md). An RUSTFLAGS already set wins.
+    RUSTFLAGS="${RUSTFLAGS:--C target-cpu=native}" cargo run --quiet --release --offline \
+      --manifest-path tools/research/mcp-rhai/Cargo.toml --bin battle-postmortem -- check
+  fi
   echo "==> tools/knowledge/refs check"
   tools/knowledge/refs check
   echo "==> tools/research/e2e-coverage (rule project.web-ui-is-covered-end-to-end: every web UI page has a browser check)"

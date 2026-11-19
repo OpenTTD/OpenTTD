@@ -467,7 +467,7 @@ from the code. The right-hand column says what was counted.
 | **34** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **86** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
 | **85** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **459** | published documents on the site and the wiki | published documents under `/` |
+| **462** | published documents on the site and the wiki | published documents under `/` |
 <!-- surfaces:end facts -->
 
 ## How it compares
@@ -1032,6 +1032,7 @@ What the fork delivers, from its `.ai/` feature records:
 | [Research CLI](.ai/repo/features/research-experiment-cli.md) | stable | An experiment records its own build profile, toolchain, commands and results, and its report is generated from that record. |
 | [Bridge](.ai/repo/features/prismatic-bridge.md) | draft | Prismatic decides, a standalone bridge relays over the admin network, and a normal Company AI acts in the game. |
 | [AI battle](.ai/repo/features/lan-ai-battle.md) | draft | Every SSH-reachable machine runs headless free-for-all matches between PrismaticAI and BaNaNaS AIs, the leaderboard is a derived record, and a browser dashboard shows the run live. |
+| [Battle post-mortem](.ai/repo/features/battle-postmortem.md) | draft | After each round, a Rust tool analyses every finished match in parallel, names why each contestant lost against fixed thresholds, counts PrismaticAI's last places, and proposes settings for the next edition. |
 | [MCP server](.ai/repo/features/embedded-mcp-server.md) | draft | An agent reads live game state over MCP and changes it only with an operator's approval of the exact arguments, through the command system. |
 | [Event bus and store](.ai/repo/features/event-bus-and-store.md) | draft | Any process on the machine follows a game live over ZeroMQ, and every decision can query what earlier games recorded. |
 | [Surfaces](.ai/repo/features/published-surfaces.md) | stable | The site, the wiki and the Markdown index tables, all generated from what git tracks and the .ai/ layer, and checked on every commit. |
@@ -1048,6 +1049,7 @@ itself (generated):
 |---|---|
 | [Research / validation layer](research/README.md) | This directory is part of this fork's own process scaffolding, not upstream OpenTTD material — see AGENTS.md for the full context (this repo is a personal research fork used as a validation target for the Prismatic... |
 | [Experiment report: baseset-prerequisite-macos](research/baseset-prerequisite-macos.md) | The four regression ctest cases (regression_regression, regression_stationlist, regression_gs, regression_gs_compat) require a base graphics set to be installed, even though they run headless (-vnull -snull -mnull).... |
+| [Battle post-mortem](research/battle-postmortem.md) | RESEARCH-ONLY. After each round of the LAN AI battle, the post-mortem answers where each contestant loses, and PrismaticAI above all. battle.py already writes a post-mortem per match into its machine store.... |
 | [Experiment report:](research/experiment-template.md) | List the exact commands run and their outcome. Don't summarize away detail — "ran the tests" is not enough, "tools/gate.sh change -> exit 0, 98/98 tests" is. |
 | [Live arena](research/live-arena.md) | RESEARCH-ONLY. The live arena is the visible counterpart of the LAN AI battle. It has the same contestants as the battle: PrismaticAI from this repository, its solo-max variant, and four AIs from BaNaNaS. They play... |
 | [The public C++ API through MCP and OpenAPI](research/mcp-api.md) | RESEARCH-ONLY. Issue I0036, rule project.public-api-is-exposed. |
