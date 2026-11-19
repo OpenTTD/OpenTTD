@@ -93,7 +93,7 @@ be the panel's and the hub's both (`game.month`), as two rows with their own pro
 | `plan.investment` | panel | `panel.rs:h_investment` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | AlgoGlyph's transport-investment chose what to build (`GET /api/investment`) |
 | `plan.action` | panel | `panel.rs:h_action_plan` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | AlgoGlyph's action-plan answered (`POST /api/actionplan`) |
 | `plan.intent` | panel | `panel.rs:h_intent, answer_plan` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a sentence was resolved to an intent and candidates |
-| `plan.directive` | panel | `panel_decision.rs:pull` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | Prismatic's directive was applied or refused (`POST /api/decision/pull`) |
+| `plan.directive` | panel | `panel_decision.rs:pull` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | Prismatic's directive was pulled: refused by the contract, or each step with its state (applied, pending approval, refused, error) (`POST /api/decision/pull`) |
 | `plan.kernel` | external (`POST /api/bus/publish`) | `kernel_feed.rs:event (mcp-kernel-feed --publish)` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | an AlgoGlyph kernel answered a request fed from the store (I0086) |
 | `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, winner}`, read from the store (I0083) |
 | `game.new_world` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's tick went back |
@@ -138,8 +138,9 @@ Each planning decision publishes one `plan.*` event beside its `panel.*` sentenc
 - `inputs`: `{live, stored}`: `live` names what was read live (the planner's own `reads` list of
   `openttd://` resources, the console line money came from, the directive's URL ...), `stored` the
   store query with its row count, or `{fallback}`: why no history was read. The calibration is the
-  first decision that reads the store (I0082, below); every other fallback names the issue that adds
-  its query (I0085 Prismatic, I0086 kernels, I0087 the bot's settings);
+  first decision that reads the store (I0082, below), and the bot's settings read it behind a switch
+  (I0087, below); every other fallback names the issue that adds its query (I0085 Prismatic, I0086
+  kernels);
 - `choice`: what was decided, as data (the portfolio's lines, the settings in their slots with
   `rail_after`, `own_lines` and the lines dropped, the directive applied or refused with its errors,
   the kernel's answer).
@@ -167,6 +168,17 @@ file read-only, a running panel's through its `/api/db/query`), and `plan.portfo
 carry `{fallback: "uncalibrated: <why>"}` and the plan runs on the model alone. The one reading of
 the retired file research/calibration.json was imported once as a run of its own
 (`mcp-panel --import-calibration`, instance `calibration-import`, seed and map null).
+
+**The bot's settings read the stored duels (I0087).** With `PRISMATIC_BOT_FROM_DUELS=1`, a planned
+bot start reads every store's `plan.duel` verdicts of at least 60 months, with the `plan.bot_settings`
+of the same instance (`duel_outcomes.rs:outcomes_sql`, across stores as above). Each verdict is joined
+with the settings its own run published before it, and `own_lines` and `rail_after` are derived by the
+rule `own-lines-by-handed-v1`. `plan.bot_settings` then names that query with its rows (`inputs.stored`)
+and the rule, outcomes, pairs and reasons (`inputs.live.from_duels`), and its `version.params` gains
+`from_duels`. Off (the default), with the store off, nothing handed over or no pair, it carries
+`{fallback: "constants: <why>"}` and the parameters of before. The duels recorded before I0083 were
+imported once as `plan.duel` events of a run of their own (`mcp-panel --import-duels`, instance
+`duel-import`), each with what its run handed over in `choice.plan`.
 
 ## The hub's own events (I0084)
 

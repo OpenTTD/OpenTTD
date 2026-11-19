@@ -50,6 +50,13 @@ run at once on the loaded machine, then ended with the same fleets every month a
 and 9830 (0.2%; duel-20261117T195416 and T195419), against 52% before. Not bit-identical yet, so keep
 reading A/Bs against repeats.
 
+**Over ten years the held start does not keep a repeat close** (I0087, 2026-11-18). The same seed, the same
+handed lines and the same own_lines, held, run again a day later: seed 31337 own_lines 8 4433637 then
+4940838 (+11.4%), own_lines 0 4479471 then 4213684 (-5.9%); 20208 own_lines 8 3690922 then 3410336
+(-7.6%); 4242 own_lines 8 4022718 then 4072265 (+1.2%). An arm's own repeat spread over 120 months is
+about the size of the effects measured so far (knowledge
+`own-lines-derived-from-stored-duels-did-not-beat-the-constant`).
+
 # How to apply it
 
 - Read an A/B only against its own noise: put the rival's spread (the same bot in both arms) next to

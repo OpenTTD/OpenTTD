@@ -118,8 +118,47 @@ fn line(what: &str, answer: &Value) -> String {
     }
 }
 
+/// The state one step of applying a directive reached: `applied`, `pending` (it waits for the
+/// operator's approval, who may still refuse it), `refused` (the game answered an error) or `error`
+/// (the call itself failed, so whether the game changed is not known).
+pub fn state_of(answer: &Result<Value, String>) -> &'static str {
+    match answer {
+        Err(_) => "error",
+        Ok(a) if a.get("status").and_then(Value::as_str) == Some("pending_approval") => "pending",
+        Ok(a) if a.get("error").is_some_and(|e| !e.is_null()) || a.get("ok") == Some(&json!(false)) => "refused",
+        Ok(_) => "applied",
+    }
+}
+
+/// One step of applying a directive as plan.directive carries it: what it asked, the state it
+/// reached, the game's answer or the call's error, and its console line.
+pub fn step(what: String, answer: Result<Value, String>) -> Value {
+    let state = state_of(&answer);
+    match answer {
+        Ok(a) => json!({"what": what, "state": state, "line": line(&what, &a),
+                        "approval_id": a.get("approval_id").filter(|v| !v.is_null()), "answer": a}),
+        Err(e) => json!({"what": what, "state": state, "line": format!("{what}: error {e}"), "error": e}),
+    }
+}
+
+/// The directive as a whole from its steps: `applied` when every step was, `pending` when the rest
+/// wait for approval, `failed` when none got through, `partial` otherwise.
+pub fn outcome(steps: &[Value]) -> &'static str {
+    let n = |s: &str| steps.iter().filter(|x| x["state"] == json!(s)).count();
+    let bad = n("error") + n("refused");
+    match () {
+        _ if steps.is_empty() => "nothing",
+        _ if n("applied") == steps.len() => "applied",
+        _ if bad == steps.len() => "failed",
+        _ if bad > 0 => "partial",
+        _ => "pending",
+    }
+}
+
 /// Pull a directive from `url` and apply it: the DecisionPullResult, with `applied_rcon` null when
-/// the directive asked for nothing. A directive the contract refuses is applied not at all.
+/// the directive asked for nothing. A directive the contract refuses is applied not at all. Every
+/// step is tried and published in plan.directive with the state it reached, also when a call fails;
+/// a failed call then answers 502 with the lines so far.
 pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
     let raw: Value = match ureq::get(url).timeout(Duration::from_secs(60)).call() {
         Ok(r) => r.into_json().map_err(|e| format!("{url}: not JSON ({e})"))?,
@@ -138,34 +177,40 @@ pub fn pull(g: &Arc<Game>, url: &str) -> Result<(u16, Value), String> {
                                    "called_url": url, "raw_response": raw})));
         }
     };
-    let mut lines = Vec::new();
+    let mut steps = Vec::new();
     if let Some(company) = d.company_id {
         if d.settings.is_empty() {
-            lines.push(line(&format!("reload company {company}'s AI"), &g.tool("openttd.ai.reload", json!({"company": company}))?));
+            steps.push(step(format!("reload company {company}'s AI"), g.tool("openttd.ai.reload", json!({"company": company}))));
         }
         for (name, value) in &d.settings {
-            let answer = panel_bot::set_bot_setting(g, &json!(company), name, &json!(value))?;
-            lines.push(line(&format!("company {company} {name}={value}"), &answer));
+            steps.push(step(format!("company {company} {name}={value}"), panel_bot::set_bot_setting(g, &json!(company), name, &json!(value))));
         }
     } else if let Some(ai) = &d.ai {
         let settings: serde_json::Map<String, Value> = d.settings.iter().map(|(k, v)| (k.clone(), json!(v))).collect();
-        lines.push(line(&format!("start {ai}"), &panel_bot::start_bot(g, ai, Value::Object(settings))?));
+        steps.push(step(format!("start {ai}"), panel_bot::start_bot(g, ai, Value::Object(settings))));
     }
+    let mut lines: Vec<String> = steps.iter().map(|s| s["line"].as_str().unwrap_or_default().to_string()).collect();
     if !ignored.is_empty() { lines.push(format!("not read (the directive's own working): {}", ignored.join(", "))); }
     g.event("ai", &format!("Prismatic decided ({url}): {}", lines.join("; ")));
-    g.plan("plan.directive", directive_event(url, &raw, Ok(&d), &ignored, &lines));
+    g.plan("plan.directive", directive_event(url, &raw, Ok(&d), &ignored, &steps));
+    let errors: Vec<&str> = steps.iter().filter(|s| s["state"] == json!("error")).filter_map(|s| s["error"].as_str()).collect();
+    if !errors.is_empty() {
+        return Ok((502, json!({"error": format!("applying the directive failed: {}", errors.join("; ")), "called_url": url,
+                               "raw_response": raw, "applied_rcon": {"lines": lines}})));
+    }
     Ok((200, json!({"called_url": url, "raw_response": raw, "applied_rcon": {"lines": lines}})))
 }
 
-/// The data of plan.directive: Prismatic's directive as read, what the panel applied of it (or why
-/// it applied nothing), and the directive's own working the contract does not read.
-pub fn directive_event(url: &str, raw: &Value, d: Result<&Directive, &Vec<String>>, ignored: &[String], lines: &[String]) -> Value {
+/// The data of plan.directive: Prismatic's directive as read, whether the contract accepted it, and
+/// each step the panel took with the state it reached (or why it took none), and the directive's
+/// own working the contract does not read.
+pub fn directive_event(url: &str, raw: &Value, d: Result<&Directive, &Vec<String>>, ignored: &[String], steps: &[Value]) -> Value {
     let choice = match d {
-        Ok(d) => json!({"applied": true, "ai": d.ai, "company_id": d.company_id,
+        Ok(d) => json!({"accepted": true, "outcome": outcome(steps), "ai": d.ai, "company_id": d.company_id,
                         "settings": d.settings.iter().map(|(k, v)| (k.clone(), json!(v))).collect::<serde_json::Map<String, Value>>(),
                         "how": if d.company_id.is_some() { if d.settings.is_empty() { "reload" } else { "set_setting" } } else { "start" },
-                        "lines": lines, "ignored": ignored}),
-        Err(errors) => json!({"applied": false, "errors": errors}),
+                        "steps": steps, "ignored": ignored}),
+        Err(errors) => json!({"accepted": false, "outcome": "refused", "errors": errors}),
     };
     let working: serde_json::Map<String, Value> = raw.as_object().into_iter().flatten()
         .filter(|(k, _)| !["ai", "company_id", "settings"].contains(&k.as_str())).map(|(k, v)| (k.clone(), v.clone())).collect();
@@ -194,22 +239,45 @@ mod tests {
     }
 
     #[test]
-    fn the_directive_event_says_what_was_applied_or_why_nothing_was() {
-        let raw = json!({"ai": "PrismaticAI", "company_id": 1, "settings": "aggressiveness=100", "engine": "PrismaticMonteCarlo.simulate/3"});
+    fn the_directive_event_says_what_each_step_reached_or_why_nothing_was_applied() {
+        let raw = json!({"ai": "PrismaticAI", "company_id": 1, "settings": "aggressiveness=100,intercity=0", "engine": "PrismaticMonteCarlo.simulate/3"});
         let (d, ignored) = directive(&raw).unwrap();
-        let lines = vec!["company 1 aggressiveness=100: pending (approval 3)".to_string()];
-        let e = directive_event("http://x/decision", &raw, Ok(&d), &ignored, &lines);
+        // set_setting is approval-gated: the first step waits for the operator, the second call failed.
+        let steps = vec![step("company 1 aggressiveness=100".into(), Ok(json!({"status": "pending_approval", "approval_id": 3}))),
+                         step("company 1 intercity=0".into(), Err("the game's MCP server is not reachable".into()))];
+        assert_eq!(steps[0]["state"], "pending");
+        assert_eq!(steps[0]["approval_id"], 3);
+        assert_eq!(steps[0]["line"], "company 1 aggressiveness=100: pending_approval (approval 3)");
+        assert_eq!(steps[1]["state"], "error");
+        assert_eq!(steps[1]["line"], "company 1 intercity=0: error the game's MCP server is not reachable");
+        let e = directive_event("http://x/decision", &raw, Ok(&d), &ignored, &steps);
         assert_eq!(e["decision"], "prismatic.directive");
-        assert_eq!(e["choice"], json!({"applied": true, "ai": "PrismaticAI", "company_id": 1, "settings": {"aggressiveness": 100},
-                                       "how": "set_setting", "lines": lines, "ignored": ["engine"]}));
+        assert_eq!(e["choice"], json!({"accepted": true, "outcome": "partial", "ai": "PrismaticAI", "company_id": 1,
+                                       "settings": {"aggressiveness": 100, "intercity": 0}, "how": "set_setting",
+                                       "steps": steps, "ignored": ["engine"]}));
+        assert!(e["choice"].get("applied").is_none(), "nothing claims the directive applied while a step waits or failed");
         assert_eq!(e["inputs"]["live"]["working"], json!({"engine": "PrismaticMonteCarlo.simulate/3"}));
         assert!(e["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0085"));
         assert!(e["version"]["digest"].as_str().unwrap().starts_with("fnv1a64:"));
         let bad = json!({"company_id": 15});
         let errors = directive(&bad).unwrap_err();
         let e = directive_event("http://x/decision", &bad, Err(&errors), &[], &[]);
-        assert_eq!(e["choice"]["applied"], false);
+        assert_eq!((e["choice"]["accepted"].clone(), e["choice"]["outcome"].clone()), (json!(false), json!("refused")));
         assert_eq!(e["choice"]["errors"], json!(errors));
+    }
+
+    #[test]
+    fn a_directive_is_applied_only_when_every_step_was() {
+        let ok = || step("start PrismaticAI".into(), Ok(json!({"status": "started", "via": "console"})));
+        let pending = || step("company 1 a=1".into(), Ok(json!({"status": "pending_approval", "approval_id": 9})));
+        let refused = || step("company 1 a=1".into(), Ok(json!({"error": "this game binary has no openttd.ai.set_setting"})));
+        let failed = || step("company 1 a=1".into(), Err("timeout".into()));
+        assert_eq!(state_of(&Ok(json!({"ok": false, "error": null}))), "refused");
+        assert_eq!(outcome(&[ok()]), "applied");
+        assert_eq!(outcome(&[ok(), pending()]), "pending");
+        assert_eq!(outcome(&[pending(), refused()]), "partial");
+        assert_eq!(outcome(&[refused(), failed()]), "failed");
+        assert_eq!(outcome(&[]), "nothing");
     }
 
     #[test]

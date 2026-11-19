@@ -30,6 +30,8 @@ mod calibrate;
 #[path = "../hub_algoglyph.rs"]
 #[allow(dead_code)]
 mod hub_algoglyph;
+#[path = "../reads.rs"]
+mod reads;
 
 /// The game's resources a track plan reads, as hub_algoglyph assembles them (from/to added later).
 fn linecost_input(read: &dyn Fn(&str) -> Result<Option<serde_json::Value>, String>) -> Result<serde_json::Value, String> {
@@ -44,28 +46,11 @@ enum Source {
     Mcp { endpoint: String, token: String },
 }
 
-/// Every resource this run read, in order, once each, with whether the read succeeded: the answer's
-/// `reads`, which the panel's plan.* events name as their live inputs (I0081).
-static READS: std::sync::Mutex<Vec<(String, bool)>> = std::sync::Mutex::new(Vec::new());
-
-fn note_read(name: &str, ok: bool) {
-    let mut r = READS.lock().unwrap();
-    let uri = format!("openttd://{name}");
-    match r.iter_mut().find(|(u, _)| *u == uri) {
-        Some(e) => e.1 |= ok,
-        None => r.push((uri, ok)),
-    }
-}
-
-fn reads() -> serde_json::Value {
-    serde_json::Value::Array(READS.lock().unwrap().iter().map(|(u, ok)| serde_json::json!({"uri": u, "ok": ok})).collect())
-}
-
 impl Source {
     /// The data of resource openttd://<name>, the read noted in `reads`.
     fn resource(&self, name: &str) -> Result<serde_json::Value, String> {
         let r = self.read(name);
-        note_read(name, r.is_ok());
+        reads::note(name, r.is_ok());
         r
     }
 
@@ -219,7 +204,7 @@ fn main() {
         // Which runner answered the kernel calls, only when the one-serve switch is on (I0086), so
         // the default answer stays as it was.
         if cargo::flow_serve::wanted() { out["algoglyph"] = cargo::flow_serve::summary(); }
-        out["reads"] = reads();
+        out["reads"] = reads::json();
         Ok(out)
     })();
     match out {

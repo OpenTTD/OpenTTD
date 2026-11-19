@@ -15,6 +15,7 @@ use crate::panel::{py_int, py_json, py_str, run, Game};
 use crate::calibrate::{self, Scope};
 use crate::panel_events::{self, Stored};
 use crate::panel_store::Across;
+use crate::duel_outcomes;
 
 fn ai_dir() -> PathBuf {
     PathBuf::from(std::env::var("HOME").unwrap_or_default()).join("Documents/OpenTTD/ai")
@@ -438,10 +439,12 @@ fn get_or<'a>(v: &'a Value, k: &str, default: &'a Value) -> &'a Value {
 pub const MAX_FREIGHT_LINES: usize = 16;
 
 /// Freight lines the planned bot may plan itself once the handed ones are built (bridge own_lines; it
-/// defaults to 0 there, so a bot started without a plan, a duel's baseline, stays unplanned). On: over
-/// ten years on seed 31337 eight own lines gave +10.4% (research/results duel-20261117T155736, 4811581,
-/// against duel-20261117T180225, 4356412, without them). They cost value until about month 50, so a
-/// 36-month duel shows their cost and not their return (duel-20261117T131347: -20%).
+/// defaults to 0 there, so a bot started without a plan, a duel's baseline, stays unplanned). Held-start
+/// pairs over ten years, own_lines 8 against 0: seed 31337 -1.0%, 4242 +45.2%, 20208 +30.7% (knowledge
+/// the-bots-rail-pathfinder-lays-plain-track-only). They cost value until about month 50, so a 36-month
+/// duel shows their cost and not their return. `PRISMATIC_BOT_FROM_DUELS=1` derives the value from the
+/// stored duel outcomes instead (src/duel_outcomes.rs, I0087); this constant stays the default until
+/// that rule wins held-start pairs on three seeds.
 pub const OWN_LINES: usize = 8;
 
 /// What the bot is handed, as settings and as the choices of the two plan.* events (I0081).
@@ -467,7 +470,7 @@ fn line_of(c: &Value) -> Value {
 }
 
 /// Settings as a JSON object and as the `start_ai` argument they make.
-fn settings_json(s: &Settings) -> (Value, String) {
+pub fn settings_json(s: &Settings) -> (Value, String) {
     (Value::Object(s.iter().cloned().collect()), s.iter().map(|(k, v)| format!("{k}={}", py_str(Some(v)))).collect::<Vec<_>>().join(","))
 }
 
@@ -610,8 +613,34 @@ pub fn settings_from_plan(out: &Value, event: &mut dyn FnMut(String)) -> Planned
 }
 
 /// The parameters of the bot's settings rule, for its `version`.
-pub fn bot_params(extra: &str) -> Value {
-    json!({"max_freight_lines": MAX_FREIGHT_LINES, "own_lines": OWN_LINES, "PRISMATIC_BOT_SETTINGS": extra})
+pub fn bot_params(extra: &str, from_duels: &duel_outcomes::Derivation) -> Value {
+    let mut p = json!({"max_freight_lines": MAX_FREIGHT_LINES, "own_lines": OWN_LINES, "PRISMATIC_BOT_SETTINGS": extra});
+    if from_duels.record["why"] != duel_outcomes::OFF {
+        p["from_duels"] = json!({"switch": duel_outcomes::SWITCH, "min_months": duel_outcomes::MIN_MONTHS, "near": duel_outcomes::NEAR,
+                                 "own_lines_max": duel_outcomes::OWN_LINES_MAX, "rule": "own-lines-by-handed-v1"});
+    }
+    p
+}
+
+/// Apply what the stored duel outcomes derived (I0087) to the plan's settings, with a sentence for
+/// each value it changed. Nothing changes when the derivation fell back to the constants.
+pub fn apply_from_duels(p: &mut Planned, d: &duel_outcomes::Derivation, event: &mut dyn FnMut(String)) {
+    let why = |k: &str| py_str(d.record["derived"][k].get("why"));
+    if let Some(o) = d.own_lines {
+        let before = p.bot_settings["own_lines"].clone();
+        p.settings.set("own_lines", json!(o));
+        p.bot_settings["own_lines"] = json!(o);
+        event(format!("planner: own_lines {o} from stored duel outcomes (constant {}): {}", py_str(Some(&before)), why("own_lines")));
+    }
+    if let (Some(r), true) = (d.rail_after, p.settings.has("rail_after")) {
+        let before = p.bot_settings["rail_after"].clone();
+        p.settings.set("rail_after", json!(r));
+        p.bot_settings["rail_after"] = json!(r);
+        event(format!("planner: rail_after {r} from stored duel outcomes (scores gave {}): {}", py_str(Some(&before)), why("rail_after")));
+    }
+    let (as_object, flat) = settings_json(&p.settings);
+    p.bot_settings["settings"] = as_object;
+    p.bot_settings["start_ai"] = json!(flat);
 }
 
 /// The data of plan.portfolio: the planner's answer read for the bot. `request` is what the planner
@@ -693,14 +722,16 @@ pub fn calibration(scope: &Scope, game: &Value, read: impl FnOnce(&str) -> Resul
 /// I0087's, and the event says so).
 pub fn with_calibration(data: &mut Value, cal: &Calibration) {
     data["inputs"]["live"]["calibration"] = cal.record.clone();
-    if cal.record["scope"] != "off" {
+    // The settings' own history (I0087), when it was read, stays the stored input; the calibration's
+    // query and rows are in inputs.live.calibration either way.
+    if cal.record["scope"] != "off" && data["inputs"]["stored"].get("query").is_none() {
         data["inputs"]["stored"] = cal.stored.to_json();
     }
 }
 
 /// The data of plan.bot_settings, with the run's extra settings (PRISMATIC_BOT_SETTINGS) applied to
 /// `p.settings` and recorded: the settings the bot is started with.
-pub fn bot_settings_event(p: &mut Planned, extra_text: &str, portfolio_seq: Option<u64>) -> Value {
+pub fn bot_settings_event(p: &mut Planned, extra_text: &str, portfolio_seq: Option<u64>, from_duels: &duel_outcomes::Derivation) -> Value {
     let from_run = match extra_settings(extra_text) {
         Ok(extra) => {
             for (k, v) in &extra { p.settings.set(k, json!(v)); }
@@ -713,8 +744,9 @@ pub fn bot_settings_event(p: &mut Planned, extra_text: &str, portfolio_seq: Opti
     choice["settings"] = as_object;
     choice["start_ai"] = json!(flat);
     choice["from_run"] = from_run;
-    panel_events::plan("bot.settings", bot_params(extra_text), json!({"portfolio_seq": portfolio_seq, "rule": "panel_bot.rs:settings_from_plan"}),
-                       &panel_events::live_only("I0087"), choice)
+    panel_events::plan("bot.settings", bot_params(extra_text, from_duels),
+                       json!({"portfolio_seq": portfolio_seq, "rule": "panel_bot.rs:settings_from_plan", "from_duels": from_duels.record}),
+                       &from_duels.stored, choice)
 }
 
 /// The bot's routes from the planner's portfolio within the budget (difficulty.max_loan), read live
@@ -731,9 +763,14 @@ pub fn planned_air(g: &Arc<Game>) -> Settings {
 
 /// Plan the bot: ask mcp-plan for its portfolio (pricing the `track` best rail lines on the map when
 /// AlgoGlyph is present), choose the settings from it, and publish both decisions, as sentences
-/// (panel.ai) and as data (plan.portfolio, plan.bot_settings). None without a planner binary.
+/// (panel.ai) and as data (plan.portfolio, plan.bot_settings). None without a planner binary. When
+/// the planner fails (it cannot run, exits non-zero or answers no JSON) both events are still
+/// published, `portfolio.error` and `bot_settings.unplanned` say why, and the settings are empty.
+/// PRISMATIC_PLANNER names another planner binary than the sibling mcp-plan (RESEARCH-ONLY: a
+/// planner under test, or a failing one to prove that a failure is reported).
 pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
-    let exe = crate::panel::sibling("mcp-plan");
+    let exe = std::env::var_os("PRISMATIC_PLANNER").filter(|v| !v.is_empty()).map(PathBuf::from)
+        .unwrap_or_else(|| crate::panel::sibling("mcp-plan"));
     if !exe.exists() {
         return None;
     }
@@ -775,7 +812,12 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
             Ok(v) => Ok(v),
             Err(e) => Err(format!("planner not reachable for the bot: {e}")),
         },
-        Ok(r) => { planner["exit"] = json!(r.code); planner["stderr"] = json!(r.stderr.trim()); Ok(json!({})) }
+        Ok(r) => {
+            planner["exit"] = json!(r.code);
+            planner["stderr"] = json!(r.stderr.trim());
+            Err(format!("planner failed for the bot: exit {}{}", r.code,
+                        r.stderr.trim().lines().last().map(|l| format!(": {l}")).unwrap_or_default()))
+        }
         Err(e) => Err(format!("planner not reachable for the bot: {e}")),
     };
     let out = match out {
@@ -787,10 +829,16 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
             p.portfolio["error"] = json!(e);
             let seq = g.plan("plan.portfolio", portfolio_event(&json!({}), &p, request, planner, &cal));
             // No plan, no settings: the bot starts unplanned, and the run's extra settings are not
-            // applied either (as before I0081).
+            // applied either; the event names them as asked and not applied.
+            let extra = std::env::var("PRISMATIC_BOT_SETTINGS").unwrap_or_default();
             p.bot_settings["unplanned"] = json!(e);
-            let mut data = panel_events::plan("bot.settings", bot_params(""), json!({"portfolio_seq": seq}),
-                                              &panel_events::live_only("I0087"), p.bot_settings.clone());
+            if !extra.trim().is_empty() {
+                p.bot_settings["from_run"] = json!({"not_applied": extra, "why": "no plan: the bot starts unplanned"});
+            }
+            let unplanned = duel_outcomes::from_duels(duel_outcomes::enabled(), 0, OWN_LINES as i64, None, |_| unreachable!("nothing handed over"));
+            let mut data = panel_events::plan("bot.settings", bot_params(&extra, &unplanned),
+                                              json!({"portfolio_seq": seq, "from_duels": unplanned.record}),
+                                              &unplanned.stored, p.bot_settings.clone());
             with_calibration(&mut data, &cal);
             g.plan("plan.bot_settings", data);
             return Some(p);
@@ -798,6 +846,17 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
     };
     let mut p = settings_from_plan(&out, &mut |text| g.event("ai", &text));
     let seq = g.plan("plan.portfolio", portfolio_event(&out, &p, request, planner, &cal));
+    // own_lines and rail_after from the stored duel outcomes (I0087), when the run turns the switch on;
+    // otherwise, and when the stores give no pair, the constants above, with the reason in the event.
+    let handed = p.bot_settings["freight"].as_array().map_or(0, Vec::len);
+    let from_duels = duel_outcomes::from_duels(duel_outcomes::enabled(), handed, OWN_LINES as i64, p.bot_settings["rail_after"].as_i64(),
+                                               crate::panel_store::query_every_store);
+    if from_duels.record["used"] == true {
+        apply_from_duels(&mut p, &from_duels, &mut |text| g.event("ai", &text));
+    } else if duel_outcomes::enabled() {
+        g.event("ai", &format!("planner: own_lines and rail_after from stored duel outcomes asked for, but {}; the constants stay",
+                               py_str(from_duels.record.get("why"))));
+    }
     // Extra settings for this bot from the run that started the stack (mcp-duel --bot-settings, the
     // duel form): an A/B of a bot feature without a code change. A malformed list is refused whole.
     let extra = std::env::var("PRISMATIC_BOT_SETTINGS").unwrap_or_default();
@@ -805,7 +864,7 @@ pub fn planned(g: &Arc<Game>, track: usize) -> Option<Planned> {
         Ok(list) => for (k, v) in list { g.event("ai", &format!("bot setting from the run: {k}={v}")); },
         Err(e) => g.event("ai", &format!("bot settings from the run refused: {e}")),
     }
-    let mut data = bot_settings_event(&mut p, &extra, seq);
+    let mut data = bot_settings_event(&mut p, &extra, seq, &from_duels);
     with_calibration(&mut data, &cal);
     p.bot_settings = data["choice"].clone();
     g.plan("plan.bot_settings", data);
@@ -995,11 +1054,13 @@ mod tests {
         assert_eq!(e["inputs"]["live"]["calibration"]["fallback"], "uncalibrated");
         assert_eq!(e["choice"], p.portfolio);
 
-        let b = bot_settings_event(&mut p, "own_lines=0", Some(41));
+        let off = duel_outcomes::from_duels(false, 2, 8, Some(2), |_| unreachable!());
+        let b = bot_settings_event(&mut p, "own_lines=0", Some(41), &off);
         assert_eq!(b["decision"], "bot.settings");
         assert_eq!(b["version"]["params"], json!({"max_freight_lines": 16, "own_lines": 8, "PRISMATIC_BOT_SETTINGS": "own_lines=0"}));
         assert_eq!(b["inputs"]["live"]["portfolio_seq"], 41);
-        assert!(b["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0087"));
+        assert_eq!(b["inputs"]["stored"]["fallback"], json!(format!("constants: {}", duel_outcomes::OFF)));
+        assert_eq!(b["inputs"]["live"]["from_duels"]["used"], false);
         let c = &b["choice"];
         assert_eq!(c["settings"], json!({"rail_a": 10, "rail_b": 11, "fr_from": 7, "fr_to": 99, "fr_cargo": 1, "fr2_from": 8, "fr2_to": 99,
                                          "fr2_cargo": 1, "own_lines": 0, "rail_after": 2}));
@@ -1017,7 +1078,7 @@ mod tests {
         assert_eq!(c["dropped"].as_array().unwrap().len(), 1);
         assert_eq!(c["dropped"][0]["why"], "has no route on the map (no_route)");
         assert_eq!(py_str(p.settings.iter().find(|(k, _)| k == "own_lines").map(|(_, v)| v)), "0", "the bot starts with the run's value");
-        let refused = bot_settings_event(&mut settings_from_plan(&out, &mut |_| {}), "own_lines=eight", None);
+        let refused = bot_settings_event(&mut settings_from_plan(&out, &mut |_| {}), "own_lines=eight", None, &off);
         assert!(refused["choice"]["from_run"]["refused"].as_str().unwrap().contains("whole number"));
         assert_eq!(refused["choice"]["settings"]["own_lines"], 8);
     }
@@ -1072,14 +1133,63 @@ mod tests {
         let mut p = settings_from_plan(&out, &mut |_| {});
         let game = json!({"seed": 3, "map": "256x256"});
         let used = calibration(&Scope::All, &game, |_| Ok(across(vec![json!(["panel-1", 9, 200, 3, "256x256", "[{\"mode\":\"bus\",\"ratio\":0.2}]"])])));
-        let mut b = bot_settings_event(&mut p, "", Some(7));
+        let off = duel_outcomes::from_duels(false, 2, 8, Some(2), |_| unreachable!());
+        let mut b = bot_settings_event(&mut p, "", Some(7), &off);
         with_calibration(&mut b, &used);
         assert_eq!(b["inputs"]["stored"], json!({"query": calibrate::readings_sql(&Scope::All, &game).unwrap(), "rows": 1}));
         assert_eq!(b["inputs"]["live"]["calibration"]["readings"][0]["seq"], 9);
         assert_eq!(b["inputs"]["live"]["portfolio_seq"], 7);
-        let mut b = bot_settings_event(&mut p, "", Some(7));
+        let mut b = bot_settings_event(&mut p, "", Some(7), &off);
         with_calibration(&mut b, &calibration(&Scope::Off, &game, |_| unreachable!()));
-        assert!(b["inputs"]["stored"]["fallback"].as_str().unwrap().contains("I0087"), "off: the settings' own history is I0087's");
+        assert_eq!(b["inputs"]["stored"]["fallback"], json!(format!("constants: {}", duel_outcomes::OFF)), "off: the constants, said so");
         assert_eq!(b["inputs"]["live"]["calibration"]["scope"], "off");
+    }
+
+    /// A store's answer to `duel_outcomes::outcomes_sql`: one held-start ten-year pair handing over
+    /// two lines, own_lines 0 against 8, the 8 ahead by 50% against a 0.2% rival spread.
+    fn outcome_rows() -> Across {
+        let duel = |seq: i64, a: f64, b: f64| json!(["panel-9", seq, seq * 10, "plan.duel", json!({"version": {"params": {"opponent": "PrismaticAI"}},
+            "inputs": {"live": {"record": format!("research/results/d{seq}.json")}},
+            "choice": {"seed": 5, "months": 120, "held_start_tick": 1400, "a": {"value": a}, "b": {"value": b}}}).to_string()]);
+        let settings = |seq: i64, own: i64| json!(["panel-9", seq, seq * 10, "plan.bot_settings",
+            json!({"choice": {"freight": [{}, {}], "settings": {"own_lines": own, "rail_after": 2}}}).to_string()]);
+        // Two runs of one instance: each verdict joins the settings published before it.
+        let rows = vec![settings(1, 0), duel(2, 1_000_000.0, 50_000.0), settings(3, 8), duel(4, 1_500_000.0, 50_100.0)];
+        Across { columns: json!(["instance", "seq", "ts_ms", "kind", "data"]),
+                 stores: vec![json!({"store": "panel-9.duckdb", "via": "this panel", "rows": rows.len()})], rows }
+    }
+
+    #[test]
+    fn own_lines_from_stored_duels_reach_the_bot_and_plan_bot_settings_names_query_rule_and_outcomes() {
+        let out = answer();
+        let mut p = settings_from_plan(&out, &mut |_| {});
+        assert_eq!(p.bot_settings["own_lines"], 8, "the constant");
+        let handed = p.bot_settings["freight"].as_array().unwrap().len();
+        let d = duel_outcomes::from_duels(true, handed, OWN_LINES as i64, p.bot_settings["rail_after"].as_i64(), |_| Ok(outcome_rows()));
+        assert_eq!((d.own_lines, d.rail_after), (Some(16), None), "the 8 paid beyond the spread: twice it; no rail_after arm differs");
+        let mut said = Vec::new();
+        apply_from_duels(&mut p, &d, &mut |t| said.push(t));
+        assert_eq!(said.len(), 1);
+        assert!(said[0].starts_with("planner: own_lines 16 from stored duel outcomes (constant 8): "), "{}", said[0]);
+        let b = bot_settings_event(&mut p, "", Some(3), &d);
+        assert_eq!(b["inputs"]["stored"], json!({"query": duel_outcomes::outcomes_sql(), "rows": 4}));
+        let live = &b["inputs"]["live"]["from_duels"];
+        assert_eq!((live["used"].clone(), live["rule"].clone()), (json!(true), json!(duel_outcomes::RULE)));
+        assert_eq!(live["outcomes"].as_array().unwrap().len(), 2);
+        assert_eq!(live["derived"]["own_pairs"][0]["verdict"], "pays");
+        assert_eq!(b["version"]["params"]["from_duels"]["rule"], "own-lines-by-handed-v1");
+        assert_eq!(b["choice"]["own_lines"], 16);
+        assert_eq!(b["choice"]["settings"]["own_lines"], 16);
+        assert!(b["choice"]["start_ai"].as_str().unwrap().contains("own_lines=16"));
+        // The run's own setting still wins over the derived value.
+        let mut q = settings_from_plan(&out, &mut |_| {});
+        apply_from_duels(&mut q, &d, &mut |_| {});
+        assert_eq!(bot_settings_event(&mut q, "own_lines=8", None, &d)["choice"]["settings"]["own_lines"], 8);
+        // Off: the constants and the same parameters as before I0087, so the version's digest is unchanged.
+        let off = duel_outcomes::from_duels(false, handed, 8, Some(2), |_| unreachable!());
+        let mut r = settings_from_plan(&out, &mut |_| {});
+        let e = bot_settings_event(&mut r, "", None, &off);
+        assert_eq!(e["version"]["params"], json!({"max_freight_lines": 16, "own_lines": 8, "PRISMATIC_BOT_SETTINGS": ""}));
+        assert_eq!(e["choice"]["own_lines"], 8);
     }
 }

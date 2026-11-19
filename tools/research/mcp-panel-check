@@ -10,7 +10,8 @@
 # The planned bot: POST /api/bots/planned plans the bot as a panel's bot start does (mcp-plan's
 # portfolio, then the settings) and publishes both decisions. Without --start-bot the bot is planned
 # and not started, so the game is left as it was; --start-bot AI also starts AI with those settings,
-# a new AI company in the game checked. --track N prices N rail lines on the map first (AlgoGlyph;
+# a new AI company in the game checked. The check fails when the planner failed (the route answers
+# 502 and starts nothing) or handed over no settings. --track N prices N rail lines on the map first (AlgoGlyph;
 # minutes per line), 0 by default.
 # Exit status: 0 every check passed, 1 a check failed, 3 the panel is not reachable.
 set -euo pipefail
@@ -172,13 +173,21 @@ if [[ -x "$TAIL" && -n "$endpoint" ]]; then
 fi
 code="$(curl -s -o "$TMP/planned.json" -w '%{http_code}' --max-time 900 -X POST -H 'Content-Type: application/json' \
   -d "{\"ai\":\"$ai\",\"start\":$start,\"track\":$TRACK}" "$PANEL/api/bots/planned")"
+# A plan is a plan only with settings and without a planner error: a 200 with no settings, or a
+# bot_settings that says unplanned, is a failed plan, whatever was started.
 summary="$(py '
 import json, sys
-d = json.load(open(sys.argv[1]))
-print(len(d.get("settings") or ""), "started" if d.get("started") else "planned", (d.get("bot_settings") or {}).get("rail_after"))' "$TMP/planned.json" 2>/dev/null || echo "0 - -")"
-read -r nset how rail_after <<< "$summary"
-check "POST /api/bots/planned $how a planned $ai (http=$code; settings: $nset chars, rail_after=$rail_after)" \
-  "$([[ "$code" == 200 && ( "$start" == false || "$how" == started ) ]] && echo 1 || echo 0)"
+d = json.load(open(sys.argv[1])); b = d.get("bot_settings") or {}
+why = d.get("error") or b.get("unplanned") or (d.get("portfolio") or {}).get("error") or "-"
+print(len(d.get("settings") or ""), "started" if d.get("started") else "planned", b.get("rail_after"), why.replace(" ", "_")[:120])' \
+  "$TMP/planned.json" 2>/dev/null || echo "0 - - unreadable_answer")"
+read -r nset how rail_after unplanned <<< "$summary"
+check "POST /api/bots/planned $how a planned $ai (http=$code; settings: $nset chars, rail_after=$rail_after, planner error: $unplanned)" \
+  "$([[ "$code" == 200 && "$nset" -gt 0 && "$unplanned" == - && ( "$start" == false || "$how" == started ) ]] && echo 1 || echo 0)"
+if [[ "$code" != 200 && -n "${TAILPID:-}" ]]; then
+  # No plan was made, so no plan event is coming for the SUB client to wait for.
+  kill "$TAILPID" 2>/dev/null || true
+fi
 rest="$(curl -fs "$PANEL/api/events?since=$seq0&kinds=plan" || echo '{"events": []}')"
 got="$(py '
 import json, sys

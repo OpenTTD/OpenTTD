@@ -20,6 +20,8 @@ mod bus_sinks;
 #[path = "../calibrate.rs"]
 #[allow(dead_code)]
 mod calibrate;
+#[path = "../duel_outcomes.rs"]
+mod duel_outcomes;
 #[path = "../hub.rs"]
 #[allow(dead_code)]
 mod hub;
@@ -57,6 +59,16 @@ fn import(_: &serde_json::Value, _: &str) -> Result<serde_json::Value, String> {
     Err("built without the store feature".into())
 }
 
+#[cfg(feature = "store")]
+fn import_duels(results: &std::path::Path) -> Result<serde_json::Value, String> {
+    duel_outcomes::import_duels(&bus_sinks::store_dir(), results)
+}
+
+#[cfg(not(feature = "store"))]
+fn import_duels(_: &std::path::Path) -> Result<serde_json::Value, String> {
+    Err("built without the store feature".into())
+}
+
 fn main() {
     let argv: Vec<String> = std::env::args().skip(1).collect();
     if argv.iter().any(|a| a == "-h" || a == "--help") {
@@ -88,6 +100,19 @@ fn main() {
             .and_then(|t| serde_json::from_str::<serde_json::Value>(&t).map_err(|e| format!("{file}: {e}")))
             .and_then(|v| import(&v, argv.get(i + 2).map_or(file.as_str(), String::as_str)));
         match done {
+            Ok(v) => println!("{v}"),
+            Err(e) => { eprintln!("mcp-panel: {e}"); std::process::exit(1); }
+        }
+        return;
+    }
+    // The one import of the duels recorded before mcp-duel published plan.duel (I0087): each record of
+    // research/results (or DIR) becomes a plan.duel event of a run of its own, in
+    // $PRISMATIC_STORE_DIR/duel-import.duckdb, where a bot start with PRISMATIC_BOT_FROM_DUELS=1 reads
+    // it. A record already imported, or whose verdict is in a store, changes nothing.
+    if let Some(i) = argv.iter().position(|a| a == "--import-duels") {
+        let dir = argv.get(i + 1).filter(|a| !a.starts_with("--")).map(std::path::PathBuf::from)
+            .unwrap_or_else(|| panel_results::repo().join("research/results"));
+        match import_duels(&dir) {
             Ok(v) => println!("{v}"),
             Err(e) => { eprintln!("mcp-panel: {e}"); std::process::exit(1); }
         }

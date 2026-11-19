@@ -950,7 +950,7 @@ impl Game {
             // The bot starts with what the planner's portfolio chose (freight rail, passenger rail, air),
             // so its routes come from the one profitability model; without a plan it plays as before.
             let settings = panel_bot::planned_air(&self);
-            let flat = settings.iter().map(|(k, v)| format!("{k}={}", py_str(Some(v)))).collect::<Vec<_>>().join(",");
+            let (_, flat) = panel_bot::settings_json(&settings);
             let _ = self.console(format!("start_ai {} {flat}", self.args.ai).trim());
             self.ai_started.store(true, Ordering::SeqCst);
             self.event("ai", &format!("start_ai {} {flat} sent: the company plays on its own", self.args.ai).replace("  ", " "));
@@ -1791,7 +1791,7 @@ fn h_action_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     };
     let mut inp = i.body.as_object().cloned().unwrap_or_default();
     // Where cash, loan and the loan limit came from, for plan.action.
-    let mut books = json!({"cash": "caller", "loan": "caller", "max_loan": "caller"});
+    let mut books = books_from_caller(&inp);
     if !inp.contains_key("cash") || !inp.contains_key("loan") {
         // Money and loan from the console's `companies` line (openttd://companies has no loan on
         // every build): the requested company, else the first AI company.
@@ -1840,6 +1840,13 @@ fn h_action_plan(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     }));
     g.plan("plan.action", action_event(&i.body, &inp, &books, &out));
     Ok((if ok_ { 200 } else { 422 }, Value::Object(out)))
+}
+
+/// Where cash, loan and the loan limit of an action plan come from before the console is read:
+/// `caller` for what the body gave, `missing` for the rest until something fills it.
+pub fn books_from_caller(body: &Map<String, Value>) -> Value {
+    Value::Object(["cash", "loan", "max_loan"].iter()
+        .map(|k| (k.to_string(), json!(if body.contains_key(*k) { "caller" } else { "missing" }))).collect())
 }
 
 /// The data of plan.action: the kernel's input, where its money came from, and its answer.
@@ -2116,21 +2123,32 @@ fn h_bot_planned(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let Some(p) = panel_bot::planned(g, track) else {
         return Ok((503, json!({"error": format!("no planner: {BUILD_IT} (mcp-plan)")})));
     };
-    let flat = p.settings.iter().map(|(k, v)| format!("{k}={}", py_str(Some(v)))).collect::<Vec<_>>().join(",");
+    // A failed planner is a failed plan: answered 502 with both events' data, and no bot starts
+    // unplanned (the bot start of a stack does start one; this route was asked for a planned bot).
+    if let Some(e) = p.portfolio.get("error").filter(|e| !e.is_null()) {
+        return Ok((502, json!({"error": py_str(Some(e)), "ai": ai, "settings": "", "started": null,
+                               "portfolio": p.portfolio, "bot_settings": p.bot_settings})));
+    }
+    let (settings, flat) = panel_bot::settings_json(&p.settings);
     let started = if truthy(i.body.get("start")) {
-        let settings: Map<String, Value> = p.settings.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
-        Some(panel_bot::start_bot(g, &ai, Value::Object(settings))?)
+        Some(panel_bot::start_bot(g, &ai, settings)?)
     } else {
         None
     };
     ok(json!({"ai": ai, "settings": flat, "started": started, "portfolio": p.portfolio, "bot_settings": p.bot_settings}))
 }
 
-/// GET /api/bus: the tap's answer (src/panel_store.rs) with the declared kinds added.
+/// GET /api/bus: the tap's answer (src/panel_store.rs) with the declared kinds added. The kinds are
+/// a table of this binary, so they are answered (200) also when the tap is down; `endpoint` is then
+/// null and `error` says why.
 fn h_bus(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
     let (code, mut out) = panel_store::h_bus(g, i)?;
+    if code == 503 {
+        out["endpoint"] = Value::Null;
+        out["schema"] = json!(crate::bus_sinks::SCHEMA);
+    }
     out["kinds"] = panel_events::table(panel_events::PANEL_BUS);
-    Ok((code, out))
+    Ok((if code == 503 { 200 } else { code }, out))
 }
 
 fn h_bus_publish(g: &Arc<Game>, i: &Input) -> Result<(u16, Value), String> {
@@ -2218,7 +2236,7 @@ pub fn routes() -> Vec<Route> {
         r("POST", "/api/scoreboard", "scoreboardWrite", "Regenerate the scoreboard region of README.md from research/results (tools/research/readme-scoreboard); answers the new scoreboard. Commit and push stay the owner's", false,
           s(json!({}), &[]), panel_results::h_scoreboard_write),
         r("GET", "/api/duel", "duelStatus", "The duel started from the panel: running or finished, the last month line, the winner line and the result's name", false, None, panel_results::h_duel_status),
-        r("GET", "/api/bus", "bus", "The event bus on ZeroMQ (ADR 0033): the PUB endpoint (tcp://127.0.0.1:<port>), the envelope schema prismatic-bus/v1, every topic seen with its count, how many events went out, and `kinds`: every event kind the bus carries, the one declared table (src/panel_events.rs, I0081); subscribe with any ZeroMQ SUB client (tools/research/mcp-rhai mcp-bus-tail)", false, None, h_bus),
+        r("GET", "/api/bus", "bus", "The event bus on ZeroMQ (ADR 0033): the PUB endpoint (tcp://127.0.0.1:<port>), the envelope schema prismatic-bus/v1, every topic seen with its count, how many events went out, and `kinds`: every event kind the bus carries, the one declared table (src/panel_events.rs, I0081), answered also when the tap is down (endpoint null, `error` says why); subscribe with any ZeroMQ SUB client (tools/research/mcp-rhai mcp-bus-tail)", false, None, h_bus),
         r("POST", "/api/bus/publish", "busPublish", "Put one event of a kind the table declares as external (`by: external` in GET /api/bus kinds; plan.kernel from mcp-kernel-feed --publish) on this panel's bus, so it reaches ZeroMQ and the store like the panel's own; the data must carry {decision, version, inputs, choice}. Any other kind is refused", false,
           s(json!({"kind": st(), "data": obj()}), &["kind", "data"]), h_bus_publish),
         r("GET", "/api/db/tables", "dbTables", "The DuckDB store of this instance (ADR 0033): its file and every table (runs, events, samples) with its columns", false, None, panel_store::h_db_tables),
@@ -2248,7 +2266,7 @@ pub fn routes() -> Vec<Route> {
           None, h_bots),
         r("GET", "/api/bots/choices", "botChoices", "What a bot setting naming a town, industry or cargo may name, from openttd://world/graph (towns by population, industries with their cargos, every cargo)", true,
           None, h_bot_choices),
-        r("POST", "/api/bots/planned", "botPlanned", "Plan the owner's bot as the panel does when it starts one: mcp-plan's portfolio within the loan limit, then the settings chosen from it, published as plan.portfolio and plan.bot_settings beside the panel.ai sentences; with start: true also start `ai` with those settings (a new AI company). track: N prices the N best rail lines on the map first (needs AlgoGlyph; the bot start uses 16, 0 here unless given). Answers the settings and the two events' data", true,
+        r("POST", "/api/bots/planned", "botPlanned", "Plan the owner's bot as the panel does when it starts one: mcp-plan's portfolio within the loan limit, then the settings chosen from it, published as plan.portfolio and plan.bot_settings beside the panel.ai sentences; with start: true also start `ai` with those settings (a new AI company). track: N prices the N best rail lines on the map first (needs AlgoGlyph; the bot start uses 16, 0 here unless given). Answers the settings and the two events' data; 502 with that data and no bot started when the planner failed. It plans also when the stack runs with --no-plan-bot, which turns off only the bot start's plan", true,
           s(json!({"ai": st(), "start": {"type": "boolean"}, "track": {"type": "integer", "minimum": 0, "maximum": 16}}), &["ai"]), h_bot_planned),
         r("POST", "/api/bots/start", "botStart", "Start the owner's bot: an AI with a settings map", false,
           s(json!({"ai": st(), "settings": obj()}), &["ai"]), h_bot_start),
@@ -3396,5 +3414,97 @@ mod tests {
         assert_eq!(get("/api/resources/game/state").0, 502);
         assert_eq!(get("/api/nothing").0, 404);
         let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    /// A panel without a game server, for the routes that answer without one. Its MCP counts as
+    /// up, so a route that needs the game is dispatched and meets the missing server itself.
+    fn bare_panel(port: &str) -> (Arc<Game>, Panel) {
+        let args = parse_args(&["--bin", "/nonexistent/openttd", "--panel-port", port].map(String::from)).unwrap();
+        let g = Game::new(args);
+        g.mcp_up.store(true, Ordering::SeqCst);
+        (g.clone(), Panel { game: g, routes: routes() })
+    }
+
+    fn post_to(p: &Panel, path: &str, body: Value) -> (u16, Value) {
+        p.dispatch(&Request { method: "POST".into(), path: path.into(), query: Query::default(), headers: vec![], body: vec![] }, body)
+    }
+
+    #[test]
+    fn a_planner_that_fails_answers_502_and_starts_no_bot() {
+        let dir = std::env::temp_dir().join(format!("mcp-panel-planner-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let script = |name: &str, body: &str| {
+            let f = dir.join(name);
+            std::fs::write(&f, format!("#!/bin/sh\n{body}\n")).unwrap();
+            std::fs::set_permissions(&f, <std::fs::Permissions as std::os::unix::fs::PermissionsExt>::from_mode(0o755)).unwrap();
+            f
+        };
+        let failing = script("failing-planner", "echo 'mcp-plan: towns: connection refused' >&2; exit 3");
+        let air = json!({"portfolio": {"solver": "fixed", "chosen": [{"kind": "passengers", "mode": "air", "score": 3,
+            "a": {"id": 1, "name": "A"}, "b": {"id": 2, "name": "B"}, "options": [{"mode": "air"}]}]}, "reads": []});
+        let fixed = script("fixed-planner", &format!("cat <<'JSON'\n{air}\nJSON"));
+        let (g, p) = bare_panel("2");
+        // PRISMATIC_PLANNER is read by this test only; both cases run here, one after the other.
+        std::env::set_var("PRISMATIC_PLANNER", &failing);
+        let since = g.bus.seq();
+        let (code, out) = post_to(&p, "/api/bots/planned", json!({"ai": "PrismaticAI", "start": true}));
+        assert_eq!(code, 502, "{out}");
+        assert_eq!(out["started"], Value::Null, "an unplanned bot is not started");
+        assert!(out["error"].as_str().unwrap().contains("exit 3: mcp-plan: towns: connection refused"), "{out}");
+        assert_eq!(out["bot_settings"]["unplanned"], out["error"]);
+        let plan = g.bus.since(since, &kinds_of("plan"), 10);
+        let kinds: Vec<&str> = plan.iter().filter_map(|e| e["kind"].as_str()).collect();
+        assert_eq!(kinds, ["plan.portfolio", "plan.bot_settings"], "the failure is published as data too");
+        assert_eq!(plan[0]["data"]["inputs"]["live"]["planner"]["exit"], 3);
+        assert_eq!(plan[0]["data"]["choice"]["error"], out["error"]);
+
+        std::env::set_var("PRISMATIC_PLANNER", &fixed);
+        let (code, out) = post_to(&p, "/api/bots/planned", json!({"ai": "PrismaticAI"}));
+        std::env::remove_var("PRISMATIC_PLANNER");
+        assert_eq!(code, 200, "{out}");
+        assert_eq!(out["settings"], "air_a=1,air_b=2,air_planes=2");
+        assert!(out["bot_settings"].get("unplanned").is_none());
+        assert_eq!(out["started"], Value::Null, "planned, not started");
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn the_bus_answers_its_kinds_while_the_tap_is_down() {
+        let (_, p) = bare_panel("3");
+        let (code, out) = p.dispatch(&Request { method: "GET".into(), path: "/api/bus".into(), query: Query::default(), headers: vec![], body: vec![] }, Value::Null);
+        assert_eq!(code, 200, "{out}");
+        assert_eq!(out["endpoint"], Value::Null);
+        assert_eq!(out["error"], "the bus tap is not running");
+        assert_eq!(out["kinds"], panel_events::table(panel_events::PANEL_BUS));
+    }
+
+    #[test]
+    fn an_action_plans_books_start_from_what_the_caller_gave() {
+        let body = |v: Value| v.as_object().cloned().unwrap();
+        assert_eq!(books_from_caller(&body(json!({}))), json!({"cash": "missing", "loan": "missing", "max_loan": "missing"}));
+        assert_eq!(books_from_caller(&body(json!({"cash": 5, "max_loan": 9}))), json!({"cash": "caller", "loan": "missing", "max_loan": "caller"}));
+    }
+
+    #[test]
+    fn a_directive_whose_call_fails_is_published_with_that_step_and_answers_502() {
+        let l = TcpListener::bind("127.0.0.1:0").unwrap();
+        let url = format!("http://{}/decision", l.local_addr().unwrap());
+        thread::spawn(move || for mut c in l.incoming().flatten() {
+            if read_request(&mut c).is_none() { continue }
+            let d = json!({"ai": "PrismaticAI", "settings": "aggressiveness=75", "engine": "test"});
+            hub::respond(c, 200, "application/json", d.to_string().as_bytes());
+        });
+        let (g, p) = bare_panel("4");
+        let since = g.bus.seq();
+        // No server: start_ai cannot be sent, so the one step fails.
+        let (code, out) = post_to(&p, "/api/decision/pull", json!({"url": url}));
+        assert_eq!(code, 502, "{out}");
+        assert!(out["error"].as_str().unwrap().contains("console is closed"), "{out}");
+        assert_eq!(out["applied_rcon"]["lines"][0], "start PrismaticAI: error the server's console is closed");
+        let ev = g.bus.since(since, &kinds_of("plan.directive"), 10);
+        assert_eq!(ev.len(), 1, "the directive is on the bus although applying it failed");
+        let choice = &ev[0]["data"]["choice"];
+        assert_eq!((choice["accepted"].clone(), choice["outcome"].clone()), (json!(true), json!("failed")));
+        assert_eq!(choice["steps"][0]["state"], "error");
     }
 }

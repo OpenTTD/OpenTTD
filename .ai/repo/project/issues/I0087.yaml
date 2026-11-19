@@ -9,6 +9,8 @@ objective: "settings_from_plan reads the stored plan.duel outcomes of earlier ru
 why: "OWN_LINES = 8 rests on a +10.4% that was noise (before the held start two runs differed by up to 52%; with it 0.2-0.3%, and the held-start re-measure gave -1.0% over ten years, research/results/duel-20261117T234725-seed31337.md). ADR 0034 point 6."
 scope:
   - "tools/research/mcp-rhai/src/panel_bot.rs"
+  - "tools/research/mcp-rhai/src/duel_outcomes.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-panel.rs"
   - "research/results/**"
   - "research/mcp-control.md"
   - ".ai/repo/knowledge/curated/**"
@@ -27,3 +29,24 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-18'
+started_at: 2026-11-18T06:46:44Z
+started_event: sha256:6676bddc2138d3c5dd93a96bb5006951eb287b516a60dc633fd7fac0b9626146
+updated_at: 2026-11-18T13:43:20Z
+verified_at: 2026-11-18T13:43:12Z
+verified_event: sha256:3cad1bec68aa897a497f0f9d3e01227fb72da50db66eb6011286ba8b28b4436c
+completed_at: 2026-11-18T13:43:20Z
+completed_event: sha256:f98653a2bdbc9a9446a73873f0db389bd4d4de4482af040d2a8e8b9dd864db1b
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release -q --manifest-path tools/research/mcp-rhai/Cargo.toml --bin mcp-panel; --bin mcp-plan; python3 -B tools/research/test_mcp_duel.py"
+    result: "this Mac at 6615cb7f60 (rebased on origin/master 4c34a22004): mcp-panel 89 passed incl. duel_outcomes (own_lines and rail_after derived from fixed duel rows; constants with their reason when off, store off, nothing handed over, one outcome or an empty store) and panel_bot (derived own_lines 16 reaches the bot and plan.bot_settings names query, rows, rule, outcomes; off keeps the pre-I0087 params); mcp-plan 32 passed; test_mcp_duel 19 passed"
+    commit: 6615cb7f60c42212f15342acbb9770f48ba8dabe
+    recorded_at: 2026-11-18T13:43:15Z
+  - covers: "validation_run"
+    type: artifact
+    command: "PRISMATIC_START_PAUSED=2 [PRISMATIC_BOT_FROM_DUELS=1] tools/research/mcp-duel --months 120 --seed S (S = 31337, 4242, 20208; halves side by side, one pair at a time; 120 months instead of the issue's 36 because own lines cost value until about month 50)"
+    result: "derived vs constant own_lines 8: 31337 own 0 4213684 vs 4940838 (-14.7%, rival spread 29.3%); 4242 own 16 3717995 vs 4072265 (-8.7%, 30.5%); 20208 own 16 4011279 vs 3410336 (+17.6%, 56.0%). None beyond its spread: PRISMATIC_BOT_FROM_DUELS stays off, OWN_LINES 8 stays; knowledge own-lines-derived-from-stored-duels-did-not-beat-the-constant. The 31337 constant record was rebuilt from its store after a same-second name collision."
+    artifact: "research/results/duel-20261118T102030-seed31337.md research/results/duel-20261118T102031-seed31337.md research/results/duel-20261118T123135-seed4242.md research/results/duel-20261118T123138-seed4242.md research/results/duel-20261118T143645-seed20208.md research/results/duel-20261118T143728-seed20208.md"
+    commit: 6615cb7f60c42212f15342acbb9770f48ba8dabe
+    recorded_at: 2026-11-18T13:43:17Z

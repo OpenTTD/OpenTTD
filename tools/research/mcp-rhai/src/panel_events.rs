@@ -99,7 +99,7 @@ pub const KINDS: &[Kind] = &[
     k("plan.investment", By::Panel, "panel.rs:h_investment", PLAN, "AlgoGlyph's transport-investment chose what to build (`GET /api/investment`)"),
     k("plan.action", By::Panel, "panel.rs:h_action_plan", PLAN, "AlgoGlyph's action-plan answered (`POST /api/actionplan`)"),
     k("plan.intent", By::Panel, "panel.rs:h_intent, answer_plan", PLAN, "a sentence was resolved to an intent and candidates"),
-    k("plan.directive", By::Panel, "panel_decision.rs:pull", PLAN, "Prismatic's directive was applied or refused (`POST /api/decision/pull`)"),
+    k("plan.directive", By::Panel, "panel_decision.rs:pull", PLAN, "Prismatic's directive was pulled: refused by the contract, or each step with its state (applied, pending approval, refused, error) (`POST /api/decision/pull`)"),
     k("plan.kernel", By::External, "kernel_feed.rs:event (mcp-kernel-feed --publish)", PLAN, "an AlgoGlyph kernel answered a request fed from the store (I0086)"),
     k("plan.duel", By::External, "tools/research/mcp-duel:publish_verdict", PLAN, "a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, winner}`, read from the store (I0083)"),
     // The hub's own events (I0084): derived for a game's MCP server that has no panel, every
@@ -249,9 +249,11 @@ mod tests {
         Some(&s[..s.find('"')?])
     }
 
-    /// The code of `name` without its `#[cfg(test)]` module: tests publish what they like.
+    /// The code of a source without its test module: tests publish what they like. Only the
+    /// module is cut, not the first `#[cfg(test)]`: a function can be gated with one, as
+    /// bus_sinks.rs gates open_in_memory (in panel_store.rs until I0084).
     fn code(text: &str) -> &str {
-        text.find("#[cfg(test)]").map_or(text, |i| &text[..i])
+        text.find("#[cfg(test)]\nmod tests").map_or(text, |i| &text[..i])
     }
 
     /// Every kind the panel's code names in a publish call, and every call that names none.
@@ -279,6 +281,14 @@ mod tests {
             }
         }
         (kinds, unnamed)
+    }
+
+    #[test]
+    fn the_scan_reads_code_past_a_gated_function_and_stops_at_the_test_module() {
+        let text = "fn a() {}\n#[cfg(test)]\nfn only_in_tests() {}\ng.plan(\"plan.x\", d);\n#[cfg(test)]\nmod tests {\n g.plan(\"plan.y\", d);\n}\n";
+        assert!(code(text).contains("plan.x"), "code after a #[cfg(test)] function is scanned");
+        assert!(!code(text).contains("plan.y"), "the test module is not");
+        assert!(code(include_str!("bus_sinks.rs")).contains("pub fn send(&self, env: Value)"), "a source is scanned past open_in_memory");
     }
 
     #[test]
@@ -310,11 +320,15 @@ mod tests {
         // The calls that pass a kind on rather than naming one: watch (derive_game_events' kinds, read
         // above), Game::event (panel.<kind>, its callers read above), Game::plan (its callers, and it
         // refuses a kind outside the table) and POST /api/bus/publish (refuse_external, then Game::plan).
-        let passed_on = ["panel.rs: .publish(kind, data)", "panel.rs: .publish(&format!(\"panel.{kind}\")", "panel.rs: .publish(kind, data)",
-                         "panel.rs: .plan(&kind, data)"];
-        assert_eq!(unnamed.len(), passed_on.len(), "a publish call that names no kind: {unnamed:#?}");
+        // Each with how many calls of it there are: Bus::publish is called with a kind passed on by
+        // Game::plan and by watch.
+        let passed_on = [("panel.rs: .publish(kind, data)", 2), ("panel.rs: .publish(&format!(\"panel.{kind}\")", 1),
+                         ("panel.rs: .plan(&kind, data)", 1)];
         for u in &unnamed {
-            assert!(passed_on.iter().any(|p| u.starts_with(p)), "a publish call that names no kind: {u}");
+            assert!(passed_on.iter().any(|(p, _)| u.starts_with(p)), "a publish call that names no kind: {u}");
+        }
+        for (p, n) in passed_on {
+            assert_eq!(unnamed.iter().filter(|u| u.starts_with(p)).count(), n, "calls of {p}: {unnamed:#?}");
         }
         let outside: Vec<&String> = kinds.iter().filter(|k| !declared(k)).collect();
         assert!(outside.is_empty(), "published but not declared in KINDS: {outside:?}");
@@ -344,7 +358,8 @@ mod tests {
         assert_eq!(d["version"]["revision"], REVISION);
         assert!(!REVISION.is_empty());
         assert_eq!(d["version"]["params"], json!({"b": 1, "own_lines": 8}));
-        assert_eq!(d["version"]["digest"], digest(&json!({"own_lines": 8, "b": 1})), "key order does not change the digest");
+        assert_eq!(digest(&json!({"b": 1, "own_lines": 8})), digest(&json!({"own_lines": 8, "b": 1})), "key order does not change the digest");
+        assert_eq!(d["version"]["digest"], digest(&json!({"b": 1, "own_lines": 8})));
         assert_ne!(digest(&json!({"own_lines": 8})), digest(&json!({"own_lines": 0})));
         // The same digest tools/research/mcp-duel computes in Python (test_mcp_duel.py pins it too).
         assert_eq!(digest(&json!({"own_lines": 8, "b": 1})), "fnv1a64:846dbf03f70f43fa");

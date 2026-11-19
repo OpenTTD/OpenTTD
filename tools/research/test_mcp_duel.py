@@ -413,6 +413,17 @@ class Verdict(unittest.TestCase):
         self.assertEqual(duel.fnv1a64({"own_lines": 8, "b": 1}), "fnv1a64:846dbf03f70f43fa")
         self.assertEqual(duel.fnv1a64({"b": 1, "own_lines": 8}), duel.fnv1a64({"own_lines": 8, "b": 1}))
 
+    def test_two_duels_ending_in_the_same_second_get_two_names(self):
+        with tempfile.TemporaryDirectory() as d:
+            results = Path(d) / "results"
+            ticks = iter(["20261118T102030", "20261118T102030", "20261118T102031"])
+            waited = []
+            first = duel.claim_name(results, 31337, clock=lambda: "20261118T102030", sleep=waited.append)
+            second = duel.claim_name(results, 31337, clock=lambda: next(ticks), sleep=waited.append)
+            self.assertEqual((first, second), ("duel-20261118T102030-seed31337", "duel-20261118T102031-seed31337"))
+            self.assertEqual(waited, [1, 1], "the taken second is waited out")
+            self.assertTrue((results / f"{second}.json").exists(), "the name is claimed by its file")
+
     def test_plan_duel_is_declared_external_in_the_table_and_the_note(self):
         self.assertIn("plan.duel", EXTERNAL)
         self.assertIn("| `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` |", NOTE.read_text())
@@ -456,23 +467,6 @@ class Verdict(unittest.TestCase):
             (Path(d) / "duel-20261118T120000-seed31337.json").write_text(json.dumps(new))
             runs = board.load()
             self.assertEqual([(r["a"], r["b"], r["won"]) for r in runs], [(950946, 9852, True)])
-
-
-
-class Names(unittest.TestCase):
-    """Two duels ending in the same second (a held-start A/B pair) get two records: the second is
-    named -2, never written over the first (2026-11-18: one record of a pair was lost that way)."""
-
-    def test_a_taken_name_gets_a_number(self):
-        with tempfile.TemporaryDirectory() as d:
-            results = Path(d)
-            first = duel.unique_base(results, "duel-20261118T092354-seed4242")
-            self.assertEqual(first.name, "duel-20261118T092354-seed4242")
-            Path(f"{first}.json").write_text("{}")
-            second = duel.unique_base(results, "duel-20261118T092354-seed4242")
-            self.assertEqual(second.name, "duel-20261118T092354-seed4242-2")
-            Path(f"{second}.md").write_text("")
-            self.assertEqual(duel.unique_base(results, "duel-20261118T092354-seed4242").name, "duel-20261118T092354-seed4242-3")
 
 
 if __name__ == "__main__":

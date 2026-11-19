@@ -480,6 +480,21 @@ def publish_verdict(panel, store, payload, wait=10, sleep=time.sleep):
     return out
 
 
+def claim_name(results, seed, clock=lambda: time.strftime("%Y%m%dT%H%M%S"), sleep=time.sleep):
+    """A record name no other duel holds, duel-<time>-seed<N>, claimed by creating its .json
+    exclusively. The two halves of a pair run side by side and can end in the same second: on
+    2026-11-18 both took duel-20261118T102030-seed31337 and the later one overwrote the other's
+    record. A taken name waits for the next second."""
+    results.mkdir(parents=True, exist_ok=True)
+    while True:
+        name = f"duel-{clock()}-seed{seed}"
+        try:
+            os.close(os.open(results / f"{name}.json", os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+            return name
+        except FileExistsError:
+            sleep(1)
+
+
 # ---------------------------------------------------------------------- the duel
 
 def duel(panel, cfg, poll=POLL, sleep=time.sleep):
@@ -521,8 +536,8 @@ def duel(panel, cfg, poll=POLL, sleep=time.sleep):
     b_name = "unplanned" if cfg["opponent"] == "PrismaticAI" else cfg["opponent"]
     winner = winner_of(a, b, b_name)
     held = reads["held"]["tick"] if reads["held"] else None
-    name = f"duel-{time.strftime('%Y%m%dT%H%M%S')}-seed{cfg['seed']}"
     results = cfg["root"] / "research" / "results"
+    name = claim_name(results, cfg["seed"], sleep=sleep)
     rival = rival_spread(results, cfg["seed"], cfg["months"], cfg["opponent"], bool(cfg["start_paused"]), b.get("value"), name)
     payload = verdict_payload(cfg, revision(str(cfg["root"])), held, a, b, rival, winner, store, fallback,
                               f"research/results/{name}.json", panel.base)
@@ -585,26 +600,14 @@ Both compete for the same towns and industries. {values}
 """
 
 
-def unique_base(results, name):
-    """The record's path without extension: `name`, or `name` with -2, -3, ... when a duel that
-    ended in the same second already took it."""
-    base, n = results / name, 1
-    while Path(f"{base}.json").exists() or Path(f"{base}.md").exists():
-        n += 1
-        base = results / f"{name}-{n}"
-    return base
-
-
 def main(argv):
     port, months, seed, label, root, opponent, bot_settings = argv
     cfg = {"months": int(months), "seed": int(seed), "label": label, "root": Path(root), "opponent": opponent,
            "bot_settings": bot_settings, "start_paused": int(os.environ.get("PRISMATIC_START_PAUSED") or 0)}
     out = duel(Panel(port), cfg)
-    rec, base = out["record"], unique_base(cfg["root"] / "research" / "results", out["name"])
+    rec, base = out["record"], cfg["root"] / "research" / "results" / out["name"]
     base.parent.mkdir(parents=True, exist_ok=True)
-    # Exclusive create: a duel run beside another (a held-start A/B pair) that ends in the same
-    # second never overwrites its partner's record (2026-11-18: one of a pair was lost that way).
-    with open(f"{base}.json", "x") as f:
+    with open(f"{base}.json", "w") as f:
         json.dump(rec, f, indent=2)
     with open(f"{base}.md", "w") as f:
         f.write(markdown(rec, out["b_name"]))

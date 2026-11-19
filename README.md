@@ -1,14 +1,14 @@
 <p align="center">
-  <a href="research/noirgfx/README.md">
-    <img src="research/noirgfx/ingame-title-4x.png" alt="OpenTTD running NoirGFX, this fork's red-black linocut base graphics, at 4x zoom" width="100%">
+  <a href="#plug-in-an-llm-it-asks-before-it-acts">
+    <img src="docs/screenshots/game-finances.png" alt="A live research game on loopback: the planned bot's finances, the owner's spectator view and the bot playing through the embedded MCP server" width="100%">
   </a>
 </p>
 
-<h1 align="center">OpenTTD &middot; NoirGFX &amp; agent lab</h1>
+<h1 align="center">OpenTTD &middot; LLM &amp; agent lab</h1>
 
 <p align="center">
-  <strong>A red-black linocut base graphics set, and a lab where bots and AI agents play OpenTTD<br>
-  through the same command system you do.</strong><br>
+  <strong>An MCP server inside the engine, Rhai scripting over every game command, and AI players<br>
+  that plan with the game's real prices and ask before they act.</strong><br>
   A personal research fork: every number below is counted from the repository, every claim links to its evidence.
 </p>
 
@@ -20,28 +20,16 @@
 </p>
 
 <p align="center">
-  <a href="#noirgfx-the-game-as-a-linocut"><b>NoirGFX</b></a> &nbsp;&middot;&nbsp;
+  <a href="#plug-in-an-llm-it-asks-before-it-acts"><b>LLM over MCP</b></a> &nbsp;&middot;&nbsp;
+  <a href="#script-a-live-game-in-rhai"><b>Rhai</b></a> &nbsp;&middot;&nbsp;
+  <a href="#plans-in-a-sentence"><b>Plans in a sentence</b></a> &nbsp;&middot;&nbsp;
   <a href="#the-planner-against-itself"><b>Bot duels</b></a> &nbsp;&middot;&nbsp;
-  <a href="#plug-in-an-agent-it-asks-before-it-acts"><b>Plug in an agent</b></a> &nbsp;&middot;&nbsp;
   <a href="#beyond-the-game"><b>Beyond the game</b></a> &nbsp;&middot;&nbsp;
   <a href="#counted-from-the-source"><b>Numbers</b></a> &nbsp;&middot;&nbsp;
   <a href="#how-it-compares"><b>How it compares</b></a> &nbsp;&middot;&nbsp;
-  <a href="#how-this-was-made"><b>How it was made</b></a> &nbsp;&middot;&nbsp;
   <a href="#quick-start"><b>Quick start</b></a> &nbsp;&middot;&nbsp;
   <a href="#00-about-this-fork"><b>Full story</b></a>
 </p>
-
-> [!TIP]
-> **The goal: AI agents that decide and act, proven in a real economy before the real world.**
-> - **Agents play through the game's own rules.** Every action is a game command an operator
->   approves, so nothing happens behind the game's back.
-> - **Plans meet reality.** A planner chooses lines under a budget, a steward keeps each line
->   paying, and predictions are checked against what lines earned.
-> - **Nothing is claimed without a run.** Every web page is driven in a real browser, every
->   document is derived from the sources, and the gates fail any change that falls behind.
-> - **The next step is a real game** against real opponents over the internet,
->   [prepared here](research/real-game.md). How each idea carries over:
->   [beyond the game](#beyond-the-game).
 
 > [!IMPORTANT]
 > **Not the official OpenTTD.** `korczis/OpenTTD` is a personal research fork. It sends nothing
@@ -49,15 +37,220 @@
 > unmodified release client. The original README is kept from [1.0) About](#10-about) on;
 > licence and credits are unchanged. Upstream is [OpenTTD/OpenTTD](https://github.com/OpenTTD/OpenTTD).
 
+## What this fork is for
+
+OpenTTD is a deterministic, lockstep simulation with a strict command system, a full economy and a
+20-year-old C++ codebase. That makes it a hard, honest arena for AI: a model cannot fake a profit,
+and a change that skips the rules desyncs the game. This fork opens the engine to AI in three
+layers, each one usable on its own:
+
+- **Any LLM is a player.** An MCP server compiled into the game serves its live state as
+  resources and every game command and Script API function as a tool. Claude Code, MCP Inspector
+  or any other MCP client connects over a stdio proxy and plays.
+- **Rhai is the glue.** Every MCP tool, console command and control-panel route is a Rhai
+  function the moment a script starts, so a few lines drive a whole game, a camera, a narrator or
+  a conversation with the owner inside the game.
+- **The game decides what is allowed.** Every change an agent makes is a normal game command,
+  held until the operator approves its exact arguments. No script and no model approves itself.
+
+On top of that sit a planner (AlgoGlyph) that prices track on the live map, a company AI that
+builds its plan with rail lines a train can always run, a Rhai steward that keeps each line paying,
+and recorded duels that measure whether the plan helps. How each idea carries over to the real
+world is [beyond the game](#beyond-the-game). The next step is a real game against real opponents
+over the internet, [prepared here](research/real-game.md).
+
 ## Three things to try
 
-| | NoirGFX | A bot duel | Your own agent |
+| | Your LLM in the game | A Rhai script | A bot duel |
 |---|---|---|---|
-| | [![NoirGFX ground, rail, road and water at 4x](research/noirgfx/preview-ground-4x.png)](research/noirgfx/README.md) | [![A research game: finances of the planned bot](docs/screenshots/game-finances.png)](#the-planner-against-itself) | [![The bot's yes/no question, shown in the game itself](docs/screenshots/your-bot-asks.png)](#plug-in-an-agent-it-asks-before-it-acts) |
-| **What** | every OpenGFX sprite recut as a three-ink linocut, 1x/2x/4x | two companies, same AI, one with a planner: watch who wins | an MCP client reads the live game and proposes moves you approve |
-| **Needs** | any OpenTTD: [download `noirgfx-1.tar`](https://github.com/korczis/OpenTTD/releases/tag/noirgfx-1) (or build it: this repository, `uv`, Blender) | a research build (`tools/gate.sh research`) | a research build plus any MCP client |
-| **Start** | drop the tar in `baseset/`, pick *NoirGFX* in Game Options | `tools/research/mcp-duel --months 36` | `tools/research/mcp-e2e`, then [connect](research/mcp-control.md) |
-| **Stock OpenTTD?** | yes: `PASS` in the official 15.3 macOS build ([screenshot](research/noirgfx/stock-15.3.png)); Windows and Linux `NOT RUN` | no: the duel needs this fork's MCP server | no: the MCP server is compiled into this fork |
+| | [![The bot's yes/no question, shown in the game itself](docs/screenshots/your-bot-asks.png)](#plug-in-an-llm-it-asks-before-it-acts) | [![Two clients on one loopback server: the owner's view and the owner's bot](docs/screenshots/online-players.png)](#script-a-live-game-in-rhai) | [![The map the planner reads tile by tile](docs/screenshots/world-view.png)](#the-planner-against-itself) |
+| **What** | an MCP client reads the live game and proposes moves you approve | a script drives a running game through every tool, console command and panel route | two companies, same AI, one with the planner: watch who wins |
+| **Start** | `tools/research/mcp-e2e`, then [connect your client](#plug-in-an-llm-it-asks-before-it-acts) | `mcp-rhai tools/research/mcp-panel/rhai/full_game.rhai` | `tools/research/mcp-duel --months 36` |
+| **Needs** | a research build (`tools/gate.sh research`) and any MCP client | a research build and `cargo build --release` in [`mcp-rhai`](tools/research/mcp-rhai/) | a research build |
+
+All three need this fork's research build: the MCP server is compiled into it, default OFF and
+loopback only. The one piece that runs in stock OpenTTD is [NoirGFX](#noirgfx-the-game-as-a-linocut),
+the fork's base graphics set.
+
+## Plug in an LLM: it asks before it acts
+
+The game carries an MCP server of its own (compile-gated, default OFF, loopback only). An agent
+reads live state through resources (map, towns, stations, vehicles, companies, finances) and
+changes the world only through the game's own command system: every game command
+(`openttd.cmd.<Command>`) and every Script API function (`openttd.api.<Class>.<Function>`) is a
+tool, and so are the company AIs (`openttd.ai.*`) and the owner's window (`openttd.view.*`). A call
+that changes the game waits until the operator approves those exact arguments, in the console
+(`prismatic_mcp approve <id>`) or in the panel. The bot's yes/no questions appear in the game
+itself, and the owner can let them confirm themselves after a countdown.
+
+```bash
+tools/gate.sh research    # once: the MCP-enabled build and its tests
+tools/research/mcp-e2e    # game + MCP server + bot + panel (http://127.0.0.1:8800) + spectator client
+
+# Claude Code; any other MCP client runs the same stdio command
+claude mcp add openttd -- "$PWD/tools/research/mcp-auto/openttd-mcp-stdio"
+```
+
+```mermaid
+flowchart LR
+  client["MCP client<br/>(Claude Code, any agent)"] -- stdio --> stdio["openttd-mcp-stdio"]
+  stdio -- HTTP --> panel["panel<br/>(holds the token)"]
+  panel --> mcp["MCP server<br/>in the game"]
+  mcp -. "read: openttd://map, towns,<br/>stations, vehicles, companies …" .-> client
+  mcp -- "act: openttd.cmd.&lt;Command&gt;" --> pending["pending approval"]
+  pending -- "operator approves" --> post["Command&lt;&gt;::Post<br/>(the game's own command system)"]
+```
+
+The proxy never sees the bearer token: the panel holds it and the proxy only forwards JSON-RPC
+over loopback. Tool names reach the client with underscores (`openttd_game_set_pause`), because
+some clients refuse dots. The panel's Swagger UI lists the whole catalogue, every route;
+[`research/mcp-control.md`](research/mcp-control.md) covers the panel, the `~` console
+(`mcp <tool>`), Rhai and the hub, and [`research/mcp-api.md`](research/mcp-api.md) the API.
+
+## Script a live game in Rhai
+
+[Rhai](https://rhai.rs/) is the fork's extension language: new extension logic is written in Rhai,
+hosts and tools in Rust ([rule](.ai/repo/rules/project/tooling-language-preference.v1.md)).
+[`mcp-rhai`](tools/research/mcp-rhai/) runs a script against a live game, and nothing it calls is
+listed by hand. At start-up it derives one function per MCP tool (`openttd_game_set_pause(#{pause:
+true})`), one per OpenTTD console command (`con_companies()`) and one per operation of the panel's
+OpenAPI document (`api_bots()`), so a tool added to the game is a Rhai function the next time a
+script starts.
+
+```rhai
+import "ttd" as ttd;            // tools/research/mcp-panel/rhai/ttd.rhai
+
+ttd::new_game(42);                              // a new world, waits until it runs
+ttd::start_ai("PrismaticAI", "aggressiveness=75");
+ttd::watch(6, 30);                              // a report every 30 s, six times
+print(ttd::set_pause(true, 300));               // waits for the operator's approval, never approves itself
+print(ttd::report());
+```
+
+Run one with `mcp-rhai <file.rhai>`, `mcp-rhai -e '<script>'` or `/rhai ...` in the panel's
+developer console. Examples from [`tools/research/mcp-panel/rhai/`](tools/research/mcp-panel/rhai/):
+
+| Script | What it does in the running game |
+|---|---|
+| [`full_game.rhai`](tools/research/mcp-panel/rhai/full_game.rhai) | plays a whole game for the owner: quarterly reports, a pause that waits for approval, the final result |
+| [`steward.rhai`](tools/research/mcp-panel/rhai/steward.rhai) | the bot asks yes/no questions in the game's own dialog, and the answer steers what it does next |
+| [`narrator.rhai`](tools/research/mcp-panel/rhai/narrator.rhai) | reports what the bot and the game do as chat messages and newspapers, derived from the event feed |
+| [`director.rhai`](tools/research/mcp-panel/rhai/director.rhai) | moves the owner's camera like a hand moves a mouse, to where the bot works, and follows its vehicles |
+| [`ask_relay.rhai`](tools/research/mcp-panel/rhai/ask_relay.rhai) | answers the questions asked from the fork's toolbar menu (*Ask the planner...*) inside the game |
+| [`build_plan.rhai`](tools/research/mcp-panel/rhai/build_plan.rhai) | carries a plain-language plan out: sends its settings to the bot, each waiting for approval |
+
+## Plans in a sentence
+
+`POST /api/intent {text}` (Rhai `api_intent`, `mcp-intent "<sentence>"`, or `plan <text>` in the
+game's `~` console) answers a sentence over the live game, in Czech or English:
+*vystav trať mezi nejproduktivnějším lesem a pilou* (build a line between the most productive forest
+and a sawmill) returns the pair and the bot settings that build it. No model is called and no noun
+is typed by hand: industry and cargo names come from the game's own language files, and the
+language is told from the sentence's spelling. A build is carried out only through approval-gated
+tools, so a sentence lays no track until the owner approves it. Details:
+[`research/mcp-control.md`](research/mcp-control.md#the-owners-sentences-plans-in-plain-language).
+
+## The planner against itself
+
+One game, one map, two companies running the **same** Company AI. Company A starts from the
+AlgoGlyph planner's portfolio (track priced tile by tile on the live map, lines picked by a
+knapsack over the company's money); company B starts without a plan. Every number below is
+generated from the recorded runs in [`research/results/`](research/results/) by
+[`tools/research/readme-scoreboard`](tools/research/readme-scoreboard) — nothing is typed by hand.
+
+<!-- scoreboard:begin -->
+<!-- generated by tools/research/readme-scoreboard; edit the results, not this block -->
+
+> **Best run: 4,940,838 vs 67,948** company value, planned bot vs the same bot unplanned, one game, one map (seed 31337, 120 months) — [evidence](research/results/duel-20261118T102031-seed31337.md). The planned bot won **57 of 63** recorded duels.
+
+```mermaid
+---
+config:
+  xyChart:
+    width: 900
+    height: 360
+  themeVariables:
+    xyChart:
+      plotColorPalette: "#d11f1a, #8a8a8a"
+---
+xychart-beta
+    title "Seed 31337, 36 months: final company value per bot revision"
+    x-axis ["r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15", "r16", "r17", "r18", "r19", "r20", "r21"]
+    y-axis "Company value" 0 --> 1100000
+    bar [68229, 204356, 206995, 250716, 454403, 518138, 505369, 558331, 468228, 290634, 552182, 597075, 995647, 265599, 794015, 1023810, 1050432, 794737, 950946, 905692, 941478]
+    line [28293, 28129, 27716, 27768, 27228, 27849, 27943, 27408, 28331, 27853, 27247, 29139, 27870, 368425, 24469, 28440, 28286, 19132, 29102, 26945, 22413]
+```
+
+<details><summary>Every revision in the chart (red bar: planned, grey line: unplanned)</summary>
+
+| Rev | Planned | Unplanned | What changed | Evidence |
+|---|---:|---:|---|---|
+| r1 | 68,229 | 28,293 | generalisation: a second seed with the same bot (bridge f598ede) | [duel-20261116T120701-seed31337](research/results/duel-20261116T120701-seed31337.md) |
+| r2 | 204,356 | 28,129 | bot with bridges (bridge d3c39ba) | [duel-20261116T130634-seed31337](research/results/duel-20261116T130634-seed31337.md) |
+| r3 | 206,995 | 27,716 | current bot: eight freight lines, line upkeep, bridges, tunnels (bridge 4cf4a62) | [duel-20261116T235622-seed31337](research/results/duel-20261116T235622-seed31337.md) |
+| r4 | 250,716 | 27,768 | panel bot start with eight freight lines, 30 candidates, 8 priced per list (4d51c44497)... | [duel-20261117T003624-seed31337](research/results/duel-20261117T003624-seed31337.md) |
+| r5 | 454,403 | 27,228 | diagonal track (a corner piece on a diagonal costs 2/3 of a straight one, heuristic 7/9... | [duel-20261117T012840-seed31337](research/results/duel-20261117T012840-seed31337.md) |
+| r6 | 518,138 | 27,849 | re-plan around a refused rail piece (bridge f5f29d5) on top of diagonal track | [duel-20261117T024703-seed31337](research/results/duel-20261117T024703-seed31337.md) |
+| r7 | 505,369 | 27,943 | station exits checked by the pathfinder's slope rule (bridge exit fix) on top of diagon... | [duel-20261117T032759-seed31337](research/results/duel-20261117T032759-seed31337.md) |
+| r8 | 558,331 | 27,408 | rail lines in order of score, the passenger pair after better freight lines (rail_after... | [duel-20261117T041705-seed31337](research/results/duel-20261117T041705-seed31337.md) |
+| r9 | 468,228 | 28,331 | two platforms side by side where two planned lines meet (transfer yard), on top of line... | [duel-20261117T045857-seed31337](research/results/duel-20261117T045857-seed31337.md) |
+| r10 | 290,634 | 27,853 | transfer yards with a four-tile corridor and a fallback station (bridge 6f78532) | [duel-20261117T053732-seed31337](research/results/duel-20261117T053732-seed31337.md) |
+| r11 | 552,182 | 27,247 | control: transfer yards reverted, cleanup fix (bridge aea2cd5); should match 558331 | [duel-20261117T061717-seed31337](research/results/duel-20261117T061717-seed31337.md) |
+| r12 | 597,075 | 29,139 | up to sixteen freight lines (panel MAX_FREIGHT_LINES 5c04a120ac, bridge 2c01584), rerun... | [duel-20261117T100202-seed31337](research/results/duel-20261117T100202-seed31337.md) |
+| r13 | 995,647 | 27,870 | script budget really 250000 opcodes (panel 1d8c45fa77; was 10000 in every earlier run),... | [duel-20261117T112500-seed31337](research/results/duel-20261117T112500-seed31337.md) |
+| r14 | 265,599 | 368,425 | the bot plans its own next freight lines once the planner's are built (own_lines 8; bri... | [duel-20261117T123222-seed31337](research/results/duel-20261117T123222-seed31337.md) |
+| r15 | 794,015 | 24,469 | own plan for the planned bot only (panel own_lines 8; bot default 0, bridge 19c2cbe), b... | [duel-20261117T131347-seed31337](research/results/duel-20261117T131347-seed31337.md) |
+| r16 | 1,023,810 | 28,440 | A/B calibrated plan (research/calibration.json: bus 0.16, freight_rail 0.59, rail 0.15,... | [duel-20261117T183356-seed31337](research/results/duel-20261117T183356-seed31337.md) |
+| r17 | 1,050,432 | 28,286 | A/B uncalibrated control, same code as the calibrated run | [duel-20261117T183400-seed31337](research/results/duel-20261117T183400-seed31337.md) |
+| r18 | 794,737 | 19,132 | paired A/B 31337: corrected calibration (net profit, 7211c47e11) | [duel-20261117T193812-seed31337](research/results/duel-20261117T193812-seed31337.md) |
+| r19 | 950,946 | 29,102 | paired A/B 31337: uncalibrated control (7211c47e11) | [duel-20261117T193920-seed31337](research/results/duel-20261117T193920-seed31337.md) |
+| r20 | 905,692 | 26,945 | held-start A/B 31337: corrected calibration | [duel-20261117T223206-seed31337](research/results/duel-20261117T223206-seed31337.md) |
+| r21 | 941,478 | 22,413 | held-start A/B 31337: uncalibrated control | [duel-20261117T223211-seed31337](research/results/duel-20261117T223211-seed31337.md) |
+
+</details>
+
+<!-- scoreboard:end -->
+
+**Read it as an experiment, not a headline.** Most runs are one map (seed 31337) at 36 months,
+and company value ignores the track a company owns. Two runs of one unchanged bot differ by about
+1% one duel at a time and by 10% or more when several run side by side
+([knowledge record](.ai/repo/knowledge/curated/duels-run-side-by-side-are-noisy.md)), so a gain
+smaller than that is not told apart from noise. Each row links to the run's own write-up with
+both bots' logs; [`tools/research/mcp-duel`](tools/research/mcp-duel) reproduces one.
+
+## Counted from the source
+
+Each number is counted from the tracked files whenever the documents are regenerated
+(`tools/surfaces/surfaces sync`, declared in [`surfaces.toml`](surfaces.toml)), so it cannot drift
+from the code. The right-hand column says what was counted.
+
+<!-- surfaces:begin facts -->
+| Count | What | Counted from |
+|---|---|---|
+| **146** | [game commands, each an MCP tool an agent can call (`openttd.cmd.*`)](research/mcp-api.md) | `DEF_CMD_TRAIT\(Commands::` in `src/*_cmd.h` |
+| **22** | [live MCP resources (`openttd://…`): map, towns, stations, vehicles, companies, …](research/prismatic-mcp/07-resource-catalog.md) | `^\s*\{"openttd://` in `src/prismatic_mcp/prismatic_mcp_server.cpp` |
+| **27** | [unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)](research/prismatic-mcp/09-testing.md) | `^TEST_CASE\(` in `src/tests/test_prismatic_mcp.cpp` |
+| **63** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
+| **34** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
+| **9** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
+| **12** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
+| **33** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
+| **86** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
+| **84** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
+| **448** | published documents on the site and the wiki | published documents under `/` |
+<!-- surfaces:end facts -->
+
+## How it compares
+
+Other people have connected OpenTTD to language models, and they are worth a look. As each
+project describes itself (read 2026-11-17):
+
+| Project | How it reaches the game | Runs on stock OpenTTD | Changes the game | Published results |
+|---|---|---|---|---|
+| **this fork** | MCP server inside the engine; every command and Script API function a tool; Rhai over all of it | no, a fork build | every change is a normal game command, held until the operator approves its exact arguments | yes, [the duels above](#the-planner-against-itself) |
+| [willibrandon/openttd-mcp](https://lobehub.com/mcp/willibrandon-openttd-mcp) | MCP over the Admin Port (Go) | yes | through Admin Port commands | — |
+| [OVER99K/openttd-directorate-mcp](https://glama.ai/mcp/servers/o8ze0w0kem) | MCP plus a GameScript (TypeScript), observe, plan, apply, verify | yes | through the GameScript; its page says spending limits and destructive-action gates are not handled | a public demo server |
+| [jplattel/openttd-llm](https://jplattel.nl/post/2026-01-22-llm-plays-openttd/) | an LLM drives an in-game AI through logs and Squirrel | yes | through the AI script | write-ups, several LLMs competing |
 
 ## Beyond the game
 
@@ -127,178 +320,6 @@ opponent over the internet: [`research/real-game.md`](research/real-game.md).
   <sub>The panel's Scripts page: every Rhai script with its own documentation, an editor that checks as you type, and scripts that run as services and reload when you save.</sub>
 </p>
 
-## NoirGFX: the game as a linocut
-
-A complete base graphics set in the owner's red-black linocut style: strict ink, paper and signal
-red, carved hatching, seamless across tiles at every zoom. It installs the way upstream designed
-graphics to be replaced, as a `.obg` plus six GRFs in `baseset/`, and it is never the default: you
-pick it in *Game Options → Base graphics set* or start with `openttd -I NoirGFX`.
-
-**[Download NoirGFX 1](https://github.com/korczis/OpenTTD/releases/tag/noirgfx-1)**: one `.tar`, about 150 MB, into your `baseset/` folder, unpacked
-or not. Tested in stock OpenTTD 15.3 (official macOS build): the game logs `Using the NoirGFX base
-graphics set` and renders it ([screenshot](research/noirgfx/stock-15.3.png)).
-
-| Ground, rail, road and water (4x) | Trees from Kenney's CC0 models (4x) |
-|---|---|
-| [![NoirGFX terrain at 4x](research/noirgfx/preview-ground-4x.png)](research/noirgfx/preview-ground-4x.png) | [![NoirGFX trees rendered from Kenney models](research/noirgfx/preview-kenney-trees-4x.png)](research/noirgfx/preview-kenney-trees-4x.png) |
-
-**How it is made** (deterministic, no image model touched the shipped set): grfcodec decodes
-OpenGFX 8.0, a script restyles each sprite by palette material (upscale, ink and hatch, re-quantise
-to three inks), headless Blender renders the mapped sprites from CC0 [Kenney](https://kenney.nl/)
-models, and grfcodec encodes the result. Every colour and threshold lives in one file,
-[`style.toml`](tools/research/noirgfx/style.toml). The pipeline, its invariants and its checks:
-[`tools/research/noirgfx/README.md`](tools/research/noirgfx/README.md) and
-[`research/noirgfx/README.md`](research/noirgfx/README.md).
-
-## The planner against itself
-
-One game, one map, two companies running the **same** Company AI. Company A starts from the
-AlgoGlyph planner's portfolio (track priced tile by tile on the live map, lines picked by a
-knapsack over the company's money); company B starts without a plan. Every number below is
-generated from the recorded runs in [`research/results/`](research/results/) by
-[`tools/research/readme-scoreboard`](tools/research/readme-scoreboard) — nothing is typed by hand.
-
-<!-- scoreboard:begin -->
-<!-- generated by tools/research/readme-scoreboard; edit the results, not this block -->
-
-> **Best run: 4,919,754 vs 67,202** company value, planned bot vs the same bot unplanned, one game, one map (seed 31337, 120 months) — [evidence](research/results/duel-20261117T204135-seed31337.md). The planned bot won **51 of 57** recorded duels.
-
-```mermaid
----
-config:
-  xyChart:
-    width: 900
-    height: 360
-  themeVariables:
-    xyChart:
-      plotColorPalette: "#d11f1a, #8a8a8a"
----
-xychart-beta
-    title "Seed 31337, 36 months: final company value per bot revision"
-    x-axis ["r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15", "r16", "r17", "r18", "r19", "r20", "r21"]
-    y-axis "Company value" 0 --> 1100000
-    bar [68229, 204356, 206995, 250716, 454403, 518138, 505369, 558331, 468228, 290634, 552182, 597075, 995647, 265599, 794015, 1023810, 1050432, 794737, 950946, 905692, 941478]
-    line [28293, 28129, 27716, 27768, 27228, 27849, 27943, 27408, 28331, 27853, 27247, 29139, 27870, 368425, 24469, 28440, 28286, 19132, 29102, 26945, 22413]
-```
-
-<details><summary>Every revision in the chart (red bar: planned, grey line: unplanned)</summary>
-
-| Rev | Planned | Unplanned | What changed | Evidence |
-|---|---:|---:|---|---|
-| r1 | 68,229 | 28,293 | generalisation: a second seed with the same bot (bridge f598ede) | [duel-20261116T120701-seed31337](research/results/duel-20261116T120701-seed31337.md) |
-| r2 | 204,356 | 28,129 | bot with bridges (bridge d3c39ba) | [duel-20261116T130634-seed31337](research/results/duel-20261116T130634-seed31337.md) |
-| r3 | 206,995 | 27,716 | current bot: eight freight lines, line upkeep, bridges, tunnels (bridge 4cf4a62) | [duel-20261116T235622-seed31337](research/results/duel-20261116T235622-seed31337.md) |
-| r4 | 250,716 | 27,768 | panel bot start with eight freight lines, 30 candidates, 8 priced per list (4d51c44497)... | [duel-20261117T003624-seed31337](research/results/duel-20261117T003624-seed31337.md) |
-| r5 | 454,403 | 27,228 | diagonal track (a corner piece on a diagonal costs 2/3 of a straight one, heuristic 7/9... | [duel-20261117T012840-seed31337](research/results/duel-20261117T012840-seed31337.md) |
-| r6 | 518,138 | 27,849 | re-plan around a refused rail piece (bridge f5f29d5) on top of diagonal track | [duel-20261117T024703-seed31337](research/results/duel-20261117T024703-seed31337.md) |
-| r7 | 505,369 | 27,943 | station exits checked by the pathfinder's slope rule (bridge exit fix) on top of diagon... | [duel-20261117T032759-seed31337](research/results/duel-20261117T032759-seed31337.md) |
-| r8 | 558,331 | 27,408 | rail lines in order of score, the passenger pair after better freight lines (rail_after... | [duel-20261117T041705-seed31337](research/results/duel-20261117T041705-seed31337.md) |
-| r9 | 468,228 | 28,331 | two platforms side by side where two planned lines meet (transfer yard), on top of line... | [duel-20261117T045857-seed31337](research/results/duel-20261117T045857-seed31337.md) |
-| r10 | 290,634 | 27,853 | transfer yards with a four-tile corridor and a fallback station (bridge 6f78532) | [duel-20261117T053732-seed31337](research/results/duel-20261117T053732-seed31337.md) |
-| r11 | 552,182 | 27,247 | control: transfer yards reverted, cleanup fix (bridge aea2cd5); should match 558331 | [duel-20261117T061717-seed31337](research/results/duel-20261117T061717-seed31337.md) |
-| r12 | 597,075 | 29,139 | up to sixteen freight lines (panel MAX_FREIGHT_LINES 5c04a120ac, bridge 2c01584), rerun... | [duel-20261117T100202-seed31337](research/results/duel-20261117T100202-seed31337.md) |
-| r13 | 995,647 | 27,870 | script budget really 250000 opcodes (panel 1d8c45fa77; was 10000 in every earlier run),... | [duel-20261117T112500-seed31337](research/results/duel-20261117T112500-seed31337.md) |
-| r14 | 265,599 | 368,425 | the bot plans its own next freight lines once the planner's are built (own_lines 8; bri... | [duel-20261117T123222-seed31337](research/results/duel-20261117T123222-seed31337.md) |
-| r15 | 794,015 | 24,469 | own plan for the planned bot only (panel own_lines 8; bot default 0, bridge 19c2cbe), b... | [duel-20261117T131347-seed31337](research/results/duel-20261117T131347-seed31337.md) |
-| r16 | 1,023,810 | 28,440 | A/B calibrated plan (research/calibration.json: bus 0.16, freight_rail 0.59, rail 0.15,... | [duel-20261117T183356-seed31337](research/results/duel-20261117T183356-seed31337.md) |
-| r17 | 1,050,432 | 28,286 | A/B uncalibrated control, same code as the calibrated run | [duel-20261117T183400-seed31337](research/results/duel-20261117T183400-seed31337.md) |
-| r18 | 794,737 | 19,132 | paired A/B 31337: corrected calibration (net profit, 7211c47e11) | [duel-20261117T193812-seed31337](research/results/duel-20261117T193812-seed31337.md) |
-| r19 | 950,946 | 29,102 | paired A/B 31337: uncalibrated control (7211c47e11) | [duel-20261117T193920-seed31337](research/results/duel-20261117T193920-seed31337.md) |
-| r20 | 905,692 | 26,945 | held-start A/B 31337: corrected calibration | [duel-20261117T223206-seed31337](research/results/duel-20261117T223206-seed31337.md) |
-| r21 | 941,478 | 22,413 | held-start A/B 31337: uncalibrated control | [duel-20261117T223211-seed31337](research/results/duel-20261117T223211-seed31337.md) |
-
-</details>
-
-<!-- scoreboard:end -->
-
-**Read it as an experiment, not a headline.** Most runs are one map (seed 31337) at 36 months,
-and company value ignores the track a company owns. Two runs of one unchanged bot differ by about
-1% one duel at a time and by 10% or more when several run side by side
-([knowledge record](.ai/repo/knowledge/curated/duels-run-side-by-side-are-noisy.md)), so a gain
-smaller than that is not told apart from noise. Each row links to the run's own write-up with
-both bots' logs; [`tools/research/mcp-duel`](tools/research/mcp-duel) reproduces one.
-
-## Plug in an agent: it asks before it acts
-
-The game carries an MCP server of its own (compile-gated, default OFF, loopback only). An agent
-reads live state through resources (map, towns, stations, vehicles, companies, finances) and
-changes the world only through the game's own command system: every game command and every Script
-API function is a tool, and a call that changes the game waits until the operator approves those
-exact arguments in the console (`prismatic_mcp approve <id>`). The bot's yes/no questions appear in
-the game itself, and the owner can let them confirm themselves after a countdown.
-
-```mermaid
-flowchart LR
-  client["MCP client<br/>(Claude, any agent)"] -- stdio --> stdio["openttd-mcp-stdio"]
-  stdio -- HTTP --> panel["panel<br/>(holds the token)"]
-  panel --> mcp["MCP server<br/>in the game"]
-  mcp -. "read: openttd://map, towns,<br/>stations, vehicles, companies …" .-> client
-  mcp -- "act: openttd.cmd.&lt;Command&gt;" --> pending["pending approval"]
-  pending -- "operator approves" --> post["Command&lt;&gt;::Post<br/>(the game's own command system)"]
-```
-
-Start a stack with `tools/research/mcp-e2e`, point your client at
-[`tools/research/mcp-auto/openttd-mcp-stdio`](tools/research/mcp-auto/openttd-mcp-stdio), and read
-[`research/mcp-control.md`](research/mcp-control.md) for the panel, the `~` console (`mcp <tool>`),
-Rhai scripting and the hub. The whole catalogue, every route, is browsable in the panel's Swagger UI.
-
-## Counted from the source
-
-Each number is counted from the tracked files whenever the documents are regenerated
-(`tools/surfaces/surfaces sync`, declared in [`surfaces.toml`](surfaces.toml)), so it cannot drift
-from the code. The right-hand column says what was counted.
-
-<!-- surfaces:begin facts -->
-| Count | What | Counted from |
-|---|---|---|
-| **146** | [game commands, each an MCP tool an agent can call (`openttd.cmd.*`)](research/mcp-api.md) | `DEF_CMD_TRAIT\(Commands::` in `src/*_cmd.h` |
-| **22** | [live MCP resources (`openttd://…`): map, towns, stations, vehicles, companies, …](research/prismatic-mcp/07-resource-catalog.md) | `^\s*\{"openttd://` in `src/prismatic_mcp/prismatic_mcp_server.cpp` |
-| **27** | [unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)](research/prismatic-mcp/09-testing.md) | `^TEST_CASE\(` in `src/tests/test_prismatic_mcp.cpp` |
-| **57** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
-| **34** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
-| **9** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
-| **12** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
-| **33** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
-| **86** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
-| **83** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **441** | published documents on the site and the wiki | published documents under `/` |
-<!-- surfaces:end facts -->
-
-## How it compares
-
-Other people have connected OpenTTD to language models, and they are worth a look. As each
-project describes itself (read 2026-11-17):
-
-| Project | How it reaches the game | Runs on stock OpenTTD | Changes the game | Published results |
-|---|---|---|---|---|
-| **this fork** | MCP server inside the engine; every command and Script API function a tool | no, a fork build | every change is a normal game command, held until the operator approves its exact arguments | yes, [the duels above](#the-planner-against-itself) |
-| [willibrandon/openttd-mcp](https://lobehub.com/mcp/willibrandon-openttd-mcp) | MCP over the Admin Port (Go) | yes | through Admin Port commands | — |
-| [OVER99K/openttd-directorate-mcp](https://glama.ai/mcp/servers/o8ze0w0kem) | MCP plus a GameScript (TypeScript), observe, plan, apply, verify | yes | through the GameScript; its page says spending limits and destructive-action gates are not handled | a public demo server |
-| [jplattel/openttd-llm](https://jplattel.nl/post/2026-01-22-llm-plays-openttd/) | an LLM drives an in-game AI through logs and Squirrel | yes | through the AI script | write-ups, several LLMs competing |
-
-## How this was made
-
-This fork is about AI coding agents, and nearly every commit since it left upstream was written
-with one, under the owner's direction. Each such commit carries a `Co-Authored-By` trailer, so the
-share is one command away:
-`git rev-list --count --grep='Co-Authored-By: Claude' $(git merge-base HEAD upstream/master)..HEAD`. That is why nothing
-here goes upstream: OpenTTD's [contribution policy](https://github.com/OpenTTD/OpenTTD/blob/master/CONTRIBUTING.md)
-does not accept AI-generated contributions, and this fork respects it. What the agents may do is
-written down and checked, not hoped for:
-
-- **The command system is the only door.** An agent changes the world exactly as a player does,
-  so every client stays bit-identical in lockstep.
-- **Never claim what did not run.** A report says `PASS`, `FAIL`, `PARTIAL`, `NOT RUN` or
-  `NOT APPLICABLE`, and the gates ([`tools/gate.sh`](tools/gate.sh)) record which ran.
-- **Derive, never restate.** The scoreboard, the numbers, the [site](https://korczis.github.io/OpenTTD/)
-  and the [wiki](https://github.com/korczis/OpenTTD/wiki) are generated from the repository, and a
-  stale table, a dead link or a flag a tool would refuse fails the commit.
-- **Savegames load forever, research code is gated.** No saved field is removed or renumbered, and
-  everything research-only is behind a default-OFF build option and labelled `RESEARCH-ONLY`.
-
-The full rules are in [`AGENTS.md`](AGENTS.md); the decisions behind them are the
-[ADRs](.ai/repo/adrs/README.md).
-
 ## What's inside
 
 <table>
@@ -307,34 +328,42 @@ The full rules are in [`AGENTS.md`](AGENTS.md); the decisions behind them are th
 
 **Embedded MCP server** &mdash; [`src/prismatic_mcp/`](src/prismatic_mcp/)<br>
 Live game state as MCP tools and resources, inside the engine. Loopback only, compile-gated
-(`OPTION_PRISMATIC_MCP_SERVER=ON`, default OFF, which requires `OPTION_RESEARCH_INSTRUMENTATION=ON`). Mutations go through the game's own command
-system after an operator approves the exact arguments; every Script API function is also a tool.
+(`OPTION_PRISMATIC_MCP_SERVER=ON`, default OFF, which requires `OPTION_RESEARCH_INSTRUMENTATION=ON`).
+Mutations go through the game's own command system after an operator approves the exact arguments.
 &rarr; [design](research/prismatic-mcp/README.md) &middot; [API](research/mcp-api.md)
 
 </td>
 <td width="50%" valign="top">
 
-**Plan, then play** &mdash; [`research/mcp-hub.md`](research/mcp-hub.md)<br>
-The AlgoGlyph planner reads the map, terrain, prices and bridges, prices every candidate rail line,
-and hands a portfolio to [PrismaticAI](tools/research/prismatic-ai/README.md), which re-plans
-around a refused piece of track. It never lays a 90-degree turn and builds two-platform termini
-with path signals. A Rhai steward closes losing lines, lengthens and adds trains where cargo waits,
-and renews locomotives, and a monitor posts lost and broken trains to the agents' board
-([`research/rail-steward.md`](research/rail-steward.md)). A human-style bot
-([`mcp-human`](research/mcp-human.md)) plays through the UI instead.
+**Rhai over everything** &mdash; [`tools/research/mcp-rhai/`](tools/research/mcp-rhai/)<br>
+A Rust host that turns every MCP tool, console command and panel route into a Rhai function,
+plus scripts that play, narrate, direct the camera and talk with the owner in the game.
+&rarr; [guide](research/mcp-control.md#rhai-toolsresearchmcp-rhai)
 
 </td>
 </tr>
 <tr>
 <td valign="top">
 
-**Drive a game from outside** &mdash; [`research/mcp-control.md`](research/mcp-control.md)<br>
-A control panel and hub over WebSocket for every running instance, the `~` developer console
-(`mcp <tool>`), Rhai scripts with AlgoGlyph's kernels, a Scripts page to edit them with
-highlighting and run them as services that hot-reload, and duels started on a click with their
-own page and chart.
+**Plan, then play** &mdash; [`research/mcp-hub.md`](research/mcp-hub.md)<br>
+The AlgoGlyph planner reads the map, terrain, prices and bridges, prices every candidate rail line,
+and hands a portfolio to [PrismaticAI](tools/research/prismatic-ai/README.md), which re-plans
+around a refused piece of track, never lays a 90-degree turn and builds two-platform termini with
+path signals. A Rhai steward closes losing lines, lengthens and adds trains where cargo waits, and
+renews locomotives, and a monitor posts lost and broken trains to the agents' board
+([`research/rail-steward.md`](research/rail-steward.md)). A human-style bot
+([`mcp-human`](research/mcp-human.md)) plays through the UI instead, cursor and all.
 
 </td>
+<td valign="top">
+
+**Control panel and hub** &mdash; [`research/mcp-control.md`](research/mcp-control.md)<br>
+One Rust binary per stack with its `~` developer console, OpenAPI and Swagger UI, duels on a click,
+an event bus (ZeroMQ, DuckDB store); the hub puts every running instance behind one WebSocket.
+
+</td>
+</tr>
+<tr>
 <td valign="top">
 
 **Validation you cannot round up** &mdash; [`tools/gate.sh`](tools/gate.sh)<br>
@@ -343,20 +372,11 @@ Status is `PASS` &middot; `FAIL` &middot; `PARTIAL` &middot; `NOT RUN` &middot; 
 and a report may only claim what actually ran ([`research/README.md`](research/README.md)).
 
 </td>
-</tr>
-<tr>
 <td valign="top">
 
 **Reproducible experiments** &mdash; [`tools/research/research`](tools/research/research)<br>
 Build profiles, toolchain, commands and results recorded into `manifest.json`; the summary is
 generated from the record, never written after the fact ([`research/tooling.md`](research/tooling.md)).
-
-</td>
-<td valign="top">
-
-**NoirGFX** &mdash; [`research/noirgfx/`](research/noirgfx/README.md)<br>
-A full base graphics set: every OpenGFX sprite recut as a red-black linocut at 1x/2x/4x, seamless
-across tiles, with Kenney's CC0 models for the trees. The banner above is the game running it.
 
 </td>
 </tr>
@@ -381,12 +401,13 @@ same way, run under [Majordomus](https://majordomus.dev) task lifecycle and peer
 
 ### How it fits together
 
-One loopback machine runs the game and the agent; every arrow below is a governed, derived
+One loopback machine runs the game and the agents; every arrow below is a governed, derived
 channel, and nothing an agent does bypasses the game's own command system.
 
 ```mermaid
 flowchart LR
     owner([Owner]):::owner
+    llm(["LLM / MCP client"]):::owner
 
     subgraph game["OpenTTD (deterministic lockstep)"]
         gui["GUI client<br/>~ console + toolbar menu"]
@@ -397,10 +418,10 @@ flowchart LR
         tools["Tools &amp; resources<br/>read state · gated mutations"]
     end
 
-    subgraph surfaces["One catalogue, three derived surfaces"]
+    subgraph surfaces["One catalogue, derived surfaces"]
         console["~ console: mcp &lt;tool&gt;"]
         swagger["Swagger / OpenAPI"]
-        ailayer[".ai catalogue"]
+        rhai["Rhai: every tool,<br/>command and route a function"]
     end
 
     subgraph brain["Plan, then play"]
@@ -411,12 +432,14 @@ flowchart LR
     hub["Control panel &amp; hub<br/>WebSocket · every instance"]
 
     owner -->|watches, approves,<br/>auto-answers| gui
+    llm -->|stdio proxy| hub
     gui <--> srv
     gui --- mcp
     srv --- mcp
     mcp --> tools
-    tools --> console & swagger & ailayer
+    tools --> console & swagger & rhai
     console --- gui
+    rhai --> hub
     planner --> bot
     bot -->|commands| srv
     tools --> hub
@@ -438,6 +461,29 @@ flowchart LR
 > Screenshots are from a single-machine R&D game on `127.0.0.1`; the fork joins public servers only
 > with the unmodified release client ([ADR 0029](.ai/repo/adrs/0029-a-research-gated-local-only-override-accepts-a-mismatched-pee.md)).
 
+## How this was made
+
+This fork is about AI coding agents, and nearly every commit since it left upstream was written
+with one, under the owner's direction. Each such commit carries a `Co-Authored-By` trailer, so the
+share is one command away:
+`git rev-list --count --grep='Co-Authored-By: Claude' $(git merge-base HEAD upstream/master)..HEAD`. That is why nothing
+here goes upstream: OpenTTD's [contribution policy](https://github.com/OpenTTD/OpenTTD/blob/master/CONTRIBUTING.md)
+does not accept AI-generated contributions, and this fork respects it. What the agents may do is
+written down and checked, not hoped for:
+
+- **The command system is the only door.** An agent changes the world exactly as a player does,
+  so every client stays bit-identical in lockstep.
+- **Never claim what did not run.** A report says `PASS`, `FAIL`, `PARTIAL`, `NOT RUN` or
+  `NOT APPLICABLE`, and the gates ([`tools/gate.sh`](tools/gate.sh)) record which ran.
+- **Derive, never restate.** The scoreboard, the numbers, the [site](https://korczis.github.io/OpenTTD/)
+  and the [wiki](https://github.com/korczis/OpenTTD/wiki) are generated from the repository, and a
+  stale table, a dead link or a flag a tool would refuse fails the commit.
+- **Savegames load forever, research code is gated.** No saved field is removed or renumbered, and
+  everything research-only is behind a default-OFF build option and labelled `RESEARCH-ONLY`.
+
+The full rules are in [`AGENTS.md`](AGENTS.md); the decisions behind them are the
+[ADRs](.ai/repo/adrs/README.md).
+
 ## Built with
 
 Every layer stands on a well-known library rather than a home-grown one. Versions live in the
@@ -445,8 +491,8 @@ manifests linked per row, not here.
 
 | Layer | Libraries | Where |
 |---|---|---|
-| **Engine** | C++20 &middot; CMake &middot; [nlohmann/json](https://github.com/nlohmann/json) (MCP wire format) &middot; [Squirrel](http://squirrel-lang.org/) (AI / Game Scripts) &middot; [{fmt}](https://fmt.dev/) &middot; [Catch2](https://github.com/catchorg/Catch2) &middot; [Monocypher](https://monocypher.org/) &middot; [ICU](https://icu.unicode.org/) | [`src/3rdparty/`](src/3rdparty/) |
 | **Agent tooling (Rust)** | [Rhai](https://rhai.rs/) (scripting a live game) &middot; [ureq](https://github.com/algesten/ureq) &middot; [tungstenite](https://github.com/snapview/tungstenite-rs) (hub WebSocket) &middot; [serde](https://serde.rs/) / serde_json &middot; libc | [`mcp-rhai`](tools/research/mcp-rhai/Cargo.toml) &middot; [`mcp-human`](tools/research/mcp-human/Cargo.toml) |
+| **Engine** | C++20 &middot; CMake &middot; [nlohmann/json](https://github.com/nlohmann/json) (MCP wire format) &middot; [Squirrel](http://squirrel-lang.org/) (AI / Game Scripts) &middot; [{fmt}](https://fmt.dev/) &middot; [Catch2](https://github.com/catchorg/Catch2) &middot; [Monocypher](https://monocypher.org/) &middot; [ICU](https://icu.unicode.org/) | [`src/3rdparty/`](src/3rdparty/) |
 | **Control panel** | [Apache ECharts](https://echarts.apache.org/) (duel and economy charts) &middot; [D3](https://d3js.org/) (graphs) &middot; [three.js](https://threejs.org/) (3D map) &middot; [Flowbite](https://flowbite.com/) &middot; [Swagger UI](https://swagger.io/tools/swagger-ui/) (OpenAPI of the tool catalogue) &middot; [Playwright](https://playwright.dev/) (page checks) | [`mcp-panel`](tools/research/mcp-panel/package.json) |
 | **Published surfaces** | [Tailwind CSS 4](https://tailwindcss.com/) + [Flowbite](https://flowbite.com/) / flowbite-typography &middot; [Mermaid](https://mermaid.js.org/) &middot; [Apache ECharts](https://echarts.apache.org/) &middot; [markdown-it-py](https://github.com/executablebooks/markdown-it-py) &middot; [PyYAML](https://pyyaml.org/) | [`package.json`](tools/surfaces/package.json) &middot; [`requirements.txt`](tools/surfaces/requirements.txt) |
 | **Supervision** | [Majordomus](https://majordomus.dev) (task lifecycle, rules, decisions, peer board, MCP projection of `.ai/`) | [`.ai/`](.ai/README.md) |
@@ -455,17 +501,19 @@ manifests linked per row, not here.
 ## Quick start
 
 ```bash
-# NoirGFX: fetch the pinned tools and OpenGFX, build the set (about 10 minutes), install it
-tools/research/noirgfx/noirgfx bootstrap
-tools/research/noirgfx/noirgfx build
-tools/research/noirgfx/noirgfx install           # -> ~/Documents/OpenTTD/baseset, then pick NoirGFX
-
 # The research build (MCP server ON) and its gate: configure, build, every test
 tools/gate.sh research
 
 # The whole loop in one command: dedicated server + MCP + PrismaticAI + control panel
 # (http://127.0.0.1:8800) + a spectator GUI client that follows the bot
 tools/research/mcp-e2e
+
+# An LLM in the game: register the stdio proxy with your MCP client (here Claude Code)
+claude mcp add openttd -- "$PWD/tools/research/mcp-auto/openttd-mcp-stdio"
+
+# Rhai: build the host once, then let a script play a whole game for you
+cargo build --release --manifest-path tools/research/mcp-rhai/Cargo.toml
+tools/research/mcp-rhai/target/release/mcp-rhai tools/research/mcp-panel/rhai/full_game.rhai
 
 # A duel: the planned bot against the same bot unplanned, written to research/results/
 tools/research/mcp-duel --months 36
@@ -479,9 +527,31 @@ tools/surfaces/surfaces site                     # -> target/web/site
 
 Every tool answers `--help` with its whole usage and refuses a flag it does not know (exit 2), and
 `tools/surfaces/surfaces check` fails when a document shows a flag a tool would refuse.
-Prerequisites: a C++20 toolchain, CMake 3.16+, and a base graphics set
+Prerequisites: a C++20 toolchain, CMake 3.16+, Rust for the agent tooling, and a base graphics set
 ([`research/baseset-prerequisite-macos.md`](./research/baseset-prerequisite-macos.md)). Everything
 research-only binds to loopback and is labelled `RESEARCH-ONLY`.
+
+## NoirGFX: the game as a linocut
+
+The fork also ships a complete base graphics set in the owner's red-black linocut style: strict
+ink, paper and signal red, carved hatching, seamless across tiles at every zoom. It is the one part
+of the fork that runs in stock OpenTTD: a `.obg` plus six GRFs in `baseset/`, never the default,
+picked in *Game Options → Base graphics set* or with `openttd -I NoirGFX`.
+**[Download NoirGFX 1](https://github.com/korczis/OpenTTD/releases/tag/noirgfx-1)** (one `.tar`,
+about 150 MB); tested in the official OpenTTD 15.3 macOS build
+([screenshot](research/noirgfx/stock-15.3.png)), Windows and Linux `NOT RUN`.
+
+| Ground, rail, road and water (4x) | Trees from Kenney's CC0 models (4x) |
+|---|---|
+| [![NoirGFX terrain at 4x](research/noirgfx/preview-ground-4x.png)](research/noirgfx/preview-ground-4x.png) | [![NoirGFX trees rendered from Kenney models](research/noirgfx/preview-kenney-trees-4x.png)](research/noirgfx/preview-kenney-trees-4x.png) |
+
+The pipeline is deterministic and no image model touched the shipped set: grfcodec decodes
+OpenGFX 8.0, a script restyles each sprite by palette material, headless Blender renders the mapped
+sprites from CC0 [Kenney](https://kenney.nl/) models, and grfcodec encodes the result; every colour
+and threshold lives in [`style.toml`](tools/research/noirgfx/style.toml). Build it yourself with
+`tools/research/noirgfx/noirgfx bootstrap`, `build` and `install` (about 10 minutes); details in
+[`tools/research/noirgfx/README.md`](tools/research/noirgfx/README.md) and
+[`research/noirgfx/README.md`](research/noirgfx/README.md).
 
 ## Table of contents
 
@@ -518,19 +588,9 @@ research-only binds to loopback and is labelled `RESEARCH-ONLY`.
 
 ## 0.0) About this fork
 
-`korczis/OpenTTD` is a **personal research fork**, public on GitHub, not the official OpenTTD project and not staged for upstream contribution. It is owned by korczis and used as a real, complex, long-lived C++ codebase to validate the **Prismatic platform** — a research effort evaluating coding-agent workflows: how agents plan and scope changes, how gating and reproducibility hold up in practice, and how agent-driven engineering behaves against a substrate too large and too convention-heavy to fake.
+`korczis/OpenTTD` is a **personal research fork**, public on GitHub, not the official OpenTTD project and not staged for upstream contribution. It is owned by korczis and serves two purposes: an **LLM and agent lab**, where language models, Rhai scripts and planners play the game through an embedded MCP server and the game's own command system, and a real, complex, long-lived C++ codebase on which to validate the **Prismatic platform**'s coding-agent workflows (how agents plan and scope changes, how gating and reproducibility hold up, how agent-driven engineering behaves against a substrate too large and too convention-heavy to fake).
 
 Sections 1.0 onward below are the **original upstream OpenTTD README**, kept intact for its technical value and attribution. This section only documents what's specific to this fork.
-
-**At a glance:**
-
-```mermaid
-flowchart LR
-  pp["~/dev/prismatic-platform<br/>private, never modified from here<br/>• Elixir/Phoenix umbrella<br/>• OSINT / decision support<br/>• just check / precommit / ci<br/>• agent definitions and commands<br/>• git-worktree session OS"]
-  fork["korczis/OpenTTD (this fork)<br/>public<br/>• C++20 game: the system under test<br/>• tools/gate.sh smoke / change / research / full<br/>• AGENTS.md, CLAUDE.md, research/"]
-  pp -- "studied, adapted:<br/>generic principles only,<br/>no code, no domain content" --> fork
-  fork -. "no automated sync:<br/>human judgement only" .-> pp
-```
 
 ```mermaid
 flowchart LR
@@ -643,62 +703,9 @@ Concrete examples of what actually crossed that pipeline while this fork's tooli
 
 This wasn't a one-time import. If this fork's gating model changes in the future, new principles would be expected to cross the same pipeline — read the specific source, classify it, adapt (or reject) it explicitly, write it once.
 
-#### 0.2.5) Selected Prismatic capabilities of particular interest
+#### 0.2.5) The bridge to Prismatic
 
-Among Prismatic's applications, the ones most relevant to *why* rigorous, honestly-reported agentic validation matters are the ones with the highest real-world stakes: OSINT collection, due-diligence synthesis, and quantitative modeling that's directly wired to real external systems. Read from each application's own README, not guessed from its name:
-
-| Application | What it actually does |
-|---|---|
-| `prismatic_osint_core` | The core OSINT (open-source intelligence) framework — the foundation the other OSINT collectors build on. |
-| `prismatic_osint_sources`, `prismatic_osint_business_financial`, `prismatic_osint_czech_legal`, `prismatic_osint_eu_institutions`, `prismatic_osint_network`, `prismatic_osint_social_media`, `prismatic_osint_czech_courts` | Source adapters and domain-specific collectors — business/financial records, the Czech legal system, EU institutions, network infrastructure, social media, Czech courts. |
-| `prismatic_dd` | The Due Diligence platform itself (production status). |
-| `prismatic_intelligence_fusion` | Cross-system fusion hub: links OSINT, DD, Academy, and Storage into one workflow through a shared knowledge graph, with Bayesian confidence aggregation across independent sources — its own README is explicit that "isolated signals have limited value; fusion across domains multiplies intelligence value through correlation, contradiction detection, and confidence aggregation." |
-| `prismatic_monte_carlo` | A probabilistic-simulation / uncertainty-quantification engine. |
-| `prismatic_deduction` | A deterministic, purely functional logical inference engine over typed claim graphs (subject–predicate–object), with an R1–R4 rule engine for contradiction and missing-premise detection. |
-| `prismatic_bifurcation` | Dynamic-systems analysis and bifurcation detection. |
-| `prismatic_power_graph` | A versioned graph store modeling real Czech/EU power-grid entities (companies by IČO, individuals, EU institutions) and their relationships (ownership, board membership), hybrid in-memory (ETS) + KuzuDB persistence. |
-| `prismatic_property_intelligence` | Czech real-estate intelligence with a direct integration into ČÚZK (the Czech cadastral authority) for property data, valuation, and ownership verification against the official registry. |
-| `prismatic_re_sources` | Real-estate market data source connectors feeding the above. |
-| `prismatic_perimeter` | External attack-surface management (EASM) — continuous discovery and risk-scoring of real internet-facing assets (domains, IPs, certificates, cloud resources). |
-| `prismatic_detection_engine` | A multi-vector correlation engine unifying entity correlation, threat analysis, data-quality validation, ML pattern detection, and competitive intelligence behind one API. |
-| `prismatic_visitor_intelligence` | High-throughput (10,000+ events/sec target) real-time visitor and company-identification intelligence. |
-
-```mermaid
-flowchart TB
-    subgraph Sources["Real-world data sources"]
-        OS["OSINT source adapters<br/>(84+, various domains)"]
-        RE["Real-estate market data"]
-        CUZK["Czech cadastral registry (ČÚZK)"]
-    end
-
-    subgraph Modeling["Modeling / real-world connection"]
-        MC["Monte Carlo —<br/>uncertainty quantification"]
-        DED["Deduction —<br/>claim-graph inference"]
-        BIF["Bifurcation —<br/>dynamic systems analysis"]
-        PG["Power Graph —<br/>power-grid entity graph"]
-        PI["Property Intelligence —<br/>real-estate valuation"]
-    end
-
-    subgraph Product["Product surface"]
-        DD["Due Diligence platform"]
-        FUS["Intelligence Fusion —<br/>cross-system correlation"]
-        DET["Detection Engine"]
-        PER["Perimeter —<br/>attack-surface management"]
-    end
-
-    OS --> FUS
-    RE --> PI
-    CUZK --> PI
-    PI --> Modeling
-    Modeling --> FUS
-    FUS --> DD
-    FUS --> DET
-    FUS --> PER
-```
-
-This is where the connection to the real world — connecting automated inference to actual external reality (a real cadastral registry, a real power grid, real OSINT sources, real due-diligence subjects) — is most concrete, and where a wrong or overconfident automated conclusion has the highest real cost. It's the strongest concrete case for the closing point of 0.1: the fail-closed reporting discipline validated in this OpenTTD fork is meant to transfer back to exactly this kind of high-stakes, real-world-grounded work — not to a context where an optimistic-but-wrong status report would be harmless.
-
-**This is no longer just a design on paper.** [`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) documents an actual bridge — a standalone sibling repository, `~/dev/openttd-prismatic-bridge` (Python/FastAPI), that speaks OpenTTD's admin-network protocol directly, exposes a REST + WebSocket API, and can already start/steer a real, externally-controllable Company AI (`ai/PrismaticAI`) end to end (8/8 of its own tests passing). That AI no longer just idles either: it builds a single-town bus route (two stops, a depot, 1-3 buses scaled by its `aggressiveness` setting), verified against a live server (`busses` 0→3, `company_value` 1→11025), and intercity road, rail, air and freight routes behind its settings. The decision contract with `prismatic-platform` has a machine-checkable schema in this repository (I0011, `research/prismatic-bridge/decision-contract.schema.json`); `prismatic-platform` answers it, and this fork's MCP panel consumes it at `POST /api/decision/pull` (checked end to end by `tools/research/mcp-decision-check`). The bridge's language is decided: a native Rust service (I0012, ADR 0032), still to be written in the bridge repository, so the Python bridge is the running implementation. What's not built yet: world seeding from real elevation data, and live decision-making that uses more of Prismatic than one Monte Carlo choice. Each remaining phase needs its own approval before being built — see the design doc for the full phase table and open questions.
+[`research/prismatic-bridge/ARCHITECTURE.md`](./research/prismatic-bridge/ARCHITECTURE.md) documents an actual bridge — a standalone sibling repository, `~/dev/openttd-prismatic-bridge` (Python/FastAPI), that speaks OpenTTD's admin-network protocol directly, exposes a REST + WebSocket API, and can already start/steer a real, externally-controllable Company AI (`ai/PrismaticAI`) end to end (8/8 of its own tests passing). That AI no longer just idles either: it builds a single-town bus route (two stops, a depot, 1-3 buses scaled by its `aggressiveness` setting), verified against a live server (`busses` 0→3, `company_value` 1→11025), and intercity road, rail, air and freight routes behind its settings. The decision contract with `prismatic-platform` has a machine-checkable schema in this repository (I0011, `research/prismatic-bridge/decision-contract.schema.json`); `prismatic-platform` answers it, and this fork's MCP panel consumes it at `POST /api/decision/pull` (checked end to end by `tools/research/mcp-decision-check`). The bridge's language is decided: a native Rust service (I0012, ADR 0032), still to be written in the bridge repository, so the Python bridge is the running implementation. What's not built yet: world seeding from real elevation data, and live decision-making that uses more of Prismatic than one Monte Carlo choice. Each remaining phase needs its own approval before being built — see the design doc for the full phase table and open questions.
 
 ### 0.3) What this fork is not
 
@@ -720,7 +727,11 @@ This is where the connection to the real world — connecting automated inferenc
 | [`src/prismatic_mcp/`](./src/prismatic_mcp/) | The MCP server implementation itself, gated behind `OPTION_PRISMATIC_MCP_SERVER` (default OFF). |
 | [`tools/research/mcp-e2e`](./tools/research/mcp-e2e), [`mcp-panel/`](./tools/research/mcp-panel/), [`mcp-rhai/`](./tools/research/mcp-rhai/) | Drive a running game from outside: one-command end-to-end run, the loopback control window with its `~` developer console and HTTP API, and Rhai scripting against it — see [`research/mcp-control.md`](./research/mcp-control.md). |
 | [`tools/research/prismatic-ai/`](./tools/research/prismatic-ai/README.md) | The owner's company AI (Squirrel content, not engine code; linked into the personal `ai/` folder by its `install`): planned freight, passenger, air and bus lines, rail termini trains can always run, and line targets the Rhai steward sets — see [`research/rail-steward.md`](./research/rail-steward.md). |
+| [`tools/research/mcp-auto/openttd-mcp-stdio`](./tools/research/mcp-auto/openttd-mcp-stdio) | The stdio MCP proxy an LLM client (Claude Code, MCP Inspector, ...) runs; the panel holds the token. |
+| [`tools/research/mcp-duel`](./tools/research/mcp-duel), [`readme-scoreboard`](./tools/research/readme-scoreboard), [`research/results/`](./research/results/) | Bot-vs-bot duels, their recorded results, and the scoreboard generated from them. |
 | [`tools/research/mcp-live-check`](./tools/research/mcp-live-check) | Scripted live check of the MCP server against a running build. |
+| [`tools/research/noirgfx/`](./tools/research/noirgfx/README.md), [`research/noirgfx/`](./research/noirgfx/README.md) | NoirGFX, the fork's base graphics set, and its deterministic build pipeline. |
+| [`.ai/`](./.ai/README.md) | The supervised AI layer: ADRs, rules, plan, intents and knowledge that every agent reads the same way (Majordomus). |
 | [`tools/check-prismatic-docs.sh`](./tools/check-prismatic-docs.sh) | Freshness gate for the generated contributor docs (section 0.4.1). |
 | [`tools/surfaces/`](./tools/surfaces/README.md), [`surfaces.toml`](./surfaces.toml), [`.github/workflows/surfaces.yml`](./.github/workflows/surfaces.yml) | The published surfaces: site, wiki and Markdown regions derived from the repository, and the check that keeps them current (section 0.4.2). |
 | `.claude/`, `.aiad/` *(not committed)* | Personal Claude Code tooling imported from a sibling private project, kept strictly local via `.git/info/exclude`. |
@@ -742,17 +753,15 @@ korczis/OpenTTD/
 │   ├── gate.sh            * fork-added: smoke / change / research / full validation entry point
 │   ├── check-prismatic-docs.sh  * fork-added: generated-docs freshness gate
 │   ├── surfaces/          * fork-added: site / wiki / Markdown-region generator and its check (0.4.2)
-│   └── research/          * fork-added: research-mode CLI (doctor/init/configure/build/run/validate/report/clean),
-│                            mcp-e2e / mcp-panel / mcp-rhai / mcp-live-check (driving a game over MCP)
+│   └── research/          * fork-added: research-mode CLI, mcp-e2e / mcp-duel / mcp-auto (stdio proxy),
+│                            mcp-rhai (Rust: panel, hub, planner, Rhai host), mcp-panel (+ rhai/ scripts),
+│                            mcp-human, noirgfx, and the live checks
 │
-├── research/
-│   ├── README.md          * fork-added: gating model + PASS/FAIL/PARTIAL/NOT RUN/NOT APPLICABLE taxonomy
-│   ├── experiment-template.md  * fork-added: experiment report template (manual/freeform)
-│   ├── tooling.md         * fork-added: tools/research/research reference (architecture, schema, profiles)
-│   ├── mcp-*.md, ...      * fork-added: driving a game over MCP, the hub, the console, the bridge, results
-│   │                        (every document is listed in research/README.md's generated index)
-│   └── prismatic-mcp/     * fork-added: embedded MCP server research trail (00-baseline.md .. 19-continuation-runbook.md)
+├── research/              * fork-added: gating model, experiment template, tooling reference, MCP control,
+│                            hub, duel results, NoirGFX, prismatic-mcp/ research trail
+│                            (every document is listed in research/README.md's generated index)
 │
+├── .ai/                   * fork-added: supervised AI layer (ADRs, rules, plan, intents, knowledge)
 ├── src/prismatic_mcp/       * fork-added: MCP server implementation, gated by OPTION_PRISMATIC_MCP_SERVER (default OFF)
 ├── surfaces.toml            * fork-added: what the published surfaces publish (0.4.2)
 ├── .github/workflows/surfaces.yml  * fork-added: check, then publish the site and the wiki
@@ -899,7 +908,7 @@ flowchart TD
     F3 --> F4["ctest --test-dir build-fullgate<br/>(full suite, from scratch)"]
 ```
 
-This is measured, not estimated: the last real run of `tools/gate.sh change` against this repository built cleanly and passed **98/98 tests in 7.40 seconds** (see the change history of this file and `tools/gate.sh` for when). `full` deliberately builds into `build-fullgate/` rather than wiping the existing `build/` — that keeps a fast iteration build available even while a clean-room validation run is being prepared or reviewed.
+`full` deliberately builds into `build-fullgate/` rather than wiping the existing `build/` — that keeps a fast iteration build available even while a clean-room validation run is being prepared or reviewed.
 
 ### 0.6) Ground rules (short version)
 
@@ -975,11 +984,7 @@ These are open questions this fork is used to investigate, not conclusions — n
 
 ### 0.9) Agent and cognition concepts under evaluation
 
-This section separates what's actually confirmed from what isn't. Sources: this README's own 0.2 (studied directly from `~/dev/prismatic-platform` in an earlier session), and, where noted, this fork's local, git-excluded `.aiad/`/`.claude/` directories — personal Claude Code tooling imported from Prismatic for local reference (`AGENTS.md`). Neither source was re-verified live against `~/dev/prismatic-platform` while this section was written (0.12).
-
-#### AIG
-
-Not defined in any source available to this session. This document does not expand or guess at the term; it's intentionally left out of this glossary rather than defined speculatively. A future revision should only define it after reading an explicit definition in Prismatic's own documentation.
+This section separates what's actually confirmed from what isn't. Sources: this README's own 0.2 (studied directly from `~/dev/prismatic-platform` in an earlier session), and, where noted, this fork's local, git-excluded `.aiad/`/`.claude/` directories — personal Claude Code tooling imported from Prismatic for local reference (`AGENTS.md`). Treat its Prismatic-side claims as a snapshot, not as re-verified against `~/dev/prismatic-platform`.
 
 #### RAG (retrieval-augmented context)
 
@@ -1042,7 +1047,6 @@ Claims and evidence discipline:
 - Passing this fork's existing tests demonstrates only the behavior those tests actually cover (0.11).
 - This fork's own gating and reporting model (0.5, 0.6) is itself one of the things being evaluated here, not a proven-correct baseline — see 0.2.4's "D — rejected, not transferable" row for a concrete example of a Prismatic-side pattern this fork deliberately did not adopt.
 - The admin-network bridge to a running OpenTTD server (`research/prismatic-bridge/ARCHITECTURE.md`) is a standalone service whose AI runs settings-driven, hand-written route strategies. The decision contract with `prismatic-platform` is defined and answered (Phase 3), but the decision it carries is one setting (`aggressiveness`) chosen by one Monte Carlo model; findings about "an agent controlling a game" are limited to the control/observation transport, hand-written strategies and that one decision, not to decision quality driven by broader external modeling.
-- This revision of this section was written in a session with no live read access to `~/dev/prismatic-platform` (the active permission mode denied filesystem access outside this repository for most of the session). Its Prismatic-sourced claims rely on content already verified and written into this README in an earlier session that did have access (0.2), plus this fork's own locally cached, git-excluded agent tooling imported from Prismatic, filtered for sober, checkable claims. `AIG` in particular could not be verified either way and is therefore omitted rather than guessed at (0.9).
 
 ## 1.0) About
 
