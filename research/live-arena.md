@@ -57,7 +57,7 @@ flowchart LR
   file["arena.rhai<br/>LINEUP (desired state)"] -->|"saved: reload within 1 s"| svc["panel service<br/>(Rhai engine in mcp-panel)"]
   svc -->|"api_bots().running"| panel["mcp-panel :8800"]
   panel -->|"openttd.ai.list over MCP"| game["dedicated server :3979"]
-  svc -->|"con_start_ai \"Name\" settings"| panel
+  svc -->|"con_start_ai #quot;Name#quot; settings"| panel
   svc -->|"con_say / news"| panel
   panel -->|"console"| game
   game --> gui["GUI client (spectator)"]
