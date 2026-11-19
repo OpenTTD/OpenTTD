@@ -2,8 +2,8 @@
 // RESEARCH-ONLY. The real-world places checked in a real browser (research/real-world-scenario.md):
 // /realworld lists every place snapshot with its query and links each one; /realworld/brno draws
 // its map card (an echarts instance with a non-zero width and series that carry data), shows the
-// place, map and contract tiles with the contract valid, shows every evidence class it uses as a
-// badge, and maximize puts `max` in the address and Escape restores it; an unknown place answers
+// place, map and contract tiles with the contract valid, shows every evidence class its entities
+// use (read from /api/realworld/scenario) as a badge, and maximize puts `max` in the address and Escape restores it; an unknown place answers
 // 404; the console stays free of errors. Drives the installed Chrome through playwright-core (a dev
 // dependency of tools/research/mcp-panel: npm ci there), so nothing downloads a browser.
 //
@@ -50,8 +50,11 @@ try {
   }));
   check('the page title comes from the snapshot', /Brno/.test(facts.title), facts.title);
   check('the contract tile says valid', /Contract\s+valid/i.test(facts.text));
-  const classes = ['OBSERVED', 'DERIVED', 'INFERRED', 'HYPOTHETICAL'].filter((c) => facts.text.includes(c));
-  check('every evidence class appears as a badge', classes.length === 4, classes.join(' '));
+  // The classes the scenario's entities use, read from the API (source features are OBSERVED; game
+  // entities are DERIVED, INFERRED or HYPOTHETICAL), and each must show on the page as a badge.
+  const used = await page.evaluate(async () => [...new Set(((await (await fetch('/api/realworld/scenario?name=brno')).json()).scenario.entities || []).map((e) => e.evidence))].sort());
+  const missingClasses = used.filter((c) => !facts.text.includes(c));
+  check('every evidence class the entities use appears as a badge', used.length > 0 && missingClasses.length === 0, `${used.join(' ')}${missingClasses.length ? '; missing ' + missingClasses.join(' ') : ''}`);
   await page.click('#rw-map-card button:has-text("Maximize")');
   const maxed = await page.evaluate(() => [document.getElementById('rw-map-card').classList.contains('fixed'), location.hash + location.search]);
   check('maximize fills the viewport and puts max in the address', maxed[0] && maxed[1].includes('max=rw-map'), maxed[1]);
