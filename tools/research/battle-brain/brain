@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# RESEARCH-ONLY: run the battle brain once (research/battle-brain.md). Exports the training rows from
+# the post-mortem's DuckDB (analytics.duckdb, written by battle-postmortem), the GA's gene space from
+# the battle's API, runs brain.exs on Nx/EXLA/Axon, and writes ~/ttd-battle/results/brain.json.
+#
+# Usage: tools/research/battle-brain/brain [--every SECONDS]   (--every: the background loop)
+# Needs: duckdb CLI, Elixir with Nx, EXLA, Axon, Polaris and Jason compiled ($BRAIN_LIBS, default
+# the prismatic-platform checkout's _build/dev/lib; its .tool-versions picks Elixir/Erlang).
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+RESULTS="${BRAIN_RESULTS:-$HOME/ttd-battle/results}"
+LIBS="${BRAIN_LIBS:-$HOME/dev/prismatic-platform/_build/dev/lib}"
+BATTLE="${BRAIN_BATTLE:-http://127.0.0.1:8765}"
+export ASDF_ELIXIR_VERSION="${ASDF_ELIXIR_VERSION:-1.19.0-otp-28}" ASDF_ERLANG_VERSION="${ASDF_ERLANG_VERSION:-28.1}"
+EVERY=0
+[[ "${1:-}" == "--every" ]] && EVERY="${2:?--every needs seconds}"
+
+once() {
+  local tmp; tmp="$(mktemp -d)"
+  duckdb -readonly "$RESULTS/analytics.duckdb" -csv \
+    "SELECT a.edition, a.contestant, c.settings, a.value_share_of_winner AS share
+     FROM analyses a JOIN contestants c USING (edition, contestant)
+     WHERE c.prismatic AND a.value_share_of_winner > 0" > "$tmp/rows.csv"
+  curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json"
+  local args=()
+  for l in nx exla axon polaris complex telemetry xla elixir_make nimble_pool jason; do args+=(-pa "$LIBS/$l/ebin"); done
+  (cd "$tmp" && elixir "${args[@]}" "$HERE/brain.exs" "$tmp/rows.csv" "$tmp/space.json" "$tmp/brain.json")
+  mv "$tmp/brain.json" "$RESULTS/brain.json"
+  rm -rf "$tmp"
+}
+
+if (( EVERY > 0 )); then
+  while true; do once || echo "battle-brain: run failed" >&2; sleep "$EVERY"; done
+else
+  once
+fi
