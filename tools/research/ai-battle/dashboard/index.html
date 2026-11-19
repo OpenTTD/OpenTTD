@@ -115,6 +115,7 @@
   <section class="panel wide"><h2><span>Live matches</span><span id="livecount"></span></h2><div class="live" id="live"></div></section>
   <section class="panel"><h2>Leaderboard</h2><div class="scroll" id="board"></div></section>
   <section class="panel"><h2>Alerts (self-monitoring)</h2><div class="alerts" id="alerts"></div></section>
+  <section class="panel wide"><h2><span>Self-tuning (genetic algorithm)</span><span class="sub" id="gen"></span></h2><div class="scroll" id="tuning"></div></section>
   <section class="panel wide"><h2><span>Post-mortems: where each contestant lost to the winner</span><span class="sub">gap · behind since · findings</span></h2><div class="scroll" id="pm"></div></section>
   <section class="panel"><h2>Recent results</h2><div class="scroll" id="recent"></div></section>
   <section class="panel"><h2>Replays on another arena (determinism)</h2><div class="scroll" id="det"></div></section>
@@ -249,14 +250,37 @@ function render(st) {
   }).join('') : '<div class="empty">No match running.</div>';
   bindTips(st);
 
-  const top = Math.max(1, ...st.leaderboard.map((r) => r.points));
-  $('board').innerHTML = `<table><tr><th>#</th><th>AI</th><th class="num">played</th><th class="num">wins</th><th>points</th><th class="num">avg rank</th><th class="num">avg value</th><th class="num">anomalous</th></tr>
+  const top = Math.max(0.001, ...st.leaderboard.map((r) => r.avg_points || 0));
+  $('board').innerHTML = `<table><tr><th>#</th><th>AI</th><th class="num">played</th><th class="num">wins</th><th>points/match</th><th class="num">avg rank</th><th class="num">avg value</th><th class="num">anomalous</th></tr>
     ${st.leaderboard.map((r, i) => `<tr><td>${i + 1}</td><td><span class="dot" style="background:${colour(r.key)}"></span>${esc(r.key)}</td>
       <td class="num">${r.played}</td><td class="num">${r.wins}</td>
-      <td class="barcell"><span style="width:${100 * r.points / top}%;background:${colour(r.key)}"></span>${r.points}</td>
+      <td class="barcell" title="${r.points} points in ${r.played} matches"><span style="width:${100 * (r.avg_points || 0) / top}%;background:${colour(r.key)}"></span>${(r.avg_points || 0).toFixed(2)}</td>
       <td class="num">${r.avg_rank ?? '–'}</td><td class="num">${num(r.avg_value)}</td>
       <td class="num">${r.anomalies ? `<span class="pill warn">${r.anomalies}</span>` : 0}</td></tr>`).join('')}</table>
-    <div class="sub" style="margin-top:8px">Points: last place 0, each place above +1. Matches that reached the final year count; replays don't. Anomalous: matches with a fleet drop, Squirrel errors or no vehicles.</div>`;
+    <div class="sub" style="margin-top:8px">Points per match: last place 0, each place above +1; ranked per match played, because the PrismaticAI configurations take turns. Matches that reached the final year count; replays don't. Anomalous: matches with a fleet drop, Squirrel errors or no vehicles.</div>`;
+
+  const tu = st.tuning;
+  if (!tu) { $('tuning').innerHTML = '<div class="empty">Tuning is off (battle.json tuning.enabled).</div>'; $('gen').textContent = ''; }
+  else {
+    $('gen').textContent = `generation ${tu.generation} · ${tu.matches_per_variant} matches per variant · fitness = points/match + 0.1 × log10(value / winner)`;
+    const hist = tu.history.filter((h) => h.best !== null);
+    let spark = '';
+    if (hist.length) {
+      const all = hist.flatMap((h) => [h.best, ...Object.values(h.anchors)]);
+      const lo = Math.min(...all), hi = Math.max(...all, lo + 0.01), W = 300, H = 60;
+      const x = (i) => 6 + (W - 12) * (hist.length > 1 ? i / (hist.length - 1) : 0.5);
+      const y = (v) => H - 6 - (H - 12) * (v - lo) / (hi - lo);
+      spark = `<svg viewBox="0 0 ${W} ${H}" style="max-width:320px" aria-label="best score per generation"><polyline fill="none" stroke="var(--c2)" stroke-width="2" points="${hist.map((h, i) => `${x(i)},${y(h.best)}`).join(' ')}"/>` +
+        Object.keys(hist[0].anchors).map((k, j) => `<polyline fill="none" stroke="var(--c${j})" stroke-dasharray="3 3" points="${hist.map((h, i) => `${x(i)},${y(h.anchors[k])}`).join(' ')}"/>`).join('') + '</svg><div class="sub">best variant (solid) vs anchors (dashed), per generation</div>';
+    }
+    const rows = tu.variants.map((v) => ({ k: v.label, s: v.settings, p: v.parents.join(' × ') || 'seed', f: v.fitness }))
+      .concat(Object.entries(tu.anchors).map(([k, f]) => ({ k, s: 'anchor', p: '', f })));
+    rows.sort((a, b) => b.f.score - a.f.score);
+    $('tuning').innerHTML = spark + `<table><tr><th>variant</th><th class="num">matches</th><th class="num">points/match</th><th class="num">log gap</th><th class="num">score</th><th>settings</th><th>parents</th></tr>
+      ${rows.map((r) => `<tr><td><span class="dot" style="background:${colour(r.k)}"></span>${esc(r.k)}</td><td class="num">${r.f.matches}</td>
+        <td class="num">${r.f.points}</td><td class="num">${r.f.log_gap}</td><td class="num"><b>${r.f.score}</b></td>
+        <td class="sub" style="white-space:normal">${esc(r.s)}</td><td class="sub">${esc(r.p)}</td></tr>`).join('')}</table>`;
+  }
 
   const pms = [];
   for (const x of st.postmortems || []) for (const p of x.postmortem) pms.push(Object.assign({ match: x.match }, p));

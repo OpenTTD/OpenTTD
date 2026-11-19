@@ -12,7 +12,7 @@ areas: [agent-integration]
 audiences: [prismatic-integrator]
 rules: [project.battle-records-are-reproducible, project.prismatic-ai-passes-the-headless-fitness-check, project.prismatic-ai-is-never-last, project.docs-are-derived-and-current, project.a-tuning-claim-needs-held-start-pairs]
 docs: [research/ai-battle/README.md]
-adrs: [adr-0035, adr-0021, adr-0025]
+adrs: [adr-0035, adr-0036, adr-0021, adr-0025]
 related: [prismatic-bridge, research-experiment-cli, layered-validation-gate]
 tags: [ai-battle, prismatic-ai, determinism, cluster, dashboard]
 ---
@@ -41,6 +41,10 @@ match gets a post-mortem of where each loser fell behind, and all samples, stand
 post-mortems, throughput and events go to `~/ttd-battle/results/battle.sqlite`, readable through
 `/api/query`. PrismaticAI with no settings (autopilot) and self-steward are never last (rule
 `project.prismatic-ai-is-never-last`).
+
+A genetic algorithm tunes PrismaticAI's settings inside the battle (ADR 0036): a population of
+variants on common seeds, fitness from points per match and the value gap to the winner,
+elitism, crossover and mutation, one record and one edition per generation, at `/api/tuning`.
 
 ## What it does not do
 

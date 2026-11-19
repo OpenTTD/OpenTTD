@@ -35,6 +35,8 @@ import hashlib
 import http.server
 import io
 import json
+import math
+import random
 import os
 import re
 import signal
@@ -81,7 +83,99 @@ def load_config(path: Path) -> dict:
     cfg = json.loads(path.read_text())
     for key in ("cache", "results", "hosts_file", "baseset"):
         cfg[key] = expand(cfg[key])
+    t = cfg.get("tuning")
+    if t and t.get("enabled"):
+        state = tuning_state(cfg)
+        cfg["contestants"] = cfg["contestants"] + state["variants"]
     return cfg
+
+
+# ------------------------------------------------------------------------------- self-tuning (GA)
+
+def tuning_path(cfg: dict) -> Path:
+    return cfg["cache"] / "tuning" / "state.json"
+
+
+def settings_str(genes: dict) -> str:
+    return ",".join(f"{k}={v}" for k, v in sorted(genes.items()))
+
+
+def variant(t: dict, gen: int, i: int, genes: dict, parents: list) -> dict:
+    return {"ai": t.get("ai", "PrismaticAI"), "label": f"{t['label_prefix']} g{gen}.{i}",
+            "group": t["group"], "source": "repository", "genes": genes, "parents": parents,
+            "settings": settings_str({**t.get("fixed", {}), **genes})}
+
+
+def clamp_gene(space: dict, k: str, v: float) -> int:
+    lo, hi, step = space[k]
+    return int(min(hi, max(lo, lo + round((v - lo) / step) * step)))
+
+
+def first_generation(t: dict) -> list[dict]:
+    rng = random.Random(f"{t['seed']}:0")
+    out = [variant(t, 0, 0, dict(t["start"]), [])]
+    while len(out) < t["population"]:
+        out.append(variant(t, 0, len(out), mutate(t, dict(t["start"]), rng, 1.0), []))
+    return out
+
+
+def mutate(t: dict, genes: dict, rng: random.Random, rate: float | None = None) -> dict:
+    rate = t.get("mutation_rate", 0.35) if rate is None else rate
+    out = dict(genes)
+    for k, (lo, hi, step) in t["space"].items():
+        if rng.random() < rate:
+            span = max(1, (hi - lo) // step)
+            out[k] = clamp_gene(t["space"], k, out.get(k, lo) + rng.choice([-1, 1]) *
+                                step * rng.randint(1, max(1, span // 4)))
+    return out
+
+
+def tuning_state(cfg: dict) -> dict:
+    p = tuning_path(cfg)
+    if p.is_file():
+        return json.loads(p.read_text())
+    t = cfg["tuning"]
+    state = {"generation": 0, "variants": first_generation(t), "history": []}
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(state, indent=1) + "\n")
+    return state
+
+
+def fitness_of(key: str, matches: list[dict]) -> dict:
+    """Mean normalised points per match (1 = won, 0 = last) and mean log10 of value / winner's value
+    over the contestant's scored matches."""
+    pts, logs = [], []
+    for m in matches:
+        if m.get("status") != "done" or m.get("replica_of"):
+            continue
+        st = m["standings"]
+        for rank, f in enumerate(st):
+            if f["key"] == key:
+                pts.append((len(st) - 1 - rank) / max(1, len(st) - 1))
+                logs.append(math.log10(max(1, f["value"]) / max(1, st[0]["value"])))
+    n = len(pts)
+    return {"matches": n, "points": round(sum(pts) / n, 4) if n else 0.0,
+            "log_gap": round(sum(logs) / n, 4) if n else 0.0,
+            "score": round(sum(pts) / n + 0.1 * sum(logs) / n, 4) if n else -9.0}
+
+
+def next_generation(t: dict, state: dict, scored: list[tuple[dict, dict]]) -> list[dict]:
+    """Elitism (the best survives unchanged), then children of two tournament-chosen parents by
+    uniform crossover and mutation. Deterministic per generation."""
+    gen = state["generation"] + 1
+    rng = random.Random(f"{t['seed']}:{gen}")
+    ranked = [v for v, _ in sorted(scored, key=lambda x: -x[1]["score"])]
+    out = [variant(t, gen, 0, dict(ranked[0]["genes"]), [ranked[0]["label"]])]
+
+    def pick():
+        a, b = rng.sample(ranked[:max(2, len(ranked))], 2) if len(ranked) > 1 else (ranked[0], ranked[0])
+        return a if ranked.index(a) < ranked.index(b) else b
+    while len(out) < t["population"]:
+        p1, p2 = pick(), pick()
+        child = {k: (p1["genes"] if rng.random() < 0.5 else p2["genes"]).get(k, t["start"].get(k))
+                 for k in t["space"]}
+        out.append(variant(t, gen, len(out), mutate(t, child, rng), [p1["label"], p2["label"]]))
+    return out
 
 
 def contestant_key(c: dict) -> str:
@@ -467,7 +561,10 @@ def match_status(m: dict, exit_code: int) -> str:
     return "done" if exit_code == 0 and last_t >= expected else "incomplete"
 
 
-def leaderboard(contestants: list[str], matches: list[dict]) -> list[dict]:
+SCORING = "points-per-match/v2"
+
+
+def leaderboard(contestants: list[str], matches: list[dict], scoring: str = SCORING) -> list[dict]:
     """Points per match: last place 0, each place above +1. Replays and unfinished matches don't count."""
     rows = {k: {"key": k, "played": 0, "wins": 0, "points": 0, "rank_sum": 0, "value_sum": 0,
                 "errors": 0, "anomalies": 0} for k in contestants}
@@ -491,7 +588,13 @@ def leaderboard(contestants: list[str], matches: list[dict]) -> list[dict]:
         r["avg_rank"] = round(r["rank_sum"] / r["played"], 2) if r["played"] else None
         r["avg_value"] = r["value_sum"] // r["played"] if r["played"] else 0
         del r["rank_sum"], r["value_sum"]
-    out.sort(key=lambda r: (-r["points"], -r["avg_value"], r["key"]))
+        if scoring == SCORING:
+            # Grouped contestants play one match in N: rank per match played, not by total.
+            r["avg_points"] = round(r["points"] / r["played"], 3) if r["played"] else 0
+    if scoring == SCORING:
+        out.sort(key=lambda r: (-r["avg_points"], -r["avg_value"], r["key"]))
+    else:  # v1 (records without "scoring"): total points
+        out.sort(key=lambda r: (-r["points"], -r["avg_value"], r["key"]))
     return out
 
 
@@ -659,6 +762,9 @@ OPENAPI = {
         "/api/postmortems": {"get": {"summary": "Where each contestant lost to the winner, per "
                                                  "finished match of the edition (newest first)",
                                       "responses": {"200": {"description": "post-mortems"}}}},
+        "/api/tuning": {"get": {"summary": "Self-tuning: the generation, every variant's settings, "
+                                           "parents and fitness, the anchors, and the history",
+                                "responses": {"200": {"description": "tuning state"}}}},
         "/api/perf": {"get": {"summary": "Throughput per arena: game years per wall-clock minute",
                               "responses": {"200": {"description": "per-host throughput"}}}},
         "/api/query": {"get": {"summary": "Read-only SQL over the store (tables matches, samples, "
@@ -697,9 +803,13 @@ class Orchestrator:
             m = json.loads(f.read_text())
             self.matches[m["id"]] = m
         if edition and self.matches:
-            # A past edition: its contestants are the ones its matches were played with.
-            first = min(self.matches.values(), key=lambda m: m["id"])
-            self.contestants = [dict(c) for c in first["lineup"]]
+            # A past edition: its contestants are every one its matches were played with (with groups,
+            # one match holds only one member of a group), in first-seen order.
+            seen: dict[str, dict] = {}
+            for m in sorted(self.matches.values(), key=lambda m: m["id"]):
+                for c in m["lineup"]:
+                    seen.setdefault(c["key"], dict(c))
+            self.contestants = list(seen.values())
         self.counter = max([int(m["id"].split("-")[1]) for m in self.matches.values()] + [0])
         self.lock = threading.Lock()
         self.stop = threading.Event()
@@ -736,7 +846,14 @@ class Orchestrator:
             seed, lineup = original["seed"], original["lineup"]
         else:
             lineup = lineup_for(self.contestants, self.counter)
-            seed = int(hashlib.sha256(f"{self.cfg['seed']}:{self.counter}".encode())
+            # Common random numbers: the members of a group take turns on the SAME seed, so every
+            # variant meets the same maps (one seed per round of the group).
+            sizes = {}
+            for c in self.contestants:
+                if c.get("group"):
+                    sizes[c["group"]] = sizes.get(c["group"], 0) + 1
+            block = max(sizes.values(), default=1)
+            seed = int(hashlib.sha256(f"{self.cfg['seed']}:{self.counter // block}".encode())
                        .hexdigest()[:8], 16) % 2_000_000_000
         return {"id": f"m-{self.counter:04d}", "host": host.name, "host_version": host.version,
                 "seed": seed, "years": mc["years"], "ticks": match_ticks(mc["years"]),
@@ -756,6 +873,45 @@ class Orchestrator:
             if spec["name"] not in known:
                 self.hosts.append(Host(spec, self.cfg.get("remote_root", "$HOME/ttd-battle")))
                 self.event(f"host {spec['name']}: added from the hosts file")
+
+    def tuning_step(self) -> bool:
+        """Self-tuning: when every variant of the generation has played its matches, publish the
+        round's record, breed the next generation and restart into its edition. True: restarting."""
+        t = self.cfg.get("tuning")
+        if not t or not t.get("enabled"):
+            return False
+        state = tuning_state(self.cfg)
+        variants = state["variants"]
+        ms = list(self.matches.values())
+        scored = [(v, fitness_of(v["label"], ms)) for v in variants]
+        if any(f["matches"] < t["matches_per_variant"] for _, f in scored):
+            return False
+        anchors = {k: fitness_of(k, ms) for k in t.get("anchors", [])}
+        self.event(f"TUNING generation {state['generation']} done: " + "; ".join(
+            f"{v['label']} {f['score']}" for v, f in sorted(scored, key=lambda x: -x[1]["score"])))
+        try:
+            cmd_report(self.cfg, False, self.digest)
+        except Exception as exc:  # the record is a by-product; tuning goes on
+            self.event(f"TUNING report failed: {exc}")
+        state["history"].append({"generation": state["generation"], "edition": self.digest,
+                                 "at": time.time(), "anchors": anchors,
+                                 "variants": [{"label": v["label"], "genes": v["genes"],
+                                               "parents": v["parents"], "fitness": f}
+                                              for v, f in scored]})
+        state["variants"] = next_generation(t, state, scored)
+        state["generation"] += 1
+        tuning_path(self.cfg).write_text(json.dumps(state, indent=1) + "\n")
+        # Matches of the finished generation that still run are stopped through their pid files.
+        for m in ms:
+            if m["status"] == "running":
+                host = next((h for h in self.hosts if h.name == m["host"]), None)
+                if host:
+                    host.sh(f"kill $(cat {match_dir(host.root, m)}/pid) 2>/dev/null; true")
+                m["status"] = "abandoned"
+                self.save(m)
+        self.event(f"TUNING generation {state['generation']}: " + ", ".join(
+            f"{v['label']} [{v['settings']}]" for v in state["variants"]) + "; restarting")
+        return True
 
     def schedule_pass(self) -> None:
         self.reload_hosts()
@@ -867,6 +1023,22 @@ class Orchestrator:
                    + (f": winner {w['key']} ({w['value']:,})" if w else ""))
 
     # ---- views
+    def tuning_view(self) -> dict | None:
+        t = self.cfg.get("tuning")
+        if not t or not t.get("enabled"):
+            return None
+        state = tuning_state(self.cfg)
+        ms = list(self.matches.values())
+        return {"generation": state["generation"], "matches_per_variant": t["matches_per_variant"],
+                "space": t["space"],
+                "variants": [{"label": v["label"], "settings": v["settings"], "parents": v["parents"],
+                              "fitness": fitness_of(v["label"], ms)} for v in state["variants"]],
+                "anchors": {k: fitness_of(k, ms) for k in t.get("anchors", [])},
+                "history": [{"generation": h["generation"], "best": max(
+                    (v["fitness"]["score"] for v in h["variants"]), default=None),
+                    "anchors": {k: a["score"] for k, a in h["anchors"].items()}}
+                    for h in state["history"]]}
+
     def perf(self) -> dict:
         """Game years per wall-clock minute per arena, over its finished matches of the edition."""
         out = {}
@@ -901,6 +1073,7 @@ class Orchestrator:
                 "leaderboard": leaderboard(keys, matches),
                 "determinism": determinism(matches),
                 "perf": self.perf(),
+                "tuning": self.tuning_view(),
                 "postmortems": [{"match": m["id"], "postmortem": m["postmortem"]} for m in matches
                                 if m.get("postmortem")][:12],
                 "events": list(self.events),
@@ -939,6 +1112,8 @@ class Orchestrator:
                                "determinism": st["determinism"]})
                 elif path == "/api/hosts":
                     self.json(orch.state()["hosts"])
+                elif path == "/api/tuning":
+                    self.json(orch.tuning_view() or {"enabled": False})
                 elif path == "/api/perf":
                     self.json(orch.perf())
                 elif path == "/api/postmortems":
@@ -986,14 +1161,22 @@ class Orchestrator:
         signal.signal(signal.SIGTERM, lambda *_: self.stop.set())
         signal.signal(signal.SIGINT, lambda *_: self.stop.set())
         last = 0.0
+        restart = False
         while not self.stop.is_set():
             if time.time() - last > self.cfg.get("schedule_every_s", 30):
+                if self.tuning_step():
+                    restart = True
+                    break
                 self.schedule_pass()
                 last = time.time()
             for host in self.hosts:
                 self.poll_host(host)
             self.stop.wait(self.cfg.get("poll_every_s", 4))
         server.shutdown()
+        server.server_close()
+        if restart:
+            # The next generation is a new edition: start over in a fresh process.
+            os.execv(sys.executable, [sys.executable, *sys.argv])
         self.event("stopped; running matches keep going and are re-attached by the next `run`")
 
 
@@ -1009,6 +1192,7 @@ def build_record(cfg: dict, orch: Orchestrator) -> dict:
         hosts.setdefault(m["host"], set()).add(m.get("host_version", ""))
     return {
         "schema": RECORD_SCHEMA,
+        "scoring": SCORING,
         "id": f"battle-{now.strftime('%Y%m%dT%H%M%S')}-{orch.digest[:8]}",
         "generated_at": now.isoformat(timespec="seconds"),
         "edition": orch.digest,
@@ -1055,13 +1239,19 @@ def render_md(rec: dict) -> str:
         f"- {len(done)} scored match(es) on "
         + ", ".join(f"`{h['name']}` ({', '.join(h['versions'])})" for h in rec["hosts"]),
         f"- Replays: {same} of {len(det)} identical to their original on another arena", "",
-        "| # | Contestant | Played | Wins | Points | Avg rank | Avg final value | Squirrel errors "
-        "| Matches with anomalies |",
-        "|---|---|---|---|---|---|---|---|---|",
     ]
+    v2 = rec.get("scoring") == SCORING
+    if v2:
+        lines += ["| # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value "
+                  "| Squirrel errors | Matches with anomalies |",
+                  "|---|---|---|---|---|---|---|---|---|---|"]
+    else:
+        lines += ["| # | Contestant | Played | Wins | Points | Avg rank | Avg final value | Squirrel errors "
+                  "| Matches with anomalies |", "|---|---|---|---|---|---|---|---|---|"]
     for i, r in enumerate(rec["leaderboard"], 1):
         lines.append(f"| {i} | {r['key']} | {r['played']} | {r['wins']} | {r['points']} | "
-                     f"{r['avg_rank'] if r['avg_rank'] is not None else '-'} | "
+                     + (f"{r.get('avg_points', '-')} | " if v2 else "")
+                     + f"{r['avg_rank'] if r['avg_rank'] is not None else '-'} | "
                      f"{money(r['avg_value'])} | {r['errors']} | {r.get('anomalies', 0)} |")
     if det:
         lines += ["", "| Seed | Original | Replay | Arenas | Identical |", "|---|---|---|---|---|"]
@@ -1138,7 +1328,8 @@ def validate_record(rec: dict, name: str) -> list[str]:
         if m["ticks"] != match_ticks(m["years"]):
             errs.append(f"{name}: match {m['id']} ticks do not match its length")
     if rec["leaderboard"] != leaderboard([c["key"] for c in rec["contestants"]],
-                                         [dict(m, standings=m["standings"]) for m in rec["matches"]]):
+                                         [dict(m, standings=m["standings"]) for m in rec["matches"]],
+                                         rec.get("scoring", "points/v1")):
         errs.append(f"{name}: leaderboard is not derived from its matches")
     return errs
 

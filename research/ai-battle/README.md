@@ -22,23 +22,30 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T054742-91a72662.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T054742-91a72662`](../results/battle-20261119T054742-91a72662.md) (0/0 replays identical).
+<!-- derived from research/results/battle-20261119T060827-361b802f.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T060827-361b802f`](../results/battle-20261119T060827-361b802f.md) (4/4 replays identical).
 
-- Edition `91a726628e57de21`: PrismaticAI and referee at `df1e05e7d80c160ef3111d99a6fd62b642d99651`, base set `opengfx-8.0.tar`
+- Edition `361b802f523018f4`: PrismaticAI and referee at `bd98bbad736035c3bd7478ebec1accc1230455dc`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 37 scored match(es) on `imac` (20260724-prismatic-mcp-server-m64d95df5ae), `mbp` (20261119-master-mf87e1d279c), `mbp2` (20261119-master-g9750b3f946)
-- Replays: 0 of 0 identical to their original on another arena
+- 64 scored match(es) on `imac` (20260724-prismatic-mcp-server-m64d95df5ae), `mbp` (20261119-master-m82c3c2fc0b), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 4 of 4 identical to their original on another arena
 
-| # | Contestant | Played | Wins | Points | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
-|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 37 | 37 | 222 | 1.0 | 94.2 M | 0 | 0 |
-| 2 | AdmiralAI | 37 | 0 | 143 | 3.14 | 4.6 M | 0 | 3 |
-| 3 | PrismaticAI self-steward | 37 | 0 | 115 | 3.89 | 3.1 M | 0 | 30 |
-| 4 | PrismaticAI | 37 | 0 | 113 | 3.95 | 3.1 M | 0 | 20 |
-| 5 | PrismaticAI solo-max | 37 | 0 | 110 | 4.03 | 2.9 M | 0 | 35 |
-| 6 | LuDiAI AfterFix | 37 | 0 | 61 | 5.35 | 1.5 M | 0 | 0 |
-| 7 | CivilAI | 37 | 0 | 13 | 6.65 | 468.4 k | 7405 | 6 |
+| # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | AAAHogEx | 64 | 64 | 256 | 4.0 | 1.0 | 104.5 M | 0 | 0 |
+| 2 | PrismaticAI self-steward | 22 | 0 | 60 | 2.727 | 2.27 | 7.0 M | 0 | 11 |
+| 3 | PrismaticAI | 20 | 0 | 49 | 2.45 | 2.55 | 6.1 M | 0 | 6 |
+| 4 | PrismaticAI solo-max | 22 | 0 | 52 | 2.364 | 2.64 | 5.5 M | 0 | 22 |
+| 5 | AdmiralAI | 64 | 0 | 150 | 2.344 | 2.66 | 6.5 M | 0 | 5 |
+| 6 | LuDiAI AfterFix | 64 | 0 | 67 | 1.047 | 3.95 | 1.7 M | 0 | 1 |
+| 7 | CivilAI | 64 | 0 | 6 | 0.094 | 4.91 | 582.4 k | 3750 | 10 |
+
+| Seed | Original | Replay | Arenas | Identical |
+|---|---|---|---|---|
+| 1566354715 | m-0013 | m-0048 | mbp2 / mbp | yes |
+| 1251879686 | m-0001 | m-0056 | mbp / mbp2 | yes |
+| 1738814815 | m-0014 | m-0064 | mbp2 / mbp | yes |
+| 700686639 | m-0015 | m-0072 | mbp2 / mbp | yes |
 <!-- battle:end -->
 
 ## How it fits together
@@ -203,6 +210,28 @@ The first editions showed two failures. The battle now catches both by itself.
   A new anomaly goes to the event log as an `ALERT` and onto the dashboard's alert panel. Records
   keep each standing's anomalies, and the leaderboard counts each contestant's anomalous matches.
   The same check flagged CivilAI crashing (thousands of Squirrel errors in one match).
+
+## Self-tuning (genetic algorithm)
+
+`tuning` in `battle.json` (ADR 0036) evolves PrismaticAI's settings inside the running battle:
+
+- **Population and anchors.** `population` variants named `PrismaticAI GA g<gen>.<i>` (settings
+  = `fixed` + genes from `space`, each gene `[min, max, step]`) play in the PrismaticAI group,
+  beside the anchors `PrismaticAI` and `PrismaticAI solo-max`. The group's members take turns on
+  the same seed, so each variant meets the same maps.
+- **Fitness** = points per match (1 for a win, 0 for last) + 0.1 x log10(value / winner's value).
+- **Generations.** Once every variant has `matches_per_variant` matches, the orchestrator:
+  1. writes the round's record,
+  2. keeps the best variant,
+  3. breeds the rest (tournament selection, uniform crossover, step mutation; the RNG is seeded
+     by the generation number),
+  4. stops the generation's unfinished matches through their pid files,
+  5. restarts itself into the next edition.
+- **State and display.** `~/ttd-battle/tuning/state.json` holds the current variants and every
+  past generation's genes, parents and fitness. `/api/tuning` serves it, and the dashboard's
+  *Self-tuning* panel shows it.
+- **Defaults.** A tuned variant is a candidate. It becomes a default only through held-start duel
+  pairs (rule `project.a-tuning-claim-needs-held-start-pairs`).
 
 ## Never last
 

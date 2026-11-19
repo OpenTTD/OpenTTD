@@ -126,7 +126,7 @@ class Scoring(unittest.TestCase):
 
 def record(**over):
     ms = [match("m-0001", "h1", 1, [30, 20, 10])]
-    rec = {"schema": battle.RECORD_SCHEMA, "id": "battle-20261119T000000-abcdef12",
+    rec = {"schema": battle.RECORD_SCHEMA, "scoring": battle.SCORING, "id": "battle-20261119T000000-abcdef12",
            "generated_at": "2026-11-19T00:00:00+00:00", "edition": "abcdef1234567890",
            "provenance": {"prismatic_path": "p", "referee_path": "r", "rev": "a" * 40,
                           "dirty": False, "baseset": "opengfx.tar", "ais": []},
@@ -227,6 +227,34 @@ class Telemetry(unittest.TestCase):
         self.assertEqual(battle.fitness_verdict(m, fit), ["PrismaticAI: last of 2 (value 5)"])
         m["series"]["X"][-1]["value"] = 1
         self.assertEqual(battle.fitness_verdict(m, fit), [])
+
+
+class Tuning(unittest.TestCase):
+    T = {"seed": "t", "group": "P", "label_prefix": "P GA", "population": 4, "mutation_rate": 0.5,
+         "fixed": {"self_steward": 1}, "start": {"a": 50, "b": 4},
+         "space": {"a": [0, 100, 10], "b": [2, 10, 2]}}
+
+    def test_generations_are_deterministic_and_within_bounds(self):
+        g0 = battle.first_generation(self.T)
+        self.assertEqual(g0, battle.first_generation(self.T))
+        self.assertEqual(len(g0), 4)
+        self.assertEqual(g0[0]["genes"], {"a": 50, "b": 4})
+        for v in g0:
+            self.assertTrue(0 <= v["genes"]["a"] <= 100 and v["genes"]["a"] % 10 == 0)
+            self.assertIn("self_steward=1", v["settings"])
+            self.assertEqual(v["group"], "P")
+        scored = [(v, {"score": i}) for i, v in enumerate(g0)]
+        g1 = battle.next_generation(self.T, {"generation": 0}, scored)
+        self.assertEqual(g1[0]["genes"], g0[3]["genes"])          # elitism: the best survives
+        self.assertTrue(g1[0]["label"].endswith("g1.0"))
+        self.assertEqual(g1, battle.next_generation(self.T, {"generation": 0}, scored))
+
+    def test_fitness_normalises_points_and_gap(self):
+        ms = [{"status": "done", "standings": [{"key": "W", "value": 100}, {"key": "X", "value": 10}]},
+              {"status": "done", "standings": [{"key": "X", "value": 50}, {"key": "W", "value": 5}]},
+              {"status": "done", "replica_of": "m", "standings": [{"key": "X", "value": 1}]}]
+        f = battle.fitness_of("X", ms)
+        self.assertEqual((f["matches"], f["points"], f["log_gap"]), (2, 0.5, -0.5))
 
 
 class Records(unittest.TestCase):

@@ -45,13 +45,6 @@
       "group": "PrismaticAI"
     },
     {
-      "ai": "PrismaticAI",
-      "label": "PrismaticAI self-steward",
-      "source": "repository",
-      "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,self_steward=1",
-      "group": "PrismaticAI"
-    },
-    {
       "ai": "AAAHogEx",
       "source": "bananas"
     },
@@ -141,5 +134,63 @@
   "never_last": [
     "PrismaticAI",
     "PrismaticAI self-steward"
-  ]
+  ],
+  "tuning": {
+    "enabled": true,
+    "seed": "ga-1",
+    "group": "PrismaticAI",
+    "label_prefix": "PrismaticAI GA",
+    "ai": "PrismaticAI",
+    "population": 4,
+    "matches_per_variant": 6,
+    "mutation_rate": 0.35,
+    "anchors": [
+      "PrismaticAI",
+      "PrismaticAI solo-max"
+    ],
+    "fixed": {
+      "intercity": 1,
+      "self_steward": 1
+    },
+    "start": {
+      "aggressiveness": 100,
+      "max_routes": 30,
+      "own_lines": 8,
+      "cash_reserve": 5000,
+      "line_budget": 80000,
+      "air_planes": 2
+    },
+    "space": {
+      "aggressiveness": [
+        20,
+        100,
+        10
+      ],
+      "max_routes": [
+        4,
+        30,
+        2
+      ],
+      "own_lines": [
+        0,
+        24,
+        2
+      ],
+      "cash_reserve": [
+        0,
+        40000,
+        5000
+      ],
+      "line_budget": [
+        30000,
+        200000,
+        10000
+      ],
+      "air_planes": [
+        1,
+        6,
+        1
+      ]
+    }
+  }
 }
