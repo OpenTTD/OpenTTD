@@ -27,6 +27,9 @@ const LINEUP = [
     // The battle's second PrismaticAI contestant, "PrismaticAI solo-max" (battle.json).
     #{ ai: "PrismaticAI",
        settings: "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000" },
+    // "PrismaticAI self-steward": solo-max with the in-bot steward on (ba51ba6022).
+    #{ ai: "PrismaticAI",
+       settings: "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000,self_steward=1" },
 ];
 
 // Seconds between rounds, and rounds between two standings reports.

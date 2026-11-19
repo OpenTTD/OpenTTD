@@ -87,6 +87,12 @@ LuDiAI AfterFix, CivilAI and AdmiralAI as companies 1 to 4, one per round. Then 
 old run's end is logged after the new run's first line (`Script terminated`, `== exit 1`). That
 does not mean the service stopped: `/api/services` still reported it `running`.
 
+Later in the same game, the `PrismaticAI self-steward` entry was added: solo-max plus
+`self_steward=1`, the opt-in in-bot steward from `ba51ba6022`. It started as company 6 with
+`self_steward=1`, read back from `api_bots`. The game loads PrismaticAI through the symlink to this
+checkout, and each company reads the bot's code when it starts. Companies 0 and 5 therefore still
+run the code from before that commit, and only company 6 runs it.
+
 ## Limitations and observer effects
 
 - **Company value** comes from the console's `companies` command. Until a company's first quarterly
