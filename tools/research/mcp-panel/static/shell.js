@@ -18,16 +18,17 @@
 (function shell() {
   // The panel's pages (one game); the hub's (every instance) are APPS.hub. A page picks its app with
   // <body data-app>, the panel by default.
+  // icon: an outline icon's path (24x24, stroke), shown alone when the sidebar is a rail.
   const PAGES = [
-    { key: 'home', href: '/', label: 'Overview', title: 'Panel' },
-    { key: 'world', href: '/world', label: 'World: map, plan, yards', title: 'World' },
-    { key: 'ui', href: '/ui', label: 'Interface: every window', title: 'Interface' },
-    { key: 'tools', href: '/tools', label: 'MCP catalogue', title: 'Catalogue' },
-    { key: 'results', href: '/results', label: 'Duels', title: 'Duels' },
-    { key: 'data', href: '/data', label: 'Data: query the event store', title: 'Data' },
-    { key: 'scripts', href: '/scripts', label: 'Scripts: Rhai editor and services', title: 'Scripts' },
-    { key: 'realworld', href: '/realworld', label: 'Real world: places as maps', title: 'Real world' },
-    { key: 'docs', href: '/docs', label: 'API (OpenAPI, Swagger UI)', title: 'API' },
+    { key: 'home', href: '/', label: 'Overview', title: 'Panel', icon: 'M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10' },
+    { key: 'world', href: '/world', label: 'World: map, plan, yards', title: 'World', icon: 'M9 20l-6-3V4l6 3m0 13 6-3m-6 3V7m6 10 6 3V7l-6-3m0 13V4M9 7l6-3' },
+    { key: 'ui', href: '/ui', label: 'Interface: every window', title: 'Interface', icon: 'M4 5h16v14H4zM4 9h16M8 5v4' },
+    { key: 'tools', href: '/tools', label: 'MCP catalogue', title: 'Catalogue', icon: 'M4 6h16M4 12h16M4 18h10' },
+    { key: 'results', href: '/results', label: 'Duels', title: 'Duels', icon: 'M7 4h10v4a5 5 0 0 1-10 0zM5 5H3v2a4 4 0 0 0 4 4m12-6h2v2a4 4 0 0 1-4 4m-5 2v4m-4 3h8' },
+    { key: 'data', href: '/data', label: 'Data: query the event store', title: 'Data', icon: 'M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zm0 0v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3' },
+    { key: 'scripts', href: '/scripts', label: 'Scripts: Rhai editor and services', title: 'Scripts', icon: 'M8 9l-3 3 3 3m8-6 3 3-3 3M14 5l-4 14' },
+    { key: 'realworld', href: '/realworld', label: 'Real world: places as maps', title: 'Real world', icon: 'M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12zm0-9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z' },
+    { key: 'docs', href: '/docs', label: 'API (OpenAPI, Swagger UI)', title: 'API', icon: 'M10 20l4-16M6 16l-4-4 4-4m12 0 4 4-4 4' },
   ];
 
   const APPS = {
@@ -54,8 +55,15 @@
   /** The frame every page's <main> gets: under the navbar, beside the sidebar, one gutter. It fills
    *  the width beside the sidebar at every size: a cap (max-w-screen-2xl) left a third of a 2560 px
    *  screen empty, and the cards and grids already wrap by their own breakpoints. */
-  const FRAME = ['pt-20', 'px-4', 'sm:px-6', 'lg:ml-64'];
-  const LINK = 'flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700';
+  const FRAME = ['pt-20', 'px-4', 'sm:px-6', 'lg:ms-[var(--sidebar-w)]'];
+  const LINK = 'flex items-center gap-3 p-2 text-sm text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700';
+  /** The sidebar's two states on <html data-sidebar>: full (16rem, labels) or rail (3.5rem, icons
+   *  only, a title as tooltip). input.css maps them to --sidebar-w, which the sidebar's width, the
+   *  page frame and the console drawer all read; localStorage keeps the owner's choice. */
+  const SIDEBAR_KEY = 'panel.sidebar';
+  const SIDEBAR_STATES = ['full', 'rail'];
+  const icon = (d, cls = 'w-5 h-5') => `<svg class="${cls} shrink-0 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="${d}"/></svg>`;
+  const CONSOLE_ICON = 'M8 9l3 3-3 3m5 0h3M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1z';
   const SUB = 'flex items-center p-2 ps-4 text-sm text-gray-700 rounded-lg hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700';
 
   /** The Pro class sets of the admin dashboard (reference.md sections 1, 6, 9, 13), one per role. A page's
@@ -143,13 +151,13 @@
 
   /** The sidebar's page list, the current one marked. */
   function sidebarHtml(current, pages = PAGES) {
-    return pages.map((p) => `<li><a href="${p.href}"${p.key === current ? ' aria-current="page"' : ''} class="${LINK}${p.key === current ? ' bg-gray-100 dark:bg-gray-700' : ''}">${esc(p.label)}</a></li>`).join('');
+    return pages.map((p) => `<li><a href="${p.href}"${p.key === current ? ' aria-current="page"' : ''} title="${esc(p.label)}" class="${LINK}${p.key === current ? ' bg-gray-100 dark:bg-gray-700' : ''}">${p.icon ? icon(p.icon) : ''}<span data-label class="truncate">${esc(p.label)}</span></a></li>`).join('');
   }
 
   /** "On this page": one entry per [data-nav] element with an id ({id, label}), in document order. */
   function sectionsHtml(sections) {
     if (!sections.length) return '';
-    return `<p class="px-2 pt-4 pb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase dark:text-gray-400">On this page</p>`
+    return `<p data-label class="px-2 pt-4 pb-1 text-xs font-semibold tracking-wide text-gray-500 uppercase dark:text-gray-400">On this page</p>`
       + sections.map((s) => `<li><a href="#${esc(s.id)}" class="${SUB}">${esc(s.label)}</a></li>`).join('');
   }
 
@@ -158,7 +166,8 @@
     <div class="px-3 py-3 lg:px-5 lg:ps-3"><div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-3 min-w-0">
         <button data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" type="button" class="p-2 text-gray-600 rounded-sm cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><span class="sr-only">Toggle sidebar</span><svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button>
-        <a href="/" class="self-center text-xl font-semibold whitespace-nowrap sm:text-2xl dark:text-white">${esc(app.brand)}</a>
+        <button id="sidebar-collapse" type="button" aria-controls="sidebar" aria-expanded="true" title="Collapse or expand the sidebar ([)" class="hidden lg:inline-flex p-2 text-gray-600 rounded-lg hover:text-gray-900 hover:bg-gray-100 focus:ring-2 focus:ring-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"><span class="sr-only">Collapse or expand the sidebar</span>${icon('M4 5h16v14H4zM9 5v14', 'w-5 h-5')}</button>
+        <a href="/" class="self-center text-lg font-semibold tracking-tight whitespace-nowrap dark:text-white">${esc(app.brand)}</a>
         <span class="hidden sm:inline bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">RESEARCH-ONLY</span>
         <span id="conn" class="shrink-0 whitespace-nowrap bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">connecting</span>
       </div>
@@ -170,20 +179,27 @@
   }
 
   function asideHtml(current, app = APPS.panel) {
-    return `<aside id="sidebar" class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 w-64 h-full pt-16 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+    return `<aside id="sidebar" class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 w-64 lg:w-[var(--sidebar-w)] h-full pt-16 transition-[transform,width] duration-200 ease-out -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
     <div class="flex-1 px-3 pt-5 pb-4 overflow-y-auto">
       <ul class="space-y-1 font-medium">${sidebarHtml(current, app.pages)}
-        ${app.console ? `<li><button type="button" id="side-console" class="${LINK} w-full">Developer console (~)</button></li>` : ''}
+        ${app.console ? `<li><button type="button" id="side-console" title="Developer console (~)" class="${LINK} w-full">${icon(CONSOLE_ICON)}<span data-label class="truncate">Developer console (~)</span></button></li>` : ''}
       </ul>
       <ul id="shell-sections" class="space-y-1 font-medium"></ul>
-      <div class="pt-4 mt-4 space-y-2 text-sm text-gray-500 border-t border-gray-200 dark:border-gray-700 dark:text-gray-400">
+      <div data-label class="pt-4 mt-4 space-y-2 text-sm text-gray-500 border-t border-gray-200 dark:border-gray-700 dark:text-gray-400">
         <p>Docs: <code>${esc(app.doc)}</code></p>
       </div>
     </div></aside>`;
   }
 
   /* ---- in the browser ------------------------------------------------------------------------- */
+  /** The sidebar state to start with: the owner's saved choice, else full. */
+  function sidebarState(saved) { return SIDEBAR_STATES.includes(saved) ? saved : 'full'; }
+
   if (typeof document !== 'undefined' && document.body) {
+    // Before anything is drawn, so the frame never jumps from full to rail.
+    let saved = null;
+    try { saved = localStorage.getItem(SIDEBAR_KEY); } catch { /* storage blocked: full */ }
+    document.documentElement.dataset.sidebar = sidebarState(saved);
     const app = APPS[document.body.dataset.app] || APPS.panel;
     const current = document.body.dataset.page || pageOf(location.pathname, document.body.dataset.app);
     document.body.insertAdjacentHTML('afterbegin', navbarHtml(app) + asideHtml(current, app));
@@ -202,6 +218,20 @@
       watch.observe(document.body, { childList: true });
       document.addEventListener('DOMContentLoaded', () => { watch.disconnect(); header(); });
     }
+    const setSidebar = (state) => {
+      document.documentElement.dataset.sidebar = state;
+      const b = document.getElementById('sidebar-collapse');
+      if (b) b.setAttribute('aria-expanded', String(state === 'full'));
+      try { localStorage.setItem(SIDEBAR_KEY, state); } catch { /* not kept */ }
+    };
+    const toggleSidebar = () => setSidebar(document.documentElement.dataset.sidebar === 'rail' ? 'full' : 'rail');
+    document.getElementById('sidebar-collapse').onclick = toggleSidebar;
+    setSidebar(document.documentElement.dataset.sidebar);
+    document.addEventListener('keydown', (e) => {
+      const t = e.target; const typing = t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName || ''));
+      if (e.key === '[' && !typing && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); toggleSidebar(); }
+    });
+    globalThis.PanelSidebar = { set: setSidebar, toggle: toggleSidebar };
     globalThis.PanelUI = UI;
     globalThis.PanelTONE = TONE;
     if (app.console) {
@@ -236,6 +266,6 @@
   }
 
   if (typeof module !== 'undefined') {
-    module.exports = { PAGES, APPS, FRAME, UI, TONE, pageOf, sidebarHtml, sectionsHtml, navbarHtml, asideHtml, crumbsHtml, headerHtml };
+    module.exports = { PAGES, APPS, FRAME, UI, TONE, SIDEBAR_KEY, SIDEBAR_STATES, sidebarState, pageOf, sidebarHtml, sectionsHtml, navbarHtml, asideHtml, crumbsHtml, headerHtml };
   }
 })();

@@ -21,6 +21,21 @@
 
 /* A grid item may shrink below its content: a wide table scrolls inside its card (overflow-x-auto)
    instead of widening the page on a phone (mcp-overview-check measures it at 390 px). */
+/* The sidebar's width (static/shell.js, <html data-sidebar="full|rail">): the sidebar, the page frame
+   (lg:ms-[var(--sidebar-w)]) and the console drawer (lg:left-[var(--sidebar-w)]) all read it. In the
+   rail only the icons show; the labels, "On this page" and the docs line hide (their title is the
+   tooltip). Below lg the sidebar is Flowbite's drawer at full width, whatever the state. */
+:root { --sidebar-w: 16rem; }
+:root[data-sidebar="rail"] { --sidebar-w: 3.5rem; }
+@media (min-width: 64rem) {
+  :root[data-sidebar="rail"] #sidebar [data-label],
+  :root[data-sidebar="rail"] #sidebar #shell-sections { display: none; }
+  :root[data-sidebar="rail"] #sidebar > div { padding-inline: 0.5rem; }
+  :root[data-sidebar="rail"] #sidebar a, :root[data-sidebar="rail"] #sidebar button { justify-content: center; }
+}
+body > main, #console { transition: margin 200ms ease-out, left 200ms ease-out; }
+@media (prefers-reduced-motion: reduce) { body > main, #console, #sidebar { transition: none !important; } }
+
 @layer base {
   .grid > * { min-width: 0; }
   /* A link to #overview (or any id on the page) lands below the fixed navbar, not under it. */

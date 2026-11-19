@@ -44,7 +44,7 @@ test('the shell carries the elements every page relies on', () => {
     assert.match(shell, new RegExp(`id="${id}"`), id);
   }
   assert.match(shell, /data-drawer-toggle="sidebar"/, 'the Flowbite drawer opens the sidebar on a phone');
-  assert.deepEqual(FRAME, ['pt-20', 'px-4', 'sm:px-6', 'lg:ml-64']);
+  assert.deepEqual(FRAME, ['pt-20', 'px-4', 'sm:px-6', 'lg:ms-[var(--sidebar-w)]']);
   assert.ok(!FRAME.some((c) => c.startsWith('max-w-')), 'the frame fills the width beside the sidebar');
 });
 
