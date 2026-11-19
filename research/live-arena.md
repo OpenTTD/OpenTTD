@@ -43,7 +43,12 @@ Watch these during a run:
   newspaper when the leader changes;
 - `http://127.0.0.1:8800/`: the panel, with companies, charts and events;
 - `http://127.0.0.1:8800/scripts/arena`: the script, its service state and its log;
-- `http://127.0.0.1:8765/`: the headless battle's dashboard, when `battle.py run` is up.
+- `http://127.0.0.1:8800/battle`: the headless battle inside the panel. It shows arenas, the
+  leaderboard (PrismaticAI in blue, last place marked, unplayed contestants never "last"), the
+  genetic algorithm with the brain's offspring marked, live matches and the event feed. It reads
+  battle.py's own API (`/api/stream`, with `/api/state` as the fallback, CORS open) and edits nothing.
+  `http://127.0.0.1:8765/` stays as the standalone fallback.
+- `http://127.0.0.1:8800/play`: the game itself in the browser ([play-in-browser.md](play-in-browser.md)).
 
 ## How it works
 

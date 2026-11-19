@@ -5,7 +5,7 @@
 // marked current, show its own content (not only the frame), throw no page error and not scroll
 // sideways at phone width (390 px).
 //
-// e2e-covers: panel /ui, panel /tools, panel /resource, panel /docs, hub /docs
+// e2e-covers: panel /ui, panel /tools, panel /resource, panel /docs, panel /battle, hub /docs
 //
 // Usage: tools/research/mcp-pages-check <panel-url> [--hub <hub-url>] [--shots DIR]
 // Exit 0 when every check passes, 1 otherwise, 2 on bad usage. Drives the installed Chrome through
@@ -40,6 +40,10 @@ const pages = [
   { name: 'panel /resource', url: `${base}/resource/game/state`, key: 'tools',
     content: () => /openttd:\/\/game\/state/.test(document.body.textContent) && document.getElementById('page')?.textContent.trim().length > 40,
     what: 'the resource page of openttd://game/state' },
+  // The battle page reads battle.py's own API (:8765); without a running battle it says so (stale).
+  { name: 'panel /battle', url: `${base}/battle`, key: 'battle',
+    content: () => document.querySelectorAll('#lb-body tr').length > 0 || /no answer|stale/.test(document.getElementById('b-state')?.textContent || ''),
+    what: 'the leaderboard from the battle API, or that the API does not answer' },
   { name: 'panel /docs', url: `${base}/docs`, key: null,
     content: () => document.querySelectorAll('.opblock').length > 10,
     what: 'Swagger UI with the declared operations' },

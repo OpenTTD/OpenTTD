@@ -2694,6 +2694,13 @@ fn vendor(path: &str) -> Option<(&'static str, &'static str)> {
     })
 }
 
+/// The page key of a path that names a page file: "/battle" -> "battle"; anything else (steps,
+/// dots, upper case, a deeper path) is None.
+fn page_key(path: &str) -> Option<&str> {
+    let key = path.strip_prefix('/')?;
+    (!key.is_empty() && key.len() <= 32 && key.bytes().all(|b| b.is_ascii_lowercase())).then_some(key)
+}
+
 /// What the attached GUI client shows right now, as PNG (openttd.view.screenshot).
 fn screenshot(g: &Game) -> Result<Vec<u8>, String> {
     let shot = g.view_call("openttd.view.screenshot", json!({}))?;
@@ -2869,6 +2876,12 @@ impl Panel {
                     Ok(b) => hub::respond(stream, 200, ctype, &b),
                     Err(_) => send_json(stream, 404, &json!({"error": "run npm ci in tools/research/mcp-panel"})),
                 };
+            }
+            // A page is its file: /<key> serves static/<key>.html when it exists (a lower-case key,
+            // no path steps), so a new page of the shell's registry needs no route of its own here.
+            if let Some(key) = page_key(path) {
+                let f = statics().join(format!("{key}.html"));
+                if f.is_file() { return file(stream, f, "text/html; charset=utf-8"); }
             }
             if let Some(name) = path.strip_prefix("/play/") {
                 let dir = crate::panel_play::play_dir(&here().join("../../.."));
@@ -3249,6 +3262,8 @@ mod tests {
         assert!(paths["/api/resources/map"]["get"].get("requestBody").is_none());
         assert_eq!(paths["/api/events"]["get"]["parameters"].as_array().unwrap().len(), 3);
         assert_eq!(paths["/api/plan"]["get"]["parameters"][2]["name"], "track");
+        assert_eq!(page_key("/battle"), Some("battle"));
+        for bad in ["/", "/Battle", "/../x", "/a/b", "/x.html", "/battle2"] { assert_eq!(page_key(bad), None, "{bad}"); }
         for p in ["/api/rhai/stream", "/api/view/screenshot", "/api/events/stream", "/play", "/api/play", "/play/{file}", "/ws/game"] { assert!(paths.contains_key(p)); }
         assert_eq!(paths["/ws/game"]["get"]["x-mcp-annotations"]["readOnlyHint"], json!(false), "the game bridge is no read");
         // GET and POST on one path are two operations of one path item.
