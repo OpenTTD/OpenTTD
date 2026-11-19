@@ -28,3 +28,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-19'
+started_at: 2026-11-19T14:56:41Z
+started_event: sha256:7977ab2e88c92e33eba3e8c5d15d382b734955065f361db450d9ccfc2ec5d1f1
+updated_at: 2026-11-19T14:57:03Z
+verified_at: 2026-11-19T14:56:45Z
+verified_event: sha256:c07711d31f5059d63b02b2c0ae1d0800cd6fcdcbf3dfbdcbe8a59d619b024820
+completed_at: 2026-11-19T14:57:03Z
+completed_event: sha256:de7b8cc92e0c5c591d8e81851bf8dc0de2e93de8e3da273a5891084c73763f15
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "tools/surfaces/surfaces check; tools/surfaces/surfaces site; tools/surfaces/diagrams-check; git merge-base --is-ancestor e1779a2e85 origin/master"
+    result: "surfaces 0 findings over 515 documents; the site builds 515 pages with research/rhai-ide.html; 45/45 diagrams render; origin/master 799f5927fa holds I0088-I0092 (README, research/rhai-ide.md, mcp-control index regenerated)"
+    commit: 799f5927fa1a4de8472f5180ced4e09f65657e7c
+    recorded_at: 2026-11-19T14:56:51Z
