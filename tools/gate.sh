@@ -31,7 +31,9 @@ Usage: $SELF <smoke|change|research|full> [options]
             diff hygiene, and a summary of untracked/modified files to
             review for accidental generated output, plus a check that the
             generated Prismatic MCP contributor docs are not stale
-            (tools/check-prismatic-docs.sh), and that every published surface
+            (tools/check-prismatic-docs.sh), that every AI-battle record is
+            reproducible and its leaderboard derived (tools/research/
+            ai-battle/battle.py check), and that every published surface
             agrees with the repository: Markdown regions current, every
             relative link and anchor resolving (tools/surfaces/surfaces check),
             and every file and symbol the .ai/ records cite still exists
@@ -257,6 +259,8 @@ cmd_change() {
   tools/surfaces/surfaces check
   echo "==> tools/research/readme-scoreboard --check (README scoreboard derived from research/results)"
   tools/research/readme-scoreboard --check
+  echo "==> tools/research/ai-battle/battle.py check (rule project.battle-records-are-reproducible)"
+  python3 -B tools/research/ai-battle/battle.py check
   echo "==> tools/knowledge/refs check"
   tools/knowledge/refs check
   echo "==> tools/research/e2e-coverage (rule project.web-ui-is-covered-end-to-end: every web UI page has a browser check)"

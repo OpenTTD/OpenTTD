@@ -1,0 +1,37 @@
+{
+  "seed": "lan-battle",
+  "cache": "~/ttd-battle",
+  "results": "~/ttd-battle/results",
+  "hosts_file": "~/ttd-battle/hosts.json",
+  "remote_root": "$HOME/ttd-battle",
+  "baseset": "~/Documents/OpenTTD/baseset/opengfx-8.0.tar",
+  "schedule_every_s": 30,
+  "poll_every_s": 4,
+  "offline_probe_every_s": 300,
+  "stall_s": 600,
+  "replay_every": 8,
+  "discover": {
+    "local_name": "local",
+    "identity": "~/.ssh/cluster_ed25519",
+    "port": 22
+  },
+  "match": {
+    "years": 20,
+    "start_year": 1960,
+    "landscape": "temperate",
+    "map_x": 8,
+    "map_y": 8,
+    "breakdowns": 1
+  },
+  "prismatic": {"path": "tools/research/prismatic-ai/PrismaticAI", "rev": "HEAD"},
+  "referee": {"path": "tools/research/ai-battle/referee/BattleReferee"},
+  "contestants": [
+    {"ai": "PrismaticAI", "label": "PrismaticAI", "source": "repository"},
+    {"ai": "PrismaticAI", "label": "PrismaticAI solo-max", "source": "repository",
+     "settings": "aggressiveness=100,max_routes=30,intercity=1,own_lines=8,cash_reserve=5000"},
+    {"ai": "AAAHogEx", "source": "bananas"},
+    {"ai": "LuDiAI AfterFix", "source": "bananas"},
+    {"ai": "CivilAI", "source": "bananas"},
+    {"ai": "AdmiralAI", "source": "bananas"}
+  ]
+}

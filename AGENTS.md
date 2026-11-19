@@ -108,6 +108,7 @@ These directories hold personal Claude Code tooling (commands, agents, skills, h
 - [research/README.md](./research/README.md) — the gating model and experiment-report taxonomy in full.
 - [tools/surfaces/README.md](./tools/surfaces/README.md) — the published surfaces (site, wiki, generated Markdown tables): why they are derived, how to regenerate them, and the check that enforces it.
 - [research/prismatic-mcp/README.md](./research/prismatic-mcp/README.md) — the embedded, research-only, compile-gated MCP server: what's actually implemented vs. staged, build/run/connect, and the phase-ordered research trail. Read this fork's own ground rules above first; nothing here overrides them.
+- [research/ai-battle/README.md](./research/ai-battle/README.md) — the LAN-wide AI tournament (`tools/research/ai-battle/`): every reachable machine is an arena, PrismaticAI is a contestant, live dashboard.
 
 <!-- majordomus:begin dfb7340c1a43 294efe4fb028e737 -->
 # AGENTS.md
