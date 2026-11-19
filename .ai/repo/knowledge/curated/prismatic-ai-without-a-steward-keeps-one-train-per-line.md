@@ -146,6 +146,25 @@ defaults are its genes:
 max_routes and cash_reserve stay under the autopilot's floors. In short: fewer air routes, and
 investment that starts earlier, accepts lower returns, borrows, and lets routes grow further.
 
+**A hilly map left it last with buses (2026-11-19).** In edition a872adde, both of PrismaticAI's
+last places came from one map, OpenTTD seed 1807087905. The other AIs ran 48-544 vehicles there,
+and the default PrismaticAI ran 8. A verbose replay (`battle.py ablate --log-dir`, script level 4)
+showed two openers failing on the same terrain:
+- Every double-track path search stopped after 5 nodes. The straight exits and the second
+  track's reserved tiles left no way out. The bot then removed both stations. The same pair
+  single track (`rail_double=0`) built and ran 7 trains.
+- Every airport site was sloped, and levelling one cost more than the fixed 15k cap. The log
+  showed these as "refused: ERR_NONE", because the test pass had cleared the error.
+
+Fixes:
+- A double-track line with no path is now retried single track (`rail.nut`).
+- The levelling cap is the setting `air_level_max`, a GA gene. With no air route yet and two
+  failed pairs, it is multiplied by 4 (`autopilot.nut`).
+
+Replaying 3 years of that seed raised the default's value from 1 to 318k (8 trains, 2 planes).
+Seeds 930967890 and 31337 were unchanged over 6 years. A cap of 60 everywhere cost those seeds
+38% and 8%, which is why it is raised only after the opener fails.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

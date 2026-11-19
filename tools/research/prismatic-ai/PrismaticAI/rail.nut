@@ -858,7 +858,9 @@ function PrismaticAI::BuildDoubleRailLineAndTrain(sa, sb, len, cargo, first_flag
 	if (path == null) {
 		AILog.Warning("PrismaticAI: no rail path between the stations; removing them");
 		PrismaticAI.RemoveRailStation(sa, len); PrismaticAI.RemoveRailStation(sb, len);
-		return 0;
+		/* -1: nothing of the line is left, so the caller may try it single track (straight exits
+		 * and the second track's reserved tiles are what a hilly map most often refuses). */
+		return -1;
 	}
 	local laid = PrismaticAI.BuildRailAlong(path, sa.end, sb.end, 2, true, true);
 	if (laid == null) return 0;
@@ -1105,6 +1107,15 @@ function PrismaticAI::BuildFreightRailRoute(p, q, cargo, shape) {
 	if (sb == null) { PrismaticAI.RemoveRailStation(sa, plan.len); return 0; }
 	local built = double ? PrismaticAI.BuildDoubleRailLineAndTrain(sa, sb, plan.len, cargo, AIOrder.OF_FULL_LOAD_ANY, label)
 		: PrismaticAI.BuildRailLineAndTrain(sa, sb, plan.len, cargo, plan.wagons, AIOrder.OF_FULL_LOAD_ANY, label);
+	/* No double-track path: the same line single track. On a hilly map (OpenTTD seed 1807087905)
+	 * every double-track search stopped after 5 nodes and the bot ended last with a few buses, while
+	 * the single-track line on the same pair was built and ran 7 trains. */
+	if (built == -1) {
+		AILog.Info("PrismaticAI: no double-track path for " + label + "; trying it single track");
+		shape = clone shape;
+		shape.double = false;
+		return PrismaticAI.BuildFreightRailRoute(p, q, cargo, shape);
+	}
 	/* The industries it serves, so a saturated line can get a twin (steward.nut TwinLines). */
 	if (built > 0) { RAIL_LINES.top().from <- p; RAIL_LINES.top().to <- q; }
 	return built;

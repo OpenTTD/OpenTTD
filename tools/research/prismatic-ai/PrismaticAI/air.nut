@@ -17,8 +17,8 @@
  * stations and none of ours is adjacent): town id -> the error. The autopilot skips them. */
 AIR_BAD_TOWNS <- {};
 
-/* The most levelling a site may cost before an airport is built on it instead of skipped. */
-const LEVEL_MAX_COST = 15000;
+/* The most levelling one site may cost is the setting air_level_max (AIR_LEVEL_MAX, main.nut); the
+ * autopilot's route budget reserves it for both airports (autopilot.nut). */
 
 function PrismaticAI::PassengerCargo() {
 	local cargos = AICargoList();
@@ -70,9 +70,14 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 				AITile.LevelTiles(t, far);
 				cost = acc.GetCosts();
 			}
-			if (cost <= LEVEL_MAX_COST && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
+			if (cost <= AIR_LEVEL_MAX && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
 				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it");
 				return t;
+			}
+			/* Say why: a test pass that succeeded leaves ERR_NONE as the last error. */
+			if (cost > AIR_LEVEL_MAX) {
+				AILog.Warning("PrismaticAI: airport at tile " + t + " refused: levelling costs " + cost + " (air_level_max " + AIR_LEVEL_MAX + ")");
+				continue;
 			}
 		}
 		local err = AIError.GetLastError();

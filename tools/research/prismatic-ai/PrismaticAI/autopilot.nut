@@ -23,6 +23,12 @@ const AUTOPILOT_AIR_NEAR = 16;
 const AUTOPILOT_AIR_BUDGET = 60000;
 /* After this many pairs that could not be built (no airport site, no money), stop trying. */
 const AUTOPILOT_AIR_MAX_FAILS = 6;
+/* With no air route yet and this many pairs failed, the levelling cap is multiplied by
+ * AUTOPILOT_AIR_HILLY: on a hilly map (OpenTTD seed 1807087905) every site within air_level_max
+ * was refused and the bot never flew, while a higher cap on normal maps cost up to 38% of value
+ * (seeds 930967890, 31337), so it is raised only where nothing else worked. */
+const AUTOPILOT_AIR_HILLY_AFTER = 2;
+const AUTOPILOT_AIR_HILLY = 4;
 
 /* Airport tiles of other companies within AUTOPILOT_AIR_NEAR tiles of the town centre, counted as
  * distinct stations. */
@@ -83,12 +89,13 @@ function PrismaticAI::AutopilotAir(b) {
 	local headroom = AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
 	/* The real price of the route: two airports, the planes, and a margin for levelling. Without
 	 * this check a route once spent everything on airports and bought no plane. */
+	if (this.auto_air == 0 && this.air_failed >= AUTOPILOT_AIR_HILLY_AFTER) AIR_LEVEL_MAX = b.air_level_max * AUTOPILOT_AIR_HILLY;
 	local type = PrismaticAI.AirportType(), pax = PrismaticAI.PassengerCargo();
 	if (type == -1 || pax == -1) return false;
 	local plane = PrismaticAI.PickPlane(type, pax);
 	if (plane == -1) return false;
 	local need = max(AUTOPILOT_AIR_BUDGET, 2 * AIAirport.GetPrice(type) + b.air_planes * AIEngine.GetPrice(plane) +
-		2 * LEVEL_MAX_COST + b.cash_reserve);
+		2 * AIR_LEVEL_MAX + b.cash_reserve);
 	if (money + headroom < need) return false;
 	local pair = this.NextAutopilotAirPair(b);
 	if (pair == null) return false;
