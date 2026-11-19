@@ -266,10 +266,18 @@ function PrismaticAI::Behaviour() {
 	/* Autopilot (default on): a bot nobody gave a plan (no planner line, air or rail pair) grows on
 	 * its own instead of stopping at a few buses. In the LAN AI battle the unplanned default ended
 	 * last in every match (research/ai-battle/README.md). It runs the in-bot steward, plans its own
-	 * freight lines, connects towns and keeps a small reserve. A plan from the panel switches it off,
-	 * and autopilot=0 restores the unplanned bot that duels used as their rival before 2026-11-19. */
+	 * freight lines, connects towns and keeps a small reserve. autopilot=0 restores the unplanned bot
+	 * that duels used as their rival before 2026-11-19.
+	 *
+	 * With a plan, the planner's lines and its own_lines/max_routes/cash_reserve stand, but the growth
+	 * layer still runs on top (`grows`): the in-bot steward (an external steward's target always
+	 * wins), its own air routes after the planner's pair, and idle money buying vehicles. Without it,
+	 * a planned bot in held-start duels ended with ~20 vehicles and no plane while the unplanned
+	 * autopilot rival ran ~190 with 100 planes and won (openttd-1e, seed 4242, 120 months). */
 	b.planned <- b.freight.len() > 0 || (b.air_a >= 0 && b.air_b >= 0) || (b.rail_a >= 0 && b.rail_b >= 0);
 	b.autopiloted <- b.autopilot == 1 && !b.planned;
+	b.grows <- b.autopilot == 1;
+	if (b.grows) b.self_steward = 1;
 	if (b.autopiloted) {
 		b.self_steward = 1;
 		b.own_lines = max(b.own_lines, AUTOPILOT_OWN_LINES);
@@ -319,7 +327,7 @@ function PrismaticAI::Start() {
 		PRISMATIC_FULL_LOAD = b.air_full_load;
 		local knobs = "aggressiveness=" + b.aggressiveness + " max_routes=" + b.max_routes + " cash_reserve=" + b.cash_reserve +
 			" intercity=" + b.intercity + " self_steward=" + b.self_steward + " own_lines=" + b.own_lines +
-			(b.autopiloted ? " autopilot=engaged" : "");
+			(b.autopiloted ? " autopilot=engaged" : (b.grows ? " autopilot=growth-on-plan" : ""));
 		if (knobs != last) {
 			AILog.Info("PrismaticAI behaviour: " + knobs);
 			last = knobs;
@@ -331,7 +339,18 @@ function PrismaticAI::Start() {
 		local air_key = b.air_a + "-" + b.air_b;
 		if (b.air_a >= 0 && b.air_b >= 0 && this.air_done != air_key && money > b.cash_reserve) {
 			this.air_done = air_key;
-			if (PrismaticAI.BuildAirRoute(b.air_a, b.air_b, b.air_planes) > 0) this.routes++;
+			/* Built on borrowed money like every other route: on cash alone the airports were built
+			 * and the plane was not (ERR_NOT_ENOUGH_CASH), leaving two empty airports. */
+			local loan_before = AICompany.GetLoanAmount();
+			AICompany.SetLoanAmount(AICompany.GetMaxLoanAmount());
+			local flying = PrismaticAI.BuildAirRoute(b.air_a, b.air_b, b.air_planes);
+			if (flying == 0) AICompany.SetLoanAmount(loan_before);
+			if (flying > 0) {
+				this.routes++;
+				/* The planner's towns hold airports now: the autopilot's own pairs leave them out. */
+				this.air_towns[b.air_a] <- true;
+				this.air_towns[b.air_b] <- true;
+			}
 			money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 		}
 		/* Without a plan, the autopilot's own air routes come first: the gap to the winner opens in the

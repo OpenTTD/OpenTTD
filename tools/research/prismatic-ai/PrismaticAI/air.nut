@@ -166,5 +166,10 @@ function PrismaticAI::BuildAirRoute(a, b, planes) {
 		AIController.Sleep(PACE);
 	}
 	AILog.Info("PrismaticAI: built an air route " + AITown.GetName(a) + " - " + AITown.GetName(b) + " with " + running + " plane(s)");
+	/* No plane bought: the airports would only cost upkeep. */
+	if (running == 0) {
+		PrismaticAI.RemoveIdleAirport(pa);
+		PrismaticAI.RemoveIdleAirport(pb);
+	}
 	return running;
 }

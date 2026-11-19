@@ -113,6 +113,20 @@ since 2026-11-19 the bot's defaults are `air_add_waiting=10` and `catchment_stop
 a default change on battle evidence (paired, deterministic, 36 seeds), not on the held-start duel
 pairs that rule `project.a-tuning-claim-needs-held-start-pairs` asks for; those have not been run.
 
+**A plan from the panel switched growth off.** Held-start duels by openttd-1e (seed 4242, 120 months)
+found the planned bot A ending with ~20 vehicles and no plane, while the unplanned autopilot
+rival ran ~190 vehicles with 100 planes and won. `Behaviour()` turned the whole autopilot off once
+a plan existed. Since 2026-11-19 `autopilot=1` keeps the growth layer on top of a plan (`grows`:
+in-bot steward, own air routes after the planner's pair, idle money buying vehicles), while the
+planner's lines and own_lines/max_routes/cash_reserve stand. The planner's air pair is now built on
+borrowed money; on cash alone it had built both airports and no plane. A route that gets no plane
+takes its airports down again.
+
+Recorded ablations (`research/results/ablation-20261119T094*`, 10 years, a plan of the air pair
+`air_a=0,air_b=1`) gave +219%, +103% and +61% for growth on a plan against the old planned bot.
+This is the reason the planner (AlgoGlyph kernels through the panel) lost to the bot's own
+autopilot: its plan replaced growth instead of seeding it.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
