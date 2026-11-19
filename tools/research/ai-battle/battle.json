@@ -45,6 +45,13 @@
       "group": "PrismaticAI"
     },
     {
+      "ai": "PrismaticAI",
+      "label": "PrismaticAI double-track",
+      "source": "repository",
+      "group": "PrismaticAI",
+      "settings": "rail_double=1"
+    },
+    {
       "ai": "AAAHogEx",
       "source": "bananas"
     },
@@ -146,7 +153,8 @@
     "mutation_rate": 0.35,
     "anchors": [
       "PrismaticAI",
-      "PrismaticAI solo-max"
+      "PrismaticAI solo-max",
+      "PrismaticAI double-track"
     ],
     "fixed": {
       "intercity": 1,
